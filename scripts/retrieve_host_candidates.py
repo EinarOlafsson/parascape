@@ -2,7 +2,7 @@
 
 Downloads remain in the external source archive; the executed notebook retains
 primary metadata, URLs, hashes, receipt checks and failures. This does not admit
-any measurements to Starplast or change an installed dataset.
+any measurements to ParaScape or change an installed dataset.
 """
 from __future__ import annotations
 
@@ -76,7 +76,7 @@ def retrieve(root: Path, metadata: Path, output: Path) -> dict:
     request_record = {"url": url, "request": query, "retrieved_utc": datetime.now(timezone.utc).isoformat()}
     try:
         request = urllib.request.Request(url, data=json.dumps(query).encode(),
-                                         headers={"Content-Type": "application/json", "User-Agent": "starplast-source-recovery/1"})
+                                         headers={"Content-Type": "application/json", "User-Agent": "parascape-source-recovery/1"})
         with urllib.request.urlopen(request, timeout=25) as response:
             payload = response.read(4 << 20)
         articles = json.loads(payload)

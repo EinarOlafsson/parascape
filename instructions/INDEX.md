@@ -101,7 +101,7 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 62 | [The hold-out track record](open/62_holdout_track_record.md) — shipped 0.52.0-0.53.0 for 12 labels; left: pooled record vs scorecard check, the questions page |
 | 38 | Build a provenance-first pan-Apicomplexan dataset archive |
 | 41 | Fill as many slots as possible: Toxoplasma, Plasmodium, and host |
-| 60 | [What would make Starplast most useful](open/60_usefulness_review.md): ranked plan; weeks 1-2 = fix the dock bug, result provenance, methods paragraph + citations, figure export |
+| 60 | [What would make ParaScape most useful](open/60_usefulness_review.md): ranked plan; weeks 1-2 = fix the dock bug, result provenance, methods paragraph + citations, figure export |
 | 59 | [One hundred biological questions this software can answer](open/59_biological_questions.md): 100 questions with entry point, strategy, settings and a resolved literature anchor; Q01-Q50 executed and graded yields/thin/no |
 | 53 | [One space per organism](open/53_organism_spaces.md), then links between pathogen, vector and host. R0-R3, Pf display, pack framework and lossless calibration publishing implemented. Remaining: organism builders and published packs · Hs/Mm spaces · Space menu · Cp/Pb, Ag/As, Rn/Fc spaces · per-space leakage and calibration · cross-space bridges (version numbers to be assigned; 0.47-0.54 went to other work). Small follow-ups: retry active learning with conformal uncertainty; next Tg/host data audit; `spaces/As/abundance/PXD001647/` is junk to delete. See WORK_LOG.md for active progress and blockers. |
 

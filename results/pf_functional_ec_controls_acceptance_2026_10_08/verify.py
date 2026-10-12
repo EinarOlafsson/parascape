@@ -1,7 +1,7 @@
 """Independently verify the frozen Pf control packet and exact population arithmetic."""
 import hashlib, json, sys
 from pathlib import Path
-ROOT=Path('/media/carruthers/mnt3/claude/repo/starplast')
+ROOT=Path('/media/carruthers/mnt3/claude/repo/parascape')
 sys.path.insert(0,str(ROOT))
 from scripts.notebook_runner import ExecutedNotebook
 OUT=Path(__file__).resolve().parent

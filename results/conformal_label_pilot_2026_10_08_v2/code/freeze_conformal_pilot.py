@@ -14,10 +14,10 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import artifacts as A, baselines as B, capabilities as C, conformal_records as F, organisms as O, record_scorecards as R, scorecard as SC, strategies as S  # noqa: E402
-from starplast.ground_truth import read_registry  # noqa: E402
-from starplast.query import Query  # noqa: E402
-from starplast.splits import read_split, write_split  # noqa: E402
+from parascape import artifacts as A, baselines as B, capabilities as C, conformal_records as F, organisms as O, record_scorecards as R, scorecard as SC, strategies as S  # noqa: E402
+from parascape.ground_truth import read_registry  # noqa: E402
+from parascape.query import Query  # noqa: E402
+from parascape.splits import read_split, write_split  # noqa: E402
 
 
 def _sha(path):
@@ -86,7 +86,7 @@ def freeze(output):
     scores.index = list(ids)
     cal_scores, test_scores = (scores.loc[list(split.entities(role))] for role in ('calibration', 'test'))
     np.testing.assert_array_equal(test_scores.to_numpy(), np.asarray(old.payloads['class_scores.json']['scores']))
-    code = [Path(__file__), *(ROOT/'starplast'/name for name in ('conformal_records.py', 'strategy_learning.py',
+    code = [Path(__file__), *(ROOT/'parascape'/name for name in ('conformal_records.py', 'strategy_learning.py',
         'strategies.py', 'record_scorecards.py', 'scorecard.py', 'baselines.py', 'artifacts.py', 'splits.py', 'capabilities.py', 'ground_truth.py'))]
     dependencies = [A.Dependency('code', p.stem, _sha(p)) for p in code]
     dependencies += [A.Dependency('table', 'installed', _sha(source)), A.Dependency('truth', entry.benchmark_id, entry.truth_file.sha256),

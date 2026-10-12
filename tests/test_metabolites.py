@@ -18,7 +18,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import metabolites as M  # noqa: E402
+from parascape import metabolites as M  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -113,7 +113,7 @@ def test_load_returns_nothing_when_the_table_is_not_built(tmp_path):
 
 
 # --------------------------------------------------------------------------- the shipped table
-@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "starplast", "data", M.TABLE)),
+@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "parascape", "data", M.TABLE)),
                     reason="metabolite table not built")
 def test_the_shipped_table_has_rows_that_are_compounds():
     d = M.load(ROOT)
@@ -169,7 +169,7 @@ def test_a_row_seen_in_both_blocks_appears_once(tmp_path):
 # --------------------------------------------------------------------------- the second study
 def _lipid_archive(tmp_path, species=("PI 38:4", "SM 34:1;O2"), name="lipid.zip"):
     """A lipid archive shaped like the real one, in the shape `lipids` reads."""
-    from starplast import lipids as L
+    from parascape import lipids as L
     frame = pd.DataFrame({"Lipid_names": list(species)})
     for host in L.HOSTS:
         frame[f"EV_{host}_1"] = [float(i + 1) for i in range(len(species))]

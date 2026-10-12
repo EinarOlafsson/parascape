@@ -354,7 +354,7 @@
         "protocol": "09f254d49f8f73497a056d41da66fdb711adb60e15cb30740117e699097feb0d",
         "rows": 182,
         "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
-        "source_artifact_identity": "349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162",
+        "source_artifact_identity": "e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461",
         "status": "verified_reference_recovery",
         "truth_grade": "unresolved",
         "wrong": 100

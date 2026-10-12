@@ -35,7 +35,7 @@ def fetch(archive, downloads=None):
         receipt = {'name': name, 'requested_url': url,
                    'retrieved_utc': datetime.now(timezone.utc).isoformat()}
         try:
-            request = urllib.request.Request(url, headers={'User-Agent': 'Starplast-domain-metadata/0.54'})
+            request = urllib.request.Request(url, headers={'User-Agent': 'ParaScape-domain-metadata/0.54'})
             with urllib.request.urlopen(request, timeout=30) as response:
                 payload = response.read(8_000_001)
                 if len(payload) > 8_000_000:
@@ -108,7 +108,7 @@ def verify_receipts(archive):
 
 def review(output, archive, receipts, status_archive=None):
     """Build and independently replay an installed-ID metadata subset."""
-    from starplast import discovery_labels as L, functional_domains as F, organisms as O, strategies as S
+    from parascape import discovery_labels as L, functional_domains as F, organisms as O, strategies as S
     import pandas as pd
     import re
     archive, output = Path(archive), Path(output)
@@ -180,8 +180,8 @@ def review(output, archive, receipts, status_archive=None):
     if retired_path and retired_path.exists():
         shutil.copyfile(Path(status_archive) / 'receipts.json', output / 'status_receipts.json')
     (output / 'code').mkdir()
-    for source in (Path(__file__), ROOT / 'scripts/notebook_runner.py', ROOT / 'starplast/functional_domains.py',
-                   ROOT / 'starplast/discovery_labels.py'):
+    for source in (Path(__file__), ROOT / 'scripts/notebook_runner.py', ROOT / 'parascape/functional_domains.py',
+                   ROOT / 'parascape/discovery_labels.py'):
         shutil.copyfile(source, output / 'code' / source.name)
     (output / 'SHA256SUMS.txt').write_text('\n'.join(
         f'{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.relative_to(output)}'

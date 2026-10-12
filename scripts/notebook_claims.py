@@ -16,11 +16,11 @@ nb.md("# Claims: generated with a measured certainty, then tested independently"
       "The goal (2026-10-04): generate new knowledge from existing data, and test it by means separate "
       "from the inference that generated it -- with every number measured on genes whose answer was "
       "hidden. Design: `instructions/open/63_claims_generate_and_verify.md`; code: "
-      "`starplast/claims.py`; build: `scripts/build_claims.py`.",
-      "Everything below reads the shipped track record (`starplast/data/track_record.parquet`), where "
+      "`parascape/claims.py`; build: `scripts/build_claims.py`.",
+      "Everything below reads the shipped track record (`parascape/data/track_record.parquet`), where "
       "every labelled gene was hidden once in folds that never split an orthogroup.")
 nb.code("import numpy as np, pandas as pd",
-        "from starplast import claims as C, strategies as S, track_record as T",
+        "from parascape import claims as C, strategies as S, track_record as T",
         "tg = T.shipped('Tg'); tg = tg[tg['target'].astype(str) == 'compartment']",
         "len(tg)")
 nb.md("## 1. Leakage between generator and verifier, measured",

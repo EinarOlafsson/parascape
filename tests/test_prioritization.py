@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast.prioritization import prioritize,compare_screen,explain_candidates
-from starplast.prediction import TaskSpec,run
+from parascape.prioritization import prioritize,compare_screen,explain_candidates
+from parascape.prediction import TaskSpec,run
 
 
 def test_budget_and_group_constraints_are_respected():

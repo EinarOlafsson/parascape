@@ -19,11 +19,11 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import numpy as np
 import pandas as pd
-from starplast import artifacts as A,functional_exclusions as X,organisms as O,precompute_features as F,precompute_jobs as P
-from starplast.splits import read_split,write_split
+from parascape import artifacts as A,functional_exclusions as X,organisms as O,precompute_features as F,precompute_jobs as P
+from parascape.splits import read_split,write_split
 
 SOURCE=ROOT/'results/functional_ec_knn_pilot_2026_10_08_v4'
-SOURCE_ID='349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162'
+SOURCE_ID='e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461'
 BUDGET=P.Budget(2,120,32*1024*1024,32*1024*1024,400*1024*1024)
 LIMITS=F.FeatureLimits(1226,400,1226*400,12*1024*1024)
 
@@ -92,7 +92,7 @@ def prepare(output):
     builder=F.NumericFeatureBuilder(features,table,split=split,exclusions=exclusions,limits=LIMITS)
     write_split(output/'split.json',split,exclusions=exclusions)
     code_dir=output/'code';code_dir.mkdir()
-    code_paths=[Path(__file__),ROOT/'scripts/notebook_runner.py',*(ROOT/'starplast'/name for name in
+    code_paths=[Path(__file__),ROOT/'scripts/notebook_runner.py',*(ROOT/'parascape'/name for name in
         ('precompute_features.py','precompute_jobs.py','functional_exclusions.py','artifacts.py','splits.py',
          'strategies.py','search.py','datasets.py','slots.py','discovery_labels.py','functional_domains.py',
          'capabilities.py','query.py','organisms.py','paths.py'))]

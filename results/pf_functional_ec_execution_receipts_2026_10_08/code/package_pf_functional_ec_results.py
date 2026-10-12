@@ -20,8 +20,8 @@ def sha(path):
 def package(source,output):
     import pandas as pd
     from scripts import freeze_pf_functional_ec_knn as K
-    from starplast import artifacts as A,functional_results as F,strategies as S
-    from starplast.splits import read_split
+    from parascape import artifacts as A,functional_results as F,strategies as S
+    from parascape.splits import read_split
     source=Path(source).resolve();output=Path(output)
     receipt_count=0
     for line in (source/'SHA256SUMS.txt').read_text().splitlines():
@@ -96,7 +96,7 @@ def main():
     parser.add_argument('--source',type=Path,required=True);parser.add_argument('--out',type=Path,required=True)
     args=parser.parse_args();args.out.mkdir(parents=True,exist_ok=False)
     (args.out/'code').mkdir()
-    for path in (Path(__file__),ROOT/'starplast/functional_results.py',ROOT/'tests/test_functional_native_ec_reader.py'):
+    for path in (Path(__file__),ROOT/'parascape/functional_results.py',ROOT/'tests/test_functional_native_ec_reader.py'):
         shutil.copyfile(path,args.out/'code'/path.name)
     nb=ExecutedNotebook('Independent Pf EC receipt, population and reader acceptance')
     nb.ns.update(package=package,source=args.source,output=args.out)

@@ -18,7 +18,7 @@ Quirks that cost time once:
     supplements are 36-620-gene libraries. They are this study's genome-wide composite scores:
     Spearman 0.9991-0.9993 and a maximum absolute difference of 5e-8 against the supplement,
     each tissue matching itself best among all 32 numeric columns. Heart and brain come from the
-    same sheet (scripts/derive_deposits.py; starplast/deposits.py) and are the only in vivo
+    same sheet (scripts/derive_deposits.py; parascape/deposits.py) and are the only in vivo
     heart and brain CRISPR fitness there is; both are bottleneck-limited (medians -7.9 and -7.1
     raw), so most genes carry little information there. The ToxoDB attributes are gone from
     release 71, so the supplement is now the durable source. GT1 accessions; the 68 loci GT1
@@ -26,7 +26,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.screens.crispr_screens()`; this script is the per-dataset view of the same source, for
+`parascape.screens.crispr_screens()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/crispr_invivo_composite.py

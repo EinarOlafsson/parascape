@@ -16,14 +16,14 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import variation as V  # noqa: E402
+from parascape import variation as V  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HEADER = "\t".join(["Gene ID"] + list(V.COLUMNS))
 
 
 def _table(tmp_path, body, header=HEADER):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True, exist_ok=True)
     (data / V.TABLE).write_text(header + "\n" + body)
     return tmp_path
@@ -82,7 +82,7 @@ def test_a_report_whose_first_column_is_not_the_gene_yields_nothing(tmp_path):
     assert V.strain_snps(str(tmp_path), log=lambda *_: None).empty
 
 
-@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "starplast", "data", V.TABLE)),
+@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "parascape", "data", V.TABLE)),
                     reason="shipped SNP table not present")
 def test_polymorphism_orders_the_families_the_way_biology_does():
     """The check that no metadata field can give: does the column rank genes the way it must?
@@ -92,7 +92,7 @@ def test_polymorphism_orders_the_families_the_way_biology_does():
     conserved core. If a join went wrong this ordering collapses, and nothing else would say so.
     """
     snps = V.strain_snps(ROOT, log=lambda *_: None)
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet")).set_index("gene_id")
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     density = (snps["snp_nonsynonymous"] / n["length"].reindex(snps.index).clip(lower=1)) * 1000
     prod = n["product"].astype(str)
 

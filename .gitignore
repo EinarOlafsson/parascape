@@ -16,8 +16,8 @@ docs/api/
 # Saved embeddings: the store writes here, and a walk now writes one file per configuration as it
 # runs. They are rebuildable from the recipe each one carries, and 288 npz files landing inside the
 # committed cache is not a cache, it is a working directory. .gitkeep keeps the directory itself.
-starplast/data/embeddings/*
-!starplast/data/embeddings/.gitkeep
+parascape/data/embeddings/*
+!parascape/data/embeddings/.gitkeep
 
 # Analysis-run embeddings: the CSVs are the record, the npz files are rebuildable from the
 # recipe each one carries, and a results directory is not a place to ship 67 MB of them.
@@ -25,7 +25,7 @@ results/*/embeddings/
 results/*/run.log
 
 # The map gallery's per-map build checkpoint: one npz per map so a stopped build resumes. The maps
-# themselves ship in starplast/data/umap_gallery.npz, and these are the scaffolding that built it.
+# themselves ship in parascape/data/umap_gallery.npz, and these are the scaffolding that built it.
 results/umap_gallery_checkpoint/
 
 # Downloaded datasets. Gigabytes of GEO and PRIDE archives, and not one of them is source: they are
@@ -43,7 +43,7 @@ starpath_crosslinks.json
 starpath_crosslink_mining
 starpath_dump
 .claude
-.starplast-watchdog/
+.parascape-watchdog/
 
 # Rendered documentation site
 docs/site/

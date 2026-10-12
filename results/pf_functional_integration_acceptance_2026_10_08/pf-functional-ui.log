@@ -17,7 +17,7 @@ This plugin does not support propagateSizeHints()
         "training_majority",
         "training_prevalence"
       ],
-      "artifact_identity": "49d625acba268ce5599fd22f00a43bba313f84cf50a816449a944e34850626d0",
+      "artifact_identity": "8e9e3a524c488e8ddd232a58030f8c84dd7bc10f766a5d850b1a2108da1283aa",
       "routes": [
         "annotation",
         "strategy",
@@ -39,7 +39,7 @@ This plugin does not support propagateSizeHints()
   "cross_organism_refused": true,
   "altered_context_refused": true
 }
-	Command being timed: "/home/carruthers/anaconda3/envs/starplast/bin/python scripts/audit_functional_profile_ui.py --organism Pf --out results/pf_functional_ui_2026_10_08"
+	Command being timed: "/home/carruthers/anaconda3/envs/parascape/bin/python scripts/audit_functional_profile_ui.py --organism Pf --out results/pf_functional_ui_2026_10_08"
 	User time (seconds): 6.33
 	System time (seconds): 1.10
 	Percent of CPU this job got: 132%

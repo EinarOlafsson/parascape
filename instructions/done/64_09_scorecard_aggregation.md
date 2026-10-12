@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.04, 64.06, 64.08 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/scorecard.py`, `starplast/track_record.py`, `starplast/calibration.py` |
+| Existing code to inspect | `parascape/scorecard.py`, `parascape/track_record.py`, `parascape/calibration.py` |
 
 ## Deliverable
 
@@ -32,7 +32,7 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Completion evidence
 
-`starplast/record_scorecards.py` provides the shared standard-metric path for six tasks, class/gene/target/strategy/method/organism views, explicit count/metric availability, and cohort separation. Label cards preserve all-hidden accuracy and accuracy among calls separately. Class precision includes false calls from other classes; recall includes abstentions. Positive-only retrieval/ranking never manufactures negatives or precision. Geometry and numerical predictions have no invented categorical correct/wrong count. Outcome rows and metric parameters have explicit content identities.
+`parascape/record_scorecards.py` provides the shared standard-metric path for six tasks, class/gene/target/strategy/method/organism views, explicit count/metric availability, and cohort separation. Label cards preserve all-hidden accuracy and accuracy among calls separately. Class precision includes false calls from other classes; recall includes abstentions. Positive-only retrieval/ranking never manufactures negatives or precision. Geometry and numerical predictions have no invented categorical correct/wrong count. Outcome rows and metric parameters have explicit content identities.
 
 Every shipped row is reconciled in `results/record_reconciliation_2026_10_08_v3/`: **1,038,372 outcomes, 4,112 distinct cohorts**, zero standard-metric or legacy-precision mismatches. **910 cohorts** have different all-hidden/called rates; 1,852 have abstentions. **13,860 unique organism/gene addresses** are distinct from evaluation count or independent studies. Settings, seeds, modes and named sets retain separate cards. Folds are disjoint parts of a cohort rather than extra samples. Original diagnostics/code retained; notebooks verify all input/output identities and a class false-positive/abstention fixture.
 

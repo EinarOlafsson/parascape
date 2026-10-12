@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 
 import pandas as pd
-from starplast import claims as C, discovery_labels as D, organisms as O, strategies as S, track_record as T
+from parascape import claims as C, discovery_labels as D, organisms as O, strategies as S, track_record as T
 
 
 def _sha(path):
@@ -43,13 +43,13 @@ def _source_pairs(ctx,target):
 def freeze(output):
     """Audit every available label and functional term against pinned installed inputs."""
     from PyQt6 import QtWidgets
-    from starplast.discoveries_panel import DiscoveriesPanel
+    from parascape.discoveries_panel import DiscoveriesPanel
     output = Path(output)
     if output.exists():raise ValueError('Use a new immutable audit directory')
     output.mkdir(parents=True)
     inputs = [Path(O.nodes_path(o)) for o in (O.TOXOPLASMA,O.FALCIPARUM)]
-    inputs += [ROOT/'starplast/data'/name for name in ('claims.parquet','claim_recipes.parquet','track_record.parquet')]
-    code = [Path(__file__),ROOT/'starplast/discovery_labels.py',ROOT/'starplast/discoveries_panel.py']
+    inputs += [ROOT/'parascape/data'/name for name in ('claims.parquet','claim_recipes.parquet','track_record.parquet')]
+    code = [Path(__file__),ROOT/'parascape/discovery_labels.py',ROOT/'parascape/discoveries_panel.py']
     inputs += code
     hashes = {str(p):_sha(p) for p in inputs}
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])

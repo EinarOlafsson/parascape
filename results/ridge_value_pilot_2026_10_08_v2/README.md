@@ -50,4 +50,4 @@ track-record file changed. Frozen older scorecards retain their metric-code SHA.
 Other regression variants, imputation, shifts, transfer, intervals, full outer
 coverage and biological/source/unit admission remain open under 64.11.
 
-Artifact identity: `782d9e3745b28552b84f9a97022f270bfcb228e49ce37d1e2da5b1c5af08f1b8`.
+Artifact identity: `6f6e50da3ae78dcd8126d7306a423c5122cc3c343276695b60db7ce95c5e417c`.

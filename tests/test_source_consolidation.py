@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from consolidate_source_recovery import direct_filename, member_manifest, project_input
-from starplast import datasets as D, organisms as O
+from parascape import datasets as D, organisms as O
 
 
 @pytest.mark.parametrize("url", [None, "https://toxodb.org/source.tsv", "https://sub.plasmodb.org/source.csv",

@@ -20,13 +20,13 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import paths
-from starplast.app import COLOR_MODES  # noqa: E402
+from parascape import paths
+from parascape.app import COLOR_MODES  # noqa: E402
 
 DATA = paths.data_dir()
 pytestmark = pytest.mark.skipif(
     not os.path.exists(os.path.join(DATA, "graph.npz")),
-    reason="no built cache; run python -m starplast.build_graph")
+    reason="no built cache; run python -m parascape.build_graph")
 
 
 @pytest.fixture(scope="module")
@@ -34,7 +34,7 @@ def win():
     pytest.importorskip("PyQt6")
     from PyQt6 import QtWidgets
     try:
-        from starplast import app as A
+        from parascape import app as A
     except Exception as e:                                  # pragma: no cover - environment dependent
         pytest.skip(f"app import failed: {e}")
     qapp = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
@@ -57,8 +57,8 @@ def test_cache_loads_with_expected_shape(win):
 def test_depth_of_attention_is_categorical_and_grey_when_unnamed(win):
     """Never-named genes must stay grey with everything else unknown, not sit at the bottom of a ramp."""
     import numpy as np
-    from starplast.app import DEPTH_COLOR
-    from starplast import theme as TH
+    from parascape.app import DEPTH_COLOR
+    from parascape import theme as TH
     i = COLOR_MODES.index("depth of attention")
     assert i >= 0
     win.set_color_mode(COLOR_MODES[i])
@@ -87,7 +87,7 @@ def test_listed_genes_are_not_reported_as_studied(win):
 
 
 def test_both_comention_types_are_present_and_separate(win):
-    from starplast.app import COMENTION
+    from parascape.app import COMENTION
     assert "comention" in win.edges, "abstract co-mention missing"
     assert "comention_ft" in win.edges, "full-text co-mention missing"
     for k in COMENTION:
@@ -97,7 +97,7 @@ def test_both_comention_types_are_present_and_separate(win):
 
 
 def test_every_edge_type_toggles(win):
-    from starplast.app import EDGE_TYPES
+    from parascape.app import EDGE_TYPES
     win.all_edges_act.setChecked(True)
     for k, _ in EDGE_TYPES:
         if k not in win.edges:
@@ -145,7 +145,7 @@ def test_edge_alpha_encodes_weight(win):
     attention toggle -- which reorders exactly that quantity -- visually almost a no-op."""
     import numpy as np
     k = "comention_ft" if "comention_ft" in win.edges else "comention"
-    for other, _ in __import__("starplast.app", fromlist=["EDGE_TYPES"]).EDGE_TYPES:
+    for other, _ in __import__("parascape.app", fromlist=["EDGE_TYPES"]).EDGE_TYPES:
         win.set_edge(other, other == k)
     win.all_edges_act.setChecked(True)
     win.sel = None

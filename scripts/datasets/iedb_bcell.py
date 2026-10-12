@@ -8,7 +8,7 @@ Distinct antibody epitope sequences per gene
     coverage     : 34 genes, 222 distinct epitopes
     accession    : IEDB bcell_search
     url          : https://query-api.iedb.org/bcell_search?parent_source_antigen_source_org_name=ilike.*Toxoplasma*
-    local path   : starplast/data/iedb_bcell_epitopes.tsv
+    local path   : parascape/data/iedb_bcell_epitopes.tsv
 
 Quirks that cost time once:
     From IEDB directly, NOT through ToxoDB, because ToxoDB's epitope integration is not split by
@@ -24,7 +24,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/iedb_bcell.py

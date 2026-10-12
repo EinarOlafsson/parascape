@@ -24,15 +24,16 @@ def test_every_slide_has_images_transcript_and_wrapping_github_navigation():
         next_slide=1 if i==count else i+1
         assert f'({previous:02d}.md)' in page and f'({next_slide:02d}.md)' in page
         assert f'/deck/#{i}' in page
-        assert slide['source'].startswith('https://einarolafsson.github.io/starplast/')
+        assert slide['source'].startswith(('https://einarolafsson.github.io/parascape/',
+                                           'https://einarolafsson.github.io/projects/parascape/'))
 
 
 def test_pdf_and_editable_powerpoint_preserve_slide_count_and_titles():
     deck=json.loads((DECK/'slides.json').read_text())
-    pdf=PdfReader(DECK/'starplast_deck.pdf')
+    pdf=PdfReader(DECK/'parascape_deck.pdf')
     assert len(pdf.pages)==deck['count']
     assert pdf.metadata.author=='Einar Olafsson'
-    with zipfile.ZipFile(DECK/'starplast_deck.pptx') as archive:
+    with zipfile.ZipFile(DECK/'parascape_deck.pptx') as archive:
         slides=[p for p in archive.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',p)]
         assert len(slides)==deck['count']
         for i,(page,slide) in enumerate(zip(pdf.pages,deck['slides']),1):
@@ -46,8 +47,8 @@ def test_viewer_is_offline_capable_and_readme_uses_portable_links():
     viewer=(DECK/'index.html').read_text()
     assert '__SLIDES__' not in viewer
     assert 'const DECK = {' in viewer and 'fetch(' not in viewer
-    assert 'starplast_deck.pdf' in viewer and 'starplast_deck.pptx' in viewer
+    assert 'parascape_deck.pdf' in viewer and 'parascape_deck.pptx' in viewer
     assert 'ArrowRight' in viewer and 'touchend' in viewer and 'showModal' in viewer
     readme=(ROOT/'README.md').read_text()
-    assert 'https://einarolafsson.github.io/starplast/deck/' in readme
-    assert 'https://raw.githubusercontent.com/EinarOlafsson/starplast/main/docs/deck/slides/slide_01.jpg' in readme
+    assert 'https://einarolafsson.github.io/parascape/deck/' in readme
+    assert 'https://raw.githubusercontent.com/EinarOlafsson/parascape/main/docs/deck/slides/slide_01.jpg' in readme

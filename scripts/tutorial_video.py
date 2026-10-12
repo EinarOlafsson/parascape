@@ -51,8 +51,8 @@ FPS = 12
 WINDOW = (1680, 920)
 BAND = 130
 #: Where the PNG frames are staged before encoding -- a clip is a few hundred megabytes of them,
-#: which is more than a small /tmp wants. Set `STARPLAST_VIDEO_SCRATCH` to put them elsewhere.
-SCRATCH = os.environ.get("STARPLAST_VIDEO_SCRATCH") or None
+#: which is more than a small /tmp wants. Set `PARASCAPE_VIDEO_SCRATCH` to put them elsewhere.
+SCRATCH = os.environ.get("PARASCAPE_VIDEO_SCRATCH") or None
 #: Overlay colours, independent of the application's theme so the captions read on all of them.
 INK = "#e8f2f4"
 DIM = "#9fb3ba"
@@ -72,24 +72,24 @@ class Studio:
     def __init__(self):
         """Start Qt offscreen with a scratch settings and state directory, and open the window."""
         defaults = {"QT_QPA_PLATFORM": "offscreen", "PYQTGRAPH_QT_LIB": "PyQt6",
-                    "STARPLAST_GPU": "0", "LIBGL_ALWAYS_SOFTWARE": "1", "QT_OPENGL": "software",
+                    "PARASCAPE_GPU": "0", "LIBGL_ALWAYS_SOFTWARE": "1", "QT_OPENGL": "software",
                     "__GLX_VENDOR_LIBRARY_NAME": "mesa"}
         for key, value in defaults.items():
             os.environ.setdefault(key, value)
-        self.tmp = tempfile.mkdtemp(prefix="starplast-video-")
-        os.environ["STARPLAST_STATE"] = self.tmp
+        self.tmp = tempfile.mkdtemp(prefix="parascape-video-")
+        os.environ["PARASCAPE_STATE"] = self.tmp
         from PyQt6 import QtCore, QtWidgets
         QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
         for fmt in (QtCore.QSettings.Format.NativeFormat, QtCore.QSettings.Format.IniFormat):
             for scope in (QtCore.QSettings.Scope.UserScope, QtCore.QSettings.Scope.SystemScope):
                 QtCore.QSettings.setPath(fmt, scope, self.tmp)
         if QtWidgets.QApplication.instance() is None:
-            from starplast import sprite
+            from parascape import sprite
             sprite.ensure_gl_format()
             QtCore.QCoreApplication.setAttribute(
                 QtCore.Qt.ApplicationAttribute.AA_ShareOpenGLContexts)
         self.app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-        from starplast import app as A
+        from parascape import app as A
         self.window = A.Window()
         self.window.resize(*WINDOW)
         self.window.show()
@@ -151,7 +151,7 @@ class Clip:
         from PyQt6 import QtGui
         self.studio, self.slug, self.title = studio, slug, title
         self.steps, self.step = steps, 0
-        self.frames = tempfile.mkdtemp(prefix=f"starplast-frames-{slug}-", dir=SCRATCH)
+        self.frames = tempfile.mkdtemp(prefix=f"parascape-frames-{slug}-", dir=SCRATCH)
         self.n = 0
         self.poster_frame = None
         self.heading = title
@@ -400,7 +400,7 @@ class Clip:
 # --------------------------------------------------------------------------- helpers
 def choices(panel) -> list:
     """Every answer row on the guided tab's current question, in the order it draws them."""
-    from starplast.guided_panel import Choice
+    from parascape.guided_panel import Choice
     return [b for b in panel.findChildren(Choice) if b.isVisibleTo(panel)]
 
 
@@ -578,7 +578,7 @@ def clip_find_a_gene(studio: Studio) -> dict:
 
     clip.say("That is the loop",
              "Find a gene, read what is actually measured for it, and colour the field by the "
-             "property you care about. Everything else in Starplast is built on this one.", 3.4)
+             "property you care about. Everything else in ParaScape is built on this one.", 3.4)
     clip.clear_focus()
     clip.hold(1.0)
     return clip.write()
@@ -586,8 +586,8 @@ def clip_find_a_gene(studio: Studio) -> dict:
 
 def clip_start_here(studio: Studio) -> dict:
     """Clip 2: the guided tab, from what you have to a strategy running."""
-    from starplast import guided as G
-    from starplast import strategies as S
+    from parascape import guided as G
+    from parascape import strategies as S
     w = studio.window
     reset_window(studio)
     clip = Clip(studio, "2_start_here", "Start here, end to end", 10)
@@ -672,7 +672,7 @@ def clip_start_here(studio: Studio) -> dict:
 
 def clip_test_before_you_trust(studio: Studio) -> dict:
     """Clip 3: a strategy card, its four bars, and the hold-out test that judges it."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     w = studio.window
     reset_window(studio)
     clip = Clip(studio, "3_test_before_you_trust", "Test before you trust", 8)
@@ -748,7 +748,7 @@ def clip_test_before_you_trust(studio: Studio) -> dict:
 
 def clip_pick_a_map(studio: Studio) -> dict:
     """Clip 4: the gallery of pregenerated maps, sorted by how well a label maps onto each."""
-    from starplast.umap_gallery_panel import SORT_LABEL, LABEL_VIEW
+    from parascape.umap_gallery_panel import SORT_LABEL, LABEL_VIEW
     w = studio.window
     reset_window(studio)
     clip = Clip(studio, "4_pick_a_map", "Pick a map that shows your label", 8)
@@ -842,7 +842,7 @@ def _first_honest_row(clip: Clip, panel) -> int:
 
 def clip_walk_the_network(studio: Studio) -> dict:
     """Clip 5: the star map -- one gene's measured links, by source, and the walk outward."""
-    from starplast.star_map import MODE_NEIGHBOURHOOD, MODE_STAR
+    from parascape.star_map import MODE_NEIGHBOURHOOD, MODE_STAR
     w = studio.window
     reset_window(studio)
     clip = Clip(studio, "5_walk_the_network", "Walk the network from one gene", 7)
@@ -929,7 +929,7 @@ def _a_neighbour(panel) -> str:
 
 def clip_one_question(studio: Studio) -> dict:
     """Clip 6: question 13 of instruction 59, from the question to the genes it names."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     w = studio.window
     reset_window(studio)
     clip = Clip(studio, "6_one_question", "One real biological question, answered", 8)
@@ -1053,7 +1053,7 @@ DESCRIPTIONS = {
 # --------------------------------------------------------------------------- publishing
 #: The clips' markup is written into pages `build_tutorials.py` generates, so it is bracketed and
 #: replaced rather than appended: running either script twice leaves one copy, not two.
-MARK = ("<!--starplast-video-->", "<!--/starplast-video-->")
+MARK = ("<!--parascape-video-->", "<!--/parascape-video-->")
 PAGES = os.path.join(ROOT, "docs", "tutorial")
 
 

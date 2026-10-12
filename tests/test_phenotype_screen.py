@@ -22,7 +22,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import phenotype_screen as S  # noqa: E402
+from parascape import phenotype_screen as S  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCE = os.path.join(ROOT, "datasets", "DNA", "imaging_screen", "35538310", S.SOURCE)
@@ -188,11 +188,11 @@ def test_the_real_screen_has_the_shape_the_paper_reports():
     assert (per_category.any(axis=1) == d["screen_any_phenotype"]).all()
 
 
-@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
                     reason="node table not built")
 def test_the_shipped_columns_did_not_swallow_the_unscreened_genes():
     """8,140 genes, 319 of them screened. The rest must stay missing rather than reading normal."""
-    import starplast.paths as P
+    import parascape.paths as P
     nodes = pd.read_parquet(os.path.join(P.data_dir(), "nodes.parquet"),
                             columns=["gene_id", "screen_egress_phenotype", "screen_any_phenotype"])
     known = nodes["screen_egress_phenotype"].notna().sum()

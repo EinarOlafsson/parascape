@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import organisms as O, record_scorecards as R, scorecard as SC
+from parascape import organisms as O, record_scorecards as R, scorecard as SC
 
 
 def scope(key='feature_knn', task=SC.T_LABEL, unit='gene'):

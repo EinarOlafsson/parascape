@@ -202,7 +202,7 @@ def build_index(node_ids, identity_tsv: str, log=print, accession_rx=ACC_RX,
         ix._add(gid, gid, "accession")
 
     if not os.path.exists(identity_tsv):
-        log(f"identity table absent ({identity_tsv}) -- run python -m starplast.fetch_names; "
+        log(f"identity table absent ({identity_tsv}) -- run python -m parascape.fetch_names; "
             "only current accessions will resolve")
         return ix
 

@@ -3,14 +3,14 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import datasets as D, organisms as O, source_refusals as R, slots as S
-from starplast.dataset_space_inputs import from_sources
-from starplast.scorecard_view import export_scorecard
+from parascape import datasets as D, organisms as O, source_refusals as R, slots as S
+from parascape.dataset_space_inputs import from_sources
+from parascape.scorecard_view import export_scorecard
 
 
 def test_import_records_remain_separate_and_processed_cache_is_not_raw(monkeypatch):
     source = D.Dataset('example', 'Example', 'gene', 'synthetic', 'Values',
-        organism=O.TOXOPLASMA, columns=('value',), path='starplast/data/nodes.parquet')
+        organism=O.TOXOPLASMA, columns=('value',), path='parascape/data/nodes.parquet')
     monkeypatch.setattr(D, 'registry', lambda: [source])
     monkeypatch.setattr(D, 'local_path', lambda key: 'located_processed_cache')
     monkeypatch.setattr(R, 'records', lambda: [])
@@ -67,7 +67,7 @@ def test_scoped_refusals_match_the_canonical_generator_dictionary():
 
 def test_located_processed_source_remains_visible_without_an_entity_mapping(monkeypatch):
     source = D.Dataset('embedding', 'Embedding', 'protein', 'prediction', 'Encoded values',
-        organism=O.TOXOPLASMA, path='starplast/data/embedding.parquet')
+        organism=O.TOXOPLASMA, path='parascape/data/embedding.parquet')
     monkeypatch.setattr(D, 'registry', lambda: [source])
     monkeypatch.setattr(D, 'local_path', lambda key: 'located_processed_cache')
     monkeypatch.setattr(R, 'records', lambda: [])

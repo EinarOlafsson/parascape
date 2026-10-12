@@ -8,7 +8,7 @@ Percentile of antisense signal at this gene, across the life cycle
     coverage     : 8,140 genes (100%)
     accession    : ToxoDB full life-cycle transcriptome, Antisense
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByRNASeqtgonME49_tgme49_spor_ocyst_rnaseq_ebi_rnaSeq_RSRCPercentile/reports/attributesTabular
-    local path   : starplast/data/antisense_level.tsv
+    local path   : parascape/data/antisense_level.tsv
 
 Quirks that cost time once:
     The LEVEL of antisense transcription and not its change. An earlier attempt at this slot
@@ -21,7 +21,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/antisense_level.py

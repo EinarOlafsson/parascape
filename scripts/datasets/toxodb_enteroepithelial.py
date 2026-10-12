@@ -8,7 +8,7 @@ Expression in the feline enteroepithelial stages against tachyzoites
     coverage     : 7,739 genes (95%)
     accession    : ToxoDB Ramakrishnan enteroepithelial
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByRNASeqtgonME49_Ramakrishnan_enteroepithelial_stages_ebi_rnaSeq_RSRC/reports/attributesTabular
-    local path   : starplast/data/toxodb_enteroepithelial.tsv
+    local path   : parascape/data/toxodb_enteroepithelial.tsv
 
 Quirks that cost time once:
     EES1-5 averaged against tachyzoites, sense strand, no fold-change floor. The only life stage
@@ -19,7 +19,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/toxodb_enteroepithelial.py

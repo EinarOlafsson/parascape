@@ -18,11 +18,11 @@ sys.path.insert(0, str(ROOT))
 import numpy as np
 import pandas as pd
 
-from starplast import artifacts as A, functional_ontology as F, precompute_jobs as P, record_scorecards as R
-from starplast.splits import read_split
+from parascape import artifacts as A, functional_ontology as F, precompute_jobs as P, record_scorecards as R
+from parascape.splits import read_split
 
 SOURCE = ROOT / 'results/functional_ec_knn_pilot_2026_10_08_v4'
-SOURCE_ID = '349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162'
+SOURCE_ID = 'e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461'
 BUDGET = P.Budget(max_jobs=3, max_seconds=120, max_storage_bytes=4 * 1024 * 1024,
     max_package_bytes=2 * 1024 * 1024, memory_limit_bytes=400 * 1024 * 1024)
 
@@ -86,12 +86,12 @@ def prepare(output):
         raise ValueError('Use a new immutable operational replay directory')
     source_spec, split, exclusions, source_payloads, receipts = _source()
     for name in ('record_scorecards.py', 'scorecard.py', 'functional_ontology.py', 'artifacts.py', 'splits.py'):
-        if _sha(ROOT / 'starplast' / name) != _sha(SOURCE / 'code' / name):
+        if _sha(ROOT / 'parascape' / name) != _sha(SOURCE / 'code' / name):
             raise ValueError('Replay code differs from the source pilot: ' + name)
     output.mkdir(parents=True)
     code_directory = output / 'code'
     code_directory.mkdir()
-    code_paths = [Path(__file__), ROOT / 'scripts/notebook_runner.py', *(ROOT / 'starplast' / name for name in
+    code_paths = [Path(__file__), ROOT / 'scripts/notebook_runner.py', *(ROOT / 'parascape' / name for name in
         ('precompute_jobs.py', 'artifacts.py', 'splits.py', 'record_scorecards.py', 'scorecard.py',
          'functional_ontology.py', 'capabilities.py', 'strategies.py', 'query.py', 'provenance.py'))]
     snapshots = []

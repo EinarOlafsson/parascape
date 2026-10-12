@@ -106,7 +106,7 @@ def summarize(inputs, networks, output):
             archive.write(json.dumps(contracts,sort_keys=True).encode())
     root=Path(__file__).resolve().parents[1]
     hashes={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in
-            [root/'starplast'/f for f in ('prediction.py','network_prediction.py','data/nodes.parquet',
+            [root/'parascape'/f for f in ('prediction.py','network_prediction.py','data/nodes.parquet',
                                          'data/esm_features.parquet','data/af3_features.parquet','data/graph.npz')]}
     manifest={'data_and_implementation_sha256':hashes,'run_count':len(contracts),
               'evaluation':'Development cross-validation; no prospective claim',

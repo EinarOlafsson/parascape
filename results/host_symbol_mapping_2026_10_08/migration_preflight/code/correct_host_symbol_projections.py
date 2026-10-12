@@ -16,7 +16,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import organisms as O  # noqa: E402
+from parascape import organisms as O  # noqa: E402
 
 
 def _sha(path):
@@ -28,7 +28,7 @@ def migrate(review, backup, output):
     review, backup, output = Path(review), Path(backup), Path(output)
     if output.exists() or backup.exists():
         raise ValueError('Use new migration and backup directories')
-    data = ROOT/'starplast/data'
+    data = ROOT/'parascape/data'
     target = data/O.HOST_TABLES[O.HUMAN]
     cache = data/'deposit_host_k562_rhoptry_screen.tsv'
     snapshot = json.loads((review/'manifest.json').read_text())

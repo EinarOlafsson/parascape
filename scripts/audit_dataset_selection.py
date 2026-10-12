@@ -24,8 +24,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import datasets as D, organisms as O, paths, slots as S  # noqa: E402
-from starplast.dataset_selection import DatasetCandidate, SelectionPolicy, evaluate  # noqa: E402
+from parascape import datasets as D, organisms as O, paths, slots as S  # noqa: E402
+from parascape.dataset_selection import DatasetCandidate, SelectionPolicy, evaluate  # noqa: E402
 
 SERVICE = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 
@@ -52,7 +52,7 @@ class PublicationClient:
                   "status": "error", "error": "", "response": {}}
         for attempt in range(3):
             try:
-                request = urllib.request.Request(url, headers={"User-Agent": "starplast-dataset-audit/1"})
+                request = urllib.request.Request(url, headers={"User-Agent": "parascape-dataset-audit/1"})
                 with urllib.request.urlopen(request, timeout=30) as response:
                     result["response"] = json.load(response)
                 if "hitCount" not in result["response"]:
@@ -179,7 +179,7 @@ def audit(output: Path, as_of: str, discover=True) -> dict:
     output.mkdir(parents=True, exist_ok=True)
     client = PublicationClient(output)
     catalog = S.all_slots()
-    inputs = [ROOT / "starplast" / name for name in
+    inputs = [ROOT / "parascape" / name for name in
               ("datasets.py", "slots.py", "dataset_selection.py", "data/slots.json")]
     inputs += [Path(__file__), ROOT / "scripts/generate_slot_table.py"]
     tables = {code: pd.read_parquet(O.nodes_path(code)) for code in O.codes()}

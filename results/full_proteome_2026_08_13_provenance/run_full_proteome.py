@@ -9,10 +9,10 @@ which is what the subsample cost. There is no reason to quote subsample estimate
 real thing is affordable.
 """
 import json, sys, time
-sys.path.insert(0, "/mnt/firecuda2/Claude/repo/starplast")
+sys.path.insert(0, "/mnt/firecuda2/Claude/repo/parascape")
 import pandas as pd
-from starplast import paths, search
-from starplast.tuning import EmbeddingStore
+from parascape import paths, search
+from parascape.tuning import EmbeddingStore
 
 OUT = sys.argv[1]
 nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))

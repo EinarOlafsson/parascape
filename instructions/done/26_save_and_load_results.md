@@ -1,10 +1,10 @@
 # Save and load results, per tab and all at once — DONE 2026-08-12
 
-`starplast/results.py`, wired into every results table's right-click menu and into the File menu.
+`parascape/results.py`, wired into every results table's right-click menu and into the File menu.
 
 ## The format, and why it is this one
 
-    one table   a CSV whose FIRST LINE is `# starplast-table: recovery_search`
+    one table   a CSV whose FIRST LINE is `# parascape-table: recovery_search`
     every tab   a zip of those CSVs plus a manifest
 
 A zip of CSVs rather than a pickle: these are results. Someone will want to open one in a

@@ -14,8 +14,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from starplast import artifacts as A, baselines as B, capabilities as C, organisms as O, record_scorecards as R, scorecard as SC, strategies as S, strategy_catalog as N, strategy_learning as L, value_conformal_records as F  # noqa: E402
-from starplast.splits import read_split, write_split  # noqa: E402
+from parascape import artifacts as A, baselines as B, capabilities as C, organisms as O, record_scorecards as R, scorecard as SC, strategies as S, strategy_catalog as N, strategy_learning as L, value_conformal_records as F  # noqa: E402
+from parascape.splits import read_split, write_split  # noqa: E402
 from scripts.freeze_conformal_pilot import frozen_rank_matrix  # noqa: E402
 
 PRIOR = ROOT/'results/ridge_value_pilot_2026_10_08_v2'
@@ -63,7 +63,7 @@ def freeze(output):
     old_scope = json.loads(old.spec.evaluation_scope_json)
     settings = {'model':'ridge','ridge_alpha':1.,'alpha':.1,'selection':'fixed before final evaluation',
         'preprocessing':'verified prior training ranks and zero imputation','threshold':'native absolute residual quantile'}
-    code = [Path(__file__),ROOT/'scripts/freeze_conformal_pilot.py',*(ROOT/'starplast'/name for name in (
+    code = [Path(__file__),ROOT/'scripts/freeze_conformal_pilot.py',*(ROOT/'parascape'/name for name in (
         'value_conformal_records.py','strategy_learning.py','strategy_catalog.py','scorecard.py','record_scorecards.py',
         'baselines.py','splits.py','artifacts.py','capabilities.py','organisms.py'))]
     dependencies = [A.Dependency('code',p.stem,_sha(p)) for p in code]

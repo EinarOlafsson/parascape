@@ -8,7 +8,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import recover_source_files as R
-from starplast import datasets as D, organisms as O
+from parascape import datasets as D, organisms as O
 
 
 def test_relocated_file_needs_url_species_name_and_matching_receipt_hash(tmp_path):

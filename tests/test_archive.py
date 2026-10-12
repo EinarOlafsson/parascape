@@ -5,7 +5,7 @@ import os
 
 import pytest
 
-from starplast import archive as A
+from parascape import archive as A
 
 
 class _Response:

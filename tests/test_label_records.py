@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import label_records as L, organisms as O, strategies as S
-from starplast.splits import Assignment, ExclusionManifest, SplitManifest
+from parascape import label_records as L, organisms as O, strategies as S
+from parascape.splits import Assignment, ExclusionManifest, SplitManifest
 
 IDS = tuple(f'TGME49_{i:06d}' for i in range(100001, 100009))
 SPLIT = SplitManifest(O.TOXOPLASMA, 'fixture', 'entity', tuple(Assignment(e, e, role)

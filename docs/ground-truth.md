@@ -1,6 +1,6 @@
 # Ground-truth registry
 
-`starplast.ground_truth` records organism-qualified benchmark candidates and
+`parascape.ground_truth` records organism-qualified benchmark candidates and
 their validation gaps. Each entry declares the target/task, gene or protein unit,
 evidence grade and basis, source IDs, frozen values and entity-universe hashes,
 eligibility mask, context, quantity units, exclusions and negative semantics.
@@ -24,7 +24,7 @@ and never admit a biological benchmark.
 ```python
 import json
 from pathlib import Path
-from starplast.ground_truth import read_registry
+from parascape.ground_truth import read_registry
 
 entries, strategies = read_registry(
     "results/ground_truth_registry_2026_10_07_v2/registry.json"

@@ -71,7 +71,7 @@ high, the fine clustering is resolving structure and the yield score is measurin
 If it is near the null, fragmentation is inflation after all and the objective needs the per-gene
 normalisation already proposed.
 
-Run it over the searches already saved — `~/.cache/starplast/searches/bigA_*`, `bigB_*` hold the
+Run it over the searches already saved — `~/.cache/parascape/searches/bigA_*`, `bigB_*` hold the
 labels of every configuration, which is exactly what this needs and is why they are stored.
 
 ### 3. Wire it through

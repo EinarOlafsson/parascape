@@ -32,14 +32,14 @@ def app():
 
 @pytest.fixture(scope="module")
 def nodes():
-    from starplast import paths
+    from parascape import paths
     return pd.read_parquet(paths.cache_file("nodes.parquet"))
 
 
 @pytest.fixture
 def panel(app, nodes, tmp_path):
-    from starplast.analysis_panel import AnalysisPanel
-    from starplast.tuning import EmbeddingStore
+    from parascape.analysis_panel import AnalysisPanel
+    from parascape.tuning import EmbeddingStore
     p = AnalysisPanel(nodes, store=EmbeddingStore(str(tmp_path)))
     yield p
     p.deleteLater()
@@ -47,7 +47,7 @@ def panel(app, nodes, tmp_path):
 
 # --------------------------------------------------------------------------- the worker
 def test_a_job_reports_its_result(app):
-    from starplast.analysis_panel import Worker
+    from parascape.analysis_panel import Worker
     w = Worker(lambda progress=None: "the answer")
     got = []
     w.done.connect(lambda r, e: got.append((r, e)))
@@ -57,7 +57,7 @@ def test_a_job_reports_its_result(app):
 
 def test_a_job_that_raises_reports_the_error_rather_than_dying(app):
     """A failed analysis must leave the panel usable, not take the window down with it."""
-    from starplast.analysis_panel import Worker
+    from parascape.analysis_panel import Worker
 
     def boom(progress=None):
         raise ValueError("no usable columns")
@@ -71,7 +71,7 @@ def test_a_job_that_raises_reports_the_error_rather_than_dying(app):
 
 
 def test_a_job_can_report_progress(app):
-    from starplast.analysis_panel import Worker
+    from parascape.analysis_panel import Worker
     seen = []
     w = Worker(lambda progress: progress("half way"))
     w.progress.connect(seen.append)
@@ -217,7 +217,7 @@ def test_every_stage_of_the_workflow_has_a_tab(panel):
 
 def test_the_search_tab_offers_every_registered_target(panel):
     """A target in the menu that is not in the table fails only when chosen."""
-    from starplast import search as S
+    from parascape import search as S
     offered = {panel.target.itemText(i) for i in range(panel.target.count())}
     assert offered & set(S.TARGETS), f"none of the registered targets are offered: {offered}"
 
@@ -264,7 +264,7 @@ def sync(panel, monkeypatch):
 
 
 def test_the_umap_walk_fills_its_table(panel, sync, monkeypatch):
-    import starplast.tuning as T
+    import parascape.tuning as T
     monkeypatch.setattr(T, "walk_umap",
                         lambda n, spec, **k: pd.DataFrame({"n_neighbors": [15], "trust": [0.9]}))
     panel.run_umap_walk()
@@ -275,8 +275,8 @@ def test_the_umap_walk_fills_its_table(panel, sync, monkeypatch):
 def test_a_walk_row_appears_the_moment_that_configuration_finishes(panel, sync, monkeypatch):
     """The whole reason the walk emits per configuration. Filling the table at the end means a
     288-configuration sweep -- half an hour -- shows an empty table for the entire run."""
-    import starplast.tuning as T
-    from starplast.embedding import EmbeddingSpec
+    import parascape.tuning as T
+    from parascape.embedding import EmbeddingSpec
 
     def fake(n, spec, on_step=None, **k):
         for i, md in enumerate((0.1, 0.25), start=1):
@@ -301,7 +301,7 @@ def test_a_walk_row_appears_the_moment_that_configuration_finishes(panel, sync, 
 def test_a_new_walk_empties_the_table_before_it_starts(panel, sync, monkeypatch):
     """Rows from two walks in one table are a comparison between configurations that were never
     compared -- and the second walk's grid may not even have the same columns."""
-    import starplast.tuning as T
+    import parascape.tuning as T
     seen = []
     panel.walk_started.connect(lambda: seen.append(panel.walk_table.rowCount()))
     monkeypatch.setattr(T, "walk_umap",
@@ -316,9 +316,9 @@ def test_a_second_walk_is_refused_while_one_is_still_running(panel, sync, monkey
     invites a comparison between configurations that were never compared. The runner allows
     concurrent jobs on purpose, so the constraint belongs on the one job whose output accumulates
     somewhere shared."""
-    import starplast.tuning as T
-    from starplast.analysis_panel import WALK_JOB
-    from starplast.jobs import Job, RUNNING
+    import parascape.tuning as T
+    from parascape.analysis_panel import WALK_JOB
+    from parascape.jobs import Job, RUNNING
 
     class Runner:
         jobs = {1: Job(id=1, name=WALK_JOB, state=RUNNING)}
@@ -335,7 +335,7 @@ def test_a_second_walk_is_refused_while_one_is_still_running(panel, sync, monkey
 
 def test_the_walk_saves_every_configuration_through_the_store(panel, sync, monkeypatch):
     """A stopped walk should leave behind what it finished. Without the store it leaves nothing."""
-    import starplast.tuning as T
+    import parascape.tuning as T
     seen = {}
 
     def fake(n, spec, store=None, **k):
@@ -349,7 +349,7 @@ def test_the_walk_saves_every_configuration_through_the_store(panel, sync, monke
 
 def test_the_walk_is_given_the_sample_size_and_seed_from_the_panel(panel, sync, monkeypatch):
     """A walk that silently used different settings than the ones on screen would be unreproducible."""
-    import starplast.tuning as T
+    import parascape.tuning as T
     seen = {}
 
     def fake(n, spec, sample_size=None, seed=None, log=None, **kw):
@@ -365,7 +365,7 @@ def test_the_walk_is_given_the_sample_size_and_seed_from_the_panel(panel, sync, 
 
 def test_building_the_map_publishes_the_coordinates(panel, sync, monkeypatch):
     """The main window listens for this to redraw; without it the map is built and never shown."""
-    import starplast.embedding as E
+    import parascape.embedding as E
     coords = np.zeros((5, 3))
     rows = np.array([True] * 5)
     monkeypatch.setattr(E, "embed", lambda n, spec, log=None: (coords, ["a", "b"], rows))
@@ -385,7 +385,7 @@ def test_saving_before_building_says_so_rather_than_writing_nothing(panel, sync)
 
 def test_an_embedding_is_saved_with_its_full_recipe(panel, sync, monkeypatch, tmp_path):
     """A result that cannot be reopened with the settings that produced it is not reproducible."""
-    import starplast.embedding as E
+    import parascape.embedding as E
     rows = np.array([True] * len(panel.nodes))
     monkeypatch.setattr(E, "embed",
                         lambda n, spec, log=None: (np.zeros((len(n), 3)), ["a"], rows))
@@ -405,7 +405,7 @@ def test_clustering_before_building_says_so(panel, sync):
 
 
 def test_the_cluster_walk_fills_its_table(panel, sync, monkeypatch):
-    import starplast.clustering as C
+    import parascape.clustering as C
     panel.coords = np.random.default_rng(0).normal(size=(60, 3))
     monkeypatch.setattr(C, "walk_hdbscan",
                         lambda Y, log=None: pd.DataFrame({"min_cluster_size": [10]}))
@@ -418,7 +418,7 @@ def test_the_cluster_walk_fills_its_table(panel, sync, monkeypatch):
 def test_the_chosen_algorithm_is_the_one_that_runs(panel, sync, monkeypatch):
     """Two different algorithms with different failure modes; running the wrong one silently would
     make every downstream number wrong."""
-    import starplast.clustering as C
+    import parascape.clustering as C
     panel.coords = np.random.default_rng(0).normal(size=(60, 3))
     called = []
     monkeypatch.setattr(C, "walk_hdbscan",
@@ -433,7 +433,7 @@ def test_the_chosen_algorithm_is_the_one_that_runs(panel, sync, monkeypatch):
 def test_clustering_reports_the_count_and_how_much_is_unassigned(panel, sync, monkeypatch):
     """The noise fraction is half the answer: a clustering that assigns 5% of genes has not organised
     the proteome however good its silhouette is."""
-    import starplast.clustering as C
+    import parascape.clustering as C
     panel.coords = np.random.default_rng(0).normal(size=(60, 3))
     labels = np.array([0] * 30 + [1] * 20 + [-1] * 10)
     monkeypatch.setattr(C, "cluster", lambda Y, **k: labels)
@@ -451,7 +451,7 @@ def test_the_battery_before_clustering_says_so(panel, sync):
 def test_the_battery_reports_only_held_out_features(panel, sync, monkeypatch):
     """A feature the embedding used separates the clusters by construction, so showing it beside a
     discovery would put the two on the same footing."""
-    import starplast.clustering as C
+    import parascape.clustering as C
     panel.rows = np.array([True] * len(panel.nodes))
     panel.labels = np.array([0] * (len(panel.nodes) // 2)
                             + [1] * (len(panel.nodes) - len(panel.nodes) // 2))
@@ -470,7 +470,7 @@ def test_a_battery_that_found_nothing_says_so(panel, sync, monkeypatch):
     """`+` binds tighter than `or`, so the header made the whole expression truthy and this fallback
     was unreachable -- an empty result showed the explanation alone, which reads as a page that has
     not loaded rather than as an honest 'nothing here'."""
-    import starplast.clustering as C
+    import parascape.clustering as C
     panel.rows = np.array([True] * len(panel.nodes))
     panel.labels = np.zeros(len(panel.nodes), dtype=int)
     monkeypatch.setattr(C, "battery", lambda *a, **k: (pd.DataFrame(), pd.DataFrame()))
@@ -482,7 +482,7 @@ def test_a_battery_that_found_nothing_says_so(panel, sync, monkeypatch):
 def test_the_battery_is_told_what_the_embedding_used(panel, sync, monkeypatch):
     """Which is the whole basis of the evidence tiering -- get it wrong and a used feature is reported
     as a discovery."""
-    import starplast.clustering as C
+    import parascape.clustering as C
     panel.rows = np.array([True] * len(panel.nodes))
     panel.labels = np.zeros(len(panel.nodes), dtype=int)
     seen = {}
@@ -500,7 +500,7 @@ def test_the_battery_is_told_what_the_embedding_used(panel, sync, monkeypatch):
 
 
 def test_the_structure_search_fills_its_table(panel, sync, monkeypatch):
-    import starplast.search as S
+    import parascape.search as S
     monkeypatch.setattr(S, "search",
                         lambda n, **k: (pd.DataFrame({"mean_f1": [0.5]}), pd.DataFrame()))
     panel.run_search()
@@ -511,7 +511,7 @@ def test_the_structure_search_fills_its_table(panel, sync, monkeypatch):
 def test_the_search_also_fills_a_table_of_per_category_scores(panel, sync, monkeypatch):
     """A mean over categories hides the case this table exists for: a map where the GRAs are clean
     and everything else is a mess is exactly what you want when you are looking for GRAs."""
-    import starplast.search as S
+    import parascape.search as S
     R = pd.DataFrame({"mean_f1": [0.5], "best_f1": [0.8], "blocks": ["fitness_screens"]})
     P = pd.DataFrame({"label": ["dense granules", "rhoptries"], "precision": [0.9, 0.2],
                       "recall": [0.7, 0.1], "f1": [0.79, 0.13], "n_label": [193, 71],
@@ -530,8 +530,8 @@ def test_a_scored_configuration_reaches_both_tables_as_it_finishes(panel, sync):
     """The automated walk is hundreds of runs; a table that arrives at the end is a table nobody
     watches, and the question it exists to answer is asked while it is still running."""
     import numpy as np
-    from starplast.embedding import EmbeddingSpec
-    from starplast.search import RunStep
+    from parascape.embedding import EmbeddingSpec
+    from parascape.search import RunStep
     row = {"blocks": "fitness_screens", "n_neighbors": 15, "min_dist": 0.1,
            "min_cluster_size": 25, "seed": 42, "sample_size": 0, "excluded": "compartment",
            "mean_f1": 0.4, "best_f1": 0.6, "n_clusters": 7}
@@ -549,9 +549,9 @@ def test_a_per_category_row_carries_enough_to_rebuild_its_map(panel, sync, monke
     """Otherwise the score and the configuration live in different tables and the row cannot be
     clicked into anything."""
     import numpy as np
-    import starplast.search as S
-    from starplast.embedding import EmbeddingSpec
-    from starplast.search import RunStep
+    import parascape.search as S
+    from parascape.embedding import EmbeddingSpec
+    from parascape.search import RunStep
     row = {"blocks": "fitness_screens", "n_neighbors": 15, "min_dist": 0.1,
            "min_cluster_size": 25, "seed": 42, "sample_size": 0, "excluded": "compartment"}
     per = pd.DataFrame({"label": ["dense granules"], "precision": [0.9], "recall": [0.5],
@@ -582,7 +582,7 @@ def test_a_per_category_row_with_no_configuration_says_so(panel, sync):
 def test_the_search_is_given_the_chosen_target_and_a_bounded_set_of_combinations(panel, sync,
                                                                                  monkeypatch):
     """Every block combination up to the chosen size; unbounded it is 2^n runs."""
-    import starplast.search as S
+    import parascape.search as S
     seen = {}
 
     def fake(n, target=None, block_sets=None, sample_size=None, seed=None, store=None,
@@ -604,7 +604,7 @@ def test_a_spec_that_selects_nothing_is_reported_in_place(panel):
     reason where the shares would go instead of leaving a blank box."""
     for cb in panel.block_cb.values() if hasattr(panel, "block_cb") else []:
         cb.setChecked(False)
-    import starplast.analysis_panel as AP
+    import parascape.analysis_panel as AP
     orig = AP.variance_share
 
     def boom(nodes, spec):
@@ -622,7 +622,7 @@ def test_a_spec_that_selects_nothing_is_reported_in_place(panel):
 def test_the_search_offers_every_objective(panel):
     """Which objective a walk maximises is the most consequential choice in it, and it used to be
     made for the user with no way to change it."""
-    from starplast.objectives import OBJECTIVES
+    from parascape.objectives import OBJECTIVES
     assert panel.objective.count() == len(OBJECTIVES)
     names = {panel.objective.itemData(i) for i in range(panel.objective.count())}
     assert names == set(OBJECTIVES)
@@ -638,7 +638,7 @@ def test_the_objective_settings_travel_as_one_dict(panel):
                       "min_cluster", "min_label"}
     assert s["weighting"] == "macro", "size weighting buries the rare classes worth hunting"
     import inspect
-    from starplast.objectives import score as score_fn
+    from parascape.objectives import score as score_fn
     accepted = set(inspect.signature(score_fn).parameters)
     assert set(s) <= accepted | {"min_cluster", "min_label"}, "a setting score() cannot accept"
 
@@ -653,7 +653,7 @@ def test_the_focus_list_follows_the_target(panel):
 
 
 def test_absence_is_never_offered_as_a_category_to_optimise_for(panel):
-    from starplast.search import ABSENCE_LABELS
+    from parascape.search import ABSENCE_LABELS
     panel.target.setCurrentText("compartment")
     from PyQt6 import QtCore as _Qt
     got = {panel.focus.item(i).data(_Qt.Qt.ItemDataRole.UserRole)
@@ -662,7 +662,7 @@ def test_absence_is_never_offered_as_a_category_to_optimise_for(panel):
 
 
 def test_the_search_is_given_the_chosen_objective(panel, sync, monkeypatch):
-    import starplast.search as S
+    import parascape.search as S
     seen = {}
 
     def fake(nodes, **kw):
@@ -695,7 +695,7 @@ def test_a_tooltip_is_a_block_not_one_long_line(panel):
 
 def test_a_bounded_control_says_why_its_bounds_are_where_they_are(panel):
     """An unexplained limit reads as arbitrary, or worse as a limit of the method."""
-    from starplast.analysis_panel import LIMITS
+    from parascape.analysis_panel import LIMITS
     for attr in LIMITS:
         w = getattr(panel, attr, None)
         if w is None:
@@ -714,7 +714,7 @@ def test_a_bounded_control_says_why_its_bounds_are_where_they_are(panel):
 
 def test_the_range_in_the_tooltip_is_read_from_the_widget(panel):
     """Written by hand it would drift from the range actually set."""
-    from starplast.analysis_panel import range_note
+    from parascape.analysis_panel import range_note
     panel.mcs.setRange(7, 99)
     assert "7" in range_note(panel.mcs) and "99" in range_note(panel.mcs)
     panel.mcs.setRange(3, 2000)
@@ -772,7 +772,7 @@ def test_the_two_tabs_cannot_disagree_about_the_grid(panel):
 
 
 def test_the_walk_is_given_the_grid_from_the_interface(panel, sync, monkeypatch):
-    import starplast.tuning as T
+    import parascape.tuning as T
     seen = {}
 
     def fake(n, spec, **kw):
@@ -803,7 +803,7 @@ def test_clicking_a_walk_row_builds_that_configuration(panel, monkeypatch):
 def test_a_walk_row_that_counted_clusters_brings_them_with_it(panel, monkeypatch):
     """The row says "11 clusters". A map shown without them leaves the reader taking that number on
     trust, which is the one thing this application is built not to ask for."""
-    from starplast.tuning import WALK_MIN_CLUSTER_SIZE
+    from parascape.tuning import WALK_MIN_CLUSTER_SIZE
     panel._fill(panel.walk_table, pd.DataFrame({"n_neighbors": [7], "min_dist": [0.3],
                                                 "n_clusters_hdbscan": [11]}))
     built = {}
@@ -855,7 +855,7 @@ def test_any_objective_can_be_combined_with_any_set_of_labels(panel):
 def test_scoring_several_labels_aggregates_by_the_objective():
     """mean objectives average over the chosen labels; best objectives take the best among them."""
     import numpy as np
-    from starplast import objectives as O
+    from parascape import objectives as O
     t = pd.Series(["a"] * 60 + ["b"] * 60 + ["c"] * 60)
     lab = np.array([0] * 60 + [1] * 30 + [2] * 30 + [3] * 60)   # "b" split, "a" and "c" clean
     both = O.score(lab, t, objective="mean_recall", category=["a", "b"], min_cluster=1, min_label=5)
@@ -868,7 +868,7 @@ def test_scoring_several_labels_aggregates_by_the_objective():
 
 def test_asking_for_labels_none_of_which_cluster_says_which(panel):
     import numpy as np
-    from starplast import objectives as O
+    from parascape import objectives as O
     t = pd.Series(["a"] * 60 + ["b"] * 60)
     r = O.score(np.zeros(120, int), t, objective="best_f1", category=["nope", "also-nope"],
                 min_cluster=1, min_label=5)
@@ -949,7 +949,7 @@ def test_validating_a_label_the_map_was_built_from_is_refused_and_explained(pane
 
 
 def test_a_held_out_label_is_scored_and_the_refusal_note_goes_away(panel, sync, monkeypatch):
-    import starplast.validate as V
+    import parascape.validate as V
     _clustered(panel)
     panel.cat_cb.setChecked(False)
     panel.val_note.setText("stale"); panel.val_note.show()
@@ -969,7 +969,7 @@ def test_the_target_is_aligned_to_the_genes_the_clustering_covers(panel, sync, m
     """`labels` comes from an embedding that may have dropped genes, and scoring a clustering of one
     set against the labels of another compares gene i's cluster with gene j's compartment."""
     import numpy as np
-    import starplast.validate as V
+    import parascape.validate as V
     keep = np.zeros(len(panel.nodes), bool)
     keep[:500] = True
     panel.rows = keep
@@ -1000,7 +1000,7 @@ def test_a_clustering_that_cannot_be_aligned_says_so_rather_than_scoring(panel, 
 def test_asking_to_re_embed_passes_a_way_to_do_it(panel, sync, monkeypatch):
     """`refit` without a rebuild callable is an error in validate.py, deliberately -- so the tab has
     to supply one rather than tick a box that changes only the printed sentence."""
-    import starplast.validate as V
+    import parascape.validate as V
     _clustered(panel)
     panel.cat_cb.setChecked(False)
     seen = {}
@@ -1017,8 +1017,8 @@ def test_asking_to_re_embed_passes_a_way_to_do_it(panel, sync, monkeypatch):
 def test_a_re_fit_fold_rebuilds_the_map_with_a_different_seed(panel, monkeypatch):
     """Same seed every fold would re-run the identical embedding and call the repetition a spread."""
     import numpy as np
-    import starplast.embedding as E
-    import starplast.clustering as C
+    import parascape.embedding as E
+    import parascape.clustering as C
     seeds = []
     monkeypatch.setattr(E, "embed", lambda nodes, spec, log=None: (
         seeds.append(spec.random_state), (np.zeros((len(nodes), 3)), [], np.ones(len(nodes), bool)))[1])
@@ -1034,7 +1034,7 @@ def test_a_candidate_list_never_arrives_without_its_numbers(panel, sync):
     has been 6%."""
     import numpy as np
     truth = panel.nodes["compartment"]
-    from starplast import app as A
+    from parascape import app as A
     v = A.as_text(truth).to_numpy()
     target = "nucleus - chromatin"
     # Cluster 0 holds that compartment AND some unlabelled genes -- which is the whole point: the
@@ -1100,9 +1100,9 @@ def test_the_inference_tab_reports_each_category_not_only_each_feature(panel, sy
 @pytest.fixture
 def runner_panel(app, nodes, tmp_path):
     """A panel wired to the window's job runner, which is how it runs in the application."""
-    from starplast.analysis_panel import AnalysisPanel
-    from starplast.jobs import JobRunner
-    from starplast.tuning import EmbeddingStore
+    from parascape.analysis_panel import AnalysisPanel
+    from parascape.jobs import JobRunner
+    from parascape.tuning import EmbeddingStore
     r = JobRunner()
     p = AnalysisPanel(nodes, store=EmbeddingStore(str(tmp_path)), runner=r)
     yield p, r
@@ -1116,7 +1116,7 @@ def _finished(panel, runner, job, ok, on_done=None, on_error=None):
 
 
 def test_a_result_reaches_the_handler_that_asked_for_it(runner_panel):
-    from starplast.jobs import DONE, Job
+    from parascape.jobs import DONE, Job
     panel, runner = runner_panel
     got = []
     _finished(panel, runner, Job(id=1, name="j", state=DONE, result=42), True, on_done=got.append)
@@ -1126,7 +1126,7 @@ def test_a_result_reaches_the_handler_that_asked_for_it(runner_panel):
 def test_a_refusal_reaches_the_handler_as_the_exception_not_as_its_text(runner_panel):
     """Telling a deliberate refusal from a crash by parsing a formatted message is guesswork, and
     the two need completely different words on screen."""
-    from starplast.jobs import FAILED, Job
+    from parascape.jobs import FAILED, Job
     panel, runner = runner_panel
     said, seen = [], []
     panel.status.connect(said.append)
@@ -1139,7 +1139,7 @@ def test_a_refusal_reaches_the_handler_as_the_exception_not_as_its_text(runner_p
 
 def test_a_failure_the_handler_declines_is_still_reported(runner_panel):
     """A handler that only recognises its own refusals must not swallow a real crash."""
-    from starplast.jobs import FAILED, Job
+    from parascape.jobs import FAILED, Job
     panel, runner = runner_panel
     said = []
     panel.status.connect(said.append)
@@ -1149,7 +1149,7 @@ def test_a_failure_the_handler_declines_is_still_reported(runner_panel):
 
 
 def test_a_failure_with_no_handler_at_all_is_reported(runner_panel):
-    from starplast.jobs import FAILED, Job
+    from parascape.jobs import FAILED, Job
     panel, runner = runner_panel
     said = []
     panel.status.connect(said.append)
@@ -1160,7 +1160,7 @@ def test_a_failure_with_no_handler_at_all_is_reported(runner_panel):
 def test_a_stopped_job_says_stopped_rather_than_failed(runner_panel):
     """A job the user stopped, reported in red with a traceback, teaches people to distrust the
     failure list."""
-    from starplast.jobs import CANCELLED, Job
+    from parascape.jobs import CANCELLED, Job
     panel, runner = runner_panel
     said = []
     panel.status.connect(said.append)
@@ -1171,7 +1171,7 @@ def test_a_stopped_job_says_stopped_rather_than_failed(runner_panel):
 def test_a_job_nobody_is_waiting_for_is_ignored(runner_panel):
     panel, runner = runner_panel
     panel._on_job_finished(999, True)             # never submitted here
-    from starplast.jobs import DONE, Job
+    from parascape.jobs import DONE, Job
     panel._jobs[6] = (lambda r: None, None)
     panel._on_job_finished(6, True)               # handler, but the runner has no such job
 
@@ -1216,7 +1216,7 @@ def test_a_stopped_job_unwinds_at_its_next_progress_report(runner_panel, app):
     328-configuration search in seconds rather than in half an hour, and it must arrive as a stop
     rather than as a crash."""
     from PyQt6 import QtCore
-    from starplast.jobs import CANCELLED
+    from parascape.jobs import CANCELLED
     from threading import Event
     released = Event()
     panel, runner = runner_panel
@@ -1247,7 +1247,7 @@ def test_a_stopped_job_unwinds_at_its_next_progress_report(runner_panel, app):
 def test_a_control_named_in_the_tooltip_tables_but_absent_is_skipped(panel):
     """The tables are keyed by attribute name, and a control removed from a tab must not take the
     whole panel down the next time tooltips are applied."""
-    import starplast.analysis_panel as AP
+    import parascape.analysis_panel as AP
     with pytest.MonkeyPatch.context() as mp:
         mp.setitem(AP.TOOLTIPS, "no_such_control", "explains a control that is not there")
         panel._apply_tooltips()
@@ -1266,8 +1266,8 @@ def test_the_reporting_callable_records_the_note_and_says_it_out_loud(panel, cap
 
     The note is what the Jobs panel shows for a job in flight; the print is what reaches the console
     pane, which is where a walk is actually read."""
-    from starplast.analysis_panel import _Progress
-    from starplast.jobs import Job
+    from parascape.analysis_panel import _Progress
+    from parascape.jobs import Job
     said = []
     panel.status.connect(said.append)
     job = Job(id=1, name="walk")
@@ -1281,8 +1281,8 @@ def test_the_reporting_callable_is_where_a_stop_takes_effect(panel):
     """These functions report once per configuration, which makes this the one place guaranteed to
     be reached repeatedly without threading a cancellation flag through search, tuning and
     embedding. Raising here is what stops a 328-configuration search in seconds."""
-    from starplast.analysis_panel import Cancelled, _Progress
-    from starplast.jobs import Job
+    from parascape.analysis_panel import Cancelled, _Progress
+    from parascape.jobs import Job
     job = Job(id=2, name="recovery search")
     job.note = "configuration 12 of 288"
     job.cancel()
@@ -1299,7 +1299,7 @@ def test_the_validation_job_runs_against_the_real_module_not_only_a_stand_in(pan
     A clustering over the real table, two folds, one target: slow enough to be worth doing once and
     fast enough to keep."""
     import numpy as np
-    from starplast import app as A
+    from parascape import app as A
     v = A.as_text(panel.nodes["compartment"]).to_numpy()
     panel.labels = np.where(v == "nucleus - chromatin", 0, 1)
     panel.rows = np.ones(len(panel.nodes), bool)
@@ -1438,7 +1438,7 @@ def test_copying_nothing_says_to_select_a_row(panel, sync):
 def test_clicking_a_clustering_row_applies_it_to_the_map(panel, sync, monkeypatch):
     """A silhouette for a clustering nobody can see is a number about nothing."""
     import numpy as np
-    import starplast.clustering as C
+    import parascape.clustering as C
     panel.coords = np.random.default_rng(0).normal(size=(120, 3))
     panel.rows = None
     seen = {}
@@ -1474,7 +1474,7 @@ def test_a_clustering_row_that_names_no_settings_says_so(panel, sync):
 def test_clicking_a_search_row_rebuilds_that_exact_configuration(panel, sync, monkeypatch):
     """The one table where a row is a whole recipe, and the one that could not be looked at."""
     import numpy as np
-    import starplast.search as S
+    import parascape.search as S
     seen = {}
 
     def fake_rebuild(nodes, row, log=print):
@@ -1501,7 +1501,7 @@ def test_clicking_a_search_row_rebuilds_that_exact_configuration(panel, sync, mo
 
 
 def test_a_search_row_that_cannot_be_rebuilt_explains_rather_than_failing(panel, sync, monkeypatch):
-    import starplast.search as S
+    import parascape.search as S
 
     def boom(nodes, row, log=print):
         raise ValueError("every block in that row feeds a column the run excluded")
@@ -1599,8 +1599,8 @@ def test_building_a_map_can_cluster_it_in_the_same_job(panel, sync, monkeypatch)
     """One job rather than two: a map that appears for a moment without the clusters the walk row
     promised reads as the clustering having failed."""
     import numpy as np
-    import starplast.clustering as C
-    import starplast.embedding as E
+    import parascape.clustering as C
+    import parascape.embedding as E
     rows = np.zeros(len(panel.nodes), bool)
     rows[:60] = True
     coords = np.zeros((60, 3))
@@ -1617,7 +1617,7 @@ def test_building_a_map_without_clustering_leaves_the_clustering_alone(panel, sy
     """A new map invalidates the old labels, but silently publishing a stale clustering over it
     would color the new map by the old one."""
     import numpy as np
-    import starplast.embedding as E
+    import parascape.embedding as E
     rows = np.zeros(len(panel.nodes), bool)
     rows[:60] = True
     monkeypatch.setattr(E, "embed",
@@ -1648,8 +1648,8 @@ def test_a_clustering_that_matches_neither_the_map_nor_the_table_says_so(panel, 
 def annotating(panel, tmp_path):
     """A panel with somewhere to save, a validated score, and a candidate list on screen."""
     import numpy as np
-    from starplast import app as A
-    from starplast.annotations import AnnotationStore
+    from parascape import app as A
+    from parascape.annotations import AnnotationStore
     panel.store_annotations = AnnotationStore(str(tmp_path / "annotations.csv"))
     v = A.as_text(panel.nodes["compartment"]).to_numpy()
     target = "nucleus - chromatin"
@@ -1700,7 +1700,7 @@ def test_an_unvalidated_candidate_list_is_refused_and_explained(annotating, sync
 
 
 def test_saving_before_there_are_candidates_says_what_to_do(panel, sync, tmp_path):
-    from starplast.annotations import AnnotationStore
+    from parascape.annotations import AnnotationStore
     panel.store_annotations = AnnotationStore(str(tmp_path / "a.csv"))
     panel._validation_scores = None
     panel.save_candidates()
@@ -1726,7 +1726,7 @@ def test_a_search_that_scored_nothing_says_so_rather_than_showing_an_empty_table
                                                                                  monkeypatch):
     """An empty table reads as "still running". Every configuration failing to produce a scorable
     clustering is a result about the grid, and it has to be said out loud."""
-    import starplast.search as S
+    import parascape.search as S
     monkeypatch.setattr(S, "search", lambda n, **k: (pd.DataFrame(), pd.DataFrame()))
     panel.run_search()
     assert any("nothing was scorable" in m for m in sync)
@@ -1738,7 +1738,7 @@ def test_a_saved_table_can_be_loaded_back_and_is_still_clickable(panel, sync, tm
     """The point of the whole format. A loader that produced a table you could only read would be a
     screenshot with extra steps."""
     import numpy as np
-    import starplast.search as S
+    import parascape.search as S
     rows = pd.DataFrame({"blocks": ["fitness_screens"], "na_policy": ["median"],
                          "scaling": ["rank"], "n_neighbors": [15], "min_dist": [0.1],
                          "min_cluster_size": [25], "seed": [42], "sample_size": [0],
@@ -1797,7 +1797,7 @@ def test_every_tab_can_be_saved_and_loaded_in_one_file(panel, sync, tmp_path):
     panel._fill(panel.walk_table, pd.DataFrame({"n_neighbors": [15], "trustworthiness": [0.9]}))
     panel._fill(panel.search_table, pd.DataFrame({"blocks": ["fitness_screens"], "mean_f1": [0.3]}))
     panel._fill(panel.val_table, pd.DataFrame({"category": ["nucleus"], "precision": [0.4]}))
-    path = panel.save_all_results(str(tmp_path / "all.starplast"))
+    path = panel.save_all_results(str(tmp_path / "all.parascape"))
     assert path and any("wrote 3 table(s)" in m for m in sync)
     for table in (panel.walk_table, panel.search_table, panel.val_table):
         panel._start_table(table, [])
@@ -1808,8 +1808,8 @@ def test_every_tab_can_be_saved_and_loaded_in_one_file(panel, sync, tmp_path):
 
 def test_a_bundle_from_a_later_version_names_what_this_one_cannot_show(panel, sync, tmp_path):
     """"3 of 5 loaded" with no names is not something anyone can act on."""
-    from starplast.results import save_bundle
-    path = save_bundle(str(tmp_path / "future.starplast"),
+    from parascape.results import save_bundle
+    path = save_bundle(str(tmp_path / "future.parascape"),
                        {"umap_walk": pd.DataFrame({"n_neighbors": [15]}),
                         "some_new_tab": pd.DataFrame({"x": [1]})})
     assert panel.load_all_results(path) == 1
@@ -1819,12 +1819,12 @@ def test_a_bundle_from_a_later_version_names_what_this_one_cannot_show(panel, sy
 def test_saving_everything_with_nothing_computed_says_so(panel, sync, tmp_path):
     for table in panel.results_tables().values():
         panel._start_table(table, [])
-    assert panel.save_all_results(str(tmp_path / "none.starplast")) == ""
+    assert panel.save_all_results(str(tmp_path / "none.parascape")) == ""
     assert any("no results to save" in m for m in sync)
 
 
 def test_loading_a_bundle_that_will_not_open_says_so(panel, sync, tmp_path):
-    path = tmp_path / "not.starplast"
+    path = tmp_path / "not.parascape"
     path.write_bytes(b"definitely not a zip")
     assert panel.load_all_results(str(path)) == 0
     assert any("could not read" in m for m in sync)
@@ -1857,7 +1857,7 @@ def test_saving_with_no_path_asks_where_and_writes_there(panel, sync, tmp_path, 
                         staticmethod(lambda *a, **k: (str(target), "")))
     panel._fill(panel.search_table, _rows())
     assert panel.save_results(panel.search_table) == str(target)
-    assert target.exists() and target.read_text().startswith("# starplast-table:")
+    assert target.exists() and target.read_text().startswith("# parascape-table:")
 
 
 def test_cancelling_the_save_dialog_writes_nothing(panel, sync, tmp_path, monkeypatch):
@@ -1895,7 +1895,7 @@ def test_cancelling_the_load_dialog_leaves_the_table_alone(panel, monkeypatch):
 
 def test_saving_everything_with_no_path_asks_where(panel, tmp_path, monkeypatch):
     from PyQt6 import QtWidgets
-    target = tmp_path / "all.starplast"
+    target = tmp_path / "all.parascape"
     monkeypatch.setattr(QtWidgets.QFileDialog, "getSaveFileName",
                         staticmethod(lambda *a, **k: (str(target), "")))
     panel._fill(panel.search_table, _rows())
@@ -1914,7 +1914,7 @@ def test_cancelling_the_bundle_save_writes_nothing(panel, tmp_path, monkeypatch)
 
 def test_loading_a_bundle_with_no_path_asks_which_file(panel, tmp_path, monkeypatch):
     from PyQt6 import QtWidgets
-    path = tmp_path / "all.starplast"
+    path = tmp_path / "all.parascape"
     panel._fill(panel.search_table, _rows())
     panel.save_all_results(str(path))
     panel._start_table(panel.search_table, [])
@@ -1989,8 +1989,8 @@ def test_stopping_with_nothing_running_says_so(panel, sync):
 def test_rows_reach_the_disk_as_they_arrive(panel, tmp_path, monkeypatch):
     """In memory survives a stop; it does not survive quitting, a crash or a power cut, and an hour
     of search is too much to hold in a process nobody promised to keep alive."""
-    from starplast import paths
-    from starplast.results import load_table, table_kind
+    from parascape import paths
+    from parascape.results import load_table, table_kind
     monkeypatch.setenv(paths.ENV_STATE, str(tmp_path))
     panel._start_table(panel.walk_table, [])
     panel._append(panel.walk_table, {"n_neighbors": 5, "min_dist": 0.0, "trustworthiness": 0.9})
@@ -2005,7 +2005,7 @@ def test_rows_reach_the_disk_as_they_arrive(panel, tmp_path, monkeypatch):
 def test_an_autosave_that_cannot_be_written_costs_the_file_and_not_the_run(panel, tmp_path,
                                                                           monkeypatch):
     """A read-only disk must not take the analysis down with it: the rows are still in the table."""
-    from starplast import paths, results
+    from parascape import paths, results
     monkeypatch.setenv(paths.ENV_STATE, str(tmp_path))
 
     def refuse(self, row):
@@ -2021,7 +2021,7 @@ def test_an_autosave_that_cannot_be_written_costs_the_file_and_not_the_run(panel
 def test_the_progress_handle_reports_a_stop_without_raising(panel):
     """The raising form lands at the next log line, and the search logs every fortieth run. This is
     the form the sweeps check per configuration."""
-    from starplast.analysis_panel import _Progress
+    from parascape.analysis_panel import _Progress
 
     class FakeJob:
         cancelled, name, note = False, "search", ""
@@ -2066,7 +2066,7 @@ def test_a_stopped_job_whose_result_will_not_load_is_reported_not_raised(panel, 
 
 
 def test_a_finished_run_says_where_its_rows_were_saved(panel, sync, tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_STATE, str(tmp_path))
     panel._start_table(panel.walk_table, [])
     panel._append(panel.walk_table, {"n_neighbors": 5, "trustworthiness": 0.9})
@@ -2083,7 +2083,7 @@ def test_a_finished_run_says_where_its_rows_were_saved(panel, sync, tmp_path, mo
 
 # --------------------------------------------------------------------------- the discovery tab
 def test_the_discovery_tab_offers_every_mode_and_a_layer_to_ask_about(panel):
-    from starplast import optimize
+    from parascape import optimize
     assert [panel.discover_mode.itemText(i)
             for i in range(panel.discover_mode.count())] == list(optimize.MODES)
     assert panel.discover_layer.currentText() in panel.nodes.columns
@@ -2149,7 +2149,7 @@ def test_the_climb_runs_with_the_settings_on_screen(panel, sync, monkeypatch):
     """The whole path: the tab's controls become an evaluator and a climb, and every configuration
     it streams reaches the table while it is still running."""
     import numpy as np
-    import starplast.optimize as O
+    import parascape.optimize as O
     seen = {}
 
     def fake_climb(evaluate, start, **kw):
@@ -2189,7 +2189,7 @@ def test_a_discovery_row_rebuilds_the_map_it_scored(panel, sync, monkeypatch):
     """Through the same `search.rebuild` the recovery table uses: one implementation, so the two
     tables cannot come to disagree about what a row means."""
     import numpy as np
-    import starplast.search as S
+    import parascape.search as S
     asked = {}
 
     def fake_rebuild(nodes, row, log=print):
@@ -2268,7 +2268,7 @@ def test_a_search_that_cannot_be_written_is_still_a_search(panel, monkeypatch):
     """Losing a finished run because the disk is full would be a worse failure than the one being
     reported."""
     import numpy as np
-    import starplast.searches as SS
+    import parascape.searches as SS
     said = []
     panel.status.connect(said.append)
 
@@ -2288,7 +2288,7 @@ def test_the_feature_blocks_are_not_96_separate_check_boxes(panel):
     """The report that started this: separate check-box WIDGETS cannot be dragged across, so choosing
     blocks meant 96 individual clicks. They became one list, and then -- at that length -- a category
     tree, because what a reader wants to say is "all the transcription evidence"."""
-    from starplast.theme import CheckTree
+    from parascape.theme import CheckTree
     assert isinstance(panel.blocks, CheckTree)
     assert not hasattr(panel, "block_cb"), "the old per-block check boxes are still being built"
 
@@ -2297,7 +2297,7 @@ def test_a_block_this_cache_cannot_fill_is_greyed_rather_than_hidden(panel):
     """A block with no columns is a fact about the cache. Hiding it would read as the block not
     existing at all, which is a different claim."""
     from PyQt6 import QtCore
-    from starplast.embedding import EmbeddingSpec, columns_for
+    from parascape.embedding import EmbeddingSpec, columns_for
     for item in panel.blocks.leaves():
         name = item.data(0, QtCore.Qt.ItemDataRole.UserRole)
         has = bool(columns_for(panel.nodes, EmbeddingSpec(blocks=(name,))).get(name, []))
@@ -2321,8 +2321,8 @@ def test_block_states_reports_every_block_not_only_the_ticked_ones(panel):
 def test_the_blocks_are_a_category_tree_not_a_flat_list(panel):
     """96 rows is past the length where a list is a set of choices. What a reader wants to say is
     "all the transcription evidence" -- a statement about a LEVEL of the slot hierarchy."""
-    from starplast.embedding import SLOT_BLOCKS
-    from starplast.theme import CheckTree
+    from parascape.embedding import SLOT_BLOCKS
+    from parascape.theme import CheckTree
     assert isinstance(panel.blocks, CheckTree)
     assert len(panel.blocks.leaves()) == len(SLOT_BLOCKS)
     assert len(SLOT_BLOCKS) >= 96
@@ -2333,7 +2333,7 @@ def test_the_tree_carries_only_feature_blocks(panel):
     """The hierarchy addresses all 119 Toxoplasma slots. A target label or a bookkeeping slot is not
     something a map can be built on, and showing it greyed would read as "measured but unavailable"."""
     from PyQt6 import QtCore
-    from starplast.embedding import SLOT_BLOCKS
+    from parascape.embedding import SLOT_BLOCKS
     names = {i.data(0, QtCore.Qt.ItemDataRole.UserRole) for i in panel.blocks.leaves()}
     assert names == set(SLOT_BLOCKS)
 

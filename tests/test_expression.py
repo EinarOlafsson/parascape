@@ -26,7 +26,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import expression as EX  # noqa: E402
+from parascape import expression as EX  # noqa: E402
 
 
 # --------------------------------------------------------------------------- helpers
@@ -468,7 +468,7 @@ def test_every_loader_returns_nothing_when_its_file_is_absent(tmp_path):
     frame is what lets `load_all` compose the rest -- and the slot it would have filled then reads
     as empty, which is true.
     """
-    import starplast.expression as E
+    import parascape.expression as E
     base = str(tmp_path)
     os.makedirs(os.path.join(base, "datasets"), exist_ok=True)
     loaders = [E.gse22258_stage, E.neuronal_differentiation,
@@ -484,7 +484,7 @@ def test_a_series_matrix_with_a_header_and_no_table_yields_no_rows(tmp_path):
     then ends -- a truncated download, or a series with no matrix published -- must give back the
     titles it did read and no data, rather than raising out of the csv parser."""
     import gzip
-    import starplast.expression as E
+    import parascape.expression as E
     path = str(tmp_path / "truncated_series_matrix.txt.gz")
     with gzip.open(path, "wt") as fh:
         fh.write('!Sample_title\t"tachyzoite"\t"bradyzoite"\n')
@@ -504,7 +504,7 @@ def test_a_source_that_is_present_but_unusable_yields_nothing_rather_than_half_a
     the slot reads as empty, which is true, rather than as filled with a column of NaN.
     """
     import gzip
-    import starplast.expression as E
+    import parascape.expression as E
     base = str(tmp_path)
     # The dated acquisition batch, named by `_acquired` -- not a directory called "acquired".
     acq = os.path.dirname(E._acquired(base, "x"))
@@ -536,7 +536,7 @@ def test_an_archive_with_no_count_tables_in_it_yields_nothing(tmp_path):
     supplementary tar of something else entirely -- must produce no columns rather than an empty
     concat."""
     import tarfile
-    import starplast.expression as E
+    import parascape.expression as E
     base = str(tmp_path)
     where = E._acquired(base, "GSE129869_RAW.tar")
     os.makedirs(os.path.dirname(where), exist_ok=True)
@@ -551,7 +551,7 @@ def test_the_platform_map_skips_everything_before_its_table(tmp_path):
     """A GEO platform file opens with metadata lines before the probe table begins. They are not
     rows, and treating them as rows would map a probe id onto a licence string."""
     import gzip
-    import starplast.expression as E
+    import parascape.expression as E
     path = str(tmp_path / "GPL7186_family.soft.gz")
     with gzip.open(path, "wt") as fh:
         fh.write("^PLATFORM = GPL7186\n")
@@ -573,7 +573,7 @@ def test_a_directory_inside_the_archive_is_not_read_as_a_count_table(tmp_path):
     submitter can carry a directory whose name matches the pattern. Reading None would raise from
     inside gzip rather than skipping the entry."""
     import tarfile
-    import starplast.expression as E
+    import parascape.expression as E
     base = str(tmp_path)
     where = E._acquired(base, "GSE129869_RAW.tar")
     os.makedirs(os.path.dirname(where), exist_ok=True)
@@ -589,7 +589,7 @@ def test_a_workbook_sheet_without_fold_changes_is_skipped_and_an_empty_one_yield
     workbooks: a legend, a methods sheet, a sheet of counts with no comparison in it. A sheet with
     no log2FoldChange is not a time point and must be skipped rather than half-read -- and a
     workbook made entirely of those yields nothing rather than an empty concat."""
-    import starplast.expression as E
+    import parascape.expression as E
     base = str(tmp_path)
     os.makedirs(os.path.join(base, "datasets"), exist_ok=True)
     path = os.path.join(base, "datasets",

@@ -66,7 +66,7 @@ def from_sources(source_inputs, *, imports=(), imported_organism=None):
 
     # A processed application cache is not a located raw assay file.
     raw_paths = {d.key: datasets.local_path(d.key) for d in datasets.registry()
-                 if d.path and not d.path.startswith('starplast/data/')}
+                 if d.path and not d.path.startswith('parascape/data/')}
     report = inventory.build_inventory(tables=tables, graphs=graphs, bridges=bridges,
         sources=registry, raw_paths=raw_paths, refusals=source_refusals.records())
     return DatasetSpace(report, tables=tables, graphs=graphs, bridges=bridges,

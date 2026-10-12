@@ -1,25 +1,25 @@
-# Starplast
+# ParaScape
 
-[![Starplast: a 40-slide introduction and practical guide](deck/slides/slide_01.jpg)](deck/)
+[![ParaScape: a 40-slide introduction and practical guide](deck/slides/slide_01.jpg)](deck/)
 
-[Open the slide viewer](deck/) · [Download PDF](deck/starplast_deck.pdf) ·
-[Editable PowerPoint](deck/starplast_deck.pptx) · [Slide transcript](deck/transcript.md)
+[Open the slide viewer](deck/) · [Download PDF](deck/parascape_deck.pdf) ·
+[Editable PowerPoint](deck/parascape_deck.pptx) · [Slide transcript](deck/transcript.md)
 
 [Explore a gene, predict a trait or compare a screen](workflows.md) using the
 guided workflows in the Tools menu.
 
 Explore gene evidence and screen results in *Toxoplasma gondii* and
-*Plasmodium falciparum*. Starplast combines gene maps with expression, fitness,
+*Plasmodium falciparum*. ParaScape combines gene maps with expression, fitness,
 localization, interaction, and literature evidence.
 
 ```bash
-pip install starplast
-starplast
+pip install parascape
+parascape
 ```
 
 - [User guide](guide.md): import results, explore genes, and understand settings.
 - [Python API](API.md): work with tables, embeddings, and analyses in scripts.
-- [Module reference](api/starplast.html): generated signatures and docstrings.
+- [Module reference](api/parascape.html): generated signatures and docstrings.
 - [Tutorials](tutorial/index.html): five task walkthroughs, each as a GUI tour and a notebook, plus one long guide to every feature.
 - [Dataset catalogue](datasets.md): source records, assay types, and coverage.
 - [Space packs](space-packs.md): validate and install versioned organism data outside the wheel.

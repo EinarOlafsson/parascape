@@ -89,7 +89,7 @@ OPTIONS = [
      '<path d="M78 12C43 8 12 36 13 65C14 90 38 99 62 83 M78 12C65 24 54 30 48 44C37 65 40 82 62 83"/>'
      + cloud(27, 51, .65) + cloud(44, 82, .6) + cloud(74, 58, .75, 30)
      + network([(69, 17), (26, 49), (44, 82), (74, 58)], [(0, 1), (1, 2), (1, 3), (2, 3)])),
-    ("starplast", "Starplast", "One selected gene ties the crescent to its clustered neighbours.",
+    ("parascape", "ParaScape", "One selected gene ties the crescent to its clustered neighbours.",
      CRESCENT + '<path d="M65 15L70 22"/>'
      + cloud(29, 55, .7, 45) + cloud(44, 82, .55) + cloud(81, 40, .7) + cloud(79, 76, .65)
      + network([(29, 55), (57, 53), (81, 40), (79, 76), (44, 82)], [(0, 1), (1, 2), (1, 3), (1, 4)])
@@ -140,22 +140,22 @@ def main() -> None:
     # Replace the previous generated proposals; keep exactly ten current options.
     for previous in OUT.glob("[0-9][0-9]-*.svg"):
         previous.unlink()
-    word = outline("starplast", 61)
+    word = outline("parascape", 61)
     sheet = ['<rect width="1440" height="1560" fill="white"/>',
-             '<g color="black" transform="translate(70 82)">' + outline("starplast / ten directions", 34) + '</g>',
+             '<g color="black" transform="translate(70 82)">' + outline("parascape / ten directions", 34) + '</g>',
              '<g color="black" transform="translate(70 121)">' + outline("Apicomplexan silhouettes. UMAP clusters. Gene networks.", 18) + '</g>']
     cards = []
     for number, (slug, name, description, geometry) in enumerate(OPTIONS, 1):
         stem = f"{number:02}-{slug}"
         composition = '<g transform="translate(12 10) scale(1.4)">' + mark(geometry) + '</g><g transform="translate(174 100)">' + word + '</g>'
-        (OUT / f"{stem}.svg").write_text(svg('<g color="black">' + composition + '</g>', 480, 160, f"Starplast — {name}"))
+        (OUT / f"{stem}.svg").write_text(svg('<g color="black">' + composition + '</g>', 480, 160, f"ParaScape — {name}"))
         inverse = composition.replace('fill="white"', 'fill="black"')
-        (OUT / f"{stem}-white.svg").write_text(svg('<g color="white">' + inverse + '</g>', 480, 160, f"Starplast — {name}, white"))
-        (OUT / f"{stem}-icon.svg").write_text(svg('<g color="black">' + mark(geometry) + '</g>', 100, 100, f"Starplast — {name} icon"))
+        (OUT / f"{stem}-white.svg").write_text(svg('<g color="white">' + inverse + '</g>', 480, 160, f"ParaScape — {name}, white"))
+        (OUT / f"{stem}-icon.svg").write_text(svg('<g color="black">' + mark(geometry) + '</g>', 100, 100, f"ParaScape — {name} icon"))
         x, y = 70 + ((number - 1) % 2) * 700, 193 + ((number - 1) // 2) * 266
         sheet.append(f'<g color="black" transform="translate({x} {y})">' + outline(f"{number:02} / {name}", 17) + f'<g transform="translate(12 24)">{composition}</g><g transform="translate(0 197)">' + outline(description, 14) + '</g></g>')
-        cards.append(f'<article><h2>{number:02} / {name}</h2><div class="preview"><img class="dark-ink" src="{stem}.svg" alt="Starplast {name} proposal"><img class="light-ink" src="{stem}-white.svg" alt="Starplast {name} in white"></div><p>{description}</p><nav><a href="{stem}.svg" download>Black SVG</a><a href="{stem}-white.svg" download>White SVG</a><a href="{stem}-icon.svg" download>Icon</a></nav></article>')
-    sheet_svg = svg(''.join(sheet), 1440, 1560, "Ten monochrome Starplast logo proposals")
+        cards.append(f'<article><h2>{number:02} / {name}</h2><div class="preview"><img class="dark-ink" src="{stem}.svg" alt="ParaScape {name} proposal"><img class="light-ink" src="{stem}-white.svg" alt="ParaScape {name} in white"></div><p>{description}</p><nav><a href="{stem}.svg" download>Black SVG</a><a href="{stem}-white.svg" download>White SVG</a><a href="{stem}-icon.svg" download>Icon</a></nav></article>')
+    sheet_svg = svg(''.join(sheet), 1440, 1560, "Ten monochrome ParaScape logo proposals")
     (OUT / "comparison.svg").write_text(sheet_svg)
     image = QtGui.QImage(1440, 1560, QtGui.QImage.Format.Format_ARGB32)
     image.fill(QtCore.Qt.GlobalColor.white)
@@ -163,11 +163,11 @@ def main() -> None:
     QtSvg.QSvgRenderer(sheet_svg.encode()).render(painter)
     painter.end()
     image.save(str(OUT / "comparison.png"))
-    page = '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Starplast — logo options</title><style>
+    page = '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ParaScape — logo options</title><style>
     *{box-sizing:border-box}body{margin:0;background:white;color:black;font:16px/1.6 system-ui,sans-serif}main{max-width:1200px;margin:auto;padding:56px 32px}h1{font-size:36px;font-weight:300;margin:0}header p{max-width:680px}a{color:inherit;text-underline-offset:4px}header a{margin-right:24px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}article{border-top:1px solid;padding-top:16px}h2{font-weight:400;font-size:15px;margin:0}.preview{padding:25px 0}.preview img{width:100%;height:auto}.light-ink{display:none}nav{display:flex;gap:24px;font-size:14px}article p{font-size:14px}.refinement{margin-top:36px;padding:24px 0;border-block:1px solid}.refinement img{width:100%;max-height:370px}.refinement h2{font-size:23px}.refinement a{display:inline-block;margin-right:24px}label{display:block;margin-top:24px;cursor:pointer}body:has(#inverse:checked){background:black;color:white}body:has(#inverse:checked) .dark-ink{display:none}body:has(#inverse:checked) .light-ink{display:block}@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:32px 20px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-    </style><main><header><h1>starplast / ten directions</h1><p>Each mark combines an apicomplexan crescent, an irregular UMAP-like point cloud, and a sparse gene network. Black and white, with thin lines. These are schematic symbols, not scientific plots.</p><a href="starplast-logo-options.zip" download>Download all SVGs</a><a href="comparison.png">Comparison sheet</a><label><input id="inverse" type="checkbox"> Preview white on black</label></header><section class="refinement"><h2>Latest refinement / Toxoplasma constellation</h2><a href="../toxoplasma-constellation/index.html"><img class="dark-ink" src="../toxoplasma-constellation/wordmark.svg" alt="Toxoplasma with softened ends enclosing seven connected stars"><img class="light-ink" src="../toxoplasma-constellation/wordmark-white.svg" alt="White Toxoplasma constellation wordmark"></a><p>A more anatomical silhouette with a softly tapered apex, a rounded rear, and an obvious constellation inside.</p><a href="../toxoplasma-constellation/index.html">View the refinement</a><a href="../toxoplasma-constellation/starplast-constellation.zip" download>Download SVGs</a></section><section class="grid">'''
+    </style><main><header><h1>parascape / ten directions</h1><p>Each mark combines an apicomplexan crescent, an irregular UMAP-like point cloud, and a sparse gene network. Black and white, with thin lines. These are schematic symbols, not scientific plots.</p><a href="parascape-logo-options.zip" download>Download all SVGs</a><a href="comparison.png">Comparison sheet</a><label><input id="inverse" type="checkbox"> Preview white on black</label></header><section class="refinement"><h2>Latest refinement / Toxoplasma constellation</h2><a href="../toxoplasma-constellation/index.html"><img class="dark-ink" src="../toxoplasma-constellation/wordmark.svg" alt="Toxoplasma with softened ends enclosing seven connected stars"><img class="light-ink" src="../toxoplasma-constellation/wordmark-white.svg" alt="White Toxoplasma constellation wordmark"></a><p>A more anatomical silhouette with a softly tapered apex, a rounded rear, and an obvious constellation inside.</p><a href="../toxoplasma-constellation/index.html">View the refinement</a><a href="../toxoplasma-constellation/parascape-constellation.zip" download>Download SVGs</a></section><section class="grid">'''
     (OUT / "index.html").write_text(page + ''.join(cards) + '</section></main></html>\n')
-    with zipfile.ZipFile(OUT / "starplast-logo-options.zip", "w", zipfile.ZIP_DEFLATED) as archive:
+    with zipfile.ZipFile(OUT / "parascape-logo-options.zip", "w", zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(OUT.glob("*.svg")):
             archive.write(path, path.name)
     print(f"Wrote 10 proposals to {OUT}")

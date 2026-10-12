@@ -14,7 +14,7 @@ reviewed human source foundation and unresolved mapping/context/pack gates, with
 no host performance claim. Task-aware supplemental set metric definitions preserve
 the existing numeric output schemas and recorded snapshots.
 
-`starplast.record_scorecards.aggregate(rows, scope, parameters=...)` is the common
+`parascape.record_scorecards.aggregate(rows, scope, parameters=...)` is the common
 metric path for label calls, numeric estimates, rankings, retrieval, map/module
 recovery and replication. `RecordScope` keeps organism, strategy, target,
 settings, seed, protocol, partition, benchmark, truth grade, biological unit and
@@ -33,7 +33,7 @@ other classes, while class recall includes abstentions and wrong calls. A
 single gene's recorded outcome is available, but it is not a statistically
 estimated probability that the gene's deployment prediction is correct.
 
-Metrics use `starplast.scorecard` for the exact supplied cohort. Unavailable
+Metrics use `parascape.scorecard` for the exact supplied cohort. Unavailable
 metrics become null with explicit status; score-free label records cannot
 supply AUROC/AUPRC. Positive-only ranking/retrieval can report known-positive
 recovery; unknown members cannot become false negatives or verified absence,
@@ -96,7 +96,7 @@ Each card also pins its full outcome rows and evaluation parameters. Class-score
 
 ## First frozen categorical adapter
 
-`starplast.label_records.feature_knn` takes an ordered feature population,
+`parascape.label_records.feature_knn` takes an ordered feature population,
 the complete training-label cohort, a frozen split and training-derived source
 exclusions. It calls the existing native distance-weighted vote and retains
 every outer-test row and class-score value, including scores for abstained calls.
@@ -125,7 +125,7 @@ change invalidates the card identity even if rounded display metrics coincide.
 
 ## Frozen ortholog transfer
 
-`starplast.transfer_records.ortholog_transfer` records the native categorical
+`parascape.transfer_records.ortholog_transfer` records the native categorical
 transfer path. `TransferSource` pins donor species/column/table, the projection
 identity, evidence grade and semantic/dependence review. Donor values already
 projected through orthogroups are supplied in frozen receiver order. Only
@@ -149,7 +149,7 @@ must use the matching typed output in benchmark artifacts.
 
 ## Frozen conformal label sets
 
-`starplast.conformal_records.conformal_calls` requires a verified, complete
+`parascape.conformal_records.conformal_calls` requires a verified, complete
 train-only native kNN/logistic fitted-model artifact, separate calibration/test
 score tables and calibration labels. It keeps native quantiles and rare-class
 overall fallback. Empty/multi-label sets abstain from singleton calling. Set
@@ -193,7 +193,7 @@ fit/source lineage in its artifact; row arithmetic alone cannot establish that.
 
 ## First frozen numeric adapter
 
-`starplast.value_records.trait_ridge` fits the native ridge estimator on training
+`parascape.value_records.trait_ridge` fits the native ridge estimator on training
 values alone, with train-fitted ranks and zero imputation. It retains every test
 row, explicit abstention and serialized fitting provenance. Held-out features
 cannot change the fitted state. The caller freezes training source/own-kind

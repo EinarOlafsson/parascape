@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import forest_records as F, strategies as S
-from starplast.splits import Assignment, ExclusionManifest, SplitManifest
+from parascape import forest_records as F, strategies as S
+from parascape.splits import Assignment, ExclusionManifest, SplitManifest
 
 
 def fixture():

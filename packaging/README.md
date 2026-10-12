@@ -6,8 +6,8 @@ One launcher, three installers, following spaCR's arrangement so a runtime fix l
     bash packaging/build_macos.sh       # .app + .dmg (macOS)
     powershell -File packaging\build_windows.ps1   # .exe (Windows)
 
-All three run `pyinstaller packaging/starplast.spec`, which bundles `starplast/data/`, the built cache and application assets.
-That is what makes an installed starplast work with no network, no dataset and no build step.
+All three run `pyinstaller packaging/parascape.spec`, which bundles `parascape/data/`, the built cache and application assets.
+That is what makes an installed parascape work with no network, no dataset and no build step.
 
 **Gotchas, learned the hard way in spaCR:**
 

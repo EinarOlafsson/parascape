@@ -1,4 +1,4 @@
-# 60 · What would make Starplast most useful (review at 0.49.0)
+# 60 · What would make ParaScape most useful (review at 0.49.0)
 
 **Status: open (reviewed 2026-09-30).** A read-only review of the whole program against the way a
 working biologist uses it, asked for by the user: "think about how to make this tool as useful as

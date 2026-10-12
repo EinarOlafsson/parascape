@@ -2,7 +2,7 @@
 
 This module presents one supplied evaluation; it never aggregates cohorts,
 admits biological truth, estimates uncertainty or converts method support into
-confidence. Metric definitions come from :mod:`starplast.scorecard`.
+confidence. Metric definitions come from :mod:`parascape.scorecard`.
 """
 from __future__ import annotations
 

@@ -82,7 +82,7 @@
     "explicit_negative_records":null,
     "raw_available":true,
     "access_status":"not_checked",
-    "url":"https:\/\/github.com\/EinarOlafsson\/starplast\/blob\/main\/docs\/structures.md",
+    "url":"https:\/\/github.com\/EinarOlafsson\/parascape\/blob\/main\/docs\/structures.md",
     "note":"Computed predictions, not experimental measurements. Fragments retain residue ranges; confidence summaries combine overlapping fragments per residue. Geometry only from complete models. Coordinates remain on the local shared drive; see source manifest.",
     "rejection_reason":"",
     "question":""
@@ -1365,7 +1365,7 @@
     "raw_available":false,
     "access_status":"not_checked",
     "url":"https:\/\/static-content.springer.com\/esm\/art%3A10.1038%2Fs41564-024-01754-2\/MediaObjects\/41564_2024_1754_MOESM3_ESM.zip",
-    "note":"CITATION CORRECTED 2026-09-26. The four original tissues were fetched from ToxoDB's tgonGt1CrisprFunc* tracks and cited to the 2019 platform paper (PMID 31481656), whose own supplements are 36-620-gene libraries. They are this study's genome-wide composite scores: Spearman 0.9991-0.9993 and a maximum absolute difference of 5e-8 against the supplement, each tissue matching itself best among all 32 numeric columns. Heart and brain come from the same sheet (scripts\/derive_deposits.py; starplast\/deposits.py) and are the only in vivo heart and brain CRISPR fitness there is; both are bottleneck-limited (medians -7.9 and -7.1 raw), so most genes carry little information there. The ToxoDB attributes are gone from release 71, so the supplement is now the durable source. GT1 accessions; the 68 loci GT1 splits into A\/B and ME49 does not are averaged onto the one ME49 gene.",
+    "note":"CITATION CORRECTED 2026-09-26. The four original tissues were fetched from ToxoDB's tgonGt1CrisprFunc* tracks and cited to the 2019 platform paper (PMID 31481656), whose own supplements are 36-620-gene libraries. They are this study's genome-wide composite scores: Spearman 0.9991-0.9993 and a maximum absolute difference of 5e-8 against the supplement, each tissue matching itself best among all 32 numeric columns. Heart and brain come from the same sheet (scripts\/derive_deposits.py; parascape\/deposits.py) and are the only in vivo heart and brain CRISPR fitness there is; both are bottleneck-limited (medians -7.9 and -7.1 raw), so most genes carry little information there. The ToxoDB attributes are gone from release 71, so the supplement is now the durable source. GT1 accessions; the 68 loci GT1 splits into A\/B and ME49 does not are averaged onto the one ME49 gene.",
     "rejection_reason":"",
     "question":""
   },
@@ -3009,7 +3009,7 @@
     "raw_available":false,
     "access_status":"not_checked",
     "url":"https:\/\/ftp.ncbi.nlm.nih.gov\/geo\/series\/GSE329nnn\/GSE329845\/suppl\/GSE329845_Processed_Data.csv.gz",
-    "note":"Raw counts, one 4 h time point, three replicates of vehicle and actinomycin D in wild type (the TgPRO knockout arms are not used). Median-of-ratios size factors, a moderated linear model with replicate blocking (starplast\/deposits.py). No spike-in, so a global loss of RNA is normalized away: 0 means as stable as the typical transcript, not fully stable, and this is a relative decay, never a half-life. Replicates agree at rho 0.96; ribosomal-protein mRNAs are stable (+1.4 against -0.15, p = 6e-14). Genome-wide where mrna_stability is the 412-gene unstable tail of another study; the two do not correlate (rho -0.03 on 286 shared genes), which that tail's selection explains, so they are kept as separate columns in different units.",
+    "note":"Raw counts, one 4 h time point, three replicates of vehicle and actinomycin D in wild type (the TgPRO knockout arms are not used). Median-of-ratios size factors, a moderated linear model with replicate blocking (parascape\/deposits.py). No spike-in, so a global loss of RNA is normalized away: 0 means as stable as the typical transcript, not fully stable, and this is a relative decay, never a half-life. Replicates agree at rho 0.96; ribosomal-protein mRNAs are stable (+1.4 against -0.15, p = 6e-14). Genome-wide where mrna_stability is the 412-gene unstable tail of another study; the two do not correlate (rho -0.03 on 286 shared genes), which that tail's selection explains, so they are kept as separate columns in different units.",
     "rejection_reason":"",
     "question":""
   },
@@ -5409,7 +5409,7 @@
     "raw_available":false,
     "access_status":"not_checked",
     "url":"https:\/\/ftp.ncbi.nlm.nih.gov\/geo\/series\/GSE335nnn\/GSE335016\/suppl\/GSE335016_245740-HOMO-gene_fpkm.txt.gz",
-    "note":"No paper is attached to the series (Europe PMC and GEO searched 2026-09-26), so the citation is the accession. FPKM only; the contrast is computed here (starplast\/deposits.py): moderated t on log2(FPKM + 1), three replicates per arm, genes at a mean FPKM of 1, wild-type infection against uninfected. The TGGT1_245740 knockout arm is not shipped -- it answers a question about one parasite gene. Textbook response: CXCL8 +5.4, IL6 +2.7, CXCL10 +2.3, ISG15 +2.1; GAPDH and ACTB flat. 315 genes at padj < 0.05.",
+    "note":"No paper is attached to the series (Europe PMC and GEO searched 2026-09-26), so the citation is the accession. FPKM only; the contrast is computed here (parascape\/deposits.py): moderated t on log2(FPKM + 1), three replicates per arm, genes at a mean FPKM of 1, wild-type infection against uninfected. The TGGT1_245740 knockout arm is not shipped -- it answers a question about one parasite gene. Textbook response: CXCL8 +5.4, IL6 +2.7, CXCL10 +2.3, ISG15 +2.1; GAPDH and ACTB flat. 315 genes at padj < 0.05.",
     "rejection_reason":"",
     "question":""
   },

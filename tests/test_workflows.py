@@ -2,8 +2,8 @@
 import numpy as np
 import pandas as pd
 
-from starplast.workflows import WorkflowDialog
-from starplast.prediction import TaskSpec, run
+from parascape.workflows import WorkflowDialog
+from parascape.prediction import TaskSpec, run
 
 
 def nodes():

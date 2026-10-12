@@ -39,7 +39,7 @@ def query_for(slot: dict) -> str:
 
 
 def _get(endpoint: str, params: dict) -> bytes:
-    params = {**params, "tool": "starplast", "email": "einar.olafsson@gmail.com"}
+    params = {**params, "tool": "parascape", "email": "einar.olafsson@gmail.com"}
     url = f"{BASE}/{endpoint}?{urllib.parse.urlencode(params)}"
     with urllib.request.urlopen(url, timeout=30) as response:
         return response.read()

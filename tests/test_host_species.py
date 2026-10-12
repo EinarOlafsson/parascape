@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from starplast import datasets, deposits, host, organisms, slots
+from parascape import datasets, deposits, host, organisms, slots
 
 
 def legacy():
@@ -87,7 +87,7 @@ def test_host_deposit_reader_selects_one_species(monkeypatch):
 
 
 def test_shipped_hosts_preserve_the_migration_totals_and_are_disjoint():
-    from starplast import paths
+    from parascape import paths
     tables = host.shipped_tables()
     report = json.loads(Path(paths.cache_file("host_species_migration.json")).read_text())
     withdrawals = host.projection_withdrawals()
@@ -108,7 +108,7 @@ def test_shipped_hosts_preserve_the_migration_totals_and_are_disjoint():
 
 
 def test_withdrawal_ledger_cannot_excuse_an_unrelated_or_altered_gene_measurement(tmp_path):
-    from starplast import paths
+    from parascape import paths
     import shutil
     folder = Path(paths.cache_file(host.HOST_TABLE)).parent
     ledger_path = folder / "host_projection_withdrawals.json"
@@ -161,7 +161,7 @@ def test_host_merge_cannot_hide_lost_values_behind_new_coverage(tmp_path, monkey
 
 def test_slot_atlas_and_audit_read_separate_host_tables(monkeypatch):
     from scripts import generate_slot_table as generator
-    from starplast import slot_tree
+    from parascape import slot_tree
     tables = host.split_legacy_table(legacy(), {"Hs": {"I"}})
     frame = generator.host_row_space(tables, "human fibroblast", ("fibroblast_tpm",))
     assert list(frame.host_id) == ["H"]

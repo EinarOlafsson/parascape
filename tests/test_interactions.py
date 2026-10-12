@@ -19,7 +19,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import interactions as IN  # noqa: E402
+from parascape import interactions as IN  # noqa: E402
 
 
 # --------------------------------------------------------------------------- the edge lift

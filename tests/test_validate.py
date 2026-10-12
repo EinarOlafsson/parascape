@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import validate as V
+from parascape import validate as V
 
 
 def _labels_and_truth(n_per=40):

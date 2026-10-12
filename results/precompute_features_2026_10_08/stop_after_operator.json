@@ -8,7 +8,7 @@
     "numeric_operator"
   ],
   "artifact_identities": {
-    "numeric_operator": "ea92a2a22fdf13e2ba8926e0ae2422df7a69b15bd8a207d5b53b32b7eff17371"
+    "numeric_operator": "8d39b2405b0b9bd20ad3aa26cd13f1c7e250060e83c10409fd7ea9190972ec10"
   },
   "measured_run": {
     "artifact_storage_bytes": 12896399,
@@ -21,7 +21,7 @@
     },
     "jobs": {
       "numeric_operator": {
-        "content_identity": "ea92a2a22fdf13e2ba8926e0ae2422df7a69b15bd8a207d5b53b32b7eff17371",
+        "content_identity": "8d39b2405b0b9bd20ad3aa26cd13f1c7e250060e83c10409fd7ea9190972ec10",
         "key": "4670a4a348df8d4076a5406dd2db39bdf8ba4a211ace72cc05e5d3faa87670fa",
         "status": "succeeded"
       },

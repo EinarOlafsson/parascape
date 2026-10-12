@@ -35,7 +35,7 @@ The initial artifact preflight refused required-field omissions before creating
 an artifact; corrected scope and typed categorical output are recorded. Original
 matching code is under `code/`; immutable JSON receipts are in `manifest.json`.
 
-Artifact identity: `65034bf84b7dc87aefee2e21622294cb33f0789b4e9dc41fb81243ee9ec33f07`.
+Artifact identity: `854ab60f8a75b078c8dc9336f8f49aadabb64110858c1f14fd829ca61054d2d9`.
 Mapping identity: `e1da9a0c47cecdd47087c34026ddc5e5add6d4f950570a81574c481b40654d80`.
 464 relevant automated checks passed. Missing adapters, full outer coverage and
 independent biological truth remain open. This item receives no completion tick.

@@ -18,8 +18,8 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import proteomics as P  # noqa: E402
-from starplast import screens as SC  # noqa: E402
+from parascape import proteomics as P  # noqa: E402
+from parascape import screens as SC  # noqa: E402
 
 SITES = ("Proteins\tPositions\n"
          "TGME49_000001\t12\n"

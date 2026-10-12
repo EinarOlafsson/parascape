@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import recipes as R
+from parascape import recipes as R
 
 
 # --------------------------------------------------------------------------- fixtures
@@ -20,7 +20,7 @@ from starplast import recipes as R
 def nodes():
     """A real slice of the shipped table. Real, because a recipe addresses the real hierarchy."""
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(root, "starplast", "data", "nodes.parquet")
+    path = os.path.join(root, "parascape", "data", "nodes.parquet")
     if not os.path.exists(path):
         pytest.skip("built node table not present")
     return pd.read_parquet(path).sample(n=400, random_state=0).reset_index(drop=True)
@@ -31,7 +31,7 @@ def full_nodes():
     """The WHOLE table. The graph's edge endpoints are positions in it, so anything that walks the
     graph has to be given it entire; every other test here uses the 400-row sample for speed."""
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(root, "starplast", "data", "nodes.parquet")
+    path = os.path.join(root, "parascape", "data", "nodes.parquet")
     if not os.path.exists(path):
         pytest.skip("built node table not present")
     return pd.read_parquet(path)
@@ -306,7 +306,7 @@ def test_a_refused_recipe_returns_a_result_rather_than_raising(nodes):
 
 def test_a_degenerate_map_returns_the_verdict_and_no_score(nodes, monkeypatch):
     """A recovery number computed on a bisection reads exactly like a real one."""
-    monkeypatch.setattr("starplast.clustering.cluster",
+    monkeypatch.setattr("parascape.clustering.cluster",
                         lambda X, **k: np.zeros(len(X), dtype=int))
     res = R.run(nodes, R.Recipe(question="q", inputs=[RNA, FITNESS], holdout="compartment"),
                 tune=False, log=lambda *a: None)
@@ -340,7 +340,7 @@ def test_a_run_names_genes_and_puts_the_controls_verdict_on_the_same_rows(nodes,
     """The whole deliverable in one assertion: the inference is genes, and the control that qualifies
     it is on the inference's own rows rather than in a table beside it that nobody reads."""
     lab = _fake_clusters(len(nodes))
-    monkeypatch.setattr("starplast.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
+    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
     truth = np.array([None] * len(nodes), dtype=object)
     control = np.array([None] * len(nodes), dtype=object)
     for cl, name in ((0, "pvm"), (1, "cytosol")):
@@ -367,7 +367,7 @@ def test_a_run_names_genes_and_puts_the_controls_verdict_on_the_same_rows(nodes,
 
 
 def test_a_run_without_a_control_still_infers(nodes, monkeypatch):
-    monkeypatch.setattr("starplast.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
+    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
     res = R.run(nodes, R.Recipe(question="q", inputs=[RNA, FITNESS], holdout="compartment"),
                 tune=False, log=lambda *a: None)
     assert res.ok and res.control.empty and res.control_summary == {}
@@ -379,7 +379,7 @@ def test_the_cluster_floor_comes_from_coverage_and_is_stated(nodes, monkeypatch,
     cluster held fifteen LABELLED ones at 80% purity. A cluster must be big enough that the floor is
     reachable, and how big depends on what fraction of genes carry a label at all."""
     seen = {}
-    monkeypatch.setattr("starplast.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
+    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
     monkeypatch.setattr(R, "best_clustering",
                         lambda coords, grid=None, log=None: seen.update(grid or {}) or {})
     frame = nodes.copy()
@@ -396,7 +396,7 @@ def test_tuning_chooses_the_settings_and_records_them(nodes, monkeypatch):
     monkeypatch.setattr(R, "tune_umap", lambda *a, **k: pd.DataFrame(
         [{"n_neighbors": 7, "min_dist": 0.3, "usable": True, "score": 1.0, "stage": "full"},
          {"n_neighbors": 9, "min_dist": 0.9, "usable": True, "score": 0.1, "stage": "full"}]))
-    monkeypatch.setattr("starplast.clustering.cluster",
+    monkeypatch.setattr("parascape.clustering.cluster",
                         lambda X, **k: np.repeat(np.arange(3), len(X) // 3 + 1)[:len(X)])
     res = R.run(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment"),
                 log=lambda *a: None)
@@ -507,8 +507,8 @@ def test_the_edge_guard_holds_at_class_scope_which_is_what_recipes_use(nodes):
     the target does not contain the layer built from the target. The family is therefore closed
     unconditionally, whatever scope is asked for.
     """
-    from starplast import slots
-    from starplast.search import excluded_edges, scoped_slots
+    from parascape import slots
+    from parascape.search import excluded_edges, scoped_slots
     class_layers = {layer for slot in scoped_slots("compartment", "biology")
                     for layer in slots.edge_types(slot)}
     assert "compartment" not in class_layers, \
@@ -551,7 +551,7 @@ def test_alternative_maps_are_built_and_are_actually_different(nodes, monkeypatc
         {"n_neighbors": 7, "min_dist": 0.0, "usable": True, "score": 0.9, "stage": "sample"},
         {"n_neighbors": 40, "min_dist": 0.3, "usable": True, "score": 0.5, "stage": "full"},
     ]))
-    monkeypatch.setattr("starplast.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
+    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
     res = R.run(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment"),
                 alternatives=1, log=lambda *a: None)
     assert len(res.alternatives) == 1
@@ -561,7 +561,7 @@ def test_alternative_maps_are_built_and_are_actually_different(nodes, monkeypatc
 
 def test_no_alternatives_are_built_unless_asked_for(nodes, monkeypatch):
     """They cost a full embedding each."""
-    monkeypatch.setattr("starplast.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
+    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
     res = R.run(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment"),
                 tune=False, log=lambda *a: None)
     assert res.alternatives == []
@@ -730,7 +730,7 @@ def test_multiplex_communities_are_scored_like_any_other_partition(full_nodes, m
     unsupervised partition reaches the same scoring, naming and control as every other method."""
     groups = np.arange(len(full_nodes)) % 30
     groups[::11] = -1
-    monkeypatch.setattr("starplast.methods.multiplex_communities", lambda *a, **k: {
+    monkeypatch.setattr("parascape.methods.multiplex_communities", lambda *a, **k: {
         "partition": groups, "classes": [], "model": None, "unsupervised": True,
         "settings": {"method": "multiplex", "layers": ["xlms"]}})
     res = R.run(full_nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",

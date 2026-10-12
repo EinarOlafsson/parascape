@@ -18,16 +18,16 @@ def sha(path):
 
 def audit(output, organism='Tg'):
     from PyQt6 import QtWidgets
-    from starplast import functional_results as F, functional_agreement as A, group_ratios as G, strategies as S
-    from starplast.discoveries_panel import DiscoveriesPanel
+    from parascape import functional_results as F, functional_agreement as A, group_ratios as G, strategies as S
+    from parascape.discoveries_panel import DiscoveriesPanel
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     start = time.monotonic()
     code = [Path(__file__), ROOT / 'scripts/notebook_runner.py',
-        *[ROOT / 'starplast' / name for name in ('functional_results.py', 'functional_class_view.py',
+        *[ROOT / 'parascape' / name for name in ('functional_results.py', 'functional_class_view.py',
             'discoveries_panel.py', 'functional_coverage.py', 'scorecard_view.py', 'functional_domains.py',
             'functional_agreement.py','group_ratios.py')], ROOT/'tests/test_functional_agreement_ui.py']
-    sources = [ROOT / 'starplast/data' / name for name in ('nodes.parquet', 'pf_nodes.parquet',
+    sources = [ROOT / 'parascape/data' / name for name in ('nodes.parquet', 'pf_nodes.parquet',
         'claims.parquet', 'claim_recipes.parquet', 'track_record.parquet',
         'functional_domain_names.json', 'functional_results.json', 'functional_agreement.json',
         'functional_agreement_uncertainty.json')]

@@ -4,9 +4,9 @@ import json
 
 import pytest
 
-from starplast import functional_class_view as C, functional_results as F, scorecard as S
-from starplast import organisms as O
-from starplast.scorecard_view import export_scorecard, render_scorecard_detail, render_scorecard_html
+from parascape import functional_class_view as C, functional_results as F, scorecard as S
+from parascape import organisms as O
+from parascape.scorecard_view import export_scorecard, render_scorecard_detail, render_scorecard_html
 
 
 def fixture():

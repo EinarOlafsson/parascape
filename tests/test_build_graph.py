@@ -23,7 +23,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import build_graph as BG  # noqa: E402
+from parascape import build_graph as BG  # noqa: E402
 
 
 # --------------------------------------------------------------------------- helpers
@@ -61,7 +61,7 @@ def test_the_log_prefix_names_the_stage(capsys):
 # --------------------------------------------------------------------------- symbol resolution
 def test_a_symbol_resolves_through_the_index_built_during_the_node_load():
     BG._SYMBOL_INDEX = {}
-    from starplast import identity
+    from parascape import identity
     BG._SYMBOL_INDEX = {identity.norm("GRA16"): ("TGME49_208830", "symbol")}
     assert BG._resolve_symbol("GRA16") == "TGME49_208830"
     assert BG._resolve_symbol("gra-16") == "TGME49_208830"
@@ -849,7 +849,7 @@ def test_measured_interactions_that_are_unwritten_reach_the_graph(monkeypatch, t
 
 
 def test_the_whole_build_runs_end_to_end_over_a_synthetic_tree(monkeypatch, tmp_path):
-    """`python -m starplast.build_graph` for real, on six genes: load, literature, edges, embed, write.
+    """`python -m parascape.build_graph` for real, on six genes: load, literature, edges, embed, write.
 
     Nothing is stubbed except the dataset loaders that need files this fixture does not fake. The point
     is that the stages compose -- each one has been driven separately above, and this is the only test
@@ -886,7 +886,7 @@ def test_the_whole_build_runs_end_to_end_over_a_synthetic_tree(monkeypatch, tmp_
 
 @pytest.mark.slow
 def test_python_dash_m_runs_a_real_build(monkeypatch, tmp_path):
-    """`python -m starplast.build_graph` is the documented way to rebuild, so it is executed rather
+    """`python -m parascape.build_graph` is the documented way to rebuild, so it is executed rather
     than asserted about: runpy re-imports the module, which recomputes every root from the environment,
     so this also proves the resolver works for a fresh process rather than only for this one.
 
@@ -912,11 +912,11 @@ def test_python_dash_m_runs_a_real_build(monkeypatch, tmp_path):
     out.mkdir()
     _identity_files(out, genes)
 
-    monkeypatch.setenv("STARPLAST_DATA", str(ds))
-    monkeypatch.setenv("STARPLAST_CACHE", str(out))
+    monkeypatch.setenv("PARASCAPE_DATA", str(ds))
+    monkeypatch.setenv("PARASCAPE_CACHE", str(out))
 
     import runpy
-    runpy.run_module("starplast.build_graph", run_name="__main__", alter_sys=True)
+    runpy.run_module("parascape.build_graph", run_name="__main__", alter_sys=True)
 
     assert (out / "nodes.parquet").exists() and (out / "graph.npz").exists()
     written = pd.read_parquet(out / "nodes.parquet")
@@ -959,8 +959,8 @@ def test_the_mass_spec_columns_are_merged_into_the_node_table(monkeypatch):
     these are site counts rather than abundances, and putting them through one loader would invite
     them to be normalised together."""
     import pandas as pd
-    import starplast.proteomics as PR
-    from starplast import build_graph as B
+    import parascape.proteomics as PR
+    from parascape import build_graph as B
     nodes = pd.DataFrame({"gene_id": ["TGME49_000001", "TGME49_000002"]})
     monkeypatch.setattr(PR, "load_all",
                         lambda base, index, log=print: pd.DataFrame(

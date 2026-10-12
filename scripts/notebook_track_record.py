@@ -14,15 +14,15 @@ from notebook_runner import ExecutedNotebook  # noqa: E402
 nb = ExecutedNotebook("The hold-out track record")
 nb.md("# The hold-out track record",
       "Every labelled gene was hidden once and each strategy that calls labels was asked what it is. "
-      "This notebook reads the record that ships with Starplast and states what it says. It was "
-      "built by `scripts/build_track_record.py` (`starplast/track_record.py`), design in "
+      "This notebook reads the record that ships with ParaScape and states what it says. It was "
+      "built by `scripts/build_track_record.py` (`parascape/track_record.py`), design in "
       "`instructions/open/62_holdout_track_record.md`.",
       "Three rules make it trustworthy rather than merely present: the five folds never split an "
       "orthogroup (a paralogue cannot give away its sibling's label); a strategy that says nothing "
       "is counted apart from one that is wrong; and no percentage is printed from fewer than five "
       "answered genes.")
 nb.code("import pandas as pd",
-        "from starplast import track_record as T",
+        "from parascape import track_record as T",
         "led = pd.read_parquet(T.shipped_path())",
         "led.groupby(['organism', 'mode'], observed=True).size().rename('rows')")
 nb.md("## Every recorded label",
@@ -89,7 +89,7 @@ nb.code("cls = led[(led['mode'] == 'set') & ~led['set_name'].astype(str).str.sta
 nb.md("## Your own list",
       "`T.my_list(ctx, genes, target)` hides a pasted list together and asks every strategy. "
       "Two real labelled genes, as an example:")
-nb.code("from starplast import strategies as S",
+nb.code("from parascape import strategies as S",
         "ctx = S.Context.shipped('Tg')",
         "rows = T.my_list(ctx, ['TGME49_294550', 'TGME49_244470'], 'compartment', "
         "strategies=['feature_knn', 'physical_partners', 'layer_vote'])",

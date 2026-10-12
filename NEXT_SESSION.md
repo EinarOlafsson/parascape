@@ -34,8 +34,8 @@ must make accuracy, capacity and the underlying test evidence accessible at ever
 The controlling plan is **[instruction 64](instructions/open/64_information_space_and_inference_atlas.md)**:
 40 bounded action cards with dependencies and acceptance tests. **13/40 complete (32.5%)**:
 64.01 provides the entity/query schema and provenance-preserving exact alias resolver
-(`starplast/query.py`, 472 focused checks passed). 64.02 provides the offline inventory
-(`starplast/inventory.py`, 525 focused checks passed): all 162 sources reconcile to 180 rows
+(`parascape/query.py`, 472 focused checks passed). 64.02 provides the offline inventory
+(`parascape/inventory.py`, 525 focused checks passed): all 162 sources reconcile to 180 rows
 including 16 scoped refusals. Evidence and gaps are in
 `results/information_inventory_2026_10_07/README.md`. 64.03 adds typed provenance for 628 addresses, a measured mapping-loss audit and exact
 reproduction of all 15,437 installed mouse macrophage TPM values. 64.04 records 529 targets,
@@ -53,7 +53,7 @@ Keep the stored tracker and completion evidence current.
 **New user priority (2026-10-07):** [instruction 65](instructions/open/65_dataset_selection_audit.md)
 audits all dataset choices against literature alternatives. For comparable admitted datasets,
 prefer citations per year since first publication, with modest recency and comprehensiveness
-bonuses. Use `starplast/dataset_selection.py`, retain the factors and provider/snapshot, and
+bonuses. Use `parascape/dataset_selection.py`, retain the factors and provider/snapshot, and
 do not guess missing metadata or promote unsuitable popular papers. Host storage is present
 (7 Hs/3 Mm sources, 20,989/15,590 protein rows; 12/50 host slot views filled), while independent
 host gene spaces/inference packs remain pending under 64.21/64.22/64.28/64.29. Instruction 65
@@ -71,7 +71,7 @@ annual citation-rate paper. Prioritize host rhoptry journal-version equivalence,
 2017 quantitative RBC complement, GTEx v10 lineage, then the all-source review queue.
 Do not mistake metadata resolution or pending abstract hits for admitted biology.
 
-**Source:** `/media/carruthers/mnt3/claude/repo/starplast` (the package is `starplast/` inside it),
+**Source:** `/media/carruthers/mnt3/claude/repo/parascape` (the package is `parascape/` inside it),
 branch `nightly`. Version0.55.0 includes the October7–8 literature/source audits,
 query/inventory/provenance contracts, protected benchmark roles, row-level scorecards
 and frozen functional tests/comparisons. The original parasite tables/graphs and
@@ -156,7 +156,7 @@ The proposed worker-stagger/retry feature was cancelled as a wrong-session reque
 * **Instruction ledger:** a task file is written in `instructions/open/` before the work, kept current
   during it, and moved to `instructions/done/` with what was verified. `instructions/INDEX.md` lists
   both. "Decided not to" is a result, so record it.
-* **Environments:** Python is `~/anaconda3/envs/starplast/bin/python` (pandas 3, Python 3.12).
+* **Environments:** Python is `~/anaconda3/envs/parascape/bin/python` (pandas 3, Python 3.12).
   **CI runs Python 3.11**, so no 3.12-only syntax (nested same-quote f-strings broke CI once). Do
   not modify the `deeptmhmm`/`af3`/`pymol` envs, and ask before creating a new env.
 * **VEuPathDB** (ToxoDB/PlasmoDB/CryptoDB/VectorBase): since release 71 the public downloads return
@@ -185,8 +185,8 @@ The proposed worker-stagger/retry feature was cancelled as a wrong-session reque
 ### Tests
 
 ```bash
-cd /media/carruthers/mnt3/claude/repo/starplast
-QT_QPA_PLATFORM=offscreen ~/anaconda3/envs/starplast/bin/python -m pytest -q -p no:cacheprovider
+cd /media/carruthers/mnt3/claude/repo/parascape
+QT_QPA_PLATFORM=offscreen ~/anaconda3/envs/parascape/bin/python -m pytest -q -p no:cacheprovider
 ```
 
 * Under systemd the PATH lacks `~/anaconda3/bin`; add it, or 3 proteomics tests fail on `bsdtar`.
@@ -197,17 +197,17 @@ QT_QPA_PLATFORM=offscreen ~/anaconda3/envs/starplast/bin/python -m pytest -q -p 
 ### Calibration sweep (after any data, slot or strategy change)
 
 ```bash
-SNAP=/media/carruthers/mnt3/claude/starplast_calib_snapshot
-rsync -a --delete starplast scripts pyproject.toml $SNAP/          # FREEZE the code: workers re-import
+SNAP=/media/carruthers/mnt3/claude/parascape_calib_snapshot
+rsync -a --delete parascape scripts pyproject.toml $SNAP/          # FREEZE the code: workers re-import
 cd $SNAP && python scripts/calibrate_strategies.py --count          # size it
-systemd-run --user --unit=starplast-calib-X --collect -p MemoryMax=62G --working-directory=$SNAP \
-  -E PATH=$HOME/anaconda3/bin:/usr/bin:/bin ~/anaconda3/envs/starplast/bin/python \
+systemd-run --user --unit=parascape-calib-X --collect -p MemoryMax=62G --working-directory=$SNAP \
+  -E PATH=$HOME/anaconda3/bin:/usr/bin:/bin ~/anaconda3/envs/parascape/bin/python \
   scripts/calibrate_strategies.py --out <repo>/results/calibration_<new-dir>   # NEW dir: an old one resumes
 cd <repo> && python scripts/calibrate_strategies.py --publish --out results/calibration_<new-dir>
 ```
 
 * It takes about 1.5–4 hours, depending on load, and is memory-scheduled.
-* `--publish` writes `starplast/data/strategy_calibration.json`, the README calibration and scorecard
+* `--publish` writes `parascape/data/strategy_calibration.json`, the README calibration and scorecard
   blocks, `docs/calibration.md` and `docs/scorecards.md`.
 * Then rebuild the tutorials: `QT_QPA_PLATFORM=offscreen python scripts/build_tutorials.py`
   (about 10 minutes).
@@ -215,15 +215,15 @@ cd <repo> && python scripts/calibrate_strategies.py --publish --out results/cali
 
 ### Adding data
 
-1. Put the raw files in the dataset root (`STARPLAST_DATA=/media/carruthers/mnt3/claude/toxoplasma_projects/datasets`),
+1. Put the raw files in the dataset root (`PARASCAPE_DATA=/media/carruthers/mnt3/claude/toxoplasma_projects/datasets`),
    in `<level>/<kind>/<PMID|accession>/` with `URLS.txt` and `SHA256SUMS.txt`.
-2. Write a loader and a `Deposit` in `starplast/deposits.py`, and add a `Dataset` in
-   `starplast/datasets.py`.
+2. Write a loader and a `Deposit` in `parascape/deposits.py`, and add a `Dataset` in
+   `parascape/datasets.py`.
 3. Add a section to `scripts/derive_deposits.py`; it re-executes the notebook, which should reproduce
    the paper's headline result.
 4. Merge with `scripts/add_deposits.py`; it refuses to lose values.
 5. Place the columns in slots with `scripts/generate_slot_table.py`.
-6. Add the leakage family in `starplast/search.py` (`SAME_QUANTITY`).
+6. Add the leakage family in `parascape/search.py` (`SAME_QUANTITY`).
 7. Run `scripts/leakage_audit.py` and require 0 gaps and 0 residual leaks.
 8. Rebuild the layouts with `scripts/rebuild_layouts.py`.
 9. Re-run the calibration.
@@ -234,22 +234,22 @@ cd <repo> && python scripts/calibrate_strategies.py --publish --out results/cali
 
 | Module | What it is |
 |---|---|
-| `starplast/claims.py` | **Claims** (0.54): `shared_mistakes`, `family_recovery`, `certainty_model`, `verification`, `verified_model`, `candidates`, `recipe`, `generate`, `applicability`; shipped readers `shipped`, `recipes`, `gene_html`, `claim_html`, `discoveries` |
-| `starplast/discoveries_panel.py` | The Discoveries tab |
-| `starplast/track_record.py` | **Track record** (0.52-0.53): `evaluate`, `evaluate_sets`, `my_list`, `alone`, `summary`, `labels`, `default_target`, `gene_html`/`class_html`/`target_html`/`list_html`, `record_phrase`, `beats_baseline`, `_baselines` |
+| `parascape/claims.py` | **Claims** (0.54): `shared_mistakes`, `family_recovery`, `certainty_model`, `verification`, `verified_model`, `candidates`, `recipe`, `generate`, `applicability`; shipped readers `shipped`, `recipes`, `gene_html`, `claim_html`, `discoveries` |
+| `parascape/discoveries_panel.py` | The Discoveries tab |
+| `parascape/track_record.py` | **Track record** (0.52-0.53): `evaluate`, `evaluate_sets`, `my_list`, `alone`, `summary`, `labels`, `default_target`, `gene_html`/`class_html`/`target_html`/`list_html`, `record_phrase`, `beats_baseline`, `_baselines` |
 | `scripts/build_track_record.py`, `scripts/build_claims.py` | Rebuild the shipped record (`--workers 4`, ~1 h, ~1 GB/worker) and then the claims (minutes). Claims read the record: rebuild in that order. |
 | `scripts/audit_claim_verifiers.py` | Audit corrected literature verifiers against the shipped recipes without promoting claims; executed measurements and decisions in `results/claim_verifiers_2026_10_07/` |
 | `scripts/notebook_track_record.py`, `scripts/notebook_claims.py` | Write the executed notebooks `notebooks/track_record_2026_10_03.ipynb`, `notebooks/claims_2026_10_04.ipynb` |
-| `starplast/strategies.py` | Strategy/TestResult/Context framework, bans (`banned`, `banned_layers`), `knn_vote`, `propagate` |
-| `starplast/strategy_catalog.py`, `strategy_graph.py`, `strategy_learning.py` | Strategies 01-32, 33-34, 35-39 |
-| `starplast/scorecard.py`, `techniques.py`, `calibration.py` | 6 tasks / 51 metrics, 40 techniques, grades and intervals |
-| `starplast/strategy_panel.py`, `strategy_card.py`, `strategy_explainers.py` | The Strategies tab and its cards |
-| `starplast/guided.py`, `guided_panel.py` | Start here (question tree without Qt; the panel) |
-| `starplast/umap_gallery*.py`, `star_map.py`, `star_edges.py` | Maps tab, star map and its link store |
-| `starplast/organisms.py` | The organism registry (one `Space` per species) |
-| `starplast/search.py` | Leakage closure: `excluded_for`, `excluded_layers`, `LAYER_SOURCES` |
-| `starplast/app.py` | The window; evidence-panel links route through `_detail_link` (`starplast://gene|class|target|record|alone|claim/...`) |
-| `starplast/help_index.py`, `help_search.py`, `glass.py`, `theme.py`, `ambient.py` | Help search, glass, menus, background (`keep_behind` fixes the blank panel) |
+| `parascape/strategies.py` | Strategy/TestResult/Context framework, bans (`banned`, `banned_layers`), `knn_vote`, `propagate` |
+| `parascape/strategy_catalog.py`, `strategy_graph.py`, `strategy_learning.py` | Strategies 01-32, 33-34, 35-39 |
+| `parascape/scorecard.py`, `techniques.py`, `calibration.py` | 6 tasks / 51 metrics, 40 techniques, grades and intervals |
+| `parascape/strategy_panel.py`, `strategy_card.py`, `strategy_explainers.py` | The Strategies tab and its cards |
+| `parascape/guided.py`, `guided_panel.py` | Start here (question tree without Qt; the panel) |
+| `parascape/umap_gallery*.py`, `star_map.py`, `star_edges.py` | Maps tab, star map and its link store |
+| `parascape/organisms.py` | The organism registry (one `Space` per species) |
+| `parascape/search.py` | Leakage closure: `excluded_for`, `excluded_layers`, `LAYER_SOURCES` |
+| `parascape/app.py` | The window; evidence-panel links route through `_detail_link` (`parascape://gene|class|target|record|alone|claim/...`) |
+| `parascape/help_index.py`, `help_search.py`, `glass.py`, `theme.py`, `ambient.py` | Help search, glass, menus, background (`keep_behind` fixes the blank panel) |
 
 ---
 
@@ -317,7 +317,7 @@ implementation order and bounded acceptance conditions now come from instruction
     Start here.
 
 ### E. Organism spaces (instruction 53; the larger plan)
-16. Build the Hs and Mm spaces from `<STARPLAST_DATA>/spaces/Hs`, `/Mm`; publish organism packs
+16. Build the Hs and Mm spaces from `<PARASCAPE_DATA>/spaces/Hs`, `/Mm`; publish organism packs
     (`docs/space-packs.md`); a Space menu (parasites / hosts / vectors).
 17. Cryptosporidium (Cp) and *P. berghei* (Pb) spaces; *Anopheles* (Ag, As), rat (Rn), cat (Fc) --
     mind the id-space traps in 53.
@@ -339,8 +339,8 @@ implementation order and bounded acceptance conditions now come from instruction
 
 ### For the user (not for an agent)
 * Look at the glass windows on the real desktop (drag, resize, compositor were verified offscreen only).
-* Delete `/media/carruthers/mnt3/claude/starplast_video_scratch/` (permission was denied to the agent)
-  and the junk `<STARPLAST_DATA>/spaces/As/abundance/PXD001647/` (Hydra/Daphnia files).
+* Delete `/media/carruthers/mnt3/claude/parascape_video_scratch/` (permission was denied to the agent)
+  and the junk `<PARASCAPE_DATA>/spaces/As/abundance/PXD001647/` (Hydra/Daphnia files).
 
 ---
 
@@ -409,13 +409,13 @@ implementation order and bounded acceptance conditions now come from instruction
 
 66.01 is complete: all 162 sources accounted for, 69 processed bindings, 11 container manifests and 538 candidate files, with explicit association, transform and access gaps. Read `results/source_recovery_final_2026_10_07_v2/README.md`. CSPA exact installed-field reproduction verified; its non-detection semantics corrected without numerical change. Frozen benchmark readers support explicit checksum-verified relocation. **717 relevant checks passed.** Instruction 66 is 4/4 complete; continue 64.10/64.11 frozen benchmark adapters. Numerical admission/replacements remain 65.04. Earlier code identities remain archived with their immutable artifacts.
 
-64.07 complete: `starplast/capabilities.py` and `results/capability_contracts_2026_10_08_v2/`; distinct pair/class/evidence/gene outputs and explicit unavailable host adapters. No new biological performance claims. Next 64.08 artifact roles/identity/invalidation, then 64.09 shared aggregation.
+64.07 complete: `parascape/capabilities.py` and `results/capability_contracts_2026_10_08_v2/`; distinct pair/class/evidence/gene outputs and explicit unavailable host adapters. No new biological performance claims. Next 64.08 artifact roles/identity/invalidation, then 64.09 shared aggregation.
 
-64.08 complete: `starplast/artifacts.py`, `results/artifact_contracts_2026_10_08_v2/`; six task types and five storage roles, ten exact synthetic round trips. Frozen split guards reject misassigned fit/test entities and known benchmark genes as unknown deployment. No estimator fitted. Next 64.09 shared row-level aggregation/reconciliation.
+64.08 complete: `parascape/artifacts.py`, `results/artifact_contracts_2026_10_08_v2/`; six task types and five storage roles, ten exact synthetic round trips. Frozen split guards reject misassigned fit/test entities and known benchmark genes as unknown deployment. No estimator fitted. Next 64.09 shared row-level aggregation/reconciliation.
 
-64.09 complete: `starplast/record_scorecards.py`, `results/record_reconciliation_2026_10_08_v3/`; all legacy outcomes match standard metrics on identical cohorts. Original truth/exclusion/nested-fit lineage remains unresolved, not retroactively admitted. Settings/seeds/modes/named sets remain separate; no independent-sample inflation or component/per-gene probability claims.
+64.09 complete: `parascape/record_scorecards.py`, `results/record_reconciliation_2026_10_08_v3/`; all legacy outcomes match standard metrics on identical cohorts. Original truth/exclusion/nested-fit lineage remains unresolved, not retroactively admitted. Settings/seeds/modes/named sets remain separate; no independent-sample inflation or component/per-gene probability claims.
 
-64.10 is 35%: first `starplast/label_records.py` feature-kNN adapter (`8b59643`), with native
+64.10 is 35%: first `parascape/label_records.py` feature-kNN adapter (`8b59643`), with native
 training rank parity and frozen train distributions for held-out values. The
 prediction-grade compartment pilot retains all 560 test genes and full native
 class scores; `results/label_knn_pilot_2026_10_08_v5/` is the rank-transform run.
@@ -424,13 +424,13 @@ identities now preserve one-ULP differences. Continue remaining categorical
 adapters/full outer coverage and independent truth acquisition; host-symbol
 correction is complete under 66.04. No runtime strategy, installed values or calibration
 has changed. The missing categorical ortholog-transfer adapter is also verified:
-`starplast/transfer_records.py`, `results/ortholog_transfer_pilot_2026_10_08/`.
+`parascape/transfer_records.py`, `results/ortholog_transfer_pilot_2026_10_08/`.
 Same 560 test genes: 123 calls/437 abstentions, 65 correct/58 wrong; all-hidden
 surrogate agreement 0.116071 versus called-only 0.528455. Native method has no
 class-score/support output; no scores invented. Both target/source are stored
 spatial predictions with context/independence gaps. 464 checks passed and exact
 projection/call/card/baseline replay verified (commit `445e5f1`).
-`starplast/conformal_records.py` adds kNN conformal sets with verified base model
+`parascape/conformal_records.py` adds kNN conformal sets with verified base model
 and separate calibration labels, exact native parity on frozen roles. Shared
 cards retain set coverage/size/singleton/empty share/native efficiency and class
 metrics. `results/conformal_label_pilot_2026_10_08_v2/`: empirical prediction-grade
@@ -520,8 +520,8 @@ biological truth; no additional full action complete (still 16/48).
 
 The user explicitly requests a watchdog to keep the list moving and log stops.
 Native goal continuation is active for unfinished instructions 64/65/66.
-`starplast-work-watchdog.timer` is enabled/active, polling once/minute under
-128 MB. `.starplast-watchdog/events.jsonl` retains private stop/progress events;
+`parascape-work-watchdog.timer` is enabled/active, polling once/minute under
+128 MB. `.parascape-watchdog/events.jsonl` retains private stop/progress events;
 read it and state.json at resume, get actual goal status, record current item and
 reason through `scripts/work_watchdog.py record`. Before a turn ends, log its
 actual reason; progress reports are automatic-continuation boundaries, not
@@ -568,7 +568,7 @@ gene foundation and remaining sources. GTEx v11 still pending 65.04 comparison;
 no claim that v10 is the best available replacement. Still 17/49 complete.
 
 Latest Discoveries partition: **68.01 complete; 18/51 full actions complete**.
-`starplast/discovery_labels.py` plus the actual Discoveries panel now browse 41
+`parascape/discovery_labels.py` plus the actual Discoveries panel now browse 41
 Toxoplasma and 30 Plasmodium labels, with function first. InterPro/Pfam/EC classes,
 phenotypes, stages, structural labels and annotation flags no longer require a
 generated claim to appear. Search terms/IDs, select overlapping class members,
@@ -603,7 +603,7 @@ withhold EC/domain/homology/attention summaries; graph empty. Exact recovery71/1
 and an unseen full profile. This is weak source-profile recovery; **zero independently
 admitted activity benchmarks, calibrated probabilities or deployment claims**.
 Canonical pilot `results/functional_ec_knn_pilot_2026_10_08_v4/`, identity
-`349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162`.
+`e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461`.
 Source reviewv2/domain metadatav4/UI bundlev4 and
 `results/functional_discoveries_audit_2026_10_08/` retain executed evidence.
 Actual Discoveries offers label/strategy/profile/seven major-class/control cards,
@@ -848,7 +848,7 @@ verify the accepted Pf candidate in Discoveries. Shipped Tg EC/Pfam bundle still
 unchanged; function35%, whole actions22/51, goal/watchdog active.
 
 Latest integration: **68.02 now40%;22/51 whole actions**. Shipped bundle
-SHA4275691a748d91f618da5606d21e8eb35976980ea456ea667b106960db21a2b2
+SHAb5fa39aa80200e19560e4600502b6decee1a2ec84ba38c03e33b11f8c1fe6eb3
 contains original Tg EC/Pfam entries plus accepted Pf direct EC test, all exact.
 Actual Pf desktop audit verifies original controls, membership/profile exports,
 gene/coverage routes and altered-source/wrong-organism refusals; screenshot
@@ -866,7 +866,7 @@ prevalence35/152; all four unsupported test genes retained. Native defaults
 native/refit/treeJSON/parquet/artifact replay; root serial packet V2 succeeds
 11.44s/570,120KiB under1900MiB. Worker signal9 preserved, cause unproven.
 52 outputs/70inputs/12artifact receipts independently verified. Shipped bundle
-SHA386c8e05f5b8cf32f4b9ba6c777d32933c73c08ce40d9e01d0b27959e9dbadda
+SHA7f917b83f211c7d619b90aefb2d6cf01d75efdded703f1b71cbbcfd5934c2134
 now2Tg/2Pf; previous entries/native controls exact. Actual two-strategy desktop
 routes and both screenshots verified.101 combined checks pass; prior Qt styling
 segfault/84isolated passes retained, cause unresolved. Final receipt audit112outputs
@@ -877,7 +877,7 @@ limits explicit; other host/literature/strategy gaps remain. Watchdog/goal activ
 
 Latest paired partition:64.32/64.33 now20%, whole22/51 unchanged. Canonical
 `results/pf_functional_agreement_2026_10_08_v2/`, report SHA
-940da900b3d5ba356c6e360f220787b849d7382138132ccc96f2d1684178e98b.
+91e32f04ab83bfdab2f6e115be8456554b74e0f3cc5653143fc5aa1789253e89.
 152genes/four unsupported/145groups retained,143joint calls:94agreements,
 33correct/61same wrong;49conflicts (7kNN correct/25forest correct/17bothwrong).
 Nine forest-only calls (one correct),78bothwrong overall. Shared labels/training/
@@ -912,7 +912,7 @@ matched source-profile pair, explicit denominators/unsupported genes retained.
 Other strategy/host/literature gaps remain; restricted partials untouched.
 
 Latest group-uncertainty partition:64.32 now30%,64.33 stays30%,whole22/51 unchanged.
-`starplast/group_ratios.py` implements shared whole-group ratio resampling,500draws,
+`parascape/group_ratios.py` implements shared whole-group ratio resampling,500draws,
 seed20261008,minimum5groups,linear2.5/97.5 percentiles,explicit undefined draws and
 exact saved-selection replay. Canonical V2 packet
 `results/functional_group_uncertainty_2026_10_08_v2/`:all152genes/four unsupported/

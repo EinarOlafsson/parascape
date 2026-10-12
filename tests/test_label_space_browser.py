@@ -6,9 +6,9 @@ import pandas as pd
 import pytest
 from PyQt6 import QtCore, QtWidgets
 
-from starplast import scorecard as SC
-from starplast.label_space_browser import LabelSpaceBrowser
-from starplast.scorecard_view import build_scorecard_view
+from parascape import scorecard as SC
+from parascape.label_space_browser import LabelSpaceBrowser
+from parascape.scorecard_view import build_scorecard_view
 
 
 @pytest.fixture(scope='session')
@@ -148,7 +148,7 @@ def test_all_strategies_and_separate_exact_cohort_exports_remain_visible(app):
 
 
 def test_real_backend_keeps_native_overlaps_false_unknowns_and_no_frozen_accuracy(app):
-    from starplast.label_space import LabelSpace
+    from parascape.label_space import LabelSpace
 
     nodes = pd.DataFrame({'gene_id': [f'TGME49_{100000+i}' for i in range(4)],
         'ec_number': ['1.1.1.1; 2.2.2.2', '1.1.1.1', None, '2.2.2.2'],

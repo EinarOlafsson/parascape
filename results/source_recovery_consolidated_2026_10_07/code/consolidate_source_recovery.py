@@ -19,8 +19,8 @@ from urllib.parse import unquote, urlparse
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import datasets as D, paths  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import datasets as D, paths  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 from recover_source_files import download, validate_file  # noqa: E402
 
 PROCESSED = {".xlsx", ".xls", ".csv", ".tsv", ".txt", ".json", ".jsonl", ".bed"}
@@ -108,7 +108,7 @@ def consolidate(root, output, *, fetch=False):
     prior = ROOT / "results/source_recovery_pmc_2026_10_07_v2"
     initial = ROOT / "results/source_recovery_2026_10_07"
     review_path = ROOT / "results/source_review_input_recovery_2026_10_07/review_inputs.json"
-    inputs = [Path(__file__), ROOT / "scripts/recover_source_files.py", ROOT / "starplast/datasets.py",
+    inputs = [Path(__file__), ROOT / "scripts/recover_source_files.py", ROOT / "parascape/datasets.py",
               prior / "bindings.json", prior / "source_locations.json", initial / "source_locations.json", review_path]
     hashes = {str(path): _sha(path) for path in inputs}
     bindings = json.loads((prior / "bindings.json").read_text())
@@ -128,8 +128,8 @@ def consolidate(root, output, *, fetch=False):
         try:
             if source.key in bindings:
                 row.update(status="bound_processed_input", file=bindings[source.key])
-            elif source.path and source.path.startswith("starplast/data/"):
-                file = Path(paths.cache_file(source.path.removeprefix("starplast/data/")))
+            elif source.path and source.path.startswith("parascape/data/"):
+                file = Path(paths.cache_file(source.path.removeprefix("parascape/data/")))
                 row.update(status="installed_cache_not_original_assay", file=asdict(SourceFile.inspect(file, "installed_cache")))
             else:
                 project = project_input(source, root)

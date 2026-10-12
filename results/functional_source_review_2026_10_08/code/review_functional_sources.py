@@ -14,7 +14,7 @@ import urllib.request
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import pandas as pd
-from starplast import datasets as D, functional_ontology as F, organisms as O, strategies as S
+from parascape import datasets as D, functional_ontology as F, organisms as O, strategies as S
 
 DOWNLOADS = {
     'enzyme.dat':'https://ftp.expasy.org/databases/enzyme/enzyme.dat',
@@ -37,7 +37,7 @@ def fetch(name,url,archive):
     if path.exists():raise ValueError('Do not overwrite an existing source acquisition')
     receipt={'requested_url':url,'retrieved_utc':datetime.now(timezone.utc).isoformat(),'name':name}
     try:
-        request=urllib.request.Request(url,headers={'User-Agent':'Starplast-functional-source-review/0.54'})
+        request=urllib.request.Request(url,headers={'User-Agent':'ParaScape-functional-source-review/0.54'})
         with urllib.request.urlopen(request,timeout=30) as response:
             payload=response.read(20_000_001)
             if len(payload)>20_000_000:raise ValueError('Metadata exceeds frozen 20 MB limit')
@@ -85,7 +85,7 @@ def review(output,archive,receipts):
         'ontology_selection':'Official current nomenclature metadata; no gene dataset replacement or literature-best claim'},indent=2)+'\n')
     inputs=[Path(O.nodes_path(o)) for o in (O.TOXOPLASMA,O.FALCIPARUM)]
     inputs += [Path(r['path']) for r in receipts if r['status']=='available']
-    code=[Path(__file__),ROOT/'starplast/functional_ontology.py',ROOT/'starplast/discovery_labels.py',ROOT/'starplast/datasets.py']
+    code=[Path(__file__),ROOT/'parascape/functional_ontology.py',ROOT/'parascape/discovery_labels.py',ROOT/'parascape/datasets.py']
     inputs+=code
     (output/'code').mkdir()
     for path in code:(output/'code'/path.name).write_bytes(path.read_bytes())

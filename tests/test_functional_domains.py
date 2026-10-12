@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from starplast import functional_domains as F
+from parascape import functional_domains as F
 
 IPR = 'ENTRY_AC\tENTRY_TYPE\tENTRY_NAME\nIPR000001\tDomain\tKringle\n'
 PFAM = '# STOCKHOLM 1.0\n#=GF ID   Kinase\n#=GF AC   PF00001.5\n#=GF DE   Kinase family\n#=GF TP   Family\n//\n'

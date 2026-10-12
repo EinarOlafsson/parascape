@@ -1,6 +1,6 @@
 # A cell diagram under the compartment list, coloured to match — DONE 2026-08-12
 
-`starplast/celldiagram.py`, under the class list, shown only when the colour source is
+`parascape/celldiagram.py`, under the class list, shown only when the colour source is
 `compartment` or `compartment_best` — there is no sensible mapping from cell-cycle phase onto
 organelles, and colouring them by one would be a picture of a relationship that does not exist.
 

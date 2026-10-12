@@ -15,8 +15,8 @@ os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 
 from PyQt6 import QtCore, QtTest, QtWidgets  # noqa: E402
 
-from starplast import glass  # noqa: E402
-from starplast import theme as TH  # noqa: E402
+from parascape import glass  # noqa: E402
+from parascape import theme as TH  # noqa: E402
 
 W = QtCore.Qt.WidgetAttribute
 
@@ -25,7 +25,7 @@ W = QtCore.Qt.WidgetAttribute
 def qapp():
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     glass.install(app)
-    app.setProperty("starplastTheme", "dark")
+    app.setProperty("parascapeTheme", "dark")
     app.setStyleSheet(TH.stylesheet("dark"))
     yield app
 
@@ -269,13 +269,13 @@ def test_without_a_compositor_a_dressed_dialog_is_opaque_and_masked(qapp, monkey
 # --------------------------------------------------------------------------- on the window
 @pytest.fixture(scope="module")
 def win(qapp):
-    from starplast import app as A
+    from parascape import app as A
     w = A.Window()
     yield w
     w.console.remove()
 
 
-def test_every_window_starplast_builds_is_dressed(win, tmp_path):
+def test_every_window_parascape_builds_is_dressed(win, tmp_path):
     import pandas as pd
     table = tmp_path / "t.csv"
     pd.DataFrame({"gene": list(win.nodes.gene_id.iloc[:4]), "x": range(4)}).to_csv(table,
@@ -310,7 +310,7 @@ def test_preferences_is_still_a_window_of_its_own_when_dressed(win):
 
 def test_the_window_applies_the_theme_the_painted_parts_read(win, qapp):
     win.apply_theme("light")
-    assert qapp.property("starplastTheme") == "light"
+    assert qapp.property("parascapeTheme") == "light"
     assert "rgba(255, 255, 255, " in _rule(qapp.styleSheet(), "QMenu")
     win.apply_theme("dark")
     assert "rgba(0, 0, 0, " in _rule(qapp.styleSheet(), "QMenu")

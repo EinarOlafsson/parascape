@@ -23,8 +23,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT/'scripts'))
-from starplast import datasets as D  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import datasets as D  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 from recover_source_files import download  # noqa: E402
 
 # Exact filename publicly listed by the official GTEx downloads catalogue.
@@ -40,7 +40,7 @@ def _sha(path):
 
 
 def _metadata(url, target):
-    request = urllib.request.Request(url, headers={'User-Agent': 'starplast-source-review/1'})
+    request = urllib.request.Request(url, headers={'User-Agent': 'parascape-source-review/1'})
     with urllib.request.urlopen(request, timeout=25) as response:
         data = response.read((8 << 20)+1)
     if len(data) > 8 << 20:
@@ -69,7 +69,7 @@ def review(root, output):
         raise ValueError('Use the existing archive and a new host-review snapshot')
     output.mkdir(parents=True)
     binding_path = ROOT/'results/source_recovery_final_2026_10_07_v2/bindings.json'
-    inputs = [Path(__file__), binding_path, ROOT/'starplast/datasets.py', ROOT/'scripts/recover_source_files.py']
+    inputs = [Path(__file__), binding_path, ROOT/'parascape/datasets.py', ROOT/'scripts/recover_source_files.py']
     records = []
     for key in ('host_gtex_transcriptome', 'host_mouse_tissue_transcriptome'):
         source = D.get(key)

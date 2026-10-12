@@ -1,17 +1,17 @@
 # Work continuation watchdog acceptance, 2026-10-08
 
 The user explicitly requested continued work and a watchdog with stop-cause
-logging. Native goal continuation is enabled for the unfinished Starplast list.
+logging. Native goal continuation is enabled for the unfinished ParaScape list.
 The native goal is observed active; it is not marked complete by this setup.
 Official behavior: https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex
 
-Independent systemd user timer `starplast-work-watchdog.timer` is enabled/active,
+Independent systemd user timer `parascape-work-watchdog.timer` is enabled/active,
 checks every minute; its oneshot service succeeds under MemoryMax=128M and
 TimeoutStartSec=30. Installed unit copies match `scripts/systemd/`. The monitor
 is observational: it never starts a second agent, changes budgets/permissions,
 writes the source runtime log or sends prompts to evade a restriction.
 
-Private runtime state/log: `.starplast-watchdog/state.json` and `events.jsonl`,
+Private runtime state/log: `.parascape-watchdog/state.json` and `events.jsonl`,
 ignored by git. Locked append-only event writes and atomic state replacement
 serialize timer/agent updates. Bounded reads preserve incomplete lines and skip
 oversized bodies without losing subsequent boundaries. Real source activity

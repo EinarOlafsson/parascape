@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.01, 64.04 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/strategies.py`, `starplast/strategy_catalog.py`, `starplast/strategy_graph.py`, `starplast/strategy_learning.py` |
+| Existing code to inspect | `parascape/strategies.py`, `parascape/strategy_catalog.py`, `parascape/strategy_graph.py`, `parascape/strategy_learning.py` |
 
 ## Deliverable
 
@@ -33,7 +33,7 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Completion evidence
 
-`starplast/capabilities.py` declares all 39 catalogue keys and all 40 techniques, with exact query/output/evidence/parameter requirements, benchmark biological units, fit/cache dependencies and test roles. New undeclared catalogue entries/techniques fail closed. The resolver preserves canonical entities, target/seed/context meanings, returns named refusals and never invokes inference or manufactures probabilities. Evidence-family/class summaries and pair rankings retain their actual units; imputation uses transformed percentiles, condition shifts rank residuals, and ortholog output adapts to target type. Candidate benchmark references match effective target, task, organism and unit; independent validation gaps remain explicit.
+`parascape/capabilities.py` declares all 39 catalogue keys and all 40 techniques, with exact query/output/evidence/parameter requirements, benchmark biological units, fit/cache dependencies and test roles. New undeclared catalogue entries/techniques fail closed. The resolver preserves canonical entities, target/seed/context meanings, returns named refusals and never invokes inference or manufactures probabilities. Evidence-family/class summaries and pair rankings retain their actual units; imputation uses transformed percentiles, condition shifts rank residuals, and ortholog output adapts to target type. Candidate benchmark references match effective target, task, organism and unit; independent validation gaps remain explicit.
 
 Frozen artifact: `results/capability_contracts_2026_10_08_v2/`, with executed catalogue and verification notebooks. **624 synthetic query/strategy routes and 78 native plans** verified, including explicit host-adapter refusals. Original diagnostic/code retained. **1,104 broad strategy/contract checks passed**; following final declaration tightening, **855 current capability/query/truth/docstring/organism checks passed**. An initially invalid organism fixture and target-refusal expectation were corrected; no failed test remains. Python 3.10 syntax and all final input/output hashes verified. Documentation is linked through the API and included in the docs build.
 

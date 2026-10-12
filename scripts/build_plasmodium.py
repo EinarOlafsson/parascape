@@ -29,7 +29,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import host, paths, pf_graph, plasmodium  # noqa: E402
+from parascape import host, paths, pf_graph, plasmodium  # noqa: E402
 
 #: A coverage change smaller than this in either direction is not worth a line of output. It is ONE
 #: gene: the 4-gene regression that motivated this check would have printed.

@@ -15,10 +15,10 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import artifacts as A, baselines as B, capabilities as C, organisms as O, record_scorecards as R, scorecard as SC, strategies as S, strategy_catalog as N, transfer_records as T  # noqa: E402
-from starplast.ground_truth import read_registry  # noqa: E402
-from starplast.query import Query  # noqa: E402
-from starplast.splits import read_split, write_split  # noqa: E402
+from parascape import artifacts as A, baselines as B, capabilities as C, organisms as O, record_scorecards as R, scorecard as SC, strategies as S, strategy_catalog as N, transfer_records as T  # noqa: E402
+from parascape.ground_truth import read_registry  # noqa: E402
+from parascape.query import Query  # noqa: E402
+from parascape.splits import read_split, write_split  # noqa: E402
 
 
 def _records(frame):
@@ -102,10 +102,10 @@ def freeze(output):
         baseline_rows = rows.drop(columns=['prediction', 'correct', 'abstained']).assign(prediction=baseline[column].to_numpy())
         baseline_cards[column] = R.aggregate(baseline_rows, scope)
     exclusion_hash = hashlib.sha256(A.canonical_object(asdict(exclusions)).encode()).hexdigest()
-    code = {'transfer_adapter': ROOT/'starplast/transfer_records.py', 'label_batch': ROOT/'starplast/label_records.py',
-        'native_transfer': ROOT/'starplast/strategy_catalog.py', 'native_context': ROOT/'starplast/strategies.py',
-        'native_text_mapping': ROOT/'starplast/embedding.py', 'scorecard_aggregation': ROOT/'starplast/record_scorecards.py',
-        'standard_metrics': ROOT/'starplast/scorecard.py', 'baseline_recipes': ROOT/'starplast/baselines.py',
+    code = {'transfer_adapter': ROOT/'parascape/transfer_records.py', 'label_batch': ROOT/'parascape/label_records.py',
+        'native_transfer': ROOT/'parascape/strategy_catalog.py', 'native_context': ROOT/'parascape/strategies.py',
+        'native_text_mapping': ROOT/'parascape/embedding.py', 'scorecard_aggregation': ROOT/'parascape/record_scorecards.py',
+        'standard_metrics': ROOT/'parascape/scorecard.py', 'baseline_recipes': ROOT/'parascape/baselines.py',
         'pilot_assembler': Path(__file__)}
     dependencies = [A.Dependency('code', name, _sha(path)) for name, path in code.items()]
     dependencies.extend(A.Dependency(kind, name, digest) for kind, name, digest in (
@@ -142,7 +142,7 @@ def freeze(output):
     (output/'summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')
     inputs = [registry, split_path, *paths.values(), *(Path(e.truth_file.path) for e in (receiver, donor)),
         *(Path(e.universe_file.path) for e in (receiver, donor)), *code.values(),
-        ROOT/'starplast/splits.py', ROOT/'starplast/artifacts.py', ROOT/'starplast/capabilities.py', ROOT/'starplast/ground_truth.py']
+        ROOT/'parascape/splits.py', ROOT/'parascape/artifacts.py', ROOT/'parascape/capabilities.py', ROOT/'parascape/ground_truth.py']
     (output/'manifest.json').write_text(json.dumps({'created_utc': datetime.now(timezone.utc).isoformat(),
         'input_sha256': {str(path): _sha(path) for path in inputs}, 'summary': summary,
         'outputs': {str(path.relative_to(output)): _sha(path) for path in output.rglob('*.json')}}, indent=2)+'\n')

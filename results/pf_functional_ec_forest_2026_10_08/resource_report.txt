@@ -1,5 +1,5 @@
 Command terminated by signal 9
-	Command being timed: "/home/carruthers/anaconda3/envs/starplast/bin/python scripts/freeze_pf_functional_ec_forest.py --out results/pf_functional_ec_forest_2026_10_08"
+	Command being timed: "/home/carruthers/anaconda3/envs/parascape/bin/python scripts/freeze_pf_functional_ec_forest.py --out results/pf_functional_ec_forest_2026_10_08"
 	User time (seconds): 4.78
 	System time (seconds): 0.48
 	Percent of CPU this job got: 99%

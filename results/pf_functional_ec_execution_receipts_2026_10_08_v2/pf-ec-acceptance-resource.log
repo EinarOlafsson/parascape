@@ -1,20 +1,20 @@
 Traceback (most recent call last):
-  File "/media/carruthers/mnt3/claude/repo/starplast/scripts/package_pf_functional_ec_results.py", line 116, in <module>
+  File "/media/carruthers/mnt3/claude/repo/parascape/scripts/package_pf_functional_ec_results.py", line 116, in <module>
     if __name__=='__main__':main()
                             ^^^^^^
-  File "/media/carruthers/mnt3/claude/repo/starplast/scripts/package_pf_functional_ec_results.py", line 105, in main
+  File "/media/carruthers/mnt3/claude/repo/parascape/scripts/package_pf_functional_ec_results.py", line 105, in main
     nb.code('result=package(source,output)','result')
-  File "/media/carruthers/mnt3/claude/repo/starplast/scripts/notebook_runner.py", line 50, in code
+  File "/media/carruthers/mnt3/claude/repo/parascape/scripts/notebook_runner.py", line 50, in code
     exec(compile(body, f"<cell {self.count}>", "exec"), self.ns)
   File "<cell 1>", line 1, in <module>
-  File "/media/carruthers/mnt3/claude/repo/starplast/scripts/package_pf_functional_ec_results.py", line 73, in package
+  File "/media/carruthers/mnt3/claude/repo/parascape/scripts/package_pf_functional_ec_results.py", line 73, in package
     'source_directory':str(source.relative_to(ROOT)),'source_summary':original,'summary':original,
                            ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/carruthers/anaconda3/envs/starplast/lib/python3.12/pathlib.py", line 682, in relative_to
+  File "/home/carruthers/anaconda3/envs/parascape/lib/python3.12/pathlib.py", line 682, in relative_to
     raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
-ValueError: 'results/pf_functional_ec_knn_2026_10_08_v2' is not in the subpath of '/media/carruthers/mnt3/claude/repo/starplast'
+ValueError: 'results/pf_functional_ec_knn_2026_10_08_v2' is not in the subpath of '/media/carruthers/mnt3/claude/repo/parascape'
 Command exited with non-zero status 1
-	Command being timed: "/home/carruthers/anaconda3/envs/starplast/bin/python scripts/package_pf_functional_ec_results.py --source results/pf_functional_ec_knn_2026_10_08_v2 --out results/pf_functional_ec_knn_acceptance_2026_10_08"
+	Command being timed: "/home/carruthers/anaconda3/envs/parascape/bin/python scripts/package_pf_functional_ec_results.py --source results/pf_functional_ec_knn_2026_10_08_v2 --out results/pf_functional_ec_knn_acceptance_2026_10_08"
 	User time (seconds): 0.87
 	System time (seconds): 0.16
 	Percent of CPU this job got: 99%

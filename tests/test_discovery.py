@@ -17,7 +17,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import discovery as D  # noqa: E402
+from parascape import discovery as D  # noqa: E402
 
 
 def table(n_noise=300, seed=0):
@@ -252,7 +252,7 @@ def test_a_finding_about_a_layer_that_built_the_map_is_marked_circular():
 def test_a_layer_measured_twice_is_circular_through_either_name():
     """hyperLOPIT's probabilities built the map and `compartment` is what hyperLOPIT calls its
     answer. An exact column match would call that pair independent."""
-    from starplast.search import SAME_QUANTITY
+    from parascape.search import SAME_QUANTITY
     family = next(iter(SAME_QUANTITY.values()))
     assert D._touches(list(family)[0], set(family))
 
@@ -349,7 +349,7 @@ def test_a_category_below_the_minimum_count_is_not_a_claim():
 def test_a_layer_is_circular_through_a_column_that_merely_starts_with_the_family_name():
     """`lopit_prob_er` built the map and `compartment` is what that experiment calls its answer.
     Matching exact column names would call the pair independent."""
-    from starplast.search import SAME_QUANTITY
+    from parascape.search import SAME_QUANTITY
     family = sorted(next(iter(SAME_QUANTITY.values())))
     assert D._touches(family[0], {f"{family[0]}_probability_er"})
     assert not D._touches("something_else_entirely", {"unrelated_column"})

@@ -22,8 +22,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import deposits, host, organisms as O, paths  # noqa: E402
-from starplast.provenance import audit_mapping  # noqa: E402
+from parascape import deposits, host, organisms as O, paths  # noqa: E402
+from parascape.provenance import audit_mapping  # noqa: E402
 from recover_source_files import download  # noqa: E402
 
 PAGE = "https://link.springer.com/article/10.1038/s44318-026-00911-z"
@@ -134,8 +134,8 @@ def review(root: Path, output: Path, archive_receipt: Path | None = None) -> dic
         record.update(status="review_or_retrieval_failed", error=f"{type(error).__name__}: {error}")
     (output / "review.json").write_text(json.dumps(record, indent=2, allow_nan=False) + "\n")
     manifest = {"input_sha256": {str(Path(__file__)): _sha(__file__),
-                                str(ROOT / "starplast/deposits.py"): _sha(ROOT / "starplast/deposits.py"),
-                                str(ROOT / "starplast/host.py"): _sha(ROOT / "starplast/host.py")},
+                                str(ROOT / "parascape/deposits.py"): _sha(ROOT / "parascape/deposits.py"),
+                                str(ROOT / "parascape/host.py"): _sha(ROOT / "parascape/host.py")},
                 "outputs": {"review.json": _sha(output / "review.json")}}
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return record

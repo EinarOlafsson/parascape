@@ -2,7 +2,7 @@
 import numpy as np
 import pytest
 from PyQt6 import QtWidgets
-from starplast import app as A
+from parascape import app as A
 
 
 @pytest.fixture(scope="module")

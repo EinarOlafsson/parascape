@@ -3,7 +3,7 @@ from dataclasses import replace
 
 import pytest
 
-from starplast.dataset_selection import DatasetCandidate, SelectionPolicy, evaluate, preferred, rank_candidates
+from parascape.dataset_selection import DatasetCandidate, SelectionPolicy, evaluate, preferred, rank_candidates
 
 
 AS_OF = "2026-10-07"

@@ -15,10 +15,10 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import artifacts as A, baselines as B, capabilities as C, label_records as L, organisms as O, record_scorecards as R, scorecard as SC, strategies as S  # noqa: E402
-from starplast.ground_truth import read_registry  # noqa: E402
-from starplast.query import Query  # noqa: E402
-from starplast.splits import make_exclusions, make_split, write_split  # noqa: E402
+from parascape import artifacts as A, baselines as B, capabilities as C, label_records as L, organisms as O, record_scorecards as R, scorecard as SC, strategies as S  # noqa: E402
+from parascape.ground_truth import read_registry  # noqa: E402
+from parascape.query import Query  # noqa: E402
+from parascape.splits import make_exclusions, make_split, write_split  # noqa: E402
 
 
 def _records(frame):
@@ -77,15 +77,15 @@ def freeze(output):
     output.mkdir(parents=True)
     write_split(output / 'split.json', split, exclusions=exclusions)
     inputs = [Path(__file__), registry, Path(entry.truth_file.path), Path(entry.universe_file.path), source,
-        *(ROOT / 'starplast' / name for name in ('label_records.py', 'artifacts.py', 'record_scorecards.py', 'splits.py', 'strategies.py', 'baselines.py', 'capabilities.py'))]
+        *(ROOT / 'parascape' / name for name in ('label_records.py', 'artifacts.py', 'record_scorecards.py', 'splits.py', 'strategies.py', 'baselines.py', 'capabilities.py'))]
     sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
     exclusion_hash = hashlib.sha256(A.canonical_object(asdict(exclusions)).encode()).hexdigest()
     dependencies = tuple(A.Dependency(kind, name, digest) for kind, name, digest in (
         ('table', 'installed_gene_universe', sha(source)), ('truth', entry.benchmark_id, entry.truth_file.sha256),
-        ('code', 'label_adapter', sha(ROOT / 'starplast/label_records.py')), ('code', 'native_vote', sha(ROOT / 'starplast/strategies.py')),
-        ('code', 'scorecard_aggregation', sha(ROOT / 'starplast/record_scorecards.py')),
-        ('code', 'standard_metrics', sha(ROOT / 'starplast/scorecard.py')),
-        ('code', 'baseline_recipes', sha(ROOT / 'starplast/baselines.py')),
+        ('code', 'label_adapter', sha(ROOT / 'parascape/label_records.py')), ('code', 'native_vote', sha(ROOT / 'parascape/strategies.py')),
+        ('code', 'scorecard_aggregation', sha(ROOT / 'parascape/record_scorecards.py')),
+        ('code', 'standard_metrics', sha(ROOT / 'parascape/scorecard.py')),
+        ('code', 'baseline_recipes', sha(ROOT / 'parascape/baselines.py')),
         ('code', 'pilot_assembler', sha(Path(__file__))),
         ('split', 'nested', split.identity), ('exclusions', 'training_source_closure', exclusion_hash)))
     query = Query(O.TOXOPLASMA, 'label', target=entry.target)

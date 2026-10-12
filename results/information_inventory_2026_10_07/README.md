@@ -71,15 +71,15 @@ docstrings. Initial synthetic checks passed, but review found an incorrect graph
 endpoint suffix in the first census. Correcting it to the shipped `__a`/`__b`
 schema and adding a real-graph test exposed a test-helper key error; that was
 fixed and the final checks passed. Earlier snapshots are kept outside the tree
-under `/tmp/starplast-inventory-first-attempt-20261007` and
-`/tmp/starplast-inventory-pre-manifest-version-20261007`.
+under `/tmp/parascape-inventory-first-attempt-20261007` and
+`/tmp/parascape-inventory-pre-manifest-version-20261007`.
 
 Reproduce in a fresh directory under a RAM lease and memory cap:
 
 ```bash
 systemd-run --user --scope -p MemoryMax=4G env QT_QPA_PLATFORM=offscreen \
   OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 NUMBA_NUM_THREADS=2 \
-  /home/carruthers/anaconda3/envs/starplast/bin/python \
+  /home/carruthers/anaconda3/envs/parascape/bin/python \
   scripts/build_information_inventory.py --out results/information_inventory_NEW
 ```
 

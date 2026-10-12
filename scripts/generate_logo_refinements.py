@@ -69,9 +69,9 @@ def main():
     """Write the ten SVG sets, a numbered contact sheet, and a light/dark gallery."""
     app=QtGui.QGuiApplication([])
     OUT.mkdir(parents=True,exist_ok=True)
-    word=outline('starplast',76)
+    word=outline('parascape',76)
     sheet=['<rect width="1800" height="1100" fill="white"/>',
-           '<g color="black" transform="translate(62 67)">'+outline('starplast / constellation refinements',32)+'</g>',
+           '<g color="black" transform="translate(62 67)">'+outline('parascape / constellation refinements',32)+'</g>',
            '<g color="black" transform="translate(62 102)">'+outline('Ten variations on the approved mark. Thin lines, rounded ends, connected stars.',17)+'</g>']
     cards=[]
     for i,option in enumerate(OPTIONS,1):
@@ -80,8 +80,8 @@ def main():
         for inverse in (False,True):
             suffix='-white' if inverse else ''
             ink='white' if inverse else 'black'
-            icon=svg(mark(option,inverse),240,310,f'Starplast {i:02} / {name}')
-            lockup=svg(mark(option,inverse)+f'<g color="{ink}" transform="translate(240 186)">{word}</g>',620,310,f'Starplast {i:02} / {name} wordmark')
+            icon=svg(mark(option,inverse),240,310,f'ParaScape {i:02} / {name}')
+            lockup=svg(mark(option,inverse)+f'<g color="{ink}" transform="translate(240 186)">{word}</g>',620,310,f'ParaScape {i:02} / {name} wordmark')
             (OUT/f'{stem}-icon{suffix}.svg').write_text(icon)
             (OUT/f'{stem}-wordmark{suffix}.svg').write_text(lockup)
         render(svg(mark(option),240,310,name),OUT/f'{stem}.png',480,620)
@@ -96,11 +96,11 @@ def main():
 <a href="{stem}-wordmark.svg" download>Wordmark SVG</a>
 <a href="{stem}-icon-white.svg" download>White icon</a>
 <a href="{stem}-wordmark-white.svg" download>White wordmark</a></nav></article>''')
-    comparison=svg(''.join(sheet),1800,1100,'Starplast / ten Toxoplasma constellation refinements')
+    comparison=svg(''.join(sheet),1800,1100,'ParaScape / ten Toxoplasma constellation refinements')
     (OUT/'comparison.svg').write_text(comparison)
     render(comparison,OUT/'comparison.png',3600,2200)
     page='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Starplast / ten constellation refinements</title><style>
+<title>ParaScape / ten constellation refinements</title><style>
 *{box-sizing:border-box}body{margin:0;color:#111;background:#fff;font:16px/1.6 system-ui,sans-serif}main{max-width:1400px;margin:auto;padding:44px 28px}
 h1{font-size:36px;font-weight:300;line-height:1.2}h2{font-size:20px;font-weight:400}p{max-width:840px}a{color:inherit;text-underline-offset:4px}
 header nav,article nav{display:flex;gap:20px;flex-wrap:wrap}label{display:block;margin:26px 0;cursor:pointer}.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
@@ -109,10 +109,10 @@ body:has(#dark:checked){color:#fff;background:#080808}body:has(#dark:checked) ar
 @media(max-width:760px){.grid{grid-template-columns:1fr}main{padding:25px 16px}h1{font-size:28px}}
 </style></head><body><main><header><h1>Ten constellation refinements</h1>
 <p>Each version keeps the asymmetric Toxoplasma silhouette, softly rounded ends, thin monochrome lines, and an obvious connected constellation. The stars represent a gene network, not cell anatomy.</p>
-<nav><a href="starplast-logo-refinements.zip" download>Download all SVGs</a><a href="comparison.png">Numbered comparison</a><a href="../toxoplasma-constellation/index.html">Current logo</a></nav>
+<nav><a href="parascape-logo-refinements.zip" download>Download all SVGs</a><a href="comparison.png">Numbered comparison</a><a href="../toxoplasma-constellation/index.html">Current logo</a></nav>
 <label><input type="checkbox" id="dark"> White on black</label></header><div class="grid">'''+''.join(cards)+'''</div></main></body></html>\n'''
     (OUT/'index.html').write_text(page)
-    with zipfile.ZipFile(OUT/'starplast-logo-refinements.zip','w',zipfile.ZIP_DEFLATED) as archive:
+    with zipfile.ZipFile(OUT/'parascape-logo-refinements.zip','w',zipfile.ZIP_DEFLATED) as archive:
         for p in sorted(OUT.glob('*.svg')):archive.write(p,p.name)
     print(f'Wrote ten proposals and gallery to {OUT}')
 

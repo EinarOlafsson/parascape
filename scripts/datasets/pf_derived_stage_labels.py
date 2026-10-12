@@ -6,7 +6,7 @@ Maximum expression across stages, and which stage a gene belongs to
     level / kind : transcription / RNAseq
     provides     : expr_max, stage_enriched_derived, stage_margin_derived
     coverage     : 5,720 genes for the maximum, 310 labelled
-    local path   : starplast/data/pf_nodes.parquet
+    local path   : parascape/data/pf_nodes.parquet
     derived from : expr_ring, expr_early_trophozoite, expr_late_trophozoite, expr_schizont, expr_gametocyte_ii, expr_gametocyte_v, expr_ookinete, expr_oocyst, expr_sporozoite
 
 Quirks that cost time once:
@@ -23,7 +23,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/pf_derived_stage_labels.py

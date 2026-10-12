@@ -4,8 +4,8 @@
 
 Crash recovery: all implementation commits through `05650fd` survived and were pushed. The 45
 focused recovery checks passed. Documentation CI passed; test CI had 4,138 passes and one stale
-packaging assertion that disallowed subpackages. The assertion now checks that every Starplast
-source package is included in the single distribution, including `starplast.spaces`.
+packaging assertion that disallowed subpackages. The assertion now checks that every ParaScape
+source package is included in the single distribution, including `parascape.spaces`.
 All 50 publishing/release checks pass with this correction. Follow-up remote CI remains pending.
 
 ### Continued implementation
@@ -87,7 +87,7 @@ Validation (Python 3.12, pandas 3, offscreen Qt, local GPU environment):
   the old mixed cache or a missing mouse cache. `release.py check`, Python 3.11 syntax parsing and
   `git diff --check` pass. No release/version bump is part of this milestone.
 
-* **R0 done:** `starplast/organisms.py` declares Tg and Pf, and `tests/test_organisms.py` holds it to every literal it replaces.
+* **R0 done:** `parascape/organisms.py` declares Tg and Pf, and `tests/test_organisms.py` holds it to every literal it replaces.
 * **R1 done:** these now read the registry:
   * `slots.SPECIES_TABLES`, `SPECIES_PREFIXES` and `SPECIES_BRIDGE_TABLES`;
   * `app.SPECIES` and `DEFAULT_SPECIES`, and the gene record link;
@@ -141,7 +141,7 @@ Where each organism assumption lives (file:line):
 
 ### Raw data acquired (2026-09-26)
 
-5.9 GB is downloaded under `<STARPLAST_DATA>/spaces/<code>/<kind>/<source>/`.
+5.9 GB is downloaded under `<PARASCAPE_DATA>/spaces/<code>/<kind>/<source>/`.
 
 * **What is there:** Hs, Mm, Rn, Fc, Ag, As, Cp and Pb, plus `shared/` (gene2pubmed, gene_orthologs,
   BioGRID, BioGRID PTMs and ORCS, IntAct).
@@ -197,7 +197,7 @@ targets once each species has its own table, slots, leakage families and calibra
 
 ### WP0, registry and refactor (serial; everything else waits for it)
 
-Add `starplast/organisms.py` with one `Space` per organism. A space declares:
+Add `parascape/organisms.py` with one `Space` per organism. A space declares:
 
 * `code` (Tg, Pf, Pb, Cp, Hs, Mm, Rn, Fc, Ag, As), `species`, `reference`, and `kind`
   (parasite, host or vector);

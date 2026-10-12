@@ -16,7 +16,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import organisms as O  # noqa: E402
+from parascape import organisms as O  # noqa: E402
 
 
 def diagnostic_review(slot: str) -> str:

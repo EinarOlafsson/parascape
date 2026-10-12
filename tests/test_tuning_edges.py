@@ -17,8 +17,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import tuning as TU  # noqa: E402
-from starplast.embedding import EmbeddingSpec  # noqa: E402
+from parascape import tuning as TU  # noqa: E402
+from parascape.embedding import EmbeddingSpec  # noqa: E402
 
 
 def _nodes(n=150, seed=0):
@@ -361,7 +361,7 @@ def test_an_embedding_saved_without_gene_ids_still_loads(tmp_path):
 def test_a_stopped_walk_keeps_every_configuration_it_finished(tmp_path):
     """The walk yields per configuration and writes each one to the store as it goes, so stopping
     costs the configuration in flight and nothing else."""
-    from starplast.embedding import EmbeddingSpec
+    from parascape.embedding import EmbeddingSpec
     store = TU.EmbeddingStore(str(tmp_path))
     seen = {"n": 0}
 

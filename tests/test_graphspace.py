@@ -32,8 +32,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import graphspace as G  # noqa: E402
-from starplast import strategies as S  # noqa: E402
+from parascape import graphspace as G  # noqa: E402
+from parascape import strategies as S  # noqa: E402
 
 
 @pytest.fixture(scope="module")

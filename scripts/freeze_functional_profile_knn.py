@@ -22,7 +22,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import organisms as _ORGANISMS
+from parascape import organisms as _ORGANISMS
 from scripts import freeze_functional_profile_controls as P
 
 PILOT_ID = 'FN-DOM-KNN-01-Tg-pfam-complete-profile'
@@ -50,8 +50,8 @@ def _score_payload(frame):
 def prepare_inputs(nodes, contract, *, derived_inputs=()):
     """Freeze registered numeric inputs and source closure from exact training rows."""
     import pandas as pd
-    from starplast import datasets as D, functional_exclusions as E, strategies as S
-    from starplast.functional_profile_targets import ProfileTargetContract
+    from parascape import datasets as D, functional_exclusions as E, strategies as S
+    from parascape.functional_profile_targets import ProfileTargetContract
 
     if not isinstance(contract, ProfileTargetContract) or contract.organism != _ORGANISMS.TOXOPLASMA or contract.source_target != 'pfam_id':
         raise ValueError('A typed Tg complete-Pfam preparation is required')
@@ -115,7 +115,7 @@ def native_replay(features, labels, split, model):
     import numpy as np
     import pandas as pd
     from sklearn.neighbors import NearestNeighbors
-    from starplast import strategies as S
+    from parascape import strategies as S
 
     ids = tuple(a.entity for a in split.assignments)
     if tuple(features.index) != ids or tuple(labels.index) != split.entities('train'):
@@ -169,8 +169,8 @@ def fit_recovery(features, contract, exclusions):
     """Fit fixed native kNN and retain every test profile, abstention and class score."""
     import numpy as np
     import pandas as pd
-    from starplast import artifacts as A, label_records as L, record_scorecards as R, scorecard as SC
-    from starplast.scorecard_view import build_scorecard_view
+    from parascape import artifacts as A, label_records as L, record_scorecards as R, scorecard as SC
+    from parascape.scorecard_view import build_scorecard_view
 
     labels = contract.training_labels()
     batch = L.feature_knn(features, labels, split=contract.split, exclusions=exclusions,
@@ -238,8 +238,8 @@ def evaluation_scope(contract, *, limitations=()):
 
 def artifact_spec(contract, dependencies, *, limitations=(), model_available=True):
     """Build the complete native held-out artifact contract used by execution and tests."""
-    from starplast import artifacts as A, capabilities as C, scorecard as SC
-    from starplast.query import Query
+    from parascape import artifacts as A, capabilities as C, scorecard as SC
+    from parascape.query import Query
     if type(model_available) is not bool:
         raise ValueError('Model availability must be explicit boolean metadata')
     evaluation = evaluation_scope(contract, limitations=limitations)
@@ -256,8 +256,8 @@ def freeze(output):
     """Execute one fixed candidate into a new result packet with byte-pinned inputs."""
     import numpy as np
     import pandas as pd
-    from starplast import artifacts as A
-    from starplast.splits import write_split, read_split
+    from parascape import artifacts as A
+    from parascape.splits import write_split, read_split
 
     output = Path(output)
     started = time.monotonic()
@@ -296,7 +296,7 @@ def freeze(output):
     write_split(output / 'split.json', contract.split, exclusions)
     assert read_split(output / 'split.json') == (contract.split, exclusions)
     code = [Path(__file__), ROOT / 'tests/test_functional_profile_knn.py', Path(P.__file__), ROOT / 'scripts/notebook_runner.py',
-            *[ROOT / 'starplast' / name for name in ('label_records.py', 'functional_exclusions.py', 'functional_profile_targets.py',
+            *[ROOT / 'parascape' / name for name in ('label_records.py', 'functional_exclusions.py', 'functional_profile_targets.py',
             'functional_domain_profiles.py', 'strategies.py', 'datasets.py', 'search.py', 'slots.py', 'embedding.py',
             'scorecard.py', 'record_scorecards.py', 'scorecard_view.py', 'baselines.py', 'splits.py', 'artifacts.py',
             'capabilities.py', 'query.py', 'ground_truth.py', 'provenance.py', 'organisms.py')]]

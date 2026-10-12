@@ -17,7 +17,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import screens as SC  # noqa: E402
+from parascape import screens as SC  # noqa: E402
 
 
 @pytest.fixture(autouse=True)

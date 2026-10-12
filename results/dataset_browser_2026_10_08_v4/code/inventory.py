@@ -48,7 +48,7 @@ def _projection(dataset, column, catalog):
     # but explicitly store their outputs in a host protein table. Keep both
     # addresses rather than projecting host proteins onto parasite genes.
     for host, filename in organisms.HOST_TABLES.items():
-        if dataset.path == "starplast/data/" + filename:
+        if dataset.path == "parascape/data/" + filename:
             code = host
             break
     if column.startswith((slots.EDGE_PREFIX, "bridge:")):

@@ -9,7 +9,7 @@ passes.
 import numpy as np
 import pytest
 
-from starplast import lod
+from parascape import lod
 
 
 def _blobs(centres, n=60, sd=0.25, seed=0):

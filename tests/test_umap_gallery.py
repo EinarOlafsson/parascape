@@ -9,8 +9,8 @@ import pytest
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 
-from starplast import organisms  # noqa: E402
-from starplast import umap_gallery as G  # noqa: E402
+from parascape import organisms  # noqa: E402
+from parascape import umap_gallery as G  # noqa: E402
 
 TG = organisms.TOXOPLASMA
 
@@ -128,8 +128,8 @@ def test_skill_is_zero_at_chance_one_at_perfect():
 
 
 def test_score_map_on_a_planted_table_finds_the_planted_label():
-    from starplast import strategies as S
-    from starplast.clustering import cluster
+    from parascape import strategies as S
+    from parascape.clustering import cluster
     ctx = S.planted_context(n=480, seed=7)
     X, cols = ctx.features()
     comp = ctx.truth("compartment")
@@ -150,7 +150,7 @@ def test_score_map_on_a_planted_table_finds_the_planted_label():
 
 
 def test_circular_flag_comes_from_the_leakage_closure():
-    from starplast import strategies as S
+    from parascape import strategies as S
     ctx = S.planted_context(n=300, seed=2)
     rows = np.arange(ctx.n)
     clusters = np.zeros(ctx.n, int)
@@ -262,7 +262,7 @@ def test_every_map_is_whole_and_over_this_table(shipped, code):
 
 @pytest.mark.parametrize("code", G.space_codes())
 def test_no_map_was_built_from_a_label(shipped, code):
-    from starplast import strategies as S
+    from parascape import strategies as S
     labels = set(S.shipped(code).categorical_columns())
     for r in shipped.maps(code):
         assert not labels & set(r["columns"]), r["id"]
@@ -273,7 +273,7 @@ def test_no_map_was_built_from_a_label(shipped, code):
 
 @pytest.mark.parametrize("code", G.space_codes())
 def test_every_label_is_scored_on_every_map(shipped, code):
-    from starplast import strategies as S
+    from parascape import strategies as S
     s = shipped.scores(code)
     labels = set(S.shipped(code).categorical_columns())
     maps = {r["id"] for r in shipped.maps(code)}
@@ -324,7 +324,7 @@ def test_the_gallery_is_large_and_covers_every_group(shipped, code):
 
 @pytest.mark.parametrize("code", G.space_codes())
 def test_an_all_but_map_never_saw_the_family_it_leaves_out(shipped, code):
-    from starplast import strategies as S
+    from parascape import strategies as S
     ctx = S.shipped(code)
     left_out = [r for r in shipped.maps(code) if r["id"].startswith("all_but_")]
     assert len(left_out) >= 2
@@ -369,7 +369,7 @@ def test_the_search_did_not_simply_pick_one_setting_everywhere(shipped):
 
 
 def test_every_column_has_a_plain_name_and_a_tooltip():
-    from starplast.umap_gallery_panel import TABLE_COLUMNS
+    from parascape.umap_gallery_panel import TABLE_COLUMNS
     for c in ("map", "label") + TABLE_COLUMNS:
         name, tip = G.SCORE_COLUMNS[c]
         assert name and len(tip.split()) >= 6
@@ -377,7 +377,7 @@ def test_every_column_has_a_plain_name_and_a_tooltip():
 
 # --------------------------------------------------------------------------- the dock
 def test_the_panel_lists_the_maps_and_reads_the_table_both_ways(shipped):
-    from starplast.umap_gallery_panel import MapGalleryPanel, LABEL_VIEW, MAP_VIEW
+    from parascape.umap_gallery_panel import MapGalleryPanel, LABEL_VIEW, MAP_VIEW
     from PyQt6 import QtWidgets
     p = MapGalleryPanel(TG, gallery=shipped)
     try:
@@ -421,7 +421,7 @@ def test_choosing_a_second_map_changes_the_score_table(shipped):
     view and the label. Both views now follow the current map, so A, then B, then A again gives
     three different tables and the third equals the first.
     """
-    from starplast.umap_gallery_panel import MapGalleryPanel, LABEL_VIEW, MAP_VIEW, SHOWN_MARK
+    from parascape.umap_gallery_panel import MapGalleryPanel, LABEL_VIEW, MAP_VIEW, SHOWN_MARK
     maps = [r["id"] for r in shipped.maps(TG)]
     a, b = maps[4], maps[7]
     for view in (LABEL_VIEW, MAP_VIEW):
@@ -455,7 +455,7 @@ def test_choosing_a_second_map_changes_the_score_table(shipped):
 
 def test_the_map_combo_and_a_double_clicked_row_choose_a_map_too(shipped):
     """The other two ways in: the combo in map view, and double-clicking a row in label view."""
-    from starplast.umap_gallery_panel import MapGalleryPanel, LABEL_VIEW, MAP_VIEW
+    from parascape.umap_gallery_panel import MapGalleryPanel, LABEL_VIEW, MAP_VIEW
     maps = [r["id"] for r in shipped.maps(TG)]
     p = MapGalleryPanel(TG, gallery=shipped)
     try:
@@ -477,7 +477,7 @@ def test_the_map_combo_and_a_double_clicked_row_choose_a_map_too(shipped):
 
 def test_the_panel_filters_sorts_and_groups_a_large_gallery(shipped):
     """With dozens of maps the list has to be searchable, sortable and groupable."""
-    from starplast.umap_gallery_panel import (MapGalleryPanel, SORT_STRUCTURE, SORT_LABEL,
+    from parascape.umap_gallery_panel import (MapGalleryPanel, SORT_STRUCTURE, SORT_LABEL,
                                              SORT_GENES, SORT_GROUP)
     from PyQt6 import QtCore
     USER = QtCore.Qt.ItemDataRole.UserRole
@@ -524,8 +524,8 @@ def test_the_panel_filters_sorts_and_groups_a_large_gallery(shipped):
 
 
 def test_the_window_shows_a_gallery_map_and_colors_it_in_one_click(shipped):
-    from starplast import app as A
-    from starplast import umap_gallery_panel as P
+    from parascape import app as A
+    from parascape import umap_gallery_panel as P
     w = A.Window()
     try:
         p = w.maps_panel

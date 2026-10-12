@@ -13,7 +13,7 @@ import json
 from pathlib import Path
 
 # Updated only when a verified immutable pilot is deliberately packaged.
-FUNCTIONAL_RESULTS_SHA256 = '226da90d0df1e2de1933c672c8158579e1e46d656113a072eb03bbd3b14de849'
+FUNCTIONAL_RESULTS_SHA256 = '7db91cb7f3a681b4e50b7a41b03670a9be3f7e9dd0fd9189ecc7269c5eba0007'
 _PAYLOAD_NAMES = ('rows.json','card.json','profile_class_cards.json',
                   'major_class_cards.json','baseline_cards.json')
 _CLASSES = {'1':'Oxidoreductases','2':'Transferases','3':'Hydrolases',

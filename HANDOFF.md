@@ -1,4 +1,4 @@
-# starplast — point a session here
+# parascape — point a session here
 
 > **Read [`NEXT_SESSION.md`](NEXT_SESSION.md) first** for the current state and restrictions. Updated2026-10-08 for the user-requested0.55.0 release. The broader work goal is **paused at the user's request**; publication does not complete it. The ledger records **22/51** completed actions (instruction64:13/40), with64.33 at50%. Gene/class/profile functional comparisons are implemented; independent biological validation, hosts and dataset replacements remain open. Resume only when requested. This file holds historical design decisions; use the current ledger rather than old completion claims below.
 
@@ -14,17 +14,17 @@ click and zoom from compartment level down to a single gene's evidence. Position
 force-directed layout — it is a UMAP embedding of a multimodal feature matrix, so proximity means biological
 similarity.
 
-Terminal entry point: `starplast`
+Terminal entry point: `parascape`
 
 ## Run it
 
 ```bash
-cd /mnt/firecuda2/Claude/repo/starplast        # the working copy on this machine
+cd /mnt/firecuda2/Claude/repo/parascape        # the working copy on this machine
 pip install -e .            # entry point AND the CUDA stack, on linux/x86_64 -- see below
 pip install -e . --no-deps  # the way to decline the ~2 GB of CUDA wheels
-python -m starplast.fetch_names   # one-off: ToxoDB and PlasmoDB identity tables -- NEEDS AN API KEY
-python -m starplast.build_graph   # one-off: rebuilds starplast/data/ (~5 min) -- READ THE NEXT NOTE
-starplast                   # launch
+python -m parascape.fetch_names   # one-off: ToxoDB and PlasmoDB identity tables -- NEEDS AN API KEY
+python -m parascape.build_graph   # one-off: rebuilds parascape/data/ (~5 min) -- READ THE NEXT NOTE
+parascape                   # launch
 pytest tests/ -q            # 3,328 tests, headless, no network, ~8 min
 pytest tests/ -q -m slow    # the real build and the pdoc pass, ~2 min
 ```
@@ -48,7 +48,7 @@ the parent of the first dataset root, and loaders join it several different ways
 resolve from it:
 
 ```
-starplast/           the package itself (codons and friends read starplast/data/)
+parascape/           the package itself (codons and friends read parascape/data/)
 datasets/            the dataset archive, old flat layout AND datasets/<level>/<type>/<PMID>/
 toxonet/             data/interim/nodes.parquet and edges_v3.parquet
 toxo_stage_atlas/    data/proteomics/ and data/transcriptomics/  (~60 columns)
@@ -56,7 +56,7 @@ starpath_*           starpath_interactions.csv, _crosslinks.json, _crosslink_min
 .claude/skills/toxoplasma-scientist/corpus/   pubmed_toxoplasma.jsonl (the abstract layer)
 ```
 
-On this machine they are split across `repo/starplast/` and `toxoplasma_projects/`, and the gap is
+On this machine they are split across `repo/parascape/` and `toxoplasma_projects/`, and the gap is
 bridged with symlinks (all gitignored). Get one wrong and **the build still exits 0** — a loader that
 cannot find its file returns an empty frame and is skipped in silence. Missing `toxo_stage_atlas`
 costs 59 columns; missing the StarPath export silently empties `best_model_agreement`; missing the
@@ -72,16 +72,16 @@ headless and does not.
 
 **GPU acceleration is ON by default, and the checkout install carries it.** Changed 2026-08-17 at the
 user's direction: `pip install -e .` used to give a CPU-only program, which is the wrong default on a
-machine with a CUDA card. `starplast-core` now lists the CUDA wheels in its own dependencies, markered
-to linux/x86_64 so the install still succeeds where RAPIDS publishes nothing. The `starplast-cpu`
-metapackage was DELETED rather than kept: it depended on `starplast-core`, so it would have inherited
+machine with a CUDA card. `parascape-core` now lists the CUDA wheels in its own dependencies, markered
+to linux/x86_64 so the install still succeeds where RAPIDS publishes nothing. The `parascape-cpu`
+metapackage was DELETED rather than kept: it depended on `parascape-core`, so it would have inherited
 those wheels transitively and become a name that installs the opposite of what it says. `--no-deps` is
 what remains for declining them. `Preferences ▸ compute` reports what it found
 and what that will buy. cuML moves UMAP and HDBSCAN themselves; CuPy or torch move the array work,
 which measured about 1.5x on large distance matrices and *negative* on rank scaling -- that path was
-deleted rather than shipped. Install with `pip install starplast-gpu`, or `pip install -e ".[gpu]"`
+deleted rather than shipped. Install with `pip install parascape-gpu`, or `pip install -e ".[gpu]"`
 in a checkout; both resolve to the same wheels, since the metapackage's only dependency is the
-extra. `starplast-install-gpu` picks the CUDA set from the driver and shows the command before it
+extra. `parascape-install-gpu` picks the CUDA set from the driver and shows the command before it
 runs anything -- **the newest set the driver could run is not the right answer**, because drivers
 are backward compatible and cu12 wheels run on a CUDA 13 driver while cu13 wheels do not run on a
 CUDA 12 one; it takes what torch in the environment was built against, else the lowest runnable set.
@@ -91,12 +91,12 @@ saved recipe). **A map built by cuML's UMAP is a different map of the same data*
 and the log says so whenever it happens.
 
 **Two interpreters, and the second is the one that matters.** The suite runs in
-`~/anaconda3/envs/spacr` (pandas 2.3.3); the user runs `~/anaconda3/envs/starplast` (pandas 3.0.5),
+`~/anaconda3/envs/spacr` (pandas 2.3.3); the user runs `~/anaconda3/envs/parascape` (pandas 3.0.5),
 where the editable install points at this checkout. Three bugs have shipped that were invisible on
 pandas 2 and total on pandas 3 — a read-only array written in place, and `.astype(str)` keeping NA
 where it used to give `"nan"`. Re-check anything touching a dataframe under the second interpreter.
 
-There is a second, **stale** checkout at `../toxoplasma_projects/starplast` from before the move.
+There is a second, **stale** checkout at `../toxoplasma_projects/parascape` from before the move.
 Nothing reads it; do not commit into it.
 
 ## The Strategies tab (2026-09-25, 0.44.0) -- read `instructions/done/49` before changing it
@@ -106,7 +106,7 @@ something from the combined data -- each with a guide, settings and a **self-tes
 information and scores the answer against the same procedure on shuffled data. The machinery is
 `strategies.py`, the strategies `strategy_catalog.py`, the tab `strategy_panel.py`, and
 `scripts/strategy_selftests.py` measures every one on the shipped tables and writes the verdicts
-the tab shows (`starplast/data/strategy_selftests.json`, `docs/strategies.md`). Four things not to
+the tab shows (`parascape/data/strategy_selftests.json`, `docs/strategies.md`). Four things not to
 undo:
 
 * **Every tester is one of the five patterns** in `strategies.py`, so a PASS means the same thing
@@ -213,7 +213,7 @@ are dense-granule proteins, which are disordered, so this is expected rather tha
 cache is 121 MB and carries 443 columns for all 8,140 Toxoplasma genes, and lives INSIDE the package.
 Beside it sits the Plasmodium cache -- `pf_nodes.parquet`, 168 columns for 5,720 genes, and
 `pf_graph.npz` -- which is a separate table and graph on purpose and never joined to the first
-(`starplast/data/`) so a wheel carries it and `paths.py` resolves it with no configuration. An earlier `keep` allowlist silently shipped
+(`parascape/data/`) so a wheel carries it and `paths.py` resolves it with no configuration. An earlier `keep` allowlist silently shipped
 3 of 18 RNA columns and 7 of 8 fitness screens; the build now ships every column that survives, with an
 explicit drop list. Structures resolve on demand (`structures.py`) because 6,538 AlphaFold models plus
 12,265 crosslink CIFs are gigabytes and git is the wrong place for them.
@@ -403,8 +403,8 @@ neither of them says what the other 51 genes are.
 | `../datasets/stagetranscriptome_GSE108740_FPKM.xlsx` | tachyzoite, day 3/5/7, **in vivo tissue cyst** |
 | `../.claude/skills/toxoplasma-scientist/corpus/pubmed_toxoplasma.jsonl` | **33,924 abstracts** with MeSH |
 | `/mnt/wd4tb/skill_corpora/toxoplasma-scientist/*.xml` | open-access full texts, **6,667 at last build** (machine-local) |
-| `starplast/data/toxodb_identity.tsv`, `starplast/data/toxodb_strain_{gt1,veg}.tsv` | symbols, previous IDs, GT1/VEG accessions (committed; `fetch_names.py`) |
-| `starplast/data/plasmodb_identity.tsv` | the same for *P. falciparum* 3D7: symbols, previous IDs, products (committed) |
+| `parascape/data/toxodb_identity.tsv`, `parascape/data/toxodb_strain_{gt1,veg}.tsv` | symbols, previous IDs, GT1/VEG accessions (committed; `fetch_names.py`) |
+| `parascape/data/plasmodb_identity.tsv` | the same for *P. falciparum* 3D7: symbols, previous IDs, products (committed) |
 | `../toxonet/data/interim/edges_v3.parquet` | **xlms / ip_ms / struct edges, already keyed by TGME49_** |
 | `../starpath_{interactions.csv,crosslinks.json}` | crosslink pairs, residue positions, RH88->ME49 aliases |
 | `../starpath_crosslink_mining/crosslink_satisfaction.csv` | do the Chai-1 models explain the crosslinks |
@@ -437,8 +437,8 @@ real time to find. Tasks 30–34 landed together in v0.31.0.
 ## Start a session on this project by pasting this
 
 ```
-Read /mnt/firecuda2/Claude/repo/starplast/instructions/START_HERE.md and HANDOFF.md, then
-continue starplast. The working tree is v0.41.0; 3,406 tests pass headless with every module at
+Read /mnt/firecuda2/Claude/repo/parascape/instructions/START_HERE.md and HANDOFF.md, then
+continue parascape. The working tree is v0.41.0; 3,406 tests pass headless with every module at
 100% coverage. Check `git status` before assuming it has been published. Do not re-derive the design
 decisions in that file.
 Next: <state what you want>.
@@ -588,7 +588,7 @@ mode, picking, search (`GRA16` → TGME49_208830), edge toggles, attention toggl
 | genes named in **either** | **2,566 (31.5%)** — was 601 |
 | genes named in **neither** | 5,574 (68.5%) |
 | distinct papers naming ≥1 gene | 4,579 |
-| cache size | 17 MB inside the package (`starplast/data/`), including the ToxoDB identity tables, all committed |
+| cache size | 17 MB inside the package (`parascape/data/`), including the ToxoDB identity tables, all committed |
 
 **Depth of attention — the number to quote, and the one that reframes the rest:**
 
@@ -631,7 +631,7 @@ type connecting genes nobody has written about focally.
 Deliberately deferred — v3 is most of the effort and least of the value. Note that v2 got cheaper: the
 identity layer already carries GT1 and VEG accessions.
 
-**GitHub:** `git@github.com:EinarOlafsson/starplast.git`, **private**, branch `main`, first commit
+**GitHub:** `git@github.com:EinarOlafsson/parascape.git`, **private**, branch `main`, first commit
 `61812bd`.
 
 > **Hazard:** this working copy sits inside the Syncthing tree, so `.git` replicates to the work machine.
@@ -743,22 +743,22 @@ removed. Evidence: `results/pbr_lighting_2026_08_14/`.
 Plus t-SNE and PCA (`embedding.METHODS`), kmeans and agglomerative (`clustering.ALGORITHMS`), and
 HDBSCAN's `cluster_selection_epsilon` / `cluster_selection_method`. New **7 · Discover** tab.
 
-**Persistence (0.28.0).** Every finished climb writes itself to `~/.cache/starplast/searches/<name>/`
+**Persistence (0.28.0).** Every finished climb writes itself to `~/.cache/parascape/searches/<name>/`
 as `manifest.json` + `configs.csv` + `findings.json` + `labels.npz`. Coordinates are NOT stored (a
 recipe plus a seed rebuilds them); labels ARE (clustering libraries do not reproduce across
 versions). The manifest fingerprints the node table by hashing gene ids **in order**; a mismatch
 prints across the top of the reading rather than silently renaming every gene implicated.
 
-**Headless (0.28.0+).** `starplast-discover`, `starplast/discover.py`. No Qt anywhere in the import
+**Headless (0.28.0+).** `parascape-discover`, `parascape/discover.py`. No Qt anywhere in the import
 path — there is a test that asserts this in a fresh interpreter. Each `--task` is saved as it
 finishes and skipped if already saved, so an interrupted batch resumes by re-running the same
 command.
 
 ```bash
-starplast-discover --task guilt:compartment_best --budget 100 --restarts 3
-starplast-discover --task disagreement:compartment_best:fit_invitro_hff --exclude literature,localization
-starplast-discover --list
-starplast-discover --read bigA_00_guilt_compartment_best
+parascape-discover --task guilt:compartment_best --budget 100 --restarts 3
+parascape-discover --task disagreement:compartment_best:fit_invitro_hff --exclude literature,localization
+parascape-discover --list
+parascape-discover --read bigA_00_guilt_compartment_best
 ```
 
 ## 2. Numbers worth carrying forward
@@ -901,7 +901,7 @@ starplast-discover --read bigA_00_guilt_compartment_best
   that was passing by accident. The rule for the third species: nothing may identify an organism by
   the name of a column or a layer; only the table's own accessions do that.
 * The ten-task headless run was stopped at 7 of 10 by request, to free the GPU for that work. Results land in
-  `~/.cache/starplast/searches/bigA_*` … `bigE_*`; read them with `starplast-discover --read NAME`.
+  `~/.cache/parascape/searches/bigA_*` … `bigE_*`; read them with `parascape-discover --read NAME`.
 
 ## 6. Conventions this session confirmed
 
@@ -916,7 +916,7 @@ starplast-discover --read bigA_00_guilt_compartment_best
 
 A **recipe** is a named biological question: inputs as category addresses, a holdout the map must
 recover, and a **validation holdout** that should behave the same way if the answer is real. It is
-the unit the application now offers -- tab **8 · Questions** -- and `starplast/data/questions.json`
+the unit the application now offers -- tab **8 · Questions** -- and `parascape/data/questions.json`
 ships a hundred candidates of which twenty are offered, one per DISTINCT holdout, plus one kept
 deliberately BECAUSE closure refuses it.
 
@@ -963,7 +963,7 @@ Six are open: **38, 39, 41, 42, 43, 47**. Suggested order, cheapest-unblocking-f
    than building two fetchers.
 
 The atlas of all 271 slots, filled and empty, is published and regenerates from
-`scripts/generate_slot_table.py` plus `starplast/data/slots.json`. As of 2026-08-18 it stands at
+`scripts/generate_slot_table.py` plus `parascape/data/slots.json`. As of 2026-08-18 it stands at
 **170 filled: Toxoplasma 116 of 143, Plasmodium 54 of 128** — and read it per unit, since one
 headline over four denominators hides which one moved: gene 149/198, pair 17/19, metabolite 3/6,
 host_gene 1/48 -- the first host tissue reference either arm has carried.

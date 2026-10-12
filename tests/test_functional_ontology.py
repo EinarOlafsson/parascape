@@ -2,7 +2,7 @@
 import pandas as pd
 import pytest
 
-from starplast import functional_ontology as F, organisms as O, strategies as S
+from parascape import functional_ontology as F, organisms as O, strategies as S
 
 
 def entries():

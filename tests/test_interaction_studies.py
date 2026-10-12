@@ -22,7 +22,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import interaction_studies as IS  # noqa: E402
+from parascape import interaction_studies as IS  # noqa: E402
 
 
 # --------------------------------------------------------------------------- reading documents

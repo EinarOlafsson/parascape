@@ -1,6 +1,6 @@
 # Measurement provenance
 
-`starplast.provenance` provides a content-addressed trace for every inventory
+`parascape.provenance` provides a content-addressed trace for every inventory
 source/output, including explicit gaps. It does not certify legacy source
 associations merely because a file or publication identifier exists.
 
@@ -51,11 +51,11 @@ To reproduce the census using an existing source-binding snapshot:
 
 ```bash
 python scripts/build_measurement_provenance.py \
-  --root "$STARPLAST_DATA" \
+  --root "$PARASCAPE_DATA" \
   --bindings results/source_recovery_pmc_2026_10_07_v2/bindings.json \
   --out results/NEW_PROVENANCE_SNAPSHOT
 ```
 
-Use the dataset archive itself as `STARPLAST_DATA`, rather than its parent.
+Use the dataset archive itself as `PARASCAPE_DATA`, rather than its parent.
 The builder checks input hashes before and after the audit and records an
 executed annotated notebook. It changes no installed measurements or inferences.

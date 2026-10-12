@@ -25,20 +25,20 @@ def audit(output):
     """Check both installed gene spaces without fitting or admitting biological truth."""
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
-    os.environ['STARPLAST_STATE'] = str(output / 'state')
+    os.environ['PARASCAPE_STATE'] = str(output / 'state')
     os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
     os.environ.setdefault('PYQTGRAPH_QT_LIB', 'PyQt6')
     from PyQt6 import QtCore, QtGui, QtWidgets
     import pandas as pd
-    from starplast import app as A, organisms as O, paths, track_record
+    from parascape import app as A, organisms as O, paths, track_record
 
     started = time.monotonic()
-    code = ['starplast/gene_evidence.py', 'starplast/gene_evidence_browser.py',
-        'starplast/app.py', 'starplast/query.py', 'starplast/identity.py',
-        'starplast/slots.py', 'starplast/datasets.py', 'starplast/inventory.py',
-        'starplast/dataset_space.py', 'starplast/dataset_space_inputs.py',
-        'starplast/scorecard_browser.py', 'starplast/scorecard_view.py',
-        'starplast/track_record.py', 'scripts/audit_gene_evidence.py', 'scripts/notebook_runner.py']
+    code = ['parascape/gene_evidence.py', 'parascape/gene_evidence_browser.py',
+        'parascape/app.py', 'parascape/query.py', 'parascape/identity.py',
+        'parascape/slots.py', 'parascape/datasets.py', 'parascape/inventory.py',
+        'parascape/dataset_space.py', 'parascape/dataset_space_inputs.py',
+        'parascape/scorecard_browser.py', 'parascape/scorecard_view.py',
+        'parascape/track_record.py', 'scripts/audit_gene_evidence.py', 'scripts/notebook_runner.py']
     inputs = [ROOT / name for name in code] + [Path(O.nodes_path(c)) for c in O.codes()]
     inputs += [Path(paths.cache_file(name)) for name in ('toxodb_identity.tsv', 'plasmodb_identity.tsv',
         'toxodb_strain_gt1.tsv', 'toxodb_strain_veg.tsv', 'track_record.parquet')]

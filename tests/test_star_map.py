@@ -15,8 +15,8 @@ import pytest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import star_edges as E  # noqa: E402
-from starplast import strategies as S  # noqa: E402
+from parascape import star_edges as E  # noqa: E402
+from parascape import strategies as S  # noqa: E402
 
 N = 60
 ORG = "Tg"
@@ -58,11 +58,11 @@ def test_pair_table_links_carry_strategy_setting_and_run(ctx):
     t = pd.DataFrame({"gene_a": ids[[0, 7, 9]], "gene_b": ids[[8, 3, 9]], "score": [3.0, 1.0, 2.0],
                       "linked_in": ["domain", "", "x"]})
     r = _result("link_prediction", {"predicted links": t}, layer="xlms", top=3)
-    e = E.edges_from_result(r, ctx, run="starplast:link_prediction", origin=E.ORIGIN_SHIPPED)
+    e = E.edges_from_result(r, ctx, run="parascape:link_prediction", origin=E.ORIGIN_SHIPPED)
     assert len(e) == 2                                    # the self pair (9, 9) is dropped
     assert (e["kind"] == E.INFERRED).all()
     assert set(e["source"]) == {"link_prediction"} and set(e["group"]) == {"link_prediction"}
-    assert set(e["run"]) == {"starplast:link_prediction"}
+    assert set(e["run"]) == {"parascape:link_prediction"}
     assert e["setting"].iloc[0] == "layer=xlms, top=3"
     assert "linked in: domain" in set(e["note"])
     assert e.loc[e["score"].idxmax(), "strength"] == 1.0
@@ -143,7 +143,7 @@ def test_star_keeps_per_source_and_node_caps(ctx):
     idx.add(E.measured_edges(ctx.graph))
     labels = np.zeros(N, dtype=int)
     idx.add(E.edges_from_result(_result("consensus_modules", labels=labels), ctx,
-                                run="starplast:consensus_modules", origin=E.ORIGIN_SHIPPED))
+                                run="parascape:consensus_modules", origin=E.ORIGIN_SHIPPED))
     nodes, edges = E.star(idx, 0, per_group=1, depth=1)
     assert edges.groupby("group").size().max() == 1
     assert set(nodes["hop"]) == {0, 1}
@@ -189,7 +189,7 @@ def test_shipped_links_are_small_and_carry_provenance():
     assert list(f.columns) == list(E.STORED)
     assert (f["kind"].astype(str) == E.INFERRED).all()
     assert (f["origin"].astype(str) == E.ORIGIN_SHIPPED).all()
-    assert f["run"].astype(str).str.startswith("starplast:").all()
+    assert f["run"].astype(str).str.startswith("parascape:").all()
     assert {"link_prediction", "multiplex_modules", "seed_expansion"} <= set(f["source"].astype(str))
     per_run = f.groupby([f["organism"].astype(str), f["run"].astype(str)]).size()
     assert per_run.max() <= E.MAX_EDGES_PER_RUN
@@ -198,7 +198,7 @@ def test_shipped_links_are_small_and_carry_provenance():
 # --------------------------------------------------------------------------- the view
 @pytest.fixture()
 def panel(ctx, tmp_path):
-    from starplast.star_map import StarMapPanel
+    from parascape.star_map import StarMapPanel
     p = StarMapPanel(ctx.nodes, ORG, ctx=ctx, graph=ctx.graph,
                      store=E.UserEdgeStore(str(tmp_path)), shipped_path=str(tmp_path / "none"))
     p.resize(900, 600)
@@ -223,7 +223,7 @@ def test_every_control_explains_itself(panel):
 def test_view_recentres_on_click_and_goes_back(panel):
     from PyQt6 import QtCore, QtWidgets
     from PyQt6.QtTest import QTest
-    from starplast.star_map import _Node
+    from parascape.star_map import _Node
     assert panel.centre_on("TGME49_100000")
     QtWidgets.QApplication.processEvents()
     targets = [i for i in panel.scene.items() if isinstance(i, _Node) and i.gene == 1]
@@ -280,7 +280,7 @@ def test_follow_centres_a_gene_selected_elsewhere(panel):
 
 # --------------------------------------------------------------------------- what counts as an edge
 def _debounce_ms() -> int:
-    from starplast.star_map import HOVER_DEBOUNCE_MS
+    from parascape.star_map import HOVER_DEBOUNCE_MS
     return HOVER_DEBOUNCE_MS
 
 
@@ -392,14 +392,14 @@ def test_clusters_and_layout_are_deterministic_and_bounded():
 
 # --------------------------------------------------------------------------- the view stands still
 def _hoverable(panel):
-    from starplast.star_map import _Edge, _Node
+    from parascape.star_map import _Edge, _Node
     return [i for i in panel.scene.items() if isinstance(i, (_Node, _Edge))]
 
 
 def _geometry(panel):
     """Everything about the picture's geometry, to the bit: the transform, what the view shows,
     every item's position, and the scene's own bounds."""
-    from starplast.star_map import _Node
+    from parascape.star_map import _Node
     t = panel.view.transform()
     return (tuple(round(v, 9) for v in (t.m11(), t.m12(), t.m21(), t.m22(), t.dx(), t.dy())),
             panel.view.mapToScene(panel.view.viewport().rect()).boundingRect().getRect(),
@@ -456,7 +456,7 @@ def test_the_layout_is_computed_once_and_then_held(panel, monkeypatch):
 # --------------------------------------------------------------------------- the larger views
 def test_the_panel_shows_a_neighbourhood_and_the_whole_network(panel):
     from PyQt6 import QtWidgets
-    from starplast.star_map import MODE_NEIGHBOURHOOD, MODE_NETWORK, MODE_STAR
+    from parascape.star_map import MODE_NEIGHBOURHOOD, MODE_NETWORK, MODE_STAR
     panel.centre_on(0)
     panel.set_mode(MODE_NEIGHBOURHOOD)
     QtWidgets.QApplication.processEvents()
@@ -475,7 +475,7 @@ def test_the_panel_shows_a_neighbourhood_and_the_whole_network(panel):
 
 
 def test_the_large_view_caps_what_it_draws_and_says_so(panel):
-    from starplast.star_map import MODE_NETWORK
+    from parascape.star_map import MODE_NETWORK
     panel.centre_on(0)
     panel.set_mode(MODE_NETWORK)
     panel.size_cap.setValue(50)
@@ -486,7 +486,7 @@ def test_the_large_view_caps_what_it_draws_and_says_so(panel):
 def test_hovering_the_large_view_moves_nothing(panel):
     from PyQt6 import QtCore, QtWidgets
     from PyQt6.QtTest import QTest
-    from starplast.star_map import MODE_NETWORK
+    from parascape.star_map import MODE_NETWORK
     panel.centre_on(0)
     panel.set_mode(MODE_NETWORK)
     QtWidgets.QApplication.processEvents()
@@ -503,7 +503,7 @@ def test_hovering_the_large_view_moves_nothing(panel):
 
 def test_clicking_a_gene_in_the_large_view_recentres(panel):
     from PyQt6 import QtWidgets
-    from starplast.star_map import MODE_NEIGHBOURHOOD
+    from parascape.star_map import MODE_NEIGHBOURHOOD
     panel.centre_on(0)
     panel.set_mode(MODE_NEIGHBOURHOOD)
     QtWidgets.QApplication.processEvents()

@@ -1901,7 +1901,7 @@ out again — *resolve through the identity index, never a regex and never a gue
 ### Rebuilding it exposed two silent-loss bugs and a five-tree layout
 
 The rebuild needed `toxonet/data/interim/nodes.parquet`, which lives outside the repo, so I pointed
-`STARPLAST_DATA` at the tree that has it. The build **succeeded, exit 0**, wrote its parquet, reported
+`PARASCAPE_DATA` at the tree that has it. The build **succeeded, exit 0**, wrote its parquet, reported
 `8140 nodes, 13 edge types` — and carried 305 columns instead of 390. Eighty-eight datasets had
 vanished. Nothing errored, and the three new columns were present and correct, so any check that only
 asked *"did my slot land?"* would have passed while the table lost 22% of itself.
@@ -1910,7 +1910,7 @@ Four more attempts landed on 352, 334, 334 and 391 before the layout was right. 
 of the dataset root, and loaders join it five different ways, so the build needs ONE directory holding
 all of:
 
-`starplast/` · `datasets/` · `toxonet/` · `toxo_stage_atlas/` · `starpath_*` · `.claude/skills/…/corpus/`
+`parascape/` · `datasets/` · `toxonet/` · `toxo_stage_atlas/` · `starpath_*` · `.claude/skills/…/corpus/`
 
 They were split across two parents. Symlinked into place, and the required paths are now checked
 explicitly rather than discovered by a column count going down.
@@ -1941,7 +1941,7 @@ because both columns still existed. A build that exits 0 is not evidence that a 
 ### Two tests that were passing for the wrong reason
 
 `test_a_missing_study_file_reports_and_returns_empty` and `test_a_missing_primary_matrix_reports_rather_than_raising`
-set `STARPLAST_DATA` to an empty directory and then assert the loader reports a missing file. But
+set `PARASCAPE_DATA` to an empty directory and then assert the loader reports a missing file. But
 `paths.find` walks *every* root it can name, and one is derived from the package location, not the
 environment — so neither test ever guaranteed the absence it is named for. They passed because the
 repo's dataset tree happened not to contain those two files, and they broke the moment it did. Both
@@ -2528,7 +2528,7 @@ Worth doing 4 first for that reason, and worth NOT doing 2 before 1.
 
 ## Forty-fifth pass: the constructions, and the environment the user actually runs
 
-Run entirely in `~/anaconda3/envs/starplast` — the interpreter the user runs the application on,
+Run entirely in `~/anaconda3/envs/parascape` — the interpreter the user runs the application on,
 which turned out to matter more than expected. **Seven tests failed there that pass in the suite's
 own environment**, and every one was a real gap rather than a quirk:
 

@@ -5,7 +5,7 @@ This is the original design review. The [0.43 benchmark](benchmark-0.43.md) and
 Historical table sizes and implementation findings below refer to the reviewed
 revision, not the current release.
 
-Review of Starplast at `ac9019b`, 23 September 2026. This assessment comes from the
+Review of ParaScape at `ac9019b`, 23 September 2026. This assessment comes from the
 current code and bundled tables, with small synthetic checks of scoring behaviour.
 It does not establish which model performs best on parasite biology: that requires
 a controlled benchmark. The implementation changes below are proposals.
@@ -33,10 +33,10 @@ registry entries, which include computed layers as well as source datasets.
 | Validation and candidates | `validate.py`, `holdout_cv.py`, candidate tables and exports | Make one consistent evaluation and prediction contract reach every user-facing result |
 | Map quality and rankings | `metrics.py`: trustworthiness, neighbourhood purity, AUROC/AUPRC | Separate projection quality, biological recovery, and prospective prediction quality |
 
-Code references: [embedding](https://github.com/EinarOlafsson/starplast/blob/ac9019b/starplast/embedding.py),
-[methods](https://github.com/EinarOlafsson/starplast/blob/ac9019b/starplast/methods.py),
-[recipes](https://github.com/EinarOlafsson/starplast/blob/ac9019b/starplast/recipes.py),
-[nested validation](https://github.com/EinarOlafsson/starplast/blob/ac9019b/starplast/holdout_cv.py).
+Code references: [embedding](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/embedding.py),
+[methods](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/methods.py),
+[recipes](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/recipes.py),
+[nested validation](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/holdout_cv.py).
 
 ## Is the UMAP design rational?
 
@@ -164,11 +164,11 @@ a practical candidate input view. [ESM repository](https://github.com/facebookre
 
 MOFA+ is an example of multi-view factor modelling that allows missing values.
 Its published applications are not a ready-made parasite gene-function benchmark:
-Starplast would need aligned gene rows and appropriate feature views. Missingness
+ParaScape would need aligned gene rows and appropriate feature views. Missingness
 support also does not remove assay-selection bias. [MOFA+ paper](https://link.springer.com/article/10.1186/s13059-020-02015-1).
 
 GeneMANIA illustrates learning network relevance and redundancy before propagating
-functional labels. This extends Starplast's current single-layer propagation and
+functional labels. This extends ParaScape's current single-layer propagation and
 multiplex community consensus. Keeping edge provenance is compatible with an
 explicitly learned combination for a particular task.
 [GeneMANIA paper](https://link.springer.com/article/10.1186/gb-2008-9-s1-s4).

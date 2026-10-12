@@ -2,13 +2,13 @@
   "created_utc": "2026-10-08T03:25:58.548079+00:00",
   "archive_root": "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets",
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/consolidate_source_recovery.py": "c049352a02ebaa54a32d5114eec19756188754562958cbc8c641ce3dbe33a31f",
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/recover_source_files.py": "256e44c1c408db923014ad77e67e47bbbbe4b3152b822c3a25d14643cc823ea3",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/datasets.py": "2dd335dea596e11c69e1445f7e68f206b995916f0e2953c09fa0b4d9e04173f9",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/source_recovery_pmc_2026_10_07_v2/bindings.json": "067896fbea0f192f806bd21d89fb6787137d53c553d3c088f71b07100833f100",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/source_recovery_pmc_2026_10_07_v2/source_locations.json": "71eeff7f03223df180f67f3f7c9d99ad370e2fb4f39035ab2a35d69ad7a19320",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/source_recovery_2026_10_07/source_locations.json": "27ce1ec2de4ed594b340fda8097c53e04a6d3f170ec463e624dd2bceaabf9bff",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/source_review_input_recovery_2026_10_07/review_inputs.json": "ed300b290ac304535f85a85300e0d7d82565e99346059c481e9731f794c5a919"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/consolidate_source_recovery.py": "4e7a52c0c4e59215dea736e69ea39e5d07e57bf15794ff089cc7f4f59c1824d7",
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/recover_source_files.py": "6cc28014f7e578833d2eec70271baeb556ef61228c676832c5f72e00bd1a9c52",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/datasets.py": "91e2585c6eb5723c0d2ee416d0a34c987e3269cf5c45675f3e3df3668532e68b",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/source_recovery_pmc_2026_10_07_v2/bindings.json": "067896fbea0f192f806bd21d89fb6787137d53c553d3c088f71b07100833f100",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/source_recovery_pmc_2026_10_07_v2/source_locations.json": "71eeff7f03223df180f67f3f7c9d99ad370e2fb4f39035ab2a35d69ad7a19320",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/source_recovery_2026_10_07/source_locations.json": "16642dd9633af1bb4a60827119bb04f6477a488d801d37817edd96d2b622dc53",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/source_review_input_recovery_2026_10_07/review_inputs.json": "ed300b290ac304535f85a85300e0d7d82565e99346059c481e9731f794c5a919"
   },
   "summary": {
     "registered_sources": 162,
@@ -32,7 +32,7 @@
     "runtime_changes": "none; numerical promotion and transform admission remain pending"
   },
   "outputs": {
-    "source_locations.json": "95e355ff457fd3266e4bc27a9861d0aba3814ea33d387cbff7c83248ea0d3f72",
+    "source_locations.json": "a839da85bda9f7a99b871ddcf0f8509251e1fa0e248858ac23dc5b3d9365db91",
     "bindings.json": "deade6bbce92085caecd1364114542a628aad14ec7ffa3f188db9abfd0b7ef79",
     "containers.json": "0b45a2a245dac9cf5b41a71cd1c8f2db726d0b881dc7f75835a36b30646dee84"
   }

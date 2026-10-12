@@ -21,8 +21,8 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import datasets as D, paths  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import datasets as D, paths  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 
 
 def _sha(path):
@@ -87,7 +87,7 @@ def download(url: str, target: Path, limit=64 << 20):
     if temporary.exists():
         raise ValueError("A previous partial download needs separate inspection")
     try:
-        request = urllib.request.Request(url, headers={"User-Agent": "starplast-source-recovery/1"})
+        request = urllib.request.Request(url, headers={"User-Agent": "parascape-source-recovery/1"})
         with urllib.request.urlopen(request, timeout=25) as response, temporary.open("xb") as stream:
             total = 0
             while block := response.read(1 << 20):
@@ -130,8 +130,8 @@ def recover(root: Path, output: Path, keys=None, fetch=False) -> dict:
         try:
             if not source.path:
                 row["status"] = "no_path_declared"
-            elif source.path.startswith("starplast/data/"):
-                file = Path(paths.cache_file(source.path.removeprefix("starplast/data/")))
+            elif source.path.startswith("parascape/data/"):
+                file = Path(paths.cache_file(source.path.removeprefix("parascape/data/")))
                 if file.is_file():
                     row.update(status="installed_cache", file=asdict(SourceFile.inspect(file, "installed_cache")))
             else:
@@ -188,7 +188,7 @@ def recover(root: Path, output: Path, keys=None, fetch=False) -> dict:
                "statuses": {status: sum(r["status"] == status for r in records) for status in sorted({r["status"] for r in records})}}
     manifest = {"created_utc": datetime.now(timezone.utc).isoformat(), "archive_root": str(root),
                 "summary": summary, "input_sha256": {str(Path(__file__)): _sha(__file__),
-                str(ROOT / "starplast/datasets.py"): _sha(ROOT / "starplast/datasets.py")},
+                str(ROOT / "parascape/datasets.py"): _sha(ROOT / "parascape/datasets.py")},
                 "receipt_sha256": {str(path): _sha(path) for path, _ in receipts},
                 "outputs": {name: _sha(output / name) for name in ("source_locations.json", "bindings.json")}}
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")

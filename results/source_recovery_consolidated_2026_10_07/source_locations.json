@@ -1,7 +1,7 @@
 [
   {
     "source_id": "esm2_protein",
-    "registry_path": "starplast/data/esm_features.parquet",
+    "registry_path": "parascape/data/esm_features.parquet",
     "registry_url": "https://huggingface.co/facebook/esm2_t6_8M_UR50D",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -11,7 +11,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/esm_features.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/esm_features.parquet",
       "sha256": "fc5a79781fddbff8c7b4c553e42412d25ccd931036f92889dcbb46a557313e2e",
       "bytes": 13786425,
       "role": "installed_cache",
@@ -21,8 +21,8 @@
   },
   {
     "source_id": "local_af3",
-    "registry_path": "starplast/data/af3_features.parquet",
-    "registry_url": "https://github.com/EinarOlafsson/starplast/blob/main/docs/structures.md",
+    "registry_path": "parascape/data/af3_features.parquet",
+    "registry_url": "https://github.com/EinarOlafsson/parascape/blob/main/docs/structures.md",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
     "status": "installed_cache_not_original_assay",
@@ -31,7 +31,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
       "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
       "bytes": 85105,
       "role": "installed_cache",
@@ -73,7 +73,7 @@
   },
   {
     "source_id": "toxodb_identity",
-    "registry_path": "starplast/data/toxodb_identity.tsv",
+    "registry_path": "parascape/data/toxodb_identity.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -83,7 +83,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_identity.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_identity.tsv",
       "sha256": "bc9ad569ddceb382f811b2b840df518977aaad1632fe6bf64fd26daf3ae58f72",
       "bytes": 2333066,
       "role": "installed_cache",
@@ -93,7 +93,7 @@
   },
   {
     "source_id": "toxodb_strain_snps",
-    "registry_path": "starplast/data/toxodb_strain_snps.tsv",
+    "registry_path": "parascape/data/toxodb_strain_snps.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -103,7 +103,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_strain_snps.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_strain_snps.tsv",
       "sha256": "161a5e1c1ce7c9a3ecce8591d640cd6b89fa12ec838d499065e31b7380b5d3e6",
       "bytes": 248842,
       "role": "installed_cache",
@@ -113,7 +113,7 @@
   },
   {
     "source_id": "toxodb_codon_usage",
-    "registry_path": "starplast/data/toxodb_cds.tsv.gz",
+    "registry_path": "parascape/data/toxodb_cds.tsv.gz",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -123,7 +123,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_cds.tsv.gz",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_cds.tsv.gz",
       "sha256": "bd681c80c987bf36d66f5894c913186e9896d1055b24fd968f4a28a48b83189d",
       "bytes": 5951377,
       "role": "installed_cache",
@@ -5309,7 +5309,7 @@
   },
   {
     "source_id": "toxodb_palmitome",
-    "registry_path": "starplast/data/toxodb_palmitome_hydroxylamine.tsv",
+    "registry_path": "parascape/data/toxodb_palmitome_hydroxylamine.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByProteomicsDirecttgonGT1_quantitativeMassSpec_Foe_Lipidome_Palmitoylome_RSRC/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5319,7 +5319,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_palmitome_hydroxylamine.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_palmitome_hydroxylamine.tsv",
       "sha256": "8ca1fd22f71454ca4b4b5865f60663690a7bc367c9748215c379e81b8b4c7eef",
       "bytes": 8850,
       "role": "installed_cache",
@@ -5329,7 +5329,7 @@
   },
   {
     "source_id": "iedb_bcell",
-    "registry_path": "starplast/data/iedb_bcell_epitopes.tsv",
+    "registry_path": "parascape/data/iedb_bcell_epitopes.tsv",
     "registry_url": "https://query-api.iedb.org/bcell_search?parent_source_antigen_source_org_name=ilike.*Toxoplasma*",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5339,7 +5339,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/iedb_bcell_epitopes.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/iedb_bcell_epitopes.tsv",
       "sha256": "20413276726cd08e992183e448f46eb97ae7f028c8edeeb2e35665ffe26c5f90",
       "bytes": 576,
       "role": "installed_cache",
@@ -5349,7 +5349,7 @@
   },
   {
     "source_id": "toxodb_epitopes",
-    "registry_path": "starplast/data/toxodb_epitopes.tsv",
+    "registry_path": "parascape/data/toxodb_epitopes.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesWithEpitopes/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5359,7 +5359,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_epitopes.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_epitopes.tsv",
       "sha256": "c98ba2f7c55310d42b19da36f8140b521309048b29432e4bae6f2e8e725847f8",
       "bytes": 4865,
       "role": "installed_cache",
@@ -5369,7 +5369,7 @@
   },
   {
     "source_id": "toxodb_h4_acetylation",
-    "registry_path": "starplast/data/toxodb_h4_acetylation.tsv",
+    "registry_path": "parascape/data/toxodb_h4_acetylation.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByChIPchiptgonME49_chipChipExper_Hakimi_Ali_RSRC/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5379,7 +5379,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_h4_acetylation.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_h4_acetylation.tsv",
       "sha256": "c60788e72a975838b0c24d4857e0f71de75cbd9020dfa5694ccc43afbcfc881b",
       "bytes": 168914,
       "role": "installed_cache",
@@ -5389,7 +5389,7 @@
   },
   {
     "source_id": "toxodb_macrophage",
-    "registry_path": "starplast/data/toxodb_macrophage.tsv",
+    "registry_path": "parascape/data/toxodb_macrophage.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByRNASeqtgonME49_Saeij_Jeroen_strains_rnaSeq_RSRCPercentile/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5399,7 +5399,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_macrophage.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_macrophage.tsv",
       "sha256": "95cf95020eaddeaa528c15226c9ef6cac7c3e6f6c31abe94739acae6c57e5968",
       "bytes": 152577,
       "role": "installed_cache",
@@ -5409,7 +5409,7 @@
   },
   {
     "source_id": "toxodb_ec_numbers",
-    "registry_path": "starplast/data/toxodb_ec_numbers.tsv",
+    "registry_path": "parascape/data/toxodb_ec_numbers.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5419,7 +5419,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_ec_numbers.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_ec_numbers.tsv",
       "sha256": "477d4fa483abac19bd979a9bcec26e3d031dff2b8a737f8e3bd777928454a37d",
       "bytes": 212352,
       "role": "installed_cache",
@@ -5429,7 +5429,7 @@
   },
   {
     "source_id": "crosslink_interactome",
-    "registry_path": "starplast/data/crosslink_partners.tsv",
+    "registry_path": "parascape/data/crosslink_partners.tsv",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12505969/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5492,7 +5492,7 @@
     ],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/crosslink_partners.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/crosslink_partners.tsv",
       "sha256": "c28257788f4ddc050e53f34f9e1bb4b3c5f7b397b0345df46a7e8b043e94dda7",
       "bytes": 7938,
       "role": "installed_cache",
@@ -5502,7 +5502,7 @@
   },
   {
     "source_id": "pvm_proximity",
-    "registry_path": "starplast/data/pvm_proximity.tsv",
+    "registry_path": "parascape/data/pvm_proximity.tsv",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8576527/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5537,7 +5537,7 @@
     ],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pvm_proximity.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pvm_proximity.tsv",
       "sha256": "66ccde44c43c4b1493595473362be4cc7b2164e7a4c684659a4a0c955ec3134e",
       "bytes": 22963,
       "role": "installed_cache",
@@ -5547,7 +5547,7 @@
   },
   {
     "source_id": "cdpk1_substrates",
-    "registry_path": "starplast/data/cdpk1_substrates.tsv",
+    "registry_path": "parascape/data/cdpk1_substrates.tsv",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10629828/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5703,7 +5703,7 @@
     ],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/cdpk1_substrates.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/cdpk1_substrates.tsv",
       "sha256": "ced6d1bd0d46cd93b8dde18a7ce5602919114c8a2dbb88a5edb86638574530d0",
       "bytes": 6014,
       "role": "installed_cache",
@@ -5713,7 +5713,7 @@
   },
   {
     "source_id": "mrna_stability",
-    "registry_path": "starplast/data/mrna_stability.tsv",
+    "registry_path": "parascape/data/mrna_stability.tsv",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11801735/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -5916,7 +5916,7 @@
     ],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/mrna_stability.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/mrna_stability.tsv",
       "sha256": "3bf4905087985719420dc784c7436de9c1692434d7efa803d6e0bec7d1db7a24",
       "bytes": 14190,
       "role": "installed_cache",
@@ -6046,7 +6046,7 @@
   },
   {
     "source_id": "myristoylome",
-    "registry_path": "starplast/data/myristoylome.tsv",
+    "registry_path": "parascape/data/myristoylome.tsv",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7373427/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -6151,7 +6151,7 @@
     ],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/myristoylome.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/myristoylome.tsv",
       "sha256": "844e8814e926703234397ff43e5a6fb634b5b3131da38605f1768764e6acdf3d",
       "bytes": 1074,
       "role": "installed_cache",
@@ -6161,7 +6161,7 @@
   },
   {
     "source_id": "toxodb_arginine_methylation",
-    "registry_path": "starplast/data/toxodb_arginine_methylation.tsv",
+    "registry_path": "parascape/data/toxodb_arginine_methylation.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByPTM/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -6171,7 +6171,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_arginine_methylation.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_arginine_methylation.tsv",
       "sha256": "d993f99e74511e010e2bd078d9bc8c65502de96afae42377557b25f7c9b6626f",
       "bytes": 5926,
       "role": "installed_cache",
@@ -6181,7 +6181,7 @@
   },
   {
     "source_id": "toxodb_nanopore_isoforms",
-    "registry_path": "starplast/data/toxodb_nanopore_isoforms.tsv",
+    "registry_path": "parascape/data/toxodb_nanopore_isoforms.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByLongReadEvidence_tgonME49_Stuart_Ralph_nanopore_rnaSeqNextflow_RSRC/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -6191,7 +6191,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_nanopore_isoforms.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_nanopore_isoforms.tsv",
       "sha256": "bccc1c2aae3458421a9734f48de72c038eefdbb7ebc4d1b7fee1c332d792643c",
       "bytes": 13049,
       "role": "installed_cache",
@@ -6201,7 +6201,7 @@
   },
   {
     "source_id": "toxodb_enteroepithelial",
-    "registry_path": "starplast/data/toxodb_enteroepithelial.tsv",
+    "registry_path": "parascape/data/toxodb_enteroepithelial.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByRNASeqtgonME49_Ramakrishnan_enteroepithelial_stages_ebi_rnaSeq_RSRC/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -6211,7 +6211,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_enteroepithelial.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_enteroepithelial.tsv",
       "sha256": "8de215cbddad8d0446694e791bb71022afcbc32d12e2251f594a37ea847fbb11",
       "bytes": 188940,
       "role": "installed_cache",
@@ -6317,7 +6317,7 @@
   },
   {
     "source_id": "myr1_host_ip",
-    "registry_path": "starplast/data/host_bridges.parquet",
+    "registry_path": "parascape/data/host_bridges.parquet",
     "registry_url": "https://www.ebi.ac.uk/pride/archive/projects/PXD016383",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -6327,7 +6327,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/host_bridges.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/host_bridges.parquet",
       "sha256": "4b93fcbb605b7312c10b7387fbb54d560a69aff155dc115b781553cc68acc940",
       "bytes": 22385,
       "role": "installed_cache",
@@ -6337,7 +6337,7 @@
   },
   {
     "source_id": "pv_host_uptake",
-    "registry_path": "starplast/data/hs_host_proteins.parquet",
+    "registry_path": "parascape/data/hs_host_proteins.parquet",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8700025/supplementaryFiles",
     "registry_organism": "Hs",
     "initial_status": "installed_cache",
@@ -6347,7 +6347,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/hs_host_proteins.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/hs_host_proteins.parquet",
       "sha256": "9c78c84fe07836b3c3b269d01af3cd1d8a5fb26e0eacbf1b94a38577c23c166f",
       "bytes": 1480450,
       "role": "installed_cache",
@@ -6357,7 +6357,7 @@
   },
   {
     "source_id": "metabolome_iron",
-    "registry_path": "starplast/data/metabolites.parquet",
+    "registry_path": "parascape/data/metabolites.parquet",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13170339/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -6367,7 +6367,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/metabolites.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/metabolites.parquet",
       "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
       "bytes": 46486,
       "role": "installed_cache",
@@ -6377,7 +6377,7 @@
   },
   {
     "source_id": "lipidome_vesicles",
-    "registry_path": "starplast/data/metabolites.parquet",
+    "registry_path": "parascape/data/metabolites.parquet",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12913473/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -6387,7 +6387,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/metabolites.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/metabolites.parquet",
       "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
       "bytes": 46486,
       "role": "installed_cache",
@@ -6453,7 +6453,7 @@
   },
   {
     "source_id": "plasmodb_pf3d7_attributes",
-    "registry_path": "starplast/data/pf_nodes.parquet",
+    "registry_path": "parascape/data/pf_nodes.parquet",
     "registry_url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -6463,7 +6463,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
       "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
       "bytes": 2554547,
       "role": "installed_cache",
@@ -6473,7 +6473,7 @@
   },
   {
     "source_id": "plasmodb_pf3d7_orthology",
-    "registry_path": "starplast/data/pf_nodes.parquet",
+    "registry_path": "parascape/data/pf_nodes.parquet",
     "registry_url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -6483,7 +6483,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
       "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
       "bytes": 2554547,
       "role": "installed_cache",
@@ -6493,7 +6493,7 @@
   },
   {
     "source_id": "plasmodb_pf3d7_domains",
-    "registry_path": "starplast/data/pf_nodes.parquet",
+    "registry_path": "parascape/data/pf_nodes.parquet",
     "registry_url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -6503,7 +6503,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
       "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
       "bytes": 2554547,
       "role": "installed_cache",
@@ -6513,7 +6513,7 @@
   },
   {
     "source_id": "plasmodb_pf3d7_snps",
-    "registry_path": "starplast/data/pf_nodes.parquet",
+    "registry_path": "parascape/data/pf_nodes.parquet",
     "registry_url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -6523,7 +6523,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
       "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
       "bytes": 2554547,
       "role": "installed_cache",
@@ -6693,7 +6693,7 @@
   },
   {
     "source_id": "plasmodb_pf3d7_piggybac",
-    "registry_path": "starplast/data/pf_nodes.parquet",
+    "registry_path": "parascape/data/pf_nodes.parquet",
     "registry_url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -6703,7 +6703,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
       "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
       "bytes": 2554547,
       "role": "installed_cache",
@@ -6713,7 +6713,7 @@
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
-    "registry_path": "starplast/data/pf_nodes.parquet",
+    "registry_path": "parascape/data/pf_nodes.parquet",
     "registry_url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -6723,7 +6723,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
       "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
       "bytes": 2554547,
       "role": "installed_cache",
@@ -6793,7 +6793,7 @@
   },
   {
     "source_id": "pf_derived_stage_labels",
-    "registry_path": "starplast/data/pf_nodes.parquet",
+    "registry_path": "parascape/data/pf_nodes.parquet",
     "registry_url": null,
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -6803,7 +6803,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
       "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
       "bytes": 2554547,
       "role": "installed_cache",
@@ -6813,7 +6813,7 @@
   },
   {
     "source_id": "plasmodb_identity",
-    "registry_path": "starplast/data/plasmodb_identity.tsv",
+    "registry_path": "parascape/data/plasmodb_identity.tsv",
     "registry_url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -6823,7 +6823,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/plasmodb_identity.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/plasmodb_identity.tsv",
       "sha256": "afa45edecdd37ee363ba407470d1cc296e8da5edac35dacf36b7816c282a3dfc",
       "bytes": 508478,
       "role": "installed_cache",
@@ -7577,7 +7577,7 @@
   },
   {
     "source_id": "pf_host_degree",
-    "registry_path": "starplast/data/pf_nodes.parquet",
+    "registry_path": "parascape/data/pf_nodes.parquet",
     "registry_url": null,
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -7587,7 +7587,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
       "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
       "bytes": 2554547,
       "role": "installed_cache",
@@ -7609,7 +7609,7 @@
   },
   {
     "source_id": "pf_codon_usage",
-    "registry_path": "starplast/data/plasmodb_cds.tsv.gz",
+    "registry_path": "parascape/data/plasmodb_cds.tsv.gz",
     "registry_url": "https://plasmodb.org/common/downloads/Current_Release/Pfalciparum3D7/fasta/data/PlasmoDB-68_Pfalciparum3D7_AnnotatedCDSs.fasta",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -7619,7 +7619,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/plasmodb_cds.tsv.gz",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/plasmodb_cds.tsv.gz",
       "sha256": "1942f261ef4c9da26b2402bf295519f03a5c1a08d414d98a933d01a574a13733",
       "bytes": 3100519,
       "role": "installed_cache",
@@ -7629,7 +7629,7 @@
   },
   {
     "source_id": "pf_host_bridge_xlms",
-    "registry_path": "starplast/data/pf_host_bridges.parquet",
+    "registry_path": "parascape/data/pf_host_bridges.parquet",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13200099/supplementaryFiles",
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -7639,7 +7639,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_host_bridges.parquet",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_host_bridges.parquet",
       "sha256": "154e08750a263599748827a72995878e435c8e0796e23b8ec1549a7742423449",
       "bytes": 4112,
       "role": "installed_cache",
@@ -7727,7 +7727,7 @@
   },
   {
     "source_id": "pf_relation_layers",
-    "registry_path": "starplast/data/pf_graph.npz",
+    "registry_path": "parascape/data/pf_graph.npz",
     "registry_url": null,
     "registry_organism": "Pf",
     "initial_status": "installed_cache",
@@ -7737,7 +7737,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_graph.npz",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_graph.npz",
       "sha256": "5331e5a9ec7b63478a69edff7450a8ee0318703c672c316b3a7dbcc4ba47fed8",
       "bytes": 804254,
       "role": "installed_cache",
@@ -7759,7 +7759,7 @@
   },
   {
     "source_id": "m6a_peaks",
-    "registry_path": "starplast/data/m6a_peaks.tsv",
+    "registry_path": "parascape/data/m6a_peaks.tsv",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8354455/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -7878,7 +7878,7 @@
     ],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/m6a_peaks.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/m6a_peaks.tsv",
       "sha256": "98f7a1a172ba11e3a913c1de0b3ee42bd5be7995104693b655a3e7289ee8030f",
       "bytes": 13885,
       "role": "installed_cache",
@@ -7888,7 +7888,7 @@
   },
   {
     "source_id": "sexual_stages",
-    "registry_path": "starplast/data/sexual_stages.tsv",
+    "registry_path": "parascape/data/sexual_stages.tsv",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13042011/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -7907,7 +7907,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/sexual_stages.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/sexual_stages.tsv",
       "sha256": "8e78d32b8dc9e2902ada3d0bc7b2d05deefdc46a1e2165c13c04bb6880661085",
       "bytes": 144600,
       "role": "installed_cache",
@@ -7917,7 +7917,7 @@
   },
   {
     "source_id": "secretome_partition",
-    "registry_path": "starplast/data/secretome_partition.tsv",
+    "registry_path": "parascape/data/secretome_partition.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByProteomicstgonGT1_quantitativeMassSpec_Ramirez_Flores_Vesicles_RSRC/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -7927,7 +7927,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/secretome_partition.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/secretome_partition.tsv",
       "sha256": "01ff6998592d120f84c5913ef3f704061245b9b4b5c59f6012f66ef3315efc31",
       "bytes": 5554,
       "role": "installed_cache",
@@ -7937,7 +7937,7 @@
   },
   {
     "source_id": "antisense_level",
-    "registry_path": "starplast/data/antisense_level.tsv",
+    "registry_path": "parascape/data/antisense_level.tsv",
     "registry_url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByRNASeqtgonME49_tgme49_spor_ocyst_rnaseq_ebi_rnaSeq_RSRCPercentile/reports/attributesTabular",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -7947,7 +7947,7 @@
     "review_inputs": [],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/antisense_level.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/antisense_level.tsv",
       "sha256": "5546da8f13ad6760087019ddf313b933073397a7a5d0cb23cb2b00187b3d5dec",
       "bytes": 154489,
       "role": "installed_cache",
@@ -7957,7 +7957,7 @@
   },
   {
     "source_id": "melting_temperature",
-    "registry_path": "starplast/data/melting_temperature.tsv",
+    "registry_path": "parascape/data/melting_temperature.tsv",
     "registry_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9436416/supplementaryFiles",
     "registry_organism": "Tg",
     "initial_status": "installed_cache",
@@ -8020,7 +8020,7 @@
     ],
     "source_publication_association": "requires_source_specific_review",
     "file": {
-      "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/melting_temperature.tsv",
+      "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/melting_temperature.tsv",
       "sha256": "118c2542d8281b3503d177528e266b3eadfe30ba71eb31e4a6ce9120313f7f47",
       "bytes": 97377,
       "role": "installed_cache",

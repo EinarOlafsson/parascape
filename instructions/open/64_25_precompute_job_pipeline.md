@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](64_information_space_and_i
 |---|---|
 | Depends on | 64.08, 64.10, 64.11, 64.12, 64.13, 64.14, 64.15, 64.16 |
 | Estimated remaining engineering time | 4–6 h |
-| Existing code to inspect | `scripts/build_track_record.py`, `scripts/build_claims.py`, `starplast/searches.py`, `starplast/packs.py` |
+| Existing code to inspect | `scripts/build_track_record.py`, `scripts/build_claims.py`, `parascape/searches.py`, `parascape/packs.py` |
 
 ## Deliverable
 
@@ -32,7 +32,7 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Completion evidence
 
-Verified bounded partition, 2026-10-08: `starplast/precompute_jobs.py` supplies typed
+Verified bounded partition, 2026-10-08: `parascape/precompute_jobs.py` supplies typed
 immutable jobs/upstream bindings, acyclic plans, transitive recipe fingerprints,
 complete parent artifact identities, explicit byte snapshots, serial execution,
 writer locking, an atomic checksummed journal and current-spec/split/payload resume.
@@ -44,7 +44,7 @@ and separately loaded in-memory contents are revalidated at checkpoints.
 
 Executed `results/precompute_ec_views_2026_10_08/pilot.ipynb` consumes only the
 verified FN-EC-01 V4 frozen artifact
-`349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162`.
+`e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461`.
 Three real view jobs retain all182 test rows/scores, recompute matching profile
 scorecards, then recompute seven overlapping member-class cards. All six comparisons
 are exact, with original split/679 fitting entities/exclusions/unresolved grade.

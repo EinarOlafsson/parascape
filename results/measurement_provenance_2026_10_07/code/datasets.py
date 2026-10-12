@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""The dataset registry — one machine-readable record of what starplast is built from.
+"""The dataset registry — one machine-readable record of what parascape is built from.
 
 This is the single source of truth for provenance. The download notebook fetches from it, the methods
 documentation is generated from it, and the application shows it when asked where a number came from.
 Previously that information lived in three prose documents that could drift apart; here a dataset is
 described once.
 
-    from starplast import datasets
+    from parascape import datasets
     datasets.registry()                 # every entry
     datasets.registry(level="DNA")      # filter
     datasets.provenance("fit_ifng")     # which dataset produced a node column
@@ -202,7 +202,7 @@ REGISTRY = [
             coverage="8,064 T. gondii genes with valid bundled CDS translations",
             citation="Lin et al., Science (2023); frozen ESM-2 8M model, local sequence encoding",
             url="https://huggingface.co/facebook/esm2_t6_8M_UR50D",
-            path="starplast/data/esm_features.parquet",
+            path="parascape/data/esm_features.parquet",
             note="Computed representation, not an experimentally measured trait. Model revision and "
                  "sequence hashes are in esm_manifest.parquet. Long proteins use overlapping windows "
                  "with residue-complete pooling. Features are loaded for prediction rather than "
@@ -215,8 +215,8 @@ REGISTRY = [
                      "af3_confident_contacts_per_residue", "af3_ptm"),
             coverage="1,210 T. gondii genes with exactly matched local AF3 sequences",
             citation="Einar Olafsson, unpublished local AF3 model collection (2026)",
-            url="https://github.com/EinarOlafsson/starplast/blob/main/docs/structures.md",
-            path="starplast/data/af3_features.parquet",
+            url="https://github.com/EinarOlafsson/parascape/blob/main/docs/structures.md",
+            path="parascape/data/af3_features.parquet",
             note="Computed predictions, not experimental measurements. Fragments retain residue ranges; "
                  "confidence summaries combine overlapping fragments per residue. Geometry only from "
                  "complete models. Coordinates remain on the local shared drive; see source manifest.", organism=organisms.TOXOPLASMA),
@@ -251,7 +251,7 @@ REGISTRY = [
     Dataset("toxodb_identity", "ToxoDB gene identity", "reference", "identity",
             "Symbols, previous IDs, product descriptions", ("gene_id", "product"),
             "8,843 ME49 genes", accession="ToxoDB ME49", url=TOXODB,
-            path="starplast/data/toxodb_identity.tsv",
+            path="parascape/data/toxodb_identity.tsv",
             note="Retrieved 2026-08-11 via the REST API; strain tables for GT1 and VEG alongside.", organism=organisms.TOXOPLASMA),
     Dataset("toxodb_strain_snps", "Strain variation (ToxoDB HTS SNPs)", "reference", "variation",
             "SNPs per gene across every sequenced strain, split by effect",
@@ -259,7 +259,7 @@ REGISTRY = [
              "snp_stop_codon"), "8,140 genes (100%)", accession="ToxoDB ME49",
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon"
                 "/reports/attributesTabular",
-            path="starplast/data/toxodb_strain_snps.tsv",
+            path="parascape/data/toxodb_strain_snps.tsv",
             note="Retrieved 2026-08-16 through the same REST report as the identity table, asking "
                  "for the five gene_hts_*_snps attributes. Verified against known biology rather "
                  "than against a metadata field: nonsynonymous SNPs per kb come out at 112 for the "
@@ -273,7 +273,7 @@ REGISTRY = [
             accession="ToxoDB ME49",
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon"
                 "/reports/attributesTabular",
-            path="starplast/data/toxodb_cds.tsv.gz",
+            path="parascape/data/toxodb_cds.tsv.gz",
             note="COMPUTED here from the coding sequences fetched 2026-08-16. ENC is Wright's "
                  "effective number of codons and GC3 the synonymous third-position GC, both "
                  "reference-free. CAI's reference set is the 158 ribosomal proteins, chosen by "
@@ -498,7 +498,7 @@ REGISTRY = [
                  "study's genome-wide composite scores: Spearman 0.9991-0.9993 and a maximum "
                  "absolute difference of 5e-8 against the supplement, each tissue matching itself "
                  "best among all 32 numeric columns. Heart and brain come from the same sheet "
-                 "(scripts/derive_deposits.py; starplast/deposits.py) and are the only in vivo "
+                 "(scripts/derive_deposits.py; parascape/deposits.py) and are the only in vivo "
                  "heart and brain CRISPR fitness there is; both are bottleneck-limited (medians "
                  "-7.9 and -7.1 raw), so most genes carry little information there. The ToxoDB "
                  "attributes are gone from release 71, so the supplement is now the durable "
@@ -844,7 +844,7 @@ REGISTRY = [
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/"
                 "GenesByProteomicsDirecttgonGT1_quantitativeMassSpec_Foe_Lipidome_Palmitoylome_RSRC"
                 "/reports/attributesTabular",
-            path="starplast/data/toxodb_palmitome_hydroxylamine.tsv",
+            path="parascape/data/toxodb_palmitome_hydroxylamine.tsv",
             note="The paper is not open access and PMC serves its supplementary spreadsheets only "
                  "through a download interstitial, so the numbers come from ToxoDB's own query "
                  "service for the same dataset -- the authors' fold differences, not a re-analysis. "
@@ -862,7 +862,7 @@ REGISTRY = [
             "34 genes, 222 distinct epitopes", accession="IEDB bcell_search",
             url="https://query-api.iedb.org/bcell_search"
                 "?parent_source_antigen_source_org_name=ilike.*Toxoplasma*",
-            path="starplast/data/iedb_bcell_epitopes.tsv",
+            path="parascape/data/iedb_bcell_epitopes.tsv",
             note="From IEDB directly, NOT through ToxoDB, because ToxoDB's epitope integration is "
                  "not split by type and antigenicity is a question about antibodies. 189 of the 221 "
                  "genes in the ToxoDB epitope column have no antibody record at all, so the two are "
@@ -879,7 +879,7 @@ REGISTRY = [
             ("iedb_epitope_count",), "221 genes", accession="ToxoDB / IEDB",
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/"
                 "GenesWithEpitopes/reports/attributesTabular",
-            path="starplast/data/toxodb_epitopes.tsv",
+            path="parascape/data/toxodb_epitopes.tsv",
             note="ToxoDB's own join of IEDB against the ME49 proteome, at all three confidence "
                  "levels. NOT split by epitope type -- the integration does not expose that -- so "
                  "the count is T-cell and B-cell epitopes alike, which is why the column is named "
@@ -892,7 +892,7 @@ REGISTRY = [
             accession="ToxoDB Hakimi/Ali H4 acetylation",
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/"
                 "GenesByChIPchiptgonME49_chipChipExper_Hakimi_Ali_RSRC/reports/attributesTabular",
-            path="starplast/data/toxodb_h4_acetylation.tsv",
+            path="parascape/data/toxodb_h4_acetylation.tsv",
             note="Verified as an ACTIVE mark must behave: rho +0.36 with transcription, +0.43 with "
                  "promoter ATAC, -0.02 with fitness, and genes in its top decile are expressed four "
                  "times as highly as those in its bottom. The Einstein H3K4me1 report from the same "
@@ -907,7 +907,7 @@ REGISTRY = [
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/"
                 "GenesByRNASeqtgonME49_Saeij_Jeroen_strains_rnaSeq_RSRCPercentile"
                 "/reports/attributesTabular",
-            path="starplast/data/toxodb_macrophage.tsv",
+            path="parascape/data/toxodb_macrophage.tsv",
             note="The ME49 arm of a 29-strain panel, so the strain matches the rest of the map. "
                  "Correlates at rho +0.89 with the fibroblast transcriptome (`expr_tachy`). That is "
                  "a FINDING -- the parasite's transcriptional programme is largely independent of "
@@ -920,7 +920,7 @@ REGISTRY = [
             "1,313 enzymes of 8,140 genes", accession="ToxoDB ME49",
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon"
                 "/reports/attributesTabular",
-            path="starplast/data/toxodb_ec_numbers.tsv",
+            path="parascape/data/toxodb_ec_numbers.tsv",
             note="An annotation rather than a measurement, with the same standing as the InterPro "
                  "domains that fill `domain content`. It matters because it is the ONLY gene-indexed "
                  "metabolic datum there is -- every other metabolism question in the catalog is "
@@ -933,7 +933,7 @@ REGISTRY = [
             "How many proteins this one crosslinks to", ("n_crosslink_partners",),
             "494 proteins", pmid="40874616", accession="mBio 02159-25 supplementary file s0004",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12505969/supplementaryFiles",
-            path="starplast/data/crosslink_partners.tsv",
+            path="parascape/data/crosslink_partners.tsv",
             note="395 high-confidence protein pairs, counted per protein. Verified against the two "
                  "largest obligate complexes any cell has: 21 of 32 proteasome subunits are in the "
                  "interactome (odds 30.8, p = 1e-18) and 57 of 158 ribosomal proteins (odds 9.7, "
@@ -945,7 +945,7 @@ REGISTRY = [
             ("pvm_proximity_positive",), "1,274 genes (73 positive)", pmid="34749525",
             accession="mBio 00260-21 Data Set S1",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8576527/supplementaryFiles",
-            path="starplast/data/pvm_proximity.tsv",
+            path="parascape/data/pvm_proximity.tsv",
             note="One of the few binaries in the map with REAL zeros: the study publishes a "
                  "likely-negative list of 1,201 genes beside its 73 positives, so a zero here is a "
                  "measurement and not a gap -- for those 1,201 and only for them. Everything else "
@@ -958,7 +958,7 @@ REGISTRY = [
             ("cdpk1_thiophospho_peptides",), "361 genes", pmid="37933960",
             accession="eLife 85654 supplementary file 6",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10629828/supplementaryFiles",
-            path="starplast/data/cdpk1_substrates.tsv",
+            path="parascape/data/cdpk1_substrates.tsv",
             note="The enriched fraction only, one gene per peptide from the master accession the "
                  "search engine assigned -- counting every protein a shared peptide maps to would "
                  "credit ambiguous peptides several times. The count tracks abundance, as every "
@@ -972,7 +972,7 @@ REGISTRY = [
             ("mrna_remaining_5h_actinomycin",), "412 genes", pmid="39899594",
             accession="PLoS Pathogens 1012857 Table S12",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11801735/supplementaryFiles",
-            path="starplast/data/mrna_stability.tsv",
+            path="parascape/data/mrna_stability.tsv",
             note="A direct measurement: block transcription, wait, see what is left. Untreated "
                  "parasites at five hours, so the column is stability and not the iron response the "
                  "paper is about. BIASED BY CONSTRUCTION and the bias is worth stating -- the table "
@@ -992,7 +992,7 @@ REGISTRY = [
             path="datasets/transcription/RNAseq/GSE329845/GSE329845_Processed_Data.csv.gz",
             note="Raw counts, one 4 h time point, three replicates of vehicle and actinomycin D in "
                  "wild type (the TgPRO knockout arms are not used). Median-of-ratios size factors, "
-                 "a moderated linear model with replicate blocking (starplast/deposits.py). No "
+                 "a moderated linear model with replicate blocking (parascape/deposits.py). No "
                  "spike-in, so a global loss of RNA is normalized away: 0 means as stable as the "
                  "typical transcript, not fully stable, and this is a relative decay, never a "
                  "half-life. Replicates agree at rho 0.96; ribosomal-protein mRNAs are stable "
@@ -1097,7 +1097,7 @@ REGISTRY = [
             ("myristoylation_confidence",), "65 substrates", pmid="32618271",
             accession="eLife 57861 supplementary file 4",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7373427/supplementaryFiles",
-            path="starplast/data/myristoylome.tsv",
+            path="parascape/data/myristoylome.tsv",
             note="A category the catalog did not have. N-myristoylation is co-translational and "
                  "irreversible, has its own enzyme in NMT and its own drug programme, and its "
                  "substrates are published. Verified against chemistry rather than against "
@@ -1113,7 +1113,7 @@ REGISTRY = [
             "368 genes", accession="ToxoDB Yakubu monomethylarginine",
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByPTM"
                 "/reports/attributesTabular",
-            path="starplast/data/toxodb_arginine_methylation.tsv",
+            path="parascape/data/toxodb_arginine_methylation.tsv",
             note="Yakubu et al.'s RH proteomics, through ToxoDB's PTM search. Verified by substrate "
                  "class rather than by a metadata field: RNA-binding, RRM and helicase proteins are "
                  "enriched 2.9-fold among the methylated (Fisher p = 0.002) and transporters and "
@@ -1130,7 +1130,7 @@ REGISTRY = [
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/"
                 "GenesByLongReadEvidence_tgonME49_Stuart_Ralph_nanopore_rnaSeqNextflow_RSRC"
                 "/reports/attributesTabular",
-            path="starplast/data/toxodb_nanopore_isoforms.tsv",
+            path="parascape/data/toxodb_nanopore_isoforms.tsv",
             note="Incomplete-splice-match, novel-in-collection and novel-not-in-collection models, "
                  "at five supporting reads or more. `Known` is excluded because the annotated model "
                  "says nothing about isoform use, and `Genomic` because it is unspliced. Its power "
@@ -1147,7 +1147,7 @@ REGISTRY = [
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/"
                 "GenesByRNASeqtgonME49_Ramakrishnan_enteroepithelial_stages_ebi_rnaSeq_RSRC"
                 "/reports/attributesTabular",
-            path="starplast/data/toxodb_enteroepithelial.tsv",
+            path="parascape/data/toxodb_enteroepithelial.tsv",
             note="EES1-5 averaged against tachyzoites, sense strand, no fold-change floor. The only "
                  "life stage in the map that happens inside a cat. Verified against stage markers: "
                  "GRA11B, which is merozoite-specific, comes out at +8.99 log2 and the family A/B/C "
@@ -1259,7 +1259,7 @@ REGISTRY = [
             ("bridge:host",), "219 host proteins, 1 parasite gene", pmid="32075880",
             accession="PXD016383",
             url="https://www.ebi.ac.uk/pride/archive/projects/PXD016383",
-            path="starplast/data/host_bridges.parquet",
+            path="parascape/data/host_bridges.parquet",
             note="The first BRIDGE in the project: pairs whose two ends are in different tables, "
                  "which `graph.npz` cannot hold because its edges are index pairs into the parasite "
                  "table. Verified twice over. The parasite side: MYR1 is rank 1 of 325 in its own "
@@ -1277,7 +1277,7 @@ REGISTRY = [
             ("pv_enrichment_log2",), "12 host proteins", pmid="34898650",
             accession="PLoS Pathogens 1010138 supplementary table",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8700025/supplementaryFiles",
-            path="starplast/data/hs_host_proteins.parquet",
+            path="parascape/data/hs_host_proteins.parquet",
             note="A property OF a host protein rather than a bridge, because the bait is the "
                  "compartment and not a named parasite gene -- a bridge needs a parasite gene at one "
                  "end. Averaged over three infection contexts: tachyzoite-infected fibroblast, "
@@ -1295,7 +1295,7 @@ REGISTRY = [
             "1,102 metabolites", pmid="41925342",
             accession="mBio 03788-25 Tables S3 and S5",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13170339/supplementaryFiles",
-            path="starplast/data/metabolites.parquet",
+            path="parascape/data/metabolites.parquet",
             note="Rows are COMPOUNDS, not genes -- the first table in the project that is not the "
                  "node table, and the shape instruction 39 describes for host tables. The flux "
                  "column is one minus the unlabelled isotopologue, which is the only labelling "
@@ -1312,7 +1312,7 @@ REGISTRY = [
             "194 lipid species", pmid="41716462",
             accession="Front Cell Infect Microbiol 1745625 Tables 1-3",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12913473/supplementaryFiles",
-            path="starplast/data/metabolites.parquet",
+            path="parascape/data/metabolites.parquet",
             note="The SECOND study in the metabolite table, and the name-matching cost the entry "
                  "above warns about is not paid here: lipid shorthand and polar compound names are "
                  "different naming systems and none of the 194 species collides with the 1,102 "
@@ -1425,7 +1425,7 @@ REGISTRY = [
             accession="PlasmoDB GenesByTaxon attributesTabular",
             url="https://plasmodb.org/plasmo/service/record-types/transcript/searches/"
                 "GenesByTaxon/reports/attributesTabular",
-            path="starplast/data/pf_nodes.parquet",
+            path="parascape/data/pf_nodes.parquet",
             note="The FIRST parasite table beyond Toxoplasma, and it is its own table -- nothing is "
                  "merged, because PF3D7 and TGME49 identifiers do not align and neither does the "
                  "data behind them, so a merged frame would encode which species was convenient to "
@@ -1449,7 +1449,7 @@ REGISTRY = [
             accession="PlasmoDB GenesByTaxon attributesTabular",
             url="https://plasmodb.org/plasmo/service/record-types/transcript/searches/"
                 "GenesByTaxon/reports/attributesTabular",
-            path="starplast/data/pf_nodes.parquet",
+            path="parascape/data/pf_nodes.parquet",
             note="Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes): "
                  "orthology is computed from sequence across species, not measured on this gene, "
                  "and grouping it with the piggyBac screen closed one over the other for nothing.", organism=organisms.FALCIPARUM),
@@ -1461,7 +1461,7 @@ REGISTRY = [
             accession="PlasmoDB GenesByTaxon attributesTabular",
             url="https://plasmodb.org/plasmo/service/record-types/transcript/searches/"
                 "GenesByTaxon/reports/attributesTabular",
-            path="starplast/data/pf_nodes.parquet",
+            path="parascape/data/pf_nodes.parquet",
             note="Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes).", organism=organisms.FALCIPARUM),
     Dataset("plasmodb_pf3d7_snps", "Plasmodium falciparum strain variation",
             "reference", "variation",
@@ -1472,7 +1472,7 @@ REGISTRY = [
             accession="PlasmoDB GenesByTaxon attributesTabular",
             url="https://plasmodb.org/plasmo/service/record-types/transcript/searches/"
                 "GenesByTaxon/reports/attributesTabular",
-            path="starplast/data/pf_nodes.parquet",
+            path="parascape/data/pf_nodes.parquet",
             note="Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes): "
                  "population sequencing is its own experiment, and its columns are the only ones "
                  "of the report that are associated with each other.", organism=organisms.FALCIPARUM),
@@ -1659,7 +1659,7 @@ REGISTRY = [
             accession="PlasmoDB GenesByTaxon attributesTabular",
             url="https://plasmodb.org/plasmo/service/record-types/transcript/searches/"
                 "GenesByTaxon/reports/attributesTabular",
-            path="starplast/data/pf_nodes.parquet",
+            path="parascape/data/pf_nodes.parquet",
             note="PMID resolved by E-utilities on 2026-09-25 (esearch 'Plasmodium falciparum "
                  "saturation mutagenesis piggyBac essential genes 2018' returns only 29724925; "
                  "esummary confirms the title and Zhang M as first author). Served through the "
@@ -1682,7 +1682,7 @@ REGISTRY = [
             accession="PlasmoDB: Su seven stages, Bunnik polysomal IDC, Gomez-Diaz mosquito stages",
             url="https://plasmodb.org/plasmo/service/record-types/transcript/searches/"
                 "GenesByTaxon/reports/attributesTabular",
-            path="starplast/data/pf_nodes.parquet",
+            path="parascape/data/pf_nodes.parquet",
             note="Three studies in one report, split across slots so that no column answers two "
                  "questions: the seven-stage study answers the individual stages, and the polysomal "
                  "study is an IDC time course at 0h, 18h and 36h whose steady-state arm answers "
@@ -1814,7 +1814,7 @@ REGISTRY = [
             derived_from=("expr_ring", "expr_early_trophozoite", "expr_late_trophozoite",
                           "expr_schizont", "expr_gametocyte_ii", "expr_gametocyte_v",
                           "expr_ookinete", "expr_oocyst", "expr_sporozoite"),
-            path="starplast/data/pf_nodes.parquet",
+            path="parascape/data/pf_nodes.parquet",
             note="COMPUTED from the stage columns and declaring it, so leakage closure excludes them "
                  "together. The stage call reuses `cellcycle.stage_enrichment` rather than "
                  "reimplementing it, which is deliberate: if the two arms' stage labels are ever "
@@ -1830,7 +1830,7 @@ REGISTRY = [
     Dataset("plasmodb_identity", "PlasmoDB gene identity", "reference", "identity",
             "Symbols, previous IDs, product descriptions for the Plasmodium arm",
             ("gene_id", "product"), "5,791 P. falciparum 3D7 transcripts", accession="PlasmoDB 3D7",
-            url=PLASMODB, path="starplast/data/plasmodb_identity.tsv",
+            url=PLASMODB, path="parascape/data/plasmodb_identity.tsv",
             note="The Plasmodium arm's identity layer, fetched 2026-08-18 through the same WDK "
                  "report as the ToxoDB tables and kept in its own file -- two identifier spaces in "
                  "one index is the merge this project refuses everywhere else. It exists because "
@@ -2062,7 +2062,7 @@ REGISTRY = [
                  "GSE335016_245740-HOMO-gene_fpkm.txt.gz",
             note="No paper is attached to the series (Europe PMC and GEO searched 2026-09-26), so "
                  "the citation is the accession. FPKM only; the contrast is computed here "
-                 "(starplast/deposits.py): moderated t on log2(FPKM + 1), three replicates per "
+                 "(parascape/deposits.py): moderated t on log2(FPKM + 1), three replicates per "
                  "arm, genes at a mean FPKM of 1, wild-type infection against uninfected. The "
                  "TGGT1_245740 knockout arm is not shipped -- it answers a question about one "
                  "parasite gene. Textbook response: CXCL8 +5.4, IL6 +2.7, CXCL10 +2.3, ISG15 "
@@ -2419,7 +2419,7 @@ REGISTRY = [
             "How many host proteins a gene was crosslinked to, where it was looked at",
             ("n_host_targets",), "117 genes seen, 10 with a host partner",
             derived_from=("bridge:host",),
-            path="starplast/data/pf_nodes.parquet",
+            path="parascape/data/pf_nodes.parquet",
             note="THREE states, and the middle one is why this is not a fillna(0). The Toxoplasma "
                  "column of the same name is 0 everywhere without a curated host target, which is "
                  "right there because its source is a curated table covering the literature. This "
@@ -2453,7 +2453,7 @@ REGISTRY = [
             accession="PlasmoDB-68 Pfalciparum3D7 AnnotatedCDSs",
             url="https://plasmodb.org/common/downloads/Current_Release/Pfalciparum3D7/fasta/data/"
                 "PlasmoDB-68_Pfalciparum3D7_AnnotatedCDSs.fasta",
-            path="starplast/data/plasmodb_cds.tsv.gz",
+            path="parascape/data/plasmodb_cds.tsv.gz",
             derived_from=("length",),
             note="COMPUTED through the SAME code as the Toxoplasma arm rather than reimplemented -- "
                  "`codons.codon_usage` gained a table and node-table parameter for it. ENC and GC3 "
@@ -2471,7 +2471,7 @@ REGISTRY = [
             ("bridge:host",), "10 pairs, 10 parasite genes, 7 human proteins", pmid="41966402",
             accession="Cell Rep mmc1 sheet D",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13200099/supplementaryFiles",
-            path="starplast/data/pf_host_bridges.parquet",
+            path="parascape/data/pf_host_bridges.parquet",
             note="The half of the crosslink file the edge layer throws away, and it is a BRIDGE "
                  "rather than an edge for the reason instruction 39 gives: the pair's two ends live "
                  "in different tables and a human protein has no index in this one. Second bridge in "
@@ -2527,7 +2527,7 @@ REGISTRY = [
             "1,741 + 24,123 + 63,158 pairs",
             derived_from=("orthogroup", "interpro_ids", "expr_ring", "expr_schizont",
                           "expr_sporozoite"),
-            path="starplast/data/pf_graph.npz",
+            path="parascape/data/pf_graph.npz",
             note="A SECOND graph file, because an edge is a pair of indices into a table and a "
                  "falciparum gene has no index in the Toxoplasma one. Constructions are copied from "
                  "the Toxoplasma arm rather than re-invented, so that a difference between the arms "
@@ -2559,7 +2559,7 @@ REGISTRY = [
             ("n_m6a_peaks",), "837 genes (10%)", pmid="34324585",
             accession="PLoS Pathogens 1009335 Table S3A",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8354455/supplementaryFiles",
-            path="starplast/data/m6a_peaks.tsv",
+            path="parascape/data/m6a_peaks.tsv",
             note="GEO carries no MeRIP for Toxoplasma -- its deposit for this study is depletion "
                  "RNA-seq, which says which transcripts DEPEND on m6A and not which CARRY it. The "
                  "peaks are in the paper. This slot had already been written up as unservable in "
@@ -2576,7 +2576,7 @@ REGISTRY = [
                      "the feline intestinal tract. Nat Microbiol 2026;11:1450-1462",
             accession="PMC13042011 supplementary media-2",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13042011/supplementaryFiles",
-            path="starplast/data/sexual_stages.tsv",
+            path="parascape/data/sexual_stages.tsv",
             note="The only stage in the map that is both inside a cat and sexual; the "
                  "enteroepithelial column holds the asexual stages that precede it. Verified by "
                  "what rises: oocyst wall protein sits at the 97th percentile, and the oocyst wall "
@@ -2591,7 +2591,7 @@ REGISTRY = [
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/"
                 "GenesByProteomicstgonGT1_quantitativeMassSpec_Ramirez_Flores_Vesicles_RSRC"
                 "/reports/attributesTabular",
-            path="starplast/data/secretome_partition.tsv",
+            path="parascape/data/secretome_partition.tsv",
             note="REFUSED earlier in the same session and then accepted, which is worth stating "
                  "rather than reversing quietly. It was first asked which proteins are enriched in "
                  "secreted VESICLES, and the answer was incoherent -- dense granule proteins "
@@ -2609,7 +2609,7 @@ REGISTRY = [
             url="https://toxodb.org/toxo/service/record-types/transcript/searches/"
                 "GenesByRNASeqtgonME49_tgme49_spor_ocyst_rnaseq_ebi_rnaSeq_RSRCPercentile"
                 "/reports/attributesTabular",
-            path="starplast/data/antisense_level.tsv",
+            path="parascape/data/antisense_level.tsv",
             note="The LEVEL of antisense transcription and not its change. An earlier attempt at "
                  "this slot used the sense/antisense CHANGE across a tachyzoite time course and was "
                  "refused because two strain time courses of it shared 12 of their top 200 genes "
@@ -2623,7 +2623,7 @@ REGISTRY = [
             ("melting_temperature_tm",), "3,120 proteins (38%)", pmid="35976251",
             accession="eLife 80336 supplementary file 3",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9436416/supplementaryFiles",
-            path="starplast/data/melting_temperature.tsv",
+            path="parascape/data/melting_temperature.tsv",
             note="The same file as the thermal-shift column and a different question: that one asks "
                  "how far the curve MOVES when calcium is added, this asks where it SITS. Median "
                  "55.1 C, which is where protein melting temperatures live. Curves with R2 below "
@@ -2957,8 +2957,8 @@ def local_path(key: str) -> str | None:
     if not d.path:
         return None
     rel = d.path[len("datasets/"):] if d.path.startswith("datasets/") else d.path
-    if d.path.startswith("starplast/data/"):        # part of the committed cache, not a raw input
-        p = paths.cache_file(d.path[len("starplast/data/"):])
+    if d.path.startswith("parascape/data/"):        # part of the committed cache, not a raw input
+        p = paths.cache_file(d.path[len("parascape/data/"):])
         return p if __import__("os").path.exists(p) else None
     return paths.find(rel)
 

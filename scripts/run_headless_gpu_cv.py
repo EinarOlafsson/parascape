@@ -18,12 +18,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from starplast import gpu, paths, slots
-from starplast.clustering import cluster
-from starplast.embedding import EmbeddingSpec, embed
-from starplast.holdout_cv import (choose_final_structure, inference_table, nested_structure_cv,
+from parascape import gpu, paths, slots
+from parascape.clustering import cluster
+from parascape.embedding import EmbeddingSpec, embed
+from parascape.holdout_cv import (choose_final_structure, inference_table, nested_structure_cv,
                                   pooled_category_scores)
-from starplast.search import excluded_for
+from parascape.search import excluded_for
 
 
 def feature_sets(nodes: pd.DataFrame, banned: set) -> dict[str, tuple[str, ...]]:
@@ -181,7 +181,7 @@ def main() -> int:
     parser.add_argument("--quick", action="store_true", help="small smoke-test grid")
     parser.add_argument("--permutations", type=int, default=25)
     args = parser.parse_args()
-    os.environ["STARPLAST_GPU"] = "1"
+    os.environ["PARASCAPE_GPU"] = "1"
     backend = gpu.backend()
     if not gpu.available()["cuml"] or "cuml" not in backend["umap"]:
         raise SystemExit("cuML GPU UMAP/HDBSCAN is required; refusing a silent CPU fallback")

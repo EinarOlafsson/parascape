@@ -9,7 +9,7 @@ question rather than an exercise. Then run a good subset and record, honestly, w
 something.
 
 **Nothing in this task changes a strategy algorithm, a calibration number, a shipped data table or
-the UI.** Every run is the ordinary `starplast.strategies` API at documented settings.
+the UI.** Every run is the ordinary `parascape.strategies` API at documented settings.
 
 ---
 

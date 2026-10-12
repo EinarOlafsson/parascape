@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](64_information_space_and_i
 |---|---|
 | Depends on | 64.10, 64.11, 64.12, 64.13, 64.14, 64.15 |
 | Estimated remaining engineering time | 6–12 h |
-| Existing code to inspect | `starplast/claims.py`, `starplast/calibration.py`, `starplast/scorecard.py`, `starplast/strategies.py` |
+| Existing code to inspect | `parascape/claims.py`, `parascape/calibration.py`, `parascape/scorecard.py`, `parascape/strategies.py` |
 
 ## Deliverable
 

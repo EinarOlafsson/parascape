@@ -7,8 +7,8 @@ import pandas as pd
 import pytest
 from PyQt6 import QtWidgets
 
-from starplast import gene_evidence_browser as G
-from starplast.scorecard_view import build_scorecard_view
+from parascape import gene_evidence_browser as G
+from parascape.scorecard_view import build_scorecard_view
 
 
 @pytest.fixture(scope='session')

@@ -18,7 +18,7 @@ STATE (measured 2026-08-11, do not take on trust -- re-measure)
     not the run path.
 
 USER INSTRUCTION (2026-08-11)
-    "if possible set it up so starplast is standalone and doesnt need external
+    "if possible set it up so parascape is standalone and doesnt need external
     data, or that the external data it needs is downloaded automatically by the
     application if it can't find it upon installation"
 
@@ -29,12 +29,12 @@ USER INSTRUCTION (2026-08-11)
                                          without the user finding files by hand
 
 WHAT TO DO
-    - starplast/paths.py: one resolver every module goes through. No module
+    - parascape/paths.py: one resolver every module goes through. No module
       opens a relative path directly ever again -- that is what produced a
       layout only one machine satisfies.
 
       Resolution order, each step reported so the user can see which one fired:
-        1. $STARPLAST_DATA                    explicit override wins
+        1. $PARASCAPE_DATA                    explicit override wins
         2. <repo>/datasets                    the layout a clone implies
         3. <repo>/../datasets                 the layout that exists today
         4. platform user cache dir            where downloads land
@@ -58,7 +58,7 @@ WHAT TO DO
       hat.
 
 HOW TO KNOW IT WORKED
-    Clone into a brand new directory, `pip install -e .`, run `starplast`, and
+    Clone into a brand new directory, `pip install -e .`, run `parascape`, and
     it opens the map with no manual step and no network.
 
     Then delete the raw datasets tree entirely and run build_graph: it fetches
@@ -85,12 +85,12 @@ MEASURED BEFORE AND AFTER
      named rather than counted)
 
 THE CACHE MOVED INSIDE THE PACKAGE
-    <repo>/data -> starplast/data. As built before, an installed wheel unpacked
+    <repo>/data -> parascape/data. As built before, an installed wheel unpacked
     a generic top-level `data/` into site-packages -- collidable with any other
     package doing the same -- and the package-data glob matched two extensions
     without recursing, so it silently omitted all three toxodb_*.tsv identity
     tables and the hf_release subdirectory. The registry already recorded the
-    identity table as starplast/data/, so the layout it described and the layout
+    identity table as parascape/data/, so the layout it described and the layout
     on disk had drifted apart.
 
 VERIFIED THE WAY THE CLAIM IS STATED
@@ -102,7 +102,7 @@ VERIFIED THE WAY THE CLAIM IS STATED
 DECISIONS WORTH KEEPING
     An explicit override is honoured absolutely, even when it points at nothing.
     It used to fall through to the next candidate, so a mistyped
-    $STARPLAST_CACHE silently gave a different cache than the one asked for --
+    $PARASCAPE_CACHE silently gave a different cache than the one asked for --
     precisely the failure this module exists to prevent. Wrong and loud beats
     wrong and quiet. A test caught that; the first version had the bug.
 

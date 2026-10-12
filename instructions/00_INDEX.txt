@@ -1,5 +1,5 @@
 ================================================================================
-STARPLAST — WHAT IT IS, WHERE IT STANDS, WHAT IS LEFT
+PARASCAPE — WHAT IT IS, WHERE IT STANDS, WHAT IS LEFT
 ================================================================================
 
 Written 2026-08-11. Every file in open/ is one piece of unfinished work with
@@ -23,14 +23,14 @@ what to do next, read here.
 
 
 ================================================================================
-WHAT STARPLAST IS
+WHAT PARASCAPE IS
 ================================================================================
 
 A PyQt6 desktop application. 8,140 *Toxoplasma gondii* genes are points in a
 3D space; the relations between them are toggleable edges; clicking a gene
 shows everything known about it, including when the answer is "nothing".
 
-Terminal entry point: `starplast`
+Terminal entry point: `parascape`
 
 It is the front end for the information map -- entities and relations pulled
 out of the literature, with inference over the map's *structural holes* rather
@@ -303,12 +303,12 @@ RUNNING IT
 ================================================================================
 
     pip install -e .
-    python -m starplast.fetch_names     # one-off, needs network
-    python -m starplast.build_graph     # rebuilds data/, ~5 min
+    python -m parascape.fetch_names     # one-off, needs network
+    python -m parascape.build_graph     # rebuilds data/, ~5 min
     pytest tests/ -q                    # 71 tests, headless, no network
-    starplast
+    parascape
 
 Needs a display and OpenGL. The test suite does not.
 
-Repo: git@github.com:EinarOlafsson/starplast.git (private, branch main)
-Working copy: /mnt/firecuda2/Claude/toxoplasma_projects/starplast
+Repo: git@github.com:EinarOlafsson/parascape.git (private, branch main)
+Working copy: /mnt/firecuda2/Claude/toxoplasma_projects/parascape

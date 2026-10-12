@@ -60,23 +60,23 @@ def prepare(output):
     """Freeze verified recorded profiles and replay every saved record and capacity count."""
     import numpy as np
     import pandas as pd
-    from starplast import organisms as O
-    from starplast.embedding import as_text
-    from starplast.functional_profile_targets import ProfileRow, ProfileSource, ProfileTargetContract, freeze_target
-    from starplast.splits import Assignment, ROLES, SplitManifest, make_split
+    from parascape import organisms as O
+    from parascape.embedding import as_text
+    from parascape.functional_profile_targets import ProfileRow, ProfileSource, ProfileTargetContract, freeze_target
+    from parascape.splits import Assignment, ROLES, SplitManifest, make_split
 
     output = Path(output)
     dependencies = _verified_census()
     census_inputs = json.loads((CENSUS / 'input_manifest.json').read_text())
     node_path = Path(O.nodes_path(O.TOXOPLASMA))
-    metadata_path = ROOT / 'starplast/data/functional_domain_names.json'
+    metadata_path = ROOT / 'parascape/data/functional_domain_names.json'
     for path in (node_path, metadata_path):
         expected = census_inputs[str(path)]
         if _sha(path) != expected:
             raise ValueError('Installed source changed since census: ' + str(path))
         dependencies[str(path)] = expected
     code_paths = [Path(__file__), ROOT / 'scripts/notebook_runner.py', *[
-        ROOT / 'starplast' / name for name in ('functional_profile_targets.py', 'functional_domain_profiles.py',
+        ROOT / 'parascape' / name for name in ('functional_profile_targets.py', 'functional_domain_profiles.py',
                                               'splits.py', 'ground_truth.py', 'organisms.py', 'provenance.py',
                                               'embedding.py', 'scorecard.py')]]
     (output / 'code').mkdir()

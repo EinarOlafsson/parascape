@@ -9,7 +9,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from starplast import functional_results as F
+from parascape import functional_results as F
 
 
 def package(pilot, output):

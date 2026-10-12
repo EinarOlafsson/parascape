@@ -16,13 +16,13 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import small_tables as TE  # noqa: E402
+from parascape import small_tables as TE  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def _report(tmp_path, filename, rows, header="Gene ID\tValue"):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True, exist_ok=True)
     (data / filename).write_text(header + "\n" + "\n".join(f"{g}\t{v}" for g, v in rows) + "\n")
     return tmp_path
@@ -80,7 +80,7 @@ def test_reports_are_joined_across_sources(tmp_path):
 
 def test_a_one_column_report_is_refused(tmp_path):
     """The searches can be asked for gene ids alone; that report carries no measurement."""
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True)
     (data / "toxodb_epitopes.tsv").write_text("Gene ID\nTGME49_200010\n")
     assert TE.evidence(str(tmp_path), log=lambda *_: None).empty
@@ -110,13 +110,13 @@ def test_the_rejected_vesicle_report_is_not_a_source():
     proteins enriched. Whether that is a correct measurement of something else does not matter --
     it is not an answer to what the parasite secretes."""
     assert not any("vesicle" in filename for filename, *_ in TE.SOURCES)
-    assert not os.path.exists(os.path.join(ROOT, "starplast", "data", "toxodb_vesicles.tsv"))
+    assert not os.path.exists(os.path.join(ROOT, "parascape", "data", "toxodb_vesicles.tsv"))
 
 
 def test_the_rejected_histone_report_is_not_a_source():
     """It stays out until somebody explains the backwards correlation, not until it looks tidy."""
     assert not any("h3k4me1" in filename for filename, *_ in TE.SOURCES)
-    assert not os.path.exists(os.path.join(ROOT, "starplast", "data", "toxodb_h3k4me1.tsv"))
+    assert not os.path.exists(os.path.join(ROOT, "parascape", "data", "toxodb_h3k4me1.tsv"))
 
 
 def test_every_source_records_what_was_asked_for():
@@ -137,7 +137,7 @@ def test_every_source_records_what_was_asked_for():
 
 # --------------------------------------------------------------------------- against the real map
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_the_immunodominant_antigens_carry_the_most_epitopes():
     """SAG1 -- which ToxoDB calls SRS29B -- GRA6, GRA7 and GRA2 are what Toxoplasma serology uses.
@@ -145,7 +145,7 @@ def test_the_immunodominant_antigens_carry_the_most_epitopes():
     If the epitope join were wrong this ordering is the first thing to go, and a count column would
     otherwise look perfectly reasonable.
     """
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet")).set_index("gene_id")
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     if "iedb_epitope_count" not in n.columns:
         pytest.skip("epitope column not merged")
     top = n["iedb_epitope_count"].dropna().sort_values(ascending=False).head(5).index
@@ -155,11 +155,11 @@ def test_the_immunodominant_antigens_carry_the_most_epitopes():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_merozoite_markers_rise_in_the_enteroepithelial_stages():
     """GRA11B is merozoite-specific, and the EES are where merozoites are. It must be strongly up."""
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet")).set_index("gene_id")
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     column = "ees_vs_tachyzoite_log2"
     if column not in n.columns:
         pytest.skip("enteroepithelial column not merged")
@@ -171,7 +171,7 @@ def test_merozoite_markers_rise_in_the_enteroepithelial_stages():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_the_active_histone_mark_behaves_like_one():
     """H4 acetylation must agree with the two independent measures of an active gene already here.
@@ -180,7 +180,7 @@ def test_the_active_histone_mark_behaves_like_one():
     is what keeps that refusal honest: if this one ever drifts the same way, it goes too.
     """
     from scipy.stats import spearmanr
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "h4_acetylation_chip_score" not in n.columns:
         pytest.skip("H4 acetylation column not merged")
     for other, floor in (("expr_tachy", 0.25), ("atac_promoter_ut", 0.30)):
@@ -190,12 +190,12 @@ def test_the_active_histone_mark_behaves_like_one():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_novel_isoforms_land_on_the_genes_with_more_exons():
     """More exons, more ways to splice. If the join were wrong this is what would vanish."""
     from scipy.stats import mannwhitneyu
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "novel_transcript_models" not in n.columns or "n_exons" not in n.columns:
         pytest.skip("isoform or exon column not present")
     have = n.loc[n["novel_transcript_models"].notna(), "n_exons"].dropna()
@@ -205,7 +205,7 @@ def test_novel_isoforms_land_on_the_genes_with_more_exons():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_arginine_methylation_lands_on_rna_binding_proteins():
     """RG and RGG motifs sit in RNA-binding proteins, so that is where the PRMTs work.
@@ -214,7 +214,7 @@ def test_arginine_methylation_lands_on_rna_binding_proteins():
     column looks the same either way.
     """
     from scipy.stats import fisher_exact
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "n_arginine_methylation_sites" not in n.columns:
         pytest.skip("arginine methylation column not merged")
     methylated = n["n_arginine_methylation_sites"].notna().to_numpy()
@@ -227,7 +227,7 @@ def test_arginine_methylation_lands_on_rna_binding_proteins():
 
 
 def test_enzyme_classification_reads_the_report(tmp_path):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True)
     (data / "toxodb_ec_numbers.tsv").write_text(
         "Gene ID\tEC numbers\nTGME49_200010\t3.4.21.105 (Rhomboid)\nTGME49_200020\tN/A\n")
@@ -238,7 +238,7 @@ def test_enzyme_classification_reads_the_report(tmp_path):
 
 
 def test_a_gene_listed_twice_keeps_the_annotated_row(tmp_path):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True)
     (data / "toxodb_ec_numbers.tsv").write_text(
         "Gene ID\tEC numbers\nTGME49_200010\tN/A\nTGME49_200010\t1.1.1.1\n")
@@ -247,7 +247,7 @@ def test_a_gene_listed_twice_keeps_the_annotated_row(tmp_path):
 
 
 def test_enzyme_accessions_go_through_the_identity_layer(tmp_path):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True)
     (data / "toxodb_ec_numbers.tsv").write_text("Gene ID\tEC numbers\nTGGT1_100010\t1.1.1.1\n")
     out = TE.enzyme_classification(str(tmp_path), log=lambda *_: None,
@@ -260,20 +260,20 @@ def test_no_ec_report_yields_nothing(tmp_path):
 
 
 def test_a_one_column_ec_report_is_refused(tmp_path):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True)
     (data / "toxodb_ec_numbers.tsv").write_text("Gene ID\nTGME49_200010\n")
     assert TE.enzyme_classification(str(tmp_path), log=lambda *_: None).empty
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_enzymes_are_the_conserved_half_of_the_proteome():
     """Metabolism is old. An EC-carrying gene should have a Plasmodium ortholog far more often than
     a gene without one, and should be lineage-specific far less often."""
     from scipy.stats import fisher_exact
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "has_ec" not in n.columns or "has_pf_ortholog" not in n.columns:
         pytest.skip("EC or orthology column not present")
     has = n["has_ec"] == 1
@@ -284,13 +284,13 @@ def test_enzymes_are_the_conserved_half_of_the_proteome():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_every_myristoylated_protein_starts_with_a_glycine():
     """Myristoylation is chemically defined: the acyl group goes on the glycine exposed when the
     initiator methionine is removed. A substrate without one is not a substrate, so this is the
     rare case where the verification is exact rather than statistical."""
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "myristoylation_confidence" not in n.columns or "sequence" not in n.columns:
         pytest.skip("myristoylation or sequence column not present")
     myr = n[n["myristoylation_confidence"].notna()]
@@ -301,7 +301,7 @@ def test_every_myristoylated_protein_starts_with_a_glycine():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_cdpk1_substrates_are_the_microneme_pathway():
     """The count tracks abundance, as phosphoproteomic counts do, so the check is the ENRICHMENT.
@@ -310,7 +310,7 @@ def test_cdpk1_substrates_are_the_microneme_pathway():
     else, micronemes would not stand out among 8,000 genes.
     """
     from scipy.stats import fisher_exact
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "cdpk1_thiophospho_peptides" not in n.columns:
         pytest.skip("CDPK1 column not merged")
     sub = n["cdpk1_thiophospho_peptides"].notna().to_numpy()
@@ -322,7 +322,7 @@ def test_cdpk1_substrates_are_the_microneme_pathway():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_mrna_stability_covers_only_the_unstable_tail():
     """The table is the transcripts that fell below 75% remaining, so every value must be under it.
@@ -330,7 +330,7 @@ def test_mrna_stability_covers_only_the_unstable_tail():
     A value above 0.75 would mean the wrong column was read -- the workbook has four proportion
     columns and two of them are the iron-treated arm.
     """
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "mrna_remaining_5h_actinomycin" not in n.columns:
         pytest.skip("stability column not merged")
     values = n["mrna_remaining_5h_actinomycin"].dropna()
@@ -339,7 +339,7 @@ def test_mrna_stability_covers_only_the_unstable_tail():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_the_pvm_positives_are_dense_granule_proteins():
     """What Toxoplasma puts at the vacuole membrane is what it secretes from dense granules.
@@ -348,7 +348,7 @@ def test_the_pvm_positives_are_dense_granule_proteins():
     than against the rest of the genome -- a stronger contrast than most columns here allow.
     """
     from scipy.stats import fisher_exact
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "pvm_proximity_positive" not in n.columns:
         pytest.skip("PVM column not merged")
     measured = n[n["pvm_proximity_positive"].notna()]
@@ -362,13 +362,13 @@ def test_the_pvm_positives_are_dense_granule_proteins():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_the_crosslink_interactome_finds_the_ribosome_and_the_proteasome():
     """The two largest obligate complexes in any cell. A crosslinking experiment that misses them
     is not detecting complexes, whatever else it reports."""
     from scipy.stats import fisher_exact
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "n_crosslink_partners" not in n.columns:
         pytest.skip("crosslink column not merged")
     seen = n["n_crosslink_partners"].notna().to_numpy()
@@ -380,7 +380,7 @@ def test_the_crosslink_interactome_finds_the_ribosome_and_the_proteasome():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_melting_temperatures_are_physical_and_not_an_abundance_proxy():
     """The curve fit reports values up to 8,563 degrees, which is a failed fit. Anything that got
@@ -390,7 +390,7 @@ def test_melting_temperatures_are_physical_and_not_an_abundance_proxy():
     expression would be reporting depth of coverage rather than stability.
     """
     from scipy.stats import spearmanr
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "melting_temperature_tm" not in n.columns:
         pytest.skip("melting temperature column not merged")
     tm = n["melting_temperature_tm"].dropna()
@@ -401,13 +401,13 @@ def test_melting_temperatures_are_physical_and_not_an_abundance_proxy():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_antisense_is_not_a_restatement_of_sense_transcription():
     """If antisense signal simply tracked expression it would be readthrough or mis-assignment, and
     the slot would be answering the transcription axis a second time."""
     from scipy.stats import spearmanr
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "antisense_expression_percentile" not in n.columns:
         pytest.skip("antisense column not merged")
     j = n[["antisense_expression_percentile", "expr_tachy"]].dropna()
@@ -416,7 +416,7 @@ def test_antisense_is_not_a_restatement_of_sense_transcription():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_the_secreted_fraction_is_led_by_micronemes():
     """Micronemes dominate classical excretory-secretory antigen preparations; GPI-anchored surface
@@ -425,7 +425,7 @@ def test_the_secreted_fraction_is_led_by_micronemes():
     This is the check that decided the column: asked which proteins are enriched in VESICLES the
     same data gave ribosomal proteins at the top, which is why that framing was refused.
     """
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet")).set_index("gene_id")
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     column = "secretome_soluble_over_vesicle_log2"
     if column not in n.columns:
         pytest.skip("secretome column not merged")
@@ -442,12 +442,12 @@ def test_the_secreted_fraction_is_led_by_micronemes():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_the_sexual_stage_column_rises_on_oocyst_wall_protein():
     """Eight days post-infection in the cat is gametogony, and the oocyst wall is what gametogony
     builds. Housekeeping genes should not be what rises."""
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet")).set_index("gene_id")
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     column = "sexual_stage_8dpi_log2fc"
     if column not in n.columns:
         pytest.skip("sexual-stage column not merged")
@@ -461,7 +461,7 @@ def test_the_sexual_stage_column_rises_on_oocyst_wall_protein():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "graph.npz")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "graph.npz")),
     reason="graph cache not present")
 def test_cotranslation_pairs_ribosomal_proteins_and_is_not_coexpression():
     """Two things at once, because either alone would let a wrong layer through.
@@ -471,7 +471,7 @@ def test_cotranslation_pairs_ribosomal_proteins_and_is_not_coexpression():
     or the slot is answering a question the map already answers.
     """
     import numpy as np
-    import starplast.paths as P
+    import parascape.paths as P
     graph = np.load(os.path.join(P.data_dir(), "graph.npz"))
     if "cotranslation__a" not in graph.files:
         pytest.skip("co-translation layer not built")
@@ -490,7 +490,7 @@ def test_cotranslation_pairs_ribosomal_proteins_and_is_not_coexpression():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_the_two_escrt_models_agree_on_their_top_gene():
     """The screen's verification is that two independent deconvolutions found the same thing.
@@ -499,7 +499,7 @@ def test_the_two_escrt_models_agree_on_their_top_gene():
     1, which is TGGT1_244480 under both. What is being tested is that the two deconvolutions agree,
     because a column where they disagreed would be reporting the model rather than the screen.
     """
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet")).set_index("gene_id")
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     a, b = "escrt_recruitment_xgboost", "escrt_recruitment_maxvit"
     if a not in n.columns or b not in n.columns:
         pytest.skip("ESCRT screen columns not merged")
@@ -510,7 +510,7 @@ def test_the_two_escrt_models_agree_on_their_top_gene():
 
 def test_the_unpublished_screen_is_flagged_in_the_registry():
     """It ships inside the data cache, so a release check has to be able to find it."""
-    from starplast import datasets
+    from parascape import datasets
     entry = next((d for d in datasets.REGISTRY if d.key == "spacr_escrt_screen"), None)
     if entry is None:
         pytest.skip("ESCRT screen not registered")

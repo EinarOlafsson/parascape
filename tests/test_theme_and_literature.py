@@ -19,8 +19,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import literature as LIT  # noqa: E402
-from starplast import theme as TH  # noqa: E402
+from parascape import literature as LIT  # noqa: E402
+from parascape import theme as TH  # noqa: E402
 
 
 # --------------------------------------------------------------------------- palettes
@@ -218,7 +218,7 @@ def test_attention_over_nothing_returns_the_right_empty_shape():
 def test_a_level_with_no_datasets_is_skipped_from_the_table():
     """The table is grouped by the on-disk taxonomy, and an empty heading would advertise a level of
     the tree that holds nothing."""
-    from starplast import datasets as D
+    from parascape import datasets as D
     real = D.REGISTRY
     try:
         D.REGISTRY = [d for d in real if d.level == "reference"]
@@ -301,7 +301,7 @@ def test_the_switch_track_stays_visible_on_light_and_dark_windows():
     """The track was painted white always, which vanished on the light themes."""
     from PyQt6 import QtGui, QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast import theme as TH
+    from parascape import theme as TH
     for window, expect in (("#f4f5f7", "#c9ced5"), ("#15171a", "#ffffff")):
         sw = TH.Switch("x")
         pal = sw.palette()

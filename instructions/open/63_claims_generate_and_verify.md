@@ -1,6 +1,6 @@
 # 63 · Claims: generate knowledge with a calibrated certainty, then test it independently
 
-The user's goal (2026-10-04), in their words: Starplast should (1) generate new knowledge from existing
+The user's goal (2026-10-04), in their words: ParaScape should (1) generate new knowledge from existing
 data and (2) test that knowledge in ways separate from the inference that generated it, both in the flow
 of the program, easy and intuitive: "generate relevant knowledge with a certainty score, then test that
 knowledge to make sure it's actually true". Once that is reliable and quantified, apply the strategies
@@ -74,7 +74,7 @@ clicking to its evidence and the generator's record for that class.
 
 ### The flow (condensed first, click deeper)
 * Start here gains "What don't we know yet?" -> proven recipes -> claims.
-* Gene card: "Starplast's claims for this gene" with certainty and ✓/✗ from independent checks.
+* Gene card: "ParaScape's claims for this gene" with certainty and ✓/✗ from independent checks.
 * Every claim -> why (generator, evidence) -> how it was tested (verifiers, lift) -> track record.
 
 ## Traps

@@ -3,8 +3,8 @@ from dataclasses import replace
 
 import pytest
 
-from starplast import capabilities as C, organisms as O, strategies as S, techniques as T
-from starplast.query import BiologicalContext, EntityRef, Query
+from parascape import capabilities as C, organisms as O, strategies as S, techniques as T
+from parascape.query import BiologicalContext, EntityRef, Query
 
 IDS = tuple(f'TGME49_{i:06d}' for i in range(100001, 100007))
 ENTITIES = tuple(EntityRef(O.TOXOPLASMA, 'gene', i) for i in IDS)

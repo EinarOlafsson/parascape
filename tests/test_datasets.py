@@ -15,8 +15,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import datasets as D
-from starplast import fetch_names as FN  # noqa: E402
+from parascape import datasets as D
+from parascape import fetch_names as FN  # noqa: E402
 
 
 # --------------------------------------------------------------------------- shape
@@ -115,9 +115,9 @@ def test_local_path_is_none_for_an_entry_with_no_path_recorded():
 
 
 def test_local_path_resolves_the_committed_cache_entries():
-    """Registry paths starting starplast/data/ are part of the shipped cache, not raw inputs, and must
+    """Registry paths starting parascape/data/ are part of the shipped cache, not raw inputs, and must
     resolve with no configuration at all."""
-    cached = [d.key for d in D.REGISTRY if d.path and d.path.startswith("starplast/data/")]
+    cached = [d.key for d in D.REGISTRY if d.path and d.path.startswith("parascape/data/")]
     assert cached, "expected the identity table to be registered as part of the cache"
     for k in cached:
         assert D.local_path(k), f"{k} is part of the shipped cache and must always resolve"
@@ -137,7 +137,7 @@ def test_ensure_returns_none_and_says_why_when_it_cannot_fetch():
 def test_ensure_returns_the_local_file_without_downloading_when_it_is_already_here(monkeypatch):
     present = [d.key for d in D.REGISTRY if D.local_path(d.key)]
     assert present
-    monkeypatch.setattr("starplast.sources._get",
+    monkeypatch.setattr("parascape.sources._get",
                         lambda *a, **k: pytest.fail("must not download what is already local"))
     assert D.ensure(present[0]) == D.local_path(present[0])
 
@@ -145,9 +145,9 @@ def test_ensure_returns_the_local_file_without_downloading_when_it_is_already_he
 def test_ensure_refuses_an_html_error_page(monkeypatch, tmp_path):
     """A web server answering an error with a styled 200 page is the normal case, not the odd one, so
     size alone never proves a file arrived."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
-    monkeypatch.setattr("starplast.sources._get", lambda *a, **k: b"<!DOCTYPE html><html>nope")
+    monkeypatch.setattr("parascape.sources._get", lambda *a, **k: b"<!DOCTYPE html><html>nope")
     key = [d.key for d in D.REGISTRY if D.fetchable(d.key)[0] and D.fetchable(d.key)[1] == "direct"][0]
     monkeypatch.setattr(D, "local_path", lambda k: None)
     msgs = []
@@ -156,14 +156,14 @@ def test_ensure_refuses_an_html_error_page(monkeypatch, tmp_path):
 
 
 def test_ensure_reports_a_transport_failure_rather_than_raising(monkeypatch, tmp_path):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
 
     def boom(*a, **k):
         raise OSError("network is down")
 
-    monkeypatch.setattr("starplast.sources._get", boom)
+    monkeypatch.setattr("parascape.sources._get", boom)
     key = [d.key for d in D.REGISTRY if D.fetchable(d.key)[1] == "direct"][0]
     msgs = []
     assert D.ensure(key, log=msgs.append) is None
@@ -171,10 +171,10 @@ def test_ensure_reports_a_transport_failure_rather_than_raising(monkeypatch, tmp
 
 
 def test_ensure_writes_a_real_file_to_the_download_cache(monkeypatch, tmp_path):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
-    monkeypatch.setattr("starplast.sources._get", lambda *a, **k: b"gene_id,value\nTGME49_200010,1\n")
+    monkeypatch.setattr("parascape.sources._get", lambda *a, **k: b"gene_id,value\nTGME49_200010,1\n")
     key = [d.key for d in D.REGISTRY if D.fetchable(d.key)[1] == "direct"][0]
     out = D.ensure(key, log=lambda *_: None)
     assert out and os.path.exists(out)
@@ -190,7 +190,7 @@ def test_downloadable_lists_entries_with_a_url_in_notebook_order():
 
 def test_a_geo_series_is_fetched_through_the_ftp_supplementary_listing(monkeypatch, tmp_path):
     """Not the acc.cgi landing page: that returns HTML about the data rather than the data."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
     seen = {}
@@ -201,7 +201,7 @@ def test_a_geo_series_is_fetched_through_the_ftp_supplementary_listing(monkeypat
         open(p, "w").write("gene\tvalue\n")
         return [p]
 
-    monkeypatch.setattr("starplast.sources.geo_supplementary", fake_geo)
+    monkeypatch.setattr("parascape.sources.geo_supplementary", fake_geo)
     key = [x.key for x in D.REGISTRY if x.accession and x.accession.startswith("GSE")][0]
     out = D.ensure(key, log=lambda *_: None)
     assert out and out.endswith("_matrix.tsv")
@@ -209,10 +209,10 @@ def test_a_geo_series_is_fetched_through_the_ftp_supplementary_listing(monkeypat
 
 
 def test_a_geo_series_with_no_supplementary_files_returns_none(monkeypatch, tmp_path):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
-    monkeypatch.setattr("starplast.sources.geo_supplementary", lambda *a, **k: [])
+    monkeypatch.setattr("parascape.sources.geo_supplementary", lambda *a, **k: [])
     key = [x.key for x in D.REGISTRY if x.accession and x.accession.startswith("GSE")][0]
     assert D.ensure(key, log=lambda *_: None) is None
 
@@ -221,10 +221,10 @@ def test_a_geo_series_with_no_supplementary_files_returns_none(monkeypatch, tmp_
 def test_a_first_fetch_pins_what_arrived(monkeypatch, tmp_path):
     """A publisher reissuing a supplement under the same URL is the failure this exists for: the file
     changes, the build re-runs, every number moves a little, and nothing says why."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
-    monkeypatch.setattr("starplast.sources._get", lambda *a, **k: b"gene_id,value\nTGME49_1,1\n")
+    monkeypatch.setattr("parascape.sources._get", lambda *a, **k: b"gene_id,value\nTGME49_1,1\n")
     key = [d.key for d in D.REGISTRY if D.fetchable(d.key)[1] == "direct"][0]
     out = D.ensure(key, log=lambda *_: None)
     assert out
@@ -235,7 +235,7 @@ def test_a_first_fetch_pins_what_arrived(monkeypatch, tmp_path):
 
 
 def test_a_matching_file_verifies_silently(monkeypatch, tmp_path):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     f = tmp_path / "thing.csv"
     f.write_text("a,b\n1,2\n")
@@ -246,7 +246,7 @@ def test_a_matching_file_verifies_silently(monkeypatch, tmp_path):
 
 
 def test_a_changed_file_is_reported_rather_than_absorbed(monkeypatch, tmp_path):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     f = tmp_path / "thing.csv"
     f.write_text("a,b\n1,2\n")
@@ -262,7 +262,7 @@ def test_a_changed_file_is_reported_rather_than_absorbed(monkeypatch, tmp_path):
 def test_an_unpinned_file_is_not_a_failure_and_gets_pinned(monkeypatch, tmp_path):
     """Most of this tree arrived before checksums existed, so the honest answer for it is 'no claim' --
     and the digest is recorded so the NEXT fetch has something to check against."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     f = tmp_path / "thing.csv"
     f.write_text("a,b\n1,2\n")
@@ -273,10 +273,10 @@ def test_an_unpinned_file_is_not_a_failure_and_gets_pinned(monkeypatch, tmp_path
 
 def test_a_rejected_download_is_never_pinned(monkeypatch, tmp_path):
     """Otherwise the first bad download becomes the truth every good one is measured against."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
-    monkeypatch.setattr("starplast.sources._get", lambda *a, **k: b"<!DOCTYPE html><html>nope")
+    monkeypatch.setattr("parascape.sources._get", lambda *a, **k: b"<!DOCTYPE html><html>nope")
     key = [d.key for d in D.REGISTRY if D.fetchable(d.key)[1] == "direct"][0]
     assert D.ensure(key, log=lambda *_: None) is None
     assert key not in D.recorded_checksums()
@@ -284,7 +284,7 @@ def test_a_rejected_download_is_never_pinned(monkeypatch, tmp_path):
 
 def test_a_corrupt_checksum_file_does_not_stop_the_build(monkeypatch, tmp_path):
     """It is a cache of claims, not the data. Losing it costs the check, not the fetch."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     (tmp_path / D.CHECKSUMS).write_text("{not json")
     assert D.recorded_checksums() == {}
@@ -301,10 +301,10 @@ def test_the_digest_streams_rather_than_loading_the_file(tmp_path):
 def test_an_already_downloaded_file_is_re_verified_rather_than_trusted(monkeypatch, tmp_path):
     """The check has to run on the cached copy, not only at the moment of download -- otherwise a file
     that changed on disk after being fetched is never noticed."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
-    monkeypatch.setattr("starplast.sources._get", lambda *a, **k: b"gene_id,value\nTGME49_1,1\n")
+    monkeypatch.setattr("parascape.sources._get", lambda *a, **k: b"gene_id,value\nTGME49_1,1\n")
     key = [d.key for d in D.REGISTRY if D.fetchable(d.key)[1] == "direct"][0]
     out = D.ensure(key, log=lambda *_: None)
 
@@ -342,7 +342,7 @@ def test_without_a_veupathdb_key_the_report_is_reported_as_unfetchable(monkeypat
 
 def test_the_toxodb_route_writes_the_identity_table(monkeypatch, tmp_path):
     monkeypatch.setenv(FN.API_KEY_ENV, "a-key")
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
     asked = {}
@@ -351,7 +351,7 @@ def test_the_toxodb_route_writes_the_identity_table(monkeypatch, tmp_path):
         asked["organism"], asked["url"] = org, url
         return "Gene ID\tGene Name or Symbol\nTGME49_1\tGRA16\n"
 
-    monkeypatch.setattr("starplast.fetch_names.fetch", fake_fetch)
+    monkeypatch.setattr("parascape.fetch_names.fetch", fake_fetch)
     out = D.ensure("toxodb_identity", log=lambda *_: None)
     assert out and os.path.exists(out)
     assert open(out).read().startswith("gene_id\tgene_name")
@@ -418,14 +418,14 @@ def test_every_entry_states_what_kind_of_data_it_is():
 
 def test_a_failed_toxodb_request_reports_rather_than_raising(monkeypatch, tmp_path):
     monkeypatch.setenv(FN.API_KEY_ENV, "a-key")
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
 
     def boom(org, attrs):
         raise OSError("toxodb is down")
 
-    monkeypatch.setattr("starplast.fetch_names.fetch", boom)
+    monkeypatch.setattr("parascape.fetch_names.fetch", boom)
     msgs = []
     assert D.ensure("toxodb_identity", log=msgs.append) is None
     assert any("ToxoDB request failed" in m for m in msgs)
@@ -442,7 +442,7 @@ def test_the_plasmodb_identity_table_is_fetchable_by_its_own_route(monkeypatch):
 def test_the_plasmodb_route_asks_the_malaria_site_for_the_malaria_organism(monkeypatch, tmp_path):
     monkeypatch.setenv(FN.API_KEY_ENV, "a-key")
     """The organism and the URL travel together, or the second arm silently fetches the first one."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
     asked = {}
@@ -451,7 +451,7 @@ def test_the_plasmodb_route_asks_the_malaria_site_for_the_malaria_organism(monke
         asked["organism"], asked["url"] = organism, url
         return "Gene ID\tGene Name or Symbol\nPF3D7_0100100\tVAR\n"
 
-    monkeypatch.setattr("starplast.fetch_names.fetch", fake_fetch)
+    monkeypatch.setattr("parascape.fetch_names.fetch", fake_fetch)
     out = D.ensure("plasmodb_identity", log=lambda *_: None)
     assert out and open(out).read().startswith("gene_id\tgene_name")
     assert asked["organism"] == "Plasmodium falciparum 3D7"
@@ -464,7 +464,7 @@ def test_a_deposit_whose_tables_sit_under_its_samples_says_so(monkeypatch, tmp_p
     The suffix is declared in the registry rather than inferred, because "fetch every per-sample
     file" would pull the coverage tracks -- 139 MB of wiggle for 250 kB of numbers.
     """
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     monkeypatch.setattr(D, "local_path", lambda k: None)
     seen = {}
@@ -476,8 +476,8 @@ def test_a_deposit_whose_tables_sit_under_its_samples_says_so(monkeypatch, tmp_p
         open(p, "w").write("gene\tvalue\n")
         return [p]
 
-    monkeypatch.setattr("starplast.sources.geo_sample_files", fake_samples)
-    monkeypatch.setattr("starplast.sources.geo_supplementary",
+    monkeypatch.setattr("parascape.sources.geo_sample_files", fake_samples)
+    monkeypatch.setattr("parascape.sources.geo_supplementary",
                         lambda *a, **k: pytest.fail("the series listing was used instead"))
     out = D.ensure("pf_riboseq", log=lambda *_: None)
     assert out and seen["acc"] == "GSE58402" and seen["suffix"] == "_rpkm.txt.gz"

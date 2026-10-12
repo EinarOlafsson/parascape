@@ -19,7 +19,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import organisms as _ORGANISMS
+from parascape import organisms as _ORGANISMS
 from scripts import freeze_pf_functional_ec_knn as K
 from scripts import freeze_pf_functional_ec_controls as C
 from scripts import freeze_functional_profile_controls as P, freeze_functional_profile_knn as N
@@ -38,8 +38,8 @@ def fit_candidate(features, labels, packet, exclusions):
     """Fit fixed native statistics and score the entire original outer-test cohort."""
     import numpy as np
     import pandas as pd
-    from starplast import artifacts as A, forest_records as RF, functional_ontology as F, record_scorecards as R, scorecard as SC
-    from starplast.scorecard_view import build_scorecard_view
+    from parascape import artifacts as A, forest_records as RF, functional_ontology as F, record_scorecards as R, scorecard as SC
+    from parascape.scorecard_view import build_scorecard_view
     split = packet['split']
     batch = RF.random_forest(features, labels, split=split, exclusions=exclusions,
         trees=SETTINGS['trees'], min_leaf=SETTINGS['min_leaf'], seed=split.seed)
@@ -84,8 +84,8 @@ def fit_candidate(features, labels, packet, exclusions):
 
 def artifact_spec(packet, dependencies, *, gaps=(), model_available=True):
     """Declare exact population, native execution difference and unresolved evidence limits."""
-    from starplast import artifacts as A, capabilities as Cap, scorecard as SC
-    from starplast.query import Query
+    from parascape import artifacts as A, capabilities as Cap, scorecard as SC
+    from parascape.query import Query
     split = packet['split']
     limitations = tuple(dict.fromkeys((*packet['gaps'], *gaps, 'Reference-profile recovery; independent biological accuracy unknown',
         'Native n_jobs4 replaced with1 for exact serial probability reduction; statistical defaults unchanged')))
@@ -107,14 +107,14 @@ def freeze(output):
     """Freeze source, training state, exact refit and typed artifact in one new packet."""
     import gc
     import pandas as pd
-    from starplast import artifacts as A, strategies as S
-    from starplast.splits import read_split, write_split
+    from parascape import artifacts as A, strategies as S
+    from parascape.splits import read_split, write_split
     output = Path(output)
     P._write(output / 'predeclared_scope.json', {'pilot_id': PILOT, 'target': C.TARGET, 'settings': SETTINGS,
         'preparation_manifest_sha256': PREPARATION_SHA, 'biological_admission': False})
     code = [Path(__file__), ROOT / 'tests/test_pf_functional_ec_forest.py', ROOT / 'tests/test_forest_records.py',
         Path(K.__file__), Path(N.__file__), Path(C.__file__), Path(P.__file__), ROOT / 'scripts/notebook_runner.py',
-        *[ROOT / 'starplast' / name for name in ('forest_records.py', 'strategy_learning.py', 'functional_exclusions.py', 'functional_ontology.py',
+        *[ROOT / 'parascape' / name for name in ('forest_records.py', 'strategy_learning.py', 'functional_exclusions.py', 'functional_ontology.py',
         'label_records.py', 'datasets.py', 'strategies.py', 'search.py', 'embedding.py', 'slots.py', 'record_scorecards.py', 'scorecard.py',
         'scorecard_view.py', 'artifacts.py', 'capabilities.py', 'splits.py', 'query.py', 'ground_truth.py', 'provenance.py', 'organisms.py')]]
     receipts = {str(path): P._sha(path) for path in code}

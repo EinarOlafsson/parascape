@@ -1,6 +1,6 @@
 # Import data, with the preprocessing offered rather than assumed — DONE 2026-08-12
 
-`starplast/importer.py` and `File ▸ Import data…` (Ctrl+I).
+`parascape/importer.py` and `File ▸ Import data…` (Ctrl+I).
 
 ## Reads what this project already reads
 

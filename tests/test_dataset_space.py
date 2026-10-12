@@ -6,10 +6,10 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import datasets as D, organisms as O, slots as S
-from starplast.dataset_space import DatasetSpace
-from starplast.inventory import build_inventory
-from starplast.provenance import MeasurementTrace
+from parascape import datasets as D, organisms as O, slots as S
+from parascape.dataset_space import DatasetSpace
+from parascape.inventory import build_inventory
+from parascape.provenance import MeasurementTrace
 
 
 class Graph(dict):
@@ -118,7 +118,7 @@ def test_unavailable_partial_and_missing_identifiers_remain_explicit():
 
 
 def test_host_proteins_and_metabolites_do_not_project_to_genes():
-    host_source = source(path='starplast/data/' + O.HOST_TABLES[O.HUMAN])
+    host_source = source(path='parascape/data/' + O.HOST_TABLES[O.HUMAN])
     proteins = pd.DataFrame({'host_id': ['P12345'], 'value': [0.]})
     browser = DatasetSpace(None, tables={(O.HUMAN, 'protein'): proteins}, sources=[host_source], catalog=[])
     assert browser.rows[0]['organism'] == O.HUMAN

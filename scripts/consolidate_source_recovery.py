@@ -19,8 +19,8 @@ from urllib.parse import unquote, urlparse
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import datasets as D, paths  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import datasets as D, paths  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 from recover_source_files import download, validate_file  # noqa: E402
 
 PROCESSED = {".xlsx", ".xls", ".csv", ".tsv", ".txt", ".json", ".jsonl", ".bed"}
@@ -109,13 +109,13 @@ def consolidate(root, output, *, fetch=False, bindings_snapshot=None):
     initial = ROOT / "results/source_recovery_2026_10_07"
     review_path = ROOT / "results/source_review_input_recovery_2026_10_07/review_inputs.json"
     binding_prior = Path(bindings_snapshot) if bindings_snapshot else prior
-    inputs = [Path(__file__), ROOT / "scripts/recover_source_files.py", ROOT / "starplast/datasets.py",
+    inputs = [Path(__file__), ROOT / "scripts/recover_source_files.py", ROOT / "parascape/datasets.py",
               binding_prior / "bindings.json", binding_prior / "manifest.json", prior / "source_locations.json", initial / "source_locations.json", review_path]
     hashes = {str(path): _sha(path) for path in inputs}
     previous_manifest = json.loads((binding_prior / "manifest.json").read_text())
     if _sha(binding_prior / "bindings.json") != previous_manifest["outputs"]["bindings.json"]:
         raise ValueError("Previous source bindings differ from their frozen snapshot")
-    if previous_manifest["input_sha256"].get(str(ROOT / "starplast/datasets.py")) != _sha(ROOT / "starplast/datasets.py"):
+    if previous_manifest["input_sha256"].get(str(ROOT / "parascape/datasets.py")) != _sha(ROOT / "parascape/datasets.py"):
         raise ValueError("Registry changed; prior source associations require review before reuse")
     bindings = json.loads((binding_prior / "bindings.json").read_text())
     for value in bindings.values():
@@ -136,8 +136,8 @@ def consolidate(root, output, *, fetch=False, bindings_snapshot=None):
         try:
             if source.key in bindings:
                 row.update(status="bound_processed_input", file=bindings[source.key])
-            elif source.path and source.path.startswith("starplast/data/"):
-                file = Path(paths.cache_file(source.path.removeprefix("starplast/data/")))
+            elif source.path and source.path.startswith("parascape/data/"):
+                file = Path(paths.cache_file(source.path.removeprefix("parascape/data/")))
                 row.update(status="installed_cache_not_original_assay", file=asdict(SourceFile.inspect(file, "installed_cache")))
             else:
                 project = project_input(source, root)

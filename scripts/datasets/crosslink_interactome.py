@@ -9,7 +9,7 @@ How many proteins this one crosslinks to
     PMID         : 40874616
     accession    : mBio 02159-25 supplementary file s0004
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12505969/supplementaryFiles
-    local path   : starplast/data/crosslink_partners.tsv
+    local path   : parascape/data/crosslink_partners.tsv
 
 Quirks that cost time once:
     395 high-confidence protein pairs, counted per protein. Verified against the two largest
@@ -21,7 +21,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/crosslink_interactome.py

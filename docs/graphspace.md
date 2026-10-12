@@ -1,6 +1,6 @@
 # The integrated neighbour space
 
-`starplast/graphspace.py` builds one graph over genes from every permitted evidence layer plus the
+`parascape/graphspace.py` builds one graph over genes from every permitted evidence layer plus the
 measurement table, so that a user can ask *which genes are near this one, and on what evidence*. Two
 strategies read it: **33 Put every layer into one space and read a gene's neighbourhood** and **34
 Train on the networks and rank the edges they are missing**.
@@ -9,7 +9,7 @@ Everything below was measured on the shipped *Toxoplasma gondii* table (8,140 ge
 seed 42, default settings) on 2026-09-26. Reproduce it with:
 
 ```python
-from starplast import graphspace, strategies
+from parascape import graphspace, strategies
 sp = graphspace.space(strategies.Context.shipped("Tg"))
 print(sp.report.summary())
 print(sp.report.frame().to_string(index=False))

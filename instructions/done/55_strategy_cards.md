@@ -19,13 +19,13 @@ The user, 2026-09-28:
 1. `scorecard.HEADLINE` / `scorecard.headline()`: four bars per task, in the same positions for
    every strategy -- Better than chance (skill), Reach (coverage or its task's analogue), and two
    task metrics in plain words. Tested.
-2. `starplast/strategy_card.py`: painted bars (QPainter), the card, the explainer box and the two
+2. `parascape/strategy_card.py`: painted bars (QPainter), the card, the explainer box and the two
    worked examples. `strategy_panel.py` shows the card first; Guide / Settings / Results move
    behind **Details ▸**.
-3. `starplast/strategy_explainers.py`: four plain fields per strategy (what it does, how it is
+3. `parascape/strategy_explainers.py`: four plain fields per strategy (what it does, how it is
    evaluated, what failure looks like and why, what success looks like and why), derived from each
    strategy's own explanation and test description. A test requires all four for all 39.
-4. `scripts/build_strategy_examples.py` -> `starplast/data/strategy_examples.json`, recorded as an
+4. `scripts/build_strategy_examples.py` -> `parascape/data/strategy_examples.json`, recorded as an
    executed notebook: one real failure and one real success per strategy per organism, chosen from
    `results/calibration_2026-09-26b/runs.jsonl`; the success is re-run once to list the new calls.
 5. `docs/strategy_cards.md`; tutorial captions that name moved controls.
@@ -40,7 +40,7 @@ Rules: no algorithm, calibration number or data table changes.
   Chance ticks come from a fixed level, the card's own metric (replication's null rate), the
   verdict's measured null when the bar IS the verdict metric, or precision/recall over fold
   enrichment for sets. Accuracy and macro F1 have no tick unless measured.
-* **Card** (`starplast/strategy_card.py`): painted bars (value, 95% whisker, chance marker), pills
+* **Card** (`parascape/strategy_card.py`): painted bars (value, 95% whisker, chance marker), pills
   for method/task/grade, About box (4 fields, one elided line each, click to open), two mini
   scorecards, new-information rows whose gene ids select the gene. Styled through a card-local
   stylesheet by object name, because the app stylesheet beats palettes and fonts. Screenshots

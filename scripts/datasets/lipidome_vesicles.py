@@ -9,7 +9,7 @@ Lipid species abundance, and its proportion against the host cell
     PMID         : 41716462
     accession    : Front Cell Infect Microbiol 1745625 Tables 1-3
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12913473/supplementaryFiles
-    local path   : starplast/data/metabolites.parquet
+    local path   : parascape/data/metabolites.parquet
 
 Quirks that cost time once:
     The SECOND study in the metabolite table, and the name-matching cost the entry above warns
@@ -26,7 +26,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/lipidome_vesicles.py

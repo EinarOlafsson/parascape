@@ -11,7 +11,7 @@ Tachyzoite, day 3/5/7, in vivo tissue cyst (12 columns)
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.expression.load_all()`; this script is the per-dataset view of the same source, for
+`parascape.expression.load_all()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/gse108740.py

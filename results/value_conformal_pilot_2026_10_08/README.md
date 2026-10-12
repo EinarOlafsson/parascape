@@ -44,4 +44,4 @@ Execution and checks used serial CPU jobs under a 2 GB systemd scope; no GPU.
 No installed table, graph, track record, claim, native inference algorithm or
 historical calibration snapshot changed. Other numeric mechanisms/variants,
 full outer coverage, source/units/exchangeability and biological admission remain
-open. Artifact `43fd24722a1cd4be3c3d0629abd16514b8b6833ab3627df908f5240551673b76`.
+open. Artifact `c1277015b87d6b797c03143fc5854a1acc17b5a701a3263e28d24283334a7099`.

@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | None; first contract task |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/organisms.py`, `starplast/slots.py`, `starplast/identity.py`, `starplast/track_record.py` |
+| Existing code to inspect | `parascape/organisms.py`, `parascape/slots.py`, `parascape/identity.py`, `parascape/track_record.py` |
 
 ## Deliverable
 
@@ -36,7 +36,7 @@ Frozen pilot: seven synthetic query fixtures (gene, host protein, class, label, 
 continuous trait and organism-qualified pair). No data acquisition, model fitting or biological
 accuracy measurement is needed for this transport/resolution contract.
 
-Implementation: `starplast/query.py`; regression and malformed-input checks in `tests/test_query.py`.
+Implementation: `parascape/query.py`; regression and malformed-input checks in `tests/test_query.py`.
 Validation: **472 passed** (2026-10-07, Python 3.12, offscreen Qt, CPU, 4 GB cap), running
 `tests/test_query.py`, `tests/test_identity_and_corpus.py`, `tests/test_organisms.py` and
 `tests/test_docstrings.py`. Whitespace checks passed. Seven canonical synthetic fixtures cover

@@ -15,7 +15,7 @@ os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 
 from PyQt6 import QtWidgets  # noqa: E402
 
-from starplast import chat as C  # noqa: E402
+from parascape import chat as C  # noqa: E402
 
 
 @pytest.fixture(scope="module")

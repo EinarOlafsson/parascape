@@ -18,8 +18,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import fetch_names as FN  # noqa: E402
-from starplast import hf_publish as HF  # noqa: E402
+from parascape import fetch_names as FN  # noqa: E402
+from parascape import hf_publish as HF  # noqa: E402
 
 
 # --------------------------------------------------------------------------- licences
@@ -323,22 +323,22 @@ def test_main_writes_an_identity_table_for_each_arm(monkeypatch, tmp_path):
 
 # --------------------------------------------------------------------------- module entry point
 def test_the_package_entry_point_calls_main(monkeypatch):
-    """`python -m starplast` is a documented way to launch it."""
+    """`python -m parascape` is a documented way to launch it."""
     called = {}
-    import starplast.app as app
+    import parascape.app as app
     monkeypatch.setattr(app, "main", lambda: called.setdefault("ran", True))
     import runpy
-    runpy.run_module("starplast", run_name="__main__")
+    runpy.run_module("parascape", run_name="__main__")
     assert called.get("ran")
 
 
 def test_fetch_names_runs_as_a_module(monkeypatch, tmp_path):
-    """`python -m starplast.fetch_names` is the documented one-off that produces the identity tables.
+    """`python -m parascape.fetch_names` is the documented one-off that produces the identity tables.
 
     Patched through the environment rather than the imported object: runpy executes a fresh copy of the
     module, so OUT is recomputed from paths.data_dir() and an attribute patch on the already-imported
     module would silently write to the real cache instead."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_CACHE, str(tmp_path))
     monkeypatch.setenv(FN.API_KEY_ENV, "a-key")
 
@@ -355,7 +355,7 @@ def test_fetch_names_runs_as_a_module(monkeypatch, tmp_path):
     import urllib.request
     monkeypatch.setattr(urllib.request, "urlopen", lambda *a, **k: Resp())
     import runpy
-    runpy.run_module("starplast.fetch_names", run_name="__main__")
+    runpy.run_module("parascape.fetch_names", run_name="__main__")
     assert os.path.exists(os.path.join(tmp_path, "toxodb_identity.tsv"))
     assert open(os.path.join(tmp_path, "toxodb_identity.tsv")).read().startswith("gene_id")
     # And the Plasmodium arm's, which the same one-off now produces: it had no identity layer at all
@@ -370,24 +370,24 @@ def _read(*parts):
 
 
 def test_single_distribution_contains_code_and_optional_gpu():
-    """A normal install must work without CUDA or a second Starplast project."""
+    """A normal install must work without CUDA or a second ParaScape project."""
     import tomllib
     from pathlib import Path
-    from starplast import __version__
+    from parascape import __version__
     metadata = tomllib.loads(_read("pyproject.toml"))
     project = metadata["project"]
-    assert project["name"] == "starplast"
+    assert project["name"] == "parascape"
     assert project["version"] == __version__
     # One distribution can contain several Python packages. Require every source subpackage
     # so a wheel cannot silently omit the space builders, while excluding unrelated namespaces.
     root = Path(__file__).resolve().parents[1]
     expected = {".".join(p.parent.relative_to(root).parts)
-                for p in (root / "starplast").rglob("__init__.py")}
+                for p in (root / "parascape").rglob("__init__.py")}
     declared = metadata["tool"]["setuptools"]["packages"]
     assert set(declared) == expected
     assert len(declared) == len(expected)
     defaults = project["dependencies"]
-    assert not any(r.lower().startswith(("cuml", "cupy", "starplast")) for r in defaults)
+    assert not any(r.lower().startswith(("cuml", "cupy", "parascape")) for r in defaults)
     cuda = project["optional-dependencies"]["gpu"]
     assert any(r.startswith("cuml-cu12") for r in cuda)
     assert any(r.startswith("cupy-cuda12x") for r in cuda)
@@ -395,7 +395,7 @@ def test_single_distribution_contains_code_and_optional_gpu():
         assert "sys_platform == 'linux'" in requirement
         assert "platform_machine == 'x86_64'" in requirement
     for extra in project["optional-dependencies"].values():
-        assert not any(r.startswith("starplast") for r in extra)
+        assert not any(r.startswith("parascape") for r in extra)
 
 
 def test_no_auxiliary_distribution_projects():
@@ -406,10 +406,10 @@ def test_no_auxiliary_distribution_projects():
 
 def test_the_program_says_how_to_install_the_gpu_stack():
     """The switch reports what it found; when it found nothing it has to say what to type."""
-    from starplast import gpu
+    from parascape import gpu
     text = gpu.describe()
     if not any(gpu.available()[k] for k in ("cuml", "cupy", "torch")):
-        assert "starplast[gpu]" in text
+        assert "parascape[gpu]" in text
 
 
 def test_fetching_without_a_key_says_how_to_get_one(monkeypatch):
@@ -460,7 +460,7 @@ def test_every_unguarded_import_in_the_package_is_a_declared_dependency():
                 "huggingface_hub": "publishing a release, which the application never does"}
     names |= set(optional)
     undeclared = {}
-    for folder, _dirs, files in os.walk(os.path.join(root, "starplast")):
+    for folder, _dirs, files in os.walk(os.path.join(root, "parascape")):
         for name in files:
             if not name.endswith(".py"):
                 continue
@@ -476,7 +476,7 @@ def test_every_unguarded_import_in_the_package_is_a_declared_dependency():
                            and node.level == 0 and node.module else [])
                 for module in modules:
                     top = module.split(".")[0]
-                    if not top or top == "starplast" or top in sys.stdlib_module_names:
+                    if not top or top == "parascape" or top in sys.stdlib_module_names:
                         continue
                     key = distribution.get(top.lower(), top.lower())
                     if key not in names:

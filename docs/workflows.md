@@ -21,7 +21,7 @@ Legacy summaries without an explicit evidence classification say **unclassified*
 Choose an observed outcome, its type, a method and the grouping used for evaluation.
 **Orthogroup** keeps related proteins together; random gene folds answer an easier
 question and may overestimate transfer to new families. A study or condition column
-can be used when it actually identifies the intended held-out groups. Starplast
+can be used when it actually identifies the intended held-out groups. ParaScape
 does not invent source dates or study membership for a time/study holdout.
 
 The linear and prior models are useful starting points. Boosted trees, feature
@@ -74,14 +74,14 @@ current table and its identity catalogue. Ambiguous/unresolved identifiers remai
 visible; missing or nonnumeric values stay missing, and a measured zero stays zero.
 
 Repeated gene rows, including aliases that converge on one gene, require explicit
-aggregation before import. Starplast does not silently average guide-level results.
+aggregation before import. ParaScape does not silently average guide-level results.
 The exported comparison includes the existing gene evidence and a JSON record of
 the source filename, SHA-256 hash and selected columns. Use the advanced importer
 when you want to add measurements to an analysis table.
 
 ## Evidence and literature records
 
-`starplast.evidence.Observation` stores the biological entity, trait, typed value,
+`parascape.evidence.Observation` stores the biological entity, trait, typed value,
 unit, source/version/location, context, replicate, uncertainty, evidence status,
 missingness state and derivation. Gene, transcript, protein, residue, allele, pair,
 host-gene and metabolite identities stay distinct. Contradictory observations from

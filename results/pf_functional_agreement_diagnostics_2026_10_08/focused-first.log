@@ -1,4 +1,4 @@
-Running as unit: starplast-paired-focused-20261008.service
+Running as unit: parascape-paired-focused-20261008.service
 ..........F
 =================================== FAILURES ===================================
 _____ test_shipped_pair_retains_all_rows_original_methods_and_exact_export _____
@@ -26,7 +26,7 @@ pair = (FunctionalBenchmark(metadata={'benchmark_id': 'FN-EC-PF-CONTROL-01', 'bi
 
 tests/test_functional_agreement.py:97: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/scorecard_view.py:390: in render_scorecard_html
+parascape/scorecard_view.py:390: in render_scorecard_html
     html.append('<p>' + escape(' · '.join(scope[key] for key in ('organism', 'target', 'strategy'))) + '</p>')
                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
@@ -37,7 +37,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
                                           ^^^^^^^^^^
 E   KeyError: 'strategy'
 
-starplast/scorecard_view.py:390: KeyError
+parascape/scorecard_view.py:390: KeyError
 =========================== short test summary info ============================
 FAILED tests/test_functional_agreement.py::test_shipped_pair_retains_all_rows_original_methods_and_exact_export
 !!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!

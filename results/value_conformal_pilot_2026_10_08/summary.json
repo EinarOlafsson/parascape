@@ -143,8 +143,8 @@
       "fit_lineage": "Caller must pin training-only baseline fit and source identity"
     }
   },
-  "artifact_identity": "43fd24722a1cd4be3c3d0629abd16514b8b6833ab3627df908f5240551673b76",
-  "base_model_identity": "65a76557a4895ab0c836d345676ca3bc0c77998b619f5087f3b12ff8d8d8e66d",
-  "upstream_identity": "782d9e3745b28552b84f9a97022f270bfcb228e49ce37d1e2da5b1c5af08f1b8",
+  "artifact_identity": "c1277015b87d6b797c03143fc5854a1acc17b5a701a3263e28d24283334a7099",
+  "base_model_identity": "a3f5a4d24da0eaae77678b230e22089b85ec810484ad20ce76ab792f3992f7d0",
+  "upstream_identity": "6f6e50da3ae78dcd8126d7306a423c5122cc3c343276695b60db7ce95c5e417c",
   "interpretation": "fixed stored-score interval recovery; source/units/independence/exchangeability unresolved"
 }

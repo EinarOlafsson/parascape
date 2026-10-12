@@ -13,11 +13,11 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import numpy as np
 import pandas as pd
-from starplast import artifacts as A, baselines as B, capabilities as C, functional_ontology as F, label_records as L, organisms as O, record_scorecards as R, scorecard as SC, strategies as S
-from starplast.query import Query
-from starplast.ground_truth import BenchmarkEntry,StrategyBenchmark,cohort_digest,read_registry,write_registry
-from starplast.provenance import SourceFile
-from starplast.splits import make_exclusions,make_split,read_split,write_split
+from parascape import artifacts as A, baselines as B, capabilities as C, functional_ontology as F, label_records as L, organisms as O, record_scorecards as R, scorecard as SC, strategies as S
+from parascape.query import Query
+from parascape.ground_truth import BenchmarkEntry,StrategyBenchmark,cohort_digest,read_registry,write_registry
+from parascape.provenance import SourceFile
+from parascape.splits import make_exclusions,make_split,read_split,write_split
 
 REVIEW=ROOT/'results/functional_source_review_2026_10_08_v2'
 TARGET='ec_major_classes'
@@ -128,7 +128,7 @@ def freeze(output):
     for column in ('majority','prevalence_call'):
         base_rows=rows.drop(columns=['prediction','abstained']).assign(prediction=baseline[column].to_numpy())
         baseline_cards[column]=R.aggregate(base_rows,scope)
-    code=[Path(__file__),*(ROOT/'starplast'/name for name in ('functional_ontology.py','discovery_labels.py','label_records.py',
+    code=[Path(__file__),*(ROOT/'parascape'/name for name in ('functional_ontology.py','discovery_labels.py','label_records.py',
         'strategies.py','splits.py','search.py','slots.py','embedding.py','datasets.py','artifacts.py','record_scorecards.py','scorecard.py','baselines.py','capabilities.py'))]
     inputs=[nodes,enzyme,REVIEW/'manifest.json',REVIEW/f'{O.TOXOPLASMA}_ec_number_profiles.parquet',*code]
     dependencies=[A.Dependency('code',p.stem,_sha(p)) for p in code]

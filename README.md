@@ -1,34 +1,30 @@
-# Starplast
+# ParaScape
 
-[![Starplast: introduction and practical guide in 40 slides](https://raw.githubusercontent.com/EinarOlafsson/starplast/main/docs/deck/slides/slide_01.jpg)](https://einarolafsson.github.io/starplast/deck/)
+[![ParaScape: introduction and practical guide in 40 slides](https://raw.githubusercontent.com/EinarOlafsson/parascape/main/docs/deck/slides/slide_01.jpg)](https://einarolafsson.github.io/parascape/deck/)
 
-[← Back](https://github.com/EinarOlafsson/starplast/blob/main/docs/deck/pages/40.md) ·
-[Next →](https://github.com/EinarOlafsson/starplast/blob/main/docs/deck/pages/02.md) ·
-[Open slide viewer](https://einarolafsson.github.io/starplast/deck/) ·
-[PDF](https://github.com/EinarOlafsson/starplast/blob/main/docs/deck/starplast_deck.pdf) ·
-[PowerPoint](https://raw.githubusercontent.com/EinarOlafsson/starplast/main/docs/deck/starplast_deck.pptx)
+[← Back](https://github.com/EinarOlafsson/parascape/blob/main/docs/deck/pages/40.md) ·
+[Next →](https://github.com/EinarOlafsson/parascape/blob/main/docs/deck/pages/02.md) ·
+[Open slide viewer](https://einarolafsson.github.io/parascape/deck/) ·
+[PDF](https://github.com/EinarOlafsson/parascape/blob/main/docs/deck/parascape_deck.pdf) ·
+[PowerPoint](https://raw.githubusercontent.com/EinarOlafsson/parascape/main/docs/deck/parascape_deck.pptx) ·
+[Home page](https://einarolafsson.github.io/projects/parascape/)
 
-[![Platforms](https://img.shields.io/badge/Platforms-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)](#install)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](#install)
-[![Qt / PyQt6](https://img.shields.io/badge/GUI-PyQt6-41CD52?logo=qt&logoColor=white)](https://einarolafsson.github.io/starplast/guide.html)
-[![Latest release](https://img.shields.io/github/v/release/EinarOlafsson/starplast?label=Release&logo=github)](https://github.com/EinarOlafsson/starplast/releases/latest)
-[![GitHub issues](https://img.shields.io/github/issues/EinarOlafsson/starplast?logo=github)](https://github.com/EinarOlafsson/starplast/issues)
-[![GitHub source](https://img.shields.io/badge/GitHub-Source-181717?logo=github)](https://github.com/EinarOlafsson/starplast)
+[![ParaScape website](https://img.shields.io/badge/Website-ParaScape-0A7BBB)](https://einarolafsson.github.io/projects/parascape/)
+[![Linux, macOS and Windows](https://img.shields.io/badge/Linux%20OSX%20Win-lightgrey?logo=linux&logoColor=white)](#install)
+[![Python 3.10 or newer](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](#install)
+[![Qt interface](https://img.shields.io/badge/GUI-Qt-41CD52?logo=qt&logoColor=white)](https://einarolafsson.github.io/parascape/guide.html)
+[![Tests on main](https://img.shields.io/github/actions/workflow/status/EinarOlafsson/parascape/checks.yml?branch=main&event=push&label=Tests&logo=pytest&logoColor=white)](https://github.com/EinarOlafsson/parascape/actions/workflows/checks.yml?query=branch%3Amain)
+[![GitHub issues](https://img.shields.io/github/issues/EinarOlafsson/parascape?label=Issues&logo=github)](https://github.com/EinarOlafsson/parascape/issues)
+[![PyPI version](https://img.shields.io/pypi/v/parascape?label=PyPI&logo=pypi&logoColor=white)](https://pypi.org/project/parascape/)
+[![PyPI downloads](https://img.shields.io/pepy/dt/parascape?label=downloads&logo=pypi&logoColor=white)](https://pepy.tech/projects/parascape)
+[![API documentation](https://img.shields.io/github/actions/workflow/status/EinarOlafsson/parascape/docs.yml?branch=main&event=push&label=API&logo=readthedocs&logoColor=white)](https://einarolafsson.github.io/parascape/API.html)
+[![User guide](https://img.shields.io/badge/Guide-4A9EFF?logo=bookstack&logoColor=white)](https://einarolafsson.github.io/parascape/guide.html)
+[![Cite ParaScape](https://img.shields.io/badge/Cite-8A2BE2)](https://github.com/EinarOlafsson/parascape/blob/main/CITATION.cff)
+[![MIT license](https://img.shields.io/badge/License-MIT-3DA639?logo=opensourceinitiative&logoColor=white)](https://github.com/EinarOlafsson/parascape/blob/main/LICENSE)
+[![spaCR](https://img.shields.io/badge/spaCR-7B61A8)](https://github.com/EinarOlafsson/spacr)
+[![ParaScape PyPI download ranking over the previous 30 complete days](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsql-clickhouse.clickhouse.com%2F%3Fuser%3Ddemo%26param_package_name%3Dparascape%26param_days%3D30%26query%3DWITH%2B%2528%2BSELECT%2Bsum%2528count%2529%2BFROM%2Bpypi.pypi_downloads_per_day%2BWHERE%2Bproject%2B%253D%2B%257Bpackage_name%253AString%257D%2BAND%2Bdate%2B%253E%253D%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2B-%2B%257Bdays%253AUInt16%257D%2BAND%2Bdate%2B%253C%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2B%2529%2BAS%2Bdownloads%2BSELECT%2Bdownloads%2BAS%2Bpackage_downloads%252C%2BcountIf%2528n%2B%253E%253D%2Bdownloads%2529%2BAS%2Brank%252C%2Bcount%2528%2529%2BAS%2Btotal_packages%252C%2B100.0%2B%252A%2Brank%2B%252F%2BnullIf%2528total_packages%252C%2B0%2529%2BAS%2Bpercentile%252C%2Bif%2528%2Btotal_packages%2B%253D%2B0%2BOR%2Bdownloads%2B%253D%2B0%252C%2B%2527no%2Bdata%2527%252C%2Bconcat%2528%2B%2527top%2B%2527%252C%2BtoString%2528ceil%25281000.0%2B%252A%2Brank%2B%252F%2BnullIf%2528total_packages%252C%2B0%2529%2529%2B%252F%2B10%2529%252C%2B%2527%2525%2527%2B%2529%2B%2529%2BAS%2Bmessage%2BFROM%2B%2528%2BSELECT%2Bproject%252C%2Bsum%2528count%2529%2BAS%2Bn%2BFROM%2Bpypi.pypi_downloads_per_day%2BWHERE%2Bdate%2B%253E%253D%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2B-%2B%257Bdays%253AUInt16%257D%2BAND%2Bdate%2B%253C%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2BGROUP%2BBY%2Bproject%2B%2529%2BFORMAT%2BJSON&query=%24.data%5B0%5D.message&label=Rank&logo=pypi&logoColor=white&color=brightgreen&cacheSeconds=86400)](https://clickpy.clickhouse.com/dashboard/parascape)
 
-[![PyPI version](https://img.shields.io/pypi/v/starplast?logo=pypi&logoColor=white)](https://pypi.org/project/starplast/)
-[![Total PyPI downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsql-clickhouse.clickhouse.com%2F%3Fuser%3Ddemo%26query%3DSELECT%2Bif%2528count%2528%2529%2B%253D%2B0%252C%2B%2527awaiting%2Bdata%2527%252C%2BtoString%2528sum%2528count%2529%2529%2529%2BAS%2Btotal_text%252C%2Bif%2528count%2528%2529%2B%253D%2B0%252C%2B%2527awaiting%2Bdata%2527%252C%2BtoString%2528sumIf%2528count%252C%2Bdate%2B%253E%253D%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2B-%2B30%2BAND%2Bdate%2B%253C%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2529%2529%2529%2BAS%2Bmonth_text%2BFROM%2Bpypi.pypi_downloads_per_day%2BWHERE%2Bproject%2B%253D%2B%2527starplast%2527%2BFORMAT%2BJSON&query=%24.data%5B0%5D.total_text&label=downloads&color=brightgreen&cacheSeconds=86400)](https://clickpy.clickhouse.com/dashboard/starplast)
-[![PyPI downloads over 30 complete days](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsql-clickhouse.clickhouse.com%2F%3Fuser%3Ddemo%26query%3DSELECT%2Bif%2528count%2528%2529%2B%253D%2B0%252C%2B%2527awaiting%2Bdata%2527%252C%2BtoString%2528sum%2528count%2529%2529%2529%2BAS%2Btotal_text%252C%2Bif%2528count%2528%2529%2B%253D%2B0%252C%2B%2527awaiting%2Bdata%2527%252C%2BtoString%2528sumIf%2528count%252C%2Bdate%2B%253E%253D%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2B-%2B30%2BAND%2Bdate%2B%253C%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2529%2529%2529%2BAS%2Bmonth_text%2BFROM%2Bpypi.pypi_downloads_per_day%2BWHERE%2Bproject%2B%253D%2B%2527starplast%2527%2BFORMAT%2BJSON&query=%24.data%5B0%5D.month_text&label=downloads+%2830d%29&color=brightgreen&cacheSeconds=86400)](https://clickpy.clickhouse.com/dashboard/starplast)
-[![PyPI download rank over 30 days](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fsql-clickhouse.clickhouse.com%2F%3Fuser%3Ddemo%26param_package_name%3Dstarplast%26param_days%3D30%26query%3DWITH%2B%2528%2BSELECT%2Bsum%2528count%2529%2BFROM%2Bpypi.pypi_downloads_per_day%2BWHERE%2Bproject%2B%253D%2B%257Bpackage_name%253AString%257D%2BAND%2Bdate%2B%253E%253D%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2B-%2B%257Bdays%253AUInt16%257D%2BAND%2Bdate%2B%253C%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2B%2529%2BAS%2Bdownloads%2BSELECT%2Bdownloads%2BAS%2Bpackage_downloads%252C%2BcountIf%2528n%2B%253E%253D%2Bdownloads%2529%2BAS%2Brank%252C%2Bcount%2528%2529%2BAS%2Btotal_packages%252C%2B100.0%2B%252A%2Brank%2B%252F%2BnullIf%2528total_packages%252C%2B0%2529%2BAS%2Bpercentile%252C%2Bif%2528%2Btotal_packages%2B%253D%2B0%2BOR%2Bdownloads%2B%253D%2B0%252C%2B%2527no%2Bdata%2527%252C%2Bconcat%2528%2B%2527top%2B%2527%252C%2BtoString%2528ceil%25281000.0%2B%252A%2Brank%2B%252F%2BnullIf%2528total_packages%252C%2B0%2529%2529%2B%252F%2B10%2529%252C%2B%2527%2525%2527%2B%2529%2B%2529%2BAS%2Bmessage%2BFROM%2B%2528%2BSELECT%2Bproject%252C%2Bsum%2528count%2529%2BAS%2Bn%2BFROM%2Bpypi.pypi_downloads_per_day%2BWHERE%2Bdate%2B%253E%253D%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2B-%2B%257Bdays%253AUInt16%257D%2BAND%2Bdate%2B%253C%2BtoDate%2528now%2528%2527UTC%2527%2529%2529%2BGROUP%2BBY%2Bproject%2B%2529%2BFORMAT%2BJSON&query=%24.data%5B0%5D.message&label=PyPI+rank+%2830d%29&color=brightgreen&cacheSeconds=86400)](https://clickpy.clickhouse.com/dashboard/starplast)
-
-[![Tests on main](https://github.com/EinarOlafsson/starplast/actions/workflows/checks.yml/badge.svg?branch=main&event=push)](https://github.com/EinarOlafsson/starplast/actions/workflows/checks.yml?query=branch%3Amain)
-[![Documentation on main](https://github.com/EinarOlafsson/starplast/actions/workflows/docs.yml/badge.svg?branch=main&event=push)](https://github.com/EinarOlafsson/starplast/actions/workflows/docs.yml?query=branch%3Amain)
-[![User guide](https://img.shields.io/badge/Guide-Using%20Starplast-4A9EFF)](https://einarolafsson.github.io/starplast/guide.html)
-[![Python API](https://img.shields.io/badge/API-reference-007EC6)](https://einarolafsson.github.io/starplast/API.html)
-[![Cite Starplast](https://img.shields.io/badge/Cite-CITATION.cff-8A2BE2)](https://github.com/EinarOlafsson/starplast/blob/main/CITATION.cff)
-[![MIT license](https://img.shields.io/github/license/EinarOlafsson/starplast?color=3DA639)](https://github.com/EinarOlafsson/starplast/blob/main/LICENSE)
-[![spaCR integration](https://img.shields.io/badge/spaCR-integrated-7B61A8)](https://github.com/EinarOlafsson/spacr)
-
-Starplast is a desktop app for exploring gene evidence in *Toxoplasma gondii* and
+ParaScape is a desktop app for exploring gene evidence in *Toxoplasma gondii* and
 *Plasmodium falciparum*. It brings expression, fitness screens, localization,
 protein features, interactions, and literature annotations into one place.
 
@@ -36,35 +32,35 @@ Use it to look up a gene, investigate hits from a screen, compare groups of gene
 and choose candidates for follow-up experiments. The bundled maps contain 8,140
 *T. gondii* genes and 5,720 *P. falciparum* genes, viewed separately.
 
-[User guide](https://github.com/EinarOlafsson/starplast/blob/main/docs/guide.md) · [Python API](https://github.com/EinarOlafsson/starplast/blob/main/docs/API.md) ·
-[Dataset catalogue](https://github.com/EinarOlafsson/starplast/blob/main/docs/datasets.md) · [Changes](https://github.com/EinarOlafsson/starplast/blob/main/CHANGELOG.md)
+[User guide](https://github.com/EinarOlafsson/parascape/blob/main/docs/guide.md) · [Python API](https://github.com/EinarOlafsson/parascape/blob/main/docs/API.md) ·
+[Dataset catalogue](https://github.com/EinarOlafsson/parascape/blob/main/docs/datasets.md) · [Changes](https://github.com/EinarOlafsson/parascape/blob/main/CHANGELOG.md)
 
 ## Install
 
 Python 3.10 or newer is required. The desktop app needs a display and OpenGL.
 
 ```bash
-pip install starplast
-starplast
+pip install parascape
+parascape
 ```
 
 From a checkout:
 
 ```bash
-git clone https://github.com/EinarOlafsson/starplast.git
-cd starplast
+git clone https://github.com/EinarOlafsson/parascape.git
+cd parascape
 pip install -e .
-starplast
+parascape
 ```
 
 The default installation runs analyses on the CPU. For an NVIDIA GPU on Linux
 x86_64 with a CUDA 12 compatible driver:
 
 ```bash
-pip install "starplast[gpu]"
+pip install "parascape[gpu]"
 ```
 
-GPU dependencies are large and optional. `starplast-install-gpu` can also inspect
+GPU dependencies are large and optional. `parascape-install-gpu` can also inspect
 your driver and offer an installation command. macOS and Windows use CPU analysis;
 the 3D display still uses OpenGL.
 
@@ -80,13 +76,13 @@ the bundled data requires the original source datasets.
 4. Click a gene to read its evidence and inspect each type of relationship separately.
 5. Select a group with a lasso or brush, then export the gene list for follow-up.
 
-[![A rotating gene map with CDPK1 and its connections illuminated](https://raw.githubusercontent.com/EinarOlafsson/starplast/main/docs/screenshots/map_rotation.gif)](https://raw.githubusercontent.com/EinarOlafsson/starplast/main/docs/screenshots/map_rotation.png)
+[![A rotating gene map with CDPK1 and its connections illuminated](https://raw.githubusercontent.com/EinarOlafsson/parascape/main/docs/screenshots/map_rotation.gif)](https://raw.githubusercontent.com/EinarOlafsson/parascape/main/docs/screenshots/map_rotation.png)
 
 The *T. gondii* map with CDPK1 (`TGME49_301440`) selected. The selected gene and
 its five neighbours emit light; lines show attention-corrected literature
 co-mention links. Colours show compartments. This animation uses the pre-0.43
 layout; newly opened maps use the recorded, balanced feature recipe.
-[View a still image](https://raw.githubusercontent.com/EinarOlafsson/starplast/main/docs/screenshots/map_rotation.png).
+[View a still image](https://raw.githubusercontent.com/EinarOlafsson/parascape/main/docs/screenshots/map_rotation.png).
 
 Each point is a gene. Its position comes from an embedding of selected features;
 nearby points have similar inputs, but proximity alone does not demonstrate a
@@ -97,7 +93,7 @@ is shown separately from measured values.
 The analysis panel lets you change feature sets, build embeddings, cluster genes,
 and evaluate recovery of labels held out from the input. Search scores help
 prioritize candidates; they are not experimental validation. See the
-[user guide](https://github.com/EinarOlafsson/starplast/blob/main/docs/guide.md) for controls and analysis settings.
+[user guide](https://github.com/EinarOlafsson/parascape/blob/main/docs/guide.md) for controls and analysis settings.
 
 The search box beside the **Help** menu (**Ctrl+Shift+H**), as in spaCR, finds any menu
 command, panel, strategy, setting, slot, dataset or guide section and takes you to it.
@@ -115,7 +111,7 @@ proteins and AF3 summary features for 1,210 exactly mapped genes. Sequence featu
 are optional inputs to prediction; local structure files can also be indexed for
 the structure viewer.
 
-In the [0.43 benchmark](https://github.com/EinarOlafsson/starplast/blob/main/docs/benchmark-0.43.md),
+In the [0.43 benchmark](https://github.com/EinarOlafsson/parascape/blob/main/docs/benchmark-0.43.md),
 boosted trees with sequence and structure features reached 56.2% localization
 accuracy across held-out orthogroups. UMAP neighbours performed less well, and
 several rare classes remained poorly recovered. These are model hypotheses,
@@ -305,21 +301,21 @@ Skill says how far above chance a strategy is; the scorecard says in what way. E
 
 <!-- scorecards:end -->
 
-[All 39 strategies, with their tests and measured verdicts](https://github.com/EinarOlafsson/starplast/blob/main/docs/strategies.md)
+[All 39 strategies, with their tests and measured verdicts](https://github.com/EinarOlafsson/parascape/blob/main/docs/strategies.md)
 
-[Guided workflows](https://github.com/EinarOlafsson/starplast/blob/main/docs/workflows.md) ·
-[Local AF3 structures](https://github.com/EinarOlafsson/starplast/blob/main/docs/structures.md) ·
-[Protein sequence features](https://github.com/EinarOlafsson/starplast/blob/main/docs/protein-sequences.md)
+[Guided workflows](https://github.com/EinarOlafsson/parascape/blob/main/docs/workflows.md) ·
+[Local AF3 structures](https://github.com/EinarOlafsson/parascape/blob/main/docs/structures.md) ·
+[Protein sequence features](https://github.com/EinarOlafsson/parascape/blob/main/docs/protein-sequences.md)
 
 ## Working with spaCR
 
 [spaCR](https://github.com/EinarOlafsson/spacr) analyses microscopy screens.
-Its launcher installs and opens Starplast in a separate Python environment.
-Export a gene-level table from spaCR and import it into Starplast; launching the app does not transfer results.
+Its launcher installs and opens ParaScape in a separate Python environment.
+Export a gene-level table from spaCR and import it into ParaScape; launching the app does not transfer results.
 
 ## Data and reproducibility
 
-**[Full table of included data and source links →](https://github.com/EinarOlafsson/starplast/blob/main/docs/datasets.md)**
+**[Full table of included data and source links →](https://github.com/EinarOlafsson/parascape/blob/main/docs/datasets.md)**
 
 **Tools → Datasets** opens sources, coverage, provenance and stored values ([guide](docs/dataset_browser.md)).
 
@@ -329,19 +325,19 @@ Coverage differs by organism and assay;
 absence from a literature search does not establish that a gene has never been studied.
 
 ```bash
-python -m starplast.paths       # show data locations and missing cache files
-python -m starplast.build_graph # rebuild from available source datasets
+python -m parascape.paths       # show data locations and missing cache files
+python -m parascape.build_graph # rebuild from available source datasets
 ```
 
 | Variable | Purpose |
 |---|---|
-| `STARPLAST_CACHE` | Override the directory containing built gene tables and graphs |
-| `STARPLAST_DATA` | Locate raw datasets used for rebuilding |
-| `STARPLAST_STATE` | Override the directory for saved runs, annotations, and downloads |
+| `PARASCAPE_CACHE` | Override the directory containing built gene tables and graphs |
+| `PARASCAPE_DATA` | Locate raw datasets used for rebuilding |
+| `PARASCAPE_STATE` | Override the directory for saved runs, annotations, and downloads |
 
-Methods are described in [MATERIALS_AND_METHODS.md](https://github.com/EinarOlafsson/starplast/blob/main/MATERIALS_AND_METHODS.md).
-[HANDOFF.md](https://github.com/EinarOlafsson/starplast/blob/main/HANDOFF.md) contains the development history and earlier design decisions.
-The [repository review](https://github.com/EinarOlafsson/starplast/blob/main/docs/repository-review.md) describes the current architecture
+Methods are described in [MATERIALS_AND_METHODS.md](https://github.com/EinarOlafsson/parascape/blob/main/MATERIALS_AND_METHODS.md).
+[HANDOFF.md](https://github.com/EinarOlafsson/parascape/blob/main/HANDOFF.md) contains the development history and earlier design decisions.
+The [repository review](https://github.com/EinarOlafsson/parascape/blob/main/docs/repository-review.md) describes the current architecture
 and its limitations.
 
 ## Development
@@ -354,7 +350,7 @@ python scripts/build_docs.py
 
 Open `docs/site/index.html` for the guide and generated API reference.
 Some tests need source datasets, CUDA, or a working OpenGL context; see
-[development and releases](https://github.com/EinarOlafsson/starplast/blob/main/docs/releases.md) for the release checks.
+[development and releases](https://github.com/EinarOlafsson/parascape/blob/main/docs/releases.md) for the release checks.
 
 Develop on `nightly` and merge checked changes into `main`. To release, update all
 package and runtime versions together with `python scripts/release.py bump 0.43.0` and update
@@ -362,5 +358,5 @@ the changelog before merging. A version increase on `main` triggers checks,
 builds, PyPI publishing, and a GitHub release. Ordinary merges do not publish.
 The initial PyPI account setup is described in the release guide.
 
-The source code is distributed under the [MIT license](https://github.com/EinarOlafsson/starplast/blob/main/LICENSE).
+The source code is distributed under the [MIT license](https://github.com/EinarOlafsson/parascape/blob/main/LICENSE).
 Source datasets and third-party artwork retain their own licenses and attribution.

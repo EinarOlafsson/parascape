@@ -19,7 +19,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import datasets, host, organisms, paths  # noqa: E402
+from parascape import datasets, host, organisms, paths  # noqa: E402
 
 
 def identity_memberships(frame, data_dir, dataset_root):
@@ -97,7 +97,7 @@ def migrate(source, data_dir, dataset_root, write=False):
 def main():
     """Validate the old host cache, optionally writing the two species tables."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", type=Path, default=ROOT / "starplast/data")
+    parser.add_argument("--data", type=Path, default=ROOT / "parascape/data")
     parser.add_argument("--source", type=Path)
     parser.add_argument("--dataset-root", default=paths.dataset_root())
     parser.add_argument("--write", action="store_true")

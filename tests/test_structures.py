@@ -19,7 +19,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import structures as ST  # noqa: E402
+from parascape import structures as ST  # noqa: E402
 
 
 # --------------------------------------------------------------------------- local models

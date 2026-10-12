@@ -15,8 +15,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import leakage as L  # noqa: E402
-from starplast import search  # noqa: E402
+from parascape import leakage as L  # noqa: E402
+from parascape import search  # noqa: E402
 
 
 def _table(n=600, seed=0):
@@ -75,7 +75,7 @@ def test_a_gap_is_a_strong_association_the_closure_lets_through(monkeypatch):
 
 
 def test_a_joint_derivation_is_flagged_and_an_honest_predictor_is_not(monkeypatch):
-    from starplast import slots
+    from parascape import slots
 
     class Slot:
         def __init__(self, key, axis):
@@ -106,13 +106,13 @@ def test_relations_name_what_the_catalogue_declares():
 # --------------------------------------------------------------------------- the shipped tables
 @pytest.fixture(scope="module")
 def tg():
-    from starplast import paths
+    from parascape import paths
     return pd.read_parquet(paths.cache_file("nodes.parquet"))
 
 
 @pytest.fixture(scope="module")
 def pf():
-    from starplast import paths
+    from parascape import paths
     return pd.read_parquet(paths.cache_file("pf_nodes.parquet"))
 
 
@@ -143,7 +143,7 @@ def test_the_plasmodium_stage_label_is_closed_over_its_own_sources(pf):
 
 
 def test_a_shared_column_name_resolves_to_the_right_organism():
-    from starplast import datasets
+    from parascape import datasets
     assert datasets.provenance("mean_plddt", "Pf").key == "pf_alphafold_confidence"
     assert datasets.provenance("mean_plddt", "Tg").key == "alphafold"
     assert "expr_ring" in datasets.derived_sources("stage_enriched_derived", "Pf")

@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from starplast import functional_results as F
+from parascape import functional_results as F
 
 
 def _document():
@@ -133,7 +133,7 @@ def test_profile_namespace_validation_rejects_versions_duplicates_and_ec_pfam_mi
 
 
 def test_domain_titles_use_only_verified_current_nomenclature(monkeypatch):
-    from starplast import functional_domains as D
+    from parascape import functional_domains as D
     class Lookup:
         def lookup(self,_value):return {'status':'current_metadata','name':'Reference family name'}
     monkeypatch.setattr(D,'shipped',lambda:Lookup())

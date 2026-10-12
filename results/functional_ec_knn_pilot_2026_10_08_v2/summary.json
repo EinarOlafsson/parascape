@@ -167,7 +167,7 @@
   "unsupported_test_profiles": {
     "[\"5\",\"7\"]": 1
   },
-  "artifact_identity": "e5582ae02ad163cafd262703c3ccb1e31054bfa402a6ebbaa0ce00551a17ce2c",
+  "artifact_identity": "0b96e86669a1cd93879858e13065eb1827a3893b1942b7ecbefc1a72473aacb9",
   "biological_benchmark_admitted": false,
   "confidence": "uncalibrated native support",
   "interpretation": "Functional annotation-profile recovery; independent biological accuracy unknown"

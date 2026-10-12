@@ -13,12 +13,12 @@
     "runtime_inference_changes": "none"
   },
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/reconcile_record_scorecards.py": "1866b74d1c75964d8cff324cbb4fdbd2f41491595d612290e3933188a67019c6",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/track_record.parquet": "0a771e65e918ae71e95a73bb7efe92157c6ce2eb0a4bd32db612a3948c45c817",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/record_scorecards.py": "01e57e89d2100ec2c3bacc22dc3c460ad31909373d81e1e52ea4a327d0efd61f",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/scorecard.py": "aeddc48184f157989516caf32879d0ea071389cfd6fb225e61086f4a9313bade",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/track_record.py": "5cdf75d9d2ded6073570049d79abe2038080e1aa517361a8f3af4c2d6994fafc",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/capabilities.py": "6659d9c0cf4eab8d1b932d06a50c0c0818b6903efb279c04835464d61934d723"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/reconcile_record_scorecards.py": "6d40eebc3625f41ec47f016d1140061df6b3336418ce6e0ebde9b2947372f763",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/track_record.parquet": "0a771e65e918ae71e95a73bb7efe92157c6ce2eb0a4bd32db612a3948c45c817",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/record_scorecards.py": "01e57e89d2100ec2c3bacc22dc3c460ad31909373d81e1e52ea4a327d0efd61f",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/scorecard.py": "aeddc48184f157989516caf32879d0ea071389cfd6fb225e61086f4a9313bade",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/track_record.py": "c028af499778020294b44071deb9b3d335fcd2501fb13d5e38f6aac47d91ffe4",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/capabilities.py": "6659d9c0cf4eab8d1b932d06a50c0c0818b6903efb279c04835464d61934d723"
   },
   "outputs": {
     "cohort_reconciliation.csv": "228a7a6ec91cc7fb88ceaccb64e9a3dac0a8aace14d9bbfa78fc78293add43e3",

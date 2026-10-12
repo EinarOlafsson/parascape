@@ -1,6 +1,6 @@
 # 45 — A hundred questions, the best twenty, shipped with the program
 
-**Status: DONE 2026-08-18.** `starplast/data/questions.json` (100), `starplast/questions.py`,
+**Status: DONE 2026-08-18.** `parascape/data/questions.json` (100), `parascape/questions.py`,
 `scripts/generate_question_table.py`, `scripts/run_question_catalogue.py`, and tab **8 · Questions**
 in the analysis panel.
 

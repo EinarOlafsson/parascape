@@ -8,7 +8,7 @@ Genome-wide H4 K5/K8/K12/K16 acetylation score within 1 kb of the gene
     coverage     : 7,515 genes (92%)
     accession    : ToxoDB Hakimi/Ali H4 acetylation
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByChIPchiptgonME49_chipChipExper_Hakimi_Ali_RSRC/reports/attributesTabular
-    local path   : starplast/data/toxodb_h4_acetylation.tsv
+    local path   : parascape/data/toxodb_h4_acetylation.tsv
 
 Quirks that cost time once:
     Verified as an ACTIVE mark must behave: rho +0.36 with transcription, +0.43 with promoter
@@ -20,7 +20,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/toxodb_h4_acetylation.py

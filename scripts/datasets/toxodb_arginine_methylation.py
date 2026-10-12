@@ -8,7 +8,7 @@ Monomethylarginine sites reported per gene
     coverage     : 368 genes
     accession    : ToxoDB Yakubu monomethylarginine
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByPTM/reports/attributesTabular
-    local path   : starplast/data/toxodb_arginine_methylation.tsv
+    local path   : parascape/data/toxodb_arginine_methylation.tsv
 
 Quirks that cost time once:
     Yakubu et al.'s RH proteomics, through ToxoDB's PTM search. Verified by substrate class
@@ -21,7 +21,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/toxodb_arginine_methylation.py

@@ -7,7 +7,7 @@ is the way it is.
 ## First five minutes
 
 ```bash
-cd /mnt/firecuda2/Claude/repo/starplast     # this machine
+cd /mnt/firecuda2/Claude/repo/parascape     # this machine
 git pull && pip install -e .
 QT_QPA_PLATFORM=offscreen PYQTGRAPH_QT_LIB=PyQt6 python -m pytest tests/ -q
 ```
@@ -46,13 +46,13 @@ session should know before changing any of it:
 ## Two environments, and the second one is the one that matters
 
     /home/olafsson/anaconda3/envs/spacr       pandas 2.3.3   <- tests run here
-    /home/olafsson/anaconda3/envs/starplast   pandas 3.0.5   <- the user runs here
+    /home/olafsson/anaconda3/envs/parascape   pandas 3.0.5   <- the user runs here
 
 **Three bugs have now shipped that were invisible on pandas 2 and total on pandas 3.** After any
 change touching dataframes, run it under the second interpreter too:
 
 ```bash
-/home/olafsson/anaconda3/envs/starplast/bin/python -c "..."
+/home/olafsson/anaconda3/envs/parascape/bin/python -c "..."
 ```
 
 The pattern each time: an array arrives read-only from a library and is then written in place
@@ -60,7 +60,7 @@ The pattern each time: an array arrives read-only from a library and is then wri
 it used to produce "nan". `app.as_text` and `embedding.as_text` exist for the second.
 
 The user also runs a second checkout on another machine
-(`carruthers@carruthers:/media/carruthers/mnt3/claude/repo/starplast`). **Unpushed work is invisible
+(`carruthers@carruthers:/media/carruthers/mnt3/claude/repo/parascape`). **Unpushed work is invisible
 there**, so push before asking them to test anything.
 
 ## What this application is for
@@ -99,7 +99,7 @@ to see a structure or easier to believe a cluster, it is wrong however well it w
   cover a Qt-thread body is to call it directly, never a pragma; genuinely unreachable branches get
   deleted. Two functions were deleted rather than covered in the last pass, and writing one of the
   missing tests found a real defect in `objectives.adjusted`.
-- **The suite must not write into the user's own state.** `STARPLAST_STATE` points kept runs,
+- **The suite must not write into the user's own state.** `PARASCAPE_STATE` points kept runs,
   annotations and saved embeddings at a temporary directory for the run (`conftest.py`), the way
   QSettings is already redirected. Both isolations exist because both were violated, and each was
   found by looking at a real machine rather than by a failing test.
@@ -109,16 +109,16 @@ to see a structure or easier to believe a cluster, it is wrong however well it w
 
 ## Where things are
 
-    starplast/app.py             the window, menus, drawing, exports
-    starplast/analysis_panel.py  the six analysis tabs
-    starplast/objectives.py      what "good structure" means, and the guards
-    starplast/validate.py        putting an error rate on an annotation
-    starplast/jobs.py            background work, stopping, state
-    starplast/lod.py             the three levels of detail
-    starplast/gallery.py         thumbnails of a sweep, grid and scroll
-    starplast/runs.py            kept clusterings, with their recipe and their mask
-    starplast/results.py         saving and loading what the tabs computed
-    starplast/importer.py        a user's own table, with the preprocessing offered
-    starplast/celldiagram.py     the parasite under the compartment list
+    parascape/app.py             the window, menus, drawing, exports
+    parascape/analysis_panel.py  the six analysis tabs
+    parascape/objectives.py      what "good structure" means, and the guards
+    parascape/validate.py        putting an error rate on an annotation
+    parascape/jobs.py            background work, stopping, state
+    parascape/lod.py             the three levels of detail
+    parascape/gallery.py         thumbnails of a sweep, grid and scroll
+    parascape/runs.py            kept clusterings, with their recipe and their mask
+    parascape/results.py         saving and loading what the tabs computed
+    parascape/importer.py        a user's own table, with the preprocessing offered
+    parascape/celldiagram.py     the parasite under the compartment list
     instructions/INDEX.md        status table
     results/                     every published number, with the script that made it

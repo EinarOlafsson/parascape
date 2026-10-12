@@ -18,7 +18,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast.prediction import TaskSpec, run
+from parascape.prediction import TaskSpec, run
 
 
 def main():
@@ -32,7 +32,7 @@ def main():
     p.add_argument('--methods',nargs='+',default=['prior','linear','boosted','neighbors','pca','umap','multiview'])
     p.add_argument('--controls',action='store_true')
     args=p.parse_args();args.output.mkdir(parents=True,exist_ok=True)
-    nodes=pd.read_parquet(ROOT/'starplast/data/nodes.parquet')
+    nodes=pd.read_parquet(ROOT/'parascape/data/nodes.parquet')
     if args.sequence:
         nodes=nodes.merge(pd.read_parquet(args.sequence),on='gene_id',how='left',validate='one_to_one')
     numeric=tuple(nodes.select_dtypes(include=np.number).columns)
@@ -55,7 +55,7 @@ def main():
             started=time.monotonic()
             data=nodes.copy()
             if permute:
-                from starplast.prediction import known_labels
+                from parascape.prediction import known_labels
                 known=data[target].notna() if kind=='regression' else known_labels(data[target])
                 values=data.loc[known,target].to_numpy(copy=True)
                 np.random.default_rng(42).shuffle(values)

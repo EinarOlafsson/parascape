@@ -10,8 +10,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 def main(argv=None):
     """Build a versioned data pack from tables and an explicit per-column license mapping."""
-    from starplast import organisms, packs
-    from starplast.spaces import build_pack
+    from parascape import organisms, packs
+    from parascape.spaces import build_pack
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--organism", required=True, choices=organisms.codes())
     parser.add_argument("--data", required=True, type=Path)

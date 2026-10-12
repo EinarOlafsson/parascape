@@ -6,7 +6,7 @@ Gene pairs sharing an orthogroup or a domain, and pairs whose stages covary
     level / kind : reference / graph
     provides     : edge:orthogroup, edge:domain, edge:coexpression
     coverage     : 1,741 + 24,123 + 63,158 pairs
-    local path   : starplast/data/pf_graph.npz
+    local path   : parascape/data/pf_graph.npz
     derived from : orthogroup, interpro_ids, expr_ring, expr_schizont, expr_sporozoite
 
 Quirks that cost time once:
@@ -24,7 +24,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/pf_relation_layers.py

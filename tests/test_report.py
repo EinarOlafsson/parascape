@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import recipes as R
-from starplast import report as RP
+from parascape import recipes as R
+from parascape import report as RP
 
 
 def _result(n=300, with_control=True, refused=False):

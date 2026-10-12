@@ -1,0 +1,11 @@
+[Unit]
+Description=Check ParaScape session activity each minute
+
+[Timer]
+OnStartupSec=30
+OnUnitActiveSec=60
+AccuracySec=5
+Unit=parascape-work-watchdog.service
+
+[Install]
+WantedBy=timers.target

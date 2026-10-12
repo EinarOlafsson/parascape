@@ -8,13 +8,13 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 CANDIDATE=ROOT/'results/pf_functional_ec_knn_acceptance_2026_10_08_v2/functional_results.json'
-CANDIDATE_SHA='c89b317a36e01c788b56985675a97f5494ba6c798ccb9ea06be1b83f009e7bf3'
+CANDIDATE_SHA='46750d33fb764d70dbb007fdf5fd08e12b3eff729ac065704e2d00f4fef97eca'
 
 
 def install(output, *, candidate_path=CANDIDATE, expected_sha256=CANDIDATE_SHA):
-    from starplast import functional_results as F
+    from parascape import functional_results as F
     output=Path(output);output.mkdir(parents=True,exist_ok=False)
-    shipped=ROOT/'starplast/data/functional_results.json';reader=Path(F.__file__)
+    shipped=ROOT/'parascape/data/functional_results.json';reader=Path(F.__file__)
     original=shipped.read_bytes();old_pin=F.FUNCTIONAL_RESULTS_SHA256
     previous=F.load(shipped,expected_sha256=old_pin)
     candidate_path=Path(candidate_path)

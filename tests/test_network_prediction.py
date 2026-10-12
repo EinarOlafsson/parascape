@@ -2,8 +2,8 @@
 import numpy as np
 import pandas as pd
 import pytest
-from starplast.network_prediction import run_network
-from starplast.prediction import TaskSpec
+from parascape.network_prediction import run_network
+from parascape.prediction import TaskSpec
 
 
 def fixture():
@@ -43,8 +43,8 @@ def test_target_derived_or_unsourced_graph_is_refused():
 
 
 def test_bundled_graphs_have_explicit_sources_and_correct_identity():
-    from starplast.network_prediction import bundled_network
-    from starplast.paths import cache_file
+    from parascape.network_prediction import bundled_network
+    from parascape.paths import cache_file
     for prefix in ('','pf_'):
         nodes=pd.read_parquet(cache_file(prefix+'nodes.parquet'))
         graph,sources=bundled_network(nodes)

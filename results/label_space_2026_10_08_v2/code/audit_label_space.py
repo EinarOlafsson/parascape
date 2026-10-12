@@ -23,18 +23,18 @@ def audit(output):
     """Replay two actual spaces and independently count native class errors."""
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
-    os.environ['STARPLAST_STATE'] = str(output / 'state')
+    os.environ['PARASCAPE_STATE'] = str(output / 'state')
     os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
     from PyQt6 import QtCore, QtWidgets
     import numpy as np
-    from starplast import app as A, organisms as O, paths, track_record as T, strategies as S
-    from starplast.label_space import LabelSpace
+    from parascape import app as A, organisms as O, paths, track_record as T, strategies as S
+    from parascape.label_space import LabelSpace
 
     started = time.monotonic()
-    code = ['starplast/label_space.py', 'starplast/label_space_browser.py', 'starplast/app.py',
-        'starplast/discovery_labels.py', 'starplast/functional_domain_profiles.py', 'starplast/query.py',
-        'starplast/record_scorecards.py', 'starplast/scorecard.py', 'starplast/scorecard_view.py',
-        'starplast/scorecard_browser.py', 'starplast/track_record.py', 'starplast/capabilities.py',
+    code = ['parascape/label_space.py', 'parascape/label_space_browser.py', 'parascape/app.py',
+        'parascape/discovery_labels.py', 'parascape/functional_domain_profiles.py', 'parascape/query.py',
+        'parascape/record_scorecards.py', 'parascape/scorecard.py', 'parascape/scorecard_view.py',
+        'parascape/scorecard_browser.py', 'parascape/track_record.py', 'parascape/capabilities.py',
         'scripts/audit_label_space.py', 'scripts/notebook_runner.py']
     inputs = [ROOT / name for name in code] + [Path(O.nodes_path(c)) for c in O.codes()]
     inputs.append(Path(paths.cache_file('track_record.parquet')))

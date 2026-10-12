@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from starplast import calibration as C
+from parascape import calibration as C
 
 
 def test_partial_publication_preserves_other_species_and_strategies(tmp_path):

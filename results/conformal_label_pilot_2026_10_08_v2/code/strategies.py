@@ -30,7 +30,7 @@ return, the inference primitives several of them use, and the five holdout test 
 
 Headless and Qt-free, so everything here can be driven from a script or a notebook::
 
-    from starplast import strategies
+    from parascape import strategies
     ctx = strategies.Context.shipped("Tg")
     s = strategies.get("holdout_search")
     print(s.test(ctx).summary())
@@ -259,7 +259,7 @@ class TestResult:
     #: replicate for pattern 5, where three findings are already a real test.
     min_hidden: int = MIN_HIDDEN
     #: Which of the scorecard's tasks this test measured ("label calls", "ranking", ...), and that
-    #: task's standard metrics on the same hidden genes -- see :mod:`starplast.scorecard`.
+    #: task's standard metrics on the same hidden genes -- see :mod:`parascape.scorecard`.
     task: str = ""
     scorecard: dict = field(default_factory=dict)
 
@@ -471,8 +471,8 @@ class Strategy:
     cost: str = "seconds"
     needs: tuple = ()
     method: str = ""
-    #: The scorecard task its self-test reports (see :mod:`starplast.scorecard`), and the
-    #: techniques its method is built from (see :mod:`starplast.techniques`).
+    #: The scorecard task its self-test reports (see :mod:`parascape.scorecard`), and the
+    #: techniques its method is built from (see :mod:`parascape.techniques`).
     task: str = ""
     techniques: tuple = ()
 
@@ -566,7 +566,7 @@ def register(strategy: Strategy) -> Strategy:
         raise ValueError(f"{strategy.key}: task must be one of {', '.join(SC.TASKS)}")
     unknown = [t for t in strategy.techniques if t not in TECHNIQUES]
     if not strategy.techniques or unknown:
-        raise ValueError(f"{strategy.key}: list its techniques from starplast.techniques"
+        raise ValueError(f"{strategy.key}: list its techniques from parascape.techniques"
                          + (f"; unknown: {', '.join(unknown)}" if unknown else ""))
     bad = [p.name for p in strategy.params if p.kind not in PARAM_KINDS]
     if bad:

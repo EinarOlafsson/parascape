@@ -36,7 +36,7 @@ WHAT TO DO
     - Rewrite README.md to those three sections. Keep it short enough to read
       in full before deciding to install.
 
-    - GENERATE the dataset table from `starplast.datasets.REGISTRY`, do not
+    - GENERATE the dataset table from `parascape.datasets.REGISTRY`, do not
       hand-write it. The registry already carries name, level, kind, provides,
       coverage, pmid, accession, citation and url for all 26 datasets. A
       hand-written table drifts the moment a dataset is added, and a README
@@ -84,7 +84,7 @@ README: 298 lines to 125, holding the three things the instruction fixed --
 what the program does, how to run it, and which datasets are inside with their
 references and data types.
 
-    The dataset table is GENERATED from starplast.datasets.REGISTRY. A test
+    The dataset table is GENERATED from parascape.datasets.REGISTRY. A test
     asserts the committed README matches what the registry currently produces,
     so adding a 27th dataset without updating the README fails the suite. A
     hand-written table drifts the moment a dataset is added, and a README that

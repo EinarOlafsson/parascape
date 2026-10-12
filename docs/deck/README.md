@@ -1,10 +1,11 @@
-# Starplast slide deck
+# ParaScape slide deck
 
-[Open the viewer](https://einarolafsson.github.io/starplast/deck/) ·
-[Start on GitHub](pages/01.md) · [PDF](starplast_deck.pdf) ·
-[Editable PowerPoint](starplast_deck.pptx) · [Transcript](transcript.md)
+[Open the viewer](https://einarolafsson.github.io/parascape/deck/) ·
+[Start on GitHub](pages/01.md) · [PDF](parascape_deck.pdf) ·
+[Editable PowerPoint](parascape_deck.pptx) · [Transcript](transcript.md) ·
+[Home page](https://einarolafsson.github.io/projects/parascape/)
 
-Forty slides introduce Starplast, its evidence, the desktop controls, guided
+Forty slides introduce ParaScape, its evidence, the desktop controls, guided
 workflows, protein features, validation results and reproducible exports. This is
 a guide to the 0.43 release. Screenshots are captured from the application; the
 screen-comparison values are explicitly illustrative. Benchmark charts are drawn
@@ -13,7 +14,7 @@ measured annotations.
 
 The dark layout, Open Sans typography, restrained teal accents and viewer
 interaction follow the [spaCR deck](https://einarolafsson.github.io/spacr/_static/deck/).
-The approved Starplast logo remains unchanged. Open Sans is included under the
+The approved ParaScape logo remains unchanged. Open Sans is included under the
 SIL Open Font License in `fonts/OFL.txt`.
 
 ## Rebuild

@@ -3,16 +3,16 @@
 `packaging.ipynb` executes the checksum-preserving compact view of the exactly
 replayed [v3 pilot](../functional_ec_knn_pilot_2026_10_08_v3/summary.json).
 Its original typed artifact identity is
-`b7de54fd3a835738309a9262d543e6d49921b8d7c26cf6dd29e84736d2987034`.
+`25b1086133a33686c2e078b644816286c31dfed8d3d327be86321de6ce4a4665`.
 
 All source artifact payload bytes are verified. Every displayed row, label card,
 complete-profile class card, seven major enzyme-class cards and matched training
 control retains its exact original source payload hash. The original model state
 stays upstream, referenced by its path/hash/size. The compact application bundle
 has an external SHA-256 pin:
-`807c4ea23239930722742348ddaadb7d51bcf961ff2736de53e4cc28ba62dc16`.
+`e9f450fa6106b9fcf59e16c68dc61c47609ae4d0d261c1bef9a9b071e4533352`.
 Packaging source and a manifest are retained here; the shipped copy is
-`starplast/data/functional_results.json`.
+`parascape/data/functional_results.json`.
 
 Discoveries links its source EC label to **Functional tests**, with label, class,
 profile, strategy and training-control views. All 182 held-out native outcomes

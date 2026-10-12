@@ -1,7 +1,7 @@
 """Independent output, source and historical-code receipt verification."""
 import hashlib, json, sys
 from pathlib import Path
-ROOT=Path('/media/carruthers/mnt3/claude/repo/starplast')
+ROOT=Path('/media/carruthers/mnt3/claude/repo/parascape')
 sys.path.insert(0,str(ROOT))
 from scripts.notebook_runner import ExecutedNotebook
 OUT=Path(__file__).resolve().parent
@@ -39,7 +39,7 @@ def verify():
         path=Path(receipt['path'])
         assert sha(path)==receipt['sha256'] and path.stat().st_size==receipt['bytes']
     counts[folder.name]={'outputs':len(manifest['outputs']),'inputs':len(manifest['input_sha256']),'original_artifact_receipts':len(receipts)}
-    assert sha(ROOT/'starplast/data/functional_results.json')==sha(ROOT/'results/functional_profile_results_merged_2026_10_08/functional_results.json')
+    assert sha(ROOT/'parascape/data/functional_results.json')==sha(ROOT/'results/functional_profile_results_merged_2026_10_08/functional_results.json')
     return counts
 
 

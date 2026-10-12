@@ -213,4 +213,4 @@
 5,900 runs this session, 2709/h, 40 left (~0.0 h); 3 processes, system 27.2 GB
 5,925 runs this session, 2351/h, 15 left (~0.0 h); 3 processes, system 30.7 GB
 sweep finished: 5,940 runs this session in 2.65 h
-5,940 runs -> 1,188 configurations; wrote summary, best, defaults, sensitivity to /media/carruthers/mnt3/claude/repo/starplast/results/calibration_2026-09-26
+5,940 runs -> 1,188 configurations; wrote summary, best, defaults, sensitivity to /media/carruthers/mnt3/claude/repo/parascape/results/calibration_2026-09-26

@@ -19,7 +19,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import chromatin as CH  # noqa: E402
+from parascape import chromatin as CH  # noqa: E402
 
 pyBigWig = pytest.importorskip("pyBigWig")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +27,7 @@ HEADER = "Gene ID\tGenomic Sequence ID\tGenomic Location (Gene)\tGene Strand\tGe
 
 
 def _locations(tmp_path, rows, header=HEADER):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True, exist_ok=True)
     body = "\n".join(f"{g}\tchr1\t{loc}\tforward\tprotein coding gene" for g, loc in rows)
     (data / CH.LOCATION_TABLE).write_text(header + "\n" + body + "\n")
@@ -224,7 +224,7 @@ def test_a_tar_of_only_unreadable_replicates_produces_no_column(tmp_path):
 
 # --------------------------------------------------------------------------- against the real map
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", "nodes.parquet")),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", "nodes.parquet")),
     reason="node table not present")
 def test_accessible_promoters_are_the_expressed_ones():
     """The check that says the strand and the join are both right.
@@ -234,7 +234,7 @@ def test_accessible_promoters_are_the_expressed_ones():
     up, this relationship is the first thing to vanish -- and the column would otherwise look fine.
     """
     from scipy.stats import spearmanr
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"))
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"))
     if "atac_promoter_ut" not in n.columns:
         pytest.skip("ATAC column not merged")
     k = n[["atac_promoter_ut", "expr_tachy"]].dropna()

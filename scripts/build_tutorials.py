@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Starplast tutorials from the running application.
+"""Build the ParaScape tutorials from the running application.
 
 Writes ``docs/tutorial/``: an index, five tutorials each as a GUI walkthrough and a notebook
 walkthrough (the format of spaCR's tutorials), a runnable ``.ipynb`` per notebook tutorial, and one
@@ -48,14 +48,14 @@ class Studio:
     def __init__(self):
         os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
         os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
-        self.tmp = tempfile.mkdtemp(prefix="starplast-tutorial-")
-        os.environ["STARPLAST_STATE"] = self.tmp
+        self.tmp = tempfile.mkdtemp(prefix="parascape-tutorial-")
+        os.environ["PARASCAPE_STATE"] = self.tmp
         from PyQt6 import QtCore, QtWidgets
         QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
         for scope in (QtCore.QSettings.Scope.UserScope, QtCore.QSettings.Scope.SystemScope):
             QtCore.QSettings.setPath(QtCore.QSettings.Format.IniFormat, scope, self.tmp)
         self.app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-        from starplast import theme as TH
+        from parascape import theme as TH
         try:
             TH.apply(self.app, "dark")
         except Exception:                             # older theme API: the panels still render
@@ -247,8 +247,8 @@ def strategy_walkthrough(studio, key: str, slug: str, title: str, intro: str, se
                          console_tips: dict, color=None) -> dict:
     """Drive the real Strategies panel through its card, then Details: Guide -> Settings -> Test
     -> Run, grabbing each."""
-    from starplast import strategies as S
-    from starplast.strategy_panel import StrategyPanel
+    from parascape import strategies as S
+    from parascape.strategy_panel import StrategyPanel
     ctx = S.shipped("Tg")
     panel = StrategyPanel(ctx.nodes, organism="Tg")
     log = []
@@ -381,7 +381,7 @@ def tutorial_explore(studio) -> dict:
                                                "with its columns.")]
     with open(os.path.join(OUT, f"{slug}_gui.html"), "w") as fh:
         fh.write(T.gui_page("Explore the map and read the evidence",
-                            "The first things to do in Starplast: find a gene, color the map, and "
+                            "The first things to do in ParaScape: find a gene, color the map, and "
                             "read the evidence. Hover a setting or a console line to see what it "
                             "means; move the slider to step through the views.",
                             fields, slides, console, buttons))
@@ -389,7 +389,7 @@ def tutorial_explore(studio) -> dict:
     nb.md("<h1>Explore the tables from Python</h1><p>Everything the window shows is available "
           "from Python. A <code>Context</code> is one organism's gene table, its measured "
           "networks and the leakage guard every analysis applies.</p>")
-    nb.code([("from starplast import strategies as S", "The strategies module: tables, "
+    nb.code([("from parascape import strategies as S", "The strategies module: tables, "
               "guard and the 32 strategies."),
              ("ctx = S.shipped('Tg')", "The packaged T. gondii table, loaded once and cached."),
              ("print(ctx.organism, ctx.n, 'genes,', len(ctx.nodes.columns), 'columns')",
@@ -436,7 +436,7 @@ def tutorial_holdout(studio) -> dict:
           "question: is there a combination of measurements and map settings under which a "
           "label nobody showed the map falls out as clusters? This notebook runs it on the "
           "hyperLOPIT compartment.</p>")
-    nb.code([("from starplast import strategies as S", "Import the strategies."),
+    nb.code([("from parascape import strategies as S", "Import the strategies."),
              ("s = S.get('holdout_search')", "Strategy 01."),
              ("s", "Its guide: the question, the walkthrough, and how it is tested.")])
     nb.code([("s.parameters(S.shipped('Tg'))", "Every setting, its default for this table, and "
@@ -474,7 +474,7 @@ def tutorial_holdout(studio) -> dict:
 
 
 def tutorial_genelist(studio) -> dict:
-    from starplast import strategies as S
+    from parascape import strategies as S
     slug = "3_gene_list"
     ctx = S.shipped("Tg")
     cat, members = S.example_set(ctx, "compartment")
@@ -494,7 +494,7 @@ def tutorial_genelist(studio) -> dict:
           f"describes what it has in common, and 25 grows it along the networks. Here the list "
           f"is the {len(members)} genes of {_e(cat)}; hold out the compartment column so no "
           f"strategy can read the list back from the label that defined it.</p>")
-    nb.code([("from starplast import strategies as S", "Import."),
+    nb.code([("from parascape import strategies as S", "Import."),
              ("ctx = S.shipped('Tg')", "The table."),
              ("cat, members = S.example_set(ctx, 'compartment')",
               "A known category of about 120 genes -- stand-in for your own list."),
@@ -544,7 +544,7 @@ def tutorial_trust(studio) -> dict:
           "the answer with the SAME procedure run without the information it claims to use. The "
           "five patterns are: hide labels, hide members of a set, hide edges, hide values, and "
           "replicate findings on the other half of the genes.</p>")
-    nb.code([("from starplast import strategies as S", "Import."),
+    nb.code([("from parascape import strategies as S", "Import."),
              ("t = S.test('physical_partners', target='compartment')", "Strategy 13's test."),
              ("t", "The verdict.")])
     nb.code([("print('observed', round(t.observed, 3), '| chance', round(t.null_mean, 3),",
@@ -612,7 +612,7 @@ def tutorial_networks(studio) -> dict:
     nb.md("<h1>Networks, learning and agreement</h1><p>Different strategies read different "
           "evidence: measured contacts, co-expression, a trained model. Where they agree, a call "
           "is far more likely to be right -- and the self-tests say how much more.</p>")
-    nb.code([("from starplast import strategies as S", "Import."),
+    nb.code([("from parascape import strategies as S", "Import."),
              ("vote = S.run('layer_vote', target='compartment')", "Strategy 12."),
              ("vote.tables['source weights']", "Which kinds of evidence earned a vote, net of "
                                                "chance.")])
@@ -647,7 +647,7 @@ def tutorial_advanced(studio) -> dict:
           "each gene's network neighbourhood (graph convolution, 36), one that finds thresholds and "
           "interactions (random forest, 37), and one that learns how far to trust each kind of "
           "evidence (stacking, 38).</p>")
-    nb.code([("from starplast import strategies as S", "Import."),
+    nb.code([("from parascape import strategies as S", "Import."),
              ("sets = S.run('conformal_calls', target='compartment', alpha=0.1)",
               "Strategy 35: prediction sets at a 10% error rate."),
              ("sets.tables['prediction sets'].head(10)",
@@ -681,11 +681,11 @@ def tutorial_advanced(studio) -> dict:
 def guide(studio, runs: dict) -> None:
     """One long page describing every feature, with real captures and generated control tables."""
     from PyQt6 import QtWidgets
-    from starplast import strategies as S
-    from starplast.analysis_panel import AnalysisPanel
-    from starplast.strategy_panel import StrategyPanel
-    from starplast.tuning import EmbeddingStore
-    from starplast.workflows import WorkflowDialog
+    from parascape import strategies as S
+    from parascape.analysis_panel import AnalysisPanel
+    from parascape.strategy_panel import StrategyPanel
+    from parascape.tuning import EmbeddingStore
+    from parascape.workflows import WorkflowDialog
     slug = "guide"
     ctx = S.shipped("Tg")
     sec = []
@@ -730,7 +730,7 @@ def guide(studio, runs: dict) -> None:
                                                          (1100, 760))))
 
     sec.append(("The window at a glance",
-                f"<p>Starplast places every gene of <i>Toxoplasma gondii</i> (or <i>Plasmodium "
+                f"<p>ParaScape places every gene of <i>Toxoplasma gondii</i> (or <i>Plasmodium "
                 f"falciparum</i>) as a point in a three-dimensional map built from what the gene "
                 f"does -- expression across stages, fitness in many conditions, localization, "
                 f"modification, structure -- so that nearness means similar behaviour, not an "
@@ -859,7 +859,7 @@ def guide(studio, runs: dict) -> None:
                 "map.</p>"))
     sec.append(("The Python API",
                 "<pre class='code'>"
-                + _e("from starplast import strategies as S\n\n"
+                + _e("from parascape import strategies as S\n\n"
                      "S.overview()                                  # every strategy, one row each\n"
                      "S.get('geneset_hunt')                         # its guide (renders in notebooks)\n"
                      "S.get('geneset_hunt').parameters()            # settings and why they exist\n"
@@ -889,14 +889,14 @@ def guide(studio, runs: dict) -> None:
                 "by well-studied, conserved genes; strategies 30 and 32 measure it where "
                 "inference is needed most.</p>"))
     toc = "".join(f"<li><a href='#s{i}'>{_e(t)}</a></li>" for i, (t, _b) in enumerate(sec, 1))
-    body = (f"<div class='page'><h1>The complete guide to Starplast</h1><p>Every feature, in the "
+    body = (f"<div class='page'><h1>The complete guide to ParaScape</h1><p>Every feature, in the "
             f"order you meet them, with captures from the running application. The five "
             f"tutorials walk through specific tasks; this page is the reference to come back "
             f"to.</p><ol class='toc'>{toc}</ol>"
             + "".join(f"<h2 id='s{i}'>{i}. {_e(t)}</h2>{b}" for i, (t, b) in enumerate(sec, 1))
             + "</div>")
     with open(os.path.join(OUT, "complete_guide.html"), "w") as fh:
-        fh.write(T.page("The complete guide to Starplast", body, T.nav_links()))
+        fh.write(T.page("The complete guide to ParaScape", body, T.nav_links()))
     analysis.deleteLater()
     strat.deleteLater()
     wf.deleteLater()
@@ -933,19 +933,19 @@ def index():
         f"<a href='{s}_gui.html'>GUI</a><a href='{s}_notebook.html'>Notebook</a>"
         f"<a href='notebooks/{s}.ipynb'>.ipynb</a></div>"
         for i, (s, t, d) in enumerate(TUTORIALS, 1))
-    body = (f"<div class='page'><h1>Tutorials</h1><p>Learn Starplast step by step. Each tutorial "
+    body = (f"<div class='page'><h1>Tutorials</h1><p>Learn ParaScape step by step. Each tutorial "
             f"comes as a <b>GUI</b> walkthrough -- the application's own panels, with every "
             f"setting and console line explained on hover -- and as a <b>notebook</b> doing the "
             f"same from Python, with every line explained on hover and its real output. The "
             f"notebooks are also provided as runnable .ipynb files.</p><div class='cards'>{cards}"
             f"</div><h2>The complete guide</h2><p><a href='complete_guide.html'>Every feature of "
-            f"Starplast in one long page</a>: the window, finding genes and reading evidence, "
+            f"ParaScape in one long page</a>: the window, finding genes and reading evidence, "
             f"coloring and edges, every tab of the analysis panel with every control explained, "
             f"the gallery and annotations, the guided workflows, your own data, the Strategies "
             f"tab, the two organisms, preferences, the Python API, and how to read the numbers "
             f"honestly.</p></div>")
     with open(os.path.join(OUT, "index.html"), "w") as fh:
-        fh.write(T.page("Starplast tutorials", body, T.nav_links()))
+        fh.write(T.page("ParaScape tutorials", body, T.nav_links()))
 
 
 def main(argv=None) -> int:

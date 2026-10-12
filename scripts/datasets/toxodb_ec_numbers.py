@@ -8,7 +8,7 @@ EC number per gene, and whether it has one
     coverage     : 1,313 enzymes of 8,140 genes
     accession    : ToxoDB ME49
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
-    local path   : starplast/data/toxodb_ec_numbers.tsv
+    local path   : parascape/data/toxodb_ec_numbers.tsv
 
 Quirks that cost time once:
     An annotation rather than a measurement, with the same standing as the InterPro domains that
@@ -21,7 +21,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/toxodb_ec_numbers.py

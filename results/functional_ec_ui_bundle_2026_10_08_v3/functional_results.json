@@ -6,7 +6,7 @@
         "biological_admission": false,
         "calibrated_confidence": null,
         "organism": "Tg",
-        "source_artifact_identity": "b7de54fd3a835738309a9262d543e6d49921b8d7c26cf6dd29e84736d2987034",
+        "source_artifact_identity": "25b1086133a33686c2e078b644816286c31dfed8d3d327be86321de6ce4a4665",
         "source_context": "Installed Toxoplasma gene EC annotations resolved through pinned ENZYME nomenclature; gene-level curation/prediction provenance unresolved.",
         "source_directory": "results/functional_ec_knn_pilot_2026_10_08_v3",
         "source_manifest": {
@@ -44,8 +44,8 @@
               "sha256": "ad545c97003e2e0f82ce7990cc4e7d4784fe46ccb04a43d5d7ce640b80580d3d"
             }
           },
-          "identity": "b7de54fd3a835738309a9262d543e6d49921b8d7c26cf6dd29e84736d2987034",
-          "key": "86796d9c075b5c4fd087a5fecddadf850d66e57125359dd549a31533d31cdecf",
+          "identity": "25b1086133a33686c2e078b644816286c31dfed8d3d327be86321de6ce4a4665",
+          "key": "2423caa4b6b0c34104ae7f87829342c5d462f19502aa395904fb7f6aac6f095c",
           "schema_version": 1,
           "spec": {
             "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
@@ -56,7 +56,7 @@
               {
                 "kind": "code",
                 "name": "freeze_functional_ec_pilot",
-                "sha256": "7eaee80c3561ba78f1b594dffdafadc15ac9f14d34d42339c5443f2dd14290cc"
+                "sha256": "a46e2d7efc174ce3b92dddd1d13f321c4d4003aa32e6cb4cc516e7d8605ad097"
               },
               {
                 "kind": "code",
@@ -76,7 +76,7 @@
               {
                 "kind": "code",
                 "name": "strategies",
-                "sha256": "b9d2f461991d83479e9d6e1f91c6591f8bbb68438affddfe8116b07aa04cb236"
+                "sha256": "5f2adb48a947dbf610b69bb5a3b87892a24963c405fc44788a2a1598a186a086"
               },
               {
                 "kind": "code",
@@ -101,7 +101,7 @@
               {
                 "kind": "code",
                 "name": "datasets",
-                "sha256": "eb017aad057bcbd3f43b159d6536a33502c4ac4d5a46e51a25ac2afc6320ff20"
+                "sha256": "5606783859d36a294198c02e5abfa914148fbe1b021e332b2bcc201613e76b3e"
               },
               {
                 "kind": "code",
@@ -1056,7 +1056,7 @@
         ],
         "strategy": "feature_knn",
         "summary": {
-          "artifact_identity": "b7de54fd3a835738309a9262d543e6d49921b8d7c26cf6dd29e84736d2987034",
+          "artifact_identity": "25b1086133a33686c2e078b644816286c31dfed8d3d327be86321de6ce4a4665",
           "biological_benchmark_admitted": false,
           "calibration": 190,
           "confidence": "uncalibrated native support",

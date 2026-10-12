@@ -2,7 +2,7 @@
 """Build the shipped claims: for every recorded label, what the best testable recipe claims about genes
 that have no label, with each claim's certainty, independent verdicts and status.
 
-Writes `starplast/data/claims.parquet` and `starplast/data/claim_recipes.parquet`. Every number in them
+Writes `parascape/data/claims.parquet` and `parascape/data/claim_recipes.parquet`. Every number in them
 comes from the shipped track record (`track_record.parquet`), so build that first. A label whose best
 recipe is not calibrated end to end produces no claims; that is recorded in the recipes table.
 
@@ -19,13 +19,13 @@ import pandas as pd
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from starplast import claims as C  # noqa: E402
-from starplast import organisms as O  # noqa: E402
-from starplast import strategies as S  # noqa: E402
-from starplast import track_record as T  # noqa: E402
+from parascape import claims as C  # noqa: E402
+from parascape import organisms as O  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape import track_record as T  # noqa: E402
 
-OUT = os.path.join(ROOT, "starplast", "data", "claims.parquet")
-RECIPES = os.path.join(ROOT, "starplast", "data", "claim_recipes.parquet")
+OUT = os.path.join(ROOT, "parascape", "data", "claims.parquet")
+RECIPES = os.path.join(ROOT, "parascape", "data", "claim_recipes.parquet")
 
 
 def main(log=print) -> int:

@@ -1,7 +1,7 @@
 # Build a provenance-first pan-Apicomplexan dataset archive — MACHINERY DONE 2026-08-18
 
 **Status: the archive and its discovery are built, tested and run. The catalogue is 248 sources and
-grows by re-running rather than by editing.** `starplast/archive.py`, `scripts/build_archive.py`,
+grows by re-running rather than by editing.** `parascape/archive.py`, `scripts/build_archive.py`,
 30 tests, 100% coverage.
 
 ## Discovery is resolved, not remembered
@@ -49,7 +49,7 @@ and scope — so that is a curation campaign against a working archive, not more
 
 ## State
 
-Starplast currently integrates Toxoplasma-shaped functional, expression, localization, interaction,
+ParaScape currently integrates Toxoplasma-shaped functional, expression, localization, interaction,
 phenotype, and sequence/structure evidence. Future versions should be able to extend the same
 leakage-aware slot hierarchy to other Apicomplexan parasites without repeating dataset discovery.
 
@@ -65,7 +65,7 @@ leakage-aware slot hierarchy to other Apicomplexan parasites without repeating d
    `/mnt/firecuda2/Claude/toxoplasma_projects/datasets/` without overwriting existing data.
 4. Keep every source in a species/study directory with a machine-readable manifest recording DOI or
    accession, repository URL, download URL, retrieval date, checksums, file sizes, license/access
-   status, biological scope, and likely Starplast slot family.
+   status, biological scope, and likely ParaScape slot family.
 5. Verify archives and table readability. Record inaccessible, controlled-access, missing, or
    supplement-less studies in the manifest rather than representing them as downloaded.
 6. Do not integrate these pan-Apicomplexan files into the current Toxoplasma graph; this task builds

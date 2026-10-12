@@ -4,9 +4,9 @@ from dataclasses import FrozenInstanceError, replace
 import pandas as pd
 import pytest
 
-from starplast import functional_domain_profiles as D, functional_profile_targets as F, organisms as O
-from starplast.ground_truth import cohort_digest
-from starplast.splits import Assignment, SplitManifest
+from parascape import functional_domain_profiles as D, functional_profile_targets as F, organisms as O
+from parascape.ground_truth import cohort_digest
+from parascape.splits import Assignment, SplitManifest
 
 
 def fixture():

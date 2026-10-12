@@ -1,4 +1,4 @@
-Running as unit: starplast-paired-class-tests-20261008.service
+Running as unit: parascape-paired-class-tests-20261008.service
 FFFFFFFF.                                                                [100%]
 =================================== FAILURES ===================================
 _ test_major_mapping_differs_from_whole_profile_equality_and_keeps_false_calls _
@@ -9,9 +9,9 @@ _ test_major_mapping_differs_from_whole_profile_equality_and_keeps_false_calls _
 
 tests/test_functional_pair_class.py:28: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/functional_pair_class.py:38: in derive
+parascape/functional_pair_class.py:38: in derive
     A.build_scorecard(report)
-starplast/functional_agreement.py:242: in build_scorecard
+parascape/functional_agreement.py:242: in build_scorecard
     details = tuple(DetailView(key, label, F._canonical(report[key])) for key, label in (
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
@@ -23,7 +23,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         ('group_uncertainty', 'Uncertainty'), ('rows', 'All paired gene outcomes')))
 E   KeyError: 'group_uncertainty'
 
-starplast/functional_agreement.py:242: KeyError
+parascape/functional_agreement.py:242: KeyError
 _ test_profile_mapping_requires_complete_equality_and_empty_positives_are_unavailable _
 
     def test_profile_mapping_requires_complete_equality_and_empty_positives_are_unavailable():
@@ -32,9 +32,9 @@ _ test_profile_mapping_requires_complete_equality_and_empty_positives_are_unavai
 
 tests/test_functional_pair_class.py:42: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/functional_pair_class.py:38: in derive
+parascape/functional_pair_class.py:38: in derive
     A.build_scorecard(report)
-starplast/functional_agreement.py:242: in build_scorecard
+parascape/functional_agreement.py:242: in build_scorecard
     details = tuple(DetailView(key, label, F._canonical(report[key])) for key, label in (
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
@@ -46,7 +46,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         ('group_uncertainty', 'Uncertainty'), ('rows', 'All paired gene outcomes')))
 E   KeyError: 'group_uncertainty'
 
-starplast/functional_agreement.py:242: KeyError
+parascape/functional_agreement.py:242: KeyError
 _________ test_unknown_or_implicit_class_queries_are_refused[major:8] __________
 
 address = 'major:8'
@@ -58,9 +58,9 @@ address = 'major:8'
 
 tests/test_functional_pair_class.py:52: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/functional_pair_class.py:38: in derive
+parascape/functional_pair_class.py:38: in derive
     A.build_scorecard(report)
-starplast/functional_agreement.py:242: in build_scorecard
+parascape/functional_agreement.py:242: in build_scorecard
     details = tuple(DetailView(key, label, F._canonical(report[key])) for key, label in (
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
@@ -72,7 +72,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         ('group_uncertainty', 'Uncertainty'), ('rows', 'All paired gene outcomes')))
 E   KeyError: 'group_uncertainty'
 
-starplast/functional_agreement.py:242: KeyError
+parascape/functional_agreement.py:242: KeyError
 _________ test_unknown_or_implicit_class_queries_are_refused[major:23] _________
 
 address = 'major:23'
@@ -84,9 +84,9 @@ address = 'major:23'
 
 tests/test_functional_pair_class.py:52: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/functional_pair_class.py:38: in derive
+parascape/functional_pair_class.py:38: in derive
     A.build_scorecard(report)
-starplast/functional_agreement.py:242: in build_scorecard
+parascape/functional_agreement.py:242: in build_scorecard
     details = tuple(DetailView(key, label, F._canonical(report[key])) for key, label in (
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
@@ -98,7 +98,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         ('group_uncertainty', 'Uncertainty'), ('rows', 'All paired gene outcomes')))
 E   KeyError: 'group_uncertainty'
 
-starplast/functional_agreement.py:242: KeyError
+parascape/functional_agreement.py:242: KeyError
 ______ test_unknown_or_implicit_class_queries_are_refused[profile:["7"]] _______
 
 address = 'profile:["7"]'
@@ -110,9 +110,9 @@ address = 'profile:["7"]'
 
 tests/test_functional_pair_class.py:52: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/functional_pair_class.py:38: in derive
+parascape/functional_pair_class.py:38: in derive
     A.build_scorecard(report)
-starplast/functional_agreement.py:242: in build_scorecard
+parascape/functional_agreement.py:242: in build_scorecard
     details = tuple(DetailView(key, label, F._canonical(report[key])) for key, label in (
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
@@ -124,7 +124,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         ('group_uncertainty', 'Uncertainty'), ('rows', 'All paired gene outcomes')))
 E   KeyError: 'group_uncertainty'
 
-starplast/functional_agreement.py:242: KeyError
+parascape/functional_agreement.py:242: KeyError
 __________ test_unknown_or_implicit_class_queries_are_refused[bad:2] ___________
 
 address = 'bad:2'
@@ -136,9 +136,9 @@ address = 'bad:2'
 
 tests/test_functional_pair_class.py:52: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/functional_pair_class.py:38: in derive
+parascape/functional_pair_class.py:38: in derive
     A.build_scorecard(report)
-starplast/functional_agreement.py:242: in build_scorecard
+parascape/functional_agreement.py:242: in build_scorecard
     details = tuple(DetailView(key, label, F._canonical(report[key])) for key, label in (
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
@@ -150,7 +150,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         ('group_uncertainty', 'Uncertainty'), ('rows', 'All paired gene outcomes')))
 E   KeyError: 'group_uncertainty'
 
-starplast/functional_agreement.py:242: KeyError
+parascape/functional_agreement.py:242: KeyError
 __________ test_unknown_or_implicit_class_queries_are_refused[major] ___________
 
 address = 'major'
@@ -162,9 +162,9 @@ address = 'major'
 
 tests/test_functional_pair_class.py:52: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/functional_pair_class.py:38: in derive
+parascape/functional_pair_class.py:38: in derive
     A.build_scorecard(report)
-starplast/functional_agreement.py:242: in build_scorecard
+parascape/functional_agreement.py:242: in build_scorecard
     details = tuple(DetailView(key, label, F._canonical(report[key])) for key, label in (
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
@@ -176,7 +176,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         ('group_uncertainty', 'Uncertainty'), ('rows', 'All paired gene outcomes')))
 E   KeyError: 'group_uncertainty'
 
-starplast/functional_agreement.py:242: KeyError
+parascape/functional_agreement.py:242: KeyError
 _______ test_unknown_or_implicit_class_queries_are_refused[profile:bad] ________
 
 address = 'profile:bad'
@@ -188,9 +188,9 @@ address = 'profile:bad'
 
 tests/test_functional_pair_class.py:52: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-starplast/functional_pair_class.py:38: in derive
+parascape/functional_pair_class.py:38: in derive
     A.build_scorecard(report)
-starplast/functional_agreement.py:242: in build_scorecard
+parascape/functional_agreement.py:242: in build_scorecard
     details = tuple(DetailView(key, label, F._canonical(report[key])) for key, label in (
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
@@ -202,7 +202,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         ('group_uncertainty', 'Uncertainty'), ('rows', 'All paired gene outcomes')))
 E   KeyError: 'group_uncertainty'
 
-starplast/functional_agreement.py:242: KeyError
+parascape/functional_agreement.py:242: KeyError
 =========================== short test summary info ============================
 FAILED tests/test_functional_pair_class.py::test_major_mapping_differs_from_whole_profile_equality_and_keeps_false_calls
 FAILED tests/test_functional_pair_class.py::test_profile_mapping_requires_complete_equality_and_empty_positives_are_unavailable

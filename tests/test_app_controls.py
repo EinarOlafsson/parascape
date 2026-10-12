@@ -23,8 +23,8 @@ os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from PyQt6 import QtCore, QtWidgets  # noqa: E402
-from starplast import theme as TH  # noqa: E402
-from starplast.app import COLOR_MODES  # noqa: E402
+from parascape import theme as TH  # noqa: E402
+from parascape.app import COLOR_MODES  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -36,7 +36,7 @@ def app():
 @pytest.fixture(scope="module")
 def win():
     from PyQt6 import QtWidgets
-    from starplast.app import Window
+    from parascape.app import Window
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     w = Window()
     w.resize(900, 600)
@@ -160,7 +160,7 @@ def test_every_rendering_mode_is_applied_to_the_scatter(win):
 
 # --------------------------------------------------------------------------- edges
 def test_every_edge_type_can_be_toggled_on_its_own(win):
-    from starplast.app import EDGE_TYPES
+    from parascape.app import EDGE_TYPES
     win.all_edges_act.setChecked(True)
     for k, _ in EDGE_TYPES:
         for cb in win.edge_act.values():
@@ -191,7 +191,7 @@ def test_selecting_a_gene_draws_only_its_own_edges(win):
 def test_the_attention_toggle_changes_which_comention_edges_are_drawn(win):
     """Raw co-mention is confidently misleading, so the corrected residual is the default. The toggle
     reorders exactly the quantity the edge alpha encodes."""
-    from starplast.app import EDGE_TYPES, COMENTION
+    from parascape.app import EDGE_TYPES, COMENTION
     for cb in win.edge_act.values():
         cb.setChecked(False)
     for k in COMENTION:
@@ -224,7 +224,7 @@ def test_searching_a_product_substring_requires_a_gene_choice(win):
     assert win.sel is None
     assert 'Choose a gene' in win.detail.toPlainText()
     row = int(np.flatnonzero(win.nodes['product'].astype(str).str.lower().str.contains('kinase', regex=False))[0])
-    win._detail_link(QtCore.QUrl(f'starplast://select/{row}'))
+    win._detail_link(QtCore.QUrl(f'parascape://select/{row}'))
     assert win.sel is not None
     assert "kinase" in str(win.nodes["product"].iloc[win.sel]).lower()
 
@@ -351,7 +351,7 @@ def test_every_edge_checkbox_says_what_the_relation_means(win):
 # --------------------------------------------------------------------------- loading and startup
 def test_a_missing_cache_stops_with_the_command_that_builds_it(monkeypatch, tmp_path):
     """A pandas error from inside a constructor tells the user nothing about what to do next."""
-    import starplast.app as A
+    import parascape.app as A
     monkeypatch.setattr(A, "DATA", str(tmp_path))
     with pytest.raises(SystemExit, match="build_graph"):
         A.load()
@@ -360,8 +360,8 @@ def test_a_missing_cache_stops_with_the_command_that_builds_it(monkeypatch, tmp_
 def test_main_refuses_to_open_a_window_without_a_cache(monkeypatch, tmp_path, capsys):
     """Checked before building a window, so the message is readable rather than buried under a
     traceback from a constructor."""
-    import starplast.app as A
-    from starplast import paths
+    import parascape.app as A
+    from parascape import paths
     monkeypatch.setattr(paths, "check", lambda: (False, "cache incomplete at /nowhere"))
     monkeypatch.setattr(paths, "describe", lambda: "cache /nowhere [INCOMPLETE]")
     with pytest.raises(SystemExit):
@@ -370,12 +370,12 @@ def test_main_refuses_to_open_a_window_without_a_cache(monkeypatch, tmp_path, ca
 
 
 def test_main_checks_the_cache_before_building_anything(monkeypatch):
-    """`starplast` is the entry point in pyproject. Its first act is the cache check, so a missing
+    """`parascape` is the entry point in pyproject. Its first act is the cache check, so a missing
     cache is a sentence rather than a traceback out of a constructor.
 
     Only the guard is exercised: main() constructs a QApplication, and a second one in a process that
     already has it is undefined behaviour -- it segfaults the interpreter rather than failing."""
-    import starplast.app as A
+    import parascape.app as A
     order = []
     monkeypatch.setattr(A.paths, "check", lambda: (order.append("checked"), (False, "no cache"))[1])
     monkeypatch.setattr(A.paths, "describe", lambda: "")
@@ -389,7 +389,7 @@ def test_main_checks_the_cache_before_building_anything(monkeypatch):
 # --------------------------------------------------------------------------- the camera
 def test_an_empty_map_still_frames_something():
     """A build that produced no genes must not divide by zero while computing its own extent."""
-    from starplast.app import Map3D
+    from parascape.app import Map3D
     v = Map3D.__new__(Map3D)
     v.xyz = np.zeros((0, 3), dtype=np.float32)
     assert v.data_radius() == 100.0
@@ -490,8 +490,8 @@ def test_the_browser_still_opens_when_the_analysis_panel_cannot_be_imported(monk
 
     The failure is injected into sys.modules rather than into __import__, because replacing the import
     hook while Qt is running takes the interpreter down with it."""
-    import starplast.app as A
-    monkeypatch.setitem(sys.modules, "starplast.analysis_panel", None)
+    import parascape.app as A
+    monkeypatch.setitem(sys.modules, "parascape.analysis_panel", None)
     win._analysis()
     assert "analysis panel unavailable" in win.statusBar().currentMessage()
     assert win.n > 0, "the map itself must still be there"
@@ -647,13 +647,13 @@ def test_opening_preferences_shows_the_dialog_it_builds(win):
 
 
 def test_main_builds_and_shows_the_window(monkeypatch, app):
-    """`starplast` is the entry point in pyproject, so the whole path is exercised: cache check,
+    """`parascape` is the entry point in pyproject, so the whole path is exercised: cache check,
     window construction, show, and the event loop.
 
     QApplication is handed back the instance this process already owns -- constructing a second one is
     undefined behaviour and takes the interpreter down rather than failing a test."""
     from PyQt6 import QtWidgets
-    import starplast.app as A
+    import parascape.app as A
     seen = {}
 
     class Shim:
@@ -677,7 +677,7 @@ def test_main_builds_and_shows_the_window(monkeypatch, app):
 def test_logging_is_off_until_it_is_asked_for(win, tmp_path):
     """Writing files to someone's disk uninvited is how a tool loses trust. The console still gets
     warnings, because a warning nobody enabled a log to see is a silent failure with extra steps."""
-    from starplast import logging_util
+    from parascape import logging_util
     win.apply_log_settings(enabled=False, directory=str(tmp_path))
     assert logging_util.log_file() == ""
     assert os.listdir(tmp_path) == []
@@ -685,7 +685,7 @@ def test_logging_is_off_until_it_is_asked_for(win, tmp_path):
 
 
 def test_enabling_the_log_writes_a_file_and_says_where(win, tmp_path):
-    from starplast import logging_util
+    from parascape import logging_util
     path = win.apply_log_settings(enabled=True, file_level="DEBUG", directory=str(tmp_path))
     assert path and os.path.exists(path)
     assert path in win.statusBar().currentMessage()
@@ -713,7 +713,7 @@ def test_the_preferences_dialog_carries_the_logging_controls(win):
 
 def test_the_preference_controls_take_effect_when_used(win, tmp_path, monkeypatch):
     """A checkbox that stores a setting without applying it is the worst of both."""
-    from starplast import logging_util
+    from parascape import logging_util
     monkeypatch.setattr(logging_util, "log_dir", lambda: str(tmp_path))
     win.build_preferences()
     win.log_console_level.setCurrentText("DEBUG")
@@ -728,7 +728,7 @@ def test_the_preference_controls_take_effect_when_used(win, tmp_path, monkeypatc
 # --------------------------------------------------------------------------- navigate and select
 def test_the_left_button_has_two_modes_and_says_which(win):
     """A silent mode change is a trap: the same drag rotates in one and gates in the other."""
-    from starplast.app import INTERACTION_MODES
+    from parascape.app import INTERACTION_MODES
     for name in INTERACTION_MODES:
         win.set_interaction_mode(name)
         assert win.view.mode == name
@@ -1117,7 +1117,7 @@ def test_the_gated_export_uses_the_columns_that_were_ticked(win, monkeypatch, tm
 def test_annotations_are_drawn_in_a_color_of_their_own(win, tmp_path):
     """Measurement, inference and absence have one each. A proposal is a fourth thing, and reading
     as any of the three is the failure this application is built to prevent."""
-    from starplast.annotations import ANNOTATION_COLOR, Annotation, AnnotationStore
+    from parascape.annotations import ANNOTATION_COLOR, Annotation, AnnotationStore
     store = AnnotationStore(str(tmp_path / "a.csv"))
     gene = str(win.nodes.gene_id.iloc[7])
     store.save(Annotation(gene_id=gene, proposed="dense granules", target="compartment", cluster=1,
@@ -1134,7 +1134,7 @@ def test_annotations_are_drawn_in_a_color_of_their_own(win, tmp_path):
 
 
 def test_with_no_annotations_the_mode_draws_everything_as_unknown(win, tmp_path):
-    from starplast.annotations import AnnotationStore
+    from parascape.annotations import AnnotationStore
     win.annotations = AnnotationStore(str(tmp_path / "none.csv"))
     win.sel = None                     # a selected gene is drawn white, which is a third color
     win.refresh_annotations()
@@ -1159,7 +1159,7 @@ def test_an_unreadable_annotations_file_does_not_take_the_window_down(win, tmp_p
 def test_the_panel_offers_columns_runs_and_binned_quantities_in_one_list(win):
     """One list rather than three controls: they answer the same question -- what should color mean
     right now -- and having to know which of three places to look is the state this replaced."""
-    from starplast.app import BIN_PREFIX, RUN_PREFIX
+    from parascape.app import BIN_PREFIX, RUN_PREFIX
     win.keep_run(np.arange(win.n) % 4, name="test_run_a")
     sources = win.color_sources()
     assert "compartment" in sources
@@ -1169,7 +1169,7 @@ def test_the_panel_offers_columns_runs_and_binned_quantities_in_one_list(win):
 
 
 def test_coloring_by_a_kept_run_uses_that_run(win):
-    from starplast.app import RUN_PREFIX
+    from parascape.app import RUN_PREFIX
     labels = np.where(np.arange(win.n) % 3 == 0, 0, 1)
     run = win.keep_run(labels, name="test_run_b")
     win.on_category_changed(RUN_PREFIX + run.name)
@@ -1182,7 +1182,7 @@ def test_coloring_by_a_kept_run_uses_that_run(win):
 
 def test_two_runs_are_both_kept_and_can_be_switched_between(win):
     """The whole point: the second used to replace the first with no way back."""
-    from starplast.app import RUN_PREFIX
+    from parascape.app import RUN_PREFIX
     a = win.keep_run(np.zeros(win.n, int), name="test_two_a")
     b = win.keep_run(np.arange(win.n) % 5, name="test_two_b")
     assert {a.name, b.name} <= set(win.runs.names())
@@ -1195,7 +1195,7 @@ def test_two_runs_are_both_kept_and_can_be_switched_between(win):
 def test_a_run_over_a_subsample_leaves_the_rest_absent_not_unclustered(win):
     """They were not put in no cluster; they were not in the map. Conflating the two would put
     thousands of genes into a category that means something else entirely."""
-    from starplast.app import RUN_PREFIX
+    from parascape.app import RUN_PREFIX
     placed = np.zeros(win.n, bool)
     placed[:300] = True
     win.placed = placed
@@ -1207,8 +1207,8 @@ def test_a_run_over_a_subsample_leaves_the_rest_absent_not_unclustered(win):
 
 
 def test_a_run_can_be_renamed_and_keeps_its_recipe(win, tmp_path):
-    from starplast.app import RUN_PREFIX
-    from starplast.runs import RunStore
+    from parascape.app import RUN_PREFIX
+    from parascape.runs import RunStore
     win.runs = RunStore(str(tmp_path))
     win.keep_run(np.zeros(win.n, int), recipe={"algorithm": "hdbscan", "min_cluster_size": 60},
                  name="test_rename_from")
@@ -1222,7 +1222,7 @@ def test_a_run_can_be_renamed_and_keeps_its_recipe(win, tmp_path):
 
 
 def test_a_name_already_in_use_is_refused(win, tmp_path):
-    from starplast.runs import RunStore
+    from parascape.runs import RunStore
     win.runs = RunStore(str(tmp_path))
     win.keep_run(np.zeros(win.n, int), name="taken")
     win.keep_run(np.zeros(win.n, int), name="other")
@@ -1233,7 +1233,7 @@ def test_a_name_already_in_use_is_refused(win, tmp_path):
 def test_a_quantity_can_be_colored_as_bins(win):
     """Binning makes a measurement behave like a category, which is what makes it comparable with a
     clustering -- the comparison this panel exists for."""
-    from starplast.app import BIN_PREFIX
+    from parascape.app import BIN_PREFIX
     win.bins_box.setValue(4)
     win.on_category_changed(BIN_PREFIX + "mean_plddt")
     vals = win.category_values()
@@ -1249,7 +1249,7 @@ def test_a_quantity_that_is_mostly_one_value_gets_fewer_bins_and_says_so(win):
     """`n_publications` is zero for most of this proteome, so its quartile edges are all zero.
     Splitting the tie by rank or by equal width would draw four colors over a column with one
     level -- a picture of a distinction that does not exist."""
-    from starplast.app import BIN_PREFIX
+    from parascape.app import BIN_PREFIX
     win.bins_box.setValue(4)
     win.on_category_changed(BIN_PREFIX + "n_publications")
     named = {v for v in win.category_values().unique() if v}
@@ -1258,7 +1258,7 @@ def test_a_quantity_that_is_mostly_one_value_gets_fewer_bins_and_says_so(win):
 
 
 def test_changing_the_number_of_bins_recolors(win):
-    from starplast.app import BIN_PREFIX
+    from parascape.app import BIN_PREFIX
     win.on_category_changed(BIN_PREFIX + "mean_plddt")
     win.set_bins(3)
     three = {v for v in win.category_values().unique() if v}
@@ -1268,7 +1268,7 @@ def test_changing_the_number_of_bins_recolors(win):
 
 
 def test_genes_with_no_value_for_a_binned_quantity_are_absent_not_a_low_bin(win):
-    from starplast.app import BIN_PREFIX
+    from parascape.app import BIN_PREFIX
     col = "mean_plddt"
     win.on_category_changed(BIN_PREFIX + col)
     vals = win.category_values()
@@ -1276,14 +1276,14 @@ def test_genes_with_no_value_for_a_binned_quantity_are_absent_not_a_low_bin(win)
     if missing.any():
         assert (vals[missing] == "").all()
         c = np.asarray(win.scatter.color)
-        import starplast.theme as TH
+        import parascape.theme as TH
         assert np.allclose(c[missing][0, :3], TH.unknown_color(win.theme)[:3], atol=1e-3)
 
 
 def test_the_filter_and_the_fly_to_follow_the_chosen_source(win):
     """The list under the chooser filters what the chooser names, or the two controls describe
     different things while sitting on top of each other."""
-    from starplast.app import RUN_PREFIX
+    from parascape.app import RUN_PREFIX
     run = win.keep_run(np.where(np.arange(win.n) < 100, 0, 1), name="test_filter_run")
     win.on_category_changed(RUN_PREFIX + run.name)
     item = next(win.comp_list.item(i) for i in range(win.comp_list.count())
@@ -1320,7 +1320,7 @@ def test_the_diagram_and_the_map_are_colored_from_the_same_dict(win):
     """Two palettes are two claims about what a color means, and one of them will drift."""
     if win.diagram is None:
         pytest.skip("the artwork is not present in this checkout")
-    from starplast.celldiagram import COMPARTMENT_SL
+    from parascape.celldiagram import COMPARTMENT_SL
     win.on_category_changed("compartment")
     name = next(c for c in COMPARTMENT_SL if c in win.color_of)
     win.select_compartment(name)
@@ -1374,7 +1374,7 @@ def test_the_compartments_with_no_organelle_are_named_beside_the_diagram(win):
 def test_changing_theme_recolors_the_diagram_with_the_map(win):
     if win.diagram is None:
         pytest.skip("the artwork is not present in this checkout")
-    from starplast.celldiagram import COMPARTMENT_SL
+    from parascape.celldiagram import COMPARTMENT_SL
     win.on_category_changed("compartment")
     name = next(c for c in COMPARTMENT_SL if c in win.color_of)
     win.select_compartment(name)
@@ -1404,8 +1404,8 @@ def _user_table(tmp_path, win, name="mine.csv", n=30):
 def test_the_import_dialog_offers_every_preprocessing_choice(win, tmp_path):
     """All of it exists in the code already, applied to published data. The point is that a person
     importing their own table gets the same choices, explicitly."""
-    from starplast.embedding import NA_POLICIES, SCALINGS
-    from starplast.importer import DUPLICATES, QUANTIFICATIONS
+    from parascape.embedding import NA_POLICIES, SCALINGS
+    from parascape.importer import DUPLICATES, QUANTIFICATIONS
     d = win.build_import_dialog(_user_table(tmp_path, win))
     assert d is not None
     offered = lambda box: [box.itemText(i) for i in range(box.count())]
@@ -1442,7 +1442,7 @@ def test_importing_adds_columns_to_the_session_and_records_how(win, tmp_path):
 
 def test_imported_columns_can_build_a_map(win, tmp_path):
     """A block the map cannot be built from is a column that arrived and did nothing."""
-    from starplast.embedding import columns_for
+    from parascape.embedding import columns_for
     d = win.build_import_dialog(_user_table(tmp_path, win))
     win.apply_import(d)
     panel = win.panel
@@ -1456,7 +1456,7 @@ def test_imported_columns_can_build_a_map(win, tmp_path):
 
 
 def test_an_imported_column_can_be_colored_by_like_any_other(win, tmp_path):
-    from starplast.app import BIN_PREFIX
+    from parascape.app import BIN_PREFIX
     win.apply_import(win.build_import_dialog(_user_table(tmp_path, win)))
     assert BIN_PREFIX + "imported_day3" in win.color_sources()
     win.on_category_changed(BIN_PREFIX + "imported_day3")
@@ -1576,7 +1576,7 @@ def test_renaming_does_nothing_unless_a_run_is_the_current_coloring(win):
     win._rename_current_run()
     assert [r.name for r in win.runs.runs][-1] == "before"
 
-    from starplast.app import RUN_PREFIX
+    from parascape.app import RUN_PREFIX
     win.on_category_changed(RUN_PREFIX + "before")
     win.run_name.setText("after")
     win._rename_current_run()
@@ -1624,7 +1624,7 @@ def test_the_caption_under_the_cell_never_moves_the_cell(win):
 
 def test_a_caption_too_long_for_its_box_scrolls(win):
     from PyQt6 import QtWidgets
-    from starplast.app import DIAGRAM_NOTE_HEIGHT
+    from parascape.app import DIAGRAM_NOTE_HEIGHT
     win.on_category_changed("compartment")
     win.diagram_note.setText("word " * 200)
     for _ in range(4):

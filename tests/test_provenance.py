@@ -4,8 +4,8 @@ import json
 
 import pytest
 
-from starplast import datasets as D, organisms as O
-from starplast.provenance import (SourceFile, MeasurementTrace, Transform, MappingAudit,
+from parascape import datasets as D, organisms as O
+from parascape.provenance import (SourceFile, MeasurementTrace, Transform, MappingAudit,
                                   audit_mapping, read_traces, trace_sources, write_traces)
 
 

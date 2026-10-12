@@ -7,9 +7,9 @@ from types import SimpleNamespace
 
 import pytest
 
-from starplast import artifacts as A, capabilities as C, precompute_jobs as P
-from starplast.query import Query
-from starplast.splits import Assignment, SplitManifest
+from parascape import artifacts as A, capabilities as C, precompute_jobs as P
+from parascape.query import Query
+from parascape.splits import Assignment, SplitManifest
 
 HASH = hashlib.sha256(b'fixture').hexdigest()
 OTHER = hashlib.sha256(b'changed').hexdigest()

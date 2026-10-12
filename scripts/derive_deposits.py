@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Derive the 2026-09 deposit tables and write the notebook that shows how.
 
-Runs every derivation in `starplast.deposits` against the raw deposits under the dataset root, with
+Runs every derivation in `parascape.deposits` against the raw deposits under the dataset root, with
 the sanity checks that admitted each one, and writes both the keyed tables
-(`starplast/data/deposit_<key>.tsv`) and `notebooks/derive_deposits_2026_09.ipynb`, executed, so the
+(`parascape/data/deposit_<key>.tsv`) and `notebooks/derive_deposits_2026_09.ipynb`, executed, so the
 notebook in the tree is the run that produced the shipped numbers.
 
 Then `python scripts/add_deposits.py` merges the tables into the caches.
 
-Run:  STARPLAST_DATA=/path/to/datasets python scripts/derive_deposits.py
+Run:  PARASCAPE_DATA=/path/to/datasets python scripts/derive_deposits.py
 """
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ def build(dataset_root: str) -> str:
     nb.md("Every column added in the September 2026 data audit comes from a public deposit through "
           "a computation -- a mean of replicate screens, a log, a moderated contrast. This notebook "
           "runs each one from the raw file and shows the check that admitted it. The code is "
-          "`starplast/deposits.py`; this notebook calls it, so what is shown is what ships.",
+          "`parascape/deposits.py`; this notebook calls it, so what is shown is what ships.",
           "Raw deposits live under the dataset root, in the taxonomy "
           "`<level>/<kind>/<PMID or accession>/`; every folder carries `URLS.txt` and "
           "`SHA256SUMS.txt` from the download.")
@@ -39,8 +39,8 @@ def build(dataset_root: str) -> str:
             f"ROOT = {ROOT!r}",
             f"DATA = {dataset_root!r}",
             "import sys; sys.path.insert(0, ROOT)",
-            "from starplast import deposits as D",
-            "nodes = pd.read_parquet(os.path.join(ROOT, 'starplast', 'data', 'nodes.parquet'))",
+            "from parascape import deposits as D",
+            "nodes = pd.read_parquet(os.path.join(ROOT, 'parascape', 'data', 'nodes.parquet'))",
             "product = nodes.set_index('gene_id')['product']",
             "ribosomal = product.str.contains('ribosomal protein', case=False, na=False) & "
             "~product.str.contains('mitochondrial|apicoplast|kinase|methyltransferase|"
@@ -195,7 +195,7 @@ def build(dataset_root: str) -> str:
           "Melting points are fitted by `scripts/fit_meltome.py`, since none is published. The "
           "checks: chaperones labile and glycolysis stable; HAP2 needed by males only; and the "
           "counts the papers report, reproduced.")
-    nb.code("pf = pd.read_parquet(os.path.join(ROOT, 'starplast', 'data', 'pf_nodes.parquet')).set_index('gene_id')",
+    nb.code("pf = pd.read_parquet(os.path.join(ROOT, 'parascape', 'data', 'pf_nodes.parquet')).set_index('gene_id')",
             "tm = D.pf_melting_temperature(DATA).set_index('gene_id')['melting_temperature_tm']",
             "prod = pf['product'].reindex(tm.index).fillna('')",
             "{'HSP70/90 median Tm': tm[prod.str.contains('heat shock protein 70|heat shock protein 90', case=False)].median(),",
@@ -215,7 +215,7 @@ def build(dataset_root: str) -> str:
           "back exactly -- 3,000 proteins mapped, 1,646 classified, 24 niches -- and then the "
           "markers have to be where cell biology has put them for thirty years.")
     nb.code("lopit = D.pf_spatial_proteome(DATA).set_index('gene_id')",
-            "pfid = pd.read_csv(os.path.join(ROOT, 'starplast', 'data', 'plasmodb_identity.tsv'), sep='\\t')",
+            "pfid = pd.read_csv(os.path.join(ROOT, 'parascape', 'data', 'plasmodb_identity.tsv'), sep='\\t')",
             "symbol = pfid.dropna(subset=['gene_name']).drop_duplicates('gene_name').set_index('gene_name')['gene_id']",
             "{'proteins mapped (paper: 3000)': int(lopit.lopit_pf_svm_score.notna().sum()),",
             " 'classified (paper: 1646)': int(lopit.lopit_pf_location.notna().sum()),",
@@ -371,7 +371,7 @@ def build(dataset_root: str) -> str:
             "              for c in ['fit_density_low', 'fit_density_high', 'fit_density_dependence']}).T.round(3)")
 
     nb.md("## 21. Write the tables",
-          "Each derivation is written to `starplast/data/deposit_<key>.tsv`. "
+          "Each derivation is written to `parascape/data/deposit_<key>.tsv`. "
           "`scripts/add_deposits.py` merges them into the node and host tables, refusing any merge "
           "that would lose a value.")
     nb.code("written = D.derive_all(DATA, ROOT, log=print)",
@@ -380,8 +380,8 @@ def build(dataset_root: str) -> str:
 
 
 def main(argv=None) -> int:
-    from starplast import paths
-    root = os.environ.get("STARPLAST_DATA") or paths.dataset_root()
+    from parascape import paths
+    root = os.environ.get("PARASCAPE_DATA") or paths.dataset_root()
     print(f"dataset root: {root}")
     print(f"wrote {build(root)}")
     return 0

@@ -1,6 +1,6 @@
 # 40 — A window that shows every slot, its place in the tree, and what fills it
 
-**Status: DONE 2026-08-17.** `View > Slot tree`, built as `starplast/slot_tree.py`, 16 tests.
+**Status: DONE 2026-08-17.** `View > Slot tree`, built as `parascape/slot_tree.py`, 16 tests.
 
 Two findings it produced on the way in, which is the argument for having built it:
 

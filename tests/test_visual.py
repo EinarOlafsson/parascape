@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import theme as TH  # noqa: E402
+from parascape import theme as TH  # noqa: E402
 
 
 # --------------------------------------------------------------------------- depth cueing
@@ -88,7 +88,7 @@ def test_every_theme_defines_every_role():
 
 # --------------------------------------------------------------------------- edge ink budget
 def _ink(n, target=None):
-    from starplast.app import EDGE_INK_TARGET
+    from parascape.app import EDGE_INK_TARGET
     return float(np.clip(np.sqrt((target or EDGE_INK_TARGET) / max(n, 1)), 0.12, 1.0))
 
 
@@ -99,7 +99,7 @@ def test_a_small_neighbourhood_is_drawn_at_full_strength():
 
 
 def test_ink_falls_as_edge_count_rises_so_dense_types_stay_transparent():
-    from starplast.app import EDGE_INK_TARGET
+    from parascape.app import EDGE_INK_TARGET
     assert _ink(EDGE_INK_TARGET) == pytest.approx(1.0)
     assert _ink(20000) < 0.4, "20,000 edges at full alpha render as an opaque sheet"
     assert _ink(20000) > _ink(60000), "denser must be fainter"
@@ -114,7 +114,7 @@ def test_ink_has_a_floor_so_edges_never_vanish_completely():
 @pytest.fixture(scope="module")
 def win():
     from PyQt6 import QtWidgets
-    from starplast.app import Window
+    from parascape.app import Window
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     w = Window()
     yield w

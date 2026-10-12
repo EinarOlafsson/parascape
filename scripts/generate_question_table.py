@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The question table: what this data can be asked, what it cannot, and which verdicts were measured.
 
-One row per candidate question from `starplast/data/questions.json`, each run through the real
+One row per candidate question from `parascape/data/questions.json`, each run through the real
 leakage closure against the shipped cache. The document and the program therefore cannot drift: the
 same `recipes.close` that refuses a question at run time is what marks it undeliverable here.
 
@@ -24,12 +24,12 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_CSV = os.path.join(_ROOT, "instructions", "done", "45_questions.csv")
 OUT_MD = os.path.join(_ROOT, "instructions", "done", "45_questions.md")
-NODES = os.path.join(_ROOT, "starplast", "data", "nodes.parquet")
+NODES = os.path.join(_ROOT, "parascape", "data", "nodes.parquet")
 
 
 def render(table: pd.DataFrame, questions: list) -> str:
     """The table as a document, kept questions first and the drops grouped by what blocked them."""
-    from starplast.questions import AXES
+    from parascape.questions import AXES
     kept = table[table.shipped & table.closure_ok]
     covered = table[table.declared.eq("keep") & table.closure_ok & ~table.shipped]
     lines = [
@@ -75,12 +75,12 @@ def render(table: pd.DataFrame, questions: list) -> str:
 
 
 def main() -> int:
-    from starplast.questions import load, verify
+    from parascape.questions import load, verify
     questions = load()
     if not questions:
-        print("no questions in starplast/data/questions.json"); return 1
+        print("no questions in parascape/data/questions.json"); return 1
     if not os.path.exists(NODES):
-        print("no built node table; run python -m starplast.build_graph first"); return 1
+        print("no built node table; run python -m parascape.build_graph first"); return 1
     nodes = pd.read_parquet(NODES)
     table = verify(nodes, questions)
     table.to_csv(OUT_CSV, index=False)

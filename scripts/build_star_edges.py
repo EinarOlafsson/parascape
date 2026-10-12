@@ -3,7 +3,7 @@
 
 For every parasite space whose table ships, each strategy of `star_edges.SHIPPED_STRATEGIES` is run
 once with its defaults, and the gene-gene links its result states are kept (bounded as described in
-`starplast/star_edges.py`). The set-expansion strategies (20, 25) need a seed list; they are run on
+`parascape/star_edges.py`). The set-expansion strategies (20, 25) need a seed list; they are run on
 the `SHIPPED_SEED_SETS` categories of the default label whose size is closest to what
 `strategies.example_set` aims for -- the same kind of list the panel's "example" button fills.
 
@@ -34,7 +34,7 @@ NOTEBOOK = os.path.join(ROOT, "notebooks", "star_edges_2026_09_29.ipynb")
 
 def seed_sets(ctx, n: int, lo: int = 30, hi: int = 300, aim: int = 120) -> list:
     """(category, positions) for the `n` categories of the default label sized closest to `aim`."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     target = S.default_category(ctx)
     if not target:
         return []
@@ -47,19 +47,19 @@ def seed_sets(ctx, n: int, lo: int = 30, hi: int = 300, aim: int = 120) -> list:
 
 def build_space(code: str, keys=None, log=print) -> tuple:
     """(links, log frame) for one space: every shipped strategy run once, its links kept."""
-    from starplast import star_edges as E
-    from starplast import strategies as S
-    import starplast.strategy_catalog  # noqa: F401  (registers the strategies)
-    import starplast.strategy_graph  # noqa: F401
-    import starplast.strategy_learning  # noqa: F401
+    from parascape import star_edges as E
+    from parascape import strategies as S
+    import parascape.strategy_catalog  # noqa: F401  (registers the strategies)
+    import parascape.strategy_graph  # noqa: F401
+    import parascape.strategy_learning  # noqa: F401
     ctx = S.shipped(code)
     parts, rows = [], []
     for key in keys or E.SHIPPED_STRATEGIES:
         strategy = S.get(key)
         needs_genes = any(p.kind == "genes" and p.name == "genes" for p in strategy.params)
-        runs = ([(f"starplast:{key}:{cat}", {"genes": " ".join(ctx.gene_ids[pos])}, cat)
+        runs = ([(f"parascape:{key}:{cat}", {"genes": " ".join(ctx.gene_ids[pos])}, cat)
                  for cat, pos in seed_sets(ctx, E.SHIPPED_SEED_SETS)] if needs_genes
-                else [(f"starplast:{key}", {}, "")])
+                else [(f"parascape:{key}", {}, "")])
         for run, kw, cat in runs:
             t0 = time.monotonic()
             try:
@@ -84,7 +84,7 @@ def build_space(code: str, keys=None, log=print) -> tuple:
 
 def build(codes=None, keys=None, log=print) -> tuple:
     """(links, log) for every shipped parasite space."""
-    from starplast import organisms
+    from parascape import organisms
     codes = codes or organisms.codes(organisms.PARASITE, available=True)
     frames, logs = [], []
     for code in codes:
@@ -96,7 +96,7 @@ def build(codes=None, keys=None, log=print) -> tuple:
 
 def write(frame: pd.DataFrame, path: str | None = None) -> str:
     """Write the shipped file, compactly (categorical columns, float32 scores, zstd)."""
-    from starplast import star_edges as E
+    from parascape import star_edges as E
     path = path or E.shipped_path()
     out = frame.copy()
     for c in ("organism", "kind", "group", "source", "how", "setting", "run", "origin", "created",
@@ -114,15 +114,15 @@ def notebook(path: str = NOTEBOOK) -> str:
           "each space's graph at run time. This notebook makes the other shipped part: the links "
           "stated by the default-setting runs of the strategies that relate genes to genes, on the "
           "shipped tables. The code is `scripts/build_star_edges.py` and the rules that bound each "
-          "kind of link are in `starplast/star_edges.py`; this notebook calls them, so what is "
-          "shown is what ships in `starplast/data/star_edges.parquet`.",
+          "kind of link are in `parascape/star_edges.py`; this notebook calls them, so what is "
+          "shown is what ships in `parascape/data/star_edges.parquet`.",
           "No strategy or calibration number is changed: each strategy is run with its defaults.")
     nb.code("import warnings; warnings.filterwarnings('ignore')",
             f"import sys; sys.path.insert(0, {ROOT!r}); "
             f"sys.path.insert(0, {os.path.join(ROOT, 'scripts')!r})",
             "import pandas as pd",
             "import build_star_edges as B",
-            "from starplast import star_edges as E",
+            "from parascape import star_edges as E",
             "pd.DataFrame({'bound': ['MODULE_K', 'SEED_K', 'LABEL_K', 'PARTNER_MAX', "
             "'MAX_EDGES_PER_RUN', 'SHIPPED_SEED_SETS'], 'value': [E.MODULE_K, E.SEED_K, "
             "E.LABEL_K, E.PARTNER_MAX, E.MAX_EDGES_PER_RUN, E.SHIPPED_SEED_SETS]})")

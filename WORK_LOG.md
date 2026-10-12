@@ -27,8 +27,8 @@ This file supports resuming work after interruption. It is not a background sess
 After crash recovery, all commits through `05650fd` were present locally and on origin; the working
 tree was clean and 45 focused recovery checks passed. Documentation CI passed. Test CI completed
 with 4,138 passed, 42 skipped, 6 deselected and one failure: an obsolete packaging assertion required
-exactly `['starplast']`, excluding the intentional `starplast.spaces` subpackage. The test now
-requires every source package under the Starplast namespace in the single distribution. Recovery
+exactly `['parascape']`, excluding the intentional `parascape.spaces` subpackage. The test now
+requires every source package under the ParaScape namespace in the single distribution. Recovery
 validation: all 50 publishing/release checks passed, alongside the 45 focused recovery checks.
 Follow-up remote CI is pending; a queued run is not a passing run.
 

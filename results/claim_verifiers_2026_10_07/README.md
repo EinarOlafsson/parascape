@@ -43,7 +43,7 @@ Reproduce in a fresh directory, under a memory cap and with a RAM lease:
 ```bash
 systemd-run --user --scope -p MemoryMax=8G env CUDA_VISIBLE_DEVICES= \
   OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 \
-  ~/anaconda3/envs/starplast/bin/python scripts/audit_claim_verifiers.py \
+  ~/anaconda3/envs/parascape/bin/python scripts/audit_claim_verifiers.py \
   --out results/claim_verifiers_repeat
 ```
 

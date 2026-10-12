@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import organisms as O, strategies as S, strategy_catalog as N, value_records as V
-from starplast.splits import Assignment, ExclusionManifest, SplitManifest
+from parascape import organisms as O, strategies as S, strategy_catalog as N, value_records as V
+from parascape.splits import Assignment, ExclusionManifest, SplitManifest
 
 IDS = tuple(f'TGME49_{i:06d}' for i in range(100001, 100036))
 ROLES = ['train']*24 + ['tune']*3 + ['calibration']*3 + ['test']*5

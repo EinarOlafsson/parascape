@@ -6,7 +6,7 @@ import pandas as pd
 import pytest
 
 from scripts import freeze_pf_functional_ec_controls as C
-from starplast import functional_ontology as F
+from parascape import functional_ontology as F
 
 
 def fixture():

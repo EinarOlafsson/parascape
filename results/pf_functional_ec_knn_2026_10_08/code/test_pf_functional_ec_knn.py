@@ -9,7 +9,7 @@ import pandas as pd
 import pytest
 
 from scripts import freeze_pf_functional_ec_controls as C, freeze_pf_functional_ec_knn as K
-from starplast import datasets as D, functional_exclusions as E, functional_ontology as F
+from parascape import datasets as D, functional_exclusions as E, functional_ontology as F
 
 
 def fixture(monkeypatch):
@@ -134,7 +134,7 @@ def test_no_feature_candidate_keeps_abstentions_and_null_reporting_scores(monkey
 
 @pytest.mark.parametrize('available', [True, False])
 def test_shared_exact_artifact_factory_roundtrips_scope_and_original_controls(monkeypatch, tmp_path, available):
-    from starplast import artifacts as A
+    from parascape import artifacts as A
     _, packet, _, _, _, _ = fixture(monkeypatch)
     dependencies = tuple(A.Dependency(kind, kind, 'a' * 64) for kind in ('code', 'table', 'truth', 'exclusions', 'model')) + (
         A.Dependency('split', 'prepared', packet['split'].identity),)

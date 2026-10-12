@@ -25,8 +25,8 @@ from OpenGL import GL
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from starplast.app import Window
-from starplast.lighting import LIGHT_MOODS, POINT_MODES
+from parascape.app import Window
+from parascape.lighting import LIGHT_MOODS, POINT_MODES
 
 
 def arguments() -> argparse.Namespace:
@@ -45,7 +45,7 @@ def render_name(mode: str, point_mode: str, mood: str) -> str:
 
 def capture(app, window: Window, output: Path, mode: str, point_mode: str,
             mood: str) -> Path:
-    """Paint one fixed scene through Starplast's real GL view and save its framebuffer."""
+    """Paint one fixed scene through ParaScape's real GL view and save its framebuffer."""
     window.set_lighting(mode)
     window._light_timer.stop()  # fixed comparison, not a frame chosen by timer scheduling
     window.set_lighting_option("source", "selected gene")
@@ -149,7 +149,7 @@ def main() -> int:
                              QtCore.QSettings.Scope.UserScope, str(state))
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     window = Window()
-    # Detaching avoids Starplast's analysis panels squeezing the GL view on a headless X screen.
+    # Detaching avoids ParaScape's analysis panels squeezing the GL view on a headless X screen.
     window.view.setParent(None)
     window.view.resize(1000, 800)
     window.view.show()

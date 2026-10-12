@@ -16,10 +16,10 @@ The user, 2026-09-26:
 * **Method in the name.** `Strategy.method` is required at registration, and `Strategy.name` is
   "title (method)". The tab shows it and elides from the middle, so the method stays visible. The
   filter matches it.
-* **Techniques.** `starplast/techniques.py` defines 40 techniques, each with what it does and why a
+* **Techniques.** `parascape/techniques.py` defines 40 techniques, each with what it does and why a
   strategy uses it. Every strategy lists its own `techniques`. A test checks that every technique is
   used and every one used is defined.
-* **Scorecards.** `starplast/scorecard.py` defines six tasks and 51 metrics. Every metric carries
+* **Scorecards.** `parascape/scorecard.py` defines six tasks and 51 metrics. Every metric carries
   its definition, range, chance level and how to read it.
 
   | Task | Metrics |
@@ -46,7 +46,7 @@ The user, 2026-09-26:
 * **API.** `strategies.metrics()`, `strategies.techniques()`, `Strategy.techniques_table()`,
   `Strategy.scorecard_table()`, `TestResult.card()` and `TestResult.skill`. `docs/API.md` gains
   the strategies section; every example in it was executed against the shipped Tg table.
-* **Strategies 35-39** are a ninth family, "Advanced models", in `starplast/strategy_learning.py`.
+* **Strategies 35-39** are a ninth family, "Advanced models", in `parascape/strategy_learning.py`.
   All ten self-tests (5 strategies × 2 organisms) pass on the shipped tables.
 
   | # | Strategy | *T. gondii* | *P. falciparum* |
@@ -90,7 +90,7 @@ the rest is the pool. The random rows are 5 draws.
 
 1. After the data-audit-b and UI branches merge, rerun `scripts/strategy_selftests.py` for all
    strategies on the merged tables.
-2. Run the calibration sweep from a frozen snapshot (6,900 runs; see the starplast memory note for
+2. Run the calibration sweep from a frozen snapshot (6,900 runs; see the parascape memory note for
    the recipe). Then `--publish`, which fills the README scorecard tables and `docs/scorecards.md`.
 3. Rebuild every tutorial (`QT_QPA_PLATFORM=offscreen python scripts/build_tutorials.py`), then read
    the screenshots.

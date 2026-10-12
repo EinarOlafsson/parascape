@@ -2128,31 +2128,31 @@
     "passed": true
   },
   {
-    "check": "unchanged code starplast/scorecard_view.py",
+    "check": "unchanged code parascape/scorecard_view.py",
     "passed": true
   },
   {
-    "check": "unchanged code starplast/scorecard.py",
+    "check": "unchanged code parascape/scorecard.py",
     "passed": true
   },
   {
-    "check": "unchanged code starplast/record_scorecards.py",
+    "check": "unchanged code parascape/record_scorecards.py",
     "passed": true
   },
   {
-    "check": "unchanged code starplast/strategies.py",
+    "check": "unchanged code parascape/strategies.py",
     "passed": true
   },
   {
-    "check": "unchanged code starplast/capabilities.py",
+    "check": "unchanged code parascape/capabilities.py",
     "passed": true
   },
   {
-    "check": "unchanged code starplast/provenance.py",
+    "check": "unchanged code parascape/provenance.py",
     "passed": true
   },
   {
-    "check": "unchanged code starplast/organisms.py",
+    "check": "unchanged code parascape/organisms.py",
     "passed": true
   }
 ]

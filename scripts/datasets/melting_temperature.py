@@ -9,7 +9,7 @@ Where this protein's melting curve sits, in degrees
     PMID         : 35976251
     accession    : eLife 80336 supplementary file 3
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9436416/supplementaryFiles
-    local path   : starplast/data/melting_temperature.tsv
+    local path   : parascape/data/melting_temperature.tsv
 
 Quirks that cost time once:
     The same file as the thermal-shift column and a different question: that one asks how far
@@ -21,7 +21,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/melting_temperature.py

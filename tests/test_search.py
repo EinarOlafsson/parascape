@@ -20,8 +20,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import search as S  # noqa: E402
-from starplast.clustering import NOISE  # noqa: E402
+from parascape import search as S  # noqa: E402
+from parascape.clustering import NOISE  # noqa: E402
 
 
 # --------------------------------------------------------------------------- scoring
@@ -160,7 +160,7 @@ def test_the_negative_control_does_not_get_to_see_its_own_inputs():
     It matters more here than anywhere: this is the NEGATIVE control, the number every measured
     target is compared against. A control that is allowed to embed its own inputs scores too high,
     and every real target then looks worse than it is by exactly that much."""
-    from starplast import datasets
+    from parascape import datasets
     assert datasets.derived_sources("attention_depth"), \
         "the registry must declare what the tiering is computed from"
     rng = np.random.default_rng(8)
@@ -235,7 +235,7 @@ def test_the_families_name_only_columns_that_exist():
     """A family that lists a column the cache does not have is a note to nobody; one that lists a
     column that has been renamed is a guard that silently stopped guarding."""
     import pandas as pd
-    from starplast import paths
+    from parascape import paths
     cache = paths.cache_file("nodes.parquet")
     if not os.path.exists(cache):
         pytest.skip("no built cache on this machine")
@@ -267,7 +267,7 @@ def test_a_declared_derivation_is_excluded_even_when_no_single_source_is_associa
     individually explains only ~0.6 of it -- under any workable threshold -- while the label is a
     deterministic function of all three together. Pairwise measurement cannot see that, however good
     the statistic; only the declaration can."""
-    from starplast import datasets
+    from parascape import datasets
     declared = datasets.derived_sources("stage_enriched_derived")
     assert declared, "the registry must declare what the derived column came from"
 
@@ -282,13 +282,13 @@ def test_a_declared_derivation_is_excluded_even_when_no_single_source_is_associa
 
 
 def test_declared_sources_of_an_ordinary_target_are_empty():
-    from starplast import datasets
+    from parascape import datasets
     assert datasets.derived_sources("compartment") == ()
 
 
 def test_a_derived_summary_excludes_the_raw_experiment_behind_it():
     """Exposing raw GSE columns must not reopen the derived stage-label circularity leak."""
-    from starplast import datasets, paths
+    from parascape import datasets, paths
 
     nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
     banned = S.excluded_for(nodes, "stage_enriched_derived")
@@ -298,7 +298,7 @@ def test_a_derived_summary_excludes_the_raw_experiment_behind_it():
 
 
 def test_a_spec_drops_blocks_that_would_leak():
-    from starplast.embedding import EmbeddingSpec
+    from parascape.embedding import EmbeddingSpec
     nodes = _leaky_nodes()
     spec = EmbeddingSpec(blocks=("expression_summary",), categorical=("compartment", "unrelated"))
     out = S._spec_without(spec, nodes, {"compartment"})
@@ -423,7 +423,7 @@ def test_sampling_is_seeded_so_a_run_can_be_repeated():
 def test_every_target_in_the_table_names_a_real_intent():
     """TARGETS is the menu the analysis panel offers; a stale entry would offer a column that no longer
     exists and fail only when chosen."""
-    from starplast import paths
+    from parascape import paths
     nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
     missing = {k: v for k, v in S.TARGETS.items() if v not in nodes.columns}
     assert not missing, f"targets naming columns absent from the node table: {missing}"
@@ -489,7 +489,7 @@ def test_a_block_set_with_no_usable_columns_is_skipped_not_fatal():
 
 def test_embeddings_can_be_stored_for_the_runs_worth_keeping():
     """A result that cannot be reopened is not reproducible."""
-    from starplast.tuning import EmbeddingStore
+    from parascape.tuning import EmbeddingStore
     import tempfile
     with tempfile.TemporaryDirectory() as tmp:
         store = EmbeddingStore(tmp)
@@ -502,7 +502,7 @@ def test_embeddings_can_be_stored_for_the_runs_worth_keeping():
 
 
 def test_nothing_is_stored_when_no_run_clears_the_bar():
-    from starplast.tuning import EmbeddingStore
+    from parascape.tuning import EmbeddingStore
     import tempfile
     with tempfile.TemporaryDirectory() as tmp:
         store = EmbeddingStore(tmp)
@@ -545,7 +545,7 @@ def test_a_log_that_cannot_flush_does_not_break_the_search(monkeypatch):
 
 def test_an_unbuildable_matrix_is_skipped_rather_than_fatal(monkeypatch):
     """One bad dataset combination in a 328-run walk must not end the walk."""
-    import starplast.search as mod
+    import parascape.search as mod
     real = mod.build_matrix
     seen = {"n": 0}
 
@@ -627,7 +627,7 @@ def test_progress_does_not_depend_on_the_grid_dividing_the_report_interval():
 
 
 def test_storing_every_run_says_so():
-    from starplast.tuning import EmbeddingStore
+    from parascape.tuning import EmbeddingStore
     import tempfile
     with tempfile.TemporaryDirectory() as tmp:
         msgs = []
@@ -700,7 +700,7 @@ def test_a_stored_embedding_records_the_hyperparameters_it_actually_used():
     Saved unchanged, every stored recipe claimed the EmbeddingSpec defaults whatever the run did -- so
     the name encoded the truth and the machine-readable field did not, and reopening a saved embedding
     by its recipe would have rebuilt a different map."""
-    from starplast.tuning import EmbeddingStore
+    from parascape.tuning import EmbeddingStore
     import tempfile
     with tempfile.TemporaryDirectory() as tmp:
         store = EmbeddingStore(tmp)
@@ -935,7 +935,7 @@ def test_an_unknown_exclusion_scope_is_refused():
     fall through to the narrowest reading -- that is the leak this guard exists to prevent."""
     import pandas as pd
     import pytest
-    from starplast import search as S
+    from parascape import search as S
     nodes = pd.DataFrame({"compartment": ["IMC"] * 60, "expr_a": range(60)})
     with pytest.raises(ValueError, match="scope must be"):
         S.excluded_for(nodes, "compartment", scope="everything")
@@ -951,7 +951,7 @@ def nodes_small():
     """
     import os
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(root, "starplast", "data", "nodes.parquet")
+    path = os.path.join(root, "parascape", "data", "nodes.parquet")
     if not os.path.exists(path):
         pytest.skip("built node table not present")
     frame = pd.read_parquet(path)
@@ -962,8 +962,8 @@ def nodes_small():
 def test_categories_at_a_level_partition_the_blocks():
     """A level of the hierarchy is what counts as a "class of evidence". Every block belongs to
     exactly one category at a given level, or the sweep would hold something out twice."""
-    from starplast import search as SE
-    from starplast.embedding import SLOT_BLOCKS
+    from parascape import search as SE
+    from parascape.embedding import SLOT_BLOCKS
     for level in (1, 2, 3):
         groups = SE.categories_at("evidence", level, blocks=SLOT_BLOCKS)
         seen = [b for _path, blocks in groups for b in blocks]
@@ -973,7 +973,7 @@ def test_categories_at_a_level_partition_the_blocks():
 
 
 def test_a_deeper_level_is_a_finer_partition():
-    from starplast import search as SE
+    from parascape import search as SE
     broad = {p for p, _ in SE.categories_at("evidence", 1)}
     fine = {p for p, _ in SE.categories_at("evidence", 3)}
     assert all(any(f[:1] == b for b in broad) for f in fine)
@@ -981,8 +981,8 @@ def test_a_deeper_level_is_a_finer_partition():
 
 def test_the_sweep_holds_each_category_out_and_builds_from_the_rest(nodes_small):
     """The whole argument as a procedure: one map per category, each built WITHOUT that category."""
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))
     if len(usable) < 4:
@@ -1000,8 +1000,8 @@ def test_the_sweep_holds_each_category_out_and_builds_from_the_rest(nodes_small)
 
 def test_a_stopped_sweep_returns_what_it_finished(nodes_small):
     """A stop is a decision that enough has been seen, not an error -- the same rule `search` follows."""
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))
     if len(usable) < 4:
@@ -1014,8 +1014,8 @@ def test_a_stopped_sweep_returns_what_it_finished(nodes_small):
 def test_the_sweep_only_holds_out_what_was_ticked(nodes_small):
     """It sweeps the selection, not the whole catalogue: a block nobody ticked is not evidence anyone
     asked about."""
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
     usable = [b for b in SLOT_BLOCKS if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b)]
     if len(usable) < 4:
         pytest.skip("this fixture cannot fill enough blocks")
@@ -1029,7 +1029,7 @@ def test_each_degeneracy_guard_fires_for_its_own_reason():
     """Three ways a clustering fails, and the reason is returned rather than a boolean because a
     reader deciding what to change needs to know which one fired."""
     import numpy as np
-    from starplast.clustering import degenerate
+    from parascape.clustering import degenerate
     assert "cluster" in degenerate(np.array([0] * 50 + [1] * 50))
     assert "bisection" in degenerate(np.array([0] * 70 + [1] * 15 + [2] * 10 + [-1] * 5))
     assert "density minimum" in degenerate(np.array([0] * 30 + [1] * 30 + [2] * 40))
@@ -1043,8 +1043,8 @@ def test_the_sweep_refuses_to_score_a_degenerate_clustering(nodes_small):
     computed on a clustering that merely bisected a continuum it is a sentence about nothing, and it
     reads exactly like a real result."""
     import numpy as np
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))
     if len(usable) < 4:
@@ -1075,9 +1075,9 @@ def test_the_shipped_map_cannot_currently_support_a_recovery_claim():
     """
     import os
     import numpy as np
-    from starplast.clustering import cluster, degenerate
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
-    from starplast import paths
+    from parascape.clustering import cluster, degenerate
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
+    from parascape import paths
     path = paths.cache_file("nodes.parquet")
     if not os.path.exists(path):
         pytest.skip("built node table not present")
@@ -1095,8 +1095,8 @@ def test_the_sweep_never_scores_a_category_with_columns_it_was_built_from(nodes_
     """The whole argument depends on this: the held-out columns must not be among the ones the map saw.
     `battery` marks anything the map used as `used` or `derived`, and only `held_out` rows are scored,
     but the sweep must not hand it an overlap in the first place."""
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))
     if len(usable) < 4:
@@ -1118,8 +1118,8 @@ def test_the_sweep_never_scores_a_category_with_columns_it_was_built_from(nodes_
 def _map_and_labels(nodes, blocks=None):
     """One embedding and its clustering, for tests that ask what a score means."""
     import numpy as np
-    from starplast.clustering import cluster
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
+    from parascape.clustering import cluster
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
     blocks = blocks or tuple(b for b in SLOT_BLOCKS
                              if columns_for(nodes, EmbeddingSpec(blocks=(b,))).get(b))[:12]
     coords, _names, kept = embed(nodes, EmbeddingSpec(blocks=blocks), log=lambda *a: None)
@@ -1139,7 +1139,7 @@ def test_a_shuffled_target_does_not_recover(nodes_small):
     different test on a different column.
     """
     import numpy as np
-    from starplast import objectives
+    from parascape import objectives
     sub, labels = _map_and_labels(nodes_small)
     truth = sub["compartment"].astype(str)
     if truth.nunique() < 3 or len({int(x) for x in labels if x >= 0}) < 2:
@@ -1158,9 +1158,9 @@ def test_a_random_block_does_not_improve_recovery_beyond_noise(nodes_small):
     """A column of noise added as evidence must not make a map better at recovering a real label. If
     it does, the objective is rewarding dimensionality rather than information."""
     import numpy as np
-    from starplast import objectives
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
-    from starplast.clustering import cluster
+    from parascape import objectives
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
+    from parascape.clustering import cluster
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))[:8]
     if len(usable) < 4:
@@ -1185,8 +1185,8 @@ def test_a_random_block_does_not_improve_recovery_beyond_noise(nodes_small):
 
 def test_holding_out_everything_produces_no_score_rather_than_a_default(nodes_small):
     """A sweep with nothing left to build from must decline, not return a number."""
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))
     if not usable:
@@ -1204,7 +1204,7 @@ def test_map_quality_refuses_to_score_a_bisection():
     """Tuning toward a score without the degeneracy gate would simply find the settings that bisect
     most confidently. The gate is therefore inside the objective, not beside it."""
     import numpy as np
-    from starplast import search as SE
+    from parascape import search as SE
     bisection = SE.map_quality(np.array([0] * 50 + [1] * 50))
     assert not bisection["usable"] and bisection["score"] == 0.0 and bisection["why_not"]
     real = SE.map_quality(np.array([0] * 10 + [1] * 10 + [2] * 10 + [3] * 10 + [-1] * 60))
@@ -1213,7 +1213,7 @@ def test_map_quality_refuses_to_score_a_bisection():
 
 def test_map_quality_prefers_an_even_partition_to_one_lump_and_crumbs():
     import numpy as np
-    from starplast import search as SE
+    from parascape import search as SE
     even = SE.map_quality(np.array([0] * 15 + [1] * 15 + [2] * 15 + [3] * 15 + [-1] * 40))
     lumpy = SE.map_quality(np.array([0] * 45 + [1] * 5 + [2] * 5 + [3] * 5 + [-1] * 40))
     assert even["score"] > lumpy["score"]
@@ -1222,8 +1222,8 @@ def test_map_quality_prefers_an_even_partition_to_one_lump_and_crumbs():
 def test_tuning_spends_the_full_table_only_on_survivors(nodes_small):
     """Successive halving: the cost is the embedding, and most settings are not worth paying it twice
     for. Every configuration is scored on a sample; only the top fraction is rebuilt in full."""
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))[:8]
     if len(usable) < 4:
@@ -1242,8 +1242,8 @@ def test_tuning_spends_the_full_table_only_on_survivors(nodes_small):
 
 def test_tuning_reports_the_failures_rather_than_dropping_them(nodes_small):
     """"These settings all bisected the cloud" is the useful half of the answer when nothing works."""
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))[:6]
     if len(usable) < 3:
@@ -1261,9 +1261,9 @@ def test_leaf_selection_finds_finer_clusters_on_the_shipped_features():
     not an invariant: adding valid features can improve either partition.
     """
     import os
-    from starplast import search as SE, paths
-    from starplast.clustering import cluster, degenerate
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
+    from parascape import search as SE, paths
+    from parascape.clustering import cluster, degenerate
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
     path = paths.cache_file("nodes.parquet")
     if not os.path.exists(path):
         pytest.skip("built node table not present")
@@ -1285,8 +1285,8 @@ def test_clustering_is_tuned_per_map_and_is_cheap(nodes_small):
     takes tens of seconds and a reclustering of it takes a fraction of one. Tuned jointly, the budget
     would go on re-deriving the same coordinates."""
     import numpy as np
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, SLOT_BLOCKS, columns_for, embed
     usable = tuple(b for b in SLOT_BLOCKS
                    if columns_for(nodes_small, EmbeddingSpec(blocks=(b,))).get(b))[:8]
     if len(usable) < 4:
@@ -1306,7 +1306,7 @@ def test_clustering_is_tuned_per_map_and_is_cheap(nodes_small):
 def test_leaf_selection_is_recorded_rather_than_searched():
     """Excess-of-mass merged this proteome into two clusters on every configuration ever tried.
     Including it as a candidate would spend half the search on settings measured to fail."""
-    from starplast import search as SE
+    from parascape import search as SE
     assert SE.TUNE_CLUSTERING["cluster_selection_method"] == "leaf"
     assert "cluster_selection_method" not in SE.CLUSTER_GRID
 
@@ -1320,8 +1320,8 @@ def _small_spec(nodes, per_category=1):
     category, which the sweep then skips as "everything that was ticked". A sweep with nothing to
     hold out reports nothing and asserts nothing.
     """
-    from starplast import search as SE
-    from starplast.embedding import EmbeddingSpec, columns_for
+    from parascape import search as SE
+    from parascape.embedding import EmbeddingSpec, columns_for
     chosen = []
     for _path, blocks in SE.categories_at("evidence", 1, "Tg"):
         usable = [b for b in blocks if columns_for(nodes, EmbeddingSpec(blocks=(b,))).get(b)]
@@ -1335,7 +1335,7 @@ def test_the_sweep_covers_every_level_of_every_hierarchy(nodes_small):
     """One level is one reader's choice of what counts as a class -- level 1 is "molecular
     measurements", level 3 is "transcript abundance", and both are real questions with different
     answers. Running one and reporting it as the answer picks one of those for the reader."""
-    from starplast import search as SE
+    from parascape import search as SE
     table, skipped = SE.sweep_levels(nodes_small, _small_spec(nodes_small),
                                      hierarchies=("evidence", "biology"), levels=(1, 2),
                                      log=lambda *a: None)
@@ -1350,7 +1350,7 @@ def test_the_sweep_covers_every_level_of_every_hierarchy(nodes_small):
 def test_a_stopped_level_sweep_returns_what_it_has(nodes_small):
     """A stop is a decision that enough has been seen, not an error; throwing away finished levels
     would make the button unusable."""
-    from starplast import search as SE
+    from parascape import search as SE
     table, _skipped = SE.sweep_levels(nodes_small, _small_spec(nodes_small),
                                       hierarchies=("evidence",), levels=(1, 2),
                                       should_stop=lambda: True, log=lambda *a: None)
@@ -1360,7 +1360,7 @@ def test_a_stopped_level_sweep_returns_what_it_has(nodes_small):
 def test_a_level_with_no_category_is_reported_rather_than_silently_absent(nodes_small):
     """A sweep that covered nine of thirty categories and said "nine categories" reads exactly like
     one that covered everything."""
-    from starplast import search as SE
+    from parascape import search as SE
     _table, skipped = SE.sweep_levels(nodes_small, _small_spec(nodes_small),
                                       hierarchies=("evidence",), levels=(99,),
                                       log=lambda *a: None)
@@ -1370,7 +1370,7 @@ def test_a_level_with_no_category_is_reported_rather_than_silently_absent(nodes_
 def test_the_sweep_can_name_genes_and_rank_them(nodes_small):
     """Step 4a: the sweep says whether a class of evidence recovers, which is a property of the
     catalogue; this adds the part a biologist reads."""
-    from starplast import search as SE
+    from parascape import search as SE
     table, named = SE.sweep_inference(nodes_small, _small_spec(nodes_small), level=1,
                                       log=lambda *a: None)
     assert len(table), "the sweep scored nothing, so the inference below asserts nothing"
@@ -1383,7 +1383,7 @@ def test_the_sweep_can_name_genes_and_rank_them(nodes_small):
 
 def test_the_clustering_is_offered_to_a_caller_without_riding_in_the_table(nodes_small):
     """An array hidden in a DataFrame cell would be carried silently into every CSV downstream."""
-    from starplast import search as SE
+    from parascape import search as SE
     seen = []
     table = SE.sweep_categories(nodes_small, _small_spec(nodes_small), level=1,
                                 on_clustering=lambda row, labels, kept, cols: seen.append(

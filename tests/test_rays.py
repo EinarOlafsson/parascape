@@ -16,7 +16,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import rays as R  # noqa: E402
+from parascape import rays as R  # noqa: E402
 
 
 def wall(n=600, seed=0):

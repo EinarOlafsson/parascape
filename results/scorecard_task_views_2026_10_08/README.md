@@ -9,7 +9,7 @@ These are authored software fixtures, with no source acquisition, estimator fitt
 Run from the repository with the existing environment and a 400 MB external memory cap:
 
 ```bash
-systemd-run --user --scope -p MemoryMax=400M /home/carruthers/anaconda3/envs/starplast/bin/python scripts/audit_scorecard_task_views.py
+systemd-run --user --scope -p MemoryMax=400M /home/carruthers/anaconda3/envs/parascape/bin/python scripts/audit_scorecard_task_views.py
 ```
 
 The script refuses an existing output directory. Use `--out` with a new destination to reproduce; notebook cell timings may differ, while canonical cards and displayed values must agree.

@@ -1,8 +1,8 @@
 """Coverage navigation cannot attach frozen results to another source context."""
 import pandas as pd
 
-from starplast import claims as C, functional_results as F, organisms as O, strategies as S, track_record as T
-from starplast.discoveries_panel import DiscoveriesPanel
+from parascape import claims as C, functional_results as F, organisms as O, strategies as S, track_record as T
+from parascape.discoveries_panel import DiscoveriesPanel
 
 
 def _empty_claims(monkeypatch):

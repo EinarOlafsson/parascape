@@ -19,9 +19,9 @@ def audit(output):
     """Retain exact source/card replay and real UI routes in a fresh snapshot."""
     from PyQt6 import QtWidgets
     from scripts.audit_functional_discoveries import audit as source_audit
-    from starplast import functional_coverage as FC, functional_results as F, host_foundation_scorecard as HF
-    from starplast import organisms as O, strategies as S
-    from starplast.discoveries_panel import DiscoveriesPanel
+    from parascape import functional_coverage as FC, functional_results as F, host_foundation_scorecard as HF
+    from parascape import organisms as O, strategies as S
+    from parascape.discoveries_panel import DiscoveriesPanel
     output=Path(output)
     if output.exists():raise ValueError('Use a new immutable coverage UI directory')
     output.mkdir(parents=True)
@@ -72,7 +72,7 @@ def audit(output):
             host_snapshot=json.loads(panel.host_card.view.snapshot_json)
             assert dict(panel.host_card.view.counts)['canonical_genes']==58988
             assert 'not validated HFF' in panel.host_card.toPlainText()
-            assert _sha(ROOT/'starplast/data/host_foundation_summary.json')==HF.SUMMARY_SHA256
+            assert _sha(ROOT/'parascape/data/host_foundation_summary.json')==HF.SUMMARY_SHA256
             app.processEvents();assert panel.grab().save(str(output/(organism+'_host_status.png')))
             if organism==O.TOXOPLASMA:(output/'host_card_export.json').write_text(panel.host_card.export_json())
             (output/(organism+'_coverage.json')).write_text(json.dumps(expected,indent=2,sort_keys=True)+'\n')
@@ -82,7 +82,7 @@ def audit(output):
                 'shared_card_values':'exact native snapshot','scope_navigation':'verified'})
         finally:panel.close()
     code=[Path(__file__),ROOT/'scripts/audit_functional_discoveries.py',
-        *(ROOT/'starplast'/name for name in ('discoveries_panel.py','functional_coverage.py',
+        *(ROOT/'parascape'/name for name in ('discoveries_panel.py','functional_coverage.py',
             'functional_exclusions.py','functional_domain_profiles.py','functional_results.py',
             'scorecard.py','scorecard_view.py','scorecard_browser.py','host_foundation_scorecard.py'))]
     (output/'code').mkdir()

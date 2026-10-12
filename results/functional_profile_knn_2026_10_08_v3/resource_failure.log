@@ -1,4 +1,4 @@
-Running as unit: starplast-pfam-knn-accepted-audit.service
+Running as unit: parascape-pfam-knn-accepted-audit.service
 Finished with result: oom-kill
 Main processes terminated with: code=killed/status=KILL
 Service runtime: 46.003s

@@ -16,9 +16,9 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import clustering as C          # noqa: E402
-from starplast import tuning as T              # noqa: E402
-from starplast.embedding import (              # noqa: E402
+from parascape import clustering as C          # noqa: E402
+from parascape import tuning as T              # noqa: E402
+from parascape.embedding import (              # noqa: E402
     EmbeddingSpec, build_matrix, columns_for, variance_share, missingness_leak)
 
 
@@ -232,7 +232,7 @@ def test_quantification_is_inferred_from_range_not_filename():
     must not be logged twice. An earlier version returned "log_intensity" for anything non-integer and
     so silently skipped the log on real FPKM.
     """
-    from starplast import sources as S
+    from parascape import sources as S
     rng = np.random.default_rng(0)
     real_fpkm = pd.Series(rng.gamma(1.2, 400, 4000))            # wide, positive, non-integer
     already_log = np.log2(real_fpkm + 1)
@@ -242,7 +242,7 @@ def test_quantification_is_inferred_from_range_not_filename():
 
 
 def test_normalize_never_logs_twice():
-    from starplast import sources as S
+    from parascape import sources as S
     df = pd.DataFrame({"a": [0.0, 10.0, 16520.0, 3.0] * 25})
     once = S.normalize(df, "fpkm", log=lambda *a: None)
     twice = S.normalize(once, "log_intensity", log=lambda *a: None)
@@ -253,14 +253,14 @@ def test_normalize_never_logs_twice():
 
 def test_ratios_are_left_alone():
     """Centring a log-ratio moves its zero, which is the reference condition."""
-    from starplast import sources as S
+    from parascape import sources as S
     df = pd.DataFrame({"lfc": [-3.0, 0.0, 2.5, 1.0] * 25})
     out = S.normalize(df, "lfc", log=lambda *a: None)
     assert (out.lfc == df.lfc).all()
 
 
 def test_rank_normalize_puts_incomparable_units_on_one_axis():
-    from starplast import sources as S
+    from parascape import sources as S
     df = pd.DataFrame({"fpkm": [1.0, 10.0, 100.0, 1000.0], "ibaq": [30.0, 25.0, 20.0, 15.0]})
     r = S.rank_normalize(df)
     assert r.min().min() >= -0.5 and r.max().max() <= 0.5

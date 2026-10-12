@@ -8,7 +8,7 @@ executed notebook so the whole thing reproduces.
 
 Each question is one `QUESTION`: the organism, the strategy key, the settings, and whether its
 self-test is run too. Nothing here changes a strategy, a calibration number or a shipped table --
-it only calls `starplast.strategies.run` and `.test` the way a user would from the Strategies tab.
+it only calls `parascape.strategies.run` and `.test` the way a user would from the Strategies tab.
 """
 from __future__ import annotations
 
@@ -24,8 +24,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 warnings.filterwarnings("ignore")
 
-from starplast import organisms  # noqa: E402
-from starplast import strategies as S  # noqa: E402
+from parascape import organisms  # noqa: E402
+from parascape import strategies as S  # noqa: E402
 
 # The two parasite spaces, in registry order, so this script names no organism itself.
 TG, PF = [s.code for s in organisms.SPACES.values() if s.kind == organisms.PARASITE][:2]
@@ -343,7 +343,7 @@ def write_notebook(path, out, qids):
     nb.md("## Reproducing one question",
           "Every question is one call. This is Q01 -- which hyperLOPIT compartments the rest of the "
           "data can rediscover -- run again here so the notebook is not just a table of numbers.")
-    nb.code("from starplast import strategies as S",
+    nb.code("from parascape import strategies as S",
             "ctx = S.Context.shipped('Tg')",
             "q01 = S.run('recoverability_atlas', ctx=ctx, target='compartment')",
             "print(q01.summary)",

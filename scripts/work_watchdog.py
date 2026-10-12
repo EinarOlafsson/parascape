@@ -1,4 +1,4 @@
-"""Monitor one Starplast thread without launching workers or changing its runtime."""
+"""Monitor one ParaScape thread without launching workers or changing its runtime."""
 from __future__ import annotations
 
 import argparse
@@ -11,7 +11,7 @@ from pathlib import Path
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_STATE = ROOT / '.starplast-watchdog'
+DEFAULT_STATE = ROOT / '.parascape-watchdog'
 STATUSES = {'active', 'paused', 'complete', 'blocked', 'budget_limited', 'usage_limited'}
 ENDS = {'task_complete': 'turn_completed', 'turn_aborted': 'runtime_turn_aborted',
         'task_failed': 'runtime_task_failed', 'session_end': 'runtime_session_end'}

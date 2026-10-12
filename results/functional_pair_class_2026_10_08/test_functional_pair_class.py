@@ -2,8 +2,8 @@
 from copy import deepcopy
 import json
 import pytest
-from starplast import functional_pair_class as C, functional_agreement as A, functional_results as F
-from starplast.scorecard_view import export_scorecard,render_scorecard_html
+from parascape import functional_pair_class as C, functional_agreement as A, functional_results as F
+from parascape.scorecard_view import export_scorecard,render_scorecard_html
 
 
 def fixture():

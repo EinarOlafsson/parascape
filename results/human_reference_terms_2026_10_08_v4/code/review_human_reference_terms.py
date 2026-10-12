@@ -65,7 +65,7 @@ def _capture(output,key,url,receipts):
     now=datetime.now(timezone.utc).isoformat()
     receipt={'key':key,'requested_url':url,'retrieved_utc':now,'max_response_bytes':MAX_BYTES}
     try:
-        request=urllib.request.Request(url,headers={'User-Agent':'starplast-documentary-review/1','Accept-Encoding':'identity'})
+        request=urllib.request.Request(url,headers={'User-Agent':'parascape-documentary-review/1','Accept-Encoding':'identity'})
         with urllib.request.urlopen(request,timeout=25) as response:
             chunks=[];size=0
             while True:

@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
-os.environ.setdefault("STARPLAST_GPU", "0")
+os.environ.setdefault("PARASCAPE_GPU", "0")
 
 from PyQt6 import QtWidgets  # noqa: E402
 
@@ -32,8 +32,8 @@ def shoot(widget, name: str, app):
 
 
 def main():
-    from starplast import organisms, umap_gallery as G
-    from starplast.umap_gallery_panel import (MapGalleryPanel, LABEL_VIEW, MAP_VIEW, SORT_STRUCTURE,
+    from parascape import organisms, umap_gallery as G
+    from parascape.umap_gallery_panel import (MapGalleryPanel, LABEL_VIEW, MAP_VIEW, SORT_STRUCTURE,
                                              SORT_LABEL)
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     code = organisms.TOXOPLASMA
@@ -82,7 +82,7 @@ def main():
             shoot(p, f"0{6 if tag == 'label' else 8}{which}_table_{tag}_view_{map_id}.png", app)
 
     # 10. the whole dock in the real window, to show it fits
-    from starplast import app as A
+    from parascape import app as A
     w = A.Window()
     w.resize(1700, 1000)
     w.maps_dock.raise_()

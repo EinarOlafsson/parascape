@@ -1,4 +1,4 @@
-Running as unit: starplast-group-interval-desktop-20261008.service
+Running as unit: parascape-group-interval-desktop-20261008.service
 This plugin does not support propagateSizeHints()
 This plugin does not support propagateSizeHints()
 This plugin does not support propagateSizeHints()
@@ -20,7 +20,7 @@ This plugin does not support propagateSizeHints()
         "training_majority",
         "training_prevalence"
       ],
-      "artifact_identity": "49d625acba268ce5599fd22f00a43bba313f84cf50a816449a944e34850626d0",
+      "artifact_identity": "8e9e3a524c488e8ddd232a58030f8c84dd7bc10f766a5d850b1a2108da1283aa",
       "routes": [
         "annotation",
         "strategy",
@@ -68,7 +68,7 @@ This plugin does not support propagateSizeHints()
         "training_majority",
         "training_prevalence"
       ],
-      "artifact_identity": "c2891db34c1c43dec0372e792e3b6fa777a286cd43c7b0722c34d0630720b0cd",
+      "artifact_identity": "1b7547290ca701b554b5a6200f7ecd2652b960246a51c5e5ba6aa55946ef3bb3",
       "routes": [
         "annotation",
         "strategy",

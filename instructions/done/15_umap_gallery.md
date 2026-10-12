@@ -27,7 +27,7 @@ Two things had to be fixed to make that mask true rather than approximately true
 
 ## The gallery
 
-`starplast/gallery.py`, a dock along the bottom, fed from `AnalysisPanel.walk_step` (emitted from the
+`parascape/gallery.py`, a dock along the bottom, fed from `AnalysisPanel.walk_step` (emitted from the
 worker thread, queued to the GUI thread by Qt). Grid mode is a wall of thumbnails at one size on one
 background, so a difference between two tiles is a difference between two maps; scroll mode is one
 large view with a slider stepping through in order. Both fill in as the walk runs, and the walk table

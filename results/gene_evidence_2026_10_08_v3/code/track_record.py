@@ -534,7 +534,7 @@ def gene_html(gene_id: str, organism: str, ledger: pd.DataFrame | None = None,
     # The class is a link: one click from this gene to how every strategy fares on its whole class.
     target = str(folds[folds["gene_id"].astype(str) == str(gene_id)]["target"].iloc[0])
     truth = str(one["truth"].iloc[0])
-    link = (f"starplast://class/{quote(target, safe='')}/{quote(truth, safe='')}")
+    link = (f"parascape://class/{quote(target, safe='')}/{quote(truth, safe='')}")
     # Only the shipped label has a class page to go to; an on-demand answer is about one gene.
     line_html = (escape(line).replace(escape(truth), f"<a href='{link}'>{escape(truth)}</a>", 1)
                  if mode == "together" else escape(line))
@@ -589,7 +589,7 @@ def class_html(target: str, label: str, organism: str,
                f"({best.iloc[0]['right']} of {best.iloc[0]['answered']})."
                if len(best) and best.iloc[0]["enough"] else
                "No strategy answers enough of them to judge."))
-    up = (f"<p><a href='starplast://target/{quote(str(target), safe='')}'>"
+    up = (f"<p><a href='parascape://target/{quote(str(target), safe='')}'>"
           f"all {escape(str(target))} classes ▸</a></p>")
     return (f"<h4>{escape(str(label))}</h4><p>{lead}</p>{up}"
             f"<table cellspacing='0' cellpadding='3'><tr><th align='left'>strategy</th>"
@@ -620,7 +620,7 @@ def target_html(target: str, organism: str, ledger: pd.DataFrame | None = None) 
         lines.append((-1.0 if best is None else float(best["rate"]), label, best))
     rows = ""
     for rate, label, best in sorted(lines, key=lambda t: (-t[0], t[1])):
-        link = (f"<a href='starplast://class/{quote(str(target), safe='')}/"
+        link = (f"<a href='parascape://class/{quote(str(target), safe='')}/"
                 f"{quote(label, safe='')}'>{escape(label)}</a>")
         if best is None:
             verdict = "<span style='color:#888'>too few answered to judge</span>"
@@ -806,7 +806,7 @@ def list_html(rows: pd.DataFrame, rows_of: dict | None = None) -> str:
                                           ("✓", "#2e8b57") if r.correct else ("✗", "#c0392b"))
     for g in genes:
         truth = str(rows[rows["gene_id"] == g]["truth"].iloc[0])
-        name = (f"<a href='starplast://gene/{int(rows_of[g])}'>{escape(g)}</a>"
+        name = (f"<a href='parascape://gene/{int(rows_of[g])}'>{escape(g)}</a>"
                 if rows_of and g in rows_of else escape(g))
         cells = "".join(f"<td align='center' style='color:{marks[(g, k)][1]}'>{marks[(g, k)][0]}</td>"
                         for k in keys)

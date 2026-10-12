@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from starplast import functional_results as F
+from parascape import functional_results as F
 from tests.test_functional_results import _document, _repair_source_hashes, _write
 
 

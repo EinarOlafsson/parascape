@@ -1,7 +1,7 @@
 # Materials and Methods
 
 Draft for the PLOS ONE manuscript. Prose is written to be adapted directly; **bracketed items in bold
-need a citation or a value confirmed before submission** — `python -c "from starplast import datasets;
+need a citation or a value confirmed before submission** — `python -c "from parascape import datasets;
 print([d.key for d in datasets.unresolved()])"` lists them programmatically.
 
 Figures were read from the built cache at commit `29b0bd9`.
@@ -10,7 +10,7 @@ Figures were read from the built cache at commit `29b0bd9`.
 
 ## Implementation and availability
 
-starplast is a desktop application written in Python 3.10 using PyQt6 (6.7.1) and pyqtgraph (0.13.7) for
+parascape is a desktop application written in Python 3.10 using PyQt6 (6.7.1) and pyqtgraph (0.13.7) for
 OpenGL rendering, with pandas, NumPy, scikit-learn and umap-learn for data processing. It is distributed
 with a precomputed cache (121 MB) containing all 443 columns for 8,140 genes and all 13 relation
 types (296,412 edges), so the application requires neither a network connection nor any source dataset at
@@ -29,7 +29,7 @@ path tracing. Rendering comparisons, static-frame hashes, and full-map timings a
 `results/pbr_lighting_2026_08_14/` with the active OpenGL renderer recorded alongside each benchmark.
 
 A machine-readable registry of every input dataset — its provenance, accession, the node-table columns it
-produces, its coverage, and its known limitations — is included as `starplast/datasets.py` and is the
+produces, its coverage, and its known limitations — is included as `parascape/datasets.py` and is the
 single source from which this section, the download notebook, and the application's provenance display
 are generated.
 
@@ -103,7 +103,7 @@ attributed by inference. The ToxoDB in vivo composite scores are recorded agains
 is also the source of the targeted in vivo platform below; whether the composite scores derive from that
 same study or were computed by ToxoDB from another has not been established, and the two must not be
 cited as one without checking. The 115-gene in vivo screen has no recorded publication at all.
-`starplast.datasets.unresolved()` returns exactly these entries, so an unverified attribution cannot
+`parascape.datasets.unresolved()` returns exactly these entries, so an unverified attribution cannot
 reach a manuscript unnoticed. Four additional published screens
 were incorporated from publisher supplementary material: a genome-wide screen for genes synthetically
 lethal with GRA17 (7,553 genes; PMID 37498952), two targeted screens across *T. gondii* strains and mouse
@@ -276,7 +276,7 @@ articles); the build log records the count actually used.
 ## Data and code availability
 
 All input datasets, their accessions and their download locations are enumerated in
-`starplast/datasets.py`. The notebook `notebooks/download_datasets.ipynb` reproduces every download from
+`parascape/datasets.py`. The notebook `notebooks/download_datasets.ipynb` reproduces every download from
 that registry.
 
 **[Add repository DOI / Zenodo archive.]** This is the one placeholder that cannot be filled from the

@@ -5,11 +5,11 @@
       "bytes": 211
     },
     "request_receipts.json": {
-      "sha256": "3a9df6ce8631cce95a87b0da0024d3d5c62f6f3b6dc536670ded68d5e79085b7",
+      "sha256": "af78ade40b200ff7f4c4c06891e66895dff6eed81da1d826f88e349b8324485d",
       "bytes": 3509
     },
     "review.ipynb": {
-      "sha256": "60fa2205d596ca6f1f7243c9d6528ccac9d668676c387dc967ffb63e5c0e19bf",
+      "sha256": "205c5f7211470144c933ca1c9402dc6060ca6ff3e2be49d5120903eca222949d",
       "bytes": 7472
     },
     "gtex_license_candidates.json": {
@@ -33,7 +33,7 @@
       "bytes": 751
     },
     "foundation_receipts.json": {
-      "sha256": "74ba4665aef19e3b1c9c4083a1541d0200fcc7af1bbbe9ae8cc29857ea8dfece",
+      "sha256": "76aed2680be685004659645e1c5d240f6526925368e9c52b0384cefa0c96aec5",
       "bytes": 6687
     },
     "gtex_license_text.txt": {
@@ -65,7 +65,7 @@
       "bytes": 4103
     },
     "code/review_human_reference_terms.py": {
-      "sha256": "28e85fbc71c124343b98b7baea2c2eca6d8336a3182e8f039e546a2985309a47",
+      "sha256": "f0ac37768e9ea54446dbd2f4a1297789faf462904a068dc1e4ff170eda264e5e",
       "bytes": 15824
     }
   }

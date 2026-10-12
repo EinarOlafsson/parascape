@@ -22,7 +22,7 @@ How each example is chosen, per organism and strategy:
   and its five best-supported calls, ranked genes or findings for genes WITHOUT a known label are
   kept with their support. A run is stopped after `RUN_BUDGET` seconds and recorded as skipped.
 
-Output: `starplast/data/strategy_examples.json`, and the executed notebook
+Output: `parascape/data/strategy_examples.json`, and the executed notebook
 `notebooks/strategy_examples_2026_09_28.ipynb` that shows every choice.
 
 Run:  python scripts/build_strategy_examples.py                 # both organisms, every strategy
@@ -49,12 +49,12 @@ sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 RUNS = os.path.join(ROOT, "results", "calibration_2026-09-26b", "runs.jsonl")
-OUT = os.path.join(ROOT, "starplast", "data", "strategy_examples.json")
+OUT = os.path.join(ROOT, "parascape", "data", "strategy_examples.json")
 NOTEBOOK = os.path.join(ROOT, "notebooks", "strategy_examples_2026_09_28.ipynb")
 def _calibrated_organisms() -> tuple:
     """The registered spaces the shipped calibration covers, in registry order."""
-    from starplast import calibration as CAL
-    from starplast import organisms
+    from parascape import calibration as CAL
+    from parascape import organisms
     have = set(CAL.load().get("organisms") or {})
     return tuple(c for c in organisms.codes() if c in have)
 
@@ -72,7 +72,7 @@ KEEP_EXTRA = ("fold_enrichment", "null_rate", "prevalence")
 # --------------------------------------------------------------------------- choosing
 def load_runs(path: str = RUNS) -> pd.DataFrame:
     """The sweep's runs as `calibration.runs_frame` reads them: skill, target and setting split."""
-    from starplast import calibration as CAL
+    from parascape import calibration as CAL
     with open(path) as fh:
         rows = [json.loads(line) for line in fh if line.strip()]
     return CAL.runs_frame(rows)
@@ -80,7 +80,7 @@ def load_runs(path: str = RUNS) -> pd.DataFrame:
 
 def default_key(key: str, organism: str, runs: pd.DataFrame) -> str | None:
     """The default setting's JSON string, as the calibration recorded it."""
-    from starplast import calibration as CAL
+    from parascape import calibration as CAL
     e = CAL.entry(key, organism) or {}
     setting = (e.get("default") or {}).get("setting")
     if setting is None:
@@ -90,7 +90,7 @@ def default_key(key: str, organism: str, runs: pd.DataFrame) -> str | None:
 
 def default_target(key: str, organism: str) -> str:
     """The label or measurement the strategy opens on for this organism ("" if it takes none)."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     s = S.get(key)
     ctx = _light_context(organism)
     if any(p.name == "genes" for p in s.params):
@@ -108,7 +108,7 @@ _LIGHT: dict = {}
 
 
 def _light_context(organism: str):
-    from starplast import strategies as S
+    from parascape import strategies as S
     if organism not in _LIGHT:
         _LIGHT[organism] = S.Context.shipped(organism)
     return _LIGHT[organism]
@@ -180,7 +180,7 @@ def _clean(x):
 
 
 def _card(task: str, scorecard: dict) -> dict:
-    from starplast import scorecard as SC
+    from parascape import scorecard as SC
     keys = {h.key for h in SC.headline(task)} | {h.chance_key for h in SC.headline(task)
                                                   if h.chance_key} | set(KEEP_EXTRA)
     return {k: v for k, v in (scorecard or {}).items() if k in keys}
@@ -311,7 +311,7 @@ def _fmt(v) -> str:
 
 
 def _label_column(key: str, settings: dict, ctx) -> str | None:
-    from starplast import strategies as S
+    from parascape import strategies as S
     for name in ("target", "exclude", "a"):
         if settings.get(name):
             return str(settings[name])
@@ -394,7 +394,7 @@ def _gene_list(ctx, hidden: str, column: str | None) -> str:
 
 def new_information(key: str, ctx, settings: dict, hidden: str = "") -> dict:
     """Run the strategy once and keep its top new calls, ranked genes or findings."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     s = S.get(key)
     settings = {k: v for k, v in settings.items() if any(p.name == k for p in s.params)}
     column = _label_column(key, settings, ctx)
@@ -599,7 +599,7 @@ def _bounded(fn):
 # --------------------------------------------------------------------------- building
 def noise_failure(key: str, task: str) -> dict:
     """The strategy's self-test on the noise table, as a failure example."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     ctx = S.planted_context(null=True)
     s = S.get(key)
     settings = s.defaults(ctx)
@@ -614,7 +614,7 @@ def noise_failure(key: str, task: str) -> dict:
 
 def build_one(key: str, organism: str, runs: pd.DataFrame, ctx, run_new: bool = True) -> dict:
     """The two worked examples for one strategy on one organism."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     s = S.get(key)
     pick = choose(runs, key, organism)
     out = {"task": s.task, "runs": pick["runs"], "passes": pick["passes"], "fails": pick["fails"]}
@@ -650,7 +650,7 @@ def build(organisms=ORGANISMS, only=None, run_new: bool = True, log=print) -> di
     """Every example for every strategy and organism, as the JSON the application ships."""
     import warnings
     warnings.filterwarnings("ignore")
-    from starplast import strategies as S
+    from parascape import strategies as S
     runs = load_runs()
     data = {"meta": {"built": _dt.date.today().isoformat(),
                      "runs": os.path.relpath(RUNS, ROOT), "run_budget_seconds": RUN_BUDGET}}
@@ -711,7 +711,7 @@ def notebook(organisms=ORGANISMS, only=None, run_new: bool = True, path: str = N
           "them from the calibration sweep on disk and, for each success, runs the strategy once "
           "to list what it says about genes without a known label. The code is "
           "`scripts/build_strategy_examples.py`; this notebook calls it, so what is shown is what "
-          "ships in `starplast/data/strategy_examples.json`.",
+          "ships in `parascape/data/strategy_examples.json`.",
           "Nothing here changes a calibration number: the failure and the success are records "
           "already in `runs.jsonl`, and the explanations are written from their own numbers.")
     nb.code("import warnings; warnings.filterwarnings('ignore')",
@@ -723,7 +723,7 @@ def notebook(organisms=ORGANISMS, only=None, run_new: bool = True, path: str = N
           "Success: the PASS at the default setting with the highest skill. Failure: the FAIL at "
           "the default setting with the lowest skill, else any FAIL, else the self-test on the "
           "noise table.")
-    nb.code("from starplast import strategies as S",
+    nb.code("from parascape import strategies as S",
             "rows = []",
             f"for org in {tuple(organisms)!r}:",
             "    for s in S.catalog():",
@@ -768,7 +768,7 @@ def notebook(organisms=ORGANISMS, only=None, run_new: bool = True, path: str = N
 # --------------------------------------------------------------------------- the docs page
 DOC = os.path.join(ROOT, "docs", "strategy_cards.md")
 def _italic(code: str) -> str:
-    from starplast import organisms
+    from parascape import organisms
     genus, _, rest = organisms.get(code).species.partition(" ")
     return f"*{genus[0]}. {rest}*"
 
@@ -784,7 +784,7 @@ def _bar(position: float, width: int = 12) -> str:
 
 
 def _cell(bar: dict) -> str:
-    from starplast import scorecard as SC
+    from parascape import scorecard as SC
     v = SC.fmt_value(bar["scale"], bar["value"])
     if v == "--":
         return "--"
@@ -799,10 +799,10 @@ def _cell(bar: dict) -> str:
 
 def card_markdown(key: str, data: dict | None = None) -> str:
     """One strategy's card as Markdown: bars for both organisms, the explainer, the examples."""
-    from starplast import calibration as CAL
-    from starplast import scorecard as SC
-    from starplast import strategies as S
-    from starplast import strategy_explainers as EX
+    from parascape import calibration as CAL
+    from parascape import scorecard as SC
+    from parascape import strategies as S
+    from parascape import strategy_explainers as EX
     s = S.get(key)
     grades = " · ".join(f"{SPECIES[o]} **{(CAL.entry(key, o) or {}).get('grade') or 'not calibrated'}**"
                         for o in ORGANISMS)
@@ -840,8 +840,8 @@ def card_markdown(key: str, data: dict | None = None) -> str:
 
 def write_docs(path: str = DOC, data: dict | None = None) -> str:
     """docs/strategy_cards.md: every strategy's card, as the Strategies tab shows it."""
-    from starplast import scorecard as SC
-    from starplast import strategies as S
+    from parascape import scorecard as SC
+    from parascape import strategies as S
     head = ["# Strategy cards", "",
             "Generated by `scripts/build_strategy_examples.py --docs-only`; do not edit by hand.", "",
             "Each strategy shows the same four bars, in the same places: **Better than chance** "

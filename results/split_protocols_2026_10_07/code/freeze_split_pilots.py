@@ -14,9 +14,9 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import organisms as O, strategies as S, scorecard as C  # noqa: E402
-from starplast.ground_truth import read_registry  # noqa: E402
-from starplast.splits import cold_node_pairs, known_node_pairs, make_exclusions, make_split, read_split, write_split  # noqa: E402
+from parascape import organisms as O, strategies as S, scorecard as C  # noqa: E402
+from parascape.ground_truth import read_registry  # noqa: E402
+from parascape.splits import cold_node_pairs, known_node_pairs, make_exclusions, make_split, read_split, write_split  # noqa: E402
 
 
 def _sha(path):
@@ -38,7 +38,7 @@ def build(output):
         raise ValueError("Use a new split-pilot directory")
     registry = ROOT / "results/ground_truth_registry_2026_10_07_v2/registry.json"
     entries, _refs = read_registry(registry)
-    inputs = [registry, Path(__file__), *(ROOT / "starplast" / name for name in
+    inputs = [registry, Path(__file__), *(ROOT / "parascape" / name for name in
               ("splits.py", "ground_truth.py", "strategies.py", "search.py", "datasets.py", "organisms.py", "embedding.py"))]
     frames = {code: pd.read_parquet(O.nodes_path(code)) for code in (O.TOXOPLASMA, O.FALCIPARUM)}
     inputs.extend(Path(O.nodes_path(code)) for code in frames)

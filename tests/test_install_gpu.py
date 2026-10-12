@@ -16,7 +16,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import install_gpu as IG  # noqa: E402
+from parascape import install_gpu as IG  # noqa: E402
 
 SMI = """Sat Aug 13 09:00:00 2026
 +---------------------------------+
@@ -126,7 +126,7 @@ def test_yes_skips_the_question(monkeypatch, capsys):
     monkeypatch.setattr(IG.subprocess, "call", lambda cmd: 0)
     monkeypatch.setattr("builtins.input", lambda *_: pytest.fail("it asked anyway"))
     assert IG.main(["--yes"]) == 0
-    assert "restart starplast" in capsys.readouterr().out
+    assert "restart parascape" in capsys.readouterr().out
 
 
 def test_a_failed_pip_is_reported_with_its_code(monkeypatch, capsys):

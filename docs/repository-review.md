@@ -4,9 +4,9 @@ Review of the local 0.41.0 development baseline, with the packaging and interfac
 changes prepared for 0.42.0. This is a code and product review, not a reanalysis of
 the underlying studies.
 
-## What Starplast is trying to do
+## What ParaScape is trying to do
 
-Starplast is a gene-evidence workbench for *Toxoplasma gondii* and
+ParaScape is a gene-evidence workbench for *Toxoplasma gondii* and
 *Plasmodium falciparum*. It combines heterogeneous measurements and annotations,
 projects selected inputs into a map, and lets a researcher investigate genes or
 groups using the underlying evidence. Its search tools try feature combinations
@@ -16,7 +16,7 @@ That is a useful companion to spaCR. The practical workflow is microscopy screen
 gene-level result table, contextual evidence, then follow-up experiment. Keeping
 the two applications in separate environments is sensible: the graph and analysis
 dependencies need not constrain spaCR's imaging installation. The current launcher
-opens Starplast but does not automatically transfer a screen or its provenance.
+opens ParaScape but does not automatically transfer a screen or its provenance.
 The importer currently recognizes Toxoplasma identifiers only; the Plasmodium
 map can be browsed, but importing Plasmodium screens needs additional work.
 
@@ -99,7 +99,7 @@ The release adds a logo and application icon, a shorter README, user and API gui
 a generated documentation site, missing application docstrings, settings help,
 optional GPU installation, package-content checks, and automated version publishing.
 The application, analysis modules, and cached data ship together in the single
-`starplast` distribution; GPU support is an optional extra.
+`parascape` distribution; GPU support is an optional extra.
 
 The next work should prioritize recording the executed analysis method, transferring
 screen tables and provenance from spaCR, and giving candidate evidence a table-based

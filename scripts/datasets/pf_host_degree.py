@@ -6,7 +6,7 @@ How many host proteins a gene was crosslinked to, where it was looked at
     level / kind : reference / crosslink_MS
     provides     : n_host_targets
     coverage     : 117 genes seen, 10 with a host partner
-    local path   : starplast/data/pf_nodes.parquet
+    local path   : parascape/data/pf_nodes.parquet
     derived from : bridge:host
 
 Quirks that cost time once:
@@ -23,7 +23,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/pf_host_degree.py

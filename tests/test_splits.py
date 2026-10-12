@@ -6,8 +6,8 @@ import json
 import pandas as pd
 import pytest
 
-from starplast import organisms as O
-from starplast.splits import (Assignment, PairPartition, ROLES, cold_node_pairs, known_node_pairs,
+from parascape import organisms as O
+from parascape.splits import (Assignment, PairPartition, ROLES, cold_node_pairs, known_node_pairs,
                              make_exclusions, make_split, read_split, write_split)
 
 

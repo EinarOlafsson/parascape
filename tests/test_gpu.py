@@ -16,7 +16,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import gpu  # noqa: E402
+from parascape import gpu  # noqa: E402
 
 HAVE = any(gpu.available()[k] for k in ("cuml", "cupy", "torch"))
 on_gpu = pytest.mark.skipif(not HAVE, reason="no GPU backend on this machine")
@@ -42,7 +42,7 @@ def test_the_environment_can_force_it_off(monkeypatch):
 def test_it_is_off_unless_it_is_both_wanted_and_possible(monkeypatch):
     monkeypatch.delenv(gpu.ENV_GPU, raising=False)
     from PyQt6 import QtCore
-    s = QtCore.QSettings("starplast", "starplast")
+    s = QtCore.QSettings("parascape", "parascape")
     s.setValue("compute/gpu", False)
     s.sync()
     assert gpu.enabled() is False
@@ -96,7 +96,7 @@ def test_distances_agree_with_scipy(monkeypatch):
 def test_rank_scaling_is_the_same_whatever_the_switch_says(monkeypatch):
     """It has no device path at all -- measured six times slower and 1.4e-4 out, so it stays on the
     CPU. This pins that the switch cannot change a ranking."""
-    from starplast.embedding import _scale
+    from parascape.embedding import _scale
     rng = np.random.default_rng(1)
     X = rng.normal(size=(2000, 30))
     X[rng.random(X.shape) < 0.1] = np.nan
@@ -112,7 +112,7 @@ def test_rank_scaling_is_the_same_whatever_the_switch_says(monkeypatch):
 @on_gpu
 def test_the_walk_scores_the_same_either_way(monkeypatch):
     """`_quality` is what the walk's rows carry, so the two paths have to produce the same row."""
-    from starplast.tuning import _quality
+    from parascape.tuning import _quality
     rng = np.random.default_rng(2)
     X = rng.normal(size=(700, 20))
     Y = X[:, :3] + rng.normal(scale=0.1, size=(700, 3))
@@ -134,7 +134,7 @@ def test_umap_and_hdbscan_are_offered_only_through_cuml(monkeypatch):
 
 def test_the_switch_looks_like_the_one_in_spacr(qapp):
     """The same control in both programs: 40x20 track, purple off, teal on, caption on the left."""
-    from starplast.theme import Switch, SWITCH_OFF, SWITCH_ON
+    from parascape.theme import Switch, SWITCH_OFF, SWITCH_ON
     s = Switch("use the GPU where it helps")
     s.resize(240, 24)
     assert s.isChecked() is False
@@ -148,7 +148,7 @@ def test_the_switch_looks_like_the_one_in_spacr(qapp):
 
 def test_clicking_the_switch_toggles_and_emits(qapp):
     from PyQt6 import QtCore, QtGui
-    from starplast.theme import Switch
+    from parascape.theme import Switch
     s = Switch("gpu")
     s.resize(240, 24)
     got = []
@@ -163,7 +163,7 @@ def test_clicking_the_switch_toggles_and_emits(qapp):
 
 def test_a_right_click_does_not_toggle_it(qapp):
     from PyQt6 import QtCore, QtGui
-    from starplast.theme import Switch
+    from parascape.theme import Switch
     s = Switch("gpu")
     s.resize(240, 24)
     pos = QtCore.QPointF(200, 12)
@@ -194,7 +194,7 @@ def qapp():
 
 @pytest.fixture(scope="module")
 def win(qapp):
-    from starplast.app import Window
+    from parascape.app import Window
     w = Window()
     yield w
     w.close()
@@ -208,8 +208,8 @@ def test_the_cuml_paths_are_exercised_even_without_a_gpu(monkeypatch):
     import types
     import numpy as np
     import pandas as pd
-    from starplast import clustering
-    from starplast.embedding import EmbeddingSpec, embed
+    from parascape import clustering
+    from parascape.embedding import EmbeddingSpec, embed
 
     calls = {"umap": 0, "hdbscan": 0}
 
@@ -261,7 +261,7 @@ def test_a_gpu_clustering_that_fails_falls_back_loudly(monkeypatch, caplog):
     import sys
     import types
     import numpy as np
-    from starplast import clustering
+    from parascape import clustering
 
     class Boom:
         def __init__(self, **kw):
@@ -284,7 +284,7 @@ def test_a_gpu_clustering_that_fails_falls_back_loudly(monkeypatch, caplog):
         def emit(self, record):
             seen.append(record.getMessage())
 
-    log = logging.getLogger("starplast.clustering")
+    log = logging.getLogger("parascape.clustering")
     handler = Collect(level=logging.WARNING)
     log.addHandler(handler)
     try:
@@ -409,7 +409,7 @@ def test_the_switch_reaches_the_walk_and_the_widget(qapp, monkeypatch, win):
     Preferences, and the scaling that must NOT change. Driven with the switch on, so the wiring is
     exercised on a machine with a backend and skipped nowhere."""
     import numpy as np
-    from starplast.tuning import _condensed
+    from parascape.tuning import _condensed
     monkeypatch.setenv(gpu.ENV_GPU, "1")
     big = np.random.default_rng(0).normal(size=(2000, 70))
     small = np.random.default_rng(0).normal(size=(50, 3))
@@ -432,7 +432,7 @@ def test_a_small_matrix_is_computed_by_scipy_even_with_the_switch_on(monkeypatch
 
 
 def test_the_switch_asks_for_room_for_its_caption(qapp):
-    from starplast.theme import Switch
+    from parascape.theme import Switch
     s = Switch("use the GPU where it helps")
     assert s.sizeHint().width() > 60 and s.sizeHint().height() == 24
     assert Switch("").sizeHint().width() < s.sizeHint().width()

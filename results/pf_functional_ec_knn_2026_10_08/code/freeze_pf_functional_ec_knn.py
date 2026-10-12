@@ -23,7 +23,7 @@ from scripts import freeze_functional_profile_controls as P, freeze_functional_p
 from scripts import freeze_pf_functional_ec_controls as C
 
 PREPARATION = ROOT / 'results/pf_functional_ec_controls_2026_10_08'
-PREPARATION_SHA = 'a29e416488ba7b0722afca63764a27afcaa6f1fa521a5539a247837a9a7d38c7'
+PREPARATION_SHA = '07c627853116786997c8bf9e84e9fd663e4855e3eb5e8b08361ccc8dc73470ec'
 PILOT = 'FN-EC-PF-KNN-01'
 SETTINGS = {'pilot_id': PILOT, 'k': 15, 'min_share': 0.3,
     'selection': 'Fixed before execution; no test/tune/calibration selection',
@@ -34,8 +34,8 @@ SETTINGS = {'pilot_id': PILOT, 'k': 15, 'min_share': 0.3,
 def load_packet(path=PREPARATION, *, manifest_sha256=PREPARATION_SHA):
     """Verify the accepted preparation bytes and restore its unchanged direct EC split."""
     import pandas as pd
-    from starplast.ground_truth import cohort_digest
-    from starplast.splits import read_split
+    from parascape.ground_truth import cohort_digest
+    from parascape.splits import read_split
     path = Path(path)
     checksum = path / 'SHA256SUMS.txt'
     if P._sha(checksum) != manifest_sha256:
@@ -79,8 +79,8 @@ def load_packet(path=PREPARATION, *, manifest_sha256=PREPARATION_SHA):
 def source_closed_inputs(nodes, packet, *, derived_inputs=()):
     """Rebuild full-schema functional exclusions and close every late source veto."""
     import pandas as pd
-    from starplast import datasets as D, functional_exclusions as E, strategies as S
-    from starplast.splits import SplitManifest
+    from parascape import datasets as D, functional_exclusions as E, strategies as S
+    from parascape.splits import SplitManifest
     split, profiles = packet['split'], packet['profiles']
     if (not isinstance(split, SplitManifest) or split.organism != 'Pf' or 'gene_id' not in nodes or 'ec_number' not in nodes or profiles.organism.ne('Pf').any() or
             profiles.source_target.ne('ec_number').any() or nodes.columns.has_duplicates or C.TARGET in nodes or
@@ -136,8 +136,8 @@ def fit_candidate(features, labels, packet, exclusions):
     """Fit one fixed native adapter, preserving complete test truth and matched controls."""
     import numpy as np
     import pandas as pd
-    from starplast import artifacts as A, functional_ontology as F, label_records as L, record_scorecards as R, scorecard as SC
-    from starplast.scorecard_view import build_scorecard_view
+    from parascape import artifacts as A, functional_ontology as F, label_records as L, record_scorecards as R, scorecard as SC
+    from parascape.scorecard_view import build_scorecard_view
     split = packet['split']
     batch = L.feature_knn(features, labels, split=split, exclusions=exclusions,
                           k=SETTINGS['k'], min_share=SETTINGS['min_share'])
@@ -184,8 +184,8 @@ def fit_candidate(features, labels, packet, exclusions):
 
 def artifact_spec(packet, dependencies, *, gaps=(), model_available=True):
     """Declare exact held-out population/unit, source limits and unavailable model state."""
-    from starplast import artifacts as A, capabilities as Cap, scorecard as SC
-    from starplast.query import Query
+    from parascape import artifacts as A, capabilities as Cap, scorecard as SC
+    from parascape.query import Query
     split = packet['split']
     limitations = tuple(dict.fromkeys((*packet['gaps'], *gaps, 'Reference-profile recovery; independent biological accuracy unknown')))
     evaluation = {'pilot_id': PILOT, 'unit': 'gene', 'eligible_population': len(split.entities('test')),
@@ -204,8 +204,8 @@ def artifact_spec(packet, dependencies, *, gaps=(), model_available=True):
 def freeze(output):
     """Execute one candidate with exact source/input/native/artifact serialization replay."""
     import pandas as pd
-    from starplast import artifacts as A, strategies as S
-    from starplast.splits import read_split, write_split
+    from parascape import artifacts as A, strategies as S
+    from parascape.splits import read_split, write_split
     output = Path(output)
     P._write(output / 'predeclared_scope.json', {'pilot_id': PILOT, 'target': C.TARGET, 'settings': SETTINGS,
         'preparation_manifest_sha256': PREPARATION_SHA, 'biological_admission': False})
@@ -235,7 +235,7 @@ def freeze(output):
     write_split(output / 'split.json', packet['split'], excluded)
     assert read_split(output / 'split.json') == (packet['split'], excluded)
     code = [Path(__file__), ROOT / 'tests/test_pf_functional_ec_knn.py', Path(N.__file__), Path(C.__file__), Path(P.__file__),
-        ROOT / 'scripts/notebook_runner.py', *[ROOT / 'starplast' / name for name in ('functional_exclusions.py', 'functional_ontology.py',
+        ROOT / 'scripts/notebook_runner.py', *[ROOT / 'parascape' / name for name in ('functional_exclusions.py', 'functional_ontology.py',
         'label_records.py', 'datasets.py', 'strategies.py', 'search.py', 'embedding.py', 'slots.py', 'record_scorecards.py', 'scorecard.py',
         'scorecard_view.py', 'artifacts.py', 'capabilities.py', 'splits.py', 'query.py', 'ground_truth.py', 'provenance.py', 'organisms.py')]]
     dependencies = [A.Dependency('code', str(path.relative_to(ROOT)), P._sha(path)) for path in code]

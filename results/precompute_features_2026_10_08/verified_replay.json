@@ -6,8 +6,8 @@
   },
   "builder_calls": [],
   "artifact_identities": {
-    "numeric_operator": "ea92a2a22fdf13e2ba8926e0ae2422df7a69b15bd8a207d5b53b32b7eff17371",
-    "operator_reference": "63d87234637bf4a15363df809adecd1b67cad3ea8bc3f5da24c8d0f6484c0ca5"
+    "numeric_operator": "8d39b2405b0b9bd20ad3aa26cd13f1c7e250060e83c10409fd7ea9190972ec10",
+    "operator_reference": "ee85bf2935bf6b08eb099f73f4259e227962ff48f58b98e6c54bf8b4d2f70e20"
   },
   "measured_run": {
     "artifact_storage_bytes": 12966060,
@@ -20,14 +20,14 @@
     },
     "jobs": {
       "numeric_operator": {
-        "content_identity": "ea92a2a22fdf13e2ba8926e0ae2422df7a69b15bd8a207d5b53b32b7eff17371",
+        "content_identity": "8d39b2405b0b9bd20ad3aa26cd13f1c7e250060e83c10409fd7ea9190972ec10",
         "key": "4670a4a348df8d4076a5406dd2db39bdf8ba4a211ace72cc05e5d3faa87670fa",
         "resumed": true,
         "status": "succeeded",
         "storage_bytes": 12896399
       },
       "operator_reference": {
-        "content_identity": "63d87234637bf4a15363df809adecd1b67cad3ea8bc3f5da24c8d0f6484c0ca5",
+        "content_identity": "ee85bf2935bf6b08eb099f73f4259e227962ff48f58b98e6c54bf8b4d2f70e20",
         "key": "7eab7da93b4e659c6ecc4dbd4d09d4694b19afc2e731fc86868a48fe1e6447ab",
         "resumed": true,
         "status": "succeeded",

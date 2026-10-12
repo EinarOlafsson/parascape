@@ -13,12 +13,12 @@ os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 
 from PyQt6 import QtCore, QtGui, QtTest, QtWidgets  # noqa: E402
 
-from starplast import help_index as HI  # noqa: E402
+from parascape import help_index as HI  # noqa: E402
 
 
 # --------------------------------------------------------------------------- the index, headless
 def test_every_strategy_is_in_the_index_with_its_key():
-    from starplast import strategies as S
+    from parascape import strategies as S
     rows = HI.strategy_entries()
     assert {e.data["key"] for e in rows} == {s.key for s in S.catalog()}
     one = next(e for e in rows if e.data["key"] == S.catalog()[0].key)
@@ -29,8 +29,8 @@ def test_every_strategy_is_in_the_index_with_its_key():
 
 
 def test_every_slot_and_every_dataset_is_in_the_index():
-    from starplast import datasets as D
-    from starplast import slots as SL
+    from parascape import datasets as D
+    from parascape import slots as SL
     slots = HI.slot_entries()
     assert len(slots) == len(SL.all_slots())
     assert {(e.data["organism"], e.data["name"]) for e in slots} == \
@@ -56,7 +56,7 @@ def test_without_a_docs_directory_the_published_pages_stand_in(tmp_path):
 
 def test_tutorials_are_indexed_with_their_sections():
     rows = HI.tutorial_entries()
-    assert any(e.title == "The complete guide to Starplast" for e in rows)
+    assert any(e.title == "The complete guide to ParaScape" for e in rows)
     assert any(e.data.get("anchor") for e in rows), "the complete guide's sections have anchors"
 
 
@@ -77,7 +77,7 @@ def test_a_second_word_narrows_the_list():
 
 
 def test_a_method_finds_every_strategy_that_uses_it():
-    from starplast import strategies as S
+    from parascape import strategies as S
     got = HI.search(HI.static_entries(), "hdbscan", per_kind=None, limit=999)
     found = {e.data["key"] for e in got if e.kind == "strategy"}
     assert found == {s.key for s in S.catalog() if "HDBSCAN" in s.method}
@@ -103,7 +103,7 @@ def test_tooltip_markup_is_not_what_gets_matched():
 # --------------------------------------------------------------------------- on a window
 @pytest.fixture(scope="module")
 def win():
-    from starplast import app as A
+    from parascape import app as A
     qapp = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])  # noqa: F841 -- kept
     w = A.Window()
     w.resize(1400, 900)
@@ -146,7 +146,7 @@ def test_the_field_sits_in_the_menu_bar_directly_right_of_help(win, field):
 
 
 def test_the_shortcut_focuses_the_field(win, field):
-    from starplast import help_search as HS
+    from parascape import help_search as HS
     assert win.search_act.shortcut() == QtGui.QKeySequence(HS.SHORTCUT) == \
         QtGui.QKeySequence("Ctrl+Shift+H")
     win.view.setFocus()
@@ -196,7 +196,7 @@ def test_the_window_index_holds_the_panels_tabs_and_settings(win, field):
 
 
 def test_choosing_a_strategy_selects_it_in_the_strategies_tab(win, field):
-    from starplast import strategies as S
+    from parascape import strategies as S
     target = S.catalog()[3]
     entry = next(e for e in HI.strategy_entries() if e.data["key"] == target.key)
     win.strategy_panel.select(S.catalog()[0].key)
@@ -212,7 +212,7 @@ def test_choosing_a_strategy_selects_it_in_the_strategies_tab(win, field):
 
 
 def test_a_strategy_hidden_by_the_panel_filter_is_still_reached(win, field):
-    from starplast import strategies as S
+    from parascape import strategies as S
     target = S.catalog()[5]
     win.strategy_panel.filter.setText("no strategy is called this")
     assert win.strategy_panel.items[target.key].isHidden()
@@ -242,7 +242,7 @@ def test_choosing_a_panel_raises_it_on_the_named_tab(win, field):
 def test_choosing_a_setting_lands_on_the_control_and_outlines_it(win, field):
     entry = next(e for e in HI.setting_entries(win) if e.title == "spin speed")
     _choose(field, entry)
-    from starplast import help_search as HS
+    from parascape import help_search as HS
     prefs = win.preferences_dialog()
     assert prefs.isVisible()
     tabs = prefs.findChild(QtWidgets.QTabWidget)
@@ -260,7 +260,7 @@ def test_choosing_a_display_choice_applies_it(win, field):
 
 
 def test_choosing_a_slot_opens_the_slot_tree_on_it(win, field):
-    from starplast import slots as SL
+    from parascape import slots as SL
     slot = next(s for s in SL.all_slots("Pf"))
     entry = next(e for e in HI.slot_entries() if e.data == {"organism": "Pf", "name": slot.name})
     _choose(field, entry)
@@ -272,7 +272,7 @@ def test_choosing_a_slot_opens_the_slot_tree_on_it(win, field):
 
 
 def test_choosing_a_dataset_shows_what_it_is(win, field):
-    from starplast import datasets as D
+    from parascape import datasets as D
     d = D.REGISTRY[0]
     _choose(field, next(e for e in HI.dataset_entries() if e.data["key"] == d.key))
     card = win._dataset_card
@@ -344,7 +344,7 @@ def test_every_menu_command_explains_itself(win):
 def test_keyboard_shortcuts_are_listed_from_the_menus(win):
     rows = dict(win.shortcut_rows())
     assert rows[QtGui.QKeySequence("Ctrl+Shift+H").toString(
-        QtGui.QKeySequence.SequenceFormat.NativeText)] == "Help ▸ Search Starplast"
+        QtGui.QKeySequence.SequenceFormat.NativeText)] == "Help ▸ Search ParaScape"
     dialog = win.show_shortcuts()
-    assert "Search Starplast" in dialog.text
+    assert "Search ParaScape" in dialog.text
     dialog.close()

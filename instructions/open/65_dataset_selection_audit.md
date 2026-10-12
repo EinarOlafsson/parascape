@@ -43,7 +43,7 @@ replacement must pass its biological admission and affected validation checks.
 
 ## Completion evidence
 
-65.01: `starplast/dataset_selection.py` implements the versioned, admission-gated
+65.01: `parascape/dataset_selection.py` implements the versioned, admission-gated
 policy; `docs/dataset_selection.md` documents factors and unknowns. **389 focused
 checks passed** for policy, docstrings and organism invariants. AGENTS.md and the
 session handoff persist the user rule. Publication metadata and literature search

@@ -86,9 +86,9 @@ def main():
     """Write forty icon/wordmark pairs, reverse versions, gallery and contact sheets."""
     app = QtGui.QGuiApplication([])
     OUT.mkdir(parents=True, exist_ok=True)
-    word = outline('starplast', 69)
+    word = outline('parascape', 69)
     sheet = ['<rect width="1800" height="3000" fill="white"/>',
-             '<g color="black" transform="translate(45 60)">'+outline('starplast / forty directions',32)+'</g>']
+             '<g color="black" transform="translate(45 60)">'+outline('parascape / forty directions',32)+'</g>']
     records, cards = [], []
     for f, family in enumerate(FAMILIES):
         for v, pattern in enumerate(PATTERNS):
@@ -115,13 +115,13 @@ def main():
 <p>{description}</p><nav><a href="{slug}-icon.svg" download>Icon SVG</a><a href="{slug}-wordmark.svg" download>Wordmark SVG</a>
 <a href="{slug}-icon-white.svg" download>White icon</a><a href="{slug}-wordmark-white.svg" download>White wordmark</a></nav></article>''')
             records.append(dict(number=number,name=name,family=family[0],stem=slug,description=description))
-    comparison=svg(''.join(sheet),1800,3000,'Forty Starplast logo options')
+    comparison=svg(''.join(sheet),1800,3000,'Forty ParaScape logo options')
     (OUT/'comparison.svg').write_text(comparison)
     render(comparison,OUT/'comparison.png',2700,4500)
     (OUT/'manifest.json').write_text(json.dumps(records,indent=2)+'\n')
     choices=''.join(f'<option value="{slug}">{name}</option>' for slug,name,*_ in FAMILIES)
     (OUT/'index.html').write_text('''<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Starplast / forty logo directions</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ParaScape / forty logo directions</title>
 <style>*{box-sizing:border-box}body{margin:0;background:white;color:#111;font:16px/1.6 system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:40px 28px}
 h1{font-size:40px;line-height:1.15;font-weight:300}h2{font-size:18px;font-weight:450}p{max-width:860px}a{color:inherit;text-underline-offset:4px}
 nav,.controls{display:flex;gap:22px;flex-wrap:wrap}.controls{margin:28px 0;align-items:center}select{font:inherit;padding:7px;background:transparent;color:inherit;border:1px solid #888}
@@ -129,17 +129,17 @@ nav,.controls{display:flex;gap:22px;flex-wrap:wrap}.controls{margin:28px 0;align
 article nav{font-size:13px;gap:15px}article p{font-size:14px;min-height:45px}.art img{width:100%;height:auto}.dark{display:none}
 body.night{background:#080808;color:white}body.night article{border-color:#444}body.night .light{display:none}body.night .dark{display:block}
 @media(max-width:780px){.grid{grid-template-columns:1fr}main{padding:24px 16px}h1{font-size:30px}}
-</style></head><body><main><h1>Forty directions for Starplast</h1><p>Eight distinct families, each with five constellation layouts.
+</style></head><body><main><h1>Forty directions for ParaScape</h1><p>Eight distinct families, each with five constellation layouts.
 Every mark combines an asymmetric parasite with stars and gene connections. Thin monochrome lines remain the common thread; the silhouettes,
 orientation, cell details and network topology vary. The active app logo is unchanged.</p>
-<nav><a href="comparison.png">See all 40 together</a><a href="starplast-40-logos.zip" download>Download all SVGs</a>
+<nav><a href="comparison.png">See all 40 together</a><a href="parascape-40-logos.zip" download>Download all SVGs</a>
 <a href="../toxoplasma-constellation/index.html">Current logo</a></nav>
 <div class="controls"><label><input type="checkbox" id="theme"> White on black</label><label>Family <select id="family"><option value="all">All forty</option>'''+choices+'''</select></label>
 <span id="count" aria-live="polite">40 options</span></div><div class="grid">'''+''.join(cards)+'''</div></main><script>
 document.getElementById('theme').addEventListener('change',e=>document.body.classList.toggle('night',e.target.checked));
 document.getElementById('family').addEventListener('change',e=>{let n=0;document.querySelectorAll('article').forEach(a=>{a.hidden=e.target.value!=='all'&&a.dataset.family!==e.target.value;if(!a.hidden)n++});document.getElementById('count').textContent=n+' options'});
 </script></body></html>\n''')
-    with zipfile.ZipFile(OUT/'starplast-40-logos.zip','w',zipfile.ZIP_DEFLATED) as archive:
+    with zipfile.ZipFile(OUT/'parascape-40-logos.zip','w',zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(OUT.glob('*.svg')):
             archive.write(path,path.name)
         archive.write(OUT/'manifest.json','manifest.json')

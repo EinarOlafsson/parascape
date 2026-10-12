@@ -17,8 +17,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import strategies as S  # noqa: E402
-from starplast import strategy_catalog as C  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape import strategy_catalog as C  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -54,7 +54,7 @@ def test_a_table_without_products_orthogroups_or_columns_still_answers():
 
 
 def test_a_closure_that_cannot_be_computed_bans_the_label_and_says_so(monkeypatch):
-    from starplast import search
+    from parascape import search
     ctx = _bare()
     said = []
     ctx.log = said.append
@@ -65,7 +65,7 @@ def test_a_closure_that_cannot_be_computed_bans_the_label_and_says_so(monkeypatc
 
 
 def test_a_table_the_catalogue_cannot_describe_is_grouped_by_prefix(monkeypatch):
-    from starplast import embedding, slots
+    from parascape import embedding, slots
     monkeypatch.setattr(embedding, "inference_spec", lambda *a, **k: 1 / 0)
     monkeypatch.setattr(slots, "all_slots", lambda *a, **k: 1 / 0)
     ctx = _bare()
@@ -354,7 +354,7 @@ def test_a_map_needs_something_left_to_build_from():
 
 # --------------------------------------------------------------------------- the last guards
 def test_an_unknown_way_of_joining_communities_is_refused():
-    from starplast import methods
+    from parascape import methods
     with pytest.raises(ValueError, match="join must be"):
         methods.multiplex_communities(["a"], 3, graph={}, join="union")
 
@@ -399,7 +399,7 @@ def app():
 
 
 def test_the_panel_offers_nothing_from_an_organism_that_is_not_there(app, monkeypatch):
-    from starplast.strategy_panel import StrategyPanel
+    from parascape.strategy_panel import StrategyPanel
     monkeypatch.setattr(S.Context, "shipped", classmethod(lambda cls, *a, **k: 1 / 0))
     p = StrategyPanel(_bare().nodes, graph={}, organism="Tg")
     p.select("ortholog_transfer")

@@ -1,6 +1,6 @@
 # Protein sequence representations
 
-Starplast includes 320 ESM-2 features for **8,064 Toxoplasma genes**. These are
+ParaScape includes 320 ESM-2 features for **8,064 Toxoplasma genes**. These are
 computed from the bundled coding sequences using the frozen 8-million-parameter
 ESM-2 model. They give prediction methods access to patterns in protein sequence
 without requiring a known function or localization label for each protein.
@@ -11,9 +11,9 @@ does not mean that a gene has a particular function.
 
 The model is `facebook/esm2_t6_8M_UR50D`, pinned to revision
 `c731040fcd8d73dceaa04b0a8e6329b345b0f5df`. Features are in
-`starplast/data/esm_features.parquet`; the accompanying manifest records the
+`parascape/data/esm_features.parquet`; the accompanying manifest records the
 sequence hash, sequence length, model revision, and pooling recipe for each gene.
-No Starplast target labels were used to train or fine-tune this model.
+No ParaScape target labels were used to train or fine-tune this model.
 
 Long proteins are split into windows of up to 1,000 residues, overlapping by 128.
 Each residue's representations are averaged across the windows that contain it,
@@ -31,21 +31,21 @@ The bundled feature table needs only pandas to read. Generating new representati
 requires optional dependencies and downloads the pinned model:
 
 ```bash
-pip install 'starplast[sequence]'
-starplast-encode-proteins --output /path/to/esm_features.parquet --device cpu
+pip install 'parascape[sequence]'
+parascape-encode-proteins --output /path/to/esm_features.parquet --device cpu
 ```
 
 Use `--device cuda` for a compatible NVIDIA installation. Encoding runs in evaluation
-mode with gradients disabled. Per-sequence caches under `~/.cache/starplast/esm`
+mode with gradients disabled. Per-sequence caches under `~/.cache/parascape/esm`
 allow interrupted runs to resume. A different sequence, model revision or pooling
 recipe produces a different cache key.
 
 ```python
 from pathlib import Path
 import pandas as pd
-import starplast
+import parascape
 
-path = Path(starplast.__file__).parent / 'data'
+path = Path(parascape.__file__).parent / 'data'
 features = pd.read_parquet(path / 'esm_features.parquet')
 ```
 

@@ -8,8 +8,8 @@ import pandas as pd
 import pytest
 
 from scripts import freeze_functional_profile_controls as C
-from starplast import functional_domain_profiles as D, functional_profile_targets as F, organisms as O
-from starplast.splits import Assignment, SplitManifest
+from parascape import functional_domain_profiles as D, functional_profile_targets as F, organisms as O
+from parascape.splits import Assignment, SplitManifest
 
 
 def fixture():

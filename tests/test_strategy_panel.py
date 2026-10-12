@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import strategies as S  # noqa: E402
+from parascape import strategies as S  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -34,7 +34,7 @@ def planted():
 
 @pytest.fixture
 def panel(app, planted):
-    from starplast.strategy_panel import StrategyPanel
+    from parascape.strategy_panel import StrategyPanel
     p = StrategyPanel(planted.nodes, graph=planted.graph, other=planted.other(), organism="Tg")
     yield p
     p.deleteLater()
@@ -66,8 +66,8 @@ def test_the_first_strategy_is_selected_and_explained(panel):
 
 def test_a_selected_strategy_shows_its_card_first(panel):
     """The card, not the prose: four bars in the task's positions, the grade, the explainer."""
-    from starplast import scorecard as SC
-    from starplast import strategy_explainers as EX
+    from parascape import scorecard as SC
+    from parascape import strategy_explainers as EX
     for key in ("feature_knn", "seed_expansion", "trait_regression", "holdout_search",
                 "geneset_hunt", "blind_battery"):
         panel.show_details(1)
@@ -102,7 +102,7 @@ def test_details_is_one_click_away_and_the_card_one_back(panel):
 
 
 def test_the_card_shows_the_worked_examples(panel):
-    from starplast import strategy_explainers as EX
+    from parascape import strategy_explainers as EX
     panel.select("feature_knn")
     ex = EX.examples("feature_knn", "Tg")
     assert panel.card.fails.text.text() == ex["failure"]["explanation"]
@@ -234,7 +234,7 @@ def test_a_cancelled_file_dialog_changes_nothing(panel, monkeypatch):
 
 
 def test_an_example_with_no_usable_category_says_so(app):
-    from starplast.strategy_panel import StrategyPanel
+    from parascape.strategy_panel import StrategyPanel
     tiny = pd.DataFrame({"gene_id": list("abcd"), "x": [1.0, 2.0, 3.0, 4.0]})
     p = StrategyPanel(tiny, graph={}, other=tiny, organism="Tg")
     said = []
@@ -304,8 +304,8 @@ def test_showing_a_map_before_anything_ran_does_nothing(panel):
 
 def test_jobs_run_on_the_runner_and_can_be_stopped(app, planted):
     from PyQt6 import QtWidgets
-    from starplast.jobs import JobRunner
-    from starplast.strategy_panel import StrategyPanel
+    from parascape.jobs import JobRunner
+    from parascape.strategy_panel import StrategyPanel
     runner = JobRunner()
     p = StrategyPanel(planted.nodes, runner=runner, graph=planted.graph, other=planted.other(),
                       organism="Tg")
@@ -340,8 +340,8 @@ def test_jobs_run_on_the_runner_and_can_be_stopped(app, planted):
 
 
 def test_progress_reports_and_honours_a_stop(app, panel):
-    from starplast.jobs import Job, Stopped
-    from starplast.strategy_panel import _Progress
+    from parascape.jobs import Job, Stopped
+    from parascape.strategy_panel import _Progress
     job = Job(id=1, name="x")
     said = []
     panel.status.connect(said.append)
@@ -355,9 +355,9 @@ def test_progress_reports_and_honours_a_stop(app, panel):
 
 # --------------------------------------------------------------------------- with the analysis panel
 def test_results_tables_are_wired_through_the_analysis_panel(app, planted, tmp_path):
-    from starplast.analysis_panel import AnalysisPanel
-    from starplast.strategy_panel import StrategyPanel
-    from starplast.tuning import EmbeddingStore
+    from parascape.analysis_panel import AnalysisPanel
+    from parascape.strategy_panel import StrategyPanel
+    from parascape.tuning import EmbeddingStore
     analysis = AnalysisPanel(planted.nodes, store=EmbeddingStore(str(tmp_path)))
     p = StrategyPanel(planted.nodes, analysis=analysis, graph=planted.graph,
                       other=planted.other(), organism="Tg")
@@ -372,7 +372,7 @@ def test_results_tables_are_wired_through_the_analysis_panel(app, planted, tmp_p
 
 # --------------------------------------------------------------------------- measured verdicts
 def test_measured_verdicts_are_read_and_shown(app, planted, tmp_path, monkeypatch):
-    from starplast import strategy_panel as SP
+    from parascape import strategy_panel as SP
     path = tmp_path / "m.json"
     path.write_text(json.dumps({"Tg": {
         "feature_knn": {"verdict": "PASS", "metric": "m", "observed": 0.5, "null_mean": 0.1,
@@ -392,7 +392,7 @@ def test_measured_verdicts_are_read_and_shown(app, planted, tmp_path, monkeypatc
 
 
 def test_the_shipped_verdicts_cover_every_strategy():
-    from starplast.strategy_panel import MEASURED
+    from parascape.strategy_panel import MEASURED
     with open(MEASURED) as fh:
         data = json.load(fh)
     for org in ("Tg", "Pf"):
@@ -403,7 +403,7 @@ def test_the_shipped_verdicts_cover_every_strategy():
 
 # --------------------------------------------------------------------------- in the window
 def test_the_window_docks_strategies_beside_evidence_and_analysis(app):
-    from starplast.app import Window
+    from parascape.app import Window
     w = Window()
     try:
         tabbed = {d.windowTitle() for d in w.tabifiedDockWidgets(w.analysis_dock)}
@@ -424,8 +424,8 @@ def test_the_window_docks_strategies_beside_evidence_and_analysis(app):
 
 def test_the_window_opens_without_the_strategies_panel(app, monkeypatch):
     """A panel that cannot be imported costs its tab, never the window."""
-    from starplast.app import Window
-    monkeypatch.setitem(sys.modules, "starplast.strategy_panel", None)
+    from parascape.app import Window
+    monkeypatch.setitem(sys.modules, "parascape.strategy_panel", None)
     w = Window()
     try:
         from PyQt6 import QtWidgets
@@ -441,8 +441,8 @@ def test_a_calibrated_strategy_shows_its_grade_and_offers_its_tuned_setting(app,
                                                                          monkeypatch):
     """Where the sweep measured a strategy, the list shows the grade rather than the one verdict --
     a grade rests on hundreds of held-out tests -- and the tuned setting is one click away."""
-    from starplast import calibration as C
-    from starplast import strategy_panel as SP
+    from parascape import calibration as C
+    from parascape import strategy_panel as SP
     rows = []
     for target in ("a", "b"):
         for seed in (1, 2, 3, 4, 5):

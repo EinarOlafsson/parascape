@@ -1,13 +1,13 @@
 # Inference artifact identities
 
-`starplast.artifacts` stores immutable, data-only inference snapshots alongside
+`parascape.artifacts` stores immutable, data-only inference snapshots alongside
 the existing CSV exports. Every `ArtifactSpec` records a typed query, declared
 strategy/task/output meaning, target, ordered population, role, partition,
 settings, seed, code version, source/table/graph/model hashes, exclusions,
 fitting population, evaluation scope, status and confidence meaning.
 
 ```python
-from starplast.artifacts import write_artifact, read_artifact
+from parascape.artifacts import write_artifact, read_artifact
 
 content_id = write_artifact(folder, spec, {"rows.json": rows}, split=split)
 restored = read_artifact(folder, expected=current_spec, split=current_split)

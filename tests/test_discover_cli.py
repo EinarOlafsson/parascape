@@ -18,7 +18,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import discover as D  # noqa: E402
+from parascape import discover as D  # noqa: E402
 
 
 @pytest.fixture
@@ -73,7 +73,7 @@ def test_a_search_runs_and_is_saved_where_the_window_will_find_it(table, capsys)
     assert code == 0
     printed = capsys.readouterr().out
     assert "mine:" in printed and "configs" in printed
-    from starplast.searches import SearchStore
+    from parascape.searches import SearchStore
     saved = SearchStore(out).load("mine")
     assert not saved.configs.empty
     assert saved.manifest["mode"] == "guilt" and saved.manifest["layer"] == "compartment"
@@ -142,13 +142,13 @@ def test_a_missing_node_table_names_the_command_that_builds_it(tmp_path):
 
 
 def test_the_summary_line_survives_a_search_that_found_nothing():
-    from starplast.searches import Search
+    from parascape.searches import Search
     assert D._summary(None) == "nothing evaluated"
     assert D._summary(Search()) == "nothing evaluated"
 
 
 def test_the_summary_counts_the_winners_findings_separately():
-    from starplast.searches import Search
+    from parascape.searches import Search
     run = Search(configs=pd.DataFrame({"score": [3.0, 2.0], "config": [0, 1]}),
                  findings=pd.DataFrame({"config": [0, 0, 1, 1, 1]}))
     text = D._summary(run)
@@ -160,7 +160,7 @@ def test_the_command_does_not_import_a_gui_toolkit(table):
     """The whole point. Checked in a fresh interpreter, because this test session has Qt loaded
     already and asking `sys.modules` here would prove nothing."""
     nodes, out = table
-    code = ("import sys; from starplast import discover; "
+    code = ("import sys; from parascape import discover; "
             "discover.main(['--list', '--out', %r]); "
             "print('QT' if any(m.startswith('PyQt') for m in sys.modules) else 'CLEAN')" % out)
     done = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True,
@@ -176,7 +176,7 @@ def test_progress_is_flushed_so_a_piped_run_does_not_look_stalled(table, tmp_pat
     log = tmp_path / "piped.log"
     proc = subprocess.Popen(
         [sys.executable, "-c",
-         "from starplast import discover; discover.main(['--task','guilt:compartment',"
+         "from parascape import discover; discover.main(['--task','guilt:compartment',"
          "'--budget','40','--restarts','2','--nodes',%r,'--out',%r,'--name','slow'])" % (nodes, out)],
         stdout=open(log, "w"), stderr=subprocess.STDOUT,
         cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

@@ -4,7 +4,7 @@
 Input : Nat Microbiol 2025 Supplementary Table 1 (41564_2025_2173_MOESM3_ESM.xlsx, cached as
         supptable1.parquet) -- Proteome Discoverer protein abundances in 10 TMT channels = 10
         temperatures 37..73 C (4 C steps), one row per protein x timepoint x replicate, organism Pf/Hs.
-Method: TPP-style (Savitski 2014), matching the Starplast Toxoplasma column's conventions.
+Method: TPP-style (Savitski 2014), matching the ParaScape Toxoplasma column's conventions.
     1. Pf rows, protein FDR confidence High or Medium (q < 0.05), all 10 channels present.
     2. Fraction soluble = abundance_T / abundance_37.
     3. Per run: median fraction per temperature over all proteins -> fit sigmoid -> per-temperature
@@ -18,7 +18,7 @@ import os, warnings
 import numpy as np, pandas as pd
 from scipy.optimize import curve_fit
 
-#: Where the deposit and its fitted intermediate live under the dataset root. `starplast.deposits`
+#: Where the deposit and its fitted intermediate live under the dataset root. `parascape.deposits`
 #: reads the fitted table; this script is what regenerates it from the published supplement.
 FOLDER = os.path.join("translation", "proteomics", "41315737")
 HERE = os.path.dirname(os.path.abspath(__file__))

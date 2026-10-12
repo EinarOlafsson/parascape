@@ -7,9 +7,9 @@ import pandas as pd
 import pytest
 
 from scripts import freeze_functional_profile_knn as K
-from starplast import datasets as D, functional_domain_profiles as F, functional_exclusions as E
-from starplast.functional_profile_targets import freeze_target
-from starplast.splits import Assignment, SplitManifest
+from parascape import datasets as D, functional_domain_profiles as F, functional_exclusions as E
+from parascape.functional_profile_targets import freeze_target
+from parascape.splits import Assignment, SplitManifest
 
 
 def fixture(monkeypatch):

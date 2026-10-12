@@ -18,11 +18,11 @@
 
 | where | what |
 |---|---|
-| `starplast/strategies.py` | `Context` (the table, graph, other organism, caches and the leakage guard), `Strategy` / `Param` / `StrategyResult` / `TestResult`, the inference primitives, the five test patterns, `planted_context` |
-| `starplast/strategy_catalog.py` | the 32 strategies: runner, tester, tooltip, explanation, walkthrough, test description, parameters |
-| `starplast/strategy_panel.py` | the tab: list by family with the shipped verdict, Guide / Settings / Results, Run / Test / Stop, gene-list input (paste, file, example, gate), Show on map |
+| `parascape/strategies.py` | `Context` (the table, graph, other organism, caches and the leakage guard), `Strategy` / `Param` / `StrategyResult` / `TestResult`, the inference primitives, the five test patterns, `planted_context` |
+| `parascape/strategy_catalog.py` | the 32 strategies: runner, tester, tooltip, explanation, walkthrough, test description, parameters |
+| `parascape/strategy_panel.py` | the tab: list by family with the shipped verdict, Guide / Settings / Results, Run / Test / Stop, gene-list input (paste, file, example, gate), Show on map |
 | `app.Window._strategies` | the dock, tabified after Analysis, wired to `use_embedding`, `use_clusters` and gene selection |
-| `scripts/strategy_selftests.py` | measures every strategy on both shipped tables; writes `starplast/data/strategy_selftests.json`, `results/strategies_<date>/` and `docs/strategies.md` |
+| `scripts/strategy_selftests.py` | measures every strategy on both shipped tables; writes `parascape/data/strategy_selftests.json`, `results/strategies_<date>/` and `docs/strategies.md` |
 | `tests/test_strategies.py`, `test_strategy_panel.py`, `test_strategy_edges.py` | catalogue completeness, machinery, planted PASS / null not-PASS for every strategy, the panel, every guard |
 
 Strategies 01 and 02 are the two founding questions, exactly as asked: `holdout_search` and

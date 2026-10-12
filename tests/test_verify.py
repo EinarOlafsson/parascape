@@ -18,7 +18,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import verify as V  # noqa: E402
+from parascape import verify as V  # noqa: E402
 
 
 def _geo_book(tmp_path, values, ids=None, cols=("Tachyzoites_T2 [FPKM]", "Tachyzoites_T4 [FPKM]")):
@@ -39,7 +39,7 @@ def _nodes(ids, tachy):
 
 def test_a_log_transform_between_the_sources_does_not_count_as_disagreement(tmp_path, monkeypatch):
     """The exact situation on disk: the same series shipped logged and deposited raw."""
-    from starplast import paths
+    from parascape import paths
     raw = np.array([1.0, 10.0, 100.0, 1000.0, 16520.0] * 8)
     _geo_book(tmp_path, raw)
     ids = [f"TGME49_{200000+i}" for i in range(len(raw))]
@@ -51,7 +51,7 @@ def test_a_log_transform_between_the_sources_does_not_count_as_disagreement(tmp_
 
 
 def test_a_genuinely_different_ordering_is_reported_as_disagreement(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     raw = np.arange(1.0, 41.0)
     _geo_book(tmp_path, raw)
     ids = [f"TGME49_{200000+i}" for i in range(len(raw))]
@@ -63,7 +63,7 @@ def test_a_genuinely_different_ordering_is_reported_as_disagreement(tmp_path, mo
 
 def test_disagreement_is_named_rather_than_resolved(tmp_path, monkeypatch, capsys):
     """Quietly preferring one source would discard the only evidence that they differ."""
-    from starplast import paths
+    from parascape import paths
     raw = np.arange(1.0, 41.0)
     _geo_book(tmp_path, raw)
     ids = [f"TGME49_{200000+i}" for i in range(len(raw))]
@@ -74,10 +74,10 @@ def test_disagreement_is_named_rather_than_resolved(tmp_path, monkeypatch, capsy
 
 
 def test_a_missing_primary_matrix_reports_rather_than_raising(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     # Patch the resolver, not just the env root: `paths.find` walks every root it can name, including
-    # one derived from the package location, so an empty `STARPLAST_DATA` did not guarantee the
+    # one derived from the package location, so an empty `PARASCAPE_DATA` did not guarantee the
     # "missing primary matrix" this test is named for.
     monkeypatch.setattr(paths, "dataset_roots", lambda: [str(tmp_path)])
     msgs = []
@@ -88,7 +88,7 @@ def test_a_missing_primary_matrix_reports_rather_than_raising(tmp_path, monkeypa
 
 def test_accessions_are_routed_through_the_identity_layer(tmp_path, monkeypatch):
     """A GEO matrix keyed on a strain accession joins nothing without it, silently."""
-    from starplast import paths
+    from parascape import paths
     raw = np.arange(1.0, 41.0)
     gt1 = [f"TGGT1_{200000+i}" for i in range(len(raw))]
     me49 = [g.replace("TGGT1", "TGME49") for g in gt1]
@@ -111,7 +111,7 @@ def test_too_few_common_genes_gives_nan_not_a_confident_number():
 
 
 def test_a_column_absent_from_the_node_table_is_skipped(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     raw = np.arange(1.0, 41.0)
     _geo_book(tmp_path, raw)
     ids = [f"TGME49_{200000+i}" for i in range(len(raw))]
@@ -121,7 +121,7 @@ def test_a_column_absent_from_the_node_table_is_skipped(tmp_path, monkeypatch):
 
 
 def test_a_geo_column_absent_from_the_matrix_is_skipped(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     raw = np.arange(1.0, 41.0)
     _geo_book(tmp_path, raw, cols=("Something Else [FPKM]",))
     ids = [f"TGME49_{200000+i}" for i in range(len(raw))]
@@ -131,7 +131,7 @@ def test_a_geo_column_absent_from_the_matrix_is_skipped(tmp_path, monkeypatch):
 
 
 def test_duplicate_accessions_in_the_geo_matrix_do_not_multiply_rows(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     raw = np.arange(1.0, 41.0)
     ids = [f"TGME49_{200000+(i % 20)}" for i in range(len(raw))]     # each id appears twice
     _geo_book(tmp_path, raw, ids=ids)
@@ -149,11 +149,11 @@ def test_the_correspondence_is_declared_not_guessed_from_names():
     assert all(isinstance(v, tuple) and v for v in pairs.values())
 
 
-@pytest.mark.skipif(not os.environ.get("STARPLAST_DATA"),
-                    reason="needs the raw dataset tree; set STARPLAST_DATA")
+@pytest.mark.skipif(not os.environ.get("PARASCAPE_DATA"),
+                    reason="needs the raw dataset tree; set PARASCAPE_DATA")
 def test_the_real_shipped_columns_reproduce_their_geo_source():
     """The result that answers task 05: measured, not assumed."""
-    from starplast import paths
+    from parascape import paths
     nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
     t = V.verify_all(nodes, log=lambda *_: None)
     assert not t.empty
@@ -165,7 +165,7 @@ def test_the_real_shipped_columns_reproduce_their_geo_source():
 def test_the_declared_sheet_is_the_one_compared(tmp_path, monkeypatch):
     """GSE206344 ships two workbooks and the source one has eight sheets. Comparing the wrong sheet --
     or the first by default -- produces a number that looks like verification and is not."""
-    from starplast import paths
+    from parascape import paths
     d = tmp_path / "transcription" / "RNAseq" / "GSE206344"
     d.mkdir(parents=True)
     f = d / "GSE206344_Normalized_data_ToxoDB_Release68.xlsx"
@@ -195,7 +195,7 @@ def test_a_series_without_a_declared_sheet_reads_the_first(tmp_path, monkeypatch
 def test_every_declared_correspondence_names_a_real_shipped_column():
     """A pair naming a column the node table does not have is silently skipped, so it would look
     verified while checking nothing."""
-    from starplast import paths
+    from parascape import paths
     nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
     unknown = {}
     for series, spec in V.CORRESPONDENCE.items():

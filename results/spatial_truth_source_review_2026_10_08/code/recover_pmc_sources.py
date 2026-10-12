@@ -21,15 +21,15 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import datasets as D  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import datasets as D  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 from recover_source_files import download  # noqa: E402
 
 BASE = "https://pmc-oa-opendata.s3.amazonaws.com/"
 
 
 def _metadata(url, target):
-    request = urllib.request.Request(url, headers={"User-Agent": "starplast-source-recovery/1"})
+    request = urllib.request.Request(url, headers={"User-Agent": "parascape-source-recovery/1"})
     with urllib.request.urlopen(request, timeout=25) as response:
         payload = response.read((4 << 20) + 1)
     if len(payload) > 4 << 20:

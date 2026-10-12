@@ -20,7 +20,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from PyQt6 import QtCore, QtWidgets  # noqa: E402
 
-from starplast import celldiagram as CD  # noqa: E402
+from parascape import celldiagram as CD  # noqa: E402
 
 
 @pytest.fixture(scope="module")

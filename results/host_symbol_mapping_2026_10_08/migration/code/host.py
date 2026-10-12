@@ -376,7 +376,7 @@ def host_table(base: str) -> pd.DataFrame:
 
 def load(base: str, name: str = HOST_TABLE) -> pd.DataFrame:
     """A shipped host table, or an empty frame if it has not been built."""
-    path = os.path.join(base, "starplast", "data", name)
+    path = os.path.join(base, "parascape", "data", name)
     return pd.read_parquet(path) if os.path.exists(path) else pd.DataFrame()
 
 

@@ -22,7 +22,7 @@
       "has_ec"
     ],
     "url": "https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
-    "path": "starplast/data/toxodb_ec_numbers.tsv",
+    "path": "parascape/data/toxodb_ec_numbers.tsv",
     "note": "An annotation rather than a measurement, with the same standing as the InterPro domains that fill `domain content`. It matters because it is the ONLY gene-indexed metabolic datum there is -- every other metabolism question in the catalog is about metabolites, and a metabolite is not a gene. Verified against conservation: enzymes have a Plasmodium ortholog 59.6% of the time against 30.4% for other genes (odds 3.39, p = 8e-88), are lineage-specific a third as often, and are more costly to lose in vitro. `has_ec` is 0 and not missing where ToxoDB reports no EC: the whole proteome was asked, so no assignment is an answer about the gene.",
     "independent_gene_activity_truth": false,
     "source_grade": "orthology_transfer for explicitly derived EC; all other individual grades unresolved"
@@ -37,7 +37,7 @@
       "pfam_ids"
     ],
     "url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
-    "path": "starplast/data/pf_nodes.parquet",
+    "path": "parascape/data/pf_nodes.parquet",
     "note": "Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes).",
     "independent_gene_activity_truth": false,
     "source_grade": "orthology_transfer for explicitly derived EC; all other individual grades unresolved"

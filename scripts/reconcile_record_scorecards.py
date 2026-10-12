@@ -13,7 +13,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import record_scorecards as R, scorecard as SC, track_record as T  # noqa: E402
+from parascape import record_scorecards as R, scorecard as SC, track_record as T  # noqa: E402
 
 
 def reconcile(output):
@@ -22,7 +22,7 @@ def reconcile(output):
     if output.exists():
         raise ValueError('Use a new reconciliation snapshot directory')
     output.mkdir(parents=True)
-    source = ROOT / 'starplast/data/track_record.parquet'
+    source = ROOT / 'parascape/data/track_record.parquet'
     ledger = pd.read_parquet(source)
     reports, cards, seen = [], [], set()
     for scope, rows in R.legacy_cohorts(ledger):
@@ -58,7 +58,7 @@ def reconcile(output):
         'runtime_inference_changes': 'none'}
     (output / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
     sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
-    inputs = [Path(__file__), source, ROOT / 'starplast/record_scorecards.py', ROOT / 'starplast/scorecard.py', ROOT / 'starplast/track_record.py', ROOT / 'starplast/capabilities.py']
+    inputs = [Path(__file__), source, ROOT / 'parascape/record_scorecards.py', ROOT / 'parascape/scorecard.py', ROOT / 'parascape/track_record.py', ROOT / 'parascape/capabilities.py']
     (output / 'manifest.json').write_text(json.dumps({'created_utc': datetime.now(timezone.utc).isoformat(), 'summary': summary,
         'input_sha256': {str(p): sha(p) for p in inputs},
         'outputs': {p.name: sha(p) for p in output.iterdir() if p.suffix in {'.json', '.csv'}}}, indent=2) + '\n')

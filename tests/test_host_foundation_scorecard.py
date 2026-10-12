@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from starplast import host_foundation_scorecard as H,organisms as O
-from starplast.scorecard_view import export_scorecard,render_scorecard_detail,render_scorecard_html
+from parascape import host_foundation_scorecard as H,organisms as O
+from parascape.scorecard_view import export_scorecard,render_scorecard_detail,render_scorecard_html
 
 
 def _summary():

@@ -21,11 +21,11 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import organisms as _ORGANISMS
+from parascape import organisms as _ORGANISMS
 from scripts import freeze_functional_profile_controls as P
 
 REVIEW = ROOT / 'results/functional_source_review_2026_10_08_v2'
-REVIEW_SHA = '5fb85c26e4939c4737a6969c474cd63395ea2faaa1fb111a71ebd241e0aaa81c'
+REVIEW_SHA = '2f896c05a750c9ee0c2b1d437b4263544b301ff03435c5eb7b0a00cd1d893936'
 BENCHMARK = 'FN-EC-PF-CONTROL-01'
 TARGET = 'ec_direct_complete_major_profile'
 SEED = 20261008
@@ -65,7 +65,7 @@ def verified_inputs():
     """Verify the archived review, receipt and current Pf nodes before projected reads."""
     import pandas as pd
     import pyarrow.parquet as pq
-    from starplast import functional_ontology as F, organisms as O
+    from parascape import functional_ontology as F, organisms as O
     manifest_path = REVIEW / 'manifest.json'
     if P._sha(manifest_path) != REVIEW_SHA:
         raise ValueError('Pinned functional source review manifest changed')
@@ -100,10 +100,10 @@ def prepare_profiles(nodes, entries):
     """Prepare direct profiles, separate transfer census and the exact native frozen split."""
     import numpy as np
     import pandas as pd
-    from starplast import functional_exclusions as E, functional_ontology as F, strategies as S
-    from starplast.embedding import as_text
-    from starplast.ground_truth import cohort_digest
-    from starplast.splits import make_split
+    from parascape import functional_exclusions as E, functional_ontology as F, strategies as S
+    from parascape.embedding import as_text
+    from parascape.ground_truth import cohort_digest
+    from parascape.splits import make_split
     if ('gene_id' not in nodes or 'ec_number' not in nodes or nodes.columns.has_duplicates or
             nodes.gene_id.duplicated().any() or not all(isinstance(gene, str) and gene for gene in nodes.gene_id)):
         raise ValueError('Exact unique Pf original gene/source fields required')
@@ -141,8 +141,8 @@ def control_records(prepared):
     """Freeze train-only majority/prevalence and retain complete matched test records/cards."""
     import numpy as np
     import pandas as pd
-    from starplast import baselines as B, functional_ontology as F, scorecard as SC
-    from starplast.scorecard_view import build_scorecard_view
+    from parascape import baselines as B, functional_ontology as F, scorecard as SC
+    from parascape.scorecard_view import build_scorecard_view
     split, labels = prepared['split'], prepared['labels']
     native = B.label_baselines(labels, split, role='test', seed=SEED)
     assert tuple(native.index) == split.entities('test')
@@ -214,7 +214,7 @@ def control_records(prepared):
 def freeze(output):
     """Execute source replay and exact train-only controls once in an immutable notebook packet."""
     import pandas as pd
-    from starplast.splits import write_split, read_split
+    from parascape.splits import write_split, read_split
     output = Path(output)
     P._write(output / 'predeclared_scope.json', SCOPE)
     nodes, entries, enzyme_receipt, receipts = verified_inputs()
@@ -250,7 +250,7 @@ def freeze(output):
     assert json.loads((output / 'normalized_target.json').read_text()) == _plain(normalized)
     P._write(output / 'enzyme_receipt.json', enzyme_receipt)
     code = [Path(__file__), ROOT / 'tests/test_pf_functional_ec_controls.py', Path(P.__file__), ROOT / 'scripts/notebook_runner.py',
-        *[ROOT / 'starplast' / name for name in ('functional_ontology.py', 'functional_exclusions.py', 'discovery_labels.py',
+        *[ROOT / 'parascape' / name for name in ('functional_ontology.py', 'functional_exclusions.py', 'discovery_labels.py',
         'strategies.py', 'datasets.py', 'slots.py', 'search.py', 'embedding.py', 'baselines.py', 'record_scorecards.py',
         'scorecard.py', 'scorecard_view.py', 'artifacts.py', 'capabilities.py', 'splits.py', 'ground_truth.py', 'organisms.py', 'provenance.py')]]
     (output / 'code').mkdir()
@@ -269,7 +269,7 @@ def freeze(output):
         'unsupported_test_profiles': rows.truth[~rows.training_supported].value_counts().to_dict(),
         'cohort_identity': prepared['cohort_identity'], 'normalized_target_identity': P._identity(normalized),
         'split_identity': prepared['split'].identity, 'predeclared_scope_identity': P._identity(SCOPE),
-        'original_node_sha256': receipts[str(__import__('starplast.organisms', fromlist=['nodes_path']).nodes_path(_ORGANISMS.FALCIPARUM))],
+        'original_node_sha256': receipts[str(__import__('parascape.organisms', fromlist=['nodes_path']).nodes_path(_ORGANISMS.FALCIPARUM))],
         'review_manifest_sha256': REVIEW_SHA, 'enzyme_sha256': enzyme_receipt['sha256'],
         'input_receipt_count': len(receipts), 'exact_source_groups_controls_cards_and_serialization_replay': True,
         'controls': {name: {'counts': bundle['card']['counts'], 'metrics': bundle['card']['metrics']} for name, bundle in cards.items()},

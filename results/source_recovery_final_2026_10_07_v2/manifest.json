@@ -28,22 +28,22 @@
     "metadata_correction": "capture non-detection is not proof of biological absence; mouse references are separate from human"
   },
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/finalize_source_recovery.py": "c6ab4920be121fcbb02b2031220df3c8cfa39e53b4c10b8fb8faf9ba9226ff6d",
-    "results/source_recovery_consolidated_2026_10_07_v2/manifest.json": "142a56b0961a183e35f5defc73c55c5c0469f593be480e5fb2e8e36df2e32ee1",
-    "results/source_recovery_consolidated_2026_10_07_v2/source_locations.json": "3ceffe79ac5a8a999a593cc657fd81b50e2d6d051d9bfdfa09fc5a4e2e094ce3",
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/finalize_source_recovery.py": "ebb5f80eda0f77bc5a773f321ba0a97aa4cf6c2b97d5ac8c565c7aed6683ed05",
+    "results/source_recovery_consolidated_2026_10_07_v2/manifest.json": "207f934ab5c7305ad000a4651bdf96d665ea2118315c7e098f9766f4314d37a9",
+    "results/source_recovery_consolidated_2026_10_07_v2/source_locations.json": "7c107f8c9ee27fb55bedd830304cb652b80489c154573ec761888b4002e03e9d",
     "results/source_recovery_consolidated_2026_10_07_v2/bindings.json": "deade6bbce92085caecd1364114542a628aad14ec7ffa3f188db9abfd0b7ef79",
     "results/source_recovery_consolidated_2026_10_07_v2/containers.json": "0b45a2a245dac9cf5b41a71cd1c8f2db726d0b881dc7f75835a36b30646dee84",
     "results/host_surfaceome_recovery_2026_10_07/table/equivalence.json": "bcc68586994d5204f42d46a28af57cdabf707a49de6a23a19fdca1b4210212e1",
     "results/host_surfaceome_recovery_2026_10_07/table/table_review.json": "9962e18be1557998ec8799ea9513c7199125f14a1ca4543b3bb17d2cac5c296e",
-    "results/host_surfaceome_recovery_2026_10_07/table/manifest.json": "6666346b3da5dde8ee021552e9bd98359f0ab5c7ca962a7754c678aff0b67641",
-    "results/host_surfaceome_recovery_2026_10_07/table/equivalence_manifest.json": "63dba3154ac5eb02b9490a43c811fe5403458f0fdf68bb2c5914d609f01a72d8",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/dataset_selection_2026_10_07/source_publications.csv": "6af9386b1d5bbf099c79a441c1d7b1b6d43bd3d996fff538bb2af0b6b3ccda8d",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/datasets.py": "f61fcd6c80783cc26792bf0ee9f5c7230033aaf109668c1508c4faba0c368a9e",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/host.py": "f3a88e441018eee2bef47d35323486a548a0152de96ecfc890fcb1c3bb12b95a"
+    "results/host_surfaceome_recovery_2026_10_07/table/manifest.json": "303f38eac6904147cc1734a6266921738d0c4378494c3076dc357721deae9532",
+    "results/host_surfaceome_recovery_2026_10_07/table/equivalence_manifest.json": "fb79861f93dc174fbe6a8aedca4beda421fa84ab33306fda68f9bfa6ae28e8a7",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/dataset_selection_2026_10_07/source_publications.csv": "6af9386b1d5bbf099c79a441c1d7b1b6d43bd3d996fff538bb2af0b6b3ccda8d",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/datasets.py": "f61fcd6c80783cc26792bf0ee9f5c7230033aaf109668c1508c4faba0c368a9e",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/host.py": "57028fd8832f57e859e5a8a0fcf9e199d4c7cd83cb6e7c5d94eabe7ab53f292c"
   },
   "source_alias_sha256": "7502646155bf3f17e8c9b2a1edfbe9f27a169f83534baebe8d4c2e9a7206bf5a",
   "outputs": {
-    "source_locations.json": "444fe27ae2a8d6d9e8ce7870ab83d517cdfc5080438b6aa15d013e1bf15220bc",
+    "source_locations.json": "87de79c192089d255e0ffd8818243f0513c38d43b8a1a6f82dfb64c069f6aeb2",
     "bindings.json": "d0115983c86a0f78ec0d821761b535de8721a7bbabc8a2a316567715db343b48",
     "containers.json": "0b45a2a245dac9cf5b41a71cd1c8f2db726d0b881dc7f75835a36b30646dee84"
   }

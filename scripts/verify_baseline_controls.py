@@ -14,10 +14,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import organisms as O  # noqa: E402
-from starplast.baselines import (RECIPES, assert_planted_recovery, label_baselines, matched_network_control,
+from parascape import organisms as O  # noqa: E402
+from parascape.baselines import (RECIPES, assert_planted_recovery, label_baselines, matched_network_control,
                                 positive_only_retrieval, random_ranking, value_baselines)  # noqa: E402
-from starplast.splits import make_split, write_split  # noqa: E402
+from parascape.splits import make_split, write_split  # noqa: E402
 
 
 def _sha(path):
@@ -29,7 +29,7 @@ def build(output):
     output = Path(output)
     if output.exists():
         raise ValueError("Use a new baseline-control directory")
-    inputs = [Path(__file__), *(ROOT / "starplast" / name for name in
+    inputs = [Path(__file__), *(ROOT / "parascape" / name for name in
                               ("baselines.py", "splits.py", "ground_truth.py", "scorecard.py", "organisms.py"))]
     hashes = {str(path): _sha(path) for path in inputs}
     output.mkdir(parents=True)

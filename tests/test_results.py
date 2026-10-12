@@ -18,7 +18,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import results as R  # noqa: E402
+from parascape import results as R  # noqa: E402
 
 
 def _search_rows():
@@ -63,19 +63,19 @@ def test_a_file_that_is_not_there_names_no_table(tmp_path):
 def test_a_bundle_carries_every_tab_and_says_what_is_in_it(tmp_path):
     tables = {"recovery_search": _search_rows(),
               "validation": pd.DataFrame({"category": ["dense granules"], "precision": [0.62]})}
-    path = R.save_bundle(str(tmp_path / "all.starplast"), tables, meta={"target": "compartment"})
+    path = R.save_bundle(str(tmp_path / "all.parascape"), tables, meta={"target": "compartment"})
     assert zipfile.is_zipfile(path) and R.is_bundle(path)
     back, meta = R.load_bundle(path)
     assert set(back) == set(tables)
     assert back["recovery_search"].equals(tables["recovery_search"])
     assert meta["target"] == "compartment" and meta["tables"]["recovery_search"] == 2
-    assert meta["starplast"], "a bundle that will not load in two years has to say what wrote it"
+    assert meta["parascape"], "a bundle that will not load in two years has to say what wrote it"
 
 
 def test_empty_tables_are_left_out_rather_than_written_as_headers(tmp_path):
     """A bundle listing eight tables of which six are empty invites the reader to think six analyses
     returned nothing, when they were never run."""
-    path = R.save_bundle(str(tmp_path / "some.starplast"),
+    path = R.save_bundle(str(tmp_path / "some.parascape"),
                          {"recovery_search": _search_rows(),
                           "validation": pd.DataFrame(),
                           "umap_walk": None})
@@ -85,7 +85,7 @@ def test_empty_tables_are_left_out_rather_than_written_as_headers(tmp_path):
 
 def test_one_unreadable_member_costs_that_table_and_not_the_bundle(tmp_path, capsys):
     """A bundle is a session's work; losing seven tables to one bad row would be its own failure."""
-    path = str(tmp_path / "b.starplast")
+    path = str(tmp_path / "b.parascape")
     R.save_bundle(path, {"recovery_search": _search_rows()})
     with zipfile.ZipFile(path, "a") as z:
         z.writestr("broken.csv", b"\xff\xfe not text at all")
@@ -95,7 +95,7 @@ def test_one_unreadable_member_costs_that_table_and_not_the_bundle(tmp_path, cap
 
 
 def test_a_bundle_reads_a_member_that_never_named_its_table(tmp_path):
-    path = str(tmp_path / "b.starplast")
+    path = str(tmp_path / "b.parascape")
     with zipfile.ZipFile(path, "w") as z:
         z.writestr("umap_walk.csv", "a,b\n1,2\n")
     back, meta = R.load_bundle(path)
@@ -109,7 +109,7 @@ def test_a_single_table_is_not_mistaken_for_a_bundle(tmp_path):
 
 def test_a_bundle_with_a_damaged_manifest_still_gives_up_its_tables(tmp_path):
     """The manifest is a convenience; the tables are the work."""
-    path = str(tmp_path / "b.starplast")
+    path = str(tmp_path / "b.parascape")
     R.save_bundle(path, {"umap_walk": _search_rows()})
     keep = {n: zipfile.ZipFile(path).read(n) for n in zipfile.ZipFile(path).namelist()}
     with zipfile.ZipFile(path, "w") as z:
@@ -122,7 +122,7 @@ def test_a_bundle_with_a_damaged_manifest_still_gives_up_its_tables(tmp_path):
 def test_anything_in_a_bundle_that_is_not_a_table_is_ignored(tmp_path):
     """People add things to zips -- a note, a figure -- and a reader that chokes on them is a reader
     that punishes the habit."""
-    path = str(tmp_path / "b.starplast")
+    path = str(tmp_path / "b.parascape")
     R.save_bundle(path, {"umap_walk": _search_rows()})
     with zipfile.ZipFile(path, "a") as z:
         z.writestr("notes.txt", "the second run looked better")
@@ -133,7 +133,7 @@ def test_anything_in_a_bundle_that_is_not_a_table_is_ignored(tmp_path):
 def test_an_autosave_with_no_rows_leaves_no_file(tmp_path):
     """A run that is stopped before its first configuration should not leave an empty file behind
     for someone to find and wonder about."""
-    from starplast.results import RowLog
+    from parascape.results import RowLog
     log = RowLog(str(tmp_path / "empty.csv"), "umap_walk")
     assert log.close() == ""
     assert not (tmp_path / "empty.csv").exists()
@@ -142,7 +142,7 @@ def test_an_autosave_with_no_rows_leaves_no_file(tmp_path):
 def test_a_row_that_carries_a_new_column_does_not_corrupt_the_file(tmp_path):
     """The header is written once, from the first row. A later row with an extra key loses that key
     here rather than writing a line with more fields than the header, which is not a CSV."""
-    from starplast.results import RowLog, load_table
+    from parascape.results import RowLog, load_table
     log = RowLog(str(tmp_path / "walk.csv"), "umap_walk")
     log.append({"a": 1, "b": 2})
     log.append({"a": 3, "b": 4, "surprise": 5})
@@ -157,7 +157,7 @@ def test_a_row_that_carries_a_new_column_does_not_corrupt_the_file(tmp_path):
 def test_a_value_with_a_comma_or_a_quote_survives_the_round_trip(tmp_path):
     """The excluded-columns cell is a semicolon-joined list and a block combination is `a+b`, but a
     product description or a reasoning note can carry anything. Quoted the way to_csv would."""
-    from starplast.results import RowLog, load_table
+    from parascape.results import RowLog, load_table
     log = RowLog(str(tmp_path / "w.csv"), "recovery_search")
     log.append({"blocks": "a+b", "note": 'has, a comma and a " quote', "n": 1})
     path = log.close()
@@ -168,6 +168,6 @@ def test_a_value_with_a_comma_or_a_quote_survives_the_round_trip(tmp_path):
 def test_autosaves_land_in_one_place_named_for_the_table_and_the_time(tmp_path):
     """One directory, so a user looking for "the search I stopped yesterday" has somewhere to look,
     and the kind in the name because that is what decides which tab it loads back into."""
-    from starplast.results import autosave_path
+    from parascape.results import autosave_path
     p = autosave_path(str(tmp_path), "recovery_search", "20260813_090102")
     assert p.endswith(os.path.join("autosave", "recovery_search_20260813_090102.csv"))

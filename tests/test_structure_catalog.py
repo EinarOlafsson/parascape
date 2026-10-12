@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import structure_catalog as C
+from parascape import structure_catalog as C
 
 
 def test_exact_sequence_collision_abstains_even_with_alias():

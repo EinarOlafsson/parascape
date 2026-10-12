@@ -19,10 +19,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import calibration as CAL  # noqa: E402
-from starplast import scorecard as SC  # noqa: E402
-from starplast import strategies as S  # noqa: E402
-from starplast import strategy_explainers as EX  # noqa: E402
+from parascape import calibration as CAL  # noqa: E402
+from parascape import scorecard as SC  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape import strategy_explainers as EX  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RUNS = os.path.join(ROOT, "results", "calibration_2026-09-26b", "runs.jsonl")

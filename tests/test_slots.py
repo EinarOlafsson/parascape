@@ -11,7 +11,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import slots
+from parascape import slots
 
 
 def slot(policy, patterns=("a_", "b_")):
@@ -183,7 +183,7 @@ def test_a_column_slot_is_filled_by_the_table_and_ignores_the_graph():
 
 def test_coverage_is_answered_in_one_place_so_two_reports_cannot_disagree():
     import numpy as np
-    import starplast.paths as P
+    import parascape.paths as P
     nodes = pd.read_parquet(os.path.join(P.data_dir(), "nodes.parquet"))
     graph = np.load(os.path.join(P.data_dir(), "graph.npz"))
     out = slots.coverage("Tg", nodes, graph)
@@ -210,7 +210,7 @@ def test_no_plasmodium_slot_claims_a_column_of_the_toxoplasma_table():
     """
     import os
     import pandas as pd
-    import starplast.paths as P
+    import parascape.paths as P
     nodes = pd.read_parquet(os.path.join(P.data_dir(), "nodes.parquet"))
     leaked = {s.name: sorted(slots.declared_columns(nodes, s))
               for s in slots.all_slots("Pf")
@@ -227,7 +227,7 @@ def test_a_plasmodium_slot_is_refused_against_the_toxoplasma_table():
     """The refusal, not merely an empty result -- resolving is where a wrong number would ship."""
     import os
     import pandas as pd
-    import starplast.paths as P
+    import parascape.paths as P
     nodes = pd.read_parquet(os.path.join(P.data_dir(), "nodes.parquet"))
     slot = next(s for s in slots.all_slots("Pf") if s.patterns)
     with pytest.raises(ValueError, match="measured in"):
@@ -261,7 +261,7 @@ def test_a_metabolite_slot_is_refused_against_the_gene_table():
 def test_a_metabolite_slot_resolves_against_the_metabolite_table():
     import os
     import pandas as pd
-    import starplast.paths as P
+    import parascape.paths as P
     path = os.path.join(P.data_dir(), "metabolites.parquet")
     if not os.path.exists(path):
         pytest.skip("metabolite table not built")
@@ -351,7 +351,7 @@ def test_a_plasmodium_pair_slot_is_not_filled_by_the_toxoplasma_graph():
     import os
     import numpy as np
     import pandas as pd
-    import starplast.paths as P
+    import parascape.paths as P
     nodes = pd.read_parquet(os.path.join(P.data_dir(), "nodes.parquet"))
     graph = np.load(os.path.join(P.data_dir(), "graph.npz"))
     pf_pairs = [s for s in slots.all_slots("Pf") if slots.edge_types(s)]
@@ -418,7 +418,7 @@ def test_a_bridge_slot_is_not_filled_by_the_other_species_bridge_table():
     """
     import os
     import pandas as pd
-    import starplast.paths as P
+    import parascape.paths as P
     tg_path = os.path.join(P.data_dir(), "host_bridges.parquet")
     pf_path = os.path.join(P.data_dir(), "pf_host_bridges.parquet")
     if not (os.path.exists(tg_path) and os.path.exists(pf_path)):
@@ -444,7 +444,7 @@ def test_the_column_partition_holds_for_every_species():
     slot of its own. A column no slot claims can never be held out, audited or reported.
     """
     import os
-    from starplast.slot_tree import shipped_sources
+    from parascape.slot_tree import shipped_sources
     for organism, source in shipped_sources().items():
         nodes = source.get("nodes")
         if nodes is None:
@@ -500,7 +500,7 @@ def test_a_bridge_slot_names_both_ends():
         wrong = slots.SPECIES_BRIDGE_TABLES.get(other, {}).get("host")
         if not wrong:
             continue
-        from starplast import paths
+        from parascape import paths
         import os
         path = paths.cache_file(wrong)
         if not os.path.exists(path):
@@ -515,9 +515,9 @@ def test_host_columns_never_appear_in_a_parasite_embedding():
     parasite gene. A host table's columns entering a parasite embedding would break that silently."""
     import os
     import pandas as pd
-    from starplast import paths
-    from starplast.embedding import SLOT_BLOCKS, EmbeddingSpec, columns_for
-    from starplast import host as H
+    from parascape import paths
+    from parascape.embedding import SLOT_BLOCKS, EmbeddingSpec, columns_for
+    from parascape import host as H
     tables = H.shipped_tables()
     assert tables, "host tables not built"
     host = set().union(*(set(t.columns) for t in tables.values())) - {"gene_id"}
@@ -744,8 +744,8 @@ def test_a_host_slot_with_columns_carries_no_stale_verdict():
 def test_every_host_column_named_by_the_catalog_is_in_the_host_table():
     """A pattern naming a column nothing writes leaves the slot empty and says nothing about why."""
     gst = _generator()
-    from starplast import paths
-    from starplast import host
+    from parascape import paths
+    from parascape import host
     tables = host.shipped_tables()
     assert tables, "host tables not built"
     have = set().union(*(set(t.columns) for t in tables.values()))

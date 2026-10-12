@@ -19,7 +19,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import annotations as A  # noqa: E402
+from parascape import annotations as A  # noqa: E402
 
 
 def _annotation(**kw):
@@ -194,7 +194,7 @@ def test_an_annotation_is_never_written_into_the_node_table(tmp_path):
     """The discipline the whole application rests on. The node table is measurement; an inference
     stored beside it becomes indistinguishable from one the moment anybody reads the table without
     knowing which columns are which."""
-    from starplast import paths
+    from parascape import paths
     nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
     store = A.AnnotationStore(str(tmp_path / "a.csv"))
     store.save(_annotation(gene_id=str(nodes.gene_id.iloc[0])))
@@ -206,8 +206,8 @@ def test_an_annotation_is_never_written_into_the_node_table(tmp_path):
 def test_the_annotation_color_is_used_for_nothing_else():
     """Measurement, inference and absence have one each. A proposal reading as any of them is the
     failure mode -- so it is checked against the palettes rather than assumed."""
-    from starplast import theme as TH
-    from starplast.app import DEPTH_COLOR, GREY, PALETTE
+    from parascape import theme as TH
+    from parascape.app import DEPTH_COLOR, GREY, PALETTE
     taken = [tuple(np.round(c, 3)) for c in PALETTE]
     taken += [tuple(np.round(c, 3)) for c in DEPTH_COLOR.values()]
     taken.append(tuple(np.round(GREY, 3)))

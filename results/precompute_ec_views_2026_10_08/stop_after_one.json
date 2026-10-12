@@ -9,7 +9,7 @@
     "held_out_rows"
   ],
   "artifact_identities": {
-    "held_out_rows": "4754cab5103f736968881a3d09b203334faaa8dcc2d69381ecbbf67f02c36240"
+    "held_out_rows": "4ab05ecfb235267ad05346ed8e7809e584c4c7220a77f6528de4624839ad5cd5"
   },
   "measured_run": {
     "artifact_storage_bytes": 79793,
@@ -22,7 +22,7 @@
     },
     "jobs": {
       "held_out_rows": {
-        "content_identity": "4754cab5103f736968881a3d09b203334faaa8dcc2d69381ecbbf67f02c36240",
+        "content_identity": "4ab05ecfb235267ad05346ed8e7809e584c4c7220a77f6528de4624839ad5cd5",
         "key": "038ab07bfda4dc88968d7ca0e4735d1073ac08d69a2f230d0e911f9076be65e2",
         "status": "succeeded"
       },

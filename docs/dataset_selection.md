@@ -1,9 +1,9 @@
 # Dataset selection
 
-When several datasets answer the same biological question, Starplast prefers
+When several datasets answer the same biological question, ParaScape prefers
 annual citation rate, with modest recency and comprehensiveness bonuses. This is
 the user's selection rule of 2026-10-07 and is implemented by
-`starplast.dataset_selection.SelectionPolicy`, version 1.
+`parascape.dataset_selection.SelectionPolicy`, version 1.
 
 First admit only datasets with the right organism/host, cell type, stage, assay,
 quantity, units and mapping, usable source data and passing quality checks.
@@ -53,7 +53,7 @@ The service and coverage interpretation are documented in its
 Current selection audit and promotion gates are tracked in
 [instruction 65](../instructions/open/65_dataset_selection_audit.md).
 
-The [October 7 frozen audit](https://github.com/EinarOlafsson/starplast/blob/nightly/results/dataset_selection_2026_10_07/README.md)
+The [October 7 frozen audit](https://github.com/EinarOlafsson/parascape/blob/nightly/results/dataset_selection_2026_10_07/README.md)
 accounts for all 162 sources and searches all 297 slots. It resolves publication
 metadata for 95 sources and retains explicit gaps for the remaining source roles.
 All literature hits and installed-output diagnostics require biological admission;

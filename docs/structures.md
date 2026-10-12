@@ -1,6 +1,6 @@
 # Local AlphaFold 3 models
 
-Starplast can index a local AF3 collection, map the models to genes, and add
+ParaScape can index a local AF3 collection, map the models to genes, and add
 confidence and geometry features to the gene table. The coordinates stay on your
 drive. The package contains a small feature table and a source manifest.
 
@@ -13,8 +13,8 @@ accessions, sequence-version differences and unsynced files remain unresolved.
 ## Build an index
 
 ```bash
-pip install 'starplast[structures]'
-starplast-index-structures /path/to/af_output /path/to/af3_structures \
+pip install 'parascape[structures]'
+parascape-index-structures /path/to/af_output /path/to/af3_structures \
   --uniprot-map /path/to/uniprot.csv \
   --features /path/to/af3_features.parquet
 ```
@@ -25,8 +25,8 @@ an exact full-length sequence match or an exact, uniquely placed fragment within
 that gene's translated CDS. Repeated sequences and ambiguous gene assignments
 are withheld. An accession match by itself is insufficient.
 
-The default index is `~/.cache/starplast/structure_catalog.parquet`.
-`--index` chooses a different destination; set `STARPLAST_STRUCTURE_INDEX` to that
+The default index is `~/.cache/parascape/structure_catalog.parquet`.
+`--index` chooses a different destination; set `PARASCAPE_STRUCTURE_INDEX` to that
 file when launching the app. Selecting a gene in the structure viewer checks the
 index before trying AlphaFold DB. Full models take precedence over fragments.
 Local paths are machine-specific; recreate the index when the drive moves.

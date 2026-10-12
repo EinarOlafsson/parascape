@@ -13,7 +13,7 @@
         "toxodb_ec_numbers"
       ],
       "truth_file": {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_ec_knn_pilot_2026_10_08_v2/truth.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/results/functional_ec_knn_pilot_2026_10_08_v2/truth.parquet",
         "sha256": "4b4a845a8ecdebbb7cde9b86836378a638a42641e169c2c24440589612e1f2dc",
         "bytes": 64185,
         "role": "processed_input",
@@ -21,7 +21,7 @@
         "association": "exact_derived_source_annotation_profiles"
       },
       "universe_file": {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_ec_knn_pilot_2026_10_08_v2/universe.json",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/results/functional_ec_knn_pilot_2026_10_08_v2/universe.json",
         "sha256": "fc8eba37c013b73e3291d5a2690e18135ef2435419c5eb2f1e26a0acdde07ed7",
         "bytes": 138381,
         "role": "processed_input",

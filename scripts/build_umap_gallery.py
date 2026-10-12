@@ -1,7 +1,7 @@
 """Build the pregenerated map gallery and its label x map score table.
 
-For every parasite space whose table ships (`starplast.organisms`), this builds the maps listed by
-`starplast.umap_gallery.recipes`: all measurements at three n_neighbors settings, an "all but one
+For every parasite space whose table ships (`parascape.organisms`), this builds the maps listed by
+`parascape.umap_gallery.recipes`: all measurements at three n_neighbors settings, an "all but one
 family" map per evidence family, one map per family, one per individual experiment block, and the
 curated pairs and triples of families. Each is a 3D UMAP of measurements only (label columns are
 removed from the table first), clustered with HDBSCAN. Every map but the three fixed reference maps
@@ -9,7 +9,7 @@ is SEARCHED over `umap_gallery.MAP_GRID` x `umap_gallery.GALLERY_CLUSTER_GRID` a
 with the best label-free structure score (`umap_gallery.structure`) is the one that ships. Every
 categorical label is then scored on every map (`umap_gallery.score_gallery`).
 
-Output, in `starplast/data/`:
+Output, in `parascape/data/`:
 
 * `umap_gallery.npz`     -- per map: placed gene positions (int32), coordinates (float32), clusters (int16)
 * `umap_gallery.json`    -- per map: recipe, blocks, source columns, sizes, structure, settings searched
@@ -17,19 +17,19 @@ Output, in `starplast/data/`:
 
 and the executed notebook `notebooks/umap_gallery_2026_09_30.ipynb` that records the run.
 
-The embedding runs on the CPU (`STARPLAST_GPU=0`) so the shipped maps are the umap-learn maps a
+The embedding runs on the CPU (`PARASCAPE_GPU=0`) so the shipped maps are the umap-learn maps a
 user without CUDA would reproduce from the stored recipe. Maps are built in parallel processes and
 **checkpointed one map at a time**, so a stopped run resumes instead of starting over. Run the whole
 thing under a memory cap:
 
-    systemd-run --user --scope -p MemoryMax=25G env STARPLAST_GPU=0 \\
-        ~/anaconda3/envs/starplast/bin/python scripts/build_umap_gallery.py --workers 6
+    systemd-run --user --scope -p MemoryMax=25G env PARASCAPE_GPU=0 \\
+        ~/anaconda3/envs/parascape/bin/python scripts/build_umap_gallery.py --workers 6
 
     python scripts/build_umap_gallery.py --no-notebook --organism <code>   # quick, no notebook
     python scripts/build_umap_gallery.py --no-checkpoint                   # rebuild everything
 
 A user who wants more maps than ship -- every block rather than the ones with enough columns, say --
-edits the thresholds in `starplast/umap_gallery.py` and runs this script with `--out` pointing
+edits the thresholds in `parascape/umap_gallery.py` and runs this script with `--out` pointing
 somewhere else; `umap_gallery.Gallery(directory)` loads any such gallery, and the panel takes one.
 """
 from __future__ import annotations
@@ -44,12 +44,12 @@ from concurrent.futures import ProcessPoolExecutor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
-os.environ.setdefault("STARPLAST_GPU", "0")
+os.environ.setdefault("PARASCAPE_GPU", "0")
 
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
-from starplast import umap_gallery as G  # noqa: E402
+from parascape import umap_gallery as G  # noqa: E402
 
 NOTEBOOK = os.path.join(ROOT, "notebooks", "umap_gallery_2026_09_30.ipynb")
 #: One file per built map, so a stopped run resumes. Outside the package: these are not shipped.
@@ -61,7 +61,7 @@ _CTX: dict = {}
 def context(code: str):
     """The shipped context of one organism, once per process."""
     if code not in _CTX:
-        from starplast import strategies as S
+        from parascape import strategies as S
         _CTX[code] = S.Context.shipped(code)
     return _CTX[code]
 
@@ -140,7 +140,7 @@ def score(built: dict, log=print) -> pd.DataFrame:
 
 def headline_label(code: str) -> str:
     """The organism's first categorical calibration target that the table carries."""
-    from starplast import organisms
+    from parascape import organisms
     cats = context(code).categorical_columns()
     return next((t for t in organisms.get(code).targets if t in cats), cats[0])
 
@@ -150,7 +150,7 @@ def compare_clusterings(built: dict) -> pd.DataFrame:
 
     Scored on each organism's headline label, so the choice of `CLUSTERING` is a measured one.
     """
-    from starplast.clustering import cluster
+    from parascape.clustering import cluster
     opening = {"min_cluster_size": 25, "min_samples": 25, "cluster_selection_method": "eom"}
     rows = []
     for code, maps in built.items():
@@ -317,7 +317,7 @@ def notebook(codes=None, workers: int = 6, path: str = NOTEBOOK) -> str:
     nb = ExecutedNotebook("Pregenerated map gallery and label scores", {"__name__": "__notebook__"})
     nb.md("The application's central map is one choice of inputs. This notebook builds a gallery of "
           "alternatives for each organism and scores how well every categorical label maps onto each. "
-          "The code is `scripts/build_umap_gallery.py` and `starplast/umap_gallery.py`; this notebook "
+          "The code is `scripts/build_umap_gallery.py` and `parascape/umap_gallery.py`; this notebook "
           "calls them, so what is shown is what ships.",
           "Six groups of maps: all measurements at three neighbourhood sizes, an 'all but one "
           "family' map per family, one map per evidence family, one per individual experiment block, "
@@ -337,7 +337,7 @@ def notebook(codes=None, workers: int = 6, path: str = NOTEBOOK) -> str:
             f"import sys; sys.path.insert(0, {ROOT!r}); "
             f"sys.path.insert(0, {os.path.join(ROOT, 'scripts')!r})",
             "import build_umap_gallery as B",
-            "from starplast import umap_gallery as G",
+            "from parascape import umap_gallery as G",
             "import pandas as pd",
             "_ = pd.set_option('display.width', 220)")
     nb.md("## 1. The recipes",

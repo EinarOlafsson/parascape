@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 def rebuild(directory, prefix=""):
     """Atomically replace one layout, recording the node snapshot and actual execution."""
-    from starplast.build_graph import embed
+    from parascape.build_graph import embed
     directory = Path(directory)
     node_path = directory / f"{prefix}nodes.parquet"
     graph_path = directory / f"{prefix}graph.npz"
@@ -42,8 +42,8 @@ def rebuild(directory, prefix=""):
 def main():
     """Regenerate the selected organism layouts through the public recipe builder."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", type=Path, default=Path(__file__).resolve().parents[1]/"starplast/data")
-    from starplast import organisms
+    parser.add_argument("--data", type=Path, default=Path(__file__).resolve().parents[1]/"parascape/data")
+    from parascape import organisms
     parser.add_argument("--organism", choices=organisms.codes(), help="Only rebuild this space")
     args = parser.parse_args()
     for code in ([args.organism] if args.organism else organisms.codes()):

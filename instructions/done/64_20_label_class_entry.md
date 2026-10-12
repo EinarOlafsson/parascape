@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.01, 64.02, 64.17, 64.19 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/track_record.py`, `starplast/slot_tree.py`, `starplast/app.py`, `starplast/guided.py` |
+| Existing code to inspect | `parascape/track_record.py`, `parascape/slot_tree.py`, `parascape/app.py`, `parascape/guided.py` |
 
 ## Deliverable
 

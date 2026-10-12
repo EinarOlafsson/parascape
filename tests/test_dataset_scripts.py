@@ -17,7 +17,7 @@ GENERATED = os.path.join(SCRIPTS, "datasets")
 
 sys.path.insert(0, SCRIPTS)
 
-from starplast import datasets  # noqa: E402
+from parascape import datasets  # noqa: E402
 
 
 def test_every_registry_entry_has_a_script():
@@ -81,7 +81,7 @@ def test_each_script_names_the_module_that_normalizes_it():
     for d in datasets.REGISTRY:
         text = open(os.path.join(GENERATED, f"{d.key}.py")).read()
         assert "authoritative" in text or "assembled by" in text
-        assert "starplast." in text
+        assert "parascape." in text
 
 
 @pytest.mark.parametrize("key", [d.key for d in datasets.REGISTRY])

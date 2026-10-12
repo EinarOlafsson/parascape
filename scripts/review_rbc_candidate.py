@@ -23,9 +23,9 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import datasets as D, host, organisms as O, paths  # noqa: E402
-from starplast.dataset_selection import DatasetCandidate, evaluate  # noqa: E402
-from starplast.provenance import audit_mapping  # noqa: E402
+from parascape import datasets as D, host, organisms as O, paths  # noqa: E402
+from parascape.dataset_selection import DatasetCandidate, evaluate  # noqa: E402
+from parascape.provenance import audit_mapping  # noqa: E402
 
 
 def _sha(path):

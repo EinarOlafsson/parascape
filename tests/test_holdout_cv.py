@@ -7,8 +7,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import holdout_cv as H
-from starplast.holdout_cv import (ABSTAIN, choose_final_structure, fit_cluster_calls,
+from parascape import holdout_cv as H
+from parascape.holdout_cv import (ABSTAIN, choose_final_structure, fit_cluster_calls,
                                   inference_table, nested_structure_cv,
                                   predict_cluster_calls, score_predictions)
 

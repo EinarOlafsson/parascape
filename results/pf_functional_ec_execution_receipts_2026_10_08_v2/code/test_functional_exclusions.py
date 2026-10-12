@@ -4,8 +4,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from starplast import functional_exclusions as F, organisms as O
-from starplast.splits import make_split, read_split, write_split
+from parascape import functional_exclusions as F, organisms as O
+from parascape.splits import make_split, read_split, write_split
 
 
 def fixture():
@@ -121,7 +121,7 @@ def test_duplicate_derived_input_addresses_are_refused():
 
 
 def test_supplemental_source_bans_reclose_registered_derived_columns(monkeypatch):
-    from starplast import datasets
+    from parascape import datasets
     nodes,split=fixture()
     original=datasets.derived_dependents
     def registered(columns,organism=None):

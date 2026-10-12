@@ -17,11 +17,11 @@ def main():
     import numpy as np
     import pandas as pd
     from PyQt6 import QtCore, QtGui, QtWidgets, QtSvg
-    from starplast.app import Window
+    from parascape.app import Window
     output = ROOT / 'docs/deck/assets'
     output.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(prefix='starplast-deck-') as temporary:
-        os.environ['STARPLAST_STATE'] = temporary
+    with tempfile.TemporaryDirectory(prefix='parascape-deck-') as temporary:
+        os.environ['PARASCAPE_STATE'] = temporary
         QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
         QtCore.QSettings.setPath(QtCore.QSettings.Format.IniFormat,
                                 QtCore.QSettings.Scope.UserScope, temporary)
@@ -70,7 +70,7 @@ def main():
             window.apply_theme(theme)
             window.redraw()
             save(window.view, 'map-' + theme)
-        renderer = QtSvg.QSvgRenderer(str(ROOT / 'starplast/data/icons/starplast.svg'))
+        renderer = QtSvg.QSvgRenderer(str(ROOT / 'parascape/data/icons/parascape.svg'))
         picture = QtGui.QImage(930, 930, QtGui.QImage.Format.Format_ARGB32)
         picture.fill(QtCore.Qt.GlobalColor.transparent)
         painter = QtGui.QPainter(picture)

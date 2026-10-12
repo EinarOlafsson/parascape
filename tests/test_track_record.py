@@ -15,8 +15,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import strategies as S  # noqa: E402
-from starplast import track_record as T  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape import track_record as T  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -221,7 +221,7 @@ def test_the_category_level_lists_every_class_once_and_links_down(built):
                   & (built["target"].astype(str) == target)]
     html = T.target_html(target, "Tg")
     classes = set(folds["truth"].astype(str))
-    assert html.count("starplast://class/") == len(classes), "a class is missing or repeated"
+    assert html.count("parascape://class/") == len(classes), "a class is missing or repeated"
     assert "best recovered" in html
     assert "per class" in html and "commonest class" in html, "no strategy-side view"
     assert T.target_html("no such category", "Tg") == ""
@@ -247,7 +247,7 @@ def test_the_evidence_panel_drills_from_a_gene_to_its_class_and_back(built):
         pytest.skip("not built here")
     from PyQt6 import QtCore, QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast import app as A
+    from parascape import app as A
     w = A.Window()
     ids = w.nodes.gene_id.astype(str)
     folds = built[(built["mode"] == "together") & (built["organism"] == "Tg")
@@ -255,20 +255,20 @@ def test_the_evidence_panel_drills_from_a_gene_to_its_class_and_back(built):
     row = int(ids[ids == str(folds["gene_id"].iloc[0])].index[0])
     w.show_detail(row)
     html = w.detail.toHtml()
-    assert "If this gene were unknown" in html and "starplast://class/" in html
-    link = html.split("starplast://class/", 1)[1].split('"', 1)[0]
-    w._detail_link(QtCore.QUrl("starplast://class/" + link))
+    assert "If this gene were unknown" in html and "parascape://class/" in html
+    link = html.split("parascape://class/", 1)[1].split('"', 1)[0]
+    w._detail_link(QtCore.QUrl("parascape://class/" + link))
     assert "rate [95%]" in w.detail.toHtml(), "the class level did not open"
     assert "back to the gene" in w.detail.toHtml()
     html = w.detail.toHtml()
-    assert "starplast://target/" in html, "the class page has no way up to its category"
-    up = html.split("starplast://target/", 1)[1].split('"', 1)[0]
-    w._detail_link(QtCore.QUrl("starplast://target/" + up))
+    assert "parascape://target/" in html, "the class page has no way up to its category"
+    up = html.split("parascape://target/", 1)[1].split('"', 1)[0]
+    w._detail_link(QtCore.QUrl("parascape://target/" + up))
     assert "best recovered" in w.detail.toHtml(), "the category level did not open"
-    w._detail_link(QtCore.QUrl(f"starplast://gene/{row}"))
+    w._detail_link(QtCore.QUrl(f"parascape://gene/{row}"))
     assert "If this gene were unknown" in w.detail.toHtml(), "back did not return to the gene"
     target = T.default_target("Tg")
-    w._record_link(f"starplast://target/{target}")
+    w._record_link(f"parascape://target/{target}")
     assert "best recovered" in w.detail.toHtml(), "a strategy card's link did not open the category"
 
 
@@ -277,16 +277,16 @@ def test_the_strategy_card_shows_where_it_is_weakest(built):
         pytest.skip("not built here")
     from PyQt6 import QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast.strategy_card import StrategyCard
+    from parascape.strategy_card import StrategyCard
     card = StrategyCard()
     s = S.get("feature_knn")
     card.show_strategy(s, "Tg", {}, {}, "reliable", "")
     assert card.record.isVisibleTo(card) and "weakest on" in card.record.text()
-    assert "starplast://target/" in card.record.text(), "the line does not lead to the classes"
+    assert "parascape://target/" in card.record.text(), "the line does not lead to the classes"
     heard = []
     card.record_link.connect(heard.append)
-    card.record.linkActivated.emit("starplast://target/compartment")
-    assert heard == ["starplast://target/compartment"]
+    card.record.linkActivated.emit("parascape://target/compartment")
+    assert heard == ["parascape://target/compartment"]
     card.show_strategy(S.get("holdout_search"), "Tg", {}, {}, "weak", "")
     assert not card.record.isVisibleTo(card), "a map walk calls no gene, so it has no record"
 
@@ -322,7 +322,7 @@ def test_a_confusion_is_only_named_if_it_happened(built):
 
 
 def test_one_gene_alone_hides_its_orthogroup_and_is_cached(planted, tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setattr(paths, "user_cache_dir", lambda: str(tmp_path))
     truth = planted.truth("compartment")
     gene = int(np.flatnonzero(truth.notna().to_numpy())[0])
@@ -345,10 +345,10 @@ def test_the_gene_card_tests_another_label_on_demand(built, tmp_path, monkeypatc
     if not len(built):
         pytest.skip("not built here")
     from PyQt6 import QtCore, QtWidgets
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setattr(paths, "user_cache_dir", lambda: str(tmp_path))
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast import app as A
+    from parascape import app as A
     w = A.Window()
     if getattr(w, "strategy_panel", None) is None:
         pytest.skip("no strategy panel here")
@@ -357,19 +357,19 @@ def test_the_gene_card_tests_another_label_on_demand(built, tmp_path, monkeypatc
     row = int(ids[ids == str(folds["gene_id"].iloc[0])].index[0])
     w.show_detail(row)
     html = w.detail.toHtml()
-    if "starplast://record/" in html:
-        link = "starplast://record/" + html.split("starplast://record/", 1)[1].split('"', 1)[0]
+    if "parascape://record/" in html:
+        link = "parascape://record/" + html.split("parascape://record/", 1)[1].split('"', 1)[0]
         w._detail_link(QtCore.QUrl(link))
         shown = w.detail.toHtml()
         assert "were unknown" in shown and "back to the gene" in shown, "a recorded label did not open"
         w.show_detail(row)
         html = w.detail.toHtml()
-    if "starplast://alone/" in html:
-        link = "starplast://alone/" + html.split("starplast://alone/", 1)[1].split('"', 1)[0]
+    if "parascape://alone/" in html:
+        link = "parascape://alone/" + html.split("parascape://alone/", 1)[1].split('"', 1)[0]
     else:
         # Every label this gene has is recorded; the on-demand path still serves any other.
         other = next(t for t in T.recorded_targets("Tg") if t != T.default_target("Tg"))
-        link = f"starplast://alone/{row}/{other}"
+        link = f"parascape://alone/{row}/{other}"
     w._detail_link(QtCore.QUrl(link))
     assert "Hiding" in w.detail.toHtml(), "nothing said while it runs"
     deadline = QtCore.QDeadlineTimer(120_000)
@@ -395,7 +395,7 @@ def test_a_recommendation_quotes_the_record_only_for_its_own_label(built):
 def test_start_here_puts_a_strategy_below_its_baseline_last(built):
     if not len(built):
         pytest.skip("not built here")
-    from starplast import guided as G
+    from parascape import guided as G
     ctx = S.Context.shipped("Tg")
     target = T.default_target("Tg")
     for goal in G.GOALS:
@@ -409,9 +409,9 @@ def test_start_here_tests_your_own_genes_and_shows_the_grid(built, tmp_path, mon
     if not len(built):
         pytest.skip("not built here")
     from PyQt6 import QtCore, QtWidgets
-    from starplast import guided as G
+    from parascape import guided as G
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast import app as A
+    from parascape import app as A
     window = A.Window()
     try:
         panel = window.guided
@@ -433,7 +433,7 @@ def test_start_here_tests_your_own_genes_and_shows_the_grid(built, tmp_path, mon
         app.processEvents()
         html = window.detail.toHtml()
         assert "Would they have found your genes?" in html
-        assert html.count("starplast://gene/") == 6, "every gene should link to its card"
+        assert html.count("parascape://gene/") == 6, "every gene should link to its card"
     finally:
         window.console.remove()
         window.close()
@@ -472,7 +472,7 @@ def test_a_gene_list_setting_can_be_tested_from_the_strategies_tab(built):
         pytest.skip("not built here")
     from PyQt6 import QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast import app as A
+    from parascape import app as A
     window = A.Window()
     try:
         panel = window.strategy_panel

@@ -35,7 +35,7 @@ The article is not open access. Europe PMC `supplementaryFiles` refuses it, and 
 return a proof-of-work page to scripts. The publisher's CDN serves the table directly:
 `https://ars.els-cdn.com/content/image/1-s2.0-S0092867426008275-mmc2.xlsx` (mmc2 = Table S1; mmc3 =
 Table S2, RIP-Seq, not taken). It is stored at
-`<STARPLAST_DATA>/DNA/CRISPR_screen/42580337/mmc2.xlsx` with `URLS.txt`, `SHA256SUMS.txt`
+`<PARASCAPE_DATA>/DNA/CRISPR_screen/42580337/mmc2.xlsx` with `URLS.txt`, `SHA256SUMS.txt`
 (sha256 `03e0d9a1...a1ef`) and an entry in the folder's `SOURCES.md`. The screen's reads are not in
 GEO. GSE327264 and GSE329845 hold the RIP-Seq and RNA-Seq, and PXD077563 holds the proteomics.
 
@@ -60,7 +60,7 @@ The screen is the new part.
 Sign check: cytosolic ribosomal proteins have a median of -9.8 in both arms, against -4.1 for other
 genes. Negative means needed, as in every other fitness column.
 
-## Columns (`starplast/deposits.py::density_screen`, deposit `crispr_parasite_density`)
+## Columns (`parascape/deposits.py::density_screen`, deposit `crispr_parasite_density`)
 
 | column | what | Tg genes |
 |---|---|---|

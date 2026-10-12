@@ -10,9 +10,9 @@
     "member_cards"
   ],
   "artifact_identities": {
-    "held_out_rows": "4754cab5103f736968881a3d09b203334faaa8dcc2d69381ecbbf67f02c36240",
-    "scorecards": "6bf451dcd92044a3db0d891cc701e573dd91f555bef030c892ea7969aaa9e089",
-    "member_cards": "8dcfb95f746509d952ed2ff20c50b8f72051aa652e2174c5f9821851c233ffe1"
+    "held_out_rows": "4ab05ecfb235267ad05346ed8e7809e584c4c7220a77f6528de4624839ad5cd5",
+    "scorecards": "cecd136698e6224dbb121790d6f5a04d5ecfcd76e2f62a889aef74e8652736c8",
+    "member_cards": "ec3f4708f9a2deef92cc77c9935f0bc8fb9cfa9cd1f0fbe6682e5db2f442de94"
   },
   "measured_run": {
     "artifact_storage_bytes": 166244,
@@ -25,19 +25,19 @@
     },
     "jobs": {
       "held_out_rows": {
-        "content_identity": "4754cab5103f736968881a3d09b203334faaa8dcc2d69381ecbbf67f02c36240",
+        "content_identity": "4ab05ecfb235267ad05346ed8e7809e584c4c7220a77f6528de4624839ad5cd5",
         "key": "038ab07bfda4dc88968d7ca0e4735d1073ac08d69a2f230d0e911f9076be65e2",
         "resumed": true,
         "status": "succeeded",
         "storage_bytes": 79793
       },
       "member_cards": {
-        "content_identity": "8dcfb95f746509d952ed2ff20c50b8f72051aa652e2174c5f9821851c233ffe1",
+        "content_identity": "ec3f4708f9a2deef92cc77c9935f0bc8fb9cfa9cd1f0fbe6682e5db2f442de94",
         "key": "9986c7c85a49539457ce26709502810e20c75d8f4bda7a4487cf0502d7b46605",
         "status": "succeeded"
       },
       "scorecards": {
-        "content_identity": "6bf451dcd92044a3db0d891cc701e573dd91f555bef030c892ea7969aaa9e089",
+        "content_identity": "cecd136698e6224dbb121790d6f5a04d5ecfcd76e2f62a889aef74e8652736c8",
         "key": "6cb6fcb3ade610bc6cc8a2706b13625ddda92767736222511fcf9e5af0b61707",
         "status": "succeeded"
       }

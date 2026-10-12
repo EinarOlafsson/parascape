@@ -47,7 +47,7 @@
     "macro_auroc": null,
     "macro_auprc": null
   },
-  "artifact_identity": "62cd18402d06e3b46890115d2badb19288d73e56968e953c6e9ad120505e14ae",
+  "artifact_identity": "892722077f3f543be90b7027852932043be553217db0251259f17b0e2c0140fb",
   "interpretation": "surrogate stored-prediction recovery; not independent biological accuracy",
   "native_runtime_changes": "none"
 }

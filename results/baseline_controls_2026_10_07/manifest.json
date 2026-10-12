@@ -1,11 +1,11 @@
 {
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/verify_baseline_controls.py": "a23412cb4fd4271904f2b9d6c0c9dd11364987a3601a4a9b4b429024fea12b40",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/baselines.py": "c135471fe8fc96cd443cdd90bf8058733502728588704e31a0c4099306be5307",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/splits.py": "6898360c7f5acfa3aa97e4004d20db19ee7a4bea224a85c2a537c2e729b7d23f",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/ground_truth.py": "95af14270056de576d63e94257ec90a70f94a9ad0d33a16c2deb47c619318751",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/scorecard.py": "aeddc48184f157989516caf32879d0ea071389cfd6fb225e61086f4a9313bade",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/organisms.py": "55d184dd251287644514a6b5b01fc35c68a48038fed18865970ba35b78fde9c9"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/verify_baseline_controls.py": "de970f72e3b0927297112f38452544a997d3b281b2f38b2c774490aba4fafe7b",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/baselines.py": "c135471fe8fc96cd443cdd90bf8058733502728588704e31a0c4099306be5307",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/splits.py": "6898360c7f5acfa3aa97e4004d20db19ee7a4bea224a85c2a537c2e729b7d23f",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/ground_truth.py": "95af14270056de576d63e94257ec90a70f94a9ad0d33a16c2deb47c619318751",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/scorecard.py": "aeddc48184f157989516caf32879d0ea071389cfd6fb225e61086f4a9313bade",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/organisms.py": "6f4c9b99fddd600a65642d28e3af14df85c5e5353ce3bff6f640122e0b46ca87"
   },
   "truth_grade": "synthetic_control",
   "software": {

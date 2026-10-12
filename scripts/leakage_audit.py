@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Audit the slot grouping for information leakage, and write down what the data says.
 
-Runs `starplast.leakage` over both shipped tables and writes ``results/leakage_audit_<date>/``:
+Runs `parascape.leakage` over both shipped tables and writes ``results/leakage_audit_<date>/``:
 
     calibration.json     per organism: how associated columns from DIFFERENT axes of the catalogue
                          get (95th, 99th, 99.9th percentiles, bootstrap 95% intervals over slot
@@ -28,7 +28,7 @@ import pandas as pd
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from starplast import leakage as L  # noqa: E402
+from parascape import leakage as L  # noqa: E402
 
 TABLES = {"Tg": "nodes.parquet", "Pf": "pf_nodes.parquet"}
 TARGETS = {"Tg": ("compartment", "lopit_unified", "cellcycle_phase", "stage_enriched_derived",
@@ -53,7 +53,7 @@ def audit(out_dir: str, log=print) -> dict:
     os.makedirs(out_dir, exist_ok=True)
     cal, relations, gaps, residual = {}, [], [], []
     for org, name in TABLES.items():
-        nodes = pd.read_parquet(os.path.join(ROOT, "starplast", "data", name))
+        nodes = pd.read_parquet(os.path.join(ROOT, "parascape", "data", name))
         log(f"{org}: association matrix")
         ranks, values = L.association_matrix(nodes)
         owner = L.slot_of_columns(nodes, org)

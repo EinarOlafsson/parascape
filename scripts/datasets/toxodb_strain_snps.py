@@ -8,7 +8,7 @@ SNPs per gene across every sequenced strain, split by effect
     coverage     : 8,140 genes (100%)
     accession    : ToxoDB ME49
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
-    local path   : starplast/data/toxodb_strain_snps.tsv
+    local path   : parascape/data/toxodb_strain_snps.tsv
 
 Quirks that cost time once:
     Retrieved 2026-08-16 through the same REST report as the identity table, asking for the five
@@ -21,7 +21,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/toxodb_strain_snps.py

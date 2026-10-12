@@ -22,7 +22,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import metrics as M  # noqa: E402
+from parascape import metrics as M  # noqa: E402
 
 
 def world(n_per=60, classes=("IMC", "rhoptry", "apicoplast", "nucleus"), spread=0.6, seed=0):

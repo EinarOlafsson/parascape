@@ -314,10 +314,10 @@
     }
   ],
   "source_output_receipts": {
-    "README.md": "5d0d926e9b9da07bfb72be54886eb3e6bd797f7e128b2c70378d47493861f24f",
-    "audit.ipynb": "0040868ac6506e5c9fc377a4ebe4ba119f85039aa10c7d0351260375ac39ede1",
+    "README.md": "aa1439a8a44ba42744716fbaa69c35f76e5947c9abf9a8bf6f4ead3d6a475023",
+    "audit.ipynb": "60126a5aec4c6aba494f28e96f399515c78463088493bd26843bc17ed8fa7780",
     "cards.json": "532dc8c1a94e3e9fe3dba28ba1b7c440c72214b652f70080853953f8c94bb27f",
-    "checks.json": "14623b7ab4334602913e116fb892792e98c960db9067dcb3dca90deb2c62427b",
+    "checks.json": "b049d46b9305445c2f991314faa42654a32ccd89cfad7074aa78142db275bfb1",
     "clusters.html": "e243d834f3daead2f85fb43843c23adc1607f3c6e530b48e3c515e40a2980785",
     "controls.json": "d52131ffeac28f0b63f50230d0f73549b65eff306f42509fb612df609c15e8d3",
     "evidence.html": "b7edf845271db7d4eaa7ee739190d5aeac13950dd3707607abc32b5e4e457cf9",
@@ -332,17 +332,17 @@
     "ranking.html": "a41a3cece375c759ebb6ac4b3aea0b61839acd0bbb609773575c91280b7eb6d3",
     "replication.html": "4da88be7156e82eac62fe811c22192fda6eaaf9f5bd9f85d7e3062df5d45192f",
     "retrieval.html": "18473c19f0a75b14b735ccf121492c33cfe4a531954cba3523b3d69212d08935",
-    "summary.json": "8c0bac60fb3a541534570f10be903b069fb2e9e21686369fb37dc73ee18bad70",
+    "summary.json": "2fe92daf85e5ba82bab4ad8239d306b89b147383f0905ca4bbc8b92a731a8815",
     "values.html": "0850d2f80be533cabec755869f3eae49c6d0dd721b3d75c025db7f2bad534d4f"
   },
   "code_sha256": {
-    "scripts/audit_desktop_scorecards.py": "b94ca7c330c11490c1abfc1b4f838aed9719072aaf04ea7e5488c2787a8b2d71",
+    "scripts/audit_desktop_scorecards.py": "5a3283d488174601dcdac2b0a8e2448bfdebb1b2850a9b3be8ae202d4bfe9b37",
     "scripts/notebook_runner.py": "e319e5a584ad4ce60be32d22818f6f987d9969e743b01acdcb40ea4b173b9e34",
-    "starplast/scorecard_view.py": "383005f443b7c3b6194e401074ccdbad2c2ed04254296ec6ebc4d3075ae3cea6",
-    "starplast/scorecard_browser.py": "0dc8661b108c77fc75317081a47bba2b77c834a76b93ecad45b9bd600dff5b27",
-    "starplast/scorecard.py": "8ed3dd185fb818f69a2e3a028f53f4c0ff82656871170a91fca81f8fe0ca0234",
-    "starplast/host_foundation_scorecard.py": "45a4bea759221c03f489a4ac1560f78acd19e39576ccdbef10c6706ee18b2899",
-    "starplast/organisms.py": "55d184dd251287644514a6b5b01fc35c68a48038fed18865970ba35b78fde9c9"
+    "parascape/scorecard_view.py": "e80693c73a3c3d9a259763d95cebe5333e68f818407d9524518741a13a1ec702",
+    "parascape/scorecard_browser.py": "0dc8661b108c77fc75317081a47bba2b77c834a76b93ecad45b9bd600dff5b27",
+    "parascape/scorecard.py": "8ed3dd185fb818f69a2e3a028f53f4c0ff82656871170a91fca81f8fe0ca0234",
+    "parascape/host_foundation_scorecard.py": "45a4bea759221c03f489a4ac1560f78acd19e39576ccdbef10c6706ee18b2899",
+    "parascape/organisms.py": "6f4c9b99fddd600a65642d28e3af14df85c5e5353ce3bff6f640122e0b46ca87"
   },
   "qt_version": "6.11.0",
   "runtime_seconds": 0.679617163958028,

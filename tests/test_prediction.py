@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import prediction as P
+from parascape import prediction as P
 
 
 def fixture(kind='classification', n=150):

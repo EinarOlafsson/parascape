@@ -67,7 +67,7 @@ that it does not bleach category colors or hide dense structure.
 ## Traps
 
 - Vulkan is a graphics API/backend, not a lighting style. Do not expose it as a cosmetic option unless
-  Starplast actually has a Vulkan renderer and can maintain that path.
+  ParaScape actually has a Vulkan renderer and can maintain that path.
 - pyqtgraph's existing scatter path cannot produce real per-point spherical normals or physically based
   glossy/metallic shading by changing a material label. This may require a custom shader, sphere
   impostors, instanced geometry, or a different renderer.
@@ -87,7 +87,7 @@ Preferences now asks four independent questions with no decorative controls:
 
 `ray traced` sends one shadow ray per displayed gene toward the active light through the cached
 48-cell point-density volume. Dense clusters attenuate genes behind them. This is genuine volumetric
-shadow-ray tracing, but not Vulkan RT or path tracing: Starplast has point sprites rather than
+shadow-ray tracing, but not Vulkan RT or path tracing: ParaScape has point sprites rather than
 triangles and implements neither reflections nor refraction. The UI tooltip says that explicitly.
 
 The two 3D modes use 64×64 sphere-impostor textures with per-texel normals. Glossy uses a tight white

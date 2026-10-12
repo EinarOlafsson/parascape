@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](64_information_space_and_i
 |---|---|
 | Depends on | 64.05, 64.06, 64.07, 64.08, 64.09 |
 | Estimated remaining engineering time | 6–10 h |
-| Existing code to inspect | `starplast/strategy_catalog.py`, `starplast/strategy_learning.py`, `starplast/scorecard.py`, `starplast/track_record.py` |
+| Existing code to inspect | `parascape/strategy_catalog.py`, `parascape/strategy_learning.py`, `parascape/scorecard.py`, `parascape/track_record.py` |
 
 ## Deliverable
 
@@ -87,7 +87,7 @@ matched MAE/MSE skill 0.335439/0.474868. Units remain unresolved and the
 direct-experiment-origin candidate is not independently admitted biology.
 Constant-float baseline ranking diagnostic retained; exact revision comparison
 proves unchanged model/prediction/source values. 1,123 final checks passed.
-Artifact `782d9e3745b28552b84f9a97022f270bfcb228e49ce37d1e2da5b1c5af08f1b8`.
+Artifact `6f6e50da3ae78dcd8126d7306a423c5122cc3c343276695b60db7ce95c5e417c`.
 25%, no completion tick: other mechanisms/variants, intervals, full coverage
 and source/units/biological admission are still pending.
 
@@ -120,6 +120,6 @@ cohort order and source/arithmetic refusals are covered. 1,009 relevant checks
 pass; initial 10 fixture failures (wrong module for native point fitter) corrected,
 55 initially passed. No installed source, runtime native algorithm or historical
 snapshot changed. Artifact identity
-`43fd24722a1cd4be3c3d0629abd16514b8b6833ab3627df908f5240551673b76`.
+`c1277015b87d6b797c03143fc5854a1acc17b5a701a3263e28d24283334a7099`.
 35%, no completion tick: other variants/mechanisms, full outer coverage and
 source/unit/independent biological admission remain open.

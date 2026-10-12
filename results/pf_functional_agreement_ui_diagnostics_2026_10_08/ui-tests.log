@@ -1,4 +1,4 @@
-Running as unit: starplast-paired-ui-tests-20261008.service
+Running as unit: parascape-paired-ui-tests-20261008.service
 .E.................................                                      [100%]
 ==================================== ERRORS ====================================
 _ ERROR at teardown of test_pair_from_both_strategies_retains_exact_export_rows_and_gene_outcomes _

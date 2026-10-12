@@ -6,9 +6,9 @@ import pandas as pd
 import pytest
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-from starplast import datasets as D, inventory as I, organisms as O
-from starplast.dataset_browser import DatasetBrowser
-from starplast.dataset_space import DatasetSpace
+from parascape import datasets as D, inventory as I, organisms as O
+from parascape.dataset_browser import DatasetBrowser
+from parascape.dataset_space import DatasetSpace
 
 
 @pytest.fixture(scope='session')

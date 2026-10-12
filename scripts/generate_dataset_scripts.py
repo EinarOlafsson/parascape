@@ -23,7 +23,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 
-from starplast import datasets  # noqa: E402
+from parascape import datasets  # noqa: E402
 
 OUT_DIR = os.path.join(HERE, "datasets")
 
@@ -71,7 +71,7 @@ TEMPLATE = '''#!/usr/bin/env python3
 {note}
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.{by}`; this script is the per-dataset view of the same source, for
+`parascape.{by}`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/{key}.py

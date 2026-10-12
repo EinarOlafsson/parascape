@@ -44,7 +44,7 @@ wins and the halves are used only where nothing else reaches that gene.
 
 ## What was added
 
-Twenty-one deposits derive into the tables through `starplast/deposits.py`, each with the
+Twenty-one deposits derive into the tables through `parascape/deposits.py`, each with the
 computation between the file and the column written down, and each re-derived by
 `notebooks/derive_deposits_2026_09.ipynb`. Toxoplasma went from 402 to 438 columns, Plasmodium from
 123 to 146, the host table from 34,630 to 36,579 proteins, and slot coverage from 156/204 to 169/215
@@ -127,7 +127,7 @@ Two real leaks were found and closed:
 
 ## Where things are
 
-* `starplast/deposits.py` — the derivations, one function per deposit, with its checks named.
+* `parascape/deposits.py` — the derivations, one function per deposit, with its checks named.
 * `scripts/derive_deposits.py` → `notebooks/derive_deposits_2026_09.ipynb` — executed, so the
   notebook in the tree is the run that produced the shipped numbers.
 * `scripts/add_deposits.py` — merges derived tables into the caches, and REFUSES any merge that

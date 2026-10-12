@@ -29,7 +29,7 @@
     {
       "key": "source",
       "label": "Ground-truth source and interpretation",
-      "text": "{\n  \"context\": \"Installed Toxoplasma gene EC annotations resolved through pinned ENZYME nomenclature; gene-level curation/prediction provenance unresolved.\",\n  \"grade\": \"unresolved\",\n  \"lineage\": \"Frozen recorded reference profiles; independent biological activity not admitted\",\n  \"name\": \"ec_number\",\n  \"negative_semantics\": \"Missing or unresolved annotation is unknown, not biological absence\",\n  \"sha256\": \"349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162\",\n  \"version\": \"Unavailable / not supplied\"\n}"
+      "text": "{\n  \"context\": \"Installed Toxoplasma gene EC annotations resolved through pinned ENZYME nomenclature; gene-level curation/prediction provenance unresolved.\",\n  \"grade\": \"unresolved\",\n  \"lineage\": \"Frozen recorded reference profiles; independent biological activity not admitted\",\n  \"name\": \"ec_number\",\n  \"negative_semantics\": \"Missing or unresolved annotation is unknown, not biological absence\",\n  \"sha256\": \"e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461\",\n  \"version\": \"Unavailable / not supplied\"\n}"
     },
     {
       "key": "split",
@@ -69,7 +69,7 @@
     {
       "key": "freshness",
       "label": "Freshness",
-      "text": "{\n  \"artifact_identity\": \"349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162\"\n}"
+      "text": "{\n  \"artifact_identity\": \"e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461\"\n}"
     },
     {
       "key": "gaps",
@@ -1554,7 +1554,7 @@
         }
       ],
       "freshness": {
-        "artifact_identity": "349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162"
+        "artifact_identity": "e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461"
       },
       "gaps": [
         "0 eligible genes lack resolved homology groups",
@@ -3215,7 +3215,7 @@
         "lineage": "Frozen recorded reference profiles; independent biological activity not admitted",
         "name": "ec_number",
         "negative_semantics": "Missing or unresolved annotation is unknown, not biological absence",
-        "sha256": "349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162"
+        "sha256": "e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461"
       },
       "split": {
         "fit_entities": [
@@ -3939,7 +3939,7 @@
     "lineage": "Frozen recorded reference profiles; independent biological activity not admitted",
     "name": "ec_number",
     "negative_semantics": "Missing or unresolved annotation is unknown, not biological absence",
-    "sha256": "349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162",
+    "sha256": "e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461",
     "version": "Unavailable / not supplied"
   },
   "status": "Reference-annotation recovery; independent biological activity accuracy unavailable. Calibrated confidence: unavailable.",

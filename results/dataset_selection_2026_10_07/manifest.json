@@ -1,16 +1,16 @@
 {
   "as_of": "2026-10-07",
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/audit_dataset_selection.py": "49d36b917d5b698ce7067d5c326510a20a8509b1983f3be2cffd602befc0c428",
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/generate_slot_table.py": "b9c085f2684079df8939bcef58eb7cb4ca706799a299b75b0c4ce901327aef7f",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/hs_host_proteins.parquet": "9c78c84fe07836b3c3b269d01af3cd1d8a5fb26e0eacbf1b94a38577c23c166f",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/mm_host_proteins.parquet": "30e9349d736327c680e00a3c15429bda28fc6599e2989eb9d01d539a1b725c4f",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/nodes.parquet": "1a2fee1a4b97be8442287dfe982c991c119ece6f9f318968956f926ebe87c69c",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/slots.json": "fa3f04c24fe924446410507f4d1654fdf07351d0a9cc7e323324be29d550dc75",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/dataset_selection.py": "b93f3b9504808dd96bbf5881e9773eef9acdf1be7b92ebff62bf1430c7313557",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/datasets.py": "cb718462a871f1ebd7b03526bf0dffef1e6c21cc44079207f1b7b35e7ef1bd13",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/slots.py": "93052e9172e6fdcefaa5c7fccb26527e3cd7ef66ebe2e077a7a92d1736ebb194"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/audit_dataset_selection.py": "a7c86ee050fb6249170da38609beaeaf4b7a34d7e828bb0a6b0ea20ac6cb57c8",
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/generate_slot_table.py": "b9c085f2684079df8939bcef58eb7cb4ca706799a299b75b0c4ce901327aef7f",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/hs_host_proteins.parquet": "9c78c84fe07836b3c3b269d01af3cd1d8a5fb26e0eacbf1b94a38577c23c166f",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/mm_host_proteins.parquet": "30e9349d736327c680e00a3c15429bda28fc6599e2989eb9d01d539a1b725c4f",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/nodes.parquet": "1a2fee1a4b97be8442287dfe982c991c119ece6f9f318968956f926ebe87c69c",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/slots.json": "fa3f04c24fe924446410507f4d1654fdf07351d0a9cc7e323324be29d550dc75",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/dataset_selection.py": "b93f3b9504808dd96bbf5881e9773eef9acdf1be7b92ebff62bf1430c7313557",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/datasets.py": "637051234e4eec8302ff0a73dbc7a2a3c2e7ed3ba097a3daaccb5f3ed8e80d20",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/slots.py": "93052e9172e6fdcefaa5c7fccb26527e3cd7ef66ebe2e077a7a92d1736ebb194"
   },
   "limits": "First ten highest-cited and newest hits; no exhaustive-literature or biological-best assertion; storage coverage proxy",
   "outputs": {

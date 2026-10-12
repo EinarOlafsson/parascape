@@ -6,19 +6,19 @@ The user, 2026-09-29:
 
 > there should be a network map the user can navigate where they can visualize how different
 > strategies link together different genes, like a star map, where each gene is a node and its
-> edges are connections to other genes through data or inference done in starplast; their own runs
-> should show up here as well as the runs already done by starplast.
+> edges are connections to other genes through data or inference done in parascape; their own runs
+> should show up here as well as the runs already done by parascape.
 
 ## Plan
 
-1. `starplast/star_edges.py` (Qt-free): one link store with provenance (kind measured/inferred,
+1. `parascape/star_edges.py` (Qt-free): one link store with provenance (kind measured/inferred,
    group, source, how, setting, score, strength, run, origin, created, note). Measured links read
    from each space's graph; inferred links derived from strategy results, bounded.
-2. `scripts/build_star_edges.py` -> `starplast/data/star_edges.parquet`, recorded as
+2. `scripts/build_star_edges.py` -> `parascape/data/star_edges.parquet`, recorded as
    `notebooks/star_edges_2026_09_29.ipynb`: default-setting runs of 13 strategies on both shipped
    tables.
 3. `UserEdgeStore` under `paths.user_cache_dir()/star_edges`: every Strategies-tab run adds its links.
-4. `starplast/star_map.py`: the view (radial, 1-2 hops, per-source toggles and counts, hover
+4. `parascape/star_map.py`: the view (radial, 1-2 hops, per-source toggles and counts, hover
    provenance, click re-centres, follow selection, select on 3D map). `app.py` gets a 3-line hook
    (`_star_map`) and 2 lines in `on_pick`.
 

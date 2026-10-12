@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import claims as C, discovery_labels as D, organisms as O, strategies as S, track_record as T
+from parascape import claims as C, discovery_labels as D, organisms as O, strategies as S, track_record as T
 
 
 def context():
@@ -44,7 +44,7 @@ def test_ec_replacement_mentions_are_not_assigned_classes_and_descriptions_stay_
 
 
 def test_domain_names_enrich_only_missing_descriptions_without_changing_membership():
-    from starplast import functional_domains as FD
+    from parascape import functional_domains as FD
     ctx = context()
     original = D.annotation_members(ctx,'pfam_id')
     named = D.annotation_members(ctx,'pfam_id',domain_lookup=FD.shipped())
@@ -121,7 +121,7 @@ def test_installed_function_catalogue_and_all_existing_claims_recipes_are_access
 
 def test_function_search_class_members_and_gene_navigation_are_distinct_from_claims(monkeypatch):
     from PyQt6 import QtWidgets
-    from starplast.discoveries_panel import DiscoveriesPanel
+    from parascape.discoveries_panel import DiscoveriesPanel
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     monkeypatch.setattr(C,'shipped',lambda *a:pd.DataFrame())
     monkeypatch.setattr(C,'recipes',lambda *a:pd.DataFrame())
@@ -149,7 +149,7 @@ def test_function_search_class_members_and_gene_navigation_are_distinct_from_cla
 
 def test_installed_class_opens_gene_and_existing_scorecard_in_real_window():
     from PyQt6 import QtWidgets
-    from starplast.app import Window
+    from parascape.app import Window
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     window = Window()
     try:
@@ -165,7 +165,7 @@ def test_installed_class_opens_gene_and_existing_scorecard_in_real_window():
         assert panel.annotation_record.isEnabled()
         panel.annotation_record.click()
         html = window.detail.toHtml()
-        assert 'starplast://target/compartment' in html and 'rate [95%]' in window.detail.toPlainText()
+        assert 'parascape://target/compartment' in html and 'rate [95%]' in window.detail.toPlainText()
         # Verifier column names contain spaces and must survive table rendering.
         if len(panel.shown):
             row = panel.shown.iloc[0]

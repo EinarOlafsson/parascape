@@ -6,10 +6,10 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import organisms as O, scorecard as C
-from starplast.ground_truth import (BenchmarkEntry, StrategyBenchmark, cohort_digest,
+from parascape import organisms as O, scorecard as C
+from parascape.ground_truth import (BenchmarkEntry, StrategyBenchmark, cohort_digest,
                                    eligibility_mask, read_registry, write_registry)
-from starplast.provenance import SourceFile
+from parascape.provenance import SourceFile
 
 
 def _entry(tmp_path, **overrides):
@@ -97,7 +97,7 @@ def test_registry_roundtrip_and_input_mutation_detection(tmp_path):
 
 def test_frozen_census_keeps_real_truth_gaps_and_covers_every_strategy():
     from pathlib import Path
-    from starplast import strategies as S
+    from parascape import strategies as S
 
     path = Path(__file__).resolve().parents[1] / "results/ground_truth_registry_2026_10_07_v2/registry.json"
     # The snapshot is a local review artifact; installed wheels may omit results.

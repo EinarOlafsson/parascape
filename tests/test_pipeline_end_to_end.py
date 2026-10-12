@@ -29,7 +29,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import datasets, identity, paths, search  # noqa: E402
+from parascape import datasets, identity, paths, search  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -139,8 +139,8 @@ def test_every_registered_dataset_contributes_at_least_one_column(nodes):
     """A dataset joining zero rows looks exactly like a dataset nobody measured. The in vivo screen
     contributed 0 of 8,140 rows for exactly this reason until it was routed through identity."""
     import numpy as np
-    import starplast.paths as P
-    from starplast import slots
+    import parascape.paths as P
+    from parascape import slots
     graph = np.load(os.path.join(P.data_dir(), "graph.npz"))
     layers = {k.split("__")[0] for k in graph.files if "__" in k}
     missing = {}
@@ -273,7 +273,7 @@ def test_no_undirected_edge_is_stored_twice(graph):
 def test_a_held_out_target_is_genuinely_absent_from_the_embedding(nodes):
     """Measured rather than named. `compartment` fed one embedding and the battery reported its exact
     twin and its derivations as the top discoveries at V = 0.96."""
-    from starplast.embedding import EmbeddingSpec, columns_for
+    from parascape.embedding import EmbeddingSpec, columns_for
     for target in ("compartment", "cellcycle_phase", "stage_enriched_derived"):
         banned = search.excluded_for(nodes, target)
         assert target in banned
@@ -291,7 +291,7 @@ def test_the_declared_derivation_is_excluded_from_its_own_embedding(nodes):
 
 
 def test_an_embedding_can_be_built_from_the_shipped_table(nodes):
-    from starplast.embedding import EmbeddingSpec, build_matrix
+    from parascape.embedding import EmbeddingSpec, build_matrix
     X, names, keep = build_matrix(nodes, EmbeddingSpec(), log=lambda *_: None)
     assert np.isfinite(X).all()
     assert X.shape[0] > 1000 and X.shape[1] > 10
@@ -300,7 +300,7 @@ def test_an_embedding_can_be_built_from_the_shipped_table(nodes):
 
 def test_no_column_in_the_embedding_is_constant_or_all_missing(nodes):
     """A constant column contributes nothing but takes a share of the variance budget."""
-    from starplast.embedding import EmbeddingSpec, build_matrix
+    from parascape.embedding import EmbeddingSpec, build_matrix
     X, names, _ = build_matrix(nodes, EmbeddingSpec(), log=lambda *_: None)
     var = X.var(axis=0)
     dead = [n for n, v in zip(names, var) if v <= 0]
@@ -310,7 +310,7 @@ def test_no_column_in_the_embedding_is_constant_or_all_missing(nodes):
 def test_the_variance_shares_sum_to_one_and_no_block_dominates_by_column_count(nodes):
     """27 one-hot compartment columns took 56% of the matrix by being numerous, which is why blocks are
     normalized before weighting."""
-    from starplast.embedding import EmbeddingSpec, variance_share
+    from parascape.embedding import EmbeddingSpec, variance_share
     share = variance_share(nodes, EmbeddingSpec())
     assert share.share.sum() == pytest.approx(1.0, abs=1e-6)
     assert share.share.max() < 0.75
@@ -342,7 +342,7 @@ def test_the_registry_resolves_against_the_real_dataset_tree():
 @pytest.mark.skipif(not DATASET_ROOT_PRESENT, reason="no raw dataset tree found")
 def test_the_shipped_expression_columns_still_reproduce_their_geo_source(nodes, index):
     """The verification behind task 05: rho 1.0000 and 0.9970 over 7,880 genes when last measured."""
-    from starplast import verify
+    from parascape import verify
 
     def resolve(a):
         hit = index.lookup.get(identity.norm(a))
@@ -366,8 +366,8 @@ def test_the_two_species_caches_do_not_answer_each_other(nodes):
     import os
     import numpy as np
     import pandas as pd
-    import starplast.paths as P
-    from starplast import slots
+    import parascape.paths as P
+    from parascape import slots
     pf_nodes_path = os.path.join(P.data_dir(), "pf_nodes.parquet")
     pf_graph_path = os.path.join(P.data_dir(), "pf_graph.npz")
     if not (os.path.exists(pf_nodes_path) and os.path.exists(pf_graph_path)):

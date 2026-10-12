@@ -21,8 +21,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import datasets as D, deposits, host, organisms as O, paths  # noqa: E402
-from starplast.provenance import (MeasurementTrace, SourceFile, Transform, audit_mapping,
+from parascape import datasets as D, deposits, host, organisms as O, paths  # noqa: E402
+from parascape.provenance import (MeasurementTrace, SourceFile, Transform, audit_mapping,
                                   read_traces, trace_sources, write_traces)  # noqa: E402
 
 
@@ -83,17 +83,17 @@ def bmdm_pilot(root: Path) -> tuple:
     if len(m0) != 3:
         raise ValueError("The declared BMDM baseline pilot requires three unstimulated replicates")
     transform = Transform("FPKM to TPM per sample; mean three M0 replicates; map and retain best expressed row",
-                          "starplast.deposits.bmdm_baseline", _sha(ROOT / "starplast/deposits.py"),
+                          "parascape.deposits.bmdm_baseline", _sha(ROOT / "parascape/deposits.py"),
                           tuple(item.path for item in files), ("unrounded:bmdm_tpm",),
                           {"sample_columns": m0, "sample_normalization": "FPKM / sum(all source FPKM) * 1e6",
                            "ambiguous_Ensembl": "withheld", "duplicate_target": "highest mean TPM",
                            "namespace_normalization": "remove explicitly recorded Ensembl version and UniProt isoform suffix"})
     serialization = Transform("Serialize keyed deposit TSV using the recorded ten-significant-digit format",
-                              "starplast.deposits.derive_all", _sha(ROOT / "starplast/deposits.py"),
+                              "parascape.deposits.derive_all", _sha(ROOT / "parascape/deposits.py"),
                               ("unrounded:bmdm_tpm",), ("deposit_host_bmdm_baseline.tsv:bmdm_tpm",),
                               {"float_format": "%.10g", "separator": "tab"})
     merge = Transform("Read keyed deposit TSV and join the installed host protein table",
-                      "starplast.host.merge_tissue", _sha(ROOT / "starplast/host.py"),
+                      "parascape.host.merge_tissue", _sha(ROOT / "parascape/host.py"),
                       ("deposit_host_bmdm_baseline.tsv:bmdm_tpm",), ("bmdm_tpm",),
                       {"join_key": "reviewed UniProt accession", "source_species": O.MOUSE})
     summary = {"source_rows": len(data), "source_mapping": asdict(audit), "reproduced_rows": len(reproduced),
@@ -117,7 +117,7 @@ def build(root: Path, bindings_path: Path, output: Path) -> dict:
     for item in bindings.values():
         item.verify()
     inputs = [inventory_path, publication_path, bindings_path, Path(__file__),
-              *(ROOT / "starplast" / name for name in ("provenance.py", "datasets.py", "deposits.py", "host.py")),
+              *(ROOT / "parascape" / name for name in ("provenance.py", "datasets.py", "deposits.py", "host.py")),
               Path(paths.cache_file(O.HOST_TABLES[O.MOUSE]))]
     hashes = {str(path): _sha(path) for path in inputs}
     files, mapping, pilot_steps, pilot = bmdm_pilot(root)
@@ -137,8 +137,8 @@ def build(root: Path, bindings_path: Path, output: Path) -> dict:
         gaps = ["license_unresolved", "redistribution_unresolved", "source_publication_association_unverified"]
         if not source_files:
             gaps.append("raw_or_processed_input_not_located")
-            if source.path and source.path.startswith("starplast/data/"):
-                cache = Path(paths.cache_file(source.path.removeprefix("starplast/data/")))
+            if source.path and source.path.startswith("parascape/data/"):
+                cache = Path(paths.cache_file(source.path.removeprefix("parascape/data/")))
                 if cache.is_file():
                     source_files = (SourceFile.inspect(cache, "installed_cache"),)
         if graph["gaps"]:
@@ -151,7 +151,7 @@ def build(root: Path, bindings_path: Path, output: Path) -> dict:
             deposit = next((entry for entry in deposits.DEPOSITS if entry.key == source.key), None)
             if deposit and source_files and source_files[0].role != "installed_cache":
                 steps = (Transform("Registered deposit transformation; historical parameters not fully audited",
-                                   "starplast.deposits." + deposit.derive.__name__, _sha(ROOT / "starplast/deposits.py"),
+                                   "parascape.deposits." + deposit.derive.__name__, _sha(ROOT / "parascape/deposits.py"),
                                    tuple(item.path for item in source_files), (column,),
                                    {"parameters_status": "legacy_unresolved", "historical_run": "notebooks/derive_deposits_2026_09.ipynb"}),)
             if source.key == "host_bmdm_baseline" and column == "bmdm_tpm":

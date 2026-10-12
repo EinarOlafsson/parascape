@@ -13,10 +13,10 @@ records how the answer was measured and, as much as the numbers, what measuring 
 own settings (neighbourhood sizes, cluster sizes and selections, thresholds, models, edge layers),
 over several held-out labels per organism, and over five seeds -- a seed changes which genes are
 hidden and how every map is drawn. **5,940 self-tests, 34 strategies, both organisms.** Results are
-in `results/calibration_2026-09-26/`; the shipped summary is `starplast/data/strategy_calibration.json`,
+in `results/calibration_2026-09-26/`; the shipped summary is `parascape/data/strategy_calibration.json`,
 which the Strategies tab, the README table and `docs/calibration.md` are all built from.
 
-## How a number is summarised (`starplast/calibration.py`)
+## How a number is summarised (`parascape/calibration.py`)
 
 * **Skill** = (observed - chance) / (1 - chance). Zero is the same procedure on shuffled data, one is
   perfect, and a correct-call rate, an AUROC, an F1 and a correlation all read on one scale.
@@ -103,8 +103,8 @@ freezes the largest job at 100 GB and kills at 110 GB.
 
 * `scripts/calibrate_strategies.py` -- the sweep (`--workers`, `--job-gb`, `--only`), `--summarize`,
   and `--publish`, which writes the shipped JSON, the README block and `docs/calibration.md`.
-* `starplast/calibration.py` -- skill, intervals, the seed split, grades, and reading it back.
-* `starplast/strategy_panel.py` -- grades in the list, the calibration paragraph in each Guide, and
+* `parascape/calibration.py` -- skill, intervals, the seed split, grades, and reading it back.
+* `parascape/strategy_panel.py` -- grades in the list, the calibration paragraph in each Guide, and
   **Use tuned settings**.
 * `tests/test_calibration.py` -- 21 tests, including the seed split and the clustered interval.
 * `results/calibration_2026-09-26/` -- every run (`runs.jsonl`), per configuration (`summary.csv`),

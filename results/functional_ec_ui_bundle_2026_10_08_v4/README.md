@@ -3,9 +3,9 @@
 `packaging.ipynb` executes the compact view of the exactly replayed
 [v4 pilot](../functional_ec_knn_pilot_2026_10_08_v4/summary.json).
 Typed source artifact:
-`349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162`.
+`e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461`.
 Externally pinned application bundle SHA-256:
-`732d670fe45197f0d35b9c8db6f51f9981173bdfae67bbf089d38d0a4ac7a633`.
+`962390bf12b295ab2d87f65a2e6d7efb83830cfadb3a3c56b651176958c61f83`.
 
 Every source artifact payload is checked before packaging. Displayed label,
 strategy, complete-profile and seven major-class cards, matched controls and all

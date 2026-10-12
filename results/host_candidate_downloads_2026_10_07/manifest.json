@@ -2,7 +2,7 @@
   "input_sha256": {
     "results/host_candidate_deposits_2026_10_07/rbc_project_files.json": "040f129a558aac8e729e460dea76f8bce4334acbf8dc89d0ecfb73df0c519ca0",
     "results/host_candidate_deposits_2026_10_07/rbc_pride.json": "d6522680d7b25107f8666cfa8554595ca78e71973f8b36b99da39623b9c8ae9f",
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/retrieve_host_candidates.py": "852e0caad916e2936c3824d0f006640fa76ecae73e7f637c965ef086e1f65c5a"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/retrieve_host_candidates.py": "c9a0738ca28e45fa7521903915dbe2bedff6984b9f9ac9d3bd30b6e540bdfeea"
   },
   "downloads": 3,
   "successful": 3,

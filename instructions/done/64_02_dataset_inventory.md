@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.01 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/datasets.py`, `starplast/slots.py`, `starplast/slot_tree.py`, `starplast/organisms.py` |
+| Existing code to inspect | `parascape/datasets.py`, `parascape/slots.py`, `parascape/slot_tree.py`, `parascape/organisms.py` |
 
 ## Deliverable
 
@@ -34,7 +34,7 @@ follow-up and its dependency rather than silently widening the item.
 
 Frozen pilot: all 162 registered sources, the existing slot-generator refusals and installed
 Tg/Pf gene, human/mouse protein, metabolite, graph and bridge tables. No downloads or strategy
-runs. `starplast/inventory.py` uses existing registry and slot declarations;
+runs. `parascape/inventory.py` uses existing registry and slot declarations;
 `scripts/build_information_inventory.py` freezes a fresh snapshot and executed notebook.
 
 Checks: **525 passed** (Python 3.12.13, CPU, offscreen Qt, 4 GB cap per job) for inventory,

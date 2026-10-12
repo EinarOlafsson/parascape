@@ -323,7 +323,7 @@
       "total_bytes": 11331989,
       "date": "2026-09-26",
       "sanity_check": "18,835 ENSMUSG genes (18,629 in Ensembl 116 GTF) x 170 tissue/stage columns; loader columns 'adult, cerebral cortex', 'adult, cerebellum', 'juvenile, muscle (biceps femoris)' present; Gfap cortex 22 TPM; CAVEAT Actb 1-2, Gapdh 0.6-4 TPM (CAGE quantified per gene - use ranks, not absolute TPM)",
-      "notes": "File named E-MTAB-3579-mouse-tissue-tpm.tsv as starplast/host.py FANTOM5_MOUSE expects (the repo path host/fantom5/24670764/ does not exist in the dataset root). Atlas table only lists genes above 0 TPM somewhere; blank = not detected.",
+      "notes": "File named E-MTAB-3579-mouse-tissue-tpm.tsv as parascape/host.py FANTOM5_MOUSE expects (the repo path host/fantom5/24670764/ does not exist in the dataset root). Atlas table only lists genes above 0 TPM somewhere; blank = not detected.",
       "status": "downloaded"
     },
     "verified_files": [

@@ -1,13 +1,13 @@
-# Using Starplast
+# Using ParaScape
 
-Starplast opens a gene map and an evidence panel. Start with a gene or a table of
+ParaScape opens a gene map and an evidence panel. Start with a gene or a table of
 screen results, then compare the relevant measurements. The bundled organism maps
 are separate: use **File → Species** to open the other organism.
 
-## Search Starplast
+## Search ParaScape
 
 The box directly to the right of the **Help** menu searches everything the program
-can do, as in spaCR. **Ctrl+Shift+H** (or **Help → Search Starplast…**) puts the
+can do, as in spaCR. **Ctrl+Shift+H** (or **Help → Search ParaScape…**) puts the
 cursor in it. Type a few letters and a list drops down; **Up**/**Down** choose a
 result, **Return** or a click goes to it, and **Esc** closes the list.
 
@@ -130,14 +130,14 @@ sort.
 example one built in Analysis. It uses the map's clusters if it has them, and
 otherwise clusters it the same way. The result appears as "on screen".
 
-The files are `starplast/data/umap_gallery.npz` (coordinates as float32, cluster
+The files are `parascape/data/umap_gallery.npz` (coordinates as float32, cluster
 labels as int16), `umap_gallery.json` (every recipe, the structure score and every
 setting searched) and `umap_gallery_scores.tsv` (the label × map table). They are
 rebuilt by `scripts/build_umap_gallery.py`, and the run is recorded in
 `notebooks/umap_gallery_2026_09_30.ipynb`:
 
 ```bash
-systemd-run --user --scope -p MemoryMax=25G env STARPLAST_GPU=0 \
+systemd-run --user --scope -p MemoryMax=25G env PARASCAPE_GPU=0 \
     python scripts/build_umap_gallery.py --workers 6
 ```
 
@@ -146,7 +146,7 @@ The build is checkpointed one map at a time into
 off rather than starting over. To build **more** maps than ship — every block
 rather than only those with enough columns, a wider settings grid, or your own
 combinations of families — edit the thresholds and `COMBINATIONS` at the top of
-`starplast/umap_gallery.py` and write the result somewhere else:
+`parascape/umap_gallery.py` and write the result somewhere else:
 
 ```bash
 python scripts/build_umap_gallery.py --no-notebook --out ~/my_gallery
@@ -330,7 +330,7 @@ Toxoplasma localization claims visible, while hiding existing untested cell-cycl
 claims. Functional domains and enzymes now remain browsable even where functional
 inference and independent validation have not yet been implemented.
 
-The **Inferred claims** view lists what Starplast infers about genes with no label -- a localization, a
+The **Inferred claims** view lists what ParaScape infers about genes with no label -- a localization, a
 phenotype, a stage -- and how each claim was tested. Every claim has:
 
 - a **confidence**: of held-out genes given claims this confident, at least this share were right;
@@ -350,7 +350,7 @@ separate from admission of independent biological benchmarks.
 
 Every labelled gene has been hidden once, in five folds that never split an
 orthogroup, and each strategy that calls labels was asked what it is. The result
-ships with Starplast and reads in four places, each one click from the next:
+ships with ParaScape and reads in four places, each one click from the next:
 
 - **A gene card** ends with *If this gene were unknown*: which strategies would have
   named its class (✓), named another (✗), or said nothing (·). Click the class.
@@ -367,7 +367,7 @@ strategy still works when a screen's worth of genes is unknown. To hide your own
 list (a screen's hits, a complex):
 
 ```python
-from starplast import strategies as S, track_record as T
+from parascape import strategies as S, track_record as T
 ctx = S.Context.shipped("Tg")
 rows = T.my_list(ctx, ["TGME49_294550", "TGME49_244470"], "compartment")
 T.set_summary(rows)
@@ -400,7 +400,7 @@ gene, so a dense layer such as shared compartment cannot hide a sparse one such 
 crosslinks. The list on the right is the legend: untick a source to hide it, and read
 how many links the centre gene has in each. **Measured** shows the data layers only.
 
-Starplast ships the links from the default-setting runs of the strategies that relate
+ParaScape ships the links from the default-setting runs of the strategies that relate
 genes to genes: predicted pairs (16, 17, 18, 33, 34), modules and clusters (01, 04,
 09, 15), set expansion from example seed lists (20, 25), and neighbour or partner calls
 (07, 13). A module is not drawn as a clique: each member links to its three nearest
@@ -464,13 +464,13 @@ background, text size, window size, and logging. Hover over settings for guidanc
 For clearer figures, use neutral lighting and disable distance fading when
 comparing colours. Lighting and camera settings change presentation only.
 
-Menus, tooltips, drop-down lists and Starplast's own windows (Preferences, the
+Menus, tooltips, drop-down lists and ParaScape's own windows (Preferences, the
 guided workflows, the slot tree, explanations) are rounded panes of translucent
 black, or translucent white on a light theme, as in spaCR. These windows have no
 title bar: drag the background to move one, drag an edge to resize it, and close it
 with the **✕** in its corner (**Esc** also closes a dialog). On an X11 desktop without a compositor the
 same panes are drawn opaque near-black with their corners cut; set
-`STARPLAST_TRANSLUCENT=0` or `1` to override the check.
+`PARASCAPE_TRANSLUCENT=0` or `1` to override the check.
 
 CPU analysis is available by default. The GPU switch uses installed, available
 backends; it cannot install a driver. The GPU comparison tool benchmarks a small
@@ -479,9 +479,9 @@ coordinates for a stochastic embedding.
 
 ## Files and network access
 
-Built tables and graphs are read from the package or `STARPLAST_CACHE`. Source data
-for rebuilding is resolved through `STARPLAST_DATA`. Saved runs, annotations, and
-downloads use the per-user Starplast directory or `STARPLAST_STATE`.
+Built tables and graphs are read from the package or `PARASCAPE_CACHE`. Source data
+for rebuilding is resolved through `PARASCAPE_DATA`. Saved runs, annotations, and
+downloads use the per-user ParaScape directory or `PARASCAPE_STATE`.
 
 Browsing the bundled map is offline. Fetching protein coordinates, following
 publication links, rebuilding from remote sources, and using a configured chat
@@ -490,7 +490,7 @@ service; it is optional.
 
 Enable file logging in Preferences when diagnosing a problem. Include the package
 version, operating system, reproduction steps, and relevant log excerpt in a
-[bug report](https://github.com/EinarOlafsson/starplast/issues).
+[bug report](https://github.com/EinarOlafsson/parascape/issues).
 
 ## Tutorial videos
 

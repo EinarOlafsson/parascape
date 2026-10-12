@@ -10,7 +10,7 @@ remain accessible rather than becoming negatives.
 `migration.ipynb` performs the controlled change; `verification.ipynb` independently
 replays preservation with `check_exact=True`, exact retained TSV text and input
 hashes. `manifest.json` records before/after hashes, original inputs and external
-backups. `starplast.host.projection_withdrawals()` validates the 117-row ledger
+backups. `parascape.host.projection_withdrawals()` validates the 117-row ledger
 against source SHA, gene identity, ambiguity alternatives, declared exact numeric
 encoding and actually withheld cells. Historical coverage reconciles through only
 these verified withdrawals; its original report remains unchanged. The generated

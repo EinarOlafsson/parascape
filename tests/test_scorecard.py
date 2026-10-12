@@ -17,9 +17,9 @@ from sklearn import metrics as skm
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import scorecard as SC  # noqa: E402
-from starplast import strategies as S  # noqa: E402
-from starplast import techniques as TQ  # noqa: E402
+from parascape import scorecard as SC  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape import techniques as TQ  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -255,12 +255,12 @@ def test_a_test_result_carries_its_card_through_json():
 def test_the_strategies_api_loads_without_qt_and_from_the_package():
     """The API guide promises a plain Python session: no Qt import, even for the whole catalogue."""
     import subprocess
-    code = ("import sys, starplast\n"
-            "assert 'starplast.strategies' not in sys.modules\n"
-            "n = len(starplast.strategies.catalog())\n"
-            "starplast.scorecard.glossary(); starplast.techniques.glossary()\n"
+    code = ("import sys, parascape\n"
+            "assert 'parascape.strategies' not in sys.modules\n"
+            "n = len(parascape.strategies.catalog())\n"
+            "parascape.scorecard.glossary(); parascape.techniques.glossary()\n"
             "assert 'PyQt6' not in sys.modules, 'importing the strategies pulled in Qt'\n"
-            "from starplast import jobs, stopping\n"
+            "from parascape import jobs, stopping\n"
             "assert jobs.Stopped is stopping.Stopped\n"
             "print(n)\n")
     out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True,

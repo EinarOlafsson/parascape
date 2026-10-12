@@ -1,6 +1,6 @@
 # Benchmark hold-outs and source guards
 
-`starplast.splits` freezes four disjoint roles: `train`, `tune`, `calibration`
+`parascape.splits` freezes four disjoint roles: `train`, `tune`, `calibration`
 and final `test`. Explicit protected groups stay together. Gene benchmarks use
 homology groups; missing known groups can be declared singleton entities, which
 does not establish absence of homology. Dataset/context groups protect those
@@ -8,8 +8,8 @@ boundaries and make no additional homology claim. Chronological time groups must
 use comparable ISO timestamps; equal times cannot be split across partitions.
 
 ```python
-from starplast import organisms as O
-from starplast.splits import make_split, make_exclusions, write_split
+from parascape import organisms as O
+from parascape.splits import make_split, make_exclusions, write_split
 
 split = make_split(
     eligible_gene_ids, declared_homology_groups,
@@ -38,7 +38,7 @@ transductive access, checked by `guard_joint_features`. This permission does not
 permit fitting on their labels or fitting a scaler on them. Ordinary pointwise
 prediction may read held-out features without updating a fitted transform.
 
-Source exclusions reuse Starplast's target-family closure, including source
+Source exclusions reuse ParaScape's target-family closure, including source
 siblings and layers derived from excluded evidence. Empirical correlations used
 to discover exclusions read **training labels only**. The exclusion manifest pins
 those entities and the split identity. Passing test rows to exclusion selection

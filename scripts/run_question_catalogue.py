@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(_ROOT, "instructions", "done", "45_question_results.csv")
-NODES = os.path.join(_ROOT, "starplast", "data", "nodes.parquet")
+NODES = os.path.join(_ROOT, "parascape", "data", "nodes.parquet")
 
 
 def main() -> int:
@@ -39,8 +39,8 @@ def main() -> int:
                     help="extra maps to build and show in the PDF, so the winner has a comparison")
     args = ap.parse_args()
 
-    from starplast.questions import as_recipe, load, shipped
-    from starplast.recipes import run
+    from parascape.questions import as_recipe, load, shipped
+    from parascape.recipes import run
 
     nodes = pd.read_parquet(NODES)
     catalogue = shipped(nodes, load())
@@ -56,7 +56,7 @@ def main() -> int:
         result = run(nodes, recipe, tune=not args.no_tune,
                      alternatives=args.alternatives if args.pdf_dir else 0, log=lambda *a: None)
         if args.pdf_dir:
-            from starplast.report import recipe_pdf
+            from parascape.report import recipe_pdf
             safe = "".join(c if c.isalnum() else "_" for c in recipe.question)[:60].strip("_")
             recipe_pdf(result, os.path.join(args.pdf_dir, f"{i:02d}_{safe}.pdf"))
         agreed = 0

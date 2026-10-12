@@ -1,4 +1,4 @@
-"""Build the Starplast slide viewer, editable PowerPoint, PDF and GitHub pages.
+"""Build the ParaScape slide viewer, editable PowerPoint, PDF and GitHub pages.
 
 One content source drives native text/shapes in both PDF and PowerPoint. Poppler
 renders the exact PDF to slide images and thumbnails, so the repository, viewer
@@ -31,14 +31,14 @@ class Drawing:
         self.metrics = pdfmetrics
         for name, filename in [('regular','Regular'),('bold','Bold'),('light','Light')]:
             pdfmetrics.registerFont(TTFont(name, str(OUT / f'fonts/OpenSans-{filename}.ttf')))
-        self.pdf = canvas.Canvas(str(OUT / 'starplast_deck.pdf'), pagesize=(W,H))
+        self.pdf = canvas.Canvas(str(OUT / 'parascape_deck.pdf'), pagesize=(W,H))
         self.pdf.setAuthor('Einar Olafsson')
-        self.pdf.setTitle('Starplast: introduction and practical guide')
+        self.pdf.setTitle('ParaScape: introduction and practical guide')
         self.ppt = Presentation()
         self.ppt.slide_width, self.ppt.slide_height = Pt(W*.6), Pt(H*.6)
         self.ppt.core_properties.author = 'Einar Olafsson'
         self.ppt.core_properties.last_modified_by = 'Einar Olafsson'
-        self.ppt.core_properties.title = 'Starplast: introduction and practical guide'
+        self.ppt.core_properties.title = 'ParaScape: introduction and practical guide'
         self.number = 0
 
     @staticmethod
@@ -139,7 +139,7 @@ class Drawing:
         self.line(70,834,1530,834)
         # Footer is intentionally below the content safety boundary.
         self.pdf.setFont('regular',18);self.pdf.setFillColor(MUTED)
-        for x,content in [(70,'STARPLAST  /  0.43 GUIDE'),(1335,f'{self.number:02d} / {len(SLIDES):02d}')]:
+        for x,content in [(70,'PARASCAPE  /  0.43 GUIDE'),(1335,f'{self.number:02d} / {len(SLIDES):02d}')]:
             self.pdf.drawString(x,H-872,content)
             box=self.page.shapes.add_textbox(*map(self.pt,(x,850,350,30)))
             box.text_frame.auto_size=MSO_AUTO_SIZE.NONE
@@ -150,7 +150,7 @@ class Drawing:
         self.pdf.showPage()
 
     def save(self):
-        self.pdf.save();self.ppt.save(OUT/'starplast_deck.pptx')
+        self.pdf.save();self.ppt.save(OUT/'parascape_deck.pptx')
 
 
 def plain(spec, include_title=True):
@@ -176,11 +176,11 @@ def render_slide(d,s):
     """Lay out one idea using a small set of deliberately distinct compositions."""
     d.start(s);kind=s['layout'];cards=s.get('cards',[])
     if kind=='cover':
-        d.text(80,170,900,'Starplast',112,weight='bold')
+        d.text(80,170,900,'ParaScape',112,weight='bold')
         d.text(85,350,830,s['lead'],43,ACCENT,limit=190)
         d.image('logo.png',1080,175,390,390)
         d.text(85,680,1400,s['note'],29,MUTED)
-        d.text(85,732,1400,'Einar Olafsson  ·  github.com/EinarOlafsson/starplast',24,MUTED)
+        d.text(85,732,1400,'Einar Olafsson  ·  github.com/EinarOlafsson/parascape',24,MUTED)
     elif kind in ('cards','split'):
         n=len(cards);gap=30;w=(1460-gap*(n-1))/n
         for i,(title,body) in enumerate(cards):
@@ -328,21 +328,22 @@ def publish():
         destination=OUT/folder;destination.mkdir(exist_ok=True)
         subprocess.run(['pdftoppm','-jpeg','-jpegopt',f'quality={quality},optimize=y',
                         '-scale-to-x',str(width),'-scale-to-y','-1',
-                        str(OUT/'starplast_deck.pdf'),str(destination/'slide')],check=True)
+                        str(OUT/'parascape_deck.pdf'),str(destination/'slide')],check=True)
         for p in destination.glob('slide-*.jpg'):
             p.replace(destination/f'slide_{int(p.stem.split("-")[-1]):02d}.jpg')
-    deck=dict(count=len(SLIDES),aspect=16/9,title='Starplast: introduction and practical guide',
+    deck=dict(count=len(SLIDES),aspect=16/9,title='ParaScape: introduction and practical guide',
               author='Einar Olafsson',guide_version='0.43',slides=[])
     pages=OUT/'pages';pages.mkdir(exist_ok=True)
-    transcript=['# Starplast: slide transcript','A guide to the 0.43 release.']
+    transcript=['# ParaScape: slide transcript','A guide to the 0.43 release.']
     for i,s in enumerate(SLIDES,1):
         transcript.extend([f'## {i:02d}. {s["title"]}',plain(s,False),f'[Supporting documentation]({s["source"]})'])
         row=dict(image=f'slides/slide_{i:02d}.jpg',thumb=f'thumbs/slide_{i:02d}.jpg',
                  title=s['title'],section=s['section'],text=plain(s,False),source=s['source'],animations=[])
         deck['slides'].append(row)
         previous=len(SLIDES) if i==1 else i-1;next_slide=1 if i==len(SLIDES) else i+1
-        page=(f'[![{s["title"]}](../slides/slide_{i:02d}.jpg)](https://einarolafsson.github.io/starplast/deck/#{i})\n\n'
-              f'[← Back]({previous:02d}.md) · {i} / {len(SLIDES)} · [Next →]({next_slide:02d}.md)\n\n'
+        page=(f'[![{s["title"]}](../slides/slide_{i:02d}.jpg)](https://einarolafsson.github.io/parascape/deck/#{i})\n\n'
+              f'[← Back]({previous:02d}.md) · {i} / {len(SLIDES)} · [Next →]({next_slide:02d}.md) · '
+              f'[Home page](https://einarolafsson.github.io/projects/parascape/)\n\n'
               f'## {s["title"]}\n\n{plain(s,False)}\n\n[Supporting documentation]({s["source"]})\n')
         (pages/f'{i:02d}.md').write_text(page)
     (OUT/'slides.json').write_text(json.dumps(deck,indent=2)+'\n')

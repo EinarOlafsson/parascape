@@ -1,6 +1,6 @@
 # Baselines and controls
 
-`starplast.baselines.RECIPES` declares shared baselines, null controls,
+`parascape.baselines.RECIPES` declares shared baselines, null controls,
 denominators and limits for all six scorecard tasks. Helpers provide training-only
 majority/prevalence calls, training mean/median predictions, uniform rankings on
 a fixed candidate universe, known-positive retrieval and bounded network controls.
@@ -8,7 +8,7 @@ Task-specific adapters still need to execute and record these recipes alongside
 each strategy. The declarations do not certify existing self-test denominators.
 
 ```python
-from starplast.baselines import value_baselines, positive_only_retrieval
+from parascape.baselines import value_baselines, positive_only_retrieval
 
 training_values = truth.loc[list(split.entities("train"))]
 predictions = value_baselines(training_values, split)

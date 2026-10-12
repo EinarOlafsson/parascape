@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from starplast import functional_results as F, organisms as O
+from parascape import functional_results as F, organisms as O
 
 
 def _document():
@@ -95,8 +95,8 @@ def test_functional_profile_validation_preserves_overlapping_classes_and_unknown
 
 
 def test_panel_functional_source_links_class_cards_abstentions_and_gene_signal(monkeypatch):
-    from starplast import claims as C, strategies as S, track_record as T
-    from starplast.discoveries_panel import DiscoveriesPanel
+    from parascape import claims as C, strategies as S, track_record as T
+    from parascape.discoveries_panel import DiscoveriesPanel
     benchmarks,_=F.shipped(O.TOXOPLASMA);benchmark=benchmarks[0]
     monkeypatch.setattr(C,'shipped',lambda *a:pd.DataFrame())
     monkeypatch.setattr(C,'recipes',lambda *a:pd.DataFrame())
@@ -131,8 +131,8 @@ def test_panel_functional_source_links_class_cards_abstentions_and_gene_signal(m
 
 
 def test_unavailable_functional_bundle_remains_explicit_in_panel(monkeypatch):
-    from starplast import claims as C, strategies as S, track_record as T
-    from starplast.discoveries_panel import DiscoveriesPanel
+    from parascape import claims as C, strategies as S, track_record as T
+    from parascape.discoveries_panel import DiscoveriesPanel
     monkeypatch.setattr(F,'shipped',lambda organism:([],'Functional results unavailable: checksum mismatch'))
     monkeypatch.setattr(C,'shipped',lambda *a:pd.DataFrame());monkeypatch.setattr(C,'recipes',lambda *a:pd.DataFrame())
     monkeypatch.setattr(T,'shipped',lambda *a:pd.DataFrame())
@@ -147,7 +147,7 @@ def test_unavailable_functional_bundle_remains_explicit_in_panel(monkeypatch):
 
 
 def test_frozen_functional_test_opens_real_installed_gene_view():
-    from starplast.app import Window
+    from parascape.app import Window
     window=Window()
     try:
         panel=window.discoveries
@@ -175,8 +175,8 @@ def test_frozen_functional_test_opens_real_installed_gene_view():
 
 def test_selected_domain_provenance_keeps_source_description_and_unknown_membership(monkeypatch):
     from PyQt6 import QtCore, QtGui
-    from starplast import claims as C, discovery_labels as D, strategies as S, track_record as T
-    from starplast.discoveries_panel import DiscoveriesPanel
+    from parascape import claims as C, discovery_labels as D, strategies as S, track_record as T
+    from parascape.discoveries_panel import DiscoveriesPanel
 
     class Lookup:
         sources={'InterPro':{'metadata_url':'https://example.org/domain-source'}}

@@ -1,15 +1,15 @@
-# Starplast: slide transcript
+# ParaScape: slide transcript
 
 A guide to the 0.43 release.
 
-## 01. Starplast
+## 01. ParaScape
 
 Explore what is known.
 Evaluate what a model predicts.
 
 A practical guide to the 0.43 release
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/index.html)
+[Supporting documentation](https://einarolafsson.github.io/projects/parascape/)
 
 ## 02. Start with a gene. Keep the evidence.
 
@@ -25,7 +25,7 @@ Evaluate: Test predictions on held-out genes before interpreting them.
 
 A model suggests a hypothesis. Its evidence and validation determine how useful it is.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 03. Two organisms. Separate maps.
 
@@ -39,7 +39,7 @@ Offline gene tables and networks are included in the installation.
 
 Coverage differs by assay and organism. These counts do not imply complete evidence for every gene.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/datasets.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/datasets.html)
 
 ## 04. Choose the task you came to do.
 
@@ -51,7 +51,7 @@ Compare a screen: Join a gene-level results table to the existing evidence. Keep
 
 Open these guided workflows from the Tools menu.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 05. The map is one view of the evidence.
 
@@ -65,12 +65,12 @@ Lines: One explicitly selected relationship type.
 
 Proximity alone does not establish function or a physical interaction.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
-## 06. Install and open Starplast.
+## 06. Install and open ParaScape.
 
-pip install starplast
-starplast
+pip install parascape
+parascape
 
 Python 3.10+: Use a dedicated environment when possible.
 
@@ -80,7 +80,7 @@ CPU included: CUDA is optional; browsing does not require a GPU.
 
 Linux, macOS and Windows. Built tables are available offline.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/releases.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/releases.html)
 
 ## 07. Your first five minutes.
 
@@ -94,7 +94,7 @@ Linux, macOS and Windows. Built tables are available offline.
 
 Start with one familiar gene so you can check that the interpretation makes sense.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 08. Find your way around the workspace.
 
@@ -102,7 +102,7 @@ Map controls on the left. The gene map in the centre. Evidence on the right.
 
 Tools opens guided workflows and analysis docks. View controls appearance and interaction.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 09. Move the map. Keep your bearings.
 
@@ -114,7 +114,7 @@ Focus a category: Filter checked categories. Double-click a category to centre i
 
 Right-click the map for display options, export and reset.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 10. Search by identity or description.
 
@@ -128,7 +128,7 @@ Read the table: Inspect available values, missingness and source evidence.
 
 Shown here: an existing alpha-tubulin record, not a model-generated annotation.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 11. Read the source, not just the value.
 
@@ -140,7 +140,7 @@ How was it obtained?: Separate measured evidence, computed features, transferred
 
 Legacy gene summaries cannot reconstruct replicate-level uncertainty that was never retained.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 12. The full data catalogue stays one click away.
 
@@ -158,7 +158,7 @@ Literature | Mentions and reviewed assertions | Traceable source context
 
 Each catalogue record links to its publication, source data or computed inputs.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/datasets.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/datasets.html)
 
 ## 13. Unknown is different from zero.
 
@@ -170,7 +170,7 @@ No call: The model lacks enough support
 
 A missing annotation is not a negative example. Grey marks unknown evidence.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 14. Different lines answer different questions.
 
@@ -182,7 +182,7 @@ Literature context: Co-mention means appearing together in text; it is not proof
 
 The Edges controls keep these layers separate.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 15. Inspect one connection layer at a time.
 
@@ -196,7 +196,7 @@ Compare: Switch the layer and see which relationships persist.
 
 Draw all active edges is available, but dense networks are often easier to understand locally.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 16. Select a group without changing the data.
 
@@ -206,7 +206,7 @@ Brush: 3D space: Select a spatial neighbourhood around the gene you press.
 
 Choose View > Left mouse button > Select. Check the selected gene list before exporting.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 17. Explore clusters and compare analyses.
 
@@ -218,7 +218,7 @@ Saved results: Name embeddings and retain their recipes. Right-click result tabl
 
 Cluster labels describe the chosen inputs. They do not establish a shared biological function.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 18. Change a map deliberately.
 
@@ -232,7 +232,7 @@ Embedding: Choose a method, dimensions and a seed.
 
 Smaller UMAP neighbourhoods favour local structure. Lower minimum distance packs points more tightly.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 19. Explore in 3D. Evaluate separately.
 
@@ -242,7 +242,7 @@ A held-out prediction: A separate fitted model with target exclusions, training-
 
 The guided predictor does not classify the opening map.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 20. Set up a prediction in one place.
 
@@ -256,7 +256,7 @@ Run and inspect: Evaluate and predict. Read held-out metrics before the candidat
 
 The Jobs panel runs the work. Stop requests cancellation between model fits.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 21. Keep evaluation genes out of fitting.
 
@@ -268,7 +268,7 @@ Evaluate: Score predictions on groups withheld from both steps.
 
 Outer folds rotate the evaluation groups. Grouped validation is harder and more informative than mixing relatives.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/benchmark-0.43.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/benchmark-0.43.html)
 
 ## 22. Compare simple methods first.
 
@@ -286,7 +286,7 @@ Weighted networks | Which fixed graph layers support labels? | Transductive; dis
 
 No method is automatically best because it is more complex.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 23. Read performance and coverage together.
 
@@ -298,7 +298,7 @@ Coverage: The fraction with a supported call. Selective accuracy describes only 
 
 Also inspect per-class precision, recall, average precision and calibration.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 24. What worked in the localization benchmark?
 
@@ -312,7 +312,7 @@ Important limit: Several rare classes still have zero top-class recall.
 
 Development cross-validation, not prospective validation of new annotations.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/benchmark-0.43.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/benchmark-0.43.html)
 
 ## 25. A confident score can still be wrong.
 
@@ -326,7 +326,7 @@ Use abstention: A probability cutoff can withhold uncertain calls; it is not a g
 
 The 0.8-0.9 bin averaged 0.850 confidence but 0.783 accuracy across 465 genes.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/benchmark-0.43.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/benchmark-0.43.html)
 
 ## 26. Add sequence evidence with one checkbox.
 
@@ -338,7 +338,7 @@ No download to use: Enable Include frozen protein sequence features in the guide
 
 Regenerating representations needs the optional sequence extra. Benchmark their value rather than assuming it.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/protein-sequences.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/protein-sequences.html)
 
 ## 27. Your AF3 collection becomes traceable evidence.
 
@@ -350,13 +350,13 @@ Coordinates stay local: The package includes features and provenance, not the pr
 
 This is the verified subset in the synced folders, not the total number of proteins ever folded.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/structures.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/structures.html)
 
 ## 28. Connect local folds to the structure viewer.
 
-pip install 'starplast[structures]'
+pip install 'parascape[structures]'
 
-starplast-index-structures /path/to/models
+parascape-index-structures /path/to/models
 
 Index once: Build the local structure catalogue from your model folders.
 
@@ -366,7 +366,7 @@ Read confidence: A predicted fold and its confidence are not experimental valida
 
 Recreate the index if the drive moves. Full models take precedence over fragments.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/structures.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/structures.html)
 
 ## 29. Continuous traits stay continuous.
 
@@ -380,7 +380,7 @@ Small added gain: The combined-feature improvement interval includes no improvem
 
 Nominal 90% intervals covered 94.9%, but their mean width was 9.94 log2 units.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/benchmark-0.43.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/benchmark-0.43.html)
 
 ## 30. Network coverage is not prediction quality.
 
@@ -390,7 +390,7 @@ Nominal 90% intervals covered 94.9%, but their mean width was 9.94 log2 units.
 
 The graph includes evaluation nodes: report these results as transductive, not transfer to unseen nodes.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/benchmark-0.43.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/benchmark-0.43.html)
 
 ## 31. Compare a screen without losing unmatched rows.
 
@@ -404,7 +404,7 @@ Export the comparison: Keep the table and source-file hash together.
 
 Screenshot values are illustrative. They are not biological screen results.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 32. Move from spaCR results to gene evidence.
 
@@ -412,13 +412,13 @@ spaCR: Generate gene-level measurement or effect estimates.
 
 CSV / TSV: Export identifiers and the measured value you want to compare.
 
-Starplast: Open Compare a screen and inspect the identifier mapping.
+ParaScape: Open Compare a screen and inspect the identifier mapping.
 
 Evidence: Read the existing annotations and source context alongside the result.
 
-The spaCR launcher opens Starplast in a separate environment. It does not automatically transfer results.
+The spaCR launcher opens ParaScape in a separate environment. It does not automatically transfer results.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 33. Add measurements to a Toxoplasma session.
 
@@ -430,7 +430,7 @@ Rebuild deliberately: Imported values do not change map positions until you incl
 
 Advanced table import is Toxoplasma-only. The guided comparison supports the currently open organism.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 34. Export the evidence behind a result.
 
@@ -442,13 +442,13 @@ run.json: Retain settings, input identity, split genes, excluded features and ve
 
 Use Export full run. A ranked list alone cannot reproduce an analysis.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 35. Use the same methods from Python.
 
 import pandas as pd
-from starplast import paths
-from starplast.prediction import TaskSpec, run
+from parascape import paths
+from parascape.prediction import TaskSpec, run
 
 nodes = pd.read_parquet(
     paths.cache_file('nodes.parquet'))
@@ -461,7 +461,7 @@ One contract: The API uses the same evaluation and export rules as the guided wo
 
 The generated module reference documents functions, arguments and return values.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/API.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/API.html)
 
 ## 36. Keep claims traceable and reviewable.
 
@@ -473,7 +473,7 @@ Explicit limits: The API supports review records; the desktop has no bulk litera
 
 A reviewed interpretation of a passage is not experimental proof. Conflicting observations remain separate.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/workflows.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/workflows.html)
 
 ## 37. Run work in the background. Keep control.
 
@@ -485,7 +485,7 @@ Logs and help: Hover over settings. Enable file logging in Preferences when inve
 
 Offline browsing works immediately. Remote structures, publications and optional chat can require network access.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 38. Choose a readable view.
 
@@ -493,7 +493,7 @@ View > Preferences: theme, colours, point rendering, lighting and text size.
 
 Lighting changes presentation only. Use neutral lighting when comparing measurement colours.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/guide.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/guide.html)
 
 ## 39. Before interpreting a prediction, check four things.
 
@@ -507,24 +507,24 @@ Uncertainty: Do rare classes, calibration and coverage support the intended inte
 
 Model comparisons guide exploration. Independent evidence is needed to establish a new biological claim.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/benchmark-0.43.html)
+[Supporting documentation](https://einarolafsson.github.io/parascape/benchmark-0.43.html)
 
 ## 40. Open a gene. Ask a precise question.
 
-pip install starplast
+pip install parascape
 
-User guide: https://einarolafsson.github.io/starplast/guide.html
+User guide: https://einarolafsson.github.io/parascape/guide.html
 
-Guided workflows: https://einarolafsson.github.io/starplast/workflows.html
+Guided workflows: https://einarolafsson.github.io/parascape/workflows.html
 
-Data sources: https://einarolafsson.github.io/starplast/datasets.html
+Data sources: https://einarolafsson.github.io/parascape/datasets.html
 
-Python API: https://einarolafsson.github.io/starplast/API.html
+Python API: https://einarolafsson.github.io/parascape/API.html
 
-Benchmarks: https://einarolafsson.github.io/starplast/benchmark-0.43.html
+Benchmarks: https://einarolafsson.github.io/parascape/benchmark-0.43.html
 
-Issues and source: https://github.com/EinarOlafsson/starplast
+Issues and source: https://github.com/EinarOlafsson/parascape
 
-Starplast · Einar Olafsson · Open-source software, with original data sources credited.
+ParaScape · Einar Olafsson · Open-source software, with original data sources credited.
 
-[Supporting documentation](https://einarolafsson.github.io/starplast/index.html)
+[Supporting documentation](https://einarolafsson.github.io/projects/parascape/)

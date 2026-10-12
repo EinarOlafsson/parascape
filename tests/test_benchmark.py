@@ -18,8 +18,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import benchmark as B  # noqa: E402
-from starplast.embedding import EmbeddingSpec  # noqa: E402
+from parascape import benchmark as B  # noqa: E402
+from parascape.embedding import EmbeddingSpec  # noqa: E402
 
 
 def _nodes(n=300, seed=0):
@@ -66,14 +66,14 @@ def test_k_is_bounded_by_the_points_there_are():
 def test_with_no_cuml_it_says_so_instead_of_showing_an_empty_bar(monkeypatch):
     """torch and cupy do array work and neither implements UMAP, so with only those installed there
     is no second map to compare -- which is a sentence, not a blank."""
-    from starplast import gpu
+    from parascape import gpu
     monkeypatch.setattr(gpu, "available", lambda: {"cuml": False, "cupy": True, "torch": True,
                                                    "device": "fake"})
     out = B.compare(_nodes(), EmbeddingSpec(blocks=("fitness_screens",)), sample=120,
                     log=lambda *_: None)
     assert out["gpu_available"] is False
     assert "gpu" not in out
-    assert "no cuml" in out["note"] and "starplast[gpu]" in out["note"]
+    assert "no cuml" in out["note"] and "parascape[gpu]" in out["note"]
     assert out["cpu"]["seconds"] > 0 and out["cpu"]["coords"].shape[1] == 3
 
 
@@ -110,7 +110,7 @@ def test_both_runs_happen_and_are_compared(monkeypatch):
 def test_the_switch_is_left_as_it_was_found(monkeypatch):
     """It forces the setting for each run; leaving it forced would change what every later map is
     built by, from a button that says it only measures."""
-    from starplast import gpu
+    from parascape import gpu
     monkeypatch.setenv(gpu.ENV_GPU, "0")
     B.compare(_nodes(), EmbeddingSpec(blocks=("fitness_screens",)), sample=120, log=lambda *_: None)
     assert os.environ[gpu.ENV_GPU] == "0"
@@ -182,7 +182,7 @@ def qapp():
 
 @pytest.fixture(scope="module")
 def win(qapp):
-    from starplast.app import Window
+    from parascape.app import Window
     w = Window()
     yield w
     w.close()
@@ -193,7 +193,7 @@ def test_pressing_the_button_runs_it_off_the_gui_thread_and_opens_the_result(win
     else slow. `exec` is stubbed because a modal dialog in a test hangs forever rather than failing.
     """
     from PyQt6 import QtWidgets
-    import starplast.benchmark as BM
+    import parascape.benchmark as BM
     shown = []
     monkeypatch.setattr(QtWidgets.QDialog, "exec", lambda self: shown.append(self) or 0)
     monkeypatch.setattr(BM, "compare", lambda nodes, spec=None, sample=0, log=print: {
@@ -209,7 +209,7 @@ def test_pressing_the_button_runs_it_off_the_gui_thread_and_opens_the_result(win
 
 def test_a_comparison_that_fails_says_so_rather_than_opening_an_empty_window(win, monkeypatch):
     from PyQt6 import QtWidgets
-    import starplast.benchmark as BM
+    import parascape.benchmark as BM
 
     def boom(*a, **k):
         raise RuntimeError("no map today")
@@ -228,7 +228,7 @@ def test_another_job_finishing_first_does_not_open_the_dialog(win, monkeypatch):
     reach that check -- afterwards the handler has already disconnected itself."""
     import threading
     from PyQt6 import QtWidgets
-    import starplast.benchmark as BM
+    import parascape.benchmark as BM
     go = threading.Event()
     opened = []
     monkeypatch.setattr(QtWidgets.QDialog, "exec", lambda self: opened.append(1) or 0)
@@ -255,7 +255,7 @@ def test_a_second_comparison_can_be_run(win, monkeypatch):
     """The handler disconnects itself when its own job lands. If it did not, the second run would
     open two dialogs, then three -- and the first missed disconnect is the one nobody notices."""
     from PyQt6 import QtWidgets
-    import starplast.benchmark as BM
+    import parascape.benchmark as BM
     result = {"sample": 1, "gpu_available": False, "note": "",
               "cpu": {"coords": np.zeros((5, 3)), "seconds": 0.1, "backend": "x", "genes": 5,
                       "features": 3}}

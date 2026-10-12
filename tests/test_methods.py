@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import methods as M
+from parascape import methods as M
 
 
 def _separable(n=300, noise=0.0, seed=0):
@@ -54,7 +54,7 @@ def test_a_classifier_is_scored_only_on_genes_it_never_saw():
 def test_a_shuffled_label_does_not_recover_under_the_classifier_either():
     """The negative control the clustering path already carries, applied to this method. If a
     shuffled label scores like the real one, the score is measuring the fit rather than the biology."""
-    from starplast.search import score_recovery
+    from parascape.search import score_recovery
     X, y = _separable(300)
     real = M.logistic(X, y, seed=0)
     real_score, _ = score_recovery(np.asarray(real["partition"]), y)
@@ -69,7 +69,7 @@ def test_a_shuffled_label_does_not_recover_under_the_classifier_either():
 def test_real_signal_is_recovered_so_the_control_above_means_something():
     """The other half of the negative control: a test that nothing recovers is passed by a broken
     model."""
-    from starplast.search import score_recovery
+    from parascape.search import score_recovery
     X, y = _separable(300)
     fit = M.logistic(X, y, seed=0)
     summary, _ = score_recovery(np.asarray(fit["partition"]), y)
@@ -201,7 +201,7 @@ def test_the_shipped_graph_loads_and_its_layers_are_walkable():
     """The default path, which every other test here bypasses by handing in a graph. A loader that
     only works on hand-built dictionaries would pass this whole file and fail on the first real run."""
     import os
-    from starplast import paths
+    from parascape import paths
     if not os.path.exists(paths.cache_file("graph.npz")):
         pytest.skip("built graph not present")
     matrix = M.layer_matrix("xlms", 8140)
@@ -214,14 +214,14 @@ def test_the_graph_size_is_read_from_the_graph_rather_than_assumed():
     """What lets a caller be told its table is the wrong one, instead of being shown a confident
     answer about the wrong genes."""
     import os
-    from starplast import paths
+    from parascape import paths
     if not os.path.exists(paths.cache_file("graph.npz")):
         pytest.skip("built graph not present")
     assert M.graph_size() == 8140
 
 
 def test_no_graph_means_no_size_rather_than_an_exception(monkeypatch, tmp_path):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setattr(paths, "cache_file", lambda name: str(tmp_path / name))
     assert M.graph_size() is None
 

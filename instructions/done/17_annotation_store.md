@@ -3,7 +3,7 @@
 Shipped after task 20, which is the ordering constraint the index calls non-negotiable, and it is
 the reason this task is mostly a set of refusals rather than a feature.
 
-## `starplast/annotations.py`
+## `parascape/annotations.py`
 
 An `Annotation` carries: the gene, the label proposed, the target column, the cluster and the full
 configuration behind it, the cluster's composition (`cluster_frac_category`,

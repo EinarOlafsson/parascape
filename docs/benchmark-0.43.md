@@ -1,6 +1,6 @@
 # Prediction benchmark for 0.43
 
-Starplast now evaluates predictions separately from the displayed map. On the
+ParaScape now evaluates predictions separately from the displayed map. On the
 bundled Toxoplasma data, supervised feature models recover localization better
 than neighbours in a UMAP. Frozen protein sequence features improve localization
 in this development benchmark. The added AF3 summary features do not yet show a
@@ -125,14 +125,14 @@ From a checkout with the application dependencies installed:
 
 ```bash
 export OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 NUMBA_NUM_THREADS=2
-python scripts/benchmark_inference.py --output /tmp/starplast-feature-runs \
-  --sequence starplast/data/esm_features.parquet --controls
-python scripts/benchmark_network.py --output /tmp/starplast-network-runs
-python scripts/summarize_inference.py --input /tmp/starplast-feature-runs \
-  --networks /tmp/starplast-network-runs --output /tmp/starplast-summary
+python scripts/benchmark_inference.py --output /tmp/parascape-feature-runs \
+  --sequence parascape/data/esm_features.parquet --controls
+python scripts/benchmark_network.py --output /tmp/parascape-network-runs
+python scripts/summarize_inference.py --input /tmp/parascape-feature-runs \
+  --networks /tmp/parascape-network-runs --output /tmp/parascape-summary
 ```
 
-The [committed results](https://github.com/EinarOlafsson/starplast/tree/main/results/inference_043)
+The [committed results](https://github.com/EinarOlafsson/parascape/tree/main/results/inference_043)
 contain aggregate metrics, per-class results, reliability bins, coverage strata,
 paired intervals and compressed full run contracts. The manifest hashes the input
 tables, graph, prediction implementations and artifacts. The recorded environment

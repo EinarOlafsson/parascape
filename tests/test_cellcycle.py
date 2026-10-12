@@ -18,14 +18,14 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import cellcycle as CC  # noqa: E402
+from parascape import cellcycle as CC  # noqa: E402
 
 
 # --------------------------------------------------------------------------- reading the study files
 @pytest.fixture
 def phase_file(tmp_path, monkeypatch):
     """The real file's shape: tab-separated under a .csv name, unnamed first column, quoted phases."""
-    from starplast import paths
+    from parascape import paths
     d = tmp_path / CC.STUDY
     d.mkdir(parents=True)
     (d / CC.PHASE_FILE).write_text(
@@ -53,7 +53,7 @@ def test_the_triple_quoting_in_the_export_is_stripped(phase_file):
 
 
 def test_only_the_five_real_phases_are_kept(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     d = tmp_path / CC.STUDY
     d.mkdir(parents=True)
     (d / CC.PHASE_FILE).write_text(
@@ -64,11 +64,11 @@ def test_only_the_five_real_phases_are_kept(tmp_path, monkeypatch):
 
 
 def test_a_missing_study_file_reports_and_returns_empty(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setenv(paths.ENV_DATASETS, str(tmp_path))
     # Patch the resolver itself, not just the env root. `paths.find` walks EVERY root it can name, and
     # one of them is derived from the package location rather than from the environment -- so an empty
-    # `STARPLAST_DATA` never made the file missing. This test claimed a missing study file while a
+    # `PARASCAPE_DATA` never made the file missing. This test claimed a missing study file while a
     # real dataset tree was still reachable, and it only started failing once that tree gained the
     # file. Naming one root is what makes "absent" mean absent.
     monkeypatch.setattr(paths, "dataset_roots", lambda: [str(tmp_path)])
@@ -105,7 +105,7 @@ def test_unresolvable_accessions_are_reported_and_dropped_not_kept_as_nan(phase_
 def test_a_gene_with_two_conflicting_phases_is_left_unlabelled(tmp_path, monkeypatch):
     """Two probes disagreeing is a real ambiguity. Keeping whichever sorted first would record a
     confident phase that the data does not support."""
-    from starplast import paths
+    from parascape import paths
     d = tmp_path / CC.STUDY
     d.mkdir(parents=True)
     (d / CC.PHASE_FILE).write_text(
@@ -118,7 +118,7 @@ def test_a_gene_with_two_conflicting_phases_is_left_unlabelled(tmp_path, monkeyp
 
 
 def test_a_gene_listed_twice_with_the_same_phase_is_kept_once(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     d = tmp_path / CC.STUDY
     d.mkdir(parents=True)
     (d / CC.PHASE_FILE).write_text("\tcell_cycle_phase\nTGGT1_1\tS\nTGGT1_1\tS\n")
@@ -129,7 +129,7 @@ def test_a_gene_listed_twice_with_the_same_phase_is_kept_once(tmp_path, monkeypa
 
 # --------------------------------------------------------------------------- pseudotime
 def test_pseudotime_clusters_are_numeric_and_resolved(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     d = tmp_path / CC.STUDY
     d.mkdir(parents=True)
     (d / CC.PSEUDOTIME_FILE).write_text(
@@ -234,7 +234,7 @@ def test_the_registry_records_the_derived_column_as_derived():
     one entry in the registry whose data type could not be read off its type field. The circularity
     guard reads derived_from, so that is also the field that has to be right for anything to work.
     """
-    from starplast import datasets
+    from parascape import datasets
     d = datasets.get("stage_enriched")
     assert "DERIVED" in d.note
     assert "circular" in d.note.lower()
@@ -244,7 +244,7 @@ def test_the_registry_records_the_derived_column_as_derived():
 
 
 def test_the_registry_records_the_measured_study_with_its_citation():
-    from starplast import datasets
+    from parascape import datasets
     d = datasets.get("xue_singlecell")
     assert d.pmid == "32065584"
     assert d.citation and "eLife" in d.citation

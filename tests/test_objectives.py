@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import objectives as O
+from parascape import objectives as O
 
 TRUTH = pd.Series(["a"] * 60 + ["b"] * 60 + ["c"] * 60)
 PERFECT = np.repeat([0, 1, 2], 60)

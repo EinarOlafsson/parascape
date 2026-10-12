@@ -11,14 +11,14 @@
     "numerical_changes": "none"
   },
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/freeze_capability_catalog.py": "e08577d00483be7b8059be90945819ad8bcf138084a326d22a5b30ebd8766b11",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/capabilities.py": "0e1aa5c3d081e008eeb8b8708a7945efc4372860403fe5052735f425903b8b0a",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/query.py": "b0f9ad5d26004f509a69d5b0240e6f484b8628cf22fcc3bed8f8fd3eaf761b56",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/strategies.py": "b9d2f461991d83479e9d6e1f91c6591f8bbb68438affddfe8116b07aa04cb236",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/strategy_catalog.py": "ff94e855ab006a00652acb94c0fd1aa63c1e014534d26c0dfa47de47879e829a",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/strategy_graph.py": "5291f3aa95f277d965307cd79ce888e0abc45f4a9e9f2d88a18947580c123659",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/strategy_learning.py": "4f1c62d57190987080c26dceae3c2addca2e8d84634e5d2806bae784fe9c34e5",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/techniques.py": "f011049ae52ab98f5ec67bd6d244fba9d90c20d7275fbcaa80b8377c345d3fb8"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/freeze_capability_catalog.py": "f4d6a6199353d96bc396d9a51656d68ce252de24de989b5215646165a060d050",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/capabilities.py": "0e1aa5c3d081e008eeb8b8708a7945efc4372860403fe5052735f425903b8b0a",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/query.py": "b0f9ad5d26004f509a69d5b0240e6f484b8628cf22fcc3bed8f8fd3eaf761b56",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/strategies.py": "5f2adb48a947dbf610b69bb5a3b87892a24963c405fc44788a2a1598a186a086",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/strategy_catalog.py": "ff94e855ab006a00652acb94c0fd1aa63c1e014534d26c0dfa47de47879e829a",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/strategy_graph.py": "5291f3aa95f277d965307cd79ce888e0abc45f4a9e9f2d88a18947580c123659",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/strategy_learning.py": "4f1c62d57190987080c26dceae3c2addca2e8d84634e5d2806bae784fe9c34e5",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/techniques.py": "f011049ae52ab98f5ec67bd6d244fba9d90c20d7275fbcaa80b8377c345d3fb8"
   },
   "outputs": {
     "native_plans.json": "fde435497251b05acc3296e5a95784ac806cf87a6f33e50777f48fd8192a56b3",

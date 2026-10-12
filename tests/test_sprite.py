@@ -16,7 +16,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import sprite as SP  # noqa: E402
+from parascape import sprite as SP  # noqa: E402
 
 
 def body(tex):

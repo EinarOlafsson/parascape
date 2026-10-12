@@ -11,7 +11,7 @@
     "path": "captures/gtex_license.txt",
     "bytes": 8757,
     "sha256": "47aba24434f294e2481ff51e200d231cdbfab48ae124161f64cc8c6026ca5f9a",
-    "reused_from": "/media/carruthers/mnt3/claude/repo/starplast/results/human_reference_terms_2026_10_08_v2",
+    "reused_from": "/media/carruthers/mnt3/claude/repo/parascape/results/human_reference_terms_2026_10_08_v2",
     "reused_capture_sha256": "47aba24434f294e2481ff51e200d231cdbfab48ae124161f64cc8c6026ca5f9a"
   },
   {
@@ -26,7 +26,7 @@
     "path": "captures/uniprot_license.txt",
     "bytes": 914,
     "sha256": "5960c22bf17f22286504b927dbb3ca41713c571ed91a10fe7a88ddd964b416ce",
-    "reused_from": "/media/carruthers/mnt3/claude/repo/starplast/results/human_reference_terms_2026_10_08_v2",
+    "reused_from": "/media/carruthers/mnt3/claude/repo/parascape/results/human_reference_terms_2026_10_08_v2",
     "reused_capture_sha256": "5960c22bf17f22286504b927dbb3ca41713c571ed91a10fe7a88ddd964b416ce"
   },
   {
@@ -41,7 +41,7 @@
     "path": "captures/gencode39.txt",
     "bytes": 23804,
     "sha256": "0c0cd68687ec679243614b8e6bda48ceb6a8a60dc6be856d885017597678354f",
-    "reused_from": "/media/carruthers/mnt3/claude/repo/starplast/results/human_reference_terms_2026_10_08_v2",
+    "reused_from": "/media/carruthers/mnt3/claude/repo/parascape/results/human_reference_terms_2026_10_08_v2",
     "reused_capture_sha256": "0c0cd68687ec679243614b8e6bda48ceb6a8a60dc6be856d885017597678354f"
   },
   {
@@ -56,7 +56,7 @@
     "path": "captures/gencode47.txt",
     "bytes": 24558,
     "sha256": "2d1c263545d5ffddbbded9908e05fe3717892167af95125ce1173dd67f53a8cb",
-    "reused_from": "/media/carruthers/mnt3/claude/repo/starplast/results/human_reference_terms_2026_10_08_v2",
+    "reused_from": "/media/carruthers/mnt3/claude/repo/parascape/results/human_reference_terms_2026_10_08_v2",
     "reused_capture_sha256": "2d1c263545d5ffddbbded9908e05fe3717892167af95125ce1173dd67f53a8cb"
   },
   {

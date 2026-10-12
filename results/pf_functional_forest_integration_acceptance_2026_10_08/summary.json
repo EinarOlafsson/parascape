@@ -7,7 +7,7 @@
     "pf_functional_forest_ui_2026_10_08": 13
   },
   "current_ui_inputs_verified": 15,
-  "merged_sha256": "386c8e05f5b8cf32f4b9ba6c777d32933c73c08ce40d9e01d0b27959e9dbadda",
+  "merged_sha256": "7f917b83f211c7d619b90aefb2d6cf01d75efdded703f1b71cbbcfd5934c2134",
   "original_entries_retained_exactly": true,
   "candidate_retained_exactly": true,
   "tests_passed": 101,

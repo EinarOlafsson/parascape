@@ -23,7 +23,7 @@ def freeze(output):
     """Verify installed sources, inventory their functional columns, and retain scoped coverage."""
     import pandas as pd
     import pyarrow.parquet as pq
-    from starplast import capabilities as C,discovery_labels as D,functional_coverage as F,functional_results as R,organisms as O,strategies as S,track_record as T
+    from parascape import capabilities as C,discovery_labels as D,functional_coverage as F,functional_results as R,organisms as O,strategies as S,track_record as T
     output=Path(output)
     if output.exists():raise ValueError('Use a new immutable functional census directory')
     previous=ROOT/'results/discoveries_label_coverage_2026_10_08_v4'
@@ -63,7 +63,7 @@ def freeze(output):
         'annotation_counts':'exact current source replay against previous full label audit',
         'biology_calibration_deployment':'all unavailable; no inferred admission'},indent=2,allow_nan=False)+'\n')
     code=[Path(__file__),Path(F.__file__),Path(R.__file__),Path(D.__file__),Path(C.__file__)]
-    inputs.extend([ROOT/'starplast/data/functional_results.json',ROOT/'starplast/data/functional_domain_names.json',*code])
+    inputs.extend([ROOT/'parascape/data/functional_results.json',ROOT/'parascape/data/functional_domain_names.json',*code])
     (output/'code').mkdir()
     for source in code:(output/'code'/source.name).write_bytes(source.read_bytes())
     (output/'manifest.json').write_text(json.dumps({'input_sha256':{str(path):_sha(path) for path in inputs},
@@ -73,7 +73,7 @@ def freeze(output):
 
 def verify(output):
     """Replay every coverage address exactly from retained source labels and current declarations."""
-    from starplast import capabilities as C,functional_coverage as F,functional_results as R
+    from parascape import capabilities as C,functional_coverage as F,functional_results as R
     output=Path(output);manifest=json.loads((output/'manifest.json').read_text())
     for path,digest in manifest['input_sha256'].items():assert _sha(path)==digest,path
     for path,digest in manifest['output_sha256'].items():assert _sha(output/path)==digest,path

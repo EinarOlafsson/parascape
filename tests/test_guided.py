@@ -20,10 +20,10 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from PyQt6 import QtWidgets  # noqa: E402
 
-from starplast import guided as G  # noqa: E402
-from starplast import organisms as ORG  # noqa: E402
-from starplast import scorecard as SC  # noqa: E402
-from starplast import strategies as S  # noqa: E402
+from parascape import guided as G  # noqa: E402
+from parascape import organisms as ORG  # noqa: E402
+from parascape import scorecard as SC  # noqa: E402
+from parascape import strategies as S  # noqa: E402
 
 ORGANISM = ORG.codes(available=True)[0]
 #: How many options of a long column list a tree walk tries. Three hundred and fifty measurements
@@ -266,7 +266,7 @@ def test_a_gene_file_is_read_the_way_a_pasted_list_is(tmp_path, ctx):
 # --------------------------------------------------------------------------- the panel
 @pytest.fixture(scope="module")
 def panel(ctx):
-    from starplast.guided_panel import GuidedPanel
+    from parascape.guided_panel import GuidedPanel
     QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     widget = GuidedPanel(ctx, gated=lambda: [str(g) for g in ctx.gene_ids[:12]])
     widget.resize(620, 820)
@@ -309,7 +309,7 @@ def test_walking_the_panel_to_the_end_shows_cards_with_their_bars_and_buttons(pa
     panel.answer("goal", G.PREDICT)
     assert panel.cards and len(panel.cards) == len(panel.recommendations())
     card = panel.cards[0]
-    from starplast import strategy_card as CARD
+    from parascape import strategy_card as CARD
     bars = card.findChild(CARD.Scorecard)
     assert bars is not None and len(bars.bars) == 4
     assert card.run_btn.isEnabled() and card.open_btn.isEnabled()
@@ -376,7 +376,7 @@ def test_the_panel_asks_for_a_strategy_rather_than_running_it_itself(panel):
 
 def test_the_window_gets_the_tab_and_fills_a_strategy_in_from_the_answers(label):
     """The whole hook: the dock is there, beside Strategies, and Open in Strategies fills it in."""
-    from starplast import app as A
+    from parascape import app as A
     window = A.Window()
     try:
         panel = window.guided
@@ -396,7 +396,7 @@ def test_the_window_gets_the_tab_and_fills_a_strategy_in_from_the_answers(label)
 
 
 def test_the_help_search_can_find_the_tab_and_its_questions():
-    from starplast import help_index
+    from parascape import help_index
     index = help_index.build_index()
     hits = help_index.search(index, "start here")
     assert any(e.title == "Start here" for e in hits)

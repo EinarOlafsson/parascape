@@ -124,7 +124,7 @@ The faceted trees built that day derive stage, host, tissue and condition from t
 much can be encoded: a facet nobody happened to type into a label cannot be extracted from it, and the
 tree then looks complete while missing exactly the information a hold-out needs.
 
-The authoritative metadata is already in `starplast/datasets.py`: PMID, accession, level, kind,
+The authoritative metadata is already in `parascape/datasets.py`: PMID, accession, level, kind,
 coverage, and the note. Plus the underlying files themselves — sample names, GEO series titles,
 PRIDE deposit descriptions — which carry stage, strain, host cell and timepoint far more reliably
 than a slot label does.

@@ -7,7 +7,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from retrieve_primary_table import retrieve
-from starplast import datasets as D
+from parascape import datasets as D
 
 
 @pytest.mark.parametrize("change", [{"source_id": "another_source"}, {"recorded_registry_url": "https://invalid.example/table"},

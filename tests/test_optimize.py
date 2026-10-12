@@ -24,7 +24,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import discovery as D, metrics as M, optimize as O  # noqa: E402
+from parascape import discovery as D, metrics as M, optimize as O  # noqa: E402
 
 
 def config(**kw):
@@ -158,10 +158,10 @@ def test_the_recipe_and_the_clustering_arguments_come_apart_cleanly():
 def test_evaluator_computes_trustworthiness_from_the_matrix(monkeypatch):
     coords, nodes, _labels = biology(n_per=15)
     nodes["expr_fixture"] = coords[:, 0]
-    monkeypatch.setattr("starplast.embedding.embed",
+    monkeypatch.setattr("parascape.embedding.embed",
                         lambda *_a, **_k: (coords, ["expr_fixture"],
                                           np.ones(len(nodes), dtype=bool), coords.copy()))
-    monkeypatch.setattr("starplast.optimize.cluster", lambda X, **_k: np.arange(len(X)) % 4)
+    monkeypatch.setattr("parascape.optimize.cluster", lambda X, **_k: np.arange(len(X)) % 4)
     _score, extras = O.evaluator(nodes, mode="auprc", layers=("compartment",),
                                  log=lambda *_a: None)(config())
     assert np.isfinite(extras["trustworthiness"])
@@ -290,7 +290,7 @@ def test_the_block_pool_is_what_this_table_can_actually_offer():
 def test_the_other_embedding_methods_produce_a_map_of_the_right_shape():
     """t-SNE and PCA are alternatives to UMAP, not decorations: a search may step onto either, and
     a method that raised mid-climb would end the run."""
-    from starplast.embedding import EmbeddingSpec, embed
+    from parascape.embedding import EmbeddingSpec, embed
     _, nodes, _ = biology(n_per=20)
     rng = np.random.default_rng(7)
     for i in range(5):
@@ -306,7 +306,7 @@ def test_the_other_embedding_methods_produce_a_map_of_the_right_shape():
 def test_pca_asks_for_no_more_components_than_the_matrix_has():
     """A block set with two columns and a request for three components is an error sklearn raises,
     and raising it mid-search ends the whole run over one configuration."""
-    from starplast.embedding import EmbeddingSpec, embed
+    from parascape.embedding import EmbeddingSpec, embed
     _, nodes, _ = biology(n_per=10)
     nodes["expr_only"] = np.arange(len(nodes), dtype=float)
     coords, _names, _rows = embed(nodes, EmbeddingSpec(blocks=("expression_summary",),
@@ -316,7 +316,7 @@ def test_pca_asks_for_no_more_components_than_the_matrix_has():
 
 
 def test_every_clustering_algorithm_returns_one_label_per_point():
-    from starplast.clustering import ALGORITHMS, cluster
+    from parascape.clustering import ALGORITHMS, cluster
     # Blobs rather than a cloud of noise: HDBSCAN is right to call structureless points noise, and
     # a test that fed it noise would be testing that it lies.
     rng = np.random.default_rng(8)
@@ -331,7 +331,7 @@ def test_every_clustering_algorithm_returns_one_label_per_point():
 def test_hdbscan_takes_the_parameters_that_decide_what_it_returns():
     """min_cluster_size alone cannot express "split this further", which is most of why the
     clustering has been hard to get right."""
-    from starplast.clustering import cluster
+    from parascape.clustering import cluster
     rng = np.random.default_rng(9)
     X = np.vstack([rng.normal(c, 0.4, size=(60, 2)) for c in ([0, 0], [1.2, 0], [6, 6])])
     eom = cluster(X, algorithm="hdbscan", min_cluster_size=10, cluster_selection_method="eom")

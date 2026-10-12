@@ -29,7 +29,7 @@ MANIFEST = os.path.join(_ROOT, "instructions", "done", "38_archive_manifest.csv"
 
 
 def main() -> int:
-    from starplast import archive
+    from parascape import archive
     ap = argparse.ArgumentParser()
     ap.add_argument("--discover-only", action="store_true")
     ap.add_argument("--limit", type=int, default=0, help="fetch at most this many sources")

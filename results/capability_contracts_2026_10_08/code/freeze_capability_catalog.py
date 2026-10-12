@@ -11,8 +11,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import capabilities as C, organisms as O, strategies as S  # noqa: E402
-from starplast.query import EntityRef, Query  # noqa: E402
+from parascape import capabilities as C, organisms as O, strategies as S  # noqa: E402
+from parascape.query import EntityRef, Query  # noqa: E402
 
 
 def freeze(output):
@@ -66,10 +66,10 @@ def freeze(output):
     for name, payload in (('capabilities.json', declarations), ('routing.json', rows),
                           ('native_plans.json', native), ('parameters.json', parameters)):
         (output / name).write_text(json.dumps(payload, indent=2) + '\n')
-    inputs = [Path(__file__), ROOT / 'starplast/capabilities.py', ROOT / 'starplast/query.py',
-              ROOT / 'starplast/strategies.py', ROOT / 'starplast/strategy_catalog.py',
-              ROOT / 'starplast/strategy_graph.py', ROOT / 'starplast/strategy_learning.py',
-              ROOT / 'starplast/techniques.py']
+    inputs = [Path(__file__), ROOT / 'parascape/capabilities.py', ROOT / 'parascape/query.py',
+              ROOT / 'parascape/strategies.py', ROOT / 'parascape/strategy_catalog.py',
+              ROOT / 'parascape/strategy_graph.py', ROOT / 'parascape/strategy_learning.py',
+              ROOT / 'parascape/techniques.py']
     sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
     summary = {'strategies': len(caps), 'techniques': len({t.technique for c in caps for t in c.techniques}),
                'query_strategy_pairs': len(rows), 'native_plans': len(native),

@@ -1,6 +1,6 @@
 """The organism registry: one declaration per species space, instead of literals in fifty files.
 
-Starplast grew from one organism to two by copying: `slots.SPECIES_TABLES`, `app.SPECIES`,
+ParaScape grew from one organism to two by copying: `slots.SPECIES_TABLES`, `app.SPECIES`,
 `strategies.Context.shipped`, the calibration targets, the slot generator's stages and the
 localization abbreviations each carry their own `"Tg"`/`"Pf"` table. Adding the next species -- a
 host, a vector, another apicomplexan -- would have meant editing every one of them, and missing one
@@ -123,7 +123,7 @@ def by_species(name: str) -> Space:
 
 
 def nodes_path(code: str) -> str:
-    """Where a space's node table lives (honouring STARPLAST_CACHE, as every table does)."""
+    """Where a space's node table lives (honouring PARASCAPE_CACHE, as every table does)."""
     from . import paths
     space = get(code)
     return paths.space_file(space, space.nodes)

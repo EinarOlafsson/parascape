@@ -65,7 +65,7 @@ Three things about the search route worth keeping:
 ## What was added
 
 Six datasets, 22 columns, all Plasmodium -- seven deposit entries, because the spatial proteome's
-variation table is registered separately from its localization. `starplast/deposits.py` derives
+variation table is registered separately from its localization. `parascape/deposits.py` derives
 each one and `notebooks/derive_deposits_2026_09.ipynb` (sections 13-19) re-derives every number
 below from the raw file. The table goes from **146 to 168 columns**, and slot coverage from **169/215 to 180/221**
 genes-unit slots: five slots that were empty are answered, and six new ones exist because the
@@ -174,7 +174,7 @@ the repository's title.
 
 `scripts/leakage_audit.py` was re-run on both tables with eight new Plasmodium held-out targets
 (`results/leakage_audit_2026-09-26/`), and seven same-quantity families were declared in
-`starplast/search.py` before it ran:
+`parascape/search.py` before it ran:
 
     Hsp90 inhibition response        the hit call is a function of the two responses
     4-thiouracil mRNA dynamics       synthesis and decay come out of one model fit
@@ -222,11 +222,11 @@ Plasmodium embedding should be built from, which changes the shipped map and is 
 
 ## Where things are
 
-* `starplast/deposits.py` — the six derivations, each with its check named, and the label-carrying
+* `parascape/deposits.py` — the six derivations, each with its check named, and the label-carrying
   merge rule.
 * `notebooks/derive_deposits_2026_09.ipynb` sections 13–19 — executed, so the notebook in the tree
   is the run that produced the numbers above.
-* `starplast/datasets.py` — seven registry entries (the spatial proteome and its variation table are
+* `parascape/datasets.py` — seven registry entries (the spatial proteome and its variation table are
   separate entries, so holding out a localization does not withdraw a dN/dS).
 * `scripts/generate_slot_table.py` — six new Plasmodium slots, five new pattern lists for slots that
   were empty, and five references resolved through Europe PMC.

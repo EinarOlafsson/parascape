@@ -4,7 +4,7 @@ Each source here is a published deposit -- a supplementary workbook, a GEO proce
 needs a computation between the file and the column: a mean of two replicate screens, a log, a
 moderated contrast. The computation lives here and runs against the raw deposit under the dataset
 root; `derive_all` writes the result as a small keyed table into the cache
-(`starplast/data/deposit_<key>.tsv`), and the merge reads only that. So the map rebuilds without
+(`parascape/data/deposit_<key>.tsv`), and the merge reads only that. So the map rebuilds without
 the raw deposits, and the raw deposits re-derive every shipped number.
 
 `notebooks/derive_deposits_2026_09.ipynb` runs every derivation below with the sanity checks that
@@ -1426,7 +1426,7 @@ DEPOSITS = (
 
 def table_path(base: str, key: str) -> str:
     """Where a derived deposit table is cached, so the merge can run without the raw files."""
-    return os.path.join(base, "starplast", "data", f"deposit_{key}.tsv")
+    return os.path.join(base, "parascape", "data", f"deposit_{key}.tsv")
 
 
 def derive_all(dataset_root: str, base: str, keys=None, log=print) -> dict:

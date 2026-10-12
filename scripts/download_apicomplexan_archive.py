@@ -50,7 +50,7 @@ def arguments(argv=None) -> argparse.Namespace:
 
 def get(url: str, *, json_data: bool = False, timeout: int = 60):
     """Read an official repository URL with an identifying user agent."""
-    request = urllib.request.Request(url, headers={"User-Agent": "starplast-dataset-archive/1.0"})
+    request = urllib.request.Request(url, headers={"User-Agent": "parascape-dataset-archive/1.0"})
     with urllib.request.urlopen(request, timeout=timeout) as response:
         data = response.read()
     return json.loads(data) if json_data else data
@@ -58,7 +58,7 @@ def get(url: str, *, json_data: bool = False, timeout: int = 60):
 
 def api(endpoint: str, params: dict) -> dict:
     """Call NCBI E-utilities with provenance-identifying parameters."""
-    params = {**params, "tool": "starplast", "email": "einar.olafsson@gmail.com"}
+    params = {**params, "tool": "parascape", "email": "einar.olafsson@gmail.com"}
     return get(f"{EUTILS}/{endpoint}?{urllib.parse.urlencode(params)}", json_data=True)
 
 
@@ -107,7 +107,7 @@ def directory_files(url: str) -> list[dict]:
         full = urllib.parse.urljoin(url, href)
         try:
             request = urllib.request.Request(full, method="HEAD",
-                                             headers={"User-Agent": "starplast-dataset-archive/1.0"})
+                                             headers={"User-Agent": "parascape-dataset-archive/1.0"})
             with urllib.request.urlopen(request, timeout=30) as response:
                 size = int(response.headers.get("Content-Length", 0))
         except (OSError, ValueError):
@@ -240,7 +240,7 @@ def retrieve(record: dict, file: dict, output: Path, max_file: int,
         if not target.exists():
             part = target.with_suffix(target.suffix + ".part")
             request = urllib.request.Request(file["url"],
-                                             headers={"User-Agent": "starplast-dataset-archive/1.0"})
+                                             headers={"User-Agent": "parascape-dataset-archive/1.0"})
             with urllib.request.urlopen(request, timeout=180) as response, part.open("wb") as handle:
                 while chunk := response.read(1024 * 1024):
                     handle.write(chunk)
@@ -284,7 +284,7 @@ def write_outputs(records: list[dict], rows: list[dict], output: Path) -> None:
     genera = sorted({record["genus"] for record in records})
     downloaded = sum(int(row["bytes"] or 0) for row in rows if row["status"] == "downloaded")
     text = ["# Pan-Apicomplexan processed-data archive — 2026-08-15", "",
-            "Official GEO and PRIDE source files for future Starplast versions. Raw sequencing reads,",
+            "Official GEO and PRIDE source files for future ParaScape versions. Raw sequencing reads,",
             "raw mass spectra, BAM/coverage tracks, and files over the configured limits are catalogued",
             "but not downloaded. No file in this archive is integrated into the current Toxoplasma graph.", "",
             f"- {len(records):,} repository records across {', '.join(genera)}",

@@ -2,7 +2,7 @@
 
 `pilot.ipynb` actually fitted and replayed native kNN against complete EC major-class
 profiles. Source review: `../functional_source_review_2026_10_08_v2/`. Typed held-out
-artifact: `349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162`.
+artifact: `e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461`.
 
 The fixed seed 23 split protects recorded homology groups: 679 train, 175 tuning,
 190 calibration and 182 test genes. Only training genes fit ranks, feature selection

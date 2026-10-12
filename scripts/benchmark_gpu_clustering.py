@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Time identical repeated clusterings on Starplast's CPU and GPU paths.
+"""Time identical repeated clusterings on ParaScape's CPU and GPU paths.
 
 The benchmark uses an 8,140 x 3 fixture, matching the shipped proteome map, warms each backend once,
 and reports GPU utilization sampled from ``nvidia-smi`` while the timed repetitions run. It never
-touches saved searches, so the CPU baseline under ``~/.cache/starplast/searches`` remains intact.
+touches saved searches, so the CPU baseline under ``~/.cache/parascape/searches`` remains intact.
 """
 from __future__ import annotations
 
@@ -31,8 +31,8 @@ def _utilization(stop: threading.Event, samples: list) -> None:
 
 def run(algorithm: str, repeats: int, use_gpu: bool, seed: int = 42) -> dict:
     """Run one warmed benchmark and return its timing and utilization record."""
-    os.environ["STARPLAST_GPU"] = "1" if use_gpu else "0"
-    from starplast import clustering, gpu
+    os.environ["PARASCAPE_GPU"] = "1" if use_gpu else "0"
+    from parascape import clustering, gpu
     X = np.random.default_rng(seed).normal(size=(8140, 3)).astype(np.float32)
     options = ({"n_clusters": 60} if algorithm == "kmeans"
                else {"eps": 0.25, "min_samples": 10})

@@ -8,8 +8,8 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import audit_dataset_selection as A
-from starplast import datasets as D, organisms as O, slots as S
-from starplast.dataset_selection import DatasetCandidate
+from parascape import datasets as D, organisms as O, slots as S
+from parascape.dataset_selection import DatasetCandidate
 
 
 def test_recorded_doi_extraction_does_not_include_supplement_file_paths():

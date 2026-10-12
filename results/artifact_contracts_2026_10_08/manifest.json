@@ -34,11 +34,11 @@
     "fitted_models": 0
   },
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/freeze_artifact_pilot.py": "4f861fc1b9fafc3531bf40e0ad9aed56d877b43f57018f775a13c68bb14f44db",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/artifacts.py": "842f28dd08b2204ec2d4de4b5659e4dec71e3366bfaea023d11195e1a2852445",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/capabilities.py": "6659d9c0cf4eab8d1b932d06a50c0c0818b6903efb279c04835464d61934d723",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/splits.py": "6898360c7f5acfa3aa97e4004d20db19ee7a4bea224a85c2a537c2e729b7d23f",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/query.py": "b0f9ad5d26004f509a69d5b0240e6f484b8628cf22fcc3bed8f8fd3eaf761b56"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/freeze_artifact_pilot.py": "d0a939d698dee9e8edfa9569f4a718729b4e8cab066f65f38d13402df711d215",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/artifacts.py": "842f28dd08b2204ec2d4de4b5659e4dec71e3366bfaea023d11195e1a2852445",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/capabilities.py": "6659d9c0cf4eab8d1b932d06a50c0c0818b6903efb279c04835464d61934d723",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/splits.py": "6898360c7f5acfa3aa97e4004d20db19ee7a4bea224a85c2a537c2e729b7d23f",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/query.py": "b0f9ad5d26004f509a69d5b0240e6f484b8628cf22fcc3bed8f8fd3eaf761b56"
   },
   "outputs": {
     "report.json": "b92b7fb9f481361e1e7571cac5905a92c475ba7ed2cec20d9c67948a574db362",

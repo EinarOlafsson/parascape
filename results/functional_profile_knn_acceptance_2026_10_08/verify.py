@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import sys
 
-ROOT = Path('/media/carruthers/mnt3/claude/repo/starplast')
+ROOT = Path('/media/carruthers/mnt3/claude/repo/parascape')
 sys.path.insert(0, str(ROOT))
 from scripts.notebook_runner import ExecutedNotebook
 OUT = Path(__file__).resolve().parent

@@ -23,7 +23,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast.embedding import (BLOCKS, EmbeddingSpec, NA_POLICIES, SCALINGS, build_matrix,  # noqa: E402
+from parascape.embedding import (BLOCKS, EmbeddingSpec, NA_POLICIES, SCALINGS, build_matrix,  # noqa: E402
                                  columns_for, embed, missingness_leak, variance_share)
 
 
@@ -81,7 +81,7 @@ def test_every_assay_family_already_in_the_cache_has_its_own_feature_block():
     by exactly its biological block, and every selected column belongs to that dataset rather than
     having inherited the block merely because of a broad expression.py prefix.
     """
-    from starplast import datasets, paths
+    from parascape import datasets, paths
 
     nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
     expected = {
@@ -367,7 +367,7 @@ def test_a_read_only_one_hot_array_is_copied_before_scaling():
     """
     import numpy as np
     import pandas as pd
-    from starplast.embedding import EmbeddingSpec, build_matrix
+    from parascape.embedding import EmbeddingSpec, build_matrix
 
     real = pd.get_dummies
 
@@ -396,7 +396,7 @@ def test_one_hot_column_names_come_from_the_frame_that_was_encoded():
     two chances to disagree if the column has missing values."""
     import numpy as np
     import pandas as pd
-    from starplast.embedding import EmbeddingSpec, build_matrix
+    from parascape.embedding import EmbeddingSpec, build_matrix
 
     nodes = pd.DataFrame({
         "gene_id": [f"g{i}" for i in range(30)],
@@ -415,7 +415,7 @@ def test_one_hot_column_names_come_from_the_frame_that_was_encoded():
 def test_a_map_arrives_at_a_known_size_wherever_it_came_from():
     """Every embedding is put at the same extent, which is what lets one replace another in the view
     without the camera having to be re-framed, and what makes two thumbnails comparable."""
-    from starplast.embedding import normalize
+    from parascape.embedding import normalize
     Y = np.random.default_rng(0).normal(size=(50, 3)) * 0.001 + 900.0
     out = normalize(Y)
     assert np.allclose(out.mean(0), 0.0, atol=1e-3)
@@ -428,7 +428,7 @@ def test_normalizing_moves_and_resizes_a_map_without_distorting_it():
     stretch a genuinely elongated map into a round one -- the difference between two configurations
     that a walk exists to show."""
     from scipy.spatial.distance import pdist
-    from starplast.embedding import normalize
+    from parascape.embedding import normalize
     Y = np.random.default_rng(1).normal(size=(40, 3)) * np.array([10.0, 1.0, 0.5])
     d0, d1 = pdist(Y), pdist(normalize(Y))
     assert np.allclose(d1 / d0, (d1 / d0)[0])
@@ -438,7 +438,7 @@ def test_a_read_only_embedding_is_copied_rather_than_scaled_in_place():
     """umap returns a read-only array in recent versions and the centring then fails with "output
     array is read-only" -- the fourth place this project has hit that, and it appears only on the
     newer library."""
-    from starplast.embedding import normalize
+    from parascape.embedding import normalize
     Y = np.random.default_rng(2).normal(size=(20, 3))
     Y.flags.writeable = False
     out = normalize(Y)
@@ -455,8 +455,8 @@ def test_two_dimensional_tsne_uses_cuml_when_available(monkeypatch):
         def fit_transform(self, X):
             return np.asarray(X[:, :2])
 
-    monkeypatch.setattr("starplast.gpu.tsne_class", lambda: FakeTSNE)
-    monkeypatch.setattr("starplast.gpu.backend", lambda: {"tsne": "fake GPU"})
+    monkeypatch.setattr("parascape.gpu.tsne_class", lambda: FakeTSNE)
+    monkeypatch.setattr("parascape.gpu.backend", lambda: {"tsne": "fake GPU"})
     out = embed(_nodes(1000), EmbeddingSpec(blocks=("fitness_screens",), method="tsne",
                                             n_components=2), log=lambda *_: None)
     assert out[0].shape == (1000, 2) and seen["n_components"] == 2
@@ -472,7 +472,7 @@ def test_three_dimensional_tsne_falls_back_to_sklearn(monkeypatch):
         def fit_transform(self, X):
             return np.asarray(X[:, :3])
 
-    monkeypatch.setattr("starplast.gpu.tsne_class", lambda: object)
+    monkeypatch.setattr("parascape.gpu.tsne_class", lambda: object)
     monkeypatch.setattr("sklearn.manifold.TSNE", CPU)
     messages = []
     out = embed(_nodes(1000), EmbeddingSpec(blocks=("fitness_screens",), method="tsne",
@@ -496,8 +496,8 @@ def test_a_failing_gpu_tsne_falls_back_loudly(monkeypatch):
         def fit_transform(self, X):
             return np.asarray(X[:, :2])
 
-    monkeypatch.setattr("starplast.gpu.tsne_class", lambda: GPU)
-    monkeypatch.setattr("starplast.gpu.backend", lambda: {"tsne": "fake GPU"})
+    monkeypatch.setattr("parascape.gpu.tsne_class", lambda: GPU)
+    monkeypatch.setattr("parascape.gpu.backend", lambda: {"tsne": "fake GPU"})
     monkeypatch.setattr("sklearn.manifold.TSNE", CPU)
     messages = []
     out = embed(_nodes(1000), EmbeddingSpec(blocks=("fitness_screens",), method="tsne",
@@ -532,7 +532,7 @@ def test_a_results_row_saved_under_the_old_block_name_rebuilds_its_map():
     """The same translation by the other route. A results table saved before the rename holds its
     blocks as one `+`-joined string, and clicking that row is supposed to rebuild the map it
     describes -- from the same features, or it is a different map wearing the row's numbers."""
-    from starplast.search import rebuild
+    from parascape.search import rebuild
     coords, genes, labels, features = rebuild(
         _lopit_nodes(80),
         {"blocks": "localisation", "na_policy": "median", "scaling": "rank", "n_neighbors": 5,
@@ -546,7 +546,7 @@ def test_strict_umap_failure_is_not_reported_as_a_successful_projection(monkeypa
     import umap
     def fail(*args, **kwargs):
         raise RuntimeError('fixture failure')
-    monkeypatch.setattr('starplast.gpu.umap_class',lambda:None)
+    monkeypatch.setattr('parascape.gpu.umap_class',lambda:None)
     monkeypatch.setattr(umap.UMAP,'fit_transform',fail)
     with pytest.raises(RuntimeError,match='strict mode forbids fallback'):
         embed(_nodes(),EmbeddingSpec(),strict=True)
@@ -562,14 +562,14 @@ def test_gpu_umap_receives_the_requested_metric(monkeypatch):
     class Fake:
         def __init__(self,**kwargs): parameters.update(kwargs)
         def fit_transform(self,X): return X[:,:3]
-    monkeypatch.setattr('starplast.gpu.umap_class',lambda:Fake)
+    monkeypatch.setattr('parascape.gpu.umap_class',lambda:Fake)
     coords,_,_,metadata=embed(_nodes(),EmbeddingSpec(metric='cosine'),return_metadata=True)
     assert parameters['metric']=='cosine'
     assert metadata['backend']=='cuml'
 
 
 def test_saved_map_keeps_executed_recipe_and_refuses_mismatched_gene_order(tmp_path):
-    from starplast.tuning import EmbeddingStore
+    from parascape.tuning import EmbeddingStore
     nodes=_nodes()
     spec=EmbeddingSpec(method='pca')
     coords,features,rows=embed(nodes,spec)

@@ -8,9 +8,9 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import artifacts as A,capabilities as C,organisms as O,precompute_features as F,precompute_jobs as P
-from starplast.query import Query
-from starplast.splits import Assignment,ExclusionManifest,SplitManifest
+from parascape import artifacts as A,capabilities as C,organisms as O,precompute_features as F,precompute_jobs as P
+from parascape.query import Query
+from parascape.splits import Assignment,ExclusionManifest,SplitManifest
 
 IDS=tuple(f'TGME49_{100001+i}' for i in range(10))
 SPLIT=SplitManifest(O.TOXOPLASMA,'numeric_software_fixture','entity',tuple(

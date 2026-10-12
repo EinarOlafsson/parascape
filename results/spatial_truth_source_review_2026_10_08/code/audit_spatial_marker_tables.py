@@ -21,8 +21,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT/'scripts'))
-from starplast import organisms as O  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import organisms as O  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 from recover_pmc_sources import named_media  # noqa: E402
 from recover_source_files import download  # noqa: E402
 
@@ -74,7 +74,7 @@ def audit(prior, root, output):
     if output.exists() or not root.is_dir():
         raise ValueError('Use a new audit snapshot and the existing source archive')
     output.mkdir(parents=True)
-    inputs = [prior/'sources.json', Path(__file__), ROOT/'starplast/organisms.py',
+    inputs = [prior/'sources.json', Path(__file__), ROOT/'parascape/organisms.py',
         ROOT/'scripts/recover_pmc_sources.py', ROOT/'scripts/recover_source_files.py']
     reports, media = [], []
     for record in json.loads((prior/'sources.json').read_text()):

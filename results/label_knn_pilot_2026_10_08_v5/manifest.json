@@ -49,33 +49,33 @@
       "macro_auroc": null,
       "macro_auprc": null
     },
-    "artifact_identity": "4924dfa57c5fc39a6bd3f92718e031d60d23163b34da869ef102a5c1ec03e350",
+    "artifact_identity": "c7b228db196b61614cebcb767c0557c8a816f6dbb6847686c8eb57c314985c1a",
     "interpretation": "surrogate stored-prediction recovery; not independent biological accuracy",
     "native_runtime_changes": "none"
   },
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/freeze_label_knn_pilot.py": "c18d4665875d8a9b57b47975e16f5ace38985daad23c365a16d58304f4992922",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/ground_truth_registry_2026_10_07_v2/registry.json": "43a58be0040b63c3062358d2665cc18340818de01d508741592592470084f5e2",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/ground_truth_registry_2026_10_07_v2/Tg_truth.parquet": "fd75e17a7b87dbf794cb653aee886e9e1bc6f21934417164c0953983a97b2ed6",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/ground_truth_registry_2026_10_07_v2/Tg_universe.json": "fc8eba37c013b73e3291d5a2690e18135ef2435419c5eb2f1e26a0acdde07ed7",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/nodes.parquet": "1a2fee1a4b97be8442287dfe982c991c119ece6f9f318968956f926ebe87c69c",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/label_records.py": "05870874f9ec301d27392c8404037bb077b61e1f96bb7c019893f8ad0168edaf",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/artifacts.py": "5da45c94dbfde288acb545e1e6d593087cadd3ed74269839da12f08890004ea4",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/record_scorecards.py": "81a9519e072d1da3fe47d8a07f9c63914ac517cd6f6dfb18b98bf5523ffcd1a7",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/splits.py": "6898360c7f5acfa3aa97e4004d20db19ee7a4bea224a85c2a537c2e729b7d23f",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/strategies.py": "b9d2f461991d83479e9d6e1f91c6591f8bbb68438affddfe8116b07aa04cb236",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/baselines.py": "c135471fe8fc96cd443cdd90bf8058733502728588704e31a0c4099306be5307",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/capabilities.py": "6659d9c0cf4eab8d1b932d06a50c0c0818b6903efb279c04835464d61934d723"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/freeze_label_knn_pilot.py": "21b3eab3d5c056b1314e668c6d54302c365167842c5c3494b5231c39282c499d",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/ground_truth_registry_2026_10_07_v2/registry.json": "e9729c691073d7ccae50de5585b8ca76baa2302d0a7545c79287689463462bae",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/ground_truth_registry_2026_10_07_v2/Tg_truth.parquet": "fd75e17a7b87dbf794cb653aee886e9e1bc6f21934417164c0953983a97b2ed6",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/ground_truth_registry_2026_10_07_v2/Tg_universe.json": "fc8eba37c013b73e3291d5a2690e18135ef2435419c5eb2f1e26a0acdde07ed7",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/nodes.parquet": "1a2fee1a4b97be8442287dfe982c991c119ece6f9f318968956f926ebe87c69c",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/label_records.py": "05870874f9ec301d27392c8404037bb077b61e1f96bb7c019893f8ad0168edaf",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/artifacts.py": "5da45c94dbfde288acb545e1e6d593087cadd3ed74269839da12f08890004ea4",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/record_scorecards.py": "81a9519e072d1da3fe47d8a07f9c63914ac517cd6f6dfb18b98bf5523ffcd1a7",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/splits.py": "6898360c7f5acfa3aa97e4004d20db19ee7a4bea224a85c2a537c2e729b7d23f",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/strategies.py": "5f2adb48a947dbf610b69bb5a3b87892a24963c405fc44788a2a1598a186a086",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/baselines.py": "c135471fe8fc96cd443cdd90bf8058733502728588704e31a0c4099306be5307",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/capabilities.py": "6659d9c0cf4eab8d1b932d06a50c0c0818b6903efb279c04835464d61934d723"
   },
   "outputs": {
-    "summary.json": "daa35b79cdb5ea32d3a5622b37b26b6e247fc4addad37724145f8f39f91abed4",
+    "summary.json": "2893d10d11e1e53d832ee26827b6933d9cb2ba0d26a5b1e43e859f545ae7bbdb",
     "split.json": "8826317d7b8cc4056ef367486b1a2735150a9990a735a4bc11a86e5dc786ff51",
     "held_out/class_scores.json": "035b47857599494b3aed00a0f47698344dda4a9cdaf317dad4724c309fe155d0",
     "held_out/model_state.json": "ed0b6193315fe0e5a38ba2c5f12e105175ced43ed0eec67bbb0bc280438751c9",
     "held_out/class_cards.json": "54cbb64c6b08e7d4b28fda71448cb378e9a9082aea167d27088a35b36134cd1d",
     "held_out/rows.json": "7890fe0bcc4cce24acd6c5cbfacb1c18e1d59cc0b39542e031a3f6cf6ff8e4fa",
     "held_out/card.json": "c3077cb653315276294dd71f1eef13e321fc978e12e633bf950c4dd76cadc19f",
-    "held_out/manifest.json": "3158237d46edd43ff7a474d6f763174e0e3037b1de3ea82967c9c70d2fa9aa93",
+    "held_out/manifest.json": "e97ccb5712e7072af6849b10f55c6771695306c16e5f11773890c3d89613e43d",
     "held_out/baseline_cards.json": "1588ef5ead5fcf0c956dc90df5f4d57ee3c3ea04fed68ffbf30b8f767c5e7f60"
   }
 }

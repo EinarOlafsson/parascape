@@ -10,7 +10,7 @@ from 3.7874 s to 0.3644 s (10.40x; 29% peak utilization). Both paths therefore r
 
 ## The evidence
 
-A ten-task search was run on the RTX 3090 through `starplast-discover`. Measured while it ran:
+A ten-task search was run on the RTX 3090 through `parascape-discover`. Measured while it ran:
 
     nvidia-smi: 16% GPU utilisation, 2.7 GB of 24 GB used
 
@@ -32,7 +32,7 @@ t-SNE is CPU-only in every configuration, and it was chosen by two of the five g
 
 ## The cause
 
-In `starplast/clustering.py`, `cluster()` returns from the CPU branches **before** the GPU block is
+In `parascape/clustering.py`, `cluster()` returns from the CPU branches **before** the GPU block is
 ever consulted. The order today is:
 
     if algorithm == "dbscan":        -> sklearn DBSCAN, returns
@@ -43,12 +43,12 @@ ever consulted. The order today is:
 The three CPU branches were added in 0.27.0 above an existing GPU block that only ever handled
 HDBSCAN. Nothing is wrong with the branches; they are simply in front of the door.
 
-`starplast/embedding.py` has the same shape for `method == "tsne"`: it goes straight to
+`parascape/embedding.py` has the same shape for `method == "tsne"`: it goes straight to
 `sklearn.manifold.TSNE` with no GPU attempt at all.
 
 ## What to do
 
-**1. `starplast/gpu.py`** — add resolvers beside `umap_class()` and `hdbscan_class()`:
+**1. `parascape/gpu.py`** — add resolvers beside `umap_class()` and `hdbscan_class()`:
 
     kmeans_class()   -> cuml.cluster.KMeans or None
     dbscan_class()   -> cuml.cluster.DBSCAN or None
@@ -58,14 +58,14 @@ Same contract as the existing two: return None when cuML is absent, never raise,
 `backend()` report what resolved. Check what this cuML actually exposes before writing the names —
 the environment has `cuml-cu12 26.8.0`, and the API has moved between releases.
 
-**2. `starplast/clustering.py`** — try the GPU first for every algorithm, fall back on the CPU, and
+**2. `parascape/clustering.py`** — try the GPU first for every algorithm, fall back on the CPU, and
 say which ran. The existing HDBSCAN block already has the right shape, including the loud warning
 on fallback ("a silent fallback is how 'the GPU switch does nothing' becomes impossible to
 diagnose") and the `len(X) >= 1000` floor, which exists because cuML below a thousand points is
 slower than sklearn once the copy is counted. Keep both. Do not restructure the function into
 something clever; a small dispatch table keyed by algorithm is enough.
 
-**3. `starplast/embedding.py`** — the same for t-SNE. Note that cuML's t-SNE has historically
+**3. `parascape/embedding.py`** — the same for t-SNE. Note that cuML's t-SNE has historically
 supported only `n_components=2`; if that still holds, fall back to the CPU for 3 components rather
 than silently returning a 2-D map, and log the reason.
 
@@ -79,7 +79,7 @@ document it. Pinning is the better answer.
 
 ## Acceptance
 
-* `nvidia-smi` shows utilisation well above 16% during a `starplast-discover` sweep that picks
+* `nvidia-smi` shows utilisation well above 16% during a `parascape-discover` sweep that picks
   kmeans or DBSCAN. Measure it, do not assume it.
 * A timed comparison in the commit message: one identical configuration, CPU vs GPU, wall clock for
   a hundred clusterings of 8,140 points. If a GPU path turns out to be **slower**, remove it rather
@@ -94,5 +94,5 @@ document it. Pinning is the better answer.
 ## Do not
 
 Do not re-run the ten-task search to "see if it is faster" before the timing test exists. The
-searches already saved under `~/.cache/starplast/searches/bigA_*`, `bigB_*` were produced by the
+searches already saved under `~/.cache/parascape/searches/bigA_*`, `bigB_*` were produced by the
 CPU clustering path and are the baseline; overwriting them loses the comparison.

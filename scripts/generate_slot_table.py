@@ -32,8 +32,8 @@ OUT_TOXO_CSV = os.path.join(_ROOT, "instructions", "done", "31_slots_toxoplasma.
 OUT_TOXO_MD = os.path.join(_ROOT, "instructions", "done", "31_slots_toxoplasma.md")
 OUT_PF_CSV = os.path.join(_ROOT, "instructions", "done", "31_slots_plasmodium.csv")
 OUT_PF_MD = os.path.join(_ROOT, "instructions", "done", "31_slots_plasmodium.md")
-OUT_JSON = os.path.join(_ROOT, "starplast", "data", "slots.json")
-OUT_HIERARCHY_JSON = os.path.join(_ROOT, "starplast", "data", "slot_hierarchy.json")
+OUT_JSON = os.path.join(_ROOT, "parascape", "data", "slots.json")
+OUT_HIERARCHY_JSON = os.path.join(_ROOT, "parascape", "data", "slot_hierarchy.json")
 OUT_HIERARCHY_MD = os.path.join(_ROOT, "instructions", "done", "31_slot_hierarchy.md")
 #: The earlier PubMed sweep. A title cache now, not a source of candidates -- see
 #: `_merge_candidate_references`.
@@ -728,7 +728,7 @@ HOST_COLUMNS = {
     # Unstimulated macrophages only (GSE267544): the stimulated arms are LPS + IFN-gamma, not
     # infection, and answer none of these slots.
     "host transcriptome · mouse bone-marrow macrophage": ["bmdm_tpm"],
-    # Contrasts, computed from deposited expression (starplast/deposits.py): infected against
+    # Contrasts, computed from deposited expression (parascape/deposits.py): infected against
     # uninfected, as the family's policy says -- the disagreement is the signal.
     "host response to infection · human fibroblast": ["hff_tg_infection_log2fc",
                                                       "hff_tg_infection_padj"],
@@ -1380,7 +1380,7 @@ EVIDENCE_PATHS = {
 #: verbatim: a first pass spelled these from memory and dropped `liver stage` and `oocyst` from
 #: Plasmodium -- both of which it has, in the mosquito and the hepatocyte -- so four slots lost a
 #: stage they had correctly.
-from starplast import organisms as _organisms  # noqa: E402
+from parascape import organisms as _organisms  # noqa: E402
 STAGES_BY_ORGANISM = {code: set(space.contexts) for code, space in _organisms.SPACES.items()
                       if space.kind == _organisms.PARASITE}
 
@@ -1427,7 +1427,7 @@ def registry_text(patterns) -> str:
 
     Returns "" where no registry entry backs the slot, which is the signal to fall back to the label.
     """
-    from starplast import datasets
+    from parascape import datasets
     seen, parts = set(), []
     for column in [str(c) for c in (patterns or ())]:
         entry = datasets.provenance(column)
@@ -1722,7 +1722,7 @@ def _definition(row, organism: str) -> dict:
 #: The mirror deliberately drops Toxoplasma's patterns, because a Toxoplasma column name is a
 #: statement about Toxoplasma data and mirroring it would have claimed *falciparum* slots with
 #: *gondii* numbers -- the leakage instruction 39 is built to prevent. So the Pf arm names its own,
-#: and `starplast.plasmodium` chooses column names that match the Toxoplasma table where the
+#: and `parascape.plasmodium` chooses column names that match the Toxoplasma table where the
 #: quantity is genuinely the same, which is why these read familiar without being shared.
 PF_PATTERNS = {
     # The Plasmodium arm carries annotation columns the Toxoplasma slot's patterns do not name --
@@ -2001,7 +2001,7 @@ def evidence(nodes, cols) -> int:
 #: checked at all.
 #:
 #: A refusal names what the deposit actually is. "Not relevant" is not a reason.
-from starplast.source_refusals import REFUSED_CANDIDATES
+from parascape.source_refusals import REFUSED_CANDIDATES
 
 BLOCKED = {
     # --- Plasmodium, swept 2026-08-19 through GEO, PRIDE and PubMed with the axis's assay terms.
@@ -2514,7 +2514,7 @@ def _write_hierarchy(definitions: list) -> None:
 def main() -> int:
     import numpy as np
     import pandas as pd
-    from starplast import paths
+    from parascape import paths
 
     nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
     _mp = paths.cache_file("metabolites.parquet")
@@ -2529,7 +2529,7 @@ def main() -> int:
     pf_graph = np.load(_pg, allow_pickle=True) if os.path.exists(_pg) else None
     _pb = paths.cache_file("pf_host_bridges.parquet")
     pf_bridges = pd.read_parquet(_pb) if os.path.exists(_pb) else pd.DataFrame()
-    from starplast import host
+    from parascape import host
     hosts = host.shipped_tables()
     rows = _rows(definitions, nodes, z, metabolites, bridges, pf_nodes, pf_graph, pf_bridges, hosts)
     toxo_rows = [row for row in rows if row["organism"] == "Tg"]

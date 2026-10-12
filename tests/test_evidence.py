@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast.evidence import (Observation, LiteratureAssertion, write_observations,
+from parascape.evidence import (Observation, LiteratureAssertion, write_observations,
                                read_observations, from_gene_table, propose_assertions,
                                save_assertions, load_assertions)
 

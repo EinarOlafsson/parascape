@@ -1,18 +1,18 @@
 # Strategy capabilities
 
-`starplast.capabilities.catalog()` declares all 39 current strategies, their
+`parascape.capabilities.catalog()` declares all 39 current strategies, their
 allowed query kinds, deployment outputs, evidence requirements, parameters,
 benchmark units/tasks, underlying technique tests and precomputable components.
 A new catalogue strategy or technique requires a reviewed declaration.
 
 ```python
-from starplast.capabilities import resolve
+from parascape.capabilities import resolve
 
 plan = resolve(query, "feature_knn", evidence, settings={"target": "compartment"})
 print(plan.applicable, plan.reason, plan.outputs, plan.validation_gaps)
 ```
 
-`query` is a typed `starplast.query.Query`. `evidence` is an explicit
+`query` is a typed `parascape.query.Query`. `evidence` is an explicit
 `EvidenceState` inspected from an admitted gene space **after query-specific
 source exclusions**. It records the entity universe, available context,
 categorical/numeric columns, exact class values, permitted features and typed

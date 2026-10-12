@@ -9,7 +9,7 @@ The authors' confidence that this protein is myristoylated, 3 high to 1 low
     PMID         : 32618271
     accession    : eLife 57861 supplementary file 4
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7373427/supplementaryFiles
-    local path   : starplast/data/myristoylome.tsv
+    local path   : parascape/data/myristoylome.tsv
 
 Quirks that cost time once:
     A category the catalog did not have. N-myristoylation is co-translational and irreversible,
@@ -22,7 +22,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/myristoylome.py

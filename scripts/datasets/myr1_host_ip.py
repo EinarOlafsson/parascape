@@ -9,7 +9,7 @@ Host proteins co-immunoprecipitating with the parasite protein MYR1
     PMID         : 32075880
     accession    : PXD016383
     url          : https://www.ebi.ac.uk/pride/archive/projects/PXD016383
-    local path   : starplast/data/host_bridges.parquet
+    local path   : parascape/data/host_bridges.parquet
 
 Quirks that cost time once:
     The first BRIDGE in the project: pairs whose two ends are in different tables, which
@@ -26,7 +26,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/myr1_host_ip.py

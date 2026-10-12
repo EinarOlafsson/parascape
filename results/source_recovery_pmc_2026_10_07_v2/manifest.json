@@ -8,9 +8,9 @@
   "primary_service": "NIH NLM NCBI PubMed Central Article Datasets on AWS",
   "service_docs": "https://pmc.ncbi.nlm.nih.gov/tools/pmcaws/",
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/recover_pmc_sources.py": "d7c38f060cdb8d1ef857ab1270f38498f7f664dcb2356f718428ca964ca5202a",
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/recover_pmc_sources.py": "edc70f10f5308638a4c06d962f2bf88449d24a501f3a054a9aa196a22e052088",
     "results/source_recovery_2026_10_07/bindings.json": "67bf33cfd40b837cca6a85a3275755b5d0fdb6c219cea424f0d2ac2c49adccb3",
-    "results/source_recovery_2026_10_07/source_locations.json": "27ce1ec2de4ed594b340fda8097c53e04a6d3f170ec463e624dd2bceaabf9bff"
+    "results/source_recovery_2026_10_07/source_locations.json": "16642dd9633af1bb4a60827119bb04f6477a488d801d37817edd96d2b622dc53"
   },
   "outputs": {
     "PMC6754445_versions.xml": "99c6bd1520a2b35d7183f8c85c5eff242f8a496172807113ff3ae61f5634f10f",

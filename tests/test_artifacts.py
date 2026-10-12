@@ -5,9 +5,9 @@ import json
 
 import pytest
 
-from starplast import artifacts as A, capabilities as C, organisms as O, scorecard as SC
-from starplast.query import Query
-from starplast.splits import Assignment, SplitManifest
+from parascape import artifacts as A, capabilities as C, organisms as O, scorecard as SC
+from parascape.query import Query
+from parascape.splits import Assignment, SplitManifest
 
 HASH = hashlib.sha256(b'fixture').hexdigest()
 OTHER = hashlib.sha256(b'changed').hexdigest()
@@ -19,7 +19,7 @@ SPLIT = SplitManifest(O.TOXOPLASMA, 'synthetic_fixture', 'entity', tuple(
 def spec(key='feature_knn', *, role='held_out', target='location'):
     cap = C.get(key)
     query_kind = 'gene_set' if 'gene_set' in cap.query_kinds and 'label' not in cap.query_kinds else 'trait' if cap.benchmark_tasks[0] == 'values' else 'label' if 'label' in cap.query_kinds else 'gene'
-    from starplast.query import EntityRef
+    from parascape.query import EntityRef
     entities = tuple(EntityRef(O.TOXOPLASMA, 'gene', i) for i in IDS[:5]) if query_kind == 'gene_set' else (EntityRef(O.TOXOPLASMA, 'gene', IDS[0]),) if query_kind == 'gene' else ()
     query = Query(O.TOXOPLASMA, query_kind, entities, target=target)
     deps = [A.Dependency('code', 'adapter', HASH), A.Dependency('table', 'entities', HASH), A.Dependency('exclusions', 'explicit_empty_fixture', HASH)]

@@ -52,7 +52,7 @@ publication identity, not the registry's biological source association.
 - `audit.ipynb`, `review.ipynb`, `followup/review.ipynb`: executed analyses and
   exact-identity host follow-up. `verification.ipynb` records artifact reconciliation.
 
-Run from the repository root with the existing Starplast Python environment:
+Run from the repository root with the existing ParaScape Python environment:
 
 ```sh
 python scripts/audit_dataset_selection.py --out results/dataset_selection_2026_10_07 --as-of 2026-10-07

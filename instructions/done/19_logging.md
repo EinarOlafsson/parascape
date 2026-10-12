@@ -1,6 +1,6 @@
 # A real logger, opt-in, with per-level console control — DONE 2026-08-12
 
-`starplast/logging_util.py`, wired into the console pane, Preferences, jobs, fetches and the
+`parascape/logging_util.py`, wired into the console pane, Preferences, jobs, fetches and the
 embedding.
 
 ## Two switches, because they answer different questions
@@ -13,7 +13,7 @@ written to disk unless asked; warnings are still audible.
 
 ## What it does
 
-- Levels DEBUG / INFO / WARNING / ERROR, one logger root (`starplast`), never propagating to the
+- Levels DEBUG / INFO / WARNING / ERROR, one logger root (`parascape`), never propagating to the
   root logger so another library's `basicConfig` cannot print everything twice.
 - Rotating file (2 MB, 3 backups) under the platform cache directory. A directory that cannot be
   written costs the file and reports it, not the console.

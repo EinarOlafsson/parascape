@@ -46,13 +46,13 @@ and verify a wheel installation outside the source checkout.
 
 ## Package layout
 
-There is one PyPI distribution: **`starplast`**. It contains the Python modules,
-console commands, built gene data, and icons. `starplast[gpu]` enables optional
-CUDA dependencies and `starplast[ingest]` enables coverage-file imports; both are
+There is one PyPI distribution: **`parascape`**. It contains the Python modules,
+console commands, built gene data, and icons. `parascape[gpu]` enables optional
+CUDA dependencies and `parascape[ingest]` enables coverage-file imports; both are
 extras of the same project.
 
-`starplast[sequence]` adds the encoder dependencies for regenerating ESM features;
-`starplast[structures]` adds local structure parsing. Reading the bundled feature
+`parascape[sequence]` adds the encoder dependencies for regenerating ESM features;
+`parascape[structures]` adds local structure parsing. Reading the bundled feature
 tables requires neither extra.
 
 The wheel includes cached data for offline browsing and excludes local saved
@@ -62,13 +62,13 @@ embeddings. Original source datasets are not packaged; see the [dataset catalogu
 
 Sign in to **Einar's own PyPI account** at
 [PyPI publishing](https://pypi.org/manage/account/publishing/) and create
-a pending Trusted Publisher for **`starplast`** with these values:
+a pending Trusted Publisher for **`parascape`** with these values:
 
 | Field | Value |
 |---|---|
-| PyPI project name | `starplast` |
+| PyPI project name | `parascape` |
 | Owner | `EinarOlafsson` |
-| Repository | `starplast` |
+| Repository | `parascape` |
 | Workflow filename | `release.yml` |
 | Environment | `pypi` |
 
@@ -94,7 +94,7 @@ python scripts/release.py bump 0.43.0
 python scripts/release.py check
 ```
 
-Use a version greater than the current one. The bump command updates `pyproject.toml` and `starplast.__version__`.
+Use a version greater than the current one. The bump command updates `pyproject.toml` and `parascape.__version__`.
 Update `CHANGELOG.md`, run the release checks, commit with a descriptive message,
 and push to `nightly`. Merge `nightly` into `main` through a pull request or locally:
 
@@ -114,7 +114,7 @@ the release, but preparing it on `nightly` keeps the normal development flow int
 The release workflow compares the version with the repository state before the
 push. An unchanged version does not publish; a downgrade fails. A version increase
 runs the checks, builds a wheel and source distribution, verifies their contents,
-and publishes `starplast`. After a successful PyPI upload, it creates
+and publishes `parascape`. After a successful PyPI upload, it creates
 a GitHub release and `v<version>` tag at the exact commit that was built, with
 generated release notes and the distribution files attached. Prerelease versions
 are marked as prereleases on GitHub. Existing releases and their assets are left

@@ -182,7 +182,7 @@
         {
           "key": "plasmodb_pf3d7_domains",
           "url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
-          "path": "starplast/data/pf_nodes.parquet",
+          "path": "parascape/data/pf_nodes.parquet",
           "note": "Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes)."
         }
       ],
@@ -244,7 +244,7 @@
         {
           "key": "plasmodb_pf3d7_domains",
           "url": "https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular",
-          "path": "starplast/data/pf_nodes.parquet",
+          "path": "parascape/data/pf_nodes.parquet",
           "note": "Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes)."
         }
       ],

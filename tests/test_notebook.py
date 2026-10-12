@@ -88,7 +88,7 @@ def test_it_surfaces_the_unconfirmed_citations(code):
 
 def test_every_registry_function_it_calls_exists(code):
     """The failure this file is really about: an API that moved while the notebook kept opening fine."""
-    from starplast import datasets, paths
+    from parascape import datasets, paths
     for mod, obj in (("datasets", datasets), ("paths", paths)):
         for name in sorted(set(re.findall(rf"{mod}\.(\w+)", code))):
             if name == "py":                      # a mention of paths.py in prose

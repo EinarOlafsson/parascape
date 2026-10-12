@@ -4,8 +4,8 @@ import json
 
 import pytest
 
-from starplast import scorecard as SC
-from starplast.scorecard_view import (
+from parascape import scorecard as SC
+from parascape.scorecard_view import (
     ScorecardLink, build_scorecard_view, export_scorecard, render_scorecard_detail,
     render_scorecard_html, validate_scorecard_link,
 )

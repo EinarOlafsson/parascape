@@ -1,4 +1,4 @@
-# Continuing the Starplast work list
+# Continuing the ParaScape work list
 
 The native thread goal controls automatic continuation of the unfinished action
 list. A separate local timer records runtime boundaries and detects inactivity;
@@ -6,7 +6,7 @@ it does not launch another agent. Goals continue at eligible idle boundaries,
 subject to user/runtime controls. Official documentation:
 https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex
 
-The enabled `starplast-work-watchdog.timer` checks once per minute with a 128 MB
+The enabled `parascape-work-watchdog.timer` checks once per minute with a 128 MB
 service cap. After 15 minutes without source/progress activity while the last
 reported goal state is active, it logs a stale event once. Stale activity cannot
 identify a crash, database overload or other unreported cause. Normal turn
@@ -17,9 +17,9 @@ be overridden by this monitor.
 
 Private files, excluded from git:
 
-- `.starplast-watchdog/events.jsonl`: append-only progress, turn, stop and stale events.
-- `.starplast-watchdog/state.json`: current item, source offset, activity and last observed goal status.
-- `journalctl --user -u starplast-work-watchdog.service`: service failures, including failures to access state/log files.
+- `.parascape-watchdog/events.jsonl`: append-only progress, turn, stop and stale events.
+- `.parascape-watchdog/state.json`: current item, source offset, activity and last observed goal status.
+- `journalctl --user -u parascape-work-watchdog.service`: service failures, including failures to access state/log files.
 
 At resume, inspect these files and use the goal tool to verify actual lifecycle
 state; the monitor's saved goal status is only the latest agent observation.
@@ -41,10 +41,10 @@ boundary/error metadata. Unknown interruption causes stay unknown.
 Installation (already performed on this host):
 
 ```sh
-cp scripts/systemd/starplast-work-watchdog.service scripts/systemd/starplast-work-watchdog.timer ~/.config/systemd/user/
+cp scripts/systemd/parascape-work-watchdog.service scripts/systemd/parascape-work-watchdog.timer ~/.config/systemd/user/
 systemctl --user daemon-reload
-systemctl --user enable --now starplast-work-watchdog.timer
-systemctl --user start starplast-work-watchdog.service
+systemctl --user enable --now parascape-work-watchdog.timer
+systemctl --user start parascape-work-watchdog.service
 ```
 
 A new thread needs its exact runtime log configured explicitly; an existing

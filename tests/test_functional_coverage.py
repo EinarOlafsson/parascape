@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from starplast import functional_coverage as F, functional_results as R, organisms as O
+from parascape import functional_coverage as F, functional_results as R, organisms as O
 
 
 def _catalogues():

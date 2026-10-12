@@ -10,7 +10,7 @@ Mutagenesis index and fitness score from a genome-saturating transposon screen
     PMID         : 29724925
     accession    : PlasmoDB GenesByTaxon attributesTabular
     url          : https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
-    local path   : starplast/data/pf_nodes.parquet
+    local path   : parascape/data/pf_nodes.parquet
 
 Quirks that cost time once:
     PMID resolved by E-utilities on 2026-09-25 (esearch 'Plasmodium falciparum saturation
@@ -23,7 +23,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/plasmodb_pf3d7_piggybac.py

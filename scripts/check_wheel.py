@@ -15,31 +15,31 @@ def check_wheel(path: Path) -> None:
         names = set(archive.namelist())
         metadata = next(n for n in names if n.endswith(".dist-info/METADATA"))
         info = BytesParser().parsebytes(archive.read(metadata))
-        if info["Name"] != "starplast":
+        if info["Name"] != "parascape":
             raise ValueError(f"Unexpected distribution: {info['Name']}")
-        required = {"starplast/app.py", "starplast/data/nodes.parquet", "starplast/data/graph.npz",
-                    "starplast/data/toxodb_identity.tsv", "starplast/data/pf_nodes.parquet",
-                    "starplast/data/pf_graph.npz", "starplast/data/icons/starplast.svg",
-                    "starplast/data/icons/Apicomplexa_cells.svg", "starplast/data/icons/Animal_cells.svg",
-                    "starplast/data/toxodb_cds.tsv.gz", "starplast/data/plasmodb_cds.tsv.gz",
-                    "starplast/workflows.py", "starplast/prediction.py", "starplast/evidence.py",
-                    "starplast/data/af3_features.parquet", "starplast/data/af3_manifest.parquet",
-                    "starplast/data/af3_features.json", "starplast/data/esm_features.parquet",
-                    "starplast/data/esm_manifest.parquet", "starplast/data/pf_mentions.parquet",
-                    "starplast/data/hs_host_proteins.parquet",
-                    "starplast/data/mm_host_proteins.parquet",
-                    "starplast/data/host_species_migration.json", "starplast/packs.py",
-                    "starplast/spaces/__init__.py"}
+        required = {"parascape/app.py", "parascape/data/nodes.parquet", "parascape/data/graph.npz",
+                    "parascape/data/toxodb_identity.tsv", "parascape/data/pf_nodes.parquet",
+                    "parascape/data/pf_graph.npz", "parascape/data/icons/parascape.svg",
+                    "parascape/data/icons/Apicomplexa_cells.svg", "parascape/data/icons/Animal_cells.svg",
+                    "parascape/data/toxodb_cds.tsv.gz", "parascape/data/plasmodb_cds.tsv.gz",
+                    "parascape/workflows.py", "parascape/prediction.py", "parascape/evidence.py",
+                    "parascape/data/af3_features.parquet", "parascape/data/af3_manifest.parquet",
+                    "parascape/data/af3_features.json", "parascape/data/esm_features.parquet",
+                    "parascape/data/esm_manifest.parquet", "parascape/data/pf_mentions.parquet",
+                    "parascape/data/hs_host_proteins.parquet",
+                    "parascape/data/mm_host_proteins.parquet",
+                    "parascape/data/host_species_migration.json", "parascape/packs.py",
+                    "parascape/spaces/__init__.py"}
         missing = required - names
         if missing:
             raise ValueError(f"Incomplete wheel: {sorted(missing)}")
-        if "starplast/data/host_proteins.parquet" in names:
+        if "parascape/data/host_proteins.parquet" in names:
             raise ValueError("The wheel contains the legacy mixed-species host table; clean the build")
-        if any(n.startswith("starplast/data/embeddings/") for n in names):
+        if any(n.startswith("parascape/data/embeddings/") for n in names):
             raise ValueError("The wheel contains local saved embeddings")
         for requirement in info.get_all("Requires-Dist", []):
-            if requirement.lower().startswith("starplast"):
-                raise ValueError(f"Unexpected Starplast dependency: {requirement}")
+            if requirement.lower().startswith("parascape"):
+                raise ValueError(f"Unexpected ParaScape dependency: {requirement}")
             if requirement.lower().startswith(("cuml", "cupy")) and 'extra == "gpu"' not in requirement:
                 raise ValueError(f"CUDA must be optional: {requirement}")
     print(f"Checked {path.name}: {path.stat().st_size / 1_000_000:.1f} MB")
@@ -55,7 +55,7 @@ def main():
         raise ValueError(f"Expected one wheel, found {len(wheels)}")
     expected_sdist = wheels[0].name.split("-py", 1)[0] + ".tar.gz"
     if {p.name for p in directory.iterdir()} != {wheels[0].name, expected_sdist}:
-        raise ValueError("Upload directory must contain only the matching starplast wheel and sdist")
+        raise ValueError("Upload directory must contain only the matching parascape wheel and sdist")
     for wheel in wheels:
         check_wheel(wheel)
 

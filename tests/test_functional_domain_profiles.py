@@ -4,7 +4,7 @@ from dataclasses import dataclass
 import pandas as pd
 import pytest
 
-from starplast import functional_domain_profiles as P, organisms as O
+from parascape import functional_domain_profiles as P, organisms as O
 
 
 @dataclass

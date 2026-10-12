@@ -21,7 +21,7 @@ Session imports appear as separate sources with their preprocessing record. The
 original source-file identity remains unavailable when the import record lacks it.
 Importing values refreshes an open browser without changing installed cache files.
 
-For Python callers, `starplast.dataset_space.DatasetSpace` accepts an explicitly
+For Python callers, `parascape.dataset_space.DatasetSpace` accepts an explicitly
 qualified inventory and local tables. `filter_rows`, `facets`, `source_card` and
 `entities(row, start=0, limit=200)` expose the same scopes, immutable evidence cards
 and original values used by the desktop browser.

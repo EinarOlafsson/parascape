@@ -13,7 +13,7 @@ commit.
     normalis -> normaliz     sources.normalise, embedding.normalise, normalised_by, and the prose
     localis  -> localiz      the module, the feature block, the tests, the generated scripts
 
-`starplast/localisation.py` -> `starplast/localization.py`, `tests/test_localisation.py` ->
+`parascape/localisation.py` -> `parascape/localization.py`, `tests/test_localisation.py` ->
 `tests/test_localization.py`.
 
 Substring rules rather than whole-word ones, because these words inflect: `coloured`, `recolour`,

@@ -22,8 +22,8 @@ def verify(pilot):
     nb.md('Check every input/output identity, then compare against the unchanged native conformal function on the identical frozen partitions. Its partition chooser is temporarily replaced for this diagnostic and restored; its inference/calibration code is unchanged. Rare classes remain in the full eligible benchmark population. This is prediction-grade recovery, not biological accuracy or an established exchangeability guarantee.')
     nb.code('import json, hashlib, ast', 'from pathlib import Path', 'from dataclasses import replace',
         'import numpy as np', 'import pandas as pd',
-        'from starplast import artifacts as A, conformal_records as F, organisms as O, strategies as S, strategy_learning as N, record_scorecards as R, baselines as B',
-        'from starplast.splits import read_split', 'from scripts.freeze_conformal_pilot import frozen_rank_matrix',
+        'from parascape import artifacts as A, conformal_records as F, organisms as O, strategies as S, strategy_learning as N, record_scorecards as R, baselines as B',
+        'from parascape.splits import read_split', 'from scripts.freeze_conformal_pilot import frozen_rank_matrix',
         f'out=Path({str(pilot)!r})', "m=json.loads((out/'manifest.json').read_text())",
         'sha=lambda path:hashlib.sha256(Path(path).read_bytes()).hexdigest()',
         "for path,digest in m['input_sha256'].items():\n    assert sha(path)==digest,path",
@@ -66,7 +66,7 @@ def verify(pilot):
         "assert normalize(R.class_cards(rows,scope,parameters={'class_scores':scores}))==artifact.payloads['class_cards.json']",
         "labels=pd.Series(state['training_labels'],index=state['fit_entities'])", "baselines=B.label_baselines(labels,split,seed=split.seed)",
         "for column in ('majority','prevalence_call'):\n    simple=rows.drop(columns=['prediction','correct','abstained','prediction_set','native_set_text','set_size']).assign(prediction=baselines[column].to_numpy())\n    assert normalize(R.aggregate(simple,scope))==artifact.payloads['baseline_cards.json'][column]",
-        "for path in ('starplast/conformal_records.py','scripts/freeze_conformal_pilot.py','starplast/record_scorecards.py'):\n    ast.parse(Path(path).read_text(),feature_version=(3,10))",
+        "for path in ('parascape/conformal_records.py','scripts/freeze_conformal_pilot.py','parascape/record_scorecards.py'):\n    ast.parse(Path(path).read_text(),feature_version=(3,10))",
         "{'native_calls_sets_scores_quantiles':'exact','test_rows':len(rows),'independent_biological_admission':False,'metrics':artifact.payloads['card.json']['metrics']}")
     nb.md('The all-training-classes control uses only the fitted training class vocabulary. Its broad sets need no calibration truth. Every test gene is retained, and unsupported truth classes would count as set misses. Compare set size/efficiency alongside coverage; a nearly full set is weak inference capacity. The control is not a calibrated deployment promise.')
     nb.code("classes=sorted(set(labels),key=str)", "assert classes==state['native_classes']",

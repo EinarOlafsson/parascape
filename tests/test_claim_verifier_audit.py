@@ -11,8 +11,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT))
 
 import audit_claim_verifiers as A  # noqa: E402
-from starplast import strategies as S  # noqa: E402
-from starplast import track_record as T  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape import track_record as T  # noqa: E402
 
 
 @pytest.fixture

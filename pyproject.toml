@@ -3,8 +3,8 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "starplast"
-version = "0.55.0"
+name = "parascape"
+version = "0.0.1.0"
 description = "Explore gene evidence and screen results in Toxoplasma and Plasmodium"
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.10"
@@ -48,27 +48,27 @@ gpu = [
 ]
 
 [project.scripts]
-starplast = "starplast.app:main"
-starplast-encode-proteins = "starplast.sequence_features:main"
-starplast-index-structures = "starplast.structure_catalog:main"
-starplast-discover = "starplast.discover:main"
-starplast-install-gpu = "starplast.install_gpu:main"
+parascape = "parascape.app:main"
+parascape-encode-proteins = "parascape.sequence_features:main"
+parascape-index-structures = "parascape.structure_catalog:main"
+parascape-discover = "parascape.discover:main"
+parascape-install-gpu = "parascape.install_gpu:main"
 
 [project.urls]
-Homepage = "https://github.com/EinarOlafsson/starplast"
-Documentation = "https://einarolafsson.github.io/starplast/"
-Issues = "https://github.com/EinarOlafsson/starplast/issues"
-Changelog = "https://github.com/EinarOlafsson/starplast/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/EinarOlafsson/parascape"
+Documentation = "https://einarolafsson.github.io/parascape/"
+Issues = "https://github.com/EinarOlafsson/parascape/issues"
+Changelog = "https://github.com/EinarOlafsson/parascape/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
-packages = ["starplast", "starplast.spaces"]
+packages = ["parascape", "parascape.spaces"]
 include-package-data = false
 
 [tool.setuptools.package-data]
-starplast = ["data/*.npz", "data/*.parquet", "data/*.tsv", "data/*.tsv.gz", "data/*.json", "data/hf_release/*.parquet", "data/hf_release/*.md", "data/icons/*.svg"]
+parascape = ["data/*.npz", "data/*.parquet", "data/*.tsv", "data/*.tsv.gz", "data/*.json", "data/hf_release/*.parquet", "data/hf_release/*.md", "data/icons/*.svg"]
 
 [tool.setuptools.exclude-package-data]
-starplast = ["data/embeddings/*"]
+parascape = ["data/embeddings/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

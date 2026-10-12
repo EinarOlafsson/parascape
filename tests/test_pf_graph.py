@@ -22,11 +22,11 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import pf_graph as G  # noqa: E402
+from parascape import pf_graph as G  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-GRAPH = os.path.join(ROOT, "starplast", "data", G.GRAPH)
-NODES = os.path.join(ROOT, "starplast", "data", "pf_nodes.parquet")
+GRAPH = os.path.join(ROOT, "parascape", "data", G.GRAPH)
+NODES = os.path.join(ROOT, "parascape", "data", "pf_nodes.parquet")
 
 
 def _nodes(n=4, **columns):
@@ -135,7 +135,7 @@ def test_save_writes_nothing_when_there_is_nothing_to_write(tmp_path):
 
 def test_save_and_load_round_trip(tmp_path):
     frame = _nodes(3, orthogroup=["OG6_1", "OG6_1", "OG6_2"])
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True)
     G.save(frame, str(data / G.GRAPH), log=lambda *a: None)
     loaded = G.load(str(tmp_path))
@@ -439,7 +439,7 @@ def test_host_degree_refuses_a_sheet_without_the_protein_columns(tmp_path):
 # --------------------------------------------------------------------------- the IP-MS layer
 def _ip_ms_pairs(monkeypatch, rows):
     """Stand in for the interactome loader; the layer's job is the indexing, not the parsing."""
-    import starplast.plasmodium as PL
+    import parascape.plasmodium as PL
     monkeypatch.setattr(PL, "ip_ms", lambda *a, **k: pd.DataFrame(
         rows, columns=["bait", "prey", "product", "spectra_bait", "spectra_control"]))
 
@@ -462,7 +462,7 @@ def test_a_partner_absent_from_the_table_is_not_indexed(monkeypatch, tmp_path):
 
 
 def test_no_interactome_gives_no_layer(monkeypatch, tmp_path):
-    import starplast.plasmodium as PL
+    import parascape.plasmodium as PL
     monkeypatch.setattr(PL, "ip_ms", lambda *a, **k: pd.DataFrame())
     assert not len(G.ip_ms_edges(_xl_nodes(), str(tmp_path), log=lambda *a: None)[0])
     _ip_ms_pairs(monkeypatch, [("PF3D7_010000", "PF3D7_010001", "x", 40, 0)])
@@ -518,7 +518,7 @@ def test_co_translation_is_a_different_layer_from_co_transcription():
 # --------------------------------------------------------------------------- structural similarity
 def test_the_struct_layer_indexes_pairs_and_ignores_genes_it_has_no_row_for(monkeypatch, tmp_path):
     """Indices are positions in `pf_nodes.parquet`, so a gene with no row has no position to use."""
-    import starplast.plasmodium as PL
+    import parascape.plasmodium as PL
     monkeypatch.setattr(PL, "structure_similarity", lambda *a, **k: pd.DataFrame(
         [("PF3D7_010000", "PF3D7_010001", 0.91), ("PF3D7_010000", "PF3D7_999999", 0.95)],
         columns=["gene_a", "gene_b", "tm"]))
@@ -527,6 +527,6 @@ def test_the_struct_layer_indexes_pairs_and_ignores_genes_it_has_no_row_for(monk
 
 
 def test_no_structural_pairs_gives_no_layer(monkeypatch, tmp_path):
-    import starplast.plasmodium as PL
+    import parascape.plasmodium as PL
     monkeypatch.setattr(PL, "structure_similarity", lambda *a, **k: pd.DataFrame())
     assert not len(G.structure_edges(_xl_nodes(), str(tmp_path), log=lambda *a: None)[0])

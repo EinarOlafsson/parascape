@@ -12,7 +12,7 @@ Infected against uninfected HFF, per host gene: moderated log2 change and FDR
 
 Quirks that cost time once:
     No paper is attached to the series (Europe PMC and GEO searched 2026-09-26), so the citation
-    is the accession. FPKM only; the contrast is computed here (starplast/deposits.py):
+    is the accession. FPKM only; the contrast is computed here (parascape/deposits.py):
     moderated t on log2(FPKM + 1), three replicates per arm, genes at a mean FPKM of 1, wild-
     type infection against uninfected. The TGGT1_245740 knockout arm is not shipped -- it
     answers a question about one parasite gene. Textbook response: CXCL8 +5.4, IL6 +2.7, CXCL10
@@ -20,7 +20,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/host_hff_tg_infection.py

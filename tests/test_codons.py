@@ -18,13 +18,13 @@ from scipy.stats import spearmanr
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import codons as C  # noqa: E402
+from parascape import codons as C  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def _cds(tmp_path, rows):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True, exist_ok=True)
     with gzip.open(data / C.TABLE, "wt") as fh:
         fh.write("Gene ID\tCoding Sequence\n")
@@ -188,10 +188,10 @@ def test_without_a_reference_set_the_cai_column_is_left_out(tmp_path):
 def test_the_reference_set_falls_back_to_the_node_table(tmp_path):
     """reference=None means 'the ribosomal proteins', read from the shipped table."""
     _cds(tmp_path, [("TGME49_200010", "GCG" * 40)])
-    (tmp_path / "starplast" / "data" / "nodes.parquet").parent.mkdir(parents=True, exist_ok=True)
+    (tmp_path / "parascape" / "data" / "nodes.parquet").parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame({"gene_id": ["TGME49_200010"],
                   "product": ["40S ribosomal protein S3"]}).to_parquet(
-        tmp_path / "starplast" / "data" / "nodes.parquet")
+        tmp_path / "parascape" / "data" / "nodes.parquet")
     out = C.codon_usage(str(tmp_path), log=lambda *_: None)
     assert "codon_cai_ribosomal" in out
 
@@ -202,7 +202,7 @@ def test_no_node_table_means_no_reference_set(tmp_path):
 
 
 # --------------------------------------------------------------------------- against the real map
-@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "starplast", "data", C.TABLE)),
+@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "parascape", "data", C.TABLE)),
                     reason="shipped CDS table not present")
 def test_bias_tracks_expression_the_way_translational_selection_says_it_must():
     """The check no fixture can give, and the one that would catch a wrong reference set.
@@ -213,7 +213,7 @@ def test_bias_tracks_expression_the_way_translational_selection_says_it_must():
     restatement -- and what makes it able to fail.
     """
     X = C.codon_usage(ROOT, log=lambda *_: None)
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet")).set_index("gene_id")
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     ribo = [g for g in n.index[n["product"].astype(str).str.contains(
         "ribosomal protein", case=False, na=False)] if g in X.index]
     rest = [g for g in X.index if g not in set(ribo)]

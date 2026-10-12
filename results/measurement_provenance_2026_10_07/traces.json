@@ -10,7 +10,7 @@
     "context": [],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/esm_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/esm_features.parquet",
         "sha256": "fc5a79781fddbff8c7b4c553e42412d25ccd931036f92889dcbb46a557313e2e",
         "bytes": 13786425,
         "role": "installed_cache",
@@ -35,7 +35,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "cbbb0ab0546108a619466f02a88a77099f90bc5b75334a8c395238b44fb1d8af"
+    "trace_id": "59f9b4af2a802c1f2488c65747565d12f587a00055d0de7a4ffd3c4f9fdeb139"
   },
   {
     "source_id": "local_af3",
@@ -50,7 +50,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -75,7 +75,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "de7d11337c0aad32a0e321255fc972acc3ba1c9ba206a805e70374fffb1fbd95"
+    "trace_id": "cfbee3a93764241a40c0ef85b96cc2dbc5c565523b2fff5f8ce3776f39749a2b"
   },
   {
     "source_id": "local_af3",
@@ -90,7 +90,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -115,7 +115,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b2fa59b5b49fb86db8bf2c5666bf930df1c0bc8cb0078d873e82ab143ed956b1"
+    "trace_id": "8c144ef9121148433ddf23876c65b9b522170e03faacb91ab0e65320366c9c5a"
   },
   {
     "source_id": "local_af3",
@@ -130,7 +130,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -155,7 +155,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e5305ed175cfd0be75ca2b5bae825d52f01d1ace50b6414404a866732081c9f0"
+    "trace_id": "b20d6e08fa59a9d8e1024e34c67cd7969c9cc60ee6718d42c4326a058899c38b"
   },
   {
     "source_id": "local_af3",
@@ -170,7 +170,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -195,7 +195,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c95776ce83df1d52375334b594a5c40f00cbc39611d62d26e19e87cba07dcd12"
+    "trace_id": "d0851fd7a85851ca3282a7e200d6c28d7d20524e56853a15bdc65598330ac1cf"
   },
   {
     "source_id": "local_af3",
@@ -210,7 +210,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -235,7 +235,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "53a823f395da73e4a47c0b4feeafbc423b80cf731db2bb3dbcd02955b8b37e6f"
+    "trace_id": "7a1b610005adb92a1d715f0497f77076f1f77d466efb12d72e9a218652a272f3"
   },
   {
     "source_id": "local_af3",
@@ -250,7 +250,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -275,7 +275,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "efec7913492f23945bf163219203068eeca736d10b4b6e5604b18bf06c4bc8e3"
+    "trace_id": "2b177008ec66d519fb90d433bd589fdacf967f97558dd8cd16b2ceeb4244f4de"
   },
   {
     "source_id": "local_af3",
@@ -290,7 +290,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -315,7 +315,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "3817faf8b0f11eb05365163cc1769f226d59e011ca5bbcb50bf2e848f1fea26d"
+    "trace_id": "35de6f81c518ab710695a0696b2f86b085e231dca139fcf3c973de9b9411e375"
   },
   {
     "source_id": "local_af3",
@@ -330,7 +330,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -355,7 +355,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a9572b3266b3cd2dd7845eb4aa95330a65aa366eacd5f72f022c17d816d1dd11"
+    "trace_id": "3a73a98641a1b14dfda0d8d240f4309f19d4f2e43f4203386e9925e444f8151f"
   },
   {
     "source_id": "local_af3",
@@ -370,7 +370,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/af3_features.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/af3_features.parquet",
         "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
         "bytes": 85105,
         "role": "installed_cache",
@@ -395,7 +395,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "dd36300a5ae4ba64e373411d531ab5bef91ceacd498b4f6198909611decbe5e4"
+    "trace_id": "64644be6c7f8bc7fa61e6fca9d08a558d8bf78d3157771e1addcf1b4559530fd"
   },
   {
     "source_id": "xue_singlecell",
@@ -556,7 +556,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_identity.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_identity.tsv",
         "sha256": "bc9ad569ddceb382f811b2b840df518977aaad1632fe6bf64fd26daf3ae58f72",
         "bytes": 2333066,
         "role": "installed_cache",
@@ -581,7 +581,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f1151193d74f911cdc67b7206bac3e6242d628a22ab05c70c98fb8262909b9ba"
+    "trace_id": "bda60fdd38ba39bda4f5130d9834dc81aba3a304e9a58fa548e416f13b140473"
   },
   {
     "source_id": "toxodb_identity",
@@ -596,7 +596,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_identity.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_identity.tsv",
         "sha256": "bc9ad569ddceb382f811b2b840df518977aaad1632fe6bf64fd26daf3ae58f72",
         "bytes": 2333066,
         "role": "installed_cache",
@@ -621,7 +621,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "323247fc0bc0db9b2eee05ebae4d45111c3ecb04c362d1fba5e3062cf017b9df"
+    "trace_id": "813509a07c917b8cba047b70fc3722f32473e07f9080cfa7163ce23b242149d4"
   },
   {
     "source_id": "toxodb_strain_snps",
@@ -636,7 +636,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_strain_snps.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_strain_snps.tsv",
         "sha256": "161a5e1c1ce7c9a3ecce8591d640cd6b89fa12ec838d499065e31b7380b5d3e6",
         "bytes": 248842,
         "role": "installed_cache",
@@ -661,7 +661,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a8a18c4b5729a0384fa53fa4747ec16f7593dc1787e166fc0c1ea6755c3beaef"
+    "trace_id": "eeb92e576df60fd831d1600247e02ed970443af5d86aec581689b7b698e1da3c"
   },
   {
     "source_id": "toxodb_strain_snps",
@@ -676,7 +676,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_strain_snps.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_strain_snps.tsv",
         "sha256": "161a5e1c1ce7c9a3ecce8591d640cd6b89fa12ec838d499065e31b7380b5d3e6",
         "bytes": 248842,
         "role": "installed_cache",
@@ -701,7 +701,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "8acf3ccaca01c538aeb0a2c6d8808ac23cdde6cb17cf072b4509dc2149d0d918"
+    "trace_id": "2b8f241e598fe37bebd744124a7cfbd01b91bd58f8b4abb44db72ff95aeb7d98"
   },
   {
     "source_id": "toxodb_strain_snps",
@@ -716,7 +716,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_strain_snps.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_strain_snps.tsv",
         "sha256": "161a5e1c1ce7c9a3ecce8591d640cd6b89fa12ec838d499065e31b7380b5d3e6",
         "bytes": 248842,
         "role": "installed_cache",
@@ -741,7 +741,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "16da753e3b98a52792583df9352a62446c0e81b8f25400e93669feb45e960e1d"
+    "trace_id": "f6876dda8f8fab05d6142452b96a3304f0f516294939ad58de71e424e93a50b4"
   },
   {
     "source_id": "toxodb_strain_snps",
@@ -756,7 +756,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_strain_snps.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_strain_snps.tsv",
         "sha256": "161a5e1c1ce7c9a3ecce8591d640cd6b89fa12ec838d499065e31b7380b5d3e6",
         "bytes": 248842,
         "role": "installed_cache",
@@ -781,7 +781,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "bed9b91e4d4b15855a8bc5309e0ff61cd8e8f8680502ba95fbbbdbab31a151b8"
+    "trace_id": "b7e1fd0fe9113416d9fe53e253ffe8bd0b464bd1890e943af14d4f48a099dc6d"
   },
   {
     "source_id": "toxodb_strain_snps",
@@ -796,7 +796,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_strain_snps.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_strain_snps.tsv",
         "sha256": "161a5e1c1ce7c9a3ecce8591d640cd6b89fa12ec838d499065e31b7380b5d3e6",
         "bytes": 248842,
         "role": "installed_cache",
@@ -821,7 +821,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "1a50dca9284697475f90e881f4791d19576a75c0f069993a1614ced4f8c8d1a7"
+    "trace_id": "adc8ae6b43650c81d14656af787d6924d90ca4e290879e0755d480fdd75ce737"
   },
   {
     "source_id": "toxodb_codon_usage",
@@ -836,7 +836,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_cds.tsv.gz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_cds.tsv.gz",
         "sha256": "bd681c80c987bf36d66f5894c913186e9896d1055b24fd968f4a28a48b83189d",
         "bytes": 5951377,
         "role": "installed_cache",
@@ -861,7 +861,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "4cfa8ea486e6f6b7c1783687f9cb0f0ec0e385832641f1b230ceedbec6ccfd83"
+    "trace_id": "a70a5eb193a6850a1eeb3c30f31c7fff31722cf7c6899c3ff7ae6c350509572a"
   },
   {
     "source_id": "toxodb_codon_usage",
@@ -876,7 +876,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_cds.tsv.gz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_cds.tsv.gz",
         "sha256": "bd681c80c987bf36d66f5894c913186e9896d1055b24fd968f4a28a48b83189d",
         "bytes": 5951377,
         "role": "installed_cache",
@@ -901,7 +901,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f8d7d9ccd5d19c3967f152c3beddd4c40064719e1f6b85d233ec67409c67ced2"
+    "trace_id": "20496d7854d487ec0fea43f4a061d25135ff118862cf1ea8e0df16dba4eeecce"
   },
   {
     "source_id": "toxodb_codon_usage",
@@ -916,7 +916,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_cds.tsv.gz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_cds.tsv.gz",
         "sha256": "bd681c80c987bf36d66f5894c913186e9896d1055b24fd968f4a28a48b83189d",
         "bytes": 5951377,
         "role": "installed_cache",
@@ -941,7 +941,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b143548b3efe77302489c78c16d89a2de877c1faf29bc5425dc9ac0153e47cd4"
+    "trace_id": "ce86bf895edd2d3ad6efa09e3d212e09579f9216367f3503c1ccd6543365b267"
   },
   {
     "source_id": "orthomcl",
@@ -7859,7 +7859,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.giuliano_invivo",
+        "implementation": "parascape.deposits.giuliano_invivo",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/38977907/Supplementary Data 5 (Genome-wide mouse screen scores).xlsx"
@@ -7888,7 +7888,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "cccd87bc38f1785932e13ca36c857fa82f3b37c3693ce72543a2d9d2adde2ba5"
+    "trace_id": "0042be4cfe98b6a0367a50b98490c8be39ea119d0d318228e6e98b588526525d"
   },
   {
     "source_id": "crispr_invivo_composite",
@@ -7919,7 +7919,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.giuliano_invivo",
+        "implementation": "parascape.deposits.giuliano_invivo",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/38977907/Supplementary Data 5 (Genome-wide mouse screen scores).xlsx"
@@ -7948,7 +7948,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "71bc47093039d3fb16637c74f70a26f0135018e538721e452aab851812fed5e2"
+    "trace_id": "a06d1bf0a4a4b085de1003b3c8d16e4d0f6a62987697d880b1be6cf759e87b16"
   },
   {
     "source_id": "crispr_invivo_composite",
@@ -7979,7 +7979,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.giuliano_invivo",
+        "implementation": "parascape.deposits.giuliano_invivo",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/38977907/Supplementary Data 5 (Genome-wide mouse screen scores).xlsx"
@@ -8008,7 +8008,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "ca5c395bed7ccc2060c78f976d994e50afde81f7a18f8095f86458e135f9bf90"
+    "trace_id": "452e9cd862c38c62e76fb9c3840f71ed36a089060170fb677d92cd38fbdb7895"
   },
   {
     "source_id": "crispr_invivo_composite",
@@ -8039,7 +8039,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.giuliano_invivo",
+        "implementation": "parascape.deposits.giuliano_invivo",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/38977907/Supplementary Data 5 (Genome-wide mouse screen scores).xlsx"
@@ -8068,7 +8068,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "669af41371eaa17b4011648d0147825148b3d6b10dae6bf2f984422e537bf79d"
+    "trace_id": "ad4ec186eb537fef77c25ff675de1fc21218d1a3f7f1f8078b70dfe5e6d16c7a"
   },
   {
     "source_id": "crispr_invivo_composite",
@@ -8099,7 +8099,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.giuliano_invivo",
+        "implementation": "parascape.deposits.giuliano_invivo",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/38977907/Supplementary Data 5 (Genome-wide mouse screen scores).xlsx"
@@ -8128,7 +8128,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "4a0f7695279a99fe981e4bacb9d5994199f9d1f1bc4de6580ac7ba2e06cfd1ad"
+    "trace_id": "52ec70912da47deb2eae1b6e3e7945307f374060181cc2940cd734378e11f362"
   },
   {
     "source_id": "crispr_invivo_composite",
@@ -8159,7 +8159,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.giuliano_invivo",
+        "implementation": "parascape.deposits.giuliano_invivo",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/38977907/Supplementary Data 5 (Genome-wide mouse screen scores).xlsx"
@@ -8188,7 +8188,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "4bec264063843e9484389ee2d600466216b2aeef1e028a8a06ded498a2902a26"
+    "trace_id": "a2e07ca4f27ac1622dc4a55cb3e6e9c6f8cf94b679cf90ba06070592db674e17"
   },
   {
     "source_id": "crispr_serum_restriction",
@@ -8214,7 +8214,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.serum_restriction",
+        "implementation": "parascape.deposits.serum_restriction",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/41407671/41467_2025_66137_MOESM4_ESM.xlsx"
@@ -8243,7 +8243,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "62d6de3fa60ed483cff9ce8061fdef15e32d67fa21f684b5ec6980db28f2c56d"
+    "trace_id": "95940c4bd117a3a836d18ddddf320b93666584d62e1b8d8a758bc780b92d8d4f"
   },
   {
     "source_id": "crispr_serum_restriction",
@@ -8269,7 +8269,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.serum_restriction",
+        "implementation": "parascape.deposits.serum_restriction",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/41407671/41467_2025_66137_MOESM4_ESM.xlsx"
@@ -8298,7 +8298,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f911e63e694353acd2928e5c762aa985395b2c465cf840745e9ff403b7bf21f4"
+    "trace_id": "43a2d5d727a6dc46f6ab62e9a37795d82af80acfe485fae4a0aa697fa429eb94"
   },
   {
     "source_id": "crispr_serum_restriction",
@@ -8324,7 +8324,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.serum_restriction",
+        "implementation": "parascape.deposits.serum_restriction",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/41407671/41467_2025_66137_MOESM4_ESM.xlsx"
@@ -8353,7 +8353,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e14964133de351f0d7a237bfab8bf1f71a9db438ac0c13365894ef2cdbec1e0c"
+    "trace_id": "4cda1db46fbbdcfb134a9c8fa72a09b81b277ad5cff94f8e7d52d66c73ce7108"
   },
   {
     "source_id": "crispr_serum_restriction",
@@ -8379,7 +8379,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.serum_restriction",
+        "implementation": "parascape.deposits.serum_restriction",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/41407671/41467_2025_66137_MOESM4_ESM.xlsx"
@@ -8408,7 +8408,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "2ae5217ad5535578ebd78d4e3b31779e73d17e924a2ecd4b24dc5a3510ca827a"
+    "trace_id": "d580829ed0ddf968e6e778a31c9b703ca6130ed8e50d47e843287cc600c12899"
   },
   {
     "source_id": "crispr_serum_restriction",
@@ -8434,7 +8434,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.serum_restriction",
+        "implementation": "parascape.deposits.serum_restriction",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/41407671/41467_2025_66137_MOESM4_ESM.xlsx"
@@ -8463,7 +8463,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "5303185d8b637532d77e1cf4439504543a23f3f3c6f59143f189c91e331ca927"
+    "trace_id": "e022f2af36fac1f9e0572189bc90c35a6b48470da209a5b67f5a15490ad22960"
   },
   {
     "source_id": "crispr_serum_restriction",
@@ -8489,7 +8489,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.serum_restriction",
+        "implementation": "parascape.deposits.serum_restriction",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/41407671/41467_2025_66137_MOESM4_ESM.xlsx"
@@ -8518,7 +8518,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "36ede2319046a22c0a15e8a43ee924a5e4696d13b2dfec349e7fffcf4ef6014b"
+    "trace_id": "bb8c9ac0b57433d668898f56c6456dbbdd1c5f756b24c7fb295ea7e296b78bb2"
   },
   {
     "source_id": "crispr_glucose_limitation",
@@ -8544,7 +8544,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.glucose_limitation",
+        "implementation": "parascape.deposits.glucose_limitation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/glucose_limitation_2025/TableS1.xlsx"
@@ -8573,7 +8573,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d0dfc750297dad38255ea0bd43acfa58292794a00a9039aed4a11c46a928e978"
+    "trace_id": "06cda4b2d173c831db042b837020fbb55ebb3e29c9291d76254dbb652cfe2186"
   },
   {
     "source_id": "crispr_glucose_limitation",
@@ -8599,7 +8599,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.glucose_limitation",
+        "implementation": "parascape.deposits.glucose_limitation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/glucose_limitation_2025/TableS1.xlsx"
@@ -8628,7 +8628,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "43714abd2f6408d345eb201937bd6f8389ac063d0d5cc9b9ad6df4a0750833c2"
+    "trace_id": "02a8ceecb551870d0f372cf3bbe2a9e911e1b882cb62f5279790f3111550b6d0"
   },
   {
     "source_id": "crispr_glucose_limitation",
@@ -8654,7 +8654,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.glucose_limitation",
+        "implementation": "parascape.deposits.glucose_limitation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/glucose_limitation_2025/TableS1.xlsx"
@@ -8683,7 +8683,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c8d5c6f2119b28b49c35e07d7f01fa8c3ff11cd4f6cdd3e861bb3de86212cd5d"
+    "trace_id": "29eba7a2ff99ce9c1c925b03732a76902e3e2bb881fa2e13ba39add1103548ec"
   },
   {
     "source_id": "crispr_glucose_limitation",
@@ -8709,7 +8709,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.glucose_limitation",
+        "implementation": "parascape.deposits.glucose_limitation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/glucose_limitation_2025/TableS1.xlsx"
@@ -8738,7 +8738,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f377112660647977f9d51dbcf06ce77bb04f47adb010fe38be31c8ca1b6b59a9"
+    "trace_id": "81faca53034841569c9b110ea7682ca335c827bce88ca22eeb14e854dbde383c"
   },
   {
     "source_id": "crispr_glucose_limitation",
@@ -8764,7 +8764,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.glucose_limitation",
+        "implementation": "parascape.deposits.glucose_limitation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/glucose_limitation_2025/TableS1.xlsx"
@@ -8793,7 +8793,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "6ad77c300e5e928f347900e54680f47f7ef4d5735f1f94057795f603131426e4"
+    "trace_id": "14ce0f17d68867f8fde3691101339bbd1caee4ee07753a5a04d5335e37a034d5"
   },
   {
     "source_id": "crispr_parasite_density",
@@ -8819,7 +8819,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.density_screen",
+        "implementation": "parascape.deposits.density_screen",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/42580337/mmc2.xlsx"
@@ -8848,7 +8848,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f5a78098c80d50d875c045d8e9022874a4e4ad18ce70895a90f59213483e9327"
+    "trace_id": "6a29cb515c87acac2a54d92e737049b2b6a9a2719298d6b59ff282682c036473"
   },
   {
     "source_id": "crispr_parasite_density",
@@ -8874,7 +8874,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.density_screen",
+        "implementation": "parascape.deposits.density_screen",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/42580337/mmc2.xlsx"
@@ -8903,7 +8903,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "147f49c49381f04398cbbe0e289517e4b9ba7ab1d88e3b148c9f88a502abc1e0"
+    "trace_id": "b840d84e1d04532cd2908005481ff4ec66b1bc482ff34db4ef10d3b75f7bb19d"
   },
   {
     "source_id": "crispr_parasite_density",
@@ -8929,7 +8929,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.density_screen",
+        "implementation": "parascape.deposits.density_screen",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/42580337/mmc2.xlsx"
@@ -8958,7 +8958,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "3bb7f24ddaf246929e47c3024e16ac3475830e5b8de3a55ffe904debb7ce366b"
+    "trace_id": "382c5d220776528d25fcc7556039c49403d49cc85f35ff62fd397b0dd8d422b0"
   },
   {
     "source_id": "crispr_parasite_density",
@@ -8984,7 +8984,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.density_screen",
+        "implementation": "parascape.deposits.density_screen",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/42580337/mmc2.xlsx"
@@ -9013,7 +9013,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a09e1271555e97da87543856e4ce7bb85db9815637e6a6de3a9226c3998d1087"
+    "trace_id": "4326894718530d038de51cb466f1985ead46d0e0dc6f6e667ea67158f1d68e24"
   },
   {
     "source_id": "crispr_parasite_density",
@@ -9039,7 +9039,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.density_screen",
+        "implementation": "parascape.deposits.density_screen",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/42580337/mmc2.xlsx"
@@ -9068,7 +9068,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "fc59fac3e36cd1e946090d3d1eacdd4d5638e28f1ac14d0b40e387cf330bc66f"
+    "trace_id": "ce656404762e7e9cb9a0f640e6273ca6274305e9f4f5fd18052e8dcac8a10cd2"
   },
   {
     "source_id": "crispr_macrophage",
@@ -13011,7 +13011,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_palmitome_hydroxylamine.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_palmitome_hydroxylamine.tsv",
         "sha256": "8ca1fd22f71454ca4b4b5865f60663690a7bc367c9748215c379e81b8b4c7eef",
         "bytes": 8850,
         "role": "installed_cache",
@@ -13036,7 +13036,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "de8b64351b56ce9b1b7b2b1611b50dc6fe414f40a727d8d84ec69ea5d6cb05cb"
+    "trace_id": "e7ead107e495b82afc2cb0b7ceed01b1e030857b17cb00960ab436fd327f9e0e"
   },
   {
     "source_id": "toxodb_palmitome",
@@ -13051,7 +13051,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_palmitome_hydroxylamine.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_palmitome_hydroxylamine.tsv",
         "sha256": "8ca1fd22f71454ca4b4b5865f60663690a7bc367c9748215c379e81b8b4c7eef",
         "bytes": 8850,
         "role": "installed_cache",
@@ -13076,7 +13076,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "de8cc820aa24883bb85dcb8f97fe52cf3ae20ff48ca60789e06e87e9ca3ce169"
+    "trace_id": "36131b65824a6879762d4fc6a67dc78fe6c671119b5286912e300853ad00a319"
   },
   {
     "source_id": "iedb_bcell",
@@ -13091,7 +13091,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/iedb_bcell_epitopes.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/iedb_bcell_epitopes.tsv",
         "sha256": "20413276726cd08e992183e448f46eb97ae7f028c8edeeb2e35665ffe26c5f90",
         "bytes": 576,
         "role": "installed_cache",
@@ -13116,7 +13116,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f08e6f9760334e23d08001932ebf2f84a01019fb077dbc2309638fe3a318409a"
+    "trace_id": "97b6c692efc8c0e2593ba21169ef0745d8a59d0a0767d91439bb75f2fb120c50"
   },
   {
     "source_id": "toxodb_epitopes",
@@ -13131,7 +13131,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_epitopes.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_epitopes.tsv",
         "sha256": "c98ba2f7c55310d42b19da36f8140b521309048b29432e4bae6f2e8e725847f8",
         "bytes": 4865,
         "role": "installed_cache",
@@ -13156,7 +13156,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "68ed06082ef2dcc3c5152c01c76c95434984e9123eeac594a78f3c0304b64475"
+    "trace_id": "a8df02dd0e81a903b94cd420c621b47de3336cb2767678972b8e2235cd75b2f4"
   },
   {
     "source_id": "toxodb_h4_acetylation",
@@ -13171,7 +13171,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_h4_acetylation.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_h4_acetylation.tsv",
         "sha256": "c60788e72a975838b0c24d4857e0f71de75cbd9020dfa5694ccc43afbcfc881b",
         "bytes": 168914,
         "role": "installed_cache",
@@ -13196,7 +13196,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "6c50397cd1067bd9680eaad374a794fc4378650defa30ab9bf301d6654eab08d"
+    "trace_id": "a26f34e5cf0e930c5366ba110dbac5c2b89868dba9bf963f755d3115d827f26a"
   },
   {
     "source_id": "toxodb_macrophage",
@@ -13211,7 +13211,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_macrophage.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_macrophage.tsv",
         "sha256": "95cf95020eaddeaa528c15226c9ef6cac7c3e6f6c31abe94739acae6c57e5968",
         "bytes": 152577,
         "role": "installed_cache",
@@ -13236,7 +13236,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "9129674ed7979ebd0f430c6ceb854d339c3ce20c7bba2cf2138c036616c0b24d"
+    "trace_id": "ba258b4742fd9bf7e53ba083579e0166c1c31646bb6e6d18e2789cabb3279f5a"
   },
   {
     "source_id": "toxodb_ec_numbers",
@@ -13251,7 +13251,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_ec_numbers.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_ec_numbers.tsv",
         "sha256": "477d4fa483abac19bd979a9bcec26e3d031dff2b8a737f8e3bd777928454a37d",
         "bytes": 212352,
         "role": "installed_cache",
@@ -13276,7 +13276,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "980e07ba07b1b64227d24c83ca8343e2f4d16405040b0f1649f88ac42eb24152"
+    "trace_id": "40ec4888ca36c8f2ad18ca4e8da43b456c508ed14d9bde6f5edb1c4644810967"
   },
   {
     "source_id": "toxodb_ec_numbers",
@@ -13291,7 +13291,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_ec_numbers.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_ec_numbers.tsv",
         "sha256": "477d4fa483abac19bd979a9bcec26e3d031dff2b8a737f8e3bd777928454a37d",
         "bytes": 212352,
         "role": "installed_cache",
@@ -13316,7 +13316,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "1e2b41e00156e10af25cac94b1536e241e6ac52049a6b3b2009e45a7fb531e79"
+    "trace_id": "8a0109825ed585e90e0850d1d73b9d811f34c4c7b300dfecd45a2c6b646d66a9"
   },
   {
     "source_id": "crosslink_interactome",
@@ -13331,7 +13331,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/crosslink_partners.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/crosslink_partners.tsv",
         "sha256": "c28257788f4ddc050e53f34f9e1bb4b3c5f7b397b0345df46a7e8b043e94dda7",
         "bytes": 7938,
         "role": "installed_cache",
@@ -13356,7 +13356,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d6120a5647afc049657540dac99aaa2294b2f737f41dc677a629562958d98246"
+    "trace_id": "6d4bedffe7816340fb9efa8be4f656bf019797ea7aecaf12ce975e1680c94e06"
   },
   {
     "source_id": "pvm_proximity",
@@ -13371,7 +13371,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pvm_proximity.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pvm_proximity.tsv",
         "sha256": "66ccde44c43c4b1493595473362be4cc7b2164e7a4c684659a4a0c955ec3134e",
         "bytes": 22963,
         "role": "installed_cache",
@@ -13396,7 +13396,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "0954f7229f39fb6cc2b43bf78eb7ad19b00963c5d83546c12faaba32a7de2be1"
+    "trace_id": "4bd3e1e500870b9ec5cd63d23ecf280eb8a25310067e7d38d78fc09cdbeef50d"
   },
   {
     "source_id": "cdpk1_substrates",
@@ -13411,7 +13411,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/cdpk1_substrates.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/cdpk1_substrates.tsv",
         "sha256": "ced6d1bd0d46cd93b8dde18a7ce5602919114c8a2dbb88a5edb86638574530d0",
         "bytes": 6014,
         "role": "installed_cache",
@@ -13436,7 +13436,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "faa3fe956acb12161bb22c6ccd76e4715829086aaa45f41fbb6f13463a60e700"
+    "trace_id": "44f9b980e416f807c29d880548169f87e4d2d32d91fbc974479a45f0bcb77c13"
   },
   {
     "source_id": "mrna_stability",
@@ -13451,7 +13451,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/mrna_stability.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/mrna_stability.tsv",
         "sha256": "3bf4905087985719420dc784c7436de9c1692434d7efa803d6e0bec7d1db7a24",
         "bytes": 14190,
         "role": "installed_cache",
@@ -13476,7 +13476,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e27bd838926ad0c5d2bbccbb05a8d9fcb505808f1437488e11995130b9c59be0"
+    "trace_id": "6a6adb60ccf4ac7d0d5b2d8119674306d9c78c804b74d899ee6320e9d075d804"
   },
   {
     "source_id": "mrna_decay_gse329845",
@@ -13502,7 +13502,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.mrna_decay_329845",
+        "implementation": "parascape.deposits.mrna_decay_329845",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/RNAseq/GSE329845/GSE329845_Processed_Data.csv.gz"
@@ -13531,7 +13531,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d1b7b642362819b9a52b79a6b0e5c48b7c7c66389882f9d3c3e4f40ac7cf4ec7"
+    "trace_id": "3d9118932f245b842e33b52fb9143ba2ac67051857819e3eb3dc578495d06873"
   },
   {
     "source_id": "gse302107_riboseq",
@@ -13557,7 +13557,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.riboseq_302107",
+        "implementation": "parascape.deposits.riboseq_302107",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/riboseq/GSE302107/GSE302107_RPKM_and_TE.xlsx"
@@ -13586,7 +13586,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a7942029ffe3167a69514a1c2bc1f75df8b95e534d9183cfe3b72ca5f57c8abe"
+    "trace_id": "0225b9490e9d2db2cb7cfbffc1a417b54bd4142055f8804f0079bc749ef60992"
   },
   {
     "source_id": "gse302107_riboseq",
@@ -13612,7 +13612,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.riboseq_302107",
+        "implementation": "parascape.deposits.riboseq_302107",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/riboseq/GSE302107/GSE302107_RPKM_and_TE.xlsx"
@@ -13641,7 +13641,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c7eaf58bed984a22bb225553e8f20c4acbbed2408681c7c8f6e63f65a25cd01d"
+    "trace_id": "5289b4617cbdff8d8dbfc12450246270d0cc459cc5294fd098cc6c024044cb7d"
   },
   {
     "source_id": "gse302108_utr5",
@@ -13667,7 +13667,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.utr5_architecture",
+        "implementation": "parascape.deposits.utr5_architecture",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/riboseq/GSE302108/SupplementaryData4_TE_info_and_UTRfeatures.xlsx"
@@ -13696,7 +13696,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "45882e0c068886db83de3d6802b9696495e8051a7a9a3076c8d3e4888a5b1b7a"
+    "trace_id": "2d0c0d58cc7566cb3350c917ee0883aac21649823c77bf199612a48a8542f282"
   },
   {
     "source_id": "gse302108_utr5",
@@ -13722,7 +13722,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.utr5_architecture",
+        "implementation": "parascape.deposits.utr5_architecture",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/riboseq/GSE302108/SupplementaryData4_TE_info_and_UTRfeatures.xlsx"
@@ -13751,7 +13751,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "73792b8e29158111184bfcd7ab41e7957b00d9cc1ce73ace9d735a6a192352ff"
+    "trace_id": "07c3c9732fe64252bf8f65ef375f7da451d3e67978d02437954ebb3870b62280"
   },
   {
     "source_id": "gse302108_utr5",
@@ -13777,7 +13777,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.utr5_architecture",
+        "implementation": "parascape.deposits.utr5_architecture",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/riboseq/GSE302108/SupplementaryData4_TE_info_and_UTRfeatures.xlsx"
@@ -13806,7 +13806,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c8d845e45e3fbf8c3655b00478f07a3d945c89000f082204a37017dbd62b3b16"
+    "trace_id": "c99cb8f9b567552b3a980257ad61e7c5dd59c9ef76ba7f24226837bca46a02bd"
   },
   {
     "source_id": "gse302108_utr5",
@@ -13832,7 +13832,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.utr5_architecture",
+        "implementation": "parascape.deposits.utr5_architecture",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/riboseq/GSE302108/SupplementaryData4_TE_info_and_UTRfeatures.xlsx"
@@ -13861,7 +13861,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "df1c82fea54109a7d93c96a88d8a2565134d20a767becbdbb58291ae4aee81c8"
+    "trace_id": "84604ec458f2bd176e76cd5646bec78902580a08fadeddc23f65d38b41d1826e"
   },
   {
     "source_id": "gse302108_utr5",
@@ -13887,7 +13887,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.utr5_architecture",
+        "implementation": "parascape.deposits.utr5_architecture",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/riboseq/GSE302108/SupplementaryData4_TE_info_and_UTRfeatures.xlsx"
@@ -13916,7 +13916,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "5a56c1e6d8b0d1c3cd140848257244f0e82a4674187240f87feaf8b29e367cdf"
+    "trace_id": "f5aaa8a071a12a15acbe154c7a31435d64f1c4afd59075aac56980c8db89f627"
   },
   {
     "source_id": "gse302108_utr5",
@@ -13942,7 +13942,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.utr5_architecture",
+        "implementation": "parascape.deposits.utr5_architecture",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/riboseq/GSE302108/SupplementaryData4_TE_info_and_UTRfeatures.xlsx"
@@ -13971,7 +13971,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d270c8d4ebcc47ae2d8fc18751f2d24237aef6cf6ff67858524375b00f9cafec"
+    "trace_id": "5801813cafab74e267382343970277f8306f8196c17a3a155b74c13e564b5e6b"
   },
   {
     "source_id": "brady_subtypes",
@@ -13997,7 +13997,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.bradyzoite_subtypes",
+        "implementation": "parascape.deposits.bradyzoite_subtypes",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/scRNAseq/41580398/41467_2026_68489_MOESM3_ESM.xlsx"
@@ -14026,7 +14026,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "9535144bcf4f44ef581006f5f15ea9279261baa7545e4986c11185d8e260bf41"
+    "trace_id": "688bbe5540ed9c5ce3150d307228e98f393cde398adf8d60e1062cd50b9085aa"
   },
   {
     "source_id": "brady_subtypes",
@@ -14052,7 +14052,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.bradyzoite_subtypes",
+        "implementation": "parascape.deposits.bradyzoite_subtypes",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/scRNAseq/41580398/41467_2026_68489_MOESM3_ESM.xlsx"
@@ -14081,7 +14081,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "2cc55dfe4be156e726c8debd323f71f289b64b5ec93a0dd8a024fd74b8f24ff8"
+    "trace_id": "bb3400098f7100e01ce9e298f0d5e50d28b57e51baac0d77c8670eeec58c4da7"
   },
   {
     "source_id": "brady_subtypes",
@@ -14107,7 +14107,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.bradyzoite_subtypes",
+        "implementation": "parascape.deposits.bradyzoite_subtypes",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/scRNAseq/41580398/41467_2026_68489_MOESM3_ESM.xlsx"
@@ -14136,7 +14136,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b6981ab9a1d334dbd3ae50df3162d68c29059b026992f5258fcfd0026b00bc06"
+    "trace_id": "0ff09cacaa2ec8a1b08d5cc1dcf76d29bc3dfaf4fd1266b2f291f04f962e0bad"
   },
   {
     "source_id": "brady_subtypes",
@@ -14162,7 +14162,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.bradyzoite_subtypes",
+        "implementation": "parascape.deposits.bradyzoite_subtypes",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/scRNAseq/41580398/41467_2026_68489_MOESM3_ESM.xlsx"
@@ -14191,7 +14191,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a1643cda32c26efae39afa31a81912bab95a038d5f9fffcbae1e6dab87bb6474"
+    "trace_id": "5198bf2ef075881507b7ab703116ba25f7e35dfb635b4bab06230d4ee481e88f"
   },
   {
     "source_id": "brady_subtypes",
@@ -14217,7 +14217,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.bradyzoite_subtypes",
+        "implementation": "parascape.deposits.bradyzoite_subtypes",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/scRNAseq/41580398/41467_2026_68489_MOESM3_ESM.xlsx"
@@ -14246,7 +14246,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "6131677fbe905b4aef7d7e342b672b7eda08baf2e6b128d3ec89c1961b08e7c3"
+    "trace_id": "ac523620c6da74b5f8031307f1808d494f1d0c480d8d2514d576bebcdcc529a1"
   },
   {
     "source_id": "iron_depletion_proteome",
@@ -14273,7 +14273,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.iron_depletion",
+        "implementation": "parascape.deposits.iron_depletion",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/41925342/mbio.03788-25-s0002.xlsx"
@@ -14302,7 +14302,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "836efe753754224d7ad2d0ca72659409a0908ef76a1311fe75392ff0bd62184c"
+    "trace_id": "b88fedac5c823221ac1d2f6d43022c7b0c4bcda070940ae76a86255fba8e52ac"
   },
   {
     "source_id": "iron_depletion_proteome",
@@ -14329,7 +14329,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.iron_depletion",
+        "implementation": "parascape.deposits.iron_depletion",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/41925342/mbio.03788-25-s0002.xlsx"
@@ -14358,7 +14358,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "59df07f38c78ea6b55ef49631578b3b6caaf8487936cecfe0a1ad2dc6bd38310"
+    "trace_id": "021584d09fdd3a70a71b9f5d9d192b0dc381bb9d027fc865146ced89cbd9249c"
   },
   {
     "source_id": "iron_depletion_proteome",
@@ -14385,7 +14385,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.iron_depletion",
+        "implementation": "parascape.deposits.iron_depletion",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/41925342/mbio.03788-25-s0002.xlsx"
@@ -14414,7 +14414,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "ee7513ecc50c5f9ac8d53e814e735b4c4313a65d4d95f316ccc01c9aa853e0ba"
+    "trace_id": "ecd73fd5bbb1ce9dade0bb294d06baee218be9cd749f6121c8b7412c6f6a9ab7"
   },
   {
     "source_id": "organelle_surface_turboid",
@@ -14440,7 +14440,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.organelle_surface",
+        "implementation": "parascape.deposits.organelle_surface",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/organelle_surface_turboid_2026/media-1.xlsx"
@@ -14469,7 +14469,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "bd76203402208d891951bc49e8134c8129656e3a4882ab56ae1aaa56dfae8a4c"
+    "trace_id": "69ae9a3ecf3a81941d92661635e04f0110c4f5a72c014c0ada36da6b291f0b16"
   },
   {
     "source_id": "organelle_surface_turboid",
@@ -14495,7 +14495,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.organelle_surface",
+        "implementation": "parascape.deposits.organelle_surface",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/organelle_surface_turboid_2026/media-1.xlsx"
@@ -14524,7 +14524,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "8ed087a0aa72241ec051cfea0f7f2ef32859f328827030c8addcc30f8bdc012b"
+    "trace_id": "1a1041aa194db3d3f0b513867d0d52a3325c1d3ca493b949c1461e042e2b7719"
   },
   {
     "source_id": "organelle_surface_turboid",
@@ -14550,7 +14550,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.organelle_surface",
+        "implementation": "parascape.deposits.organelle_surface",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/organelle_surface_turboid_2026/media-1.xlsx"
@@ -14579,7 +14579,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "58b003324a9e5efe11e6d1c3271026775f40486d71bdb753155048a0e1e7bf90"
+    "trace_id": "6b1573ca57070741333170dad6da6cffa145ac0d59cd6b9ece0bd37b8e3afd09"
   },
   {
     "source_id": "organelle_surface_turboid",
@@ -14605,7 +14605,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.organelle_surface",
+        "implementation": "parascape.deposits.organelle_surface",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/organelle_surface_turboid_2026/media-1.xlsx"
@@ -14634,7 +14634,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "dbc615cd00f3fa6f359cb0f2d9bf1ecfeab01d7c7ed4dfe94b6cf0f72e56ff05"
+    "trace_id": "cc284596b7626f5eb04cb0e625888ebe76cf1f322b4e89cc713d301ebc6ffed1"
   },
   {
     "source_id": "organelle_surface_turboid",
@@ -14660,7 +14660,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.organelle_surface",
+        "implementation": "parascape.deposits.organelle_surface",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/organelle_surface_turboid_2026/media-1.xlsx"
@@ -14689,7 +14689,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "7d64cb206086e2a19817d99150e91b5f17d7229dd516e32343ffa8ca31c3c257"
+    "trace_id": "8394430cbbec826e36f43274684aa29100847c366a61ac70efca0fbc25491dc0"
   },
   {
     "source_id": "organelle_surface_turboid",
@@ -14715,7 +14715,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.organelle_surface",
+        "implementation": "parascape.deposits.organelle_surface",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/organelle_surface_turboid_2026/media-1.xlsx"
@@ -14744,7 +14744,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "fa45992acd6f98834e137addba5b73193f0660502cd52b672370facc3d60dc54"
+    "trace_id": "b3b263aa4f3e5dec9998be356910a1fb9d572f77e0831004eade0b6436a5b7d7"
   },
   {
     "source_id": "myristoylome",
@@ -14759,7 +14759,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/myristoylome.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/myristoylome.tsv",
         "sha256": "844e8814e926703234397ff43e5a6fb634b5b3131da38605f1768764e6acdf3d",
         "bytes": 1074,
         "role": "installed_cache",
@@ -14784,7 +14784,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "92b8b400e0ced12f4bcec63cb2edf820d2d26433e43e1d5423c16ebeac9bc692"
+    "trace_id": "ac084e7d1830035041f1dec05c7ec08e2ef39d9e7e1413a3aea6facf3f88731e"
   },
   {
     "source_id": "toxodb_arginine_methylation",
@@ -14799,7 +14799,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_arginine_methylation.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_arginine_methylation.tsv",
         "sha256": "d993f99e74511e010e2bd078d9bc8c65502de96afae42377557b25f7c9b6626f",
         "bytes": 5926,
         "role": "installed_cache",
@@ -14824,7 +14824,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a1250e3607e13b4c50252de6b211e664c9a25c180751ab440f104a4b528eb51c"
+    "trace_id": "a179b5ec963a4c0af2367df99d5cc4539aba6724283c69140e6e3364ea0e0622"
   },
   {
     "source_id": "toxodb_nanopore_isoforms",
@@ -14839,7 +14839,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_nanopore_isoforms.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_nanopore_isoforms.tsv",
         "sha256": "bccc1c2aae3458421a9734f48de72c038eefdbb7ebc4d1b7fee1c332d792643c",
         "bytes": 13049,
         "role": "installed_cache",
@@ -14864,7 +14864,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f0983d1aa28ef07429c2d940ecd2a181ad364d93435b269b50513150275a3531"
+    "trace_id": "202cbb20b7d658f491dbfc634a54b2c8427963d9c52f1a642167062e230ea9a9"
   },
   {
     "source_id": "toxodb_enteroepithelial",
@@ -14879,7 +14879,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/toxodb_enteroepithelial.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/toxodb_enteroepithelial.tsv",
         "sha256": "8de215cbddad8d0446694e791bb71022afcbc32d12e2251f594a37ea847fbb11",
         "bytes": 188940,
         "role": "installed_cache",
@@ -14904,7 +14904,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "03a28931866023b749c76575f9d11ad66c6db9629c0f68dd6ee8cc01fddf464f"
+    "trace_id": "d6c7ba0299fee8ca47cacafeb8a082d74d1ecacead013445ae3d2f477d8dff81"
   },
   {
     "source_id": "pride_acetylation",
@@ -15198,7 +15198,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/host_bridges.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/host_bridges.parquet",
         "sha256": "4b93fcbb605b7312c10b7387fbb54d560a69aff155dc115b781553cc68acc940",
         "bytes": 22385,
         "role": "installed_cache",
@@ -15223,7 +15223,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "5103f98869a9a2175048806bddf0f0b721661755433c3a3233debab5e9e3fdfe"
+    "trace_id": "2e2513cf8b84c2602127356c240bf22c904c03e2578eb54fc62f5a079d2b2412"
   },
   {
     "source_id": "pv_host_uptake",
@@ -15236,7 +15236,7 @@
     "context": [],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/hs_host_proteins.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/hs_host_proteins.parquet",
         "sha256": "9c78c84fe07836b3c3b269d01af3cd1d8a5fb26e0eacbf1b94a38577c23c166f",
         "bytes": 1480450,
         "role": "installed_cache",
@@ -15261,7 +15261,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "3ff03f42ede02a6c70ef6437c09947eca86b5234fb33137bdd4fff60c6854542"
+    "trace_id": "25368f892278eac94bea0429959135bacb87ba3a6954667100208783a563ba39"
   },
   {
     "source_id": "metabolome_iron",
@@ -15276,7 +15276,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/metabolites.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/metabolites.parquet",
         "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
         "bytes": 46486,
         "role": "installed_cache",
@@ -15301,7 +15301,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "baabe1e63109f773192218581f130a411029e21a8e2badeb148eed3677d8749f"
+    "trace_id": "78567abb82463e45040b960f246576e80db5b2b276cf4d301b1740548a5d083c"
   },
   {
     "source_id": "metabolome_iron",
@@ -15316,7 +15316,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/metabolites.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/metabolites.parquet",
         "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
         "bytes": 46486,
         "role": "installed_cache",
@@ -15341,7 +15341,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "adf68cb33a7d22acc5e0264231eaa78d17b1009c0f00d674644c25ba761bdd6a"
+    "trace_id": "0887e01d43498b624be20df1b9b905f7ba731242a0eef9c08f0c871e759189a8"
   },
   {
     "source_id": "metabolome_iron",
@@ -15356,7 +15356,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/metabolites.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/metabolites.parquet",
         "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
         "bytes": 46486,
         "role": "installed_cache",
@@ -15381,7 +15381,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e1ad85ffa0b4624a092296c9a8a3dd61fce4ad0195cb1b8be2bb434d82d52533"
+    "trace_id": "b50ee9904faa478520faeeea6e6cd6683916f4695a76b47f16adcaec40e16d3e"
   },
   {
     "source_id": "metabolome_iron",
@@ -15396,7 +15396,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/metabolites.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/metabolites.parquet",
         "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
         "bytes": 46486,
         "role": "installed_cache",
@@ -15421,7 +15421,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f8c4aba7d89cf4b5c21e4bf5fd39abe757f911a6bc428de2302eaec4340b930b"
+    "trace_id": "deabdfa3571f172f6d69ecd6cc5657df04db513107253f5f2358e43d40f25493"
   },
   {
     "source_id": "lipidome_vesicles",
@@ -15436,7 +15436,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/metabolites.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/metabolites.parquet",
         "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
         "bytes": 46486,
         "role": "installed_cache",
@@ -15461,7 +15461,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "5b6e1c2ff9dbf6067a2c5e1139c98f8e0854c460c750801d2da55c924266e798"
+    "trace_id": "8f59faf7d05325618102cd52b0d3375ec4597c24700b7b757169f88b0fb09e73"
   },
   {
     "source_id": "lipidome_vesicles",
@@ -15476,7 +15476,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/metabolites.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/metabolites.parquet",
         "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
         "bytes": 46486,
         "role": "installed_cache",
@@ -15501,7 +15501,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "04648b6e91c6bf8a572909baa25d28991b5d8ccf67117203b16395acd8174d8a"
+    "trace_id": "3ae309edb5596c191d05ea7df1aa7282c822e2a4720468af3b203b76abae49fd"
   },
   {
     "source_id": "curated_enteric_fitness",
@@ -16013,7 +16013,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16038,7 +16038,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c7aa75eee269ddc5c3209370ceef62ee01eff4169ec34b7aea367488c6cf4879"
+    "trace_id": "784da9f662524e7f6726805295bbbf5958b1fd3750cc3107a3d9d83091219a43"
   },
   {
     "source_id": "plasmodb_pf3d7_attributes",
@@ -16054,7 +16054,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16079,7 +16079,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "64146ce89436d12bc8fc84711c6a16329f51d8503d14bee50adf6848add81ff5"
+    "trace_id": "a39ec642271c238a565f62880e339db6d37e00b78a74266df27fb21087d24f93"
   },
   {
     "source_id": "plasmodb_pf3d7_attributes",
@@ -16095,7 +16095,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16120,7 +16120,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "4adb0f9de21f924d9c8a26dddab25d34d1668124a26b0f55e6e77254e21268d3"
+    "trace_id": "e882602d85d9cb91358f38764c156fdcb548726431e4dd6fac976411bed566ed"
   },
   {
     "source_id": "plasmodb_pf3d7_attributes",
@@ -16136,7 +16136,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16161,7 +16161,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "70b1e70c6ca9ed705f87a7c0616af61d197e562c40be2a7f0417856dce75dc60"
+    "trace_id": "2dd3866a0c4793810fe944211fb57f99319152f92666bb7aec58e64707373abf"
   },
   {
     "source_id": "plasmodb_pf3d7_attributes",
@@ -16177,7 +16177,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16202,7 +16202,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "8958ab148557e0804fe5f3c579e0ed5598a5b219ffffed46ca7eed84a290fe87"
+    "trace_id": "ae5af237d1bb1337a7f1fffa5122accff98ec11d8fea9d22688e6bddf7138d96"
   },
   {
     "source_id": "plasmodb_pf3d7_attributes",
@@ -16218,7 +16218,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16243,7 +16243,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e65634228849fc0f3d710b81c7fb2b202ed3504d1a4e91c8b35db629f9b0cba0"
+    "trace_id": "d03e30d4e6c7465736d2ade851afdd1e280e82194ce6457c5a9fcd31622379ec"
   },
   {
     "source_id": "plasmodb_pf3d7_attributes",
@@ -16259,7 +16259,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16284,7 +16284,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "1917d5cab3722548f6c5a1f5b4771029c24372c1a8ad28b632ee70ecfe3d1dab"
+    "trace_id": "efbb72614d2cbc33e3a9550675c4dc8e774c540f5970484cc8dc45fb77ec21be"
   },
   {
     "source_id": "plasmodb_pf3d7_attributes",
@@ -16300,7 +16300,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16325,7 +16325,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a08e1080f1ae24c7f2fa4fce3a57e1c90d954e5cc3a7247497559fa2bbc37077"
+    "trace_id": "f464da227ce326e60ca724c8479385b68005cfafb566b370063bd368507a60c4"
   },
   {
     "source_id": "plasmodb_pf3d7_orthology",
@@ -16340,7 +16340,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16365,7 +16365,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "7e52335ac6258e525d7824727cb60ab1ee03f5a4a191cae106927d60314ff842"
+    "trace_id": "506e1e23de620001a372efd98002ef6b50cbca67faae02466202cf27bc400234"
   },
   {
     "source_id": "plasmodb_pf3d7_orthology",
@@ -16380,7 +16380,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16405,7 +16405,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e005d9b93e827d6ce4a9fcd41285978ae5ff8efacb59bf3bd7a9a607c8e69a2a"
+    "trace_id": "fb8b31ddcbe70b3331aadc1b4a30146827fa85d6c111167ff0b342d275b4d3d0"
   },
   {
     "source_id": "plasmodb_pf3d7_orthology",
@@ -16420,7 +16420,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16445,7 +16445,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d1590c65744a54d1b19b835f1c5793dcd0224fdd392a6eb2bea4c229d849e2e2"
+    "trace_id": "fe5553ee45eca8c5f71c3d028e7ab6ceefe3293187eb74d0cf540202964212ba"
   },
   {
     "source_id": "plasmodb_pf3d7_orthology",
@@ -16460,7 +16460,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16485,7 +16485,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "8bbebb693306628858c7e2e9a68d5f60bbfbff4a101ed54acd5c2cced5f023f5"
+    "trace_id": "68cc4eab82dee938a5a6aef84ee259f7596523f831d6a799a351242f747621a1"
   },
   {
     "source_id": "plasmodb_pf3d7_domains",
@@ -16500,7 +16500,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16525,7 +16525,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "3064fd1f0f88f1443ed54ebcec99bed0b6bfa0c05c48584f0f2d1a6bb3e169b2"
+    "trace_id": "7c3b0a8e08333e08ea484f6388766f2845d5708afb4450c50204daadbdecc7d4"
   },
   {
     "source_id": "plasmodb_pf3d7_domains",
@@ -16540,7 +16540,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16565,7 +16565,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "349a6aedd496a464b926eba7025c9e9784f1e496bf6d42d215f42b4ed6bfe087"
+    "trace_id": "19e077e5c61af0dcc2af3ffd9cb6640fbb29abba075607ea38eab44b93c4fd5b"
   },
   {
     "source_id": "plasmodb_pf3d7_domains",
@@ -16580,7 +16580,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16605,7 +16605,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e7a64bfb3f88e3b2e02cb27c25068ee02fd1af598f27280f7aaae1c7c8621206"
+    "trace_id": "18df40bbf18472e579d32f6134cc2ebf509ce19821d47325afd522f318b7a954"
   },
   {
     "source_id": "plasmodb_pf3d7_domains",
@@ -16620,7 +16620,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16645,7 +16645,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "37bbe94441a6d79086cd2e5af8d46ad5905e9d7eb235f6d2985e4751959ab7ce"
+    "trace_id": "4ff04b80612761f0bf77ac4f14bda52ce30feb1d15d87700eb5030d06641c807"
   },
   {
     "source_id": "plasmodb_pf3d7_snps",
@@ -16660,7 +16660,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16685,7 +16685,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "4d1870ea704a90b924e532bdd17395a175deae3216f57d7a1e61e08878ef8b89"
+    "trace_id": "326fecb26986f6f7698c02e31e2ce46a548bc4ac8df7c4f9085712895380e8f3"
   },
   {
     "source_id": "plasmodb_pf3d7_snps",
@@ -16700,7 +16700,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16725,7 +16725,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "9748a66c2d55fe826d68be0a08d6c35476fd67fdcd3bd34f944a9c019839519c"
+    "trace_id": "c36835b5e18bcb0a704628e8f7abcf5f569e8617dd71ef0161a9822c3cc238c9"
   },
   {
     "source_id": "plasmodb_pf3d7_snps",
@@ -16740,7 +16740,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16765,7 +16765,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "caadb9c32d01ebfdba7883f9c411c1b85155f50056bc7d15d0ecce2fc3ddfaf9"
+    "trace_id": "afbcb0f55858e7f9a4660df32d32fc95e3306315b3f9dd361fe936438a51794a"
   },
   {
     "source_id": "plasmodb_pf3d7_snps",
@@ -16780,7 +16780,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16805,7 +16805,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e8e9d7d734561498219f9a03898a87e5652a9d5d37531588bcd77f20398e258e"
+    "trace_id": "ca6be591b433fb0c802cfc48b6ea52dd9c5968a2456ef23481bdc26b9eec657e"
   },
   {
     "source_id": "plasmodb_pf3d7_snps",
@@ -16820,7 +16820,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16845,7 +16845,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "69b3e62da57fa32bdc625abc7356c622631f7f54e6c6a328d1052a1482d18ec1"
+    "trace_id": "81f61278a73a75f37835923bf6e22748ad61681da6b298ce9c6b2e3b60c00c2d"
   },
   {
     "source_id": "plasmodb_pf3d7_snps",
@@ -16860,7 +16860,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -16885,7 +16885,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d9509a27d2b8d50a1d5b8f331a1ad95b5137a74dc75ded341d027e073eb2aecd"
+    "trace_id": "609836a9a7ad2a2df6d85458110f7e3c4786312d5c8ef88ffb3b442431aa2229"
   },
   {
     "source_id": "pf_latency_transcriptome",
@@ -16911,7 +16911,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_latency",
+        "implementation": "parascape.deposits.pf_latency",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/scRNAseq/pf_latency_2026/ST07_media-4.xlsx"
@@ -16940,7 +16940,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "9d6946f57a06e03457c01ee9ffca1ab3b5c3a592f858be8dd67ff8f3f4ca364f"
+    "trace_id": "9018db7b05f4933fa63c214c99b90aeba78331191d2a9762432f5c108b7c65b6"
   },
   {
     "source_id": "pf_latency_transcriptome",
@@ -16966,7 +16966,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_latency",
+        "implementation": "parascape.deposits.pf_latency",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/scRNAseq/pf_latency_2026/ST07_media-4.xlsx"
@@ -16995,7 +16995,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "39a771308f7f361ad8d42f44b87650aa6af7bf0d49a38a4e9b6ab5c759692b56"
+    "trace_id": "e189be32d2cee22eed57403d5ca585c163a25e7768e56b2df2f61714cba3cddf"
   },
   {
     "source_id": "pf_m6a_nanopore",
@@ -17021,7 +17021,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_m6a",
+        "implementation": "parascape.deposits.pf_m6a",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/m6a/pf_m6a_2026/SupplementaryTables_media-2.xlsx"
@@ -17050,7 +17050,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "4169e91db44ff9c3df995dbc09826e2c0c41f9d4993e069ee54d67ddb669bb98"
+    "trace_id": "0bbe70c92c902891943a1788b851e354006d9db4f174d3b9d5e7b6f8f82da570"
   },
   {
     "source_id": "pf_m6a_nanopore",
@@ -17076,7 +17076,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_m6a",
+        "implementation": "parascape.deposits.pf_m6a",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/m6a/pf_m6a_2026/SupplementaryTables_media-2.xlsx"
@@ -17105,7 +17105,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "75958ed117a33f532ffa01143aec4cda749c30ef5794a3c5acd3677e7b3e7f89"
+    "trace_id": "91e60fa0c8504a8d67f315b097ba140c14eb945788505d9d923cc3b164df5de2"
   },
   {
     "source_id": "pf_gametocyte_proteome",
@@ -17132,7 +17132,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_gametocyte_proteome",
+        "implementation": "parascape.deposits.pf_gametocyte_proteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/pf_gametocyte_2026/Extended Datasets.xlsx"
@@ -17161,7 +17161,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b6c7c83525cd0b4fa5ad46db26e18fde0c624c84e7d173bad18f08c8c4b2356a"
+    "trace_id": "c3c950eea09fdb25e869753ad27d792106fc3ffeda2f63f3c6a4a91d425dbc9b"
   },
   {
     "source_id": "pf_gametocyte_proteome",
@@ -17188,7 +17188,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_gametocyte_proteome",
+        "implementation": "parascape.deposits.pf_gametocyte_proteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/pf_gametocyte_2026/Extended Datasets.xlsx"
@@ -17217,7 +17217,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d146957a13bb01e844209a24f257cc521b4d831c73b43e75ce254680fb2af18a"
+    "trace_id": "0c9776fca00556471f1b582283818a3f0d9b23fd5acffaa194535916750d8aa5"
   },
   {
     "source_id": "pf_target_engagement",
@@ -17243,7 +17243,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_target_engagement",
+        "implementation": "parascape.deposits.pf_target_engagement",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/thermal/pf_tpp_2026/SupplTable3_media-6.csv"
@@ -17272,7 +17272,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f88abb4856e584a3c3aeb38cbdf9e373a2fda0d6832972f881ec5cd817f03f65"
+    "trace_id": "db5828568288fdfacedc57d31adddb0d1abd9010a8434a37a68485f60b9b27da"
   },
   {
     "source_id": "pf_target_engagement",
@@ -17298,7 +17298,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_target_engagement",
+        "implementation": "parascape.deposits.pf_target_engagement",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/thermal/pf_tpp_2026/SupplTable3_media-6.csv"
@@ -17327,7 +17327,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c8aebd157441e174e1940277ffc0082e8a88856cddd32b59978144714b2e1a19"
+    "trace_id": "e9d07edad82ace333cb875c8f67315912c9f8f4f1c0ac20c2fe4a3635223b057"
   },
   {
     "source_id": "pf_febrile_phospho",
@@ -17353,7 +17353,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_febrile_phospho",
+        "implementation": "parascape.deposits.pf_febrile_phospho",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/phosphosites/pf_febrile_2026/elife-107860-supp1-v1.xlsx"
@@ -17382,7 +17382,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "32073af6bdd54a1785b81b781da3b650f977b2b9976613f2a1df978a1ceea915"
+    "trace_id": "e600495cf762e5a95efdf3b26544d9b22127f12efea795f530ed2f5641af515c"
   },
   {
     "source_id": "pf_febrile_phospho",
@@ -17408,7 +17408,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_febrile_phospho",
+        "implementation": "parascape.deposits.pf_febrile_phospho",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/phosphosites/pf_febrile_2026/elife-107860-supp1-v1.xlsx"
@@ -17437,7 +17437,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c4a0a3e6cbc53157681d70b6a8c3ab91fbc2ab8165ad56940bcafc22f06ace4d"
+    "trace_id": "57c8f163d706e3c06424fd2c40ea7741c3f84e57b1722442694915d713005b56"
   },
   {
     "source_id": "pf_febrile_phospho",
@@ -17463,7 +17463,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_febrile_phospho",
+        "implementation": "parascape.deposits.pf_febrile_phospho",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/phosphosites/pf_febrile_2026/elife-107860-supp1-v1.xlsx"
@@ -17492,7 +17492,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "626e2494c2be8f000c74fe451631b112ef72e86d351b7ddc5a2d1adbab4eda40"
+    "trace_id": "22c0a35023176a754ea1f5e82fb08182b39c0c3fd63e5482df005e11455ed867"
   },
   {
     "source_id": "pf_chromatin_proxiome",
@@ -17518,7 +17518,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_chromatin_proxiome",
+        "implementation": "parascape.deposits.pf_chromatin_proxiome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/pf_chromatin_proxiome_2026/TableS1_HP1_proximity_proteome_media-3.xlsx"
@@ -17547,7 +17547,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "95cba8e588fc10637eda5975d9b17e9f3c474d8d3a2ad44cb8f70d946ae05848"
+    "trace_id": "ee6e25c56d71dff9c24877952d2fa14fa28b156e7f85a7ad16f901190e55de0c"
   },
   {
     "source_id": "pf_chromatin_proxiome",
@@ -17573,7 +17573,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_chromatin_proxiome",
+        "implementation": "parascape.deposits.pf_chromatin_proxiome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/pf_chromatin_proxiome_2026/TableS1_HP1_proximity_proteome_media-3.xlsx"
@@ -17602,7 +17602,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "18b3dca8571e7c155346a27a482a227399f44a2a2e2d1ac8a547ce7fff565514"
+    "trace_id": "3426441d0bb05997b824c36556798daa9801348726d2aaf05f81e55f21b89bc3"
   },
   {
     "source_id": "pf_chromatin_proxiome",
@@ -17628,7 +17628,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_chromatin_proxiome",
+        "implementation": "parascape.deposits.pf_chromatin_proxiome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/pf_chromatin_proxiome_2026/TableS1_HP1_proximity_proteome_media-3.xlsx"
@@ -17657,7 +17657,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "deeb1e04c40494d6abf9edc48b976cd1452e8292840c695dcf666442b0cebe6d"
+    "trace_id": "bf24543f6e73b9eaf7a70d69943af45a3978f51c3f3c8c3f35d793b22405fc3c"
   },
   {
     "source_id": "pf_chromatin_proxiome",
@@ -17683,7 +17683,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_chromatin_proxiome",
+        "implementation": "parascape.deposits.pf_chromatin_proxiome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/pf_chromatin_proxiome_2026/TableS1_HP1_proximity_proteome_media-3.xlsx"
@@ -17712,7 +17712,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "4f59e765e2cc980169c704efe7fbbdd3f5b3ab2df1fa0d9f5ce8a52cfd1fb71c"
+    "trace_id": "e1f3496d7e51f76b648c5337a42778c97524323691bd4a4a4c3aaed6db127778"
   },
   {
     "source_id": "pf_chromatin_proxiome",
@@ -17738,7 +17738,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_chromatin_proxiome",
+        "implementation": "parascape.deposits.pf_chromatin_proxiome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/pf_chromatin_proxiome_2026/TableS1_HP1_proximity_proteome_media-3.xlsx"
@@ -17767,7 +17767,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "cb6ac04de1ba3f35ae15ff5ad64682b861577974e24e71c7e74298ec65acbb8b"
+    "trace_id": "81265546c4288b11337df00ab3f787042ba21149627b6b1c77c3c7abbc29f9f1"
   },
   {
     "source_id": "pf_chromatin_proxiome",
@@ -17793,7 +17793,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_chromatin_proxiome",
+        "implementation": "parascape.deposits.pf_chromatin_proxiome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/pf_chromatin_proxiome_2026/TableS1_HP1_proximity_proteome_media-3.xlsx"
@@ -17822,7 +17822,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "53c49ddc09e0678fa449aecf0c8a269aa0dfa76c618fdfc6e55614fb30cd8d8c"
+    "trace_id": "b3cb3ef6babe67955bb08cc02ac336d4093c9020e35270ce788d15728a1a8d62"
   },
   {
     "source_id": "pf_chromatin_proxiome",
@@ -17848,7 +17848,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_chromatin_proxiome",
+        "implementation": "parascape.deposits.pf_chromatin_proxiome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/pf_chromatin_proxiome_2026/TableS1_HP1_proximity_proteome_media-3.xlsx"
@@ -17877,7 +17877,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "60f290d1007b9653a29ae8f6a2b864c34e32792a262f420921d7eea28205f10d"
+    "trace_id": "afdf38f86d6accaef1d3e9c8b650a90c68c40dfc717a742de78310c945c678c3"
   },
   {
     "source_id": "pf_chromatin_proxiome",
@@ -17903,7 +17903,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_chromatin_proxiome",
+        "implementation": "parascape.deposits.pf_chromatin_proxiome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/BioID/pf_chromatin_proxiome_2026/TableS1_HP1_proximity_proteome_media-3.xlsx"
@@ -17932,7 +17932,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "6e57aa3033bc9a13040b2cf8a3c4f227c5ad5937965668c95d0f7ba07e6b42ac"
+    "trace_id": "bb45cf70a75f41769951a04d75c6f1015eddd139e212f9ea76952651160e4eb6"
   },
   {
     "source_id": "pf_meltome",
@@ -17958,7 +17958,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_melting_temperature",
+        "implementation": "parascape.deposits.pf_melting_temperature",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/41315737/41564_2025_2173_MOESM3_ESM.xlsx"
@@ -17987,7 +17987,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b998243f41cc105102c9517a7cb8761577b0a605d56a2976ddac36b9b4866f8a"
+    "trace_id": "94b138112c0c77da3cde4ef6ceb1c8fc18e2358e151ef96e19511d309959d08c"
   },
   {
     "source_id": "pf_meltome",
@@ -18013,7 +18013,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_melting_temperature",
+        "implementation": "parascape.deposits.pf_melting_temperature",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/41315737/41564_2025_2173_MOESM3_ESM.xlsx"
@@ -18042,7 +18042,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "fa91cc61c1b41c5dcd97da62fdf04a25e110b5f9280e2d1d84dc620ae4a39e82"
+    "trace_id": "b36ceaffc643d9b78b7200847a67f8862d87de5b427d69382188042a55e25eae"
   },
   {
     "source_id": "pf_pb_fertility_transfer",
@@ -18068,7 +18068,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pb_fertility",
+        "implementation": "parascape.deposits.pb_fertility",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/transmission_screen/39541984/mmc2.xlsx"
@@ -18097,7 +18097,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a14a1a92cd11083895c722fbbe5c5fcb6bbd5ce4b44c039a09c8d05876d3c52f"
+    "trace_id": "7fbb932e9a5ba744f3a0ceebdccc223344189374fa95042719dae812b7fe635f"
   },
   {
     "source_id": "pf_pb_fertility_transfer",
@@ -18123,7 +18123,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pb_fertility",
+        "implementation": "parascape.deposits.pb_fertility",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/transmission_screen/39541984/mmc2.xlsx"
@@ -18152,7 +18152,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "be69f6599791ba86af2b1ceb52fedfcbf11cf62103c76d0583ffdfc0fc3402e1"
+    "trace_id": "5f15fc5f8211e18a34c15de43b7116d57ca5068b2101a787a568b44bd9ef3c68"
   },
   {
     "source_id": "plasmodb_pf3d7_piggybac",
@@ -18167,7 +18167,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18192,7 +18192,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "6e7bf5394a610a3c44b5dde2461bc2f33d8d6d4717625586d26abb08cea2f6e6"
+    "trace_id": "5b232f5e2429e01f0ea5b0c5855eaa72c6063283f21515a2bec85070d5aa134d"
   },
   {
     "source_id": "plasmodb_pf3d7_piggybac",
@@ -18207,7 +18207,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18232,7 +18232,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "90b1a4ae048f2dd231b8dcb6c4c7ba40af71cb6d28e4a9f627d32b25081903d8"
+    "trace_id": "d81267d72eaf264e4e15c1697d10da55efe34e78d5033630ce3cda33a2038f77"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18257,7 +18257,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18282,7 +18282,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "ad2d2b653cdd74408b06bc39684046af71b5ada3bd9387ce989340e565cc30d4"
+    "trace_id": "6fab2ed6b580c7bcb38a13f654ceb82ce2ee7ad18e5c5f95d9b36fbb016e7fca"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18307,7 +18307,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18332,7 +18332,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a1b2a0884e7181572b64666372c1287bd4b0e0317f754a5b14b217db51e82fbc"
+    "trace_id": "91988315d557930c8d22a42a36f7819c740c88e413321c7aedf85257f1637d18"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18357,7 +18357,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18382,7 +18382,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b2f09447a067b210460815d6e4ded91769a657c4b80d32f76b8517450f360e21"
+    "trace_id": "7c7cb562ebd56a9d66d483ee801a0e581a7d5f3b371c27b6f730c1da782e183e"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18407,7 +18407,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18432,7 +18432,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "7d94004fce4acc4c061932ae65289d94c625e175178b5bf30198e8caf06e620b"
+    "trace_id": "d4fc5ef27d7ff8fd5cba6b5d08af20b36c7d1f0a0e0104ed71db4c74b48c72f2"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18457,7 +18457,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18482,7 +18482,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "fe4e887a1a7f5e245c9ad7bbc73571b9d6f8a22bdbe893815a4690586e74bbd4"
+    "trace_id": "9827205f56f941eb577b9cea4e50ff5dcec6749b9f8ed4fa58d803e269412595"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18507,7 +18507,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18532,7 +18532,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b27475cde61b67d70a69efe10dcfeda74f942adeb703957f5d9b443ccfe80ed6"
+    "trace_id": "26f4c8636aaf0213a753222e48ac147810ec0847ac9487e2c35a3894ee622149"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18557,7 +18557,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18582,7 +18582,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "508281c3b44ba82b311c1ccc4e2c924439e8fa05a5d4ea5d70acea10bfcac0c9"
+    "trace_id": "b31f161a7ec48bd4736b5e2a6ee14a3935845a9702357a4086d128c2db675326"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18607,7 +18607,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18632,7 +18632,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "21e8a6a871d1c94ff797f12db448779eb35a7d15a8565a97f155174e4d8c9767"
+    "trace_id": "1073112de9ce7a6ea2ff160c2365eef951feba75540cbb6ba68f207eec7b105f"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18657,7 +18657,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18682,7 +18682,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "83bdf01ebb894b65827e2cd4d240581d5f64aade1fef3de3b5dcb6da108276c0"
+    "trace_id": "545d24ae8285372f13c2ddcd3a53709893b01052e1a471d6b3010c0a5e3fcb62"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18707,7 +18707,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18732,7 +18732,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e994a2da4495034d9f71b012c33fba32e252609f99c1928a8ccdc07cb2e9a912"
+    "trace_id": "96c252d4389a6412d24f3d8b9b2bd37531f2e1b3881e172611b34f39af294606"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18757,7 +18757,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18782,7 +18782,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f3f6aba03a2ab3e232811e2909c5179fb7e1df15f03e665f97fca77d1f116bcc"
+    "trace_id": "d4818dceadb018ced69c051e5d906183056b6b9c62f6bbd7ba5b518dfd6a8a7b"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18807,7 +18807,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18832,7 +18832,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "24f1e8ebdb069e55c42846b1954dd516890be87cd0671e989f18cbbcc109c0aa"
+    "trace_id": "5bd1a59db442102901cd82f3a3671ff0ef4da204120f63a2193bc9c538d29895"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18857,7 +18857,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18882,7 +18882,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "605e82ba476625b1db66fd6448dca5fa4c74811cacf2c584746a4169001791a9"
+    "trace_id": "19cb3d32a856ed7dbae327ef6cde0238300eaa1672008d7add7dbc3e39a146a4"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18907,7 +18907,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18932,7 +18932,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c89a39898bd8de2d237a0c48f992f2d3cd49c26f5c15612e8dcdb286f8f8666b"
+    "trace_id": "997989e3cff225ca6542f22e1205732f3ef8863df7ee3461d7ad7d7b7bb6acfa"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -18957,7 +18957,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -18982,7 +18982,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "2d33717287070f135e490c24ed441b89bcf3a6af73944d7320e12842fc5864be"
+    "trace_id": "d6f63ee38a1d257c663f36b0e12484e05c97ddbb843d9c5bb51899f463361124"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -19007,7 +19007,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -19032,7 +19032,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "63069948561070e3c9bc0ebafd58e7f39d15cf44c54951c4fd88f0761a87707a"
+    "trace_id": "4d485df5cb05ced884a2760cee2cd6351199443201edf68ce31abced870d7057"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -19057,7 +19057,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -19082,7 +19082,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "002ab34887461ccfc28b4ae7663fc3448f97e903dc1c7552707cc501aae95048"
+    "trace_id": "7c5be727509c06131b64e20e1f9f1bd6712366d1c1411683addb6d2eff0b8adf"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -19107,7 +19107,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -19132,7 +19132,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "7fec8af2b4b7b27f0585be70c39170daec7eb9f1f9191202678e200a26575753"
+    "trace_id": "27e37a98af9a0f7beabbecafa746b07992b3d92ea1a3a861b51bfb721b336f46"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -19157,7 +19157,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -19182,7 +19182,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "2fa52aee4962235bc299d22f15e5e27a5da2d7f2b8aca379bfff80776d8d12a8"
+    "trace_id": "233b0cacbcd025c3fd97e1d1d290dded2b093b9c5e7e4da2849dea63f95c04c9"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -19207,7 +19207,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -19232,7 +19232,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "3734fb7f883707a7b83de7d9509ae804c3ba7b6e457da6c8a6e1d50aba96f46b"
+    "trace_id": "7dd746340da4edee0b4ec7f2843ef8d35d91ccbffa61eccf9e39c6c52935e2f2"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -19257,7 +19257,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -19282,7 +19282,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f213710824a2af75de4dc8132d258eaacebb4c23088eabb1ae7a54e6663549bc"
+    "trace_id": "3f3ac6862c28be012d65966e948c216ef0ee914963bcaa40aff423b96f85ce8f"
   },
   {
     "source_id": "plasmodb_pf3d7_expression",
@@ -19307,7 +19307,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -19332,7 +19332,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e95ff3cc98f6a7516dff4882043633f9f7bdd6fba7de011b21bbfe207194623b"
+    "trace_id": "1ac7354ce24aa69d80b83553cdd371ced4fe97d536245912167bfe77cc253a01"
   },
   {
     "source_id": "pf_alphafold_confidence",
@@ -20066,7 +20066,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -20093,7 +20093,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "cc67b2c91274b9e322e44d87bad8c493f3ca3e8becb54f77e96306e13758b823"
+    "trace_id": "4d9056a0f0a8b21b977cfef9ccd8a41c3cfc0b923e4f68671681fe2fba4b6be9"
   },
   {
     "source_id": "pf_derived_stage_labels",
@@ -20108,7 +20108,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -20135,7 +20135,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "262cf53b9e54f406fa55974d07a3795bebc37eee8534de79a7bfd6ed60d132bf"
+    "trace_id": "b1cbc9b069e13f3d4c463b8b83fe7c74f68a130bd9b6f85b2a2fe7c449faa3eb"
   },
   {
     "source_id": "pf_derived_stage_labels",
@@ -20150,7 +20150,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -20177,7 +20177,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b9530ccf19d09f2f2fe288b0ff63a40d2fe92e6be43207d817500e902b8938c4"
+    "trace_id": "a65c8af5483bf5c0ee65eb132fdd1dc742fb9ec944ed0420dfd44da94dfde94a"
   },
   {
     "source_id": "plasmodb_identity",
@@ -20192,7 +20192,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/plasmodb_identity.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/plasmodb_identity.tsv",
         "sha256": "afa45edecdd37ee363ba407470d1cc296e8da5edac35dacf36b7816c282a3dfc",
         "bytes": 508478,
         "role": "installed_cache",
@@ -20217,7 +20217,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "55e45f18e2fd07f9a47f0e9519e48e95601117a57f791a7cf2b96c9f0737b104"
+    "trace_id": "f0db474b791d671eccf31cf580863e7aea339542358c7019e2a18dd6b9415796"
   },
   {
     "source_id": "plasmodb_identity",
@@ -20232,7 +20232,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/plasmodb_identity.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/plasmodb_identity.tsv",
         "sha256": "afa45edecdd37ee363ba407470d1cc296e8da5edac35dacf36b7816c282a3dfc",
         "bytes": 508478,
         "role": "installed_cache",
@@ -20257,7 +20257,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "2a21453eb440a97b1738f0d34033a1e058d694c09ee50f3a4cabf62ce8375aba"
+    "trace_id": "2b3377c6a7cbb00d973734d541f3e11e0cdb9baca84d55555db234c59dc7bd29"
   },
   {
     "source_id": "pf_riboseq",
@@ -21035,7 +21035,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.k562_rhoptry_screen",
+        "implementation": "parascape.deposits.k562_rhoptry_screen",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/host/k562_rhoptry_screen/v2_media-1.xlsx"
@@ -21064,7 +21064,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "7b4803a3426cb2f65bb57d642508f58dabc14af6a5b9f0bcae44842460eaf3a9"
+    "trace_id": "de932d9f24d2ae7d0f01460dc34e02149b56226762db517081c5564d449c2508"
   },
   {
     "source_id": "host_k562_rhoptry_screen",
@@ -21088,7 +21088,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.k562_rhoptry_screen",
+        "implementation": "parascape.deposits.k562_rhoptry_screen",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/host/k562_rhoptry_screen/v2_media-1.xlsx"
@@ -21117,7 +21117,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "2280b0a3073fc81e124db7355a3b87e2306337839199cafd2ca838b594f1410c"
+    "trace_id": "9a3bcb20b8accb2b3abdef1ca68dac163213919c6109a7f9859b9a67b81ce8fb"
   },
   {
     "source_id": "host_k562_rhoptry_screen",
@@ -21141,7 +21141,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.k562_rhoptry_screen",
+        "implementation": "parascape.deposits.k562_rhoptry_screen",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/host/k562_rhoptry_screen/v2_media-1.xlsx"
@@ -21170,7 +21170,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "03288e495578d410a2becc9165b10a3ceb478a824632c492e539c553ba80250d"
+    "trace_id": "0f04af561e8a5a2aea116b210560a702e905aee972058c93a57afc07f9a73be1"
   },
   {
     "source_id": "host_hff_tg_infection",
@@ -21194,7 +21194,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.hff_tg_infection",
+        "implementation": "parascape.deposits.hff_tg_infection",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/host/fibroblast_infection/GSE335016/GSE335016_245740-HOMO-gene_fpkm.txt.gz"
@@ -21223,7 +21223,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a46eef4b9d22ee09e4f48172c93deb011b46a24851a424a5e5b593c24aa65cb9"
+    "trace_id": "d3a388566f4c0434b1a10c5c0c4ad41cec5edcbd0fd23c480342e36aacb29342"
   },
   {
     "source_id": "host_hff_tg_infection",
@@ -21247,7 +21247,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.hff_tg_infection",
+        "implementation": "parascape.deposits.hff_tg_infection",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/host/fibroblast_infection/GSE335016/GSE335016_245740-HOMO-gene_fpkm.txt.gz"
@@ -21276,7 +21276,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "96dac2f40cea687acb4f267ea9169aa38677bccab392070c3ea59ba58d674423"
+    "trace_id": "f284489a1c2bb244dfcae0045480bbe2bdf3608b9de1d9993ba2f6fda2521c1d"
   },
   {
     "source_id": "host_bmdm_baseline",
@@ -21316,7 +21316,7 @@
     "transforms": [
       {
         "name": "FPKM to TPM per sample; mean three M0 replicates; map and retain best expressed row",
-        "implementation": "starplast.deposits.bmdm_baseline",
+        "implementation": "parascape.deposits.bmdm_baseline",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/host/bmdm/GSE267544/GSE267544_fpkm_BMDM.txt.gz",
@@ -21340,7 +21340,7 @@
       },
       {
         "name": "Serialize keyed deposit TSV using the recorded ten-significant-digit format",
-        "implementation": "starplast.deposits.derive_all",
+        "implementation": "parascape.deposits.derive_all",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "unrounded:bmdm_tpm"
@@ -21355,8 +21355,8 @@
       },
       {
         "name": "Read keyed deposit TSV and join the installed host protein table",
-        "implementation": "starplast.host.merge_tissue",
-        "code_sha256": "94c07f979c596c7d46ec624d6d2308aefe72875ca9db5c06566ce8ab10bbfa99",
+        "implementation": "parascape.host.merge_tissue",
+        "code_sha256": "8535fb2afdf347a4571538f94fb43e1f9e45fc3c37a40ef07065a721ffa00a94",
         "inputs": [
           "deposit_host_bmdm_baseline.tsv:bmdm_tpm"
         ],
@@ -21399,7 +21399,7 @@
       "reference_release_label_unavailable; content pinned by mapping hashes"
     ],
     "schema_version": 1,
-    "trace_id": "08984da2982e0af1416f7e29ff0f6f77aaadd931cf870629390c64f13bdde3a8"
+    "trace_id": "d7240ba2f1d35caab43a81e1d9fd9e93d5586dce178dd44c386a4066c7b816db"
   },
   {
     "source_id": "host_hepatocyte_pf_infection",
@@ -21423,7 +21423,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.hepatocyte_pf_infection",
+        "implementation": "parascape.deposits.hepatocyte_pf_infection",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/host/hepatocyte_infection/GSE263643/GSE263643_deseq2-normalized_counts.txt.gz"
@@ -21452,7 +21452,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "f6dff58f27dbfdead8e33445ef19d0e80af1c74ae56e8780cc9b9ad3fccc7819"
+    "trace_id": "d91e2fd3eb1e3c28288efdad6fa2c373d6fef0624e92d0370c775a011ab75120"
   },
   {
     "source_id": "host_hepatocyte_pf_infection",
@@ -21476,7 +21476,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.hepatocyte_pf_infection",
+        "implementation": "parascape.deposits.hepatocyte_pf_infection",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/host/hepatocyte_infection/GSE263643/GSE263643_deseq2-normalized_counts.txt.gz"
@@ -21505,7 +21505,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "fc5af97ce7302e4be7e975de043922c0f435d36539973271754287bf8ce9996f"
+    "trace_id": "2ad80b6e1c3fd03e5d7bf6a59dcbbf1081bc889085f7ee0a671da766efa686ee"
   },
   {
     "source_id": "host_macrophage_surfaceome",
@@ -22351,7 +22351,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_nodes.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_nodes.parquet",
         "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
         "bytes": 2554547,
         "role": "installed_cache",
@@ -22378,7 +22378,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "284a528e442cd710556f237f33877a2bc2ba2f3a201b7a1687eb63fd7ae1793d"
+    "trace_id": "59056b92f7e5a6aa07422e6c4fe6abfa147e4a718debb1eb1a60e522a00002be"
   },
   {
     "source_id": "pf_enzyme_classification",
@@ -22486,7 +22486,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/plasmodb_cds.tsv.gz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/plasmodb_cds.tsv.gz",
         "sha256": "1942f261ef4c9da26b2402bf295519f03a5c1a08d414d98a933d01a574a13733",
         "bytes": 3100519,
         "role": "installed_cache",
@@ -22513,7 +22513,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "10429307a1078ddaa7a7d6b016d0b9eeeff868b9d5327b77ac6579f247ed2c41"
+    "trace_id": "ab7389d1b9b1a619f31f5d5c15b8e0cdd75bd554e9392fdff8d21ed60b633e9c"
   },
   {
     "source_id": "pf_codon_usage",
@@ -22528,7 +22528,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/plasmodb_cds.tsv.gz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/plasmodb_cds.tsv.gz",
         "sha256": "1942f261ef4c9da26b2402bf295519f03a5c1a08d414d98a933d01a574a13733",
         "bytes": 3100519,
         "role": "installed_cache",
@@ -22555,7 +22555,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "18e9c9c169d8bf7fa5e56d4cc0d1316e161a225b116ec393d103652c3c37eeb9"
+    "trace_id": "962bafc621380dd15188b3c7f0b04474ac2bcc53062b906c07bf78b18def7c03"
   },
   {
     "source_id": "pf_codon_usage",
@@ -22570,7 +22570,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/plasmodb_cds.tsv.gz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/plasmodb_cds.tsv.gz",
         "sha256": "1942f261ef4c9da26b2402bf295519f03a5c1a08d414d98a933d01a574a13733",
         "bytes": 3100519,
         "role": "installed_cache",
@@ -22597,7 +22597,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "8b8955c3632f412c34f1480ecaedafb5ee32565b529dca9cc049ce6ea4ee7dd2"
+    "trace_id": "f16c0f0aa1415b2df03253137e497999c18d3b93d758e4b6f669b1c5101944cd"
   },
   {
     "source_id": "pf_host_bridge_xlms",
@@ -22612,7 +22612,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_host_bridges.parquet",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_host_bridges.parquet",
         "sha256": "154e08750a263599748827a72995878e435c8e0796e23b8ec1549a7742423449",
         "bytes": 4112,
         "role": "installed_cache",
@@ -22637,7 +22637,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "a720535c33ce780066231d0d6005b4dc5dacbdfa07d1b2b610fd9e84332d3107"
+    "trace_id": "1c79acd6015d9a961c55284a1d98e639146b7f6bd5d721c2dcd5c89d2e6342e8"
   },
   {
     "source_id": "pf_complexes",
@@ -22777,7 +22777,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_graph.npz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_graph.npz",
         "sha256": "5331e5a9ec7b63478a69edff7450a8ee0318703c672c316b3a7dbcc4ba47fed8",
         "bytes": 804254,
         "role": "installed_cache",
@@ -22806,7 +22806,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e6c12cab524be03462bbad918d240518831a64d9000dfa606a5f06614dbe35e1"
+    "trace_id": "041a70c5f86bb7bf95cad0df37e539221a5968274cb1dc9e19a86e3250ac8341"
   },
   {
     "source_id": "pf_relation_layers",
@@ -22822,7 +22822,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_graph.npz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_graph.npz",
         "sha256": "5331e5a9ec7b63478a69edff7450a8ee0318703c672c316b3a7dbcc4ba47fed8",
         "bytes": 804254,
         "role": "installed_cache",
@@ -22851,7 +22851,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b50c30f2f64e06a307eed610dfa7335bf860fc541733aa9de7c681c90f179a63"
+    "trace_id": "86eec66bf408cd57b562296ecd9ebe7e927d8addc99fb86a1fe5fae05f38027c"
   },
   {
     "source_id": "pf_relation_layers",
@@ -22867,7 +22867,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/pf_graph.npz",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/pf_graph.npz",
         "sha256": "5331e5a9ec7b63478a69edff7450a8ee0318703c672c316b3a7dbcc4ba47fed8",
         "bytes": 804254,
         "role": "installed_cache",
@@ -22896,7 +22896,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "bade029e7fbb4ab2896b49fa0b23cdfa019be811655f70f9dbdee1dd3ff90653"
+    "trace_id": "79405c1c874f487aa7c63d989dad52b1bbb9227c32b1829d9c260aeef1354b3a"
   },
   {
     "source_id": "cotranslation_edges",
@@ -22946,7 +22946,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/m6a_peaks.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/m6a_peaks.tsv",
         "sha256": "98f7a1a172ba11e3a913c1de0b3ee42bd5be7995104693b655a3e7289ee8030f",
         "bytes": 13885,
         "role": "installed_cache",
@@ -22971,7 +22971,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "03d76f4001e8164da01c0fa9835e205f6e464f9563d0ef5b7d667622b79edbc6"
+    "trace_id": "6e0c257c29086e54714afbf08231012dba52d2f75de23bcc22655b1b59632ebe"
   },
   {
     "source_id": "sexual_stages",
@@ -22986,7 +22986,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/sexual_stages.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/sexual_stages.tsv",
         "sha256": "8e78d32b8dc9e2902ada3d0bc7b2d05deefdc46a1e2165c13c04bb6880661085",
         "bytes": 144600,
         "role": "installed_cache",
@@ -23011,7 +23011,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "5bb11bb978a6368ffa2ae10eb475ea3cc0695044e923496794f2ebc71808e0fa"
+    "trace_id": "31fc4c23f19f3e542b3674c64831f8f74123a35221947f8465a7a58e337cc0dd"
   },
   {
     "source_id": "secretome_partition",
@@ -23026,7 +23026,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/secretome_partition.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/secretome_partition.tsv",
         "sha256": "01ff6998592d120f84c5913ef3f704061245b9b4b5c59f6012f66ef3315efc31",
         "bytes": 5554,
         "role": "installed_cache",
@@ -23051,7 +23051,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "7188e7617a3681ab6eaaa4e3c39ced0917c6938e3033c72ad006a11f2936aa72"
+    "trace_id": "7ff502a20ba4ef42638b6d0e4b72a2a5e464c717954ff6b8e635abc7dbd0e2c1"
   },
   {
     "source_id": "antisense_level",
@@ -23066,7 +23066,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/antisense_level.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/antisense_level.tsv",
         "sha256": "5546da8f13ad6760087019ddf313b933073397a7a5d0cb23cb2b00187b3d5dec",
         "bytes": 154489,
         "role": "installed_cache",
@@ -23091,7 +23091,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "1d75134951899a13455291f9f99ae523fc5496fbfec819fc8e9ad24e5bde9d3f"
+    "trace_id": "a390fa5483a225732604b6700d4f07f5661085dffffdd4e288d2a7e9f27e5d92"
   },
   {
     "source_id": "melting_temperature",
@@ -23106,7 +23106,7 @@
     ],
     "source_files": [
       {
-        "path": "/media/carruthers/mnt3/claude/repo/starplast/starplast/data/melting_temperature.tsv",
+        "path": "/media/carruthers/mnt3/claude/repo/parascape/parascape/data/melting_temperature.tsv",
         "sha256": "118c2542d8281b3503d177528e266b3eadfe30ba71eb31e4a6ce9120313f7f47",
         "bytes": 97377,
         "role": "installed_cache",
@@ -23131,7 +23131,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "32f07ba1ee044b46ac993dbb9346ca8c9e6b536a6f2545af8978ceebda0b9827"
+    "trace_id": "07a184cee4198ae679611c2125cfaf43352d231d349fb7fbe6c746dc7873b06e"
   },
   {
     "source_id": "thermal_shift_cetsa",
@@ -23312,7 +23312,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_spatial_proteome",
+        "implementation": "parascape.deposits.pf_spatial_proteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/LOPIT/42218142/41467_2026_73664_MOESM3_ESM.xlsx"
@@ -23341,7 +23341,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "e09b89d5e083a4e28df8d9aaf3e18e73e9e43ac04fbb40a73fe3e4e709009243"
+    "trace_id": "0e51381ac8c670252812eab20dfdd670e8e0cec016ef64f6279d3c51800ec3af"
   },
   {
     "source_id": "pf_spatial_proteome",
@@ -23367,7 +23367,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_spatial_proteome",
+        "implementation": "parascape.deposits.pf_spatial_proteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/LOPIT/42218142/41467_2026_73664_MOESM3_ESM.xlsx"
@@ -23396,7 +23396,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "33652facaaa773881f5df79bac170978f1b1f3ae3a1f25e4d6a3083ed3b6216e"
+    "trace_id": "723717b6fd42ea4445c48be2658ec71e750c24d5f22b768ea93b966870ef00a0"
   },
   {
     "source_id": "pf_field_variation",
@@ -23422,7 +23422,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_field_variation",
+        "implementation": "parascape.deposits.pf_field_variation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/LOPIT/42218142/41467_2026_73664_MOESM5_ESM.xlsx"
@@ -23451,7 +23451,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "cfb3772b02b6a3498a53a9ac6dd5ae5607ef3247ef5d5a46e2dc8dc853274dd6"
+    "trace_id": "be8920af6b2888a6da88735f9d7de8a0e33d7dc0bd6d1a93a995eb4c12eea14b"
   },
   {
     "source_id": "pf_field_variation",
@@ -23477,7 +23477,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_field_variation",
+        "implementation": "parascape.deposits.pf_field_variation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/LOPIT/42218142/41467_2026_73664_MOESM5_ESM.xlsx"
@@ -23506,7 +23506,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "1618f9bbc88f6a5f61f89507ec9e42b94ac326579e74ef3918a87d46d25cda3c"
+    "trace_id": "f1b498a4b849e76423910a3b329f5cd7ed3273ed93c8929edd2cf9535329c330"
   },
   {
     "source_id": "pf_field_variation",
@@ -23532,7 +23532,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_field_variation",
+        "implementation": "parascape.deposits.pf_field_variation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/LOPIT/42218142/41467_2026_73664_MOESM5_ESM.xlsx"
@@ -23561,7 +23561,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "cb91610ed30dbb4548684ef2e6e5a0d8c9b475776435a65de7804ade80c47da7"
+    "trace_id": "5a3ca6a9ddee13afe2e5aaf1b583c791e1c0c4160378b9e5650fe376b1f8963b"
   },
   {
     "source_id": "pf_field_variation",
@@ -23587,7 +23587,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_field_variation",
+        "implementation": "parascape.deposits.pf_field_variation",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/LOPIT/42218142/41467_2026_73664_MOESM5_ESM.xlsx"
@@ -23616,7 +23616,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "aff8a774c0302feaeb8d39f16cb77eb663b675f46c7982fae9ed8d8468c347f7"
+    "trace_id": "a6661e2dc311bc70e3e22490daa14ecca722aa16871c61caeff4a8adf34d5eaa"
   },
   {
     "source_id": "pf_mrna_dynamics",
@@ -23643,7 +23643,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_mrna_dynamics",
+        "implementation": "parascape.deposits.pf_mrna_dynamics",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/RNAseq/29985403/41467_2018_4966_MOESM5_ESM.xlsx"
@@ -23672,7 +23672,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d6c08ff0e99ad86ba88b732b1a97161de2d4fb472e7b44ae68c8989d44c47c4f"
+    "trace_id": "3200c02799396ff5cd4dc56412510b9acbfa30d6574ee9e3a8b3a4dffc14065a"
   },
   {
     "source_id": "pf_mrna_dynamics",
@@ -23699,7 +23699,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_mrna_dynamics",
+        "implementation": "parascape.deposits.pf_mrna_dynamics",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/transcription/RNAseq/29985403/41467_2018_4966_MOESM5_ESM.xlsx"
@@ -23728,7 +23728,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "6aea6b5043876e9ef6a6ab9cc22e89f4710eeb1ba4178e22fec3c44058d24bea"
+    "trace_id": "6747f320b13438f7afd36627c997816f1d570c0bcb35c023b704617cbdb3c70e"
   },
   {
     "source_id": "pf_hsp90_chemoproteome",
@@ -23755,7 +23755,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_hsp90_chemoproteome",
+        "implementation": "parascape.deposits.pf_hsp90_chemoproteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/pf_hsp90_2026/TableS1_media-2.xlsx"
@@ -23784,7 +23784,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "d967410ee074f9f008a4a49d650bdcfcdcc970f4a673186d66895f42ce67146e"
+    "trace_id": "01a3fd6b1e0c4c895768b21818309ed2a0049d04f1e1ab21bde8a396014052d1"
   },
   {
     "source_id": "pf_hsp90_chemoproteome",
@@ -23811,7 +23811,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_hsp90_chemoproteome",
+        "implementation": "parascape.deposits.pf_hsp90_chemoproteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/pf_hsp90_2026/TableS1_media-2.xlsx"
@@ -23840,7 +23840,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "181a9c108bac8e9c20346f4ea49d7f0b31922a5f5d557755953fb6e845f8f33c"
+    "trace_id": "f15d52a994e9764914b778ae8264b7a41ed21b33238b5c70bad4e844b02434aa"
   },
   {
     "source_id": "pf_hsp90_chemoproteome",
@@ -23867,7 +23867,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_hsp90_chemoproteome",
+        "implementation": "parascape.deposits.pf_hsp90_chemoproteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/pf_hsp90_2026/TableS1_media-2.xlsx"
@@ -23896,7 +23896,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "1d1f9de2a1f028eab2107a08289aa49d238989126649e8b517b310f8351d91d3"
+    "trace_id": "607e1c9653f2140e42bf96ffcee7cb2d6d74918cda66f100da8cda24a4e8574e"
   },
   {
     "source_id": "pf_hsp90_chemoproteome",
@@ -23923,7 +23923,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_hsp90_chemoproteome",
+        "implementation": "parascape.deposits.pf_hsp90_chemoproteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/pf_hsp90_2026/TableS1_media-2.xlsx"
@@ -23952,7 +23952,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "73904e0dcd8b841b915f35b870ee057165f4880ff96a32ef5089d345db2965a5"
+    "trace_id": "e055235c6730169a4f629c547bcf4c0910aba42b327e1162c9459f62118fbdf9"
   },
   {
     "source_id": "pf_rna_dependence",
@@ -23978,7 +23978,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_rna_dependence",
+        "implementation": "parascape.deposits.pf_rna_dependence",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/RDeeP/38355719/41467_2024_45519_MOESM4_ESM.xlsx"
@@ -24007,7 +24007,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "9274db8d8b4fe9ab6facdfd443392bbd49d056b4b3fa45fe124d6411d962ecc8"
+    "trace_id": "ad49157ed593287309f69196dec8480f25fba1f78d31c38a037bc370e1982924"
   },
   {
     "source_id": "pf_rna_dependence",
@@ -24033,7 +24033,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_rna_dependence",
+        "implementation": "parascape.deposits.pf_rna_dependence",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/post_translation/RDeeP/38355719/41467_2024_45519_MOESM4_ESM.xlsx"
@@ -24062,7 +24062,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "fdbc9e27849842d3f7f2210c305fc3e2f63b2c10af0cd97bce9ad3cbb909ac8c"
+    "trace_id": "ac54be4a0520b70ba7e25b427b16425df23b3b610ad9fb7439b54e94bd04c79a"
   },
   {
     "source_id": "pf_committed_proteome",
@@ -24088,7 +24088,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_committed_proteome",
+        "implementation": "parascape.deposits.pf_committed_proteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/41482054/mmc4.xlsx"
@@ -24117,7 +24117,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "268fefb3056d396fa04c716b461eca75efd7fe4601b5b399522dff51799445d9"
+    "trace_id": "9ff75e841ea33ed573eb8283d7d87c5c7363aee40bd860ff0dcb72cf561e24c7"
   },
   {
     "source_id": "pf_committed_proteome",
@@ -24143,7 +24143,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_committed_proteome",
+        "implementation": "parascape.deposits.pf_committed_proteome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/translation/proteomics/41482054/mmc4.xlsx"
@@ -24172,7 +24172,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "eb16fa32c468b8faca0dbb4b3b1478cf1043534483492c496721562dd483586b"
+    "trace_id": "9906a3f14f6a6e2cd43706ef7792627de06bb89ab00bcf6dd1971eda73260c52"
   },
   {
     "source_id": "pf_resistome",
@@ -24199,7 +24199,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_resistome",
+        "implementation": "parascape.deposits.pf_resistome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/in_vitro_evolution/39607932/SupplementaryData3_SNVs-INDELs.xlsx"
@@ -24228,7 +24228,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "884a957e3d5dbb45295f5817af9995cdc9da1bf69bfe803d2f40725577df28ea"
+    "trace_id": "6496918574298245b32d0871bac88ee6ea978d9572768b18faf07e630d4fdd05"
   },
   {
     "source_id": "pf_resistome",
@@ -24255,7 +24255,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_resistome",
+        "implementation": "parascape.deposits.pf_resistome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/in_vitro_evolution/39607932/SupplementaryData3_SNVs-INDELs.xlsx"
@@ -24284,7 +24284,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "4838d91fc4a63ae7a219b0e7589cf9f7f13ef8f89b47cb3340b4a1e91cfbe5c6"
+    "trace_id": "90574ae6141e93732c72fa72583858fabcc26da8fe1cfed52f3fb9f6fd0ec098"
   },
   {
     "source_id": "pf_resistome",
@@ -24311,7 +24311,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_resistome",
+        "implementation": "parascape.deposits.pf_resistome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/in_vitro_evolution/39607932/SupplementaryData3_SNVs-INDELs.xlsx"
@@ -24340,7 +24340,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "c27a7654243b96d96c2af6499cfe407fd3a13aff5f9d782e499ec5c687e86d33"
+    "trace_id": "4b89a8e90e511b55bce59c6c78b51a88014f2378d2e856d755c04b61b096dc28"
   },
   {
     "source_id": "pf_resistome",
@@ -24367,7 +24367,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_resistome",
+        "implementation": "parascape.deposits.pf_resistome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/in_vitro_evolution/39607932/SupplementaryData3_SNVs-INDELs.xlsx"
@@ -24396,7 +24396,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b7715777f2c8aaa3b1bd182d38cb6f214e4f814694a2318d3cc3b18fe1c959c8"
+    "trace_id": "7283e6dac10662c7355e4521d937b9e4e014abe883dfe95e415e025577ab1f91"
   },
   {
     "source_id": "pf_resistome",
@@ -24423,7 +24423,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_resistome",
+        "implementation": "parascape.deposits.pf_resistome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/in_vitro_evolution/39607932/SupplementaryData3_SNVs-INDELs.xlsx"
@@ -24452,7 +24452,7 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "b64c51cc9bcba887ff4352f853e90224417a93b45328b4196455e7c35708b23f"
+    "trace_id": "075ba7cae84128e486f73664fc998840102fdffa76342ab6abd383fac7f4d45e"
   },
   {
     "source_id": "pf_resistome",
@@ -24479,7 +24479,7 @@
     "transforms": [
       {
         "name": "Registered deposit transformation; historical parameters not fully audited",
-        "implementation": "starplast.deposits.pf_resistome",
+        "implementation": "parascape.deposits.pf_resistome",
         "code_sha256": "547a765ff0851242cdc9584edde644a991121f13c363af9e93324600c5d4e4fa",
         "inputs": [
           "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/in_vitro_evolution/39607932/SupplementaryData3_SNVs-INDELs.xlsx"
@@ -24508,6 +24508,6 @@
       "transform_chain_unresolved"
     ],
     "schema_version": 1,
-    "trace_id": "24d0afffe01e25470147a6ca91f7ba91f175fab225bcc8a5e49aded0bf54629a"
+    "trace_id": "fdeb46c5dace2630432dd60de72d3bde695641e9a55992e0a6f4c217706a536c"
   }
 ]

@@ -16,7 +16,7 @@
         "training_majority",
         "training_prevalence"
       ],
-      "artifact_identity": "49d625acba268ce5599fd22f00a43bba313f84cf50a816449a944e34850626d0",
+      "artifact_identity": "8e9e3a524c488e8ddd232a58030f8c84dd7bc10f766a5d850b1a2108da1283aa",
       "routes": [
         "annotation",
         "strategy",

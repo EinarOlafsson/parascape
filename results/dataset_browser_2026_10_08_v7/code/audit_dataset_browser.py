@@ -30,26 +30,26 @@ def audit(output):
     from PyQt6 import QtCore, QtWidgets
     import pandas as pd
     import numpy as np
-    from starplast import organisms as O, paths
-    from starplast.dataset_browser import DatasetBrowser
-    from starplast.dataset_space_inputs import from_sources
-    from starplast.slot_tree import shipped_sources
-    from starplast.scorecard_view import export_scorecard
+    from parascape import organisms as O, paths
+    from parascape.dataset_browser import DatasetBrowser
+    from parascape.dataset_space_inputs import from_sources
+    from parascape.slot_tree import shipped_sources
+    from parascape.scorecard_view import export_scorecard
 
     output = Path(output)
     if output.exists():
         raise ValueError('Use a new immutable dataset-browser audit directory')
     output.mkdir(parents=True)
     started = time.monotonic()
-    code_files = ['starplast/dataset_space.py', 'starplast/dataset_space_inputs.py',
-        'starplast/dataset_browser.py', 'starplast/source_refusals.py',
-        'starplast/inventory.py', 'starplast/datasets.py', 'starplast/slots.py',
-        'starplast/provenance.py', 'starplast/evidence.py', 'starplast/scorecard.py',
-        'starplast/organisms.py', 'starplast/scorecard_view.py',
-        'starplast/scorecard_browser.py', 'starplast/app.py', 'starplast/slot_tree.py',
+    code_files = ['parascape/dataset_space.py', 'parascape/dataset_space_inputs.py',
+        'parascape/dataset_browser.py', 'parascape/source_refusals.py',
+        'parascape/inventory.py', 'parascape/datasets.py', 'parascape/slots.py',
+        'parascape/provenance.py', 'parascape/evidence.py', 'parascape/scorecard.py',
+        'parascape/organisms.py', 'parascape/scorecard_view.py',
+        'parascape/scorecard_browser.py', 'parascape/app.py', 'parascape/slot_tree.py',
         'scripts/audit_dataset_browser.py', 'scripts/notebook_runner.py']
     inputs = [ROOT / p for p in code_files] + [Path(O.nodes_path(c)) for c in O.codes()] + [Path(O.graph_path(c)) for c in O.codes()]
-    inputs.append(ROOT / 'starplast/data/slots.json')
+    inputs.append(ROOT / 'parascape/data/slots.json')
     inputs += [Path(paths.cache_file(p)) for p in (*O.HOST_TABLES.values(), 'metabolites.parquet',
         *(O.get(c).host_bridges for c in O.codes() if O.get(c).host_bridges))]
     receipts = {str(p): _sha(p) for p in inputs if p.is_file()}
@@ -154,11 +154,11 @@ def audit(output):
 
     # Real menu/catalog routing and imported values; isolate user settings/state.
     state = output / 'temporary_state'
-    os.environ['STARPLAST_STATE'] = str(state)
+    os.environ['PARASCAPE_STATE'] = str(state)
     QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
     for fmt in (QtCore.QSettings.Format.NativeFormat, QtCore.QSettings.Format.IniFormat):
         QtCore.QSettings.setPath(fmt, QtCore.QSettings.Scope.UserScope, str(state))
-    from starplast.app import Window
+    from parascape.app import Window
     window = Window(species=O.get(O.TOXOPLASMA).species)
     try:
         window.dataset_browser_act.trigger()

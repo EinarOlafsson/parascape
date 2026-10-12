@@ -19,7 +19,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import importer as I  # noqa: E402
+from parascape import importer as I  # noqa: E402
 
 
 def _table(n=40, form="fpkm"):
@@ -237,7 +237,7 @@ def test_previous_and_strain_accessions_go_through_the_identity_layer():
 def test_imported_columns_join_the_table_in_memory_and_never_the_file():
     """The cache is measurement that shipped with the program. An imported column written into the
     same table on disk becomes indistinguishable from one."""
-    from starplast import paths
+    from parascape import paths
     nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
     imported = pd.DataFrame({"imported_score": [1.0, 2.0]},
                             index=[nodes.gene_id.iloc[0], nodes.gene_id.iloc[5]])
@@ -287,7 +287,7 @@ def test_every_format_the_importer_offers_has_a_reader_declared():
 
 def test_a_screen_export_can_use_gene_id_as_its_identifier_column():
     """A canonical column name must survive identifier resolution and duplicate aggregation."""
-    from starplast.importer import preprocess
+    from parascape.importer import preprocess
     frame = pd.DataFrame({"gene_id": ["TGME49_208830", "tgme49_208830", "TGME49_200000", "unknown"],
                           "score": [2.0, 4.0, 8.0, 10.0]})
     before = frame.copy(deep=True)

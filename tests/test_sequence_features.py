@@ -1,7 +1,7 @@
 """Long-protein encoding preserves every residue exactly once in pooled weight."""
 import numpy as np
 import pytest
-from starplast.sequence_features import windows, cache_key
+from parascape.sequence_features import windows, cache_key
 
 
 @pytest.mark.parametrize('length',[1,1000,1001,2100,12000])

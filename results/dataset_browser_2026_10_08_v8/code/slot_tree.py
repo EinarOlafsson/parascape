@@ -459,7 +459,7 @@ class SlotTreeWindow(QtWidgets.QMainWindow):
                  organism: str = None, graph=None, sources: dict = None,
                  imports=(), imported_organism=None):
         super().__init__(parent)
-        self.setWindowTitle("starplast — slot tree")
+        self.setWindowTitle("parascape — slot tree")
         self.view = SlotTree(nodes, tables, self, organism=organism, graph=graph, sources=sources)
         self._imports = tuple(imports)
         self._imported_organism = imported_organism
@@ -474,7 +474,7 @@ class SlotTreeWindow(QtWidgets.QMainWindow):
         self.resize(1100, 700)
 
     def _tab_changed(self, index):
-        self.setWindowTitle('starplast — datasets' if index == 1 else 'starplast — slot tree')
+        self.setWindowTitle('parascape — datasets' if index == 1 else 'parascape — slot tree')
         if index == 1:
             self.open_datasets()
 

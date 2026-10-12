@@ -5,7 +5,7 @@ fetched, how its identifiers are standardised, and what it contributes. They exi
 can be inspected, re-fetched or debugged on its own, without running a build that touches all 28.
 
 **What these scripts are not.** They are not a second implementation of the build. The shipped
-columns are assembled by `starplast.build_graph.load_nodes()` through the domain modules
+columns are assembled by `parascape.build_graph.load_nodes()` through the domain modules
 (`localization`, `expression`, `screens`, `cellcycle`), and a per-dataset copy of that logic would
 drift from it and eventually lie about what produced the data. What these scripts do is the part
 that is genuinely per-dataset: fetch the file, read it, resolve its accessions to current ToxoDB
@@ -26,7 +26,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from starplast import datasets, identity, paths  # noqa: E402
+from parascape import datasets, identity, paths  # noqa: E402
 
 _INDEX = None
 
@@ -156,5 +156,5 @@ def run(key: str, sep=None, sheet=None, id_col=None, normalized_by="build_graph.
     print(f"read {len(df):,} rows x {len(df.columns)} columns from {os.path.basename(path)}")
     out = standardise(df, id_col)
     print()
-    print(f"authoritative normalization for the shipped columns: starplast.{normalized_by}")
+    print(f"authoritative normalization for the shipped columns: parascape.{normalized_by}")
     return out

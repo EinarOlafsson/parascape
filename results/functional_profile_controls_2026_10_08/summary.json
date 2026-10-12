@@ -11,7 +11,7 @@
   "cohort_identity": "844543a68983d794b51c3faf237aaf6788a77c38934e69e4f82035e1d5121b8d",
   "raw_source_sha256": "1a2fee1a4b97be8442287dfe982c991c119ece6f9f318968956f926ebe87c69c",
   "raw_cell_census_sha256": "b35ded15e09f16fe669c9f1191fc8bfb025c2382d511cac38a662b037ae7d613",
-  "control_scope_identity": "f293c41ff53c446744e630f599abaa4fd5267f0015df2a44c221e5a09f2a9da8",
+  "control_scope_identity": "24fde21aa812708d81abb8f2e10b77e56aecd76664dfd402097935100e1e54cd",
   "class_score_file_sha256": {
     "training_majority": "ef8dc034e205a2f2ee7d6340fc8389d6118e8533f3a791ce33f2e0105e5506ef",
     "training_prevalence": "33b90dc78f2cc5b4aa18cc79392f4aa680c2d5857c3530c0e2118737cd2b5f1b"

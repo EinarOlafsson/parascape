@@ -1,9 +1,9 @@
 {
-  "source_artifact_identity": "c2891db34c1c43dec0372e792e3b6fa777a286cd43c7b0722c34d0630720b0cd",
+  "source_artifact_identity": "1b7547290ca701b554b5a6200f7ecd2652b960246a51c5e5ba6aa55946ef3bb3",
   "source_outputs_verified": 52,
   "source_inputs_verified": 70,
   "artifact_receipts_verified": 12,
-  "candidate_sha256": "b637629c58b276ceb9ab826f73f92f23dc9fbd21677c66a85f45c82b510a6f41",
+  "candidate_sha256": "59d6bfd212a3cfaac0cd3ffb17939d0dd76a93045287328e38a04c2ade668823",
   "test_genes": 152,
   "unsupported_test_genes": 4,
   "counts": {
@@ -32,7 +32,7 @@
   "biological_admission": false,
   "shipped_bundle_changed": false
 }
-	Command being timed: "/home/carruthers/anaconda3/envs/starplast/bin/python scripts/package_pf_functional_ec_results.py --strategy random_forest --source results/pf_functional_ec_forest_2026_10_08_v2 --out results/pf_functional_ec_forest_acceptance_2026_10_08"
+	Command being timed: "/home/carruthers/anaconda3/envs/parascape/bin/python scripts/package_pf_functional_ec_results.py --strategy random_forest --source results/pf_functional_ec_forest_2026_10_08_v2 --out results/pf_functional_ec_forest_acceptance_2026_10_08"
 	User time (seconds): 0.96
 	System time (seconds): 0.26
 	Percent of CPU this job got: 99%

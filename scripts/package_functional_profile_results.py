@@ -19,10 +19,10 @@ import time
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from starplast import functional_results as F,organisms as O
+from parascape import functional_results as F,organisms as O
 
 SOURCE=ROOT/'results/functional_profile_knn_2026_10_08_v4'
-SOURCE_ID='38cfb6bf110cadb559eac41c798298d7d95882efe2524a3591ccf7ad63d0385f'
+SOURCE_ID='9320c31e664376117f67de114398846d8a642aa8196ceeeee4b1b0a9471fd628'
 NATIVE=('rows.json','card.json','class_cards.json','baseline_cards.json')
 
 

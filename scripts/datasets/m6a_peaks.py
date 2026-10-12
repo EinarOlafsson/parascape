@@ -9,7 +9,7 @@ How many m6A peaks the authors called on this gene in tachyzoites
     PMID         : 34324585
     accession    : PLoS Pathogens 1009335 Table S3A
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8354455/supplementaryFiles
-    local path   : starplast/data/m6a_peaks.tsv
+    local path   : parascape/data/m6a_peaks.tsv
 
 Quirks that cost time once:
     GEO carries no MeRIP for Toxoplasma -- its deposit for this study is depletion RNA-seq,
@@ -23,7 +23,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/m6a_peaks.py

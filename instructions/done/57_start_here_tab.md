@@ -13,15 +13,15 @@ The user, 2026-09-30:
 
 ## What was built
 
-* `starplast/guided.py` — **Qt-free**: the question tree, its options, the branching, and
+* `parascape/guided.py` — **Qt-free**: the question tree, its options, the branching, and
   `recommend(answers, ctx)`. Testable headless and usable from a notebook.
-* `starplast/guided_panel.py` — the view: one question per screen, a clickable trail of answers, and
+* `parascape/guided_panel.py` — the view: one question per screen, a clickable trail of answers, and
   the recommendation cards. It holds no window; it emits `run_strategy`, `open_strategy` and
   `open_view`, and `install(window)` wires those. `Window._guided()` is the whole hook in `app.py`.
-* `starplast/strategy_panel.py` — `headline()` and `shipped_card()` became module functions that the
+* `parascape/strategy_panel.py` — `headline()` and `shipped_card()` became module functions that the
   methods now call, so the Start-here cards show the Strategies tab's numbers rather than a second
   computation of them. Nothing else in that tab changed.
-* `starplast/help_index.py` — `guided_entries()`, derived from `guided.STEPS` and `guided.GOALS`, so
+* `parascape/help_index.py` — `guided_entries()`, derived from `guided.STEPS` and `guided.GOALS`, so
   the tab, every question and every goal are reachable from the search beside Help.
 
 ## The tree

@@ -14,16 +14,16 @@ The user, 2026-09-29:
 
 ## Plan
 
-1. `starplast/umap_gallery.py` (no Qt): the gallery recipes per organism (all measurements at three
+1. `parascape/umap_gallery.py` (no Qt): the gallery recipes per organism (all measurements at three
    n_neighbors, all but localization, one per evidence family from the slot catalogue's axes via
    `strategies.Context.family_of`), built WITHOUT any label column, clustered with HDBSCAN; the
    label x map scores; loading and integrity checks.
 2. Scores per (label, map): size-weighted mean best-cluster F1 / precision / recall over the label's
    categories; the best single category on the F1 of the Wilson 95% lower bounds of its precision
    and recall; both against a permutation chance level; a circularity flag from the leakage closure.
-3. `scripts/build_umap_gallery.py` -> `starplast/data/umap_gallery.npz`, `umap_gallery.json`,
+3. `scripts/build_umap_gallery.py` -> `parascape/data/umap_gallery.npz`, `umap_gallery.json`,
    `umap_gallery_scores.tsv`, recorded in an executed notebook. Heavy steps under a 30 GB scope.
-4. `starplast/umap_gallery_panel.py`: a "maps" dock; clicking a map loads it into the central view;
+4. `parascape/umap_gallery_panel.py`: a "maps" dock; clicking a map loads it into the central view;
    a sortable score table in both directions; one-click color by label; live scoring of the map on
    screen. Small hook in `app.py`.
 5. Tests, `docs/guide.md` + `docs/API.md` sections, CHANGELOG under `## Unreleased`.
@@ -61,7 +61,7 @@ The user, 2026-09-29:
   localization (its closure reaches outside the localization family), as is protein abundance.
 * **Files:** `umap_gallery.npz` 1.88 MB, `.json` 0.19 MB, `_scores.tsv` 0.07 MB; wheel 55.3 MB
   (`check_wheel` passes). Build: `scripts/build_umap_gallery.py --workers 8` under
-  `systemd-run --user --scope -p MemoryMax=30G`, STARPLAST_GPU=0 (umap-learn on the CPU), ~2 min;
+  `systemd-run --user --scope -p MemoryMax=30G`, PARASCAPE_GPU=0 (umap-learn on the CPU), ~2 min;
   record `notebooks/umap_gallery_2026_09_29.ipynb`.
 * **UI:** `umap_gallery_panel.py`, a "maps" dock tabbed with Analysis (hook: 6 lines in
   `app._gallery`). Thumbnails colored by each map's clusters; click -> `use_embedding` + the map's

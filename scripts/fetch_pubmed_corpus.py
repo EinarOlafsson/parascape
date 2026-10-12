@@ -30,7 +30,7 @@ import xml.etree.ElementTree as ET
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 
 #: NCBI asks for a tool and an address on every call, and gives 3 requests a second without a key.
-CONTACT = {"tool": "starplast", "email": "einar.olafsson@gmail.com"}
+CONTACT = {"tool": "parascape", "email": "einar.olafsson@gmail.com"}
 DELAY = 0.34
 
 #: How many PMIDs to ask for in one efetch. 200 is what NCBI's own documentation suggests for

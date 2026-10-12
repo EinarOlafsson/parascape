@@ -3,12 +3,12 @@ import hashlib
 import json
 from pathlib import Path
 import sys
-ROOT = Path('/media/carruthers/mnt3/claude/repo/starplast')
+ROOT = Path('/media/carruthers/mnt3/claude/repo/parascape')
 sys.path.insert(0, str(ROOT))
 from scripts.notebook_runner import ExecutedNotebook
-from starplast import functional_results as F
+from parascape import functional_results as F
 OUT = Path(__file__).resolve().parent
-OLD = ROOT / 'starplast/data/functional_results.json'
+OLD = ROOT / 'parascape/data/functional_results.json'
 ADD = ROOT / 'results/functional_profile_ui_bundle_2026_10_08/functional_results.json'
 
 

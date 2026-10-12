@@ -26,7 +26,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import sources as S  # noqa: E402
+from parascape import sources as S  # noqa: E402
 
 
 # --------------------------------------------------------------------------- quantification type
@@ -397,7 +397,7 @@ def test_the_fetcher_identifies_itself(monkeypatch):
 
     monkeypatch.setattr(S.urllib.request, "urlopen", fake_urlopen)
     assert S._get("https://example.org/x") == b"ok"
-    assert any("starplast" in str(v) for v in seen["ua"].values())
+    assert any("parascape" in str(v) for v in seen["ua"].values())
 
 
 def test_a_failed_fetch_is_logged_loudly_and_re_raised(monkeypatch):
@@ -421,7 +421,7 @@ def test_a_failed_fetch_is_logged_loudly_and_re_raised(monkeypatch):
         raise OSError("connection reset")
 
     monkeypatch.setattr(S.urllib.request, "urlopen", boom)
-    log = logging.getLogger("starplast.sources")
+    log = logging.getLogger("parascape.sources")
     handler = Collect(level=logging.WARNING)
     log.addHandler(handler)
     try:

@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.04, 64.05 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/scorecard.py`, `starplast/strategies.py`, `starplast/methods.py`, `starplast/calibration.py` |
+| Existing code to inspect | `parascape/scorecard.py`, `parascape/strategies.py`, `parascape/methods.py`, `parascape/calibration.py` |
 
 ## Deliverable
 
@@ -39,7 +39,7 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Completion evidence
 
-`starplast/baselines.py` declares recipes for all six tasks. Training-only majority,
+`parascape/baselines.py` declares recipes for all six tasks. Training-only majority,
 prevalence, mean and median helpers enforce the complete eligible training cohort
 and exact evaluation IDs. Uniform rankings/fixed-size retrieval preserve the
 candidate universe, seed and query-seed exclusions. Positive-only scoring reports

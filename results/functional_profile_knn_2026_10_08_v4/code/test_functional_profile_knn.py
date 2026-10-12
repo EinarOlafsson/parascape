@@ -8,9 +8,9 @@ import pandas as pd
 import pytest
 
 from scripts import freeze_functional_profile_knn as K
-from starplast import datasets as D, functional_domain_profiles as F, functional_exclusions as E
-from starplast.functional_profile_targets import freeze_target
-from starplast.splits import Assignment, SplitManifest
+from parascape import datasets as D, functional_domain_profiles as F, functional_exclusions as E
+from parascape.functional_profile_targets import freeze_target
+from parascape.splits import Assignment, SplitManifest
 
 
 def fixture(monkeypatch):
@@ -206,7 +206,7 @@ def test_late_registry_closure_is_organism_scoped(monkeypatch):
 
 @pytest.mark.parametrize('available', [True, False])
 def test_exact_execution_artifact_helper_roundtrips_complete_scope_and_nulls(monkeypatch, tmp_path, available):
-    from starplast import artifacts as A
+    from parascape import artifacts as A
     _, contract, _, excluded, metadata = fixture(monkeypatch)
     digest = 'a' * 64
     dependencies = tuple(A.Dependency(kind, name, digest) for kind, name in (

@@ -6,11 +6,11 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import organisms as O
-from starplast.baselines import (RECIPES, assert_planted_recovery, label_baselines, matched_network_control,
+from parascape import organisms as O
+from parascape.baselines import (RECIPES, assert_planted_recovery, label_baselines, matched_network_control,
                                 positive_only_retrieval, random_ranking, universe_digest, value_baselines)
-from starplast.ground_truth import TASKS
-from starplast.splits import make_split
+from parascape.ground_truth import TASKS
+from parascape.splits import make_split
 
 
 def _split():

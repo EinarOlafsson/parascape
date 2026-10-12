@@ -14,8 +14,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import datasets as D  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import datasets as D  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 from consolidate_source_recovery import direct_filename  # noqa: E402
 from recover_source_files import download  # noqa: E402
 
@@ -52,7 +52,7 @@ def retrieve(source_key, root, headers_path, output):
     (target.parent / "URLS.txt").write_text(source.url + "\n")
     (target.parent / "SHA256SUMS.txt").write_text(file.sha256 + "  " + target.name + "\n")
     (output / "table_review.json").write_text(json.dumps(record, indent=2) + "\n")
-    inputs = [Path(__file__), headers_path, ROOT / "starplast/datasets.py", ROOT / "scripts/recover_source_files.py",
+    inputs = [Path(__file__), headers_path, ROOT / "parascape/datasets.py", ROOT / "scripts/recover_source_files.py",
               ROOT / "scripts/consolidate_source_recovery.py"]
     (output / "manifest.json").write_text(json.dumps({"input_sha256": {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in inputs},
         "outputs": {"table_review.json": hashlib.sha256((output / "table_review.json").read_bytes()).hexdigest()},

@@ -17,7 +17,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import deposits as D  # noqa: E402
+from parascape import deposits as D  # noqa: E402
 
 
 def test_rhoptry_gene_evidence_survives_ambiguous_or_unmapped_protein_projection(tmp_path, monkeypatch):
@@ -143,13 +143,13 @@ def test_a_missing_deposit_leaves_what_is_shipped_alone(tmp_path):
 
 
 def test_every_registered_deposit_is_in_the_dataset_registry():
-    from starplast import datasets
+    from parascape import datasets
     keys = {d.key for d in datasets.REGISTRY}
     assert {d.key for d in D.DEPOSITS} <= keys
 
 
 def test_every_deposit_column_is_claimed_by_its_registry_entry():
-    from starplast import datasets
+    from parascape import datasets
     for dep in D.DEPOSITS:
         frame = D._read(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), dep.key)
         if frame.empty:
@@ -162,20 +162,20 @@ def test_every_deposit_column_is_claimed_by_its_registry_entry():
 # --------------------------------------------------------------------------- the shipped tables
 @pytest.fixture(scope="module")
 def tg():
-    from starplast import paths
+    from parascape import paths
     return pd.read_parquet(paths.cache_file("nodes.parquet"))
 
 
 @pytest.fixture(scope="module")
 def pf():
-    from starplast import paths
+    from parascape import paths
     return pd.read_parquet(paths.cache_file("pf_nodes.parquet"))
 
 
 @pytest.fixture(scope="module")
 def hosts():
-    from starplast import paths
-    from starplast import host
+    from parascape import paths
+    from parascape import host
     return pd.concat(host.shipped_tables().values(), ignore_index=True)
 
 
@@ -313,7 +313,7 @@ def test_the_host_table_kept_every_protein_it_had_and_its_names(hosts):
 
 # --------------------------------------------------------------------------- leakage
 def test_the_new_columns_are_grouped_with_what_they_restate(tg, pf):
-    from starplast import search
+    from parascape import search
     # Fitness in either serum, and the complete-medium arm of the carbon screen, ARE the fibroblast
     # screen measured again.
     banned = search.excluded_for(tg, "fit_invitro_hff")
@@ -333,7 +333,7 @@ def test_the_new_columns_are_grouped_with_what_they_restate(tg, pf):
 
 
 def test_holding_out_a_new_target_never_leaves_the_target_itself_behind(tg, pf):
-    from starplast import search
+    from parascape import search
     for nodes, targets in ((tg, ("fit_glucose_dependence", "bzsub_A_expr", "utr5_n_uaugs",
                                  "surface_er_log2fc", "iron_depletion_protein_log2fc")),
                            (pf, ("melting_temperature_tm", "fertility_female"))):
@@ -406,7 +406,7 @@ def test_the_latency_classifier_is_two_hundred_genes(pf):
 def test_every_berghei_transfer_is_held_out_together(pf):
     """The audit's finding: the blood-stage transfer predicted the transmission transfer at 0.58,
     nine robust standard deviations out, because both are the same berghei library."""
-    from starplast import search
+    from parascape import search
     for target in ("pb_transferred_phenotype", "fertility_female"):
         banned = search.excluded_for(pf, target)
         assert {"pb_transferred_phenotype", "pb_transferred_growth_rate", "fertility_female",
@@ -416,7 +416,7 @@ def test_every_berghei_transfer_is_held_out_together(pf):
 def test_withdrawing_a_nutrient_is_held_out_with_fibroblast_fitness(tg):
     """0.76 predictability: same library and cells with one nutrient removed is not an independent
     measurement of essentiality. The contrast between the arms is, and stays out."""
-    from starplast import search
+    from parascape import search
     banned = search.excluded_for(tg, "fit_invitro_hff")
     assert {"fit_no_glucose", "fit_no_glutamine"} <= banned
     assert "fit_glucose_dependence" not in banned
@@ -583,7 +583,7 @@ def test_a_gene_no_compound_selected_has_no_count_rather_than_a_zero(pf):
 
 
 def test_the_fourth_wave_columns_are_grouped_with_what_they_restate(pf):
-    from starplast import search
+    from parascape import search
     # A label and the classifier's confidence in that label.
     assert "lopit_pf_svm_score" in search.excluded_for(pf, "lopit_pf_location")
     # The hit call is a function of the two responses it is thresholded from.
@@ -605,7 +605,7 @@ def test_the_fourth_wave_columns_are_grouped_with_what_they_restate(pf):
 
 
 def test_every_fourth_wave_target_holds_itself_out(pf):
-    from starplast import search
+    from parascape import search
     for target in ("lopit_pf_location", "proteome_blood_log2", "hsp90_dependent", "rna_dependent",
                    "mrna_decay_rate_4tu", "transcription_rate_4tu", "field_pnps_adj",
                    "dnds_laverania", "resistance_target_compounds",
@@ -668,7 +668,7 @@ def test_the_density_arms_are_fibroblast_fitness_and_the_contrast_is_not(tg):
 def test_the_density_columns_are_held_out_with_what_they_restate(tg):
     """Left out of the fibroblast family, the density slot predicted held-out fibroblast fitness at
     0.72, the best of any slot (instruction 56). The contrast is a different quantity."""
-    from starplast import search
+    from parascape import search
     banned = search.excluded_for(tg, "fit_invitro_hff")
     assert {"fit_density_low", "fit_density_high"} <= banned
     assert "fit_density_dependence" not in banned

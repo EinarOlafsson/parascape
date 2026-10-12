@@ -94,7 +94,7 @@ major-class profiles preserved. Training-only ranks/feature selection/imputation
 among answers (41.5%); matched majority baseline 66/182 (36.3%). One unseen profile
 and all 11 abstentions retained. Native predictions/scores/model state and all cards
 replay exactly. Typed identity:
-`349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162`.
+`e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461`.
 **Annotation recovery only; zero independent activity benchmarks or new calibrated
 unknown-gene deployment claims.** This weak result cannot establish biological accuracy.
 
@@ -243,7 +243,7 @@ peak, serial under the existing 1,900 MiB root allowance; all workers terminal.
 Independent notebook `results/functional_profile_knn_acceptance_2026_10_08/`
 verifies 47 input hashes, 47 output receipts, 12 artifact receipts and exact
 denominators. Artifact identity:
-`38cfb6bf110cadb559eac41c798298d7d95882efe2524a3591ccf7ad63d0385f`.
+`9320c31e664376117f67de114398846d8a642aa8196ceeeee4b1b0a9471fd628`.
 
 Preserved earlier attempts: pandas3 NaN/None categorical representation failure;
 two worker signal9 diagnostic stops with unproven cause; root full-matrix
@@ -265,7 +265,7 @@ has 479 native profile cards and 583 domain-membership cards, all635 test genes
 and333 unsupported profiles. Packaging0.99s/266.5MiB under400MiB, no fitting.
 
 The executed merge preserves original EC and Pfam entries exactly. Shipped bundle
-SHA256 `854d014260330490e2b0f7189d8e6744448ab5d39f7686d75c4aba3cd763a84b`.
+SHA256 `473c22bed6a91f83247083ac4f466cc6c383a2073d7341db580650eee8495226`.
 Actual desktop audit `results/functional_profile_ui_2026_10_08_v3/` verifies
 source→result, strategy, controls, membership/profile exports, abstentions,
 gene and coverage navigation, changed-context refusal and no Plasmodium borrowing.
@@ -281,7 +281,7 @@ and deployment remain open;22/51 whole actions, no completion tick.
 
 Scope FN-EC-PF-CONTROL-01: direct `ec_number` complete major-class profiles;
 verified ENZYME/source review V2 manifest
-`5fb85c26e4939c4737a6969c474cd63395ea2faaa1fb111a71ebd241e0aaa81c`.
+`2f896c05a750c9ee0c2b1d437b4263544b301ff03435c5eb7b0a00cd1d893936`.
 Keep the whole original Pf gene order, native protected groups and explicit
 missing-group fallback/collision checks. Seed20261008 and fractions
 (0.55,0.15,0.15,0.15) fixed before execution. Source exclusions and
@@ -312,7 +312,7 @@ catalogue refreshed; source/node bytes unchanged. No dataset promoted or replace
 ## Predeclared Plasmodium EC kNN, 2026-10-08
 
 Pilot FN-EC-PF-KNN-01 consumes the unchanged accepted direct-EC target and
-control packet manifest `a29e416488ba7b0722afca63764a27afcaa6f1fa521a5539a247837a9a7d38c7`.
+control packet manifest `07c627853116786997c8bf9e84e9fd663e4855e3eb5e8b08361ccc8dc73470ec`.
 Keep seed20261008, roles600/151/147/152 and all four unsupported test genes.
 Fix k15/min_share0.3 before fitting. Use the full installed Pf table with
 training-only registered numeric source closure/ranks; withhold target-derived,
@@ -337,7 +337,7 @@ below majority43/152; prevalence35/152. These are source annotation recovery
 metrics; independent biological accuracy and calibrated confidence remain unknown.
 Native/refit/parquet/JSON/artifact checks are exact. Runtime5.42s,280,400KiB
 process peak under400MiB. Artifact identity
-`49d625acba268ce5599fd22f00a43bba313f84cf50a816449a944e34850626d0`.
+`8e9e3a524c488e8ddd232a58030f8c84dd7bc10f766a5d850b1a2108da1283aa`.
 
 Independent executed acceptance/candidate reader packet
 `results/pf_functional_ec_knn_acceptance_2026_10_08_v2/` verifies49 outputs,
@@ -359,7 +359,7 @@ refusals. No new fitting, source admission, calibration or deployment.
 
 Executed merge `results/pf_functional_results_merged_2026_10_08_v2/` preserves
 both original Tg entries and the accepted Pf candidate exactly. Shipped bundle
-SHA256 `4275691a748d91f618da5606d21e8eb35976980ea456ea667b106960db21a2b2`;
+SHA256 `b5fa39aa80200e19560e4600502b6decee1a2ec84ba38c03e33b11f8c1fe6eb3`;
 two Tg/one Pf tests. Native Pf controls keep distinct original names/scopes.
 All152 held-out genes/four unsupported profiles,40 correct/103 wrong/nine
 abstentions retained; direct and orthology-derived annotations stay separate.
@@ -391,7 +391,7 @@ replay and held-out feature/truth/role leakage checks. One400MiB worker packet;
 no worker retries/cap increases. No importance, tuning, calibration, deployment,
 biological or new source admission. Root owns acceptance and reader integration.
 
-Accepted RF partition: `starplast/forest_records.py` keeps native statistical
+Accepted RF partition: `parascape/forest_records.py` keeps native statistical
 parameters, training-only ranks, complete cohort, raw scores/support and exact
 JSON tree state including native dtype offsets/alignment. 17 adapter/pilot
 fixtures cover exact native/refit/tree replay, held-out feature/truth and role
@@ -401,12 +401,12 @@ Canonical root serial `results/pf_functional_ec_forest_2026_10_08_v2/` succeeds
 11.44s/570,120KiB under1900MiB, all workers terminal:59 correct/93 wrong/no
 abstentions on152 genes, including all four unsupported test genes. Majority43,
 prevalence35 and kNN40 use the identical cohort; no outer-test model selection.
-Artifact `c2891db34c1c43dec0372e792e3b6fa777a286cd43c7b0722c34d0630720b0cd`.
+Artifact `1b7547290ca701b554b5a6200f7ecd2652b960246a51c5e5ba6aa55946ef3bb3`.
 
 Independent candidate acceptance verifies52 outputs,70 inputs and12 artifact
 receipts. Executed merge retains all three previous entries and native RF
 candidate exactly; shipped SHA
-`386c8e05f5b8cf32f4b9ba6c777d32933c73c08ce40d9e01d0b27959e9dbadda`.
+`7f917b83f211c7d619b90aefb2d6cf01d75efdded703f1b71cbbcfd5934c2134`.
 Actual two-strategy desktop audit verifies original controls, class/profile
 exports, gene/coverage navigation and source/organism refusals; both screenshots
 inspected. Runtime5.03s/648,929,280bytes. Method-support header is generic;

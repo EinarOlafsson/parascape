@@ -37,7 +37,7 @@ HOW TO KNOW IT WORKED
 
 TRAPS
     The user's traceback showed the path
-    repo/starplast/starplast/starplast/app.py -- one level deeper than the
+    repo/parascape/parascape/parascape/app.py -- one level deeper than the
     layout should be. Rule out a stale or doubly-nested checkout before
     debugging the code.
 
@@ -85,6 +85,6 @@ STILL FOR THE USER TO CONFIRM
     Clicking a gene on YOUR newer pyqtgraph. It cannot be reproduced here.
 
     Also worth ruling out: your traceback showed the path
-    repo/starplast/starplast/starplast/app.py -- one nesting level deeper than
+    repo/parascape/parascape/parascape/app.py -- one nesting level deeper than
     this working copy. If that is a second checkout, the fix must land there
     too, and a stale copy earlier on sys.path would shadow this one.

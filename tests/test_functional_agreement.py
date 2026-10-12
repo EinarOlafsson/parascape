@@ -4,8 +4,8 @@ import json
 
 import pytest
 
-from starplast import functional_agreement as A, functional_results as F
-from starplast.scorecard_view import export_scorecard, render_scorecard_html
+from parascape import functional_agreement as A, functional_results as F
+from parascape.scorecard_view import export_scorecard, render_scorecard_html
 
 
 def _rows():

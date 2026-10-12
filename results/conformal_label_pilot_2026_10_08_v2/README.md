@@ -39,8 +39,8 @@ one optional pdoc documentation module skipped locally. Item 64.10 is still open
 other missing adapters, the logistic variant, full outer coverage and biological
 source admission are pending.
 
-Held-out artifact: `a6062f243a4e4fdf4702e9fc9162c438139da54684bf2873948ee1aa04bfa4ad`.
-Base model: `de4e8e5d2bfdf5308e5a4ea9952aeb80dcc100120a5949926025d6c7e122f831`.
-Calibration: `cc5b0da9c6a5e767376e64cb331aa893bb7bc2d07e52024a5eb018280b7cdc38`.
+Held-out artifact: `8a96d69660e83c49d897bdcac1d147aa1ad0f3863a8e507df00fd5935dccf8f3`.
+Base model: `4032634c54e8b7b25e47f5c7e242916fbfea54743ed805aa40133ea00475bc0d`.
+Calibration: `2e2bfe06d87be1efdb3fba801c03bd8f7eb563cf1ebbc1e809bacccd2bdae6e5`.
 
 This final revision also rechecks canonical base-model payload identity after loading, refusing in-memory mutations of its class vocabulary/state. The earlier prototype and original code remain in the sibling directory; numerical outcomes are unchanged.

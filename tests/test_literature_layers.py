@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Regression tests for the identity / corpus / literature layers.
 
-Every test here pins a bug that was real. The literature layer is the part of starplast most able to be
+Every test here pins a bug that was real. The literature layer is the part of parascape most able to be
 confidently wrong -- a false match does not crash anything, it just quietly hands a gene attention it
 never had -- so the guards against that are tested rather than trusted.
 
@@ -17,7 +17,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import corpus, identity, literature  # noqa: E402
+from parascape import corpus, identity, literature  # noqa: E402
 
 GENES = ["TGME49_208830", "TGME49_205250", "TGME49_214320", "TGME49_259720", "TGME49_321440"]
 
@@ -293,7 +293,7 @@ def test_structural_hole_needs_two_independent_families():
 
     Before this collapse, 53 of the 66 sharpest candidates were nothing but paralogy.
     """
-    from starplast import build_graph as B
+    from parascape import build_graph as B
     e = _edges(orthogroup=[(0, 1)], domain=[(0, 1)])
     assert B.structural_holes(e, _nodes()) is None
 
@@ -308,7 +308,7 @@ def test_homology_cannot_be_one_of_the_two_legs():
     Allowing it admitted 291 expression+homology pairs, 76% of them same-orthogroup, and put one
     protein family at the top of every ranking.
     """
-    from starplast import build_graph as B
+    from parascape import build_graph as B
     assert B.structural_holes(_edges(coexpression=[(0, 1)], orthogroup=[(0, 1)]), _nodes()) is None
     assert B.structural_holes(_edges(cofitness=[(0, 1)], domain=[(0, 1)]), _nodes()) is None
     # both phenotypes present: homology may ride along and raises the weight
@@ -319,7 +319,7 @@ def test_homology_cannot_be_one_of_the_two_legs():
 
 def test_structural_hole_requires_the_literature_to_be_silent():
     """A pair discussed anywhere -- any abstract, any open-access paragraph -- is not a hole."""
-    from starplast import build_graph as B
+    from parascape import build_graph as B
     base = dict(coexpression=[(0, 1)], cofitness=[(0, 1)])
     assert B.structural_holes(_edges(**base), _nodes()) is not None
     assert B.structural_holes(_edges(comention=[(0, 1)], **base), _nodes()) is None
@@ -327,7 +327,7 @@ def test_structural_hole_requires_the_literature_to_be_silent():
 
 
 def test_structural_hole_counts_per_gene():
-    from starplast import build_graph as B
+    from parascape import build_graph as B
     n = _nodes()
     e = _edges(coexpression=[(0, 1), (0, 2)], cofitness=[(0, 1), (0, 2)])
     B.structural_holes(e, n)
@@ -336,7 +336,7 @@ def test_structural_hole_counts_per_gene():
 
 def test_unwritten_interaction_is_measured_binding_the_literature_missed():
     """A stronger claim than a hole: the interaction was observed, not predicted."""
-    from starplast import build_graph as B
+    from parascape import build_graph as B
     n = _nodes()
     e = _edges(xlms=[(0, 1), (2, 3)], comention=[(2, 3)])
     a, b, w, _ = B.unwritten_interactions(e, n)
@@ -345,7 +345,7 @@ def test_unwritten_interaction_is_measured_binding_the_literature_missed():
 
 def test_unwritten_interaction_merges_xlms_and_ipms_explicitly():
     """The merge is labelled, and both source types stay separately toggleable."""
-    from starplast import build_graph as B
+    from parascape import build_graph as B
     e = _edges(xlms=[(0, 1)], ip_ms=[(2, 3)])
     a, b, _, _ = B.unwritten_interactions(e, _nodes())
     assert sorted(zip(a, b)) == [(0, 1), (2, 3)]
@@ -354,14 +354,14 @@ def test_unwritten_interaction_merges_xlms_and_ipms_explicitly():
 
 def test_unwritten_interaction_needs_measured_evidence():
     """Correlational edge types alone never qualify -- that is what structural_hole is for."""
-    from starplast import build_graph as B
+    from parascape import build_graph as B
     assert B.unwritten_interactions(_edges(coexpression=[(0, 1)], cofitness=[(0, 1)]),
                                     _nodes()) is None
 
 
 def test_compartment_alone_never_makes_a_hole():
     """Sharing one of 27 hyperLOPIT classes is too unspecific, and tracks abundance."""
-    from starplast import build_graph as B
+    from parascape import build_graph as B
     assert B.structural_holes(_edges(compartment=[(0, 1)], coexpression=[(0, 1)]), _nodes()) is None
 
 

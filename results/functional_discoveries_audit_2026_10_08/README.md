@@ -13,7 +13,7 @@ the organism-specific address. Plasmodium says its functional benchmark is unava
 Screenshots and stored membership/label tables are retained under the organism folders.
 
 Typed EC source identity:
-`349317afd8f24b860d94ae1e11280a6130bf451700b02b9d2145fab85fc99162`.
+`e7cf3b3933dbe4314c842098aa38c53a828765c351a5dd1a765d3ed1da60d461`.
 This is reference-annotation recovery only. No independent activity truth,
 calibrated probability, new deployment claim or dataset replacement is admitted.
 All declared input/output byte hashes are retained in `manifest.json`.

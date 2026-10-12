@@ -10,7 +10,7 @@ from scripts import release
 
 @pytest.fixture
 def checkout(tmp_path):
-    for relative in (*release.PROJECTS, Path("starplast/__init__.py")):
+    for relative in (*release.PROJECTS, Path("parascape/__init__.py")):
         target = tmp_path / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(release.ROOT / relative, target)
@@ -37,7 +37,7 @@ def test_bump_updates_package_and_runtime_and_enables_publication(checkout):
 
 
 def test_mismatched_runtime_cannot_publish(checkout):
-    p = checkout / "starplast/__init__.py"
+    p = checkout / "parascape/__init__.py"
     p.write_text(p.read_text().replace(release.check(checkout), "0.1.0"))
     with pytest.raises(ValueError, match="expected"):
         release.check(checkout)
@@ -45,19 +45,19 @@ def test_mismatched_runtime_cannot_publish(checkout):
 
 def test_auxiliary_distribution_cannot_publish(checkout):
     p = checkout / "pyproject.toml"
-    p.write_text(p.read_text().replace('name = "starplast"', 'name = "starplast-core"'))
+    p.write_text(p.read_text().replace('name = "parascape"', 'name = "parascape-core"'))
     with pytest.raises(ValueError, match="only PyPI project"):
         release.check(checkout)
 
 
-def test_dependency_on_another_starplast_distribution_cannot_publish(checkout):
+def test_dependency_on_another_parascape_distribution_cannot_publish(checkout):
     p = checkout / "pyproject.toml"
-    p.write_text(p.read_text().replace('"numpy>=1.24"', '"starplast-core==0.42.0"'))
-    with pytest.raises(ValueError, match="another Starplast distribution"):
+    p.write_text(p.read_text().replace('"numpy>=1.24"', '"parascape-core==0.42.0"'))
+    with pytest.raises(ValueError, match="another ParaScape distribution"):
         release.check(checkout)
 
 
-@pytest.mark.parametrize("new", ["0.1.0", "0.42.0", "0.43.0;echo bad", "v0.43.0"])
+@pytest.mark.parametrize("new", ["0.0.0.9", "0.0.1.0", "0.43.0;echo bad", "v0.43.0"])
 def test_invalid_bump_leaves_files_untouched(checkout, new):
     before = {p: (checkout / p).read_bytes() for p in release.PROJECTS}
     with pytest.raises(ValueError):
@@ -74,6 +74,18 @@ def test_publishing_rejects_a_consistent_but_older_version(checkout):
     subprocess.run(["git", "checkout", "HEAD~1", "--", "."], cwd=checkout, check=True)
     with pytest.raises(ValueError, match="downgrade"):
         release.changed(previous, checkout)
+
+
+def test_a_different_previous_project_does_not_block_the_first_version(checkout):
+    pyproject = checkout / "pyproject.toml"
+    current = pyproject.read_text(encoding="utf-8")
+    pyproject.write_text(current.replace('name = "parascape"', 'name = "other-project"', 1)
+                         .replace('version = "', 'version = "9', 1), encoding="utf-8")
+    subprocess.run(["git", "-c", "user.name=Test", "-c", "user.email=test@example.invalid",
+                    "commit", "-qam", "other project"], cwd=checkout, check=True)
+    previous = revision(checkout)
+    pyproject.write_text(current, encoding="utf-8")
+    assert release.changed(previous, checkout)
 
 
 def test_only_object_ids_can_be_used_as_previous_revision(checkout):

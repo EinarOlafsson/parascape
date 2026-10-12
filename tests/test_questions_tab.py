@@ -42,17 +42,17 @@ def app():
 
 @pytest.fixture(scope="module")
 def nodes():
-    from starplast import paths
+    from parascape import paths
     return pd.read_parquet(paths.cache_file("nodes.parquet")).sample(
         n=400, random_state=0).reset_index(drop=True)
 
 
 @pytest.fixture
 def panel(app, nodes, tmp_path, monkeypatch):
-    from starplast import questions
+    from parascape import questions
     monkeypatch.setattr(questions, "shipped", lambda *a, **k: list(CATALOGUE))
-    from starplast.analysis_panel import AnalysisPanel
-    from starplast.tuning import EmbeddingStore
+    from parascape.analysis_panel import AnalysisPanel
+    from parascape.tuning import EmbeddingStore
     p = AnalysisPanel(nodes, store=EmbeddingStore(str(tmp_path)))
     yield p
     p.deleteLater()
@@ -99,11 +99,11 @@ def test_checking_a_sound_question_reports_what_closure_removed(panel, monkeypat
 def test_running_a_question_puts_the_genes_in_the_table_and_the_control_beside_them(panel, nodes,
                                                                                    monkeypatch):
     """The whole tab in one test: click run, get genes, and get told whether to believe them."""
-    from starplast import recipes
+    from parascape import recipes
 
     lab = np.arange(len(nodes)) % 3
     lab[::7] = -1
-    monkeypatch.setattr("starplast.clustering.cluster", lambda X, **k: lab[:len(X)])
+    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: lab[:len(X)])
     truth = np.array([None] * len(nodes), dtype=object)
     control = np.array([None] * len(nodes), dtype=object)
     for cl, name in ((0, "pvm"), (1, "cytosol")):
@@ -129,10 +129,10 @@ def test_an_answer_no_control_corroborates_says_so_rather_than_looking_like_one(
                                                                                monkeypatch):
     """An uncorroborated list of genes looks exactly like a corroborated one on screen, and the whole
     argument for having a control is that the difference decides whether to believe the answer."""
-    from starplast import recipes
+    from parascape import recipes
     lab = np.arange(len(nodes)) % 3
     lab[::7] = -1
-    monkeypatch.setattr("starplast.clustering.cluster", lambda X, **k: lab[:len(X)])
+    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: lab[:len(X)])
     truth = np.array([None] * len(nodes), dtype=object)
     for cl, name in ((0, "pvm"), (1, "cytosol")):
         truth[np.where(lab == cl)[0][:40]] = name
@@ -147,7 +147,7 @@ def test_an_answer_no_control_corroborates_says_so_rather_than_looking_like_one(
 
 
 def test_a_degenerate_map_reports_no_answer_rather_than_an_empty_table(panel, monkeypatch):
-    monkeypatch.setattr("starplast.clustering.cluster",
+    monkeypatch.setattr("parascape.clustering.cluster",
                         lambda X, **k: np.zeros(len(X), dtype=int))
     monkeypatch.setattr(panel, "_run", lambda fn, done, **k: done(fn(lambda *a: None)))
     panel.question_choice.setCurrentIndex(0)
@@ -156,10 +156,10 @@ def test_a_degenerate_map_reports_no_answer_rather_than_an_empty_table(panel, mo
 
 
 def test_an_empty_catalogue_says_how_to_generate_one(app, nodes, tmp_path, monkeypatch):
-    from starplast import questions
+    from parascape import questions
     monkeypatch.setattr(questions, "shipped", lambda *a, **k: [])
-    from starplast.analysis_panel import AnalysisPanel
-    from starplast.tuning import EmbeddingStore
+    from parascape.analysis_panel import AnalysisPanel
+    from parascape.tuning import EmbeddingStore
     p = AnalysisPanel(nodes, store=EmbeddingStore(str(tmp_path)))
     assert p.current_question() is None
     assert "generate_question_table" in p.question_detail.toPlainText()
@@ -171,10 +171,10 @@ def test_an_empty_catalogue_says_how_to_generate_one(app, nodes, tmp_path, monke
 def test_an_answer_that_names_nobody_says_how_close_it_came(panel, nodes, monkeypatch):
     """"No genes" and "the best cluster was 1.4x enriched at 0.62 purity" are different findings, and
     only the second tells a reader whether the question failed or the gate did."""
-    from starplast import recipes
+    from parascape import recipes
     lab = np.arange(len(nodes)) % 3
     lab[::7] = -1
-    monkeypatch.setattr("starplast.clustering.cluster", lambda X, **k: lab[:len(X)])
+    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: lab[:len(X)])
     # Every cluster mixed, so nothing reaches any usable purity.
     truth = np.array([None] * len(nodes), dtype=object)
     truth[::2] = "a"
@@ -205,7 +205,7 @@ def test_the_category_sweep_button_runs_the_sweep_and_fills_its_table(panel, mon
                               "tested": 3, "usable": True},
                              {"category": "relational measurements", "best_score": 0.11,
                               "tested": 7, "usable": True}])
-    monkeypatch.setattr("starplast.search.sweep_categories", fake_sweep)
+    monkeypatch.setattr("parascape.search.sweep_categories", fake_sweep)
     monkeypatch.setattr(panel, "_run", lambda fn, done, **k: done(fn(lambda *a: None)))
     panel.run_category_sweep()
     assert swept["hierarchy"] and swept["level"] >= 1
@@ -226,7 +226,7 @@ def test_a_sweep_that_scored_nothing_says_so_rather_than_showing_an_empty_table(
 
 def test_the_sweep_refuses_to_run_with_no_blocks_ticked(panel, monkeypatch):
     monkeypatch.setattr(panel, "spec", lambda: __import__(
-        "starplast.embedding", fromlist=["EmbeddingSpec"]).EmbeddingSpec(blocks=()))
+        "parascape.embedding", fromlist=["EmbeddingSpec"]).EmbeddingSpec(blocks=()))
     called = []
     monkeypatch.setattr(panel, "_run", lambda *a, **k: called.append(1))
     panel.run_category_sweep()

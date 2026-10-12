@@ -10,7 +10,7 @@ import pytest
 
 from scripts import freeze_pf_functional_ec_controls as C, freeze_pf_functional_ec_knn as K
 from scripts import freeze_pf_functional_ec_forest as RF
-from starplast import datasets as D, functional_exclusions as E, functional_ontology as F
+from parascape import datasets as D, functional_exclusions as E, functional_ontology as F
 
 
 def fixture(monkeypatch):
@@ -111,7 +111,7 @@ def test_unavailable_features_retain_null_scores_and_every_abstention(monkeypatc
 
 @pytest.mark.parametrize('available', [True, False])
 def test_exact_shared_artifact_factory_restores_native_strategy_and_controls(monkeypatch, tmp_path, available):
-    from starplast import artifacts as A, capabilities as Cap
+    from parascape import artifacts as A, capabilities as Cap
     _, packet, _, _, _, _ = fixture(monkeypatch)
     dependencies = tuple(A.Dependency(kind, kind, 'a' * 64) for kind in ('code', 'table', 'truth', 'exclusions', 'model')) + (
         A.Dependency('split', 'prepared', packet['split'].identity),)

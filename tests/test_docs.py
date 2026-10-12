@@ -26,12 +26,12 @@ def test_every_module_carries_a_docstring():
     import importlib
     import pkgutil
 
-    import starplast
+    import parascape
     missing = []
-    for m in pkgutil.iter_modules(starplast.__path__):
+    for m in pkgutil.iter_modules(parascape.__path__):
         if m.name.startswith("_"):
             continue
-        mod = importlib.import_module(f"starplast.{m.name}")
+        mod = importlib.import_module(f"parascape.{m.name}")
         if not (mod.__doc__ or "").strip():
             missing.append(m.name)
     assert not missing, f"modules with no docstring: {missing}"
@@ -42,12 +42,12 @@ def test_module_docstrings_say_why_rather_than_only_what():
     import importlib
     import pkgutil
 
-    import starplast
+    import parascape
     thin = []
-    for m in pkgutil.iter_modules(starplast.__path__):
+    for m in pkgutil.iter_modules(parascape.__path__):
         if m.name.startswith("_"):
             continue
-        doc = (importlib.import_module(f"starplast.{m.name}").__doc__ or "")
+        doc = (importlib.import_module(f"parascape.{m.name}").__doc__ or "")
         if len(doc.split()) < 40:
             thin.append((m.name, len(doc.split())))
     assert not thin, f"modules whose docstring explains nothing: {thin}"
@@ -58,10 +58,10 @@ def test_the_api_reference_builds(tmp_path):
     """pdoc imports every module, so this fails on anything that cannot be imported headlessly."""
     env = dict(os.environ, QT_QPA_PLATFORM="offscreen", PYQTGRAPH_QT_LIB="PyQt6")
     r = subprocess.run([sys.executable, "-m", "pdoc", "--output-directory", str(tmp_path),
-                        "--no-search", "--docformat", "markdown", "starplast"],
+                        "--no-search", "--docformat", "markdown", "parascape"],
                        cwd=ROOT, capture_output=True, env=env, timeout=600)
     assert r.returncode == 0, r.stderr.decode()[-2000:]
-    produced = os.listdir(os.path.join(tmp_path, "starplast"))
+    produced = os.listdir(os.path.join(tmp_path, "parascape"))
     assert len(produced) > 20, produced
 
 

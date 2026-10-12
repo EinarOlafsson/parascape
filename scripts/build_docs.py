@@ -31,8 +31,8 @@ def main():
     env = dict(os.environ, QT_QPA_PLATFORM="offscreen", PYQTGRAPH_QT_LIB="PyQt6")
     subprocess.run([sys.executable, "-m", "pdoc", "--output-directory", str(output / "api"),
                     "--docformat", "markdown", "--no-show-source",
-                    "--edit-url", "starplast=https://github.com/EinarOlafsson/starplast/blob/main/starplast/",
-                    "starplast"],
+                    "--edit-url", "parascape=https://github.com/EinarOlafsson/parascape/blob/main/parascape/",
+                    "parascape"],
                    cwd=ROOT, env=env, check=True)
     shutil.copytree(ROOT / "docs" / "assets", output / "assets", dirs_exist_ok=True)
     shutil.copytree(ROOT / "docs" / "screenshots", output / "screenshots", dirs_exist_ok=True)
@@ -41,7 +41,7 @@ def main():
     # scripts/tutorial_video.py and committed; without this they exist only in the repository.
     if (ROOT / "docs" / "tutorial").is_dir():
         shutil.copytree(ROOT / "docs" / "tutorial", output / "tutorial", dirs_exist_ok=True)
-    shutil.copy2(ROOT / "starplast/data/icons/starplast.svg", output / "assets/icon.svg")
+    shutil.copy2(ROOT / "parascape/data/icons/parascape.svg", output / "assets/icon.svg")
     css = '''body{margin:0;background:#f6f8fa;color:#192c3e;font:17px/1.65 system-ui,sans-serif}
     main{max-width:980px;margin:auto;padding:32px}nav{display:flex;gap:20px;flex-wrap:wrap}
     nav a{font-weight:600}a{color:#066b72}h1,h2,h3{line-height:1.2;color:#102a43}
@@ -57,7 +57,7 @@ def main():
         text = re.sub(r'\]\((?:docs/)?([\w.-]+)\.md(#[^)]*)?\)',
                       lambda m: ("](" + ((m[1] if m[1] != "CHANGELOG" else "changelog") + ".html"
                                  if m[1] in {*PAGES, "CHANGELOG"}
-                                 else "https://github.com/EinarOlafsson/starplast/blob/main/" + m[1] + ".md")
+                                 else "https://github.com/EinarOlafsson/parascape/blob/main/" + m[1] + ".md")
                                  + (m[2] or "") + ")"),
                       text)
         text = text.replace("](docs/assets/", "](assets/")
@@ -65,13 +65,13 @@ def main():
         title = html.escape(text.splitlines()[0].lstrip("# "))
         rendered = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title} · Starplast</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<title>{title} · ParaScape</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css"></head><body><main>
-<nav aria-label="Main"><a href="index.html">Starplast</a><a href="guide.html">Guide</a>
+<nav aria-label="Main"><a href="index.html">ParaScape</a><a href="guide.html">Guide</a>
 <a href="API.html">API</a><a href="tutorial/index.html">Tutorials</a>
 <a href="datasets.html">Datasets</a><a href="changelog.html">Changes</a>
-<a href="https://github.com/EinarOlafsson/starplast">GitHub</a></nav>
-{body}<footer>Starplast · Einar Olafsson</footer></main></body></html>'''
+<a href="https://github.com/EinarOlafsson/parascape">GitHub</a></nav>
+{body}<footer>ParaScape · Einar Olafsson</footer></main></body></html>'''
         (output / f"{page}.html").write_text(rendered, encoding="utf-8")
     print(f"Documentation: {output / 'index.html'}")
 

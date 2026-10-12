@@ -12,7 +12,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 
-from starplast import organisms as _ORGANISMS
+from parascape import organisms as _ORGANISMS
 
 
 def sha(path):
@@ -22,8 +22,8 @@ def sha(path):
 def package(source,output,strategy='feature_knn'):
     import pandas as pd
     from scripts import freeze_pf_functional_ec_knn as K
-    from starplast import artifacts as A,functional_results as F,strategies as S
-    from starplast.splits import read_split
+    from parascape import artifacts as A,functional_results as F,strategies as S
+    from parascape.splits import read_split
     if strategy=='feature_knn':method=K
     elif strategy=='random_forest':
         from scripts import freeze_pf_functional_ec_forest as method
@@ -104,7 +104,7 @@ def main():
     parser.add_argument('--strategy',choices=('feature_knn','random_forest'),default='feature_knn')
     args=parser.parse_args();args.out.mkdir(parents=True,exist_ok=False)
     (args.out/'code').mkdir()
-    for path in (Path(__file__),ROOT/'starplast/functional_results.py',ROOT/'tests/test_functional_native_ec_reader.py'):
+    for path in (Path(__file__),ROOT/'parascape/functional_results.py',ROOT/'tests/test_functional_native_ec_reader.py'):
         shutil.copyfile(path,args.out/'code'/path.name)
     nb=ExecutedNotebook('Independent Pf EC receipt, population and reader acceptance')
     nb.ns.update(package=package,source=args.source,output=args.out,strategy=args.strategy)

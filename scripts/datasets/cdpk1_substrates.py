@@ -9,7 +9,7 @@ Thiophosphorylated peptides per gene from analog-sensitive CDPK1
     PMID         : 37933960
     accession    : eLife 85654 supplementary file 6
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10629828/supplementaryFiles
-    local path   : starplast/data/cdpk1_substrates.tsv
+    local path   : parascape/data/cdpk1_substrates.tsv
 
 Quirks that cost time once:
     The enriched fraction only, one gene per peptide from the master accession the search engine
@@ -22,7 +22,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/cdpk1_substrates.py

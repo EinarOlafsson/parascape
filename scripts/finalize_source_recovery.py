@@ -16,8 +16,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import datasets as D  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import datasets as D  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 
 
 def _sha(path):
@@ -91,7 +91,7 @@ def finalize(prior, publisher_review, output):
     inputs = [Path(__file__), prior / "manifest.json", prior / "source_locations.json", prior / "bindings.json", prior / "containers.json",
               publisher_review / "equivalence.json", publisher_review / "table_review.json", publisher_review / "manifest.json",
               publisher_review / "equivalence_manifest.json",
-              publications, ROOT / "starplast/datasets.py", ROOT / "starplast/host.py"]
+              publications, ROOT / "parascape/datasets.py", ROOT / "parascape/host.py"]
     (output / "manifest.json").write_text(json.dumps({"created_utc": datetime.now(timezone.utc).isoformat(), "summary": summary,
         "input_sha256": {str(path): _sha(path) for path in inputs}, "source_alias_sha256": file.sha256,
         "outputs": {name: _sha(output / name) for name in ("source_locations.json", "bindings.json", "containers.json")}}, indent=2) + "\n")

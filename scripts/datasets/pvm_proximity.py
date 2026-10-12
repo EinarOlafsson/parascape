@@ -9,7 +9,7 @@ Whether the study placed this protein at the parasitophorous vacuole membrane
     PMID         : 34749525
     accession    : mBio 00260-21 Data Set S1
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8576527/supplementaryFiles
-    local path   : starplast/data/pvm_proximity.tsv
+    local path   : parascape/data/pvm_proximity.tsv
 
 Quirks that cost time once:
     One of the few binaries in the map with REAL zeros: the study publishes a likely-negative
@@ -21,7 +21,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/pvm_proximity.py

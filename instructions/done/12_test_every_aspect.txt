@@ -8,7 +8,7 @@ STATE
     They cluster exactly where testing is awkward: the fetchers, the build,
     the app's interactive paths, and the long analysis walks.
 
-    Measure it first. `pytest --cov=starplast --cov-report=term-missing` and
+    Measure it first. `pytest --cov=parascape --cov-report=term-missing` and
     write the per-module numbers into this file before starting, so the work
     is against a number rather than a feeling.
 
@@ -138,7 +138,7 @@ DONE -- 2026-08-12. 100% ON EVERY MODULE, AND 19 REAL BUGS.
 Not one `# pragma: no cover`. Where a line genuinely could not be executed it
 was deleted rather than excused: `interactions._num` was dead code, and app.py's
 `if __name__ == "__main__"` guard was a third entry point nothing documents --
-the console script and starplast/__main__.py already cover it and are both
+the console script and parascape/__main__.py already cover it and are both
 tested.
 
 WHAT THE TESTS FOUND
@@ -192,7 +192,7 @@ HOW THE HARD MODULES WERE DONE
     committed.
 
     build_graph gets a synthetic tree and one test that runs
-    `python -m starplast.build_graph` for real over sixty genes, which also
+    `python -m parascape.build_graph` for real over sixty genes, which also
     proves the resolver works for a fresh process rather than only for this one.
 
     The GUI runs headless against the real cache, asserting on the item list and

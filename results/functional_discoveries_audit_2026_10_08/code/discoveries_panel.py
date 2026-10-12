@@ -567,7 +567,7 @@ def install(window) -> DiscoveriesPanel | None:
         hit = ids[ids == gene_id]
         if len(hit):
             window.show_detail(int(hit.index[0]))
-        window._detail_link(QtCore.QUrl(f"starplast://claim/{gene_id}/{target}"))
+        window._detail_link(QtCore.QUrl(f"parascape://claim/{gene_id}/{target}"))
         window.right_dock.raise_()
 
     panel.claim_chosen.connect(show_claim)
@@ -575,8 +575,8 @@ def install(window) -> DiscoveriesPanel | None:
     def show_record(target,label):
         """Open the existing scorecard without reinterpreting its truth source or test scope."""
         from urllib.parse import quote
-        address = (f"starplast://class/{quote(target,safe='')}/{quote(label,safe='')}" if label
-            else f"starplast://target/{quote(target,safe='')}")
+        address = (f"parascape://class/{quote(target,safe='')}/{quote(label,safe='')}" if label
+            else f"parascape://target/{quote(target,safe='')}")
         window._detail_link(QtCore.QUrl(address))
         window.right_dock.raise_()
     panel.record_chosen.connect(show_record)

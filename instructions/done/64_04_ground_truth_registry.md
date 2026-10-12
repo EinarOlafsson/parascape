@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.01, 64.03 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/scorecard.py`, `starplast/calibration.py`, `starplast/track_record.py`, `starplast/datasets.py`, `starplast/search.py` |
+| Existing code to inspect | `parascape/scorecard.py`, `parascape/calibration.py`, `parascape/track_record.py`, `parascape/datasets.py`, `parascape/search.py` |
 
 ## Deliverable
 
@@ -40,7 +40,7 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Completion evidence
 
-Schema 1 in `starplast/ground_truth.py` pins truth snapshots, source IDs, entity
+Schema 1 in `parascape/ground_truth.py` pins truth snapshots, source IDs, entity
 universes, ordered eligibility, evidence-grade basis, context, units, exclusions,
 negative semantics and admission gaps. Duplicate addresses, cross-species/task
 references, altered files, reordered cohorts and invalid masks are refused.

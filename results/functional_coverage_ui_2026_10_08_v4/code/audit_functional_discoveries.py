@@ -10,7 +10,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import pandas as pd
-from starplast import claims as C, discovery_labels as D, functional_results as F, organisms as O, strategies as S, track_record as T
+from parascape import claims as C, discovery_labels as D, functional_results as F, organisms as O, strategies as S, track_record as T
 from scripts.audit_discovery_labels import _source_pairs
 
 
@@ -20,7 +20,7 @@ def _sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def audit(output):
     """Verify unchanged sources, complete memberships and actual per-class recovery views."""
     from PyQt6 import QtWidgets
-    from starplast.discoveries_panel import DiscoveriesPanel
+    from parascape.discoveries_panel import DiscoveriesPanel
     output = Path(output)
     if output.exists():raise ValueError('Use a new immutable functional UI audit directory')
     output.mkdir(parents=True)
@@ -28,8 +28,8 @@ def audit(output):
     for path,digest in old['input_sha256'].items():
         if Path(path).suffix=='.parquet':assert _sha(path)==digest,path
     code = [Path(__file__),ROOT/'scripts/audit_discovery_labels.py',
-        *(ROOT/'starplast'/name for name in ('discovery_labels.py','discoveries_panel.py','functional_domains.py','functional_results.py'))]
-    inputs = [ROOT/'starplast/data'/name for name in ('nodes.parquet','pf_nodes.parquet','claims.parquet',
+        *(ROOT/'parascape'/name for name in ('discovery_labels.py','discoveries_panel.py','functional_domains.py','functional_results.py'))]
+    inputs = [ROOT/'parascape/data'/name for name in ('nodes.parquet','pf_nodes.parquet','claims.parquet',
         'claim_recipes.parquet','track_record.parquet','functional_domain_names.json','functional_results.json')]+code
     hashes = {str(path):_sha(path) for path in inputs}
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])

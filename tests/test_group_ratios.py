@@ -2,7 +2,7 @@
 import numpy as np
 import pytest
 
-from starplast import group_ratios as G
+from parascape import group_ratios as G
 
 
 def fixture():
@@ -63,8 +63,8 @@ def test_unresolved_or_invalid_inputs_are_refused(mutation):
 def test_real_paired_card_preserves_point_estimates_and_refuses_changed_intervals():
     from copy import deepcopy
     import json
-    from starplast import functional_agreement as A, functional_results as F
-    from starplast.scorecard_view import export_scorecard, render_scorecard_html
+    from parascape import functional_agreement as A, functional_results as F
+    from parascape.scorecard_view import export_scorecard, render_scorecard_html
     benchmarks, reason = F.shipped('Pf'); assert not reason
     pair = tuple(next(b for b in benchmarks if b.metadata['strategy'] == strategy)
                  for strategy in ('feature_knn', 'random_forest'))

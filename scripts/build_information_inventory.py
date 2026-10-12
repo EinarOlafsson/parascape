@@ -19,8 +19,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import datasets as D, organisms as O, paths, slots  # noqa: E402
-from starplast.inventory import build_inventory  # noqa: E402
+from parascape import datasets as D, organisms as O, paths, slots  # noqa: E402
+from parascape.inventory import build_inventory  # noqa: E402
 
 
 def _hash(path):
@@ -37,7 +37,7 @@ def write_snapshot(output: Path) -> pd.DataFrame:
 
     if output.exists():
         raise ValueError("Use a new output directory; existing snapshots are immutable")
-    inputs = [ROOT / "starplast" / filename for filename in
+    inputs = [ROOT / "parascape" / filename for filename in
               ("datasets.py", "inventory.py", "organisms.py", "slots.py", "evidence.py", "source_refusals.py", "data/slots.json")]
     inputs += [Path(__file__), ROOT / "scripts/generate_slot_table.py"]
     tables, bridges, graph_paths, row_counts = {}, {}, {}, {}
@@ -69,9 +69,9 @@ def write_snapshot(output: Path) -> pd.DataFrame:
         inputs.append(metabolites)
         row_counts[metabolites.name] = len(frame)
     raw_paths = {d.key: D.local_path(d.key) for d in D.REGISTRY
-                 if d.path and not d.path.startswith('starplast/data/')}
+                 if d.path and not d.path.startswith('parascape/data/')}
     processed_paths = {d.key: D.local_path(d.key) for d in D.REGISTRY
-                       if d.path and d.path.startswith('starplast/data/')}
+                       if d.path and d.path.startswith('parascape/data/')}
     slot_map = {s.organism + "_" + s.name: s for s in slots.all_slots()}
     refusals = []
     for (question, accession), reason in sorted(REFUSED_CANDIDATES.items()):

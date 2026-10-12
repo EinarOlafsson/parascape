@@ -6,7 +6,7 @@ import os
 import pandas as pd
 import pytest
 
-from starplast import questions as Q
+from parascape import questions as Q
 
 RNA = ["biology", ["gene expression", "RNA abundance"]]
 FITNESS = ["biology", ["parasite phenotype", "fitness and essentiality"]]
@@ -16,7 +16,7 @@ LOCALIZATION = ["biology", ["cell organization", "localization and topology"]]
 @pytest.fixture(scope="module")
 def nodes():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(root, "starplast", "data", "nodes.parquet")
+    path = os.path.join(root, "parascape", "data", "nodes.parquet")
     if not os.path.exists(path):
         pytest.skip("built node table not present")
     return pd.read_parquet(path).sample(n=400, random_state=0).reset_index(drop=True)

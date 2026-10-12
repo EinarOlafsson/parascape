@@ -12,7 +12,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import claims as C  # noqa: E402
+from parascape import claims as C  # noqa: E402
 
 
 def _ledger(truth, calls: dict, support=None, folds=5):
@@ -117,7 +117,7 @@ def test_discoveries_respect_their_thresholds(shipped):
 def test_a_gene_card_shows_its_claims_and_opens_one(shipped):
     from PyQt6 import QtCore, QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast import app as A
+    from parascape import app as A
     w = A.Window()
     try:
         d = C.discoveries("Tg")
@@ -127,8 +127,8 @@ def test_a_gene_card_shows_its_claims_and_opens_one(shipped):
         row = int(ids[ids == str(d["gene_id"].iloc[0])].index[0])
         w.show_detail(row)
         html = w.detail.toHtml()
-        assert "What Starplast claims" in html and "starplast://claim/" in html
-        link = "starplast://claim/" + html.split("starplast://claim/", 1)[1].split('"', 1)[0]
+        assert "What ParaScape claims" in html and "parascape://claim/" in html
+        link = "parascape://claim/" + html.split("parascape://claim/", 1)[1].split('"', 1)[0]
         w._detail_link(QtCore.QUrl(link))
         shown = w.detail.toHtml()
         assert "Independent checks" in shown and "back to the gene" in shown
@@ -139,7 +139,7 @@ def test_a_gene_card_shows_its_claims_and_opens_one(shipped):
 def test_the_discoveries_tab_filters_opens_a_claim_and_colours_the_map(shipped, tmp_path):
     from PyQt6 import QtCore, QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast import app as A
+    from parascape import app as A
     w = A.Window()
     try:
         panel = w.discoveries
@@ -178,8 +178,8 @@ def test_the_discoveries_tab_filters_opens_a_claim_and_colours_the_map(shipped, 
 def test_start_here_leads_to_the_discoveries(shipped):
     from PyQt6 import QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
-    from starplast import app as A
-    from starplast import guided as G
+    from parascape import app as A
+    from parascape import guided as G
     w = A.Window()
     try:
         panel = w.guided

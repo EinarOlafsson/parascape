@@ -39,8 +39,8 @@ one optional pdoc documentation module skipped locally. Item 64.10 is still open
 other missing adapters, the logistic variant, full outer coverage and biological
 source admission are pending.
 
-Held-out artifact: `ce629ecf4177dc01c6af04e789dfdd53c1aa206caaa45c5db4420f226f1db917`.
-Base model: `806bb3df0c83834eb8960e99b95b8a5df4acc1b5341f559b7b8461d219ef0683`.
-Calibration: `ea882dbc3a32e17b7d53430e1e4e4f4f8e90ca4bac7b2d0d7ca987457565af2b`.
+Held-out artifact: `c6b0573167016290eda08e94d1e4c98d9af28cf6ddf551fdad87be99936183c5`.
+Base model: `3413c580d41747d65d612c8e0e7354498f8113400e40a0e65eee228c2f385b2f`.
+Calibration: `41ab6e8c24e68bfafeeb6dc3d1380d818eba8816307fa5c07f488529467ba924`.
 
 This is the initial prototype, superseded by `../conformal_label_pilot_2026_10_08_v2/` for post-load payload identity enforcement. Its executed verification and exact original code are retained.

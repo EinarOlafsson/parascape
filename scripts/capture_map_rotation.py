@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture a seamless rotation of the bundled map using Starplast's OpenGL view.
+"""Capture a seamless rotation of the bundled map using ParaScape's OpenGL view.
 
 Requires the application dependencies, an X server, and ffmpeg. For example::
 
@@ -40,14 +40,14 @@ def main() -> None:
     from PyQt6 import QtCore, QtGui, QtWidgets
     import numpy as np
 
-    with tempfile.TemporaryDirectory(prefix="starplast-map-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="parascape-map-") as temporary:
         state = Path(temporary)
-        os.environ["STARPLAST_STATE"] = str(state / "state")
+        os.environ["PARASCAPE_STATE"] = str(state / "state")
         os.environ["XDG_CACHE_HOME"] = str(state / "cache")
         QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
         QtCore.QSettings.setPath(QtCore.QSettings.Format.IniFormat,
                                 QtCore.QSettings.Scope.UserScope, str(state))
-        from starplast.app import Window
+        from parascape.app import Window
 
         app = QtWidgets.QApplication([])
         window = Window(species="Toxoplasma gondii")

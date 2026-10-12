@@ -16,14 +16,14 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import search as SE
-from starplast.embedding import EmbeddingSpec, columns_for
+from parascape import search as SE
+from parascape.embedding import EmbeddingSpec, columns_for
 
 
 @pytest.fixture(scope="module")
 def nodes():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(root, "starplast", "data", "nodes.parquet")
+    path = os.path.join(root, "parascape", "data", "nodes.parquet")
     if not os.path.exists(path):
         pytest.skip("built node table not present")
     return pd.read_parquet(path).sample(n=400, random_state=0).reset_index(drop=True)
@@ -53,7 +53,7 @@ def test_the_sweep_never_hands_the_battery_a_column_that_is_both_held_out_and_us
     """Asserted PER CATEGORY rather than once. `battery` marks anything the map saw as used or
     derived so only held_out counts as evidence -- but if the sweep passes a column in both lists,
     the row is scored as evidence for a feature the map was built from."""
-    from starplast.embedding import SLOT_BLOCKS
+    from parascape.embedding import SLOT_BLOCKS
     usable = [b for b in SLOT_BLOCKS if columns_for(nodes, EmbeddingSpec(blocks=(b,))).get(b)]
     chosen = []
     for _path, blocks in SE.categories_at("evidence", 1, "Tg"):
@@ -87,7 +87,7 @@ def test_labels_and_truth_stay_aligned_after_every_missing_value_policy(nodes, p
     """A policy that drops genes changes WHICH GENES the labels describe. Scoring a subset against
     the full table silently aligns cluster 3 with the wrong genes -- and every number downstream
     still looks reasonable."""
-    from starplast.embedding import NA_POLICIES, embed
+    from parascape.embedding import NA_POLICIES, embed
     if policy not in NA_POLICIES:
         pytest.skip(f"{policy} is not a policy this build offers")
     spec = EmbeddingSpec(blocks=("Tg_fitness_hff_in_vitro", "Tg_protein_abundance_tachyzoite"),
@@ -124,7 +124,7 @@ def test_no_slot_carries_another_organisms_life_cycle_stage():
     this is the invariant that would have caught it."""
     import re
 
-    from starplast import slots
+    from parascape import slots
     PF_ONLY = {"ring", "trophozoite", "schizont", "ookinete", "gametocyte"}
     TG_ONLY = {"tachyzoite", "bradyzoite"}
     for organism, forbidden in (("Tg", PF_ONLY), ("Pf", TG_ONLY)):

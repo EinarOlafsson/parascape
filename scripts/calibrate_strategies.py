@@ -40,7 +40,7 @@ sys.path.insert(0, ROOT)
 #: Seeds per configuration. Five gives a usable interval without a sweep of days.
 SEEDS = (1, 2, 3, 4, 5)
 
-from starplast import organisms as _organisms  # noqa: E402
+from parascape import organisms as _organisms  # noqa: E402
 
 #: Held-out labels and predicted measurements per space, as the organism registry declares them:
 #: on T. gondii the coarse and fine localization, a structural class, a phenotype screen and a
@@ -120,21 +120,21 @@ def _expand(values, organism, ctx):
     if values == "LINK_TARGETS":
         # Contact layers only: strategy 16 refuses correlation, derived, annotation and literature
         # layers as targets, each for a measured reason (`strategy_catalog._link_target`).
-        from starplast import graphspace, strategy_catalog
+        from parascape import graphspace, strategy_catalog
         return [l for l in graphspace.Evidence(ctx).targets()
                 if l not in strategy_catalog.LINK_CORRELATION_LAYERS]
     if values == "GRAPH_TARGETS":
         # Only the layers the graph space can hold out and ask back: literature layers are never
         # sources, annotation layers are never targets, and a layer too thin to split is neither.
         # Sweeping every layer put 1,000 refusals into the calibration as if they were results.
-        from starplast import graphspace
+        from parascape import graphspace
         return list(graphspace.Evidence(ctx).targets())
     return list(values)
 
 
 def configurations(organism: str, ctx, only=None) -> list:
     """Every (strategy, settings, seed) of the sweep for one organism, in a stable order."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     out = []
     for s in S.catalog():
         if only and s.key not in only:
@@ -163,7 +163,7 @@ _CTX: dict = {}
 
 def _context(organism: str, seed: int):
     """One shipped context per organism per worker, re-seeded per run, caches kept."""
-    from starplast import strategies as S
+    from parascape import strategies as S
     base = _CTX.get(organism)
     if base is None:
         base = S.Context.shipped(organism)
@@ -177,7 +177,7 @@ def run_one(cfg: dict) -> dict:
     """Run one configuration's self-test and return its record. Failures are records too."""
     import warnings
     warnings.filterwarnings("ignore")
-    from starplast import strategies as S
+    from parascape import strategies as S
     t0 = time.monotonic()
     rec = {"id": config_id(cfg), **cfg}
     try:
@@ -267,7 +267,7 @@ def sweep(out_dir: str, workers: int, organisms, only=None, log=print, job_gb: f
     import collections
     import multiprocessing as mp
     import queue as _queue
-    from starplast import strategies as S
+    from parascape import strategies as S
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "runs.jsonl")
     done, est = set(), {}
@@ -439,7 +439,7 @@ def summarize(out_dir: str, log=print) -> dict:
     """runs.jsonl -> summary, best, defaults and sensitivity tables."""
     import numpy as np
     import pandas as pd
-    from starplast import strategies as S
+    from parascape import strategies as S
     rows = [json.loads(line) for line in open(os.path.join(out_dir, "runs.jsonl")) if line.strip()]
     df = pd.DataFrame(rows)
     df["settings_key"] = df["settings"].map(lambda d: json.dumps(d, sort_keys=True))
@@ -504,8 +504,8 @@ SCORECARD_END = "<!-- scorecards:end -->"
 
 def _default_settings(org: str) -> dict:
     """(org, strategy) -> the JSON of its default setting over the swept parameters."""
-    from starplast import calibration as C
-    from starplast import strategies as S
+    from parascape import calibration as C
+    from parascape import strategies as S
     ctx = S.Context.shipped(org)
     out = {}
     for s in S.catalog():
@@ -538,17 +538,17 @@ def _match_default(runs, defaults: dict) -> dict:
 
 def _published_spaces(summary):
     """Names for every published organism, including results from an older registry."""
-    from starplast import organisms
+    from parascape import organisms
     return [(code, organisms.SPACES[code].species if code in organisms.SPACES else code)
             for code in summary]
 
 
 def publish(out_dir: str, log=print, readme: str | None = None,
             doc: str | None = None) -> dict:
-    """runs.jsonl -> starplast/data/strategy_calibration.json, the README table, the doc page."""
+    """runs.jsonl -> parascape/data/strategy_calibration.json, the README table, the doc page."""
     import pandas as pd
-    from starplast import calibration as C
-    from starplast import strategies as S
+    from parascape import calibration as C
+    from parascape import strategies as S
     rows = [json.loads(l) for l in open(os.path.join(out_dir, "runs.jsonl")) if l.strip()]
     runs = C.runs_frame(rows)
     defaults = {}
@@ -559,7 +559,7 @@ def publish(out_dir: str, log=print, readme: str | None = None,
             "run_dir": os.path.relpath(out_dir, ROOT), "seeds": list(SEEDS),
             "targets": {o: list(t) for o, t in TARGETS.items()},
             "numbers": {o: list(t) for o, t in NUMBERS.items()},
-            "method": "starplast.calibration: skill = (observed - chance)/(1 - chance); "
+            "method": "parascape.calibration: skill = (observed - chance)/(1 - chance); "
                       "tuned setting chosen on seeds 1-3, reported on seeds 4-5; 95% CI by "
                       "two-stage bootstrap over targets then runs"}
     path = C.write(summary, meta=meta)
@@ -626,10 +626,10 @@ def publish(out_dir: str, log=print, readme: str | None = None,
 
 def scorecards_doc(meta: dict) -> str:
     """The scorecard page: every metric and technique explained, every strategy's card."""
-    from starplast import calibration as C
-    from starplast import scorecard as SC
-    from starplast import strategies as S
-    from starplast import techniques as TQ
+    from parascape import calibration as C
+    from parascape import scorecard as SC
+    from parascape import strategies as S
+    from parascape import techniques as TQ
     one = lambda x: str(x).replace("|", "/").replace("\n", " ")
     out = ["# Strategy scorecards", "",
            f"Generated by `scripts/calibrate_strategies.py --publish` on {meta.get('date', '')} "
@@ -681,7 +681,7 @@ def scorecards_doc(meta: dict) -> str:
 
 def calibration_doc(summary: dict, meta: dict) -> str:
     """The long page: per strategy, what was hidden, every target, every setting."""
-    from starplast import strategies as S
+    from parascape import strategies as S
 
     def cell(c):
         if not c or c.get("skill") is None:
@@ -740,7 +740,7 @@ def calibration_doc(summary: dict, meta: dict) -> str:
             for label, c in (("at defaults", d), ("tuned", t)):
                 if not c:
                     continue
-                from starplast.calibration import setting_text
+                from parascape.calibration import setting_text
                 setting = setting_text(c.get("setting") or {}) if c.get("setting") else ""
                 pr = c.get("pass_rate")
                 out.append(f"| {label} | {setting or '--'} | {cell(c)} | "
@@ -796,7 +796,7 @@ def main(argv=None, log=print) -> int:
         return 0
     orgs = args.organism or ["Tg", "Pf"]
     if args.count:
-        from starplast import strategies as S
+        from parascape import strategies as S
         for org in orgs:
             cfgs = configurations(org, S.Context.shipped(org), only)
             log(f"{org}: {len(cfgs):,} runs ({len(cfgs) // len(SEEDS):,} configurations x "

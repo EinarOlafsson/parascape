@@ -18,8 +18,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import clustering as CL  # noqa: E402
-from starplast.clustering import NOISE  # noqa: E402
+from parascape import clustering as CL  # noqa: E402
+from parascape.clustering import NOISE  # noqa: E402
 
 
 def _blobs(n=180, sep=6.0, seed=0):
@@ -127,8 +127,8 @@ def test_large_clusterings_try_the_gpu_first(monkeypatch, algorithm, resolver, k
         def fit_predict(self, X):
             return np.arange(len(X)) % 3
 
-    monkeypatch.setattr(f"starplast.gpu.{resolver}", lambda: Fake)
-    monkeypatch.setattr("starplast.gpu.backend", lambda: {algorithm: "fake GPU"})
+    monkeypatch.setattr(f"parascape.gpu.{resolver}", lambda: Fake)
+    monkeypatch.setattr("parascape.gpu.backend", lambda: {algorithm: "fake GPU"})
     labels = CL.cluster(np.zeros((1000, 3)), algorithm=algorithm, **kwargs)
     assert len(labels) == 1000 and len(set(labels)) == 3 and seen
 
@@ -143,7 +143,7 @@ def test_failed_gpu_clusterings_fall_back_to_cpu(monkeypatch, algorithm, resolve
         def fit_predict(self, _X):
             raise RuntimeError("device full")
 
-    monkeypatch.setattr(f"starplast.gpu.{resolver}", lambda: Broken)
+    monkeypatch.setattr(f"parascape.gpu.{resolver}", lambda: Broken)
     messages = []
 
     class Log:
@@ -156,7 +156,7 @@ def test_failed_gpu_clusterings_fall_back_to_cpu(monkeypatch, algorithm, resolve
         def warning(self, message, *args):
             messages.append(message % args)
 
-    monkeypatch.setattr("starplast.logging_util.get_logger", lambda _name: Log())
+    monkeypatch.setattr("parascape.logging_util.get_logger", lambda _name: Log())
     labels = CL.cluster(_blobs(1000), algorithm=algorithm, n_clusters=2, eps=1.0)
     assert len(labels) == 1000
     assert any("using the CPU" in message for message in messages)
@@ -383,7 +383,7 @@ def test_a_silhouette_that_cannot_be_computed_is_omitted_not_faked(monkeypatch):
 
 
 def test_cramers_v_declines_a_table_scipy_rejects(monkeypatch):
-    import starplast.clustering as mod
+    import parascape.clustering as mod
 
     def boom(*a, **k):
         raise ValueError("bad table")

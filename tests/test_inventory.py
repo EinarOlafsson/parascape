@@ -5,9 +5,9 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import datasets as D, organisms as O, slots as S
-from starplast.evidence import Observation
-from starplast.inventory import build_inventory
+from parascape import datasets as D, organisms as O, slots as S
+from parascape.evidence import Observation
+from parascape.inventory import build_inventory
 
 
 def _source(key="synthetic", columns=("value",), **kwargs):
@@ -65,7 +65,7 @@ def test_context_and_evidence_facets_come_from_the_existing_slot_matcher():
 
 
 def test_source_only_host_protein_and_metabolite_storage_units_stay_distinct():
-    host_source = _source("host", path="starplast/data/" + O.HOST_TABLES[O.HUMAN])
+    host_source = _source("host", path="parascape/data/" + O.HOST_TABLES[O.HUMAN])
     metabolite = S.Slot(O.TOXOPLASMA, "metabolite", "translation", "culture", "metabolite",
                         ("value",), "one")
     hosts = build_inventory({(O.HUMAN, "protein"): pd.DataFrame({"value": [1., 2.]})},

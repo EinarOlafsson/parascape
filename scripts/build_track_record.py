@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the shipped track record: every labelled gene held out, for every strategy that can say.
 
-Writes `starplast/data/track_record.parquet`: one row per (strategy, held-out gene) for the default
+Writes `parascape/data/track_record.parquet`: one row per (strategy, held-out gene) for the default
 label of each organism, plus the set hold-outs (one per class, and a random-size degradation curve).
 Those are what the application reads to answer, for one gene, "could this software have told me what
 I already know?".
@@ -29,11 +29,11 @@ import pandas as pd
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from starplast import organisms as O  # noqa: E402
-from starplast import strategies as S  # noqa: E402
-from starplast import track_record as T  # noqa: E402
+from parascape import organisms as O  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape import track_record as T  # noqa: E402
 
-OUT = os.path.join(ROOT, "starplast", "data", "track_record.parquet")
+OUT = os.path.join(ROOT, "parascape", "data", "track_record.parquet")
 
 #: Sizes for the degradation curve: one gene alone is the easiest case there is, five hundred hidden
 #: together is the case a real screen presents.

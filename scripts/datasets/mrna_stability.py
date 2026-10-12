@@ -9,7 +9,7 @@ Proportion of transcript remaining after five hours of transcription block
     PMID         : 39899594
     accession    : PLoS Pathogens 1012857 Table S12
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11801735/supplementaryFiles
-    local path   : starplast/data/mrna_stability.tsv
+    local path   : parascape/data/mrna_stability.tsv
 
 Quirks that cost time once:
     A direct measurement: block transcription, wait, see what is left. Untreated parasites at
@@ -22,7 +22,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/mrna_stability.py

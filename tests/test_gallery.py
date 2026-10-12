@@ -27,9 +27,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import gallery as G  # noqa: E402
-from starplast.embedding import EmbeddingSpec  # noqa: E402
-from starplast.tuning import WalkStep  # noqa: E402
+from parascape import gallery as G  # noqa: E402
+from parascape.embedding import EmbeddingSpec  # noqa: E402
+from parascape.tuning import WalkStep  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -297,7 +297,7 @@ def test_every_gallery_control_explains_itself(panel):
 # --------------------------------------------------------------------------- in the window
 @pytest.fixture(scope="module")
 def win(app):
-    from starplast.app import Window
+    from parascape.app import Window
     w = Window()
     w.resize(900, 600)
     yield w
@@ -425,7 +425,7 @@ def test_the_theme_repaints_the_gallery_ground(win):
 def _run_step(n=40, n_genes=100, clusters=3):
     """One scored configuration, shaped as `search.RunStep` yields them."""
     import pandas as pd
-    from starplast.search import RunStep
+    from parascape.search import RunStep
     rng = np.random.default_rng(4)
     genes = np.zeros(n_genes, dtype=bool)
     genes[:n] = True

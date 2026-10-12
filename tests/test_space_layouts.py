@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 
-from starplast import embedding as E, organisms as O, strategies as S
+from parascape import embedding as E, organisms as O, strategies as S
 
 
 def test_display_uses_its_own_slots_and_resolves_saved_recipes():
@@ -12,7 +12,7 @@ def test_display_uses_its_own_slots_and_resolves_saved_recipes():
     selected = E.columns_for(nodes, spec)
     columns = [c for values in selected.values() for c in values]
     assert len(columns) == len(set(columns))
-    from starplast.slots import source_columns
+    from parascape.slots import source_columns
     eligible = {c for slot in E.slot_blocks(O.FALCIPARUM).values() for c in source_columns(nodes, slot)}
     assert set(columns) == eligible
     matrix, features, rows = E.build_matrix(nodes, spec, log=lambda *a: None)
@@ -49,8 +49,8 @@ def test_drop_columns_reports_resolved_feature_names():
 
 
 def test_pf_panel_and_optimizer_offer_pf_slots(qapp):
-    from starplast.analysis_panel import AnalysisPanel
-    from starplast.optimize import block_pool
+    from parascape.analysis_panel import AnalysisPanel
+    from parascape.optimize import block_pool
     nodes = pd.read_parquet(O.nodes_path(O.FALCIPARUM))
     panel = AnalysisPanel(nodes)
     try:

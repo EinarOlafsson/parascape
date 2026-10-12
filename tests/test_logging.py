@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import logging_util as L  # noqa: E402
+from parascape import logging_util as L  # noqa: E402
 
 
 @pytest.fixture(autouse=True)
@@ -71,7 +71,7 @@ def test_the_console_level_is_independent_of_the_file(tmp_path, capsys):
 
 def test_the_file_records_the_level_the_time_and_the_module(tmp_path):
     path = L.configure(enabled=True, file_level="INFO", directory=str(tmp_path))
-    L.get_logger("starplast.jobs").info("job 3 'walk': done in 12.0s")
+    L.get_logger("parascape.jobs").info("job 3 'walk': done in 12.0s")
     line = open(path).read().strip().splitlines()[-1]
     assert "INFO" in line and "jobs" in line and "done in 12.0s" in line
     assert line[:2].isdigit(), "no timestamp"
@@ -125,8 +125,8 @@ def test_the_file_rotates_so_a_long_session_cannot_fill_a_disk(tmp_path, monkeyp
 def test_every_logger_is_a_child_of_one_root(tmp_path):
     """Configuring one name configures the lot, and no message escapes by being logged under an
     unexpected one."""
-    assert L.get_logger("starplast.app").name == "starplast.app"
-    assert L.get_logger("some.other.module").name == "starplast.module"
+    assert L.get_logger("parascape.app").name == "parascape.app"
+    assert L.get_logger("some.other.module").name == "parascape.module"
     assert L.get_logger(None).name == L.ROOT
     assert L.get_logger(L.ROOT).name == L.ROOT
 
@@ -140,7 +140,7 @@ def test_records_do_not_reach_the_root_logger(tmp_path, capsys):
 
 def test_the_default_log_directory_is_the_cache_not_the_working_directory():
     """A log dropped into whatever directory the app was launched from is litter."""
-    from starplast import paths
+    from parascape import paths
     assert L.log_dir().startswith(paths.user_cache_dir())
 
 
@@ -191,7 +191,7 @@ def qapp():
 
 @pytest.fixture
 def pane(qapp):
-    from starplast.console import ConsolePanel
+    from parascape.console import ConsolePanel
     return ConsolePanel()
 
 
@@ -216,7 +216,7 @@ def test_ordinary_output_is_never_hidden_by_a_level(pane):
 
 
 def test_a_level_colors_its_own_line(pane):
-    from starplast.console import LEVEL_COLOR
+    from parascape.console import LEVEL_COLOR
     from PyQt6 import QtGui
     pane.append("[ERROR] it fell over\n")
     doc = pane.view.document()
@@ -226,7 +226,7 @@ def test_a_level_colors_its_own_line(pane):
 
 
 def test_levelless_lines_keep_the_pane_s_own_color(pane):
-    from starplast.console import LEVEL_COLOR
+    from parascape.console import LEVEL_COLOR
     pane.append("just a print\n")
     fmt = pane.view.document().lastBlock().begin().fragment().charFormat()
     assert fmt.foreground().color().name() not in {c.lower() for c in LEVEL_COLOR.values()}
@@ -254,7 +254,7 @@ def test_the_tee_can_be_closed_without_closing_the_stream_it_wraps(qapp):
     stream instead would take stderr down for everything still running -- and with a log file now in
     the picture, shutdown reaches this on every exit rather than occasionally."""
     import io
-    from starplast.console import Tee
+    from parascape.console import Tee
     buf = io.StringIO()
     t = Tee(buf)
     t.close()
@@ -272,12 +272,12 @@ def test_settings_are_isolated_from_the_user_running_the_suite(qapp):
     resolves as NativeFormat whatever setDefaultFormat says -- setting the path for IniFormat alone
     left every test writing to ~/.config."""
     from PyQt6 import QtCore
-    s = QtCore.QSettings("starplast", "starplast")
-    assert "starplast-test-settings" in s.fileName(), s.fileName()
+    s = QtCore.QSettings("parascape", "parascape")
+    assert "parascape-test-settings" in s.fileName(), s.fileName()
     s.setValue("logging/console_level", "DEBUG")
     s.sync()
     assert os.path.exists(s.fileName())
-    real = os.path.expanduser("~/.config/starplast/starplast.conf")
+    real = os.path.expanduser("~/.config/parascape/parascape.conf")
     assert not os.path.exists(real) or "test-settings" not in open(real).read()
 
 
@@ -291,19 +291,19 @@ def test_the_user_s_saved_runs_are_isolated_from_the_suite(qapp):
     output in the shipped directory too.
     """
     import numpy as np
-    from starplast import paths
-    from starplast.app import Window
+    from parascape import paths
+    from parascape.app import Window
 
-    assert "starplast-test-state" in paths.user_cache_dir(), paths.user_cache_dir()
+    assert "parascape-test-state" in paths.user_cache_dir(), paths.user_cache_dir()
     win = Window()
     try:
         win.keep_run(np.zeros(win.n, dtype=int), name="isolation_check")
-        assert "starplast-test-state" in win.runs.root
-        assert "starplast-test-state" in win.annotations.path
-        assert "starplast-test-state" in win.panel.store.root
+        assert "parascape-test-state" in win.runs.root
+        assert "parascape-test-state" in win.annotations.path
+        assert "parascape-test-state" in win.panel.store.root
         assert os.path.exists(os.path.join(win.runs.root, "isolation_check.npz"))
     finally:
         win.close()
-    real = os.path.join(os.path.expanduser("~/.cache/starplast"), "runs")
+    real = os.path.join(os.path.expanduser("~/.cache/parascape"), "runs")
     assert not os.path.exists(os.path.join(real, "isolation_check.npz")), \
         "the suite wrote a run into the store of whoever ran it"

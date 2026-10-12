@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.04 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/strategies.py`, `starplast/track_record.py`, `starplast/search.py`, `starplast/methods.py` |
+| Existing code to inspect | `parascape/strategies.py`, `parascape/track_record.py`, `parascape/search.py`, `parascape/methods.py` |
 
 ## Deliverable
 
@@ -40,7 +40,7 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Completion evidence
 
-`starplast/splits.py`: immutable content-identified nested partitions, protected
+`parascape/splits.py`: immutable content-identified nested partitions, protected
 homology/entity/dataset/context/time groups, role-specific fit guards, explicit
 transductive joint-feature access, training-only target/source closure, derived-layer
 exclusions and separately validated known-node/cold-node pair regimes. Chronological

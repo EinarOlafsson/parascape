@@ -68,46 +68,46 @@ def main() -> None:
     """Write the approved logo, its installed assets, both colourways, and previews."""
     app = QtGui.QGuiApplication([])
     OUT.mkdir(parents=True, exist_ok=True)
-    word = outline("starplast", 86)
+    word = outline("parascape", 86)
     for inverse in (False, True):
         suffix = "-white" if inverse else ""
         ink = "white" if inverse else "black"
-        mark = svg(icon(inverse), 240, 310, "Starplast — Toxoplasma constellation")
+        mark = svg(icon(inverse), 240, 310, "ParaScape — Toxoplasma constellation")
         lockup = svg(icon(inverse) + f'<g color="{ink}" transform="translate(253 188)">{word}</g>',
-                     650, 310, "Starplast — Toxoplasma constellation wordmark")
+                     650, 310, "ParaScape — Toxoplasma constellation wordmark")
         (OUT / f"icon{suffix}.svg").write_text(mark)
         (OUT / f"wordmark{suffix}.svg").write_text(lockup)
-        (ROOT / f"docs/assets/starplast-wordmark{suffix}.svg").write_text(lockup)
+        (ROOT / f"docs/assets/parascape-wordmark{suffix}.svg").write_text(lockup)
         render(mark, OUT / f"icon{suffix}.png", 720, 930, inverse)
         render(lockup, OUT / f"wordmark{suffix}.png", 1300, 620, inverse)
     # A white tile keeps the app icon legible against either desktop theme.
     app_mark = svg('<rect width="310" height="310" rx="35" fill="white"/>'
                    '<g transform="translate(35 0)">' + icon() + '</g>',
-                   310, 310, "Starplast — Toxoplasma constellation")
-    (ROOT / "starplast/data/icons/starplast.svg").write_text(app_mark)
+                   310, 310, "ParaScape — Toxoplasma constellation")
+    (ROOT / "parascape/data/icons/parascape.svg").write_text(app_mark)
     preview = svg('<rect width="1200" height="700" fill="white"/>'
                   '<g transform="translate(58 30) scale(1.8)">' + icon() + '</g>'
                   '<g color="black" transform="translate(475 341)">' + word + '</g>',
-                  1200, 700, "Starplast — refined Toxoplasma constellation logo")
+                  1200, 700, "ParaScape — refined Toxoplasma constellation logo")
     (OUT / "preview.svg").write_text(preview)
     render(preview, OUT / "preview.png", 1200, 700)
     (OUT / "index.html").write_text('''<!doctype html><html lang="en"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Starplast · Toxoplasma constellation</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ParaScape · Toxoplasma constellation</title>
 <style>*{box-sizing:border-box}body{margin:0;background:white;color:black;font:16px/1.6 system-ui,sans-serif}
 main{max-width:1100px;margin:auto;padding:40px 24px}h1{font-size:30px;font-weight:300}p{max-width:750px}
 a{color:inherit;text-underline-offset:4px}nav{display:flex;gap:24px;flex-wrap:wrap}.preview img{width:100%;height:auto}
 .inverse{display:none}label{display:block;margin-top:24px;cursor:pointer}body:has(#dark:checked){background:black;color:white}
 body:has(#dark:checked) .normal{display:none}body:has(#dark:checked) .inverse{display:block}</style>
-<main><h1>Starplast logo</h1><p>An elongated, asymmetric parasite with a softly tapered apex, a rounded rear,
+<main><h1>ParaScape logo</h1><p>An elongated, asymmetric parasite with a softly tapered apex, a rounded rear,
 an apical cap, and a nucleus ring. Seven stars form a connected constellation entirely inside its body.</p>
 <nav><a href="icon.svg" download>Icon SVG</a><a href="wordmark.svg" download>Wordmark SVG</a>
-<a href="starplast-constellation.zip" download>Download both colourways</a><a href="../logo-options/index.html">Earlier options</a></nav>
+<a href="parascape-constellation.zip" download>Download both colourways</a><a href="../logo-options/index.html">Earlier options</a></nav>
 <label><input id="dark" type="checkbox"> White on black</label><div class="preview">
-<img class="normal" src="wordmark.svg" alt="Thin black Toxoplasma outline enclosing a seven-star constellation beside starplast">
+<img class="normal" src="wordmark.svg" alt="Thin black Toxoplasma outline enclosing a seven-star constellation beside parascape">
 <img class="inverse" src="wordmark-white.svg" alt="White Toxoplasma constellation wordmark on black"></div>
 <p>The silhouette is informed by <a href="https://www.cdc.gov/dpdx/toxoplasmosis/index.html">CDC DPDx's description of tachyzoite morphology</a>.
 The constellation represents a gene network.</p></main></html>\n''')
-    with zipfile.ZipFile(OUT / "starplast-constellation.zip", "w", zipfile.ZIP_DEFLATED) as archive:
+    with zipfile.ZipFile(OUT / "parascape-constellation.zip", "w", zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(OUT.glob("*.svg")):
             archive.write(path, path.name)
     print(f"Wrote refinement to {OUT}")

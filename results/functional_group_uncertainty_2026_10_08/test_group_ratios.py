@@ -2,7 +2,7 @@
 import numpy as np
 import pytest
 
-from starplast import group_ratios as G
+from parascape import group_ratios as G
 
 
 def fixture():

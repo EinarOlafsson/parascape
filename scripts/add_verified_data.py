@@ -20,14 +20,14 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import (chromatin, codons, expression, identity, iedb,  # noqa: E402
+from parascape import (chromatin, codons, expression, identity, iedb,  # noqa: E402
                        palmitome, proteomics, small_tables, variation)
 
 
 def main(argv=None) -> int:
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    p.add_argument("--nodes", default=os.path.join(root, "starplast", "data", "nodes.parquet"))
+    p.add_argument("--nodes", default=os.path.join(root, "parascape", "data", "nodes.parquet"))
     p.add_argument("--base", default=root)
     p.add_argument("--dry-run", action="store_true")
     args = p.parse_args(argv)
@@ -39,7 +39,7 @@ def main(argv=None) -> int:
     # Accessions in a deposit are whatever was current when it was submitted, so they go through the
     # identity layer rather than being matched as strings -- the same routing build_graph uses, and
     # the reason a table of TGGT1_ ids joins anything at all.
-    data = os.path.join(args.base, "starplast", "data")
+    data = os.path.join(args.base, "parascape", "data")
     ix = identity.build_index(ids, os.path.join(data, "toxodb_identity.tsv"),
                               log=lambda *a: None)
     identity.add_strain_accessions(

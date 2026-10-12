@@ -21,9 +21,9 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import organisms as _ORGANISMS
+from parascape import organisms as _ORGANISMS
 SNAPSHOT = ROOT / 'results/functional_profile_targets_2026_10_08_v3'
-SNAPSHOT_SHA256 = '3e1d93cf0c587a7a8566e9f271f7cd2bdaab5421c75415e62350b74afa47c7ac'
+SNAPSHOT_SHA256 = '4990b6a7ff640e22daf27420994f1ea0cbe356930cb4656b8f8ca84dbdd2eadf'
 CONTROL_ID = 'FN-DOM-CONTROL-01-Tg-pfam-complete-profile'
 SEED = 20261008
 
@@ -46,8 +46,8 @@ def _identity(payload):
 
 def load_snapshot(path, *, expected_manifest_sha256=SNAPSHOT_SHA256):
     """Verify every packet byte against a pinned manifest and restore typed target data."""
-    from starplast.functional_profile_targets import ProfileRow, ProfileSource, ProfileTargetContract
-    from starplast.splits import Assignment, SplitManifest
+    from parascape.functional_profile_targets import ProfileRow, ProfileSource, ProfileTargetContract
+    from parascape.splits import Assignment, SplitManifest
 
     path = Path(path)
     manifest = path / 'SHA256SUMS.txt'
@@ -94,9 +94,9 @@ def build_controls(contract, *, seed=SEED):
     """
     import numpy as np
     import pandas as pd
-    from starplast import baselines, scorecard as SC
-    from starplast.functional_profile_targets import ProfileTargetContract
-    from starplast.scorecard_view import build_scorecard_view
+    from parascape import baselines, scorecard as SC
+    from parascape.functional_profile_targets import ProfileTargetContract
+    from parascape.scorecard_view import build_scorecard_view
 
     if not isinstance(contract, ProfileTargetContract) or contract.organism != _ORGANISMS.TOXOPLASMA or contract.source_target != 'pfam_id':
         raise ValueError('This control partition requires a typed Tg Pfam profile target')
@@ -225,7 +225,7 @@ def prepare(output):
     assert json.loads((output / 'control_cards.json').read_text()) == cards
     assert json.loads((output / 'class_cards.json').read_text()) == classes
     code_files = [Path(__file__), ROOT / 'tests/test_functional_profile_controls.py', ROOT / 'scripts/notebook_runner.py', *[
-        ROOT / 'starplast' / name for name in ('baselines.py', 'scorecard.py', 'scorecard_view.py',
+        ROOT / 'parascape' / name for name in ('baselines.py', 'scorecard.py', 'scorecard_view.py',
         'functional_profile_targets.py', 'functional_domain_profiles.py', 'ground_truth.py', 'splits.py', 'provenance.py', 'organisms.py')]]
     (output / 'code').mkdir()
     for path in code_files:

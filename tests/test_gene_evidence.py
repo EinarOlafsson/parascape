@@ -5,11 +5,11 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import datasets as D, organisms as O, slots as S
-from starplast.dataset_space import DatasetSpace
-from starplast.gene_evidence import build_resolver, evidence_rows
-from starplast.identity import GeneIndex, norm
-from starplast.provenance import MeasurementTrace
+from parascape import datasets as D, organisms as O, slots as S
+from parascape.dataset_space import DatasetSpace
+from parascape.gene_evidence import build_resolver, evidence_rows
+from parascape.identity import GeneIndex, norm
+from parascape.provenance import MeasurementTrace
 
 G1, G2, G3 = 'TGME49_100001', 'TGME49_100002', 'TGME49_100003'
 

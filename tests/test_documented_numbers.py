@@ -26,7 +26,7 @@ import pytest
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from starplast import paths  # noqa: E402
+from parascape import paths  # noqa: E402
 
 DOCS = ("README.md", "HANDOFF.md", "MATERIALS_AND_METHODS.md")
 
@@ -125,8 +125,8 @@ def test_the_superseded_figures_do_not_come_back():
 def test_the_explainers_match_the_executed_packaged_recipe():
     """Read the archived execution record, rather than reconstructing a retired builder."""
     import json
-    from starplast.app import MAP_EXPLANATION
-    from starplast.chat import GROUNDING
+    from parascape.app import MAP_EXPLANATION
+    from parascape.chat import GROUNDING
     with np.load(paths.cache_file("graph.npz"), allow_pickle=False) as archive:
         record = json.loads(str(archive["layout_metadata"]))
     assert record["executed_method"] == "umap"
@@ -147,7 +147,7 @@ def test_packaged_layout_matches_the_shared_matrix_and_gene_order():
     import hashlib
     import json
     from pathlib import Path
-    from starplast.embedding import build_matrix, EmbeddingSpec
+    from parascape.embedding import build_matrix, EmbeddingSpec
     for prefix in ("", "pf_"):
         node_path = paths.cache_file(prefix+"nodes.parquet")
         nodes = pd.read_parquet(node_path)

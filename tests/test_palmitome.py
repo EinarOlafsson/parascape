@@ -16,13 +16,13 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import palmitome as PM  # noqa: E402
+from parascape import palmitome as PM  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def _tables(tmp_path, rows, filename="toxodb_palmitome_hydroxylamine.tsv"):
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True, exist_ok=True)
     body = "\n".join(f"{g}\t{v}" for g, v in rows)
     (data / filename).write_text("Gene ID\tFold Difference\n" + body + "\n")
@@ -99,7 +99,7 @@ def test_a_missing_table_is_skipped(tmp_path):
 
 def test_a_one_column_table_is_refused(tmp_path):
     """The search can be asked for gene ids alone; that report has no measurement in it."""
-    data = tmp_path / "starplast" / "data"
+    data = tmp_path / "parascape" / "data"
     data.mkdir(parents=True)
     (data / "toxodb_palmitome_hydroxylamine.tsv").write_text("Gene ID\nTGGT1_200260\n")
     assert PM.palmitome(str(tmp_path), log=lambda *_: None).empty
@@ -111,7 +111,7 @@ def test_nothing_downloaded_yields_nothing(tmp_path):
 
 # --------------------------------------------------------------------------- against the real map
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data",
+    not os.path.exists(os.path.join(ROOT, "parascape", "data",
                                     "toxodb_palmitome_hydroxylamine.tsv")),
     reason="palmitome table not shipped")
 def test_the_known_substrates_come_out_enriched():
@@ -122,7 +122,7 @@ def test_the_known_substrates_come_out_enriched():
     established. All four must sit above the median of the measured genes, or the column is not
     measuring palmitoylation.
     """
-    n = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet")).set_index("gene_id")
+    n = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     column = "palmitome_odya_vs_hydroxylamine_log2"
     if column not in n.columns:
         pytest.skip("palmitome column not merged")

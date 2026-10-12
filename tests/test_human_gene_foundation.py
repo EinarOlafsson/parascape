@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import organisms as O, strategies as S
-from starplast.spaces import human as H
+from parascape import organisms as O, strategies as S
+from parascape.spaces import human as H
 
 
 def source(tmp_path,text=None):

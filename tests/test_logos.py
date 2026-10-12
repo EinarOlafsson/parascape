@@ -16,7 +16,7 @@ import pytest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from starplast import paths  # noqa: E402
+from parascape import paths  # noqa: E402
 
 ICONS = os.path.join(paths.data_dir(), "icons")
 LOGOS = sorted(f for f in os.listdir(ICONS) if f.startswith("logo_") and f.endswith(".svg"))
@@ -107,7 +107,7 @@ def test_each_draft_says_what_it_is_arguing():
     for name in LOGOS:
         text = open(os.path.join(ICONS, name), encoding="utf8").read()
         title = re.search(r"<title>([^<]+)</title>", text)
-        assert title and "starplast" in title.group(1), name
+        assert title and "parascape" in title.group(1), name
 
 
 def test_they_are_distinct_from_one_another():

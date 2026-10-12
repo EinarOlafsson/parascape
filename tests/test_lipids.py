@@ -24,8 +24,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import lipids as L  # noqa: E402
-from starplast import metabolites as M  # noqa: E402
+from parascape import lipids as L  # noqa: E402
+from parascape import metabolites as M  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ARCHIVE = os.path.join(ROOT, "datasets", "reference", "lipidomics", "41716462",
@@ -205,7 +205,7 @@ def test_lipid_classes_the_parasite_cannot_make_are_depleted():
 
 
 # --------------------------------------------------------------------------- the shipped table
-@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "starplast", "data", M.TABLE)),
+@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "parascape", "data", M.TABLE)),
                     reason="metabolite table not built")
 def test_lipid_species_and_polar_compounds_do_not_collide_in_the_shipped_table():
     """`metabolites` warns that a second study joined by NAME is lossy. This is that second study.
@@ -222,7 +222,7 @@ def test_lipid_species_and_polar_compounds_do_not_collide_in_the_shipped_table()
     assert d["metabolite"].map(M.norm).duplicated().sum() == 0
 
 
-@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "starplast", "data", M.TABLE)),
+@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "parascape", "data", M.TABLE)),
                     reason="metabolite table not built")
 def test_the_polar_study_kept_every_row_it_had_before_the_lipids_arrived():
     d = M.load(ROOT)

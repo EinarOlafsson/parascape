@@ -47,7 +47,7 @@ Two hold-out modes, both offered:
 
 ### 2. The ledger: one row per held-out gene
 
-`starplast/track_record.py` writes a parquet table, one row per (organism, strategy, target, setting
+`parascape/track_record.py` writes a parquet table, one row per (organism, strategy, target, setting
 key, seed, fold, gene):
 
 | field | meaning |
@@ -128,8 +128,8 @@ fold. So:
 
 ### Status (2026-10-03)
 
-* Stages 1-3 done: `starplast/track_record.py`, `scripts/build_track_record.py`,
-  `starplast/data/track_record.parquet` (190,624 rows, 1.4 MB), set hold-outs (each class, and
+* Stages 1-3 done: `parascape/track_record.py`, `scripts/build_track_record.py`,
+  `parascape/data/track_record.parquet` (190,624 rows, 1.4 MB), set hold-outs (each class, and
   random sets of 1-500), `notebooks/track_record_2026_10_03.ipynb`. Stage 2's "agrees with the
   scorecard when pooled" is NOT yet checked.
 * Stage 4 done except a standalone browser: gene card -> class page -> category page -> back, and the
@@ -138,7 +138,7 @@ fold. So:
 * Stage 5 partly: `track_record.my_list(ctx, genes, target)` hides a user list together (Python
   only; no UI, no cache yet). `track_record.alone(ctx, gene, target)` hides one gene with its
   orthogroup for ANY label, five fast strategies, ~9 s on Tg, cached per release/organism/label/gene
-  in the user cache. The gene card links each of the gene's other labels to it (`starplast://alone/
+  in the user cache. The gene card links each of the gene's other labels to it (`parascape://alone/
   <row>/<target>`), run on the job runner; the answer replaces the panel only if the user is
   still on that gene. The user list runs from Start here (*Test on my genes*) -> grid in the
   evidence panel. Stage 5 done.

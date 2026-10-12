@@ -19,7 +19,7 @@ This is a recording job. The only new code is `scripts/tutorial_video.py` and fo
 `scripts/tutorial_video.py`.
 
 * **`Studio`** — one offscreen `QApplication` and one real `Window`, at 1680x920, with `QSettings`
-  and `STARPLAST_STATE` redirected to a scratch directory, exactly as `tests/conftest.py` does and
+  and `PARASCAPE_STATE` redirected to a scratch directory, exactly as `tests/conftest.py` does and
   for the same reason. One application films all six clips: building six windows would cost six
   times as long, and Qt keeps style state across applications.
 * **`Clip`** — the recorder. A frame is the cached window grab, plus an overlay this module paints:
@@ -34,7 +34,7 @@ This is a recording job. The only new code is `scripts/tutorial_video.py` and fo
   once and the answer arrives later. The wait is pumped and **recorded** (the first seven seconds of
   it) rather than cut out: the jobs panel is doing something, and a tutorial that hides the wait
   teaches the wrong thing.
-* **Encoding** — PNG frames into a temporary directory (`STARPLAST_VIDEO_SCRATCH` to put them off a
+* **Encoding** — PNG frames into a temporary directory (`PARASCAPE_VIDEO_SCRATCH` to put them off a
   small `/tmp`), then `/usr/bin/ffmpeg` to H.264, yuv420p, 12 fps, CRF 27, `+faststart`; a marked
   frame becomes `<slug>_poster.jpg` at 1120 px.
 * **Determinism** — fixed window size, fixed beats, isolated settings and state, shipped tables and
@@ -79,7 +79,7 @@ worth naming because they are checkable:
 
 * The clips go to `docs/tutorial/video/`.
 * `publish_pages()` writes a player into each written tutorial's settings panel and a grid of
-  posters into `docs/tutorial/index.html`, between `<!--starplast-video-->` markers so that running
+  posters into `docs/tutorial/index.html`, between `<!--parascape-video-->` markers so that running
   it twice leaves one copy. Both pages are generated, so `scripts/build_tutorials.py` calls
   `publish_pages()` at the end of its own run and a rebuild cannot drop them.
 * `scripts/build_docs.py` now copies `docs/tutorial/` into `docs/site/` and carries a **Tutorials**

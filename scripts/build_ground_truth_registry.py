@@ -15,9 +15,9 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import datasets as D, organisms as O, paths, scorecard as C, strategies as S  # noqa: E402
-from starplast.ground_truth import BenchmarkEntry, StrategyBenchmark, cohort_digest, eligibility_mask, write_registry  # noqa: E402
-from starplast.provenance import SourceFile, read_traces  # noqa: E402
+from parascape import datasets as D, organisms as O, paths, scorecard as C, strategies as S  # noqa: E402
+from parascape.ground_truth import BenchmarkEntry, StrategyBenchmark, cohort_digest, eligibility_mask, write_registry  # noqa: E402
+from parascape.provenance import SourceFile, read_traces  # noqa: E402
 
 # These declarations classify the output, not the underlying instrument. The
 # basis is the current registry and loader; paper association stays unresolved.
@@ -67,7 +67,7 @@ def build(output: Path) -> dict:
     provenance_path = ROOT / "results/measurement_provenance_recovered_2026_10_07/traces.json"
     traces = read_traces(provenance_path)
     by_address = {(t.output_organism, t.column): t for t in traces}
-    inputs = [Path(__file__), provenance_path, *(ROOT / "starplast" / name for name in
+    inputs = [Path(__file__), provenance_path, *(ROOT / "parascape" / name for name in
               ("ground_truth.py", "datasets.py", "strategies.py", "track_record.py", "localization.py", "search.py",
                "scorecard.py", "organisms.py", "strategy_catalog.py", "strategy_graph.py", "strategy_learning.py"))]
     tables = {}

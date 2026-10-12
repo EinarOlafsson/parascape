@@ -21,7 +21,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import plasmodium as P  # noqa: E402
+from parascape import plasmodium as P  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPORT = os.path.join(ROOT, "datasets", "reference", "plasmodb",
@@ -191,7 +191,7 @@ def test_the_variant_surface_families_carry_the_strain_variation():
     assert ribosomal["snp_nonsynonymous"].median() < 10
 
 
-@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "starplast", "data", P.TABLE)),
+@pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "parascape", "data", P.TABLE)),
                     reason="Plasmodium table not built")
 def test_the_shipped_table_is_falciparum_and_not_gondii():
     """Nothing is merged. A TGME49 accession in here would mean two species in one table."""
@@ -202,12 +202,12 @@ def test_the_shipped_table_is_falciparum_and_not_gondii():
 
 def test_shipped_literature_ledger_accounts_for_publication_counts():
     """A synthetic fixture must never replace the source ledger shipped to users."""
-    from starplast import paths
+    from parascape import paths
     nodes=pd.read_parquet(paths.cache_file('pf_nodes.parquet')).set_index('gene_id')
     ledger=pd.read_parquet(paths.cache_file('pf_mentions.parquet'))
     assert {'gene_id','doc_id','pmid','source','tier'} <= set(ledger.columns)
     assert set(ledger.gene_id) <= set(nodes.index)
-    from starplast.literature import publication_counts
+    from parascape.literature import publication_counts
     counts=publication_counts(ledger,'abstract').reindex(nodes.index,fill_value=0)
     np.testing.assert_array_equal(counts.to_numpy(),nodes.n_publications.to_numpy())
 
@@ -343,10 +343,10 @@ def test_the_compositional_proteome_is_a_share_and_never_an_abundance():
     claimants = [slot for slot, patterns in gst.PF_PATTERNS.items()
                  for p in patterns if p.startswith("protein_stage_share")]
     assert claimants == ["protein stage share"], claimants
-    from starplast import slots as S
+    from parascape import slots as S
     abundance = [s for s in S.all_slots("Pf") if s.name.startswith("protein abundance")]
     assert abundance, "the abundance slots vanished rather than staying empty"
-    nodes = pd.read_parquet(os.path.join(ROOT, "starplast", "data", P.TABLE))
+    nodes = pd.read_parquet(os.path.join(ROOT, "parascape", "data", P.TABLE))
     share = [c for c in nodes.columns if c.startswith("protein_stage_share")]
     measured = nodes[share].dropna(how="any")          # a protein the TMT run never saw sums to 0
     total = measured.sum(axis=1)
@@ -369,7 +369,7 @@ def test_the_compositional_proteome_is_a_share_and_never_an_abundance():
 
 # --------------------------------------------------------------------------- export prediction
 EXPORT = os.path.join(ROOT, "datasets", "reference", "plasmodb", P.EXPORT_DIR)
-NODES = os.path.join(ROOT, "starplast", "data", P.TABLE)
+NODES = os.path.join(ROOT, "parascape", "data", P.TABLE)
 
 
 def _export_dir(tmp_path, tiers=None):
@@ -1266,7 +1266,7 @@ def test_derived_labels_need_at_least_two_stage_columns():
 
 def test_the_two_arms_label_stages_by_the_same_construction():
     """`cellcycle.stage_enrichment` is shared on purpose, so a difference means biology."""
-    from starplast import cellcycle
+    from parascape import cellcycle
     frame = _stage_frame()
     mine = cellcycle.stage_enrichment(frame, log=lambda *a: None, stages=P.PF_STAGE_COLUMNS)
     assert "stage_enriched_derived" in mine.columns
@@ -1588,7 +1588,7 @@ def test_antisense_is_the_minority_strand_and_sits_beside_its_sense_partner():
 
 
 # --------------------------------------------------------------------------- codon usage
-CDS = os.path.join(ROOT, "starplast", "data", P.CDS_TABLE)
+CDS = os.path.join(ROOT, "parascape", "data", P.CDS_TABLE)
 
 
 @pytest.mark.skipif(not os.path.exists(CDS), reason="Plasmodium CDS not fetched")
@@ -1601,7 +1601,7 @@ def test_codon_usage_comes_from_the_shared_construction():
 
 
 @pytest.mark.skipif(not (os.path.exists(NODES) and os.path.exists(
-    os.path.join(ROOT, "starplast", "data", "nodes.parquet"))), reason="both caches needed")
+    os.path.join(ROOT, "parascape", "data", "nodes.parquet"))), reason="both caches needed")
 def test_the_two_arms_differ_in_codon_bias_the_way_their_genomes_do():
     """The first measurement the two arms can be compared on, and the reason for sharing the code.
 
@@ -1610,7 +1610,7 @@ def test_the_two_arms_differ_in_codon_bias_the_way_their_genomes_do():
     a genome was mixed up or the two arms stopped computing the same quantity.
     """
     pf = pd.read_parquet(NODES, columns=["codon_gc3", "codon_enc"])
-    tg = pd.read_parquet(os.path.join(ROOT, "starplast", "data", "nodes.parquet"),
+    tg = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet"),
                          columns=["codon_gc3", "codon_enc"])
     assert pf["codon_gc3"].median() < 0.30, "Plasmodium GC3 is not AT-rich"
     assert tg["codon_gc3"].median() > 0.45, "Toxoplasma GC3 has moved"
@@ -1755,7 +1755,7 @@ def _riboseq_dir(tmp_path, tables=None):
 def test_riboseq_resolves_pre_2012_accessions_and_names_its_arms(tmp_path, monkeypatch):
     """The join that found zero rows before the identity layer existed."""
     _riboseq_dir(tmp_path)
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]),
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]),
                         "cache_file", lambda name: _identity(tmp_path))
     d = P.riboseq(str(tmp_path), log=lambda *a: None).set_index("gene_id")
     assert list(d.columns) == ["riboseq_mrna_ring", "riboseq_rpf_ring"]
@@ -1771,7 +1771,7 @@ def test_riboseq_withdraws_two_source_ids_landing_on_one_gene(tmp_path, monkeypa
     """
     _riboseq_dir(tmp_path, tables={"GSM1410291_mRNA_1_rpkm.txt.gz": {
         "pfa0110w": 100.0, "mal1p4.09": 60.0, "pf13_0222": 10.0}})
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]),
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]),
                         "cache_file", lambda name: _identity(tmp_path))
     d = P.riboseq(str(tmp_path), log=lambda *a: None).set_index("gene_id")
     assert "PF3D7_0102200" not in d.index, "two ids for one gene were averaged rather than withdrawn"
@@ -1781,7 +1781,7 @@ def test_riboseq_withdraws_two_source_ids_landing_on_one_gene(tmp_path, monkeypa
 def test_riboseq_without_its_directory_or_its_index_is_empty(tmp_path, monkeypatch):
     assert P.riboseq(str(tmp_path), log=lambda *a: None).empty
     _riboseq_dir(tmp_path)
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]),
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]),
                         "cache_file", lambda name: str(tmp_path / "absent.tsv"))
     said = []
     assert P.riboseq(str(tmp_path), log=said.append).empty
@@ -1793,7 +1793,7 @@ def test_riboseq_ignores_files_that_are_not_the_per_gene_tables(tmp_path, monkey
     folder = _riboseq_dir(tmp_path)
     (folder / "GSM1410291_mRNA_1_minus.wig.gz").write_bytes(b"not a table")
     (folder / "filelist.txt").write_text("Archive/File\tName\n")
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]),
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]),
                         "cache_file", lambda name: _identity(tmp_path))
     d = P.riboseq(str(tmp_path), log=lambda *a: None)
     assert list(d.columns) == ["gene_id", "riboseq_mrna_ring", "riboseq_rpf_ring"]
@@ -1805,7 +1805,7 @@ def test_build_all_leaves_an_unmeasured_gene_missing_for_ribosome_profiling(tmp_
     _riboseq_dir(tmp_path, tables={"GSM1410296_ribosome_footprints_1_rpkm.txt.gz": {
         "pfa0110w": 400.0}})
     ident = _identity(tmp_path, rows=[("PF3D7_0100100", "X", "Previous IDs: PFA0110w", "p")])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]),
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]),
                         "cache_file", lambda name: ident)
     d = P.build_all(root, log=lambda *a: None).set_index("gene_id")
     assert d.loc["PF3D7_0100100", "riboseq_rpf_ring"] == 400.0
@@ -1883,7 +1883,7 @@ def test_the_codon_index_separates_ribosomal_proteins_in_one_arm_and_not_the_oth
     bug in either arm. One implementation makes that comparable; two would have made it noise.
     """
     pf = pd.read_parquet(NODES)
-    tg_path = os.path.join(ROOT, "starplast", "data", "nodes.parquet")
+    tg_path = os.path.join(ROOT, "parascape", "data", "nodes.parquet")
     if not os.path.exists(tg_path):
         pytest.skip("Toxoplasma table not built")
     tg = pd.read_parquet(tg_path)
@@ -1912,7 +1912,7 @@ def _secretome_book(tmp_path, rows=None):
 def test_the_vesicle_sheet_counts_preparations_and_drops_its_own_references(tmp_path, monkeypatch):
     """A citation carries accessions, so resolution goes through the index rather than a regex."""
     _secretome_book(tmp_path)
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: _identity(tmp_path, rows=[
                             ("PF3D7_0102200", "X", "Previous IDs: PFA0110w", "p"),
                             ("PF3D7_0102300", "Y", "Previous IDs: PF13_0222", "q"),
@@ -1924,7 +1924,7 @@ def test_the_vesicle_sheet_counts_preparations_and_drops_its_own_references(tmp_
 
 
 def test_a_missing_vesicle_file_sheet_or_column_is_an_empty_frame(tmp_path, monkeypatch):
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: _identity(tmp_path))
     assert P.secretome(str(tmp_path), log=lambda *a: None).empty
     folder = _secretome_book(tmp_path, rows=[("PFA0110w", 1, 1)])
@@ -1944,7 +1944,7 @@ def test_a_gene_no_vesicle_preparation_reported_stays_unknown(tmp_path, monkeypa
     """
     root = _dataset_root(tmp_path)
     _secretome_book(tmp_path, rows=[("PFA0110w", 1, 1)])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: _identity(tmp_path, rows=[
                             ("PF3D7_0100100", "X", "Previous IDs: PFA0110w", "p")]))
     d = P.build_all(root, log=lambda *a: None).set_index("gene_id")
@@ -1973,7 +1973,7 @@ def test_a_riboseq_directory_holding_only_tracks_yields_nothing(tmp_path, monkey
     folder = tmp_path / "translation" / P.RIBOSEQ[0] / P.RIBOSEQ[1]
     folder.mkdir(parents=True)
     (folder / "GSM1410291_mRNA_1_minus.wig.gz").write_bytes(b"not a table")
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]),
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]),
                         "cache_file", lambda name: _identity(tmp_path))
     assert P.riboseq(str(tmp_path), log=lambda *a: None).empty
 
@@ -1989,7 +1989,7 @@ def test_a_vesicle_sheet_without_its_study_columns_is_refused(tmp_path):
 
 def test_the_vesicle_sheet_needs_the_identity_index_and_says_which_one(tmp_path, monkeypatch):
     _secretome_book(tmp_path)
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]),
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]),
                         "cache_file", lambda name: str(tmp_path / "absent.tsv"))
     said = []
     assert P.secretome(str(tmp_path), log=said.append).empty
@@ -2000,7 +2000,7 @@ def test_a_vesicle_sheet_whose_ids_resolve_to_nothing_is_empty_rather_than_wrong
                                                                                 monkeypatch):
     """A join that matches nothing looks exactly like a dataset with no coverage, so it says so."""
     _secretome_book(tmp_path, rows=[("not_an_accession", 1, 1)])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]),
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]),
                         "cache_file", lambda name: _identity(tmp_path))
     assert P.secretome(str(tmp_path), log=lambda *a: None).empty
 
@@ -2032,7 +2032,7 @@ def _cds(tmp_path, sequences):
 def test_a_site_window_that_names_one_protein_is_counted(tmp_path, monkeypatch):
     """The only usable key in the file: its accessions are from an annotation nobody carries."""
     _kinase_book(tmp_path, windows=["MAFKK", "MAFKK", "GGWW"])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: _cds(tmp_path, {
                             "PF3D7_0100100": "ATGGCTTTTAAAAAA",     # MAFKK
                             "PF3D7_0100200": "GGAGGATGGTGGAAA"}))   # GGWWK
@@ -2044,7 +2044,7 @@ def test_a_site_window_that_names_one_protein_is_counted(tmp_path, monkeypatch):
 def test_a_window_in_two_proteins_is_dropped_rather_than_assigned(tmp_path, monkeypatch):
     """Same rule as the accession index: a key that names two genes names neither."""
     _kinase_book(tmp_path, windows=["MAFKK", "GGWW"])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: _cds(tmp_path, {
                             "PF3D7_0100100": "ATGGCTTTTAAAAAA",
                             "PF3D7_0100200": "ATGGCTTTTAAAAAA",     # the same window, second gene
@@ -2057,7 +2057,7 @@ def test_a_window_in_two_proteins_is_dropped_rather_than_assigned(tmp_path, monk
 
 def test_kinase_substrates_needs_the_file_the_sheet_the_column_and_the_proteome(tmp_path,
                                                                                 monkeypatch):
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: _cds(tmp_path, {"PF3D7_0100100": "ATGGCTTTTAAAAAA"}))
     assert P.kinase_substrates(str(tmp_path), log=lambda *a: None).empty
     folder = _kinase_book(tmp_path, windows=["NOTINANYPROTEIN"])
@@ -2072,7 +2072,7 @@ def test_kinase_substrates_needs_the_file_the_sheet_the_column_and_the_proteome(
                                           sheet_name="another sheet", index=False)
     assert P.kinase_substrates(str(tmp_path), log=lambda *a: None).empty
     _kinase_book(tmp_path.parent / "no_cds", windows=["MAFKK"])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: str(tmp_path / "absent.tsv.gz"))
     said = []
     assert P.kinase_substrates(str(tmp_path.parent / "no_cds"), log=said.append).empty
@@ -2108,7 +2108,7 @@ def test_a_kinase_sheet_without_the_window_column_is_refused(tmp_path):
 def test_build_all_folds_in_the_kinase_dependent_sites(tmp_path, monkeypatch):
     root = _dataset_root(tmp_path)
     _kinase_book(tmp_path, windows=["MAFKK"])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: (_cds(tmp_path, {"PF3D7_0100100": "ATGGCTTTTAAAAAA"})
                                       if str(name).endswith(".gz") else _identity(tmp_path)))
     d = P.build_all(root, log=lambda *a: None).set_index("gene_id")
@@ -2123,7 +2123,7 @@ def test_build_all_records_host_degree_where_the_crosslink_data_reaches(tmp_path
     since being crosslinked only to parasite proteins is an observation -- and a gene the experiment
     never saw stays missing rather than being called zero.
     """
-    from starplast import pf_graph as G
+    from parascape import pf_graph as G
     root = _dataset_root(tmp_path)
     base = tmp_path / "reference" / "plasmodb"
     (base / G.CROSSLINK[0] / G.CROSSLINK[1]).mkdir(parents=True)
@@ -2237,7 +2237,7 @@ def test_a_missing_interactome_pdf_is_an_empty_frame(tmp_path):
 @pytest.mark.skipif(not os.path.exists(NODES), reason="Plasmodium table not built")
 def test_no_shipped_ip_ms_pair_is_richer_in_its_control_than_in_its_bait():
     """The check that caught the column-order fault, kept against the shipped file."""
-    import starplast.plasmodium as PL
+    import parascape.plasmodium as PL
     root = os.path.join(ROOT, "datasets")
     pairs = PL.ip_ms(root, log=lambda *a: None)
     if pairs.empty:
@@ -2488,7 +2488,7 @@ def test_the_index_reads_this_organisms_accessions_and_not_the_other_ones(tmp_pa
     pd.DataFrame({"gene_id": ["PF3D7_1133400"], "gene_name": ["AMA1"],
                   "previous_ids": ["Previous IDs: PFA0110w;PF13_0222;MAL1P4.01"],
                   "product": ["apical membrane antigen 1"]}).to_csv(table, sep="\t", index=False)
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: str(table))
     index = P.gene_index(pd.DataFrame({"gene_id": ["PF3D7_1133400"]}), log=lambda *a: None)
     for form in ("PF3D7_1133400", "PFA0110w", "PF13_0222", "MAL1P4.01"):
@@ -2502,7 +2502,7 @@ def test_the_prefixed_symbol_convention_follows_the_organism(tmp_path, monkeypat
     pd.DataFrame({"gene_id": ["PF3D7_0217500"], "gene_name": ["CDPK1"],
                   "previous_ids": ["N/A"], "product": ["calcium-dependent protein kinase 1"]}).to_csv(
         table, sep="\t", index=False)
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: str(table))
     index = P.gene_index(pd.DataFrame({"gene_id": ["PF3D7_0217500"]}), log=lambda *a: None)
     assert [g for g, _ in index.find("PfCDPK1 is essential for invasion")] == ["PF3D7_0217500"]
@@ -2574,7 +2574,7 @@ def test_build_all_folds_in_the_liver_transfer_and_the_literature(tmp_path, monk
     """Both are left-joined and neither fills: a gene absent from a screen was not screened, and a
     gene absent from the literature has not been written about -- which is a fact, not a zero."""
     root = _dataset_root(tmp_path)
-    from starplast import paths
+    from parascape import paths
     ledger=tmp_path/'pf_mentions.parquet'
     monkeypatch.setattr(paths,'cache_file',lambda name:str(ledger))
     monkeypatch.setattr(P, "berghei_liver_fitness", lambda *a, **k: pd.DataFrame(
@@ -2607,7 +2607,7 @@ def test_a_literature_scan_that_names_nobody_ships_no_columns(tmp_path, monkeypa
     corpus.parent.mkdir(parents=True)
     corpus.write_text('{"pmid": "1", "title": "no gene here", "abstract": "nothing at all"}\n')
     identity_table = _identity(tmp_path, rows=[("PF3D7_0100100", "X", "N/A", "p")])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: identity_table)
     columns, edges, mentions = P.literature_layer(
         pd.DataFrame({"gene_id": ["PF3D7_0100100"]}), str(tmp_path), log=lambda *a: None)
@@ -2627,7 +2627,7 @@ def test_a_two_gene_abstract_becomes_a_mention_a_count_and_an_edge(tmp_path, mon
     identity_table = _identity(tmp_path, rows=[
         ("PF3D7_1133400", "AMA1", "Previous IDs: PFA0110w", "apical membrane antigen 1"),
         ("PF3D7_0930300", "MSP1", "N/A", "merozoite surface protein 1")])
-    monkeypatch.setattr(__import__("starplast.paths", fromlist=["x"]), "cache_file",
+    monkeypatch.setattr(__import__("parascape.paths", fromlist=["x"]), "cache_file",
                         lambda name: identity_table)
     nodes = pd.DataFrame({"gene_id": ["PF3D7_1133400", "PF3D7_0930300"]})
     columns, edges, mentions = P.literature_layer(nodes, str(tmp_path), log=lambda *a: None)

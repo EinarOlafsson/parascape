@@ -59,7 +59,7 @@ class _Matrix:
 
 def _view_with(signature: str):
     """A minimal stand-in for Map3D carrying one of the three signatures."""
-    from starplast.app import Map3D
+    from parascape.app import Map3D
     import numpy as np
 
     view = Map3D.__new__(Map3D)                 # no Qt widget: only the compat logic is under test

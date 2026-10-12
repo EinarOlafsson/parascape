@@ -1,30 +1,30 @@
 # Python API
 
-Install the application, analysis modules, and bundled data with `pip install starplast`.
+Install the application, analysis modules, and bundled data with `pip install parascape`.
 The analysis modules can be used without creating a Qt application.
 
-The [generated module reference](api/starplast.html) includes signatures,
-docstrings, and source links. This page covers common entry points. Starplast is
+The [generated module reference](api/parascape.html) includes signatures,
+docstrings, and source links. This page covers common entry points. ParaScape is
 pre-1.0, so pin the package version when preserving a reproducible analysis.
 
 ## Read the bundled gene table
 
 ```python
 import pandas as pd
-from starplast import paths
+from parascape import paths
 
 nodes = pd.read_parquet(paths.cache_file("nodes.parquet"))
 print(nodes[["gene_id", "product"]].head())
 ```
 
 Use `pf_nodes.parquet` for *P. falciparum*. `paths.cache_file()` honours
-`STARPLAST_CACHE`. This example imports no GUI modules and does not download data.
+`PARASCAPE_CACHE`. This example imports no GUI modules and does not download data.
 Keep the table row order when aligning coordinates or cluster labels with genes.
 
 ## Browse existing functions and labels
 
 ```python
-from starplast import claims, discovery_labels, organisms, strategies, track_record
+from parascape import claims, discovery_labels, organisms, strategies, track_record
 
 ctx = strategies.Context.shipped(organisms.TOXOPLASMA)
 labels, members = discovery_labels.catalogue(
@@ -43,8 +43,8 @@ fit strategies, download sources or change shipped claims.
 ## Address an evidence or inference question
 
 ```python
-from starplast import organisms
-from starplast.query import BiologicalContext, Query
+from parascape import organisms
+from parascape.query import BiologicalContext, Query
 
 question = Query(
     organism=organisms.TOXOPLASMA,
@@ -79,7 +79,7 @@ short symbols that conservative literature extraction would omit.
 ## Inventory installed evidence
 
 ```python
-from starplast.inventory import build_inventory
+from parascape.inventory import build_inventory
 
 inventory = build_inventory({(organisms.TOXOPLASMA, "gene"): nodes})
 print(inventory[["source_id", "organism", "unit", "status", "stored_fraction"]])
@@ -105,7 +105,7 @@ JSON/Parquet exports and an executed reconciliation notebook.
 ## Trace a measurement to its source
 
 ```python
-from starplast.provenance import read_traces
+from parascape.provenance import read_traces
 
 traces = read_traces("results/measurement_provenance_recovered_2026_10_07/traces.json")
 pilot = next(t for t in traces if t.source_id == "host_bmdm_baseline")
@@ -130,7 +130,7 @@ addresses are validated on read and write.
 
 ## Choose among comparable datasets
 
-For competing dataset choices, use `starplast.dataset_selection.DatasetCandidate`,
+For competing dataset choices, use `parascape.dataset_selection.DatasetCandidate`,
 `rank_candidates()` and `preferred()` with a frozen `SelectionPolicy`. The
 [selection rule](dataset_selection.md) documents citation-rate normalization,
 bounded recency/comprehensiveness bonuses and biological admission requirements.
@@ -139,7 +139,7 @@ Unknown bibliometrics or assay coverage cannot become an automatic winner.
 ## Build a feature matrix and embedding
 
 ```python
-from starplast.embedding import EmbeddingSpec, build_matrix, embed
+from parascape.embedding import EmbeddingSpec, build_matrix, embed
 
 spec = EmbeddingSpec(
     name="fitness-and-expression",
@@ -180,7 +180,7 @@ held-out prediction of any trait used to construct it.
 ## Cluster and examine held-out evidence
 
 ```python
-from starplast.clustering import cluster, battery
+from parascape.clustering import cluster, battery
 
 labels = cluster(coords, algorithm="hdbscan", min_cluster_size=25)
 subset = nodes.loc[kept_rows].reset_index(drop=True)
@@ -203,7 +203,7 @@ folds. A search winner still needs independent confirmation.
 ## Score labels on the pregenerated maps
 
 ```python
-from starplast import umap_gallery as G, strategies as S
+from parascape import umap_gallery as G, strategies as S
 
 g = G.shipped()
 g.maps("Tg")                              # recipes, sizes and cluster counts
@@ -228,7 +228,7 @@ flag maps built from a column in the label's leakage closure.
 ## Import a screen table
 
 ```python
-from starplast.importer import read_any, preprocess, merge_into
+from parascape.importer import read_any, preprocess, merge_into
 
 screen = read_any("screen.csv")
 imported, provenance = preprocess(
@@ -254,9 +254,9 @@ an imported column in an embedding, add it to `EmbeddingSpec.extra_columns`.
 ## Run discovery without a window
 
 ```bash
-starplast-discover --task guilt:compartment_best --budget 10 --name first-pass
-starplast-discover --list
-starplast-discover --read first-pass
+parascape-discover --task guilt:compartment_best --budget 10 --name first-pass
+parascape-discover --list
+parascape-discover --read first-pass
 ```
 
 Use `--nodes /path/to/pf_nodes.parquet` for a different node table and choose a
@@ -266,7 +266,7 @@ long-running; `--help` lists budget, seed, and feature-selection options.
 ## Evaluate a trait with held-out families
 
 ```python
-from starplast.prediction import TaskSpec, run
+from parascape.prediction import TaskSpec, run
 
 result = run(nodes, TaskSpec("compartment", method="linear", group_column="orthogroup"))
 print(result.metrics)
@@ -281,7 +281,7 @@ preprocessing are fitted within training groups. Read the [workflow guide](workf
 for uncertainty, abstention and evaluation limits.
 
 ```python
-from starplast.evidence import Observation, write_observations
+from parascape.evidence import Observation, write_observations
 
 records = [Observation(
     entity_id="example_gene", trait="example_measurement", value=0.0,
@@ -298,13 +298,13 @@ zero, measured False and unassayed None have distinct meanings.
 
 ## Run, test and trust a strategy
 
-`starplast.strategies` is the Strategies tab without the window: 39 named ways of turning the
+`parascape.strategies` is the Strategies tab without the window: 39 named ways of turning the
 tables into a claim, each with a self-test and a scorecard. Nothing here imports Qt, and the main
-modules are reachable from the package itself -- `import starplast`, then
-`starplast.strategies`, `starplast.scorecard`, `starplast.techniques` -- loaded on first use.
+modules are reachable from the package itself -- `import parascape`, then
+`parascape.strategies`, `parascape.scorecard`, `parascape.techniques` -- loaded on first use.
 
 ```python
-from starplast import strategies as S
+from parascape import strategies as S
 
 table = S.overview("Tg")            # one row per strategy: name (with its method), task, grade, skill
 print(table[["number", "name", "task", "grade", "skill_default"]].head(10))
@@ -364,11 +364,11 @@ for key in ("feature_knn", "supervised_classifier", "stacking"):
 mine = S.Context(my_nodes, organism="Tg")        # any gene x column table with a gene_id column
 ```
 
-The scorecard functions work on predictions from anywhere, so a method outside Starplast can be
+The scorecard functions work on predictions from anywhere, so a method outside ParaScape can be
 scored exactly as the strategies are:
 
 ```python
-from starplast import scorecard as SC
+from parascape import scorecard as SC
 
 SC.label_calls(predicted_labels, true_labels, positions)   # NaN = no call, counted as wrong
 SC.ranking(scores, is_positive)                             # higher score = more likely positive
@@ -382,8 +382,8 @@ between two genes, and keeps with every link which layer, strategy and run state
 It is what the star map draws, and it needs no window:
 
 ```python
-from starplast import star_edges as E
-from starplast import strategies as S
+from parascape import star_edges as E
+from parascape import strategies as S
 
 ctx = S.shipped("Tg")
 idx = E.EdgeIndex(ctx.n)
@@ -405,27 +405,27 @@ disk. `scripts/build_star_edges.py` rebuilds `data/star_edges.parquet`.
 
 | Task | Modules |
 |---|---|
-| Resolve data and user state | [paths](api/starplast/paths.html) |
-| Inspect datasets and biological evidence groups | [datasets](api/starplast/datasets.html), [slots](api/starplast/slots.html) |
-| Import gene-level measurements | [importer](api/starplast/importer.html) |
-| Select features and embed | [embedding](api/starplast/embedding.html) |
-| Cluster and score associations | [clustering](api/starplast/clustering.html) |
-| Pregenerated maps and label x map scores | [umap_gallery](api/starplast/umap_gallery.html), [umap_gallery_panel](api/starplast/umap_gallery_panel.html) |
-| Search and assess held-out recovery | [search](api/starplast/search.html), [validate](api/starplast/validate.html), [holdout_cv](api/starplast/holdout_cv.html) |
-| Rank candidate findings | [discovery](api/starplast/discovery.html), [optimize](api/starplast/optimize.html) |
-| Store analyses and recipes | [runs](api/starplast/runs.html), [searches](api/starplast/searches.html), [recipes](api/starplast/recipes.html) |
-| Embed the desktop interface | [app](api/starplast/app.html), [analysis_panel](api/starplast/analysis_panel.html) |
-| Guided workflows | [workflows](api/starplast/workflows.html) |
-| Group-aware classification, regression and multi-label evaluation | [prediction](api/starplast/prediction.html) |
-| Weighted transductive networks | [network_prediction](api/starplast/network_prediction.html) |
-| Typed observations and reviewed assertions | [evidence](api/starplast/evidence.html) |
-| Explain results and compare measurements | [prioritization](api/starplast/prioritization.html) |
-| Named inference strategies, their self-tests and calibration | [strategies](api/starplast/strategies.html), [calibration](api/starplast/calibration.html) |
-| Standard metrics for every task, and their glossary | [scorecard](api/starplast/scorecard.html) |
-| What each strategy's method is built from | [techniques](api/starplast/techniques.html) |
-| One neighbour space over every layer; learned edge strengths | [graphspace](api/starplast/graphspace.html) |
-| Gene-gene links with provenance (the star map) | [star_edges](api/starplast/star_edges.html), [star_map](api/starplast/star_map.html) |
-| Deposited datasets, derived into columns | [deposits](api/starplast/deposits.html) |
+| Resolve data and user state | [paths](api/parascape/paths.html) |
+| Inspect datasets and biological evidence groups | [datasets](api/parascape/datasets.html), [slots](api/parascape/slots.html) |
+| Import gene-level measurements | [importer](api/parascape/importer.html) |
+| Select features and embed | [embedding](api/parascape/embedding.html) |
+| Cluster and score associations | [clustering](api/parascape/clustering.html) |
+| Pregenerated maps and label x map scores | [umap_gallery](api/parascape/umap_gallery.html), [umap_gallery_panel](api/parascape/umap_gallery_panel.html) |
+| Search and assess held-out recovery | [search](api/parascape/search.html), [validate](api/parascape/validate.html), [holdout_cv](api/parascape/holdout_cv.html) |
+| Rank candidate findings | [discovery](api/parascape/discovery.html), [optimize](api/parascape/optimize.html) |
+| Store analyses and recipes | [runs](api/parascape/runs.html), [searches](api/parascape/searches.html), [recipes](api/parascape/recipes.html) |
+| Embed the desktop interface | [app](api/parascape/app.html), [analysis_panel](api/parascape/analysis_panel.html) |
+| Guided workflows | [workflows](api/parascape/workflows.html) |
+| Group-aware classification, regression and multi-label evaluation | [prediction](api/parascape/prediction.html) |
+| Weighted transductive networks | [network_prediction](api/parascape/network_prediction.html) |
+| Typed observations and reviewed assertions | [evidence](api/parascape/evidence.html) |
+| Explain results and compare measurements | [prioritization](api/parascape/prioritization.html) |
+| Named inference strategies, their self-tests and calibration | [strategies](api/parascape/strategies.html), [calibration](api/parascape/calibration.html) |
+| Standard metrics for every task, and their glossary | [scorecard](api/parascape/scorecard.html) |
+| What each strategy's method is built from | [techniques](api/parascape/techniques.html) |
+| One neighbour space over every layer; learned edge strengths | [graphspace](api/parascape/graphspace.html) |
+| Gene-gene links with provenance (the star map) | [star_edges](api/parascape/star_edges.html), [star_map](api/parascape/star_map.html) |
+| Deposited datasets, derived into columns | [deposits](api/parascape/deposits.html) |
 
 `app.Window(species=...)` requires an existing `PyQt6.QtWidgets.QApplication`.
 Call it on the GUI thread. `app.main()` owns the application event loop and is

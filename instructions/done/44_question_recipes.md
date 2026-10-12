@@ -1,6 +1,6 @@
 # 44 — Recipes: a named biological question, its inputs, its holdout, and its control
 
-**Status: DONE 2026-08-18.** `starplast/recipes.py`, 49 tests, 100% coverage, no `pragma`.
+**Status: DONE 2026-08-18.** `parascape/recipes.py`, 49 tests, 100% coverage, no `pragma`.
 
 ## What shipped
 

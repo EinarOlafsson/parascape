@@ -16,7 +16,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import organisms as O  # noqa: E402
+from parascape import organisms as O  # noqa: E402
 
 # Manual transcription of Figure 3 panel labels, visually inspected 2026-10-08.
 # These are shorthand labels, not invented full gene identifiers or fine classes.

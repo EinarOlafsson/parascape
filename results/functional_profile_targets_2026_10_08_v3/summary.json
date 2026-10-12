@@ -53,7 +53,7 @@
       "calibration": "6e59139d8781315e2c85ce5c4ae114529f5efac3155c94875ea781468c61789d",
       "test": "e0e12288bec51512bcd0c95dd7fcfd2cbc02611d505d5d1188f0e900712ac536"
     },
-    "preparation_scope": "57d8692e1fe27819e370b5ded073c3a8a10d7c32f89cc24a5ed1fd2ede6bdbb1"
+    "preparation_scope": "c73a1552a3e1bc8f9765324b0d23194c9862cbd2528769f92edb1bcf82420e27"
   },
   "exact_source_cell_replay": true,
   "exact_full_universe_record_replay": true,

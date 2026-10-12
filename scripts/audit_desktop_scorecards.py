@@ -21,8 +21,8 @@ def audit(output):
     started = time.monotonic()
     os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
     from PyQt6 import QtCore, QtGui, QtWidgets
-    from starplast import host_foundation_scorecard as HF, scorecard_view as V
-    from starplast.scorecard_browser import ScorecardBrowser
+    from parascape import host_foundation_scorecard as HF, scorecard_view as V
+    from parascape.scorecard_browser import ScorecardBrowser
 
     output = Path(output)
     if output.exists():
@@ -108,7 +108,7 @@ def audit(output):
             for browser in browsers:
                 browser.close()
 
-    from starplast import scorecard as SC
+    from parascape import scorecard as SC
     check('all six task contracts represented', tasks == set(SC.TASKS))
     route_view = V.build_scorecard_view(exports['labels']['snapshot']['card'], links=(
         V.ScorecardLink('Fixture rows', 'scorecard:rows/fixture'),
@@ -133,8 +133,8 @@ def audit(output):
     code = output / 'code'
     code.mkdir()
     paths = ['scripts/audit_desktop_scorecards.py', 'scripts/notebook_runner.py',
-        'starplast/scorecard_view.py', 'starplast/scorecard_browser.py',
-        'starplast/scorecard.py', 'starplast/host_foundation_scorecard.py', 'starplast/organisms.py']
+        'parascape/scorecard_view.py', 'parascape/scorecard_browser.py',
+        'parascape/scorecard.py', 'parascape/host_foundation_scorecard.py', 'parascape/organisms.py']
     code_receipts = {}
     for relative in paths:
         path = ROOT / relative

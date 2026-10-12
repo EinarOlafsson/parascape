@@ -8,11 +8,11 @@
     "scope": "primary acquisition/schema preflight; field-level review pending"
   },
   "input_sha256": {
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/review_spatial_truth_sources.py": "2020851ea48c27462d8d8c8a1da125896ef969a7eab0ed6c3af9a13a8c4c4061",
-    "/media/carruthers/mnt3/claude/repo/starplast/results/source_recovery_final_2026_10_07_v2/bindings.json": "d0115983c86a0f78ec0d821761b535de8721a7bbabc8a2a316567715db343b48",
-    "/media/carruthers/mnt3/claude/repo/starplast/starplast/datasets.py": "f61fcd6c80783cc26792bf0ee9f5c7230033aaf109668c1508c4faba0c368a9e",
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/recover_pmc_sources.py": "d7c38f060cdb8d1ef857ab1270f38498f7f664dcb2356f718428ca964ca5202a",
-    "/media/carruthers/mnt3/claude/repo/starplast/scripts/recover_source_files.py": "256e44c1c408db923014ad77e67e47bbbbe4b3152b822c3a25d14643cc823ea3"
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/review_spatial_truth_sources.py": "b1abcc124891bc93f8e278d353fb826d5d0a95b3afd0a35021ebadbb470edc86",
+    "/media/carruthers/mnt3/claude/repo/parascape/results/source_recovery_final_2026_10_07_v2/bindings.json": "d0115983c86a0f78ec0d821761b535de8721a7bbabc8a2a316567715db343b48",
+    "/media/carruthers/mnt3/claude/repo/parascape/parascape/datasets.py": "f61fcd6c80783cc26792bf0ee9f5c7230033aaf109668c1508c4faba0c368a9e",
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/recover_pmc_sources.py": "edc70f10f5308638a4c06d962f2bf88449d24a501f3a054a9aa196a22e052088",
+    "/media/carruthers/mnt3/claude/repo/parascape/scripts/recover_source_files.py": "6cc28014f7e578833d2eec70271baeb556ef61228c676832c5f72e00bd1a9c52"
   },
   "outputs": {
     "PMC13369866.1.json": "3ed676ee5f3476f753f77a2b400fb61aea865cc8dcc2f94967424d905c5e6200",

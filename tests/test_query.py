@@ -10,8 +10,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from starplast import identity, organisms as O
-from starplast.query import AliasRecord, BiologicalContext, EntityRef, GeneResolver, Query, Resolution
+from parascape import identity, organisms as O
+from parascape.query import AliasRecord, BiologicalContext, EntityRef, GeneResolver, Query, Resolution
 
 
 G1 = EntityRef(O.TOXOPLASMA, "gene", "TGME49_100001")

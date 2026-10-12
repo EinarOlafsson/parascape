@@ -15,8 +15,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from starplast import organisms as O, provenance as P  # noqa: E402
-from starplast.spaces import human as H, validate_nodes  # noqa: E402
+from parascape import organisms as O, provenance as P  # noqa: E402
+from parascape.spaces import human as H, validate_nodes  # noqa: E402
 
 
 def _sha(path):
@@ -50,10 +50,10 @@ def build(output):
     batch = H.build_gene_foundation(records,links)
     assert len(records)==59033 and len(batch.nodes)==58988
     assert batch.mapping_summary['qualified_PAR_Y_records']==45
-    code = [Path(__file__),ROOT/'starplast/spaces/human.py',ROOT/'starplast/spaces/__init__.py',
-        ROOT/'starplast/provenance.py',ROOT/'starplast/organisms.py']
+    code = [Path(__file__),ROOT/'parascape/spaces/human.py',ROOT/'parascape/spaces/__init__.py',
+        ROOT/'parascape/provenance.py',ROOT/'parascape/organisms.py']
     source_files = tuple(P.SourceFile(str(path),_sha(path),path.stat().st_size) for path in inputs.values())
-    transform = P.Transform('GTEx source-gene identity and summary preservation','starplast.spaces.human',_sha(code[1]),
+    transform = P.Transform('GTEx source-gene identity and summary preservation','parascape.spaces.human',_sha(code[1]),
         ('host_gtex_transcriptome:Name',*H.FIELDS),tuple(batch.nodes.columns),
         {'reference':'GENCODE39/GRCh38','qualified_PAR_Y':'retain separately, no ordinary-gene overwrite',
          'source_float_conversion':'Python binary64 round-trip','protein_measurement_projection':False})
@@ -102,8 +102,8 @@ def build(output):
     (output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
     (output/'code').mkdir()
     for path in code:(output/'code'/path.name).write_bytes(path.read_bytes())
-    installed = [ROOT/'starplast/data'/name for name in (*O.HOST_TABLES.values(),'nodes.parquet','pf_nodes.parquet',
-        'graph.npz','pf_graph.npz','gene_track_record.parquet','pf_gene_track_record.parquet') if (ROOT/'starplast/data'/name).exists()]
+    installed = [ROOT/'parascape/data'/name for name in (*O.HOST_TABLES.values(),'nodes.parquet','pf_nodes.parquet',
+        'graph.npz','pf_graph.npz','gene_track_record.parquet','pf_gene_track_record.parquet') if (ROOT/'parascape/data'/name).exists()]
     all_inputs = [*inputs.values(),review,bindings,*code,*installed]
     (output/'manifest.json').write_text(json.dumps({'input_sha256':{str(p):_sha(p) for p in all_inputs},
         'outputs':{str(p.relative_to(output)):_sha(p) for p in output.rglob('*') if p.is_file()},

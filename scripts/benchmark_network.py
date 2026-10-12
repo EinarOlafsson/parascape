@@ -13,12 +13,12 @@ sys.path.insert(0,str(ROOT))
 
 def main():
     """Use identical family splits for single layers and a learned combination."""
-    from starplast.prediction import TaskSpec
-    from starplast.network_prediction import run_network,bundled_network
+    from parascape.prediction import TaskSpec
+    from parascape.network_prediction import run_network,bundled_network
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',type=Path,default=ROOT/'results/network_043')
     args=parser.parse_args(); args.output.mkdir(parents=True,exist_ok=True)
-    nodes=pd.read_parquet(ROOT/'starplast/data/nodes.parquet')
+    nodes=pd.read_parquet(ROOT/'parascape/data/nodes.parquet')
     graph,sources=bundled_network(nodes)
     rows=[]
     for layers in (['domain'],['coexpression'],['struct'],list(sources)):

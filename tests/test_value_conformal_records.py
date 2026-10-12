@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import artifacts as A, capabilities as C, organisms as O, record_scorecards as R, scorecard as SC, strategies as S, strategy_learning as N, strategy_catalog as L, value_conformal_records as F
-from starplast.query import Query
-from starplast.splits import Assignment, SplitManifest
+from parascape import artifacts as A, capabilities as C, organisms as O, record_scorecards as R, scorecard as SC, strategies as S, strategy_learning as N, strategy_catalog as L, value_conformal_records as F
+from parascape.query import Query
+from parascape.splits import Assignment, SplitManifest
 
 IDS = tuple(f'TGME49_{i:06d}' for i in range(100001, 100036))
 ROLES = ['train']*24 + ['tune']*3 + ['calibration']*3 + ['test']*5

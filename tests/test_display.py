@@ -16,7 +16,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import ambient as A, app as AW, lighting as L  # noqa: E402
+from parascape import ambient as A, app as AW, lighting as L  # noqa: E402
 
 
 # --------------------------------------------------------------------------- the blob field
@@ -332,7 +332,7 @@ def test_preferences_is_in_the_file_menu_and_about_is_in_help(win):
               for m in win.menuBar().findChildren(QtWidgets.QMenu)}
     assert "Preferences…" in labels["&File"]
     assert "Preferences…" not in labels.get("&View", [])
-    assert "About starplast" in labels["&Help"]
+    assert "About parascape" in labels["&Help"]
 
 
 def test_preferences_is_a_window_of_its_own(win):
@@ -347,7 +347,7 @@ def test_preferences_is_a_window_of_its_own(win):
 
 
 def test_about_says_what_is_running_rather_than_what_was_written(win):
-    from starplast import __version__
+    from parascape import __version__
     text = win.about_text()
     assert __version__ in text
     assert f"{len(win.nodes):,}" in text
@@ -370,7 +370,7 @@ def win(qapp):
     asked for it, in whatever order the suite happens to run them.
     """
     from PyQt6 import QtGui
-    from starplast.app import Window
+    from parascape.app import Window
     before = QtGui.QFont(qapp.font())
     w = Window()
     w.resize(1200, 800)
@@ -383,10 +383,10 @@ def test_the_settings_are_remembered_across_a_restart(qapp, tmp_path, monkeypatc
     """A background someone turned on, off again on the next launch, is a background they will not
     turn on twice."""
     from PyQt6 import QtCore
-    from starplast import paths
-    from starplast.app import Window
+    from parascape import paths
+    from parascape.app import Window
     monkeypatch.setenv(paths.ENV_STATE, str(tmp_path))
-    s = QtCore.QSettings("starplast", "starplast")
+    s = QtCore.QSettings("parascape", "parascape")
     s.setValue("display/ambient", "blobs")
     s.setValue("display/ambient_density", 2.0)
     s.setValue("display/lighting", "lit")
@@ -518,14 +518,14 @@ def test_light_options_are_remembered(win):
     win.set_lighting_option("mood", "warm")
     assert win._lighting["source"] == "selected gene"
     assert win._lighting["point_mode"] == "flat" and win._lighting["mood"] == "warm"
-    s = QtCore.QSettings("starplast", "starplast")
+    s = QtCore.QSettings("parascape", "parascape")
     assert s.value("display/light_source") == "selected gene"
     assert s.value("display/light_point_mode") == "flat"
     assert s.value("display/light_mood") == "warm"
 
 
 def test_preferences_offer_only_distinct_understandable_render_controls(win):
-    from starplast import lighting as light
+    from parascape import lighting as light
     dialog = win.build_preferences()
     try:
         choices = lambda box: [box.itemText(i) for i in range(box.count())]
@@ -551,8 +551,8 @@ def test_about_opens(win):
     """In a glass window beside the map now, not a modal box; the text shown is the text returned."""
     text = win.about()
     shown = win._about
-    assert shown.isVisible() and shown.windowTitle() == "About starplast"
-    assert "starplast" in shown.text and text == shown.text
+    assert shown.isVisible() and shown.windowTitle() == "About parascape"
+    assert "parascape" in shown.text and text == shown.text
     shown.close()
 
 
@@ -561,7 +561,7 @@ def test_the_artwork_no_longer_makes_qt_complain(qapp, capfd):
     """Three warnings per render, on every repaint of every organelle mask, is a console nobody can
     read -- and a real warning would be lost in it. UniProt nests hidden `<text>` descriptions and
     `<a>` links inside `<path>` elements, where the content model does not allow them."""
-    from starplast import celldiagram as CD
+    from parascape import celldiagram as CD
     capfd.readouterr()
     d = CD.CellDiagram()
     d.resize(200, 280)
@@ -575,7 +575,7 @@ def test_the_artwork_no_longer_makes_qt_complain(qapp, capfd):
 def test_stripping_the_metadata_keeps_every_organelle(qapp):
     """It removes what is not drawn. An organelle lost with it would be a compartment that stops
     being clickable, which is the whole feature."""
-    from starplast import celldiagram as CD
+    from parascape import celldiagram as CD
     raw = open(CD.icon_path(), encoding="utf8").read()
     stripped = CD.strip_metadata(raw)
     assert CD.groups_in(stripped) == CD.groups_in(raw)
@@ -588,7 +588,7 @@ def test_stripping_the_metadata_keeps_every_organelle(qapp):
 def test_the_credit_survives_the_stripping(qapp):
     """The creator's name and the licence ARE that metadata. Stripping it and then looking for it is
     how a CC BY attribution silently disappears."""
-    from starplast import celldiagram as CD
+    from parascape import celldiagram as CD
     d = CD.CellDiagram()
     assert d.credit["creator"] and "creativecommons.org" in d.credit["license"]
     assert d.credit["creator"] in d.toolTip()
@@ -599,7 +599,7 @@ def test_a_tooltip_is_a_rectangle_of_prose(qapp):
     """A fixed table width does NOT constrain a tooltip -- measured at 1,588 px when it was tried.
     `white-space: pre` with the breaks already in is what holds it."""
     from PyQt6 import QtGui
-    from starplast import theme as TH
+    from parascape import theme as TH
     text = ("One long sentence about why a control exists and what choosing badly costs, which on "
             "one line would run off the side of any monitor and be unreadable because the start "
             "and the end are too far apart to hold in the head at once.")
@@ -615,7 +615,7 @@ def test_a_tooltip_is_a_rectangle_of_prose(qapp):
 def test_the_tooltip_is_on_the_setting_not_only_the_field(qapp):
     """The label is the word people hover over; the box beside it is the thing they click."""
     from PyQt6 import QtWidgets
-    from starplast import theme as TH
+    from parascape import theme as TH
     w = QtWidgets.QWidget()
     form = QtWidgets.QFormLayout(w)
     box = QtWidgets.QComboBox()
@@ -641,7 +641,7 @@ def test_text_size_scales_the_whole_interface(win):
     widget reports as its size hint, so the text grew and the boxes did not -- and labels were cut
     off at the old width."""
     from PyQt6 import QtWidgets
-    from starplast.app import UI_SCALE_RANGE
+    from parascape.app import UI_SCALE_RANGE
     app = QtWidgets.QApplication.instance()
     base = win._base_font.pointSizeF()
     win.set_ui_scale(1.4)
@@ -678,7 +678,7 @@ def test_the_text_size_control_is_a_slider_that_says_where_it_is(win):
     """A number box asks for a figure nobody knows in advance. This is a thing you drag until it
     looks right -- and the read-out beside it is what lets you put it back."""
     from PyQt6 import QtWidgets
-    from starplast.app import UI_SCALE_RANGE
+    from parascape.app import UI_SCALE_RANGE
     win.build_preferences()
     assert isinstance(win.zoom_box, QtWidgets.QSlider)
     assert (win.zoom_box.minimum(), win.zoom_box.maximum()) == (
@@ -747,7 +747,7 @@ def test_the_caption_under_the_cell_has_no_card_of_its_own(win):
 
 
 def test_fields_are_one_dark_grey_everywhere(qapp):
-    from starplast import theme as TH
+    from parascape import theme as TH
     for name in TH.THEMES:
         assert TH.FIELD_GREY in TH.stylesheet(name)
 
@@ -757,7 +757,7 @@ def test_a_widget_destroyed_mid_walk_is_skipped(qapp):
     destroy one while this loop runs. PyQt raises RuntimeError for the ones it can catch; without
     the guard the walk stops and the rest of the window keeps its one-line tooltips."""
     from PyQt6 import QtWidgets
-    from starplast import theme as TH
+    from parascape import theme as TH
 
     class Vanishing(QtWidgets.QLabel):
         def toolTip(self):
@@ -1119,7 +1119,7 @@ def test_the_ball_is_lit_from_above_left_when_there_is_no_camera_yet(win, monkey
     """During startup, and for the whole of an offscreen render, there is no camera to convert a
     world light into a screen direction. Above and to the left is where every reader assumes light
     comes from, and it reads as convex -- a ball lit from below reads as a hollow."""
-    from starplast import sprite as SP
+    from parascape import sprite as SP
 
     def no_camera():
         raise RuntimeError("no GL context")
@@ -1131,7 +1131,7 @@ def test_the_ball_is_lit_from_above_left_when_there_is_no_camera_yet(win, monkey
 
 def test_the_ball_is_lit_from_where_the_light_is(win):
     """The CPU fallback highlight agrees with the scene light on old OpenGL contexts."""
-    from starplast import sprite as SP
+    from parascape import sprite as SP
     old_sel, old_source, failed = win.sel, win._lighting["source"], win.scatter._gpu_failed
     win.set_lighting("soft")
     win._lighting["source"] = "selected gene"
@@ -1340,7 +1340,7 @@ def test_the_background_sits_behind_every_container(win):
 
 
 def test_panel_opacity_lets_the_background_through_but_not_the_fields(win):
-    from starplast import theme as TH
+    from parascape import theme as TH
     assert win.set_container_opacity(0.6) == 0.6
     sheet = TH.stylesheet(win.theme, 0.6)
     assert "rgba(" in sheet, "the containers are still opaque"
@@ -1571,10 +1571,10 @@ def test_the_five_defaults_are_what_was_asked_for(qapp, tmp_path, monkeypatch):
     """A fresh install, with nothing stored. These were chosen by the person who uses the program;
     the test exists so a later refactor cannot quietly move them back."""
     from PyQt6 import QtCore
-    from starplast import paths
-    from starplast.app import Window, DEFAULT_POINT_SIZE
+    from parascape import paths
+    from parascape.app import Window, DEFAULT_POINT_SIZE
     monkeypatch.setenv(paths.ENV_STATE, str(tmp_path))
-    QtCore.QSettings("starplast", "starplast").clear()
+    QtCore.QSettings("parascape", "parascape").clear()
     w = Window()
     try:
         assert w._lighting["mode"] == "deep ray traced"
@@ -1588,7 +1588,7 @@ def test_the_five_defaults_are_what_was_asked_for(qapp, tmp_path, monkeypatch):
 
 
 def POINT_SIZES_BY_LABEL():
-    from starplast.app import POINT_SIZES
+    from parascape.app import POINT_SIZES
     return POINT_SIZES
 
 
@@ -1687,7 +1687,7 @@ def test_the_finishes_are_distinct_on_the_renderer_the_user_actually_sees(win):
     display and this suite must not. The rendered check lives in `scripts/benchmark_lighting_lab.py`,
     whose recorded run is in `results/`.
     """
-    from starplast import sprite as SP
+    from parascape import sprite as SP
     glass, glossy = SP.SPRITES["glass 3D"], SP.SPRITES["glossy 3D"]
     # The body, which is what carries at this size.
     assert glass["ambient"] < glossy["ambient"], "glass is no darker in the body than glossy"

@@ -65,11 +65,11 @@ jobs:
           python -m twine check --strict dist/*
       - name: Smoke test installed wheel outside the checkout
         run: |
-          python -m venv --system-site-packages /tmp/starplast-wheel
-          /tmp/starplast-wheel/bin/python -m pip install --no-deps --force-reinstall dist/*.whl
+          python -m venv --system-site-packages /tmp/parascape-wheel
+          /tmp/parascape-wheel/bin/python -m pip install --no-deps --force-reinstall dist/*.whl
           cd /tmp
-          /tmp/starplast-wheel/bin/python -I -c 'from starplast import paths; from starplast.app import load; assert paths.check()[0]; assert len(load()[0]) > 1000'
-          /tmp/starplast-wheel/bin/starplast-discover --help
+          /tmp/parascape-wheel/bin/python -I -c 'from parascape import paths; from parascape.app import load; assert paths.check()[0]; assert len(load()[0]) > 1000'
+          /tmp/parascape-wheel/bin/parascape-discover --help
       - uses: actions/upload-artifact@v4
         with:
           name: python-distributions
@@ -81,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/project/starplast/${{ needs.version.outputs.version }}/
+      url: https://pypi.org/project/parascape/${{ needs.version.outputs.version }}/
     permissions:
       id-token: write
     steps:
@@ -125,5 +125,5 @@ jobs:
           fi
           gh release create "$tag" dist/* \
             --target "$GITHUB_SHA" \
-            --title "Starplast $RELEASE_VERSION" \
+            --title "ParaScape $RELEASE_VERSION" \
             --generate-notes "${flags[@]}"

@@ -24,10 +24,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from starplast import claims as C  # noqa: E402
-from starplast import organisms as O  # noqa: E402
-from starplast import strategies as S  # noqa: E402
-from starplast import track_record as T  # noqa: E402
+from parascape import claims as C  # noqa: E402
+from parascape import organisms as O  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape import track_record as T  # noqa: E402
 
 
 def literature_context(ctx, target: str, layer: str, corrected: bool = True):
@@ -185,7 +185,7 @@ def audit() -> tuple:
 
 def fingerprints() -> dict:
     """SHA-256 identities of the code, node tables, graphs, record and claims read by the audit."""
-    paths = list((ROOT / "starplast").glob("*.py")) + [Path(__file__)]
+    paths = list((ROOT / "parascape").glob("*.py")) + [Path(__file__)]
     paths += [Path(C._data(name)) for name in ("track_record.parquet", "claims.parquet",
                                               "claim_recipes.parquet")]
     for code in O.codes(available=True):
@@ -220,7 +220,7 @@ def main(argv=None) -> int:
           "files are updated.")
     nb.code("from pathlib import Path", "import sys, json, pandas as pd",
             "root = next(p for p in [Path.cwd(), *Path.cwd().parents]",
-            "            if (p / 'pyproject.toml').exists() and (p / 'starplast').is_dir())",
+            "            if (p / 'pyproject.toml').exists() and (p / 'parascape').is_dir())",
             "sys.path.insert(0, str(root / 'scripts'))",
             "from audit_claim_verifiers import audit, fingerprints",
             f"out = Path({str(args.out.resolve())!r})", "before = fingerprints()")

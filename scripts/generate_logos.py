@@ -29,7 +29,7 @@ import random
 
 SIZE = 64                     # the drawing box; every shape is sized in these units
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                   "starplast", "data", "icons")
+                   "parascape", "data", "icons")
 
 HEAD = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {SIZE} {SIZE}" '
         f'width="{SIZE}" height="{SIZE}">')
@@ -290,28 +290,28 @@ def drafts() -> list:
     out = []
     for i, (n, links, r) in enumerate([(9, 1, 3.2), (14, 1, 2.8), (20, 2, 2.4), (28, 1, 2.0),
                                        (12, 2, 3.0), (18, 3, 2.2), (24, 2, 2.6), (16, 1, 3.4)]):
-        out.append((f"constellation_{i + 1}", "starplast — the map is a point cloud",
+        out.append((f"constellation_{i + 1}", "parascape — the map is a point cloud",
                     constellation(seed=100 + i, n=n, links=links, r=r)))
     for i, (rings, tilt, dotted) in enumerate([(3, 0, False), (4, 0, False), (3, -20, False),
                                                (4, -20, True), (2, 15, False), (3, 30, True)]):
-        out.append((f"apicoplast_{i + 1}", "starplast — the plastid the name refers to",
+        out.append((f"apicoplast_{i + 1}", "parascape — the plastid the name refers to",
                     apicoplast(rings, tilt, dotted)))
     for i, (fat, pts) in enumerate([(1.0, 0), (1.0, 14), (0.8, 20), (1.2, 10), (1.0, 26),
                                     (0.9, 34)]):
-        out.append((f"crescent_{i + 1}", "starplast — the tachyzoite, apex up",
+        out.append((f"crescent_{i + 1}", "parascape — the tachyzoite, apex up",
                     crescent(fat, pts, seed=200 + i)))
     for i, (rings, dots) in enumerate([(3, 1), (3, 2), (2, 3), (4, 1), (3, 4), (2, 1)]):
-        out.append((f"orbit_{i + 1}", "starplast — three levels of detail",
+        out.append((f"orbit_{i + 1}", "parascape — three levels of detail",
                     orbit(rings, dots, seed=300 + i)))
     for i, (rad, stroke, joined) in enumerate([(2.6, 0, False), (2.2, 2.0, True), (3.0, 0, False),
                                                (1.8, 3.0, True), (2.4, 1.4, True), (3.4, 0, False),
                                                (2.0, 2.6, True)]):
-        out.append((f"letter_s_{i + 1}", "starplast — an S made of genes",
+        out.append((f"letter_s_{i + 1}", "parascape — an S made of genes",
                     letter_s(rad, stroke, joined)))
     for i, (lit, total, inv) in enumerate([(6, 40, False), (4, 60, False), (8, 30, False),
                                            (5, 45, True), (3, 50, True), (7, 36, True),
                                            (9, 24, False)]):
-        out.append((f"dark_field_{i + 1}", "starplast — most of this proteome is unstudied",
+        out.append((f"dark_field_{i + 1}", "parascape — most of this proteome is unstudied",
                     dark_field(seed=400 + i, lit=lit, total=total, inverted=inv)))
     # The seventh direction, asked for after the first forty were drawn: a tilted system with the
     # parasite at the centre of it. Eight, because it is the direction the name argues for and one
@@ -325,13 +325,13 @@ def drafts() -> list:
             (3, -14, (1, 1, 1), 2, True, False),
             (2, -26, (1, 2), 3, True, False),
             (4, -20, (1, 1, 1, 1), 0, True, False)]):
-        out.append((f"galaxy_{i + 1}", "starplast — a tilted system with Toxoplasma at its centre",
+        out.append((f"galaxy_{i + 1}", "parascape — a tilted system with Toxoplasma at its centre",
                     galaxy(orbits, tilt, planets, seed=500 + i, arms=arms, solid=solid,
                            dotted=dotted)))
     # The last of the series: the parasite is not stamped over the system, it IS the innermost
     # orbit, with rhoptries on it. The system resolves into the organism rather than being
     # interrupted by it.
-    out.append(("galaxy_9", "starplast — the innermost of three symmetrical rings is the parasite",
+    out.append(("galaxy_9", "parascape — the innermost of three symmetrical rings is the parasite",
                 galaxy_body(orbits=3, tilt=-22, planets=(0, 1, 1), seed=600)))
     return out
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Merge the derived deposit tables into the shipped caches.
 
-`starplast.deposits` derives each deposit into `starplast/data/deposit_<key>.tsv`; this puts those
+`parascape.deposits` derives each deposit into `parascape/data/deposit_<key>.tsv`; this puts those
 columns into `nodes.parquet` (Toxoplasma), `pf_nodes.parquet` (Plasmodium) and
 the separate human/mouse host tables. Idempotent: a
 column is replaced from its table each time, never appended twice.
@@ -24,7 +24,7 @@ import pandas as pd
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from starplast import deposits, host, identity  # noqa: E402
+from parascape import deposits, host, identity  # noqa: E402
 
 
 def toxo_resolver(data: str, ids):
@@ -104,7 +104,7 @@ def main(argv=None, log=print) -> int:
     ap.add_argument("--base", default=ROOT)
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args(argv)
-    data = os.path.join(args.base, "starplast", "data")
+    data = os.path.join(args.base, "parascape", "data")
     tg = os.path.join(data, "nodes.parquet")
     status = merge_parasite(tg, "Tg", args.base,
                             resolve=toxo_resolver(data, pd.read_parquet(tg, columns=["gene_id"])

@@ -20,11 +20,11 @@ def _sha(path):
 def census(output):
     """Pin all original source cells, validated profiles, metadata and evidence gaps."""
     import pandas as pd
-    from starplast import datasets as D, functional_domain_profiles as P, functional_domains as FD, organisms as O, strategies as S
+    from parascape import datasets as D, functional_domain_profiles as P, functional_domains as FD, organisms as O, strategies as S
 
     output = Path(output)
     lookup = FD.shipped()
-    metadata_path = ROOT / 'starplast/data/functional_domain_names.json'
+    metadata_path = ROOT / 'parascape/data/functional_domain_names.json'
     node_paths = {organism: Path(O.nodes_path(organism)) for organism in (O.TOXOPLASMA, O.FALCIPARUM)}
     input_hashes = {str(path): _sha(path) for path in (*node_paths.values(), metadata_path)}
     summary = {'benchmark_partition': 'FN-DOM-01', 'fitting_performed': False, 'biological_admission': False,
@@ -92,7 +92,7 @@ def census(output):
         assert _sha(node_path) == input_hashes[str(node_path)]
     assert _sha(metadata_path) == input_hashes[str(metadata_path)]
     code_paths = [Path(__file__), ROOT / 'scripts/notebook_runner.py', *[
-        ROOT / 'starplast' / name for name in ('functional_domain_profiles.py', 'functional_domains.py',
+        ROOT / 'parascape' / name for name in ('functional_domain_profiles.py', 'functional_domains.py',
                                               'strategies.py', 'embedding.py', 'provenance.py', 'organisms.py', 'datasets.py')]]
     (output / 'code').mkdir()
     for path in code_paths:

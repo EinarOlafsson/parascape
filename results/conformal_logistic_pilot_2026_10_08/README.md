@@ -40,6 +40,6 @@ artifacts, scorecards, ground truth/provenance/baselines/capabilities and genera
 source scripts. Executed pilot/verification notebooks and original code snapshots
 are retained. Packet hashes are recorded in `packet_sha256.json`.
 
-Base model: `6e6c82563b6e51b3eb57256f701ea816272533ee4a1087fbd586aaf63f740247`.
-Calibration: `411dd9920add4dcb8f347021ad0a7c8c01c8fe497b52fafffe54799324ef8c1c`.
-Held-out artifact: `3e007f211b59ef86af8ab1ce4c51bc5526f3c79f53ee307bc87091e2e3acb78e`.
+Base model: `6c1d01ac6559e2e2540bb5cc2f36aa676e3ce7607ea59eb80be5ae7632a56592`.
+Calibration: `da98c62172c6257158a963364cdacb806785c80ca60f40f046a3adad744021b0`.
+Held-out artifact: `0a5fa0680a5c60d8421d8d60cae53024c5ac891db3f94f3bd01c71ba9d32cee2`.

@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.03, 64.05, 64.07 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/strategies.py`, `starplast/results.py`, `starplast/searches.py`, `starplast/packs.py`, `starplast/paths.py` |
+| Existing code to inspect | `parascape/strategies.py`, `parascape/results.py`, `parascape/searches.py`, `parascape/packs.py`, `parascape/paths.py` |
 
 ## Deliverable
 
@@ -32,7 +32,7 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Completion evidence
 
-`starplast/artifacts.py` provides schema-1 immutable data-only manifests keyed by typed query/organism/target, strategy/task/output semantics, ordered entities, code version/hashes, table/graph/truth/model/calibration dependencies, settings/seed, exclusion identity, fit population/role, partition/split, evaluation context and truth/negative semantics, status/gaps and confidence scope. Held-out/test and unknown/deployment roles are distinct; known benchmark entities cannot masquerade as unknown deployment. Frozen split validation checks exact ordered test cohort, fit access, benchmark identity and inductive/transductive regime.
+`parascape/artifacts.py` provides schema-1 immutable data-only manifests keyed by typed query/organism/target, strategy/task/output semantics, ordered entities, code version/hashes, table/graph/truth/model/calibration dependencies, settings/seed, exclusion identity, fit population/role, partition/split, evaluation context and truth/negative semantics, status/gaps and confidence scope. Held-out/test and unknown/deployment roles are distinct; known benchmark entities cannot masquerade as unknown deployment. Frozen split validation checks exact ordered test cohort, fit access, benchmark identity and inductive/transductive regime.
 
 Readers require a freshly constructed current expected spec and verify the full manifest and payload hashes/size. Mismatched order, target, settings, split/model/partition or inputs are refused. Changed inputs invalidate declared artifact/model/calibration descendants. Safe finite JSON payloads preserve null metrics; symlinks, unsafe names, nonfinite data and overwriting existing directories are refused. Calibrated confidence requires a calibration identity/applicability scope and a compatible output kind.
 

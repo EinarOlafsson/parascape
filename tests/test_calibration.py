@@ -18,7 +18,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import calibration as C  # noqa: E402
+from parascape import calibration as C  # noqa: E402
 
 
 def _runs(strategy="planted", organism="Tg", settings=None, targets=("a", "b"), seeds=(1, 2, 3, 4, 5),
@@ -195,7 +195,7 @@ def test_the_sentence_names_the_grade_and_the_scale(tmp_path):
 
 
 def test_the_markdown_table_has_one_row_per_calibrated_strategy(tmp_path):
-    from starplast import strategies as S
+    from parascape import strategies as S
     key = S.catalog()[0].key
     rows = _runs(strategy=key)
     path = C.write(C.summarise(C.runs_frame(rows)), str(tmp_path / "cal.json"))
@@ -232,7 +232,7 @@ def test_every_shipped_strategy_carries_a_grade_the_module_knows(shipped):
 
 
 def test_the_shipped_calibration_covers_the_strategies_it_claims(shipped):
-    from starplast import strategies as S
+    from parascape import strategies as S
     if not shipped["organisms"]:
         pytest.skip("no calibration shipped on this machine")
     known = {s.key for s in S.catalog()}

@@ -1,6 +1,6 @@
 """Pin the Qt binding before anything imports pyqtgraph.
 
-starplast imports PyQt6 directly. pytest-qt, if installed, imports PySide6 when the plugin loads, and
+parascape imports PyQt6 directly. pytest-qt, if installed, imports PySide6 when the plugin loads, and
 pyqtgraph then binds itself to whichever binding it finds in sys.modules first -- PySide6 -- while the app
 keeps using PyQt6. The two halves of the GL widget then come from different bindings and the app fails to
 import under pytest while working perfectly when launched normally.
@@ -40,7 +40,7 @@ import tempfile  # noqa: E402
 
 from PyQt6 import QtCore  # noqa: E402
 
-SETTINGS_DIR = tempfile.mkdtemp(prefix="starplast-test-settings-")
+SETTINGS_DIR = tempfile.mkdtemp(prefix="parascape-test-settings-")
 QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
 for _fmt in (QtCore.QSettings.Format.NativeFormat, QtCore.QSettings.Format.IniFormat):
     QtCore.QSettings.setPath(_fmt, QtCore.QSettings.Scope.UserScope, SETTINGS_DIR)
@@ -52,10 +52,10 @@ for _fmt in (QtCore.QSettings.Format.NativeFormat, QtCore.QSettings.Format.IniFo
 # `test_run_a`, `test_two_b` and `before` sitting among a user's own work, and any test that keeps a
 # run left another one behind. Saved embeddings go the same way, into the package's own directory.
 #
-# `STARPLAST_STATE` points all three somewhere temporary for the duration of the run.
+# `PARASCAPE_STATE` points all three somewhere temporary for the duration of the run.
 # `test_the_user_s_saved_runs_are_isolated_from_the_suite` is the check that this holds.
-STATE_DIR = tempfile.mkdtemp(prefix="starplast-test-state-")
-os.environ["STARPLAST_STATE"] = STATE_DIR
+STATE_DIR = tempfile.mkdtemp(prefix="parascape-test-state-")
+os.environ["PARASCAPE_STATE"] = STATE_DIR
 
 
 # ONE application for the whole session. Twenty-two test modules create their own with
@@ -72,9 +72,9 @@ import pytest  # noqa: E402
 def _one_qt_application():
     from PyQt6 import QtWidgets
     if QtWidgets.QApplication.instance() is None:
-        # What `starplast.app` does at import, and it must precede the application: a shared GL
+        # What `parascape.app` does at import, and it must precede the application: a shared GL
         # context group and a surface format pyqtgraph accepts.
-        from starplast import sprite
+        from parascape import sprite
         sprite.ensure_gl_format()
         QtCore.QCoreApplication.setAttribute(QtCore.Qt.ApplicationAttribute.AA_ShareOpenGLContexts)
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])

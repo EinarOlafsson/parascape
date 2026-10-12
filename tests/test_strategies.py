@@ -25,8 +25,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import strategies as S  # noqa: E402
-from starplast.jobs import Stopped  # noqa: E402
+from parascape import strategies as S  # noqa: E402
+from parascape.jobs import Stopped  # noqa: E402
 
 CATALOG = S.catalog()
 KEYS = [s.key for s in CATALOG]
@@ -397,7 +397,7 @@ def test_a_sample_keeps_what_it_must_and_favours_the_labelled(planted):
 
 
 def test_a_graph_over_a_different_table_is_refused(tmp_path, monkeypatch):
-    from starplast import paths
+    from parascape import paths
     nodes = pd.DataFrame({"gene_id": ["A", "B", "C"], "x": [1.0, 2.0, 3.0]})
     np.savez(tmp_path / "graph.npz", gene_ids=np.array(["A", "C", "B"]), xyz=np.zeros((3, 3)),
              l__a=np.array([0]), l__b=np.array([1]), l__w=np.array([1.0]))
@@ -461,7 +461,7 @@ def test_every_strategy_finds_what_was_planted(key, planted, planted_big):
     result = s.test(ctx, **{**_genes_for(ctx, s), **BIG.get(key, {})})
     assert result.verdict == "PASS", result.summary()
     # The scorecard it reports is the one it declares, complete, and consistent with the verdict.
-    from starplast import scorecard as SC
+    from parascape import scorecard as SC
     assert result.task == s.task
     assert list(result.scorecard) == list(SC.TASKS[s.task].metrics)
     checked = result.scorecard

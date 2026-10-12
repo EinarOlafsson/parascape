@@ -24,7 +24,7 @@ _LIMIT = ('Recorded annotation recovery only. Biological accuracy and calibrated
           'confidence are unavailable. Shared inputs prevent an independence claim. '
           'Group-aware uncertainty is not estimated in this report. '
           'This outer test cannot select an ensemble or tune a decision rule.')
-REPORT_SHA256 = '940da900b3d5ba356c6e360f220787b849d7382138132ccc96f2d1684178e98b'
+REPORT_SHA256 = '91e32f04ab83bfdab2f6e115be8456554b74e0f3cc5653143fc5aa1789253e89'
 
 
 def find_pair(selected, benchmarks):

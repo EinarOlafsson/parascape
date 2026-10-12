@@ -19,11 +19,11 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import slots as S  # noqa: E402
-from starplast import slot_tree as T  # noqa: E402
+from parascape import slots as S  # noqa: E402
+from parascape import slot_tree as T  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-NODES = os.path.join(ROOT, "starplast", "data", "nodes.parquet")
+NODES = os.path.join(ROOT, "parascape", "data", "nodes.parquet")
 
 
 @pytest.fixture
@@ -51,7 +51,7 @@ def test_the_window_wraps_the_view(qapp):
 
 def test_stored_slot_availability_does_not_claim_experimental_grade(qapp):
     """A filled annotation column is not proof of experimental evidence."""
-    from starplast import organisms as O
+    from parascape import organisms as O
     view = T.SlotTree(pd.DataFrame({'gene_id': ['TGME49_100001'], 'compartment': ['Cytosol']}),
         organism=O.TOXOPLASMA, sources={O.TOXOPLASMA: {}, O.FALCIPARUM: {}})
     iterator = T.QtWidgets.QTreeWidgetItemIterator(view.tree)
@@ -167,7 +167,7 @@ def test_the_alarm_line_turns_red_when_a_claim_is_doubled(qapp, monkeypatch):
                  patterns=("shared_column",), policy="one")
     monkeypatch.setattr(S, "all_slots", lambda organism=None: (one, two))
     view = T.SlotTree(nodes=frame, sources={"Tg": {}}, organism="Tg")
-    from starplast import theme as TH
+    from parascape import theme as TH
     assert TH.palette_for("dark")["error"] in view.alarms.text()
 
 
@@ -211,7 +211,7 @@ def test_selecting_a_group_says_so_rather_than_showing_nothing(qapp):
 def test_an_empty_slot_is_coloured_rather_than_left_to_be_noticed(qapp):
     """The empty rows are the point of the window."""
     from PyQt6 import QtCore, QtGui
-    from starplast import theme as TH
+    from parascape import theme as TH
     view = T.SlotTree(sources={"Pf": {}}, organism="Pf")     # no table: everything reads empty
     leaf = view._leaves(view.tree.invisibleRootItem())[0]
     assert leaf.text(1) == 'unavailable'

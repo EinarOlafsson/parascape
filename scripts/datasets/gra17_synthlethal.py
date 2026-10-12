@@ -13,7 +13,7 @@ RH and RH-delta-gra17 phenotype by passage; MAGeCK p-values
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.screens.crispr_screens()`; this script is the per-dataset view of the same source, for
+`parascape.screens.crispr_screens()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/gra17_synthlethal.py

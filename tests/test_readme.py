@@ -19,7 +19,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import datasets as D  # noqa: E402
+from parascape import datasets as D  # noqa: E402
 
 README = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "README.md")
 
@@ -35,7 +35,7 @@ def test_the_committed_dataset_table_matches_the_registry(readme):
     assert "docs/datasets.md" in readme
     assert D.readme_table().strip() in catalogue, (
         "docs/datasets.md is out of date -- regenerate it from "
-        "starplast.datasets.readme_table()")
+        "parascape.datasets.readme_table()")
 
 
 def test_every_dataset_appears_in_the_table():
@@ -69,7 +69,7 @@ def test_an_unconfirmed_citation_is_stated_rather_than_left_blank():
 
 def test_the_readme_says_how_to_install_and_run(readme):
     assert "pip install -e ." in readme
-    assert re.search(r"^\s*starplast\s*$", readme, re.M)
+    assert re.search(r"^\s*parascape\s*$", readme, re.M)
 
 
 def test_the_readme_says_what_the_program_does(readme):
@@ -79,9 +79,9 @@ def test_the_readme_says_what_the_program_does(readme):
 
 def test_the_readme_documents_the_data_overrides(readme):
     """The first thing anyone needs when a file cannot be found."""
-    from starplast import paths
+    from parascape import paths
     assert paths.ENV_CACHE in readme and paths.ENV_DATASETS in readme
-    assert "python -m starplast.paths" in readme
+    assert "python -m parascape.paths" in readme
 
 
 def test_the_readme_points_at_the_documents_that_carry_the_argument(readme):

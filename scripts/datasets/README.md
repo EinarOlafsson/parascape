@@ -1,6 +1,6 @@
 # One script per dataset
 
-28 scripts, one for each entry in `starplast.datasets.REGISTRY`. Each fetches its source, reads it,
+28 scripts, one for each entry in `parascape.datasets.REGISTRY`. Each fetches its source, reads it,
 resolves its identifiers to current ToxoDB ME49 accessions, and reports what that resolution
 achieved.
 
@@ -28,7 +28,7 @@ quirks that cost time the first time round, straight from the registry.
 ## What they are not
 
 They are not a second implementation of the build. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()` through the domain modules (`localization`, `expression`,
+`parascape.build_graph.load_nodes()` through the domain modules (`localization`, `expression`,
 `screens`, `cellcycle`), and each script names the one that normalizes its columns. A per-dataset
 copy of that logic would drift and eventually misrepresent what produced the shipped data.
 

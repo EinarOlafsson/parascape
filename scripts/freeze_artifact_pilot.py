@@ -12,9 +12,9 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import artifacts as A, capabilities as C, organisms as O  # noqa: E402
-from starplast.query import EntityRef, Query  # noqa: E402
-from starplast.splits import Assignment, SplitManifest  # noqa: E402
+from parascape import artifacts as A, capabilities as C, organisms as O  # noqa: E402
+from parascape.query import EntityRef, Query  # noqa: E402
+from parascape.splits import Assignment, SplitManifest  # noqa: E402
 
 
 def freeze(output):
@@ -29,7 +29,7 @@ def freeze(output):
     sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
     fixture_hash = hashlib.sha256(b'synthetic_artifact_inputs_v1').hexdigest()
     code_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() + '+artifact-contract-worktree'
-    code_hash = sha(ROOT / 'starplast/artifacts.py')
+    code_hash = sha(ROOT / 'parascape/artifacts.py')
     split_payload = asdict(split)
     (output / 'split.json').write_text(json.dumps(split_payload, indent=2) + '\n')
     loaded, reports = [], []
@@ -97,7 +97,7 @@ def freeze(output):
                'changed_code_invalidates': len(stale), 'unchanged_inputs_invalidate': len(unchanged),
                'deliberate_scope_refusals': refusals, 'biological_accuracy': 'not measured', 'fitted_models': 0}
     (output / 'report.json').write_text(json.dumps({'summary': summary, 'tasks': reports}, indent=2) + '\n')
-    inputs = [Path(__file__), ROOT / 'starplast/artifacts.py', ROOT / 'starplast/capabilities.py', ROOT / 'starplast/splits.py', ROOT / 'starplast/query.py']
+    inputs = [Path(__file__), ROOT / 'parascape/artifacts.py', ROOT / 'parascape/capabilities.py', ROOT / 'parascape/splits.py', ROOT / 'parascape/query.py']
     files = [p for p in output.rglob('*.json')]
     (output / 'manifest.json').write_text(json.dumps({'created_utc': datetime.now(timezone.utc).isoformat(), 'summary': summary,
         'input_sha256': {str(p): sha(p) for p in inputs}, 'outputs': {str(p.relative_to(output)): sha(p) for p in files}}, indent=2) + '\n')

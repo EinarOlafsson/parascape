@@ -21,8 +21,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import datasets as D  # noqa: E402
-from starplast.provenance import SourceFile  # noqa: E402
+from parascape import datasets as D  # noqa: E402
+from parascape.provenance import SourceFile  # noqa: E402
 from recover_pmc_sources import BASE, _metadata, named_media  # noqa: E402
 from recover_source_files import download  # noqa: E402
 
@@ -143,7 +143,7 @@ def review(root, output):
     (output/'sources.json').write_text(json.dumps(records, indent=2, allow_nan=False)+'\n')
     summary = {'reviewed_source_addresses': len(records), 'verified_companions': sum(c['status'].startswith('retrieved') for r in records for c in r['companions']),
         'biological_benchmarks_admitted': 0, 'runtime_data_changes': 'none', 'scope': 'primary acquisition/schema preflight; field-level review pending'}
-    inputs = [Path(__file__), bindings_path, ROOT/'starplast/datasets.py', ROOT/'scripts/recover_pmc_sources.py', ROOT/'scripts/recover_source_files.py']
+    inputs = [Path(__file__), bindings_path, ROOT/'parascape/datasets.py', ROOT/'scripts/recover_pmc_sources.py', ROOT/'scripts/recover_source_files.py']
     (output/'manifest.json').write_text(json.dumps({'created_utc': datetime.now(timezone.utc).isoformat(), 'summary': summary,
         'input_sha256': {str(p): _sha(p) for p in inputs}, 'outputs': {p.name: _sha(p) for p in output.iterdir()}}, indent=2)+'\n')
     return summary

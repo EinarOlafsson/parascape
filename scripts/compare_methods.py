@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(_ROOT, "instructions", "done", "47_method_comparison.csv")
-NODES = os.path.join(_ROOT, "starplast", "data", "nodes.parquet")
+NODES = os.path.join(_ROOT, "parascape", "data", "nodes.parquet")
 
 
 def main() -> int:
@@ -36,8 +36,8 @@ def main() -> int:
     ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
 
-    from starplast.questions import as_recipe, load, shipped
-    from starplast.recipes import run
+    from parascape.questions import as_recipe, load, shipped
+    from parascape.recipes import run
 
     nodes = pd.read_parquet(NODES)
     catalogue = shipped(nodes, load())

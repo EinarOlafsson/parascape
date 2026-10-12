@@ -9,7 +9,7 @@ whose whole claim is reproducibility is the wrong first impression.
 
 There are two separate roots and confusing them is the mistake this module exists to prevent:
 
-    the CACHE     `starplast/data/` — built artefacts, committed, 17 MB, ships inside the package.
+    the CACHE     `parascape/data/` — built artefacts, committed, 17 MB, ships inside the package.
                   The application needs this and nothing else. It must resolve offline, from an
                   installed wheel, with no configuration, forever.
 
@@ -23,8 +23,8 @@ So `data_dir()` must never fail and `dataset_root()` is allowed to return a dire
 
 Both roots take an explicit override first, because a user who sets one has a reason:
 
-    $STARPLAST_DATA      the raw datasets tree
-    $STARPLAST_CACHE     the built cache
+    $PARASCAPE_DATA      the raw datasets tree
+    $PARASCAPE_CACHE     the built cache
 
 then the layouts that actually occur, in order, and finally the platform cache directory, which is
 where anything downloaded lands. `describe()` prints which candidate won, since a resolver that silently
@@ -34,8 +34,8 @@ from __future__ import annotations
 
 import os
 
-ENV_DATASETS = "STARPLAST_DATA"
-ENV_CACHE = "STARPLAST_CACHE"
+ENV_DATASETS = "PARASCAPE_DATA"
+ENV_CACHE = "PARASCAPE_CACHE"
 
 _PKG = os.path.dirname(os.path.abspath(__file__))
 _REPO = os.path.dirname(_PKG)
@@ -45,7 +45,7 @@ _REPO = os.path.dirname(_PKG)
 #: rather than only a platform default because the test suite must be able to point it somewhere
 #: else: every `Window` built in a test wrote its kept runs into the real one, and a suite that
 #: leaves `test_run_a` in somebody's saved clusterings has damaged what it was checking.
-ENV_STATE = "STARPLAST_STATE"
+ENV_STATE = "PARASCAPE_STATE"
 
 
 def user_cache_dir() -> str:
@@ -59,7 +59,7 @@ def user_cache_dir() -> str:
         base = os.path.expanduser("~/Library/Caches")
     else:
         base = os.environ.get("XDG_CACHE_HOME") or os.path.expanduser("~/.cache")
-    return os.path.join(base, "starplast")
+    return os.path.join(base, "parascape")
 
 
 # --------------------------------------------------------------------------- the built cache
@@ -77,7 +77,7 @@ def data_dir() -> str:
     from an import is the least useful way to tell someone a file is absent.
     """
     # An explicit override is honoured absolutely, even when it points at nothing. Falling through to
-    # the next candidate would mean a user who mistyped $STARPLAST_CACHE silently gets a DIFFERENT
+    # the next candidate would mean a user who mistyped $PARASCAPE_CACHE silently gets a DIFFERENT
     # cache than the one they asked for -- which is precisely the "resolver picks the wrong directory
     # in silence" failure this module exists to prevent. Wrong and loud beats wrong and quiet.
     override = os.environ.get(ENV_CACHE)
@@ -124,7 +124,7 @@ def check() -> tuple:
     if not missing:
         return True, f"cache complete at {d}"
     return False, (f"cache incomplete at {d}: missing {', '.join(missing)}. "
-                   f"Run `python -m starplast.build_graph` to build it, or set ${ENV_CACHE} to an "
+                   f"Run `python -m parascape.build_graph` to build it, or set ${ENV_CACHE} to an "
                    f"existing cache.")
 
 
@@ -197,7 +197,7 @@ def describe() -> str:
 
 
 def _cli():
-    """`python -m starplast.paths` — what resolved where, and what is missing.
+    """`python -m parascape.paths` — what resolved where, and what is missing.
 
     The first thing to run when something cannot find its data, which is why it prints the overrides
     even when they are unset: the usual fix is to set one.

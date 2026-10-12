@@ -97,7 +97,7 @@
       "fit_lineage": "Caller must pin training-only baseline fit and source identity"
     }
   },
-  "artifact_identity": "2a5b501740c0eddc926f3376991d8ba0a51669677b6b644c720f70becbf500ad",
+  "artifact_identity": "5628ea70c021d3f95f4bcc64e8aa6fc6efffa6fcfabd7e619493ba7e24e3ee59",
   "runtime_changes": "none",
   "interpretation": "stored experimental-score recovery; biological admission unresolved"
 }

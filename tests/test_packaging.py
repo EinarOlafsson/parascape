@@ -20,7 +20,7 @@ import pytest
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-SPEC = os.path.join(ROOT, "packaging", "starplast.spec")
+SPEC = os.path.join(ROOT, "packaging", "parascape.spec")
 
 
 @pytest.fixture(scope="module")
@@ -32,19 +32,19 @@ def test_the_spec_bundles_the_cache_from_where_it_actually_lives(spec):
     """It pointed at <repo>/data until the cache moved into the package. After the move that directory
     stopped existing, so PyInstaller would have bundled nothing and produced an application with no
     data and no error."""
-    assert 'ROOT / "starplast" / "data"' in spec
+    assert 'ROOT / "parascape" / "data"' in spec
     assert '(str(ROOT / "data"), "data")' not in spec, "the pre-move path is back"
 
 
 def test_the_bundled_cache_lands_where_the_resolver_looks(spec):
     """Bundled to a different relative path, the frozen application would need a special case in
     paths.py -- and a special case for frozen builds is a second resolver to keep in step."""
-    assert '"starplast/data"' in spec
+    assert '"parascape/data"' in spec
 
 
 def test_the_cache_the_spec_names_is_present():
-    from starplast import paths
-    d = os.path.join(ROOT, "starplast", "data")
+    from parascape import paths
+    d = os.path.join(ROOT, "parascape", "data")
     assert os.path.isdir(d)
     assert os.path.dirname(paths.data_dir()) == os.path.dirname(d) or paths.data_dir() == d
 
@@ -71,9 +71,9 @@ def test_every_optional_analysis_dependency_is_named(spec):
 
 # --------------------------------------------------------------------------- what ships
 def test_the_shipped_cache_holds_only_what_the_application_reads():
-    """Everything under starplast/data is carried by every install. Analysis output belongs in
+    """Everything under parascape/data is carried by every install. Analysis output belongs in
     results/, where a reader can find it and a user does not have to download it."""
-    from starplast import paths
+    from parascape import paths
     d = paths.data_dir()
     strays = [f for f in os.listdir(d)
               if f.endswith((".csv", ".log", ".txt")) or f.startswith("search_")]
@@ -86,7 +86,7 @@ def test_the_wheel_carries_the_files_the_application_needs():
     # tomllib is 3.11+; this project supports 3.10, so the line is read directly rather than adding
     # a dependency to check one setting.
     text = open(os.path.join(ROOT, "pyproject.toml"), encoding="utf8").read()
-    line = next(l for l in text.splitlines() if l.strip().startswith("starplast = ["))
+    line = next(l for l in text.splitlines() if l.strip().startswith("parascape = ["))
     globs = re.findall(r'"([^"]+)"', line)
     joined = " ".join(globs)
     for ext in (".npz", ".parquet", ".tsv"):

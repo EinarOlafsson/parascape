@@ -18,15 +18,15 @@ def sha(path):
 
 
 def run(output):
-    from starplast import functional_agreement as A, functional_results as F
-    from starplast.scorecard_view import export_scorecard, render_scorecard_html
+    from parascape import functional_agreement as A, functional_results as F
+    from parascape.scorecard_view import export_scorecard, render_scorecard_html
     benchmarks, reason = F.shipped('Pf')
     assert not reason
     pair = [next(b for b in benchmarks if b.metadata['strategy'] == strategy)
             for strategy in ('feature_knn', 'random_forest')]
-    inputs = {str(ROOT / 'starplast/data/functional_results.json'): F.FUNCTIONAL_RESULTS_SHA256}
-    for path in (Path(__file__), ROOT / 'starplast/functional_agreement.py',
-                 ROOT / 'starplast/functional_results.py', ROOT / 'starplast/scorecard_view.py',
+    inputs = {str(ROOT / 'parascape/data/functional_results.json'): F.FUNCTIONAL_RESULTS_SHA256}
+    for path in (Path(__file__), ROOT / 'parascape/functional_agreement.py',
+                 ROOT / 'parascape/functional_results.py', ROOT / 'parascape/scorecard_view.py',
                  ROOT / 'tests/test_functional_agreement.py', ROOT / 'scripts/notebook_runner.py'):
         inputs[str(path)] = sha(path)
         destination = output / 'code' / path.relative_to(ROOT)
@@ -55,7 +55,7 @@ def run(output):
         models.append(json.loads(model_path.read_text()))
         for dependency in manifest['spec']['dependencies']:
             if dependency['kind'] == 'table':
-                path = ROOT / 'starplast/data/pf_nodes.parquet'
+                path = ROOT / 'parascape/data/pf_nodes.parquet'
                 assert dependency['name'] == 'installed_nodes'
                 inputs[str(path)] = dependency['sha256']
     report = A.compare(*pair)

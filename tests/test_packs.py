@@ -8,8 +8,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from starplast import organisms as O, packs, paths
-from starplast.spaces import build_pack, validate_graph, validate_nodes
+from parascape import organisms as O, packs, paths
+from parascape.spaces import build_pack, validate_graph, validate_nodes
 
 
 @pytest.fixture

@@ -1,22 +1,24 @@
-"""Editable content for the Starplast overview and practical usage deck.
+"""Editable content for the ParaScape overview and practical usage deck.
 
 Numbers describe the 0.43 release dataset. Screenshots come from the real app;
 the comparison example is labelled illustrative, and benchmarks retain their
 evaluation context. Keep the deck below 50 slides and favour one idea per page.
 """
-BASE = 'https://einarolafsson.github.io/starplast/'
+BASE = 'https://einarolafsson.github.io/parascape/'
+HOME = 'https://einarolafsson.github.io/projects/parascape/'
 
 
 def slide(title, section, layout='cards', **content):
     """Declare one slide and its supporting user documentation."""
+    source = content.pop('source', 'guide.html')
     return dict(title=title, section=section, layout=layout,
-                source=BASE + content.pop('source', 'guide.html'), **content)
+                source=source if source.startswith('https://') else BASE + source, **content)
 
 
 SLIDES = [
-    slide('Starplast', 'GENE EVIDENCE, IN CONTEXT', 'cover',
+    slide('ParaScape', 'GENE EVIDENCE, IN CONTEXT', 'cover',
           lead='Explore what is known.\nEvaluate what a model predicts.',
-          note='A practical guide to the 0.43 release', source='index.html'),
+          note='A practical guide to the 0.43 release', source=HOME),
     slide('Start with a gene. Keep the evidence.', 'INTRODUCTION', 'flow',
           lead='Bring scattered measurements together without losing what they mean.',
           cards=[('Collect', 'Published measurements, annotations and protein features.'),
@@ -41,8 +43,8 @@ SLIDES = [
                  ('Colour', 'An annotation or measurement you select.'),
                  ('Lines', 'One explicitly selected relationship type.')],
           note='Proximity alone does not establish function or a physical interaction.'),
-    slide('Install and open Starplast.', 'GET STARTED', 'code',
-          code='pip install starplast\nstarplast',
+    slide('Install and open ParaScape.', 'GET STARTED', 'code',
+          code='pip install parascape\nparascape',
           cards=[('Python 3.10+', 'Use a dedicated environment when possible.'),
                  ('Desktop display', 'The viewer needs a display and working OpenGL.'),
                  ('CPU included', 'CUDA is optional; browsing does not require a GPU.')],
@@ -166,7 +168,7 @@ SLIDES = [
           note='This is the verified subset in the synced folders, not the total number of proteins ever folded.',
           source='structures.html'),
     slide('Connect local folds to the structure viewer.', 'PROTEIN EVIDENCE', 'code',
-          code="pip install 'starplast[structures]'\n\nstarplast-index-structures /path/to/models",
+          code="pip install 'parascape[structures]'\n\nparascape-index-structures /path/to/models",
           cards=[('Index once', 'Build the local structure catalogue from your model folders.'),
                  ('Select a gene', 'The structure viewer checks the local index before AlphaFold DB.'),
                  ('Read confidence', 'A predicted fold and its confidence are not experimental validation.')],
@@ -191,9 +193,9 @@ SLIDES = [
     slide('Move from spaCR results to gene evidence.', 'SCREEN WORKFLOW', 'flow',
           cards=[('spaCR', 'Generate gene-level measurement or effect estimates.'),
                  ('CSV / TSV', 'Export identifiers and the measured value you want to compare.'),
-                 ('Starplast', 'Open Compare a screen and inspect the identifier mapping.'),
+                 ('ParaScape', 'Open Compare a screen and inspect the identifier mapping.'),
                  ('Evidence', 'Read the existing annotations and source context alongside the result.')],
-          note='The spaCR launcher opens Starplast in a separate environment. It does not automatically transfer results.',
+          note='The spaCR launcher opens ParaScape in a separate environment. It does not automatically transfer results.',
           source='workflows.html'),
     slide('Add measurements to a Toxoplasma session.', 'SCREEN WORKFLOW',
           cards=[('File > Import data', 'The advanced importer accepts CSV, TSV, Excel or Parquet for Toxoplasma accessions.'),
@@ -206,7 +208,7 @@ SLIDES = [
                  ('run.json', 'Retain settings, input identity, split genes, excluded features and versions.')],
           note='Use Export full run. A ranked list alone cannot reproduce an analysis.', source='workflows.html'),
     slide('Use the same methods from Python.', 'PYTHON API', 'code',
-          code="import pandas as pd\nfrom starplast import paths\nfrom starplast.prediction import TaskSpec, run\n\nnodes = pd.read_parquet(\n    paths.cache_file('nodes.parquet'))\nresult = run(nodes, TaskSpec('compartment'))\nresult.save('localization_run')",
+          code="import pandas as pd\nfrom parascape import paths\nfrom parascape.prediction import TaskSpec, run\n\nnodes = pd.read_parquet(\n    paths.cache_file('nodes.parquet'))\nresult = run(nodes, TaskSpec('compartment'))\nresult.save('localization_run')",
           cards=[('Headless analysis', 'Read bundled tables and run methods without opening the desktop.'),
                  ('One contract', 'The API uses the same evaluation and export rules as the guided workflow.')],
           note='The generated module reference documents functions, arguments and return values.', source='API.html'),
@@ -232,10 +234,10 @@ SLIDES = [
           note='Model comparisons guide exploration. Independent evidence is needed to establish a new biological claim.',
           source='benchmark-0.43.html'),
     slide('Open a gene. Ask a precise question.', 'START HERE', 'end',
-          lead='pip install starplast',
+          lead='pip install parascape',
           cards=[('User guide', BASE+'guide.html'), ('Guided workflows', BASE+'workflows.html'),
                  ('Data sources', BASE+'datasets.html'), ('Python API', BASE+'API.html'),
                  ('Benchmarks', BASE+'benchmark-0.43.html'),
-                 ('Issues and source', 'https://github.com/EinarOlafsson/starplast')],
-          note='Starplast · Einar Olafsson · Open-source software, with original data sources credited.', source='index.html'),
+                 ('Issues and source', 'https://github.com/EinarOlafsson/parascape')],
+          note='ParaScape · Einar Olafsson · Open-source software, with original data sources credited.', source=HOME),
 ]

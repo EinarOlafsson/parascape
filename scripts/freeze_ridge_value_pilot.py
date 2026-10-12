@@ -14,10 +14,10 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from starplast import artifacts as A, baselines as B, capabilities as C, organisms as O, record_scorecards as R, scorecard as SC, strategies as S, strategy_catalog as N, value_records as V  # noqa: E402
-from starplast.ground_truth import read_registry  # noqa: E402
-from starplast.query import Query  # noqa: E402
-from starplast.splits import make_split, make_exclusions, read_split, write_split  # noqa: E402
+from parascape import artifacts as A, baselines as B, capabilities as C, organisms as O, record_scorecards as R, scorecard as SC, strategies as S, strategy_catalog as N, value_records as V  # noqa: E402
+from parascape.ground_truth import read_registry  # noqa: E402
+from parascape.query import Query  # noqa: E402
+from parascape.splits import make_split, make_exclusions, read_split, write_split  # noqa: E402
 
 
 def _sha(path):
@@ -77,7 +77,7 @@ def freeze(output):
         cards[name] = R.aggregate(rows.assign(baseline_prediction=baseline[name].to_numpy()), scope,
             parameters={'quantity_unit': 'unresolved', 'baseline_name': 'training '+name})
     rows['baseline_prediction'] = baseline['mean'].to_numpy()
-    code = [Path(__file__), ROOT/'scripts/freeze_conformal_pilot.py', *(ROOT/'starplast'/name for name in (
+    code = [Path(__file__), ROOT/'scripts/freeze_conformal_pilot.py', *(ROOT/'parascape'/name for name in (
         'value_records.py','strategy_catalog.py','strategies.py','scorecard.py','record_scorecards.py',
         'baselines.py','splits.py','artifacts.py','capabilities.py','ground_truth.py','search.py'))]
     dependencies = [A.Dependency('code', p.stem, _sha(p)) for p in code]

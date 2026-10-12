@@ -26,18 +26,18 @@ def check(root: Path = ROOT) -> str:
     for p in projects:
         if p["version"] != version:
             raise ValueError(f"{p['name']} has version {p['version']}; expected {version}")
-    tree = ast.parse((root / "starplast/__init__.py").read_text(encoding="utf-8"))
+    tree = ast.parse((root / "parascape/__init__.py").read_text(encoding="utf-8"))
     runtime = next(ast.literal_eval(n.value) for n in tree.body if isinstance(n, ast.Assign)
                    and any(isinstance(t, ast.Name) and t.id == "__version__" for t in n.targets))
     if runtime != version:
-        raise ValueError(f"starplast.__version__ is {runtime}; expected {version}")
+        raise ValueError(f"parascape.__version__ is {runtime}; expected {version}")
     project = projects[0]
-    if project["name"] != "starplast":
-        raise ValueError("The only PyPI project must be starplast")
+    if project["name"] != "parascape":
+        raise ValueError("The only PyPI project must be parascape")
     requirements = project.get("dependencies", []) + [
         r for values in project.get("optional-dependencies", {}).values() for r in values]
-    if any(r.lower().startswith("starplast") for r in requirements):
-        raise ValueError("Starplast must not depend on another Starplast distribution")
+    if any(r.lower().startswith("parascape") for r in requirements):
+        raise ValueError("ParaScape must not depend on another ParaScape distribution")
     return version
 
 
@@ -51,7 +51,7 @@ def bump(version: str, root: Path = ROOT) -> str:
         text = (root / path).read_text(encoding="utf-8")
         text = re.sub(r'(?m)^version = "[^"]+"$', f'version = "{version}"', text)
         changes[path] = text
-    path = Path("starplast/__init__.py")
+    path = Path("parascape/__init__.py")
     changes[path] = re.sub(r'(?m)^__version__ = "[^"]+"$', f'__version__ = "{version}"',
                            (root / path).read_text(encoding="utf-8"))
     for path, text in changes.items():
@@ -68,7 +68,10 @@ def changed(previous: str, root: Path = ROOT) -> bool:
         return True
     result = subprocess.run(["git", "show", f"{previous}:pyproject.toml"], cwd=root,
                             capture_output=True, text=True, check=True)
-    old = Version(tomllib.loads(result.stdout)["project"]["version"])
+    project = tomllib.loads(result.stdout)["project"]
+    if project["name"] != "parascape":
+        return True
+    old = Version(project["version"])
     if current < old:
         raise ValueError(f"Refusing version downgrade: {old} -> {current}")
     return current > old

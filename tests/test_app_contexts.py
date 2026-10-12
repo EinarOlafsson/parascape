@@ -13,7 +13,7 @@ def test_species_switch_renders_without_invalid_shader_programs(tmp_path):
     # Isolate QApplication creation from pytest-qt: the application must configure
     # sharing before Qt creates its global OpenGL context.
     code = '''
-from starplast.app import Window
+from parascape.app import Window
 from PyQt6 import QtWidgets, QtGui
 app = QtWidgets.QApplication([])
 first = Window(species="Toxoplasma gondii")
@@ -33,7 +33,7 @@ assert not third.view.grabFramebuffer().isNull()
 third.close()
 app.processEvents()
 '''
-    env = dict(os.environ, STARPLAST_STATE=str(tmp_path), XDG_CONFIG_HOME=str(tmp_path))
+    env = dict(os.environ, PARASCAPE_STATE=str(tmp_path), XDG_CONFIG_HOME=str(tmp_path))
     result = subprocess.run([sys.executable, '-c', code], env=env,
                             cwd=Path(__file__).resolve().parents[1],
                             capture_output=True, text=True, timeout=120)

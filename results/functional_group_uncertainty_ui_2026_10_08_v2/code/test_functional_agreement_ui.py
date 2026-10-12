@@ -6,10 +6,10 @@ import pandas as pd
 import pytest
 from PyQt6 import sip
 
-from starplast import claims as C, functional_agreement as A, functional_results as F
-from starplast import group_ratios as G
-from starplast import strategies as S, track_record as T
-from starplast.discoveries_panel import DiscoveriesPanel
+from parascape import claims as C, functional_agreement as A, functional_results as F
+from parascape import group_ratios as G
+from parascape import strategies as S, track_record as T
+from parascape.discoveries_panel import DiscoveriesPanel
 
 
 @pytest.fixture

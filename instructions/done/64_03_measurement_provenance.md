@@ -8,7 +8,7 @@ Parent: [64 · Information space and inference atlas](../open/64_information_spa
 |---|---|
 | Depends on | 64.02 |
 | Estimated remaining engineering time | 0 h |
-| Existing code to inspect | `starplast/datasets.py`, `starplast/deposits.py`, `starplast/identity.py`, `starplast/results.py` |
+| Existing code to inspect | `parascape/datasets.py`, `parascape/deposits.py`, `parascape/identity.py`, `parascape/results.py` |
 
 ## Deliverable
 
@@ -32,7 +32,7 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Completion evidence
 
-`starplast/provenance.py` implements schema 2: content-addressed files and transforms,
+`parascape/provenance.py` implements schema 2: content-addressed files and transforms,
 registry exploration scope separated from actual assay species, measurement units,
 publication/file association status, mapping ambiguity/cardinality/loss, license,
 redistribution and visible gaps. Cycles and duplicate output addresses are refused.

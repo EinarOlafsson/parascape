@@ -14,7 +14,7 @@ different things while sitting on top of each other.
 
 ## Runs are kept
 
-`starplast/runs.py`. A clustering used to be computed, drawn and lost: the second run replaced the
+`parascape/runs.py`. A clustering used to be computed, drawn and lost: the second run replaced the
 first with no way back, which makes the one comparison this application exists for — does this
 structure survive different settings — impossible to make by looking.
 

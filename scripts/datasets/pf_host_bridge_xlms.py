@@ -9,7 +9,7 @@ Parasite protein to erythrocyte protein, measured as a crosslink
     PMID         : 41966402
     accession    : Cell Rep mmc1 sheet D
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13200099/supplementaryFiles
-    local path   : starplast/data/pf_host_bridges.parquet
+    local path   : parascape/data/pf_host_bridges.parquet
 
 Quirks that cost time once:
     The half of the crosslink file the edge layer throws away, and it is a BRIDGE rather than an
@@ -24,7 +24,7 @@ Quirks that cost time once:
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by
-`starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+`parascape.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
 inspecting or re-fetching one dataset without running the whole build.
 
 Run:  python scripts/datasets/pf_host_bridge_xlms.py

@@ -14,7 +14,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import host as H  # noqa: E402
+from parascape import host as H  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -103,7 +103,7 @@ def test_load_returns_nothing_when_the_table_is_not_built(tmp_path):
 
 # --------------------------------------------------------------------------- against the deposit
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", H.BRIDGE_TABLE)),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", H.BRIDGE_TABLE)),
     reason="host bridge not built")
 def test_the_escrt_machinery_leads_the_host_side():
     """The check that decided this slot, and the one whose absence had it written off.
@@ -191,7 +191,7 @@ def test_all_bridges_is_empty_when_nothing_is_downloaded(tmp_path):
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", H.BRIDGE_TABLE)),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", H.BRIDGE_TABLE)),
     reason="host bridge not built")
 def test_independent_baits_converge_on_the_escrt_machinery():
     """The claim a multi-bait bridge can make and a single IP cannot.
@@ -215,7 +215,7 @@ def test_independent_baits_converge_on_the_escrt_machinery():
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", H.BRIDGE_TABLE)),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", H.BRIDGE_TABLE)),
     reason="host bridge not built")
 def test_the_eaf1_bait_pulls_the_escrt_pathway():
     """Five partners, all ESCRT, including the TSG101 the imaging screen measured."""
@@ -490,7 +490,7 @@ def test_an_orthogonal_table_without_saint_is_refused(tmp_path):
 
 
 @pytest.mark.skipif(
-    not os.path.exists(os.path.join(ROOT, "starplast", "data", H.BRIDGE_TABLE)),
+    not os.path.exists(os.path.join(ROOT, "parascape", "data", H.BRIDGE_TABLE)),
     reason="host bridge not built")
 def test_alg2_is_reached_by_every_bait():
     """Five parasite proteins, five experiments, one host protein in common.

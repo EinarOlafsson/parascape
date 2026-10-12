@@ -4,9 +4,9 @@ from types import SimpleNamespace
 import pandas as pd
 from PyQt6 import QtCore, QtWidgets
 
-from starplast import app as A, organisms as O
-from starplast.gene_evidence import build_resolver
-from starplast.identity import GeneIndex
+from parascape import app as A, organisms as O
+from parascape.gene_evidence import build_resolver
+from parascape.identity import GeneIndex
 
 
 def window(qapp, *, subset=False):
@@ -34,7 +34,7 @@ def test_alias_collision_requires_choice_even_with_one_available_candidate(qapp)
     assert 'Choose a gene' in w.detail.toPlainText()
     assert 'TGME49_100002 — absent from the current table' in w.detail.toPlainText()
     assert 'authored-index' in w.detail.toPlainText()
-    A.Window._detail_link(w, QtCore.QUrl('starplast://select/0'))
+    A.Window._detail_link(w, QtCore.QUrl('parascape://select/0'))
     assert w.sel == 0
 
 
@@ -43,9 +43,9 @@ def test_product_matches_require_choice_and_invalid_row_cannot_select(qapp):
     w.search.setText('kinase')
     A.Window.do_search(w)
     assert w.sel is None and '2 matches' in w.detail.toPlainText()
-    A.Window._detail_link(w, QtCore.QUrl('starplast://select/200'))
+    A.Window._detail_link(w, QtCore.QUrl('parascape://select/200'))
     assert w.sel is None
-    A.Window._detail_link(w, QtCore.QUrl('starplast://select/1'))
+    A.Window._detail_link(w, QtCore.QUrl('parascape://select/1'))
     assert w.sel == 1
 
 
@@ -78,7 +78,7 @@ def test_original_table_routes_label_and_quoted_class(qapp, monkeypatch):
     w.open_label_browser = lambda column, label: opened.append((column, label))
     dialog = SimpleNamespace(close=lambda: None)
     A.Window._gene_label_route(w, dialog, 1, 'label/name', 'a/b')
-    assert called == ['starplast://class/label%2Fname/a%2Fb']
+    assert called == ['parascape://class/label%2Fname/a%2Fb']
     assert w._detail_row == 1
     assert opened == [('label/name', 'a/b')]
 
@@ -103,7 +103,7 @@ def test_label_source_filters_organism_and_clears_ambiguous_selection(qapp):
 
 def test_reopening_gene_evidence_releases_the_previous_window(qapp, monkeypatch):
     from PyQt6 import sip
-    from starplast import dataset_space_inputs, gene_evidence_browser
+    from parascape import dataset_space_inputs, gene_evidence_browser
 
     class Panel(QtWidgets.QWidget):
         source_requested = QtCore.pyqtSignal(object)

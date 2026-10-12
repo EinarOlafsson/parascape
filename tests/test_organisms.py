@@ -16,11 +16,11 @@ import pytest
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from starplast import organisms as O  # noqa: E402
+from parascape import organisms as O  # noqa: E402
 
 
 def test_the_registry_reproduces_the_slot_tables():
-    from starplast import slots
+    from parascape import slots
     assert O.table_map() == slots.SPECIES_TABLES
     assert O.prefix_map() == slots.SPECIES_PREFIXES
     for code, bridges in slots.SPECIES_BRIDGE_TABLES.items():
@@ -43,13 +43,13 @@ def test_the_registry_reproduces_the_slot_generator_stages():
 
 
 def test_the_registry_reproduces_the_localization_abbreviations():
-    from starplast import localization
+    from parascape import localization
     assert {O.get(c).orthomcl for c in O.codes()} <= set(localization.SPECIES)
 
 
 def test_the_registry_reproduces_the_window_species():
     pytest.importorskip("PyQt6")
-    from starplast import app
+    from parascape import app
     for name, where in app.SPECIES.items():
         space = O.by_species(name)
         assert (space.code, space.nodes, space.graph) == (where["code"], where["nodes"],
@@ -98,7 +98,7 @@ def test_record_links_name_the_gene():
 # --------------------------------------------------------------------------- the ratchet (R2)
 #: How many bare "Tg"/"Pf" string literals each file still holds outside the registry, as measured
 #: when the registry landed. A file may only go DOWN: a new literal is a new place that will break
-#: when the next space is added, and belongs in `starplast.organisms` instead. Lower a number here
+#: when the next space is added, and belongs in `parascape.organisms` instead. Lower a number here
 #: whenever a file stops needing one; a file that reaches zero is removed from the table.
 ORGANISM_LITERALS = {
     "scripts/add_deposits.py": 3,
@@ -111,24 +111,24 @@ ORGANISM_LITERALS = {
     "scripts/propose_datasets.py": 4,
     "scripts/run_headless_gpu_cv.py": 1,
     "scripts/strategy_selftests.py": 2,
-    "starplast/build_graph.py": 1,
-    "starplast/calibration.py": 6,
-    "starplast/chromatin.py": 1,
-    "starplast/deposits.py": 24,
-    "starplast/expression.py": 2,
-    "starplast/host.py": 1,
-    "starplast/identity.py": 2,
-    "starplast/leakage.py": 1,
-    "starplast/network_prediction.py": 5,
-    "starplast/plasmodium.py": 1,
-    "starplast/prioritization.py": 3,
-    "starplast/proteomics.py": 11,
-    "starplast/recipes.py": 2,
-    "starplast/search.py": 6,
-    "starplast/slot_tree.py": 2,
-    "starplast/slots.py": 5,
-    "starplast/strategies.py": 15,
-    "starplast/workflows.py": 1,
+    "parascape/build_graph.py": 1,
+    "parascape/calibration.py": 6,
+    "parascape/chromatin.py": 1,
+    "parascape/deposits.py": 24,
+    "parascape/expression.py": 2,
+    "parascape/host.py": 1,
+    "parascape/identity.py": 2,
+    "parascape/leakage.py": 1,
+    "parascape/network_prediction.py": 5,
+    "parascape/plasmodium.py": 1,
+    "parascape/prioritization.py": 3,
+    "parascape/proteomics.py": 11,
+    "parascape/recipes.py": 2,
+    "parascape/search.py": 6,
+    "parascape/slot_tree.py": 2,
+    "parascape/slots.py": 5,
+    "parascape/strategies.py": 15,
+    "parascape/workflows.py": 1,
 }
 
 
@@ -136,7 +136,7 @@ def _literal_counts() -> dict:
     import ast
     import glob
     out = {}
-    for path in sorted(glob.glob(os.path.join(ROOT, "starplast", "*.py"))
+    for path in sorted(glob.glob(os.path.join(ROOT, "parascape", "*.py"))
                        + glob.glob(os.path.join(ROOT, "scripts", "*.py"))):
         rel = os.path.relpath(path, ROOT)
         if rel.endswith("organisms.py"):
@@ -152,5 +152,5 @@ def _literal_counts() -> dict:
 def test_no_file_gains_an_organism_literal():
     grown = {f: (n, ORGANISM_LITERALS.get(f, 0)) for f, n in _literal_counts().items()
              if n > ORGANISM_LITERALS.get(f, 0)}
-    assert not grown, ("new \"Tg\"/\"Pf\" literals -- read starplast.organisms instead: "
+    assert not grown, ("new \"Tg\"/\"Pf\" literals -- read parascape.organisms instead: "
                        + ", ".join(f"{f} {now} > {was}" for f, (now, was) in grown.items()))

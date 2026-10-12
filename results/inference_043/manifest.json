@@ -1,11 +1,11 @@
 {
   "data_and_implementation_sha256": {
-    "starplast/prediction.py": "ffa053ba7aa159f1c0cae80e41cc54e52fc5df73c0b16044d410b7d03b12b49b",
-    "starplast/network_prediction.py": "c0a2d6bf1dbd33ddd6d96d9f813cb0680733086b26c640896d9ca88cd86dde95",
-    "starplast/data/nodes.parquet": "08136ad07bca040af81864e87c0c6cc69072e8957d7c429c067026ac07e6e5f8",
-    "starplast/data/esm_features.parquet": "fc5a79781fddbff8c7b4c553e42412d25ccd931036f92889dcbb46a557313e2e",
-    "starplast/data/af3_features.parquet": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
-    "starplast/data/graph.npz": "d3989a6fb753e1398c263b360b672fd8bf02edbff4a322d66b130c673c09caeb"
+    "parascape/prediction.py": "ffa053ba7aa159f1c0cae80e41cc54e52fc5df73c0b16044d410b7d03b12b49b",
+    "parascape/network_prediction.py": "c0a2d6bf1dbd33ddd6d96d9f813cb0680733086b26c640896d9ca88cd86dde95",
+    "parascape/data/nodes.parquet": "08136ad07bca040af81864e87c0c6cc69072e8957d7c429c067026ac07e6e5f8",
+    "parascape/data/esm_features.parquet": "fc5a79781fddbff8c7b4c553e42412d25ccd931036f92889dcbb46a557313e2e",
+    "parascape/data/af3_features.parquet": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
+    "parascape/data/graph.npz": "d3989a6fb753e1398c263b360b672fd8bf02edbff4a322d66b130c673c09caeb"
   },
   "run_count": 29,
   "evaluation": "Development cross-validation; no prospective claim",

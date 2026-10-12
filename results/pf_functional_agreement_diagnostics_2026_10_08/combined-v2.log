@@ -1,4 +1,4 @@
-Running as unit: starplast-paired-checks-v2-20261008.service
+Running as unit: parascape-paired-checks-v2-20261008.service
 ..........F...............................................               [100%]
 =================================== FAILURES ===================================
 _____ test_shipped_pair_retains_all_rows_original_methods_and_exact_export _____
@@ -58,7 +58,7 @@ expanded = False
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E           StopIteration
 
-starplast/scorecard_view.py:405: StopIteration
+parascape/scorecard_view.py:405: StopIteration
 =========================== short test summary info ============================
 FAILED tests/test_functional_agreement.py::test_shipped_pair_retains_all_rows_original_methods_and_exact_export
 1 failed, 57 passed in 15.77s

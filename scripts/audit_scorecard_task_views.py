@@ -49,8 +49,8 @@ import hashlib, json, platform, re
 from pathlib import Path
 import numpy as np
 import pandas as pd
-from starplast import organisms as O, record_scorecards as R, scorecard as SC
-from starplast import scorecard_view as V
+from parascape import organisms as O, record_scorecards as R, scorecard as SC
+from parascape import scorecard_view as V
 
 def canonical(value):
     return json.dumps(V._plain(value), sort_keys=True, ensure_ascii=False,
@@ -60,9 +60,9 @@ def digest(value):
     return hashlib.sha256(canonical(value).encode()).hexdigest()
 
 code_files = ['scripts/audit_scorecard_task_views.py', 'scripts/notebook_runner.py',
-    'starplast/scorecard_view.py', 'starplast/scorecard.py', 'starplast/record_scorecards.py',
-    'starplast/strategies.py', 'starplast/capabilities.py', 'starplast/provenance.py',
-    'starplast/organisms.py']
+    'parascape/scorecard_view.py', 'parascape/scorecard.py', 'parascape/record_scorecards.py',
+    'parascape/strategies.py', 'parascape/capabilities.py', 'parascape/provenance.py',
+    'parascape/organisms.py']
 code_receipts = {name: hashlib.sha256((Path(root_path) / name).read_bytes()).hexdigest()
                  for name in code_files}
 checks = []
@@ -310,7 +310,7 @@ summary
         'and scientific source/split/calibration/task-admission gates remain separate. **64.17 remains open.**\n\n'
         'Run from the repository with the existing environment and a 400 MB external memory cap:\n\n'
         '```bash\n'
-        'systemd-run --user --scope -p MemoryMax=400M /home/carruthers/anaconda3/envs/starplast/bin/python '
+        'systemd-run --user --scope -p MemoryMax=400M /home/carruthers/anaconda3/envs/parascape/bin/python '
         'scripts/audit_scorecard_task_views.py\n'
         '```\n\n'
         'The script refuses an existing output directory. Use `--out` with a new destination to reproduce; '

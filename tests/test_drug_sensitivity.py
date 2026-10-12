@@ -20,10 +20,10 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import drug_sensitivity as D  # noqa: E402
+from parascape import drug_sensitivity as D  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-NODES = os.path.join(ROOT, "starplast", "data", "nodes.parquet")
+NODES = os.path.join(ROOT, "parascape", "data", "nodes.parquet")
 
 
 def test_every_effect_is_fully_attributed():

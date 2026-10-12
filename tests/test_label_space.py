@@ -5,9 +5,9 @@ import json
 import pandas as pd
 import pytest
 
-from starplast import organisms as O
-from starplast.label_space import LabelSpace
-from starplast.query import BiologicalContext
+from parascape import organisms as O
+from parascape.label_space import LabelSpace
+from parascape.query import BiologicalContext
 
 GENES = ['TGME49_100001', 'TGME49_100002', 'TGME49_100003', 'TGME49_100004']
 

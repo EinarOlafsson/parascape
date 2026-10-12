@@ -22,7 +22,7 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import paths  # noqa: E402
+from parascape import paths  # noqa: E402
 
 
 # --------------------------------------------------------------------------- the cache
@@ -55,7 +55,7 @@ def test_an_explicit_cache_override_wins(tmp_path, monkeypatch):
 
 def test_an_override_pointing_at_nothing_still_names_a_directory_rather_than_raising(monkeypatch):
     """check() is the layer that reports a missing cache; data_dir() must survive to be reported about."""
-    monkeypatch.setenv(paths.ENV_CACHE, "/nonexistent/starplast-cache")
+    monkeypatch.setenv(paths.ENV_CACHE, "/nonexistent/parascape-cache")
     d = paths.data_dir()
     assert isinstance(d, str) and d
     ok, msg = paths.check()
@@ -122,13 +122,13 @@ def test_an_empty_override_is_no_override(monkeypatch, tmp_path):
     would put the user's runs at the filesystem root."""
     monkeypatch.setenv(paths.ENV_STATE, "")
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmp_path))
-    assert paths.user_cache_dir() == os.path.join(str(tmp_path), "starplast")
+    assert paths.user_cache_dir() == os.path.join(str(tmp_path), "parascape")
 
 
 def test_user_cache_dir_is_per_user_and_named(monkeypatch, tmp_path):
     monkeypatch.delenv(paths.ENV_STATE, raising=False)
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmp_path))
-    assert paths.user_cache_dir() == os.path.join(str(tmp_path), "starplast")
+    assert paths.user_cache_dir() == os.path.join(str(tmp_path), "parascape")
 
 
 def test_user_cache_dir_falls_back_when_xdg_is_unset(monkeypatch):
@@ -165,7 +165,7 @@ def test_the_cli_runs_and_reports_the_registry(capsys):
 
 def test_the_cli_survives_a_broken_registry(monkeypatch, capsys):
     """Diagnostics must not require the thing being diagnosed to work."""
-    import starplast.datasets as D
+    import parascape.datasets as D
     monkeypatch.setattr(D, "missing", lambda: (_ for _ in ()).throw(RuntimeError("boom")))
     paths._cli()
     assert "registry unavailable" in capsys.readouterr().out
@@ -177,7 +177,7 @@ def test_windows_cache_location(monkeypatch, tmp_path):
     monkeypatch.delenv(paths.ENV_STATE, raising=False)
     monkeypatch.setattr(os, "name", "nt")
     monkeypatch.setenv("LOCALAPPDATA", str(tmp_path))
-    assert paths.user_cache_dir() == os.path.join(str(tmp_path), "starplast")
+    assert paths.user_cache_dir() == os.path.join(str(tmp_path), "parascape")
 
 
 def test_windows_cache_falls_back_to_home_when_localappdata_is_unset(monkeypatch):
@@ -192,14 +192,14 @@ def test_macos_cache_location(monkeypatch):
     monkeypatch.delenv(paths.ENV_STATE, raising=False)
     monkeypatch.setattr(os, "name", "posix")
     monkeypatch.setattr(os, "uname", lambda: type("u", (), {"sysname": "Darwin"})())
-    assert paths.user_cache_dir() == os.path.expanduser("~/Library/Caches/starplast")
+    assert paths.user_cache_dir() == os.path.expanduser("~/Library/Caches/parascape")
 
 
 # --------------------------------------------------------------------------- the fallback ladder
 def test_the_repository_layout_is_still_found(monkeypatch, tmp_path):
     """Caches built before the move sit beside the package rather than inside it. Existing checkouts
     must keep working across the upgrade."""
-    pkg, repo = tmp_path / "pkg" / "starplast", tmp_path / "pkg"
+    pkg, repo = tmp_path / "pkg" / "parascape", tmp_path / "pkg"
     (repo / "data").mkdir(parents=True)
     (repo / "data" / "nodes.parquet").write_bytes(b"")
     pkg.mkdir(exist_ok=True)
@@ -212,11 +212,11 @@ def test_the_repository_layout_is_still_found(monkeypatch, tmp_path):
 def test_with_nothing_built_it_names_where_the_cache_should_go(monkeypatch, tmp_path):
     """The pre-build state. It must still return a path, because check() needs one to report about."""
     monkeypatch.delenv(paths.ENV_CACHE, raising=False)
-    monkeypatch.setattr(paths, "_PKG", str(tmp_path / "nowhere" / "starplast"))
+    monkeypatch.setattr(paths, "_PKG", str(tmp_path / "nowhere" / "parascape"))
     monkeypatch.setattr(paths, "_REPO", str(tmp_path / "nowhere"))
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmp_path))
     d = paths.data_dir()
-    assert d == os.path.join(str(tmp_path / "nowhere" / "starplast"), "data")
+    assert d == os.path.join(str(tmp_path / "nowhere" / "parascape"), "data")
     assert not paths.check()[0]
 
 
@@ -227,7 +227,7 @@ def test_data_dir_last_resort_is_the_user_cache(monkeypatch, tmp_path):
     monkeypatch.delenv(paths.ENV_STATE, raising=False)
     monkeypatch.setattr(paths, "_cache_candidates", lambda: iter([None, None]))
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmp_path))
-    assert paths.data_dir() == os.path.join(str(tmp_path), "starplast", "data")
+    assert paths.data_dir() == os.path.join(str(tmp_path), "parascape", "data")
 
 
 def test_a_dataset_override_pointing_at_nothing_is_reported_loudly(monkeypatch, tmp_path):
@@ -237,13 +237,13 @@ def test_a_dataset_override_pointing_at_nothing_is_reported_loudly(monkeypatch, 
 
 
 def test_running_as_a_module_prints_the_report():
-    """`python -m starplast.paths` is the documented first step when data cannot be found."""
+    """`python -m parascape.paths` is the documented first step when data cannot be found."""
     import runpy
     import io
     import contextlib
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf):
-        runpy.run_module("starplast.paths", run_name="__main__")
+        runpy.run_module("parascape.paths", run_name="__main__")
     assert "cache" in buf.getvalue()
 
 
@@ -265,7 +265,7 @@ def test_the_dataset_root_falls_back_to_a_place_that_is_always_writable(tmp_path
     """With no dataset root configured, the cache directory is the answer: it is the one location
     this application can always write to. `create=True` makes it rather than handing back a path
     that does not exist, because the caller asking to create is about to write there."""
-    from starplast import paths
+    from parascape import paths
     monkeypatch.setattr(paths, "dataset_roots", lambda: [])
     monkeypatch.setattr(paths, "user_cache_dir", lambda: str(tmp_path / "cache"))
     where = paths.dataset_root(create=True)

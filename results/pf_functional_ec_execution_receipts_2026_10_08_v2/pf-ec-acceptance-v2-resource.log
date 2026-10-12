@@ -1,9 +1,9 @@
 {
-  "source_artifact_identity": "49d625acba268ce5599fd22f00a43bba313f84cf50a816449a944e34850626d0",
+  "source_artifact_identity": "8e9e3a524c488e8ddd232a58030f8c84dd7bc10f766a5d850b1a2108da1283aa",
   "source_outputs_verified": 49,
   "source_inputs_verified": 66,
   "artifact_receipts_verified": 13,
-  "candidate_sha256": "c89b317a36e01c788b56985675a97f5494ba6c798ccb9ea06be1b83f009e7bf3",
+  "candidate_sha256": "46750d33fb764d70dbb007fdf5fd08e12b3eff729ac065704e2d00f4fef97eca",
   "test_genes": 152,
   "unsupported_test_genes": 4,
   "counts": {
@@ -32,7 +32,7 @@
   "biological_admission": false,
   "shipped_bundle_changed": false
 }
-	Command being timed: "/home/carruthers/anaconda3/envs/starplast/bin/python scripts/package_pf_functional_ec_results.py --source results/pf_functional_ec_knn_2026_10_08_v2 --out results/pf_functional_ec_knn_acceptance_2026_10_08_v2"
+	Command being timed: "/home/carruthers/anaconda3/envs/parascape/bin/python scripts/package_pf_functional_ec_results.py --source results/pf_functional_ec_knn_2026_10_08_v2 --out results/pf_functional_ec_knn_acceptance_2026_10_08_v2"
 	User time (seconds): 1.07
 	System time (seconds): 0.16
 	Percent of CPU this job got: 100%

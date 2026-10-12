@@ -8,7 +8,7 @@ features, but does not establish a physical interaction or shared function.
 
 The window also hosts table import, feature selection, clustering, held-out recovery,
 and export tools. Long analyses run through the job runner so the interface stays
-responsive. Use :mod:`starplast.discover` for discovery searches without a display.
+responsive. Use :mod:`parascape.discover` for discovery searches without a display.
 """
 from __future__ import annotations
 
@@ -126,7 +126,7 @@ COLOR_MODE_HELP = {
     "compartment (incl. transferred)": "Compartments including labels transferred from orthologs "
                                        "in another species. Inferences, offered for coverage and "
                                        "kept apart from measured labels.",
-    "claims": "Measured labels in full colour; what Starplast claims for unlabelled genes in the "
+    "claims": "Measured labels in full colour; what ParaScape claims for unlabelled genes in the "
               "claimed class's colour, faded toward grey by how uncertain the claim is. Pick the "
               "label in the Discoveries tab.",
     "clusters": "Colour by the clustering from the analysis panel. Genes left unclustered, and "
@@ -342,7 +342,7 @@ def load(species: str = DEFAULT_SPECIES):
     where = SPECIES.get(species) or SPECIES[DEFAULT_SPECIES]
     npz, pq = os.path.join(DATA, where["graph"]), os.path.join(DATA, where["nodes"])
     if not (os.path.exists(npz) and os.path.exists(pq)):
-        raise SystemExit("No cached graph. Run:  python -m starplast.build_graph")
+        raise SystemExit("No cached graph. Run:  python -m parascape.build_graph")
     nodes = pd.read_parquet(pq)
     if where["code"] == "Tg":
         from .structure_catalog import attach_features
@@ -665,7 +665,7 @@ class Map3D(gl.GLViewWidget):
         try:
             sx, sy = self.project()
         except Exception as exc:            # a mouse handler is the wrong place to raise
-            print(f"starplast: gating unavailable ({type(exc).__name__}: {exc})")
+            print(f"parascape: gating unavailable ({type(exc).__name__}: {exc})")
             self.gated.emit(np.array([], dtype=int))
             return np.array([], dtype=int)
         if gate[0] == "brush":
@@ -706,7 +706,7 @@ class Map3D(gl.GLViewWidget):
         try:
             sx, sy = self.project()
         except Exception as exc:
-            print(f"starplast: picking unavailable ({type(exc).__name__}: {exc})")
+            print(f"parascape: picking unavailable ({type(exc).__name__}: {exc})")
             return None
         d = np.hypot(sx - x, sy - y)
         if self.pickable is not None and len(self.pickable) == len(d):
@@ -803,7 +803,7 @@ class Map3D(gl.GLViewWidget):
         try:
             sx, sy = self.project()
         except Exception as exc:            # a mouse handler is the wrong place to raise
-            print(f"starplast: picking unavailable ({type(exc).__name__}: {exc})")
+            print(f"parascape: picking unavailable ({type(exc).__name__}: {exc})")
             return
         d = np.hypot(sx - p.x(), sy - p.y())
         if self.pickable is not None and len(self.pickable) == len(d):
@@ -847,8 +847,8 @@ class Window(QtWidgets.QMainWindow):
         self.nodes, self.xyz, self.edges, self.models = load(self.species)
         self.n = len(self.nodes)
         self.sel = None
-        self.setWindowTitle(f"starplast — {self.species} knowledge map")
-        self.setWindowIcon(QtGui.QIcon(os.path.join(os.path.dirname(__file__), "data", "icons", "starplast.svg")))
+        self.setWindowTitle(f"parascape — {self.species} knowledge map")
+        self.setWindowIcon(QtGui.QIcon(os.path.join(os.path.dirname(__file__), "data", "icons", "parascape.svg")))
         # Was a flat resize(1580, 950), which is not the reason the window used to open too large --
         # that was a 2,897 px minimum height, fixed in `analysis_panel._scrolled` -- but it did mean
         # the window was the same size on a 1080p monitor and a 4K one. Applied last, after the size
@@ -866,7 +866,7 @@ class Window(QtWidgets.QMainWindow):
         # Display settings, read once from where they were left. The lighting timer exists whether
         # or not it is running: creating it lazily inside a handler is how a timer ends up owned by
         # whichever thread happened to touch it first.
-        s = QtCore.QSettings("starplast", "starplast")
+        s = QtCore.QSettings("parascape", "parascape")
         from . import ambient as _ambient, lighting as _lighting
         self._ambient_mode = str(s.value("display/ambient", "none"))
         self._ambient = {
@@ -1210,7 +1210,7 @@ class Window(QtWidgets.QMainWindow):
     # ------------------------------------------------------------------ logging
     def settings(self):
         """Where preferences persist. One place, so a new setting cannot invent its own file."""
-        return QtCore.QSettings("starplast", "starplast")
+        return QtCore.QSettings("parascape", "parascape")
 
     # ------------------------------------------------------------------ window size
     def work_area(self) -> QtCore.QRect:
@@ -1319,7 +1319,7 @@ class Window(QtWidgets.QMainWindow):
 
         One place, because three settings rebuild it and each used to spell the call out: whether
         the display composites decides whether menus and tooltips are translucent black glass or
-        the same colour made opaque (see `starplast.glass`).
+        the same colour made opaque (see `parascape.glass`).
         """
         return TH.stylesheet(self.theme, self._container_opacity, self._ui_scale,
                              translucent=glass.compositing_available())
@@ -1331,7 +1331,7 @@ class Window(QtWidgets.QMainWindow):
         if app is not None:
             # Read by the painted parts -- glass cards, search rows -- which draw with QPainter
             # rather than through the stylesheet and so need to know which palette is in force.
-            app.setProperty("starplastTheme", name)
+            app.setProperty("parascapeTheme", name)
             app.setStyleSheet(self.stylesheet())
         # Links in the evidence panel in the theme's accent: Qt's default blue is unreadable on the
         # dark themes, and the panel's links are now the way down to a gene's class.
@@ -1682,7 +1682,7 @@ class Window(QtWidgets.QMainWindow):
         f.addSeparator()
         q = f.addAction("Quit")
         q.setShortcut("Ctrl+Q")
-        q.setToolTip("Close this window and quit Starplast.")
+        q.setToolTip("Close this window and quit ParaScape.")
         q.triggered.connect(self.close)
 
         # ---- View
@@ -1856,7 +1856,7 @@ class Window(QtWidgets.QMainWindow):
         # ---- Help, grouped the way spaCR's is: finding things, then the documents, then the
         # explanations, then About. The search field sits directly to the right of this menu.
         h = mb.addMenu("&Help")
-        self.search_act = h.addAction("Search Starplast…")
+        self.search_act = h.addAction("Search ParaScape…")
         self.search_act.setShortcut(help_search.SHORTCUT)
         self.search_act.setToolTip(
             "Put the cursor in the search box beside this menu. It finds every menu command, panel, "
@@ -1864,7 +1864,7 @@ class Window(QtWidgets.QMainWindow):
             "choose.")
         self.search_act.triggered.connect(lambda: help_search.focus_field(self))
         a = h.addAction("Keyboard shortcuts")
-        a.setToolTip("Every key Starplast binds, and the command it runs.")
+        a.setToolTip("Every key ParaScape binds, and the command it runs.")
         a.triggered.connect(self.show_shortcuts)
         h.addSeparator()
         for label, page, tip in (
@@ -1891,7 +1891,7 @@ class Window(QtWidgets.QMainWindow):
                      "each score can be made perfect by a useless answer.")
         a.triggered.connect(lambda: self.explain_scoring().show())
         h.addSeparator()
-        a = h.addAction("About starplast")
+        a = h.addAction("About parascape")
         a.setMenuRole(QtGui.QAction.MenuRole.AboutRole)
         a.setToolTip("The version running, the data it was built from, and whose work it rests on.")
         a.triggered.connect(self.about)
@@ -2134,7 +2134,7 @@ class Window(QtWidgets.QMainWindow):
     def about(self):
         """What this is, what it is standing on, and who drew the cell. Returns the text shown."""
         text = self.about_text()
-        self._about = glass.message(self, "About starplast", text, rich=True)
+        self._about = glass.message(self, "About parascape", text, rich=True)
         return text
 
     def about_text(self) -> str:
@@ -2148,7 +2148,7 @@ class Window(QtWidgets.QMainWindow):
         b = gpu.backend()
         credit = getattr(self.diagram, "credit", {}) if self.diagram is not None else {}
         return (
-            f"<h3>starplast {__version__}</h3>"
+            f"<h3>parascape {__version__}</h3>"
             f"<p>A 3D browser for the <i>Toxoplasma gondii</i> knowledge map: {len(self.nodes):,} "
             f"genes, positioned by the saved balanced feature recipe. "
             f"The layout is exploratory; guided prediction uses separate held-out evaluation.</p>"
@@ -2159,8 +2159,8 @@ class Window(QtWidgets.QMainWindow):
             + (f"<p>Cell drawing by {credit.get('creator')} (SwissBioPics, SIB), "
                f"<a href='{credit.get('license')}'>CC BY 4.0</a>.</p>" if credit.get("creator")
                else "")
-            + "<p><a href='https://github.com/EinarOlafsson/starplast'>"
-              "github.com/EinarOlafsson/starplast</a></p>")
+            + "<p><a href='https://github.com/EinarOlafsson/parascape'>"
+              "github.com/EinarOlafsson/parascape</a></p>")
 
     def explain_scoring(self):
         """The precision/recall explainer, read from objectives.py so it cannot drift from the code.
@@ -2258,7 +2258,7 @@ class Window(QtWidgets.QMainWindow):
             self.status.showMessage("no gated selection -- set the left button to Select and drag "
                                     "a gate over some genes")
             return None
-        path = path or self._ask_path("Export gated genes", "CSV (*.csv)", "starplast_gated.csv")
+        path = path or self._ask_path("Export gated genes", "CSV (*.csv)", "parascape_gated.csv")
         if not path:
             return None
         if columns is None:
@@ -2283,7 +2283,7 @@ class Window(QtWidgets.QMainWindow):
         try:
             self.annotated = self.annotations.mask(self.nodes.gene_id)
         except Exception as exc:                       # a bad row must not take the window down
-            print(f"starplast: annotations unavailable ({type(exc).__name__}: {exc})")
+            print(f"parascape: annotations unavailable ({type(exc).__name__}: {exc})")
             return
         n = int(self.annotated.sum())
         if n:
@@ -2543,7 +2543,7 @@ class Window(QtWidgets.QMainWindow):
         """
         scale = float(min(max(scale, UI_SCALE_RANGE[0]), UI_SCALE_RANGE[1]))
         self._ui_scale = scale
-        QtCore.QSettings("starplast", "starplast").setValue("display/ui_scale", scale)
+        QtCore.QSettings("parascape", "parascape").setValue("display/ui_scale", scale)
         if getattr(self, "zoom_label", None) is not None:
             self.zoom_label.setText(f"{scale:.2f}×")
         app = QtWidgets.QApplication.instance()
@@ -2568,14 +2568,14 @@ class Window(QtWidgets.QMainWindow):
     def set_ambient(self, mode: str) -> str:
         """Turn the drifting background on or off, and remember the choice."""
         self._ambient_mode = "blobs" if str(mode) == "blobs" else "none"
-        QtCore.QSettings("starplast", "starplast").setValue("display/ambient", self._ambient_mode)
+        QtCore.QSettings("parascape", "parascape").setValue("display/ambient", self._ambient_mode)
         self._apply_ambient()
         return self._ambient_mode
 
     def set_ambient_option(self, key: str, value) -> None:
         """One of speed, size or density."""
         self._ambient[key] = float(value)
-        QtCore.QSettings("starplast", "starplast").setValue(f"display/ambient_{key}", float(value))
+        QtCore.QSettings("parascape", "parascape").setValue(f"display/ambient_{key}", float(value))
         if self._ambient_widget is not None:
             self._ambient_widget.configure(**{key: float(value)})
 
@@ -2641,7 +2641,7 @@ class Window(QtWidgets.QMainWindow):
         Connected rather than polled, and marked on each object so a second call cannot connect the
         same signal twice.
         """
-        mark = "starplastStackWatched"
+        mark = "parascapeStackWatched"
         for dock in self.findChildren(QtWidgets.QDockWidget):
             if not dock.property(mark):
                 dock.setProperty(mark, True)
@@ -2656,7 +2656,7 @@ class Window(QtWidgets.QMainWindow):
         from .lighting import MODES
         mode = "soft" if mode == "lit" else mode       # migrate old recipes/settings
         self._lighting["mode"] = mode if mode in MODES else "off"
-        QtCore.QSettings("starplast", "starplast").setValue("display/lighting",
+        QtCore.QSettings("parascape", "parascape").setValue("display/lighting",
                                                             self._lighting["mode"])
         if self._lighting["mode"] == "off":
             self._light_timer.stop()
@@ -2688,7 +2688,7 @@ class Window(QtWidgets.QMainWindow):
         else:
             return ""
         self._lighting[key] = value
-        QtCore.QSettings("starplast", "starplast").setValue(f"display/light_{key}",
+        QtCore.QSettings("parascape", "parascape").setValue(f"display/light_{key}",
                                                             self._lighting[key])
         if key == "point_mode":
             self._refresh_sprite()
@@ -2699,7 +2699,7 @@ class Window(QtWidgets.QMainWindow):
     def set_container_opacity(self, value: float) -> float:
         """How much of the background shows through the panels."""
         self._container_opacity = float(min(max(float(value), 0.35), 1.0))
-        QtCore.QSettings("starplast", "starplast").setValue("display/container_opacity",
+        QtCore.QSettings("parascape", "parascape").setValue("display/container_opacity",
                                                             self._container_opacity)
         self.apply_theme(self.theme)
         return self._container_opacity
@@ -3007,7 +3007,7 @@ class Window(QtWidgets.QMainWindow):
         code = organisms.by_species(self.species).code
         space = from_sources({code: {'nodes': self.nodes}}, imports=self.imports, imported_organism=code)
         dialog = QtWidgets.QDialog(self)
-        dialog.setWindowTitle(f'starplast — {self.nodes.gene_id.iloc[row]} evidence')
+        dialog.setWindowTitle(f'parascape — {self.nodes.gene_id.iloc[row]} evidence')
         layout = QtWidgets.QVBoxLayout(dialog)
         panel = GeneEvidenceBrowser(self.nodes, code, str(self.nodes.gene_id.iloc[row]), space, dialog)
         panel.source_requested.connect(self._gene_source)
@@ -3032,7 +3032,7 @@ class Window(QtWidgets.QMainWindow):
         model = LabelSpace(self.nodes, code, ledger=track_record.shipped(code),
             ledger_nodes=pd.read_parquet(organisms.nodes_path(code)))
         dialog = QtWidgets.QDialog(self)
-        dialog.setWindowTitle('starplast — labels and classes')
+        dialog.setWindowTitle('parascape — labels and classes')
         layout = QtWidgets.QVBoxLayout(dialog)
         panel = LabelSpaceBrowser(model, dialog)
         panel.gene_requested.connect(lambda organism, gene: self._dataset_entity(organism, 'gene', gene))
@@ -3083,7 +3083,7 @@ class Window(QtWidgets.QMainWindow):
             return
         self._detail_row = int(row)
         route = 'target/' + quote(column, safe='') if label is None else 'class/' + quote(column, safe='') + '/' + quote(label, safe='')
-        self._detail_link(QtCore.QUrl('starplast://' + route))
+        self._detail_link(QtCore.QUrl('parascape://' + route))
         self.open_label_browser(column, label)
         dialog.close()
 
@@ -3124,7 +3124,7 @@ class Window(QtWidgets.QMainWindow):
         the setting disagreed with the behaviour, and the switch was the one lying.
         """
         from . import gpu
-        s = QtCore.QSettings("starplast", "starplast")
+        s = QtCore.QSettings("parascape", "parascape")
         if s.contains("compute/gpu"):
             return bool(s.value("compute/gpu", type=bool))
         return any(gpu.available()[k] for k in ("cuml", "cupy", "torch"))
@@ -3136,7 +3136,7 @@ class Window(QtWidgets.QMainWindow):
         installed is worse than no switch, and this is the sentence that tells the difference.
         """
         from . import gpu
-        QtCore.QSettings("starplast", "starplast").setValue("compute/gpu", bool(on))
+        QtCore.QSettings("parascape", "parascape").setValue("compute/gpu", bool(on))
         note = gpu.describe()
         if hasattr(self, "gpu_note"):
             self.gpu_note.setText(note)
@@ -3264,7 +3264,7 @@ class Window(QtWidgets.QMainWindow):
             "cuml does UMAP and HDBSCAN themselves; cupy or torch do the array work -- scaling, "
             "ranking and the distance matrix the walk recomputes for every configuration. Nothing "
             "here is a dependency: with no backend installed the switch has nothing to turn on -- "
-            'install them with `pip install starplast[gpu]`, or `pip install -e ".[gpu]"` in a '
+            'install them with `pip install parascape[gpu]`, or `pip install -e ".[gpu]"` in a '
             "checkout.\n\n"
             "A map built by cuml's UMAP is NOT the map umap-learn builds -- it is a different map "
             "of the same data -- so a walk whose rows came from both would compare the libraries "
@@ -3893,7 +3893,7 @@ class Window(QtWidgets.QMainWindow):
         d = QtWidgets.QDockWidget("evidence")
         d.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
         self.detail = QtWidgets.QTextBrowser()
-        # Links are routed by hand: web links open in the browser as before, and `starplast:` links
+        # Links are routed by hand: web links open in the browser as before, and `parascape:` links
         # drill down inside this panel -- from a gene to its class, and back -- which a browser that
         # followed every link itself would turn into a blank page.
         self.detail.setOpenLinks(False)
@@ -4337,7 +4337,7 @@ class Window(QtWidgets.QMainWindow):
         if hit.size > 1 or resolution.status == 'ambiguous':
             self.sel = None
             self.redraw()
-            items = ''.join(f"<li><a href='starplast://select/{int(i)}'>"
+            items = ''.join(f"<li><a href='parascape://select/{int(i)}'>"
                 f"{escape(str(self.nodes.gene_id.iloc[i]))}</a> — "
                 f"{escape(str(self.nodes.iloc[i].get('product', '')))}</li>" for i in hit)
             mappings = ''.join(f'<li>{escape(choice.alias)} → {escape(choice.entity.identifier)} '
@@ -4417,7 +4417,7 @@ class Window(QtWidgets.QMainWindow):
 
     def export_image(self, path: str = ""):
         """The current frame as a PNG, at the size it is on screen."""
-        path = path or self._ask_path("Export image", "PNG image (*.png)", "starplast.png")
+        path = path or self._ask_path("Export image", "PNG image (*.png)", "parascape.png")
         if not path:
             return None
         # Guarded, because grabbing a framebuffer needs a real GL context and there is not always
@@ -4528,7 +4528,7 @@ class Window(QtWidgets.QMainWindow):
         Coordinates travel with the rows because a gene list without them cannot reproduce what was
         on screen, and reproducing what was on screen is the point of exporting it.
         """
-        path = path or self._ask_path("Export visible genes", "CSV (*.csv)", "starplast_genes.csv")
+        path = path or self._ask_path("Export visible genes", "CSV (*.csv)", "parascape_genes.csv")
         if not path:
             return None
         if columns is None:
@@ -4555,7 +4555,7 @@ class Window(QtWidgets.QMainWindow):
         related at weight 0.8 has lost whether they were measured touching or merely mentioned
         together, which is the distinction the whole application is built around.
         """
-        path = path or self._ask_path("Export relationships", "CSV (*.csv)", "starplast_edges.csv")
+        path = path or self._ask_path("Export relationships", "CSV (*.csv)", "parascape_edges.csv")
         if not path:
             return None
         if columns is None:
@@ -4610,7 +4610,7 @@ class Window(QtWidgets.QMainWindow):
         combined? An exported file outlives the session, so it is exactly where a merged score would
         do the most damage.
         """
-        path = path or self._ask_path("Export graph", "GraphML (*.graphml)", "starplast.graphml")
+        path = path or self._ask_path("Export graph", "GraphML (*.graphml)", "parascape.graphml")
         if not path:
             return None
         vis = self.visible_mask()
@@ -4667,12 +4667,12 @@ class Window(QtWidgets.QMainWindow):
     def _detail_link(self, url: QtCore.QUrl) -> None:
         """Follow a link in the evidence panel: out to the web, or down a level within the panel.
 
-        `starplast://class/<target>/<label>` shows how every strategy fares on one class;
-        `starplast://target/<target>` lists every class of one category with its best strategy;
-        `starplast://claim/<gene id>/<target>` shows one claim, how it was made and how it was tested;
-        `starplast://gene/<row>` goes back to a gene's card. Anything else is a web link.
+        `parascape://class/<target>/<label>` shows how every strategy fares on one class;
+        `parascape://target/<target>` lists every class of one category with its best strategy;
+        `parascape://claim/<gene id>/<target>` shows one claim, how it was made and how it was tested;
+        `parascape://gene/<row>` goes back to a gene's card. Anything else is a web link.
         """
-        if url.scheme() != "starplast":
+        if url.scheme() != "parascape":
             QtGui.QDesktopServices.openUrl(url)
             return
         parts = [QtCore.QUrl.fromPercentEncoding(p.encode()) for p in url.path().split("/") if p]
@@ -4697,7 +4697,7 @@ class Window(QtWidgets.QMainWindow):
         if url.host() == "class" and len(parts) >= 2:
             from . import track_record
             code = organisms.by_species(self.species).code
-            back = (f"<p><a href='starplast://gene/{self._detail_row}'>◂ back to the gene</a></p>"
+            back = (f"<p><a href='parascape://gene/{self._detail_row}'>◂ back to the gene</a></p>"
                     if getattr(self, "_detail_row", None) is not None else "")
             body = track_record.class_html(parts[0], parts[1], code)
             self.detail.setHtml(back + (body or "<p style='color:#888'>Nothing recorded for "
@@ -4706,7 +4706,7 @@ class Window(QtWidgets.QMainWindow):
         if url.host() == "claim" and len(parts) >= 2:
             from . import claims
             code = organisms.by_species(self.species).code
-            back = (f"<p><a href='starplast://gene/{self._detail_row}'>◂ back to the gene</a></p>"
+            back = (f"<p><a href='parascape://gene/{self._detail_row}'>◂ back to the gene</a></p>"
                     if getattr(self, "_detail_row", None) is not None else "")
             body = claims.claim_html(parts[0], parts[1], code)
             self.detail.setHtml(back + (body or "<p style='color:#888'>No such claim.</p>"))
@@ -4720,7 +4720,7 @@ class Window(QtWidgets.QMainWindow):
             code = organisms.by_species(self.species).code
             gene_id = str(self.nodes["gene_id"].iloc[row])
             body = track_record.gene_html(gene_id, code, target=parts[1])
-            self.detail.setHtml(f"<p><a href='starplast://gene/{row}'>◂ back to the gene</a></p>"
+            self.detail.setHtml(f"<p><a href='parascape://gene/{row}'>◂ back to the gene</a></p>"
                                 + (body or "<p style='color:#888'>Nothing recorded.</p>"))
             return
         if url.host() == "alone" and len(parts) >= 2:
@@ -4732,7 +4732,7 @@ class Window(QtWidgets.QMainWindow):
         if url.host() == "target" and parts:
             from . import track_record
             code = organisms.by_species(self.species).code
-            back = (f"<p><a href='starplast://gene/{self._detail_row}'>◂ back to the gene</a></p>"
+            back = (f"<p><a href='parascape://gene/{self._detail_row}'>◂ back to the gene</a></p>"
                     if getattr(self, "_detail_row", None) is not None else "")
             body = track_record.target_html(parts[0], code)
             self.detail.setHtml(back + (body or "<p style='color:#888'>Nothing recorded for "
@@ -4871,7 +4871,7 @@ class Window(QtWidgets.QMainWindow):
         self.detail.setHtml(f"""
         <h2 style="margin-bottom:2px">{gid}</h2>
         <p style="color:#bbb;margin-top:0">{r.get('product', 'unannotated')}</p>
-        <p><a href="starplast://evidence/{int(i)}">All evidence by biological question</a></p>
+        <p><a href="parascape://evidence/{int(i)}">All evidence by biological question</a></p>
         {att}
         <table>{tbl}</table>
         <h4>CRISPR screens <span style="color:#888;font-weight:normal">— competitive growth,
@@ -4904,7 +4904,7 @@ class Window(QtWidgets.QMainWindow):
         return self._claims_html(gene_id) + html + self._other_labels_html(gene_id, html)
 
     def _claims_html(self, gene_id: str) -> str:
-        """What Starplast infers for this gene's missing labels, with how each claim was tested."""
+        """What ParaScape infers for this gene's missing labels, with how each claim was tested."""
         try:
             from . import claims
             return claims.gene_html(str(gene_id), organisms.by_species(self.species).code)
@@ -4940,10 +4940,10 @@ class Window(QtWidgets.QMainWindow):
                 continue
             name = column.replace("_", " ")
             if column in mine:
-                recorded.append(f"<a href='starplast://record/{int(row)}/{quote(column, safe='')}'>"
+                recorded.append(f"<a href='parascape://record/{int(row)}/{quote(column, safe='')}'>"
                                 f"{name}</a>")
             else:
-                computed.append(f"<a href='starplast://alone/{int(row)}/{quote(column, safe='')}'>"
+                computed.append(f"<a href='parascape://alone/{int(row)}/{quote(column, safe='')}'>"
                                 f"{name}</a>")
         parts = []
         if recorded:
@@ -5003,7 +5003,7 @@ class Window(QtWidgets.QMainWindow):
             self.jobs.finished.disconnect(show)
             if getattr(self, "_detail_row", None) != row:
                 return
-            back = f"<p><a href='starplast://gene/{row}'>◂ back to the gene</a></p>"
+            back = f"<p><a href='parascape://gene/{row}'>◂ back to the gene</a></p>"
             if not ok or job.result is None:
                 body = f"<p style='color:#888'>Could not run: {job.error or 'no result'}</p>"
             else:
@@ -5013,31 +5013,31 @@ class Window(QtWidgets.QMainWindow):
             self.detail.setHtml(back + body)
 
         self.jobs.finished.connect(show)
-        self.detail.setHtml(f"<p><a href='starplast://gene/{row}'>◂ back to the gene</a></p>"
+        self.detail.setHtml(f"<p><a href='parascape://gene/{row}'>◂ back to the gene</a></p>"
                             f"<p>Hiding {gene_id} and its orthogroup, and asking five strategies "
                             f"for its {target.replace('_', ' ')}…</p>")
         return job
 
 
 def main():
-    """Entry point for the `starplast` command: build the window and run the event loop."""
+    """Entry point for the `parascape` command: build the window and run the event loop."""
     # Check before building a window. A missing cache otherwise surfaces as a pandas error from inside
     # a constructor, which tells the user nothing about what to do next.
     ok, msg = paths.check()
     if not ok:
-        print(f"starplast: {msg}", file=sys.stderr)
+        print(f"parascape: {msg}", file=sys.stderr)
         print(paths.describe(), file=sys.stderr)
         sys.exit(1)
     pg.setConfigOptions(antialias=True)
     app = QtWidgets.QApplication(sys.argv)
-    app.setApplicationName("starplast")
+    app.setApplicationName("parascape")
     w = Window()
     w.show()
     sys.exit(app.exec())
 
 
 # No `if __name__ == "__main__"` guard here. There are already two ways in and this would be a third
-# that nothing documents: the console script `starplast` points at `starplast.app:main`, and
-# `starplast/__main__.py` makes `python -m starplast` work. Both are tested. A guard reachable only by
-# `python -m starplast.app` is a line no test can execute without opening a real window, and an
+# that nothing documents: the console script `parascape` points at `parascape.app:main`, and
+# `parascape/__main__.py` makes `python -m parascape` work. Both are tested. A guard reachable only by
+# `python -m parascape.app` is a line no test can execute without opening a real window, and an
 # unreachable line is evidence the line should not exist.

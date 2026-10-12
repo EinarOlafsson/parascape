@@ -22,8 +22,8 @@ from OpenGL import GL
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from starplast.app import Window
-from starplast.lighting import (LIGHT_MOODS, MODES, POINTER_MODES, POINT_MODES, RESPONSES,
+from parascape.app import Window
+from parascape.lighting import (LIGHT_MOODS, MODES, POINTER_MODES, POINT_MODES, RESPONSES,
                                 SOURCES, TARGET_MARKERS)
 
 

@@ -3,7 +3,7 @@
 - Dataset selection rule (user, 2026-10-07): when multiple biologically suitable datasets
   answer the same information slot, use citation rate per year since first publication as
   the main preference, with a slight recency preference and a comprehensiveness preference.
-  Apply the versioned policy in `starplast/dataset_selection.py` and retain its factors,
+  Apply the versioned policy in `parascape/dataset_selection.py` and retain its factors,
   publication identity, citation provider/retrieval date and coverage denominator. See
   `instructions/open/65_dataset_selection_audit.md`. Compare matching organism/host, stage,
   assay, quantity and units; check data quality, mapping and access before admission.
@@ -38,13 +38,13 @@
   contrasting labels, colours, and appropriate service icons.
 - The approved logo is the Toxoplasma silhouette enclosing seven connected stars.
   Regenerate its SVGs with `scripts/generate_constellation_logo.py`; the active
-  wordmarks are in `docs/assets/` and the app icon is `starplast/data/icons/starplast.svg`.
+  wordmarks are in `docs/assets/` and the app icon is `parascape/data/icons/parascape.svg`.
 - Keep the full linked dataset catalogue in `docs/datasets.md`, generated from
-  `starplast.datasets.REGISTRY`; keep a prominent link to it in the README.
+  `parascape.datasets.REGISTRY`; keep a prominent link to it in the README.
 - Prepare releases with `python scripts/release.py bump VERSION` and update the
   changelog. Publication runs only when `main` receives a version increase, or
   through an explicit manual release retry. Never publish from `nightly`.
-- Publish only the `starplast` PyPI project. Keep optional GPU support in the
+- Publish only the `parascape` PyPI project. Keep optional GPU support in the
   `gpu` extra; do not add separate core, CPU, or GPU distributions.
 - PyPI projects and trusted publishers must belong to Einar's own PyPI account.
   Never register the packages under another account or claim publication succeeded
@@ -53,7 +53,7 @@
 - Work continuation/watchdog (user, 2026-10-08): keep the native goal active for
   unfinished instructions 64/65/66. Do not stop at inaccessible content; record
   the gap and advance the next permitted independent task. At each resumed turn,
-  read `.starplast-watchdog/state.json` and recent `events.jsonl`, verify actual
+  read `.parascape-watchdog/state.json` and recent `events.jsonl`, verify actual
   native goal status with the goal tool, then record the current item/progress
   through `python scripts/work_watchdog.py record`. Before a turn boundary or
   explicit stop, record the real reason (and observed goal status); normal final

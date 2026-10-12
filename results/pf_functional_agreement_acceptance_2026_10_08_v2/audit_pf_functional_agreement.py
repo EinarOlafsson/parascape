@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 PACKET = ROOT / 'results/pf_functional_agreement_2026_10_08_v2'
 OUTPUT = ROOT / 'results/pf_functional_agreement_acceptance_2026_10_08_v2'
-REPORT_SHA = '940da900b3d5ba356c6e360f220787b849d7382138132ccc96f2d1684178e98b'
+REPORT_SHA = '91e32f04ab83bfdab2f6e115be8456554b74e0f3cc5653143fc5aa1789253e89'
 
 
 def sha(path):
@@ -18,7 +18,7 @@ def sha(path):
 
 
 def audit():
-    from starplast import functional_results as F
+    from parascape import functional_results as F
     assert sha(PACKET / 'report.json') == REPORT_SHA
     receipts = 0
     for line in (PACKET / 'SHA256SUMS.txt').read_text().splitlines():

@@ -15,9 +15,9 @@ os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
 
 from PyQt6 import QtCore, QtWidgets  # noqa: E402
 
-import starplast.app as A  # noqa: E402
-from starplast import app as APP  # noqa: E402
-from starplast.app import category_columns as category_columns_for  # noqa: E402
+import parascape.app as A  # noqa: E402
+from parascape import app as APP  # noqa: E402
+from parascape.app import category_columns as category_columns_for  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -585,7 +585,7 @@ def test_a_running_job_can_be_stopped_and_is_not_reported_as_a_failure(win):
     """A stop is a decision, not a crash. Reported in red with a traceback, it teaches people to
     ignore the failure list."""
     import time
-    from starplast.analysis_panel import _Progress
+    from parascape.analysis_panel import _Progress
 
     class FakePanel:
         class _S:
@@ -616,7 +616,7 @@ def test_a_running_job_can_be_stopped_and_is_not_reported_as_a_failure(win):
 
 def test_stop_all_stops_everything_running(win):
     import time
-    from starplast.analysis_panel import _Progress
+    from parascape.analysis_panel import _Progress
 
     class FakePanel:
         class _S:
@@ -730,7 +730,7 @@ def test_the_scoring_explainer_is_reachable_and_carries_the_table(win):
 
 def test_the_explainer_is_the_one_in_the_code_not_a_copy(win):
     """Two copies of an explanation drift, and the one on screen is the one people believe."""
-    from starplast.objectives import EXPLANATION
+    from parascape.objectives import EXPLANATION
     d = win.explain_scoring()
     assert d.findChild(QtWidgets.QPlainTextEdit).toPlainText() == EXPLANATION
     d.deleteLater()
@@ -996,7 +996,7 @@ def test_every_display_menu_item_applies_the_option_it_names(win):
     from PyQt6 import QtCore
     keys = ("display/lighting", "display/light_target_marker", "display/light_point_mode",
             "display/light_source")
-    s = QtCore.QSettings("starplast", "starplast")
+    s = QtCore.QSettings("parascape", "parascape")
     before = {k: (s.value(k) if s.contains(k) else None) for k in keys}
     m = win.build_context_menu()
     sub = [a for a in m.actions() if a.text() == "Display"][0].menu()
@@ -1126,7 +1126,7 @@ def test_clicking_the_diagram_ticks_rather_than_only_highlighting(win):
     what ticking its row does, or one of the two halves stops filtering."""
     if win.diagram is None:
         pytest.skip("the artwork is not present in this checkout")
-    from starplast.celldiagram import COMPARTMENT_SL
+    from parascape.celldiagram import COMPARTMENT_SL
     win.on_category_changed("compartment")
     name = next(c for c in COMPARTMENT_SL if c in win.color_of)
     win.comp_list.set_checked([])
@@ -1151,7 +1151,7 @@ def test_both_species_can_be_opened(qapp):
     """Instruction 39's arm, made visible. Until this worked, `app.load` opened `nodes.parquet` by
     name and the whole Plasmodium arm -- node table, graph, host bridge, 41 filled slots -- was data
     the browser could not open."""
-    from starplast.app import Window, available_species
+    from parascape.app import Window, available_species
     assert available_species() == ["Toxoplasma gondii", "Plasmodium falciparum"]
     for name in available_species():
         w = Window(species=name)
@@ -1168,7 +1168,7 @@ def test_both_species_can_be_opened(qapp):
 def test_the_two_species_are_different_tables_and_not_one_merged_one(qapp):
     """Nothing is merged: one table per species. A union would put two identifier spaces in one index
     and make "cluster 5 is 71% IMC" a claim about a mixture of organisms."""
-    from starplast.app import Window
+    from parascape.app import Window
     tg = Window(species="Toxoplasma gondii")
     pf = Window(species="Plasmodium falciparum")
     try:
@@ -1185,7 +1185,7 @@ def test_a_layer_without_an_attention_residual_still_loads(qapp):
     """`r` is the attention-corrected residual and only the co-mention layers have one. Indexing it
     unconditionally worked on the Toxoplasma graph, whose builder writes it for every layer, and
     raised KeyError on the first graph built by anything else."""
-    from starplast.app import load
+    from parascape.app import load
     _nodes, _xyz, edges, _models = load("Plasmodium falciparum")
     assert "orthogroup" in edges
     for name, layer in edges.items():
@@ -1197,8 +1197,8 @@ def test_switching_species_opens_the_other_arm_and_remembers_it(qapp):
     leaving it on Plasmodium moved seventeen later tests onto a table whose genes they do not
     contain -- silently, because a Window built with no species argument reads this key."""
     from PyQt6 import QtCore
-    from starplast.app import Window
-    settings = QtCore.QSettings("starplast", "starplast")
+    from parascape.app import Window
+    settings = QtCore.QSettings("parascape", "parascape")
     before = settings.value("data/species") if settings.contains("data/species") else None
     w = Window(species="Toxoplasma gondii")
     other = w.open_species("Plasmodium falciparum")
@@ -1218,7 +1218,7 @@ def test_switching_species_opens_the_other_arm_and_remembers_it(qapp):
 
 def test_the_species_menu_marks_the_one_that_is_open(qapp):
     from PyQt6 import QtWidgets
-    from starplast.app import Window, available_species
+    from parascape.app import Window, available_species
     w = Window(species="Plasmodium falciparum")
     try:
         menu = next(m for m in w.menuBar().findChildren(QtWidgets.QMenu) if m.title() == "Species")

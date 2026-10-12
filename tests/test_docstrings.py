@@ -14,7 +14,7 @@ import os
 
 import pytest
 
-ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "starplast")
+ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "parascape")
 MODULES = sorted(f for f in os.listdir(ROOT) if f.endswith(".py"))
 
 

@@ -1,8 +1,8 @@
 """Desktop scorecards retain exact values and dispatch only supported navigation."""
 import json
 
-from starplast import scorecard as S, scorecard_view as V
-from starplast.scorecard_browser import ScorecardBrowser
+from parascape import scorecard as S, scorecard_view as V
+from parascape.scorecard_browser import ScorecardBrowser
 
 
 def test_browser_definitions_full_record_export_and_clear():

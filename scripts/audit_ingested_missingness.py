@@ -17,7 +17,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from starplast import embedding, paths  # noqa: E402
+from parascape import embedding, paths  # noqa: E402
 
 
 SLOTS = (
