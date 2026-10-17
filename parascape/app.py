@@ -1411,6 +1411,7 @@ class Window(QtWidgets.QMainWindow):
         self._star_map()
         self._guided()
         self._discoveries()
+        self._compare()
 
     def _discoveries(self):
         """The Discoveries dock: claims about unlabelled genes, each with how it was tested."""
@@ -1421,6 +1422,15 @@ class Window(QtWidgets.QMainWindow):
         except Exception as e:                        # the browser must open without it
             self.discoveries = None
             self.statusBar().showMessage(f"discoveries unavailable: {e}")
+
+    def _compare(self):
+        """The Compare dock: two groups of samples from one study, and the genes that differ."""
+        try:
+            from .compare_panel import install
+            install(self)
+        except Exception as e:                        # the browser must open without it
+            self.compare = None
+            self.statusBar().showMessage(f"compare unavailable: {e}")
 
     def colour_by_claims(self, target: str):
         """Colour the map by one label: measured in full, claimed faded by uncertainty, rest grey."""
