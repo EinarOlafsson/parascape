@@ -1,5 +1,5 @@
 """The Compare tab: two groups of samples from one study -- strains, a knockout and its parent, a drug and
-its vehicle -- and which genes differ, by how much, and how sure (instruction 65).
+its vehicle -- and which genes differ, by how much, and how sure (instruction 69).
 
 Condensed first: one line saying how many genes went up and down, a volcano, and the ranked table. Every
 convention is a visible choice with its reason in the tooltip -- quantifier, reference, normalisation --

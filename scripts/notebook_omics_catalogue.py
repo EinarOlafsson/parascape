@@ -1,7 +1,7 @@
 """Write notebooks/omics_catalogue_2026_10_17.ipynb: every Toxoplasma omics study in GEO, PRIDE and the
 Metabolomics Workbench, classified by what was perturbed and what was read out.
 
-Instruction 65. Every accession comes from the repositories' own APIs; every query is in the notebook.
+Instruction 69. Every accession comes from the repositories' own APIs; every query is in the notebook.
 
     python scripts/notebook_omics_catalogue.py
 """
@@ -18,7 +18,7 @@ OUT = os.path.join(ROOT, "results", "omics_catalogue_2026_10_17")
 
 nb = ExecutedNotebook("Toxoplasma omics catalogue")
 nb.md("# Toxoplasma omics studies: what was perturbed, what was measured",
-      "Instruction 65. The request (2026-10-17): compare expression between Toxoplasma strains and under "
+      "Instruction 69. The request (2026-10-17): compare expression between Toxoplasma strains and under "
       "perturbations such as a thioredoxin knockout; as many gene-knockout and drug studies with RNA-seq "
       "as possible; and other omics readouts. This notebook lists every candidate study from the "
       "repositories' own APIs -- no accession typed by hand -- and classifies each, so loading can be "

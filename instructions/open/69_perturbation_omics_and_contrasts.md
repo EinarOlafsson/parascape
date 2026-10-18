@@ -1,4 +1,4 @@
-# 65 · Perturbation omics: every gene-knockout, drug and strain study, compared condition by condition
+# 69 · Perturbation omics: every gene-knockout, drug and strain study, compared condition by condition
 
 **Status: open (requested 2026-10-17).**
 

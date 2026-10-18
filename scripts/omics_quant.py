@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Stream public RNA-seq into ParaScape: download each run, quantify it every documented way, keep the
-results on the NAS and delete the reads (instruction 65).
+results on the NAS and delete the reads (instruction 69).
 
     python scripts/omics_quant.py references            # fetch + index the three references
     python scripts/omics_quant.py runs GSE60305 ...      # resolve studies to runs (ENA), write the plan
@@ -38,7 +38,7 @@ BIN = os.path.expanduser("~/anaconda3/envs/parascape-quant/bin")
 THREADS = int(os.environ.get("PARASCAPE_THREADS", "4"))
 
 ENSEMBL = "https://ftp.ensemblgenomes.ebi.ac.uk/pub/protists/release-63/fasta"
-#: Resolved from the Ensembl Genomes release-63 FTP listing on 2026-10-17 (instruction 65).
+#: Resolved from the Ensembl Genomes release-63 FTP listing on 2026-10-17 (instruction 69).
 REFERENCES = {
     "ME49": (f"{ENSEMBL}/toxoplasma_gondii/cdna/Toxoplasma_gondii.GCA000006565v2.cdna.all.fa.gz",
              f"{ENSEMBL}/toxoplasma_gondii/dna/Toxoplasma_gondii.GCA000006565v2.dna.toplevel.fa.gz"),

@@ -4,7 +4,7 @@
 
 - Compare expression between two groups of samples -- strains, a knockout and its parent, a drug and
   its vehicle -- in a new **Compare** tab (`parascape/compare_panel.py`,
-  `parascape/expression_contrast.py`, instruction 65). Every convention is a visible choice:
+  `parascape/expression_contrast.py`, instruction 69). Every convention is a visible choice:
   quantifier (salmon with genome decoys and bias correction, or kallisto), reference (ME49 + host
   transcripts competing for each read, ME49 alone, or the strain's own GT1 / VEG genome),
   normalisation (TMM, median-of-ratios, upper quartile, CPM, TPM), and within-study scaling of every

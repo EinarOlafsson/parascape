@@ -1,4 +1,4 @@
-"""Compare expression between two groups of samples: strains, knockouts, drugs, stages (instruction 65).
+"""Compare expression between two groups of samples: strains, knockouts, drugs, stages (instruction 69).
 
 Everything a user may want to choose is a parameter, because the conventions differ and each is defended
 in the literature:
