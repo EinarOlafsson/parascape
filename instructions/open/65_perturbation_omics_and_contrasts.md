@@ -58,3 +58,22 @@
   the catalogue needs an all-fields search too. Related: Trx4 (PMID 38576040, no RNA-seq found yet);
   TgPRO, a redox regulator (RNA-seq GSE329845, TMT proteome PXD077563).
 * Type I/II/III: **GSE60305**, RH, PLK, CTG as tachyzoites and bradyzoites (18 runs, single-end).
+
+## Progress (2026-10-18)
+* Quantification restarted LOW PROFILE at Einar's request (user unit `parascape-quant`: one run at a time,
+  3 threads, nice 19, idle IO, 12 GB cap -- a 67M-pair run against ME49_host was OOM-killed at 10 GB on
+  2026-10-17). 17 of 1,011 runs done. The shared scratch disk (mnt3) filled to 0 GB overnight; the job
+  waits for space rather than competing. At this pace the plan takes weeks.
+* First studies built into matrices: GSE103113 (GRA18, one sample per condition: profiles only, no test;
+  also mis-flagged as a strain study), GSE116539 (TgCRT knockout, 2 vs 2, purified parasites, host share
+  0.05%), GSE125120 (Myr1 KO in HFF; "bystander" samples are uninfected cells with ~0.2M parasite reads --
+  only the infected samples support a parasite comparison).
+* **Validation against a paper** (Thornton et al. 2019, PLoS Pathog, PMID 31170269, found via Europe PMC
+  from GSE116539): the knockout lowers endolysosomal proteases. Reproduced: SUB1 -0.31 log2 (FDR 0.008),
+  CPC2 -0.26, ASP1 -0.79, on TMM, median-of-ratios and CPM alike.
+* **Trap:** TgCRT itself reads ~10x HIGHER in its own knockout (salmon and kallisto agree; the labels are
+  right, since the protease result matches). Likely the construct leaves CRT sequence transcribed. A
+  gene's own expression in its knockout is not evidence the knockout worked; the UI should say so when the
+  knockout target is known.
+* Fixed: replicate stripping turned "gra18" into "gra"; a number is now a replicate only when set off by a
+  separator or named as one.

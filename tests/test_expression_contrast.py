@@ -113,3 +113,13 @@ def test_a_group_of_one_is_refused():
     counts = _simulate(n_genes=200, seed=7)
     with pytest.raises(ValueError):
         X.contrast(counts, ["a0"], ["b0", "b1"])
+
+
+def test_a_replicate_number_is_stripped_but_a_gene_number_is_kept():
+    cases = {"gra18": "gra18", "GRA18+++": "GRA18+++", "crt-ko_1": "crt-ko", "wildtype_2": "wildtype",
+             "Infected bradyzoite (WT) foreskin fibroblast replicate 3":
+                 "Infected bradyzoite (WT) foreskin fibroblast",
+             "RH_Rep4": "RH", "wild type control_4": "wild type control", "ME49 rep2": "ME49",
+             "KO-2": "KO", "TgCRT": "TgCRT"}
+    for title, expected in cases.items():
+        assert X._condition({"sample_title": title}) == expected, title

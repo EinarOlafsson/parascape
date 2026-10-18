@@ -250,6 +250,25 @@ that produced it, and any edge layer built from it before it looks at anything e
 The [strategy catalogue](strategies.md) lists all of them with their measured
 verdicts, including the ones that fail on this data.
 
+### Compare: two groups of samples, the genes that differ
+
+The **compare** tab holds public RNA-seq studies -- strains, gene knockouts, drug treatments --
+quantified from their raw reads. Pick a study, then the conventions:
+
+- **quantifier** -- salmon or kallisto;
+- **reference** -- *ME49+host* (the default for intracellular samples: host reads compete and are
+  not counted as parasite), *ME49* alone, or the strain's own genome (*GT1* Type I, *VEG* Type III);
+- **normalisation** -- TMM, median-of-ratios, upper quartile, CPM or TPM.
+
+Samples are grouped from their titles; check them and reassign any that are wrong (A, B, or left
+out). **Compare** gives one line of how many genes went up and down, a volcano and the ranked table;
+click a gene for its card, **Test these genes** to ask whether the rest of the data would have found
+them, **Save…** for the whole table. Each sample's host share is shown: a sample that is 99% host
+has few parasite reads whatever its depth.
+
+A gene's own expression in its knockout is not evidence the knockout worked: in the TgCRT knockout
+the CRT transcript reads ten times higher, while the knockout's published effects are reproduced.
+
 ### Discoveries: functions, labels and tested inferences
 
 The **discoveries** tab opens on **Labels and functions**. Browse functional domains

@@ -82,7 +82,10 @@ def _condition(r) -> str:
     """
     import re
     t = str(r.get("sample_title") or r.get("sample_alias") or r.get("run_accession"))
-    t = re.sub(r"(?i)[\s_\-]*(?:rep(?:licate)?|biological replicate|br|r)?[\s_\-]*\d+$", "", t).strip()
+    # A replicate number is set off by a separator or named as one ("_1", " rep2", "replicate 3");
+    # a number glued to a word is part of the name -- "gra18" is the GRA18 knockout, not "gra", rep 18.
+    t = re.sub(r"(?i)(?:[\s_\-]+(?:biological\s+)?(?:rep(?:licate)?|br|r)?[\s_\-]*|"
+               r"(?:biological\s+)?(?:rep(?:licate)?)[\s_\-]*)\d+$", "", t).strip()
     return t or str(r.get("run_accession"))
 
 

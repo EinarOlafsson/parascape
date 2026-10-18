@@ -290,6 +290,7 @@ def quantify(limit: int | None = None) -> None:
         if os.path.exists(os.path.join(out_dir, "done.json")):
             continue
         local = []
+        _clear_scratch(r["run_accession"])          # whatever an interrupted attempt left behind
         try:
             local = _reads(r)
             if not local:
@@ -322,10 +323,7 @@ def quantify(limit: int | None = None) -> None:
         finally:
             # Everything this run left on scratch -- reads, the .sra, fasterq-dump temp files -- whether
             # it finished or not: scratch is small and shared, and a failed run must not fill it.
-            for f in os.listdir(SCRATCH):
-                if f.startswith(r["run_accession"]) or f.startswith("fasterq.tmp"):
-                    path = os.path.join(SCRATCH, f)
-                    shutil.rmtree(path, ignore_errors=True) if os.path.isdir(path) else os.remove(path)
+            _clear_scratch(r["run_accession"])
         count += 1
         if limit and count >= limit:
             break
@@ -394,6 +392,13 @@ def _reads(r: dict) -> list:
                 raise RuntimeError(f"md5 mismatch for {u}")
         local.append(dest)
     return local
+
+def _clear_scratch(run_accession: str) -> None:
+    """Remove one run's files (reads, .sra, fasterq-dump temp) from scratch."""
+    for f in os.listdir(SCRATCH):
+        if f.startswith(run_accession) or f.startswith("fasterq.tmp"):
+            path = os.path.join(SCRATCH, f)
+            shutil.rmtree(path, ignore_errors=True) if os.path.isdir(path) else os.remove(path)
 
 def _gzip(path: str) -> None:
     if os.path.exists(path):

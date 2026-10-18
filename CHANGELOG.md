@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased
+
+- Compare expression between two groups of samples -- strains, a knockout and its parent, a drug and
+  its vehicle -- in a new **Compare** tab (`parascape/compare_panel.py`,
+  `parascape/expression_contrast.py`, instruction 65). Every convention is a visible choice:
+  quantifier (salmon with genome decoys and bias correction, or kallisto), reference (ME49 + host
+  transcripts competing for each read, ME49 alone, or the strain's own GT1 / VEG genome),
+  normalisation (TMM, median-of-ratios, upper quartile, CPM, TPM), and within-study scaling of every
+  sample against its own control so studies can be laid side by side. The test is limma-trend
+  (moderated variances), checked on simulations for uniform null p-values and controlled FDR, and
+  against a paper: in the TgCRT knockout (GSE116539) it reproduces the published drop in
+  endolysosomal proteases (SUB1, CPC2, ASP1).
+- A catalogue of 711 Toxoplasma omics studies from GEO, SRA, PRIDE and the Metabolomics Workbench,
+  classified by what was perturbed and what was read out (`parascape/data/omics_catalogue.tsv`,
+  `notebooks/omics_catalogue_2026_10_17.ipynb`). `scripts/omics_quant.py` streams the 1,011 runs of
+  79 knockout, drug and strain RNA-seq studies from SRA, quantifies each every documented way and
+  keeps only the results; the matrices ship separately as an expression pack.
+
 ## 0.0.1.0
 
 - Browse all recorded labels and functions in Discoveries, with separate source
