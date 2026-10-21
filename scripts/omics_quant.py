@@ -25,6 +25,7 @@ import gzip
 import hashlib
 import json
 import os
+from pathlib import Path
 import shutil
 import subprocess
 import sys
@@ -36,6 +37,8 @@ NAS = os.environ.get("PARASCAPE_OMICS", "/nas_mnt/carruthers/Einar/parascape_omi
 SCRATCH = os.environ.get("PARASCAPE_SCRATCH", "/media/carruthers/mnt3/claude/parascape_omics_scratch")
 BIN = os.path.expanduser("~/anaconda3/envs/parascape-quant/bin")
 THREADS = int(os.environ.get("PARASCAPE_THREADS", "4"))
+DOWNLOAD_CACHE = os.environ.get("PARASCAPE_DOWNLOAD_CACHE", "")
+DOWNLOAD_RATE = int(os.environ.get("PARASCAPE_DOWNLOAD_BYTES_PER_SECOND", "0"))
 
 ENSEMBL = "https://ftp.ensemblgenomes.ebi.ac.uk/pub/protists/release-63/fasta"
 #: Resolved from the Ensembl Genomes release-63 FTP listing on 2026-10-17 (instruction 69).
@@ -85,7 +88,14 @@ def fetch(url: str, dest: str, tries: int = 5) -> str:
     for i in range(tries):
         try:
             with urllib.request.urlopen(url, timeout=120) as r, open(tmp, "wb") as fh:
-                shutil.copyfileobj(r, fh, length=1 << 22)
+                while True:
+                    started = time.monotonic()
+                    block = r.read(1 << 20)
+                    if not block:
+                        break
+                    fh.write(block)
+                    if DOWNLOAD_RATE > 0:
+                        time.sleep(max(0, len(block) / DOWNLOAD_RATE - (time.monotonic() - started)))
             os.replace(tmp, dest)
             return sha256(dest)
         except Exception as e:                       # network: retry with backoff
@@ -284,12 +294,17 @@ def quantify(limit: int | None = None) -> None:
     with open(path) as fh:
         todo = [json.loads(ln) for ln in fh if ln.strip()]
     os.makedirs(SCRATCH, exist_ok=True)
+    if DOWNLOAD_CACHE:
+        os.makedirs(DOWNLOAD_CACHE, exist_ok=True)
     count = 0
     for r in todo:
         out_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
         if os.path.exists(os.path.join(out_dir, "done.json")):
             continue
         local = []
+        if DOWNLOAD_CACHE:
+            _cache_module().save(Path(DOWNLOAD_CACHE) / 'active.json',
+                                 {'run': r['run_accession'], 'pid': os.getpid()})
         _clear_scratch(r["run_accession"])          # whatever an interrupted attempt left behind
         try:
             local = _reads(r)
@@ -324,6 +339,8 @@ def quantify(limit: int | None = None) -> None:
             # Everything this run left on scratch -- reads, the .sra, fasterq-dump temp files -- whether
             # it finished or not: scratch is small and shared, and a failed run must not fill it.
             _clear_scratch(r["run_accession"])
+            if DOWNLOAD_CACHE:
+                (Path(DOWNLOAD_CACHE) / 'active.json').unlink(missing_ok=True)
         count += 1
         if limit and count >= limit:
             break
@@ -354,12 +371,19 @@ def _reads(r: dict) -> list:
         while _free_gb(SCRATCH) < need:
             log(f"{run_acc}: waiting for scratch space ({_free_gb(SCRATCH):.0f} GB free, {need:.0f} needed)")
             time.sleep(600)
-        sra = os.path.join(SCRATCH, f"{run_acc}.sra")
-        fetch(url, sra)
+        cached = (_cache_module().cached_archive(Path(DOWNLOAD_CACHE), run_acc, url, size)
+                  if DOWNLOAD_CACHE else None)
+        sra = str(cached) if cached else os.path.join(SCRATCH, f"{run_acc}.sra")
+        if cached:
+            log(f"{run_acc}: using verified prefetched archive")
+        else:
+            fetch(url, sra)
         run([os.path.join(BIN, "vdb-validate"), sra], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         run([os.path.join(BIN, "fasterq-dump"), "--split-3", "-e", str(THREADS), "-t", SCRATCH,
              "-O", SCRATCH, sra], stdout=subprocess.DEVNULL)
         os.remove(sra)
+        if cached:
+            cached.with_suffix('.json').unlink(missing_ok=True)
         pair = [os.path.join(SCRATCH, f"{run_acc}_{k}.fastq") for k in (1, 2)]
         single = os.path.join(SCRATCH, f"{run_acc}.fastq")
         if all(os.path.exists(f) for f in pair):
@@ -392,6 +416,15 @@ def _reads(r: dict) -> list:
                 raise RuntimeError(f"md5 mismatch for {u}")
         local.append(dest)
     return local
+
+
+def _cache_module():
+    """Import the optional transport helper for both direct and module execution."""
+    try:
+        from . import omics_download_cache
+    except ImportError:
+        import omics_download_cache
+    return omics_download_cache
 
 def _clear_scratch(run_accession: str) -> None:
     """Remove one run's files (reads, .sra, fasterq-dump temp) from scratch."""

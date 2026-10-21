@@ -77,3 +77,39 @@
   knockout target is known.
 * Fixed: replicate stripping turned "gra18" into "gra"; a number is now a replicate only when set off by a
   separator or named as one.
+
+## Download takeover (2026-10-20, America/Detroit)
+
+User requested taking over the Claude `(work) Starplast` session and downloading as much as possible
+without affecting the active spaCR tutorial. Scope here is transport and resource management of the
+existing plan. The broader inference/action list remains paused.
+
+- At takeover: 92/1,011 runs complete, 919 pending. Existing processing was already running at five
+  threads, nice 19, idle IO and a 14 GiB memory cap. Previously claimed CPUQuota and IO bandwidth
+  cgroup limits are **not enforced** on this user session; do not describe them as effective caps.
+- `scripts/omics_download_cache.py` maintains a resumable cache on the root filesystem at
+  `/home/carruthers/.cache/parascape-downloads`, capped at 40 GiB including partials, retaining at least
+  90 GiB free. One download at a time, maximum 4 MiB/s, one CPU affinity (15), nice 19, idle IO,
+  384 MiB memory cap. It yields when CPU pressure reaches 5%, IO pressure 8%, memory pressure 0.5%,
+  or available RAM falls below 32 GiB. These are conservative controls, not a guarantee of zero
+  effect on other jobs. No tutorial process, file, setting or GPU allocation is changed.
+- Existing sequential processing consumes checksum-verified cache entries and still runs its SRA
+  integrity validation; cached raw archives are deleted after successful expansion. Direct-download
+  fallback is also capped at 4 MiB/s. No raw reads are retained on the shared NAS.
+- User units: `parascape-downloads.service` (cache), `parascape-quant-cached.service` (consumer).
+  The old transient `parascape-quant.service` is replaced only after its current run finishes.
+  `parascape-download-handover.service` waits for that boundary; its durable record is
+  `~/.cache/parascape-downloads/handover.json`. Do not start a second consumer while it is waiting.
+  The consumer stays at five threads and has effective process CPU affinity 10–14, plus its original
+  14 GiB memory cap. User services use a fixed code copy in
+  `~/.local/share/parascape-download-worker/`; later source changes require an intentional redeploy.
+- Progress: cache `status.json`, `journalctl --user -u parascape-downloads`, and the existing
+  NAS `logs/omics_quant.log`. To stop these new jobs use `systemctl --user stop
+  parascape-download-handover parascape-downloads parascape-quant-cached`; stopping a service does not
+  disable its next-boot start. All cached partials are resumable.
+- Transport validation: synthetic local HTTP fixtures cover HTTP range resume, servers ignoring
+  Range, interrupted transfers, disk reserve/capacity, checksum corruption, producer/consumer
+  locking, throttling/pressure waits and consumption without duplicate downloads. Run them without
+  Qt or GPU initialization: `python -m unittest discover -s tests -p test_omics_download_cache.py -v`.
+
+Instruction 69 remains open while the queue and its other requested work are unfinished.

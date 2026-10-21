@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Add an optional bounded, resumable archive download cache. Downloads can overlap the existing
+  sequential worker, with a transfer-rate limit, a free-space reserve and pauses under measured
+  CPU, IO or memory pressure. Cached inputs are checksum-checked, validated by the existing worker,
+  and removed after expansion; processing methods and the run plan remain unchanged.
 - Compare expression between two groups of samples -- strains, a knockout and its parent, a drug and
   its vehicle -- in a new **Compare** tab (`parascape/compare_panel.py`,
   `parascape/expression_contrast.py`, instruction 69). Every convention is a visible choice:
