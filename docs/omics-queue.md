@@ -46,6 +46,10 @@ other sessions' services, GPU allocation, or the separate inference action list.
 
 The existing ten-thread setting, adaptive five-/ten-CPU affinity guard, memory
 cap, download bandwidth cap, cache limit and free-space reserve still apply.
+CPU pressure is paired with measured host CPU headroom: when at least 25% of CPU
+time is idle, constrained worker threads cannot keep their own affinity limit
+permanently reduced through high global PSI alone. Tutorial detection, IO and
+memory pressure still independently require yielding.
 The supervisor itself has a 256 MiB cap, low CPU/IO priority and CPU affinity 15.
 Initial verification reads the existing completed outputs; later checks reuse
 unchanged evidence.

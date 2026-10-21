@@ -165,3 +165,15 @@ model tokens or credentials and does not resume the separate paused inference/ac
 See [the unattended queue operations guide](../../docs/omics-queue.md) for status files, service
 commands, verification and explicit operator pause/resume. Transport/guard/supervisor validation:
 27 focused tests passed, and both user-systemd unit definitions passed verification.
+
+### CPU guard correction (2026-10-21 afternoon)
+
+A progress check still found 115 verified entries. Ten runnable tool threads restricted
+to five CPUs were producing roughly 50% global CPU pressure despite about 75% of host CPU
+capacity being idle. The old PSI-only rule therefore kept the worker permanently reduced
+and also paused downloads. Resource checks now sample `/proc/stat` deltas: CPU PSI alone
+does not prevent restoring the allowed ten CPUs when at least 25% host idle time remains.
+Independent tutorial detection and IO/memory pressure still yield immediately. The worker's
+current run is preserved; only the guard and resumable downloader need restarting to load
+this transport/resource helper change. All 29 focused checks passed, including regression
+cases for high PSI on an idle host and actual host CPU contention.

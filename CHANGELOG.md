@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Avoid a CPU-guard feedback loop where ten background threads restricted to five CPUs report
+  high PSI despite idle host capacity. Measure host CPU headroom before restoring the existing
+  ten-CPU allowance; tutorial detection and IO/memory protections continue to yield independently.
 - Run the existing download/processing queue independently of chat tokens with a persistent
   systemd supervisor. Recover missing workers, retry unfinished passes with bounded backoff,
   verify every planned output and stop owned services only after verified completion. Preserve

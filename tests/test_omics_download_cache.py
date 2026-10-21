@@ -170,6 +170,29 @@ class Downloads(unittest.TestCase):
         self.assertFalse(C.pending_rows(rows, outputs, self.folder))
         self.assertFalse(self.archive.exists())
 
+    def test_affinity_pressure_does_not_permanently_throttle_an_idle_host(self):
+        def contents(path, *args, **kwargs):
+            if str(path) == '/proc/meminfo':
+                return 'MemAvailable: 100000000 kB\n'
+            level = 50 if str(path).endswith('/cpu') else 0
+            return f'some avg10={level}.00 avg60=0.00 avg300=0.00 total=1\n'
+        with mock.patch.object(Path, 'read_text', contents), \
+                mock.patch.object(C, 'cpu_idle_fraction', return_value=0.75):
+            self.assertEqual(C.pressure_reason(), '')
+        with mock.patch.object(Path, 'read_text', contents), \
+                mock.patch.object(C, 'cpu_idle_fraction', return_value=0.05):
+            self.assertTrue(C.pressure_reason().startswith('cpu pressure'))
+
+    def test_cpu_headroom_uses_counter_differences_and_reuses_last_sample(self):
+        samples = ['cpu 100 0 100 800 0 0 0 0\n',
+                   'cpu 110 0 110 860 20 0 0 0\n',
+                   'cpu 110 0 110 860 20 0 0 0\n']
+        with mock.patch.object(C, '_CPU_SAMPLE', None), mock.patch.object(C, '_CPU_IDLE', None), \
+                mock.patch.object(Path, 'read_text', side_effect=samples):
+            self.assertIsNone(C.cpu_idle_fraction())
+            self.assertEqual(C.cpu_idle_fraction(), 0.8)
+            self.assertEqual(C.cpu_idle_fraction(), 0.8)
+
 
 if __name__ == '__main__':
     unittest.main()

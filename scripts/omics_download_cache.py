@@ -19,6 +19,8 @@ import urllib.request
 
 GIB = 1024 ** 3
 BLOCK = 1024 ** 2
+_CPU_SAMPLE = None
+_CPU_IDLE = None
 
 
 def save(path: Path, value: dict) -> None:
@@ -75,8 +77,26 @@ def cache_bytes(folder: Path) -> int:
     return total
 
 
+def cpu_idle_fraction() -> float | None:
+    """Measure host CPU headroom; constrained worker threads can inflate global PSI."""
+    global _CPU_SAMPLE, _CPU_IDLE
+    try:
+        counters = tuple(int(field) for field in Path('/proc/stat').read_text().splitlines()[0].split()[1:9])
+        if len(counters) != 8:
+            return None
+    except (OSError, ValueError, IndexError):
+        return None
+    previous, _CPU_SAMPLE = _CPU_SAMPLE, counters
+    if previous is not None:
+        delta = tuple(current - old for current, old in zip(counters, previous))
+        if min(delta) >= 0 and sum(delta) > 0:
+            _CPU_IDLE = (delta[3] + delta[4]) / sum(delta)
+    return _CPU_IDLE
+
+
 def pressure_reason() -> str:
     """Yield under measured CPU/IO pressure or low available system memory."""
+    idle = cpu_idle_fraction()
     for resource, threshold in (('cpu', 5.0), ('io', 8.0), ('memory', 0.5)):
         try:
             first = Path(f'/proc/pressure/{resource}').read_text().splitlines()[0]
@@ -84,6 +104,11 @@ def pressure_reason() -> str:
         except (OSError, ValueError, KeyError, IndexError):
             return f'{resource} pressure unavailable'
         if avg >= threshold:
+            # More runnable tool threads than allowed CPUs can generate high PSI
+            # while most host CPUs are idle. Do not turn our conservative affinity
+            # into a permanent throttle; tutorial detection still independently yields.
+            if resource == 'cpu' and idle is not None and idle >= 0.25:
+                continue
             return f'{resource} pressure {avg:.2f}%'
     fields = dict(line.split(':', 1) for line in Path('/proc/meminfo').read_text().splitlines())
     if int(fields['MemAvailable'].split()[0]) * 1024 < 32 * GIB:
