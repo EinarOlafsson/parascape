@@ -39,6 +39,7 @@ BIN = os.path.expanduser("~/anaconda3/envs/parascape-quant/bin")
 THREADS = int(os.environ.get("PARASCAPE_THREADS", "4"))
 DOWNLOAD_CACHE = os.environ.get("PARASCAPE_DOWNLOAD_CACHE", "")
 DOWNLOAD_RATE = int(os.environ.get("PARASCAPE_DOWNLOAD_BYTES_PER_SECOND", "0"))
+PLAN = os.environ.get("PARASCAPE_PLAN", os.path.join(NAS, "catalogue", "plan.jsonl"))
 
 ENSEMBL = "https://ftp.ensemblgenomes.ebi.ac.uk/pub/protists/release-63/fasta"
 #: Resolved from the Ensembl Genomes release-63 FTP listing on 2026-10-17 (instruction 69).
@@ -290,7 +291,7 @@ def _free_gb(path: str) -> float:
 
 
 def quantify(limit: int | None = None) -> None:
-    path = os.path.join(NAS, "catalogue", "plan.jsonl")
+    path = PLAN
     with open(path) as fh:
         todo = [json.loads(ln) for ln in fh if ln.strip()]
     os.makedirs(SCRATCH, exist_ok=True)
@@ -304,7 +305,7 @@ def quantify(limit: int | None = None) -> None:
         local = []
         if DOWNLOAD_CACHE:
             _cache_module().save(Path(DOWNLOAD_CACHE) / 'active.json',
-                                 {'run': r['run_accession'], 'pid': os.getpid()})
+                                 {'run': r['run_accession'], 'study': r['study'], 'pid': os.getpid()})
         _clear_scratch(r["run_accession"])          # whatever an interrupted attempt left behind
         try:
             local = _reads(r)
@@ -329,9 +330,9 @@ def quantify(limit: int | None = None) -> None:
                 h5 = os.path.join(k_out, "abundance.h5")
                 if os.path.exists(h5):
                     os.remove(h5)                      # the TSV holds the same numbers
-            with open(os.path.join(out_dir, "done.json"), "w") as fh:
-                json.dump({**r, "salmon": version("salmon"), "kallisto": version("kallisto"),
-                           "finished": time.strftime("%Y-%m-%dT%H:%M:%S")}, fh, indent=2)
+            _cache_module().save(Path(out_dir) / "done.json",
+                                 {**r, "salmon": version("salmon"), "kallisto": version("kallisto"),
+                                  "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
             log(f"{r['run_accession']} ({r['study']}): quantified against {', '.join(r['references'])}")
         except Exception as e:
             log(f"{r['run_accession']} ({r['study']}): FAILED {e}")

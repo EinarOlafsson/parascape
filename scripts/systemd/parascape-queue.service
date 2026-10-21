@@ -1,0 +1,15 @@
+[Unit]
+Description=Verify and recover the token-independent ParaScape queue
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 -u %h/.local/share/parascape-download-worker/omics_queue_supervisor.py --plan %h/.cache/parascape-downloads/automation/plan.jsonl --outputs /nas_mnt/carruthers/Einar/parascape_omics/rnaseq --state %h/.cache/parascape-downloads/automation
+Environment=TZ=America/Detroit
+Nice=19
+IOSchedulingClass=idle
+CPUAffinity=15
+MemoryMax=256M
+TimeoutStartSec=30min
+Restart=on-failure
+RestartSec=120

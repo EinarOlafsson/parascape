@@ -142,3 +142,26 @@ State is in `~/.cache/parascape-downloads/resource-status.json`. Five synthetic 
 check tutorial detection, immediate yielding, delayed boosting, all-thread coverage, exclusion
 of unrelated processes and exiting-worker races: `python -m unittest discover -s tests
 -p test_omics_resource_guard.py -v`.
+
+## Token-independent continuation (2026-10-21)
+
+User requested that token exhaustion not stop the process and that it run to completion.
+The ten-thread switch has taken effect (10:25 EDT); the processing service continues independently
+of this chat. A persistent `parascape-queue.timer` and deterministic supervisor now recover missing
+owned workers, repeat incomplete passes even when the process exits successfully, and retry with
+bounded backoff without an attempt limit. User lingering is enabled; worker units are started by
+the supervisor after logout/reboot rather than independently enabled at boot.
+
+The current source plan is frozen with its hash under
+`~/.cache/parascape-downloads/automation/`. It contains 1,011 study/run entries for 999 distinct
+raw accessions; twelve runs belong to two studies. Both entries retain their requested outputs.
+Completion requires matching provenance and SHA-256/gzip-integrity verification of all expected
+compressed outputs for all entries. Invalid receipts are preserved under renamed filenames for
+review and reprocessing. Active run output is left alone. Unchanged verified files reuse evidence.
+
+The supervisor writes `completion.json` only after every entry verifies, then stops its owned
+workers and timer. Temporary resource/source/storage waits stay pending. This automation uses no
+model tokens or credentials and does not resume the separate paused inference/action list.
+See [the unattended queue operations guide](../../docs/omics-queue.md) for status files, service
+commands, verification and explicit operator pause/resume. Transport/guard/supervisor validation:
+27 focused tests passed, and both user-systemd unit definitions passed verification.

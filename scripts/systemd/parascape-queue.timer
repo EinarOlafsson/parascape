@@ -1,0 +1,13 @@
+[Unit]
+Description=Recover ParaScape queue until every planned run is verified
+
+[Timer]
+OnBootSec=45s
+OnUnitInactiveSec=2min
+OnCalendar=*-*-* *:0/2:00
+Persistent=true
+AccuracySec=10s
+Unit=parascape-queue.service
+
+[Install]
+WantedBy=timers.target

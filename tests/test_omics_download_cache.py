@@ -155,6 +155,21 @@ class Downloads(unittest.TestCase):
             self.assertFalse(self.archive.exists())
             self.assertFalse(self.archive.with_suffix('.json').exists())
 
+    def test_archive_is_not_removed_while_an_alias_study_still_needs_it(self):
+        outputs = self.folder / 'outputs'
+        rows = [{'study': study, 'run_accession': 'SRR1'} for study in ('first', 'alias')]
+        first = outputs / 'first' / 'SRR1'
+        first.mkdir(parents=True)
+        (first / 'done.json').write_text('{}')
+        self.archive.write_bytes(b'cached')
+        self.assertEqual(C.pending_rows(rows, outputs, self.folder), [rows[1]])
+        self.assertTrue(self.archive.exists())
+        second = outputs / 'alias' / 'SRR1'
+        second.mkdir(parents=True)
+        (second / 'done.json').write_text('{}')
+        self.assertFalse(C.pending_rows(rows, outputs, self.folder))
+        self.assertFalse(self.archive.exists())
+
 
 if __name__ == '__main__':
     unittest.main()

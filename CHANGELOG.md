@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Run the existing download/processing queue independently of chat tokens with a persistent
+  systemd supervisor. Recover missing workers, retry unfinished passes with bounded backoff,
+  verify every planned output and stop owned services only after verified completion. Preserve
+  both study entries when a raw accession is shared, and retain corrupt receipts for review.
 - Add a CPU-affinity guard for the background processing worker: allow extra CPU capacity during
   sustained quiet, give it back when tutorial capture/validation or resource pressure appears,
   and restore conservative affinity when the guard stops. Other sessions' processes are untouched.

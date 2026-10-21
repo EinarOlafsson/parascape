@@ -151,6 +151,17 @@ def _download(url, archive, size, *, rate, reserve, budget, guard, report):
     return receipt
 
 
+def pending_rows(plan: list, outputs: Path, folder: Path) -> list:
+    """Keep a shared archive until every planned study entry for that run is complete."""
+    pending = [row for row in plan
+               if not (outputs / row['study'] / row['run_accession'] / 'done.json').exists()]
+    complete_runs = {row['run_accession'] for row in plan} - {row['run_accession'] for row in pending}
+    for run in complete_runs:
+        for suffix in ('.sra', '.part', '.json'):
+            (folder / (run + suffix)).unlink(missing_ok=True)
+    return pending
+
+
 def main() -> None:
     """Maintain a small cache of pending inputs until the existing plan is complete."""
     try:
@@ -169,7 +180,7 @@ def main() -> None:
     folder.mkdir(parents=True, exist_ok=True)
     lock = (folder / '.prefetch.lock').open('a')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    plan = [json.loads(line) for line in (Path(quant.NAS) / 'catalogue/plan.jsonl').read_text().splitlines() if line]
+    plan = [json.loads(line) for line in Path(quant.PLAN).read_text().splitlines() if line]
     for row in plan:
         if not re.fullmatch(r'[SED]RR\d+', row['run_accession']) or not re.fullmatch(r'[A-Za-z0-9_-]+', row['study']):
             raise ValueError('invalid run/study identifier in existing plan')
@@ -191,14 +202,7 @@ def main() -> None:
                 print(json.dumps(status), flush=True)
 
     while True:
-        pending = []
-        for row in plan:
-            run = row['run_accession']
-            if (Path(quant.NAS) / 'rnaseq' / row['study'] / run / 'done.json').exists():
-                for suffix in ('.sra', '.part', '.json'):
-                    (folder / (run + suffix)).unlink(missing_ok=True)
-            else:
-                pending.append(row)
+        pending = pending_rows(plan, Path(quant.NAS) / 'rnaseq', folder)
         if not pending:
             report(phase='complete', reason='all planned runs complete')
             return
