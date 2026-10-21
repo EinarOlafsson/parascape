@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add a CPU-affinity guard for the background processing worker: allow extra CPU capacity during
+  sustained quiet, give it back when tutorial capture/validation or resource pressure appears,
+  and restore conservative affinity when the guard stops. Other sessions' processes are untouched.
 - Add an optional bounded, resumable archive download cache. Downloads can overlap the existing
   sequential worker, with a transfer-rate limit, a free-space reserve and pauses under measured
   CPU, IO or memory pressure. Cached inputs are checksum-checked, validated by the existing worker,

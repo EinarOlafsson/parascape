@@ -113,3 +113,32 @@ existing plan. The broader inference/action list remains paused.
   Qt or GPU initialization: `python -m unittest discover -s tests -p test_omics_download_cache.py -v`.
 
 Instruction 69 remains open while the queue and its other requested work are unfinished.
+
+## Faster processing on request (2026-10-21)
+
+At 09:45 EDT: 114/1,011 runs complete, 54 archives (81.53 GiB) downloaded since takeover,
+32 archives (37.94 GiB) waiting in the cache. The handover completed at 22:03 EDT on October 20;
+no download/processing failure had been logged since takeover. Processing, rather than the
+network, was limiting throughput. One current run had spent over four hours in its final tool;
+its input position was observed advancing, so it was preserved.
+
+The user then authorized faster work. The consumer memory cap increases from 14 to 20 GiB
+(applied live), and its configured thread count from five to ten at the next completed-run
+boundary. `parascape-speedup.service` waits for valid completion metadata and cleared scratch;
+`~/.cache/parascape-downloads/speedup.json` records whether the switch has actually occurred.
+A configured environment value alone does not prove the running process has adopted it.
+
+`scripts/omics_resource_guard.py` controls only the consumer's existing process/thread CPU
+affinities. `parascape-resource-guard.service` checks every five seconds, returns to five
+CPUs when a tutorial capture/validation worker or resource pressure is detected, and allows
+ten CPUs after 30 seconds of sustained quiet. Its stop handler restores the conservative
+five-CPU affinity. The consumer also starts with that conservative affinity so a missing
+guard does not enable extra CPU capacity. This uses enforced scheduler affinity, not the
+unavailable user CPU cgroup controller. Ten requested threads may therefore run on five CPUs
+while tutorial work needs priority. Nice 19, idle IO, the download rate, cache bound and free
+disk reserve remain unchanged; no GPU or other session's process settings are changed.
+
+State is in `~/.cache/parascape-downloads/resource-status.json`. Five synthetic guard tests
+check tutorial detection, immediate yielding, delayed boosting, all-thread coverage, exclusion
+of unrelated processes and exiting-worker races: `python -m unittest discover -s tests
+-p test_omics_resource_guard.py -v`.
