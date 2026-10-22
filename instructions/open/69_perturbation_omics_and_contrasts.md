@@ -191,3 +191,11 @@ pauses for downloads while retaining a 4 GiB available-RAM floor. The guard's ex
 CPU thread controls and no GPU mode. No additional AI process or token usage is created.
 The existing supervisor/retry/completion automation remains in control. Compatibility:
 29 focused checks passed, with actual kernel affinity and memory cap verified.
+
+### Eight-core limit (2026-10-22 evening)
+
+User requested reducing CPU use to eight cores and a progress report. Applied CPU
+affinity 0–7 to all existing queue threads and persisted it in worker/downloader/guard/
+supervisor units. Both guard CPU sets are fixed to 0–7. Configured eight tool threads
+with a completed-run boundary switch; current processing is preserved. Verified
+128/1,011 entries, 883 remaining, 35 cached archives (77.4 GiB); automation active.

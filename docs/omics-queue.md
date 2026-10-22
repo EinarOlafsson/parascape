@@ -1,5 +1,12 @@
 # Unattended download and processing queue
 
+**Latest setting, October 22 evening:** user requested an eight-core limit. All queue
+services now use CPU affinity 0–7, including the live worker and its child threads.
+The guard keeps both CPU sets at 0–7, preventing an automatic increase. Tool threads
+change to eight at the next completed-run boundary; the current run is preserved.
+Other storage, memory and automatic recovery settings retain their previous values.
+This supersedes the earlier full-CPU setting below.
+
 **Current resource setting, October 21 evening:** user ended tutorial priority and
 explicitly requested full-machine processing without added model-token use. The
 worker has access to all 32 logical CPUs and a live 112 GiB memory cap. The next
