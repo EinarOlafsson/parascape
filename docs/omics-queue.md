@@ -1,5 +1,17 @@
 # Unattended download and processing queue
 
+**Current resource setting, October 21 evening:** user ended tutorial priority and
+explicitly requested full-machine processing without added model-token use. The
+worker has access to all 32 logical CPUs and a live 112 GiB memory cap. The next
+completed-run restart uses 32 threads, normal CPU/IO priority and scratch on
+`/media/carruthers/mnt1/parascape_omics_scratch`. The deterministic boundary service
+`parascape-full-capacity` preserves the current run; its state is in
+`~/.cache/parascape-downloads/full-capacity.json`. Full-resource guard mode keeps
+all CPUs available. Downloads have no application bandwidth limit, an 80 GiB cache
+and a 25 GiB disk reserve, yielding only below 4 GiB available RAM. These settings
+supersede the earlier conservative limits below. Installed processing tools expose
+CPU threading and no GPU execution option. No model or agent is started by this mode.
+
 The existing queue runs through local user-systemd services. It does not use a chat
 session, model tokens, an API key, or another AI agent. The source plan and worker
 code are frozen under the user's home directory. Source selection and analytical

@@ -82,9 +82,12 @@ def main() -> None:
     parser.add_argument('--protected-cpus', default='10,11,12,13,14')
     parser.add_argument('--quiet-seconds', type=float, default=30)
     parser.add_argument('--restore', action='store_true')
+    parser.add_argument('--full-resources', action='store_true')
     args = parser.parse_args()
     fast = {int(cpu) for cpu in args.fast_cpus.split(',')}
     protected = {int(cpu) for cpu in args.protected_cpus.split(',')}
+    if args.full_resources:
+        fast = protected = set(range(os.cpu_count() or 1))
     args.status.parent.mkdir(parents=True, exist_ok=True)
     if args.restore:
         apply_affinity(args.cgroup, protected)
@@ -94,9 +97,12 @@ def main() -> None:
     quiet_since = None
     previous_mode = None
     while True:
-        reason = 'tutorial capture or validation active' if tutorial_active() else pressure_reason()
-        mode, quiet_since = select_mode(reason, time.monotonic(), quiet_since, args.quiet_seconds)
-        cores = fast if mode == 'fast' else protected
+        if args.full_resources:
+            reason, mode, cores = 'explicit full-resource user setting', 'full', fast
+        else:
+            reason = 'tutorial capture or validation active' if tutorial_active() else pressure_reason()
+            mode, quiet_since = select_mode(reason, time.monotonic(), quiet_since, args.quiet_seconds)
+            cores = fast if mode == 'fast' else protected
         changed = apply_affinity(args.cgroup, cores)
         record = {'mode': mode, 'reason': reason or ('quiet' if mode == 'fast' else 'waiting for sustained quiet'),
                   'cpus': sorted(cores), 'threads_adjusted': changed,

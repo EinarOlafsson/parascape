@@ -177,3 +177,17 @@ Independent tutorial detection and IO/memory pressure still yield immediately. T
 current run is preserved; only the guard and resumable downloader need restarting to load
 this transport/resource helper change. All 29 focused checks passed, including regression
 cases for high PSI on an idle host and actual host CPU contention.
+
+### Full-machine setting (2026-10-21 evening)
+
+User stated tutorials have stopped and explicitly authorized all available CPU/RAM/GPU
+capacity with no additional model-token use. Applied all-CPU scheduler affinity (0–31)
+and a verified live 112 GiB memory cap. A deterministic boundary restart changes tool
+threads to 32 and normal CPU/IO priority, preserving the current run. Future scratch is
+on mnt1 (about 900 GiB free). Downloads have no application bandwidth cap; cache is
+80 GiB with a 25 GiB disk reserve. `PARASCAPE_FULL_RESOURCES=1` bypasses CPU/IO pressure
+pauses for downloads while retaining a 4 GiB available-RAM floor. The guard's explicit
+`--full-resources` option keeps all CPUs available. Installed Salmon/kallisto help has
+CPU thread controls and no GPU mode. No additional AI process or token usage is created.
+The existing supervisor/retry/completion automation remains in control. Compatibility:
+29 focused checks passed, with actual kernel affinity and memory cap verified.

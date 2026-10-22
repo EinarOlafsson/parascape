@@ -96,6 +96,10 @@ def cpu_idle_fraction() -> float | None:
 
 def pressure_reason() -> str:
     """Yield under measured CPU/IO pressure or low available system memory."""
+    if os.environ.get('PARASCAPE_FULL_RESOURCES') == '1':
+        fields = dict(line.split(':', 1) for line in Path('/proc/meminfo').read_text().splitlines())
+        return ('less than 4 GiB available RAM'
+                if int(fields['MemAvailable'].split()[0]) * 1024 < 4 * GIB else '')
     idle = cpu_idle_fraction()
     for resource, threshold in (('cpu', 5.0), ('io', 8.0), ('memory', 0.5)):
         try:
@@ -168,7 +172,8 @@ def _download(url, archive, size, *, rate, reserve, budget, guard, report):
                     target.flush()
                     offset += len(block)
                     report(phase='downloading', reason='', downloaded_bytes=offset)
-                    time.sleep(max(0, len(block) / rate - (time.monotonic() - started)))
+                    if rate > 0:
+                        time.sleep(max(0, len(block) / rate - (time.monotonic() - started)))
     receipt = {'url': url, 'bytes': size, 'sha256': digest(part),
                'finished': time.strftime('%Y-%m-%dT%H:%M:%S%z')}
     part.replace(archive)
@@ -199,8 +204,8 @@ def main() -> None:
     parser.add_argument('--reserve-gib', type=float, default=90)
     parser.add_argument('--mib-per-second', type=float, default=4)
     args = parser.parse_args()
-    if min(args.max_gib, args.reserve_gib, args.mib_per_second) <= 0:
-        parser.error('capacity, reserve and transfer rate must be positive')
+    if min(args.max_gib, args.reserve_gib) <= 0 or args.mib_per_second < 0:
+        parser.error('capacity and reserve must be positive; rate is nonnegative (0 = unlimited)')
     folder = args.cache.resolve()
     folder.mkdir(parents=True, exist_ok=True)
     lock = (folder / '.prefetch.lock').open('a')
