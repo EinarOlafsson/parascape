@@ -1,5 +1,50 @@
 # Unattended download and processing queue
 
+**Resumed October 27:** the system disk had only 18 GiB free. The queue's own
+78 GiB cache was copied to `/media/carruthers/mnt1/parascape_omics_download_cache`,
+all 22 ready archives were checked against their recorded SHA-256 digests, and
+`~/.cache/parascape-downloads` now links to that directory. Existing commands and
+state paths remain usable. The original disk copy was removed after verification.
+
+Claude had separately resumed the original `parascape-quant.service`. The supervisor
+recognizes that active service and avoids starting a second writer. Status now names
+the actual `processing_service`; active legacy outputs are excluded from audits
+until complete. `parascape-legacy-handover.service` preserves the current run, then
+switches to the cache-consuming worker at its completed-run boundary. If the original
+worker exits earlier, the supervisor recovers through the normal cached worker.
+The latest CPU limit remains eight. The queue timer has been re-enabled, PAUSE removed,
+and downloads observed transferring. Read the current status rather than old handoff
+snapshots, which intentionally retain their historical stopped state.
+
+## What is processed and where the records are
+
+The fixed RNA-seq queue both downloads and processes each planned study/run entry.
+It validates downloaded SRA archives (or checks ENA FASTQ MD5s), expands reads when
+needed, and runs Salmon and kallisto for every reference named in that entry's plan.
+The stored results contain estimated counts, TPM and effective transcript lengths.
+Raw reads are deleted after processing; downloading ahead of the worker is a bounded
+cache rather than permanent raw-data archiving. Differential-expression tests and
+cross-study comparisons are separate downstream work, not the queue's completion gate.
+
+Results live under `/nas_mnt/carruthers/Einar/parascape_omics/rnaseq/<study>/<run>/`:
+
+- `done.json` records source/sample metadata, source URLs and ENA checksums from the
+  frozen plan, requested references, tool versions and the finish time.
+- `salmon_<reference>/quant.sf.gz` and `kallisto_<reference>/abundance.tsv.gz` are the
+  quantification tables; every requested tool/reference combination is retained.
+- Salmon's `cmd_info.json` and `aux_info/meta_info.json` record invocation settings,
+  index sequence/name hashes, bias correction, mapping metrics, timing and diagnostics.
+- kallisto's `run_info.json` records its complete command, tool/index version and
+  read-processing statistics. Single-end runs currently use the explicit fragment
+  assumptions `-l 200 -s 30`; these are visible in the command records.
+
+Reference downloads, source URLs and checksums are in
+`/nas_mnt/carruthers/Einar/parascape_omics/references/<reference>/reference.json`.
+The chronological command log is `logs/omics_quant.log` under the same NAS root.
+The supervisor's `automation/verified.json` records hashes of completed output
+tables and receipts. These are distributed processing records, not one consolidated
+per-dataset report. Integrity verification is separate from biological quality review.
+
 **Latest setting, October 22 evening:** user requested an eight-core limit. All queue
 services now use CPU affinity 0–7, including the live worker and its child threads.
 The guard keeps both CPU sets at 0–7, preventing an automatic increase. Tool threads

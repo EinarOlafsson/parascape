@@ -162,6 +162,13 @@ class Supervisor(unittest.TestCase):
         with self.assertRaises(ValueError):
             Q.Services().command('stop', 'unrelated.service')
 
+    def test_claude_worker_is_adopted_instead_of_duplicate_writer(self):
+        import subprocess
+        results = [subprocess.CompletedProcess([], 0, stdout='inactive\n'),
+                   subprocess.CompletedProcess([], 0, stdout='active\n')]
+        with mock.patch.object(Q.subprocess, 'run', side_effect=results):
+            self.assertEqual(Q.Services().state(Q.SERVICES[2]), 'active')
+
     def test_shared_run_in_two_studies_requires_both_outputs(self):
         folder = self.complete_run()
         second_row = {**self.row, 'study': 'alias'}

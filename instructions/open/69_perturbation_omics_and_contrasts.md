@@ -199,3 +199,23 @@ affinity 0–7 to all existing queue threads and persisted it in worker/download
 supervisor units. Both guard CPU sets are fixed to 0–7. Configured eight tool threads
 with a completed-run boundary switch; current processing is preserved. Verified
 128/1,011 entries, 883 remaining, 35 cached archives (77.4 GiB); automation active.
+
+### Resume and processing-record check (2026-10-27)
+
+User explicitly resumed downloads and requested automatic continuation and an explanation
+of processing/provenance. Found Claude's separate original worker already running; the
+earlier stopped-status check had missed that service. Supervisor now adopts its active
+state and excludes its active output from verification, preventing duplicate writers.
+A deterministic completed-run handover will restore the cache-consuming worker.
+
+Root had 18 GiB free. Relocated only the queue cache (22 archives, 78.04 GiB) to mnt1,
+verified all archive SHA-256s and metadata copies, then preserved the original cache path
+as a symlink. Root free space increased to 96 GiB. PAUSE removed, persistent timer enabled;
+downloads observed transferring. Supervisor verified 295/1,011 entries, 716 remaining.
+Eight-CPU limit retained; no model/agent continuation started. Thirty focused tests passed.
+
+Inspected actual completed outputs and reference records. Source/sample metadata and
+versions are in done.json; tool invocations/diagnostics in Salmon cmd_info/meta_info and
+kallisto run_info; source/reference checksums, commands and output hashes are retained in
+their respective records. Added a guide in docs/omics-queue.md. Quantification and integrity
+verification are automated; downstream differential-expression/comparison work is separate.

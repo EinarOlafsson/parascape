@@ -146,7 +146,19 @@ class Services:
     def state(self, unit: str) -> str:
         result = subprocess.run(['systemctl', '--user', 'show', unit, '-p', 'ActiveState', '--value'],
                                 capture_output=True, text=True, check=True, timeout=30)
-        return result.stdout.strip()
+        state = result.stdout.strip()
+        if unit == SERVICES[2]:
+            self.worker_unit = unit
+        if unit == SERVICES[2] and state not in ('active', 'activating', 'reloading'):
+            # Claude may have resumed the original transient worker after handoff.
+            # Adopt its activity rather than starting a second output writer.
+            legacy = subprocess.run(['systemctl', '--user', 'show', 'parascape-quant.service',
+                                     '-p', 'ActiveState', '--value'], capture_output=True,
+                                    text=True, check=True, timeout=30).stdout.strip()
+            if legacy in ('active', 'activating', 'reloading'):
+                self.worker_unit = 'parascape-quant.service'
+                return legacy
+        return state
 
     def command(self, action: str, *units: str) -> None:
         if action not in ('start', 'stop') or any(unit not in (*SERVICES, TIMER) for unit in units):
@@ -195,6 +207,22 @@ def tick(plan: Path, outputs: Path, folder: Path, services=None) -> dict:
     except (OSError, TypeError, ValueError):
         process_alive = False
     active_run = (f"{active['study']}/{active['run']}" if active.get('study') else active.get('run')) if process_alive else None
+    if active_run is None:
+        legacy = Path('/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/parascape-quant.service/cgroup.procs')
+        try:
+            for pid in legacy.read_text().split():
+                try:
+                    args = (Path('/proc') / pid / 'cmdline').read_bytes().decode().split('\0')
+                    if Path(args[0]).name not in ('salmon', 'kallisto') or '-o' not in args:
+                        continue
+                    parts = Path(args[args.index('-o') + 1]).relative_to(outputs).parts
+                    if len(parts) >= 2:
+                        active_run = '/'.join(parts[:2])
+                        break
+                except (OSError, ValueError, IndexError, UnicodeError):
+                    continue
+        except OSError:
+            pass
     verified = read_json(folder / 'verified.json', {})
     previous = read_json(folder / 'recovery.json', {})
     verified = verified if isinstance(verified, dict) else {}
@@ -216,7 +244,8 @@ def tick(plan: Path, outputs: Path, folder: Path, services=None) -> dict:
     save(folder / 'verified.json', accepted)
     status = {'phase': 'running' if pending else 'complete', 'planned': len(rows),
               'verified_complete': len(accepted), 'remaining': len(pending),
-              'pending': pending, 'updated_epoch': time.time()}
+              'pending': pending, 'updated_epoch': time.time(),
+              'processing_service': getattr(services, 'worker_unit', SERVICES[2])}
     if pending:
         (folder / 'completion.json').unlink(missing_ok=True)
         recovery = recover(services, recovery, len(accepted), time.time())
