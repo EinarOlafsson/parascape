@@ -84,6 +84,7 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
         self.search.textChanged.connect(self._filter)
         layout.addWidget(self.search)
         button = QtWidgets.QPushButton('Refresh coverage')
+        button.setToolTip('Reload the local catalogue coverage ledger and its acquisition and measurement status.')
         button.clicked.connect(self.refresh)
         layout.addWidget(button)
         self.table = QtWidgets.QTableWidget(0, 6)
