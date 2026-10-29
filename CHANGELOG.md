@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Browse separately installed deposited expression packs in Compare → Published expression. Preserve original RSEM units, exact identifiers, sample metadata, software and source checksums; keep annotation variants separate and verify pack integrity before export. The initial local pack contains six GSE134099 samples against two annotation variants; it remains external to the frozen 0.0.2.0 data asset.
+
 ## 0.0.2.0 — 2026-10-29
 
 - Host all processed application data in a checksum-pinned GitHub release asset, outside the PyPI wheel and source distribution. Offer a first-launch download popup with progress, cancellation, retry, safe extraction and offline reuse. Add `parascape-data --download` for headless setup.

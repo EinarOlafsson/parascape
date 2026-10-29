@@ -88,3 +88,39 @@ prove paired controls. Repeated runs of one BioSample are linked, and the condit
 comparison refuses to count them as independent replicates. Shared raw runs across
 studies are explicitly labelled. Biological versus technical replicate type is left
 unspecified unless the source declares it.
+
+## Original deposited expression (development)
+
+The **Published expression** tab reads separately installed, validated source packs.
+Select the study and annotation variant, enter exact source gene identifiers, then
+choose **Show deposited measurements**. CSV export includes the original values,
+sample titles and source metadata, software version, source URL and source checksum.
+Identifiers are case-sensitive and are not remapped to the current reference.
+
+The local Live Data launcher also selects the prepared published-expression folder.
+On another installation, set `PARASCAPE_PUBLISHED` to the directory containing
+validated pack folders before starting the app. This development addition and the
+prepared source packs are not included in the frozen 0.0.2.0 release.
+
+The initial deposited RSEM pack represents GSE134099: six submitted samples against
+ToxoDB release 38 and a StringTie annotation derived from that reference. These are
+two representations of the same six samples. The two annotation variants remain
+separate from each other and from the common-pipeline Salmon/kallisto matrices.
+Original expected counts, TPM, FPKM, effective length and length retain their source
+units; no normalization, filtering, rounding, imputation or gene remapping is added.
+Source titles and attributes are preserved; biological independence and control
+pairing are not inferred. Reported units alone do not establish comparability.
+
+The source is complementary evidence retained with its original processing. No
+citation-based replacement ranking is claimed; bibliometric comparison remains an
+explicit unresolved gap. These measurements are not added to prediction features
+or calibration. Pack manifests link archived inputs, software, transformations,
+sample identities and output checksums; readers reject changed outputs or samples.
+The original pack's independent validation checks every numeric source field.
+
+For command-line CSV export:
+
+```bash
+python -m parascape.published_expression GENE_ID --pack /path/to/validated-pack \
+  --reference ToxoDB_release38 --output deposited_expression.csv
+```

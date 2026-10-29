@@ -6,7 +6,13 @@ application data out of the PyPI package to GitHub release assets with a first-r
 download popup. Preparing 0.0.2.0 (following published 0.0.1.0). All 296 completed
 entries / 23 studies / 8,164 ME49_host genes are frozen, with all already-verified
 reference variants. Sample design covers all 1,011 planned entries; Trx1
-PRJNA1008424 has 8 pending runs and is queued at the current completed-run boundary.
+PRJNA1008424 is pending in that frozen release pack. Its eight runs have since passed
+verification and are available in the validated local 305-entry / 24-study snapshot
+through **ParaScape — Live Data**. The local launcher also loads the prepared deposited
+expression pack: GSE134099, six samples against two annotation variants, via the new
+unreleased **Published expression** tab. All 230 supplementary sources from 34 GEO
+studies are acquired; 1,548 archive members are inventoried without extraction.
+Most deposited sources still require measurement review and runtime integration.
 This does not resume the broader paused inference goal. Publication must still be
 verified; see docs/rna-expression.md and docs/releases.md for the new asset flow.
 
