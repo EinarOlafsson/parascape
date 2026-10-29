@@ -1,5 +1,26 @@
 # Next session: start here
 
+**Original-matrix QC follow-up (2026-10-29):** local Deposited matrices now exports
+whole-matrix technical QC without a probe query. Native
+`parascape-source-matrix-qc.timer` maintains immutable source-hashed reports under
+NAS `processing_audit/source_matrix_technical_qc/current`. Its first collection
+covers all 147 matrices / 2,828 submitted sample records, independently recounted
+with Arrow kernels against the pandas/NumPy QC implementation. Original signed
+values, probe denominators, missingness, channels and shared samples remain
+explicit; no biological quality score or normalization is introduced. Reports,
+source code and operation receipts are retained. This follow-up is separate from
+the frozen 0.0.4.0 release; defer its nightly push until that publisher completes
+to avoid cancelling exact-commit CI. Historical inference work remains paused;
+the dataset acquisition/integration goal remains active and incomplete.
+The current follow-up passes 550 relevant tests, including the broader module
+documentation contract. A real Qt export checked five submitted samples across
+all 7,253 source probes independently of the query and annotation checkbox.
+Release 0.0.4.0 was corrected to frozen commit `bb8ebca` after three short module
+docstrings failed that documentation contract locally. Its corrected clean wheel
+passed the same NAS/network-disabled smoke test; native publication now requires
+CI on the corrected commit. Previous attempt records and archive remain retained;
+the data asset hash is unchanged.
+
 **Portable 0.0.4.0 preparation (2026-10-29):** the new external asset contains
 3,834 pinned files, 307 verified RNA entries, 147 original-value matrices and
 54 independently reconciled platform identifier indices. Staging, immutable

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Add whole-matrix sample technical QC export to Deposited matrices, preserving
+  original signed scales, probe denominators, sample/channel metadata and source
+  hashes without assigning uncalibrated biological quality scores.
+
 ## 0.0.4.0 — 2026-10-29
 
 - Expand the external data snapshot to 307 verified RNA entries and add 147

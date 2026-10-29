@@ -54,6 +54,24 @@ def test_changed_outputs_and_incomplete_source_validation_are_rejected(pack):
         S.manifest(pack)
 
 
+def test_full_source_qc_preserves_signed_missing_zero_and_sample_channel_semantics(pack):
+    before = digest(pack / 'values.parquet')
+    frame = S.technical_qc(pack).set_index('geo_sample')
+    assert list(frame.index) == ['GSM1', 'GSM2']
+    assert frame['features'].tolist() == [2, 2]
+    assert frame['missing'].tolist() == [0, 1]
+    assert frame['negative'].tolist() == [1, 0]
+    assert frame['measured_zero'].tolist() == [1, 0]
+    assert frame['observed_coverage_pct'].tolist() == [100., 50.]
+    assert frame['numeric_validity_observed_pct'].tolist() == [100., 100.]
+    assert not frame.negative_values_invalid.any() and frame.quality_score.isna().all()
+    assert len(json.loads(frame.loc['GSM1', 'sample_metadata'])['channels']) == 2
+    assert frame.matrix_sha256.eq(before).all() and digest(pack / 'values.parquet') == before
+    (pack / 'samples.json').write_text('{}')
+    with pytest.raises(ValueError, match='checksum'):
+        S.technical_qc(pack)
+
+
 def test_panel_exports_and_clears_old_selection(qtbot, pack, tmp_path):
     from parascape.source_matrices_panel import SourceMatricesPanel
     panel = SourceMatricesPanel(pack.parent)
@@ -66,6 +84,12 @@ def test_panel_exports_and_clears_old_selection(qtbot, pack, tmp_path):
     assert 'comparison_scope' in pd.read_csv(path)
     panel.refresh()
     assert panel.save(str(path)) == 0 and panel.table.rowCount() == 0
+    # Whole-matrix QC does not depend on the current identifier query.
+    panel.probes.setPlainText('identifier not present')
+    report = tmp_path / 'qc.csv'
+    assert panel.save_qc(str(report)) == 2
+    assert pd.read_csv(report)['features'].tolist() == [2, 2]
+    assert panel.table.rowCount() == 0
 
 
 @pytest.fixture

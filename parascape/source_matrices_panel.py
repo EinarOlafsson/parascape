@@ -52,6 +52,10 @@ class SourceMatricesPanel(QtWidgets.QWidget):
         self.export_button.setToolTip('Save original values with source sample metadata, assay, quantity, scale limits and checksums.')
         self.export_button.clicked.connect(lambda: self.save())
         layout.addWidget(self.export_button)
+        self.qc_button = QtWidgets.QPushButton('Export sample technical QC…')
+        self.qc_button.setToolTip('Check all original probes for each submitted sample. Export missingness, measured zeros and numerical validity with source metadata; signed values are retained and biological quality scores remain unavailable.')
+        self.qc_button.clicked.connect(lambda: self.save_qc())
+        layout.addWidget(self.qc_button)
         self.summary = QtWidgets.QLabel()
         self.summary.setWordWrap(True)
         layout.addWidget(self.summary)
@@ -79,6 +83,7 @@ class SourceMatricesPanel(QtWidgets.QWidget):
         self.summary.setText(f'{len(packs)} original-value matrices available. ' +
                              (f'{len(errors)} pack manifests require review.' if errors else 'Enter exact source identifiers.'))
         self.show_button.setEnabled(bool(packs))
+        self.qc_button.setEnabled(bool(packs))
 
     def compare(self):
         """Show one selected source representation without mixing assay units."""
@@ -115,3 +120,21 @@ class SourceMatricesPanel(QtWidgets.QWidget):
             return 0
         self.result.to_csv(path, index=False)
         return len(self.result)
+
+    def save_qc(self, path='') -> int:
+        """Export whole-matrix sample QC independently of source identifier queries."""
+        info = self.pack.currentData()
+        if not info:
+            return 0
+        if not path:
+            path, _ = QtWidgets.QFileDialog.getSaveFileName(self, 'Export sample technical QC', 'source_sample_qc.csv', 'CSV (*.csv)')
+        if not path:
+            return 0
+        try:
+            frame = S.technical_qc(info['path'])
+            frame.to_csv(path, index=False)
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
+            return 0
+        self.summary.setText(f'Exported technical QC for {len(frame)} submitted samples across all original probes. Biological quality scores are unavailable.')
+        return len(frame)

@@ -179,3 +179,14 @@ Identifier matching is case-sensitive and requires a reconciled annotation index
 prepared for the selected matrix. It reproduces a source association and does not
 establish current gene equivalence. Use `PARASCAPE_PLATFORM_IDENTIFIERS` for a local
 collection; portable collections live under external data `platform_identifiers`.
+
+The **Deposited matrices → Export sample technical QC…** control checks every
+original probe for each submitted sample, independently of the identifier query
+or annotation checkbox. The report separates missing values, measured zeros,
+negative finite values and nonfinite observed values. Source VALUE scales remain
+unspecified, so negative values do not automatically fail numerical QC. Coverage
+uses the original probe count; multiple probes are not expanded or collapsed
+through gene identifiers. Original sample/channel metadata, assay and scale
+limits, plus source, matrix, sample and manifest hashes accompany every row.
+These reports describe technical integrity and coverage. They do not establish
+biological quality, independent replicates or cross-study scale compatibility.

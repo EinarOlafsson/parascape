@@ -76,14 +76,10 @@ def catalogue(root: str | Path | None = None) -> tuple[list[dict], list[str]]:
     return packs, errors
 
 
-def profiles(pack: str | Path, probes) -> pd.DataFrame:
-    """Return original values for exact, case-sensitive source IDs without gene remapping."""
+def _context(pack):
+    """Verify complete source identities, schema and submitted sample metadata."""
     pack = Path(pack)
     info = manifest(pack)
-    probes = probes.splitlines() if isinstance(probes, str) else list(probes)
-    if not probes or any(not isinstance(p, str) or not p for p in probes):
-        raise ValueError('Enter exact source probe or gene identifiers, one per line')
-    probes = list(dict.fromkeys(probes))
     source = pq.ParquetFile(pack / 'values.parquet')
     if source.metadata.num_rows != info['features'] or source.schema_arrow.names != ['probe_id', *info['sample_order']]:
         raise ValueError('Source-matrix row or sample-column identities differ')
@@ -95,6 +91,45 @@ def profiles(pack: str | Path, probes) -> pd.DataFrame:
     samples = metadata['samples']
     if metadata['study'] != info['study'] or [s['geo_accession'] for s in samples] != info['sample_order']:
         raise ValueError('Source sample metadata differs from matrix columns')
+    return info, source, samples
+
+
+def technical_qc(pack: str | Path) -> pd.DataFrame:
+    """Describe every submitted sample using all original probes and an unknown scale.
+
+    Negative values remain valid real measurements because deposited VALUE scales
+    may be signed. Neither biological quality nor source units are inferred.
+    """
+    from . import measurement_qc as Q
+
+    pack = Path(pack)
+    info, source, samples = _context(pack)
+    matrix = source.read().to_pandas().set_index('probe_id')
+    result = Q.summarize(matrix, domain='unspecified_real')
+    lookup = {sample['geo_accession']: sample for sample in samples}
+    result['geo_sample'] = result['sample']
+    result['sample_title'] = result['sample'].map(lambda sample: lookup[sample]['title'])
+    result['sample_metadata'] = result['sample'].map(lambda sample: json.dumps(lookup[sample], ensure_ascii=False))
+    for key in ('study', 'quantity', 'units', 'catalogue_readout', 'source_url', 'input_sha256',
+                'comparison_scope', 'feature_identity'):
+        result[key] = info[key]
+    result['matrix_sha256'] = info['outputs']['values.parquet']
+    result['sample_metadata_sha256'] = info['outputs']['samples.json']
+    result['scale_and_platform_metadata_sha256'] = info['outputs']['original_scale_and_platform.json']
+    result['manifest_sha256'] = _sha(pack / 'manifest.json')
+    result['qc_scope'] = ('All original source probes; no identifier expansion or probe collapse. '
+                          'Channels, shared samples and repeated measurements are not independent biological replicates.')
+    return result
+
+
+def profiles(pack: str | Path, probes) -> pd.DataFrame:
+    """Return original values for exact, case-sensitive source IDs without gene remapping."""
+    pack = Path(pack)
+    probes = probes.splitlines() if isinstance(probes, str) else list(probes)
+    if not probes or any(not isinstance(p, str) or not p for p in probes):
+        raise ValueError('Enter exact source probe or gene identifiers, one per line')
+    probes = list(dict.fromkeys(probes))
+    info, source, samples = _context(pack)
     matrix = pq.read_table(pack / 'values.parquet', filters=[('probe_id', 'in', probes)]).to_pandas()
     if matrix.probe_id.duplicated().any() or matrix.probe_id.isna().any():
         raise ValueError('Ambiguous source feature identity')
