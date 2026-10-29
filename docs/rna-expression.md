@@ -170,3 +170,12 @@ Platform annotations and original scale/units need review before gene-level or
 cross-assay comparisons. Local collections can be selected with
 `PARASCAPE_SOURCE_MATRICES`; packaged collections live in external data under
 `source_matrices`, keeping scientific data outside the application wheel.
+
+Enable **Match source platform identifiers** to search explicit identifier fields
+from the original platform annotation. Every matching probe remains separate;
+measurements are not averaged by gene or alias. Hover over a value or export CSV
+to inspect source fields, original annotation cells and multivalue associations.
+Identifier matching is case-sensitive and requires a reconciled annotation index
+prepared for the selected matrix. It reproduces a source association and does not
+establish current gene equivalence. Use `PARASCAPE_PLATFORM_IDENTIFIERS` for a local
+collection; portable collections live under external data `platform_identifiers`.

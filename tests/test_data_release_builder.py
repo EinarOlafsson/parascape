@@ -17,7 +17,9 @@ def test_portable_expression_and_audit_data_are_checksum_pinned(tmp_path):
              'processing_audit/dataset_coverage.tsv': b'original coverage',
              'processing_audit/all_geo_samples/GSE1/geo-samples.json': b'{}',
              'source_matrices/source_pack/values.parquet': b'original submitted values',
-             'source_matrices/source_pack/manifest.json': b'{}'}
+             'source_matrices/source_pack/manifest.json': b'{}',
+             'platform_identifiers/GPL1-source/links.parquet': b'original identifier associations',
+             'platform_identifiers/GPL1-source/independent_validation.json': b'{}'}
     for name, body in files.items():
         path=source/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(body)
     for name in ['data_release.json','processing_audit/source.body','processing_audit/download.part']:

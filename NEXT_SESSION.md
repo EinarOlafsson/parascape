@@ -1,5 +1,22 @@
 # Next session: start here
 
+**Platform identifiers and release state (2026-10-29):**0.0.3.0 is verified onPyPI
+(1,634,131-byte wheel; publisher complete at9ebbff3). The follow-upf057f75 was
+pushed to nightly after that release finished.0.0.3.0 does not include the newer
+original-matrix browser or platform identifier links; a later data asset/release
+is still required. Native platform-link preparation and independent pandas/CSV
+reconciliation completed54/54 observed platforms,4,127,284 source-declared links.
+NAS/platform_identifier_links contains versioned platform directories, manifests,
+independent receipts, source field/cell/row provenance and matrix-platform scope
+records. Local Deposited matrices now has **Match source platform identifiers**;
+it checks the reconciliation and selected matrix snapshot, preserves every probe
+and source multivalue association, and does not establish current gene equivalence.
+The Live Data launcher setsPARASCAPE_PLATFORM_IDENTIFIERS. Functional annotations
+and composite gene_assignment/mrna_assignment fields are not parsed as plain IDs.
+Gene-version conversion, original scale/sample-role curation and comprehensive
+RNA/protein comparisons remain unfinished. All dataset-goal requirements are not
+complete; retain the active goal and the separate historically paused inference goal.
+
 **Original-value matrices (2026-10-29):** native preparation completed147 packs,
 including131 microarray matrices, with every85,424,194 numeric/missing source cell
 independently compared against Parquet (exact binary64 equality, no tolerance).

@@ -101,3 +101,66 @@ def profiles(pack: str | Path, probes) -> pd.DataFrame:
     frame['scale_and_platform_metadata_sha256'] = info['outputs']['original_scale_and_platform.json']
     frame['feature_identity'] = info['feature_identity']
     return frame
+
+
+def annotated_profiles(pack: str | Path, identifiers, links_root: str | Path | None = None) -> pd.DataFrame:
+    """Match source-declared platform identifiers while retaining every original probe.
+
+    Associations reproduce the source annotation. They do not establish independently
+    validated current gene equivalence, and measurements are never averaged by identifier.
+    """
+    pack = Path(pack)
+    info = manifest(pack)
+    identifiers = identifiers.splitlines() if isinstance(identifiers, str) else list(identifiers)
+    if not identifiers or any(not isinstance(value, str) or not value for value in identifiers):
+        raise ValueError('Enter exact source annotation identifiers, one per line')
+    metadata = json.loads((pack / 'original_scale_and_platform.json').read_text())
+    platforms = set()
+    for field in ('!Sample_platform_id', '!Series_platform_id'):
+        platforms = {value for row in metadata.get(field, []) for value in row if value}
+        if platforms:
+            break
+    if len(platforms) != 1:
+        raise ValueError('Identifier lookup requires one explicitly declared platform for this matrix')
+    platform = next(iter(platforms))
+    root = Path(links_root) if links_root is not None else Path(os.environ.get(
+        'PARASCAPE_PLATFORM_IDENTIFIERS', str(Path(paths.data_dir()) / 'platform_identifiers')))
+    coverage = json.loads((root / 'independent_validation_coverage.json').read_text())
+    candidates = [r for r in coverage if r['platform'] == platform and r['status'] == 'source_identifier_links_reconciled']
+    if len(candidates) != 1:
+        raise ValueError('No uniquely reconciled source identifier index for this platform')
+    candidate = candidates[0]
+    folder = root / Path(candidate['path']).name
+    if folder.resolve().parent != root.resolve() or not folder.name.startswith(platform + '-'):
+        raise ValueError('Source identifier index lies outside its collection')
+    if _sha(folder / 'independent_validation.json') != candidate['independent_validation_sha256']:
+        raise ValueError('Source identifier validation receipt checksum differs')
+    validation = json.loads((folder / 'independent_validation.json').read_text())
+    if _sha(folder / 'manifest.json') != validation['manifest_sha256']:
+        raise ValueError('Source identifier manifest differs from its independent reconciliation')
+    annotation = json.loads((folder / 'manifest.json').read_text())
+    if (annotation['platform'] != platform or validation['verified_links'] != annotation['identifier_link_records']
+            or annotation['source_sha256'] != validation['source_sha256']):
+        raise ValueError('Source identifier platform or validation coverage differs')
+    if _sha(pack / 'manifest.json') not in annotation['observed_matrix_pack_manifests'].values():
+        raise ValueError('Identifier index was not prepared for this matrix snapshot')
+    source = folder / 'links.parquet'
+    if _sha(source) != annotation['outputs']['links.parquet']:
+        raise ValueError('Source identifier links checksum differs')
+    links = pq.read_table(source, filters=[('identifier', 'in', list(dict.fromkeys(identifiers)))]).to_pandas()
+    if links.empty:
+        return pd.DataFrame(columns=['query_identifier', 'probe_id', 'geo_sample', 'value', 'sample_title'])
+    associations = []
+    for (identifier, probe), evidence in links.groupby(['identifier', 'probe_id'], sort=False):
+        associations.append(dict(query_identifier=identifier, probe_id=probe,
+            annotation_evidence=json.dumps(evidence.to_dict('records'), ensure_ascii=False)))
+    association = pd.DataFrame(associations)
+    values = profiles(pack, association.probe_id.unique())
+    result = association.merge(values, on='probe_id', validate='many_to_many')
+    result['identifier_platform'] = platform
+    result['identifier_source_url'] = annotation['source_url']
+    result['identifier_source_sha256'] = annotation['source_sha256']
+    result['identifier_manifest_sha256'] = validation['manifest_sha256']
+    result['identifier_interpretation'] = ('Source-declared association only; current gene equivalence not independently validated. '
+        'Multiple probes and query aliases retain original measurements and are not extra biological replicates.')
+    return result

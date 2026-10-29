@@ -11,7 +11,7 @@ class SourceMatricesPanel(QtWidgets.QWidget):
         super().__init__(parent)
         self.root, self.result = root, None
         layout = QtWidgets.QVBoxLayout(self)
-        description = QtWidgets.QLabel('Original submitted VALUE matrices. Probe/gene IDs retain source spelling; gene remapping is not applied. '
+        description = QtWidgets.QLabel('Original submitted VALUE matrices. Original probes and values are retained. Optional annotation matches reproduce source-declared associations. '
             'Units and scale require source review. Assays and platforms remain separate; missing values are unknown. '
             'Channels, technical repeats and shared samples are not extra biological replicates.')
         description.setWordWrap(True)
@@ -31,6 +31,10 @@ class SourceMatricesPanel(QtWidgets.QWidget):
         self.probes.setToolTip('Case-sensitive original identifiers; spaces within an identifier are retained. No aliases or probe-to-gene mappings are inferred.')
         self.probes.setMaximumHeight(80)
         layout.addWidget(self.probes)
+        self.annotation = QtWidgets.QCheckBox('Match source platform identifiers')
+        self.annotation.setToolTip('Match exact source-declared identifiers through independently reconciled platform annotations. Keep every probe and ambiguous source association; current gene equivalence is not inferred.')
+        self.annotation.toggled.connect(self._clear)
+        layout.addWidget(self.annotation)
         self.show_button = QtWidgets.QPushButton('Show original values')
         self.show_button.setToolTip('Verify the selected pack and show submitted values for the exact source identifiers.')
         self.show_button.clicked.connect(self.compare)
@@ -42,8 +46,8 @@ class SourceMatricesPanel(QtWidgets.QWidget):
         self.summary = QtWidgets.QLabel()
         self.summary.setWordWrap(True)
         layout.addWidget(self.summary)
-        self.table = QtWidgets.QTableWidget(0, 5)
-        self.table.setHorizontalHeaderLabels(['source ID', 'study', 'sample', 'sample title', 'submitted VALUE'])
+        self.table = QtWidgets.QTableWidget(0, 6)
+        self.table.setHorizontalHeaderLabels(['query ID', 'source probe ID', 'study', 'sample', 'sample title', 'submitted VALUE'])
         self.table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         layout.addWidget(self.table)
         self.refresh()
@@ -74,19 +78,22 @@ class SourceMatricesPanel(QtWidgets.QWidget):
             return
         self._clear()
         try:
-            frame = S.profiles(info['path'], self.probes.toPlainText())
+            method = S.annotated_profiles if self.annotation.isChecked() else S.profiles
+            frame = method(info['path'], self.probes.toPlainText())
         except (OSError, ValueError, KeyError, TypeError) as error:
             self.summary.setText(str(error))
             return
         self.result = frame
         self.table.setRowCount(len(frame))
         for i, row in enumerate(frame.to_dict('records')):
-            for j, field in enumerate(('probe_id', 'study', 'geo_sample', 'sample_title', 'value')):
-                item = QtWidgets.QTableWidgetItem(str(row[field]))
-                item.setToolTip(row['sample_metadata'] + '\nSource: ' + row['source_url'])
+            for j, field in enumerate(('query_identifier', 'probe_id', 'study', 'geo_sample', 'sample_title', 'value')):
+                item = QtWidgets.QTableWidgetItem(str(row.get(field, row['probe_id'])))
+                item.setToolTip(row['sample_metadata'] + '\nSource: ' + row['source_url'] + '\n' +
+                                row.get('annotation_evidence', '') + '\n' + row.get('identifier_interpretation', ''))
                 self.table.setItem(i, j, item)
-        missing = set(self.probes.toPlainText().splitlines()) - set(frame.probe_id)
-        self.summary.setText(f'{len(frame)} original-value records. ' + ('Source IDs not measured: ' + ', '.join(sorted(missing)) if missing else ''))
+        matched = frame['query_identifier'] if 'query_identifier' in frame else frame.probe_id
+        missing = set(self.probes.toPlainText().splitlines()) - set(matched)
+        self.summary.setText(f'{len(frame)} original-value records. ' + ('Identifiers not matched: ' + ', '.join(sorted(missing)) if missing else ''))
         self.table.resizeColumnsToContents()
 
     def save(self, path='') -> int:
