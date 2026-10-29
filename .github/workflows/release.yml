@@ -63,7 +63,7 @@ jobs:
       - name: Release checks
         run: |
           python scripts/release.py check
-          python -m pytest tests/test_release.py tests/test_wheel.py tests/test_packaging.py tests/test_readme.py tests/test_docstrings.py tests/test_paths.py tests/test_app_smoke.py tests/test_app_polish.py tests/test_discover_cli.py tests/test_importer.py tests/test_data_download.py tests/test_rna_profiles.py tests/test_rna_design.py tests/test_rna_snapshot.py tests/test_rna_bundled.py -q
+          python -m pytest tests/test_release.py tests/test_wheel.py tests/test_packaging.py tests/test_readme.py tests/test_docstrings.py tests/test_paths.py tests/test_app_smoke.py tests/test_app_polish.py tests/test_discover_cli.py tests/test_importer.py tests/test_data_download.py tests/test_rna_profiles.py tests/test_rna_design.py tests/test_rna_snapshot.py tests/test_rna_bundled.py tests/test_published_expression.py tests/test_dataset_coverage_panel.py tests/test_data_release_builder.py -q
       - name: Build wheels and source distributions
         run: |
           python -m build
@@ -78,6 +78,7 @@ jobs:
           /tmp/parascape-wheel/bin/python -m pip install --no-deps --force-reinstall dist/*.whl
           cd /tmp
           /tmp/parascape-wheel/bin/python -I -c 'import os; from parascape import data_manager as D; assert not D.status()["ready"]; D.install_archive(os.environ["PARASCAPE_DATA_ARCHIVE"]); from parascape import paths; from parascape.app import load; assert D.status()["ready"]; assert paths.check()[0]; assert len(load()[0]) > 1000'
+          /tmp/parascape-wheel/bin/python -I "$GITHUB_WORKSPACE/scripts/smoke_installed_expression.py"
           /tmp/parascape-wheel/bin/parascape-discover --help
       - uses: actions/upload-artifact@v4
         with:

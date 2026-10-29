@@ -1,8 +1,9 @@
 # Compare RNA-seq expression
 
-The GitHub data download includes an offline snapshot of **296 verified study/run entries
-from 23 studies**, selected from the ongoing 1,011-entry processing queue. This is a
+The GitHub data download includes an offline snapshot of **305 verified study/run entries
+from 24 studies**, selected from the ongoing 1,011-entry processing queue. This is a
 partial release; a study may not yet contain all replicates or its control group.
+All eight runs of PRJNA1008424 are included.
 
 Open **compare → Gene expression**, enter one or more exact Toxoplasma gene accessions,
 then select **Compare genes**. Filter by study, choose Salmon or kallisto, and export
@@ -89,7 +90,7 @@ comparison refuses to count them as independent replicates. Shared raw runs acro
 studies are explicitly labelled. Biological versus technical replicate type is left
 unspecified unless the source declares it.
 
-## Original deposited expression (development)
+## Original deposited expression and catalogue coverage
 
 The **Dataset coverage** tab searches the complete local catalogue by accession,
 title, source or assay. Its acquisition counts and local measurement status remain
@@ -100,10 +101,12 @@ paired samples and biological independence are not inferred from these links.
 Use **Refresh coverage** to read updated acquisition progress. Set
 `PARASCAPE_AUDIT` to a separately installed audit folder, containing the coverage
 ledger and `all_geo_samples` metadata, when launching another installation.
-The Live Data launcher selects the local audit automatically. This development
-view currently represents all 692 catalogue records; primary sample metadata covers
+The Live Data launcher selects the latest local audit automatically. After the
+version 0.0.3.0 data download, other installations use the installed audit pack.
+This view represents all 692 catalogue records; primary sample metadata covers
 371 GEO records. Other sources and unavailable measurements retain explicit gaps.
-It is not part of the frozen 0.0.2.0 release.
+Source-file counts describe the processing archive as of the displayed snapshot;
+they do not mean the original source files are installed on this computer.
 
 The **Published expression** tab reads separately installed, validated source packs.
 Select the study and annotation variant, enter exact source gene identifiers, then
@@ -111,10 +114,10 @@ choose **Show deposited measurements**. CSV export includes the original values,
 sample titles and source metadata, software version, source URL and source checksum.
 Identifiers are case-sensitive and are not remapped to the current reference.
 
-The local Live Data launcher also selects the prepared published-expression folder.
-On another installation, set `PARASCAPE_PUBLISHED` to the directory containing
-validated pack folders before starting the app. This development addition and the
-prepared source packs are not included in the frozen 0.0.2.0 release.
+The local Live Data launcher selects the prepared published-expression folder.
+After the version 0.0.3.0 data download, other installations use the included source
+pack automatically. To select a different pack collection, set `PARASCAPE_PUBLISHED`
+to the directory containing validated pack folders before starting the app.
 
 The initial deposited RSEM pack represents GSE134099: six submitted samples against
 ToxoDB release 38 and a StringTie annotation derived from that reference. These are

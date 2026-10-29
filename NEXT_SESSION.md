@@ -1,5 +1,16 @@
 # Next session: start here
 
+**Next release 0.0.3.0:** 0.0.2.0 has passed its complete workflow and is verified on
+PyPI (1,570,566-byte wheel). Its external data URL and full archive SHA were checked
+without authentication after correcting GitHub's placeholder draft tag. Preparing
+0.0.3.0 with the validated 305-entry snapshot, all eight priority-study runs, the
+six-sample/two-annotation deposited expression pack, and portable sample metadata
+for all 371 GEO catalogue records. The app-data staging folder is
+`/media/carruthers/mnt1/parascape-release-data-next/data`; its preparation and
+offline/NAS-disabled validation reports are in the parent folder. Release gates
+must pass on the final frozen commit before promotion; the full dataset goal is
+still incomplete.
+
 **2026-10-29 release work:** user requested the completed RNA-seq results, an intuitive
 study/sample/replicate/control browser, Trx1 prioritization, and then moving all built
 application data out of the PyPI package to GitHub release assets with a first-run

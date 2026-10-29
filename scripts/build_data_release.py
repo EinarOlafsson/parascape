@@ -18,10 +18,14 @@ def build(source: Path, output: Path, descriptor: Path):
     """Archive only application data; retain icons in the application wheel."""
     files = []
     suffixes = ('.npz', '.parquet', '.tsv', '.tsv.gz', '.json')
-    files.extend(p for p in source.iterdir() if p.is_file() and p.name.endswith(suffixes))
+    files.extend(p for p in source.iterdir() if p.is_file() and p.name.endswith(suffixes)
+                 and p.name != 'data_release.json')
     files.extend(p for p in (source / 'hf_release').glob('*') if p.suffix in ('.parquet', '.md'))
     files.extend((source / 'icons').glob('*.svg'))
     files.extend(p for p in (source / 'rnaseq').rglob('*') if p.is_file() and p.suffix in ('.parquet', '.tsv', '.json'))
+    for folder in ('published_expression', 'processing_audit'):
+        files.extend(p for p in (source / folder).rglob('*') if p.is_file()
+                     and p.suffix in ('.parquet', '.tsv', '.json', '.jsonl', '.py', '.md'))
     if not files or not (source / 'nodes.parquet').is_file():
         raise ValueError('Cannot publish an empty data release')
     output.mkdir(parents=True, exist_ok=True)
@@ -31,7 +35,8 @@ def build(source: Path, output: Path, descriptor: Path):
     with asset.open('wb') as raw, gzip.GzipFile(fileobj=raw, filename='', mode='wb', mtime=0) as compressed:
         with tarfile.open(fileobj=compressed, mode='w', format=tarfile.PAX_FORMAT) as archive:
             for path in sorted(files):
-                if path.is_symlink():
+                if path.is_symlink() or any(parent.is_symlink() for parent in path.parents
+                                            if parent == source or source in parent.parents):
                     raise ValueError(f'Data release cannot contain symlinks: {path}')
                 data = path.read_bytes()
                 relative = path.relative_to(source).as_posix()

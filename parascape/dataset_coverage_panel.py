@@ -8,6 +8,7 @@ their presence in multiple studies does not establish independent replication.
 from __future__ import annotations
 
 import csv
+from datetime import datetime, timezone
 import hashlib
 import io
 import json
@@ -105,10 +106,12 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
         self.links = None
         try:
             self.rows, info = coverage(self.root)
+            observed = info.get('observed_epoch')
+            date = datetime.fromtimestamp(observed, timezone.utc).strftime('%Y-%m-%d %H:%M UTC') if observed else 'time unspecified'
             self.summary.setText(f"{len(self.rows)} catalogue records; "
                                  f"{info['local_runtime_catalogue_records']} with local measurements. "
                                  'Downloaded files and schema previews still require assay and comparison review. '
-                                 'These counts describe this local installation, not the frozen public release.')
+                                 f'Coverage snapshot: {date}. Source-file counts refer to the processing archive.')
         except FileNotFoundError:
             self.rows = []
             self.summary.setText('Dataset coverage data is not installed.')

@@ -2,9 +2,14 @@
 
 ## Unreleased
 
+## 0.0.3.0 — 2026-10-29
+
+- Update the external RNA snapshot to 305 verified study/run entries from 24 studies, including all eight PRJNA1008424 runs. Retain the existing gene-map features and saved coordinates.
+- Include deposited expression and primary metadata for all 371 GEO records in the versioned GitHub data download. Preserve source adapter code, input/output hashes, sample links and processing records; verify the portable data with network and NAS access disabled. The full catalogue remains only partially integrated as measurements.
+
 - Add Dataset coverage browsing for the complete catalogue with separate acquisition and local measurement status. Browse primary GEO sample labels, source factors, multiple channels and shared submitted identities from a separately installed audit pack; preserve missing metadata and processing gaps explicitly.
 
-- Browse separately installed deposited expression packs in Compare → Published expression. Preserve original RSEM units, exact identifiers, sample metadata, software and source checksums; keep annotation variants separate and verify pack integrity before export. The initial local pack contains six GSE134099 samples against two annotation variants; it remains external to the frozen 0.0.2.0 data asset.
+- Browse deposited expression packs in Compare → Published expression. Preserve original RSEM units, exact identifiers, sample metadata, software and source checksums; keep annotation variants separate and verify pack integrity before export. The initial pack contains six GSE134099 samples against two annotation variants.
 
 ## 0.0.2.0 — 2026-10-29
 
