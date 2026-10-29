@@ -1,4 +1,7 @@
-"""Compare exact gene accessions across the bundled RNA-seq samples, offline."""
+"""Compare exact gene accessions across the bundled RNA-seq samples, offline.
+
+Researchers need to see the same gene across samples without treating a missing measurement as zero or silently pooling different protocols. The browser keeps study identity and quantification choices visible, exposes the snapshot coverage, and exports the measurements with their sample metadata.
+"""
 from __future__ import annotations
 
 from PyQt6 import QtCore, QtWidgets

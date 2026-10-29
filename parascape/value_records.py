@@ -1,4 +1,7 @@
-"""Native numeric predictions under frozen training-only preprocessing and truth."""
+"""Native numeric predictions under frozen training-only preprocessing and truth.
+
+Reusing a numeric prediction safely requires more than saving its final value. These records preserve the fitting population, preprocessing and missingness semantics so held-out outcomes cannot leak into model construction or disappear from the reported evaluation population.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass

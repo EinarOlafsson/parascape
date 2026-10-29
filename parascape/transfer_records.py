@@ -3,6 +3,8 @@
 Donor aggregation and orthogroup projection precede this adapter and require
 their own source/mapping identities. Missing mappings and unsupported donor
 values remain abstentions, rather than shrinking the evaluation denominator.
+
+This separation prevents a donor observation from becoming receiver truth merely because an identifier maps successfully. Abstentions retain their original source and evaluation scope.
 """
 from __future__ import annotations
 

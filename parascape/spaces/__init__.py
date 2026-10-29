@@ -1,4 +1,7 @@
-"""Shared validation for building one organism's data space without silent data loss."""
+"""Shared validation for building one organism's data space without silent data loss.
+
+Different organisms use different identifiers and evidence coverage, even when their tables share a schema. The common validation layer checks the declared space before downstream consumers use it, so an apparently successful import cannot quietly substitute another species or conceal dropped measurements.
+"""
 from pathlib import Path
 
 import numpy as np

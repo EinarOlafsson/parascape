@@ -1,4 +1,7 @@
-"""Recorded source refusals scoped to a question, not an entire publication."""
+"""Recorded source refusals scoped to a question, not an entire publication.
+
+A publication can contain both useful evidence and an unsuitable table for one particular analysis. Recording the refusal at its original question and entity scope preserves the reason without removing unrelated valid evidence or pretending that unavailable observations are negative experimental results.
+"""
 
 REFUSED_CANDIDATES = {
     # Eight GEO series proposed for the IFN-gamma macrophage slot, opened 2026-08-19. Not one is a

@@ -1,4 +1,7 @@
-"""Browse studies, source-declared conditions, submitted samples and linked runs."""
+"""Browse studies, source-declared conditions, submitted samples and linked runs.
+
+Study-level summaries can hide missing controls and repeated sequencing of one sample. This hierarchy keeps each run attached to its submitted sample and source annotations, marks pending measurements explicitly, and leaves suggested condition groups and unverified pairing available for review before a comparison.
+"""
 from __future__ import annotations
 
 import html

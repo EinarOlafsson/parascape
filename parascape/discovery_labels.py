@@ -3,6 +3,8 @@
 Functional domains and enzyme classes are multi-valued annotations, not exclusive
 localizations. Missing annotation is unknown membership, not a biological negative.
 This catalogue reports inference/test availability without generating confidence.
+
+The same gene may legitimately belong to several functional categories. Views must preserve those overlaps and the difference between recorded annotations and inferred claims when users browse available labels.
 """
 from __future__ import annotations
 

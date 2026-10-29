@@ -2,6 +2,8 @@
 
 An accession links submitted samples and sequencing runs; it does not establish
 independent biological replicates. Title-derived groupings are suggestions only.
+
+Submitted sample identity and source annotations answer different questions. Both remain visible so repeated sequencing, inferred condition labels and author-declared biological replication cannot be silently conflated during browsing or comparison.
 """
 from __future__ import annotations
 

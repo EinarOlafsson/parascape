@@ -1,4 +1,7 @@
-"""Offer the versioned data download before creating a data-dependent main window."""
+"""Offer the versioned data download before creating a data-dependent main window.
+
+Opening a data-dependent window before its files exist produces an obscure loader error. This setup step makes the missing resource and destination explicit, asks before network transfer, and keeps cancellation, progress and retry responsive without creating a partial working installation.
+"""
 from __future__ import annotations
 
 from PyQt6 import QtCore, QtWidgets

@@ -1,4 +1,7 @@
-"""Assemble explicitly addressed local inputs for the dataset browser."""
+"""Assemble explicitly addressed local inputs for the dataset browser.
+
+The browser needs to distinguish a missing input from an empty measured table. These adapters preserve the addresses and provenance supplied by each caller, keep session imports separate from native sources, and avoid silently projecting one organism or entity type into another.
+"""
 from __future__ import annotations
 
 import json

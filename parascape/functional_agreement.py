@@ -2,6 +2,8 @@
 
 These counts do not estimate biological accuracy, independent evidence or
 confidence for an unknown gene. No model is fitted or selected here.
+
+Aligned predictions are compared only against the same supplied recorded outcomes. Preserving the matched population and provenance prevents agreement between dependent source profiles from being presented as independent experimental confirmation.
 """
 from __future__ import annotations
 

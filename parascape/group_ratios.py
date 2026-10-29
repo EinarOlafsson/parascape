@@ -2,6 +2,8 @@
 
 These descriptive intervals assume exchangeable supplied groups. They do not
 prove biological independence or estimate per-gene confidence.
+
+Resampling individual rows would incorrectly treat records from the same supplied group as independent evidence. Numerators and denominators therefore travel together through each draw, and undefined rates remain unavailable.
 """
 from __future__ import annotations
 

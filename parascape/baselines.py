@@ -1,4 +1,7 @@
-"""Shared train-only baselines, matched universes and bounded null-control recipes."""
+"""Shared train-only baselines, matched universes and bounded null-control recipes.
+
+Strategy and baseline must use the same candidate population, otherwise a difference in coverage can look like improved accuracy. Recipes retain the training-only fitting rule and ordered universe identity so later scorecards can distinguish a genuine comparison from a changed denominator.
+"""
 from __future__ import annotations
 
 from collections import Counter

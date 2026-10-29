@@ -1,4 +1,7 @@
-"""Frozen native absolute-residual conformal intervals from train-only numeric models."""
+"""Frozen native absolute-residual conformal intervals from train-only numeric models.
+
+Prediction intervals require a calibration population separate from both fitting and final evaluation. The adapter retains unavailable and unbounded outcomes explicitly, so filtering difficult cases cannot make interval coverage appear better than the procedure actually achieved on the frozen population.
+"""
 from __future__ import annotations
 
 import numpy as np

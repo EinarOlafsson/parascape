@@ -3,6 +3,8 @@
 This module presents one supplied evaluation; it never aggregates cohorts,
 admits biological truth, estimates uncertainty or converts method support into
 confidence. Metric definitions come from :mod:`parascape.scorecard`.
+
+Using the same presentation model in both interfaces prevents a change of display from silently changing a denominator, dropping a limitation, or making an unsupported claim.
 """
 from __future__ import annotations
 

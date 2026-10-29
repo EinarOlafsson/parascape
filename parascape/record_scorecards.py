@@ -3,6 +3,8 @@
 Legacy track records have incomplete truth/split lineage. Their arithmetic can
 be reconciled without retroactively admitting their biological benchmarks.
 Repeated settings, seeds and hold-out modes do not create independent samples.
+
+Keeping those limitations alongside the arithmetic prevents a successfully reproduced summary from being mistaken for a newly validated experiment or a broader biological performance claim.
 """
 from __future__ import annotations
 

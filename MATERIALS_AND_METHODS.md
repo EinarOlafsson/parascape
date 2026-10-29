@@ -11,11 +11,11 @@ Figures were read from the built cache at commit `29b0bd9`.
 ## Implementation and availability
 
 parascape is a desktop application written in Python 3.10 using PyQt6 (6.7.1) and pyqtgraph (0.13.7) for
-OpenGL rendering, with pandas, NumPy, scikit-learn and umap-learn for data processing. It is distributed
-with a precomputed cache (121 MB) containing all 443 columns for 8,140 genes and all 13 relation
-types (296,412 edges), so the application requires neither a network connection nor any source dataset at
-runtime. The cache is installed inside the package, so it is present in a wheel and resolves without
-configuration. Source
+OpenGL rendering, with pandas, NumPy, scikit-learn and umap-learn for data processing. It provides a precomputed cache (278 MB), including all 443 columns for 8,140 genes and all 13 relation
+types (296,412 edges), through a versioned GitHub data release. First launch offers the data
+download; after installation, browsing requires neither a network connection nor raw source datasets.
+The verified cache is installed in a writable user data folder. The wheel carries application code,
+icons and a small checksum descriptor instead of scientific datasets. Source
 code, the cache, and a notebook that reproduces every download are available at
 **[repository URL]** under **[license]**.
 

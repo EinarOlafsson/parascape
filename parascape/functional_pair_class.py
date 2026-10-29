@@ -1,4 +1,7 @@
-"""Paired recorded-class comparisons with explicit closed-source semantics."""
+"""Paired recorded-class comparisons with explicit closed-source semantics.
+
+A pooled agreement rate can hide failures in rare recorded classes. This adapter keeps the class address and the complete matched population visible, distinguishes observed source membership from inference, and exposes missing class-specific information rather than manufacturing confidence from a global score.
+"""
 from __future__ import annotations
 
 from copy import deepcopy

@@ -2,6 +2,8 @@
 
 Archive and individual file checksums are pinned by the package. Installation is
 staged and verified before becoming visible; failed downloads never replace data.
+
+Keeping release data outside the wheel reduces installation size while checksum-pinned assets preserve reproducibility across machines and application upgrades.
 """
 from __future__ import annotations
 

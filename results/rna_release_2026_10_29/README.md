@@ -22,3 +22,18 @@ Validation before publication: 655 focused release gates; clean wheel imports
 without datasets; missing-data popup and cancellation; verified local asset
 installation; offline app load and one gene across all 296 runs. Full regression
 and publication verification results will be appended after completion.
+
+
+Final local full regression run:5,901 passed,41 skipped,7 deselected. Two documentation
+checks failed: short module explanations (including pre-existing modules) and a stale
+cache-size statement. The explanations and cache/download documentation were fixed;
+495 focused documentation/number/docstring checks then passed. The cloud full-suite
+Tests and Documentation checks remain mandatory publication gates.
+
+GitHub data draft release ID428109947 contains the221,482,867-byte asset. GitHub
+reported SHA256891b93e69bff81e9f2d0985bb35792cec4e7a63c3d653e5d7fb22be58ae24f74,
+matching the package descriptor. Workflow push is blocked by the CLI OAuth login
+lacking workflow scope. Native service parascape-publish-prepared.service waits
+for `gh auth refresh -h github.com -s workflow`, then pushes the frozen commit,
+requires green CI, publishes the verified asset, fast-forwards main without force
+and verifies the resulting PyPI wheel. It makes no model calls.
