@@ -13,6 +13,7 @@ import hashlib
 import io
 import json
 import os
+import re
 from pathlib import Path
 
 from PyQt6 import QtWidgets
@@ -64,6 +65,41 @@ def shared_samples(root: Path) -> dict:
         raise ValueError('Shared-sample identity index checksum differs')
     rows = csv.DictReader(io.StringIO(data.decode()), delimiter='\t')
     return {row['geo_sample']: row['same_geo_sample_in_studies'].split(';') for row in rows}
+
+
+def workbench_samples(root: Path, accession: str) -> dict:
+    """Read independently reconciled submitted Workbench factors and analysis metadata."""
+    if not re.fullmatch(r'ST\d{6}', accession):
+        raise ValueError('Invalid Workbench study identity')
+    collection = root / 'metabolomics_workbench'
+    pointer = json.loads((collection / 'collection.json').read_text())
+    directory = pointer['directory']
+    if pointer.get('schema_version') != 1 or not re.fullmatch(r'[0-9a-f]{64}', directory):
+        raise ValueError('Unsupported Workbench collection identity')
+    folder = collection / directory
+    if folder.resolve().parent != collection.resolve():
+        raise ValueError('Workbench collection lies outside its installed root')
+    receipt = (folder / 'validation.json').read_bytes()
+    if hashlib.sha256(receipt).hexdigest() != pointer['validation_sha256']:
+        raise ValueError('Workbench reconciliation receipt checksum differs')
+    outputs = json.loads(receipt)['outputs']
+
+    def read(name):
+        data = (folder / name).read_bytes()
+        if hashlib.sha256(data).hexdigest() != outputs[name]:
+            raise ValueError('Workbench metadata checksum differs: ' + name)
+        return json.loads(data)
+
+    entries = [row for row in read('coverage.json') if row['accession'] == accession]
+    if len(entries) != 1 or entries[0]['status'] != 'independently_reconciled_primary_metadata':
+        raise ValueError('Primary Workbench metadata has not been reconciled')
+    report = read(accession + '/sample_design.json')
+    analyses = read(accession + '/analyses.json')
+    if (report['study'] != accession or analyses['study'] != accession
+            or len(report['submitted_rows']) != entries[0]['submitted_factor_records']
+            or len(analyses['analyses']) != entries[0]['analyses']):
+        raise ValueError('Workbench study identity or metadata coverage differs')
+    return dict(**report, analysis_inventory=analyses['analyses'], source_coverage=entries[0])
 
 
 class DatasetCoveragePanel(QtWidgets.QWidget):
@@ -135,6 +171,8 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
             if int(row.get('series_matrix_files_declared', 0)):
                 matrices = f"{row.get('series_matrix_files_acquired', 0)}/{row['series_matrix_files_declared']} Series Matrices"
                 files = (files + ' supplementary; ' + matrices) if int(total) else matrices
+            if int(row.get('workbench_acquired_api_responses', 0)):
+                files = row['workbench_acquired_api_responses'] + ' API responses; raw payloads pending'
             measurement = 'Available locally' if row['measurement_status']=='local runtime measurements present' else 'Pending measurements'
             values = [row['accession'], row['source'], row['title'], row['readout'], files, measurement]
             for j, value in enumerate(values):
@@ -152,7 +190,8 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
             return
         row = self.visible_rows[index]
         measurement = 'Measurements available locally' if row['measurement_status']=='local runtime measurements present' else 'Measurements pending'
-        metadata = 'verified' if row['primary_sample_metadata']=='validated_sample_metadata' else 'not collected'
+        metadata = 'verified' if row['primary_sample_metadata'] in (
+            'validated_sample_metadata', 'independently_reconciled_primary_metadata') else 'not collected'
         self.details.setText(f"{row['accession']}: {measurement}. "
                              f"Primary sample metadata: {metadata}. "
                              'Biological independence, technical replicate type and control pairing are not inferred. '
@@ -165,6 +204,26 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
                 f"{row.get('series_matrices_review_required', 0)} require review. "
                 'Original units, scale and platform/probe mappings still require review before comparison.')
         try:
+            if row['source'] == 'Metabolomics Workbench':
+                report = workbench_samples(self.root, row['accession'])
+                for position, sample in enumerate(report['submitted_rows'], 1):
+                    parent = QtWidgets.QTreeWidgetItem(self.samples, [sample['local_sample_id'], sample.get('sample_source', '')])
+                    QtWidgets.QTreeWidgetItem(parent, ['Submitted factor row', str(position)])
+                    for key, value in sample.items():
+                        if key != 'local_sample_id':
+                            text = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+                            QtWidgets.QTreeWidgetItem(parent, [key, text])
+                for analysis in report['analysis_inventory']:
+                    parent = QtWidgets.QTreeWidgetItem(self.samples, [analysis['analysis'], 'Submitted analysis metadata'])
+                    for key, value in analysis.items():
+                        if key != 'analysis':
+                            text = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+                            QtWidgets.QTreeWidgetItem(parent, [key, text])
+                self.details.setText(self.details.text() +
+                    ' Workbench factor rows and analysis representations remain separate. Source units and row-count discrepancies are preserved; '
+                    'raw filenames are declarations, not downloaded payloads. Quantitative admission remains pending.')
+                self.samples.resizeColumnToContents(0)
+                return
             report = source_samples(self.root, row['accession'])
             if self.links is None:
                 try:

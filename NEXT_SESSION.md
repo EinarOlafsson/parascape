@@ -1,5 +1,30 @@
 # Next session: start here
 
+**Workbench source gap (2026-10-29):** all seven catalogue studies now have acquired
+primary responses: 90 API responses, eight analyses and 276 submitted factor rows.
+NAS `metabolomics_workbench` retains exact source bytes, HTTP/hash receipts, failed
+attempts, superseded reports and versioned collector sources. Persistent
+`parascape-workbench-acquisition.service` runs acquisition, independent metadata
+reconciliation and coverage refresh with CPU0-7/512MiB/25GiB NAS reserve, no model
+calls. Derived portable metadata lives under
+`processing_audit/metabolomics_workbench`, with immutable collections and a pinned
+`collection.json` pointer. Local Dataset coverage now browses all seven sets of
+source factor rows and analysis metadata. Real Qt selection of all seven was
+checked; repeated labels and original units remain explicit, measurements pending.
+Study-data and mwTab representations have unequal row counts for two analyses:
+retain both, not an assumed equivalence. mwTab has 1,793 deposited row records;
+study-data has 1,515. Analysis-scoped data endpoints were empty despite nonempty
+study/mwTab sources, so do not use empty endpoints as absence evidence. Raw payload
+acquisition, original measurement conversion/numerical QC and quantitative
+admission remain unfinished. Frozen 0.0.4.0 still waits exact Tests on `bb8ebca`;
+follow-up changes must wait for that publication before advancing nightly.
+Validation: 553 relevant reader/UI/QC/download/docstring/documentation checks pass.
+All seven actual Qt study selections preserve 276 factor rows and eight analysis
+nodes with measurements pending. A cached pipeline rerun completes without
+rewriting the immutable metadata collection; independent source-byte tampering
+is refused. Acquisition, independent reconciliation and coverage refresh are
+sequenced automatically by the persistent native pipeline service.
+
 **Original-matrix QC follow-up (2026-10-29):** local Deposited matrices now exports
 whole-matrix technical QC without a probe query. Native
 `parascape-source-matrix-qc.timer` maintains immutable source-hashed reports under

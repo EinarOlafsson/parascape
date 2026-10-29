@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Browse independently reconciled Metabolomics Workbench sample factors, analysis
+  metadata, original units and source-representation discrepancies in Dataset
+  coverage. Acquired source responses and pending quantitative admission remain
+  distinct; submitted raw filenames are not counted as downloaded payloads.
+
 - Add whole-matrix sample technical QC export to Deposited matrices, preserving
   original signed scales, probe denominators, sample/channel metadata and source
   hashes without assigning uncalibrated biological quality scores.

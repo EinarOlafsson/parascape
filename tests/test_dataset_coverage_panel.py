@@ -91,3 +91,69 @@ def test_series_matrix_acquisition_does_not_claim_measurement_admission(qtbot, a
     assert panel.table.item(1, 5).text() == 'Pending measurements'
     panel.table.selectRow(1)
     assert 'Original units, scale' in panel.details.text()
+
+
+@pytest.fixture
+def workbench_audit(audit):
+    """Synthetic factor rows retain repeated labels and distinct analysis representations."""
+    root = audit / 'metabolomics_workbench'
+    folder = root / ('1' * 64)
+    study = folder / 'ST000001'
+    study.mkdir(parents=True)
+    design = dict(study='ST000001', submitted_rows=[
+        dict(local_sample_id='001', sample_source='Original source', factors={'batch': 'source A'}, raw_data='source.raw'),
+        dict(local_sample_id='001', sample_source='Original source', factors={'batch': 'source B'}, raw_data='source-repeat.raw')])
+    analyses = dict(study='ST000001', analyses=[dict(analysis='AN000001', source_units=['source units'],
+        mwtab_deposited_rows=3, study_data_endpoint_rows=2, source_representations_have_equal_row_counts=False)])
+    (study / 'sample_design.json').write_text(json.dumps(design))
+    (study / 'analyses.json').write_text(json.dumps(analyses))
+    (folder / 'coverage.json').write_text(json.dumps([dict(accession='ST000001',
+        status='independently_reconciled_primary_metadata', submitted_factor_records=2, analyses=1)]))
+    outputs = {p.relative_to(folder).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+               for p in folder.rglob('*.json')}
+    (folder / 'validation.json').write_text(json.dumps(dict(outputs=outputs)))
+    (root / 'collection.json').write_text(json.dumps(dict(schema_version=1, directory=folder.name,
+        validation_sha256=hashlib.sha256((folder / 'validation.json').read_bytes()).hexdigest())))
+    return audit
+
+
+def test_workbench_metadata_retains_repeated_labels_units_and_source_discrepancies(workbench_audit):
+    report = D.workbench_samples(workbench_audit, 'ST000001')
+    assert [row['local_sample_id'] for row in report['submitted_rows']] == ['001', '001']
+    assert report['submitted_rows'][0]['factors'] == {'batch': 'source A'}
+    assert report['analysis_inventory'][0]['source_units'] == ['source units']
+    assert not report['analysis_inventory'][0]['source_representations_have_equal_row_counts']
+    pointer = json.loads((workbench_audit / 'metabolomics_workbench/collection.json').read_text())
+    path = workbench_audit / 'metabolomics_workbench' / pointer['directory'] / 'ST000001/sample_design.json'
+    path.write_text('{}')
+    with pytest.raises(ValueError, match='checksum'):
+        D.workbench_samples(workbench_audit, 'ST000001')
+
+
+def test_workbench_browser_shows_factors_without_admitting_measurements(qtbot, workbench_audit):
+    panel = D.DatasetCoveragePanel(workbench_audit)
+    qtbot.addWidget(panel)
+    panel.rows = [dict(accession='ST000001', source='Metabolomics Workbench', title='Original source study',
+        readout='synthetic assay', supplementary_urls_in_plan='0', source_files_with_acquisition_receipts='0',
+        workbench_acquired_api_responses='12', measurement_status='not integrated into local comparison runtime',
+        primary_sample_metadata='independently_reconciled_primary_metadata')]
+    panel._filter()
+    panel.table.selectRow(0)
+    assert '12 API responses' in panel.table.item(0, 4).text()
+    assert panel.table.item(0, 5).text() == 'Pending measurements'
+    assert panel.samples.topLevelItemCount() == 3
+    assert panel.samples.topLevelItem(0).text(0) == panel.samples.topLevelItem(1).text(0) == '001'
+    assert 'not inferred' in panel.details.text() and 'raw filenames are declarations' in panel.details.text()
+
+
+def test_workbench_collection_path_and_receipt_must_be_valid(workbench_audit):
+    path = workbench_audit / 'metabolomics_workbench/collection.json'
+    pointer = json.loads(path.read_text())
+    pointer['validation_sha256'] = '0' * 64
+    path.write_text(json.dumps(pointer))
+    with pytest.raises(ValueError, match='receipt checksum'):
+        D.workbench_samples(workbench_audit, 'ST000001')
+    pointer['directory'] = '../outside'
+    path.write_text(json.dumps(pointer))
+    with pytest.raises(ValueError, match='collection identity'):
+        D.workbench_samples(workbench_audit, 'ST000001')

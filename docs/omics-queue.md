@@ -184,6 +184,21 @@ the supervisor does not override external operator pauses.
 The PyPI expression snapshot is separate from the live archive. Its build and
 coverage are documented in [RNA expression](rna-expression.md).
 
+The Workbench source pipeline is maintained by the user service
+`parascape-workbench-acquisition.service`. It runs the public-source collector,
+an independent metadata reconciliation and the catalogue-coverage refresh in
+sequence, without model calls. Source responses retain exact bytes, URL, HTTP
+headers and hashes; retries preserve failed attempts. Archived code and immutable
+reconciled collections record how sample factors and analysis metadata reach the
+browser. Sources follow the repository's [REST API specification](https://www.metabolomicsworkbench.org/tools/MWRestAPIv1.2.pdf).
+
+The seven catalogued studies currently have 90 acquired API responses covering
+eight analyses and 276 submitted factor rows. Preserve source representations:
+the study-data response and mwTab representation have different row counts for
+two analyses. These are acquisition/metadata checks, not numerical validation or
+quantitative admission. Raw filenames remain submitted declarations; this API
+collector does not acquire their raw payloads or infer biological independence.
+
 
 The 2026-10-29 priority override uses `automation/priority-plan.jsonl` for execution
 only, with the same 1,011 entries reordered to put PRJNA1008424 first. The signed

@@ -92,6 +92,13 @@ unspecified unless the source declares it.
 
 ## Original deposited expression and catalogue coverage
 
+For Metabolomics Workbench records, **Dataset coverage** shows original submitted
+sample factors and analysis metadata, retaining source units and discrepancies
+between deposited representations. Repeated sample labels remain separate rows;
+raw filenames are declarations rather than evidence that payloads were downloaded.
+These metadata records do not establish quantitative measurement admission,
+cross-assay compatibility or independent biological replicates.
+
 The **Dataset coverage** tab searches the complete local catalogue by accession,
 title, source or assay. Its acquisition counts and local measurement status remain
 separate: a downloaded source file or schema preview is not an admitted matrix.
