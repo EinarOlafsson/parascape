@@ -1,4 +1,12 @@
-"""Assay-independent numerical QC without imputing missing measurements or biological labels."""
+"""Describe numerical integrity while keeping biological quality uncalibrated.
+
+Different assays can produce nonnegative counts, signed ratios or values whose
+scale is not yet reviewed. Explicit value domains prevent valid negative values
+from being rejected as malformed counts. Missing measurements and measured zeros
+remain separate, and reports retain their feature denominator. These descriptive
+checks do not infer biological identities, independent replicates or quality
+scores, and never transform the input to make datasets appear comparable.
+"""
 from __future__ import annotations
 
 import numpy as np

@@ -1,4 +1,13 @@
-"""Browse one original-value matrix at a time without conflating probes, assays or scales."""
+"""Browse original-value matrices with source context visible beside measurements.
+
+Public matrices can mix platforms, assay quantities and sample-channel designs.
+Selecting one submitted representation at a time keeps those differences visible
+instead of pooling values on incompatible scales. Exact identifier queries and
+optional source annotation matches preserve individual probes and ambiguous
+associations. CSV exports retain sample metadata and provenance so downstream
+review can establish the appropriate units and independent experimental samples
+before quantitative comparisons are made.
+"""
 from PyQt6 import QtWidgets
 
 from . import source_matrices as S

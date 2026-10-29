@@ -1,4 +1,13 @@
-"""Read original submitted VALUE matrices with exact source identities and explicit scale limits."""
+"""Read submitted matrices while preserving source identities and scale limits.
+
+Deposited VALUE fields may describe different assays, platforms or normalization
+conventions. Readers therefore verify conversion receipts and output hashes,
+retain original probes and sample metadata, and expose comparison limits beside
+measurements. Optional identifier matching reproduces explicit source annotation
+associations without averaging probes or claiming current gene equivalence.
+Preserving these distinctions prevents source acquisition from silently becoming
+an unsupported gene-level or cross-study comparison.
+"""
 from __future__ import annotations
 
 import hashlib
