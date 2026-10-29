@@ -90,17 +90,12 @@ def catalogue(root: str | Path | None = None) -> tuple[list[dict], list[str]]:
     return packs, errors
 
 
-def profiles(pack: str | Path, genes, reference: str) -> pd.DataFrame:
-    """Return original source measurements and metadata for exact gene identifiers."""
+def _matrix(pack: str | Path, reference: str):
+    """Load the complete checked matrix before selecting genes or reporting QC."""
     pack = Path(pack)
     info = manifest(pack)
     if reference not in info['variants']:
         raise ValueError('Annotation variant is not present in this pack')
-    if isinstance(genes, str):
-        genes = re.split(r'[\s,;]+', genes.strip())
-    genes = list(dict.fromkeys(str(g).strip() for g in genes if str(g).strip()))
-    if not genes:
-        raise ValueError('Enter at least one exact source gene identifier')
     variant = info['variants'][reference]
     matrix = pd.read_parquet(_file(pack, reference + '.parquet'))
     if matrix.index.has_duplicates or matrix.index.isna().any() or matrix.columns.has_duplicates:
@@ -111,6 +106,38 @@ def profiles(pack: str | Path, genes, reference: str) -> pd.DataFrame:
     values = matrix.to_numpy(dtype=float)
     if not np.isfinite(values).all() or (values < 0).any():
         raise ValueError('Invalid deposited numeric measurements')
+    return pack, info, matrix
+
+
+def technical_qc(pack: str | Path, reference: str) -> pd.DataFrame:
+    """Export whole-matrix sample QC with original measurement and source provenance."""
+    from . import measurement_qc as Q
+    pack, info, matrix = _matrix(pack, reference)
+    inputs = {r['sample']: r for r in info['inputs'] if r['reference'] == reference}
+    rows = []
+    for field in ('TPM', 'FPKM', 'expected_count'):
+        report = Q.summarize(matrix[field])
+        report['field'] = field
+        report['study'] = info['study']
+        report['reference'] = reference
+        report['normalization'] = info['normalization']
+        report['source_url'] = report['sample'].map(lambda sample: inputs[sample]['url'])
+        report['source_sha256'] = report['sample'].map(lambda sample: inputs[sample]['sha256'])
+        report['manifest_sha256'] = _sha(pack / 'manifest.json')
+        report['matrix_sha256'] = info['outputs'][reference + '.parquet']
+        rows.append(report)
+    return pd.concat(rows, ignore_index=True)
+
+
+def profiles(pack: str | Path, genes, reference: str) -> pd.DataFrame:
+    """Return original source measurements and metadata for exact gene identifiers."""
+    if isinstance(genes, str):
+        genes = re.split(r'[\s,;]+', genes.strip())
+    genes = list(dict.fromkeys(str(g).strip() for g in genes if str(g).strip()))
+    if not genes:
+        raise ValueError('Enter at least one exact source gene identifier')
+    pack, info, matrix = _matrix(pack, reference)
+    variant = info['variants'][reference]
     samples = json.loads((pack / 'samples.json').read_text())['samples']
     source_samples = {s['geo_accession']: s for s in samples}
     source_inputs = {r['sample']: r for r in info['inputs'] if r['reference'] == reference}

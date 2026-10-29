@@ -141,3 +141,12 @@ For command-line CSV export:
 python -m parascape.published_expression GENE_ID --pack /path/to/validated-pack \
   --reference ToxoDB_release38 --output deposited_expression.csv
 ```
+
+The **Published expression → Export sample technical QC…** control exports metrics
+for the complete selected annotation, independently of the gene query. Each sample
+has separate TPM, FPKM and expected-count records with feature count, measured zeros,
+positive values, missingness and numerical validity, plus source, matrix and manifest
+hashes. Annotation variants remain separate representations of the same samples.
+The generic numerical report preserves missing values and does not normalize or
+impute measurements. Validity among observed values is a technical integrity metric;
+it is not calibrated biological quality. Biological quality scores remain unavailable.

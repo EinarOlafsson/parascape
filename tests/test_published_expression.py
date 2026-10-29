@@ -110,3 +110,23 @@ def test_panel_and_csv_preserve_source_metadata(qtbot, source_pack, tmp_path):
     assert 'sample_metadata' in values and 'source_sha256' in values
     panel.reference.setCurrentText('annotation_two')
     assert panel.table.rowCount() == 0 and panel.save(str(output)) == 0
+
+
+def test_full_matrix_qc_retains_source_hashes_without_gene_query(qtbot, source_pack, tmp_path):
+    from parascape.published_expression_panel import PublishedExpressionPanel
+    pack, info = source_pack
+    panel = PublishedExpressionPanel(pack.parent)
+    qtbot.addWidget(panel)
+    output = tmp_path / 'qc.csv'
+    assert not panel.genes.text()
+    assert panel.save_qc(str(output)) == 6
+    frame = pd.read_csv(output)
+    assert set(frame.field) == {'TPM', 'FPKM', 'expected_count'}
+    assert frame['sample'].nunique() == 2 and set(frame.features) == {1}
+    assert frame.measured_zero.sum() == 3 and frame.missing.sum() == 0
+    assert set(frame.matrix_sha256) == {info['outputs']['annotation_one.parquet']}
+    assert frame.quality_score.isna().all()
+    assert frame.source_sha256.notna().all()
+    (pack / 'annotation_one.parquet').write_bytes(b'changed')
+    with pytest.raises(ValueError, match='checksum'):
+        P.technical_qc(pack, 'annotation_one')

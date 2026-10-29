@@ -1,5 +1,20 @@
 # Next session: start here
 
+**2026-10-29 quantitative QC follow-up:** local Published expression now exports
+whole-matrix sample technical QC independently of gene queries, with original field,
+source, manifest and matrix hashes. Numerical validity, missingness and measured zeros
+remain separate; biological quality scores are explicitly unavailable without independent
+calibration. The frozen 0.0.3.0 publisher uses detached commit9ebbff3; its full CI must
+finish before pushing this follow-up to avoid cancelling the release checks. The first
+0.0.3.0 attempt failed only five missing tooltips (5921 other tests passed), now corrected.
+PRIDE metadata covers209 projects/9047 project-file records; automatic non-RAW acquisition
+queues3519 sources.52 SDRF files across49 projects preserve1392 submitted rows and854
+unique project/file links, with5 unresolved exact filename occurrences.624 tabular
+candidates have automatic bounded schema checks. See NAS published_pride/operations.jsonl,
+sample_design_validation.json and processing_audit/dataset_coverage.tsv. Raw sources
+declare4.605TB, exceeding current NAS free space; they remain an explicit capacity gap.
+All new workers retain CPU affinity0-7, low priority, and source/admission distinctions.
+
 **Next release 0.0.3.0:** 0.0.2.0 has passed its complete workflow and is verified on
 PyPI (1,570,566-byte wheel). Its external data URL and full archive SHA were checked
 without authentication after correcting GitHub's placeholder draft tag. Preparing

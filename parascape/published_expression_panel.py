@@ -46,6 +46,10 @@ class PublishedExpressionPanel(QtWidgets.QWidget):
         self.export_button.setToolTip('Save the displayed measurements with their units, sample metadata and source provenance.')
         self.export_button.clicked.connect(lambda: self.save())
         layout.addWidget(self.export_button)
+        self.qc_button = QtWidgets.QPushButton('Export sample technical QC…')
+        self.qc_button.setToolTip('Export whole-matrix numerical validity, missingness and measured zeros with source hashes. Biological quality scores are not calibrated.')
+        self.qc_button.clicked.connect(lambda: self.save_qc())
+        layout.addWidget(self.qc_button)
         self.summary = QtWidgets.QLabel('Enter exact identifiers from the selected annotation.')
         self.summary.setWordWrap(True)
         layout.addWidget(self.summary)
@@ -69,6 +73,24 @@ class PublishedExpressionPanel(QtWidgets.QWidget):
         self.result = None
         self.table.setRowCount(0)
         self.summary.setText('Enter exact identifiers from the selected annotation.')
+
+    def save_qc(self, path='') -> int:
+        """Export full-matrix QC independently of the current gene query."""
+        info = self.pack.currentData()
+        if not info:
+            return 0
+        try:
+            frame = P.technical_qc(info['path'], self.reference.currentText())
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
+            return 0
+        if not path:
+            path, _ = QtWidgets.QFileDialog.getSaveFileName(self, 'Export sample technical QC',
+                                                         'sample_technical_qc.csv', 'CSV files (*.csv)')
+        if not path:
+            return 0
+        frame.to_csv(path, index=False)
+        return len(frame)
 
     def _select_pack(self):
         self.reference.clear()
