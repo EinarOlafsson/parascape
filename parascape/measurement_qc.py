@@ -5,13 +5,15 @@ import numpy as np
 import pandas as pd
 
 
-def summarize(matrix: pd.DataFrame) -> pd.DataFrame:
-    """Describe each sample in a feature-by-sample nonnegative measurement matrix.
+def summarize(matrix: pd.DataFrame, *, domain: str = 'nonnegative') -> pd.DataFrame:
+    """Describe each sample with an explicit nonnegative, signed or unspecified domain.
 
     Numeric validity is a format/integrity measure, not calibrated biological quality.
     Missingness and measured zeros remain separate. This function neither transforms
     the input nor infers biological replicates, stage, strain or sample identity.
     """
+    if domain not in ('nonnegative', 'signed', 'unspecified_real'):
+        raise ValueError('Unknown quantitative value domain')
     if isinstance(matrix.index, pd.MultiIndex) or isinstance(matrix.columns, pd.MultiIndex):
         raise ValueError('QC requires one feature identity and one sample identity per axis')
     if matrix.empty or matrix.index.has_duplicates or matrix.columns.has_duplicates:
@@ -28,12 +30,13 @@ def summarize(matrix: pd.DataFrame) -> pd.DataFrame:
         missing = np.isnan(values)
         finite = np.isfinite(values)
         negative = finite & (values < 0)
-        valid = finite & ~negative
+        valid = finite & ~negative if domain == 'nonnegative' else finite
         observed = int((~missing).sum())
-        invalid = int((~finite & ~missing).sum() + negative.sum())
+        invalid = int((~finite & ~missing).sum() + (negative.sum() if domain == 'nonnegative' else 0))
         rows.append(dict(sample=sample, features=len(values), missing=int(missing.sum()),
                          nonfinite_observed=int((~finite & ~missing).sum()),
                          negative=int(negative.sum()), measured_zero=int((valid & (values == 0)).sum()),
+                         quantity_domain=domain, negative_values_invalid=domain == 'nonnegative',
                          measured_positive=int((valid & (values > 0)).sum()),
                          observed_coverage_pct=100 * observed / len(values),
                          numeric_validity_observed_pct=100 * int(valid.sum()) / observed if observed else None,

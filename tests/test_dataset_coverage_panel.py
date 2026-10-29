@@ -75,3 +75,19 @@ def test_browse_original_labels_shared_identity_and_channels(qtbot,audit):
 def test_missing_optional_audit_pack_is_visible(qtbot,tmp_path):
     panel = D.DatasetCoveragePanel(tmp_path);qtbot.addWidget(panel)
     assert panel.table.rowCount()==0 and 'not installed' in panel.summary.text()
+
+
+def test_series_matrix_acquisition_does_not_claim_measurement_admission(qtbot, audit):
+    rows, _ = D.coverage(audit)
+    for row in rows:
+        row.update(series_matrix_files_declared='2', series_matrix_files_acquired='1',
+                   series_matrices_numeric_checked='1', series_matrices_without_embedded_values='0',
+                   series_matrices_review_required='0')
+    panel = D.DatasetCoveragePanel(audit)
+    qtbot.addWidget(panel)
+    panel.rows = rows
+    panel._filter()
+    assert '1/2 Series Matrices' in panel.table.item(1, 4).text()
+    assert panel.table.item(1, 5).text() == 'Pending measurements'
+    panel.table.selectRow(1)
+    assert 'Original units, scale' in panel.details.text()

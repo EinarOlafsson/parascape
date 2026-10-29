@@ -150,3 +150,11 @@ hashes. Annotation variants remain separate representations of the same samples.
 The generic numerical report preserves missing values and does not normalize or
 impute measurements. Validity among observed values is a technical integrity metric;
 it is not calibrated biological quality. Biological quality scores remain unavailable.
+
+The **Gene expression → Export sample technical QC…** control provides the same
+numerical metrics for all genes in the selected studies, quantifier and reference.
+It retains submitted run entries separately and includes matrix, sample-metadata
+and snapshot hashes. Declared snapshot output hashes must match before export;
+external matrices without declared hashes are marked explicitly. Source metadata
+and the snapshot's original normalization remain visible. The export adds no
+normalization or imputation and does not treat repeated runs as biological replicates.

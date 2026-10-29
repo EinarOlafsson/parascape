@@ -15,6 +15,22 @@ sample_design_validation.json and processing_audit/dataset_coverage.tsv. Raw sou
 declare4.605TB, exceeding current NAS free space; they remain an explicit capacity gap.
 All new workers retain CPU affinity0-7, low priority, and source/admission distinctions.
 
+The local Gene expression tab now also exports full-matrix technical QC across
+selected RNA studies/quantifier/reference, checking declared snapshot matrix and
+sample-metadata hashes. Native parascape-rna-technical-qc.timer refreshes immutable
+QC reports when verified snapshots advance; the305-entry snapshot has3296 field/run
+records across8 conventions, representing reused runs rather than3296 independent
+samples. Reports are in processing_audit/rna_technical_qc/current onNAS. Generic
+QC distinguishes nonnegative, signed and unspecified quantities so negative array
+log-ratios need not be classified as invalid RNA counts. User explicitly requested
+all microarrays and other expression assays:110 microarray catalogue studies exist,
+97 have supplementary acquisition receipts, and4 original registry entries are
+microarrays (3 Toxoplasma,1 Plasmodium). These original features are distinct from
+the unfinished new per-sample comparison runtime. New native GEO matrix discovery
+and download workers cover all371 GEO catalogue records, retaining source listings,
+versioned plans and original processed VALUE matrices; platform/quantity/sample
+review and comprehensive array runtime integration remain open.
+
 **Next release 0.0.3.0:** 0.0.2.0 has passed its complete workflow and is verified on
 PyPI (1,570,566-byte wheel). Its external data URL and full archive SHA were checked
 without authentication after correcting GitHub's placeholder draft tag. Preparing

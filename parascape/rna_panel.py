@@ -61,6 +61,10 @@ class RNAProfilesPanel(QtWidgets.QWidget):
         self.export_button.setToolTip('Save all displayed gene measurements with study, sample and run metadata to CSV.')
         self.export_button.clicked.connect(lambda: self.save())
         row.addWidget(self.export_button)
+        self.qc_button = QtWidgets.QPushButton('Export sample technical QC…')
+        self.qc_button.setToolTip('Export whole-matrix numerical validity, missingness and measured zeros for the selected studies, quantifier and reference, with source hashes. Runs remain separate.')
+        self.qc_button.clicked.connect(lambda: self.save_qc())
+        row.addWidget(self.qc_button)
         layout.addLayout(row)
         self.summary = QtWidgets.QLabel('Enter gene accessions to compare their measured expression across samples.')
         self.summary.setWordWrap(True)
@@ -108,6 +112,25 @@ class RNAProfilesPanel(QtWidgets.QWidget):
             return 0
         self.result.to_csv(path, index=False)
         return len(self.result)
+
+    def save_qc(self, path: str = '') -> int:
+        """Export QC for complete selected matrices independently of queried genes."""
+        try:
+            frame = R.technical_qc(self.quantifier.currentText(), self.reference.currentText(),
+                                   self.root, self.study.currentData())
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
+            return 0
+        if frame.empty:
+            self.summary.setText('No matrices available for technical QC in this selection.')
+            return 0
+        if not path:
+            path, _ = QtWidgets.QFileDialog.getSaveFileName(self, 'Export RNA sample technical QC',
+                                                         'rna_sample_technical_qc.csv', 'CSV (*.csv)')
+        if not path:
+            return 0
+        frame.to_csv(path, index=False)
+        return len(frame)
 
     def _gene(self, row, column):
         item = self.table.item(row, 0)

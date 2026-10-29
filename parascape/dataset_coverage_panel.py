@@ -132,6 +132,9 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
             total = row['supplementary_urls_in_plan']
             files = f"{row['source_files_with_acquisition_receipts']}/{total}" if int(total) else (
                 'no files declared' if row['primary_sample_metadata']=='validated_sample_metadata' else 'not catalogued')
+            if int(row.get('series_matrix_files_declared', 0)):
+                matrices = f"{row.get('series_matrix_files_acquired', 0)}/{row['series_matrix_files_declared']} Series Matrices"
+                files = (files + ' supplementary; ' + matrices) if int(total) else matrices
             measurement = 'Available locally' if row['measurement_status']=='local runtime measurements present' else 'Pending measurements'
             values = [row['accession'], row['source'], row['title'], row['readout'], files, measurement]
             for j, value in enumerate(values):
@@ -154,6 +157,13 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
                              f"Primary sample metadata: {metadata}. "
                              'Biological independence, technical replicate type and control pairing are not inferred. '
                              'Multiple channels and annotation variants are not extra replicates.')
+        if int(row.get('series_matrix_files_declared', 0)):
+            self.details.setText(self.details.text() +
+                f" Series Matrices: {row.get('series_matrix_files_acquired', 0)}/{row['series_matrix_files_declared']} acquired; "
+                f"{row.get('series_matrices_numeric_checked', 0)} with checked numeric structure; "
+                f"{row.get('series_matrices_without_embedded_values', 0)} without embedded measurements; "
+                f"{row.get('series_matrices_review_required', 0)} require review. "
+                'Original units, scale and platform/probe mappings still require review before comparison.')
         try:
             report = source_samples(self.root, row['accession'])
             if self.links is None:
