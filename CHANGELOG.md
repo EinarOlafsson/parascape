@@ -9,6 +9,7 @@
 - Add a searchable study/condition/sample/run browser for all 1,011 planned entries, source ENA sample attributes for completed and prioritized Trx1 runs, explicit control/replicate evidence, repeated-sample links and a guard against pseudoreplication.
 - Add a Gene expression browser to the Compare dock and `parascape-expression` CSV export command. Compare multiple exact Toxoplasma gene accessions across samples without requiring a NAS. Keep missing measurements distinct from zeros and describe cross-study TPM limitations.
 - Avoid deferred Qt deletion crashes in the comparison volcano by rendering the scientific scatter plot through Matplotlib Agg.
+- Preserve exact packaged matrix replay across pandas versions with a fixed float64 row-reduction buffer; retain the original matrix, input and coordinate hashes. Check replay early in CI.
 - Default the expression comparison engine to the downloaded snapshot; retain `PARASCAPE_OMICS` for external packs. Record input/output checksums, reference lineage, tool versions, transformations and storage precision; verify snapshot contents in release wheels.
 - Report signal-paused queue workers accurately rather than treating every active systemd unit as actively processing.
 
@@ -36,7 +37,7 @@
   (moderated variances), checked on simulations for uniform null p-values and controlled FDR, and
   against a paper: in the TgCRT knockout (GSE116539) it reproduces the published drop in
   endolysosomal proteases (SUB1, CPC2, ASP1).
-- A catalogue of 711 Toxoplasma omics studies from GEO, SRA, PRIDE and the Metabolomics Workbench,
+- A catalogue of 692 Toxoplasma-related omics study records from GEO, SRA, PRIDE and the Metabolomics Workbench,
   classified by what was perturbed and what was read out (`parascape/data/omics_catalogue.tsv`,
   `notebooks/omics_catalogue_2026_10_17.ipynb`). `scripts/omics_quant.py` streams the 1,011 runs of
   79 knockout, drug and strain RNA-seq studies from SRA, quantifies each every documented way and

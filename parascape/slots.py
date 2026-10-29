@@ -358,6 +358,24 @@ def _rank(frame: pd.DataFrame) -> pd.DataFrame:
     return frame.rank(method="average", pct=True, na_option="keep") - 0.5
 
 
+def _row_mean(frame: pd.DataFrame) -> pd.Series:
+    """Average numeric rows with a fixed float64 reduction order and missingness.
+
+    pandas versions can change the array layout used for row reductions. That
+    changes the last bits of a sum and breaks exact replay of saved matrix hashes.
+    A contiguous row buffer reproduces the shipped arithmetic independently of
+    the frame's backing layout. An entirely unmeasured row remains missing.
+    """
+    values = np.array(frame.to_numpy(dtype=np.float64, na_value=np.nan),
+                      dtype=np.float64, order="C", copy=True)
+    missing = np.isnan(values)
+    count = (~missing).sum(axis=1)
+    values[missing] = 0.0
+    means = np.full(len(frame), np.nan, dtype=np.float64)
+    np.divide(values.sum(axis=1), count, out=means, where=count > 0)
+    return pd.Series(means, index=frame.index)
+
+
 def resolve(nodes: pd.DataFrame, slot: Slot | str, chosen: str | None = None,
             unit: str = RESOLVABLE_UNIT) -> SlotResult:
     """Apply a slot's ``one``, ``average``, ``fill`` or ``separate`` policy.
@@ -404,12 +422,12 @@ def resolve(nodes: pd.DataFrame, slot: Slot | str, chosen: str | None = None,
         source = empty_source.mask(present, pattern)
         return SlotResult(values, source, tuple(columns))
 
-    collapsed = [(pattern, nodes[columns].mean(axis=1, skipna=True), columns)
+    collapsed = [(pattern, _row_mean(nodes[columns]), columns)
                  for pattern, columns in groups]
     if slot.policy == "average":
-        ranked = pd.concat([_rank(nodes[columns]).mean(axis=1, skipna=True)
+        ranked = pd.concat([_row_mean(_rank(nodes[columns]))
                             for _pattern, _series, columns in collapsed], axis=1)
-        values = ranked.mean(axis=1, skipna=True).to_frame(f"{slot.key}__average")
+        values = _row_mean(ranked).to_frame(f"{slot.key}__average")
         sources = pd.DataFrame({pattern: nodes[columns].notna().any(axis=1)
                                 for pattern, _series, columns in collapsed})
         source = sources.apply(lambda row: "+".join(row.index[row.to_numpy(bool)]), axis=1)
