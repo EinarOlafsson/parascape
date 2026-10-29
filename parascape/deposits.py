@@ -64,6 +64,8 @@ admitted them:
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import os
 import re
 from dataclasses import dataclass
@@ -557,7 +559,7 @@ TURBOID_BAITS = {"apicoplast": ("Apicoplast - and + biotin", "Apicoplast vs spat
 
 def _product_index() -> dict:
     """product text -> gene ids, from the shipped table, to repair a broken accession."""
-    path = os.path.join(os.path.dirname(__file__), "data", "nodes.parquet")
+    path = os.path.join(_data_paths.data_dir(), "nodes.parquet")
     try:
         n = pd.read_parquet(path, columns=["gene_id", "product"])
     except (OSError, ValueError, KeyError):

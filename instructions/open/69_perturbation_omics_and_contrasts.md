@@ -219,3 +219,32 @@ versions are in done.json; tool invocations/diagnostics in Salmon cmd_info/meta_
 kallisto run_info; source/reference checksums, commands and output hashes are retained in
 their respective records. Added a guide in docs/omics-queue.md. Quantification and integrity
 verification are automated; downstream differential-expression/comparison work is separate.
+
+
+## 2026-10-29 offline snapshot release
+
+User requested integration into the PyPI package and easy per-gene comparison.
+Prepared version 0.0.2.0 with a separate descriptive RNA expression browser and CLI.
+Snapshot scope: 296 verified entries / 23 studies from the 1,011-entry frozen queue;
+competitive ME49_host results from Salmon and kallisto. Other references remain external.
+No new prediction features, graph inputs or calibration claims are introduced.
+Full queue and independent published-contrast validation remain unfinished.
+Builder: `scripts/build_rna_snapshot.py`; guide: `docs/rna-expression.md`.
+Release publication and verification evidence will be recorded after the checks.
+
+
+### User scope update: GitHub data instead of bundled datasets
+
+User requested every completed run, source-evidenced replicate/control/repeat
+organization, Trx1 priority, then all application data hosted on GitHub with a
+startup download prompt. The prepared wheel is ~1.6 MB; the versioned data asset
+is ~221 MB / 394 checksum-pinned files. All available reference variants for
+the frozen 296 runs are included; existing scientific tables retain their original
+values and encodings. New data consumers use paths.data_dir rather than package
+relative dataset paths. Icons and the small descriptor remain in the package.
+
+655 release-gate checks and clean installed-wheel popup/cancel/install/offline
+checks passed. Main-startup tests were updated for the new consent dialog; full
+regressions and hosted publication verification are still in progress.
+The live queue reached297 completed, and priority Trx1 run SRR25737844 is active;
+the snapshot remains an explicit immutable296-entry cut.

@@ -357,33 +357,24 @@ def test_a_missing_cache_stops_with_the_command_that_builds_it(monkeypatch, tmp_
         A.load()
 
 
-def test_main_refuses_to_open_a_window_without_a_cache(monkeypatch, tmp_path, capsys):
-    """Checked before building a window, so the message is readable rather than buried under a
-    traceback from a constructor."""
+def test_main_refuses_to_open_a_window_when_data_download_is_cancelled(monkeypatch):
+    """Cancelling first-run setup returns cleanly before any data-dependent window."""
     import parascape.app as A
-    from parascape import paths
-    monkeypatch.setattr(paths, "check", lambda: (False, "cache incomplete at /nowhere"))
-    monkeypatch.setattr(paths, "describe", lambda: "cache /nowhere [INCOMPLETE]")
-    with pytest.raises(SystemExit):
-        A.main()
-    assert "cache incomplete" in capsys.readouterr().err
+    from parascape import data_download_dialog as G
+    monkeypatch.setattr(G, 'ensure_data', lambda: False)
+    monkeypatch.setattr(A, 'Window', lambda: pytest.fail('opened without data consent'))
+    assert A.main() is None
 
 
-def test_main_checks_the_cache_before_building_anything(monkeypatch):
-    """`parascape` is the entry point in pyproject. Its first act is the cache check, so a missing
-    cache is a sentence rather than a traceback out of a constructor.
-
-    Only the guard is exercised: main() constructs a QApplication, and a second one in a process that
-    already has it is undefined behaviour -- it segfaults the interpreter rather than failing."""
+def test_main_checks_data_before_building_the_main_window(monkeypatch):
+    """A QApplication may show setup, but the main window must wait for data."""
     import parascape.app as A
+    from parascape import data_download_dialog as G
     order = []
-    monkeypatch.setattr(A.paths, "check", lambda: (order.append("checked"), (False, "no cache"))[1])
-    monkeypatch.setattr(A.paths, "describe", lambda: "")
-    monkeypatch.setattr(A.pg, "setConfigOptions",
-                        lambda **k: order.append("built a window"))
-    with pytest.raises(SystemExit):
-        A.main()
-    assert order == ["checked"], "nothing may be constructed before the cache is known to be there"
+    monkeypatch.setattr(G, 'ensure_data', lambda: (order.append('checked'), False)[1])
+    monkeypatch.setattr(A, 'Window', lambda: order.append('built a window'))
+    A.main()
+    assert order == ['checked']
 
 
 # --------------------------------------------------------------------------- the camera
@@ -664,6 +655,8 @@ def test_main_builds_and_shows_the_window(monkeypatch, app):
         def instance():
             return app
 
+    from parascape import data_download_dialog as G
+    monkeypatch.setattr(G, "ensure_data", lambda: True)
     monkeypatch.setattr(A.QtWidgets, "QApplication", Shim)
     monkeypatch.setattr(A.sys, "exit", lambda code=0: seen.setdefault("exit", code))
     monkeypatch.setattr(type(app), "exec", lambda self: seen.setdefault("exec", 0) or 0)

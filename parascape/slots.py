@@ -7,6 +7,8 @@ it is a question plus a condition, its candidate measurements, and an explicit c
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import json
 import os
 import re
@@ -91,7 +93,7 @@ def table_organism(nodes: pd.DataFrame) -> str | None:
 def bridge_names(slot: Slot) -> tuple:
     """The bridges a slot declares, if any."""
     return tuple(p.split(":", 1)[1] for p in slot.patterns if str(p).startswith("bridge:"))
-CATALOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "slots.json")
+CATALOG = os.path.join(_data_paths.data_dir(), "slots.json")
 
 
 def _key(text: str) -> str:

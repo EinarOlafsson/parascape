@@ -18,6 +18,8 @@ with `scripts/generate_question_table.py`, so the document and the program canno
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import json
 import os
 
@@ -26,7 +28,7 @@ import pandas as pd
 from .recipes import Recipe, close
 
 #: Where the shipped catalogue lives.
-CATALOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "questions.json")
+CATALOG = os.path.join(_data_paths.data_dir(), "questions.json")
 
 #: The axes instruction 45 asked the twenty to spread across. Named here so "the spread is visible
 #: rather than assumed" is checkable by a test rather than by reading the list.

@@ -549,3 +549,12 @@ python scripts/tutorial_video.py --notebook                           # record w
 `scripts/build_tutorials.py` relinks them at the end of its own run, so rebuilding
 the written tutorials does not drop them. The clips are part of the documentation
 site, never of the Python package.
+
+
+## RNA expression and study design
+
+Open **compare → Gene expression** to compare exact gene accessions across the bundled
+RNA-seq samples. **Studies & samples** groups runs by study, condition and submitted
+sample, with source control/replicate labels, repeated-run links and pending coverage.
+**Condition comparison** lets you review and assign within-study groups. See the
+[RNA expression guide](rna-expression.md) for coverage, units and limitations.

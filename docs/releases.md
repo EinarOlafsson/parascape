@@ -47,7 +47,7 @@ and verify a wheel installation outside the source checkout.
 ## Package layout
 
 There is one PyPI distribution: **`parascape`**. It contains the Python modules,
-console commands, built gene data, and icons. `parascape[gpu]` enables optional
+console commands, a small data release descriptor, and icons. `parascape[gpu]` enables optional
 CUDA dependencies and `parascape[ingest]` enables coverage-file imports; both are
 extras of the same project.
 
@@ -55,8 +55,11 @@ extras of the same project.
 `parascape[structures]` adds local structure parsing. Reading the bundled feature
 tables requires neither extra.
 
-The wheel includes cached data for offline browsing and excludes local saved
-embeddings. Original source datasets are not packaged; see the [dataset catalogue](datasets.md).
+Scientific data is hosted as a versioned GitHub release asset. First launch offers
+a download when files are missing; installation verifies archive and per-file SHA-256
+checksums, stages extraction, and preserves existing data on failure. Once installed,
+browsing is offline. `parascape-data --download` supports headless installations.
+Original raw source datasets are not mirrored; see the [dataset catalogue](datasets.md).
 
 ## One-time PyPI setup
 
@@ -153,3 +156,15 @@ CUDA dependencies, and files above PyPI's default upload limit.
 
 The desktop installers in `packaging/` are separate from PyPI. Their existing
 workflow runs manually or on a `v*` tag.
+
+
+## Versioned GitHub data assets
+
+After the version bump, build the data asset with `python scripts/build_data_release.py`.
+Commit the generated `parascape/data_manifest.json` with the source changes on nightly.
+After checks pass, publish `data-dist/parascape-data-VERSION.tar.gz` on the GitHub
+release `vVERSION` at that exact commit **before** promoting to main. The release
+workflow downloads this existing asset and verifies it against the descriptor while
+smoke-testing the installed wheel. It does not rebuild an archive whose compression
+bytes could vary across platforms. PyPI publication happens only after this check;
+the final job attaches wheels and source distributions to the existing release.

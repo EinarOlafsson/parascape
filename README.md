@@ -37,6 +37,9 @@ and choose candidates for follow-up experiments. The bundled maps contain 8,140
 
 ## Install
 
+**compare → Gene expression** covers all 296 verified RNA-seq runs from 23 studies.
+Compare gene accessions, browse samples and export values. Coverage is partial; [RNA expression guide](https://github.com/EinarOlafsson/parascape/blob/main/docs/rna-expression.md).
+
 Python 3.10 or newer is required. The desktop app needs a display and OpenGL.
 
 ```bash
@@ -64,7 +67,8 @@ GPU dependencies are large and optional. `parascape-install-gpu` can also inspec
 your driver and offer an installation command. macOS and Windows use CPU analysis;
 the 3D display still uses OpenGL.
 
-The built gene tables and graphs ship with the package. Browsing them works offline.
+On first launch, a popup offers the versioned data download from GitHub.
+After download and verification, browsing works offline; datasets stay outside the package.
 Protein structures are downloaded when requested and cached locally. Rebuilding
 the bundled data requires the original source datasets.
 

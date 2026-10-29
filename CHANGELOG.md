@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 0.0.2.0 — 2026-10-29
+
+- Host all processed application data in a checksum-pinned GitHub release asset, outside the PyPI wheel and source distribution. Offer a first-launch download popup with progress, cancellation, retry, safe extraction and offline reuse. Add `parascape-data --download` for headless setup.
+- Include a provenance-preserving offline RNA-seq snapshot of 296 verified study/run entries from 23 studies, with Salmon and kallisto host-competitive ME49 gene counts, TPM and sample metadata and effective lengths. Coverage remains partial; all already-verified ME49, ME49_host, GT1 and VEG variants for these runs are included in the GitHub data download.
+- Add a searchable study/condition/sample/run browser for all 1,011 planned entries, source ENA sample attributes for completed and prioritized Trx1 runs, explicit control/replicate evidence, repeated-sample links and a guard against pseudoreplication.
+- Add a Gene expression browser to the Compare dock and `parascape-expression` CSV export command. Compare multiple exact Toxoplasma gene accessions across samples without requiring a NAS. Keep missing measurements distinct from zeros and describe cross-study TPM limitations.
+- Avoid deferred Qt deletion crashes in the comparison volcano by rendering the scientific scatter plot through Matplotlib Agg.
+- Default the expression comparison engine to the downloaded snapshot; retain `PARASCAPE_OMICS` for external packs. Record input/output checksums, reference lineage, tool versions, transformations and storage precision; verify snapshot contents in release wheels.
+- Report signal-paused queue workers accurately rather than treating every active systemd unit as actively processing.
+
 - Avoid a CPU-guard feedback loop where ten background threads restricted to five CPUs report
   high PSI despite idle host capacity. Measure host CPU headroom before restoring the existing
   ten-CPU allowance; tutorial detection and IO/memory protections continue to yield independently.

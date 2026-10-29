@@ -7,6 +7,8 @@ the adapter neither registers a host space nor admits data for redistribution.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 from collections.abc import Mapping
 from copy import deepcopy
 import hashlib
@@ -112,7 +114,7 @@ def load(path, *, expected_sha256=None):
 def shipped():
     """Return the pinned summary-only host card or an explicit unavailable reason."""
     try:
-        return load(Path(__file__).with_name('data')/'host_foundation_summary.json',
+        return load(Path(_data_paths.data_dir())/'host_foundation_summary.json',
             expected_sha256=SUMMARY_SHA256),''
     except (OSError,ValueError,TypeError,KeyError) as exc:
         return None,'Host source summary unavailable: '+str(exc)

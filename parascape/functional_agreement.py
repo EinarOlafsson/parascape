@@ -5,6 +5,8 @@ confidence for an unknown gene. No model is fitted or selected here.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 from . import organisms as _ORGANISMS
 
 from collections import Counter
@@ -49,7 +51,7 @@ def find_pair(selected, benchmarks):
 
 def load_report(left, right, context, *, path=None, expected_sha256=REPORT_SHA256):
     """Load the externally pinned report and refuse stale artifacts or source tables."""
-    path = Path(path) if path is not None else Path(__file__).with_name('data') / 'functional_agreement.json'
+    path = Path(path) if path is not None else Path(_data_paths.data_dir()) / 'functional_agreement.json'
     encoded = path.read_bytes()
     if not expected_sha256 or hashlib.sha256(encoded).hexdigest() != expected_sha256:
         raise ValueError('Paired report checksum changed')

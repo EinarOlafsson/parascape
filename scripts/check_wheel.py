@@ -17,26 +17,22 @@ def check_wheel(path: Path) -> None:
         info = BytesParser().parsebytes(archive.read(metadata))
         if info["Name"] != "parascape":
             raise ValueError(f"Unexpected distribution: {info['Name']}")
-        required = {"parascape/app.py", "parascape/data/nodes.parquet", "parascape/data/graph.npz",
-                    "parascape/data/toxodb_identity.tsv", "parascape/data/pf_nodes.parquet",
-                    "parascape/data/pf_graph.npz", "parascape/data/icons/parascape.svg",
-                    "parascape/data/icons/Apicomplexa_cells.svg", "parascape/data/icons/Animal_cells.svg",
-                    "parascape/data/toxodb_cds.tsv.gz", "parascape/data/plasmodb_cds.tsv.gz",
-                    "parascape/workflows.py", "parascape/prediction.py", "parascape/evidence.py",
-                    "parascape/data/af3_features.parquet", "parascape/data/af3_manifest.parquet",
-                    "parascape/data/af3_features.json", "parascape/data/esm_features.parquet",
-                    "parascape/data/esm_manifest.parquet", "parascape/data/pf_mentions.parquet",
-                    "parascape/data/hs_host_proteins.parquet",
-                    "parascape/data/mm_host_proteins.parquet",
-                    "parascape/data/host_species_migration.json", "parascape/packs.py",
-                    "parascape/spaces/__init__.py"}
+        required = {'parascape/app.py', 'parascape/paths.py', 'parascape/data_manager.py',
+                    'parascape/data_download_dialog.py', 'parascape/data_manifest.json',
+                    'parascape/rna_profiles.py', 'parascape/rna_panel.py',
+                    'parascape/rna_design.py', 'parascape/rna_design_panel.py',
+                    'parascape/data/icons/parascape.svg', 'parascape/spaces/__init__.py'}
         missing = required - names
         if missing:
             raise ValueError(f"Incomplete wheel: {sorted(missing)}")
-        if "parascape/data/host_proteins.parquet" in names:
-            raise ValueError("The wheel contains the legacy mixed-species host table; clean the build")
-        if any(n.startswith("parascape/data/embeddings/") for n in names):
-            raise ValueError("The wheel contains local saved embeddings")
+        import json
+        descriptor = json.loads(archive.read('parascape/data_manifest.json'))
+        if not descriptor.get('sha256') or not descriptor.get('files') or descriptor.get('version') != info['Version']:
+            raise ValueError('Missing or mismatched GitHub data release descriptor')
+        if not descriptor['url'].startswith('https://github.com/EinarOlafsson/parascape/releases/download/'):
+            raise ValueError('Data must be hosted on the official GitHub release')
+        if any(n.startswith('parascape/data/') and not n.startswith('parascape/data/icons/') for n in names):
+            raise ValueError('Scientific data must be downloaded, not bundled in the wheel')
         for requirement in info.get_all("Requires-Dist", []):
             if requirement.lower().startswith("parascape"):
                 raise ValueError(f"Unexpected ParaScape dependency: {requirement}")

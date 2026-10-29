@@ -59,7 +59,7 @@ completed-run restart uses 32 threads, normal CPU/IO priority and scratch on
 `/media/carruthers/mnt1/parascape_omics_scratch`. The deterministic boundary service
 `parascape-full-capacity` preserves the current run; its state is in
 `~/.cache/parascape-downloads/full-capacity.json`. Full-resource guard mode keeps
-all CPUs available. Downloads have no application bandwidth limit, an 80 GiB cache
+all CPUs available. Downloads have no application bandwidth limit, a 200 GiB cache
 and a 25 GiB disk reserve, yielding only below 4 GiB available RAM. These settings
 supersede the earlier conservative limits below. Installed processing tools expose
 CPU threading and no GPU execution option. No model or agent is started by this mode.
@@ -174,3 +174,18 @@ The synthetic checks cover range resume, capacity and corruption, conservative
 CPU restoration, retries after successful incomplete exits, bounded backoff with
 unlimited attempts, active-run protection, study aliases, verified completion and
 shutdown, post-completion reboot behavior, and explicit operator pauses.
+
+
+As of 2026-10-29, the resnet_1 relocation is checksum-verified and complete;
+the download cap is 200 GiB, with the 25 GiB free-space reserve and eight-core
+policy retained. OS signal-paused workers are now reported as `signal_paused`;
+the supervisor does not override external operator pauses.
+
+The PyPI expression snapshot is separate from the live archive. Its build and
+coverage are documented in [RNA expression](rna-expression.md).
+
+
+The 2026-10-29 priority override uses `automation/priority-plan.jsonl` for execution
+only, with the same 1,011 entries reordered to put PRJNA1008424 first. The signed
+audit plan stays unchanged. `parascape-priority-handover.service` switches the
+worker after its current completed run; downloader priority is already updated.

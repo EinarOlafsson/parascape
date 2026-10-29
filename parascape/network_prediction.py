@@ -6,6 +6,8 @@ different inner validation sets. Unsupported nodes explicitly abstain.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 from dataclasses import replace
 import hashlib
 
@@ -32,7 +34,7 @@ def bundled_network(nodes):
     if organism not in {'Tg','Pf'}:
         raise ValueError('bundled networks require a recognized organism; supply a custom sourced graph through the API')
     prefix='pf_' if organism=='Pf' else ''
-    root=Path(__file__).resolve().parent/'data'
+    root=Path(_data_paths.data_dir())
     original=pd.read_parquet(root/f'{prefix}nodes.parquet')
     with np.load(root/f'{prefix}graph.npz',allow_pickle=False) as archive:
         graph={key:archive[key] for key in archive.files}

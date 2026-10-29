@@ -66,6 +66,8 @@ The same scoring runs live for a map built in the application (`score_map`).
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import hashlib
 import json
 import os
@@ -791,7 +793,7 @@ def score_gallery(ctx, maps: dict, labels=None, log=print) -> pd.DataFrame:
 
 # --------------------------------------------------------------------------- files
 def _data_dir() -> str:
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+    return _data_paths.data_dir()
 
 
 def write(built: dict, scores: pd.DataFrame, gene_ids: dict, directory: str | None = None,

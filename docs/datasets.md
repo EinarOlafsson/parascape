@@ -196,3 +196,14 @@ marked explicitly. Raw source files are not all bundled with the Python package.
 | <a id="dataset-toxodb_strain_snps"></a>Strain variation (ToxoDB HTS SNPs) | SNPs per gene across every sequenced strain, split by effect | 8,140 genes (100%) | ToxoDB ME49 | [Source data](https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular) |
 | <a id="dataset-toxodb_identity"></a>ToxoDB gene identity | Symbols, previous IDs, product descriptions | 8,843 ME49 genes | ToxoDB ME49 | [Source data](https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular) |
 | <a id="dataset-curated_resistance_alleles"></a>Validated resistance-conferring mutations (CURATED) | Mutations shown to CAUSE drug resistance by putting them back into a clean background | 1 gene, 3 substitutions, 3 compounds | PMID [24533298](https://pubmed.ncbi.nlm.nih.gov/24533298/); Int J Parasitol Drugs Drug Resist, PMIDs 24533298 and 25941623 | [Source data](https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3862444/fullTextXML) |
+
+
+## Downloaded RNA-seq snapshot
+
+The versioned GitHub data release also includes a separate descriptive RNA-seq
+snapshot: 296 completed study/run entries across 23 studies, with counts, TPM,
+effective lengths, source annotations and already-verified reference conventions.
+These are runs within studies, not 296 independent datasets. The study browser
+shows all 1,011 planned entries and explicitly marks pending measurements. See
+[RNA expression and study design](rna-expression.md) and the bundled omics
+catalogue for the source accessions and titles.

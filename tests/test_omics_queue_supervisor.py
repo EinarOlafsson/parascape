@@ -26,6 +26,13 @@ class FakeServices:
 
 
 class Supervisor(unittest.TestCase):
+    def test_active_unit_with_stopped_process_is_reported_paused(self):
+        services = FakeServices()
+        services.worker_status = lambda: 'signal_paused'
+        status = Q.recover(services, {}, 0, 100)
+        self.assertEqual(status['worker'], 'signal_paused')
+        self.assertEqual(services.calls, [])
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

@@ -5035,14 +5035,12 @@ def main():
     """Entry point for the `parascape` command: build the window and run the event loop."""
     # Check before building a window. A missing cache otherwise surfaces as a pandas error from inside
     # a constructor, which tells the user nothing about what to do next.
-    ok, msg = paths.check()
-    if not ok:
-        print(f"parascape: {msg}", file=sys.stderr)
-        print(paths.describe(), file=sys.stderr)
-        sys.exit(1)
     pg.setConfigOptions(antialias=True)
-    app = QtWidgets.QApplication(sys.argv)
+    app = QtWidgets.QApplication.instance() or QtWidgets.QApplication(sys.argv)
     app.setApplicationName("parascape")
+    from .data_download_dialog import ensure_data
+    if not ensure_data():
+        return
     w = Window()
     w.show()
     sys.exit(app.exec())

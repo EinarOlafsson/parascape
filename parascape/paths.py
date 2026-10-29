@@ -9,9 +9,9 @@ whose whole claim is reproducibility is the wrong first impression.
 
 There are two separate roots and confusing them is the mistake this module exists to prevent:
 
-    the CACHE     `parascape/data/` — built artefacts, committed, 17 MB, ships inside the package.
-                  The application needs this and nothing else. It must resolve offline, from an
-                  installed wheel, with no configuration, forever.
+    the CACHE     built artefacts in the source checkout, or a versioned user data folder.
+                  Installed applications offer a verified GitHub data download on first launch.
+                  Browsing works offline after installation; dataset files stay out of the wheel.
 
     the DATASETS  `datasets/` — raw published inputs, tens of gigabytes, NOT committed. Only
                   `build_graph.py` needs it. It is allowed to be missing, and when it is missing the
@@ -67,7 +67,14 @@ def _cache_candidates():
     yield os.environ.get(ENV_CACHE)
     yield os.path.join(_PKG, "data")            # inside the package: the installed layout
     yield os.path.join(_REPO, "data")           # beside the package: the pre-0.3 repository layout
+    yield download_dir()
     yield os.path.join(user_cache_dir(), "data")
+
+
+def download_dir() -> str:
+    """Writable data directory pinned to this application release."""
+    from . import __version__
+    return os.environ.get(ENV_CACHE) or os.path.join(user_cache_dir(), 'data-' + __version__)
 
 
 def data_dir() -> str:
@@ -86,10 +93,7 @@ def data_dir() -> str:
     for c in _cache_candidates():
         if c and os.path.exists(os.path.join(c, "nodes.parquet")):
             return c
-    for c in _cache_candidates():               # nothing built yet: name where it should go
-        if c:
-            return c
-    return os.path.join(user_cache_dir(), "data")
+    return download_dir()
 
 
 def cache_file(name: str) -> str:
@@ -124,7 +128,8 @@ def check() -> tuple:
     if not missing:
         return True, f"cache complete at {d}"
     return False, (f"cache incomplete at {d}: missing {', '.join(missing)}. "
-                   f"Run `python -m parascape.build_graph` to build it, or set ${ENV_CACHE} to an "
+                   f"Open ParaScape to download its data, run `parascape-data --download`, "
+                   f"run `python -m parascape.build_graph` to rebuild it, or set ${ENV_CACHE} to an "
                    f"existing cache.")
 
 

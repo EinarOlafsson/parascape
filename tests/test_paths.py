@@ -216,7 +216,7 @@ def test_with_nothing_built_it_names_where_the_cache_should_go(monkeypatch, tmp_
     monkeypatch.setattr(paths, "_REPO", str(tmp_path / "nowhere"))
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmp_path))
     d = paths.data_dir()
-    assert d == os.path.join(str(tmp_path / "nowhere" / "parascape"), "data")
+    assert d == paths.download_dir()
     assert not paths.check()[0]
 
 
@@ -227,7 +227,7 @@ def test_data_dir_last_resort_is_the_user_cache(monkeypatch, tmp_path):
     monkeypatch.delenv(paths.ENV_STATE, raising=False)
     monkeypatch.setattr(paths, "_cache_candidates", lambda: iter([None, None]))
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmp_path))
-    assert paths.data_dir() == os.path.join(str(tmp_path), "parascape", "data")
+    assert paths.data_dir() == paths.download_dir()
 
 
 def test_a_dataset_override_pointing_at_nothing_is_reported_loudly(monkeypatch, tmp_path):

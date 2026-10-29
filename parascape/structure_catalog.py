@@ -6,6 +6,8 @@ single-protein feature table. Confidence describes a prediction, not an assay.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 from collections import defaultdict
 import hashlib
 import json
@@ -16,7 +18,7 @@ import re
 import numpy as np
 import pandas as pd
 
-DATA = Path(__file__).parent / "data"
+DATA = Path(_data_paths.data_dir())
 
 
 def catalog_path() -> Path:

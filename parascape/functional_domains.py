@@ -7,6 +7,8 @@ acquiring a replacement. Pfam accession versions are preserved in lookup results
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 from dataclasses import dataclass
 from functools import lru_cache
 import hashlib
@@ -257,7 +259,7 @@ def shipped() -> DomainLookup:
     ValueError. Callers may report unavailable nomenclature while retaining
     original annotations. Integrity failure never permits guessed names.
     """
-    payload = (Path(__file__).parent / 'data' / 'functional_domain_names.json').read_bytes()
+    payload = (Path(_data_paths.data_dir()) / 'functional_domain_names.json').read_bytes()
     if hashlib.sha256(payload).hexdigest() != SNAPSHOT_SHA256:
         raise ValueError('Packaged domain metadata SHA256 mismatch')
     return DomainLookup(json.loads(payload))

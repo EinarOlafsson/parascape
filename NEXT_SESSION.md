@@ -1,5 +1,15 @@
 # Next session: start here
 
+**2026-10-29 release work:** user requested the completed RNA-seq results, an intuitive
+study/sample/replicate/control browser, Trx1 prioritization, and then moving all built
+application data out of the PyPI package to GitHub release assets with a first-run
+download popup. Preparing 0.0.2.0 (following published 0.0.1.0). All 296 completed
+entries / 23 studies / 8,164 ME49_host genes are frozen, with all already-verified
+reference variants. Sample design covers all 1,011 planned entries; Trx1
+PRJNA1008424 has 8 pending runs and is queued at the current completed-run boundary.
+This does not resume the broader paused inference goal. Publication must still be
+verified; see docs/rna-expression.md and docs/releases.md for the new asset flow.
+
 Updated **2026-10-08** for the **0.55.0** release. Read this page first: where things stand, the rules,
 the code map, and **what is left to do, in priority order (section 4)**. `HANDOFF.md` holds the
 long-standing design decisions, `instructions/` is the task ledger (`instructions/INDEX.md`), and

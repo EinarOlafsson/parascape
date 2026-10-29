@@ -21,6 +21,8 @@ and averaging the two together would hide exactly the difference the scorecard e
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import os
 import time
 from urllib.parse import quote
@@ -435,7 +437,7 @@ _SHIPPED: dict = {}
 def shipped_path() -> str:
     """Where the built record lives in the package."""
     import os
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "data",
+    return os.path.join(_data_paths.data_dir(),
                         "track_record.parquet")
 
 

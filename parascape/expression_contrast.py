@@ -22,6 +22,8 @@ any result is shipped.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import gzip
 import json
 import os
@@ -31,7 +33,7 @@ import numpy as np
 import pandas as pd
 from scipy import special, stats
 
-NAS = os.environ.get("PARASCAPE_OMICS", "/nas_mnt/carruthers/Einar/parascape_omics")
+NAS = os.environ.get("PARASCAPE_OMICS", os.path.join(_data_paths.data_dir(), "rnaseq"))
 QUANTIFIERS = ("salmon", "kallisto")
 #: References a study may be quantified against; strain references only for strain studies.
 REFERENCES = ("ME49", "ME49_host", "GT1", "VEG")
@@ -168,13 +170,14 @@ def available(root: str = NAS) -> pd.DataFrame:
 
 def load(study: str, quantifier: str = "salmon", reference: str = "ME49_host",
          root: str = NAS) -> tuple:
-    """(counts, tpm, lengths, samples) from a study's built matrices."""
+    """Read counts, TPM, lengths and samples; absent compact-pack lengths remain NaN."""
     base = os.path.join(matrix_dir(root), study, f"{quantifier}_{reference}")
     if not os.path.exists(base + ".parquet"):
         raise FileNotFoundError(f"{study} has no {quantifier}/{reference} matrix in {matrix_dir(root)}")
     m = pd.read_parquet(base + ".parquet")
     samples = pd.read_csv(base + "_samples.tsv", sep="\t")
-    return m["count"], m["tpm"], m["length"], samples
+    length = m["length"] if "length" in m.columns.get_level_values(0) else m["tpm"] * np.nan
+    return m["count"], m["tpm"], length, samples
 
 # --------------------------------------------------------------------------- normalisation
 def norm_factors(counts: pd.DataFrame, method: str = "tmm") -> pd.Series:

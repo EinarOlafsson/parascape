@@ -39,7 +39,8 @@ def test_the_spec_bundles_the_cache_from_where_it_actually_lives(spec):
 def test_the_bundled_cache_lands_where_the_resolver_looks(spec):
     """Bundled to a different relative path, the frozen application would need a special case in
     paths.py -- and a special case for frozen builds is a second resolver to keep in step."""
-    assert '"parascape/data"' in spec
+    assert '"parascape/data/icons"' in spec
+    assert 'data_manifest.json' in spec
 
 
 def test_the_cache_the_spec_names_is_present():
@@ -53,7 +54,7 @@ def test_packaging_stops_rather_than_shipping_an_empty_application(spec):
     """A missing cache at build time must fail the build. Silently producing an installer that opens
     to an error is the worst of the options."""
     assert "raise SystemExit" in spec
-    assert "build_graph" in spec, "the message has to say how to produce the cache"
+    assert "restore the source assets" in spec
 
 
 def test_the_gui_toolkit_that_is_not_used_is_excluded(spec):
@@ -89,12 +90,12 @@ def test_the_wheel_carries_the_files_the_application_needs():
     line = next(l for l in text.splitlines() if l.strip().startswith("parascape = ["))
     globs = re.findall(r'"([^"]+)"', line)
     joined = " ".join(globs)
-    for ext in (".npz", ".parquet", ".tsv"):
-        assert ext in joined, f"package-data does not ship {ext}"
+    for ext in ('.npz', '.parquet', '.tsv.gz'):
+        assert ext not in joined, f"scientific {ext} data must be in the GitHub asset"
     assert "data/icons/*.svg" in globs
-    assert "data/hf_release/*.parquet" in globs
-    assert "data/*.tsv.gz" in globs
-    assert not any("**" in g for g in globs), "recursive globs can ship local saved embeddings"
+    assert "data_manifest.json" in globs
+    assert not any("**" in g for g in globs)
+
 
 
 def test_results_are_kept_out_of_the_package():

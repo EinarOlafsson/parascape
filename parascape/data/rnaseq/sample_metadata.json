@@ -1,0 +1,4602 @@
+{
+  "SAMN07559612": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN07559612",
+    "sha256": "fb9324ee7984cb9342197890eeeaf6008db2ec99ab568a5ffaae5a32b8a66724",
+    "retrieved_utc": "2026-10-29T15:36:58.369325+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS2466160",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "Macrophages",
+      "mice strain": "BALB/c",
+      "parasite genotype": "gra18 mutant",
+      "source_name": "BMDMs and parasites",
+      "parasite strain": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2018-06-01",
+      "ENA-LAST-UPDATE": "2018-06-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN07559613": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN07559613",
+    "sha256": "9c2d1c789471492ac89e5eb7bc0873f2593797464bec3cad239ef9373dcae45e",
+    "retrieved_utc": "2026-10-29T15:36:58.369593+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS2466158",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "Macrophages",
+      "mice strain": "BALB/c",
+      "parasite genotype": "wt",
+      "source_name": "BMDMs and parasites",
+      "parasite strain": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2018-06-01",
+      "ENA-LAST-UPDATE": "2018-06-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN07559614": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN07559614",
+    "sha256": "57ca90e8236330d5cce1ae803aa9100488e7cd4952539fb2e74b4f09c5a0457b",
+    "retrieved_utc": "2026-10-29T15:36:58.369676+00:00",
+    "attributes": {
+      "treatment": "LPS",
+      "INSDC secondary accession": "SRS2466161",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "Macrophages",
+      "mice strain": "BALB/c",
+      "parasite genotype": "wt",
+      "source_name": "BMDMs and parasites",
+      "parasite strain": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2018-06-01",
+      "ENA-LAST-UPDATE": "2018-06-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN07559616": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN07559616",
+    "sha256": "c4ef6fda58dad4e33090be4b68ed500bde4a3d6faef90caa0d4f5c77cf261fab",
+    "retrieved_utc": "2026-10-29T15:36:58.369743+00:00",
+    "attributes": {
+      "treatment": "LPS",
+      "INSDC secondary accession": "SRS2466165",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "Macrophages",
+      "mice strain": "BALB/c",
+      "parasite genotype": "GRA18 complemented",
+      "source_name": "BMDMs and parasites",
+      "parasite strain": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2018-06-01",
+      "ENA-LAST-UPDATE": "2018-06-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN07559617": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN07559617",
+    "sha256": "50e11a97559e6478b7773b61757b6376b179b527f52489b0284ce3aa5d86f0ab",
+    "retrieved_utc": "2026-10-29T15:36:58.369943+00:00",
+    "attributes": {
+      "treatment": "LPS",
+      "INSDC secondary accession": "SRS2466164",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "Macrophages",
+      "mice strain": "BALB/c",
+      "parasite genotype": "gra18 mutant",
+      "source_name": "BMDMs and parasites",
+      "parasite strain": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2018-06-01",
+      "ENA-LAST-UPDATE": "2018-06-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN07559618": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN07559618",
+    "sha256": "01e32ad28889b2c25e6faa3ef3bc645d3f12f8667ded8f7ba91fa51e54c1139d",
+    "retrieved_utc": "2026-10-29T15:36:58.370017+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS2466163",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "Macrophages",
+      "mice strain": "BALB/c",
+      "parasite genotype": "GRA18 complemented",
+      "source_name": "BMDMs and parasites",
+      "parasite strain": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2018-06-01",
+      "ENA-LAST-UPDATE": "2018-06-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN09534529": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN09534529",
+    "sha256": "197c1cea8450a3a1073b83132fbd2dd74674349c43972df238204fc7433c22d9",
+    "retrieved_utc": "2026-10-29T15:36:58.370075+00:00",
+    "attributes": {
+      "strain": "Type I RH{delta}ku80{delta}hxg clone",
+      "INSDC secondary accession": "SRS3496385",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "wildtype",
+      "developmental stage": "tachyzoite",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-04-30",
+      "ENA-LAST-UPDATE": "2019-04-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN09534530": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN09534530",
+    "sha256": "17091a4d4dd967f2ef9dd7140132d277f2b2bb0ca8277c9d73911366bc23c251",
+    "retrieved_utc": "2026-10-29T15:36:58.371137+00:00",
+    "attributes": {
+      "strain": "Type I RH{delta}ku80{delta}hxg clone",
+      "INSDC secondary accession": "SRS3496386",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "wildtype",
+      "developmental stage": "tachyzoite",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-04-30",
+      "ENA-LAST-UPDATE": "2019-04-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN09534531": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN09534531",
+    "sha256": "c4f09dd7e90a165b17d16578dc6b3bc7bdbc116676a3768b874908e1ee68c6ff",
+    "retrieved_utc": "2026-10-29T15:36:58.371204+00:00",
+    "attributes": {
+      "strain": "TgCRT KO derived from RH{delta}ku80{delta}hxg clone",
+      "INSDC secondary accession": "SRS3496384",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "crt-ko",
+      "developmental stage": "tachyzoite",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-04-30",
+      "ENA-LAST-UPDATE": "2019-04-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN09534532": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN09534532",
+    "sha256": "8bf365becf1644d5540ed6b9498cfc420e5680cdf458be4ff06ace51508f70e4",
+    "retrieved_utc": "2026-10-29T15:36:58.371259+00:00",
+    "attributes": {
+      "strain": "TgCRT KO derived from RH{delta}ku80{delta}hxg clone",
+      "INSDC secondary accession": "SRS3496383",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "crt-ko",
+      "developmental stage": "tachyzoite",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-04-30",
+      "ENA-LAST-UPDATE": "2019-04-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751863": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751863",
+    "sha256": "996eb6d38a681687a9e07c5c45068a0115736331b3b0b62056fc7bfd7fa6fb25",
+    "retrieved_utc": "2026-10-29T15:36:58.371313+00:00",
+    "attributes": {
+      "infection": "Infected",
+      "INSDC secondary accession": "SRS4253184",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Myc regulation 1 (Myr1) knock-out",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751864": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751864",
+    "sha256": "dd2139af6bd480897897d1f626a452fd1aaba853afa35f513b2e8154ec783e76",
+    "retrieved_utc": "2026-10-29T15:36:58.371366+00:00",
+    "attributes": {
+      "infection": "Infected",
+      "INSDC secondary accession": "SRS4253183",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Myc regulation 1 (Myr1) knock-out",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751865": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751865",
+    "sha256": "43f2c349ea98552d03521203453bb52dabd240b507f1ad0612989f7de7c5ab51",
+    "retrieved_utc": "2026-10-29T15:36:58.371419+00:00",
+    "attributes": {
+      "infection": "Infected",
+      "INSDC secondary accession": "SRS4253182",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Myc regulation 1 (Myr1) knock-out",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751866": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751866",
+    "sha256": "30da49c65e02f8608e9f66b0e5c2261f1c09eb581133ec08c432189a9b370ad0",
+    "retrieved_utc": "2026-10-29T15:36:58.371469+00:00",
+    "attributes": {
+      "infection": "Infected",
+      "INSDC secondary accession": "SRS4253181",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Wild-type",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751867": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751867",
+    "sha256": "a373814cb609798b8d178960caf72b9c5af4676dd99317c922b5f52b4801c459",
+    "retrieved_utc": "2026-10-29T15:36:58.371519+00:00",
+    "attributes": {
+      "infection": "Infected",
+      "INSDC secondary accession": "SRS4253180",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Wild-type",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751868": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751868",
+    "sha256": "95ea918eb6f847f58361c31b249450b5aba3353bbe93f76571c606f7cbd5a2d5",
+    "retrieved_utc": "2026-10-29T15:36:58.371567+00:00",
+    "attributes": {
+      "infection": "Infected",
+      "INSDC secondary accession": "SRS4253179",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Wild-type",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751869": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751869",
+    "sha256": "59f530b93437d6fbe0985f70f32f5364fb2c09db9710c6f60915f6731f8f4060",
+    "retrieved_utc": "2026-10-29T15:36:58.371617+00:00",
+    "attributes": {
+      "infection": "Bystander",
+      "INSDC secondary accession": "SRS4253178",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Myc regulation 1 (Myr1) knock-out",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751870": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751870",
+    "sha256": "0a9143bfe484af2c6295264365d167c185fa4b5b9823ad038ebe97b360b6d38c",
+    "retrieved_utc": "2026-10-29T15:36:58.371666+00:00",
+    "attributes": {
+      "infection": "Bystander",
+      "INSDC secondary accession": "SRS4253177",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Myc regulation 1 (Myr1) knock-out",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751871": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751871",
+    "sha256": "15c266e624039922af01995b0a362cec9dbefd57ae13c070bcb1f82fcb34cd6b",
+    "retrieved_utc": "2026-10-29T15:36:58.371715+00:00",
+    "attributes": {
+      "infection": "Bystander",
+      "INSDC secondary accession": "SRS4253176",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Myc regulation 1 (Myr1) knock-out",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751872": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751872",
+    "sha256": "0f806d4599b36f57d6e2e5691c0c15ec188ed23b6c8c6fe6d20fa42e58f43e04",
+    "retrieved_utc": "2026-10-29T15:36:58.371771+00:00",
+    "attributes": {
+      "infection": "Bystander",
+      "INSDC secondary accession": "SRS4253175",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Wild-type",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751874": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751874",
+    "sha256": "9588d337e5a9de6521d9f856b719d588c18074b48f9d96381009d4184fb8ce41",
+    "retrieved_utc": "2026-10-29T15:36:58.371823+00:00",
+    "attributes": {
+      "infection": "Bystander",
+      "INSDC secondary accession": "SRS4253174",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Wild-type",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN10751875": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN10751875",
+    "sha256": "93714e58c804b3949509274119959656beee8f6c8cd364eaedbafe12629dba27",
+    "retrieved_utc": "2026-10-29T15:36:58.371873+00:00",
+    "attributes": {
+      "infection": "Bystander",
+      "INSDC secondary accession": "SRS4253173",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "toxoplasma genetic modification": "Wild-type",
+      "toxoplasma strain": "Prugniaud - Toxofilin-Cre (Koshy et al., 2010)",
+      "source_name": "Foreskin",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-15",
+      "ENA-LAST-UPDATE": "2020-01-15"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961978": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961978",
+    "sha256": "a1d4d44c298e58d5b8266bade128ece489a1afb8dff7cd4bf52983e3af2e1e06",
+    "retrieved_utc": "2026-10-29T15:36:58.371927+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882063",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "WT",
+      "timepoint": "72 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961979": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961979",
+    "sha256": "36fd671e20456cebf7a427e068161a54e1fc040873f018428c3e3a02014b0778",
+    "retrieved_utc": "2026-10-29T15:36:58.371979+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882062",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "WT",
+      "timepoint": "24 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961980": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961980",
+    "sha256": "92d5de58508561551b755cbd11484041b24491e6866ff27dddef23a30d49802f",
+    "retrieved_utc": "2026-10-29T15:36:58.372044+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882061",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "WT",
+      "timepoint": "72 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961981": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961981",
+    "sha256": "cff9e486ad3b481014fcbeef0c7f577d9a874ce57e48f2c384ad6af9b7e617b3",
+    "retrieved_utc": "2026-10-29T15:36:58.372097+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882060",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "WT",
+      "timepoint": "48 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961982": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961982",
+    "sha256": "2ac023d8e6428c7f020b9d95753f1d94c9eca7bd7181d46939d3a911be3a519a",
+    "retrieved_utc": "2026-10-29T15:36:58.372147+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882059",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "WT",
+      "timepoint": "24 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961983": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961983",
+    "sha256": "fd3100492147175293ac03a83b9d220571019bef130445a1c243c02248ab8376",
+    "retrieved_utc": "2026-10-29T15:36:58.372196+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882058",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "unstress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "WT",
+      "timepoint": "72 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961984": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961984",
+    "sha256": "ffbaf0d6993d05a93dfbea0c28b7500e06830dd89f1745bda3c77d0ca43eae7e",
+    "retrieved_utc": "2026-10-29T15:36:58.372244+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882057",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "unstress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "WT",
+      "timepoint": "48 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961985": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961985",
+    "sha256": "b1412b20a653052abcd96527bf9d8bd2d0fff36d7006ecf1b141b005df786a47",
+    "retrieved_utc": "2026-10-29T15:36:58.372291+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882056",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "unstress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "WT",
+      "timepoint": "24 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961987": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961987",
+    "sha256": "c635c7dad2366ef59cb0bb2f40f70cd96d9c61d7297ec5c5f9707c9a2b11762a",
+    "retrieved_utc": "2026-10-29T15:36:58.372339+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882055",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "{delta}BFD1",
+      "timepoint": "72 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961988": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961988",
+    "sha256": "6e1a14b238927b8989ced18c74fad51547d0b9715622317aebbaa6292957d2d9",
+    "retrieved_utc": "2026-10-29T15:36:58.372386+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882054",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "{delta}BFD1",
+      "timepoint": "24 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961989": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961989",
+    "sha256": "b8af21727f519fdd190cd1427eab6f34cf2ee94268dd8de7ecf43c064f6f71da",
+    "retrieved_utc": "2026-10-29T15:36:58.372435+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882053",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "{delta}BFD1",
+      "timepoint": "72 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961990": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961990",
+    "sha256": "193dbe388fe765346884aed8d0fe251bbd97ea88c0b2fd93e0c4ce352723d448",
+    "retrieved_utc": "2026-10-29T15:36:58.372483+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882052",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "{delta}BFD1",
+      "timepoint": "48 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961991": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961991",
+    "sha256": "c831c3368206f1a9890bce96b4054a431a362a84ed9b5bf6b31b50c8c24cb46d",
+    "retrieved_utc": "2026-10-29T15:36:58.372530+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882051",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "stress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "{delta}BFD1",
+      "timepoint": "24 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961992": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961992",
+    "sha256": "99ab163440d906d0b08f58c0c9e26e2126e6e7f354258a00613fb0c0141c4960",
+    "retrieved_utc": "2026-10-29T15:36:58.372577+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882050",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "unstress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "{delta}BFD1",
+      "timepoint": "72 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961993": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961993",
+    "sha256": "200ee74b4034ecbef877a704a8a836c412ec20bca2937fc3307195b3ff1fb3bd",
+    "retrieved_utc": "2026-10-29T15:36:58.372625+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882049",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "unstress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "{delta}BFD1",
+      "timepoint": "48 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN11961994": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN11961994",
+    "sha256": "951efaf7b52fc7e15d2ca9bdb14e55ac28b3fa5cea0c3eba97d9806935172739",
+    "retrieved_utc": "2026-10-29T15:36:58.372671+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS4882048",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "unstress",
+      "source_name": "T. gondii purified from host HFFs",
+      "genotype": "{delta}BFD1",
+      "timepoint": "24 hr",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-16",
+      "ENA-LAST-UPDATE": "2020-01-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616443": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616443",
+    "sha256": "5e3ffc7975d74f91b1c9018e794d1fc35c18fc2a8b7d2d0af3651f5c2b69175e",
+    "retrieved_utc": "2026-10-29T15:36:58.372722+00:00",
+    "attributes": {
+      "treatment": "FR235222 for 18h",
+      "INSDC secondary accession": "SRS5298364",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616444": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616444",
+    "sha256": "43b7a1518df7cb7b3383d52f267160b52a34ac962f8c8ee4cbb56102c65786ce",
+    "retrieved_utc": "2026-10-29T15:36:58.372778+00:00",
+    "attributes": {
+      "treatment": "FR235222 for 18h",
+      "INSDC secondary accession": "SRS5298363",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616445": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616445",
+    "sha256": "d8edb5608527556d475ef88889bc2a9f6b5d0f6554a1ae2035eafaa4f19a1f7a",
+    "retrieved_utc": "2026-10-29T15:36:58.372832+00:00",
+    "attributes": {
+      "treatment": "FR235222 for 7h",
+      "INSDC secondary accession": "SRS5298362",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616446": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616446",
+    "sha256": "14c552e310d414073659fa80e0a5a6cd22a6f1d5939e0982a41330177adc9b2a",
+    "retrieved_utc": "2026-10-29T15:36:58.372883+00:00",
+    "attributes": {
+      "treatment": "FR235222 for 7h",
+      "INSDC secondary accession": "SRS5298361",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616447": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616447",
+    "sha256": "1ccfec9960c52f03b6bfc7ebfe57f0e926c27ca6f1c4d99b601bccd49bdf3305",
+    "retrieved_utc": "2026-10-29T15:36:58.372932+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS5298360",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616448": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616448",
+    "sha256": "061e6840f8a94e7791fee26a5ad5d444b8882117fe12f71de487aa71c82da453",
+    "retrieved_utc": "2026-10-29T15:36:58.372981+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS5298359",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616449": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616449",
+    "sha256": "22b669adf903b653081c07a8bcaa3c734350a558b9399c96873d8c8c23b1f157",
+    "retrieved_utc": "2026-10-29T15:36:58.373031+00:00",
+    "attributes": {
+      "treatment": "IAA for 24h",
+      "INSDC secondary accession": "SRS5298358",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616450": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616450",
+    "sha256": "392d4691cfbe1ca02f314c0c930eedfe04630fec9c8e86deb46b7288787e111c",
+    "retrieved_utc": "2026-10-29T15:36:58.373083+00:00",
+    "attributes": {
+      "treatment": "IAA for 24h",
+      "INSDC secondary accession": "SRS5298357",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616451": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616451",
+    "sha256": "24eb12c351947773978f0b3cb40b52eccceab017862f4a676f24921f3d8a9fd3",
+    "retrieved_utc": "2026-10-29T15:36:58.373136+00:00",
+    "attributes": {
+      "treatment": "IAA for 7h",
+      "INSDC secondary accession": "SRS5298356",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616452": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616452",
+    "sha256": "589430706c1393119e3c14a90b849adfe3bd8e174cbd2d2e82ac5a5ce1b1f07b",
+    "retrieved_utc": "2026-10-29T15:36:58.373185+00:00",
+    "attributes": {
+      "treatment": "IAA for 7h",
+      "INSDC secondary accession": "SRS5298355",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616453": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616453",
+    "sha256": "a9d1b53912c95b07ae215d23cfc94250c85aac9db90674269539af5044c650c3",
+    "retrieved_utc": "2026-10-29T15:36:58.373235+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS5298354",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616454": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616454",
+    "sha256": "ce9af30b6517d6be4d060afd03c2a16f00608571efae6d3bc6af96c2eb483170",
+    "retrieved_utc": "2026-10-29T15:36:58.373283+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS5298353",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616455": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616455",
+    "sha256": "8e4bf6bc4e1a9d6520ff76a36fdf283b87050fe5f31122614ea072e50afa820e",
+    "retrieved_utc": "2026-10-29T15:36:58.373334+00:00",
+    "attributes": {
+      "treatment": "IAA for 48h",
+      "INSDC secondary accession": "SRS5298352",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616456": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616456",
+    "sha256": "e3dd93dd33c0043752eaa842ddbd69a24350a203e36590c701c19d6a27ac3cd2",
+    "retrieved_utc": "2026-10-29T15:36:58.373383+00:00",
+    "attributes": {
+      "treatment": "IAA for 48h",
+      "INSDC secondary accession": "SRS5298351",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616457": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616457",
+    "sha256": "c5aaa20de9f21ff1b8c87386fa5d98a5d6019aae34a834d0ca29ff13eea00b45",
+    "retrieved_utc": "2026-10-29T15:36:58.373430+00:00",
+    "attributes": {
+      "treatment": "IAA for 24h",
+      "INSDC secondary accession": "SRS5298350",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616458": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616458",
+    "sha256": "dca9c698f2eda50cafb84bda7984dff544c496bf76f8e35c074e04adda9814bd",
+    "retrieved_utc": "2026-10-29T15:36:58.373478+00:00",
+    "attributes": {
+      "treatment": "IAA for 24h",
+      "INSDC secondary accession": "SRS5298349",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616459": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616459",
+    "sha256": "e03b8c2ed75d94a85fa6d00f60a4157fa77f6b595474b65be8fd27c44413fddd",
+    "retrieved_utc": "2026-10-29T15:36:58.373534+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS5298348",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN12616460": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN12616460",
+    "sha256": "2c784fe73ffda8c94d555aa4dce273649cb970a75072a6ca08873f2629a1ddc7",
+    "retrieved_utc": "2026-10-29T15:36:58.373584+00:00",
+    "attributes": {
+      "treatment": "none",
+      "INSDC secondary accession": "SRS5298347",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human cells and T. gondii",
+      "strain background": "Prugniaud",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-12-22",
+      "ENA-LAST-UPDATE": "2019-12-22"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152476": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152476",
+    "sha256": "480e0deb14663444f6fb0b6e2f39a6d3b88007aa51c97a170901f7df19704d38",
+    "retrieved_utc": "2026-10-29T15:36:58.373634+00:00",
+    "attributes": {
+      "replicate": "1",
+      "INSDC secondary accession": "SRS5585308",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "vehicle",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1/DD-BFD1-Ty",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152479": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152479",
+    "sha256": "77ab86bc755e9cffaa535e95fc670933c43beebc525177fe5b408b568d972299",
+    "retrieved_utc": "2026-10-29T15:36:58.373688+00:00",
+    "attributes": {
+      "replicate": "3",
+      "INSDC secondary accession": "SRS5585322",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "WT (ME49{delta}KU80)",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152480": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152480",
+    "sha256": "dad0760a7f1d6f0766048ae093979e4044972ebc4e3cce4d43c0856aeaf8e47c",
+    "retrieved_utc": "2026-10-29T15:36:58.373740+00:00",
+    "attributes": {
+      "replicate": "2",
+      "INSDC secondary accession": "SRS5585321",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "WT (ME49{delta}KU80)",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152481": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152481",
+    "sha256": "822c820b1017dd356ed263b69993ce8710643eb62f2f7ad5cafee11836bd6cea",
+    "retrieved_utc": "2026-10-29T15:36:58.379823+00:00",
+    "attributes": {
+      "replicate": "1",
+      "INSDC secondary accession": "SRS5585320",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "WT (ME49{delta}KU80)",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152482": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152482",
+    "sha256": "e7929935cf6afd3d5b69f9e182d66dd98cae9564a98e25dfe8a4d593b9c4ccea",
+    "retrieved_utc": "2026-10-29T15:36:58.373878+00:00",
+    "attributes": {
+      "replicate": "3",
+      "INSDC secondary accession": "SRS5585319",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "vehicle",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "WT (ME49{delta}KU80)",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152483": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152483",
+    "sha256": "0c141486dd8083b48fc8d164f95e8d95e5726f07d41e419c7fd639ad081be738",
+    "retrieved_utc": "2026-10-29T15:36:58.373935+00:00",
+    "attributes": {
+      "replicate": "2",
+      "INSDC secondary accession": "SRS5585318",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "vehicle",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "WT (ME49{delta}KU80)",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152484": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152484",
+    "sha256": "faebb6a73401b54876b4512c48928b5d5dc0acd4f79755625b3f34b5cfde9373",
+    "retrieved_utc": "2026-10-29T15:36:58.373987+00:00",
+    "attributes": {
+      "replicate": "1",
+      "INSDC secondary accession": "SRS5585317",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "vehicle",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "WT (ME49{delta}KU80)",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152485": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152485",
+    "sha256": "cba73f752d09143e55729de1c10c0e454c0fe4c31e599070e338f15a54654209",
+    "retrieved_utc": "2026-10-29T15:36:58.374038+00:00",
+    "attributes": {
+      "replicate": "3",
+      "INSDC secondary accession": "SRS5585316",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152486": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152486",
+    "sha256": "004c10dcfee91dc9862f11b2afcbf2dc6a5fcd2deaed868352f7c48f5d6026d3",
+    "retrieved_utc": "2026-10-29T15:36:58.374088+00:00",
+    "attributes": {
+      "replicate": "2",
+      "INSDC secondary accession": "SRS5585315",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152487": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152487",
+    "sha256": "e85e897580241bc6e685f9ef01832a2fb794d29cf18a12ace8c1edf60ac4ba31",
+    "retrieved_utc": "2026-10-29T15:36:58.374138+00:00",
+    "attributes": {
+      "replicate": "1",
+      "INSDC secondary accession": "SRS5585314",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152488": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152488",
+    "sha256": "2a6a0a996b8ff0da6f09438077c6debbe80325824d1b38a580f4cf9319e80c52",
+    "retrieved_utc": "2026-10-29T15:36:58.374189+00:00",
+    "attributes": {
+      "replicate": "3",
+      "INSDC secondary accession": "SRS5585313",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1/DD-BFD1-Ty",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152489": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152489",
+    "sha256": "1a46f8bf1679752e8f22d64d4d134b65c228fd970dda2a753e90c7cff585d144",
+    "retrieved_utc": "2026-10-29T15:36:58.374238+00:00",
+    "attributes": {
+      "replicate": "2",
+      "INSDC secondary accession": "SRS5585312",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1/DD-BFD1-Ty",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152490": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152490",
+    "sha256": "baa31725a4c0922ce0d7d5fdd1cef2b59f020d10c7a7959f35c44789bd24c8d8",
+    "retrieved_utc": "2026-10-29T15:36:58.374288+00:00",
+    "attributes": {
+      "replicate": "1",
+      "INSDC secondary accession": "SRS5585311",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "Shield-1",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1/DD-BFD1-Ty",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152491": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152491",
+    "sha256": "266284d06f6b063356e4453a3e292b5e425dff98196e5d30f785cab8e94285b6",
+    "retrieved_utc": "2026-10-29T15:36:58.374339+00:00",
+    "attributes": {
+      "replicate": "3",
+      "INSDC secondary accession": "SRS5585310",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "vehicle",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1/DD-BFD1-Ty",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13152492": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13152492",
+    "sha256": "1376038023bfa20b9d67f277c0b6befbfcc45d4855e10d3ab0392e1c03e2c362",
+    "retrieved_utc": "2026-10-29T15:36:58.374392+00:00",
+    "attributes": {
+      "replicate": "2",
+      "INSDC secondary accession": "SRS5585309",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "growth condition": "vehicle",
+      "tissue": "Toxoplasma gondii parasites isolated from host cells",
+      "source_name": "Toxoplasma gondii parasites isolated from host cells",
+      "genotype": "{delta}BFD1/DD-BFD1-Ty",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-01-17",
+      "ENA-LAST-UPDATE": "2020-01-17"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256348": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256348",
+    "sha256": "40ba5ce58a1d75eb5452148d586a9ed0effd8d8033d5856a0e3e938e4df1d210",
+    "retrieved_utc": "2026-10-29T15:36:58.374443+00:00",
+    "attributes": {
+      "treatment": "24.2 nM TrtE",
+      "INSDC secondary accession": "SRS5633978",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "4 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256349": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256349",
+    "sha256": "e8b9893ea61f6d5d7169f8ba437cd00a74c10632c1a495844e0cc5d086cc90ec",
+    "retrieved_utc": "2026-10-29T15:36:58.374493+00:00",
+    "attributes": {
+      "treatment": "6 nM TrtE",
+      "INSDC secondary accession": "SRS5633977",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "4 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256350": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256350",
+    "sha256": "d5f75cf7c71248bd144f43ca5263f4d97d085af55f622f3750222849330539e0",
+    "retrieved_utc": "2026-10-29T15:36:58.374543+00:00",
+    "attributes": {
+      "treatment": "6 nM TrtE",
+      "INSDC secondary accession": "SRS5633983",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "12 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256351": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256351",
+    "sha256": "ce3bb8d7130b6685ec3a637c008a83c57dd72f2f25dae54cf01261fa4477a95a",
+    "retrieved_utc": "2026-10-29T15:36:58.374595+00:00",
+    "attributes": {
+      "treatment": "DMSO (vehicle)",
+      "INSDC secondary accession": "SRS5633982",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "8 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256352": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256352",
+    "sha256": "e3187c0fa3978b57e8389995b9abc4ccdf09875fabe8ccad325cfe9d1c6aa012",
+    "retrieved_utc": "2026-10-29T15:36:58.374646+00:00",
+    "attributes": {
+      "treatment": "DMSO (vehicle)",
+      "INSDC secondary accession": "SRS5633985",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "12 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256353": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256353",
+    "sha256": "b6970cd7b72cf93614744d17683bc6d72ca44f8723909be155ab8eb556726477",
+    "retrieved_utc": "2026-10-29T15:36:58.374695+00:00",
+    "attributes": {
+      "treatment": "24.2 nM TrtE",
+      "INSDC secondary accession": "SRS5633984",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "12 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256354": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256354",
+    "sha256": "1e134ec8c99453ece87b534478effb36b2ab3af5370080bde8d1a0d58f0590d0",
+    "retrieved_utc": "2026-10-29T15:36:58.374745+00:00",
+    "attributes": {
+      "treatment": "24.2 nM TrtE",
+      "INSDC secondary accession": "SRS5633981",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "8 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256355": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256355",
+    "sha256": "81b56b12f98fa63f0a33c18e303d2f9d34333b00b63f8da2e6d5509b1763282f",
+    "retrieved_utc": "2026-10-29T15:36:58.374802+00:00",
+    "attributes": {
+      "treatment": "6 nM TrtE",
+      "INSDC secondary accession": "SRS5633980",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "8 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN13256356": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN13256356",
+    "sha256": "cb6ec7e588067b1bc31ed2bcaec72b9483d73d34986658bb15af0e17a69c07ba",
+    "retrieved_utc": "2026-10-29T15:36:58.374853+00:00",
+    "attributes": {
+      "treatment": "DMSO (vehicle)",
+      "INSDC secondary accession": "SRS5633979",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "length of treatment": "4 hours",
+      "tissue": "human foreskin fibroblast cells (HFF)",
+      "parasite life cycle stage": "intracellular tachyzoites",
+      "source_name": "T. gondii infected HFF",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2019-11-12",
+      "ENA-LAST-UPDATE": "2019-11-12"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN14891697": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN14891697",
+    "sha256": "a06d5f159829410159f6e2b41563d85e57e57fcd3f0d02057870189fb0fee5d6",
+    "retrieved_utc": "2026-10-29T15:36:58.374900+00:00",
+    "attributes": {
+      "strain": "RH delta-Ku80 Tir1 iKD AP2IX-5",
+      "INSDC secondary accession": "SRS6645871",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "HFF cell culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-10-30",
+      "ENA-LAST-UPDATE": "2020-10-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN14891698": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN14891698",
+    "sha256": "89a139bc72765c16b622514f5af3636b957733fb4e776a7df54f923d70c6a5da",
+    "retrieved_utc": "2026-10-29T15:36:58.374947+00:00",
+    "attributes": {
+      "strain": "RH delta-Ku80 Tir1 iKD AP2IX-5",
+      "INSDC secondary accession": "SRS6645870",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "HFF cell culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-10-30",
+      "ENA-LAST-UPDATE": "2020-10-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN14891699": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN14891699",
+    "sha256": "53fcfaafa94bb38fcdec9d980eae61e0059b04ffb97065b368f284eb5e3ea2dc",
+    "retrieved_utc": "2026-10-29T15:36:58.374991+00:00",
+    "attributes": {
+      "strain": "RH delta-Ku80 Tir1 iKD AP2IX-5",
+      "INSDC secondary accession": "SRS6645869",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "HFF cell culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-10-30",
+      "ENA-LAST-UPDATE": "2020-10-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN14891700": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN14891700",
+    "sha256": "af0f8559b8b7ce998b7ae45593d1b3c56af4cce800f6a9d0db6a97ec5daed48b",
+    "retrieved_utc": "2026-10-29T15:36:58.375039+00:00",
+    "attributes": {
+      "strain": "RH delta-Ku80 Tir1 iKD AP2IX-5",
+      "INSDC secondary accession": "SRS6645868",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "HFF cell culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-10-30",
+      "ENA-LAST-UPDATE": "2020-10-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN14891701": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN14891701",
+    "sha256": "ec4f6195d7b80af1b1164bad41b15cb0bce4e6d4d8bde9d5f77bd35f63727310",
+    "retrieved_utc": "2026-10-29T15:36:58.375084+00:00",
+    "attributes": {
+      "strain": "RH delta-Ku80 Tir1 iKD AP2IX-5",
+      "INSDC secondary accession": "SRS6645867",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "HFF cell culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-10-30",
+      "ENA-LAST-UPDATE": "2020-10-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN14891702": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN14891702",
+    "sha256": "d61a02ef2fa35bb6f583851009d4a31d1b755b7ea0ea9a1aecf2ef4bda5f3eae",
+    "retrieved_utc": "2026-10-29T15:36:58.375131+00:00",
+    "attributes": {
+      "strain": "RH delta-Ku80 Tir1 iKD AP2IX-5",
+      "INSDC secondary accession": "SRS6645866",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "HFF cell culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-10-30",
+      "ENA-LAST-UPDATE": "2020-10-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN15881541": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN15881541",
+    "sha256": "7a7486a4e7bca649b198a8af6c3df9a5a3da713cd51ffc30f31fba3e2c837a5c",
+    "retrieved_utc": "2026-10-29T15:36:58.375180+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS7241129",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "HFF",
+      "source_name": "HFF and parasites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-01",
+      "ENA-LAST-UPDATE": "2020-12-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN15881542": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN15881542",
+    "sha256": "8eb7baba68792995f4c5b8e9eb3e02026dd60682c6a06c1055cc98bfe1e72879",
+    "retrieved_utc": "2026-10-29T15:36:58.375228+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS7241128",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "HFF",
+      "source_name": "HFF and parasites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-01",
+      "ENA-LAST-UPDATE": "2020-12-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN15881544": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN15881544",
+    "sha256": "dd6fd5d3f248902dc8c87d6ddf793f78eb03db7fd9b812ca4503cd0caa967159",
+    "retrieved_utc": "2026-10-29T15:36:58.375276+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS7241127",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "HFF",
+      "source_name": "HFF and parasites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-01",
+      "ENA-LAST-UPDATE": "2020-12-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN15881545": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN15881545",
+    "sha256": "4c4d5424e72c0c04c19b26969cd07b75e76f454dd8070828cbd33681afc2f0db",
+    "retrieved_utc": "2026-10-29T15:36:58.375323+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS7241126",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "HFF",
+      "source_name": "HFF and parasites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-01",
+      "ENA-LAST-UPDATE": "2020-12-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN15881547": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN15881547",
+    "sha256": "22e172c3b9e78ad53e0e7f1340837aeca370aea918efa90f26fb134c36078c6d",
+    "retrieved_utc": "2026-10-29T15:36:58.375370+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS7241125",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "HFF",
+      "source_name": "HFF and parasites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-01",
+      "ENA-LAST-UPDATE": "2020-12-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN15881548": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN15881548",
+    "sha256": "99139cf18a145c30b534e60bb78192b322336c7f47f740e6b77931b4758e191e",
+    "retrieved_utc": "2026-10-29T15:36:58.375416+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS7241124",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "HFF",
+      "source_name": "HFF and parasites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-01",
+      "ENA-LAST-UPDATE": "2020-12-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN15881550": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN15881550",
+    "sha256": "c902490e5b957e59f7761a38c4d9a63fd26eac4af0a024c6846454825b95c985",
+    "retrieved_utc": "2026-10-29T15:36:58.375470+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS7241123",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "HFF",
+      "source_name": "HFF and parasites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-01",
+      "ENA-LAST-UPDATE": "2020-12-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN15881552": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN15881552",
+    "sha256": "eb966858f582db74a534c431b043f94080318abe3040da4ea894476e6b5acd8e",
+    "retrieved_utc": "2026-10-29T15:36:58.375518+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS7241122",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "HFF",
+      "source_name": "HFF and parasites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-01",
+      "ENA-LAST-UPDATE": "2020-12-01"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16212987": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16212987",
+    "sha256": "477d79b742641cba69d053d16b87c266820257be1ab9474eb101e1f3e27f9463",
+    "retrieved_utc": "2026-10-29T15:36:58.375570+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "5uM sodium arsenite",
+      "INSDC secondary accession": "SRS7392697",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "TgIF2K-B knock-out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16212989": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16212989",
+    "sha256": "4196ada12c0474659b4baca32941e36475e1662620428723f7cb85a2f6fb758c",
+    "retrieved_utc": "2026-10-29T15:36:58.375624+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "5uM sodium arsenite",
+      "INSDC secondary accession": "SRS7392696",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "TgIF2K-B knock-out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16212991": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16212991",
+    "sha256": "fc7559698dd82cf4373c7c8a907f4c06ec6ecc255686c1cc043b7b26618b83d0",
+    "retrieved_utc": "2026-10-29T15:36:58.375675+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "5uM sodium arsenite",
+      "INSDC secondary accession": "SRS7392695",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "TgIF2K-B knock-out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16212994": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16212994",
+    "sha256": "f61aaf4c25b06dd616ad95139e577c61d030ba3980d0e5d5207742d80e624391",
+    "retrieved_utc": "2026-10-29T15:36:58.375725+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "5uM sodium arsenite",
+      "INSDC secondary accession": "SRS7392694",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "TgIF2K-B knock-out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16212995": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16212995",
+    "sha256": "110f622d3578e2177f01a4c4e0668c6650e41cf71a2057bfe3045ecfd449b90f",
+    "retrieved_utc": "2026-10-29T15:36:58.375780+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "untreated",
+      "INSDC secondary accession": "SRS7392693",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "TgIF2K-B knock-out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16212998": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16212998",
+    "sha256": "3ad7183d49a75e00b6ba8ce9443a3af98ea82e38d8d6104cf0aefabdcba4a488",
+    "retrieved_utc": "2026-10-29T15:36:58.375832+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "untreated",
+      "INSDC secondary accession": "SRS7392692",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "TgIF2K-B knock-out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16213001": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16213001",
+    "sha256": "0fb5d6a003b3cc536d2066e5e77d42a424b04205dbb26c0a65bbad3e991e0ea3",
+    "retrieved_utc": "2026-10-29T15:36:58.375881+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "untreated",
+      "INSDC secondary accession": "SRS7392691",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "TgIF2K-B knock-out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16213003": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16213003",
+    "sha256": "0db6197a2f8980ffc18fe3fcf039191f194caed21d4fe7b495cd0590c834fe7f",
+    "retrieved_utc": "2026-10-29T15:36:58.375933+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "5uM sodium arsenite",
+      "INSDC secondary accession": "SRS7392690",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "wild-type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16213006": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16213006",
+    "sha256": "34b2bfe291020b54994be3bc4bfaf0d70423e0c36fea8260fcc9880b819f4489",
+    "retrieved_utc": "2026-10-29T15:36:58.375982+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "5uM sodium arsenite",
+      "INSDC secondary accession": "SRS7392689",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "wild-type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16213010": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16213010",
+    "sha256": "048e57d9499c6b61a66350cea65e6321893289779fd94e4248b2cbfec58ca770",
+    "retrieved_utc": "2026-10-29T15:36:58.376031+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "5uM sodium arsenite",
+      "INSDC secondary accession": "SRS7392688",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "wild-type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16213011": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16213011",
+    "sha256": "7494dccc26a1463eae84c4de414c566a334173473afd31678603411f4369ca4c",
+    "retrieved_utc": "2026-10-29T15:36:58.376081+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "5uM sodium arsenite",
+      "INSDC secondary accession": "SRS7392687",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "wild-type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16213013": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16213013",
+    "sha256": "878bd7db798e66d4e5292a8ac4e8d99079604b8b2bb417e975bb2af954c2d923",
+    "retrieved_utc": "2026-10-29T15:36:58.376131+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "untreated",
+      "INSDC secondary accession": "SRS7392686",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "wild-type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16213014": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16213014",
+    "sha256": "2577ccf93838ef286b219b7f8be9b4c32bec33eb81e0efb25e59920a2c906725",
+    "retrieved_utc": "2026-10-29T15:36:58.376179+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "untreated",
+      "INSDC secondary accession": "SRS7392685",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "wild-type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16213015": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16213015",
+    "sha256": "b20b4a7cf2b4ddb1cae82ef2bd2e514319ac57c9a1041d4e1fba14ff626f0e18",
+    "retrieved_utc": "2026-10-29T15:36:58.376230+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "untreated",
+      "INSDC secondary accession": "SRS7392684",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "host cell": "Human Foreskin Fibroblast",
+      "cell type": "Toxoplasma gondii- tachyzoite",
+      "source_name": "intracellular T. gondii",
+      "genotype": "wild-type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2020-12-16",
+      "ENA-LAST-UPDATE": "2020-12-16"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16474331": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16474331",
+    "sha256": "833cbd63ed8b435cffa60c556d2483ba917d2584f5b924902ffc46d824d780c7",
+    "retrieved_utc": "2026-10-29T15:36:58.376279+00:00",
+    "attributes": {
+      "strain": "RH",
+      "INSDC secondary accession": "SRS7541775",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "molecule subtype": "capped mRNA",
+      "source_name": "RH tachyzoites",
+      "developmental stage": "tachyzoites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-01-23",
+      "ENA-LAST-UPDATE": "2021-01-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16474332": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16474332",
+    "sha256": "6923ea9280f9a240f9b6711ba7ed82bbe8c04f0615d524756f0785703fd50a12",
+    "retrieved_utc": "2026-10-29T15:36:58.376327+00:00",
+    "attributes": {
+      "strain": "RH",
+      "INSDC secondary accession": "SRS7541774",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "molecule subtype": "capped mRNA",
+      "source_name": "RH tachyzoites",
+      "developmental stage": "tachyzoites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-01-23",
+      "ENA-LAST-UPDATE": "2021-01-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16474334": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16474334",
+    "sha256": "a2a4b13aa291a182fc11bfbd3fd01a1487231bb0f943aae65d98a2fe8a5a2dd9",
+    "retrieved_utc": "2026-10-29T15:36:58.376373+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "INSDC secondary accession": "SRS7541773",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "molecule subtype": "capped mRNA",
+      "source_name": "ME49 tachyzoites",
+      "developmental stage": "tachyzoites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-01-23",
+      "ENA-LAST-UPDATE": "2021-01-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16474335": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16474335",
+    "sha256": "44d31b13794dfd079e7eac1edc620e3d55f902b94dbe401fb1a8e259f52c8a55",
+    "retrieved_utc": "2026-10-29T15:36:58.376422+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "INSDC secondary accession": "SRS7541772",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "molecule subtype": "capped mRNA",
+      "source_name": "ME49 tachyzoites",
+      "developmental stage": "tachyzoites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-01-23",
+      "ENA-LAST-UPDATE": "2021-01-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16474337": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16474337",
+    "sha256": "bf8eee5051b78576e6b5dd41876c0eb0f6b4c0e431f53ad1c2965baa7215ac70",
+    "retrieved_utc": "2026-10-29T15:36:58.376470+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "INSDC secondary accession": "SRS7541771",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "molecule subtype": "capped mRNA",
+      "source_name": "ME49 alkaline-stress\u2013induced bradyzoites",
+      "developmental stage": "bradyzoites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-01-23",
+      "ENA-LAST-UPDATE": "2021-01-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN16474338": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN16474338",
+    "sha256": "d842d63284ebc9677e2d6ce57c78fb6507404b1e71bc42c77fda9fe1168593e7",
+    "retrieved_utc": "2026-10-29T15:36:58.376518+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "INSDC secondary accession": "SRS7541770",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "molecule subtype": "capped mRNA",
+      "source_name": "ME49 alkaline-stress\u2013induced bradyzoites",
+      "developmental stage": "bradyzoites",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-01-23",
+      "ENA-LAST-UPDATE": "2021-01-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206550": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206550",
+    "sha256": "53d5384e0e267d8ea2a4ce99c5026fa8a7ec87224077f8fa5dc0acc3e1c945a4",
+    "retrieved_utc": "2026-10-29T15:36:58.376566+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403147",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206551": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206551",
+    "sha256": "47d918a969bf2a32a79edf5aefe43ffcd47c33aa4322470e04dcc62ac85ff698",
+    "retrieved_utc": "2026-10-29T15:36:58.376613+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403146",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206552": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206552",
+    "sha256": "9e2b35090f5f86c5c62f86b1d25d05e2967872aafe5f2671dc0670854b5076fc",
+    "retrieved_utc": "2026-10-29T15:36:58.376658+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403145",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206553": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206553",
+    "sha256": "b56acd9ec6c0d434bf986cdac587d84b4e01c8a406a24fc5dca4568cbf296fd8",
+    "retrieved_utc": "2026-10-29T15:36:58.376706+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403144",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206554": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206554",
+    "sha256": "81b46ffe4ba37f52d7c418325b3761859602cf4b15ea4b586dcae9cdc1b8f300",
+    "retrieved_utc": "2026-10-29T15:36:58.385856+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403142",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206555": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206555",
+    "sha256": "e7949765d700392f3d1695c4ce37578ecb531d41624400b4d0842bcf50ee10fe",
+    "retrieved_utc": "2026-10-29T15:36:58.376831+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403143",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206556": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206556",
+    "sha256": "6365c1a0203e97a6073226be6beeeb443e1cfdf0330397d9b1e89c637f248c10",
+    "retrieved_utc": "2026-10-29T15:36:58.376883+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403140",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206557": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206557",
+    "sha256": "f243a1d4fddd174cdfcd639f481c5e4f05c3c93e154832215adcfcb6d5f35015",
+    "retrieved_utc": "2026-10-29T15:36:58.376931+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403141",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206573": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206573",
+    "sha256": "1050546ac6b5df812ec1c897416ab98dd9abde468fd8e81e09665b3bc35f743d",
+    "retrieved_utc": "2026-10-29T15:36:58.376980+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403152",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206574": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206574",
+    "sha256": "3b3860f4f100a94716487129d91ac7b2e0d7690f3a0e62351d20d030e4d06f9e",
+    "retrieved_utc": "2026-10-29T15:36:58.377028+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403151",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206575": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206575",
+    "sha256": "a715fadb5a09b8b7b1d51437f5def6d029c0e92cf1d493a61a94652ea353d1ef",
+    "retrieved_utc": "2026-10-29T15:36:58.377077+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403149",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206576": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206576",
+    "sha256": "8f27ee5b9481385c9cb48862b3ddf549722687e71e757c76fc9056446f01f911",
+    "retrieved_utc": "2026-10-29T15:36:58.377125+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403150",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206577": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206577",
+    "sha256": "1b5f2cb687a6a6eea1c67d9894ee10489c3be00386f3c611e3e8e9b5e12412a0",
+    "retrieved_utc": "2026-10-29T15:36:58.377170+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403148",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206578": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206578",
+    "sha256": "e7bc117666c8614ed33137954f5ce4d7b58da7ed7dbd1a5363b9bbf91f1375e2",
+    "retrieved_utc": "2026-10-29T15:36:58.377215+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403153",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206592": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206592",
+    "sha256": "21829b96612f50577b002adc3aa0c90a6355271a124250c639434bea446040d1",
+    "retrieved_utc": "2026-10-29T15:36:58.377260+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403159",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Tachyzoite",
+      "source_name": "Purified T. gondii 76K tachyzoites grown in HFF cells",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206594": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206594",
+    "sha256": "3de2515c13d5d72fb241f4c5bef889950b402c4f65035a5e549debf2a6b97b9b",
+    "retrieved_utc": "2026-10-29T15:36:58.377307+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403160",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Tachyzoite",
+      "source_name": "Purified T. gondii 76K tachyzoites grown in HFF cells",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206596": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206596",
+    "sha256": "a66f13c7438ef0d4ba4910b6e2854b3edc6f16c0dd5841c42bd87e75d9e02860",
+    "retrieved_utc": "2026-10-29T15:36:58.377352+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403156",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Tachyzoite",
+      "source_name": "Purified T. gondii 76K tachyzoites grown in HFF cells",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN18206602": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN18206602",
+    "sha256": "9984ee469ddc21e232334e1051727bdf304580272567dc40146977b2a285c043",
+    "retrieved_utc": "2026-10-29T15:36:58.377397+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS8403154",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Brain cell primary culture",
+      "source_name": "Brain cell primary culture infected with T. gondii 76K",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-09-24",
+      "ENA-LAST-UPDATE": "2021-09-24"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19488232": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19488232",
+    "sha256": "b9661e46359d8689f5db406e732f94a896a3436eae2b9ebdbc96b91071e29f56",
+    "retrieved_utc": "2026-10-29T15:36:58.377444+00:00",
+    "attributes": {
+      "strain": "RH",
+      "treatment": "6 hours of treatment with MC1742 (0.5 \u00b5M)",
+      "INSDC secondary accession": "SRS9108789",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human fibroblast culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2024-05-23",
+      "ENA-LAST-UPDATE": "2024-05-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19488233": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19488233",
+    "sha256": "66f336e23f4a636e8fc02ba4c02131786de5b825b98a5a11cd9be0e4c46c981f",
+    "retrieved_utc": "2026-10-29T15:36:58.377494+00:00",
+    "attributes": {
+      "strain": "RH",
+      "treatment": "6 hours of treatment with MC1742 (0.5 \u00b5M)",
+      "INSDC secondary accession": "SRS9108788",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human fibroblast culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2024-05-23",
+      "ENA-LAST-UPDATE": "2024-05-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19488234": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19488234",
+    "sha256": "3c302c3fb7a442de5e17eeacc7c01feb2bcfec073dc6afe7d43682f3c1cfa21c",
+    "retrieved_utc": "2026-10-29T15:36:58.377540+00:00",
+    "attributes": {
+      "strain": "RH",
+      "treatment": "6 hours of treatment with MC1742 (0.5 \u00b5M)",
+      "INSDC secondary accession": "SRS9108787",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human fibroblast culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2024-05-23",
+      "ENA-LAST-UPDATE": "2024-05-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19488235": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19488235",
+    "sha256": "47f214358069c9747d8b7e15890de0c4fbcd244058dc0000aa8f50e3ba5a3c22",
+    "retrieved_utc": "2026-10-29T15:36:58.377586+00:00",
+    "attributes": {
+      "strain": "RH",
+      "treatment": "6 hours of treatment with DMSO",
+      "INSDC secondary accession": "SRS9108786",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human fibroblast culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2024-05-23",
+      "ENA-LAST-UPDATE": "2024-05-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19488236": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19488236",
+    "sha256": "b02e629cabc004a9e2c100cfb7958ef8eb9a751de5eeef21bf3dee5b42783f5b",
+    "retrieved_utc": "2026-10-29T15:36:58.377632+00:00",
+    "attributes": {
+      "strain": "RH",
+      "treatment": "6 hours of treatment with DMSO",
+      "INSDC secondary accession": "SRS9108785",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human fibroblast culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2024-05-23",
+      "ENA-LAST-UPDATE": "2024-05-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19488237": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19488237",
+    "sha256": "7abcfc5b0ca3521a42822860adb5ebffa2b2c818d01754977bfa7315d4afd53f",
+    "retrieved_utc": "2026-10-29T15:36:58.377678+00:00",
+    "attributes": {
+      "strain": "RH",
+      "treatment": "6 hours of treatment with DMSO",
+      "INSDC secondary accession": "SRS9108784",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "Human fibroblast culture infected with T. gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2024-05-23",
+      "ENA-LAST-UPDATE": "2024-05-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732569": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732569",
+    "sha256": "0a8ec68614a6f32e83b4d944d5363c390d71e89b27b7e40b388a89399bddd6c9",
+    "retrieved_utc": "2026-10-29T15:36:58.377727+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227926",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732570": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732570",
+    "sha256": "7180db5ee9fb1afb6aa9515f7555ea8027af6943584cd667d134ebded498a973",
+    "retrieved_utc": "2026-10-29T15:36:58.377778+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227925",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732571": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732571",
+    "sha256": "3345926426ed24518489b220c3bb83ab08840269398371e1c6a7531ea0a0dab5",
+    "retrieved_utc": "2026-10-29T15:36:58.377826+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227924",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732572": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732572",
+    "sha256": "a0058cee3bdba7a73926721c82d66a282dfc903a952dd71fdb63dfa2fa17f19d",
+    "retrieved_utc": "2026-10-29T15:36:58.377873+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227923",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732573": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732573",
+    "sha256": "29bb841d784e4368252975b86df35d1607984a4841997ff0d5adfe643ac248dc",
+    "retrieved_utc": "2026-10-29T15:36:58.377924+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227922",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732574": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732574",
+    "sha256": "a7fe8dc5431bc99f807d495ce8154c0c20a5bdf1c53a4b880a4180d63362ba70",
+    "retrieved_utc": "2026-10-29T15:36:58.377973+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227921",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732575": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732575",
+    "sha256": "3712f58098814e09a023a8c3aaa9f865affccab373efafb15b48a7b9be791626",
+    "retrieved_utc": "2026-10-29T15:36:58.378020+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227920",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732576": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732576",
+    "sha256": "6179485c21adc443a06fc8c36956347d6ffe3b6efe96e083bb9d80c6632682cf",
+    "retrieved_utc": "2026-10-29T15:36:58.378068+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227919",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732577": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732577",
+    "sha256": "f7361bd6331444c3398788d5a410910b98f626f9758fbd600e5d59e89a7448ac",
+    "retrieved_utc": "2026-10-29T15:36:58.378118+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::WTAP-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227918",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::WTAP-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732578": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732578",
+    "sha256": "e16e069d9e493a63905d1953e786f6f5a0e83caf02419c5bf6fd22c58d409505",
+    "retrieved_utc": "2026-10-29T15:36:58.378166+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227917",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732579": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732579",
+    "sha256": "4897120ca756b70b02dda0b64aa130387f6408e37210d800772e391e04a761eb",
+    "retrieved_utc": "2026-10-29T15:36:58.378213+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227916",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732580": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732580",
+    "sha256": "ed4373259f974fe82f732dabf471c7b74e95a26f720213d03bc5f489153e50f5",
+    "retrieved_utc": "2026-10-29T15:36:58.378259+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227915",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732581": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732581",
+    "sha256": "333010472295c02c19f8cbea25da20a53bb4a9f5a086160f9cdd1fcc7988ca78",
+    "retrieved_utc": "2026-10-29T15:36:58.378308+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227914",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732582": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732582",
+    "sha256": "70e7c034cffe46ed3ce58f005f6639c4fe0e17e23623ebaa8afe172a162b638f",
+    "retrieved_utc": "2026-10-29T15:36:58.378356+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227913",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732583": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732583",
+    "sha256": "ccd0228bfdcd24b4129540d007c7c3f45e7708b472ee35e04365bda3d53b5a50",
+    "retrieved_utc": "2026-10-29T15:36:58.378406+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227912",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732584": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732584",
+    "sha256": "ddff7ee06b8cd7da8313911bb0136a5ad2f61eb19b373369b2103185871f7d1c",
+    "retrieved_utc": "2026-10-29T15:36:58.378454+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227911",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732585": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732585",
+    "sha256": "6f94b1c7e0980428925cc78a0daea066d6eb4292b3e32369322e0c230b378bf3",
+    "retrieved_utc": "2026-10-29T15:36:58.378503+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227910",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732586": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732586",
+    "sha256": "00b6f5c32bf337d6ee4829f638f7b5137ceb4f499ac491809f4f3d4c706d219d",
+    "retrieved_utc": "2026-10-29T15:36:58.378549+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::METTL3-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227909",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::METTL3-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732587": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732587",
+    "sha256": "288c0e378ba2508160dd0b70949a86c0424a9ba0560e5979c9b2d1b2a05c500e",
+    "retrieved_utc": "2026-10-29T15:36:58.378596+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227935",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732588": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732588",
+    "sha256": "ecf27b9df8921610ce8e7cf0e3eb58787ae2c4328dfbb0b43963eb12515f58bf",
+    "retrieved_utc": "2026-10-29T15:36:58.378643+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227934",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732589": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732589",
+    "sha256": "8ff06b2de2d23ba32bfe2f3f47577442b2cb0f74572c166fe1bdbc2ea10e31eb",
+    "retrieved_utc": "2026-10-29T15:36:58.378691+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "500uM IAA treatment, 16h",
+      "INSDC secondary accession": "SRS9227933",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732590": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732590",
+    "sha256": "1fd418fb3cf6e9b463fab93e76efe7b0277ea629d01115cf186abe338b0d7c38",
+    "retrieved_utc": "2026-10-29T15:36:58.378739+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227932",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732591": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732591",
+    "sha256": "97f4ce922531e73f6fcdb0314b5e0695feed2772224e1257833e173a78e4954b",
+    "retrieved_utc": "2026-10-29T15:36:58.378791+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227931",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732592": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732592",
+    "sha256": "661af1d3e534fe64a41e2eb4974ec9859c40855b163dd485808ba436cb13fa76",
+    "retrieved_utc": "2026-10-29T15:36:58.378837+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "500uM IAA treatment, 4h",
+      "INSDC secondary accession": "SRS9227930",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732593": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732593",
+    "sha256": "bba1fed17890c1332ec00cc17d72da5ce920331d36726da0fc4d896b7621b0a0",
+    "retrieved_utc": "2026-10-29T15:36:58.378889+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227929",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732594": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732594",
+    "sha256": "67edf9be02bccab0dfd4c616f4c363155f8628ff91151662b72013ed73a4442e",
+    "retrieved_utc": "2026-10-29T15:36:58.378936+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227928",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN19732595": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN19732595",
+    "sha256": "f775af6372611c3b6b8c565d794bb965741486bd655bc3b112cf82ea23fa3912",
+    "retrieved_utc": "2026-10-29T15:36:58.378982+00:00",
+    "attributes": {
+      "strain": "RH::TIR1::YTH1-AID",
+      "treatment": "non treated",
+      "INSDC secondary accession": "SRS9227927",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "source_name": "RH::TIR1::YTH1-AID strain Toxoplasma gondii",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-07-20",
+      "ENA-LAST-UPDATE": "2021-07-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470437": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470437",
+    "sha256": "1ac7814b43620b414bea08aaf68367dd4aafe494d4b9f27288e29764ba86d640",
+    "retrieved_utc": "2026-10-29T15:36:58.379035+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166616",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "RH",
+      "type": "RH control",
+      "source_name": "RH wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470438": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470438",
+    "sha256": "fef030a0a7d1b3cb92aae29cbbbe34f27f3ee085251d82829a10d797c4843884",
+    "retrieved_utc": "2026-10-29T15:36:58.379089+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166617",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "RH",
+      "type": "RH control",
+      "source_name": "RH wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470439": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470439",
+    "sha256": "0e4a4a86eee4a0febd251974496c7a689488abe891129f6404ab57af4cb5db5a",
+    "retrieved_utc": "2026-10-29T15:36:58.379142+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166618",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "RH",
+      "type": "RH control",
+      "source_name": "RH wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470440": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470440",
+    "sha256": "2c9a2a1350f77bbbd956c95aea905ab3a6c6fdf724d5d6ec11615be7ede2a744",
+    "retrieved_utc": "2026-10-29T15:36:58.379194+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166619",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "RH-delta-pit",
+      "type": "TgPiT experimental sample",
+      "source_name": "TgPiT knockout strain",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470441": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470441",
+    "sha256": "edafe09f6aad785ba37a8eb88f073a32d8e5e3556a965fdc06cff42ac9764788",
+    "retrieved_utc": "2026-10-29T15:36:58.379246+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166620",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "RH-delta-pit",
+      "type": "TgPiT experimental sample",
+      "source_name": "TgPiT knockout strain",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470442": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470442",
+    "sha256": "832f95f58380a9681e60dc6cce478482c416c79b84325f6cf3352174833b7d09",
+    "retrieved_utc": "2026-10-29T15:36:58.379298+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166621",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "RH-delta-pit",
+      "type": "TgPiT experimental sample",
+      "source_name": "TgPiT knockout strain",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470443": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470443",
+    "sha256": "c897e5eb2b9b2be912775ad4c15ad05326f6b9e42bae79881e4a2a21303307dd",
+    "retrieved_utc": "2026-10-29T15:36:58.379348+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166622",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "iKD-PT2-ATc",
+      "type": "TgPT2 control",
+      "source_name": "TgPT2 wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470444": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470444",
+    "sha256": "609d8e01beb7b8183012a1e6b35ecf95a11e008305f89dfff200300aa123fcea",
+    "retrieved_utc": "2026-10-29T15:36:58.379397+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166623",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "iKD-PT2-ATc",
+      "type": "TgPT2 control",
+      "source_name": "TgPT2 wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470445": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470445",
+    "sha256": "0fe7a6969aa67d98b375b31b41c0fd9853410360f7eeb77452655e993aa0ca65",
+    "retrieved_utc": "2026-10-29T15:36:58.379447+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166624",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "iKD-PT2-ATc",
+      "type": "TgPT2 control",
+      "source_name": "TgPT2 wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470446": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470446",
+    "sha256": "83032d9471b178ae7b2a5844d2e9a649e3e2b4994dc4b5ad97e1fd7fd41126aa",
+    "retrieved_utc": "2026-10-29T15:36:58.379497+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166625",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "iKD-PT2+ATc",
+      "type": "TgPT2 experimental sample",
+      "source_name": "TgPT2 knockdown strain",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470447": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470447",
+    "sha256": "237361d03b66ee0c852dfa17e4c275aa609a866bfb5291bdd316b018ae2420f5",
+    "retrieved_utc": "2026-10-29T15:36:58.379545+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166626",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "iKD-PT2+ATc",
+      "type": "TgPT2 experimental sample",
+      "source_name": "TgPT2 knockdown strain",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN23470448": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN23470448",
+    "sha256": "dedfbe6f5932124f3f32630bebaab70855e6b90cc722be15066e8e6ff9b4c818",
+    "retrieved_utc": "2026-10-29T15:36:58.379593+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11166627",
+      "NCBI submission package": "Generic.1.0",
+      "culture conditions": "37C, 5% CO\u2082 in incubator",
+      "organism": "Toxoplasma gondii",
+      "culture time": "newly egressed Toxoplasma tachyzoites",
+      "parasite strain or treatment": "iKD-PT2+ATc",
+      "type": "TgPT2 experimental sample",
+      "source_name": "TgPT2 knockdown strain",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2021-12-04",
+      "ENA-LAST-UPDATE": "2021-12-04"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN24926607": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN24926607",
+    "sha256": "1c240a481ddd8b4f276adec5eb7778b1f3f96306306aa73fe59d836249419da8",
+    "retrieved_utc": "2026-10-29T15:36:58.379646+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11655765",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "host cell type": "Human HFF Cells",
+      "source_name": "HFF and parasites",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-03-30",
+      "ENA-LAST-UPDATE": "2022-03-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN24926608": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN24926608",
+    "sha256": "f2f80498527a431ff25b4f01cacc89c642b051e24f9053745ff283a74ff1d579",
+    "retrieved_utc": "2026-10-29T15:36:58.379697+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11655763",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "host cell type": "Human HFF Cells",
+      "source_name": "HFF and parasites",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-03-30",
+      "ENA-LAST-UPDATE": "2022-03-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN24926609": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN24926609",
+    "sha256": "8176c8421bb5ed52cda84a472dbc2bdfe4c8f70dc5c6ca13bc7ab9f0d695d9f5",
+    "retrieved_utc": "2026-10-29T15:36:58.379747+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11655762",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "host cell type": "Human HFF Cells",
+      "source_name": "HFF and parasites",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-03-30",
+      "ENA-LAST-UPDATE": "2022-03-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN24926610": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN24926610",
+    "sha256": "a7ce40a42b1029a2ffbb673ceaea8e3023f40f464660b31615d448faf38e3ad7",
+    "retrieved_utc": "2026-10-29T15:36:58.386160+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11655766",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "host cell type": "Human HFF Cells",
+      "source_name": "HFF and parasites",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-03-30",
+      "ENA-LAST-UPDATE": "2022-03-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN24926611": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN24926611",
+    "sha256": "80a0e30d8d44df9951257a868e64a3a828f1ca29e47dfa5a5021d465e9f3b741",
+    "retrieved_utc": "2026-10-29T15:36:58.379882+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11655764",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "host cell type": "Human HFF Cells",
+      "source_name": "HFF and parasites",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-03-30",
+      "ENA-LAST-UPDATE": "2022-03-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN24926612": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN24926612",
+    "sha256": "97c0e27ae8b42d378d59060d81c53008c007b06e947c108e4774aa2b302220b8",
+    "retrieved_utc": "2026-10-29T15:36:58.379932+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11655761",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "host cell type": "Human HFF Cells",
+      "source_name": "HFF and parasites",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-03-30",
+      "ENA-LAST-UPDATE": "2022-03-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN24926613": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN24926613",
+    "sha256": "21a5999d22ecd63694660c0c0a55f8f9ce646ba4de5b2f24fe4f8dfa3ae30a2d",
+    "retrieved_utc": "2026-10-29T15:36:58.379982+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11655760",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii RH",
+      "host cell type": "Human HFF Cells",
+      "source_name": "HFF and parasites",
+      "strain background": "RH",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-03-30",
+      "ENA-LAST-UPDATE": "2022-03-30"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN25038736": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN25038736",
+    "sha256": "d1a5be8d5d46f199f7b562adc90c8b8ee18951df951874fd9b141aa7d7ff305c",
+    "retrieved_utc": "2026-10-29T15:36:58.380033+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11688696",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "strain/genotype": "KOX-4",
+      "cell type": "tachyzoites",
+      "source_name": "KOX-4 (ME49\u0394AP2X-4)",
+      "genotype": "AP2X-4 knock out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-05-31",
+      "ENA-LAST-UPDATE": "2022-05-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN25038737": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN25038737",
+    "sha256": "e77aaa5ff8c1fcefe261bc1c217b37dd132a48c4ff9a25c86560d79f64c2baba",
+    "retrieved_utc": "2026-10-29T15:36:58.380085+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11688695",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "strain/genotype": "KOX-4",
+      "cell type": "tachyzoites",
+      "source_name": "KOX-4 (ME49\u0394AP2X-4)",
+      "genotype": "AP2X-4 knock out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-05-31",
+      "ENA-LAST-UPDATE": "2022-05-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN25038738": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN25038738",
+    "sha256": "c1694aa554d82c5738b8a07176becb735fffa98cd8d037da244fe2984f304f0c",
+    "retrieved_utc": "2026-10-29T15:36:58.380134+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11688694",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "strain/genotype": "KOX-4",
+      "cell type": "tachyzoites",
+      "source_name": "KOX-4 (ME49\u0394AP2X-4)",
+      "genotype": "AP2X-4 knock out",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-05-31",
+      "ENA-LAST-UPDATE": "2022-05-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN25038739": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN25038739",
+    "sha256": "a60680d486d6d4cb780149e09bc0ea8903a87fec38b65f1ae0357b1de1a23a98",
+    "retrieved_utc": "2026-10-29T15:36:58.380182+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11688693",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "strain/genotype": "ME49",
+      "cell type": "tachyzoites",
+      "source_name": "WT ME49",
+      "genotype": "wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-05-31",
+      "ENA-LAST-UPDATE": "2022-05-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN25038740": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN25038740",
+    "sha256": "a6b6fec4bd962403ce0389fbbef1555067b558da9e91a9b9042415638a121eea",
+    "retrieved_utc": "2026-10-29T15:36:58.380232+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11688692",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "strain/genotype": "ME49",
+      "cell type": "tachyzoites",
+      "source_name": "WT ME49",
+      "genotype": "wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-05-31",
+      "ENA-LAST-UPDATE": "2022-05-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN25038741": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN25038741",
+    "sha256": "93a7c6dc2d96d7a2a2364cbf97f3e800cc1e674ea10e6d3edb0dd6725f76594f",
+    "retrieved_utc": "2026-10-29T15:36:58.380281+00:00",
+    "attributes": {
+      "INSDC secondary accession": "SRS11688691",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "strain/genotype": "ME49",
+      "cell type": "tachyzoites",
+      "source_name": "WT ME49",
+      "genotype": "wild type",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-05-31",
+      "ENA-LAST-UPDATE": "2022-05-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN26491222": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN26491222",
+    "sha256": "b9cc0f925e97a13750ecef13f9f6555cd04ff53e3f2ccfadbaa4a56a356c5f34",
+    "retrieved_utc": "2026-10-29T15:36:58.380327+00:00",
+    "attributes": {
+      "treatment": "Control",
+      "ENA-FIRST-PUBLIC": "2022-04-15",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-15",
+      "host cell type": "human foreskin fibroblast cells (HFF)",
+      "source_name": "TATI strain"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN26491223": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN26491223",
+    "sha256": "0534fc34531f8524f53bdf03b2c667b5dfeb407f2f4bcd579730a3bbe8357309",
+    "retrieved_utc": "2026-10-29T15:36:58.380371+00:00",
+    "attributes": {
+      "treatment": "Control",
+      "ENA-FIRST-PUBLIC": "2022-04-15",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-15",
+      "host cell type": "human foreskin fibroblast cells (HFF)",
+      "source_name": "TATI strain"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN26491224": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN26491224",
+    "sha256": "7a3cf1c4c87a476cabe0f0e28090f24a8d532491aaae5e8dad2d3685b09be307",
+    "retrieved_utc": "2026-10-29T15:36:58.380415+00:00",
+    "attributes": {
+      "treatment": "Control",
+      "ENA-FIRST-PUBLIC": "2022-04-15",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-15",
+      "host cell type": "human foreskin fibroblast cells (HFF)",
+      "source_name": "TATI strain"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN26491225": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN26491225",
+    "sha256": "3cbc896bf26fe60c21f3e6614c998a49ffdcde1e591154cfaa732dcabb203b1c",
+    "retrieved_utc": "2026-10-29T15:36:58.380462+00:00",
+    "attributes": {
+      "treatment": "CaM indirect knockout with Atc",
+      "ENA-FIRST-PUBLIC": "2022-04-15",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-15",
+      "host cell type": "human foreskin fibroblast cells (HFF)",
+      "source_name": "TATI strain"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN26491226": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN26491226",
+    "sha256": "3187512e9ebe31827ca67f616ee7dd831df2101edc863da617b9ecfa61484c23",
+    "retrieved_utc": "2026-10-29T15:36:58.380511+00:00",
+    "attributes": {
+      "treatment": "CaM indirect knockout with Atc",
+      "ENA-FIRST-PUBLIC": "2022-04-15",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-15",
+      "host cell type": "human foreskin fibroblast cells (HFF)",
+      "source_name": "TATI strain"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN26491227": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN26491227",
+    "sha256": "faaf5a9224abffd69beb1f3f3c52d2d06bdf42463316645ac7b006b70eb2ec34",
+    "retrieved_utc": "2026-10-29T15:36:58.380557+00:00",
+    "attributes": {
+      "treatment": "CaM indirect knockout with Atc",
+      "ENA-FIRST-PUBLIC": "2022-04-15",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-15",
+      "host cell type": "human foreskin fibroblast cells (HFF)",
+      "source_name": "TATI strain"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620191": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620191",
+    "sha256": "0074b73cb2383fbbe30142ce7abf4ea38841770c34181bf44be8f646100cffdd",
+    "retrieved_utc": "2026-10-29T15:36:58.380605+00:00",
+    "attributes": {
+      "treatment": "72h, pH 8.2, ambient air, 24h with auxin",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620192": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620192",
+    "sha256": "77e4487691cfef8154c1c8dbb273d5e17d4b441a32044f3de8e4498bf0cb2f3b",
+    "retrieved_utc": "2026-10-29T15:36:58.380655+00:00",
+    "attributes": {
+      "treatment": "72h, pH 8.2, ambient air, 24h with auxin",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620193": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620193",
+    "sha256": "21bd8247887d57bf29e9d44afca0fa83b2ac7cdaa4378c8da0fbfe77d54012b4",
+    "retrieved_utc": "2026-10-29T15:36:58.380705+00:00",
+    "attributes": {
+      "treatment": "48h, pH 7.4, 5% CO2, 24h with auxin",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "tachyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620194": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620194",
+    "sha256": "1dd4ce9404fa22f15f89363e0a5f5b868616cb9b698a9de16cee8082814c98d6",
+    "retrieved_utc": "2026-10-29T15:36:58.380756+00:00",
+    "attributes": {
+      "treatment": "48h, pH 7.4, 5% CO2, no auxin",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "tachyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620195": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620195",
+    "sha256": "34818991cffed7346c2316ebce9f42624b72e84c157737e9864397dcc08c4c21",
+    "retrieved_utc": "2026-10-29T15:36:58.380806+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCyc5_Bz_+aux_rep2",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620196": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620196",
+    "sha256": "db7c7b843945ba17da05ca487e85a68daf8704881210a893d0976cb56bb04a38",
+    "retrieved_utc": "2026-10-29T15:36:58.380856+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCyc5_Bz_+aux_rep1",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620197": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620197",
+    "sha256": "a88907066a10822fbe13978a3a2f8c929dda367202e9ea0d27ba38988f9c80bf",
+    "retrieved_utc": "2026-10-29T15:36:58.380904+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCyc5_Bz_-aux_rep2",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620198": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620198",
+    "sha256": "00e300658efda88c54ff834d098b632fd8c0fbdb490f5b9180b16ba1e46fb8e4",
+    "retrieved_utc": "2026-10-29T15:36:58.380951+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCyc5_Bz_-aux_rep1",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620199": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620199",
+    "sha256": "5c3f7f6415b0758139a7d9433a63045ba0d1358a17d68d8dea4072d593aa28c9",
+    "retrieved_utc": "2026-10-29T15:36:58.381001+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCycP2_Bz_+aux_rep2",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "tachyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620200": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620200",
+    "sha256": "9532f70c201f7d613513d77d73fab056cc1638b75a2642a8279e1d248ec68298",
+    "retrieved_utc": "2026-10-29T15:36:58.381052+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCycP2_Bz_+aux_rep1",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "tachyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620201": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620201",
+    "sha256": "c54df38612ca82eed8477883ac4909b8ac64c57003709c767c97976ba7eea348",
+    "retrieved_utc": "2026-10-29T15:36:58.381100+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCycP2_Bz_-aux_rep2",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "tachyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620202": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620202",
+    "sha256": "a3614a2a0fc46769db5e5c8daf8faee0805b4fb4fbf6c3b0f6aad63cab3d5e6b",
+    "retrieved_utc": "2026-10-29T15:36:58.381150+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCycP2_Bz_-aux_rep1",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620203": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620203",
+    "sha256": "2d533e1a3a51ef9609447f89219a1f3f6dae617ef65e44fd2debfe1ad8186522",
+    "retrieved_utc": "2026-10-29T15:36:58.381200+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCycP2_Tz_+aux_rep2",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620204": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620204",
+    "sha256": "6a8a750299448fcfd84b90ca2bc102e3a2080331727757441933ea14b52d5de9",
+    "retrieved_utc": "2026-10-29T15:36:58.381248+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCycP2_Tz_+aux_rep1",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "bradyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620205": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620205",
+    "sha256": "3643a7fd3a95373a6f717377fd677a048bac00b619a2c3c27316d90ae70bc3f8",
+    "retrieved_utc": "2026-10-29T15:36:58.381295+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCycP2_Tz_-aux_rep2",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "tachyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN27620206": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN27620206",
+    "sha256": "bd8df1b381f4bbe9368dbbfff678b9be1e9ffb606549f77d4f1221e48d35ff91",
+    "retrieved_utc": "2026-10-29T15:36:58.381345+00:00",
+    "attributes": {
+      "treatment": "ME49_TgCycP2_Tz_-aux_rep1",
+      "ENA-FIRST-PUBLIC": "2022-04-26",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2022-04-26",
+      "tissue": "parasite",
+      "cell type": "tachyzoite",
+      "cell line": "ME49",
+      "source_name": "parasite",
+      "genotype": "DKu80Dhxgprt AtTIR1"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN29844702": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN29844702",
+    "sha256": "b225156a4e2c132dd82fbc999d2f27837fad28dd54b657894d91065afa73394a",
+    "retrieved_utc": "2026-10-29T15:36:58.381399+00:00",
+    "attributes": {
+      "treatment": "30 days in mice",
+      "INSDC secondary accession": "SRS13996461",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Mouse brain",
+      "cell type": "Type II",
+      "cell line": "ME49",
+      "source_name": "Mouse brain",
+      "genotype": "Tissue cyst",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-07-23",
+      "ENA-LAST-UPDATE": "2022-07-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN29844703": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN29844703",
+    "sha256": "975b0cc948b827bfa8960517eb7ab176eb230cd9ccda9429edd25c046cbfa4cd",
+    "retrieved_utc": "2026-10-29T15:36:58.381450+00:00",
+    "attributes": {
+      "treatment": "30 days in mice",
+      "INSDC secondary accession": "SRS13996460",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "Mouse brain",
+      "cell type": "Type II",
+      "cell line": "ME49",
+      "source_name": "Mouse brain",
+      "genotype": "Tissue cyst",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-07-23",
+      "ENA-LAST-UPDATE": "2022-07-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN29844704": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN29844704",
+    "sha256": "e422574d562e93070b9025d9209bcd8621cb3922f2614dfbe7a60e15ad6f3afb",
+    "retrieved_utc": "2026-10-29T15:36:58.381500+00:00",
+    "attributes": {
+      "treatment": "pH 8.2",
+      "INSDC secondary accession": "SRS13996459",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "HFF cell",
+      "cell type": "Type II",
+      "cell line": "ME49",
+      "source_name": "HFF cell",
+      "genotype": "Bradyzoite",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-07-23",
+      "ENA-LAST-UPDATE": "2022-07-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN29844705": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN29844705",
+    "sha256": "ad80ce1797e4c3c154acfd70e50e3b2328531e8078c37165f5bf846fde2116c3",
+    "retrieved_utc": "2026-10-29T15:36:58.381555+00:00",
+    "attributes": {
+      "treatment": "pH 7.0",
+      "INSDC secondary accession": "SRS13996458",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "tissue": "HFF cell",
+      "cell type": "Type II",
+      "cell line": "ME49",
+      "source_name": "HFF cell",
+      "genotype": "Tacyzoite",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2022-07-23",
+      "ENA-LAST-UPDATE": "2022-07-23"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896538": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896538",
+    "sha256": "b5e2a17ac5648dae68e46e84bd94197355cf9f03b65f6bbbd19f8e637f89a804",
+    "retrieved_utc": "2026-10-29T15:36:58.381609+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896539": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896539",
+    "sha256": "6e6913acda1294c5e287d305dc22a27583411d7ba14196e821c7bac9afb8a0b0",
+    "retrieved_utc": "2026-10-29T15:36:58.381661+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896540": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896540",
+    "sha256": "5a6ee86948ae4690df12199b4ccc530a1a5a55731a3569d81c7fc04de00ca77a",
+    "retrieved_utc": "2026-10-29T15:36:58.381716+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896541": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896541",
+    "sha256": "bd9a56d27889942e412d4c9afeee1d83a9fa48d28c20a1f27bbef0d490f31ffe",
+    "retrieved_utc": "2026-10-29T15:36:58.381771+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896542": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896542",
+    "sha256": "58cc9a32ab755c4cc6e85d823b8b4181420b4352a535722ccc9d304ec9362868",
+    "retrieved_utc": "2026-10-29T15:36:58.381823+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896543": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896543",
+    "sha256": "7aa2931c13091e5d188279704ca0a561863ab7fd4f871042b39d1d3bbfe0ac9b",
+    "retrieved_utc": "2026-10-29T15:36:58.381873+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896544": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896544",
+    "sha256": "00bfb6e32ea7c28540b9ec60d919f167a976d0226720b80587206c6f267dc06d",
+    "retrieved_utc": "2026-10-29T15:36:58.381926+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896545": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896545",
+    "sha256": "bae04e57ab8e2cda0bd4c51e3731814259a6db869761ce443ec5e1d6a5363d64",
+    "retrieved_utc": "2026-10-29T15:36:58.381977+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896546": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896546",
+    "sha256": "f7ae5c77152c88d82acf6b8a768acf7e0f239ade1966c8f31ae32d988710b184",
+    "retrieved_utc": "2026-10-29T15:36:58.382029+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896547": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896547",
+    "sha256": "ba907fd0369663a6cfdfcd66ae206380de2cd03434f3f1b43832d2442c26c359",
+    "retrieved_utc": "2026-10-29T15:36:58.382082+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896548": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896548",
+    "sha256": "c86e38f61491f397bdd41a0c15ebfdc0197b4cbc27ba9d13514ac8fc0f5d0cac",
+    "retrieved_utc": "2026-10-29T15:36:58.382136+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896549": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896549",
+    "sha256": "7a372c706b2be73af4b980ad3b0cbf5bbad198b32f4b0c4183adccd7dfc2f5f7",
+    "retrieved_utc": "2026-10-29T15:36:58.382192+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896550": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896550",
+    "sha256": "d0edfac906b73946f7f8c11d2f796f8e86ac59c0acb5e79e2d80ef7eb586929d",
+    "retrieved_utc": "2026-10-29T15:36:58.382244+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896551": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896551",
+    "sha256": "cdf9a9088c0ab5672d9a425a804be13e8c5635cd1fd19737c9759c22b69cab5b",
+    "retrieved_utc": "2026-10-29T15:36:58.382294+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896552": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896552",
+    "sha256": "380eb0b7c44491344af9f2655ec9fcb6fc474254dd8c74efa5f73059ae5dac3c",
+    "retrieved_utc": "2026-10-29T15:36:58.382345+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "replicating tachyzoites under different conditions",
+      "cell type": "tachyzoites and/or bradyzoites",
+      "source_name": "replicating tachyzoites under different conditions"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896553": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896553",
+    "sha256": "e18d60471d86fb8c5ee69dab7911d4def4a592b90e8bb1a03e34973778e20fd1",
+    "retrieved_utc": "2026-10-29T15:36:58.382399+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "freshly excysted sporozoites",
+      "cell type": "sporozoites grown in vitro",
+      "source_name": "freshly excysted sporozoites"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896554": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896554",
+    "sha256": "73b48c0fdd714d2a2616bb0fbf1c18a66c0273912031a485593fc4adce5c95df",
+    "retrieved_utc": "2026-10-29T15:36:58.382451+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "freshly excysted sporozoites",
+      "cell type": "sporozoites grown in vitro",
+      "source_name": "freshly excysted sporozoites"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896555": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896555",
+    "sha256": "ac885167116be3a7690dc6777062b24094dc8bad3ab17fdb6ccc3f4815c300e4",
+    "retrieved_utc": "2026-10-29T15:36:58.382501+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "high pH, low C02, low serum conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "freshly excysted sporozoites",
+      "cell type": "sporozoites grown in vitro",
+      "source_name": "freshly excysted sporozoites"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896556": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896556",
+    "sha256": "0860c2a86dc5e34608ff15a7fd69a77ce61b58437a2d4faace2e250d27b90765",
+    "retrieved_utc": "2026-10-29T15:36:58.382552+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "freshly excysted sporozoites",
+      "cell type": "sporozoites grown in vitro",
+      "source_name": "freshly excysted sporozoites"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896557": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896557",
+    "sha256": "a773baf173d588084c14425a12e41337960d25baf013c48314178b353339797d",
+    "retrieved_utc": "2026-10-29T15:36:58.382606+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "freshly excysted sporozoites",
+      "cell type": "sporozoites grown in vitro",
+      "source_name": "freshly excysted sporozoites"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN31896558": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN31896558",
+    "sha256": "928ce634c39637adda174cf8d11a19bac7fddf266a36e717ea68344e8d8d2f79",
+    "retrieved_utc": "2026-10-29T15:36:58.382662+00:00",
+    "attributes": {
+      "strain": "VEG",
+      "collection_date": "missing",
+      "treatment": "control media conditions",
+      "ENA-FIRST-PUBLIC": "2023-08-18",
+      "organism": "Toxoplasma gondii",
+      "ENA-LAST-UPDATE": "2023-08-18",
+      "geo_loc_name": "missing",
+      "scientific_name": "Toxoplasma gondii",
+      "tissue": "freshly excysted sporozoites",
+      "cell type": "sporozoites grown in vitro",
+      "source_name": "freshly excysted sporozoites"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891359": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891359",
+    "sha256": "9f95a064bdd09740a67fd38253344c4ae9803ea6292bc55aa79de95e2d4ca33c",
+    "retrieved_utc": "2026-10-29T15:36:58.382715+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565639",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 3",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato_delta_bfd2::HXGPRT",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891360": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891360",
+    "sha256": "eeeb0b95c33ec74caeac6b41987ce21b4c353bd4157dec87c518df88fc8ae626",
+    "retrieved_utc": "2026-10-29T15:36:58.385792+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565638",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 3",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato_delta_bfd1::mNeonGreen",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891361": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891361",
+    "sha256": "5c0df392451ed2f7894046e808fc202b54b5f2869053b22233ad17ea54163139",
+    "retrieved_utc": "2026-10-29T15:36:58.386384+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565637",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 3",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891362": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891362",
+    "sha256": "3d40717076fbbaa77a78456e32de1bfc334d1884507f031ecd107214c1d5c249",
+    "retrieved_utc": "2026-10-29T15:36:58.386347+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565636",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 2",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato_delta_bfd2::HXGPRT",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891363": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891363",
+    "sha256": "20b26fbe900bd9b4f18f36f26c3874c1ff0f69b473e88728d92d8958edd662c8",
+    "retrieved_utc": "2026-10-29T15:36:58.387280+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565635",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 2",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato_delta_bfd1::mNeonGreen",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891364": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891364",
+    "sha256": "89c7f92bd9231c5e4711c67b4ae1767053ae800131993bbc6da16cb392734cc1",
+    "retrieved_utc": "2026-10-29T15:36:58.387218+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565633",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 2",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891365": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891365",
+    "sha256": "efb95ddaebe74a5c0fdb210a4624b56609fed069bbab5a1879c10c19ef58195c",
+    "retrieved_utc": "2026-10-29T15:36:58.386557+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565634",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 1",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato_delta_bfd2::HXGPRT",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891366": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891366",
+    "sha256": "3c47c440059b4eac85553fafe0b31c539302c9b78d074c29c7dfa01cc0374c94",
+    "retrieved_utc": "2026-10-29T15:36:58.386483+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565632",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 1",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato_delta_bfd1::mNeonGreen",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32891367": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32891367",
+    "sha256": "28fd49e90c746a121e57c057a39f448aa8851a1209a4afdaa2306f4205f4c5f8",
+    "retrieved_utc": "2026-10-29T15:36:58.387350+00:00",
+    "attributes": {
+      "strain": "PRU",
+      "INSDC secondary accession": "SRS16565631",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "replicate information": "Biological replicate 1",
+      "cell type": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "source_name": "intracellular protozoan parasite, cultured in primary mouse neurons",
+      "genotype": "Pru-OVA-TdTomato",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32934222": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32934222",
+    "sha256": "d1fbf34c8246fc7931b98c35ac741c2813b43911fc2ea92ca915b464d21618b0",
+    "retrieved_utc": "2026-10-29T15:36:58.386616+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "50uM IAA",
+      "condition": "96hr alkaline stress",
+      "INSDC secondary accession": "SRS16604066",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "intracellular protozoan parasite, cultured in HFFs",
+      "source_name": "intracellular protozoan parasite, cultured in HFFs",
+      "genotype": "ME49/TIR1/208020-mNG-mAID",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN32934231": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN32934231",
+    "sha256": "16083603c902d71aedab3a151071dc7f731ea9764f702aefa42070c3783c77bd",
+    "retrieved_utc": "2026-10-29T15:36:58.386671+00:00",
+    "attributes": {
+      "strain": "ME49",
+      "treatment": "Vehicle (PBS)",
+      "condition": "96hr alkaline stress",
+      "INSDC secondary accession": "SRS16604057",
+      "NCBI submission package": "Generic.1.0",
+      "organism": "Toxoplasma gondii",
+      "cell type": "intracellular protozoan parasite, cultured in HFFs",
+      "source_name": "intracellular protozoan parasite, cultured in HFFs",
+      "genotype": "ME49/TIR1/306620-mNG-mAID",
+      "BioSampleModel": "Generic",
+      "ENA-FIRST-PUBLIC": "2023-03-31",
+      "ENA-LAST-UPDATE": "2023-03-31"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN37119122": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN37119122",
+    "sha256": "d738de7c162f62b932610720bab5689f231d2851743f6b1616815901d6363f0f",
+    "retrieved_utc": "2026-10-29T15:36:58.386735+00:00",
+    "attributes": {
+      "strain": "Type 1",
+      "collection_date": "2021-10-18",
+      "replicate": "replicate = biological replicate 1",
+      "INSDC secondary accession": "SRS18696792",
+      "organism": "Toxoplasma gondii",
+      "sample_type": "RH grown in HFF",
+      "isolate": "not collected",
+      "number": "1",
+      "NCBI submission package": "Microbe.1.0",
+      "host": "not applicable",
+      "geo_loc_name": "not applicable",
+      "isolation_source": "not applicable",
+      "BioSampleModel": "Microbe, viral or environmental",
+      "ENA-FIRST-PUBLIC": "2025-08-20",
+      "ENA-LAST-UPDATE": "2025-08-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN37119123": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN37119123",
+    "sha256": "d327b7783ae64020a64bf31b4a20eae9d2ce9f813061f12789a85ef7e22a2ae0",
+    "retrieved_utc": "2026-10-29T15:36:58.386804+00:00",
+    "attributes": {
+      "strain": "Type 1",
+      "collection_date": "2021-10-18",
+      "replicate": "replicate = biological replicate 2",
+      "INSDC secondary accession": "SRS18696793",
+      "organism": "Toxoplasma gondii",
+      "sample_type": "RH grown in HFF",
+      "isolate": "not collected",
+      "number": "2",
+      "NCBI submission package": "Microbe.1.0",
+      "host": "not applicable",
+      "geo_loc_name": "not applicable",
+      "isolation_source": "not applicable",
+      "BioSampleModel": "Microbe, viral or environmental",
+      "ENA-FIRST-PUBLIC": "2025-08-20",
+      "ENA-LAST-UPDATE": "2025-08-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN37119124": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN37119124",
+    "sha256": "ffb02160271b50bdbe9efcd93766dc4cbfdd5c54f161eb75702e32a758b1bad6",
+    "retrieved_utc": "2026-10-29T15:36:58.386864+00:00",
+    "attributes": {
+      "strain": "Type 1",
+      "collection_date": "2021-10-18",
+      "replicate": "replicate = biological replicate 3",
+      "INSDC secondary accession": "SRS18696794",
+      "organism": "Toxoplasma gondii",
+      "sample_type": "RH grown in HFF",
+      "isolate": "not collected",
+      "number": "3",
+      "NCBI submission package": "Microbe.1.0",
+      "host": "not applicable",
+      "geo_loc_name": "not applicable",
+      "isolation_source": "not applicable",
+      "BioSampleModel": "Microbe, viral or environmental",
+      "ENA-FIRST-PUBLIC": "2025-08-20",
+      "ENA-LAST-UPDATE": "2025-08-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN37119125": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN37119125",
+    "sha256": "472d706df8a193b9bef50638051b8885b639c38d8e36b56b1db1ce4709b0070f",
+    "retrieved_utc": "2026-10-29T15:36:58.386921+00:00",
+    "attributes": {
+      "strain": "Type 1",
+      "collection_date": "2021-10-18",
+      "replicate": "replicate = biological replicate 4",
+      "INSDC secondary accession": "SRS18696795",
+      "organism": "Toxoplasma gondii",
+      "sample_type": "RH grown in HFF",
+      "isolate": "not collected",
+      "number": "4",
+      "NCBI submission package": "Microbe.1.0",
+      "host": "not applicable",
+      "geo_loc_name": "not applicable",
+      "isolation_source": "not applicable",
+      "BioSampleModel": "Microbe, viral or environmental",
+      "ENA-FIRST-PUBLIC": "2025-08-20",
+      "ENA-LAST-UPDATE": "2025-08-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN37119126": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN37119126",
+    "sha256": "e2765993c1189517efa3a6d2aa6fa6ce18f751b99f3960fe975349364bdaa57c",
+    "retrieved_utc": "2026-10-29T15:36:58.386979+00:00",
+    "attributes": {
+      "strain": "Type 1",
+      "collection_date": "2021-10-18",
+      "replicate": "replicate = biological replicate 1",
+      "INSDC secondary accession": "SRS18696796",
+      "organism": "Toxoplasma gondii",
+      "sample_type": "Trx1 mutant grown in HFF",
+      "isolate": "not collected",
+      "number": "5",
+      "NCBI submission package": "Microbe.1.0",
+      "host": "not applicable",
+      "geo_loc_name": "not applicable",
+      "isolation_source": "not applicable",
+      "BioSampleModel": "Microbe, viral or environmental",
+      "ENA-FIRST-PUBLIC": "2025-08-20",
+      "ENA-LAST-UPDATE": "2025-08-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN37119127": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN37119127",
+    "sha256": "05530f731814f39e6af597363bc19678ffd9cf303876e8b2f5dfcbe4139939ea",
+    "retrieved_utc": "2026-10-29T15:36:58.387036+00:00",
+    "attributes": {
+      "strain": "Type 1",
+      "collection_date": "2021-10-18",
+      "replicate": "replicate = biological replicate 2",
+      "INSDC secondary accession": "SRS18696797",
+      "organism": "Toxoplasma gondii",
+      "sample_type": "Trx1 mutant grown in HFF",
+      "isolate": "not collected",
+      "number": "6",
+      "NCBI submission package": "Microbe.1.0",
+      "host": "not applicable",
+      "geo_loc_name": "not applicable",
+      "isolation_source": "not applicable",
+      "BioSampleModel": "Microbe, viral or environmental",
+      "ENA-FIRST-PUBLIC": "2025-08-20",
+      "ENA-LAST-UPDATE": "2025-08-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN37119128": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN37119128",
+    "sha256": "bb9ca8304110078358e69803bdc40348cd55292d274762aea545acd2499aad2f",
+    "retrieved_utc": "2026-10-29T15:36:58.387092+00:00",
+    "attributes": {
+      "strain": "Type 1",
+      "collection_date": "2021-10-18",
+      "replicate": "replicate = biological replicate 3",
+      "INSDC secondary accession": "SRS18696798",
+      "organism": "Toxoplasma gondii",
+      "sample_type": "Trx1 mutant grown in HFF",
+      "isolate": "not collected",
+      "number": "7",
+      "NCBI submission package": "Microbe.1.0",
+      "host": "not applicable",
+      "geo_loc_name": "not applicable",
+      "isolation_source": "not applicable",
+      "BioSampleModel": "Microbe, viral or environmental",
+      "ENA-FIRST-PUBLIC": "2025-08-20",
+      "ENA-LAST-UPDATE": "2025-08-20"
+    },
+    "status": "source attributes retrieved"
+  },
+  "SAMN37119129": {
+    "url": "https://www.ebi.ac.uk/ena/browser/api/xml/SAMN37119129",
+    "sha256": "90552fea543037451e94dc3ff434be4bc9adbc40a07076e871b355a924e642ea",
+    "retrieved_utc": "2026-10-29T15:36:58.387148+00:00",
+    "attributes": {
+      "strain": "Type 1",
+      "collection_date": "2021-10-18",
+      "replicate": "replicate = biological replicate 4",
+      "INSDC secondary accession": "SRS18696799",
+      "organism": "Toxoplasma gondii",
+      "sample_type": "Trx1 mutant grown in HFF",
+      "isolate": "not collected",
+      "number": "8",
+      "NCBI submission package": "Microbe.1.0",
+      "host": "not applicable",
+      "geo_loc_name": "not applicable",
+      "isolation_source": "not applicable",
+      "BioSampleModel": "Microbe, viral or environmental",
+      "ENA-FIRST-PUBLIC": "2025-08-20",
+      "ENA-LAST-UPDATE": "2025-08-20"
+    },
+    "status": "source attributes retrieved"
+  }
+}

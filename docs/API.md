@@ -437,3 +437,14 @@ Strategy question/output declarations and adapter plans: [capabilities](capabili
 Immutable inference roles, manifests and invalidation: [artifacts](artifacts.md).
 
 Shared row-level scorecard aggregation and denominator reconciliation: [record scorecards](record-scorecards.md).
+
+
+## Downloaded application data and RNA expression
+
+The wheel contains code and a versioned GitHub data descriptor. Open the app to
+accept its download popup, or run `parascape-data --download` without a display.
+`parascape.data_manager.status()` checks local availability; `download()` explicitly
+retrieves and verifies the pinned public GitHub asset. No network request occurs
+just from importing a module. `parascape.rna_profiles.profiles` reads per-gene
+expression; `parascape.rna_design.samples` exposes submitted sample/run links,
+replicate/control evidence and processing coverage.

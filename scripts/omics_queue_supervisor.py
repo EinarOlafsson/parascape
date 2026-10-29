@@ -165,6 +165,19 @@ class Services:
             raise ValueError('supervisor may control only its owned services')
         subprocess.run(['systemctl', '--user', action, *units], check=True, timeout=120)
 
+    def worker_status(self) -> str:
+        """Expose signal-paused processes without overriding another operator's pause."""
+        unit = getattr(self, 'worker_unit', SERVICES[2])
+        group = Path('/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice') / unit
+        try:
+            for pid in (group / 'cgroup.procs').read_text().split():
+                text = (Path('/proc') / pid / 'stat').read_text()
+                if text.rsplit(')', 1)[1].split()[0] in ('T', 't'):
+                    return 'signal_paused'
+        except (OSError, IndexError):
+            pass
+        return 'running'
+
 
 def recover(services, previous: dict, completed: int, now: float) -> dict:
     """Restart missing workers; normal incomplete exits never mean queue completion."""
@@ -177,7 +190,7 @@ def recover(services, previous: dict, completed: int, now: float) -> dict:
             services.command('start', unit)
     worker = SERVICES[2]
     if services.state(worker) in ('active', 'activating', 'reloading'):
-        state['worker'] = 'running'
+        state['worker'] = services.worker_status() if hasattr(services, 'worker_status') else 'running'
     elif now >= state.get('retry_at', 0):
         services.command('start', worker)
         state['worker'] = 'restarted'

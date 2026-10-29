@@ -21,6 +21,8 @@ Nothing here computes anything: `strategies` and `strategy_catalog` do, and this
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import html
 import json
 import os
@@ -37,7 +39,7 @@ from . import techniques as TQ
 from . import theme as TH
 from .jobs import Stopped
 
-DATA = os.path.join(os.path.dirname(__file__), "data")
+DATA = _data_paths.data_dir()
 #: The verdicts each strategy's self-test earned on the shipped tables, written by
 #: `scripts/strategy_selftests.py`. Shown beside each strategy so its trustworthiness is visible
 #: before anything is run.

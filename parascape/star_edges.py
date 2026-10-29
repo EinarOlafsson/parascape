@@ -38,6 +38,8 @@ Qt-free, so the build script and the tests use it without a display.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import datetime
 import json
 import os
@@ -544,7 +546,7 @@ def from_stored(stored: pd.DataFrame, gene_ids, organism: str | None = None) -> 
 
 def shipped_path() -> str:
     """Where the shipped links live (inside the package)."""
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", SHIPPED_FILE)
+    return os.path.join(_data_paths.data_dir(), SHIPPED_FILE)
 
 
 def shipped_edges(organism: str, gene_ids, path: str | None = None) -> pd.DataFrame:

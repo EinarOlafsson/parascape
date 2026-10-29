@@ -1,0 +1,1586 @@
+{
+  "asset": "parascape-data-0.0.2.0.tar.gz",
+  "files": {
+    "af3_features.json": {
+      "sha256": "f07484a81d3fd720b7ccd984b817f4cdac68ecaf87d5ec46020145a317ad39a7",
+      "size": 853
+    },
+    "af3_features.parquet": {
+      "sha256": "e3f89269084400efe9405974f985322796838f95e6a4797080bb3a52885cb144",
+      "size": 85105
+    },
+    "af3_manifest.parquet": {
+      "sha256": "0d8b71808a8ab1eefc10e5ac27a09f8a1bfaf3d453caa56ffd208a391204eefa",
+      "size": 375540
+    },
+    "antisense_level.tsv": {
+      "sha256": "5546da8f13ad6760087019ddf313b933073397a7a5d0cb23cb2b00187b3d5dec",
+      "size": 154489
+    },
+    "cdpk1_substrates.tsv": {
+      "sha256": "ced6d1bd0d46cd93b8dde18a7ce5602919114c8a2dbb88a5edb86638574530d0",
+      "size": 6014
+    },
+    "claim_recipes.parquet": {
+      "sha256": "e0f19f38b1da1e40dffc07fcc98d1184310e26273cf18068e328b8f8759015cd",
+      "size": 7228
+    },
+    "claims.parquet": {
+      "sha256": "58f8648faa43157adec66cbc2908899e2ebf758a293adc6e3d382ef458b8a3ca",
+      "size": 305764
+    },
+    "crosslink_models.parquet": {
+      "sha256": "b2f7dcaec1d2c91dc611b562909f5734902a2a9c9d9ac3c58d5a27ac47c65060",
+      "size": 231696
+    },
+    "crosslink_partners.tsv": {
+      "sha256": "c28257788f4ddc050e53f34f9e1bb4b3c5f7b397b0345df46a7e8b043e94dda7",
+      "size": 7938
+    },
+    "deposit_brady_subtypes.tsv": {
+      "sha256": "485a82c9bc9f31c882f8f2990b13ad76acaaead016d9117c00969c249a659550",
+      "size": 615637
+    },
+    "deposit_crispr_glucose_limitation.tsv": {
+      "sha256": "ae30c1eac4aa646dd2b8cfe1fae06bd94d3da697775f195c4145e02c2c174d75",
+      "size": 630137
+    },
+    "deposit_crispr_invivo_composite.tsv": {
+      "sha256": "169533a51ab3d90b636b03bea6efb93368f1d5daeeae1e4225782f87d946a44f",
+      "size": 779379
+    },
+    "deposit_crispr_parasite_density.tsv": {
+      "sha256": "b1a61f55440ab11db74eae9b715754ff59dd3485cf599ea61433e05211ab39f1",
+      "size": 403175
+    },
+    "deposit_crispr_serum_restriction.tsv": {
+      "sha256": "82eb1ad51272ba350dcc10c0305d388a228860f7171b2a93ec611157a5864575",
+      "size": 749541
+    },
+    "deposit_gse302107_riboseq.tsv": {
+      "sha256": "03578ef86a4b8f38a922c088c501b129ce52edd89535d978f1c1c354c71497b1",
+      "size": 237824
+    },
+    "deposit_gse302108_utr5.tsv": {
+      "sha256": "62bd1310e2be71c612bdf01218f03721dee40a33b5a2a5db5d7e0ee88ad5f92c",
+      "size": 232300
+    },
+    "deposit_host_bmdm_baseline.tsv": {
+      "sha256": "0a639d93beb8baab0760fabf39459bfe0585937c2f1c596b827c24a8a2798bcc",
+      "size": 373299
+    },
+    "deposit_host_hepatocyte_pf_infection.tsv": {
+      "sha256": "c2d7caeeb9645fc9f3f6a9314cd2aebdd1542e7ef180731b004bdf677c314dbe",
+      "size": 501759
+    },
+    "deposit_host_hff_tg_infection.tsv": {
+      "sha256": "ff142579164cc5fee9fb4fa113694205fbffdaf5348b0e177ec40115cbf5ed79",
+      "size": 428932
+    },
+    "deposit_host_k562_rhoptry_gene_evidence.parquet": {
+      "sha256": "eb8a0534616782313473a815fac24947f14088a7c57aab89cde0b0090b35f73b",
+      "size": 1102147
+    },
+    "deposit_host_k562_rhoptry_screen.tsv": {
+      "sha256": "dbff77171b10a49318140e051a2c2c427e89ddf718d70b1840c04e5426c03047",
+      "size": 751853
+    },
+    "deposit_iron_depletion_proteome.tsv": {
+      "sha256": "4f62134477e387f167066ae1c5077bc38fd2da5ee8ae2e195e8b4361bd43942d",
+      "size": 231542
+    },
+    "deposit_mrna_decay_gse329845.tsv": {
+      "sha256": "1493bca5f9fd9d513d3e465d27210b9ed3042b0a04e3d18c4ece6a4f6f01f87f",
+      "size": 166043
+    },
+    "deposit_organelle_surface_turboid.tsv": {
+      "sha256": "a7b0698ab7f960e4ff26a96f84741e9cb26907c233a199836b0b23b91eb4cdfa",
+      "size": 30047
+    },
+    "deposit_pf_chromatin_proxiome.tsv": {
+      "sha256": "f5c56f6078ea2b9ddccad01459ddc5be16953e214f7e9f001838d6732b193692",
+      "size": 101884
+    },
+    "deposit_pf_committed_proteome.tsv": {
+      "sha256": "7957fa9492d2c4db02d3c8192aa9e0537b874da7f767e883764de3d88a4bd0b6",
+      "size": 78649
+    },
+    "deposit_pf_febrile_phospho.tsv": {
+      "sha256": "208b990edf3db788e7cb22f696586bb8cc43bd953406767eb94f2d08c017bb77",
+      "size": 50799
+    },
+    "deposit_pf_field_variation.tsv": {
+      "sha256": "9aa3714a3584cb882f58c2af440a59a70ddb1ad17d0da5c4a8749197c8c2b900",
+      "size": 229456
+    },
+    "deposit_pf_gametocyte_proteome.tsv": {
+      "sha256": "4b5d0cb06847518a0bb5a3ebc6e9a459d99cc54ec702d1e5afe02d1ef9acae52",
+      "size": 70832
+    },
+    "deposit_pf_hsp90_chemoproteome.tsv": {
+      "sha256": "e6e4ed8c9183380d6d83271e9ee8a3c2145e3b074a46f61db318c8d4c3032d77",
+      "size": 135934
+    },
+    "deposit_pf_latency_transcriptome.tsv": {
+      "sha256": "9cd23d5027645811e36f818747c18d9b7cde9e2a51423b44f92e9aea2fb22f68",
+      "size": 138857
+    },
+    "deposit_pf_m6a_nanopore.tsv": {
+      "sha256": "2f97e3381e3f1c9bf402ef8f2003f3e67e7f3dfd8fc6e4410812064e46bc76b8",
+      "size": 129252
+    },
+    "deposit_pf_meltome.tsv": {
+      "sha256": "a56cc223bf1a618f614f1c7d921d532c0ed5fe7925fa0c257c7af94b2ce8c8ce",
+      "size": 73652
+    },
+    "deposit_pf_mrna_dynamics.tsv": {
+      "sha256": "96b7f6a664afe559b8e6891ad3c0b1f62b323f2645886731d0346ed187530108",
+      "size": 177725
+    },
+    "deposit_pf_pb_fertility_transfer.tsv": {
+      "sha256": "3e1687e65fb0f8890646083a6653e348a9de461a3e4c44b21123b6fa20ad2025",
+      "size": 45684
+    },
+    "deposit_pf_resistome.tsv": {
+      "sha256": "a5f1dec0ea32417a80c934059d6f4c38e4bd032648d139ca0808051e6c63cc84",
+      "size": 171438
+    },
+    "deposit_pf_rna_dependence.tsv": {
+      "sha256": "7021ce0292138c5d7cf73073cb7dc139c4776c9fddf19dd01741d32460e64c61",
+      "size": 84913
+    },
+    "deposit_pf_spatial_proteome.tsv": {
+      "sha256": "7d408de469740219e59993ad0af7dd9513c5dd46529e859d6ecaa24813f5d8c8",
+      "size": 96468
+    },
+    "deposit_pf_target_engagement.tsv": {
+      "sha256": "89bb88fbb1c2293116f1657437801e90b9e4d90fb6ce1e51dd7602002ab42323",
+      "size": 58773
+    },
+    "escrt_recruitment_maxvit.tsv": {
+      "sha256": "a8a2de7cb1ad20f46a187ab55b84f32729c29ac9c61ef13c3e1ff9006c5e904a",
+      "size": 223
+    },
+    "escrt_recruitment_xgboost.tsv": {
+      "sha256": "79dd38305c45a4e1ee4c3a63a7b4b0ef9fbe72e998897b392c6db9e3f1d3e92f",
+      "size": 347
+    },
+    "esm_features.parquet": {
+      "sha256": "fc5a79781fddbff8c7b4c553e42412d25ccd931036f92889dcbb46a557313e2e",
+      "size": 13786425
+    },
+    "esm_manifest.parquet": {
+      "sha256": "b31093fccea1ca02195a91286c2fe184ccf06cd9f05c49e32aae69eb8707b460",
+      "size": 1172214
+    },
+    "functional_agreement.json": {
+      "sha256": "91e32f04ab83bfdab2f6e115be8456554b74e0f3cc5653143fc5aa1789253e89",
+      "size": 41250
+    },
+    "functional_agreement_uncertainty.json": {
+      "sha256": "0bc3e966f6ee493185f1189735245852b8b910a6548abdcb96496e376ef061f9",
+      "size": 5234
+    },
+    "functional_domain_names.json": {
+      "sha256": "66b1fc949d23dbf67f125d4eac11949c0e0fc6bd03eb3ad5020c2fd0796564de",
+      "size": 3185960
+    },
+    "functional_results.json": {
+      "sha256": "7f917b83f211c7d619b90aefb2d6cf01d75efdded703f1b71cbbcfd5934c2134",
+      "size": 27403040
+    },
+    "graph.npz": {
+      "sha256": "ba0460246b76f4808a7613e97d3cb5216cdcb0555f6aa35b85a43029f2c16e2d",
+      "size": 1538524
+    },
+    "hf_release/README.md": {
+      "sha256": "4b0ffa590b6f6ac715e48a22505e21c23ee121a5411cf3244243128610052e74",
+      "size": 1845
+    },
+    "hf_release/studies.parquet": {
+      "sha256": "a46fbffe33274da256df8eebaf9d553c11a2f2401296e430d57a86489df824ba",
+      "size": 19089
+    },
+    "hf_release/study_gene_membership.parquet": {
+      "sha256": "757e53ae4908848cccbce9e67305c5b6698990c9995de584ff5304aae77e1dd9",
+      "size": 187577
+    },
+    "host_bridges.parquet": {
+      "sha256": "4b93fcbb605b7312c10b7387fbb54d560a69aff155dc115b781553cc68acc940",
+      "size": 22385
+    },
+    "host_foundation_summary.json": {
+      "sha256": "dd26db5ba4bb6855e9aabde667fe6835b03ea12da73f22ff562782b22ee3df6d",
+      "size": 1375
+    },
+    "host_interactions.parquet": {
+      "sha256": "ee9446ff4a22ec22dbe51fd028daf87d409071f636087ee86f3636af081fa30d",
+      "size": 10150
+    },
+    "host_projection_withdrawals.json": {
+      "sha256": "3406e8e679f93f4656da8d1e2923f8a5f92f62da425819ae8d70bf271b6fe6ef",
+      "size": 65013
+    },
+    "host_species_migration.json": {
+      "sha256": "f379a23ab9c2dec2d4c95acf69072bdb3a3790c3e4c820743e8ea82fec7190f3",
+      "size": 3801
+    },
+    "hs_host_proteins.parquet": {
+      "sha256": "1b5af9142db5d67a4d0d3e072c541078281e750fe3c0ba8e22330a619623cfa0",
+      "size": 1479770
+    },
+    "icons/Animal_cells.svg": {
+      "sha256": "7761187d027e9300cc92aac2bf247cd7ff7741e238682001ab54afa531357b32",
+      "size": 548971
+    },
+    "icons/Apicomplexa_cells.svg": {
+      "sha256": "77bd023a000bd1f89ac3ee13d0bdfb8d6db2078b1e4c0c57f62aabb4170589a1",
+      "size": 206373
+    },
+    "icons/logo_01_constellation_1.svg": {
+      "sha256": "33c2582043e78b34ad8b0ee3d3b7faaafc5a395306762ca1150c30583685ff15",
+      "size": 946
+    },
+    "icons/logo_02_constellation_2.svg": {
+      "sha256": "934bc7f0768f21ad1ed383cff5cda33b81183c400953490de7ebc0395b8717b0",
+      "size": 1626
+    },
+    "icons/logo_03_constellation_3.svg": {
+      "sha256": "cfc4a287ab373136ee8afb8fec1e574eb349594acdb5d588adaf6609baf04ce4",
+      "size": 2862
+    },
+    "icons/logo_04_constellation_4.svg": {
+      "sha256": "520a78fd570b8f9424b6a5dae0263d8351c71831485318592778b1dbad56c7d6",
+      "size": 2688
+    },
+    "icons/logo_05_constellation_5.svg": {
+      "sha256": "537765ae2d4e4607515ac61ea66e944ebfc4a58a5006cfc5cead418a4d926ae1",
+      "size": 1939
+    },
+    "icons/logo_06_constellation_6.svg": {
+      "sha256": "52a395ec9ff95b40bb407368fce2a9e1e333ec8de51029b2b656300316ce0a25",
+      "size": 3514
+    },
+    "icons/logo_07_constellation_7.svg": {
+      "sha256": "d6fcda6faba43efbb7cab31b2f791c7685320abaae27e4eb71e4b213b3961628",
+      "size": 3568
+    },
+    "icons/logo_08_constellation_8.svg": {
+      "sha256": "168167088ae004b1e79342316d1cb29acece8350049b9e2f178ead9f1dea969e",
+      "size": 1730
+    },
+    "icons/logo_09_apicoplast_1.svg": {
+      "sha256": "54c4f41de743d8a0235dca0d7c06efe894136604b1ffab2837a4e311c5e2cda4",
+      "size": 559
+    },
+    "icons/logo_10_apicoplast_2.svg": {
+      "sha256": "740a2f75ec30e01c2eb0c5a8dcdb196922e0668280da8cf4ad3f9a4b679d9bbd",
+      "size": 677
+    },
+    "icons/logo_11_apicoplast_3.svg": {
+      "sha256": "333a445d332d02791a53daabcf73e4d4e8d42feeb99c27b2d1056b562a55d1a1",
+      "size": 565
+    },
+    "icons/logo_12_apicoplast_4.svg": {
+      "sha256": "71717db19159e431ebe6ed7016feb9c9579fd6ddb3b07921da17fcdf56508c29",
+      "size": 739
+    },
+    "icons/logo_13_apicoplast_5.svg": {
+      "sha256": "4b6db71729d19c414dae8272e20aa3d30253f43b6cff9ccfa23816320f844ea2",
+      "size": 442
+    },
+    "icons/logo_14_apicoplast_6.svg": {
+      "sha256": "3ec1bec110e04619d25e42a766104efd422db073c864e8a3b0465891480151d6",
+      "size": 589
+    },
+    "icons/logo_15_crescent_1.svg": {
+      "sha256": "8cbf7a6c6fd68019b293e6f20fc2da45603e557bf72c126881feb32764a7a5a9",
+      "size": 215
+    },
+    "icons/logo_16_crescent_2.svg": {
+      "sha256": "78d82396bb43745abd31877d9cbb06f1b744091afc57b0c06996c2888b9428f4",
+      "size": 974
+    },
+    "icons/logo_17_crescent_3.svg": {
+      "sha256": "97222e48ea8a0c47f74f629e19a71ca197d0d9ac26aa1718de2066ec1c717d3e",
+      "size": 1287
+    },
+    "icons/logo_18_crescent_4.svg": {
+      "sha256": "a325c84aaac6b73a9e37d34e17e96e19537b9cf0aeff9302f1288addc04419b1",
+      "size": 768
+    },
+    "icons/logo_19_crescent_5.svg": {
+      "sha256": "9dab31204ac4a6f1f51151bcad89034fe144afa42ecb6649fa4695fdcbe4409a",
+      "size": 1598
+    },
+    "icons/logo_20_crescent_6.svg": {
+      "sha256": "04e2eaf598d8a52f1e49dcb79e41171ae448d970eeff0d01f282f3ab9cca2f09",
+      "size": 2015
+    },
+    "icons/logo_21_orbit_1.svg": {
+      "sha256": "4d397973fd94f7fd57e0847e60bc44a401952a16a0819cadf20739e51cdf4e21",
+      "size": 582
+    },
+    "icons/logo_22_orbit_2.svg": {
+      "sha256": "0ffe577ad45262fc20065043bccb5c0555b22d9670a066ad1433f78ab23349ea",
+      "size": 737
+    },
+    "icons/logo_23_orbit_3.svg": {
+      "sha256": "01a54ca1e620448f592a748ae481c7be0d3dc16e01115842def64edd5ecb478e",
+      "size": 660
+    },
+    "icons/logo_24_orbit_4.svg": {
+      "sha256": "2d7720359c9e1b12bbf1838c49da1fdd0564d77e0b92be762063e22ff8cf5a07",
+      "size": 712
+    },
+    "icons/logo_25_orbit_5.svg": {
+      "sha256": "093af6272529a937a086748537489e15da0629526a16a0eec26a831e33c513bc",
+      "size": 1049
+    },
+    "icons/logo_26_orbit_6.svg": {
+      "sha256": "b444882e40eeac995f8de417d7f04e5e7e1c7c0c12ce861e04d340643f17de8e",
+      "size": 452
+    },
+    "icons/logo_27_letter_s_1.svg": {
+      "sha256": "e107ac0d0b12e24d79c33863bbd2bc3109bad5ecded248d3534e5892e9573044",
+      "size": 760
+    },
+    "icons/logo_28_letter_s_2.svg": {
+      "sha256": "9871d6fd8340cb7482c108773b6bbe00b7100f79d035c602b199863aab3f844d",
+      "size": 947
+    },
+    "icons/logo_29_letter_s_3.svg": {
+      "sha256": "d4831b7b25d9f0f881d99ecd2de7d97592709591dd9a4be766e59d7be0b20a85",
+      "size": 760
+    },
+    "icons/logo_30_letter_s_4.svg": {
+      "sha256": "2251be7a76218443f447ee74dfe8a23fcf731f03f0eee441bc65e3b8e4ee4de0",
+      "size": 947
+    },
+    "icons/logo_31_letter_s_5.svg": {
+      "sha256": "36fb2630c038664b10a2863cd56a2e3fe0b6328280eb4517a42b5f20f301f762",
+      "size": 947
+    },
+    "icons/logo_32_letter_s_6.svg": {
+      "sha256": "6cd3e159694e8b2df736f91a35c65993f0ca3e7db173765d864670f22fa54ed9",
+      "size": 760
+    },
+    "icons/logo_33_letter_s_7.svg": {
+      "sha256": "15d64eabbb3a12b18e4ed4fd60dd39f4dde67248ed94319e6c55bcf1e52d6f58",
+      "size": 947
+    },
+    "icons/logo_34_dark_field_1.svg": {
+      "sha256": "29df131301e04f6ffe0519c8bf6b8f74fbf0c50f41ca171b6815542783c66429",
+      "size": 3316
+    },
+    "icons/logo_35_dark_field_2.svg": {
+      "sha256": "ea725a99f125fbab2ba2963c15dad616b48309d5ea3184be2e2c4d3bd471b705",
+      "size": 5049
+    },
+    "icons/logo_36_dark_field_3.svg": {
+      "sha256": "ac833a3ab576fbab456927de90fbc554438ff417e134f4c34e050a919d792b41",
+      "size": 2415
+    },
+    "icons/logo_37_dark_field_4.svg": {
+      "sha256": "101f83cc64c5b633eb7f583bae8b1764f773d4ee3f7df516599b2ae4991ea770",
+      "size": 461
+    },
+    "icons/logo_38_dark_field_5.svg": {
+      "sha256": "08977faca8f72a0c451761b9d7a0eece8c2c86aed5f6e1378fec3250008e4359",
+      "size": 356
+    },
+    "icons/logo_39_dark_field_6.svg": {
+      "sha256": "52be0855656990c4f7ffe236e9062c7e17d712cc85683967cb423107dd4cc334",
+      "size": 563
+    },
+    "icons/logo_40_dark_field_7.svg": {
+      "sha256": "046faba4cd9192ce2b4d9a56b84429c01b05cbce66a9e76a070b419fb710354f",
+      "size": 1878
+    },
+    "icons/logo_41_galaxy_1.svg": {
+      "sha256": "12cb2d1a15811b77b726787a973b244b7fc299fa7dc1427219566fcde46ac9c6",
+      "size": 643
+    },
+    "icons/logo_42_galaxy_2.svg": {
+      "sha256": "c57fe4eb737d317eb201a54244ef6dc467ad5938b0b8ff6cf69b6c4d30b6b98c",
+      "size": 817
+    },
+    "icons/logo_43_galaxy_3.svg": {
+      "sha256": "585b57b419e76a967bc549481fcd7d033c37b5254f303827a437c6bfae420115",
+      "size": 869
+    },
+    "icons/logo_44_galaxy_4.svg": {
+      "sha256": "6f4f984b9e7ba3c866130de444bb7759dfee607f7d457c798a0de17c12b94ac8",
+      "size": 728
+    },
+    "icons/logo_45_galaxy_5.svg": {
+      "sha256": "dffcab2bc863041a1cec025375a74dfee6e2470472f816d5cf234e35195cc1cf",
+      "size": 895
+    },
+    "icons/logo_46_galaxy_6.svg": {
+      "sha256": "1cb1b65c3f663933a22707aec7442c19f69451a37b6aecf297d61aba7491023c",
+      "size": 1172
+    },
+    "icons/logo_47_galaxy_7.svg": {
+      "sha256": "e92fda503840afa61b081d039a3c65a917ea01461e1fc1b6f41a743919794e1e",
+      "size": 1227
+    },
+    "icons/logo_48_galaxy_8.svg": {
+      "sha256": "ab850b34dd2164257922e0d425094e52de2b9dba4718b9af7e61c1ed5ac08ad4",
+      "size": 991
+    },
+    "icons/logo_49_galaxy_9.svg": {
+      "sha256": "4142c1674e307a0932f42ff948d0ee456b556b54e1d18ff8620ec1f72f99f622",
+      "size": 928
+    },
+    "icons/parascape.svg": {
+      "sha256": "08d41740a6013ef887bfcd993a045015290f7c4f6b41d3a99a326fffdf24b1f8",
+      "size": 1739
+    },
+    "iedb_bcell_epitopes.tsv": {
+      "sha256": "20413276726cd08e992183e448f46eb97ae7f028c8edeeb2e35665ffe26c5f90",
+      "size": 576
+    },
+    "interaction_studies.parquet": {
+      "sha256": "0fcfcce46353dab80544a1db7963f26e739eeb6ecf400d33a1218ef20304187d",
+      "size": 16019
+    },
+    "interaction_study_members.parquet": {
+      "sha256": "9505b164206dc0d6bfd6040e10b8006f938f385ed8ac0eded66b5573a44d0b01",
+      "size": 188393
+    },
+    "m6a_peaks.tsv": {
+      "sha256": "98f7a1a172ba11e3a913c1de0b3ee42bd5be7995104693b655a3e7289ee8030f",
+      "size": 13885
+    },
+    "melting_temperature.tsv": {
+      "sha256": "118c2542d8281b3503d177528e266b3eadfe30ba71eb31e4a6ce9120313f7f47",
+      "size": 97377
+    },
+    "mentions.parquet": {
+      "sha256": "734f723a306cd8735d1f136836e74383c72fc672ba218a2a6221fe4d2a41d927",
+      "size": 240536
+    },
+    "metabolites.parquet": {
+      "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
+      "size": 46486
+    },
+    "mm_host_proteins.parquet": {
+      "sha256": "30e9349d736327c680e00a3c15429bda28fc6599e2989eb9d01d539a1b725c4f",
+      "size": 400528
+    },
+    "mrna_stability.tsv": {
+      "sha256": "3bf4905087985719420dc784c7436de9c1692434d7efa803d6e0bec7d1db7a24",
+      "size": 14190
+    },
+    "myristoylome.tsv": {
+      "sha256": "844e8814e926703234397ff43e5a6fb634b5b3131da38605f1768764e6acdf3d",
+      "size": 1074
+    },
+    "nodes.parquet": {
+      "sha256": "1a2fee1a4b97be8442287dfe982c991c119ece6f9f318968956f926ebe87c69c",
+      "size": 20600889
+    },
+    "omics_catalogue.tsv": {
+      "sha256": "0d9e4875fb179f635b865f852124cd48cee9e7fa130616cf3fbc83d7ff13b68d",
+      "size": 140206
+    },
+    "pf_graph.npz": {
+      "sha256": "5331e5a9ec7b63478a69edff7450a8ee0318703c672c316b3a7dbcc4ba47fed8",
+      "size": 804254
+    },
+    "pf_host_bridges.parquet": {
+      "sha256": "154e08750a263599748827a72995878e435c8e0796e23b8ec1549a7742423449",
+      "size": 4112
+    },
+    "pf_mentions.parquet": {
+      "sha256": "3e73dba1e36f1a30c3aa0309502aedcd4db751b1e711b6fd24dd85e0c0d0d98c",
+      "size": 201791
+    },
+    "pf_nodes.parquet": {
+      "sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
+      "size": 2554547
+    },
+    "plasmodb_cds.tsv.gz": {
+      "sha256": "1942f261ef4c9da26b2402bf295519f03a5c1a08d414d98a933d01a574a13733",
+      "size": 3100519
+    },
+    "plasmodb_identity.tsv": {
+      "sha256": "afa45edecdd37ee363ba407470d1cc296e8da5edac35dacf36b7816c282a3dfc",
+      "size": 508478
+    },
+    "pvm_proximity.tsv": {
+      "sha256": "66ccde44c43c4b1493595473362be4cc7b2164e7a4c684659a4a0c955ec3134e",
+      "size": 22963
+    },
+    "questions.json": {
+      "sha256": "254b82ea0784fb73fc96863301b9589dfcd5000b35055322d8cbaef959edaf60",
+      "size": 103126
+    },
+    "rnaseq/matrices/GSE103113/kallisto_GT1.parquet": {
+      "sha256": "0cb5f39b6b11ffea0ccf7475971a4b286cc63e3d2a80e525bb3bddc092ba7907",
+      "size": 509168
+    },
+    "rnaseq/matrices/GSE103113/kallisto_GT1_samples.tsv": {
+      "sha256": "100ff700ecabb6dadc62ea1d273b3d8d6305e80f7552bda360a880b5c67629ca",
+      "size": 3169
+    },
+    "rnaseq/matrices/GSE103113/kallisto_ME49.parquet": {
+      "sha256": "53bbe1eaa3238e19314378d9fd442393706708b6985384fc6d91414f3214ddb1",
+      "size": 573568
+    },
+    "rnaseq/matrices/GSE103113/kallisto_ME49_host.parquet": {
+      "sha256": "a85c47dfc48113275fdeded4c9231c0cab9b102f29f02102df56c2df088ed0f9",
+      "size": 569892
+    },
+    "rnaseq/matrices/GSE103113/kallisto_ME49_host_samples.tsv": {
+      "sha256": "ca030d1763bd0b4564b6c0bca4ba8c15991efc24a89d633fc44b778c7dd9fd5e",
+      "size": 3216
+    },
+    "rnaseq/matrices/GSE103113/kallisto_ME49_samples.tsv": {
+      "sha256": "100ff700ecabb6dadc62ea1d273b3d8d6305e80f7552bda360a880b5c67629ca",
+      "size": 3169
+    },
+    "rnaseq/matrices/GSE103113/kallisto_VEG.parquet": {
+      "sha256": "1b5785b3a5ee63cd6c63b792bf36bb9ac3aa9c993a8b972212b26e830f43a44b",
+      "size": 505296
+    },
+    "rnaseq/matrices/GSE103113/kallisto_VEG_samples.tsv": {
+      "sha256": "100ff700ecabb6dadc62ea1d273b3d8d6305e80f7552bda360a880b5c67629ca",
+      "size": 3169
+    },
+    "rnaseq/matrices/GSE103113/salmon_GT1.parquet": {
+      "sha256": "eed01b409a46fd8bbf482e086a9f0c1f49267c10afbeec9d53b5e23c4390dc66",
+      "size": 635250
+    },
+    "rnaseq/matrices/GSE103113/salmon_GT1_samples.tsv": {
+      "sha256": "100ff700ecabb6dadc62ea1d273b3d8d6305e80f7552bda360a880b5c67629ca",
+      "size": 3169
+    },
+    "rnaseq/matrices/GSE103113/salmon_ME49.parquet": {
+      "sha256": "2b732441159b2b9771accef2c4945b945f609a343639931192278704cf428fab",
+      "size": 673159
+    },
+    "rnaseq/matrices/GSE103113/salmon_ME49_host.parquet": {
+      "sha256": "28b1d6ca4d4208bcadd4ab17a28e26d8027ddd868ddf9466ecbd2b4e95279411",
+      "size": 710375
+    },
+    "rnaseq/matrices/GSE103113/salmon_ME49_host_samples.tsv": {
+      "sha256": "8e55920143cfd951224554f7e34ad9c0bd8408213af890c3c43e833257fa24f6",
+      "size": 3215
+    },
+    "rnaseq/matrices/GSE103113/salmon_ME49_samples.tsv": {
+      "sha256": "100ff700ecabb6dadc62ea1d273b3d8d6305e80f7552bda360a880b5c67629ca",
+      "size": 3169
+    },
+    "rnaseq/matrices/GSE103113/salmon_VEG.parquet": {
+      "sha256": "34657ebe024ee71a48ac29189538aa2d10a27610f701110a22519e8e45082ada",
+      "size": 631839
+    },
+    "rnaseq/matrices/GSE103113/salmon_VEG_samples.tsv": {
+      "sha256": "100ff700ecabb6dadc62ea1d273b3d8d6305e80f7552bda360a880b5c67629ca",
+      "size": 3169
+    },
+    "rnaseq/matrices/GSE116539/kallisto_ME49.parquet": {
+      "sha256": "2f177fb52fb9cef94601138ac5e237424b0da80ec81c377b084ed5912792591c",
+      "size": 415045
+    },
+    "rnaseq/matrices/GSE116539/kallisto_ME49_host.parquet": {
+      "sha256": "8e69029614506243a4f5f7b077d76f113bd549eb8d46faedbdf69338c490e2bc",
+      "size": 414481
+    },
+    "rnaseq/matrices/GSE116539/kallisto_ME49_host_samples.tsv": {
+      "sha256": "5d1ab7365db9e98e647ab077d7d73a4ce24f1faa08689efdbcab21e0e302eb4a",
+      "size": 2221
+    },
+    "rnaseq/matrices/GSE116539/kallisto_ME49_samples.tsv": {
+      "sha256": "a9c3545c8e15abc69d20adb795140207a98e0dc73e168a00cc97622635552a05",
+      "size": 2151
+    },
+    "rnaseq/matrices/GSE116539/salmon_ME49.parquet": {
+      "sha256": "5fd4f48de39078f0a121314c652d28e2de41b29cf37018b0acc29db944fd4a7c",
+      "size": 461971
+    },
+    "rnaseq/matrices/GSE116539/salmon_ME49_host.parquet": {
+      "sha256": "892b661ae926a75d4bd7aacb1f3351e4d4811bdf8a630679eef2fdbe22ae87cb",
+      "size": 461960
+    },
+    "rnaseq/matrices/GSE116539/salmon_ME49_host_samples.tsv": {
+      "sha256": "e2f17c19f69ad97afef2080a96b6ab32363af8e9ef849e425dd11cac3f094bf2",
+      "size": 2222
+    },
+    "rnaseq/matrices/GSE116539/salmon_ME49_samples.tsv": {
+      "sha256": "a9c3545c8e15abc69d20adb795140207a98e0dc73e168a00cc97622635552a05",
+      "size": 2151
+    },
+    "rnaseq/matrices/GSE125120/kallisto_ME49.parquet": {
+      "sha256": "a2269f70bbefde6cc0ebc8b6222bdc6c7fa6c3c32f926232bebd3b344e16ae96",
+      "size": 1041491
+    },
+    "rnaseq/matrices/GSE125120/kallisto_ME49_host.parquet": {
+      "sha256": "1feb42653b58407fd3b3470912d4c05249528284c8a5fa819c1f21def73fbb26",
+      "size": 1030747
+    },
+    "rnaseq/matrices/GSE125120/kallisto_ME49_host_samples.tsv": {
+      "sha256": "c48cbb68699271bbd9d0a932cd64235300b642836685e9022d92c02a055f8831",
+      "size": 7053
+    },
+    "rnaseq/matrices/GSE125120/kallisto_ME49_samples.tsv": {
+      "sha256": "6a1885517f627e62dce5a558d9fb3c803dac8353c6b672f6b3c82aa0cba64708",
+      "size": 6899
+    },
+    "rnaseq/matrices/GSE125120/salmon_ME49.parquet": {
+      "sha256": "4d4985da1b77e1c77b36cdeadbb63159e83b5abcb37d43d92c092b996c12cbb9",
+      "size": 1219335
+    },
+    "rnaseq/matrices/GSE125120/salmon_ME49_host.parquet": {
+      "sha256": "79f11404186013d848d279ed322f9d8fc7b3e3f02d24bb2c1d3101e4612e21d3",
+      "size": 1286850
+    },
+    "rnaseq/matrices/GSE125120/salmon_ME49_host_samples.tsv": {
+      "sha256": "be944d8511848343c5761aeaa606b783e9c84bc4fb9c2267091ceccd59fdc225",
+      "size": 7054
+    },
+    "rnaseq/matrices/GSE125120/salmon_ME49_samples.tsv": {
+      "sha256": "6a1885517f627e62dce5a558d9fb3c803dac8353c6b672f6b3c82aa0cba64708",
+      "size": 6899
+    },
+    "rnaseq/matrices/GSE132238/kallisto_ME49.parquet": {
+      "sha256": "2d067c43c589064ae44922850e06e20b579d0db31e35328de376d4162378579b",
+      "size": 1658813
+    },
+    "rnaseq/matrices/GSE132238/kallisto_ME49_host.parquet": {
+      "sha256": "8c3fc24e33d6b9942cfe575b6b889b596f3810932c62712ca3b3730d6a716d93",
+      "size": 1664115
+    },
+    "rnaseq/matrices/GSE132238/kallisto_ME49_host_samples.tsv": {
+      "sha256": "c4bfcb5ddfd779d28febb27ccb51b2a9b796a4c061018ae8e9b9bc78ac4885f7",
+      "size": 8477
+    },
+    "rnaseq/matrices/GSE132238/kallisto_ME49_samples.tsv": {
+      "sha256": "afd7935e250d28b5e5f8ef7c72376f7f00a102159c7bce438a5465de874fce9f",
+      "size": 8261
+    },
+    "rnaseq/matrices/GSE132238/salmon_ME49.parquet": {
+      "sha256": "783cd1500e3156a920cf03c72c0d6eaf80966bd58685dae4e6512799b4db7f44",
+      "size": 1849950
+    },
+    "rnaseq/matrices/GSE132238/salmon_ME49_host.parquet": {
+      "sha256": "7fe0a3203f90f9137d9756b3a47c64cb31d46c367a8886f71d4c19d25b0b3b47",
+      "size": 1845400
+    },
+    "rnaseq/matrices/GSE132238/salmon_ME49_host_samples.tsv": {
+      "sha256": "9a615dc1d517d5f53e998eb41c5d0486d0321d2d5607d9efef3f00103c17f5ba",
+      "size": 8482
+    },
+    "rnaseq/matrices/GSE132238/salmon_ME49_samples.tsv": {
+      "sha256": "afd7935e250d28b5e5f8ef7c72376f7f00a102159c7bce438a5465de874fce9f",
+      "size": 8261
+    },
+    "rnaseq/matrices/GSE136123/kallisto_ME49.parquet": {
+      "sha256": "ed6b6a7a61d010e8bda3c5238ef6358a7c6d13139c28317b9e4ccbcb5d8e3c20",
+      "size": 1783646
+    },
+    "rnaseq/matrices/GSE136123/kallisto_ME49_host.parquet": {
+      "sha256": "843b4c057ffb125483ebb7bc17ecf1b741bb16b4a381f656423b672c99313ea8",
+      "size": 1779309
+    },
+    "rnaseq/matrices/GSE136123/kallisto_ME49_host_samples.tsv": {
+      "sha256": "b717869a488fb2b17b307ab882817d19a2d1999400ba069b5f6c5d18fa0823c2",
+      "size": 9365
+    },
+    "rnaseq/matrices/GSE136123/kallisto_ME49_samples.tsv": {
+      "sha256": "d600115c9c3347877da9c15a1fa466652873eca7497d35a3717e094ddca350b2",
+      "size": 9137
+    },
+    "rnaseq/matrices/GSE136123/salmon_ME49.parquet": {
+      "sha256": "1f562a8467b0f3b80997665a5bcaf60117a79c08dd9243e577b2fe14cc9fa47f",
+      "size": 2069841
+    },
+    "rnaseq/matrices/GSE136123/salmon_ME49_host.parquet": {
+      "sha256": "8bd5b7e55f3c2dd3c911fb3f84d4c85894afdd793895ad72f00f6d28d0e4ccb7",
+      "size": 2113893
+    },
+    "rnaseq/matrices/GSE136123/salmon_ME49_host_samples.tsv": {
+      "sha256": "58a54ec14da939aa80aac2082de33400cf08826fce7ad00a9c074bd20d4f8fb8",
+      "size": 9367
+    },
+    "rnaseq/matrices/GSE136123/salmon_ME49_samples.tsv": {
+      "sha256": "d600115c9c3347877da9c15a1fa466652873eca7497d35a3717e094ddca350b2",
+      "size": 9137
+    },
+    "rnaseq/matrices/GSE139537/kallisto_ME49.parquet": {
+      "sha256": "088ef414afb4f0408caf46f48052b75ebda03959b487e607a1773510a460688e",
+      "size": 1511436
+    },
+    "rnaseq/matrices/GSE139537/kallisto_ME49_host.parquet": {
+      "sha256": "16c8da8fcdc6df18b59876bc365dbbfac8dc3556881a0b120240617df8ad950c",
+      "size": 1514272
+    },
+    "rnaseq/matrices/GSE139537/kallisto_ME49_host_samples.tsv": {
+      "sha256": "02e4b39c437677d7b7a8ba19d0e7d89662025d66d8ac292ce2994d5998b59de0",
+      "size": 7601
+    },
+    "rnaseq/matrices/GSE139537/kallisto_ME49_samples.tsv": {
+      "sha256": "b44a455300077cba7a412f02fd1e0bea8e53a2d6eea243e36f66541e8f29a763",
+      "size": 7398
+    },
+    "rnaseq/matrices/GSE139537/salmon_ME49.parquet": {
+      "sha256": "d832e3ce6dd4a6b313a72ab77fcde2653402ba91463f802fdbe18680d5bdfb14",
+      "size": 1670690
+    },
+    "rnaseq/matrices/GSE139537/salmon_ME49_host.parquet": {
+      "sha256": "e72bee9bcca0770a5bd53ab335751965576fcfadfb68b33fbafee6e5547b0f04",
+      "size": 1675089
+    },
+    "rnaseq/matrices/GSE139537/salmon_ME49_host_samples.tsv": {
+      "sha256": "cab4490c570c8957eb251a3894434b9779577e078fc2fd5d3f6c30767bb3a07a",
+      "size": 7599
+    },
+    "rnaseq/matrices/GSE139537/salmon_ME49_samples.tsv": {
+      "sha256": "b44a455300077cba7a412f02fd1e0bea8e53a2d6eea243e36f66541e8f29a763",
+      "size": 7398
+    },
+    "rnaseq/matrices/GSE140197/kallisto_ME49.parquet": {
+      "sha256": "5719c315b910105b8cb0cb45f2cf4e0be7d43671d33303eddb0a24d9b35cca28",
+      "size": 801010
+    },
+    "rnaseq/matrices/GSE140197/kallisto_ME49_host.parquet": {
+      "sha256": "48e2fcfe8808f12069d2f1103f26135bb2636107b98d300f061f3e9847985b53",
+      "size": 799934
+    },
+    "rnaseq/matrices/GSE140197/kallisto_ME49_host_samples.tsv": {
+      "sha256": "181d3a12f7c72ec47f271a35e1f28fa512284fa2e98c6cc1fd5b87eac86bfbc9",
+      "size": 3606
+    },
+    "rnaseq/matrices/GSE140197/kallisto_ME49_samples.tsv": {
+      "sha256": "4261f8377e22318363bd66302c4445384603ac53f1e72b95d29e9f671eb7dfff",
+      "size": 3489
+    },
+    "rnaseq/matrices/GSE140197/salmon_ME49.parquet": {
+      "sha256": "15c8883f54c2a582c18d860a937ff77794bd0deb355b3e154e6651890ac69315",
+      "size": 873924
+    },
+    "rnaseq/matrices/GSE140197/salmon_ME49_host.parquet": {
+      "sha256": "210424eef51796011b8b8b3a94964b10d41137dc5b921682cfc8bcbe236777a4",
+      "size": 891227
+    },
+    "rnaseq/matrices/GSE140197/salmon_ME49_host_samples.tsv": {
+      "sha256": "01341d84eb5ddf9325becd4434a6a9332b3facd3896f02bb546d19c5950e0aaa",
+      "size": 3608
+    },
+    "rnaseq/matrices/GSE140197/salmon_ME49_samples.tsv": {
+      "sha256": "4261f8377e22318363bd66302c4445384603ac53f1e72b95d29e9f671eb7dfff",
+      "size": 3489
+    },
+    "rnaseq/matrices/GSE150334/kallisto_ME49.parquet": {
+      "sha256": "6be835e126af385aa30f00297ef8cee622e76a12aa95eea7745cff48465835ac",
+      "size": 564235
+    },
+    "rnaseq/matrices/GSE150334/kallisto_ME49_host.parquet": {
+      "sha256": "05d74b10694f3c349c0276c2d066748fd2ef2af6a27dd6002486134a826bfc22",
+      "size": 563916
+    },
+    "rnaseq/matrices/GSE150334/kallisto_ME49_host_samples.tsv": {
+      "sha256": "3781560881cd59247ad6526a1af2a1ffd09a304a219a8cc17d6708e860d6246a",
+      "size": 2610
+    },
+    "rnaseq/matrices/GSE150334/kallisto_ME49_samples.tsv": {
+      "sha256": "245e94df1044159a5080c0b8d0c0931f0ed31cf7607b6973b8cd93061c7bc942",
+      "size": 2521
+    },
+    "rnaseq/matrices/GSE150334/salmon_ME49.parquet": {
+      "sha256": "75f0b1209b69c69cb9d3ad4e0d497ef51a45034ccf054507830d1a9ea71a2b84",
+      "size": 615369
+    },
+    "rnaseq/matrices/GSE150334/salmon_ME49_host.parquet": {
+      "sha256": "07d72bd0c14d863eca5d073fae5578c7f27c85ed40626c1151d67672a5db6b86",
+      "size": 612918
+    },
+    "rnaseq/matrices/GSE150334/salmon_ME49_host_samples.tsv": {
+      "sha256": "63b2e19b3225ea85ff04888c4b7a02c583c1eccf67576f765844662385223218",
+      "size": 2610
+    },
+    "rnaseq/matrices/GSE150334/salmon_ME49_samples.tsv": {
+      "sha256": "245e94df1044159a5080c0b8d0c0931f0ed31cf7607b6973b8cd93061c7bc942",
+      "size": 2521
+    },
+    "rnaseq/matrices/GSE156685/kallisto_ME49.parquet": {
+      "sha256": "6c03d1f945614640f78f3338e5a7d7c2cf447015b2ac7300119977b041546105",
+      "size": 808002
+    },
+    "rnaseq/matrices/GSE156685/kallisto_ME49_host.parquet": {
+      "sha256": "0001d709b4138ed4f4618dc11f13fa43c12872f4223dbf571832c269dd7fe3a9",
+      "size": 803815
+    },
+    "rnaseq/matrices/GSE156685/kallisto_ME49_host_samples.tsv": {
+      "sha256": "3426ec989cc7142c0210552caedfde2d03002a0ab9830c0ced35ad0d7104e74d",
+      "size": 4086
+    },
+    "rnaseq/matrices/GSE156685/kallisto_ME49_samples.tsv": {
+      "sha256": "68f925481f5ccfb502ba99b5722dd7a77cbbde00c7556f47d0755c4115483622",
+      "size": 3979
+    },
+    "rnaseq/matrices/GSE156685/salmon_ME49.parquet": {
+      "sha256": "c8dba7ef73d54809b0b8031fcf84ca1f13fe9ee92d3cc04806d7af855436e88c",
+      "size": 925646
+    },
+    "rnaseq/matrices/GSE156685/salmon_ME49_host.parquet": {
+      "sha256": "6013f561cd7e9aa59d143a6fb4abbaea3d9110079834a34fd29d67bc515240b1",
+      "size": 938498
+    },
+    "rnaseq/matrices/GSE156685/salmon_ME49_host_samples.tsv": {
+      "sha256": "886efa4a199642b7a0db41292d1f94a69052109e10d3e8edc67e8445d44b854a",
+      "size": 4089
+    },
+    "rnaseq/matrices/GSE156685/salmon_ME49_samples.tsv": {
+      "sha256": "68f925481f5ccfb502ba99b5722dd7a77cbbde00c7556f47d0755c4115483622",
+      "size": 3979
+    },
+    "rnaseq/matrices/GSE158231/kallisto_ME49.parquet": {
+      "sha256": "9bec7f83f4160d4c909e8d9bbf05c4cdaf6e35423c3e2a6e4a0551d5007b2ad0",
+      "size": 1395542
+    },
+    "rnaseq/matrices/GSE158231/kallisto_ME49_host.parquet": {
+      "sha256": "0ab6bba30eb49b2554ff08e532ba3257bb7a543c6d276a491564bb3a3746b08d",
+      "size": 1388204
+    },
+    "rnaseq/matrices/GSE158231/kallisto_ME49_host_samples.tsv": {
+      "sha256": "4246dfd0f0f860e7441b13eaafb865c60f198154db11626d8c66addc3981ed30",
+      "size": 7667
+    },
+    "rnaseq/matrices/GSE158231/kallisto_ME49_samples.tsv": {
+      "sha256": "edf34b00b4f1505486e36892d23eff2803bd01e393dea45b35e1c4c06f441add",
+      "size": 7473
+    },
+    "rnaseq/matrices/GSE158231/salmon_ME49.parquet": {
+      "sha256": "ef80f0e57edca5dbcf9edb419646445e91438afc2b7cee5a89be361278c0062f",
+      "size": 1632130
+    },
+    "rnaseq/matrices/GSE158231/salmon_ME49_host.parquet": {
+      "sha256": "2254200f4e0e087921fd8f4c44800fe5a95d5db1ead6b20ca1e2228555d22144",
+      "size": 1636156
+    },
+    "rnaseq/matrices/GSE158231/salmon_ME49_host_samples.tsv": {
+      "sha256": "0f3a7d1c298c59435d68af744d969b01627fa6dcd9a6b213195f351f11d806ff",
+      "size": 7661
+    },
+    "rnaseq/matrices/GSE158231/salmon_ME49_samples.tsv": {
+      "sha256": "edf34b00b4f1505486e36892d23eff2803bd01e393dea45b35e1c4c06f441add",
+      "size": 7473
+    },
+    "rnaseq/matrices/GSE159515/kallisto_GT1.parquet": {
+      "sha256": "1392f4a0e0b14eb4b8818651834c392d4b144b67a57c83834d8092f820369c7c",
+      "size": 518852
+    },
+    "rnaseq/matrices/GSE159515/kallisto_GT1_samples.tsv": {
+      "sha256": "2d36d14d081477cd7f7b0566526a57ea4db5715e626016d9a8a15e314ed5597f",
+      "size": 3158
+    },
+    "rnaseq/matrices/GSE159515/kallisto_ME49.parquet": {
+      "sha256": "501a9af7bc5cfc90cca76f0e1af46f33a9c15a596f027136e54ddf6088300058",
+      "size": 581278
+    },
+    "rnaseq/matrices/GSE159515/kallisto_ME49_host.parquet": {
+      "sha256": "a47dbe60798e53b7109364c21581941c5387983e799d7652ac6ea99071697480",
+      "size": 582952
+    },
+    "rnaseq/matrices/GSE159515/kallisto_ME49_host_samples.tsv": {
+      "sha256": "938d6c1afdc60fbf592b0b173e7da1970743c147aab72b51f39facd0ba19cf6c",
+      "size": 3206
+    },
+    "rnaseq/matrices/GSE159515/kallisto_ME49_samples.tsv": {
+      "sha256": "2d36d14d081477cd7f7b0566526a57ea4db5715e626016d9a8a15e314ed5597f",
+      "size": 3158
+    },
+    "rnaseq/matrices/GSE159515/kallisto_VEG.parquet": {
+      "sha256": "1c1784b0446c2d6f98a24ca98dc337ed59601cc651d1fed637faed5814e93883",
+      "size": 514663
+    },
+    "rnaseq/matrices/GSE159515/kallisto_VEG_samples.tsv": {
+      "sha256": "2d36d14d081477cd7f7b0566526a57ea4db5715e626016d9a8a15e314ed5597f",
+      "size": 3158
+    },
+    "rnaseq/matrices/GSE159515/salmon_GT1.parquet": {
+      "sha256": "008c395ec01b9896349db04bb41535f144137947e889baaa4954095589cbdf86",
+      "size": 590404
+    },
+    "rnaseq/matrices/GSE159515/salmon_GT1_samples.tsv": {
+      "sha256": "2d36d14d081477cd7f7b0566526a57ea4db5715e626016d9a8a15e314ed5597f",
+      "size": 3158
+    },
+    "rnaseq/matrices/GSE159515/salmon_ME49.parquet": {
+      "sha256": "4de6cee0598fada634a35b1f969be1ed51f805f2a366c00035b6f8d8c810cff2",
+      "size": 630046
+    },
+    "rnaseq/matrices/GSE159515/salmon_ME49_host.parquet": {
+      "sha256": "2cd9bb34255641d717f1af7b499647a51c528d2caf8a39e3b3536d411265b2a7",
+      "size": 630864
+    },
+    "rnaseq/matrices/GSE159515/salmon_ME49_host_samples.tsv": {
+      "sha256": "a507ebba9ee5a6a9e86ada088af5e5170ad9ddea4bd00b2268bbe61073bfda1b",
+      "size": 3209
+    },
+    "rnaseq/matrices/GSE159515/salmon_ME49_samples.tsv": {
+      "sha256": "2d36d14d081477cd7f7b0566526a57ea4db5715e626016d9a8a15e314ed5597f",
+      "size": 3158
+    },
+    "rnaseq/matrices/GSE159515/salmon_VEG.parquet": {
+      "sha256": "136a6911effb9debcc94205deeb2cfd46ed50843a4fe12e7d1b1db5af950e26a",
+      "size": 585762
+    },
+    "rnaseq/matrices/GSE159515/salmon_VEG_samples.tsv": {
+      "sha256": "2d36d14d081477cd7f7b0566526a57ea4db5715e626016d9a8a15e314ed5597f",
+      "size": 3158
+    },
+    "rnaseq/matrices/GSE168465/kallisto_ME49.parquet": {
+      "sha256": "78af3b76a4c7220d0b79f5ed8860882828e316f5de0850af3d3767b1a17eb68b",
+      "size": 1634531
+    },
+    "rnaseq/matrices/GSE168465/kallisto_ME49_host.parquet": {
+      "sha256": "db1820ac9d5ee3905ee6bb4b7c11251fafbb62767f30b78f905873dbe969480c",
+      "size": 1634238
+    },
+    "rnaseq/matrices/GSE168465/kallisto_ME49_host_samples.tsv": {
+      "sha256": "6f54c7636aa88d846314c873b129a4c66cb81c5291b8b0aefab71c983bc3b8e4",
+      "size": 7633
+    },
+    "rnaseq/matrices/GSE168465/kallisto_ME49_samples.tsv": {
+      "sha256": "c40447ef9a2ad3ca351cb54fa61daafed8139b0981d4e7bd5368dcff47ad6530",
+      "size": 7404
+    },
+    "rnaseq/matrices/GSE168465/salmon_ME49.parquet": {
+      "sha256": "cced0f7537fabe74b420879d3af9895bbd6666e17558853f3e7739c12b588efb",
+      "size": 1798660
+    },
+    "rnaseq/matrices/GSE168465/salmon_ME49_host.parquet": {
+      "sha256": "e7b856b9bcaf204f66c5f46ac985ba9f1ecfed83fb979c8669763389f7eeeba4",
+      "size": 1802374
+    },
+    "rnaseq/matrices/GSE168465/salmon_ME49_host_samples.tsv": {
+      "sha256": "286a925f200f08baed0d38b21ab9327332e55147b6448066b7fbba89c828976f",
+      "size": 7634
+    },
+    "rnaseq/matrices/GSE168465/salmon_ME49_samples.tsv": {
+      "sha256": "c40447ef9a2ad3ca351cb54fa61daafed8139b0981d4e7bd5368dcff47ad6530",
+      "size": 7404
+    },
+    "rnaseq/matrices/GSE175919/kallisto_ME49.parquet": {
+      "sha256": "df247a8575e767af1becf7efd6d220decce4e5c24005d1d9b28e6a784b5d8663",
+      "size": 563785
+    },
+    "rnaseq/matrices/GSE175919/kallisto_ME49_host.parquet": {
+      "sha256": "08d108ed8deb4761f7bb65e86c76618c602052aa349d635f7289fb2df73a9ea7",
+      "size": 564096
+    },
+    "rnaseq/matrices/GSE175919/kallisto_ME49_host_samples.tsv": {
+      "sha256": "3a3daeaa454c7deefdd691b0f6b72e4e0154a31ef10c8cbd03939f86356c57c5",
+      "size": 2463
+    },
+    "rnaseq/matrices/GSE175919/kallisto_ME49_samples.tsv": {
+      "sha256": "3d1a348dbb7f7e68a7b6d5ce37368148bfb09b470eaf1a0ad3d9484aea330ed8",
+      "size": 2373
+    },
+    "rnaseq/matrices/GSE175919/salmon_ME49.parquet": {
+      "sha256": "9b05a4b9d16b6f2b1d59215397bdf9a32223ef7216f4bcf1ca1b3bf78707f124",
+      "size": 621163
+    },
+    "rnaseq/matrices/GSE175919/salmon_ME49_host.parquet": {
+      "sha256": "aea216c50a5b64a891e3a9fb333bf547668830bc0622cec86befffda97b7e9c0",
+      "size": 618240
+    },
+    "rnaseq/matrices/GSE175919/salmon_ME49_host_samples.tsv": {
+      "sha256": "e069612b49878d6291945c50daac8b36ba5a3de100789e2f83576516a5ce2016",
+      "size": 2460
+    },
+    "rnaseq/matrices/GSE175919/salmon_ME49_samples.tsv": {
+      "sha256": "3d1a348dbb7f7e68a7b6d5ce37368148bfb09b470eaf1a0ad3d9484aea330ed8",
+      "size": 2373
+    },
+    "rnaseq/matrices/GSE178355/kallisto_ME49.parquet": {
+      "sha256": "45e85ed32028f6f31fc28c7b5b03fcdd1ba5f20256d1be7f897d5226c9a29a4e",
+      "size": 2713078
+    },
+    "rnaseq/matrices/GSE178355/kallisto_ME49_host.parquet": {
+      "sha256": "1757a947020ce9b1d04ceb83a95ff2966e08fe872a58ebdb9ec8e949555d716d",
+      "size": 2712066
+    },
+    "rnaseq/matrices/GSE178355/kallisto_ME49_host_samples.tsv": {
+      "sha256": "12513d982d816bca13725799e8e2b3fb73a3cac5bd5550d3d070bbfa93c83726",
+      "size": 13670
+    },
+    "rnaseq/matrices/GSE178355/kallisto_ME49_samples.tsv": {
+      "sha256": "84fe0f3b9096ef9e06dc7563900dc14f574c21c3a261bf129679259d5d9e153e",
+      "size": 13308
+    },
+    "rnaseq/matrices/GSE178355/salmon_ME49.parquet": {
+      "sha256": "7b4f40e72db452516d6b2061096efd567924018ed69d11c37b0863db130e97c2",
+      "size": 3173068
+    },
+    "rnaseq/matrices/GSE178355/salmon_ME49_host.parquet": {
+      "sha256": "51fdc6ca2d18f6250445ecc7fd9095598b255fa76f9389f1a928960956fc9f0d",
+      "size": 3182929
+    },
+    "rnaseq/matrices/GSE178355/salmon_ME49_host_samples.tsv": {
+      "sha256": "911c434bea848a622b0ce8e516c060c4a4d54bd4fb47a27b45cacef64bb09259",
+      "size": 13668
+    },
+    "rnaseq/matrices/GSE178355/salmon_ME49_samples.tsv": {
+      "sha256": "84fe0f3b9096ef9e06dc7563900dc14f574c21c3a261bf129679259d5d9e153e",
+      "size": 13308
+    },
+    "rnaseq/matrices/GSE189677/kallisto_ME49.parquet": {
+      "sha256": "5ca27ecc8760bd7e85f89a961afd3ed503747fea85c672a30e01155a22060d82",
+      "size": 1166694
+    },
+    "rnaseq/matrices/GSE189677/kallisto_ME49_host.parquet": {
+      "sha256": "eb9630e52f0e0f189bba782dc33c675bee49e9c3c90d04eb415fedbeb07d1910",
+      "size": 1162299
+    },
+    "rnaseq/matrices/GSE189677/kallisto_ME49_host_samples.tsv": {
+      "sha256": "7b383e4d9083b068e688152e5265bfc313999379fbc6511edc420f7e6c8f2385",
+      "size": 6073
+    },
+    "rnaseq/matrices/GSE189677/kallisto_ME49_samples.tsv": {
+      "sha256": "dde25426e9c758945c71840abfba4d56e0a80faf3619cb11ac3047a6e98b8a54",
+      "size": 5901
+    },
+    "rnaseq/matrices/GSE189677/salmon_ME49.parquet": {
+      "sha256": "3b6142e2116ae9e7cdc2346719a9b967225aa7e15d37db7d61a529dde8d921df",
+      "size": 1465957
+    },
+    "rnaseq/matrices/GSE189677/salmon_ME49_host.parquet": {
+      "sha256": "afe152bf961df2a25c29e7babef15294a54741bcd7cb241eaa26f244fc0e131c",
+      "size": 1466929
+    },
+    "rnaseq/matrices/GSE189677/salmon_ME49_host_samples.tsv": {
+      "sha256": "6043cd963a45d0987dc7f2ab8b3dffb32482adef10203b249420b822720f1424",
+      "size": 6073
+    },
+    "rnaseq/matrices/GSE189677/salmon_ME49_samples.tsv": {
+      "sha256": "dde25426e9c758945c71840abfba4d56e0a80faf3619cb11ac3047a6e98b8a54",
+      "size": 5901
+    },
+    "rnaseq/matrices/GSE193614/kallisto_ME49.parquet": {
+      "sha256": "c9f087f80b83863b4be5c80f9fbefc81148d11082717a7feb9688d14d9739711",
+      "size": 717660
+    },
+    "rnaseq/matrices/GSE193614/kallisto_ME49_host.parquet": {
+      "sha256": "4db0ddc158ae661bfd24c24924a206fca49b9220386a60a8a1cbe58f53eb6fe6",
+      "size": 713774
+    },
+    "rnaseq/matrices/GSE193614/kallisto_ME49_host_samples.tsv": {
+      "sha256": "bc6abd6f8af439a59f588c30a28f9a9e0e3b8770e0814cefad30b69afd4d290e",
+      "size": 3634
+    },
+    "rnaseq/matrices/GSE193614/kallisto_ME49_samples.tsv": {
+      "sha256": "016f30148381947fb678e5e281b0e424a5b80bd737db704dee3b992a013724fd",
+      "size": 3538
+    },
+    "rnaseq/matrices/GSE193614/salmon_ME49.parquet": {
+      "sha256": "5552ba682168c0640d9c252e9b65c7295f35aec59359cde1b9c0a0aa9cc327bb",
+      "size": 851085
+    },
+    "rnaseq/matrices/GSE193614/salmon_ME49_host.parquet": {
+      "sha256": "727a7bd229a1996b7a19f247eb51a45036ed98cb50fb08e74a280008ae4086d3",
+      "size": 857222
+    },
+    "rnaseq/matrices/GSE193614/salmon_ME49_host_samples.tsv": {
+      "sha256": "384d34c8ddcca8d1b945b5fb7f842bf888543fa493304cd00f620ec94d308b01",
+      "size": 3633
+    },
+    "rnaseq/matrices/GSE193614/salmon_ME49_samples.tsv": {
+      "sha256": "016f30148381947fb678e5e281b0e424a5b80bd737db704dee3b992a013724fd",
+      "size": 3538
+    },
+    "rnaseq/matrices/GSE193779/kallisto_GT1.parquet": {
+      "sha256": "16ecdc7c7da8ab58320c8cdd04ba27800a240ee694852655f466f7134c4ec276",
+      "size": 557672
+    },
+    "rnaseq/matrices/GSE193779/kallisto_GT1_samples.tsv": {
+      "sha256": "9d41598e041d120040de0b1373b69a2c89233f8171d344fee7701b34808e57fe",
+      "size": 3225
+    },
+    "rnaseq/matrices/GSE193779/kallisto_ME49.parquet": {
+      "sha256": "c577630f4984c876cfb0542af365a55c93a36fb4a86fc7f2ddcab5be8fbf91c8",
+      "size": 617958
+    },
+    "rnaseq/matrices/GSE193779/kallisto_ME49_host.parquet": {
+      "sha256": "6690c068cb8778790850312b317af20be6a6637197133c860e244b3d524bc7dd",
+      "size": 616817
+    },
+    "rnaseq/matrices/GSE193779/kallisto_ME49_host_samples.tsv": {
+      "sha256": "c88ab34ea27d902b42d4b0e074e4a820048062983a71d41dff9102d55a1a9bce",
+      "size": 3280
+    },
+    "rnaseq/matrices/GSE193779/kallisto_ME49_samples.tsv": {
+      "sha256": "9d41598e041d120040de0b1373b69a2c89233f8171d344fee7701b34808e57fe",
+      "size": 3225
+    },
+    "rnaseq/matrices/GSE193779/kallisto_VEG.parquet": {
+      "sha256": "2ad3fb5d5a9436ac630293cfea7aa98736f3723b7c0db0b68760b5897ab214f4",
+      "size": 553563
+    },
+    "rnaseq/matrices/GSE193779/kallisto_VEG_samples.tsv": {
+      "sha256": "9d41598e041d120040de0b1373b69a2c89233f8171d344fee7701b34808e57fe",
+      "size": 3225
+    },
+    "rnaseq/matrices/GSE193779/salmon_GT1.parquet": {
+      "sha256": "2c919db37a3a2b9b1190761509adda66b8c4c10ae2b1cf67350c7623931565a8",
+      "size": 730351
+    },
+    "rnaseq/matrices/GSE193779/salmon_GT1_samples.tsv": {
+      "sha256": "9d41598e041d120040de0b1373b69a2c89233f8171d344fee7701b34808e57fe",
+      "size": 3225
+    },
+    "rnaseq/matrices/GSE193779/salmon_ME49.parquet": {
+      "sha256": "f448e8a873d3a4abb80c9731f7aba13fc67c30ac3fd5a9316fbd83aca647e1bb",
+      "size": 757686
+    },
+    "rnaseq/matrices/GSE193779/salmon_ME49_host.parquet": {
+      "sha256": "e79997dbaad405bc118092b670ebbde731522902f293beec7a4ab07f039fc932",
+      "size": 758839
+    },
+    "rnaseq/matrices/GSE193779/salmon_ME49_host_samples.tsv": {
+      "sha256": "fec0de5b91c81a834854f65982460a888648f11f288f8c9acd5cf13f9b05af68",
+      "size": 3277
+    },
+    "rnaseq/matrices/GSE193779/salmon_ME49_samples.tsv": {
+      "sha256": "9d41598e041d120040de0b1373b69a2c89233f8171d344fee7701b34808e57fe",
+      "size": 3225
+    },
+    "rnaseq/matrices/GSE193779/salmon_VEG.parquet": {
+      "sha256": "34e4f455368df3e74669e97c63a5a10e535254ac50d1414e89c4171f44dea552",
+      "size": 728440
+    },
+    "rnaseq/matrices/GSE193779/salmon_VEG_samples.tsv": {
+      "sha256": "9d41598e041d120040de0b1373b69a2c89233f8171d344fee7701b34808e57fe",
+      "size": 3225
+    },
+    "rnaseq/matrices/GSE198001/kallisto_ME49.parquet": {
+      "sha256": "ee549a4e8c5f60fb310f667d55e7eae8e12fac5bdd980b63e34acf53409f605f",
+      "size": 626359
+    },
+    "rnaseq/matrices/GSE198001/kallisto_ME49_host.parquet": {
+      "sha256": "754fd89e7fbb15f790f9f730726dab7405a47bd7f92d8c4e06301d66f833de9c",
+      "size": 624618
+    },
+    "rnaseq/matrices/GSE198001/kallisto_ME49_host_samples.tsv": {
+      "sha256": "bfa4c584742c5cdb8fa61d0fb43e8849eb25406b8224582ee377a197318d55e9",
+      "size": 3496
+    },
+    "rnaseq/matrices/GSE198001/kallisto_ME49_samples.tsv": {
+      "sha256": "808e9a095e990f2c7b6f2e188b1ae5096628f0d22f44a961faf4866182b93747",
+      "size": 3405
+    },
+    "rnaseq/matrices/GSE198001/salmon_ME49.parquet": {
+      "sha256": "080e88450d45e2ea5bed58b64e41168887d3870179c730ff672e20e79e2a496f",
+      "size": 744261
+    },
+    "rnaseq/matrices/GSE198001/salmon_ME49_host.parquet": {
+      "sha256": "0e5cd4d3cf8cae6d80f03a5522f3a6b8b767933f32aa1ebcc31e733a8ff1763c",
+      "size": 744204
+    },
+    "rnaseq/matrices/GSE198001/salmon_ME49_host_samples.tsv": {
+      "sha256": "a4af0f8ee445d4c68b96b0b18bc0c4eb9d89c619c86b44e817a23bd2bba625d7",
+      "size": 3497
+    },
+    "rnaseq/matrices/GSE198001/salmon_ME49_samples.tsv": {
+      "sha256": "808e9a095e990f2c7b6f2e188b1ae5096628f0d22f44a961faf4866182b93747",
+      "size": 3405
+    },
+    "rnaseq/matrices/GSE200962/kallisto_GT1.parquet": {
+      "sha256": "848f257a3755a824f704043fd258a9ada1053f6fc3ae1ceac031cabcc23f419c",
+      "size": 3959687
+    },
+    "rnaseq/matrices/GSE200962/kallisto_GT1_samples.tsv": {
+      "sha256": "5e4186b46c788692d7cf62902513470aee57e85fbf43d15d76810985cc0e5d03",
+      "size": 26625
+    },
+    "rnaseq/matrices/GSE200962/kallisto_ME49.parquet": {
+      "sha256": "213288c81acdf057c34c51436c5c3551ba8c38696e957048e667f9d70ec1cb3f",
+      "size": 4561609
+    },
+    "rnaseq/matrices/GSE200962/kallisto_ME49_host.parquet": {
+      "sha256": "87b7dbfec321eb8946a184fa4d42d85b05d2e388485e4895b30594972b8e2649",
+      "size": 4563944
+    },
+    "rnaseq/matrices/GSE200962/kallisto_ME49_host_samples.tsv": {
+      "sha256": "6237ff1ff9716114de3771a930b21f1cf7fab8f7f4cd541c9850252617c148f1",
+      "size": 26989
+    },
+    "rnaseq/matrices/GSE200962/kallisto_ME49_samples.tsv": {
+      "sha256": "5e4186b46c788692d7cf62902513470aee57e85fbf43d15d76810985cc0e5d03",
+      "size": 26625
+    },
+    "rnaseq/matrices/GSE200962/kallisto_VEG.parquet": {
+      "sha256": "7f795f4ed17953e7e8a137cd1a5ce067b299fbfd2adaded39fcccd9f9c5afd89",
+      "size": 3921640
+    },
+    "rnaseq/matrices/GSE200962/kallisto_VEG_samples.tsv": {
+      "sha256": "5e4186b46c788692d7cf62902513470aee57e85fbf43d15d76810985cc0e5d03",
+      "size": 26625
+    },
+    "rnaseq/matrices/GSE200962/salmon_GT1.parquet": {
+      "sha256": "f5da719d2034841dda2561c50df70dd93de4726bcc3206193a994311c5700045",
+      "size": 4929434
+    },
+    "rnaseq/matrices/GSE200962/salmon_GT1_samples.tsv": {
+      "sha256": "5e4186b46c788692d7cf62902513470aee57e85fbf43d15d76810985cc0e5d03",
+      "size": 26625
+    },
+    "rnaseq/matrices/GSE200962/salmon_ME49.parquet": {
+      "sha256": "bf0116ae9096ac078417d21ab981a3bee980ecf053b283e983d61864d0bb5091",
+      "size": 5067699
+    },
+    "rnaseq/matrices/GSE200962/salmon_ME49_host.parquet": {
+      "sha256": "8a15de69bd34e8e666a21da0c1db3712373b56b69500d784aaf3ebbed9d9baf0",
+      "size": 5070901
+    },
+    "rnaseq/matrices/GSE200962/salmon_ME49_host_samples.tsv": {
+      "sha256": "3132f546bee2b72cb706c5980443543217537ad7ccf61d42c2b9e433ef1047bc",
+      "size": 26998
+    },
+    "rnaseq/matrices/GSE200962/salmon_ME49_samples.tsv": {
+      "sha256": "5e4186b46c788692d7cf62902513470aee57e85fbf43d15d76810985cc0e5d03",
+      "size": 26625
+    },
+    "rnaseq/matrices/GSE200962/salmon_VEG.parquet": {
+      "sha256": "4d7b4fb3ba87016b8467051eb4adfefdfe41fb5898bf8d53054de46c8b937fa8",
+      "size": 4888647
+    },
+    "rnaseq/matrices/GSE200962/salmon_VEG_samples.tsv": {
+      "sha256": "5e4186b46c788692d7cf62902513470aee57e85fbf43d15d76810985cc0e5d03",
+      "size": 26625
+    },
+    "rnaseq/matrices/GSE208647/kallisto_GT1.parquet": {
+      "sha256": "6cc4aca104530625ce68bfc4d3bf82697d83b0e0473533fe166dda2c34545d55",
+      "size": 1218032
+    },
+    "rnaseq/matrices/GSE208647/kallisto_GT1_samples.tsv": {
+      "sha256": "456d144357134c8ea014a52ed550946151975b1abb321f133d7b28bbff1ff86d",
+      "size": 8595
+    },
+    "rnaseq/matrices/GSE208647/kallisto_ME49.parquet": {
+      "sha256": "2dbfbcbfd989021f8a0b837a5a9fd06aa1d99eb6e505f13cc771f520af94ccd5",
+      "size": 1405458
+    },
+    "rnaseq/matrices/GSE208647/kallisto_ME49_host.parquet": {
+      "sha256": "ff6ed2a256a215088967eeddd3ce0ed9bab53d554855cc640711c675052c25fd",
+      "size": 1400634
+    },
+    "rnaseq/matrices/GSE208647/kallisto_ME49_host_samples.tsv": {
+      "sha256": "d4bcb6020cc72887d8b599eac24ff598af4851891357a0c3d0fb9c3502f98dc2",
+      "size": 8709
+    },
+    "rnaseq/matrices/GSE208647/kallisto_ME49_samples.tsv": {
+      "sha256": "456d144357134c8ea014a52ed550946151975b1abb321f133d7b28bbff1ff86d",
+      "size": 8595
+    },
+    "rnaseq/matrices/GSE208647/kallisto_VEG.parquet": {
+      "sha256": "c194dd91191c5a40541d6102abca70b18b0ba356bf9acea04f51c714170370dd",
+      "size": 1205652
+    },
+    "rnaseq/matrices/GSE208647/kallisto_VEG_samples.tsv": {
+      "sha256": "456d144357134c8ea014a52ed550946151975b1abb321f133d7b28bbff1ff86d",
+      "size": 8595
+    },
+    "rnaseq/matrices/GSE208647/salmon_GT1.parquet": {
+      "sha256": "7cdd1ea4610b2515e390e68344ffbf7576135307c02277761f2617846ddbdee1",
+      "size": 1509257
+    },
+    "rnaseq/matrices/GSE208647/salmon_GT1_samples.tsv": {
+      "sha256": "456d144357134c8ea014a52ed550946151975b1abb321f133d7b28bbff1ff86d",
+      "size": 8595
+    },
+    "rnaseq/matrices/GSE208647/salmon_ME49.parquet": {
+      "sha256": "f67ce1bf9bd22e667ac239f47b5be4a4952f90470670d2d6507061e711857bcd",
+      "size": 1567387
+    },
+    "rnaseq/matrices/GSE208647/salmon_ME49_host.parquet": {
+      "sha256": "1afc911cb13f02ca31a06dd2f33ce8569d9ea7498ea5f1d62b4257880cb01436",
+      "size": 1570145
+    },
+    "rnaseq/matrices/GSE208647/salmon_ME49_host_samples.tsv": {
+      "sha256": "469b511863052b683a5831c5e8a2f5e2e6b0a061a605638c0f4e9fdeb515957c",
+      "size": 8707
+    },
+    "rnaseq/matrices/GSE208647/salmon_ME49_samples.tsv": {
+      "sha256": "456d144357134c8ea014a52ed550946151975b1abb321f133d7b28bbff1ff86d",
+      "size": 8595
+    },
+    "rnaseq/matrices/GSE208647/salmon_VEG.parquet": {
+      "sha256": "c96f45f6e142e2c86365fbecd9ca1de09c9b76cfafbb8ce54fae427571563743",
+      "size": 1489433
+    },
+    "rnaseq/matrices/GSE208647/salmon_VEG_samples.tsv": {
+      "sha256": "456d144357134c8ea014a52ed550946151975b1abb321f133d7b28bbff1ff86d",
+      "size": 8595
+    },
+    "rnaseq/matrices/GSE218921/kallisto_GT1.parquet": {
+      "sha256": "9a3413324bc66a2e4ed67a4a3bcaf90e0a1b472c53e7cb159f08c3ebd61488fc",
+      "size": 1288555
+    },
+    "rnaseq/matrices/GSE218921/kallisto_GT1_samples.tsv": {
+      "sha256": "ac94cdbd0ef629d9f2589c832144b96f4250425fa0d71aed358e4dba26913b76",
+      "size": 9364
+    },
+    "rnaseq/matrices/GSE218921/kallisto_ME49.parquet": {
+      "sha256": "41bf4bf8d34d12770a257837a8e9d8ddd7940f5eb23350dc545321edca15cef9",
+      "size": 1548109
+    },
+    "rnaseq/matrices/GSE218921/kallisto_ME49_host.parquet": {
+      "sha256": "b031d990ff34238ab721f356004cbd3848e81171b9792409d08794f9cf6ab5cc",
+      "size": 1542282
+    },
+    "rnaseq/matrices/GSE218921/kallisto_ME49_host_samples.tsv": {
+      "sha256": "a4efbc68726bedaf8fdaf6ea0bebf9e4468a3371adfa217db25e646efd67576c",
+      "size": 9500
+    },
+    "rnaseq/matrices/GSE218921/kallisto_ME49_samples.tsv": {
+      "sha256": "ac94cdbd0ef629d9f2589c832144b96f4250425fa0d71aed358e4dba26913b76",
+      "size": 9364
+    },
+    "rnaseq/matrices/GSE218921/kallisto_VEG.parquet": {
+      "sha256": "6f8cfad4567e633fb59005195ddcda1859120ef079393935da486c072dfa567e",
+      "size": 1257852
+    },
+    "rnaseq/matrices/GSE218921/kallisto_VEG_samples.tsv": {
+      "sha256": "ac94cdbd0ef629d9f2589c832144b96f4250425fa0d71aed358e4dba26913b76",
+      "size": 9364
+    },
+    "rnaseq/matrices/GSE218921/salmon_GT1.parquet": {
+      "sha256": "b95071f8a5d84f1ea1a10b0b8841e06fff0e9e57fc2c93c54e2694be15a0c4e3",
+      "size": 1380403
+    },
+    "rnaseq/matrices/GSE218921/salmon_GT1_samples.tsv": {
+      "sha256": "ac94cdbd0ef629d9f2589c832144b96f4250425fa0d71aed358e4dba26913b76",
+      "size": 9364
+    },
+    "rnaseq/matrices/GSE218921/salmon_ME49.parquet": {
+      "sha256": "819d7e3f20ca1e0808b95cb08b9416c54f0d098e3558abe918b67c4d059a31ed",
+      "size": 1761245
+    },
+    "rnaseq/matrices/GSE218921/salmon_ME49_host.parquet": {
+      "sha256": "728006fb72deff1494947c80e6226f67db29ede5e7822aa36858eec347c37f1c",
+      "size": 1812642
+    },
+    "rnaseq/matrices/GSE218921/salmon_ME49_host_samples.tsv": {
+      "sha256": "a647d54b3147fc47e122b6b482d1f5ce3ab66963b6ebb71165240e1554bdf372",
+      "size": 9500
+    },
+    "rnaseq/matrices/GSE218921/salmon_ME49_samples.tsv": {
+      "sha256": "ac94cdbd0ef629d9f2589c832144b96f4250425fa0d71aed358e4dba26913b76",
+      "size": 9364
+    },
+    "rnaseq/matrices/GSE218921/salmon_VEG.parquet": {
+      "sha256": "fb687951e29ef89b3539595cdcc43e9511eafbbc08a547130fa686b53e7bc26c",
+      "size": 1374859
+    },
+    "rnaseq/matrices/GSE218921/salmon_VEG_samples.tsv": {
+      "sha256": "ac94cdbd0ef629d9f2589c832144b96f4250425fa0d71aed358e4dba26913b76",
+      "size": 9364
+    },
+    "rnaseq/matrices/GSE223621/kallisto_ME49.parquet": {
+      "sha256": "f92f88ecd8d36961446b38e1df7fbed293d70b387b5e86b41bab403e319c1e32",
+      "size": 909876
+    },
+    "rnaseq/matrices/GSE223621/kallisto_ME49_host.parquet": {
+      "sha256": "2c8c8a93891fe5f9a62bcb661bb0b6873b69add46b558fe47fd71d576c4df19f",
+      "size": 908426
+    },
+    "rnaseq/matrices/GSE223621/kallisto_ME49_host_samples.tsv": {
+      "sha256": "76cddd84afd34f50344aed1125e1115fa5e2ac1cdcbb02d2364ef414c62a2637",
+      "size": 4690
+    },
+    "rnaseq/matrices/GSE223621/kallisto_ME49_samples.tsv": {
+      "sha256": "8d4a4c5076b1cfb0dc3ebd7275044cf1f4486e2d7d9ef5fb04bf8e14fc975de0",
+      "size": 4569
+    },
+    "rnaseq/matrices/GSE223621/salmon_ME49.parquet": {
+      "sha256": "dc408a8293e9fc2f258682fae85a40043011a4535056c9be01080883126dbdae",
+      "size": 978161
+    },
+    "rnaseq/matrices/GSE223621/salmon_ME49_host.parquet": {
+      "sha256": "4b3a13a081a6715895561f1422dd024af41b81adb75a8b766cad6c9a51f2d9a8",
+      "size": 979278
+    },
+    "rnaseq/matrices/GSE223621/salmon_ME49_host_samples.tsv": {
+      "sha256": "3cd2661b59cf706c88f06d1e071f6b15dd58e8816f4052bce45a2074d70e5314",
+      "size": 4691
+    },
+    "rnaseq/matrices/GSE223621/salmon_ME49_samples.tsv": {
+      "sha256": "8d4a4c5076b1cfb0dc3ebd7275044cf1f4486e2d7d9ef5fb04bf8e14fc975de0",
+      "size": 4569
+    },
+    "rnaseq/matrices/GSE223819/kallisto_ME49.parquet": {
+      "sha256": "108f101b4d61a4978c0faec50e6223f170e2dc7954cd7b4dca59d6281eba23a5",
+      "size": 232954
+    },
+    "rnaseq/matrices/GSE223819/kallisto_ME49_host.parquet": {
+      "sha256": "60e00a360d0dbc0fc3249d4af9d4511156f86ab5591071d26fb3c4cfd9e3ab32",
+      "size": 232528
+    },
+    "rnaseq/matrices/GSE223819/kallisto_ME49_host_samples.tsv": {
+      "sha256": "a19149eeb2375263a9bbba95edf12738912a107b4d4afb237f3c14df08c7e417",
+      "size": 1323
+    },
+    "rnaseq/matrices/GSE223819/kallisto_ME49_samples.tsv": {
+      "sha256": "66a03588b446e1ffe805b816f70495d70ee48ec30af4b8efb82fb6c5403557e8",
+      "size": 1287
+    },
+    "rnaseq/matrices/GSE223819/salmon_ME49.parquet": {
+      "sha256": "4ef07f7363449dd3829a5507b1e17f834d66578d538c7cfd16108b7f1769c404",
+      "size": 252099
+    },
+    "rnaseq/matrices/GSE223819/salmon_ME49_host.parquet": {
+      "sha256": "288a35ee4386a8f6b8ec0d6ff2b803f0c42f0856fe66c65eec78a5594ad68223",
+      "size": 252207
+    },
+    "rnaseq/matrices/GSE223819/salmon_ME49_host_samples.tsv": {
+      "sha256": "04771ad2f103492a41d22b836ef59d42e4d63cb0f2b821afd369b895f481edfd",
+      "size": 1323
+    },
+    "rnaseq/matrices/GSE223819/salmon_ME49_samples.tsv": {
+      "sha256": "66a03588b446e1ffe805b816f70495d70ee48ec30af4b8efb82fb6c5403557e8",
+      "size": 1287
+    },
+    "rnaseq/sample_design.tsv": {
+      "sha256": "ec23ea04900eeae28cf516d144ade7aad5e6b47c5db447f58bf44c7bf99b2cfd",
+      "size": 955382
+    },
+    "rnaseq/sample_metadata.json": {
+      "sha256": "eb78ba580677b89a8631aebb92128df48c661a8bbe9fc3b532f3c562b22025fd",
+      "size": 187610
+    },
+    "rnaseq/snapshot.json": {
+      "sha256": "bbfd47478ffc877b3a437bb665b5d8203816079e258f964eeb2f235985f6aa9c",
+      "size": 491346
+    },
+    "secretome_partition.tsv": {
+      "sha256": "01ff6998592d120f84c5913ef3f704061245b9b4b5c59f6012f66ef3315efc31",
+      "size": 5554
+    },
+    "sexual_stages.tsv": {
+      "sha256": "8e78d32b8dc9e2902ada3d0bc7b2d05deefdc46a1e2165c13c04bb6880661085",
+      "size": 144600
+    },
+    "slot_hierarchy.json": {
+      "sha256": "c6cf8f09b4b4f064e082204dded0ddcf6934f39e66a23e41033f464fd3b2615a",
+      "size": 74803
+    },
+    "slots.json": {
+      "sha256": "fa3f04c24fe924446410507f4d1654fdf07351d0a9cc7e323324be29d550dc75",
+      "size": 315639
+    },
+    "star_edges.parquet": {
+      "sha256": "bbbbd2e54f78599ae8d08524b5fcb697ebc0b421ec8610a190732c3382d4d17e",
+      "size": 1196759
+    },
+    "strategy_calibration.json": {
+      "sha256": "a24ef3d376a8175b6657c44f9465249b982c943fc74ec646949926fa62596c01",
+      "size": 372468
+    },
+    "strategy_examples.json": {
+      "sha256": "5f94bc639f1c70a936395cdf90bcce36a3cbd924a12aaa25f717a3d8d11149d1",
+      "size": 263915
+    },
+    "strategy_selftests.json": {
+      "sha256": "ff08276669f4a1b7273513686927833b3c8483f0340103289c810984526f39c6",
+      "size": 84760
+    },
+    "structure_search.parquet": {
+      "sha256": "cc7353562ab1d5dca6c3c6ab9e933462c0c6a6fec3ac6e0bb64031e4e93a9517",
+      "size": 15036
+    },
+    "structure_search_perlabel.parquet": {
+      "sha256": "d52bde7abe5c7579ea24eb33b56b4f97f902becc6ac90baebdc95668951ed0e9",
+      "size": 42732
+    },
+    "study_licenses.parquet": {
+      "sha256": "2e5c83fb8acce6e5ebcc2296e35bc64b054ef378356f3852de26aefb40f03b71",
+      "size": 5143
+    },
+    "toxodb_arginine_methylation.tsv": {
+      "sha256": "d993f99e74511e010e2bd078d9bc8c65502de96afae42377557b25f7c9b6626f",
+      "size": 5926
+    },
+    "toxodb_cds.tsv.gz": {
+      "sha256": "bd681c80c987bf36d66f5894c913186e9896d1055b24fd968f4a28a48b83189d",
+      "size": 5951377
+    },
+    "toxodb_ec_numbers.tsv": {
+      "sha256": "477d4fa483abac19bd979a9bcec26e3d031dff2b8a737f8e3bd777928454a37d",
+      "size": 212352
+    },
+    "toxodb_enteroepithelial.tsv": {
+      "sha256": "8de215cbddad8d0446694e791bb71022afcbc32d12e2251f594a37ea847fbb11",
+      "size": 188940
+    },
+    "toxodb_epitopes.tsv": {
+      "sha256": "c98ba2f7c55310d42b19da36f8140b521309048b29432e4bae6f2e8e725847f8",
+      "size": 4865
+    },
+    "toxodb_gene_location.tsv": {
+      "sha256": "1b46113caedb69b5e0ca2d760844bc0e97abc9e3de8510233e583d4128e951cd",
+      "size": 797797
+    },
+    "toxodb_h4_acetylation.tsv": {
+      "sha256": "c60788e72a975838b0c24d4857e0f71de75cbd9020dfa5694ccc43afbcfc881b",
+      "size": 168914
+    },
+    "toxodb_identity.tsv": {
+      "sha256": "bc9ad569ddceb382f811b2b840df518977aaad1632fe6bf64fd26daf3ae58f72",
+      "size": 2333066
+    },
+    "toxodb_macrophage.tsv": {
+      "sha256": "95cf95020eaddeaa528c15226c9ef6cac7c3e6f6c31abe94739acae6c57e5968",
+      "size": 152577
+    },
+    "toxodb_nanopore_isoforms.tsv": {
+      "sha256": "bccc1c2aae3458421a9734f48de72c038eefdbb7ebc4d1b7fee1c332d792643c",
+      "size": 13049
+    },
+    "toxodb_palmitome_hydroxylamine.tsv": {
+      "sha256": "8ca1fd22f71454ca4b4b5865f60663690a7bc367c9748215c379e81b8b4c7eef",
+      "size": 8850
+    },
+    "toxodb_palmitome_palmitate.tsv": {
+      "sha256": "964f9a9dde2d12153df8dac482baec286a4e572afd663497532f2a4be9de2485",
+      "size": 8947
+    },
+    "toxodb_strain_gt1.tsv": {
+      "sha256": "92dd9cadde55ca27cc1544ff42fba2961128d3624a1ed82755aed1e923fed282",
+      "size": 147059
+    },
+    "toxodb_strain_snps.tsv": {
+      "sha256": "161a5e1c1ce7c9a3ecce8591d640cd6b89fa12ec838d499065e31b7380b5d3e6",
+      "size": 248842
+    },
+    "toxodb_strain_veg.tsv": {
+      "sha256": "31d939496d18265772b0fa7fa18d8fed69c5165c23083f40dcde866e750b3ff6",
+      "size": 145819
+    },
+    "track_record.parquet": {
+      "sha256": "0a771e65e918ae71e95a73bb7efe92157c6ce2eb0a4bd32db612a3948c45c817",
+      "size": 7031083
+    },
+    "umap_gallery.json": {
+      "sha256": "6c57d91ecc61064dd2f5b01b9261b0633596931504c2e19a01195d52a96f340d",
+      "size": 1239585
+    },
+    "umap_gallery.npz": {
+      "sha256": "94527ac5f0d28d14a15f4ea3552fce5f61d6877c48d76bb514f1f2defe8f5ff4",
+      "size": 10463527
+    },
+    "umap_gallery_scores.tsv": {
+      "sha256": "7e37b43a01a511d4b42a46858bd4832a454e52ecba545423c7fc3f3f41801a45",
+      "size": 431169
+    }
+  },
+  "schema_version": 1,
+  "sha256": "891b93e69bff81e9f2d0985bb35792cec4e7a63c3d653e5d7fb22be58ae24f74",
+  "size": 221482867,
+  "url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.2.0/parascape-data-0.0.2.0.tar.gz",
+  "version": "0.0.2.0"
+}

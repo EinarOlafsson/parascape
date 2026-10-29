@@ -5,6 +5,8 @@ prove biological independence or estimate per-gene confidence.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import hashlib
 import json
 import numpy as np
@@ -23,7 +25,7 @@ def load_paired_state(report, *, path=None, expected_sha256=PAIRED_STATE_SHA256)
     from . import functional_agreement as A, functional_results as F
     if hashlib.sha256((F._canonical(report) + '\n').encode()).hexdigest() != A.REPORT_SHA256:
         raise ValueError('Intervals require the pinned paired source report')
-    path = Path(path) if path is not None else Path(__file__).with_name('data') / 'functional_agreement_uncertainty.json'
+    path = Path(path) if path is not None else Path(_data_paths.data_dir()) / 'functional_agreement_uncertainty.json'
     encoded = path.read_bytes()
     if not expected_sha256 or hashlib.sha256(encoded).hexdigest() != expected_sha256:
         raise ValueError('Paired interval checksum changed')

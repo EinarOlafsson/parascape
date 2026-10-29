@@ -21,6 +21,8 @@ A grade summarises the lot (`grade`): *reliable*, *works when tuned*, *weak*, *n
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import json
 import math
 import os
@@ -28,7 +30,7 @@ import os
 import numpy as np
 import pandas as pd
 
-DATA = os.path.join(os.path.dirname(__file__), "data")
+DATA = _data_paths.data_dir()
 CALIBRATION = os.path.join(DATA, "strategy_calibration.json")
 
 #: Settings that choose WHAT is held out rather than HOW the strategy works. A setting is the rest.

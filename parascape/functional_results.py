@@ -7,6 +7,8 @@ Corrupt, incomplete and differently scoped bundles are refused before display.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 from . import organisms as _ORGANISMS
 
 from dataclasses import dataclass
@@ -341,7 +343,7 @@ def load(path, *, expected_sha256):
 
 def shipped(organism):
     """Return offline results and an explicit unavailable reason; never fit or download."""
-    path=Path(__file__).with_name('data')/'functional_results.json'
+    path=Path(_data_paths.data_dir())/'functional_results.json'
     if not path.exists():return [],'No frozen functional recovery results are packaged for this organism.'
     try:benchmarks=load(path,expected_sha256=FUNCTIONAL_RESULTS_SHA256)
     except (OSError,ValueError,KeyError,TypeError) as exc:

@@ -3,8 +3,8 @@
 
     pyinstaller packaging/parascape.spec
 
-The committed cache is the whole point of bundling: data/ is 11 MB and makes the installed application
-work with no network and no dataset, so it is collected rather than fetched on first run.
+Application icons and the data descriptor ship with the executable. Scientific
+data is downloaded from GitHub on first launch and then works offline.
 """
 from __future__ import annotations
 
@@ -26,19 +26,12 @@ for pkg in ("parascape", "pyqtgraph", "pyqtgraph.opengl", "OpenGL", "OpenGL.plat
     except Exception:
         hiddenimports.append(pkg)
 
-# The committed cache, which is what makes the installed application standalone. It lives INSIDE the
-# package (parascape/data), and it is bundled to the same relative place so paths.data_dir() finds it
-# by its normal first candidate rather than by a special case for frozen builds.
-#
-# This pointed at ROOT/data until 2026-08-12. After the cache moved into the package that directory
-# stopped existing, so PyInstaller would have bundled nothing and produced an installer whose
-# application cannot find its own data -- the failure with no error message that the whole resolver
-# exists to prevent.
-CACHE = ROOT / "parascape" / "data"
-if not CACHE.is_dir():
-    raise SystemExit(f"cache not found at {CACHE}; build it with python -m parascape.build_graph "
-                     "before packaging, or the installer will ship an application with no data")
-datas = [(str(CACHE), "parascape/data")]
+# Dataset files are downloaded from a versioned GitHub release on first launch.
+ASSETS = ROOT / "parascape" / "data" / "icons"
+DESCRIPTOR = ROOT / "parascape" / "data_manifest.json"
+if not ASSETS.is_dir() or not DESCRIPTOR.is_file():
+    raise SystemExit("Missing icons or data release descriptor; restore the source assets before packaging")
+datas = [(str(ASSETS), "parascape/data/icons"), (str(DESCRIPTOR), "parascape")]
 for pkg in ("pyqtgraph", "umap", "pynndescent"):
     try:
         datas += collect_data_files(pkg)

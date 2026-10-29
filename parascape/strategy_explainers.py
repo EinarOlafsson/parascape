@@ -15,6 +15,8 @@ without saying how it fails.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import json
 import os
 
@@ -894,7 +896,7 @@ def markdown(key: str) -> str:
 # --------------------------------------------------------------------------- worked examples
 #: One real failure and one real success per strategy and organism, chosen from the calibration
 #: sweep by `scripts/build_strategy_examples.py` (see its notebook for every choice).
-EXAMPLES = os.path.join(os.path.dirname(__file__), "data", "strategy_examples.json")
+EXAMPLES = os.path.join(_data_paths.data_dir(), "strategy_examples.json")
 _EXAMPLES: dict = {}
 
 

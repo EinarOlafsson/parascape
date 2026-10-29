@@ -47,3 +47,6 @@ starpath_dump
 
 # Rendered documentation site
 docs/site/
+
+# Versioned GitHub data release assets; upload these, never commit the archive.
+/data-dist/

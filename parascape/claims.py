@@ -20,6 +20,8 @@ And the two that make a claim:
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -524,7 +526,7 @@ _SHIPPED: dict = {}
 
 def _data(name: str) -> str:
     import os
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", name)
+    return os.path.join(_data_paths.data_dir(), name)
 
 
 def shipped(organism: str | None = None) -> pd.DataFrame:

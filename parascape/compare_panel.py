@@ -8,6 +8,8 @@ from sample titles and can be reassigned, because titles are free text.
 """
 from __future__ import annotations
 
+from . import paths as _data_paths
+
 import numpy as np
 import pandas as pd
 from PyQt6 import QtCore, QtWidgets
@@ -127,8 +129,8 @@ class ComparePanel(QtWidgets.QWidget):
         self.summary = QtWidgets.QLabel("")
         self.summary.setWordWrap(True)
         lay.addWidget(self.summary)
-        # The volcano is made when the first comparison is drawn, not with the tab: a pyqtgraph plot
-        # built with the window and torn down with it segfaulted the test harness's window cleanup.
+        # Render the scientific plot through Agg. A pyqtgraph graphics scene here crashed during
+        # deferred Qt window destruction, including when switching between comparison windows.
         self.volcano = None
         self._volcano_slot = QtWidgets.QVBoxLayout()
         lay.addLayout(self._volcano_slot, 1)
@@ -187,6 +189,7 @@ class ComparePanel(QtWidgets.QWidget):
             self.sample_table.setItem(i, 2, QtWidgets.QTableWidgetItem(
                 "" if share is None or pd.isna(share) else f"{share:.0%}"))
             box = QtWidgets.QComboBox()
+            box.setToolTip(TH.tip(TIPS['groups']))
             box.addItems(GROUPS)
             # First condition A, second B, the rest left out: a starting point, never a decision.
             k = conditions.index(str(r["condition"]))
@@ -215,6 +218,11 @@ class ComparePanel(QtWidgets.QWidget):
     def compare(self) -> X.Contrast | None:
         """Run the moderated comparison of B against A on the chosen conventions, and draw it."""
         a, b = self.groups()
+        from .rna_design import independent_runs
+        if not independent_runs(self.samples, a + b):
+            self.summary.setText("Selected runs share a submitted biological sample. They cannot be counted as independent replicates; merge the repeated runs or select one per sample before comparison.")
+            self.result = None
+            return None
         try:
             self.result = X.contrast(self.counts, a, b, normalisation=self.normalisation.currentData(),
                                      tpm=self.tpm, quantifier=self.quantifier.currentData(),
@@ -244,23 +252,30 @@ class ComparePanel(QtWidgets.QWidget):
             f"({len(self.result.group_a)} vs {len(self.result.group_b)} samples; "
             f"{self.result.quantifier} / {self.result.reference} / "
             f"{self.result.normalisation.replace('_', ' ')}; prior df {self.result.prior_df:.1f}).")
-        import pyqtgraph as pg
+        import io
+        from matplotlib.figure import Figure
+        from matplotlib.backends.backend_agg import FigureCanvasAgg
+        from PyQt6 import QtGui
         if self.volcano is None:
-            self.volcano = pg.PlotWidget(parent=self)
-            self.volcano.setLabel("bottom", "log2 fold change (B over A)")
-            self.volcano.setLabel("left", "-log10 p")
+            self.volcano = QtWidgets.QLabel(parent=self)
+            self.volcano.setScaledContents(True)
             self.volcano.setMinimumHeight(160)
             self.volcano.setMinimumWidth(120)
             self._volcano_slot.addWidget(self.volcano)
-        self.volcano.clear()
         y = -np.log10(np.clip(t["p"].to_numpy(), 1e-300, 1))
         is_hit = t["gene"].isin(set(hit["gene"])).to_numpy()
-        grey = pg.mkBrush(150, 150, 150, 90)
-        self.volcano.addItem(pg.ScatterPlotItem(t["log2fc"].to_numpy()[~is_hit], y[~is_hit], size=4,
-                                                pen=None, brush=grey))
+        figure = Figure(figsize=(6, 2.8), tight_layout=True)
+        canvas = FigureCanvasAgg(figure)
+        axes = figure.add_subplot(111)
+        axes.scatter(t["log2fc"].to_numpy()[~is_hit], y[~is_hit], s=5, c='#999999', alpha=.4)
         colours = np.where(t["log2fc"].to_numpy()[is_hit] > 0, "#c0392b", "#2e6db4")
-        self.volcano.addItem(pg.ScatterPlotItem(t["log2fc"].to_numpy()[is_hit], y[is_hit], size=5,
-                                                pen=None, brush=[pg.mkBrush(c) for c in colours]))
+        axes.scatter(t["log2fc"].to_numpy()[is_hit], y[is_hit], s=7, c=colours)
+        axes.set(xlabel='log2 fold change (B over A)', ylabel='−log10 p')
+        buffer = io.BytesIO()
+        canvas.print_png(buffer)
+        pixmap = QtGui.QPixmap()
+        pixmap.loadFromData(buffer.getvalue(), 'PNG')
+        self.volcano.setPixmap(pixmap)
         show = pd.concat([hit, t[~t["gene"].isin(set(hit["gene"]))]]).head(500)
         self.result_table.setRowCount(len(show))
         for i, r in enumerate(show.itertuples(index=False)):
@@ -296,7 +311,7 @@ class ComparePanel(QtWidgets.QWidget):
 def catalogue_titles() -> dict:
     """Study titles from the shipped omics catalogue, if present."""
     import os
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "omics_catalogue.tsv")
+    path = os.path.join(_data_paths.data_dir(), "omics_catalogue.tsv")
     if not os.path.exists(path):
         return {}
     c = pd.read_csv(path, sep="\t", usecols=["accession", "title"])
@@ -312,7 +327,21 @@ def install(window) -> ComparePanel | None:
         panel.genes_chosen.connect(window.run_my_list)
     dock = QtWidgets.QDockWidget("compare", window)
     dock.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
-    dock.setWidget(panel)
+    from .rna_panel import RNAProfilesPanel
+    from .rna_design_panel import StudyDesignPanel
+    profiles = RNAProfilesPanel()
+    profiles.gene_chosen.connect(window._workflow_gene)
+    tabs = QtWidgets.QTabWidget()
+    tabs.setMinimumWidth(120)
+    for page, title in ((profiles, 'Gene expression'), (StudyDesignPanel(), 'Studies & samples'),
+                        (panel, 'Condition comparison')):
+        scroll = QtWidgets.QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
+        scroll.setMinimumWidth(120)
+        scroll.setWidget(page)
+        tabs.addTab(scroll, title)
+    dock.setWidget(tabs)
     window.addDockWidget(QtCore.Qt.DockWidgetArea.RightDockWidgetArea, dock)
     anchor = getattr(window, "discoveries_dock", None) or getattr(window, "strategies_dock", None)
     if anchor is not None:
@@ -320,4 +349,5 @@ def install(window) -> ComparePanel | None:
     if getattr(window, "right_dock", None) is not None:
         window.right_dock.raise_()
     window.compare, window.compare_dock = panel, dock
+    window.rna_profiles = profiles
     return panel

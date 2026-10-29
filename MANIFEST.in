@@ -1,0 +1,4 @@
+prune parascape/data
+recursive-include parascape/data/icons *.svg
+include parascape/data_manifest.json
+exclude tests/test_functional_contract_audit.py
