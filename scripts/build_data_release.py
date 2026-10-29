@@ -26,7 +26,7 @@ def build(source: Path, output: Path, descriptor: Path):
     for folder in ('published_expression', 'processing_audit', 'source_matrices', 'platform_identifiers'):
         files.extend(p for p in (source / folder).rglob('*') if p.is_file()
                      and not any(part.startswith('.') for part in p.relative_to(source / folder).parts)
-                     and p.suffix in ('.parquet', '.tsv', '.json', '.jsonl', '.py', '.md'))
+                     and p.suffix in ('.parquet', '.tsv', '.csv', '.json', '.jsonl', '.py', '.md'))
     if not files or not (source / 'nodes.parquet').is_file():
         raise ValueError('Cannot publish an empty data release')
     output.mkdir(parents=True, exist_ok=True)

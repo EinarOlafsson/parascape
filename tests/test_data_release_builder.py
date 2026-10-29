@@ -16,6 +16,7 @@ def test_portable_expression_and_audit_data_are_checksum_pinned(tmp_path):
              'published_expression/source_pack/prepare_published_rsem.py': b'# original adapter source',
              'processing_audit/dataset_coverage.tsv': b'original coverage',
              'processing_audit/all_geo_samples/GSE1/geo-samples.json': b'{}',
+             'processing_audit/rna_technical_qc/report.csv': b'sample,missing\noriginal,0\n',
              'source_matrices/source_pack/values.parquet': b'original submitted values',
              'source_matrices/source_pack/manifest.json': b'{}',
              'platform_identifiers/GPL1-source/links.parquet': b'original identifier associations',

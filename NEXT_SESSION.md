@@ -1,5 +1,23 @@
 # Next session: start here
 
+**Portable 0.0.4.0 preparation (2026-10-29):** the new external asset contains
+3,834 pinned files, 307 verified RNA entries, 147 original-value matrices and
+54 independently reconciled platform identifier indices. Staging, immutable
+preparation records, the descriptor, archive and installation are under
+`/media/carruthers/mnt1/parascape-release-data-0.0.4.0`. Archive SHA-256:
+`9fa0662f8e91f97162bbfa0b9e73b5c3df36c51f6472aa72c5be0ab040dc9c09`.
+Preservation validation checks every previous RNA matrix (120), including exact
+numeric bit patterns, plus unchanged hashes for 168 core/deposited files.
+The local Live Data launcher uses the verified new managed cache. Relevant
+checks: 544 reader/UI/QC/download/docstring tests and 43 release/packaging tests.
+Publication still requires a clean installed-wheel smoke test, exact-commit
+Tests and Documentation, and the normal main-branch publisher. Build distributions
+from a clean tracked-only checkout, preserving unrelated untracked work.
+Source scales, sample-role curation, current gene-version reconciliation and
+remaining source acquisition/admission are unfinished; this is not full-goal
+completion. Native download/processing/QC/logging workers require no AI tokens;
+new implementation still requires an active coding session.
+
 **Platform identifiers and release state (2026-10-29):**0.0.3.0 is verified onPyPI
 (1,634,131-byte wheel; publisher complete at9ebbff3). The follow-upf057f75 was
 pushed to nightly after that release finished.0.0.3.0 does not include the newer

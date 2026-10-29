@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+## 0.0.4.0 — 2026-10-29
+
+- Expand the external data snapshot to 307 verified RNA entries and add 147
+  original-value matrices, including 131 microarray matrices. Retain original
+  sample metadata, assay labels, missing values and source scales.
+- Add the Deposited matrices browser, CSV export and optional matching through
+  4,127,284 source-declared identifier links across 54 platforms. Preserve
+  individual probes, ambiguous associations and annotation provenance.
+- Export whole-matrix technical QC for RNA and deposited expression, distinguishing
+  missingness, measured zeros and numerical validity. Biological quality scores
+  remain unavailable without independent calibration.
+- Include expanded acquisition coverage, processing receipts and PRIDE metadata
+  in the portable data asset. Original raw sources are not bundled; source scales,
+  sample roles and gene versions still require review before cross-study pooling.
+
 ## 0.0.3.0 — 2026-10-29
 
 - Update the external RNA snapshot to 305 verified study/run entries from 24 studies, including all eight PRJNA1008424 runs. Retain the existing gene-map features and saved coordinates.
