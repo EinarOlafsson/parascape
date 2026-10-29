@@ -37,6 +37,7 @@ NAS = os.environ.get("PARASCAPE_OMICS", "/nas_mnt/carruthers/Einar/parascape_omi
 SCRATCH = os.environ.get("PARASCAPE_SCRATCH", "/media/carruthers/mnt3/claude/parascape_omics_scratch")
 BIN = os.path.expanduser("~/anaconda3/envs/parascape-quant/bin")
 THREADS = int(os.environ.get("PARASCAPE_THREADS", "4"))
+RUNTIME_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 DOWNLOAD_CACHE = os.environ.get("PARASCAPE_DOWNLOAD_CACHE", "")
 DOWNLOAD_RATE = int(os.environ.get("PARASCAPE_DOWNLOAD_BYTES_PER_SECOND", "0"))
 PLAN = os.environ.get("PARASCAPE_PLAN", os.path.join(NAS, "catalogue", "plan.jsonl"))
@@ -332,6 +333,7 @@ def quantify(limit: int | None = None) -> None:
                     os.remove(h5)                      # the TSV holds the same numbers
             _cache_module().save(Path(out_dir) / "done.json",
                                  {**r, "salmon": version("salmon"), "kallisto": version("kallisto"),
+                                  "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256,
                                   "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
             log(f"{r['run_accession']} ({r['study']}): quantified against {', '.join(r['references'])}")
         except Exception as e:

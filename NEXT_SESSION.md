@@ -1,5 +1,29 @@
 # Next session: start here
 
+**Latest resource authorization (2026-10-29):** user permits up to 24 of 32 logical
+threads, superseding the earlier eight-thread ceiling. Owned worker units now use
+CPUs `0-11,16-27`, reserving four full physical cores/eight logical threads.
+Quantifier environment is `PARASCAPE_THREADS=24`; the live older worker keeps its
+loaded eight-thread configuration until native
+`parascape-thread-limit-handover.service` observes a verified quiescent completed-run
+boundary. It never restarts an active quantifier child or unfinished source run.
+The resource guard uses a 24-CPU quiet ceiling, eight protected CPUs and 30 seconds
+of sustained quiet before restoring capacity. Cache/storage caps remain unchanged.
+Audit policy, previous unit/runtime sources and handover state are retained in
+`~/.local/state/parascape-thread-limit` and NAS processing audit. Future quantifier
+completion records include configured threads and the source hash captured at
+process startup; the existing process and tutorials remain untouched.
+Queue/cache regressions: 26 checks and five resource-guard checks pass; the handover gate rejects unfinished
+runs or leftover scratch and requires both complete tool outputs. The first full
+protein-group source audit inspected 27 acquired tables (~59.7MB), preserving
+headers, rows, original group identities, quality flags and numeric-token review
+counts in `published_pride/protein_group_candidate_audit.json`. Thirteen sources
+have nonfinite/invalid candidate tokens requiring explicit missingness review.
+Header-only selection must not treat `iBAQ peptides` or aggregate/channel fields
+as ordinary sample abundance. These protein tables are not yet runtime-admitted;
+keep source quantities, zero semantics, decoys/contaminants and assay context
+explicit before RNA/protein comparisons.
+
 **Workbench original measurements (2026-10-29):** local **Other measurements** now
 reads seven independently reconciled original tables in
 NAS `prepared_deposited_values`. All 57,468 source cells and literal tokens checked

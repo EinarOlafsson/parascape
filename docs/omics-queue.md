@@ -181,6 +181,18 @@ the download cap is 200 GiB, with the 25 GiB free-space reserve and eight-core
 policy retained. OS signal-paused workers are now reported as `signal_paused`;
 the supervisor does not override external operator pauses.
 
+The later 2026-10-29 user instruction raises the worker ceiling to **24 of 32
+logical CPU threads**. On this workstation the selected set is `0-11,16-27`,
+reserving four complete physical cores (`12-15,28-31`) for other work. The
+resource guard can temporarily restrict quantification to eight logical CPUs
+during tutorial activity or system pressure. Existing runs keep their original
+thread count; a native handover waits for verified completion, scratch cleanup,
+no active child process and a quiescent parent before loading the 24-thread
+configuration. Future completion receipts record the configured thread count and
+runtime source hash. Policy revisions and previous unit/runtime sources are
+retained under the processing audit; the 200 GiB cache and storage reserves stay
+in effect.
+
 The PyPI expression snapshot is separate from the live archive. Its build and
 coverage are documented in [RNA expression](rna-expression.md).
 
