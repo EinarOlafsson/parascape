@@ -149,10 +149,10 @@ python -m twine check --strict dist/*
 ```
 
 Start with an empty `dist/` directory so files from older versions are not included.
-The wheel check requires both organism caches, the application icon and diagrams,
-the compressed sequence tables, AF3/ESM features and manifests, and the literature
-ledger. It rejects saved embeddings, unconditional
-CUDA dependencies, and files above PyPI's default upload limit.
+The wheel check requires code, icons and the versioned GitHub data descriptor.
+It rejects bundled scientific datasets, saved embeddings, unconditional CUDA
+dependencies and files above PyPI’s default upload limit. The installed-wheel
+smoke test verifies and installs the pinned GitHub asset before loading gene data.
 
 The desktop installers in `packaging/` are separate from PyPI. Their existing
 workflow runs manually or on a `v*` tag.
