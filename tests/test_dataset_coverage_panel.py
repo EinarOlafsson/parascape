@@ -157,3 +157,99 @@ def test_workbench_collection_path_and_receipt_must_be_valid(workbench_audit):
     path.write_text(json.dumps(pointer))
     with pytest.raises(ValueError, match='collection identity'):
         D.workbench_samples(workbench_audit, 'ST000001')
+
+
+@pytest.fixture
+def pride_audit(audit):
+    """Submitted design rows repeat identities and column headings without creating new replicates."""
+    projects = audit / 'pride_projects'
+    records = []
+    for accession in ['PXD000001', 'PXD000002']:
+        folder = projects / accession
+        folder.mkdir(parents=True)
+        summary = folder / 'project_summary.json'
+        summary.write_text(json.dumps(dict(accession=accession, title='Original project title',
+            sampleAttributes=[{'value': 'Submitted source label'}])))
+        records.append(dict(accession=accession, status='validated_primary_metadata',
+            summary_sha256=hashlib.sha256(summary.read_bytes()).hexdigest(), files_sha256='a'*64))
+    coverage = projects / 'coverage.json'
+    coverage.write_text(json.dumps(records))
+    collection = audit / 'pride_sample_designs'
+    folder = collection / ('1'*64)
+    folder.mkdir(parents=True)
+    source_hash = 'b'*64
+    rows = [dict(source_row=position, cells=['001', batch, '', 'original.raw'], submitted_source_names=['001'],
+        source_row_id=hashlib.sha256((source_hash+':'+str(position)).encode()).hexdigest(),
+        file_links=[dict(column_index=3,submitted_file='original.raw',project='PXD000001',
+            exact_primary_file_ids=['file-001'], status='exact_unique_file')])
+        for position,batch in [(2,'not available'),(3,'second submitted label')]]
+    name = 'c'*64+'.json'
+    (folder/name).write_text(json.dumps(dict(source_url='https://example.org/original.sdrf.tsv', source_sha256=source_hash,
+        headers=['source name','characteristics[batch]','characteristics[batch]','comment[data file]'],
+        rows=rows,source_rows=2,status='structurally_validated_design',
+        primary_file_metadata_sha256={'PXD000001':'a'*64},metadata_origin='community_annotated',
+        biological_truth_status='Submitted metadata; not independently verified biological truth')))
+    (folder/'index.json').write_text(json.dumps(dict(schema_version=1, projects={'PXD000001':[name],'PXD000002':[]})))
+    outputs={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in folder.iterdir()}
+    receipt=folder/'validation.json'
+    receipt.write_text(json.dumps(dict(status='source_designs_reconciled',catalogue_projects=2,
+        bindings={'project_coverage_sha256':hashlib.sha256(coverage.read_bytes()).hexdigest()},outputs=outputs)))
+    (collection/'collection.json').write_text(json.dumps(dict(schema_version=1,directory=folder.name,
+        validation_sha256=hashlib.sha256(receipt.read_bytes()).hexdigest())))
+    return audit
+
+
+def test_pride_submitted_rows_duplicate_headers_and_exact_file_links_are_preserved(pride_audit):
+    report=D.pride_samples(pride_audit,'PXD000001')
+    design=report['designs'][0]
+    assert design['headers'][1:3]==['characteristics[batch]','characteristics[batch]']
+    assert [row['submitted_source_names'] for row in design['rows']]==[['001'],['001']]
+    assert design['rows'][0]['cells'][1:3]==['not available','']
+    assert design['rows'][0]['file_links'][0]['exact_primary_file_ids']==['file-001']
+    assert 'not inferred' in report['design_status']
+    empty=D.pride_samples(pride_audit,'PXD000002')
+    assert empty['project']['accession']=='PXD000002' and not empty['designs']
+    assert 'No submitted SDRF' in empty['design_status']
+
+
+def test_pride_receipts_outputs_and_project_context_are_required(pride_audit):
+    pointer_path=pride_audit/'pride_sample_designs/collection.json'
+    pointer=json.loads(pointer_path.read_text())
+    folder=pointer_path.parent/pointer['directory']
+    design=folder/('c'*64+'.json')
+    original=design.read_bytes()
+    design.write_text('{}')
+    with pytest.raises(ValueError,match='checksum'):
+        D.pride_samples(pride_audit,'PXD000001')
+    design.write_bytes(original)
+    project=pride_audit/'pride_projects/PXD000001/project_summary.json'
+    project.write_text('{}')
+    with pytest.raises(ValueError,match='summary checksum'):
+        D.pride_samples(pride_audit,'PXD000001')
+    pointer['directory']='../outside'
+    pointer_path.write_text(json.dumps(pointer))
+    with pytest.raises(ValueError,match='collection identity'):
+        D.pride_samples(pride_audit,'PXD000002')
+
+
+def test_pride_browser_keeps_submitted_columns_and_repeated_source_rows(qtbot,pride_audit):
+    panel=D.DatasetCoveragePanel(pride_audit)
+    qtbot.addWidget(panel)
+    panel.rows=[dict(accession='PXD000001',source='PRIDE',title='Original project',readout='synthetic assay',
+        supplementary_urls_in_plan='2',source_files_with_acquisition_receipts='1',
+        measurement_status='not integrated into local comparison runtime',primary_sample_metadata='project metadata only')]
+    panel._filter()
+    panel.table.selectRow(0)
+    assert panel.samples.topLevelItemCount()==2
+    design=panel.samples.topLevelItem(1)
+    assert design.childCount()==4
+    first,second=design.child(2),design.child(3)
+    assert first.text(1)==second.text(1)=='001'
+    assert first.child(1).text(0)=='2: characteristics[batch]'
+    assert first.child(1).toolTip(0)=='2: characteristics[batch]'
+    assert first.child(2).text(0)=='3: characteristics[batch]'
+    assert first.child(1).text(1)=='not available' and first.child(2).text(1)==''
+    assert first.child(4).child(0).text(1)=='exact_unique_file'
+    assert 'Primary project/file metadata: verified' in panel.details.text()
+    assert 'not inferred' in panel.details.text() and 'do not prove downloaded' in panel.details.text()
+    assert panel.table.item(0,5).text()=='Pending measurements'

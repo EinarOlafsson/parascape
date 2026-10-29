@@ -131,6 +131,27 @@ software versions, exact adapter source and operation records retained. Independ
 source namespaces preserve the existing Workbench catalogue. These additions are
 local follow-up data; the frozen 0.0.4.0 release does not contain them.
 
+For PRIDE records, **Dataset coverage** shows primary project metadata for all
+209 catalogue projects. The submitted SDRF collection contains 52 design files and
+1,392 source rows across 49 projects. Open a project, expand **Submitted SDRF**, and
+inspect each numbered source row. Column numbers preserve duplicate headings;
+repeated sample labels, empty cells and literal missingness words remain unchanged.
+Hover over a field to read its complete label or value. File associations report
+exact primary file identifiers, including ambiguous or unresolved matches, without
+claiming downloaded raw payloads or measurement-column pairing. The current
+collection has 1,387 exact filename occurrences and five unresolved occurrences;
+these counts are not independent samples. Source metadata origin and biological
+truth status remain explicit. Projects without an SDRF in this collection retain
+their project metadata and a visible design gap.
+
+A native five-minute timer independently reparses all original SDRF cells with a
+second parser, reconciles exact filename candidates against primary project file
+records, and refreshes an immutable portable collection. Original source hashes,
+validated project context, software versions, adapter source and operation logs
+are retained. Controls, biological/technical replicate roles and assay compatibility
+must follow submitted evidence; they are not inferred from shared filenames or
+repeated channels. This metadata browser is an unreleased local follow-up.
+
 For Metabolomics Workbench records, **Dataset coverage** shows original submitted
 sample factors and analysis metadata, retaining source units and discrepancies
 between deposited representations. Repeated sample labels remain separate rows;

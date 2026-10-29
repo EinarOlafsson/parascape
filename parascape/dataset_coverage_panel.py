@@ -102,6 +102,77 @@ def workbench_samples(root: Path, accession: str) -> dict:
     return dict(**report, analysis_inventory=analyses['analyses'], source_coverage=entries[0])
 
 
+def pride_samples(root: Path, accession: str) -> dict:
+    """Read original PRIDE project metadata and independently reconciled submitted SDRF rows."""
+    if not re.fullmatch(r'PXD\d+', accession):
+        raise ValueError('Invalid PRIDE project identity')
+    projects = root / 'pride_projects'
+    coverage_bytes = (projects / 'coverage.json').read_bytes()
+    records = json.loads(coverage_bytes)
+    matches = [row for row in records if row['accession'] == accession]
+    if len(matches) != 1 or matches[0]['status'] != 'validated_primary_metadata':
+        raise ValueError('Primary PRIDE project metadata has not been reconciled')
+    record = matches[0]
+    summary_bytes = (projects / accession / 'project_summary.json').read_bytes()
+    if hashlib.sha256(summary_bytes).hexdigest() != record['summary_sha256']:
+        raise ValueError('Primary PRIDE project summary checksum differs')
+    summary = json.loads(summary_bytes)
+    if summary['accession'] != accession:
+        raise ValueError('Primary PRIDE project identity differs')
+    result = dict(project=summary, designs=[], design_status='Submitted design collection is not installed.')
+    collection = root / 'pride_sample_designs'
+    pointer_path = collection / 'collection.json'
+    if not pointer_path.exists():
+        return result
+    pointer = json.loads(pointer_path.read_text())
+    directory = pointer['directory']
+    if pointer.get('schema_version') != 1 or not re.fullmatch(r'[0-9a-f]{64}', directory):
+        raise ValueError('Unsupported PRIDE design collection identity')
+    folder = collection / directory
+    if folder.resolve().parent != collection.resolve():
+        raise ValueError('PRIDE design collection lies outside its installed root')
+    receipt_bytes = (folder / 'validation.json').read_bytes()
+    if hashlib.sha256(receipt_bytes).hexdigest() != pointer['validation_sha256']:
+        raise ValueError('PRIDE design reconciliation receipt checksum differs')
+    receipt = json.loads(receipt_bytes)
+    if (receipt['status'] != 'source_designs_reconciled' or receipt['catalogue_projects'] != len(records)
+            or receipt['bindings']['project_coverage_sha256'] != hashlib.sha256(coverage_bytes).hexdigest()):
+        raise ValueError('PRIDE design collection project context differs')
+
+    def read(name):
+        if name != 'index.json' and not re.fullmatch(r'[0-9a-f]{64}\.json', name):
+            raise ValueError('Invalid PRIDE design output identity')
+        path = folder / name
+        if path.resolve().parent != folder.resolve():
+            raise ValueError('PRIDE design output lies outside its collection')
+        data = path.read_bytes()
+        if hashlib.sha256(data).hexdigest() != receipt['outputs'][name]:
+            raise ValueError('PRIDE design output checksum differs')
+        return json.loads(data)
+
+    index = read('index.json')
+    names = index['projects'][accession]
+    if (index['schema_version'] != 1 or len(names) != len(set(names))
+            or set(index['projects']) != {row['accession'] for row in records}):
+        raise ValueError('PRIDE design index project identities differ')
+    for name in names:
+        design = read(name)
+        headers, rows = design['headers'], design['rows']
+        if (design['status'] != 'structurally_validated_design' or len(rows) != design['source_rows']
+                or design['primary_file_metadata_sha256'].get(accession) != record['files_sha256']
+                or any(not isinstance(header, str) for header in headers)):
+            raise ValueError('Submitted PRIDE design coverage or project binding differs')
+        for position, row in enumerate(rows, 2):
+            if (row['source_row'] != position or len(row['cells']) != len(headers)
+                    or any(not isinstance(cell, str) for cell in row['cells'])
+                    or row['source_row_id'] != hashlib.sha256((design['source_sha256'] + ':' + str(position)).encode()).hexdigest()):
+                raise ValueError('Submitted PRIDE design row identities differ')
+        result['designs'].append(design)
+    result['design_status'] = ('Submitted design rows retained; biological independence and control pairing are not inferred.'
+                               if names else 'No submitted SDRF design is represented for this project in the installed collection.')
+    return result
+
+
 class DatasetCoveragePanel(QtWidgets.QWidget):
     """Search all catalogue records and inspect source sample labels and acquisition gaps."""
 
@@ -204,6 +275,40 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
                 f"{row.get('series_matrices_review_required', 0)} require review. "
                 'Original units, scale and platform/probe mappings still require review before comparison.')
         try:
+            if row['source'] == 'PRIDE':
+                report = pride_samples(self.root, row['accession'])
+                self.details.setText(f"{row['accession']}: {measurement}. Primary project/file metadata: verified. "
+                                     'Biological independence, technical replicate type and control pairing are not inferred.')
+                project = QtWidgets.QTreeWidgetItem(self.samples, [row['accession'], 'Submitted project metadata'])
+                for key, value in report['project'].items():
+                    text = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+                    QtWidgets.QTreeWidgetItem(project, [key, text])
+                for design in report['designs']:
+                    parent = QtWidgets.QTreeWidgetItem(self.samples, ['Submitted SDRF', design['source_url']])
+                    QtWidgets.QTreeWidgetItem(parent, ['Metadata origin', design['metadata_origin']])
+                    QtWidgets.QTreeWidgetItem(parent, ['Biological truth status', design['biological_truth_status']])
+                    for submitted in design['rows']:
+                        item = QtWidgets.QTreeWidgetItem(parent, ['Source row ' + str(submitted['source_row']),
+                            '; '.join(submitted['submitted_source_names'])])
+                        for position, (header, cell) in enumerate(zip(design['headers'], submitted['cells']), 1):
+                            QtWidgets.QTreeWidgetItem(item, [str(position) + ': ' + header, cell])
+                        for link in submitted['file_links']:
+                            if link['project'] == row['accession']:
+                                child = QtWidgets.QTreeWidgetItem(item, ['Submitted file', link['submitted_file']])
+                                QtWidgets.QTreeWidgetItem(child, ['Exact filename association', link['status']])
+                                QtWidgets.QTreeWidgetItem(child, ['Primary file identifiers', json.dumps(link['exact_primary_file_ids'])])
+                iterator = QtWidgets.QTreeWidgetItemIterator(self.samples)
+                while iterator.value() is not None:
+                    item = iterator.value()
+                    for column in range(2):
+                        item.setToolTip(column, item.text(column))
+                    iterator += 1
+                self.details.setText(self.details.text() + ' ' + report['design_status'] +
+                    ' Community annotations remain distinct from independently verified biological truth. '
+                    'Repeated filenames, fractions and channels do not establish independent replicates; '
+                    'file identifiers do not prove downloaded raw payloads or measurement-column pairing.')
+                self.samples.resizeColumnToContents(0)
+                return
             if row['source'] == 'Metabolomics Workbench':
                 report = workbench_samples(self.root, row['accession'])
                 for position, sample in enumerate(report['submitted_rows'], 1):

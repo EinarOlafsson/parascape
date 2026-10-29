@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Show original PRIDE project metadata and submitted SDRF designs in Dataset
+  coverage. Independently reconcile 52 design files / 1,392 rows across 49 projects,
+  preserving duplicate headings, repeated labels, exact filename links and five
+  unresolved references. Projects without represented designs remain explicit.
+
 - Add 63 original protein-group quantity tables from 26 source files across 14
   projects, independently checking all 928,590 cells. Keep Intensity, LFQ and iBAQ
   separate, retain original quality flags in tooltips/CSV, and preserve Workbench

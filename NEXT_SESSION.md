@@ -1,5 +1,30 @@
 # Next session: start here
 
+**PRIDE submitted-design browsing (2026-10-29):** Dataset coverage now exposes
+primary metadata for all209 PRIDE projects and52 original SDRF designs /1392rows
+across49 projects. Numbered fields preserve duplicate headings; repeated labels,
+empty cells, literal missingness words, fractions and channels stay source records,
+not inferred biological replicates or paired controls. All1387 exact filename
+occurrences and5 unresolved references remain visible. Community49/archive3
+metadata origins and non-independent biological truth status are disclosed.
+Projects without represented SDRF designs retain metadata plus an explicit gap.
+
+Native `parascape-pride-sample-design-export.timer` runs every5min, CPU24/512MiB,
+reparsing every original SDRF cell with pandas independently of the original
+stdlib adapter and checking all primary filename candidates. Immutable portable
+collections, source/code bindings, versions and operation receipts live at NAS
+`processing_audit/pride_sample_designs`. No raw payload or measurement-column
+pairing is inferred. Cached export preserves collection pointer/receipt; synthetic
+changed factors and silently resolved ambiguous filename links are refused.
+Actual Qt selections for all209 projects and all52 designs checked with NAS/network
+blocked; proof `/media/carruthers/mnt1/parascape-pride-design-validation-20261029-v2`.
+526 relevant checks pass, followed by11 final metadata/UI checks after adding full
+field tooltips. The frozen0.0.4.0 release and its exact CI gates remain unchanged;
+these additions await a later release. Dataset goal remains active/incomplete;
+historical inference goal remains paused. Remaining broad gaps include quantitative
+formats, source-to-measurement sample joins, raw acquisition, gene identity/scale
+reconciliation and independent cross-study comparability.
+
 **Protein-group original values (2026-10-29):** local Other measurements now lists
 63 independently reconciled quantity tables from 26 source files / 14 projects,
 alongside the existing seven Workbench tables. Intensity26/LFQ20/iBAQ17 remain
