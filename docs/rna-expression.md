@@ -131,6 +131,19 @@ software versions, exact adapter source and operation records retained. Independ
 source namespaces preserve the existing Workbench catalogue. These additions are
 local follow-up data; the frozen 0.0.4.0 release does not contain them.
 
+The protein importer also accepts the explicit wide layout `PG.ProteinGroups`
+with columns of the form `[number] original-file.PG.Quantity`. It retains the
+complete original headers and does not reinterpret quality/count/statistic fields
+as abundance. The two current tables add 135,116 cells, including 5,075 missing
+cells, over 23 quantity columns. The combined local protein collection now has
+65 tables / 28 source files / 16 projects, 1,063,706 cells and 7,529 missing cells.
+All 63 earlier tables retain byte-identical numeric data, literal tokens and
+column metadata, with unchanged original row annotations. The native validator
+checks the original feature-column identity as well as every original cell.
+Six source layouts now remain explicit review gaps, including long tables and
+derived-statistic tables. Filename-bearing headers do not by themselves establish
+sample-design pairing; exact submitted factor associations remain a separate step.
+
 For PRIDE records, **Dataset coverage** shows primary project metadata for all
 209 catalogue projects. The submitted SDRF collection contains 52 design files and
 1,392 source rows across 49 projects. Open a project, expand **Submitted SDRF**, and

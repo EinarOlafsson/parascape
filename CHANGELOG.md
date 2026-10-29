@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Import original wide `PG.Quantity` protein-group matrices with exact source
+  headers and group identities. Two additional files add 135,116 source cells;
+  earlier quantity data, tokens, column metadata and row annotations are unchanged.
+  Full source-cell validation and original-row QC remain required.
+
 - Show original PRIDE project metadata and submitted SDRF designs in Dataset
   coverage. Independently reconcile 52 design files / 1,392 rows across 49 projects,
   preserving duplicate headings, repeated labels, exact filename links and five

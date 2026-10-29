@@ -1,5 +1,35 @@
 # Next session: start here
 
+**PG.Quantity original pivots (2026-10-29):** native protein adapter now also
+supports one explicit `PG.ProteinGroups` axis with strict `[number] file.PG.Quantity`
+columns, retaining all non-quantity annotations and quality fields. Two additional
+sources add135116 cells /5075 missing /23 columns. Current local totals are65
+protein tables from28 source files /16 projects,1063706 cells /7529 missing /771
+source-column occurrences. Six other layouts remain explicit review gaps; long
+and derived-statistic tables are not forced into abundance matrices.
+
+Processor revision4776d479 is archived by SHA on NAS; five-minute timer remains
+active atCPU24/2GiB. Independent stdlib-versus-pandas cell/annotation/QC checks
+pass; separate synthetic pivot fixture checks repeated groups, original precision,
+signed zero, missingness, strict quantity-column selection and refusal of changed
+or ambiguous feature axes. All63 earlier matrices retain identical values/tokens/
+column metadata (189 files), with identical row annotations and flags. Offline
+all72 deposited-pack API/QC and actual Qt PG.Quantity CSV exports pass; proof
+`/media/carruthers/mnt1/parascape-protein-values-validation-20261029-v2`.
+Cached replay preserves all65 receipts and the catalogue; coverage16 projects /
+65 tables /0 inferred biological samples confirmed. Source processor, preservation
+proofs, tests and operation logs remain in NAS `prepared_deposited_values/protein_groups`.
+
+Next sample-design task: resolve explicitly filename-bearing quantity headers
+against exact primary project file identities and validated SDRF occurrences,
+retaining all channel/fraction/repeated-row associations rather than guessing
+independent samples or paired controls. Gene/scale reconciliation and other
+quantitative formats remain unfinished. Frozen0.0.4.0 exact Tests40967543108 has
+started on GitHub (job123776343818); the full regression step is running after
+successful packaged-layout and real-OpenGL checks. Publisher remains live; no
+follow-up push may cancel that frozen CI. Dataset goal active/incomplete, separate
+historical inference goal paused.
+
 **PRIDE submitted-design browsing (2026-10-29):** Dataset coverage now exposes
 primary metadata for all209 PRIDE projects and52 original SDRF designs /1392rows
 across49 projects. Numbered fields preserve duplicate headings; repeated labels,
