@@ -13,6 +13,14 @@ expression pack: GSE134099, six samples against two annotation variants, via the
 unreleased **Published expression** tab. All 230 supplementary sources from 34 GEO
 studies are acquired; 1,548 archive members are inventoried without extraction.
 Most deposited sources still require measurement review and runtime integration.
+Primary sample metadata now covers all 371 GEO records: 8,309 study/sample records,
+6,621 distinct GSM identifiers, 1,688 shared across studies and 435 multi-channel
+records. A separate full-GEO plan acquires all 3,844 supplementary URLs with original
+source roles. Native services inspect acquired table schemas and inventory archives;
+parser failures remain explicit. The new unreleased Dataset coverage tab reads the
+full 692-record ledger and source sample metadata through `PARASCAPE_AUDIT` (set by
+the Live Data launcher). The automatic follow-up push waits for frozen 0.0.2.0
+publication to complete before advancing nightly, avoiding cancellation of its CI.
 This does not resume the broader paused inference goal. Publication must still be
 verified; see docs/rna-expression.md and docs/releases.md for the new asset flow.
 

@@ -330,12 +330,14 @@ def install(window) -> ComparePanel | None:
     from .rna_panel import RNAProfilesPanel
     from .rna_design_panel import StudyDesignPanel
     from .published_expression_panel import PublishedExpressionPanel
+    from .dataset_coverage_panel import DatasetCoveragePanel
     profiles = RNAProfilesPanel()
     profiles.gene_chosen.connect(window._workflow_gene)
     tabs = QtWidgets.QTabWidget()
     tabs.setMinimumWidth(120)
     for page, title in ((profiles, 'Gene expression'), (StudyDesignPanel(), 'Studies & samples'),
                         (PublishedExpressionPanel(), 'Published expression'),
+                        (DatasetCoveragePanel(), 'Dataset coverage'),
                         (panel, 'Condition comparison')):
         scroll = QtWidgets.QScrollArea()
         scroll.setWidgetResizable(True)

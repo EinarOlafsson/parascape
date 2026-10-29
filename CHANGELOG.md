@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add Dataset coverage browsing for the complete catalogue with separate acquisition and local measurement status. Browse primary GEO sample labels, source factors, multiple channels and shared submitted identities from a separately installed audit pack; preserve missing metadata and processing gaps explicitly.
+
 - Browse separately installed deposited expression packs in Compare → Published expression. Preserve original RSEM units, exact identifiers, sample metadata, software and source checksums; keep annotation variants separate and verify pack integrity before export. The initial local pack contains six GSE134099 samples against two annotation variants; it remains external to the frozen 0.0.2.0 data asset.
 
 ## 0.0.2.0 — 2026-10-29

@@ -91,6 +91,20 @@ unspecified unless the source declares it.
 
 ## Original deposited expression (development)
 
+The **Dataset coverage** tab searches the complete local catalogue by accession,
+title, source or assay. Its acquisition counts and local measurement status remain
+separate: a downloaded source file or schema preview is not an admitted matrix.
+Select a GEO study to inspect original sample labels, channels, submitted factors,
+source relations and links to the same submitted sample in other studies. Controls,
+paired samples and biological independence are not inferred from these links.
+Use **Refresh coverage** to read updated acquisition progress. Set
+`PARASCAPE_AUDIT` to a separately installed audit folder, containing the coverage
+ledger and `all_geo_samples` metadata, when launching another installation.
+The Live Data launcher selects the local audit automatically. This development
+view currently represents all 692 catalogue records; primary sample metadata covers
+371 GEO records. Other sources and unavailable measurements retain explicit gaps.
+It is not part of the frozen 0.0.2.0 release.
+
 The **Published expression** tab reads separately installed, validated source packs.
 Select the study and annotation variant, enter exact source gene identifiers, then
 choose **Show deposited measurements**. CSV export includes the original values,
