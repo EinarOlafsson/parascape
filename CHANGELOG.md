@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Add 63 original protein-group quantity tables from 26 source files across 14
+  projects, independently checking all 928,590 cells. Keep Intensity, LFQ and iBAQ
+  separate, retain original quality flags in tooltips/CSV, and preserve Workbench
+  data in an independent collection. Source-column roles and cross-study
+  compatibility remain under review; no filtering or imputation is applied.
+
 - Add Other measurements browsing and full-matrix QC for independently reconciled
   deposited values. Seven Workbench tables retain all 57,468 source cells, literal
   tokens, original units, sample factors and row identities; missing cells remain

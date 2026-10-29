@@ -1,6 +1,7 @@
 """Original deposited values retain source rows, literal precision and sample context."""
 import hashlib
 import json
+import shutil
 
 import numpy as np
 import pandas as pd
@@ -101,3 +102,35 @@ def test_panel_retains_duplicate_source_rows_and_exports_qc_without_a_query(qtbo
     qc = tmp_path / 'qc.csv'
     assert panel.save_qc(str(qc)) == 2
     assert pd.read_csv(qc).features.tolist() == [3, 3]
+
+
+def test_independent_source_namespaces_coexist_without_replacing_the_root_catalogue(pack):
+    namespace = pack.parent / 'protein_groups'
+    namespace.mkdir()
+    copied = namespace / 'protein-source'
+    shutil.copytree(pack, copied)
+    (namespace / 'catalogue.json').write_text(json.dumps(dict(packs=[copied.name])))
+    packs, errors = D.catalogue(pack.parent)
+    assert len(packs) == 2 and not errors
+    assert {row['path'] for row in packs} == {str(pack), str(copied)}
+    assert len(D.profiles(copied, '001')) == 4
+
+
+def test_original_row_quality_flags_are_exported_without_filtering_or_group_collapse(pack):
+    path = pack / 'source_metadata.json'
+    metadata = json.loads(path.read_text())
+    metadata['row_annotations'] = [dict(source_row=i, feature_label=label,
+        source_fields={'Reverse': '+' if i == 0 else '', 'Potential contaminant': '+' if i == 1 else ''})
+        for i, label in enumerate(['001', '001', 'CaseID'])]
+    path.write_text(json.dumps(metadata))
+    manifest = json.loads((pack / 'manifest.json').read_text())
+    manifest['outputs']['source_metadata.json'] = digest(path)
+    (pack / 'manifest.json').write_text(json.dumps(manifest))
+    validation = json.loads((pack / 'validation.json').read_text())
+    validation['manifest_sha256'] = digest(pack / 'manifest.json')
+    (pack / 'validation.json').write_text(json.dumps(validation))
+    frame = D.profiles(pack, '001')
+    assert len(frame) == 4
+    flags = {row.source_row: json.loads(row.source_row_metadata)['source_fields'] for row in frame.itertuples()}
+    assert flags[0]['Reverse'] == '+' and flags[1]['Potential contaminant'] == '+'
+    assert frame.units.eq('Original units').all()

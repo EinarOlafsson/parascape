@@ -20,7 +20,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.root, self.result = root, None
         layout = QtWidgets.QVBoxLayout(self)
         label = QtWidgets.QLabel('Original deposited measurements. Feature rows, value tokens and source units are retained. '
-            'Choose one analysis; assays, repeated names and submitted samples remain separate. '
+            'Choose one analysis; assays, repeated names and submitted columns remain separate. '
             'Cross-study compatibility and biological independence require review.')
         label.setWordWrap(True)
         layout.addWidget(label)
@@ -42,7 +42,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         for attribute, caption, tooltip, callback in [
             ('show_button', 'Show original measurements', 'Verify source hashes and show original values and literal source tokens.', self.show_values),
             ('export_button', 'Export original measurements…', 'Export each original row/sample value with its source token, units and provenance.', lambda: self.save()),
-            ('qc_button', 'Export sample technical QC…', 'Check all source rows independently of the feature query. Biological quality scores remain unavailable.', lambda: self.save_qc())]:
+            ('qc_button', 'Export column technical QC…', 'Check all source rows independently of the feature query. Biological quality scores remain unavailable.', lambda: self.save_qc())]:
             button = QtWidgets.QPushButton(caption)
             button.setToolTip(tooltip)
             button.clicked.connect(callback)
@@ -52,7 +52,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.summary.setWordWrap(True)
         layout.addWidget(self.summary)
         self.table = QtWidgets.QTableWidget(0, 6)
-        self.table.setHorizontalHeaderLabels(['source row', 'source feature', 'submitted sample', 'numeric value', 'original token', 'source units'])
+        self.table.setHorizontalHeaderLabels(['source row', 'source feature', 'source column', 'numeric value', 'original token', 'source units'])
         self.table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         layout.addWidget(self.table)
         self.refresh()
@@ -71,7 +71,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.pack.clear()
         packs, errors = D.catalogue(self.root)
         for pack in packs:
-            self.pack.addItem(f"{pack['study']} · {pack['analysis']} · {pack['assay']} · {pack['samples']} samples · {pack['units']}", pack)
+            self.pack.addItem(f"{pack['study']} · {pack['analysis']} · {pack['assay']} · {pack['samples']} source columns · {pack['units']}", pack)
         self.summary.setText(f'{len(packs)} reconciled deposited measurement packs. ' +
                              (f'{len(errors)} catalogue entries require review.' if errors else 'Enter exact source feature labels.'))
         self.show_button.setEnabled(bool(packs))
@@ -93,10 +93,10 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         for i, row in enumerate(frame.to_dict('records')):
             for j, field in enumerate(('source_row', 'feature_label', 'source_sample', 'value', 'source_token', 'units')):
                 item = QtWidgets.QTableWidgetItem('' if row[field] is None else str(row[field]))
-                item.setToolTip(row['sample_metadata'] + '\nSource: ' + row['source_url'] + '\n' + row['comparison_scope'])
+                item.setToolTip(row['sample_metadata'] + '\n' + row.get('source_row_metadata', '') + '\nSource: ' + row['source_url'] + '\n' + row['comparison_scope'])
                 self.table.setItem(i, j, item)
         missing = set(self.features.toPlainText().splitlines()) - set(frame.feature_label)
-        self.summary.setText(f'{len(frame)} original row/sample measurements. ' +
+        self.summary.setText(f'{len(frame)} original row/column measurements. ' +
             ('Labels not matched: ' + ', '.join(sorted(missing)) if missing else 'Repeated labels retain separate source rows.'))
         self.table.resizeColumnsToContents()
 
@@ -126,5 +126,5 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         except (OSError, ValueError, KeyError, TypeError) as error:
             self.summary.setText(str(error))
             return 0
-        self.summary.setText(f'Exported technical QC for {len(frame)} submitted samples. Biological quality scores remain unavailable.')
+        self.summary.setText(f'Exported technical QC for {len(frame)} source columns. Biological quality scores remain unavailable.')
         return len(frame)

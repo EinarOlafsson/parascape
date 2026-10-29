@@ -95,9 +95,9 @@ unspecified unless the source declares it.
 The **Other measurements** tab browses independently reconciled source analyses
 outside the gene-expression matrix format. Choose an analysis and enter exact
 original feature labels, one per line. Every matching source row remains separate;
-the table and CSV export include its row number, sample label, binary64 value,
+the table and CSV export include its row number, source-column label, binary64 value,
 literal source token, units and provenance. Source feature annotations are retained
-without inferring gene equivalence. **Export sample technical QC…** uses all source
+without inferring gene equivalence. **Export column technical QC…** uses all source
 rows, independently of the query, and keeps missingness, measured zeros, signed
 values and uncalibrated biological quality distinct. Local collections use
 `PARASCAPE_DEPOSITED_VALUES`; portable data uses `deposited_values`.
@@ -109,6 +109,27 @@ parsers check every token and binary64 value without tolerance. QC has 240
 sample/analysis records; repeated analyses of the same submitted samples do not
 create independent replicates. One additional analysis has metadata but no embedded
 measurement table. No scaling, imputation or cross-study harmonization is added.
+
+The local protein-group collection adds 63 quantity tables from 26 source files
+across 14 projects: 26 Intensity, 20 LFQ intensity and 17 iBAQ tables. All 928,590
+source cells were independently reconciled, including 2,454 missing cells. Literal
+empty strings and `NaN` become numeric missingness; the original strings remain
+available. Intensity, LFQ and iBAQ stay in separate tables. Exact `Protein IDs`
+cells, repeated protein-group rows and every original annotation/quality flag are
+retained. No reverse, contaminant, site-only or confidence filtering is applied.
+Flags appear in row tooltips and the CSV `source_row_metadata` field.
+
+The 748 submitted quantity-column occurrences are not inferred biological samples
+or independent replicates. Zero may encode nonquantification; numeric coverage is
+not biological detection coverage. Three additional protein-group sources have no
+unambiguous supported quantity columns and remain recorded for review. Other
+proteomics formats remain pending. Sample/channel/fraction roles, enrichment
+context, source confidence thresholds, gene equivalence and compatible scales
+must be reviewed before pooling or RNA/protein concordance. Native preparation
+and independent validation run every five minutes, with input/output hashes,
+software versions, exact adapter source and operation records retained. Independent
+source namespaces preserve the existing Workbench catalogue. These additions are
+local follow-up data; the frozen 0.0.4.0 release does not contain them.
 
 For Metabolomics Workbench records, **Dataset coverage** shows original submitted
 sample factors and analysis metadata, retaining source units and discrepancies

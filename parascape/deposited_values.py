@@ -63,28 +63,32 @@ def manifest(pack: str | Path, *, verify_outputs: bool = True) -> dict:
 def catalogue(root: str | Path | None = None) -> tuple[list[dict], list[str]]:
     """List independently reconciled packs while retaining assay and source-analysis identity."""
     root = Path(root) if root is not None else data_root()
-    index = root / 'catalogue.json'
-    if not index.exists():
-        return [], []
     packs, errors = [], []
-    try:
-        names = json.loads(index.read_text())['packs']
-        if len(names) != len(set(names)):
-            raise ValueError('Duplicated pack identities in deposited catalogue')
-        for name in names:
-            try:
-                if not isinstance(name, str) or Path(name).name != name or name.startswith('.'):
-                    raise ValueError('Invalid deposited pack path')
-                folder = root / name
-                if folder.resolve().parent != root.resolve():
-                    raise ValueError('Deposited pack lies outside its collection')
-                info = manifest(folder, verify_outputs=False)
-                packs.append(dict(path=str(folder), study=info['study'], analysis=info['source_analysis'],
-                    assay=info['assay'], units=info['units'], features=info['features'], samples=len(info['sample_columns'])))
-            except (OSError, ValueError, KeyError, TypeError) as error:
-                errors.append(str(name) + ': ' + str(error))
-    except (OSError, ValueError, KeyError, TypeError) as error:
-        errors.append(str(error))
+    indexes = [root / 'catalogue.json', *sorted(root.glob('*/catalogue.json'))]
+    for index in indexes:
+        namespace = index.parent
+        if namespace.name.startswith('.') or not index.exists():
+            continue
+        try:
+            if namespace != root and namespace.resolve().parent != root.resolve():
+                raise ValueError('Deposited namespace lies outside its collection')
+            names = json.loads(index.read_text())['packs']
+            if len(names) != len(set(names)):
+                raise ValueError('Duplicated pack identities in deposited catalogue')
+            for name in names:
+                try:
+                    if not isinstance(name, str) or Path(name).name != name or name.startswith('.'):
+                        raise ValueError('Invalid deposited pack path')
+                    folder = namespace / name
+                    if folder.resolve().parent != namespace.resolve():
+                        raise ValueError('Deposited pack lies outside its collection')
+                    info = manifest(folder, verify_outputs=False)
+                    packs.append(dict(path=str(folder), study=info['study'], analysis=info['source_analysis'],
+                        assay=info['assay'], units=info['units'], features=info['features'], samples=len(info['sample_columns'])))
+                except (OSError, ValueError, KeyError, TypeError) as error:
+                    errors.append(str(name) + ': ' + str(error))
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            errors.append(str(index) + ': ' + str(error))
     return packs, errors
 
 
@@ -131,6 +135,16 @@ def profiles(pack: str | Path, features) -> pd.DataFrame:
     lookup = {s['column']: s for s in samples}
     frame['source_sample'] = frame.sample_column.map(lambda c: lookup[c]['source_sample'])
     frame['sample_metadata'] = frame.sample_column.map(lambda c: json.dumps(lookup[c], ensure_ascii=False))
+    source_metadata = json.loads((pack / 'source_metadata.json').read_text())
+    annotations = source_metadata.get('row_annotations')
+    if annotations is not None:
+        if not isinstance(annotations, list) or len(annotations) != info['features'] or any(
+                not isinstance(row, dict) or row.get('source_row') != i for i, row in enumerate(annotations)):
+            raise ValueError('Deposited row-annotation identities differ')
+        selected = {int(row.source_row): row.feature_label for row in matrix.itertuples()}
+        if any(i < 0 or i >= len(annotations) or annotations[i].get('feature_label') != label for i, label in selected.items()):
+            raise ValueError('Deposited row-annotation labels differ')
+        frame['source_row_metadata'] = frame.source_row.map(lambda i: json.dumps(annotations[int(i)], ensure_ascii=False))
     for field in ('study', 'source_analysis', 'assay', 'quantity', 'units', 'quantity_domain', 'source_url', 'input_sha256', 'comparison_scope'):
         frame[field] = info[field]
     frame['matrix_sha256'] = info['outputs']['values.parquet']

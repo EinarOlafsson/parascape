@@ -1,5 +1,38 @@
 # Next session: start here
 
+**Protein-group original values (2026-10-29):** local Other measurements now lists
+63 independently reconciled quantity tables from 26 source files / 14 projects,
+alongside the existing seven Workbench tables. Intensity26/LFQ20/iBAQ17 remain
+separate; 928,590 original cells, 2,454 missing cells and 748 submitted quantity
+column occurrences checked. All original group identities, duplicate rows, literal
+tokens, source annotations and quality flags retained without filtering, row
+collapse, imputation, normalization or gene conversion. Source `NaN`/empty tokens
+become missing numeric cells only; zero semantics require review. Exact flags
+appear in tooltips and CSV `source_row_metadata`. Quantification columns are not
+inferred biological samples or independent replicates.
+
+Native `parascape-protein-group-values.timer` runs the source-hashed processor and
+independent pandas-versus-stdlib full-cell/annotation/QC validator every five
+minutes, CPU0-11,16-27 / MemoryMax2G / BLAS2. Data, manifests, receipts, original
+source bindings, code and operation logs live in NAS
+`prepared_deposited_values/protein_groups`; namespace catalogues coexist with the
+Workbench root catalogue. Three Protein IDs sources lack unambiguous supported
+quantities and remain explicit review gaps (PXD002380, PXD042937, PXD039148).
+The earlier 27-table candidate audit included one ambiguous-only source; two
+additional Protein IDs tables have no eligible family headers. Other schemas,
+source confidence/filter decisions, enrichment context, sample/fraction/channel
+roles and gene/scale reconciliation remain unfinished. No whole-cell RNA/protein
+concordance or biological quality prediction is admitted.
+
+Portable proof `/media/carruthers/mnt1/parascape-protein-values-validation-20261029`
+queries all70 packs, checks full QC and actual Qt CSV export with NAS/network reads
+blocked. Independent validation refuses changed source quality flags even with
+updated output checksums. 544 reader/UI/QC/docstring/docs/Compare checks and two
+portable release-builder checks pass. These additions remain unreleased; frozen
+0.0.4.0 still waits exact bb8ebca CI. Native downloads and processing continue;
+full all-dataset fair-comparison goal remains active and incomplete, historical
+inference goal remains paused.
+
 **Latest resource authorization (2026-10-29):** user permits up to 24 of 32 logical
 threads, superseding the earlier eight-thread ceiling. Owned worker units now use
 CPUs `0-11,16-27`, reserving four full physical cores/eight logical threads.
@@ -17,12 +50,12 @@ Queue/cache regressions: 26 checks and five resource-guard checks pass; the hand
 runs or leftover scratch and requires both complete tool outputs. The first full
 protein-group source audit inspected 27 acquired tables (~59.7MB), preserving
 headers, rows, original group identities, quality flags and numeric-token review
-counts in `published_pride/protein_group_candidate_audit.json`. Thirteen sources
-have nonfinite/invalid candidate tokens requiring explicit missingness review.
+counts in `published_pride/protein_group_candidate_audit.json`. The preliminary audit marked literal `NaN` tokens as nonfinite; the adapter now
+handles only exact empty/NaN tokens as missing and preserves their original text.
 Header-only selection must not treat `iBAQ peptides` or aggregate/channel fields
-as ordinary sample abundance. These protein tables are not yet runtime-admitted;
-keep source quantities, zero semantics, decoys/contaminants and assay context
-explicit before RNA/protein comparisons.
+as ordinary sample abundance. See the newer protein-group import above for the subsequent original-value
+workflow; source quantities, zero semantics, decoys/contaminants and assay context
+remain explicit review requirements before RNA/protein comparisons.
 
 **Workbench original measurements (2026-10-29):** local **Other measurements** now
 reads seven independently reconciled original tables in
