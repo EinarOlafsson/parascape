@@ -158,3 +158,15 @@ and snapshot hashes. Declared snapshot output hashes must match before export;
 external matrices without declared hashes are marked explicitly. Source metadata
 and the snapshot's original normalization remain visible. The export adds no
 normalization or imputation and does not treat repeated runs as biological replicates.
+
+The **Deposited matrices** tab reads separately prepared GEO Series Matrix packs.
+Choose one original study/platform-specific matrix and enter exact original probe
+or submitted gene identifiers, one per line. Values retain their original sign,
+missingness and source sample/channel metadata. The CSV export includes source and
+matrix hashes, assay, quantity and comparison limits. Gene remapping, probe collapse
+and cross-study normalization are not applied. A quantitative matrix can describe
+an assay other than expression; its catalogue assay label remains visible.
+Platform annotations and original scale/units need review before gene-level or
+cross-assay comparisons. Local collections can be selected with
+`PARASCAPE_SOURCE_MATRICES`; packaged collections live in external data under
+`source_matrices`, keeping scientific data outside the application wheel.

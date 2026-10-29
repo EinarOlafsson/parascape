@@ -1,5 +1,22 @@
 # Next session: start here
 
+**Original-value matrices (2026-10-29):** native preparation completed147 packs,
+including131 microarray matrices, with every85,424,194 numeric/missing source cell
+independently compared against Parquet (exact binary64 equality, no tolerance).
+No probe collapse, gene remapping, normalization or filtering. New local Compare
+tab **Deposited matrices** reads these with source/sample checksums and exact
+case-sensitive IDs, one per line. Live Data launcher setsPARASCAPE_SOURCE_MATRICES
+toNAS/prepared_source_matrices. Other assay labels remain explicit; original units,
+platform/probe-to-gene mapping and biological sample-role review still require work.
+Native preparation sources/receipts and runtime validation live with the packs;
+platform annotation acquisition remains automatic. These additions are not yet in
+the frozen0.0.3.0 PyPI release and require a later portable data asset/release.
+Platform annotations now use **parascape-geo-platform-self.service** and
+NAS/geo_platform_self, with explicitGPL identity checks and refusal of sample/series
+records. The earlier parascape-geo-platform-downloads family worker was stopped and
+disabled after confirming unrelatedGSM records in its broad family archives; completed
+artifacts/receipts and the scope correction remain recorded in geo_platform_annotations.
+
 **2026-10-29 quantitative QC follow-up:** local Published expression now exports
 whole-matrix sample technical QC independently of gene queries, with original field,
 source, manifest and matrix hashes. Numerical validity, missingness and measured zeros
