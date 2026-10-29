@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Add Other measurements browsing and full-matrix QC for independently reconciled
+  deposited values. Seven Workbench tables retain all 57,468 source cells, literal
+  tokens, original units, sample factors and row identities; missing cells remain
+  missing and repeated feature names are never averaged.
+
 - Browse independently reconciled Metabolomics Workbench sample factors, analysis
   metadata, original units and source-representation discrepancies in Dataset
   coverage. Acquired source responses and pending quantitative admission remain

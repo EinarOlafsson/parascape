@@ -92,12 +92,30 @@ unspecified unless the source declares it.
 
 ## Original deposited expression and catalogue coverage
 
+The **Other measurements** tab browses independently reconciled source analyses
+outside the gene-expression matrix format. Choose an analysis and enter exact
+original feature labels, one per line. Every matching source row remains separate;
+the table and CSV export include its row number, sample label, binary64 value,
+literal source token, units and provenance. Source feature annotations are retained
+without inferring gene equivalence. **Export sample technical QC…** uses all source
+rows, independently of the query, and keeps missingness, measured zeros, signed
+values and uncalibrated biological quality distinct. Local collections use
+`PARASCAPE_DEPOSITED_VALUES`; portable data uses `deposited_values`.
+
+The first Workbench collection contains seven tables and 57,468 source cells,
+including 21,939 missing cells. Only empty strings or JSON null are converted to
+missing numeric values, and their literal tokens are retained. Independent JSON
+parsers check every token and binary64 value without tolerance. QC has 240
+sample/analysis records; repeated analyses of the same submitted samples do not
+create independent replicates. One additional analysis has metadata but no embedded
+measurement table. No scaling, imputation or cross-study harmonization is added.
+
 For Metabolomics Workbench records, **Dataset coverage** shows original submitted
 sample factors and analysis metadata, retaining source units and discrepancies
 between deposited representations. Repeated sample labels remain separate rows;
 raw filenames are declarations rather than evidence that payloads were downloaded.
-These metadata records do not establish quantitative measurement admission,
-cross-assay compatibility or independent biological replicates.
+These metadata records do not establish cross-assay compatibility or independent
+biological replicates. Availability of original measurements is reported separately.
 
 The **Dataset coverage** tab searches the complete local catalogue by accession,
 title, source or assay. Its acquisition counts and local measurement status remain

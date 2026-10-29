@@ -1,5 +1,25 @@
 # Next session: start here
 
+**Workbench original measurements (2026-10-29):** local **Other measurements** now
+reads seven independently reconciled original tables in
+NAS `prepared_deposited_values`. All 57,468 source cells and literal tokens checked
+via stdlib JSON generation versus independent pandas/ujson parsing and exact
+binary64 comparisons; 21,939 missing cells remain missing. Source rows, units,
+annotations and submitted factor associations are retained without normalization,
+imputation, feature collapse or gene mapping. Full QC covers 240 sample/analysis
+records; reused samples across analyses are not independent replicates. One
+analysis has metadata only. The native Workbench pipeline now sequences source
+acquisition, metadata reconciliation, preparation, independent cell validation/QC
+and coverage refresh without model calls. Runtime catalogue exposes only completed
+reconciled packs. Live launcher sets `PARASCAPE_DEPOSITED_VALUES`; the external
+asset builder supports `deposited_values`. 564 relevant checks pass. All seven
+packs queried and QC checked in a local portable copy with NAS/network reads
+blocked; actual Qt value/QC CSV exports verified. A changed numeric cell remains
+rejected even after updating file/manifest checksums. New additions await a later
+portable release; frozen 0.0.4.0 still requires exact `bb8ebca` CI/publication.
+Raw payload acquisition, cross-study harmonization, protein data admission,
+current gene identity reconciliation and the full dataset goal remain unfinished.
+
 **Workbench source gap (2026-10-29):** all seven catalogue studies now have acquired
 primary responses: 90 API responses, eight analyses and 276 submitted factor rows.
 NAS `metabolomics_workbench` retains exact source bytes, HTTP/hash receipts, failed

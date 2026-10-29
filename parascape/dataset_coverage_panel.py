@@ -221,7 +221,7 @@ class DatasetCoveragePanel(QtWidgets.QWidget):
                             QtWidgets.QTreeWidgetItem(parent, [key, text])
                 self.details.setText(self.details.text() +
                     ' Workbench factor rows and analysis representations remain separate. Source units and row-count discrepancies are preserved; '
-                    'raw filenames are declarations, not downloaded payloads. Quantitative admission remains pending.')
+                    'raw filenames are declarations, not downloaded payloads. Cross-study comparisons remain pending.')
                 self.samples.resizeColumnToContents(0)
                 return
             report = source_samples(self.root, row['accession'])

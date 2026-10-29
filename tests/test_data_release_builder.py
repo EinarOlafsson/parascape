@@ -19,6 +19,8 @@ def test_portable_expression_and_audit_data_are_checksum_pinned(tmp_path):
              'processing_audit/rna_technical_qc/report.csv': b'sample,missing\noriginal,0\n',
              'source_matrices/source_pack/values.parquet': b'original submitted values',
              'source_matrices/source_pack/manifest.json': b'{}',
+             'deposited_values/source_pack/values.parquet': b'original other measurements',
+             'deposited_values/source_pack/source_tokens.parquet': b'literal source tokens',
              'platform_identifiers/GPL1-source/links.parquet': b'original identifier associations',
              'platform_identifiers/GPL1-source/independent_validation.json': b'{}'}
     for name, body in files.items():
