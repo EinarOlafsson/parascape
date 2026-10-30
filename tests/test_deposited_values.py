@@ -232,3 +232,41 @@ def test_source_column_dialog_works_without_feature_query_and_clears_on_selectio
     assert rows[0].child(1).toolTip(1) == 'not available'
     panel.refresh()
     assert panel.context_dialog is None
+
+
+def test_experiment_design_candidates_remain_separate_from_filename_factors(qtbot, linked_pack):
+    from parascape.deposited_values_panel import DepositedValuesPanel
+    pack, root, path = linked_pack
+    report = json.loads(path.read_text())
+    column = report['columns'][0]
+    rows = [dict(row, headers=['Name', 'Fraction', 'Experiment'],
+        cells=['same submitted file', str(position), '001'],
+        matching_experiment_column_indices=[2],
+        candidate_table_linkage='Same project and exact label only; input-table linkage unreviewed')
+        for position,row in enumerate(column['submitted_factor_rows'], 1)]
+    column['source_experiment_label_literal'] = '001'
+    column['submitted_experiment_rows'] = rows
+    column['experiment_link_status'] = 'exact_submitted_experiment_label_candidates'
+    path.write_text(json.dumps(report))
+    receipt_path = path.parent / 'validation.json'
+    receipt = json.loads(receipt_path.read_text())
+    receipt['outputs'][path.name] = digest(path)
+    receipt_path.write_text(json.dumps(receipt))
+    pointer_path = path.parent.parent / 'collection.json'
+    pointer = json.loads(pointer_path.read_text())
+    pointer['validation_sha256'] = digest(receipt_path)
+    pointer_path.write_text(json.dumps(pointer))
+    context = D.column_context(pack, audit_root=root)[0]['source_design_metadata']
+    assert len(context['submitted_factor_rows']) == len(context['submitted_experiment_rows']) == 2
+    assert context['biological_independence'] == 'not inferred'
+    assert all('unreviewed' in row['candidate_table_linkage'] for row in context['submitted_experiment_rows'])
+    panel = DepositedValuesPanel(pack.parent)
+    qtbot.addWidget(panel)
+    panel.show_column_context()
+    parent = panel.context_tree.topLevelItem(0)
+    candidates = [parent.child(i) for i in range(parent.childCount()) if parent.child(i).text(0).startswith('Experiment row candidate')]
+    assert len(candidates) == 2
+    assert candidates[0].child(1).text(1) == '1' and candidates[1].child(1).text(1) == '2'
+    assert candidates[0].child(2).text(1) == '001'
+    frame = D.profiles(pack, '001', audit_root=root)
+    assert len(json.loads(frame.iloc[0].sample_metadata)['source_design_metadata']['submitted_experiment_rows']) == 2

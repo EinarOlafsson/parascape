@@ -1,5 +1,38 @@
 # Next session: start here
 
+**Submitted experiment-label candidates (2026-10-29):** Source columns and
+submitted factors now also shows exact `Experiment` label candidates for original
+Intensity/LFQ/iBAQ column suffixes within the same declared project. All matching
+tables and fraction rows remain candidates, not confirmed quantification input
+linkage, control pairing or independent samples. Existing exact filename/SDRF
+links remain separate and unchanged. Original source columns/values stay intact.
+
+Native column-design exporter revisioned160699 now retains20 explicit Name /
+Fraction /Experiment tables (328rows) from the acquired schema inventory.
+All245 rows from16 rectangular tables are independently reparsed with pandas,
+including complete row coverage. Four irregular tables /83rows retain every
+original cell/width as review-only JSON and are excluded from candidate links;
+no trimming, padding, truncation or record deletion. Eligible sources produce357
+column/row candidate occurrences across6 projects. These repeat across quantity
+families and are not independent sample counts. Current filename counts remain11
+exact /12 unresolved /748 unreviewed roles /5 submitted SDRF row occurrences.
+
+Native five-minute timer stays CPU24/512MiB; immutable receipts bind all20 source
+hashes and schema inventory. Source code and operation records are retained in
+NAS `processing_audit/protein_column_design_links`. Synthetic checks retain
+leading zeros, exact case, multiple matching templates and fractions, and reject
+silently selected templates or dropped source rows. Earlier filename ambiguity/
+repeated-row/factor refusal checks still pass. Offline proof
+`/media/carruthers/mnt1/parascape-column-design-validation-20261029-v3` checks
+all72 packs /771 protein contexts and actual Qt experiment-candidate rows /CSV
+exports with all original fields and unreviewed linkage scope.528 relevant checks
+pass, then11 reader/dialog checks including candidate-versus-filename separation.
+
+These changes remain local/unreleased behind the frozen0.0.4.0 exact CI gate.
+Full dataset goal active/incomplete; historical inference goal paused. Remaining
+work includes source input-table linkage, irregular designs, other quantitative
+formats, gene/scale harmonization, raw acquisition and fair cross-study comparison.
+
 **24-thread handover verified complete (2026-10-29):** native completion-boundary
 handover exited successfully. Quantifier parent3614034 has actual environment
 `PARASCAPE_THREADS=24`; its new fasterq-dump child3614170 uses `-e24` for

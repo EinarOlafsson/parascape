@@ -2,7 +2,9 @@
 
 Some quantity headers explicitly contain a filename. An independently reconciled
 collection can associate that literal name with primary file records and submitted
-SDRF rows, preserving duplicate headings and repeated occurrences. These links do
+SDRF rows, preserving duplicate headings and repeated occurrences. Exact experiment
+labels can also identify source design candidates; input-table linkage remains
+a separate question. These links do
 not establish biological independence, control pairing, downloaded raw payloads or
 compatible scales. Associations require the exact measurement manifest and source
 column identities; missing collections and unsupported header roles stay visible.
@@ -70,7 +72,7 @@ def column_links(pack: str | Path, *, audit_root: str | Path | None = None) -> t
     for column in columns:
         if column['biological_independence'] != 'not inferred':
             raise ValueError('Unsupported biological independence inferred from source filenames')
-        for row in column['submitted_factor_rows']:
+        for row in [*column['submitted_factor_rows'], *column.get('submitted_experiment_rows', [])]:
             if (len(row['headers']) != len(row['cells']) or any(not isinstance(s, str) for s in [*row['headers'], *row['cells']])
                     or row['source_row_id'] != hashlib.sha256((row['source_sha256'] + ':' + str(row['source_row'])).encode()).hexdigest()):
                 raise ValueError('Submitted source-column factor row identity differs')

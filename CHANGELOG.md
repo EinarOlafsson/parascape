@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Show exact submitted experiment-label candidates for 357 protein quantity
+  columns across six projects. Preserve all source rows and fractions without
+  inferring the correct quantification input table or biological replication.
+  Sixteen consistent design tables are independently reconciled; four irregular
+  tables retain their original cells as explicit review gaps.
+
 - Browse source columns and submitted factors without a feature query. Bind exact
   filename associations to measurement manifests, preserve repeated SDRF rows and
   duplicate fields, and retain provenance in value CSV exports. Eleven filename

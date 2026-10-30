@@ -102,7 +102,8 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         dialog.setWindowTitle(info['study'] + ' · ' + info['analysis'] + ' · Source columns')
         layout = QtWidgets.QVBoxLayout(dialog)
         label = QtWidgets.QLabel('Original source-column metadata and submitted filename associations. '
-            'All repeated rows and duplicate fields remain visible. Biological independence and control pairing are not inferred.')
+            'All repeated rows and duplicate fields remain visible. Biological independence and control pairing are not inferred. '
+            'Experiment-label candidates require review of input-table linkage.')
         label.setWordWrap(True)
         layout.addWidget(label)
         tree = QtWidgets.QTreeWidget()
@@ -115,24 +116,31 @@ class DepositedValuesPanel(QtWidgets.QWidget):
                        'ambiguous_exact_primary_file': 'Multiple primary file matches',
                        'unresolved_exact_primary_file': 'No exact primary file match',
                        'filename_role_unreviewed': 'Filename role unreviewed'}.get(status, status)
+            if status == 'filename_role_unreviewed' and association.get('submitted_experiment_rows'):
+                caption = 'Exact experiment-label candidates'
             parent = QtWidgets.QTreeWidgetItem(tree, [context['source_sample'], caption])
             if association.get('source_filename_literal') is not None:
                 QtWidgets.QTreeWidgetItem(parent, ['Submitted filename', association['source_filename_literal']])
                 QtWidgets.QTreeWidgetItem(parent, ['Primary file identifiers', '; '.join(association['exact_primary_file_ids'])])
                 QtWidgets.QTreeWidgetItem(parent, ['Submitted design row occurrences', str(len(association['submitted_factor_rows']))])
+            if association.get('source_experiment_label_literal') is not None:
+                QtWidgets.QTreeWidgetItem(parent, ['Submitted experiment label', association['source_experiment_label_literal']])
+                QtWidgets.QTreeWidgetItem(parent, ['Candidate design row occurrences', str(len(association.get('submitted_experiment_rows', [])))])
             original = QtWidgets.QTreeWidgetItem(parent, ['Original column metadata', 'Unchanged submitted record'])
             for key, value in context.items():
                 if key != 'source_design_metadata':
                     QtWidgets.QTreeWidgetItem(original, [key, value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)])
             audit = QtWidgets.QTreeWidgetItem(parent, ['Association provenance', 'Exact filename scope and source receipts'])
             for key, value in association.items():
-                if key != 'submitted_factor_rows':
+                if key not in ('submitted_factor_rows', 'submitted_experiment_rows'):
                     QtWidgets.QTreeWidgetItem(audit, [key, value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)])
-            for row in association.get('submitted_factor_rows', []):
-                submitted = QtWidgets.QTreeWidgetItem(parent, ['Submitted row ' + str(row['source_row']), row['source_url']])
+            occurrences = [(row, 'Submitted row ', 'matching_file_column_indices') for row in association.get('submitted_factor_rows', [])]
+            occurrences += [(row, 'Experiment row candidate ', 'matching_experiment_column_indices') for row in association.get('submitted_experiment_rows', [])]
+            for row, title, match_key in occurrences:
+                submitted = QtWidgets.QTreeWidgetItem(parent, [title + str(row['source_row']), row['source_url']])
                 for position, (header, cell) in enumerate(zip(row['headers'], row['cells']), 1):
                     QtWidgets.QTreeWidgetItem(submitted, [str(position) + ': ' + header, cell])
-                for key in ('source_sha256', 'source_row_id', 'metadata_origin', 'biological_truth_status', 'matching_file_column_indices'):
+                for key in ('source_sha256', 'source_row_id', 'metadata_origin', 'biological_truth_status', match_key):
                     QtWidgets.QTreeWidgetItem(submitted, [key, json.dumps(row[key], ensure_ascii=False)])
         iterator = QtWidgets.QTreeWidgetItemIterator(tree)
         while iterator.value() is not None:

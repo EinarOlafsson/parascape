@@ -163,6 +163,24 @@ independently reparses the original SDRF cells and checks every filename candida
 immutable reports bind each association to the exact measurement manifest and
 original source column. Missing or changed contexts remain explicit gaps.
 
+For original Intensity, LFQ intensity and iBAQ columns, the same dialog also shows
+**Experiment row candidate** records when the literal quantity-column suffix equals
+an explicit `Experiment` cell in an acquired `Name` / `Fraction` / `Experiment`
+design table from the same declared project. Leading zeros, case, every matching
+table and every fraction row remain unchanged. These are label candidates: they
+do not establish which design table was used for a particular quantification,
+paired controls or independent biological samples. Candidate metadata is separate
+from filename-based SDRF associations and is retained separately in CSV context.
+
+The current source audit retains all 20 explicit design tables / 328 rows. All
+245 rows from 16 rectangular tables are independently reparsed and checked; four
+irregular tables / 83 rows remain preserved but excluded from candidate links.
+No short row is padded, long row truncated or blank record discarded. The eligible
+tables provide 357 quantity-column candidates across six projects. Counts repeat
+source records across quantity families and are not independent sample counts.
+Missing candidates apply only to the acquired eligible source tables. Input-table
+linkage, irregular layouts and other unreviewed column roles remain explicit gaps.
+
 For PRIDE records, **Dataset coverage** shows primary project metadata for all
 209 catalogue projects. The submitted SDRF collection contains 52 design files and
 1,392 source rows across 49 projects. Open a project, expand **Submitted SDRF**, and
