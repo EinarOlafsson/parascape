@@ -72,6 +72,7 @@ jobs:
       - name: Smoke test installed wheel outside the checkout
         env:
           PARASCAPE_CACHE: /tmp/parascape-release-data
+          PARASCAPE_SMOKE_OUTPUT: /tmp/parascape-release-smoke
           PARASCAPE_DATA_ARCHIVE: ${{ github.workspace }}/data-dist/parascape-data-${{ needs.version.outputs.version }}.tar.gz
         run: |
           python -m venv --system-site-packages /tmp/parascape-wheel
