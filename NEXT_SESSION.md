@@ -1,5 +1,180 @@
 # Next session: start here
 
+**Searchable original-measurement browser (2026-10-30):** The independent
+follow-up now filters Other measurements by case-insensitive text in study,
+source analysis/file, assay and units. Feature queries stay case-sensitive.
+Visible/total source counts remain on screen; refresh preserves the filter and a
+still-visible selected source. Changing filter/source/identifier class/feature
+query clears prior result/export state. Empty matches disable source actions;
+feature edits cannot silently export the preceding query. Source choices and
+numeric data remain separate; filtering never pools or changes quantities.
+Four integration tests verify source/unit provenance, stale-export refusal,
+selection retention, empty states and feature-edit invalidation. The all136-table
+actualQt/CSV offline proof is retained under
+`/media/carruthers/mnt1/parascape-source-filter-validation-20261030`.
+The existing whole-window tooltip audit is included in final validation. Source
+commit/push stays deferred behind exact929114d publication and checkout sync;
+full all-dataset goal remains active and incomplete.
+
+**Source-labelled scalar protein quantities (2026-10-30):** Native producer
+2efa199f admits exact aggregate/channel/ratio field families in an independent
+`prepared_deposited_values/protein_reported_quantities` namespace. The first
+62 tables from29 acquired files /17 projects preserve85899 source cells and8662
+missing cells:Intensity29, iBAQ17, IntensityL4, IntensityH4, RatioH/L4,
+RatioH/Lnormalized4. Exact LFQ-intensity aggregate and IntensityM labels are also
+supported when explicitly present. Scalar header slashes are escaped only in
+internal pack names; original labels remain literal. No normalization, correction,
+ratio conversion, imputation, filtering, group/channel pooling or inferred
+sample/control/replicate identity. Full source annotations and flags remain.
+Quantity-role metadata distinguishes source aggregate/unspecified scope, labelled
+channels and reported ratios; sample assignment/orientation remain unresolved.
+
+Every source cell/token/bit pattern/row/annotation and scalar role is independently
+reconciled. Changed roles and source flags with rewritten checksums are refused.
+All74 prior quantity manifests/outputs remain byte-identical and cached new outputs
+stable. Native5minute CPU24/2GiB timer remains active. Offline all62-reader/QC checks
+and actualQt/CSV checks for all6 currently present families are at
+`/media/carruthers/mnt1/parascape-reported-quantities-validation-20261030`.
+
+Live catalogue now136 quantity tables (129protein/7Workbench),1266353 cells across
+19 protein projects. Automatic identifier discovery includes all129 protein packs:
+175988 source-row occurrences and601605 evidence occurrences (468358 original
+components,67055 submitted labels,19674 explicit reference gene declarations,
+46518 GN-name candidates). Existing67 association packs remain byte-identical;
+counts repeat quantity families and ambiguous components, not independent samples
+or unique genes. Expanded offline129-pack API/Qt/CSV proof is retained under
+`/media/carruthers/mnt1/parascape-expanded-protein-identifier-validation-20261030`.
+These additions await a later data release; frozen5 is unchanged. Full dataset
+goal remains active and incomplete; biological/gene/scale/sample comparability
+requires further work, and historical inference work stays paused.
+
+**All-namespace protein lookup and live RNA324 (2026-10-30):** Native producer
+47f2e9d1 discovers every reconciled original protein quantity pack across root and
+one-level namespaces, excluding other assays. It pins exact source catalogue
+bytes/hashes, selected inventory and each source manifest; catalogue races and
+unsafe/symlink namespace escapes are refused. The collection now covers67 tables
+/90089 original source-row occurrences /239365 evidence occurrences:197471 original
+components,21025 submitted labels,13116 explicit reference gene declarations and
+7753 GN-name candidates. The reporter families add10104 component occurrences;
+no new gene/name candidates. All65 prior association outputs and index entries
+remain byte-identical. Reader/UI code is unchanged. Full67-pack offline API and
+actual Qt/CSV proof (including component queries in both reporter families) is at
+`/media/carruthers/mnt1/parascape-all-protein-identifier-validation-20261030`.
+
+The immutable324-entry RNA snapshot finished all three build/extension/enrichment
+steps and standard independent validation; its live NAS pointer now selects
+`app_snapshots/20261030T214036Z-324/rna`.24 studies,120 matrices,1724 quantified
+sample conventions and242 output checksums verified;1011 entries remain planned.
+Original source samples, quantity conventions and processing/design metadata stay
+separate. Full preexisting307-entry value/axis preservation is independently
+replayed and retained as `prior-rna-preservation.json` in the new build folder.
+All40891575 preexisting RNA cells across120 matrices are bit-identical after
+307→324 expansion, with old feature/sample axes retained. Native snapshot worker
+5de3c79e now enforces this preservation before every future live-pointer update
+and archives its own exact source with each build. Synthetic tests refuse changed
+values, imputation, signed-zero changes, missing samples/features/matrices and
+duplicate identities while admitting new samples/features and safe row reordering.
+The real new preservation gate replays the same307→324 snapshot independently;
+proofs/code are retained under `processing_audit/rna_snapshot_preservation`.
+This is a live NAS update; frozen0.0.5.0 still contains307 RNA entries and72 other
+measurement packs. Release929114d Tests41132730010 remains in progress,
+Documentation41132730719 succeeded; native publisher and deferred follow-up remain
+active. Full acquisition/fair-comparison goal stays active and incomplete.
+
+**Original reporter-channel admission (2026-10-30):** The separate native
+`parascape-protein-reporter-values.timer` now processes exact numbered corrected
+and uncorrected Reporter intensity fields from acquired protein-group tables.
+First source PXD039148:4940 original group rows ×6 channels per family;2 packs /
+59280 cells /12 family-channel columns /0 missing. Original count fields,
+aggregate intensity, quality flags and group identities stay intact. Channel
+ordinals are explicit source metadata, never inferred samples/labels/replicates.
+No source correction reapplied, filtering, imputation, channel pooling or scale
+harmonization. Existing Other measurements browser discovers the independent
+`prepared_deposited_values/protein_reporter_channels` namespace automatically.
+Live other-measurement catalogue now74 packs (67protein /7Workbench),1180454 cells;
+all72 prior packs unchanged. These2 new tables are outside frozen0.0.5.0.
+
+Producer7ad58236 independently reconciles every literal token, observed binary64
+value, original row/annotation and channel/family identity via pandas versus CSV.
+Synthetic changed channel ordinals and changed source flags with rewritten
+checksums are refused. A first prototype shared the earlier worker's status path;
+it produced valid isolated output but was corrected to its own lock/status state.
+Earlier prototype packs/code remain retained outside the active catalogue;
+previous protein worker status was restored from its own validated cached cycle.
+Native5minute CPU24/2GiB timer and producer/selfcheck/proofs are retained. Offline
+actualQt/CSV/whole-columnQC proof under
+`/media/carruthers/mnt1/parascape-reporter-validation-20261030` confirms both
+families and all12 original channel metadata with NAS/network blocked. Qualified identifier
+lookup now covers all67 protein packs; reporter tables add original components,
+with no new submitted gene/reference candidates. Source-design links still cover
+the earlier65 packs; reporter sample/label assignments remain unreviewed. Future data
+release preparation must include this independent namespace, not just protein_groups.
+Full dataset acquisition, sample-design reconciliation and fair comparison remain
+active and incomplete; historical inference goal stays paused.
+
+**Publication environment retry (2026-10-30):** Release5 passed corrected source
+CI and published its GitHub data/tag at90c2c40, but PyPI publication run41084621531
+failed its installed-app CSV smoke because PARASCAPE_SMOKE_OUTPUT was absent.
+Workflow-only commit929114d supplies `/tmp/parascape-release-smoke`; all package
+sources/scripts/version/data descriptor remain byte-identical to the published
+90c2c40 tag, which stays unchanged.31 release/packaging checks pass; actual installed
+full72-pack/Qt/CSV smoke passes with the corrected environment and NAS/network off.
+Native `parascape-publish-005-workflow-retry.service` pins this one-file change,
+requires exact929114d nightly Tests+Documentation, promotes main without force,
+explicitly requests the authorized same-version publication retry and verifies
+its workflow event plus official PyPI wheel/digest/descriptor/public data URL.
+Its plan records both the retry commit and immutable published source tag commit.
+Old publisher is disabled; failed logs/proofs/plans remain archived. Follow-up
+source push now waits for this corrected publication and live-checkout sync.
+
+The native RNA queue has324 verified study/run entries; the current live snapshot
+still307. A separate `parascape-snapshot-catchup-324.service` invokes the normal
+immutable builder with `--force` to bypass only its25-entry batching threshold;
+all receipt, sample identity, matrix, scale/convention and checksum checks remain.
+Only a validated build may replace the live NAS pointer. Published snapshots stay
+frozen. Normal timers and ongoing acquisition/processing continue independently.
+
+**Qualified protein identifier lookup (2026-10-30, after frozen 0.0.5.0):**
+The independent follow-up checkout at
+`/media/carruthers/mnt1/parascape-identifier-followup-checkout` adds exact original
+protein-component, submitted-label, reference gene/gene_id and qualified UniProt
+GN-name candidate lookup to Compare → Other measurements. Whole original group
+values and every ambiguous evidence occurrence remain intact. Duplicate evidence
+never duplicates measurement records; source row identity prevents propagation to
+another row with the same group label. CSV retains all supporting declarations.
+No gene-version conversion, group collapse, inferred database use or unique-gene
+abundance. Reference candidates exist in only five packs / two projects; submitted
+labels in twelve packs / five projects. These are occurrence counts, not genes or
+independent biological replicates.
+
+Native five-minute `parascape-protein-identifier-evidence.timer` reconciles65 packs
+/80209 source feature-row occurrences /229261 evidence records:187367 original
+components,21025 submitted labels,13116 explicit reference gene declarations and
+7753 GN-name candidates. Source policy and processor revisions, every immutable
+Parquet association, collection receipts and operations are retained under NAS
+`processing_audit/protein_identifier_evidence`. A revised processor uses4096-row
+reference batches and retains only exact measured components within their declared
+project. This fixes a real2GiB service OOM without raising its memory ceiling;
+independent pandas eligibility and association reconstruction preserve all records.
+Earlier verified collections and the OOM event remain retained. Original quantity
+packs are unchanged. Runtime association data follows the frozen5snapshot and is
+not included in that release.
+
+Offline original-group/API/actualQt/CSV proof is retained under
+`/media/carruthers/mnt1/parascape-protein-identifier-validation-20261030`;
+572 focused reader/UI/QC/documentation/release-builder checks pass. Before nightly
+push, wait for both official release5 completion at exact929114d AND its native
+live-checkout synchronization receipt. Do not cancel frozen CI with a follow-up
+push. Full acquisition and fair-comparison goal remains active and incomplete;
+historical inference goal remains paused.
+
+Release5 originally failed one GitHub UI audit (5987 tests passed): five reference
+browser controls lacked tooltips. The reviewed correction90c2c40 passes608 focused
+checks /1skip and is being independently rebuilt and checked before the same strict
+publication gates resume. Old failed source and proof records remain archived;
+the data archive is unchanged. Recovery unit:parascape-release-005-tooltip-recovery.
+
+
 **0.0.5.0 frozen release preparation (2026-10-29):** clean detached checkout
 `/media/carruthers/mnt1/parascape-release-0.0.5.0-checkout` starts from90e71e7;
 version bumped with scripts/release.py. Task-owned data stage

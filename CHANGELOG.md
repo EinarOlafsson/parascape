@@ -2,6 +2,30 @@
 
 ## Unreleased
 
+- Filter Other measurements by study, source file, assay or quantity label, with
+  visible source counts and selection preserved on refresh. Clear prior values,
+  exports and source dialogs when the source filter changes; editing feature
+  queries also invalidates earlier results so CSV exports retain the right source.
+
+- Expose 62 original aggregate/channel intensity and reported-ratio fields from
+  29 acquired protein files. Reconcile all 85,899 cells, preserving 8,662 missing
+  cells, source flags and literal tokens. Keep quantity families and unresolved
+  source roles explicit without treating scalar fields as independent samples or
+  applying normalization again. Existing measurements remain unchanged.
+
+- Admit original corrected and uncorrected reporter-channel intensity tables as
+  separate quantity families. The first source retains 59,280 cells across twelve
+  family/channel columns and 4,940 original protein-group rows per family. Preserve
+  counts, flags and source tokens without inferring sample identity from channel
+  numbers. These tables follow the frozen 0.0.5.0 data snapshot.
+
+- Search whole original protein-group values through exact group components,
+  submitted gene labels and separately qualified reference declarations. Preserve
+  ambiguous occurrences, original row identities and full CSV provenance without
+  duplicating measurements or asserting unique-gene abundance. The first native
+  collection reconciles 601,605 evidence occurrences across 129 quantity tables;
+  it is outside the frozen 0.0.5.0 data snapshot.
+
 ## 0.0.5.0 — 2026-10-29
 
 - Browse original reference header identifiers and explicit source gene
