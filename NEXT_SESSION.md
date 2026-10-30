@@ -23,8 +23,21 @@ originalcells /71153missing /1097source columns (132protein/7Workbench tables).
 Actual offlineQt source filtering, original row-metadata tooltips, column context,
 CSV/treatment exports and unfiltered QC verified under
 `/media/carruthers/mnt1/parascape-rowwise-validation-20261030`.
+Native `audit_protein_rowwise_repeated_keys.py` fda9f15b also runs every5minutes
+with1GiB/24CPUaffinity/BLAS2. It independently reparses and checksum-verifies the
+original source and annotations, records missing/observed key categories and
+field differences without changing rows, and archives code/operations/immutable
+reports under `processing_audit/rowwise_repeated_key_qc`. Collection4cee5856… is
+current after synthetic checks for identical/conflicting/mixed/missing cases and
+case-sensitive keys. Expanded source-column collection now132packs/857columns;
+all131 previous report files byte-identical. Its new scalar PG.Quantity column
+correctly stays filename-role-unreviewed: actual filenames are row-specific.
+
 New5minute native timer `parascape-protein-rowwise-values` enabled24CPU/2GiB,
-BLAS2; existing download/quantification jobs remain alive. Future portable release
+BLAS2; existing download/quantification jobs remain alive. Salmon480572 completed and
+quant supervisor3614034 advanced to active kallisto512367 on the same run;
+325/1011entries stillverified. PRIDE3533750 has two open partial downloads;
+confirmed transfer growth is distinct from completed/hash-verified file counts. Future portable release
 must include new accession/log2/row-wise namespaces and updated source links;
 don't modify public frozen6asset.
 

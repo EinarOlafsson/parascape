@@ -257,3 +257,10 @@ source and implementation hashes, original tokens, all row annotations, repeated
 key counts, independent full-cell reconciliation, unfiltered technical QC and
 operation logs. All earlier 138 quantity tables remain unchanged. This local
 admission is outside frozen portable data release 0.0.6.0.
+
+The recurring repeated-key audit also reparses every admitted row-wise source and
+checks its original annotations. Immutable, source-bound reports distinguish
+all-missing, mixed observed/missing, and all-observed key groups, flag differing
+original fields, and retain operation history under
+`processing_audit/rowwise_repeated_key_qc`. These are descriptive ambiguity checks,
+not biological quality scores or permission to remove or combine rows.
