@@ -33,11 +33,20 @@ def test_the_cache_resolves_and_is_complete():
         assert os.path.exists(os.path.join(paths.data_dir(), f))
 
 
-def test_the_cache_lives_inside_the_package_so_a_wheel_carries_it():
-    """It used to sit beside the package, so an installed wheel put a generic top-level `data/` into
-    site-packages -- collidable with any other package -- and omitted the three identity tables
-    entirely, because the glob matched only two extensions and did not recurse."""
-    assert os.path.dirname(paths.data_dir()) == os.path.dirname(os.path.abspath(paths.__file__))
+def test_a_clean_install_resolves_a_writable_versioned_download_cache(tmp_path, monkeypatch):
+    """Scientific data is downloaded outside the wheel and must not silently select a prior version."""
+    from parascape import __version__
+    monkeypatch.delenv(paths.ENV_CACHE, raising=False)
+    monkeypatch.setattr(paths, '_PKG', str(tmp_path / 'package'))
+    monkeypatch.setattr(paths, '_REPO', str(tmp_path / 'repository'))
+    state = tmp_path / 'state'
+    previous = state / 'data-previous'
+    previous.mkdir(parents=True)
+    (previous / 'nodes.parquet').write_bytes(b'previous data version')
+    monkeypatch.setenv(paths.ENV_STATE, str(state))
+    expected = str(state / ('data-' + __version__))
+    assert paths.download_dir() == paths.data_dir() == expected
+    assert not paths.check()[0]
 
 
 def test_resolution_does_not_depend_on_the_working_directory(tmp_path, monkeypatch):

@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-"""The installer specs, checked against where the data actually is.
+"""Check installer assets and external scientific-data cache resolution.
 
-An installer that ships an application which then cannot find its own cache is the same failure as a
-build that cannot find its datasets, wearing a different hat -- and it is worse, because it surfaces on
-someone else's machine after a download rather than on the machine that made it.
-
-The spec cannot be executed here (PyInstaller reads it in its own context), so what is asserted is the
-thing that actually went wrong: that the paths it names exist, and that they are the paths the resolver
-looks in.
+Executables carry icons and the versioned download descriptor. Scientific data
+belongs in a writable external cache, checked independently through strict archive
+installation and installed-wheel smoke tests. The installer asset paths must exist
+without requiring the scientific cache to live inside the package.
 """
 from __future__ import annotations
 
@@ -43,11 +40,20 @@ def test_the_bundled_cache_lands_where_the_resolver_looks(spec):
     assert 'data_manifest.json' in spec
 
 
-def test_the_cache_the_spec_names_is_present():
+def test_the_icons_and_descriptor_named_by_the_spec_are_present():
+    """The executable carries source assets; scientific data is installed in an external cache."""
+    assert os.path.isfile(os.path.join(ROOT, "parascape", "data", "icons", "parascape.svg"))
+    assert os.path.isfile(os.path.join(ROOT, "parascape", "data_manifest.json"))
+
+
+def test_packaged_runtime_can_resolve_the_explicit_external_download_directory(monkeypatch, tmp_path):
+    """A data directory outside the source tree is required by first-launch GitHub downloads."""
     from parascape import paths
-    d = os.path.join(ROOT, "parascape", "data")
-    assert os.path.isdir(d)
-    assert os.path.dirname(paths.data_dir()) == os.path.dirname(d) or paths.data_dir() == d
+    downloaded = str(tmp_path / 'downloaded-data')
+    monkeypatch.setenv('PARASCAPE_CACHE', downloaded)
+    assert paths.data_dir() == downloaded
+    assert paths.download_dir() == downloaded
+    assert not paths.check()[0]
 
 
 def test_packaging_stops_rather_than_shipping_an_empty_application(spec):

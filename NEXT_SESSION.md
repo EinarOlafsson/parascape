@@ -1,5 +1,48 @@
 # Next session: start here
 
+**Expanded0.0.6.0 frozen preparation (2026-10-30):** Isolated source checkout
+`/media/carruthers/mnt1/parascape-release-0.0.6.0-checkout` starts atccce694;
+version bumped with scripts/release.py. Task-owned stage
+`/media/carruthers/mnt1/parascape-release-data-0.0.6.0` freezes5690 files:
+324 RNA entries /147 original matrices /54 platform indices /136 other quantity
+tables (129protein/7Workbench) /601605 identifier evidence occurrences /52 FASTA
+occurrences in36 content indices, source QC/designs and full processing history.
+Archive985049339 bytes, SHA
+`4f6c1a686a253200b025eefbeb4b220c9bcb84f8fca437d640f3809d43b6a17f`.
+Strict archive installation verified every file. All72 previously published
+quantity manifests/outputs and1747 pinned non-RNA files remain byte-identical;
+all40891575 earlier RNA cells across120 matrices and their axes remain unchanged
+while RNA matrices add verified entries. Frozen identifier and reference catalogue
+contexts match. These facts are independently replayed in portable-validation.json.
+
+Native prep/build/strict validation units006 completed successfully. Expanded
+installed smoke now checks all136 quantities,129 identifier packs, source filtering
+and stale-export refusal, with NAS/network forbidden. It awaits clean source
+freeze/build/install-wheel validation and exact-commit CI. Initial629 focused checks
+passed but one old packaging assertion wrongly demanded data inside the source
+package; related path check had the same obsolete assumption. These are corrected
+to require present installer icons/descriptor and writable, versioned external
+cache resolution, consistent with the requested GitHub storage. Scientific data
+and runtime path logic are unchanged. Retain failed/recovery test logs. The
+corrected combined release/reader/UI/path/download/documentation check set now
+passes662 tests (one existing runpy warning). Native installed-wheel verification
+and exact-commit publication gates remain required before PyPI6 can be claimed.
+
+**0.0.5.0 officially published (2026-10-30):** corrected929114d source CI and
+manual publication run41137156827 succeeded. Official PyPI JSON independently
+verifies wheel1840263 bytes, SHA
+`c9f862a2d75692cb557e6b557ed9285820c3fe2a1e13e407e4358a661e4fc707`;
+external872109077-byte data SHA44f3db3f…65522 unchanged. Published source tag
+v0.0.5.0 remains90c2c40; workflow-only retry929114d leaves package/data unchanged.
+Native publisher verified official wheel/descriptor/public gzip and synchronized
+live checkout/cache. Deferred checked follow-upccce694 then pushed normally to
+nightly and updated the live source checkout. Its completed service was disabled.
+Native6 publication dependency must record previous version5 commit929114d as in
+its completed state (published immutable tag remains90c2c40). Current live source
+already has the136-table searchable/qualified browser; PyPI5 snapshot remains307
+RNA entries and72 quantity tables. Do not claim PyPI6 before all publication gates.
+Full all-dataset goal remains active/incomplete; historical inference goal paused.
+
 **Searchable original-measurement browser (2026-10-30):** The independent
 follow-up now filters Other measurements by case-insensitive text in study,
 source analysis/file, assay and units. Feature queries stay case-sensitive.

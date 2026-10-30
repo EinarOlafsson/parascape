@@ -4,6 +4,7 @@ Run with the wheel environment's isolated Python after installing its pinned dat
 archive. Source identifiers are chosen mechanically to exercise storage and query
 routes, without interpreting gene function or treating annotations as replicates.
 """
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -30,6 +31,7 @@ def main():
     from parascape import source_matrices as S
     from parascape import deposited_values as D
     from parascape import reference_identifiers as F
+    from parascape import protein_identifier_evidence as I
     import parascape
     assert Path(parascape.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Package was not imported from the wheel environment'
     import pandas as pd
@@ -104,10 +106,19 @@ def main():
     qc = R.technical_qc(root=str(root / 'rnaseq'), study='PRJNA1008424')
     assert len(qc) == 16 and qc.quality_score.isna().all()
     original_values, errors = D.catalogue(root / 'deposited_values')
-    assert len(original_values) >= 72 and not errors
+    assert len(original_values) == 136 and not errors
     protein_packs = workbench_packs = quantity_columns = cells = missing = 0
     filename_matches = filename_gaps = factor_occurrences = experiment_candidates = 0
     chosen_pack = reference_choice = None
+    identifier_root = root / 'processing_audit/protein_identifier_evidence'
+    identifier_pointer = json.loads((identifier_root / 'collection.json').read_text())
+    identifier_folder = identifier_root / identifier_pointer['directory']
+    identifier_index = json.loads((identifier_folder / 'index.json').read_text())
+    identifier_sources = {entry['measurement_manifest_sha256']: entry for entry in identifier_index['measurements']}
+    assert len(identifier_sources) == 129
+    identifier_occurrences = sum(entry['evidence_records'] for entry in identifier_sources.values())
+    assert identifier_occurrences == 601605
+    identifier_queries = {}
     for pack in original_values:
         folder = Path(pack['path'])
         info = D.manifest(folder)
@@ -121,21 +132,30 @@ def main():
         missing += int(sample_qc.missing.sum())
         if info['assay'] == 'deposited protein-group quantities':
             protein_packs += 1
+            digest = hashlib.sha256((folder / 'manifest.json').read_bytes()).hexdigest()
+            identifier_source = identifier_sources[digest]
+            evidence = pq.read_table(identifier_folder / identifier_source['file'],
+                                     filters=[('query_namespace', '=', 'original_protein_group_component')])
+            query = evidence.column('query_literal')[0].as_py()
+            matches = I.records(folder, [query], namespace='original_protein_group_component')
+            assert not matches.empty and matches.query_literal.eq(query).all()
+            identifier_queries[str(folder)] = query
+
             for context in D.column_context(folder):
                 association = context['source_design_metadata']
-                filename_matches += association['primary_file_status'] == 'exact_unique_primary_file'
-                filename_gaps += association['primary_file_status'] == 'unresolved_exact_primary_file'
-                factor_occurrences += len(association['submitted_factor_rows'])
+                filename_matches += association.get('primary_file_status') == 'exact_unique_primary_file'
+                filename_gaps += association.get('primary_file_status') == 'unresolved_exact_primary_file'
+                factor_occurrences += len(association.get('submitted_factor_rows', []))
                 experiment_candidates += bool(association.get('submitted_experiment_rows'))
-                if association['submitted_factor_rows']:
+                if association.get('submitted_factor_rows'):
                     chosen_pack = folder, feature
         else:
             workbench_packs += 1
-    assert (protein_packs, workbench_packs, quantity_columns, cells, missing) == (65, 7, 1011, 1121174, 29468)
+    assert (protein_packs, workbench_packs, quantity_columns, cells, missing) == (129, 7, 1085, 1266353, 38130)
     assert (filename_matches, filename_gaps, factor_occurrences, experiment_candidates) == (11, 12, 5, 357)
     reference_sources, reference_status = F.catalogue(root / 'processing_audit/reference_identifiers')
     acquired = [row for row in reference_sources if row['status'] == 'all_header_cells_reconciled']
-    assert len(acquired) >= 46
+    assert len(acquired) >= 47
     for source in acquired:
         table = pq.read_table(root / 'processing_audit/reference_identifiers' / source['pack'] / 'headers.parquet')
         primary = table.column('primary_identifier')[0].as_py()
@@ -180,6 +200,22 @@ def main():
     output.mkdir(exist_ok=True)
     assert panel.save(str(output / 'original-measurements.csv')) > 0
     assert panel.save_qc(str(output / 'column-qc.csv')) > 0
+    panel.source_filter.setText('Ratio H/L normalized')
+    assert panel.pack.count() == 4 and panel.result is None
+    panel.source_filter.clear()
+    for index in range(panel.pack.count()):
+        if Path(panel.pack.itemData(index)['path']) == chosen_pack[0]:
+            panel.pack.setCurrentIndex(index)
+            break
+    panel.identifier_kind.setCurrentIndex(panel.identifier_kind.findData('original_protein_group_component'))
+    panel.features.setPlainText(identifier_queries[str(chosen_pack[0])]); panel.show_values()
+    assert panel.result is not None and not panel.result.empty
+    assert panel.save(str(output / 'qualified-protein-components.csv')) > 0
+    exported = pd.read_csv(output / 'qualified-protein-components.csv', dtype=str, keep_default_na=False)
+    assert exported.identifier_evidence.tolist() == panel.result.identifier_evidence.tolist()
+    panel.features.setPlainText('a missing literal source identifier')
+    assert panel.result is None and panel.save(str(output / 'stale-query.csv')) == 0
+
     reference_panel = reference_panels[0]
     for index in range(reference_panel.source.count()):
         if reference_panel.source.itemData(index)['source_url'] == reference_choice[0]:
@@ -199,7 +235,9 @@ def main():
                           experiment_label_candidate_columns=experiment_candidates, reference_source_occurrences=len(acquired),
                           reference_header_records=reference_status['unique_content_header_rows'],
                           PRIDE_projects=len(projects), submitted_PRIDE_designs=len(designs),
-                          installed_actual_Compare_tabs_and_CSV_exports=True)))
+                          installed_actual_Compare_tabs_and_CSV_exports=True,
+                          protein_identifier_packs=len(identifier_sources), protein_identifier_evidence_records=identifier_occurrences,
+                          installed_source_search_and_stale_export_refusal=True)))
 
 
 if __name__ == '__main__':

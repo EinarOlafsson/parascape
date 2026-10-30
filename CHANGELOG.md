@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.0.6.0 — 2026-10-30
+
 - Filter Other measurements by study, source file, assay or quantity label, with
   visible source counts and selection preserved on refresh. Clear prior values,
   exports and source dialogs when the source filter changes; editing feature

@@ -1,5 +1,5 @@
 {
-  "asset": "parascape-data-0.0.5.0.tar.gz",
+  "asset": "parascape-data-0.0.6.0.tar.gz",
   "files": {
     "af3_features.json": {
       "sha256": "f07484a81d3fd720b7ccd984b817f4cdac68ecaf87d5ec46020145a317ad39a7",
@@ -2602,8 +2602,8 @@
       "size": 25681
     },
     "deposited_values/protein_groups/operations.jsonl": {
-      "sha256": "f96be7faf725f01b05313060f44d8bf1457d0bcf931fbd56e45c60d87b8aa6b0",
-      "size": 12972
+      "sha256": "eb533d71ff8dc89ca7731592bb221f4539d0d817efd42ad77f8648d7059127de",
+      "size": 193505
     },
     "deposited_values/protein_groups/processor-4776d479ff47443c02816902a149906badab0dc2c3ca8c32180d0ce2d54e8964.py": {
       "sha256": "4776d479ff47443c02816902a149906badab0dc2c3ca8c32180d0ce2d54e8964",
@@ -2620,6 +2620,2090 @@
     "deposited_values/protein_groups/processor-e127c0f844a398a8954be1a7c3d520a9e8b0f86acb97c439aac8c463151e6bc9.py": {
       "sha256": "e127c0f844a398a8954be1a7c3d520a9e8b0f86acb97c439aac8c463151e6bc9",
       "size": 19022
+    },
+    "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/manifest.json": {
+      "sha256": "b9493d72c930ccc78af0c1e0e98fbbb88e37fde46dd4163eb0eb56bbf70cafd1",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/preparation.json": {
+      "sha256": "a033730d66b0896bcd25dd3729281739f47e60ba16a81385e54ffa45e32e0ee9",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/samples.json": {
+      "sha256": "e47303e9904e51d3ef5d8470832611f1a68af0ed4dd042ce70958d9a7538c0c3",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/source_metadata.json": {
+      "sha256": "d1b7e33d50f3f033e404dfab939d0e3eca4c06e8ff0c6aafd54c7aae95b96309",
+      "size": 1514039
+    },
+    "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/source_tokens.parquet": {
+      "sha256": "be01594d918612c7fbe16c882cd81a402b6484fa9cf2a324df5e1cbca4ee0a1d",
+      "size": 25864
+    },
+    "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/technical_qc.csv": {
+      "sha256": "9ea83c5ef0af9c1fef8d46836f92ba2a72c641a78c91edcc7f3196952659125d",
+      "size": 2432
+    },
+    "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/validation.json": {
+      "sha256": "46f708bb8ab8c795e8221bf1e338be2b8be9baf361e32190e0edb9e2f981691b",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/values.parquet": {
+      "sha256": "ac2fb4e68432fbeb58270585219086584df74dfcb3747b4545a7706ddf76bd99",
+      "size": 24466
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity-e183a2e16e8875e8/manifest.json": {
+      "sha256": "9d2567bcc9591bcf8ad3e1b7f710097f41b77ca6f22542fd722bf895d584b708",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity-e183a2e16e8875e8/preparation.json": {
+      "sha256": "9321d33e109ae8e0787a597eaec1772d8ddd63c25391bef7d9dae1b1708b4392",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity-e183a2e16e8875e8/samples.json": {
+      "sha256": "0b7adf57b543919e314e375e33f244a391a54dcf881ddf8be3b0becfc7aa967c",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity-e183a2e16e8875e8/source_metadata.json": {
+      "sha256": "2c61e8df7d50a0a4f630ed89cf01122df1b9ac3ba5d4c2c02e2766e908654d3b",
+      "size": 7382950
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity-e183a2e16e8875e8/source_tokens.parquet": {
+      "sha256": "a61c13f91e5fe22a87f40d992026eda9d36570d905f35ee9181d93af2ce4e4a3",
+      "size": 84291
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity-e183a2e16e8875e8/technical_qc.csv": {
+      "sha256": "fb3d9e7dc5e6c42870de4018670654f9556815ef988a96f9fddbf2677afd46e8",
+      "size": 2434
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity-e183a2e16e8875e8/validation.json": {
+      "sha256": "f082512a1bdbfac77887b81167313312d7af6d6acdf6bf430e95f1d27689489e",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity-e183a2e16e8875e8/values.parquet": {
+      "sha256": "e72124e0ba805f36e8691395079ddafe44b3bdcc34329b8e3353060457bc90b1",
+      "size": 82779
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_H-b8a57356d52f3a14/manifest.json": {
+      "sha256": "dc664010b7dc56b8706bea2da87a5d254ec1f14ccedd7c6a420290a8614d8cd7",
+      "size": 1840
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_H-b8a57356d52f3a14/preparation.json": {
+      "sha256": "9fb8734f6d53fd90ce38fb295b3c378df3cd2461d2b655b882cf4df6118a4b29",
+      "size": 1255
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_H-b8a57356d52f3a14/samples.json": {
+      "sha256": "5b695fcdcab3ea60885f525563499fb4c32ec3d91796b9bc76e182b22ba79890",
+      "size": 579
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_H-b8a57356d52f3a14/source_metadata.json": {
+      "sha256": "5954e4d3b0d12e498db32c6967e883faf9ed336bf70436079f8a7fabf505a858",
+      "size": 7382957
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_H-b8a57356d52f3a14/source_tokens.parquet": {
+      "sha256": "cf56dbbe14eb2314ef18e95c4bf8d8818593d294036126cca8bcf6b9f22633e2",
+      "size": 84241
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_H-b8a57356d52f3a14/technical_qc.csv": {
+      "sha256": "35866e962c27d7e6c563fd322f461bd5731f84ef6ab6566ddfe0f79a1d687be2",
+      "size": 2450
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_H-b8a57356d52f3a14/validation.json": {
+      "sha256": "7ff9eef103b701a38047704e064833e5b5d3f34523fab6a4847e5ede69004cef",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_H-b8a57356d52f3a14/values.parquet": {
+      "sha256": "287e9c0c3e52cd9fdca56fc37efd303225674f7f52a20c34a4c26c07284dc461",
+      "size": 82521
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_L-41ac2eb2da1292fa/manifest.json": {
+      "sha256": "689751820b3c25ead83ae09f6ed8c42b6f4e8b4e0cadbdfee1505488cba44dda",
+      "size": 1840
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_L-41ac2eb2da1292fa/preparation.json": {
+      "sha256": "7e1aa112740ec800485180a5e8792e024def1923f7a7a523da16df612b675598",
+      "size": 1254
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_L-41ac2eb2da1292fa/samples.json": {
+      "sha256": "4f74807dd3b6646956113d579fa683f2a3f50cddb16cb004e6ffb9766747bcee",
+      "size": 579
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_L-41ac2eb2da1292fa/source_metadata.json": {
+      "sha256": "61a94c2d11cea1970060bf5eb9d18bfbd7e9fdf6a7cdaf56004b7010098de640",
+      "size": 7382957
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_L-41ac2eb2da1292fa/source_tokens.parquet": {
+      "sha256": "ec5677084f52480aa04b64134a93ab32743f07774d2a124b5eca858be6d70b41",
+      "size": 84321
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_L-41ac2eb2da1292fa/technical_qc.csv": {
+      "sha256": "9c9376cba1d5a1fcafb2b6a53e557fea1c742f31b260cf09af3dc1ef0646c5fb",
+      "size": 2450
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_L-41ac2eb2da1292fa/validation.json": {
+      "sha256": "7ad99839326ccaa80a49838ed3c1da7c8018da83a9d03e1311b1e0aae7ac9221",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Intensity_L-41ac2eb2da1292fa/values.parquet": {
+      "sha256": "d81255492ae4528b45e5c20b45ccd391d2e5ae96583f3815d5300f84c66af2df",
+      "size": 82695
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L-26b095504bb214e5/manifest.json": {
+      "sha256": "edc4025b5d64317f3b19326f6ad65b4d7d6fe39dd93b874a845ecaea80dc4748",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L-26b095504bb214e5/preparation.json": {
+      "sha256": "a5cfed863582ff0bb11decf2404959bc2e5d93dde5d61257c2230c2c99e045f7",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L-26b095504bb214e5/samples.json": {
+      "sha256": "f9e0c9d4c65c7e85de8a2f954ba58d06bb76529079fc77414ab1b797b291f70b",
+      "size": 563
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L-26b095504bb214e5/source_metadata.json": {
+      "sha256": "1b4fe96277cdd2218451f23a6f6baf0c0838484189b488f3c5aa486fe9d38120",
+      "size": 7382947
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L-26b095504bb214e5/source_tokens.parquet": {
+      "sha256": "480b7ad813b02f2fc9640e9862315ecdb1d9e15b135b1d72b6d5c0fcb07044d2",
+      "size": 81996
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L-26b095504bb214e5/technical_qc.csv": {
+      "sha256": "1daec26e40ef1d239792f88146137af3f5866709ab8282426e1cfdd5dfa0b3a0",
+      "size": 2440
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L-26b095504bb214e5/validation.json": {
+      "sha256": "4a95d603b0db5c75587118f2585782dda89aeaed3ad7f7fd0ae83a12250cb26b",
+      "size": 1139
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L-26b095504bb214e5/values.parquet": {
+      "sha256": "5ab670aed1c2a848de3683e6382543f5a99a2a36345abfe15ee4a2e7ca76b5a0",
+      "size": 85064
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L_normalized-c3bfdd14aeeaa988/manifest.json": {
+      "sha256": "5033c381e7795e02bdb2d4d6696b037b8c13484bb49e4bc6075cd0e9c9643a58",
+      "size": 1876
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L_normalized-c3bfdd14aeeaa988/preparation.json": {
+      "sha256": "19f80d79b833d221ec1231664e57e267524b8f9861600db8c0d8b43ee1e35237",
+      "size": 1264
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L_normalized-c3bfdd14aeeaa988/samples.json": {
+      "sha256": "8fe01cbb9977a267269abe1176e46fb64ced80227892126cd4bd3d269eaaa53c",
+      "size": 607
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L_normalized-c3bfdd14aeeaa988/source_metadata.json": {
+      "sha256": "f5a150dcf8b7b535aaa4287c58e994dbe7f7fdb24ce66e2e72d69df5f5321d30",
+      "size": 7382980
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L_normalized-c3bfdd14aeeaa988/source_tokens.parquet": {
+      "sha256": "a7f7e3368730d1685e1e02e0b679af12723f328b519c0ae1386635b4972f9e9f",
+      "size": 81670
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L_normalized-c3bfdd14aeeaa988/technical_qc.csv": {
+      "sha256": "eaa2af72f9d142b46729b7030719dbbf33e835e58602d9e9d390efc54db72680",
+      "size": 2517
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L_normalized-c3bfdd14aeeaa988/validation.json": {
+      "sha256": "d4156ceafbe2604db72bb8faadc104f290057d42cd3284f1e1aa028e529cd689",
+      "size": 1140
+    },
+    "deposited_values/protein_reported_quantities/PXD003217-Ratio_H_L_normalized-c3bfdd14aeeaa988/values.parquet": {
+      "sha256": "819b34cffdfd8def3f2f8bdb5bb62516a031cb4edc1a9a79b1e30186d6c72e71",
+      "size": 83806
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-195a1a6cef677308/manifest.json": {
+      "sha256": "6f98728ca3527eb4e86d133ffaef9a3cc1b2e6ddbdbf8c4caa5ff4d69ea74d93",
+      "size": 1844
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-195a1a6cef677308/preparation.json": {
+      "sha256": "de472f396b8a1ca3ab31111bb0bae4f0348c23e95408b93f9c65688691e18c48",
+      "size": 1265
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-195a1a6cef677308/samples.json": {
+      "sha256": "da5b9649380d6fb3a354a73210716bbfeb07a115cd3cc96b8ce20507bcb3cfd6",
+      "size": 575
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-195a1a6cef677308/source_metadata.json": {
+      "sha256": "f66b923029a92125a67db60ed130b44dd82afffbd6355a49e62a60b44e265ce8",
+      "size": 3458419
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-195a1a6cef677308/source_tokens.parquet": {
+      "sha256": "c273f2d1df571e23d570c0b3e3b3efc4b41b2a87ba8e3348244c3bb50af58b72",
+      "size": 34797
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-195a1a6cef677308/technical_qc.csv": {
+      "sha256": "bc1eead9e2383739d2e2f4fe01be0605fe6175f352f53be7f429a72a9bba1fbd",
+      "size": 2445
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-195a1a6cef677308/validation.json": {
+      "sha256": "c1a9647b3ab4f75112b0841c9cbdfbb0e9ce4ca20b0ad5cb81563432611c922c",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-195a1a6cef677308/values.parquet": {
+      "sha256": "2c832a5ea92bc23e0465f51be09ea3b66757ac8ffec7603e5963a2f7f80bd86f",
+      "size": 34121
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-65370a160e2b51a0/manifest.json": {
+      "sha256": "4b77009cb532af3aa348cef4a6f30b288e0cc61045ac2a820c8ef494ff81a33d",
+      "size": 1844
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-65370a160e2b51a0/preparation.json": {
+      "sha256": "cb1bb69051df2656bebb20e5db81a17a69d3117e5e85a5464839ed3231b05aa3",
+      "size": 1264
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-65370a160e2b51a0/samples.json": {
+      "sha256": "e33800be20ca5602b65420dd60c83759202277f951e945c2e3ff7f86500638f5",
+      "size": 575
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-65370a160e2b51a0/source_metadata.json": {
+      "sha256": "51382a9c086fd11f971bd7a3565f321fbf9db3a54de9850e39e49adceb256fd4",
+      "size": 19963605
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-65370a160e2b51a0/source_tokens.parquet": {
+      "sha256": "d26461af6dd593965b5279be30860c4487ecfa569f22a31ded6c306616d82012",
+      "size": 101377
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-65370a160e2b51a0/technical_qc.csv": {
+      "sha256": "2496e7b05a196a4b435ce62d7a1eeacbba8054529a95f6173a2663682dd0da27",
+      "size": 2447
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-65370a160e2b51a0/validation.json": {
+      "sha256": "4b403ec6944e8f06709baeb79fc4f11600cc673eb72d78db9840575148b0c5ee",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-65370a160e2b51a0/values.parquet": {
+      "sha256": "7702953fcbd52bdbe7666dd6682ffa4986945b1565b83c900f2b60c4ca756de6",
+      "size": 98383
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-7afddbfcccc07d13/manifest.json": {
+      "sha256": "8c2e9840130528062571510211d352c981a35a574187eca8087c4e5e9fc75b60",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-7afddbfcccc07d13/preparation.json": {
+      "sha256": "af22aa87fcc843efb8c076b494eaf40e8354758c990e5839297fd7ef70cd60aa",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-7afddbfcccc07d13/samples.json": {
+      "sha256": "fad282386f20d80b356b895018c2142788030fdba634631aefe5f7750f022c95",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-7afddbfcccc07d13/source_metadata.json": {
+      "sha256": "55be23384401b0b94ca0823687255f0c1c1d62976e1df04211df6c7531190052",
+      "size": 3015640
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-7afddbfcccc07d13/source_tokens.parquet": {
+      "sha256": "480be89eb6930728ae14439921824ccaf484a3938787cf32287524acc084d46e",
+      "size": 34117
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-7afddbfcccc07d13/technical_qc.csv": {
+      "sha256": "51d917b25a825a6e4cdc18b0bace8e735ba330dcfcd37863b9ec3421c315facc",
+      "size": 2434
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-7afddbfcccc07d13/validation.json": {
+      "sha256": "63be6020169ffce2c7760ef7ef1650eeb93886c5c2b9e24c1eb0721e33f5679b",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity-7afddbfcccc07d13/values.parquet": {
+      "sha256": "6edf9f638ac3ac994db7a06fdd5e3fbf1534e6fd2e407fe23d8d54f7c93249ec",
+      "size": 33811
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-ad6dad96a504cf34/manifest.json": {
+      "sha256": "9b9757fd3d2be3c7bcce79a4fead0c0d78ffa4a241e518948b6f540eeeabfa4b",
+      "size": 1852
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-ad6dad96a504cf34/preparation.json": {
+      "sha256": "c7e5a83aa5b54c396ac0cf3fb0a39df23c2a009fa8482c070a0d782ba226bd31",
+      "size": 1267
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-ad6dad96a504cf34/samples.json": {
+      "sha256": "5da71d284222be481f6a7a5228c741c93b7c3d1e4b20efb8ececa8c5b295768f",
+      "size": 585
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-ad6dad96a504cf34/source_metadata.json": {
+      "sha256": "95403ddb5e78f846d1a098fb6d7cab078f3cf54188176f3573d392c8a49d4970",
+      "size": 3458426
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-ad6dad96a504cf34/source_tokens.parquet": {
+      "sha256": "120ecf1487f94da6326434bcf495f58fdc0483a27b4fd36135d3b134b9ad85b8",
+      "size": 34708
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-ad6dad96a504cf34/technical_qc.csv": {
+      "sha256": "0f9e45154898912c499bf0d084fc56bef406afd1cbc43dbd05f15b79525fa4a0",
+      "size": 2461
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-ad6dad96a504cf34/validation.json": {
+      "sha256": "b12a3dc1617c69625348e28223a8fcf7a5474b1904da3aefdc35cc3553c17de1",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-ad6dad96a504cf34/values.parquet": {
+      "sha256": "bfb09c678cd643d14c33adef54970c2d0852396dcbcd4b5b6d1b8403b962915a",
+      "size": 34069
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-de2478c238efa35a/manifest.json": {
+      "sha256": "e004c281c3d0ca0779762e8f2711a412aa684400a41fdcade576062ab73253c0",
+      "size": 1852
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-de2478c238efa35a/preparation.json": {
+      "sha256": "ea7eba5e33e971f0162c666d566ca6adeb62238e9e5267bb622aec3c8db950e2",
+      "size": 1266
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-de2478c238efa35a/samples.json": {
+      "sha256": "3c4ba82386d4282afdfdaf6711823e6ae97d4bedcbba76ea6a60d541a75c05c0",
+      "size": 585
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-de2478c238efa35a/source_metadata.json": {
+      "sha256": "5b05583d9cb7450e0717cb8ea95b8c8607eeb398ba241939b4df8c5735883d57",
+      "size": 19963612
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-de2478c238efa35a/source_tokens.parquet": {
+      "sha256": "3640eabfd632d2e6700b9a3c90ded4bb27b01a1ae013a27af78782d7a8fa5c9a",
+      "size": 101036
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-de2478c238efa35a/technical_qc.csv": {
+      "sha256": "bcc380eea387267ed89b7bc4bd9b136e0aeeab8368aa90378ca6715496b4b46d",
+      "size": 2463
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-de2478c238efa35a/validation.json": {
+      "sha256": "b0e4da70c493839be50d97a36556bbd62177065b9607b13a5f880b721adb8d97",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_H-de2478c238efa35a/values.parquet": {
+      "sha256": "6bd8f19ebbb5112587f97194ecc79405ac150b8f5c944d107a0ad9b56dd4b357",
+      "size": 98150
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-da19f6e75ba1d41e/manifest.json": {
+      "sha256": "55b6b357c6095ff7c9e5f35c75be3baad6de78f1958ef02abc972910653e75cb",
+      "size": 1852
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-da19f6e75ba1d41e/preparation.json": {
+      "sha256": "58a2a0d3f4397378131ea7d60edce5b68ae6e308735e5667c75f7e2f205e0d7b",
+      "size": 1267
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-da19f6e75ba1d41e/samples.json": {
+      "sha256": "dccd8507d8828f75ba7d684f2e1c7978baba758da1be79e2d2c32c84ee3c6f2c",
+      "size": 585
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-da19f6e75ba1d41e/source_metadata.json": {
+      "sha256": "39acfd1af81d65ef49da48b98cdae57491137e152891b69d531bf48a3b84433c",
+      "size": 19963612
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-da19f6e75ba1d41e/source_tokens.parquet": {
+      "sha256": "10a9dbb7e8af720a2f625fe2ebb45f859a61dbec5eb7d3fb26615450d6141652",
+      "size": 101293
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-da19f6e75ba1d41e/technical_qc.csv": {
+      "sha256": "129d6e6e41fcb9a7c26ba1f2ae185b4f1fce20d19f75c0ae457a42ac0b7507a8",
+      "size": 2463
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-da19f6e75ba1d41e/validation.json": {
+      "sha256": "cfc19ab8477d212a9fe5962f6bdeeedc1ea08ec6f0fc8e7679635473c0978609",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-da19f6e75ba1d41e/values.parquet": {
+      "sha256": "4b0dc8b3c784a93f164d7d34bd303df4c999de33fed74ca093be6734c1c2e877",
+      "size": 98310
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-de76338169c91ef4/manifest.json": {
+      "sha256": "69ce06bbfbbbe2114709a1caf7b82194d2adb166301f49d7082ef4f82142518b",
+      "size": 1852
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-de76338169c91ef4/preparation.json": {
+      "sha256": "92d41c5a11983d91ada2fd991575a5b67ef2d129d2e4a9580cc199ca5c5dfa0f",
+      "size": 1266
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-de76338169c91ef4/samples.json": {
+      "sha256": "fc2f40ea7cff791e10e5df7c39b4ecd386edd2d35934745bcdaac9329250f707",
+      "size": 585
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-de76338169c91ef4/source_metadata.json": {
+      "sha256": "8eebee4d1f93f40582eecfff2fed18b744cde75e7c5f71af3101d93ffcb5fbb0",
+      "size": 3458426
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-de76338169c91ef4/source_tokens.parquet": {
+      "sha256": "f4c602827510d6f2a22a6d492c95816819b6e17b4eeb07f875e72c8dfc0b0b08",
+      "size": 34785
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-de76338169c91ef4/technical_qc.csv": {
+      "sha256": "997ace558b4866704708e781bd6826186d8e6e8e3897a678268849c136f93788",
+      "size": 2461
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-de76338169c91ef4/validation.json": {
+      "sha256": "13e4063b4a1f5946e57d070ffa71a8172f61587c61ca0f481773c104bdb3e14a",
+      "size": 1137
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Intensity_L-de76338169c91ef4/values.parquet": {
+      "sha256": "9cc3af1dfbb0db3d01a75201133c268bedda99754ae9649c2722d6628ca717bc",
+      "size": 34106
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-515484b4664c810c/manifest.json": {
+      "sha256": "61e11e102a0cce5233dd9d7a6c65c67c83df53c116ec19f7f1a240fad0a6f7c0",
+      "size": 1844
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-515484b4664c810c/preparation.json": {
+      "sha256": "ddbc91fafd5269aa55f76ba114fe89040fe2cb3b95436264dcc4efa3d81a6b7a",
+      "size": 1264
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-515484b4664c810c/samples.json": {
+      "sha256": "370f4b2d771562a28114f7ea1191e421e3261e028f27ebbeef04908bfca72f55",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-515484b4664c810c/source_metadata.json": {
+      "sha256": "f99a43b2523a4411bb6ff6e62bc0e325540861238c405342f5d9a5604bf15373",
+      "size": 3458416
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-515484b4664c810c/source_tokens.parquet": {
+      "sha256": "0feac4e31ded178ba003c8f3b8d01f81f969df925a55e3c100540f2d26ce0de0",
+      "size": 33560
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-515484b4664c810c/technical_qc.csv": {
+      "sha256": "f6b315bd552f43186966e79d8fa6cae93d50a84528307c33f1a222c1325c0cf0",
+      "size": 2451
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-515484b4664c810c/validation.json": {
+      "sha256": "9ddeb2ac3690bd0c40b0e0076a5866cdaf32846df7696bc212e3303c65e21064",
+      "size": 1140
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-515484b4664c810c/values.parquet": {
+      "sha256": "f4dc1ce465d35d09139b423546afcb912f51516ba215e674fe2a3166da5d8c85",
+      "size": 34204
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-c3490f88219b70c6/manifest.json": {
+      "sha256": "e1bbf4682f7e15bc55122ae9d396390888a574ccbdc049f29a55775492568f21",
+      "size": 1844
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-c3490f88219b70c6/preparation.json": {
+      "sha256": "3fcfa3967e3182365ab431976d2872a76937cb83708b3fb65615fe17ebdab524",
+      "size": 1265
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-c3490f88219b70c6/samples.json": {
+      "sha256": "aba9d6824f13053d746dc4387d86af77c982e6302454ed23c3abdd0683d603d7",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-c3490f88219b70c6/source_metadata.json": {
+      "sha256": "1bb6f124ca684b8ce3cfac8721e4482bfb7397cebdef995db6430cd8a35938ae",
+      "size": 19963602
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-c3490f88219b70c6/source_tokens.parquet": {
+      "sha256": "a4aac742be9417de37300427ae4d2a2f893b6b3117cc770c4150cc51ad3f718f",
+      "size": 95350
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-c3490f88219b70c6/technical_qc.csv": {
+      "sha256": "d6da0bc72fea4e1dad3b5ead09b91f81cd93b0fda2d5eae425206f6ed236940d",
+      "size": 2452
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-c3490f88219b70c6/validation.json": {
+      "sha256": "612d8c12aba54c3a60f7c6e3edd86952d29af13873749295eeb1cd72c7174da9",
+      "size": 1141
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L-c3490f88219b70c6/values.parquet": {
+      "sha256": "2272bf3b2b4bb90e444eb78f7707a55fcdf20b948c6a3906c250ef26d17de4be",
+      "size": 99140
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-0910330b2ffd1bd8/manifest.json": {
+      "sha256": "dcb135fe886233fcd0d857a7bd36d67939623b6f847afced39ce7ba692cfd1c8",
+      "size": 1888
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-0910330b2ffd1bd8/preparation.json": {
+      "sha256": "b1393fc717b53b6f7a104120b5a1858ab73f2429d5290acd139beb59417c0397",
+      "size": 1276
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-0910330b2ffd1bd8/samples.json": {
+      "sha256": "f0a0152509e5cfdaab0c35fd8b7b488241e771ac8f6abb4b7ee94e9ec8074924",
+      "size": 613
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-0910330b2ffd1bd8/source_metadata.json": {
+      "sha256": "1747e1e09bbfab70e805e501401aa0099af1a5e367d0f671ba0fa89932c4cfd3",
+      "size": 3458449
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-0910330b2ffd1bd8/source_tokens.parquet": {
+      "sha256": "84ef46615dbc64b276186caa47049d87d9004ae8696f1db1678b70b1b96da9af",
+      "size": 33546
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-0910330b2ffd1bd8/technical_qc.csv": {
+      "sha256": "76e0d8845bbf6d2b2b1cc8485ab92847a325e74802d627cc6bb7156905fedba4",
+      "size": 2528
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-0910330b2ffd1bd8/validation.json": {
+      "sha256": "0ef97944934683eee620238138103238d26a21c389f7b4392bac3db647c6d948",
+      "size": 1140
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-0910330b2ffd1bd8/values.parquet": {
+      "sha256": "dd84303d08a5019a8598890b167b649132e6a7dbc4498f822d68e0f7403ae411",
+      "size": 34205
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-85213ec120911431/manifest.json": {
+      "sha256": "21ee3a76395e27119ea4a4e3e80251ce4a4df297bd35a28037f5eb89dee084e7",
+      "size": 1888
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-85213ec120911431/preparation.json": {
+      "sha256": "2c485f7e4dc3bf04f1b2aaecbf43995513968fcf9a496827ea753d2adf62f4ce",
+      "size": 1275
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-85213ec120911431/samples.json": {
+      "sha256": "20fc0e91221111b460c9b7de4b4b552aef53e08ea8b5ac25ea2c88c4b05a6e55",
+      "size": 613
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-85213ec120911431/source_metadata.json": {
+      "sha256": "9aa4e0f5331abb5d0883b607f2f135a1cc68452a7cd293909e5fcfb118add973",
+      "size": 19963635
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-85213ec120911431/source_tokens.parquet": {
+      "sha256": "1446924dc3875c47807fe44db4e936a5076bbbb4e37e3ec6d6dcd46d1e125c8e",
+      "size": 94923
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-85213ec120911431/technical_qc.csv": {
+      "sha256": "f751b74de6d6f383be620615f5e96bb7ae1a62cf1571cb130b93342ef9e7e853",
+      "size": 2529
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-85213ec120911431/validation.json": {
+      "sha256": "4c155f90193401c8e5b7f39b07b852d7912b21c214356e266e02df2b6cbb5aeb",
+      "size": 1141
+    },
+    "deposited_values/protein_reported_quantities/PXD008574-Ratio_H_L_normalized-85213ec120911431/values.parquet": {
+      "sha256": "37e42c83f298f80b25a5a1c011d47da2593595c6ecbd279c6796c28842a12704",
+      "size": 98844
+    },
+    "deposited_values/protein_reported_quantities/PXD016383-Intensity-02971bcc9de6e04f/manifest.json": {
+      "sha256": "4bbed900b5b845c5108fb4f7109a3d1e83b326555e8d53a7a1e705e076afdeae",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD016383-Intensity-02971bcc9de6e04f/preparation.json": {
+      "sha256": "a9358629d8d08920afe9ae84f829b0f976317763e27879f447996bf7124c44e0",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD016383-Intensity-02971bcc9de6e04f/samples.json": {
+      "sha256": "74ebc7bae7353f1692ea231d5f0fcf4d31400f0874022f168529e8daceea7c50",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD016383-Intensity-02971bcc9de6e04f/source_metadata.json": {
+      "sha256": "344dc3e2c2690841cdf5bbb25317d4d91607ae6f3dc02bc1110f5567ebe36bd7",
+      "size": 2928229
+    },
+    "deposited_values/protein_reported_quantities/PXD016383-Intensity-02971bcc9de6e04f/source_tokens.parquet": {
+      "sha256": "5e2dd75a2e57be814953c1a6f5b546bf31d97e99d15fc8e0068acd1104cd6981",
+      "size": 59906
+    },
+    "deposited_values/protein_reported_quantities/PXD016383-Intensity-02971bcc9de6e04f/technical_qc.csv": {
+      "sha256": "145b61b1c357f62b4b8a21151e9e07618e6bbe5cf33462887d30743fa529f861",
+      "size": 2433
+    },
+    "deposited_values/protein_reported_quantities/PXD016383-Intensity-02971bcc9de6e04f/validation.json": {
+      "sha256": "198bbb7b5b0a7f5da9453a2a6629cb261a7f1cb4021a6f2d40a7fef415b77e8e",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD016383-Intensity-02971bcc9de6e04f/values.parquet": {
+      "sha256": "de3c776e453f546fd65baf00794c4e8175d836c7ce70931f185d035ab53b763f",
+      "size": 58558
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-4a8a48f7b03f31e3/manifest.json": {
+      "sha256": "6ba2891be56993c0c8bbce3dd77614f6bbda144dbe903ea4567830716e81d28e",
+      "size": 1844
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-4a8a48f7b03f31e3/preparation.json": {
+      "sha256": "da9c60a163de1961ef48e50de8dc787512e989b59ed8aa59e807f949d94190f8",
+      "size": 1265
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-4a8a48f7b03f31e3/samples.json": {
+      "sha256": "1616727252e9fca90a5b1d2a07c33c8b53707aaea1b669185bbcbdd1bb0124a2",
+      "size": 575
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-4a8a48f7b03f31e3/source_metadata.json": {
+      "sha256": "203f4431fe857366e4a39da6b9235f3e89e5ee8108f33853118adc294161133c",
+      "size": 34041765
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-4a8a48f7b03f31e3/source_tokens.parquet": {
+      "sha256": "50e1e31f00487692c4d9fa9ad22a41863f51d1b5f37ebbf8ffa686b67d6b14dd",
+      "size": 67865
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-4a8a48f7b03f31e3/technical_qc.csv": {
+      "sha256": "204dac8f80b21350c70300225a3ac178476a8025f210dfa471dfb436cf1d3a18",
+      "size": 2445
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-4a8a48f7b03f31e3/validation.json": {
+      "sha256": "5862f47aa1787323412568e2ec2d64d8c7c9a450b4c6886decbf0f5de82f6d18",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-4a8a48f7b03f31e3/values.parquet": {
+      "sha256": "1d3c0a40039b1bdf78d793309213279453c4295c9f623685e4a0587f10dc147e",
+      "size": 64871
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-952ffbac991b9363/manifest.json": {
+      "sha256": "dd7d954d99402ddd09fbc8d7889428cf2717de796f7316c045d64b990ed306d6",
+      "size": 1848
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-952ffbac991b9363/preparation.json": {
+      "sha256": "a2e3225aa559a6515fccc3739e82b3019e58ff32e526b763bbbcc573d8fa3295",
+      "size": 1269
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-952ffbac991b9363/samples.json": {
+      "sha256": "f552dfa4927e32aab73cb20c128df38e896568d8c2b45dbb45f0bc1166d638be",
+      "size": 577
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-952ffbac991b9363/source_metadata.json": {
+      "sha256": "2d4764709501431e0ad99c3b2973f994543f5040c071dada335825d7a3ee4d22",
+      "size": 38740486
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-952ffbac991b9363/source_tokens.parquet": {
+      "sha256": "1ec0691a1cde4958b2cc95538ce53d8638b826ed9e52e690d0c9f0a3099c5011",
+      "size": 61108
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-952ffbac991b9363/technical_qc.csv": {
+      "sha256": "f10ecbe0f27de20d82119cc03e0fde21c8a48c3926606811d86921552d9955f6",
+      "size": 2451
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-952ffbac991b9363/validation.json": {
+      "sha256": "d18a75586bedc3ffcdffa673c9e9c5869fe21c1c53ea348b508cd5a72b4ce705",
+      "size": 1137
+    },
+    "deposited_values/protein_reported_quantities/PXD018056-Intensity-952ffbac991b9363/values.parquet": {
+      "sha256": "79ba0bc79b29deac9e9b2638598cffd10c5b37a3fb53a9951558b7aa8abcf519",
+      "size": 59768
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-Intensity-029f7c315e053582/manifest.json": {
+      "sha256": "42de3df65da4e2cfb60b48109a9bf4b96983ac64c8452805117768e45238ecf9",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-Intensity-029f7c315e053582/preparation.json": {
+      "sha256": "f2d376b1e6beb0d88d3fef377b65e6705a6878a35d28c0610a705a8358cfe3d5",
+      "size": 1252
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-Intensity-029f7c315e053582/samples.json": {
+      "sha256": "ebc8762471203785f04050fe410ad922c688a0f1057e6ff47c679ba4ad80aba0",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-Intensity-029f7c315e053582/source_metadata.json": {
+      "sha256": "925e7e936d226fefa02cfb420190d89088539d006d310c25a23d5911c88148d9",
+      "size": 14493819
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-Intensity-029f7c315e053582/source_tokens.parquet": {
+      "sha256": "438e949417927d9baf110d48c94ab6ebbbe81eeb6d8634c81e7627e32d3ceeef",
+      "size": 186512
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-Intensity-029f7c315e053582/technical_qc.csv": {
+      "sha256": "6a8bece815a8de121496d6883741d47694f15d5c06ed8382e9fda45812a90322",
+      "size": 2446
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-Intensity-029f7c315e053582/validation.json": {
+      "sha256": "7c1dc7b0e7d1cd00a84dc9f7e279b3380ad3aa42e025a1e2a01fbc454beb262d",
+      "size": 1137
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-Intensity-029f7c315e053582/values.parquet": {
+      "sha256": "3a7c5139b75cfdaa58beee19800dc048369a2d1f3b524887ea2fade79c3b4502",
+      "size": 184208
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-iBAQ-b21234a1f42647d1/manifest.json": {
+      "sha256": "d407a34449b40797a47614de46da34161ddbc3641f3dcf65e2a90a2b3b5553cb",
+      "size": 1812
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-iBAQ-b21234a1f42647d1/preparation.json": {
+      "sha256": "ebad7a08b98401a5deea7f5022e7cb68bfbcf55644fb9441dbff275321649254",
+      "size": 1246
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-iBAQ-b21234a1f42647d1/samples.json": {
+      "sha256": "2ba6bef4603a9c79d111abb8665b8cc4123aa5a78ad411a3a9e60a93f5f1567a",
+      "size": 549
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-iBAQ-b21234a1f42647d1/source_metadata.json": {
+      "sha256": "df66a97b002d9b8ef37f8bd68fdcc138b3d55431361dc4276cd7cefa58d30f05",
+      "size": 14493804
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-iBAQ-b21234a1f42647d1/source_tokens.parquet": {
+      "sha256": "cbb23626bc7b01d078f8dafff049996737d6bb327f7ce2b3e127fd1bd440bbc0",
+      "size": 185738
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-iBAQ-b21234a1f42647d1/technical_qc.csv": {
+      "sha256": "51cac7e0b52e061a5cfbe4d022f72ff0770f3f793262a43a079b24e1f026316b",
+      "size": 2412
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-iBAQ-b21234a1f42647d1/validation.json": {
+      "sha256": "f8ce4d9f99118d7b06e3a2619628b98f36d3772a77cd9e037d02ce2d174da45c",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD029463-iBAQ-b21234a1f42647d1/values.parquet": {
+      "sha256": "b8d98f74ba7aaea54068ea7d2d78fe68b5e5147840cda8161866bde244b09915",
+      "size": 183152
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-3fccd0850acca4cb/manifest.json": {
+      "sha256": "01bd30e2db1f629637a6d17df1026b121a016359b2e9f065d976482a7290fc2e",
+      "size": 1879
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-3fccd0850acca4cb/preparation.json": {
+      "sha256": "76a5654e6a6f4215ce4f15c2b195d56efb25420643aa6183ecf4075a676e0158",
+      "size": 1301
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-3fccd0850acca4cb/samples.json": {
+      "sha256": "8b53961e13142f292437e8cc57fe3d5f5a9d263be5724c2933c56673332ee517",
+      "size": 593
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-3fccd0850acca4cb/source_metadata.json": {
+      "sha256": "8738e700f10265ebd781fc30c561dfb29d0cbe6741b119b79ce779504c92fa2d",
+      "size": 1077419
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-3fccd0850acca4cb/source_tokens.parquet": {
+      "sha256": "916d2ad5002316ae101509533ed5aff8652ce8884faa0383c13d9a97f53cb531",
+      "size": 7813
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-3fccd0850acca4cb/technical_qc.csv": {
+      "sha256": "ffdb2c17e9def1028ea5cf5184c9f0a61dff59499d12b5e81f7c57e039dbd576",
+      "size": 2478
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-3fccd0850acca4cb/validation.json": {
+      "sha256": "47ea12986c3567c977e0b3d63f7919b7ebf0d040c379fdbbd6bfc8a2f54ca48b",
+      "size": 1135
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-3fccd0850acca4cb/values.parquet": {
+      "sha256": "e3c62adc10601ff65b241d24e1ad265ab284f318d50ba56e4abb75d7de3a46cc",
+      "size": 7513
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-5ba400e97210ec95/manifest.json": {
+      "sha256": "af88e30b4a59d96a5414d54da2d49f3d01748c3c31d131973152fe3603fa14e2",
+      "size": 1887
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-5ba400e97210ec95/preparation.json": {
+      "sha256": "6c85d0cd4dccfc4de2267a664e5910522401805b5caa943cdaf90a57b7dcaccf",
+      "size": 1309
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-5ba400e97210ec95/samples.json": {
+      "sha256": "ce59e08c49ce0ee2556434ea07c5a63eef599c10b956976586e8295275e8a13e",
+      "size": 597
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-5ba400e97210ec95/source_metadata.json": {
+      "sha256": "091eedc93ede2757a021d69b497d7c1cea226a3dfbb1bdcbdcdab27811941a33",
+      "size": 1891869
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-5ba400e97210ec95/source_tokens.parquet": {
+      "sha256": "fbacb1fc1b7f6334e6b9b178d56a18fcea7cf2b909efafca85ce30c600acb57d",
+      "size": 13681
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-5ba400e97210ec95/technical_qc.csv": {
+      "sha256": "c3a2860a88e1b12d959ea18d5815338d7bd4daf9823c4d30e47ba359b7d5ec8d",
+      "size": 2486
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-5ba400e97210ec95/validation.json": {
+      "sha256": "65075962fe01f2a47c4670d2d0697905ff06b4f6c55bafe44f8c9b2fe65da53c",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-5ba400e97210ec95/values.parquet": {
+      "sha256": "ffe6f79873811fa13278b0b97aff93fc4174338ee127db040df7666705bfc1e5",
+      "size": 13059
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-77b519b9d78f1c04/manifest.json": {
+      "sha256": "b071f8883c2b00fb449507e2d7c38d4ee811520c1e02629f39a504427de820af",
+      "size": 1863
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-77b519b9d78f1c04/preparation.json": {
+      "sha256": "decf69560db5c819d9989a2090452fef13f69806d88bad1158ca7cd88a0396e7",
+      "size": 1284
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-77b519b9d78f1c04/samples.json": {
+      "sha256": "54e63e7d7c36f2710028c568c78c80b9ba88b5b15ed07973eb8cd91cd6986fde",
+      "size": 585
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-77b519b9d78f1c04/source_metadata.json": {
+      "sha256": "d449d56563651ae11add8c308ec77054e5fc3ea3cdc46a0c63fecfe0962b0054",
+      "size": 2030663
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-77b519b9d78f1c04/source_tokens.parquet": {
+      "sha256": "a7b80188371b149f00c57fe4ad094cfb6b84086c6efadf92ec2c299c50394811",
+      "size": 14631
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-77b519b9d78f1c04/technical_qc.csv": {
+      "sha256": "7ba4db7769d70aaf2a26288e42c1d2a892105bedcc3d223d0be4df685b67211b",
+      "size": 2462
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-77b519b9d78f1c04/validation.json": {
+      "sha256": "bfb1d1b0e9f12920add0fb587db5aaa74d778140491cba26b345a8c5ec6cd64c",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-77b519b9d78f1c04/values.parquet": {
+      "sha256": "f2625515a5c2a2799a1e6a9e133487a502da6c8520657e90fd5855069e293689",
+      "size": 13976
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-7d195a6e984ab407/manifest.json": {
+      "sha256": "b1e8e6586353f4f42d816edb66c1628766c8614e8993212fca2e057b7667f465",
+      "size": 1897
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-7d195a6e984ab407/preparation.json": {
+      "sha256": "f89dfad1857ca5ad2024cd3df752884a62eb0266b340fe1103ca5a5e4be6f7f7",
+      "size": 1319
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-7d195a6e984ab407/samples.json": {
+      "sha256": "c4d1abc3e4e5e1fc09e37732941a8b2dad5ebdea57c704df823de4bcf2556e53",
+      "size": 602
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-7d195a6e984ab407/source_metadata.json": {
+      "sha256": "8c25d28c179d4f80822ce8b39786fa1d654228daccf073f7e133e4d419de4226",
+      "size": 2270547
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-7d195a6e984ab407/source_tokens.parquet": {
+      "sha256": "103932588b2a16a6d5987d4b719e7dd99ab8335c525056c370b320b3ca6d5e03",
+      "size": 7985
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-7d195a6e984ab407/technical_qc.csv": {
+      "sha256": "0cc4c8e112f13a04437e568348dd6a1aeaf4aee617323da11d8cacd4fcdaf23a",
+      "size": 2496
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-7d195a6e984ab407/validation.json": {
+      "sha256": "659e3e410e95af318bae811419d01e148275911c64107b81d24617e5461d3079",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-7d195a6e984ab407/values.parquet": {
+      "sha256": "846b1a27cdbcf211f52550b351b04090911cfd4b19ad99673fcabd1fac6161c9",
+      "size": 7698
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-ab87094b496ab66a/manifest.json": {
+      "sha256": "d3a9861fba0b05bd820d28b2d89104940c4e7fda4a6d232d75ccd14cedaba4ff",
+      "size": 1897
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-ab87094b496ab66a/preparation.json": {
+      "sha256": "d8cb7c30c2eafcd553d46cabef828b655116d58a5afebfd277c19ab5e1b21d1e",
+      "size": 1319
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-ab87094b496ab66a/samples.json": {
+      "sha256": "2064190ead03cbd80110cb363b3a48faa50cca4e4c9fade6e6beacb400c1483f",
+      "size": 602
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-ab87094b496ab66a/source_metadata.json": {
+      "sha256": "058feaad350d8eb92695da0bc93bb682a4c7141da0e415ccc58de4402f0ac2d6",
+      "size": 901003
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-ab87094b496ab66a/source_tokens.parquet": {
+      "sha256": "d99bea2685eb617c3233392d86ed2e3d97112ddecd93e94d3f6ddd99be60c84b",
+      "size": 6670
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-ab87094b496ab66a/technical_qc.csv": {
+      "sha256": "34767efc48724884f2a23fe6525947d7bc7d65c8df067fcebfe1193e5b5310aa",
+      "size": 2496
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-ab87094b496ab66a/validation.json": {
+      "sha256": "65d1e34ff13858d24a9f38cd166f70a2bcd6aa219a2f6b6ec6acf8eeb3208d39",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-ab87094b496ab66a/values.parquet": {
+      "sha256": "f9301878d73ad5e9ce9a4d9351fa38dda2006950163fcd717140fd5ab4572ff9",
+      "size": 6444
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-eca6635e6ef6c263/manifest.json": {
+      "sha256": "7601df441dc6c74faf8702aa142108e9acf153a8c30463ae6cb8d56f2ed1afd4",
+      "size": 1863
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-eca6635e6ef6c263/preparation.json": {
+      "sha256": "7a524258a06b5c6a8c8c07ea5f3c181f31ed366983b54354e784aca7e3d070cb",
+      "size": 1283
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-eca6635e6ef6c263/samples.json": {
+      "sha256": "0f9c6b00816431bff58a344cddba3f3d97ec2de8a5f7dcf7d582854d8443e83f",
+      "size": 585
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-eca6635e6ef6c263/source_metadata.json": {
+      "sha256": "ad573bd819dd8b43c3a0c700f25398dbc204c8c991153c3b10da86e9e31d96a7",
+      "size": 2659704
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-eca6635e6ef6c263/source_tokens.parquet": {
+      "sha256": "fb33786b5b8ace8797c845f170bd8be943b8dfdc5b29b08145c2bb5bb30fb053",
+      "size": 8883
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-eca6635e6ef6c263/technical_qc.csv": {
+      "sha256": "f87604714edce91578f348bf434e66e1c5c79b5402e5baa94a01eade4dc7c787",
+      "size": 2462
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-eca6635e6ef6c263/validation.json": {
+      "sha256": "6083e1c9865abdb79f756a512a11f9afd9ea6b9b5a531315c1504003a253aa7d",
+      "size": 1135
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-Intensity-eca6635e6ef6c263/values.parquet": {
+      "sha256": "a8f97a9b12d82f63daf4afb48bb1b2101daf2eafbf4de5b26474e5e8001a95d6",
+      "size": 8555
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-0f161fa666e6437b/manifest.json": {
+      "sha256": "85f7017b98c6790ddd5677594183ddcdf4e5c4d93fc70d23a2e3fae2bcd89876",
+      "size": 1843
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-0f161fa666e6437b/preparation.json": {
+      "sha256": "d02476444cb8d80f82d474a32c9023b40415050cf62f64e5575aed23a71b06c4",
+      "size": 1280
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-0f161fa666e6437b/samples.json": {
+      "sha256": "f2e2803ecf052238f2c7795ac4c7ad6118915e3e9dd38f148b8b528c7a399d38",
+      "size": 565
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-0f161fa666e6437b/source_metadata.json": {
+      "sha256": "9d87a851a9ed1351cd0123eb0ee204dbcc87820c3314947e7e82891b5aaa0ba9",
+      "size": 2659689
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-0f161fa666e6437b/source_tokens.parquet": {
+      "sha256": "597ead9f7da2f2afacaef75860e37d1f1e69fac246d76471190915ba46092266",
+      "size": 8767
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-0f161fa666e6437b/technical_qc.csv": {
+      "sha256": "e959cdf64d2532bfd654ea873ee1679110ee8da81dd9b0050df2e48818dff469",
+      "size": 2439
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-0f161fa666e6437b/validation.json": {
+      "sha256": "72d175aea5a8433f1dd0788c35efa0954a90c9286fb72b7fe06b3a3105079264",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-0f161fa666e6437b/values.parquet": {
+      "sha256": "32c71a1373b4d56098c0fbd77d1f64a2497ea584219358278a8a88152b0d29f2",
+      "size": 8426
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-2143bb4209a982c2/manifest.json": {
+      "sha256": "76122374b8d2692d67a823d65b422e057b0c9a82dd74c5c514a268b2fb7727af",
+      "size": 1877
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-2143bb4209a982c2/preparation.json": {
+      "sha256": "0466e838a4b6035bd2f5ff8c3a641e150fe703da200abee6e0b3828917e96b04",
+      "size": 1313
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-2143bb4209a982c2/samples.json": {
+      "sha256": "4c82ef5955a814b5258f181f295390f1217de2562b69a58202814ed12741e54c",
+      "size": 582
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-2143bb4209a982c2/source_metadata.json": {
+      "sha256": "88265244183ef29384c240588835b56a7373d6aa595834ec3789a569b502a129",
+      "size": 900988
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-2143bb4209a982c2/source_tokens.parquet": {
+      "sha256": "0fd4ec4335d913c35dbbb4faef52554465e8a1fc8c8be43b58f53156f2e047b1",
+      "size": 6640
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-2143bb4209a982c2/technical_qc.csv": {
+      "sha256": "3c9aa7a6441d83d6093ea2b7b795aa8d50e382f0550c0642f894bc9afdd3bd34",
+      "size": 2461
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-2143bb4209a982c2/validation.json": {
+      "sha256": "e1259351b9106994c7ed496e721317cdbd39df4bd3b6cd04443b9cc7930129ef",
+      "size": 1135
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-2143bb4209a982c2/values.parquet": {
+      "sha256": "face355c7675a2add3c8a8060053821256d12f2fda4b26a14f6c89a151c5f489",
+      "size": 6369
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-26ceada87768b974/manifest.json": {
+      "sha256": "d093b836ef0a34f3c812b2de9066c2776edcdbad0e310eba93d53d7d7ed8cc7c",
+      "size": 1867
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-26ceada87768b974/preparation.json": {
+      "sha256": "dade3a1ecf74f244b95d6cf18791f1df5bf6423e4e6d0b1c7d95d3cfacfee7d0",
+      "size": 1303
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-26ceada87768b974/samples.json": {
+      "sha256": "3a30acd76d32a71e312ea775544f167f4202c6f8387d81013a0d306dab1559d3",
+      "size": 577
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-26ceada87768b974/source_metadata.json": {
+      "sha256": "9f9eef74f7197fb56834e1d003ebe4b95d4650d6e070d712a33166f46e387de9",
+      "size": 1891854
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-26ceada87768b974/source_tokens.parquet": {
+      "sha256": "98e6772ccf9cae514e4277e814e32f4a0e75ad3039899f4e6568b49f0a07d3ae",
+      "size": 13490
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-26ceada87768b974/technical_qc.csv": {
+      "sha256": "22426a059a099ea688c0f676b8701f60ce64f342c5db88f7f81985d2b94c2309",
+      "size": 2451
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-26ceada87768b974/validation.json": {
+      "sha256": "131105d71c1d8ca6aad49f2bb2c79363eeb3df013a7080855a0730783b00d759",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-26ceada87768b974/values.parquet": {
+      "sha256": "8eab57e995513260963aa0d5584c03ed378ba18fc411e99cafd9cab32b79940f",
+      "size": 12847
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-27de88622c2c1e48/manifest.json": {
+      "sha256": "d2518c6e3ebf035bbb141b2f61e1241cec97e1c238c520a5751cfe812dc98d48",
+      "size": 1859
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-27de88622c2c1e48/preparation.json": {
+      "sha256": "ada40f76a9ad27b5b63c59c8326deb1a8dcd9dbfe22775f5ab42f3746476242d",
+      "size": 1296
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-27de88622c2c1e48/samples.json": {
+      "sha256": "b7f3b89fd0c0d061c7e9aa99e4d8ec8fc5c732493b2968f3a2f68233d6bfb381",
+      "size": 573
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-27de88622c2c1e48/source_metadata.json": {
+      "sha256": "2f4767d8e87fa31e8955397bf9f5d4aa42e973fe73c90f53e812c3e9ec422b03",
+      "size": 1077404
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-27de88622c2c1e48/source_tokens.parquet": {
+      "sha256": "44a3bdddcfdfa88f83b53e63c1a9fb7a2af23f92d2e6456f738e836ddd7d91ab",
+      "size": 7737
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-27de88622c2c1e48/technical_qc.csv": {
+      "sha256": "6643e97472961d030daed299025c52232a04c95d6b0f6d75dcbfc512a061f323",
+      "size": 2455
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-27de88622c2c1e48/validation.json": {
+      "sha256": "dac3b4de66293132629d6985139599db3c974f3e012e103ba8b5c37d45e850c4",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-27de88622c2c1e48/values.parquet": {
+      "sha256": "0e2ea837f950bd6611b22f6e30a6819c97cd306e3cd81d402bfc7339c2716dfc",
+      "size": 7428
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-6f1ba35f2c1c5439/manifest.json": {
+      "sha256": "01054d25e4408c9ab25e5028ae7d522c867e50f63c594ffdc798686ed45fc644",
+      "size": 1877
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-6f1ba35f2c1c5439/preparation.json": {
+      "sha256": "a01e23ee23c94ff57ad83793bf6b4987f4b24aa1b209a71ec081793145285633",
+      "size": 1314
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-6f1ba35f2c1c5439/samples.json": {
+      "sha256": "41cdaf2219dc8bbb4f081ff6399edbec9693ca2795fe5c99c4ba88f28ea0562e",
+      "size": 582
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-6f1ba35f2c1c5439/source_metadata.json": {
+      "sha256": "23eedbb42b5ea1b08d80c5c49feaf6515b75a8824c84ae89c7883d6231246103",
+      "size": 2270532
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-6f1ba35f2c1c5439/source_tokens.parquet": {
+      "sha256": "14b586bc77e47d5637801691266531d85bfc8d0640aa02fbc17c33da7abc1b15",
+      "size": 7880
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-6f1ba35f2c1c5439/technical_qc.csv": {
+      "sha256": "31748f9488f8821004498e876dc90a56467e388a583e6b6afc76ea0b0c44a1ec",
+      "size": 2461
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-6f1ba35f2c1c5439/validation.json": {
+      "sha256": "ae8a92be6207be4d1cf073bfa8bbf14fddfe7e12147b977845e82f61fd7e4e8e",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-6f1ba35f2c1c5439/values.parquet": {
+      "sha256": "20a25fa5b352508792b289ccc6e32a77e67f87d26e72763bcec942d88618a11c",
+      "size": 7571
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-a91919520e46b55f/manifest.json": {
+      "sha256": "572983de34d59e13969c2b44f8beaa8d06291e50f098eb37d16b4491bb9eb27e",
+      "size": 1843
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-a91919520e46b55f/preparation.json": {
+      "sha256": "0fd6d089c826f7582176c63fcab2caaa9f57194e1f4ede0beafe313b778c0c07",
+      "size": 1280
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-a91919520e46b55f/samples.json": {
+      "sha256": "4fa87721a88b05a834800050733cc825541bd6e5bfeada34d2a28cd5304b1ee0",
+      "size": 565
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-a91919520e46b55f/source_metadata.json": {
+      "sha256": "44b94cfd79f8b79641f59f05755001b31fbb9be648d0291ec7eb00466fd5d27e",
+      "size": 2030648
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-a91919520e46b55f/source_tokens.parquet": {
+      "sha256": "e4f4876171cf0ce4f02df9c14700045b6670fa408961717666b76ec3902797a3",
+      "size": 14465
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-a91919520e46b55f/technical_qc.csv": {
+      "sha256": "35aabe8a577cce9622c517cc8a99c4fbc6c3321825e1ed24db86588d5fc48529",
+      "size": 2432
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-a91919520e46b55f/validation.json": {
+      "sha256": "e56ba27c28ddba2e13c58f41a36044436da55d02ff43d499bbac2598d5ddfb9e",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD031649-iBAQ-a91919520e46b55f/values.parquet": {
+      "sha256": "f7e1aacffa25daee0213e6f476602cae7de005a35036ceee1487b768b1608ff2",
+      "size": 13752
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-66550787c46b6363/manifest.json": {
+      "sha256": "40b18c10add2275503e559e9a59bd8b5286b255a78954a560c33fd27900b7a00",
+      "size": 1887
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-66550787c46b6363/preparation.json": {
+      "sha256": "cd7ae483f8aeb68882b1cb878fa9d747e980606b34a3b34a8406de348a83ee19",
+      "size": 1307
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-66550787c46b6363/samples.json": {
+      "sha256": "9beca10f9700ba7bf379273828499ac4b54664990ea5d84d1032dc7eafeb01fe",
+      "size": 597
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-66550787c46b6363/source_metadata.json": {
+      "sha256": "1558bae0d3fb8f5df2e2611bcb6c9ff697c5868897d8b95616b466d9d52b8af4",
+      "size": 5886491
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-66550787c46b6363/source_tokens.parquet": {
+      "sha256": "de275ae7e296975e3ceb6b7ade82d6840009ccb987dc9a518a3aefff934e5c7e",
+      "size": 17227
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-66550787c46b6363/technical_qc.csv": {
+      "sha256": "7977f041b375c7bed4ebbb9b36fbae76b882f59a00226841a421907358cf22f2",
+      "size": 2486
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-66550787c46b6363/validation.json": {
+      "sha256": "35ca1c60ef1690cc5a3c121a7677782aa54191e630d1ea71b1e2fce2a8c3b39f",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-66550787c46b6363/values.parquet": {
+      "sha256": "41c36df1a002d3f84206afd76da6ef576f0371c5ea7b4d2c9076e1301ef50fd2",
+      "size": 16484
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-91473cff970d2602/manifest.json": {
+      "sha256": "c240387cabfa2b6585ba5c2fef126d7b57b553514bc2d4a74f67e4a2c239820a",
+      "size": 1831
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-91473cff970d2602/preparation.json": {
+      "sha256": "9bd100761cb89dbd963e17ac028e4ea01eca0a7b91476a8012053ddf827085fd",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-91473cff970d2602/samples.json": {
+      "sha256": "293aa81c579ba4293b30d3537dd072c375f98fc6720087620fc0978ec11bf6e5",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-91473cff970d2602/source_metadata.json": {
+      "sha256": "67fbe4137eeaa495d2894ea7adc68bd2fed5e33576ab58492ad331511bf89fca",
+      "size": 6306885
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-91473cff970d2602/source_tokens.parquet": {
+      "sha256": "59db78227ec27a30ab4037e38ad2343973a449f3601abf4e2ef78342c0f64f4e",
+      "size": 18311
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-91473cff970d2602/technical_qc.csv": {
+      "sha256": "0fe0dcb7db39bb160c9f3fe0f3889e88315d709282d5a3a9b298e0c9d8944969",
+      "size": 2430
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-91473cff970d2602/validation.json": {
+      "sha256": "dec49a5c0ac163e70249ac557f10e8c55afd9e751a2172aa1d124d575f3d1380",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-Intensity-91473cff970d2602/values.parquet": {
+      "sha256": "37429bab1bb59a89858e03fa5e2181fb17be72a5d6a83ee01b0763f8b3210498",
+      "size": 17555
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-4dfdb4d903dd78ad/manifest.json": {
+      "sha256": "1960e4ead7bb029e44f19502cf22221f86fb58fd574212279565af7a2f824e9a",
+      "size": 1867
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-4dfdb4d903dd78ad/preparation.json": {
+      "sha256": "2bf7c5cd2880d7ccd283b29934af183f2e69ff10826ca882036916469d506508",
+      "size": 1304
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-4dfdb4d903dd78ad/samples.json": {
+      "sha256": "4dcadc96c12bb2f32a9ec4bef8133d47d66b19f9b8fff6c27d400488bc256213",
+      "size": 577
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-4dfdb4d903dd78ad/source_metadata.json": {
+      "sha256": "0fcdf3415f364916dcdfa8a01a6df2e0ec36d4f45cf37053e97f0bda47885673",
+      "size": 5886476
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-4dfdb4d903dd78ad/source_tokens.parquet": {
+      "sha256": "67b1a4c8436ae9aebe7571b4046e590bcf5971311084b48c38096ae269be06fa",
+      "size": 16950
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-4dfdb4d903dd78ad/technical_qc.csv": {
+      "sha256": "1b277dbad493c53269fb74dc5c54714f2c381bfc329478c6e0b5fa98685717d6",
+      "size": 2451
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-4dfdb4d903dd78ad/validation.json": {
+      "sha256": "be68078a84dbbf3c2590656f41c0158d7c7dd5ad0dfc63c82124510f2cd5da85",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-4dfdb4d903dd78ad/values.parquet": {
+      "sha256": "5dea90431ce989f3d59d3813e433c4ca1917d6126c3021ae75cf3de976f111e7",
+      "size": 16108
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-e6c89e58456f85d8/manifest.json": {
+      "sha256": "e15befd533498198aaf417614b2e62d55ab04b59ce3ce26dbe0c284c84595eb5",
+      "size": 1811
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-e6c89e58456f85d8/preparation.json": {
+      "sha256": "95f8caa69a640272878a8d411745f2b23d6d0296923ceeb55cc099ac76036fec",
+      "size": 1248
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-e6c89e58456f85d8/samples.json": {
+      "sha256": "c3c92f9faa84c382c2b165cbb94f0d2f489de346888c156f4df4333a0d348d3d",
+      "size": 549
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-e6c89e58456f85d8/source_metadata.json": {
+      "sha256": "6002364ce1330b3a0e2fd58bc42d02883aeb8d4da8888c844a3bf7efbdf0db49",
+      "size": 6306870
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-e6c89e58456f85d8/source_tokens.parquet": {
+      "sha256": "9f6449515581db25121a83c6fe85c38ab9aa1b8ce5cc7b7ebef840c2981c4ed7",
+      "size": 18067
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-e6c89e58456f85d8/technical_qc.csv": {
+      "sha256": "83eb50414c5b5f0a526317e6e4659bbee6e6153f13fd0d81e9231bede6fec404",
+      "size": 2407
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-e6c89e58456f85d8/validation.json": {
+      "sha256": "da55188d4d3aef7d6301b98b2ae47f4dc484d7cff856419ce003fa48e09fed3f",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD035654-iBAQ-e6c89e58456f85d8/values.parquet": {
+      "sha256": "b000dcc390e9180d9e05495f9aa4c6c9679d87cd11ca58233d3bab2d2dc7c7d6",
+      "size": 17148
+    },
+    "deposited_values/protein_reported_quantities/PXD039148-Intensity-437822882e5b2ac6/manifest.json": {
+      "sha256": "1ca5c5783abfaf20cd3a6910c68cbb8ac5ce1785c9ada559a495a6dff9ef86c8",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD039148-Intensity-437822882e5b2ac6/preparation.json": {
+      "sha256": "066602d6b8ac7e8a7c00d526fb40b60906637fdb74d2512f4007ae48377e20e9",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD039148-Intensity-437822882e5b2ac6/samples.json": {
+      "sha256": "ed0f3b3f471ff103df55f15b0089a2025f0f2a475f9101b3485eadf0edffbc05",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD039148-Intensity-437822882e5b2ac6/source_metadata.json": {
+      "sha256": "cb49b36745bd4e69bdeebf9fe861f7a7aec9f4a028af270bdcde0fdb818227d7",
+      "size": 16443435
+    },
+    "deposited_values/protein_reported_quantities/PXD039148-Intensity-437822882e5b2ac6/source_tokens.parquet": {
+      "sha256": "fbfdd5d1609b5f1ee2697863a7b473bea7985fabb05947a582de229e18447896",
+      "size": 106791
+    },
+    "deposited_values/protein_reported_quantities/PXD039148-Intensity-437822882e5b2ac6/technical_qc.csv": {
+      "sha256": "6b79b34c207fbf992a6eb81717dfbe5efca5bc09d1b19132858627a14032c4ff",
+      "size": 2433
+    },
+    "deposited_values/protein_reported_quantities/PXD039148-Intensity-437822882e5b2ac6/validation.json": {
+      "sha256": "7821aeb76540a558b0c7f579ed01adfe4e575cc4cc679c7c7175c858cc3143ca",
+      "size": 1137
+    },
+    "deposited_values/protein_reported_quantities/PXD039148-Intensity-437822882e5b2ac6/values.parquet": {
+      "sha256": "842cba20db0494cf95280f996962998e2081be98cf2890590a70a2d3e28d097c",
+      "size": 102948
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-Intensity-e95a73d8e5d45dd0/manifest.json": {
+      "sha256": "8cae1f87d47da1ad87aadec1a190551903be2b6466d2402f29fddf18a8d2aa6c",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-Intensity-e95a73d8e5d45dd0/preparation.json": {
+      "sha256": "579463251de9f84155d3f3e7db240265cbf7106a4bcdc4a7d4f3a680f5040122",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-Intensity-e95a73d8e5d45dd0/samples.json": {
+      "sha256": "598ad5c1db24875b5dee4da6e51a36b91d86d35219c166a6728dfda91a34b4a8",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-Intensity-e95a73d8e5d45dd0/source_metadata.json": {
+      "sha256": "ea6fcbb0b1e495832aa04593782416d635efc15008701af9d41713b676c84e59",
+      "size": 26618330
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-Intensity-e95a73d8e5d45dd0/source_tokens.parquet": {
+      "sha256": "dedfede3fe54b44229ea6eb0194d8b21d84dacb68a3eb4a3f3b980157c790f65",
+      "size": 67926
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-Intensity-e95a73d8e5d45dd0/technical_qc.csv": {
+      "sha256": "69e2daa139e3504812f6c0de6a5d635bb1bf1cb5ff2bf5ec282e91d44e4ac0c4",
+      "size": 2433
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-Intensity-e95a73d8e5d45dd0/validation.json": {
+      "sha256": "c76995da92e7158e7f78df10da867b6ed8930262f1e0b63ffe48536d2b0ba5f2",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-Intensity-e95a73d8e5d45dd0/values.parquet": {
+      "sha256": "656aa3c7667d7557a0a7e30494dbf724dd64955d2a15adfdf9293bbe02283012",
+      "size": 65960
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-iBAQ-6fb3d5f8231f20e7/manifest.json": {
+      "sha256": "a64f2a1dd5f10cf2b9cd0a0c2243b8e0e6aceebd9d9b483400a471afd093bbf1",
+      "size": 1812
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-iBAQ-6fb3d5f8231f20e7/preparation.json": {
+      "sha256": "77ae5c2afb8bd8363e221e7a960ca9b50a27dae56a95899394678012be47208c",
+      "size": 1248
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-iBAQ-6fb3d5f8231f20e7/samples.json": {
+      "sha256": "0bf8b8ddf85b58077a031c2cc7e61f70d75ea07222626c436876f3b4928fb9f4",
+      "size": 549
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-iBAQ-6fb3d5f8231f20e7/source_metadata.json": {
+      "sha256": "c6cd0e9ed4b87d31a71f800914d99e60bbb64136c7ad9307ca37ae45a9bfcc09",
+      "size": 26618315
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-iBAQ-6fb3d5f8231f20e7/source_tokens.parquet": {
+      "sha256": "cc2afb689b552b09f0935980461dfcf781ef7408b4afb9d560919d155721760e",
+      "size": 67271
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-iBAQ-6fb3d5f8231f20e7/technical_qc.csv": {
+      "sha256": "7fe01878421cdb6057c06a443b8259b116227dac5f8869353029d2bd66f62eee",
+      "size": 2411
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-iBAQ-6fb3d5f8231f20e7/validation.json": {
+      "sha256": "5155b44f493a5a9bf3f3b1272e6be237aaa09bad8a8c825dcaf6941bb383e8b8",
+      "size": 1139
+    },
+    "deposited_values/protein_reported_quantities/PXD042078-iBAQ-6fb3d5f8231f20e7/values.parquet": {
+      "sha256": "cbbd026b5f8f80b1e43d8feb6cf68beb299e749546bd34f653cc6770f6f0c881",
+      "size": 64665
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity-2a199b0f88b2ccff/manifest.json": {
+      "sha256": "a16089ac65d6cad40f91f1bec4dc5a5f8950d6098bd042b9111fdc404c705daf",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity-2a199b0f88b2ccff/preparation.json": {
+      "sha256": "43578e3428876745302c0ed9e97d1c99b71b77347b1c730da2ca1f4818147e73",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity-2a199b0f88b2ccff/samples.json": {
+      "sha256": "735877360a991acde1368817ea9200567a42fec5ace4b641b566b94a03ba464a",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity-2a199b0f88b2ccff/source_metadata.json": {
+      "sha256": "dd46cba8d5d4e8d6eed4fd851790ef559fcbe84177fbcadd80fe61f32d6dc8b2",
+      "size": 3320764
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity-2a199b0f88b2ccff/source_tokens.parquet": {
+      "sha256": "01a1e6900d2e33ba11eb3a23f286711bcb1d50cdc2eacad8e57f5683dcafc5a9",
+      "size": 82770
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity-2a199b0f88b2ccff/technical_qc.csv": {
+      "sha256": "a8c679cf6d986ccac71b74648201a77eb46cf07583131c753fae2609c63cd22b",
+      "size": 2434
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity-2a199b0f88b2ccff/validation.json": {
+      "sha256": "2ce011c09370cf909100ae317724deebcb94d91c10aeca5e0506b78c451cafbc",
+      "size": 1137
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity-2a199b0f88b2ccff/values.parquet": {
+      "sha256": "839076bea3c5df495af65f2c4a076a063df4e9b9e3170ac70a7c862f583f70a8",
+      "size": 82000
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_H-6b166762a7bc2254/manifest.json": {
+      "sha256": "efb812189ec6c3467b14bdb14dfc3e8c57ffb2943d48acbd8d4317c4b0d127af",
+      "size": 1840
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_H-6b166762a7bc2254/preparation.json": {
+      "sha256": "bb9b30822c318c0c77f8dae3d3f85ab22e412498389de21268dd39715e9098e7",
+      "size": 1255
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_H-6b166762a7bc2254/samples.json": {
+      "sha256": "99dcd5ae0c5c0c65b77bed57fc2a9a36a77de953acd618dec3550a3f5a7eabf2",
+      "size": 579
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_H-6b166762a7bc2254/source_metadata.json": {
+      "sha256": "0fa2b61b81a3e4224e15264406feb1257e80c11ab3c2cb754011752353cc7210",
+      "size": 3320771
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_H-6b166762a7bc2254/source_tokens.parquet": {
+      "sha256": "c25ad1546cc47cb6ce38e6f0c015596becb7778241b49b60a2d903ef0939bb19",
+      "size": 82694
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_H-6b166762a7bc2254/technical_qc.csv": {
+      "sha256": "a20b7fa2d3ee1e54994c972782a8ff333c2817e1b30c52d675a4d61ee2fce4e0",
+      "size": 2450
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_H-6b166762a7bc2254/validation.json": {
+      "sha256": "83e109d5976c42b8a4acb720b9114c7e1614fe03d0c6b6fe6deaf8fbc27f6ec0",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_H-6b166762a7bc2254/values.parquet": {
+      "sha256": "55a196476b7c6dab89f9a29df3657162b06d2631cb3957c9a67db07bdcd5611f",
+      "size": 81943
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_L-3805f2b9b57c045e/manifest.json": {
+      "sha256": "9cbd617972f301ec5d2ee223b9483b58734f74f6f93ce2af7b7c68d697ca2cdc",
+      "size": 1840
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_L-3805f2b9b57c045e/preparation.json": {
+      "sha256": "1f30c2764a31589b56092e799e9f9d2e3564cbee1d959f332c941c051a2da48e",
+      "size": 1255
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_L-3805f2b9b57c045e/samples.json": {
+      "sha256": "999763ec092905f5da6d619064118a1b833e7834f917541cf4e4616dc14a09c0",
+      "size": 579
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_L-3805f2b9b57c045e/source_metadata.json": {
+      "sha256": "9118abe41c0a7a4996d11b8031103cc420ef20a44e120ec04d1b16ed9212e4a0",
+      "size": 3320771
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_L-3805f2b9b57c045e/source_tokens.parquet": {
+      "sha256": "ca65025918dc33856beaa59e509cd64d47c1ca1001379fa0fa31ec780813e6a0",
+      "size": 82672
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_L-3805f2b9b57c045e/technical_qc.csv": {
+      "sha256": "c10f023d5b4e930fe3ba0d229223008ef6eeac15c821ca0265dfce221f0488ee",
+      "size": 2450
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_L-3805f2b9b57c045e/validation.json": {
+      "sha256": "4dd5934c2c30a84ce8245794351cc842eb11212528cbd1bdfef1146156442f2d",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Intensity_L-3805f2b9b57c045e/values.parquet": {
+      "sha256": "7df4276ab1f9a55715316ee36b179cc50a7543e46c37b8b8498ca350af310f89",
+      "size": 81930
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L-70d0aa84e9209dbe/manifest.json": {
+      "sha256": "3236325e67ef09a91580bb65bdcb63ba630fd7b211253950be8c33a3923b6767",
+      "size": 1832
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L-70d0aa84e9209dbe/preparation.json": {
+      "sha256": "53d81d6882bc7a95911bb29eef995407dd4869c8611439ff4e8bd9d9d49cdf30",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L-70d0aa84e9209dbe/samples.json": {
+      "sha256": "067ea7e5994e78ad1bbc2ba808b86dc269d70bda92e9ba48e1e36d63caa17db9",
+      "size": 563
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L-70d0aa84e9209dbe/source_metadata.json": {
+      "sha256": "601eb2d548bfc2aed94b6663772d113115cb3a13a3b2db484acec22ed2be7c48",
+      "size": 3320761
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L-70d0aa84e9209dbe/source_tokens.parquet": {
+      "sha256": "2b7cdff4bdadd741d156a4fe724a3da70f26ae7fb1d04a312679d526ae8065f6",
+      "size": 81701
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L-70d0aa84e9209dbe/technical_qc.csv": {
+      "sha256": "8d0315008cfef4c863cba6048305230006ade2b08f3ef7d57fb851125ea20fda",
+      "size": 2441
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L-70d0aa84e9209dbe/validation.json": {
+      "sha256": "ec8ce0105d3d8de657382167f05cf753286e89591849a953dfc57682fa117a6f",
+      "size": 1141
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L-70d0aa84e9209dbe/values.parquet": {
+      "sha256": "1fa07dc48039bec3cb668f9a4629885e58d1ed7b96d93e0ef59aa818104f6b7b",
+      "size": 82833
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L_normalized-9e1cbb5ce1bf5602/manifest.json": {
+      "sha256": "fb6bcf7c2ea08d9e1c18f1bd40f79333ad1a0a2f33ce6fc58badf7e2be65d800",
+      "size": 1876
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L_normalized-9e1cbb5ce1bf5602/preparation.json": {
+      "sha256": "f469181c23c1c67e5fa151102f77e8da10de3e2809b9b94a502d40cf7ed7456c",
+      "size": 1264
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L_normalized-9e1cbb5ce1bf5602/samples.json": {
+      "sha256": "968de27fe9ce3bdc3ea0aabf11228c22de114e473e9c5c4a5f02a217009d9012",
+      "size": 607
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L_normalized-9e1cbb5ce1bf5602/source_metadata.json": {
+      "sha256": "c34aa46081566ac441765b65ea35ff6e561482390faaaa34e3d9e57c11f82e64",
+      "size": 3320794
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L_normalized-9e1cbb5ce1bf5602/source_tokens.parquet": {
+      "sha256": "5197b739f3fb51e97162c9cbabecb522b0e4e2875d4607794fdbf1b61514646a",
+      "size": 81748
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L_normalized-9e1cbb5ce1bf5602/technical_qc.csv": {
+      "sha256": "beecdd9754a46c0f17e1d4f1ca652bdddc2ea0c93194f35fbb46d234d271a3c8",
+      "size": 2518
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L_normalized-9e1cbb5ce1bf5602/validation.json": {
+      "sha256": "574753b9e81d13fe9584ebe3eb9dbd2de294a7e01b2f6a7e8d8ff34a559cfe91",
+      "size": 1139
+    },
+    "deposited_values/protein_reported_quantities/PXD042937-Ratio_H_L_normalized-9e1cbb5ce1bf5602/values.parquet": {
+      "sha256": "513d200e839365e627ccae75639a984dbbb7a5e5a5ac6a614ea8915567ae2ff4",
+      "size": 82923
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-Intensity-4faab4fa4d31c966/manifest.json": {
+      "sha256": "e867769bfaf84432abe101b2ce55eb61128453398298f91c4a36c3f562a5b945",
+      "size": 1828
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-Intensity-4faab4fa4d31c966/preparation.json": {
+      "sha256": "f61cffbaa3387874d62d58e4eea35f8022d12db878233a52001b599378f86b04",
+      "size": 1249
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-Intensity-4faab4fa4d31c966/samples.json": {
+      "sha256": "6bd3fa960540f5639bb347be667a634ec387f15f23f52110cafbcacc48432039",
+      "size": 567
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-Intensity-4faab4fa4d31c966/source_metadata.json": {
+      "sha256": "dddd41e3013f4519dc6e5c29c0e7fbe365aaed59df57bf9c8aa87bc60a1b6e52",
+      "size": 5789675
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-Intensity-4faab4fa4d31c966/source_tokens.parquet": {
+      "sha256": "3d12ef2af0351c35d4f30838d27450daaa89a96cd45d475cdac0b91825166835",
+      "size": 30436
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-Intensity-4faab4fa4d31c966/technical_qc.csv": {
+      "sha256": "ee268e83a734d331f7f6985b6515131a1d2c8ab9a37196345e9902c954d52dfa",
+      "size": 2429
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-Intensity-4faab4fa4d31c966/validation.json": {
+      "sha256": "3908b0fb8da3593e5f4d17a2b723add97bd94c6441bae50617c57c92c0c90eb0",
+      "size": 1137
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-Intensity-4faab4fa4d31c966/values.parquet": {
+      "sha256": "b49cdd28a5d4a2cb9b401ae2f4c69c339e7932429145121e62155669d6255cf2",
+      "size": 29246
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-iBAQ-ecfeb6a1329169f4/manifest.json": {
+      "sha256": "1e6383249bd855f074adc9e19a4549b4d3ef4d775926b212004f9038fe5cefe5",
+      "size": 1808
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-iBAQ-ecfeb6a1329169f4/preparation.json": {
+      "sha256": "2f876d061b88c4bab391fdeea27db35e25098b6ae47c879a8535ab7d275d5a99",
+      "size": 1243
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-iBAQ-ecfeb6a1329169f4/samples.json": {
+      "sha256": "6f731d472b524b28c63840db3e96ee365fd3da24603dc57deef3f5cf29a54742",
+      "size": 547
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-iBAQ-ecfeb6a1329169f4/source_metadata.json": {
+      "sha256": "f1aca92661b4bed34d54a9af4e26b56ac5f6b05da436d8f7bb91bcb6245dd60d",
+      "size": 5789660
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-iBAQ-ecfeb6a1329169f4/source_tokens.parquet": {
+      "sha256": "a1e34a3f215c6c372f8f057c3cb880ca02d30683d341b7c70bd7787d3180d9b2",
+      "size": 30064
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-iBAQ-ecfeb6a1329169f4/technical_qc.csv": {
+      "sha256": "ef16185bad1749e7b163b71eff5bdd6c2ef61c90a1ec40191cfde99b17c192c3",
+      "size": 2406
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-iBAQ-ecfeb6a1329169f4/validation.json": {
+      "sha256": "e6573e6aa1ba36824cb9dc0628a85ab1eb584beeaf9ef807aeaf3ab14f04f1b2",
+      "size": 1139
+    },
+    "deposited_values/protein_reported_quantities/PXD047027-iBAQ-ecfeb6a1329169f4/values.parquet": {
+      "sha256": "ceece9496ac6ca8bb5f9ff85a56e3dae1f3aa66ef05a4d2a6a9930f04b884117",
+      "size": 28463
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-Intensity-b49ffb87b674c82a/manifest.json": {
+      "sha256": "7f7ce0ea0d35d090f72afe0a1ce9006dfe08e3e026a7fe894513a9fb5f071452",
+      "size": 1831
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-Intensity-b49ffb87b674c82a/preparation.json": {
+      "sha256": "a4f89da1c72184eb1f92876faec1182188d269bde0e809752ba2e5f3b1d7e0be",
+      "size": 1253
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-Intensity-b49ffb87b674c82a/samples.json": {
+      "sha256": "19d4aece3ce89d70f51456daef2e571c55a339a813b03f3b927e612e30d46cf1",
+      "size": 569
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-Intensity-b49ffb87b674c82a/source_metadata.json": {
+      "sha256": "86b06de0d9985ffaf500fed439e30e6bb40c5aafa4bd594c5381fc7e74b6d2fe",
+      "size": 1785418
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-Intensity-b49ffb87b674c82a/source_tokens.parquet": {
+      "sha256": "f7b06dac83fb830124d70bd30cb4582b7d2e9222a062ea6497031e740953b780",
+      "size": 8114
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-Intensity-b49ffb87b674c82a/technical_qc.csv": {
+      "sha256": "6371a3c82f8b8b914b443b3f382357a3251ca54e059b65dc8293e661365fedc4",
+      "size": 2430
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-Intensity-b49ffb87b674c82a/validation.json": {
+      "sha256": "d5e3ea6621bb3fe22673822b7d5a822c84ffd823154d33717677841799daa331",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-Intensity-b49ffb87b674c82a/values.parquet": {
+      "sha256": "866c1b361520333992f941fe0c913179e5568d378af2c4d29d992ab73006ccb8",
+      "size": 7850
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-iBAQ-b480d574f143fcef/manifest.json": {
+      "sha256": "6dd4ee4d1e68d176e93ac484116d2ab36dd3565c140e1b0233e9b45d961797f1",
+      "size": 1811
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-iBAQ-b480d574f143fcef/preparation.json": {
+      "sha256": "36c94c093700ff798dcab5ba75e0542c5affea24e93434eb0b0982be22f65ef9",
+      "size": 1248
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-iBAQ-b480d574f143fcef/samples.json": {
+      "sha256": "cd6894de30b4f80a9e579f48d3f544c7337784c273d0be9489daca5780ac6ce1",
+      "size": 549
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-iBAQ-b480d574f143fcef/source_metadata.json": {
+      "sha256": "e41036e5ba60f09e7cf6910e75c49941173e760c850854368a66e367760c4fb9",
+      "size": 1785403
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-iBAQ-b480d574f143fcef/source_tokens.parquet": {
+      "sha256": "e797f190bed88aa3ff80b4a4dbe0bb890a7a4632bafe083474b6c5ef0bcd5f33",
+      "size": 8017
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-iBAQ-b480d574f143fcef/technical_qc.csv": {
+      "sha256": "8a50ecf492eb366c9277e2cf5226a8fce01bfb19ee2a11c494b6b6d8b477a31e",
+      "size": 2406
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-iBAQ-b480d574f143fcef/validation.json": {
+      "sha256": "eb00ca08b1a756826cc9131077afe1cb385b0b0575d33701a6390490fd771422",
+      "size": 1135
+    },
+    "deposited_values/protein_reported_quantities/PXD053452-iBAQ-b480d574f143fcef/values.parquet": {
+      "sha256": "a5017cb02066b68ed634f07cb4782b45ce259212e015c3064e7e8d0187547272",
+      "size": 7705
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-Intensity-959270ce8f6f42aa/manifest.json": {
+      "sha256": "6707e941f117c487ef8fd1b50ed47a83cfdcc50d025c9fabb5a5d189e13444b3",
+      "size": 1828
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-Intensity-959270ce8f6f42aa/preparation.json": {
+      "sha256": "7d6a62e8987ca16c39d39bfc216e5ee99ab31d4d0ddc90cbd0b550b500ce7e90",
+      "size": 1249
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-Intensity-959270ce8f6f42aa/samples.json": {
+      "sha256": "c0d08b4408070d189959f9222037a3aec6ca596bdf79fcfc07756be8d617a783",
+      "size": 567
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-Intensity-959270ce8f6f42aa/source_metadata.json": {
+      "sha256": "6bf2d7ebaa1b0ab02281ed6168fe09d161dc4831028678065a9c595faaef3842",
+      "size": 7142235
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-Intensity-959270ce8f6f42aa/source_tokens.parquet": {
+      "sha256": "b5269c6a4843b4a087cc343d37c4723b58b424334e3ca34c1b0fb0f0843157e3",
+      "size": 33475
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-Intensity-959270ce8f6f42aa/technical_qc.csv": {
+      "sha256": "bc003a98e6f974771846eace30db5564baff22f2df57799120e434efb42fac2c",
+      "size": 2430
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-Intensity-959270ce8f6f42aa/validation.json": {
+      "sha256": "9bd8a14bd97fbd2a5c03b926dbb97715ea4336d1472fdd1b1b3a54a7f3a28384",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-Intensity-959270ce8f6f42aa/values.parquet": {
+      "sha256": "d56c601a435a6760105fc2507239b121e356cc217c65dc39ea0e5b147e5a8ffa",
+      "size": 31990
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-iBAQ-eba1973d5c06c3d5/manifest.json": {
+      "sha256": "6216a634df985622c2e1a2a86bb547349b4553ef18c00dfe50c393d6cf9dcf1c",
+      "size": 1808
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-iBAQ-eba1973d5c06c3d5/preparation.json": {
+      "sha256": "d5acd3ce80be79f7e41322c96b5d034ba25bacd61059a2bc26c1e5ca3523f71a",
+      "size": 1244
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-iBAQ-eba1973d5c06c3d5/samples.json": {
+      "sha256": "1f9720d67c1ca27f4ceef58acf3edb41254a40bda98f6e2d073c10012cbb1206",
+      "size": 547
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-iBAQ-eba1973d5c06c3d5/source_metadata.json": {
+      "sha256": "c2ab8c5ae9fda30f27f065ab5f2e4eb10c834d376f28f7e7fac733d10a8ce722",
+      "size": 7142220
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-iBAQ-eba1973d5c06c3d5/source_tokens.parquet": {
+      "sha256": "af7c14e6d7ca7d589c4db29b07781e6c9b7f50d909e9b92041791b3c4c1a09a2",
+      "size": 32919
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-iBAQ-eba1973d5c06c3d5/technical_qc.csv": {
+      "sha256": "7b10977e39c74e27e5329e045b0e3ef8537a59b26661937e200a9d1eb3958444",
+      "size": 2408
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-iBAQ-eba1973d5c06c3d5/validation.json": {
+      "sha256": "65fcd6152bde7247cd5babe3eb59fff940571e28d49ae5179d46af2744c59c69",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD053932-iBAQ-eba1973d5c06c3d5/values.parquet": {
+      "sha256": "5b4c8bf89b217f8baa490627a7f615cf5706f4ed48f7c1ee2ae9d5783c86db52",
+      "size": 31392
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-859fa9a825306f04/manifest.json": {
+      "sha256": "a13015768ea843e074b0215d40a3e6853a04dead63adecc7e98d839d5271700b",
+      "size": 1849
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-859fa9a825306f04/preparation.json": {
+      "sha256": "6c8aa355027649e504f72f28c4ae14ec2083d12652735bc3994be701d6ace5c2",
+      "size": 1271
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-859fa9a825306f04/samples.json": {
+      "sha256": "27a6320bdc35b223b09d9f899aea3683c0f5f99e3dd3e62d3786b5b84dc1a21d",
+      "size": 578
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-859fa9a825306f04/source_metadata.json": {
+      "sha256": "16870d857b70965fde2d5f069a60daeff2687c7b296a16aac6a49e5faf0494f9",
+      "size": 4034651
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-859fa9a825306f04/source_tokens.parquet": {
+      "sha256": "8171a2a41c19694b8e461d91f38dcaf9ef75f249e5a97a70896ef254154ba564",
+      "size": 16133
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-859fa9a825306f04/technical_qc.csv": {
+      "sha256": "1e72e1d1348c2a77a6919d603429a7d3748cea34cd6e5ca01661799fde37ac27",
+      "size": 2448
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-859fa9a825306f04/validation.json": {
+      "sha256": "45f13c57d1059d837b0225bcd76029963186b48be1fb8c395d2a4a06c425c497",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-859fa9a825306f04/values.parquet": {
+      "sha256": "3d6a77ecec4b8c37b55833f165b54951ca1987e41b0c97488bf07e8b736a8b6c",
+      "size": 15325
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-e9db051292fcd2d3/manifest.json": {
+      "sha256": "8c33c039869905e8177e49d53742b4199341320643edf3efc8288025df73c072",
+      "size": 1847
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-e9db051292fcd2d3/preparation.json": {
+      "sha256": "5bdafb0c7dc735f677d04ab0180bc456c35d31e801dffb53c6cdb7fb49f3934a",
+      "size": 1269
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-e9db051292fcd2d3/samples.json": {
+      "sha256": "151b836de03762757cf4f45b59c5b019c258b653005763394a3c54c9cf39c860",
+      "size": 577
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-e9db051292fcd2d3/source_metadata.json": {
+      "sha256": "838f0d6d1d5cd43110a5db357cfd71df546c9f9ece7d2999b36f6d0ffdb76b35",
+      "size": 4222149
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-e9db051292fcd2d3/source_tokens.parquet": {
+      "sha256": "c825c1290a757172f375c129cee994a682bba639c10a3faadce892a6ccc84329",
+      "size": 18718
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-e9db051292fcd2d3/technical_qc.csv": {
+      "sha256": "d008891ddb988c5f00aca21d9f5b8013c93f3640f9a879a8de47fc0d2896c1be",
+      "size": 2446
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-e9db051292fcd2d3/validation.json": {
+      "sha256": "d952ea2cffddf0d5299238418da9d88206e04297b50027fd0373a8348e2c86ee",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-Intensity-e9db051292fcd2d3/values.parquet": {
+      "sha256": "fc5e1ee5794a88b0521d04129d9b8e3e8b3a56d29d9a08d87d6ea7cb72bf14ba",
+      "size": 17957
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-258cf3372afa69d5/manifest.json": {
+      "sha256": "b14de230bb5000a8ca4e9d26110899a2fc5d884c48875dbdc5deb066bcc47a4c",
+      "size": 1827
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-258cf3372afa69d5/preparation.json": {
+      "sha256": "ca897f1536a1d7e1bb70f0e85e3c59597929f43ee4067e9559cee5a6c294f621",
+      "size": 1264
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-258cf3372afa69d5/samples.json": {
+      "sha256": "0f2f694a90786f2d1625814ef242e8179267765f2d9a8b76bfff4ab0ac23e5a7",
+      "size": 557
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-258cf3372afa69d5/source_metadata.json": {
+      "sha256": "eec95ef4035d0813a6e50991cb1045e8ecc3fb0b13e2820477d81a96af91705f",
+      "size": 4222134
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-258cf3372afa69d5/source_tokens.parquet": {
+      "sha256": "52b155f5514d40c4401d04a0c8e60369cf73e2bb7d8bb6908e21f69613709a3f",
+      "size": 18472
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-258cf3372afa69d5/technical_qc.csv": {
+      "sha256": "e1b1c0e8885911967e78b9641b634404f639da478594f25b2fc0f281b4b724dd",
+      "size": 2423
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-258cf3372afa69d5/validation.json": {
+      "sha256": "6be8ae1d4f6926dde0d45dd173b44dbf64eb5c5d8a76c83e1dab53088bba2993",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-258cf3372afa69d5/values.parquet": {
+      "sha256": "c78650d693fdeb64a23715d4b8606aecc11a6efe1653b1db49cb0c39d8ce9c28",
+      "size": 17557
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-ebbbf78733d60014/manifest.json": {
+      "sha256": "c85928fb3fec9154369f5393f80d43919fa8f87dfae5cdabc66d885d7aa732bd",
+      "size": 1829
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-ebbbf78733d60014/preparation.json": {
+      "sha256": "4e0ed611098ecb52846b924ee9be8e3e5261f20b397d463f145457b821a1b8c7",
+      "size": 1266
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-ebbbf78733d60014/samples.json": {
+      "sha256": "020e0b1f14c77799e903e30f79d0951ee16d39b3c68a50609cedbc560fff5454",
+      "size": 558
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-ebbbf78733d60014/source_metadata.json": {
+      "sha256": "567eef0d1c686dbeec5b67b06142bad9c1148928b3b6c4bc9c1abd32f2354da1",
+      "size": 4034636
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-ebbbf78733d60014/source_tokens.parquet": {
+      "sha256": "05c12936430332ae4079325364cc9472499b0424391b3a1ba889a969e93bfd74",
+      "size": 15933
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-ebbbf78733d60014/technical_qc.csv": {
+      "sha256": "fb41026dec19fe4a7a28391c4e5076e0a8c156c244f52a55c227b3bb22c7ce31",
+      "size": 2425
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-ebbbf78733d60014/validation.json": {
+      "sha256": "d30c4964ed947624031ec50a0e8ade78b9886684070f649e546187e8a6bc8abd",
+      "size": 1135
+    },
+    "deposited_values/protein_reported_quantities/PXD057662-iBAQ-ebbbf78733d60014/values.parquet": {
+      "sha256": "1876873f1f6c6930b51889c3a490daa66b062476563ae676cfd42e6d20d32563",
+      "size": 14976
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1749c1586e664d47/manifest.json": {
+      "sha256": "a7355f8e4908d161e3c9f8f56a636b383ac8cdb23190bcc62713434bc464e587",
+      "size": 1880
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1749c1586e664d47/preparation.json": {
+      "sha256": "7b4f4e7012d6475cf2a1d2546c3b0fcb5a415ed9dc964a884805aa962a35e195",
+      "size": 1300
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1749c1586e664d47/samples.json": {
+      "sha256": "1e53db2ae2075a5c25404d0d0d9b82b3e2d5ad351a65e39f7bf639b78620e86e",
+      "size": 593
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1749c1586e664d47/source_metadata.json": {
+      "sha256": "039f592302d1bbf1b2eb43d9d98ebf3be50760148ae457972c020654f2f016e2",
+      "size": 2183391
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1749c1586e664d47/source_tokens.parquet": {
+      "sha256": "2673a0eb2c89e31287b4dbc4a84a1667bc982b7660224e7611644106b9a41067",
+      "size": 25775
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1749c1586e664d47/technical_qc.csv": {
+      "sha256": "58cdf6cf5bd02c20fde8b0d8dff2dd7942012afb4dab87a544a0634f3c491cf4",
+      "size": 2481
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1749c1586e664d47/validation.json": {
+      "sha256": "a16c65fa1c27bb70adcb432a833b98101fd37047148bd8a591b6960071c27684",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1749c1586e664d47/values.parquet": {
+      "sha256": "3ba7d887ca2b8fe0db015633897df33930bde10b541cea40822bcf80be457d61",
+      "size": 24450
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1f14cdde800560da/manifest.json": {
+      "sha256": "fd2fe84025182125d485e14bc5f403fe192d6a60117506b0d7756537fbf88a3f",
+      "size": 1869
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1f14cdde800560da/preparation.json": {
+      "sha256": "68ca07836e28fe81fffb3b9d0bfb3efe1365b61f957a8a91eb0f7609c3a9f8d5",
+      "size": 1291
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1f14cdde800560da/samples.json": {
+      "sha256": "8029cf37e1df1f18d8ba2fb9fd1df35c0c8454f8f9def07a5e8babb8d5c67c79",
+      "size": 588
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1f14cdde800560da/source_metadata.json": {
+      "sha256": "ff102f99e7b1fb09af6943cb05fb26ddc6c4b628f6a162da8f3946fc0d219e1e",
+      "size": 231168
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1f14cdde800560da/source_tokens.parquet": {
+      "sha256": "9247f224cc4d196705528cac492f3cd2f8c80872bb6dce67881fbb11b39ef577",
+      "size": 4306
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1f14cdde800560da/technical_qc.csv": {
+      "sha256": "0ba9ec284a287706f2b3a0b9764e118ca6faa0c2af0c0b7dcba8dca8ff2ecb62",
+      "size": 2468
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1f14cdde800560da/validation.json": {
+      "sha256": "9b9941974e1033ce41215431cf632f2b685653e1b591442cb10ce06d1d1b0465",
+      "size": 1136
+    },
+    "deposited_values/protein_reported_quantities/PXD067653-Intensity-1f14cdde800560da/values.parquet": {
+      "sha256": "1d1ee65c5fc0b6e5b83fdfa52ea661ca02b9d9c2b60a74d8e46ff01048bc83e8",
+      "size": 4178
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-1bd616e1dc534a2d/manifest.json": {
+      "sha256": "10caa4c21c4f2b2d54c4f484b936b73c8d4b0f60c1dbced770e20ddf8fb548ee",
+      "size": 1850
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-1bd616e1dc534a2d/preparation.json": {
+      "sha256": "e567bba4c5c0fbd84fda228e410c437537febe3e9bffe6e83878b7b1a9649f05",
+      "size": 1271
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-1bd616e1dc534a2d/samples.json": {
+      "sha256": "83e85fb5a1aba5132e1556ab637f55aac8ee4c7e8fcb688699d9c0ed030a2f59",
+      "size": 578
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-1bd616e1dc534a2d/source_metadata.json": {
+      "sha256": "fe9df1e5856d25877ef46454008c5dc45d02711e10966e20bf25814ce7ab77ef",
+      "size": 19234056
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-1bd616e1dc534a2d/source_tokens.parquet": {
+      "sha256": "cf10fa0e29ecc2f6ee140f3fa0b86d202176d5d951031ce3d1bbebe8c1ba1748",
+      "size": 30766
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-1bd616e1dc534a2d/technical_qc.csv": {
+      "sha256": "544f45b51aa12ca7a7806c09d853a1d0d35228ff0a080371c474f5f66875debc",
+      "size": 2450
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-1bd616e1dc534a2d/validation.json": {
+      "sha256": "9c2941f8c004d93a60394de710b684a9843c4a9735f150366b3868984ce02f20",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-1bd616e1dc534a2d/values.parquet": {
+      "sha256": "db22dcdf411403fe7604fc3a5659f8514675e1a45be02f06953962d109005f81",
+      "size": 29361
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-51f55470f7904de4/manifest.json": {
+      "sha256": "753cd7181f075ab286c06580ddbb0b484bc2756940b43235da9205ff7e81f1f3",
+      "size": 1848
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-51f55470f7904de4/preparation.json": {
+      "sha256": "407e660eb3ffb31f2a3c8cbefbe3ae3f30bc3f32ece1e800faface6cf8e9f9a7",
+      "size": 1269
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-51f55470f7904de4/samples.json": {
+      "sha256": "0643f609ca300b4b082bb2f12f56073f8f00abc499644753f976452f02684a5f",
+      "size": 577
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-51f55470f7904de4/source_metadata.json": {
+      "sha256": "3abe74e5f28c179e69b10dbda2199a2adf33ff63f4a7e7ba1135ae616ba9aa68",
+      "size": 24913241
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-51f55470f7904de4/source_tokens.parquet": {
+      "sha256": "0c5f51da1b0e9b1deeb67419ef0de102d96c7089d62b1c29c6a442d661e2e96e",
+      "size": 27144
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-51f55470f7904de4/technical_qc.csv": {
+      "sha256": "3573348f673fca6a5445b7ae1b4fb28cbb436bd0c788a2230b3b86107786cc06",
+      "size": 2449
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-51f55470f7904de4/validation.json": {
+      "sha256": "5f03d9eeedc66772cfc27786c707d1931433634921f5dae55b9b51d700bcab5e",
+      "size": 1138
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-Intensity-51f55470f7904de4/values.parquet": {
+      "sha256": "f9a330ce89ef8f8f07c151cf0912aac7074855ca5da13457ea95ae5710e00ab1",
+      "size": 25973
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-48b045ea06b692ce/manifest.json": {
+      "sha256": "693bf2374abe08983b6b03fc7854f63a3b48b476ce8c20dd141ea6ae827054f1",
+      "size": 1830
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-48b045ea06b692ce/preparation.json": {
+      "sha256": "9b3c7f413c90c4a3f99d8b15b9602b6903ecfd12d803cdea0d4b56556c581c60",
+      "size": 1266
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-48b045ea06b692ce/samples.json": {
+      "sha256": "f5a8dbcba3aeaea3f8e8a5afa710495d09fdd2c89ed1f76422979dc585d63896",
+      "size": 558
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-48b045ea06b692ce/source_metadata.json": {
+      "sha256": "8e59e69922cfcec19f891127bcbec6d272771f35d5cbad7bfd3efe6dd4b15a9d",
+      "size": 19234041
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-48b045ea06b692ce/source_tokens.parquet": {
+      "sha256": "156f0ac6050ef098c57f456faf9e42a8e9a31eb291690133a07f8d6bcbaa25d4",
+      "size": 30305
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-48b045ea06b692ce/technical_qc.csv": {
+      "sha256": "dac50d8cfe06fde095d2d008a343028992ffe2cb47969796d121e89a89374f6b",
+      "size": 2428
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-48b045ea06b692ce/validation.json": {
+      "sha256": "16734fd9d9455b429f0db4e71b371848517b8b0c8b0bc655b810875e94b10e0b",
+      "size": 1139
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-48b045ea06b692ce/values.parquet": {
+      "sha256": "40acd8d89c8e655e6af91541b8b53634ab298460dc5baaf9e092a533f32a3408",
+      "size": 28551
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-b68992c48b402d30/manifest.json": {
+      "sha256": "a37921663e0d4bb55f0fd8342ce4810df4cf9ccbe305ab8766e57e7a410f5696",
+      "size": 1828
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-b68992c48b402d30/preparation.json": {
+      "sha256": "7bb81da3b2c6350b4d2186ac7fae9e4772623f0de529f87fed5ab99d844f6637",
+      "size": 1264
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-b68992c48b402d30/samples.json": {
+      "sha256": "5c42025b659c67c223f9439f5a66f25d8cc6893dfde3d4c28a5adce433a8e3d8",
+      "size": 557
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-b68992c48b402d30/source_metadata.json": {
+      "sha256": "ff1e365feb9df3552bfd77f04d5aa4d48832a68d596dfede4156ac66e78e4090",
+      "size": 24913226
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-b68992c48b402d30/source_tokens.parquet": {
+      "sha256": "20a7a55749b475d1ce8182aa329b758d278a96b23b5a74edc0001ef100480405",
+      "size": 26755
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-b68992c48b402d30/technical_qc.csv": {
+      "sha256": "c4cc4b1a9bdc6ca61387f9868403d4c9b604625dd793bea614d57f27edb9370d",
+      "size": 2427
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-b68992c48b402d30/validation.json": {
+      "sha256": "7dfb8de556adb1add8417fade9f3ed09a2ca6c0d27b23483be91ca759b10be9e",
+      "size": 1139
+    },
+    "deposited_values/protein_reported_quantities/PXD067879-iBAQ-b68992c48b402d30/values.parquet": {
+      "sha256": "a4a42e24f68e5467bb8b7bf61fa7d37ed3d93fd1ba970c83e76ec82a2b87a67c",
+      "size": 25253
+    },
+    "deposited_values/protein_reported_quantities/catalogue.json": {
+      "sha256": "94cdf19f1f32e5a9336dbb9e6654c57b0e57f153492fcd93b24036f5524bab07",
+      "size": 2746
+    },
+    "deposited_values/protein_reported_quantities/coverage.json": {
+      "sha256": "0bf5f0987cd029c6c83f97f7e7fb2ec01561952b1cd9594561faacab616adedb",
+      "size": 21799
+    },
+    "deposited_values/protein_reported_quantities/operations.jsonl": {
+      "sha256": "f5418005a8a86608b490b29523842fe54cf502ed2953d2973f0424ab722695ca",
+      "size": 3947
+    },
+    "deposited_values/protein_reported_quantities/processor-2efa199fba9bffc25252a100f7c37f5c2bbfa81b0151abe5d5649ecae9667423.py": {
+      "sha256": "2efa199fba9bffc25252a100f7c37f5c2bbfa81b0151abe5d5649ecae9667423",
+      "size": 22615
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity-78bd4c8f200d37ac/manifest.json": {
+      "sha256": "7b07d82e11cb03e7735be10d1cbdf17b958ce3787ce85f9aa4a06a00cfd9fa8a",
+      "size": 1933
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity-78bd4c8f200d37ac/preparation.json": {
+      "sha256": "1c1a845bcd26054b499c97654c127af17de9c1ba04153bae2df5954c9ed6e9a2",
+      "size": 1259
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity-78bd4c8f200d37ac/samples.json": {
+      "sha256": "fb49d4624b84f759a1bf9578b4d7239eaa3299c09d322f47f81f93886eb9e2cc",
+      "size": 2636
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity-78bd4c8f200d37ac/source_metadata.json": {
+      "sha256": "c5e769c3a25b09ee94c73545cf1bf1f4b616ded652ec0e2514d941ec9178eed0",
+      "size": 13853688
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity-78bd4c8f200d37ac/source_tokens.parquet": {
+      "sha256": "312473c038f58078386a498930441767292e79ec1461a6fccbb7920323d42e8a",
+      "size": 283345
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity-78bd4c8f200d37ac/technical_qc.csv": {
+      "sha256": "18112f68670ea1cfa1542c9649568d8968fe97d6f7bbd2fc8fc68d1a1a887803",
+      "size": 11538
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity-78bd4c8f200d37ac/validation.json": {
+      "sha256": "cf302f28d07c41093b5505d3cf337f32e366d1bc7d1a303561e134a7b6da63b4",
+      "size": 1139
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity-78bd4c8f200d37ac/values.parquet": {
+      "sha256": "ec1443e0d0c82b112a4818730b53abd997171d0b37bb82c0bb2cb20dae60df03",
+      "size": 257578
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity_corrected-fabc9bc9f6eab531/manifest.json": {
+      "sha256": "5538b0360d2818d1a8399ce581f5abafaeba54e44eba678dc5d48a728aa92b4a",
+      "size": 2023
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity_corrected-fabc9bc9f6eab531/preparation.json": {
+      "sha256": "c1c00f59dc956704552d14cb5c5bd82d4c19eb661e4984c67748307b27e19478",
+      "size": 1269
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity_corrected-fabc9bc9f6eab531/samples.json": {
+      "sha256": "4bc22d6534bf91010d4b0cf88bd7a83fadb3b246471c8de447a42b67228a3aec",
+      "size": 2826
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity_corrected-fabc9bc9f6eab531/source_metadata.json": {
+      "sha256": "1c2d000c9e5f18eaae41f37f31223cb22edd11114d18c4d9f1cdc444300b937c",
+      "size": 13853768
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity_corrected-fabc9bc9f6eab531/source_tokens.parquet": {
+      "sha256": "312473c038f58078386a498930441767292e79ec1461a6fccbb7920323d42e8a",
+      "size": 283345
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity_corrected-fabc9bc9f6eab531/technical_qc.csv": {
+      "sha256": "180cfd95cc2a9b18d35e0c825fe8c8891fcf6ed419123427e1a859331e78d103",
+      "size": 11958
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity_corrected-fabc9bc9f6eab531/validation.json": {
+      "sha256": "c18c60136e4c1e0a93802c197bc86397261383503eed49929b5aa39d245718f9",
+      "size": 1139
+    },
+    "deposited_values/protein_reporter_channels/PXD039148-Reporter_intensity_corrected-fabc9bc9f6eab531/values.parquet": {
+      "sha256": "ec1443e0d0c82b112a4818730b53abd997171d0b37bb82c0bb2cb20dae60df03",
+      "size": 257578
+    },
+    "deposited_values/protein_reporter_channels/catalogue.json": {
+      "sha256": "82889ded8dc4e79164e953c4f13ef4525c57231c5b9a79a72cfdb8bb9a978a3b",
+      "size": 159
+    },
+    "deposited_values/protein_reporter_channels/coverage.json": {
+      "sha256": "f62c2024f75d94f5bee2911a4e2eabbec2fed3a04416a1360232c0a1c95deb3f",
+      "size": 877
+    },
+    "deposited_values/protein_reporter_channels/operations.jsonl": {
+      "sha256": "4704fded69de71943c5468f892f8cd363b365a24ef2338b989d4874cfc618f3a",
+      "size": 8287
+    },
+    "deposited_values/protein_reporter_channels/processor-41e14fa5dee287dfecf059a971d92bb4f9bf9468406ad2ca8b1ac88e1c737c29.py": {
+      "sha256": "41e14fa5dee287dfecf059a971d92bb4f9bf9468406ad2ca8b1ac88e1c737c29",
+      "size": 22084
+    },
+    "deposited_values/protein_reporter_channels/processor-7ad58236142721bd382b4a58b0b2e69e72d07785522c7fcbd9b9c3125e7c150f.py": {
+      "sha256": "7ad58236142721bd382b4a58b0b2e69e72d07785522c7fcbd9b9c3125e7c150f",
+      "size": 22087
     },
     "deposited_values/validate_workbench_values-0b3ab676c0a575df327f1ff3fe902bac59b852f021eb15ded4e22276e725d266-0b3ab676c0a575df327f1ff3fe902bac59b852f021eb15ded4e22276e725d266.py": {
       "sha256": "0b3ab676c0a575df327f1ff3fe902bac59b852f021eb15ded4e22276e725d266",
@@ -8410,16 +10494,44 @@
       "size": 453
     },
     "processing_audit/automation_revision_events.jsonl": {
-      "sha256": "7be4a71b417a47542e2f14f022d759bb9d956dfb40e7f51f0974b1fead2fbdd3",
-      "size": 20843
+      "sha256": "7b15abaae0d5fe98ee7a88c85bb4e8a784e7135d090b8a8b3af524751d8f5ec2",
+      "size": 46802
     },
     "processing_audit/catalogue_coverage.tsv": {
-      "sha256": "4f45b4ab3f765ea1313f28d7468afdc122165d4cfaa612f90d5664752bb2c045",
-      "size": 204326
+      "sha256": "8d89734b007490b79735a39c2bf1ef51038521a49c8bf0c5e49af00cf3aa0449",
+      "size": 204327
     },
     "processing_audit/catalogue_coverage_status.json": {
-      "sha256": "ab3f9688995d1cf16437187dbf9934ee8a650ffe0177976dd2331f93f357c860",
-      "size": 1217
+      "sha256": "f1a84f4c4879336c456a30ec1be61b504b0b5f47b10189581ad2804db47d6404",
+      "size": 1218
+    },
+    "processing_audit/check_protein_identifier_evidence-51316c9ebe66d1d356074eb3ab065c6d50e43e8d03828ee30acbc98aadb6d723.py": {
+      "sha256": "51316c9ebe66d1d356074eb3ab065c6d50e43e8d03828ee30acbc98aadb6d723",
+      "size": 7329
+    },
+    "processing_audit/check_protein_identifier_evidence-e5848edfd59ebd7f1becdb58dd80460559845888f7e3c2d8175063f05408d760.py": {
+      "sha256": "e5848edfd59ebd7f1becdb58dd80460559845888f7e3c2d8175063f05408d760",
+      "size": 5011
+    },
+    "processing_audit/check_protein_reported_quantities-eff3f801fc9b133725c7624f5325c9a134f708957df75c27a83f5701a0c22f03.py": {
+      "sha256": "eff3f801fc9b133725c7624f5325c9a134f708957df75c27a83f5701a0c22f03",
+      "size": 5023
+    },
+    "processing_audit/check_protein_reporter_values-3f916c38ac069ec25a124ecc3a9f2730441b87fe7f86541753ccc1d64d931294.py": {
+      "sha256": "3f916c38ac069ec25a124ecc3a9f2730441b87fe7f86541753ccc1d64d931294",
+      "size": 5571
+    },
+    "processing_audit/check_rna_snapshot_preservation-84ce86a3ab36bce4902d4bdc000a45bcff79bba8d968dc654faa5e4efac7aae3.py": {
+      "sha256": "84ce86a3ab36bce4902d4bdc000a45bcff79bba8d968dc654faa5e4efac7aae3",
+      "size": 3476
+    },
+    "processing_audit/check_wheel_005-1a44c9974c526cf2f5e04236169dd2e76f3a738ac39ad1e25d79b7494ea68050.py": {
+      "sha256": "1a44c9974c526cf2f5e04236169dd2e76f3a738ac39ad1e25d79b7494ea68050",
+      "size": 3097
+    },
+    "processing_audit/check_wheel_005-28872abc503157664c0ea6eba8ab4355d85da6e4d49fc0aadf957f96ba783546.py": {
+      "sha256": "28872abc503157664c0ea6eba8ab4355d85da6e4d49fc0aadf957f96ba783546",
+      "size": 3097
     },
     "processing_audit/dataset-coverage-source-0294d452bb4855aa6a085ba7870788400488c0b5adadf85e6cf4690a2ea1912b.py": {
       "sha256": "0294d452bb4855aa6a085ba7870788400488c0b5adadf85e6cf4690a2ea1912b",
@@ -8458,16 +10570,20 @@
       "size": 19017
     },
     "processing_audit/dataset_coverage.tsv": {
-      "sha256": "7ab77ac63b12affff914806c1c5b522dcf2392aa115ddea08d213b6ca5809d10",
-      "size": 506595
+      "sha256": "2217533fc3619438df09e767bddceb373515d63eff0e37999e6f6cc0881c39f6",
+      "size": 506585
     },
     "processing_audit/dataset_coverage_events.jsonl": {
-      "sha256": "ac0573f701ab22ca2001c768c367ad7bfbba2d16fa88939651ed1d724b1ba4be",
-      "size": 123595
+      "sha256": "6a42eb4ec3bb4816ac71658196d5fc4c1a2a59dd2e8c7ed7c6ae9886cdbe9617",
+      "size": 454006
     },
     "processing_audit/dataset_coverage_status.json": {
-      "sha256": "0297bc98f6d3f448cc2304d47cae1a46a07db2eaf3b49059546cacbcc0f67c07",
+      "sha256": "c27c126e0546e177d2b3734963f2665aa7766730552aef35e59f2813552ad059",
       "size": 2277
+    },
+    "processing_audit/deposited_values_panel-43b2ff2df00d6a5cfcd583415c749ec874d37217d7b1aafcfbfcfb5a7c2485a5.py": {
+      "sha256": "43b2ff2df00d6a5cfcd583415c749ec874d37217d7b1aafcfbfcfb5a7c2485a5",
+      "size": 16354
     },
     "processing_audit/export_dataset_coverage-febaff90623b73650fa9dd815a09e8c7cf7c29cb6475010f55cda24e5c3362f0.py": {
       "sha256": "febaff90623b73650fa9dd815a09e8c7cf7c29cb6475010f55cda24e5c3362f0",
@@ -8593,9 +10709,25 @@
       "sha256": "3ec36782db9ffed0da039d3eafdf65efa7c1e220bae90ac8eac214c98c2df732",
       "size": 934
     },
+    "processing_audit/plan-a4a07a7658872174045e28dfcc9802412d15d7d129f6320edf0c268a912d6763.json": {
+      "sha256": "a4a07a7658872174045e28dfcc9802412d15d7d129f6320edf0c268a912d6763",
+      "size": 2862
+    },
+    "processing_audit/prepare_protein_identifier_evidence-47f2e9d12c36f6916a48099e9349a2ce750450faf25eadf1d94c9f3cd95c1e55.py": {
+      "sha256": "47f2e9d12c36f6916a48099e9349a2ce750450faf25eadf1d94c9f3cd95c1e55",
+      "size": 18615
+    },
+    "processing_audit/prepare_protein_identifier_evidence-90343b0234796d1a80c553bb5fcc3968e156a5389ce6c13a1b57ba8bff2c11f6.py": {
+      "sha256": "90343b0234796d1a80c553bb5fcc3968e156a5389ce6c13a1b57ba8bff2c11f6",
+      "size": 17295
+    },
     "processing_audit/prepare_reference_identifiers-fa5c63035dc4ef7072fe945ff4852c530c5780aa02003f6790980aec2202a5ac.py": {
       "sha256": "fa5c63035dc4ef7072fe945ff4852c530c5780aa02003f6790980aec2202a5ac",
       "size": 10852
+    },
+    "processing_audit/prepare_release_005-b2b077d65b50c92cd38f534b78a79497be82f6919dbc06e1371e250a32beea7f.py": {
+      "sha256": "b2b077d65b50c92cd38f534b78a79497be82f6919dbc06e1371e250a32beea7f",
+      "size": 12177
     },
     "processing_audit/pride_projects/PXD000261/attempt-0003/file-count.json": {
       "sha256": "1b4fbfadaa12a80a1684b84ec8ce9893ab9301389cd315de4a38296beef2a4ee",
@@ -14018,8 +16150,8 @@
       "size": 7893
     },
     "processing_audit/pride_sample_designs/operations.jsonl": {
-      "sha256": "58ac31aa8dd97f924ada502f2ac88ab99350c1e1f4ae7edebd5c53c0296a02e6",
-      "size": 9159
+      "sha256": "4f285d19b647d8f72118fea473ab825515d82e945f2a211722434f2b05e49149",
+      "size": 166723
     },
     "processing_audit/process_protein_groups-4776d479ff47443c02816902a149906badab0dc2c3ca8c32180d0ce2d54e8964.py": {
       "sha256": "4776d479ff47443c02816902a149906badab0dc2c3ca8c32180d0ce2d54e8964",
@@ -14028,6 +16160,14 @@
     "processing_audit/process_protein_groups-b580d09433c99b5e5c08697a139440536fb04bd60e696f36501d2dd22db4f0a4.py": {
       "sha256": "b580d09433c99b5e5c08697a139440536fb04bd60e696f36501d2dd22db4f0a4",
       "size": 19549
+    },
+    "processing_audit/process_protein_reported_quantities-2efa199fba9bffc25252a100f7c37f5c2bbfa81b0151abe5d5649ecae9667423.py": {
+      "sha256": "2efa199fba9bffc25252a100f7c37f5c2bbfa81b0151abe5d5649ecae9667423",
+      "size": 22615
+    },
+    "processing_audit/process_protein_reporter_channels-7ad58236142721bd382b4a58b0b2e69e72d07785522c7fcbd9b9c3125e7c150f.py": {
+      "sha256": "7ad58236142721bd382b4a58b0b2e69e72d07785522c7fcbd9b9c3125e7c150f",
+      "size": 22087
     },
     "processing_audit/protein_column_design_links/072824418c15475438d21566d5a8338ea81ab983aac7c54367817c7a281ad417/007b9d848f4d8a3dcd546dbe4e6aa64764f5ae990ad156f45ca4adc73c32f23e.json": {
       "sha256": "571cd2a8881f7e4ca30739fe23aac1a33da6ac1775cc7d4584b751192d37b2b8",
@@ -14394,8 +16534,580 @@
       "size": 18773
     },
     "processing_audit/protein_column_design_links/operations.jsonl": {
-      "sha256": "3953a545f61841801e8e6c6a86a1097f960056afa1b4ca3052fae31cf6621520",
-      "size": 8231
+      "sha256": "5257b04c3babea848512846bdbf524cd20c860fa0322514a2da79b292b987d92",
+      "size": 167615
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/007b9d848f4d8a3dcd546dbe4e6aa64764f5ae990ad156f45ca4adc73c32f23e.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/01054d25e4408c9ab25e5028ae7d522c867e50f63c594ffdc798686ed45fc644.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/014f2060e37a93ee5be9efdaef0243fbee5bca1ea15155c1b6b60a5fe3e738e6.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/01bd30e2db1f629637a6d17df1026b121a016359b2e9f065d976482a7290fc2e.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/081496bb83e9979c18eb11bfa822ae1e5394777e57e2769ef947b2ce04192229.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/08b8185e094d1ddbf5d5abbc81daa7abcddb820b27e392ca59843a57fc388f90.parquet": {
+      "sha256": "c62440bbf8aa5b58d1597a748bd9e6f14d32181c0c9e227dfa1ed939c5e3670c",
+      "size": 156611
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/0a562c29ff77e89039f96fcbe4e2181a5506b09bbe6a8aef44d60066753dd128.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/0e90b146d34f756d314014d2825a735886b225dc70e5658f9f1034a94669e765.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/0eba970cf8015a7d7ddace527f3261a38143196e000e0982e0735ac372f8c944.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/10caa4c21c4f2b2d54c4f484b936b73c8d4b0f60c1dbced770e20ddf8fb548ee.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/16fab14dc7e64df8183bd11425b11978815ac8935b5b45686ac8c055118cd378.parquet": {
+      "sha256": "c852bd600dbbcb5b388205c126d7fb2890066156181599b469616ef16d316db1",
+      "size": 66115
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/1960e4ead7bb029e44f19502cf22221f86fb58fd574212279565af7a2f824e9a.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/1ae10782c10a103632a0555b23466cdc6959c6a5a45110824ca43ab2fd9a44f5.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/1ca5c5783abfaf20cd3a6910c68cbb8ac5ce1785c9ada559a495a6dff9ef86c8.parquet": {
+      "sha256": "d2d5d35f7abe8a335e3e043a98b2cb536e9f0587b8c8097d34012244a6fcb0a0",
+      "size": 137837
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/1e6383249bd855f074adc9e19a4549b4d3ef4d775926b212004f9038fe5cefe5.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/213dc13ceee9e8c0204db1bbe4f6d32c9dc8725243c0f3ef16dee6d1cbd602b0.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/21ee3a76395e27119ea4a4e3e80251ce4a4df297bd35a28037f5eb89dee084e7.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/26a9e496fb4cb086ff7dfea1be3590d8d45656800ade33dbd1598c38273ec154.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/28c42a2b880cfdae3660b3f98314f75b755dc2af19cacff0e2ff3414292601fe.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/2be3313dfe75755157ef398c73c1dead175bc950d28a95d70c2462d9c57d591b.parquet": {
+      "sha256": "39c56079427bcb4a16251f10cfec2e78ea1ae110c23604f77eccc4301619704e",
+      "size": 441416
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/2cf73ea5f6947e3cc4801f869bf8fb529f4bd25c0f8460883bb6fc6596c03ce7.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/3236325e67ef09a91580bb65bdcb63ba630fd7b211253950be8c33a3923b6767.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/36ba880a182d5a37bc5ef730987b266c7ba9febce8fa03cb4374e5a8713ddee7.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/3845fa7918e35e47b46fbe12b032dda2fb991b3ac1cbfe803e82b900a194819b.parquet": {
+      "sha256": "fa3bb3ebfc6a193d32aa79f5665796d36ca7fc220d430975a51940e0a7f059ad",
+      "size": 363031
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/40b18c10add2275503e559e9a59bd8b5286b255a78954a560c33fd27900b7a00.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/419109828c20f691af5a017c5117ba1a3a0d8eba8a7b5bc70069961ae6330e06.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/42de3df65da4e2cfb60b48109a9bf4b96983ac64c8452805117768e45238ecf9.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/44dc66215a6341d0abbc56509b17aaee6619355ecc77cab778acc7dca4db0775.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/479a40165fb7a2e09a981e9632a4c44d649991661b6af5a5f889ce1d13e6db12.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/47c68afcf0da5f03b1f55acb9b470d60ecaaba22a2973e37b899bb39fd6faa5c.parquet": {
+      "sha256": "c62440bbf8aa5b58d1597a748bd9e6f14d32181c0c9e227dfa1ed939c5e3670c",
+      "size": 156611
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/4b77009cb532af3aa348cef4a6f30b288e0cc61045ac2a820c8ef494ff81a33d.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/4bbed900b5b845c5108fb4f7109a3d1e83b326555e8d53a7a1e705e076afdeae.parquet": {
+      "sha256": "c62440bbf8aa5b58d1597a748bd9e6f14d32181c0c9e227dfa1ed939c5e3670c",
+      "size": 156611
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/5033c381e7795e02bdb2d4d6696b037b8c13484bb49e4bc6075cd0e9c9643a58.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/509c566d289fa91cb4985bf15b3d615de7de4ba0aa71302d82f07942d3c4e06c.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/51e49b1bb1ae3bd4182060ef7d4ffad0a7496fda387f6ecaa7707bbd1edddeb3.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/54db890cbc5540ad33b0fb0424409ad681b733ec59a655e10b0da883b9f6db90.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/5538b0360d2818d1a8399ce581f5abafaeba54e44eba678dc5d48a728aa92b4a.parquet": {
+      "sha256": "d2d5d35f7abe8a335e3e043a98b2cb536e9f0587b8c8097d34012244a6fcb0a0",
+      "size": 137837
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/55b6b357c6095ff7c9e5f35c75be3baad6de78f1958ef02abc972910653e75cb.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/572983de34d59e13969c2b44f8beaa8d06291e50f098eb37d16b4491bb9eb27e.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/578e7cd480937d58a04a51d27e456cc84616da1bf1e3aed21ca61e33fac3aa7d.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/5d5fdbf9bc6ee5d579cf46f108191e067cbf0743dd3b19e3f74f7d01df13b658.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/61e11e102a0cce5233dd9d7a6c65c67c83df53c116ec19f7f1a240fad0a6f7c0.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/6216a634df985622c2e1a2a86bb547349b4553ef18c00dfe50c393d6cf9dcf1c.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/6679fcc7523d054cc7da8e2037841b520ee8fc7fc0de92c6e3d16f2f82f7df0d.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/6707e941f117c487ef8fd1b50ed47a83cfdcc50d025c9fabb5a5d189e13444b3.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/689751820b3c25ead83ae09f6ed8c42b6f4e8b4e0cadbdfee1505488cba44dda.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/693bf2374abe08983b6b03fc7854f63a3b48b476ce8c20dd141ea6ae827054f1.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/69ce06bbfbbbe2114709a1caf7b82194d2adb166301f49d7082ef4f82142518b.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/6a96ab694c90632402ebb5828904b8255eca751dad8bd085ba02b17b1b762c8a.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/6ba2891be56993c0c8bbce3dd77614f6bbda144dbe903ea4567830716e81d28e.parquet": {
+      "sha256": "fa3bb3ebfc6a193d32aa79f5665796d36ca7fc220d430975a51940e0a7f059ad",
+      "size": 363031
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/6dd4ee4d1e68d176e93ac484116d2ab36dd3565c140e1b0233e9b45d961797f1.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/6f6ea152f39a345177e4c166dcb77d6786b890bf3dc0fbd2bd86e264f69a5e99.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/6f98728ca3527eb4e86d133ffaef9a3cc1b2e6ddbdbf8c4caa5ff4d69ea74d93.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/7396b97d691c3de7584c0f18d6affddbe710558f381de3638603fd9d0bcf9667.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/753cd7181f075ab286c06580ddbb0b484bc2756940b43235da9205ff7e81f1f3.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/756c915b7100a1d292641652c62b7e6d6c48797c7432450989c1c6bc61149787.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/7601df441dc6c74faf8702aa142108e9acf153a8c30463ae6cb8d56f2ed1afd4.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/76122374b8d2692d67a823d65b422e057b0c9a82dd74c5c514a268b2fb7727af.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/77ef33547d50f5c470a2823e01321649e036dd0199d7b4ecce18b264bb69c765.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/7b07d82e11cb03e7735be10d1cbdf17b958ce3787ce85f9aa4a06a00cfd9fa8a.parquet": {
+      "sha256": "d2d5d35f7abe8a335e3e043a98b2cb536e9f0587b8c8097d34012244a6fcb0a0",
+      "size": 137837
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/7ed7e2b225a4428af51e00184ec292ab91ca177c054245c9b17b6453192603a4.parquet": {
+      "sha256": "39c56079427bcb4a16251f10cfec2e78ea1ae110c23604f77eccc4301619704e",
+      "size": 441416
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/7f6e90d6239fed8a00c7b3fbf60100f95b0352b46d4ac8d5b8ef9bcb8fe8344c.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/7f7ce0ea0d35d090f72afe0a1ce9006dfe08e3e026a7fe894513a9fb5f071452.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/85f7017b98c6790ddd5677594183ddcdf4e5c4d93fc70d23a2e3fae2bcd89876.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/87ea75ba8cd9f3ca9f95a13b1f90eaafa3f1b0a3b117555a34e004fdf8a7de22.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/8a96ae6056aa6a8c6023e35b5f772bc2e1a446593ac9d53b7b749f1c4a92bcde.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/8c2e9840130528062571510211d352c981a35a574187eca8087c4e5e9fc75b60.parquet": {
+      "sha256": "6f8901e19d5fc30341bb31dcac5b15abbc9312a88df09b4ec378ff43f6248077",
+      "size": 112159
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/8c33c039869905e8177e49d53742b4199341320643edf3efc8288025df73c072.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/8cae1f87d47da1ad87aadec1a190551903be2b6466d2402f29fddf18a8d2aa6c.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/8fee3f0f71bfb7758c57b656c43fc895c29694eb8dc8e4ca3842495e81eb5a9a.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/91b2a273a2bcd26f12a333a4549dff48ffef16c7815421c9b8e3c07603abbb00.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/95065b0085f61ef421d4e2914b2f48ac6a3bf7963f759135ea2067a9d8dff5da.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/961ce8e2c4bcdac4a78c264677ee28ef277728ff1032ebc5a6ae05342de098f0.parquet": {
+      "sha256": "ff1e80fb6b13a2d0a4ac3095a1effcd7a8ccb6b68c363acf7800964ba6507eae",
+      "size": 145930
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/9a4103c0ea52664ead50cce39685377acd02a63f7650a9c9ecac54c1be409cc3.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/9ab638b564e28a2ca1d957393bd0688c2986be2b1d334002cb5ff5262fb01d9d.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/9b9757fd3d2be3c7bcce79a4fead0c0d78ffa4a241e518948b6f540eeeabfa4b.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/9cbd617972f301ec5d2ee223b9483b58734f74f6f93ce2af7b7c68d697ca2cdc.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/9d2567bcc9591bcf8ad3e1b7f710097f41b77ca6f22542fd722bf895d584b708.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/a13015768ea843e074b0215d40a3e6853a04dead63adecc7e98d839d5271700b.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/a16089ac65d6cad40f91f1bec4dc5a5f8950d6098bd042b9111fdc404c705daf.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/a190c52a33388e2a2e77448fc2b37712240d3b6cfe6e3aae29657d6324b43a3d.parquet": {
+      "sha256": "6f8901e19d5fc30341bb31dcac5b15abbc9312a88df09b4ec378ff43f6248077",
+      "size": 112159
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/a37921663e0d4bb55f0fd8342ce4810df4cf9ccbe305ab8766e57e7a410f5696.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/a64f2a1dd5f10cf2b9cd0a0c2243b8e0e6aceebd9d9b483400a471afd093bbf1.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/a7355f8e4908d161e3c9f8f56a636b383ac8cdb23190bcc62713434bc464e587.parquet": {
+      "sha256": "c852bd600dbbcb5b388205c126d7fb2890066156181599b469616ef16d316db1",
+      "size": 66115
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/a7cf0c66a75aabc2f4eb893ccadd800d7bd66c304c972d77a6bf237316f3ad36.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/af88e30b4a59d96a5414d54da2d49f3d01748c3c31d131973152fe3603fa14e2.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/b071f8883c2b00fb449507e2d7c38d4ee811520c1e02629f39a504427de820af.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/b14de230bb5000a8ca4e9d26110899a2fc5d884c48875dbdc5deb066bcc47a4c.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/b1e8e6586353f4f42d816edb66c1628766c8614e8993212fca2e057b7667f465.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/b471577425c41d91785bba5d63730524ad553fc4c7ceb54732a575027c5ae42e.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/b9116c097e38dd85170517e72aef0ad39600d16148ffe75bd2ed064f716eca44.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/b9493d72c930ccc78af0c1e0e98fbbb88e37fde46dd4163eb0eb56bbf70cafd1.parquet": {
+      "sha256": "1d63e48300122424358084bb0b59ad4e300d437ecad5458b9cb45696b4394e59",
+      "size": 47773
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/bc98f60f3dfb6a9f54bca706d55ad939c07cac1f312e316dc7493a17811b6760.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/be9936ffeee06e52a4a18f41e1058fe2ffe241c46fab70ac0ce006306ef8f1f1.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/bf0029fc69dbdb993ca47326baed69c44f8df9d9985b58194a772187d00b0513.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/c0b3a102f93cef20842bcf884791b1bff0b98895e3e1aa451168105b493aab60.parquet": {
+      "sha256": "215ae33bb883135d71e3ce5f0de55c73d98baac73a7a190fb6849df2cf8774a6",
+      "size": 14589
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/c240387cabfa2b6585ba5c2fef126d7b57b553514bc2d4a74f67e4a2c239820a.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/c4adc159fd9edfcc51a03140d4814ca8199717a346ac2897b071758c3cc4f2d3.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/c5af1a0fca2031fdf4db0ceeb5726caa05046bedfccae735d4f93cd6e5b01616.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/c85928fb3fec9154369f5393f80d43919fa8f87dfae5cdabc66d885d7aa732bd.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/cadcdb346d0867969a4f08623ecd660c4425a044b3340effdb40f7b9a991b111.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/d093b836ef0a34f3c812b2de9066c2776edcdbad0e310eba93d53d7d7ed8cc7c.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/d2518c6e3ebf035bbb141b2f61e1241cec97e1c238c520a5751cfe812dc98d48.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/d3a9861fba0b05bd820d28b2d89104940c4e7fda4a6d232d75ccd14cedaba4ff.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/d407a34449b40797a47614de46da34161ddbc3641f3dcf65e2a90a2b3b5553cb.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/d59235e10ebbda0542d37447e38fc15db0ee123a3ca664d1a62895e177fb760e.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/d793ee9a493376fab354931ea4175f7484badac830115f5dc7e11163ad282e05.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/d93f0ec63bf0b860514576333cc06e97181e6b3ae341546d2d806341c1da74f8.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/db079039201ca5e8d36d17383b6695fb3b2f3f27a139e0a97e66602bc7fb6d69.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/db577c7e69e539111dee678870e89c766d3afac6c19ea3ae6c7ac3227b12db83.parquet": {
+      "sha256": "37495d15ba33cfb1d59ff72f709ad01b6c79cf9d492ecc034311e302e7ed2738",
+      "size": 203099
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/dc664010b7dc56b8706bea2da87a5d254ec1f14ccedd7c6a420290a8614d8cd7.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/dcb135fe886233fcd0d857a7bd36d67939623b6f847afced39ce7ba692cfd1c8.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/dd7d954d99402ddd09fbc8d7889428cf2717de796f7316c045d64b990ed306d6.parquet": {
+      "sha256": "39c56079427bcb4a16251f10cfec2e78ea1ae110c23604f77eccc4301619704e",
+      "size": 441416
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/e004c281c3d0ca0779762e8f2711a412aa684400a41fdcade576062ab73253c0.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/e01e41be9a3551f2543a2c9bf5b50c0292018456b1f01df95af3d0df59315d7f.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/e15befd533498198aaf417614b2e62d55ab04b59ce3ce26dbe0c284c84595eb5.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/e1bbf4682f7e15bc55122ae9d396390888a574ccbdc049f29a55775492568f21.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/e867769bfaf84432abe101b2ce55eb61128453398298f91c4a36c3f562a5b945.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/e9269a9dcee4fe87f687f2c0100dd53bf7641d502c3c8cb8c6cdc9dc1d41eab3.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/e9fa53f3f59134e6d8de597da0aa31feedb4d774fdd5b937f9335c14d51c26b2.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/edc4025b5d64317f3b19326f6ad65b4d7d6fe39dd93b874a845ecaea80dc4748.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/efb812189ec6c3467b14bdb14dfc3e8c57ffb2943d48acbd8d4317c4b0d127af.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/f62dc8696db4f613cbec43cac8bb34cefe81174885b0f1fe662dd27fd944a0b5.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/f91d5588a80b989f3299cc959f2d5eb93d8a45d33b58566227e7334813c6e5d9.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/f9a7b812bacaa57bdf87d2cc866aadae5f99df9ad3f42ed8dd6c6fa927a1a26c.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/fb6bcf7c2ea08d9e1c18f1bd40f79333ad1a0a2f33ce6fc58badf7e2be65d800.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/fbd3430886315ff82c8123d560552868d06d137a75ac9976c79b8886772588ef.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/fd2fe84025182125d485e14bc5f403fe192d6a60117506b0d7756537fbf88a3f.parquet": {
+      "sha256": "215ae33bb883135d71e3ce5f0de55c73d98baac73a7a190fb6849df2cf8774a6",
+      "size": 14589
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/fd30a8ddcb3b5f690d073b8d69cedc4f8321c7a5ae5bfec7adc51db573cd01c6.parquet": {
+      "sha256": "fa3bb3ebfc6a193d32aa79f5665796d36ca7fc220d430975a51940e0a7f059ad",
+      "size": 363031
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/index.json": {
+      "sha256": "e374be69003265194bd57760772fa62a1e5cc9a5b3188512c9bfa7a163da2262",
+      "size": 98969
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/measurement_inventory.json": {
+      "sha256": "e380d1338c8f372da980adaa03fd9d2f54281e96c8ba8570213326291c6591cf",
+      "size": 33462
+    },
+    "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/validation.json": {
+      "sha256": "d06770d957b9c4256eb0d9a675f2fb2015849f497482f6afabc12ee0493de180",
+      "size": 61700
+    },
+    "processing_audit/protein_identifier_evidence/collection.json": {
+      "sha256": "fe22a0cd1a8368d6c43121904de2516c4fc69a03b8c1dc1ad742fe0040d542d6",
+      "size": 200
+    },
+    "processing_audit/protein_identifier_evidence/operations.jsonl": {
+      "sha256": "e0bbefac8ab8c52b4d28936a9080f837a94d8f4e660fa692cac44c9a88f15e52",
+      "size": 146575
+    },
+    "processing_audit/protein_identifier_evidence/processor-47f2e9d12c36f6916a48099e9349a2ce750450faf25eadf1d94c9f3cd95c1e55.py": {
+      "sha256": "47f2e9d12c36f6916a48099e9349a2ce750450faf25eadf1d94c9f3cd95c1e55",
+      "size": 18615
+    },
+    "processing_audit/protein_identifier_evidence/processor-864b29d46a75a5423dc1b25c43337b1299039826b0d6b0962ddf46c199240b08.py": {
+      "sha256": "864b29d46a75a5423dc1b25c43337b1299039826b0d6b0962ddf46c199240b08",
+      "size": 16427
+    },
+    "processing_audit/protein_identifier_evidence/processor-90343b0234796d1a80c553bb5fcc3968e156a5389ce6c13a1b57ba8bff2c11f6.py": {
+      "sha256": "90343b0234796d1a80c553bb5fcc3968e156a5389ce6c13a1b57ba8bff2c11f6",
+      "size": 17295
+    },
+    "processing_audit/protein_identifier_evidence/processor-a47405a30a58c6ee36bdf63fbf56bc9f7b08d54970a3eef49c8c746ae7b6c806.py": {
+      "sha256": "a47405a30a58c6ee36bdf63fbf56bc9f7b08d54970a3eef49c8c746ae7b6c806",
+      "size": 15029
+    },
+    "processing_audit/protein_identifier_evidence/processor-a5a6a637d26c8fff7c53075e435b5382b782d1a7ff94fcc322e44765221f035c.py": {
+      "sha256": "a5a6a637d26c8fff7c53075e435b5382b782d1a7ff94fcc322e44765221f035c",
+      "size": 14838
+    },
+    "processing_audit/protein_identifier_evidence/status.json": {
+      "sha256": "bb68c79c461a1c63712c0f0574b170dbecb3784690107e616f8c066c31ffcfa2",
+      "size": 557
+    },
+    "processing_audit/publish_005_when_checked-b01ced83777d17df4fc378b9737bec91b98906f71a02286f4771d17e94067d1b.py": {
+      "sha256": "b01ced83777d17df4fc378b9737bec91b98906f71a02286f4771d17e94067d1b",
+      "size": 9218
+    },
+    "processing_audit/publish_005_when_checked-f8285d32ed5e23d6af500474be83aa207e0123051c0ca25833f7aaf1c7f37327.py": {
+      "sha256": "f8285d32ed5e23d6af500474be83aa207e0123051c0ca25833f7aaf1c7f37327",
+      "size": 9218
+    },
+    "processing_audit/publish_release_005_workflow_retry-0a298c23a716c8fbb4eb1da537c24f2a0820120cfa01e8fba7ef620b3db102dd.py": {
+      "sha256": "0a298c23a716c8fbb4eb1da537c24f2a0820120cfa01e8fba7ef620b3db102dd",
+      "size": 13109
     },
     "processing_audit/published_sources/acquisition_plan.json": {
       "sha256": "fddb17f8e26ce877ab7c88618d0bace5b70449b435ebd2de4d5d7cb2af8ccd74",
@@ -14413,6 +17125,34 @@
       "sha256": "f4a992a59e5733b20ebef3305ae610e313440036ef09a927b7b7ac97a699c226",
       "size": 7787
     },
+    "processing_audit/push_protein_identifier_followup-2a11da66c62fc3773f437825c36b1913bdc2cb7fd0ad205a051ab6e21851c611.py": {
+      "sha256": "2a11da66c62fc3773f437825c36b1913bdc2cb7fd0ad205a051ab6e21851c611",
+      "size": 3756
+    },
+    "processing_audit/push_protein_identifier_followup-6d99152d29371f151ef0e7cb2ae419a6d8459cb10c5dcf3bbb0ccee95992e2a9.py": {
+      "sha256": "6d99152d29371f151ef0e7cb2ae419a6d8459cb10c5dcf3bbb0ccee95992e2a9",
+      "size": 3756
+    },
+    "processing_audit/push_protein_identifier_followup-73d63fc602f4dadf4f2facc4cff62f6b22515008530e93c887509d618378e9a6.py": {
+      "sha256": "73d63fc602f4dadf4f2facc4cff62f6b22515008530e93c887509d618378e9a6",
+      "size": 3756
+    },
+    "processing_audit/push_protein_identifier_followup-7dff14512001789855a465ee2ca52dd03b221ec6d961a2ab3ff391f4bf1ec133.py": {
+      "sha256": "7dff14512001789855a465ee2ca52dd03b221ec6d961a2ab3ff391f4bf1ec133",
+      "size": 3756
+    },
+    "processing_audit/push_protein_identifier_followup-c5f104ee7e9b5bac698fea296d4cec2754e2711662ebd90337e64778ef690b48.py": {
+      "sha256": "c5f104ee7e9b5bac698fea296d4cec2754e2711662ebd90337e64778ef690b48",
+      "size": 3756
+    },
+    "processing_audit/push_protein_identifier_followup-c898af07099d0fb73001f4840cc73ac98e60e9d0a15f91e199318cbf646b0e4d.py": {
+      "sha256": "c898af07099d0fb73001f4840cc73ac98e60e9d0a15f91e199318cbf646b0e4d",
+      "size": 3756
+    },
+    "processing_audit/push_protein_identifier_followup-eaec9e4d1d76915463de902e5d026053bdbe59254ef0e5f6ceda0d1085def8d2.py": {
+      "sha256": "eaec9e4d1d76915463de902e5d026053bdbe59254ef0e5f6ceda0d1085def8d2",
+      "size": 3756
+    },
     "processing_audit/quantifier-runtime-17d1ab4381c7b33063c8f1719f05d90098660905a2ce6ffd6560cacb0fb639b5.py": {
       "sha256": "17d1ab4381c7b33063c8f1719f05d90098660905a2ce6ffd6560cacb0fb639b5",
       "size": 22813
@@ -14420,6 +17160,46 @@
     "processing_audit/quantifier-runtime-before-24-fb42dc01f1b403f038fc6989ab1079321d1e7eb3f5057bc1ab0fa6404ad05aaf.py": {
       "sha256": "fb42dc01f1b403f038fc6989ab1079321d1e7eb3f5057bc1ab0fa6404ad05aaf",
       "size": 22620
+    },
+    "processing_audit/recover_release_005_tooltips-a6093d8584925c4e15ea83031ff2a134d6e7075c58827f2e2879f9c384e1e27e.py": {
+      "sha256": "a6093d8584925c4e15ea83031ff2a134d6e7075c58827f2e2879f9c384e1e27e",
+      "size": 4149
+    },
+    "processing_audit/reference_identifiers/03b59c0efca598179695c8ee7cf2996606993315b499235d42c644c4372428ea/headers.parquet": {
+      "sha256": "086ad9ad83b761191388a96af1282ede089d32cafab0c0ec599cad2090df4c70",
+      "size": 4376296
+    },
+    "processing_audit/reference_identifiers/03b59c0efca598179695c8ee7cf2996606993315b499235d42c644c4372428ea/manifest.json": {
+      "sha256": "8f18d2cd731a975bba21ccf3f69dfa1b4c22d14a8ca91642be09cc20aa0fed94",
+      "size": 780
+    },
+    "processing_audit/reference_identifiers/03b59c0efca598179695c8ee7cf2996606993315b499235d42c644c4372428ea/validation.json": {
+      "sha256": "7689c3d096b96cf2c1cbd830b5e56b690e62f8da4576f59977d3d201bf9539fa",
+      "size": 1675
+    },
+    "processing_audit/reference_identifiers/093cb41bd2519213ee811ce0cdcd92825d62cff063cabb51bcef28f12bba735e/headers.parquet": {
+      "sha256": "603a97ed754aac83caec140d2fde11f01a6dd4b6303c3534d28f9158b87b0fda",
+      "size": 8720537
+    },
+    "processing_audit/reference_identifiers/093cb41bd2519213ee811ce0cdcd92825d62cff063cabb51bcef28f12bba735e/manifest.json": {
+      "sha256": "2365f2c5164cdbb1f350b1020c8fc58a4c41eeb31c91589bd86db8d56f240bb0",
+      "size": 781
+    },
+    "processing_audit/reference_identifiers/093cb41bd2519213ee811ce0cdcd92825d62cff063cabb51bcef28f12bba735e/validation.json": {
+      "sha256": "cb9ca6b4b6c397259789f63e88483ac3aec0cebf10f24ab68a328a08779f06af",
+      "size": 1741
+    },
+    "processing_audit/reference_identifiers/0ca8e65d55b3718a216b8253f20129d3e9e64cb39c85322d592325bae7bd3fca/headers.parquet": {
+      "sha256": "11a48073c0d65caa657f64023dcd4914a54329f20dcb658bfeed01c06f9d616e",
+      "size": 8567419
+    },
+    "processing_audit/reference_identifiers/0ca8e65d55b3718a216b8253f20129d3e9e64cb39c85322d592325bae7bd3fca/manifest.json": {
+      "sha256": "5525b3937f32cf9c717cf9734f74ddc874d0bdffc2e331f27615e90a7836a9d7",
+      "size": 781
+    },
+    "processing_audit/reference_identifiers/0ca8e65d55b3718a216b8253f20129d3e9e64cb39c85322d592325bae7bd3fca/validation.json": {
+      "sha256": "0aa441af0fbb6fb7f1e8b02ca895ecc51e093f2d1cb0e57885fe1077ca5e74d0",
+      "size": 1741
     },
     "processing_audit/reference_identifiers/115a3a628f7ff5179c5530c5813c90d89088ad0da9357747ba73959677898612/headers.parquet": {
       "sha256": "4e7d6e9f6774fabda9cb86c7051a7efc892cf4a8a55a9bfbeea4c2f950b9ec04",
@@ -14505,6 +17285,18 @@
       "sha256": "6fc2ee07955458adaf92a6b15136b9f5e463d5a20cfe60d743c748ab18902f80",
       "size": 1673
     },
+    "processing_audit/reference_identifiers/538ab672b48d90cd02b157639bc86240d2c870484bc0b5832e81144d56db8059/headers.parquet": {
+      "sha256": "c517312ad9eea18826327f206602d7175e7a4f11fda528b4833a2b3f562a9f17",
+      "size": 4612128
+    },
+    "processing_audit/reference_identifiers/538ab672b48d90cd02b157639bc86240d2c870484bc0b5832e81144d56db8059/manifest.json": {
+      "sha256": "28c7a50e11173b0e177598ac507bad2650ba1b406963111b4758abb9c477416f",
+      "size": 780
+    },
+    "processing_audit/reference_identifiers/538ab672b48d90cd02b157639bc86240d2c870484bc0b5832e81144d56db8059/validation.json": {
+      "sha256": "baf227f225fd98d7229712af8842eab3d7b09e3a30b7317d70f00e99531c712a",
+      "size": 1675
+    },
     "processing_audit/reference_identifiers/54eede5c453c26a7887320b14e5a24e5633f26a02605cb4eced83e0c6ebf6c8f/headers.parquet": {
       "sha256": "dc544353e0b6d639156d49040a4c589da8f8812f29ffbad29c805b1c387e8628",
       "size": 436413
@@ -14552,6 +17344,18 @@
     "processing_audit/reference_identifiers/5beaf411473e3094b14c469ab88d9970a3df623f7ba21bd2873dde75c21e9d3c/validation.json": {
       "sha256": "22194ad53de000d29ae0147fcc011bea5cf011b77d48cf262272ee9588abc00e",
       "size": 1666
+    },
+    "processing_audit/reference_identifiers/6165a073c99dc4f4212f94dbd9996bcc50f9b4945401dccc56e9cb966a0debd1/headers.parquet": {
+      "sha256": "7f25a4da5fe8150ece12e4e108a35445e14eca9fea1866e63dde3daae407a38e",
+      "size": 2866209
+    },
+    "processing_audit/reference_identifiers/6165a073c99dc4f4212f94dbd9996bcc50f9b4945401dccc56e9cb966a0debd1/manifest.json": {
+      "sha256": "8b72dcc8066e5a830cbe967389df36d219d9c11b16b4b1e73236a044d1ca2b3f",
+      "size": 780
+    },
+    "processing_audit/reference_identifiers/6165a073c99dc4f4212f94dbd9996bcc50f9b4945401dccc56e9cb966a0debd1/validation.json": {
+      "sha256": "c987a15c594c6db6662a2dfe4a0ce82e1bf0acd40b9a66a225efd3793f71a029",
+      "size": 1675
     },
     "processing_audit/reference_identifiers/65ef95d73524fc1b2ba26a218e8cc11cc1c88238ad0c677845b6aa6a9e920e7d/headers.parquet": {
       "sha256": "5faae877faa629954e6ce6d8da3654b38678757dca98f2855a7df43cc8b475f1",
@@ -14661,6 +17465,18 @@
       "sha256": "d4ebbcfb715ad999f527009eb8f09484c4aa7cc970b3b13e3c2681d6b716c1be",
       "size": 1734
     },
+    "processing_audit/reference_identifiers/b46a15bf9429126785609c9c414f7dfc6ca44a85bd8d6ccdedaf16da3dfabd12/headers.parquet": {
+      "sha256": "47311bf313a6221d2cfcc33dee7bb13ffe6abce16adc6a3ee5d279e85ed55cfb",
+      "size": 4193543
+    },
+    "processing_audit/reference_identifiers/b46a15bf9429126785609c9c414f7dfc6ca44a85bd8d6ccdedaf16da3dfabd12/manifest.json": {
+      "sha256": "9c5d3cead1b38ce8076e756f29327d9d931781b4708fea460a946ec757db8dd5",
+      "size": 781
+    },
+    "processing_audit/reference_identifiers/b46a15bf9429126785609c9c414f7dfc6ca44a85bd8d6ccdedaf16da3dfabd12/validation.json": {
+      "sha256": "f005f98618a55dd905f83e66790768019868230e4b3684ce397febbceb3c12a2",
+      "size": 1677
+    },
     "processing_audit/reference_identifiers/b9ee4bc31ad9ed372584c3761bc2a4b3d258858092b82383d5645266afd4d8d1/headers.parquet": {
       "sha256": "c8978c3ef3be1d34e7ec48ce337511b858839d4ed8f301576b6d2131f49af7d3",
       "size": 19263
@@ -14697,21 +17513,41 @@
       "sha256": "15e0aa5bc7d680aba52028f59f5a15f2caedb98b7b63e8c344d92c3c2964562d",
       "size": 1672
     },
+    "processing_audit/reference_identifiers/catalogue-history-23c126f8c5b11ac7caa5f9ada53dc0943bc380efaf90cf33187081739dc0cf19.json": {
+      "sha256": "23c126f8c5b11ac7caa5f9ada53dc0943bc380efaf90cf33187081739dc0cf19",
+      "size": 39971
+    },
     "processing_audit/reference_identifiers/catalogue-history-30bdf12597f52124d312984a042ae0409266bac76cce2ea66cf9a907602b1e88.json": {
       "sha256": "30bdf12597f52124d312984a042ae0409266bac76cce2ea66cf9a907602b1e88",
       "size": 39035
     },
+    "processing_audit/reference_identifiers/catalogue-history-4afe0763d4876e87ed96fd2c00dd43a6ac7a43036b75fe857b85762a57dc3a9f.json": {
+      "sha256": "4afe0763d4876e87ed96fd2c00dd43a6ac7a43036b75fe857b85762a57dc3a9f",
+      "size": 41523
+    },
+    "processing_audit/reference_identifiers/catalogue-history-8e1cedfeee3857c7d33b4d606b426d2170f021eb2b404c0d2095d849a11bbe7e.json": {
+      "sha256": "8e1cedfeee3857c7d33b4d606b426d2170f021eb2b404c0d2095d849a11bbe7e",
+      "size": 40439
+    },
     "processing_audit/reference_identifiers/catalogue-history-970fb5bc7ec6f43a30125a7a188139190099337b6ebfcac1dd6813dea59d406d.json": {
       "sha256": "970fb5bc7ec6f43a30125a7a188139190099337b6ebfcac1dd6813dea59d406d",
       "size": 39035
+    },
+    "processing_audit/reference_identifiers/catalogue-history-a64d51a47f31e92ab2e0e61d5f44c539c8d93424719b28d51115cec8958d678b.json": {
+      "sha256": "a64d51a47f31e92ab2e0e61d5f44c539c8d93424719b28d51115cec8958d678b",
+      "size": 41992
+    },
+    "processing_audit/reference_identifiers/catalogue-history-a6c986436ebf84acc5ed9a17599086056ed76b2af29c80266ff932c4323d8aaf.json": {
+      "sha256": "a6c986436ebf84acc5ed9a17599086056ed76b2af29c80266ff932c4323d8aaf",
+      "size": 39503
     },
     "processing_audit/reference_identifiers/catalogue-history-b54a5e74e31be2603ae60ae2831019a859d0c3397da9c972add0f49e34a61b5b.json": {
       "sha256": "b54a5e74e31be2603ae60ae2831019a859d0c3397da9c972add0f49e34a61b5b",
       "size": 39035
     },
     "processing_audit/reference_identifiers/catalogue.json": {
-      "sha256": "970fb5bc7ec6f43a30125a7a188139190099337b6ebfcac1dd6813dea59d406d",
-      "size": 39035
+      "sha256": "a64d51a47f31e92ab2e0e61d5f44c539c8d93424719b28d51115cec8958d678b",
+      "size": 41992
     },
     "processing_audit/reference_identifiers/cb8148136e53bde9fc0bfeeb17325d6e63da5788ac1e2dc6d8ea9331280eaf7e/headers.parquet": {
       "sha256": "2fa9b47cc474d8596bd216209a6163962a4aea42f67324974cee3df06f3927ab",
@@ -14798,8 +17634,8 @@
       "size": 1734
     },
     "processing_audit/reference_identifiers/operations.jsonl": {
-      "sha256": "4aae355d1df4a44c88e625e5300f72e85a392bb6b880a8569a1704d183901a0e",
-      "size": 6649
+      "sha256": "c80680eace1c95838ff822a4f9be3ddcfb0528faf344aa3aeeee6a925d3e151d",
+      "size": 251917
     },
     "processing_audit/reference_identifiers/processor-c3e8918132a046fd8bd7e396d97886e28ec4ac1dcfb54180f008cffae8a3e5ca.py": {
       "sha256": "c3e8918132a046fd8bd7e396d97886e28ec4ac1dcfb54180f008cffae8a3e5ca",
@@ -14836,6 +17672,10 @@
     "processing_audit/reference_identifiers/source_verification/0d52913d1211ffec175c2e9318ba0c864d7a87fe551d6b4bb3f65fbfeebc72a4.json": {
       "sha256": "34cd214cf0165f31cda679717da42a12eeeef35cd86fb60e1100444e2186b762",
       "size": 434
+    },
+    "processing_audit/reference_identifiers/source_verification/0dcd8d78223c64c20d6e2b3a40196a76aeebd847e6c0f2fc6e76c746cf76fd76.json": {
+      "sha256": "8023b894276352115772d905457835b722cf74f12c15d49ca4cee0f1696dad18",
+      "size": 433
     },
     "processing_audit/reference_identifiers/source_verification/0e84e5e2d1f59a403999a0506640bd4d274d9ec1af5f3ad28880ad175eb824e6.json": {
       "sha256": "b92fe5c6c3cf5225ac3aecb2a9bafdcceb126e2bc2ee9b67c09d5c99e604150e",
@@ -14889,6 +17729,10 @@
       "sha256": "2411e8317ba4c96da7ddf33e9c2fd9a7e913298105b852ee48038788f2633fee",
       "size": 419
     },
+    "processing_audit/reference_identifiers/source_verification/552cfcf266933a2885e22b851c4e5cd20b3c0ebde526ce3661ca18d4d1cd3fa3.json": {
+      "sha256": "d8e9ffc76bc9b5594bc480bdd54e35160f71bba3d5a73e6f2b8236939ec38aae",
+      "size": 420
+    },
     "processing_audit/reference_identifiers/source_verification/5c54c854dce22a3168e3d2a150960738d13e38a2e3f5b0ea61c3ef50e8200faa.json": {
       "sha256": "0086cd33e1e3af58b52ef2f31f087e712c279d5628211433475a42cec9bf6007",
       "size": 436
@@ -14917,6 +17761,10 @@
       "sha256": "0d9fa1b1d71589d3a363ffaf224b81ccc7e4174a14c76f841138368318230325",
       "size": 430
     },
+    "processing_audit/reference_identifiers/source_verification/8a4ff79fb806991f88e8497186b1e6c2c9065cf95db3df35fc77354218210c01.json": {
+      "sha256": "e7650525496ac2ec2e857b5febf2d4ab187a5bfab9ab7ff473dbeca6ca72f931",
+      "size": 443
+    },
     "processing_audit/reference_identifiers/source_verification/8ceec8b0b1d8c94e335cd0e1d286cc8b53e767a30cfd6a2af52af2cad19a921c.json": {
       "sha256": "f91cc713266c5e0f2b00ef61276a9a8b3712158af46a902fb759b86552bdbe44",
       "size": 436
@@ -14924,6 +17772,10 @@
     "processing_audit/reference_identifiers/source_verification/977b166f316281f62eceacd9a1cde1074db04edcf51025f0a419c1740c225db2.json": {
       "sha256": "d08e8426c5fb9bdf18202368646c0d2eeb023aa732aaeb02afd70399a57db521",
       "size": 404
+    },
+    "processing_audit/reference_identifiers/source_verification/a1ea44cbd01268a7dbfa8bc816bd22be5a9059df142947be66c1a2a8bbfd0dfc.json": {
+      "sha256": "67621947c710fdb7fad300a7acab3b70efa56655cf7e9ee19ac69b6ef47a63ce",
+      "size": 441
     },
     "processing_audit/reference_identifiers/source_verification/a2196087e0122e37fd0861a1b3d49c0aba68320655453418f5e3ff4842e22ed3.json": {
       "sha256": "c0fb262df7747a835037f125202beece97bc1bf9165a449a007286e9d9f448ec",
@@ -14993,13 +17845,49 @@
       "sha256": "68c393dbbf883fa8a6737513e9639d9d81d27fdf0197ec2de48c36e0f2009602",
       "size": 434
     },
+    "processing_audit/reference_identifiers/source_verification/ef99296d6de33313a73c87e9ea0a9deb58cdda1e30b4348e35ed3fdee0470be4.json": {
+      "sha256": "adc60186546e00b9a32efd360484c7ab5c26d102c6b50e85a5aa67454787ee5e",
+      "size": 437
+    },
     "processing_audit/reference_identifiers/source_verification/f8390a85bcecbd33a0aa95a0038b6cb29bfe8d764b123bb0fa3702d0bc9e848a.json": {
       "sha256": "34125a2bf5c6a9a5d937d4a8c6bf87868202011a2b2252fc187e2d5da26013ab",
       "size": 437
     },
+    "processing_audit/reference_identifiers/source_verification/f888cbb3c7b3dc8c0cfd41e22ac95e8cee205d697750341455da34e24cc4cf04.json": {
+      "sha256": "2bd9881639e60ed417fcf32a5835402684ee4f30f095623a46ccbade26a42220",
+      "size": 437
+    },
     "processing_audit/reference_identifiers/status.json": {
-      "sha256": "d9d17392cdb0016598eea7c5e06177ba5cb6e5da2d39257914157a7a82c0368a",
-      "size": 924
+      "sha256": "624197508aa555f9507a8805fc9064dbae6f36597420cf3c6c0815875dad167d",
+      "size": 925
+    },
+    "processing_audit/refresh_rna_snapshot-1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da.py": {
+      "sha256": "1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da",
+      "size": 9945
+    },
+    "processing_audit/refresh_rna_snapshot-5de3c79e90a92daf3aa4e2514ee118bb35c1bb6c4246dc98dbfcf7ab1296a487.py": {
+      "sha256": "5de3c79e90a92daf3aa4e2514ee118bb35c1bb6c4246dc98dbfcf7ab1296a487",
+      "size": 12850
+    },
+    "processing_audit/release-0.0.5.0-audit-upload-status-a6b239a6e2fe5ddb1a31a6163abc46841cae6fed66c3cd5fbfabaa9eff20239b.json": {
+      "sha256": "a6b239a6e2fe5ddb1a31a6163abc46841cae6fed66c3cd5fbfabaa9eff20239b",
+      "size": 339
+    },
+    "processing_audit/release-0.0.5.0-plan-8e47eda054dab5b9faf1566f2035e8a3f9e287a207765a696c7bad0a0f41e15b.json": {
+      "sha256": "8e47eda054dab5b9faf1566f2035e8a3f9e287a207765a696c7bad0a0f41e15b",
+      "size": 2358
+    },
+    "processing_audit/release-005-recovered-plan-dcae7f6155aed8e83f51b69f89d30cbb10bb558f6642d983d92e1bc246a2990b.json": {
+      "sha256": "dcae7f6155aed8e83f51b69f89d30cbb10bb558f6642d983d92e1bc246a2990b",
+      "size": 2479
+    },
+    "processing_audit/release-005-recovered-tooltip-recovery-audit-8005eea3924d1a8d87c5c3bfd79ea140bb6e2822c247ccde09875ecc73e942a0.json": {
+      "sha256": "8005eea3924d1a8d87c5c3bfd79ea140bb6e2822c247ccde09875ecc73e942a0",
+      "size": 1772
+    },
+    "processing_audit/release-005-recovered-tooltip-recovery-status-e2a00cb4861aaf90d5cc8f012f809728892e9b76c341dd5c08c0ab304c6b321d.json": {
+      "sha256": "e2a00cb4861aaf90d5cc8f012f809728892e9b76c341dd5c08c0ab304c6b321d",
+      "size": 298
     },
     "processing_audit/resource-policy-24-thread-handover-complete.json": {
       "sha256": "169e9f892d0a93370eb07c3d7c34cf4de8bbeeb2de0f3781764c470a6d01acc4",
@@ -15013,6 +17901,14 @@
       "sha256": "40b359c8de49aff1f39961a40e07b2f935e95fb1ba1bcc572f2ccfa0fe8c4e1b",
       "size": 12354
     },
+    "processing_audit/rna-preservation-307-to-324-026d48468550f52c7e45be5fa59107a5df81871da1d36885200db3ebd7e36e1d.json": {
+      "sha256": "026d48468550f52c7e45be5fa59107a5df81871da1d36885200db3ebd7e36e1d",
+      "size": 27183
+    },
+    "processing_audit/rna_snapshot_preservation/release-005-to-006.json": {
+      "sha256": "24c4d4b6eedea593fa022e28d11e1dd03cc809a43161367570f17ee8482f71d0",
+      "size": 27728
+    },
     "processing_audit/rna_technical_qc/latest/export_rna_technical_qc.py": {
       "sha256": "251cc88bf605aa7b0275e0d8d3f324487af3b6047fad357881b8585965e87be1",
       "size": 6806
@@ -15022,19 +17918,19 @@
       "size": 18103
     },
     "processing_audit/rna_technical_qc/latest/kallisto_GT1.csv": {
-      "sha256": "5e4d2983499bbcc93f4009e1dd3247e5cd5435fc3d72f645a801944fb0a8d051",
+      "sha256": "b0365d0ae6d91326772f66ecb820a9938d2f4778ec0cc2b64fa34268bda6b8d0",
       "size": 378616
     },
     "processing_audit/rna_technical_qc/latest/kallisto_ME49.csv": {
-      "sha256": "9f82b05f5b8eec8f7abc48ad55f990476f2ecc68961919053a0b1d162c4f49ce",
-      "size": 1077558
+      "sha256": "5a680b1bc92e652aca25560f722f0c7e10ad08380983078342dd265c565834fa",
+      "size": 1142926
     },
     "processing_audit/rna_technical_qc/latest/kallisto_ME49_host.csv": {
-      "sha256": "8f43c6b9d3697440af97937293cb4c84c04e41edfb4ec964f2ecf7ffa412e104",
-      "size": 1097082
+      "sha256": "a7ebb42c6a136e61e7765006d4c3126bf43535f6a0340f1929c037292279fee8",
+      "size": 1163598
     },
     "processing_audit/rna_technical_qc/latest/kallisto_VEG.csv": {
-      "sha256": "9e988cbfa5656cacb264ed5d26923bd703400de8bf9139d8705b6ec99ae45ce4",
+      "sha256": "cdb18080dbf46cd78e76b33aa8e5c4d646b7808ebcaa3e2d0998b56ad456abeb",
       "size": 378616
     },
     "processing_audit/rna_technical_qc/latest/measurement_qc.py": {
@@ -15046,36 +17942,36 @@
       "size": 7356
     },
     "processing_audit/rna_technical_qc/latest/salmon_GT1.csv": {
-      "sha256": "27c0e2bd4d37e6b3026fd50ddd60b924f68a4ee036bfbaf72db18f8217ab6542",
+      "sha256": "2b0bc68b89ea2469af62723a9c5b2c40e7f05806c90d0e1005d0fb09373c2444",
       "size": 378302
     },
     "processing_audit/rna_technical_qc/latest/salmon_ME49.csv": {
-      "sha256": "0cf2906f5a5f9d11a28abdd403aa21a5ba8b446fc461dc54d8a046313b165659",
-      "size": 1076442
+      "sha256": "870c51155ab6380a71fa2537915abc2f40eb66b9c6c94b3088960789c8560e40",
+      "size": 1141776
     },
     "processing_audit/rna_technical_qc/latest/salmon_ME49_host.csv": {
-      "sha256": "dc284cf724c0ee1716ea474a6795375db8dd33cb2a28fe4d1b5c294d29978ee0",
-      "size": 1095934
+      "sha256": "8acc7a1741cafddc7303c63a790ce04397b65845acd88f0a1cc330c0a3b088b5",
+      "size": 1162422
     },
     "processing_audit/rna_technical_qc/latest/salmon_VEG.csv": {
-      "sha256": "e5fa355ff43115e45f938bb8a8c5436eadc74116cfb9809f86ab478d12ed5896",
+      "sha256": "c7e4495de68c8dfcff2bb67a7ad4361fbefcf64381528253d7c036e127d39543",
       "size": 378298
     },
     "processing_audit/rna_technical_qc/latest/validation.json": {
-      "sha256": "30db3cfa1ab321a6bdea2e898560d0cae7d86d5d95d592c17dafc029f1fc8f25",
+      "sha256": "49242d87296ad0bdce34b74ac8768a1d0f45571df3ba6923e2b447cb4732fe12",
       "size": 3287
     },
     "processing_audit/rna_technical_qc/operations.jsonl": {
-      "sha256": "340febb8f8b8d72d1e692e64fd3fa50ff6a1d475f5e424a65667cd224dba1016",
-      "size": 12244
+      "sha256": "3f11efff1c4d9d38c22f874acdf0c0f76b2d440be8c208b4492812b9048af5b0",
+      "size": 15305
     },
     "processing_audit/run_comparability_review.tsv": {
-      "sha256": "2f633fecfe2acaa698fac638879b5ad0ad408b4884dd65f8e0aa26cffd5a41d6",
-      "size": 290443
+      "sha256": "6aa07c7b6de2488f6afd5229252b3d9bdde253052f64172ea3577fcdd94918e7",
+      "size": 290459
     },
     "processing_audit/runs.jsonl": {
-      "sha256": "496b634beb33860d5b1e35c615ddf5f06a615e5f004421840d2012ba07b6158a",
-      "size": 6037946
+      "sha256": "8836fc3c532e8b480a6efc2fc02bc9df87e24241ff2760be79e1ebbced4aebd3",
+      "size": 6286798
     },
     "processing_audit/snapshot-worker-source-1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da.py": {
       "sha256": "1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da",
@@ -15717,6 +18613,38 @@
       "sha256": "86e79074e278d7d39e73a735c8dacd5e9acbf92f28f0da46162f33ac9ff333f4",
       "size": 44694
     },
+    "processing_audit/upload_release_audit_005-a50385289745fb0086094a8610d94b3bb465f0c2d1fd08d0c9ca69e465ac610d.py": {
+      "sha256": "a50385289745fb0086094a8610d94b3bb465f0c2d1fd08d0c9ca69e465ac610d",
+      "size": 3010
+    },
+    "processing_audit/validate_deposited_source_filter-7de38f02e547584dbb6bb3c17376dcd011ffd4675047c4820c2fc08d59189f63.py": {
+      "sha256": "7de38f02e547584dbb6bb3c17376dcd011ffd4675047c4820c2fc08d59189f63",
+      "size": 4967
+    },
+    "processing_audit/validate_portable_all_protein_identifier_evidence-349e6966adc10bee20d825237e2c1e20833138bcbe9b3163fdc93cc58e3596cd.py": {
+      "sha256": "349e6966adc10bee20d825237e2c1e20833138bcbe9b3163fdc93cc58e3596cd",
+      "size": 6454
+    },
+    "processing_audit/validate_portable_expanded_protein_identifier_evidence-74ece942eeb67b0153f1742f3a37eb30006438ef6bc02aff8ba75235c79e4f69.py": {
+      "sha256": "74ece942eeb67b0153f1742f3a37eb30006438ef6bc02aff8ba75235c79e4f69",
+      "size": 6491
+    },
+    "processing_audit/validate_portable_protein_identifier_evidence_20261030-f8a6007c5f7cfda53acf306a6c429fbd82069c7e00719a223faf36584f40981f.py": {
+      "sha256": "f8a6007c5f7cfda53acf306a6c429fbd82069c7e00719a223faf36584f40981f",
+      "size": 5972
+    },
+    "processing_audit/validate_portable_reported_quantities-e63f7bd3768b075c95b732d5ac52af49a33626731876a35c1058da5f0fa226cd.py": {
+      "sha256": "e63f7bd3768b075c95b732d5ac52af49a33626731876a35c1058da5f0fa226cd",
+      "size": 5256
+    },
+    "processing_audit/validate_portable_reporter_values-b1475c610fe6cf1f33e9aae05b4b9743c138880022ff6a62b27cba90e0badb41.py": {
+      "sha256": "b1475c610fe6cf1f33e9aae05b4b9743c138880022ff6a62b27cba90e0badb41",
+      "size": 4952
+    },
+    "processing_audit/validate_release_005-61b097dba44c56b482b39085e5beb20c9042c7d98d65c7fdb30fe6412e2665d6.py": {
+      "sha256": "61b097dba44c56b482b39085e5beb20c9042c7d98d65c7fdb30fe6412e2665d6",
+      "size": 2466
+    },
     "processing_audit/verified-publication-0.0.4.0.json": {
       "sha256": "5fd495bd432beff5ad8b8090ed5efbf028894a4e3ed8894cc9a69ba6203ad8b2",
       "size": 597
@@ -15728,6 +18656,10 @@
     "processing_audit/worker-source-fb42dc01f1b403f038fc6989ab1079321d1e7eb3f5057bc1ab0fa6404ad05aaf.py": {
       "sha256": "fb42dc01f1b403f038fc6989ab1079321d1e7eb3f5057bc1ab0fa6404ad05aaf",
       "size": 22620
+    },
+    "processing_audit/workflow-retry-validation-b1896467ccf51a5e20891880e9d5476a4e0a60e9880f8b324fc14d81d64a5cfd.json": {
+      "sha256": "b1896467ccf51a5e20891880e9d5476a4e0a60e9880f8b324fc14d81d64a5cfd",
+      "size": 1308
     },
     "published_expression/20261029T190004Z-RSEM/README.md": {
       "sha256": "ade9ca311104e85c3649d0b1b7ffd825a7ed76184a37fcec0511a0b3d2472980",
@@ -16670,36 +19602,36 @@
       "size": 4569
     },
     "rnaseq/matrices/GSE223819/kallisto_ME49.parquet": {
-      "sha256": "78572def86fe791d660f354df7e96963e01a32d926863420ef4d50faf59d34ed",
-      "size": 546702
+      "sha256": "96247aa25180b73f691fc44836dc81983703f90b1846064503736ad9ff20891d",
+      "size": 2324953
     },
     "rnaseq/matrices/GSE223819/kallisto_ME49_host.parquet": {
-      "sha256": "0afa99e25f605760cb4ec789307d8d16f7ed7d367b22b491d3d21780a07a547a",
-      "size": 382636
+      "sha256": "7c21dab0323d339604281b8edf441b9e0fdc8d5906a8492d8290ac7baf453675",
+      "size": 1603378
     },
     "rnaseq/matrices/GSE223819/kallisto_ME49_host_samples.tsv": {
-      "sha256": "81d6dc174851b2ff68619bc406a38c03e08a525433fa3205929ce82df0e3d990",
-      "size": 2875
+      "sha256": "2032c6fce30972dd25d99dfc5a992b51c1a18d97a58dfa590b7911a87b599cd4",
+      "size": 12814
     },
     "rnaseq/matrices/GSE223819/kallisto_ME49_samples.tsv": {
-      "sha256": "9b4dfceda42a8afa89fafae6df66d7fa89d69092f61adbad72a7b7d913c9a82b",
-      "size": 2801
+      "sha256": "dc247dbb9f09339792ea94f7e425ff64e2c771f5576c60ad4860722712cdb78e",
+      "size": 12535
     },
     "rnaseq/matrices/GSE223819/salmon_ME49.parquet": {
-      "sha256": "b7c655a1354d3f3fa019979504c2d39eb0d9c1aad8b92729394e5644620db7ec",
-      "size": 595745
+      "sha256": "84789747c3ab5fd8e693e0a45980fecf5c7128f6dac52fdea036b57d0c5df7c9",
+      "size": 2541401
     },
     "rnaseq/matrices/GSE223819/salmon_ME49_host.parquet": {
-      "sha256": "f35b0416fefda0761744f20cd5a199939e5ebc21fd8605639c46d023bf349510",
-      "size": 397358
+      "sha256": "16005d3e8d378f1367b421eaf11ebeb4ee6a250026e96a5f52b5caeb4ccca533",
+      "size": 1669569
     },
     "rnaseq/matrices/GSE223819/salmon_ME49_host_samples.tsv": {
-      "sha256": "50578e7328f7dc1c8647e350d1a1542afc45ccd69d4c9968d8278ac1d78838f6",
-      "size": 2875
+      "sha256": "07d801a740faefd087059b3569e1094f2093492e18a6f8fe6b8c791708151387",
+      "size": 12819
     },
     "rnaseq/matrices/GSE223819/salmon_ME49_samples.tsv": {
-      "sha256": "9b4dfceda42a8afa89fafae6df66d7fa89d69092f61adbad72a7b7d913c9a82b",
-      "size": 2801
+      "sha256": "dc247dbb9f09339792ea94f7e425ff64e2c771f5576c60ad4860722712cdb78e",
+      "size": 12535
     },
     "rnaseq/matrices/PRJNA1008424/kallisto_ME49.parquet": {
       "sha256": "6e6e05ee7e107e5b611799dfc447e3517d5da26230070a2ec6fe88ed0c542e41",
@@ -16734,16 +19666,16 @@
       "size": 4163
     },
     "rnaseq/sample_design.tsv": {
-      "sha256": "dc988e3c886f1f18e2ebd8dd32656112919ad443a37840cb2a4a7e1f973b10b8",
-      "size": 957360
+      "sha256": "16de246479c3e8b45cff6975f984821075b4429e2f778bd619d18e8442736911",
+      "size": 968729
     },
     "rnaseq/sample_metadata.json": {
-      "sha256": "7cb6f54dc22211526f8070f75218d7dfb5faf34dda95a237f7c583e824d44aa4",
-      "size": 190139
+      "sha256": "f38eb93ea780546184e3ad82b49b0c8542eb2afc1d98a87749f49fe8b94cef46",
+      "size": 204546
     },
     "rnaseq/snapshot.json": {
-      "sha256": "044c38c45ab5d6f0a69e01f86aaf4ee2f9045c29764d51989489aa59158b0a91",
-      "size": 504923
+      "sha256": "4ca80e7c08f78b0c815e27a4ae30c9909aec0c59b2861ab97432c9e00603b38c",
+      "size": 524134
     },
     "secretome_partition.tsv": {
       "sha256": "01ff6998592d120f84c5913ef3f704061245b9b4b5c59f6012f66ef3315efc31",
@@ -19831,8 +22763,8 @@
     }
   },
   "schema_version": 1,
-  "sha256": "44f3db3f2ceb57620d3fd09b5c2f7486298649bf6f2f8c64c7bb818fec251522",
-  "size": 872109077,
-  "url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.5.0/parascape-data-0.0.5.0.tar.gz",
-  "version": "0.0.5.0"
+  "sha256": "4f6c1a686a253200b025eefbeb4b220c9bcb84f8fca437d640f3809d43b6a17f",
+  "size": 985049339,
+  "url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.6.0/parascape-data-0.0.6.0.tar.gz",
+  "version": "0.0.6.0"
 }
