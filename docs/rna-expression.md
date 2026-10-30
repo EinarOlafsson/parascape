@@ -181,6 +181,33 @@ source records across quantity families and are not independent sample counts.
 Missing candidates apply only to the acquired eligible source tables. Input-table
 linkage, irregular layouts and other unreviewed column roles remain explicit gaps.
 
+The **Reference identifiers** tab helps inspect identifier declarations before
+combining gene and protein measurements. Select an acquired FASTA source, choose
+**Original primary identifier** or **Explicit source gene declaration**, enter an
+exact case-sensitive literal and select **Show original identifier records**.
+Repeated primary identifiers and gene declarations retain distinct source rows.
+CSV exports include exact original headers, declaration fields, source project
+associations, input SHA-256 and header-index SHA-256.
+
+The current header collection covers 46 acquired source occurrences from 54
+planned FASTAs. Identical bytes shared across deposits produce 30 content indexes
+with 297,621 header records; 75,597 records have explicit `gene` / `gene_id`
+declarations. These are header records, not unique current genes or independent
+reference versions. Eight files still await acquisition; GFF/GTF annotation files
+are outside this FASTA header workflow. Native processing independently compares
+text/regex parsing with binary/lexical parsing for every row and field, preserves
+original header whitespace and records source/code/software hashes and operations.
+No sequence transformation is performed.
+
+Supported literal declarations are `gene`, `gene_id`, `transcript` and
+`transcript_id` with `=` or `:` separators. Gene lookup uses only `gene` and
+`gene_id`; unrecognised fields and gene symbols such as `GN` are not converted to
+canonical identifiers. A source FASTA can be a contaminant list or small sequence
+set; its presence does not prove it was the search database for a measurement
+file. Source-to-measurement database linkage and current gene-version equivalence
+remain unreviewed. These header data and the browser are local follow-ups after
+0.0.4.0 and await a subsequent release.
+
 For PRIDE records, **Dataset coverage** shows primary project metadata for all
 209 catalogue projects. The submitted SDRF collection contains 52 design files and
 1,392 source rows across 49 projects. Open a project, expand **Submitted SDRF**, and

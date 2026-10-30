@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Browse original reference header identifiers and explicit source gene
+  declarations in Compare → Reference identifiers. Preserve repeated records,
+  case, version suffixes and source hashes; do not convert symbols or approve
+  canonical gene equivalence. The first local index covers 46 acquired FASTA
+  occurrences / 30 distinct file contents / 297,621 header records.
+
 - Show exact submitted experiment-label candidates for 357 protein quantity
   columns across six projects. Preserve all source rows and fractions without
   inferring the correct quantification input table or biological replication.

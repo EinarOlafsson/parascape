@@ -333,6 +333,7 @@ def install(window) -> ComparePanel | None:
     from .dataset_coverage_panel import DatasetCoveragePanel
     from .source_matrices_panel import SourceMatricesPanel
     from .deposited_values_panel import DepositedValuesPanel
+    from .reference_identifiers_panel import ReferenceIdentifiersPanel
     profiles = RNAProfilesPanel()
     profiles.gene_chosen.connect(window._workflow_gene)
     tabs = QtWidgets.QTabWidget()
@@ -341,6 +342,7 @@ def install(window) -> ComparePanel | None:
                         (PublishedExpressionPanel(), 'Published expression'),
                         (SourceMatricesPanel(), 'Deposited matrices'),
                         (DepositedValuesPanel(), 'Other measurements'),
+                        (ReferenceIdentifiersPanel(), 'Reference identifiers'),
                         (DatasetCoveragePanel(), 'Dataset coverage'),
                         (panel, 'Condition comparison')):
         scroll = QtWidgets.QScrollArea()

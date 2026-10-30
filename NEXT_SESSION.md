@@ -1,5 +1,46 @@
 # Next session: start here
 
+**0.0.4.0 publication completed (2026-10-29):** frozen bb8ebca passed exact nightly
+Tests40967543108 and Documentation, then main/publication gates. Official PyPI
+0.0.4.0 JSON verified: wheel1756202 bytes, SHA
+`a9234a6e40b1519aebc42544371be0ccc3d4cf7285410de346b477ab986eaa40`;
+GitHub tag v0.0.4.0 data SHA remains9fa0662f…0dc9c09. Publisher status is complete.
+The reviewed follow-up push automatically advanced nightly through35fc377 and
+completed. Earlier frozen-release-wait notes are historical: coherent new checked
+changes can now be pushed normally to nightly. Public0.0.4.0 includes307 RNA
+entries,147 original-value matrices and54 platform indexes; later Workbench,
+protein/metadata/source-link/reference-header additions await the next release.
+
+**Original reference identifiers (2026-10-29):** Compare → Reference identifiers
+now supports exact original primary-ID and explicit source gene-field lookup with
+CSV provenance, preserving repeated rows, case, version suffixes and header text.
+Native `parascape-reference-identifiers.timer` runs every5min atCPU24/1GiB.
+Current54 planned FASTAs:46 acquired occurrences,8 pending;30 distinct content
+indexes /297621 header records /75597 headers with explicit gene declarations.
+Fourteen source occurrences contain such declarations. These are not unique
+current genes or proof that a reference database was used for a measurement.
+GFF/GTF files are outside this FASTA header workflow.
+
+NAS `processing_audit/reference_identifiers` retains current/historical catalogues,
+source signature/SHA verification, exact processor revisions, immutable Parquet
+header packs, manifests, independent receipts and operation logs. Processor
+fa5c6303 preserves all original headers and strict gene/gene_id/transcript/
+transcript_id declarations; binary-line lexical validation independently replays
+every text/regex-produced cell. No sequence transformation, symbol conversion,
+canonical gene-version mapping or biological inference. Synthetic changed fields
+with updated output checksums are refused; BOM/CRLF/trailing whitespace and
+repeated IDs preserved. Cached inputs use recorded source signatures, with full
+SHA verification on new/changed sources; output hashes remain checked.
+
+Offline proof `/media/carruthers/mnt1/parascape-reference-identifiers-validation-20261029`
+checks all46 source occurrences /30 content indexes, exact primary/gene queries
+and actual Qt CSV preservation with NAS/network blocked.550 focused reader/UI/
+docs/Compare/release-builder checks pass. These new data/browser additions are
+unreleased. Next larger steps include linking source reference declarations to
+measurement identifiers without collapsing groups or assuming cross-version
+identity, then freezing the expanded data for a subsequent release. Full dataset
+goal remains active/incomplete; historical inference goal remains paused.
+
 **Submitted experiment-label candidates (2026-10-29):** Source columns and
 submitted factors now also shows exact `Experiment` label candidates for original
 Intensity/LFQ/iBAQ column suffixes within the same declared project. All matching
