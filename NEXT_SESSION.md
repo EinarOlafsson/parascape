@@ -1,5 +1,14 @@
 # Next session: start here
 
+**24-thread handover verified complete (2026-10-29):** native completion-boundary
+handover exited successfully. Quantifier parent3614034 has actual environment
+`PARASCAPE_THREADS=24`; its new fasterq-dump child3614170 uses `-e24` for
+SRR23248136. The earlier eight-thread run was preserved through completion. The
+resource guard currently uses protected CPUs0-7 under observed I/O pressure;
+quiet ceiling remains CPUs0-11,16-27. Audit proof is NAS
+`processing_audit/resource-policy-24-thread-handover-complete.json`. Earlier notes
+about the pending handover describe the prior state, not a further required restart.
+
 **Exact quantity-column source links (2026-10-29):** Other measurements now has
 **Source columns and submitted factors…**, available without a feature query.
 Original sample/column records remain unchanged; separately pinned filename links
