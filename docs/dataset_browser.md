@@ -194,3 +194,33 @@ missing cells and all row annotations. Each immutable pack records the source,
 processor and dependency hashes, software versions, full-cell reconciliation,
 unfiltered technical QC and operation history. These quantities retain their
 source grouping and scale; cross-study scale compatibility remains unreviewed.
+
+
+### Source-labelled log2 protein quantities
+
+The local `deposited_values/protein_log2_quantities` collection preserves exact
+`PG.ProteinAccessions` rows and numbered filename columns ending in
+`.PG.Log2Quantity`. Search Other measurements for `PXD084269` and choose the
+`BGS_Analysis_Grid_View_Report-Pivot.tsv :: PG.Log2Quantity` analysis. This first
+table contains 7,576 rows, five source columns and 37,880 original cells, including
+1,909 missing cells. It was admitted after frozen data release 0.0.6.0.
+
+Values stay on the source-labelled log2 scale. No exponentiation, normalization,
+averaging, row selection or imputation is applied. Original candidate,
+completeness, variability and average-log2 fields remain annotations. A source
+log2 zero is retained as a numeric value; it does not establish absence of
+expression. Repeated accession labels and repeated filenames keep their original
+rows and numbered column identities. The five-minute importer retains source and
+processor hashes, literal tokens, independent full-cell reconciliation,
+unfiltered technical QC and operation records.
+
+The source-column association loop now discovers protein quantities across all
+active namespaces. It pins catalogue bytes and manifests, refuses changes during
+reconciliation, and preserves every earlier association report. Exact numbered
+`PG.Log2Quantity` filename headers can link to primary file records and original
+submitted design rows without trimming filenames or changing case. The first
+log2 table adds five exact primary-file matches and five submitted row
+occurrences. Source columns and CSV metadata retain all matching occurrences.
+These links expose the deposited metadata; they do not establish control pairing
+or biological independence. Other source columns retain explicit unresolved
+roles. Both new local collections await a later portable data release.

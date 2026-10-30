@@ -1,5 +1,59 @@
 # Next session: start here
 
+**Current dataset continuation (2026-10-30, supersedes older pending-release notes):**
+Previous goal turn made verified progress: accession importer enabled and verified;
+0.0.6.0 publication completed. Current dataset goal is active and incomplete.
+Historical inference goals64/65/66 remain paused. Official6 publisher state at
+`~/.local/state/parascape-release-0.0.6.0/status.json` is complete at38ad27e;
+main publish run41144027558 succeeded. Live checkout/cache synchronization also
+completed. Deferred source-flag followupb079984 finished normally; source and
+documentation11fc841 are on nightly. PyPI6 remains frozen324RNA/136quantities;
+source-flag view feature and new local admissions are outside that wheel/asset.
+
+New native `process_protein_log2_quantities.py` preserves original accession rows
+and explicitly labelled log2 filename columns in independent namespace
+`prepared_deposited_values/protein_log2_quantities`. First table PXD084269:
+7576rows ×5columns =37880cells /1909missing. Processor6c6a3f4c retains all
+candidate/completeness/CV/average-log2 declarations, repeated accessions and exact
+filenames. No exponentiation, imputation, normalization, averaging or filtering.
+Ten synthetic corruptions refused; actual full-cell/token/binary64 and offline
+Qt/CSV/context/treatment proof at
+`/media/carruthers/mnt1/parascape-log2-validation-20261030`.
+All137 prior packs/manifests/outputs unchanged. Native5minute timer enabled,
+24CPUaffinity/2GiB, BLAS2. Unsupported layouts retain explicit review gaps.
+
+The previous-turn accession abundance source PXD041907 has2496rows /6groups /
+14976cells /1550missing. Source labels F1..F6 link only exact same-file presence
+header candidates; no sample/replicate identity inferred. Its processor c53bef53,
+8-corruption synthetic checks and actual offlineQt/CSV proof are archived under
+`processing_audit/protein_accession_values`; local proof
+`/media/carruthers/mnt1/parascape-accession-validation-20261030`.
+Both accession assays remain distinct from protein-group quantities, do not enter
+the group-qualified identifier index, and do not inherit group flag meanings.
+
+Native `export_protein_column_design_links.py` d14bba33 now discovers all active
+protein-group/accession namespaces with catalogue and manifest pins/race refusal.
+Exact PG.Log2Quantity filename extraction added without changing old PG.Quantity
+rules. Collection ed06f241… covers131protein packs /856columns:16exact primary
+filematches,12unresolved,828unreviewed roles,10submitted rowoccurrences,
+357experiment-label candidatecolumns. Every65 old report file is byte-identical.
+New log2 source supplies5exact primary files+5submitted rowoccurrences; biological
+sample/control/replicate independence is not inferred. Full131reader proof plus
+actual offlineQt source tree/CSV are at
+`/media/carruthers/mnt1/parascape-all-column-links-validation-20261030`.
+Original sources are independently reparsed; ambiguity/duplicate-row/extension
+conversion refusal checked. Existing5minute source-link timer stays enabled.
+
+Live quantity catalogue138tables (131protein/7Workbench), 1319209originalcells /
+41589missing /1096source columns. Counts repeat quantity families/columns and are
+not independent samples or unique proteins. New source tables and expanded links
+await future portable release; don't mutate frozen6. Downloads3386467,
+PRIDE3533750, quant3614034 and active salmon480572 confirmed alive this turn.
+Latest325/1011verified RNA entries,324integrated; nextbatch349. Resource guard
+fast mode reserves12-15/28-31,24CPUmax; internal mapper may use8 effectively.
+Continue acquisition, remaining original quantity formats and explicit sample/
+identifier/scale compatibility work; do not mark full goal complete.
+
 **Original source flag views (2026-10-30, after frozen6):** Independent follow-up
 checkout `/media/carruthers/mnt1/parascape-source-flags-followup-checkout` starts
 at38ad27e. New source_flags.apply annotates literal source fields and optionally
