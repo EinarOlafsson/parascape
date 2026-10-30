@@ -1,5 +1,36 @@
 # Next session: start here
 
+**Original source flag views (2026-10-30, after frozen6):** Independent follow-up
+checkout `/media/carruthers/mnt1/parascape-source-flags-followup-checkout` starts
+at38ad27e. New source_flags.apply annotates literal source fields and optionally
+excludes exact+ in Reverse/Contaminant/Potentialcontaminant/Onlyidentifiedbysite
+only for declared protein-group quantities. Default remains unfiltered. Missing
+or unfamiliar values and other assays remain unreviewed/retained. Identity is
+manifestSHA+source_row; repeated gene/group labels and source files cannot share
+flags accidentally. Inconsistent row metadata is refused. No biological score,
+normalization, imputation, pooling, sample/control/replicate inference or source
+file mutation. This is an explicit view operation, not biological validation.
+
+Other measurements adds visible flag declarations and an opt-in checkbox.
+Changing its rule clears stale results and treatment state. CSV exports carry
+uniquely named treatment JSON sidecars with CSV digest, source hashes, exact query,
+identifier evidence, policy/code/version and excluded source rows; earlier records
+are preserved. Separate treatment export works for all-excluded/no-match results.
+All-excluded matches are distinguished from missing expression. Whole-matrix QC
+remains unfiltered and says so explicitly.
+
+Offline independent vectorized flag audit covers all136 tables /177781 original
+source-row occurrences:12021 marked and22571 with no declared fields (counts
+repeat quantity families, not independent samples or unique genes). Retained
+numeric bits on each first original column and every original output-file hash
+are unchanged. RealQt/CSV sidecar, all-excluded log and unfiltered whole-source QC
+passed with NAS/network forbidden. Proof is retained under
+`/media/carruthers/mnt1/parascape-source-flags-validation-20261030-v2`.
+Keep frozen6checkout/source38ad27e unchanged while exactCI is pending. New follow-up
+must wait for official6 publication and live-checkout synchronization before
+nightly push, so it cannot cancel that CI. Full dataset goal remains active and
+incomplete; historical inference goal paused unchanged.
+
 **Expanded0.0.6.0 frozen preparation (2026-10-30):** Isolated source checkout
 `/media/carruthers/mnt1/parascape-release-0.0.6.0-checkout` starts atccce694;
 version bumped with scripts/release.py. Task-owned stage

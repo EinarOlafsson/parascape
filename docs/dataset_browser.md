@@ -133,3 +133,35 @@ The importer runs every five minutes under the independent
 approved for direct whole-cell RNA/protein concordance and are outside the frozen
 0.0.5.0 snapshot. The prepared exact identifier index includes these tables while
 keeping every ambiguous declaration and whole-group quantity separate.
+
+
+### Original source flags and view treatment records
+
+Other measurements shows exact original flags beside each queried value. The
+optional **Exclude rows with source "+" flags** checkbox applies only to deposited
+protein-group quantities and literal `+` values in `Reverse`, `Contaminant`,
+`Potential contaminant` or `Only identified by site`. It starts unchecked. Unknown
+values, whitespace variants and missing declarations are retained as unreviewed;
+a blank or missing flag is not a biological quality score or proof of a clean row.
+Other assays do not inherit protein flag meanings.
+
+Exclusions use the original measurement manifest and row ordinal. Repeated labels
+and different sources therefore keep their own flags. Original values, units,
+missing cells and files stay unchanged; the selected view can omit marked rows.
+A query whose matches are all excluded is reported as filtered, not absent
+expression. **Export column technical QC** still describes every original source
+row and is not restricted by this view filter.
+
+**Export displayed measurements** writes the retained original values plus a
+separate uniquely named `.treatment-….json` file beside the CSV. The record pins
+the CSV digest, source manifest/matrix/token hashes, exact query and identifier
+context, policy/version and excluded original rows. Existing treatment records
+are preserved when a CSV is exported again. **Export view treatment record** also
+works when every query match was excluded or no exact match was found. Changing
+the source, query or rule clears prior results and treatment state.
+
+This rule uses source declarations. It does not calibrate biological accuracy,
+validate sample identity, infer independent replicates or replace a held-out
+quality benchmark. The source flag policy is available to Python callers through
+`parascape.source_flags.apply`, which returns the annotated view and its operation
+record while retaining unfamiliar or missing flags.

@@ -7,12 +7,17 @@ feature labels retain separate rows. Exported values and whole-matrix numerical
 QC carry provenance, while biological independence, compatible scales and feature
 equivalence remain questions for source review rather than hidden UI defaults.
 """
+from datetime import datetime, timezone
+import hashlib
 import json
+from pathlib import Path
+import uuid
 
 from PyQt6 import QtWidgets
 
 from . import deposited_values as D
 from . import protein_identifier_evidence as I
+from . import source_flags as F
 
 
 class DepositedValuesPanel(QtWidgets.QWidget):
@@ -20,7 +25,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
 
     def __init__(self, root=None, parent=None):
         super().__init__(parent)
-        self.root, self.result = root, None
+        self.root, self.result, self.treatment_record = root, None, None
         self._catalogue, self._catalogue_errors = [], []
         layout = QtWidgets.QVBoxLayout(self)
         label = QtWidgets.QLabel('Original deposited measurements. Feature rows, value tokens and source units are retained. '
@@ -59,9 +64,14 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.features.setToolTip('Match case-sensitive source labels, retaining every matching row. No aliases, feature collapse or gene mappings are inferred.')
         self.features.textChanged.connect(self._clear)
         layout.addWidget(self.features)
+        self.exclude_source_marked = QtWidgets.QCheckBox('Exclude rows with source "+" flags')
+        self.exclude_source_marked.setToolTip('Opt in to excluding protein rows with literal + in Reverse, Contaminant, Potential contaminant or Only identified by site. Missing or unfamiliar flags remain unreviewed and retained. Whole-matrix technical QC stays unfiltered.')
+        self.exclude_source_marked.toggled.connect(self._clear)
+        layout.addWidget(self.exclude_source_marked)
         for attribute, caption, tooltip, callback in [
             ('show_button', 'Show original measurements', 'Verify source hashes and show original values and literal source tokens.', self.show_values),
-            ('export_button', 'Export original measurements…', 'Export each original row/sample value with its source token, units and provenance.', lambda: self.save()),
+            ('export_button', 'Export displayed measurements…', 'Export retained original values and source tokens with a separate treatment record containing source hashes and any flag exclusions.', lambda: self.save()),
+            ('treatment_button', 'Export view treatment record…', 'Record the source hashes, query, flag policy and excluded original rows, including when every match was excluded.', lambda: self.save_treatment()),
             ('context_button', 'Source columns and submitted factors…', 'Inspect original column labels and exact submitted filename associations without a feature query.', self.show_column_context),
             ('qc_button', 'Export column technical QC…', 'Check all source rows independently of the feature query. Biological quality scores remain unavailable.', lambda: self.save_qc())]:
             button = QtWidgets.QPushButton(caption)
@@ -72,8 +82,8 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.summary = QtWidgets.QLabel()
         self.summary.setWordWrap(True)
         layout.addWidget(self.summary)
-        self.table = QtWidgets.QTableWidget(0, 6)
-        self.table.setHorizontalHeaderLabels(['source row', 'source feature', 'source column', 'numeric value', 'original token', 'source units'])
+        self.table = QtWidgets.QTableWidget(0, 7)
+        self.table.setHorizontalHeaderLabels(['source row', 'source feature', 'source column', 'numeric value', 'original token', 'source units', 'original source flags'])
         self.table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         layout.addWidget(self.table)
         self.refresh()
@@ -81,6 +91,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
 
     def _clear(self):
         self.result = None
+        self.treatment_record = None
         if getattr(self, 'context_dialog', None) is not None:
             self.context_dialog.close()
             self.context_dialog = None
@@ -95,6 +106,8 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             self.table.setRowCount(0)
         if hasattr(self, 'export_button'):
             self.export_button.setEnabled(False)
+        if hasattr(self, 'treatment_button'):
+            self.treatment_button.setEnabled(False)
         if hasattr(self, 'summary'):
             self.summary.setText('Enter exact feature labels for the selected source analysis.')
 
@@ -210,27 +223,51 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             namespace = self.identifier_kind.currentData()
             frame = (D.profiles(info['path'], self.features.toPlainText()) if namespace == 'exact' else
                      I.profiles(info['path'], self.features.toPlainText(), namespace=namespace))
+            original = frame
+            manifest = D.manifest(info['path'], verify_outputs=False)
+            manifest_sha256 = hashlib.sha256((Path(info['path']) / 'manifest.json').read_bytes()).hexdigest()
+            if not frame.empty and not frame.manifest_sha256.eq(manifest_sha256).all():
+                raise ValueError('Source manifest changed after the original query')
+            frame, treatment = F.apply(frame, exclude_marked=self.exclude_source_marked.isChecked())
         except (OSError, ValueError, KeyError, TypeError) as error:
             self.summary.setText(str(error))
             return
         self.result = frame
+        identifier_contexts = ([dict(source_row=int(row.source_row), evidence=json.loads(row.identifier_evidence))
+            for row in original.drop_duplicates('source_row').itertuples()]
+            if not original.empty and 'identifier_evidence' in original else [])
+        self.treatment_record = dict(schema_version=1, recorded_at=datetime.now(timezone.utc).isoformat(),
+            manifest_sha256=manifest_sha256, matrix_sha256=manifest['outputs']['values.parquet'],
+            literal_tokens_sha256=manifest['outputs']['source_tokens.parquet'],
+            source_url=manifest['source_url'], input_sha256=manifest['input_sha256'],
+            source_study=manifest['study'], source_analysis=manifest['source_analysis'],
+            quantity=manifest['quantity'], units=manifest['units'], identifier_namespace=namespace,
+            exact_query_literals=self.features.toPlainText().splitlines(), source_selection_filter=self.source_filter.text(),
+            original_identifier_evidence=identifier_contexts,
+            source_flag_view=treatment, original_files_modified=False, numerical_values_transformed=False,
+            biological_quality_score_assigned=False)
         self.export_button.setEnabled(not frame.empty)
+        self.treatment_button.setEnabled(True)
         self.table.setRowCount(len(frame))
         for i, row in enumerate(frame.to_dict('records')):
-            for j, field in enumerate(('source_row', 'feature_label', 'source_sample', 'value', 'source_token', 'units')):
+            for j, field in enumerate(('source_row', 'feature_label', 'source_sample', 'value', 'source_token', 'units', 'source_flags')):
                 item = QtWidgets.QTableWidgetItem('' if row[field] is None else str(row[field]))
-                item.setToolTip(row['sample_metadata'] + '\n' + row.get('source_row_metadata', '') + '\n' + row.get('identifier_evidence', '') + '\nSource: ' + row['source_url'] + '\n' + row['comparison_scope'])
+                item.setToolTip(row['sample_metadata'] + '\n' + row.get('source_row_metadata', '') + '\n' + row.get('identifier_evidence', '') + '\nSource flags: ' + row['source_flag_status'] + '\nSource: ' + row['source_url'] + '\n' + row['comparison_scope'])
                 self.table.setItem(i, j, item)
         if namespace == 'exact':
-            matched = set(frame.feature_label)
+            matched = set(original.feature_label)
         else:
-            matched = {row['query_literal'] for text in frame.identifier_evidence for row in json.loads(text)}
+            matched = {row['query_literal'] for text in original.identifier_evidence for row in json.loads(text)}
         missing = set(self.features.toPlainText().splitlines()) - matched
         self.summary.setText(f'{len(frame)} original row/column measurements. ' +
             ('Labels not matched: ' + ', '.join(sorted(missing)) if missing else 'Repeated labels retain separate source rows.'))
         if namespace != 'exact':
             self.summary.setText(self.summary.text() + ' Original group quantities retained; unique-gene abundance and current gene equivalence remain unreviewed.')
+        self.summary.setText(self.summary.text() + f" Source-flag view excluded {treatment['excluded_source_rows']} of {treatment['input_source_rows']} queried original rows ({treatment['excluded_measurements']} measurements). Missing or unfamiliar flags are retained; this is not a biological quality score.")
+        if treatment['input_source_rows'] and not treatment['retained_source_rows']:
+            self.summary.setText('All matching source rows were excluded by the selected source-flag rule. ' + self.summary.text())
         self.table.resizeColumnsToContents()
+        self.table.setColumnWidth(6, 240)
 
     def save(self, path='') -> int:
         """Export original row/sample measurements and provenance without collapsing names."""
@@ -241,7 +278,25 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         if not path:
             return 0
         self.result.to_csv(path, index=False)
+        csv_path = Path(path)
+        record = dict(self.treatment_record, exported_csv=str(csv_path.resolve()),
+                      exported_csv_sha256=hashlib.sha256(csv_path.read_bytes()).hexdigest(),
+                      exported_measurements=len(self.result))
+        sidecar = csv_path.with_name(csv_path.name + '.treatment-' + uuid.uuid4().hex[:12] + '.json')
+        sidecar.write_text(json.dumps(record, indent=2, ensure_ascii=False, allow_nan=False) + '\n', encoding='utf-8')
+        self.summary.setText(f'Exported {len(self.result)} displayed original measurements. Treatment record: {sidecar.name}')
         return len(self.result)
+
+    def save_treatment(self, path='') -> int:
+        """Export the exact view operation even when source flags exclude every matched measurement."""
+        if self.treatment_record is None:
+            return 0
+        if not path:
+            path, _ = QtWidgets.QFileDialog.getSaveFileName(self, 'Export view treatment record', 'measurement_view_treatment.json', 'JSON (*.json)')
+        if not path:
+            return 0
+        Path(path).write_text(json.dumps(self.treatment_record, indent=2, ensure_ascii=False, allow_nan=False) + '\n', encoding='utf-8')
+        return 1
 
     def save_qc(self, path='') -> int:
         """Export all-source-row numerical QC independently of the current feature query."""
@@ -258,5 +313,5 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         except (OSError, ValueError, KeyError, TypeError) as error:
             self.summary.setText(str(error))
             return 0
-        self.summary.setText(f'Exported technical QC for {len(frame)} source columns. Biological quality scores remain unavailable.')
+        self.summary.setText(f'Exported unfiltered whole-source technical QC for {len(frame)} source columns. The view flag filter is not applied; biological quality scores remain unavailable.')
         return len(frame)

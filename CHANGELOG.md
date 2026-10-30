@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Show original protein source flags with an opt-in exclusion of literal source
+  `+` flags. Preserve missing/unfamiliar declarations, repeated original rows and
+  all source files. CSV exports now carry a separate source-bound treatment record;
+  all-excluded results remain auditable and whole-source QC stays unfiltered.
+
 ## 0.0.6.0 — 2026-10-30
 
 - Filter Other measurements by study, source file, assay or quantity label, with
