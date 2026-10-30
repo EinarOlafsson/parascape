@@ -28,6 +28,10 @@ def main():
     from parascape import published_expression as P
     from parascape import dataset_coverage_panel as C
     from parascape import source_matrices as S
+    from parascape import deposited_values as D
+    from parascape import reference_identifiers as F
+    import parascape
+    assert Path(parascape.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Package was not imported from the wheel environment'
     import pandas as pd
     import pyarrow.dataset as ds
     import pyarrow.parquet as pq
@@ -99,11 +103,103 @@ def main():
     assert annotated_rows > 0
     qc = R.technical_qc(root=str(root / 'rnaseq'), study='PRJNA1008424')
     assert len(qc) == 16 and qc.quality_score.isna().all()
+    original_values, errors = D.catalogue(root / 'deposited_values')
+    assert len(original_values) >= 72 and not errors
+    protein_packs = workbench_packs = quantity_columns = cells = missing = 0
+    filename_matches = filename_gaps = factor_occurrences = experiment_candidates = 0
+    chosen_pack = reference_choice = None
+    for pack in original_values:
+        folder = Path(pack['path'])
+        info = D.manifest(folder)
+        feature = pq.read_table(folder / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
+        frame = D.profiles(folder, [feature])
+        assert not frame.empty and frame.feature_label.eq(feature).all()
+        sample_qc = D.technical_qc(folder)
+        assert len(sample_qc) == len(info['sample_columns']) and sample_qc.quality_score.isna().all()
+        quantity_columns += len(sample_qc)
+        cells += info['features'] * len(sample_qc)
+        missing += int(sample_qc.missing.sum())
+        if info['assay'] == 'deposited protein-group quantities':
+            protein_packs += 1
+            for context in D.column_context(folder):
+                association = context['source_design_metadata']
+                filename_matches += association['primary_file_status'] == 'exact_unique_primary_file'
+                filename_gaps += association['primary_file_status'] == 'unresolved_exact_primary_file'
+                factor_occurrences += len(association['submitted_factor_rows'])
+                experiment_candidates += bool(association.get('submitted_experiment_rows'))
+                if association['submitted_factor_rows']:
+                    chosen_pack = folder, feature
+        else:
+            workbench_packs += 1
+    assert (protein_packs, workbench_packs, quantity_columns, cells, missing) == (65, 7, 1011, 1121174, 29468)
+    assert (filename_matches, filename_gaps, factor_occurrences, experiment_candidates) == (11, 12, 5, 357)
+    reference_sources, reference_status = F.catalogue(root / 'processing_audit/reference_identifiers')
+    acquired = [row for row in reference_sources if row['status'] == 'all_header_cells_reconciled']
+    assert len(acquired) >= 46
+    for source in acquired:
+        table = pq.read_table(root / 'processing_audit/reference_identifiers' / source['pack'] / 'headers.parquet')
+        primary = table.column('primary_identifier')[0].as_py()
+        assert not F.lookup(source['source_url'], primary).empty
+        for literal in table.column('declared_identifier_fields').to_pylist():
+            fields = [field for field in json.loads(literal) if field['key'] in ('gene', 'gene_id')]
+            if fields:
+                value = fields[0]['literal_value']
+                assert not F.lookup(source['source_url'], value, kind='gene').empty
+                reference_choice = source['source_url'], value
+                break
+    projects = json.loads((root / 'processing_audit/pride_projects/coverage.json').read_text())
+    designs = {}
+    for project in projects:
+        report = C.pride_samples(root / 'processing_audit', project['accession'])
+        assert report['project']['accession'] == project['accession']
+        for design in report['designs']:
+            designs[design['source_url']] = design
+    assert len(projects) == 209 and len(designs) == 52 and sum(d['source_rows'] for d in designs.values()) == 1392
+    for accession in ('ST000817', 'ST001304', 'ST002051', 'ST002053', 'ST002544', 'ST002545', 'ST002549'):
+        assert C.workbench_samples(root / 'processing_audit', accession)['submitted_rows']
+    from PyQt6 import QtWidgets
+    from parascape import compare_panel
+    from parascape import deposited_values_panel as DP
+    from parascape import reference_identifiers_panel as FP
+    app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
+    window = QtWidgets.QMainWindow()
+    window._workflow_gene = lambda *_args: None
+    compare_panel.install(window)
+    panels = window.findChildren(DP.DepositedValuesPanel)
+    reference_panels = window.findChildren(FP.ReferenceIdentifiersPanel)
+    assert len(panels) == len(reference_panels) == 1
+    panel = panels[0]
+    for index in range(panel.pack.count()):
+        if Path(panel.pack.itemData(index)['path']) == chosen_pack[0]:
+            panel.pack.setCurrentIndex(index)
+            break
+    panel.show_column_context()
+    assert panel.context_dialog is not None and panel.context_tree.topLevelItemCount() > 0
+    panel.features.setPlainText(chosen_pack[1]); panel.show_values()
+    output = Path(os.environ['PARASCAPE_SMOKE_OUTPUT'])
+    output.mkdir(exist_ok=True)
+    assert panel.save(str(output / 'original-measurements.csv')) > 0
+    assert panel.save_qc(str(output / 'column-qc.csv')) > 0
+    reference_panel = reference_panels[0]
+    for index in range(reference_panel.source.count()):
+        if reference_panel.source.itemData(index)['source_url'] == reference_choice[0]:
+            reference_panel.source.setCurrentIndex(index)
+            break
+    reference_panel.kind.setCurrentIndex(1); reference_panel.query.setText(reference_choice[1]); reference_panel.show_records()
+    assert reference_panel.save(str(output / 'original-reference-identifiers.csv')) > 0
+    window.close()
     print(json.dumps(dict(verified_RNA_entries=snapshot['verified_runs'], priority_study_runs=8,
                           deposited_query_rows=deposited, catalogue_records=len(rows),
                           original_value_matrices=len(sources), annotation_platforms=len(records),
                           annotated_query_rows=annotated_rows, whole_matrix_QC_rows=len(qc),
-                          network_disabled=True, NAS_reads_disabled=True)))
+                          network_disabled=True, NAS_reads_disabled=True, original_measurement_packs=len(original_values),
+                          protein_quantity_packs=protein_packs, workbench_quantity_packs=workbench_packs,
+                          original_quantity_cells=cells, missing_original_cells=missing, source_quantity_columns=quantity_columns,
+                          exact_primary_filename_matches=filename_matches, submitted_factor_occurrences=factor_occurrences,
+                          experiment_label_candidate_columns=experiment_candidates, reference_source_occurrences=len(acquired),
+                          reference_header_records=reference_status['unique_content_header_rows'],
+                          PRIDE_projects=len(projects), submitted_PRIDE_designs=len(designs),
+                          installed_actual_Compare_tabs_and_CSV_exports=True)))
 
 
 if __name__ == '__main__':

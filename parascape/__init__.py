@@ -11,7 +11,7 @@ The main modules load on first use, so ``import parascape`` stays light and neve
     parascape.strategies.test("stacking", target="compartment").card()
     parascape.scorecard.glossary("ranking")      # what each metric means
 """
-__version__ = "0.0.4.0"
+__version__ = "0.0.5.0"
 
 #: Submodules reachable as attributes of the package, imported when first touched.
 _LAZY = ("strategies", "scorecard", "techniques", "calibration", "graphspace", "deposits",

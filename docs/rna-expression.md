@@ -128,8 +128,8 @@ context, source confidence thresholds, gene equivalence and compatible scales
 must be reviewed before pooling or RNA/protein concordance. Native preparation
 and independent validation run every five minutes, with input/output hashes,
 software versions, exact adapter source and operation records retained. Independent
-source namespaces preserve the existing Workbench catalogue. These additions are
-local follow-up data; the frozen 0.0.4.0 release does not contain them.
+source namespaces preserve the existing Workbench catalogue. These collections are
+included in the 0.0.5.0 external data snapshot.
 
 The protein importer also accepts the explicit wide layout `PG.ProteinGroups`
 with columns of the form `[number] original-file.PG.Quantity`. It retains the
@@ -205,8 +205,8 @@ Supported literal declarations are `gene`, `gene_id`, `transcript` and
 canonical identifiers. A source FASTA can be a contaminant list or small sequence
 set; its presence does not prove it was the search database for a measurement
 file. Source-to-measurement database linkage and current gene-version equivalence
-remain unreviewed. These header data and the browser are local follow-ups after
-0.0.4.0 and await a subsequent release.
+remain unreviewed. These header data and the browser are included in
+the 0.0.5.0 external data snapshot.
 
 For PRIDE records, **Dataset coverage** shows primary project metadata for all
 209 catalogue projects. The submitted SDRF collection contains 52 design files and
@@ -227,7 +227,7 @@ records, and refreshes an immutable portable collection. Original source hashes,
 validated project context, software versions, adapter source and operation logs
 are retained. Controls, biological/technical replicate roles and assay compatibility
 must follow submitted evidence; they are not inferred from shared filenames or
-repeated channels. This metadata browser is an unreleased local follow-up.
+repeated channels. This metadata browser and its source records are included in 0.0.5.0.
 
 For Metabolomics Workbench records, **Dataset coverage** shows original submitted
 sample factors and analysis metadata, retaining source units and discrepancies

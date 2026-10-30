@@ -1,5 +1,33 @@
 # Next session: start here
 
+**0.0.5.0 frozen release preparation (2026-10-29):** clean detached checkout
+`/media/carruthers/mnt1/parascape-release-0.0.5.0-checkout` starts from90e71e7;
+version bumped with scripts/release.py. Task-owned data stage
+`/media/carruthers/mnt1/parascape-release-data-0.0.5.0` contains4957 files,307 RNA
+entries,147 original-value matrices,54 platform indexes,72 other measurements
+(65 protein /7 Workbench), source QC, submitted designs, column associations and
+46 FASTA source occurrences /30 content indexes. Archive872109077 bytes, SHA
+`44f3db3f2ceb57620d3fd09b5c2f7486298649bf6f2f8c64c7bb818fec251522`.
+All1380 prior non-audit files, including120 RNA matrix files, remain byte-identical
+to published0.0.4.0. Strict archive install verifies all4957 files. Acquisition
+counters are explicitly native processing observations, not bundled raw-file counts.
+Only active measurement/index collections are bundled; historical source evidence
+and exact processor revisions remain retained. No normalization/imputation or
+identifier/probe/protein-group collapse. Native prep/build/validation sources and
+operation records retained; downloads/quantification stay independent.
+
+624 focused reader/UI/QC/download/release/path/documentation checks pass before
+freezing the source. The installed-wheel smoke now exercises all72 measurement
+packs, all reference indexes,209 PRIDE projects/52 designs and actual Compare tabs
+and CSV exports with NAS/network blocked. Root nightly stays at90e71e7 during the
+frozen release; after successful publication it can fast-forward to this commit
+only if tracked files remain clean. Do not push followups that cancel this exact CI.
+
+Release publication is still pending installed-wheel validation, exact-commit
+Tests+Documentation and final native publication gates. Do not claim PyPI0.0.5.0
+until the official version API/wheel/descriptor/public asset checks pass. Full
+all-dataset goal remains active and incomplete after this bounded release.
+
 **0.0.4.0 publication completed (2026-10-29):** frozen bb8ebca passed exact nightly
 Tests40967543108 and Documentation, then main/publication gates. Official PyPI
 0.0.4.0 JSON verified: wheel1756202 bytes, SHA

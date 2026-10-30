@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.0.5.0 — 2026-10-29
+
 - Browse original reference header identifiers and explicit source gene
   declarations in Compare → Reference identifiers. Preserve repeated records,
   case, version suffixes and source hashes; do not convert symbols or approve
