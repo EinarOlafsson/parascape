@@ -224,3 +224,36 @@ occurrences. Source columns and CSV metadata retain all matching occurrences.
 These links expose the deposited metadata; they do not establish control pairing
 or biological independence. Other source columns retain explicit unresolved
 roles. Both new local collections await a later portable data release.
+
+
+### Row-wise protein quantities and repeated source records
+
+The local `deposited_values/protein_rowwise_quantities` collection admits the
+explicit row-wise protein report containing `PG.Quantity`, `PG.ProteinAccessions`
+and original `R.Condition`, `R.FileName`, `R.Replicate` fields. Search Other
+measurements for `PXD084269` and choose `ProteinQuant-Normal.tsv :: PG.Quantity`.
+Each original row retains its own ordinal and annotations. Hover a measurement
+to inspect its original run, condition, replicate and quality declarations, or
+export CSV to inspect the full `source_row_metadata`. These source declarations
+do not establish independently verified biological sample identities.
+
+The first table preserves 65,535 original quantity cells, including 29,564 missing
+cells, with five distinct filename literals. Its single quantity column represents
+a row-wise report, not one biological sample. No pivot creates additional cells,
+and no repeated row is averaged or removed. Source scale and absolute units remain
+unreviewed; the importer does not infer a logarithmic or linear scale.
+
+There are 24,820 repeated exact accession/filename keys. None has identical values
+in every original field: descriptions, names and quality declarations can differ.
+Of these keys, 24,041 contain both a reported quantity and a missing quantity;
+779 have only missing quantities. Their repeated rows remain distinct. These
+patterns do not establish duplicate observations, independent replicates, or
+permission to fill missing cells. A row count of 65,535 alone does not establish
+source completeness or prove truncation.
+
+The enabled five-minute importer accepts this explicit protein layout while
+keeping peptide, modification-site and fragment reports separate. It preserves
+source and implementation hashes, original tokens, all row annotations, repeated
+key counts, independent full-cell reconciliation, unfiltered technical QC and
+operation logs. All earlier 138 quantity tables remain unchanged. This local
+admission is outside frozen portable data release 0.0.6.0.

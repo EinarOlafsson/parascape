@@ -1,5 +1,43 @@
 # Next session: start here
 
+**Current row-wise admission (2026-10-30):** Previous goal turn was progress
+(log2 quantities and expanded source-column links), not a wait. Dataset goal
+remains active/incomplete; historical inference work remains paused. Source
+f9df520 and prior followups are pushed to nightly; public0.0.6.0 unchanged.
+
+New native `process_protein_rowwise_quantities.py`48635f1f admits only the explicit
+ten-field protein-accession PG.Quantity/R.Condition/R.FileName/R.Replicate layout
+into `prepared_deposited_values/protein_rowwise_quantities`. Peptide/site/fragment
+extensions are excluded from this adapter, not mislabelled as protein reports.
+PXD084269 source65535rows /1quantitycolumn /29564missing /5filename literals.
+Original row ordinates, labels, quality declarations and all run/condition/replicate
+strings retained. No pivot, extra structural cells, filtering, normalization,
+imputation, duplicate collapse, averaging or assumed log/linear scale. One source
+quantity column does not imply one biological sample. Group identifier modes and
+source-plus group flag semantics do not interpret this accession assay.
+
+Twelve synthetic corruptions refused. Every source cell/token/binary64/missing
+cell/row/annotation and repeated-key count independently reconciled. All138 prior
+quantity packs/manifests/outputs unchanged. Full139quantity catalogue now1384744
+originalcells /71153missing /1097source columns (132protein/7Workbench tables).
+Actual offlineQt source filtering, original row-metadata tooltips, column context,
+CSV/treatment exports and unfiltered QC verified under
+`/media/carruthers/mnt1/parascape-rowwise-validation-20261030`.
+New5minute native timer `parascape-protein-rowwise-values` enabled24CPU/2GiB,
+BLAS2; existing download/quantification jobs remain alive. Future portable release
+must include new accession/log2/row-wise namespaces and updated source links;
+don't modify public frozen6asset.
+
+Repeated-key audit finds24820 exact accession+filename keys with2rows each. None
+has every original field identical;24041mix observed+missing quantities,779all
+missing,0with two observed quantities. Names/descriptions/qvalues can differ.
+Do not deduplicate or pivot on this key, infer biological independence or impute
+from another row. Exact65535data-row count alone is not proof of truncation.
+Audit JSON retained in new namespace/runtime-validation. Row_layout metadata
+records source rows, filename literal count and repeated-key multiplicities.
+Continue explicit row-specific source-design associations and accession/gene/scale
+compatibility work; full all-dataset/fair-comparison goal remains incomplete.
+
 **Current dataset continuation (2026-10-30, supersedes older pending-release notes):**
 Previous goal turn made verified progress: accession importer enabled and verified;
 0.0.6.0 publication completed. Current dataset goal is active and incomplete.
