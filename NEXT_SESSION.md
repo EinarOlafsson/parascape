@@ -27,8 +27,11 @@ Independent actualQt proof visits all139 locally available quantity tables with
 NAS/network blocked and writes to input measurements forbidden. All selected
 rows/columns/tokens/annotations and every original output hash rechecked; values
 and treatment records unchanged. Proof and screenshot at
-`/media/carruthers/mnt1/parascape-measurement-context-validation-20261030`.
-Source implementation SHA ecb37bea… matches the validated proof. The proof uses
+`/media/carruthers/mnt1/parascape-measurement-context-validation-20261030-v2`.
+Source implementation SHA861f0378 matches the final validated proof. Actual
+rendered screenshot inspected; original source_fields are expanded by default so
+run/condition/replicate declarations are visible. Prototype proof/codeecb37bea
+and source60b6458 retained,followup validates the visible-field improvement. The proof uses
 hardlinks to immutable local data copies; never write through those input paths.
 
 Download3386467,PRIDE3533750,quant3614034/kallisto512367 confirmed alive atturn

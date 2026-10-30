@@ -272,7 +272,8 @@ not biological quality scores or permission to remove or combine rows.
 The nightly browser offers **Inspect selected measurement…**, also opened by
 double-clicking a measurement. It shows that exact source row and quantity column,
 the numeric value beside its original token, original row annotations, column
-metadata and submitted factor occurrences. Qualified identifier queries retain
+metadata and submitted factor occurrences. Original row fields are expanded when
+the view opens. Qualified identifier queries retain
 every matching evidence occurrence. Source declarations and missing values remain
 distinct from inferred sample roles or biological quality.
 

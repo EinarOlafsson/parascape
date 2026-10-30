@@ -63,6 +63,9 @@ def test_repeated_label_details_select_original_row_and_column_after_sorting(qtb
     assert ('Original source token', '-2.500') in displayed
     assert ('Source row ordinal', '1') in displayed
     assert ('Numeric value', '-2.5') in displayed
+    source_fields = panel.measurement_tree.findItems('source_fields',
+        QtCore.Qt.MatchFlag.MatchExactly | QtCore.Qt.MatchFlag.MatchRecursive)
+    assert len(source_fields) == 1 and source_fields[0].isExpanded()
     assert not panel.measurement_tree.editTriggers() & QtWidgets.QAbstractItemView.EditTrigger.DoubleClicked
 
 

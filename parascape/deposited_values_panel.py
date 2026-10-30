@@ -212,8 +212,14 @@ class DepositedValuesPanel(QtWidgets.QWidget):
                                ('Original column metadata', 'sample_metadata'),
                                ('Qualified identifier evidence', 'identifier_evidence')):
             encoded = row.get(field)
-            add(tree, caption, json.loads(encoded) if isinstance(encoded, str) and encoded else
-                'No declaration supplied for this measurement').setExpanded(True)
+            section = add(tree, caption, json.loads(encoded) if isinstance(encoded, str) and encoded else
+                'No declaration supplied for this measurement')
+            section.setExpanded(True)
+            if field == 'source_row_metadata':
+                for position in range(section.childCount()):
+                    child = section.child(position)
+                    if child.text(0) == 'source_fields':
+                        child.setExpanded(True)
         add(tree, 'Source flag view', dict(original_source_flags=json.loads(row['source_flags']),
             interpretation=row['source_flag_status'], view_policy=json.loads(row['source_flag_view_policy'])))
         add(tree, 'Source and comparison scope', {field: row[field] for field in (
