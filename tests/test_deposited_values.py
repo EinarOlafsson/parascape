@@ -134,3 +134,101 @@ def test_original_row_quality_flags_are_exported_without_filtering_or_group_coll
     flags = {row.source_row: json.loads(row.source_row_metadata)['source_fields'] for row in frame.itertuples()}
     assert flags[0]['Reverse'] == '+' and flags[1]['Potential contaminant'] == '+'
     assert frame.units.eq('Original units').all()
+
+
+@pytest.fixture
+def linked_pack(pack, tmp_path, monkeypatch):
+    """Two submitted rows for one exact filename remain distinct from an unresolved second file."""
+    headers = ['[1] source.raw.PG.Quantity', '[2] missing.raw.PG.Quantity']
+    sample_path = pack / 'samples.json'
+    samples = json.loads(sample_path.read_text())
+    for sample, header in zip(samples['samples'], headers):
+        sample['source_sample'] = header
+    sample_path.write_text(json.dumps(samples))
+    info = json.loads((pack / 'manifest.json').read_text())
+    info['source_samples'] = headers
+    info['outputs']['samples.json'] = digest(sample_path)
+    (pack / 'manifest.json').write_text(json.dumps(info))
+    validation = json.loads((pack / 'validation.json').read_text())
+    validation['manifest_sha256'] = digest(pack / 'manifest.json')
+    (pack / 'validation.json').write_text(json.dumps(validation))
+    root = tmp_path / 'audit'
+    collection = root / 'protein_column_design_links'
+    folder = collection / ('1' * 64)
+    folder.mkdir(parents=True)
+    rows = [dict(source_url='https://example.org/original.sdrf.tsv', source_sha256='b'*64,
+        source_row=position, source_row_id=hashlib.sha256(('b'*64+':'+str(position)).encode()).hexdigest(),
+        headers=['source name', 'characteristics[batch]', 'characteristics[batch]', 'comment[data file]'],
+        cells=['001', label, '', 'source.raw'], metadata_origin='community_annotated',
+        biological_truth_status='Submitted metadata; not independently verified biological truth',
+        matching_file_column_indices=[3]) for position,label in [(2,'not available'), (3,'second channel')]]
+    columns = [dict(column=column, source_column=header, source_filename_literal=filename,
+        primary_file_status='exact_unique_primary_file' if i == 0 else 'unresolved_exact_primary_file',
+        exact_primary_file_ids=['file-1'] if i == 0 else [], submitted_factor_rows=rows if i == 0 else [],
+        biological_independence='not inferred', pairing_scope='Exact filenames only; no channel collapse')
+        for i,(column,header,filename) in enumerate(zip(info['sample_columns'], headers, ['source.raw','missing.raw']))]
+    report = dict(schema_version=1, measurement_manifest_sha256=digest(pack / 'manifest.json'),
+        study=info['study'], input_sha256=info['input_sha256'], source_url=info['source_url'],
+        source_analysis=info['source_analysis'], primary_file_metadata_sha256='c'*64, columns=columns)
+    report_path = folder / (digest(pack / 'manifest.json')+'.json')
+    report_path.write_text(json.dumps(report))
+    (folder / 'index.json').write_text(json.dumps(dict(schema_version=1,
+        manifests={digest(pack / 'manifest.json'):report_path.name})))
+    receipt = folder / 'validation.json'
+    receipt.write_text(json.dumps(dict(schema_version=1, status='exact_source_filename_associations_reconciled',
+        measurement_packs=1, outputs={p.name:digest(p) for p in folder.iterdir()})))
+    (collection / 'collection.json').write_text(json.dumps(dict(schema_version=1, directory=folder.name,
+        validation_sha256=digest(receipt))))
+    monkeypatch.setenv('PARASCAPE_AUDIT', str(root))
+    return pack, root, report_path
+
+
+def test_exact_filename_factor_occurrences_are_retained_without_collapsing_channels(linked_pack):
+    pack, root, _ = linked_pack
+    contexts = D.column_context(pack, audit_root=root)
+    rows = contexts[0]['source_design_metadata']['submitted_factor_rows']
+    assert len(rows) == 2 and rows[0]['headers'][1:3] == ['characteristics[batch]'] * 2
+    assert rows[0]['cells'][1:3] == ['not available', '']
+    assert contexts[1]['source_design_metadata']['exact_primary_file_ids'] == []
+    frame = D.profiles(pack, '001', audit_root=root)
+    assert len(frame) == 4 and frame.source_token.tolist() == ['-0.000', '1.2500', '0', '-2.500']
+    source = json.loads(frame.iloc[0].sample_metadata)
+    assert len(source['submitted_factor_rows']) == 2
+    assert len(source['source_design_metadata']['submitted_factor_rows']) == 2
+    assert source['source_design_metadata']['biological_independence'] == 'not inferred'
+
+
+def test_column_associations_refuse_changed_outputs_and_stale_measurement_context(linked_pack):
+    pack, root, report_path = linked_pack
+    original = report_path.read_bytes()
+    report_path.write_text('{}')
+    with pytest.raises(ValueError, match='association output checksum'):
+        D.column_context(pack, audit_root=root)
+    report_path.write_bytes(original)
+    info = json.loads((pack / 'manifest.json').read_text())
+    info['units'] = 'Different source context'
+    (pack / 'manifest.json').write_text(json.dumps(info))
+    validation = json.loads((pack / 'validation.json').read_text())
+    validation['manifest_sha256'] = digest(pack / 'manifest.json')
+    (pack / 'validation.json').write_text(json.dumps(validation))
+    contexts = D.column_context(pack, audit_root=root)
+    assert 'not represented' in contexts[0]['source_design_metadata']['association_status']
+    assert 'submitted_factor_rows' not in contexts[0]['source_design_metadata']
+
+
+def test_source_column_dialog_works_without_feature_query_and_clears_on_selection(qtbot, linked_pack):
+    from parascape.deposited_values_panel import DepositedValuesPanel
+    pack, _, _ = linked_pack
+    panel = DepositedValuesPanel(pack.parent)
+    qtbot.addWidget(panel)
+    assert not panel.features.toPlainText()
+    panel.show_column_context()
+    assert panel.context_dialog is not None and panel.context_tree.topLevelItemCount() == 2
+    parent = panel.context_tree.topLevelItem(0)
+    rows = [parent.child(i) for i in range(parent.childCount()) if parent.child(i).text(0).startswith('Submitted row')]
+    assert len(rows) == 2
+    assert rows[0].child(1).text(0) == '2: characteristics[batch]'
+    assert rows[0].child(2).text(0) == '3: characteristics[batch]'
+    assert rows[0].child(1).toolTip(1) == 'not available'
+    panel.refresh()
+    assert panel.context_dialog is None

@@ -20,6 +20,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from . import paths
+from . import source_design_links
 
 
 def data_root() -> Path:
@@ -117,7 +118,19 @@ def _context(pack):
     return info, values, samples
 
 
-def profiles(pack: str | Path, features) -> pd.DataFrame:
+def _column_context(pack, samples, audit_root=None):
+    links, status = source_design_links.column_links(pack, audit_root=audit_root)
+    return [dict(sample, source_design_metadata=links.get(sample['column'], {'association_status': status}))
+            for sample in samples]
+
+
+def column_context(pack: str | Path, *, audit_root: str | Path | None = None) -> list[dict]:
+    """Inspect original source columns and separately pinned submitted metadata without a feature query."""
+    _, _, samples = _context(pack)
+    return _column_context(pack, samples, audit_root)
+
+
+def profiles(pack: str | Path, features, *, audit_root: str | Path | None = None) -> pd.DataFrame:
     """Return exact source-label matches, retaining duplicate rows and literal measurement tokens."""
     pack = Path(pack)
     labels = features.splitlines() if isinstance(features, str) else list(features)
@@ -132,7 +145,7 @@ def profiles(pack: str | Path, features) -> pd.DataFrame:
     frame = matrix.melt(id_vars=['source_row', 'feature_label'], var_name='sample_column', value_name='value')
     literal = tokens.melt(id_vars=['source_row', 'feature_label'], var_name='sample_column', value_name='source_token')
     frame['source_token'] = literal['source_token']
-    lookup = {s['column']: s for s in samples}
+    lookup = {s['column']: s for s in _column_context(pack, samples, audit_root)}
     frame['source_sample'] = frame.sample_column.map(lambda c: lookup[c]['source_sample'])
     frame['sample_metadata'] = frame.sample_column.map(lambda c: json.dumps(lookup[c], ensure_ascii=False))
     source_metadata = json.loads((pack / 'source_metadata.json').read_text())

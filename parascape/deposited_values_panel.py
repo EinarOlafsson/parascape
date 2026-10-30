@@ -7,6 +7,8 @@ feature labels retain separate rows. Exported values and whole-matrix numerical
 QC carry provenance, while biological independence, compatible scales and feature
 equivalence remain questions for source review rather than hidden UI defaults.
 """
+import json
+
 from PyQt6 import QtWidgets
 
 from . import deposited_values as D
@@ -42,6 +44,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         for attribute, caption, tooltip, callback in [
             ('show_button', 'Show original measurements', 'Verify source hashes and show original values and literal source tokens.', self.show_values),
             ('export_button', 'Export original measurements…', 'Export each original row/sample value with its source token, units and provenance.', lambda: self.save()),
+            ('context_button', 'Source columns and submitted factors…', 'Inspect original column labels and exact submitted filename associations without a feature query.', self.show_column_context),
             ('qc_button', 'Export column technical QC…', 'Check all source rows independently of the feature query. Biological quality scores remain unavailable.', lambda: self.save_qc())]:
             button = QtWidgets.QPushButton(caption)
             button.setToolTip(tooltip)
@@ -60,6 +63,9 @@ class DepositedValuesPanel(QtWidgets.QWidget):
 
     def _clear(self):
         self.result = None
+        if getattr(self, 'context_dialog', None) is not None:
+            self.context_dialog.close()
+            self.context_dialog = None
         if hasattr(self, 'table'):
             self.table.setRowCount(0)
         if hasattr(self, 'summary'):
@@ -76,6 +82,68 @@ class DepositedValuesPanel(QtWidgets.QWidget):
                              (f'{len(errors)} catalogue entries require review.' if errors else 'Enter exact source feature labels.'))
         self.show_button.setEnabled(bool(packs))
         self.qc_button.setEnabled(bool(packs))
+        self.context_button.setEnabled(bool(packs))
+
+
+    def show_column_context(self):
+        """Inspect source columns and every exact submitted factor occurrence without inferring sample roles."""
+        info = self.pack.currentData()
+        if getattr(self, 'context_dialog', None) is not None:
+            self.context_dialog.close()
+            self.context_dialog = None
+        if not info:
+            return
+        try:
+            contexts = D.column_context(info['path'])
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
+            return
+        dialog = QtWidgets.QDialog(self)
+        dialog.setWindowTitle(info['study'] + ' · ' + info['analysis'] + ' · Source columns')
+        layout = QtWidgets.QVBoxLayout(dialog)
+        label = QtWidgets.QLabel('Original source-column metadata and submitted filename associations. '
+            'All repeated rows and duplicate fields remain visible. Biological independence and control pairing are not inferred.')
+        label.setWordWrap(True)
+        layout.addWidget(label)
+        tree = QtWidgets.QTreeWidget()
+        tree.setHeaderLabels(['Source column / field', 'Original value or association status'])
+        layout.addWidget(tree)
+        for context in contexts:
+            association = context['source_design_metadata']
+            status = association.get('primary_file_status', association.get('association_status', ''))
+            caption = {'exact_unique_primary_file': 'Exact primary file match',
+                       'ambiguous_exact_primary_file': 'Multiple primary file matches',
+                       'unresolved_exact_primary_file': 'No exact primary file match',
+                       'filename_role_unreviewed': 'Filename role unreviewed'}.get(status, status)
+            parent = QtWidgets.QTreeWidgetItem(tree, [context['source_sample'], caption])
+            if association.get('source_filename_literal') is not None:
+                QtWidgets.QTreeWidgetItem(parent, ['Submitted filename', association['source_filename_literal']])
+                QtWidgets.QTreeWidgetItem(parent, ['Primary file identifiers', '; '.join(association['exact_primary_file_ids'])])
+                QtWidgets.QTreeWidgetItem(parent, ['Submitted design row occurrences', str(len(association['submitted_factor_rows']))])
+            original = QtWidgets.QTreeWidgetItem(parent, ['Original column metadata', 'Unchanged submitted record'])
+            for key, value in context.items():
+                if key != 'source_design_metadata':
+                    QtWidgets.QTreeWidgetItem(original, [key, value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)])
+            audit = QtWidgets.QTreeWidgetItem(parent, ['Association provenance', 'Exact filename scope and source receipts'])
+            for key, value in association.items():
+                if key != 'submitted_factor_rows':
+                    QtWidgets.QTreeWidgetItem(audit, [key, value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)])
+            for row in association.get('submitted_factor_rows', []):
+                submitted = QtWidgets.QTreeWidgetItem(parent, ['Submitted row ' + str(row['source_row']), row['source_url']])
+                for position, (header, cell) in enumerate(zip(row['headers'], row['cells']), 1):
+                    QtWidgets.QTreeWidgetItem(submitted, [str(position) + ': ' + header, cell])
+                for key in ('source_sha256', 'source_row_id', 'metadata_origin', 'biological_truth_status', 'matching_file_column_indices'):
+                    QtWidgets.QTreeWidgetItem(submitted, [key, json.dumps(row[key], ensure_ascii=False)])
+        iterator = QtWidgets.QTreeWidgetItemIterator(tree)
+        while iterator.value() is not None:
+            item = iterator.value()
+            for column in range(2):
+                item.setToolTip(column, item.text(column))
+            iterator += 1
+        tree.setColumnWidth(0, 400)
+        dialog.resize(1000, 650)
+        self.context_dialog, self.context_tree = dialog, tree
+        dialog.show()
 
     def show_values(self):
         """Show exact source rows and original tokens for the selected feature labels."""

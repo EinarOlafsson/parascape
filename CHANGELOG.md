@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Browse source columns and submitted factors without a feature query. Bind exact
+  filename associations to measurement manifests, preserve repeated SDRF rows and
+  duplicate fields, and retain provenance in value CSV exports. Eleven filename
+  matches and five submitted-row associations are represented; unmatched filenames
+  and unreviewed column roles remain explicit.
+
 - Import original wide `PG.Quantity` protein-group matrices with exact source
   headers and group identities. Two additional files add 135,116 source cells;
   earlier quantity data, tokens, column metadata and row annotations are unchanged.

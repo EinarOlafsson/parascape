@@ -144,6 +144,25 @@ Six source layouts now remain explicit review gaps, including long tables and
 derived-statistic tables. Filename-bearing headers do not by themselves establish
 sample-design pairing; exact submitted factor associations remain a separate step.
 
+Use **Source columns and submitted factors…** in Other measurements to inspect
+column context without entering a feature label. The dialog retains the original
+column record and separately shows filename associations, complete source rows and
+provenance. Numbered fields preserve duplicate SDRF headings. The original column
+metadata is not overwritten by later associations; value CSV exports retain both
+under `sample_metadata`, with associations in `source_design_metadata`.
+
+The first association collection covers all 65 protein tables / 771 quantity
+columns. Of the 23 explicit filename-bearing `PG.Quantity` columns, 11 match a
+primary file identity exactly and 12 remain unresolved. Five columns also match
+five submitted SDRF row occurrences. The other 748 quantity columns have no
+reviewed filename role; similar experiment names are not substituted for filenames.
+Repeated rows, channels, fractions and ambiguous primary candidates remain
+separate. Exact filename equality does not establish independent biological
+samples, paired controls or downloaded raw payloads. A native five-minute task
+independently reparses the original SDRF cells and checks every filename candidate;
+immutable reports bind each association to the exact measurement manifest and
+original source column. Missing or changed contexts remain explicit gaps.
+
 For PRIDE records, **Dataset coverage** shows primary project metadata for all
 209 catalogue projects. The submitted SDRF collection contains 52 design files and
 1,392 source rows across 49 projects. Open a project, expand **Submitted SDRF**, and

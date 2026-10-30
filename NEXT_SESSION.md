@@ -1,5 +1,38 @@
 # Next session: start here
 
+**Exact quantity-column source links (2026-10-29):** Other measurements now has
+**Source columns and submitted factors…**, available without a feature query.
+Original sample/column records remain unchanged; separately pinned filename links
+and submitted rows appear in the dialog and value CSV `sample_metadata` under
+`source_design_metadata`. Numbered fields preserve duplicate SDRF headings and
+all repeated row/channel/fraction occurrences. Selection/refresh clears old dialogs.
+
+Native `parascape-protein-column-design-links.timer` refreshes every5min at CPU24 /
+512MiB, independently reparsing original SDRF cells and reconciling every exact
+primary filename candidate. Immutable collection, receipt, source bindings, exact
+exporter code and operation records live in NAS
+`processing_audit/protein_column_design_links`. All65 tables /771 columns covered:
+11 exact unique primary filename matches,12 unresolved explicit filenames,748
+columns with unreviewed filename roles,5 matched submitted-row occurrences.
+Filename tokens are extracted only from explicit numbered PG.Quantity headers;
+no case/basename/extension conversion or experiment-label guessing. No biological
+independence, paired controls or downloaded raw payloads inferred. Missing/changed
+measurement manifests do not acquire stale associations.
+
+Synthetic checks preserve ambiguous primary candidates and repeated/duplicate SDRF
+fields; dropped repeated rows, silently resolved ambiguity and changed source
+factors are refused. All72 packs and all771 protein-column contexts, actual Qt
+no-query dialog and CSV exports validated with NAS/network reads blocked; proof
+`/media/carruthers/mnt1/parascape-column-design-validation-20261029-v2`.
+555 focused reader/UI/QC/docstring/docs/Compare/release-builder checks pass; final
+10 reader/dialog checks pass after readable association captions/provenance grouping.
+All72 measurement manifests and288 original runtime outputs remain byte-unchanged;
+cached association export preserves the immutable collection pointer and receipt.
+New metadata is an unreleased local follow-up. Current dataset goal remains active
+and incomplete; historical inference goal remains paused. Next broader gaps include
+other quantitative formats, unsupported filename roles, gene/scale harmonization,
+raw acquisition and validated cross-study comparison.
+
 **PG.Quantity original pivots (2026-10-29):** native protein adapter now also
 supports one explicit `PG.ProteinGroups` axis with strict `[number] file.PG.Quantity`
 columns, retaining all non-quantity annotations and quality fields. Two additional
