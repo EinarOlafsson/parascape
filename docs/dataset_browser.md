@@ -110,8 +110,8 @@ applied. The first locally admitted source has 4,940 rows and six channels in ea
 family; their shared rows do not constitute independent biological observations.
 The automatic importer revisits acquired tables every five minutes, preserving
 immutable packs, full-cell reconciliation, descriptive QC and operation logs in
-`deposited_values/protein_reporter_channels`. This collection is outside the frozen
-0.0.5.0 snapshot and awaits a later portable data release.
+`deposited_values/protein_reporter_channels`. The corrected and uncorrected reporter collections are included in portable
+data release 0.0.6.0.
 
 
 ### Aggregate, labelled-channel and reported-ratio fields
@@ -130,8 +130,8 @@ The first admission reconciles 62 tables from 29 source files, preserving all
 per-sample fields, peptide/count fields and variability annotations remain intact.
 The importer runs every five minutes under the independent
 `deposited_values/protein_reported_quantities` namespace. These values are not
-approved for direct whole-cell RNA/protein concordance and are outside the frozen
-0.0.5.0 snapshot. The prepared exact identifier index includes these tables while
+approved for direct whole-cell RNA/protein concordance. These 62 tables are
+included in portable data release 0.0.6.0. The prepared exact identifier index includes these tables while
 keeping every ambiguous declaration and whole-group quantity separate.
 
 
@@ -165,3 +165,32 @@ validate sample identity, infer independent replicates or replace a held-out
 quality benchmark. The source flag policy is available to Python callers through
 `parascape.source_flags.apply`, which returns the annotated view and its operation
 record while retaining unfamiliar or missing flags.
+
+
+### Original accession abundance groups
+
+The local acquisition loop also admits supported accession tables under
+`deposited_values/protein_accession_values`. Search **Other measurements** for
+`PXD041907`, select **Proteins.txt :: Abundances (Grouped)**, and enter exact
+original `Accession` labels. This first admission contains 2,496 source rows, six
+source-labelled groups and 14,976 original cells, including 1,550 missing cells.
+It was prepared after the frozen 0.0.6.0 snapshot and is not in that public asset.
+
+Every original UID, `Master`, FDR confidence, q-value and per-row presence
+declaration remains available in row metadata and CSV exports. No master-only
+selection or confidence cutoff is applied. Repeated accession labels retain
+separate original row identities; accessions are not assumed to identify unique
+proteins, protein groups or current genes.
+
+**Source columns** shows exact same-file group-label matches between abundance
+headers such as `Abundances (Grouped): F1` and presence headers such as
+`Found in Sample: [S1] F1: Sample`. These are source-header candidates, not verified
+sample, control or replicate assignments. Presence declarations never replace
+missing quantitative cells. The protein-group identifier modes and literal-plus
+group flag rules do not interpret this different assay.
+
+The enabled five-minute importer preserves original tokens, binary64 values,
+missing cells and all row annotations. Each immutable pack records the source,
+processor and dependency hashes, software versions, full-cell reconciliation,
+unfiltered technical QC and operation history. These quantities retain their
+source grouping and scale; cross-study scale compatibility remains unreviewed.
