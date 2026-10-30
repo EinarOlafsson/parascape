@@ -1,5 +1,41 @@
 # Next session: start here
 
+**Selected original-measurement context (2026-10-30):** Current dataset goal
+active/incomplete; previous goal turn was progress (row-wise admission and native
+repeated-key QC). New `Inspect selected measurement…` button/double-click view in
+`parascape/deposited_values_panel.py` shows the exact original row/column, literal
+source token beside numeric value, all row annotations, column/submitted-factor
+metadata, qualified identifier evidence and source/treatment context. One quantity
+column need not be one biological sample. No sample/control/replicate/gene/scale
+identity or biological quality is inferred. Missing metadata stays unavailable.
+
+The selection is keyed by original result position stored with its table item,
+so sorting cannot substitute a different repeated label or column. Sorting is
+paused while rows populate to prevent cell mixing. Detail trees are read-only;
+old dialogs close/delete on selection changes or query/source/namespace/rule/
+refresh invalidation. Values, source hashes, treatment records and exports stay
+unchanged. Existing whole-source QC remains unfiltered. This is a nightly source
+follow-up, outside the public0.0.6.0 wheel/asset; new local139-table data also
+awaits a future portable release. Do not modify frozen6.
+
+Focused reader/QC/source-filter/flag/identifier/UI checks plus actual whole-window
+tooltip audit passed46 checks. New selected-context tests cover repeated labels,
+row/column sorting identity, original metadata/leading-zero replicate labels,
+missing numeric versus empty token, duplicate factor/evidence occurrences,
+no-selection/missing-annotation states and six stale-context invalidations.
+Independent actualQt proof visits all139 locally available quantity tables with
+NAS/network blocked and writes to input measurements forbidden. All selected
+rows/columns/tokens/annotations and every original output hash rechecked; values
+and treatment records unchanged. Proof and screenshot at
+`/media/carruthers/mnt1/parascape-measurement-context-validation-20261030`.
+Source implementation SHA ecb37bea… matches the validated proof. The proof uses
+hardlinks to immutable local data copies; never write through those input paths.
+
+Download3386467,PRIDE3533750,quant3614034/kallisto512367 confirmed alive atturn
+start. Latest325/1011RNAverified,324snapshot; native jobs continue,24CPUmax.
+Continue acquiring/importing remaining formats, original row-design associations
+and qualified accession/gene/scale compatibility. Full goal is not complete.
+
 **Current row-wise admission (2026-10-30):** Previous goal turn was progress
 (log2 quantities and expanded source-column links), not a wait. Dataset goal
 remains active/incomplete; historical inference work remains paused. Source

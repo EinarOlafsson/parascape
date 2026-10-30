@@ -13,7 +13,7 @@ import json
 from pathlib import Path
 import uuid
 
-from PyQt6 import QtWidgets
+from PyQt6 import QtCore, QtWidgets
 
 from . import deposited_values as D
 from . import protein_identifier_evidence as I
@@ -70,6 +70,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         layout.addWidget(self.exclude_source_marked)
         for attribute, caption, tooltip, callback in [
             ('show_button', 'Show original measurements', 'Verify source hashes and show original values and literal source tokens.', self.show_values),
+            ('measurement_button', 'Inspect selected measurement…', 'Inspect the selected original row, source column, condition and replicate declarations. Repeated labels remain separate; sample independence is not inferred.', self.show_measurement_context),
             ('export_button', 'Export displayed measurements…', 'Export retained original values and source tokens with a separate treatment record containing source hashes and any flag exclusions.', lambda: self.save()),
             ('treatment_button', 'Export view treatment record…', 'Record the source hashes, query, flag policy and excluded original rows, including when every match was excluded.', lambda: self.save_treatment()),
             ('context_button', 'Source columns and submitted factors…', 'Inspect original column labels and exact submitted filename associations without a feature query.', self.show_column_context),
@@ -85,6 +86,8 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.table = QtWidgets.QTableWidget(0, 7)
         self.table.setHorizontalHeaderLabels(['source row', 'source feature', 'source column', 'numeric value', 'original token', 'source units', 'original source flags'])
         self.table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.table.currentCellChanged.connect(self._measurement_selection_changed)
+        self.table.cellDoubleClicked.connect(lambda *_: self.show_measurement_context())
         layout.addWidget(self.table)
         self.refresh()
         self.setMinimumWidth(120)
@@ -92,6 +95,9 @@ class DepositedValuesPanel(QtWidgets.QWidget):
     def _clear(self):
         self.result = None
         self.treatment_record = None
+        self._close_measurement_context()
+        if hasattr(self, 'measurement_button'):
+            self.measurement_button.setEnabled(False)
         if getattr(self, 'context_dialog', None) is not None:
             self.context_dialog.close()
             self.context_dialog = None
@@ -143,6 +149,80 @@ class DepositedValuesPanel(QtWidgets.QWidget):
                                  'No reconciled deposited measurement data is installed.')
         for button in (self.show_button, self.qc_button, self.context_button):
             button.setEnabled(bool(packs))
+
+    def _close_measurement_context(self):
+        if getattr(self, 'measurement_dialog', None) is not None:
+            self.measurement_dialog.close()
+            self.measurement_dialog.deleteLater()
+            self.measurement_dialog = None
+            self.measurement_tree = None
+
+    def _selected_measurement(self):
+        """Use the item's result position so sorting cannot substitute another repeated label."""
+        if self.result is None:
+            return None
+        item = self.table.item(self.table.currentRow(), 0)
+        position = item.data(QtCore.Qt.ItemDataRole.UserRole) if item is not None else None
+        if not isinstance(position, int) or isinstance(position, bool) or not 0 <= position < len(self.result):
+            return None
+        return self.result.iloc[position].to_dict()
+
+    def _measurement_selection_changed(self, *_):
+        self._close_measurement_context()
+        self.measurement_button.setEnabled(self._selected_measurement() is not None)
+
+    def show_measurement_context(self):
+        """Inspect one original row/column measurement without inferring roles from its label."""
+        self._close_measurement_context()
+        row = self._selected_measurement()
+        if row is None:
+            return
+        dialog = QtWidgets.QDialog(self)
+        dialog.setWindowTitle('Original measurement · ' + str(row['feature_label']) + ' · row ' + str(row['source_row']))
+        layout = QtWidgets.QVBoxLayout(dialog)
+        label = QtWidgets.QLabel('Original annotations belong to this source row and quantity column. '
+            'Condition, filename and replicate declarations are preserved as submitted; they do not establish '
+            'biological independence, control pairing, gene equivalence or compatible scales. '
+            'Numeric missingness and the original token remain separate.')
+        label.setWordWrap(True)
+        layout.addWidget(label)
+        tree = QtWidgets.QTreeWidget()
+        tree.setHeaderLabels(['Original field or context', 'Value or declaration'])
+        tree.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
+        layout.addWidget(tree)
+
+        def add(parent, name, value):
+            text = '' if isinstance(value, (dict, list)) else value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+            item = QtWidgets.QTreeWidgetItem(parent, [str(name), text])
+            item.setToolTip(0, str(name))
+            item.setToolTip(1, text)
+            if isinstance(value, dict):
+                for key, child in value.items():
+                    add(item, key, child)
+            elif isinstance(value, list):
+                for position, child in enumerate(value, 1):
+                    add(item, 'Occurrence ' + str(position), child)
+            return item
+
+        add(tree, 'Selected original measurement', {caption: row[field] for caption, field in (
+            ('Source row ordinal', 'source_row'), ('Original feature label', 'feature_label'),
+            ('Original quantity column', 'source_sample'), ('Numeric value', 'value'),
+            ('Original source token', 'source_token'), ('Source units', 'units'))}).setExpanded(True)
+        for caption, field in (('Original row annotations', 'source_row_metadata'),
+                               ('Original column metadata', 'sample_metadata'),
+                               ('Qualified identifier evidence', 'identifier_evidence')):
+            encoded = row.get(field)
+            add(tree, caption, json.loads(encoded) if isinstance(encoded, str) and encoded else
+                'No declaration supplied for this measurement').setExpanded(True)
+        add(tree, 'Source flag view', dict(original_source_flags=json.loads(row['source_flags']),
+            interpretation=row['source_flag_status'], view_policy=json.loads(row['source_flag_view_policy'])))
+        add(tree, 'Source and comparison scope', {field: row[field] for field in (
+            'study', 'source_analysis', 'assay', 'quantity', 'units', 'source_url', 'input_sha256',
+            'manifest_sha256', 'matrix_sha256', 'literal_tokens_sha256', 'comparison_scope')})
+        tree.setColumnWidth(0, 370)
+        dialog.resize(1100, 700)
+        self.measurement_dialog, self.measurement_tree = dialog, tree
+        dialog.show()
 
 
     def show_column_context(self):
@@ -249,11 +329,17 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.export_button.setEnabled(not frame.empty)
         self.treatment_button.setEnabled(True)
         self.table.setRowCount(len(frame))
+        sorting = self.table.isSortingEnabled()
+        self.table.setSortingEnabled(False)
         for i, row in enumerate(frame.to_dict('records')):
             for j, field in enumerate(('source_row', 'feature_label', 'source_sample', 'value', 'source_token', 'units', 'source_flags')):
                 item = QtWidgets.QTableWidgetItem('' if row[field] is None else str(row[field]))
+                if j == 0:
+                    item.setData(QtCore.Qt.ItemDataRole.UserRole, i)
                 item.setToolTip(row['sample_metadata'] + '\n' + row.get('source_row_metadata', '') + '\n' + row.get('identifier_evidence', '') + '\nSource flags: ' + row['source_flag_status'] + '\nSource: ' + row['source_url'] + '\n' + row['comparison_scope'])
                 self.table.setItem(i, j, item)
+        self.table.setSortingEnabled(sorting)
+        self._measurement_selection_changed()
         if namespace == 'exact':
             matched = set(original.feature_label)
         else:

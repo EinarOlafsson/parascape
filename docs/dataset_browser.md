@@ -232,9 +232,10 @@ The local `deposited_values/protein_rowwise_quantities` collection admits the
 explicit row-wise protein report containing `PG.Quantity`, `PG.ProteinAccessions`
 and original `R.Condition`, `R.FileName`, `R.Replicate` fields. Search Other
 measurements for `PXD084269` and choose `ProteinQuant-Normal.tsv :: PG.Quantity`.
-Each original row retains its own ordinal and annotations. Hover a measurement
-to inspect its original run, condition, replicate and quality declarations, or
-export CSV to inspect the full `source_row_metadata`. These source declarations
+Each original row retains its own ordinal and annotations. In the nightly browser,
+select a measurement and choose **Inspect selected measurement…** to inspect its
+original run, condition, replicate and quality declarations. You can also hover
+the measurement or export CSV to inspect the full `source_row_metadata`. These source declarations
 do not establish independently verified biological sample identities.
 
 The first table preserves 65,535 original quantity cells, including 29,564 missing
@@ -264,3 +265,20 @@ all-missing, mixed observed/missing, and all-observed key groups, flag differing
 original fields, and retain operation history under
 `processing_audit/rowwise_repeated_key_qc`. These are descriptive ambiguity checks,
 not biological quality scores or permission to remove or combine rows.
+
+
+### Inspect one original measurement
+
+The nightly browser offers **Inspect selected measurement…**, also opened by
+double-clicking a measurement. It shows that exact source row and quantity column,
+the numeric value beside its original token, original row annotations, column
+metadata and submitted factor occurrences. Qualified identifier queries retain
+every matching evidence occurrence. Source declarations and missing values remain
+distinct from inferred sample roles or biological quality.
+
+Sorting the table preserves measurement identity even when feature labels repeat.
+Changing the selection, query, source, identifier mode or flag rule closes earlier
+details. Inspection does not change values, the current treatment record, source
+files or exports. Missing row annotations are explicitly unavailable rather than
+filled from another row. This view is a source follow-up after public 0.0.6.0 and
+awaits a later software release.
