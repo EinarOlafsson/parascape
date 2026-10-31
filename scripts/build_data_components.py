@@ -99,10 +99,11 @@ def build_component(source, directory, destination, *, tag='v0.0.8.0', part_limi
         output = 'axis.parquet' if kind == 'sparse_axes' else 'entries.parquet'
         receipt = json.loads((source / 'validation.json').read_text())
         expected_state = 'all_original_axis_cells_reconciled' if kind == 'sparse_axes' else 'all_original_coordinate_records_reconciled'
-        if kind == 'sparse_coordinates' and manifest.get('source_format') == 'HDF5_CSC':
+        if kind == 'sparse_coordinates' and manifest.get('source_format') in ('HDF5_CSC', 'AnnData_HDF5'):
             from parascape.sparse_values import coordinate_reconciliation
             coordinate_reconciliation(manifest, receipt)
-            expected_state = 'all_original_HDF5_CSC_records_reconciled'
+            expected_state = ('all_original_HDF5_CSC_records_reconciled' if manifest['source_format'] == 'HDF5_CSC'
+                              else 'all_original_AnnData_layer_records_reconciled')
         if (receipt['state'] != expected_state or receipt['manifest_sha256'] != C._hash(source / 'manifest.json')
                 or receipt['input_sha256'] != manifest['input_sha256'] or set(manifest['outputs']) != {output}):
             raise ValueError('Original component lacks matching independent validation')

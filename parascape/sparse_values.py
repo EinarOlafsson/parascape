@@ -104,20 +104,34 @@ def catalogue(root: str | Path | None = None) -> tuple[list[dict], list[str]]:
 
 
 def coordinate_reconciliation(matrix: dict, receipt: dict) -> dict | None:
-    """Require whole-source proof for text coordinates or original binary CSC arrays."""
-    if matrix.get('source_format', 'MatrixMarket') == 'HDF5_CSC':
+    """Require whole-source proof for text coordinates or original binary arrays."""
+    source_format = matrix.get('source_format', 'MatrixMarket')
+    if source_format in ('HDF5_CSC', 'AnnData_HDF5'):
         storage = matrix['source_storage']
-        if (receipt['state'] != 'all_original_HDF5_CSC_records_reconciled'
+        expected_state = ('all_original_HDF5_CSC_records_reconciled' if source_format == 'HDF5_CSC'
+                          else 'all_original_AnnData_layer_records_reconciled')
+        if (receipt['state'] != expected_state
                 or receipt.get('all_original_binary_values_and_order_checked') is not True
                 or receipt.get('derived_coordinate_and_value_tokens_checked') is not True
                 or receipt.get('original_text_tokens_present') is not False
                 or not re.fullmatch('[a-f0-9]{64}', matrix.get('original_numeric_array_logical_bytes_sha256', ''))
                 or receipt.get('independent_original_numeric_array_bytes_sha256') != matrix['original_numeric_array_logical_bytes_sha256']
-                or storage.get('format') != 'HDF5_CSC'
+                or storage.get('format') != source_format
                 or storage.get('source_index_base') != 0 or storage.get('output_index_base') != 1
                 or storage.get('decimal_tokens_are_derived') is not True
                 or storage.get('coordinate_aggregation_applied') is not False):
             raise ValueError('Binary CSC reconstruction lacks a complete source proof')
+        if source_format == 'AnnData_HDF5':
+            if (storage.get('layout') not in ('csr', 'csc', 'dense')
+                    or not isinstance(storage.get('matrix_path'), str) or not storage['matrix_path']
+                    or storage.get('source_axis_order') != ['observations', 'variables']
+                    or storage.get('original_dtype_roundtrip_verified') is not True
+                    or storage.get('layer_aggregation_applied') is not False
+                    or receipt.get('all_original_dtype_bits_recoverable') is not True
+                    or receipt.get('every_dense_cell_retained') is not (storage['layout'] == 'dense')
+                    or (storage['layout'] == 'dense' and matrix['declared_dimensions'][2]
+                        != matrix['declared_dimensions'][0] * matrix['declared_dimensions'][1])):
+                raise ValueError('AnnData layer lacks its original layout, axes or binary proof')
         return storage
     if (matrix.get('source_format', 'MatrixMarket') != 'MatrixMarket'
             or receipt['state'] != 'all_original_coordinate_records_reconciled'
@@ -158,6 +172,9 @@ class SparseDataset:
         storage = coordinate_reconciliation(matrix, receipt)
         if storage is not None and info.get('source_storage') != storage:
             raise ValueError('Binary CSC descriptor and source storage context differ')
+        if (storage is not None and storage.get('format') == 'AnnData_HDF5'
+                and orientation != {'features': 'source_column', 'barcodes': 'source_row'}):
+            raise ValueError('AnnData must retain observations by variables without transposing')
         if (matrix['input_sha256'] != info['input_sha256'] or matrix['source_url'] != info['source_url']
                 or matrix['declared_dimensions'] != dims or receipt['matrix_dimensions'] != dims
                 or receipt['original_records'] != dims[2] or matrix['numeric_field'] != info['numeric_field']
