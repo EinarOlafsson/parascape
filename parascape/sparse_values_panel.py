@@ -154,6 +154,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
             self._buttons()
 
     def refresh(self):
+        """Reload completed source descriptors and their coordinate QC."""
         self._catalogue, self._errors = S.catalogue(self.root)
         self._qc_reports, self._qc_errors = {}, []
         for source in self._catalogue:
@@ -191,6 +192,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
                                  'No completed sparse measurement collection is installed.')
 
     def show_values(self):
+        """Read every matching original record in the background with a bounded preview."""
         item = self.pack.currentData()
         if item is None or self._worker is not None:
             return
@@ -260,6 +262,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self._buttons()
 
     def download_selected(self):
+        """Offer checksum verification or retrieval of this dataset and its shared axes."""
         item = self.pack.currentData()
         if item is None or self._worker is not None:
             return
@@ -278,6 +281,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
             self.summary.setText(str(error))
 
     def save(self, path='') -> int:
+        """Export all matching records and their source-treatment sidecar."""
         if self.result is None:
             return 0
         if not path:
@@ -303,6 +307,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
         return 'Global repeated-coordinate count remains unknown.'
 
     def show_qc(self):
+        """Show whole-source coordinate facts and their explicit biological limits."""
         selected = self.pack.currentData()
         if selected is None:
             return
@@ -354,6 +359,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.qc_dialog.show()
 
     def show_context(self):
+        """Inspect original coordinates, numeric tokens and submitted axis metadata."""
         row = self.table.currentRow()
         if self.result is None or row < 0:
             return

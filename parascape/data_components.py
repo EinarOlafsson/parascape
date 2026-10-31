@@ -27,6 +27,7 @@ KINDS = {'sparse_coordinates', 'sparse_axes'}
 
 
 def storage_root() -> Path:
+    """Return the shared optional-data cache, honoring an explicit location."""
     return Path(os.environ.get('PARASCAPE_COMPONENTS', str(Path(paths.user_cache_dir()) / 'components')))
 
 

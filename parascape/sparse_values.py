@@ -65,6 +65,7 @@ def _batches(path: Path, batch_size: int):
 
 
 def data_root() -> Path:
+    """Locate original sparse dataset descriptors without changing local overrides."""
     return Path(os.environ.get('PARASCAPE_SPARSE_DATASETS',
                               str(Path(paths.data_dir()) / 'sparse_datasets')))
 

@@ -23,6 +23,7 @@ class QueryCancelled(Exception):
 
 @dataclass
 class SparseQueryResult:
+    """Keep a bounded preview and complete source-record export for one query."""
     temporary: tempfile.TemporaryDirectory
     csv_path: Path
     record: dict
@@ -30,6 +31,7 @@ class SparseQueryResult:
     feature_matches: list[dict]
 
     def close(self):
+        """Release the temporary complete-query spool after browsing or export."""
         self.temporary.cleanup()
 
     def export(self, destination: str | Path) -> int:

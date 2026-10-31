@@ -87,6 +87,7 @@ class ComponentDownloadDialog(QtWidgets.QDialog):
             self.start.setEnabled(True)
 
     def reject(self):
+        """Cancel between transfer batches, retaining verified files for a later retry."""
         if self.worker is not None and self.worker.isRunning():
             if self._cancelling:
                 return

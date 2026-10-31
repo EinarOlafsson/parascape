@@ -10,6 +10,7 @@ from . import data_components as C, paths
 
 
 def data_root() -> Path:
+    """Locate source-bound coordinate QC in the installed or overridden data."""
     audit = Path(os.environ.get('PARASCAPE_AUDIT', str(Path(paths.data_dir())/'processing_audit')))
     return audit/'sparse_coordinate_qc'
 
