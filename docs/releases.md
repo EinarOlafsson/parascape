@@ -175,8 +175,8 @@ The development installer in `parascape.data_components` supports independently
 installed sparse matrix and axis components. This is the storage foundation for
 the next release; the current 0.0.7.0 release continues using its existing core
 archive. Optional assets are not public merely because they have been prepared.
-The component download interface still needs to be connected to the app's missing
-dataset prompt before the next release.
+Development builds connect this index to the sparse browser's missing-dataset
+prompt. Publication still requires verified hosted assets and the next core bundle.
 
 A core-data `data_components.json` index has `schema_version: 1`, a version,
 `components`, and a dataset-to-component dependency map. Component keys are
@@ -212,7 +212,15 @@ component directories are not replaced.
 
 Contributors can read an installed component explicitly with
 `SparseDataset(..., coordinate_root=storage_root() / 'sparse_coordinates',
-axis_root=storage_root() / 'sparse_axes')`. The default app reader/download prompt
-routing remains a follow-up before release. Keep download/installation receipts
+axis_root=storage_root() / 'sparse_axes')`. The sparse browser resolves these roots automatically when a published index
+declares the dataset, while retaining complete local collections and explicit
+root overrides. A provisional index cannot trigger remote downloads. Keep download/installation receipts
 separate from scientific normalization, identifier mapping and biological QC;
 copying a verified component does not establish cross-study comparability.
+
+
+A public optional index must set `publication_status: published_verified` only
+after all of its hosted assets have passed the release verification gates. Local
+staging indices deliberately retain a provisional publication status. Tests may
+use a publication-marker fixture with local transport; that is not evidence of a
+GitHub upload. Preserve that distinction in release receipts.

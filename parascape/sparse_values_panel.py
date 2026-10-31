@@ -9,6 +9,8 @@ from PyQt6 import QtCore, QtWidgets
 
 from . import sparse_values as S
 from .sparse_query import prepare_query, QueryCancelled
+from . import optional_sparse_data as O
+from .component_download_dialog import ComponentDownloadDialog
 
 
 class _Signals(QtCore.QObject):
@@ -85,6 +87,10 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.cancel_button.setToolTip('Cancel between streamed batches. A checksum read already in progress finishes before cancellation takes effect.')
         self.cancel_button.clicked.connect(self._clear)
         layout.addWidget(self.cancel_button)
+        self.download_button = QtWidgets.QPushButton('Download / verify selected dataset…')
+        self.download_button.setToolTip('Fetch missing hosted files or verify and repair a previously downloaded dataset. Explicit local collection overrides are preserved.')
+        self.download_button.clicked.connect(self.download_selected)
+        layout.addWidget(self.download_button)
         self.export_button = QtWidgets.QPushButton('Export all matching records…')
         self.export_button.setToolTip('Save the complete CSV, including records beyond the preview, and a checksum/source/treatment sidecar.')
         self.export_button.clicked.connect(lambda: self.save())
@@ -110,6 +116,9 @@ class SparseValuesPanel(QtWidgets.QWidget):
     def _buttons(self):
         self.show_button.setEnabled(bool(self.pack.currentData()) and self._worker is None)
         self.cancel_button.setEnabled(self._worker is not None)
+        selected = self.pack.currentData()
+        self.download_button.setEnabled(bool(selected) and self._worker is None and
+                                        (Path(selected['path']).parent.parent / 'data_components.json').exists())
         self.export_button.setEnabled(self.result is not None)
         self.context_button.setEnabled(self.result is not None and self.table.currentRow() >= 0)
 
@@ -165,7 +174,21 @@ class SparseValuesPanel(QtWidgets.QWidget):
         if not labels:
             self.summary.setText('Enter at least one exact original feature label.')
             return
-        self._worker = _Query(self._generation, item['path'], labels, self.coordinate_root, self.axis_root)
+        try:
+            plan = O.plan(item['path'], coordinate_root=self.coordinate_root, axis_root=self.axis_root)
+            generation = self._generation
+            if plan['missing']:
+                dialog = ComponentDownloadDialog(plan['missing'], self)
+                if dialog.exec() != QtWidgets.QDialog.DialogCode.Accepted:
+                    self.summary.setText('Dataset download cancelled. Existing files are retained.')
+                    return
+                if generation != self._generation:
+                    self.summary.setText('Source or query changed; choose Show sparse measurements again.')
+                    return
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
+            return
+        self._worker = _Query(self._generation, item['path'], labels, plan['coordinate_root'], plan['axis_root'])
         self._worker.signals.finished.connect(self._finished)
         self._buttons()
         self.summary.setText('Checking source files and reading matching records in the background…')
@@ -204,6 +227,24 @@ class SparseValuesPanel(QtWidgets.QWidget):
                              'Export includes every matching record. Absent coordinates are not filled. '
                              + ('Labels not matched: ' + ', '.join(missing) if missing else ''))
         self._buttons()
+
+    def download_selected(self):
+        item = self.pack.currentData()
+        if item is None or self._worker is not None:
+            return
+        self._clear()
+        try:
+            plan = O.plan(item['path'], coordinate_root=self.coordinate_root, axis_root=self.axis_root)
+            if not plan['components']:
+                self.summary.setText('These files are supplied by a local collection. Show measurements to verify them.')
+                return
+            dialog = ComponentDownloadDialog(plan['components'], self)
+            if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
+                self.summary.setText('Dataset files verified. Choose Show sparse measurements to browse them.')
+            else:
+                self.summary.setText('Dataset download cancelled. Existing files are retained.')
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
 
     def save(self, path='') -> int:
         if self.result is None:

@@ -436,3 +436,20 @@ record. Existing files require a new export filename.
 These structural/numeric checks establish source preservation. They do not yet
 establish comparable quantities, canonical gene mappings, biological replicate
 independence or calibrated biological quality scores across studies.
+
+
+For a version with a published optional-data index, **Show sparse measurements**
+offers a download when the selected dataset's files are missing. The dialog shows
+the maximum download size and destination, supports cancellation and retry, and
+verifies files before opening the query. Shared feature/cell metadata are reused.
+**Download / verify selected dataset** also checks an already downloaded dataset
+and can restore a damaged managed component. Installed datasets reopen offline.
+
+Optional files use a shared cache (`PARASCAPE_COMPONENTS` can override it), with
+source and checksum identities retained independently of the app's core data.
+Complete local collections and explicit `PARASCAPE_SPARSE_COORDINATES` or
+`PARASCAPE_SPARSE_AXES` locations are honored. A missing or changed explicit local
+collection must be restored or its override removed; the app does not overwrite
+it with a remote copy. These development download controls require a published
+index and assets in the next data release; the current public 0.0.7.0 bundle does
+not include that index.

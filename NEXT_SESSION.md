@@ -1,5 +1,33 @@
 # Next session: start here
 
+**Sparse missing-data download flow integrated (2026-10-31):** New
+optional_sparse_data resolver binds indexcomponents to exact descriptor hashes and
+source identity; uses complete local roots or shared componentcache,never replaces
+explicit overrides. Provisional index cannotdownload; publicindexmust say
+publication_status=published_verified after actualhostedasset gates. Sparse browser
+Show action prompts for missing hostedfiles,then routesreader toinstalledshared
+roots; separateDownload/verify action checks/repairsownedcomponents. Dialog has
+size/destination/progress/cancel/retry; offline reopen reusesfiles. Existing local
+7/NASview stillworks without optionalindex.
+
+49focused resolver/dialog/reader/query/Qt/legacydownload checks passed. Actual Qt
+prompt+installer proof useslocalstagebytes andexplicit test-onlypublicationmarker,
+externalnetworkblocked; listsall65sources,queriesrealnormal/inverselayouts,CSV152/
+1048records byteidenticaltopriorindependentreader proof. Reopeningno popup/network;
+reverifydoesnotredownload. Screenshotinspected. Code/tests/script/proofs archived
+processing_audit/optional_sparse_download_gui; private matchinghandoff.
+
+All195component installation/all65reader audit now completed successfully;native
+receipt processing_audit/optional_sparse_components/all-components-installer-
+12c38336801e4ae80e997ecbc31546118cfd5dd853d24bf05aabb9cdf7a9b047.json,
+source1217265970records. Prior138/150progress belowis historical,notcurrent. No actual
+GitHubupload/public8releaseyet. gh releaselist verifiedonlypublic7,6,5,4; nextv8draft
+notcreated. Nextautomate draftassetupload/remoteverification forstaged195filesets,
+thenprepareallnewdense+sparsecorebundleand release afterfinalmatrix completes.
+Avoid claiming publishedindexuntilactualassetchecks. Exactduplicates/logicalcells,
+identifier/unit/context QC,otherformats/studies and fullgoal remainunfinished.
+Currentgoalactive,historicalinferencepaused,restrictedpaths untouched.
+
 **Optional sparse-data distribution foundation (2026-10-31):** New
 parascape.data_components installer validates own-GitHub release URLs,orderedparts
 (max1GiB),complete archive and everyfile checksum. It resumes partial transfers,
