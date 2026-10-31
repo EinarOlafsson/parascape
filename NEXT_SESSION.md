@@ -1,5 +1,35 @@
 # Next session: start here
 
+**Owned GitHub draft uploads automated (2026-10-31):** v0.0.8.0 draftrelease
+429717948 created at own EinarOlafsson/parascape. This is not public publication.
+Native uploadservicePID740596 and enabled5mintimer run two workers,1GiB/24CPU,
+nice19/idleIO,atmostonenewassetstart/second. They require exactinstalled/readeraudit
+ofthestageindex andcurrentC/S sourcepins;checklocalSHA beforeupload andGitHubserver
+SHA256,size,state afterward. Noassetreplacement;missingserverdigest requiresfull
+GHauthenticateddownloadSHA. Alreadyverifiedassets reused,newauditedcomponents
+pickedupnextpass. No branchpromotion orpublication bythisworker.
+
+At archiveobservation186/195assets,6618173440bytes
+remoteverified,zero reviews;confirmfreshstatus ratherthanassumingcomplete.
+IndependentdirectAPI observation115remoteassets,114SHAverified/1inprogress.10offline
+identity/draft/sourceauditchecks passed. Initialstdlibselftest lackedpyarrow;
+scientificPython3.12unit nowchecked. Code/units/selfchecks/remoteobservations/receipts
+archivedprocessing_audit/optional_component_upload;private matchinghandoff.
+No running transfers restarted. Public7 remainslatest;native66thnumericworker
+657839confirmedCPUactive,65/66verified. Core8 source/data notfrozenyet.
+
+Release8preflight-plan.json nowexists~/.local/state/parascape-release-0.0.8.0.
+It observes452densequantitytables(313new) and326RNA snapshot;nextfreezerequiresall66
+matrices130axes/196minimumcomponents,exactfinalindexinstaller+remoteSHAchecks,
+expandedcoreincludingallnewdense/sparsedescriptors/operations,currentvalidatedRNA,
+version/changelogbump viarelease.py,strictpreservation+installedwheel/API/Qt tests,
+exactsourceCI,thenpublication/nonforcedmain/officialPyPI+publicassetverification.
+Beforepublishingv8,stop/retireitsdraft-onlyuploadtimer andretargetdrafttofrozencommit.
+Existingrelease.yml keepspreexistingdraft;genericpublish_prepared_release.py handles
+actualdraftpublication beforemainpromotion. Donotassumeworkflowpublishesdraft.
+Nextcontinueuploadverification/finalnumericfileandcore8prep;fullall-dataset/fairQC
+goalactive/incomplete,historicalinferencepaused,restrictedpaths untouched.
+
 **Sparse missing-data download flow integrated (2026-10-31):** New
 optional_sparse_data resolver binds indexcomponents to exact descriptor hashes and
 source identity; uses complete local roots or shared componentcache,never replaces
