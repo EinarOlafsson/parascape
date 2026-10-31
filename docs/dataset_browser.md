@@ -283,3 +283,39 @@ details. Inspection does not change values, the current treatment record, source
 files or exports. Missing row annotations are explicitly unavailable rather than
 filled from another row. This view is a source follow-up after public 0.0.6.0 and
 awaits a later software release.
+
+
+### Row-specific filename associations
+
+Row-wise reports can put filename declarations on each original row rather than
+in quantity-column headers. The nightly browser attaches separately reconciled
+`row_design_metadata` to these measurements and includes the association receipt
+and reader implementation hash in CSV treatment records. Inspect selected
+measurement → **Row-specific filename links and review-only candidates** shows
+the exact source label and all retained associations. Submitted design fields
+appear as ordered header/value pairs, retaining duplicate headings and repeated
+source-row occurrences.
+
+The first row-wise source, PXD084269, has five `R.FileName` literals without the
+`.raw` extension present in archive filenames. There are **zero exact filename
+matches** and five separately labelled filename-stem candidates, each with a
+submitted design-row candidate. The candidate rule appends one literal terminal
+`.raw` and performs no trimming, case change, basename extraction or matching of
+other extensions. Empty filename declarations never produce links. These remain
+**review required**; no input-table linkage, sample equivalence, control pairing
+or biological replicate independence is inferred. File metadata associations do
+not prove raw payloads were downloaded.
+
+The enabled five-minute reconciliation loop independently reparses all original
+row annotations and submitted designs, pins their source/manifest/metadata hashes,
+and retains every original row membership. It stores immutable reports and
+operation history in `processing_audit/protein_row_design_links`. Missing or stale
+association collections stay explicitly unavailable. All 139 earlier quantity
+pack outputs remain unchanged. This collection and reader await a future portable
+data/software release after 0.0.6.0.
+
+Python callers can use `parascape.row_design_links.enrich(pack, frame,
+audit_root=...)` with a frame from `deposited_values.profiles`. It returns the
+original measurements with separately encoded row associations and a provenance
+record. It does not convert scales, fill missing cells, merge repeated rows or
+assign biological quality scores.

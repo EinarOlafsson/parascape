@@ -1,5 +1,58 @@
 # Next session: start here
 
+**Row-specific design metadata (2026-10-30):** Previous goal turn was progress
+(selected-measurement UI), not a wait. Current dataset goal active/incomplete;
+historical inference remains paused. Live source starts743fd5f. New native
+`export_protein_row_design_links.py` a42d8729 runs every5minutes in enabled
+`parascape-protein-row-design-links.timer`,24CPUaffinity/1GiB/BLAS2. It independently
+reparses all65535 original PXD084269 row annotations and submitted design cells,
+then binds row ordinals to literal R.FileName values and metadata receipts.
+Original quantity producer/D/Q modules unchanged, avoiding regeneration of all
+existing packs. All139 earlier manifests and four runtime outputs byte-identical.
+
+Five row filename literals omit.raw,while primary files/SDRF have.raw. Native
+collection a6ebd071… / receipt6f313e06… records0exact primary matches,5review-only
+stem primary candidates and5submitted design-row candidate occurrences. Exact
+and stem matches stay separate; rule appends one literal terminal.raw without
+case,space,basename or other extension conversion. Empty names never associate.
+Ambiguous primary files,repeated source rows and duplicate metadata columns stay
+intact. No sample/control/replicate independence,input-table linkage,raw payload
+coverage or biological quality inferred. Native synthetics reject5corruptions
+including silent ambiguity resolution,dropped repeated factors and promotion of
+stem candidates to exact matches. Immutable collection/code/operations retained
+under processing_audit/protein_row_design_links. Quantity packs remain untouched.
+
+New public module `parascape/row_design_links.py` enrich(pack,frame,audit_root=...)
+returns original measurements plus row_design_metadata and provenance. It pins
+source metadata,measurement manifest and reconciled collection; validates every
+source-row membership,exact/candidate grade,source factor rowID and every duplicate
+file-column occurrence. Source-row labels and annotations must match the original
+query. Missing/unrepresented collections stay explicitly unavailable. ReaderSHA
+c245ee29; source metadata pointer/receipt and loaded implementation SHA included
+in exported view treatment records. No numeric transform,imputation,collapse or
+assumed scale. Non-row-wise assays do not inherit this association policy.
+
+UI shows row-specific links in selected-measurement details. Candidate grade is
+visible by default; original column metadata remains separately inspectable.
+Submitted design headers/cells appear as position-labelled pairs, preserving all
+duplicate fields and original source strings. CSV carries original values/tokens/
+annotations plus separate row-design context; treatment sidecar pins provenance.
+PanelSHA f4e4551a.57focused reader/QC/UI/identifier/flag checks including whole-window
+tooltip audit passed. Runtime tests refuse8independently rehashed bad contexts,
+including row loss/swap,case conversion,candidate promotion,duplicate-field loss,
+changed factor identity and inferred independence. Actual offlineQt proof covers
+all5filename labels,validates membership across all65535rows,CSV/treatment,original
+numeric bits,duplicate SDRF template fields and stale-dialog/export refusal.
+Source writes,NAS and network blocked; final screenshot visually inspected.
+Proof `/media/carruthers/mnt1/parascape-row-design-validation-20261030-v2`;
+prototype proof/975992bc panel snapshot retained separately. Source follow-up and
+new artifact await future software/data release; public0.0.6.0 unchanged.
+
+Native RNA verifier now326/1011 entries,324integrated,nextbatch349. Download3386467,
+PRIDE3533750,quant3614034/fasterq522944 confirmed alive;24CPUlimit preserved.
+Continue remaining datasets/formats,qualified accession/gene mapping,scale/context
+compatibility and future portable releases. Full all-dataset goal not complete.
+
 **Selected original-measurement context (2026-10-30):** Current dataset goal
 active/incomplete; previous goal turn was progress (row-wise admission and native
 repeated-key QC). New `Inspect selected measurement…` button/double-click view in

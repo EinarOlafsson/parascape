@@ -18,6 +18,7 @@ from PyQt6 import QtCore, QtWidgets
 from . import deposited_values as D
 from . import protein_identifier_evidence as I
 from . import source_flags as F
+from . import row_design_links as R
 
 
 class DepositedValuesPanel(QtWidgets.QWidget):
@@ -197,8 +198,15 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             item.setToolTip(0, str(name))
             item.setToolTip(1, text)
             if isinstance(value, dict):
+                paired = (isinstance(value.get('headers'), list) and isinstance(value.get('cells'), list)
+                          and len(value['headers']) == len(value['cells']))
                 for key, child in value.items():
-                    add(item, key, child)
+                    if not paired or key not in ('headers', 'cells'):
+                        add(item, key, child)
+                if paired:
+                    submitted = QtWidgets.QTreeWidgetItem(item, ['Submitted fields in original order', 'Duplicate headers retained'])
+                    for position, (header, cell) in enumerate(zip(value['headers'], value['cells']), 1):
+                        add(submitted, str(position) + ': ' + header, cell)
             elif isinstance(value, list):
                 for position, child in enumerate(value, 1):
                     add(item, 'Occurrence ' + str(position), child)
@@ -209,16 +217,17 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             ('Original quantity column', 'source_sample'), ('Numeric value', 'value'),
             ('Original source token', 'source_token'), ('Source units', 'units'))}).setExpanded(True)
         for caption, field in (('Original row annotations', 'source_row_metadata'),
+                               ('Row-specific filename links and review-only candidates', 'row_design_metadata'),
                                ('Original column metadata', 'sample_metadata'),
                                ('Qualified identifier evidence', 'identifier_evidence')):
             encoded = row.get(field)
             section = add(tree, caption, json.loads(encoded) if isinstance(encoded, str) and encoded else
                 'No declaration supplied for this measurement')
-            section.setExpanded(True)
-            if field == 'source_row_metadata':
+            section.setExpanded(not (field == 'sample_metadata' and 'row_design_metadata' in row))
+            if field in ('source_row_metadata', 'row_design_metadata'):
                 for position in range(section.childCount()):
                     child = section.child(position)
-                    if child.text(0) == 'source_fields':
+                    if child.text(0) == ('source_fields' if field == 'source_row_metadata' else 'association'):
                         child.setExpanded(True)
         add(tree, 'Source flag view', dict(original_source_flags=json.loads(row['source_flags']),
             interpretation=row['source_flag_status'], view_policy=json.loads(row['source_flag_view_policy'])))
@@ -314,6 +323,10 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             manifest_sha256 = hashlib.sha256((Path(info['path']) / 'manifest.json').read_bytes()).hexdigest()
             if not frame.empty and not frame.manifest_sha256.eq(manifest_sha256).all():
                 raise ValueError('Source manifest changed after the original query')
+            row_design = None
+            if manifest['assay'] == 'deposited protein-accession quantities':
+                frame, row_design = R.enrich(info['path'], frame)
+            original = frame
             frame, treatment = F.apply(frame, exclude_marked=self.exclude_source_marked.isChecked())
         except (OSError, ValueError, KeyError, TypeError) as error:
             self.summary.setText(str(error))
@@ -330,6 +343,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             quantity=manifest['quantity'], units=manifest['units'], identifier_namespace=namespace,
             exact_query_literals=self.features.toPlainText().splitlines(), source_selection_filter=self.source_filter.text(),
             original_identifier_evidence=identifier_contexts,
+            row_design_association_view=row_design,
             source_flag_view=treatment, original_files_modified=False, numerical_values_transformed=False,
             biological_quality_score_assigned=False)
         self.export_button.setEnabled(not frame.empty)
