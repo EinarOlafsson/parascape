@@ -353,3 +353,63 @@ namespace='original_accession_cell_component')`. Assay-specific roots are select
 automatically; `PARASCAPE_ACCESSION_IDENTIFIERS` can override the accession index,
 while `PARASCAPE_PROTEIN_IDENTIFIERS` continues to select the separate group index.
 The new index and browser behavior await a later portable release after 0.0.6.0.
+
+### Read original sparse source records (development API)
+
+The development `parascape.sparse_values` reader accepts separately prepared
+Matrix Market collections. These newer collections are not included in portable
+0.0.7.0 yet. The sparse reader is an API; the existing measurement dialog does
+not yet display these collections.
+
+A dataset descriptor binds independently checked numeric records to their original
+feature and cell metadata. The reader verifies the descriptor, manifests,
+validation receipts and output checksums. It supports feature positions along
+either original coordinate axis without transposing the stored records. Checksum
+verification can take time on a large file; subsequent queries reuse verification
+only while its file identity, size and timestamps remain unchanged.
+
+```python
+from parascape.sparse_values import SparseDataset, catalogue
+
+available, errors = catalogue("/path/to/sparse_datasets")
+if errors:
+    raise ValueError(errors)
+dataset = SparseDataset(
+    available[0]["path"],
+    coordinate_root="/path/to/sparse_coordinates",
+    axis_root="/path/to/sparse_axes",
+)
+
+# Match an exact original first-field label, including its case and suffixes.
+positions = [
+    row["source_axis_row"]
+    for batch in dataset.iter_feature_matches("literal source feature label")
+    for row in batch.to_pylist()
+]
+for batch in dataset.iter_entries(positions):
+    # Batches preserve source record order and exact integer/real storage.
+    print(batch)
+```
+
+`PARASCAPE_SPARSE_DATASETS`, `PARASCAPE_SPARSE_COORDINATES` and
+`PARASCAPE_SPARSE_AXES` can point to local collection roots. By default the
+reader expects `sparse_datasets`, `sparse_coordinates` and `sparse_axes` beside
+each other in the installed data directory.
+
+Feature matches retain every repeated original label and all submitted metadata
+fields. The first field is a source label, not an inferred canonical gene ID.
+Returned numeric records retain original one-based coordinates, literal tokens,
+entry ordinals, explicit zeros and repeated coordinates. Integer quantities stay
+exact above the binary64 integer precision limit. Empty results do not create
+zeros. Repeated coordinate records are not summed. Source units, upstream
+filtering, gene equivalence, biological sample independence and comparative QC
+remain unresolved until separately documented; structural binding alone does not
+make datasets comparable.
+
+Every returned numeric batch carries a JSON `parascape_query_record` in its Arrow
+schema metadata, including source and descriptor checksums, original axis
+provenance, selected feature positions and reader code checksum. It records that
+normalization, imputation, transposition, coordinate aggregation and canonical
+gene mapping were not applied. `dataset.query_record(positions)` provides the
+same record even for an empty result. Preserve this record alongside exports;
+formats such as CSV do not retain Arrow schema metadata automatically.

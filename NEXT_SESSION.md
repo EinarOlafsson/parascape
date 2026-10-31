@@ -1,5 +1,27 @@
 # Next session: start here
 
+**Sparse original-feature reader (2026-10-31):** Development module
+`parascape.sparse_values` now validates prepared dataset descriptors and their
+numeric/axis artifacts, supports both original feature-coordinate orientations,
+and streams exact original-label/position queries. Duplicate labels and coordinates,
+all original fields/tokens/entry order/int64/binary64 remain intact; no numerical
+transformation, zero fill, coordinate aggregation or biological admission. Each
+numeric Arrow batch carries a JSON parascape_query_record with source/axis hashes,
+selected positions, reader SHA and treatment operations; query_record() also works
+for empty results. Environment overrides and development API documented in
+`docs/dataset_browser.md`. Not yet in GUI or public portable release.
+
+42 explicit sparse/existing deposited-reader checks passed. Actual offline local
+copies of GSM8449844/GSM8491519 independently replay591442+20286726source records;
+152+1048selected records matched all original coordinates/tokens/numeric bits,
+normal/inverse layouts and query metadata. Receipts/code/tests/script under NAS
+processing_audit/sparse_values_reader; private sparse-values-reader-handoff.json.
+Next integrate this reader in the existing measurement browsing experience, retain
+source-context/refusal/provenance behavior, then optional/sharded GitHub components
+and next release. Duplicate/logical-cell policy and broader fair comparison remain.
+Background source downloads, quantification and65/66sparse numerical validation
+continue; full goal active/incomplete, historical inference paused.
+
 **Publication and sparse-data continuation (2026-10-31):** Version0.0.7.0 is
 published on official PyPI and GitHub at commit
 `e0126de0b484d9a937b9f8dbf884bc05fcac31e4`. Native publisher status is complete;
