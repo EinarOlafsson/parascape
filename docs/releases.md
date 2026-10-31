@@ -168,3 +168,51 @@ workflow downloads this existing asset and verifies it against the descriptor wh
 smoke-testing the installed wheel. It does not rebuild an archive whose compression
 bytes could vary across platforms. PyPI publication happens only after this check;
 the final job attaches wheels and source distributions to the existing release.
+
+## Optional large-data components (development)
+
+The development installer in `parascape.data_components` supports independently
+installed sparse matrix and axis components. This is the storage foundation for
+the next release; the current 0.0.7.0 release continues using its existing core
+archive. Optional assets are not public merely because they have been prepared.
+The component download interface still needs to be connected to the app's missing
+dataset prompt before the next release.
+
+A core-data `data_components.json` index has `schema_version: 1`, a version,
+`components`, and a dataset-to-component dependency map. Component keys are
+`sparse_coordinates/<pack-sha>` or `sparse_axes/<pack-sha>`. Each component declares
+its original files with exact sizes and SHA-256 checksums, one complete archive
+checksum/size, and an ordered list of GitHub release URLs with individual part
+sizes/checksums. Every part is at most 1 GiB. Shared axes use the same component
+identity across datasets.
+
+Prepare an existing independently validated pack without changing its contents:
+
+```bash
+python scripts/build_data_components.py /path/to/original/pack \
+  sparse_coordinates/ORIGINAL_PACK_SHA /path/to/staging --tag v0.0.8.0
+```
+
+The builder retains original manifests, validation receipts and Parquet bytes.
+It creates deterministic tar headers, streams archive parts without allocating a
+whole archive in memory, verifies every source file while copying, and records
+builder/source signatures. Repeated preparation reuses checked immutable parts.
+This command does not upload files or publish a release. Upload gates must verify
+all assets against the index before including that index in a public core bundle.
+
+`data_components.read_index()` reads an index from verified core data.
+`data_components.download(component)` installs one component in a shared user
+cache, overridable with `PARASCAPE_COMPONENTS`. The client verifies each part,
+the reconstructed archive and every extracted file before atomically exposing
+the component directory. Cancellation retains partial/completed download pieces
+for a later verified retry. Traversal, links, unexpected members, bad ranges and
+checksum mismatches are refused. Existing unmanaged targets are preserved;
+replaced managed components are retained for recovery. Core data and other
+component directories are not replaced.
+
+Contributors can read an installed component explicitly with
+`SparseDataset(..., coordinate_root=storage_root() / 'sparse_coordinates',
+axis_root=storage_root() / 'sparse_axes')`. The default app reader/download prompt
+routing remains a follow-up before release. Keep download/installation receipts
+separate from scientific normalization, identifier mapping and biological QC;
+copying a verified component does not establish cross-study comparability.

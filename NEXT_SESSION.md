@@ -1,5 +1,39 @@
 # Next session: start here
 
+**Optional sparse-data distribution foundation (2026-10-31):** New
+parascape.data_components installer validates own-GitHub release URLs,orderedparts
+(max1GiB),complete archive and everyfile checksum. It resumes partial transfers,
+keeps validated pieces on cancellation,and atomically installs one independent
+component. Shared axes can be reused; unmanaged targets/links/unsafearchives refused,
+managed replacements retained for recovery. Default shared cache has
+PARASCAPE_COMPONENTS override. Existing core7 downloader unchanged.
+
+scripts/build_data_components.py copies original checked pack files without numeric
+changes into deterministic tar parts. Enabled native component-preparation timer
+(two workers,2GiB,24CPU,IOidle,NASreserve25GiB) completed195components:130axes+65numeric,
+65bounddatasets,10,648,924,160archivebytes. Local stage
+NAS portable_components/v0.0.8.0/current.json points to index323e088d...;195parts,
+allcurrently<1GiB. No uploads/publicrelease yet. Next finishednumericpack will be
+picked up automatically. Stageindex is provisional,not installed/shippedcoredata.
+
+28distinct installer/builder/legacydownload checks passed. Actual offline installer
+roundtrip restores three realnormal-layout packs plus largest868331520byte archive
+repartitioned at256MiB into4parts; completearchiveSHA unchanged,all restoredfileSHAs
+verified,152readerrecords exact. Initial oversized-asset assertion was diagnostic,
+not source corruption:current nativeparts all<1GiB. All code/units/proofs/perpack
+build receipts/index archived processing_audit/optional_sparse_components; private
+optional-sparse-components-handoff.json. Separate full-generation installation and
+all65runtime-reader audit enabled;nativePID729776 confirmedlive,138/195at observation.
+Do not claimfullaudit finished withoutchecking status/unit/receipt. It pins loaded
+C/S code; avoid changing these modules midpass unless needed and preserve diagnostics.
+
+Next connect dependency resolution/sharedstorage to the sparse GUI missing-data
+prompt;finish audit/lastnumeric pack,upload+verifyallGitHub assets andnextportable
+release containing all313newdensequantities andallsparse. Existing public7/local
+GUI remainworking; rawdownloads/quantification/sparse validation continue. Exact
+coordinate duplicates/logicalcellpolicy,source-ID/unit/context QC,otherformats and
+allstudies remainunfinished. Fullgoal active,inferencepaused,restrictedpaths untouched.
+
 **Sparse measurements GUI integrated (2026-10-31):** Compare now includes
 Sparse measurements, backed by the checked original-feature reader. Source filter,
 exact original labels, background querying/cancellation,500record preview and
