@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+## 0.0.9.0 — 2026-10-31
+
+- Keep all 574 original quantitative tables in independently verified GitHub
+  components. The core retains their source metadata and processing identities;
+  the browser offers a download when a selected table is missing, with progress,
+  cancellation, retry and offline reuse. Preserve all 452 earlier quantity tables.
+- Include 48 original transcript quantity layers and 74 original target-table
+  layers, retaining exact identifiers, literal tokens, reported quantities and
+  sample annotations. Target and transcript estimates remain distinct from
+  gene-level sums and independent biological replicates.
+- Browse 180 source matrix/layer entries, including 38 HDF5 CSC matrices and
+  76 original AnnData layers. Preserve source orientation, typed axes, explicit
+  zeros, duplicates and numeric representations; keep each layer separate.
+- Include 337 verified RNA study/run entries across 25 studies. Preserve all
+  43,143,873 earlier RNA cells exactly. Record source-specific units and numerical
+  QC without assigning unvalidated biological quality or stage/strain scores.
+
 - Label HDF5 value strings as derived decimal values in sparse tables and
   tooltips, matching the binary-source provenance retained in exports.
 - Read checked binary HDF5 CSC source records with their original axes and

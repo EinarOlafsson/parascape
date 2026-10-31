@@ -1,9 +1,10 @@
-"""Check the installed, downloaded expression pack without network or NAS access.
+"""Check the installed expression pack offline after optional-table preparation.
 
 Run with the wheel environment's isolated Python after installing its pinned data
 archive. Source identifiers are chosen mechanically to exercise storage and query
 routes, without interpreting gene function or treating annotations as replicates.
 """
+from collections import Counter
 import hashlib
 import json
 import os
@@ -20,10 +21,36 @@ def _offline(event, args):
         raise PermissionError('Installed-pack smoke test forbids network access')
 
 
+def _prepare_optional_quantities(root):
+    """Install and verify every quantitative dependency before offline assertions."""
+    from parascape import data_components as C, deposited_values as D, optional_deposited_data as O
+    rows, errors = D.catalogue(root / 'deposited_values')
+    assert not errors
+    components = {}
+    for row in rows:
+        pack = Path(row['path'])
+        if not (pack / O.MARKER).exists():
+            continue
+        selected = O.plan(pack)
+        for component in selected['components']:
+            components[component['directory']] = component
+    for number, component in enumerate(components.values(), 1):
+        # download() checks an existing installation as well as fresh transfers.
+        C.download(component)
+        if number % 50 == 0 or number == len(components):
+            print(json.dumps(dict(optional_quantity_components_prepared=number,
+                                  selected=len(components))), flush=True)
+    return len(components)
+
+
 def main():
     """Exercise the installed priority study, deposited variants and primary sample metadata."""
-    sys.addaudithook(_offline)
+    import parascape
+    assert Path(parascape.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Package was not imported from the wheel environment'
     from parascape import paths
+    root = Path(paths.data_dir())
+    prepared_components = _prepare_optional_quantities(root)
+    sys.addaudithook(_offline)
     from parascape import expression_contrast as X
     from parascape import rna_profiles as R
     from parascape import published_expression as P
@@ -32,8 +59,6 @@ def main():
     from parascape import deposited_values as D
     from parascape import reference_identifiers as F
     from parascape import protein_identifier_evidence as I
-    import parascape
-    assert Path(parascape.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Package was not imported from the wheel environment'
     import pandas as pd
     import pyarrow.dataset as ds
     import pyarrow.parquet as pq
@@ -106,7 +131,10 @@ def main():
     qc = R.technical_qc(root=str(root / 'rnaseq'), study='PRJNA1008424')
     assert len(qc) == 16 and qc.quality_score.isna().all()
     original_values, errors = D.catalogue(root / 'deposited_values')
-    assert len(original_values) == 452 and not errors
+    contract = json.loads((root / 'processing_audit/release_measurement_contract.json').read_text())
+    assert len(original_values) == contract['quantity_tables'] == 574 and not errors
+    assert prepared_components == len(original_values)
+    observed_assays = Counter()
     protein_packs = workbench_packs = generic_protein_packs = gene_packs = quantity_columns = cells = missing = 0
     filename_matches = filename_gaps = factor_occurrences = experiment_candidates = 0
     chosen_pack = reference_choice = None
@@ -131,8 +159,10 @@ def main():
     flag_choice = None
     for pack in original_values:
         folder = Path(pack['path'])
-        info = D.manifest(folder)
-        feature = pq.read_table(folder / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
+        runtime = D.runtime_pack(folder)
+        info = D.manifest(runtime)
+        observed_assays[info['assay']] += 1
+        feature = pq.read_table(runtime / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
         frame = D.profiles(folder, [feature])
         assert not frame.empty and frame.feature_label.eq(feature).all()
         sample_qc = D.technical_qc(folder)
@@ -154,7 +184,7 @@ def main():
                 accession_choices.append((folder, query))
             if group and flag_choice is None:
                 from parascape import source_flags as SF
-                metadata = json.loads((folder / 'source_metadata.json').read_text())
+                metadata = json.loads((runtime / 'source_metadata.json').read_text())
                 marked = [row['feature_label'] for row in metadata['row_annotations']
                           if any(row['source_fields'].get(field) == '+' for field in SF.FIELDS)]
                 if marked:
@@ -176,9 +206,15 @@ def main():
             generic_protein_packs += 1
         elif info['assay'] == 'deposited original gene-table quantities':
             gene_packs += 1
+        elif info['assay'] in ('deposited original transcript-table quantities',
+                               'deposited original target-table quantities'):
+            pass  # Kept as original target/transcript rows, never gene sums.
         else:
             raise AssertionError('Unexercised deposited assay: ' + info['assay'])
-    assert (protein_packs, generic_protein_packs, gene_packs, workbench_packs, quantity_columns, cells, missing) == (337, 9, 99, 7, 1750, 7475381, 166442)
+    assert (protein_packs, generic_protein_packs, gene_packs, workbench_packs) == (337, 9, 99, 7)
+    assert dict(observed_assays) == contract['assay_counts']
+    assert (quantity_columns, cells, missing) == (contract['source_quantity_columns'],
+        contract['original_quantity_cells'], contract['missing_original_cells'])
     assert filename_matches >= 16 and filename_gaps >= 12 and factor_occurrences >= 10 and experiment_candidates >= 357
     reference_sources, reference_status = F.catalogue(root / 'processing_audit/reference_identifiers')
     acquired = [row for row in reference_sources if row['status'] == 'all_header_cells_reconciled']
@@ -234,7 +270,7 @@ def main():
         if Path(panel.pack.itemData(index)['path']) == chosen_pack[0]:
             panel.pack.setCurrentIndex(index)
             break
-    chosen_kind = 'original_accession_cell_component' if D.manifest(chosen_pack[0])['assay'] == 'deposited protein-accession quantities' else 'original_protein_group_component'
+    chosen_kind = 'original_accession_cell_component' if D.manifest(chosen_pack[0], verify_outputs=False)['assay'] == 'deposited protein-accession quantities' else 'original_protein_group_component'
     panel.identifier_kind.setCurrentIndex(panel.identifier_kind.findData(chosen_kind))
     panel.features.setPlainText(identifier_queries[str(chosen_pack[0])]); panel.show_values()
     assert panel.result is not None and not panel.result.empty
@@ -264,7 +300,7 @@ def main():
         assert panel.save_treatment(str(output / f'unavailable-reference-{sequence}.json')) == 1
     row_choice = next(folder for folder, query in accession_choices if 'protein_rowwise_quantities' in str(folder))
     from parascape import row_design_links as RD
-    row_feature = pq.read_table(row_choice / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
+    row_feature = pq.read_table(D.runtime_pack(row_choice) / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
     row_values, row_record = RD.enrich(row_choice, D.profiles(row_choice, row_feature))
     assert row_record['collection'] and not row_record['numerical_values_transformed']
     for encoded in row_values.row_design_metadata:
@@ -292,11 +328,12 @@ def main():
     panel.exclude_source_marked.setChecked(False)
     new_assay_views = 0
     for item in original_values:
-        if item['assay'] not in ('deposited original gene-table quantities', 'deposited original protein-feature quantities'):
+        if item['assay'] not in ('deposited original gene-table quantities', 'deposited original protein-feature quantities',
+                'deposited original transcript-table quantities', 'deposited original target-table quantities'):
             continue
         folder = Path(item['path'])
         panel.pack.setCurrentIndex(next(i for i in range(panel.pack.count()) if Path(panel.pack.itemData(i)['path']) == folder))
-        feature = pq.read_table(folder / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
+        feature = pq.read_table(D.runtime_pack(folder) / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
         panel.identifier_kind.setCurrentIndex(0)
         panel.features.setPlainText(feature); panel.show_values()
         assert panel.result is not None and not panel.result.empty
@@ -310,11 +347,11 @@ def main():
         assert record
         assert all(not panel.identifier_kind.model().item(i).isEnabled() for i in range(1, panel.identifier_kind.count()))
         new_assay_views += 1
-    assert new_assay_views == 108
+    assert new_assay_views == 230
     from parascape import sparse_values_panel as SP
     from parascape import sparse_record_qc as SQ
     sparse = window.findChildren(SP.SparseValuesPanel)
-    assert len(sparse) == 1 and sparse[0].pack.count() == 66
+    assert len(sparse) == 1 and sparse[0].pack.count() == contract['sparse_dataset_metadata_views'] == 180
     sparse[0].unique_coordinates.setChecked(True)
     assert sparse[0].pack.count() == 66
     sparse[0].show_qc(); assert sparse[0].qc_dialog is not None
@@ -335,7 +372,9 @@ def main():
                           original_value_matrices=len(sources), annotation_platforms=len(records),
                           annotated_query_rows=annotated_rows, whole_matrix_QC_rows=len(qc),
                           network_disabled=True, NAS_reads_disabled=True, original_measurement_packs=len(original_values),
-                          protein_quantity_packs=protein_packs+generic_protein_packs, gene_quantity_packs=gene_packs, workbench_quantity_packs=workbench_packs, installed_new_assay_views=new_assay_views, sparse_dataset_metadata_views=66,
+                          protein_quantity_packs=protein_packs+generic_protein_packs, gene_quantity_packs=gene_packs, workbench_quantity_packs=workbench_packs, installed_new_assay_views=new_assay_views,
+                          sparse_dataset_metadata_views=contract['sparse_dataset_metadata_views'],
+                          optional_quantity_components_prepared=prepared_components,
                           original_quantity_cells=cells, missing_original_cells=missing, source_quantity_columns=quantity_columns,
                           exact_primary_filename_matches=filename_matches, submitted_factor_occurrences=factor_occurrences,
                           experiment_label_candidate_columns=experiment_candidates, reference_source_occurrences=len(acquired),
