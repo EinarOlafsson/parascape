@@ -57,6 +57,13 @@ def _child(root: Path, name: str) -> Path:
     return child
 
 
+def _batches(path: Path, batch_size: int):
+    """Keep one physical row group active, including for billion-record sources."""
+    file = pq.ParquetFile(path)
+    for group in range(file.num_row_groups):
+        yield from file.iter_batches(batch_size=batch_size, row_groups=[group], use_threads=False)
+
+
 def data_root() -> Path:
     return Path(os.environ.get('PARASCAPE_SPARSE_DATASETS',
                               str(Path(paths.data_dir()) / 'sparse_datasets')))
@@ -199,7 +206,7 @@ class SparseDataset:
             raise TypeError('Sparse feature queries require a literal source label')
         reference = self._axes['features']
         folder, _, _ = self._artifact(self.axis_root, reference, 'axis.parquet')
-        for batch in pq.ParquetFile(folder / 'axis.parquet').iter_batches(batch_size=batch_size):
+        for batch in _batches(folder / 'axis.parquet', batch_size):
             matched = batch.filter(pc.equal(batch.column('first_field'), literal_label))
             if matched.num_rows:
                 yield matched
@@ -217,7 +224,7 @@ class SparseDataset:
         reference = self._axes[role]
         folder, _, _ = self._artifact(self.axis_root, reference, 'axis.parquet')
         selected_array = pa.array(selected, type=pa.int64())
-        for batch in pq.ParquetFile(folder / 'axis.parquet').iter_batches(batch_size=batch_size):
+        for batch in _batches(folder / 'axis.parquet', batch_size):
             matched = batch.filter(pc.is_in(batch.column('source_axis_row'), value_set=selected_array))
             if matched.num_rows:
                 yield matched
@@ -255,7 +262,7 @@ class SparseDataset:
             return
         folder, _, _ = self._artifact(self.coordinate_root, self._coordinate_ref, 'entries.parquet')
         selected_array = pa.array(selected, type=pa.int64())
-        for batch in pq.ParquetFile(folder / 'entries.parquet').iter_batches(batch_size=batch_size):
+        for batch in _batches(folder / 'entries.parquet', batch_size):
             matched = batch.filter(pc.is_in(batch.column(self.feature_coordinate), value_set=selected_array))
             matched = matched.replace_schema_metadata(metadata)
             if matched.num_rows:

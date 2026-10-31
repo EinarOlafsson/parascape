@@ -182,3 +182,36 @@ def test_original_cell_and_feature_metadata_by_position(tmp_path, inverse):
         list(dataset.iter_axis_rows('barcodes', [3]))
     with pytest.raises(ValueError):
         list(dataset.iter_axis_rows('unknown', [1]))
+
+
+def test_reader_limits_physical_row_group_scheduling_and_preserves_records(tmp_path, monkeypatch):
+    roots, path = fixture_collection(tmp_path)
+    descriptor = json.loads(path.read_text())
+    reference = descriptor['coordinate_artifact']
+    folder = roots['sparse_coordinates']/reference['directory']
+    values = pq.read_table(folder/'entries.parquet')
+    pq.write_table(values, folder/'entries.parquet', row_group_size=1)
+    info = json.loads((folder/'manifest.json').read_text())
+    info['outputs']['entries.parquet'] = sv._sha(folder/'entries.parquet')
+    reference['manifest_sha256'] = write_json(folder/'manifest.json', info)
+    receipt = json.loads((folder/'validation.json').read_text())
+    receipt['manifest_sha256'] = reference['manifest_sha256']
+    reference['validation_sha256'] = write_json(folder/'validation.json', receipt)
+    reference['output_sha256'] = info['outputs']['entries.parquet']
+    path = save_descriptor(roots, descriptor)
+    original = sv.pq.ParquetFile
+    scheduled = []
+    class Reader:
+        def __init__(self, *args, **kwargs):
+            self.reader = original(*args, **kwargs)
+        def __getattr__(self, name):
+            return getattr(self.reader, name)
+        def iter_batches(self, **kwargs):
+            assert len(kwargs['row_groups']) == 1 and kwargs['use_threads'] is False
+            scheduled.extend(kwargs['row_groups'])
+            yield from self.reader.iter_batches(**kwargs)
+    monkeypatch.setattr(sv.pq, 'ParquetFile', Reader)
+    dataset = open_dataset(roots, path)
+    observed = [row for batch in dataset.iter_entries([1, 2], batch_size=3) for row in batch.to_pylist()]
+    assert observed == values.to_pylist()
+    assert scheduled == [0, 1, 2, 3]

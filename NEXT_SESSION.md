@@ -1,5 +1,43 @@
 # Next session: start here
 
+**All66 sparse matrices recovered; bounded reader and coordinate QC (2026-10-31):**
+Authoritative journal/kernel show original657839worker8GiBOOM,not an observation
+failure. Auto-retry755525stoppedforrepair; originalcompleted8,140,542,716bytePqfile
+retained. Nativeboundedverifier87d0c1c2 independentlyreconciledall1,047,403,853integer
+sourceentries/tokens/order under4GiB,peak370328KiB. Originalnumericbytes/PqSHA and
+producerbcce6556unchanged. Completedstage movedto01b8b1b7...targetwithnewvalidation/
+recoveryprovenance; originalproducer auto-resumed andcachedall66,zero reviews.
+All66structuraldatasetbindings nowready. Partialretrydiagnostic remainsuntouched.
+
+Realclientquery thenhit2GiBOOM beforepublication. SparseAPI now schedulesonephysical
+rowgroupatatime,use_threadsFalse,keepingoriginalrecordorder/values.48focusedapp
+checks +11recoverynative +8ordernative checks pass. Actualfullbillionrecordpositive
+queryVcpip1/Ube2d2a (observed sourcefeatures,not biologicalselection) exported403885
+records,500preview,allinttokens/orderverified,peak281300KiB,207.92s. Priorfirst/last
+featurequeryreturned0recordsandonlyprovesempty/memorybehavior; artifactsretained.
+No sourcevalueschanged. Nativelargequeryunit nowterminalsuccess.
+
+Enabled5mincoordinateQC auditsall66/2,264,669,823records. Every sourcehas proven
+monotone row/columnorder,soallcoordinatescontiguous;globalrepeatedcount0forallsources.
+Unorderedfixtureskeepglobalunknown,neverzero. No aggregation/normalization/biological
+score. Newsource-boundQCreader,dialog,optionalRequirezerorepeatedcoordinatesfilter,
+andexportsidecarQC;defaultallvisible. ActualofflineQtpictures/152+1048CSVbytesunchanged,
+all66QCreportcontextsverified. Core8mustincludeprocessing_audit/sparse_coordinate_qc
+collection+receipts. All code/units/kernel/OOM diagnostics/proofs archived under
+processing_audit/sparse_coordinate_recovery;private matchinghandoff.
+
+Currentstage indexdf9c7911...:196components66datasets203parts18,789,478,400bytes.
+195oldparts10.65GBindependentlyremoteSHAverified in draft429717948;8newpartsawaitnew
+installer/reader audit withfixedS code. OldinflightauditinterruptedbecauseSchanged;
+newnative787956confirmedlive,130/196atlastobservation(first8.14GBcomponentinprogress).
+Auditcachecap raised2→16GiBwith81GBavailableRAM,observed32MBanon/pagewait;16GiBmostly
+filesystemcache,no numericchecksrelaxed,IO best-effort7/24CPU. Nativeuploaderwaits
+exactnewaudit thenautouploadsremainingparts. Public7unchanged;no8source/datafreeze.
+Nextfinishaudit/remoteverification,prepareexpandedcore(all452dense/currentRNA/66sparse/
+QC),bumpversion,installedwheel+exactCI+publishgates. Fullall-dataset/faircomparison
+stillincomplete;otherformats/studies/mapping/units/biologicalQC remain. Historical
+inferencepaused,restrictedpaths untouched.
+
 **Owned GitHub draft uploads automated (2026-10-31):** v0.0.8.0 draftrelease
 429717948 created at own EinarOlafsson/parascape. This is not public publication.
 Native uploadservicePID740596 and enabled5mintimer run two workers,1GiB/24CPU,

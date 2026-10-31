@@ -453,3 +453,24 @@ collection must be restored or its override removed; the app does not overwrite
 it with a remote copy. These development download controls require a published
 index and assets in the next data release; the current public 0.0.7.0 bundle does
 not include that index.
+
+### Inspect and filter sparse coordinate QC
+
+**Inspect coordinate QC** shows facts tied to the exact original numeric file and
+its validation receipt: stored record counts, source ordering, repeated entries,
+and distinct stored coordinates. The audit reads every coordinate. If the complete
+source is lexicographically ordered by row/column or column/row, all occurrences of
+a coordinate must be adjacent, so its global duplicate count is proven. An
+unordered source retains an unknown global count pending an exact external audit;
+adjacent repeats alone are not treated as the complete answer.
+
+**Require zero repeated coordinates** is an optional source filter. It excludes
+sources with repeated entries, unavailable QC, or unproven global counts while
+checked. It does not filter individual records or change the measurements.
+Matching QC and its source/processor checksums are included in exported treatment
+sidecars; CSV numeric records and original tokens remain unchanged.
+
+These facts describe source encoding. Unique coordinates do not establish unique
+gene identities, independent cells or biological replicates, comparable units,
+correct stages/strains, or biological quality. No biological quality score is
+assigned by this check. Sources remain visible by default even when QC is missing.

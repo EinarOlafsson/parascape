@@ -10,6 +10,7 @@ from PyQt6 import QtCore, QtWidgets
 from . import sparse_values as S
 from .sparse_query import prepare_query, QueryCancelled
 from . import optional_sparse_data as O
+from . import sparse_record_qc as Q
 from .component_download_dialog import ComponentDownloadDialog
 
 
@@ -60,6 +61,10 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.source_filter.setToolTip('Filter source metadata without changing case-sensitive feature matching.')
         self.source_filter.textChanged.connect(self._filter_sources)
         layout.addWidget(self.source_filter)
+        self.unique_coordinates = QtWidgets.QCheckBox('Require zero repeated coordinates')
+        self.unique_coordinates.setToolTip('Only show sources whose full coordinate QC proves zero repeated row/column entries. Sources with missing or unknown global counts are excluded while checked. This does not establish biological quality or independent cells.')
+        self.unique_coordinates.toggled.connect(self._filter_sources)
+        layout.addWidget(self.unique_coordinates)
         self.pack = QtWidgets.QComboBox()
         self.pack.setMinimumContentsLength(12)
         self.pack.setSizeAdjustPolicy(QtWidgets.QComboBox.SizeAdjustPolicy.AdjustToMinimumContentsLengthWithIcon)
@@ -95,6 +100,10 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.export_button.setToolTip('Save the complete CSV, including records beyond the preview, and a checksum/source/treatment sidecar.')
         self.export_button.clicked.connect(lambda: self.save())
         layout.addWidget(self.export_button)
+        self.qc_button = QtWidgets.QPushButton('Inspect coordinate QC…')
+        self.qc_button.setToolTip('Show source-bound ordering and duplicate-record facts. Unordered sources retain unknown global duplicate counts; these facts are not a biological quality score.')
+        self.qc_button.clicked.connect(self.show_qc)
+        layout.addWidget(self.qc_button)
         self.context_button = QtWidgets.QPushButton('Inspect selected measurement…')
         self.context_button.setToolTip('Show original coordinates, tokens and all submitted feature/cell metadata for the selected displayed record.')
         self.context_button.clicked.connect(self.show_context)
@@ -120,6 +129,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.download_button.setEnabled(bool(selected) and self._worker is None and
                                         (Path(selected['path']).parent.parent / 'data_components.json').exists())
         self.export_button.setEnabled(self.result is not None)
+        self.qc_button.setEnabled(bool(self.pack.currentData()))
         self.context_button.setEnabled(self.result is not None and self.table.currentRow() >= 0)
 
     def _clear(self):
@@ -129,6 +139,10 @@ class SparseValuesPanel(QtWidgets.QWidget):
         if self.result is not None:
             self.result.close()
             self.result = None
+        if getattr(self, 'qc_dialog', None) is not None:
+            self.qc_dialog.close()
+            self.qc_dialog.deleteLater()
+            self.qc_dialog = None
         if getattr(self, 'context_dialog', None) is not None:
             self.context_dialog.close()
             self.context_dialog.deleteLater()
@@ -141,12 +155,23 @@ class SparseValuesPanel(QtWidgets.QWidget):
 
     def refresh(self):
         self._catalogue, self._errors = S.catalogue(self.root)
+        self._qc_reports, self._qc_errors = {}, []
+        for source in self._catalogue:
+            try:
+                self._qc_reports[source['path']] = Q.report(source['path'])
+            except (OSError, ValueError, KeyError, TypeError) as error:
+                self._qc_reports[source['path']] = None
+                self._qc_errors.append(str(error))
         self._filter_sources()
 
     def _filter_sources(self):
         previous = (self.pack.currentData() or {}).get('path')
         text = self.source_filter.text().casefold().strip()
         sources = [item for item in self._catalogue if text in json.dumps(item['source_record'], ensure_ascii=False).casefold()]
+        if self.unique_coordinates.isChecked():
+            sources = [source for source in sources if self._qc_reports.get(source['path']) is not None
+                       and self._qc_reports[source['path']]['facts']['global_duplicate_count_proven']
+                       and self._qc_reports[source['path']]['facts']['global_repeated_records'] == 0]
         blocker = QtCore.QSignalBlocker(self.pack)
         self.pack.clear()
         for item in sources:
@@ -160,7 +185,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self._clear()
         self.catalogue_status.setText(f'{len(sources)} of {len(self._catalogue)} checked sparse sources shown. '
                                      + (f'{len(self._errors)} entries require review.' if self._errors else 'Choose one source; quantities are not pooled.'))
-        self.catalogue_status.setToolTip('\n'.join(self._errors))
+        self.catalogue_status.setToolTip('\n'.join(self._errors + self._qc_errors))
         if not sources:
             self.summary.setText('No sparse sources match this filter.' if self._catalogue else
                                  'No completed sparse measurement collection is installed.')
@@ -208,6 +233,12 @@ class SparseValuesPanel(QtWidgets.QWidget):
             self._buttons()
             return
         self.result = result
+        try:
+            selected = self.pack.currentData()
+            result.record['coordinate_QC'] = Q.report(selected['path']) if selected else None
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            result.record['coordinate_QC'] = None
+            result.record['coordinate_QC_gap'] = str(error)
         fields = ['entry_index', 'source_row', 'source_column', 'source_feature_axis_row', 'source_feature_label',
                   'source_cell_axis_row', 'source_cell_label', 'value', 'source_token']
         self.table.setRowCount(len(result.preview))
@@ -224,7 +255,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
             self.table.setColumnWidth(column, self.table.columnWidth(column) + 12)
         missing = result.record['unmatched_labels']
         self.summary.setText(f"{result.record['exported_records']} original stored records; {len(result.preview)} displayed. "
-                             'Export includes every matching record. Absent coordinates are not filled. '
+                             'Export includes every matching record. Absent coordinates are not filled. ' + self._qc_summary() + ' '
                              + ('Labels not matched: ' + ', '.join(missing) if missing else ''))
         self._buttons()
 
@@ -259,8 +290,68 @@ class SparseValuesPanel(QtWidgets.QWidget):
             self.summary.setText(str(error))
             return 0
         self.summary.setText(f'Exported all {count} stored records and treatment record to {path}. '
-                             f'The table shows {len(self.result.preview)} records.')
+                             f'The table shows {len(self.result.preview)} records. ' + self._qc_summary())
         return count
+
+    def _qc_summary(self):
+        report = self.result.record.get('coordinate_QC') if self.result is not None else None
+        if report is None:
+            return 'Coordinate QC unavailable; biological score not assigned.'
+        facts = report['facts']
+        if facts['global_duplicate_count_proven']:
+            return f"Repeated coordinate records: {facts['global_repeated_records']} (complete-source check)."
+        return 'Global repeated-coordinate count remains unknown.'
+
+    def show_qc(self):
+        selected = self.pack.currentData()
+        if selected is None:
+            return
+        try:
+            report = Q.report(selected['path'])
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
+            return
+        if report is None:
+            self.summary.setText('Coordinate QC is not available for this source. No quality score is assigned.')
+            return
+        if getattr(self, 'qc_dialog', None) is not None:
+            self.qc_dialog.close()
+            self.qc_dialog.deleteLater()
+        self.qc_dialog = QtWidgets.QDialog(self)
+        self.qc_dialog.setWindowTitle('Original sparse coordinate QC')
+        layout = QtWidgets.QVBoxLayout(self.qc_dialog)
+        label = QtWidgets.QLabel('Technical source-record facts. Repeated entries remain separate. '
+                                'A global count is proven only by complete monotone ordering; '
+                                'otherwise it remains unknown. Biological quality and comparability require separate review.')
+        label.setWordWrap(True)
+        layout.addWidget(label)
+        tree = QtWidgets.QTreeWidget()
+        tree.setHeaderLabels(['QC fact / provenance', 'Value'])
+        captions = dict(original_records='Stored source records',
+                        global_duplicate_count_proven='Global duplicate count verified',
+                        global_repeated_records='Repeated stored records',
+                        global_repeated_coordinate_groups='Coordinates with repeated records',
+                        unique_stored_coordinates='Distinct stored coordinates',
+                        duplicate_record_fraction='Repeated-record fraction',
+                        adjacent_repeated_records='Adjacent repeated records',
+                        adjacent_duplicate_runs='Adjacent runs of repeated records',
+                        source_row_then_column_nondecreasing='Source sorted by row, then column',
+                        source_column_then_row_nondecreasing='Source sorted by column, then row',
+                        global_duplicate_scope='Scope of global count',
+                        coordinate_aggregation_applied='Coordinate aggregation applied',
+                        biological_quality_score='Biological quality score')
+        for key, value in report['facts'].items():
+            item = QtWidgets.QTreeWidgetItem([captions.get(key, key), 'Unknown / not assigned' if value is None else str(value)])
+            item.setToolTip(1, str(value))
+            tree.addTopLevelItem(item)
+        for key in ('receipt_sha256', 'processor_sha256', 'source_input_sha256', 'output_sha256'):
+            item = QtWidgets.QTreeWidgetItem([key, report[key]])
+            item.setToolTip(1, report[key])
+            tree.addTopLevelItem(item)
+        tree.resizeColumnToContents(0)
+        layout.addWidget(tree)
+        self.qc_dialog.resize(800, 560)
+        self.qc_dialog.show()
 
     def show_context(self):
         row = self.table.currentRow()
