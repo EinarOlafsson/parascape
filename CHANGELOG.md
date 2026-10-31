@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+## 0.0.7.0 — 2026-10-30
+
+- Expand the separately downloaded snapshot to 139 original quantity tables,
+  including source-labelled accession abundance groups, log2 quantities and
+  row-wise protein reports. Preserve every earlier quantity file and keyed RNA
+  value; extend the snapshot with independently verified RNA runs.
+- Keep accession-cell components distinct from protein-group identifiers, with
+  76,260 original component occurrences across three tables. Expose missing
+  reference declarations without treating unavailable mappings as absent expression.
+- Inspect individual original rows and columns, including original conditions,
+  replicate declarations, qualified evidence, repeated/duplicate metadata fields
+  and review-only filename-stem candidates. Preserve selection identity through
+  sorting and clear stale details when the query or context changes.
+- Include recurring source-row ambiguity audits and immutable processing records.
+  These descriptions do not infer biological sample independence, gene equivalence,
+  scale compatibility or biological quality scores.
+
 - Show original protein source flags with an opt-in exclusion of literal source
   `+` flags. Preserve missing/unfamiliar declarations, repeated original rows and
   all source files. CSV exports now carry a separate source-bound treatment record;

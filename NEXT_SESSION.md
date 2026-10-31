@@ -1,5 +1,48 @@
 # Next session: start here
 
+**Frozen portable0.0.7.0 preparation (2026-10-30):** Isolated source checkout
+`/media/carruthers/mnt1/parascape-release-0.0.7.0-checkout` starts8ae766a;
+version bumped with scripts/release.py. Task-owned stage
+`/media/carruthers/mnt1/parascape-release-data-0.0.7.0` freezes6174files:
+326RNA entries /147original matrices /54platform indices /139other quantities
+(129protein-group,3accession-row,7Workbench),601605group identifier occurrences
+plus76260accession components,52FASTA occurrences in36content indices,source QC/
+designs,row-specific filename candidates,repeated-key audits and operation history.
+Data archive1006528241bytes,SHA
+`edfbc77286449067fa2f4ed51f197b3aaea0b9a85ed5cc4260a1abad7837ad89`.
+Strict installation verifies every file. All136 prior quantity manifests/four
+outputs and2262pinned nonRNA files byte-identical; all42556317previous RNA cells
+across120matrices and prior axes remain bit-identical. Source reference/identifier
+contexts match,including3accession indexes and65,535-row design/candidate audit.
+Independent portable-validation.json replays these guarantees before installation.
+
+Native RNA force catchup completed normally:326/1011verified,24studies,120matrices,
+1732quantified sample conventions and242output checksums. Live NAS pointer is
+`app_snapshots/20261031T001938Z-326/rna`. Parent324snapshot's42,556,317cells all
+unchanged; full all-dataset goal remains incomplete. No numerical/scientific
+processing settings changed. Downloads/quantification continue24CPUmax.
+
+Source followups since public6 include opt-in source flags and per-export treatment
+records,selected original-measurement views,accession/log2/row-wise quantities,
+separate accession-component lookup,explicit unavailable identifier-class coverage,
+row-specific exact versus review-only filename candidates and recurring repeated-
+key QC. Installed smoke now covers all139tables,132protein readers,all3accession
+classes,empty-reference declarations,treatment/selected views,row candidates and
+source-plus exclusion.161focused release/path/package/reader/QC/UI/descriptor
+checks passed before freeze (one existing runpy warning). Source/data archive
+ready; installed-wheel proof and exact-commit CI/officialPyPI gates remain required.
+
+Do not change this isolated source or advance nightly after its source-freeze.json
+is written while exact CI is pending. Frozen source SHA/receipt will be in stage
+and `~/.local/state/parascape-release-0.0.7.0`. Native publisher
+`publish_007_when_checked.py` waits for installed-wheel success,then uploads both
+data and complete processing audit,requires exact nightly Tests+Documentation,
+performs non-forced main promotion,and verifies official PyPI wheel/descriptor.
+Prior release dependency is0.0.6.0commit38ad27e. Shared live checkout/cache stays
+stable until publication,then fast-forwards cleanly and updates owned launcher
+cache6→7. Don't claim PyPI7 before all gates. Full goal active/incomplete; historical
+inference remains paused. Continue independent acquisition during frozen CI.
+
 **Accession-cell identifier coverage (2026-10-30):** Previous goal turn was
 progress (row-specific source design links),not a wait. Current dataset goal
 active/incomplete; historical inference remains paused. Live source starts486eb6a.

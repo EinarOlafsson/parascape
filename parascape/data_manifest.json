@@ -1,5 +1,5 @@
 {
-  "asset": "parascape-data-0.0.6.0.tar.gz",
+  "asset": "parascape-data-0.0.7.0.tar.gz",
   "files": {
     "af3_features.json": {
       "sha256": "f07484a81d3fd720b7ccd984b817f4cdac68ecaf87d5ec46020145a317ad39a7",
@@ -512,6 +512,54 @@
     "deposited_values/preparation_coverage.json": {
       "sha256": "c23ed760ae222929b23677985d419d9be59162170df8f9250beb89e58a62f5f8",
       "size": 1980
+    },
+    "deposited_values/protein_accession_values/PXD041907-Abundances_Grouped_-35ca9097d006b135/manifest.json": {
+      "sha256": "37af71ef0ec02eb83c5d2a50ca558dfa025ed3567565d38e7e9820e215e0dcd3",
+      "size": 2085
+    },
+    "deposited_values/protein_accession_values/PXD041907-Abundances_Grouped_-35ca9097d006b135/preparation.json": {
+      "sha256": "d595854d1a33acc3e0c3f5e488b13643c931394e3531add0be8a84c05df87f72",
+      "size": 1250
+    },
+    "deposited_values/protein_accession_values/PXD041907-Abundances_Grouped_-35ca9097d006b135/samples.json": {
+      "sha256": "08af6b790496c9e713e5e92731b3491c52c078d94b0f0be4e06e4ca7a466a3ec",
+      "size": 4187
+    },
+    "deposited_values/protein_accession_values/PXD041907-Abundances_Grouped_-35ca9097d006b135/source_metadata.json": {
+      "sha256": "c56e250c665816664b6950a7f2bc4a4d914ac27a6c435ae6d0c8efbe0a4fb900",
+      "size": 3241927
+    },
+    "deposited_values/protein_accession_values/PXD041907-Abundances_Grouped_-35ca9097d006b135/source_tokens.parquet": {
+      "sha256": "8494c959d1761d99d3c20a13c8191bdc46fa4c800b798f8b627891d73e2f371f",
+      "size": 198627
+    },
+    "deposited_values/protein_accession_values/PXD041907-Abundances_Grouped_-35ca9097d006b135/technical_qc.csv": {
+      "sha256": "1db5fb0de6aa30f377aab4fe64ee97b08f74fbfe40422c655e0f5fa50e7df94b",
+      "size": 13643
+    },
+    "deposited_values/protein_accession_values/PXD041907-Abundances_Grouped_-35ca9097d006b135/validation.json": {
+      "sha256": "f998a300d2412701e0d75f9ddb2463af816803484d0424ea882ba54f614ae0ce",
+      "size": 1142
+    },
+    "deposited_values/protein_accession_values/PXD041907-Abundances_Grouped_-35ca9097d006b135/values.parquet": {
+      "sha256": "728417c681d834a63b61f3d1bd8df4c6819c7a871d4b47dab260d0756039b8a9",
+      "size": 142602
+    },
+    "deposited_values/protein_accession_values/catalogue.json": {
+      "sha256": "263efec77a62396f9b7333829cc04bd5cb348774d0654b9b5eea9d07a01c1b00",
+      "size": 97
+    },
+    "deposited_values/protein_accession_values/coverage.json": {
+      "sha256": "bdeaa9c758f0c8db1630f967f351a0b538ff7afa742aca22af07adf0781ac90b",
+      "size": 494
+    },
+    "deposited_values/protein_accession_values/operations.jsonl": {
+      "sha256": "e00f2f8d6bfed171bd057658353a6de1d752149f5dd8594aac5ac45a7c328ee6",
+      "size": 9554
+    },
+    "deposited_values/protein_accession_values/processor-c53bef53d88025f42c8c21472c596486393c29640ee4aa05eaa3ae9ec39e66fa.py": {
+      "sha256": "c53bef53d88025f42c8c21472c596486393c29640ee4aa05eaa3ae9ec39e66fa",
+      "size": 23821
     },
     "deposited_values/protein_groups/PXD003217-Intensity-bf4647bff80a2251/manifest.json": {
       "sha256": "1ae10782c10a103632a0555b23466cdc6959c6a5a45110824ca43ab2fd9a44f5",
@@ -2602,8 +2650,8 @@
       "size": 25681
     },
     "deposited_values/protein_groups/operations.jsonl": {
-      "sha256": "eb533d71ff8dc89ca7731592bb221f4539d0d817efd42ad77f8648d7059127de",
-      "size": 193505
+      "sha256": "c7088529d1d38776183811f029cebd29de04295bdc8263a9a3997485b97d6179",
+      "size": 211000
     },
     "deposited_values/protein_groups/processor-4776d479ff47443c02816902a149906badab0dc2c3ca8c32180d0ce2d54e8964.py": {
       "sha256": "4776d479ff47443c02816902a149906badab0dc2c3ca8c32180d0ce2d54e8964",
@@ -2620,6 +2668,54 @@
     "deposited_values/protein_groups/processor-e127c0f844a398a8954be1a7c3d520a9e8b0f86acb97c439aac8c463151e6bc9.py": {
       "sha256": "e127c0f844a398a8954be1a7c3d520a9e8b0f86acb97c439aac8c463151e6bc9",
       "size": 19022
+    },
+    "deposited_values/protein_log2_quantities/PXD084269-PG.Log2Quantity-d9f77e7002bd0ae8/manifest.json": {
+      "sha256": "a95fcf5cabedd53473bf1d6e5774769480ccda553a254a5d5c6df07b77059f23",
+      "size": 2130
+    },
+    "deposited_values/protein_log2_quantities/PXD084269-PG.Log2Quantity-d9f77e7002bd0ae8/preparation.json": {
+      "sha256": "e46c6e2abdee8ca70a0a4c57407a373e3a0a5c7f8016259be5a08417386b184c",
+      "size": 1363
+    },
+    "deposited_values/protein_log2_quantities/PXD084269-PG.Log2Quantity-d9f77e7002bd0ae8/samples.json": {
+      "sha256": "db1492753c998095daa17b68c0569db1c2544c2b775ee98c77b8b731c77d15ca",
+      "size": 2916
+    },
+    "deposited_values/protein_log2_quantities/PXD084269-PG.Log2Quantity-d9f77e7002bd0ae8/source_metadata.json": {
+      "sha256": "0fc722736a05da93ae3af4b0b95352c488755f5b43e4ee2120ff0caa5cb2f579",
+      "size": 3205963
+    },
+    "deposited_values/protein_log2_quantities/PXD084269-PG.Log2Quantity-d9f77e7002bd0ae8/source_tokens.parquet": {
+      "sha256": "71dec0c2a3a5ecad77d295f581b09fcd18761befb877f38c0bff254774cd0fd8",
+      "size": 714097
+    },
+    "deposited_values/protein_log2_quantities/PXD084269-PG.Log2Quantity-d9f77e7002bd0ae8/technical_qc.csv": {
+      "sha256": "3d5c886a2464a97ac24e231678b3229eb600d4bcb676d5a765753d3ebd49bcdc",
+      "size": 10984
+    },
+    "deposited_values/protein_log2_quantities/PXD084269-PG.Log2Quantity-d9f77e7002bd0ae8/validation.json": {
+      "sha256": "ffedc78c5ad0b57f31b3652de64965339f223251a9467e493b96cca2be95985d",
+      "size": 1141
+    },
+    "deposited_values/protein_log2_quantities/PXD084269-PG.Log2Quantity-d9f77e7002bd0ae8/values.parquet": {
+      "sha256": "151fd5990dbd9dae74a8e9c183334aab574e7cbaddb5257b23de650001341d2e",
+      "size": 445904
+    },
+    "deposited_values/protein_log2_quantities/catalogue.json": {
+      "sha256": "d4123d10c18c72318269c35ba6e021225583d4f0f12a1d44a1762327b9b1785d",
+      "size": 93
+    },
+    "deposited_values/protein_log2_quantities/coverage.json": {
+      "sha256": "c3e8869c1ea69d3c1729869e37ecd9898618591483b2e88d713cd7afbec3a0bb",
+      "size": 3522
+    },
+    "deposited_values/protein_log2_quantities/operations.jsonl": {
+      "sha256": "a7a0198ab2a2b8b2d7f175c849da9181bad4f9532e217011b41a8d1f15ff72d7",
+      "size": 8254
+    },
+    "deposited_values/protein_log2_quantities/processor-6c6a3f4c84d63c648f3f02d8906a6dcd5e608e8d33b41e89ee201ee14bf48a4c.py": {
+      "sha256": "6c6a3f4c84d63c648f3f02d8906a6dcd5e608e8d33b41e89ee201ee14bf48a4c",
+      "size": 22331
     },
     "deposited_values/protein_reported_quantities/PXD002380-Intensity-62960f56a3458f8f/manifest.json": {
       "sha256": "b9493d72c930ccc78af0c1e0e98fbbb88e37fde46dd4163eb0eb56bbf70cafd1",
@@ -4614,8 +4710,8 @@
       "size": 21799
     },
     "deposited_values/protein_reported_quantities/operations.jsonl": {
-      "sha256": "f5418005a8a86608b490b29523842fe54cf502ed2953d2973f0424ab722695ca",
-      "size": 3947
+      "sha256": "18f3a452347d4946f062e83a1a40782791d6be155c97c6ad7e69363f003226b4",
+      "size": 21965
     },
     "deposited_values/protein_reported_quantities/processor-2efa199fba9bffc25252a100f7c37f5c2bbfa81b0151abe5d5649ecae9667423.py": {
       "sha256": "2efa199fba9bffc25252a100f7c37f5c2bbfa81b0151abe5d5649ecae9667423",
@@ -4694,8 +4790,8 @@
       "size": 877
     },
     "deposited_values/protein_reporter_channels/operations.jsonl": {
-      "sha256": "4704fded69de71943c5468f892f8cd363b365a24ef2338b989d4874cfc618f3a",
-      "size": 8287
+      "sha256": "18b1c4122f1cbe67c23beb7c6945b5bd392b246344c1e38dd4678e5a2c2767dd",
+      "size": 27880
     },
     "deposited_values/protein_reporter_channels/processor-41e14fa5dee287dfecf059a971d92bb4f9bf9468406ad2ca8b1ac88e1c737c29.py": {
       "sha256": "41e14fa5dee287dfecf059a971d92bb4f9bf9468406ad2ca8b1ac88e1c737c29",
@@ -4704,6 +4800,54 @@
     "deposited_values/protein_reporter_channels/processor-7ad58236142721bd382b4a58b0b2e69e72d07785522c7fcbd9b9c3125e7c150f.py": {
       "sha256": "7ad58236142721bd382b4a58b0b2e69e72d07785522c7fcbd9b9c3125e7c150f",
       "size": 22087
+    },
+    "deposited_values/protein_rowwise_quantities/PXD084269-PG.Quantity-fe140cf1c9148530/manifest.json": {
+      "sha256": "a4017c75cc3c1d614f10c0a5b9646bd51a6b002f35a6489531d8d9baefc0fbb5",
+      "size": 1686
+    },
+    "deposited_values/protein_rowwise_quantities/PXD084269-PG.Quantity-fe140cf1c9148530/preparation.json": {
+      "sha256": "7dc2712507c020975e71bde5db71999db98643bb00db03e19ae82a84fee5386d",
+      "size": 1330
+    },
+    "deposited_values/protein_rowwise_quantities/PXD084269-PG.Quantity-fe140cf1c9148530/samples.json": {
+      "sha256": "654611411ea439342d75e9cfe5519c985cd7245d6628c7e274233e385bcad097",
+      "size": 663
+    },
+    "deposited_values/protein_rowwise_quantities/PXD084269-PG.Quantity-fe140cf1c9148530/source_metadata.json": {
+      "sha256": "a481c18e4004519f56e1a7fdb0b3544f6563dca603108b99e68fde1842feb246",
+      "size": 29859963
+    },
+    "deposited_values/protein_rowwise_quantities/PXD084269-PG.Quantity-fe140cf1c9148530/source_tokens.parquet": {
+      "sha256": "b2ad5dc3ab76ce34fbb8e1272aad7b49532deaec797eb1154efc443c348cd3d1",
+      "size": 1061533
+    },
+    "deposited_values/protein_rowwise_quantities/PXD084269-PG.Quantity-fe140cf1c9148530/technical_qc.csv": {
+      "sha256": "aa3203c74107a2aa2357ffccf1645b08d35a87d3d9395012107a0f7bc70c7497",
+      "size": 2330
+    },
+    "deposited_values/protein_rowwise_quantities/PXD084269-PG.Quantity-fe140cf1c9148530/validation.json": {
+      "sha256": "93af08bb9ecbf00507cfb8d044a9cebcf77b40bb3e5ae72d1978d8ee08f78038",
+      "size": 1144
+    },
+    "deposited_values/protein_rowwise_quantities/PXD084269-PG.Quantity-fe140cf1c9148530/values.parquet": {
+      "sha256": "8547834122c3c436e9ef27e4e5fc8d51c5ab6ffdc08af47654d24501f3fc0103",
+      "size": 881223
+    },
+    "deposited_values/protein_rowwise_quantities/catalogue.json": {
+      "sha256": "7dc2a9d61457ee91b1a2d3b8d7a563ea443a4f05d99afa4ae13598537e6aa408",
+      "size": 89
+    },
+    "deposited_values/protein_rowwise_quantities/coverage.json": {
+      "sha256": "58c59d3bd5eb902004a1d6b03fd400c70acdfce2abf0bdc31bdcc728a95e0848",
+      "size": 520
+    },
+    "deposited_values/protein_rowwise_quantities/operations.jsonl": {
+      "sha256": "aed86062919a86f283a5fa1bd86ad40c98d4afb08397c0eb0a94744a4c22ba76",
+      "size": 8183
+    },
+    "deposited_values/protein_rowwise_quantities/processor-48635f1fe500dd10d6895b3395348c35196d3d3ad0e07c0b430f281e07cb2aef.py": {
+      "sha256": "48635f1fe500dd10d6895b3395348c35196d3d3ad0e07c0b430f281e07cb2aef",
+      "size": 23468
     },
     "deposited_values/validate_workbench_values-0b3ab676c0a575df327f1ff3fe902bac59b852f021eb15ded4e22276e725d266-0b3ab676c0a575df327f1ff3fe902bac59b852f021eb15ded4e22276e725d266.py": {
       "sha256": "0b3ab676c0a575df327f1ff3fe902bac59b852f021eb15ded4e22276e725d266",
@@ -5988,6 +6132,158 @@
     "processing_audit/README.md": {
       "sha256": "8452123293ae05259547d4892a52da46f54c536917dc8741a36cd28e1473480a",
       "size": 4389
+    },
+    "processing_audit/accession_identifier_evidence/6fa4b7b15a9995176e8c4fe82a2317dc7d2299c8df875f6cd9fa8caf6138cabf/37af71ef0ec02eb83c5d2a50ca558dfa025ed3567565d38e7e9820e215e0dcd3.parquet": {
+      "sha256": "9214fa2f1dc4876a3d4a57b71e8e21dda39b7a3c3746052018faa6cea8561324",
+      "size": 93851
+    },
+    "processing_audit/accession_identifier_evidence/6fa4b7b15a9995176e8c4fe82a2317dc7d2299c8df875f6cd9fa8caf6138cabf/a4017c75cc3c1d614f10c0a5b9646bd51a6b002f35a6489531d8d9baefc0fbb5.parquet": {
+      "sha256": "872e6599d4c5d3511a7ad051595605bc78fd5f90d0c8bcbfac19b6ca583f1b77",
+      "size": 1017300
+    },
+    "processing_audit/accession_identifier_evidence/6fa4b7b15a9995176e8c4fe82a2317dc7d2299c8df875f6cd9fa8caf6138cabf/a95fcf5cabedd53473bf1d6e5774769480ccda553a254a5d5c6df07b77059f23.parquet": {
+      "sha256": "0548540c4fa7574fc004e2f9e6ae9cb8dcbe0f3a26b7b073bf02809f146259f1",
+      "size": 254768
+    },
+    "processing_audit/accession_identifier_evidence/6fa4b7b15a9995176e8c4fe82a2317dc7d2299c8df875f6cd9fa8caf6138cabf/index.json": {
+      "sha256": "4abc63faa360a8ee4ebbe005d6327e036b7e1ef850685414f35af31d7a272854",
+      "size": 3364
+    },
+    "processing_audit/accession_identifier_evidence/6fa4b7b15a9995176e8c4fe82a2317dc7d2299c8df875f6cd9fa8caf6138cabf/measurement_inventory.json": {
+      "sha256": "1d7d20f48fb03e5011f46e676f46518dd5434e0476af285d8bf6edc0539c8d42",
+      "size": 9338
+    },
+    "processing_audit/accession_identifier_evidence/6fa4b7b15a9995176e8c4fe82a2317dc7d2299c8df875f6cd9fa8caf6138cabf/validation.json": {
+      "sha256": "425807b7aaf409852640a39dd2facd7d80cb986cdf414aa2ab17e9ef779749b9",
+      "size": 3608
+    },
+    "processing_audit/accession_identifier_evidence/collection.json": {
+      "sha256": "3af06ba32ec5d188d5551bfdfa5c8316e28042b0e9b99c9974f5b8821f7ef59f",
+      "size": 200
+    },
+    "processing_audit/accession_identifier_evidence/operations.jsonl": {
+      "sha256": "203be680c8384cb3a10d762faa6eee1973f8cec02ea98a1ecf123412daa400b3",
+      "size": 2259
+    },
+    "processing_audit/accession_identifier_evidence/processor-51605e44ab4bc09216ff6760020d6fc9dada2a6d68ad9342819327ce68d28409.py": {
+      "sha256": "51605e44ab4bc09216ff6760020d6fc9dada2a6d68ad9342819327ce68d28409",
+      "size": 19704
+    },
+    "processing_audit/accession_identifier_evidence/status.json": {
+      "sha256": "a53d9227bb64861abbf58178184e14ce060204228bad5769826d209e5ccae014",
+      "size": 423
+    },
+    "processing_audit/accession_identifier_views/accession-components-0-808fa74ef7b68273422e5e0a1e6835665e1fa61947310361dd64532c2568c46b.csv": {
+      "sha256": "808fa74ef7b68273422e5e0a1e6835665e1fa61947310361dd64532c2568c46b",
+      "size": 34625
+    },
+    "processing_audit/accession_identifier_views/accession-components-0.csv.treatment-b21efea48a4d-d79d79f36a3b31a97a861c63fc6137a4938930e287e00b99b673a4b686b86c72.json": {
+      "sha256": "d79d79f36a3b31a97a861c63fc6137a4938930e287e00b99b673a4b686b86c72",
+      "size": 4429
+    },
+    "processing_audit/accession_identifier_views/accession-components-0.csv.treatment-c158aa397f31-cd3eeb32d5ff4b344e3a0cc854b8a0d05f3ed2733e5e7092a8cb1327b4f2cec4.json": {
+      "sha256": "cd3eeb32d5ff4b344e3a0cc854b8a0d05f3ed2733e5e7092a8cb1327b4f2cec4",
+      "size": 4426
+    },
+    "processing_audit/accession_identifier_views/accession-components-1-5e3eecf78820b6c5b10727a546ed2e4b6598cc54c08d54098e4745ec0df43f9e.csv": {
+      "sha256": "5e3eecf78820b6c5b10727a546ed2e4b6598cc54c08d54098e4745ec0df43f9e",
+      "size": 24069
+    },
+    "processing_audit/accession_identifier_views/accession-components-1.csv.treatment-6b25e1bcb122-be3e0d85c911a684b375f110aae7439cd6898c0f48965685a0bf7a22f3bd3b10.json": {
+      "sha256": "be3e0d85c911a684b375f110aae7439cd6898c0f48965685a0bf7a22f3bd3b10",
+      "size": 4494
+    },
+    "processing_audit/accession_identifier_views/accession-components-1.csv.treatment-ef598bd2892e-81198ce8139bb24a2a31b616b40ec2dea125b69c45dc0d1974fe712cc85fcd7a.json": {
+      "sha256": "81198ce8139bb24a2a31b616b40ec2dea125b69c45dc0d1974fe712cc85fcd7a",
+      "size": 4497
+    },
+    "processing_audit/accession_identifier_views/accession-components-2-7b0d152c50a95c9a4f14c37d999cb2807557e020cb83585ed8fa28605d85debc.csv": {
+      "sha256": "7b0d152c50a95c9a4f14c37d999cb2807557e020cb83585ed8fa28605d85debc",
+      "size": 47937
+    },
+    "processing_audit/accession_identifier_views/accession-components-2.csv.treatment-9b02d7faea3f-0367cfaa24913c782d4928026f353075acf00bf6e8777f760b18a56f286513f1.json": {
+      "sha256": "0367cfaa24913c782d4928026f353075acf00bf6e8777f760b18a56f286513f1",
+      "size": 12435
+    },
+    "processing_audit/accession_identifier_views/accession-components-2.csv.treatment-b4ce05f9ae8f-1e000b8b34285f39cba65ec5fa28960e656098c503bb91a4852fe92b0c21b735.json": {
+      "sha256": "1e000b8b34285f39cba65ec5fa28960e656098c503bb91a4852fe92b0c21b735",
+      "size": 12438
+    },
+    "processing_audit/accession_identifier_views/archive_accession_identifier_evidence-293559d29bff95f9e0786fa4d8c7bce7bb59ab4153bff4399d4f5efbde5865fa.py": {
+      "sha256": "293559d29bff95f9e0786fa4d8c7bce7bb59ab4153bff4399d4f5efbde5865fa",
+      "size": 4693
+    },
+    "processing_audit/accession_identifier_views/check_accession_identifier_evidence-61471a42bd0933c8551c74ad6f46569a094a9fceecf14944dba92d8a6c70d7c5.py": {
+      "sha256": "61471a42bd0933c8551c74ad6f46569a094a9fceecf14944dba92d8a6c70d7c5",
+      "size": 8195
+    },
+    "processing_audit/accession_identifier_views/deposited_values_panel-cba353455ca103485719950ed41ff1952205c47650a2f984a96d584b3a84d58f.py": {
+      "sha256": "cba353455ca103485719950ed41ff1952205c47650a2f984a96d584b3a84d58f",
+      "size": 28285
+    },
+    "processing_audit/accession_identifier_views/focused-test-receipt-18352f60e14ecf8e2ba44ec779c014eb6a9f212ce5c391d563732be891b11c14.json": {
+      "sha256": "18352f60e14ecf8e2ba44ec779c014eb6a9f212ce5c391d563732be891b11c14",
+      "size": 879
+    },
+    "processing_audit/accession_identifier_views/prepare_accession_identifier_evidence-51605e44ab4bc09216ff6760020d6fc9dada2a6d68ad9342819327ce68d28409.py": {
+      "sha256": "51605e44ab4bc09216ff6760020d6fc9dada2a6d68ad9342819327ce68d28409",
+      "size": 19704
+    },
+    "processing_audit/accession_identifier_views/protein_identifier_evidence-4fa688f779274c947cd57e22f4c2de084921e1ab892797aa47c42379b6d45fa9.py": {
+      "sha256": "4fa688f779274c947cd57e22f4c2de084921e1ab892797aa47c42379b6d45fa9",
+      "size": 8753
+    },
+    "processing_audit/accession_identifier_views/prototype-identifier-reader-8939a3f55f65dee57ef3771bbe7883188754688c2983c46952e1d27369dfdad8-8939a3f55f65dee57ef3771bbe7883188754688c2983c46952e1d27369dfdad8.py": {
+      "sha256": "8939a3f55f65dee57ef3771bbe7883188754688c2983c46952e1d27369dfdad8",
+      "size": 8708
+    },
+    "processing_audit/accession_identifier_views/revision-2c6da79063a85d95d145a2a2370d43e4036e08608d0eb5c87e998b2631b44173.json": {
+      "sha256": "2c6da79063a85d95d145a2a2370d43e4036e08608d0eb5c87e998b2631b44173",
+      "size": 17552
+    },
+    "processing_audit/accession_identifier_views/test_accession_identifier_evidence-5efb5e51bf84a002f92b6d2d67b349c0fc6aa8816f3d8579f692daac8fa4bc47.py": {
+      "sha256": "5efb5e51bf84a002f92b6d2d67b349c0fc6aa8816f3d8579f692daac8fa4bc47",
+      "size": 7688
+    },
+    "processing_audit/accession_identifier_views/unavailable-reference-class-0-47824dc71f9d9c7af245f5197332f188dc11ae9a534bf2fe49a2e5eeb1443aec.json": {
+      "sha256": "47824dc71f9d9c7af245f5197332f188dc11ae9a534bf2fe49a2e5eeb1443aec",
+      "size": 2429
+    },
+    "processing_audit/accession_identifier_views/unavailable-reference-class-0-dc462ccf91fab4193e57a7d1d29ca3b6ed413edb3fb63daf3171f8004823eaef.json": {
+      "sha256": "dc462ccf91fab4193e57a7d1d29ca3b6ed413edb3fb63daf3171f8004823eaef",
+      "size": 2429
+    },
+    "processing_audit/accession_identifier_views/unavailable-reference-class-1-d727bf5e34c9ca5b4fae3fd36af473a0935afb41905de12772a2a4f81d87d587.json": {
+      "sha256": "d727bf5e34c9ca5b4fae3fd36af473a0935afb41905de12772a2a4f81d87d587",
+      "size": 2541
+    },
+    "processing_audit/accession_identifier_views/unavailable-reference-class-1-e0d742903cca6d4fea831f9add27bc117aaec6c407eb4df6b263e898de63dc11.json": {
+      "sha256": "e0d742903cca6d4fea831f9add27bc117aaec6c407eb4df6b263e898de63dc11",
+      "size": 2541
+    },
+    "processing_audit/accession_identifier_views/unavailable-reference-class-2-139d435d2997e9264cb317f91d5d0c60f8c2fb57f0a9192fff40e259a88a2819.json": {
+      "sha256": "139d435d2997e9264cb317f91d5d0c60f8c2fb57f0a9192fff40e259a88a2819",
+      "size": 3475
+    },
+    "processing_audit/accession_identifier_views/unavailable-reference-class-2-1a67dd4fbd36ec1d055eeb45cfbfde91f644f54e260553090cd6588083a0c54b.json": {
+      "sha256": "1a67dd4fbd36ec1d055eeb45cfbfde91f644f54e260553090cd6588083a0c54b",
+      "size": 3475
+    },
+    "processing_audit/accession_identifier_views/validate_accession_identifier_evidence-73ad6c750925745659d4236396623a980a2e299bd46524ad2263d0c1159cb624.py": {
+      "sha256": "73ad6c750925745659d4236396623a980a2e299bd46524ad2263d0c1159cb624",
+      "size": 9241
+    },
+    "processing_audit/accession_identifier_views/validate_accession_identifier_evidence_v2-eea10023f5749a4cff579a2a49f676419e914d0a34ab2b6dbe9999c5069829d8.py": {
+      "sha256": "eea10023f5749a4cff579a2a49f676419e914d0a34ab2b6dbe9999c5069829d8",
+      "size": 9244
+    },
+    "processing_audit/accession_identifier_views/validation-453a35e84eb24420a4f5034aac7930d5f58cbc3c0b63ce2c0030c81bf274af07.json": {
+      "sha256": "453a35e84eb24420a4f5034aac7930d5f58cbc3c0b63ce2c0030c81bf274af07",
+      "size": 62688
+    },
+    "processing_audit/accession_identifier_views/validation-8c2cda17fe8a0821352178e6384ca46b131d6eaafe3b6f49599e1e0af69da7bd.json": {
+      "sha256": "8c2cda17fe8a0821352178e6384ca46b131d6eaafe3b6f49599e1e0af69da7bd",
+      "size": 62688
     },
     "processing_audit/all_geo_samples/GSE100203/geo-miniml.json": {
       "sha256": "34155877399edfe3584a63bd9f6f9e406a6266cc4753947defd884992dc6fc84",
@@ -10494,15 +10790,15 @@
       "size": 453
     },
     "processing_audit/automation_revision_events.jsonl": {
-      "sha256": "7b15abaae0d5fe98ee7a88c85bb4e8a784e7135d090b8a8b3af524751d8f5ec2",
-      "size": 46802
+      "sha256": "5f21e0a7f3bb04ad3499303dc9d0af6cfc1c6d7bf9600c8ba9fca83926315e6e",
+      "size": 124065
     },
     "processing_audit/catalogue_coverage.tsv": {
-      "sha256": "8d89734b007490b79735a39c2bf1ef51038521a49c8bf0c5e49af00cf3aa0449",
+      "sha256": "1bd958038c185102b72820b773238ab8f2e598440d774c67aef0dca9b839eb66",
       "size": 204327
     },
     "processing_audit/catalogue_coverage_status.json": {
-      "sha256": "f1a84f4c4879336c456a30ec1be61b504b0b5f47b10189581ad2804db47d6404",
+      "sha256": "34b63752c295bcee5eb11c5bee445511636d6f3c50f5b618c2f082a0d17b3cd0",
       "size": 1218
     },
     "processing_audit/check_protein_identifier_evidence-51316c9ebe66d1d356074eb3ab065c6d50e43e8d03828ee30acbc98aadb6d723.py": {
@@ -10532,6 +10828,10 @@
     "processing_audit/check_wheel_005-28872abc503157664c0ea6eba8ab4355d85da6e4d49fc0aadf957f96ba783546.py": {
       "sha256": "28872abc503157664c0ea6eba8ab4355d85da6e4d49fc0aadf957f96ba783546",
       "size": 3097
+    },
+    "processing_audit/check_wheel_006-541a338fa0498dfcd772ca508bb6fa0615f8427ede1cd58ad9202190a45cedf5.py": {
+      "sha256": "541a338fa0498dfcd772ca508bb6fa0615f8427ede1cd58ad9202190a45cedf5",
+      "size": 2976
     },
     "processing_audit/dataset-coverage-source-0294d452bb4855aa6a085ba7870788400488c0b5adadf85e6cf4690a2ea1912b.py": {
       "sha256": "0294d452bb4855aa6a085ba7870788400488c0b5adadf85e6cf4690a2ea1912b",
@@ -10570,20 +10870,24 @@
       "size": 19017
     },
     "processing_audit/dataset_coverage.tsv": {
-      "sha256": "2217533fc3619438df09e767bddceb373515d63eff0e37999e6f6cc0881c39f6",
-      "size": 506585
+      "sha256": "138c5fbf8b1c183b701a7fc343260009f72bc3d0e48a23e4e74ac2e51e68e2b4",
+      "size": 506576
     },
     "processing_audit/dataset_coverage_events.jsonl": {
-      "sha256": "6a42eb4ec3bb4816ac71658196d5fc4c1a2a59dd2e8c7ed7c6ae9886cdbe9617",
-      "size": 454006
+      "sha256": "1b4ce7515b3651ddbe668c1c732fb6fa5ae01b11efde21c9e7a13f9492a74611",
+      "size": 467774
     },
     "processing_audit/dataset_coverage_status.json": {
-      "sha256": "c27c126e0546e177d2b3734963f2665aa7766730552aef35e59f2813552ad059",
-      "size": 2277
+      "sha256": "a865685be420871ae355d66078922950235ce107c50dcc537ecfa00341361f5e",
+      "size": 2276
     },
     "processing_audit/deposited_values_panel-43b2ff2df00d6a5cfcd583415c749ec874d37217d7b1aafcfbfcfb5a7c2485a5.py": {
       "sha256": "43b2ff2df00d6a5cfcd583415c749ec874d37217d7b1aafcfbfcfb5a7c2485a5",
       "size": 16354
+    },
+    "processing_audit/deposited_values_panel-bf5a243d7d02c83f62c83d201795935128343d8861a868433e2b341980e3127c.py": {
+      "sha256": "bf5a243d7d02c83f62c83d201795935128343d8861a868433e2b341980e3127c",
+      "size": 21032
     },
     "processing_audit/export_dataset_coverage-febaff90623b73650fa9dd815a09e8c7cf7c29cb6475010f55cda24e5c3362f0.py": {
       "sha256": "febaff90623b73650fa9dd815a09e8c7cf7c29cb6475010f55cda24e5c3362f0",
@@ -10604,6 +10908,138 @@
     "processing_audit/local_browser_integration.json": {
       "sha256": "dca68cd58f5fda27366e9e4a583d2f160a808ac73115f03984bf2ee99d99db0a",
       "size": 1343
+    },
+    "processing_audit/log2_and_all_column_links/archive_log2_and_all_links-1f378e7fd7fcca715ef04cf07a93f1a7696283dbbabc0149695e25bebe9d34d9.py": {
+      "sha256": "1f378e7fd7fcca715ef04cf07a93f1a7696283dbbabc0149695e25bebe9d34d9",
+      "size": 3804
+    },
+    "processing_audit/log2_and_all_column_links/check_all_protein_column_design_links-8526d9675728cdb659d89e6bbba1ca26c45e058b98cb963e0f8cfbb2bbbda42e.py": {
+      "sha256": "8526d9675728cdb659d89e6bbba1ca26c45e058b98cb963e0f8cfbb2bbbda42e",
+      "size": 6070
+    },
+    "processing_audit/log2_and_all_column_links/check_protein_log2_quantities-c70e58a1bca8a52f2d56119c117c092f051e6a2a3b4cbb5788cd21709b59790d.py": {
+      "sha256": "c70e58a1bca8a52f2d56119c117c092f051e6a2a3b4cbb5788cd21709b59790d",
+      "size": 5133
+    },
+    "processing_audit/log2_and_all_column_links/export_protein_column_design_links-d14bba337569a79e6310b040e6155184d8f997dce077cb8a7ca0cb6c5553b6ab.py": {
+      "sha256": "d14bba337569a79e6310b040e6155184d8f997dce077cb8a7ca0cb6c5553b6ab",
+      "size": 20834
+    },
+    "processing_audit/log2_and_all_column_links/linked-original-log2-values-de45168796e207ce306084ee7b696166048b94ddf4d769d398082dd7f186d86e.csv": {
+      "sha256": "de45168796e207ce306084ee7b696166048b94ddf4d769d398082dd7f186d86e",
+      "size": 34297
+    },
+    "processing_audit/log2_and_all_column_links/linked-original-log2-values.csv.treatment-876360492062-52ab99ae3e5fd25505a79079f38eae389c18036e4a8904a4a54b16e0fd863436.json": {
+      "sha256": "52ab99ae3e5fd25505a79079f38eae389c18036e4a8904a4a54b16e0fd863436",
+      "size": 2674
+    },
+    "processing_audit/log2_and_all_column_links/long-table-layout-review-44fc29b9c00ab220993a488ccbd4e7872885b0880e2890b6bfb1feabb3525abe.json": {
+      "sha256": "44fc29b9c00ab220993a488ccbd4e7872885b0880e2890b6bfb1feabb3525abe",
+      "size": 998
+    },
+    "processing_audit/log2_and_all_column_links/original-column-qc-3d5c886a2464a97ac24e231678b3229eb600d4bcb676d5a765753d3ebd49bcdc.csv": {
+      "sha256": "3d5c886a2464a97ac24e231678b3229eb600d4bcb676d5a765753d3ebd49bcdc",
+      "size": 10984
+    },
+    "processing_audit/log2_and_all_column_links/original-log2-values-fbc2757925dfedb6d9442610de98a4bd9e72796974be7062737927041a27694a.csv": {
+      "sha256": "fbc2757925dfedb6d9442610de98a4bd9e72796974be7062737927041a27694a",
+      "size": 13522
+    },
+    "processing_audit/log2_and_all_column_links/original-log2-values.csv.treatment-430e6e218f3a-ba60b298a25af773a795d367e7d6673ac68099cba2d70a2d592472cdde9d3b56.json": {
+      "sha256": "ba60b298a25af773a795d367e7d6673ac68099cba2d70a2d592472cdde9d3b56",
+      "size": 2655
+    },
+    "processing_audit/log2_and_all_column_links/process_protein_log2_quantities-6c6a3f4c84d63c648f3f02d8906a6dcd5e608e8d33b41e89ee201ee14bf48a4c.py": {
+      "sha256": "6c6a3f4c84d63c648f3f02d8906a6dcd5e608e8d33b41e89ee201ee14bf48a4c",
+      "size": 22331
+    },
+    "processing_audit/log2_and_all_column_links/revision-c198088ac3f0ce70ffb129f8ee5adbf53d6d101fc44a5293375ebfeecd597a44.json": {
+      "sha256": "c198088ac3f0ce70ffb129f8ee5adbf53d6d101fc44a5293375ebfeecd597a44",
+      "size": 10252
+    },
+    "processing_audit/log2_and_all_column_links/validate_all_protein_column_design_links-b35f4b996ed333e1717c6bf2b6eff312f6e4a2a5d92782efe50e49ebe893a62e.py": {
+      "sha256": "b35f4b996ed333e1717c6bf2b6eff312f6e4a2a5d92782efe50e49ebe893a62e",
+      "size": 6097
+    },
+    "processing_audit/log2_and_all_column_links/validate_protein_log2_quantities-32db37d10cefa9ae4469649e3618b82b78f9d221cc60be03dbe817b8e7206f17.py": {
+      "sha256": "32db37d10cefa9ae4469649e3618b82b78f9d221cc60be03dbe817b8e7206f17",
+      "size": 6868
+    },
+    "processing_audit/log2_and_all_column_links/validation-43d4f3fc3fdd6ff8499e03ccd925b6ee4fb3740ac1fd97a3cc3ce2bc7bcdd1fd.json": {
+      "sha256": "43d4f3fc3fdd6ff8499e03ccd925b6ee4fb3740ac1fd97a3cc3ce2bc7bcdd1fd",
+      "size": 20337
+    },
+    "processing_audit/log2_and_all_column_links/validation-fee73f4cde5ac3e36f2588290c86a836e3dd1498a3b9939c62d62e6a2e79a17d.json": {
+      "sha256": "fee73f4cde5ac3e36f2588290c86a836e3dd1498a3b9939c62d62e6a2e79a17d",
+      "size": 83634
+    },
+    "processing_audit/measurement_context_views/archive_measurement_context_views-704d291d78006f2518ec837e81b9255b1ba1ed0319e275c034ca219427cd2ad9.py": {
+      "sha256": "704d291d78006f2518ec837e81b9255b1ba1ed0319e275c034ca219427cd2ad9",
+      "size": 2925
+    },
+    "processing_audit/measurement_context_views/archive_measurement_context_views_v2-ba570f16cd0363d8d27cea7ba4802e7a32bace805f33dceb0db1ce345b2f94d5.py": {
+      "sha256": "ba570f16cd0363d8d27cea7ba4802e7a32bace805f33dceb0db1ce345b2f94d5",
+      "size": 2931
+    },
+    "processing_audit/measurement_context_views/deposited_values_panel-861f037850bb9f0f92b72973ff43f23e915213a16baa81783568ad3dd71fb0e9.py": {
+      "sha256": "861f037850bb9f0f92b72973ff43f23e915213a16baa81783568ad3dd71fb0e9",
+      "size": 26509
+    },
+    "processing_audit/measurement_context_views/deposited_values_panel-ecb37bea9de4ca4c4438567ed8f83d61db9609fee0d6a942670c40baaea2c714.py": {
+      "sha256": "ecb37bea9de4ca4c4438567ed8f83d61db9609fee0d6a942670c40baaea2c714",
+      "size": 26214
+    },
+    "processing_audit/measurement_context_views/focused-test-receipt-41f1734e9a78d9c90744762366cb3d6fb59a7aeaea47e0bd3b00e7bdb78a0fc3.json": {
+      "sha256": "41f1734e9a78d9c90744762366cb3d6fb59a7aeaea47e0bd3b00e7bdb78a0fc3",
+      "size": 845
+    },
+    "processing_audit/measurement_context_views/focused-test-receipt-bdc7ce52b0cfb1ec02bb1d02317caa8dd0d3ad9a01bb8d756b98813681c842de.json": {
+      "sha256": "bdc7ce52b0cfb1ec02bb1d02317caa8dd0d3ad9a01bb8d756b98813681c842de",
+      "size": 734
+    },
+    "processing_audit/measurement_context_views/original-rowwise-measurements-eb07926ae937f103b9aa4ad08c51fbab5d0b437244e21c8cf18936bf49522657.csv": {
+      "sha256": "eb07926ae937f103b9aa4ad08c51fbab5d0b437244e21c8cf18936bf49522657",
+      "size": 13248
+    },
+    "processing_audit/measurement_context_views/original-rowwise-measurements.csv.treatment-ada694e8d624-0ec1506926d598f820fee1148032f6c43e1cf43a6e72033b2fc15145a6181a43.json": {
+      "sha256": "0ec1506926d598f820fee1148032f6c43e1cf43a6e72033b2fc15145a6181a43",
+      "size": 2614
+    },
+    "processing_audit/measurement_context_views/original-rowwise-measurements.csv.treatment-db8e3843cede-71c3874225e8e17f159144c8444204aa393625fb972b52c484d5edecb539468f.json": {
+      "sha256": "71c3874225e8e17f159144c8444204aa393625fb972b52c484d5edecb539468f",
+      "size": 2617
+    },
+    "processing_audit/measurement_context_views/revision-324bd17538f7b6849b79758723cc7858f70ff97fc39cac75e4a1f77fa88cd519.json": {
+      "sha256": "324bd17538f7b6849b79758723cc7858f70ff97fc39cac75e4a1f77fa88cd519",
+      "size": 5719
+    },
+    "processing_audit/measurement_context_views/revision-ebc0a0235ecc1b911e5db8d42b336c01b7f8237a8f89038327f698cf774383aa.json": {
+      "sha256": "ebc0a0235ecc1b911e5db8d42b336c01b7f8237a8f89038327f698cf774383aa",
+      "size": 4913
+    },
+    "processing_audit/measurement_context_views/test_deposited_measurement_context-1b620e2dcafc1026bd185a527057b862eebbe5ab2ca3652eca7d50dc2816a3a7.py": {
+      "sha256": "1b620e2dcafc1026bd185a527057b862eebbe5ab2ca3652eca7d50dc2816a3a7",
+      "size": 6664
+    },
+    "processing_audit/measurement_context_views/test_deposited_measurement_context-837b6487f60977f7cb68dcc8c89b15e6b100b80e3decfac6c8750a0a0510a9db.py": {
+      "sha256": "837b6487f60977f7cb68dcc8c89b15e6b100b80e3decfac6c8750a0a0510a9db",
+      "size": 6882
+    },
+    "processing_audit/measurement_context_views/validate_measurement_context_views-fb6e89c58ffef8148986b09b199f70b58e061f9334fb7f883fefa9c263456036.py": {
+      "sha256": "fb6e89c58ffef8148986b09b199f70b58e061f9334fb7f883fefa9c263456036",
+      "size": 5543
+    },
+    "processing_audit/measurement_context_views/validate_measurement_context_views_v2-896c96cb8f07cd10310e71b9bc6043dd44a11561e2e92a51256039fd38738a18.py": {
+      "sha256": "896c96cb8f07cd10310e71b9bc6043dd44a11561e2e92a51256039fd38738a18",
+      "size": 5896
+    },
+    "processing_audit/measurement_context_views/validation-174d090639d42482267f324c51e2f1546921db8947574ab678fd7274f66fd782.json": {
+      "sha256": "174d090639d42482267f324c51e2f1546921db8947574ab678fd7274f66fd782",
+      "size": 35107
+    },
+    "processing_audit/measurement_context_views/validation-c76d4037ea326194516abc20ef11642c7a6cba36248df62970228f61b659e01d.json": {
+      "sha256": "c76d4037ea326194516abc20ef11642c7a6cba36248df62970228f61b659e01d",
+      "size": 35107
     },
     "processing_audit/metabolomics_workbench/collection.json": {
       "sha256": "12fa8e732559b2534232685dec51da1faf810e1ac6cb773e11cabd03b672cbba",
@@ -10728,6 +11164,10 @@
     "processing_audit/prepare_release_005-b2b077d65b50c92cd38f534b78a79497be82f6919dbc06e1371e250a32beea7f.py": {
       "sha256": "b2b077d65b50c92cd38f534b78a79497be82f6919dbc06e1371e250a32beea7f",
       "size": 12177
+    },
+    "processing_audit/prepare_release_006-db17fbfdf2956207e34218d8adee82184b33fefc4ad6cd37eb2f201c6f0cbeaf.py": {
+      "sha256": "db17fbfdf2956207e34218d8adee82184b33fefc4ad6cd37eb2f201c6f0cbeaf",
+      "size": 15641
     },
     "processing_audit/pride_projects/PXD000261/attempt-0003/file-count.json": {
       "sha256": "1b4fbfadaa12a80a1684b84ec8ce9893ab9301389cd315de4a38296beef2a4ee",
@@ -16150,8 +16590,8 @@
       "size": 7893
     },
     "processing_audit/pride_sample_designs/operations.jsonl": {
-      "sha256": "4f285d19b647d8f72118fea473ab825515d82e945f2a211722434f2b05e49149",
-      "size": 166723
+      "sha256": "004dfb92d7c46c5e4b9ed5d1131e9d69da854b7ef813123db9383711776ca14a",
+      "size": 181382
     },
     "processing_audit/process_protein_groups-4776d479ff47443c02816902a149906badab0dc2c3ca8c32180d0ce2d54e8964.py": {
       "sha256": "4776d479ff47443c02816902a149906badab0dc2c3ca8c32180d0ce2d54e8964",
@@ -16168,6 +16608,50 @@
     "processing_audit/process_protein_reporter_channels-7ad58236142721bd382b4a58b0b2e69e72d07785522c7fcbd9b9c3125e7c150f.py": {
       "sha256": "7ad58236142721bd382b4a58b0b2e69e72d07785522c7fcbd9b9c3125e7c150f",
       "size": 22087
+    },
+    "processing_audit/protein_accession_values/admission-476bf1f1de9de47559c0ccbf58f08677aaf57624c89a51529daa38cdce650faf.json": {
+      "sha256": "476bf1f1de9de47559c0ccbf58f08677aaf57624c89a51529daa38cdce650faf",
+      "size": 6629
+    },
+    "processing_audit/protein_accession_values/archive_accession_admission-a4fa1bd464d3707d61d34f56f8ffc43c1fd003e575456b24a5142fb57fac6aba.py": {
+      "sha256": "a4fa1bd464d3707d61d34f56f8ffc43c1fd003e575456b24a5142fb57fac6aba",
+      "size": 3158
+    },
+    "processing_audit/protein_accession_values/check_protein_accession_values-46ac6b91f8aebd64043889c6327652aab1cb2a1684ba57c87a40b97a1e1abb6c.py": {
+      "sha256": "46ac6b91f8aebd64043889c6327652aab1cb2a1684ba57c87a40b97a1e1abb6c",
+      "size": 5757
+    },
+    "processing_audit/protein_accession_values/live-checkout-status-e57bae72658e946f04f45fe7707a4fd54a36bd5d38817dc9f0ad5a143cef0de5.json": {
+      "sha256": "e57bae72658e946f04f45fe7707a4fd54a36bd5d38817dc9f0ad5a143cef0de5",
+      "size": 152
+    },
+    "processing_audit/protein_accession_values/original-accession-values-b661a36f3232b2bf52a8d9f844fffdc594686b881c46eec4fb5c82356481899f.csv": {
+      "sha256": "b661a36f3232b2bf52a8d9f844fffdc594686b881c46eec4fb5c82356481899f",
+      "size": 21778
+    },
+    "processing_audit/protein_accession_values/original-accession-values.csv.treatment-3eeb37c7f4e8-adcd30654c3b333c039d2902c530eb7d7c70702317df5df930d870208f35130e.json": {
+      "sha256": "adcd30654c3b333c039d2902c530eb7d7c70702317df5df930d870208f35130e",
+      "size": 2564
+    },
+    "processing_audit/protein_accession_values/original-column-qc-1db5fb0de6aa30f377aab4fe64ee97b08f74fbfe40422c655e0f5fa50e7df94b.csv": {
+      "sha256": "1db5fb0de6aa30f377aab4fe64ee97b08f74fbfe40422c655e0f5fa50e7df94b",
+      "size": 13643
+    },
+    "processing_audit/protein_accession_values/process_protein_accession_values-c53bef53d88025f42c8c21472c596486393c29640ee4aa05eaa3ae9ec39e66fa.py": {
+      "sha256": "c53bef53d88025f42c8c21472c596486393c29640ee4aa05eaa3ae9ec39e66fa",
+      "size": 23821
+    },
+    "processing_audit/protein_accession_values/status-6f0d352416e2ca245b52f036f0a1f776f3224d2909673bf8817cc14ce84a8a8b.json": {
+      "sha256": "6f0d352416e2ca245b52f036f0a1f776f3224d2909673bf8817cc14ce84a8a8b",
+      "size": 596
+    },
+    "processing_audit/protein_accession_values/validate_protein_accession_values-dbdba754df26cbbbbfb818f6d047f4b5ef6fa0476cbc937bc119710516e44d07.py": {
+      "sha256": "dbdba754df26cbbbbfb818f6d047f4b5ef6fa0476cbc937bc119710516e44d07",
+      "size": 6350
+    },
+    "processing_audit/protein_accession_values/validation-6df192b1111b5605d1e1fbcf8d9c6fdfea8497026cba1639d1bf19c9d41b9bec.json": {
+      "sha256": "6df192b1111b5605d1e1fbcf8d9c6fdfea8497026cba1639d1bf19c9d41b9bec",
+      "size": 83004
     },
     "processing_audit/protein_column_design_links/072824418c15475438d21566d5a8338ea81ab983aac7c54367817c7a281ad417/007b9d848f4d8a3dcd546dbe4e6aa64764f5ae990ad156f45ca4adc73c32f23e.json": {
       "sha256": "571cd2a8881f7e4ca30739fe23aac1a33da6ac1775cc7d4584b751192d37b2b8",
@@ -16517,8 +17001,624 @@
       "sha256": "56306f2045a894a2f7b6f1a7a4fb151c144d408975ed98a90a1937a37246a35e",
       "size": 36736
     },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/007b9d848f4d8a3dcd546dbe4e6aa64764f5ae990ad156f45ca4adc73c32f23e.json": {
+      "sha256": "571cd2a8881f7e4ca30739fe23aac1a33da6ac1775cc7d4584b751192d37b2b8",
+      "size": 18443
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/01054d25e4408c9ab25e5028ae7d522c867e50f63c594ffdc798686ed45fc644.json": {
+      "sha256": "1bcbe77a9114cb6c60bc9051de4dfe6bab178a3a0fee2f6787ad083875d49521",
+      "size": 1529
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/014f2060e37a93ee5be9efdaef0243fbee5bca1ea15155c1b6b60a5fe3e738e6.json": {
+      "sha256": "f8ee4d11d3b16c44da15bd90416a30ada7474f0e60575e94f550d8247bb53043",
+      "size": 8418
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/01bd30e2db1f629637a6d17df1026b121a016359b2e9f065d976482a7290fc2e.json": {
+      "sha256": "f311f9d1234f4ccf93a2c867dc1d4bff2e31c5723a7b4f997f793cb36beda844",
+      "size": 1521
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/081496bb83e9979c18eb11bfa822ae1e5394777e57e2769ef947b2ce04192229.json": {
+      "sha256": "e82759d3124fa6c297f1be9118b3ddacab4757c8729fe074f75488f463768d74",
+      "size": 37881
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/08b8185e094d1ddbf5d5abbc81daa7abcddb820b27e392ca59843a57fc388f90.json": {
+      "sha256": "fde3898ea24642fa738f6ddb53a969724014934460a5429d32ef260d67d062b9",
+      "size": 4415
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/0a562c29ff77e89039f96fcbe4e2181a5506b09bbe6a8aef44d60066753dd128.json": {
+      "sha256": "926b66fda27fcd1c5abbf483e01791fdae440686bd5ae8a093a8843e654a434e",
+      "size": 21471
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/0e90b146d34f756d314014d2825a735886b225dc70e5658f9f1034a94669e765.json": {
+      "sha256": "a4bf5e04631008d0854f4638e52b4e21bb72d708639bf43af6f9ca46f4e5e17f",
+      "size": 5531
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/0eba970cf8015a7d7ddace527f3261a38143196e000e0982e0735ac372f8c944.json": {
+      "sha256": "f85e026d8cef8eae392e7319e88978f3b3f255520305e35668adcbfdd4ac7d8f",
+      "size": 5555
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/10caa4c21c4f2b2d54c4f484b936b73c8d4b0f60c1dbced770e20ddf8fb548ee.json": {
+      "sha256": "e7f3266c8de8eba425cf44b4b0b6c9114fa3e04db6696d3da4d05a6c42a06eba",
+      "size": 1491
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/16fab14dc7e64df8183bd11425b11978815ac8935b5b45686ac8c055118cd378.json": {
+      "sha256": "da1258e80aa26aebce955b87c8ae226c15e19b51221d37dcb8465c87ac1d2903",
+      "size": 1583
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/1960e4ead7bb029e44f19502cf22221f86fb58fd574212279565af7a2f824e9a.json": {
+      "sha256": "f8d7364bb4db2572af0a2b296086ea63b0b65116f59c5e479f70dd86d95faaeb",
+      "size": 1519
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/1ae10782c10a103632a0555b23466cdc6959c6a5a45110824ca43ab2fd9a44f5.json": {
+      "sha256": "dd480613e47c76701c7d03c4472ad4e24d1fab536cae7f7dd4cd20c6760ef094",
+      "size": 6423
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/1ca5c5783abfaf20cd3a6910c68cbb8ac5ce1785c9ada559a495a6dff9ef86c8.json": {
+      "sha256": "202cdf1d78274624688e42d243ee45623b54481aef82f9b8351813ad188eb803",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/1e6383249bd855f074adc9e19a4549b4d3ef4d775926b212004f9038fe5cefe5.json": {
+      "sha256": "9caf3e982ba1e1e66cb91c0d26210323ac7d67bdddfa72cac5803f179a3e1699",
+      "size": 1459
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/213dc13ceee9e8c0204db1bbe4f6d32c9dc8725243c0f3ef16dee6d1cbd602b0.json": {
+      "sha256": "23105f6ef7aa26e554f4b5261d22664fefff385aec21011b4f2a970d39e397b3",
+      "size": 5531
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/21ee3a76395e27119ea4a4e3e80251ce4a4df297bd35a28037f5eb89dee084e7.json": {
+      "sha256": "c80cddf95539914d9f8d1faac7e404041ff1f4241f9f16ae1a63790050147ce9",
+      "size": 1507
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/26a9e496fb4cb086ff7dfea1be3590d8d45656800ade33dbd1598c38273ec154.json": {
+      "sha256": "ab4b866e6e2f48caa925a7276095076d65672fe24c07be74772c1fead708f67b",
+      "size": 9555
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/28c42a2b880cfdae3660b3f98314f75b755dc2af19cacff0e2ff3414292601fe.json": {
+      "sha256": "a248de65b6690853368435269ff63f5896fda81a2745990a7a94940510fb5795",
+      "size": 37920
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/2be3313dfe75755157ef398c73c1dead175bc950d28a95d70c2462d9c57d591b.json": {
+      "sha256": "3e4eaa0379f7ae418bc05a26aefcb6bcb9b8dd3e4be6a1b3dd25e8f50f78a7ba",
+      "size": 16807
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/2cf73ea5f6947e3cc4801f869bf8fb529f4bd25c0f8460883bb6fc6596c03ce7.json": {
+      "sha256": "e672f12aad074012cb084d30a0e248e6420593524367771876328209a80cbc46",
+      "size": 42915
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/3236325e67ef09a91580bb65bdcb63ba630fd7b211253950be8c33a3923b6767.json": {
+      "sha256": "a8a2cc7326178255e03cacf124e1d32a85541d36dcd77dbf36f1575c68a69a88",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/36ba880a182d5a37bc5ef730987b266c7ba9febce8fa03cb4374e5a8713ddee7.json": {
+      "sha256": "230e38e550cfea72f85d29423daea96209da93be539ca60c7eec7704540c0b90",
+      "size": 9465
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/37af71ef0ec02eb83c5d2a50ca558dfa025ed3567565d38e7e9820e215e0dcd3.json": {
+      "sha256": "8707d25d31424dd740b8938ecef2ab785870b3932caa4599ebbef07f48d2a795",
+      "size": 6354
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/3845fa7918e35e47b46fbe12b032dda2fb991b3ac1cbfe803e82b900a194819b.json": {
+      "sha256": "ef299d8b74acb887c25ced8e1dbfe1568b6411b9fc57f36273d13f45f7011176",
+      "size": 16899
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/40b18c10add2275503e559e9a59bd8b5286b255a78954a560c33fd27900b7a00.json": {
+      "sha256": "ff0f90dde4fb0cee926240a83488337a10c5119522c7fd0995a0fbad4104a665",
+      "size": 1529
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/419109828c20f691af5a017c5117ba1a3a0d8eba8a7b5bc70069961ae6330e06.json": {
+      "sha256": "dec4aee7fb9be5c671caee5abcc4e8f88d2805fedbe5464846f235ef9306d2bf",
+      "size": 26262
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/42de3df65da4e2cfb60b48109a9bf4b96983ac64c8452805117768e45238ecf9.json": {
+      "sha256": "319cee15fef036b1bd6fc74355f8efc59321882ef4af873271b38276cd4a3a5a",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/44dc66215a6341d0abbc56509b17aaee6619355ecc77cab778acc7dca4db0775.json": {
+      "sha256": "bba39d114aca9c3b2b02237f167bf41feb43224babb0979c5ea2da38d9806967",
+      "size": 19393
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/479a40165fb7a2e09a981e9632a4c44d649991661b6af5a5f889ce1d13e6db12.json": {
+      "sha256": "20636b6ff71fa0b0aa122320794a674ede0942412797fa8c9f14b3831a3a9926",
+      "size": 42733
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/47c68afcf0da5f03b1f55acb9b470d60ecaaba22a2973e37b899bb39fd6faa5c.json": {
+      "sha256": "a835e9bb5df2c1bdb03683f41c07ea4578862e071161991d05125d1ce3fc57a6",
+      "size": 4395
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/4b77009cb532af3aa348cef4a6f30b288e0cc61045ac2a820c8ef494ff81a33d.json": {
+      "sha256": "dd60155234148a2e8f1c4a09904d04c93e71a7c208d7e25fcaf64529f2fad738",
+      "size": 1485
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/4bbed900b5b845c5108fb4f7109a3d1e83b326555e8d53a7a1e705e076afdeae.json": {
+      "sha256": "d8dac04908d00de7dbaca25556ba8c89a2487a6e09a3151fc4b7228917c55281",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/5033c381e7795e02bdb2d4d6696b037b8c13484bb49e4bc6075cd0e9c9643a58.json": {
+      "sha256": "c7cd5c27d23b6ddf96011b8e4e942ba8e67611506536fceb7a6aa6553f5a06d3",
+      "size": 1495
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/509c566d289fa91cb4985bf15b3d615de7de4ba0aa71302d82f07942d3c4e06c.json": {
+      "sha256": "6399c1eb621aaa86ffbb32e9e02b677f7a2c86301e00053b4af3abd6b0d77712",
+      "size": 8271
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/51e49b1bb1ae3bd4182060ef7d4ffad0a7496fda387f6ecaa7707bbd1edddeb3.json": {
+      "sha256": "b225e933c322d899f58c4636f09228477bf7919c133766d511c096f76c281b63",
+      "size": 42544
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/54db890cbc5540ad33b0fb0424409ad681b733ec59a655e10b0da883b9f6db90.json": {
+      "sha256": "d6a8a17c34508f6c1cceb970941d629113fa4f799aac8e52a42dc10aebbda2a8",
+      "size": 42649
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/5538b0360d2818d1a8399ce581f5abafaeba54e44eba678dc5d48a728aa92b4a.json": {
+      "sha256": "15ad0a153b8612b7d3c3c05364ba04b54a216b6ec5c5d0e95247485f3fb73572",
+      "size": 6408
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/55b6b357c6095ff7c9e5f35c75be3baad6de78f1958ef02abc972910653e75cb.json": {
+      "sha256": "119462a4cde0b80d1b38f111c1c10a2a04f340ac57f91972c40e0f51a4492fe9",
+      "size": 1489
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/572983de34d59e13969c2b44f8beaa8d06291e50f098eb37d16b4491bb9eb27e.json": {
+      "sha256": "bfba59f790fb40d8a962367d853ebf743c0745956756f488878e2c5e284c77a6",
+      "size": 1495
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/578e7cd480937d58a04a51d27e456cc84616da1bf1e3aed21ca61e33fac3aa7d.json": {
+      "sha256": "17f51f3ffd5c8fb1bc31eb7055df0534056818510b1feefb7fe0bfa2c8913153",
+      "size": 8463
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/5d5fdbf9bc6ee5d579cf46f108191e067cbf0743dd3b19e3f74f7d01df13b658.json": {
+      "sha256": "f70eb851e88dc67a779f6d0f63e2af11db13ee37a9b2eb3dc855ffc806bfb41a",
+      "size": 8226
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/61e11e102a0cce5233dd9d7a6c65c67c83df53c116ec19f7f1a240fad0a6f7c0.json": {
+      "sha256": "39bfbd0273b50a8e75a32525a99594e1f25f76f790eaecf1eb927e7d9f5071f3",
+      "size": 1485
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/6216a634df985622c2e1a2a86bb547349b4553ef18c00dfe50c393d6cf9dcf1c.json": {
+      "sha256": "13253ae82294de58e0fb11b34f1d6564884e3b0186ac129c40d28d4b91b49767",
+      "size": 1459
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/6679fcc7523d054cc7da8e2037841b520ee8fc7fc0de92c6e3d16f2f82f7df0d.json": {
+      "sha256": "39dcf4eb2a81132642afc699d66b702601d0d48b8141df2ff6a45fe168270faf",
+      "size": 6515
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/6707e941f117c487ef8fd1b50ed47a83cfdcc50d025c9fabb5a5d189e13444b3.json": {
+      "sha256": "4c2c6b12ed029dd25eaab74645f1cbfddeba9018fdcba71c9fe2e6b934fb1770",
+      "size": 1469
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/689751820b3c25ead83ae09f6ed8c42b6f4e8b4e0cadbdfee1505488cba44dda.json": {
+      "sha256": "904abd7b0af6e672bfcc086595f99a65a91ff65feb58d7356e326cc13d17f92c",
+      "size": 1477
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/693bf2374abe08983b6b03fc7854f63a3b48b476ce8c20dd141ea6ae827054f1.json": {
+      "sha256": "2abeca7083d247d084ef3da6415fde1eeed10b467c0aa57c251931170f9f90af",
+      "size": 1481
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/69ce06bbfbbbe2114709a1caf7b82194d2adb166301f49d7082ef4f82142518b.json": {
+      "sha256": "00d863b38262062bee8d851d7e8004d51ea1aa60874c0b6b6d888f128690d7f8",
+      "size": 1489
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/6a96ab694c90632402ebb5828904b8255eca751dad8bd085ba02b17b1b762c8a.json": {
+      "sha256": "5c22a0dcb8088d276cf991e4bd9f55dce6100c36b5cdab325dec0882e6e399bf",
+      "size": 5477
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/6ba2891be56993c0c8bbce3dd77614f6bbda144dbe903ea4567830716e81d28e.json": {
+      "sha256": "e0a2f37c0437a2ee46f3866ba9ca775e5cb811b56d83d2280dc16a36165845e4",
+      "size": 1485
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/6dd4ee4d1e68d176e93ac484116d2ab36dd3565c140e1b0233e9b45d961797f1.json": {
+      "sha256": "97f5661c95f64aa92551b8e77dc21639db08f56f5dbdb9e14bf7ca0c1d0cfa85",
+      "size": 1463
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/6f6ea152f39a345177e4c166dcb77d6786b890bf3dc0fbd2bd86e264f69a5e99.json": {
+      "sha256": "0678259ba03e7a0f0838301624ba3aa3da250e5226d60d51682e48a4d1c1bef8",
+      "size": 26197
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/6f98728ca3527eb4e86d133ffaef9a3cc1b2e6ddbdbf8c4caa5ff4d69ea74d93.json": {
+      "sha256": "ece114c91bb1a4e5f8fada39667eabf923af200b54eb29666c847b1ee52f2eb7",
+      "size": 1485
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/7396b97d691c3de7584c0f18d6affddbe710558f381de3638603fd9d0bcf9667.json": {
+      "sha256": "ff4de0e7463996ec5f4589453e4a5f80c9bfeb749175fa265a8c9409977d57c9",
+      "size": 26228
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/753cd7181f075ab286c06580ddbb0b484bc2756940b43235da9205ff7e81f1f3.json": {
+      "sha256": "4a4eb175c47f0baa9a52c01b54373ffc63af1ad5b9482cd2828fe988bd11324f",
+      "size": 1489
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/756c915b7100a1d292641652c62b7e6d6c48797c7432450989c1c6bc61149787.json": {
+      "sha256": "dbe9a8b54ce58ef1a6b4bfbfa237492eb474ed736ee92328b8816ebee976a6da",
+      "size": 5501
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/7601df441dc6c74faf8702aa142108e9acf153a8c30463ae6cb8d56f2ed1afd4.json": {
+      "sha256": "8d971875b6a2ae6a7a862ba43ebb24a8aea3f6608d4cca62b66be4b65609a7b2",
+      "size": 1505
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/76122374b8d2692d67a823d65b422e057b0c9a82dd74c5c514a268b2fb7727af.json": {
+      "sha256": "a0ed7ee1f3449a60d45b14cf07db8a6132722ca878294ef821f58a8c7e1380a3",
+      "size": 1529
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/77ef33547d50f5c470a2823e01321649e036dd0199d7b4ecce18b264bb69c765.json": {
+      "sha256": "85281625f71d2921de49077e34cdc327c62d6355aeb324e59716b8aca8a57af4",
+      "size": 6561
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/7b07d82e11cb03e7735be10d1cbdf17b958ce3787ce85f9aa4a06a00cfd9fa8a.json": {
+      "sha256": "7f904a50855af2fb951f5991da4ce10bb187e454a4eb1d5869473279eaf2a2a5",
+      "size": 6338
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/7ed7e2b225a4428af51e00184ec292ab91ca177c054245c9b17b6453192603a4.json": {
+      "sha256": "8b1c0668f87840e6803a39785bd30de100a2a4adeda0a30fae0d034bbb5d8211",
+      "size": 16739
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/7f6e90d6239fed8a00c7b3fbf60100f95b0352b46d4ac8d5b8ef9bcb8fe8344c.json": {
+      "sha256": "698f498b46a9620c8b9f3b69fa9edb01a10a08232fced978b826faa03f018d57",
+      "size": 37996
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/7f7ce0ea0d35d090f72afe0a1ce9006dfe08e3e026a7fe894513a9fb5f071452.json": {
+      "sha256": "0e1924b1f1ab73903d1e352628317e0d26b09e76ad265a06e162dd01d3fab32c",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/85f7017b98c6790ddd5677594183ddcdf4e5c4d93fc70d23a2e3fae2bcd89876.json": {
+      "sha256": "e20695b86fd0ae76e338870126f797d499f6fec0041b1a1c85c2d627adf3df1a",
+      "size": 1495
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/87ea75ba8cd9f3ca9f95a13b1f90eaafa3f1b0a3b117555a34e004fdf8a7de22.json": {
+      "sha256": "156611e753234ae4edfcb770040ec45dbecde590e3aa1a1db97cdf7e3d7323d7",
+      "size": 6543
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/8a96ae6056aa6a8c6023e35b5f772bc2e1a446593ac9d53b7b749f1c4a92bcde.json": {
+      "sha256": "065cbc2b485e9e0ed0003723ce9a34946e9d2de4e32594168e9ea588ebd6fe06",
+      "size": 26163
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/8c2e9840130528062571510211d352c981a35a574187eca8087c4e5e9fc75b60.json": {
+      "sha256": "cbad20527e2f9bc882785b28a14d6d7ca77d8470a5e6d9571789261b8e4e6a60",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/8c33c039869905e8177e49d53742b4199341320643edf3efc8288025df73c072.json": {
+      "sha256": "7a8af4650c6333319059e4152bb34abd6f7ee21775dccbbf1f39f4c44b2c0c40",
+      "size": 1489
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/8cae1f87d47da1ad87aadec1a190551903be2b6466d2402f29fddf18a8d2aa6c.json": {
+      "sha256": "7c332d4e07aa3f7dde77d472d1cc70380dcfb77435e3eca961c4804eca538463",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/8fee3f0f71bfb7758c57b656c43fc895c29694eb8dc8e4ca3842495e81eb5a9a.json": {
+      "sha256": "46135b99e96795dceb38ae8778d2652c624104acc1ddfa47652efe46e0adaa23",
+      "size": 19303
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/91b2a273a2bcd26f12a333a4549dff48ffef16c7815421c9b8e3c07603abbb00.json": {
+      "sha256": "4db277b4cd5bf30402a9b7dc505b78092bcd7172bdc7fcb4d97b13f39bf0ecc3",
+      "size": 21416
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/95065b0085f61ef421d4e2914b2f48ac6a3bf7963f759135ea2067a9d8dff5da.json": {
+      "sha256": "e7599a1b8ef07160f32359c7389f274277f4bad4245a2732c2bea9b1dfe3486e",
+      "size": 6483
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/961ce8e2c4bcdac4a78c264677ee28ef277728ff1032ebc5a6ae05342de098f0.json": {
+      "sha256": "54a48d62f4c31ceb93d7e230ef8c6de448f19be9108a1b506433d67e9a913c55",
+      "size": 20080
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/9a4103c0ea52664ead50cce39685377acd02a63f7650a9c9ecac54c1be409cc3.json": {
+      "sha256": "32cee02223779178dd1164e271fba9699ac625d1eae20ce7e31e21fe80d4f3d6",
+      "size": 6533
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/9ab638b564e28a2ca1d957393bd0688c2986be2b1d334002cb5ff5262fb01d9d.json": {
+      "sha256": "7a21f9224283dda6be7e0fb842f50d48ba480f6de2c0aea2ea73ead8e443752f",
+      "size": 38052
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/9b9757fd3d2be3c7bcce79a4fead0c0d78ffa4a241e518948b6f540eeeabfa4b.json": {
+      "sha256": "6fe4e5d6263b06ac68148f6447edbc053d4ed3560f1e51b6db447ff9507e6210",
+      "size": 1489
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/9cbd617972f301ec5d2ee223b9483b58734f74f6f93ce2af7b7c68d697ca2cdc.json": {
+      "sha256": "7a90b2429e30ade8d700308461c44d020efa8f87d58e4e0b6711d4c11c8cf9f1",
+      "size": 1477
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/9d2567bcc9591bcf8ad3e1b7f710097f41b77ca6f22542fd722bf895d584b708.json": {
+      "sha256": "a033f41349cc5d8e82e30dd8197801d984c684ff9044ba9a9d0d067d698c7688",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a13015768ea843e074b0215d40a3e6853a04dead63adecc7e98d839d5271700b.json": {
+      "sha256": "eabbb2444c3d6977e2dd183a23bf337147c0598730ff4b332813a25b7cfadb29",
+      "size": 1491
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a16089ac65d6cad40f91f1bec4dc5a5f8950d6098bd042b9111fdc404c705daf.json": {
+      "sha256": "fd1f97c9858b38598eb7976ed5c4251935aace70f85f6179ba7c3b060cdc8e4a",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a190c52a33388e2a2e77448fc2b37712240d3b6cfe6e3aae29657d6324b43a3d.json": {
+      "sha256": "691f653b5ba36e2e6da1248de1430aab087cb126e7180a0cace696a0d96e9d51",
+      "size": 2483
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a37921663e0d4bb55f0fd8342ce4810df4cf9ccbe305ab8766e57e7a410f5696.json": {
+      "sha256": "34f86d777e824d3f6f56d67d9960ee7bba1002a0a454e1847241845b8f7ed181",
+      "size": 1479
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a4017c75cc3c1d614f10c0a5b9646bd51a6b002f35a6489531d8d9baefc0fbb5.json": {
+      "sha256": "22670ae133fcd417b5812104250eb075bca43d03715af046f7a8527df975df77",
+      "size": 1553
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a64f2a1dd5f10cf2b9cd0a0c2243b8e0e6aceebd9d9b483400a471afd093bbf1.json": {
+      "sha256": "9a5f98cd6272211fc1b096f27c718e1e19e36c244d596a8498320d408323a558",
+      "size": 1463
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a7355f8e4908d161e3c9f8f56a636b383ac8cdb23190bcc62713434bc464e587.json": {
+      "sha256": "ba7b14224d15ff9a5e6d62aa174431f696f62798905273e2fbf61e05877c9571",
+      "size": 1521
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a7cf0c66a75aabc2f4eb893ccadd800d7bd66c304c972d77a6bf237316f3ad36.json": {
+      "sha256": "7eef96a5619bf567f6dc3a47a1e5abee478630fee959f827d5555acdefcec572",
+      "size": 35959
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/a95fcf5cabedd53473bf1d6e5774769480ccda553a254a5d5c6df07b77059f23.json": {
+      "sha256": "e0c3f5fb54437a623cde3fe02ee49999e4453a97d0f6e354bfb80cdb8d102f3a",
+      "size": 24134
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/af88e30b4a59d96a5414d54da2d49f3d01748c3c31d131973152fe3603fa14e2.json": {
+      "sha256": "57a7780374f0e3e6f37d862a378a91b8f10dc394188bff2c239440d0d0ada83f",
+      "size": 1529
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/b071f8883c2b00fb449507e2d7c38d4ee811520c1e02629f39a504427de820af.json": {
+      "sha256": "e3f93822421b9044efe97e2606d2ad501be26203b15a541fc98acba99c7a91d1",
+      "size": 1505
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/b14de230bb5000a8ca4e9d26110899a2fc5d884c48875dbdc5deb066bcc47a4c.json": {
+      "sha256": "8e08ca83eb187a1eaa430b37f69bb520606e862edfb237d41252f1fcd688d453",
+      "size": 1479
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/b1e8e6586353f4f42d816edb66c1628766c8614e8993212fca2e057b7667f465.json": {
+      "sha256": "323d6ea4b149ba235ca085257c95bcdab6c792564450606447fd86012c05f401",
+      "size": 1539
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/b471577425c41d91785bba5d63730524ad553fc4c7ceb54732a575027c5ae42e.json": {
+      "sha256": "16406e8fa7abee7dd7f21898d63c346a02a5b2bccf589c376099d39c33dd4ae4",
+      "size": 26314
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/b9116c097e38dd85170517e72aef0ad39600d16148ffe75bd2ed064f716eca44.json": {
+      "sha256": "320e93e8b1480af36203dfd27dd6e972aea719bf703d36100f9371e5ee5eb051",
+      "size": 8307
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/b9493d72c930ccc78af0c1e0e98fbbb88e37fde46dd4163eb0eb56bbf70cafd1.json": {
+      "sha256": "dfda56f1f639639c5cc647cb38bf09c431121d5d24705dafbfb29b3538bb7f8e",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/bc98f60f3dfb6a9f54bca706d55ad939c07cac1f312e316dc7493a17811b6760.json": {
+      "sha256": "eaca5319acc6d75cb51bec372015785f0eb345c93499e123f82c8f49d2b66cf4",
+      "size": 5507
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/be9936ffeee06e52a4a18f41e1058fe2ffe241c46fab70ac0ce006306ef8f1f1.json": {
+      "sha256": "2f6292043df56e9998fbb28315d19fc287445ff81f2717b86b138e1fe64dc7db",
+      "size": 21515
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/bf0029fc69dbdb993ca47326baed69c44f8df9d9985b58194a772187d00b0513.json": {
+      "sha256": "3e404418039da667d1e2b98222a103505bb4b2ddb3464e55b9be9892e250fe81",
+      "size": 42810
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/c0b3a102f93cef20842bcf884791b1bff0b98895e3e1aa451168105b493aab60.json": {
+      "sha256": "0996f1e0cc85f99755cdb854102fe861b9f4aeed08df23e9bcd10e0e53a51dcd",
+      "size": 1563
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/c240387cabfa2b6585ba5c2fef126d7b57b553514bc2d4a74f67e4a2c239820a.json": {
+      "sha256": "f7121b921c36bbbc7bdd63f2175130d6dd6589426a7238f6a3498e70e909d1c7",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/c4adc159fd9edfcc51a03140d4814ca8199717a346ac2897b071758c3cc4f2d3.json": {
+      "sha256": "593c5a65d88e87b9311394714c5e8a55ba0e056980a003ce1c678ddbf9ff66f9",
+      "size": 37825
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/c5af1a0fca2031fdf4db0ceeb5726caa05046bedfccae735d4f93cd6e5b01616.json": {
+      "sha256": "8bf87fd7b5dea6d2c64e88f284e62f40706f1e08f31d66e8337d54643628c9ec",
+      "size": 6480
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/c85928fb3fec9154369f5393f80d43919fa8f87dfae5cdabc66d885d7aa732bd.json": {
+      "sha256": "b7e4b55cb138979884d287faad7fe527e96c8d6a6d9c50654fbd1bc139aea4b3",
+      "size": 1481
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/cadcdb346d0867969a4f08623ecd660c4425a044b3340effdb40f7b9a991b111.json": {
+      "sha256": "95a0eaa09fa79eed0f70d66eec9bf4c9f7acffcddf0fdfcced77eb7503869b1a",
+      "size": 6498
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/d093b836ef0a34f3c812b2de9066c2776edcdbad0e310eba93d53d7d7ed8cc7c.json": {
+      "sha256": "a8896662ebac84a1d971359594fb16bcda64c1fc5487679fcc427b3a514570d5",
+      "size": 1519
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/d2518c6e3ebf035bbb141b2f61e1241cec97e1c238c520a5751cfe812dc98d48.json": {
+      "sha256": "4bbb6a7a67b1e1d03eb3152016a5681ff1fbe51a62dcfce0b000fd9f8c28b880",
+      "size": 1511
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/d3a9861fba0b05bd820d28b2d89104940c4e7fda4a6d232d75ccd14cedaba4ff.json": {
+      "sha256": "b2095f37b3f94c75dc6b1a8def267d37801ba1730374540f76b95541dc5c0630",
+      "size": 1539
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/d407a34449b40797a47614de46da34161ddbc3641f3dcf65e2a90a2b3b5553cb.json": {
+      "sha256": "2563786f3cd4c9d5bcf301bc5c99460052d664b0d75578ef8e1df3016f675900",
+      "size": 1463
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/d59235e10ebbda0542d37447e38fc15db0ee123a3ca664d1a62895e177fb760e.json": {
+      "sha256": "a94ef87d37e2ed06fc69c8f16eddbd192834f242b069c3530ef09985c3571f50",
+      "size": 12171
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/d793ee9a493376fab354931ea4175f7484badac830115f5dc7e11163ad282e05.json": {
+      "sha256": "6bb7c833c823bd1527e8b9687a7736b2362bf3a7a80ac43f584b50cd840a315c",
+      "size": 12223
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/d93f0ec63bf0b860514576333cc06e97181e6b3ae341546d2d806341c1da74f8.json": {
+      "sha256": "8871c6e6ee498110eff17ed353b303a70e599f2ddc380eb9136afcdd48ff7495",
+      "size": 12106
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/db079039201ca5e8d36d17383b6695fb3b2f3f27a139e0a97e66602bc7fb6d69.json": {
+      "sha256": "b8c7713d257f947956ce144b16004df684996ea8a237d84906873f8386e4d73b",
+      "size": 9515
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/db577c7e69e539111dee678870e89c766d3afac6c19ea3ae6c7ac3227b12db83.json": {
+      "sha256": "2e50b3cd2d0d1894a43e4dcad4606c6e50b2fbddb1f14d6842e9deb3e9b50728",
+      "size": 24056
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/dc664010b7dc56b8706bea2da87a5d254ec1f14ccedd7c6a420290a8614d8cd7.json": {
+      "sha256": "05ac1a79cdc6330f34589d2a16c7c6186bed521bfd5ab5cc180a95a8738db509",
+      "size": 1477
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/dcb135fe886233fcd0d857a7bd36d67939623b6f847afced39ce7ba692cfd1c8.json": {
+      "sha256": "a45bb9d8db5992b2c4550e62afcb0439f8c03aa247010569b311a427ba3efea5",
+      "size": 1507
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/dd7d954d99402ddd09fbc8d7889428cf2717de796f7316c045d64b990ed306d6.json": {
+      "sha256": "fa134625d26481c52bd1a0149b1e214683ab6dbceb15b5c3740d60736c3fb4c3",
+      "size": 1489
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-00a05da994022f78750cbf31924147b688ec76e182e58494ed36387dbd1f2fed.json": {
+      "sha256": "495dfc935979c895d2e39330e34540a8ac4bf19e839dbc59e12a059c7a9726d7",
+      "size": 19220
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-199c44463312c1d30662f225cc0c6d4ee78b44721a2ecf2fe6269d41087103a4.json": {
+      "sha256": "8523ae073cc8b38ff949843b6ca0088c184eef3076716d7ec585770ed11ccdb5",
+      "size": 11663
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-2149e6f122844e35846f6c312eb4c6198aebb157cfe0e6fbd803aae4bad14967.json": {
+      "sha256": "2b41312d376e3a29548359435954fa9ad9800f18c00ce7da85358d9cfd94d30a",
+      "size": 9802
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-217a4ed70ad3b755610843891e83beeaaee98a46d8f1f7e68fa6cacecc7557c3.json": {
+      "sha256": "a3dab2936f5a90f6ea1fcca47d9338f98a0458ba6d80f3e4d5c2f7388f60b09c",
+      "size": 10471
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-2b7fd81daa4e4abb6c9220b2304357ef8dcdc67259f447bcf6b0e003437d1080.json": {
+      "sha256": "0271cd870a507bb05b41aa9c5c0c414a5177e7b4eb5d039ea49e813a98b2e48e",
+      "size": 22388
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-2ba8e3e5e14377f2b6126bd66d1c58f3b88893a62c50b9e1ba0e1dfcf907eb5d.json": {
+      "sha256": "fe3d9644e577369b947dbaa43db4cf514a759789fe5edea16502206e3b88367d",
+      "size": 23250
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-3af97e9b9e723e358b6a554bcf9c309d26a6f68f781d8f4b6c9b384f8c447195.json": {
+      "sha256": "431c58bfd414efbaba19630e71cb78abf0ce8a15b879daf8d6c168f675952893",
+      "size": 17272
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-3de777fb6bfd289e47773213d92925e0a975519ac1a4824ae2b4bcc32668e187.json": {
+      "sha256": "533781a0b93190f14ce0efafd7688543e7eb305a28d5ff545aed3af0a1a01fc0",
+      "size": 22888
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-414a13285037f9469e3ccd454d00b7dee4b48359637754f9021033255b0b80df.json": {
+      "sha256": "4de206fad7441bb0110e4fa725e4c6ea48bc243cf2dfe736b6f572b508e107ac",
+      "size": 11663
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-5918727275f110d1d702699fbadbcce9232cb0c4fda480b8f08652bf51c82b9f.json": {
+      "sha256": "a37972ea95524af1d455f4699ed1c80762e3186617e40ed6b33fbfc927b6dbd5",
+      "size": 22850
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-6c5a83ef1d2421848ee9a5373e778fa4055176f521a52925dde06c84b507b72e.json": {
+      "sha256": "e4206650163fd6d937625e277f65733109f4839bc43be7d5edcf3d2120d27a90",
+      "size": 7757
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-7cae06eb14c19b5c7b70429af2ab76f37af7032d89b31b94497826d3534febe1.json": {
+      "sha256": "5c5cf16e44e7868533eb37d5cfac1cbf903bc9f2a9bc0380e9c32e0328ee875c",
+      "size": 8914
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-82989424c59de0428889e4a33715bfb3da632de474eeb7c0c6c63cc2f06dee5f.json": {
+      "sha256": "a2cadd71de9210f137881804a7eeb4ca6f281bcc59103127c7a67f0e87bfa2b4",
+      "size": 9544
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-b9c39fc76239dc55adf9d5e7b02cd4f89a7c933ea6bfdf538160bb6f8bdcedab.json": {
+      "sha256": "99655a43d3f047c2814c3d16cef12ae5c5ab40148e78417760771e03b47693a4",
+      "size": 19281
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-c725b1e60d3057ba2be35be55ac243da47ecb2e0fc194e3eb92ef10635aaa230.json": {
+      "sha256": "79692deddf238b6de94d4c09fdbaa2b76dcfe683d3aab320aa1c4fbb7f6757ce",
+      "size": 11967
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-ca3990e30474172de8e616cedc64681bc2cbfbd56628e73b6ed2c88187546f36.json": {
+      "sha256": "06dc6eb8a2adc175d262c273e4d6be68a7d01468b71d41c36b18ec0f7ecba482",
+      "size": 5991
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-ca5ef55d2b1cb46a08f4092f150a1f51902a61ad2a8297cf4600b52970a93958.json": {
+      "sha256": "991e77e04ce7fa49d0fc6b2bfa9e941a9fec9f4e7e5c0865418235f97be1b0f0",
+      "size": 22837
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-d13d5352afb81a695e0bbed1fa8522b4d821cf2cd8d1d224a1cb7c8899afadc7.json": {
+      "sha256": "3e35b2a243d5eff1f515817e4ace1ae28f5a417b5f8aeb917a7c45cd1dc79d43",
+      "size": 17097
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-da3bcdc73cefe9ad713b0381038744243fd599a53e7c78a28697156026f74ac6.json": {
+      "sha256": "0f1dfacf00f6154bdea1b9a0332cfb2d52fdb651bf62d202082e9db9dbbab71d",
+      "size": 23045
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/design-dfbf19c08c7ed2fcaa8f8d13ba7cfb676eb73b995bb5d18804f4391775f50058.json": {
+      "sha256": "8064594374d30a586364ab805807cd98af4300eae92eca2f728d1a4bf983bc9c",
+      "size": 16864
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/e004c281c3d0ca0779762e8f2711a412aa684400a41fdcade576062ab73253c0.json": {
+      "sha256": "97eb0ce07810e55b58cb44ef011acf389e3d2a648b6d5e20872e36c534ea3402",
+      "size": 1489
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/e01e41be9a3551f2543a2c9bf5b50c0292018456b1f01df95af3d0df59315d7f.json": {
+      "sha256": "640893a8141fc7edbb27324aa11a97750bf941589b7ff362147f8f13e9e6338f",
+      "size": 8499
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/e15befd533498198aaf417614b2e62d55ab04b59ce3ce26dbe0c284c84595eb5.json": {
+      "sha256": "c232a7e83060abb56aa9a94502700ade3cb73688edc7f4d61eb534b45d80b23b",
+      "size": 1463
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/e1bbf4682f7e15bc55122ae9d396390888a574ccbdc049f29a55775492568f21.json": {
+      "sha256": "34941b9238faf7e5e0520ec6ee9020869e910fc2b61d015f6912b81594cf7461",
+      "size": 1485
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/e867769bfaf84432abe101b2ce55eb61128453398298f91c4a36c3f562a5b945.json": {
+      "sha256": "8dcef50b007e145aebd9dc9fa1cf78f6eef243c92f33893661730015ab8c6d18",
+      "size": 1469
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/e9269a9dcee4fe87f687f2c0100dd53bf7641d502c3c8cb8c6cdc9dc1d41eab3.json": {
+      "sha256": "0e9c0e662ef57cf9588152a7cef87aec45ed1056115cc01f0bc49487f9062495",
+      "size": 37976
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/e9fa53f3f59134e6d8de597da0aa31feedb4d774fdd5b937f9335c14d51c26b2.json": {
+      "sha256": "5a9827072b55ba3835949588fe321e4aff089bf47fe99469a41549c0483f0859",
+      "size": 26280
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/edc4025b5d64317f3b19326f6ad65b4d7d6fe39dd93b874a845ecaea80dc4748.json": {
+      "sha256": "47a9d65c8e74613d1c617bbdcefc3fa6f8a4433e233530d02373dcd7368bdf3b",
+      "size": 1473
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/efb812189ec6c3467b14bdb14dfc3e8c57ffb2943d48acbd8d4317c4b0d127af.json": {
+      "sha256": "8d91022c4a2a95abefa065cf2fa787798c9b198dda828897fc1a09ff65479701",
+      "size": 1477
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/f62dc8696db4f613cbec43cac8bb34cefe81174885b0f1fe662dd27fd944a0b5.json": {
+      "sha256": "47e06566a1956a27fe938f62419acf9920dbe875867f6e7e08540f05d6dabba4",
+      "size": 42999
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/f91d5588a80b989f3299cc959f2d5eb93d8a45d33b58566227e7334813c6e5d9.json": {
+      "sha256": "8f91ec35cb10c8b4a412c8f8b40944010cd9a6bc1a23ad953c96b828b9c15af8",
+      "size": 35626
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/f9a7b812bacaa57bdf87d2cc866aadae5f99df9ad3f42ed8dd6c6fa927a1a26c.json": {
+      "sha256": "ab22af2be8ae29dcab84f85ff16a48bd25c9e995b4ac436fade746f46fbc91c8",
+      "size": 19353
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/fb6bcf7c2ea08d9e1c18f1bd40f79333ad1a0a2f33ce6fc58badf7e2be65d800.json": {
+      "sha256": "8ed537abc8dc740ebf5236940e3f9ae2ccb0e4efd1ef70ed6abbb6d8151ec3bd",
+      "size": 1495
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/fbd3430886315ff82c8123d560552868d06d137a75ac9976c79b8886772588ef.json": {
+      "sha256": "f3397894035737ad189d30abdf2367d89e9c2651c146a8b708e55a9b8b2870fe",
+      "size": 35811
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/fd2fe84025182125d485e14bc5f403fe192d6a60117506b0d7756537fbf88a3f.json": {
+      "sha256": "fb20497d9edbef7a9859b69ebefcb9a4019a132ed67022f6db857713de57881e",
+      "size": 1511
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/fd30a8ddcb3b5f690d073b8d69cedc4f8321c7a5ae5bfec7adc51db573cd01c6.json": {
+      "sha256": "dd4aa94df2583cdacc7134364ef58024077d5b26973a5e15cbaef3af9aeaf0fc",
+      "size": 16831
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/index.json": {
+      "sha256": "ce3c0c45c832ba54390f91ea41586074a5c855783ae18e6f39d8ebf7592d3726",
+      "size": 19187
+    },
+    "processing_audit/protein_column_design_links/43482adad910cf1974e45e4459c659ae53e78fe6ca0dcd996ceb90b9468e7601/validation.json": {
+      "sha256": "1828d12fa3e17c8dea85d6414ccf7bf2dbe8de58459f66d746e2f55fd2565e32",
+      "size": 87131
+    },
     "processing_audit/protein_column_design_links/collection.json": {
-      "sha256": "6bb6687062b9fac752be602307c42c86aa45ea8835b755b907227ce880c9e616",
+      "sha256": "756499ad8dc70059d1518d4a06868eac774b89656723e7f508fb8c565d45563e",
       "size": 200
     },
     "processing_audit/protein_column_design_links/exporter-2ef0baafbb8fe98bbb655c623c4f10a48855e6361bfc6b850c2dec810d9770ec.py": {
@@ -16529,13 +17629,549 @@
       "sha256": "b3f2963e0d0d1aef3b152e68ecf47353fb94046a3ad8de6f3371f7203cca009f",
       "size": 18277
     },
+    "processing_audit/protein_column_design_links/exporter-before-all-namespaces-ed16069970040ee89a10b5260ab851259ccba99195e678f0ffa9c9d5059d5ca7.py": {
+      "sha256": "ed16069970040ee89a10b5260ab851259ccba99195e678f0ffa9c9d5059d5ca7",
+      "size": 18773
+    },
+    "processing_audit/protein_column_design_links/exporter-d14bba337569a79e6310b040e6155184d8f997dce077cb8a7ca0cb6c5553b6ab.py": {
+      "sha256": "d14bba337569a79e6310b040e6155184d8f997dce077cb8a7ca0cb6c5553b6ab",
+      "size": 20834
+    },
     "processing_audit/protein_column_design_links/exporter-ed16069970040ee89a10b5260ab851259ccba99195e678f0ffa9c9d5059d5ca7.py": {
       "sha256": "ed16069970040ee89a10b5260ab851259ccba99195e678f0ffa9c9d5059d5ca7",
       "size": 18773
     },
     "processing_audit/protein_column_design_links/operations.jsonl": {
-      "sha256": "5257b04c3babea848512846bdbf524cd20c860fa0322514a2da79b292b987d92",
-      "size": 167615
+      "sha256": "bacdc7ba5c9ade75cb86e75edb0e362429de773d5de77b58eac5b2fec781f05a",
+      "size": 183070
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/007b9d848f4d8a3dcd546dbe4e6aa64764f5ae990ad156f45ca4adc73c32f23e.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/01054d25e4408c9ab25e5028ae7d522c867e50f63c594ffdc798686ed45fc644.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/014f2060e37a93ee5be9efdaef0243fbee5bca1ea15155c1b6b60a5fe3e738e6.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/01bd30e2db1f629637a6d17df1026b121a016359b2e9f065d976482a7290fc2e.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/081496bb83e9979c18eb11bfa822ae1e5394777e57e2769ef947b2ce04192229.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/08b8185e094d1ddbf5d5abbc81daa7abcddb820b27e392ca59843a57fc388f90.parquet": {
+      "sha256": "c62440bbf8aa5b58d1597a748bd9e6f14d32181c0c9e227dfa1ed939c5e3670c",
+      "size": 156611
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/0a562c29ff77e89039f96fcbe4e2181a5506b09bbe6a8aef44d60066753dd128.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/0e90b146d34f756d314014d2825a735886b225dc70e5658f9f1034a94669e765.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/0eba970cf8015a7d7ddace527f3261a38143196e000e0982e0735ac372f8c944.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/10caa4c21c4f2b2d54c4f484b936b73c8d4b0f60c1dbced770e20ddf8fb548ee.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/16fab14dc7e64df8183bd11425b11978815ac8935b5b45686ac8c055118cd378.parquet": {
+      "sha256": "c852bd600dbbcb5b388205c126d7fb2890066156181599b469616ef16d316db1",
+      "size": 66115
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/1960e4ead7bb029e44f19502cf22221f86fb58fd574212279565af7a2f824e9a.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/1ae10782c10a103632a0555b23466cdc6959c6a5a45110824ca43ab2fd9a44f5.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/1ca5c5783abfaf20cd3a6910c68cbb8ac5ce1785c9ada559a495a6dff9ef86c8.parquet": {
+      "sha256": "d2d5d35f7abe8a335e3e043a98b2cb536e9f0587b8c8097d34012244a6fcb0a0",
+      "size": 137837
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/1e6383249bd855f074adc9e19a4549b4d3ef4d775926b212004f9038fe5cefe5.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/213dc13ceee9e8c0204db1bbe4f6d32c9dc8725243c0f3ef16dee6d1cbd602b0.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/21ee3a76395e27119ea4a4e3e80251ce4a4df297bd35a28037f5eb89dee084e7.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/26a9e496fb4cb086ff7dfea1be3590d8d45656800ade33dbd1598c38273ec154.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/28c42a2b880cfdae3660b3f98314f75b755dc2af19cacff0e2ff3414292601fe.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/2be3313dfe75755157ef398c73c1dead175bc950d28a95d70c2462d9c57d591b.parquet": {
+      "sha256": "39c56079427bcb4a16251f10cfec2e78ea1ae110c23604f77eccc4301619704e",
+      "size": 441416
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/2cf73ea5f6947e3cc4801f869bf8fb529f4bd25c0f8460883bb6fc6596c03ce7.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/3236325e67ef09a91580bb65bdcb63ba630fd7b211253950be8c33a3923b6767.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/36ba880a182d5a37bc5ef730987b266c7ba9febce8fa03cb4374e5a8713ddee7.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/3845fa7918e35e47b46fbe12b032dda2fb991b3ac1cbfe803e82b900a194819b.parquet": {
+      "sha256": "fa3bb3ebfc6a193d32aa79f5665796d36ca7fc220d430975a51940e0a7f059ad",
+      "size": 363031
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/40b18c10add2275503e559e9a59bd8b5286b255a78954a560c33fd27900b7a00.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/419109828c20f691af5a017c5117ba1a3a0d8eba8a7b5bc70069961ae6330e06.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/42de3df65da4e2cfb60b48109a9bf4b96983ac64c8452805117768e45238ecf9.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/44dc66215a6341d0abbc56509b17aaee6619355ecc77cab778acc7dca4db0775.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/479a40165fb7a2e09a981e9632a4c44d649991661b6af5a5f889ce1d13e6db12.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/47c68afcf0da5f03b1f55acb9b470d60ecaaba22a2973e37b899bb39fd6faa5c.parquet": {
+      "sha256": "c62440bbf8aa5b58d1597a748bd9e6f14d32181c0c9e227dfa1ed939c5e3670c",
+      "size": 156611
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/4b77009cb532af3aa348cef4a6f30b288e0cc61045ac2a820c8ef494ff81a33d.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/4bbed900b5b845c5108fb4f7109a3d1e83b326555e8d53a7a1e705e076afdeae.parquet": {
+      "sha256": "c62440bbf8aa5b58d1597a748bd9e6f14d32181c0c9e227dfa1ed939c5e3670c",
+      "size": 156611
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/5033c381e7795e02bdb2d4d6696b037b8c13484bb49e4bc6075cd0e9c9643a58.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/509c566d289fa91cb4985bf15b3d615de7de4ba0aa71302d82f07942d3c4e06c.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/51e49b1bb1ae3bd4182060ef7d4ffad0a7496fda387f6ecaa7707bbd1edddeb3.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/54db890cbc5540ad33b0fb0424409ad681b733ec59a655e10b0da883b9f6db90.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/5538b0360d2818d1a8399ce581f5abafaeba54e44eba678dc5d48a728aa92b4a.parquet": {
+      "sha256": "d2d5d35f7abe8a335e3e043a98b2cb536e9f0587b8c8097d34012244a6fcb0a0",
+      "size": 137837
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/55b6b357c6095ff7c9e5f35c75be3baad6de78f1958ef02abc972910653e75cb.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/572983de34d59e13969c2b44f8beaa8d06291e50f098eb37d16b4491bb9eb27e.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/578e7cd480937d58a04a51d27e456cc84616da1bf1e3aed21ca61e33fac3aa7d.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/5d5fdbf9bc6ee5d579cf46f108191e067cbf0743dd3b19e3f74f7d01df13b658.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/61e11e102a0cce5233dd9d7a6c65c67c83df53c116ec19f7f1a240fad0a6f7c0.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/6216a634df985622c2e1a2a86bb547349b4553ef18c00dfe50c393d6cf9dcf1c.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/6679fcc7523d054cc7da8e2037841b520ee8fc7fc0de92c6e3d16f2f82f7df0d.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/6707e941f117c487ef8fd1b50ed47a83cfdcc50d025c9fabb5a5d189e13444b3.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/689751820b3c25ead83ae09f6ed8c42b6f4e8b4e0cadbdfee1505488cba44dda.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/693bf2374abe08983b6b03fc7854f63a3b48b476ce8c20dd141ea6ae827054f1.parquet": {
+      "sha256": "add8564cb857898b09445d449df80f15e98d9b82ca7aca346f0e65f081ef2f86",
+      "size": 42735
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/69ce06bbfbbbe2114709a1caf7b82194d2adb166301f49d7082ef4f82142518b.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/6a96ab694c90632402ebb5828904b8255eca751dad8bd085ba02b17b1b762c8a.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/6ba2891be56993c0c8bbce3dd77614f6bbda144dbe903ea4567830716e81d28e.parquet": {
+      "sha256": "fa3bb3ebfc6a193d32aa79f5665796d36ca7fc220d430975a51940e0a7f059ad",
+      "size": 363031
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/6dd4ee4d1e68d176e93ac484116d2ab36dd3565c140e1b0233e9b45d961797f1.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/6f6ea152f39a345177e4c166dcb77d6786b890bf3dc0fbd2bd86e264f69a5e99.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/6f98728ca3527eb4e86d133ffaef9a3cc1b2e6ddbdbf8c4caa5ff4d69ea74d93.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/7396b97d691c3de7584c0f18d6affddbe710558f381de3638603fd9d0bcf9667.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/753cd7181f075ab286c06580ddbb0b484bc2756940b43235da9205ff7e81f1f3.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/756c915b7100a1d292641652c62b7e6d6c48797c7432450989c1c6bc61149787.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/7601df441dc6c74faf8702aa142108e9acf153a8c30463ae6cb8d56f2ed1afd4.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/76122374b8d2692d67a823d65b422e057b0c9a82dd74c5c514a268b2fb7727af.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/77ef33547d50f5c470a2823e01321649e036dd0199d7b4ecce18b264bb69c765.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/7b07d82e11cb03e7735be10d1cbdf17b958ce3787ce85f9aa4a06a00cfd9fa8a.parquet": {
+      "sha256": "d2d5d35f7abe8a335e3e043a98b2cb536e9f0587b8c8097d34012244a6fcb0a0",
+      "size": 137837
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/7ed7e2b225a4428af51e00184ec292ab91ca177c054245c9b17b6453192603a4.parquet": {
+      "sha256": "39c56079427bcb4a16251f10cfec2e78ea1ae110c23604f77eccc4301619704e",
+      "size": 441416
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/7f6e90d6239fed8a00c7b3fbf60100f95b0352b46d4ac8d5b8ef9bcb8fe8344c.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/7f7ce0ea0d35d090f72afe0a1ce9006dfe08e3e026a7fe894513a9fb5f071452.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/85f7017b98c6790ddd5677594183ddcdf4e5c4d93fc70d23a2e3fae2bcd89876.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/87ea75ba8cd9f3ca9f95a13b1f90eaafa3f1b0a3b117555a34e004fdf8a7de22.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/8a96ae6056aa6a8c6023e35b5f772bc2e1a446593ac9d53b7b749f1c4a92bcde.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/8c2e9840130528062571510211d352c981a35a574187eca8087c4e5e9fc75b60.parquet": {
+      "sha256": "6f8901e19d5fc30341bb31dcac5b15abbc9312a88df09b4ec378ff43f6248077",
+      "size": 112159
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/8c33c039869905e8177e49d53742b4199341320643edf3efc8288025df73c072.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/8cae1f87d47da1ad87aadec1a190551903be2b6466d2402f29fddf18a8d2aa6c.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/8fee3f0f71bfb7758c57b656c43fc895c29694eb8dc8e4ca3842495e81eb5a9a.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/91b2a273a2bcd26f12a333a4549dff48ffef16c7815421c9b8e3c07603abbb00.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/95065b0085f61ef421d4e2914b2f48ac6a3bf7963f759135ea2067a9d8dff5da.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/961ce8e2c4bcdac4a78c264677ee28ef277728ff1032ebc5a6ae05342de098f0.parquet": {
+      "sha256": "ff1e80fb6b13a2d0a4ac3095a1effcd7a8ccb6b68c363acf7800964ba6507eae",
+      "size": 145930
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/9a4103c0ea52664ead50cce39685377acd02a63f7650a9c9ecac54c1be409cc3.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/9ab638b564e28a2ca1d957393bd0688c2986be2b1d334002cb5ff5262fb01d9d.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/9b9757fd3d2be3c7bcce79a4fead0c0d78ffa4a241e518948b6f540eeeabfa4b.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/9cbd617972f301ec5d2ee223b9483b58734f74f6f93ce2af7b7c68d697ca2cdc.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/9d2567bcc9591bcf8ad3e1b7f710097f41b77ca6f22542fd722bf895d584b708.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/a13015768ea843e074b0215d40a3e6853a04dead63adecc7e98d839d5271700b.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/a16089ac65d6cad40f91f1bec4dc5a5f8950d6098bd042b9111fdc404c705daf.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/a190c52a33388e2a2e77448fc2b37712240d3b6cfe6e3aae29657d6324b43a3d.parquet": {
+      "sha256": "6f8901e19d5fc30341bb31dcac5b15abbc9312a88df09b4ec378ff43f6248077",
+      "size": 112159
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/a37921663e0d4bb55f0fd8342ce4810df4cf9ccbe305ab8766e57e7a410f5696.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/a64f2a1dd5f10cf2b9cd0a0c2243b8e0e6aceebd9d9b483400a471afd093bbf1.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/a7355f8e4908d161e3c9f8f56a636b383ac8cdb23190bcc62713434bc464e587.parquet": {
+      "sha256": "c852bd600dbbcb5b388205c126d7fb2890066156181599b469616ef16d316db1",
+      "size": 66115
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/a7cf0c66a75aabc2f4eb893ccadd800d7bd66c304c972d77a6bf237316f3ad36.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/af88e30b4a59d96a5414d54da2d49f3d01748c3c31d131973152fe3603fa14e2.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/b071f8883c2b00fb449507e2d7c38d4ee811520c1e02629f39a504427de820af.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/b14de230bb5000a8ca4e9d26110899a2fc5d884c48875dbdc5deb066bcc47a4c.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/b1e8e6586353f4f42d816edb66c1628766c8614e8993212fca2e057b7667f465.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/b471577425c41d91785bba5d63730524ad553fc4c7ceb54732a575027c5ae42e.parquet": {
+      "sha256": "1bc59e37fe2203a3303e96c57932691697765766c808b737107612acdfeb5931",
+      "size": 17271
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/b9116c097e38dd85170517e72aef0ad39600d16148ffe75bd2ed064f716eca44.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/b9493d72c930ccc78af0c1e0e98fbbb88e37fde46dd4163eb0eb56bbf70cafd1.parquet": {
+      "sha256": "1d63e48300122424358084bb0b59ad4e300d437ecad5458b9cb45696b4394e59",
+      "size": 47773
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/bc98f60f3dfb6a9f54bca706d55ad939c07cac1f312e316dc7493a17811b6760.parquet": {
+      "sha256": "8bf594d17e53f4f9d4b0458f66e10e611ed9bb5d8bb10320617b44e96f45d637",
+      "size": 28078
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/be9936ffeee06e52a4a18f41e1058fe2ffe241c46fab70ac0ce006306ef8f1f1.parquet": {
+      "sha256": "80f3d4246be23fd2cdcd00a5184635bd00d9cf376b76edb5912de35ad58f462b",
+      "size": 17772
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/bf0029fc69dbdb993ca47326baed69c44f8df9d9985b58194a772187d00b0513.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/c0b3a102f93cef20842bcf884791b1bff0b98895e3e1aa451168105b493aab60.parquet": {
+      "sha256": "215ae33bb883135d71e3ce5f0de55c73d98baac73a7a190fb6849df2cf8774a6",
+      "size": 14589
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/c240387cabfa2b6585ba5c2fef126d7b57b553514bc2d4a74f67e4a2c239820a.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/c4adc159fd9edfcc51a03140d4814ca8199717a346ac2897b071758c3cc4f2d3.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/c5af1a0fca2031fdf4db0ceeb5726caa05046bedfccae735d4f93cd6e5b01616.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/c85928fb3fec9154369f5393f80d43919fa8f87dfae5cdabc66d885d7aa732bd.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/cadcdb346d0867969a4f08623ecd660c4425a044b3340effdb40f7b9a991b111.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/d093b836ef0a34f3c812b2de9066c2776edcdbad0e310eba93d53d7d7ed8cc7c.parquet": {
+      "sha256": "5f4373c668cb1ca396b3faa854d2de26a47696721d18b02d96af61b09097ffdb",
+      "size": 25994
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/d2518c6e3ebf035bbb141b2f61e1241cec97e1c238c520a5751cfe812dc98d48.parquet": {
+      "sha256": "f6bbeecd22dccc005296e912c0108e1ba6e5242c1bf09144d435e162e8c54155",
+      "size": 17206
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/d3a9861fba0b05bd820d28b2d89104940c4e7fda4a6d232d75ccd14cedaba4ff.parquet": {
+      "sha256": "d5d20c8e5f419fc38f711810b625cded62952d66d66405f72b56e1075de66855",
+      "size": 14961
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/d407a34449b40797a47614de46da34161ddbc3641f3dcf65e2a90a2b3b5553cb.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/d59235e10ebbda0542d37447e38fc15db0ee123a3ca664d1a62895e177fb760e.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/d793ee9a493376fab354931ea4175f7484badac830115f5dc7e11163ad282e05.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/d93f0ec63bf0b860514576333cc06e97181e6b3ae341546d2d806341c1da74f8.parquet": {
+      "sha256": "7cb72c6279a88e37384f207037ddbcc3c84bc49b22ba1b40de454647e52069b7",
+      "size": 34556
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/db079039201ca5e8d36d17383b6695fb3b2f3f27a139e0a97e66602bc7fb6d69.parquet": {
+      "sha256": "ac3128dfe1b5f2754ef941fecbb06f0d6ba7786e404a6c07836f917e72e65345",
+      "size": 697891
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/db577c7e69e539111dee678870e89c766d3afac6c19ea3ae6c7ac3227b12db83.parquet": {
+      "sha256": "37495d15ba33cfb1d59ff72f709ad01b6c79cf9d492ecc034311e302e7ed2738",
+      "size": 203099
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/dc664010b7dc56b8706bea2da87a5d254ec1f14ccedd7c6a420290a8614d8cd7.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/dcb135fe886233fcd0d857a7bd36d67939623b6f847afced39ce7ba692cfd1c8.parquet": {
+      "sha256": "9e560bcd903fdd5bb02eb34c45d7b0f693cb8d3bf84ef6cf06a8b86dc3125dd3",
+      "size": 111520
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/dd7d954d99402ddd09fbc8d7889428cf2717de796f7316c045d64b990ed306d6.parquet": {
+      "sha256": "39c56079427bcb4a16251f10cfec2e78ea1ae110c23604f77eccc4301619704e",
+      "size": 441416
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/e004c281c3d0ca0779762e8f2711a412aa684400a41fdcade576062ab73253c0.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/e01e41be9a3551f2543a2c9bf5b50c0292018456b1f01df95af3d0df59315d7f.parquet": {
+      "sha256": "a31409f98f7606194645773ca2799ff2b0cccb5ed6b410fe12fd4a92fef2a94f",
+      "size": 58761
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/e15befd533498198aaf417614b2e62d55ab04b59ce3ce26dbe0c284c84595eb5.parquet": {
+      "sha256": "c21821b5518851849cafaeb820807ace524a92012606c123d3916ebd4190c99a",
+      "size": 33993
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/e1bbf4682f7e15bc55122ae9d396390888a574ccbdc049f29a55775492568f21.parquet": {
+      "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
+      "size": 293016
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/e867769bfaf84432abe101b2ce55eb61128453398298f91c4a36c3f562a5b945.parquet": {
+      "sha256": "27c469d41034b3f031c77d7cf4de1d8bb06f8de6dade6f8b93f0de1e1837cdc1",
+      "size": 53640
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/e9269a9dcee4fe87f687f2c0100dd53bf7641d502c3c8cb8c6cdc9dc1d41eab3.parquet": {
+      "sha256": "71bf666a11f76e2bdcd6fac2979fc756c1b1895bc702b3f70010a395720a118e",
+      "size": 31487
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/e9fa53f3f59134e6d8de597da0aa31feedb4d774fdd5b937f9335c14d51c26b2.parquet": {
+      "sha256": "3ee551a37d5469de867302e4cbf1003f958e7987d3855c74aaea3715112200fb",
+      "size": 18827
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/edc4025b5d64317f3b19326f6ad65b4d7d6fe39dd93b874a845ecaea80dc4748.parquet": {
+      "sha256": "8a10f4a5d82c213debe65de5f119af31ad0c04817329aa7de26f9c73e2ea7a41",
+      "size": 779180
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/efb812189ec6c3467b14bdb14dfc3e8c57ffb2943d48acbd8d4317c4b0d127af.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/f62dc8696db4f613cbec43cac8bb34cefe81174885b0f1fe662dd27fd944a0b5.parquet": {
+      "sha256": "d8382d427ae5f02f6321a71199db863f46d6bc879f90aeb5facbf288dcf7c1c5",
+      "size": 203102
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/f91d5588a80b989f3299cc959f2d5eb93d8a45d33b58566227e7334813c6e5d9.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/f9a7b812bacaa57bdf87d2cc866aadae5f99df9ad3f42ed8dd6c6fa927a1a26c.parquet": {
+      "sha256": "82c205070260d48572791eb8689d16b564340f3ebb77fa5ff448dcddfd3801c3",
+      "size": 25142
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/fb6bcf7c2ea08d9e1c18f1bd40f79333ad1a0a2f33ce6fc58badf7e2be65d800.parquet": {
+      "sha256": "4872e12e2cad1d6ebd28ebeda9e2e0e0ed79a49fa07e023124a0422ed578dc21",
+      "size": 318339
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/fbd3430886315ff82c8123d560552868d06d137a75ac9976c79b8886772588ef.parquet": {
+      "sha256": "9387bc7baa5a2bcc605c3a9cd9bdb60389fc645b05199435e6c3dcfc89ff5f49",
+      "size": 38560
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/fd2fe84025182125d485e14bc5f403fe192d6a60117506b0d7756537fbf88a3f.parquet": {
+      "sha256": "215ae33bb883135d71e3ce5f0de55c73d98baac73a7a190fb6849df2cf8774a6",
+      "size": 14589
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/fd30a8ddcb3b5f690d073b8d69cedc4f8321c7a5ae5bfec7adc51db573cd01c6.parquet": {
+      "sha256": "fa3bb3ebfc6a193d32aa79f5665796d36ca7fc220d430975a51940e0a7f059ad",
+      "size": 363031
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/index.json": {
+      "sha256": "e374be69003265194bd57760772fa62a1e5cc9a5b3188512c9bfa7a163da2262",
+      "size": 98969
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/measurement_inventory.json": {
+      "sha256": "d379c809c80c6b9fabf1f8c5227886a713bd18a56b395416dda8a2891a5de57a",
+      "size": 34336
+    },
+    "processing_audit/protein_identifier_evidence/1bbd2eda1e57177c49409ac9db6056620a2da485a18c1188aae990a616024043/validation.json": {
+      "sha256": "ef08373f93d72dcf6c2043cfa6992b235b24978373e94aad74d961013e79406c",
+      "size": 61700
     },
     "processing_audit/protein_identifier_evidence/b1f51b535068d88726ecdee4eb8af90d54dcf420fe9887284089333b94f727e5/007b9d848f4d8a3dcd546dbe4e6aa64764f5ae990ad156f45ca4adc73c32f23e.parquet": {
       "sha256": "17cc5ba2b9998b9f07c75427011efece30cafa137c4ae1ae1253fec2ed47fdd7",
@@ -17066,12 +18702,12 @@
       "size": 61700
     },
     "processing_audit/protein_identifier_evidence/collection.json": {
-      "sha256": "fe22a0cd1a8368d6c43121904de2516c4fc69a03b8c1dc1ad742fe0040d542d6",
+      "sha256": "67fe81a6c1b147ef51aac0161b90e099578d8b8c82032e5416508d9bf9daa1e3",
       "size": 200
     },
     "processing_audit/protein_identifier_evidence/operations.jsonl": {
-      "sha256": "e0bbefac8ab8c52b4d28936a9080f837a94d8f4e660fa692cac44c9a88f15e52",
-      "size": 146575
+      "sha256": "4e216db7656661d55314702a8466cb778b8a4692a1aa75190339f1e26493226d",
+      "size": 160864
     },
     "processing_audit/protein_identifier_evidence/processor-47f2e9d12c36f6916a48099e9349a2ce750450faf25eadf1d94c9f3cd95c1e55.py": {
       "sha256": "47f2e9d12c36f6916a48099e9349a2ce750450faf25eadf1d94c9f3cd95c1e55",
@@ -17094,8 +18730,32 @@
       "size": 14838
     },
     "processing_audit/protein_identifier_evidence/status.json": {
-      "sha256": "bb68c79c461a1c63712c0f0574b170dbecb3784690107e616f8c066c31ffcfa2",
-      "size": 557
+      "sha256": "5ea2d69ccaa26c3bcb9483cfd161ae17900663b87b53b6b4c7d4a23c6d6804d8",
+      "size": 556
+    },
+    "processing_audit/protein_row_design_links/a6ebd071febda254f668054b63a55990f15007ae28ce7edde69cd55b41e09555/a4017c75cc3c1d614f10c0a5b9646bd51a6b002f35a6489531d8d9baefc0fbb5.json": {
+      "sha256": "e3f30a8c9058d5efa6489a9d37251b19e7ae57546e62ee6e701605aa8f85ad2d",
+      "size": 996436
+    },
+    "processing_audit/protein_row_design_links/a6ebd071febda254f668054b63a55990f15007ae28ce7edde69cd55b41e09555/index.json": {
+      "sha256": "515928e80be6ca3ebe6427bb0429c5058f3822f7ba13e7209aa5850cc696d7bd",
+      "size": 192
+    },
+    "processing_audit/protein_row_design_links/a6ebd071febda254f668054b63a55990f15007ae28ce7edde69cd55b41e09555/validation.json": {
+      "sha256": "6f313e069ac0c7987fe156eeeb558ee36e031419539b3d62d5592ad5201d04d9",
+      "size": 2003
+    },
+    "processing_audit/protein_row_design_links/collection.json": {
+      "sha256": "1ce45ade616f13464cb86e9de95d77b5f31e1909b33a1bc34ae17f8ba4ba1ef4",
+      "size": 200
+    },
+    "processing_audit/protein_row_design_links/exporter-a42d87299e49a5fb7e0068734db122ab84e582f597fb5fcb44e0f1694902d197.py": {
+      "sha256": "a42d87299e49a5fb7e0068734db122ab84e582f597fb5fcb44e0f1694902d197",
+      "size": 11817
+    },
+    "processing_audit/protein_row_design_links/operations.jsonl": {
+      "sha256": "41fa4c71f7277826b1bb0509c7be9b47672749efd39d871049371c6ce30fcedf",
+      "size": 2256
     },
     "processing_audit/publish_005_when_checked-b01ced83777d17df4fc378b9737bec91b98906f71a02286f4771d17e94067d1b.py": {
       "sha256": "b01ced83777d17df4fc378b9737bec91b98906f71a02286f4771d17e94067d1b",
@@ -17104,6 +18764,10 @@
     "processing_audit/publish_005_when_checked-f8285d32ed5e23d6af500474be83aa207e0123051c0ca25833f7aaf1c7f37327.py": {
       "sha256": "f8285d32ed5e23d6af500474be83aa207e0123051c0ca25833f7aaf1c7f37327",
       "size": 9218
+    },
+    "processing_audit/publish_006_when_checked-767e58622d919d81cb75ea940c433ab8b370f4169215e8768019ba037811fabf.py": {
+      "sha256": "767e58622d919d81cb75ea940c433ab8b370f4169215e8768019ba037811fabf",
+      "size": 11964
     },
     "processing_audit/publish_release_005_workflow_retry-0a298c23a716c8fbb4eb1da537c24f2a0820120cfa01e8fba7ef620b3db102dd.py": {
       "sha256": "0a298c23a716c8fbb4eb1da537c24f2a0820120cfa01e8fba7ef620b3db102dd",
@@ -17152,6 +18816,10 @@
     "processing_audit/push_protein_identifier_followup-eaec9e4d1d76915463de902e5d026053bdbe59254ef0e5f6ceda0d1085def8d2.py": {
       "sha256": "eaec9e4d1d76915463de902e5d026053bdbe59254ef0e5f6ceda0d1085def8d2",
       "size": 3756
+    },
+    "processing_audit/push_source_flags_followup-34d7181455b617589b2d3c7d5c21d2d506409f890954a2cce3916a291897045c.py": {
+      "sha256": "34d7181455b617589b2d3c7d5c21d2d506409f890954a2cce3916a291897045c",
+      "size": 3890
     },
     "processing_audit/quantifier-runtime-17d1ab4381c7b33063c8f1719f05d90098660905a2ce6ffd6560cacb0fb639b5.py": {
       "sha256": "17d1ab4381c7b33063c8f1719f05d90098660905a2ce6ffd6560cacb0fb639b5",
@@ -17634,8 +19302,8 @@
       "size": 1734
     },
     "processing_audit/reference_identifiers/operations.jsonl": {
-      "sha256": "c80680eace1c95838ff822a4f9be3ddcfb0528faf344aa3aeeee6a925d3e151d",
-      "size": 251917
+      "sha256": "73e6542897cfb170697a2f2c01d4f7b7796a6c4fa05b2fe110d38d10972df03b",
+      "size": 274736
     },
     "processing_audit/reference_identifiers/processor-c3e8918132a046fd8bd7e396d97886e28ec4ac1dcfb54180f008cffae8a3e5ca.py": {
       "sha256": "c3e8918132a046fd8bd7e396d97886e28ec4ac1dcfb54180f008cffae8a3e5ca",
@@ -17858,8 +19526,8 @@
       "size": 437
     },
     "processing_audit/reference_identifiers/status.json": {
-      "sha256": "624197508aa555f9507a8805fc9064dbae6f36597420cf3c6c0815875dad167d",
-      "size": 925
+      "sha256": "54e787f304041db24cac550ff882cea1226969a4b36a02c87a2a387ed558abe2",
+      "size": 926
     },
     "processing_audit/refresh_rna_snapshot-1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da.py": {
       "sha256": "1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da",
@@ -17889,6 +19557,26 @@
       "sha256": "e2a00cb4861aaf90d5cc8f012f809728892e9b76c341dd5c08c0ab304c6b321d",
       "size": 298
     },
+    "processing_audit/release006-installed-wheel-validation-a655d091d5e8b444d968c3e0b4436e45850aa5f9dc425881f49710327365a8fa.json": {
+      "sha256": "a655d091d5e8b444d968c3e0b4436e45850aa5f9dc425881f49710327365a8fa",
+      "size": 1354
+    },
+    "processing_audit/release006-portable-validation-daf5185299fd5e6c7b49d0324d84a8b8a06936a1d3e9ce8781794406084a9f8a.json": {
+      "sha256": "daf5185299fd5e6c7b49d0324d84a8b8a06936a1d3e9ce8781794406084a9f8a",
+      "size": 566
+    },
+    "processing_audit/release006-previous-non-rna-preservation-23b7b24481e502fc4a105a4ef3a53b57099980325575480ad3f11b6c37ea15be.json": {
+      "sha256": "23b7b24481e502fc4a105a4ef3a53b57099980325575480ad3f11b6c37ea15be",
+      "size": 130657
+    },
+    "processing_audit/release006-previous-rna-preservation-24c4d4b6eedea593fa022e28d11e1dd03cc809a43161367570f17ee8482f71d0.json": {
+      "sha256": "24c4d4b6eedea593fa022e28d11e1dd03cc809a43161367570f17ee8482f71d0",
+      "size": 27728
+    },
+    "processing_audit/release006-source-freeze-8e651f02687e84d50b3bd4749088289fee2cf72ef233b24ef13051e332e95f57.json": {
+      "sha256": "8e651f02687e84d50b3bd4749088289fee2cf72ef233b24ef13051e332e95f57",
+      "size": 976
+    },
     "processing_audit/resource-policy-24-thread-handover-complete.json": {
       "sha256": "169e9f892d0a93370eb07c3d7c34cf4de8bbeeb2de0f3781764c470a6d01acc4",
       "size": 789
@@ -17909,6 +19597,10 @@
       "sha256": "24c4d4b6eedea593fa022e28d11e1dd03cc809a43161367570f17ee8482f71d0",
       "size": 27728
     },
+    "processing_audit/rna_snapshot_preservation/release-006-to-007.json": {
+      "sha256": "86335205e0125514d95d193c9a5827db60d875a15e9b149f37a8939ee31d10e7",
+      "size": 27727
+    },
     "processing_audit/rna_technical_qc/latest/export_rna_technical_qc.py": {
       "sha256": "251cc88bf605aa7b0275e0d8d3f324487af3b6047fad357881b8585965e87be1",
       "size": 6806
@@ -17918,19 +19610,19 @@
       "size": 18103
     },
     "processing_audit/rna_technical_qc/latest/kallisto_GT1.csv": {
-      "sha256": "b0365d0ae6d91326772f66ecb820a9938d2f4778ec0cc2b64fa34268bda6b8d0",
+      "sha256": "b1e7be79dd4e6ee2adf0ce552028c71c95cbbd241684e185c67a616028ea2ca8",
       "size": 378616
     },
     "processing_audit/rna_technical_qc/latest/kallisto_ME49.csv": {
-      "sha256": "5a680b1bc92e652aca25560f722f0c7e10ad08380983078342dd265c565834fa",
-      "size": 1142926
+      "sha256": "d0df345a3f15db74cc0d8e486c530ce794fea6fb3dab60f9062a80addcd17b63",
+      "size": 1150580
     },
     "processing_audit/rna_technical_qc/latest/kallisto_ME49_host.csv": {
-      "sha256": "a7ebb42c6a136e61e7765006d4c3126bf43535f6a0340f1929c037292279fee8",
-      "size": 1163598
+      "sha256": "f2b4a5738d908e7adc381cff4dda66f930a67528789477d299452470dc874ac1",
+      "size": 1171388
     },
     "processing_audit/rna_technical_qc/latest/kallisto_VEG.csv": {
-      "sha256": "cdb18080dbf46cd78e76b33aa8e5c4d646b7808ebcaa3e2d0998b56ad456abeb",
+      "sha256": "9c3d6e25d82c7b28213b033c4ef7ea5bf31fde424084afe5d1a053469bdcb0a3",
       "size": 378616
     },
     "processing_audit/rna_technical_qc/latest/measurement_qc.py": {
@@ -17942,36 +19634,220 @@
       "size": 7356
     },
     "processing_audit/rna_technical_qc/latest/salmon_GT1.csv": {
-      "sha256": "2b0bc68b89ea2469af62723a9c5b2c40e7f05806c90d0e1005d0fb09373c2444",
+      "sha256": "ac0188b4f85c9116eeccc0b01af7eb1494d91215ca8c00b19e9999c0f1d8c1c1",
       "size": 378302
     },
     "processing_audit/rna_technical_qc/latest/salmon_ME49.csv": {
-      "sha256": "870c51155ab6380a71fa2537915abc2f40eb66b9c6c94b3088960789c8560e40",
-      "size": 1141776
+      "sha256": "cee77a24eb38fdb7959abe5d9ea668f0650cd82d5d8e2225bee7ab28b0ac42d6",
+      "size": 1149426
     },
     "processing_audit/rna_technical_qc/latest/salmon_ME49_host.csv": {
-      "sha256": "8acc7a1741cafddc7303c63a790ce04397b65845acd88f0a1cc330c0a3b088b5",
-      "size": 1162422
+      "sha256": "3ad04a421cae42656e36d3a7841567c27bb9fa34620ee9249557563b9660988e",
+      "size": 1170208
     },
     "processing_audit/rna_technical_qc/latest/salmon_VEG.csv": {
-      "sha256": "c7e4495de68c8dfcff2bb67a7ad4361fbefcf64381528253d7c036e127d39543",
+      "sha256": "87a305090282791c10a760a7bc75bb17ec377223382f2a6aa1fbb0b1dc7e2e6f",
       "size": 378298
     },
     "processing_audit/rna_technical_qc/latest/validation.json": {
-      "sha256": "49242d87296ad0bdce34b74ac8768a1d0f45571df3ba6923e2b447cb4732fe12",
+      "sha256": "cabb8c27d955a1cbc48a37d1e1b782db8f30a9bf051a474cb7ad1bba98008a36",
       "size": 3287
     },
     "processing_audit/rna_technical_qc/operations.jsonl": {
-      "sha256": "3f11efff1c4d9d38c22f874acdf0c0f76b2d440be8c208b4492812b9048af5b0",
-      "size": 15305
+      "sha256": "aa119f84d9397744ff7e4f6f8b7421b4224406f4776c6b35b4cf986e1641dd8d",
+      "size": 18366
+    },
+    "processing_audit/row_design_views/archive_protein_row_design_links-d2cef17ae5ace8326872b4612fddbb5a02a5ef987ce583169b4e12d1bf8888e0.py": {
+      "sha256": "d2cef17ae5ace8326872b4612fddbb5a02a5ef987ce583169b4e12d1bf8888e0",
+      "size": 4165
+    },
+    "processing_audit/row_design_views/check_protein_row_design_links-d7a42a251fc4f83f4198c23fdb5f8a01be42e86242a7fcdad5b94d26822b1c55.py": {
+      "sha256": "d7a42a251fc4f83f4198c23fdb5f8a01be42e86242a7fcdad5b94d26822b1c55",
+      "size": 3520
+    },
+    "processing_audit/row_design_views/deposited_values_panel-f4e4551aa7bd7fa717259f45fd81778ca3f91a928bcf1a2d8e01051dc53a8f2e.py": {
+      "sha256": "f4e4551aa7bd7fa717259f45fd81778ca3f91a928bcf1a2d8e01051dc53a8f2e",
+      "size": 27653
+    },
+    "processing_audit/row_design_views/export_protein_row_design_links-a42d87299e49a5fb7e0068734db122ab84e582f597fb5fcb44e0f1694902d197.py": {
+      "sha256": "a42d87299e49a5fb7e0068734db122ab84e582f597fb5fcb44e0f1694902d197",
+      "size": 11817
+    },
+    "processing_audit/row_design_views/focused-test-receipt-04fd459f9afce5aef58514d9510bcc44a275383bbc0f2b1db2a8dd738e3b6729.json": {
+      "sha256": "04fd459f9afce5aef58514d9510bcc44a275383bbc0f2b1db2a8dd738e3b6729",
+      "size": 838
+    },
+    "processing_audit/row_design_views/prototype-panel-975992bca4b484c3315c8e45e1930a1ee6feb87c27af1be92bd690bbc5d39320-975992bca4b484c3315c8e45e1930a1ee6feb87c27af1be92bd690bbc5d39320.py": {
+      "sha256": "975992bca4b484c3315c8e45e1930a1ee6feb87c27af1be92bd690bbc5d39320",
+      "size": 27512
+    },
+    "processing_audit/row_design_views/revision-2808149254c6903b85272f60966f518085dcac11737c2ad5f4c8353bc97df8ee.json": {
+      "sha256": "2808149254c6903b85272f60966f518085dcac11737c2ad5f4c8353bc97df8ee",
+      "size": 16886
+    },
+    "processing_audit/row_design_views/row_design_links-c245ee2924707d9c8655693ec78891e3f202a5bd4291cae0814f3eb00451ff32.py": {
+      "sha256": "c245ee2924707d9c8655693ec78891e3f202a5bd4291cae0814f3eb00451ff32",
+      "size": 9963
+    },
+    "processing_audit/row_design_views/source-row-0-100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e.csv": {
+      "sha256": "100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e",
+      "size": 37264
+    },
+    "processing_audit/row_design_views/source-row-0.csv.treatment-8c1380b7dea6-6265ff66ee0d0af4e8760868e4761bdfcd43107c3d7220143a7f7a96506b6adf.json": {
+      "sha256": "6265ff66ee0d0af4e8760868e4761bdfcd43107c3d7220143a7f7a96506b6adf",
+      "size": 3628
+    },
+    "processing_audit/row_design_views/source-row-0.csv.treatment-cc236e1c0e5b-eb2801f9ac0852314a09f8ae089781dfd0342cdb8cd5eed19c21d19c8d63d0df.json": {
+      "sha256": "eb2801f9ac0852314a09f8ae089781dfd0342cdb8cd5eed19c21d19c8d63d0df",
+      "size": 3631
+    },
+    "processing_audit/row_design_views/source-row-1-100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e.csv": {
+      "sha256": "100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e",
+      "size": 37264
+    },
+    "processing_audit/row_design_views/source-row-1.csv.treatment-87e14848c864-1b74c9c6e54c1ab198555c9e27e5b02f4bc49d2ddaaa622b4371b142f292c700.json": {
+      "sha256": "1b74c9c6e54c1ab198555c9e27e5b02f4bc49d2ddaaa622b4371b142f292c700",
+      "size": 3628
+    },
+    "processing_audit/row_design_views/source-row-1.csv.treatment-a22eb3b4a28c-c38b5024bd94dd9c1dc47fd71cf884b15e98083d419751daf3ab5e42004ff386.json": {
+      "sha256": "c38b5024bd94dd9c1dc47fd71cf884b15e98083d419751daf3ab5e42004ff386",
+      "size": 3631
+    },
+    "processing_audit/row_design_views/source-row-2-100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e.csv": {
+      "sha256": "100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e",
+      "size": 37264
+    },
+    "processing_audit/row_design_views/source-row-2.csv.treatment-e1be9ac4f21c-cf19872765d8b5b5e817b57c32b5a0c11bd31e6766171b793fff3233ed6cf98e.json": {
+      "sha256": "cf19872765d8b5b5e817b57c32b5a0c11bd31e6766171b793fff3233ed6cf98e",
+      "size": 3631
+    },
+    "processing_audit/row_design_views/source-row-2.csv.treatment-fb931303a7ea-690a65b143bb4a3dcfcf654981b16c9824c251ad101ecd19e9fb7ddc3b8893bd.json": {
+      "sha256": "690a65b143bb4a3dcfcf654981b16c9824c251ad101ecd19e9fb7ddc3b8893bd",
+      "size": 3628
+    },
+    "processing_audit/row_design_views/source-row-3-100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e.csv": {
+      "sha256": "100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e",
+      "size": 37264
+    },
+    "processing_audit/row_design_views/source-row-3.csv.treatment-05b3f42d85e5-b3906c713388de2abf335d005df026324d82addd99994fb2b05dc2b3657e65c7.json": {
+      "sha256": "b3906c713388de2abf335d005df026324d82addd99994fb2b05dc2b3657e65c7",
+      "size": 3628
+    },
+    "processing_audit/row_design_views/source-row-3.csv.treatment-b16d50b2a9f7-fb06b796b453d860bad0f1c969275cf48aa39668dc9b781f9ec7e22658e3b74a.json": {
+      "sha256": "fb06b796b453d860bad0f1c969275cf48aa39668dc9b781f9ec7e22658e3b74a",
+      "size": 3631
+    },
+    "processing_audit/row_design_views/source-row-4-100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e.csv": {
+      "sha256": "100aeb30a583532e6683de6915ea801a6b01451092bdd1135e84083b32106a2e",
+      "size": 37264
+    },
+    "processing_audit/row_design_views/source-row-4.csv.treatment-4ed95b46c8c2-5b2423ad6c29e73c7c2278cfb8d89ec1d8b61e3c7823c105f406e4df8b1926b5.json": {
+      "sha256": "5b2423ad6c29e73c7c2278cfb8d89ec1d8b61e3c7823c105f406e4df8b1926b5",
+      "size": 3631
+    },
+    "processing_audit/row_design_views/source-row-4.csv.treatment-5f1c217e8bce-2fdb07f656ad766d6900726da7481457c64e1a0eaac6e85eba7724537bd015c8.json": {
+      "sha256": "2fdb07f656ad766d6900726da7481457c64e1a0eaac6e85eba7724537bd015c8",
+      "size": 3628
+    },
+    "processing_audit/row_design_views/test_row_design_links-db36dd4e626484222cae017750b532201eefc1ebeaf39771bdc037ec231139da.py": {
+      "sha256": "db36dd4e626484222cae017750b532201eefc1ebeaf39771bdc037ec231139da",
+      "size": 9918
+    },
+    "processing_audit/row_design_views/validate_protein_row_design_links-3334863ea730047e23a439cf089e726ea2baa2840aa8393fcde75d0e50473aa7.py": {
+      "sha256": "3334863ea730047e23a439cf089e726ea2baa2840aa8393fcde75d0e50473aa7",
+      "size": 7338
+    },
+    "processing_audit/row_design_views/validate_protein_row_design_links_v2-acda94f1dace79f7564c111c42f8754dca922310d602ce9e19c2fd3f0855d38a.py": {
+      "sha256": "acda94f1dace79f7564c111c42f8754dca922310d602ce9e19c2fd3f0855d38a",
+      "size": 7548
+    },
+    "processing_audit/row_design_views/validation-8274f474a7b83cbb1b758d90689d8f7d21baef57a0f832e880adb7bc7a7d9180.json": {
+      "sha256": "8274f474a7b83cbb1b758d90689d8f7d21baef57a0f832e880adb7bc7a7d9180",
+      "size": 28090
+    },
+    "processing_audit/row_design_views/validation-bcff09ce8f29ee514fcfb2de1e65132e3b01d456eb007a5a9a08394f51a60f75.json": {
+      "sha256": "bcff09ce8f29ee514fcfb2de1e65132e3b01d456eb007a5a9a08394f51a60f75",
+      "size": 28091
+    },
+    "processing_audit/rowwise_admission/archive_rowwise_admission-e7f91c59c2b4d5615336eed8ad936f3e596c03bd5d8e2cdfa9b091db2b70e838.py": {
+      "sha256": "e7f91c59c2b4d5615336eed8ad936f3e596c03bd5d8e2cdfa9b091db2b70e838",
+      "size": 3778
+    },
+    "processing_audit/rowwise_admission/association-expansion-preservation-41c4bdc3066b6872720eca2e8cf8e825c1582e6d8b3c9bd1d8f5c80e4754317e.json": {
+      "sha256": "41c4bdc3066b6872720eca2e8cf8e825c1582e6d8b3c9bd1d8f5c80e4754317e",
+      "size": 541
+    },
+    "processing_audit/rowwise_admission/audit_protein_rowwise_repeated_keys-fda9f15b534af53c86ab51683db530876b7643746b9c65076218db99a741f74d.py": {
+      "sha256": "fda9f15b534af53c86ab51683db530876b7643746b9c65076218db99a741f74d",
+      "size": 6162
+    },
+    "processing_audit/rowwise_admission/check_protein_rowwise_quantities-f728040899b41a9c438eb689598f7cb90741ca9286e74773e362642e6dcc3cf4.py": {
+      "sha256": "f728040899b41a9c438eb689598f7cb90741ca9286e74773e362642e6dcc3cf4",
+      "size": 5460
+    },
+    "processing_audit/rowwise_admission/check_rowwise_repeated_key_qc-d80dca41c7b34e7e72c9d5e43476f421ee982d5a5aef2a49a5c3d716e388899c.py": {
+      "sha256": "d80dca41c7b34e7e72c9d5e43476f421ee982d5a5aef2a49a5c3d716e388899c",
+      "size": 1733
+    },
+    "processing_audit/rowwise_admission/original-column-qc-aa3203c74107a2aa2357ffccf1645b08d35a87d3d9395012107a0f7bc70c7497.csv": {
+      "sha256": "aa3203c74107a2aa2357ffccf1645b08d35a87d3d9395012107a0f7bc70c7497",
+      "size": 2330
+    },
+    "processing_audit/rowwise_admission/original-rowwise-values-5c5a0b5d42597b17ccf023dccb9c6cff1df01bffbfed207707a6bea3c3b5b2e0.csv": {
+      "sha256": "5c5a0b5d42597b17ccf023dccb9c6cff1df01bffbfed207707a6bea3c3b5b2e0",
+      "size": 13063
+    },
+    "processing_audit/rowwise_admission/original-rowwise-values.csv.treatment-0d62031fa92b-1e6e869f263fdbdf9f3e8f803d6983e564f4515b0a9b740e93869441108543fb.json": {
+      "sha256": "1e6e869f263fdbdf9f3e8f803d6983e564f4515b0a9b740e93869441108543fb",
+      "size": 2605
+    },
+    "processing_audit/rowwise_admission/process_protein_rowwise_quantities-48635f1fe500dd10d6895b3395348c35196d3d3ad0e07c0b430f281e07cb2aef.py": {
+      "sha256": "48635f1fe500dd10d6895b3395348c35196d3d3ad0e07c0b430f281e07cb2aef",
+      "size": 23468
+    },
+    "processing_audit/rowwise_admission/revision-1a948063d51aefd6f65e97d4082f2928f7401c5d3395e84e28ddf7bcf1c9afbe.json": {
+      "sha256": "1a948063d51aefd6f65e97d4082f2928f7401c5d3395e84e28ddf7bcf1c9afbe",
+      "size": 8539
+    },
+    "processing_audit/rowwise_admission/validate_protein_rowwise_quantities-ad489f30af82a7bc8c1e3e33ae65856a2fc5ab4ebaed3f2646b91b1ebef9d3dc.py": {
+      "sha256": "ad489f30af82a7bc8c1e3e33ae65856a2fc5ab4ebaed3f2646b91b1ebef9d3dc",
+      "size": 8015
+    },
+    "processing_audit/rowwise_admission/validation-0246dcab8a78aadff1211d8f76e16e0127488329e8f43072fabff78568e5fb7a.json": {
+      "sha256": "0246dcab8a78aadff1211d8f76e16e0127488329e8f43072fabff78568e5fb7a",
+      "size": 84336
+    },
+    "processing_audit/rowwise_repeated_key_qc/4cee5856b41fe13f4a05d72b3b9d30f2e2634c67e6e81849cfe4bea6fc0161ea/a4017c75cc3c1d614f10c0a5b9646bd51a6b002f35a6489531d8d9baefc0fbb5.json": {
+      "sha256": "72df25c15b3c2a2bc28b32b228801ce01aedf670fe46b21ac4c6df4b90d008b7",
+      "size": 1419
+    },
+    "processing_audit/rowwise_repeated_key_qc/4cee5856b41fe13f4a05d72b3b9d30f2e2634c67e6e81849cfe4bea6fc0161ea/validation.json": {
+      "sha256": "e4595a63c8533ec51c513c3530cafab42b44b14cdb0f5688ce445d98b35ef8e4",
+      "size": 755
+    },
+    "processing_audit/rowwise_repeated_key_qc/collection.json": {
+      "sha256": "d10494e616c371cc6a62e9ed0d3c35dc3a09b6bc6cbaa4d1105fbce2ce2f28c3",
+      "size": 200
+    },
+    "processing_audit/rowwise_repeated_key_qc/operations.jsonl": {
+      "sha256": "8c54b566bebb04682fa257cb7c667fbd16d4dc66b1dff295d8c16a458964cdd0",
+      "size": 2954
+    },
+    "processing_audit/rowwise_repeated_key_qc/processor-741689ae86970da5835b86aa3817a5bb88591a9798142e82e7370f27e950343e.py": {
+      "sha256": "741689ae86970da5835b86aa3817a5bb88591a9798142e82e7370f27e950343e",
+      "size": 5996
+    },
+    "processing_audit/rowwise_repeated_key_qc/processor-fda9f15b534af53c86ab51683db530876b7643746b9c65076218db99a741f74d.py": {
+      "sha256": "fda9f15b534af53c86ab51683db530876b7643746b9c65076218db99a741f74d",
+      "size": 6162
     },
     "processing_audit/run_comparability_review.tsv": {
-      "sha256": "6aa07c7b6de2488f6afd5229252b3d9bdde253052f64172ea3577fcdd94918e7",
-      "size": 290459
+      "sha256": "8ef0724835abfc7f5380bb1d61096d96920f0f4069b0d19dc312ad9fe024d6d4",
+      "size": 290460
     },
     "processing_audit/runs.jsonl": {
-      "sha256": "8836fc3c532e8b480a6efc2fc02bc9df87e24241ff2760be79e1ebbced4aebd3",
-      "size": 6286798
+      "sha256": "d2c6cacc90af41f501c25eca521715caa5fcd6d231afcc108862f5c449772875",
+      "size": 6302358
     },
     "processing_audit/snapshot-worker-source-1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da.py": {
       "sha256": "1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da",
@@ -18004,6 +19880,54 @@
     "processing_audit/source_acquisition/published_pride/operations.jsonl": {
       "sha256": "89e41159ba471e10daf7e44e4084be493d07e2d329a36e11ea74ceb9fed9a384",
       "size": 3979
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030-v2/all-excluded-treatment.json": {
+      "sha256": "a00678592c67be92a4fff05dde3f9b592177acc8969b82a3f50c625c8913f89e",
+      "size": 2614
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030-v2/retained-original-values.csv": {
+      "sha256": "7ea2947cde75d3522f39961e6f7ed4a0ccb95c100f1e371f30824c738aeaf43d",
+      "size": 33450
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030-v2/retained-original-values.csv.treatment-f3221a6077ae.json": {
+      "sha256": "b79dd2c734a5dcc5d5187c9e9d4dc710b0386fb2da4011056eeb52ab39267d3c",
+      "size": 2899
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030-v2/unfiltered-whole-source-qc.csv": {
+      "sha256": "4f429e4f2281770bb4ca130befe0a040ee174daccb10bde1cc6188f3f5714b88",
+      "size": 9672
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030-v2/validation.json": {
+      "sha256": "1824bcb61d50751a452ebcbdad42120a1db224bf39f5fb31dbcef7706cb6d4a6",
+      "size": 39317
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030/all-excluded-treatment.json": {
+      "sha256": "c25bfe56d1100d3b00fb25085d0713090f3f424fde29b06c35de2afa2af0e40e",
+      "size": 2614
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030/retained-original-values.csv": {
+      "sha256": "7ea2947cde75d3522f39961e6f7ed4a0ccb95c100f1e371f30824c738aeaf43d",
+      "size": 33450
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030/retained-original-values.csv.treatment-1ec94f7cde3d.json": {
+      "sha256": "1338ce1b389db165b13e0be506514f4050519c3c110daa3fa17c36a3335ccfc4",
+      "size": 2896
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030/source_flags-0bcdd00480e24e12a0de0c51958582d59435ef73a9846f33715c2dd05d48a8cc.py": {
+      "sha256": "0bcdd00480e24e12a0de0c51958582d59435ef73a9846f33715c2dd05d48a8cc",
+      "size": 6659
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030/unfiltered-whole-source-qc.csv": {
+      "sha256": "4f429e4f2281770bb4ca130befe0a040ee174daccb10bde1cc6188f3f5714b88",
+      "size": 9672
+    },
+    "processing_audit/source_flag_views/parascape-source-flags-validation-20261030/validation.json": {
+      "sha256": "86c3f34a788dfb3bc63c175ff6b4f2a54803e89f75347fff3c10525e7983f225",
+      "size": 39317
+    },
+    "processing_audit/source_flags-a1670c07c3361ac77c233f32faf38844d84d94f85b1aeed300e72cec9789c6d5.py": {
+      "sha256": "a1670c07c3361ac77c233f32faf38844d84d94f85b1aeed300e72cec9789c6d5",
+      "size": 6632
     },
     "processing_audit/source_matrix_technical_qc/latest/GSE102500-0ef54df34d18872d.csv": {
       "sha256": "b7323c66db0986eba52929196149d702daf99a5f89e48ace1b56abd6d9595324",
@@ -18644,6 +20568,18 @@
     "processing_audit/validate_release_005-61b097dba44c56b482b39085e5beb20c9042c7d98d65c7fdb30fe6412e2665d6.py": {
       "sha256": "61b097dba44c56b482b39085e5beb20c9042c7d98d65c7fdb30fe6412e2665d6",
       "size": 2466
+    },
+    "processing_audit/validate_release_006-16ca5c457044523de53fa609bbe34dcf9afffd6683bf8e7376d76d7de8c9c9a2.py": {
+      "sha256": "16ca5c457044523de53fa609bbe34dcf9afffd6683bf8e7376d76d7de8c9c9a2",
+      "size": 3825
+    },
+    "processing_audit/validate_source_flag_views-3c4be718e5a91c26dcc9c5535a75746efd31dadcc0c99ccd37f0e93647d7b7e3.py": {
+      "sha256": "3c4be718e5a91c26dcc9c5535a75746efd31dadcc0c99ccd37f0e93647d7b7e3",
+      "size": 7951
+    },
+    "processing_audit/validate_source_flag_views_v2-9060d757575565fa3c8bc05f740ffe8c086e45510d001db310ed83ccb57c606c.py": {
+      "sha256": "9060d757575565fa3c8bc05f740ffe8c086e45510d001db310ed83ccb57c606c",
+      "size": 7954
     },
     "processing_audit/verified-publication-0.0.4.0.json": {
       "sha256": "5fd495bd432beff5ad8b8090ed5efbf028894a4e3ed8894cc9a69ba6203ad8b2",
@@ -19602,36 +21538,36 @@
       "size": 4569
     },
     "rnaseq/matrices/GSE223819/kallisto_ME49.parquet": {
-      "sha256": "96247aa25180b73f691fc44836dc81983703f90b1846064503736ad9ff20891d",
-      "size": 2324953
+      "sha256": "2b29b14b6afdccec41ccc98b32846d55221052fcf134c481bd5e8b1e483e0736",
+      "size": 2535289
     },
     "rnaseq/matrices/GSE223819/kallisto_ME49_host.parquet": {
-      "sha256": "7c21dab0323d339604281b8edf441b9e0fdc8d5906a8492d8290ac7baf453675",
-      "size": 1603378
+      "sha256": "fe779f5b4d5b8ce5eafc9c8bd837383c48a66d889b5cbc36c28ff3dd2cc9e893",
+      "size": 1747376
     },
     "rnaseq/matrices/GSE223819/kallisto_ME49_host_samples.tsv": {
-      "sha256": "2032c6fce30972dd25d99dfc5a992b51c1a18d97a58dfa590b7911a87b599cd4",
-      "size": 12814
+      "sha256": "e7c59d201893c88f3cb8278db4dcb4c30079ded08ac579f89c5ff6edb6f70337",
+      "size": 13999
     },
     "rnaseq/matrices/GSE223819/kallisto_ME49_samples.tsv": {
-      "sha256": "dc247dbb9f09339792ea94f7e425ff64e2c771f5576c60ad4860722712cdb78e",
-      "size": 12535
+      "sha256": "abb32e8be99e0615da2726820bb40bb0c481b9717bc864eca966e5e01a738ab0",
+      "size": 13694
     },
     "rnaseq/matrices/GSE223819/salmon_ME49.parquet": {
-      "sha256": "84789747c3ab5fd8e693e0a45980fecf5c7128f6dac52fdea036b57d0c5df7c9",
-      "size": 2541401
+      "sha256": "06e143e557b47feb08c3d1f080de7943b587073e509da9d525862824a241ba9c",
+      "size": 2771640
     },
     "rnaseq/matrices/GSE223819/salmon_ME49_host.parquet": {
-      "sha256": "16005d3e8d378f1367b421eaf11ebeb4ee6a250026e96a5f52b5caeb4ccca533",
-      "size": 1669569
+      "sha256": "e98dec33851a3d90b33f16757238bfa98c4029dde7a9c591693cbcfda311a06c",
+      "size": 1819735
     },
     "rnaseq/matrices/GSE223819/salmon_ME49_host_samples.tsv": {
-      "sha256": "07d801a740faefd087059b3569e1094f2093492e18a6f8fe6b8c791708151387",
-      "size": 12819
+      "sha256": "c9ff104b4f55c5005f0138da19b115285274e51b5ffae6edbb503a6a79d46c2f",
+      "size": 14003
     },
     "rnaseq/matrices/GSE223819/salmon_ME49_samples.tsv": {
-      "sha256": "dc247dbb9f09339792ea94f7e425ff64e2c771f5576c60ad4860722712cdb78e",
-      "size": 12535
+      "sha256": "abb32e8be99e0615da2726820bb40bb0c481b9717bc864eca966e5e01a738ab0",
+      "size": 13694
     },
     "rnaseq/matrices/PRJNA1008424/kallisto_ME49.parquet": {
       "sha256": "6e6e05ee7e107e5b611799dfc447e3517d5da26230070a2ec6fe88ed0c542e41",
@@ -19666,16 +21602,16 @@
       "size": 4163
     },
     "rnaseq/sample_design.tsv": {
-      "sha256": "16de246479c3e8b45cff6975f984821075b4429e2f778bd619d18e8442736911",
-      "size": 968729
+      "sha256": "bcf2849e83e0a52d21ba04107392adeff1811dc22ab8ce06f567c13452502eb9",
+      "size": 970109
     },
     "rnaseq/sample_metadata.json": {
-      "sha256": "f38eb93ea780546184e3ad82b49b0c8542eb2afc1d98a87749f49fe8b94cef46",
-      "size": 204546
+      "sha256": "06145c0e8b54a69ca6a2427f0d9a94283de5aaf749ce9a00ec026e9263e72f7b",
+      "size": 206250
     },
     "rnaseq/snapshot.json": {
-      "sha256": "4ca80e7c08f78b0c815e27a4ae30c9909aec0c59b2861ab97432c9e00603b38c",
-      "size": 524134
+      "sha256": "b327beb783c9ecdc45a3583f78d245b2b7c9ee542fb6ae599a3bf10bfbb21055",
+      "size": 526394
     },
     "secretome_partition.tsv": {
       "sha256": "01ff6998592d120f84c5913ef3f704061245b9b4b5c59f6012f66ef3315efc31",
@@ -22763,8 +24699,8 @@
     }
   },
   "schema_version": 1,
-  "sha256": "4f6c1a686a253200b025eefbeb4b220c9bcb84f8fca437d640f3809d43b6a17f",
-  "size": 985049339,
-  "url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.6.0/parascape-data-0.0.6.0.tar.gz",
-  "version": "0.0.6.0"
+  "sha256": "edfbc77286449067fa2f4ed51f197b3aaea0b9a85ed5cc4260a1abad7837ad89",
+  "size": 1006528241,
+  "url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.7.0/parascape-data-0.0.7.0.tar.gz",
+  "version": "0.0.7.0"
 }

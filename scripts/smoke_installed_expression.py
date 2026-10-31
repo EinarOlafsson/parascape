@@ -106,7 +106,7 @@ def main():
     qc = R.technical_qc(root=str(root / 'rnaseq'), study='PRJNA1008424')
     assert len(qc) == 16 and qc.quality_score.isna().all()
     original_values, errors = D.catalogue(root / 'deposited_values')
-    assert len(original_values) == 136 and not errors
+    assert len(original_values) == 139 and not errors
     protein_packs = workbench_packs = quantity_columns = cells = missing = 0
     filename_matches = filename_gaps = factor_occurrences = experiment_candidates = 0
     chosen_pack = reference_choice = None
@@ -118,7 +118,17 @@ def main():
     assert len(identifier_sources) == 129
     identifier_occurrences = sum(entry['evidence_records'] for entry in identifier_sources.values())
     assert identifier_occurrences == 601605
+    accession_root = root / 'processing_audit/accession_identifier_evidence'
+    accession_pointer = json.loads((accession_root / 'collection.json').read_text())
+    accession_folder = accession_root / accession_pointer['directory']
+    accession_index = json.loads((accession_folder / 'index.json').read_text())
+    accession_sources = {entry['measurement_manifest_sha256']: entry for entry in accession_index['measurements']}
+    assert len(accession_sources) == 3
+    accession_occurrences = sum(entry['evidence_records'] for entry in accession_sources.values())
+    assert accession_occurrences == 76260
     identifier_queries = {}
+    accession_choices = []
+    flag_choice = None
     for pack in original_values:
         folder = Path(pack['path'])
         info = D.manifest(folder)
@@ -130,14 +140,25 @@ def main():
         quantity_columns += len(sample_qc)
         cells += info['features'] * len(sample_qc)
         missing += int(sample_qc.missing.sum())
-        if info['assay'] == 'deposited protein-group quantities':
+        if info['assay'] in ('deposited protein-group quantities', 'deposited protein-accession quantities'):
             protein_packs += 1
             digest = hashlib.sha256((folder / 'manifest.json').read_bytes()).hexdigest()
-            identifier_source = identifier_sources[digest]
-            evidence = pq.read_table(identifier_folder / identifier_source['file'],
-                                     filters=[('query_namespace', '=', 'original_protein_group_component')])
+            group = info['assay'] == 'deposited protein-group quantities'
+            namespace = 'original_protein_group_component' if group else 'original_accession_cell_component'
+            identifier_source = (identifier_sources if group else accession_sources)[digest]
+            evidence = pq.read_table((identifier_folder if group else accession_folder) / identifier_source['file'],
+                                     filters=[('query_namespace', '=', namespace)])
             query = evidence.column('query_literal')[0].as_py()
-            matches = I.records(folder, [query], namespace='original_protein_group_component')
+            matches = I.records(folder, [query], namespace=namespace)
+            if not group:
+                accession_choices.append((folder, query))
+            if group and flag_choice is None:
+                from parascape import source_flags as SF
+                metadata = json.loads((folder / 'source_metadata.json').read_text())
+                marked = [row['feature_label'] for row in metadata['row_annotations']
+                          if any(row['source_fields'].get(field) == '+' for field in SF.FIELDS)]
+                if marked:
+                    flag_choice = folder, marked[0]
             assert not matches.empty and matches.query_literal.eq(query).all()
             identifier_queries[str(folder)] = query
 
@@ -151,8 +172,8 @@ def main():
                     chosen_pack = folder, feature
         else:
             workbench_packs += 1
-    assert (protein_packs, workbench_packs, quantity_columns, cells, missing) == (129, 7, 1085, 1266353, 38130)
-    assert (filename_matches, filename_gaps, factor_occurrences, experiment_candidates) == (11, 12, 5, 357)
+    assert (protein_packs, workbench_packs, quantity_columns, cells, missing) == (132, 7, 1097, 1384744, 71153)
+    assert (filename_matches, filename_gaps, factor_occurrences, experiment_candidates) == (16, 12, 10, 357)
     reference_sources, reference_status = F.catalogue(root / 'processing_audit/reference_identifiers')
     acquired = [row for row in reference_sources if row['status'] == 'all_header_cells_reconciled']
     assert len(acquired) >= 47
@@ -207,7 +228,8 @@ def main():
         if Path(panel.pack.itemData(index)['path']) == chosen_pack[0]:
             panel.pack.setCurrentIndex(index)
             break
-    panel.identifier_kind.setCurrentIndex(panel.identifier_kind.findData('original_protein_group_component'))
+    chosen_kind = 'original_accession_cell_component' if D.manifest(chosen_pack[0])['assay'] == 'deposited protein-accession quantities' else 'original_protein_group_component'
+    panel.identifier_kind.setCurrentIndex(panel.identifier_kind.findData(chosen_kind))
     panel.features.setPlainText(identifier_queries[str(chosen_pack[0])]); panel.show_values()
     assert panel.result is not None and not panel.result.empty
     assert panel.save(str(output / 'qualified-protein-components.csv')) > 0
@@ -216,6 +238,52 @@ def main():
     panel.features.setPlainText('a missing literal source identifier')
     assert panel.result is None and panel.save(str(output / 'stale-query.csv')) == 0
 
+    assert len(accession_choices) == 3 and flag_choice is not None
+    for sequence, (folder, query) in enumerate(accession_choices):
+        for index in range(panel.pack.count()):
+            if Path(panel.pack.itemData(index)['path']) == folder:
+                panel.pack.setCurrentIndex(index)
+                break
+        panel.identifier_kind.setCurrentIndex(panel.identifier_kind.findData('original_accession_cell_component'))
+        panel.features.setPlainText(query); panel.show_values()
+        assert panel.result is not None and not panel.result.empty
+        panel.table.setCurrentCell(0, 0); panel.show_measurement_context()
+        assert panel.measurement_dialog is not None
+        assert panel.save(str(output / f'accession-components-{sequence}.csv')) > 0
+        panel.identifier_kind.setCurrentIndex(panel.identifier_kind.findData('reference_declared_gene_identifier'))
+        assert panel.measurement_dialog is None and panel.result is None
+        panel.features.setPlainText('unmapped source literal'); panel.show_values()
+        assert panel.result is not None and panel.result.empty
+        assert 'no indexed declarations' in panel.summary.text() and 'not evidence of absent expression' in panel.summary.text()
+        assert panel.save_treatment(str(output / f'unavailable-reference-{sequence}.json')) == 1
+    row_choice = next(folder for folder, query in accession_choices if 'protein_rowwise_quantities' in str(folder))
+    from parascape import row_design_links as RD
+    row_feature = pq.read_table(row_choice / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
+    row_values, row_record = RD.enrich(row_choice, D.profiles(row_choice, row_feature))
+    assert row_record['collection'] and not row_record['numerical_values_transformed']
+    for encoded in row_values.row_design_metadata:
+        association = json.loads(encoded)['association']
+        assert association['candidate_status'] == 'review_required' and not association['exact_primary_files']
+        assert len(association['filename_stem_primary_candidates']) == 1
+        assert len(association['filename_stem_submitted_row_candidates']) == 1
+    repeated_root = root / 'processing_audit/rowwise_repeated_key_qc'
+    repeated_pointer = json.loads((repeated_root / 'collection.json').read_text())
+    repeated_folder = repeated_root / repeated_pointer['directory']
+    repeated_receipt = json.loads((repeated_folder / 'validation.json').read_text())
+    assert repeated_receipt['measurement_packs'] == 1
+    for filename, digest in repeated_receipt['outputs'].items():
+        assert hashlib.sha256((repeated_folder / filename).read_bytes()).hexdigest() == digest
+    panel.identifier_kind.setCurrentIndex(0)
+    for index in range(panel.pack.count()):
+        if Path(panel.pack.itemData(index)['path']) == flag_choice[0]:
+            panel.pack.setCurrentIndex(index)
+            break
+    panel.features.setPlainText(flag_choice[1]); panel.show_values()
+    assert not panel.exclude_source_marked.isChecked()
+    panel.exclude_source_marked.setChecked(True); panel.show_values()
+    assert panel.treatment_record['source_flag_view']['excluded_source_rows'] > 0
+    assert panel.save_treatment(str(output / 'source-marked-view-treatment.json')) == 1
+    panel.exclude_source_marked.setChecked(False)
     reference_panel = reference_panels[0]
     for index in range(reference_panel.source.count()):
         if reference_panel.source.itemData(index)['source_url'] == reference_choice[0]:
@@ -237,7 +305,11 @@ def main():
                           PRIDE_projects=len(projects), submitted_PRIDE_designs=len(designs),
                           installed_actual_Compare_tabs_and_CSV_exports=True,
                           protein_identifier_packs=len(identifier_sources), protein_identifier_evidence_records=identifier_occurrences,
-                          installed_source_search_and_stale_export_refusal=True)))
+                          installed_source_search_and_stale_export_refusal=True,
+                          accession_identifier_packs=len(accession_sources), accession_identifier_evidence_records=accession_occurrences,
+                          installed_accession_components_and_unavailable_mapping_grade=True,
+                          installed_row_specific_review_only_candidates=True,
+                          installed_source_flag_treatment_and_selected_measurement_views=True)))
 
 
 if __name__ == '__main__':
