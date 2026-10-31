@@ -1,7 +1,8 @@
 # Compare RNA-seq expression
 
-The GitHub data download includes an offline snapshot of **305 verified study/run entries
-from 24 studies**, selected from the ongoing 1,011-entry processing queue. This is a
+The GitHub data download includes an offline snapshot of verified study/run entries,
+selected from the ongoing processing queue. Use `snapshot()` below for the exact
+coverage and provenance of your installed data release. This is a
 partial release; a study may not yet contain all replicates or its control group.
 All eight runs of PRJNA1008424 are included.
 
@@ -14,6 +15,21 @@ measurements are reported explicitly. A measured zero is retained as zero.
 Check the sample titles and assign the control and treatment groups yourself;
 the guessed condition labels are only a convenience. A study lacking adequate
 replicates or controls cannot support the intended contrast.
+
+Selections must contain distinct runs in disjoint groups. A requested run that
+is absent from the matrix is an error. Known repeated sequencing of a submitted
+sample cannot count as extra replicates. Unknown sample identities remain marked
+unknown; distinct submitted accessions do not prove biological independence.
+Changing a study, normalization or group selection clears the old comparison.
+
+Saving a comparison writes the CSV/TSV and a matching `.json` treatment record.
+The record retains groups, submitted sample metadata, unknown identities, ordered
+model-input hashes, filtering thresholds and library sizes, normalization factors,
+software/source hashes, and the exported table checksum. The displayed call
+thresholds are recorded separately from the model fit. Exports use fresh filenames.
+The API accepts `sample_metadata=` in `expression_contrast.contrast()` and returns
+the record in `result.processing_record`. Neither the statistical result nor its
+record establishes a biological quality score or verified control pairing.
 
 Open ParaScape once and accept the data download, or run `parascape-data --download`.
 After installation the command line works without a display or NAS:

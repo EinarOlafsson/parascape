@@ -27,7 +27,7 @@ from . import paths as _data_paths
 import gzip
 import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import numpy as np
 import pandas as pd
@@ -267,6 +267,7 @@ class Contrast:
     normalisation: str
     prior_df: float
     min_expression: float
+    processing_record: dict = field(default_factory=dict)
 
     def significant(self, fdr: float = 0.05, min_abs_log2fc: float = 1.0) -> pd.DataFrame:
         """Genes at or below `fdr` with an absolute log2 fold change of at least `min_abs_log2fc`."""
@@ -339,26 +340,57 @@ def squeeze_variances(s2: np.ndarray, df: float, trend: np.ndarray | None = None
 
 def contrast(counts: pd.DataFrame, group_a: list, group_b: list, normalisation: str = "tmm",
              tpm: pd.DataFrame | None = None, min_expression: float = 1.0,
-             quantifier: str = "salmon", reference: str = "ME49") -> Contrast:
+             quantifier: str = "salmon", reference: str = "ME49", *, sample_metadata: pd.DataFrame | None = None) -> Contrast:
     """Moderated two-group comparison of B against A, limma-trend style.
 
     `min_expression` is the filter edgeR's filterByExpr approximates: genes kept only where at least as
     many samples as the smaller group reach this CPM -- genes too lowly expressed to test are left out
     rather than reported as unchanged.
     """
-    a = [c for c in group_a if c in counts.columns]
-    b = [c for c in group_b if c in counts.columns]
-    if len(a) < 2 or len(b) < 2:
-        raise ValueError("each group needs at least two replicates for a variance")
+    from . import comparison_provenance as P
+    design = P.selection(counts, group_a, group_b, sample_metadata)
+    a, b = design['group_a'], design['group_b']
+    if normalisation not in NORMALISATIONS:
+        raise ValueError('Unknown comparison normalization')
+    if not np.isfinite(min_expression) or min_expression < 0:
+        raise ValueError('Minimum expression must be finite and nonnegative')
     sub = counts[a + b]
+    if any(not pd.api.types.is_numeric_dtype(dtype) or pd.api.types.is_complex_dtype(dtype) for dtype in sub.dtypes):
+        raise ValueError('Comparison counts must have real numeric storage; text values are not coerced')
+    try:
+        values = sub.to_numpy(dtype=float)
+    except (ValueError, TypeError) as error:
+        raise ValueError('Comparison counts must be numeric') from error
+    if not len(sub) or not np.isfinite(values).all() or (values < 0).any():
+        raise ValueError('Comparison counts must be nonempty, finite and nonnegative; missing values are not zero')
+    inputs = dict(counts=P.matrix_record(sub))
     lib = sub.sum(axis=0)
+    if not np.isfinite(lib.to_numpy(dtype=float)).all() or (lib <= 0).any():
+        raise ValueError('Every selected run needs a positive finite count library')
     cpm = sub / lib * 1e6
     keep = (cpm >= min_expression).sum(axis=1) >= min(len(a), len(b))
     sub = sub[keep]
+    if sub.empty:
+        raise ValueError('No genes pass the selected expression filter')
     if normalisation == "tpm":
+        factors = None
+        if (tpm is None or not tpm.index.is_unique or not tpm.columns.is_unique
+                or not counts.index.equals(tpm.index) or not counts.columns.equals(tpm.columns)):
+            raise ValueError('TPM must match the exact count matrix gene and run axes')
+        if any(not pd.api.types.is_numeric_dtype(dtype) or pd.api.types.is_complex_dtype(dtype) for dtype in tpm[a+b].dtypes):
+            raise ValueError('TPM must have real numeric storage; text values are not coerced')
+        numeric = tpm[a + b].to_numpy(dtype=float)
+        if not np.isfinite(numeric).all() or (numeric < 0).any():
+            raise ValueError('TPM must be finite and nonnegative; missing values are not zero')
+        inputs['tpm'] = P.matrix_record(tpm[a + b])
         E = np.log2(tpm.loc[sub.index, a + b] + 1.0)
     else:
-        E = log_cpm(sub, norm_factors(sub, normalisation))
+        if normalisation == 'median_ratio' and not (sub > 0).all(axis=1).any():
+            raise ValueError('Median-ratio normalization needs genes positive in every selected run')
+        factors = norm_factors(sub, normalisation)
+        E = log_cpm(sub, factors)
+    if not np.isfinite(E.to_numpy(dtype=float)).all():
+        raise ValueError('The selected normalization does not yield finite expression for these runs')
     ea, eb = E[a].to_numpy(), E[b].to_numpy()
     ma, mb = ea.mean(axis=1), eb.mean(axis=1)
     df = len(a) + len(b) - 2
@@ -374,8 +406,31 @@ def contrast(counts: pd.DataFrame, group_a: list, group_b: list, normalisation: 
     table = pd.DataFrame({"gene": sub.index, "log2fc": lfc, "mean_expression": amean,
                           "mean_a": ma, "mean_b": mb, "t": t, "p": p, "fdr": _bh(p),
                           "variance": s2, "moderated_variance": post}).sort_values("p")
+    import hashlib
+    import scipy
+    from datetime import datetime, timezone
+    from pathlib import Path
+    record = dict(schema_version=1, created_utc=datetime.now(timezone.utc).isoformat(), design=design, model_inputs=inputs,
+                  quantifier=quantifier, reference=reference, normalization=normalisation,
+                  min_expression_cpm=float(min_expression), tested_genes=len(sub),
+                  excluded_genes=len(counts)-len(sub),
+                  filtering_library_sizes={str(k): float(v) for k, v in lib.items()},
+                  normalization_library_sizes={str(k): float(v) for k, v in sub.sum(axis=0).items()},
+                  normalization_factors=None if factors is None else {str(k): float(v) for k, v in factors.items()},
+                  prior_degrees_of_freedom=float(d0) if np.isfinite(d0) else str(float(d0)),
+                  normalization_scope='Selected runs only, within the caller-selected study; no cross-study batch correction',
+                  expression_scale='log2(TPM+1)' if normalisation == 'tpm' else 'log2 CPM with prior count2',
+                  algorithm='Existing limma-trend-style moderated two-group model; B minus A',
+                  software=dict(numpy=np.__version__, pandas=pd.__version__, scipy=scipy.__version__,
+                                model_source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                                provenance_source_sha256=hashlib.sha256(Path(P.__file__).read_bytes()).hexdigest()),
+                  operations=['Validate exact disjoint selected run identities and submitted sample links',
+                              'Refuse nonfinite, negative, empty or zero-library selected counts',
+                              'Filter by minimum CPM in at least the smaller group sample count',
+                              'Apply selected within-comparison normalization, moderated variance model and BH FDR'],
+                  biological_quality_score=None, control_pairing_verified=False)
     return Contrast(table.reset_index(drop=True), a, b, quantifier, reference, normalisation,
-                    float(d0), float(min_expression))
+                    float(d0), float(min_expression), record)
 
 
 def _bh(p: np.ndarray) -> np.ndarray:

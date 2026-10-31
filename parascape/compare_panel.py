@@ -144,6 +144,7 @@ class ComparePanel(QtWidgets.QWidget):
         self.study.currentIndexChanged.connect(self._study_changed)
         self.quantifier.currentIndexChanged.connect(self._study_changed)
         self.reference.currentIndexChanged.connect(self._study_changed)
+        self.normalisation.currentIndexChanged.connect(self._clear_result)
         self.compare_btn.clicked.connect(lambda: self.compare())
         self.use_btn.clicked.connect(self._use)
         self.save_btn.clicked.connect(lambda: self.save())
@@ -157,6 +158,7 @@ class ComparePanel(QtWidgets.QWidget):
         return self.available[self.available["study"] == study]
 
     def _study_changed(self):
+        self._clear_result()
         study = self.study.currentData()
         if not study:
             self.summary.setText("No studies have been quantified here yet. Set PARASCAPE_OMICS to the "
@@ -194,6 +196,7 @@ class ComparePanel(QtWidgets.QWidget):
             # First condition A, second B, the rest left out: a starting point, never a decision.
             k = conditions.index(str(r["condition"]))
             box.setCurrentIndex(0 if k == 0 else 1 if k == 1 else 2)
+            box.currentIndexChanged.connect(self._clear_result)
             self.sample_table.setCellWidget(i, 3, box)
         self.sample_table.resizeColumnsToContents()
         self.summary.setText(f"{len(self.samples)} samples in {len(conditions)} apparent conditions. "
@@ -215,21 +218,27 @@ class ComparePanel(QtWidgets.QWidget):
             self.sample_table.cellWidget(i, 3).setCurrentIndex(0 if run in a else 1 if run in b else 2)
 
     # ------------------------------------------------------------------ actions
+    def _clear_result(self, *_args):
+        """Invalidate statistics and export state whenever the input selection changes."""
+        self.result = None
+        self.result_table.setRowCount(0)
+        self.save_btn.setEnabled(False)
+        self.use_btn.setEnabled(False)
+        if self.volcano is not None:
+            self.volcano.clear()
+        self.summary.setText('Selection changed. Compare again to calculate and export these inputs.')
+
     def compare(self) -> X.Contrast | None:
         """Run the moderated comparison of B against A on the chosen conventions, and draw it."""
         a, b = self.groups()
-        from .rna_design import independent_runs
-        if not independent_runs(self.samples, a + b):
-            self.summary.setText("Selected runs share a submitted biological sample. They cannot be counted as independent replicates; merge the repeated runs or select one per sample before comparison.")
-            self.result = None
-            return None
         try:
             self.result = X.contrast(self.counts, a, b, normalisation=self.normalisation.currentData(),
                                      tpm=self.tpm, quantifier=self.quantifier.currentData(),
-                                     reference=self.reference.currentData())
+                                     reference=self.reference.currentData(), sample_metadata=self.samples)
+            self.result.processing_record['study'] = self.study.currentData()
         except ValueError as e:
+            self._clear_result()
             self.summary.setText(str(e))
-            self.result = None
             return None
         self._show()
         return self.result
@@ -243,6 +252,10 @@ class ComparePanel(QtWidgets.QWidget):
     def _show(self):
         if self.result is None:
             return
+        self.save_btn.setEnabled(True)
+        self.use_btn.setEnabled(True)
+        self.result_table.horizontalHeaderItem(2).setText(
+            'mean log2(TPM+1)' if self.result.normalisation == 'tpm' else 'mean log2CPM')
         t = self.result.table
         hit = self.called()
         up, down = int((hit["log2fc"] > 0).sum()), int((hit["log2fc"] < 0).sum())
@@ -251,7 +264,9 @@ class ComparePanel(QtWidgets.QWidget):
             f"|log2FC| ≥ {self.lfc.value():g}, of {len(t):,} genes expressed enough to test "
             f"({len(self.result.group_a)} vs {len(self.result.group_b)} samples; "
             f"{self.result.quantifier} / {self.result.reference} / "
-            f"{self.result.normalisation.replace('_', ' ')}; prior df {self.result.prior_df:.1f}).")
+            f"{self.result.normalisation.replace('_', ' ')}; prior df {self.result.prior_df:.1f}). "
+            'Submitted accessions do not establish biological independence; review the study design. '
+            f"Runs without submitted sample identity: {len(self.result.processing_record.get('design', {}).get('runs_without_sample_identity', []))}.")
         import io
         from matplotlib.figure import Figure
         from matplotlib.backends.backend_agg import FigureCanvasAgg
@@ -304,8 +319,13 @@ class ComparePanel(QtWidgets.QWidget):
         if not path:
             return 0
         t = self.result.table.assign(called=lambda d: d["gene"].isin(set(self.called()["gene"])))
-        t.to_csv(path, index=False, sep="\t" if path.endswith(".tsv") else ",")
-        return len(t)
+        from .comparison_provenance import export
+        try:
+            return export(t, path, dict(self.result.processing_record,
+                          displayed_call_thresholds=dict(fdr=self.fdr.value(), min_abs_log2fc=self.lfc.value())))
+        except (OSError, ValueError) as error:
+            self.summary.setText(str(error))
+            return 0
 
 
 def catalogue_titles() -> dict:

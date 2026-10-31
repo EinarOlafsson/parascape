@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Reject repeated, overlapping or absent RNA comparison runs and known shared
+  submitted samples. Refuse invalid numerical inputs and mismatched TPM axes.
+  Comparison exports now include checksum-bound sample, normalization, input
+  and processing records while keeping biological independence unverified.
 - Inspect source-bound binary-workbook QC before downloading cell payloads.
   Filter complete source verification separately from decoded-value reader
   agreement; retain encoding differences, original errors and formula-cache

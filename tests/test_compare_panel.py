@@ -69,6 +69,19 @@ def test_the_tab_guesses_groups_compares_and_finds_the_planted_genes(study_root,
     assert (hit.set_index("gene").loc[list(found & up), "log2fc"] > 0).all()
     assert "up" in p.summary.text() and "down" in p.summary.text()
     assert p.save(str(tmp_path / "c.tsv")) == len(res.table)
+    import json
+    proof = json.loads((tmp_path / 'c.tsv.json').read_text())
+    assert proof['study'] == 'GSE_TEST'
+    assert proof['design']['group_a'] == a and proof['design']['group_b'] == b
+    assert proof['biological_quality_score'] is None
+    assert len(proof['design']['runs_without_sample_identity']) == 6
+    p.normalisation.setCurrentIndex(p.normalisation.findData('cpm'))
+    assert p.result is None and not p.save_btn.isEnabled() and p.result_table.rowCount() == 0
+    assert p.save(str(tmp_path / 'stale.csv')) == 0 and not (tmp_path / 'stale.csv').exists()
+    assert p.compare() is not None
+    p.normalisation.setCurrentIndex(p.normalisation.findData('tpm'))
+    assert p.compare() is not None
+    assert p.result_table.horizontalHeaderItem(2).text() == 'mean log2(TPM+1)'
     p.set_groups(["SRRwt0"], ["SRRko0", "SRRko1"])
     assert p.compare() is None and "two replicates" in p.summary.text(), "a group of one was compared"
     p.close()
