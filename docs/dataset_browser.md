@@ -358,8 +358,8 @@ The new index and browser behavior await a later portable release after 0.0.6.0.
 
 The development `parascape.sparse_values` reader accepts separately prepared
 Matrix Market collections. These newer collections are not included in portable
-0.0.7.0 yet. The sparse reader is an API; the existing measurement dialog does
-not yet display these collections.
+0.0.7.0 yet. Development builds expose these collections under **Compare → Sparse measurements**.
+The public 0.0.7.0 interface predates this view.
 
 A dataset descriptor binds independently checked numeric records to their original
 feature and cell metadata. The reader verifies the descriptor, manifests,
@@ -413,3 +413,26 @@ normalization, imputation, transposition, coordinate aggregation and canonical
 gene mapping were not applied. `dataset.query_record(positions)` provides the
 same record even for an empty result. Preserve this record alongside exports;
 formats such as CSV do not retain Arrow schema metadata automatically.
+
+
+### Browse sparse measurements in the app
+
+In a development build, open **Compare → Sparse measurements**, filter by study,
+sample or source filename, then enter one exact original feature label per line.
+The query runs in the background, verifies its source artifacts and displays up to
+500 stored records. Each row shows its original coordinates, literal feature and
+cell labels, numeric value and original token. **Inspect selected measurement**
+shows all submitted feature and cell metadata fields, including original CSV
+headers where provided. Changing the query or source discards previous results.
+
+**Export all matching records** saves the complete query, including records beyond
+the preview, with a `.csv.json` treatment sidecar. It retains repeated coordinates
+as separate records, original numeric tokens, feature labels and fields, and
+original cell-axis positions. Full cell metadata are referenced through their
+checksum-pinned original axis artifact in the sidecar; preview cell fields are
+shown directly in the app. Empty results still have an exportable treatment
+record. Existing files require a new export filename.
+
+These structural/numeric checks establish source preservation. They do not yet
+establish comparable quantities, canonical gene mappings, biological replicate
+independence or calibrated biological quality scores across studies.

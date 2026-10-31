@@ -168,3 +168,17 @@ def test_each_query_batch_retains_operation_and_source_record(tmp_path):
     for batch in dataset.iter_entries([1, 2], batch_size=1):
         assert json.loads(batch.schema.metadata[b'parascape_query_record']) == expected
     assert dataset.query_record([])['operations'][0]['positions'] == []
+
+
+@pytest.mark.parametrize('inverse', [False, True])
+def test_original_cell_and_feature_metadata_by_position(tmp_path, inverse):
+    roots, path = fixture_collection(tmp_path, inverse=inverse)
+    dataset = open_dataset(roots, path)
+    rows = [r for b in dataset.iter_axis_rows('features', [2]) for r in b.to_pylist()]
+    assert rows == [dict(source_axis_row=2, first_field='001', original_fields=['001', 'second', 'submitted-genome'])]
+    cells = [r for b in dataset.iter_axis_rows('barcodes', [2, 1]) for r in b.to_pylist()]
+    assert [r['first_field'] for r in cells] == ['bc-1', 'bc-2']
+    with pytest.raises(ValueError):
+        list(dataset.iter_axis_rows('barcodes', [3]))
+    with pytest.raises(ValueError):
+        list(dataset.iter_axis_rows('unknown', [1]))

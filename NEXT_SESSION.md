@@ -1,5 +1,33 @@
 # Next session: start here
 
+**Sparse measurements GUI integrated (2026-10-31):** Compare now includes
+Sparse measurements, backed by the checked original-feature reader. Source filter,
+exact original labels, background querying/cancellation,500record preview and
+complete CSV+JSON sidecar export are implemented. Original cell/feature labels,
+all submitted fields and explicit CSV headers are inspectable; repeated features/
+coordinates,original tokens,int64/realvalues retained. Fullcell metadata references
+remain pinned to original axis artifacts in the export record. Source/query edits
+invalidate results and exports; empty queries retain treatment records.
+
+55combined reader/query/Qt/existingmeasurement/Compare checks passed; additional
+Compare-install wiring test passed (56distinct checks). Actual offline GUI lists
+all65bound sources,checks normal/inverse real layouts against20878168original
+records and exports152/1048matchingrecords exactly. Inverseview displays500but
+exports1048; original tokens/coordinates/source treatment verified and screenshots
+visually inspected. Code/tests/script/CSV/sidecars/screenshots/receipts archived
+NAS processing_audit/sparse_values_gui; private sparse-values-gui-handoff.json.
+Owned ~/.local/bin/parascape-live now sets the three local sparse collection roots
+without overriding existing user choices;7cache preserved,launcher preimage/hash
+archived. No running app/tutorial/nativejobs restarted. Reopen via owned launcher
+to use new local view; this work is not yet in PyPI7.
+
+Next: finish lastnumericvalidation and exactduplicate/logical-cell audit; implement
+optional/sharded GitHub data components and next portable release containing all
+new dense/sparse collections. Continue remaining expression formats/catalogue and
+source-identifier-unit-context compatibility. No normalizations/biologicalscores/
+canonicalgene equivalence inferred by this rawview. Full all-dataset faircomparison
+goal active/incomplete, historical inference paused; preserve restricted paths.
+
 **Sparse original-feature reader (2026-10-31):** Development module
 `parascape.sparse_values` now validates prepared dataset descriptors and their
 numeric/axis artifacts, supports both original feature-coordinate orientations,

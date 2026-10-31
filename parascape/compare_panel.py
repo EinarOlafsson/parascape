@@ -333,6 +333,7 @@ def install(window) -> ComparePanel | None:
     from .dataset_coverage_panel import DatasetCoveragePanel
     from .source_matrices_panel import SourceMatricesPanel
     from .deposited_values_panel import DepositedValuesPanel
+    from .sparse_values_panel import SparseValuesPanel
     from .reference_identifiers_panel import ReferenceIdentifiersPanel
     profiles = RNAProfilesPanel()
     profiles.gene_chosen.connect(window._workflow_gene)
@@ -342,6 +343,7 @@ def install(window) -> ComparePanel | None:
                         (PublishedExpressionPanel(), 'Published expression'),
                         (SourceMatricesPanel(), 'Deposited matrices'),
                         (DepositedValuesPanel(), 'Other measurements'),
+                        (SparseValuesPanel(), 'Sparse measurements'),
                         (ReferenceIdentifiersPanel(), 'Reference identifiers'),
                         (DatasetCoveragePanel(), 'Dataset coverage'),
                         (panel, 'Condition comparison')):

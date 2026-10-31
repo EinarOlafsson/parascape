@@ -204,6 +204,24 @@ class SparseDataset:
             if matched.num_rows:
                 yield matched
 
+    def iter_axis_rows(self, role: str, source_axis_rows: Iterable[int], *, batch_size: int = 65536) -> Iterable[pa.RecordBatch]:
+        """Return unchanged submitted metadata at original feature or cell positions."""
+        if role not in ('features', 'barcodes'):
+            raise ValueError('Unknown original sparse axis role')
+        selected = list(source_axis_rows)
+        association = self.info['axis_roles'][role]
+        if any(type(n) is not int or not 1 <= n <= association['data_rows'] for n in selected):
+            raise ValueError('Axis positions must be original 1-based data rows')
+        if not selected:
+            return
+        reference = self._axes[role]
+        folder, _, _ = self._artifact(self.axis_root, reference, 'axis.parquet')
+        selected_array = pa.array(selected, type=pa.int64())
+        for batch in pq.ParquetFile(folder / 'axis.parquet').iter_batches(batch_size=batch_size):
+            matched = batch.filter(pc.is_in(batch.column('source_axis_row'), value_set=selected_array))
+            if matched.num_rows:
+                yield matched
+
     def query_record(self, source_feature_rows: Iterable[int]) -> dict:
         """Describe the exact source-position selection and unchanged value treatment."""
         selected = list(source_feature_rows)
