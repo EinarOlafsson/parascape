@@ -58,7 +58,10 @@ Source dataset paths, dtypes, attributes and the independent binary-value hash
 are recorded with the query. Explicit stored zeros and repeated coordinates are
 retained. Missing coordinates are not manufactured, and the storage layout alone
 does not verify biological units, filtering, cell identity or sample independence.
-AnnData and other HDF5 layouts require their own explicit treatment contracts.
+AnnData matrices use a [separate layer contract](anndata-source-layers.md), retaining
+the original observation/variable axes and each CSR, CSC or dense layer separately.
+Other HDF5 layouts still require explicit treatment; contact matrices do not become
+expression measurements because they share a storage format.
 
 In **compare → Other measurements**, filter a source transcript table, choose
 **Reported parent gene ID → original transcript rows**, and enter the exact
@@ -67,6 +70,32 @@ row, including repeated labels. Reported parent IDs can differ between reference
 annotations. The query does not remove transcript suffixes, translate gene versions
 or add transcripts together. Exports retain each transcript's original values,
 source annotations and the parent-ID query record.
+
+Original Kallisto-compatible abundance tables (`target_id`, `length`, `eff_length`,
+`est_counts`, `tpm`) and Salmon-compatible quantification tables (`Name`, `Length`,
+`EffectiveLength`, `TPM`, `NumReads`) appear in **Other measurements** when their
+verified packs are present in the installed or selected local collection. Filter
+by study or source analysis, choose an estimated-abundance or TPM table, and enter
+the exact deposited target ID. Lengths, duplicate target rows, original numeric
+tokens and submitted GEO sample metadata accompany the returned values.
+
+`est_counts` and `NumReads` may be fractional estimates. TPM values retain the
+source normalization. Quantity families and alternative analyses remain separate;
+two tables from one submitted sample do not establish two biological replicates.
+The header identifies a compatible format, without establishing the deposited
+software version or the reference used to build its index. Target IDs are not
+automatically mapped to current genes, and these tables have no inferred parent
+gene annotation. Their values undergo no additional normalization or imputation.
+See the original [Kallisto](https://pachterlab.github.io/kallisto/manual) and
+[Salmon](https://salmon.readthedocs.io/en/latest/file_formats.html) format descriptions.
+
+Each target quantity pack includes checksummed values, literal tokens, source row
+annotations, sample context, a full-source reconciliation receipt, preparation
+operations and per-column numerical QC. The source is reparsed independently and
+every observed value is compared at the binary64 bit level. QC reports measured
+zeros, missingness, invalid values and coverage; the biological quality score
+remains unavailable until independently calibrated. Acquired files or locally
+prepared packs do not establish that a public release includes them.
 
 The bundled reference is **ME49_host**: ME49 parasite transcripts compete with human
 and mouse transcripts; the parasite genome supplies Salmon decoys. Both Salmon
