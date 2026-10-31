@@ -26,7 +26,11 @@ def build(source: Path, output: Path, descriptor: Path):
     for folder in ('published_expression', 'processing_audit', 'source_matrices', 'platform_identifiers', 'deposited_values', 'sparse_datasets'):
         files.extend(p for p in (source / folder).rglob('*') if p.is_file()
                      and not any(part.startswith('.') for part in p.relative_to(source / folder).parts)
-                     and p.suffix in ('.parquet', '.tsv', '.csv', '.json', '.jsonl', '.py', '.md'))
+                      and p.suffix in ('.parquet', '.tsv', '.csv', '.json', '.jsonl', '.py', '.md'))
+    # Workbook payloads are independent optional components. Only their discovery
+    # and verification metadata belongs in the core download.
+    files.extend(p for p in (source / 'workbook_cells').rglob('*.json') if p.is_file()
+                 and not any(part.startswith('.') for part in p.relative_to(source / 'workbook_cells').parts))
     if not files or not (source / 'nodes.parquet').is_file():
         raise ValueError('Cannot publish an empty data release')
     output.mkdir(parents=True, exist_ok=True)

@@ -84,15 +84,25 @@ def build_component(source, directory, destination, *, tag='v0.0.8.0', part_limi
     kind, identity = directory.split('/')
     if kind not in C.KINDS or not re.fullmatch('[a-f0-9]{64}', identity) or not re.fullmatch('[A-Za-z0-9._-]+', tag) or tag in ('.', '..'):
         raise ValueError('Invalid component directory or release tag')
-    output = 'axis.parquet' if kind == 'sparse_axes' else 'entries.parquet'
     manifest = json.loads((source / 'manifest.json').read_text())
-    receipt = json.loads((source / 'validation.json').read_text())
-    expected_state = 'all_original_axis_cells_reconciled' if kind == 'sparse_axes' else 'all_original_coordinate_records_reconciled'
-    if (receipt['state'] != expected_state or receipt['manifest_sha256'] != C._hash(source / 'manifest.json')
-            or receipt['input_sha256'] != manifest['input_sha256'] or set(manifest['outputs']) != {output}):
-        raise ValueError('Original component lacks matching independent validation')
-    files = {name: dict(size=(source/name).stat().st_size, sha256=(manifest['outputs'][output] if name == output else C._hash(source/name)))
-             for name in ('manifest.json', 'validation.json', output)}
+    if kind == 'workbook_cells':
+        from parascape import workbook_values as W
+        W.manifest(source, verify=True)
+        receipt = W.validation(source, manifest)
+        if receipt['status'] not in ('all_OOXML_source_cells_independently_reconciled',
+                                      'BIFF_checksums_verified_independent_reader_review_required'):
+            raise ValueError('Workbook component requires a bound verification record with explicit scope')
+        files = {name: dict(size=(source/name).stat().st_size, sha256=C._hash(source/name))
+                 for name in ('manifest.json', 'independent_validation.json', *manifest['outputs'])}
+    else:
+        output = 'axis.parquet' if kind == 'sparse_axes' else 'entries.parquet'
+        receipt = json.loads((source / 'validation.json').read_text())
+        expected_state = 'all_original_axis_cells_reconciled' if kind == 'sparse_axes' else 'all_original_coordinate_records_reconciled'
+        if (receipt['state'] != expected_state or receipt['manifest_sha256'] != C._hash(source / 'manifest.json')
+                or receipt['input_sha256'] != manifest['input_sha256'] or set(manifest['outputs']) != {output}):
+            raise ValueError('Original component lacks matching independent validation')
+        files = {name: dict(size=(source/name).stat().st_size, sha256=(manifest['outputs'][output] if name == output else C._hash(source/name)))
+                 for name in ('manifest.json', 'validation.json', output)}
     for name in files:
         if (source / name).is_symlink():
             raise ValueError('Source artifacts must be regular pack files')

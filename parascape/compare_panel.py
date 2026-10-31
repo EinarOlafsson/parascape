@@ -334,6 +334,7 @@ def install(window) -> ComparePanel | None:
     from .source_matrices_panel import SourceMatricesPanel
     from .deposited_values_panel import DepositedValuesPanel
     from .sparse_values_panel import SparseValuesPanel
+    from .workbook_values_panel import WorkbookValuesPanel
     from .reference_identifiers_panel import ReferenceIdentifiersPanel
     profiles = RNAProfilesPanel()
     profiles.gene_chosen.connect(window._workflow_gene)
@@ -344,6 +345,7 @@ def install(window) -> ComparePanel | None:
                         (SourceMatricesPanel(), 'Deposited matrices'),
                         (DepositedValuesPanel(), 'Other measurements'),
                         (SparseValuesPanel(), 'Sparse measurements'),
+                        (WorkbookValuesPanel(), 'Original workbooks'),
                         (ReferenceIdentifiersPanel(), 'Reference identifiers'),
                         (DatasetCoveragePanel(), 'Dataset coverage'),
                         (panel, 'Condition comparison')):

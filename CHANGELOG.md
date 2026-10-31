@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- Browse complete original workbook rows, including hidden worksheets, duplicate
+  cells, source numeric text, legacy binary64 values and formula caches. Search
+  literal text labels in a chosen column and export every selected cell with
+  source, checksum, verification and treatment records. Unknown biological
+  quality, units and sample roles remain explicit.
+- Keep workbook payloads outside the wheel and core data archive. Offer selected
+  GitHub component downloads with verification, cancellation, retry and offline
+  reopen; preserve explicit local collections and all existing sparse datasets.
+
 ## 0.0.8.0 — 2026-10-31
 
 - Expand the portable snapshot to 452 original quantity tables, including all
