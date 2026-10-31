@@ -105,7 +105,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.qc_button.clicked.connect(self.show_qc)
         layout.addWidget(self.qc_button)
         self.context_button = QtWidgets.QPushButton('Inspect selected measurement…')
-        self.context_button.setToolTip('Show original coordinates, tokens and all submitted feature/cell metadata for the selected displayed record.')
+        self.context_button.setToolTip('Show source coordinates, value representations and all submitted feature/cell metadata for the selected displayed record.')
         self.context_button.clicked.connect(self.show_context)
         layout.addWidget(self.context_button)
         self.summary = QtWidgets.QLabel()
@@ -243,6 +243,8 @@ class SparseValuesPanel(QtWidgets.QWidget):
             result.record['coordinate_QC_gap'] = str(error)
         fields = ['entry_index', 'source_row', 'source_column', 'source_feature_axis_row', 'source_feature_label',
                   'source_cell_axis_row', 'source_cell_label', 'value', 'source_token']
+        derived_tokens = result.record.get('source_storage', {}).get('decimal_tokens_are_derived', False)
+        self.table.horizontalHeaderItem(8).setText('derived decimal value' if derived_tokens else 'original token')
         self.table.setRowCount(len(result.preview))
         for i, row in enumerate(result.preview):
             tooltip = json.dumps(dict(original_feature_fields=json.loads(row['original_feature_fields']),
@@ -251,6 +253,8 @@ class SparseValuesPanel(QtWidgets.QWidget):
             for j, field in enumerate(fields):
                 item = QtWidgets.QTableWidgetItem(str(row[field]))
                 item.setToolTip(tooltip)
+                if j == 8 and derived_tokens:
+                    item.setToolTip('Decimal rendering of the original HDF5 binary value; no original text token exists.\n' + tooltip)
                 self.table.setItem(i, j, item)
         self.table.resizeColumnsToContents()
         for column in range(self.table.columnCount()):
@@ -259,6 +263,8 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.summary.setText(f"{result.record['exported_records']} original stored records; {len(result.preview)} displayed. "
                              'Export includes every matching record. Absent coordinates are not filled. ' + self._qc_summary() + ' '
                              + ('Labels not matched: ' + ', '.join(missing) if missing else ''))
+        if derived_tokens:
+            self.summary.setText(self.summary.text() + ' Value strings are derived decimal representations of original HDF5 binary values.')
         self._buttons()
 
     def download_selected(self):

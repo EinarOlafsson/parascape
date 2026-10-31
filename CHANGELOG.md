@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Label HDF5 value strings as derived decimal values in sparse tables and
+  tooltips, matching the binary-source provenance retained in exports.
 - Read checked binary HDF5 CSC source records with their original axes and
   numeric values. Keep derived decimal coordinate/value strings explicitly
   distinct from original text tokens in query and export provenance.

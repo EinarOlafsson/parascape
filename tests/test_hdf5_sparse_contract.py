@@ -49,3 +49,15 @@ def test_binary_source_cannot_inherit_or_exaggerate_text_validation(tmp_path,fie
 def test_binary_descriptor_cannot_hide_original_token_scope(tmp_path):
     roots,path,_=binary_fixture(tmp_path);descriptor=json.loads(path.read_text());descriptor.pop('source_storage')
     with pytest.raises(ValueError,match='storage context'):open_dataset(roots,save_descriptor(roots,descriptor))
+
+
+def test_binary_UI_labels_derived_values_explicitly(qtbot,tmp_path):
+    from parascape.sparse_values_panel import SparseValuesPanel
+    roots,_,_=binary_fixture(tmp_path)
+    panel=SparseValuesPanel(roots['sparse_datasets'],coordinate_root=roots['sparse_coordinates'],axis_root=roots['sparse_axes'])
+    qtbot.addWidget(panel);panel.features.setPlainText('001');panel.show_values()
+    qtbot.waitUntil(lambda:panel._worker is None,timeout=10000)
+    assert panel.result is not None,panel.summary.text()
+    assert panel.table.horizontalHeaderItem(8).text()=='derived decimal value'
+    assert 'no original text token' in panel.table.item(0,8).toolTip()
+    assert 'derived decimal representations' in panel.summary.text()
