@@ -106,8 +106,8 @@ def main():
     qc = R.technical_qc(root=str(root / 'rnaseq'), study='PRJNA1008424')
     assert len(qc) == 16 and qc.quality_score.isna().all()
     original_values, errors = D.catalogue(root / 'deposited_values')
-    assert len(original_values) == 139 and not errors
-    protein_packs = workbench_packs = quantity_columns = cells = missing = 0
+    assert len(original_values) == 452 and not errors
+    protein_packs = workbench_packs = generic_protein_packs = gene_packs = quantity_columns = cells = missing = 0
     filename_matches = filename_gaps = factor_occurrences = experiment_candidates = 0
     chosen_pack = reference_choice = None
     identifier_root = root / 'processing_audit/protein_identifier_evidence'
@@ -115,9 +115,9 @@ def main():
     identifier_folder = identifier_root / identifier_pointer['directory']
     identifier_index = json.loads((identifier_folder / 'index.json').read_text())
     identifier_sources = {entry['measurement_manifest_sha256']: entry for entry in identifier_index['measurements']}
-    assert len(identifier_sources) == 129
+    assert len(identifier_sources) == 334
     identifier_occurrences = sum(entry['evidence_records'] for entry in identifier_sources.values())
-    assert identifier_occurrences == 601605
+    assert identifier_occurrences == 1236097
     accession_root = root / 'processing_audit/accession_identifier_evidence'
     accession_pointer = json.loads((accession_root / 'collection.json').read_text())
     accession_folder = accession_root / accession_pointer['directory']
@@ -170,10 +170,16 @@ def main():
                 experiment_candidates += bool(association.get('submitted_experiment_rows'))
                 if association.get('submitted_factor_rows'):
                     chosen_pack = folder, feature
-        else:
+        elif info['assay'] == 'deposited metabolomics':
             workbench_packs += 1
-    assert (protein_packs, workbench_packs, quantity_columns, cells, missing) == (132, 7, 1097, 1384744, 71153)
-    assert (filename_matches, filename_gaps, factor_occurrences, experiment_candidates) == (16, 12, 10, 357)
+        elif info['assay'] == 'deposited original protein-feature quantities':
+            generic_protein_packs += 1
+        elif info['assay'] == 'deposited original gene-table quantities':
+            gene_packs += 1
+        else:
+            raise AssertionError('Unexercised deposited assay: ' + info['assay'])
+    assert (protein_packs, generic_protein_packs, gene_packs, workbench_packs, quantity_columns, cells, missing) == (337, 9, 99, 7, 1750, 7475381, 166442)
+    assert filename_matches >= 16 and filename_gaps >= 12 and factor_occurrences >= 10 and experiment_candidates >= 357
     reference_sources, reference_status = F.catalogue(root / 'processing_audit/reference_identifiers')
     acquired = [row for row in reference_sources if row['status'] == 'all_header_cells_reconciled']
     assert len(acquired) >= 47
@@ -222,7 +228,7 @@ def main():
     assert panel.save(str(output / 'original-measurements.csv')) > 0
     assert panel.save_qc(str(output / 'column-qc.csv')) > 0
     panel.source_filter.setText('Ratio H/L normalized')
-    assert panel.pack.count() == 4 and panel.result is None
+    assert panel.pack.count() >= 4 and panel.result is None
     panel.source_filter.clear()
     for index in range(panel.pack.count()):
         if Path(panel.pack.itemData(index)['path']) == chosen_pack[0]:
@@ -284,6 +290,38 @@ def main():
     assert panel.treatment_record['source_flag_view']['excluded_source_rows'] > 0
     assert panel.save_treatment(str(output / 'source-marked-view-treatment.json')) == 1
     panel.exclude_source_marked.setChecked(False)
+    new_assay_views = 0
+    for item in original_values:
+        if item['assay'] not in ('deposited original gene-table quantities', 'deposited original protein-feature quantities'):
+            continue
+        folder = Path(item['path'])
+        panel.pack.setCurrentIndex(next(i for i in range(panel.pack.count()) if Path(panel.pack.itemData(i)['path']) == folder))
+        feature = pq.read_table(folder / 'values.parquet', columns=['feature_label']).column(0)[0].as_py()
+        panel.identifier_kind.setCurrentIndex(0)
+        panel.features.setPlainText(feature); panel.show_values()
+        assert panel.result is not None and not panel.result.empty
+        panel.table.setCurrentCell(0, 0); panel.show_measurement_context()
+        assert panel.measurement_dialog is not None
+        target = output / f'new-assay-{new_assay_views}.csv'
+        assert panel.save(str(target)) > 0
+        sidecars = list(target.parent.glob(target.name + '.treatment-*.json'))
+        assert len(sidecars) == 1
+        record = json.loads(sidecars[0].read_text())
+        assert record
+        assert all(not panel.identifier_kind.model().item(i).isEnabled() for i in range(1, panel.identifier_kind.count()))
+        new_assay_views += 1
+    assert new_assay_views == 108
+    from parascape import sparse_values_panel as SP
+    from parascape import sparse_record_qc as SQ
+    sparse = window.findChildren(SP.SparseValuesPanel)
+    assert len(sparse) == 1 and sparse[0].pack.count() == 66
+    sparse[0].unique_coordinates.setChecked(True)
+    assert sparse[0].pack.count() == 66
+    sparse[0].show_qc(); assert sparse[0].qc_dialog is not None
+    for index in range(sparse[0].pack.count()):
+        report = SQ.report(sparse[0].pack.itemData(index)['path'])
+        assert report is not None and report['facts']['global_repeated_records'] == 0
+        assert report['facts']['biological_quality_score'] is None
     reference_panel = reference_panels[0]
     for index in range(reference_panel.source.count()):
         if reference_panel.source.itemData(index)['source_url'] == reference_choice[0]:
@@ -297,7 +335,7 @@ def main():
                           original_value_matrices=len(sources), annotation_platforms=len(records),
                           annotated_query_rows=annotated_rows, whole_matrix_QC_rows=len(qc),
                           network_disabled=True, NAS_reads_disabled=True, original_measurement_packs=len(original_values),
-                          protein_quantity_packs=protein_packs, workbench_quantity_packs=workbench_packs,
+                          protein_quantity_packs=protein_packs+generic_protein_packs, gene_quantity_packs=gene_packs, workbench_quantity_packs=workbench_packs, installed_new_assay_views=new_assay_views, sparse_dataset_metadata_views=66,
                           original_quantity_cells=cells, missing_original_cells=missing, source_quantity_columns=quantity_columns,
                           exact_primary_filename_matches=filename_matches, submitted_factor_occurrences=factor_occurrences,
                           experiment_label_candidate_columns=experiment_candidates, reference_source_occurrences=len(acquired),

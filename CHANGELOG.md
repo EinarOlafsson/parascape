@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+## 0.0.8.0 — 2026-10-31
+
+- Expand the portable snapshot to 452 original quantity tables, including all
+  313 newly reconciled archive and gene-table quantities. Keep original integer,
+  fractional, missing and source-token values and all earlier quantity files.
+- Include 330 verified RNA entries across 25 studies and 124 matrices. Preserve
+  every earlier feature/sample axis and all 42,752,169 prior RNA cells exactly.
+- Browse 66 original sparse matrices with their 130 complete source feature/cell
+  metadata tables. Download selected matrix/axis components from GitHub as needed,
+  reuse shared metadata, verify checksums, cancel/retry and reopen offline. Large
+  files use bounded parts outside the wheel and core bundle.
+- Stream billion-record queries one physical row group at a time. Keep original
+  coordinates, duplicate records, labels, metadata and numeric tokens; complete
+  exports include records beyond the preview and an explicit treatment sidecar.
+- Inspect whole-source coordinate QC and optionally require proven zero repeated
+  coordinates. The audit covers 2,264,669,823 stored records without aggregation.
+  Unknown counts remain unknown. These checks do not assign biological quality,
+  stage/strain confidence, gene equivalence or independent-sample status.
+- Preserve all processing and source-context records. Dataset acquisition,
+  remaining formats and broader scientific comparison QC remain incomplete.
+
 ## 0.0.7.0 — 2026-10-30
 
 - Expand the separately downloaded snapshot to 139 original quantity tables,

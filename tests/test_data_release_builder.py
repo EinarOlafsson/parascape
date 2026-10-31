@@ -11,7 +11,10 @@ from scripts.build_data_release import build
 
 def test_portable_expression_and_audit_data_are_checksum_pinned(tmp_path):
     source = tmp_path / 'source'
-    files = {'nodes.parquet': b'core nodes', 'rnaseq/snapshot.json': b'{}',
+    files = {'data_components.json': b'{"schema_version":1}',
+             'sparse_datasets/catalogue.json': b'{"datasets":[]}',
+             'sparse_datasets/source-descriptor.json': b'{"numeric_payload_verified":true}',
+             'nodes.parquet': b'core nodes', 'rnaseq/snapshot.json': b'{}',
              'published_expression/source_pack/ToxoDB_release38.parquet': b'source measurements',
              'published_expression/source_pack/prepare_published_rsem.py': b'# original adapter source',
              'processing_audit/dataset_coverage.tsv': b'original coverage',
@@ -25,7 +28,8 @@ def test_portable_expression_and_audit_data_are_checksum_pinned(tmp_path):
              'platform_identifiers/GPL1-source/independent_validation.json': b'{}'}
     for name, body in files.items():
         path=source/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(body)
-    for name in ['data_release.json','processing_audit/source.body','processing_audit/download.part']:
+    for name in ['data_release.json','processing_audit/source.body','processing_audit/download.part',
+                 'sparse_coordinates/source/entries.parquet','sparse_axes/source/axis.parquet']:
         path=source/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('must not enter the release')
     descriptor = tmp_path / 'descriptor.json'
     info = build(source,tmp_path/'output',descriptor)

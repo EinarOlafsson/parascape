@@ -23,7 +23,7 @@ def build(source: Path, output: Path, descriptor: Path):
     files.extend(p for p in (source / 'hf_release').glob('*') if p.suffix in ('.parquet', '.md'))
     files.extend((source / 'icons').glob('*.svg'))
     files.extend(p for p in (source / 'rnaseq').rglob('*') if p.is_file() and p.suffix in ('.parquet', '.tsv', '.json'))
-    for folder in ('published_expression', 'processing_audit', 'source_matrices', 'platform_identifiers', 'deposited_values'):
+    for folder in ('published_expression', 'processing_audit', 'source_matrices', 'platform_identifiers', 'deposited_values', 'sparse_datasets'):
         files.extend(p for p in (source / folder).rglob('*') if p.is_file()
                      and not any(part.startswith('.') for part in p.relative_to(source / folder).parts)
                      and p.suffix in ('.parquet', '.tsv', '.csv', '.json', '.jsonl', '.py', '.md'))
