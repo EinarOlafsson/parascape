@@ -1,5 +1,61 @@
 # Next session: start here
 
+**Accession-cell identifier coverage (2026-10-30):** Previous goal turn was
+progress (row-specific source design links),not a wait. Current dataset goal
+active/incomplete; historical inference remains paused. Live source starts486eb6a.
+New native `prepare_accession_identifier_evidence.py`51605e44 is independently
+namespaced at processing_audit/accession_identifier_evidence and runs every5min
+under enabled parascape-accession-identifier-evidence.timer,24CPU/2GiB/BLAS2.
+It reuses independently reconciled exact source-component/reference parsing,
+but admits only accession assays and explicitly known original Accession or
+PG.ProteinAccessions fields. New namespace original_accession_cell_component
+stores original field/full cell/component index; no group identity,unique protein,
+canonical gene,search database use or biological independence inferred.
+
+Collection6fa4b7b1… / receipt425807b7… contains3tables /75607original row occurrences /
+76260component occurrences. Both PXD041907/PXD084269 have0acquired same-project
+FASTA references,so no new reference gene/GN mappings. Future declarations remain
+qualified namespaces. No aliases guessed from protein names/descriptions,case,
+whitespace,isoform/version suffix or organism assumptions. All139 quantity
+manifests/outputs unchanged; all129 prior protein-group evidence Parquets and
+index rows byte-identical. Original group producer and D/Q modules untouched.
+
+Public protein_identifier_evidence module chooses separate assay roots and
+namespace policies. Existing group class stays distinct from new accession class;
+misapplying either is refused. New PARASCAPE_ACCESSION_IDENTIFIERS override,
+existing PARASCAPE_PROTEIN_IDENTIFIERS remains group-specific. Whole original
+rows/columns/tokens retained when multiple component occurrences match. New reader
+checks exact component position/field/full-cell scope. Empty identifier results
+retain row-context-compatible schema; class evidence count travels with query
+metadata. UI labels accession-row quantities explicitly,uses correct assay classes,
+and distinguishes no indexed class declarations from absent expression. CSV
+sidecars retain class count and all original evidence. Source row design context
+still works for row-wise positive and empty qualified queries.
+
+64focused reader/QC/flag/UI/identifier checks incl whole-window tooltip audit passed.
+Native synthetic tests preserve repeated declarations/case/whitespace/suffixes,
+reject changed/dropped evidence and unsafe namespace/catalogue races,exclude group
+assays. Four independently rehashed component mutations refused by runtime tests.
+Actual offline API/Qt proof visits all132protein tables,checks all76260new typed
+evidence rows and source component coordinates,whole original numeric bits,
+CSV/treatment and explicit unavailable reference-class states. Every old quantity
+and129group evidence file hash verified unchanged; source writes,NAS/network
+blocked. Screenshot visually inspected. Final proof
+`/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2`;
+prototype8939a3f5 source/first proof retained. Final readerSHA4fa688f7,panelSHAcba35345.
+All source/native code,units,proofs/logs to archive under processing_audit.
+
+Next priority: prepare next portable release including139quantity tables,new row
+QC/design/accession collections and all post6UI/source-flag work. Inspect generic
+release6 prep/publish helpers,derive isolated next-version prep,include new audit
+namespaces explicitly,and retain all source-value preservation/installed-wheel/
+exact-CI/official-PyPI gates. Consider force RNA catchup from current326verified
+versus324snapshot before source freeze; native batch normally waits349. Don't
+mutate frozen public6or advance nightly during a future frozen exact-CI gate.
+Current downloads/quantification still live:3386467,3533750,3614034/fasterq wrapper
+522944/realchild523043.24CPUlimit preserved. Continue remaining datasets and full
+identifier/scale/context compatibility; full all-dataset goal not complete.
+
 **Row-specific design metadata (2026-10-30):** Previous goal turn was progress
 (selected-measurement UI), not a wait. Current dataset goal active/incomplete;
 historical inference remains paused. Live source starts743fd5f. New native

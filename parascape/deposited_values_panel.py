@@ -57,7 +57,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         for namespace, caption in I.NAMESPACES.items():
             self.identifier_kind.addItem(caption, namespace)
         self.identifier_kind.currentIndexChanged.connect(self._clear)
-        self.identifier_kind.setToolTip('Keep original labels, submitted names and reference candidates distinct. Whole protein-group quantities are retained.')
+        self.identifier_kind.setToolTip('Keep group components, accession-cell components, submitted names and reference candidates distinct. Whole original source rows and quantities are retained.')
         layout.addWidget(self.identifier_kind)
         self.features = QtWidgets.QPlainTextEdit()
         self.features.setMaximumHeight(80)
@@ -104,10 +104,10 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             self.context_dialog = None
         if hasattr(self, 'identifier_kind'):
             source = self.pack.currentData() or {}
-            protein = source.get('assay') == 'deposited protein-group quantities'
+            supported = I.namespaces_for_assay(source.get('assay'))
             for index in range(1, self.identifier_kind.count()):
-                self.identifier_kind.model().item(index).setEnabled(protein)
-            if not protein and self.identifier_kind.currentData() != 'exact':
+                self.identifier_kind.model().item(index).setEnabled(self.identifier_kind.itemData(index) in supported)
+            if self.identifier_kind.currentData() != 'exact' and self.identifier_kind.currentData() not in supported:
                 self.identifier_kind.setCurrentIndex(0)
         if hasattr(self, 'table'):
             self.table.setRowCount(0)
@@ -318,6 +318,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             namespace = self.identifier_kind.currentData()
             frame = (D.profiles(info['path'], self.features.toPlainText()) if namespace == 'exact' else
                      I.profiles(info['path'], self.features.toPlainText(), namespace=namespace))
+            identifier_class_records = frame.attrs.get('indexed_identifier_class_records')
             original = frame
             manifest = D.manifest(info['path'], verify_outputs=False)
             manifest_sha256 = hashlib.sha256((Path(info['path']) / 'manifest.json').read_bytes()).hexdigest()
@@ -341,6 +342,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             source_url=manifest['source_url'], input_sha256=manifest['input_sha256'],
             source_study=manifest['study'], source_analysis=manifest['source_analysis'],
             quantity=manifest['quantity'], units=manifest['units'], identifier_namespace=namespace,
+            indexed_identifier_class_records=identifier_class_records,
             exact_query_literals=self.features.toPlainText().splitlines(), source_selection_filter=self.source_filter.text(),
             original_identifier_evidence=identifier_contexts,
             row_design_association_view=row_design,
@@ -368,7 +370,10 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.summary.setText(f'{len(frame)} original row/column measurements. ' +
             ('Labels not matched: ' + ', '.join(sorted(missing)) if missing else 'Repeated labels retain separate source rows.'))
         if namespace != 'exact':
-            self.summary.setText(self.summary.text() + ' Original group quantities retained; unique-gene abundance and current gene equivalence remain unreviewed.')
+            representation = 'accession-row' if manifest['assay'] == 'deposited protein-accession quantities' else 'group'
+            self.summary.setText(self.summary.text() + f' Original {representation} quantities retained; unique-gene abundance and current gene equivalence remain unreviewed.')
+            if identifier_class_records == 0:
+                self.summary.setText(self.summary.text() + ' This analysis has no indexed declarations in the selected identifier class; this is not evidence of absent expression.')
         self.summary.setText(self.summary.text() + f" Source-flag view excluded {treatment['excluded_source_rows']} of {treatment['input_source_rows']} queried original rows ({treatment['excluded_measurements']} measurements). Missing or unfamiliar flags are retained; this is not a biological quality score.")
         if treatment['input_source_rows'] and not treatment['retained_source_rows']:
             self.summary.setText('All matching source rows were excluded by the selected source-flag rule. ' + self.summary.text())

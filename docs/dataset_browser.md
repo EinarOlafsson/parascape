@@ -186,7 +186,7 @@ proteins, protein groups or current genes.
 headers such as `Abundances (Grouped): F1` and presence headers such as
 `Found in Sample: [S1] F1: Sample`. These are source-header candidates, not verified
 sample, control or replicate assignments. Presence declarations never replace
-missing quantitative cells. The protein-group identifier modes and literal-plus
+missing quantitative cells. The original protein-group component class and literal-plus
 group flag rules do not interpret this different assay.
 
 The enabled five-minute importer preserves original tokens, binary64 values,
@@ -319,3 +319,37 @@ audit_root=...)` with a frame from `deposited_values.profiles`. It returns the
 original measurements with separately encoded row associations and a provenance
 record. It does not convert scales, fill missing cells, merge repeated rows or
 assign biological quality scores.
+
+
+### Literal accession-cell components
+
+The nightly identifier selector has a separate **Original accession-cell
+component** class for accession-based assays. It matches exact semicolon-separated
+components of original `Accession` or `PG.ProteinAccessions` cells. Source case,
+whitespace, leading zeros, suffixes and repeated component occurrences remain
+unchanged. Matching multiple components annotates the same original row rather
+than creating extra measurements. Whole original row quantities and all ambiguous
+cell membership remain intact; components do not establish unique proteins,
+protein groups, gene equivalence or independent biological observations.
+
+The automatic five-minute index currently covers three accession tables: 75,607
+original source-row occurrences and 76,260 component occurrences. It stores the
+original field, full cell and component position under
+`processing_audit/accession_identifier_evidence`. The existing 129-table
+protein-group index stays separate, with its output files unchanged. The browser
+enables component classes for their declared assay and rejects applying the group
+component class to accession cells or the accession class to protein groups.
+
+Explicit submitted gene fields and same-project FASTA declarations remain
+separately qualified namespaces when available. The two newly covered projects
+have no acquired same-project FASTA references and currently contribute no such
+reference gene/name mappings. The browser reports **no indexed declarations in
+the selected identifier class** when the class has no evidence. This is not
+evidence of absent expression. This condition, query class, evidence occurrences
+and source receipts remain in treatment records even when no row matches.
+
+Python callers use `protein_identifier_evidence.profiles(pack, queries,
+namespace='original_accession_cell_component')`. Assay-specific roots are selected
+automatically; `PARASCAPE_ACCESSION_IDENTIFIERS` can override the accession index,
+while `PARASCAPE_PROTEIN_IDENTIFIERS` continues to select the separate group index.
+The new index and browser behavior await a later portable release after 0.0.6.0.
