@@ -76,6 +76,78 @@ class _Source:
         return block
 
 
+def deposited_identity(files):
+    """Address the complete quantitative pack, including its original receipts."""
+    return hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
+
+
+def deposited_files(source):
+    """Require full source-cell validation before archiving any quantity payload."""
+    from parascape import deposited_values as D
+    source = Path(source)
+    info = D.manifest(source)
+    names = ['manifest.json', 'validation.json', *info['outputs']]
+    for name in ('preparation.json', 'technical_qc.csv'):
+        if (source / name).exists():
+            names.append(name)
+    files = {}
+    for name in names:
+        if Path(name).name != name or (source / name).is_symlink():
+            raise ValueError('Deposited component files must be ordinary pack files')
+        files[name] = dict(size=(source / name).stat().st_size,
+                          sha256=info['outputs'].get(name) or C._hash(source / name))
+    receipt = json.loads((source / 'validation.json').read_text())
+    if ('technical_qc.csv' in files
+            and receipt.get('technical_qc_sha256') != files['technical_qc.csv']['sha256']):
+        raise ValueError('Deposited numerical QC checksum differs')
+    if 'preparation.json' in files:
+        preparation = json.loads((source / 'preparation.json').read_text())
+        if preparation['manifest_sha256'] != files['manifest.json']['sha256']:
+            raise ValueError('Deposited preparation manifest checksum differs')
+    return files
+
+
+def write_deposited_metadata(source, component, core, relative_directory):
+    """Copy only original identity receipts into the core; payload stays optional."""
+    from parascape.optional_deposited_data import MARKER
+    source, core = Path(source), Path(core)
+    C.validate(component)
+    C._file_name(relative_directory)
+    pieces = Path(relative_directory).parts
+    if (len(pieces) not in (2, 3) or pieces[0] != 'deposited_values'
+            or pieces[-1] != source.name or any(p.startswith('.') for p in pieces)):
+        raise ValueError('Invalid deposited metadata directory')
+    files = deposited_files(source)
+    identity = deposited_identity(files)
+    if component['directory'] != 'deposited_values/' + identity or component['files'] != files:
+        raise ValueError('Deposited metadata and prepared component differ')
+    target = core.joinpath(*pieces)
+    for parent in [core, *[core.joinpath(*pieces[:n]) for n in range(1, len(pieces) + 1)]]:
+        if parent.is_symlink():
+            raise ValueError('Deposited metadata cannot use linked directories')
+    target.mkdir(parents=True, exist_ok=True)
+    if any(path.name not in {'manifest.json', 'validation.json', MARKER} for path in target.iterdir()):
+        raise ValueError('Metadata-only destination already contains payload or unrelated files')
+    marker = dict(schema_version=1, component_id=identity,
+                  manifest_sha256=files['manifest.json']['sha256'],
+                  validation_sha256=files['validation.json']['sha256'])
+    payloads = {name: (source / name).read_bytes() for name in ('manifest.json', 'validation.json')}
+    if any(hashlib.sha256(data).hexdigest() != files[name]['sha256'] for name, data in payloads.items()):
+        raise ValueError('Deposited metadata changed after source validation')
+    payloads[MARKER] = (json.dumps(marker, sort_keys=True, indent=2) + '\n').encode()
+    for name, data in payloads.items():
+        output = target / name
+        if output.is_symlink() or (output.exists() and output.read_bytes() != data):
+            raise ValueError('Existing deposited metadata differs; preserve the old generation')
+        if not output.exists():
+            with output.open('xb') as stream:
+                stream.write(data)
+    manifest = json.loads(payloads['manifest.json'])
+    return dict(components=[component['directory']], source_url=manifest['source_url'],
+                input_sha256=manifest['input_sha256'], manifest_sha256=marker['manifest_sha256'],
+                validation_sha256=marker['validation_sha256'], metadata_directory=relative_directory)
+
+
 def build_component(source, directory, destination, *, tag='v0.0.8.0', part_limit=1024**3):
     """Copy one checked pack into deterministic archive parts, retaining all bytes."""
     if type(part_limit) is not int or not 0 < part_limit <= 1024**3:
@@ -85,7 +157,11 @@ def build_component(source, directory, destination, *, tag='v0.0.8.0', part_limi
     if kind not in C.KINDS or not re.fullmatch('[a-f0-9]{64}', identity) or not re.fullmatch('[A-Za-z0-9._-]+', tag) or tag in ('.', '..'):
         raise ValueError('Invalid component directory or release tag')
     manifest = json.loads((source / 'manifest.json').read_text())
-    if kind == 'workbook_cells':
+    if kind == 'deposited_values':
+        files = deposited_files(source)
+        if identity != deposited_identity(files):
+            raise ValueError('Deposited component identity differs from its original files')
+    elif kind == 'workbook_cells':
         from parascape import workbook_values as W
         W.manifest(source, verify=True)
         receipt = W.validation(source, manifest)

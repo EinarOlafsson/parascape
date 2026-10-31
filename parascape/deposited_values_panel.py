@@ -19,6 +19,8 @@ from . import deposited_values as D
 from . import protein_identifier_evidence as I
 from . import source_flags as F
 from . import row_design_links as R
+from . import optional_deposited_data as O
+from .component_download_dialog import ComponentDownloadDialog
 
 
 class DepositedValuesPanel(QtWidgets.QWidget):
@@ -27,6 +29,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
     def __init__(self, root=None, parent=None):
         super().__init__(parent)
         self.root, self.result, self.treatment_record = root, None, None
+        self._generation = 0
         self._catalogue, self._catalogue_errors = [], []
         layout = QtWidgets.QVBoxLayout(self)
         label = QtWidgets.QLabel('Original deposited measurements. Feature rows, value tokens and source units are retained. '
@@ -52,6 +55,10 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.refresh_button.setToolTip('Reload the validated measurement catalogue; incomplete preparations remain unavailable.')
         self.refresh_button.clicked.connect(self.refresh)
         layout.addWidget(self.refresh_button)
+        self.download_button = QtWidgets.QPushButton('Download / verify selected table…')
+        self.download_button.setToolTip('Fetch the selected original quantity table and its processing records. Verified files remain available offline.')
+        self.download_button.clicked.connect(self.download_selected)
+        layout.addWidget(self.download_button)
         self.identifier_kind = QtWidgets.QComboBox()
         self.identifier_kind.addItem('Exact original feature label', 'exact')
         for namespace, caption in I.NAMESPACES.items():
@@ -95,6 +102,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.setMinimumWidth(120)
 
     def _clear(self):
+        self._generation += 1
         self.result = None
         self.treatment_record = None
         self._close_measurement_context()
@@ -123,6 +131,38 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             self.treatment_button.setEnabled(False)
         if hasattr(self, 'summary'):
             self.summary.setText('Enter exact feature labels for the selected source analysis.')
+
+    def _runtime_pack(self, path):
+        """Offer missing files and reject any selection changed during the dialog."""
+        selected = O.plan(path)
+        generation = self._generation
+        if selected['missing']:
+            dialog = ComponentDownloadDialog(selected['missing'], self)
+            if dialog.exec() != QtWidgets.QDialog.DialogCode.Accepted:
+                self.summary.setText('Table download cancelled. Verified files are retained.')
+                return None
+            if generation != self._generation:
+                self.summary.setText('Source or query changed; choose the action again.')
+                return None
+        return D.runtime_pack(path)
+
+    def download_selected(self):
+        """Download or verify only the selected hosted original measurement pack."""
+        info = self.pack.currentData()
+        if info is None:
+            return
+        self._clear()
+        try:
+            selected = O.plan(info['path'])
+            if not selected['components']:
+                self.summary.setText('This table belongs to a local collection. Query it to verify the original files.')
+                return
+            generation = self._generation
+            dialog = ComponentDownloadDialog(selected['components'], self)
+            if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted and generation == self._generation:
+                self.summary.setText('Table files verified. Enter exact original feature labels to query them.')
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
 
     def refresh(self):
         """Load completed source analyses without mixing quantities or units."""
@@ -255,7 +295,10 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         if not info:
             return
         try:
-            contexts = D.column_context(info['path'])
+            runtime = self._runtime_pack(info['path'])
+            if runtime is None:
+                return
+            contexts = D.column_context(runtime)
         except (OSError, ValueError, KeyError, TypeError) as error:
             self.summary.setText(str(error))
             return
@@ -321,10 +364,16 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             return
         self._clear()
         try:
+            if not self.features.toPlainText().strip():
+                self.summary.setText('Enter exact deposited feature labels, one per line')
+                return
+            runtime = self._runtime_pack(info['path'])
+            if runtime is None:
+                return
             namespace = self.identifier_kind.currentData()
-            frame = (D.profiles(info['path'], self.features.toPlainText(), match='reported_gene_id') if namespace == 'reported_gene_id' else
-                     D.profiles(info['path'], self.features.toPlainText()) if namespace == 'exact' else
-                     I.profiles(info['path'], self.features.toPlainText(), namespace=namespace))
+            frame = (D.profiles(runtime, self.features.toPlainText(), match='reported_gene_id') if namespace == 'reported_gene_id' else
+                     D.profiles(runtime, self.features.toPlainText()) if namespace == 'exact' else
+                     I.profiles(runtime, self.features.toPlainText(), namespace=namespace))
             parent_query = frame.attrs.get('identifier_query')
             identifier_class_records = frame.attrs.get('indexed_identifier_class_records')
             original = frame
@@ -334,7 +383,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
                 raise ValueError('Source manifest changed after the original query')
             row_design = None
             if manifest['assay'] == 'deposited protein-accession quantities':
-                frame, row_design = R.enrich(info['path'], frame)
+                frame, row_design = R.enrich(runtime, frame)
             original = frame
             frame, treatment = F.apply(frame, exclude_marked=self.exclude_source_marked.isChecked())
         except (OSError, ValueError, KeyError, TypeError) as error:
@@ -432,7 +481,10 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         if not path:
             return 0
         try:
-            frame = D.technical_qc(info['path'])
+            runtime = self._runtime_pack(info['path'])
+            if runtime is None:
+                return 0
+            frame = D.technical_qc(runtime)
             frame.to_csv(path, index=False)
         except (OSError, ValueError, KeyError, TypeError) as error:
             self.summary.setText(str(error))

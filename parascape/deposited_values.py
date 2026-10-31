@@ -93,6 +93,12 @@ def catalogue(root: str | Path | None = None) -> tuple[list[dict], list[str]]:
     return packs, errors
 
 
+def runtime_pack(pack: str | Path) -> Path:
+    """Resolve an installed optional table without downloading or changing source files."""
+    from .optional_deposited_data import runtime_pack as resolve
+    return resolve(pack)
+
+
 def _context(pack):
     pack = Path(pack)
     info = manifest(pack)
@@ -126,6 +132,7 @@ def _column_context(pack, samples, audit_root=None):
 
 def column_context(pack: str | Path, *, audit_root: str | Path | None = None) -> list[dict]:
     """Inspect original source columns and separately pinned submitted metadata without a feature query."""
+    pack = runtime_pack(pack)
     _, _, samples = _context(pack)
     return _column_context(pack, samples, audit_root)
 
@@ -166,7 +173,7 @@ def profiles(pack: str | Path, features, *, audit_root: str | Path | None = None
     original transcript table. It neither sums transcripts nor maps gene versions.
     The source-specific query record is returned in ``frame.attrs['identifier_query']``.
     """
-    pack = Path(pack)
+    pack = runtime_pack(pack)
     labels = features.splitlines() if isinstance(features, str) else list(features)
     if not labels or any(not isinstance(label, str) or not label for label in labels):
         raise ValueError('Enter exact deposited feature labels, one per line')
@@ -215,7 +222,7 @@ def technical_qc(pack: str | Path) -> pd.DataFrame:
     """Describe every original sample across all source rows without changing values or units."""
     from . import measurement_qc as Q
 
-    pack = Path(pack)
+    pack = runtime_pack(pack)
     info, source, samples = _context(pack)
     matrix = source.read().to_pandas()
     if matrix.source_row.tolist() != list(range(info['features'])):

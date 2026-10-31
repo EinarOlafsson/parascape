@@ -97,6 +97,36 @@ zeros, missingness, invalid values and coverage; the biological quality score
 remains unavailable until independently calibrated. Acquired files or locally
 prepared packs do not establish that a public release includes them.
 
+Quantity tables can be supplied as optional GitHub data components. The core
+contains their original manifest and reconciliation receipt so the source
+catalogue remains browsable before downloading the measurements. Querying a
+missing table offers **Download selected dataset**, showing its size, destination,
+progress and cancellation controls. **Download / verify selected table…** also
+checks or repairs an installed table. Verified files are reused offline.
+
+The optional pack includes the unchanged value and literal-token matrices, source
+annotations, submitted sample metadata, numerical QC and preparation records.
+The reader checks its identity against the core receipts and verifies the original
+runtime outputs before using them. Cancellation or a source/query change leaves
+no stale result to export. Existing local source collections stay in place;
+queries do not fetch data automatically through the Python API.
+
+For an explicitly selected metadata-only pack, a script can inspect and download
+its missing components before querying:
+
+```python
+from parascape import deposited_values, data_components, optional_deposited_data
+
+download_plan = optional_deposited_data.plan(selected_pack_path)
+for component in download_plan["missing"]:
+    data_components.download(component)
+values = deposited_values.profiles(selected_pack_path, "EXACT_SOURCE_TARGET_ID")
+```
+
+The component index must belong to a verified published data release. Staged
+drafts are unavailable to the download flow. Table downloads preserve source units
+and identifiers and do not establish cross-assay comparability.
+
 The bundled reference is **ME49_host**: ME49 parasite transcripts compete with human
 and mouse transcripts; the parasite genome supplies Salmon decoys. Both Salmon
 and kallisto results are included. All already-verified ME49, GT1 and VEG alternative-reference quantifications for

@@ -19,7 +19,7 @@ except OSError:
 
 def enrich(pack, frame, *, audit_root=None):
     """Retain all measurements and separately annotate exact filename links and review-only stem candidates."""
-    pack = Path(pack)
+    pack = D.runtime_pack(pack)
     info = D.manifest(pack)
     metadata = json.loads((pack / 'source_metadata.json').read_text())
     if (info['assay'] != 'deposited protein-accession quantities'

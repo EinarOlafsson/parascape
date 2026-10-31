@@ -23,7 +23,7 @@ import uuid
 from . import paths
 
 PREFIX = '/EinarOlafsson/parascape/releases/download/'
-KINDS = {'sparse_coordinates', 'sparse_axes', 'workbook_cells'}
+KINDS = {'sparse_coordinates', 'sparse_axes', 'workbook_cells', 'deposited_values'}
 
 
 def storage_root() -> Path:

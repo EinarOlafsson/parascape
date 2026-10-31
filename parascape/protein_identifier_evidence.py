@@ -60,7 +60,7 @@ def records(pack: str | Path, queries, *, namespace: str, root: str | Path | Non
     labels = queries.splitlines() if isinstance(queries, str) else list(queries)
     if not labels or any(not isinstance(label, str) or not label for label in labels):
         raise ValueError('Enter exact source identifiers, one per line')
-    pack = Path(pack)
+    pack = D.runtime_pack(pack)
     info = D.manifest(pack)
     if namespace not in namespaces_for_assay(info['assay']):
         raise ValueError('This identifier class does not apply to the declared source assay')
