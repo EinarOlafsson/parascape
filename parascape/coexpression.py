@@ -2,6 +2,13 @@
 
 Rows remain source features, including protein groups and transcripts. Correlation
 does not establish interaction, regulation, gene equivalence or replicate identity.
+
+Why it works this way: each search stays inside one deposited table, because values from
+different studies, units or quantity families are not on a common scale, and mixing them
+would make study effects look like coexpression. Only columns where both features are
+finite are paired, so missing measurements never become zeros, while measured zeros are
+kept. Runs that share one submitted sample are refused, because repeated sequencing of a
+sample would otherwise count as extra evidence.
 """
 from __future__ import annotations
 
@@ -28,6 +35,8 @@ RNA_ASSAYS = {
 
 @dataclass
 class ExpressionMatrix:
+    """One source table as stored: original row identities, exact labels, sample context and lineage."""
+
     values: pd.DataFrame  # original row identity x original sample column
     labels: pd.Series
     samples: list[dict]

@@ -38,9 +38,7 @@ and choose candidates for follow-up experiments. The bundled maps contain 8,140
 ## Install
 
 **compare → Gene expression** covers all 296 verified RNA-seq runs from 23 studies.
-Compare gene accessions, browse samples and export values. Coverage is partial; [RNA expression guide](https://github.com/EinarOlafsson/parascape/blob/main/docs/rna-expression.md).
-
-**compare → Coexpression** explores RNA or protein features that vary together within a selected source. Review sample columns, query an exact source identifier, inspect correlations and profile plots, and export all results with treatment records. [Coexpression guide](docs/coexpression.md).
+Compare gene accessions, browse samples and export values. Coverage is partial; [RNA expression guide](https://github.com/EinarOlafsson/parascape/blob/main/docs/rna-expression.md). **compare → Coexpression** finds RNA or protein features that vary together within one source, with plots and complete exports; [coexpression guide](https://github.com/EinarOlafsson/parascape/blob/main/docs/coexpression.md).
 
 Python 3.10 or newer is required. The desktop app needs a display and OpenGL.
 

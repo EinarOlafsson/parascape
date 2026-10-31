@@ -1,4 +1,12 @@
-"""RNA/protein coexpression with explicit source, column and transformation choices."""
+"""RNA/protein coexpression with explicit source, column and transformation choices.
+
+The panel asks the user to load a source and review its sample columns before any
+calculation, because columns can be channels, repeated runs or technical repeats, and only
+the user can decide which represent the comparison intended. Work runs in the background
+and a changed selection invalidates the previous result, so a displayed ranking always
+matches the visible choices. Row z scores in the heatmap are for display only and are
+labelled as such; exports carry the original values and a complete treatment record.
+"""
 from __future__ import annotations
 
 import json
@@ -106,7 +114,7 @@ class CoexpressionPanel(QtWidgets.QWidget):
         self.export_button = QtWidgets.QPushButton('Export all results + treatment record')
         self.run_button.setToolTip('Correlate the seed feature with every other feature over the selected columns, in the background. Correlation is shared variation, not physical interaction.')
         self.cancel_button.setToolTip('Stop the running search and discard its partial result.')
-        self.export_button.setToolTip('Save every ranked result as CSV together with a record of the source, selected columns, method, transformation and refusals.')
+        self.export_button.setToolTip('Save every ranked result as CSV or TSV together with a record of the source, selected columns, method, transformation and refusals.')
         self.export_button.setEnabled(False)
         for widget in (self.run_button, self.cancel_button, self.export_button):
             actions.addWidget(widget)
@@ -198,6 +206,7 @@ class CoexpressionPanel(QtWidgets.QWidget):
         self.summary.setText('Cancelled; verified source files are retained. Any active file verification will finish safely.')
 
     def load_selected(self):
+        """Read the chosen source and list its sample columns with their submitted context."""
         source = self.source.currentData()
         if not source or self.worker is not None:
             return
@@ -243,10 +252,12 @@ class CoexpressionPanel(QtWidgets.QWidget):
         self._invalidate()
 
     def selected_columns(self):
+        """Return the original names of the sample columns currently ticked for use."""
         return [self.matrix.samples[i]['column'] for i in range(self.samples.rowCount())
                 if self.samples.item(i, 0).checkState() == QtCore.Qt.CheckState.Checked]
 
     def calculate(self):
+        """Start a background correlation of the seed feature against every other feature."""
         if self.matrix is None:
             self.summary.setText('Load and review a source first.'); return
         if self.worker is not None:
@@ -324,6 +335,7 @@ class CoexpressionPanel(QtWidgets.QWidget):
         self.canvas.draw_idle()
 
     def save(self, path=''):
+        """Export all ranked results and the treatment record; returns the number of rows written."""
         if self.result is None:
             return 0
         if not path:
