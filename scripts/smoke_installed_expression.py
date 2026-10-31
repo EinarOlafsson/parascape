@@ -326,7 +326,7 @@ def main():
     assert panel.treatment_record['source_flag_view']['excluded_source_rows'] > 0
     assert panel.save_treatment(str(output / 'source-marked-view-treatment.json')) == 1
     panel.exclude_source_marked.setChecked(False)
-    new_assay_views = 0
+    new_assay_views = parent_gene_views = 0
     for item in original_values:
         if item['assay'] not in ('deposited original gene-table quantities', 'deposited original protein-feature quantities',
                 'deposited original transcript-table quantities', 'deposited original target-table quantities'):
@@ -345,9 +345,27 @@ def main():
         assert len(sidecars) == 1
         record = json.loads(sidecars[0].read_text())
         assert record
-        assert all(not panel.identifier_kind.model().item(i).isEnabled() for i in range(1, panel.identifier_kind.count()))
+        parent_source = item['assay'] == 'deposited original transcript-table quantities'
+        allowed_namespaces = {'reported_gene_id'} if parent_source else set()
+        assert all(panel.identifier_kind.model().item(i).isEnabled() ==
+                   (panel.identifier_kind.itemData(i) in allowed_namespaces)
+                   for i in range(1, panel.identifier_kind.count()))
+        if parent_source:
+            metadata = json.loads((D.runtime_pack(folder) / 'source_metadata.json').read_text())
+            parent = metadata['row_annotations'][0]['source_fields']['gene_id']
+            expected = D.profiles(folder, [parent], match='reported_gene_id')
+            from parascape import source_flags as SF
+            expected_view, _ = SF.apply(expected, exclude_marked=False)
+            panel.identifier_kind.setCurrentIndex(panel.identifier_kind.findData('reported_gene_id'))
+            panel.features.setPlainText(parent); panel.show_values()
+            pd.testing.assert_frame_equal(panel.result, expected_view, check_exact=True)
+            query = panel.treatment_record['reported_parent_gene_query']
+            assert query == expected.attrs['identifier_query']
+            assert query['gene_aggregation_performed'] is False and query['canonical_gene_equivalence_established'] is False
+            assert panel.save(str(output / f'reported-parent-{parent_gene_views}.csv')) > 0
+            parent_gene_views += 1
         new_assay_views += 1
-    assert new_assay_views == 230
+    assert new_assay_views == 230 and parent_gene_views == 48
     from parascape import sparse_values_panel as SP
     from parascape import sparse_record_qc as SQ
     sparse = window.findChildren(SP.SparseValuesPanel)
@@ -375,6 +393,7 @@ def main():
                           protein_quantity_packs=protein_packs+generic_protein_packs, gene_quantity_packs=gene_packs, workbench_quantity_packs=workbench_packs, installed_new_assay_views=new_assay_views,
                           sparse_dataset_metadata_views=contract['sparse_dataset_metadata_views'],
                           optional_quantity_components_prepared=prepared_components,
+                          installed_reported_parent_gene_views=parent_gene_views,
                           original_quantity_cells=cells, missing_original_cells=missing, source_quantity_columns=quantity_columns,
                           exact_primary_filename_matches=filename_matches, submitted_factor_occurrences=factor_occurrences,
                           experiment_label_candidate_columns=experiment_candidates, reference_source_occurrences=len(acquired),
