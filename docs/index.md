@@ -22,6 +22,7 @@ parascape
 - [Module reference](api/parascape.html): generated signatures and docstrings.
 - [Tutorials](tutorial/index.html): five task walkthroughs, each as a GUI tour and a notebook, plus one long guide to every feature.
 - [Dataset catalogue](datasets.md): source records, assay types, and coverage.
+- [Coexpression](coexpression.md): RNA/protein profiles, explicit sample selection and auditable correlations.
 - [Space packs](space-packs.md): validate and install versioned organism data outside the wheel.
 - [Strategy calibration](calibration.md): how well each strategy recovers held-out knowledge, over a grid of its settings, with intervals.
 - [Strategy cards](strategy_cards.md): every strategy as the Strategies tab shows it -- the same four bars (better than chance, reach, two plain task metrics), what its test does, and one real failure beside one real success.

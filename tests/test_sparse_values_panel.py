@@ -110,3 +110,7 @@ def test_compare_install_exposes_sparse_tab(qtbot, monkeypatch, tmp_path):
     index = [tabs.tabText(i) for i in range(tabs.count())].index('Sparse measurements')
     assert isinstance(tabs.widget(index).widget(), SparseValuesPanel)
     assert not tabs.widget(index).widget().show_button.isEnabled()
+    from parascape.coexpression_panel import CoexpressionPanel
+    coexpression_index = [tabs.tabText(i) for i in range(tabs.count())].index('Coexpression')
+    assert isinstance(tabs.widget(coexpression_index).widget(), CoexpressionPanel)
+    assert window.coexpression is tabs.widget(coexpression_index).widget()

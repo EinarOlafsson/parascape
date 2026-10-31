@@ -356,11 +356,14 @@ def install(window) -> ComparePanel | None:
     from .sparse_values_panel import SparseValuesPanel
     from .workbook_values_panel import WorkbookValuesPanel
     from .reference_identifiers_panel import ReferenceIdentifiersPanel
+    from .coexpression_panel import CoexpressionPanel
     profiles = RNAProfilesPanel()
     profiles.gene_chosen.connect(window._workflow_gene)
     tabs = QtWidgets.QTabWidget()
     tabs.setMinimumWidth(120)
+    coexpression = CoexpressionPanel()
     for page, title in ((profiles, 'Gene expression'), (StudyDesignPanel(), 'Studies & samples'),
+                        (coexpression, 'Coexpression'),
                         (PublishedExpressionPanel(), 'Published expression'),
                         (SourceMatricesPanel(), 'Deposited matrices'),
                         (DepositedValuesPanel(), 'Other measurements'),
@@ -384,4 +387,5 @@ def install(window) -> ComparePanel | None:
         window.right_dock.raise_()
     window.compare, window.compare_dock = panel, dock
     window.rna_profiles = profiles
+    window.coexpression = coexpression
     return panel
