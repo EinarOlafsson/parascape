@@ -168,7 +168,9 @@ class SparseValuesPanel(QtWidgets.QWidget):
     def _filter_sources(self):
         previous = (self.pack.currentData() or {}).get('path')
         text = self.source_filter.text().casefold().strip()
-        sources = [item for item in self._catalogue if text in json.dumps(item['source_record'], ensure_ascii=False).casefold()]
+        sources = [item for item in self._catalogue if text in json.dumps(
+            dict(source=item['source_record'], url=item['source_url'], quantity=item['quantity'],
+                 layer=item.get('source_layer')), ensure_ascii=False).casefold()]
         if self.unique_coordinates.isChecked():
             sources = [source for source in sources if self._qc_reports.get(source['path']) is not None
                        and self._qc_reports[source['path']]['facts']['global_duplicate_count_proven']
@@ -177,7 +179,11 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.pack.clear()
         for item in sources:
             record = item['source_record']
-            self.pack.addItem(f"{record['studies']} · {record['source_entities']} · {Path(item['source_url']).name}", item)
+            label = f"{record['studies']} · {record['source_entities']} · {Path(item['source_url']).name}"
+            if item.get('source_layer'):
+                label += f" · layer {item['source_layer']}"
+            self.pack.addItem(label, item)
+            self.pack.setItemData(self.pack.count() - 1, item['quantity'], QtCore.Qt.ItemDataRole.ToolTipRole)
         for index, item in enumerate(sources):
             if item['path'] == previous:
                 self.pack.setCurrentIndex(index)

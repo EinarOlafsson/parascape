@@ -95,6 +95,7 @@ def catalogue(root: str | Path | None = None) -> tuple[list[dict], list[str]]:
                                     source_record=info['source_record'],
                                     dimensions=info['declared_dimensions'],
                                     quantity=info['quantity'],
+                                    source_layer=info.get('source_storage', {}).get('matrix_path'),
                                     biological_or_comparative_admission=False))
             except (OSError, ValueError, KeyError, TypeError) as error:
                 errors.append(str(item) + ': ' + str(error))

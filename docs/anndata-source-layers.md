@@ -5,6 +5,8 @@ The original-record browser accepts separately verified AnnData HDF5 layers in
 CSR, CSC or dense storage. Each descriptor identifies the original matrix path.
 Rows remain observations and columns remain variables. Alternative layers and
 files retain their own descriptors; they are not independent biological replicates.
+The source selector shows the original matrix path (for example `X` or
+`layers/spliced`), and the source filter also searches layer names and quantities.
 
 The binary-source receipt must cover every stored value and its order, derived
 coordinates, recovery of the original dtype bits, and the original axes. Dense

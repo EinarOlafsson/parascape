@@ -1,5 +1,6 @@
 """AnnData layers must retain observation/variable orientation and exact binary proof."""
 import json
+import shutil
 
 import pytest
 import pyarrow as pa
@@ -79,3 +80,28 @@ def test_ann_orientation_cannot_be_changed_even_when_axis_lengths_match(tmp_path
     descriptor['axis_roles']['features']['source_coordinate']='source_row'
     descriptor['axis_roles']['barcodes']['source_coordinate']='source_column'
     with pytest.raises(ValueError,match='without transposing'):open_dataset(roots,save_descriptor(roots,descriptor))
+
+
+def test_layers_from_same_file_have_distinct_labels_and_are_searchable(qtbot,tmp_path):
+    from parascape.sparse_values_panel import SparseValuesPanel
+    roots,path,folder=fixture(tmp_path)
+    first=dict(file=path.name,sha256=path.stem,source_url='matrix')
+    descriptor=json.loads(path.read_text());ref=descriptor['coordinate_artifact']
+    second_folder=folder.with_name('e'*64);shutil.copytree(folder,second_folder)
+    matrix=json.loads((second_folder/'manifest.json').read_text())
+    matrix['source_storage']['matrix_path']='layers/unspliced'
+    descriptor['source_storage']=matrix['source_storage'];ref['directory']=second_folder.name
+    (second_folder/'manifest.json').write_text(json.dumps(matrix));ref['manifest_sha256']=S._sha(second_folder/'manifest.json')
+    receipt=json.loads((second_folder/'validation.json').read_text());receipt['manifest_sha256']=ref['manifest_sha256']
+    (second_folder/'validation.json').write_text(json.dumps(receipt));ref['validation_sha256']=S._sha(second_folder/'validation.json')
+    second_path=save_descriptor(roots,descriptor)
+    second=dict(file=second_path.name,sha256=second_path.stem,source_url='matrix')
+    (roots['sparse_datasets']/'catalogue.json').write_text(json.dumps(dict(datasets=[first,second])))
+    panel=SparseValuesPanel(roots['sparse_datasets'],coordinate_root=roots['sparse_coordinates'],axis_root=roots['sparse_axes'])
+    qtbot.addWidget(panel)
+    assert panel.pack.count()==2
+    assert 'layer layers/spliced' in panel.pack.itemText(0)
+    assert 'layer layers/unspliced' in panel.pack.itemText(1)
+    panel.source_filter.setText('unspliced')
+    assert panel.pack.count()==1
+    assert panel.pack.currentData()['source_layer']=='layers/unspliced'
