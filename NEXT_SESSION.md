@@ -1,5 +1,39 @@
 # Next session: start here
 
+**Publication and sparse-data continuation (2026-10-31):** Version0.0.7.0 is
+published on official PyPI and GitHub at commit
+`e0126de0b484d9a937b9f8dbf884bc05fcac31e4`. Native publisher status is complete;
+live checkout and owned launcher cache were updated after publication. The frozen
+release gate described below is finished; continue new development on nightly.
+The 313 newer dense quantities and sparse collections are not in public7 yet.
+
+All66 original Matrix Market sources now have structurally reconciled feature/cell
+axis candidates. Portable130 axis tables retain85,196,333 original data records,
+all fields, repeated labels and two explicit CSV headers. Source CSV genome fields
+stay literal. GSM8491519_DGE has15,042 cell-axis candidate rows and62,704 feature-
+axis candidate columns; original coordinates are preserved without transposition.
+Structural matching does not establish biological identity or author-order truth.
+Independent full-axis validation passed; receipts/code/units/proofs are archived
+under NAS processing_audit/custom_sparse_axis_support (490files at observation).
+
+Numeric streaming preparation continues:65/66 sources,1,217,265,970 original stored
+records verified,one large source still validating. Enabled five-minute
+parascape-original-sparse-datasets.timer binds only verified numeric packs to the
+current checked axis contexts/dimensions. At observation65bound,one waiting,zero
+reviews;523 binding/path/source/output mutation guard checks passed. Descriptors
+are in NAS prepared_sparse_datasets. Other enabled persistent services preserve
+coordinates and portable axes; hourly axis planning also continues. Max24CPU
+boundary retained, no model/API calls. Original repeated coordinates remain separate;
+no numerical transformation, implicit-zero materialization or biological QC inferred.
+
+Next: implement an exact original-feature/coordinate reader, duplicate/logical-cell
+policy and GUI integration, then optional/sharded GitHub data downloads and the next
+portable release. Existing452 dense/original quantity views remain intact. Downloads
+and quantification continue; PRIDE observed2987/3519 files,192,067,745,081bytes captured,
+source acquisition only. Full all-dataset/fair-comparison goal active/incomplete;
+historical inference remains paused. Preserve restricted/private paths and tutorial
+workers. See private .starplast-watchdog/custom-sparse-axis-handoff.json.
+
 **Frozen portable0.0.7.0 preparation (2026-10-30):** Isolated source checkout
 `/media/carruthers/mnt1/parascape-release-0.0.7.0-checkout` starts8ae766a;
 version bumped with scripts/release.py. Task-owned stage
