@@ -95,12 +95,13 @@ def validation(folder, info=None):
     info = info or manifest(folder)
     path = folder / 'independent_validation.json'
     if not path.exists():
-        return dict(status='independent_verification_pending', independent_whole_source_reconciliation=False,
-                    biological_quality_score=None)
-    if path.is_symlink():
+        record = dict(status='independent_verification_pending', independent_whole_source_reconciliation=False,
+                      biological_quality_score=None)
+    elif path.is_symlink():
         raise ValueError('Workbook validation must be a regular artifact')
-    record = json.loads(path.read_text())
-    if (record['measurement_manifest_sha256'] != _sha(folder / 'manifest.json')
+    else:
+        record = json.loads(path.read_text())
+    if path.exists() and (record['measurement_manifest_sha256'] != _sha(folder / 'manifest.json')
             or record['input_sha256'] != info['input_sha256'] or record['measurement_admission']
             or record['biological_quality_score'] is not None):
         raise ValueError('Workbook validation describes a different source or scope')
@@ -110,7 +111,18 @@ def validation(folder, info=None):
                 or record['rows'] != info['extraction']['rows']
                 or record['shared_strings'] != info['extraction']['shared_strings']):
             raise ValueError('Workbook verification coverage differs')
-    return record
+    result = dict(record, decoded_value_checks_agree=True if record.get('independent_whole_source_reconciliation') else None,
+                  reported_reader_disagreements=0 if record.get('independent_whole_source_reconciliation') else None)
+    if info['extraction']['format'] == 'BIFF_decoded':
+        from .workbook_qc import report
+        supplementary = report(folder, info)
+        if supplementary is not None:
+            raw = supplementary['raw_report']
+            result.update(status=raw['status'], independent_whole_source_reconciliation=True,
+                          decoded_value_checks_agree=raw['independent_Calamine_whole_text_agreement'],
+                          reported_reader_disagreements=raw['independent_Calamine_text_disagreements'],
+                          supplementary_biff_qc=supplementary, original_validation=record)
+    return result
 
 
 def catalogue(root=None):
@@ -143,6 +155,8 @@ def catalogue(root=None):
                                     sheets=len(info['extraction']['sheets']), format=info['extraction']['format'],
                                     validation_status=proof['status'],
                                     independent_whole_source_reconciliation=proof['independent_whole_source_reconciliation'],
+                                    decoded_value_checks_agree=proof['decoded_value_checks_agree'],
+                                    reported_reader_disagreements=proof['reported_reader_disagreements'],
                                     source_occurrences=item.get('source_occurrences', []),
                                     biological_or_comparative_admission=False))
             except (OSError, ValueError, KeyError, TypeError) as error:
@@ -175,6 +189,7 @@ class WorkbookQuery:
     source_rows: tuple[int, ...]
     preview: list[dict]
     record: dict
+    metadata_folder: Path | None = None
 
     def blocks(self, cancel=None):
         """Stream complete physical records, preserving original order and duplicates."""
@@ -200,12 +215,15 @@ def prepare_query(folder, sheet, labels=(), *, label_column=0, preview_rows=20,
     substituted for text labels. Select a label column to disambiguate occurrences.
     """
     from .optional_workbook_data import resolve
+    metadata_folder = Path(folder)
     folder = resolve(folder)
     _cancel(cancel)
     digest = _sha(folder / 'manifest.json')
     info = manifest(folder, verify=True)
     if _sha(folder / 'manifest.json') != digest:
         raise ValueError('Workbook manifest changed during verification')
+    if _sha(metadata_folder / 'manifest.json') != digest:
+        raise ValueError('Workbook discovery metadata and source payload differ')
     available = {s['sheet_index']: s for s in info['extraction']['sheets']}
     if type(sheet) is not int or sheet not in available:
         raise ValueError('Unknown original worksheet')
@@ -238,7 +256,7 @@ def prepare_query(folder, sheet, labels=(), *, label_column=0, preview_rows=20,
                   label_column=label_column, match_mode='literal decoded text; no aliases, numeric coercion or canonical mapping',
                   unmatched_labels=[label for label in labels if label not in found], matching_text_cells=occurrences,
                   selected_source_row_coordinates=sorted(selected), preview_row_limit=preview_rows,
-                  validation=validation(folder, info), source_storage_facts=info['extraction'],
+                  validation=validation(metadata_folder, info), source_storage_facts=info['extraction'],
                   original_treatment=info['treatment'], biological_or_comparative_admission=False,
                   quantity_units_and_sample_roles='Unreviewed; rows can contain headers, annotations, measurements and statistics',
                   operations=['Choose one original worksheet', 'Select source row coordinates by exact text or first source-row preview',
@@ -246,7 +264,7 @@ def prepare_query(folder, sheet, labels=(), *, label_column=0, preview_rows=20,
                               'No normalization, aggregation, formula calculation, zero filling, sample matching or gene mapping'],
                   numeric_representation=info['extraction']['numeric_representation'],
                   presence_semantics='Missing fields use explicit presence columns in CSV; absent worksheet cells are not manufactured')
-    result = WorkbookQuery(folder, sheet, tuple(sorted(selected)), [], record)
+    result = WorkbookQuery(folder, sheet, tuple(sorted(selected)), [], record, metadata_folder)
     count = 0
     for block in result.blocks(cancel):
         count += block.num_rows
@@ -263,7 +281,10 @@ def export_csv(result, destination, *, cancel=None):
     destination = Path(destination)
     if destination.exists() or destination.with_suffix(destination.suffix + '.json').exists():
         raise FileExistsError('Choose a new workbook export filename')
-    if destination.resolve().is_relative_to(result.folder.resolve()):
+    protected = [result.folder]
+    if result.metadata_folder is not None:
+        protected.append(Path(result.metadata_folder))
+    if any(destination.resolve().is_relative_to(folder.resolve()) for folder in protected):
         raise ValueError('Exports must be outside the immutable workbook source directory')
     destination.parent.mkdir(parents=True, exist_ok=True)
     handle, temporary_name = tempfile.mkstemp(prefix='.' + destination.name + '-', suffix='.partial', dir=destination.parent)

@@ -90,7 +90,8 @@ def build_component(source, directory, destination, *, tag='v0.0.8.0', part_limi
         W.manifest(source, verify=True)
         receipt = W.validation(source, manifest)
         if receipt['status'] not in ('all_OOXML_source_cells_independently_reconciled',
-                                      'BIFF_checksums_verified_independent_reader_review_required'):
+                                      'BIFF_checksums_verified_independent_reader_review_required',
+                                      'all_BIFF_physical_cells_and_decoded_values_reconciled'):
             raise ValueError('Workbook component requires a bound verification record with explicit scope')
         files = {name: dict(size=(source/name).stat().st_size, sha256=C._hash(source/name))
                  for name in ('manifest.json', 'independent_validation.json', *manifest['outputs'])}

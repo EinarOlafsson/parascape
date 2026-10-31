@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Inspect source-bound binary-workbook QC before downloading cell payloads.
+  Filter complete source verification separately from decoded-value reader
+  agreement; retain encoding differences, original errors and formula-cache
+  bytes in source details and export sidecars. Preserve earlier receipts and
+  CSV values, and keep biological quality and measurement roles unreviewed.
+
 - Browse complete original workbook rows, including hidden worksheets, duplicate
   cells, source numeric text, legacy binary64 values and formula caches. Search
   literal text labels in a chosen column and export every selected cell with

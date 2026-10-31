@@ -9,6 +9,7 @@ from PyQt6 import QtCore, QtWidgets
 
 from . import workbook_values as W
 from . import optional_workbook_data as O
+from . import workbook_qc as Q
 from .component_download_dialog import ComponentDownloadDialog
 
 
@@ -45,6 +46,7 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         self._entries = []
         self.context_dialog = None
         self.context_record = None
+        self.qc_dialog = None
         layout = QtWidgets.QVBoxLayout(self)
         description = QtWidgets.QLabel(
             'Original workbook rows. Labels, measurements, annotations and statistical results retain '
@@ -55,6 +57,14 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         self.source_filter.setPlaceholderText('Filter by study or workbook filename')
         self.source_filter.textChanged.connect(self._filter)
         layout.addWidget(self.source_filter)
+        self.require_verified = QtWidgets.QCheckBox('Require complete source-cell verification')
+        self.require_verified.setToolTip('Show sources with independent whole-source cell reconciliation. This checks preservation; biological quality and comparable measurement units remain unreviewed.')
+        self.require_verified.toggled.connect(self._filter)
+        layout.addWidget(self.require_verified)
+        self.require_agreement = QtWidgets.QCheckBox('Require decoded-value reader agreement')
+        self.require_agreement.setToolTip('Exclude unknown verification and reported reader discrepancies. Sources with primary-byte verification and a reader disagreement remain available when unchecked.')
+        self.require_agreement.toggled.connect(self._filter)
+        layout.addWidget(self.require_agreement)
         self.pack = QtWidgets.QComboBox()
         self.pack.setSizeAdjustPolicy(QtWidgets.QComboBox.SizeAdjustPolicy.AdjustToMinimumContentsLengthWithIcon)
         self.pack.setMinimumContentsLength(12)
@@ -99,6 +109,10 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         self.context_button = QtWidgets.QPushButton('Inspect source and treatment…')
         self.context_button.clicked.connect(self.show_context)
         layout.addWidget(self.context_button)
+        self.qc_button = QtWidgets.QPushButton('Inspect source QC…')
+        self.qc_button.setToolTip('Read source-bound QC metadata before downloading the workbook. Original errors, formula bytes and reader differences remain separate from biological quality.')
+        self.qc_button.clicked.connect(self.show_qc)
+        layout.addWidget(self.qc_button)
         self.summary = QtWidgets.QLabel()
         self.summary.setWordWrap(True)
         layout.addWidget(self.summary)
@@ -117,6 +131,7 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         self.cancel_button.setEnabled(self._worker is not None)
         self.export_button.setEnabled(self.result is not None and self._worker is None)
         self.context_button.setEnabled(self.result is not None)
+        self.qc_button.setEnabled(bool(self.pack.currentData()))
         self.download_button.setEnabled(bool(self.pack.currentData()) and self._worker is None)
 
     def _clear(self, *_):
@@ -130,6 +145,9 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         if self.context_dialog is not None:
             self.context_dialog.close()
             self.context_dialog = None
+        if self.qc_dialog is not None:
+            self.qc_dialog.close()
+            self.qc_dialog = None
         self._buttons()
 
     def refresh(self):
@@ -147,6 +165,10 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         self.pack.blockSignals(True)
         self.pack.clear()
         for row in self._entries:
+            if self.require_verified.isChecked() and not row['independent_whole_source_reconciliation']:
+                continue
+            if self.require_agreement.isChecked() and row['decoded_value_checks_agree'] is not True:
+                continue
             context = row['source_record']
             label = f"{context.get('studies', '')} · {Path(row['source_url']).name}"
             if needle in (label + json.dumps(context)).casefold():
@@ -215,7 +237,9 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         else:
             self.result = result
             self.table.setRowCount(len(result.preview))
+            supplementary = result.record['validation'].get('supplementary_biff_qc')
             for r, row in enumerate(result.preview):
+                original_formula = Q.formula_for(supplementary, result.sheet, row)
                 for c, key in enumerate(self.COLUMNS):
                     if key == 'source_value':
                         value = row['decoded_text'] if row['decoded_text'] is not None else row['source_value_token']
@@ -226,9 +250,13 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
                                  'BIFF:error_code':'Error code', 'BIFF:blank':'Blank'}.get(row[key], row[key])
                         if row[key] == 'n':
                             value = 'Formula cache' if row['formula_xml'] else ('Number' if row['source_value_token'] is not None else 'Blank')
+                        if original_formula:
+                            value = 'Formula cache / ' + original_formula['cached_result_kind']
                     elif key == 'formula_xml' and row[key] is not None:
                         import xml.etree.ElementTree as ET
                         value = ET.fromstring(row[key]).text or 'Shared formula; inspect source details'
+                    elif key == 'formula_xml' and original_formula:
+                        value = 'Original BIFF tokens; inspect source details'
                     else:
                         value = row[key]
                     item = QtWidgets.QTableWidgetItem('' if value is None else str(value))
@@ -238,8 +266,10 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
                     item.setToolTip(hint)
                     self.table.setItem(r, c, item)
             proof = result.record['validation']
-            grade = ('Every OOXML source cell independently reconciled' if proof['independent_whole_source_reconciliation']
+            grade = ('Original source cells independently reconciled' if proof['independent_whole_source_reconciliation']
                      else 'Independent source verification incomplete')
+            if proof['reported_reader_disagreements']:
+                grade += f"; {proof['reported_reader_disagreements']:,} reader text disagreements retained"
             self.summary.setText(f"{result.record['selected_physical_cells']:,} stored cells in selected row coordinates; "
                                  f"showing {len(result.preview):,}. {grade}. Units, sample roles and biological quality remain unreviewed. "
                                  f"Unmatched labels: {len(result.record['unmatched_labels'])}.")
@@ -252,6 +282,9 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         selected = self.table.currentRow()
         self.context_record = dict(self.result.record, selected_source_cell=(
             self.result.preview[selected] if selected >= 0 else None))
+        self.context_record['selected_source_formula'] = Q.formula_for(
+            self.result.record['validation'].get('supplementary_biff_qc'), self.result.sheet,
+            self.context_record['selected_source_cell'])
         if self.context_dialog is not None:
             self.context_dialog.close()
         self.context_dialog = QtWidgets.QDialog(self)
@@ -262,6 +295,29 @@ class WorkbookValuesPanel(QtWidgets.QWidget):
         layout.addWidget(text)
         self.context_dialog.resize(800, 550)
         self.context_dialog.show()
+
+    def show_qc(self):
+        """Show bound source-preservation facts without reading optional payloads."""
+        if not self.pack.currentData():
+            return
+        try:
+            record = W.validation(self.pack.currentData()['path'])
+            if self.qc_dialog is not None:
+                self.qc_dialog.close()
+            self.qc_dialog = QtWidgets.QDialog(self)
+            self.qc_dialog.setWindowTitle('Original workbook source QC')
+            layout = QtWidgets.QVBoxLayout(self.qc_dialog)
+            label = QtWidgets.QLabel('Source preservation and reader agreement are separate checks. '
+                                    'Biological quality, units and sample roles remain unreviewed.')
+            label.setWordWrap(True)
+            layout.addWidget(label)
+            text = QtWidgets.QPlainTextEdit(json.dumps(record, indent=2, ensure_ascii=False))
+            text.setReadOnly(True)
+            layout.addWidget(text)
+            self.qc_dialog.resize(800, 550)
+            self.qc_dialog.show()
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            self.summary.setText(str(error))
 
     def download_selected(self):
         """Download or reverify only this hosted workbook's pinned source artifacts."""
