@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Find original transcript measurements by their exact reported parent gene_id.
+  Retain separate transcript rows, source units and query evidence in exports;
+  do not infer gene-version equivalence or sum alternative transcript analyses.
 - Reject repeated, overlapping or absent RNA comparison runs and known shared
   submitted samples. Refuse invalid numerical inputs and mismatched TPM axes.
   Comparison exports now include checksum-bound sample, normalization, input

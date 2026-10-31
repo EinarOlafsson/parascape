@@ -130,14 +130,57 @@ def column_context(pack: str | Path, *, audit_root: str | Path | None = None) ->
     return _column_context(pack, samples, audit_root)
 
 
-def profiles(pack: str | Path, features, *, audit_root: str | Path | None = None) -> pd.DataFrame:
-    """Return exact source-label matches, retaining duplicate rows and literal measurement tokens."""
+def _reported_parent_rows(pack, info, labels):
+    if info['assay'] != 'deposited original transcript-table quantities':
+        raise ValueError('Reported parent gene matching requires an original transcript-table source')
+    metadata = json.loads((pack / 'source_metadata.json').read_text())
+    if metadata.get('original_feature_column') != 'transcript_id' or 'gene_id' not in metadata.get('original_annotation_columns', []):
+        raise ValueError('This transcript source has no checked reported gene_id annotation')
+    annotations = metadata.get('row_annotations')
+    if not isinstance(annotations, list) or len(annotations) != info['features']:
+        raise ValueError('Reported parent gene annotation coverage differs')
+    axes = pq.read_table(pack / 'values.parquet', columns=['source_row', 'feature_label']).to_pylist()
+    rows = []; found = set(); wanted = set(labels)
+    for position, (annotation, axis) in enumerate(zip(annotations, axes, strict=True)):
+        if (type(annotation.get('source_row')) is not int or annotation['source_row'] != position
+                or axis['source_row'] != position or annotation.get('feature_label') != axis['feature_label']
+                or not isinstance(annotation.get('source_fields', {}).get('gene_id'), str)):
+            raise ValueError('Reported parent gene annotations differ from original transcript rows')
+        parent = annotation['source_fields']['gene_id']
+        if parent in wanted:
+            rows.append(position); found.add(parent)
+    return rows, dict(schema_version=1, match='reported_gene_id', exact_query_literals=labels,
+        unmatched_literals=[label for label in labels if label not in found], selected_source_rows=rows,
+        original_feature_column='transcript_id', original_annotation_column='gene_id',
+        source_metadata_sha256=info['outputs']['source_metadata.json'],
+        scope='Exact reported parent gene_id within this source only; every original transcript row remains separate',
+        canonical_gene_equivalence_established=False, gene_aggregation_performed=False,
+        transcript_suffix_stripping_performed=False, biological_independence_inferred=False)
+
+
+def profiles(pack: str | Path, features, *, audit_root: str | Path | None = None,
+             match: str = 'feature_label') -> pd.DataFrame:
+    """Return exact labels or reported parent gene IDs, preserving original transcript rows.
+
+    ``match='reported_gene_id'`` uses only the checked gene_id annotation in an
+    original transcript table. It neither sums transcripts nor maps gene versions.
+    The source-specific query record is returned in ``frame.attrs['identifier_query']``.
+    """
     pack = Path(pack)
     labels = features.splitlines() if isinstance(features, str) else list(features)
     if not labels or any(not isinstance(label, str) or not label for label in labels):
         raise ValueError('Enter exact deposited feature labels, one per line')
     info, _, samples = _context(pack)
-    matrix = pq.read_table(pack / 'values.parquet', filters=[('feature_label', 'in', list(dict.fromkeys(labels)))]).to_pandas()
+    labels = list(dict.fromkeys(labels))
+    query_record = None
+    if match == 'reported_gene_id':
+        rows, query_record = _reported_parent_rows(pack, info, labels)
+        filters = [('source_row', 'in', rows)]
+    elif match == 'feature_label':
+        filters = [('feature_label', 'in', labels)]
+    else:
+        raise ValueError('Unknown deposited label matching mode')
+    matrix = pq.read_table(pack / 'values.parquet', filters=filters).to_pandas()
     tokens = pq.read_table(pack / 'source_tokens.parquet', filters=[('source_row', 'in', matrix.source_row.tolist())]).to_pandas()
     if (matrix.source_row.isna().any() or matrix.source_row.duplicated().any()
             or not matrix[['source_row', 'feature_label']].equals(tokens[['source_row', 'feature_label']])):
@@ -163,6 +206,8 @@ def profiles(pack: str | Path, features, *, audit_root: str | Path | None = None
     frame['matrix_sha256'] = info['outputs']['values.parquet']
     frame['literal_tokens_sha256'] = info['outputs']['source_tokens.parquet']
     frame['manifest_sha256'] = _sha(pack / 'manifest.json')
+    if query_record is not None:
+        frame.attrs['identifier_query'] = query_record
     return frame
 
 

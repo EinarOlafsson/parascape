@@ -50,6 +50,14 @@ values = profiles(["GENE_ID", "ANOTHER_GENE_ID"])
 
 ## Measurements and limitations
 
+In **compare → Other measurements**, filter a source transcript table, choose
+**Reported parent gene ID → original transcript rows**, and enter the exact
+`gene_id` reported by that source. This returns every matching original transcript
+row, including repeated labels. Reported parent IDs can differ between reference
+annotations. The query does not remove transcript suffixes, translate gene versions
+or add transcripts together. Exports retain each transcript's original values,
+source annotations and the parent-ID query record.
+
 The bundled reference is **ME49_host**: ME49 parasite transcripts compete with human
 and mouse transcripts; the parasite genome supplies Salmon decoys. Both Salmon
 and kallisto results are included. All already-verified ME49, GT1 and VEG alternative-reference quantifications for

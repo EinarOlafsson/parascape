@@ -56,6 +56,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self.identifier_kind.addItem('Exact original feature label', 'exact')
         for namespace, caption in I.NAMESPACES.items():
             self.identifier_kind.addItem(caption, namespace)
+        self.identifier_kind.addItem('Reported parent gene ID → original transcript rows', 'reported_gene_id')
         self.identifier_kind.currentIndexChanged.connect(self._clear)
         self.identifier_kind.setToolTip('Keep group components, accession-cell components, submitted names and reference candidates distinct. Whole original source rows and quantities are retained.')
         layout.addWidget(self.identifier_kind)
@@ -105,10 +106,15 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         if hasattr(self, 'identifier_kind'):
             source = self.pack.currentData() or {}
             supported = I.namespaces_for_assay(source.get('assay'))
+            if source.get('assay') == 'deposited original transcript-table quantities':
+                supported = [*supported, 'reported_gene_id']
             for index in range(1, self.identifier_kind.count()):
                 self.identifier_kind.model().item(index).setEnabled(self.identifier_kind.itemData(index) in supported)
             if self.identifier_kind.currentData() != 'exact' and self.identifier_kind.currentData() not in supported:
                 self.identifier_kind.setCurrentIndex(0)
+            if hasattr(self, 'features'):
+                parent_mode = self.identifier_kind.currentData() == 'reported_gene_id'
+                self.features.setPlaceholderText('One exact reported parent gene_id per line; original transcripts remain separate' if parent_mode else 'One exact original feature label per line')
         if hasattr(self, 'table'):
             self.table.setRowCount(0)
         if hasattr(self, 'export_button'):
@@ -316,8 +322,10 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self._clear()
         try:
             namespace = self.identifier_kind.currentData()
-            frame = (D.profiles(info['path'], self.features.toPlainText()) if namespace == 'exact' else
+            frame = (D.profiles(info['path'], self.features.toPlainText(), match='reported_gene_id') if namespace == 'reported_gene_id' else
+                     D.profiles(info['path'], self.features.toPlainText()) if namespace == 'exact' else
                      I.profiles(info['path'], self.features.toPlainText(), namespace=namespace))
+            parent_query = frame.attrs.get('identifier_query')
             identifier_class_records = frame.attrs.get('indexed_identifier_class_records')
             original = frame
             manifest = D.manifest(info['path'], verify_outputs=False)
@@ -343,6 +351,7 @@ class DepositedValuesPanel(QtWidgets.QWidget):
             source_study=manifest['study'], source_analysis=manifest['source_analysis'],
             quantity=manifest['quantity'], units=manifest['units'], identifier_namespace=namespace,
             indexed_identifier_class_records=identifier_class_records,
+            reported_parent_gene_query=parent_query,
             exact_query_literals=self.features.toPlainText().splitlines(), source_selection_filter=self.source_filter.text(),
             original_identifier_evidence=identifier_contexts,
             row_design_association_view=row_design,
@@ -364,12 +373,16 @@ class DepositedValuesPanel(QtWidgets.QWidget):
         self._measurement_selection_changed()
         if namespace == 'exact':
             matched = set(original.feature_label)
+        elif namespace == 'reported_gene_id':
+            matched = set(parent_query['exact_query_literals']) - set(parent_query['unmatched_literals'])
         else:
             matched = {row['query_literal'] for text in original.identifier_evidence for row in json.loads(text)}
         missing = set(self.features.toPlainText().splitlines()) - matched
         self.summary.setText(f'{len(frame)} original row/column measurements. ' +
             ('Labels not matched: ' + ', '.join(sorted(missing)) if missing else 'Repeated labels retain separate source rows.'))
-        if namespace != 'exact':
+        if namespace == 'reported_gene_id':
+            self.summary.setText(self.summary.text() + ' Matched the source-reported parent gene_id; original transcript rows and units retained. No gene-level sum or current gene mapping performed.')
+        elif namespace != 'exact':
             representation = 'accession-row' if manifest['assay'] == 'deposited protein-accession quantities' else 'group'
             self.summary.setText(self.summary.text() + f' Original {representation} quantities retained; unique-gene abundance and current gene equivalence remain unreviewed.')
             if identifier_class_records == 0:
