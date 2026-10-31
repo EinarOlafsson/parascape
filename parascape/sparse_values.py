@@ -103,6 +103,29 @@ def catalogue(root: str | Path | None = None) -> tuple[list[dict], list[str]]:
     return entries, errors
 
 
+def coordinate_reconciliation(matrix: dict, receipt: dict) -> dict | None:
+    """Require whole-source proof for text coordinates or original binary CSC arrays."""
+    if matrix.get('source_format', 'MatrixMarket') == 'HDF5_CSC':
+        storage = matrix['source_storage']
+        if (receipt['state'] != 'all_original_HDF5_CSC_records_reconciled'
+                or receipt.get('all_original_binary_values_and_order_checked') is not True
+                or receipt.get('derived_coordinate_and_value_tokens_checked') is not True
+                or receipt.get('original_text_tokens_present') is not False
+                or not re.fullmatch('[a-f0-9]{64}', matrix.get('original_numeric_array_logical_bytes_sha256', ''))
+                or receipt.get('independent_original_numeric_array_bytes_sha256') != matrix['original_numeric_array_logical_bytes_sha256']
+                or storage.get('format') != 'HDF5_CSC'
+                or storage.get('source_index_base') != 0 or storage.get('output_index_base') != 1
+                or storage.get('decimal_tokens_are_derived') is not True
+                or storage.get('coordinate_aggregation_applied') is not False):
+            raise ValueError('Binary CSC reconstruction lacks a complete source proof')
+        return storage
+    if (matrix.get('source_format', 'MatrixMarket') != 'MatrixMarket'
+            or receipt['state'] != 'all_original_coordinate_records_reconciled'
+            or not receipt['all_original_coordinate_tokens_and_order_checked']):
+        raise ValueError('Original text coordinate reconciliation differs')
+    return None
+
+
 class SparseDataset:
     """A checked original-coordinate view with explicit source-axis orientation."""
 
@@ -132,11 +155,12 @@ class SparseDataset:
         self.dimensions = dict(source_row=dims[0], source_column=dims[1])
         self._coordinate_ref = info['coordinate_artifact']
         folder, matrix, receipt = self._artifact(self.coordinate_root, self._coordinate_ref, 'entries.parquet')
+        storage = coordinate_reconciliation(matrix, receipt)
+        if storage is not None and info.get('source_storage') != storage:
+            raise ValueError('Binary CSC descriptor and source storage context differ')
         if (matrix['input_sha256'] != info['input_sha256'] or matrix['source_url'] != info['source_url']
                 or matrix['declared_dimensions'] != dims or receipt['matrix_dimensions'] != dims
                 or receipt['original_records'] != dims[2] or matrix['numeric_field'] != info['numeric_field']
-                or receipt['state'] != 'all_original_coordinate_records_reconciled'
-                or not receipt['all_original_coordinate_tokens_and_order_checked']
                 or receipt['normalization_applied'] or receipt['canonical_gene_mapping']
                 or receipt['biological_quality_score'] is not None):
             raise ValueError('Sparse numeric validation coverage differs')
@@ -248,7 +272,8 @@ class SparseDataset:
                     coordinate_aggregation_applied=False, numeric_transpose_applied=False,
                     canonical_gene_mapping=False,
                     absent_coordinate_policy='No stored record returned; no zero or missing-value interpretation inferred',
-                    biological_or_comparative_admission=False)
+                    biological_or_comparative_admission=False,
+                    **({'source_storage': self.info['source_storage']} if 'source_storage' in self.info else {}))
 
     def iter_entries(self, source_feature_rows: Iterable[int], *, batch_size: int = 65536) -> Iterable[pa.RecordBatch]:
         """Read stored records for original feature positions, preserving entry order.

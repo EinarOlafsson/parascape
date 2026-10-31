@@ -50,6 +50,16 @@ values = profiles(["GENE_ID", "ANOTHER_GENE_ID"])
 
 ## Measurements and limitations
 
+Checked HDF5 CSC matrices retain their stored values, entry order and original
+feature/barcode arrays. The portable reader uses 1-based source positions while
+the original binary arrays use 0-based indices. Decimal coordinate and value
+strings are derived for browsing/export; they are not original text tokens.
+Source dataset paths, dtypes, attributes and the independent binary-value hash
+are recorded with the query. Explicit stored zeros and repeated coordinates are
+retained. Missing coordinates are not manufactured, and the storage layout alone
+does not verify biological units, filtering, cell identity or sample independence.
+AnnData and other HDF5 layouts require their own explicit treatment contracts.
+
 In **compare → Other measurements**, filter a source transcript table, choose
 **Reported parent gene ID → original transcript rows**, and enter the exact
 `gene_id` reported by that source. This returns every matching original transcript

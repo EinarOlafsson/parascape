@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Read checked binary HDF5 CSC source records with their original axes and
+  numeric values. Keep derived decimal coordinate/value strings explicitly
+  distinct from original text tokens in query and export provenance.
 - Find original transcript measurements by their exact reported parent gene_id.
   Retain separate transcript rows, source units and query evidence in exports;
   do not infer gene-version equivalence or sum alternative transcript analyses.
