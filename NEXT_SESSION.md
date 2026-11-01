@@ -23,8 +23,11 @@
   annotations inline). Processor v2 (`process_geo_named_expression_quantities_v2.py`, pinned checkout
   `/media/carruthers/mnt1/parascape-named-expression-v2-checkout` at e394e40, 8 fixture tests) writes the
   same packs with a pinned gzip annotation sidecar (reader support in e394e40): a real-file replay gave
-  identical values/tokens/annotations at 1/7.5 the size. Its service is installed but not yet run; keep
-  v1 until v2 finishes with 1,149 packs and 0 reviews, then ask Einar before deleting v1.
+  identical values/tokens/annotations at 1/7.5 the size. v2 ran (1,149 packs, 0 reviews, 7.7 GB), matched v1
+  pack for pack, and v1 was deleted with Einar's approval (record in `processing_audit/named_expression_v1_record/`).
+  v2's index is renamed `catalogue.pending-consumer-update.json`: the background units pinned to
+  `/media/carruthers/mnt1/parascape-anndata-source-checkout` (3519228) reject its sidecar packs. Re-pin those
+  consumers to a checkout with e394e40 or later, then rename it back to `catalogue.json`.
 * **Host references prepared, not built:** `omics_quant.py host-references` builds ME49_pig/cow/cat/hamster/rat;
   `scripts/route_host_references.py --apply` then adds them to 60 queued pig/rat rows and queues 46 held-back
   host-labelled runs (staged receipt in `processing_audit/unplanned_rna_study_review/host-routing/`).
