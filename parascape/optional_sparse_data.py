@@ -1,4 +1,9 @@
-"""Resolve a sparse dataset's pinned optional dependencies without changing overrides."""
+"""Resolve a sparse dataset's pinned optional dependencies without changing overrides.
+
+Sparse datasets share coordinate and axis components across several descriptors. Only components that
+are missing are planned, and explicitly configured local roots, such as a NAS copy, are never replaced
+by hosted ones, so a user's own verified files keep priority and nothing is downloaded twice.
+"""
 from __future__ import annotations
 
 import json

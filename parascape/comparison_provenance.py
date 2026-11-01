@@ -2,6 +2,10 @@
 
 Submitted sample identity prevents known repeated sequencing from becoming
 extra replicates. Distinct accessions alone never prove biological independence.
+
+A comparison is only reproducible when the exact runs, the ordered matrix handed to the model and the
+treatment are saved with the result, so every export carries a checksum-bound sidecar. Exports are
+published atomically and never overwrite, so an earlier result cannot be silently replaced.
 """
 from __future__ import annotations
 

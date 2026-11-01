@@ -1,4 +1,9 @@
-"""Read source-bound sparse coordinate facts without inferring biological quality."""
+"""Read source-bound sparse coordinate facts without inferring biological quality.
+
+Technical facts about the stored coordinates, such as ordering and repeated coordinates, change how a
+matrix may be read, so they are reported with checksums back to the source. They describe storage, not
+biology: no quality score is derived and an unknown property stays unknown rather than zero.
+"""
 from __future__ import annotations
 
 import json

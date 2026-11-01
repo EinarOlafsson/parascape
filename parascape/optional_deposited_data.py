@@ -1,4 +1,10 @@
-"""Resolve checksum-bound quantitative packs without network or source replacement."""
+"""Resolve checksum-bound quantitative packs without network or source replacement.
+
+The core package ships only metadata for many measurement packs; the values are hosted separately.
+A pack is used only when its local manifest and validation receipt match the single installed
+component index, so a different or replaced source cannot stand in for the registered one. Resolution
+never starts a download: reading stays offline and explicit.
+"""
 from __future__ import annotations
 
 import json

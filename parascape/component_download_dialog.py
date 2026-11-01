@@ -1,4 +1,9 @@
-"""Offer the missing components of one dataset while keeping downloads cancellable."""
+"""Offer the missing components of one dataset while keeping downloads cancellable.
+
+Optional components can be large, so the dialog shows size and destination before anything starts.
+Transfers run off the GUI thread; cancelling stops between batches and keeps already verified files,
+so a later retry resumes instead of starting again.
+"""
 from PyQt6 import QtCore, QtWidgets
 
 from . import data_components as C

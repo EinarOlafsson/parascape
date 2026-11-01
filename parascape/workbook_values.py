@@ -1,4 +1,9 @@
-"""Inspect preserved workbook source cells without inferring measurement roles."""
+"""Inspect preserved workbook source cells without inferring measurement roles.
+
+Deposited workbooks mix labels, numbers, formulas and notes, and which column is a measurement is not
+stated in the file, so cells are returned exactly as stored with their addresses and kinds, after the
+source checksums are verified. Measurement roles, units and gene identities are left to the reader.
+"""
 from __future__ import annotations
 
 import csv

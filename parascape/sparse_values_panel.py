@@ -1,4 +1,9 @@
-"""Browse original sparse measurements with background reads and complete exports."""
+"""Browse original sparse measurements with background reads and complete exports.
+
+Reads run in the background so the window stays responsive on very large sources, and a changed
+selection invalidates stale results. Exports contain every matched record, not just the preview, with
+the source and QC context, so what is saved is what the source holds.
+"""
 from __future__ import annotations
 
 import json

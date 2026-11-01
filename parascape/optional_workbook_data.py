@@ -1,4 +1,9 @@
-"""Resolve hosted workbook cells while preserving explicit local collections."""
+"""Resolve hosted workbook cells while preserving explicit local collections.
+
+Workbook cells are hosted as immutable components bound to the metadata shipped in the core package.
+Explicit local collections take precedence, and resolution never starts a network transfer, so a
+workbook is read from exactly the bytes that were verified.
+"""
 from __future__ import annotations
 
 import os

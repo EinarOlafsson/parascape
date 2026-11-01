@@ -1,4 +1,10 @@
-"""Attach source-bound filename associations to original quantity rows without inferring sample identity."""
+"""Attach source-bound filename associations to original quantity rows without inferring sample identity.
+
+Some row-wise protein exports name the raw file behind each row (for example R.FileName). An exact
+filename match to the submitted design is recorded as a source-bound link; a filename-stem match is only
+a review candidate. Filenames are not sample identities, so neither creates a sample or replicate
+assignment, and every measurement row is kept.
+"""
 from __future__ import annotations
 
 import hashlib

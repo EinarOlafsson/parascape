@@ -1,4 +1,9 @@
-"""Stream a checked sparse query into a complete local CSV and bounded preview."""
+"""Stream a checked sparse query into a complete local CSV and bounded preview.
+
+Some sparse sources hold over a billion records, more than a desktop can hold in memory, so a query is
+streamed one physical row group at a time into a complete local CSV, keeping original record order and
+values, while the GUI receives only a bounded preview. Cancellation is checked between steps.
+"""
 from __future__ import annotations
 
 import csv

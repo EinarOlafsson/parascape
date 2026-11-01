@@ -1,4 +1,9 @@
-"""Browse complete original workbook rows with explicit verification and scope."""
+"""Browse complete original workbook rows with explicit verification and scope.
+
+Rows are shown only after the workbook bytes are verified, reads run in the background, and exports
+include every selected cell with its treatment record. The panel states its scope because storage
+verification says nothing about biological quality or comparable units.
+"""
 from __future__ import annotations
 
 import json

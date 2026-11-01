@@ -1,4 +1,9 @@
-"""Validate supplementary source-preservation evidence without biological scoring."""
+"""Validate supplementary source-preservation evidence without biological scoring.
+
+Supplementary workbooks can contain formulas, error cells and values that different readers decode
+differently. This module reports that preservation evidence, bound to the source checksums, so a user
+can judge a cell before using it; it never turns these facts into a biological quality score.
+"""
 from __future__ import annotations
 
 import hashlib
