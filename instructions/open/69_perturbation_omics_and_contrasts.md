@@ -248,3 +248,19 @@ checks passed. Main-startup tests were updated for the new consent dialog; full
 regressions and hosted publication verification are still in progress.
 The live queue reached297 completed, and priority Trx1 run SRR25737844 is active;
 the snapshot remains an explicit immutable296-entry cut.
+
+## 2026-11-01: full catalogue queued, storage limits, named-expression tables
+* The coverage ledger showed 109 catalogue RNA studies that were never queued. A read-only ENA review
+  (`scripts/review_unplanned_rna_studies.py`) resolved all 109; `scripts/queue_unplanned_rna_studies.py`
+  appended 675 Toxoplasma-named bulk runs (3.44 TB) and 620 human/mouse host-labelled runs (1.38 TB,
+  `run_label` tagged) under the supervisor lock. Queue: 1011 -> 2306 associations.
+* Kept out deliberately: per-cell single-cell GSE145800 (11,419 runs) and GSE145080 (5,499 runs), whose
+  deposited AnnData matrices are already prepared; hosts without transcripts in ME49_host
+  (cow, hamster, pig, cat); blank or non-Toxoplasma organisms; non-RNA libraries.
+* The NAS raw tier is now hard-capped (~500 GB, Einar) after growing to 1.58 TB.
+* All 105 GEO named-feature summary tables (13 gene / 7 transcript quantity families kept separate,
+  Expression value unit unknown) were reconciled into 1,149 packs, 0 reviews.
+* Normalization stance: comparable RNA values come from the uniform reprocessing (salmon + kallisto,
+  ME49 and ME49+host, same settings for every run). Deposited tables keep their original units and are
+  shown beside, never merged with, the reprocessed values.
+

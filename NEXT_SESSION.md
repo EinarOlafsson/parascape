@@ -1,5 +1,37 @@
 # Next session: start here
 
+**State on 2026-11-01 (Claude Code session, Einar's goal: "finish all downloads and implement and normalize all datasets").**
+
+* **Release 0.0.9.0 is published and verified** (GitHub v0.0.9.0 + v0.0.9.0-quantities-data, PyPI 0.0.9.0,
+  source bf0d62e). Tests run 41200603037 had failed on missing workbook tooltips; fixed without changing the
+  test, source refrozen at `/media/carruthers/mnt1/parascape-release009-tooltip-fix-checkout`, installed-wheel
+  proof regenerated; superseded 7bc2714 proofs/plan are kept beside the new ones (`*-7bc27143.*`).
+* **Coexpression is on nightly** (1368612 rebase, efde26a tooltips, 93ccffc docstrings/README). The old
+  `parascape-land-coexpression.service` is disabled and marked superseded; do not re-enable it.
+* **RNA queue 1011 -> 2306 associations** (scripts/review_unplanned_rna_studies.py,
+  scripts/queue_unplanned_rna_studies.py; audit in NAS `processing_audit/unplanned_rna_study_review`).
+  Excluded on purpose: single-cell GSE145800/GSE145080 (deposited AnnData already prepared), 46 runs from
+  cow/hamster/pig/cat hosts (not in ME49_host), 80 blank-organism and 7 Neospora/Plasmodium runs.
+  Pig-macrophage dual RNA-seq GSE153330/GSE146715 needs a pig host reference before its parasite values
+  are trusted.
+* **Storage limits set by Einar:** NAS raw cache capped at ~500 GB (`--nas-max-gib 466`; it had grown to
+  1.58 TB, NAS 99% full) and drains as runs verify; mnt1 keeps 100 GB extra free for tutorials
+  (downloader reserve and `PARASCAPE_SCRATCH_MARGIN_GB` 125). While spaCR tutorials record, every
+  parascape-* unit is pinned to CPUs 0-4 by the prefix drop-in `~/.config/systemd/user/parascape-.service.d/`.
+* **GEO named-expression tables processed:** all 105 preflighted files, 1,149 quantity packs, 100,309,515
+  original cells, 0 reviews, in NAS `prepared_deposited_values/geo_named_expression_quantities` (60 GB;
+  each pack repeats its file's row annotations -- deduplicate before hosting). Processor and its 7 fixture
+  tests live in `~/.local/share/parascape-download-worker/`.
+* **Paused inference work** is planned in instruction 70 (localization scoreboard, question-tree start page);
+  GT-SPATIAL-01 already audited the hyperLOPIT markers, which are curation-grade, not direct evidence.
+* **If paused for a tutorial:** frozen units and stopped timers are listed in
+  `~/.local/state/parascape-pause-*/`; resume only when the tutorial session says so.
+
+Next: host references for cow/pig/cat/hamster, deduplicated annotations + release shards for the named
+packs, PRIDE processing, then cross-dataset comparability (sample/context registry).
+
+---
+
 **All66 sparse matrices recovered; bounded reader and coordinate QC (2026-10-31):**
 Authoritative journal/kernel show original657839worker8GiBOOM,not an observation
 failure. Auto-retry755525stoppedforrepair; originalcompleted8,140,542,716bytePqfile

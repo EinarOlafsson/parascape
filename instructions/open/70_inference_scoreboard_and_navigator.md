@@ -2,6 +2,13 @@
 
 **Status: open (requested 2026-10-31).**
 
+**Paused 2026-11-01** while Einar's dataset goal ("finish all downloads and implement and normalize all
+datasets") takes priority. Direct-tier evidence acquired so far: QuickGO experimental cellular-component
+annotations for taxon 5811 (78 annotations, 37 proteins, 28 matrix genes; snapshot
+`toxoplasma_projects/datasets/sources/quickgo_tgondii_cc_experimental_2026_10_31/`). Einar chose: score
+first on the 718 curation-grade markers, report the ~37 direct genes as a check, and build a larger
+literature-mined direct set for his review.
+
 ## The request (Einar, 2026-10-31)
 * The core goal has always been the same: a comprehensive knowledge matrix of everything known about
   Toxoplasma genes, used to fill in the blanks -- function, localization, expression profiles, binding
