@@ -146,13 +146,18 @@ def version(tool: str) -> str:
 
 
 # --------------------------------------------------------------------------- references
+def _salmon_index_present(directory: str) -> bool:
+    """Salmon 1.x wrote versionInfo.json; salmon 2.x (piscem-based) writes info.json instead."""
+    return any(os.path.exists(os.path.join(directory, "salmon_index", name))
+               for name in ("versionInfo.json", "info.json"))
+
+
 def references() -> None:
     for name, (cdna_url, dna_url) in REFERENCES.items():
         d = os.path.join(NAS, "references", name)
         os.makedirs(d, exist_ok=True)
         meta_path = os.path.join(d, "reference.json")
-        if os.path.exists(os.path.join(d, "salmon_index", "versionInfo.json")) and \
-                os.path.exists(os.path.join(d, "kallisto.idx")):
+        if _salmon_index_present(d) and os.path.exists(os.path.join(d, "kallisto.idx")):
             log(f"{name}: indexes present")
             continue
         cdna = os.path.join(d, os.path.basename(cdna_url))
@@ -198,8 +203,7 @@ def host_reference(name: str = "ME49_host") -> None:
     """ME49 + one host set's transcripts (with ncRNA), ME49 genome as decoys: a competitive reference."""
     host_urls = HOST_REFERENCES[name]
     d = os.path.join(NAS, "references", name)
-    if os.path.exists(os.path.join(d, "salmon_index", "versionInfo.json")) and \
-            os.path.exists(os.path.join(d, "kallisto.idx")):
+    if _salmon_index_present(d) and os.path.exists(os.path.join(d, "kallisto.idx")):
         log(f"{name}: indexes present")
         return
     os.makedirs(d, exist_ok=True)

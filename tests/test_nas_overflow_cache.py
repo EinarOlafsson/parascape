@@ -87,7 +87,8 @@ def test_every_host_species_has_its_own_competitive_reference(tmp_path, monkeypa
     assert salmon[salmon.index('-i') + 1] == str(out / 'salmon_index')
     meta = __import__('json').loads((out / 'reference.json').read_text())
     assert meta['name'] == 'ME49_pig' and meta['host'] == list(Q.HOST_REFERENCES['ME49_pig'])
-    (out / 'salmon_index').mkdir(); (out / 'salmon_index' / 'versionInfo.json').write_text('{}'); (out / 'kallisto.idx').write_text('')
+    (out / 'salmon_index').mkdir(); (out / 'salmon_index' / 'info.json').write_text('{}')  # salmon 2.x
+    (out / 'kallisto.idx').write_text('')
     commands.clear(); Q.host_reference('ME49_pig')
     assert commands == []                                                             # built indexes are reused
 
