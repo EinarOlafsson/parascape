@@ -25,6 +25,7 @@ import gzip
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -312,6 +313,16 @@ def plan(studies: list, strain_studies: set) -> None:
 
 
 # --------------------------------------------------------------------------- quantification
+class ScratchDeferred(Exception):
+    """A run needs more scratch than is free now; quantify others and retry it later."""
+
+
+def _need_scratch(run_acc: str, need: float) -> None:
+    # Waiting here blocked the whole queue behind one large run (2026-11-01: 328 GB needed, 107 free).
+    if _free_gb(SCRATCH) < need:
+        raise ScratchDeferred(f"{run_acc}: deferred, scratch {_free_gb(SCRATCH):.0f} GB free, {need:.0f} needed")
+
+
 def _free_gb(path: str) -> float:
     return shutil.disk_usage(path).free / 1e9
 
@@ -324,6 +335,18 @@ def quantify(limit: int | None = None) -> None:
     if DOWNLOAD_CACHE:
         os.makedirs(DOWNLOAD_CACHE, exist_ok=True)
     count = 0
+    while True:
+        deferred = _quantify_pass(todo, limit, count)
+        if deferred is None or not deferred:
+            return
+        log(f"{len(deferred)} runs deferred for scratch space; retrying in 10 minutes")
+        time.sleep(600)
+        todo = deferred
+
+
+def _quantify_pass(todo: list, limit: int | None, count: int):
+    """One pass over the queue; returns runs deferred for scratch space, or None when the limit is hit."""
+    deferred = []
     for r in todo:
         out_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
         if os.path.exists(os.path.join(out_dir, "done.json")):
@@ -332,7 +355,7 @@ def quantify(limit: int | None = None) -> None:
         if DOWNLOAD_CACHE:
             _cache_module().save(Path(DOWNLOAD_CACHE) / 'active.json',
                                  {'run': r['run_accession'], 'study': r['study'], 'pid': os.getpid()})
-        _clear_scratch(r["run_accession"])          # whatever an interrupted attempt left behind
+        _clear_scratch(None)                        # whatever interrupted attempts left behind
         try:
             local = _reads(r)
             if not local:
@@ -361,6 +384,10 @@ def quantify(limit: int | None = None) -> None:
                                   "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256,
                                   "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
             log(f"{r['run_accession']} ({r['study']}): quantified against {', '.join(r['references'])}")
+        except ScratchDeferred as e:
+            log(str(e))
+            deferred.append(r)
+            continue
         except Exception as e:
             log(f"{r['run_accession']} ({r['study']}): FAILED {e}")
         finally:
@@ -371,7 +398,8 @@ def quantify(limit: int | None = None) -> None:
                 (Path(DOWNLOAD_CACHE) / 'active.json').unlink(missing_ok=True)
         count += 1
         if limit and count >= limit:
-            break
+            return None
+    return deferred
 
 
 #: NCBI's copy of SRA on AWS (Open Data Program): measured 43 MB/s from here on 2026-10-17, against
@@ -396,9 +424,7 @@ def _reads(r: dict) -> list:
     if size:
         # fasterq-dump writes uncompressed FASTQ, ~4-6x the .sra file, plus its temp files.
         need = size * 8 / 1e9 + SCRATCH_MARGIN_GB
-        while _free_gb(SCRATCH) < need:
-            log(f"{run_acc}: waiting for scratch space ({_free_gb(SCRATCH):.0f} GB free, {need:.0f} needed)")
-            time.sleep(600)
+        _need_scratch(run_acc, need)
         cached = (_cache_module().cached_archive(Path(DOWNLOAD_CACHE), run_acc, url, size)
                   if DOWNLOAD_CACHE else None)
         sra = str(cached) if cached else os.path.join(SCRATCH, f"{run_acc}.sra")
@@ -426,9 +452,7 @@ def _reads(r: dict) -> list:
     if not urls:
         return []
     need = sum(sizes) / 1e9 + SCRATCH_MARGIN_GB
-    while _free_gb(SCRATCH) < need:
-        log(f"{run_acc}: waiting for scratch space ({_free_gb(SCRATCH):.0f} GB free, {need:.0f} needed)")
-        time.sleep(600)
+    _need_scratch(run_acc, need)
     pairs = [u for u in urls if u.endswith(("_1.fastq.gz", "_2.fastq.gz"))] or urls
     local = []
     for u in pairs:
@@ -454,10 +478,15 @@ def _cache_module():
         import omics_download_cache
     return omics_download_cache
 
-def _clear_scratch(run_accession: str) -> None:
-    """Remove one run's files (reads, .sra, fasterq-dump temp) from scratch."""
+def _clear_scratch(run_accession: str | None) -> None:
+    """Remove one run's files (reads, .sra, fasterq-dump temp) from scratch; None clears every run's.
+
+    This is the only quantifier using SCRATCH, so files of other runs are leftovers of interrupted
+    attempts (89 GB had accumulated by 2026-11-01).
+    """
     for f in os.listdir(SCRATCH):
-        if f.startswith(run_accession) or f.startswith("fasterq.tmp"):
+        stale_run = run_accession is None and re.match(r"[SED]RR\d+", f)
+        if stale_run or (run_accession and f.startswith(run_accession)) or f.startswith("fasterq.tmp"):
             path = os.path.join(SCRATCH, f)
             shutil.rmtree(path, ignore_errors=True) if os.path.isdir(path) else os.remove(path)
 

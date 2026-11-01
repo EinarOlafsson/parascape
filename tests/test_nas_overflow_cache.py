@@ -105,3 +105,26 @@ def test_host_routing_names_one_reference_per_declared_host():
         pass
     else:
         raise AssertionError('two foreign hosts must not be resolved silently')
+
+
+def test_a_run_too_large_for_scratch_is_deferred_not_blocking_the_queue(tmp_path, monkeypatch):
+    """One 328 GB run once stalled every other run behind it for hours."""
+    Q = load('omics_quant')
+    scratch = tmp_path / 'scratch'; scratch.mkdir()
+    for name in ('SRR1_1.fastq', 'SRR2.sra', 'fasterq.tmp.x', 'keep.txt'):
+        (scratch / name).write_text('left over')
+    monkeypatch.setattr(Q, 'SCRATCH', str(scratch)); monkeypatch.setattr(Q, 'NAS', str(tmp_path / 'nas'))
+    monkeypatch.setattr(Q, 'DOWNLOAD_CACHE', '')
+    Q._clear_scratch(None)
+    assert sorted(p.name for p in scratch.iterdir()) == ['keep.txt']                 # only run files removed
+    done = []
+
+    def reads(row):
+        if row['run_accession'] == 'SRR9':
+            Q._need_scratch('SRR9', 10 ** 9)                                         # never fits
+        done.append(row['run_accession'])
+        return []                                                                    # "no reads": skipped
+    monkeypatch.setattr(Q, '_reads', reads)
+    rows = [dict(run_accession=r, study='S', references=['ME49']) for r in ('SRR9', 'SRR3', 'SRR4')]
+    deferred = Q._quantify_pass(rows, None, 0)
+    assert done == ['SRR3', 'SRR4'] and [r['run_accession'] for r in deferred] == ['SRR9']
