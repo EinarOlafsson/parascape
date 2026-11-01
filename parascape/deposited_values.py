@@ -10,6 +10,7 @@ normalization or missing-value imputation is performed during browsing.
 """
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 import os
@@ -36,6 +37,12 @@ def _sha(path):
     return digest.hexdigest()
 
 
+OUTPUTS = frozenset({'values.parquet', 'source_tokens.parquet', 'samples.json', 'source_metadata.json'})
+#: Large sources may keep row annotations in a checksum-pinned gzip sidecar instead of inline JSON;
+#: a source with 13 quantity families would otherwise repeat ~100 MB of annotation text 13 times.
+ANNOTATIONS_FILE = 'row_annotations.json.gz'
+
+
 def manifest(pack: str | Path, *, verify_outputs: bool = True) -> dict:
     """Require complete source-cell reconciliation and pin every runtime output."""
     pack = Path(pack)
@@ -48,7 +55,7 @@ def manifest(pack: str | Path, *, verify_outputs: bool = True) -> dict:
             or len(columns) != len(set(columns)) or len(samples) != len(columns)
             or len(samples) != len(set(samples)) or any(not isinstance(c, str) or not c for c in [*columns, *samples])
             or set(columns) & {'source_row', 'feature_label'}
-            or set(info['outputs']) != {'values.parquet', 'source_tokens.parquet', 'samples.json', 'source_metadata.json'}):
+            or set(info['outputs']) - {ANNOTATIONS_FILE} != OUTPUTS):
         raise ValueError('Unsupported deposited value schema, sample identities or dimensions')
     if (receipt['source_sha256'] != info['input_sha256'] or receipt['verified_rows'] != info['features']
             or receipt['verified_cells'] != info['features'] * len(columns)
@@ -59,6 +66,31 @@ def manifest(pack: str | Path, *, verify_outputs: bool = True) -> dict:
             if _sha(pack / name) != expected:
                 raise ValueError('Deposited value output checksum differs: ' + name)
     return info
+
+
+def row_annotations(pack: str | Path, metadata: dict | None = None, info: dict | None = None):
+    """Original per-row annotations, inline or from the pinned gzip sidecar; None when the source has none.
+
+    The sidecar must be a declared manifest output with a matching checksum, so moving the text out
+    of source_metadata.json changes storage only, never which annotations a row carries.
+    """
+    pack = Path(pack)
+    metadata = json.loads((pack / 'source_metadata.json').read_text()) if metadata is None else metadata
+    if 'row_annotations' in metadata:
+        if metadata.get('row_annotations_file') is not None:
+            raise ValueError('Row annotations are declared both inline and in a sidecar')
+        return metadata['row_annotations']
+    name = metadata.get('row_annotations_file')
+    if name is None:
+        return None
+    info = json.loads((pack / 'manifest.json').read_text()) if info is None else info
+    if name != ANNOTATIONS_FILE or name not in info['outputs'] or _sha(pack / name) != info['outputs'][name]:
+        raise ValueError('Row-annotation sidecar is undeclared or its checksum differs')
+    with gzip.open(pack / name, 'rt', encoding='utf-8') as stream:
+        annotations = json.load(stream)
+    if not isinstance(annotations, list):
+        raise ValueError('Row-annotation sidecar must hold one record per source row')
+    return annotations
 
 
 def catalogue(root: str | Path | None = None) -> tuple[list[dict], list[str]]:
@@ -143,7 +175,7 @@ def _reported_parent_rows(pack, info, labels):
     metadata = json.loads((pack / 'source_metadata.json').read_text())
     if metadata.get('original_feature_column') != 'transcript_id' or 'gene_id' not in metadata.get('original_annotation_columns', []):
         raise ValueError('This transcript source has no checked reported gene_id annotation')
-    annotations = metadata.get('row_annotations')
+    annotations = row_annotations(pack, metadata, info)
     if not isinstance(annotations, list) or len(annotations) != info['features']:
         raise ValueError('Reported parent gene annotation coverage differs')
     axes = pq.read_table(pack / 'values.parquet', columns=['source_row', 'feature_label']).to_pylist()
@@ -199,7 +231,7 @@ def profiles(pack: str | Path, features, *, audit_root: str | Path | None = None
     frame['source_sample'] = frame.sample_column.map(lambda c: lookup[c]['source_sample'])
     frame['sample_metadata'] = frame.sample_column.map(lambda c: json.dumps(lookup[c], ensure_ascii=False))
     source_metadata = json.loads((pack / 'source_metadata.json').read_text())
-    annotations = source_metadata.get('row_annotations')
+    annotations = row_annotations(pack, source_metadata, info)
     if annotations is not None:
         if not isinstance(annotations, list) or len(annotations) != info['features'] or any(
                 not isinstance(row, dict) or row.get('source_row') != i for i, row in enumerate(annotations)):

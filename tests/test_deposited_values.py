@@ -270,3 +270,61 @@ def test_experiment_design_candidates_remain_separate_from_filename_factors(qtbo
     assert candidates[0].child(2).text(1) == '001'
     frame = D.profiles(pack, '001', audit_root=root)
     assert len(json.loads(frame.iloc[0].sample_metadata)['source_design_metadata']['submitted_experiment_rows']) == 2
+
+
+def _repin(pack):
+    """Recompute declared output checksums and the receipt after a deliberate fixture change."""
+    manifest = json.loads((pack / 'manifest.json').read_text())
+    manifest['outputs'] = {name: digest(pack / name) for name in manifest['outputs']}
+    (pack / 'manifest.json').write_text(json.dumps(manifest))
+    validation = json.loads((pack / 'validation.json').read_text())
+    validation['manifest_sha256'] = digest(pack / 'manifest.json')
+    (pack / 'validation.json').write_text(json.dumps(validation))
+
+
+def _with_annotations(pack, sidecar):
+    import gzip
+    annotations = [dict(source_row=i, feature_label=label, source_fields={'Gene ID': 'G' + str(i)})
+                   for i, label in enumerate(['001', '001', 'CaseID'])]
+    path = pack / 'source_metadata.json'
+    metadata = json.loads(path.read_text())
+    if sidecar:
+        with gzip.GzipFile(pack / D.ANNOTATIONS_FILE, 'wb', mtime=0) as stream:
+            stream.write(json.dumps(annotations).encode())
+        metadata['row_annotations_file'] = D.ANNOTATIONS_FILE
+        manifest = json.loads((pack / 'manifest.json').read_text())
+        manifest['outputs'][D.ANNOTATIONS_FILE] = ''
+        (pack / 'manifest.json').write_text(json.dumps(manifest))
+    else:
+        metadata['row_annotations'] = annotations
+    path.write_text(json.dumps(metadata))
+    _repin(pack)
+    return annotations
+
+
+def test_gzip_annotation_sidecar_reads_exactly_like_inline_annotations(pack, tmp_path):
+    inline = tmp_path / 'inline'; shutil.copytree(pack, inline)
+    expected = _with_annotations(inline, sidecar=False)
+    assert _with_annotations(pack, sidecar=True) == expected
+    assert D.row_annotations(pack) == D.row_annotations(inline) == expected
+    a, b = D.profiles(pack, '001'), D.profiles(inline, '001')
+    assert a.source_row_metadata.tolist() == b.source_row_metadata.tolist()
+    assert a.value.equals(b.value) and a.source_token.tolist() == b.source_token.tolist()
+
+
+def test_annotation_sidecar_must_be_declared_pinned_and_unambiguous(pack):
+    _with_annotations(pack, sidecar=True)
+    (pack / D.ANNOTATIONS_FILE).write_bytes((pack / D.ANNOTATIONS_FILE).read_bytes()[:-4] + b'\0\0\0\0')
+    with pytest.raises(ValueError, match='checksum'):
+        D.profiles(pack, '001')
+    _with_annotations(pack, sidecar=True)
+    metadata = json.loads((pack / 'source_metadata.json').read_text())
+    metadata['row_annotations'] = []
+    (pack / 'source_metadata.json').write_text(json.dumps(metadata)); _repin(pack)
+    with pytest.raises(ValueError, match='both inline and in a sidecar'):
+        D.row_annotations(pack)
+    del metadata['row_annotations']; (pack / 'source_metadata.json').write_text(json.dumps(metadata))
+    manifest = json.loads((pack / 'manifest.json').read_text()); del manifest['outputs'][D.ANNOTATIONS_FILE]
+    (pack / 'manifest.json').write_text(json.dumps(manifest)); _repin(pack)
+    with pytest.raises(ValueError, match='undeclared'):
+        D.row_annotations(pack)

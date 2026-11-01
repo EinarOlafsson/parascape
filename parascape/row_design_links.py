@@ -36,7 +36,7 @@ def enrich(pack, frame, *, audit_root=None):
     manifest_hash = hashlib.sha256((pack / 'manifest.json').read_bytes()).hexdigest()
     if not frame.manifest_sha256.eq(manifest_hash).all():
         raise ValueError('Row-design measurement manifest differs from the original query')
-    annotations = metadata['row_annotations']
+    annotations = D.row_annotations(pack, metadata, info)
     if len(annotations) != info['features']:
         raise ValueError('Row-design original annotation coverage differs')
     selected = {}
