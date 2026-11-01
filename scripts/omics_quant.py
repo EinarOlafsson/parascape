@@ -69,6 +69,26 @@ HOST_TRANSCRIPTS = (
     f"{ENSEMBL_MAIN}/mus_musculus/cdna/Mus_musculus.GRCm39.cdna.all.fa.gz",
     f"{ENSEMBL_MAIN}/mus_musculus/ncrna/Mus_musculus.GRCm39.ncrna.fa.gz",
 )
+#: Further single-host competitive references (resolved from the same Ensembl release-116 FTP listing on
+#: 2026-11-01). ME49_host stays human + mouse so existing results keep their meaning; dual RNA-seq from
+#: another host needs that host's transcripts present, or its conserved genes can be counted as parasite.
+HOST_REFERENCES = {
+    "ME49_host": HOST_TRANSCRIPTS,
+    "ME49_pig": (f"{ENSEMBL_MAIN}/sus_scrofa/cdna/Sus_scrofa.Sscrofa11.1.cdna.all.fa.gz",
+                 f"{ENSEMBL_MAIN}/sus_scrofa/ncrna/Sus_scrofa.Sscrofa11.1.ncrna.fa.gz"),
+    "ME49_cow": (f"{ENSEMBL_MAIN}/bos_taurus/cdna/Bos_taurus.ARS-UCD2.0.cdna.all.fa.gz",
+                 f"{ENSEMBL_MAIN}/bos_taurus/ncrna/Bos_taurus.ARS-UCD2.0.ncrna.fa.gz"),
+    "ME49_cat": (f"{ENSEMBL_MAIN}/felis_catus/cdna/Felis_catus.F.catus_Fca126_mat1.0.cdna.all.fa.gz",
+                 f"{ENSEMBL_MAIN}/felis_catus/ncrna/Felis_catus.F.catus_Fca126_mat1.0.ncrna.fa.gz"),
+    "ME49_hamster": (f"{ENSEMBL_MAIN}/mesocricetus_auratus/cdna/Mesocricetus_auratus.MesAur1.0.cdna.all.fa.gz",
+                     f"{ENSEMBL_MAIN}/mesocricetus_auratus/ncrna/Mesocricetus_auratus.MesAur1.0.ncrna.fa.gz"),
+    "ME49_rat": (f"{ENSEMBL_MAIN}/rattus_norvegicus/cdna/Rattus_norvegicus.GRCr8.cdna.all.fa.gz",
+                 f"{ENSEMBL_MAIN}/rattus_norvegicus/ncrna/Rattus_norvegicus.GRCr8.ncrna.fa.gz"),
+}
+#: ENA scientific names served by each competitive host reference.
+HOST_SPECIES = {"Homo sapiens": "ME49_host", "Mus musculus": "ME49_host", "Sus scrofa": "ME49_pig",
+                "Bos taurus": "ME49_cow", "Felis catus": "ME49_cat", "Mesocricetus auratus": "ME49_hamster",
+                "Rattus norvegicus": "ME49_rat"}
 #: Gene identifiers given to host transcripts, so a matrix can drop them (and report the host share).
 HOST_PREFIX = "HOST:"
 
@@ -174,20 +194,21 @@ def references() -> None:
 
 
 
-def host_reference() -> None:
-    """ME49 + human + mouse transcripts (with ncRNA), ME49 genome as decoys: the competitive reference."""
-    d = os.path.join(NAS, "references", "ME49_host")
+def host_reference(name: str = "ME49_host") -> None:
+    """ME49 + one host set's transcripts (with ncRNA), ME49 genome as decoys: a competitive reference."""
+    host_urls = HOST_REFERENCES[name]
+    d = os.path.join(NAS, "references", name)
     if os.path.exists(os.path.join(d, "salmon_index", "versionInfo.json")) and \
             os.path.exists(os.path.join(d, "kallisto.idx")):
-        log("ME49_host: indexes present")
+        log(f"{name}: indexes present")
         return
     os.makedirs(d, exist_ok=True)
     me49 = os.path.join(NAS, "references", "ME49")
     cdna_url, dna_url = REFERENCES["ME49"]
     parts = [os.path.join(me49, os.path.basename(cdna_url))]
-    meta = {"name": "ME49_host", "parasite": cdna_url, "decoys": dna_url, "host": list(HOST_TRANSCRIPTS),
+    meta = {"name": name, "parasite": cdna_url, "decoys": dna_url, "host": list(host_urls),
             "sha256": {}}
-    for url in HOST_TRANSCRIPTS:
+    for url in host_urls:
         dest = os.path.join(d, os.path.basename(url))
         meta["sha256"][os.path.basename(url)] = fetch(url, dest) if not os.path.exists(dest) else sha256(dest)
         parts.append(dest)
@@ -201,13 +222,13 @@ def host_reference() -> None:
                         tx = line[1:].split()[0]
                         gene = next((f.split(":", 1)[1] for f in line.split() if f.startswith("gene:")), tx)
                         out.write(f"{tx}\t{gene if i == 0 else HOST_PREFIX + gene}\n")
-    targets = os.path.join(SCRATCH, "ME49_host_targets.fa.gz")
+    targets = os.path.join(SCRATCH, f"{name}_targets.fa.gz")
     os.makedirs(SCRATCH, exist_ok=True)
     with open(targets, "wb") as out:
         for part in parts:
             with open(part, "rb") as fh:
                 shutil.copyfileobj(fh, out)
-    gentrome = os.path.join(SCRATCH, "ME49_host_gentrome.fa.gz")
+    gentrome = os.path.join(SCRATCH, f"{name}_gentrome.fa.gz")
     with open(gentrome, "wb") as out:
         for part in (targets, os.path.join(me49, os.path.basename(dna_url))):
             with open(part, "rb") as fh:
@@ -222,7 +243,7 @@ def host_reference() -> None:
                  "built": time.strftime("%Y-%m-%dT%H:%M:%S")})
     with open(os.path.join(d, "reference.json"), "w") as fh:
         json.dump(meta, fh, indent=2)
-    log("ME49_host: indexed")
+    log(f"{name}: indexed")
 
 # --------------------------------------------------------------------------- the plan
 def ena_runs(accession: str) -> list:
@@ -450,12 +471,17 @@ def main(argv=None) -> int:
     p = sub.add_parser("runs")
     p.add_argument("studies", nargs="+")
     p.add_argument("--strain", nargs="*", default=[], help="studies to also quantify per strain")
+    h = sub.add_parser("host-references", help="build further single-host competitive references")
+    h.add_argument("names", nargs="*", help="default: every name in HOST_REFERENCES except ME49_host")
     q = sub.add_parser("quantify")
     q.add_argument("--limit", type=int, default=None)
     args = ap.parse_args(argv)
     if args.cmd == "references":
         references()
         host_reference()
+    elif args.cmd == "host-references":
+        for name in args.names or [n for n in HOST_REFERENCES if n != "ME49_host"]:
+            host_reference(name)
     elif args.cmd == "runs":
         plan(args.studies, set(args.strain))
     else:
