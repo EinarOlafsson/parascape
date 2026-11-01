@@ -19,16 +19,23 @@
   (downloader reserve and `PARASCAPE_SCRATCH_MARGIN_GB` 125). While spaCR tutorials record, every
   parascape-* unit is pinned to CPUs 0-4 by the prefix drop-in `~/.config/systemd/user/parascape-.service.d/`.
 * **GEO named-expression tables processed:** all 105 preflighted files, 1,149 quantity packs, 100,309,515
-  original cells, 0 reviews, in NAS `prepared_deposited_values/geo_named_expression_quantities` (60 GB;
-  each pack repeats its file's row annotations -- deduplicate before hosting). Processor and its 7 fixture
-  tests live in `~/.local/share/parascape-download-worker/`.
+  original cells, 0 reviews, in NAS `prepared_deposited_values/geo_named_expression_quantities` (60 GB,
+  annotations inline). Processor v2 (`process_geo_named_expression_quantities_v2.py`, pinned checkout
+  `/media/carruthers/mnt1/parascape-named-expression-v2-checkout` at e394e40, 8 fixture tests) writes the
+  same packs with a pinned gzip annotation sidecar (reader support in e394e40): a real-file replay gave
+  identical values/tokens/annotations at 1/7.5 the size. Its service is installed but not yet run; keep
+  v1 until v2 finishes with 1,149 packs and 0 reviews, then ask Einar before deleting v1.
+* **Host references prepared, not built:** `omics_quant.py host-references` builds ME49_pig/cow/cat/hamster/rat;
+  `scripts/route_host_references.py --apply` then adds them to 60 queued pig/rat rows and queues 46 held-back
+  host-labelled runs (staged receipt in `processing_audit/unplanned_rna_study_review/host-routing/`).
 * **Paused inference work** is planned in instruction 70 (localization scoreboard, question-tree start page);
   GT-SPATIAL-01 already audited the hyperLOPIT markers, which are curation-grade, not direct evidence.
 * **If paused for a tutorial:** frozen units and stopped timers are listed in
   `~/.local/state/parascape-pause-*/`; resume only when the tutorial session says so.
 
-Next: host references for cow/pig/cat/hamster, deduplicated annotations + release shards for the named
-packs, PRIDE processing, then cross-dataset comparability (sample/context registry).
+Next (after any pause, see `~/.local/state/parascape-pause-*/after-resume.md`): build host references and apply
+routing, run named-expression v2 and shard it for the next release, PRIDE processing, then cross-dataset
+comparability (sample/context registry).
 
 ---
 
