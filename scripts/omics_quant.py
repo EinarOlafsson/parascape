@@ -73,7 +73,7 @@ HOST_TRANSCRIPTS = (
 HOST_PREFIX = "HOST:"
 
 #: Free space a download may leave on scratch, at least.
-SCRATCH_MARGIN_GB = 25
+SCRATCH_MARGIN_GB = float(os.environ.get("PARASCAPE_SCRATCH_MARGIN_GB", "25"))  # free space kept on the scratch disk
 
 
 def log(msg: str) -> None:
