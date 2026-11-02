@@ -21,6 +21,7 @@ import time
 import pandas as pd
 
 REGISTRY = Path('/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sample_registry')
+BIOSAMPLES = Path('/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/biosample_attributes')
 
 #: Tags whose name alone fixes the field. Values are kept literally.
 TAG_FIELDS = {
@@ -43,7 +44,9 @@ HOURS = dict(h=1, hr=1, hrs=1, hour=1, hours=1, hpi=1, d=24, day=24, days=24, dp
 TIME_TAGS = {'time', 'timepoint', 'time point', 'time post infection', 'time post-infection', 'infection time',
              'time of infection', 'hours post infection', 'days post infection'}
 STAGE_TAGS = {'stage', 'developmental stage', 'life stage', 'parasite stage', 'life cycle stage', 'develpomental stage',
-              'developmentalstage', 'dev. stage', 'toxoplasma stage', 'parasite life cycle stage'}
+              'developmentalstage', 'dev. stage', 'toxoplasma stage', 'parasite life cycle stage', 'dev stage'}
+#: Host life-cycle words: in BioSample dev_stage these describe the host animal, not the parasite.
+HOST_AGE_WORDS = re.compile(r'^\s*(fetus|fetal|embryo\w*|neonat\w*|pups?|juvenile( life)?|adolescen\w*|adults?|aged|young adult)\s*$', re.I)
 
 #: First-pass tag review (2026-11-02, Claude, for Einar to spot-check). Spelling variants join the
 #: field of their canonical tag; tags describing assay mechanics are marked not_context so they leave
@@ -69,6 +72,15 @@ REVIEWED_TAGS = {
                      'disease state', 'mouse model', 'multiplicity of infection', 'moi', 'culture condition', 'growth condition',
                      'culture conditions', 'incubation media', 'ph', 'growth temperature', 'parasite strain or treatment',
                      'infection protocol', 'parasite', 'parasites', 'differentiation protocol'], 'condition_declared'),
+    **dict.fromkeys(['additional information', 'growth protocol', 'description'], 'free_text_comment'),
+    **dict.fromkeys(['replicates'], 'unit_or_replicate_identifier'),
+    **dict.fromkeys(['host disease'], 'condition_declared'),
+    **dict.fromkeys(['ena-last-update', 'ena-first-public', 'biosamplemodel', 'ncbi submission package',
+                     'insdc secondary accession', 'collection date', 'geo loc name', 'lat lon', 'altitude',
+                     'biomaterial provider', 'collected by', 'sample name', 'experiment id', 'sample id', 'identifier',
+                     'analyte type', 'molecular data type', 'birth location', 'common name', 'insdc center name',
+                     'insdc first public', 'insdc last update', 'insdc status', 'submitter id', 'submission date', 'assay',
+                     'antibody'], 'not_context'),
     **dict.fromkeys(['chip antibody', 'chip antibody vendor', 'chip antibody cat.#', 'chip antibody cat. #',
                      'chip antibody lot/batch#', 'chip antibody source', 'chip antibody name', 'chip antibody manufacturer',
                      'chip antibody catalog #', 'chip antobody catalogue number', 'antibody', 'library type', 'array design',
@@ -89,7 +101,7 @@ TIME_TAGS |= {'infection time point', 'infection time', 'culture time', 'incubat
 
 
 STRAIN_TAGS = {'strain', 'strain background', 'genetic background', 'strain/background', 'cell line/strain',
-               'strain/genotype'}
+               'strain/genotype', 'isolate', 'breed', 'cultivar'}
 CONDITION_TAGS = {'treatment', 'infection', 'condition', 'infection agent', 'agent', 'drug treatment', 'agonist',
                   'stimulus', 'disease state', 'group', 'groups', 'sample group', 'phenotype', 'condition detailed_organ'}
 COMMENT_TAGS = {'mouse comments', 'sample comments'}
@@ -133,6 +145,7 @@ STUDY_TIME_REFERENCE = {
     'GSE81016': ('infection', 'GEO: infected at MOI 10 for 2, 6 and 24 hours'),
     'GSE94595': ('infection', 'GEO: infected or not for 24 hours'),
     'GSE98677': ('infection', 'GEO: 2, 6 and 24 hours post-infected compared to mock-infected cells'),
+    'PRJNA1433593': ('infection', 'ENA project: RNA-seq at multiple post-infection timepoints (Days 3, 5, and 7)'),
 }
 
 
@@ -160,12 +173,30 @@ def whole(pattern, value):
 
 def propose(tag: str, value: str) -> tuple[str, str, str]:
     """(field, proposed value, rule) for one literal pair; field 'review' means no proposal."""
-    key = tag.lower()
+    key = re.sub(r'\s+', ' ', tag.lower().replace('_', ' ')).strip()   # BioSample uses cell_type, dev_stage, ...
+    if key == 'isolate' and re.fullmatch(r'\s*(infection|infected|control|mock|uninfected)( group)?\s*', value, re.I):
+        return 'condition_declared', value, 'isolate value names an experimental group'
+    if key == 'isolate' and re.fullmatch(r'\s*(19|20)\d\d\s*', value):
+        return 'not_context', '', 'isolate value is a year'
+    if key in STAGE_TAGS and HOST_AGE_WORDS.match(value):
+        return 'host_age_declared', value, 'stage value names a host life stage'
+    if key == 'isolation source':
+        if stage_in(value):
+            return 'parasite_stage', value, 'isolation source names a parasite life stage'
+        if re.search(r'medium|\bpH\b', value, re.I):
+            return 'condition_declared', value, 'isolation source describes culture medium'
+        if value.strip().lower() not in NOT_AVAILABLE | {'none', 'not collected'}:
+            return 'host_cell_or_tissue', value, 'isolation source names a cell or tissue'
+    if key == 'disease stage':
+        timed = parse_time(value)
+        if timed:
+            return 'time_declared_hours', f'{timed[0]:g}', 'disease stage value is a time; ' + (
+                'stated as after infection' if timed[1] else 'reference event needs review')
     if key in CONDITION_TAGS and value.strip().lower() in {'none', 'no', 'untreated', 'uninfected', 'naive', 'mock'}:
         return 'condition_declared', value, f'"{key}" declares no treatment or infection'
     if key == 'infection time point' and value.strip().lower() == 'naive':
         return 'condition_declared', value, 'naive (uninfected) declared'
-    if not value or value.strip().lower() in NOT_AVAILABLE | {'none'}:
+    if not value or value.strip().lower() in NOT_AVAILABLE | {'none', 'not collected', 'not applicabl'}:
         return 'not_available', '', 'explicit not-available or empty value'
     if key in COMMENT_TAGS:
         return 'free_text_comment', value, 'free-text comment kept, not interpreted'
@@ -188,6 +219,8 @@ def propose(tag: str, value: str) -> tuple[str, str, str]:
             return 'parasite_strain', value, 'strain value begins with or names a T. gondii strain (modified line kept literally)'
         if re.match(r'\s*(?:B6|C57)[\s./\w-]*', value):
             return 'host_strain', value, 'strain value is a C57BL/6 derivative or cross'
+        if key in {'breed', 'cultivar'}:
+            return 'host_strain', value, f'"{key}" used for the host animal'
         return 'review', '', 'strain value matches neither list'
     if key == 'type' and value.strip() in {'I', 'II', 'III'}:
         return 'parasite_strain', 'Type ' + value.strip(), 'type tag with a T. gondii lineage numeral'
@@ -229,7 +262,16 @@ def main():
     args = parser.parse_args()
     folder = args.registry or sorted(p for p in REGISTRY.iterdir() if p.is_dir())[-1]
     annotations = pd.read_parquet(folder / 'annotations.parquet')
-    literal = annotations[annotations.origin.isin(['characteristics', 'channel organism'])]
+    literal = annotations[annotations.origin.isin(['characteristics', 'channel organism'])].copy()
+    # Runs without a GEO sample: their BioSample attributes, attached to the study through the run plan.
+    biosource = sorted(p for p in BIOSAMPLES.iterdir() if p.is_dir())[-1] if BIOSAMPLES.exists() else None
+    if biosource is not None:
+        bio = pd.read_parquet(biosource / 'attributes.parquet')
+        bio = bio[bio.origin.isin(['biosample attribute', 'sample organism'])]
+        runs = pd.read_parquet(folder / 'run_links.parquet')
+        studies = runs[runs.geo_sample.eq('')].groupby('biosample').study.apply(lambda v: ';'.join(sorted(set(v))))
+        bio = bio.assign(geo_sample=bio.biosample, study=bio.biosample.map(studies).fillna(''), channel='1')
+        literal = pd.concat([literal, bio[literal.columns]], ignore_index=True)
     pairs = (literal.groupby(['tag', 'value']).agg(samples=('geo_sample', 'nunique'), studies=('study', 'nunique'))
              .reset_index())
     proposals = pairs.apply(lambda r: propose(r.tag, r.value), axis=1, result_type='expand')
@@ -242,7 +284,8 @@ def main():
     covered = literal.merge(context, on=['tag', 'value']).geo_sample.nunique()   # organism alone is not context
     summary = dict(operation='propose_context_mapping', epoch=time.time(), registry=str(folder), pairs=len(pairs),
                    proposed=int((pairs.field != 'review').sum()), review=int((pairs.field == 'review').sum()),
-                   samples_with_a_context_proposal=int(covered), samples=int(annotations.geo_sample.nunique()),
+                   samples_with_a_context_proposal=int(covered), samples=int(literal.geo_sample.nunique()),
+                   biosample_source=str(biosource) if biosource is not None else None,
                    by_field=pairs.groupby('field').samples.sum().astype(int).to_dict(),
                    proposal_sha256=hashlib.sha256(out.read_bytes()).hexdigest(),
                    source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),

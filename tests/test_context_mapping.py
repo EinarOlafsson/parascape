@@ -18,7 +18,7 @@ def test_the_ambiguous_strain_tag_is_split_by_value_not_by_name():
 def test_stages_times_and_unknowns():
     assert P.propose('cell type', 'Tachyzoites')[0] == 'parasite_stage'
     assert P.propose('cell type', 'HFF')[0] == 'host_cell_or_tissue'
-    assert P.propose('developmental stage', 'adult')[0] == 'review'
+    assert P.propose('developmental stage', 'adult')[0] == 'host_age_declared'
     field, hours, rule = P.propose('timepoint', '9 dpi')
     assert (field, hours) == ('time_declared_hours', '216') and 'after infection' in rule
     field, hours, rule = P.propose('time', '6h')
@@ -31,7 +31,7 @@ def test_stages_times_and_unknowns():
 
 def test_first_pass_tag_review_and_units_carried_by_the_tag():
     assert P.propose('develpomental stage', 'bradyzoite')[0] == 'parasite_stage'   # misspelt stage tag, stage rule
-    assert P.propose('develpomental stage', 'adult')[0] == 'review'
+    assert P.propose('develpomental stage', 'adult')[0] == 'host_age_declared'
     assert P.propose('toxoplasma parasite strain', 'Pru dku80')[0] == 'parasite_strain'
     assert P.propose('mouse id', 'M12')[0] == 'unit_or_replicate_identifier'
     field, hours, rule = P.propose('days post-infection', '7')
@@ -60,7 +60,22 @@ def test_value_level_first_pass():
 
 
 def test_every_reviewed_time_reference_cites_its_evidence():
-    assert len(P.STUDY_TIME_REFERENCE) == 24
+    assert len(P.STUDY_TIME_REFERENCE) == 25
     for study, (event, evidence) in P.STUDY_TIME_REFERENCE.items():
-        assert study.startswith('GSE') and event and (evidence.startswith(('GEO', 'PMC', 'PMID')))
+        assert study.startswith(('GSE', 'PRJ')) and event and (evidence.startswith(('GEO', 'PMC', 'PMID', 'ENA')))
     assert P.STUDY_TIME_REFERENCE['GSE303610'][0] == 'auxin-induced knockdown'      # "24h" there is not infection
+
+
+def test_biosample_attribute_names_and_mixed_fields():
+    assert P.propose('dev_stage', 'fetus')[0] == 'host_age_declared'
+    assert P.propose('dev_stage', 'tachyzoites')[0] == 'parasite_stage'
+    assert P.propose('cell_type', 'astrocytes')[0] == 'host_cell_or_tissue'
+    assert P.propose('isolate', 'ME49')[0] == 'parasite_strain'
+    assert P.propose('isolate', 'Control group')[0] == 'condition_declared'
+    assert P.propose('isolate', '2006')[0] == 'not_context'
+    assert P.propose('cultivar', 'Kunming mice')[0] == 'host_strain'
+    assert P.propose('isolation_source', 'cultured with pH8.2 medium')[0] == 'condition_declared'
+    assert P.propose('isolation_source', 'HFF cell')[0] == 'host_cell_or_tissue'
+    assert P.propose('ENA-LAST-UPDATE', '2026-06-19')[0] == 'not_context'
+    field, hours, rule = P.propose('disease_stage', '21 days post infection')
+    assert (field, hours) == ('time_declared_hours', '504') and 'after infection' in rule
