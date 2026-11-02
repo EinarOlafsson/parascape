@@ -110,7 +110,52 @@ def apply():
     print(json.dumps(dict(applied=True, planned_runs=config['planned_runs'], backup=str(backup))), flush=True)
 
 
+SPECIFIC_HOSTS = ('ME49_pig', 'ME49_cow', 'ME49_cat', 'ME49_hamster', 'ME49_rat')
+
+
+def drop_generic_host():
+    """Remove ME49_host from rows that already carry their own host reference.
+
+    Reads from a host absent from ME49_host (human + mouse) have no matching host transcripts there, so
+    they spread over orthologous human and mouse genes: kallisto took 6 to 8.5 h per rat run against
+    ME49_host but 1.3 min against ME49_rat. The specific host reference is the competitive one for these
+    runs; the human/mouse result is neither needed nor meaningful for them.
+    """
+    stamp = time.strftime('%Y%m%dT%H%M%S'); changed = 0
+    with (AUTOMATION / '.lock').open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        config = json.loads((AUTOMATION / 'config.json').read_text())
+        if hashlib.sha256((AUTOMATION / 'plan.jsonl').read_bytes()).hexdigest() != config['plan_sha256']:
+            raise ValueError('Current plan does not match its pinned checksum')
+        backup = AUTOMATION / ('before-drop-generic-host-' + stamp); backup.mkdir()
+        for name in ('config.json', 'plan.jsonl', 'priority-plan.jsonl'):
+            shutil.copy2(AUTOMATION / name, backup / name)
+        for name in ('plan.jsonl', 'priority-plan.jsonl'):
+            rows = [json.loads(line) for line in (AUTOMATION / name).read_text().splitlines() if line.strip()]
+            for row in rows:
+                if 'ME49_host' in row['references'] and any(r in SPECIFIC_HOSTS for r in row['references']):
+                    row['references'] = [r for r in row['references'] if r != 'ME49_host']
+                    changed += name == 'plan.jsonl'
+            raw = ''.join(json.dumps(r) + '\n' for r in rows).encode()
+            temporary = AUTOMATION / (name + '.tmp'); temporary.write_bytes(raw); temporary.replace(AUTOMATION / name)
+        new = (AUTOMATION / 'plan.jsonl').read_bytes()
+        config.update(plan_sha256=hashlib.sha256(new).hexdigest(),
+                      extended=config.get('extended', []) + [dict(epoch=time.time(), dropped_generic_host_rows=changed,
+                          backup=str(backup), reason='Specific host reference replaces ME49_host for non-human/mouse hosts')])
+        temporary = AUTOMATION / 'config.json.tmp'; temporary.write_text(json.dumps(config, indent=2) + '\n')
+        temporary.replace(AUTOMATION / 'config.json')
+    with (OUT / 'operations.jsonl').open('a') as log:
+        log.write(json.dumps(dict(operation='drop_generic_host_where_specific', epoch=time.time(), rows=changed,
+                                  new_plan_sha256=config['plan_sha256'], backup=str(backup))) + '\n')
+    print(json.dumps(dict(rows_changed=changed, backup=str(backup))), flush=True)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--apply', action='store_true')
-    apply() if parser.parse_args().apply else stage()
+    parser.add_argument('--drop-generic-host', action='store_true', help='remove ME49_host where a specific host is set')
+    options = parser.parse_args()
+    if options.drop_generic_host:
+        drop_generic_host()
+    else:
+        apply() if options.apply else stage()
