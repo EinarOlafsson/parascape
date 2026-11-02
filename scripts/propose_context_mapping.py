@@ -101,6 +101,41 @@ TIME_ANY = re.compile(r'(?:\bday\s*(?P<d>\d+(?:\.\d+)?)\b)|(?P<n>\d+(?:\.\d+)?|'
 REFERENCE = re.compile(r'post[- ]?infection|p\.?i\.?|hpi|dpi|post[- ]?inoculation|after infection|post[- ]?infect', re.I)
 
 
+#: Reviewed 2026-11-02 at Einar's request ("check the associated publication"): what the clock starts from
+#: in studies whose time values do not say. Evidence is GEO series/sample text (MINiML) or the paper.
+STUDY_TIME_REFERENCE = {
+    'GSE119643': ('infection', 'GEO: harvested at 12h and 24h after macrophages infected with RH and Me49'),
+    'GSE125121': ('culture in differentiation medium', 'GEO: in either D1 or iM media for 24 hours or 1 week'),
+    'GSE131171': ('host stimulation (LPS or CpG)', 'GEO: BMDMs stimulated with LPS or CpG for 0, 2, or 6 hrs'),
+    'GSE132238': ('switch to stress (alkaline) or control medium, after 4 h invasion',
+                  'GEO: allowed to invade for 4 hours, then unstressed or stressed conditions for 24, 48 or 72 hours'),
+    'GSE132248': ('switch to stress (alkaline) or standard medium, after 24 h intracellular growth',
+                  'GEO: replicate inside host cells for 24 h, then switched; sorted at 24 and 48 h post medium change'),
+    'GSE137224': ('infection or mock (PBS) injection', 'GEO: mice received PBS or 50,000 tachyzoites; tag "week-post treatment"'),
+    'GSE140197': ('drug treatment (Tartrolon E or DMSO), 24 h after infection',
+                  'GEO: infected for 24 hours then treated; RNA collected 4, 8 and 12 hours post treatment'),
+    'GSE145080': ('alkaline induction (extracellular parasites)', 'GEO: treated with alkaline (pH 8.2) for 3, 5, or 7 days'),
+    'GSE146715': ('infection for the 15 h samples; parasite culture time for the HFF-passage samples',
+                  'GEO: macrophages infected 1 h, washed, cultured a further 15 h; other values describe HFF culture'),
+    'GSE157395': ('infection', 'PMC7817532: RNA samples collected after 4 h and 16 h of infection'),
+    'GSE184350': ('infection', 'PMID 38376210 abstract: anti-IL-27p28 prior to infection; day 5 and day 10 readouts'),
+    'GSE267544': ('host stimulation (2 h LPS+IFNy pulse)', 'GEO: RNA collected at time points after initial stimulation'),
+    'GSE267546': ('host stimulation (LPS+IFNy)', 'GEO: stimulated with LPS+IFNy for 48h'),
+    'GSE268162': ('infection or mock (PBS) injection', 'GEO samples: PBS or T. gondii, 27 days after treatment'),
+    'GSE290465': ('infection', 'GEO: mice euthanized on day 3 post infection'),
+    'GSE29404': ('infection', 'GEO: BMMs infected with parasite strains for 18 hours before RNA harvesting'),
+    'GSE297097': ('study-specific events (cohousing, transplant, photoconversion, infection)',
+                  'GEO sample values name the event; only values stating dpi are after infection'),
+    'GSE303610': ('auxin-induced knockdown', 'GEO: profiling at 6, 12, or 24 hours post-treatment (auxin degron)'),
+    'GSE38686': ('T cell culture with cytokines', 'GEO: samples collected at 10 hours and 2 days during the culture period'),
+    'GSE60305': ('infection', 'PMC4230917: RH infection duration two days, CTG and PLK three days'),
+    'GSE81015': ('infection', 'GEO: infected at MOI 10 for 2, 6 and 24 hours'),
+    'GSE81016': ('infection', 'GEO: infected at MOI 10 for 2, 6 and 24 hours'),
+    'GSE94595': ('infection', 'GEO: infected or not for 24 hours'),
+    'GSE98677': ('infection', 'GEO: 2, 6 and 24 hours post-infected compared to mock-infected cells'),
+}
+
+
 def stage_in(value):
     return re.search(r'\b(?:' + STAGES + r')\b|enter?o?pithelial', value, re.I) is not None
 
@@ -212,6 +247,20 @@ def main():
                    proposal_sha256=hashlib.sha256(out.read_bytes()).hexdigest(),
                    source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                    scope='Proposal for review only; no proposal is used until reviewed.')
+    # Per-sample times: the same literal ("24h") means different events in different studies.
+    timed = literal.merge(pairs[pairs.field == 'time_declared_hours'][['tag', 'value', 'proposed_value', 'rule']],
+                          on=['tag', 'value'])
+    def reference(row):
+        if 'after infection' in row.rule:
+            return 'infection', 'value states it'
+        return STUDY_TIME_REFERENCE.get(row.study, ('unresolved', 'no reviewed study reference'))
+    timed[['reference_event', 'reference_evidence']] = timed.apply(reference, axis=1, result_type='expand')
+    times = timed[['study', 'geo_sample', 'tag', 'value', 'proposed_value', 'reference_event', 'reference_evidence']]
+    times = times.rename(columns={'proposed_value': 'hours'})
+    times.to_csv(folder / 'sample_times.csv', index=False)
+    summary.update(sample_times=len(times), sample_times_unresolved=int(times.reference_event.eq('unresolved').sum()),
+                   sample_times_after_infection=int(times.reference_event.str.startswith('infection').sum()),
+                   sample_times_sha256=hashlib.sha256((folder / 'sample_times.csv').read_bytes()).hexdigest())
     (folder / 'context_mapping_proposal.json').write_text(json.dumps(summary, indent=2) + '\n')
     print(json.dumps(summary))
 

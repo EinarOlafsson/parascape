@@ -57,3 +57,10 @@ def test_value_level_first_pass():
     assert P.propose('time', 'post inoculation day 25')[1] == '600'
     assert P.propose('growth time', 'three days')[1] == '72'
     assert P.propose('mouse comments', 'DOB 5/1/22')[0] == 'free_text_comment'
+
+
+def test_every_reviewed_time_reference_cites_its_evidence():
+    assert len(P.STUDY_TIME_REFERENCE) == 24
+    for study, (event, evidence) in P.STUDY_TIME_REFERENCE.items():
+        assert study.startswith('GSE') and event and (evidence.startswith(('GEO', 'PMC', 'PMID')))
+    assert P.STUDY_TIME_REFERENCE['GSE303610'][0] == 'auxin-induced knockdown'      # "24h" there is not infection

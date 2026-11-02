@@ -264,3 +264,16 @@ the snapshot remains an explicit immutable296-entry cut.
   ME49 and ME49+host, same settings for every run). Deposited tables keep their original units and are
   shown beside, never merged with, the reprocessed values.
 
+## 2026-11-02: sample/context registry and Einar's comparison decisions
+* `scripts/build_sample_registry.py` keeps every GEO sample annotation verbatim (371 series, 6,621 samples);
+  `scripts/propose_context_mapping.py` maps tag/value pairs onto context fields through named rules plus a
+  first-pass review by Claude (97% of samples have context; 149 pairs left for review).
+* **Time (Einar: "check the associated publication"):** the clock's start was resolved for all 24 studies with
+  unstated times from GEO text or the paper (`STUDY_TIME_REFERENCE`, evidence cited per study). Only times whose
+  reference is infection are compared as infection time; others carry their own event (stress medium, drug,
+  auxin, host stimulation, culture).
+* **Scope (Einar: "keep everything"):** samples from other pathogens in shared studies (e.g. the ImmGenT atlas)
+  stay in the registry as host context.
+* **Independence (Einar: conservative):** samples sharing a mouse, donor or biological-replicate identifier count
+  as one unit; without identifiers, a study's samples are not assumed independent beyond its stated design.
+
