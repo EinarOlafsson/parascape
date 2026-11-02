@@ -38,11 +38,85 @@ HOST_STRAINS = (r'C57BL/?6\w*|BALB/?c\w*|CBA/?J|CD-?1|Swiss( Webster)?|DBA/?2\w*
 STAGES = r'tachyzoites?|bradyzoites?|sporozoites?|merozoites?|oocysts?|tissue cysts?|cysts?|zoites|schizonts?|gametes?|enteroepithelial'
 TIME = re.compile(r'^\s*(\d+(?:\.\d+)?)\s*(h|hr|hrs|hour|hours|hpi|d|day|days|dpi|w|wk|week|weeks|min|mins|minutes)\b'
                   r'(?:\s*(?:post[- ]?infection|p\.?i\.?))?\s*$', re.I)
-HOURS = dict(h=1, hr=1, hrs=1, hour=1, hours=1, hpi=1, d=24, day=24, days=24, dpi=24, w=168, wk=168, week=168,
-             weeks=168, min=1 / 60, mins=1 / 60, minutes=1 / 60)
+HOURS = dict(h=1, hr=1, hrs=1, hour=1, hours=1, hpi=1, d=24, day=24, days=24, dpi=24, w=168, wk=168, wks=168,
+             week=168, weeks=168, min=1 / 60, mins=1 / 60, minute=1 / 60, minutes=1 / 60)
 TIME_TAGS = {'time', 'timepoint', 'time point', 'time post infection', 'time post-infection', 'infection time',
              'time of infection', 'hours post infection', 'days post infection'}
-STAGE_TAGS = {'stage', 'developmental stage', 'life stage', 'parasite stage', 'life cycle stage'}
+STAGE_TAGS = {'stage', 'developmental stage', 'life stage', 'parasite stage', 'life cycle stage', 'develpomental stage',
+              'developmentalstage', 'dev. stage', 'toxoplasma stage', 'parasite life cycle stage'}
+
+#: First-pass tag review (2026-11-02, Claude, for Einar to spot-check). Spelling variants join the
+#: field of their canonical tag; tags describing assay mechanics are marked not_context so they leave
+#: the review queue without a value. Replicate and individual identifiers are kept because they decide
+#: which samples are independent.
+REVIEWED_TAGS = {
+    **dict.fromkeys(['toxoplasma parasite strain', 't. gondii strain', 'strain of toxoplasma', 'toxplasma gondii strain',
+                     'strain, toxoplasma gondii', 'tg type strain', 't. gondii strain background'], 'parasite_strain'),
+    **dict.fromkeys(['parasite genotype', 't. gondii genotype', 'toxoplasma gondii genotype', 'toxoplasma genetic modification',
+                     't. gondii strain and genotype', 'complementation', 'overexpression', 'plasmid transfection',
+                     'sirna transfection', 'transfection', 'transfected with', 'flp recombinase'], 'parasite_or_cell_perturbation_declared'),
+    **dict.fromkeys(['strain of mouse', 'mice strain'], 'host_strain'),
+    **dict.fromkeys(['mouse genotype/variation', 'genetics', 'host cell genotype'], 'host_genotype_declared'),
+    **dict.fromkeys(['host cell type', 'host cell line', 'host cells', 'host cell_line', 'host cell_type', 'cellline', 'cell',
+                     'cell source', 'tissue/cell line', 'monocyte subset', 'host growth'], 'host_cell_or_tissue'),
+    **dict.fromkeys(['sex', 'gender', 'gender (for cell source)'], 'host_sex'),
+    **dict.fromkeys(['age', 'age weeks', 'age (cell source)'], 'host_age_declared'),
+    **dict.fromkeys(['replicate', 'biological replicate', 'biol. replicate', 'replicate information', 'batch', 'donor',
+                     'donor id', 'mouse id', 'mouse number', 'clone'], 'unit_or_replicate_identifier'),
+    **dict.fromkeys(['treat agent', 'treat dose', 'treat mode', 'infection dose', 'infection mode', 'infection status',
+                     'infected with', 'infected', 'stimulus', 'agonist', 'stimulation', 'stimulated', 'drug treatment',
+                     'treatment 1', 'treatment 2', 'treated', 'ifn-g priming', 'infrection condition', 'pathogen', 'disease',
+                     'disease state', 'mouse model', 'multiplicity of infection', 'moi', 'culture condition', 'growth condition',
+                     'culture conditions', 'incubation media', 'ph', 'growth temperature', 'parasite strain or treatment',
+                     'infection protocol', 'parasite', 'parasites', 'differentiation protocol'], 'condition_declared'),
+    **dict.fromkeys(['chip antibody', 'chip antibody vendor', 'chip antibody cat.#', 'chip antibody cat. #',
+                     'chip antibody lot/batch#', 'chip antibody source', 'chip antibody name', 'chip antibody manufacturer',
+                     'chip antibody catalog #', 'chip antobody catalogue number', 'antibody', 'library type', 'array design',
+                     'rna population', 'fraction', 'sorted fraction', 'molecule subtype', 'gating strategy', 'hashtag number',
+                     'immgent igt_10xlane_id', 'cite seq', 'lab', 'exp name', 'organism name', 'organ uberon_id', 'plasmid',
+                     'protein_sequence', 'uniprot id', 'expressed protein', 'surface marker', 'sort population',
+                     'sorting strategy', 'dna fragmentation method', 'prep description', 'target cells', 't specificity',
+                     'description for exp id', 'jax', 'pool of_mice', 'material type', 'passage', 'passages', 'body weight',
+                     'hematocrit', 'platlets', 'wbc count', 'cd4 count', 'viral load copies/ml', 'siv status', 'habitat',
+                     'ecotype', 'developmental stage (boyes et al. plant cell 2001)', 'tumor'], 'not_context'),
+}
+#: Time tags whose name carries the unit (value is a bare number) and whether the start is infection.
+UNIT_TIME_TAGS = {'days post-infection': (24, True), 'days postinfection': (24, True), 'day of infection': (24, True),
+                  'months post infection': (730.5, True), 'week-post treatment': (168, False)}
+TIME_TAGS |= {'infection time point', 'infection time', 'culture time', 'incubation time', 'growth time',
+              'collection timepoint', 'time collected_after_initial_stimulation', 'duration', 'treatment duration',
+              'length of treatment', 'time stimulated_with_lps+ifny'}
+
+
+STRAIN_TAGS = {'strain', 'strain background', 'genetic background', 'strain/background', 'cell line/strain',
+               'strain/genotype'}
+CONDITION_TAGS = {'treatment', 'infection', 'condition', 'infection agent', 'agent', 'drug treatment', 'agonist',
+                  'stimulus', 'disease state', 'group', 'groups', 'sample group', 'phenotype', 'condition detailed_organ'}
+COMMENT_TAGS = {'mouse comments', 'sample comments'}
+NOT_AVAILABLE = {'n/a', 'na', 'not applicable', 'unknown', 'missing', '-', 'not available', 'not determined'}
+WORD_NUMBERS = dict(one=1, two=2, three=3, four=4, five=5, six=6, seven=7, eight=8, nine=9, ten=10)
+#: "day 5", "Day10", "at day 5 post-infection", "post inoculation day 25", "27 days after treatment", "12h later".
+TIME_ANY = re.compile(r'(?:\bday\s*(?P<d>\d+(?:\.\d+)?)\b)|(?P<n>\d+(?:\.\d+)?|' + '|'.join(WORD_NUMBERS) +
+                      r')\s*(?P<u>h|hr|hrs|hours?|hpi|d|days?|dpi|w|wks?|weeks?|min|mins|minutes)\b', re.I)
+REFERENCE = re.compile(r'post[- ]?infection|p\.?i\.?|hpi|dpi|post[- ]?inoculation|after infection|post[- ]?infect', re.I)
+
+
+def stage_in(value):
+    return re.search(r'\b(?:' + STAGES + r')\b|enter?o?pithelial', value, re.I) is not None
+
+
+def parse_time(value):
+    """Hours and whether the value names infection as the start; None without an explicit number and unit."""
+    match = TIME_ANY.search(value)
+    if not match:
+        return None
+    if match.group('d'):
+        hours = float(match.group('d')) * 24
+    else:
+        number = match.group('n').lower()
+        number = WORD_NUMBERS.get(number) or float(number)
+        hours = float(number) * HOURS[match.group('u').lower().rstrip('s') if match.group('u').lower() not in HOURS else match.group('u').lower()]
+    return hours, bool(REFERENCE.search(value))
 
 
 def whole(pattern, value):
@@ -52,16 +126,42 @@ def whole(pattern, value):
 def propose(tag: str, value: str) -> tuple[str, str, str]:
     """(field, proposed value, rule) for one literal pair; field 'review' means no proposal."""
     key = tag.lower()
-    if not value or value.lower() in {'n/a', 'na', 'none', 'not applicable', 'unknown', 'missing', '-'}:
-        return 'review', '', 'empty or explicit not-available value'
+    if key in CONDITION_TAGS and value.strip().lower() in {'none', 'no', 'untreated', 'uninfected', 'naive', 'mock'}:
+        return 'condition_declared', value, f'"{key}" declares no treatment or infection'
+    if key == 'infection time point' and value.strip().lower() == 'naive':
+        return 'condition_declared', value, 'naive (uninfected) declared'
+    if not value or value.strip().lower() in NOT_AVAILABLE | {'none'}:
+        return 'not_available', '', 'explicit not-available or empty value'
+    if key in COMMENT_TAGS:
+        return 'free_text_comment', value, 'free-text comment kept, not interpreted'
     if key in TAG_FIELDS:
         return TAG_FIELDS[key], value, f'tag name "{key}"'
-    if key == 'strain':
+    if key in UNIT_TIME_TAGS and re.fullmatch(r'\s*\d+(?:\.\d+)?\s*', value):
+        factor, infection = UNIT_TIME_TAGS[key]
+        return ('time_declared_hours', f'{float(value) * factor:g}',
+                f'unit from tag "{key}"; ' + ('stated as after infection' if infection else 'reference event needs review'))
+    if key in REVIEWED_TAGS and key not in STAGE_TAGS:
+        field = REVIEWED_TAGS[key]
+        return field, ('' if field == 'not_context' else value), f'first-pass tag review: "{key}"'
+    if key in STRAIN_TAGS:
         if whole(PARASITE_STRAINS, value):
             return 'parasite_strain', value, 'strain value matches a T. gondii strain/lineage name'
-        if whole(HOST_STRAINS, value):
+        if whole(HOST_STRAINS + r'|B6|C3H\w*|AJ|NOD/ShiLtJ', value):
             return 'host_strain', value, 'strain value matches a laboratory host strain name'
+        if re.match(r'\s*(?:Tg ?)?(?:type\s+(?:I|II|III)\s+)?(?:' + PARASITE_STRAINS + r')(?:[\s_:.\-(]|$)', value, re.I) \
+                or re.search(r'\bRH\b|RHKU80|RH::', value):
+            return 'parasite_strain', value, 'strain value begins with or names a T. gondii strain (modified line kept literally)'
+        if re.match(r'\s*(?:B6|C57)[\s./\w-]*', value):
+            return 'host_strain', value, 'strain value is a C57BL/6 derivative or cross'
         return 'review', '', 'strain value matches neither list'
+    if key == 'type' and value.strip() in {'I', 'II', 'III'}:
+        return 'parasite_strain', 'Type ' + value.strip(), 'type tag with a T. gondii lineage numeral'
+    if key in STAGE_TAGS | {'sample type'}:
+        if stage_in(value):
+            return 'parasite_stage', value, f'"{key}" value names a parasite life stage (literal kept)'
+        timed = parse_time(value)
+        if timed and timed[1]:
+            return 'time_declared_hours', f'{timed[0]:g}', f'"{key}" value is a time stated as after infection'
     if key in STAGE_TAGS or key == 'cell type':
         if re.fullmatch(r'\s*(?:T\.? ?gondii\s+)?(?:' + STAGES + r')\s*', value, re.I):
             return 'parasite_stage', value, f'"{key}" value names a parasite life stage'
@@ -70,6 +170,10 @@ def propose(tag: str, value: str) -> tuple[str, str, str]:
         return 'review', '', 'stage value is not a recognized life stage'
     if key in TIME_TAGS:
         match = TIME.match(value)
+        timed = None if match else parse_time(value)
+        if timed:
+            return ('time_declared_hours', f'{timed[0]:g}', 'number and unit within the value; ' +
+                    ('stated as after infection' if timed[1] else 'reference event needs review'))
         if match:
             hours = float(match.group(1)) * HOURS[match.group(2).lower()]
             # The clock's start (infection, treatment, plating) is only known when the value says so.
@@ -79,7 +183,7 @@ def propose(tag: str, value: str) -> tuple[str, str, str]:
         return 'review', '', 'time without an explicit number and unit'
     if key in {'genotype', 'genotype/variation'}:
         return 'genotype_declared', value, 'genotype tag; parasite or host owner needs review'
-    if key in {'treatment', 'infection', 'condition', 'infection agent', 'agent'}:
+    if key in CONDITION_TAGS:
         return 'condition_declared', value, f'"{key}" tag; infection, drug and control roles need review'
     return 'review', '', 'tag outside the proposal rules'
 
