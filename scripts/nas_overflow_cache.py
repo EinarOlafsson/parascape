@@ -139,6 +139,8 @@ def main():
     parser.add_argument('--reserve-gib',type=int,default=25)
     # The NAS is shared; without a cap the overflow tier grows until only the reserve is left.
     parser.add_argument('--nas-max-gib',type=int,default=0,help='hard cap on raw bytes kept in the NAS tier (0 = no cap)')
+    # Local scratch (mnt1) is shared with tutorial recordings; with room on the NAS, download there first.
+    parser.add_argument('--prefer-nas',action='store_true',help='download to the NAS tier first; local only when the NAS cap is reached')
     args=parser.parse_args()
     if min(args.max_gib,args.reserve_gib)<=0:raise ValueError('Invalid raw storage bounds')
     local=args.cache.resolve(strict=True);nas=args.nas
@@ -212,6 +214,8 @@ def main():
                     failures[run]=time.monotonic()+3600;continue
                 local_ok=(regular_bytes(local)+size<=cache.max_bytes
                     and shutil.disk_usage(local).free-size>=scratch_required)
+                if args.prefer_nas and not nas_cap_blocks(regular_bytes(nas),size,nas_cap):
+                    local_ok=False
                 target=archive if local_ok else nas_archive
                 reserve=cache.reserve if target==nas_archive else scratch_required
                 part=target.with_suffix('.part')

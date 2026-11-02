@@ -313,14 +313,32 @@ def plan(studies: list, strain_studies: set) -> None:
 
 
 # --------------------------------------------------------------------------- quantification
+#: Optional second scratch on the NAS (Einar 2026-11-02: use NAS space when local space is the bottleneck).
+#: Used only for a run that does not fit locally, and only while the NAS keeps this much free afterwards.
+NAS_SCRATCH = os.environ.get("PARASCAPE_NAS_SCRATCH", "")
+NAS_SCRATCH_RESERVE_GB = float(os.environ.get("PARASCAPE_NAS_SCRATCH_RESERVE_GB", "150"))
+
+
 class ScratchDeferred(Exception):
     """A run needs more scratch than is free now; quantify others and retry it later."""
+
+    def __init__(self, message: str, need: float = 0.0):
+        super().__init__(message)
+        self.need = need
 
 
 def _need_scratch(run_acc: str, need: float) -> None:
     # Waiting here blocked the whole queue behind one large run (2026-11-01: 328 GB needed, 107 free).
     if _free_gb(SCRATCH) < need:
-        raise ScratchDeferred(f"{run_acc}: deferred, scratch {_free_gb(SCRATCH):.0f} GB free, {need:.0f} needed")
+        raise ScratchDeferred(f"{run_acc}: deferred, scratch {_free_gb(SCRATCH):.0f} GB free, {need:.0f} needed", need)
+
+
+def _nas_scratch_fits(need: float) -> bool:
+    """True when the run's own scratch use (need without the local margin) leaves the NAS reserve free."""
+    if not NAS_SCRATCH:
+        return False
+    os.makedirs(NAS_SCRATCH, exist_ok=True)
+    return _free_gb(NAS_SCRATCH) - (need - SCRATCH_MARGIN_GB) >= NAS_SCRATCH_RESERVE_GB
 
 
 def _free_gb(path: str) -> float:
@@ -346,6 +364,8 @@ def quantify(limit: int | None = None) -> None:
 
 def _quantify_pass(todo: list, limit: int | None, count: int):
     """One pass over the queue; returns runs deferred for scratch space, or None when the limit is hit."""
+    global SCRATCH
+    local_scratch = SCRATCH
     deferred = []
     for r in todo:
         out_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
@@ -357,7 +377,15 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                                  {'run': r['run_accession'], 'study': r['study'], 'pid': os.getpid()})
         _clear_scratch(None)                        # whatever interrupted attempts left behind
         try:
-            local = _reads(r)
+            try:
+                local = _reads(r)
+            except ScratchDeferred as e:
+                if not _nas_scratch_fits(e.need):
+                    raise
+                log(f"{r['run_accession']}: local scratch too small; extracting on NAS scratch {NAS_SCRATCH}")
+                SCRATCH = NAS_SCRATCH
+                _clear_scratch(r["run_accession"])
+                local = _reads(r)
             if not local:
                 log(f"{r['run_accession']}: no reads available from AWS or ENA; skipped")
                 continue
@@ -394,6 +422,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
             # Everything this run left on scratch -- reads, the .sra, fasterq-dump temp files -- whether
             # it finished or not: scratch is small and shared, and a failed run must not fill it.
             _clear_scratch(r["run_accession"])
+            SCRATCH = local_scratch                     # a NAS-scratch run never changes the next run's scratch
             if DOWNLOAD_CACHE:
                 (Path(DOWNLOAD_CACHE) / 'active.json').unlink(missing_ok=True)
         count += 1

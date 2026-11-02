@@ -128,3 +128,26 @@ def test_a_run_too_large_for_scratch_is_deferred_not_blocking_the_queue(tmp_path
     rows = [dict(run_accession=r, study='S', references=['ME49']) for r in ('SRR9', 'SRR3', 'SRR4')]
     deferred = Q._quantify_pass(rows, None, 0)
     assert done == ['SRR3', 'SRR4'] and [r['run_accession'] for r in deferred] == ['SRR9']
+
+
+def test_a_run_too_large_locally_uses_nas_scratch_then_local_again(tmp_path, monkeypatch):
+    Q = load('omics_quant')
+    local, nas = tmp_path / 'local', tmp_path / 'nas_scratch'; local.mkdir()
+    monkeypatch.setattr(Q, 'SCRATCH', str(local)); monkeypatch.setattr(Q, 'NAS', str(tmp_path / 'nas'))
+    monkeypatch.setattr(Q, 'DOWNLOAD_CACHE', ''); monkeypatch.setattr(Q, 'NAS_SCRATCH', str(nas))
+    monkeypatch.setattr(Q, 'SCRATCH_MARGIN_GB', 125.0); monkeypatch.setattr(Q, 'NAS_SCRATCH_RESERVE_GB', 150.0)
+    free = {str(local): 160.0, str(nas): 2300.0}
+    monkeypatch.setattr(Q, '_free_gb', lambda path: free[str(path)])
+    used = []
+
+    def reads(row):
+        Q._need_scratch(row['run_accession'], 328.0 if row['run_accession'] == 'SRR1' else 130.0)
+        used.append((row['run_accession'], Q.SCRATCH))
+        return []
+    monkeypatch.setattr(Q, '_reads', reads)
+    rows = [dict(run_accession=r, study='S', references=['ME49']) for r in ('SRR1', 'SRR2')]
+    assert Q._quantify_pass(rows, None, 0) == []
+    assert used == [('SRR1', str(nas)), ('SRR2', str(local))] and Q.SCRATCH == str(local)
+    monkeypatch.setattr(Q, 'NAS_SCRATCH', '')                                  # no NAS scratch: deferred as before
+    used.clear()
+    assert [r['run_accession'] for r in Q._quantify_pass(rows, None, 0)] == ['SRR1'] and used == [('SRR2', str(local))]
