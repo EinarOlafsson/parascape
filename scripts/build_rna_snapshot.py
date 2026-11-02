@@ -35,11 +35,19 @@ def build(root: Path, verified: Path, plan: Path, out: Path, compact: bool = Fal
     evidence = json.loads(verified.read_text())
     planned = [json.loads(line) for line in plan.read_text().splitlines() if line.strip()]
     by_study = defaultdict(list)
+    excluded = []
     for row in planned:
         key = row['study'] + '/' + row['run_accession']
-        if key in evidence:
-            by_study[row['study']].append(row)
-    if not by_study or len(evidence) != sum(map(len, by_study.values())):
+        if key not in evidence:
+            continue
+        if 'ME49_host' not in row['references']:
+            # Non-human/mouse hosts are quantified against their own competitive reference (ME49_pig, ...);
+            # this snapshot holds the ME49 + human/mouse matrices only, so those runs are listed, not mixed in.
+            excluded.append(dict(key=key, references=row['references'],
+                                 reason='no ME49_host quantification; own host reference not yet in app snapshots'))
+            continue
+        by_study[row['study']].append(row)
+    if not by_study or len(evidence) != sum(map(len, by_study.values())) + len(excluded):
         raise ValueError('Verified entries do not reconcile to the frozen plan')
     out.mkdir(parents=True, exist_ok=True)
     if (out / 'snapshot.json').exists():
@@ -51,6 +59,7 @@ def build(root: Path, verified: Path, plan: Path, out: Path, compact: bool = Fal
                 'scope': 'Partial queue snapshot; competitive ME49 + human/mouse reference',
                 'planned_runs': len(planned), 'verified_runs': len(evidence),
                 'studies': [], 'quantifiers': list(X.QUANTIFIERS), 'references': [ref],
+                'excluded_verified_runs': excluded,
                 'plan_sha256': sha256(plan), 'inputs': {}, 'outputs': {},
                 'reference': json.loads((ref_dir / 'reference.json').read_text()),
                 'tx2gene_sha256': sha256(ref_dir / 'tx2gene.tsv'),

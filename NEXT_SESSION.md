@@ -25,9 +25,16 @@
   same packs with a pinned gzip annotation sidecar (reader support in e394e40): a real-file replay gave
   identical values/tokens/annotations at 1/7.5 the size. v2 ran (1,149 packs, 0 reviews, 7.7 GB), matched v1
   pack for pack, and v1 was deleted with Einar's approval (record in `processing_audit/named_expression_v1_record/`).
-  v2's index is renamed `catalogue.pending-consumer-update.json`: the background units pinned to
-  `/media/carruthers/mnt1/parascape-anndata-source-checkout` (3519228) reject its sidecar packs. Re-pin those
-  consumers to a checkout with e394e40 or later, then rename it back to `catalogue.json`.
+  v2 was briefly hidden after background failures that turned out to come from the v1 deletion timing;
+  it is visible again (2026-11-02): eight consumer units and the app reader (1,819 packs, 0 errors) pass.
+* **Local app (2026-11-02):** `~/.local/bin/parascape-live` uses the 0.0.9.0 installed data
+  (`/media/carruthers/mnt1/parascape-release-data-0.0.9.0/installed`); launcher backups `*.before-0.0.9.0-data-*`.
+  RNA app snapshots hold ME49_host matrices only; runs quantified against their own host reference (pig, rat)
+  are listed in the snapshot's `excluded_verified_runs` until the app supports per-study competitive hosts.
+  `current` -> `app_snapshots/20261102T171447Z-348` (348 verified runs, 120 matrices). The previous rat-study
+  matrices (GSE168465, wrong human/mouse host) are explicitly superseded via `SUPERSEDED_STUDIES` in the
+  external `refresh_rna_snapshot.py` (archived in `processing_audit/rna_snapshot_refresh/`); all other prior
+  matrices were preserved bit for bit (42.1 M cells).
 * **Host references prepared, not built:** `omics_quant.py host-references` builds ME49_pig/cow/cat/hamster/rat;
   `scripts/route_host_references.py --apply` then adds them to 60 queued pig/rat rows and queues 46 held-back
   host-labelled runs (staged receipt in `processing_audit/unplanned_rna_study_review/host-routing/`).
