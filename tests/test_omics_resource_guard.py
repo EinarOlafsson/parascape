@@ -64,5 +64,16 @@ class Guard(unittest.TestCase):
             self.assertEqual(G.apply_affinity(cgroup, {10}, self.proc), 0)
 
 
+    def test_wide_mode_needs_sustained_idle_and_yields_at_once(self):
+        args = dict(enter_max=6, leave_max=10, ram_max=80, sustain=180)
+        wide, since = G.select_wide(2.0, 50, 0.0, None, False, **args)
+        self.assertEqual((wide, since), (False, 0.0))                     # idle, not yet sustained
+        self.assertEqual(G.select_wide(2.0, 50, 200.0, since, False, **args), (True, 0.0))
+        self.assertEqual(G.select_wide(8.0, 50, 300.0, 0.0, True, **args), (True, None))   # between: keep
+        self.assertEqual(G.select_wide(12.0, 50, 310.0, None, True, **args), (False, None))  # other work back
+        self.assertEqual(G.select_wide(1.0, 85, 320.0, 0.0, True, **args), (False, None))   # RAM high
+        self.assertEqual(G.select_wide(None, 50, 330.0, 5.0, True, **args), (True, 5.0))   # no sample yet
+
+
 if __name__ == '__main__':
     unittest.main()

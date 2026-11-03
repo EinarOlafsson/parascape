@@ -308,3 +308,12 @@ the snapshot remains an explicit immutable296-entry cut.
 * Einar chose to harvest the ToxoHub v4 JSON API (`scripts/harvest_toxohub_preprint.py`, 1 request/s) into
   `parascape_omics/preprint_results/toxohub_v4`, every file flagged unreleased. **Never put it in a release.**
   When GEO/SRA has the reads, queue them in the uniform pipeline and treat the harvest as superseded.
+
+## 2026-11-03: share spare CPUs with autotrade
+* Einar: ParaScape and autotrade share the machine; when autotrade is not using the cores, ParaScape may.
+  `omics_resource_guard.py` gained a `wide` mode (`--wide-cpus`, drop-in `60-wide-when-idle.conf`): after 3 min
+  with non-ParaScape work under 6 busy cores and RAM under 80 GB it adds CPUs 8-14 and 24-30 and sets
+  `extra_workers: 1`; it yields at once above 10 cores or 80 GB. `omics_quant.py` starts
+  `PARASCAPE_EXTRA_WORKERS` (1) further workers that claim a run only while the guard reports spare workers.
+* Measured queue (automation plan, not the older catalogue plan): 2,316 runs, 361 verified, 7.3 TB of reads
+  left; ~135 GB/day at 16 CPUs.

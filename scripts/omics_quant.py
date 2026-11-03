@@ -331,6 +331,20 @@ SALMON_EXTRA = ["--dumpEqWeights", "--numGibbsSamples", "30"]
 #: Parallel quantifier workers in one service (Einar 2026-11-03: two). Each worker has its own scratch
 #: folder, active file and THREADS // WORKERS threads; runs are claimed atomically so none runs twice.
 WORKERS = max(1, int(os.environ.get("PARASCAPE_WORKERS", "1")))
+#: Workers beyond WORKERS that claim runs only while the resource guard reports spare CPUs ('wide' mode:
+#: Einar 2026-11-03, use the cores autotrade is not using). They get the same thread count as the others.
+EXTRA_WORKERS = max(0, int(os.environ.get("PARASCAPE_EXTRA_WORKERS", "0")))
+RESOURCE_STATUS = os.environ.get("PARASCAPE_RESOURCE_STATUS",
+                                 os.path.expanduser("~/.cache/parascape-downloads/resource-status.json"))
+EXTRA_RANK = 0          # set in an extra worker: 1 for the first extra, 2 for the second, ...
+
+
+def _spare_workers() -> int:
+    try:
+        with open(RESOURCE_STATUS) as fh:
+            return int(json.load(fh).get("extra_workers", 0))
+    except (OSError, ValueError):
+        return 0
 ACTIVE_NAME = "active.json"
 CLAIMS = ""                                  # claims folder, set in multi-worker mode only
 
@@ -421,7 +435,8 @@ def _quantify_workers(todo: list, limit: int | None) -> None:
     shutil.rmtree(claims, ignore_errors=True)       # claims of a previous service instance are stale
     os.makedirs(claims)
     context = multiprocessing.get_context("fork")
-    workers = [context.Process(target=_worker, args=(k, todo, limit, base, claims)) for k in range(WORKERS)]
+    workers = [context.Process(target=_worker, args=(k, todo, limit, base, claims))
+               for k in range(WORKERS + EXTRA_WORKERS)]
     for w in workers:
         w.start()
     for w in workers:
@@ -431,11 +446,12 @@ def _quantify_workers(todo: list, limit: int | None) -> None:
 
 
 def _worker(k: int, todo: list, limit: int | None, base: str, claims: str) -> None:
-    global SCRATCH, THREADS, ACTIVE_NAME, CLAIMS
+    global SCRATCH, THREADS, ACTIVE_NAME, CLAIMS, EXTRA_RANK
     SCRATCH, ACTIVE_NAME, CLAIMS = os.path.join(base, f"w{k}"), f"active-w{k}.json", claims
     THREADS = max(1, THREADS // WORKERS)
+    EXTRA_RANK = max(0, k - WORKERS + 1)
     os.makedirs(SCRATCH, exist_ok=True)
-    log(f"worker {k}: scratch {SCRATCH}, {THREADS} threads")
+    log(f"worker {k}: scratch {SCRATCH}, {THREADS} threads" + (" (only while CPUs are spare)" if EXTRA_RANK else ""))
     while True:
         deferred = _quantify_pass(todo, limit, 0)
         if deferred is None or not deferred:
@@ -456,8 +472,16 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
         if r["run_accession"] in DEFER_RUNS:
             log(f"{r['run_accession']} ({r['study']}): held back by PARASCAPE_DEFER_RUNS; stays pending")
             continue
+        while EXTRA_RANK and _spare_workers() < EXTRA_RANK:
+            time.sleep(60)                           # wait for spare CPUs; others may finish this run meanwhile
+            if os.path.exists(os.path.join(out_dir, "done.json")) or (
+                    CLAIMS and os.path.exists(os.path.join(CLAIMS, f"{r['run_accession']}.claim"))):
+                break
         if not _claim(r["run_accession"]):
             continue                                 # another worker has this run
+        if os.path.exists(os.path.join(out_dir, "done.json")):
+            _release(r["run_accession"])             # finished by another worker after the check above
+            continue
         local = []
         if DOWNLOAD_CACHE:
             _cache_module().save(Path(DOWNLOAD_CACHE) / ACTIVE_NAME,
