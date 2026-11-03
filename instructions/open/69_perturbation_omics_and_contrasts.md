@@ -288,3 +288,15 @@ the snapshot remains an explicit immutable296-entry cut.
 * **Queued for after all new data is downloaded (Einar):** re-download the runs finished before this change
   (370 verified at the time) and append the same extra outputs, without changing their verified results.
 
+
+## 2026-11-03: uniform proteomics re-search (parascape-ms-uniform)
+* Every Toxoplasma PRIDE project in `processing_audit/pride_ms_uniform_selection.json` (201) is streamed, re-searched
+  with Sage 0.14.6 against one combined FASTA (ME49 + human/mouse longest isoforms + contaminants) and its RAW
+  files deleted. Each run keeps centroided MS1+MS2 mzML.gz, instrument metadata and checksums; each project keeps
+  Sage PSM, peptide/protein and LFQ tables with the exact config (`scripts/ms_uniform_search.py`).
+* Formats: Thermo `.raw` (ThermoRawFileParser `-f 1 -g`), author mzML, zip/tar/rar/7z archives (7-Zip, same
+  outside-the-folder check), Bruker timsTOF `.d` (zipped `.d` kept as the stored spectra, Sage searches it
+  directly at 15 ppm precursor / 20 ppm fragment, MS2 identifications only, no MS1 LFQ).
+* Recorded gaps (`unsupported.json`): SCIEX `.wiff` (4 projects; ProteoWizard needs Windows, Wine or Docker,
+  none installable here) and non-spectra deposits such as PXD009604 (XML only).
+* Downloads use aria2c, 8 ranged connections per file (one PRIDE connection is about 1 MB/s from here).
