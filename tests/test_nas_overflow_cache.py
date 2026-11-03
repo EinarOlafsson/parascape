@@ -153,40 +153,44 @@ def test_a_run_too_large_locally_uses_nas_scratch_then_local_again(tmp_path, mon
     assert [r['run_accession'] for r in Q._quantify_pass(rows, None, 0)] == ['SRR1'] and used == [('SRR2', str(local))]
 
 
-def test_reads_choose_extraction_or_ena_gzip_by_space(tmp_path, monkeypatch):
-    """Extract SRA when it fits; ENA gzip when only gzip fits locally; ENA gzip always on NAS scratch."""
+def test_reads_extract_locally_or_convert_to_gzip_on_nas_by_space(tmp_path, monkeypatch):
+    """Extract SRA locally when it fits; otherwise fastq-dump --gzip on NAS scratch (never fasterq-dump on NFS)."""
     Q = load('omics_quant')
     local, nas = tmp_path / 'local', tmp_path / 'nas'; local.mkdir(); nas.mkdir()
     monkeypatch.setattr(Q, 'SCRATCH', str(local)); monkeypatch.setattr(Q, 'NAS_SCRATCH', str(nas))
     monkeypatch.setattr(Q, 'DOWNLOAD_CACHE', ''); monkeypatch.setattr(Q, 'SCRATCH_MARGIN_GB', 125.0)
     monkeypatch.setattr(Q, '_head_size', lambda url: 25 * 10 ** 9)                  # 25 GB archive -> 325 GB needed
-    fetched, commands = [], []
-
-    def fetch(url, dest):
-        Path(dest).write_bytes(b''); fetched.append(url)
-    monkeypatch.setattr(Q, 'fetch', fetch); monkeypatch.setattr(Q, 'log', lambda message: None)
+    monkeypatch.setattr(Q, 'fetch', lambda url, dest: Path(dest).write_bytes(b''))
+    monkeypatch.setattr(Q, 'log', lambda message: None)
+    commands = []
 
     def run(cmd, **kw):
-        commands.append(Path(cmd[0]).name)
-        if Path(cmd[0]).name == 'fasterq-dump':
-            out = Path(cmd[cmd.index('-O') + 1]); (out / 'SRR1_1.fastq').write_text(''); (out / 'SRR1_2.fastq').write_text('')
+        tool = Path(cmd[0]).name; commands.append(tool)
+        out = Path(cmd[cmd.index('-O') + 1]) if '-O' in cmd else None
+        if tool == 'fasterq-dump':
+            (out / 'SRR1_1.fastq').write_text(''); (out / 'SRR1_2.fastq').write_text('')
+        if tool == 'fastq-dump':
+            (out / 'SRR1_1.fastq.gz').write_text(''); (out / 'SRR1_2.fastq.gz').write_text('')
     monkeypatch.setattr(Q, 'run', run)
     row = dict(run_accession='SRR1', fastq_ftp='ftp.sra.ebi.ac.uk/a/SRR1_1.fastq.gz;ftp.sra.ebi.ac.uk/a/SRR1_2.fastq.gz',
                fastq_md5='', fastq_bytes=f'{19 * 10 ** 9};{19 * 10 ** 9}')
     free = {str(local): 400.0}
     monkeypatch.setattr(Q, '_free_gb', lambda path: free.get(str(path), 2300.0))
     assert [Path(p).name for p in Q._reads(row)] == ['SRR1_1.fastq', 'SRR1_2.fastq'] and 'fasterq-dump' in commands
-    free[str(local)] = 220.0; fetched.clear(); commands.clear()                  # 163 GB of gzip fits, 325 does not
-    assert [Path(p).name for p in Q._reads(row)] == ['SRR1_1.fastq.gz', 'SRR1_2.fastq.gz'] and commands == []
-    free[str(local)] = 100.0                                                      # neither fits locally: deferred
+    free[str(local)] = 146.0; commands.clear()                                    # local too small: gzip on NAS
+    files = Q._reads(row)
+    assert [Path(p).name for p in files] == ['SRR1_1.fastq.gz', 'SRR1_2.fastq.gz'] and 'fasterq-dump' not in commands
+    assert all(Path(p).parent == nas / 'SRR1' for p in files) and 'fastq-dump' in commands
+    monkeypatch.setattr(Q, 'SCRATCH', str(nas)); commands.clear()                # running on NAS scratch: same
+    assert 'fasterq-dump' not in commands and Q._reads(row) and 'fastq-dump' in commands
+    monkeypatch.setattr(Q, 'SCRATCH', str(local)); monkeypatch.setattr(Q, 'NAS_SCRATCH', '')
+    free[str(local)] = 100.0                                                      # nothing fits and no NAS: deferred
     try:
         Q._reads(row)
     except Q.ScratchDeferred:
         pass
     else:
         raise AssertionError('expected deferral')
-    monkeypatch.setattr(Q, 'SCRATCH', str(nas)); commands.clear()                # on NAS scratch: never fasterq-dump
-    assert [Path(p).name for p in Q._reads(row)] == ['SRR1_1.fastq.gz', 'SRR1_2.fastq.gz'] and commands == []
 
 
 def test_runs_held_back_by_hand_stay_pending_without_blocking(tmp_path, monkeypatch):

@@ -503,6 +503,8 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
             # Everything this run left on scratch -- reads, the .sra, fasterq-dump temp files -- whether
             # it finished or not: scratch is small and shared, and a failed run must not fill it.
             _clear_scratch(r["run_accession"])
+            if NAS_SCRATCH:
+                shutil.rmtree(Path(NAS_SCRATCH) / r["run_accession"], ignore_errors=True)
             SCRATCH = local_scratch                     # a NAS-scratch run never changes the next run's scratch
             if DOWNLOAD_CACHE:
                 (Path(DOWNLOAD_CACHE) / ACTIVE_NAME).unlink(missing_ok=True)
@@ -548,10 +550,14 @@ def _reads(r: dict) -> list:
         # ENA's gzipped FASTQ is several times smaller than the extracted reads, and salmon/kallisto
         # read gzip directly. Use it when extraction does not fit, and always on NAS scratch:
         # fasterq-dump's temporary-file joins failed over NFS ("Permission denied", 2026-11-02).
-        on_nas = bool(NAS_SCRATCH) and SCRATCH == NAS_SCRATCH
-        if ena_need is not None and (on_nas or (_free_gb(SCRATCH) < need and _free_gb(SCRATCH) >= ena_need)):
-            log(f"{run_acc}: using ENA gzipped FASTQ ({ena_bytes / 1e9:.0f} GB) instead of extracting the SRA archive")
-            size = None
+        # When extraction does not fit locally, convert the archive to gzipped FASTQ on NAS scratch with
+        # fastq-dump --gzip (sequential compressed writes; fasterq-dump's temporary joins fail over NFS).
+        # ENA's gzip copy is used only for runs without an SRA archive: it stalled from here (2026-11-03).
+        if NAS_SCRATCH and SCRATCH == NAS_SCRATCH:
+            return _gzip_on_nas(r, url, size)
+        local_free = _free_gb(SCRATCH) - _reserved_by_others(run_acc)
+        if local_free < need and NAS_SCRATCH and _nas_scratch_fits(size * 3 / 1e9 + SCRATCH_MARGIN_GB):
+            return _gzip_on_nas(r, url, size)
     if size:
         _need_scratch(run_acc, need)
         cached = (_cache_module().cached_archive(Path(DOWNLOAD_CACHE), run_acc, url, size)
@@ -597,6 +603,30 @@ def _reads(r: dict) -> list:
                 raise RuntimeError(f"md5 mismatch for {u}")
         local.append(dest)
     return local
+
+
+def _gzip_on_nas(r: dict, url: str, size: int) -> list:
+    """Gzipped FASTQ for one run, converted from its (cached) SRA archive into its own NAS scratch folder."""
+    run_acc = r["run_accession"]
+    folder = Path(NAS_SCRATCH) / run_acc
+    shutil.rmtree(folder, ignore_errors=True)
+    folder.mkdir(parents=True)
+    cached = (_cache_module().cached_archive(Path(DOWNLOAD_CACHE), run_acc, url, size)
+              if DOWNLOAD_CACHE else None)
+    sra = str(cached) if cached else str(folder / f"{run_acc}.sra")
+    if not cached:
+        fetch(url, sra)
+    log(f"{run_acc}: local scratch too small; converting the SRA archive to gzipped FASTQ on NAS scratch")
+    run([os.path.join(BIN, "vdb-validate"), sra], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    run([os.path.join(BIN, "fastq-dump"), "--split-3", "--gzip", "-O", str(folder), sra], stdout=subprocess.DEVNULL)
+    if not cached:
+        os.remove(sra)
+    pair = [folder / f"{run_acc}_{k}.fastq.gz" for k in (1, 2)]
+    single = folder / f"{run_acc}.fastq.gz"
+    if all(p.exists() for p in pair):
+        single.unlink(missing_ok=True)       # unpaired leftovers of a paired run
+        return [str(p) for p in pair]
+    return [str(single)] if single.exists() else []
 
 
 def _cache_module():
