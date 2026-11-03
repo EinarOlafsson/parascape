@@ -322,6 +322,11 @@ NAS_SCRATCH_RESERVE_GB = float(os.environ.get("PARASCAPE_NAS_SCRATCH_RESERVE_GB"
 DEFER_RUNS = {r.strip() for r in os.environ.get("PARASCAPE_DEFER_RUNS", "").split(",") if r.strip()}
 #: Gzipped FASTQ made by convert_sra_to_gzip.py for runs too large to extract; used only with its done.json.
 PRECONVERTED = os.environ.get("PARASCAPE_PRECONVERTED", "/nas_mnt/carruthers/Einar/parascape_omics/preconverted_fastq")
+#: Parallel quantifier workers in one service (Einar 2026-11-03: two). Each worker has its own scratch
+#: folder, active file and THREADS // WORKERS threads; runs are claimed atomically so none runs twice.
+WORKERS = max(1, int(os.environ.get("PARASCAPE_WORKERS", "1")))
+ACTIVE_NAME = "active.json"
+CLAIMS = ""                                  # claims folder, set in multi-worker mode only
 
 
 class ScratchDeferred(Exception):
@@ -332,10 +337,43 @@ class ScratchDeferred(Exception):
         self.need = need
 
 
+def _reserved_by_others(run_acc: str) -> float:
+    """Scratch GB other workers have reserved on the shared disk (0 with a single worker)."""
+    total = 0.0
+    if CLAIMS and os.path.isdir(CLAIMS):
+        for name in os.listdir(CLAIMS):
+            if name != f"{run_acc}.claim":
+                try:
+                    total += float(open(os.path.join(CLAIMS, name)).read() or 0)
+                except (OSError, ValueError):
+                    continue
+    return total
+
+
 def _need_scratch(run_acc: str, need: float) -> None:
     # Waiting here blocked the whole queue behind one large run (2026-11-01: 328 GB needed, 107 free).
-    if _free_gb(SCRATCH) < need:
-        raise ScratchDeferred(f"{run_acc}: deferred, scratch {_free_gb(SCRATCH):.0f} GB free, {need:.0f} needed", need)
+    free = _free_gb(SCRATCH) - (_reserved_by_others(run_acc) if SCRATCH != NAS_SCRATCH else 0.0)
+    if free < need:
+        raise ScratchDeferred(f"{run_acc}: deferred, scratch {free:.0f} GB free after other workers, {need:.0f} needed", need)
+    if CLAIMS and SCRATCH != NAS_SCRATCH:
+        with open(os.path.join(CLAIMS, f"{run_acc}.claim"), "w") as fh:   # reserve without the shared margin
+            fh.write(f"{max(0.0, need - SCRATCH_MARGIN_GB):.1f}")
+
+
+def _claim(run_acc: str) -> bool:
+    """Atomically take a run for this worker; False if another worker has it."""
+    if not CLAIMS:
+        return True
+    try:
+        os.close(os.open(os.path.join(CLAIMS, f"{run_acc}.claim"), os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+        return True
+    except FileExistsError:
+        return False
+
+
+def _release(run_acc: str) -> None:
+    if CLAIMS:
+        Path(CLAIMS, f"{run_acc}.claim").unlink(missing_ok=True)
 
 
 def _nas_scratch_fits(need: float) -> bool:
@@ -357,12 +395,45 @@ def quantify(limit: int | None = None) -> None:
     os.makedirs(SCRATCH, exist_ok=True)
     if DOWNLOAD_CACHE:
         os.makedirs(DOWNLOAD_CACHE, exist_ok=True)
+    if WORKERS > 1:
+        return _quantify_workers(todo, limit)
     count = 0
     while True:
         deferred = _quantify_pass(todo, limit, count)
         if deferred is None or not deferred:
             return
         log(f"{len(deferred)} runs deferred for scratch space; retrying in 10 minutes")
+        time.sleep(600)
+        todo = deferred
+
+
+def _quantify_workers(todo: list, limit: int | None) -> None:
+    """Run WORKERS forked workers over one shared queue; the service fails if any worker fails."""
+    import multiprocessing
+    base = SCRATCH
+    claims = os.path.join(base, "claims")
+    shutil.rmtree(claims, ignore_errors=True)       # claims of a previous service instance are stale
+    os.makedirs(claims)
+    context = multiprocessing.get_context("fork")
+    workers = [context.Process(target=_worker, args=(k, todo, limit, base, claims)) for k in range(WORKERS)]
+    for w in workers:
+        w.start()
+    for w in workers:
+        w.join()
+    if any(w.exitcode for w in workers):
+        raise SystemExit(f"quantifier worker failed: {[w.exitcode for w in workers]}")
+
+
+def _worker(k: int, todo: list, limit: int | None, base: str, claims: str) -> None:
+    global SCRATCH, THREADS, ACTIVE_NAME, CLAIMS
+    SCRATCH, ACTIVE_NAME, CLAIMS = os.path.join(base, f"w{k}"), f"active-w{k}.json", claims
+    THREADS = max(1, THREADS // WORKERS)
+    os.makedirs(SCRATCH, exist_ok=True)
+    log(f"worker {k}: scratch {SCRATCH}, {THREADS} threads")
+    while True:
+        deferred = _quantify_pass(todo, limit, 0)
+        if deferred is None or not deferred:
+            return
         time.sleep(600)
         todo = deferred
 
@@ -379,9 +450,11 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
         if r["run_accession"] in DEFER_RUNS:
             log(f"{r['run_accession']} ({r['study']}): held back by PARASCAPE_DEFER_RUNS; stays pending")
             continue
+        if not _claim(r["run_accession"]):
+            continue                                 # another worker has this run
         local = []
         if DOWNLOAD_CACHE:
-            _cache_module().save(Path(DOWNLOAD_CACHE) / 'active.json',
+            _cache_module().save(Path(DOWNLOAD_CACHE) / ACTIVE_NAME,
                                  {'run': r['run_accession'], 'study': r['study'], 'pid': os.getpid()})
         _clear_scratch(None)                        # whatever interrupted attempts left behind
         try:
@@ -432,7 +505,8 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
             _clear_scratch(r["run_accession"])
             SCRATCH = local_scratch                     # a NAS-scratch run never changes the next run's scratch
             if DOWNLOAD_CACHE:
-                (Path(DOWNLOAD_CACHE) / 'active.json').unlink(missing_ok=True)
+                (Path(DOWNLOAD_CACHE) / ACTIVE_NAME).unlink(missing_ok=True)
+            _release(r["run_accession"])
         count += 1
         if limit and count >= limit:
             return None

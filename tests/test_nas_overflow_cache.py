@@ -218,3 +218,44 @@ def test_preconverted_fastq_is_used_only_with_a_matching_marker(tmp_path, monkey
         pass
     else:
         raise AssertionError('a changed file must be refused')
+
+
+def test_two_workers_process_each_run_once_with_their_own_scratch(tmp_path, monkeypatch):
+    import os, time
+    Q = load('omics_quant')
+    base = tmp_path / 'scratch'; base.mkdir(); record = tmp_path / 'record.txt'
+    monkeypatch.setattr(Q, 'SCRATCH', str(base)); monkeypatch.setattr(Q, 'NAS', str(tmp_path / 'nas'))
+    monkeypatch.setattr(Q, 'DOWNLOAD_CACHE', ''); monkeypatch.setattr(Q, 'WORKERS', 2)
+    monkeypatch.setattr(Q, 'THREADS', 16); monkeypatch.setattr(Q, 'log', lambda message: None)
+
+    def reads(row):
+        with open(record, 'a') as fh:
+            fh.write(f"{os.getpid()} {row['run_accession']} {Q.SCRATCH} {Q.THREADS}\n")
+        time.sleep(0.3)
+        return []
+    monkeypatch.setattr(Q, '_reads', reads)
+    rows = [dict(run_accession=f'SRR{i}', study='S', references=['ME49']) for i in range(5)]
+    Q._quantify_workers(rows, None)
+    lines = [line.split() for line in record.read_text().splitlines()]
+    assert sorted(run for _, run, _, _ in lines) == [f'SRR{i}' for i in range(5)]          # each run once
+    assert len({pid for pid, *_ in lines}) == 2                                              # both workers worked
+    assert {scratch for *_, scratch, _ in lines} == {str(base / 'w0'), str(base / 'w1')}
+    assert {threads for *_, threads in lines} == {'8'}
+    assert os.listdir(base / 'claims') == []                                                 # every claim released
+
+
+def test_scratch_reserved_by_another_worker_counts_against_free_space(tmp_path, monkeypatch):
+    Q = load('omics_quant')
+    claims = tmp_path / 'claims'; claims.mkdir(); (claims / 'SRR1.claim').write_text('150.0')
+    monkeypatch.setattr(Q, 'CLAIMS', str(claims)); monkeypatch.setattr(Q, 'SCRATCH', str(tmp_path))
+    monkeypatch.setattr(Q, 'NAS_SCRATCH', ''); monkeypatch.setattr(Q, 'SCRATCH_MARGIN_GB', 125.0)
+    monkeypatch.setattr(Q, '_free_gb', lambda path: 300.0)
+    assert Q._claim('SRR2') and not Q._claim('SRR2')                                        # atomic claim
+    Q._need_scratch('SRR2', 140.0)                                                          # 300-150 >= 140
+    assert (claims / 'SRR2.claim').read_text() == '15.0'                                    # reserved minus margin
+    try:
+        Q._need_scratch('SRR3', 200.0)                                                      # 300-150-15 < 200
+    except Q.ScratchDeferred:
+        pass
+    else:
+        raise AssertionError('other workers\' reservations must be counted')

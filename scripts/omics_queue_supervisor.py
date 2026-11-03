@@ -112,15 +112,16 @@ def inspect_run(row: dict, outputs: Path, cached: dict | None) -> dict:
         return {'valid': False, 'reason': str(error), 'repair_receipt': True}
 
 
-def audit(rows: list[dict], outputs: Path, verified: dict, active: str | None,
+def audit(rows: list[dict], outputs: Path, verified: dict, active: str | set | None,
           checkpoint=lambda verified, count: None) -> tuple[dict, list]:
     """Preserve good results and quarantine false receipts so existing retries can run."""
+    actives = set(active) if isinstance(active, (set, frozenset, list, tuple)) else ({active} if active else set())
     accepted, pending = {}, []
     fresh = 0
     for row in rows:
         run = row['run_accession']
         key = f"{row['study']}/{run}"
-        if active in (run, key):
+        if run in actives or key in actives:
             pending.append({'run': run, 'study': row['study'], 'reason': 'worker active; awaiting final cleanup'})
             continue
         result = inspect_run(row, outputs, verified.get(key))
@@ -212,14 +213,19 @@ def tick(plan: Path, outputs: Path, folder: Path, services=None) -> dict:
         return status
     config = read_json(folder / 'config.json', {})
     rows = load_plan(plan, config['plan_sha256'])
-    active = read_json(folder.parent / 'active.json', {}) or {}
+    # One active file per quantifier worker (active.json, or active-w<k>.json with several workers).
     # Ignore stale active metadata after a crash, so a final result can still be verified.
-    try:
-        command = (Path('/proc') / str(int(active.get('pid', 0))) / 'cmdline').read_bytes()
-        process_alive = b'omics_quant.py' in command
-    except (OSError, TypeError, ValueError):
-        process_alive = False
-    active_run = (f"{active['study']}/{active['run']}" if active.get('study') else active.get('run')) if process_alive else None
+    active_runs = set()
+    for path in sorted(folder.parent.glob('active*.json')):
+        active = read_json(path, {}) or {}
+        try:
+            command = (Path('/proc') / str(int(active.get('pid', 0))) / 'cmdline').read_bytes()
+            process_alive = b'omics_quant.py' in command
+        except (OSError, TypeError, ValueError):
+            process_alive = False
+        if process_alive and active.get('run'):
+            active_runs.add(f"{active['study']}/{active['run']}" if active.get('study') else active['run'])
+    active_run = active_runs or None
     if active_run is None:
         legacy = Path('/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/parascape-quant.service/cgroup.procs')
         try:

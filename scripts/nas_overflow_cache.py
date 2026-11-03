@@ -29,6 +29,11 @@ def regular_bytes(root):
         if not p.is_symlink() and p.is_file() and p.suffix in ('.sra','.part'))
 
 
+def _runs(active):
+    """Active runs as a set: one per quantifier worker; accepts a single accession or None."""
+    return set(active) if isinstance(active, (set, frozenset, list, tuple)) else ({active} if active else set())
+
+
 def nas_cap_blocks(stored, incoming, cap):
     """True when adding `incoming` bytes would take the NAS tier past its cap (None = uncapped).
 
@@ -77,7 +82,7 @@ class Cache:
 
     def spill(self,run,active=None):
         """Caller can never evict the active run; verify destination before unlink."""
-        if run==active:return False
+        if run in _runs(active):return False
         local,nas=self.pair(run)
         with L.archive_lock(local):
             if local.is_symlink():
@@ -113,7 +118,7 @@ class Cache:
         uses=defaultdict(set)
         for row in plan:uses[row['run_accession']].add(row['study']+'/'+row['run_accession'])
         for run,required in uses.items():
-            if run==active or not required.issubset(verified):continue
+            if run in _runs(active) or not required.issubset(verified):continue
             local,nas=self.pair(run)
             with L.archive_lock(local):
                 if local.is_symlink() and not owned_pointer(local,nas):raise ValueError('Unowned raw pointer')
@@ -177,8 +182,12 @@ def main():
 
         while True:
             try:
-                active=json.loads((local/'active.json').read_bytes())['run']
-            except (OSError,KeyError,ValueError):active=None
+                # One active file per quantifier worker (active.json or active-w<k>.json).
+                active=set()
+                for path in local.glob('active*.json'):
+                    try:active.add(json.loads(path.read_bytes())['run'])
+                    except (OSError,KeyError,ValueError):continue
+            except OSError:active=set()
             verified=json.loads((local/'automation/verified.json').read_bytes())
             cache.cleanup(plan,verified,active)
             pending=[r for r in plan if r['study']+'/'+r['run_accession'] not in verified]
@@ -187,11 +196,11 @@ def main():
             # Leave enough local scratch room for the next cached run's existing
             # eight-times-archive expansion estimate, plus the established reserve.
             next_size=next((cache.pair(r['run_accession'])[0].stat().st_size for r in pending
-                if r['run_accession']!=active and cache.pair(r['run_accession'])[0].is_file()),0)
+                if r['run_accession'] not in active and cache.pair(r['run_accession'])[0].is_file()),0)
             scratch_required=max(cache.reserve,8*next_size+25*10**9)
             low_scratch=shutil.disk_usage(local).free<scratch_required
             if low_scratch:
-                candidates=sorted((p for p in local.glob('[SED]RR*.sra') if not p.is_symlink() and p.stem!=active),
+                candidates=sorted((p for p in local.glob('[SED]RR*.sra') if not p.is_symlink() and p.stem not in active),
                     key=lambda p:p.stat().st_size,reverse=True)
                 if candidates and nas_cap_blocks(regular_bytes(nas),candidates[0].stat().st_size,nas_cap):
                     report(phase='waiting',reason='NAS cache cap reached; local scratch is low until verified runs are cleaned up');time.sleep(300);continue
@@ -202,7 +211,7 @@ def main():
             attempted=False
             for row in pending:
                 run=row['run_accession'];archive,nas_archive=cache.pair(run)
-                if run==active or failures.get(run,0)>time.monotonic():continue
+                if run in active or failures.get(run,0)>time.monotonic():continue
                 if archive.exists():
                     if archive.is_symlink() and not owned_pointer(archive,nas_archive):raise ValueError('Unowned raw cache link')
                     continue
