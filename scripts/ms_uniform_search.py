@@ -25,6 +25,7 @@ import urllib.request
 BIN = Path.home() / 'anaconda3/envs/parascape-ms/bin'
 NAS = Path('/nas_mnt/carruthers/Einar/parascape_omics')
 PLAN = NAS / 'published_pride/acquisition_plan.json'
+EXTRA = NAS / 'processing_audit/pride_ms_uniform_extra_files.json'
 FASTA = NAS / 'references/ms_fasta/parascape_ms_ME49_human_mouse_contaminants.fasta'
 SCRATCH = NAS / 'ms_raw_scratch'
 OUT = NAS / 'prepared_ms_uniform'
@@ -39,8 +40,10 @@ def sha256(path: Path) -> str:
 
 
 def raw_files(project: str) -> list[dict]:
-    plan = json.loads(PLAN.read_text())
-    return [f for f in plan['all_source_files']
+    records = json.loads(PLAN.read_text())['all_source_files']
+    if EXTRA.exists():                                  # projects found after the acquisition plan was built
+        records = records + json.loads(EXTRA.read_text())['files']
+    return [f for f in records
             if "RAW" in str(f['categories']) and str(f['studies']).strip() == project]
 
 
