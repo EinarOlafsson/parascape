@@ -44,8 +44,9 @@ def test_acquisition_flags(tmp_path):
 def test_file_kinds_cover_the_pride_raw_category():
     assert M.file_kind('run1.RAW') == 'raw' and M.file_kind('a.mzML.gz') == 'mzml'
     assert M.file_kind('batch.raw.zip') == 'archive' and M.file_kind('x.tar.gz') == 'archive'
-    assert M.file_kind('timstof.d.zip') == 'unsupported'                     # Bruker: no converter here
-    for name in ('s.wiff', 's.wiff.scan', 'r.rar', 'r.7z', 'GRA1-BirA-Raw.xml'):
+    assert M.file_kind('timstof.d.zip') == 'bruker'                          # searched by Sage directly
+    assert M.file_kind('r.rar') == 'archive' and M.file_kind('r.7z') == 'archive'   # unpacked with 7-Zip
+    for name in ('s.wiff', 's.wiff.scan', 'GRA1-BirA-Raw.xml'):             # SCIEX: no Linux converter
         assert M.file_kind(name) == 'unsupported'
 
 
@@ -69,3 +70,17 @@ def test_unpack_refuses_paths_outside_the_folder(tmp_path):
         pass
     else:
         raise AssertionError('a member leaving the folder must be refused')
+
+
+def test_timstof_runs_get_their_own_tolerances_without_ms1_quantities(tmp_path):
+    config = M.sage_config([tmp_path / 'run.d'], 'TIMS', tmp_path)
+    assert config['precursor_tol'] == {'ppm': [-15.0, 15.0]} and config['fragment_tol'] == {'ppm': [-20.0, 20.0]}
+    assert config['quant'] == {'lfq': False} and config['deisotope'] is False
+
+
+def test_bruker_folder_is_recorded_with_its_stored_zip(tmp_path):
+    d = tmp_path / 'work' / 'run.d'; d.mkdir(parents=True); (d / 'analysis.tdf').write_bytes(b'tdf')
+    spectra = tmp_path / 'spectra'; spectra.mkdir()
+    record = M.bruker(d, spectra, dict(source='run.d.zip'))
+    assert (spectra / record['stored']).exists() and record['ms2_analyser'] == 'TIMS'
+    assert record['search_path'] == str(d) and len(record['stored_sha256']) == 64

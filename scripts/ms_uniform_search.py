@@ -94,13 +94,15 @@ def ms2_analyser(mzml: Path) -> str:
 
 
 def file_kind(name: str) -> str:
-    """'raw' (Thermo), 'mzml', 'archive' (zip/tar to unpack) or 'unsupported'."""
+    """'raw' (Thermo), 'mzml', 'bruker' (zipped timsTOF .d), 'archive' (zip/tar/rar/7z) or 'unsupported' (SCIEX)."""
     n = name.lower()
     if n.endswith('.raw'):
         return 'raw'
     if n.endswith(('.mzml', '.mzml.gz')):
         return 'mzml'
-    if n.endswith(('.raw.zip', '.zip', '.tar.gz', '.tgz', '.tar')) and not n.endswith('.d.zip'):
+    if n.endswith('.d.zip'):
+        return 'bruker'
+    if n.endswith(('.raw.zip', '.zip', '.tar.gz', '.tgz', '.tar', '.rar', '.7z')):
         return 'archive'
     return 'unsupported'
 
@@ -110,7 +112,12 @@ def unpack(archive: Path, target: Path) -> None:
     import zipfile
     target.mkdir(parents=True, exist_ok=True)
     root = target.resolve()
-    if archive.name.lower().endswith('.zip'):
+    if archive.name.lower().endswith(('.rar', '.7z')):
+        subprocess.run([str(BIN / '7zz'), 'x', '-y', f'-o{target}', str(archive)], check=True, stdout=subprocess.DEVNULL)
+        for path in target.rglob('*'):                 # 7-Zip strips unsafe paths; confirm nothing landed outside
+            if not path.resolve().is_relative_to(root):
+                raise ValueError(f'{archive.name}: unsafe member {path}')
+    elif archive.name.lower().endswith('.zip'):
         with zipfile.ZipFile(archive) as z:
             for member in z.namelist():                # refuse paths that would leave the folder
                 if not (root / member).resolve().is_relative_to(root):
@@ -119,6 +126,15 @@ def unpack(archive: Path, target: Path) -> None:
     else:
         with tarfile.open(archive) as t:
             t.extractall(target, filter='data')        # the 'data' filter refuses links and paths outside
+
+
+def bruker(d_folder: Path, spectra: Path, record: dict, keep_zip: Path | None = None) -> dict:
+    """A timsTOF .d folder: stored zipped as the run's spectra (4D data has no compact mzML form), searched as is."""
+    if keep_zip is None:
+        keep_zip = Path(shutil.make_archive(str(spectra / d_folder.name), 'zip', d_folder.parent, d_folder.name))
+    return dict(record, conversion='Bruker timsTOF .d kept zipped as deposited; Sage reads it directly (MS2)',
+                stored=keep_zip.name, stored_bytes=keep_zip.stat().st_size, stored_sha256=sha256(keep_zip),
+                search_path=str(d_folder), ms2_analyser='TIMS', acquisition=dict(flag='timsTOF DDA-PASEF or DIA (not read here)'))
 
 
 def convert(source: Path, spectra: Path, record: dict) -> dict:
@@ -153,15 +169,17 @@ def convert(source: Path, spectra: Path, record: dict) -> dict:
 
 
 def sage_config(mzmls: list[Path], analyser: str, out: Path) -> dict:
-    fragment = {'ppm': [-20.0, 20.0]} if analyser == 'FTMS' else {'da': [-0.5, 0.5]}
+    fragment = {'da': [-0.5, 0.5]} if analyser == 'ITMS' else {'ppm': [-20.0, 20.0]}
     return {
         'database': {'fasta': str(FASTA), 'generate_decoys': True, 'decoy_tag': 'rev_',
                      'enzyme': {'missed_cleavages': 2, 'min_len': 7, 'max_len': 50, 'cleave_at': 'KR', 'restrict': 'P'},
                      'static_mods': {'C': 57.021464},
                      'variable_mods': {'M': [15.994915], '[': [42.010565]}, 'max_variable_mods': 2},
-        'precursor_tol': {'ppm': [-10.0, 10.0]}, 'fragment_tol': fragment, 'isotope_errors': [0, 2],
+        'precursor_tol': {'ppm': [-15.0, 15.0]} if analyser == 'TIMS' else {'ppm': [-10.0, 10.0]},
+        'fragment_tol': fragment, 'isotope_errors': [0, 2],
         'deisotope': analyser == 'FTMS', 'min_peaks': 15, 'max_peaks': 150,
-        'quant': {'lfq': True}, 'predict_rt': True, 'wide_window': False,
+        # timsrust in this Sage reads MS2 only, so timsTOF runs get identifications without MS1 label-free quantities.
+        'quant': {'lfq': analyser != 'TIMS'}, 'predict_rt': True, 'wide_window': False,
         'output_directory': str(out), 'mzml_paths': [str(p) for p in mzmls],
     }
 
@@ -181,10 +199,10 @@ def main():
     scratch = SCRATCH / project
     shutil.rmtree(scratch, ignore_errors=True); scratch.mkdir(parents=True)
     spectra = out / 'spectra'; spectra.mkdir(parents=True, exist_ok=True)
-    started = time.time(); receipts = []; unsupported = []
+    started = time.time(); receipts = []; unsupported = []; working = []
     usable = [f for f in files if file_kind(f['filename']) != 'unsupported']
     unsupported += [dict(file=f['filename'], bytes=int(f.get('declared_bytes') or 0),
-                         reason='vendor format or archive type without a converter here (SCIEX wiff, Bruker .d, rar, 7z, other)')
+                         reason='SCIEX wiff or other format without a Linux converter (ProteoWizard needs Windows, Wine or Docker)')
                     for f in files if file_kind(f['filename']) == 'unsupported']
     # PRIDE serves one file at roughly 1 MB/s from here; several transfers at once fill the line.
     from concurrent.futures import ThreadPoolExecutor
@@ -193,17 +211,34 @@ def main():
     for f in usable:
         source = scratch / f['filename']
         base = dict(source=f['filename'], url=f['url'], source_bytes=source.stat().st_size, source_sha256=sha256(source))
-        if file_kind(f['filename']) == 'archive':
+        if file_kind(f['filename']) == 'bruker':
+            kept = spectra / source.name
+            shutil.move(str(source), kept)              # the zipped .d is the stored spectra
+            unpacked = scratch / (source.name + '_unpacked'); unpack(kept, unpacked)
+            folders = sorted(p for p in unpacked.rglob('*.d') if (p / 'analysis.tdf').exists())
+            if not folders:                             # e.g. older Bruker .baf data: kept, not searched
+                unsupported.append(dict(file=f['filename'], bytes=base['source_bytes'],
+                                        reason='Bruker .d without analysis.tdf (not timsTOF); zip kept, not searched'))
+            for d_folder in folders:
+                receipts.append(bruker(d_folder, spectra, base, keep_zip=kept))
+            working.append(unpacked)
+        elif file_kind(f['filename']) == 'archive':
             unpacked = scratch / (source.name + '_unpacked')
             unpack(source, unpacked)
             source.unlink()
             members = sorted(p for p in unpacked.rglob('*') if p.is_file() and file_kind(p.name) in ('raw', 'mzml'))
-            if not members:
+            folders = sorted(p for p in unpacked.rglob('*.d') if (p / 'analysis.tdf').exists())
+            if not members and not folders:
                 unsupported.append(dict(file=f['filename'], bytes=base['source_bytes'],
-                                        reason='archive holds no Thermo RAW or mzML file'))
+                                        reason='archive holds no Thermo RAW, mzML or Bruker .d'))
             for member in members:
                 receipts.append(convert(member, spectra, dict(base, archive_member=str(member.relative_to(unpacked)))))
-            shutil.rmtree(unpacked, ignore_errors=True)
+            for d_folder in folders:
+                receipts.append(bruker(d_folder, spectra, dict(base, archive_member=str(d_folder.relative_to(unpacked)))))
+            if folders:
+                working.append(unpacked)                # searched in place, removed after the search
+            else:
+                shutil.rmtree(unpacked, ignore_errors=True)
         else:
             receipts.append(convert(source, spectra, base))
     if not receipts:
@@ -216,7 +251,7 @@ def main():
         if r['ms2_analyser'] is None:
             unsupported.append(dict(file=r['mzml'], reason='MS2 analyser not determined from filter strings; spectra kept, not searched'))
             continue
-        groups.setdefault(r['ms2_analyser'], []).append(spectra / r['mzml'])
+        groups.setdefault(r['ms2_analyser'], []).append(Path(r['search_path']) if 'search_path' in r else spectra / r['mzml'])
     searches = []
     for analyser, mzmls in sorted(groups.items()):
         target = out / f'sage_{analyser}'
@@ -227,19 +262,21 @@ def main():
                        env={'RAYON_NUM_THREADS': str(args.threads), 'PATH': '/usr/bin:/bin'})
         outputs = {p.name: dict(bytes=p.stat().st_size, sha256=sha256(p)) for p in target.iterdir() if p.is_file()}
         searches.append(dict(analyser=analyser, runs=[p.name for p in mzmls], outputs=outputs))
+    for folder in working:
+        shutil.rmtree(folder, ignore_errors=True)
     shutil.rmtree(scratch, ignore_errors=True)
     record = dict(project=project, runs=receipts, searches=searches, unsupported=unsupported,
                   fasta=str(FASTA), fasta_sha256=sha256(FASTA),
                   tools=dict(thermorawfileparser=subprocess.run([str(BIN / 'thermorawfileparser'), '--version'],
                                                                 capture_output=True, text=True).stdout.strip(),
                              sage=subprocess.run([str(BIN / 'sage'), '--version'], capture_output=True, text=True).stdout.strip()),
-                  kept='centroided MS1+MS2 mzML.gz per run (all scans); instrument metadata JSON; Sage PSM table, LFQ table, parameters; checksums',
+                  kept='centroided MS1+MS2 mzML.gz per run (all scans), or the zipped timsTOF .d; instrument metadata JSON; Sage PSM table, LFQ table, parameters; checksums',
                   raw_kept=False, seconds=round(time.time() - started),
                   source_sha256=sha256(Path(__file__)))
     (out / 'done.json').write_text(json.dumps(record, indent=2) + '\n')
     print(json.dumps(dict(project=project, runs=len(receipts), searches=[s['analyser'] for s in searches],
                           raw_gb=round(sum({r['source']: r['source_bytes'] for r in receipts}.values()) / 1e9, 2),
-                          mzml_gb=round(sum(r['mzml_bytes'] for r in receipts) / 1e9, 2), seconds=record['seconds'])))
+                          mzml_gb=round(sum(r.get('mzml_bytes', r.get('stored_bytes', 0)) for r in receipts) / 1e9, 2), seconds=record['seconds'])))
 
 
 if __name__ == '__main__':
