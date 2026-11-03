@@ -139,16 +139,18 @@ class Downloads(unittest.TestCase):
 
             def fake_run(command, **kwargs):
                 commands.append(command)
-                if 'fasterq-dump' in command[0]:
-                    for mate in (1, 2):
-                        (scratch / f'SRR1_{mate}.fastq').write_text('synthetic placeholder')
+
+            def fake_stream(run_acc, sra):              # reads are streamed from the archive into gzip
+                commands.append(['stream', sra])
+                return [str(scratch / f'{run_acc}_{mate}.fastq.gz') for mate in (1, 2)]
 
             with mock.patch.multiple(Q, DOWNLOAD_CACHE=str(self.folder), SCRATCH=str(scratch), SRA_ODP=url), \
                     mock.patch.object(Q, '_head_size', return_value=len(PAYLOAD)), \
                     mock.patch.object(Q, '_free_gb', return_value=1000), \
                     mock.patch.object(Q, '_cache_module', return_value=C), \
                     mock.patch.object(Q, 'fetch', side_effect=AssertionError('duplicate download')), \
-                    mock.patch.object(Q, 'log'), mock.patch.object(Q, 'run', side_effect=fake_run):
+                    mock.patch.object(Q, 'log'), mock.patch.object(Q, 'run', side_effect=fake_run), \
+                    mock.patch.object(Q, '_stream_gzip', side_effect=fake_stream):
                 reads = Q._reads({'run_accession': 'SRR1'})
             self.assertEqual(len(reads), 2)
             self.assertEqual(commands[0][-1], str(self.archive))

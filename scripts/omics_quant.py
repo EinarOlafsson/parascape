@@ -27,6 +27,7 @@ import json
 import os
 import re
 from pathlib import Path
+import shlex
 import shutil
 import subprocess
 import sys
@@ -550,20 +551,16 @@ def _reads(r: dict) -> list:
     ena_bytes = sum(int(b) for b in r.get("fastq_bytes", "").split(";") if b.isdigit())
     ena_need = ena_bytes / 1e9 + SCRATCH_MARGIN_GB if r.get("fastq_ftp") else None
     if size:
-        # fasterq-dump writes uncompressed FASTQ, ~4-6x the .sra file, plus its temp files.
-        need = size * 8 / 1e9 + SCRATCH_MARGIN_GB
-        # ENA's gzipped FASTQ is several times smaller than the extracted reads, and salmon/kallisto
-        # read gzip directly. Use it when extraction does not fit, and always on NAS scratch:
-        # fasterq-dump's temporary-file joins failed over NFS ("Permission denied", 2026-11-02).
-        # When extraction does not fit locally, convert the archive to gzipped FASTQ on NAS scratch with
-        # fastq-dump --gzip (sequential compressed writes; fasterq-dump's temporary joins fail over NFS).
-        # ENA's gzip copy is used only for runs without an SRA archive: it stalled from here (2026-11-03).
+        # Reads are streamed out of the archive straight into gzip (fastq-dump | split | pigz): about 1.2-1.5x
+        # the archive on local scratch instead of fasterq-dump's ~8x uncompressed FASTQ plus temporary files,
+        # and a 0.8 GB run takes about a minute (2026-11-03). Runs too large even for this are converted on
+        # NAS scratch; ENA's gzip copy is used only for runs without an SRA archive (it stalled from here).
+        need = size * 1.6 / 1e9 + SCRATCH_MARGIN_GB
         if NAS_SCRATCH and SCRATCH == NAS_SCRATCH:
             return _gzip_on_nas(r, url, size)
         local_free = _free_gb(SCRATCH) - _reserved_by_others(run_acc)
         if local_free < need and NAS_SCRATCH and _nas_scratch_fits(size * 3 / 1e9 + SCRATCH_MARGIN_GB):
             return _gzip_on_nas(r, url, size)
-    if size:
         _need_scratch(run_acc, need)
         cached = (_cache_module().cached_archive(Path(DOWNLOAD_CACHE), run_acc, url, size)
                   if DOWNLOAD_CACHE else None)
@@ -573,18 +570,15 @@ def _reads(r: dict) -> list:
         else:
             fetch(url, sra)
         run([os.path.join(BIN, "vdb-validate"), sra], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        run([os.path.join(BIN, "fasterq-dump"), "--split-3", "-e", str(THREADS), "-t", SCRATCH,
-             "-O", SCRATCH, sra], stdout=subprocess.DEVNULL)
+        files = _stream_gzip(run_acc, sra)
+        if files is None:                      # paired run with unpaired reads: keep them apart, as --split-3 does
+            if not NAS_SCRATCH:
+                raise RuntimeError(f"{run_acc}: unpaired reads in a paired run and no NAS scratch for --split-3")
+            return _gzip_on_nas(r, url, size)
         os.remove(sra)
         if cached:
             cached.with_suffix('.json').unlink(missing_ok=True)
-        pair = [os.path.join(SCRATCH, f"{run_acc}_{k}.fastq") for k in (1, 2)]
-        single = os.path.join(SCRATCH, f"{run_acc}.fastq")
-        if all(os.path.exists(f) for f in pair):
-            if os.path.exists(single):
-                os.remove(single)            # unpaired leftovers of a paired run
-            return pair
-        return [single] if os.path.exists(single) else []
+        return files
     # Fallback: ENA's gzipped FASTQ, md5-checked.
     urls = [u for u in r.get("fastq_ftp", "").split(";") if u]
     md5s = [m for m in r.get("fastq_md5", "").split(";") if m]
@@ -608,6 +602,35 @@ def _reads(r: dict) -> list:
                 raise RuntimeError(f"md5 mismatch for {u}")
         local.append(dest)
     return local
+
+
+def _stream_gzip(run_acc: str, sra: str):
+    """Gzipped FASTQ on local scratch, streamed from the archive; None when R1/R2 counts differ."""
+    r1, r2 = (os.path.join(SCRATCH, f"{run_acc}_{k}.fastq.gz") for k in (1, 2))
+    counts = os.path.join(SCRATCH, f"{run_acc}.counts")
+    pigz, threads = os.path.join(BIN, "pigz"), str(max(2, THREADS // 2))
+    # Each read's header ends in /<read index> ($ri), which routes it; awk counts both sides.
+    split = ('NR % 4 == 1 { n = split($0, a, "/"); side = (a[n] == "1") ? 1 : 2; seen[side]++ } '
+             '{ print | (side == 1 ? c1 : c2) } END { print seen[1] + 0, seen[2] + 0 > counts }')
+    pipeline = (f"set -o pipefail; {os.path.join(BIN, 'fastq-dump')} --split-spot --skip-technical "
+                f"--defline-seq '@$ac.$si/$ri' --defline-qual '+' -Z {shlex.quote(sra)} 2>/dev/null | "
+                f"awk -v c1={shlex.quote(f'{pigz} -p {threads} > {r1}')} -v c2={shlex.quote(f'{pigz} -p {threads} > {r2}')} "
+                f"-v counts={shlex.quote(counts)} {shlex.quote(split)}")
+    log(f"{run_acc}: streaming reads from the archive into gzip on local scratch")
+    subprocess.run(["bash", "-c", pipeline], check=True)
+    one, two = (int(x) for x in open(counts).read().split())
+    os.remove(counts)
+    if one == 0:
+        raise RuntimeError(f"{run_acc}: no reads written")
+    if two == 0:
+        Path(r2).unlink(missing_ok=True)
+        return [r1]
+    if one != two:
+        for f in (r1, r2):
+            Path(f).unlink(missing_ok=True)
+        log(f"{run_acc}: {one} read-1 vs {two} read-2 records; unpaired reads present")
+        return None
+    return [r1, r2]
 
 
 def _gzip_on_nas(r: dict, url: str, size: int) -> list:

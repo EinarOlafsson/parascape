@@ -153,8 +153,8 @@ def test_a_run_too_large_locally_uses_nas_scratch_then_local_again(tmp_path, mon
     assert [r['run_accession'] for r in Q._quantify_pass(rows, None, 0)] == ['SRR1'] and used == [('SRR2', str(local))]
 
 
-def test_reads_extract_locally_or_convert_to_gzip_on_nas_by_space(tmp_path, monkeypatch):
-    """Extract SRA locally when it fits; otherwise fastq-dump --gzip on NAS scratch (never fasterq-dump on NFS)."""
+def test_reads_stream_gzip_locally_or_convert_on_nas_by_space(tmp_path, monkeypatch):
+    """Stream gzip locally when 1.6x the archive fits; otherwise fastq-dump --gzip on NAS scratch."""
     Q = load('omics_quant')
     local, nas = tmp_path / 'local', tmp_path / 'nas'; local.mkdir(); nas.mkdir()
     monkeypatch.setattr(Q, 'SCRATCH', str(local)); monkeypatch.setattr(Q, 'NAS_SCRATCH', str(nas))
@@ -174,9 +174,16 @@ def test_reads_extract_locally_or_convert_to_gzip_on_nas_by_space(tmp_path, monk
     monkeypatch.setattr(Q, 'run', run)
     row = dict(run_accession='SRR1', fastq_ftp='ftp.sra.ebi.ac.uk/a/SRR1_1.fastq.gz;ftp.sra.ebi.ac.uk/a/SRR1_2.fastq.gz',
                fastq_md5='', fastq_bytes=f'{19 * 10 ** 9};{19 * 10 ** 9}')
-    free = {str(local): 400.0}
+    streamed = []
+
+    def stream(run_acc, sra):
+        streamed.append(run_acc)
+        return [str(local / f'{run_acc}_1.fastq.gz'), str(local / f'{run_acc}_2.fastq.gz')]
+    monkeypatch.setattr(Q, '_stream_gzip', stream)
+    free = {str(local): 200.0}                                                    # 25 GB x 1.6 + 125 fits locally
     monkeypatch.setattr(Q, '_free_gb', lambda path: free.get(str(path), 2300.0))
-    assert [Path(p).name for p in Q._reads(row)] == ['SRR1_1.fastq', 'SRR1_2.fastq'] and 'fasterq-dump' in commands
+    assert [Path(p).name for p in Q._reads(row)] == ['SRR1_1.fastq.gz', 'SRR1_2.fastq.gz'] and streamed == ['SRR1']
+    assert 'fasterq-dump' not in commands
     free[str(local)] = 146.0; commands.clear()                                    # local too small: gzip on NAS
     files = Q._reads(row)
     assert [Path(p).name for p in files] == ['SRR1_1.fastq.gz', 'SRR1_2.fastq.gz'] and 'fasterq-dump' not in commands
@@ -263,3 +270,28 @@ def test_scratch_reserved_by_another_worker_counts_against_free_space(tmp_path, 
         pass
     else:
         raise AssertionError('other workers\' reservations must be counted')
+
+
+
+def test_stream_gzip_splits_pairs_and_refuses_unpaired_reads(tmp_path, monkeypatch):
+    """The real pipeline (bash, awk, pigz) on a fake fastq-dump that prints interleaved reads."""
+    import os, stat
+    Q = load('omics_quant')
+    bin_dir = tmp_path / 'bin'; bin_dir.mkdir()
+    pigz = __import__('shutil').which('pigz') or str(Path.home() / 'anaconda3/envs/parascape-quant/bin/pigz')
+    os.symlink(pigz, bin_dir / 'pigz')
+    def fake(records):
+        script = bin_dir / 'fastq-dump'
+        script.write_text('#!/bin/bash\n' + ''.join(f"printf '@r.{i}/{k}\\nACGT\\n+\\nIIII\\n'\n" for i, k in records))
+        script.chmod(script.stat().st_mode | stat.S_IEXEC)
+    monkeypatch.setattr(Q, 'BIN', str(bin_dir)); monkeypatch.setattr(Q, 'SCRATCH', str(tmp_path))
+    monkeypatch.setattr(Q, 'THREADS', 4); monkeypatch.setattr(Q, 'log', lambda message: None)
+    fake([(1, 1), (1, 2), (2, 1), (2, 2)])
+    files = Q._stream_gzip('SRR5', 'x.sra')
+    assert [Path(f).name for f in files] == ['SRR5_1.fastq.gz', 'SRR5_2.fastq.gz']
+    import gzip
+    assert gzip.open(files[0], 'rt').read().count('@r.') == 2 and '/2' in gzip.open(files[1], 'rt').read()
+    fake([(1, 1), (2, 1)])                                                        # single-end
+    assert [Path(f).name for f in Q._stream_gzip('SRR6', 'x.sra')] == ['SRR6_1.fastq.gz']
+    fake([(1, 1), (1, 2), (2, 1)])                                                # one unpaired read
+    assert Q._stream_gzip('SRR7', 'x.sra') is None and not (tmp_path / 'SRR7_1.fastq.gz').exists()
