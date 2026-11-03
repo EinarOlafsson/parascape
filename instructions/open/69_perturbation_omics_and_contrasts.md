@@ -300,3 +300,11 @@ the snapshot remains an explicit immutable296-entry cut.
 * Recorded gaps (`unsupported.json`): SCIEX `.wiff` (4 projects; ProteoWizard needs Windows, Wine or Docker,
   none installable here) and non-spectra deposits such as PXD009604 (XML only).
 * Downloads use aria2c, 8 ranged connections per file (one PRIDE connection is about 1 MB/s from here).
+
+## 2026-11-03: Gubbels/Zarringhalam multiomics preprint (unreleased)
+* Wu et al. 2026, bioRxiv 10.64898/2026.10.29.762658: 22 10x scRNA-seq libraries (WT RH + 21 transcriptional or
+  epigenetic factor knockdowns, 211,052 cells on a common cell-cycle clock), scATAC-seq, CUT&RUN, pull-down MS.
+  No accessions: "The data can be explored in the ToxoHub interactive application".
+* Einar chose to harvest the ToxoHub v4 JSON API (`scripts/harvest_toxohub_preprint.py`, 1 request/s) into
+  `parascape_omics/preprint_results/toxohub_v4`, every file flagged unreleased. **Never put it in a release.**
+  When GEO/SRA has the reads, queue them in the uniform pipeline and treat the harvest as superseded.
