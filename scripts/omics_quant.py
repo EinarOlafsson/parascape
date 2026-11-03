@@ -450,9 +450,19 @@ def _reads(r: dict) -> list:
     run_acc = r["run_accession"]
     url = SRA_ODP.format(run=run_acc)
     size = _head_size(url)
+    ena_bytes = sum(int(b) for b in r.get("fastq_bytes", "").split(";") if b.isdigit())
+    ena_need = ena_bytes / 1e9 + SCRATCH_MARGIN_GB if r.get("fastq_ftp") else None
     if size:
         # fasterq-dump writes uncompressed FASTQ, ~4-6x the .sra file, plus its temp files.
         need = size * 8 / 1e9 + SCRATCH_MARGIN_GB
+        # ENA's gzipped FASTQ is several times smaller than the extracted reads, and salmon/kallisto
+        # read gzip directly. Use it when extraction does not fit, and always on NAS scratch:
+        # fasterq-dump's temporary-file joins failed over NFS ("Permission denied", 2026-11-02).
+        on_nas = bool(NAS_SCRATCH) and SCRATCH == NAS_SCRATCH
+        if ena_need is not None and (on_nas or (_free_gb(SCRATCH) < need and _free_gb(SCRATCH) >= ena_need)):
+            log(f"{run_acc}: using ENA gzipped FASTQ ({ena_bytes / 1e9:.0f} GB) instead of extracting the SRA archive")
+            size = None
+    if size:
         _need_scratch(run_acc, need)
         cached = (_cache_module().cached_archive(Path(DOWNLOAD_CACHE), run_acc, url, size)
                   if DOWNLOAD_CACHE else None)
