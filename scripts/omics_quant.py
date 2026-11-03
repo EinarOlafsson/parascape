@@ -21,6 +21,7 @@ Each step runs with the binaries of the separate `parascape-quant` conda environ
 from __future__ import annotations
 
 import argparse
+import glob
 import gzip
 import hashlib
 import json
@@ -481,6 +482,9 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                 idx = os.path.join(NAS, "references", ref)
                 s_out = os.path.join(out_dir, f"salmon_{ref}")
                 reads = (["-1", local[0], "-2", local[1]] if paired else ["-r", local[0]])
+                # An interrupted salmon leaves its mapping file (GBs); this worker holds the run's claim.
+                for stale in glob.glob(os.path.join(s_out, "intermediate_mappings.rad.partial-*")):
+                    os.remove(stale)
                 run([os.path.join(BIN, "salmon"), "quant", "-i", os.path.join(idx, "salmon_index"),
                      "-l", "A", *reads, "-p", str(THREADS), "--validateMappings", "--gcBias",
                      "--seqBias", *SALMON_EXTRA, "-o", s_out])
