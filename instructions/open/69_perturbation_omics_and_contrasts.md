@@ -277,3 +277,14 @@ the snapshot remains an explicit immutable296-entry cut.
 * **Independence (Einar: conservative):** samples sharing a mouse, donor or biological-replicate identifier count
   as one unit; without identifiers, a study's samples are not assumed independent beyond its stated design.
 
+## 2026-11-03: what each run keeps, and the planned top-up
+* Each run keeps transcript-level estimated counts, effective lengths and TPM from salmon and kallisto per
+  reference, plus salmon QC, bias and command records. These are pre-normalization values: every
+  normalization, differential-expression, batch-correction and meta-analysis method is applied later from
+  them, so raw reads are not needed for any of those.
+* From 2026-11-03 (Einar) salmon also writes equivalence classes with weights (`--dumpEqWeights`) and 30 Gibbs
+  samples (`--numGibbsSamples 30`), so runs can be re-quantified against an updated annotation and carry
+  per-transcript uncertainty without their reads (smoke-tested on salmon 2.8.0).
+* **Queued for after all new data is downloaded (Einar):** re-download the runs finished before this change
+  (370 verified at the time) and append the same extra outputs, without changing their verified results.
+

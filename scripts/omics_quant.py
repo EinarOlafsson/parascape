@@ -322,6 +322,10 @@ NAS_SCRATCH_RESERVE_GB = float(os.environ.get("PARASCAPE_NAS_SCRATCH_RESERVE_GB"
 DEFER_RUNS = {r.strip() for r in os.environ.get("PARASCAPE_DEFER_RUNS", "").split(",") if r.strip()}
 #: Gzipped FASTQ made by convert_sra_to_gzip.py for runs too large to extract; used only with its done.json.
 PRECONVERTED = os.environ.get("PARASCAPE_PRECONVERTED", "/nas_mnt/carruthers/Einar/parascape_omics/preconverted_fastq")
+#: Extra salmon outputs (Einar 2026-11-03), so runs can be revisited without their raw reads: equivalence
+#: classes with per-transcript weights (re-quantification against an updated annotation) and 30 Gibbs
+#: posterior samples (per-transcript uncertainty). Runs finished before this are topped up later.
+SALMON_EXTRA = ["--dumpEqWeights", "--numGibbsSamples", "30"]
 #: Parallel quantifier workers in one service (Einar 2026-11-03: two). Each worker has its own scratch
 #: folder, active file and THREADS // WORKERS threads; runs are claimed atomically so none runs twice.
 WORKERS = max(1, int(os.environ.get("PARASCAPE_WORKERS", "1")))
@@ -478,7 +482,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                 reads = (["-1", local[0], "-2", local[1]] if paired else ["-r", local[0]])
                 run([os.path.join(BIN, "salmon"), "quant", "-i", os.path.join(idx, "salmon_index"),
                      "-l", "A", *reads, "-p", str(THREADS), "--validateMappings", "--gcBias",
-                     "--seqBias", "-o", s_out])
+                     "--seqBias", *SALMON_EXTRA, "-o", s_out])
                 _gzip(os.path.join(s_out, "quant.sf"))
                 k_out = os.path.join(out_dir, f"kallisto_{ref}")
                 k_reads = local if paired else ["--single", "-l", "200", "-s", "30", local[0]]
@@ -490,6 +494,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                     os.remove(h5)                      # the TSV holds the same numbers
             _cache_module().save(Path(out_dir) / "done.json",
                                  {**r, "salmon": version("salmon"), "kallisto": version("kallisto"),
+                                  "salmon_extra": SALMON_EXTRA,
                                   "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256,
                                   "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
             log(f"{r['run_accession']} ({r['study']}): quantified against {', '.join(r['references'])}")
