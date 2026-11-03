@@ -320,6 +320,8 @@ NAS_SCRATCH_RESERVE_GB = float(os.environ.get("PARASCAPE_NAS_SCRATCH_RESERVE_GB"
 #: Runs held back by hand (comma-separated accessions), e.g. a giant run whose only feasible read source is
 #: stalled; they stay pending in the plan and are reported, so the rest of the queue is never blocked.
 DEFER_RUNS = {r.strip() for r in os.environ.get("PARASCAPE_DEFER_RUNS", "").split(",") if r.strip()}
+#: Gzipped FASTQ made by convert_sra_to_gzip.py for runs too large to extract; used only with its done.json.
+PRECONVERTED = os.environ.get("PARASCAPE_PRECONVERTED", "/nas_mnt/carruthers/Einar/parascape_omics/preconverted_fastq")
 
 
 class ScratchDeferred(Exception):
@@ -454,6 +456,14 @@ def _head_size(url: str) -> int | None:
 def _reads(r: dict) -> list:
     """Local FASTQ files for one run: from AWS SRA (validated, then fasterq-dump), else ENA FASTQ."""
     run_acc = r["run_accession"]
+    marker = Path(PRECONVERTED) / run_acc / "done.json"
+    if PRECONVERTED and marker.exists():
+        record = json.loads(marker.read_text())
+        files = [marker.parent / name for name in sorted(record["files"])]
+        if record.get("run") != run_acc or any(f.stat().st_size != record["files"][f.name]["bytes"] for f in files):
+            raise RuntimeError(f"{run_acc}: preconverted FASTQ differs from its done.json")
+        log(f"{run_acc}: using preconverted gzipped FASTQ ({record['tool']})")
+        return [str(f) for f in files]
     url = SRA_ODP.format(run=run_acc)
     size = _head_size(url)
     ena_bytes = sum(int(b) for b in r.get("fastq_bytes", "").split(";") if b.isdigit())

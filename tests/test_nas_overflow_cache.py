@@ -198,3 +198,23 @@ def test_runs_held_back_by_hand_stay_pending_without_blocking(tmp_path, monkeypa
     monkeypatch.setattr(Q, '_reads', lambda row: seen.append(row['run_accession']) or [])
     rows = [dict(run_accession=r, study='S', references=['ME49']) for r in ('SRR9', 'SRR3')]
     assert Q._quantify_pass(rows, None, 0) == [] and seen == ['SRR3']
+
+
+def test_preconverted_fastq_is_used_only_with_a_matching_marker(tmp_path, monkeypatch):
+    import json
+    Q = load('omics_quant')
+    folder = tmp_path / 'SRR7'; folder.mkdir()
+    for k in (1, 2):
+        (folder / f'SRR7_{k}.fastq.gz').write_bytes(b'x' * (10 * k))
+    monkeypatch.setattr(Q, 'PRECONVERTED', str(tmp_path)); monkeypatch.setattr(Q, 'log', lambda message: None)
+    record = dict(run='SRR7', tool='fastq-dump --split-3 --gzip 3.4.1',
+                  files={f'SRR7_{k}.fastq.gz': dict(bytes=10 * k, sha256='') for k in (1, 2)})
+    (folder / 'done.json').write_text(json.dumps(record))
+    assert [Path(p).name for p in Q._reads(dict(run_accession='SRR7'))] == ['SRR7_1.fastq.gz', 'SRR7_2.fastq.gz']
+    (folder / 'SRR7_2.fastq.gz').write_bytes(b'truncated')
+    try:
+        Q._reads(dict(run_accession='SRR7'))
+    except RuntimeError:
+        pass
+    else:
+        raise AssertionError('a changed file must be refused')
