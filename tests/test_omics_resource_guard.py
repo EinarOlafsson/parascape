@@ -75,5 +75,9 @@ class Guard(unittest.TestCase):
         self.assertEqual(G.select_wide(None, 50, 330.0, 5.0, True, **args), (True, 5.0))   # no sample yet
 
 
+    def test_restarted_unit_counts_from_zero(self):
+        self.assertEqual(G.OtherLoad._ours_delta({'a': 10.0, 'b': 50.0}, {'a': 12.0, 'b': 3.0, 'c': 1.0}), 6.0)
+
+
 if __name__ == '__main__':
     unittest.main()

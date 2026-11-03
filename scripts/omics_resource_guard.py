@@ -81,21 +81,28 @@ class OtherLoad:
     def _sample():
         fields = [int(v) for v in Path('/proc/stat').read_text().splitlines()[0].split()[1:]]
         busy = (sum(fields[:8]) - fields[3] - fields[4]) / os.sysconf('SC_CLK_TCK')   # minus idle, iowait
-        ours = 0.0
+        ours = {}
         for unit in APP_SLICE.glob('parascape-*.service'):
             try:
                 stat = dict(line.split() for line in (unit / 'cpu.stat').read_text().splitlines())
-                ours += int(stat['usage_usec']) / 1e6
+                ours[unit.name] = int(stat['usage_usec']) / 1e6
             except (OSError, KeyError, ValueError):
                 pass
         return time.monotonic(), busy, ours
+
+    @staticmethod
+    def _ours_delta(before: dict, after: dict) -> float:
+        """CPU seconds our units used between samples; a new or restarted unit counts from zero."""
+        return sum(value - before[name] if before.get(name, value + 1) <= value else value
+                   for name, value in after.items())
 
     def cores(self) -> float | None:
         now = self._sample()
         previous, self.last = self.last, now
         if previous is None or now[0] - previous[0] <= 0:
             return None
-        current = max(0.0, ((now[1] - previous[1]) - (now[2] - previous[2])) / (now[0] - previous[0]))
+        current = max(0.0, ((now[1] - previous[1]) - self._ours_delta(previous[2], now[2])) / (now[0] - previous[0]))
+        current = min(current, float(os.cpu_count() or 1))
         self.smooth = current if self.smooth is None else 0.8 * self.smooth + 0.2 * current   # ~25 s at 5 s steps
         return self.smooth
 
