@@ -48,8 +48,14 @@ def fetch(url: str, dest: Path, size: int) -> None:
     part = dest.with_suffix(dest.suffix + '.part')
     for attempt in range(5):
         try:
-            with urllib.request.urlopen(url, timeout=300) as response, part.open('wb') as out:
-                shutil.copyfileobj(response, out, 1 << 22)
+            if (BIN / 'aria2c').exists() and attempt < 3:
+                # One PRIDE connection gives ~1 MB/s; ranged parallel connections give several times that.
+                subprocess.run([str(BIN / 'aria2c'), '-q', '-x8', '-s8', '-k8M', '--file-allocation=none',
+                                '--allow-overwrite=true', '--auto-file-renaming=false', '--connect-timeout=60',
+                                '-d', str(part.parent), '-o', part.name, url], check=True)
+            else:
+                with urllib.request.urlopen(url, timeout=300) as response, part.open('wb') as out:
+                    shutil.copyfileobj(response, out, 1 << 22)
             if size and part.stat().st_size != size:
                 raise IOError(f'{dest.name}: {part.stat().st_size} bytes, declared {size}')
             part.replace(dest)
