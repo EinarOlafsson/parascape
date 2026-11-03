@@ -39,3 +39,33 @@ def test_acquisition_flags(tmp_path):
     assert M.acquisition(mzml(tmp_path, ['FTMS + c NSI d Full ms2 1@hcd']))['flag'] == 'DDA'
     assert M.acquisition(mzml(tmp_path, ['FTMS + c NSI d Full ms2 1@cid', 'FTMS + c NSI sps d Full ms3 1@hcd']))['flag'].startswith('possible TMT')
     assert M.acquisition(mzml(tmp_path, ['FTMS + c NSI Full ms2 500.0@hcd [145-1450]']))['flag'].startswith('possible DIA')
+
+
+def test_file_kinds_cover_the_pride_raw_category():
+    assert M.file_kind('run1.RAW') == 'raw' and M.file_kind('a.mzML.gz') == 'mzml'
+    assert M.file_kind('batch.raw.zip') == 'archive' and M.file_kind('x.tar.gz') == 'archive'
+    assert M.file_kind('timstof.d.zip') == 'unsupported'                     # Bruker: no converter here
+    for name in ('s.wiff', 's.wiff.scan', 'r.rar', 'r.7z', 'GRA1-BirA-Raw.xml'):
+        assert M.file_kind(name) == 'unsupported'
+
+
+def test_author_mzml_is_kept_as_deposited_and_its_source_removed(tmp_path):
+    spectra = tmp_path / 'spectra'; spectra.mkdir()
+    source = tmp_path / 'author.mzML'
+    source.write_text('<cvParam value="FTMS + c NSI d Full ms2 1@hcd" name="filter string" />\n')
+    record = M.convert(source, spectra, dict(source='author.mzML'))
+    assert record['mzml'] == 'author.mzML.gz' and record['ms2_analyser'] == 'FTMS' and not source.exists()
+    assert 'as deposited' in record['conversion']
+
+
+def test_unpack_refuses_paths_outside_the_folder(tmp_path):
+    import zipfile
+    bad = tmp_path / 'bad.zip'
+    with zipfile.ZipFile(bad, 'w') as z:
+        z.writestr('../escape.raw', b'x')
+    try:
+        M.unpack(bad, tmp_path / 'out')
+    except ValueError:
+        pass
+    else:
+        raise AssertionError('a member leaving the folder must be refused')

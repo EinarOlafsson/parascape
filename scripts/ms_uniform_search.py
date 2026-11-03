@@ -93,6 +93,65 @@ def ms2_analyser(mzml: Path) -> str:
     raise ValueError(f'{mzml.name}: MS2 analyser not determined ({seen})')
 
 
+def file_kind(name: str) -> str:
+    """'raw' (Thermo), 'mzml', 'archive' (zip/tar to unpack) or 'unsupported'."""
+    n = name.lower()
+    if n.endswith('.raw'):
+        return 'raw'
+    if n.endswith(('.mzml', '.mzml.gz')):
+        return 'mzml'
+    if n.endswith(('.raw.zip', '.zip', '.tar.gz', '.tgz', '.tar')) and not n.endswith('.d.zip'):
+        return 'archive'
+    return 'unsupported'
+
+
+def unpack(archive: Path, target: Path) -> None:
+    import tarfile
+    import zipfile
+    target.mkdir(parents=True, exist_ok=True)
+    root = target.resolve()
+    if archive.name.lower().endswith('.zip'):
+        with zipfile.ZipFile(archive) as z:
+            for member in z.namelist():                # refuse paths that would leave the folder
+                if not (root / member).resolve().is_relative_to(root):
+                    raise ValueError(f'{archive.name}: unsafe member {member}')
+            z.extractall(target)
+    else:
+        with tarfile.open(archive) as t:
+            t.extractall(target, filter='data')        # the 'data' filter refuses links and paths outside
+
+
+def convert(source: Path, spectra: Path, record: dict) -> dict:
+    """Centroided mzML.gz for one Thermo RAW (deleted afterwards), or an author mzML kept as deposited."""
+    if file_kind(source.name) == 'raw':
+        # Plain mzML + gzip (-f 1 -g): with an indexed mzML (-f 2) and -g, ThermoRawFileParser 2.0.0.dev reopens an
+        # uncompressed file to write the index and fails; an index has no use inside a gzip stream anyway.
+        subprocess.run([str(BIN / 'thermorawfileparser'), '-i', str(source), '-o', str(spectra), '-f', '1', '-g',
+                        '-m', '0', '-l', '1'], check=True, stdout=subprocess.DEVNULL)
+        mzml = spectra / (source.stem + '.mzML.gz')
+        if not mzml.exists():
+            raise RuntimeError(f'{source.name}: no mzML written')
+        meta = spectra / f'{source.stem}-metadata.json'
+        record = dict(record, conversion='ThermoRawFileParser centroided MS1+MS2', metadata=meta.name,
+                      metadata_sha256=sha256(meta) if meta.exists() else None)
+    else:
+        stem = source.name[:-len('.gz')] if source.name.lower().endswith('.gz') else source.name
+        mzml = spectra / (stem[:-len('.mzml')] + '.mzML.gz')
+        if source.name.lower().endswith('.gz'):
+            shutil.copyfile(source, mzml)
+        else:
+            with source.open('rb') as src, gzip.open(mzml, 'wb') as dst:
+                shutil.copyfileobj(src, dst, 1 << 22)
+        record = dict(record, conversion='author-deposited mzML kept as deposited (peak picking as submitted)')
+    try:
+        analyser = ms2_analyser(mzml)
+    except ValueError:
+        analyser = None
+    source.unlink()                                    # spectra and checksums kept; the instrument file is not
+    return dict(record, mzml=mzml.name, mzml_bytes=mzml.stat().st_size, mzml_sha256=sha256(mzml),
+                ms2_analyser=analyser, acquisition=acquisition(mzml))
+
+
 def sage_config(mzmls: list[Path], analyser: str, out: Path) -> dict:
     fragment = {'ppm': [-20.0, 20.0]} if analyser == 'FTMS' else {'da': [-0.5, 0.5]}
     return {
@@ -114,37 +173,49 @@ def main():
     args = parser.parse_args()
     project = args.project
     out = OUT / project
-    if (out / 'done.json').exists():
-        print(json.dumps(dict(project=project, status='already done'))); return
+    if (out / 'done.json').exists() or (out / 'unsupported.json').exists():
+        print(json.dumps(dict(project=project, status='already handled'))); return
     files = raw_files(project)
     if not files:
         raise ValueError(f'{project}: no RAW files in the PRIDE plan')
     scratch = SCRATCH / project
     shutil.rmtree(scratch, ignore_errors=True); scratch.mkdir(parents=True)
     spectra = out / 'spectra'; spectra.mkdir(parents=True, exist_ok=True)
-    started = time.time(); receipts = []
+    started = time.time(); receipts = []; unsupported = []
+    usable = [f for f in files if file_kind(f['filename']) != 'unsupported']
+    unsupported += [dict(file=f['filename'], bytes=int(f.get('declared_bytes') or 0),
+                         reason='vendor format or archive type without a converter here (SCIEX wiff, Bruker .d, rar, 7z, other)')
+                    for f in files if file_kind(f['filename']) == 'unsupported']
     # PRIDE serves one file at roughly 1 MB/s from here; several transfers at once fill the line.
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=4) as pool:
-        list(pool.map(lambda f: fetch(f['url'], scratch / f['filename'], int(f.get('declared_bytes') or 0)), files))
-    for f in files:
-        raw = scratch / f['filename']
-        raw_sha = sha256(raw)
-        # Plain mzML + gzip (-f 1 -g): with an indexed mzML (-f 2) and -g, ThermoRawFileParser 2.0.0.dev reopens an
-        # uncompressed file to write the index and fails; an index has no use inside a gzip stream anyway.
-        subprocess.run([str(BIN / 'thermorawfileparser'), '-i', str(raw), '-o', str(spectra), '-f', '1', '-g',
-                        '-m', '0', '-l', '1'], check=True, stdout=subprocess.DEVNULL)
-        mzml = spectra / (raw.stem + '.mzML.gz')
-        if not mzml.exists():
-            raise RuntimeError(f'{raw.name}: no mzML written')
-        receipts.append(dict(raw=f['filename'], url=f['url'], raw_bytes=raw.stat().st_size, raw_sha256=raw_sha,
-                             mzml=mzml.name, mzml_bytes=mzml.stat().st_size, mzml_sha256=sha256(mzml),
-                             metadata=f'{raw.stem}-metadata.json',
-                             metadata_sha256=sha256(spectra / f'{raw.stem}-metadata.json'),
-                             ms2_analyser=ms2_analyser(mzml), acquisition=acquisition(mzml)))
-        raw.unlink()                                   # spectra and checksums kept; the instrument file is not
+        list(pool.map(lambda f: fetch(f['url'], scratch / f['filename'], int(f.get('declared_bytes') or 0)), usable))
+    for f in usable:
+        source = scratch / f['filename']
+        base = dict(source=f['filename'], url=f['url'], source_bytes=source.stat().st_size, source_sha256=sha256(source))
+        if file_kind(f['filename']) == 'archive':
+            unpacked = scratch / (source.name + '_unpacked')
+            unpack(source, unpacked)
+            source.unlink()
+            members = sorted(p for p in unpacked.rglob('*') if p.is_file() and file_kind(p.name) in ('raw', 'mzml'))
+            if not members:
+                unsupported.append(dict(file=f['filename'], bytes=base['source_bytes'],
+                                        reason='archive holds no Thermo RAW or mzML file'))
+            for member in members:
+                receipts.append(convert(member, spectra, dict(base, archive_member=str(member.relative_to(unpacked)))))
+            shutil.rmtree(unpacked, ignore_errors=True)
+        else:
+            receipts.append(convert(source, spectra, base))
+    if not receipts:
+        (out / 'unsupported.json').write_text(json.dumps(dict(project=project, unsupported=unsupported,
+            note='No spectra this pipeline can convert; kept as a recorded gap.'), indent=2) + '\n')
+        shutil.rmtree(scratch, ignore_errors=True)
+        print(json.dumps(dict(project=project, status='unsupported formats only', files=len(unsupported)))); return
     groups = {}
     for r in receipts:
+        if r['ms2_analyser'] is None:
+            unsupported.append(dict(file=r['mzml'], reason='MS2 analyser not determined from filter strings; spectra kept, not searched'))
+            continue
         groups.setdefault(r['ms2_analyser'], []).append(spectra / r['mzml'])
     searches = []
     for analyser, mzmls in sorted(groups.items()):
@@ -157,7 +228,8 @@ def main():
         outputs = {p.name: dict(bytes=p.stat().st_size, sha256=sha256(p)) for p in target.iterdir() if p.is_file()}
         searches.append(dict(analyser=analyser, runs=[p.name for p in mzmls], outputs=outputs))
     shutil.rmtree(scratch, ignore_errors=True)
-    record = dict(project=project, runs=receipts, searches=searches, fasta=str(FASTA), fasta_sha256=sha256(FASTA),
+    record = dict(project=project, runs=receipts, searches=searches, unsupported=unsupported,
+                  fasta=str(FASTA), fasta_sha256=sha256(FASTA),
                   tools=dict(thermorawfileparser=subprocess.run([str(BIN / 'thermorawfileparser'), '--version'],
                                                                 capture_output=True, text=True).stdout.strip(),
                              sage=subprocess.run([str(BIN / 'sage'), '--version'], capture_output=True, text=True).stdout.strip()),
@@ -166,7 +238,7 @@ def main():
                   source_sha256=sha256(Path(__file__)))
     (out / 'done.json').write_text(json.dumps(record, indent=2) + '\n')
     print(json.dumps(dict(project=project, runs=len(receipts), searches=[s['analyser'] for s in searches],
-                          raw_gb=round(sum(r['raw_bytes'] for r in receipts) / 1e9, 2),
+                          raw_gb=round(sum({r['source']: r['source_bytes'] for r in receipts}.values()) / 1e9, 2),
                           mzml_gb=round(sum(r['mzml_bytes'] for r in receipts) / 1e9, 2), seconds=record['seconds'])))
 
 

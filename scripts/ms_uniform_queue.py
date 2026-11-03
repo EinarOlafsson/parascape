@@ -31,7 +31,8 @@ def main():
     threads = sys.argv[1] if len(sys.argv) > 1 else '4'
     while True:
         projects = json.loads(SELECTION.read_text())['keep']
-        pending = [p for p in projects if not (OUT / p['project'] / 'done.json').exists()]
+        handled = lambda q: (OUT / q['project'] / 'done.json').exists() or (OUT / q['project'] / 'unsupported.json').exists()
+        pending = [p for p in projects if not handled(p)]
         if not pending:
             status(phase='complete', projects=len(projects)); return
         failures = {}
@@ -48,7 +49,7 @@ def main():
                 failures[p['project']] = result.returncode
                 with (STATE / 'failures.jsonl').open('a') as log:
                     log.write(json.dumps(dict(project=p['project'], code=result.returncode, epoch=time.time())) + '\n')
-            pending_now = [q for q in projects if not (OUT / q['project'] / 'done.json').exists()]
+            pending_now = [q for q in projects if not handled(q)]
             status(phase='processing', last=p['project'], done=len(projects) - len(pending_now), total=len(projects),
                    failed_this_pass=len(failures))
         time.sleep(3600)                                   # retry failures on the next pass
