@@ -317,6 +317,9 @@ def plan(studies: list, strain_studies: set) -> None:
 #: Used only for a run that does not fit locally, and only while the NAS keeps this much free afterwards.
 NAS_SCRATCH = os.environ.get("PARASCAPE_NAS_SCRATCH", "")
 NAS_SCRATCH_RESERVE_GB = float(os.environ.get("PARASCAPE_NAS_SCRATCH_RESERVE_GB", "150"))
+#: Runs held back by hand (comma-separated accessions), e.g. a giant run whose only feasible read source is
+#: stalled; they stay pending in the plan and are reported, so the rest of the queue is never blocked.
+DEFER_RUNS = {r.strip() for r in os.environ.get("PARASCAPE_DEFER_RUNS", "").split(",") if r.strip()}
 
 
 class ScratchDeferred(Exception):
@@ -370,6 +373,9 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
     for r in todo:
         out_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
         if os.path.exists(os.path.join(out_dir, "done.json")):
+            continue
+        if r["run_accession"] in DEFER_RUNS:
+            log(f"{r['run_accession']} ({r['study']}): held back by PARASCAPE_DEFER_RUNS; stays pending")
             continue
         local = []
         if DOWNLOAD_CACHE:

@@ -187,3 +187,14 @@ def test_reads_choose_extraction_or_ena_gzip_by_space(tmp_path, monkeypatch):
         raise AssertionError('expected deferral')
     monkeypatch.setattr(Q, 'SCRATCH', str(nas)); commands.clear()                # on NAS scratch: never fasterq-dump
     assert [Path(p).name for p in Q._reads(row)] == ['SRR1_1.fastq.gz', 'SRR1_2.fastq.gz'] and commands == []
+
+
+def test_runs_held_back_by_hand_stay_pending_without_blocking(tmp_path, monkeypatch):
+    Q = load('omics_quant')
+    monkeypatch.setattr(Q, 'SCRATCH', str(tmp_path)); monkeypatch.setattr(Q, 'NAS', str(tmp_path / 'nas'))
+    monkeypatch.setattr(Q, 'DOWNLOAD_CACHE', ''); monkeypatch.setattr(Q, 'DEFER_RUNS', {'SRR9'})
+    monkeypatch.setattr(Q, 'log', lambda message: None)
+    seen = []
+    monkeypatch.setattr(Q, '_reads', lambda row: seen.append(row['run_accession']) or [])
+    rows = [dict(run_accession=r, study='S', references=['ME49']) for r in ('SRR9', 'SRR3')]
+    assert Q._quantify_pass(rows, None, 0) == [] and seen == ['SRR3']
