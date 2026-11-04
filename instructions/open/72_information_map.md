@@ -225,3 +225,40 @@ collapsed per gene by "strongest evidence wins" plus three explicit overrides (G
   Where Einar's review is one of the two sources the conflict is **resolved**, not open.
 * Next: rescore host-facing on these labels with `hosttx_effectors`, `organelle_surface_turboid`, `pubmed` and
   `pvm_proximity` held out, and report the secretory-restricted question as the headline.
+
+## Second host-facing scoring run (2026-11-04): the bar fails, and run 1's pass was the leak
+`results/host_facing_inference_v2_2026_11_04/`. 585 labels (65 positives, 520 negatives, of which **43 hard
+negatives**); 398 features; the declared dependencies and the attention columns held out (47 columns); all 33
+conflicted genes kept, because Einar's review resolves each one.
+
+| Question | genes (pos/neg) | best precision | **lower 90 % bound** | reaches 0.90 | genes fillable |
+|---|---|---|---|---|---|
+| **Hard: secretory-pathway proteins** | 105 (58/47) | 0.822 | **0.727** | no | 0 |
+| **Hardest: Einar's 98 reviewed genes** | 98 (66/32) | 0.673 | **0.605** | no | 0 |
+| Easy: all labels (run 1's question) | 585 (65/520) | 0.776 | **0.681** | no | 0 |
+
+* **Run 1's 0.906 does not reproduce.** The only changes are the reviewed labels and the held-out families, so
+  that pass came from `hosttx_effectors` and the publication counts -- the near-circular features. Holding them
+  out drops the same question from 0.906 to 0.681.
+* **Measured against the hard negatives, the model is near chance.** Positives versus the 477 hyperLOPIT
+  internal markers: AUC 0.984, false-positive rate 0.000. Versus the 43 hard negatives: **AUC 0.667, FPR 0.349**.
+  Versus Einar's own 30 reviewed negatives: **AUC 0.586, FPR 0.467**. It tells inside-the-parasite from secreted
+  and cannot tell stays-in-the-vacuole from exported.
+* **No concentrated signal:** every permutation importance is <= 0.02 with an SD larger than its mean, spread
+  across unrelated families. The calibrated [0.9, 1.0) bin holds 4 genes, 2 of them right. 0 of 14
+  feature-set x training variants reach the bar.
+* **More labels cannot fix this.** The Clopper-Pearson bound converges upward to the true precision, and the
+  best precision reachable at any threshold is 0.822, below the bar itself. Extra labels would only measure
+  0.822 more precisely. The binding constraint is the **evidence**, not the label count.
+* **What would change the answer:** (1) a differential genome-wide measurement separating "in the vacuole" from
+  "in the host cell" in the same cells -- selective permeabilisation, or proximity labelling anchored in the host
+  cytosol against a PV-lumen-anchored control, with a per-gene FDR. The two existing genome-wide host-side
+  assays cannot serve: the proximity screen defines the positives and the host-transcription screen is
+  downstream of the conclusion. (2) SignalP or curated cleavage sites, so the secretory set is not defined by a
+  predictor that calls GRA16 globular. (3) Only after a model clears 0.90 does the label count bind: at a true
+  precision of 0.95 the bound needs ~65 held-out calls, about 150 labelled secretory genes against 105 today.
+* **Decision: fill nothing for host_facing**, now for a measured reason rather than a suspicion.
+* **Open for Einar:** GRA9 (TGME49_251540) and NTPase II (TGME49_277270). He accepted their PVM-proximity
+  claims, while the curated gold-negative set (immunogold EM placing them in the IVN or PV lumen) says the
+  opposite; the map resolves the 0.90-against-0.90 tie to "not host-facing". Flipping both still fails the bar
+  (best bound 0.754), but the contested direction is the one that decides the question.
