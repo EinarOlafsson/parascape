@@ -339,6 +339,26 @@ RESOURCE_STATUS = os.environ.get("PARASCAPE_RESOURCE_STATUS",
 EXTRA_RANK = 0          # set in an extra worker: 1 for the first extra, 2 for the second, ...
 
 
+_PLANNED = {"epoch": 0.0, "runs": None, "mtime": None}
+
+
+def _still_planned(run_acc: str) -> bool:
+    """Workers hold the queue in memory; a run removed from the plan since then is skipped (checked every 10 min)."""
+    if time.time() - _PLANNED["epoch"] > 600:
+        try:
+            mtime = os.stat(PLAN).st_mtime_ns
+            if _PLANNED["mtime"] is None:
+                _PLANNED["mtime"] = mtime            # the plan this worker started from: nothing to skip
+            elif mtime != _PLANNED["mtime"]:
+                with open(PLAN) as fh:
+                    _PLANNED["runs"] = {json.loads(line)["run_accession"] for line in fh if line.strip()}
+                _PLANNED["mtime"] = mtime
+        except (OSError, ValueError):
+            pass                                     # keep the previous set if the plan is mid-rewrite
+        _PLANNED["epoch"] = time.time()
+    return _PLANNED["runs"] is None or run_acc in _PLANNED["runs"]
+
+
 def _spare_workers() -> int:
     try:
         with open(RESOURCE_STATUS) as fh:
@@ -469,6 +489,8 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
         out_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
         if os.path.exists(os.path.join(out_dir, "done.json")):
             continue
+        if not _still_planned(r["run_accession"]):
+            continue                                 # removed from the plan after this worker started
         if r["run_accession"] in DEFER_RUNS:
             log(f"{r['run_accession']} ({r['study']}): held back by PARASCAPE_DEFER_RUNS; stays pending")
             continue

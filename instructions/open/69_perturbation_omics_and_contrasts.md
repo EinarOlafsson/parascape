@@ -326,3 +326,7 @@ the snapshot remains an explicit immutable296-entry cut.
   PRJNA1053644; 125 runs in all) were removed from the queue (`scripts/exclude_single_cell_studies.py`, backup in
   `automation/before-single-cell-exclusion-*`); per Einar they use deposited single-cell matrices instead.
   GSE132238 (16 runs, already verified) keeps its results. Queue now 2,227 runs, 391 verified.
+* Correction 2026-11-04 06:30: the running workers kept the old queue in memory and spent ~6 h on GSE229505;
+  four of its runs got bulk results through the `fastq-dump --split-3` NAS fallback. Those are not valid bulk
+  measurements and were moved to `parascape_omics/rnaseq_excluded_single_cell/` (README there). Workers now
+  re-read the plan every 10 min once it changes and skip runs taken out of it.
