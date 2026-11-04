@@ -1,0 +1,39 @@
+{
+  "snapshot": "20261104T180547Z-437",
+  "studies": [
+    "GSE103113",
+    "GSE125120",
+    "GSE132238",
+    "GSE136123",
+    "GSE139537",
+    "GSE140197",
+    "GSE150334",
+    "GSE156685",
+    "GSE158231",
+    "GSE159515",
+    "GSE175919",
+    "GSE178355",
+    "GSE189677",
+    "GSE193614",
+    "GSE193779",
+    "GSE198001",
+    "GSE200962",
+    "GSE208647",
+    "GSE223621",
+    "GSE223819",
+    "GSE223869",
+    "GSE223877",
+    "GSE224934",
+    "GSE228580",
+    "GSE240648",
+    "PRJNA1008424"
+  ],
+  "min_reads": 1000000.0,
+  "min_samples": 6,
+  "rule": "per-study Pearson on log2(TPM+1), top 5000 variable expressed genes, percentile ranks, mean over studies",
+  "provenance_family": "uniform_rnaseq_coexpression",
+  "excluded_sources": [
+    "lopit_tgon (truth only)"
+  ],
+  "truth": "Barylyuk 2020 mmc5 markers (curation grade)"
+}
