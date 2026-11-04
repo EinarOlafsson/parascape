@@ -1,0 +1,43 @@
+1. Nat Commun. 2020 Oct 16;11(1):5258. doi: 10.1038/s41467-020-18991-8.
+
+Genome-wide screens identify Toxoplasma gondii determinants of parasite fitness 
+in IFNγ-activated murine macrophages.
+
+Wang Y(1), Sangaré LO(1), Paredes-Santos TC(1), Hassan MA(2)(3)(4), 
+Krishnamurthy S(1), Furuta AM(1), Markus BM(5)(6), Lourido S(5)(7), Saeij 
+JPJ(8).
+
+Author information:
+(1)Department of Pathology, Microbiology & Immunology, School of Veterinary 
+Medicine, University of California, Davis, Davis, CA, USA.
+(2)College of Medicine and Veterinary Medicine, The University of Edinburgh, 
+Edinburgh, UK.
+(3)The Roslin Institute, The University of Edinburgh, Edinburgh, UK.
+(4)Center for Tropical Livestock Health and Genetics, The University of 
+Edinburgh, Edinburgh, UK.
+(5)Whitehead Institute for Biomedical Research, Cambridge, MA, USA.
+(6)Faculty of Biology, University of Freiburg, Freiburg, Germany.
+(7)Department of Biology, Massachusetts Institute of Technology, Cambridge, MA, 
+USA.
+(8)Department of Pathology, Microbiology & Immunology, School of Veterinary 
+Medicine, University of California, Davis, Davis, CA, USA. jsaeij@ucdavis.edu.
+
+Macrophages play an essential role in the early immune response against 
+Toxoplasma and are the cell type preferentially infected by the parasite in 
+vivo. Interferon gamma (IFNγ) elicits a variety of anti-Toxoplasma activities in 
+macrophages. Using a genome-wide CRISPR screen we identify 353 Toxoplasma genes 
+that determine parasite fitness in naїve or IFNγ-activated murine macrophages, 
+seven of which are further confirmed. We show that one of these genes encodes 
+dense granule protein GRA45, which has a chaperone-like domain, is critical for 
+correct localization of GRAs into the PVM and secretion of GRA effectors into 
+the host cytoplasm. Parasites lacking GRA45 are more susceptible to 
+IFNγ-mediated growth inhibition and have reduced virulence in mice. Together, we 
+identify and characterize an important chaperone-like GRA in Toxoplasma and 
+provide a resource for the community to further explore the function of 
+Toxoplasma genes that determine fitness in IFNγ-activated macrophages.
+
+DOI: 10.1038/s41467-020-18991-8
+PMCID: PMC7567896
+PMID: 33067458 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no competing interests.

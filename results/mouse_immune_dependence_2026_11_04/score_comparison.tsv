@@ -1,0 +1,4 @@
+score	expected_direction	mannwhitney_p	roc_auc	ROP18_pct	ROP17_pct	GRA7_pct	GRA12_pct	brain_spearman
+fit_ifng - fit_naive_bmdm (the contrast)	less	0.05735781592271121	0.727764260610976	6.0	35.6	65.2	2.2	0.1061671961914664
+fit_ifng alone	less	0.01166377659089951	0.8274195728575291	7.3	16.8	44.5	0.6	0.0528027886243267
+fit_naive_bmdm alone (expect the opposite sign)	greater	0.6702451048827461	0.4364017301973506	13.1	78.2	68.5	65.5	-0.11786388225924

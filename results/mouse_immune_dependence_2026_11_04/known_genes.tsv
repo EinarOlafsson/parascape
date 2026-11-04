@@ -1,0 +1,11 @@
+gene_id	gene	why_expected	evidence_origin	product	ifng_dependence	rank	percentile	fit_naive_bmdm	fit_ifng	fit_invitro_hff	compartment	measured_in_screen	top_percent
+TGME49_205250	ROP18	IRG pathway: kinase phosphorylating IRGs	literature	rhoptry protein ROP18	-1.8998417777221208	447.0	0.06038908403134288	0.7315536810507958	-1.168288096671325	0.89	rhoptries	True	6.04
+TGME49_258580	ROP17	IRG pathway: second kinase of the ROP5 complex	literature	rhoptry protein ROP17	-0.7496547980721777	2635.0	0.3559848689543367	-0.039075579711309	-0.7887303777834868	1.29	rhoptries	True	35.6
+TGME49_203310	GRA7	IRG pathway: adaptor anchoring the complex at the PVM	literature	dense granule protein GRA7	-0.37852234774150306	4823.0	0.6515806538773304	0.1121512382308842	-0.2663711095106189	1.9	dense granules	True	65.16
+TGME49_288650	GRA12	IFN-gamma resistance, separate from the ROP5 complex	literature	dense granule protein GRA12	-2.5334322796242206	161.0	0.02175087814104296	0.1572810977236374	-2.376151181900583	1.75	dense granules	True	2.18
+TGME49_308090	ROP5	IRG pathway scaffold; tandem array, untargetable by CRISPR	literature									False	
+TGME49_316250	GRA45	named and validated in the Wang 2020 abstract (not independent)	same screen	dense granule protein GRA45	-4.299282656019649	21.0	0.002837071061875169	0.9635366611842584	-3.3357459948353902	1.15		True	0.28
+#
+# validation test
+# literature only (independent)	n_positives=4.0	n_background=7398.0	mannwhitney_p=0.05735781592271121	roc_auc=0.727764260610976	median_rank_percentile=0.2081869764928398	in_top_1pct=0.0	expected_top_1pct=0.04	hypergeom_p_top_1pct=1.0	in_top_5pct=1.0	expected_top_5pct=0.2	hypergeom_p_top_5pct=0.18548216858881791
+# literature + GRA45	n_positives=5.0	n_background=7397.0	mannwhitney_p=0.014575732206621183	roc_auc=0.7817493578477761	median_rank_percentile=0.06038908403134288	in_top_1pct=1.0	expected_top_1pct=0.05	hypergeom_p_top_1pct=0.049009951863052514	in_top_5pct=2.0	expected_top_5pct=0.25	hypergeom_p_top_5pct=0.02253456241302051

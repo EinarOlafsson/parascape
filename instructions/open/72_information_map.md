@@ -172,3 +172,30 @@ conflicts; 409 features; 5 orthogroup-grouped folds; calibration ECE 0.007).
 * **Decision: fill nothing for host_facing yet.** The next run scores it from genuinely independent evidence,
   and the limiting resource is not the model but **negatives**: 9 curated vacuole-resident proteins cannot
   support a 90 % claim. Expanding them, and Einar's review of the 140 literature candidates, come first.
+
+## Mouse immune-dependence attempt (2026-11-04): the contrast does not work
+`results/mouse_immune_dependence_2026_11_04/`. Question: which genes matter specifically under mouse immune
+pressure, from `fit_ifng` − `fit_naive_bmdm` (Wang et al., PMID 33067458; same cells, same study, so the only
+safe subtraction among the fitness columns).
+* **Known genes are not recovered significantly.** GRA12 rank 161 of 7,402 (top 2.2 %) and ROP18 rank 447
+  (top 6 %), but ROP17 is at 35.6 % and GRA7 at 65.2 %: Mann-Whitney p = 0.057, AUC 0.73 on four positives.
+  ROP5 is not measured at all (tandem array, not targetable), recorded as not measured rather than a miss.
+  GRA45 ranks 21st but is named in the Wang abstract, so it tests the screen, not our ranking.
+* **Subtracting two already-relative scores amplifies noise.** All 30 top-ranked genes are extreme in *both*
+  arms in opposite directions (median naive +1.99, IFN-gamma −2.64, against +0.35 and −0.20 overall) -- the
+  signature of a difference of two noisy numbers. `fit_ifng` **alone** does better on the known genes
+  (p = 0.012, AUC 0.83) than the difference (p = 0.057, AUC 0.73), and `fit_naive_bmdm` alone carries nothing
+  (p = 0.33). Einar's rule "relative, normalised to a control, is better" holds; the corollary learned here is
+  that **subtracting two relative scores is not better still**.
+* **Not a scaling artefact, though:** zero ribosomal proteins are in the top 5 % where 7 are expected, and
+  cytosol, ribosome, nucleolus and proteasome contribute no top genes. The one compartment enriched after
+  correction is **micronemes** (6 of 28, odds ratio 6.3, q = 0.024) -- not dense granules or rhoptries, and
+  hyperLOPIT has no PVM class, so a PVM test is impossible here.
+* **In vivo agreement is real but tiny** (brain rho 0.11, heart 0.11; significant only because n is large).
+* **Decision: deploy neither score.** The blockers are four known positives and the absence of Wang's
+  per-gene significance in `nodes.parquet`; acquiring the published FDR table is the first thing worth doing.
+* **The human comparison cannot be made.** 20 of the top 30 are dispensable for growth in human fibroblasts,
+  which supports "needed under mouse immune pressure but not for growth in resting human fibroblasts" and
+  **not** "more important in mice than in humans": species, immune activation and scale all differ at once.
+  The missing measurement is a genome-wide screen in IFN-gamma-activated **human** macrophages against matched
+  unactivated human cells -- the human twin of the Wang design.
