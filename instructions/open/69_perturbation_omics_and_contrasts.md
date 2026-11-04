@@ -317,3 +317,5 @@ the snapshot remains an explicit immutable296-entry cut.
   `PARASCAPE_EXTRA_WORKERS` (1) further workers that claim a run only while the guard reports spare workers.
 * Measured queue (automation plan, not the older catalogue plan): 2,316 runs, 361 verified, 7.3 TB of reads
   left; ~135 GB/day at 16 CPUs.
+* Harvest finished 2026-11-03 19:24: 5,605 API responses (829 MB; app 4.1.0, data bundle 2026-10-29): 21 regulators
+  with whole-cycle and 24-window DE plus targets, 108 communities, 210 regulator pairs, 4,713 gene pages.
