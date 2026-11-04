@@ -319,3 +319,10 @@ the snapshot remains an explicit immutable296-entry cut.
   left; ~135 GB/day at 16 CPUs.
 * Harvest finished 2026-11-03 19:24: 5,605 API responses (829 MB; app 4.1.0, data bundle 2026-10-29): 21 regulators
   with whole-cycle and 24-window DE plus targets, 108 communities, 210 regulator pairs, 4,713 gene pages.
+
+## 2026-11-04: single-cell collections out of the bulk queue
+* GSE229505 (dual perturb-seq, 97 runs) failed with "no reads written": 10x spots hold 1 cDNA read plus 3
+  technical reads. With it, four other per-cell collections still pending (GSE346252, PRJNA1047766, PRJDB12314,
+  PRJNA1053644; 125 runs in all) were removed from the queue (`scripts/exclude_single_cell_studies.py`, backup in
+  `automation/before-single-cell-exclusion-*`); per Einar they use deposited single-cell matrices instead.
+  GSE132238 (16 runs, already verified) keeps its results. Queue now 2,227 runs, 391 verified.
