@@ -12,6 +12,23 @@ downloads continue (instruction 69); every product is rebuilt as the queue fills
   uniform proteomics re-search; its bulk downloads have needed a login since release 71. Overlapping
   datasets are a cross-check for our values, not a substitute.
 
+## The end goal: one information map, three target traits (Einar, 2026-11-04)
+* "In the end what I am most interested in is generating an information map where all current information is
+  taken into account; this map I want to use to predict all the missing facts in the table."
+* Target traits, in Einar's order. Localization (product 1) is a means for trait 1, not the end:
+
+| Trait | Truth to score against (graded as in 70) | Evidence layers that should predict it |
+|---|---|---|
+| **1. Host-facing** (secreted beyond the parasite: PVM, PV lumen exported, injected into host cytosol/nucleus) | Direct: published host-cell/PVM localization by IFA/IEM, host-side BioID/TurboID hits, exported-protein screens; curation: dense granule / rhoptry hyperLOPIT markers (organelle is not the same as host-facing) | signal peptide and TEXEL-like motifs; co-expression with known secreted proteins (product 1); in vivo vs in vitro fitness; host response atlas (product 3: deleting it changes the host); fold novelty (host-facing domains are structurally novel, foldseek screen) |
+| **2. Binding partners** (parasite–parasite and parasite–host, especially for host-facing proteins) | Direct: crosslinks (StarPath XL-MS), reciprocal pull-downs, solved complexes; curation: CRAPome-filtered co-purification | co-purification across all uniformly searched pull-downs with background removed (product 4; host proteins are already in the search database as `HOST_`); co-expression and co-perturbation (products 1–2); co-localization; AF3 pair confidence for shortlisted pairs; ortholog interactions (Plasmodium) |
+| **3. Function** | Direct: experimental GO (EXP/IDA…), phenotypes; curation: reviewed annotation | perturbation atlas (product 2: what changes when it is lost); co-expression modules; fold-based annotation (319 proteins annotated by structure); essentiality and condition-specific fitness |
+
+* The map is one model over all layers (the ToxoNet v2 multi-task design: observed labels only, inferred evidence
+  down-weighted), but every layer first earns its place on the 70 scoreboard on its own, so the combined model can be
+  compared with its best single layer.
+* Pairs (trait 2) need pair-level folds: hold out whole proteins (cold-node split, `splits.cold_node_pairs`) so a
+  partner is never predicted from the same protein seen in training.
+
 ## Rules shared by all four (from 70, plus omics-specific)
 * Scoring follows 70: graded truth, whole-source hold-out, orthogroup-grouped frozen folds, best-baseline
   comparison, the deployment rule. A product is "deployed" only through that rule.
