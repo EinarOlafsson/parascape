@@ -266,56 +266,17 @@ nb.md('## 10 · Assemble the three aligned tables',
       '* **partner_***: best observed partner (highest probability, ties by id), its probability, the number of '
       'partners with probability at least 0.95 and at least 0.5. Host partners are shown as `host:<name>`.',
       '* **screen_***: the screen result (True/False), blank if not screened.',
-      'Every cell of `probability` and `source` is empty exactly where `values` is empty.')
+      'Every cell of `probability` and `source` is empty exactly where `values` is empty.',
+      'The rules live in `parascape/information_map.py`: each column is one registered trait (name, kind, description) '
+      'and the matrix is assembled from the evidence rows, so a new column is one `register` line plus its evidence.')
 nb.code(r'''
-ev = pd.DataFrame(EV, columns=['gene_id', 'trait', 'value', 'probability', 'source_tier', 'reference', 'dataset'])
-ev['value'] = ev['value'].astype(str)
-TIER_RANK = {'observed-direct': 0, 'observed-curated': 1, 'observed-screen': 2, 'observed-proximity': 3}
-values = pd.DataFrame(index=GENES); prob = pd.DataFrame(index=GENES); srcs = pd.DataFrame(index=GENES)
-def put(col, ser_v, ser_p, ser_t):
-    values[col] = ser_v.reindex(GENES); prob[col] = ser_p.reindex(GENES).astype(float); srcs[col] = ser_t.reindex(GENES)
-# host_facing
-h = ev[ev.trait == 'host_facing'].sort_values(['gene_id', 'probability'], ascending=[True, False]).drop_duplicates('gene_id').set_index('gene_id')
-put('host_facing', h.value.map({'yes': True}).astype('boolean'), h.probability, h.source_tier)
-# single-category compartment
-m = ev[ev.trait == 'compartment_hyperlopit'].drop_duplicates('gene_id').set_index('gene_id')
-put('compartment_hyperlopit', m.value, m.probability, m.source_tier)
-# multi-valued GO traits: top term by distinct references
-for trait in ['compartment_go_cc', 'function_go_bp', 'function_go_mf']:
-    e = ev[ev.trait == trait]
-    cnt = e.groupby(['gene_id', 'value']).reference.nunique().rename('n').reset_index().sort_values(['gene_id', 'n', 'value'], ascending=[True, False, True])
-    top = cnt.drop_duplicates('gene_id').set_index('gene_id')
-    put(trait, top.value, pd.Series(TIER_P['observed-direct'], index=top.index), pd.Series('observed-direct', index=top.index))
-    nterm = cnt.groupby('gene_id').size()
-    values[trait + '_n'] = nterm.reindex(GENES).astype('Int64')
-    prob[trait + '_n'] = np.where(nterm.reindex(GENES).notna(), TIER_P['observed-direct'], np.nan)
-    srcs[trait + '_n'] = np.where(nterm.reindex(GENES).notna(), 'observed-direct', None)
-# screens
-for c in screen_cols:
-    e = ev[ev.trait == c].drop_duplicates('gene_id').set_index('gene_id')
-    put(c, e.value.map({'True': True, 'False': False}).astype('boolean'), e.probability, e.source_tier)
-# partners
-pa = pairs.assign(partner=np.where(pairs.partner_side == 'host', 'host:' + pairs.gene_b, pairs.gene_b))
-fwd = pa[['gene_a', 'partner', 'probability', 'source_tier']].rename(columns={'gene_a': 'gene'})
-rev = pa[pa.partner_side == 'parasite'][['gene_b', 'gene_a', 'probability', 'source_tier']].rename(columns={'gene_b': 'gene', 'gene_a': 'partner'})
-long_p = pd.concat([fwd, rev], ignore_index=True)
-# one entry per gene-partner: keep the highest probability
-long_p = long_p.sort_values(['gene', 'partner', 'probability'], ascending=[True, True, False]).drop_duplicates(['gene', 'partner'])
-best = long_p.sort_values(['gene', 'probability', 'partner'], ascending=[True, False, True]).drop_duplicates('gene').set_index('gene')
-put('partner_best', best.partner, best.probability, best.source_tier)
-for col, thr in [('partner_n_ge95', 0.95), ('partner_n_ge50', 0.5)]:
-    n = long_p[long_p.probability >= thr].groupby('gene').size()
-    has = best.index
-    values[col] = n.reindex(GENES).fillna(0).astype('Int64').where(GENES.isin(has))
-    prob[col] = np.where(GENES.isin(has), best.probability.reindex(GENES), np.nan)
-    srcs[col] = np.where(GENES.isin(has), best.source_tier.reindex(GENES), None)
-values['partner_best_prob'] = best.probability.reindex(GENES)
-prob['partner_best_prob'] = best.probability.reindex(GENES); srcs['partner_best_prob'] = best.source_tier.reindex(GENES)
-cols = ['host_facing', 'compartment_hyperlopit', 'compartment_go_cc', 'compartment_go_cc_n', 'partner_best', 'partner_best_prob',
-        'partner_n_ge95', 'partner_n_ge50', 'function_go_bp', 'function_go_bp_n', 'function_go_mf', 'function_go_mf_n'] + screen_cols
-values, prob, srcs = values[cols], prob[cols], srcs[cols]
-assert values.shape == prob.shape == srcs.shape
-assert (values.notna().values == prob.notna().values).all(), 'probability must be empty exactly where value is empty'
+from parascape import information_map as im
+for c in screen_cols:                               # one registry line per new column; nothing else changes
+    im.register(im.Trait(c, 'measure', f'Arrayed screen result ({c}); a measured no-phenotype is False'))
+ev = im.evidence_frame(pd.DataFrame(EV, columns=list(im.EVIDENCE_COLUMNS)))
+order = ['host_facing', 'compartment_hyperlopit', 'compartment_go_cc', 'partners', 'function_go_bp', 'function_go_mf'] + screen_cols
+values, prob, srcs = im.build(ev, GENES, pairs=pairs, order=order)
+cols = list(values.columns)
 values.notna().sum().rename('genes with a value').to_frame()
 ''')
 
