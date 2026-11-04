@@ -53,7 +53,7 @@ def fetch(url: str, dest: Path, size: int) -> None:
         try:
             if (BIN / 'aria2c').exists() and attempt < 3:
                 # One PRIDE connection gives ~1 MB/s; ranged parallel connections give several times that.
-                subprocess.run([str(BIN / 'aria2c'), '-q', '-x8', '-s8', '-k8M', '--file-allocation=none',
+                subprocess.run([str(BIN / 'aria2c'), '-q', '-x6', '-s6', '-k8M', '--file-allocation=none',
                                 '--allow-overwrite=true', '--auto-file-renaming=false', '--connect-timeout=60',
                                 '-d', str(part.parent), '-o', part.name, url], check=True)
             else:
@@ -63,10 +63,11 @@ def fetch(url: str, dest: Path, size: int) -> None:
                 raise IOError(f'{dest.name}: {part.stat().st_size} bytes, declared {size}')
             part.replace(dest)
             return
-        except Exception:
+        except Exception as error:
             if attempt == 4:
                 raise
-            time.sleep(30 * (attempt + 1))
+            refused = isinstance(error, urllib.error.URLError) and 'refused' in str(error).lower()
+            time.sleep((180 if refused else 30) * (attempt + 1))   # a refusal means back off, not retry harder
 
 
 def acquisition(mzml: Path) -> dict:
@@ -223,9 +224,10 @@ def main():
     unsupported += [dict(file=f['filename'], bytes=int(f.get('declared_bytes') or 0),
                          reason='SCIEX wiff or other format without a Linux converter (ProteoWizard needs Windows, Wine or Docker)')
                     for f in files if file_kind(f['filename']) == 'unsupported']
-    # PRIDE serves one file at roughly 1 MB/s from here; several transfers at once fill the line.
+    # PRIDE serves one file at roughly 1 MB/s from here, so files are fetched over several ranged connections
+    # (aria2c) and two at a time. More than about a dozen connections at once earns a refused connection.
     from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=4) as pool:
+    with ThreadPoolExecutor(max_workers=2) as pool:
         list(pool.map(lambda f: fetch(f['url'], scratch / f['filename'], int(f.get('declared_bytes') or 0)), usable))
     for f in usable:
         source = scratch / f['filename']
