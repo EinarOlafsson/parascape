@@ -1,8 +1,8 @@
 trait	source_tier	genes_with_observed_fact
-host_facing	observed-curated	14
+host_facing	observed-curated	508
 host_facing	observed-direct	7
 host_facing	observed-proximity	73
-host_facing	any tier	81
+host_facing	any tier	567
 compartment_hyperlopit	observed-curated	716
 compartment_hyperlopit	any tier	716
 compartment_go_cc	observed-direct	28

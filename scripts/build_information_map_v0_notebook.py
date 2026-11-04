@@ -208,6 +208,43 @@ for g in pv:
 print(len(hi), 'curated interactions;', hi.gene_id.nunique(), 'distinct parasite genes;', len(pv), 'PVM proximity positives')
 ''')
 
+nb.md('## 7b · Proteins that are definitely NOT host-facing',
+      'Einar, 2026-11-04: "you also know which proteins are definitely not host facing, so that information should be '
+      'there as well in this column." Without real negatives, precision cannot be measured honestly, so `host_facing` '
+      'is three-valued: True, **False**, or empty for untested.',
+      '* **Curated gold negatives** (16 proteins, `hostfacing_goldsets.json`): each was localised and found to stay '
+      'inside the parasite or the vacuole -- GRA9 by immunogold electron microscopy in the dense granules and then the '
+      'intravacuolar network, GRA2 shaping the network from the vacuole side, and so on. Tier `observed-curated`, 0.90.',
+      '* **hyperLOPIT markers of compartments physically inside the parasite**: apicoplast, mitochondrion, nucleus, '
+      'nucleolus, ribosome, proteasome, Golgi, ER, cytosol, tubulin cytoskeleton and IMC. Probability **0.80**, below '
+      'the curated tier, because this is an inference from a resident marker rather than a direct export test.',
+      '* **Deliberately not negatives:** dense granules, rhoptries, micronemes, apical, plasma membrane and '
+      'endomembrane vesicles. These are the secretory and boundary compartments whose proteins can be exported, so a '
+      'marker there says nothing either way. The PVM-proximity "likely negatives" also stay empty.')
+nb.code(r'''
+GOLD = Path('/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/hostfacing_goldsets.json')
+gold = json.loads(GOLD.read_text())
+n_gold = 0
+for r in gold['gold_negative']:
+    if r['gene_id'] in GENESET:
+        add_ev(r['gene_id'], 'host_facing', 'no', TIER_P['observed-curated'], 'observed-curated',
+               r['evidence'][:200], f"hostfacing_goldsets.json gold_negative ({r['name']}; confidence {r['confidence']})")
+        n_gold += 1
+INSIDE = ('apicoplast', 'mitochondrion', 'nucleus', 'nucleolus', 'ribosome', 'proteasome', 'Golgi', 'ER',
+          'cytosol', 'tubulin cytoskeleton', 'IMC')
+NOT_NEGATIVE = ('dense granules', 'rhoptries', 'micronemes', 'apical', 'PM -', 'endomembrane vesicles')
+def inside_parasite(niche):
+    if any(k in niche for k in NOT_NEGATIVE):
+        return False
+    return any(niche.startswith(k) or k in niche for k in INSIDE)
+inside = {g: m for g, m in zip(mk_in.Accession, mk_in.markers) if inside_parasite(m)}
+for g, m in inside.items():
+    add_ev(g, 'host_facing', 'no', 0.80, 'observed-curated', 'PMID:32619502',
+           f'Barylyuk 2020 hyperLOPIT marker of {m} (a compartment inside the parasite; inference from residence)')
+print(n_gold, 'curated gold negatives;', len(inside), 'internal-compartment markers')
+pd.Series(sorted({m for m in inside.values()})).to_frame('niches counted as inside the parasite').T
+''')
+
 nb.md('## 8 · Screen phenotypes (function, observed-screen)',
       'The arrayed splitCas9 imaging screen (PMID 35538310) scored 319 genes for egress, actin, apicoplast and '
       'replication phenotypes. Here a measured "no phenotype" is a real observation of that screen (the gene was '
@@ -299,6 +336,20 @@ coverage.to_csv(OUT / 'coverage.tsv', sep='\t', index=False)
 coverage
 ''')
 nb.code('pairs.groupby("source_tier").size().rename("pairs").to_frame()')
+
+nb.md('## 11b · Where sources disagree',
+      'A gene with both a positive and a negative host-facing source is shown with the stronger source, and both are '
+      'kept. These need a human decision, so they are written to `conflicts.tsv`. Every one of them is a PVM-proximity '
+      'positive (0.70) contradicted by a curated negative (0.80-0.90): the proximity screen labelled the host-cytosolic '
+      'face of the vacuole membrane, while the curated call places the protein on the vacuole side or in the '
+      'intravacuolar network. Which of the two counts as "host-facing" is a definition question for Einar, not '
+      'something to average away.')
+nb.code(r'''
+conf = im.conflicts(ev)
+conf.to_csv(OUT / 'conflicts.tsv', sep='\t', index=False)
+print(conf.gene_id.nunique(), 'genes with sources that disagree')
+conf[conf.trait == 'host_facing'][['gene_id', 'value', 'probability', 'dataset']].sort_values(['gene_id', 'probability'], ascending=[True, False])
+''')
 
 nb.md('## 12 · Write the outputs',
       'Parquet files for the three aligned tables, the long evidence table and the pairs table, plus the README that '

@@ -37,6 +37,18 @@ def test_adding_a_column_leaves_the_others_unchanged():
         im.TRAITS.pop('test_essential')
 
 
+def test_host_facing_is_three_valued_and_conflicts_are_visible():
+    ev = rows(('G1', 'host_facing', 'yes', 0.95, 'observed-direct', 'r1', 'd'),
+              ('G2', 'host_facing', 'no', 0.90, 'observed-curated', 'r2', 'd'),
+              ('G3', 'host_facing', 'yes', 0.70, 'observed-proximity', 'r3', 'd'),
+              ('G3', 'host_facing', 'no', 0.90, 'observed-curated', 'r4', 'd'))
+    values, probability, _ = im.build(ev, GENES)
+    assert values.loc['G1', 'host_facing'] == True and values.loc['G2', 'host_facing'] == False   # noqa: E712
+    assert values.loc['G3', 'host_facing'] == False and probability.loc['G3', 'host_facing'] == 0.90  # noqa: E712
+    flagged = im.conflicts(ev)
+    assert set(flagged.gene_id) == {'G3'} and len(flagged) == 2
+
+
 def test_terms_show_the_best_supported_term_and_count():
     ev = rows(('G1', 'function_go_mf', 'GO:2 b', 0.95, 'observed-direct', 'p1', 'd'),
               ('G1', 'function_go_mf', 'GO:1 a', 0.95, 'observed-direct', 'p2', 'd'),

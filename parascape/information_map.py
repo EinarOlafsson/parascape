@@ -45,7 +45,7 @@ NORMALIZATIONS = ('relative_to_control', 'internal_reference', 'library_size', '
 #: training label); identity = names and text (never a feature).
 ROLES = ('measurement', 'prediction', 'identity')
 KINDS = {
-    'flag': 'only "yes" is ever stated (e.g. host-facing); the cell is True or empty',
+    'flag': 'True where a source shows it, False only where a source shows the opposite, empty when untested',
     'category': 'one label per gene (e.g. a compartment); the highest-probability label is shown',
     'terms': 'several terms per gene (e.g. GO terms); the best-supported term is shown and <name>_n counts terms',
     'measure': 'a measured result that may be negative (e.g. a screen phenotype True/False, a number)',
@@ -117,6 +117,25 @@ def evidence_frame(rows) -> pd.DataFrame:
     return frame
 
 
+def _flag(text: str):
+    """'yes'/'no' and their synonyms; anything else leaves the cell empty, because untested is not negative."""
+    lowered = str(text).strip().lower()
+    if lowered in ('yes', 'true', '1', 'host_facing'):
+        return True
+    if lowered in ('no', 'false', '0', 'not_exported'):
+        return False
+    return pd.NA
+
+
+def conflicts(evidence) -> pd.DataFrame:
+    """Genes whose flag traits have both a positive and a negative source; shown, never averaged away."""
+    ev = evidence_frame(evidence)
+    flags = [name for name, trait in TRAITS.items() if trait.kind == 'flag']
+    ev = ev[ev.trait.isin(flags)].assign(flag=lambda d: d.value.map(_flag))
+    both = ev.groupby(['gene_id', 'trait']).flag.agg(lambda s: {True, False} <= set(s.dropna()))
+    return ev.merge(both[both].rename('conflict').reset_index(), on=['gene_id', 'trait'])
+
+
 def _strongest(rows: pd.DataFrame) -> pd.DataFrame:
     rank = rows.source_tier.map(TIER_RANK).fillna(len(TIER_RANK))
     return (rows.assign(_rank=rank).sort_values(['gene_id', 'probability', '_rank', 'value'],
@@ -142,7 +161,7 @@ def _column(trait: Trait, rows: pd.DataFrame, genes: pd.Index) -> dict:
     best = _strongest(rows)
     value = best.value
     if trait.kind == 'flag':
-        value = value.map(lambda v: True if v.lower() in ('yes', 'true', '1') else pd.NA).astype('boolean')
+        value = value.map(_flag).astype('boolean')
     elif trait.kind == 'measure' and set(value.unique()) <= {'True', 'False'}:
         value = value.map({'True': True, 'False': False}).astype('boolean')
     return {trait.name: (value.reindex(genes), best.probability.reindex(genes), best.source_tier.reindex(genes))}
