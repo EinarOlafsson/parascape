@@ -1,0 +1,387 @@
+"""Instruction 72, v0 build: the information map from OBSERVED facts only.
+
+Writes notebooks/information_map_v0_2026_11_04.ipynb (executed) and results/information_map_v0_2026_11_04/.
+"""
+import os
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+os.chdir(ROOT)
+sys.path.insert(0, str(ROOT / 'scripts'))
+sys.path.insert(0, str(ROOT))
+from notebook_runner import ExecutedNotebook  # noqa: E402
+
+nb = ExecutedNotebook('Information map v0: observed facts per gene, with a probability for each')
+nb.md('Instruction 72 (Einar, 2026-11-04), v0 build. One row per Toxoplasma ME49 gene (the 8,140 genes of the ParaScape '
+      'node table), one column per trait, and two matching tables of the same shape: how probable the fact is, and where '
+      'it came from.',
+      '**Observed facts only.** Nothing predicted is written here: the TAGM / `lopit_*` columns of the node table are '
+      'classifier outputs and are left out. **Missing is empty, never zero, never "no".** A gene nobody tested for a '
+      'trait is simply blank; unlabeled is not negative.',
+      '**The probabilities are provisional (v0).** They are tier defaults, not measured: direct experiment 0.95, '
+      'curated marker 0.90, single high-throughput screen call 0.80, proximity labelling 0.70; StarPath crosslinks use '
+      '1 minus their own local false-discovery rate; members of interaction studies get 0.5 until a CRAPome-style '
+      'background exists. In v1 these defaults are replaced by measured agreement between independent sources.')
+
+nb.md('## 1 · Setup, gene universe and tier defaults',
+      'The gene universe is the 8,140 ME49 genes of `parascape/data/nodes.parquet`. The tier defaults are written down '
+      'once here so every later step uses the same numbers.')
+nb.code(r'''
+import json, re, time, hashlib, datetime as dt
+from pathlib import Path
+import numpy as np, pandas as pd, requests
+OUT = Path('results/information_map_v0_2026_11_04'); SRC = OUT / 'sources'
+SRC.mkdir(parents=True, exist_ok=True)
+nodes = pd.read_parquet('parascape/data/nodes.parquet')
+GENES = pd.Index(nodes['gene_id'].astype(str), name='gene_id')
+assert GENES.is_unique
+GENESET = set(GENES)
+TIER_P = {'observed-direct': 0.95, 'observed-curated': 0.90, 'observed-screen': 0.80, 'observed-proximity': 0.70}
+STUDY_MEMBER_P = 0.5
+EV = []   # long-form evidence rows
+def add_ev(gene, trait, value, p, tier, ref, dataset):
+    EV.append((gene, trait, value, float(p), tier, ref, dataset))
+print(len(GENES), 'genes;', 'tier defaults', TIER_P)
+''')
+
+nb.md('## 2 · QuickGO experimental annotations for Toxoplasma (taxon 5811 and its strains)',
+      'GO annotations with an experimental evidence code (ECO:0000269 and relatives: direct assay, immunofluorescence, '
+      'physical interaction, mutant phenotype and so on) are the closest thing to a published, citable fact per protein. '
+      'We ask QuickGO for four sets: host-cell cellular-component terms (for the host-facing trait, including their '
+      'child terms), and all cellular-component, biological-process and molecular-function annotations. Responses are '
+      'fetched page by page, politely (half a second between calls), and the raw JSON of every page is saved with the '
+      'retrieval time so the step can be audited. Annotations with a `NOT` qualifier assert absence of a term and are '
+      'set aside, not counted as positive facts.')
+nb.code(r'''
+BASE = 'https://www.ebi.ac.uk/QuickGO/services/annotation/search'
+ECO = 'ECO:0000269,ECO:0000314,ECO:0000353,ECO:0000315,ECO:0000316,ECO:0000270'
+HOST_GO = 'GO:0033643,GO:0020005,GO:0030430,GO:0042025,GO:0020002,GO:0043657'
+sess = requests.Session(); sess.headers['User-Agent'] = 'starplast-information-map-v0 (research; einarolafssonbirnir@gmail.com)'
+def get(url, params, tries=4):
+    for k in range(tries):
+        r = sess.get(url, params=params, timeout=60)
+        if r.status_code == 200:
+            return r
+        time.sleep(2 * (k + 1))
+    r.raise_for_status()
+def quickgo(name, extra):
+    params = dict(taxonId=5811, taxonUsage='descendants', evidenceCode=ECO, evidenceCodeUsage='descendants', limit=100, **extra)
+    rows, page, stamps = [], 1, []
+    while True:
+        params['page'] = page
+        r = get(BASE, params)
+        d = r.json()
+        stamp = dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')
+        (SRC / f'quickgo_{name}_page{page:03d}.json').write_text(json.dumps({'retrieved_utc': stamp, 'url': r.url, 'response': d}))
+        rows += d['results']; stamps.append(stamp)
+        if page >= d['pageInfo']['total']:
+            break
+        page += 1; time.sleep(0.5)
+    print(f'{name}: {len(rows)} annotations in {page} pages (hits reported {d["numberOfHits"]}), retrieved {stamps[0]}')
+    return rows
+qg = {
+    'hostcell_cc': quickgo('hostcell_cc', dict(goId=HOST_GO, goUsage='descendants')),
+    'cc': quickgo('cc', dict(aspect='cellular_component')),
+    'bp': quickgo('bp', dict(aspect='biological_process')),
+    'mf': quickgo('mf', dict(aspect='molecular_function')),
+}
+''')
+
+nb.md('## 3 · Map UniProt accessions to ME49 gene IDs',
+      'QuickGO identifies proteins by UniProt accession, often from a strain other than ME49 (RH, GT1, VEG). UniProt '
+      'lists cross-references to every Toxoplasma genome build at ToxoDB, so we read the `TGME49_` identifiers from '
+      'those and keep only those that exist in our 8,140-gene universe. An accession that maps to more than one '
+      'universe gene is attached to each (and listed as ambiguous); an accession with none is written to '
+      '`sources/unmapped_uniprot.tsv` with the traits it carried, never silently dropped.')
+nb.code(r'''
+accs = sorted({r['geneProductId'].split(':', 1)[1] for rows in qg.values() for r in rows if r['geneProductId'].startswith('UniProtKB:')})
+other = sorted({r['geneProductId'] for rows in qg.values() for r in rows if not r['geneProductId'].startswith('UniProtKB:')})
+print(len(accs), 'UniProt accessions;', len(other), 'non-UniProt product ids', other[:5])
+acc2genes = {}
+for i in range(0, len(accs), 40):
+    chunk = accs[i:i + 40]
+    q = ' OR '.join(f'accession:{a}' for a in chunk)
+    r = get('https://rest.uniprot.org/uniprotkb/search', dict(query=q, fields='accession,xref_veupathdb', format='tsv', size=500))
+    for line in r.text.splitlines()[1:]:
+        a, _, x = line.partition('\t')
+        acc2genes[a] = sorted({t.split(':', 1)[1] for t in x.split(';') if t.startswith('ToxoDB:TGME49_')} & GENESET)
+    time.sleep(0.5)
+mapped = {a: g for a, g in acc2genes.items() if g}
+ambiguous = {a: g for a, g in mapped.items() if len(g) > 1}
+unmapped = sorted(set(accs) - set(mapped))
+print(len(mapped), 'mapped;', len(ambiguous), 'ambiguous (several universe genes);', len(unmapped), 'unmapped')
+''')
+nb.code(r'''
+rows = []
+for name, lst in qg.items():
+    for r in lst:
+        a = r['geneProductId'].split(':', 1)[1]
+        if a in unmapped or not r['geneProductId'].startswith('UniProtKB:'):
+            rows.append((a, name, r['goId'], r['reference'], r['symbol']))
+um = pd.DataFrame(rows, columns=['uniprot', 'query_set', 'go_id', 'reference', 'symbol'])
+um.to_csv(SRC / 'unmapped_uniprot.tsv', sep='\t', index=False)
+pd.Series({'unmapped accessions': um.uniprot.nunique(), 'annotation rows lost to unmapped': len(um)})
+''')
+
+nb.md('## 4 · GO term names',
+      'QuickGO returns term identifiers without names, so the names are fetched from its ontology service in batches '
+      'and used to make the matrix readable (a top term shows as `GO:0020002 host cell plasma membrane`).')
+nb.code(r'''
+all_go = sorted({r['goId'] for lst in qg.values() for r in lst})
+go_name = {}
+for i in range(0, len(all_go), 100):
+    ids = ','.join(all_go[i:i + 100])
+    d = get(f'https://www.ebi.ac.uk/QuickGO/services/ontology/go/terms/{ids}', {}).json()
+    for t in d['results']:
+        go_name[t['id']] = t['name']
+    time.sleep(0.5)
+(SRC / 'go_term_names.json').write_text(json.dumps(go_name, indent=0))
+print(len(go_name), 'of', len(all_go), 'GO terms named')
+''')
+
+nb.md('## 5 · Turn GO annotations into evidence rows',
+      'Each (gene, GO term, reference) becomes one evidence row, tier `observed-direct`, probability 0.95 (provisional). '
+      'Host-cell terms feed the **host_facing** trait (a protein with experimental evidence of being in a host-cell '
+      'compartment is exported there); cellular-component terms feed **compartment_go_cc**; biological-process and '
+      'molecular-function terms feed **function_go_bp** and **function_go_mf**. `NOT` annotations are counted and skipped.')
+nb.code(r'''
+TRAIT_OF = {'hostcell_cc': 'host_facing', 'cc': 'compartment_go_cc', 'bp': 'function_go_bp', 'mf': 'function_go_mf'}
+not_skipped = {}
+for name, lst in qg.items():
+    n_not = 0
+    for r in lst:
+        if str(r.get('qualifier', '')).upper().startswith('NOT'):
+            n_not += 1; continue
+        a = r['geneProductId'].split(':', 1)[1]
+        for g in mapped.get(a, []):
+            ds = f'QuickGO/GOA experimental ({r["assignedBy"]}; {r["evidenceCode"]}; query {name})'
+            if name == 'hostcell_cc':
+                add_ev(g, 'host_facing', 'yes', TIER_P['observed-direct'], 'observed-direct', r['reference'], ds + f'; {r["goId"]}')
+            else:
+                add_ev(g, TRAIT_OF[name], f'{r["goId"]} {go_name.get(r["goId"], "")}'.strip(), TIER_P['observed-direct'], 'observed-direct', r['reference'], ds)
+    not_skipped[name] = n_not
+print('NOT-qualified annotations skipped:', not_skipped)
+pd.DataFrame(EV, columns=['gene_id','trait','value','probability','source_tier','reference','dataset']).groupby('trait').gene_id.nunique()
+''')
+
+nb.md('## 6 · hyperLOPIT markers (compartment, curated)',
+      'The 718 marker proteins of Barylyuk et al. 2020 (Cell Host and Microbe) were chosen from prior knowledge and '
+      'microscopy, then used to train the spatial classifier. They are the curation-grade compartment truth (tier '
+      '`observed-curated`, 0.90) -- not independent experiments, which is why they sit below direct GO evidence. Only '
+      'the `markers` column is used; the `tagm.map.*` columns are classifier predictions and are ignored. The file '
+      'is checked against the pinned SHA-256 before it is read.')
+nb.code(r'''
+MMC5 = Path('/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/sources/barylyuk2020_mmc5/mmc5.xls')
+sha = hashlib.sha256(MMC5.read_bytes()).hexdigest()
+assert sha == 'a58a8778714c42e344099de9429daa3be4e9c70021b0aeab3de65578c165b8f2', sha
+mk = pd.read_excel(MMC5, sheet_name='S4a - TAGM-MAP classification')[['Accession', 'markers']]
+mk = mk[mk.markers.notna() & (mk.markers != 'unknown')]
+mk_in = mk[mk.Accession.isin(GENESET)]
+mk_out = mk[~mk.Accession.isin(GENESET)]
+for g, m in zip(mk_in.Accession, mk_in.markers):
+    add_ev(g, 'compartment_hyperlopit', m, TIER_P['observed-curated'], 'observed-curated', 'PMID:32619502', 'Barylyuk 2020 mmc5.xls S4a markers')
+mk_out.to_csv(SRC / 'hyperlopit_markers_not_in_universe.tsv', sep='\t', index=False)
+print(len(mk), 'markers;', len(mk_in), 'in universe;', len(mk_out), 'not in the 8,140-gene universe:', list(mk_out.Accession))
+mk_in.markers.value_counts().head(8)
+''')
+
+nb.md('## 7 · Curated host interactions and PVM proximity (host-facing)',
+      'Two more host-facing sources. (a) The 18 curated parasite-to-host interactions (ROP16-STAT3 and so on): a '
+      'protein that acts on a host protein is host-facing; tier `observed-curated` 0.90, reference = the paper in the '
+      'table. (b) PVM proximity labelling (PMID 34749525): the 73 proteins the study called positive are host-facing '
+      'candidates at the vacuole membrane, tier `observed-proximity` 0.70. The same study also lists 1,201 "likely '
+      'negatives", but not being near the vacuole membrane is **not** evidence of not being exported, so those stay '
+      'empty. Provenance of the proximity column is read from `parascape/datasets.py`.')
+nb.code(r'''
+from parascape import datasets as pds
+prov = pds.provenance('pvm_proximity_positive', 'Tg')
+print('pvm_proximity_positive ->', prov.key, '| PMID', prov.pmid, '|', prov.accession)
+hi = pd.read_parquet('parascape/data/host_interactions.parquet')
+for _, r in hi.iterrows():
+    if r.gene_id in GENESET:
+        add_ev(r.gene_id, 'host_facing', 'yes', TIER_P['observed-curated'], 'observed-curated', r.key_reference,
+               f'host_interactions.parquet ({r.parasite_protein} -> {r.host_target})')
+pv = nodes.loc[nodes.pvm_proximity_positive == 1, 'gene_id']
+for g in pv:
+    add_ev(g, 'host_facing', 'yes', TIER_P['observed-proximity'], 'observed-proximity', f'PMID:{prov.pmid}', f'{prov.key} ({prov.accession}); pvm_proximity_positive')
+print(len(hi), 'curated interactions;', hi.gene_id.nunique(), 'distinct parasite genes;', len(pv), 'PVM proximity positives')
+''')
+
+nb.md('## 8 · Screen phenotypes (function, observed-screen)',
+      'The arrayed splitCas9 imaging screen (PMID 35538310) scored 319 genes for egress, actin, apicoplast and '
+      'replication phenotypes. Here a measured "no phenotype" is a real observation of that screen (the gene was '
+      'tested), so both True and False are recorded, tier `observed-screen` 0.80. Genes that were not screened stay '
+      'empty. Provenance of every `screen_` column is read from `datasets.py`.')
+nb.code(r'''
+screen_cols = [c for c in nodes.columns if c.startswith('screen_')]
+for c in screen_cols:
+    p = pds.provenance(c, 'Tg')
+    print(c, '->', p.key, 'PMID', p.pmid)
+    sub = nodes.loc[nodes[c].notna(), ['gene_id', c]]
+    for g, v in zip(sub.gene_id, sub[c]):
+        add_ev(g, c, bool(v), TIER_P['observed-screen'], 'observed-screen', f'PMID:{p.pmid}', f'{p.key} ({p.accession}); {c}')
+''')
+
+nb.md('## 9 · Binding partners (pairs table)',
+      'Pair-valued facts do not fit one cell per gene, so they live in `pairs.parquet`: gene_a, gene_b, which side the '
+      'partner is on (parasite or host), probability, tier and reference.',
+      '* **StarPath crosslinks** (cross-linking mass spectrometry): probability = 1 minus the pair local FDR, tier '
+      '`observed-direct`. Reference is the StarPath preprint (PMC12505969).',
+      '* **Interaction studies** (BioID / pull-down tables parsed from papers): pairs are bait to every listed member, '
+      'for the 31 studies where the bait gene is known. Tier `observed-screen`, probability **0.5, provisional** until a '
+      'CRAPome-style background says which members are sticky contaminants.',
+      '* **Curated host interactions**: parasite gene to the named host protein, side `host`, tier `observed-curated` 0.90.')
+nb.code(r'''
+cl = pd.read_parquet('parascape/data/crosslink_models.parquet')
+cl = cl[cl.gene_a.isin(GENESET) & cl.gene_b.isin(GENESET) & (cl.gene_a != cl.gene_b)]
+p1 = pd.DataFrame({'gene_a': cl.gene_a, 'gene_b': cl.gene_b, 'partner_side': 'parasite',
+                   'probability': (1 - cl.local_fdr).clip(0, 1), 'source_tier': 'observed-direct',
+                   'reference': 'PMC12505969 (StarPath XL-MS); starpath_id ' + cl.starpath_id.astype(str)})
+st = pd.read_parquet('parascape/data/interaction_studies.parquet')
+mem = pd.read_parquet('parascape/data/interaction_study_members.parquet')
+baits = st.loc[st.bait_gene.notna(), ['pmid', 'bait_gene', 'method']]
+j = mem.merge(baits[['pmid', 'bait_gene']], on='pmid')
+j = j[j.bait_gene.isin(GENESET) & j.gene_id.isin(GENESET) & (j.bait_gene != j.gene_id)]
+p2 = pd.DataFrame({'gene_a': j.bait_gene, 'gene_b': j.gene_id, 'partner_side': 'parasite',
+                   'probability': STUDY_MEMBER_P, 'source_tier': 'observed-screen',
+                   'reference': 'PMID:' + j.pmid + ' (' + j.method + '; provisional 0.5 pending CRAPome background)'})
+p3 = pd.DataFrame({'gene_a': hi.gene_id, 'gene_b': hi.host_target, 'partner_side': 'host',
+                   'probability': TIER_P['observed-curated'], 'source_tier': 'observed-curated',
+                   'reference': hi.key_reference})
+pairs = pd.concat([p1, p2, p3], ignore_index=True)
+pairs = pairs.sort_values(['source_tier', 'probability'], ascending=[True, False]).reset_index(drop=True)
+print(len(st), 'studies,', st.bait_gene.notna().sum(), 'with a known bait')
+pairs.groupby(['source_tier', 'partner_side']).agg(pairs=('gene_a', 'size'), min_p=('probability', 'min'), max_p=('probability', 'max'))
+''')
+
+nb.md('## 10 · Assemble the three aligned tables',
+      'From the evidence rows we build the matrix. Rules, so nothing is hidden:',
+      '* **host_facing**: `yes` where any source says so; its probability is the highest among the sources and its '
+      'source is that source tier. All sources stay in the evidence table (conflicts and agreement are visible there).',
+      '* **compartment_hyperlopit**: the marker niche. **compartment_go_cc**: the most frequently annotated '
+      'experimental CC term (ties by GO id) plus `compartment_go_cc_n`, the number of distinct terms. These two are '
+      'kept as separate columns on purpose, so disagreement between sources is never averaged away.',
+      '* **function_go_bp / function_go_mf**: top term the same way, plus counts.',
+      '* **partner_***: best observed partner (highest probability, ties by id), its probability, the number of '
+      'partners with probability at least 0.95 and at least 0.5. Host partners are shown as `host:<name>`.',
+      '* **screen_***: the screen result (True/False), blank if not screened.',
+      'Every cell of `probability` and `source` is empty exactly where `values` is empty.')
+nb.code(r'''
+ev = pd.DataFrame(EV, columns=['gene_id', 'trait', 'value', 'probability', 'source_tier', 'reference', 'dataset'])
+ev['value'] = ev['value'].astype(str)
+TIER_RANK = {'observed-direct': 0, 'observed-curated': 1, 'observed-screen': 2, 'observed-proximity': 3}
+values = pd.DataFrame(index=GENES); prob = pd.DataFrame(index=GENES); srcs = pd.DataFrame(index=GENES)
+def put(col, ser_v, ser_p, ser_t):
+    values[col] = ser_v.reindex(GENES); prob[col] = ser_p.reindex(GENES).astype(float); srcs[col] = ser_t.reindex(GENES)
+# host_facing
+h = ev[ev.trait == 'host_facing'].sort_values(['gene_id', 'probability'], ascending=[True, False]).drop_duplicates('gene_id').set_index('gene_id')
+put('host_facing', h.value.map({'yes': True}).astype('boolean'), h.probability, h.source_tier)
+# single-category compartment
+m = ev[ev.trait == 'compartment_hyperlopit'].drop_duplicates('gene_id').set_index('gene_id')
+put('compartment_hyperlopit', m.value, m.probability, m.source_tier)
+# multi-valued GO traits: top term by distinct references
+for trait in ['compartment_go_cc', 'function_go_bp', 'function_go_mf']:
+    e = ev[ev.trait == trait]
+    cnt = e.groupby(['gene_id', 'value']).reference.nunique().rename('n').reset_index().sort_values(['gene_id', 'n', 'value'], ascending=[True, False, True])
+    top = cnt.drop_duplicates('gene_id').set_index('gene_id')
+    put(trait, top.value, pd.Series(TIER_P['observed-direct'], index=top.index), pd.Series('observed-direct', index=top.index))
+    nterm = cnt.groupby('gene_id').size()
+    values[trait + '_n'] = nterm.reindex(GENES).astype('Int64')
+    prob[trait + '_n'] = np.where(nterm.reindex(GENES).notna(), TIER_P['observed-direct'], np.nan)
+    srcs[trait + '_n'] = np.where(nterm.reindex(GENES).notna(), 'observed-direct', None)
+# screens
+for c in screen_cols:
+    e = ev[ev.trait == c].drop_duplicates('gene_id').set_index('gene_id')
+    put(c, e.value.map({'True': True, 'False': False}).astype('boolean'), e.probability, e.source_tier)
+# partners
+pa = pairs.assign(partner=np.where(pairs.partner_side == 'host', 'host:' + pairs.gene_b, pairs.gene_b))
+fwd = pa[['gene_a', 'partner', 'probability', 'source_tier']].rename(columns={'gene_a': 'gene'})
+rev = pa[pa.partner_side == 'parasite'][['gene_b', 'gene_a', 'probability', 'source_tier']].rename(columns={'gene_b': 'gene', 'gene_a': 'partner'})
+long_p = pd.concat([fwd, rev], ignore_index=True)
+# one entry per gene-partner: keep the highest probability
+long_p = long_p.sort_values(['gene', 'partner', 'probability'], ascending=[True, True, False]).drop_duplicates(['gene', 'partner'])
+best = long_p.sort_values(['gene', 'probability', 'partner'], ascending=[True, False, True]).drop_duplicates('gene').set_index('gene')
+put('partner_best', best.partner, best.probability, best.source_tier)
+for col, thr in [('partner_n_ge95', 0.95), ('partner_n_ge50', 0.5)]:
+    n = long_p[long_p.probability >= thr].groupby('gene').size()
+    has = best.index
+    values[col] = n.reindex(GENES).fillna(0).astype('Int64').where(GENES.isin(has))
+    prob[col] = np.where(GENES.isin(has), best.probability.reindex(GENES), np.nan)
+    srcs[col] = np.where(GENES.isin(has), best.source_tier.reindex(GENES), None)
+values['partner_best_prob'] = best.probability.reindex(GENES)
+prob['partner_best_prob'] = best.probability.reindex(GENES); srcs['partner_best_prob'] = best.source_tier.reindex(GENES)
+cols = ['host_facing', 'compartment_hyperlopit', 'compartment_go_cc', 'compartment_go_cc_n', 'partner_best', 'partner_best_prob',
+        'partner_n_ge95', 'partner_n_ge50', 'function_go_bp', 'function_go_bp_n', 'function_go_mf', 'function_go_mf_n'] + screen_cols
+values, prob, srcs = values[cols], prob[cols], srcs[cols]
+assert values.shape == prob.shape == srcs.shape
+assert (values.notna().values == prob.notna().values).all(), 'probability must be empty exactly where value is empty'
+values.notna().sum().rename('genes with a value').to_frame()
+''')
+
+nb.md('## 11 · Coverage per trait and tier',
+      'How many genes have at least one observed fact, per trait and source tier. A gene can appear under several '
+      'tiers of the same trait, so the "any tier" row is the union, not the sum. Partner counts come from the pairs '
+      'table (a gene counts if it is on either side of a parasite pair, or is the parasite side of a host pair).')
+nb.code(r'''
+rows = []
+def cov(trait, genes_by_tier):
+    for t, g in genes_by_tier.items():
+        rows.append((trait, t, len(g)))
+    rows.append((trait, 'any tier', len(set().union(*genes_by_tier.values())) if genes_by_tier else 0))
+for trait in ['host_facing', 'compartment_hyperlopit', 'compartment_go_cc', 'function_go_bp', 'function_go_mf'] + screen_cols:
+    e = ev[ev.trait == trait]
+    cov(trait, {t: set(g.gene_id) for t, g in e.groupby('source_tier')})
+cov('partners', {t: set(g.gene_a) | set(g.gene_b[g.partner_side == 'parasite']) for t, g in pairs.groupby('source_tier')})
+coverage = pd.DataFrame(rows, columns=['trait', 'source_tier', 'genes_with_observed_fact'])
+coverage.to_csv(OUT / 'coverage.tsv', sep='\t', index=False)
+coverage
+''')
+nb.code('pairs.groupby("source_tier").size().rename("pairs").to_frame()')
+
+nb.md('## 12 · Write the outputs',
+      'Parquet files for the three aligned tables, the long evidence table and the pairs table, plus the README that '
+      'states what v0 is and is not. Every file has the same gene index; empty means no observed fact.')
+nb.code(r'''
+values.to_parquet(OUT / 'values.parquet'); prob.to_parquet(OUT / 'probability.parquet'); srcs.to_parquet(OUT / 'source.parquet')
+ev.to_parquet(OUT / 'evidence.parquet', index=False); pairs.to_parquet(OUT / 'pairs.parquet', index=False)
+cc = coverage.pivot(index='trait', columns='source_tier', values='genes_with_observed_fact').fillna(0).astype(int)
+readme = f"""# Information map v0 (2026-11-04)
+
+Instruction 72, v0 build. Observed facts only; no predictions, no gap filling. Built by
+`scripts/build_information_map_v0_notebook.py`, executed notebook `notebooks/information_map_v0_2026_11_04.ipynb`.
+
+## Files
+* `values.parquet`, `probability.parquet`, `source.parquet` -- {len(GENES)} ME49 genes (index `gene_id`, the rows of
+  `parascape/data/nodes.parquet`) x {len(cols)} trait columns, identical shape. Empty (NaN) = no observed fact. Never zero, never "no".
+  `host_facing` is only ever `True`; screen columns hold both True and False because a screened gene with no phenotype is a measurement.
+* `evidence.parquet` -- long form, one row per fact: gene_id, trait, value, probability, source_tier, reference, dataset ({len(ev)} rows).
+* `pairs.parquet` -- binding partners: gene_a (parasite), gene_b (parasite gene, or host protein name when partner_side = host), partner_side, probability, source_tier, reference ({len(pairs)} rows).
+* `coverage.tsv` -- genes with an observed fact per trait and tier.
+* `sources/` -- raw QuickGO pages with retrieval time, GO term names, unmapped UniProt accessions, hyperLOPIT markers outside the gene universe.
+
+## Provisional probabilities (v0)
+Tier defaults, NOT measured: observed-direct 0.95, observed-curated 0.90, observed-screen 0.80, observed-proximity 0.70.
+StarPath crosslinks: 1 - local_fdr. Interaction-study members: 0.5, provisional until a CRAPome background exists.
+v1 replaces these by measured agreement with independent sources.
+
+## Rules followed
+* TAGM / `lopit_*` node columns are classifier predictions and are excluded; only the 718 hyperLOPIT markers (curated) are used.
+* PVM proximity "likely negatives" are NOT written as `host_facing = no` (not near the PVM is not proof of not exported).
+* GO annotations with a NOT qualifier are skipped. Experimental evidence codes: ECO:0000269, 314, 353, 315, 316, 270 (with descendants).
+* When several sources speak about one gene, the matrix cell takes the highest-probability one; all remain in `evidence.parquet`.
+  Hyperlopit and GO CC are separate columns so disagreement stays visible.
+* UniProt to ME49 mapping via UniProt VEuPathDB cross-references, restricted to the 8,140-gene universe; ambiguous (>1 gene): {len(ambiguous)}; unmapped accessions: {len(unmapped)} (listed in `sources/unmapped_uniprot.tsv`).
+* The literature host-facing candidate list is not included; it enters after Einar reviews it.
+
+## Coverage (genes with an observed fact)
+```
+{cc.to_string()}
+```
+"""
+(OUT / 'README.md').write_text(readme)
+print(sorted(p.name for p in OUT.iterdir()))
+''')
+
+nb.write('notebooks/information_map_v0_2026_11_04.ipynb')
+print('wrote notebook')

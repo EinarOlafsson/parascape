@@ -1,0 +1,29 @@
+trait	source_tier	genes_with_observed_fact
+host_facing	observed-curated	14
+host_facing	observed-direct	7
+host_facing	observed-proximity	73
+host_facing	any tier	81
+compartment_hyperlopit	observed-curated	716
+compartment_hyperlopit	any tier	716
+compartment_go_cc	observed-direct	28
+compartment_go_cc	any tier	28
+function_go_bp	observed-direct	24
+function_go_bp	any tier	24
+function_go_mf	observed-direct	27
+function_go_mf	any tier	27
+screen_actin_phenotype	observed-screen	318
+screen_actin_phenotype	any tier	318
+screen_apicoplast_phenotype	observed-screen	318
+screen_apicoplast_phenotype	any tier	318
+screen_egress_phenotype	observed-screen	318
+screen_egress_phenotype	any tier	318
+screen_replication_phenotype	observed-screen	318
+screen_replication_phenotype	any tier	318
+screen_any_phenotype	observed-screen	318
+screen_any_phenotype	any tier	318
+screen_scorers_agree	observed-screen	74
+screen_scorers_agree	any tier	74
+partners	observed-curated	14
+partners	observed-direct	1630
+partners	observed-screen	7822
+partners	any tier	7828
