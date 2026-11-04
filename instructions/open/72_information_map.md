@@ -117,3 +117,33 @@ assigns (inside or outside), since only an outward-facing region can reach the h
   matters is the harder one: **among secretory-pathway proteins, which are exported beyond the parasite?**
   Report that restricted comparison beside the overall one, and score no-knowledge genes separately (the CAFA
   rule) so easy genes do not flatter the result.
+
+## Inference plan (Einar, 2026-11-04)
+Stages, each scored on the 70 scoreboard before the next is built:
+0. **Baselines**: majority, prevalence-weighted random, the single best feature (signal peptide), ortholog copy.
+   Every strategy is reported as improvement over the best of these.
+1. **One gradient-boosted-tree model per tier-1 trait** on the tabular tier-2 columns (missing values used
+   natively, no imputation); out-of-fold predictions calibrated with isotonic regression.
+2. **Sequence and structure as frozen feature blocks** (ESM embeddings, 3Di k-mer profiles), never a
+   fine-tuned protein language model: with 73 positives it would memorise them.
+3. **Guilt by association**: label propagation over co-expression, crosslinks, co-fitness and structural
+   similarity, with the cofitness rule (high correlation AND top rank AND several independent studies).
+4. **Joint model over the whole row**: mask known cells, predict them; replaces per-trait models only where it
+   beats them on the same folds.
+5. **Pairs** with whole proteins held out; the StarPath finding that the CRISPR-fitness *difference* of a pair
+   is highly predictive is a feature to reuse.
+6. **Fill** only cells above the measured threshold; record strategy, version and the top contributing evidence.
+
+**Fill bound (Einar):** the **lower 90 % confidence bound** of held-out precision must reach 0.90, not the point
+estimate. With few positives this may refuse to fill anything at first; that is the intended behaviour.
+
+**Two risks to test for, not assume away:**
+* **Too few positives to prove the bound.** 73 host-facing positives over 5 folds is ~15 per fold. Report the
+  bound, and treat "cannot yet fill" as a result.
+* **Publication-bias shortcut.** A well-studied gene has more filled columns, and attention columns
+  (`n_publications`, `lit_tier`, `attention_depth`) could stand in for "famous effector". Keep them in, then
+  repeat without them, and report genes with no prior annotation separately (the CAFA no-knowledge rule).
+
+**Leakage specific to host_facing:** the negatives are hyperLOPIT markers, so every `lopit_*`, `compartment*`
+and `ortholopit_*` column is excluded; so are `pvm_proximity_positive` and `n_host_targets`, which define the
+positives. The eight conflicting genes are excluded from both training and scoring.
