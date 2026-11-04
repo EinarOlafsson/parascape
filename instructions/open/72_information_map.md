@@ -147,3 +147,28 @@ estimate. With few positives this may refuse to fill anything at first; that is 
 **Leakage specific to host_facing:** the negatives are hyperLOPIT markers, so every `lopit_*`, `compartment*`
 and `ortholopit_*` column is excluded; so are `pvm_proximity_positive` and `n_host_targets`, which define the
 positives. The eight conflicting genes are excluded from both training and scoring.
+
+## First host-facing scoring run (2026-11-04): the bar is not honestly cleared
+Results in `results/host_facing_inference_2026_11_04/` (73 positives, 486 negatives after dropping the 8
+conflicts; 409 features; 5 orthogroup-grouped folds; calibration ECE 0.007).
+* **Overall the model looks excellent and the appearance is misleading.** ROC-AUC 0.995, precision 0.93,
+  recall 0.90, beating every baseline (best baseline: signal peptide alone, precision 0.75). The lowest
+  threshold whose **lower 90 % bound** reaches 0.90 is 0.90 itself: 55 held-out calls, 53 correct, bound
+  0.9061, which would fill 93 empty genes. But the bound ranges 0.877-0.906 across five reasonable feature
+  sets and falls **below** the bar in two of them. With 73 positives this is at the edge of what the labels
+  can demonstrate, not a cleared bar.
+* **On the question that matters it fails.** Restricted to proteins with a predicted signal peptide (55
+  positives, 19 negatives), the best lower bound is **0.868**: among secretory-pathway proteins we cannot yet
+  say at 90 % which are exported.
+* **The model separates the wrong thing.** Against the 477 hyperLOPIT internal markers its AUC is 0.997;
+  against the 9 **curated gold negatives** (proteins shown to stay in the vacuole or the IVN) it collapses to
+  **0.855 with a 33 % false-positive rate**. It distinguishes "inside the parasite" from "secreted", not
+  "stays in the vacuole" from "exported into the host" -- which is the biological question.
+* **Two features do much of the work, and neither is independent evidence.** The top feature is the
+  host-transcription effector screen (`hosttx_padj`, `hosttx_T2`; PMID 37827122) -- a screen for genes whose
+  loss changes host transcription, which is nearly the conclusion itself. The second is a publication count
+  (`n_papers_incidental`). Attention columns alone reach AUC 0.902. Therefore `hosttx_effectors`,
+  `organelle_surface_turboid` and `pubmed` are now declared in `host_facing.depends_on` and held out.
+* **Decision: fill nothing for host_facing yet.** The next run scores it from genuinely independent evidence,
+  and the limiting resource is not the model but **negatives**: 9 curated vacuole-resident proteins cannot
+  support a 90 % claim. Expanding them, and Einar's review of the 140 literature candidates, come first.

@@ -85,7 +85,10 @@ def register(trait: Trait) -> Trait:
 
 for _trait in (
         Trait('host_facing', 'flag', 'Protein (or part of it) is found beyond the parasite plasma membrane, facing the host',
-              family='host_facing_truth', depends_on=('pvm_proximity',)),
+              family='host_facing_truth',
+              # Declared 2026-11-04 after the first scoring run: these assays are so close to the conclusion
+              # that using them as evidence is near-circular, so they are held out when host_facing is predicted.
+              depends_on=('pvm_proximity', 'hosttx_effectors', 'organelle_surface_turboid', 'pubmed')),
         Trait('compartment_hyperlopit', 'category', 'hyperLOPIT marker niche (Barylyuk 2020, curated)',
               family='lopit_tgon', depends_on=('lopit_tgon',)),
         Trait('compartment_go_cc', 'terms', 'Experimental GO cellular component', family='quickgo'),
