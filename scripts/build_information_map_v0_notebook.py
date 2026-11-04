@@ -245,6 +245,26 @@ print(n_gold, 'curated gold negatives;', len(inside), 'internal-compartment mark
 pd.Series(sorted({m for m in inside.values()})).to_frame('niches counted as inside the parasite').T
 ''')
 
+nb.md('## 7c · Einar\'s review of the 140 literature claims (2026-11-04)',
+      'Einar reviewed every published claim behind the host-facing candidates: 107 claims host-facing, 33 not, '
+      'over 98 genes. Collapsed per gene by the rule he set -- strongest evidence wins, with three explicit '
+      'overrides -- this gives **66 host-facing and 32 not**. A gene decided by a direct experimental claim is '
+      '`observed-direct` 0.95; one decided by a proximity or inferred claim is `observed-curated` 0.90, because '
+      'his judgement is worth more than the raw screen call and less than a published localisation.',
+      'This supersedes the raw proximity calls wherever he ruled: he **rejected 22 dense granule proteins** that '
+      'the PVM proximity screen had called positive (GRA1, GRA4, GRA22, GRA30, GRA36, GRA37, GRA40, GRA43, GRA46, '
+      'GRA48, GRA49, GRA51-GRA59, GRA12B, ROP34). Those proximity rows stay in the evidence table as the record '
+      'but lose on probability, so the matrix shows "not host-facing". This is the distinction the first model '
+      'could not learn: in the vacuole versus exported into the host.')
+nb.code(r'''
+REVIEW = Path('results/host_facing_truth_2026_11_04/evidence.parquet')
+review = pd.read_parquet(REVIEW)
+for r in review.itertuples():
+    add_ev(r.gene_id, 'host_facing', r.value, r.probability, r.source_tier, r.reference, r.dataset)
+print(len(review), 'reviewed genes;', (review.value == 'yes').sum(), 'host-facing,', (review.value == 'no').sum(), 'not')
+review.value.value_counts().to_frame('genes').T
+''')
+
 nb.md('## 8 · Screen phenotypes (function, observed-screen)',
       'The arrayed splitCas9 imaging screen (PMID 35538310) scored 319 genes for egress, actin, apicoplast and '
       'replication phenotypes. Here a measured "no phenotype" is a real observation of that screen (the gene was '

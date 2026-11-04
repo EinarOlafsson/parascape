@@ -209,3 +209,19 @@ safe subtraction among the fitness columns).
   95 % identity, i.e. a different isoform or gene) and 264 with no usable structure, which would need folding.
   Known gap: direct-source 3Di is still accepted on matching length alone, and two naive_db records have our
   length but not our sequence, so that kind of isoform can slip through.
+
+## Einar's review lands (2026-11-04): the hard negatives now exist
+`results/host_facing_truth_2026_11_04/`. He ruled on all 140 claims: 107 host-facing, 33 not, over 98 genes;
+collapsed per gene by "strongest evidence wins" plus three explicit overrides (GRA60, GRA44, GRA47 -> not).
+* The map now holds **65 host-facing** (48 at 0.95, 17 at 0.90) and **520 not**: 477 hyperLOPIT markers of
+  compartments inside the parasite (0.80) and **43 vacuole-resident or curated negatives** (0.90-0.95), against
+  9 before.
+* **He rejected 22 dense granule proteins that the PVM proximity screen had called positive** (GRA1, GRA4,
+  GRA22, GRA30, GRA36, GRA37, GRA40, GRA43, GRA46, GRA48, GRA49, GRA51-GRA59, GRA12B, ROP34), while accepting
+  46 other proximity claims. That is exactly the distinction the first model failed: in the vacuole versus
+  exported into the host. The raw proximity rows stay in `evidence.parquet` as the record and lose on
+  probability.
+* `conflicts.tsv` now lists 33 genes, up from 8, because a rejected proximity call counts as a disagreement.
+  Where Einar's review is one of the two sources the conflict is **resolved**, not open.
+* Next: rescore host-facing on these labels with `hosttx_effectors`, `organelle_surface_turboid`, `pubmed` and
+  `pvm_proximity` held out, and report the secretory-restricted question as the headline.

@@ -7,7 +7,7 @@ Instruction 72, v0 build. Observed facts only; no predictions, no gap filling. B
 * `values.parquet`, `probability.parquet`, `source.parquet` -- 8140 ME49 genes (index `gene_id`, the rows of
   `parascape/data/nodes.parquet`) x 18 trait columns, identical shape. Empty (NaN) = no observed fact. Never zero, never "no".
   `host_facing` is only ever `True`; screen columns hold both True and False because a screened gene with no phenotype is a measurement.
-* `evidence.parquet` -- long form, one row per fact: gene_id, trait, value, probability, source_tier, reference, dataset (3159 rows).
+* `evidence.parquet` -- long form, one row per fact: gene_id, trait, value, probability, source_tier, reference, dataset (3257 rows).
 * `pairs.parquet` -- binding partners: gene_a (parasite), gene_b (parasite gene, or host protein name when partner_side = host), partner_side, probability, source_tier, reference (36507 rows).
 * `coverage.tsv` -- genes with an observed fact per trait and tier.
 * `sources/` -- raw QuickGO pages with retrieval time, GO term names, unmapped UniProt accessions, hyperLOPIT markers outside the gene universe.
@@ -34,7 +34,7 @@ compartment_go_cc                   28                 0               28       
 compartment_hyperlopit             716               716                0                   0                0
 function_go_bp                      24                 0               24                   0                0
 function_go_mf                      27                 0               27                   0                0
-host_facing                        567               508                7                  73                0
+host_facing                        585               548               50                  73                0
 partners                          7828                14             1630                   0             7822
 screen_actin_phenotype             318                 0                0                   0              318
 screen_any_phenotype               318                 0                0                   0              318

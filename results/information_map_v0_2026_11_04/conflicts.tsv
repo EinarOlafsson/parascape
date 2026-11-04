@@ -1,12 +1,38 @@
 gene_id	trait	value	probability	source_tier	reference	dataset	flag	conflict
+TGME49_310780	host_facing	yes	0.9	observed-curated	PMC11348266	host_interactions.parquet (GRA4 -> TBK1)	True	True
+TGME49_228170	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_208370	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_312420	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_309930	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_219810	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_289380	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_204340	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_269690	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_260520	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_232000	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_215220	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_244530	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_240090	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_204270	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_319340	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_254000	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_213067	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_316250	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_275860	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_310780	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_267740	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_277270	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_251540	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_309760	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_313440	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_230705	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_263090	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_237015	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_268790	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_215980	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_270250	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_227620	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
+TGME49_236890	host_facing	yes	0.7	observed-proximity	PMID:34749525	pvm_proximity (mBio 00260-21 Data Set S1); pvm_proximity_positive	True	True
 TGME49_251540	host_facing	no	0.9	observed-curated	Adjagba/Mercier et al. (Int J Parasitol 2004) - immunogold EM localises GRA9 to dense granules and then to the IVN tubular membranes inside the PV. Despite being globally hydrophilic it is insoluble a	hostfacing_goldsets.json gold_negative (GRA9; confidence high)	False	True
 TGME49_227620	host_facing	no	0.9	observed-curated	The textbook IVN-shaping protein. Three amphipathic alpha-helices (a1 70-92, a2 95-110, a3 119-139) mediate POST-secretory association with the intravacuolar nanotubular network (Mercier et al. JBC 19	hostfacing_goldsets.json gold_negative (GRA2; confidence high)	False	True
 TGME49_316250	host_facing	no	0.9	observed-curated	PV-lumen/dense-granule CHAPERONE, not an effector. Carries a small heat-shock-protein (sHSP) domain plus a transthyretin-like fold and is required for correct PVM targeting of GRA5/GRA23 and for MYR-d	hostfacing_goldsets.json gold_negative (GRA45; confidence high)	False	True
@@ -15,3 +41,36 @@ TGME49_312420	host_facing	no	0.9	observed-curated	Identified by PV BioID (Nadipu
 TGME49_289380	host_facing	no	0.9	observed-curated	Nadipuram et al. mBio 2016 (PMC4981711): PV-localised soluble component lacking a TM domain. dGRA39 parasites accumulate striking LIPID DEPOSITS INSIDE THE PV and grow slowly - a phenotype entirely co	hostfacing_goldsets.json gold_negative (GRA39; confidence medium)	False	True
 TGME49_269690	host_facing	no	0.9	observed-curated	Nadipuram et al. mBio 2016 (PMC4981711) BioID/endogenous-tagging screen: localisation scored as 'parasitophorous vacuole' (vacuolar space), explicitly distinguished in the same table from PVM proteins	hostfacing_goldsets.json gold_negative (GRA29; confidence medium)	False	True
 TGME49_263090	host_facing	no	0.8	observed-curated	PMID:32619502	Barylyuk 2020 hyperLOPIT marker of cytosol (a compartment inside the parasite; inference from residence)	False	True
+TGME49_204270	host_facing	no	0.95	observed-direct	PMID:33040458	Einar review 2026-11-04 of GRA60 (PVM, direct; Einar explicit override); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_204340	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA54 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_208370	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA46 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_213067	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA36 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_215220	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA22 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_215980	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of hypothetical protein (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_219810	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA40 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_227620	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA2 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_228170	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA44 (PVM, proximity; Einar explicit override); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_230705	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA51 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_232000	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA30 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_236890	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA37 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_237015	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA43 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_240090	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of ROP34 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_244530	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA49 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_254000	host_facing	no	0.95	observed-direct	PMID:38380952	Einar review 2026-11-04 of GRA47 (PVM, direct; Einar explicit override); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_260520	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of dense granule protein GRA53 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_267740	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA48 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_268790	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA58 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_269690	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA29 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_270250	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA1 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_275860	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA12B (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_289380	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA39 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_309760	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA55 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_309930	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA56 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_310780	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA4 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_312420	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA38 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_313440	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA59 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_316250	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA45 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_319340	host_facing	no	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA52 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	False	True
+TGME49_251540	host_facing	yes	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of GRA9 (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	True	True
+TGME49_263090	host_facing	yes	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of 14-3-3 protein (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	True	True
+TGME49_277270	host_facing	yes	0.9	observed-curated	PMID:34749525	Einar review 2026-11-04 of NTPase II (PVM, proximity; strongest evidence); https://claude.ai/artifact/TbAj2n9cnBPxZ7Leb5duCh	True	True
