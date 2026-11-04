@@ -143,7 +143,7 @@ def run(cmd: list, **kw) -> None:
 
 
 def version(tool: str) -> str:
-    out = subprocess.run([os.path.join(BIN, tool), "--version" if tool == "salmon" else "version"],
+    out = subprocess.run([os.path.join(BIN, tool), "--version" if tool in ("salmon", "fastp") else "version"],
                          capture_output=True, text=True)
     return (out.stdout or out.stderr).strip()
 
@@ -480,6 +480,39 @@ def _worker(k: int, todo: list, limit: int | None, base: str, claims: str) -> No
         todo = deferred
 
 
+def _trim(run_acc: str, local: list) -> tuple:
+    """Cut adapters before quantification (Einar 2026-11-04).
+
+    Some deposits are short-insert libraries left untrimmed: GSE243206/243207/245775 carry adapter in 99.5 % of
+    reads, their 150 nt reads hold a ~44 nt insert, and salmon mapped 0.0 % of them while kallisto still found
+    10-32 %. fastp detects the adapter from the data; a normal RNA-seq library loses almost nothing.
+    """
+    report = os.path.join(SCRATCH, f"{run_acc}.fastp.json")
+    out = [os.path.join(SCRATCH, f"{run_acc}_trimmed_{i + 1}.fastq.gz") for i in range(len(local))]
+    command = [os.path.join(BIN, "fastp"), "-w", str(min(4, THREADS)), "-l", "20", "-j", report, "-h", "/dev/null"]
+    if len(local) == 2:
+        command += ["-i", local[0], "-I", local[1], "-o", out[0], "-O", out[1], "--detect_adapter_for_pe"]
+    else:
+        command += ["-i", local[0], "-o", out[0]]
+    run(command)
+    with open(report) as fh:
+        summary = json.load(fh)
+    before, after = summary["summary"]["before_filtering"], summary["summary"]["after_filtering"]
+    kept = dict(fastp=version("fastp"), reads_before=before["total_reads"], reads_after=after["total_reads"],
+                read1_mean_length_before=before.get("read1_mean_length"),
+                read1_mean_length_after=after.get("read1_mean_length"),
+                adapter_trimmed_reads=summary.get("adapter_cutting", {}).get("adapter_trimmed_reads"))
+    share = (kept["adapter_trimmed_reads"] or 0) / max(1, before["total_reads"])
+    log(f"{run_acc}: trimmed adapters from {share:.1%} of reads; mean read length "
+        f"{kept['read1_mean_length_before']} -> {kept['read1_mean_length_after']}")
+    for path in local:                                  # the untrimmed copies are not needed again
+        try:
+            os.remove(path)
+        except OSError:
+            pass
+    return out, kept
+
+
 def _quantify_pass(todo: list, limit: int | None, count: int):
     """One pass over the queue; returns runs deferred for scratch space, or None when the limit is hit."""
     global SCRATCH
@@ -523,6 +556,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                 log(f"{r['run_accession']}: no reads available from AWS or ENA; skipped")
                 continue
             os.makedirs(out_dir, exist_ok=True)
+            local, trim = _trim(r["run_accession"], local)
             paired = len(local) == 2
             for ref in r["references"]:
                 idx = os.path.join(NAS, "references", ref)
@@ -544,7 +578,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                 if os.path.exists(h5):
                     os.remove(h5)                      # the TSV holds the same numbers
             _cache_module().save(Path(out_dir) / "done.json",
-                                 {**r, "salmon": version("salmon"), "kallisto": version("kallisto"),
+                                 {**r, "trimming": trim, "salmon": version("salmon"), "kallisto": version("kallisto"),
                                   "salmon_extra": SALMON_EXTRA,
                                   "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256,
                                   "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})

@@ -330,3 +330,16 @@ the snapshot remains an explicit immutable296-entry cut.
   four of its runs got bulk results through the `fastq-dump --split-3` NAS fallback. Those are not valid bulk
   measurements and were moved to `parascape_omics/rnaseq_excluded_single_cell/` (README there). Workers now
   re-read the plan every 10 min once it changes and skip runs taken out of it.
+
+## 2026-11-04: adapter trimming before quantification (Einar)
+* The per-sample quality score found 44 runs in GSE243206, GSE243207 and GSE245775 where salmon mapped
+  **0.00 %** while kallisto mapped 10-32 % of the same reads. Cause: the deposits are untrimmed short-insert
+  libraries. In SRR26060420, 99.5 % of reads carry the Illumina TruSeq adapter and the 150 nt reads hold a
+  ~44 nt insert (mean read length after trimming 49 nt), so salmon's selective alignment rejects everything.
+  `--allowDovetail` and single-end mapping both still give 0.00 %; trimming gives 5.10 % against the
+  parasite-only reference (the rest are host reads).
+* Einar chose: **always trim** with fastp 1.4.0 (`--detect_adapter_for_pe`, `-l 20`), and re-quantify the
+  already-verified runs as part of the planned top-up re-download (eq-classes and Gibbs samples), so trimming
+  costs no extra download. `omics_quant._trim` records the fastp version, read counts, mean read length before
+  and after, and the adapter-trimmed share in `done.json` under `trimming`.
+* Runs verified before this change carry no `trimming` key; that is how an untrimmed result is recognised.
