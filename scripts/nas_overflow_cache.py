@@ -92,7 +92,9 @@ class Cache:
             receipt=self.receipt(local)
             signature=(local.stat().st_size,local.stat().st_mtime_ns,local.stat().st_ctime_ns)
             if nas.exists():
-                if nas.is_symlink() or self.receipt(nas)!=receipt or L.digest(nas)!=receipt['sha256']:
+                # A re-download of a run already on the NAS gets a new 'finished' time; content must match.
+                same=lambda r:{k:r.get(k) for k in ('url','bytes','sha256')}
+                if nas.is_symlink() or same(self.receipt(nas))!=same(receipt) or L.digest(nas)!=receipt['sha256']:
                     raise ValueError('Existing NAS raw object differs')
             else:
                 if shutil.disk_usage(self.nas).free-receipt['bytes']<self.reserve:

@@ -295,3 +295,27 @@ def test_stream_gzip_splits_pairs_and_refuses_unpaired_reads(tmp_path, monkeypat
     assert [Path(f).name for f in Q._stream_gzip('SRR6', 'x.sra')] == ['SRR6_1.fastq.gz']
     fake([(1, 1), (1, 2), (2, 1)])                                                # one unpaired read
     assert Q._stream_gzip('SRR7', 'x.sra') is None and not (tmp_path / 'SRR7_1.fastq.gz').exists()
+
+
+def test_a_redownloaded_run_already_on_the_nas_becomes_a_pointer(tmp_path):
+    import hashlib
+    import json
+    C = load('nas_overflow_cache')
+    local, nas = tmp_path / 'local', tmp_path / 'nas'
+    local.mkdir(); nas.mkdir()
+    payload = b'sra archive bytes'
+    receipt = dict(url='https://example/SRR1', bytes=len(payload), sha256=hashlib.sha256(payload).hexdigest())
+    for folder, finished in ((local, '2026-11-03'), (nas, '2026-10-31')):
+        (folder / 'SRR1.sra').write_bytes(payload)
+        (folder / 'SRR1.json').write_text(json.dumps(dict(receipt, finished=finished)))
+    cache = C.Cache(local, nas, 0, 10 ** 9, tmp_path / 'events.jsonl')
+    cache.spill('SRR1')
+    assert (local / 'SRR1.sra').is_symlink() and (local / 'SRR1.sra').read_bytes() == payload
+    (nas / 'SRR1.sra').write_bytes(b'different bytes!!')       # same size, other content: still refused
+    (local / 'SRR1.sra').unlink(); (local / 'SRR1.sra').write_bytes(payload)
+    try:
+        cache.spill('SRR1')
+    except ValueError:
+        pass
+    else:
+        raise AssertionError('a NAS copy with other content must be refused')
