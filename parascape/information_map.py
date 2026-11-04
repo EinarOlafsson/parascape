@@ -34,6 +34,16 @@ TIER_RANK = {'observed-direct': 0, 'observed-curated': 1, 'observed-screen': 2, 
 FILL_PRECISION = 0.90
 EVIDENCE_COLUMNS = ('gene_id', 'trait', 'value', 'probability', 'source_tier', 'reference', 'dataset')
 PAIR_COLUMNS = ('gene_a', 'gene_b', 'partner_side', 'probability', 'source_tier', 'reference')
+#: Einar 2026-11-04: tier 1 = conclusions that depend on many factors (host-facing, partners, function,
+#: compartment) -- what is predicted; tier 2 = measurements (relative expression, protein abundance, fitness,
+#: sequence features) -- what predictions are learned from.
+TIERS = {1: 'conclusion (predicted from evidence)', 2: 'measurement (evidence)'}
+#: Einar 2026-11-04: "relative values that are internally normalized (like housekeeping genes) or normalized to a
+#: control are always better". Best first; learners prefer the earliest form available for a quantity.
+NORMALIZATIONS = ('relative_to_control', 'internal_reference', 'library_size', 'raw', 'not_applicable', 'unknown')
+#: measurement = observed value; prediction = another model's output (never used as an observed fact or as a
+#: training label); identity = names and text (never a feature).
+ROLES = ('measurement', 'prediction', 'identity')
 KINDS = {
     'flag': 'only "yes" is ever stated (e.g. host-facing); the cell is True or empty',
     'category': 'one label per gene (e.g. a compartment); the highest-probability label is shown',
@@ -49,10 +59,17 @@ class Trait:
     name: str
     kind: str
     description: str
+    tier: int = 1
+    family: str = ''                    # source family, held out together (a dataset key, 'computed', ...)
+    normalization: str = 'not_applicable'
+    role: str = 'measurement'
+    depends_on: tuple = ()              # tier-2 families a tier-1 trait is derived from (excluded when predicting it)
 
     def __post_init__(self):
         if self.kind not in KINDS:
             raise ValueError(f'{self.name}: kind must be one of {sorted(KINDS)}')
+        if self.tier not in TIERS or self.normalization not in NORMALIZATIONS or self.role not in ROLES:
+            raise ValueError(f'{self.name}: tier, normalization or role outside {TIERS}, {NORMALIZATIONS}, {ROLES}')
 
 
 TRAITS: dict[str, Trait] = {}
@@ -67,11 +84,13 @@ def register(trait: Trait) -> Trait:
 
 
 for _trait in (
-        Trait('host_facing', 'flag', 'Protein (or part of it) is found beyond the parasite plasma membrane, facing the host'),
-        Trait('compartment_hyperlopit', 'category', 'hyperLOPIT marker niche (Barylyuk 2020, curated)'),
-        Trait('compartment_go_cc', 'terms', 'Experimental GO cellular component'),
-        Trait('function_go_bp', 'terms', 'Experimental GO biological process'),
-        Trait('function_go_mf', 'terms', 'Experimental GO molecular function')):
+        Trait('host_facing', 'flag', 'Protein (or part of it) is found beyond the parasite plasma membrane, facing the host',
+              family='host_facing_truth', depends_on=('pvm_proximity',)),
+        Trait('compartment_hyperlopit', 'category', 'hyperLOPIT marker niche (Barylyuk 2020, curated)',
+              family='lopit_tgon', depends_on=('lopit_tgon',)),
+        Trait('compartment_go_cc', 'terms', 'Experimental GO cellular component', family='quickgo'),
+        Trait('function_go_bp', 'terms', 'Experimental GO biological process', family='quickgo'),
+        Trait('function_go_mf', 'terms', 'Experimental GO molecular function', family='quickgo')):
     register(_trait)
 
 

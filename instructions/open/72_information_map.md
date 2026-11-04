@@ -67,3 +67,40 @@ Three aligned tables over the same genes (ME49 IDs, the 8,140 rows of `nodes.par
 * `parascape/information_map.py`: one `register(Trait(name, kind, description))` line, then evidence rows with
   that `trait` name from any source; `build()` places the column in all three tables. Kinds: flag, category,
   terms, measure. `tests/test_information_map.py` checks that adding a column leaves every other column unchanged.
+
+## Trait tiers (Einar, 2026-11-04)
+* **Tier 1 = conclusions** that depend on many factors: host_facing, binding partners, function, compartment.
+  These are what the map predicts.
+* **Tier 2 = measurements**: per-condition relative expression (RH, PRU, ...), protein abundance, fitness,
+  screen results, sequence and structure features. These are the evidence predictions are learned from.
+* Every trait carries `tier`, `family` (held out together), `normalization`, `role` and `depends_on`
+  (`parascape/information_map.py`). Learning is run per trait order: tier 2 only; tier 2 + other observed
+  tier-1 traits; and each tier-2 family alone, so it is visible which data carry the signal.
+* **Normalization preference (Einar):** `relative_to_control` > `internal_reference` (housekeeping or
+  within-sample ratio) > `library_size` > `raw`. Where both a relative and an absolute form of one quantity
+  exist, learners take the relative one; absolute values are used only where no control exists.
+* Leakage: predicting a trait excludes every family in its `depends_on` (e.g. PVM proximity labelling is
+  excluded when predicting host_facing).
+* Each expression sample carries a quality score (`results/rna_sample_quality_*`), low-quality samples are
+  down-weighted when a column is built, and a column's probability inherits that quality.
+
+## Sequence and structure traits (Einar, 2026-11-04)
+Tier 2, one row per gene, from DeepTMHMM topology (`datasets/deeptmhmm_toxo.csv`, all 8,141 genes, per-domain
+boundaries) and the existing Foldseek 3Di databases (`~/foldseek/naive_db`, `cleaned_db`; ~6,700 Toxoplasma
+entries): `seq_full`, `seq_mature` (signal peptide and known propeptide removed), `seq_nterm_flank`
+(N-terminus to the first TM), `seq_cterm_flank` (last TM to the C-terminus), and the same four in the 3Di
+alphabet (`tdi_*`). **A protein with no TM domain has identical N- and C-terminal flank columns, equal to its
+mature sequence** -- intended, stated in the notebook and tested. Each flank also records the side DeepTMHMM
+assigns (inside or outside), since only an outward-facing region can reach the host.
+
+## Definite host-facing negatives (Einar, 2026-11-04: "you also know which proteins are definitely not host facing")
+`host_facing` is three-valued: True (shown beyond the parasite), **False (shown to stay inside)**, empty
+(untested). Negatives come from two sources, both approved:
+* the 16 curated gold negatives (`datasets/hostfacing_goldsets.json` `gold_negative`, e.g. GRA9 by immunogold
+  EM in the dense granules then the IVN), tier `observed-curated`;
+* hyperLOPIT markers of niches physically inside the parasite: apicoplast, mitochondrion, nucleus, nucleolus,
+  40S/60S ribosome, 19S/20S proteasome, Golgi, ER, cytosol, tubulin cytoskeleton, IMC. Probability 0.80 and
+  tier `observed-curated`, because this is an inference from a curated resident marker, not a direct export test.
+  **Excluded from the negatives:** dense granules, rhoptries, micronemes, apical, plasma membrane and
+  endomembrane vesicles -- secretory or boundary compartments whose proteins can be exported.
+* The 1,201 PVM-proximity "likely negatives" stay empty: a labelling screen missing a protein is not proof.
