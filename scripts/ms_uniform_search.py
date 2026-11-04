@@ -261,7 +261,14 @@ def main():
             else:
                 shutil.rmtree(unpacked, ignore_errors=True)
         else:
-            receipts.append(convert(source, spectra, base))
+            try:
+                receipts.append(convert(source, spectra, base))
+            except subprocess.CalledProcessError as error:   # one unreadable deposit must not sink the project
+                unsupported.append(dict(file=f['filename'], bytes=base['source_bytes'],
+                                        reason=f'conversion failed (exit {error.returncode}); RAW as deposited not readable'))
+                for partial in spectra.glob(source.stem + '*'):
+                    partial.unlink()
+                source.unlink(missing_ok=True)
     if not receipts:
         (out / 'unsupported.json').write_text(json.dumps(dict(project=project, unsupported=unsupported,
             note='No spectra this pipeline can convert; kept as a recorded gap.'), indent=2) + '\n')
