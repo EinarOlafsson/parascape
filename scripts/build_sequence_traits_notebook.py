@@ -157,15 +157,19 @@ nb.code('# ---- cell B: run foldseek on the needed models, batches of <= 2000',
         "FS_VERSION = subprocess.run([FS_BIN, 'version'], capture_output=True, text=True).stdout.strip()",
         "print('foldseek version:', FS_VERSION)",
         "SCR = Path('/media/carruthers/mnt1/parascape_omics_scratch') / 'af3_3di_20261104'",
-        "todo = sorted({e['folder'] for g in need for a in gene_acc[g] for e in entries[a]})",
-        "print('model.cif files to convert:', len(todo))",
-        'af3_3di = {}',
-        'def read_ss(prefix):',
+        "lacking = set(nodes.index) - set(tdi)      # genes with no database 3Di of the right length (before AF3)",
+        "# folders of accessions that are ambiguous (>1 gene) or absent from the DeepTMHMM table are converted too: section 3c",
+        "# decides by sequence alignment which gene (if any) they belong to",
+        "amb_unmapped = set(ambiguous) | set(unmapped)",
+        "todo = sorted({e['folder'] for g in need for a in gene_acc[g] for e in entries[a]} | {e['folder'] for a in amb_unmapped for e in entries[a]})",
+        "print('model.cif files to convert:', len(todo), '(of which for ambiguous / unmapped accessions:', len({e['folder'] for a in amb_unmapped for e in entries[a]}), ')')",
+        'af3_3di, af3_seq = {}, {}',
+        "def read_ss(prefix, suffix='_ss'):          # suffix '' reads the SEQUENCE database that sits beside <prefix>_ss",
         '    names = {}',
         "    for ln in open(f'{prefix}.lookup'):",
         "        f = ln.rstrip('\\n').split('\\t')",
         '        if len(f) >= 2: names[int(f[0])] = f[1]',
-        "    recs = open(f'{prefix}_ss', 'rb').read().split(b'\\x00')",
+        "    recs = open(f'{prefix}{suffix}', 'rb').read().split(b'\\x00')",
         '    out = {}',
         '    for i, r in enumerate(recs):',
         "        s = r.decode('ascii', 'ignore').strip()",
@@ -180,10 +184,13 @@ nb.code('# ---- cell B: run foldseek on the needed models, batches of <= 2000',
         "        if src.exists(): shutil.copy(src, d / 'in' / f'{f}.cif')",
         "    r = subprocess.run([FS_BIN, 'createdb', str(d / 'in'), str(d / 'db'), '--threads', '8'], capture_output=True, text=True)",
         '    fs_log.append(r.stdout[-300:] + r.stderr[-300:])',
+        "    seqs = read_ss(str(d / 'db'), '')",
         "    for name, ss in read_ss(str(d / 'db')).items():",
         "        name = re.sub(r'\\.cif$', '', name)",
         "        key = name if name in batch else re.sub(r'_[A-Za-z0-9]$', '', name)    # strip a chain suffix if foldseek added one",
-        '        if key in batch: af3_3di.setdefault(key, []).extend(ss)',
+        '        if key in batch:',
+        '            af3_3di.setdefault(key, []).extend(ss); af3_seq.setdefault(key, []).extend(seqs[name])',
+        "            assert [len(x) for x in ss] == [len(x) for x in seqs[name]], name      # the sequence database is in the same order as the 3Di one",
         '    shutil.rmtree(d)                                                         # scratch removed per batch',
         "print('foldseek produced 3Di for', len(af3_3di), 'of', len(todo), 'models; scratch batches deleted')",
         'multi_chain = {k: [len(s) for s in v] for k, v in af3_3di.items() if len(v) > 1}',
@@ -258,7 +265,256 @@ nb.code("tdi, tdi_source, tdi_cov, tdi_nfrag = dict(tdi), dict(tdi_source), {g: 
         "print('overlapping residues re-assigned by the pLDDT rule:', af3_overlap_n)",
         "print('AF3 length-mismatch examples (gene: details, protein length):')",
         "for g in list(af3_mismatch)[:8]: print(' ', g, af3_mismatch[g], int(L_of[g]))")
-nb.code("mismatch_rows = [dict(gene_id=g, protein_len=int(L_of[g]), detail=str(af3_mismatch.get(g, mismatch.get(g)))) for g in mm]",
+nb.md('## 3c · Filling the rest by transferring 3Di through a sequence alignment',
+      '**Why the sequences differ.** The protein in `nodes.parquet` is the ToxoDB gene model of ME49. The structure that '
+      'AlphaFold predicted was folded from a UniProt entry, and the UniProt entry is often NOT the same protein: ToxoDB may '
+      'have merged two neighbouring predicted genes into one long gene (for example `TGME49_500303`, 6,319 residues, is '
+      'covered by two UniProt entries of 2,083 and 1,861 residues), extended or shortened a start or a stop, or chosen a '
+      'different exon structure. Downloading the structure again would fetch the same mismatched model, and a 3Di string of '
+      'the wrong length cannot be laid on our protein residue by residue.',
+      '**What transferring 3Di through an alignment means.** A 3Di string has one letter per residue of the structure, '
+      'describing the local 3D neighbourhood of that residue. If most of the structure\'s own sequence is identical to a '
+      'stretch of our protein, then residue *k* of the structure is residue *j* of our protein, and its 3Di letter belongs to '
+      'position *j*. We align the two sequences (global alignment, but a free overhang at both ends, because the models '
+      'usually start or stop at a different place), copy the 3Di letter of every aligned residue onto our residue, and write '
+      '`X` (missing) wherever no structure residue lines up. With several structures for one gene (two halves of a merged '
+      'gene) all of them are transferred; where they overlap, the one with the higher identity keeps the position.',
+      '**Why at least 95 % identity.** 3Di describes a specific fold. A different isoform or a paralogue may fold differently '
+      'even when 80 % of its residues are shared, and a 3Di letter copied over from it would then be wrong. At 95 % the '
+      'structure and our protein are, for practical purposes, the same polypeptide with a few annotation differences. The '
+      'gene must also be at least half covered (a short matching stretch tells us little about the whole protein). The '
+      'accepted rule is 95 % identity (matches over alignment columns, internal gaps counted as mismatches) per structure and '
+      '50 % of our protein covered by the merged result. The 90 % / 30 % trade-off is printed for comparison but not used.',
+      '**An aligned 3Di is weaker evidence than a direct one.** Direct 3Di (`naive_db`, `cleaned_db`, `af3`) is computed '
+      'from a structure whose sequence is exactly ours. An aligned one is inferred from a similar sequence and may contain '
+      '`X` gaps. Any model that uses the `tdi_*` columns must carry `tdi_source` (and `tdi_align_identity`, '
+      '`tdi_align_coverage`) with it, so that aligned genes can be down-weighted, flagged or held out. Aligned strings are '
+      'full length, like the others; `X` means missing and must never be read as a 3Di letter.')
+nb.code(r'''import numpy as np
+from numba import njit
+
+# Semi-global (free end gaps on both sequences) affine-gap alignment, written here because Biopython is not installed.
+# Score: identity scoring (match +5, mismatch -4; gap of length k costs 12 + 2(k-1)); no substitution matrix is available offline.
+@njit
+def _sg(a, b, match, mismatch, gopen, gext):
+    n, m = len(a), len(b)
+    NEG = -10**8
+    tb = np.zeros((n + 1, m + 1), dtype=np.uint8)
+    Hp = np.zeros(m + 1, dtype=np.int32); Fp = np.full(m + 1, NEG, dtype=np.int32)
+    Hc = np.zeros(m + 1, dtype=np.int32); Fc = np.full(m + 1, NEG, dtype=np.int32)
+    best = NEG; bi = 0; bj = 0
+    for i in range(1, n + 1):
+        Hc[0] = 0; Fc[0] = NEG; E = NEG
+        for j in range(1, m + 1):
+            e_open = Hc[j - 1] + gopen; e_ext = E + gext
+            if e_ext >= e_open:
+                E = e_ext; bits = 4
+            else:
+                E = e_open; bits = 0
+            f_open = Hp[j] + gopen; f_ext = Fp[j] + gext
+            if f_ext >= f_open:
+                Fc[j] = f_ext; bits |= 8
+            else:
+                Fc[j] = f_open
+            s = match if a[i - 1] == b[j - 1] else mismatch
+            h = Hp[j - 1] + s; src = 0
+            if E > h:
+                h = E; src = 1
+            if Fc[j] > h:
+                h = Fc[j]; src = 2
+            Hc[j] = h
+            tb[i, j] = bits | src
+        if Hc[m] > best:
+            best = Hc[m]; bi = i; bj = m
+        for j in range(m + 1):
+            Hp[j] = Hc[j]; Fp[j] = Fc[j]
+    for j in range(1, m + 1):
+        if Hp[j] > best:
+            best = Hp[j]; bi = n; bj = j
+    return tb, best, bi, bj
+
+@njit
+def _trace(tb, i, j):
+    pi = np.empty(i + j + 2, dtype=np.int32); pj = np.empty(i + j + 2, dtype=np.int32)
+    k = 0; state = 0
+    while i > 0 and j > 0:
+        t = tb[i, j]
+        if state == 0:
+            state = t & 3
+            if state == 0:
+                pi[k] = i - 1; pj[k] = j - 1; k += 1; i -= 1; j -= 1
+        elif state == 1:
+            j -= 1
+            if (t & 4) == 0: state = 0
+        else:
+            i -= 1
+            if (t & 8) == 0: state = 0
+    return pi[:k], pj[:k]
+
+def semiglobal(cand, ours, match=5, mismatch=-4, gopen=-12, gext=-2):
+    """Align cand (the 3Di donor) to ours. Returns 0-based aligned pairs, number of identical pairs, alignment columns
+    (first aligned pair to last, internal gaps of either sequence included)."""
+    a = np.frombuffer(cand.encode('ascii'), dtype=np.uint8); b = np.frombuffer(ours.encode('ascii'), dtype=np.uint8)
+    tb, best, bi, bj = _sg(a, b, match, mismatch, gopen, gext)
+    pi, pj = _trace(tb, bi, bj); pi, pj = pi[::-1], pj[::-1]
+    if len(pi) == 0: return pi, pj, 0, 0
+    ident = int((a[pi] == b[pj]).sum())
+    cols = int((pi[-1] - pi[0] + 1) + (pj[-1] - pj[0] + 1) - len(pi))
+    return pi, pj, ident, cols
+
+# unit tests on a real protein: a fragment, a fragment with a deletion, and the identity of a protein with itself
+s0 = nodes.sequence['TGME49_500303']
+for name, c in (('fragment 1000-2500', s0[1000:2500]), ('two pieces with a 20-residue deletion', s0[100:300] + s0[320:900]), ('self 0-2000', s0[:2000])):
+    pi, pj, idn, cols = semiglobal(c, s0)
+    print(f'{name}: aligned {len(pi)}, identical {idn}, columns {cols}, first/last target position {pj[0]}-{pj[-1]}')
+assert semiglobal(s0[1000:2500], s0)[1][0] == 1000 and semiglobal(s0[1000:2500], s0)[2] == 1500''')
+
+nb.code(r'''# ---- candidates: every structure sequence we can pair with a gene (database records, AF3 models), with its own 3Di
+def read_db_full(prefix):
+    """name -> list of (sequence, 3Di, record name). The sequence database <prefix> sits beside <prefix>_ss; same order."""
+    names = {}
+    for ln in open(f'{prefix}.lookup'):
+        f = ln.rstrip('\n').split('\t')
+        if len(f) >= 2: names[int(f[0])] = f[1]
+    ss = open(f'{prefix}_ss', 'rb').read().split(b'\x00'); sq = open(prefix, 'rb').read().split(b'\x00')
+    out = {}; n_len_ok = n_tot = 0
+    for i, nm in names.items():
+        a, b = ss[i].decode('ascii', 'ignore').strip(), sq[i].decode('ascii', 'ignore').strip()
+        n_tot += 1; n_len_ok += (len(a) == len(b))
+        if not a or len(a) != len(b): continue
+        raw = nm
+        nm = nm[4:] if nm.startswith('AF3-') else nm
+        nm = nm[:-4] if nm.endswith('.cif') else nm
+        nm = nm.split('__')[0]
+        if nm.startswith('TGME49_'): out.setdefault(nm, []).append((b, a, raw))
+    print(prefix.split('/')[-1], ': stored sequence has the length of its 3Di string for', n_len_ok, 'of', n_tot, 'records')
+    return out
+dbfull = {k: read_db_full(f'/home/carruthers/foldseek/{k}') for k in ('naive_db', 'cleaned_db')}
+# verify the sequence database really is in the same order as the 3Di one: wherever the stored sequence is as long as ours it should BE ours
+chk = [(g, r[0] == nodes.sequence[g]) for g, recs in dbfull['naive_db'].items() if g in nodes.index for r in recs if len(r[0]) == len(nodes.sequence[g])]
+print('naive_db records of the same length as the annotated protein:', len(chk), '; with identical sequence:', sum(ok for _, ok in chk))
+assert sum(ok for _, ok in chk) / len(chk) > 0.99, 'sequence database order does not match the 3Di order'
+
+# AF3 candidates: every chain of every converted model
+af3_cands = {}      # folder -> list of (sequence, 3Di, folder#chain)
+for fo in af3_3di:
+    for k, (ss_, sq_) in enumerate(zip(af3_3di[fo], af3_seq[fo])):
+        af3_cands.setdefault(fo, []).append((sq_, ss_, f'{fo}#{k + 1}'))
+print('AF3 models with sequence and 3Di:', len(af3_cands))
+assert all(len(a) == len(b) for v in af3_cands.values() for a, b, _ in v)
+
+lacking = [g for g in nodes.index if g not in tdi]       # genes still lacking 3Di after sections 3 and 3b
+print('genes still lacking 3Di before the alignment:', len(lacking))
+
+# gene -> candidate list: records of the gene in the databases, AF3 folders of its (unambiguously or ambiguously) mapped accessions
+pool = {g: [] for g in lacking}
+for g in lacking:
+    for src in ('naive_db', 'cleaned_db'):
+        for sq_, ss_, raw in dbfull[src].get(g, []): pool[g].append((sq_, ss_, f'{src}:{raw}', src))
+    accs = set(gene_acc.get(g, [])) | {a for a in ambiguous if g in a2g[a]}
+    for a in sorted(accs):
+        for e in entries[a]:
+            for sq_, ss_, cid in af3_cands.get(e['folder'], []): pool[g].append((sq_, ss_, cid, 'af3'))
+
+# accessions the DeepTMHMM table does not know: a 6-mer screen finds which lacking genes (if any) they resemble
+K = 6
+kidx = collections.defaultdict(set)
+for g in lacking:
+    s_ = nodes.sequence[g]
+    for i in range(len(s_) - K + 1): kidx[s_[i:i + K]].add(g)
+n_screen = n_screen_hit = 0
+for a in sorted(unmapped):
+    for e in entries[a]:
+        for sq_, ss_, cid in af3_cands.get(e['folder'], []):
+            n_screen += 1
+            ks = {sq_[i:i + K] for i in range(len(sq_) - K + 1)}
+            hits = collections.Counter(g for k_ in ks for g in kidx.get(k_, ()))
+            sel = [g for g, c in hits.items() if c >= max(10, 0.5 * len(ks))]
+            n_screen_hit += bool(sel)
+            for g in sel: pool[g].append((sq_, ss_, cid, 'af3_unmapped'))
+print('structures of accessions unknown to DeepTMHMM:', n_screen, '; sharing >= 50% of their 6-mers with a gene that lacks 3Di:', n_screen_hit)
+# the same sequence from several sources is aligned once (first kept)
+for g in pool:
+    seen, keep = set(), []
+    for c in pool[g]:
+        if c[0] not in seen: seen.add(c[0]); keep.append(c)
+    pool[g] = keep
+print('genes with at least one candidate:', sum(bool(v) for v in pool.values()), '; candidates in total:', sum(len(v) for v in pool.values()))''')
+
+nb.code(r'''# ---- align every candidate to its gene
+import time
+t0 = time.time(); arows = []; aln = {}
+for g in lacking:
+    ours = nodes.sequence[g]; L = len(ours)
+    for sq_, ss_, cid, kind in pool[g]:
+        pi, pj, idn, cols = semiglobal(sq_, ours)
+        aln[(g, cid)] = (pi, pj, ss_)
+        arows.append(dict(gene_id=g, candidate=cid, kind=kind, protein_len=L, candidate_len=len(sq_), aligned_residues=len(pi),
+                          identical=idn, aln_columns=cols, identity=idn / cols if cols else 0.0, identity_ungapped=idn / len(pi) if len(pi) else 0.0,
+                          coverage=len(pi) / L))
+A = pd.DataFrame(arows)
+print(f'{len(A)} alignments in {time.time() - t0:.0f} s; genes aligned:', A.gene_id.nunique())
+A.round(4).to_csv(OUT / 'tdi_alignment_candidates.tsv', sep='\t', index=False)
+A.groupby('gene_id').identity.max().describe().round(3)''')
+
+nb.code(r'''# ---- merge the candidates of each gene and apply the acceptance rule
+def merge(g, min_id):
+    """Fill a full-length 3Di string from every candidate with identity >= min_id; higher identity first, no overwriting."""
+    L = len(nodes.sequence[g]); arr = ['X'] * L; used = []
+    sub = A[(A.gene_id == g) & (A.identity >= min_id)].sort_values(['identity', 'aligned_residues'], ascending=False)
+    ident_sum = cols_sum = 0
+    for r in sub.itertuples():
+        pi, pj, ss_ = aln[(g, r.candidate)]
+        new = 0
+        for i, j in zip(pi, pj):
+            if arr[j] == 'X': arr[j] = ss_[i]; new += 1
+        if new:
+            used.append(r.candidate); ident_sum += r.identical; cols_sum += r.aln_columns
+    s = ''.join(arr)
+    return s, (1 - s.count('X') / L), used, (ident_sum / cols_sum if cols_sum else 0.0)
+res = {}
+for rule, (mi, mc) in {'95/50': (0.95, 0.50), '90/30': (0.90, 0.30)}.items():
+    ok = {}
+    for g in A.gene_id.unique():
+        s, cov, used, idn = merge(g, mi)
+        if used and cov >= mc: ok[g] = (s, cov, used, idn)
+    res[rule] = ok
+print('genes accepted at identity >= 95% and coverage >= 50% (the rule used):', len(res['95/50']))
+print('genes that would be accepted at 90% / 30% (comparison only):', len(res['90/30']), '; extra over 95/50:', len(set(res['90/30']) - set(res['95/50'])))
+best = A.groupby('gene_id').agg(best_identity=('identity', 'max'), best_candidate_coverage=('coverage', 'max'))
+print('best single-candidate identity per gene (', len(best), 'genes ): quantiles')
+print(best.best_identity.quantile([0, .1, .25, .5, .75, .9, 1]).round(3).to_string())
+acc = res['95/50']
+aligned_ok = set(acc)
+al_tab = pd.DataFrame([dict(gene_id=g, identity=round(v[3], 4), coverage=round(v[1], 4), n_candidates=len(v[2]), candidates=','.join(v[2]))
+                       for g, v in acc.items()]).set_index('gene_id')
+al_tab['alignment_length'] = [int(A[(A.gene_id == g) & A.candidate.isin(acc[g][2])].aln_columns.sum()) for g in al_tab.index]
+al_tab.to_csv(OUT / 'tdi_aligned_genes.tsv', sep='\t')
+print('accepted genes: identity and coverage'); print(al_tab[['identity', 'coverage', 'n_candidates', 'alignment_length']].describe().round(3).to_string())
+print('candidates used per gene:', al_tab.n_candidates.value_counts().sort_index().to_dict())
+print('from sources:', pd.Series([A[(A.gene_id == g) & (A.candidate == v[2][0])].kind.iloc[0] for g, v in acc.items()]).value_counts().to_dict())
+cmp = pd.DataFrame({'rule': ['identity >= 95%, coverage >= 50% (accepted)', 'identity >= 90%, coverage >= 30% (comparison)'],
+                    'genes': [len(res['95/50']), len(res['90/30'])]})
+cmp''')
+
+nb.code(r'''# ---- apply: aligned strings join the 3Di dictionaries
+tdi_align_id, tdi_align_cov = {}, {}
+for g, (s, cov, used, idn) in acc.items():
+    assert g not in tdi and len(s) == len(nodes.sequence[g])
+    tdi[g] = s; tdi_source[g] = 'aligned' if len(used) == 1 else 'aligned_multi'
+    tdi_cov[g], tdi_nfrag[g], tdi_align_id[g], tdi_align_cov[g] = cov, len(used), idn, cov
+print('3Di strings now:', len(tdi), 'of', len(nodes), '; by source:', pd.Series(tdi_source).value_counts().to_dict())
+# genes still empty and why
+mm_before = list(mm)
+mm = [g for g in mm if g not in aligned_ok]
+no_db = [g for g in nodes.index if g not in tdi and g not in mm]
+rej = [g for g in mm if g in A.gene_id.values]
+print('still without 3Di:', len(mm) + len(no_db), '=', len(mm), 'with a model whose alignment fails the 95/50 rule +', len(no_db), 'with no usable model')
+print('of the', len(mm), ': candidates aligned but best identity < 95%:', sum(1 for g in mm if g in best.index and best.best_identity[g] < 0.95),
+      '; identity >= 95% but merged coverage < 50%:', sum(1 for g in mm if g in best.index and best.best_identity[g] >= 0.95))''')
+
+
+nb.code("mismatch_rows = [dict(gene_id=g, protein_len=int(L_of[g]), detail=str(af3_mismatch.get(g, mismatch.get(g))), best_alignment_identity=round(float(best.best_identity.get(g, np.nan)), 4), best_single_candidate_coverage=round(float(best.best_candidate_coverage.get(g, np.nan)), 4)) for g in mm]",
         "pd.DataFrame(mismatch_rows).to_csv(OUT / 'tdi_length_mismatch.tsv', sep='\\t', index=False)",
         "pd.DataFrame([dict(accession=a, genes=','.join(v)) for a, v in amb_report.items()]).to_csv(OUT / 'af3_ambiguous_accessions.tsv', sep='\\t', index=False)",
         "print(len(mismatch_rows), 'length-mismatch genes written; ambiguous accessions:', len(amb_report))")
@@ -301,7 +557,7 @@ nb.code('rows = []',
         '        tdi_full=t, tdi_mature=cut(t, sp_end, L), tdi_nterm_flank=cut(t, n0, n1), tdi_cterm_flank=cut(t, c0, c1),',
         '        n_tm=n_tm, has_signal_peptide=sp_end > 0, nterm_side=side(n0, n1), cterm_side=side(c0, c1),',
         '        seq_len=L, mature_len=L - sp_end, nterm_len=n1 - n0, cterm_len=c1 - c0,',
-        '        tdi_source=tdi_source.get(g, "none"), tdi_coverage=round(tdi_cov.get(g, 0.0), 4), tdi_n_fragments=tdi_nfrag.get(g, 0), flanks_identical=seq[n0:n1] == seq[c0:c1]))',
+        '        tdi_source=tdi_source.get(g, "none"), tdi_coverage=round(tdi_cov.get(g, 0.0), 4), tdi_n_fragments=tdi_nfrag.get(g, 0), tdi_align_identity=tdi_align_id.get(g, np.nan), tdi_align_coverage=tdi_align_cov.get(g, np.nan), flanks_identical=seq[n0:n1] == seq[c0:c1]))',
         "traits = pd.DataFrame(rows).set_index('gene_id')",
         'print(traits.shape)',
         'traits.drop(columns=[c for c in traits if c.startswith(("seq_full","seq_mat","seq_n","seq_c","tdi_full","tdi_mat","tdi_n","tdi_c"))]).describe(include="all").T')
@@ -347,7 +603,7 @@ nb.code('from parascape.information_map import Trait, register, TRAITS',
         " 'n_tm': 'Number of DeepTMHMM transmembrane helices', 'has_signal_peptide': 'DeepTMHMM predicts a signal peptide',",
         " 'nterm_side': 'Side of the membrane of the N-terminal flank: inside, outside or unknown', 'cterm_side': 'Side of the membrane of the C-terminal flank: inside, outside or unknown',",
         " 'seq_len': 'Protein length', 'mature_len': 'Mature length', 'nterm_len': 'N-terminal flank length', 'cterm_len': 'C-terminal flank length',",
-        " 'tdi_source': 'Where the 3Di string came from (naive_db, cleaned_db, af3, af3_fragments, none)', 'tdi_coverage': 'Fraction of residues with a real 3Di letter (0-1); gaps of stitched fragments are X', 'tdi_n_fragments': 'Number of AF3 fragment models stitched (1 for a single model, 0 when no 3Di)', 'flanks_identical': 'N- and C-terminal flanks are identical (always true without a TM domain)'}",
+        " 'tdi_source': 'Where the 3Di string came from (naive_db, cleaned_db, af3, af3_fragments, aligned, aligned_multi, none); aligned = transferred through a sequence alignment, weaker evidence', 'tdi_coverage': 'Fraction of residues with a real 3Di letter (0-1); gaps of stitched fragments are X', 'tdi_n_fragments': 'Number of AF3 fragment models stitched, or of aligned structures merged (1 for a single model, 0 when no 3Di)', 'tdi_align_identity': 'Identity (matches over alignment columns) of the structure sequence to the annotated protein for an aligned 3Di; NaN otherwise', 'tdi_align_coverage': 'Fraction of the protein covered by aligned structures for an aligned 3Di; NaN otherwise', 'flanks_identical': 'N- and C-terminal flanks are identical (always true without a TM domain)'}",
         "cats = {'seq_full','seq_mature','seq_nterm_flank','seq_cterm_flank','tdi_full','tdi_mature','tdi_nterm_flank','tdi_cterm_flank','nterm_side','cterm_side','tdi_source'}",
         'def fam(c): return "proteome_sequence" if c.startswith("seq_") and c not in ("seq_len",) else "foldseek_3di" if c.startswith("tdi_") and c != "tdi_source" else "deeptmhmm"',
         'for c in traits.columns:',
@@ -371,8 +627,12 @@ nb.code("traits.to_parquet(OUT / 'sequence_traits.parquet')",
         '        dict(item="3Di from cleaned_db", genes=int((traits.tdi_source == "cleaned_db").sum())),',
         '        dict(item="3Di from af3 (whole model)", genes=int((traits.tdi_source == "af3").sum())),',
         '        dict(item="3Di from af3_fragments (stitched)", genes=int((traits.tdi_source == "af3_fragments").sum())),',
+        '        dict(item="3Di from aligned (one structure)", genes=int((traits.tdi_source == "aligned").sum())),',
+        '        dict(item="3Di from aligned_multi (several structures)", genes=int((traits.tdi_source == "aligned_multi").sum())),',
+        '        dict(item="aligned with gaps (coverage < 1)", genes=int((traits.tdi_source.isin(["aligned", "aligned_multi"]) & (traits.tdi_coverage < 1)).sum())),',
+        '        dict(item="would also pass at 90% identity / 30% coverage (not used)", genes=len(res["90/30"]) - len(res["95/50"])),',
         '        dict(item="stitched with gaps (coverage < 1)", genes=int(((traits.tdi_source == "af3_fragments") & (traits.tdi_coverage < 1)).sum())),',
-        '        dict(item="no 3Di: model(s) of different length (excluded)", genes=len(mm)),',
+        '        dict(item="no 3Di: model(s) of different length, alignment fails 95/50", genes=len(mm)),',
         '        dict(item="no 3Di: no usable model anywhere", genes=len(no_db)),',
         '        dict(item="flanks identical", genes=int(traits.flanks_identical.sum())),',
         '        dict(item="TM genes with nterm_side known", genes=int(((traits.n_tm > 0) & (traits.nterm_side != "unknown")).sum())),',
@@ -388,19 +648,20 @@ nb.code("readme = f'''# Sequence and 3Di traits (instruction 72, 2026-11-04)\n\n
         "* seq_mature: DeepTMHMM signal peptide removed (sequence[sp_end:]); otherwise equal to seq_full.\n"
         "* seq_nterm_flank: start of the mature sequence to the residue before the FIRST TM helix; seq_cterm_flank: residue after the LAST TM helix to the C-terminus.\n"
         "* NO-TM RULE: a protein with no TM domain has BOTH flanks equal to the whole mature sequence, so the two flank columns are identical (intended; asserted).\n"
-        "* tdi_*: the same four regions with the same coordinates, cut from the Foldseek 3Di string, only where its length equals the protein length; empty otherwise.\n"
+        "* tdi_*: the same four regions with the same coordinates, cut from the Foldseek 3Di string (full protein length); empty only for genes with no 3Di.\n"
         "* nterm_side / cterm_side: inside or outside when >= 90% of the flank residues carry that I/O call in the DeepTMHMM per-residue topology string; unknown if mixed, empty or absent.\n"
-        "* tdi_source: naive_db preferred, then cleaned_db (suffixes such as __sol stripped; the record matching the protein length is chosen), then af3, then af3_fragments, else none.\n"
+        "* tdi_source: naive_db preferred, then cleaned_db (suffixes such as __sol stripped; the record matching the protein length is chosen), then af3, then af3_fragments, then aligned / aligned_multi (section below), else none.\n"
+        "* aligned / aligned_multi: for genes whose structure(s) have a DIFFERENT sequence from the ToxoDB gene model (ToxoDB model merged or extended relative to the UniProt entry AlphaFold folded). The structure own sequence is aligned to ours (semi-global, free end gaps, identity scoring match +5 / mismatch -4 / gap 12+2(k-1); Biopython not installed, own numba implementation) and the 3Di letter of each aligned residue is copied to the residue it aligns to; positions without an aligned residue are X. Accepted only when a structure has >= 95% identity (matches over alignment columns, internal gaps counted) and the merged result covers >= 50% of the protein; several structures are merged, higher identity first, no overwriting. Candidates: naive_db and cleaned_db records of the gene, AF3 models of its accessions, AF3 models of accessions ambiguous between genes or unknown to DeepTMHMM (screened by shared 6-mers, then aligned). tdi_align_identity / tdi_align_coverage hold the identity (over the structures that contributed) and coverage; NaN for other sources; tdi_n_fragments = number of structures merged. Per-candidate numbers: tdi_alignment_candidates.tsv; accepted genes: tdi_aligned_genes.tsv. AN ALIGNED 3Di IS WEAKER EVIDENCE THAN A DIRECT ONE: any model using tdi_* must carry tdi_source.\n"
         "* af3: Foldseek 3Di computed here (version {FS_VERSION}) from the whole-protein AlphaFold3 model af3_<UniProt>_model.cif in /media/carruthers/mnt1/af3/af_output, UniProt mapped to the gene through the accession column of deeptmhmm_toxo.csv; used only where no database 3Di of the right length exists.\n"
         "* af3_fragments: folders af3_<UniProt>_f<i>of<n>_<start>-<end> stitched at their 1-based inclusive ranges into a string of the full protein length; residues in no fragment are 'X' (not a 3Di letter); overlaps are resolved by the higher mean pLDDT (atom_plddts of the confidences json), else the earlier fragment. tdi_coverage = fraction of residues with a real letter; tdi_n_fragments = models used.\n"
-        "* ACCEPTANCE: a 3Di string is kept only when its length equals the nodes.parquet protein length (stitched: every fragment length equals its range and the ranges fit inside the protein). Otherwise empty and listed in tdi_length_mismatch.tsv; nothing padded or trimmed.\n"
+        "* ACCEPTANCE (direct sources): a 3Di string is kept only when its length equals the nodes.parquet protein length (stitched: every fragment length equals its range and the ranges fit inside the protein). Otherwise empty and listed in tdi_length_mismatch.tsv; nothing padded or trimmed.\n"
         "* Stitched strings contain 'X'; downstream code must treat X as missing.\n\n"
         "## Coordinate convention check\n{CONVENTION}. sequence[start-1:end] equals the recorded tm_<i>_sequence / sp_sequence.\n\n"
         "## Gaps\n"
         "* No propeptide / TEXEL cleavage: no reliable per-gene table; only the signal peptide is removed.\n"
-        "* 3Di is missing for {int((traits.tdi_source == 'none').sum()):,} genes: {len(no_db):,} with no usable model anywhere (no database record and no af3_<UniProt> folder that maps unambiguously to the gene) and {len(mm):,} whose model(s) differ in length from the annotated protein (tdi_length_mismatch.tsv; excluded, not trimmed).\n"
+        "* 3Di is missing for {int((traits.tdi_source == 'none').sum()):,} genes: {len(no_db):,} with no usable model anywhere (no database record and no af3_<UniProt> folder that maps unambiguously to the gene) and {len(mm):,} whose model(s) differ in length from the annotated protein and could not be aligned at >= 95% identity with >= 50% coverage (tdi_length_mismatch.tsv, with the best alignment identity; excluded, not trimmed). {len(aligned_ok):,} genes of the former mismatch/no-model group were filled by alignment (tdi_source aligned / aligned_multi); at 90%/30% {len(res['90/30']) - len(res['95/50']):,} more would pass.\n"
         "* The AF3 tree has {len(entries):,} distinct af3_<UniProt> ids, all UniProt (none TGME49-named); the TGME49-named folders (bait_, pep_, xl_, ...) are domain or complex jobs and are not used. {len(unmapped)} accessions are not in the DeepTMHMM accession column and {len(ambiguous)} map to more than one gene (attached to none; af3_ambiguous_accessions.tsv).\n"
-        "* AF3 model sequence was not compared with the annotated sequence (only the length), so an isoform of identical length would pass.\n"
+        "* Whole-length direct sources (naive_db, cleaned_db, af3) are accepted on length only: the sequence was not compared with the annotated one, so an isoform of identical length would pass. Aligned sources are checked by identity.\n"
         "* DeepTMHMM file has {N_DT_ROWS} rows (the 8,141 quoted in the spec counts the header line), all identifiers unique, all present in nodes.parquet.\n"
         "* Long strings are registered with kind 'category' (no better-fitting kind).\n\n"
         "## Coverage\n\n```\n{cov.to_string(index=False)}\n```\n'''",

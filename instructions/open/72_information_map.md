@@ -199,3 +199,13 @@ safe subtraction among the fitness columns).
   **not** "more important in mice than in humans": species, immune activation and scale all differ at once.
   The missing measurement is a genome-wide screen in IFN-gamma-activated **human** macrophages against matched
   unactivated human cells -- the human twin of the Wang design.
+* **3Di completed to 92.2 % by alignment transfer (2026-11-04).** 520 of the 1,157 missing genes were filled by
+  aligning the structure's own sequence to ours and copying the 3Di letter of each aligned residue (semi-global
+  affine-gap alignment, identity scoring; accepted only at >= 95 % identity per structure and >= 50 % coverage of
+  our protein; uncovered positions are `X`). Median identity 1.00, median coverage 0.93; 58 genes merged
+  several structures. `tdi_source` ('aligned', 'aligned_multi') and the new `tdi_align_identity` /
+  `tdi_align_coverage` columns must travel with any model that uses the 3Di columns: an aligned 3Di is weaker
+  evidence than a measured one. 637 genes remain empty -- 373 whose best structure fails the rule (270 below
+  95 % identity, i.e. a different isoform or gene) and 264 with no usable structure, which would need folding.
+  Known gap: direct-source 3Di is still accepted on matching length alone, and two naive_db records have our
+  length but not our sequence, so that kind of isoform can slip through.

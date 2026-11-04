@@ -3,10 +3,10 @@ column seq_full non-empty	8140	1.0
 column seq_mature non-empty	8140	1.0
 column seq_nterm_flank non-empty	8140	1.0
 column seq_cterm_flank non-empty	8140	1.0
-column tdi_full non-empty	6983	0.858
-column tdi_mature non-empty	6983	0.858
-column tdi_nterm_flank non-empty	6983	0.858
-column tdi_cterm_flank non-empty	6983	0.858
+column tdi_full non-empty	7503	0.922
+column tdi_mature non-empty	7503	0.922
+column tdi_nterm_flank non-empty	7503	0.922
+column tdi_cterm_flank non-empty	7503	0.922
 column n_tm non-empty	8140	1.0
 column has_signal_peptide non-empty	8140	1.0
 column nterm_side non-empty	8137	1.0
@@ -15,9 +15,11 @@ column seq_len non-empty	8140	1.0
 column mature_len non-empty	8140	1.0
 column nterm_len non-empty	8140	1.0
 column cterm_len non-empty	8140	1.0
-column tdi_source non-empty	6983	0.858
+column tdi_source non-empty	7503	0.922
 column tdi_coverage non-empty	8140	1.0
 column tdi_n_fragments non-empty	8140	1.0
+column tdi_align_identity non-empty	520	0.064
+column tdi_align_coverage non-empty	520	0.064
 column flanks_identical non-empty	8140	1.0
 no TM domain (n_tm == 0)	6729	0.827
 with TM domain	1411	0.173
@@ -27,9 +29,13 @@ signal peptide and TM	269	0.033
 3Di from cleaned_db	332	0.041
 3Di from af3 (whole model)	872	0.107
 3Di from af3_fragments (stitched)	301	0.037
+3Di from aligned (one structure)	462	0.057
+3Di from aligned_multi (several structures)	58	0.007
+aligned with gaps (coverage < 1)	407	0.05
+would also pass at 90% identity / 30% coverage (not used)	186	0.023
 stitched with gaps (coverage < 1)	60	0.007
-no 3Di: model(s) of different length (excluded)	861	0.106
-no 3Di: no usable model anywhere	296	0.036
+no 3Di: model(s) of different length, alignment fails 95/50	373	0.046
+no 3Di: no usable model anywhere	264	0.032
 flanks identical	6729	0.827
 TM genes with nterm_side known	1408	0.173
 TM genes with cterm_side known	1408	0.173
