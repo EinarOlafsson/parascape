@@ -116,7 +116,8 @@ def file_kind(name: str) -> str:
     return 'unsupported'
 
 
-def unpack(archive: Path, target: Path) -> None:
+def unpack(archive: Path, target: Path) -> str:
+    """Unpack into target; returns '' or a note when a deposited tar is truncated (complete members are kept)."""
     import tarfile
     import zipfile
     target.mkdir(parents=True, exist_ok=True)
@@ -133,8 +134,17 @@ def unpack(archive: Path, target: Path) -> None:
                     raise ValueError(f'{archive.name}: unsafe member {member}')
             z.extractall(target)
     else:
-        with tarfile.open(archive) as t:
-            t.extractall(target, filter='data')        # the 'data' filter refuses links and paths outside
+        member = None
+        try:
+            with tarfile.open(archive, 'r|*') as t:    # streaming: members before a truncation stay usable
+                for member in t:
+                    t.extract(member, target, filter='data')   # refuses links and paths outside
+                    member = None
+        except (EOFError, tarfile.ReadError, OSError) as error:
+            if member is not None and member.isfile():
+                (target / member.name).unlink(missing_ok=True)  # the member cut off mid-way
+            return f'{archive.name} is truncated as deposited ({error}); members before the cut kept'
+    return ''
 
 
 def bruker(d_folder: Path, spectra: Path, record: dict, keep_zip: Path | None = None) -> dict:
@@ -233,7 +243,9 @@ def main():
             working.append(unpacked)
         elif file_kind(f['filename']) == 'archive':
             unpacked = scratch / (source.name + '_unpacked')
-            unpack(source, unpacked)
+            note = unpack(source, unpacked)
+            if note:
+                unsupported.append(dict(file=f['filename'], bytes=base['source_bytes'], reason=note))
             source.unlink()
             members = sorted(p for p in unpacked.rglob('*') if p.is_file() and file_kind(p.name) in ('raw', 'mzml'))
             folders = sorted(p for p in unpacked.rglob('*.d') if (p / 'analysis.tdf').exists())

@@ -84,3 +84,18 @@ def test_bruker_folder_is_recorded_with_its_stored_zip(tmp_path):
     record = M.bruker(d, spectra, dict(source='run.d.zip'))
     assert (spectra / record['stored']).exists() and record['ms2_analyser'] == 'TIMS'
     assert record['search_path'] == str(d) and len(record['stored_sha256']) == 64
+
+
+def test_truncated_deposited_tar_keeps_members_before_the_cut(tmp_path):
+    import io
+    import tarfile
+    buffer = io.BytesIO()
+    with tarfile.open(fileobj=buffer, mode='w:gz') as t:
+        for name, size in (('a.raw', 1000), ('b.raw', 200000)):
+            info = tarfile.TarInfo(name); info.size = size
+            t.addfile(info, io.BytesIO(bytes(range(256)) * (size // 256) + bytes(size % 256)))
+    archive = tmp_path / 'cut.tar.gz'
+    archive.write_bytes(buffer.getvalue()[:len(buffer.getvalue()) // 2])
+    note = M.unpack(archive, tmp_path / 'out')
+    assert 'truncated as deposited' in note
+    assert (tmp_path / 'out' / 'a.raw').stat().st_size == 1000 and not (tmp_path / 'out' / 'b.raw').exists()
