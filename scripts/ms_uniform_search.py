@@ -279,7 +279,10 @@ def main():
         target.mkdir(exist_ok=True)
         config = sage_config(mzmls, analyser, target)
         (target / 'config.json').write_text(json.dumps(config, indent=2) + '\n')
-        subprocess.run([str(BIN / 'sage'), '--batch-size', '4', str(target / 'config.json')], check=True,
+        # Sage holds a whole batch of runs' spectra in memory; very large runs go one at a time.
+        largest = max((p.stat().st_size if p.is_file() else 0) for p in mzmls)
+        batch = '1' if largest > 400e6 else '4'
+        subprocess.run([str(BIN / 'sage'), '--batch-size', batch, str(target / 'config.json')], check=True,
                        env={'RAYON_NUM_THREADS': str(args.threads), 'PATH': '/usr/bin:/bin'})
         outputs = {p.name: dict(bytes=p.stat().st_size, sha256=sha256(p)) for p in target.iterdir() if p.is_file()}
         searches.append(dict(analyser=analyser, runs=[p.name for p in mzmls], outputs=outputs))
