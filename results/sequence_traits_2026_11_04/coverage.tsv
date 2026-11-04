@@ -1,0 +1,30 @@
+item	genes	fraction
+column seq_full non-empty	8140	1.0
+column seq_mature non-empty	8140	1.0
+column seq_nterm_flank non-empty	8140	1.0
+column seq_cterm_flank non-empty	8140	1.0
+column tdi_full non-empty	5810	0.714
+column tdi_mature non-empty	5810	0.714
+column tdi_nterm_flank non-empty	5810	0.714
+column tdi_cterm_flank non-empty	5810	0.714
+column n_tm non-empty	8140	1.0
+column has_signal_peptide non-empty	8140	1.0
+column nterm_side non-empty	8137	1.0
+column cterm_side non-empty	8137	1.0
+column seq_len non-empty	8140	1.0
+column mature_len non-empty	8140	1.0
+column nterm_len non-empty	8140	1.0
+column cterm_len non-empty	8140	1.0
+column tdi_source non-empty	5810	0.714
+column flanks_identical non-empty	8140	1.0
+no TM domain (n_tm == 0)	6729	0.827
+with TM domain	1411	0.173
+signal peptide	945	0.116
+signal peptide and TM	269	0.033
+3Di from naive_db	5478	0.673
+3Di from cleaned_db	332	0.041
+no 3Di: record of different length (excluded)	679	0.083
+no 3Di: not in either database	1651	0.203
+flanks identical	6729	0.827
+TM genes with nterm_side known	1408	0.173
+TM genes with cterm_side known	1408	0.173

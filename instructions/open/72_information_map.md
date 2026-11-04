@@ -104,3 +104,16 @@ assigns (inside or outside), since only an outward-facing region can reach the h
   **Excluded from the negatives:** dense granules, rhoptries, micronemes, apical, plasma membrane and
   endomembrane vesicles -- secretory or boundary compartments whose proteins can be exported.
 * The 1,201 PVM-proximity "likely negatives" stay empty: a labelling screen missing a protein is not proof.
+
+## Two cautions found while building the first columns (2026-11-04)
+* **DeepTMHMM misses some signal peptides.** GRA16 (TGME49_208830), a secreted effector, is called GLOBULAR
+  with no signal peptide, so its `seq_mature` equals `seq_full`. The column is still informative -- a signal
+  peptide is predicted for 55 of the 73 host-facing positives and 30 of the 41 dense granule markers, against
+  25 of the 494 negatives -- but `seq_mature` is wrong wherever the prediction misses. SignalP or a curated
+  cleavage table would fix it; recorded as a gap.
+* **The negative set makes a trivial baseline look strong.** Because most negatives are markers of
+  compartments inside the parasite (cytosol, nucleus, ribosome), "has a signal peptide" alone separates the
+  classes well. Any host-facing strategy must therefore be scored against that baseline, and the question that
+  matters is the harder one: **among secretory-pathway proteins, which are exported beyond the parasite?**
+  Report that restricted comparison beside the overall one, and score no-knowledge genes separately (the CAFA
+  rule) so easy genes do not flatter the result.
