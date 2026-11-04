@@ -8,8 +8,8 @@
   accompanying matrix with the same dimensions that holds the probability score for each data point. Then the
   goal would be to fill in the gaps in some systematic way with very probable entries."
 * Priority traits: **host-facing**, **binding partners** (especially of host-facing proteins), **function**.
-* **Fill bar: 95 % precision (α = 0.05)**, measured on held-out direct-evidence genes. A predicted entry is
-  written as *filled* only at or above the calibrated probability where held-out precision reaches 0.95;
+* **Fill bar: 90 % precision** (Einar 2026-11-04, changed from 95 %), measured on held-out direct-evidence genes. A
+  predicted entry is written as *filled* only at or above the calibrated probability where held-out precision reaches 0.90;
   everything below stays visible as *exploratory*, never as a fact.
 
 ## Shape
@@ -42,7 +42,7 @@ Three aligned tables over the same genes (ME49 IDs, the 8,140 rows of `nodes.par
 2. Out-of-fold scores are calibrated to probabilities (isotonic, `claims.CertaintyModel`), with the reliability
    curve and expected calibration error reported.
 3. The fill threshold per strategy × trait is the lowest calibrated probability whose held-out precision on
-   direct-evidence genes is ≥ 0.95 with its lower 90 % confidence bound reported; a strategy with too few direct
+   direct-evidence genes is ≥ 0.90 with its lower 90 % confidence bound reported; a strategy with too few direct
    genes to show that cannot fill.
 4. Filled cells are features for other traits only with their probability attached, and **never become training
    labels**.
@@ -62,3 +62,8 @@ Three aligned tables over the same genes (ME49 IDs, the 8,140 rows of `nodes.par
 * function: experimental GO biological process / molecular function; screen phenotypes in `nodes.parquet`.
 * Output: `values`, `probability`, `source` parquet files plus the long evidence table, and a coverage table
   (how many genes have an observed fact per trait).
+
+## Adding a column (Einar 2026-11-04: "make sure it is easy to add new columns")
+* `parascape/information_map.py`: one `register(Trait(name, kind, description))` line, then evidence rows with
+  that `trait` name from any source; `build()` places the column in all three tables. Kinds: flag, category,
+  terms, measure. `tests/test_information_map.py` checks that adding a column leaves every other column unchanged.
