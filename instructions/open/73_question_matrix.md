@@ -268,7 +268,8 @@ scorecard, so a circular run is visible rather than impossible.
 
 Categories, which are about the *kind of knowledge*, not the assay:
 `place` · `fitness` · `transcript` · `translation` · `protein_abundance` · `modification` · `interaction` ·
-`sequence` · `structure` · `domain` · `conservation` · `chromatin` · `phenotype` · `host_response` ·
+`sequence` · `structure` · `domain` · `conservation` · `chromatin` · `phenotype` ·
+`function` (what the protein is held to DO: GO terms, EC numbers, functional class) · `host_response` ·
 `attention` (bookkeeping: publication counts, study effort — a predictor of nothing biological) ·
 `identity` (names and accessions — never a feature).
 
@@ -334,11 +335,49 @@ changed.
   category would hold it out of the host-facing question, where it is nearly the conclusion. It is no
   longer the mechanism. Each registered question now also carries `label_category`, and a question
   that leaves it empty has it read off the column named in `label_source`.
-* **The one gap in the vocabulary, flagged rather than papered over.** Instruction 73 lists no
-  `function` category, so functional annotation (`function_class`, the GO BP and MF columns,
-  `ec_number`) is annotated `phenotype`. The exclusion that follows is right for a function question
-  and slightly wide for an imaging-phenotype question. Adding a seventeenth category is Einar's call;
-  the gate test reads the vocabulary from this file, so it will be the thing that says so.
+* **The gap in the vocabulary, flagged and then closed.** The vocabulary listed no `function`
+  category, so functional annotation (`function_class`, the GO BP and MF columns, `ec_number`) was
+  annotated `phenotype` -- right for a function question, slightly wide for an imaging-phenotype one.
+  Einar took the call on 2026-11-05: `function` is now the seventeenth category and holds those
+  columns. See "A seventeenth category" below for why `phenotype` was the wrong home.
 * **Still open from this piece:** the data picker (`Label -> Infer`) does not yet show the
   excluded-by-circularity set, and the ingest gate that refuses a new column with no category is the
   test rather than the loader.
+
+
+## A seventeenth category: `function` (Einar, 2026-11-05)
+
+The vocabulary shipped with sixteen categories and no `function`, so GO terms, EC numbers and coarse
+functional class were filed under `phenotype` -- recorded at the time as a judgement, with the reason that
+`phenotype` ("what the protein is held to do") was the nearest available kind of knowledge.
+
+It was the wrong home, and the cost is specific. `phenotype` also holds what is *observed when the gene is
+perturbed*: imaging phenotypes, drug sensitivity shifts, differentiation readouts. Those are measurements. A
+GO molecular-function term is a conclusion somebody already drew about what the protein does -- which is the
+thing a function question is trying to predict. Pooling the two means a function question either holds out
+real perturbation phenotypes it could legitimately learn from, or an imaging-phenotype question holds out
+annotation it never needed to. One of those is always wrong, and which one depends on the question.
+
+`function` is therefore its own category: **what the protein is held to do**, as distinct from `phenotype`
+(what happens when you break it) and `place` (where it is). It takes `function_class`, `function_class_n`,
+`function_go_bp`, `function_go_bp_n`, `function_go_mf`, `function_go_mf_n`, `ec_number`, `has_ec` and
+`toxodb_ec_numbers`.
+
+`phenotype` keeps its definition narrowed to match: "what is observed when the gene is perturbed --
+imaging, drug sensitivity, differentiation".
+
+Consequence to expect: the function question now holds these columns out by category rather than by a
+hand-written family list, so its evidence hash changes and the holdout budget will demand a fresh seed.
+That is the budget working as designed.
+
+## The host-transcription effector screen also carries `place` (Einar, 2026-11-05)
+
+`hosttx_effectors` was `host_response` alone, which is literally right -- the readout is the host
+transcriptional response, not parasite depletion. But a screen that finds which parasite effectors change
+host transcription is very nearly a list of proteins that reach the host, so for a `place` question it sits
+close to the conclusion. It was being held out of host-facing only by the hand-written override, which is
+exactly the mechanism information categories were built to replace.
+
+It now carries `place` as well, so the category rule excludes it from any localisation question whatever a
+family list says. This is the conservative direction: the cost of the extra category is one feature a
+`place` question may not use, and the cost of omitting it is a host-facing model reading its own answer.

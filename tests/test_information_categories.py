@@ -136,10 +136,35 @@ def test_pvm_proximity_is_both_place_and_interaction():
     assert "pvm_proximity_positive" in C.excluded_for("interaction")
 
 
-def test_the_host_transcription_effector_screen_is_host_response():
+def test_the_host_transcription_effector_screen_is_host_response_and_place():
+    """`host_response` is the literal reading -- the readout is host transcription, not depletion. But a
+    screen naming which effectors change host transcription has very nearly shown which proteins reach
+    the host, so for a localisation question it sits close to the conclusion. Until 2026-11-05 only the
+    hand-written family override held it out of host-facing, which is the mechanism the categories were
+    built to replace; `place` makes the category rule do it."""
     for column in ("hosttx_T2", "hosttx_padj", "hosttx_signature_pc01", "hosttx_signature_n_de"):
-        assert C.categories_of(column) == ("host_response",)
+        assert set(C.categories_of(column)) == {"host_response", "place"}
+        assert column in C.excluded_for("place"), "a localisation question must not see this"
         assert column not in C.excluded_for("fitness")      # its readout is not depletion
+
+
+def test_function_is_its_own_category_and_not_phenotype():
+    """A GO term is a conclusion about what the protein does; a drug-sensitivity shift is a measurement
+    of what happens when you break it. Pooling them meant a function question held out real perturbation
+    phenotypes, or an imaging-phenotype question held out annotation it never needed."""
+    for column in ("function_class", "function_class_n", "function_go_bp", "function_go_bp_n",
+                   "function_go_mf", "function_go_mf_n", "ec_number", "has_ec"):
+        assert C.categories_of(column) == ("function",), column
+        assert column in C.excluded_for("function")
+        assert column not in C.excluded_for("phenotype"), "annotation is not a perturbation observation"
+
+
+def test_a_perturbation_phenotype_is_still_phenotype_and_survives_a_function_question():
+    """The other half of the split: a function question may legitimately learn from what breaks."""
+    for column in ("diff_reporter_log2_mNG_over_bulk", "screen_egress_phenotype",
+                   "resistance_substitutions", "escrt_recruitment_xgboost"):
+        assert "phenotype" in C.categories_of(column), column
+        assert column not in C.excluded_for("function")
 
 
 def test_publication_and_mention_counts_are_attention():

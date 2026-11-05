@@ -51,7 +51,7 @@ import pandas as pd
 
 from . import datasets, organisms
 
-#: The sixteen categories of instruction 73, each defined by the KIND of knowledge it is rather than
+#: The seventeen categories of instruction 73, each defined by the KIND of knowledge it is rather than
 #: by the instrument that produced it. The vocabulary is fixed: `tests/test_information_categories`
 #: checks it against the instruction, because a category invented in passing is a category nobody
 #: excludes on.
@@ -68,7 +68,8 @@ CATEGORIES = {
     "domain": "Which known families and domains the protein contains.",
     "conservation": "How the gene is distributed and constrained across species and strains.",
     "chromatin": "The state of the locus itself: accessibility, histone marks, factor occupancy.",
-    "phenotype": "What is observed when the gene is perturbed, and what the protein is held to do.",
+    "phenotype": "What is observed when the gene is perturbed -- imaging, drug sensitivity, differentiation.",
+    "function": "What the protein is held to DO: GO terms, EC numbers, coarse functional class.",
     "host_response": "How the host cell or host immune system responds to the parasite or protein.",
     "attention": "Bookkeeping: publication counts, study effort -- a predictor of nothing biological.",
     "identity": "Names and accessions -- never a feature.",
@@ -142,10 +143,14 @@ DATASET_CATEGORIES = {
     "curated_enteric_fitness": (("fitness",),
                                 "literature-curated oocyst yield of gene disruptions through the "
                                 "feline stage: fitness, though its level is reference/literature"),
-    "hosttx_effectors": (("host_response",),
+    "hosttx_effectors": (("host_response", "place"),
                          "the host-transcription effector screen. Its level is DNA/CRISPR_screen but "
                          "the readout is the HOST transcriptional response (Hotelling T2 and the "
-                         "per-effector signature), not parasite depletion"),
+                         "per-effector signature), not parasite depletion. `place` as well since "
+                         "2026-11-05: an effector that changes host transcription has very nearly "
+                         "been shown to reach the host, so for a localisation question it is close "
+                         "to the conclusion, and the category rule must be what excludes it rather "
+                         "than a hand-written family list"),
     "differentiation_screen": (("phenotype", "fitness"),
                                "pooled CRISPR screen read out as guide enrichment in "
                                "reporter-positive parasites over the bulk. The ratio largely cancels "
@@ -184,10 +189,10 @@ DATASET_CATEGORIES = {
                        "5' UTR length, upstream AUGs, uORFs and Kozak score. The deposit is RNAseq, "
                        "but these columns are features of the transcript's SEQUENCE and carry no "
                        "abundance; a learner using them is not reading expression"),
-    "toxodb_ec_numbers": (("phenotype",),
-                          "EC numbers are a statement of what the enzyme does. The vocabulary of "
-                          "instruction 73 has no `function` category, and `phenotype` -- what the "
-                          "protein is held to do -- is the nearest; flagged as a judgement"),
+    "toxodb_ec_numbers": (("function",),
+                          "EC numbers state what the enzyme does. Filed under `phenotype` until "
+                          "2026-11-05 for want of anywhere better; `function` now exists because a "
+                          "conclusion about what a protein does is not a perturbation observation"),
     "iedb_bcell": (("host_response",),
                    "antibody epitopes: what the host immune system recognises on this protein"),
     "toxodb_epitopes": (("host_response",), "IEDB epitopes mapped to the gene, as above"),
@@ -247,14 +252,16 @@ COLUMN_CATEGORIES = {
     "partner_best_prob": (("interaction",), "probability of the strongest recorded partner"),
     "partner_n_ge95": (("interaction",), "partners recorded at probability >= 0.95"),
     "partner_n_ge50": (("interaction",), "partners recorded at probability >= 0.50"),
-    "function_class": (("phenotype",),
-                       "coarse functional class. No `function` category exists in instruction 73's "
-                       "vocabulary; `phenotype` is the nearest kind of knowledge. Judged"),
-    "function_class_n": (("phenotype",), "as function_class"),
-    "function_go_bp": (("phenotype",), "experimental GO biological process; judged as function_class"),
-    "function_go_bp_n": (("phenotype",), "as function_go_bp"),
-    "function_go_mf": (("phenotype",), "experimental GO molecular function; judged as function_class"),
-    "function_go_mf_n": (("phenotype",), "as function_go_mf"),
+    "function_class": (("function",),
+                       "coarse functional class: a conclusion about what the protein does, which is "
+                       "the thing a function question predicts. Its own category since 2026-11-05"),
+    "function_class_n": (("function",), "as function_class"),
+    "function_go_bp": (("function",), "experimental GO biological process; as function_class"),
+    "function_go_bp_n": (("function",), "as function_go_bp"),
+    "function_go_mf": (("function",), "experimental GO molecular function; as function_class"),
+    "function_go_mf_n": (("function",), "as function_go_mf"),
+    "ec_number": (("function",), "the EC number itself; as toxodb_ec_numbers"),
+    "has_ec": (("function",), "whether an EC number is recorded; as toxodb_ec_numbers"),
     # Domain traits that are not purely domain content.
     "domclass_tm_rich": (("domain", "sequence"),
                          "three or more TM helices: a DeepTMHMM count, not a domain match"),
