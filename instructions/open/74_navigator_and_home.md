@@ -121,3 +121,41 @@ contrast preselected, the fold change shown with its standard error, and the num
 ### 5 · Where it came from — "which measurement, which paper"
 Datasets and provenance · References · Downloads and components. Dataset-level browsing only; per-claim
 provenance stays on the claim.
+
+## Final structure (Einar, 2026-11-05): the query unit decides level 1
+He replaced the five intention categories with three, and the reason is better than the original: **the map is a
+matrix, so a query is a row, a block of rows, or a column.** Level 1 is therefore the unit being asked about,
+not the user's mood. `Sources` is added as a fourth because provenance browsing belongs nowhere else; per-claim
+provenance still travels with the claim.
+
+**Level 1: One gene · Gene list · Label · Sources.** Search and the assistant are present at every level.
+
+### Level 2 — One gene (one row of the matrix)
+| Node | Opened |
+|---|---|
+| Everything known | The information map for that gene: trait, value, probability, uncertainty, source tier, reference; tier 1 then tier 2; measured negative amber, **not measured grey italic** |
+| Network | The gene centred, neighbours by evidence kind, edge width by probability, fade outward, click to recentre, scroll to zoom; every neighbour carries this same level-2 menu |
+| Partners | Partner, side, probability, tier, reference, and the line that an unlisted partner is unmeasured |
+| Expression | Its row over the 266 columns, relative-to-control first, each with normalization, effective n and mean sample quality |
+| Structure | AF3 confidence, 3Di coverage and source (measured, stitched, aligned with identity), topology, signal peptide, sequence regions |
+| Literature | Mention and publication counts, with the attention caveat stated |
+
+### Level 2 — Gene list (a block of rows)
+| Node | Opened |
+|---|---|
+| Drop or paste | File name, sheet, sniffed separator, identifier column, all changeable; resolution report with unresolved identifiers **listed, not discarded**; extra per-gene columns shown with what each would be treated as. Reader `importer.py`: `.csv .tsv .txt .tab .xlsx .xls .parquet`, and **the range decides, not the filename** |
+| Annotate from the map | Every gene with its facts, probabilities and sources; exportable |
+| Answer a label for the list | A chosen label answered per gene, each marked filled or exploratory |
+| Score as a pull-down | CRAPome specificity ranking; frequency as context only, with the warning it must not be a filter |
+| Compare as a screen | Joins the list to existing evidence, unresolved identifiers kept visible |
+
+### Level 2 — Label (one column of the matrix)
+| Node | Opened |
+|---|---|
+| The label catalogue | Every label: plain-words question, answer type, labels available, cross-validated **and** frozen-test numbers, genes answerable at 90 %, state (answerable / too few labels / no data). Header: **effective independent axes** |
+| One label | Its scoreboard inline, then the ranked genes with probability and uncertainty, filterable filled versus exploratory, with the evidence families used and those forbidden |
+| How this label is answered | The strategy behind it: inputs, what is downstream, which families it may and may not see, last scoreboard |
+| Compare two labels | Two columns side by side — which genes agree, which disagree; for expression labels this is the condition comparison, with standard errors and study counts |
+
+### Level 2 — Sources
+Datasets and provenance · References · Downloads and components. Dataset-level only.
