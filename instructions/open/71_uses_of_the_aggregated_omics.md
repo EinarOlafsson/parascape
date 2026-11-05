@@ -141,3 +141,53 @@ probability by frequency, but it does give each pair an abundance-fold number it
 limiting factor: 13 of 34 experiments have a confident bait, 10 more have a symbol absent from every ToxoDB
 product name, and 7 have a complex or non-protein bait.** Identifying more baits is worth more than finishing
 the remaining 140 projects.
+
+## 5 · Condition fingerprints: annotate every dataset with metadata nobody published (Einar, 2026-11-05)
+**The idea, in his words:** take a dataset that samples a condition axis in distinct samples (cell-cycle stages,
+for example), build a fingerprint from it, then score every other dataset against that fingerprint. "That way we
+not only compare, we annotate new metadata not known before to the datasets." On both the RNA and the protein
+level. **Queued as a future product; nothing built yet.**
+
+### Why it is sound, and the one refinement that matters
+It is signature projection plus deconvolution, and it has precedent in this organism: ToxoHub transferred
+cell-cycle phases to its own cells from the Smart-seq2 dataset GSE145080 by joint embedding and weighted vote.
+**The refinement: a bulk sample is a mixture, so the output should be a proportion, not a label.** An asynchronous
+tachyzoite culture contains every cell-cycle stage at once, and an alkaline-stressed culture is only partly
+converted. "68 % tachyzoite, 32 % bradyzoite" is both more honest and more useful than "bradyzoite", and
+deconvolution gives it directly. Estimated stage composition also becomes a covariate that explains differences
+between studies which are currently attributed to biology.
+
+### Rules it must follow (these are the traps already paid for in this project)
+* **Score by within-sample ranks, not absolute values** (ssGSEA-style). A fingerprint learned in one study
+  otherwise scores that study's batch, and rank scoring is what makes one fingerprint usable across platforms
+  and between RNA and protein at all.
+* **A fingerprint annotation is inferred, never observed.** It enters the map as `filled:<fingerprint>@<version>`
+  or stays exploratory, and the fingerprint's source study must be declared in `depends_on`. Otherwise the
+  obvious failure follows: annotate a dataset with an inferred stage, then use that stage as evidence for a
+  trait, and the model learns from its own guess.
+* **Validate by held-out studies that report the condition themselves.** Build the fingerprint on one study,
+  score a study that states its own stages, and measure recovery — the instruction-70 pattern. Report accuracy
+  per axis, and expect RNA -> protein transfer to be weaker than RNA -> RNA; score the two separately rather
+  than assuming.
+* Studies are the unit of independence, and sample quality weights the fingerprint as it weights everything else.
+
+### Candidate axes and the data already on disk
+| Axis | What we have | Worth |
+|---|---|---|
+| **Cell cycle** | 28 columns: a synchronised 12-hour series with async and blocked controls, plus ~5,377 periodic genes and the ToxoHub 24-window clock (unreleased, check-only) | Strongest. Phase-resolved co-expression is far more specific than overall co-expression, which would help the partner trait directly |
+| **Bradyzoite differentiation** | 33 columns over several studies: tachyzoite/bradyzoite, bradyzoite subtypes A-E, alkaline stress, in vivo 28/90/120 days, brain time course, plus BFD1 and MORC knockdown series (18 more) | Strong, and multi-study, so it can be validated across studies rather than within one |
+| **Oocyst and sporulation** | 6 columns: unsporulated, sporulating, sporulated | A clean three-point axis |
+| **Merozoite and enteroepithelial** | 10 columns, including an enteroepithelial-versus-tachyzoite contrast | Covers the cat-stage biology nothing else reaches |
+| **Extracellular versus intracellular** | 12 columns, RNA and Ribo-seq | An egress-state fingerprint |
+| **Translational state** | 46 Ribo-seq and translational-efficiency columns | Orthogonal to transcript level: a protein can be made without its mRNA changing |
+| **Nutrient and pH restriction** | 24 columns: pH 7.4/8.2, 2 and 5 weeks, serum and lipid restriction, glucose and glutamine withdrawal | Culture-condition covariates that currently masquerade as biology |
+| **Host cell density** | 18 columns, confluent versus subconfluent | Same |
+| **Strain type** | GT1, ME49 and VEG references already quantified per run | Type I/II/III without new data |
+| **Protein level** | 12-column proteome time course, 8-column iTRAQ oocyst set, and the uniform Sage LFQ tables as the 203 projects finish | Lets the same axis be scored on protein, and tests RNA -> protein transfer |
+
+### What it buys that nothing else does
+The ~2,200 RNA runs and 203 proteomics projects would each gain estimated cell-cycle composition, differentiation
+state and culture condition — **metadata the depositors never published**. That is new annotation rather than a
+re-description, and it is the one product here that improves every other one: contrasts become comparable once
+stage composition is a covariate, and a pull-down's lysate composition may explain the CRAPome variability that
+made the frequency filter fail.
