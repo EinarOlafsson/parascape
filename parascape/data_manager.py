@@ -36,12 +36,53 @@ def status(destination=None, description=None) -> dict:
             'version': description['version'], 'download_bytes': description['size']}
 
 
-def _hash(path):
+def _hash(path, progress=None, phase='Checking the downloaded archive'):
+    """sha256 of a file, reporting progress. The report matters: this reads 898 MB, and with nothing
+    emitted the download dialog sat at whatever it last showed and looked dead."""
+    total = Path(path).stat().st_size
+    done = 0
     h = hashlib.sha256()
     with Path(path).open('rb') as source:
         for block in iter(lambda: source.read(1024 * 1024), b''):
             h.update(block)
+            done += len(block)
+            if progress:
+                progress(phase, done, total)
     return h.hexdigest()
+
+
+class DataLocationError(ValueError):
+    """The destination cannot receive a managed download, and no retry will change that.
+
+    A `ValueError` subclass so that every caller which already caught `ValueError` from
+    `install_archive` keeps working unchanged.
+
+    Separate from every other failure because it is not retryable: the download dialog used to show
+    this in a small label and then offer "Retry download", which cannot succeed however many times
+    it is pressed. Raised by `check_destination` before any bytes move.
+    """
+
+
+def check_destination(destination=None) -> Path:
+    """Refuse a destination a managed install must not touch, before downloading anything.
+
+    `install_archive` has always refused to overwrite a populated folder that carries no
+    `data_release.json`, which is correct -- it is somebody's own data, or, in a source checkout, the
+    repository's committed `parascape/data`. The bug was when it refused: after the whole 898 MB
+    archive had been fetched and hashed. Checking first turns a wasted download into an immediate,
+    actionable message.
+    """
+    destination = Path(destination or paths.data_dir()).absolute()
+    if destination.is_symlink():
+        raise DataLocationError('Refusing to replace a symbolic-link data directory: ' + str(destination))
+    if destination.exists() and any(destination.iterdir()) and not (destination / 'data_release.json').is_file():
+        raise DataLocationError(
+            f'{destination} already holds files that ParaScape did not install, so a download would '
+            f'have to overwrite them. This is normal when running from a source checkout, where that '
+            f'folder is part of the repository. Point PARASCAPE_CACHE at an empty folder and start '
+            f'again, for example:\n\n'
+            f'    PARASCAPE_CACHE={paths.download_dir()} parascape')
+    return destination
 
 
 def install_archive(archive, destination=None, description=None, progress=None, cancelled=None) -> Path:
@@ -49,13 +90,11 @@ def install_archive(archive, destination=None, description=None, progress=None, 
     description = description if description is not None else manifest()
     destination = Path(destination or paths.data_dir()).absolute()
     archive = Path(archive)
-    if archive.stat().st_size != description['size'] or _hash(archive) != description['sha256']:
+    if archive.stat().st_size != description['size'] or \
+            _hash(archive, progress, 'Verifying the archive') != description['sha256']:
         raise ValueError('Data archive checksum or size mismatch')
     destination.parent.mkdir(parents=True, exist_ok=True)
-    if destination.is_symlink():
-        raise ValueError('Refusing to replace a symbolic-link data directory')
-    if destination.exists() and any(destination.iterdir()) and not (destination / 'data_release.json').is_file():
-        raise ValueError('The data folder contains unmanaged files. Set PARASCAPE_CACHE to an empty folder to download safely.')
+    check_destination(destination)   # also checked before downloading; kept here as the last defence
     staging = Path(tempfile.mkdtemp(prefix='.parascape-data-', dir=destination.parent))
     try:
         seen = set()
@@ -111,9 +150,16 @@ def _download_locked(destination=None, description=None, progress=None, cancelle
         raise OSError('Not enough free space for the download and verified data')
     if not description['url'].startswith('https://github.com/EinarOlafsson/parascape/releases/download/'):
         raise ValueError('Unexpected data download host')
+    # Before any bytes move. A destination that cannot receive the install is worth knowing now
+    # rather than after 898 MB, which is exactly how this failed when Einar first ran it.
+    check_destination(root)
     part = root.parent / ('.parascape-' + description['sha256'] + '.part')
     try:
         offset = part.stat().st_size if part.exists() else 0
+        if offset >= description['size'] and progress:
+            # The download loop below is skipped when the part file is already complete, and it was
+            # the only thing reporting progress -- so a resumed, finished download read 0 %.
+            progress('Download already complete; checking it', description['size'], description['size'])
         if offset > description['size']:
             part.unlink(); offset = 0
         if offset < description['size']:
@@ -139,7 +185,7 @@ def _download_locked(destination=None, description=None, progress=None, cancelle
                         out.write(block)
                         if progress:
                             progress('Downloading data', offset, description['size'])
-        if _hash(part) != description['sha256']:
+        if _hash(part, progress) != description['sha256']:
             part.unlink()
             raise ValueError('Data download checksum mismatch; retry the download')
         result = install_archive(part, root, description, progress, cancelled)

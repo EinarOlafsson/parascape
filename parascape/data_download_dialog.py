@@ -11,15 +11,20 @@ from . import data_manager as D
 
 class _Download(QtCore.QThread):
     progress = QtCore.pyqtSignal(str, int)
-    completed = QtCore.pyqtSignal(bool, str)
+    # `retryable` is false when pressing the button again cannot possibly help, which was the
+    # confusing half of this: the destination refusal showed in a small label under a button that
+    # still said "Retry download".
+    completed = QtCore.pyqtSignal(bool, str, bool)
 
     def run(self):
         try:
             D.download(progress=lambda phase, done, total: self.progress.emit(phase, int(100 * done / max(total, 1))),
                        cancelled=self.isInterruptionRequested)
-            self.completed.emit(True, 'Data downloaded and verified.')
+            self.completed.emit(True, 'Data downloaded and verified.', False)
+        except D.DataLocationError as exc:
+            self.completed.emit(False, str(exc), False)
         except Exception as exc:
-            self.completed.emit(False, str(exc))
+            self.completed.emit(False, str(exc), True)
 
 
 class DataDownloadDialog(QtWidgets.QDialog):
@@ -64,17 +69,28 @@ class DataDownloadDialog(QtWidgets.QDialog):
         self.worker.start()
 
     def _progress(self, phase, percent):
-        self.message.setText(phase)
+        self.message.setText(f'{phase} — {percent}%')
         self.bar.setValue(percent)
 
-    def _completed(self, success, message):
+    def _completed(self, success, message, retryable):
         self.worker.wait()
         self.message.setText(message)
         if success:
             self.accept()
-        else:
+            return
+        # A failure the user must read, not a status line they might miss. The destination refusal
+        # used to land in the small label while the button invited a retry that could never work.
+        self.message.setStyleSheet('font-weight: bold;')
+        self.message.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.bar.setValue(0)
+        if retryable:
             self.start.setText('Retry download')
             self.start.setEnabled(True)
+        else:
+            self.start.setText('Cannot download here')
+            self.start.setEnabled(False)
+            self.cancel.setText('Close')
+            QtWidgets.QMessageBox.warning(self, 'ParaScape data', message)
 
     def reject(self):
         """Wait for an interrupted download to leave its staging files safely."""

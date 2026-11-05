@@ -31,6 +31,13 @@ results/*/run.log
 /starplast/
 /.starplast-watchdog/
 
+# The data installer's resume file and its lock, written next to the data directory. In a source
+# checkout that directory is inside the package, so an 898 MB .part lands in the working tree.
+parascape/.parascape-*.part
+parascape/.parascape-data-install.lock
+.parascape-*.part
+.parascape-data-install.lock
+
 # The map gallery's per-map build checkpoint: one npz per map so a stopped build resumes. The maps
 # themselves ship in parascape/data/umap_gallery.npz, and these are the scaffolding that built it.
 results/umap_gallery_checkpoint/
