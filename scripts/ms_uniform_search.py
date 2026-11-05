@@ -47,27 +47,34 @@ def raw_files(project: str) -> list[dict]:
             if "RAW" in str(f['categories']) and str(f['studies']).strip() == project]
 
 
+#: Waits before each retry of a download. PRIDE refuses a connection outright when it has had enough, and a
+#: refusal that is retried in 30 s simply comes back; two projects were lost that way on 2026-11-04. The last
+#: attempts use a single plain connection, which is slow but is what the server is most willing to serve.
+RETRY_WAITS = (30, 120, 300, 600, 1200)
+
+
 def fetch(url: str, dest: Path, size: int) -> None:
     part = dest.with_suffix(dest.suffix + '.part')
-    for attempt in range(5):
+    for attempt in range(len(RETRY_WAITS) + 1):
         try:
             if (BIN / 'aria2c').exists() and attempt < 3:
-                # One PRIDE connection gives ~1 MB/s; ranged parallel connections give several times that.
+                # One PRIDE connection gives ~1 MB/s; a few ranged connections give several times that. More
+                # than about a dozen at once, counting every file in flight, earns a refusal.
                 subprocess.run([str(BIN / 'aria2c'), '-q', '-x6', '-s6', '-k8M', '--file-allocation=none',
                                 '--allow-overwrite=true', '--auto-file-renaming=false', '--connect-timeout=60',
-                                '-d', str(part.parent), '-o', part.name, url], check=True)
+                                '--max-tries=1', '-d', str(part.parent), '-o', part.name, url], check=True)
             else:
-                with urllib.request.urlopen(url, timeout=300) as response, part.open('wb') as out:
+                with urllib.request.urlopen(url, timeout=600) as response, part.open('wb') as out:
                     shutil.copyfileobj(response, out, 1 << 22)
             if size and part.stat().st_size != size:
                 raise IOError(f'{dest.name}: {part.stat().st_size} bytes, declared {size}')
             part.replace(dest)
             return
-        except Exception as error:
-            if attempt == 4:
+        except Exception:
+            part.unlink(missing_ok=True)                  # a partial file would fail the size check next time
+            if attempt == len(RETRY_WAITS):
                 raise
-            refused = isinstance(error, urllib.error.URLError) and 'refused' in str(error).lower()
-            time.sleep((180 if refused else 30) * (attempt + 1))   # a refusal means back off, not retry harder
+            time.sleep(RETRY_WAITS[attempt])
 
 
 def acquisition(mzml: Path) -> dict:
@@ -224,11 +231,10 @@ def main():
     unsupported += [dict(file=f['filename'], bytes=int(f.get('declared_bytes') or 0),
                          reason='SCIEX wiff or other format without a Linux converter (ProteoWizard needs Windows, Wine or Docker)')
                     for f in files if file_kind(f['filename']) == 'unsupported']
-    # PRIDE serves one file at roughly 1 MB/s from here, so files are fetched over several ranged connections
-    # (aria2c) and two at a time. More than about a dozen connections at once earns a refused connection.
-    from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=2) as pool:
-        list(pool.map(lambda f: fetch(f['url'], scratch / f['filename'], int(f.get('declared_bytes') or 0)), usable))
+    # One file at a time over six ranged connections: PRIDE refused two whole projects on 2026-11-04 when two
+    # files were in flight at six connections each, and a single file at six measured as fast anyway.
+    for f in usable:
+        fetch(f['url'], scratch / f['filename'], int(f.get('declared_bytes') or 0))
     for f in usable:
         source = scratch / f['filename']
         base = dict(source=f['filename'], url=f['url'], source_bytes=source.stat().st_size, source_sha256=sha256(source))
