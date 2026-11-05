@@ -2,6 +2,36 @@
 
 ## Unreleased
 
+## 0.0.10.0 — 2026-11-05
+
+- Browse the information map: one row per gene trait with its value, calibrated
+  probability, source tier and the published reference behind it, plus that gene's
+  measured binding partners. An observed fact, a measured negative and a cell that
+  was never measured are three visually distinct states, so an empty cell is never
+  read as "no". A trait view gives coverage by source tier and the value
+  distribution. The banner stating that no predicted values are present is computed
+  from the loaded release rather than written in, so it cannot go stale.
+- Record the map as three aligned tables of 8,140 genes: values, calibrated
+  probabilities and sources, with a long-form evidence table and a pair table
+  behind the per-gene summaries. Adding a trait is one registration plus its
+  evidence rows, and no other column changes.
+- Add 266 expression columns from the uniform reprocessing, preferring values
+  relative to a control, then internally normalised, then absolute. A strong
+  perturbation reproduces across two independent studies at a Spearman of 0.85,
+  the sign inverts for the opposite perturbation, and a no-effect control gives
+  nothing.
+- Add 313 protein-domain columns and the named classes, and sequence, mature,
+  transmembrane-flanking and Foldseek 3Di regions for every gene, 92 % covered.
+- Record 66 host-facing and 32 not-host-facing genes from a review of 140
+  published claims, with the three-valued distinction between exported, retained
+  and untested; and 242 genes with an experimental or curator-stated function
+  class, up from about 25.
+- Score host-facing, function and binding-partner prediction against held-out
+  labels and publish every scoreboard. Nothing is written into the map as a
+  prediction: no strategy reached the required 90 % held-out precision, and the
+  reason differs per trait.
+
+
 ## 0.0.9.0 — 2026-10-31
 
 - Keep all 574 original quantitative tables in independently verified GitHub
