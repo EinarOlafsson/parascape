@@ -18,10 +18,20 @@ three; other columns are untouched. Predicted (filled) cells use the same eviden
 
 Rules kept here: missing stays empty (never zero, never "no"); unlabeled is not negative; when several sources
 speak about one cell the highest-probability one is shown and all remain in the evidence table.
+
+The second half of the module reads the **published** tables back (``load_published``), so the application can
+show what is known about a gene without rebuilding anything. It resolves the release directory, loads the three
+aligned tables plus the long evidence and pairs tables and the tier-2 measurement tables, and reports in
+``PublishedMap.missing`` whatever it could not find rather than failing: a release without, say, the domain
+table is still worth browsing. Nothing is inferred on the way in -- every cell it hands back is an observed
+fact, because as of the 2026-11-04 release no strategy has reached the 90 % fill bar (``FILL_PRECISION``), and
+``PublishedMap.predicted_cells`` is the check that this is still true rather than an assumption.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+import os
+from dataclasses import dataclass, field
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -215,3 +225,357 @@ def build(evidence, genes, pairs: pd.DataFrame | None = None, order=None):
     probability, source = probability.mask(empty), source.mask(empty)
     assert (probability.isna() == empty).all().all() and (source.isna() == empty).all().all()
     return values, probability, source
+
+
+# --------------------------------------------------------------------------- reading a published release
+#: Override for the published information-map directory, honoured absolutely (the `paths` convention).
+PUBLISHED_ENV = 'PARASCAPE_INFORMATION_MAP'
+#: Files of a published release. Only ``values`` is required; the rest are reported when absent.
+MATRIX_FILES = ('values', 'probability', 'source', 'evidence', 'pairs')
+#: Tier-2 measurement tables: name -> (directory glob, file name). One row per gene, no probability column,
+#: so their cells carry the dataset as their source and no probability: these are measurements, not claims.
+TIER2_TABLES = {
+    'sequence': ('sequence_traits_*', 'sequence_traits.parquet'),
+    'domain': ('domain_traits_*', 'domain_traits.parquet'),
+}
+#: A source tier that starts with one of these is a prediction, not an observed fact.
+PREDICTED_PREFIXES = ('filled:', 'exploratory:')
+#: What an empty cell says. The distinction this whole map exists for: nothing is known, which is not "no".
+NOT_MEASURED = 'not measured'
+_REPO = Path(__file__).resolve().parent.parent
+
+
+def _newest_directory(parent: Path, pattern: str) -> Path | None:
+    """The last directory matching ``pattern`` by name, so a dated release sorts to the newest."""
+    if not parent.is_dir():
+        return None
+    hits = sorted((p for p in parent.glob(pattern) if p.is_dir()), key=lambda p: p.name)
+    return hits[-1] if hits else None
+
+
+def published_candidates(root=None) -> list:
+    """Every directory a published information map could live in, in priority order.
+
+    Listed rather than resolved silently, because a resolver that picks the wrong release is harder to
+    debug than one that says where it looked -- the rule `paths` was written for.
+    """
+    if root is not None:
+        return [Path(root)]
+    out = []
+    override = os.environ.get(PUBLISHED_ENV)
+    if override:
+        out.append(Path(override))
+    try:
+        from . import paths
+        out.append(Path(paths.data_dir()) / 'information_map')
+    except Exception:                       # noqa: BLE001 -- the loader must work without the cache resolver
+        pass
+    newest = _newest_directory(_REPO / 'results', 'information_map_v0_*')
+    if newest is not None:
+        out.append(newest)
+    return out
+
+
+def published_root(root=None) -> Path | None:
+    """The first candidate directory that actually holds ``values.parquet``; None when there is none."""
+    for candidate in published_candidates(root):
+        if (candidate / 'values.parquet').is_file():
+            return candidate
+    return None
+
+
+def tier2_path(name: str, root=None) -> Path | None:
+    """Where one tier-2 measurement table lives: beside the published release, or in ``results/``."""
+    glob, filename = TIER2_TABLES[name]
+    for parent in [p for p in (Path(root) if root is not None else None, _REPO / 'results') if p is not None]:
+        direct = parent / filename
+        if direct.is_file():
+            return direct
+        found = _newest_directory(parent, glob)
+        if found is not None and (found / filename).is_file():
+            return found / filename
+    return None
+
+
+def _domain_descriptions(path: Path) -> dict:
+    lookup = path.parent / 'domain_lookup.tsv'
+    if not lookup.is_file():
+        return {}
+    table = pd.read_csv(lookup, sep='\t', dtype=str).fillna('')
+    return dict(zip(table['column'], (table['description'] + ' (' + table['accession'] + ')').str.strip()))
+
+
+def column_catalogue(frames: dict, descriptions=None) -> pd.DataFrame:
+    """One row per column of the loaded tables: its tier, kind, table and description.
+
+    The tier decides how the application groups a column -- tier 1 conclusions first, then the tier-2
+    measurements they would be learned from (instruction 72). It is taken from the trait registry where the
+    column is registered, and otherwise from the table it came from, so the grouping never depends on whether
+    a build notebook happened to run first in this process.
+    """
+    descriptions = descriptions or {}
+    rows = []
+    for table, frame in frames.items():
+        for column in frame.columns:
+            base = column[:-2] if column.endswith('_n') and column[:-2] in TRAITS else column
+            trait = TRAITS.get(base)
+            if table == 'information map':
+                # Screen results are measurements (instruction 72 tier 2) whatever a build script registered.
+                tier = 2 if column.startswith('screen_') else (trait.tier if trait is not None else 1)
+            else:
+                tier = 2
+            description = descriptions.get(column) or (trait.description if trait is not None else '')
+            if column.endswith('_n') and trait is not None:
+                description = f'Number of distinct terms recorded for {base}'
+            rows.append(dict(column=column, tier=tier, kind=trait.kind if trait is not None else '',
+                             family=trait.family if trait is not None else table, table=table,
+                             description=description))
+    return pd.DataFrame(rows, columns=['column', 'tier', 'kind', 'family', 'table', 'description'])
+
+
+@dataclass
+class PublishedMap:
+    """A published information map, read back for display: observed facts, their probability and their source.
+
+    ``values``, ``probability`` and ``source`` are the three aligned tables; ``evidence`` and ``pairs`` are the
+    long-form record behind them; ``tier2`` holds the measurement tables keyed by name. ``missing`` names every
+    file that was not found, so a partial release is usable and says what it lacks.
+    """
+
+    root: Path | None = None
+    values: pd.DataFrame = field(default_factory=pd.DataFrame)
+    probability: pd.DataFrame = field(default_factory=pd.DataFrame)
+    source: pd.DataFrame = field(default_factory=pd.DataFrame)
+    evidence: pd.DataFrame = field(default_factory=pd.DataFrame)
+    pairs: pd.DataFrame = field(default_factory=pd.DataFrame)
+    tier2: dict = field(default_factory=dict)
+    catalogue: pd.DataFrame = field(default_factory=pd.DataFrame)
+    missing: tuple = ()
+
+    @property
+    def genes(self) -> pd.Index:
+        """Every gene of the map (the rows of ``values``), tier-2 only genes included."""
+        index = self.values.index
+        for frame in self.tier2.values():
+            index = index.union(frame.index)
+        return pd.Index(index, name='gene_id')
+
+    def has_gene(self, gene_id: str) -> bool:
+        """Whether the gene is a row of this map at all -- absent from the map is not absent from biology."""
+        return str(gene_id) in set(self.genes)
+
+    def columns(self, tier=None) -> list:
+        """Column names, optionally of one tier only, in the order the published tables carry them."""
+        if self.catalogue.empty:
+            return []
+        rows = self.catalogue if tier is None else self.catalogue[self.catalogue.tier == tier]
+        return rows.column.tolist()
+
+    def gene_facts(self, gene_id: str, include_absent: bool = False) -> pd.DataFrame:
+        """Every trait of one gene: value, probability, source tier, table and tier.
+
+        Cells with no observed fact are left out unless ``include_absent``, and when they are shown their value
+        is ``NOT_MEASURED`` with no probability: an empty cell is the absence of a measurement, never a "no".
+        A measured negative (``False`` in a screen or a curated non-export) is a fact and is always shown.
+        """
+        gene_id = str(gene_id)
+        rows = []
+        for record in self.catalogue.itertuples(index=False):
+            frame = self.values if record.table == 'information map' else self.tier2.get(record.table)
+            if frame is None or gene_id not in frame.index:
+                continue
+            value = frame.at[gene_id, record.column]
+            observed = not _is_blank(value)
+            if not observed and not include_absent:
+                continue
+            probability = source_tier = None
+            if record.table == 'information map' and observed:
+                if gene_id in self.probability.index and record.column in self.probability.columns:
+                    probability = self.probability.at[gene_id, record.column]
+                if gene_id in self.source.index and record.column in self.source.columns:
+                    source_tier = self.source.at[gene_id, record.column]
+            rows.append(dict(column=record.column, tier=record.tier, table=record.table,
+                             description=record.description, observed=observed,
+                             value=value if observed else NOT_MEASURED,
+                             probability=float(probability) if probability is not None and not pd.isna(probability)
+                             else np.nan,
+                             source_tier=str(source_tier) if source_tier is not None and not pd.isna(source_tier)
+                             else ('measured value (no probability recorded)' if observed and record.tier == 2
+                                   else '')))
+        return pd.DataFrame(rows, columns=['column', 'tier', 'table', 'description', 'observed', 'value',
+                                           'probability', 'source_tier'])
+
+    def gene_evidence(self, gene_id: str, trait=None) -> pd.DataFrame:
+        """The long-form evidence rows behind one gene: every source, including the ones that lost the cell."""
+        if self.evidence.empty:
+            return self.evidence
+        rows = self.evidence[self.evidence.gene_id.astype(str) == str(gene_id)]
+        if trait is not None:
+            base = trait[:-2] if trait.endswith('_n') else trait
+            rows = rows[rows.trait.isin({trait, base})]
+        return rows.sort_values(['trait', 'probability'], ascending=[True, False])
+
+    def gene_partners(self, gene_id: str, limit: int | None = None) -> pd.DataFrame:
+        """One gene's recorded partners from the pairs table, both directions, strongest first."""
+        if self.pairs.empty:
+            return pd.DataFrame(columns=['partner', 'side', 'probability', 'source_tier', 'reference'])
+        gene_id = str(gene_id)
+        forward = self.pairs[self.pairs.gene_a.astype(str) == gene_id].assign(
+            partner=lambda d: d.gene_b.astype(str), side=lambda d: d.partner_side)
+        backward = self.pairs[(self.pairs.gene_b.astype(str) == gene_id) & (self.pairs.partner_side == 'parasite')].assign(
+            partner=lambda d: d.gene_a.astype(str), side='parasite')
+        both = (pd.concat([forward, backward], ignore_index=True)[
+                    ['partner', 'side', 'probability', 'source_tier', 'reference']]
+                .sort_values(['probability', 'partner'], ascending=[False, True])
+                .drop_duplicates(['partner', 'reference']))
+        return both.head(limit) if limit else both
+
+    def coverage(self, column: str) -> pd.DataFrame:
+        """How many genes carry an observed fact for one column, split by the source tier of the cell.
+
+        The tier counted is the one that won the cell (the strongest source); the sources that lost it stay in
+        ``evidence``, so these counts are of cells, not of evidence rows.
+
+        Tier-2 tables have no source column, so their coverage is reported as one row naming the table: those
+        cells are measurements of one dataset, and inventing a tier for them would be a claim of its own.
+        """
+        table = self._table_of(column)
+        if table is None:
+            return pd.DataFrame(columns=['source_tier', 'genes'])
+        if table != 'information map':
+            observed = ~self.tier2[table][column].map(_is_blank)
+            return pd.DataFrame([{'source_tier': f'{table} measurement', 'genes': int(observed.sum())}])
+        observed = ~self.values[column].map(_is_blank)
+        tiers = self.source[column][observed] if column in self.source.columns else pd.Series(dtype=object)
+        out = (tiers.fillna('source not recorded').value_counts().rename_axis('source_tier')
+               .rename('genes').reset_index())
+        return pd.concat([out, pd.DataFrame([{'source_tier': 'any tier', 'genes': int(observed.sum())}])],
+                         ignore_index=True)
+
+    def distribution(self, column: str, limit: int = 25) -> pd.DataFrame:
+        """The values one column takes and how many genes hold each, commonest first."""
+        series = self.column(column)
+        if series is None:
+            return pd.DataFrame(columns=['value', 'genes'])
+        observed = series[~series.map(_is_blank)]
+        counts = observed.astype(str).value_counts()
+        out = counts.rename_axis('value').rename('genes').reset_index().head(limit)
+        return out
+
+    def column(self, column: str):
+        """One column of the map as a Series over genes, from whichever table holds it."""
+        table = self._table_of(column)
+        if table is None:
+            return None
+        return (self.values if table == 'information map' else self.tier2[table])[column]
+
+    def _table_of(self, column: str):
+        if self.catalogue.empty:
+            return None
+        hit = self.catalogue[self.catalogue.column == column]
+        return None if hit.empty else hit.table.iloc[0]
+
+    def predicted_cells(self) -> pd.DataFrame:
+        """Cells whose source is a prediction (``filled:`` or ``exploratory:``) rather than an observation.
+
+        Empty for every release so far, and the application says so in a banner. It is computed rather than
+        assumed, so the banner stops being true the moment a filled release is loaded.
+        """
+        if self.source.empty:
+            return pd.DataFrame(columns=['gene_id', 'column', 'source_tier'])
+        text = self.source.astype(object).where(self.source.notna(), '')
+        hit = text.apply(lambda col: col.astype(str).str.startswith(PREDICTED_PREFIXES))
+        rows = [dict(gene_id=str(self.source.index[r]), column=str(self.source.columns[c]),
+                     source_tier=str(text.iat[r, c]))
+                for r, c in zip(*np.where(hit.to_numpy()))]
+        return pd.DataFrame(rows, columns=['gene_id', 'column', 'source_tier'])
+
+    def banner(self) -> str:
+        """The sentence the panel shows above everything: what kind of cells these are, and what is absent."""
+        predicted = len(self.predicted_cells())
+        if predicted:
+            return (f'{predicted:,} cells of this release are predicted (filled or exploratory). '
+                    'Check their source tier before reading one as a fact.')
+        return ('Every cell shown is an observed fact. No predicted values are present: no strategy has yet '
+                f'reached the {FILL_PRECISION:.0%} held-out precision bar that lets a predicted entry be '
+                'written into the map, so no gap has been filled.')
+
+    def summary(self) -> str:
+        """One line of what was loaded, for the panel's status label."""
+        if self.values.empty and not self.tier2:
+            return 'No published information map was found.'
+        parts = [f'{len(self.genes):,} genes', f'{len(self.catalogue):,} columns '
+                 f'({len(self.columns(1))} tier 1, {len(self.columns(2))} tier 2)',
+                 f'{len(self.evidence):,} evidence rows', f'{len(self.pairs):,} recorded pairs']
+        return ' · '.join(parts) + (f' · from {self.root}' if self.root else '')
+
+
+def _is_blank(value) -> bool:
+    """Whether a cell holds no fact: NA, or an empty string. ``False`` and ``0`` are facts, not blanks."""
+    if value is None or value is pd.NA:
+        return True
+    try:
+        if pd.isna(value):
+            return True
+    except (TypeError, ValueError):
+        return False
+    return isinstance(value, str) and not value.strip()
+
+
+def load_published(root=None, tier2=True) -> PublishedMap:
+    """Read a published information map back from disk, reporting rather than raising what is absent.
+
+    ``root`` names a release directory; without it the override, the installed cache and the newest
+    ``results/information_map_v0_*`` are tried in that order (``published_candidates``). Tier-2 measurement
+    tables are looked for beside the release and in ``results/``. A file that is missing or unreadable is
+    recorded in ``PublishedMap.missing`` and the rest is still returned, because a partial release is worth
+    browsing and a panel that refuses to open explains nothing.
+    """
+    found = published_root(root)
+    missing, frames = [], {}
+    if found is None:
+        looked = ', '.join(str(p) for p in published_candidates(root)) or '(no candidate directories)'
+        return PublishedMap(missing=(f'No published information map (values.parquet) found. Looked at: {looked}.',))
+    loaded = {}
+    for name in MATRIX_FILES:
+        path = found / f'{name}.parquet'
+        if not path.is_file():
+            missing.append(f'{path} is absent, so its part of the map is not shown.')
+            continue
+        try:
+            loaded[name] = pd.read_parquet(path)
+        except (OSError, ValueError) as error:
+            missing.append(f'{path} could not be read ({error}).')
+    values = loaded.get('values', pd.DataFrame())
+    if not values.empty:
+        values.index = values.index.astype(str)
+        frames['information map'] = values
+    tables = {}
+    if tier2:
+        for name in TIER2_TABLES:
+            path = tier2_path(name, root)
+            if path is None:
+                missing.append(f'The tier-2 {name} table ({TIER2_TABLES[name][1]}) was not found, '
+                               'so its measurements are not shown.')
+                continue
+            try:
+                frame = pd.read_parquet(path)
+            except (OSError, ValueError) as error:
+                missing.append(f'{path} could not be read ({error}).')
+                continue
+            frame.index = frame.index.astype(str)
+            tables[name] = frame
+            frames[name] = frame
+            if name == 'domain':
+                loaded.setdefault('_descriptions', {}).update(_domain_descriptions(path))
+    for name in ('probability', 'source'):
+        if name in loaded:
+            loaded[name].index = loaded[name].index.astype(str)
+    return PublishedMap(root=found, values=values,
+                        probability=loaded.get('probability', pd.DataFrame()),
+                        source=loaded.get('source', pd.DataFrame()),
+                        evidence=loaded.get('evidence', pd.DataFrame()),
+                        pairs=loaded.get('pairs', pd.DataFrame()),
+                        tier2=tables,
+                        catalogue=column_catalogue(frames, loaded.get('_descriptions', {})),
+                        missing=tuple(missing))

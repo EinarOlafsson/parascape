@@ -1412,6 +1412,20 @@ class Window(QtWidgets.QMainWindow):
         self._guided()
         self._discoveries()
         self._compare()
+        self._information_map()
+
+    def _information_map(self):
+        """The information-map dock: what is known about a gene, and which claims are measured.
+
+        Beside Discoveries, which shows inferred claims: this shows only observed facts, with the source
+        tier and probability of each and an explicit "not measured" where nothing has been recorded.
+        """
+        try:
+            from .information_map_panel import install
+            install(self)
+        except Exception as e:                        # the browser must open without it
+            self.information_map = None
+            self.statusBar().showMessage(f"information map unavailable: {e}")
 
     def _discoveries(self):
         """The Discoveries dock: claims about unlabelled genes, each with how it was tested."""
