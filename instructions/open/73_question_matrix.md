@@ -248,3 +248,55 @@ frozen partition is part of phase 1's gate.
   frozen-test threshold as registered, so phase 1's gate for them is a `no_frozen_test` flag rather
   than a number -- which is itself the finding, and the reason the three published scoreboards stay
   labelled as cross-validated estimates.
+
+## Information categories: the mechanism that stops circular inference (Einar, 2026-11-05)
+"If the user builds a UMAP from a subset of data and does clustering, then measures cluster-to-held-out-label
+precision and recall, it is important that **each data column in ParaScape is annotated with an information
+category**, otherwise the UMAP inference will often be circular."
+
+This is the generalisation of the per-question `evidence_forbidden` list, and it is needed because the
+hand-written version already failed once: on the harness's first real run, the family importance exposed three
+further pooled CRISPR fitness screens whose family names contain no "crispr" (`gra17_synthlethal` was top of the
+table), each answering the question with the same kind of measurement as its labels. A per-question list caught
+that only because someone read the importance table. **A per-column category catches it automatically.**
+
+### The rule
+**Every column in the map carries an information category: what kind of knowledge it embodies.** Inferring a
+label of category X **excludes every column of category X by default**, whatever its name, family or study.
+Including one is possible but requires an explicit reason that is recorded in the run and shown on the
+scorecard, so a circular run is visible rather than impossible.
+
+Categories, which are about the *kind of knowledge*, not the assay:
+`place` · `fitness` · `transcript` · `translation` · `protein_abundance` · `modification` · `interaction` ·
+`sequence` · `structure` · `domain` · `conservation` · `chromatin` · `phenotype` · `host_response` ·
+`attention` (bookkeeping: publication counts, study effort — a predictor of nothing biological) ·
+`identity` (names and accessions — never a feature).
+
+A column may carry more than one category where it genuinely does; the exclusion then applies if **any** of its
+categories matches the label's.
+
+### Why this is load-bearing for the UMAP strategies specifically
+An embedding built from "all the data" and then evaluated against held-out localisation labels is circular if
+any input column carries `place` -- and 8 of the map's columns do, plus every hyperLOPIT-derived value. Without
+the annotation the user cannot tell, because the circularity is in the *input selection*, not in the model. With
+it, the data picker shows which categories are in and which were removed and why, and the scorecard records it.
+
+### Where it is enforced
+1. **At ingest.** A new column cannot enter the map without an information category. This is the gate that keeps
+   the annotation complete as data keeps arriving, rather than a catalogue that rots.
+2. **In the data picker** (`Label → Infer`): the user chooses *some or all* data by category, family and tier,
+   and the excluded-by-circularity set is shown, named, and counted rather than silently dropped.
+3. **In the harness**: the exclusion is computed from categories, not from a hand-written family list, and the
+   run record stores both the requested selection and the effective one.
+4. **On the scorecard**: every result states which categories it used, which were excluded automatically, and
+   any that were force-included with the stated reason.
+
+## Saved inference runs (Einar, 2026-11-05)
+"It should be easy to save inference runs and they should hold all the metadata necessary to know which data
+they used, from which data, and so on." A run record is therefore reproducible or it is not saved, and holds:
+the question and its version; the strategy, its version and settings; the **requested and effective column
+selection with categories**; the data release version and the sha256 of each table read; the split identity,
+seed and partition sizes; every guard stage recorded; the cross-validated and frozen-test numbers with their
+bounds; the calibration curve; the holdout-log entry; which claims were kept and by whom; and the date.
+Re-running a saved record on the same release must reproduce it exactly; on a newer release it must say what
+changed.
