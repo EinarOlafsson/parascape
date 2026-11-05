@@ -105,3 +105,34 @@ def test_every_registered_question_holds_out_its_own_label_family():
     for question in Q.QUESTIONS.values():
         assert question.label_family in question.evidence_forbidden
         assert not question.allows(question.label_family)
+
+
+def test_the_label_floor_is_derived_from_the_bound_not_chosen():
+    """The 400 that stood here until 2026-11-05 was asserted and never worked out. The floor has to
+    follow from the fill rule: a Clopper-Pearson lower 90 % bound on precision reaching 0.90 needs 22
+    perfect calls, and the test partition is 15 % of labels."""
+    import math
+    from parascape.harness import clopper_pearson_lower
+
+    # 22 is the smallest number of perfect calls whose lower bound clears the bar.
+    assert clopper_pearson_lower(21, 21) < 0.90 <= clopper_pearson_lower(22, 22)
+    assert Q.MIN_FROZEN_TEST_CALLS == 22
+    assert Q.DEFAULT_MIN_LABELS_FOR_FROZEN_TEST >= math.ceil(
+        Q.MIN_FROZEN_TEST_CALLS / Q.TEST_PARTITION_FRACTION)
+
+
+def test_a_small_frozen_test_cannot_fake_a_pass():
+    """Why the floor is not what keeps the map honest. Even with every call correct, a test set that is
+    too small bounds below the bar on its own, so lowering the floor cannot let a lucky run fill cells."""
+    from parascape.harness import clopper_pearson_lower
+    for n in (5, 10, 15, 21):
+        assert clopper_pearson_lower(n, n) < 0.90, n
+
+
+def test_the_test_partition_fraction_matches_the_splitter():
+    """The derivation divides by this number, so it must not drift from what make_split actually does."""
+    import inspect
+    from parascape import splits
+    source = inspect.getsource(splits.make_split)
+    assert "fractions=(0.55, 0.15, 0.15, 0.15)" in source
+    assert Q.TEST_PARTITION_FRACTION == 0.15

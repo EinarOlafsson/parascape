@@ -20,9 +20,14 @@ Two things are recorded here that cost us real work when they were left implicit
   held out.
 * **Whether a frozen test partition is affordable at all.** A held-back partition costs labels. A
   98-gene question cannot spare them, so below `min_labels_for_frozen_test` the harness keeps nested
-  cross-validation only, flags the question `no_frozen_test`, and the question may rank and
-  prioritise but may **not** fill cells. That is a property of the question, recorded once, not a
-  judgement made per run.
+  cross-validation only, flags the question `no_frozen_test` ("not enough known answers to grade"),
+  and the question may rank and prioritise but may **not** fill cells. That is a property of the
+  question, recorded once, not a judgement made per run.
+
+  The floor is **derived** -- see `DEFAULT_MIN_LABELS_FOR_FROZEN_TEST`. It is not what keeps the map
+  honest: the Clopper-Pearson bound does that, and it cannot be fooled by a small test set, because
+  10 perfect calls bound at 0.794 and 15 at 0.858 against a bar of 0.90. The floor only stops a
+  question with no arithmetic path to 22 calls from burning its one-shot partition to find out.
 
 The three admission tests of instruction 73 (answerable, non-redundant, useful) are fields too, so
 the catalogue can be audited rather than argued about.
@@ -48,7 +53,22 @@ STATUSES = ("proposed", "admitted", "scored", "gap", "retired")
 # only some of those genes are called, so a question needs several hundred labels before a frozen
 # partition can demonstrate anything at all. 400 is that arithmetic, rounded, and it is a default:
 # each question may state its own.
-DEFAULT_MIN_LABELS_FOR_FROZEN_TEST = 400
+# Derived, not chosen. The 400 that stood here until 2026-11-05 was asserted and never worked out, and
+# the arithmetic says it was wrong in both directions.
+#
+# What actually binds is the number of above-threshold CALLS in the frozen test, because the fill rule is a
+# Clopper-Pearson lower 90 % bound on precision reaching 0.90. With every call correct that bound is
+# 0.10 ** (1/n), so it clears 0.90 only from n = 22 (21 perfect calls give 0.896). Allowing errors costs
+# more: 38 calls for one error, 52 for two, 65 for three.
+#
+# The bound is self-protecting -- 10 perfect calls score 0.794 and 15 score 0.858 -- so a small frozen test
+# cannot fake a pass, and a label floor is not what keeps the map honest. The floor exists only so that a
+# question with no arithmetic path to 22 calls does not burn its one-shot test partition finding out. The
+# test partition is 15 % of labels (`splits.make_split`), so 22 / 0.15 = 147 labels is the point below
+# which even a strategy that confidently calls every held-out gene cannot reach the bar.
+MIN_FROZEN_TEST_CALLS = 22          # perfect calls needed for a 90 % lower bound to reach 0.90
+TEST_PARTITION_FRACTION = 0.15      # splits.make_split fractions = (0.55, 0.15, 0.15, 0.15)
+DEFAULT_MIN_LABELS_FOR_FROZEN_TEST = 150    # ceil(22 / 0.15) = 147, rounded up
 
 
 @dataclass(frozen=True)

@@ -169,7 +169,7 @@ def test_a_question_below_the_label_threshold_is_flagged_and_cannot_fill(tmp_pat
     result = _run(tmp_path, question=_question(min_labels_for_frozen_test=400), data=data)
     assert result.n_labels == 318
     assert "no_frozen_test" in result.flags and result.frozen_test is None
-    assert "may rank" in result.refusal
+    assert "rank genes" in result.refusal and "put nothing into the map" in result.refusal
     assert not H.may_fill(result)
     # The cross-validated estimate is still produced -- ranking is what these questions are for.
     assert np.isfinite(result.cross_validated["roc_auc"])
