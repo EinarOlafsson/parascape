@@ -1,0 +1,7 @@
+negatives	regime	fill_threshold	best_lower90	calls_at_that_point	reaches_0_90
+degree_matched	cold_node		0.8907022198670116	47	False
+random	cold_node	0.55	0.902187532906142	556	True
+same_compartment	cold_node	0.6	0.9192321421933392	525	True
+degree_matched	known_node	0.85	0.9120378597616198	265	True
+random	known_node	0.5	0.924404735931367	836	True
+same_compartment	known_node	0.55	0.908362810711869	830	True

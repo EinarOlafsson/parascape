@@ -1,0 +1,122 @@
+negatives	regime	strategy	metric	mean	fold_min	fold_max	n_scored	n_positive
+degree_matched	cold_node	model: all families	precision	0.7941529012670674	0.6774193548387096	0.8888888888888888	1248	624
+degree_matched	cold_node	model: all families	recall	0.5435442109994636	0.4329896907216495	0.6111111111111112	1248	624
+degree_matched	cold_node	model: all families	roc_auc	0.7879076811949681	0.6920368795833776	0.8264701169684345	1248	624
+degree_matched	cold_node	model: all families	average_precision	0.8082778118347098	0.7064054657948752	0.8456238107474517	1248	624
+degree_matched	cold_node	baseline: random	precision	0.48754248097951614	0.44	0.5443037974683544	1248	624
+degree_matched	cold_node	baseline: random	recall	0.48754248097951614	0.44	0.5443037974683544	1248	624
+degree_matched	cold_node	baseline: random	roc_auc	0.49791880222156654	0.4585	0.5619291780163435	1248	624
+degree_matched	cold_node	baseline: random	average_precision	0.5039591267299309	0.4745761722075815	0.5459027852679734	1248	624
+degree_matched	cold_node	baseline: both popular (degree product)	precision	0.49993700787401574	0.48	0.5196850393700787	1248	624
+degree_matched	cold_node	baseline: both popular (degree product)	recall	0.5020277275467149	0.48	0.5238095238095238	1248	624
+degree_matched	cold_node	baseline: both popular (degree product)	roc_auc	0.512241796105538	0.501696	0.5301838665107874	1248	624
+degree_matched	cold_node	baseline: both popular (degree product)	average_precision	0.5285271508346152	0.5109261153583158	0.5738674441967029	1248	624
+degree_matched	cold_node	baseline: same compartment alone	precision	0.8541748781748115	0.7087378640776699	0.9180327868852459	1248	624
+degree_matched	cold_node	baseline: same compartment alone	recall	0.4922094699535388	0.37628865979381443	0.56	1248	624
+degree_matched	cold_node	baseline: same compartment alone	roc_auc	0.7049815447967868	0.6108247422680413	0.755	1248	624
+degree_matched	cold_node	baseline: same compartment alone	average_precision	0.6787245988180655	0.5785456911220098	0.7340983606557377	1248	624
+degree_matched	cold_node	baseline: shared orthogroup alone	precision	1.0	1.0	1.0	1248	624
+degree_matched	cold_node	baseline: shared orthogroup alone	recall	0.03457286859761087	0.0	0.11	1248	624
+degree_matched	cold_node	baseline: shared orthogroup alone	roc_auc	0.5172864342988055	0.5	0.555	1248	624
+degree_matched	cold_node	baseline: shared orthogroup alone	average_precision	0.5172864342988055	0.5	0.555	1248	624
+degree_matched	known_node	model: all families	precision	0.7742907588529162	0.6813725490196079	0.8661417322834646	1959	962
+degree_matched	known_node	model: all families	recall	0.6111378618203962	0.5699481865284974	0.695	1959	962
+degree_matched	known_node	model: all families	roc_auc	0.8002150954209075	0.7694387755102041	0.8266081871345029	1959	962
+degree_matched	known_node	model: all families	average_precision	0.8068664955109298	0.7590575823500544	0.8480216217545327	1959	962
+degree_matched	known_node	baseline: random	precision	0.4795857083182195	0.43548387096774194	0.5336538461538461	1959	962
+degree_matched	known_node	baseline: random	recall	0.48966683073157424	0.43005181347150256	0.5414634146341464	1959	962
+degree_matched	known_node	baseline: random	roc_auc	0.4977824839518011	0.44121391561806067	0.5688269454123113	1959	962
+degree_matched	known_node	baseline: random	average_precision	0.49759013114135076	0.4596496406744449	0.5711087689354675	1959	962
+degree_matched	known_node	baseline: both popular (degree product)	precision	0.5160780738458403	0.46524064171123	0.5527638190954773	1959	962
+degree_matched	known_node	baseline: both popular (degree product)	recall	0.5271796355541958	0.5025906735751295	0.551219512195122	1959	962
+degree_matched	known_node	baseline: both popular (degree product)	roc_auc	0.5432902281809346	0.5059969295720592	0.5684668989547038	1959	962
+degree_matched	known_node	baseline: both popular (degree product)	average_precision	0.54344492933685	0.4948380143626299	0.5995978687422038	1959	962
+degree_matched	known_node	baseline: same compartment alone	precision	0.8448093356720087	0.8245614035087719	0.8936170212765957	1959	962
+degree_matched	known_node	baseline: same compartment alone	recall	0.4656760412763658	0.43523316062176165	0.49707602339181284	1959	962
+degree_matched	known_node	baseline: same compartment alone	roc_auc	0.6916433872292638	0.6742740998838559	0.7060380116959064	1959	962
+degree_matched	known_node	baseline: same compartment alone	average_precision	0.6560234857629957	0.6396056366886207	0.6851274127295299	1959	962
+degree_matched	known_node	baseline: shared orthogroup alone	precision	1.0	1.0	1.0	1959	962
+degree_matched	known_node	baseline: shared orthogroup alone	recall	0.007157079585521789	0.0	0.015	1959	962
+degree_matched	known_node	baseline: shared orthogroup alone	roc_auc	0.5035785397927609	0.5	0.5075	1959	962
+degree_matched	known_node	baseline: shared orthogroup alone	average_precision	0.49490639414360144	0.46406897747513437	0.5244565217391305	1959	962
+random	cold_node	model: all families	precision	0.906760239599952	0.8636363636363636	0.9457831325301205	1185	624
+random	cold_node	model: all families	recall	0.8168007374127171	0.7215189873417721	0.88	1185	624
+random	cold_node	model: all families	roc_auc	0.9327805457262185	0.8980078854534136	0.9522727272727273	1185	624
+random	cold_node	model: all families	average_precision	0.9382953866475272	0.8657004123532134	0.9673963906222317	1185	624
+random	cold_node	baseline: random	precision	0.5125942181117632	0.42574257425742573	0.6482758620689655	1185	624
+random	cold_node	baseline: random	recall	0.5005806744012147	0.47	0.5443037974683544	1185	624
+random	cold_node	baseline: random	roc_auc	0.5117326477660213	0.4671818181818182	0.5871550114131563	1185	624
+random	cold_node	baseline: random	average_precision	0.5391595419024945	0.47694989421813083	0.6729930949024936	1185	624
+random	cold_node	baseline: both popular (degree product)	precision	0.9747768062586285	0.9433962264150944	1.0	1185	624
+random	cold_node	baseline: both popular (degree product)	recall	0.9303861233840616	0.7474226804123711	1.0	1185	624
+random	cold_node	baseline: both popular (degree product)	roc_auc	0.9954302508173132	0.9896818181818181	0.9991945876288659	1185	624
+random	cold_node	baseline: both popular (degree product)	average_precision	0.9937717383049544	0.9856668851547912	0.9994175410365098	1185	624
+random	cold_node	baseline: same compartment alone	precision	0.9609214665552693	0.9047619047619048	1.0	1185	624
+random	cold_node	baseline: same compartment alone	recall	0.4922094699535388	0.37628865979381443	0.56	1185	624
+random	cold_node	baseline: same compartment alone	roc_auc	0.7365600586521006	0.6829359965635738	0.78	1185	624
+random	cold_node	baseline: same compartment alone	average_precision	0.7382581783536878	0.6391820283753025	0.7884450572150536	1185	624
+random	cold_node	baseline: shared orthogroup alone	precision	1.0	1.0	1.0	1185	624
+random	cold_node	baseline: shared orthogroup alone	recall	0.03457286859761087	0.0	0.11	1185	624
+random	cold_node	baseline: shared orthogroup alone	roc_auc	0.5172864342988055	0.5	0.555	1185	624
+random	cold_node	baseline: shared orthogroup alone	average_precision	0.5318259196240794	0.39303482587064675	0.6792036971205119	1185	624
+random	known_node	model: all families	precision	0.9363190207901226	0.9176470588235294	0.9512195121951219	1019	814
+random	known_node	model: all families	recall	0.96092648211391	0.9444444444444444	0.988950276243094	1019	814
+random	known_node	model: all families	roc_auc	0.9546350259147973	0.9398006134969326	0.96588693957115	1019	814
+random	known_node	model: all families	average_precision	0.9876691895994949	0.9808558902488322	0.992081607982924	1019	814
+random	known_node	baseline: random	precision	0.7989572248915973	0.7452830188679245	0.8333333333333334	1019	814
+random	known_node	baseline: random	recall	0.5017812637174792	0.48466257668711654	0.5208333333333334	1019	814
+random	known_node	baseline: random	roc_auc	0.5087602969177453	0.45666929755327546	0.5466211825860949	1019	814
+random	known_node	baseline: random	average_precision	0.8016658840991383	0.7680854858665846	0.8427633276686091	1019	814
+random	known_node	baseline: both popular (degree product)	precision	0.9961308411214954	0.99	1.0	1019	814
+random	known_node	baseline: both popular (degree product)	recall	0.6288360356445309	0.5966850828729282	0.6503067484662577	1019	814
+random	known_node	baseline: both popular (degree product)	roc_auc	0.9842429739796404	0.9691334355828221	0.997628726287263	1019	814
+random	known_node	baseline: both popular (degree product)	average_precision	0.995278903589573	0.9898965175037459	0.9992755145687625	1019	814
+random	known_node	baseline: same compartment alone	precision	0.9874136828644501	0.9710144927536232	1.0	1019	814
+random	known_node	baseline: same compartment alone	recall	0.4721621588699664	0.40853658536585363	0.5248618784530387	1019	814
+random	known_node	baseline: same compartment alone	roc_auc	0.7246128254667292	0.6820460704607046	0.7481452249408052	1019	814
+random	known_node	baseline: same compartment alone	average_precision	0.8872035881116481	0.8608097777462068	0.917542715367301	1019	814
+random	known_node	baseline: shared orthogroup alone	precision	1.0	1.0	1.0	1019	814
+random	known_node	baseline: shared orthogroup alone	recall	0.006020614238312369	0.0	0.012345679012345678	1019	814
+random	known_node	baseline: shared orthogroup alone	roc_auc	0.5030103071191563	0.5	0.5061728395061729	1019	814
+random	known_node	baseline: shared orthogroup alone	average_precision	0.7995996936989943	0.7739074811734946	0.8388581952117863	1019	814
+same_compartment	cold_node	model: all families	precision	0.8818086361233923	0.7692307692307693	0.9433962264150944	1199	624
+same_compartment	cold_node	model: all families	recall	0.8483605202488146	0.8	0.9	1199	624
+same_compartment	cold_node	model: all families	roc_auc	0.9381286434014952	0.9178255372945638	0.960328852929662	1199	624
+same_compartment	cold_node	model: all families	average_precision	0.949728441133912	0.9221237315698356	0.9679508513632609	1199	624
+same_compartment	cold_node	baseline: random	precision	0.501816670827859	0.4649122807017544	0.5446428571428571	1199	624
+same_compartment	cold_node	baseline: random	recall	0.4947761111421819	0.4603174603174603	0.5316455696202531	1199	624
+same_compartment	cold_node	baseline: random	roc_auc	0.496129063518184	0.45287259446551476	0.5658358345295575	1199	624
+same_compartment	cold_node	baseline: random	average_precision	0.5205889742574069	0.4464911294551597	0.5633239018960625	1199	624
+same_compartment	cold_node	baseline: both popular (degree product)	precision	0.9238300475170316	0.8876404494382022	0.9583333333333334	1199	624
+same_compartment	cold_node	baseline: both popular (degree product)	recall	0.911795254459172	0.8298969072164949	1.0	1199	624
+same_compartment	cold_node	baseline: both popular (degree product)	roc_auc	0.9775211660178584	0.9562087371821885	0.9910629921259843	1199	624
+same_compartment	cold_node	baseline: both popular (degree product)	average_precision	0.9747350754124721	0.9486128807684393	0.9870328882304007	1199	624
+same_compartment	cold_node	baseline: same compartment alone	precision	0.33949987315106994	0.2814814814814815	0.3950617283950617	1199	624
+same_compartment	cold_node	baseline: same compartment alone	recall	0.4922094699535388	0.37628865979381443	0.56	1199	624
+same_compartment	cold_node	baseline: same compartment alone	roc_auc	0.2461047349767694	0.18814432989690721	0.28	1199	624
+same_compartment	cold_node	baseline: same compartment alone	average_precision	0.4290782939551988	0.36519871933752196	0.49123822921892535	1199	624
+same_compartment	cold_node	baseline: shared orthogroup alone	precision	0.8695652173913043	0.4782608695652174	1.0	1199	624
+same_compartment	cold_node	baseline: shared orthogroup alone	recall	0.03457286859761087	0.0	0.11	1199	624
+same_compartment	cold_node	baseline: shared orthogroup alone	roc_auc	0.5078376154011676	0.5	0.5154639175257731	1199	624
+same_compartment	cold_node	baseline: shared orthogroup alone	average_precision	0.517875833035469	0.4446791802336717	0.5938020865485524	1199	624
+same_compartment	known_node	model: all families	precision	0.9020526405388685	0.8457446808510638	0.9263803680981595	1353	861
+same_compartment	known_node	model: all families	recall	0.9095009141353121	0.8662790697674418	0.9424083769633508	1353	861
+same_compartment	known_node	model: all families	roc_auc	0.9526292535351839	0.9255360623781675	0.964719181342218	1353	861
+same_compartment	known_node	model: all families	average_precision	0.9745954925704157	0.9615665808768996	0.9837741666580915	1353	861
+same_compartment	known_node	baseline: random	precision	0.6397784945099919	0.5877862595419847	0.7071428571428572	1353	861
+same_compartment	known_node	baseline: random	recall	0.5045056181886707	0.4502923976608187	0.5424836601307189	1353	861
+same_compartment	known_node	baseline: random	roc_auc	0.5004735170623322	0.43807667316439247	0.5525731328129958	1353	861
+same_compartment	known_node	baseline: random	average_precision	0.653445976826656	0.6202310970690508	0.6811317793825731	1353	861
+same_compartment	known_node	baseline: both popular (degree product)	precision	0.9675435384547468	0.9545454545454546	0.9788732394366197	1353	861
+same_compartment	known_node	baseline: both popular (degree product)	recall	0.7664720763475994	0.7068062827225131	0.8104575163398693	1353	861
+same_compartment	known_node	baseline: both popular (degree product)	roc_auc	0.9652703892732883	0.9463287849252761	0.9796528503425055	1353	861
+same_compartment	known_node	baseline: both popular (degree product)	average_precision	0.975222510594626	0.9633129462869359	0.9858281590732376	1353	861
+same_compartment	known_node	baseline: same compartment alone	precision	0.4491722055786071	0.4180790960451977	0.47368421052631576	1353	861
+same_compartment	known_node	baseline: same compartment alone	recall	0.46628318701199084	0.4031413612565445	0.5	1353	861
+same_compartment	known_node	baseline: same compartment alone	roc_auc	0.23314159350599542	0.20157068062827224	0.25	1353	861
+same_compartment	known_node	baseline: same compartment alone	average_precision	0.5494720319342882	0.5108019402440825	0.5967347857906886	1353	861
+same_compartment	known_node	baseline: shared orthogroup alone	precision	0.6666666666666666	0.5	1.0	1353	861
+same_compartment	known_node	baseline: shared orthogroup alone	recall	0.005842916535237858	0.0	0.011695906432748537	1353	861
+same_compartment	known_node	baseline: shared orthogroup alone	roc_auc	0.4996638825100431	0.4969359828653022	0.5032679738562091	1353	861
+same_compartment	known_node	baseline: shared orthogroup alone	average_precision	0.6362842364446164	0.6002859477124183	0.6836213852765112	1353	861
+pulldown_degree_matched	cold_node	model: all families	roc_auc	0.6429872241863934			12219	6746

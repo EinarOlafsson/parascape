@@ -1,0 +1,18 @@
+complex	pair	gene_a	gene_b	crosslink_positive	probability	how	percentile_among_candidates	in_pulldown
+MyoA glideosome	MyoA-MLC1	TGME49_235470	TGME49_257680	True		crosslink positive, held out by neither regime (always in training)		False
+MyoA glideosome	MyoA-ELC1	TGME49_235470	TGME49_269442	True	0.8360655737704918	crosslink positive, dropped by the cold-node rule; known-node OUT-OF-FOLD score instead	0.9951300712711915	False
+MyoA glideosome	MyoA-GAP45	TGME49_235470	TGME49_223940	True		crosslink positive, held out by neither regime (always in training)		False
+MyoA glideosome	MyoA-GAP50	TGME49_235470	TGME49_219320	False	0.819672131147541	candidate, full-fit score (not out of fold)	0.865373944803883	False
+MyoA glideosome	MyoA-GAP40	TGME49_235470	TGME49_249850	False	0.819672131147541	not a candidate (no pull-down and not a co-expression neighbour), full-fit score	0.865373944803883	False
+MyoA glideosome	MLC1-ELC1	TGME49_257680	TGME49_269442	True	0.9464285714285714	crosslink positive, dropped by the cold-node rule; known-node OUT-OF-FOLD score instead	0.9962909890157249	False
+MyoA glideosome	MLC1-GAP45	TGME49_257680	TGME49_223940	True	0.7575757575757576	crosslink positive, cold-node OUT-OF-FOLD score	0.7449105473821439	False
+MyoA glideosome	MLC1-GAP50	TGME49_257680	TGME49_219320	True	0.927536231884058	crosslink positive, dropped by the cold-node rule; known-node OUT-OF-FOLD score instead	0.9962829083817722	False
+MyoA glideosome	MLC1-GAP40	TGME49_257680	TGME49_249850	True		crosslink positive, held out by neither regime (always in training)		False
+MyoA glideosome	ELC1-GAP45	TGME49_269442	TGME49_223940	True	0.927536231884058	crosslink positive, dropped by the cold-node rule; known-node OUT-OF-FOLD score instead	0.9962829083817722	False
+MyoA glideosome	ELC1-GAP50	TGME49_269442	TGME49_219320	False	0.819672131147541	not a candidate (no pull-down and not a co-expression neighbour), full-fit score	0.865373944803883	False
+MyoA glideosome	ELC1-GAP40	TGME49_269442	TGME49_249850	False	0.819672131147541	not a candidate (no pull-down and not a co-expression neighbour), full-fit score	0.865373944803883	False
+MyoA glideosome	GAP45-GAP50	TGME49_223940	TGME49_219320	True	0.927536231884058	crosslink positive, dropped by the cold-node rule; known-node OUT-OF-FOLD score instead	0.9962829083817722	False
+MyoA glideosome	GAP45-GAP40	TGME49_223940	TGME49_249850	False	0.819672131147541	not a candidate (no pull-down and not a co-expression neighbour), full-fit score	0.865373944803883	False
+MyoA glideosome	GAP50-GAP40	TGME49_219320	TGME49_249850	False	0.9736842105263158	candidate, full-fit score (not out of fold)	0.9962963761050266	False
+AMA1-RON2	AMA1-RON2	TGME49_255260	TGME49_300100	False	0.26666666666666666	not a candidate (no pull-down and not a co-expression neighbour), full-fit score	0.005322444230158004	False
+MIC2-M2AP	MIC2-M2AP	TGME49_201780	TGME49_214940	True		crosslink positive, held out by neither regime (always in training)		False

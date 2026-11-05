@@ -1,0 +1,501 @@
+pkey	gene_a	gene_b	probability	product_a	product_b	in_pulldown	coexpr_percentile	fit_profile_corr	dom_shared	same_comp_obs	same_comp_pred	same_orthogroup	tdi_kmer_cosine	status
+TGME49_258150|TGME49_290005	TGME49_258150	TGME49_290005	1.0	proteasome subunit alpha type-7, putative	proteasome subunit beta type-1, putative	False	0.96053773	0.7169608	3.0	1.0	1.0	0.0	0.55360746	exploratory
+TGME49_216590|TGME49_320430	TGME49_216590	TGME49_320430	1.0	HEAT repeat-containing protein	cell-cycle-control protein (translation regulation), putative	False	0.8934527	0.013246994	1.0		0.0	0.0	0.46743882	exploratory
+TGME49_213050|TGME49_226380	TGME49_213050	TGME49_226380	1.0	hypothetical protein	dense granule protein GRA35	False	0.82191855	0.94522995	0.0		1.0	0.0	0.7301837	exploratory
+TGME49_227620|TGME49_239740	TGME49_227620	TGME49_239740	1.0	dense granule protein GRA2	dense granule protein GRA14	False	0.8877775	0.79564935	0.0	1.0	1.0	0.0	0.78992	exploratory
+TGME49_218600|TGME49_308920	TGME49_218600	TGME49_308920	1.0	RNA recognition motif-containing protein	splicing factor U2AF protein	False	0.88291204	0.78956383	3.0		1.0	0.0	0.9925125	exploratory
+TGME49_214980|TGME49_243430	TGME49_214980	TGME49_243430	1.0	hypothetical protein	OTU domain-containing protein OTUD3C	False	0.8518694	0.053378142	0.0		1.0	0.0	0.9942954	exploratory
+TGME49_239500|TGME49_306930	TGME49_239500	TGME49_306930	1.0	proteasome subunit alpha type-4, putative	proteasome subunit beta type-7, putative	False	0.98076177	0.16064064	3.0	1.0	1.0	0.0	0.17704785	exploratory
+TGME49_294670|TGME49_305850	TGME49_294670	TGME49_305850	1.0	eukaryotic translation initiation factor 3 subunit G, putative	RNA recognition motif-containing protein	False	0.9307477	-0.53002614	3.0		1.0	0.0	0.82160586	exploratory
+TGME49_288340|TGME49_310100	TGME49_288340	TGME49_310100	1.0	UBX domain-containing protein	mannosyltransferase (pig-m) protein	False	0.81272197	-0.08942987	0.0		1.0	0.0	0.81651944	exploratory
+TGME49_264610|TGME49_319530	TGME49_264610	TGME49_319530	1.0	RNA recognition motif-containing protein	serine/arginine-rich splicing factor SR1	False	0.91666603	-0.40867114	3.0		1.0	0.0	0.9439329	exploratory
+TGME49_216590|TGME49_257350	TGME49_216590	TGME49_257350	1.0	HEAT repeat-containing protein	eukaryotic translation initiation factor, putative	False	0.87481785	0.3577838	1.0		1.0	0.0	0.3787365	exploratory
+TGME49_213050|TGME49_316250	TGME49_213050	TGME49_316250	1.0	hypothetical protein	dense granule protein GRA45	False	0.8411618	0.3011092	0.0		1.0	0.0	0.83253205	exploratory
+TGME49_216590|TGME49_246510	TGME49_216590	TGME49_246510	1.0	HEAT repeat-containing protein	protein phosphatase 2a regulatory b subunit (b56 family) protein	False	0.90408146	-0.027478103	1.0		1.0	0.0	0.594729	exploratory
+TGME49_216590|TGME49_247300	TGME49_216590	TGME49_247300	1.0	HEAT repeat-containing protein	hypothetical protein	False	0.886364	-0.37250203	1.0		1.0	0.0	0.6464713	exploratory
+TGME49_233120|TGME49_272710	TGME49_233120	TGME49_272710	1.0	AP2 domain transcription factor AP2VIII-2	AP2 domain transcription factor AP2VIII-4	False	0.8782109	0.15382765	2.0		1.0	0.0	0.9888065	exploratory
+TGME49_268200|TGME49_294710	TGME49_268200	TGME49_294710	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9163009	0.6479229	3.0		1.0	0.0	0.9938337	exploratory
+TGME49_256990|TGME49_300260	TGME49_256990	TGME49_300260	1.0	glycyl-tRNA synthetase	threonyl-tRNA synthetase family protein	False	0.91605526	0.6069655	2.0	1.0	1.0	0.0	0.8243297	exploratory
+TGME49_268200|TGME49_305010	TGME49_268200	TGME49_305010	1.0	RNA recognition motif-containing protein	pre-mRNA branch site protein p14, putative	False	0.8478508	-0.5342765	3.0		1.0	0.0	0.8031565	exploratory
+TGME49_211290|TGME49_242820	TGME49_211290	TGME49_242820	1.0	rhoptry protein ROP15	hypothetical protein	False	0.8233386	0.15468	0.0	1.0	1.0	0.0	0.8022529	exploratory
+TGME49_243710|TGME49_287500	TGME49_243710	TGME49_287500	1.0	t-complex protein beta subunit	T complex chaperonin, putative	False	0.9531954	0.41781455	5.0	1.0	1.0	0.0	0.8477132	exploratory
+TGME49_202370|TGME49_287500	TGME49_202370	TGME49_287500	1.0	T-complex protein 1, epsilon subunit (TCP-1-epsilon), putative	T complex chaperonin, putative	False	0.9605098	0.40525246	5.0	1.0	1.0	0.0	0.8542054	exploratory
+TGME49_242730|TGME49_318590	TGME49_242730	TGME49_318590	1.0	guanylate kinase family protein	Fe-S cluster assembly factor HCF101	False	0.86951965	0.580859	1.0		1.0	0.0	0.74472654	exploratory
+TGME49_242820|TGME49_258800	TGME49_242820	TGME49_258800	1.0	hypothetical protein	rhoptry kinase family protein ROP31	False	0.7799527	-0.34700486	0.0	1.0	1.0	0.0	0.96492213	exploratory
+TGME49_292280|TGME49_301170	TGME49_292280	TGME49_301170	1.0	SAG-related sequence SRS36D	SAG-related sequence SRS19D	False	0.77674675	0.60978186	4.0	1.0	1.0	1.0	0.8932354	exploratory
+TGME49_292280|TGME49_320190	TGME49_292280	TGME49_320190	1.0	SAG-related sequence SRS36D	SAG-related sequence SRS16B	False	0.8454751	0.8084192	4.0	1.0	1.0	1.0	0.9019807	exploratory
+TGME49_265410|TGME49_289550	TGME49_265410	TGME49_289550	1.0	pre-mRNA-processing factor 17, putative	WD domain, G-beta repeat-containing protein	False	0.8337484	0.6490497	5.0		1.0	0.0	0.9421281	exploratory
+TGME49_227810|TGME49_295110	TGME49_227810	TGME49_295110	1.0	rhoptry kinase family protein ROP11 (incomplete catalytic triad)	rhoptry protein ROP7	False	0.9099104	0.8532737	4.0	1.0	1.0	0.0	0.86585563	exploratory
+TGME49_242820|TGME49_294560	TGME49_242820	TGME49_294560	1.0	hypothetical protein	rhoptry kinase family protein ROP37 (incomplete catalytic triad)	False	0.8212555	-0.2558545	0.0	1.0	1.0	0.0	0.91269076	exploratory
+TGME49_234610|TGME49_295680	TGME49_234610	TGME49_295680	1.0	WD-40 repeat protein	periodic tryptophan protein PWP2, putative	False	0.85903376	0.86462903	2.0	1.0	1.0	0.0	0.961174	exploratory
+TGME49_258150|TGME49_280710	TGME49_258150	TGME49_280710	1.0	proteasome subunit alpha type-7, putative	proteasome subunit beta type-4, putative	False	0.9497261	-0.0054060514	3.0	1.0	1.0	0.0	0.51233786	exploratory
+TGME49_267480|TGME49_288530	TGME49_267480	TGME49_288530	1.0	tRNA (guanine(26)-N(2))-dimethyltransferase, putative	NOL1/NOP2/sun family protein	False	0.86701983	0.68402386	1.0		1.0	0.0	0.969585	exploratory
+TGME49_239740|TGME49_288650	TGME49_239740	TGME49_288650	1.0	dense granule protein GRA14	dense granule protein GRA12	False	0.94303036	0.22291759	0.0	1.0	1.0	0.0	0.86609846	exploratory
+TGME49_227810|TGME49_258580	TGME49_227810	TGME49_258580	1.0	rhoptry kinase family protein ROP11 (incomplete catalytic triad)	rhoptry protein ROP17	False	0.9516801	0.3359118	4.0	1.0	1.0	0.0	0.935241	exploratory
+TGME49_214940|TGME49_250710	TGME49_214940	TGME49_250710	1.0	MIC2-associated protein M2AP	microneme protein MIC10	False	0.9444812	0.3885824	0.0	1.0	1.0	0.0	0.16380462	exploratory
+TGME49_315320|TGME49_319350	TGME49_315320	TGME49_319350	1.0	SAG-related sequence SRS52A	SAG-related sequence SRS17B	False	0.83501625	0.5309449	1.0	1.0	1.0	0.0	0.82769763	exploratory
+TGME49_214940|TGME49_293770	TGME49_214940	TGME49_293770	1.0	MIC2-associated protein M2AP	chitinase-like protein CLP1	False	0.8672286	0.32008114	0.0	1.0	1.0	0.0	0.9628711	exploratory
+TGME49_258150|TGME49_306930	TGME49_258150	TGME49_306930	1.0	proteasome subunit alpha type-7, putative	proteasome subunit beta type-7, putative	False	0.9756482	0.22955334	3.0	1.0	1.0	0.0	0.20417365	exploratory
+TGME49_218520|TGME49_261780	TGME49_218520	TGME49_261780	1.0	microneme protein MIC6	microneme protein MIC7	False	0.8678984	0.50220126	3.0	1.0	1.0	0.0	0.499369	exploratory
+TGME49_214940|TGME49_319560	TGME49_214940	TGME49_319560	1.0	MIC2-associated protein M2AP	microneme protein MIC3	False	0.78090453	0.2234561	0.0	1.0	1.0	0.0	0.9560607	exploratory
+TGME49_214940|TGME49_218520	TGME49_214940	TGME49_218520	1.0	MIC2-associated protein M2AP	microneme protein MIC6	False	0.94371027	0.2361895	0.0	1.0	1.0	0.0	0.96769565	exploratory
+TGME49_218920|TGME49_306930	TGME49_218920	TGME49_306930	1.0	proteasome subunit beta type-5, putative	proteasome subunit beta type-7, putative	False	0.9715873	-0.006645914	3.0	1.0	1.0	0.0	0.672956	exploratory
+TGME49_223590|TGME49_290005	TGME49_223590	TGME49_290005	1.0	proteasome subunit beta type-6, putative	proteasome subunit beta type-1, putative	False	0.8912333	-0.34112498	3.0	1.0	1.0	0.0	0.571848	exploratory
+TGME49_213280|TGME49_233450	TGME49_213280	TGME49_233450	1.0	SAG-related sequence SRS25	SAG-related sequence SRS29A	False	0.80955756	0.69650847	3.0	1.0	1.0	0.0	0.8695942	exploratory
+TGME49_227360|TGME49_249250	TGME49_227360	TGME49_249250	1.0	ribosomal protein RPL3	ribosomal protein RPL35A	False	0.82742167	0.8278638	1.0	1.0	1.0	0.0	0.39981505	exploratory
+TGME49_217050|TGME49_286920	TGME49_217050	TGME49_286920	1.0	ADA2-A transcriptional co-activator SAGA component	SWIRM domain-containing protein	False	0.89482784	0.26968658	2.0	1.0	1.0	0.0	0.9413968	exploratory
+TGME49_287210|TGME49_290005	TGME49_287210	TGME49_290005	1.0	proteasome subunit alpha type-2, putative	proteasome subunit beta type-1, putative	False	0.9482141	0.7714882	3.0	1.0	1.0	0.0	0.46070442	exploratory
+TGME49_223590|TGME49_280710	TGME49_223590	TGME49_280710	1.0	proteasome subunit beta type-6, putative	proteasome subunit beta type-4, putative	False	0.908724	-0.17737813	3.0	1.0	1.0	0.0	0.17054167	exploratory
+TGME49_245490|TGME49_250710	TGME49_245490	TGME49_250710	1.0	microneme protein MIC8	microneme protein MIC10	False	0.8095746	-0.60963744	0.0	1.0	1.0	0.0	0.2808758	exploratory
+TGME49_223590|TGME49_254900	TGME49_223590	TGME49_254900	1.0	proteasome subunit beta type-6, putative	proteasome subunit beta type-2, putative	False	0.8802058	-0.22653326	3.0	1.0	1.0	0.0	0.1606818	exploratory
+TGME49_268200|TGME49_320100	TGME49_268200	TGME49_320100	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.8301943	-0.26855102	3.0		1.0	0.0	0.9958836	exploratory
+TGME49_223590|TGME49_239500	TGME49_223590	TGME49_239500	1.0	proteasome subunit beta type-6, putative	proteasome subunit alpha type-4, putative	False	0.8975179	-0.23473227	3.0	1.0	1.0	0.0	0.056947753	exploratory
+TGME49_223540|TGME49_249530	TGME49_223540	TGME49_249530	1.0	importin-beta N-terminal domain-containing protein	exportin 1, putative	False	0.93575656	0.1811743	1.0		1.0	0.0	0.9165543	exploratory
+TGME49_216450|TGME49_290005	TGME49_216450	TGME49_290005	1.0	proteasome subunit alpha type-3, putative	proteasome subunit beta type-1, putative	False	0.96311283	0.69530433	3.0	1.0	1.0	0.0	0.46552685	exploratory
+TGME49_275440|TGME49_310780	TGME49_275440	TGME49_310780	1.0	dense granule protein GRA6	dense granule protein GRA4	False	0.8589583	0.90195966	0.0	1.0	1.0	0.0	0.99118173	exploratory
+TGME49_216450|TGME49_249590	TGME49_216450	TGME49_249590	1.0	proteasome subunit alpha type-3, putative	proteasome subunit alpha type-5, putative	False	0.96461296	0.55270267	3.0	1.0	1.0	0.0	0.57474065	exploratory
+TGME49_216450|TGME49_218920	TGME49_216450	TGME49_218920	1.0	proteasome subunit alpha type-3, putative	proteasome subunit beta type-5, putative	False	0.878999	0.23055589	3.0	1.0	1.0	0.0	0.5023552	exploratory
+TGME49_245490|TGME49_283540	TGME49_245490	TGME49_283540	1.0	microneme protein MIC8	microneme protein MIC20	False	0.8163773	-0.7260068	0.0	1.0	1.0	0.0	0.89061964	exploratory
+TGME49_255470|TGME49_314320	TGME49_255470	TGME49_314320	1.0	GTP-binding protein, putative	GTP-binding protein, putative	False	0.8014815	0.24034184	3.0			0.0	0.99656516	exploratory
+TGME49_275370|TGME49_320180	TGME49_275370	TGME49_320180	1.0	SAG-related sequence SRS47C	SAG-related sequence SRS16C	False	0.6368713	0.56628555	2.0	1.0	1.0	0.0	0.91251427	exploratory
+TGME49_245490|TGME49_277080	TGME49_245490	TGME49_277080	1.0	microneme protein MIC8	microneme protein MIC5	False	0.84020615	-0.38222882	0.0	1.0	1.0	0.0	0.90891653	exploratory
+TGME49_268200|TGME49_319530	TGME49_268200	TGME49_319530	1.0	RNA recognition motif-containing protein	serine/arginine-rich splicing factor SR1	False	0.9488727	-0.4416228	3.0		1.0	0.0	0.949493	exploratory
+TGME49_229180|TGME49_231600	TGME49_229180	TGME49_231600	1.0	HEAT repeat-containing protein	HEAT repeat-containing protein	False	0.9060235	0.6444207	1.0		1.0	0.0	0.9347301	exploratory
+TGME49_204530|TGME49_283540	TGME49_204530	TGME49_283540	1.0	microneme protein MIC11	microneme protein MIC20	False	0.839367	0.07906986	0.0	1.0	1.0	0.0	0.8352714	exploratory
+TGME49_204530|TGME49_319560	TGME49_204530	TGME49_319560	1.0	microneme protein MIC11	microneme protein MIC3	False	0.7719182	0.48644987	0.0	1.0	1.0	0.0	0.5120199	exploratory
+TGME49_204530|TGME49_289630	TGME49_204530	TGME49_289630	1.0	microneme protein MIC11	microneme protein MIC16	False	0.8718204	0.24146326	0.0	1.0	1.0	0.0	0.64856416	exploratory
+TGME49_204530|TGME49_245490	TGME49_204530	TGME49_245490	1.0	microneme protein MIC11	microneme protein MIC8	False	0.888947	-0.1890327	0.0	1.0	1.0	0.0	0.6681079	exploratory
+TGME49_244320|TGME49_313390	TGME49_244320	TGME49_313390	1.0	ribosomal protein RPL24	ribosomal protein RPL6	False	0.97727644	0.724625	0.0	1.0	1.0	0.0	0.9762924	exploratory
+TGME49_204530|TGME49_255260	TGME49_204530	TGME49_255260	1.0	microneme protein MIC11	apical membrane antigen AMA1	False	0.9670613	-0.2791363	0.0	1.0	1.0	0.0	0.673471	exploratory
+TGME49_204530|TGME49_214940	TGME49_204530	TGME49_214940	1.0	microneme protein MIC11	MIC2-associated protein M2AP	False	0.9104339	0.1361265	0.0	1.0	1.0	0.0	0.6055648	exploratory
+TGME49_218920|TGME49_290005	TGME49_218920	TGME49_290005	1.0	proteasome subunit beta type-5, putative	proteasome subunit beta type-1, putative	False	0.87618685	0.41028357	3.0	1.0	1.0	0.0	0.75342697	exploratory
+TGME49_208030|TGME49_214940	TGME49_208030	TGME49_214940	1.0	microneme protein MIC4	MIC2-associated protein M2AP	False	0.9427542	0.2967684	0.0	1.0	1.0	0.0	0.82086635	exploratory
+TGME49_204530|TGME49_218520	TGME49_204530	TGME49_218520	1.0	microneme protein MIC11	microneme protein MIC6	False	0.94884837	-0.6429828	0.0	1.0	1.0	0.0	0.51118517	exploratory
+TGME49_261000|TGME49_306970	TGME49_261000	TGME49_306970	1.0	DNA mismatch repair protein MSH2, putative	thymidylate kinase	False	0.88975185	-0.3957005	1.0		1.0	0.0	0.58997005	exploratory
+TGME49_218920|TGME49_242290	TGME49_218920	TGME49_242290	1.0	proteasome subunit beta type-5, putative	proteasome subunit alpha type-6, putative	False	0.8823952	0.4352336	3.0	1.0	1.0	0.0	0.52278876	exploratory
+TGME49_218920|TGME49_258150	TGME49_218920	TGME49_258150	1.0	proteasome subunit beta type-5, putative	proteasome subunit alpha type-7, putative	False	0.9303398	0.22054332	3.0	1.0	1.0	0.0	0.49951884	exploratory
+TGME49_208030|TGME49_319560	TGME49_208030	TGME49_319560	1.0	microneme protein MIC4	microneme protein MIC3	False	0.782345	0.14116922	0.0	1.0	1.0	0.0	0.8171763	exploratory
+TGME49_218920|TGME49_278050	TGME49_218920	TGME49_278050	1.0	proteasome subunit beta type-5, putative	proteasome subunit alpha type-1, putative	False	0.9075534	0.5910264	3.0	1.0	1.0	0.0	0.53482574	exploratory
+TGME49_200240|TGME49_200250	TGME49_200240	TGME49_200250	1.0	microneme protein MIC17B	microneme protein MIC17A	False	0.78016335	0.961484	3.0		1.0	1.0	0.6801822	exploratory
+TGME49_218920|TGME49_287210	TGME49_218920	TGME49_287210	1.0	proteasome subunit beta type-5, putative	proteasome subunit alpha type-2, putative	False	0.94782025	0.46330765	3.0	1.0	1.0	0.0	0.5645452	exploratory
+TGME49_218920|TGME49_280710	TGME49_218920	TGME49_280710	1.0	proteasome subunit beta type-5, putative	proteasome subunit beta type-4, putative	False	0.9337114	0.59588283	3.0	1.0	1.0	0.0	0.6105015	exploratory
+TGME49_205440|TGME49_243710	TGME49_205440	TGME49_243710	1.0	CCT chaperonin gamma subunit	t-complex protein beta subunit	False	0.9046686	0.81814384	5.0	1.0	1.0	0.0	0.7826349	exploratory
+TGME49_240810|TGME49_318150	TGME49_240810	TGME49_318150	1.0	apicomplexan amino acid transporter ApiAT6-1	apicomplexan amino acid transporter ApiAT3-1	False	0.694697	-0.6377933	1.0	1.0	1.0	0.0	0.6550762	exploratory
+TGME49_233680|TGME49_305820	TGME49_233680	TGME49_305820	1.0	nuclear movement family protein	SGS domain-containing protein	False	0.827389	-0.6268772	3.0		1.0	0.0	0.8275891	exploratory
+TGME49_212300|TGME49_226380	TGME49_212300	TGME49_226380	1.0	dense granule protein GRA32	dense granule protein GRA35	False	0.9199549	-0.13435858	0.0	1.0	1.0	0.0	0.9259998	exploratory
+TGME49_233540|TGME49_297245	TGME49_233540	TGME49_297245	1.0	apicoplast monocarboxylate transporter AMT1	apicoplast monocarboxylate transporter AMT2	False	0.784665	0.44080216	3.0		1.0	1.0	0.89849085	exploratory
+TGME49_290005|TGME49_306930	TGME49_290005	TGME49_306930	1.0	proteasome subunit beta type-1, putative	proteasome subunit beta type-7, putative	False	0.963817	0.3677306	3.0	1.0	1.0	0.0	0.6826931	exploratory
+TGME49_278365|TGME49_301170	TGME49_278365	TGME49_301170	1.0	Toxoplasma gondii family A protein	SAG-related sequence SRS19D	False	0.7547896	0.018367494	0.0	1.0	1.0	0.0	0.9614218	exploratory
+TGME49_207140|TGME49_301180	TGME49_207140	TGME49_301180	1.0	SAG-related sequence SRS49B	SAG-related sequence SRS19F	False	0.80682445	0.54002476	3.0	1.0	1.0	0.0	0.9151857	exploratory
+TGME49_207140|TGME49_320190	TGME49_207140	TGME49_320190	1.0	SAG-related sequence SRS49B	SAG-related sequence SRS16B	False	0.8270853	0.49895692	3.0	1.0	1.0	0.0	0.93601644	exploratory
+TGME49_233480|TGME49_315320	TGME49_233480	TGME49_315320	1.0	SAG-related sequence SRS29C	SAG-related sequence SRS52A	False	0.774521	0.72344345	3.0		1.0	0.0	0.81785005	exploratory
+TGME49_258580|TGME49_291960	TGME49_258580	TGME49_291960	1.0	rhoptry protein ROP17	rhoptry kinase family protein ROP40 (incomplete catalytic triad)	False	0.94937545	0.7511641	3.0	1.0	1.0	0.0	0.68272924	exploratory
+TGME49_278365|TGME49_301180	TGME49_278365	TGME49_301180	1.0	Toxoplasma gondii family A protein	SAG-related sequence SRS19F	False	0.7220435	0.14082353	0.0	1.0	1.0	0.0	0.9321351	exploratory
+TGME49_206670|TGME49_309800	TGME49_206670	TGME49_309800	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9106161	-0.14560455	3.0		1.0	0.0	0.9804825	exploratory
+TGME49_290660|TGME49_305850	TGME49_290660	TGME49_305850	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.97752595	-0.7910021	3.0		1.0	0.0	0.9786021	exploratory
+TGME49_212270|TGME49_218520	TGME49_212270	TGME49_218520	1.0	CLAMP-linked invasion protein CLIP	microneme protein MIC6	False	0.9439314	0.3464669	0.0		1.0	0.0	0.90999615	exploratory
+TGME49_214820|TGME49_308920	TGME49_214820	TGME49_308920	1.0	DNA repair protein DRE	splicing factor U2AF protein	False	0.9088587	0.8129843	3.0		1.0	0.0	0.9950577	exploratory
+TGME49_214820|TGME49_305850	TGME49_214820	TGME49_305850	1.0	DNA repair protein DRE	RNA recognition motif-containing protein	False	0.9089233	-0.4963098	3.0		1.0	0.0	0.9615958	exploratory
+TGME49_224850|TGME49_305850	TGME49_224850	TGME49_305850	1.0	polyadenylate-binding protein PABC	RNA recognition motif-containing protein	False	0.8465044	-0.5200109	3.0		1.0	0.0	0.9865434	exploratory
+TGME49_224850|TGME49_291950	TGME49_224850	TGME49_291950	1.0	polyadenylate-binding protein PABC	RNA recognition motif-containing protein	False	0.8976391	0.7570138	3.0		1.0	0.0	0.99373335	exploratory
+TGME49_200360|TGME49_230180	TGME49_200360	TGME49_230180	1.0	hypothetical protein	dense granule protein GRA24	False	0.890319	0.8126822	0.0		1.0	0.0	0.6712949	exploratory
+TGME49_214820|TGME49_264610	TGME49_214820	TGME49_264610	1.0	DNA repair protein DRE	RNA recognition motif-containing protein	False	0.9260613	0.8610581	3.0	1.0	1.0	0.0	0.9499948	exploratory
+TGME49_207005|TGME49_315380	TGME49_207005	TGME49_315380	1.0	SAG-related sequence SRS48Q	SAG-related sequence SRS53B	False	0.8434039	0.07038447	3.0			0.0	0.9157455	exploratory
+TGME49_203220|TGME49_285660	TGME49_203220	TGME49_285660	1.0	DEAD/DEAH box helicase domain-containing protein	DEAD/DEAH box helicase domain-containing protein	False	0.86261636	0.17051108	6.0		1.0	0.0	0.98615247	exploratory
+TGME49_260210|TGME49_260360	TGME49_260210	TGME49_260360	1.0	DnaJ domain-containing protein	GTP-binding protein	False	0.85019535	0.40040636	3.0			0.0	0.9977488	exploratory
+TGME49_260200|TGME49_263650	TGME49_260200	TGME49_263650	1.0	helicase associated domain (ha2) protein	pre-mRNA-processing protein 8, putative	False	0.88284665	0.70294595	4.0		0.0	1.0	0.82805675	exploratory
+TGME49_205250|TGME49_227810	TGME49_205250	TGME49_227810	1.0	rhoptry protein ROP18	rhoptry kinase family protein ROP11 (incomplete catalytic triad)	False	0.87172717	0.32463557	4.0	1.0	1.0	0.0	0.9340026	exploratory
+TGME49_225200|TGME49_300100	TGME49_225200	TGME49_300100	1.0	hypothetical protein	rhoptry neck protein RON2	False	0.9000684	0.12382124	0.0	1.0	1.0	0.0	0.90137357	exploratory
+TGME49_240060|TGME49_312420	TGME49_240060	TGME49_312420	1.0	inhibitor of STAT1 transcription	dense granule protein GRA38	False	0.8825898	-0.14943561	0.0	1.0	1.0	0.0	0.9907583	exploratory
+TGME49_205250|TGME49_291960	TGME49_205250	TGME49_291960	1.0	rhoptry protein ROP18	rhoptry kinase family protein ROP40 (incomplete catalytic triad)	False	0.9065935	0.7383336	3.0	1.0	1.0	0.0	0.6780237	exploratory
+TGME49_205250|TGME49_295125	TGME49_205250	TGME49_295125	1.0	rhoptry protein ROP18	rhoptry protein ROP4	False	0.8208971	0.6620821	4.0	1.0	1.0	1.0	0.7740229	exploratory
+TGME49_212300|TGME49_232000	TGME49_212300	TGME49_232000	1.0	dense granule protein GRA32	dense granule protein GRA30	False	0.89133394	-0.116816945	0.0	1.0	1.0	0.0	0.7899823	exploratory
+TGME49_265530|TGME49_319530	TGME49_265530	TGME49_319530	1.0	RNA recognition motif-containing protein	serine/arginine-rich splicing factor SR1	False	0.9638888	-0.29703492	3.0		1.0	0.0	0.9505913	exploratory
+TGME49_240710|TGME49_270880	TGME49_240710	TGME49_270880	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.8751413	0.5949464	3.0		1.0	0.0		exploratory
+TGME49_266280|TGME49_266990	TGME49_266280	TGME49_266990	1.0	AP-4 complex subunit beta, putative	beta-COP	False	0.9089012	0.56980485	3.0		1.0	0.0	0.9133706	exploratory
+TGME49_266280|TGME49_313670	TGME49_266280	TGME49_313670	1.0	AP-4 complex subunit beta, putative	AP-1 complex subunit gamma, putative	False	0.9562604	0.9536316	3.0		1.0	0.0	0.71937466	exploratory
+TGME49_266400|TGME49_288460	TGME49_266400	TGME49_288460	1.0	hypothetical protein	hypothetical protein	False	0.8310292	0.603182	1.0		0.0	0.0	0.7528509	exploratory
+TGME49_228100|TGME49_240850	TGME49_228100	TGME49_240850	1.0	hypothetical protein	WD domain, G-beta repeat-containing protein	False	0.7798042	0.8795653	2.0		0.0	0.0	0.9714313	exploratory
+TGME49_206690|TGME49_286580	TGME49_206690	TGME49_286580	1.0	glideosome-associated protein with multiple-membrane spans GAPM2B	inner membrane complex protein IMC17	False	0.881635	0.3682417	0.0	1.0	1.0	0.0	0.86485785	exploratory
+TGME49_265530|TGME49_290660	TGME49_265530	TGME49_290660	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.8971136	0.5727173	3.0		1.0	0.0	0.9718958	exploratory
+TGME49_212300|TGME49_236890	TGME49_212300	TGME49_236890	1.0	dense granule protein GRA32	dense granule protein GRA37	False	0.8212021	0.13856186	0.0	1.0	1.0	0.0	0.9883856	exploratory
+TGME49_234350|TGME49_269010	TGME49_234350	TGME49_269010	1.0	hypothetical protein	AP2 domain transcription factor AP2VIII-7	False	0.8349932	-0.7884446	0.0		1.0	0.0	0.99117124	exploratory
+TGME49_234520|TGME49_305850	TGME49_234520	TGME49_305850	1.0	U2 snRNP auxilliary factor, large subunit, splicing factor subfamily protein	RNA recognition motif-containing protein	False	0.854496	-0.40957627	3.0		1.0	0.0	0.9818084	exploratory
+TGME49_218420|TGME49_253060	TGME49_218420	TGME49_253060	1.0	pre-mRNA-splicing factor PRP46, putative	WD domain, G-beta repeat-containing protein	False	0.8507868	0.4262312	3.0		0.0	0.0	0.9754557	exploratory
+TGME49_214840|TGME49_310950	TGME49_214840	TGME49_310950	1.0	AP2 domain transcription factor AP2X-7	AP2 domain transcription factor AP2XI-3	False	0.9309208	0.33406252	2.0	1.0	1.0	0.0	0.980562	exploratory
+TGME49_214840|TGME49_310900	TGME49_214840	TGME49_310900	1.0	AP2 domain transcription factor AP2X-7	AP2 domain transcription factor AP2XI-2	False	0.89420956	-0.10381664	2.0	1.0	1.0	0.0	0.99700797	exploratory
+TGME49_214840|TGME49_306000	TGME49_214840	TGME49_306000	1.0	AP2 domain transcription factor AP2X-7	AP2 domain transcription factor AP2IX-8	False	0.94118404	-0.15489046	2.0	1.0	1.0	0.0	0.9967585	exploratory
+TGME49_206670|TGME49_229630	TGME49_206670	TGME49_229630	1.0	RNA recognition motif-containing protein	eIF2 kinase IF2K-A (incomplete catalytic triad)	False	0.9481321	0.49870852	0.0		0.0	0.0	0.9996884	exploratory
+TGME49_292055|TGME49_304970	TGME49_292055	TGME49_304970	1.0	calcium dependent protein kinase CDPK8	CDK-related protein kinase CRK1	False	0.8795485	-0.5443947	4.0		0.0	0.0	0.9915403	exploratory
+TGME49_292080|TGME49_299810	TGME49_292080	TGME49_299810	1.0	leucyl-tRNA synthetase	cysteine-tRNA synthetase (CysRS)	False	0.9301632	0.63476276	1.0	1.0	1.0	0.0	0.9492239	exploratory
+TGME49_206670|TGME49_214820	TGME49_206670	TGME49_214820	1.0	RNA recognition motif-containing protein	DNA repair protein DRE	False	0.8921702	0.7041183	3.0		1.0	0.0	0.96524173	exploratory
+TGME49_203310|TGME49_208450	TGME49_203310	TGME49_208450	1.0	dense granule protein GRA7	protease inhibitor PI2	False	0.8316186	0.78930223	0.0	1.0	1.0	0.0	0.91141605	exploratory
+TGME49_207640|TGME49_210840	TGME49_207640	TGME49_210840	1.0	isoleucyl-tRNA synthetase family protein	arginyl-tRNA synthetase family protein	False	0.9082615	0.5954415	2.0	1.0	1.0	0.0	0.41927907	exploratory
+TGME49_278050|TGME49_306930	TGME49_278050	TGME49_306930	1.0	proteasome subunit alpha type-1, putative	proteasome subunit beta type-7, putative	False	0.92303956	0.116527826	3.0	1.0	1.0	0.0	0.2347389	exploratory
+TGME49_292270|TGME49_292280	TGME49_292270	TGME49_292280	1.0	SAG-related sequence SRS36C	SAG-related sequence SRS36D	False	0.78014153	0.4427328	4.0			1.0	0.88919675	exploratory
+TGME49_292260|TGME49_301170	TGME49_292260	TGME49_301170	1.0	SAG-related sequence SRS36B	SAG-related sequence SRS19D	False	0.74435675	0.4354673	4.0	1.0	1.0	1.0	0.9296533	exploratory
+TGME49_278050|TGME49_280710	TGME49_278050	TGME49_280710	1.0	proteasome subunit alpha type-1, putative	proteasome subunit beta type-4, putative	False	0.928702	0.6353853	3.0	1.0	1.0	0.0	0.52992797	exploratory
+TGME49_265410|TGME49_290850	TGME49_265410	TGME49_290850	1.0	pre-mRNA-processing factor 17, putative	WD-40 repeat protein	False	0.87935597	0.31612095	5.0		1.0	0.0	0.32516366	exploratory
+TGME49_224580|TGME49_305010	TGME49_224580	TGME49_305010	1.0	RNA recognition motif-containing protein	pre-mRNA branch site protein p14, putative	False	0.90557986	0.017210485	3.0	1.0	1.0	0.0	0.7872232	exploratory
+TGME49_258580|TGME49_295125	TGME49_258580	TGME49_295125	1.0	rhoptry protein ROP17	rhoptry protein ROP4	False	0.8474153	0.58890206	4.0	1.0	1.0	0.0	0.7906916	exploratory
+TGME49_224580|TGME49_290660	TGME49_224580	TGME49_290660	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9732251	0.13419522	3.0		1.0	0.0	0.9744603	exploratory
+TGME49_239740|TGME49_310780	TGME49_239740	TGME49_310780	1.0	dense granule protein GRA14	dense granule protein GRA4	False	0.91821223	0.5602982	0.0	1.0	1.0	0.0	0.92083347	exploratory
+TGME49_214830|TGME49_229180	TGME49_214830	TGME49_229180	1.0	exportin-T, putative	HEAT repeat-containing protein	False	0.8842064	0.24655075	1.0		1.0	0.0	0.7317532	exploratory
+TGME49_265530|TGME49_270770	TGME49_265530	TGME49_270770	1.0	RNA recognition motif-containing protein	PWI domain-containing protein	False	0.9272348	-0.053284742	3.0		1.0	0.0	0.90869933	exploratory
+TGME49_200360|TGME49_208450	TGME49_200360	TGME49_208450	1.0	hypothetical protein	protease inhibitor PI2	False	0.8017384	0.8734885	0.0		1.0	0.0	0.75199836	exploratory
+TGME49_206670|TGME49_291950	TGME49_206670	TGME49_291950	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9288094	0.75596946	3.0		1.0	0.0	0.99501586	exploratory
+TGME49_212220|TGME49_225890	TGME49_212220	TGME49_225890	1.0	zinc finger (CCCH type) motif-containing protein	zinc finger (CCCH type) motif-containing protein	False	0.8852857	0.67561674	1.0		1.0	0.0	0.99759716	exploratory
+TGME49_203310|TGME49_239740	TGME49_203310	TGME49_239740	1.0	dense granule protein GRA7	dense granule protein GRA14	False	0.9068282	0.64170927	0.0	1.0	1.0	0.0	0.97178847	exploratory
+TGME49_203310|TGME49_220240	TGME49_203310	TGME49_220240	1.0	dense granule protein GRA7	dense granule protein GRA31	False	0.8004589	0.7097386	0.0	1.0	1.0	0.0	0.8981864	exploratory
+TGME49_206670|TGME49_294710	TGME49_206670	TGME49_294710	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9100967	0.62079144	3.0		1.0	0.0	0.99895835	exploratory
+TGME49_242290|TGME49_280710	TGME49_242290	TGME49_280710	1.0	proteasome subunit alpha type-6, putative	proteasome subunit beta type-4, putative	False	0.8893957	0.1505836	3.0	1.0	1.0	0.0	0.4883711	exploratory
+TGME49_203310|TGME49_310780	TGME49_203310	TGME49_310780	1.0	dense granule protein GRA7	dense granule protein GRA4	False	0.9200834	0.89908576	0.0	1.0	1.0	0.0	0.92809325	exploratory
+TGME49_242290|TGME49_258150	TGME49_242290	TGME49_258150	1.0	proteasome subunit alpha type-6, putative	proteasome subunit alpha type-7, putative	False	0.8421585	0.9459976	3.0	1.0	1.0	0.0	0.63161814	exploratory
+TGME49_242290|TGME49_278050	TGME49_242290	TGME49_278050	1.0	proteasome subunit alpha type-6, putative	proteasome subunit alpha type-1, putative	False	0.8353386	0.73044723	3.0	1.0	1.0	0.0	0.62996775	exploratory
+TGME49_242290|TGME49_249590	TGME49_242290	TGME49_249590	1.0	proteasome subunit alpha type-6, putative	proteasome subunit alpha type-5, putative	False	0.9190147	0.26432058	3.0	1.0	1.0	0.0	0.56153286	exploratory
+TGME49_234505|TGME49_256990	TGME49_234505	TGME49_256990	1.0	phenylalanyl-tRNA synthetase alpha chain A, putative	glycyl-tRNA synthetase	False	0.83766353	0.7588447	2.0	1.0	1.0	0.0	0.81571096	exploratory
+TGME49_203310|TGME49_230180	TGME49_203310	TGME49_230180	1.0	dense granule protein GRA7	dense granule protein GRA24	False	0.87927014	0.79156584	0.0	1.0	1.0	0.0	0.8925618	exploratory
+TGME49_258800|TGME49_291960	TGME49_258800	TGME49_291960	1.0	rhoptry kinase family protein ROP31	rhoptry kinase family protein ROP40 (incomplete catalytic triad)	False	0.77526104	0.4997891	3.0	1.0	1.0	0.0	0.89459217	exploratory
+TGME49_214840|TGME49_247700	TGME49_214840	TGME49_247700	1.0	AP2 domain transcription factor AP2X-7	AP2 domain transcription factor AP2XII-4	False	0.94153553	0.63261956	2.0	1.0	1.0	0.0	0.9985916	exploratory
+TGME49_224720|TGME49_264610	TGME49_224720	TGME49_264610	1.0	SPOC domain-containing protein	RNA recognition motif-containing protein	False	0.90082794	0.5079168	3.0		1.0	0.0	0.9961921	exploratory
+TGME49_203310|TGME49_254720	TGME49_203310	TGME49_254720	1.0	dense granule protein GRA7	dense granule protein GRA8	False	0.80348134	0.85624063	0.0	1.0	1.0	0.0	0.935344	exploratory
+TGME49_258660|TGME49_297070	TGME49_258660	TGME49_297070	1.0	rhoptry protein ROP6	carbonic anhydrase-related protein CARP	False	0.968374	0.42946607	0.0	1.0	1.0	0.0	0.9334968	exploratory
+TGME49_242290|TGME49_290005	TGME49_242290	TGME49_290005	1.0	proteasome subunit alpha type-6, putative	proteasome subunit beta type-1, putative	False	0.84896445	0.7017874	3.0	1.0	1.0	0.0	0.421855	exploratory
+TGME49_204130|TGME49_293900	TGME49_204130	TGME49_293900	1.0	perforin-like protein PLP1	sporozoite protein with an altered thrombospondin repeat SPATR	False	0.84072256	0.758291	0.0	1.0	1.0	0.0	0.98965067	exploratory
+TGME49_221480|TGME49_289630	TGME49_221480	TGME49_289630	1.0	hypothetical protein	microneme protein MIC16	False	0.8358277	0.6597233	0.0	1.0	1.0	0.0	0.8985986	exploratory
+TGME49_226320|TGME49_243960	TGME49_226320	TGME49_243960	1.0	RNA binding protein, putative	nuclear transport factor 2 (ntf2) domain-containing protein	False	0.88788074	0.5623557	1.0		1.0	0.0	0.99811906	exploratory
+TGME49_230210|TGME49_231640	TGME49_230210	TGME49_231640	1.0	alveolin domain containing intermediate filament IMC10	alveolin domain containing intermediate filament IMC1	False	0.94495046	0.82169807	2.0	1.0	1.0	0.0	0.94428223	exploratory
+TGME49_262720|TGME49_292310	TGME49_262720	TGME49_292310	1.0	eukaryotic initiation factor-1A, putative	RNA polymerase Rpb7, N-terminal domain-containing protein	False	0.73382396	0.36467978	1.0		1.0	0.0	0.8961749	exploratory
+TGME49_272910|TGME49_287500	TGME49_272910	TGME49_287500	1.0	T-complex protein 1 delta subunit	T complex chaperonin, putative	False	0.97394603	0.20742913	5.0	1.0	1.0	0.0	0.8330156	exploratory
+TGME49_202950|TGME49_249730	TGME49_202950	TGME49_249730	1.0	hypothetical protein	ND9 protein	False	0.87784225	0.021006355	1.0		1.0	0.0	0.7540089	exploratory
+TGME49_231600|TGME49_253730	TGME49_231600	TGME49_253730	1.0	HEAT repeat-containing protein	importin-beta N-terminal domain-containing protein	False	0.87097526	0.74355495	1.0		1.0	0.0	0.89701205	exploratory
+TGME49_270510|TGME49_300260	TGME49_270510	TGME49_300260	1.0	asparaginyl-tRNA synthetase (NOB+tRNA synthase)	threonyl-tRNA synthetase family protein	False	0.7869922	0.74070686	2.0	1.0	1.0	0.0	0.8015277	exploratory
+TGME49_231590|TGME49_233680	TGME49_231590	TGME49_233680	1.0	SGS domain-containing protein	nuclear movement family protein	False	0.8067032	0.3484226	3.0			0.0	0.8179172	exploratory
+TGME49_216000|TGME49_231640	TGME49_216000	TGME49_231640	1.0	alveolin domain containing intermediate filament IMC3	alveolin domain containing intermediate filament IMC1	False	0.94326276	0.69962984	2.0	1.0	1.0	0.0	0.96993047	exploratory
+TGME49_203820|TGME49_204410	TGME49_203820	TGME49_204410	1.0	hypothetical protein	endonuclease/exonuclease/phosphatase family protein	False	0.85733676	0.6380345	0.0		1.0	0.0	0.9960573	exploratory
+TGME49_221320|TGME49_312110	TGME49_221320	TGME49_312110	1.0	acetyl-CoA carboxylase ACC1	apicoplast-associated thioredoxin family protein Atrx1	False	0.8065686	-0.10653231	0.0	1.0	1.0	0.0	0.97724724	exploratory
+TGME49_238180|TGME49_261210	TGME49_238180	TGME49_261210	1.0	26S proteasome regulatory subunit RPN7, putative	26s proteasome subunit p55, putative	False	0.9385104	0.19194664	3.0	1.0	1.0	0.0	0.923915	exploratory
+TGME49_226380|TGME49_236890	TGME49_226380	TGME49_236890	1.0	dense granule protein GRA35	dense granule protein GRA37	False	0.7923414	0.78371507	0.0	1.0	1.0	0.0	0.9210384	exploratory
+TGME49_221180|TGME49_291890	TGME49_221180	TGME49_291890	1.0	hypothetical protein	microneme protein MIC1	False	0.8495306	-0.29562837	0.0	1.0	1.0	0.0	0.942565	exploratory
+TGME49_251962|TGME49_254060	TGME49_251962	TGME49_254060	1.0	SAG-related sequence SRS59K	SAG-related sequence SRS14A	False	0.7650198	0.43518686	3.0			0.0	0.67699975	exploratory
+TGME49_308920|TGME49_320100	TGME49_308920	TGME49_320100	1.0	splicing factor U2AF protein	RNA recognition motif-containing protein	False	0.8365906	-0.23119251	3.0		1.0	0.0	0.94921345	exploratory
+TGME49_230180|TGME49_239740	TGME49_230180	TGME49_239740	1.0	dense granule protein GRA24	dense granule protein GRA14	False	0.8804161	0.79557246	0.0	1.0	1.0	0.0	0.88415664	exploratory
+TGME49_216000|TGME49_249850	TGME49_216000	TGME49_249850	1.0	alveolin domain containing intermediate filament IMC3	GAP40 protein	False	0.9466728	0.618973	0.0	1.0	1.0	0.0	0.473113	exploratory
+TGME49_231890|TGME49_286050	TGME49_231890	TGME49_286050	1.0	beta-ketoacyl-acyl carrier protein synthase III, putative	apicoplast TIC22 protein	False	0.83869326	0.18100412	0.0	1.0	1.0	0.0	0.987617	exploratory
+TGME49_254470|TGME49_310780	TGME49_254470	TGME49_310780	1.0	Myc-regulation protein MYR1	dense granule protein GRA4	False	0.83755106	0.8654212	0.0	1.0	1.0	0.0	0.9945694	exploratory
+TGME49_254470|TGME49_312420	TGME49_254470	TGME49_312420	1.0	Myc-regulation protein MYR1	dense granule protein GRA38	False	0.8387376	-0.074669845	0.0	1.0	1.0	0.0	0.99374384	exploratory
+TGME49_230180|TGME49_262400	TGME49_230180	TGME49_262400	1.0	dense granule protein GRA24	lipase	False	0.84174144	0.59513986	0.0		1.0	0.0	0.9921873	exploratory
+TGME49_305850|TGME49_321500	TGME49_305850	TGME49_321500	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.914242	-0.68425584	3.0		1.0	0.0	0.9785233	exploratory
+TGME49_305850|TGME49_318690	TGME49_305850	TGME49_318690	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.8424354	-0.48418263	3.0		1.0	0.0	0.9876639	exploratory
+TGME49_230180|TGME49_310780	TGME49_230180	TGME49_310780	1.0	dense granule protein GRA24	dense granule protein GRA4	False	0.9070907	0.8346846	0.0	1.0	1.0	0.0	0.9903904	exploratory
+TGME49_306060|TGME49_321650	TGME49_306060	TGME49_321650	1.0	rhoptry neck protein RON8	rhoptry neck protein RON13	False	0.87704355	0.4565815	0.0	1.0	1.0	0.0	0.7017045	exploratory
+TGME49_270620|TGME49_298020	TGME49_270620	TGME49_298020	1.0	DEAD/DEAH box helicase domain-containing protein	DEAD-family helicase	False	0.8588201	0.49955696	8.0		0.0	0.0	0.9875972	exploratory
+TGME49_202950|TGME49_290950	TGME49_202950	TGME49_290950	1.0	hypothetical protein	clathrin heavy chain	False	0.9441636	0.5020602	1.0		1.0	0.0	0.7777952	exploratory
+TGME49_246930|TGME49_262010	TGME49_246930	TGME49_262010	1.0	calmodulin CAM1	calmodulin CAM2	False	0.86873305	0.1195972	3.0	1.0	1.0	0.0	0.5703123	exploratory
+TGME49_251870|TGME49_261240	TGME49_251870	TGME49_261240	1.0	histone H2Bb	histone H3	False	0.61181337	-0.46485686	3.0			0.0	0.8535487	exploratory
+TGME49_306660|TGME49_316680	TGME49_306660	TGME49_316680	1.0	RNA pseudouridine synthase superfamily protein	RNA pseudouridine synthase superfamily protein	False	0.8823821	0.7739547	1.0		1.0	0.0	0.9903604	exploratory
+TGME49_270620|TGME49_313010	TGME49_270620	TGME49_313010	1.0	DEAD/DEAH box helicase domain-containing protein	DEAD (Asp-Glu-Ala-Asp) box polypeptide DDX6	False	0.95743245	0.28019044	8.0		1.0	0.0	0.9364677	exploratory
+TGME49_226068|TGME49_259980	TGME49_226068	TGME49_259980	1.0	DnaJ domain-containing protein	DnaJ domain-containing protein	False	0.8629062	0.9217709	3.0		1.0	0.0	0.48178676	exploratory
+TGME49_305850|TGME49_319850	TGME49_305850	TGME49_319850	1.0	RNA recognition motif-containing protein	splicing factor U2AF family SnRNP auxilary factor large subunit, RRM domain-containing protein	False	0.971381	-0.6382692	2.0		1.0	0.0	0.9788827	exploratory
+TGME49_248390|TGME49_267060	TGME49_248390	TGME49_267060	1.0	ribosomal protein RPL26	ribosomal protein RPL14	False	0.88733816	0.6241501	1.0	1.0	1.0	0.0	0.64590436	exploratory
+TGME49_251962|TGME49_309352	TGME49_251962	TGME49_309352	1.0	SAG-related sequence SRS59K	SAG-related sequence SRS55N	False	0.800104	-0.0818488	3.0			0.0	0.68256783	exploratory
+TGME49_262620|TGME49_264610	TGME49_262620	TGME49_264610	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.8894992	0.38577133	3.0		1.0	0.0	0.98693097	exploratory
+TGME49_248390|TGME49_313390	TGME49_248390	TGME49_313390	1.0	ribosomal protein RPL26	ribosomal protein RPL6	False	0.96297055	0.6325128	1.0	1.0	1.0	0.0	0.2386391	exploratory
+TGME49_202950|TGME49_223540	TGME49_202950	TGME49_223540	1.0	hypothetical protein	importin-beta N-terminal domain-containing protein	False	0.9062746	0.11635631	1.0		1.0	0.0	0.81821877	exploratory
+TGME49_202950|TGME49_231600	TGME49_202950	TGME49_231600	1.0	hypothetical protein	HEAT repeat-containing protein	False	0.89920443	0.35183385	1.0		1.0	0.0	0.7993028	exploratory
+TGME49_220860|TGME49_236650	TGME49_220860	TGME49_236650	1.0	DEAD/DEAH box helicase	DEAD (Asp-Glu-Ala-Asp) box polypeptide 17	False	0.9206386	0.771048	8.0		0.0	0.0	0.89742744	exploratory
+TGME49_252360|TGME49_262050	TGME49_252360	TGME49_262050	1.0	rhoptry kinase family protein ROP24 (incomplete catalytic triad)	rhoptry kinase family protein ROP39	False	0.8096993	0.731891	2.0	0.0	0.0	0.0	0.9781404	exploratory
+TGME49_230350|TGME49_269885	TGME49_230350	TGME49_269885	1.0	rhoptry neck protein RON11	rhoptry metalloprotease toxolysin TLN1	False	0.8840877	-0.18033756	0.0	1.0	1.0	0.0	0.9856116	exploratory
+TGME49_252360|TGME49_291960	TGME49_252360	TGME49_291960	1.0	rhoptry kinase family protein ROP24 (incomplete catalytic triad)	rhoptry kinase family protein ROP40 (incomplete catalytic triad)	False	0.9000826	0.7440328	3.0	1.0	1.0	0.0	0.9586947	exploratory
+TGME49_262620|TGME49_265530	TGME49_262620	TGME49_265530	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.8817021	0.56670576	3.0		1.0	0.0	0.9863661	exploratory
+TGME49_252360|TGME49_258800	TGME49_252360	TGME49_258800	1.0	rhoptry kinase family protein ROP24 (incomplete catalytic triad)	rhoptry kinase family protein ROP31	False	0.7588086	0.55647725	4.0	1.0	1.0	0.0	0.9397443	exploratory
+TGME49_220530|TGME49_247700	TGME49_220530	TGME49_247700	1.0	AP2 domain transcription factor AP2V-1	AP2 domain transcription factor AP2XII-4	False	0.86127496	-0.4744579	2.0			0.0	0.9932555	exploratory
+TGME49_219860|TGME49_237220	TGME49_219860	TGME49_237220	1.0	DNA replication licensing factor MCM6, putative	DNA replication licensing factor Mcm7, putative	False	0.85121125	0.8681033	2.0		1.0	0.0	0.5957549	exploratory
+TGME49_203990|TGME49_295125	TGME49_203990	TGME49_295125	1.0	rhoptry protein ROP12	rhoptry protein ROP4	False	0.85043097	0.59667635	0.0	1.0	1.0	0.0	0.8119276	exploratory
+TGME49_262620|TGME49_321500	TGME49_262620	TGME49_321500	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9350608	0.44918868	3.0		1.0	0.0	0.97292584	exploratory
+TGME49_310900|TGME49_310950	TGME49_310900	TGME49_310950	1.0	AP2 domain transcription factor AP2XI-2	AP2 domain transcription factor AP2XI-3	False	0.88524324	0.582825	2.0	1.0	1.0	0.0	0.9633327	exploratory
+TGME49_252360|TGME49_262730	TGME49_252360	TGME49_262730	1.0	rhoptry kinase family protein ROP24 (incomplete catalytic triad)	rhoptry protein ROP16	False	0.9372473	0.45156246	2.0	1.0	1.0	0.0	0.9722635	exploratory
+TGME49_226380|TGME49_232000	TGME49_226380	TGME49_232000	1.0	dense granule protein GRA35	dense granule protein GRA30	False	0.8501685	0.6491325	0.0	1.0	1.0	0.0	0.85306716	exploratory
+TGME49_221180|TGME49_293900	TGME49_221180	TGME49_293900	1.0	hypothetical protein	sporozoite protein with an altered thrombospondin repeat SPATR	False	0.96664685	0.47135648	0.0	1.0	1.0	0.0	0.9873601	exploratory
+TGME49_208970|TGME49_321500	TGME49_208970	TGME49_321500	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.84352773	-0.35832462	3.0		1.0	0.0	0.9768907	exploratory
+TGME49_262100|TGME49_295730	TGME49_262100	TGME49_295730	1.0	tetratricopeptide repeat-containing protein	tetratricopeptide repeat-containing protein	False	0.8402284	0.61436415	2.0		1.0	0.0	0.8225119	exploratory
+TGME49_230350|TGME49_297070	TGME49_230350	TGME49_297070	1.0	rhoptry neck protein RON11	carbonic anhydrase-related protein CARP	False	0.8807286	-0.20532963	0.0	1.0	1.0	0.0	0.88372356	exploratory
+TGME49_216000|TGME49_231630	TGME49_216000	TGME49_231630	1.0	alveolin domain containing intermediate filament IMC3	alveolin domain containing intermediate filament IMC4	False	0.93612915	0.7557779	2.0	1.0	1.0	0.0	0.98576486	exploratory
+TGME49_247700|TGME49_310900	TGME49_247700	TGME49_310900	1.0	AP2 domain transcription factor AP2XII-4	AP2 domain transcription factor AP2XI-2	False	0.8864309	0.4138881	2.0	1.0	1.0	0.0	0.99949247	exploratory
+TGME49_309740|TGME49_314790	TGME49_309740	TGME49_314790	1.0	LSM domain-containing protein	small nuclear ribonucleoprotein G, putative	False	0.87010145	0.75958943	4.0	1.0	1.0	0.0	0.18219689	exploratory
+TGME49_226970|TGME49_229670	TGME49_226970	TGME49_229670	1.0	ribosomal protein RPS11	ribosomal protein RPS23	False	0.99448496	0.7107026	1.0	1.0	1.0	0.0	0.31959322	exploratory
+TGME49_253290|TGME49_292080	TGME49_253290	TGME49_292080	1.0	valyl-tRNA synthetase	leucyl-tRNA synthetase	False	0.8908941	0.53771514	2.0	1.0	1.0	0.0	0.6536093	exploratory
+TGME49_204050|TGME49_204130	TGME49_204050	TGME49_204130	1.0	subtilisin SUB1	perforin-like protein PLP1	False	0.81004417	0.08537562	0.0	1.0	1.0	0.0	0.99014807	exploratory
+TGME49_218960|TGME49_310950	TGME49_218960	TGME49_310950	1.0	AP2 domain transcription factor AP2XII-1	AP2 domain transcription factor AP2XI-3	True		0.074488245	2.0	1.0	1.0	0.0	0.9766048	exploratory
+TGME49_209050|TGME49_235370	TGME49_209050	TGME49_235370	1.0	Tyrosine kinase-like (TKL) protein	protein kinase, putative	False	0.8575401	-0.14430541	4.0			0.0	0.99679744	exploratory
+TGME49_220910|TGME49_288460	TGME49_220910	TGME49_288460	1.0	HEAT repeat-containing protein	hypothetical protein	False	0.92960936	0.15805829	1.0		1.0	0.0	0.64125204	exploratory
+TGME49_262400|TGME49_288000	TGME49_262400	TGME49_288000	1.0	lipase	hypothetical protein	False	0.8579344	0.52872103	0.0		1.0	0.0	0.9855643	exploratory
+TGME49_253130|TGME49_270200	TGME49_253130	TGME49_270200	1.0	transporter, major facilitator family protein	transporter, major facilitator family protein	False	0.8851073	0.56726503	1.0		1.0	0.0	0.90987706	exploratory
+TGME49_248160|TGME49_291680	TGME49_248160	TGME49_291680	1.0	ATP-dependent DNA helicase 2 subunit KU70	protein transport protein SEC23, putative	False	0.8253456	0.063248806	1.0			0.0	0.5427154	exploratory
+TGME49_226380|TGME49_290700	TGME49_226380	TGME49_290700	1.0	dense granule protein GRA35	dense granule protein GRA25	False	0.80052465	0.8652803	0.0	1.0	1.0	0.0	0.9358435	exploratory
+TGME49_210820|TGME49_297070	TGME49_210820	TGME49_297070	1.0	transporter, putative	carbonic anhydrase-related protein CARP	False	0.877538	0.39833698	0.0	1.0	1.0	0.0	0.8332793	exploratory
+TGME49_215420|TGME49_222920	TGME49_215420	TGME49_222920	1.0	synaptobrevin homolog YKT6, putative	trafficking protein particle complex subunit 2, putative	False	0.7400659	0.2206652	1.0		1.0	0.0	0.5904189	exploratory
+TGME49_208450|TGME49_227620	TGME49_208450	TGME49_227620	1.0	protease inhibitor PI2	dense granule protein GRA2	False	0.7949011	0.8095497	0.0	1.0	1.0	0.0	0.5884285	exploratory
+TGME49_263040|TGME49_305520	TGME49_263040	TGME49_305520	1.0	ribosomal protein RPS16	ribosomal protein RPS2	False	0.8483354	0.6223576	1.0	1.0	1.0	0.0	0.8130706	exploratory
+TGME49_301160|TGME49_320200	TGME49_301160	TGME49_320200	1.0	SAG-related sequence SRS19C	SAG-related sequence SRS16A	False	0.6759449	0.41888627	4.0	1.0	1.0	1.0	0.9436973	exploratory
+TGME49_301160|TGME49_301180	TGME49_301160	TGME49_301180	1.0	SAG-related sequence SRS19C	SAG-related sequence SRS19F	False	0.7284844	0.27019098	4.0	1.0	1.0	1.0	0.9483581	exploratory
+TGME49_249590|TGME49_290005	TGME49_249590	TGME49_290005	1.0	proteasome subunit alpha type-5, putative	proteasome subunit beta type-1, putative	False	0.9536221	0.67454594	3.0	1.0	1.0	0.0	0.3485025	exploratory
+TGME49_208450|TGME49_239740	TGME49_208450	TGME49_239740	1.0	protease inhibitor PI2	dense granule protein GRA14	False	0.7642457	0.87468964	0.0	1.0	1.0	0.0	0.8822309	exploratory
+TGME49_222380|TGME49_249530	TGME49_222380	TGME49_249530	1.0	importin-beta N-terminal domain-containing protein	exportin 1, putative	False	0.91691166	0.809234	1.0		1.0	0.0	0.8949353	exploratory
+TGME49_213770|TGME49_244000	TGME49_213770	TGME49_244000	1.0	Superkiller viralicidic activity 2 family 2, putative	DEAD/DEAH box helicase domain-containing protein	False	0.94510424	0.7237375	6.0		1.0	0.0	0.90635484	exploratory
+TGME49_208450|TGME49_288650	TGME49_208450	TGME49_288650	1.0	protease inhibitor PI2	dense granule protein GRA12	False	0.8222582	0.5070481	0.0	1.0	1.0	0.0	0.68704385	exploratory
+TGME49_301390|TGME49_310310	TGME49_301390	TGME49_310310	1.0	ribosome biogenesis protein BOP1, putative	WD domain, G-beta repeat-containing protein	False	0.7813631	0.6233599	3.0		0.0	0.0	0.96733546	exploratory
+TGME49_232030|TGME49_305050	TGME49_232030	TGME49_305050	1.0	inner membrane complex protein IMC21	essential light chain ELC2	False	0.80634683	0.48731905	0.0	1.0	1.0	0.0	0.3873264	exploratory
+TGME49_200360|TGME49_310780	TGME49_200360	TGME49_310780	1.0	hypothetical protein	dense granule protein GRA4	False	0.9517103	0.80924356	0.0		1.0	0.0	0.732715	exploratory
+TGME49_262730|TGME49_308090	TGME49_262730	TGME49_308090	1.0	rhoptry protein ROP16	rhoptry protein ROP5	False	0.8458692	0.1119533	2.0	1.0	1.0	0.0	0.92813534	exploratory
+TGME49_215785|TGME49_227810	TGME49_215785	TGME49_227810	1.0	rhoptry protein ROP2A	rhoptry kinase family protein ROP11 (incomplete catalytic triad)	False	0.8602908		4.0		1.0	0.0	0.8803752	exploratory
+TGME49_254900|TGME49_306930	TGME49_254900	TGME49_306930	1.0	proteasome subunit beta type-2, putative	proteasome subunit beta type-7, putative	False	0.8327857	0.4362717	3.0	1.0	1.0	0.0	0.2741997	exploratory
+TGME49_229630|TGME49_315860	TGME49_229630	TGME49_315860	1.0	eIF2 kinase IF2K-A (incomplete catalytic triad)	EF hand domain-containing protein	False	0.88925964	0.6029028	0.0		1.0	0.0	0.9738094	exploratory
+TGME49_261210|TGME49_292220	TGME49_261210	TGME49_292220	1.0	26s proteasome subunit p55, putative	PCI domain-containing protein	False	0.90751785	0.06206351	3.0	1.0	1.0	0.0	0.92902786	exploratory
+TGME49_264610|TGME49_291330	TGME49_264610	TGME49_291330	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9279991	-0.09230607	3.0	1.0	1.0	0.0	0.9715145	exploratory
+TGME49_255260|TGME49_289630	TGME49_255260	TGME49_289630	1.0	apical membrane antigen AMA1	microneme protein MIC16	False	0.9001519	-0.73334515	0.0	1.0	1.0	0.0	0.9682892	exploratory
+TGME49_261250|TGME49_261580	TGME49_261250	TGME49_261580	1.0	histone H2A1	histone H2AX	False	0.6312576	-0.38035432	3.0		1.0	1.0	0.7913047	exploratory
+TGME49_264610|TGME49_312530	TGME49_264610	TGME49_312530	1.0	RNA recognition motif-containing protein	splicing factor, CC1 family protein	False	0.91525143	-0.1345984	3.0		1.0	0.0	0.97176594	exploratory
+TGME49_245490|TGME49_255260	TGME49_245490	TGME49_255260	1.0	microneme protein MIC8	apical membrane antigen AMA1	False	0.94759876	0.69252646	0.0	1.0	1.0	0.0	0.9221255	exploratory
+TGME49_215400|TGME49_224580	TGME49_215400	TGME49_224580	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.86108774	-0.009248411	3.0		1.0	0.0	0.90988696	exploratory
+TGME49_264610|TGME49_305850	TGME49_264610	TGME49_305850	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9750878	-0.46853215	3.0		1.0	0.0	0.9899943	exploratory
+TGME49_301170|TGME49_301180	TGME49_301170	TGME49_301180	1.0	SAG-related sequence SRS19D	SAG-related sequence SRS19F	False	0.7650544	0.8120997	4.0	1.0	1.0	1.0	0.93867606	exploratory
+TGME49_283740|TGME49_321500	TGME49_283740	TGME49_321500	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.9329081	0.8344205	3.0		1.0	0.0	0.97762847	exploratory
+TGME49_200360|TGME49_247530	TGME49_200360	TGME49_247530	1.0	hypothetical protein	hypothetical protein	False	0.9388123	0.76508796	0.0		1.0	0.0	0.83741933	exploratory
+TGME49_220240|TGME49_310780	TGME49_220240	TGME49_310780	1.0	dense granule protein GRA31	dense granule protein GRA4	False	0.89754975	0.74225664	0.0	1.0	1.0	0.0	0.98362064	exploratory
+TGME49_261470|TGME49_314790	TGME49_261470	TGME49_314790	1.0	U6 snRNA-associated Sm family protein LSm6, putative	small nuclear ribonucleoprotein G, putative	False	0.83115256	0.66957843	4.0		1.0	0.0	0.43767288	exploratory
+TGME49_263050|TGME49_313390	TGME49_263050	TGME49_313390	1.0	ribosomal protein RPL13	ribosomal protein RPL6	False	0.944362	0.5477487	0.0	1.0	1.0	0.0	0.9882213	exploratory
+TGME49_269885|TGME49_315220	TGME49_269885	TGME49_315220	1.0	rhoptry metalloprotease toxolysin TLN1	rhoptry protein ROP14	False	0.90942764	0.5209048	0.0	1.0	1.0	0.0	0.5438591	exploratory
+TGME49_283540|TGME49_293770	TGME49_283540	TGME49_293770	1.0	microneme protein MIC20	chitinase-like protein CLP1	False	0.82914424	0.24384716	0.0	1.0	1.0	0.0	0.9225969	exploratory
+TGME49_264610|TGME49_283740	TGME49_264610	TGME49_283740	1.0	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.835141	0.2543138	3.0		1.0	0.0	0.99216986	exploratory
+TGME49_220240|TGME49_254720	TGME49_220240	TGME49_254720	1.0	dense granule protein GRA31	dense granule protein GRA8	False	0.831951	0.77737087	0.0	1.0	1.0	0.0	0.8001586	exploratory
+TGME49_305010|TGME49_309800	TGME49_305010	TGME49_309800	1.0	pre-mRNA branch site protein p14, putative	RNA recognition motif-containing protein	False	0.8699888	0.2889619	3.0		1.0	0.0	0.89964837	exploratory
+TGME49_222240|TGME49_234350	TGME49_222240	TGME49_234350	1.0	hypothetical protein	hypothetical protein	False	0.8148345	0.5107257	0.0		1.0	0.0	0.9976252	exploratory
+TGME49_215785|TGME49_295125	TGME49_215785	TGME49_295125	1.0	rhoptry protein ROP2A	rhoptry protein ROP4	False	0.862486		4.0		1.0	1.0	0.91161746	exploratory
+TGME49_254720|TGME49_288650	TGME49_254720	TGME49_288650	1.0	dense granule protein GRA8	dense granule protein GRA12	False	0.85454935	0.57866704	0.0	1.0	1.0	0.0	0.7966033	exploratory
+TGME49_216210|TGME49_280390	TGME49_216210	TGME49_280390	1.0	hypothetical protein	kinetochore protein STU2, putative	False	0.8761193	-0.088885695	1.0			0.0	0.9659392	exploratory
+TGME49_251690|TGME49_300260	TGME49_251690	TGME49_300260	1.0	seryl-tRNA synthetase, cytoplasmic, putative	threonyl-tRNA synthetase family protein	False	0.83558196	0.75480795	2.0	1.0	1.0	0.0	0.58838326	exploratory
+TGME49_304990|TGME49_314970	TGME49_304990	TGME49_314970	1.0	guanylate-binding protein, N-terminal domain-containing protein	root hair defective 3 gtp-binding protein (rhd3) protein	False	0.92801666	0.86784554	1.0		1.0	0.0	0.8923942	exploratory
+TGME49_251690|TGME49_256990	TGME49_251690	TGME49_256990	1.0	seryl-tRNA synthetase, cytoplasmic, putative	glycyl-tRNA synthetase	False	0.94110847	0.7988105	2.0	1.0	1.0	0.0	0.7535689	exploratory
+TGME49_280710|TGME49_306930	TGME49_280710	TGME49_306930	1.0	proteasome subunit beta type-4, putative	proteasome subunit beta type-7, putative	False	0.9687639	0.15350698	3.0	1.0	1.0	0.0	0.28049606	exploratory
+TGME49_235990|TGME49_320430	TGME49_235990	TGME49_320430	1.0	hypothetical protein	cell-cycle-control protein (translation regulation), putative	False	0.8304847	0.27509218	1.0		0.0	0.0	0.97450083	exploratory
+TGME49_254720|TGME49_310780	TGME49_254720	TGME49_310780	1.0	dense granule protein GRA8	dense granule protein GRA4	False	0.9512714	0.93866885	0.0	1.0	1.0	0.0	0.8800268	exploratory
+TGME49_215775|TGME49_295110	TGME49_215775	TGME49_295110	1.0	rhoptry protein ROP8	rhoptry protein ROP7	False	0.7817852	0.96890587	4.0	1.0	1.0	1.0	0.9795404	exploratory
+TGME49_231960|TGME49_312420	TGME49_231960	TGME49_312420	1.0	dense granule protein GRA28	dense granule protein GRA38	False	0.83035773	-0.19484493	0.0	1.0	1.0	0.0	0.98121434	exploratory
+TGME49_216220|TGME49_310950	TGME49_216220	TGME49_310950	1.0	AP2 domain transcription factor AP2XI-5	AP2 domain transcription factor AP2XI-3	False	0.95070356	0.42568517	2.0	1.0	1.0	0.0	0.94837785	exploratory
+TGME49_216250|TGME49_304990	TGME49_216250	TGME49_304990	1.0	RecF/RecN/SMC N terminal domain-containing protein	guanylate-binding protein, N-terminal domain-containing protein	False	0.8586204	0.07618244	1.0			0.0	0.8271704	exploratory
+TGME49_222380|TGME49_249730	TGME49_222380	TGME49_249730	1.0	importin-beta N-terminal domain-containing protein	ND9 protein	False	0.8667764	0.24347965	1.0		1.0	0.0	0.83328474	exploratory
+TGME49_249530|TGME49_253730	TGME49_249530	TGME49_253730	1.0	exportin 1, putative	importin-beta N-terminal domain-containing protein	False	0.8451007	0.5458015	1.0		1.0	0.0	0.9117971	exploratory
+TGME49_254900|TGME49_258150	TGME49_254900	TGME49_258150	1.0	proteasome subunit beta type-2, putative	proteasome subunit alpha type-7, putative	False	0.83445334	0.7067256	3.0	1.0	1.0	0.0	0.58253413	exploratory
+TGME49_249590|TGME49_258150	TGME49_249590	TGME49_258150	1.0	proteasome subunit alpha type-5, putative	proteasome subunit alpha type-7, putative	False	0.90038615	0.36564732	3.0	1.0	1.0	0.0	0.5496396	exploratory
+TGME49_249580|TGME49_318150	TGME49_249580	TGME49_318150	1.0	apicomplexan amino acid transporter ApiAT6-3	apicomplexan amino acid transporter ApiAT3-1	False	0.8419493	0.7118292	3.0	1.0	1.0	0.0	0.9078192	exploratory
+TGME49_206510|TGME49_293770	TGME49_206510	TGME49_293770	1.0	toxolysin TLN4	chitinase-like protein CLP1	False	0.96541524	0.4541747	0.0	1.0	1.0	0.0	0.97256374	exploratory
+TGME49_249590|TGME49_280710	TGME49_249590	TGME49_280710	1.0	proteasome subunit alpha type-5, putative	proteasome subunit beta type-4, putative	False	0.95589226	0.10082123	3.0	1.0	1.0	0.0	0.47425202	exploratory
+TGME49_280710|TGME49_290005	TGME49_280710	TGME49_290005	1.0	proteasome subunit beta type-4, putative	proteasome subunit beta type-1, putative	False	0.9707332	0.39478168	3.0	1.0	1.0	0.0	0.49774423	exploratory
+TGME49_280710|TGME49_287210	TGME49_280710	TGME49_287210	1.0	proteasome subunit beta type-4, putative	proteasome subunit alpha type-2, putative	False	0.9634041	0.19778474	3.0	1.0	1.0	0.0	0.46667457	exploratory
+TGME49_273130|TGME49_275370	TGME49_273130	TGME49_275370	1.0	SAG-related sequence SRS30A	SAG-related sequence SRS47C	False	0.63429576	0.49233702	2.0	1.0	1.0	0.0	0.7395355	exploratory
+TGME49_218960|TGME49_247700	TGME49_218960	TGME49_247700	1.0	AP2 domain transcription factor AP2XII-1	AP2 domain transcription factor AP2XII-4	True	0.93810713	0.3977413	2.0	1.0	1.0	0.0	0.9985549	exploratory
+TGME49_206510|TGME49_293900	TGME49_206510	TGME49_293900	0.9964353059754617	toxolysin TLN4	sporozoite protein with an altered thrombospondin repeat SPATR	False	0.901771	0.27270514	0.0	1.0	1.0	0.0	0.98958695	exploratory
+TGME49_254900|TGME49_314090	TGME49_254900	TGME49_314090	0.9955973780854136	proteasome subunit beta type-2, putative	proteasome subunit beta type-3, putative	False	0.82970506	0.71326643	3.0	1.0	1.0	0.0	0.5748735	exploratory
+TGME49_225990|TGME49_261070	TGME49_225990	TGME49_261070	0.9869070525980981	acyl transferase domain-containing protein	apicoplast triosephosphate translocator APT1	False	0.8208543	0.2931725	0.0	1.0	1.0	0.0	0.39792532	exploratory
+TGME49_301160|TGME49_301170	TGME49_301160	TGME49_301170	0.9860980084802972	SAG-related sequence SRS19C	SAG-related sequence SRS19D	False	0.81652105	0.5654039	4.0	1.0	1.0	1.0	0.92990935	exploratory
+TGME49_235380|TGME49_258090	TGME49_235380	TGME49_258090	0.9831288866466803	apical cap protein AC5	hypothetical protein	False	0.9513678	-0.2753164	0.0	1.0	1.0	0.0	0.725188	exploratory
+TGME49_225320|TGME49_271270	TGME49_225320	TGME49_271270	0.9762395629324497	hypothetical protein	hypothetical protein	False	0.9051485	-0.24160683	0.0		1.0	0.0	0.9783875	exploratory
+TGME49_236890|TGME49_320490	TGME49_236890	TGME49_320490	0.9762173041974531	dense granule protein GRA37	dense granule protein GRA66	False	0.8227876	0.18489125	0.0	1.0	1.0	0.0	0.7534055	exploratory
+TGME49_208540|TGME49_298020	TGME49_208540	TGME49_298020	0.9737662396438679	DEAD/DEAH box helicase domain-containing protein	DEAD-family helicase	False	0.92272544	0.68342596	8.0		0.0	0.0	0.9686909	exploratory
+TGME49_200360|TGME49_220950	TGME49_200360	TGME49_220950	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.7588329	0.91830313	0.0		1.0	0.0	0.7295166	exploratory
+TGME49_226730|TGME49_309752	TGME49_226730	TGME49_309752	0.9736842105263158	aconitate hydratase ACN/IRP	succinate-Coenzyme A ligase, beta subunit, putative	False	0.9674282	0.93759364	0.0	1.0	1.0	0.0	0.91382647	exploratory
+TGME49_227810|TGME49_312270	TGME49_227810	TGME49_312270	0.9736842105263158	rhoptry kinase family protein ROP11 (incomplete catalytic triad)	rhoptry protein ROP13	False	0.88020545	0.18761998	0.0	1.0	1.0	0.0	0.8738027	exploratory
+TGME49_200360|TGME49_266050	TGME49_200360	TGME49_266050	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.79744315	0.46546885	0.0		1.0	0.0	0.7126391	exploratory
+TGME49_226960|TGME49_256990	TGME49_226960	TGME49_256990	0.9736842105263158	phosphofructokinase PFKII	glycyl-tRNA synthetase	False	0.7844282	0.76017195	0.0		1.0	0.0	0.6457076	exploratory
+TGME49_226740|TGME49_304460	TGME49_226740	TGME49_304460	0.9736842105263158	zinc finger, C3HC4 type (RING finger) domain-containing protein	zinc finger, C3HC4 type (RING finger) domain-containing protein	False	0.8590247	-0.6438743	2.0			0.0	0.89332247	exploratory
+TGME49_200360|TGME49_225160	TGME49_200360	TGME49_225160	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.87173086	0.67342293	0.0		1.0	0.0	0.93470675	exploratory
+TGME49_200360|TGME49_225120	TGME49_200360	TGME49_225120	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.86578494	0.6277529	0.0		1.0	0.0	0.87291515	exploratory
+TGME49_227810|TGME49_291960	TGME49_227810	TGME49_291960	0.9736842105263158	rhoptry kinase family protein ROP11 (incomplete catalytic triad)	rhoptry kinase family protein ROP40 (incomplete catalytic triad)	False	0.9076335	0.39431852	3.0	1.0	1.0	0.0	0.7265438	exploratory
+TGME49_279420|TGME49_310010	TGME49_279420	TGME49_310010	0.9736842105263158	hypothetical protein	rhoptry neck protein RON1	False	0.91776747	-0.10027817	0.0		1.0	0.0	0.98745465	exploratory
+TGME49_279420|TGME49_308810	TGME49_279420	TGME49_308810	0.9736842105263158	hypothetical protein	rhoptry neck protein RON9	False	0.84054154	0.60858727	0.0	0.0	0.0	0.0	0.99421626	exploratory
+TGME49_200360|TGME49_254720	TGME49_200360	TGME49_254720	0.9736842105263158	hypothetical protein	dense granule protein GRA8	False	0.9090964	0.8344168	0.0		1.0	0.0	0.86129105	exploratory
+TGME49_279420|TGME49_306060	TGME49_279420	TGME49_306060	0.9736842105263158	hypothetical protein	rhoptry neck protein RON8	False	0.87760967	0.19792835	0.0	1.0	1.0	0.0	0.67545676	exploratory
+TGME49_279420|TGME49_300220	TGME49_279420	TGME49_300220	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.82674325	-0.022658283	0.0		1.0	0.0	0.8562126	exploratory
+TGME49_279420|TGME49_294560	TGME49_279420	TGME49_294560	0.9736842105263158	hypothetical protein	rhoptry kinase family protein ROP37 (incomplete catalytic triad)	False	0.8359791	0.107892506	0.0	1.0	1.0	0.0	0.9946693	exploratory
+TGME49_217050|TGME49_227900	TGME49_217050	TGME49_227900	0.9736842105263158	ADA2-A transcriptional co-activator SAGA component	AP2 domain transcription factor AP2X-1	False	0.8653413	-0.2126201	0.0	1.0	1.0	0.0	0.9993245	exploratory
+TGME49_200360|TGME49_239740	TGME49_200360	TGME49_239740	0.9736842105263158	hypothetical protein	dense granule protein GRA14	False	0.94921017	0.81369275	0.0		1.0	0.0	0.8877102	exploratory
+TGME49_280480|TGME49_299060	TGME49_280480	TGME49_299060	0.9736842105263158	EF hand domain-containing protein	sodium/hydrogen exchanger NHE2	False	0.85611695	-0.13185374	0.0		1.0	0.0	0.75705105	exploratory
+TGME49_283540|TGME49_291890	TGME49_283540	TGME49_291890	0.9736842105263158	microneme protein MIC20	microneme protein MIC1	False	0.8762911	-0.39359787	0.0	1.0	1.0	0.0	0.85364604	exploratory
+TGME49_200360|TGME49_235140	TGME49_200360	TGME49_235140	0.9736842105263158	hypothetical protein	secreted effector protein NSM	False	0.810774	0.7991245	0.0		1.0	0.0	0.6403571	exploratory
+TGME49_280480|TGME49_315490	TGME49_280480	TGME49_315490	0.9736842105263158	EF hand domain-containing protein	rhoptry protein ROP10	False	0.9534009	0.43043697	0.0		0.0	0.0	0.59976673	exploratory
+TGME49_217340|TGME49_298630	TGME49_217340	TGME49_298630	0.9736842105263158	hypothetical protein	vacuolar transporter chaperone VTC2	False	0.82010454	-0.33772197	0.0		1.0	0.0	0.9915599	exploratory
+TGME49_203220|TGME49_226440	TGME49_203220	TGME49_226440	0.9736842105263158	DEAD/DEAH box helicase domain-containing protein	SWI2/SNF2-containing protein RAD16	False	0.8822171	-0.434122	4.0		1.0	0.0	0.99190044	exploratory
+TGME49_280670|TGME49_297960	TGME49_280670	TGME49_297960	0.9736842105263158	hypothetical protein	rhoptry neck protein RON6	False	0.88869804	0.34195164	0.0		0.0	0.0	0.2901568	exploratory
+TGME49_217050|TGME49_275480	TGME49_217050	TGME49_275480	0.9736842105263158	ADA2-A transcriptional co-activator SAGA component	pre-mRNA-splicing factor CEF1, putative	False	0.9390276	0.17645036	2.0	0.0	0.0	0.0	0.6165445	exploratory
+TGME49_227300|TGME49_264940	TGME49_227300	TGME49_264940	0.9736842105263158	hypothetical protein	kelch repeat-containing protein	False	0.8395978	0.37157848	0.0			0.0	0.9971261	exploratory
+TGME49_200360|TGME49_241240	TGME49_200360	TGME49_241240	0.9736842105263158	hypothetical protein	dense granule protein GRA65	False	0.82569766	0.7151008	0.0		1.0	0.0	0.77447855	exploratory
+TGME49_217050|TGME49_320300	TGME49_217050	TGME49_320300	0.9736842105263158	ADA2-A transcriptional co-activator SAGA component	SWI2/SNF2 Brahma-like putative	False	0.9362017	0.0035820366	0.0	1.0	1.0	0.0	0.92892253	exploratory
+TGME49_217340|TGME49_262060	TGME49_217340	TGME49_262060	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.7967389	0.22945239	0.0		1.0	0.0	0.98490036	exploratory
+TGME49_226970|TGME49_263700	TGME49_226970	TGME49_263700	0.9736842105263158	ribosomal protein RPS11	ribosomal protein RPS14	False	0.864057	0.37944746	0.0	1.0	1.0	0.0	0.35888562	exploratory
+TGME49_226970|TGME49_263040	TGME49_226970	TGME49_263040	0.9736842105263158	ribosomal protein RPS11	ribosomal protein RPS16	False	0.9591157	0.79153836	0.0	1.0	1.0	0.0	0.53860164	exploratory
+TGME49_227000|TGME49_266630	TGME49_227000	TGME49_266630	0.9736842105263158	hypothetical protein	conoid protein hub CPH1	False	0.8965425	0.4286794	0.0	1.0	1.0	0.0	0.9037108	exploratory
+TGME49_203080|TGME49_264610	TGME49_203080	TGME49_264610	0.9736842105263158	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.8693269	-0.16522466	3.0			0.0	0.966177	exploratory
+TGME49_227060|TGME49_294710	TGME49_227060	TGME49_294710	0.9736842105263158	hypothetical protein	RNA recognition motif-containing protein	False	0.8493942	-0.23791151	0.0		0.0	0.0	0.86740196	exploratory
+TGME49_227810|TGME49_297070	TGME49_227810	TGME49_297070	0.9736842105263158	rhoptry kinase family protein ROP11 (incomplete catalytic triad)	carbonic anhydrase-related protein CARP	False	0.93773097	0.12987499	0.0	0.0	0.0	0.0	0.91407156	exploratory
+TGME49_227280|TGME49_277270	TGME49_227280	TGME49_277270	0.9736842105263158	dense granule protein GRA3	NTPase II	False	0.81147254	0.9254854	0.0	1.0	1.0	0.0	0.71019506	exploratory
+TGME49_227280|TGME49_239740	TGME49_227280	TGME49_239740	0.9736842105263158	dense granule protein GRA3	dense granule protein GRA14	False	0.80086327	0.43647522	0.0	1.0	1.0	0.0	0.85024935	exploratory
+TGME49_227280|TGME49_310780	TGME49_227280	TGME49_310780	0.9736842105263158	dense granule protein GRA3	dense granule protein GRA4	False	0.8929401	0.42043963	0.0	1.0	1.0	0.0	0.6664566	exploratory
+TGME49_279400|TGME49_309210	TGME49_279400	TGME49_309210	0.9736842105263158	glutaredoxin 2	peroxiredoxin 6, putative	False	0.7545759	0.2900058	1.0		1.0	0.0	0.9309657	exploratory
+TGME49_227280|TGME49_297880	TGME49_227280	TGME49_297880	0.9736842105263158	dense granule protein GRA3	dense granule protein GRA23	False	0.6681028	0.51255995	0.0		1.0	0.0	0.91992396	exploratory
+TGME49_227810|TGME49_252360	TGME49_227810	TGME49_252360	0.9736842105263158	rhoptry kinase family protein ROP11 (incomplete catalytic triad)	rhoptry kinase family protein ROP24 (incomplete catalytic triad)	False	0.90692186	0.26871482	4.0	1.0	1.0	0.0	0.7976656	exploratory
+TGME49_279320|TGME49_291180	TGME49_279320	TGME49_291180	0.9736842105263158	hypothetical protein	vacuolar protein sorting-associated protein 13, putative	False	0.95404094	-0.40893453	0.0		1.0	0.0	0.97968835	exploratory
+TGME49_279100|TGME49_299780	TGME49_279100	TGME49_299780	0.9736842105263158	mitochondrial association factor 1a	dense granule protein GRA76	False	0.83234733	-0.2670418	0.0		1.0	0.0	0.79549205	exploratory
+TGME49_227620|TGME49_294200	TGME49_227620	TGME49_294200	0.9736842105263158	dense granule protein GRA2	glucose-6-phosphate 1-dehydrogenase	False	0.7829301	0.82479703	0.0		1.0	0.0	0.78747314	exploratory
+TGME49_227600|TGME49_262670	TGME49_227600	TGME49_262670	0.9736842105263158	ribosomal protein RPL34	ribosomal protein RPL18A	False	0.9717105	0.38168484	0.0	1.0	1.0	0.0	0.14243382	exploratory
+TGME49_227600|TGME49_248390	TGME49_227600	TGME49_248390	0.9736842105263158	ribosomal protein RPL34	ribosomal protein RPL26	False	0.89722615	0.3824279	0.0	1.0	1.0	0.0	0.5544727	exploratory
+TGME49_227600|TGME49_228470	TGME49_227600	TGME49_228470	0.9736842105263158	ribosomal protein RPL34	ribosomal protein RPL15	False	0.87303025	0.72129416	0.0	1.0	1.0	0.0	0.57520354	exploratory
+TGME49_227600|TGME49_244320	TGME49_227600	TGME49_244320	0.9736842105263158	ribosomal protein RPL34	ribosomal protein RPL24	False	0.93713284	0.78050876	0.0	1.0	1.0	0.0	0.054635435	exploratory
+TGME49_227280|TGME49_294980	TGME49_227280	TGME49_294980	0.9736842105263158	dense granule protein GRA3	hypothetical protein	False	0.79426074	0.3825419	0.0		1.0	0.0	0.9084548	exploratory
+TGME49_203820|TGME49_203910	TGME49_203820	TGME49_203910	0.9736842105263158	hypothetical protein	TBC domain-containing protein TBC10	False	0.8649292	0.14888684	0.0		1.0	0.0	0.99721795	exploratory
+TGME49_203820|TGME49_220360	TGME49_203820	TGME49_220360	0.9736842105263158	hypothetical protein	FAD binding domain-containing protein	False	0.83707917	-0.003846414	0.0		1.0	0.0	0.9949717	exploratory
+TGME49_272695|TGME49_319550	TGME49_272695	TGME49_319550	0.9736842105263158	hypothetical protein	membrane protein C17G8.08c, putative	False	0.9354705	0.7398411	0.0		1.0	0.0	0.92658246	exploratory
+TGME49_272695|TGME49_285240	TGME49_272695	TGME49_285240	0.9736842105263158	hypothetical protein	3-oxo-5-alpha-steroid 4-dehydrogenase	False	0.94808114	-0.5829539	0.0		1.0	0.0	0.9106269	exploratory
+TGME49_230210|TGME49_231630	TGME49_230210	TGME49_231630	0.9736842105263158	alveolin domain containing intermediate filament IMC10	alveolin domain containing intermediate filament IMC4	False	0.90655106	0.79684836	2.0	1.0	1.0	0.0	0.9921931	exploratory
+TGME49_230180|TGME49_288000	TGME49_230180	TGME49_288000	0.9736842105263158	dense granule protein GRA24	hypothetical protein	False	0.76977974	0.52266496	0.0		1.0	0.0	0.9873915	exploratory
+TGME49_230180|TGME49_286450	TGME49_230180	TGME49_286450	0.9736842105263158	dense granule protein GRA24	dense granule protein GRA5	False	0.71129334	0.8837999	0.0	1.0	1.0	0.0	0.25971726	exploratory
+TGME49_230180|TGME49_299780	TGME49_230180	TGME49_299780	0.9736842105263158	dense granule protein GRA24	dense granule protein GRA76	False	0.88643956	-0.28385296	0.0		1.0	0.0	0.48212445	exploratory
+TGME49_273150|TGME49_313870	TGME49_273150	TGME49_313870	0.9736842105263158	zinc finger, C3HC4 type (RING finger) domain-containing protein	zinc finger, C3HC4 type (RING finger) domain-containing protein	False	0.80532175	-0.46373567	2.0			0.0	0.99580646	exploratory
+TGME49_216210|TGME49_229180	TGME49_216210	TGME49_229180	0.9736842105263158	hypothetical protein	HEAT repeat-containing protein	False	0.86279684	0.7290738	1.0		0.0	0.0	0.34130046	exploratory
+TGME49_203790|TGME49_264600	TGME49_203790	TGME49_264600	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.7579293	0.97841054	0.0		0.0	0.0	0.45677385	exploratory
+TGME49_203790|TGME49_259700	TGME49_203790	TGME49_259700	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.7731459	0.6904702	0.0		1.0	0.0	0.8295423	exploratory
+TGME49_203790|TGME49_210370	TGME49_203790	TGME49_210370	0.9736842105263158	hypothetical protein	rhoptry protein ROP54	False	0.7566664	0.84547365	0.0		1.0	0.0	0.9568597	exploratory
+TGME49_203780|TGME49_232800	TGME49_203780	TGME49_232800	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.8879121	-0.19258653	0.0		1.0	0.0	0.9998758	exploratory
+TGME49_216590|TGME49_318350	TGME49_216590	TGME49_318350	0.9736842105263158	HEAT repeat-containing protein	Pumilio-family RNA binding repeat-containing protein	False	0.8830269	-0.22279146	1.0			0.0	0.31978866	exploratory
+TGME49_216250|TGME49_314970	TGME49_216250	TGME49_314970	0.9736842105263158	RecF/RecN/SMC N terminal domain-containing protein	root hair defective 3 gtp-binding protein (rhd3) protein	False	0.9174394	-0.046894707	1.0			0.0	0.8989074	exploratory
+TGME49_203760|TGME49_259220	TGME49_203760	TGME49_259220	0.9736842105263158	hypothetical protein	DEAD/DEAH box helicase domain-containing protein	False	0.8378862	-0.16772132	0.0		1.0	0.0	0.910336	exploratory
+TGME49_229710|TGME49_314440	TGME49_229710	TGME49_314440	0.9736842105263158	OTU domain-containing protein OTUD3B	hypothetical protein	False	0.73921275	-0.080786824	0.0			0.0	0.9581017	exploratory
+TGME49_273870|TGME49_295070	TGME49_273870	TGME49_295070	0.9736842105263158	SWI2/SNF2 ISWI-like (AT hook)	helicase associated domain (ha2) protein	False	0.9022687	0.51795995	4.0		0.0	0.0	0.98982114	exploratory
+TGME49_229630|TGME49_321450	TGME49_229630	TGME49_321450	0.9736842105263158	eIF2 kinase IF2K-A (incomplete catalytic triad)	Myb family DNA-binding domain-containing protein	False	0.94317025	0.12889215	0.0		1.0	0.0	0.9959708	exploratory
+TGME49_229630|TGME49_292055	TGME49_229630	TGME49_292055	0.9736842105263158	eIF2 kinase IF2K-A (incomplete catalytic triad)	calcium dependent protein kinase CDPK8	False	0.8878893	-0.61271954	4.0		1.0	0.0	0.978386	exploratory
+TGME49_273950|TGME49_306970	TGME49_273950	TGME49_306970	0.9736842105263158	replication factor C subunit 5, putative	thymidylate kinase	False	0.8308789	0.24284613	1.0		0.0	0.0	0.6397481	exploratory
+TGME49_273950|TGME49_312520	TGME49_273950	TGME49_312520	0.9736842105263158	replication factor C subunit 5, putative	tRNA dimethylallyltransferase	False	0.83391285	0.010403912	1.0		1.0	0.0	0.49735984	exploratory
+TGME49_203690|TGME49_310950	TGME49_203690	TGME49_310950	0.9736842105263158	AP2 domain transcription factor AP2VIIa-5	AP2 domain transcription factor AP2XI-3	False	0.9059154	-0.28803408	2.0		1.0	0.0	0.9462528	exploratory
+TGME49_229630|TGME49_246170	TGME49_229630	TGME49_246170	0.9736842105263158	eIF2 kinase IF2K-A (incomplete catalytic triad)	ARID/BRIGHT DNA binding domain-containing protein	False	0.9550342	0.62444884	0.0		1.0	0.0	0.9869292	exploratory
+TGME49_229630|TGME49_239885	TGME49_229630	TGME49_239885	0.9736842105263158	eIF2 kinase IF2K-A (incomplete catalytic triad)	protein kinase, putative	False	0.86349106	0.5901152	3.0		1.0	0.0	0.9955278	exploratory
+TGME49_229630|TGME49_236240	TGME49_229630	TGME49_236240	0.9736842105263158	eIF2 kinase IF2K-A (incomplete catalytic triad)	tyrosine kinase-like protein TKL6	False	0.90565777	0.055847265	4.0		1.0	0.0	0.997304	exploratory
+TGME49_229500|TGME49_297070	TGME49_229500	TGME49_297070	0.9736842105263158	hypothetical protein	carbonic anhydrase-related protein CARP	False	0.9299514	0.2999528	0.0		1.0	0.0	0.8879502	exploratory
+TGME49_229500|TGME49_271270	TGME49_229500	TGME49_271270	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.9398506	-0.18742529	0.0		1.0	0.0	0.964174	exploratory
+TGME49_229500|TGME49_252360	TGME49_229500	TGME49_252360	0.9736842105263158	hypothetical protein	rhoptry kinase family protein ROP24 (incomplete catalytic triad)	False	0.94452834	0.740559	0.0		0.0	0.0	0.95982206	exploratory
+TGME49_273660|TGME49_310950	TGME49_273660	TGME49_310950	0.9736842105263158	AP2 domain transcription factor AP2VIII-3	AP2 domain transcription factor AP2XI-3	False	0.88166726	-0.08112242	2.0		1.0	0.0	0.99482423	exploratory
+TGME49_230960|TGME49_242700	TGME49_230960	TGME49_242700	0.9736842105263158	splicing factor 3b, subunit 3, putative	WD repeat-containing protein	False	0.9221532	0.5037688	1.0		1.0	0.0	0.26298225	exploratory
+TGME49_203910|TGME49_321410	TGME49_203910	TGME49_321410	0.9736842105263158	TBC domain-containing protein TBC10	hypothetical protein	False	0.96628326	0.33093202	0.0		1.0	0.0	0.760449	exploratory
+TGME49_203910|TGME49_294280	TGME49_203910	TGME49_294280	0.9736842105263158	TBC domain-containing protein TBC10	E3 ubiquitin-protein ligase, putative	False	0.9391794	0.5399752	0.0		1.0	0.0	0.93738693	exploratory
+TGME49_203910|TGME49_289820	TGME49_203910	TGME49_289820	0.9736842105263158	TBC domain-containing protein TBC10	TBC domain-containing protein TBC14	False	0.8974531	0.15690488	3.0		1.0	0.0	0.99633193	exploratory
+TGME49_203910|TGME49_262540	TGME49_203910	TGME49_262540	0.9736842105263158	TBC domain-containing protein TBC10	protein kinase, putative	False	0.8589576	0.14837876	0.0			0.0	0.9958503	exploratory
+TGME49_203910|TGME49_260380	TGME49_203910	TGME49_260380	0.9736842105263158	TBC domain-containing protein TBC10	hypothetical protein	False	0.91462517	0.6221404	0.0		1.0	0.0	0.97194874	exploratory
+TGME49_271930|TGME49_315750	TGME49_271930	TGME49_315750	0.9736842105263158	inner membrane complex protein IMC20	inner membrane complex protein IMC26	False	0.78994745	0.8080549	0.0	1.0	1.0	0.0	0.96181667	exploratory
+TGME49_203910|TGME49_245720	TGME49_203910	TGME49_245720	0.9736842105263158	TBC domain-containing protein TBC10	SWI2/SNF2-containing protein	False	0.91106087	0.35658458	0.0		1.0	0.0	0.993936	exploratory
+TGME49_271930|TGME49_286580	TGME49_271930	TGME49_286580	0.9736842105263158	inner membrane complex protein IMC20	inner membrane complex protein IMC17	False	0.79563385	0.6742948	0.0	1.0	1.0	0.0	0.89917797	exploratory
+TGME49_271930|TGME49_304670	TGME49_271930	TGME49_304670	0.9736842105263158	inner membrane complex protein IMC20	inner membrane complex protein IMC23	False	0.7099147	0.7776173	0.0	1.0	1.0	0.0	0.8523562	exploratory
+TGME49_215980|TGME49_225160	TGME49_215980	TGME49_225160	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.84202355	0.71124476	0.0		1.0	0.0	0.5575758	exploratory
+TGME49_215980|TGME49_239740	TGME49_215980	TGME49_239740	0.9736842105263158	hypothetical protein	dense granule protein GRA14	False	0.834023	0.8046764	0.0		1.0	0.0	0.4758813	exploratory
+TGME49_230850|TGME49_315750	TGME49_230850	TGME49_315750	0.9736842105263158	transverse sutures component TSC3	inner membrane complex protein IMC26	False	0.8353165	0.034275204	0.0	1.0	1.0	0.0	0.93588257	exploratory
+TGME49_216000|TGME49_219170	TGME49_216000	TGME49_219170	0.9736842105263158	alveolin domain containing intermediate filament IMC3	IMC sutures component ISC2	False	0.94609004	-0.2717049	0.0	1.0	1.0	0.0	0.96532786	exploratory
+TGME49_230350|TGME49_254880	TGME49_230350	TGME49_254880	0.9736842105263158	rhoptry neck protein RON11	Alpha-galactosidase	False	0.9063152	0.24161719	0.0		1.0	0.0	0.99073476	exploratory
+TGME49_216000|TGME49_235340	TGME49_216000	TGME49_235340	0.9736842105263158	alveolin domain containing intermediate filament IMC3	IMC sutures component ISC1	False	0.91567534	-0.33338118	0.0	1.0	1.0	0.0	0.9955533	exploratory
+TGME49_216000|TGME49_237820	TGME49_216000	TGME49_237820	0.9736842105263158	alveolin domain containing intermediate filament IMC3	IMC sub-compartment protein ISP2	False	0.9093205	0.7841553	0.0	1.0	1.0	0.0	0.9015271	exploratory
+TGME49_272350|TGME49_318260	TGME49_272350	TGME49_318260	0.9736842105263158	mRNA export protein	transcription initiation factor TFIID subunit TAF5	False	0.83354557	0.66108507	3.0		1.0	0.0	0.58711153	exploratory
+TGME49_272350|TGME49_290850	TGME49_272350	TGME49_290850	0.9736842105263158	mRNA export protein	WD-40 repeat protein	False	0.85147774	0.6373781	3.0		0.0	0.0	0.35071734	exploratory
+TGME49_230590|TGME49_235905	TGME49_230590	TGME49_235905	0.9736842105263158	chitobiosyldiphosphodolichol beta-mannosyltransferase	ribonuclease z, putative	False	0.8469789	0.2777084	0.0			0.0	0.92717034	exploratory
+TGME49_272520|TGME49_305930	TGME49_272520	TGME49_305930	0.9736842105263158	transverse sutures component TSC4	IMC sutures component ISC4	False	0.6826621	0.7423079	0.0	1.0	1.0	0.0	0.993955	exploratory
+TGME49_272630|TGME49_300280	TGME49_272630	TGME49_300280	0.9736842105263158	U6 snRNA-associated Sm family protein LSm8, putative	LSM domain-containing protein	False	0.77456045	0.16183336	4.0		1.0	0.0	0.07720099	exploratory
+TGME49_230350|TGME49_310010	TGME49_230350	TGME49_310010	0.9736842105263158	rhoptry neck protein RON11	rhoptry neck protein RON1	False	0.91762525	0.016735228	0.0		0.0	0.0	0.9923317	exploratory
+TGME49_230350|TGME49_315470	TGME49_230350	TGME49_315470	0.9736842105263158	rhoptry neck protein RON11	hypothetical protein	False	0.9470648	0.14207971	0.0		1.0	0.0	0.98722327	exploratory
+TGME49_230350|TGME49_315220	TGME49_230350	TGME49_315220	0.9736842105263158	rhoptry neck protein RON11	rhoptry protein ROP14	False	0.87282	-0.28348777	0.0	1.0	1.0	0.0	0.6354668	exploratory
+TGME49_230350|TGME49_308810	TGME49_230350	TGME49_308810	0.9736842105263158	rhoptry neck protein RON11	rhoptry neck protein RON9	False	0.9007657	0.07116318	0.0	1.0	1.0	0.0	0.96966106	exploratory
+TGME49_230350|TGME49_271270	TGME49_230350	TGME49_271270	0.9736842105263158	rhoptry neck protein RON11	hypothetical protein	False	0.890248	0.18754736	0.0		1.0	0.0	0.98747414	exploratory
+TGME49_230350|TGME49_300100	TGME49_230350	TGME49_300100	0.9736842105263158	rhoptry neck protein RON11	rhoptry neck protein RON2	False	0.96033454	0.44222608	0.0	0.0	0.0	0.0	0.87201333	exploratory
+TGME49_219860|TGME49_261000	TGME49_219860	TGME49_261000	0.9736842105263158	DNA replication licensing factor MCM6, putative	DNA mismatch repair protein MSH2, putative	False	0.90301496	-0.33949468	1.0		1.0	0.0	0.8122963	exploratory
+TGME49_230350|TGME49_295125	TGME49_230350	TGME49_295125	0.9736842105263158	rhoptry neck protein RON11	rhoptry protein ROP4	False	0.84444827	-0.12889557	0.0	0.0	0.0	0.0	0.93799216	exploratory
+TGME49_216000|TGME49_235690	TGME49_216000	TGME49_235690	0.9736842105263158	alveolin domain containing intermediate filament IMC3	inner membrane complex protein IMC37	False	0.93728894	-0.461508	0.0		1.0	0.0	0.9803568	exploratory
+TGME49_203450|TGME49_233260	TGME49_203450	TGME49_233260	0.9736842105263158	brain colonization protein BCP1	GTP-binding protein, putative	False	0.8818176	0.27058533	0.0		1.0	0.0	0.5656272	exploratory
+TGME49_228750|TGME49_229630	TGME49_228750	TGME49_229630	0.9736842105263158	calcium dependent protein kinase CDPK7	eIF2 kinase IF2K-A (incomplete catalytic triad)	False	0.9264492	0.44505283	4.0		1.0	0.0	0.99937904	exploratory
+TGME49_277080|TGME49_289620	TGME49_277080	TGME49_289620	0.9736842105263158	microneme protein MIC5	cathepsin CPC1	False	0.8331054	-0.06538182	0.0		1.0	0.0	0.96483004	exploratory
+TGME49_277230|TGME49_309760	TGME49_277230	TGME49_309760	0.9736842105263158	dense granule protein GRA82	dense granule protein GRA55	False	0.8502139	0.7081834	0.0		1.0	0.0	0.660841	exploratory
+TGME49_228470|TGME49_244320	TGME49_228470	TGME49_244320	0.9736842105263158	ribosomal protein RPL15	ribosomal protein RPL24	False	0.935849	0.7772466	0.0	1.0	1.0	0.0	0.45208305	exploratory
+TGME49_228470|TGME49_263050	TGME49_228470	TGME49_263050	0.9736842105263158	ribosomal protein RPL15	ribosomal protein RPL13	False	0.9401669	0.2779499	0.0	1.0	1.0	0.0	0.47427022	exploratory
+TGME49_277740|TGME49_304460	TGME49_277740	TGME49_304460	0.9736842105263158	zinc finger, C3HC4 type (RING finger) domain-containing protein	zinc finger, C3HC4 type (RING finger) domain-containing protein	False	0.89685845	0.17077684	2.0			0.0	0.9801133	exploratory
+TGME49_203320|TGME49_291180	TGME49_203320	TGME49_291180	0.9736842105263158	zinc finger in N-recognin protein	vacuolar protein sorting-associated protein 13, putative	False	0.9272329	-0.23665047	0.0		1.0	0.0	0.9938129	exploratory
+TGME49_228170|TGME49_299780	TGME49_228170	TGME49_299780	0.9736842105263158	dense granule protein GRA44	dense granule protein GRA76	False	0.86719453	0.63469255	0.0		1.0	0.0	0.7756754	exploratory
+TGME49_216820|TGME49_221180	TGME49_216820	TGME49_221180	0.9736842105263158	transporter facilitator protein TFP1	hypothetical protein	False	0.8447254	-0.32963556	0.0		1.0	0.0	0.65691876	exploratory
+TGME49_228170|TGME49_230180	TGME49_228170	TGME49_230180	0.9736842105263158	dense granule protein GRA44	dense granule protein GRA24	False	0.84500784	-0.6044357	0.0		1.0	0.0	0.6087661	exploratory
+TGME49_216820|TGME49_291890	TGME49_216820	TGME49_291890	0.9736842105263158	transporter facilitator protein TFP1	microneme protein MIC1	False	0.88460296	0.5725904	0.0		1.0	0.0	0.6805488	exploratory
+TGME49_228120|TGME49_291980	TGME49_228120	TGME49_291980	0.9736842105263158	hypothetical protein	HECT-domain (ubiquitin-transferase) domain-containing protein	False	0.8965049	0.2986953	0.0		1.0	0.0	0.99661624	exploratory
+TGME49_203310|TGME49_247530	TGME49_203310	TGME49_247530	0.9736842105263158	dense granule protein GRA7	hypothetical protein	False	0.9024782	0.83060795	0.0		1.0	0.0	0.97595924	exploratory
+TGME49_229490|TGME49_278630	TGME49_229490	TGME49_278630	0.9736842105263158	tetratricopeptide repeat-containing protein	tetratricopeptide repeat-containing protein	False	0.8325852	0.8329635	2.0		1.0	0.0	0.96574104	exploratory
+TGME49_203310|TGME49_213050	TGME49_203310	TGME49_213050	0.9736842105263158	dense granule protein GRA7	hypothetical protein	False	0.88740855	0.732425	0.0		1.0	0.0	0.5046654	exploratory
+TGME49_200360|TGME49_208550	TGME49_200360	TGME49_208550	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.87421167	0.85464656	0.0		1.0	0.0	0.8632576	exploratory
+TGME49_200360|TGME49_203310	TGME49_200360	TGME49_203310	0.9736842105263158	hypothetical protein	dense granule protein GRA7	False	0.896845	0.73541206	0.0		1.0	0.0	0.91804844	exploratory
+TGME49_200360|TGME49_215980	TGME49_200360	TGME49_215980	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.8273119	0.8222448	0.0		1.0	0.0	0.6561642	exploratory
+TGME49_228100|TGME49_311400	TGME49_228100	TGME49_311400	0.9736842105263158	hypothetical protein	protein transport protein SEC31, putative	False	0.97463036	0.95866716	2.0		1.0	0.0	0.97919536	exploratory
+TGME49_200360|TGME49_213050	TGME49_200360	TGME49_213050	0.9736842105263158	hypothetical protein	hypothetical protein	False	0.92547745	0.66808075	0.0		1.0	0.0	0.7221176	exploratory
+TGME49_228100|TGME49_301390	TGME49_228100	TGME49_301390	0.9736842105263158	hypothetical protein	ribosome biogenesis protein BOP1, putative	False	0.954257	0.78727293	2.0		1.0	0.0	0.9900709	exploratory
+TGME49_216870|TGME49_270690	TGME49_216870	TGME49_270690	0.9736842105263158	DNA excision repair helicase	dynamin-related protein DRPC	False	0.88734597	0.76950353	1.0			0.0	0.9654577	exploratory
+TGME49_278510|TGME49_282055	TGME49_278510	TGME49_282055	0.9736842105263158	protein phosphatase PPM3F	protein phosphatase PP2C-hn	False	0.84135866	0.37730995	4.0		1.0	0.0	0.5737745	exploratory
+TGME49_227970|TGME49_305980	TGME49_227970	TGME49_305980	0.9736842105263158	histone family DNA-binding protein	pyruvate dehydrogenase complex subunit PDH-E3I	False	0.8522963	0.51451075	0.0	1.0	1.0	0.0	0.72224045	exploratory
+TGME49_227970|TGME49_240600	TGME49_227970	TGME49_240600	0.9736842105263158	histone family DNA-binding protein	chaperonin cpn60, putative	False	0.8461296	0.8083138	0.0	1.0	1.0	0.0	0.76073104	exploratory
+TGME49_227960|TGME49_292220	TGME49_227960	TGME49_292220	0.9736842105263158	PCI domain-containing protein	PCI domain-containing protein	False	0.92265534	0.24521421	3.0	1.0	1.0	0.0	0.9047286	exploratory
+TGME49_203220|TGME49_298020	TGME49_203220	TGME49_298020	0.9736842105263158	DEAD/DEAH box helicase domain-containing protein	DEAD-family helicase	False	0.88465726	0.62936646	7.0		1.0	0.0	0.9970299	exploratory
+TGME49_203220|TGME49_320300	TGME49_203220	TGME49_320300	0.9736842105263158	DEAD/DEAH box helicase domain-containing protein	SWI2/SNF2 Brahma-like putative	False	0.9385715	0.68439454	4.0		1.0	0.0	0.98403454	exploratory
+TGME49_203220|TGME49_253090	TGME49_203220	TGME49_253090	0.9736842105263158	DEAD/DEAH box helicase domain-containing protein	DEAD/DEAH box helicase domain-containing protein	False	0.80990267	0.48270467	7.0		0.0	0.0	0.9434747	exploratory
+TGME49_203310|TGME49_215980	TGME49_203310	TGME49_215980	0.9736842105263158	dense granule protein GRA7	hypothetical protein	False	0.84406406	0.8090847	0.0		1.0	0.0	0.43420464	exploratory
+TGME49_229480|TGME49_247350	TGME49_229480	TGME49_247350	0.9736842105263158	calcium binding protein precursor, putative	thioredoxin domain-containing protein	False	0.86672294	0.69602066	0.0		0.0	0.0	0.4934715	exploratory
+TGME49_275370|TGME49_301180	TGME49_275370	TGME49_301180	0.9736842105263158	SAG-related sequence SRS47C	SAG-related sequence SRS19F	False	0.6179029	0.5946014	2.0	1.0	1.0	0.0	0.90165716	exploratory
+TGME49_216450|TGME49_258150	TGME49_216450	TGME49_258150	0.9736842105263158	proteasome subunit alpha type-3, putative	proteasome subunit alpha type-7, putative	False	0.93075925	0.7868087	3.0	1.0	1.0	0.0	0.70630157	exploratory
+TGME49_216450|TGME49_306930	TGME49_216450	TGME49_306930	0.9736842105263158	proteasome subunit alpha type-3, putative	proteasome subunit beta type-7, putative	False	0.98060304	0.2524833	3.0	1.0	1.0	0.0	0.2019237	exploratory
+TGME49_275470|TGME49_288650	TGME49_275470	TGME49_288650	0.9736842105263158	dense granule protein GRA15	dense granule protein GRA12	False	0.8339484	0.49661845	0.0		1.0	0.0	0.6127514	exploratory
+TGME49_203540|TGME49_314700	TGME49_203540	TGME49_314700	0.9736842105263158	RNA binding protein, putative	hypothetical protein	False	0.8362574	0.6955412	0.0		1.0	0.0	0.99301076	exploratory
+TGME49_203540|TGME49_222240	TGME49_203540	TGME49_222240	0.9736842105263158	RNA binding protein, putative	hypothetical protein	False	0.86799586	0.46166757	0.0		1.0	0.0	0.9993968	exploratory
+TGME49_275610|TGME49_312570	TGME49_275610	TGME49_312570	0.9736842105263158	protein kinase, other	CMGC kinase, MAPK family (ERK) MAPK-1	False	0.8710412	0.59758854	4.0			0.0	0.99224627	exploratory
+TGME49_229250|TGME49_248390	TGME49_229250	TGME49_248390	0.9736842105263158	ribosomal protein RPL28	ribosomal protein RPL26	False	0.9376977	0.42004958	0.0	1.0	1.0	0.0	0.4601878	exploratory
+TGME49_229250|TGME49_238010	TGME49_229250	TGME49_238010	0.9736842105263158	ribosomal protein RPL28	ribosomal protein RPL23A	False	0.9450004	0.74203277	0.0	1.0	1.0	0.0	0.3872715	exploratory
+TGME49_229250|TGME49_244320	TGME49_229250	TGME49_244320	0.9736842105263158	ribosomal protein RPL28	ribosomal protein RPL24	False	0.98695904	0.48719057	0.0	1.0	1.0	0.0	0.15952328	exploratory
+TGME49_275670|TGME49_278780	TGME49_275670	TGME49_278780	0.9736842105263158	alveolin domain containing intermediate filament IMC15	hypothetical protein	False	0.8643562	-0.16302101	0.0	1.0	1.0	0.0	0.9931911	exploratory
+TGME49_275690|TGME49_312110	TGME49_275690	TGME49_312110	0.9736842105263158	chaperone protein ClpB3	apicoplast-associated thioredoxin family protein Atrx1	False	0.8009001	0.61122257	0.0	1.0	1.0	0.0	0.92329276	exploratory
+TGME49_275750|TGME49_309740	TGME49_275750	TGME49_309740	0.9736842105263158	small nuclear ribonucleoprotein E, putative	LSM domain-containing protein	False	0.845161	0.8946151	4.0	1.0	1.0	0.0	0.42437318	exploratory
+TGME49_229180|TGME49_290340	TGME49_229180	TGME49_290340	0.9736842105263158	HEAT repeat-containing protein	HEAT repeat-containing protein	False	0.8755382	0.09767808	1.0		1.0	0.0	0.65161586	exploratory
+TGME49_228750|TGME49_253440	TGME49_228750	TGME49_253440	0.9736842105263158	calcium dependent protein kinase CDPK7	cell-cycle-associated protein kinase SRPK, putative	False	0.94464827	0.94504184	5.0		1.0	0.0	0.98705703	exploratory
+TGME49_229010|TGME49_315220	TGME49_229010	TGME49_315220	0.9736842105263158	rhoptry neck protein RON4	rhoptry protein ROP14	False	0.89925647	-0.15702432	0.0	0.0	0.0	0.0	0.49120125	exploratory
+TGME49_229010|TGME49_312270	TGME49_229010	TGME49_312270	0.9736842105263158	rhoptry neck protein RON4	rhoptry protein ROP13	False	0.93040884	0.32476124	0.0	1.0	1.0	0.0	0.48436952	exploratory
+TGME49_229010|TGME49_321650	TGME49_229010	TGME49_321650	0.9736842105263158	rhoptry neck protein RON4	rhoptry neck protein RON13	False	0.8714769	0.18388928	0.0	1.0	1.0	0.0	0.98455745	exploratory
+TGME49_216590|TGME49_244290	TGME49_216590	TGME49_244290	0.9736842105263158	HEAT repeat-containing protein	AP-4 complex subunit epsilon, putative	False	0.86623347	0.06486501	1.0		1.0	0.0	0.5206167	exploratory
+TGME49_216590|TGME49_269180	TGME49_216590	TGME49_269180	0.9736842105263158	HEAT repeat-containing protein	MIF4G domain-containing protein	False	0.9263067	0.13502257	1.0		0.0	0.0	0.2856143	exploratory
+TGME49_216590|TGME49_260600	TGME49_216590	TGME49_260600	0.9736842105263158	HEAT repeat-containing protein	mRNA-binding protein PUF1	False	0.8274067	-0.27518016	1.0		1.0	0.0	0.3446238	exploratory
+TGME49_216590|TGME49_264830	TGME49_216590	TGME49_264830	0.9736842105263158	HEAT repeat-containing protein	hypothetical protein	False	0.9034638	0.3447748	1.0		0.0	0.0	0.90094155	exploratory
+TGME49_229010|TGME49_295110	TGME49_229010	TGME49_295110	0.9736842105263158	rhoptry neck protein RON4	rhoptry protein ROP7	False	0.90456444	0.023038795	0.0	1.0	1.0	0.0	0.9477163	exploratory
+TGME49_229010|TGME49_291960	TGME49_229010	TGME49_291960	0.9736842105263158	rhoptry neck protein RON4	rhoptry kinase family protein ROP40 (incomplete catalytic triad)	False	0.9173069	-0.22491336	0.0	1.0	1.0	0.0	0.9606827	exploratory
+TGME49_229010|TGME49_258580	TGME49_229010	TGME49_258580	0.9736842105263158	rhoptry neck protein RON4	rhoptry protein ROP17	False	0.9108923	-0.07936078	0.0	1.0	1.0	0.0	0.71306497	exploratory
+TGME49_229010|TGME49_262730	TGME49_229010	TGME49_262730	0.9736842105263158	rhoptry neck protein RON4	rhoptry protein ROP16	False	0.90510035	0.1729216	0.0	1.0	1.0	0.0	0.9775835	exploratory
+TGME49_229010|TGME49_252360	TGME49_229010	TGME49_252360	0.9736842105263158	rhoptry neck protein RON4	rhoptry kinase family protein ROP24 (incomplete catalytic triad)	False	0.8938699	-0.15260348	0.0	1.0	1.0	0.0	0.97395784	exploratory
+TGME49_229010|TGME49_258800	TGME49_229010	TGME49_258800	0.9736842105263158	rhoptry neck protein RON4	rhoptry kinase family protein ROP31	False	0.7564252	0.06742588	0.0	1.0	1.0	0.0	0.9194309	exploratory
+TGME49_283740|TGME49_294710	TGME49_283740	TGME49_294710	0.9736842105263158	RNA recognition motif-containing protein	RNA recognition motif-containing protein	False	0.83230186	0.634386	3.0		1.0	0.0	0.99651366	exploratory
+TGME49_216620|TGME49_230350	TGME49_216620	TGME49_230350	0.9736842105263158	EF hand domain-containing protein	rhoptry neck protein RON11	False	0.94290245	0.085832894	2.0		0.0	0.0	0.98730564	exploratory
+TGME49_229020|TGME49_318770	TGME49_229020	TGME49_318770	0.9736842105263158	CDK-related protein kinase CRK5	aurora-related kinase ARK2	False	0.860952	0.28104618	4.0			0.0	0.99855316	exploratory
+TGME49_201780|TGME49_289620	TGME49_201780	TGME49_289620	0.9736842105263158	microneme protein MIC2	cathepsin CPC1	False	0.9374491	0.10936184	0.0		1.0	0.0	0.9507166	exploratory
+TGME49_201780|TGME49_289630	TGME49_201780	TGME49_289630	0.9736842105263158	microneme protein MIC2	microneme protein MIC16	False	0.9196171	-0.4420891	0.0	1.0	1.0	0.0	0.96438223	exploratory
+TGME49_300000|TGME49_312090	TGME49_300000	TGME49_312090	0.9736842105263158	ribosomal protein RPL18	ribosomal protein RPL23	False	0.8818433	0.66670805	0.0	1.0	1.0	0.0	0.23425429	exploratory
+TGME49_223080|TGME49_291140	TGME49_223080	TGME49_291140	0.9736842105263158	hypothetical protein	CCR4-Not complex component, Not1 protein	False	0.9552389	-0.4475629	0.0		1.0	0.0	0.98771054	exploratory
+TGME49_218960|TGME49_228750	TGME49_218960	TGME49_228750	0.9736842105263158	AP2 domain transcription factor AP2XII-1	calcium dependent protein kinase CDPK7	False	0.9074507	0.42868558	0.0		1.0	0.0	0.9965665	exploratory
+TGME49_299060|TGME49_305590	TGME49_299060	TGME49_305590	0.9736842105263158	sodium/hydrogen exchanger NHE2	ABC transporter transmembrane region domain-containing protein	False	0.83134055	0.10715871	0.0	1.0	1.0	0.0	0.7462978	exploratory
+TGME49_298610|TGME49_311920	TGME49_298610	TGME49_311920	0.9736842105263158	GYF domain-containing protein	GRAM domain-containing protein	False	0.9603385	0.49254656	0.0		1.0	0.0	0.92937475	exploratory
+TGME49_218960|TGME49_224050	TGME49_218960	TGME49_224050	0.9736842105263158	AP2 domain transcription factor AP2XII-1	AP2 domain transcription factor AP2X-4	True	0.8780978	0.7285562	2.0	1.0	1.0	0.0	0.9925349	exploratory
+TGME49_288650|TGME49_294200	TGME49_288650	TGME49_294200	0.9736842105263158	dense granule protein GRA12	glucose-6-phosphate 1-dehydrogenase	False	0.8121588	0.5832674	0.0		1.0	0.0	0.7956554	exploratory
+TGME49_298610|TGME49_305340	TGME49_298610	TGME49_305340	0.9736842105263158	GYF domain-containing protein	ATPase MORC	False	0.9512166	-0.41182995	0.0		1.0	0.0	0.9945138	exploratory
+TGME49_223550|TGME49_273980	TGME49_223550	TGME49_273980	0.9736842105263158	hypothetical protein	dense granule protein GRA80	False	0.7159058	0.5805617	0.0		1.0	0.0	0.8979037	exploratory
+TGME49_297960|TGME49_311470	TGME49_297960	TGME49_311470	0.9736842105263158	rhoptry neck protein RON6	rhoptry neck protein RON5	False	0.9146098	-0.35367608	0.0		1.0	0.0	0.9211388	exploratory
+TGME49_297960|TGME49_300100	TGME49_297960	TGME49_300100	0.9736842105263158	rhoptry neck protein RON6	rhoptry neck protein RON2	False	0.9542423	-0.3165152	0.0		1.0	0.0	0.7890229	exploratory
+TGME49_223590|TGME49_314090	TGME49_223590	TGME49_314090	0.9736842105263158	proteasome subunit beta type-6, putative	proteasome subunit beta type-3, putative	False	0.8930949	-0.34917808	3.0	1.0	1.0	0.0	0.038447045	exploratory
+TGME49_223590|TGME49_306930	TGME49_223590	TGME49_306930	0.9736842105263158	proteasome subunit beta type-6, putative	proteasome subunit beta type-7, putative	False	0.9122707	-0.022072962	3.0	1.0	1.0	0.0	0.9619109	exploratory
+TGME49_223640|TGME49_260380	TGME49_223640	TGME49_260380	0.9736842105263158	TBC domain-containing protein TBC12	hypothetical protein	False	0.86678827	0.36442277	0.0		1.0	0.0	0.9730295	exploratory
+TGME49_223690|TGME49_243580	TGME49_223690	TGME49_243580	0.9736842105263158	hypothetical protein	Hit family protein involved in cell-cycle regulation, putative	False	0.70175904	-0.21126108	0.0			0.0	0.8387712	exploratory
+TGME49_298610|TGME49_304630	TGME49_298610	TGME49_304630	0.9736842105263158	GYF domain-containing protein	THO complex subunit 2, putative	False	0.85611975	-0.0063991863	0.0		1.0	0.0	0.999863	exploratory
+TGME49_218960|TGME49_247730	TGME49_218960	TGME49_247730	0.9736842105263158	AP2 domain transcription factor AP2XII-1	AP2 domain transcription factor AP2XII-5	True		-0.061217092	4.0	1.0	1.0	0.0	0.9976658	exploratory
+TGME49_222350|TGME49_275670	TGME49_222350	TGME49_275670	0.9736842105263158	hypothetical protein	alveolin domain containing intermediate filament IMC15	False	0.83926857	0.2216229	0.0	1.0	1.0	0.0	0.3262714	exploratory
+TGME49_222380|TGME49_295040	TGME49_222380	TGME49_295040	0.9736842105263158	importin-beta N-terminal domain-containing protein	HEAT repeat-containing protein	False	0.9577106	0.83594066	1.0		1.0	0.0	0.9092466	exploratory
+TGME49_222410|TGME49_255650	TGME49_222410	TGME49_255650	0.9736842105263158	lipase maturation factor, putative	palmitoyltransferase DHHC8	False	0.895907	-0.11614817	0.0		1.0	0.0	0.4115491	exploratory

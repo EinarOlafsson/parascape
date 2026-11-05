@@ -347,3 +347,50 @@ transporters, DCX -> doublecortin, eIF6 -> binds the 60S subunit, CIAPIN1 -> cyt
 MIC2, RASP2 -> rhoptry apical surface protein, CDC50.1 -> traffics GC and UGO to the membrane (and GC and UGO
 are themselves in the set). **Rule for future use: accept a strain-suffix mapping only when the product name
 independently corroborates it**; the index warning stands for the general case.
+
+## Binding partners scored for the first time (2026-11-04): 0.891, a near miss
+`results/partner_inference_2026_11_04/`. Positives: the 2,842 StarPath XL-MS crosslink pairs over 1,630
+proteins (probability 1 - local FDR). The 33,596 bait-member pull-down pairs were kept **out** of the headline,
+because without a CRAPome background a sticky contaminant is indistinguishable from a real partner. No verified
+non-interaction set exists, so every negative is a decoy and three constructions were scored.
+
+| Question | Pairs | Lower 90 % bound | Reaches 0.90 |
+|---|---|---|---|
+| **Cold-node, degree-matched (headline)** | 1,248 | **0.891** | **no** |
+| Cold-node, same-compartment decoys | 1,199 | 0.919 | yes |
+| Cold-node, random decoys (easy) | 1,185 | 0.902 | yes |
+| Known-node, degree-matched (easy) | 1,959 | 0.912 | yes |
+
+* **The decoy construction decides the answer, exactly as for host-facing.** The "both proteins are popular"
+  baseline scores AUC **0.995 against random decoys and 0.512 against degree-matched ones**: the popularity
+  shortcut is real and degree-matching removes it. Model AUC falls from 0.933 to 0.788 the same way.
+* **This is a near miss limited by held-out pairs, not by attainable precision.** Best precision with >= 20
+  calls is 0.957, and a 0.90 bound at that precision needs ~52 held-out calls against the 47 available. Unlike
+  host-facing, where attainable precision (0.822) was itself below the bar, here more pairs would settle it.
+  Cold-node scoring keeps only 22 % of labelled pairs, which is inherent to holding out whole proteins.
+* **What the model actually knows is co-localisation plus shared domains.** Family AUC alone: compartment 0.705,
+  sequence 0.660, domain 0.581, fitness 0.548, co-expression 0.540, 3Di 0.502. There is **no per-pair
+  measurement in the feature table at all**.
+* **The StarPath fitness-difference finding does not reproduce**: the fitness family gives AUC 0.548 and
+  removing it costs 0.0001 - consistent with the mouse-immune lesson that subtracting two relative scores
+  amplifies noise.
+* **AMA1-RON2 is a flat miss** (0.5th percentile): AMA1 is micronemal and RON2 rhoptry-neck, so a
+  co-localisation predictor cannot find it. The MyoA glideosome does well (6 of 12 scorable pairs above the
+  90th percentile). This is the clearest statement of the model's blind spot: the biologically interesting
+  partners are the ones that cross compartments.
+* **Prior shift:** the labelled set is 1:1 while true pair prevalence is tiny, so transferred probabilities are
+  ranking scores, not posteriors. The 223,097 candidates above 0.5 must **not** be read as likely partners.
+* **Decision: fill nothing for partners.** What would change it: the CRAPome background (it would turn 33,596
+  provisional pairs into graded evidence and, more importantly, provide the independent assay this run lacks
+  for held-out truth); reciprocal pull-downs or solved complexes for the first verified negatives; AF3 pair
+  confidence on a shortlist as genuine per-pair evidence.
+
+### The circularity worry, settled
+The agent could not determine whether StarPath's pair FDR used localisation agreement, which would have made
+the strongest feature partly circular. Checked here: same-compartment crosslink pairs do have a much lower FDR
+(median 0.00000 against 0.00529, p = 6e-29) -- but **within bins of identification score the difference
+disappears** (every bin p > 0.07), and identification score correlates -0.92 with local FDR. So the FDR is a
+function of the mass-spectrometric evidence, and the association with compartment is explained by
+same-compartment pairs yielding more crosslinks (median 2 against 1), which is what genuine interaction
+predicts. **The crosslink labels are not circular with respect to compartment**, so the co-localisation feature
+is legitimately predictive rather than leaked.
