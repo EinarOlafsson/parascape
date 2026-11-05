@@ -42,12 +42,21 @@ Six categories, each a row of nodes:
 | **2 · One question, all genes** | The question catalogue (host-facing, needed without glucose, involved in egress, located where, ...) · Fill a gap for my gene list · *All strategies (advanced)* | questions registry + harness (73), strategy panel |
 | **3 · Compare conditions** | Two conditions · A perturbation series · Strains · Stages · Genes that move together | compare, coexpression, RNA design panels |
 | **4 · My own data** | Paste a gene list · Score my pull-down against the background · Compare my screen | compare panel, CRAPome specificity, importer |
-| **5 · How much can this be trusted?** | Scoreboards (cross-validated and frozen test) · Coverage · Effective independent axes · What cannot be answered yet | harness results, scoreboard, track record |
-| **6 · Where it came from** | Datasets and provenance · References · Downloads | dataset coverage, deposited values, component downloads |
+| **5 · Where it came from** | Datasets and provenance · References · Downloads | dataset coverage, deposited values, component downloads |
 
-Category 5 on the home screen is deliberate and unusual: this project's value rests on knowing which cells are
-measured, which are inferred and which are unanswerable, so the honesty surface is a destination rather than a
-footnote.
+### Trust is integrated, not a category (Einar, 2026-11-05)
+A sixth category, "How much can this be trusted?", was proposed and **rejected**: if someone has to visit a
+separate room to learn whether a number is reliable, the default experience is untrustworthy. His correction is
+the better design, and it becomes a rule the panels must follow:
+* a node that shows a claim shows its **probability, its uncertainty and its source tier inline**;
+* a **question node** carries its own scoreboard -- the cross-validated estimate and the frozen-test result side
+  by side -- and how many genes it can answer at the 90 % bar, rather than linking elsewhere;
+* **coverage** belongs on the question or trait itself ("716 of 8,140 genes have an observed fact; the rest are
+  not measured, which is not a negative");
+* **"cannot be answered yet"** is a state on the question catalogue, not a page: too few labels renders as
+  unanswerable with the reason;
+* **effective independent axes** sits in the catalogue header, qualifying the whole list;
+* provenance and references stay reachable from each claim; category 5 holds only dataset-level browsing.
 
 ## Node behaviour
 * **Every search result is a node**, with a kind (gene, question, strategy, dataset, panel, guide page) and a
