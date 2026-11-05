@@ -1,0 +1,3215 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-29T15:15:07.102154+00:00",
+  "scope": "Partial queue snapshot; competitive ME49 + human/mouse reference",
+  "planned_runs": 1011,
+  "verified_runs": 296,
+  "studies": [
+    {
+      "study": "GSE103113",
+      "completed_runs": 6,
+      "planned_runs": 6
+    },
+    {
+      "study": "GSE116539",
+      "completed_runs": 4,
+      "planned_runs": 4
+    },
+    {
+      "study": "GSE125120",
+      "completed_runs": 12,
+      "planned_runs": 12
+    },
+    {
+      "study": "GSE132238",
+      "completed_runs": 16,
+      "planned_runs": 16
+    },
+    {
+      "study": "GSE136123",
+      "completed_runs": 18,
+      "planned_runs": 18
+    },
+    {
+      "study": "GSE139537",
+      "completed_runs": 15,
+      "planned_runs": 15
+    },
+    {
+      "study": "GSE140197",
+      "completed_runs": 9,
+      "planned_runs": 9
+    },
+    {
+      "study": "GSE150334",
+      "completed_runs": 6,
+      "planned_runs": 6
+    },
+    {
+      "study": "GSE156685",
+      "completed_runs": 8,
+      "planned_runs": 8
+    },
+    {
+      "study": "GSE158231",
+      "completed_runs": 14,
+      "planned_runs": 14
+    },
+    {
+      "study": "GSE159515",
+      "completed_runs": 6,
+      "planned_runs": 6
+    },
+    {
+      "study": "GSE168465",
+      "completed_runs": 18,
+      "planned_runs": 18
+    },
+    {
+      "study": "GSE175919",
+      "completed_runs": 6,
+      "planned_runs": 6
+    },
+    {
+      "study": "GSE178355",
+      "completed_runs": 27,
+      "planned_runs": 27
+    },
+    {
+      "study": "GSE189677",
+      "completed_runs": 12,
+      "planned_runs": 12
+    },
+    {
+      "study": "GSE193614",
+      "completed_runs": 7,
+      "planned_runs": 7
+    },
+    {
+      "study": "GSE193779",
+      "completed_runs": 6,
+      "planned_runs": 6
+    },
+    {
+      "study": "GSE198001",
+      "completed_runs": 6,
+      "planned_runs": 6
+    },
+    {
+      "study": "GSE200962",
+      "completed_runs": 52,
+      "planned_runs": 52
+    },
+    {
+      "study": "GSE208647",
+      "completed_runs": 16,
+      "planned_runs": 16
+    },
+    {
+      "study": "GSE218921",
+      "completed_runs": 21,
+      "planned_runs": 21
+    },
+    {
+      "study": "GSE223621",
+      "completed_runs": 9,
+      "planned_runs": 9
+    },
+    {
+      "study": "GSE223819",
+      "completed_runs": 2,
+      "planned_runs": 28
+    }
+  ],
+  "quantifiers": [
+    "salmon",
+    "kallisto"
+  ],
+  "references": [
+    "ME49_host"
+  ],
+  "plan_sha256": "4c0d408dc34daa509dd2288f12da61e5ee9f14b02266c2c55ea4a368a96fa32c",
+  "inputs": {
+    "GSE103113/SRR5976642/salmon": {
+      "quantification_sha256": "5a9d31d6481f40791f2714173cb5935044b820637ae1368bb4b64615d218f438",
+      "receipt_sha256": "a4823a3263a4503b0cd9d20736e844d74a73d4d48fd1c7f923ad95caff6471f7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE103113/SRR5976644/salmon": {
+      "quantification_sha256": "c611ce3a48587abe6489a55ac830c62ff091153650d018c36ddb47339910b400",
+      "receipt_sha256": "d22fd4059bd4eb399df200c330456e0a345bd223909f88f278e1e29257ac33f6",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE103113/SRR5976640/salmon": {
+      "quantification_sha256": "27a9c8262d3fce61bc9b07bc3c8fff3782a04b4e0215beb294fc7c2b6680f3a0",
+      "receipt_sha256": "cb5f3e6664b7bc5b2cc9b98da1405487462189bbd09cdeb53f1ce33d918a5e69",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE103113/SRR5976645/salmon": {
+      "quantification_sha256": "f6defb1e221c4228b00901fa88d275278844afabe256e3024fcbf25c717549e3",
+      "receipt_sha256": "5693e4004e959ef8ec90b2cc0d695c0924abcf0f71f3f48faa9a7061a7c91fc7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE103113/SRR5976646/salmon": {
+      "quantification_sha256": "4f71b16178a8545403c7060c4f8e43d1d2e111cc6a9bc1fa2668fd3c427b8db2",
+      "receipt_sha256": "dee52fb8a67b9ee372054a7c865e42ac179119412117656449c3448ec4aba18e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE103113/SRR5976641/salmon": {
+      "quantification_sha256": "4cf40ea0c4095c2cfd652df0f2b6b6cd0cbb7799391a31b1a25f1913ce95ed9d",
+      "receipt_sha256": "1c3fc62a7f8c66bc90a4dca9e85875ca5ff38bb9e866422eaaf468b4038d871d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE103113/SRR5976642/kallisto": {
+      "quantification_sha256": "1eba0b8281c63392351533ffbc8ab940e3d3b9075ee03ae17c9f96bcb602b617",
+      "receipt_sha256": "a4823a3263a4503b0cd9d20736e844d74a73d4d48fd1c7f923ad95caff6471f7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE103113/SRR5976644/kallisto": {
+      "quantification_sha256": "39e054a6b4b3c39e792a79dedc908a54076e6f523ae979455e7d38725a0c1410",
+      "receipt_sha256": "d22fd4059bd4eb399df200c330456e0a345bd223909f88f278e1e29257ac33f6",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE103113/SRR5976640/kallisto": {
+      "quantification_sha256": "40887f48725584648fe1c9580172fa00663afba70357a6c2fb7f083ee2d00273",
+      "receipt_sha256": "cb5f3e6664b7bc5b2cc9b98da1405487462189bbd09cdeb53f1ce33d918a5e69",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE103113/SRR5976645/kallisto": {
+      "quantification_sha256": "c5605daadc1818c762de4c13560a9722f943a0bfeeb4171438665ae9f8734850",
+      "receipt_sha256": "5693e4004e959ef8ec90b2cc0d695c0924abcf0f71f3f48faa9a7061a7c91fc7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE103113/SRR5976646/kallisto": {
+      "quantification_sha256": "dee69a5a8b1a4524d0bbf473ce811b0bed752aa4bc086e46f6772d44b8561cdd",
+      "receipt_sha256": "dee52fb8a67b9ee372054a7c865e42ac179119412117656449c3448ec4aba18e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE103113/SRR5976641/kallisto": {
+      "quantification_sha256": "a73e8500b864f4b3990cd15a407c347855e0db8b2333664c4733fb4702472063",
+      "receipt_sha256": "1c3fc62a7f8c66bc90a4dca9e85875ca5ff38bb9e866422eaaf468b4038d871d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE116539/SRR7465016/salmon": {
+      "quantification_sha256": "5b93758dd007555cd9528b256f0a8908c3541f2325f0e612869a3f96e61bb90c",
+      "receipt_sha256": "831dd727cb83aa0ba3fd63debe392972e336805dabeb706490da0a855d8b34fc",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE116539/SRR7465019/salmon": {
+      "quantification_sha256": "ebaf4fcf8beda868e1e5d0f86bbc2ad137c11f69d62b11b69afacfb524dde4c9",
+      "receipt_sha256": "4cf45638015a29fd23612dd0f61da1bd3334e6395f390de3930e4e4466477ae4",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE116539/SRR7465018/salmon": {
+      "quantification_sha256": "60de41b658cdad385a733667fd522537fdb92a0911584e397e9f6b8c4d9d4eb1",
+      "receipt_sha256": "64f1656067397c7be7c91e332a8f8b35f995c17bf101e998412f77e8b5369004",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE116539/SRR7465017/salmon": {
+      "quantification_sha256": "2dbd6ace9bf08b3a06a85527a7875303704cfc83b2205c6026cb6c97bc70bf11",
+      "receipt_sha256": "347f8eff588d49d291940b1464379fd3806f67a2a6cca695b5504a80e3ce1ba0",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE116539/SRR7465016/kallisto": {
+      "quantification_sha256": "df5a3038845132d9d03de7d47621308336e5f4afd240efb70a13946b89aa585e",
+      "receipt_sha256": "831dd727cb83aa0ba3fd63debe392972e336805dabeb706490da0a855d8b34fc",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE116539/SRR7465019/kallisto": {
+      "quantification_sha256": "7f0df78a5f600a4058f12eb0f4549d7117053f8da1166709aeab88b9c1b72178",
+      "receipt_sha256": "4cf45638015a29fd23612dd0f61da1bd3334e6395f390de3930e4e4466477ae4",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE116539/SRR7465018/kallisto": {
+      "quantification_sha256": "311b236280d642f6845ca93ce582e66322b47129e72525bb2fee7c5edb07175e",
+      "receipt_sha256": "64f1656067397c7be7c91e332a8f8b35f995c17bf101e998412f77e8b5369004",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE116539/SRR7465017/kallisto": {
+      "quantification_sha256": "ac753d5688215d5bd8bf0c51e574d37edbbdb60398dcf5953bb6c03ad19b53da",
+      "receipt_sha256": "347f8eff588d49d291940b1464379fd3806f67a2a6cca695b5504a80e3ce1ba0",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444400/salmon": {
+      "quantification_sha256": "f7648998573337216e72223113a3af50183b572539bf933db4e10b62616af6b3",
+      "receipt_sha256": "d61558ae9d94c66340b8775380096946c06cd09dba51c14baf230a9fc6f6998c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444401/salmon": {
+      "quantification_sha256": "73550b025b198d734efee8b691d2378d3a23d6c2b2899e62a3da4d44ad669dd2",
+      "receipt_sha256": "ade4dc4e2147396ee0dc51200b0bd72b7102eb6a304f53154cb872cdfa674d05",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444403/salmon": {
+      "quantification_sha256": "f1d283b6cf05dc410b9571bbde54a63adf510dfb2a8b9b5922f8a5f72a6162ab",
+      "receipt_sha256": "d244396e56f73b14d1ff5400e0e6a913f9b1e4cfe88b88563a429c3b73e1537d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444411/salmon": {
+      "quantification_sha256": "4442e4ef3247245abef9815071a5bb712f9fc2d0c18bd72d365785e7c2934e3e",
+      "receipt_sha256": "032b6fec5396c1ac3db254498b474a9268f30be8b3db08a1b503c2d491ceb0ca",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444402/salmon": {
+      "quantification_sha256": "40b8b63e23e3a832a9e7a5351bebf1560e4c62572b8405bec9a5f0c756c2b71f",
+      "receipt_sha256": "f1923c161d7b47d813371e97a86ddc8c3f10a2bbc04ba3948ec0c9140ca8d64f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444406/salmon": {
+      "quantification_sha256": "a79b7509cb7e7a1999073e4462a8877cda20a5353713436c3687c6650aaa2a66",
+      "receipt_sha256": "a72da66dc1d02f16df596c1abc85c330d18db9a970067040ad0cc956e469fe3c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444407/salmon": {
+      "quantification_sha256": "fef8550758cda3665aea80ee5a9cfa651f3799395085ed0157cb411daf825016",
+      "receipt_sha256": "78d0a2cf8bf8a7c93dc4d41066985a8e342895d36e3b20d1c1425687152eab47",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444410/salmon": {
+      "quantification_sha256": "8e30442a3394ab388802ee850f7a2a2a6f9df94199d25590e059a6130be588a8",
+      "receipt_sha256": "a15b746efa20d338cb4dc7ffd7d886d36838f7520a733a278c623f9a97cbbd8f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444404/salmon": {
+      "quantification_sha256": "03f5104a6bd845002aad4db895480f326d5302091f6ad2784705fbd596b8e842",
+      "receipt_sha256": "1030a592433d5b44856dcbeaf8182292b4bc969461468bd18096e92ac7363a3c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444405/salmon": {
+      "quantification_sha256": "cd3c4fd84bee747fffd359d38670e9bc67f6ea61d3607a645029e7cf03a4f782",
+      "receipt_sha256": "70b5aad165f1ccfdf616f792e75b05243cf99bc281836ac8bb8ce51603728d64",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444408/salmon": {
+      "quantification_sha256": "59a512a5430551fb98cafb4116c80e2aba6655054027d9a62c0e786e73e6d2f9",
+      "receipt_sha256": "4fe2e926c761633357d0c0420c8bf9395a5d4fc1777d22cbef98a76192923570",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444409/salmon": {
+      "quantification_sha256": "723ba9df294214fbf97729c86ce2dc6358e52457b1b3184a76d4773606e0234e",
+      "receipt_sha256": "dd45e7d8251be7d7913a220f6876116eef55759759fcc6995eb57c266605f55c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE125120/SRR8444400/kallisto": {
+      "quantification_sha256": "a46400392ae38409ba5688512756bd0b69f45c6d558ab10bf9162a3d9b9e580a",
+      "receipt_sha256": "d61558ae9d94c66340b8775380096946c06cd09dba51c14baf230a9fc6f6998c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444401/kallisto": {
+      "quantification_sha256": "aca0774ed7884f769d71ed4a10daa7ff115252902be91232566988b725939798",
+      "receipt_sha256": "ade4dc4e2147396ee0dc51200b0bd72b7102eb6a304f53154cb872cdfa674d05",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444403/kallisto": {
+      "quantification_sha256": "ef6a4a55bfdb1fe67640818ce895577443a551c4b318198d91b94f2934e11027",
+      "receipt_sha256": "d244396e56f73b14d1ff5400e0e6a913f9b1e4cfe88b88563a429c3b73e1537d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444411/kallisto": {
+      "quantification_sha256": "01e41ba2f5004695a6f1b827fb405b700b11757c7037117b9e96aeecfe6e121f",
+      "receipt_sha256": "032b6fec5396c1ac3db254498b474a9268f30be8b3db08a1b503c2d491ceb0ca",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444402/kallisto": {
+      "quantification_sha256": "eb46c5338645629191d6a617888a86001e7f144d64805f3a057614ecda812974",
+      "receipt_sha256": "f1923c161d7b47d813371e97a86ddc8c3f10a2bbc04ba3948ec0c9140ca8d64f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444406/kallisto": {
+      "quantification_sha256": "b54bdaf2da4beb7b9dbcf05930b3a8a15f52f9addc01cb0c9312f078b60ce6b5",
+      "receipt_sha256": "a72da66dc1d02f16df596c1abc85c330d18db9a970067040ad0cc956e469fe3c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444407/kallisto": {
+      "quantification_sha256": "4e7d337a1e2671718638cff51d6679c1121dede019c9a6a0ed57e3150000d8e2",
+      "receipt_sha256": "78d0a2cf8bf8a7c93dc4d41066985a8e342895d36e3b20d1c1425687152eab47",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444410/kallisto": {
+      "quantification_sha256": "2167382c5de5a3260cf0beb7ceda9cbc6814e9ae7360db8476033721f6b338c6",
+      "receipt_sha256": "a15b746efa20d338cb4dc7ffd7d886d36838f7520a733a278c623f9a97cbbd8f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444404/kallisto": {
+      "quantification_sha256": "71abf862ea893fc9129120e2a22ae91c48ff241e90b4a92d40e2fb382bf7dc4b",
+      "receipt_sha256": "1030a592433d5b44856dcbeaf8182292b4bc969461468bd18096e92ac7363a3c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444405/kallisto": {
+      "quantification_sha256": "fd3770f7731f0477927812782b415d38de3bf3736c68978cbf515633b293fa44",
+      "receipt_sha256": "70b5aad165f1ccfdf616f792e75b05243cf99bc281836ac8bb8ce51603728d64",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444408/kallisto": {
+      "quantification_sha256": "695927ec1f3e80bb0ccafa13556f9c443237dfc64052dbbef4fcc5d4c2f01dca",
+      "receipt_sha256": "4fe2e926c761633357d0c0420c8bf9395a5d4fc1777d22cbef98a76192923570",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE125120/SRR8444409/kallisto": {
+      "quantification_sha256": "c12cd01bd709fae5adfd42c513bebdee1eb8913f517fdd2fbb0ab6111bd992c2",
+      "receipt_sha256": "dd45e7d8251be7d7913a220f6876116eef55759759fcc6995eb57c266605f55c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204249/salmon": {
+      "quantification_sha256": "fdfb634c171dcc77be8a0c89a05c4018e1bed7e8e4272fff7866a6e73e70a439",
+      "receipt_sha256": "68d0afc00e6a4cd070e0d9afc411a5244c33b08f0e3f403e92f3163939777762",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204251/salmon": {
+      "quantification_sha256": "b34577576d7e348289e175128185bcf8565e6b6af08cbf0d4c43b346b5f70c21",
+      "receipt_sha256": "95d98694ce1cb57a225500ad9215e64ee94c80a67021d10f9aef68ea2615bb0e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204253/salmon": {
+      "quantification_sha256": "65a501c9f5ebe78ccca502abe20ec587429c6e692bc29e96ea157f0f2153e29c",
+      "receipt_sha256": "41ee531b40a21d909d95d6b555e9044b9a7cb2405005457123648f6a40351791",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204255/salmon": {
+      "quantification_sha256": "b3f54954c933b9fbf0cbbd4eca1370bbf7b135c7cfbaa03c9c6bc7cf8811d564",
+      "receipt_sha256": "58a4025c569129a7109a07b4b6b37c5ae6b855b23407a041c3d0a164ab4216a5",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204259/salmon": {
+      "quantification_sha256": "cfb0851e28d5916883eab8314604dd4c9fc16dfe0eb708429636e015ce6b4ab9",
+      "receipt_sha256": "6678f377108d0420bbfad42ae232195d0086710357d6500c9fe97db8b1fe2bb4",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204261/salmon": {
+      "quantification_sha256": "1e00d4f5c584c82801c3297671e1f706adf14ee6b49aaa5694437f93573a08e8",
+      "receipt_sha256": "6484df3ccabca788cf079f35b69411b761d1ef2bf684eca06ba64b4bd109486d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204250/salmon": {
+      "quantification_sha256": "4085ce617b96455105460c1a5e155198b68452c7e75e5b01f44dae104ab0dd7e",
+      "receipt_sha256": "ef522b979258946fd331ea19e67301e1d6d9d2bfac4ed95fa074c89a6d107843",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204252/salmon": {
+      "quantification_sha256": "5360a2aac4380ff094006512638342c81d2d5d67382f1a449f420891e3c770fe",
+      "receipt_sha256": "7e5cd1d0ec03f5a119abc36af433286dca74c847f1259adf7fb565e71bf2a5ee",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204262/salmon": {
+      "quantification_sha256": "f64252fa670ba824c2558b7c89f8c90e20f0937a1390088da8dc7dfbf0a4b9ad",
+      "receipt_sha256": "f97aa9b88c2160cd6cc7b06c21e479b34f293e8e33f10779ba01650888427fdd",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204264/salmon": {
+      "quantification_sha256": "662871d6891ffe0a56b32b87de69fbd984e64a704f134f5668297594aef2edb3",
+      "receipt_sha256": "8deeb8e673fcacb7c3e741e4d698e6c7f9679fd1e464d3169de96c7d95df06ed",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204254/salmon": {
+      "quantification_sha256": "4a0f044db8be3192a524be08bfd8aaf2bf69d5cd0db2d6c0f6973357755c40b3",
+      "receipt_sha256": "c8d6c1af4ffe1bc69c9d4e6baf5219d6a282f0eb816ef456c83781a90b10ecab",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204256/salmon": {
+      "quantification_sha256": "c8925835433246295e89ee00f6a4052a591faaff3ceb87cb3d8f1d1f921137c7",
+      "receipt_sha256": "20c872cbaef6f9b099a0feff5fbfc5e7c8ae81d2aa12c432e8bb353b0cb305ff",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204257/salmon": {
+      "quantification_sha256": "ca3b9151d5b6282c4d65738b5438f38eb57e9268d1a5f2a4dd5dfc6855b57a07",
+      "receipt_sha256": "387c2284886987c56af4b698fd5f4dab155936f4961e657f6abaf9700607610c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204258/salmon": {
+      "quantification_sha256": "31faa6f3c61c834a350b147df9e9faebb2c2a94e9d58de1a6067203fa69f4c7c",
+      "receipt_sha256": "5363e9c41142e29628b970bbdb0993317eb50e45d55362411de9bfe38baa1f00",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204260/salmon": {
+      "quantification_sha256": "51d067453a2dc736541aa1d6963e4c210280e213f021b3e2ede3c4abea79f521",
+      "receipt_sha256": "292c5308843c5f857bfef1b095553ccf71dec84c57259453dab4387d590bc811",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204263/salmon": {
+      "quantification_sha256": "2f43cc3d6095e47573f421a377314e7dd5e512ea6f41027d531609e7fac2fc31",
+      "receipt_sha256": "c35ffd5c68009e10327775828de4c13dd1aa738f905691db8b40af16f73b9e13",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE132238/SRR9204249/kallisto": {
+      "quantification_sha256": "b659589ba6c699ee587bcbce405dbab74f8d2b71dff09a38c97fbdde724273dd",
+      "receipt_sha256": "68d0afc00e6a4cd070e0d9afc411a5244c33b08f0e3f403e92f3163939777762",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204251/kallisto": {
+      "quantification_sha256": "2284cce2b705bcbc360d21d95ea1e7d965cafefba90becc41344d09962a02ebf",
+      "receipt_sha256": "95d98694ce1cb57a225500ad9215e64ee94c80a67021d10f9aef68ea2615bb0e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204253/kallisto": {
+      "quantification_sha256": "9052537141fffb86ae49cda188b986e557247ba24b35f676792989964ffa29b0",
+      "receipt_sha256": "41ee531b40a21d909d95d6b555e9044b9a7cb2405005457123648f6a40351791",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204255/kallisto": {
+      "quantification_sha256": "a74fa6d002828db5184ad5075d4693c3ef5ba2980cad61b38ce4f82a3fbaff03",
+      "receipt_sha256": "58a4025c569129a7109a07b4b6b37c5ae6b855b23407a041c3d0a164ab4216a5",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204259/kallisto": {
+      "quantification_sha256": "c7a23f37a07c7dd826b66cfcca35a31079f4cc893e5f9ca72ed19aba496dc3fa",
+      "receipt_sha256": "6678f377108d0420bbfad42ae232195d0086710357d6500c9fe97db8b1fe2bb4",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204261/kallisto": {
+      "quantification_sha256": "a5aaa518f9047d5c20c80f16580b10a0f8a4bad0d615ac047b01b024d1dd286c",
+      "receipt_sha256": "6484df3ccabca788cf079f35b69411b761d1ef2bf684eca06ba64b4bd109486d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204250/kallisto": {
+      "quantification_sha256": "34538459493458b1e425fd11825523ebeb5135745d3f5114d39d71a145ad87c3",
+      "receipt_sha256": "ef522b979258946fd331ea19e67301e1d6d9d2bfac4ed95fa074c89a6d107843",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204252/kallisto": {
+      "quantification_sha256": "d6559d1a5df239543794c0c1e44b6367540c4597d37a44d4a5acd8b04233d955",
+      "receipt_sha256": "7e5cd1d0ec03f5a119abc36af433286dca74c847f1259adf7fb565e71bf2a5ee",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204262/kallisto": {
+      "quantification_sha256": "0c3cda62d93ed432c0b9575924796fe79aac0cae3145a46ff6e47d1e8f355018",
+      "receipt_sha256": "f97aa9b88c2160cd6cc7b06c21e479b34f293e8e33f10779ba01650888427fdd",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204264/kallisto": {
+      "quantification_sha256": "575f87e5163c2d28dae898982f0e342974d11d2dd6f9f5baee9b0878f71c8c7b",
+      "receipt_sha256": "8deeb8e673fcacb7c3e741e4d698e6c7f9679fd1e464d3169de96c7d95df06ed",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204254/kallisto": {
+      "quantification_sha256": "b73e8fff580e524626b9008cc59f868503d729ab20d2d852d16c1999dfa1dad0",
+      "receipt_sha256": "c8d6c1af4ffe1bc69c9d4e6baf5219d6a282f0eb816ef456c83781a90b10ecab",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204256/kallisto": {
+      "quantification_sha256": "57851f9695a4520ce89fbbe9b85ad28d118e6b7d43b344bf727e5e995b8a34fb",
+      "receipt_sha256": "20c872cbaef6f9b099a0feff5fbfc5e7c8ae81d2aa12c432e8bb353b0cb305ff",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204257/kallisto": {
+      "quantification_sha256": "3e161225efe634fe4e76dffa96276cbc4e9f2ad69cc559223b963e1706b62879",
+      "receipt_sha256": "387c2284886987c56af4b698fd5f4dab155936f4961e657f6abaf9700607610c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204258/kallisto": {
+      "quantification_sha256": "b3929f2d6765db69ca434169f992133d01cef6136c9c3ac6f9c335a1747c7042",
+      "receipt_sha256": "5363e9c41142e29628b970bbdb0993317eb50e45d55362411de9bfe38baa1f00",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204260/kallisto": {
+      "quantification_sha256": "f74360d6ea290cd7a92b16bb0aecea6026fd1bb08e30fab6d1736ba1dccd9169",
+      "receipt_sha256": "292c5308843c5f857bfef1b095553ccf71dec84c57259453dab4387d590bc811",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE132238/SRR9204263/kallisto": {
+      "quantification_sha256": "ab394dec5f7962728050e7f74033f3646958e8e91051b7b9a7fdbb09df0e4467",
+      "receipt_sha256": "c35ffd5c68009e10327775828de4c13dd1aa738f905691db8b40af16f73b9e13",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009937/salmon": {
+      "quantification_sha256": "3544b2d54d32e09aee8be4a6d3ccf36795099323be781ebeda2cbcc9bb524294",
+      "receipt_sha256": "f695c3f35ae0da4defcdf007db2d51ec1ccaaac51fa1b6b227469fefeca8fc13",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009940/salmon": {
+      "quantification_sha256": "900bce105794e9857996a64f91a05291a4f674d3ea27c1fb93bee975817bd956",
+      "receipt_sha256": "6792cf2fdbac0ce5168b52d692039e633c928ab71ce12456e52c9fd33cb39153",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009946/salmon": {
+      "quantification_sha256": "9c95171116a35d48992fad450d545a84b94fd79aa7214414f71716a46505fe71",
+      "receipt_sha256": "b9c12d8169aacdfa20aef67e65ce362a137ca7972875099640121d9d9aedd1f8",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009949/salmon": {
+      "quantification_sha256": "dedc52b5179ce30517cd770a7058accbf0b970de627660f48b5e03afd71d1cbd",
+      "receipt_sha256": "75ba31b313ff5106ecca5d0676a560d7b9152a31c2dcc7e997dd8016b378196a",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009952/salmon": {
+      "quantification_sha256": "31f20ce2a34799ab131ca324e79fb189c3c8f3aef3bd8b95db06cbf0f581ba52",
+      "receipt_sha256": "f26affa64ac7a8e6b41efa9f63098d53f4fb168a51fdb81dcd179b5b38d247f1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009935/salmon": {
+      "quantification_sha256": "263f9b54e757bb9dff266174c8d03a8c4eda273c8ca14ea92e65c6a1bb6fa283",
+      "receipt_sha256": "d769de311768f2cce1639bdfbbaf664f56aa506091e3d0728894abb524d4471e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009943/salmon": {
+      "quantification_sha256": "f167f953fa644d29a5c10e7526cfeb7b3f3b136e71990c4cd469ea4563d2c654",
+      "receipt_sha256": "e61c1af3496571b0efc58947f0e8947d7706a0264eab3925082cc5a04650a4d8",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009945/salmon": {
+      "quantification_sha256": "d7332dac74864f7a4ffd1e72165e44cb3140c80f45995e972f0a8e6c83a4fa5d",
+      "receipt_sha256": "7972860c26d014225dc28f151676e8f7bae4f10fd3409e7f21bf7e3bb716d19e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009938/salmon": {
+      "quantification_sha256": "758578c4045a751d665180c7966fba4043c3b3da9d897491500379068d7b0547",
+      "receipt_sha256": "3e7efdeb5aa2f0cdc9bd0ba757e268e6f0c6bba3f00cd1c201471c7342728237",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009942/salmon": {
+      "quantification_sha256": "4cd2339ea3cdc03696227482ddc3aedc791ca0e18f90bf7aceeb9adc6d468379",
+      "receipt_sha256": "f0a14781e13042a4bbc7e387f94be597f2aefedb259e7c92e24c7dcb2524a882",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009941/salmon": {
+      "quantification_sha256": "b786360693918e54abba90fb445f8e54021cfe77d82d8dd8e3a74a0435a7e9fb",
+      "receipt_sha256": "c50ddda759ee2e6b2f279905b2a42ae733e01fd47b813df0438a0b8f7aaca119",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009936/salmon": {
+      "quantification_sha256": "abc1a71847f6d907c23ac74d56c1aba2fd8b9b39c449d0ddc4c0babadb7afce3",
+      "receipt_sha256": "d6807b6535a8a59854954abc814c9a2c962946e64ce2355b91e6d328334d02b1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009939/salmon": {
+      "quantification_sha256": "034f794e276cfe35ceb5f508916e004417209864de24b6dfc7eb2b234f00024a",
+      "receipt_sha256": "5920e27b81e58c984597b8062724d6d64f709ef3dba238b565845185c65b9a5c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009944/salmon": {
+      "quantification_sha256": "b750dce8cef726dccdb643384f9913c629d2fc05d612b0e7a036f3985893f59c",
+      "receipt_sha256": "e0ac471c4be8be404533bb43132afa5d885f8beec58cd027245ed9b8fae89b62",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009947/salmon": {
+      "quantification_sha256": "223976b96249220f6c2e0745ae10207d72b25aacac489287103e95600a389139",
+      "receipt_sha256": "dbacf6a22e3698fa36303406352855bc1dac04ef51df8c97c723958852b9e980",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009948/salmon": {
+      "quantification_sha256": "b2c54edb7d99dd3fff2d4c82355926f2053f5047d663f2e3d2449af8cad2b1f8",
+      "receipt_sha256": "42a8595770afc9506edd3254ecaf4a989283aeb341854978cac8083db8f85494",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009950/salmon": {
+      "quantification_sha256": "f55a5d7d210c0bac8ce9903c10c8e1ccea45874c9efe18af253b824d74946876",
+      "receipt_sha256": "7db98f934bed2e26be02cb42d4ad00e5897f50848650e11dcb4c87df80a6e44d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009951/salmon": {
+      "quantification_sha256": "779578157f195e56e443f2196e93203ee7326d02f4e167ebe21eeb05b59c6390",
+      "receipt_sha256": "72d52e1119e09c686d21c6cd00f2b596635cb1b09725884f75b5cde8a5a9c621",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE136123/SRR10009937/kallisto": {
+      "quantification_sha256": "c87bc1641f2ac2291d3dae013e6402916b50d2a21bcad450790a654a4c5f64cc",
+      "receipt_sha256": "f695c3f35ae0da4defcdf007db2d51ec1ccaaac51fa1b6b227469fefeca8fc13",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009940/kallisto": {
+      "quantification_sha256": "ffba1c09caf65801123df9b3af9595a6e5af43f03ee15cb591cd586e634c3883",
+      "receipt_sha256": "6792cf2fdbac0ce5168b52d692039e633c928ab71ce12456e52c9fd33cb39153",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009946/kallisto": {
+      "quantification_sha256": "aedf18fd9bf09551d5080df23a5ff6d0723026b6c83b6a311c03a99ab79cb075",
+      "receipt_sha256": "b9c12d8169aacdfa20aef67e65ce362a137ca7972875099640121d9d9aedd1f8",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009949/kallisto": {
+      "quantification_sha256": "d3026b9ddea0fd0f96fa808b9421fa84f254e032385bcb131611efdd7d8db836",
+      "receipt_sha256": "75ba31b313ff5106ecca5d0676a560d7b9152a31c2dcc7e997dd8016b378196a",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009952/kallisto": {
+      "quantification_sha256": "b93ae2ed471c5939f5124c1b4703acb3177e43cf7556a763fae5fd7834ba25b1",
+      "receipt_sha256": "f26affa64ac7a8e6b41efa9f63098d53f4fb168a51fdb81dcd179b5b38d247f1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009935/kallisto": {
+      "quantification_sha256": "2e072c29af9e2b3a134ccfccc0d5e7343f5844c8556bf341877fba616f2fa1ff",
+      "receipt_sha256": "d769de311768f2cce1639bdfbbaf664f56aa506091e3d0728894abb524d4471e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009943/kallisto": {
+      "quantification_sha256": "bda6f813178e2e18506e759fa66548e51f94d5fe1f8c05eaecb3e69514a42f37",
+      "receipt_sha256": "e61c1af3496571b0efc58947f0e8947d7706a0264eab3925082cc5a04650a4d8",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009945/kallisto": {
+      "quantification_sha256": "4756a859c6b2b170f208fd8a502cb40a8dadc27087dce32284beb0a040e2ad84",
+      "receipt_sha256": "7972860c26d014225dc28f151676e8f7bae4f10fd3409e7f21bf7e3bb716d19e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009938/kallisto": {
+      "quantification_sha256": "c47ac01857d2f0993683cd73d1c6a4c4b2d0298c3bf6396a935160d216aef5f7",
+      "receipt_sha256": "3e7efdeb5aa2f0cdc9bd0ba757e268e6f0c6bba3f00cd1c201471c7342728237",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009942/kallisto": {
+      "quantification_sha256": "73ab77995e4dca697e5e0ebed46850219f6f0328d7a952d5b403f06c82bc56b5",
+      "receipt_sha256": "f0a14781e13042a4bbc7e387f94be597f2aefedb259e7c92e24c7dcb2524a882",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009941/kallisto": {
+      "quantification_sha256": "74384894bd840f3a30f9b4fa6e4d826b1f6073376753756f6d2870bc13e3fd06",
+      "receipt_sha256": "c50ddda759ee2e6b2f279905b2a42ae733e01fd47b813df0438a0b8f7aaca119",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009936/kallisto": {
+      "quantification_sha256": "2fc4a934edb98d27ed39e6a140bb96931d4823ce7321db5a80b44b9b8da55761",
+      "receipt_sha256": "d6807b6535a8a59854954abc814c9a2c962946e64ce2355b91e6d328334d02b1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009939/kallisto": {
+      "quantification_sha256": "b51c17a44f6987ffe012ef1690ca3a5a04161dd79f1805b8289054f106e91037",
+      "receipt_sha256": "5920e27b81e58c984597b8062724d6d64f709ef3dba238b565845185c65b9a5c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009944/kallisto": {
+      "quantification_sha256": "d5e3045ad60b9166fde45a21b4e5aea6d4123a603dee9774c647915d5694e907",
+      "receipt_sha256": "e0ac471c4be8be404533bb43132afa5d885f8beec58cd027245ed9b8fae89b62",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009947/kallisto": {
+      "quantification_sha256": "3f6ad684fc9a9f688abc2c8078963994e3f3fe86db836ecd936fff013c7dd257",
+      "receipt_sha256": "dbacf6a22e3698fa36303406352855bc1dac04ef51df8c97c723958852b9e980",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009948/kallisto": {
+      "quantification_sha256": "a50e8f2531de5ca2cd0edc86cf4a5a0f071226a8a7218c02f9e4585e19f23fc0",
+      "receipt_sha256": "42a8595770afc9506edd3254ecaf4a989283aeb341854978cac8083db8f85494",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009950/kallisto": {
+      "quantification_sha256": "66ac6f27b10d39d096bf1d0b40e135047250336bac294d5f22d1127a7153080d",
+      "receipt_sha256": "7db98f934bed2e26be02cb42d4ad00e5897f50848650e11dcb4c87df80a6e44d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE136123/SRR10009951/kallisto": {
+      "quantification_sha256": "4b71e389905a162ffa6e120fd1a114f42ed120645d16b3c94a207ee66fe0c9d5",
+      "receipt_sha256": "72d52e1119e09c686d21c6cd00f2b596635cb1b09725884f75b5cde8a5a9c621",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359503/salmon": {
+      "quantification_sha256": "7be20af54c720726884efd0f4c451338888702ac9be7fbab2eaf8fb5646831e5",
+      "receipt_sha256": "6e4aca9f73ae3618068ef28010090445e3a04190c520642f3132bacea22755ee",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359512/salmon": {
+      "quantification_sha256": "f8e4e1ebe2e9a30e97cab42218ec201944a59405e416ac48e490b55791c90fae",
+      "receipt_sha256": "bfac39392e405315e4750d2f59625357a2d49844f204c73f708f3e9a8a4aad1f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359504/salmon": {
+      "quantification_sha256": "26cb88a389ff10145d378d14bef2a0ab1846b8a1aacf6646d218781f564aec9a",
+      "receipt_sha256": "27fd94584c4bf6d3076265cdc3f117d19463540620d8fa15e4e0a83a5b145f1d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359507/salmon": {
+      "quantification_sha256": "52e6a5bd0a5aaf5f9f0a4e73d0ef36c011d3e76afc005f4fae2e38401d2b81cf",
+      "receipt_sha256": "0179f2d9eb92f1fcbe3099f516754505333f117b51abffa5d21b1d0d6f76a001",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359508/salmon": {
+      "quantification_sha256": "a84d8594975d16f2ee4e76f0972b8b755749f46fb406eed0224122a6f322f047",
+      "receipt_sha256": "952856b12925b754ce0d78532fbe464a8ad24d5473dda80dc6d645ebf91bce8e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359514/salmon": {
+      "quantification_sha256": "f2e23f3bc5b66dd1faa2383ac50285521d7d319dec27fed2508d2e3666a39e9d",
+      "receipt_sha256": "5d77f47287f7177b11829dca4ce04e3fa9cf3743cda0aba56366bf26d9251990",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359517/salmon": {
+      "quantification_sha256": "c0858a1a284d2ed60833fbb8ba869aad711afa39ea9f2ca4dc98948f5f279816",
+      "receipt_sha256": "60dc00100b7f440b7c9e9f715f4fc241173dace5a8e43b65a4420c051a282363",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359506/salmon": {
+      "quantification_sha256": "b089494ea657a2295c04ba0cf436cd23b5c034868eee6a69e991b82963ae7f0d",
+      "receipt_sha256": "bbc9284d1b63b8232caa993d78802c89b6b1262cc8e0a22b3cf34f27fac7c35c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359511/salmon": {
+      "quantification_sha256": "1de6f53ec1fe070698338d21d9eca33705f0b498688526d2091713aa75aa592d",
+      "receipt_sha256": "197db1d1b8fdb037eda070f0b7e4f74f87a3deb26184f424faa70d998c117967",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359513/salmon": {
+      "quantification_sha256": "5b4f8f1c6b6b2d41256f9c3d9a03f1beb1d9021a1232c1bf927476e805e21808",
+      "receipt_sha256": "0dfe676a79e5b63c2b788379b81cd0a8f1a8b50352f5431869bf9ed105355722",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359516/salmon": {
+      "quantification_sha256": "772936a81bd98dfb4f9ca6eb922d292fdc12b825ae8d7971ff26f5d341fe5611",
+      "receipt_sha256": "ccb8e0e1aba141586f0d3a35b58e80308f8cb57c28939d46498e48f62a92bf4e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359505/salmon": {
+      "quantification_sha256": "a4f5b097add24c15f0eadc30f6fa1672c9130a83db6b27d4155f16a22fce2e04",
+      "receipt_sha256": "f05cb1ee59f4770d4c397f15972163015f5340949e9360d0bae35abf5b3efe44",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359509/salmon": {
+      "quantification_sha256": "85c0c9d7ecbfce39337427be645563ead97d0dd82186044a3a127d11e4d8e4de",
+      "receipt_sha256": "9ed4fa7476d7c370b50e103d290a8e00618a4fd73fb7a62f1dfdd131013dd9c5",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359510/salmon": {
+      "quantification_sha256": "c314023fa8f648d881e39faf16b61e4afdd9cff32ad4c9865f59d69101d8da87",
+      "receipt_sha256": "e12ec6ebeaf9d54b4bcc0fbf77e2038f519b6d00a328ed83b90fa6db0c2179a8",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359515/salmon": {
+      "quantification_sha256": "722ef776767d73b23989c0f7ecb4a706b6461a9959df6ba2d6433ae493d78fd2",
+      "receipt_sha256": "e15ca2e71503420eaee0ebcecf1daadda731f7791c827cd1e48a3117adb689d1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE139537/SRR10359503/kallisto": {
+      "quantification_sha256": "6c1e05c201c95792075e3108df81748b16a4b55488a5daaef3863d5f0b7ca263",
+      "receipt_sha256": "6e4aca9f73ae3618068ef28010090445e3a04190c520642f3132bacea22755ee",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359512/kallisto": {
+      "quantification_sha256": "1b30ec9cec489e952c02ffb51921e773cb54f8b9a272ff973eacef925f83e42f",
+      "receipt_sha256": "bfac39392e405315e4750d2f59625357a2d49844f204c73f708f3e9a8a4aad1f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359504/kallisto": {
+      "quantification_sha256": "696d7dee669403a779ddd637c90ba19ae9e68679d6a422e48457a4d760b5603c",
+      "receipt_sha256": "27fd94584c4bf6d3076265cdc3f117d19463540620d8fa15e4e0a83a5b145f1d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359507/kallisto": {
+      "quantification_sha256": "a235e7e9ea449074cec7d02fec5088ee7e22462f18aa2f843e459d39988d990c",
+      "receipt_sha256": "0179f2d9eb92f1fcbe3099f516754505333f117b51abffa5d21b1d0d6f76a001",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359508/kallisto": {
+      "quantification_sha256": "66d900c3f3415309d4ddf05f105c22362061963ed811d32aef8dcbee0b356504",
+      "receipt_sha256": "952856b12925b754ce0d78532fbe464a8ad24d5473dda80dc6d645ebf91bce8e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359514/kallisto": {
+      "quantification_sha256": "2cfa6dec6d44c6a87768a7d8c42228bb4b75efe0ad807fe648ed656a9fc73b93",
+      "receipt_sha256": "5d77f47287f7177b11829dca4ce04e3fa9cf3743cda0aba56366bf26d9251990",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359517/kallisto": {
+      "quantification_sha256": "5d751a8d2261259234930b37bb5c8d6e97d61c4c9e2a96b1875c349261623109",
+      "receipt_sha256": "60dc00100b7f440b7c9e9f715f4fc241173dace5a8e43b65a4420c051a282363",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359506/kallisto": {
+      "quantification_sha256": "82e5ad43657b9dfc801d677d74fc5445f74de6184f75eb0ba1064ff12d940cd7",
+      "receipt_sha256": "bbc9284d1b63b8232caa993d78802c89b6b1262cc8e0a22b3cf34f27fac7c35c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359511/kallisto": {
+      "quantification_sha256": "ec4dda0f0835ce8ef886e6fc3bdb4d803ce3af699938c015cf3f29794df57cac",
+      "receipt_sha256": "197db1d1b8fdb037eda070f0b7e4f74f87a3deb26184f424faa70d998c117967",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359513/kallisto": {
+      "quantification_sha256": "a9375830e918fa9012790b3c5a7f1a234cd380a4674c0c763890e65f2dbb5c7c",
+      "receipt_sha256": "0dfe676a79e5b63c2b788379b81cd0a8f1a8b50352f5431869bf9ed105355722",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359516/kallisto": {
+      "quantification_sha256": "0b5f49735355951732161595e9f64b24328164d040144f90eb80aae2f5b620c5",
+      "receipt_sha256": "ccb8e0e1aba141586f0d3a35b58e80308f8cb57c28939d46498e48f62a92bf4e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359505/kallisto": {
+      "quantification_sha256": "0bb0ee4cd6db90043373a07117c2f18fa3c6859b650e37d17b4c86a088d100d1",
+      "receipt_sha256": "f05cb1ee59f4770d4c397f15972163015f5340949e9360d0bae35abf5b3efe44",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359509/kallisto": {
+      "quantification_sha256": "411313b98ca1a02e1e70110e2093459fd9033db08b03b4655d8d8123f81569fa",
+      "receipt_sha256": "9ed4fa7476d7c370b50e103d290a8e00618a4fd73fb7a62f1dfdd131013dd9c5",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359510/kallisto": {
+      "quantification_sha256": "af56a8e78625f8283f5cf133a5f011f2987bc4b143cb815c063cc06662cc6a8e",
+      "receipt_sha256": "e12ec6ebeaf9d54b4bcc0fbf77e2038f519b6d00a328ed83b90fa6db0c2179a8",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE139537/SRR10359515/kallisto": {
+      "quantification_sha256": "0099a581b214202dd0f33224498b0592d1abddc07a542f340e490e3b7e43ad2f",
+      "receipt_sha256": "e15ca2e71503420eaee0ebcecf1daadda731f7791c827cd1e48a3117adb689d1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428285/salmon": {
+      "quantification_sha256": "f901c5f3ff49975666093390ce3a5eabb1296c536f0dd004f5b86861e6d3173c",
+      "receipt_sha256": "8066ed69f5f0b611c1116ed8f1e3a6135752ffe3838b9c341dcb36a27013e431",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428289/salmon": {
+      "quantification_sha256": "83e58a735a723b7aa2efa875048f1c9c3e671c7ba77b0364bef95cafce0b8299",
+      "receipt_sha256": "39f9a8b328ed64e65f6747fb7a5e6f219ab14e4afa43cf93ee85bfc21cec3bd1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428284/salmon": {
+      "quantification_sha256": "0e025757645c871d51f5ee0f31ac24c75168519cd50adac301d6b263cf586959",
+      "receipt_sha256": "1f0d794461e91421989ce13e48cd1805aedccab9edd73089bfb1faaa32b87d77",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428287/salmon": {
+      "quantification_sha256": "8ca65ddeff8ed045481a380164b854edc54373e982dff0396319cca972e89ed4",
+      "receipt_sha256": "a5b629b6816e1ab1ab4852c531dba6fb571b28aa8af64fddb9be1e9073fee84f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428288/salmon": {
+      "quantification_sha256": "dfd990313d98c211548ed35fc2fe1f0589189c56af8d3be7b0298020f26b2c82",
+      "receipt_sha256": "8021a9a5ea6c43f6c3a2f782630b043b6e5f143180b90537af19f7763b7d92a9",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428290/salmon": {
+      "quantification_sha256": "1880beb760b9bc92042372ebef84a89f4a935e932093c686e340d422821745c7",
+      "receipt_sha256": "912f65ab5e777106140755c0397b091e89f8ab38858a08eaccea4d9de813477e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428286/salmon": {
+      "quantification_sha256": "b8b5cea9acd593cbdd278d1eb8f02c51041957e23afffd10643aec4ef2efb258",
+      "receipt_sha256": "5c17d4941bbebfbc0c8930fb10b3b6e06aa75f6e076030915a375593fd0bf8d7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428291/salmon": {
+      "quantification_sha256": "77aa64eb4ec2febe01d29738c5b71c966e4f144e61e6ce95d3c316febb98b2fc",
+      "receipt_sha256": "ead804104d3f8d2f611945ca7b995f8cac6cfb60bf5cc9e0d238bae82ce81a20",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428283/salmon": {
+      "quantification_sha256": "5f47ae9916da87a81dd8688a4d903e4ba64e1436975e80ae8af07c979796129d",
+      "receipt_sha256": "fb5cd43664db084d9efa78aeecc838a7dd39f7863c282f2cf5db1639020b1542",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE140197/SRR10428285/kallisto": {
+      "quantification_sha256": "39d219fe1104a2f9c9803190cfd3f2668164f7ccba4fc6d5bc28795aeba26879",
+      "receipt_sha256": "8066ed69f5f0b611c1116ed8f1e3a6135752ffe3838b9c341dcb36a27013e431",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428289/kallisto": {
+      "quantification_sha256": "f2f7b7a9f5d79f73152807c56b2d23caab09cbcb97380d50634f2672d5fb20a6",
+      "receipt_sha256": "39f9a8b328ed64e65f6747fb7a5e6f219ab14e4afa43cf93ee85bfc21cec3bd1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428284/kallisto": {
+      "quantification_sha256": "dc1fc3143cdb658d9e3fffa18b6aa6503943d02fc86c1da559fe24748e1c1d56",
+      "receipt_sha256": "1f0d794461e91421989ce13e48cd1805aedccab9edd73089bfb1faaa32b87d77",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428287/kallisto": {
+      "quantification_sha256": "da2369110354a08c20e06cbbe3b6922d0db7dc09847e49b12a5efc7fdb8a3caa",
+      "receipt_sha256": "a5b629b6816e1ab1ab4852c531dba6fb571b28aa8af64fddb9be1e9073fee84f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428288/kallisto": {
+      "quantification_sha256": "f6a27a89b15404ad6e197032230b906db2869828781342bfb3f3fb6c83dd470f",
+      "receipt_sha256": "8021a9a5ea6c43f6c3a2f782630b043b6e5f143180b90537af19f7763b7d92a9",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428290/kallisto": {
+      "quantification_sha256": "459ed4d603e4ce88bd12551e53f96ebe7254710681af39d874815870d348878d",
+      "receipt_sha256": "912f65ab5e777106140755c0397b091e89f8ab38858a08eaccea4d9de813477e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428286/kallisto": {
+      "quantification_sha256": "aca91b08724058099e871320d829396d5e30adb077d4bf42e2861c110f27fd80",
+      "receipt_sha256": "5c17d4941bbebfbc0c8930fb10b3b6e06aa75f6e076030915a375593fd0bf8d7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428291/kallisto": {
+      "quantification_sha256": "82921010fd8754eb44c077bfad03ce23bd6e63f49bb12eedc667b46b0fb4be08",
+      "receipt_sha256": "ead804104d3f8d2f611945ca7b995f8cac6cfb60bf5cc9e0d238bae82ce81a20",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE140197/SRR10428283/kallisto": {
+      "quantification_sha256": "d394cde14a6c29934cac19f8a34260aa471f3d2f8513a247ce520bc9b5173acf",
+      "receipt_sha256": "fb5cd43664db084d9efa78aeecc838a7dd39f7863c282f2cf5db1639020b1542",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE150334/SRR11773038/salmon": {
+      "quantification_sha256": "992a8ad7840390da8096af7f059df3699391f02664283ea69aae45fff78cd889",
+      "receipt_sha256": "1b1f3367103e1abddd4cdced087c236b5d65943e89d3e25357f8c724d341c657",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE150334/SRR11773036/salmon": {
+      "quantification_sha256": "deaf4f1ab2959566ff238c5560c81ffa92466faebf87340b4b6d883b8f11a58e",
+      "receipt_sha256": "ee696f84fe34141854ec3e71ffb8fbba1d3ed046311e805cb9dcc7b9bc1ffcd7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE150334/SRR11773037/salmon": {
+      "quantification_sha256": "1565e5396a608d5d4d83b26ea652f79972a6655cae63a539e69339bbdcef0e5a",
+      "receipt_sha256": "6a6fffe36e699a2c0da1cd40e0925299f1f7272abe6de8e361595763bbf2e44c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE150334/SRR11773034/salmon": {
+      "quantification_sha256": "62b2e2030452ee6cc8baaae6ac9993e70153d17a023e226f4e04aa7a44bb0a3b",
+      "receipt_sha256": "4c2585d09c7807bdce038dcc791c8424206469a8f0cde18310badb4aa292541b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE150334/SRR11773035/salmon": {
+      "quantification_sha256": "4a6647cbb93f629e195a12f0542aaf3b9a4153c7fc32f58234580e51f3210a80",
+      "receipt_sha256": "8f156068306bd6803b7335144818c42196967c79d13ce1561cab877263850c77",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE150334/SRR11773039/salmon": {
+      "quantification_sha256": "af62abe0e6b55f6d1619da67d0db96a1ee113978dc1f31811b9183f6d56e905f",
+      "receipt_sha256": "198a81d7264e2e123acd00744c570a4fc68438b43b85afd28214a1dba6a59762",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE150334/SRR11773038/kallisto": {
+      "quantification_sha256": "2cdbbdc7480306e4aac967741f2d3448ed26721f6762e196d829f49c043998bf",
+      "receipt_sha256": "1b1f3367103e1abddd4cdced087c236b5d65943e89d3e25357f8c724d341c657",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE150334/SRR11773036/kallisto": {
+      "quantification_sha256": "8da23954fb5570f9b766ad121c9b30b292fe1e6299bcad9d079e7ea0ee0607fd",
+      "receipt_sha256": "ee696f84fe34141854ec3e71ffb8fbba1d3ed046311e805cb9dcc7b9bc1ffcd7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE150334/SRR11773037/kallisto": {
+      "quantification_sha256": "cfcad346f3c11aef54dc53d2bf82c28bc132fe1c97c90d07abaafa4471dd02c4",
+      "receipt_sha256": "6a6fffe36e699a2c0da1cd40e0925299f1f7272abe6de8e361595763bbf2e44c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE150334/SRR11773034/kallisto": {
+      "quantification_sha256": "b6b6b726952b477cb576cfd7d6bc7a84f57db77dcfb596b8ca9d361da5358d74",
+      "receipt_sha256": "4c2585d09c7807bdce038dcc791c8424206469a8f0cde18310badb4aa292541b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE150334/SRR11773035/kallisto": {
+      "quantification_sha256": "c312a996b2d51bbf45e6ff76f640a42b18dd29a8c6f31da63c996b50cb6068ac",
+      "receipt_sha256": "8f156068306bd6803b7335144818c42196967c79d13ce1561cab877263850c77",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE150334/SRR11773039/kallisto": {
+      "quantification_sha256": "119e2aafffe4db28f92e66bb8086f0c6f0c1b07f7c9cdc7ee90821e27ec237cd",
+      "receipt_sha256": "198a81d7264e2e123acd00744c570a4fc68438b43b85afd28214a1dba6a59762",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE156685/SRR12495654/salmon": {
+      "quantification_sha256": "618893da9f35b101d2a7d510aee2ba3e2b089ab8945a0d6be4ffb74138eb0f5b",
+      "receipt_sha256": "df6e496fc55dfd674b28ee8871e2680acbc61a7bb37039d3c1b4395bcd33d851",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE156685/SRR12495652/salmon": {
+      "quantification_sha256": "4e54dac2278c42acf38e88d89e32c6a7af9a1fe2b8f3d73bbd7ef47df3948703",
+      "receipt_sha256": "cb16b55c044a7bd5102cc1c2cbe47566d9173e6bc055d0b197a1da05a5c914c1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE156685/SRR12495656/salmon": {
+      "quantification_sha256": "e64041ffc5f4ba2e8c8f181bb0162b8805ef6b09e8ae659c4b0321c28ab165b2",
+      "receipt_sha256": "024f88c4e4df185074edcf6f22bdb7093ceacda7e6af2f3d7d998599cdd0a9b1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE156685/SRR12495658/salmon": {
+      "quantification_sha256": "1ff25a0692f14fc9ef45f4b9963954532b7b04d41227949a24aada51b22fcbbe",
+      "receipt_sha256": "40182b6f95a59033e9a01e8388776ccab2dcfd46d8e6760b5db1eab90609af3f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE156685/SRR12495657/salmon": {
+      "quantification_sha256": "2064c54f3c7993191d01537a1710b0eb7ff518fffba375b3cdd14dd2ba1c8966",
+      "receipt_sha256": "d732d0455aad95bae2b2eeebb01667c4be013ef37de4bc33e35b4bb3da81b6a6",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE156685/SRR12495651/salmon": {
+      "quantification_sha256": "6e218d305fdedb00728da0c692dffc15a3098b8beef6ff8fa8814bfa221e5900",
+      "receipt_sha256": "fc022d1457e69fab07cfd7f4da378d642847d1ef3eb2e40fddaa883d8cbfaad8",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE156685/SRR12495653/salmon": {
+      "quantification_sha256": "45061bf33f7d7e80723e3fdb28d7b6907e7bfe0e8f2c496c3ae2435841ddc1fc",
+      "receipt_sha256": "df8fa2e8c5398edf3b3be8e1780bbd398b5bb837ce1c1814d0a0b91689e7b262",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE156685/SRR12495655/salmon": {
+      "quantification_sha256": "dff4dad62e085e2e503282c2326e9b8ad2ee00e6f30bd396b0f6aef470a2a2b7",
+      "receipt_sha256": "a28c391ae7384138baa12b63a8b1e7ff3ec7dbf7d206f037c3c0aba9bbf74dfc",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE156685/SRR12495654/kallisto": {
+      "quantification_sha256": "45ac7af346ea7064dd962fad3b063d0f4acd783a649dc05987c3becccd0bf85c",
+      "receipt_sha256": "df6e496fc55dfd674b28ee8871e2680acbc61a7bb37039d3c1b4395bcd33d851",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE156685/SRR12495652/kallisto": {
+      "quantification_sha256": "057ede0e46bd656d103d18d2ab35c690a11aa24186018f5acb0cc3dacdd87e61",
+      "receipt_sha256": "cb16b55c044a7bd5102cc1c2cbe47566d9173e6bc055d0b197a1da05a5c914c1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE156685/SRR12495656/kallisto": {
+      "quantification_sha256": "fe48768c3eea22b06570d4c5abef9a7e36c6787dfb8b5e9d3ad94923ab2f2b33",
+      "receipt_sha256": "024f88c4e4df185074edcf6f22bdb7093ceacda7e6af2f3d7d998599cdd0a9b1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE156685/SRR12495658/kallisto": {
+      "quantification_sha256": "93dcf9ec28380a411acf47864d318e69b831394c37e1404ef021fa66dcab4727",
+      "receipt_sha256": "40182b6f95a59033e9a01e8388776ccab2dcfd46d8e6760b5db1eab90609af3f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE156685/SRR12495657/kallisto": {
+      "quantification_sha256": "36151a82d1fc574f56b6a1b9057a7db9592a610cfe14fc126c24d0a9eea4ac4c",
+      "receipt_sha256": "d732d0455aad95bae2b2eeebb01667c4be013ef37de4bc33e35b4bb3da81b6a6",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE156685/SRR12495651/kallisto": {
+      "quantification_sha256": "9a3c8130c909743fd0e7aad37a420cc75484c051b50ec370c3317fae094423a1",
+      "receipt_sha256": "fc022d1457e69fab07cfd7f4da378d642847d1ef3eb2e40fddaa883d8cbfaad8",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE156685/SRR12495653/kallisto": {
+      "quantification_sha256": "d9535dd46db9275d7de3a68055d0861e93b8d7a08f8143934052ad6f60fc7875",
+      "receipt_sha256": "df8fa2e8c5398edf3b3be8e1780bbd398b5bb837ce1c1814d0a0b91689e7b262",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE156685/SRR12495655/kallisto": {
+      "quantification_sha256": "6179abaea34a28aab1ed7357b6ee2f832ada559471512895d89892af44ce7599",
+      "receipt_sha256": "a28c391ae7384138baa12b63a8b1e7ff3ec7dbf7d206f037c3c0aba9bbf74dfc",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672498/salmon": {
+      "quantification_sha256": "0d8e6a2ddddd0f9c4cb847f99eb8f0977dce54d6284b0c86e2b9ca6d3a4b6f5b",
+      "receipt_sha256": "a464f8aad073cb72b55c4081a1b7118dcbebe319c07ca36802a2f233052e888e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672504/salmon": {
+      "quantification_sha256": "86aec87762ccb2e3a67bac71685a0bdddeee3150591cd8a09946462a4957ad06",
+      "receipt_sha256": "d0bb86b8810b82424f5c52ac8bb32c1f299d2dcc187cf34b837662da8ea3f66e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672505/salmon": {
+      "quantification_sha256": "09f1f4f5ac2aaa169e2c2f5a2d6d3dff4808b3263a9a26536f8faca5044b00a4",
+      "receipt_sha256": "19857297e7443f6080132071c9e4de174d078e17bd5c96bfd94ee9c1b338b9f3",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672507/salmon": {
+      "quantification_sha256": "a60994e83d2f8e8e2a82d8d148e173bcfba727aa8b9b92ed9d6ab016800abb5a",
+      "receipt_sha256": "9011342140bf713096a2fbcb7191e118fd31c1a815193d104e1248e8606902ca",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672495/salmon": {
+      "quantification_sha256": "dec894caa840c6fa97b9d64c034dc372792b9121ad809c044387c72993c086fc",
+      "receipt_sha256": "e804f2841aa3a3bd5398965b71433fa5879958d0031b0ce0ed49aad6b6b9b858",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672497/salmon": {
+      "quantification_sha256": "301054b31bf9683da8d0b126c288ae8526df17253987dcd7629a3c99fdf032bf",
+      "receipt_sha256": "36e9057efd622c32c2ceef0ea823f823377f73f5331d54c7a9a6aa0e2fc1e4da",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672506/salmon": {
+      "quantification_sha256": "f9c6935f420040023963dc500b880594962944d88c1a993f26f8a89bb4bd8c4b",
+      "receipt_sha256": "8f2ba90c4885ad86f24fd20d2b688d6bdb54fc1a05b6670b11b3b7fc5b0c2c6e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672500/salmon": {
+      "quantification_sha256": "44238b47b8be66a5267c86946cfda56bae4afad7ec080a0c6ed1205ddfdd3d58",
+      "receipt_sha256": "6b084e5b1cc3fd62478beae0e5111df7a959982bc1e3ee568ba29658594ddeca",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672503/salmon": {
+      "quantification_sha256": "ff1cd183c4ee44707153deb28c96946802c8dc7af336c14ea89305199d4b1b38",
+      "receipt_sha256": "41230ca4f0b6a49e321799665b8eddd3c907c2202c93d6a6aa37d0cbe839d228",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672508/salmon": {
+      "quantification_sha256": "e90ec16a15e1176f79e957606631f4124363813bada00c4ba1128f72ccf5d0f6",
+      "receipt_sha256": "16c64fc5f60d88be21daec6147c18b88035b083befed2580bf41d79e6f98220b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672501/salmon": {
+      "quantification_sha256": "928b15a91893be12f049405bb1f72a348bb796d0ba374f94618fb4bcd87ff4b0",
+      "receipt_sha256": "7b29b8975becd6d8b4ddea9f175a855751bfa815634715cf39085ed55a0ef5d9",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672502/salmon": {
+      "quantification_sha256": "8ef6fbfc67b5aaaa548656895d814aff43fccecc0e25d8b93470228422d0e9d4",
+      "receipt_sha256": "67dceffc2cffcf056fa0190e3cd8802018666a7be4924d21445ac3fd3dd8bb1e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672496/salmon": {
+      "quantification_sha256": "206353fd7ada4c8a81304e9b04508d7904b69bd677cb1a1fba86297288767219",
+      "receipt_sha256": "f2685683df0794f9bd70a86c8575f2f8d6bf34fb6cc7d09160d62ffff40196c6",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672499/salmon": {
+      "quantification_sha256": "9a06de1be5b0f6943e4f845e5e1c689a874f0089eb55f3fc71fe0a215ecc4b2f",
+      "receipt_sha256": "4a963c8c1c1a6be32f3401d0dbaaef980406116e934ae51d0297870a95ddbac9",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE158231/SRR12672498/kallisto": {
+      "quantification_sha256": "dfa83797596ba60fa801980b03b3fead170a86b337a04855cc43513747de531e",
+      "receipt_sha256": "a464f8aad073cb72b55c4081a1b7118dcbebe319c07ca36802a2f233052e888e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672504/kallisto": {
+      "quantification_sha256": "1d3c0d0935e60c3f98ed301356f382b31a7f87b211ee2d9692efcaa170f17e29",
+      "receipt_sha256": "d0bb86b8810b82424f5c52ac8bb32c1f299d2dcc187cf34b837662da8ea3f66e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672505/kallisto": {
+      "quantification_sha256": "617ba8169e6da7e6adbf0f27451bf5eb21bcf1bf3aa049bb16c6d0dbc6712563",
+      "receipt_sha256": "19857297e7443f6080132071c9e4de174d078e17bd5c96bfd94ee9c1b338b9f3",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672507/kallisto": {
+      "quantification_sha256": "c6e1fa61ef35798d13dc560e08508577e435063cca3be3aa225827faa3c08020",
+      "receipt_sha256": "9011342140bf713096a2fbcb7191e118fd31c1a815193d104e1248e8606902ca",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672495/kallisto": {
+      "quantification_sha256": "d45e2a2164e3621fd9f04eaaef94fd596121074d5685c5bff3addfbc62d8570b",
+      "receipt_sha256": "e804f2841aa3a3bd5398965b71433fa5879958d0031b0ce0ed49aad6b6b9b858",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672497/kallisto": {
+      "quantification_sha256": "b8be83f4501851c9c44b2807441f4bdb5785192c018c430d57641e6e1c701b99",
+      "receipt_sha256": "36e9057efd622c32c2ceef0ea823f823377f73f5331d54c7a9a6aa0e2fc1e4da",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672506/kallisto": {
+      "quantification_sha256": "3f80d4080a3e70465a1f8b01364dfa2105203d166356b00e2e1ecbfb1f1ac0a4",
+      "receipt_sha256": "8f2ba90c4885ad86f24fd20d2b688d6bdb54fc1a05b6670b11b3b7fc5b0c2c6e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672500/kallisto": {
+      "quantification_sha256": "b7358e0fef3a191023dee8d9523bde4e21291fe5d0635ab4763a19e53a720fba",
+      "receipt_sha256": "6b084e5b1cc3fd62478beae0e5111df7a959982bc1e3ee568ba29658594ddeca",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672503/kallisto": {
+      "quantification_sha256": "9464e5028b9c3af2ed3a3d609da9456b4e07c0e3ea18978cceb0b1d1f3fb2737",
+      "receipt_sha256": "41230ca4f0b6a49e321799665b8eddd3c907c2202c93d6a6aa37d0cbe839d228",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672508/kallisto": {
+      "quantification_sha256": "79afa983a9b597e50a3b2ae398fb0bbbc55d89b4e51b1366627ea7d251d6225f",
+      "receipt_sha256": "16c64fc5f60d88be21daec6147c18b88035b083befed2580bf41d79e6f98220b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672501/kallisto": {
+      "quantification_sha256": "33216855aa83da2807dad0ad3fb73a6cfbed117dcd3c5440bcda1e1cb56826c6",
+      "receipt_sha256": "7b29b8975becd6d8b4ddea9f175a855751bfa815634715cf39085ed55a0ef5d9",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672502/kallisto": {
+      "quantification_sha256": "4d1e8d1694af9d48c7de5171c799f17a64a0993ad60e7360b9ff4ad7d3130a3c",
+      "receipt_sha256": "67dceffc2cffcf056fa0190e3cd8802018666a7be4924d21445ac3fd3dd8bb1e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672496/kallisto": {
+      "quantification_sha256": "cd866b9e0f3bf1eb9f1d7d22ad1873ccaffdca641fa24323bc5921ead26abb97",
+      "receipt_sha256": "f2685683df0794f9bd70a86c8575f2f8d6bf34fb6cc7d09160d62ffff40196c6",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE158231/SRR12672499/kallisto": {
+      "quantification_sha256": "b42eb9d2386941c1611190427c9653adbacfcc08598002e2fb7bc0582e79bcc7",
+      "receipt_sha256": "4a963c8c1c1a6be32f3401d0dbaaef980406116e934ae51d0297870a95ddbac9",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE159515/SRR12828336/salmon": {
+      "quantification_sha256": "5277b4582eea04a20b3dbde7ad1cfc2de4af05d0c0f0a826efbea95ec8ed6684",
+      "receipt_sha256": "ba7d44b283ac664960002645006821d4f0cd3abf52191b3f148ae35490c25a6e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE159515/SRR12828339/salmon": {
+      "quantification_sha256": "36a2785f621749b519472597d5f4e404935fb43e1c00edfe13d4223ab4306000",
+      "receipt_sha256": "86f1abe0758e28defbcc2feb32c4a9c9df1fedc3d65cef1778a34617cd8bf9a2",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE159515/SRR12828338/salmon": {
+      "quantification_sha256": "b8adcdab543e5d2c6709d9554635bee44acf9dfd6e789a4dbff622dd5a06a92c",
+      "receipt_sha256": "02e678bed8281c030657933076c4e1545bebfff7adb5fbf96bcd8ebeb7eab10b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE159515/SRR12828337/salmon": {
+      "quantification_sha256": "215fc965cab0f1de2f8e0e8baa3a2704300592d3ea8c6b4e6791f0d776dff295",
+      "receipt_sha256": "897c1d6e977c6b2f4530be5e0e342edc4b6cb4ccf24fa6dbf80a40093db22f4b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE159515/SRR12828340/salmon": {
+      "quantification_sha256": "75ff388290bc189b666995f6cde0e1069368e99c4a585da449503fc29c91722f",
+      "receipt_sha256": "f8a5bcd09a613813840dde6053b0461052a3e8f0242b6be24a8c7baecc82fbd3",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE159515/SRR12828341/salmon": {
+      "quantification_sha256": "64d6afbe40e861fd9ae61a2de3db7a2987aa24a96b1bdacd58dc50ac85e07499",
+      "receipt_sha256": "7352a007c84d31df36afb35f5236c64bf1ab1c6f6ff6f51f998cb91f5ad9d6cb",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE159515/SRR12828336/kallisto": {
+      "quantification_sha256": "84599ef8a52e14123320a66aa7fd78ee89fc11a5229702cef2a0571051072dfa",
+      "receipt_sha256": "ba7d44b283ac664960002645006821d4f0cd3abf52191b3f148ae35490c25a6e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE159515/SRR12828339/kallisto": {
+      "quantification_sha256": "0cb385531a6b93950263c7d8bf5a9679722bd413b84f69ddd9050d69ad49a907",
+      "receipt_sha256": "86f1abe0758e28defbcc2feb32c4a9c9df1fedc3d65cef1778a34617cd8bf9a2",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE159515/SRR12828338/kallisto": {
+      "quantification_sha256": "fc3af463022348df69259fc4d034e8309d58b2199cb025612bed25da8b70a5be",
+      "receipt_sha256": "02e678bed8281c030657933076c4e1545bebfff7adb5fbf96bcd8ebeb7eab10b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE159515/SRR12828337/kallisto": {
+      "quantification_sha256": "88ec8a4d9452cb050071ce4f29bda259f5d1059d68f21d3c677142c5ba83ed81",
+      "receipt_sha256": "897c1d6e977c6b2f4530be5e0e342edc4b6cb4ccf24fa6dbf80a40093db22f4b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE159515/SRR12828340/kallisto": {
+      "quantification_sha256": "609f1d09d912cdfde103412260016302880f44c58787de6878eb106aa6410ec5",
+      "receipt_sha256": "f8a5bcd09a613813840dde6053b0461052a3e8f0242b6be24a8c7baecc82fbd3",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE159515/SRR12828341/kallisto": {
+      "quantification_sha256": "90c817c6d29de648e5bf8301ab26f050eeb80c7f46226d067d88e998d96b969e",
+      "receipt_sha256": "7352a007c84d31df36afb35f5236c64bf1ab1c6f6ff6f51f998cb91f5ad9d6cb",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889781/salmon": {
+      "quantification_sha256": "2d2d7cd86259828849f204f1705445f9a1f49ba980820f0263a7c29540d4f08c",
+      "receipt_sha256": "5cd335c98b76c5eab7fcf83d22fadf58071e87185d6e4e55131f7471c621c7e3",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889782/salmon": {
+      "quantification_sha256": "96b55456fdcfb5284d35375d672be2a07feb37f2e25f40ff15fc994d4d1788b3",
+      "receipt_sha256": "f9463f50747561152ab90ff788b81e3b27402b4a965bc83c33fe831955d68f2b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889783/salmon": {
+      "quantification_sha256": "deb4686d95885b4ed63a32f4b9620742065769292d21a373822d264d701c23a5",
+      "receipt_sha256": "85ad98a0c1ac3a83f88acc0f387aa2e9cc48c181dbb6c583815ee1e067277bde",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889788/salmon": {
+      "quantification_sha256": "b37887f0d7b2387bbe3095182d2f2472e36003ae0e9f27d3762b57a43bb522f5",
+      "receipt_sha256": "5ed2b6aba72f544616ee7b439407fa80e9ac7c6447e8010f2a1d08ce2192aa79",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889790/salmon": {
+      "quantification_sha256": "380d88d181b5c014a01da546e8444178ad6ef8977f9c07b454c25b7c36bd1075",
+      "receipt_sha256": "f46d898639c6497dd0e7d3c45c607d40ba1979564dc11d2367fe6d2e8e864f2b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889801/salmon": {
+      "quantification_sha256": "376a82fa666df94586761486c31719719911c882ac60916eb2b7393979478888",
+      "receipt_sha256": "b7c0ecba2eecffbac1329eab8aab88bad7be9b2b849f3a0eb6977a869c2ba276",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889793/salmon": {
+      "quantification_sha256": "e42e03fb8dfa03a30ce67da623058b581bbb9754e422336e466aee526d2f6021",
+      "receipt_sha256": "ca0d3c3ffaa8c3d93b07167da010a1badf77fdddc59a1d26c76b75e57d516431",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889794/salmon": {
+      "quantification_sha256": "29e0886eee7928c1c4c5ef9b0efb350010413a34b73faa569c84be749e25a341",
+      "receipt_sha256": "dd03f53cb9eb592b5784274507c6d98c066fddfd936ce1f43f3b452fdb36d2a2",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889799/salmon": {
+      "quantification_sha256": "0d865db57cf9868db01c31ccc91600c3681d6a9a80733f6a610986889f310c5e",
+      "receipt_sha256": "1e71c4a57745ffe4fbf015da3d40cbffc6e2f1c0388b3c99d2468313434f3ab5",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889785/salmon": {
+      "quantification_sha256": "85e995e37b9ad44ebc13f8632079e11946d42eadb5a14db391fa6eaf0c0d954a",
+      "receipt_sha256": "f97233b56f26ca8e2bc212aa82667b1400aa3e173003ff4c82216e8544fba121",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889786/salmon": {
+      "quantification_sha256": "ba976ba6078e506b320bc77e55456030c008198defcf5a226c6a392bd60b937e",
+      "receipt_sha256": "8e8feafaf33181a1f1f7635f83cb25faa442c378fc01efd89fca054674690b63",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889800/salmon": {
+      "quantification_sha256": "196aef5ceae01acd29b975a8e8f938d5dac104e2ef333d30531ee2a2999cefdb",
+      "receipt_sha256": "caaa0c98a60091b941e06f63ab0071f9d99b08772482bb81420c6f672b69c3df",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889787/salmon": {
+      "quantification_sha256": "a7556caead8fabd51e7876667076d78d8f02505aa1c97e3870b1da4e56657c6e",
+      "receipt_sha256": "a8178753fee742c0991172772dd7fe2d6e2b570105f404e51ca979a027d4d293",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889791/salmon": {
+      "quantification_sha256": "c6afbabf0d0c12ff2e70b8d7db6720fd9dd77a79b75957f72ac12b202fecc15b",
+      "receipt_sha256": "0f30786b77700eb16698e7db130731ac8377915cd9647f09c355d43a58598c1d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889784/salmon": {
+      "quantification_sha256": "36f92d76c372e582c42e50a0a601fd64514d3e6a735f7adf82a470419fd9da96",
+      "receipt_sha256": "01b7138f6d8c72a2931d7935ccbfc2fa9b9e3b970724569977f0cc03e7f0c762",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889789/salmon": {
+      "quantification_sha256": "23e9a69f90e6608833a05ed45e377572add1fb32d0c8ad1328150ddaed220dc7",
+      "receipt_sha256": "bdfce922bcbbe5470400745086e2e08152c2d6b0c6c56e953578bab5d8d59966",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889792/salmon": {
+      "quantification_sha256": "b1498c3008818b0cc4f518fa53fea176c9d3ea3bc1d61a124470c6118eb61099",
+      "receipt_sha256": "864807b70d16bbfc9e6fab7f04fafaf83a1096e5b71118930368d5586b36dc2b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889795/salmon": {
+      "quantification_sha256": "e2b54b57103134b872e06b7f67e11822d0ba1e7c99a6a3d5962390e733f13615",
+      "receipt_sha256": "8785fa17da1cff781a2fedf7ef99c8003eeb6dc3f1955815908382529de07191",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE168465/SRR13889781/kallisto": {
+      "quantification_sha256": "1de961b7a49c6bf459fb8cba632bac3800272d416647fe0e4fb578ec75abf2ac",
+      "receipt_sha256": "5cd335c98b76c5eab7fcf83d22fadf58071e87185d6e4e55131f7471c621c7e3",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889782/kallisto": {
+      "quantification_sha256": "4bb2c824efbcb3d3f6356a5b73786875030d122785ec5d6f0c3bb471626e9b02",
+      "receipt_sha256": "f9463f50747561152ab90ff788b81e3b27402b4a965bc83c33fe831955d68f2b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889783/kallisto": {
+      "quantification_sha256": "7e1d00cb32cebc0695cb5f7080fa719e5ccad136486336ce66f962736826fb1d",
+      "receipt_sha256": "85ad98a0c1ac3a83f88acc0f387aa2e9cc48c181dbb6c583815ee1e067277bde",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889788/kallisto": {
+      "quantification_sha256": "b70d5dc5f5309561786607fcc1b131925d0d845cf6e2849d69be88427a8ebf36",
+      "receipt_sha256": "5ed2b6aba72f544616ee7b439407fa80e9ac7c6447e8010f2a1d08ce2192aa79",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889790/kallisto": {
+      "quantification_sha256": "76c592be4190f03b9d6b382ae738d245fe89a1b97bf4cf408f1c63f75231f52b",
+      "receipt_sha256": "f46d898639c6497dd0e7d3c45c607d40ba1979564dc11d2367fe6d2e8e864f2b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889801/kallisto": {
+      "quantification_sha256": "2416cc8adeb041816b208c5ab7e6070f9abb7df70527d5f6282f7e7c5b5430e3",
+      "receipt_sha256": "b7c0ecba2eecffbac1329eab8aab88bad7be9b2b849f3a0eb6977a869c2ba276",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889793/kallisto": {
+      "quantification_sha256": "239a779ec26f09536301b6c5931ec1d4b1cf90c7354b99aa5eca574658f1d1e9",
+      "receipt_sha256": "ca0d3c3ffaa8c3d93b07167da010a1badf77fdddc59a1d26c76b75e57d516431",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889794/kallisto": {
+      "quantification_sha256": "5e28f33e214dcd4d257efab9dd0afe6d291152be072c8fa47aac89e9dfa1b907",
+      "receipt_sha256": "dd03f53cb9eb592b5784274507c6d98c066fddfd936ce1f43f3b452fdb36d2a2",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889799/kallisto": {
+      "quantification_sha256": "109c4390b36a402f21a1e2a9975dca807b773d82251046b5b5789db112a21b26",
+      "receipt_sha256": "1e71c4a57745ffe4fbf015da3d40cbffc6e2f1c0388b3c99d2468313434f3ab5",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889785/kallisto": {
+      "quantification_sha256": "89079117aa455ded51c1bd95c1a991e5f1236374a5941d5414b7fb50649a268b",
+      "receipt_sha256": "f97233b56f26ca8e2bc212aa82667b1400aa3e173003ff4c82216e8544fba121",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889786/kallisto": {
+      "quantification_sha256": "a40d288892021cc47ffd7891b91cf81f1628de1d565b27d1ae743e888ecf1dea",
+      "receipt_sha256": "8e8feafaf33181a1f1f7635f83cb25faa442c378fc01efd89fca054674690b63",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889800/kallisto": {
+      "quantification_sha256": "79f3917729884e3b5375a89c98b8d1ca1cc326ad4e5ac37b745d01073f8e0640",
+      "receipt_sha256": "caaa0c98a60091b941e06f63ab0071f9d99b08772482bb81420c6f672b69c3df",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889787/kallisto": {
+      "quantification_sha256": "bc8830efd30f0fee1ae255e2d0b072069652e27836776d8dfaa98b2af242eaf2",
+      "receipt_sha256": "a8178753fee742c0991172772dd7fe2d6e2b570105f404e51ca979a027d4d293",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889791/kallisto": {
+      "quantification_sha256": "a36f10a7b0ec5b0a8a7feac175e418412960be45c56ccc993f2778ee72000c48",
+      "receipt_sha256": "0f30786b77700eb16698e7db130731ac8377915cd9647f09c355d43a58598c1d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889784/kallisto": {
+      "quantification_sha256": "1f866920ffec8194286cb8619e5d24f118ea555b02b376b12d05e24195b33748",
+      "receipt_sha256": "01b7138f6d8c72a2931d7935ccbfc2fa9b9e3b970724569977f0cc03e7f0c762",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889789/kallisto": {
+      "quantification_sha256": "84399cd20ceecbe968e2f5eb77d8db26bb2254cc7c39e476060617e2a9e8e834",
+      "receipt_sha256": "bdfce922bcbbe5470400745086e2e08152c2d6b0c6c56e953578bab5d8d59966",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889792/kallisto": {
+      "quantification_sha256": "2a772ffd1dccf5542bacb07bebe48632c57477bc15831e9bb20bc9979cbdd69c",
+      "receipt_sha256": "864807b70d16bbfc9e6fab7f04fafaf83a1096e5b71118930368d5586b36dc2b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE168465/SRR13889795/kallisto": {
+      "quantification_sha256": "777aa481a5f49cb326f6dccdec4ef748a4db9e7a020c14ce8856753220601006",
+      "receipt_sha256": "8785fa17da1cff781a2fedf7ef99c8003eeb6dc3f1955815908382529de07191",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE175919/SRR14701481/salmon": {
+      "quantification_sha256": "41a3dbd67c265d06c8337b495df1c163500a3afb8bac91a5759b90c62aa4dd3d",
+      "receipt_sha256": "faea20e19e6c8c4a0cd0d2ecb4a1ba04791b9c80096bb738e2bb570f50b94d30",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE175919/SRR14701483/salmon": {
+      "quantification_sha256": "0b7c778e1163af02077ecded83663aaec494b06d984a40231c88d16fd9765633",
+      "receipt_sha256": "95e9dbc5abbea7327998472fcf082f49e72e8e20b3e688a6d74823b1f11398ac",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE175919/SRR14701485/salmon": {
+      "quantification_sha256": "bc24ee41ff5adcf0f3c8ac566144c08b1c20507e5e85d3024a1e9dc5ff8e2da7",
+      "receipt_sha256": "f25ef67669f0cbcdac88ea78ecf868e82889b358e60447977d182c7fbbcee14c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE175919/SRR14701482/salmon": {
+      "quantification_sha256": "9c1978323c6ab94fd729482eea8885c7ac61be2a0771e6bb5498fe6103593c4c",
+      "receipt_sha256": "40e11e88b89d7efe45d4a8479efe2d3e88b8820be812b185098e6f5baf3394c8",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE175919/SRR14701486/salmon": {
+      "quantification_sha256": "937718dfdb58fa9668e75af31082e0a7c849428a9edf10f1827bd6b27d1914aa",
+      "receipt_sha256": "f3c367f57c3db79874d4412d9152e18a594eb0c222dc74da0a3e467603df1da7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE175919/SRR14701484/salmon": {
+      "quantification_sha256": "6547c958e172738ee199aeeae3245b099fb50944db3f42ad61d09279b0984f96",
+      "receipt_sha256": "9c92a2e20c2a2c07349dbc9b1342aedfc9711d6c90efe211f95454ab3ba38b49",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE175919/SRR14701481/kallisto": {
+      "quantification_sha256": "199890460975deb144aab8fec9112e18afc57edb031b39a3207bdeb8c188dc5d",
+      "receipt_sha256": "faea20e19e6c8c4a0cd0d2ecb4a1ba04791b9c80096bb738e2bb570f50b94d30",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE175919/SRR14701483/kallisto": {
+      "quantification_sha256": "556871e7588f7f36aa1e54f8c5bdfb82a6ca9cd3b77d2e7cde0c3248a40b372d",
+      "receipt_sha256": "95e9dbc5abbea7327998472fcf082f49e72e8e20b3e688a6d74823b1f11398ac",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE175919/SRR14701485/kallisto": {
+      "quantification_sha256": "571d41c89d4cf54ff2c14d091fa1d75fe5718b63772c437d61633f2c4e16bd10",
+      "receipt_sha256": "f25ef67669f0cbcdac88ea78ecf868e82889b358e60447977d182c7fbbcee14c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE175919/SRR14701482/kallisto": {
+      "quantification_sha256": "8512480095f1f56448959c5cab91faf39682faa7a5024ea2ff2a888c33e3ec41",
+      "receipt_sha256": "40e11e88b89d7efe45d4a8479efe2d3e88b8820be812b185098e6f5baf3394c8",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE175919/SRR14701486/kallisto": {
+      "quantification_sha256": "a958d79027533a7ee0d3841740e1074bff4b3682597cc57ca0010f2026d58668",
+      "receipt_sha256": "f3c367f57c3db79874d4412d9152e18a594eb0c222dc74da0a3e467603df1da7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE175919/SRR14701484/kallisto": {
+      "quantification_sha256": "3109907b11e9e161dc14d9bd80c6c676f2863566468b3ebdef1109c3bc97f005",
+      "receipt_sha256": "9c92a2e20c2a2c07349dbc9b1342aedfc9711d6c90efe211f95454ab3ba38b49",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14851004/salmon": {
+      "quantification_sha256": "9dd100b8ecf6c2e5197077fdaad3955099aedce40500c0ff2cab753eb6dda7a6",
+      "receipt_sha256": "9abf437898546a138f6d4abf2296f7a13e16fb03aac7b03a4cd7cff6e23ba352",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850980/salmon": {
+      "quantification_sha256": "3d36f637d1c629462cfc7fe0ce08516c0619e799e37a953338ce2853714b37cf",
+      "receipt_sha256": "ddc2de45406f1a98f7c374928aa3ed8744483576350e548bfefae63ef9bbc271",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850985/salmon": {
+      "quantification_sha256": "2b688196c5bf6e7a6f3a99bc538c0d5c21a98c373b50b5229d35912c359633f8",
+      "receipt_sha256": "f351284dee70d6a81d79b95071f388fdf26c6f23dcd8a50e0ba8ba4a75574652",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850988/salmon": {
+      "quantification_sha256": "ae1966f66702a74b056e0ee9eae3cda617e4a4c621d2ae538fec536412388519",
+      "receipt_sha256": "d64d72ffc46f770c864608deee71f7f4fe4b3c4bdd90703754f6c41a81c52eec",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850991/salmon": {
+      "quantification_sha256": "d36387c8566d3f3ef6761e6a53b6c4875c85cab29fb48e7fdd7ffeab8145fb1f",
+      "receipt_sha256": "a92392c45049d0eeecec2d84d155ee8bd46d181ee5fce15d8908692a50233053",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14851000/salmon": {
+      "quantification_sha256": "5ac7876152bfe94875641b6eaebd04ffdf410593102fcf5d61fd52e25d74df40",
+      "receipt_sha256": "fb7cb260ba22f6782d9ea9df992622994363843f3b59ed00f6a9f3674fec37ef",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850982/salmon": {
+      "quantification_sha256": "4a3d672becb7417c142daa8d339df7dc6cf0614b3d73f3d7649c4057f3b550a4",
+      "receipt_sha256": "0238974098b0d7a7750eed43fac3fcc2135415f07e5c1873c1bbeb14726e3d24",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850984/salmon": {
+      "quantification_sha256": "71530b4c0acb99004ab43c48d8342f537bb89e59d4a170295a94761fd46d7c54",
+      "receipt_sha256": "2896ad4725e83fc4ebb4c798931cc59c130f99aa38a2a464083b79b8eedcc401",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850986/salmon": {
+      "quantification_sha256": "ac98556ea9ee5de0d4253468f4dbd2fd4e8f7c86f39924fb1eba228abbf7cfe3",
+      "receipt_sha256": "fed112950bdd6a259aa81fc4c458e0558540cd95d89bf6226915a419d5631bbf",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850989/salmon": {
+      "quantification_sha256": "671bc81744489c5823b659dd3ce754c999a9c3ff568c022fe198eae73cf6f58a",
+      "receipt_sha256": "8e7d5092e70ed0e7e8318e6f7f92ff2157e274076efec0c6c17a751d67e5c3b1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850993/salmon": {
+      "quantification_sha256": "8997f492954ce49cc3d876fa72290bc62676cb36adc4eb49dcee94552cb114fb",
+      "receipt_sha256": "c438c5d7019f481c58bf2d2b4da77596fff1a1c44af5a318670e5ff2e98e99ef",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850997/salmon": {
+      "quantification_sha256": "15bc770ef96d757b8a2fb070f29586f1a02e8fe333f968fdc8adbaec265e735d",
+      "receipt_sha256": "c3d3a88f5f33a1c64236a043dea92ac67de61804577be8f8d25552bde9003648",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850998/salmon": {
+      "quantification_sha256": "602362bdbe0a2b90c8b9d5cd13afa4a17f918dd1f8b381b3f6f9182dd74c2376",
+      "receipt_sha256": "264d08bcb52dbca112b64357e3ff5144c8095ab82d7b4688326a5dcb41e4f05e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14851002/salmon": {
+      "quantification_sha256": "3031c48a6c35a2abb0e850ad82ac3eb259817dc8dd8f6e336a51e253e5a8738e",
+      "receipt_sha256": "ca2608d104c7225a903c806f4939f6d8310332ca25a7581183f51ef2d4e3da1f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14851003/salmon": {
+      "quantification_sha256": "4aa3877e9a8a3de00742ebcb19305865230f54a1632009ac435cda8d1f91958b",
+      "receipt_sha256": "83f7da3bdf95e6814bb74f1217df929853019c99d0255d8171d8b14a8cb8c02a",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850981/salmon": {
+      "quantification_sha256": "98bb4138d034c6df25c626fa00dbff6fa5feda99464ceb3ab9b889e698c7c879",
+      "receipt_sha256": "05789f21c7ee21ed440d66023a6aae42685ba577a716dc06afb6c6115cbfdf44",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850983/salmon": {
+      "quantification_sha256": "6342694644fce27087998658833c0c1b9f4c5efc319304ebd871d13d78970054",
+      "receipt_sha256": "611f4d9ad154488c4bf230738d5b1b7f62337a23f40cd9223ffb9236f6558639",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850990/salmon": {
+      "quantification_sha256": "c703e8b72621e7230ec79a1d6d6f6c47581422201789447553a0bb988525f4fe",
+      "receipt_sha256": "6a2118817d96e93d89a663ca95008ac2e3a920f91bdfd3cbfa5b95655b91d89e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850995/salmon": {
+      "quantification_sha256": "b162c9788e34fc54b460f054dafa5149852cfcf14cd305cfe0b9d65778cb44bf",
+      "receipt_sha256": "43f279d6c794445305c76fd4cf35996a4d6dd19f4f6f2d9373dfc007302ddff4",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850996/salmon": {
+      "quantification_sha256": "ec39e59eb67f96d10cedbc123cb84a2e904aff665b3efe8520de93c9c57a4398",
+      "receipt_sha256": "ab51a4cda1b5535eee50cfe6ead881a53131cf310e08722fca2869ed8bda2729",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850999/salmon": {
+      "quantification_sha256": "7c5dff0ec9554598dd7851cd9b6fdfb6ab54eb3d674e92c120c51e0ee97a9eb7",
+      "receipt_sha256": "0e54f4fe811d9801c922d87c87cc2d2ae555d0fee5d1734afa20997681035a53",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14851001/salmon": {
+      "quantification_sha256": "1ecd47dd3a915a76c1cffa7f23d0157ead459b00b1967867c33a196fbd1c6a30",
+      "receipt_sha256": "6a15e1128fcd600fcd4e525d5f06eb1920e1813a57a978ee1b473ff05e9b0153",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850979/salmon": {
+      "quantification_sha256": "c8eadc09548808ad38351a199c6be7f97e80ad0c1e996407793a330f3a82b410",
+      "receipt_sha256": "65a6ad8e706f1e179bfd7efe888d7096061226c73980ad71c788867a2ae45c66",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850987/salmon": {
+      "quantification_sha256": "5e10bd36b9a88765f916a9f879596d8eba00d8d55e6bea6e957ca59112c4fc0b",
+      "receipt_sha256": "5ca3e367e1792aa2d1fdc951c83d014dcddc52b2152005a7e59d81c091528edf",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850992/salmon": {
+      "quantification_sha256": "c9bd2acdd36319375bfc84f26f71625fb989df15dc4250ab5edd63a9f3d71c16",
+      "receipt_sha256": "68695708d717b28bf07fdabd165bf4f99a84659ae4a6c9c3a0aad25127b36c43",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14850994/salmon": {
+      "quantification_sha256": "53df0c0fe8c70e5d01a893b60ad03e124df9a7ec3bb4528d745a8bb55b34ebfb",
+      "receipt_sha256": "338efeb0e4aa7e045b414fb7eb95e123af0045defc152046bd536574cd2d4b77",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14851005/salmon": {
+      "quantification_sha256": "7115b50b82d84f7c35cd15a497e6e7bea7f62ac5863aac359520e3646dd5fd74",
+      "receipt_sha256": "e4dea93f7e4d96aeca8098f9165491e7b51ef3426d755bee02f7d5ed9d2992e6",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE178355/SRR14851004/kallisto": {
+      "quantification_sha256": "64c99ffb7e354d4a75b91a6502f5fa13043b526105b4ac31fe28b2cd77a53795",
+      "receipt_sha256": "9abf437898546a138f6d4abf2296f7a13e16fb03aac7b03a4cd7cff6e23ba352",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850980/kallisto": {
+      "quantification_sha256": "d14266cffb7dbf12e7957fa262923eed888dc2d54d69fcc059f3c41113ae929b",
+      "receipt_sha256": "ddc2de45406f1a98f7c374928aa3ed8744483576350e548bfefae63ef9bbc271",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850985/kallisto": {
+      "quantification_sha256": "d0a5c2e4f6e4cb78d960147ab2baf64a8dfdcda0f1e95e8af1f7d4b90afce957",
+      "receipt_sha256": "f351284dee70d6a81d79b95071f388fdf26c6f23dcd8a50e0ba8ba4a75574652",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850988/kallisto": {
+      "quantification_sha256": "7efd234edfdd33c4758d509b9c93d06299887b6a15de52d545fd5d94e0922803",
+      "receipt_sha256": "d64d72ffc46f770c864608deee71f7f4fe4b3c4bdd90703754f6c41a81c52eec",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850991/kallisto": {
+      "quantification_sha256": "5edd617659232b075a322bf53cf8a10b01f6cf88278e0f95d4d834c0300f2428",
+      "receipt_sha256": "a92392c45049d0eeecec2d84d155ee8bd46d181ee5fce15d8908692a50233053",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14851000/kallisto": {
+      "quantification_sha256": "74a3475d6053991cf47bc7034b6628a1924ba598ab6deb921aabbe7c9029b921",
+      "receipt_sha256": "fb7cb260ba22f6782d9ea9df992622994363843f3b59ed00f6a9f3674fec37ef",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850982/kallisto": {
+      "quantification_sha256": "f06556b9ab279819569d8b1bc21b1301edde563f0fb3406173d23b8d1d0c6994",
+      "receipt_sha256": "0238974098b0d7a7750eed43fac3fcc2135415f07e5c1873c1bbeb14726e3d24",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850984/kallisto": {
+      "quantification_sha256": "4416139db0259ceddceb88fc81c556b0473819c3e8af5044175d3dc28aee118f",
+      "receipt_sha256": "2896ad4725e83fc4ebb4c798931cc59c130f99aa38a2a464083b79b8eedcc401",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850986/kallisto": {
+      "quantification_sha256": "965859e67be9da067084d3371f60e7d208f2bff15e052f9635d496e87b969cbb",
+      "receipt_sha256": "fed112950bdd6a259aa81fc4c458e0558540cd95d89bf6226915a419d5631bbf",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850989/kallisto": {
+      "quantification_sha256": "5eb28d66769ae13b7429aa9453c5d5c28a7a5e0637e4c4b3432b3384dfbe9f3c",
+      "receipt_sha256": "8e7d5092e70ed0e7e8318e6f7f92ff2157e274076efec0c6c17a751d67e5c3b1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850993/kallisto": {
+      "quantification_sha256": "64438a96d4b68b3094b63a2a76752999b43d05de65300f8d508bcb32d9365637",
+      "receipt_sha256": "c438c5d7019f481c58bf2d2b4da77596fff1a1c44af5a318670e5ff2e98e99ef",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850997/kallisto": {
+      "quantification_sha256": "95c0c9f00f34988c82972c46325cc3d983c49087cef915a084937e2200f81989",
+      "receipt_sha256": "c3d3a88f5f33a1c64236a043dea92ac67de61804577be8f8d25552bde9003648",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850998/kallisto": {
+      "quantification_sha256": "ae01874f774134c16ee8d3320ca74329a3dfcf068b6e3311622a3f703cd38a40",
+      "receipt_sha256": "264d08bcb52dbca112b64357e3ff5144c8095ab82d7b4688326a5dcb41e4f05e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14851002/kallisto": {
+      "quantification_sha256": "030244fb95674341e56affe1247430dc25b5dbf70762ca8b9819357a1137d0f0",
+      "receipt_sha256": "ca2608d104c7225a903c806f4939f6d8310332ca25a7581183f51ef2d4e3da1f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14851003/kallisto": {
+      "quantification_sha256": "133b217cdf48fe7b06bb461927bad3a783ff2246299f167ee59fe841ecdc203a",
+      "receipt_sha256": "83f7da3bdf95e6814bb74f1217df929853019c99d0255d8171d8b14a8cb8c02a",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850981/kallisto": {
+      "quantification_sha256": "6852587ae8a47dc63a8e4049bda8cb3a0afede1382e0b06f8cbae5cd6e897164",
+      "receipt_sha256": "05789f21c7ee21ed440d66023a6aae42685ba577a716dc06afb6c6115cbfdf44",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850983/kallisto": {
+      "quantification_sha256": "0d07b98188af8b4d0152e18ae0bf2b1fd4843cf2cdc3389d79d5f201c35342c4",
+      "receipt_sha256": "611f4d9ad154488c4bf230738d5b1b7f62337a23f40cd9223ffb9236f6558639",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850990/kallisto": {
+      "quantification_sha256": "2a8f2dae508808036c4e4a27d2fe398fdb6d34730e4252987a293eae885241dd",
+      "receipt_sha256": "6a2118817d96e93d89a663ca95008ac2e3a920f91bdfd3cbfa5b95655b91d89e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850995/kallisto": {
+      "quantification_sha256": "f087b9a6e05cdb67dc57b90a084cb1071b24a56cb3d76fd876ef8ea0d73ce0d4",
+      "receipt_sha256": "43f279d6c794445305c76fd4cf35996a4d6dd19f4f6f2d9373dfc007302ddff4",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850996/kallisto": {
+      "quantification_sha256": "9503ddaa08bbb0a3b117e75c40826f9a09686a53bb35fc025ca763860f0d155e",
+      "receipt_sha256": "ab51a4cda1b5535eee50cfe6ead881a53131cf310e08722fca2869ed8bda2729",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850999/kallisto": {
+      "quantification_sha256": "4f0293bbd71c5fdceecd5974d07db576221d7b669dd3b2ecbc2e752de5fba999",
+      "receipt_sha256": "0e54f4fe811d9801c922d87c87cc2d2ae555d0fee5d1734afa20997681035a53",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14851001/kallisto": {
+      "quantification_sha256": "db01f8ab023f2c1255278468d4c2df3c2aac3402ac8671687b6fc05c4863cdbd",
+      "receipt_sha256": "6a15e1128fcd600fcd4e525d5f06eb1920e1813a57a978ee1b473ff05e9b0153",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850979/kallisto": {
+      "quantification_sha256": "bba43ef4df418bc7975a42a022a89fec57c1fb27e2dfe346f267c6050fef9f94",
+      "receipt_sha256": "65a6ad8e706f1e179bfd7efe888d7096061226c73980ad71c788867a2ae45c66",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850987/kallisto": {
+      "quantification_sha256": "8bc5e208e049396c26b10d9d9c989b0024cb81f3a57106b426077326a92b0c03",
+      "receipt_sha256": "5ca3e367e1792aa2d1fdc951c83d014dcddc52b2152005a7e59d81c091528edf",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850992/kallisto": {
+      "quantification_sha256": "8f98f560f18f56e0a3ee36904a71a4b1ab62034475beefa6e836603b858e9f96",
+      "receipt_sha256": "68695708d717b28bf07fdabd165bf4f99a84659ae4a6c9c3a0aad25127b36c43",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14850994/kallisto": {
+      "quantification_sha256": "84e0ab73d8798dba490dc909a732eddabafef0bd47d8aeaf05f2305ab049bab1",
+      "receipt_sha256": "338efeb0e4aa7e045b414fb7eb95e123af0045defc152046bd536574cd2d4b77",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE178355/SRR14851005/kallisto": {
+      "quantification_sha256": "d3a89c9c47f71930457e87dd33431ff7a098938b048490b9d510bf5772f1f405",
+      "receipt_sha256": "e4dea93f7e4d96aeca8098f9165491e7b51ef3426d755bee02f7d5ed9d2992e6",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053200/salmon": {
+      "quantification_sha256": "6a46aa66f9935cce0f9c94f4df2f0cce1f05cb9f1a302423a73fc1bf44bce148",
+      "receipt_sha256": "e7b3fd93822ac66c98d531a25bb774455d1d86f5f5c9410316ea1c663ac22a79",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053205/salmon": {
+      "quantification_sha256": "2ac97768ab1493e5a139a219e50023a4ece4c37b1c13cbd656d052b7caeca956",
+      "receipt_sha256": "cf03bf0d2c18edb6b79c46c226df9f36e7e458ef5456e189231e4d3d928dda45",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053208/salmon": {
+      "quantification_sha256": "120f89a1d47718c6c5780b9279d117f7d7474174ad8032f70addfc0483cbd0f2",
+      "receipt_sha256": "f359350cca0b8a16c8d5b0dca85a3588ff3dbfc72e70a2b12e0ae3addea77e2d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053198/salmon": {
+      "quantification_sha256": "3d8dca79846617a01ebcc92846cc28778cb2771216a8038246200046e90dfcce",
+      "receipt_sha256": "99618e0345ffdcb0b884953ea387b0717754e75f6e55bf392acef08438975e77",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053201/salmon": {
+      "quantification_sha256": "cfe3bbfbe97518a33e188e2aac08192c9c001a254d85a32c18c9a7425bbd8abb",
+      "receipt_sha256": "f4d2b26137ab332a2e9e2250381f9c215b383575469566bc66cb4972edebe618",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053203/salmon": {
+      "quantification_sha256": "d45a69f895ba0d88ada51a617d128568bb05b52872b4559625624b1be586e1ff",
+      "receipt_sha256": "8f625929b8f415519ee04a61e39932a60a545c6ff79a950d9c4f58037c1d0a4f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053199/salmon": {
+      "quantification_sha256": "f7e80eff61fe368f3e4ef6d9338de684e79e84a703a6bda13ab64e08ed57b003",
+      "receipt_sha256": "a35013f6825d5be7409049e529668f23cbc272f9fd9af6e01a4c6061428d3ad3",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053202/salmon": {
+      "quantification_sha256": "d759ccdcc44ad48e4012e553d9e8a72dca109c53675973f0e6b8d5b05b8cd3dd",
+      "receipt_sha256": "01d26399bf59634c5eb27049a7b7f614f2ca1a02d179a9af8fdb4422c1c2aa9b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053204/salmon": {
+      "quantification_sha256": "4eef159bc433ad4775227cd5347ec3773ef5e5639694e75335ec5e24083e83c4",
+      "receipt_sha256": "5bbf14ace9d8f15fdaa10c71d5104221d0f62f521e7566a06ceb71c194abadb9",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053206/salmon": {
+      "quantification_sha256": "2592fec0f863c22328dff23ffa1a7eb0556d1b17e2a9a640416f740ac123a6b3",
+      "receipt_sha256": "333a21e97e542516be99705ff04d161427f173ad80c79be27717c9ac6da55fcb",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053207/salmon": {
+      "quantification_sha256": "655ef75bf91bbfd5b13ecd56be7c3c2f4c59e47859bbbe2bbc2df49bd80fd309",
+      "receipt_sha256": "735b212a2c75e68b609bb9265973f8dfef0696402619600e33cad7b7debb239d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053209/salmon": {
+      "quantification_sha256": "1b23540e30a841e8495508f57a936cf15a23ce863eb8e69802de723b778cb802",
+      "receipt_sha256": "d94f2a1c68840162187f65fde4239dc77a73fa8410c66880a0f3f96453fa82c0",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE189677/SRR17053200/kallisto": {
+      "quantification_sha256": "5b8ddd2f7bc14bb5f36ebe4e1b9ba734f985b12aeeaa060deaf19cfc4066ba7a",
+      "receipt_sha256": "e7b3fd93822ac66c98d531a25bb774455d1d86f5f5c9410316ea1c663ac22a79",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053205/kallisto": {
+      "quantification_sha256": "30a5bda4bb4a8d4f53c844c7a61b31b9ef02d1330f38ab792336684f1bd8bc21",
+      "receipt_sha256": "cf03bf0d2c18edb6b79c46c226df9f36e7e458ef5456e189231e4d3d928dda45",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053208/kallisto": {
+      "quantification_sha256": "60cb4b471ce2748cc85c95596e6a06fadfeb399c4b23eaa8f2cf021c09d7c2d5",
+      "receipt_sha256": "f359350cca0b8a16c8d5b0dca85a3588ff3dbfc72e70a2b12e0ae3addea77e2d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053198/kallisto": {
+      "quantification_sha256": "7ad3e8b2de547ff46e2ef9c94555f03e196e0ae03374cd7ff25912ef2e56ba59",
+      "receipt_sha256": "99618e0345ffdcb0b884953ea387b0717754e75f6e55bf392acef08438975e77",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053201/kallisto": {
+      "quantification_sha256": "4d81516b2a23c82371df6d22f6f97ce3d8dfded8d30fa49f8b7db41e2527330c",
+      "receipt_sha256": "f4d2b26137ab332a2e9e2250381f9c215b383575469566bc66cb4972edebe618",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053203/kallisto": {
+      "quantification_sha256": "1e1bd690a152ce0e381846fccaf719d3251a4ee69ebd6fb5c4b7a5493c8bb36b",
+      "receipt_sha256": "8f625929b8f415519ee04a61e39932a60a545c6ff79a950d9c4f58037c1d0a4f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053199/kallisto": {
+      "quantification_sha256": "7d920bf8a4d2b99a2afc7e9aa507bf5b5fdebcdd9a9ec07f7ebcc24b19b2189a",
+      "receipt_sha256": "a35013f6825d5be7409049e529668f23cbc272f9fd9af6e01a4c6061428d3ad3",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053202/kallisto": {
+      "quantification_sha256": "5c75105ba1fd85924169561a8ab7f31bbf578ff2bfed218c1d7012c4233ea502",
+      "receipt_sha256": "01d26399bf59634c5eb27049a7b7f614f2ca1a02d179a9af8fdb4422c1c2aa9b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053204/kallisto": {
+      "quantification_sha256": "adba437bdc78133eaf33de9b788ccafbaab83a0603d0cb1dd19fd9ff320fb436",
+      "receipt_sha256": "5bbf14ace9d8f15fdaa10c71d5104221d0f62f521e7566a06ceb71c194abadb9",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053206/kallisto": {
+      "quantification_sha256": "2d99a78eb9c2997b60a1e7b2a77ab2f500f413b5b0067b09b221d68aba4a1f70",
+      "receipt_sha256": "333a21e97e542516be99705ff04d161427f173ad80c79be27717c9ac6da55fcb",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053207/kallisto": {
+      "quantification_sha256": "5f5708c16c131efe1e38e0d6abe3f16c3fb48abca01d21d0bfad29b042abab3a",
+      "receipt_sha256": "735b212a2c75e68b609bb9265973f8dfef0696402619600e33cad7b7debb239d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE189677/SRR17053209/kallisto": {
+      "quantification_sha256": "3e1913dc1692e4bed42cb6edaa03b8f89b2b9491dc47277e677e4243a6a9a9e8",
+      "receipt_sha256": "d94f2a1c68840162187f65fde4239dc77a73fa8410c66880a0f3f96453fa82c0",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193614/SRR17607125/salmon": {
+      "quantification_sha256": "14555eb0416562cdcfe5ed4015440f000253190b6fef14be29f8b3b97279a8c1",
+      "receipt_sha256": "4cb7d9c50d46f37ab824628419fdf7954ac44490a0844ce82f5cc7614c20ee66",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193614/SRR17607124/salmon": {
+      "quantification_sha256": "0d6187fed4c9d7e5e6e6a20cc689453e1ee90c009867fd3b876d7af548377964",
+      "receipt_sha256": "f1376accdc37b59b028aa3ae6ffe7f77c449d105f0712d50b55b628da4083d3a",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193614/SRR17607129/salmon": {
+      "quantification_sha256": "a649cd4049bad559aa6f0201231f9761993cc3b77b2cb4e3fe546c2bb7836a4d",
+      "receipt_sha256": "746c2c9be62a72934b42a3d066c8be77d48baa10ec433144ebfa8beb16706da3",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193614/SRR17607126/salmon": {
+      "quantification_sha256": "ca4ec7c18a9213d7a4a14bb03d926d2669090668cecb4b6ca89ab5ebcb6e04ef",
+      "receipt_sha256": "a2bfbe914f78cbafa38d811bbf5c9963d45e51aba375faa8345f6f82fcf01a32",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193614/SRR17607127/salmon": {
+      "quantification_sha256": "7f6d7caf98209bdc23910bb385e7757d154a3718f2e2932a694491e787f69891",
+      "receipt_sha256": "d390b0449ccf09094d32dff6785a8f9360b7c9819f637d71538cb9933a209e2e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193614/SRR17607128/salmon": {
+      "quantification_sha256": "69d4a8e2a2fcfc20c8dc1519251bfc04d7f1e2312419ddeaf93e4f4a9f211e1d",
+      "receipt_sha256": "b811140cd52a71e3dd6d5a7bf2cdf0c55cedb3e3317907987d65d9bbe61d5fed",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193614/SRR17607130/salmon": {
+      "quantification_sha256": "a945f8e30dc96b0a192fc2ac92b3ade724954fb1b5c852993dacd1c7e1a77ca0",
+      "receipt_sha256": "410a9fdef24b26c39ad1820f7359176efe26581db58d9cb9e85b6603b51b4794",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193614/SRR17607125/kallisto": {
+      "quantification_sha256": "69eb0af0facc26346a46333c199520d0a5d9ba7936be00ef6605c37d55b61e25",
+      "receipt_sha256": "4cb7d9c50d46f37ab824628419fdf7954ac44490a0844ce82f5cc7614c20ee66",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193614/SRR17607124/kallisto": {
+      "quantification_sha256": "f66d0827f8770ff2d3fd5221db49522b4b09ad5f0a1775efb30d6b338629b787",
+      "receipt_sha256": "f1376accdc37b59b028aa3ae6ffe7f77c449d105f0712d50b55b628da4083d3a",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193614/SRR17607129/kallisto": {
+      "quantification_sha256": "d385140feac8dca2d438bd6d8595103c3e4a020429b6caba7cc3528ab712b6fb",
+      "receipt_sha256": "746c2c9be62a72934b42a3d066c8be77d48baa10ec433144ebfa8beb16706da3",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193614/SRR17607126/kallisto": {
+      "quantification_sha256": "2ef21c97bdd65caac7a7b868b8815cc567fa371e733ed3aa0ab2a2244c445707",
+      "receipt_sha256": "a2bfbe914f78cbafa38d811bbf5c9963d45e51aba375faa8345f6f82fcf01a32",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193614/SRR17607127/kallisto": {
+      "quantification_sha256": "baf18c9b74789516c9f22b88631264538c5d029c76fba797a9a8efef53bf662a",
+      "receipt_sha256": "d390b0449ccf09094d32dff6785a8f9360b7c9819f637d71538cb9933a209e2e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193614/SRR17607128/kallisto": {
+      "quantification_sha256": "fbe0c3b6a17bd4ea3ca572534b5b1f53d531a916cd8b2ab95271d4fd1941efad",
+      "receipt_sha256": "b811140cd52a71e3dd6d5a7bf2cdf0c55cedb3e3317907987d65d9bbe61d5fed",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193614/SRR17607130/kallisto": {
+      "quantification_sha256": "78390194cea81dcf1bfac6640152299a6db85f3f227eff3e933a14521569c754",
+      "receipt_sha256": "410a9fdef24b26c39ad1820f7359176efe26581db58d9cb9e85b6603b51b4794",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193779/SRR17639034/salmon": {
+      "quantification_sha256": "7f0804a65dfd671988389f8b6d831a90561c352ab25398db90a0b77b2ffd3e67",
+      "receipt_sha256": "5c69744b5fb8b397752b83770cdf1c8ab45d0306cc496c1ba731f48ae8864811",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193779/SRR17639035/salmon": {
+      "quantification_sha256": "883ad441326f5ab52022e5138a57f785001a5ae4e515686db0deffcc1bf36cc8",
+      "receipt_sha256": "ae873d07a99a51830ce0e5b9b137f81eed2994684879db40f5e33a904ba3256c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193779/SRR17639030/salmon": {
+      "quantification_sha256": "599ba91644b5b4a911ca817b36e884ecba7ec37a5f9a4bce54ac43fbde6ff044",
+      "receipt_sha256": "65499b07abd148fc8b95d17bec38109fa8e80c9f99fa1d686dcd8735c0d089f7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193779/SRR17639032/salmon": {
+      "quantification_sha256": "9f8178a220f6f1ae5be64acd20403433c0144eb5bd2e47ce02c0e632b2557f66",
+      "receipt_sha256": "3b89e8346056d66ec38c1aa29940dced1bd3fd2cdd76b018e91929fa6fe2a7a2",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193779/SRR17639033/salmon": {
+      "quantification_sha256": "38fd968fee298ed58c5e03d8ef6af617b0868bb7d041c21898f9b09beda82db1",
+      "receipt_sha256": "114d26ee7e340a76e8066114e3816bb88fc343ae160667782e1966f3622428c6",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193779/SRR17639031/salmon": {
+      "quantification_sha256": "e186a58edf0bb38b4b38bbfd4b3cc85e9fde7501ffc4a66b7c1f87cda7714ba1",
+      "receipt_sha256": "6db0cf00c832a853e42d9aa8eaf4784b45d8544a9571b50396b7060b4865234f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE193779/SRR17639034/kallisto": {
+      "quantification_sha256": "3b1ff7392394a33f7c67b74ca3cf5360bb5964c5c71e53c6d011ebf4306822ba",
+      "receipt_sha256": "5c69744b5fb8b397752b83770cdf1c8ab45d0306cc496c1ba731f48ae8864811",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193779/SRR17639035/kallisto": {
+      "quantification_sha256": "8396d29c55866ecca472a73a64d5eaf895a611d3c3ff6815241d788ebe586ec3",
+      "receipt_sha256": "ae873d07a99a51830ce0e5b9b137f81eed2994684879db40f5e33a904ba3256c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193779/SRR17639030/kallisto": {
+      "quantification_sha256": "ac73c7fb1247a6fcbcd07c18efbbbfa0a511b05f740f57993853d2f76c74020b",
+      "receipt_sha256": "65499b07abd148fc8b95d17bec38109fa8e80c9f99fa1d686dcd8735c0d089f7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193779/SRR17639032/kallisto": {
+      "quantification_sha256": "4c2971c8602b7cd37fa32f0cb233d38455af58d14edafac0c18d8792ec7cedf8",
+      "receipt_sha256": "3b89e8346056d66ec38c1aa29940dced1bd3fd2cdd76b018e91929fa6fe2a7a2",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193779/SRR17639033/kallisto": {
+      "quantification_sha256": "b877e5dff743f11a2d674bd1a5e060bfdef31d43550240c3bfbd48ee9da994ca",
+      "receipt_sha256": "114d26ee7e340a76e8066114e3816bb88fc343ae160667782e1966f3622428c6",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE193779/SRR17639031/kallisto": {
+      "quantification_sha256": "501a9be50a958f5b0c30ae2ce0b0dbc426d35904e7b4eb7826cdcbab73c24929",
+      "receipt_sha256": "6db0cf00c832a853e42d9aa8eaf4784b45d8544a9571b50396b7060b4865234f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE198001/SRR18249100/salmon": {
+      "quantification_sha256": "3dab5872e28e4bd896e6a8483d35204200a50eaadf56c5998fe03a26ee8d16db",
+      "receipt_sha256": "c43dd6063a7f39e7b4c7fb589e1f6e8f109fbbc1975b24407eeea8644940e4bd",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE198001/SRR18249099/salmon": {
+      "quantification_sha256": "7a104d867dc666e1a6bd3fe9188ff862a5f3ce4498600c297d8645ec018be3e1",
+      "receipt_sha256": "f981bb954d42c026ce3e39ea3227b77574d99e4cc4253cecda541a0a3731dc49",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE198001/SRR18249095/salmon": {
+      "quantification_sha256": "069e240e46d4b1a2dc15e801bd5c2d3c0922e269478b0971c6e88bc3db6c0724",
+      "receipt_sha256": "dd8ee96eb0dffcae2afe89c3cec29b4cef5c7377027a5ab02f5c2140fb4f4cc6",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE198001/SRR18249096/salmon": {
+      "quantification_sha256": "e806cc98630c99ccc6a1520f53706e4d74f5239eb0bc00b88165576ff07eed49",
+      "receipt_sha256": "41edec6e18adf1334464b340657c6761ae43b56ecaf4ed47b3db36db16643a9b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE198001/SRR18249098/salmon": {
+      "quantification_sha256": "1a21188df0df82ebf03922bca9759d348f95b0b1d29d189ce6441033cf544694",
+      "receipt_sha256": "ca6d973f8d74c2ae6952a08a47e1efe682b0d8830b98cadfd16707c0d7be8d24",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE198001/SRR18249097/salmon": {
+      "quantification_sha256": "8e2683f02722d9e2c3dea94fbd3564b0caf7773666ee53a4bc69c32252fa97af",
+      "receipt_sha256": "1ddadb3da888c4bcf4ef5d2fbf8c66d7f08c13eb0139fcc44312b1b1b29dc571",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE198001/SRR18249100/kallisto": {
+      "quantification_sha256": "00fee00a2f2c0b094543a3dadc71f34a4c24080ee5abf25940abfadcb1bb3cc4",
+      "receipt_sha256": "c43dd6063a7f39e7b4c7fb589e1f6e8f109fbbc1975b24407eeea8644940e4bd",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE198001/SRR18249099/kallisto": {
+      "quantification_sha256": "d5349bd40a0d2dfdb8911b48259d3f2d82d3b6ee63f05184d823b73985ed4552",
+      "receipt_sha256": "f981bb954d42c026ce3e39ea3227b77574d99e4cc4253cecda541a0a3731dc49",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE198001/SRR18249095/kallisto": {
+      "quantification_sha256": "2def314a34581847148d3f185cf2097a666f13c52e5aa40ec3c823355d731993",
+      "receipt_sha256": "dd8ee96eb0dffcae2afe89c3cec29b4cef5c7377027a5ab02f5c2140fb4f4cc6",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE198001/SRR18249096/kallisto": {
+      "quantification_sha256": "dcf1dabf686b537041ce2012e4be53575f3da122616a046d3560f499b14d7c1b",
+      "receipt_sha256": "41edec6e18adf1334464b340657c6761ae43b56ecaf4ed47b3db36db16643a9b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE198001/SRR18249098/kallisto": {
+      "quantification_sha256": "7e1ad14ce3f30e0135d02a55d3a5e5f2f77668d68d72221492e790d6e59ea58d",
+      "receipt_sha256": "ca6d973f8d74c2ae6952a08a47e1efe682b0d8830b98cadfd16707c0d7be8d24",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE198001/SRR18249097/kallisto": {
+      "quantification_sha256": "cddc69d516dcf2a33b4e211456fb40dd2f0be250745ee451467f0052d8908e02",
+      "receipt_sha256": "1ddadb3da888c4bcf4ef5d2fbf8c66d7f08c13eb0139fcc44312b1b1b29dc571",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790574/salmon": {
+      "quantification_sha256": "ce40a093740037a02fcac942927e90037ca1b4ca59b0b1f152ce08abb70e77df",
+      "receipt_sha256": "15c9da8f5ed8a76f8af123d5b21ac7a8b06d650500963db6babdd218f293f401",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790578/salmon": {
+      "quantification_sha256": "2afd060173ac826d6c01015075ceb34920837225b06bf76abf6321ece1c60619",
+      "receipt_sha256": "006c8da6a2d6f3f4d971caf7ddeb45174410f67a1060d357c64527dbec2c29d6",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790580/salmon": {
+      "quantification_sha256": "fbd516d5cf20df6f266815eaaebb24b8b41cf57acdbd2931fbb6755a1d12e9e4",
+      "receipt_sha256": "23ce372618a0c9cc7d5ea5747e9dd46d7ab75260e5dc65275fc80926f351cab7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790583/salmon": {
+      "quantification_sha256": "e519434a6737ecde45a4aba18884e0ae42227ae912ac235223b9f9527533dbab",
+      "receipt_sha256": "673c1763d29666ce7f3e0ce20572f39e5477309c6308057dea14a3056348fc8d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790585/salmon": {
+      "quantification_sha256": "f3b71d740b54f986586a1c56b281343cb3520f8f7b56c11a206e04c696406661",
+      "receipt_sha256": "72c1f5947620eb01a98a2884f50ba5f2ef0c549fc3df49b19a436a46314b1885",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790587/salmon": {
+      "quantification_sha256": "8a0bb97dd3cf4dcc7a84992378597e3ccb3e367710cb67820e77eb30a9525fef",
+      "receipt_sha256": "29f1f85b84df0cf43398e8c680a9103e81b050bc568c222a45ca953c3bcfa549",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790591/salmon": {
+      "quantification_sha256": "6b4d5a49945a7748cc43bbfd5a0c2c72d30f8af3f8e2ecb17b84046f554c3126",
+      "receipt_sha256": "e186c8093b998a1f2469c4c548c049c5e3fce9a12bd00c64244bfadab9412673",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790593/salmon": {
+      "quantification_sha256": "dddfc4872a7c3827442166e97ffeeda435c9b51e1d0c975c0ff866f009488728",
+      "receipt_sha256": "5f80ebb47a708ecff1b67eccb11e4682093a578d32c89ea12f46bdc2ae574f65",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790596/salmon": {
+      "quantification_sha256": "fe8dc44ad9a33e7557185963f8337d15716dacf2c549964197644507f0d95e9a",
+      "receipt_sha256": "fe69fd5135d5db502dd751ed0b75f21e7c6a65d8b13ab7140baaeec0f8eabd93",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790597/salmon": {
+      "quantification_sha256": "376794e056d8430c7458a48e164cf41eac31b0c6fc0703297878afaeea3a0c57",
+      "receipt_sha256": "4045d5626d0bb644e8d87d118b57f81d2f0139ccf8582365edb22972128df5e3",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790606/salmon": {
+      "quantification_sha256": "c70ea4fd154ae0e25ec81a64312ce20b9688cb9b24b1b5a96e642d6038e6fb75",
+      "receipt_sha256": "caa0fd24dba420a285e5f0749c3e27fc520834061ec8c79b55e61db6c4ebe9bc",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790610/salmon": {
+      "quantification_sha256": "4c54a773362a364bfb884e24dca559bf2e6544238a062b4e4f0c30535ac65f54",
+      "receipt_sha256": "232fa7fb1e02fb7fc7394edb373146b3339095993bd6fa12274bfa6df27919d7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790613/salmon": {
+      "quantification_sha256": "e0cf3aa37307da4d26f82a0abcaed8cdd7ac5c392850193660ee2f53b1bb256e",
+      "receipt_sha256": "2f4aad8f53c4876afc7dfe1fcacfeb5241d2c1436a8a2e12b91d8ce5f8562718",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790619/salmon": {
+      "quantification_sha256": "6ddfcfac1711b10f41fcef14b828bd36e0c70e52590152274d58cf5cb7a5eeae",
+      "receipt_sha256": "3b768c8741aa9f192ffd2ca431bc75b311f87674e897725ba02cda0c874b6da9",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790620/salmon": {
+      "quantification_sha256": "84d05d5ead7f814b0bd0326cb4640a7b8ad1930130d1b54cd09ef58f59017cf2",
+      "receipt_sha256": "fe1c64bc994581d5ec66d5dc64c7bf558a5b9a038c12f0092a896cdeb2158a6f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790625/salmon": {
+      "quantification_sha256": "5b06dd60e5948433137b9193b768ec2dbd3c571788e9bf8d86893f8854cb1b44",
+      "receipt_sha256": "c4b8c250bf0e36e21a62d8f6d113598b1ae34cee02212f2c54eddd63f81a1d4f",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790581/salmon": {
+      "quantification_sha256": "629c27fc7021b5a9f29331c454fed46ab70cee1c162943a58eb165719fe5cc7b",
+      "receipt_sha256": "a290fd48ae877c75081cae574169d99686b16c73e50579d5c568163a1e49028b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790590/salmon": {
+      "quantification_sha256": "e726fc591cdb12ffe27a8cb700362490297f7e77ae42d6735d7f8dd3b7912ed2",
+      "receipt_sha256": "de75d93cd7cb4d8f39b14dff42795bf83dd7e8773702444e345be75e8db0badf",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790592/salmon": {
+      "quantification_sha256": "6fd7ed947a527044e3d529817c68abf4f026a62a4049e454651dedc31a2153a2",
+      "receipt_sha256": "19d1c48de4dfff779b85fae4df9361752bb2e9cb5fdcca38949f641b06bc35ba",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790609/salmon": {
+      "quantification_sha256": "a3143dedb9db97281572f33b412e5b0a6119785e1e098cd575d9352b25309c62",
+      "receipt_sha256": "52aacb6910aa721849a7d7bb57c53e24fba59a048fb254f07f29d33a5d293315",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790615/salmon": {
+      "quantification_sha256": "f6f9f3aa7fde88505c4cefb0a22b5fe847a2f239bc907d321010a4c60f512b85",
+      "receipt_sha256": "954f6eb24975eb4ee6a03ae835a8673b2d679bcb68df748928542778ac2177d0",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790616/salmon": {
+      "quantification_sha256": "514acfedf1e778bf684a9a51b3daa999dcdf69c500d9b3e5aa87c164cc32f74d",
+      "receipt_sha256": "69c135880e07b37b1a117bdb2d3d523fa6349e601a92bbbe604c97baf59dcf2b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790621/salmon": {
+      "quantification_sha256": "2efbd09b1967967edb5a548ecf4c5dfa1a7b2cec3369fde7415620d4bf968a98",
+      "receipt_sha256": "151d2c21a034fd80f9c328b17fa4c0ce707b5b6b5487d0c29ef43ad117254d90",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790575/salmon": {
+      "quantification_sha256": "d08986ed6ce4943ba14fdb4835119d7d89a5c1220de4f9e9f3c55cf3c4764182",
+      "receipt_sha256": "ac540cb4a3f891ca5ab302a200de1cbae188fd1a78fc5597429429cd857856ed",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790576/salmon": {
+      "quantification_sha256": "260bea3eb426eac01ddc5c1544d3ba02a9df625181009ab4c237fcbadeb64930",
+      "receipt_sha256": "507a1523c9bb38edaf3a64f0bcb8e86bb8c0efd468437a6304212b36b34544b4",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790582/salmon": {
+      "quantification_sha256": "afbec0e6e3537090debbe63bd0432bf3327ec7ce5c08cb1bd89e05c2ad339518",
+      "receipt_sha256": "883784fac767ba6bbc95db30eda15c145a6d37c8d323330a8ff1031b90c9d683",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790584/salmon": {
+      "quantification_sha256": "650bc3363c0edc4a31f924ff1acf3603123debe4cfbdb9860929b8f0c4776b61",
+      "receipt_sha256": "234d478aa06192fdb2ee58e610004952f30d020ce87aa4d762840e62eb34ca7d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790595/salmon": {
+      "quantification_sha256": "ec24bddc2e2ba31a9a70c49154bc4d9e24175983c50d49b3c9891f670ba3a997",
+      "receipt_sha256": "79710b3640d32104692377a7c4c47697485e4480827672f0d14cc1a35a16a34d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790601/salmon": {
+      "quantification_sha256": "4e9957ba47f6558459b2bdb107f156ae01dd359e6885ab3da972a6113ad2c6fa",
+      "receipt_sha256": "7a8f317a61ad0b44b64122b233d6ec2364db666114a0d9759bc683801891c30b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790603/salmon": {
+      "quantification_sha256": "a594296decf9eebf11a23a217322efdf9797a8fc5bb8a790de5db63afba38392",
+      "receipt_sha256": "65cae929f6627d2ca0fee092da45aa7d5000e6d7c477b303a1259f121e310a77",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790605/salmon": {
+      "quantification_sha256": "6dce2cd72d8b7ba913ac854b64f9d27970f7600ff474db50d6a93a0baa81518c",
+      "receipt_sha256": "82e8470fec03b732e5d48b32d3a8490eb5c3ae8c8e5472aa514d55f58bfeea25",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790617/salmon": {
+      "quantification_sha256": "6c47da723f10a065ebe3e72c448f3803c420f429b0487bc3e6c79807684ae9d2",
+      "receipt_sha256": "55622ed5d8b203a73acaa2fb18aaa40687257ea43f6ea73e6fbd291bc3fb8c9c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790622/salmon": {
+      "quantification_sha256": "9743d09665ba9aa904fb6cb56a3527e83d0583c96decf492cc95dd24e36e7022",
+      "receipt_sha256": "d448bf6893347e4d0cef9ea75937ecc7524361a6ceef168f391c4154a5afabb8",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790623/salmon": {
+      "quantification_sha256": "9de1430220d4947021427d353908fc227bbaabf831e717280d66aad0f0000bf3",
+      "receipt_sha256": "6b3bbc3aa7779c30edaa0d058648d33cbbbdeb0fd09b3c36cab0d0d3ba666045",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790579/salmon": {
+      "quantification_sha256": "2163d92b11eda38a6d675ee66b99e8f1d4ebc908808f1abf996a50ca3357caf4",
+      "receipt_sha256": "59a35272bdfcb407f8b8ddeaaf60abecc8dde68152a9e079070de93006f28df1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790588/salmon": {
+      "quantification_sha256": "82cdeaeb3067ffe80cd8e973c3d41a80957ecedb52193b4727f6649df47b6de1",
+      "receipt_sha256": "61cecb88f0389685888cdba7729cc2b7c478a554d4190795dcd426af5251069d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790602/salmon": {
+      "quantification_sha256": "421d77997a31223263a7a16252da9c5fcd890329c5e44df57f21d2e006c8f561",
+      "receipt_sha256": "6bf58d7f2bccdef538853aed588e58d79746d4a344d99d17c02546b05887f195",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790604/salmon": {
+      "quantification_sha256": "4ed850967f8e7180f716d4953e8a6a50e9b3c4ab6ab7ad64f340bda3172a03b5",
+      "receipt_sha256": "2b1e7b1e99232d9ce9c3d3a3928ef91ea1185a631e3e167b6238d949bd54c1e3",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790577/salmon": {
+      "quantification_sha256": "006e49e1eaf7f8ece5228ddf1efeabe310f28a60a639b9ac1931be36f8010c32",
+      "receipt_sha256": "bf0492eca381306f4475eb480189fe21a4c70d8b3e5334fab477a15dd5a88da7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790586/salmon": {
+      "quantification_sha256": "f343a2db5ba8001f7f28e086cf72e26e29008d44127c149dc830034b9408c751",
+      "receipt_sha256": "66dc6da734285d201426df766648e724d5624036bf46b3c42650897ade12ae0d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790589/salmon": {
+      "quantification_sha256": "30d56c03469ba21868c3b4a2b2c0a423bb02eaedba56c65843fadb765e9a38d8",
+      "receipt_sha256": "719db8a330f38765f6da4837ecfdd9a5c73c52b35a114d867a951e9616577f84",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790594/salmon": {
+      "quantification_sha256": "940e6489421348961517f66fe0396e4a2ad2b6d5e1303553ec16c14063fee4e3",
+      "receipt_sha256": "292508e330a4f05d7aead915bef6bc0413ab9e92b2b2a65915b4d9cda7c66ecc",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790598/salmon": {
+      "quantification_sha256": "535f50a5f1c2bf9dc3747a7a2ceb1227093a1f5867963c59599852b2e6dc9692",
+      "receipt_sha256": "ba706d8d581131df8106b139c8118638da09370743267de3dd6a406488a813ef",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790599/salmon": {
+      "quantification_sha256": "d42650672dab1d5559770cd89dcad957d07dc5080db8e9926c6055a0e7018c84",
+      "receipt_sha256": "692aca21165cb74ac235a50bb8af43abc95b46890a0397c528c2785d6abfcff9",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790600/salmon": {
+      "quantification_sha256": "58168c1aa2c0471f9d1479a77866e4a5e792bd75402ce404adc4755a5a4c9f49",
+      "receipt_sha256": "f7be65c3f868a22e96190c6be11b5ad2eb4a659d8d8cb7ae355b208e21367d91",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790607/salmon": {
+      "quantification_sha256": "77ab614916f9b14e07f38bd3ff61c31c51f2071ca26ec962d94a1c57fbcefe28",
+      "receipt_sha256": "318062bd3710218c1cbe194027af1baf74f9a890fedf94ae808caa3df51c8864",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790608/salmon": {
+      "quantification_sha256": "ff8ac95c550b447b9ebd4802ebc769f648ac890b0e99516696ab6e77b43bd1cf",
+      "receipt_sha256": "bc97c5a023a19e07b1afc26b242b18b35fe58a5a9f3c09a739c4c653468643ef",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790611/salmon": {
+      "quantification_sha256": "a8ed82fe8e418d63bfede944cd848e5ab0729bcbe8e4ac5833c3d85e7ac852a4",
+      "receipt_sha256": "9f26a88b2e08cfc5742644de70275656ca376d3b1e862d9e6f962e2177350834",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790612/salmon": {
+      "quantification_sha256": "55d91c4ca0402a38f341a84eea9f238e34b27832fa0184b34d853a31e1a29c35",
+      "receipt_sha256": "7132295563828017bd0a42c617617ab4185b2eaae02d516f7d3f0332f882b042",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790614/salmon": {
+      "quantification_sha256": "aa14cfa6f630e5865ec0ed1bb35e46b3270761d987ba1a06f212ce2d851f919d",
+      "receipt_sha256": "98d278743943f67c6f9920ab4e608096219d020314236ac45df9be20a575ba55",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790618/salmon": {
+      "quantification_sha256": "87422e8d066e56a3b3763ebbf2602f95b8c482213fee55512f26958584c989c7",
+      "receipt_sha256": "29d38b2711d067dfaf467025ad7b1288d793dd8c2d8efd2a5a3520143c4c7bc1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790624/salmon": {
+      "quantification_sha256": "746bd20e15eac4bdd49740a241f6e0d0dd36ad01d9a39b26cd3504b5882e788b",
+      "receipt_sha256": "d604e50b9029a984121d97ea9f760e00f9e75e51b2cf74af3a01dba2579590a1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE200962/SRR18790574/kallisto": {
+      "quantification_sha256": "58f1cadae5ce34a42ed40b4ea239ac27a84a5304c283d5f544e1debabc4c841f",
+      "receipt_sha256": "15c9da8f5ed8a76f8af123d5b21ac7a8b06d650500963db6babdd218f293f401",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790578/kallisto": {
+      "quantification_sha256": "9e5cb4d0772632f82661c0c5af4fa3a52c6d1b18e6ec9519df17a146e3a6482f",
+      "receipt_sha256": "006c8da6a2d6f3f4d971caf7ddeb45174410f67a1060d357c64527dbec2c29d6",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790580/kallisto": {
+      "quantification_sha256": "d16882497c07bcd1f53276120a29b9d8f54c16430ef1d03669eb592d3f6c9557",
+      "receipt_sha256": "23ce372618a0c9cc7d5ea5747e9dd46d7ab75260e5dc65275fc80926f351cab7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790583/kallisto": {
+      "quantification_sha256": "831a2c33ee2a404e8e074b5cc98efe7c6df88a78a2588cfbce758df3da10a013",
+      "receipt_sha256": "673c1763d29666ce7f3e0ce20572f39e5477309c6308057dea14a3056348fc8d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790585/kallisto": {
+      "quantification_sha256": "549ffe1dc9569be3e97819acd94cb5ace1a9eba9e1dec5b8b8214745fcaaf3c6",
+      "receipt_sha256": "72c1f5947620eb01a98a2884f50ba5f2ef0c549fc3df49b19a436a46314b1885",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790587/kallisto": {
+      "quantification_sha256": "3879ee321aaa5359a6ce999f04b43de0bff629020e6ff7e1c675c79548158752",
+      "receipt_sha256": "29f1f85b84df0cf43398e8c680a9103e81b050bc568c222a45ca953c3bcfa549",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790591/kallisto": {
+      "quantification_sha256": "d7be8cd71386840b749a76d03ea541024ba2c282b8aa8b2d2f4e5e43303c66ea",
+      "receipt_sha256": "e186c8093b998a1f2469c4c548c049c5e3fce9a12bd00c64244bfadab9412673",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790593/kallisto": {
+      "quantification_sha256": "7308a9cf1b198451c11534ec7889245432f912a9e9e1ccf0a00ab2ac2f62210f",
+      "receipt_sha256": "5f80ebb47a708ecff1b67eccb11e4682093a578d32c89ea12f46bdc2ae574f65",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790596/kallisto": {
+      "quantification_sha256": "7d5860fd5a0d2d22f84419caee8cd8e51ac2d92bf481418890436a75d4b0f124",
+      "receipt_sha256": "fe69fd5135d5db502dd751ed0b75f21e7c6a65d8b13ab7140baaeec0f8eabd93",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790597/kallisto": {
+      "quantification_sha256": "2f21a1753d30121eecc52c9a618394391b82dd904b85dcb6875141f427a3061e",
+      "receipt_sha256": "4045d5626d0bb644e8d87d118b57f81d2f0139ccf8582365edb22972128df5e3",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790606/kallisto": {
+      "quantification_sha256": "e5917a9aef1fd4c959056db0cca90596468caddb9c951df88d77f34444a1d332",
+      "receipt_sha256": "caa0fd24dba420a285e5f0749c3e27fc520834061ec8c79b55e61db6c4ebe9bc",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790610/kallisto": {
+      "quantification_sha256": "ac2fb0772c571e32e0614f05d1bcdc2d2cfeee64545dd1844ac6573ad293a190",
+      "receipt_sha256": "232fa7fb1e02fb7fc7394edb373146b3339095993bd6fa12274bfa6df27919d7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790613/kallisto": {
+      "quantification_sha256": "43105f3e10f94efdb44e5cb4d471da3462e149cb82be9a72275505fb89d1b4f9",
+      "receipt_sha256": "2f4aad8f53c4876afc7dfe1fcacfeb5241d2c1436a8a2e12b91d8ce5f8562718",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790619/kallisto": {
+      "quantification_sha256": "25fb91e24f0d70896b068edc4b80f521617c8bb5a8c74ecf063607b8082c2c4a",
+      "receipt_sha256": "3b768c8741aa9f192ffd2ca431bc75b311f87674e897725ba02cda0c874b6da9",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790620/kallisto": {
+      "quantification_sha256": "aa45f935e24139ee5d784d2272a2a97eb82385ff9252a4d3d02805d7879a4732",
+      "receipt_sha256": "fe1c64bc994581d5ec66d5dc64c7bf558a5b9a038c12f0092a896cdeb2158a6f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790625/kallisto": {
+      "quantification_sha256": "117e9aaa0bbd3dd772f8cf5a41fa6eb9d97a3afe63a585279679945c68bb83ed",
+      "receipt_sha256": "c4b8c250bf0e36e21a62d8f6d113598b1ae34cee02212f2c54eddd63f81a1d4f",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790581/kallisto": {
+      "quantification_sha256": "420567e8ba4a70ab04516256be14db435af14a7cc18cb0d3cd131cc7ef0d5d8f",
+      "receipt_sha256": "a290fd48ae877c75081cae574169d99686b16c73e50579d5c568163a1e49028b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790590/kallisto": {
+      "quantification_sha256": "98d0f3ecd72f3620064c354bdcf6e71f9c0bd403cffceaed20f6264d832ff297",
+      "receipt_sha256": "de75d93cd7cb4d8f39b14dff42795bf83dd7e8773702444e345be75e8db0badf",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790592/kallisto": {
+      "quantification_sha256": "9ca3e10b402a1d6d9e3ee4219de95eb8e03c32f0b8c2ddf6aa4824c460a40a7a",
+      "receipt_sha256": "19d1c48de4dfff779b85fae4df9361752bb2e9cb5fdcca38949f641b06bc35ba",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790609/kallisto": {
+      "quantification_sha256": "dbc615e65e1265751b24a617dd2df3a316c60bd500a4f67e607f5950eaf7791b",
+      "receipt_sha256": "52aacb6910aa721849a7d7bb57c53e24fba59a048fb254f07f29d33a5d293315",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790615/kallisto": {
+      "quantification_sha256": "8616478d1b8e278f90766426516ed85093ef9c87ebedbfcf088fe58d6078b659",
+      "receipt_sha256": "954f6eb24975eb4ee6a03ae835a8673b2d679bcb68df748928542778ac2177d0",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790616/kallisto": {
+      "quantification_sha256": "b69630691b1db36cc19225e4bbc28a949d17f58c078b8670f908a94c3b2e1743",
+      "receipt_sha256": "69c135880e07b37b1a117bdb2d3d523fa6349e601a92bbbe604c97baf59dcf2b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790621/kallisto": {
+      "quantification_sha256": "c8932dc7d22455b7067347461675857ebe6ba6908f551983013dba7af0ddff03",
+      "receipt_sha256": "151d2c21a034fd80f9c328b17fa4c0ce707b5b6b5487d0c29ef43ad117254d90",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790575/kallisto": {
+      "quantification_sha256": "dc367fee66fc08c3023fd75951ddbf1336d73991d9a3da093fba8ca0a0c6bb94",
+      "receipt_sha256": "ac540cb4a3f891ca5ab302a200de1cbae188fd1a78fc5597429429cd857856ed",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790576/kallisto": {
+      "quantification_sha256": "efc78adde99bde62b90ca54dc3722e559ae479c979996cec736a49f50830405b",
+      "receipt_sha256": "507a1523c9bb38edaf3a64f0bcb8e86bb8c0efd468437a6304212b36b34544b4",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790582/kallisto": {
+      "quantification_sha256": "cacf5529a097fe021cbca42c21b63019273396b7b984a44c608f69cf1515484b",
+      "receipt_sha256": "883784fac767ba6bbc95db30eda15c145a6d37c8d323330a8ff1031b90c9d683",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790584/kallisto": {
+      "quantification_sha256": "479faa29bd2993e3980635efe9b54b315ef10d2e56661ef512ebf3798a28b4c4",
+      "receipt_sha256": "234d478aa06192fdb2ee58e610004952f30d020ce87aa4d762840e62eb34ca7d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790595/kallisto": {
+      "quantification_sha256": "7f6f60f05b340a5e24b3f2e9a112818c63f061be20b0a03ca6afefceb8fe4a88",
+      "receipt_sha256": "79710b3640d32104692377a7c4c47697485e4480827672f0d14cc1a35a16a34d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790601/kallisto": {
+      "quantification_sha256": "d07c34688801a0e67f1aa666924bd375b6940305491403499c6cb64afc71a9f6",
+      "receipt_sha256": "7a8f317a61ad0b44b64122b233d6ec2364db666114a0d9759bc683801891c30b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790603/kallisto": {
+      "quantification_sha256": "0e08a5b4bf4dd1c0d313acdeabd7c20da149215c8f9523da59c304e3cadd3a57",
+      "receipt_sha256": "65cae929f6627d2ca0fee092da45aa7d5000e6d7c477b303a1259f121e310a77",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790605/kallisto": {
+      "quantification_sha256": "46d3df7f66d6d624db922b8828339bebcae7ce1f01288a6320696875f134bc75",
+      "receipt_sha256": "82e8470fec03b732e5d48b32d3a8490eb5c3ae8c8e5472aa514d55f58bfeea25",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790617/kallisto": {
+      "quantification_sha256": "69aa37002bd551e2405acf4cddd9e6252351cbdc1e0f0073ceb574923475ad21",
+      "receipt_sha256": "55622ed5d8b203a73acaa2fb18aaa40687257ea43f6ea73e6fbd291bc3fb8c9c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790622/kallisto": {
+      "quantification_sha256": "897b03d720594373f1c5137934be6e7596b6a864f3f7bef378893e5d6fe8b908",
+      "receipt_sha256": "d448bf6893347e4d0cef9ea75937ecc7524361a6ceef168f391c4154a5afabb8",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790623/kallisto": {
+      "quantification_sha256": "1c306a560b1ca649ecb7906da6bd9d16f8ab1b59e8c9fa1ed97078e44169cb9b",
+      "receipt_sha256": "6b3bbc3aa7779c30edaa0d058648d33cbbbdeb0fd09b3c36cab0d0d3ba666045",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790579/kallisto": {
+      "quantification_sha256": "e39dcc40ff8d0ac387e2368c3e900f7cd189be84a724d571f50a615c06fd0ceb",
+      "receipt_sha256": "59a35272bdfcb407f8b8ddeaaf60abecc8dde68152a9e079070de93006f28df1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790588/kallisto": {
+      "quantification_sha256": "61d8902b5f6b6884b649b8ae7b9c3c27fdf02291745dc22bfa537c9a86a81c6a",
+      "receipt_sha256": "61cecb88f0389685888cdba7729cc2b7c478a554d4190795dcd426af5251069d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790602/kallisto": {
+      "quantification_sha256": "f62f2e49972f4fa1338597cf22b5ae456ee08fe28ece3c95845c7182433ecb2b",
+      "receipt_sha256": "6bf58d7f2bccdef538853aed588e58d79746d4a344d99d17c02546b05887f195",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790604/kallisto": {
+      "quantification_sha256": "0f6d872f9de0673337a199c40f6e04847ae2bb73349b5f566f51ef762942178a",
+      "receipt_sha256": "2b1e7b1e99232d9ce9c3d3a3928ef91ea1185a631e3e167b6238d949bd54c1e3",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790577/kallisto": {
+      "quantification_sha256": "60c74ce97b475bdd1fdfe61cbff1553e0a83b98a46273c8262cc3bf671cc654b",
+      "receipt_sha256": "bf0492eca381306f4475eb480189fe21a4c70d8b3e5334fab477a15dd5a88da7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790586/kallisto": {
+      "quantification_sha256": "f5eafb5f5e3006643de4b401e99776132d2286fb71896b295880fc4763810222",
+      "receipt_sha256": "66dc6da734285d201426df766648e724d5624036bf46b3c42650897ade12ae0d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790589/kallisto": {
+      "quantification_sha256": "bcc8dfb994ef11739f3df4e2e23b3b6cbab5882b5fdd804aa69ec6dd149b6d0c",
+      "receipt_sha256": "719db8a330f38765f6da4837ecfdd9a5c73c52b35a114d867a951e9616577f84",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790594/kallisto": {
+      "quantification_sha256": "d75b20d21dbe0138fd4043d36c9830423c478d12bfd302855b410fd50ddeb847",
+      "receipt_sha256": "292508e330a4f05d7aead915bef6bc0413ab9e92b2b2a65915b4d9cda7c66ecc",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790598/kallisto": {
+      "quantification_sha256": "51b259d74b041b75d175273160a7eef585936ae3516a70b1f2b3d6141d30c424",
+      "receipt_sha256": "ba706d8d581131df8106b139c8118638da09370743267de3dd6a406488a813ef",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790599/kallisto": {
+      "quantification_sha256": "185e1d8f0cc2717dfc4abc5aae86ab652dab83cba5b61a378b6f8da148d8aa7c",
+      "receipt_sha256": "692aca21165cb74ac235a50bb8af43abc95b46890a0397c528c2785d6abfcff9",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790600/kallisto": {
+      "quantification_sha256": "4faa171c2d7a0915ff715aab8ae54906ed0cdcf54530e146b59516aee65e7a0e",
+      "receipt_sha256": "f7be65c3f868a22e96190c6be11b5ad2eb4a659d8d8cb7ae355b208e21367d91",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790607/kallisto": {
+      "quantification_sha256": "8024918353364ee5b56e6c7a8f4f3ecd5997358d5df3e54d6c21e4aea7f94729",
+      "receipt_sha256": "318062bd3710218c1cbe194027af1baf74f9a890fedf94ae808caa3df51c8864",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790608/kallisto": {
+      "quantification_sha256": "1da71e18423d4a87a9100515de8e5f6e64cfb3635577d5177421ff367712761e",
+      "receipt_sha256": "bc97c5a023a19e07b1afc26b242b18b35fe58a5a9f3c09a739c4c653468643ef",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790611/kallisto": {
+      "quantification_sha256": "1093caddce17c900623c77f66dc527fd3cc740cfcf0c38b3991d3cd696e86c3c",
+      "receipt_sha256": "9f26a88b2e08cfc5742644de70275656ca376d3b1e862d9e6f962e2177350834",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790612/kallisto": {
+      "quantification_sha256": "148fb34ad6182f54e2f4e781204189b7dd87298c55dc12f5cfa86b4fdc849489",
+      "receipt_sha256": "7132295563828017bd0a42c617617ab4185b2eaae02d516f7d3f0332f882b042",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790614/kallisto": {
+      "quantification_sha256": "40e529a1d85fff29508290f781d9ea91ae096d95c77b95baee4e688550298607",
+      "receipt_sha256": "98d278743943f67c6f9920ab4e608096219d020314236ac45df9be20a575ba55",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790618/kallisto": {
+      "quantification_sha256": "afcf06f6450e4fde6c15f57917f85db39ed6f26d632f90c487c22c2e5e8b96cf",
+      "receipt_sha256": "29d38b2711d067dfaf467025ad7b1288d793dd8c2d8efd2a5a3520143c4c7bc1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE200962/SRR18790624/kallisto": {
+      "quantification_sha256": "b535fadabdd8df9ff7c889d4f77466e65a639a41dcc657effabe7f476afa3f89",
+      "receipt_sha256": "d604e50b9029a984121d97ea9f760e00f9e75e51b2cf74af3a01dba2579590a1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325601/salmon": {
+      "quantification_sha256": "87201d43fe2e8a993692b10b64251e89db3363959c5838afd1b45993dcf056f1",
+      "receipt_sha256": "d71f6216ba0e4385ceda202ba36cee5ebede253ec377e3d8eb8638a8979ea18d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325593/salmon": {
+      "quantification_sha256": "9ac296a07cb4dfce04742f68777ae0082c7d5e25898116822fa6a401b9512928",
+      "receipt_sha256": "633bdd9318beb6f570677026626e8c2442003523348a963ee15eff6715d4f310",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325596/salmon": {
+      "quantification_sha256": "306b1fd701fa84a6dda2ebf0e6139e1c68aedcf091070032144fbba51435c195",
+      "receipt_sha256": "c51084d9349228aa9294d93d0b14ec46c6a3aef02fb19cf8a388a4b3f2e77464",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325597/salmon": {
+      "quantification_sha256": "54f9060372668db0fce9d70d39505986726833938b04ad3be3d50e939541bd2c",
+      "receipt_sha256": "e8b36c1ed93245c73d0083bda44154c2d3c41b3bc03c0f6df4ee7bfa653561ca",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325599/salmon": {
+      "quantification_sha256": "ed3a4f6c8b9102f2d565133438d0b19d04d8fe34ac582593a4bb5a641cb1b44d",
+      "receipt_sha256": "e061c2371c4af1d5a124e9afef7d1f686bf33e9e45afd7fd0f223c52df6efdc4",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325604/salmon": {
+      "quantification_sha256": "2800455b44a22709dff76fb16a0ec5b30f054e753ba9bad9bce0976864341759",
+      "receipt_sha256": "ec8bf804f443227a5eb5352a9dee8cf04b0b08192ee8dc61c0f1c97abbd5e068",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325606/salmon": {
+      "quantification_sha256": "aeb5ecf390664dfb77f4eb4079482d24594995dafc5935519d14e52d773e7f38",
+      "receipt_sha256": "bc9f2d37f395c2407b1b52e43d2242656ea9d1920c0e2fb40f78b153f4a434a0",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325594/salmon": {
+      "quantification_sha256": "fedb3652951314971340c8f19e73cdb7defb92638596d58d2d03ce772f965ac7",
+      "receipt_sha256": "daac83e1934e2e6537f917756535e803da906a94cca8127117886e497cbbf846",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325603/salmon": {
+      "quantification_sha256": "0c16c0b113c418e2fb533694d4f38f631e2ed053e4646908c64178d92e881bd5",
+      "receipt_sha256": "b019c77901314bea1b3d8b86baa0ff1d9c9a27c7a897dfa3d6bf5581228b87a0",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325605/salmon": {
+      "quantification_sha256": "5e3162034438e4bc0b86454ce0829a20ab393c6a9078935887d881417bc1ee23",
+      "receipt_sha256": "b9bae5aaa026b2ea029b66bec17854fb9f5b425812ba985b5e7af0cb01584372",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325607/salmon": {
+      "quantification_sha256": "6a1936ae3de0d36ae7f998f837117331c825141e4ac66bbaa536937c0d27c90f",
+      "receipt_sha256": "0151c9c2559987818e65e87bc0e09c6ba6f1d4b4f16bc5af11ff7a01750bf096",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325592/salmon": {
+      "quantification_sha256": "6bfce5193ef75fdf5685d368d763864d37d9f0eee419860a74419f28e984c6b0",
+      "receipt_sha256": "4b884bd0707c785f97db9db55cce8d0745f70eb391efd229dcec592794110359",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325598/salmon": {
+      "quantification_sha256": "d46c68165f5df6d050b74270035b10e99097673ddef7c6f50529d4b9f82e9996",
+      "receipt_sha256": "18e1d06348fe6aa6b897a9fb494e81cfa762c577a1a5a41d59301702a76cd670",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325595/salmon": {
+      "quantification_sha256": "5c6ddd69e7c4368ae3c85a2d6d5da6a454cdd8103d081ba38c21bebea9735ce0",
+      "receipt_sha256": "aaac56f035a07104ae3f54975eff1cd1815d3f17e2fcc1f60b16fd2d7f0d0402",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325600/salmon": {
+      "quantification_sha256": "9730f8a2c9e6de95a3c0f3a90e11b47253e7ae395bc52744a3cc9af1ba80eef7",
+      "receipt_sha256": "7cd1890bb7ee1650008c05c5d75bf32c44ead2a653001326f9570e2e852912da",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325602/salmon": {
+      "quantification_sha256": "0caff0dfeb7c6ce2b3fccb464645870540fbd472a8275e2116c95bdc2ef0df3d",
+      "receipt_sha256": "20981a1c45090f5c1049bd787b8b81756d549cd7814e6d0571812242d095e3b4",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE208647/SRR20325601/kallisto": {
+      "quantification_sha256": "d894905f5b54b13e0421388eb101bdfe72183ae164d403648b2d872e5c7793d4",
+      "receipt_sha256": "d71f6216ba0e4385ceda202ba36cee5ebede253ec377e3d8eb8638a8979ea18d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325593/kallisto": {
+      "quantification_sha256": "b2673618b4a2d735503021cafb091e8d4652d228597436947c966cbbf2bf7c36",
+      "receipt_sha256": "633bdd9318beb6f570677026626e8c2442003523348a963ee15eff6715d4f310",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325596/kallisto": {
+      "quantification_sha256": "ec08a9310bfec7f69919074891d079c410dfcb6c87ef44a704871388103dc421",
+      "receipt_sha256": "c51084d9349228aa9294d93d0b14ec46c6a3aef02fb19cf8a388a4b3f2e77464",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325597/kallisto": {
+      "quantification_sha256": "c11a337217dcc56b06d2e3f069736b2467e50b226436d844372b922cb50311ff",
+      "receipt_sha256": "e8b36c1ed93245c73d0083bda44154c2d3c41b3bc03c0f6df4ee7bfa653561ca",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325599/kallisto": {
+      "quantification_sha256": "c6981cc0e87aef7f22f9fb296912dfe57b8b1f4906f396365b0d5cd4ddc73df8",
+      "receipt_sha256": "e061c2371c4af1d5a124e9afef7d1f686bf33e9e45afd7fd0f223c52df6efdc4",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325604/kallisto": {
+      "quantification_sha256": "3e9dbf8013ed24638c36af4efbf7d0464ea083ac350fb6424a504f358120c7a2",
+      "receipt_sha256": "ec8bf804f443227a5eb5352a9dee8cf04b0b08192ee8dc61c0f1c97abbd5e068",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325606/kallisto": {
+      "quantification_sha256": "4ac2766b4be81ed12e189fe215388dfe62f718cc2de3ae36564a9d7c10e3fa94",
+      "receipt_sha256": "bc9f2d37f395c2407b1b52e43d2242656ea9d1920c0e2fb40f78b153f4a434a0",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325594/kallisto": {
+      "quantification_sha256": "faaccbc20b9a07c290dfded591490766dd98242f36b768abcf7cc494aed773c6",
+      "receipt_sha256": "daac83e1934e2e6537f917756535e803da906a94cca8127117886e497cbbf846",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325603/kallisto": {
+      "quantification_sha256": "c163c682bae44753a91f5fd229522ca0dd6ffa1e38ef6d3488abe7c7aacdfc2a",
+      "receipt_sha256": "b019c77901314bea1b3d8b86baa0ff1d9c9a27c7a897dfa3d6bf5581228b87a0",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325605/kallisto": {
+      "quantification_sha256": "616d816112f37577d6fac60215079e7480a631483d29bf1ed231ad63c0d9b30a",
+      "receipt_sha256": "b9bae5aaa026b2ea029b66bec17854fb9f5b425812ba985b5e7af0cb01584372",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325607/kallisto": {
+      "quantification_sha256": "719b3956f91764abecb904df6a855cfd408a741a8f5512b9f72bd18de026e8c5",
+      "receipt_sha256": "0151c9c2559987818e65e87bc0e09c6ba6f1d4b4f16bc5af11ff7a01750bf096",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325592/kallisto": {
+      "quantification_sha256": "4911cf30c686d7d8634f5ce25a6065ce8c34587a6525b090897422962eb80a5d",
+      "receipt_sha256": "4b884bd0707c785f97db9db55cce8d0745f70eb391efd229dcec592794110359",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325598/kallisto": {
+      "quantification_sha256": "a6ab58c00a59455d5a04be5d4bb7b20c77bcf1e9f2cacec4a43d2f8d79bf137c",
+      "receipt_sha256": "18e1d06348fe6aa6b897a9fb494e81cfa762c577a1a5a41d59301702a76cd670",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325595/kallisto": {
+      "quantification_sha256": "82262d081ad2466c9f2f3646b01a7c740dba763b814a4537a991c88e8b44eed6",
+      "receipt_sha256": "aaac56f035a07104ae3f54975eff1cd1815d3f17e2fcc1f60b16fd2d7f0d0402",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325600/kallisto": {
+      "quantification_sha256": "afb53ea5534145b7ce107e3f162af8d2b080ca0da57eb226c6bf0f260b13d04c",
+      "receipt_sha256": "7cd1890bb7ee1650008c05c5d75bf32c44ead2a653001326f9570e2e852912da",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE208647/SRR20325602/kallisto": {
+      "quantification_sha256": "c2b29d7e9a0fbec062ddda45536a992d6b49aa29b8aeca9f63aed80d27ac768a",
+      "receipt_sha256": "20981a1c45090f5c1049bd787b8b81756d549cd7814e6d0571812242d095e3b4",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434232/salmon": {
+      "quantification_sha256": "a7fd2a61bc309cb479e8a75acbdd436c1ce17bba659ea420882c318f207b2554",
+      "receipt_sha256": "8eae0a796ed1dee0af611f59a54f2aece99353860a3b8a6c6710083ae6e17d00",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434235/salmon": {
+      "quantification_sha256": "3ea3029df05c6391211fa91b75e4663e9bc5b5b68989b86592f17a9cbd4043d8",
+      "receipt_sha256": "41bea63d76b76036a97b00c1f7f5b91deac4f1833677fafd28f8ffcff1ba6779",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434241/salmon": {
+      "quantification_sha256": "a7e81078555b831fb4ab107622639a2547fb19b953d69536627db0703ec1094a",
+      "receipt_sha256": "1c483015184f2feeb3cb7e203498ed66e474573ccec122acadff2a4100fcfd58",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434228/salmon": {
+      "quantification_sha256": "d549490de3b5085c6488349aa70660da92d1772f170c42cc1d147dac84e70bd1",
+      "receipt_sha256": "3d22a85510c2f3a4bb9be2545e0c30ecc0bcf2a1a5c258601ce579603a701d2b",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434234/salmon": {
+      "quantification_sha256": "9219a81c2310ac518f3fefd0ec28d7b0e9175efa79bbc164da118b8d7f4cf765",
+      "receipt_sha256": "a7a709179c87cc76427bf991f659e16b68e88ca522624e87a4098e91529d6665",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434238/salmon": {
+      "quantification_sha256": "82f2542c0f9d45ade2e8b1c38abcb62e3309a3c1154a1aaee490cf14e2a8586c",
+      "receipt_sha256": "8bfa7a21dd1110dba54f7067161859ebf2afe3237c427b0e98e9d5af50d38ab1",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434243/salmon": {
+      "quantification_sha256": "934cda1bd6b956a6d0f510e678b0684785d9a7be3e6667b020c3641eef392957",
+      "receipt_sha256": "e3dbcb78b0b45115adb1fe917e66797f329b7e2c15be517a9c16cea9b9a9fcce",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434226/salmon": {
+      "quantification_sha256": "a3610a34ef5a20ab75f4579c9eb62f5df3e1a0da896ad4bff63a45625a2a9dc2",
+      "receipt_sha256": "1389d9b0ebbdcf4450a288fbfc53e0b8de07e764a0fb613884c5dc3d570f421d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434227/salmon": {
+      "quantification_sha256": "fa4a28bc3c9a912de6cd54594e6a4ad8b8d54505bc88575350d82cd24328c7f2",
+      "receipt_sha256": "62a58d74f619c876bb8d75f7e473fb90ef55ace16ebc8d0c059c0cdcf4b047da",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434229/salmon": {
+      "quantification_sha256": "2b291d4544b531f3c025826c322eebd0e4bf5b3b11941beb19a562310ce6f63c",
+      "receipt_sha256": "e075eccc2633930e6bf0c9cdb568511f55da9a375327791788aca20549a0eab5",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434237/salmon": {
+      "quantification_sha256": "00d57bce99a0164eefce22cf9ae97dcd531ed01747a135296265ecc53248c535",
+      "receipt_sha256": "6d52f441b9f5ff9303fd6c6340c33bc7037643cfe3e655675b8f73a241b4bd49",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434239/salmon": {
+      "quantification_sha256": "1828d0b013663fb2364edb54ddc5f2f361e9baa204f97eaf1040c42983b53131",
+      "receipt_sha256": "885b71d35601bfaacf63ed3b64a1f284f611c40c93ae209e1da03e9029651f6e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434242/salmon": {
+      "quantification_sha256": "6ce58f9520302f5aab09a4a069960c8ada6fce76a61530713cefd06d6a25f66f",
+      "receipt_sha256": "0889c07b2941254ecf56469cab2349fce27b45d38505d91417f5432fa86b10a6",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434230/salmon": {
+      "quantification_sha256": "95149eb89a4fffff7357a61dc1f85054a9119456fdebf520456dd826be86ac97",
+      "receipt_sha256": "fd6ac6fca0bae8f9b66934142f078586f39bae9d0e510927a866c7dff6be5f7c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434231/salmon": {
+      "quantification_sha256": "29907a0568f4a4ec37eb8d5653c141bd47365b06f21aec3a4d873fc8feeda0b0",
+      "receipt_sha256": "12a93611af3d62545e3c57138e3279b51103cb67adfbcce05ab8cea1456e0833",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434233/salmon": {
+      "quantification_sha256": "305e0af41a76027c508c426f6f521f476d166cf3f1f3261a46cf4d502fb26a8c",
+      "receipt_sha256": "c0fe5eb71049cbddb6eb37158f7eba111356ed0d1943228d4956d804e1a8a284",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434236/salmon": {
+      "quantification_sha256": "b0f0be460887ebdaa5388bd691d1f27ff54335d501bd08da84845f9ba7d16dd5",
+      "receipt_sha256": "946cfadb88d11dd42b78507b4976b921bc9753d78bf3c461a9011788734f663a",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434246/salmon": {
+      "quantification_sha256": "58124de9510939bd6de47d681bcabb9a856b8f3ce012f6f16b5c9d21919bda9c",
+      "receipt_sha256": "6b24fbf9400c9485aaa86faa5e99f3391b5abeba0bcdf3b6c6d8750b5475ad58",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434240/salmon": {
+      "quantification_sha256": "8e44cd956f9547c6e076506a05d38ec937fe4123f381da8434571732837dc0f2",
+      "receipt_sha256": "7c828b6ac0d79f2aa0a575850e790966b149647071adbd2f71f4b554b6c84794",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434244/salmon": {
+      "quantification_sha256": "6fccf2941ff7d035fc77701dc3d1e114bc46df9dabd3b20198086e2f91014c47",
+      "receipt_sha256": "0a7b9e6125c890ab243e978b75db3af4431531bdbd6acfced50276698ed853ed",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434245/salmon": {
+      "quantification_sha256": "bd58875478d0bef995efd9c411980e0e6f59fc36e648e19013f87c1a480d76de",
+      "receipt_sha256": "f8a1559f6f01874dcccac2f66048a7ba4934b09640fc0a41d296e6c065441700",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE218921/SRR22434232/kallisto": {
+      "quantification_sha256": "672b43eec73fb761f9910900aa6c30b3f655e0843ac515d83d586e19121a5c59",
+      "receipt_sha256": "8eae0a796ed1dee0af611f59a54f2aece99353860a3b8a6c6710083ae6e17d00",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434235/kallisto": {
+      "quantification_sha256": "4d6881e1e73e51bd02d59aa6ded6ddaec415b70b8b3f0ed0b51cecb0320f5cda",
+      "receipt_sha256": "41bea63d76b76036a97b00c1f7f5b91deac4f1833677fafd28f8ffcff1ba6779",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434241/kallisto": {
+      "quantification_sha256": "4c993d48dbf0224ccaccec92bec71bfac90ffec786eea4de32fc946ba8382f3a",
+      "receipt_sha256": "1c483015184f2feeb3cb7e203498ed66e474573ccec122acadff2a4100fcfd58",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434228/kallisto": {
+      "quantification_sha256": "6b257368499cf986b776979c148ba0dc4a6ecdf034bc75b3c03d79057d3bd107",
+      "receipt_sha256": "3d22a85510c2f3a4bb9be2545e0c30ecc0bcf2a1a5c258601ce579603a701d2b",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434234/kallisto": {
+      "quantification_sha256": "951bbfc6ca3c4a952a4d18594f3d0ac57e2cff5a5db74990a574211b4b7be235",
+      "receipt_sha256": "a7a709179c87cc76427bf991f659e16b68e88ca522624e87a4098e91529d6665",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434238/kallisto": {
+      "quantification_sha256": "501334010b534452ff9702feb285b04c8330afebbd53012ef6fa431854b62e75",
+      "receipt_sha256": "8bfa7a21dd1110dba54f7067161859ebf2afe3237c427b0e98e9d5af50d38ab1",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434243/kallisto": {
+      "quantification_sha256": "5497b22ac907501407da6d4ad15fd9d1f70744b38d953dc10e8391c4cee83c06",
+      "receipt_sha256": "e3dbcb78b0b45115adb1fe917e66797f329b7e2c15be517a9c16cea9b9a9fcce",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434226/kallisto": {
+      "quantification_sha256": "97f547c2dd4d50f3aec1c09c264034614c94ca556bb492cee0a0a522656ac7d2",
+      "receipt_sha256": "1389d9b0ebbdcf4450a288fbfc53e0b8de07e764a0fb613884c5dc3d570f421d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434227/kallisto": {
+      "quantification_sha256": "2d5654a9af393652a4c2b9efd2849c1b46f2beab1d6620db5c7ba490a292a5eb",
+      "receipt_sha256": "62a58d74f619c876bb8d75f7e473fb90ef55ace16ebc8d0c059c0cdcf4b047da",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434229/kallisto": {
+      "quantification_sha256": "020fdfa84c7f65b3c22086ae00d1a27f765a781fdb0789ef0c6ecee89779ec2f",
+      "receipt_sha256": "e075eccc2633930e6bf0c9cdb568511f55da9a375327791788aca20549a0eab5",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434237/kallisto": {
+      "quantification_sha256": "9493183be90b6e144e5003dabd61b6c3f465dd60e368dd4b691e131dab58f6f7",
+      "receipt_sha256": "6d52f441b9f5ff9303fd6c6340c33bc7037643cfe3e655675b8f73a241b4bd49",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434239/kallisto": {
+      "quantification_sha256": "35cd3a06b6d8464692204eef4254525ecb98d245c528c05e7d6799098bdf9426",
+      "receipt_sha256": "885b71d35601bfaacf63ed3b64a1f284f611c40c93ae209e1da03e9029651f6e",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434242/kallisto": {
+      "quantification_sha256": "88aa4f13e18a6556e422898baf5e727261bc98ece7a689c514145f7d6f24a0f8",
+      "receipt_sha256": "0889c07b2941254ecf56469cab2349fce27b45d38505d91417f5432fa86b10a6",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434230/kallisto": {
+      "quantification_sha256": "623996e63f9ecc7fba54ff29fea22a2f43ea2fef4e9d6b77effd0855f58563d5",
+      "receipt_sha256": "fd6ac6fca0bae8f9b66934142f078586f39bae9d0e510927a866c7dff6be5f7c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434231/kallisto": {
+      "quantification_sha256": "d3691c20ca17b90f549a16299d85c9764a47b9f34594e865414e0859e334d477",
+      "receipt_sha256": "12a93611af3d62545e3c57138e3279b51103cb67adfbcce05ab8cea1456e0833",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434233/kallisto": {
+      "quantification_sha256": "6709cb15cbd46add14a10519ef91c9a14a1aca0a55938cfdd73041f97f75a1a8",
+      "receipt_sha256": "c0fe5eb71049cbddb6eb37158f7eba111356ed0d1943228d4956d804e1a8a284",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434236/kallisto": {
+      "quantification_sha256": "79862314f42973e6d80456003633696a0e40ede58c68494593acb3f140354a3a",
+      "receipt_sha256": "946cfadb88d11dd42b78507b4976b921bc9753d78bf3c461a9011788734f663a",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434246/kallisto": {
+      "quantification_sha256": "ea6704316ae29795b233867069258d7e5dce394c5a28a9f285a801ad07111352",
+      "receipt_sha256": "6b24fbf9400c9485aaa86faa5e99f3391b5abeba0bcdf3b6c6d8750b5475ad58",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434240/kallisto": {
+      "quantification_sha256": "209bf28c25d58e258d6bdad8d109433c99a1416a49ea35685e630bc5f227f0cc",
+      "receipt_sha256": "7c828b6ac0d79f2aa0a575850e790966b149647071adbd2f71f4b554b6c84794",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434244/kallisto": {
+      "quantification_sha256": "7dbe73447f4f26bbaf3d759e822ef26bf91cd8f673a521531078a1ada0a95148",
+      "receipt_sha256": "0a7b9e6125c890ab243e978b75db3af4431531bdbd6acfced50276698ed853ed",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE218921/SRR22434245/kallisto": {
+      "quantification_sha256": "13e7396e6861b5ef9ffb2947a837652e03db835c9324f6c2fd5dae682c68032d",
+      "receipt_sha256": "f8a1559f6f01874dcccac2f66048a7ba4934b09640fc0a41d296e6c065441700",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205059/salmon": {
+      "quantification_sha256": "5289fd8885c9992cb11a0c0164b87501d8e7df70a9ff0592537d86dde77fe594",
+      "receipt_sha256": "67c47356881adac8e02b0cb1e0ea6009f65870f50e518712cbc0713ad1dd7c7c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205056/salmon": {
+      "quantification_sha256": "735990762e8fe7b3d633ed6a047d64c3a729338dd36e180691ed13aaf2dd5804",
+      "receipt_sha256": "d0e0af8ea3e9e595e45acd98c7657e191e39062720427888d54a84ef570bae8a",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205058/salmon": {
+      "quantification_sha256": "806390a298fa739bd435d2df1866fd82f14e88f2e44062c067370e0a4aa8d686",
+      "receipt_sha256": "43d9c63cfee0eeb4f1218511ea365056d2935659cff8cafb0ae3736740ca4f51",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205055/salmon": {
+      "quantification_sha256": "ea985a5f3becacf8536e65fd02d8f50d4a30c0d080a66e585bad208cb92c1991",
+      "receipt_sha256": "3c8139c28aed21431e19a1d55889fe09961d38c145b26a98a513f3676baade29",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205061/salmon": {
+      "quantification_sha256": "33a85876fe6653cc5b39394d7d861b979ddd3f0014a8c13db680562697c291e1",
+      "receipt_sha256": "9bbf6a862528b8340413a22d56196d6f3f8ce72b841e0a916c7ba97af4f4ce36",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205060/salmon": {
+      "quantification_sha256": "f3bc0616c2a881844f938f6623314ee07bf1c91a8badda49b581da63f0945780",
+      "receipt_sha256": "2b29cdbdb15a011b7442ca8bab9091d1aa04ab1b67fb39b3d7ef3da31dbdf722",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205053/salmon": {
+      "quantification_sha256": "07917c6ef5c731e9cb8cf51a96ed91d81054caa5b1276710cd2bd14479f59872",
+      "receipt_sha256": "85f13592980287628e2e1e76106a68ed65f36106cd2ee095e46e42fd4bb4d98c",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205054/salmon": {
+      "quantification_sha256": "d072d779a26ee41fb93571e0fcc133c5277d8ca3234fb9e7833959c16fe3bc04",
+      "receipt_sha256": "9361957e09d982720edf2dbac4488e18d5bf92c5f0f0e039d8df07dbfe8636c7",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205057/salmon": {
+      "quantification_sha256": "a79324e8a87e8cd14f46c263befae01cd967f9af279453ab730f2046e5276b7f",
+      "receipt_sha256": "8a716760ae3cdc3fc771147b614ce9dd0bba9ee56d6f9bf2033fef0e3e97fabe",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223621/SRR23205059/kallisto": {
+      "quantification_sha256": "1e4b2bd0e09c1b658d74ade197ea3a2642f35dcda1e7c1081885194518c76bab",
+      "receipt_sha256": "67c47356881adac8e02b0cb1e0ea6009f65870f50e518712cbc0713ad1dd7c7c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205056/kallisto": {
+      "quantification_sha256": "626c7386b1bc10fbb7bc372062eb5ad15a5756e9a900a1b2bbf221a0ca94042c",
+      "receipt_sha256": "d0e0af8ea3e9e595e45acd98c7657e191e39062720427888d54a84ef570bae8a",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205058/kallisto": {
+      "quantification_sha256": "911bb997f7f7dbe4d32a3b422946177ed9b43262ac3e64f1f2bf7513951cd900",
+      "receipt_sha256": "43d9c63cfee0eeb4f1218511ea365056d2935659cff8cafb0ae3736740ca4f51",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205055/kallisto": {
+      "quantification_sha256": "b6a31e11a7cdbd1db75e332ed8cd5ddca7e308156dad292e1db4bb2c2c30647e",
+      "receipt_sha256": "3c8139c28aed21431e19a1d55889fe09961d38c145b26a98a513f3676baade29",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205061/kallisto": {
+      "quantification_sha256": "f9b608ab6988c615261ef944c5483fb36d7991ddd3d30e82ad723fdad15632a4",
+      "receipt_sha256": "9bbf6a862528b8340413a22d56196d6f3f8ce72b841e0a916c7ba97af4f4ce36",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205060/kallisto": {
+      "quantification_sha256": "7e9e5dc1a9daf5b74a5b806cda73e7ec3463a761c715205f521509e25299bb8b",
+      "receipt_sha256": "2b29cdbdb15a011b7442ca8bab9091d1aa04ab1b67fb39b3d7ef3da31dbdf722",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205053/kallisto": {
+      "quantification_sha256": "39ac7758c6dd351cad361c11474170ee404ddf670ccd9b6bc170a15dbd5aacac",
+      "receipt_sha256": "85f13592980287628e2e1e76106a68ed65f36106cd2ee095e46e42fd4bb4d98c",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205054/kallisto": {
+      "quantification_sha256": "ef1fd36c12b31c79724fcd1c2a2238bf6dbf367fbc656733a87557d2714a4b88",
+      "receipt_sha256": "9361957e09d982720edf2dbac4488e18d5bf92c5f0f0e039d8df07dbfe8636c7",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223621/SRR23205057/kallisto": {
+      "quantification_sha256": "20d190cf2c82439f3261e51362efcef34b99dae9592e30ae7f4aded0a426eb7f",
+      "receipt_sha256": "8a716760ae3cdc3fc771147b614ce9dd0bba9ee56d6f9bf2033fef0e3e97fabe",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223819/SRR23248134/salmon": {
+      "quantification_sha256": "ab9184016af936a4137c08e30684da0891289e567a2602cf6b5ad9f04ae527b7",
+      "receipt_sha256": "87ab49af89dec1eae5f28faad58f2abcbe8fbf062df8e83eaad5f8273d73142d",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223819/SRR23248143/salmon": {
+      "quantification_sha256": "f56b6f40b7882c0264b7c834eae7548ab2acd1c1381899b622fe56a20bda1a37",
+      "receipt_sha256": "58eec9f1bf54cdb89bfaaaca8f3e402bbe46868e76e12c69fa9cad508bd6be9e",
+      "tool_version": "salmon 2.8.0"
+    },
+    "GSE223819/SRR23248134/kallisto": {
+      "quantification_sha256": "5af4c29ca80a67873c4533f38a7e397b9d4a305c5ce067805a4b3c847b0d2523",
+      "receipt_sha256": "87ab49af89dec1eae5f28faad58f2abcbe8fbf062df8e83eaad5f8273d73142d",
+      "tool_version": "kallisto, version 0.52.0"
+    },
+    "GSE223819/SRR23248143/kallisto": {
+      "quantification_sha256": "5e69f7841c778ee783efaec01bc9757103f51e2a2ea7618453ac3f5820075d8e",
+      "receipt_sha256": "58eec9f1bf54cdb89bfaaaca8f3e402bbe46868e76e12c69fa9cad508bd6be9e",
+      "tool_version": "kallisto, version 0.52.0"
+    }
+  },
+  "outputs": {
+    "matrices/GSE103113/kallisto_ME49_host.parquet": "a85c47dfc48113275fdeded4c9231c0cab9b102f29f02102df56c2df088ed0f9",
+    "matrices/GSE103113/kallisto_ME49_host_samples.tsv": "ca030d1763bd0b4564b6c0bca4ba8c15991efc24a89d633fc44b778c7dd9fd5e",
+    "matrices/GSE103113/salmon_ME49_host.parquet": "28b1d6ca4d4208bcadd4ab17a28e26d8027ddd868ddf9466ecbd2b4e95279411",
+    "matrices/GSE103113/salmon_ME49_host_samples.tsv": "8e55920143cfd951224554f7e34ad9c0bd8408213af890c3c43e833257fa24f6",
+    "matrices/GSE116539/kallisto_ME49_host.parquet": "8e69029614506243a4f5f7b077d76f113bd549eb8d46faedbdf69338c490e2bc",
+    "matrices/GSE116539/kallisto_ME49_host_samples.tsv": "5d1ab7365db9e98e647ab077d7d73a4ce24f1faa08689efdbcab21e0e302eb4a",
+    "matrices/GSE116539/salmon_ME49_host.parquet": "892b661ae926a75d4bd7aacb1f3351e4d4811bdf8a630679eef2fdbe22ae87cb",
+    "matrices/GSE116539/salmon_ME49_host_samples.tsv": "e2f17c19f69ad97afef2080a96b6ab32363af8e9ef849e425dd11cac3f094bf2",
+    "matrices/GSE125120/kallisto_ME49_host.parquet": "1feb42653b58407fd3b3470912d4c05249528284c8a5fa819c1f21def73fbb26",
+    "matrices/GSE125120/kallisto_ME49_host_samples.tsv": "c48cbb68699271bbd9d0a932cd64235300b642836685e9022d92c02a055f8831",
+    "matrices/GSE125120/salmon_ME49_host.parquet": "79f11404186013d848d279ed322f9d8fc7b3e3f02d24bb2c1d3101e4612e21d3",
+    "matrices/GSE125120/salmon_ME49_host_samples.tsv": "be944d8511848343c5761aeaa606b783e9c84bc4fb9c2267091ceccd59fdc225",
+    "matrices/GSE132238/kallisto_ME49_host.parquet": "8c3fc24e33d6b9942cfe575b6b889b596f3810932c62712ca3b3730d6a716d93",
+    "matrices/GSE132238/kallisto_ME49_host_samples.tsv": "c4bfcb5ddfd779d28febb27ccb51b2a9b796a4c061018ae8e9b9bc78ac4885f7",
+    "matrices/GSE132238/salmon_ME49_host.parquet": "7fe0a3203f90f9137d9756b3a47c64cb31d46c367a8886f71d4c19d25b0b3b47",
+    "matrices/GSE132238/salmon_ME49_host_samples.tsv": "9a615dc1d517d5f53e998eb41c5d0486d0321d2d5607d9efef3f00103c17f5ba",
+    "matrices/GSE136123/kallisto_ME49_host.parquet": "843b4c057ffb125483ebb7bc17ecf1b741bb16b4a381f656423b672c99313ea8",
+    "matrices/GSE136123/kallisto_ME49_host_samples.tsv": "b717869a488fb2b17b307ab882817d19a2d1999400ba069b5f6c5d18fa0823c2",
+    "matrices/GSE136123/salmon_ME49_host.parquet": "8bd5b7e55f3c2dd3c911fb3f84d4c85894afdd793895ad72f00f6d28d0e4ccb7",
+    "matrices/GSE136123/salmon_ME49_host_samples.tsv": "58a54ec14da939aa80aac2082de33400cf08826fce7ad00a9c074bd20d4f8fb8",
+    "matrices/GSE139537/kallisto_ME49_host.parquet": "16c8da8fcdc6df18b59876bc365dbbfac8dc3556881a0b120240617df8ad950c",
+    "matrices/GSE139537/kallisto_ME49_host_samples.tsv": "02e4b39c437677d7b7a8ba19d0e7d89662025d66d8ac292ce2994d5998b59de0",
+    "matrices/GSE139537/salmon_ME49_host.parquet": "e72bee9bcca0770a5bd53ab335751965576fcfadfb68b33fbafee6e5547b0f04",
+    "matrices/GSE139537/salmon_ME49_host_samples.tsv": "cab4490c570c8957eb251a3894434b9779577e078fc2fd5d3f6c30767bb3a07a",
+    "matrices/GSE140197/kallisto_ME49_host.parquet": "48e2fcfe8808f12069d2f1103f26135bb2636107b98d300f061f3e9847985b53",
+    "matrices/GSE140197/kallisto_ME49_host_samples.tsv": "181d3a12f7c72ec47f271a35e1f28fa512284fa2e98c6cc1fd5b87eac86bfbc9",
+    "matrices/GSE140197/salmon_ME49_host.parquet": "210424eef51796011b8b8b3a94964b10d41137dc5b921682cfc8bcbe236777a4",
+    "matrices/GSE140197/salmon_ME49_host_samples.tsv": "01341d84eb5ddf9325becd4434a6a9332b3facd3896f02bb546d19c5950e0aaa",
+    "matrices/GSE150334/kallisto_ME49_host.parquet": "05d74b10694f3c349c0276c2d066748fd2ef2af6a27dd6002486134a826bfc22",
+    "matrices/GSE150334/kallisto_ME49_host_samples.tsv": "3781560881cd59247ad6526a1af2a1ffd09a304a219a8cc17d6708e860d6246a",
+    "matrices/GSE150334/salmon_ME49_host.parquet": "07d72bd0c14d863eca5d073fae5578c7f27c85ed40626c1151d67672a5db6b86",
+    "matrices/GSE150334/salmon_ME49_host_samples.tsv": "63b2e19b3225ea85ff04888c4b7a02c583c1eccf67576f765844662385223218",
+    "matrices/GSE156685/kallisto_ME49_host.parquet": "0001d709b4138ed4f4618dc11f13fa43c12872f4223dbf571832c269dd7fe3a9",
+    "matrices/GSE156685/kallisto_ME49_host_samples.tsv": "3426ec989cc7142c0210552caedfde2d03002a0ab9830c0ced35ad0d7104e74d",
+    "matrices/GSE156685/salmon_ME49_host.parquet": "6013f561cd7e9aa59d143a6fb4abbaea3d9110079834a34fd29d67bc515240b1",
+    "matrices/GSE156685/salmon_ME49_host_samples.tsv": "886efa4a199642b7a0db41292d1f94a69052109e10d3e8edc67e8445d44b854a",
+    "matrices/GSE158231/kallisto_ME49_host.parquet": "0ab6bba30eb49b2554ff08e532ba3257bb7a543c6d276a491564bb3a3746b08d",
+    "matrices/GSE158231/kallisto_ME49_host_samples.tsv": "4246dfd0f0f860e7441b13eaafb865c60f198154db11626d8c66addc3981ed30",
+    "matrices/GSE158231/salmon_ME49_host.parquet": "2254200f4e0e087921fd8f4c44800fe5a95d5db1ead6b20ca1e2228555d22144",
+    "matrices/GSE158231/salmon_ME49_host_samples.tsv": "0f3a7d1c298c59435d68af744d969b01627fa6dcd9a6b213195f351f11d806ff",
+    "matrices/GSE159515/kallisto_ME49_host.parquet": "a47dbe60798e53b7109364c21581941c5387983e799d7652ac6ea99071697480",
+    "matrices/GSE159515/kallisto_ME49_host_samples.tsv": "938d6c1afdc60fbf592b0b173e7da1970743c147aab72b51f39facd0ba19cf6c",
+    "matrices/GSE159515/salmon_ME49_host.parquet": "2cd9bb34255641d717f1af7b499647a51c528d2caf8a39e3b3536d411265b2a7",
+    "matrices/GSE159515/salmon_ME49_host_samples.tsv": "a507ebba9ee5a6a9e86ada088af5e5170ad9ddea4bd00b2268bbe61073bfda1b",
+    "matrices/GSE168465/kallisto_ME49_host.parquet": "db1820ac9d5ee3905ee6bb4b7c11251fafbb62767f30b78f905873dbe969480c",
+    "matrices/GSE168465/kallisto_ME49_host_samples.tsv": "6f54c7636aa88d846314c873b129a4c66cb81c5291b8b0aefab71c983bc3b8e4",
+    "matrices/GSE168465/salmon_ME49_host.parquet": "e7b856b9bcaf204f66c5f46ac985ba9f1ecfed83fb979c8669763389f7eeeba4",
+    "matrices/GSE168465/salmon_ME49_host_samples.tsv": "286a925f200f08baed0d38b21ab9327332e55147b6448066b7fbba89c828976f",
+    "matrices/GSE175919/kallisto_ME49_host.parquet": "08d108ed8deb4761f7bb65e86c76618c602052aa349d635f7289fb2df73a9ea7",
+    "matrices/GSE175919/kallisto_ME49_host_samples.tsv": "3a3daeaa454c7deefdd691b0f6b72e4e0154a31ef10c8cbd03939f86356c57c5",
+    "matrices/GSE175919/salmon_ME49_host.parquet": "aea216c50a5b64a891e3a9fb333bf547668830bc0622cec86befffda97b7e9c0",
+    "matrices/GSE175919/salmon_ME49_host_samples.tsv": "e069612b49878d6291945c50daac8b36ba5a3de100789e2f83576516a5ce2016",
+    "matrices/GSE178355/kallisto_ME49_host.parquet": "1757a947020ce9b1d04ceb83a95ff2966e08fe872a58ebdb9ec8e949555d716d",
+    "matrices/GSE178355/kallisto_ME49_host_samples.tsv": "12513d982d816bca13725799e8e2b3fb73a3cac5bd5550d3d070bbfa93c83726",
+    "matrices/GSE178355/salmon_ME49_host.parquet": "51fdc6ca2d18f6250445ecc7fd9095598b255fa76f9389f1a928960956fc9f0d",
+    "matrices/GSE178355/salmon_ME49_host_samples.tsv": "911c434bea848a622b0ce8e516c060c4a4d54bd4fb47a27b45cacef64bb09259",
+    "matrices/GSE189677/kallisto_ME49_host.parquet": "eb9630e52f0e0f189bba782dc33c675bee49e9c3c90d04eb415fedbeb07d1910",
+    "matrices/GSE189677/kallisto_ME49_host_samples.tsv": "7b383e4d9083b068e688152e5265bfc313999379fbc6511edc420f7e6c8f2385",
+    "matrices/GSE189677/salmon_ME49_host.parquet": "afe152bf961df2a25c29e7babef15294a54741bcd7cb241eaa26f244fc0e131c",
+    "matrices/GSE189677/salmon_ME49_host_samples.tsv": "6043cd963a45d0987dc7f2ab8b3dffb32482adef10203b249420b822720f1424",
+    "matrices/GSE193614/kallisto_ME49_host.parquet": "4db0ddc158ae661bfd24c24924a206fca49b9220386a60a8a1cbe58f53eb6fe6",
+    "matrices/GSE193614/kallisto_ME49_host_samples.tsv": "bc6abd6f8af439a59f588c30a28f9a9e0e3b8770e0814cefad30b69afd4d290e",
+    "matrices/GSE193614/salmon_ME49_host.parquet": "727a7bd229a1996b7a19f247eb51a45036ed98cb50fb08e74a280008ae4086d3",
+    "matrices/GSE193614/salmon_ME49_host_samples.tsv": "384d34c8ddcca8d1b945b5fb7f842bf888543fa493304cd00f620ec94d308b01",
+    "matrices/GSE193779/kallisto_ME49_host.parquet": "6690c068cb8778790850312b317af20be6a6637197133c860e244b3d524bc7dd",
+    "matrices/GSE193779/kallisto_ME49_host_samples.tsv": "c88ab34ea27d902b42d4b0e074e4a820048062983a71d41dff9102d55a1a9bce",
+    "matrices/GSE193779/salmon_ME49_host.parquet": "e79997dbaad405bc118092b670ebbde731522902f293beec7a4ab07f039fc932",
+    "matrices/GSE193779/salmon_ME49_host_samples.tsv": "fec0de5b91c81a834854f65982460a888648f11f288f8c9acd5cf13f9b05af68",
+    "matrices/GSE198001/kallisto_ME49_host.parquet": "754fd89e7fbb15f790f9f730726dab7405a47bd7f92d8c4e06301d66f833de9c",
+    "matrices/GSE198001/kallisto_ME49_host_samples.tsv": "bfa4c584742c5cdb8fa61d0fb43e8849eb25406b8224582ee377a197318d55e9",
+    "matrices/GSE198001/salmon_ME49_host.parquet": "0e5cd4d3cf8cae6d80f03a5522f3a6b8b767933f32aa1ebcc31e733a8ff1763c",
+    "matrices/GSE198001/salmon_ME49_host_samples.tsv": "a4af0f8ee445d4c68b96b0b18bc0c4eb9d89c619c86b44e817a23bd2bba625d7",
+    "matrices/GSE200962/kallisto_ME49_host.parquet": "87b7dbfec321eb8946a184fa4d42d85b05d2e388485e4895b30594972b8e2649",
+    "matrices/GSE200962/kallisto_ME49_host_samples.tsv": "6237ff1ff9716114de3771a930b21f1cf7fab8f7f4cd541c9850252617c148f1",
+    "matrices/GSE200962/salmon_ME49_host.parquet": "8a15de69bd34e8e666a21da0c1db3712373b56b69500d784aaf3ebbed9d9baf0",
+    "matrices/GSE200962/salmon_ME49_host_samples.tsv": "3132f546bee2b72cb706c5980443543217537ad7ccf61d42c2b9e433ef1047bc",
+    "matrices/GSE208647/kallisto_ME49_host.parquet": "ff6ed2a256a215088967eeddd3ce0ed9bab53d554855cc640711c675052c25fd",
+    "matrices/GSE208647/kallisto_ME49_host_samples.tsv": "d4bcb6020cc72887d8b599eac24ff598af4851891357a0c3d0fb9c3502f98dc2",
+    "matrices/GSE208647/salmon_ME49_host.parquet": "1afc911cb13f02ca31a06dd2f33ce8569d9ea7498ea5f1d62b4257880cb01436",
+    "matrices/GSE208647/salmon_ME49_host_samples.tsv": "469b511863052b683a5831c5e8a2f5e2e6b0a061a605638c0f4e9fdeb515957c",
+    "matrices/GSE218921/kallisto_ME49_host.parquet": "b031d990ff34238ab721f356004cbd3848e81171b9792409d08794f9cf6ab5cc",
+    "matrices/GSE218921/kallisto_ME49_host_samples.tsv": "a4efbc68726bedaf8fdaf6ea0bebf9e4468a3371adfa217db25e646efd67576c",
+    "matrices/GSE218921/salmon_ME49_host.parquet": "728006fb72deff1494947c80e6226f67db29ede5e7822aa36858eec347c37f1c",
+    "matrices/GSE218921/salmon_ME49_host_samples.tsv": "a647d54b3147fc47e122b6b482d1f5ce3ab66963b6ebb71165240e1554bdf372",
+    "matrices/GSE223621/kallisto_ME49_host.parquet": "2c8c8a93891fe5f9a62bcb661bb0b6873b69add46b558fe47fd71d576c4df19f",
+    "matrices/GSE223621/kallisto_ME49_host_samples.tsv": "76cddd84afd34f50344aed1125e1115fa5e2ac1cdcbb02d2364ef414c62a2637",
+    "matrices/GSE223621/salmon_ME49_host.parquet": "4b3a13a081a6715895561f1422dd024af41b81adb75a8b766cad6c9a51f2d9a8",
+    "matrices/GSE223621/salmon_ME49_host_samples.tsv": "3cd2661b59cf706c88f06d1e071f6b15dd58e8816f4052bce45a2074d70e5314",
+    "matrices/GSE223819/kallisto_ME49_host.parquet": "60e00a360d0dbc0fc3249d4af9d4511156f86ab5591071d26fb3c4cfd9e3ab32",
+    "matrices/GSE223819/kallisto_ME49_host_samples.tsv": "a19149eeb2375263a9bbba95edf12738912a107b4d4afb237f3c14df08c7e417",
+    "matrices/GSE223819/salmon_ME49_host.parquet": "288a35ee4386a8f6b8ec0d6ff2b803f0c42f0856fe66c65eec78a5594ad68223",
+    "matrices/GSE223819/salmon_ME49_host_samples.tsv": "04771ad2f103492a41d22b836ef59d42e4d63cb0f2b821afd369b895f481edfd"
+  },
+  "reference": {
+    "name": "ME49_host",
+    "parasite": "https://ftp.ensemblgenomes.ebi.ac.uk/pub/protists/release-63/fasta/toxoplasma_gondii/cdna/Toxoplasma_gondii.GCA000006565v2.cdna.all.fa.gz",
+    "decoys": "https://ftp.ensemblgenomes.ebi.ac.uk/pub/protists/release-63/fasta/toxoplasma_gondii/dna/Toxoplasma_gondii.GCA000006565v2.dna.toplevel.fa.gz",
+    "host": [
+      "https://ftp.ensembl.org/pub/release-116/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz",
+      "https://ftp.ensembl.org/pub/release-116/fasta/homo_sapiens/ncrna/Homo_sapiens.GRCh38.ncrna.fa.gz",
+      "https://ftp.ensembl.org/pub/release-116/fasta/mus_musculus/cdna/Mus_musculus.GRCm39.cdna.all.fa.gz",
+      "https://ftp.ensembl.org/pub/release-116/fasta/mus_musculus/ncrna/Mus_musculus.GRCm39.ncrna.fa.gz"
+    ],
+    "sha256": {
+      "Homo_sapiens.GRCh38.cdna.all.fa.gz": "683eb19310c40bf1396e4718f45afa2ce86755717c0990f47a171f535d248ea1",
+      "Homo_sapiens.GRCh38.ncrna.fa.gz": "7f03bb303e939517b322f7887a74c1ee15bbb82a6affbb54f0be84e82f89cff1",
+      "Mus_musculus.GRCm39.cdna.all.fa.gz": "6084ad63885ae147c8670c5f85ec540dfe34b8bb34035a6ca427e737d01fc20e",
+      "Mus_musculus.GRCm39.ncrna.fa.gz": "93d02445222aef9d82b0cc272543a7b5d42542712b925c20ac0a89d7914594dc"
+    },
+    "salmon": "salmon 2.8.0",
+    "kallisto": "kallisto, version 0.52.0",
+    "built": "2026-10-17T14:38:14",
+    "note": "kallisto index rebuilt separately at a 40 GB cap after the first build was killed at 16 GB (peak 27 GB)."
+  },
+  "tx2gene_sha256": "5890d158ad902cc25118ab6e89bdeeaf9156a564ab03c5f864f21b0de6d77ca7",
+  "precision": "Gene count, TPM and effective length stored as float32; full precision inputs retained externally",
+  "normalization": "Sum transcript counts and TPM by exact tx2gene mapping; drop HOST: genes; reclose parasite TPM to 1e6",
+  "missingness": "Missing genes remain NaN; measured zeros remain zero",
+  "limitations": "Descriptive expression only. Partial studies may lack controls. Cross-study TPM is not a batch-corrected effect or differential expression. Alternative references remain external.",
+  "genes": 8164
+}

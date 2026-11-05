@@ -10,6 +10,8 @@ THE INDEX IS NEVER A HAND LIST. Every row is derived from the thing that already
 ==============  ===========================================================================
 kind            where the rows come from
 ==============  ===========================================================================
+``node``        `parascape.nodes.catalogue` -- the cards of the home screen, so what the
+                program can be asked about is searchable by name
 ``action``      every command in the window's menu bar, with its tooltip and status tip
 ``panel``       every dock, every tab of the analysis, strategy and preference panels, the
                 guided workflows and the slot tree
@@ -40,11 +42,13 @@ from functools import lru_cache
 
 #: The kinds, in the order a tie between two equally good matches is broken: the coarse things a
 #: user reaches for first ahead of the ten thousand fine ones.
-KIND_ORDER = ("action", "panel", "strategy", "setting", "slot", "dataset", "doc", "tutorial")
+KIND_ORDER = ("node", "action", "panel", "strategy", "setting", "slot", "dataset", "doc",
+              "tutorial")
 
 #: What each kind is called on a result row.
-KIND_LABEL = {"action": "command", "panel": "panel", "strategy": "strategy", "setting": "setting",
-              "slot": "slot", "dataset": "dataset", "doc": "guide", "tutorial": "tutorial"}
+KIND_LABEL = {"node": "home", "action": "command", "panel": "panel", "strategy": "strategy",
+              "setting": "setting", "slot": "slot", "dataset": "dataset", "doc": "guide",
+              "tutorial": "tutorial"}
 
 #: How much a kind is worth when two rows score the same. Small enough that it never outranks a
 #: better textual match.
@@ -217,6 +221,18 @@ def search(index, query: str, limit: int = 24, per_kind: int | None = PER_KIND_L
 
 
 # --------------------------------------------------------------------------- static providers
+def node_entries() -> tuple:
+    """One row per home-screen node, so the search answers with what can be ASKED, not only where.
+
+    `parascape.nodes` owns the catalogue and builds the rows; the index gains a kind rather than a
+    second list, which is instruction 74's rule for this: a node is another kind of reachable thing,
+    not a parallel registry. The kind sorts first, because a query that matches a home card and a
+    menu command is nearly always after the card.
+    """
+    from . import nodes as ND
+    return tuple(ND.search_rows())
+
+
 @lru_cache(maxsize=1)
 def strategy_entries() -> tuple:
     """One row per strategy: its number and name, found by key, method, family and question."""
@@ -361,8 +377,8 @@ def static_entries() -> list:
     catalogue could not be read is worse than one that quietly offers fewer kinds.
     """
     out = []
-    for provider in (strategy_entries, guided_entries, slot_entries, dataset_entries, doc_entries,
-                     tutorial_entries):
+    for provider in (node_entries, strategy_entries, guided_entries, slot_entries, dataset_entries,
+                     doc_entries, tutorial_entries):
         try:
             out.extend(provider())
         except Exception:
@@ -420,6 +436,7 @@ def _docks(window) -> list:
 
 #: What each dock is for, so a search for its purpose finds it and the result row says why.
 DOCK_HELP = {
+    "home": "What ParaScape can be asked about: one gene, a gene list, one label, or the sources.",
     "find": "Find a gene by accession or product, colour the map, and tick the classes to show.",
     "evidence": "Everything recorded about the selected gene, with links to its source records.",
     "analysis": "Data, maps, clusters, inference, search, validation, discovery and questions.",

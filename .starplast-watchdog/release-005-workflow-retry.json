@@ -1,0 +1,45 @@
+{
+  "operation": "reviewed_same_package_publication_retry_and_verified_RNA_catchup",
+  "epoch": 1793396494.6092749,
+  "retry_source_commit": "929114dd358197eeed024192651b2eb7557cc3a5",
+  "published_tag_commit": "90c2c40f1521424d93f3a7ad5129401a385614c4",
+  "identifier_followup_commit": "3a8e593ed8b2411d2b358b4bc70d260581e0dead",
+  "package_and_data_unchanged_by_retry": true,
+  "validation": "31 release/packaging/wheel checks; actual installed72-pack Qt CSV smoke with corrected environment, NAS/network forbidden",
+  "files": {
+    "/home/carruthers/.local/share/parascape-download-worker/publish_release_005_workflow_retry.py": {
+      "sha256": "0a298c23a716c8fbb4eb1da537c24f2a0820120cfa01e8fba7ef620b3db102dd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/publish_release_005_workflow_retry-0a298c23a716c8fbb4eb1da537c24f2a0820120cfa01e8fba7ef620b3db102dd.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/push_protein_identifier_followup.py": {
+      "sha256": "eaec9e4d1d76915463de902e5d026053bdbe59254ef0e5f6ceda0d1085def8d2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/push_protein_identifier_followup-eaec9e4d1d76915463de902e5d026053bdbe59254ef0e5f6ceda0d1085def8d2.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/refresh_rna_snapshot.py": {
+      "sha256": "1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/refresh_rna_snapshot-1d4f1aba41934a22c5eafebbb962c669af227ac93d65ca278a506d8e2c1e40da.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-publish-005-workflow-retry.service": {
+      "sha256": "e464677dabb3a4a8e9ab6ac589d2cac3d43cf6ddd9933572c508c980e78952fa",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/parascape-publish-005-workflow-retry-e464677dabb3a4a8e9ab6ac589d2cac3d43cf6ddd9933572c508c980e78952fa.service"
+    },
+    "/home/carruthers/.local/state/parascape-release-0.0.5.0/workflow-retry-validation.json": {
+      "sha256": "b1896467ccf51a5e20891880e9d5476a4e0a60e9880f8b324fc14d81d64a5cfd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workflow-retry-validation-b1896467ccf51a5e20891880e9d5476a4e0a60e9880f8b324fc14d81d64a5cfd.json"
+    },
+    "/home/carruthers/.local/state/parascape-release-0.0.5.0/plan.json": {
+      "sha256": "a4a07a7658872174045e28dfcc9802412d15d7d129f6320edf0c268a912d6763",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/plan-a4a07a7658872174045e28dfcc9802412d15d7d129f6320edf0c268a912d6763.json"
+    }
+  },
+  "snapshot_catchup": {
+    "unit": "parascape-snapshot-catchup-324.service",
+    "pid": 418539,
+    "verified_entries": 324,
+    "prior_live_entries": 307,
+    "force_scope": "Batching threshold only; unchanged receipt/matrix/sample/checksum validation",
+    "immutable_build": "/nas_mnt/carruthers/Einar/parascape_omics/app_snapshots/20261030T214036Z-324"
+  },
+  "goal_status": "active",
+  "all_datasets_complete": false
+}

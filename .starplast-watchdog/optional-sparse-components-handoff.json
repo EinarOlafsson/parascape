@@ -1,0 +1,1650 @@
+{
+  "operation": "optional_sparse_component_hosting_foundation",
+  "epoch": 1793419864.090183,
+  "files": {
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/data_components.py": {
+      "sha256": "6971b058acd5fb5de252a00695936cd7637ab8bf74c284408811222d1402bc57",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/data_components-6971b058acd5fb5de252a00695936cd7637ab8bf74c284408811222d1402bc57.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/scripts/build_data_components.py": {
+      "sha256": "35cea8686d56484ceecdf719cb6600872b6d153a34bcf048beea52976d9ab2a0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build_data_components-35cea8686d56484ceecdf719cb6600872b6d153a34bcf048beea52976d9ab2a0.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/tests/test_data_components.py": {
+      "sha256": "d164cc4e8a152d2fabd075995233a036953429011088ae0a23911cb752c253d2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/test_data_components-d164cc4e8a152d2fabd075995233a036953429011088ae0a23911cb752c253d2.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/tests/test_data_component_builder.py": {
+      "sha256": "f41e21df9577a82d1c3bf1f519deb51a1b61cb2f0cd75af2611a7192f8bc2f02",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/test_data_component_builder-f41e21df9577a82d1c3bf1f519deb51a1b61cb2f0cd75af2611a7192f8bc2f02.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/docs/releases.md": {
+      "sha256": "bdc1a2b1684cc734611535a38fd036577395a49e49167f493cefa1d13c452b21",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/releases-bdc1a2b1684cc734611535a38fd036577395a49e49167f493cefa1d13c452b21.md"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/prepare_optional_sparse_components.py": {
+      "sha256": "8622d95b679722b80b0cef84ecdcee9a42a88d0b504ccf35aeaaceb10a827232",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/prepare_optional_sparse_components-8622d95b679722b80b0cef84ecdcee9a42a88d0b504ccf35aeaaceb10a827232.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/audit_all_optional_sparse_components.py": {
+      "sha256": "7f9530abd1c2be3817cf302f080e0470468e82ab23ea17dfa36fdd3812cdfba5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/audit_all_optional_sparse_components-7f9530abd1c2be3817cf302f080e0470468e82ab23ea17dfa36fdd3812cdfba5.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_optional_components_real_files.py": {
+      "sha256": "fdc2dd5650756d4cd3a5b6f02e76ad42909e01619e085ff7de3b844242ca534b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/check_optional_components_real_files-fdc2dd5650756d4cd3a5b6f02e76ad42909e01619e085ff7de3b844242ca534b.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-optional-sparse-components.service": {
+      "sha256": "662283e044d0b91f92ab8c3ebeadfb995cd077fe98e619798342193576af36c8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/parascape-optional-sparse-components-662283e044d0b91f92ab8c3ebeadfb995cd077fe98e619798342193576af36c8.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-optional-sparse-components.timer": {
+      "sha256": "36c9af8934d03a7005d34380f8a67066b00725870898b5cca85aa4c325709105",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/parascape-optional-sparse-components-36c9af8934d03a7005d34380f8a67066b00725870898b5cca85aa4c325709105.timer"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-optional-components-audit.service": {
+      "sha256": "3ae6e562acefa9bb52eb5dca2ecefd60e1f600e68f9166fcfcf567aa18877780",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/parascape-optional-components-audit-3ae6e562acefa9bb52eb5dca2ecefd60e1f600e68f9166fcfcf567aa18877780.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-optional-components-audit.timer": {
+      "sha256": "a33d432a4ec1f524f6ed7661361a2fdffe302d8309716b58a96f6ca3ec7b4865",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/parascape-optional-components-audit-a33d432a4ec1f524f6ed7661361a2fdffe302d8309716b58a96f6ca3ec7b4865.timer"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/current.json": {
+      "sha256": "8e6aca658bee46fb9f2f6df6259ddcef46dc9b2c5fae8304cd4eb24e68e75468",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/current-8e6aca658bee46fb9f2f6df6259ddcef46dc9b2c5fae8304cd4eb24e68e75468.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/323e088ddad4b8dfecb0d450c26d84ad45d3ceaa3151e8a12b48d5f45e6f681b.json": {
+      "sha256": "323e088ddad4b8dfecb0d450c26d84ad45d3ceaa3151e8a12b48d5f45e6f681b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/323e088ddad4b8dfecb0d450c26d84ad45d3ceaa3151e8a12b48d5f45e6f681b-323e088ddad4b8dfecb0d450c26d84ad45d3ceaa3151e8a12b48d5f45e6f681b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/progress.json": {
+      "sha256": "f588712975ae99b02b49dd7d2093452eb6bce2ee8e450928180cee935919c729",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/progress-f588712975ae99b02b49dd7d2093452eb6bce2ee8e450928180cee935919c729.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e120eb75f8108cb0807d320809d33b94606cafcaccee5e6624319d298769371e/component.json": {
+      "sha256": "7d1eeefdb9c63c56ad5c4ab0a5b44bbd689cc7aebebabed5d9e7e39c45c9f1c8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-7d1eeefdb9c63c56ad5c4ab0a5b44bbd689cc7aebebabed5d9e7e39c45c9f1c8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e120eb75f8108cb0807d320809d33b94606cafcaccee5e6624319d298769371e/build.json": {
+      "sha256": "cfea09d9089e0f8fdb286766bf81b651a6e5d92501fdfd4f2edf6b57bc8614e9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-cfea09d9089e0f8fdb286766bf81b651a6e5d92501fdfd4f2edf6b57bc8614e9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-a3c1e1b54f28d8aa248f6564476e82d62a747a5d8a50a1ec6a0dec06fa927bdf/component.json": {
+      "sha256": "3733ad832b24cf2ec956a9b9fa5d3e6086897e2d3c52d9157f0c499e17e70c33",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3733ad832b24cf2ec956a9b9fa5d3e6086897e2d3c52d9157f0c499e17e70c33.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-a3c1e1b54f28d8aa248f6564476e82d62a747a5d8a50a1ec6a0dec06fa927bdf/build.json": {
+      "sha256": "34552471c9017f69869c818e9f401f7e216a4424892541061dad869f84fddfab",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-34552471c9017f69869c818e9f401f7e216a4424892541061dad869f84fddfab.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e5f64d0eab3e56b6e6c68af500a81e72a1919b9e400f75062b459d5826f4c510/component.json": {
+      "sha256": "189c6b43f8b6cc6fb3eebe0bfcd0bc5fe02b85ee8edffee22da14a902207e395",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-189c6b43f8b6cc6fb3eebe0bfcd0bc5fe02b85ee8edffee22da14a902207e395.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e5f64d0eab3e56b6e6c68af500a81e72a1919b9e400f75062b459d5826f4c510/build.json": {
+      "sha256": "84385fbc0d223211ab46f6865720b9fc025e8455136f01177ede77e9fe8fe993",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-84385fbc0d223211ab46f6865720b9fc025e8455136f01177ede77e9fe8fe993.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-4098ed6a4da8393645e53ba38b88ac743e15f8759e1f8e1e432771857d8b3961/component.json": {
+      "sha256": "f019ed11e95cb68f09e7de0d360fb9259ba33c59793d72378cbee1a0aa94dda3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-f019ed11e95cb68f09e7de0d360fb9259ba33c59793d72378cbee1a0aa94dda3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-4098ed6a4da8393645e53ba38b88ac743e15f8759e1f8e1e432771857d8b3961/build.json": {
+      "sha256": "81fcef1ebe4ee5c8a652053fdcf117901b7f3a2cf01a263f9af1553f899e85ad",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-81fcef1ebe4ee5c8a652053fdcf117901b7f3a2cf01a263f9af1553f899e85ad.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-232784e8eb28b2e3e301274d92f2021e55b1e9472c84d2326a6b81cc0bfa951f/component.json": {
+      "sha256": "f581b1379b1d54eb8b3f8e499c499369c90b77195b25aad08cae6c45cfa864aa",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-f581b1379b1d54eb8b3f8e499c499369c90b77195b25aad08cae6c45cfa864aa.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-232784e8eb28b2e3e301274d92f2021e55b1e9472c84d2326a6b81cc0bfa951f/build.json": {
+      "sha256": "8e8bc70b43e1ea4fc6cbdd4f068d0db7a9886af2e53d50442dd33dc7d693af53",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8e8bc70b43e1ea4fc6cbdd4f068d0db7a9886af2e53d50442dd33dc7d693af53.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-481b0f405460f8f35b571ea36e5212119892678e3589ea7954c4727b87f8ef57/component.json": {
+      "sha256": "2feef35e2b1079e4d509706c3cb21cd645b8d3a814af7fdc3e25a9abd170a410",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-2feef35e2b1079e4d509706c3cb21cd645b8d3a814af7fdc3e25a9abd170a410.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-481b0f405460f8f35b571ea36e5212119892678e3589ea7954c4727b87f8ef57/build.json": {
+      "sha256": "537d0e66b2480dc229a81147f5ffe2594039451c56e11873527d251388b422f1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-537d0e66b2480dc229a81147f5ffe2594039451c56e11873527d251388b422f1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9d40253496716ee0d8fcdc67907551faed28662bdeb73b58b2efff25de398a11/component.json": {
+      "sha256": "31de714ebbf907af3c7df0da48e051e083a59942459f9effb8e8b8d6924c6b14",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-31de714ebbf907af3c7df0da48e051e083a59942459f9effb8e8b8d6924c6b14.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9d40253496716ee0d8fcdc67907551faed28662bdeb73b58b2efff25de398a11/build.json": {
+      "sha256": "37f6fd54f6778656ded1fd3f26b4351b65dec8054a89473f149ec6765ed9f595",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-37f6fd54f6778656ded1fd3f26b4351b65dec8054a89473f149ec6765ed9f595.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-f74b52fc094fefb122de96a335139d0d4005baf9c200837f49af53cc76090c65/component.json": {
+      "sha256": "6ab6385dd3c0db9e75b7aca2a42b30d82c93c1cdc434bb1eb38662cdc2ef063f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-6ab6385dd3c0db9e75b7aca2a42b30d82c93c1cdc434bb1eb38662cdc2ef063f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-f74b52fc094fefb122de96a335139d0d4005baf9c200837f49af53cc76090c65/build.json": {
+      "sha256": "19f1a434081aff573e87ff9edd07a9995a0fd592908fce70373098f0b9a8373c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-19f1a434081aff573e87ff9edd07a9995a0fd592908fce70373098f0b9a8373c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-bf67cc8a55e1f6ad1e36cdb4674b1e2f521d7fbe040bb037d5ef41e33c1c87cc/component.json": {
+      "sha256": "c20e2c6b4efa35c00daf469b07cf0550f959ca25e6bd09cca6c11ebd8e12c7ed",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c20e2c6b4efa35c00daf469b07cf0550f959ca25e6bd09cca6c11ebd8e12c7ed.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-bf67cc8a55e1f6ad1e36cdb4674b1e2f521d7fbe040bb037d5ef41e33c1c87cc/build.json": {
+      "sha256": "72a4502ceeef3bdaa54b7e8791ad72939f6f0f27c8d5f4d3257047228199878d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-72a4502ceeef3bdaa54b7e8791ad72939f6f0f27c8d5f4d3257047228199878d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fdcb8dc4dbb1ddc80cf501702406337e220e3c72a95e342c484519cc770844f2/component.json": {
+      "sha256": "4f328ae53940cc4f1f89fce84f6fcaf95685dd07b690718bc31ffa6be1966aa7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-4f328ae53940cc4f1f89fce84f6fcaf95685dd07b690718bc31ffa6be1966aa7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fdcb8dc4dbb1ddc80cf501702406337e220e3c72a95e342c484519cc770844f2/build.json": {
+      "sha256": "c3a1b33fd0604ff3e8f7d78a1b424733cba42e4678db7df27385860842d4dbd0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-c3a1b33fd0604ff3e8f7d78a1b424733cba42e4678db7df27385860842d4dbd0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-4d6dec8ee2c191a7859949262116981143511c6a760025f0ccccf36490cf492e/component.json": {
+      "sha256": "dd2423491dd6b1887c50d160d573b3559458194520ca27daba31a7a4e98d79dc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-dd2423491dd6b1887c50d160d573b3559458194520ca27daba31a7a4e98d79dc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-4d6dec8ee2c191a7859949262116981143511c6a760025f0ccccf36490cf492e/build.json": {
+      "sha256": "2e28ad3cb6f21f38d0dca2670f9c7acc166e57106a790f6f9234e98456fee1cc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2e28ad3cb6f21f38d0dca2670f9c7acc166e57106a790f6f9234e98456fee1cc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2f6d3ca89bc45dc2c763a0c7cb60876bb267f2147cbbdbb73749dfdcf6eb71e2/component.json": {
+      "sha256": "96cfda2fd693bbfcf1291892daab39cbb0ed61ce62314664f75764af88cd2c7d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-96cfda2fd693bbfcf1291892daab39cbb0ed61ce62314664f75764af88cd2c7d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2f6d3ca89bc45dc2c763a0c7cb60876bb267f2147cbbdbb73749dfdcf6eb71e2/build.json": {
+      "sha256": "38fa1bb1d68a1ef191d79f692738479306a65b57640671bbcd7a2fef723623da",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-38fa1bb1d68a1ef191d79f692738479306a65b57640671bbcd7a2fef723623da.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-d16f057b894d51a06bbc0d0ffe9e3db68e1cab5c3eb2d9622947321c5e728d80/component.json": {
+      "sha256": "76a8310b206084564cc3011f47c7b6467d78e190390acd9df2930199aa95eb1f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-76a8310b206084564cc3011f47c7b6467d78e190390acd9df2930199aa95eb1f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-d16f057b894d51a06bbc0d0ffe9e3db68e1cab5c3eb2d9622947321c5e728d80/build.json": {
+      "sha256": "519a03814034170b3d744599611f343d5c8cc643fda0d283042690ff6c1bc9ec",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-519a03814034170b3d744599611f343d5c8cc643fda0d283042690ff6c1bc9ec.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-acfe8b802bca6495633699272ceaecd77e0af32d0d82518bac9a0882e6d7a635/component.json": {
+      "sha256": "cb55ec17775b0c723d8b06d24dd715d2113ecffd0524fb1ef86e6566d9fa14d1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-cb55ec17775b0c723d8b06d24dd715d2113ecffd0524fb1ef86e6566d9fa14d1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-acfe8b802bca6495633699272ceaecd77e0af32d0d82518bac9a0882e6d7a635/build.json": {
+      "sha256": "117f78b9383e0b6a5657d4aaa72c53c294a5fadf342df7a932fbd8940b646193",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-117f78b9383e0b6a5657d4aaa72c53c294a5fadf342df7a932fbd8940b646193.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-25e63f283f7e6f649c4c75521af5c10151564de966ed81c7528dd92d2227a661/component.json": {
+      "sha256": "11c36f38ce98b92814e5ed120f7cc3f1301b44a25e7c3df40550f21a60f06158",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-11c36f38ce98b92814e5ed120f7cc3f1301b44a25e7c3df40550f21a60f06158.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-25e63f283f7e6f649c4c75521af5c10151564de966ed81c7528dd92d2227a661/build.json": {
+      "sha256": "47e5812a356c4adb4f01fa947b62788a893ef0f16d0625edff2bcf2fd85b3a4a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-47e5812a356c4adb4f01fa947b62788a893ef0f16d0625edff2bcf2fd85b3a4a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-b4bfb013b05c0b43d1d9179b4f139af2e4c855d686197c06eeaa914dfa1be95c/component.json": {
+      "sha256": "34e0831dfe36235dad42d71f884fa2ca321212ca579fcc8f54a6c289441783d5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-34e0831dfe36235dad42d71f884fa2ca321212ca579fcc8f54a6c289441783d5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-b4bfb013b05c0b43d1d9179b4f139af2e4c855d686197c06eeaa914dfa1be95c/build.json": {
+      "sha256": "1ad3d067a643b0a320587a7f290f636d43b8487fff773a809058e9f56064de98",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1ad3d067a643b0a320587a7f290f636d43b8487fff773a809058e9f56064de98.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e2b6e2cd8a44a117470549739988ae58de27eb75f3c4902fcbaffa8778737600/component.json": {
+      "sha256": "ea94ece93c80ecc156054a5ff6ba155c13cb2d92ca033b98f5d91b2ae69b6850",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ea94ece93c80ecc156054a5ff6ba155c13cb2d92ca033b98f5d91b2ae69b6850.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e2b6e2cd8a44a117470549739988ae58de27eb75f3c4902fcbaffa8778737600/build.json": {
+      "sha256": "4ee44c11624948ffbb5f986435a1674bfa218013c2b80baa35f2df1ed8b14a22",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-4ee44c11624948ffbb5f986435a1674bfa218013c2b80baa35f2df1ed8b14a22.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-23ec078e5f8b56b471adeb08a4fb695d7e39b9e56f7d784aead176be6ed8a852/component.json": {
+      "sha256": "b7e27101ff48f000bc3076d1bf55e133293cc03de7d1ff393121d05a94e58c4a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b7e27101ff48f000bc3076d1bf55e133293cc03de7d1ff393121d05a94e58c4a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-23ec078e5f8b56b471adeb08a4fb695d7e39b9e56f7d784aead176be6ed8a852/build.json": {
+      "sha256": "d2d5f62547a4448a232d6c3973f6a5b8fe33fc09c0f72ffada26746fdb24475c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-d2d5f62547a4448a232d6c3973f6a5b8fe33fc09c0f72ffada26746fdb24475c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-504fdd205280c85a18c5c9897b5489323e8b05d291456fe9d007f778ad612800/component.json": {
+      "sha256": "759357e64bb91e4b9435ab1b2a17c860d5197d58adaf81278f3bcdbd818b58c4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-759357e64bb91e4b9435ab1b2a17c860d5197d58adaf81278f3bcdbd818b58c4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-504fdd205280c85a18c5c9897b5489323e8b05d291456fe9d007f778ad612800/build.json": {
+      "sha256": "16c0eecc83e3f10106ea622d0e96fb2abbadc78d01b2ba012b669d4e84c09b99",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-16c0eecc83e3f10106ea622d0e96fb2abbadc78d01b2ba012b669d4e84c09b99.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e9e5e6706687a16ef716d0d30fb97ed2cd9a577273b41c77d4bb8b2ef92c87f3/component.json": {
+      "sha256": "c7c18580d247666ad9d772d5dc81035cfc1bf07744a8e8e0534f5e45f3654e5d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c7c18580d247666ad9d772d5dc81035cfc1bf07744a8e8e0534f5e45f3654e5d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e9e5e6706687a16ef716d0d30fb97ed2cd9a577273b41c77d4bb8b2ef92c87f3/build.json": {
+      "sha256": "4d1197e8d02a899f92d323ae537e493f0361464e45cb1c1b251eaa343251b98d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-4d1197e8d02a899f92d323ae537e493f0361464e45cb1c1b251eaa343251b98d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3190cb90a7af4de12319370ca068f47d30a419cb9ae56eb1cb7c04aaf160ff88/component.json": {
+      "sha256": "ff5c66b25ee15139406a6a852c9ffda38cb7b756bea7f740d92972bc1e2a66f4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ff5c66b25ee15139406a6a852c9ffda38cb7b756bea7f740d92972bc1e2a66f4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3190cb90a7af4de12319370ca068f47d30a419cb9ae56eb1cb7c04aaf160ff88/build.json": {
+      "sha256": "02e219a2c3e242ce330caae05033d83f89ef361131bc2fc8391aa6f9dce6e9ca",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-02e219a2c3e242ce330caae05033d83f89ef361131bc2fc8391aa6f9dce6e9ca.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-7ab706946c2f5a3222ef41cc79737bd2fde0ef780cb16b4b59992c531c554f87/component.json": {
+      "sha256": "c9d92285c48e0466bfa5f3efcd4be8f440c6b4524bbe43e7b2709611542d4af7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c9d92285c48e0466bfa5f3efcd4be8f440c6b4524bbe43e7b2709611542d4af7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-7ab706946c2f5a3222ef41cc79737bd2fde0ef780cb16b4b59992c531c554f87/build.json": {
+      "sha256": "270f8e71e4e81def4d537cfad2b8b3b6ecbf338ef7be87944757b0cd4cd58bfc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-270f8e71e4e81def4d537cfad2b8b3b6ecbf338ef7be87944757b0cd4cd58bfc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fac8bead80dfe7877dae07d9eab4c14aa3606281725790d65ab0bf0e23507c2e/component.json": {
+      "sha256": "87a04a0624f3d0fbca9267674e5cd1f26e5879ae8c543e0be1cf3ac923343e18",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-87a04a0624f3d0fbca9267674e5cd1f26e5879ae8c543e0be1cf3ac923343e18.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fac8bead80dfe7877dae07d9eab4c14aa3606281725790d65ab0bf0e23507c2e/build.json": {
+      "sha256": "f089f19f825a7427e5b81762c69fbad3e8544e1edb63000076147d3aa49d40b0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-f089f19f825a7427e5b81762c69fbad3e8544e1edb63000076147d3aa49d40b0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-0fed9d0d97be21b73328a60b1662a515a017b7ddda70a1053a0e1e26e2dc7344/component.json": {
+      "sha256": "566f91966501b796b9065177756cc056cd6629aae009f8c7577395ce736ebc20",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-566f91966501b796b9065177756cc056cd6629aae009f8c7577395ce736ebc20.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-0fed9d0d97be21b73328a60b1662a515a017b7ddda70a1053a0e1e26e2dc7344/build.json": {
+      "sha256": "114d070d941805451f61eec687289795dc1b705d39a9d0f9085e416553eaf253",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-114d070d941805451f61eec687289795dc1b705d39a9d0f9085e416553eaf253.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-99b7090df4fb37f61f8e88611af872f24b814993d9bbbe43706a013921b83755/component.json": {
+      "sha256": "b64fe42eee176433ee495679abc5f61933452debcfa7e9488c77cd2ca50a3fe9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b64fe42eee176433ee495679abc5f61933452debcfa7e9488c77cd2ca50a3fe9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-99b7090df4fb37f61f8e88611af872f24b814993d9bbbe43706a013921b83755/build.json": {
+      "sha256": "ece73e80640f6afa9ffd71dfdc695c87a18fead8a6e9f247bd1238fab58f57e3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-ece73e80640f6afa9ffd71dfdc695c87a18fead8a6e9f247bd1238fab58f57e3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-a5e8e5a26d0afa4c552988cf11437623554f9089ec7ca55749d56d58c96702a7/component.json": {
+      "sha256": "b886830825a06a0d96b921598e209a0649e43136d0e3d46b3a2eeb31a982acc5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b886830825a06a0d96b921598e209a0649e43136d0e3d46b3a2eeb31a982acc5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-a5e8e5a26d0afa4c552988cf11437623554f9089ec7ca55749d56d58c96702a7/build.json": {
+      "sha256": "1aa069787a5c9618be5e65d982fea5a29f07040f3cd6b07798c0f6090ad2689a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1aa069787a5c9618be5e65d982fea5a29f07040f3cd6b07798c0f6090ad2689a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-2dbbda692a60cca312df4b07f70c07b4479f1342da47b1b3a446d626282ad4c7/component.json": {
+      "sha256": "20d83c7a279908b289233b48f9450b097e230d930d2b3286a482ccf169f245b2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-20d83c7a279908b289233b48f9450b097e230d930d2b3286a482ccf169f245b2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-2dbbda692a60cca312df4b07f70c07b4479f1342da47b1b3a446d626282ad4c7/build.json": {
+      "sha256": "0b0a3e2bb37a10825d529afe8557fa83dfb7bad8746c51d71aa30a235e28484b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0b0a3e2bb37a10825d529afe8557fa83dfb7bad8746c51d71aa30a235e28484b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-1517a186fd0dd0d1889962d0a65d20ed579b1a2c41602fc450cc808b8a2dc8b2/component.json": {
+      "sha256": "de352cb909888b04e7699c8d76b94fb95e131455c21ecd39fcded4d5c6adb034",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-de352cb909888b04e7699c8d76b94fb95e131455c21ecd39fcded4d5c6adb034.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-1517a186fd0dd0d1889962d0a65d20ed579b1a2c41602fc450cc808b8a2dc8b2/build.json": {
+      "sha256": "3d02fd7c76ae18638b7246b108e1797846108f09f45b25a6ff4decadc83d100d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-3d02fd7c76ae18638b7246b108e1797846108f09f45b25a6ff4decadc83d100d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3829ab5e79ae52616726ef69e078955163f770b5414b0778b805c0e147a068bf/component.json": {
+      "sha256": "ea19b3435144486c4f50bd8f7062feed7f8e1b2cfd0d355155e9e5ea50df6f4c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ea19b3435144486c4f50bd8f7062feed7f8e1b2cfd0d355155e9e5ea50df6f4c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3829ab5e79ae52616726ef69e078955163f770b5414b0778b805c0e147a068bf/build.json": {
+      "sha256": "cf9e494784be4a32b23f358a97ae6672f0f4b00ae54a3b67ac3d7dfeabecf7b8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-cf9e494784be4a32b23f358a97ae6672f0f4b00ae54a3b67ac3d7dfeabecf7b8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-062c08e7a18bb274553ce345a7c1da58ce2ae147f331bee80508004f165efedb/component.json": {
+      "sha256": "a2984fac93d06a03061a6a036efd0f341cd0df9fa3186c940aa55f70b8db679d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a2984fac93d06a03061a6a036efd0f341cd0df9fa3186c940aa55f70b8db679d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-062c08e7a18bb274553ce345a7c1da58ce2ae147f331bee80508004f165efedb/build.json": {
+      "sha256": "54edc8d9729531b3bc74add710ce3b1d589169bb9b7ff9a3cbf82144fd56d412",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-54edc8d9729531b3bc74add710ce3b1d589169bb9b7ff9a3cbf82144fd56d412.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-b9d403beb0a7b8252df047ff028f25e681797612de5de170a8892b7b0ad60ae6/component.json": {
+      "sha256": "b35369ed5e3b6a87fe4f71be8687fd18a2bf44bfa1850e9a61cd92d54a040ea4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b35369ed5e3b6a87fe4f71be8687fd18a2bf44bfa1850e9a61cd92d54a040ea4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-b9d403beb0a7b8252df047ff028f25e681797612de5de170a8892b7b0ad60ae6/build.json": {
+      "sha256": "82b1cc2db7c368744aa953739e0cad068fb2736bbe0207d3d1389e4d66c1ffcb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-82b1cc2db7c368744aa953739e0cad068fb2736bbe0207d3d1389e4d66c1ffcb.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-19d70378fbdb177fa6c840f67e6ea3cfbe2599161342fb7f8a9a0af44eecd247/component.json": {
+      "sha256": "4952291fe69a08a195ba7b4144df3a9d4aa133903a94a314709de5f0cb1e7f29",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-4952291fe69a08a195ba7b4144df3a9d4aa133903a94a314709de5f0cb1e7f29.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-19d70378fbdb177fa6c840f67e6ea3cfbe2599161342fb7f8a9a0af44eecd247/build.json": {
+      "sha256": "a702049a5ebf883a5c96a051b6c4a0f0ebaa26792c88f310bcd2f83f0880c4a0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a702049a5ebf883a5c96a051b6c4a0f0ebaa26792c88f310bcd2f83f0880c4a0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9dea7276d735a37a34d33605673bd222b0b5ffb3084b87e2465e036fe390bc5e/component.json": {
+      "sha256": "a0711672fdc2a0fbd5f804ebb7313fd4522843d0d129f416faceca347ae48dad",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a0711672fdc2a0fbd5f804ebb7313fd4522843d0d129f416faceca347ae48dad.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9dea7276d735a37a34d33605673bd222b0b5ffb3084b87e2465e036fe390bc5e/build.json": {
+      "sha256": "0cba3b1c82a2bdb305db83f87a073b9e42bd806108d5125936f4fa2806754b79",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0cba3b1c82a2bdb305db83f87a073b9e42bd806108d5125936f4fa2806754b79.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e8fd67b26774514ae9084fac2f97cf46f5fbe561d1f72bedc7af28a401fbeb9b/component.json": {
+      "sha256": "56209fbaa398aa31f9cae14ec50e0cf65b20820ecc46b02400eba728cf4acdcc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-56209fbaa398aa31f9cae14ec50e0cf65b20820ecc46b02400eba728cf4acdcc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e8fd67b26774514ae9084fac2f97cf46f5fbe561d1f72bedc7af28a401fbeb9b/build.json": {
+      "sha256": "0b17163c8afd0068d4974b33c98d2201f9a1c90667b9be670ba9d71d7bf27f85",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0b17163c8afd0068d4974b33c98d2201f9a1c90667b9be670ba9d71d7bf27f85.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8d62050593d461e070bd4a45442aee7fc0108b8ebff800a978778dbb3cb4b63c/component.json": {
+      "sha256": "f163418a8e883f904b3fa7ee337f69ba8ac80af5de3620784d4cd2d51bdb8e93",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-f163418a8e883f904b3fa7ee337f69ba8ac80af5de3620784d4cd2d51bdb8e93.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8d62050593d461e070bd4a45442aee7fc0108b8ebff800a978778dbb3cb4b63c/build.json": {
+      "sha256": "d814496b26320d80582f5e0bb5fb03aa9ed3b49b732f43affa6d80c21bb9c8e3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-d814496b26320d80582f5e0bb5fb03aa9ed3b49b732f43affa6d80c21bb9c8e3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-c259711f7e3854d69f21c6e52d7bd9e5266e768368e3715ca361889c4847e91c/component.json": {
+      "sha256": "934dc9c362f209fc689be67f69a9fd691550f7e46196ecf07818d61285af4b22",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-934dc9c362f209fc689be67f69a9fd691550f7e46196ecf07818d61285af4b22.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-c259711f7e3854d69f21c6e52d7bd9e5266e768368e3715ca361889c4847e91c/build.json": {
+      "sha256": "1e04d3c86ac36735c4ea322ef6d28b440905fd6bfa3eb6042a0fef4729ada8c3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1e04d3c86ac36735c4ea322ef6d28b440905fd6bfa3eb6042a0fef4729ada8c3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2a4fd02e6d773a4d1f7d3420403ca3a565dea7232d3eddefd44fdb2e4276189e/component.json": {
+      "sha256": "97e188d1b4d7ee8937c8be5f13186af7a26075d9c3a15e05dc6400542aa8c6eb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-97e188d1b4d7ee8937c8be5f13186af7a26075d9c3a15e05dc6400542aa8c6eb.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2a4fd02e6d773a4d1f7d3420403ca3a565dea7232d3eddefd44fdb2e4276189e/build.json": {
+      "sha256": "af31be615f232a0723614704fb9e96dd623e5e73e1b9d8078c02a395a9edf5c2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-af31be615f232a0723614704fb9e96dd623e5e73e1b9d8078c02a395a9edf5c2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-0455ac050741e32e18162b848e1f2fe640f040c7ddabd622e0fef528e2a762af/component.json": {
+      "sha256": "c77a913518fa85b4824e1f4f4552db8569631d14d7545b38da4afb8779a2d79c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c77a913518fa85b4824e1f4f4552db8569631d14d7545b38da4afb8779a2d79c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-0455ac050741e32e18162b848e1f2fe640f040c7ddabd622e0fef528e2a762af/build.json": {
+      "sha256": "c0085025915aedfc83e463be769056ad68ff0dfc48343343a6d686ed36aa7f7c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-c0085025915aedfc83e463be769056ad68ff0dfc48343343a6d686ed36aa7f7c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3b25859837a517b1443fdfa10b32c26f4bef87b98ea5255a3c25c068a7904a81/component.json": {
+      "sha256": "85c64fef0a4fc84bc6205a3030da77693a7bc41f61be35a39275f5bd5a79d3d6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-85c64fef0a4fc84bc6205a3030da77693a7bc41f61be35a39275f5bd5a79d3d6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3b25859837a517b1443fdfa10b32c26f4bef87b98ea5255a3c25c068a7904a81/build.json": {
+      "sha256": "b4cbd5dcb45bbc5dea02892e4bd1c5db9257fb53c54e6362be7d86f2d8fd326b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-b4cbd5dcb45bbc5dea02892e4bd1c5db9257fb53c54e6362be7d86f2d8fd326b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-4974c12bc37adf19dd565472d8256c003e2b24ee09de23cd6fbf8252af146ce3/component.json": {
+      "sha256": "fbe502c6822e27e51483e022a3f66ce09503bd1bf200f93a8f99de8ecd830d93",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-fbe502c6822e27e51483e022a3f66ce09503bd1bf200f93a8f99de8ecd830d93.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-4974c12bc37adf19dd565472d8256c003e2b24ee09de23cd6fbf8252af146ce3/build.json": {
+      "sha256": "49d887b9fcb9b99b2f1e993ab973f3c5bf71afb3e2994db0b752daea683a2615",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-49d887b9fcb9b99b2f1e993ab973f3c5bf71afb3e2994db0b752daea683a2615.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2b0ce7863c00b525426fccfb4e36a86e3ca226826d9c0b0aff59f0ceb427ef1a/component.json": {
+      "sha256": "c8003f09cb515a55a1f240e493020b78ce12eb0913f3c6a0c23bc6380afb5a3c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c8003f09cb515a55a1f240e493020b78ce12eb0913f3c6a0c23bc6380afb5a3c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2b0ce7863c00b525426fccfb4e36a86e3ca226826d9c0b0aff59f0ceb427ef1a/build.json": {
+      "sha256": "954d39369a425545e04196899352cc7c872f5241de6506fcebfb1b4a84110adb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-954d39369a425545e04196899352cc7c872f5241de6506fcebfb1b4a84110adb.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5e899ccc6ec3aa7c1294294c906c752aee7dd3b2077af6d8b7be4657b8116575/component.json": {
+      "sha256": "31ad223ad7d65f75910b93bf0c181c9e1d399046d86f566811e3f3fc92066e9a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-31ad223ad7d65f75910b93bf0c181c9e1d399046d86f566811e3f3fc92066e9a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5e899ccc6ec3aa7c1294294c906c752aee7dd3b2077af6d8b7be4657b8116575/build.json": {
+      "sha256": "0a15ccf5f643e96aa2bcb3295c958c73f53a4a3f3aa4472e4b136fe871068813",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0a15ccf5f643e96aa2bcb3295c958c73f53a4a3f3aa4472e4b136fe871068813.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-50e60f6a8e9e044b865ff8a4364fa8c42fa319bbc293fce6e03605e30d5df3d1/component.json": {
+      "sha256": "48ccb5adb119ebdc3aaa0c874bc389368f173fca3b9d7774c5a1b23b46a54b48",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-48ccb5adb119ebdc3aaa0c874bc389368f173fca3b9d7774c5a1b23b46a54b48.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-50e60f6a8e9e044b865ff8a4364fa8c42fa319bbc293fce6e03605e30d5df3d1/build.json": {
+      "sha256": "a9efb79c269f5f3901004152f8f5a3873125d2ab0eca558a83bbde1cb43a21ac",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a9efb79c269f5f3901004152f8f5a3873125d2ab0eca558a83bbde1cb43a21ac.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e5b13a761cd09a9cc5b341661cc4ac1f850eb880ef8c425ab8704eeeb58bd951/component.json": {
+      "sha256": "9ca67ef66351b0fab8de8f2a34e4c60a9fb5b98627ae58943d3831d96e737c07",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-9ca67ef66351b0fab8de8f2a34e4c60a9fb5b98627ae58943d3831d96e737c07.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e5b13a761cd09a9cc5b341661cc4ac1f850eb880ef8c425ab8704eeeb58bd951/build.json": {
+      "sha256": "7678bb622bdb78a7b724b79f6c89a4645afc97c5f076cb9c7fb8401de4ef5101",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-7678bb622bdb78a7b724b79f6c89a4645afc97c5f076cb9c7fb8401de4ef5101.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e4fa611754c7dece9c96b7e96efc6a34c9301a42229a452684689058e82d0cf4/component.json": {
+      "sha256": "e3420a6f57d73c488cba33d39cbdfb48eda6ffc3aa89d6500388786f332a54d8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-e3420a6f57d73c488cba33d39cbdfb48eda6ffc3aa89d6500388786f332a54d8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e4fa611754c7dece9c96b7e96efc6a34c9301a42229a452684689058e82d0cf4/build.json": {
+      "sha256": "72a4814cd006fb6a696363f8aa95c8b6cf0dbac24c67659ef55811cceaea89a0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-72a4814cd006fb6a696363f8aa95c8b6cf0dbac24c67659ef55811cceaea89a0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-edc8d56b831f7c793e2c085f1cd3e60a63bbeeccdbc097e65ed29b55de5f0bfc/component.json": {
+      "sha256": "497311afb75b05e35ee4ed7e80a6e6e541cf3a2a5654270db89c44f5c657a226",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-497311afb75b05e35ee4ed7e80a6e6e541cf3a2a5654270db89c44f5c657a226.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-edc8d56b831f7c793e2c085f1cd3e60a63bbeeccdbc097e65ed29b55de5f0bfc/build.json": {
+      "sha256": "e7a2cc15c4555ea406b6c6a8b2795f5318c25b01cb9d29b78dcc1f75652ff10b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-e7a2cc15c4555ea406b6c6a8b2795f5318c25b01cb9d29b78dcc1f75652ff10b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9bf185982490ea45c68fa6d9171139e3967fd0c5b8e5ea85d1fd4f3ac8a677b3/component.json": {
+      "sha256": "4137ee8ec5a983ae6f2a1a5301c6c7eb243d4bae6c7b8a8656755d775d58a68b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-4137ee8ec5a983ae6f2a1a5301c6c7eb243d4bae6c7b8a8656755d775d58a68b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9bf185982490ea45c68fa6d9171139e3967fd0c5b8e5ea85d1fd4f3ac8a677b3/build.json": {
+      "sha256": "522840eb67c3fc16a3840bd32af775a043c2724fed0eac197f0d846bb7b82b7d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-522840eb67c3fc16a3840bd32af775a043c2724fed0eac197f0d846bb7b82b7d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-8e90525d41d6690dcfdca197ef8bd38617539a8d507d936551871fc4d578b7d5/component.json": {
+      "sha256": "f6250a71625452917f7e02ec7a6043e0e7b2a43fa2b9c45ca5cce231a70df9a6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-f6250a71625452917f7e02ec7a6043e0e7b2a43fa2b9c45ca5cce231a70df9a6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-8e90525d41d6690dcfdca197ef8bd38617539a8d507d936551871fc4d578b7d5/build.json": {
+      "sha256": "e67752750beea8a4b5e021fe7ce515c4b905d24838995b775c47b8aecc4e7ac0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-e67752750beea8a4b5e021fe7ce515c4b905d24838995b775c47b8aecc4e7ac0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-470e0477a61d4ec5224911f90bc839244b74c0b3cdc15af8da2b7e996540908e/component.json": {
+      "sha256": "6fbcf70f0070d8e38ebf5a8bf96ca7aae6094d01f2516671f1e3bc7237ca1656",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-6fbcf70f0070d8e38ebf5a8bf96ca7aae6094d01f2516671f1e3bc7237ca1656.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-470e0477a61d4ec5224911f90bc839244b74c0b3cdc15af8da2b7e996540908e/build.json": {
+      "sha256": "c91e1a6aab42297f2335641c93d99ded654a9aacc7c099200f3c3bc507cb758c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-c91e1a6aab42297f2335641c93d99ded654a9aacc7c099200f3c3bc507cb758c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-af4bd6b5fc8a84b870ffe633e1cf6b6ef1396c028e028045aa2d39b255a02dc9/component.json": {
+      "sha256": "565738ff647a78f926aeba88362ceda827d96ed9b50258e256ad2772c0eb0966",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-565738ff647a78f926aeba88362ceda827d96ed9b50258e256ad2772c0eb0966.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-af4bd6b5fc8a84b870ffe633e1cf6b6ef1396c028e028045aa2d39b255a02dc9/build.json": {
+      "sha256": "14027259ee70d9defbf5253889332b7a3112c30d3edcb211afc5510824890b4e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-14027259ee70d9defbf5253889332b7a3112c30d3edcb211afc5510824890b4e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-87e431f29894cacd8c99d0b339d305694d222324e0c13b951afe0959a3cfec53/component.json": {
+      "sha256": "e9ef379d10af7fa5f7188e6d7c11f316c971cc9ca3568fa6289822b212df89d3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-e9ef379d10af7fa5f7188e6d7c11f316c971cc9ca3568fa6289822b212df89d3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-87e431f29894cacd8c99d0b339d305694d222324e0c13b951afe0959a3cfec53/build.json": {
+      "sha256": "8ad5478f55217d15ff1a6c223905b7c55dc625c9a997c5fb512f62fe4c429c7a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8ad5478f55217d15ff1a6c223905b7c55dc625c9a997c5fb512f62fe4c429c7a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-c168e980cd11dba818952ac25c1a5229511d1b479e250566b0ab769967138152/component.json": {
+      "sha256": "228eaa164e9d0ae108e9bd27fdbdb63b5133cd1769ce896c13b103da9aaad9bc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-228eaa164e9d0ae108e9bd27fdbdb63b5133cd1769ce896c13b103da9aaad9bc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-c168e980cd11dba818952ac25c1a5229511d1b479e250566b0ab769967138152/build.json": {
+      "sha256": "2981366c799fee4d4a50fba3f22fd7c92b38c192842cee3aec355f84c3893dcc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2981366c799fee4d4a50fba3f22fd7c92b38c192842cee3aec355f84c3893dcc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-94a0d95032dd4bfbfbf96c8558dcdab7ceddb8bb6647ce31fe69cf3e58caa6c3/component.json": {
+      "sha256": "0e90cdc072b43fbf65bb09d0084d3f95c3be1f6331f409ffbec94adcdaba0b9b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-0e90cdc072b43fbf65bb09d0084d3f95c3be1f6331f409ffbec94adcdaba0b9b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-94a0d95032dd4bfbfbf96c8558dcdab7ceddb8bb6647ce31fe69cf3e58caa6c3/build.json": {
+      "sha256": "4e3f2e2cf01dd309d93c83bba189048958fe249f6e85a856004e28beac3e7640",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-4e3f2e2cf01dd309d93c83bba189048958fe249f6e85a856004e28beac3e7640.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-aacafcdde6cfde5f11f2ee9da8779ea401a5b427124e33438f502e331e30c79d/component.json": {
+      "sha256": "259d0b1f9b17e8e0c7832e3432cca7a6b0c4b3080105bd1f9e65a99c20b89c2c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-259d0b1f9b17e8e0c7832e3432cca7a6b0c4b3080105bd1f9e65a99c20b89c2c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-aacafcdde6cfde5f11f2ee9da8779ea401a5b427124e33438f502e331e30c79d/build.json": {
+      "sha256": "e3b2df7d7483b7a0a2cb455a536af06bb38daab948d043edcf9771c4954ddccf",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-e3b2df7d7483b7a0a2cb455a536af06bb38daab948d043edcf9771c4954ddccf.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9c8818dd2fb1fed40d86a16f322578413cb966e6ab672fd93d50f149a09af3bc/component.json": {
+      "sha256": "546ac32a803bd7fc3c4863805b665b35f63610843db7e20b24e9dada2f09725e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-546ac32a803bd7fc3c4863805b665b35f63610843db7e20b24e9dada2f09725e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9c8818dd2fb1fed40d86a16f322578413cb966e6ab672fd93d50f149a09af3bc/build.json": {
+      "sha256": "796ef1e3dd0ca7c599d6c2a38d44157f5111a6003f7467d8d3818f0017974f31",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-796ef1e3dd0ca7c599d6c2a38d44157f5111a6003f7467d8d3818f0017974f31.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-389d42370bd88e3ca08f48b98605b32dd37226d78fb8aee77bf8807e2d8cd0f5/component.json": {
+      "sha256": "303c45ac70197d14ba015826ee37a2be0ee77879460f29764374f793fe56a7a6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-303c45ac70197d14ba015826ee37a2be0ee77879460f29764374f793fe56a7a6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-389d42370bd88e3ca08f48b98605b32dd37226d78fb8aee77bf8807e2d8cd0f5/build.json": {
+      "sha256": "40363243a565d0635fa4a7af6caf3945348724fff2578f9056bced61ee750722",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-40363243a565d0635fa4a7af6caf3945348724fff2578f9056bced61ee750722.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-cbab0a63ebfd414479b22c31888132d7de9af497fac7850460ed6579954b366e/component.json": {
+      "sha256": "9bbdf8d24ab76fdf4073cc47313453d1e6e67d59a42e150162aadde4b6308dd8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-9bbdf8d24ab76fdf4073cc47313453d1e6e67d59a42e150162aadde4b6308dd8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-cbab0a63ebfd414479b22c31888132d7de9af497fac7850460ed6579954b366e/build.json": {
+      "sha256": "d9cf211c2c2a4c68c47aba791dbff2c23cea76f225b0e21becbe1a78f3d543a7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-d9cf211c2c2a4c68c47aba791dbff2c23cea76f225b0e21becbe1a78f3d543a7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-30498a047de0a931646f585e64eddfdcef6327c1c37f04fcf06a20df3c73b6e1/component.json": {
+      "sha256": "6f1017413ba4dae1a2a321b92abb74ec73766b1da37bc8a6e9ce0408a3aa81af",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-6f1017413ba4dae1a2a321b92abb74ec73766b1da37bc8a6e9ce0408a3aa81af.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-30498a047de0a931646f585e64eddfdcef6327c1c37f04fcf06a20df3c73b6e1/build.json": {
+      "sha256": "6fff4e87ff67f70d5fb31b2a906ebb91bee8b9e09e1cb4d6be6414f246b54f1f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-6fff4e87ff67f70d5fb31b2a906ebb91bee8b9e09e1cb4d6be6414f246b54f1f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2e1247555f696b17ba9470f7d427f06a1ba9f8462cfe85482c896bd944d8c585/component.json": {
+      "sha256": "2b5bfb4dcba921a18dbe8ac57c1598d26fcddded300a768b3aae5233c9d3959c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-2b5bfb4dcba921a18dbe8ac57c1598d26fcddded300a768b3aae5233c9d3959c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2e1247555f696b17ba9470f7d427f06a1ba9f8462cfe85482c896bd944d8c585/build.json": {
+      "sha256": "2ff1df2d877604ac39a56ada70b7e430dff3456b9b247594f345e1c71002d415",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2ff1df2d877604ac39a56ada70b7e430dff3456b9b247594f345e1c71002d415.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-a1193464341aed61028e7a353c435df483db6981be7dbcc80011c3ebc95f5ce4/component.json": {
+      "sha256": "23ca471ac522c7e2a046ad4168820b4c35c2f4cf5a29123ca6b818397250c945",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-23ca471ac522c7e2a046ad4168820b4c35c2f4cf5a29123ca6b818397250c945.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-a1193464341aed61028e7a353c435df483db6981be7dbcc80011c3ebc95f5ce4/build.json": {
+      "sha256": "807854a051d9c2bb4c1a4617aaed83a2dc536dcfb41d39b7310452814c88878f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-807854a051d9c2bb4c1a4617aaed83a2dc536dcfb41d39b7310452814c88878f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-a64cfd672fe297a704a88b2b849f9bb4376c7c2b3b3440bc70ae80b16c010e07/component.json": {
+      "sha256": "d1b3c224e7ce1e5f076edbfa0cc1b299c9be7a0d23a091aaf6f6987fd36091be",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-d1b3c224e7ce1e5f076edbfa0cc1b299c9be7a0d23a091aaf6f6987fd36091be.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-a64cfd672fe297a704a88b2b849f9bb4376c7c2b3b3440bc70ae80b16c010e07/build.json": {
+      "sha256": "5a93c9e387bf2cbb2e138f60180cf647d992e9a2020995e1803c78e9d5cdbe8c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-5a93c9e387bf2cbb2e138f60180cf647d992e9a2020995e1803c78e9d5cdbe8c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7bbb5e671c3a4a6eee0933a9c40e6f6b3d0a318ac51ea9d710e0ca3d07150721/component.json": {
+      "sha256": "cd6f0eb698d6a2dc5a61e37585235b788f4e3e5b9684899a3baf1b2ef8d2854d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-cd6f0eb698d6a2dc5a61e37585235b788f4e3e5b9684899a3baf1b2ef8d2854d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7bbb5e671c3a4a6eee0933a9c40e6f6b3d0a318ac51ea9d710e0ca3d07150721/build.json": {
+      "sha256": "483f184b984ccf4c49e49a8105e769ad81b7f0972ed5d903f44af27337ebea41",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-483f184b984ccf4c49e49a8105e769ad81b7f0972ed5d903f44af27337ebea41.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-c788b2b4586608aa3a1031f423fbede4162624a05199f6e7f86211b61d0e848b/component.json": {
+      "sha256": "ad21bc95d991ef6bdc7af6376ae1c6698bd1b3a2a7d75b1d3f0ac46a1ade6306",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ad21bc95d991ef6bdc7af6376ae1c6698bd1b3a2a7d75b1d3f0ac46a1ade6306.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-c788b2b4586608aa3a1031f423fbede4162624a05199f6e7f86211b61d0e848b/build.json": {
+      "sha256": "01db7f9a57639d637eb68f86725c353c7550f8f7df8a1cb2db5a709af17b9740",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-01db7f9a57639d637eb68f86725c353c7550f8f7df8a1cb2db5a709af17b9740.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-110173d5757004f3c8980ead4fb7d4e9f1188c54f935a54c204e3900f4140900/component.json": {
+      "sha256": "a80c95a694b51bec0065ebc9fc570087f4f243a1c2128c75116d39ab22c4aaf7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a80c95a694b51bec0065ebc9fc570087f4f243a1c2128c75116d39ab22c4aaf7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-110173d5757004f3c8980ead4fb7d4e9f1188c54f935a54c204e3900f4140900/build.json": {
+      "sha256": "501770ab359580ac1054cbf4ec05f9138de087a334f6fcb68478841f161fba8c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-501770ab359580ac1054cbf4ec05f9138de087a334f6fcb68478841f161fba8c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-69da5561196777c7d4a5816ac78f5f49c6c8f3325883ab4648493ae225a378f7/component.json": {
+      "sha256": "ccff431d2841f339c95ed47d94bd7cd9f6ba1b0326fe56006b2b8f5192cfa454",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ccff431d2841f339c95ed47d94bd7cd9f6ba1b0326fe56006b2b8f5192cfa454.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-69da5561196777c7d4a5816ac78f5f49c6c8f3325883ab4648493ae225a378f7/build.json": {
+      "sha256": "d98281d45b4dd4896047b15584eef554fa35e1250941af91b4fd40ae3109f159",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-d98281d45b4dd4896047b15584eef554fa35e1250941af91b4fd40ae3109f159.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9bc8a6b563f7e01c65aebba127322d87478539be0115f0d6075c53d98428ea1c/component.json": {
+      "sha256": "68469930623b6ae50ab4e5bd2ea4ec193f75ac11d91746e74d0ab7b458c4b13d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-68469930623b6ae50ab4e5bd2ea4ec193f75ac11d91746e74d0ab7b458c4b13d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9bc8a6b563f7e01c65aebba127322d87478539be0115f0d6075c53d98428ea1c/build.json": {
+      "sha256": "8ff24c0c5b24540cfc04936afbdcd3d0df041614aae46243bb1fd6cbb3441c10",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8ff24c0c5b24540cfc04936afbdcd3d0df041614aae46243bb1fd6cbb3441c10.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5cf9bb77d4c4421a63226aefdfb3520b774941ba0e6cef3b8ec3682d460e893d/component.json": {
+      "sha256": "fec6b3abdba19e82e751f30b9746bef65063027db905c19e1a397d642c6d9b18",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-fec6b3abdba19e82e751f30b9746bef65063027db905c19e1a397d642c6d9b18.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5cf9bb77d4c4421a63226aefdfb3520b774941ba0e6cef3b8ec3682d460e893d/build.json": {
+      "sha256": "6f90bcc041eefb8501b7e0682f6f10c1bb7aa47511e93eac4606cb1a859db9f3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-6f90bcc041eefb8501b7e0682f6f10c1bb7aa47511e93eac4606cb1a859db9f3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-6134d06e133236d6e4b93bad7054f7c92e9761cf13ce2b0b9c52fed62663352e/component.json": {
+      "sha256": "b476f00a22f34c2ca0af8ecfa23e99ac940684ee955cc2b7d167fd34e0ded01e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b476f00a22f34c2ca0af8ecfa23e99ac940684ee955cc2b7d167fd34e0ded01e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-6134d06e133236d6e4b93bad7054f7c92e9761cf13ce2b0b9c52fed62663352e/build.json": {
+      "sha256": "db437c8398fe874870c9ae030bd58d0ce3f1e63f3576be95ba3be940d8ae9459",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-db437c8398fe874870c9ae030bd58d0ce3f1e63f3576be95ba3be940d8ae9459.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-7c1d50fe872ad3a666fa05c0b94bc5fa88db6d7b81fcaa819bc419f8842dac37/component.json": {
+      "sha256": "2426ccee92873b7d8b7f7f5587559655ed3e260262c11cb863a53ac7f1474a03",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-2426ccee92873b7d8b7f7f5587559655ed3e260262c11cb863a53ac7f1474a03.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-7c1d50fe872ad3a666fa05c0b94bc5fa88db6d7b81fcaa819bc419f8842dac37/build.json": {
+      "sha256": "52f2f5da7a0d482bcbcc3a05f5ee366fd967532c75b3f284a0a481310cfd86f1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-52f2f5da7a0d482bcbcc3a05f5ee366fd967532c75b3f284a0a481310cfd86f1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-b6fbe3dfc3920f3ea96d54e6cc1cbf8e5a60b2d2c1683af201a193d15a84d416/component.json": {
+      "sha256": "054b92e5e30f0278160bebefba55e995571732d889c0cd8e60f1fc39a90b975e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-054b92e5e30f0278160bebefba55e995571732d889c0cd8e60f1fc39a90b975e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-b6fbe3dfc3920f3ea96d54e6cc1cbf8e5a60b2d2c1683af201a193d15a84d416/build.json": {
+      "sha256": "a385b6a8c6a9f6a73c728d665b158b97331176a30a250d92021f5b10b4f81150",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a385b6a8c6a9f6a73c728d665b158b97331176a30a250d92021f5b10b4f81150.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-f54f854d9397915a33e1f4412efa1c7e93461d27a8a5e9c9d3ea53d7b8766e16/component.json": {
+      "sha256": "6294d9ec55af62def2844b3749adf41deb7d592ed7e0dd0282f016f377fed15b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-6294d9ec55af62def2844b3749adf41deb7d592ed7e0dd0282f016f377fed15b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-f54f854d9397915a33e1f4412efa1c7e93461d27a8a5e9c9d3ea53d7b8766e16/build.json": {
+      "sha256": "5a066eed67def8c74afb2b6042056dcd910d0af6b182f58548e473b39f39c723",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-5a066eed67def8c74afb2b6042056dcd910d0af6b182f58548e473b39f39c723.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3f30617c04c7823ad6b2237b14ea631a237f685984ad64a741584c9d4117a0e8/component.json": {
+      "sha256": "ef7c30e162d2e92d6d1ad10ed348010984dbac6f2be972dca98e09339cf635e4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ef7c30e162d2e92d6d1ad10ed348010984dbac6f2be972dca98e09339cf635e4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3f30617c04c7823ad6b2237b14ea631a237f685984ad64a741584c9d4117a0e8/build.json": {
+      "sha256": "11e974e785b26e9600a8999605cac3d982675d41b95a671ee9b60253e1915a46",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-11e974e785b26e9600a8999605cac3d982675d41b95a671ee9b60253e1915a46.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-03e9f0e81997aca6906b7562b51eace9e8899eecefba4a3e7011912e00ca2bbf/component.json": {
+      "sha256": "e70972c0caf938789ee8237deafcf3d74a9ec056446d4235b2118a89849d161a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-e70972c0caf938789ee8237deafcf3d74a9ec056446d4235b2118a89849d161a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-03e9f0e81997aca6906b7562b51eace9e8899eecefba4a3e7011912e00ca2bbf/build.json": {
+      "sha256": "c2c09c2d481952f042036286601d1498bb39d555d57775e99e33b40062a83f5c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-c2c09c2d481952f042036286601d1498bb39d555d57775e99e33b40062a83f5c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7179ebd511a0a43f12ece9ae3eea0a8398896552c4840360e2040e4494c9aa37/component.json": {
+      "sha256": "dea40ede73045238164827de0274acef18c97634faed619f8af0a1ffc12f80ed",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-dea40ede73045238164827de0274acef18c97634faed619f8af0a1ffc12f80ed.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7179ebd511a0a43f12ece9ae3eea0a8398896552c4840360e2040e4494c9aa37/build.json": {
+      "sha256": "2f42c0d62f75ba93acea582ff46e701b677a23a7d7bc06860d277c14e93e4a64",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2f42c0d62f75ba93acea582ff46e701b677a23a7d7bc06860d277c14e93e4a64.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3e6d83a685570432efa4a4c5e11dc55ab5839ac1f556384006ad9df3a961becf/component.json": {
+      "sha256": "cfb7752170ae042ad5d0a3d1bbbca3c3fdd78cce43e742debea42ed70854fa59",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-cfb7752170ae042ad5d0a3d1bbbca3c3fdd78cce43e742debea42ed70854fa59.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3e6d83a685570432efa4a4c5e11dc55ab5839ac1f556384006ad9df3a961becf/build.json": {
+      "sha256": "f0ec3bc2ab6d485a119d0ba5a8f7b9d445d79a6645e13374d3061d079e196787",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-f0ec3bc2ab6d485a119d0ba5a8f7b9d445d79a6645e13374d3061d079e196787.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-db19daeb4683de019e9d93850324505b39d58955d132b89c441a567a472de132/component.json": {
+      "sha256": "14fe1c5c2978303bcf20973e5ed5d66221257d14efab63afb3d9dcd8d8ccc006",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-14fe1c5c2978303bcf20973e5ed5d66221257d14efab63afb3d9dcd8d8ccc006.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-db19daeb4683de019e9d93850324505b39d58955d132b89c441a567a472de132/build.json": {
+      "sha256": "ea130e933675b09997090aaa2c41352d647bc7d2c05d796fda4134371d514bff",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-ea130e933675b09997090aaa2c41352d647bc7d2c05d796fda4134371d514bff.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-850a4c28b5d2655acce73fef089b8cbbf03481cddd4ddbed54c70fbf5c1324da/component.json": {
+      "sha256": "29c3ad0fde60bb03927db89f8e7da9673c82d1e144e9bbef1ed39a5f15d1d341",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-29c3ad0fde60bb03927db89f8e7da9673c82d1e144e9bbef1ed39a5f15d1d341.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-850a4c28b5d2655acce73fef089b8cbbf03481cddd4ddbed54c70fbf5c1324da/build.json": {
+      "sha256": "33b130c32b92beba1d0975da7874cc88d224d2c2d8fb7854f99707a28c3e398e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-33b130c32b92beba1d0975da7874cc88d224d2c2d8fb7854f99707a28c3e398e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-36f115329acd3456f93e487ee9f8eadd5d1affad63e94b3e84ab3125fda2fee1/component.json": {
+      "sha256": "7dc0aa69815a8e0e99ee90a261603bba676163968c7fd6c0f6aa4093aa113e07",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-7dc0aa69815a8e0e99ee90a261603bba676163968c7fd6c0f6aa4093aa113e07.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-36f115329acd3456f93e487ee9f8eadd5d1affad63e94b3e84ab3125fda2fee1/build.json": {
+      "sha256": "4eb3c0d47cb5e7fddccf6e566bbe2c9099971aa3149e5d793f1bb9775a2f5897",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-4eb3c0d47cb5e7fddccf6e566bbe2c9099971aa3149e5d793f1bb9775a2f5897.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-fb9310099e544cc59c87a48419cdda9910491c212f8e64bbf8f4654a3913e183/component.json": {
+      "sha256": "93cc7b4245ecbb5e49cd07cc77be154afeec93d923ec84a13b99fdb537e90586",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-93cc7b4245ecbb5e49cd07cc77be154afeec93d923ec84a13b99fdb537e90586.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-fb9310099e544cc59c87a48419cdda9910491c212f8e64bbf8f4654a3913e183/build.json": {
+      "sha256": "1de8f37cc4d725a5406253b2e7fb5f05da333e2aa15863683bae3f1da784b097",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1de8f37cc4d725a5406253b2e7fb5f05da333e2aa15863683bae3f1da784b097.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-bff679a6dc97002d19c70ec37916c574949b7720a45dccf18a93888551bba537/component.json": {
+      "sha256": "ff77450e088ccd422b9dd916f52f8f758733abb0a0ce6c53af27fe6b175931fe",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ff77450e088ccd422b9dd916f52f8f758733abb0a0ce6c53af27fe6b175931fe.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-bff679a6dc97002d19c70ec37916c574949b7720a45dccf18a93888551bba537/build.json": {
+      "sha256": "0aa92bfe588d7ca776ef6f2e930d592b5eda671c262109b8b83bd28d990457ce",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0aa92bfe588d7ca776ef6f2e930d592b5eda671c262109b8b83bd28d990457ce.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-36ee57af2a8ec35a196c05826722e8c55d67646c2006af3d639ccc9bb00845cc/component.json": {
+      "sha256": "a5423c9e517725acfc3f011deeb8f7e610b103d0f8f59ce612257d1e028fc04b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a5423c9e517725acfc3f011deeb8f7e610b103d0f8f59ce612257d1e028fc04b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-36ee57af2a8ec35a196c05826722e8c55d67646c2006af3d639ccc9bb00845cc/build.json": {
+      "sha256": "480948e3f6cf0c4b17501378c72386202863b7fec001b4b70ef6b12968f05c0a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-480948e3f6cf0c4b17501378c72386202863b7fec001b4b70ef6b12968f05c0a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e5343c800a0eaed93effa1d1163fdadba8c711c5bb9b45f4081a2b2cf734ffa9/component.json": {
+      "sha256": "aa969b3b2b357c955fc6d3d866f4c54883c31609b9d2f4e6590fb4b02542f589",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-aa969b3b2b357c955fc6d3d866f4c54883c31609b9d2f4e6590fb4b02542f589.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e5343c800a0eaed93effa1d1163fdadba8c711c5bb9b45f4081a2b2cf734ffa9/build.json": {
+      "sha256": "bd9ce9cd28f04c8fa07c7b21b6f570e8e7e4b520ae43fccc9cfdba5cf41ad19d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-bd9ce9cd28f04c8fa07c7b21b6f570e8e7e4b520ae43fccc9cfdba5cf41ad19d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8ece5e18c4f0129630324e20699dad9740092325078e74186d2e5c9ed917c8a1/component.json": {
+      "sha256": "01bdcc707d26ffb08b3e2d643384059f6ec9648697fc59477eadd9662b3f383e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-01bdcc707d26ffb08b3e2d643384059f6ec9648697fc59477eadd9662b3f383e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8ece5e18c4f0129630324e20699dad9740092325078e74186d2e5c9ed917c8a1/build.json": {
+      "sha256": "bf660cacb0c882406f18d0b33966ae5abd83766c9cb2ed6f3c6ac88545c6e8ac",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-bf660cacb0c882406f18d0b33966ae5abd83766c9cb2ed6f3c6ac88545c6e8ac.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-c44d86ccd80d0b9bf8c752d2c4d42c01534aef1b77218f437c93956297320518/component.json": {
+      "sha256": "f2c6bba276f76f462d6e10de2f96ff9d9ae17bc813dfc0b5319527ee869a37de",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-f2c6bba276f76f462d6e10de2f96ff9d9ae17bc813dfc0b5319527ee869a37de.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-c44d86ccd80d0b9bf8c752d2c4d42c01534aef1b77218f437c93956297320518/build.json": {
+      "sha256": "1dc17316057aba60a78673e133c92ff057d3bdd272ba7bb00a73d6bf96ebe65d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1dc17316057aba60a78673e133c92ff057d3bdd272ba7bb00a73d6bf96ebe65d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-f977317ea372130c8c808a1ae5a1a60dbd53ee02ab0ea0ae85c245c37df99434/component.json": {
+      "sha256": "8c336ec04d90dbdc47372f38b5e18b8b43385235865e90118ced655d03637181",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-8c336ec04d90dbdc47372f38b5e18b8b43385235865e90118ced655d03637181.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-f977317ea372130c8c808a1ae5a1a60dbd53ee02ab0ea0ae85c245c37df99434/build.json": {
+      "sha256": "d2f68a165e013ccdb844d212fab56c7411498d9438ad10aa514bf005500a2d76",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-d2f68a165e013ccdb844d212fab56c7411498d9438ad10aa514bf005500a2d76.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-0e96b9071dd84bc27aa7769401e9f5ff71550bf7593367489a0f49b5bc77cc9d/component.json": {
+      "sha256": "3f4046b219d8fea65cf1ac937d7286e6b1574b2582d2519255ed4c58fd7d5fbf",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3f4046b219d8fea65cf1ac937d7286e6b1574b2582d2519255ed4c58fd7d5fbf.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-0e96b9071dd84bc27aa7769401e9f5ff71550bf7593367489a0f49b5bc77cc9d/build.json": {
+      "sha256": "25ce8081a60a9d8ab878dd1b610c1badc8c4dda6ab3d697ae0144e0227eae847",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-25ce8081a60a9d8ab878dd1b610c1badc8c4dda6ab3d697ae0144e0227eae847.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-4b535763765b024210c3e6fcf8bd4274850f0251611d1b77907bb0dfb207096b/component.json": {
+      "sha256": "361be03fd6a89eec180b1892c23880946a3ebf7a3522fcc0b172f14ee1628956",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-361be03fd6a89eec180b1892c23880946a3ebf7a3522fcc0b172f14ee1628956.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-4b535763765b024210c3e6fcf8bd4274850f0251611d1b77907bb0dfb207096b/build.json": {
+      "sha256": "a10c2bda18a582b53c7c8bc278dc7f700a1365c656f0fb244f0fded5d38e1c29",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a10c2bda18a582b53c7c8bc278dc7f700a1365c656f0fb244f0fded5d38e1c29.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-59c3b756945e1e5b23529d17bcfd42aeb84f42b995a0e95433233d7c77c8015d/component.json": {
+      "sha256": "2c9d8036c8033969250b5428f92d8827a49eab967ef839a1592d7a2a6ac9a49b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-2c9d8036c8033969250b5428f92d8827a49eab967ef839a1592d7a2a6ac9a49b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-59c3b756945e1e5b23529d17bcfd42aeb84f42b995a0e95433233d7c77c8015d/build.json": {
+      "sha256": "72eafcf1dc1e95d538a8ab8196c287223cba5b21fed9efad30f950dddc7462bc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-72eafcf1dc1e95d538a8ab8196c287223cba5b21fed9efad30f950dddc7462bc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-071ae7801125fdb4a9e0814423ed90659c9dd32c4e1eace39e0c37a6601059e3/component.json": {
+      "sha256": "9b625019d4ea7bba4ecccc60258e1afa67c7fb7aef7331e79755c0ba1be3c61b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-9b625019d4ea7bba4ecccc60258e1afa67c7fb7aef7331e79755c0ba1be3c61b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-071ae7801125fdb4a9e0814423ed90659c9dd32c4e1eace39e0c37a6601059e3/build.json": {
+      "sha256": "72f1f2b5ff27815639fca62aa6dcbe4a9911169e3759b2ae7567006ed5185259",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-72f1f2b5ff27815639fca62aa6dcbe4a9911169e3759b2ae7567006ed5185259.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-ce850722feffb2124998beca8a05a83ac49852ad17c6c11743de0a1c179611c1/component.json": {
+      "sha256": "21bd2f4746ad2f4135e18b1a2f075e01e0e59abb398c8ac903d79a1a2018a281",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-21bd2f4746ad2f4135e18b1a2f075e01e0e59abb398c8ac903d79a1a2018a281.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-ce850722feffb2124998beca8a05a83ac49852ad17c6c11743de0a1c179611c1/build.json": {
+      "sha256": "c22c734b6990877da3b5e07330e9b753f1a0702d638f642c483ecd758b64b4bb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-c22c734b6990877da3b5e07330e9b753f1a0702d638f642c483ecd758b64b4bb.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-aef9530d67f833d05ceb67dd55b9a18e1fc2271d4df72bbc625c5b607b12576b/component.json": {
+      "sha256": "f46be9f736f635262c0ae097b456cf7f3bf4969c1cd1a9499e74b5b8914e390c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-f46be9f736f635262c0ae097b456cf7f3bf4969c1cd1a9499e74b5b8914e390c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-aef9530d67f833d05ceb67dd55b9a18e1fc2271d4df72bbc625c5b607b12576b/build.json": {
+      "sha256": "da966a5db62c14a77868e7133679bbb19c312687eb1abeb7d005976d1368d560",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-da966a5db62c14a77868e7133679bbb19c312687eb1abeb7d005976d1368d560.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-d8bb901ad7b882874db91d2113eed93e0215f30beacbd239c44437a75908513d/component.json": {
+      "sha256": "68fcf13dbaf53b8ac95d2e5fb314a623f1191e559f504eed3abbc3aaf07b8cbc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-68fcf13dbaf53b8ac95d2e5fb314a623f1191e559f504eed3abbc3aaf07b8cbc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-d8bb901ad7b882874db91d2113eed93e0215f30beacbd239c44437a75908513d/build.json": {
+      "sha256": "8c0665c113e84a2ae2a22b40a03134de4ac431c2b9a532a4e65d1c61dd470354",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8c0665c113e84a2ae2a22b40a03134de4ac431c2b9a532a4e65d1c61dd470354.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3bd97c26a11bc7fa09febbba77f51adeee0e75ab6b5c55cc8f05ecd90b28f426/component.json": {
+      "sha256": "622d7bbebb2f0f6a0b1ecbae044498dc21b938cf1076c6c2a488ad0e43f64df4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-622d7bbebb2f0f6a0b1ecbae044498dc21b938cf1076c6c2a488ad0e43f64df4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3bd97c26a11bc7fa09febbba77f51adeee0e75ab6b5c55cc8f05ecd90b28f426/build.json": {
+      "sha256": "b4a5cec6b214a4977da860b0aa092dd52f46554d8fcbe2934afdaaab5bd30b59",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-b4a5cec6b214a4977da860b0aa092dd52f46554d8fcbe2934afdaaab5bd30b59.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-57f20fc569590eec1fbf6601d7a961c8eef80f36fcbaa394d607be0bc2137914/component.json": {
+      "sha256": "8727d17225aeeb3c2794b5e6d90af9d368eef512d2307f8e389f7aa275a19201",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-8727d17225aeeb3c2794b5e6d90af9d368eef512d2307f8e389f7aa275a19201.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-57f20fc569590eec1fbf6601d7a961c8eef80f36fcbaa394d607be0bc2137914/build.json": {
+      "sha256": "5671a394cc848dc97220165575f38dab9294154e2026b90c7ceaf0abe6d7e622",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-5671a394cc848dc97220165575f38dab9294154e2026b90c7ceaf0abe6d7e622.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-035f45833ed2593164b66da069f13387191d0520828b62c6bb37bdefa62db16c/component.json": {
+      "sha256": "47d8cd39767e95b93b30a8327c9be4610f8d52df099be5586d4e9da09e1b58cc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-47d8cd39767e95b93b30a8327c9be4610f8d52df099be5586d4e9da09e1b58cc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-035f45833ed2593164b66da069f13387191d0520828b62c6bb37bdefa62db16c/build.json": {
+      "sha256": "ae2aa4dfe2f4a7cf86ecce7c15fcc4f351c2d40aa87da16fe708f210b9243ead",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-ae2aa4dfe2f4a7cf86ecce7c15fcc4f351c2d40aa87da16fe708f210b9243ead.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7b6d9a869d874326fe9e161a5cda27f3ba40f5fa08b0b443a754345b94aa629a/component.json": {
+      "sha256": "8f3b34365b96f97dc9d4dac95971d66c05c1a4489bbce588ae8e292b9e11fc56",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-8f3b34365b96f97dc9d4dac95971d66c05c1a4489bbce588ae8e292b9e11fc56.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7b6d9a869d874326fe9e161a5cda27f3ba40f5fa08b0b443a754345b94aa629a/build.json": {
+      "sha256": "5892a267d9627958823abccb471ab925f3a48b77d018429f52f2319214463cc4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-5892a267d9627958823abccb471ab925f3a48b77d018429f52f2319214463cc4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3bb566635c129a14c92266a252f09fc039be424cfab4b590d8888dd0e5d0f34d/component.json": {
+      "sha256": "490b47ed030e5d7bc5dce75d3e4929dc0a68c89e21eeca8828787da34084326c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-490b47ed030e5d7bc5dce75d3e4929dc0a68c89e21eeca8828787da34084326c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3bb566635c129a14c92266a252f09fc039be424cfab4b590d8888dd0e5d0f34d/build.json": {
+      "sha256": "1d74b3a19f5aa9dedf26ebc95a07c56f23d558587816d323f45185414804501e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1d74b3a19f5aa9dedf26ebc95a07c56f23d558587816d323f45185414804501e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-501db5823cab4371f8441e4c7903cd2b4b6befbd3725851378e65fdaaf48c85f/component.json": {
+      "sha256": "edbec8377a4f7d58523d21b8fb9bf973124a94983f0036143aad4f08290db272",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-edbec8377a4f7d58523d21b8fb9bf973124a94983f0036143aad4f08290db272.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-501db5823cab4371f8441e4c7903cd2b4b6befbd3725851378e65fdaaf48c85f/build.json": {
+      "sha256": "b876a290614f4ac97e9b91a2e1bac55a3e538e427f7dc1c958bec19bd89ca54f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-b876a290614f4ac97e9b91a2e1bac55a3e538e427f7dc1c958bec19bd89ca54f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fdcbc02dcacf6641bd688009445063fba0294fd1e73b466b01488aa69a1b3137/component.json": {
+      "sha256": "fac79ec6f920bd3735124b839284f9cb1cfa552d29cb05cad511a59da301986d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-fac79ec6f920bd3735124b839284f9cb1cfa552d29cb05cad511a59da301986d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fdcbc02dcacf6641bd688009445063fba0294fd1e73b466b01488aa69a1b3137/build.json": {
+      "sha256": "059334787288a5bb6f505813f7a4808e5e9a8d2defce7f12a93b86db2983eafe",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-059334787288a5bb6f505813f7a4808e5e9a8d2defce7f12a93b86db2983eafe.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-e750b6e6b1b3895bb98bb7e8971be8760cbc7bffdadb1f962bfb33f931210dce/component.json": {
+      "sha256": "a082d36c3a4538cc4bd2fa9437512f162fed7cf1146d518a3d366b684def4ec8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a082d36c3a4538cc4bd2fa9437512f162fed7cf1146d518a3d366b684def4ec8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-e750b6e6b1b3895bb98bb7e8971be8760cbc7bffdadb1f962bfb33f931210dce/build.json": {
+      "sha256": "66af5a9c07825082c42eb1ac05801e38b6f7d5bec5b967e39fa1be28357e4148",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-66af5a9c07825082c42eb1ac05801e38b6f7d5bec5b967e39fa1be28357e4148.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-36b924fd60f647d2e49d6c077516431814b63bf3dbff00757a769c60c40499df/component.json": {
+      "sha256": "fc568ec49a21ea8a0c8abc34c144212058a548fdc0dfd587a073aecfa98c83b4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-fc568ec49a21ea8a0c8abc34c144212058a548fdc0dfd587a073aecfa98c83b4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-36b924fd60f647d2e49d6c077516431814b63bf3dbff00757a769c60c40499df/build.json": {
+      "sha256": "a494651572912c64bb91fa634f2706f83930ef1b26a1e7e2783bc5f72b021d0e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a494651572912c64bb91fa634f2706f83930ef1b26a1e7e2783bc5f72b021d0e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-49c0b367defad3c72f8756960d326454490ed629159355bf041ad922f5431096/component.json": {
+      "sha256": "580ca0f819ed36c0148db281e94d4800e1eab23c7def8559d2c76669bb740fc1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-580ca0f819ed36c0148db281e94d4800e1eab23c7def8559d2c76669bb740fc1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-49c0b367defad3c72f8756960d326454490ed629159355bf041ad922f5431096/build.json": {
+      "sha256": "926e991f217aace448ff7f7bfe5494431236b04882152c892a60fc5d41ec9ff0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-926e991f217aace448ff7f7bfe5494431236b04882152c892a60fc5d41ec9ff0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-066036dcd636ec33b865a398792d11f7e0fe8850bd080d2b020d2db35e328b48/component.json": {
+      "sha256": "8168cf7802386507799c04b8849fb1a2e5031270c46bf1d9af38648f23aab265",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-8168cf7802386507799c04b8849fb1a2e5031270c46bf1d9af38648f23aab265.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-066036dcd636ec33b865a398792d11f7e0fe8850bd080d2b020d2db35e328b48/build.json": {
+      "sha256": "760d26f9d9f6263d450d1d93ebc6e7b205e3ee77c2656a47b0603e60f8896a4f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-760d26f9d9f6263d450d1d93ebc6e7b205e3ee77c2656a47b0603e60f8896a4f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-63239dea1d3e5083ec5fbb9c59bd5f4855e442b7fdb9d6e7de5bfc8119948c77/component.json": {
+      "sha256": "52d0629de4d3d2b9e88ec296301440fa11c334f502bcbaeaa244579cb1b1ee71",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-52d0629de4d3d2b9e88ec296301440fa11c334f502bcbaeaa244579cb1b1ee71.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-63239dea1d3e5083ec5fbb9c59bd5f4855e442b7fdb9d6e7de5bfc8119948c77/build.json": {
+      "sha256": "7d6ed8f1ae8c738abf4c1a3fd57c0371549e9d53bd9a2798847689e1909f80e2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-7d6ed8f1ae8c738abf4c1a3fd57c0371549e9d53bd9a2798847689e1909f80e2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-b8110b29e4364cdb2b873c849f666779b91aa96d7b42601e86acef64bd47e105/component.json": {
+      "sha256": "4fe3dc48fe250fa43d433cb57605685f7481394c2e1e33391945d2de7cc7a891",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-4fe3dc48fe250fa43d433cb57605685f7481394c2e1e33391945d2de7cc7a891.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-b8110b29e4364cdb2b873c849f666779b91aa96d7b42601e86acef64bd47e105/build.json": {
+      "sha256": "32bfc2fbb5df7bfd0f08ef1d6d7568ccec940642b852e08a4df62fddb01d42ce",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-32bfc2fbb5df7bfd0f08ef1d6d7568ccec940642b852e08a4df62fddb01d42ce.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-27cd3ace3a21af5078c314fa81c89e4899e67c18d1f057f66934d5183677a183/component.json": {
+      "sha256": "bbcae1175bc4465aadb95ccd85e6b1a7467e406880a8b5c1f1393fdf6185752b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-bbcae1175bc4465aadb95ccd85e6b1a7467e406880a8b5c1f1393fdf6185752b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-27cd3ace3a21af5078c314fa81c89e4899e67c18d1f057f66934d5183677a183/build.json": {
+      "sha256": "36bea2571c634a2c49b1b75680b7a8929c41e30602aad722d2f3fdf49080e167",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-36bea2571c634a2c49b1b75680b7a8929c41e30602aad722d2f3fdf49080e167.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-1a77d561138636b3e014fcbb94c9bfed07b510ee90cf799a49e93882f9af9aa0/component.json": {
+      "sha256": "c8c53c4c5331b9cf39c5d6bedbca6f13cf0d81be51c34e3f41ce407e9db11254",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c8c53c4c5331b9cf39c5d6bedbca6f13cf0d81be51c34e3f41ce407e9db11254.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-1a77d561138636b3e014fcbb94c9bfed07b510ee90cf799a49e93882f9af9aa0/build.json": {
+      "sha256": "0708c77d69040720f5c60c5114f23ba894e9c91a57bfae47e5a6b788b20d87e3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0708c77d69040720f5c60c5114f23ba894e9c91a57bfae47e5a6b788b20d87e3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-cdd9bd9d8358d31c2dceb5ffb86f6215c065995dca9380ac60752a92158a4eb1/component.json": {
+      "sha256": "a54af3fd345728951219d2636aeeba4f3f0b637bf37a314f27386d716cf03ace",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a54af3fd345728951219d2636aeeba4f3f0b637bf37a314f27386d716cf03ace.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-cdd9bd9d8358d31c2dceb5ffb86f6215c065995dca9380ac60752a92158a4eb1/build.json": {
+      "sha256": "5fcfc3522672269a3ecd2ad5770103c40de83ebc5cd6c3ee78eb09ac04919b2c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-5fcfc3522672269a3ecd2ad5770103c40de83ebc5cd6c3ee78eb09ac04919b2c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-1d2ff2d4e97cdf6d17b717d33b80a5845c77875654481ca11e07919e5bd776cd/component.json": {
+      "sha256": "6d0cf73c12f14bb6c409119d88536474c169a402fe77e0a0d72f30f161e44333",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-6d0cf73c12f14bb6c409119d88536474c169a402fe77e0a0d72f30f161e44333.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-1d2ff2d4e97cdf6d17b717d33b80a5845c77875654481ca11e07919e5bd776cd/build.json": {
+      "sha256": "8a181ed6fcddc6dc9d1f4631fbefbc8fb619a64bef924a997f0ec5f821a5a164",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8a181ed6fcddc6dc9d1f4631fbefbc8fb619a64bef924a997f0ec5f821a5a164.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-fd0c7fdb0286f17faf2df61c546ae11233f9a7661ff56a7f8845a9bab21140c6/component.json": {
+      "sha256": "d17207f33d5b238dfb531dce2e2669b2c6164689217429520b664a2413e4e692",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-d17207f33d5b238dfb531dce2e2669b2c6164689217429520b664a2413e4e692.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-fd0c7fdb0286f17faf2df61c546ae11233f9a7661ff56a7f8845a9bab21140c6/build.json": {
+      "sha256": "8bfce880054b1bdb5d962e12b02e5a60f95cec100b32b5dab105544cfb10f06a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8bfce880054b1bdb5d962e12b02e5a60f95cec100b32b5dab105544cfb10f06a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8e84807ca6de91ed59f06f2b58c6b3439b4d71810a51a3de534df65450282b5b/component.json": {
+      "sha256": "eb35f4a4e968c1e96e05a529177b30fdff954f1d7e561a8e103b0affe02c7475",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-eb35f4a4e968c1e96e05a529177b30fdff954f1d7e561a8e103b0affe02c7475.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8e84807ca6de91ed59f06f2b58c6b3439b4d71810a51a3de534df65450282b5b/build.json": {
+      "sha256": "a6845232667648b2c4a1f870f834c48feede092bcbaaa620cd78785f973731c9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a6845232667648b2c4a1f870f834c48feede092bcbaaa620cd78785f973731c9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-4543ba2aa69a54a382a62328d463b677af6ddce77e9d8f5f1ec309da9b47e797/component.json": {
+      "sha256": "205b6e71602310a7ed5ac330cc1138009b13b41423a3dc8213acae4d4fc5a8a9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-205b6e71602310a7ed5ac330cc1138009b13b41423a3dc8213acae4d4fc5a8a9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-4543ba2aa69a54a382a62328d463b677af6ddce77e9d8f5f1ec309da9b47e797/build.json": {
+      "sha256": "8c543751b17013e514d3ea6b074bb72fe62fcdd684f68f56acbc61ed95d41fd9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8c543751b17013e514d3ea6b074bb72fe62fcdd684f68f56acbc61ed95d41fd9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-d659e51bfeb47d17a8e6275d16e57c5642a155408ef417285711e8e691f9ff0f/component.json": {
+      "sha256": "62e2ae0ad22901044a94f4decea5e9b3eb58d0dc80338db237d5e5417b0a2958",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-62e2ae0ad22901044a94f4decea5e9b3eb58d0dc80338db237d5e5417b0a2958.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-d659e51bfeb47d17a8e6275d16e57c5642a155408ef417285711e8e691f9ff0f/build.json": {
+      "sha256": "20ee2849d8c3d4434587d4c7a1c85978cd05b884a8962c164089f999a4b8e7be",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-20ee2849d8c3d4434587d4c7a1c85978cd05b884a8962c164089f999a4b8e7be.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-22964d41596f2460c9993d87a2efd35bbc6a59cd148c06c676f2de50c5999911/component.json": {
+      "sha256": "d913c820ff70a6af689d773e5614b31f65a02d10be8720ecfc62188783b39193",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-d913c820ff70a6af689d773e5614b31f65a02d10be8720ecfc62188783b39193.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-22964d41596f2460c9993d87a2efd35bbc6a59cd148c06c676f2de50c5999911/build.json": {
+      "sha256": "857eaed8ebe5e00230926c45783a05f4a196064f53ae10f2e990501f829a9625",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-857eaed8ebe5e00230926c45783a05f4a196064f53ae10f2e990501f829a9625.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-bfe9346d0cfbb470b893c6815ff8050b550f93b8b5b77710108f1781d5ae9952/component.json": {
+      "sha256": "c78e99c3fc24d2f870f2f92ba1e9bbbc934e58101a9753fd49817f9fe243ad45",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c78e99c3fc24d2f870f2f92ba1e9bbbc934e58101a9753fd49817f9fe243ad45.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-bfe9346d0cfbb470b893c6815ff8050b550f93b8b5b77710108f1781d5ae9952/build.json": {
+      "sha256": "0106071fc9ba0e4619418e52ce164f249cf2ec8b5c0035eca785bd50110a0001",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0106071fc9ba0e4619418e52ce164f249cf2ec8b5c0035eca785bd50110a0001.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e7f3234c376d474cbe8bae7808b4d07a4f4fe26057644dfe11aa6b4bb5946994/component.json": {
+      "sha256": "7f131034600bc61c6a72aad83df582e16f5c73d2326aaf5a2d27e44bb74086da",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-7f131034600bc61c6a72aad83df582e16f5c73d2326aaf5a2d27e44bb74086da.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e7f3234c376d474cbe8bae7808b4d07a4f4fe26057644dfe11aa6b4bb5946994/build.json": {
+      "sha256": "9075162ed9ee093ac4be2d2aebabd1d5420ed4c924910a5272b7f7d382aea311",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-9075162ed9ee093ac4be2d2aebabd1d5420ed4c924910a5272b7f7d382aea311.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-79e62f87b1ec83a2c41c96528ed2a706fdd2128053d6468d0b02a426c2ebb1ea/component.json": {
+      "sha256": "dfe2f31930abcbace57f01ae051a6449ac055b1eb03edf39f5c53037872778b3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-dfe2f31930abcbace57f01ae051a6449ac055b1eb03edf39f5c53037872778b3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-79e62f87b1ec83a2c41c96528ed2a706fdd2128053d6468d0b02a426c2ebb1ea/build.json": {
+      "sha256": "844526ed601243a2fd9abbd908b91659702ec7d1e446dd569a27213be36f45ce",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-844526ed601243a2fd9abbd908b91659702ec7d1e446dd569a27213be36f45ce.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fe3939eb0a5ab64de70729d74f8c356fd599c4ff3941bf25af749cb17937aa32/component.json": {
+      "sha256": "4eacbc4a43425a30167cae27860e0addaf1f54c681dd906abc6f7bb6c5e1b2bd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-4eacbc4a43425a30167cae27860e0addaf1f54c681dd906abc6f7bb6c5e1b2bd.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fe3939eb0a5ab64de70729d74f8c356fd599c4ff3941bf25af749cb17937aa32/build.json": {
+      "sha256": "b5c3303999e4e950df8cb60fe06d0f72596e136590fc7e89719bd62c7b41ce5d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-b5c3303999e4e950df8cb60fe06d0f72596e136590fc7e89719bd62c7b41ce5d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-ba49598a893206f925d83425b5dea44f069ed12f77b49f97b73d42f3920cc986/component.json": {
+      "sha256": "3ea98c34aac997329881db10a3eeccde26b2a3e0019bf1b856d1638f452f1597",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3ea98c34aac997329881db10a3eeccde26b2a3e0019bf1b856d1638f452f1597.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-ba49598a893206f925d83425b5dea44f069ed12f77b49f97b73d42f3920cc986/build.json": {
+      "sha256": "0fc6fec4a1dfe043e77455a30172a947ae93e42e744868a09c1b67ae3a33fa3a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0fc6fec4a1dfe043e77455a30172a947ae93e42e744868a09c1b67ae3a33fa3a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-3b0b4025913122bab5465af12a98872b530ce428e2116902112da08514779286/component.json": {
+      "sha256": "e5b0165734585430e38b3d5e432a6392271aee14fa30204aebf17ecceab46c79",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-e5b0165734585430e38b3d5e432a6392271aee14fa30204aebf17ecceab46c79.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-3b0b4025913122bab5465af12a98872b530ce428e2116902112da08514779286/build.json": {
+      "sha256": "2c5bfdd348b7eb7b0e4e15f94f1f58f5f8ff9aad642f43a8aa56db2990b38fc1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2c5bfdd348b7eb7b0e4e15f94f1f58f5f8ff9aad642f43a8aa56db2990b38fc1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-56c41daa2abfc82dbeb8aacd9a9bca6c252c6cc7d35663a406a573c2de9778f7/component.json": {
+      "sha256": "e631e9beb61d94fdc9468bf805be7dbd4b8af9a4c494376d4a0e785f5dcfea59",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-e631e9beb61d94fdc9468bf805be7dbd4b8af9a4c494376d4a0e785f5dcfea59.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-56c41daa2abfc82dbeb8aacd9a9bca6c252c6cc7d35663a406a573c2de9778f7/build.json": {
+      "sha256": "6d29bfee7112a819625fd9121afc5ea9a875e583101749680721ed9d2b114bef",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-6d29bfee7112a819625fd9121afc5ea9a875e583101749680721ed9d2b114bef.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2c4a2d5aa3043e91aa0b50b95e3b7811fe4730c3632e5abc16dab06a497cc90b/component.json": {
+      "sha256": "c47b5f6b3d6ccd9a4db844c4bc813e38313c4bd2e4b1e4185bbce2dcb8c4a481",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c47b5f6b3d6ccd9a4db844c4bc813e38313c4bd2e4b1e4185bbce2dcb8c4a481.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2c4a2d5aa3043e91aa0b50b95e3b7811fe4730c3632e5abc16dab06a497cc90b/build.json": {
+      "sha256": "5924aa031f54255f7ebd0dcdc29dd46de85be40020a017ba14d1d6d444183f75",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-5924aa031f54255f7ebd0dcdc29dd46de85be40020a017ba14d1d6d444183f75.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-491f404d32aefa0649fedc9559c86fa6390e2fa877be93ee659b4cc31aab051f/component.json": {
+      "sha256": "48e1358f99afc8290e9f5ba78f95507a0de4627aaa5b6b53ea89bdb8a75c750f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-48e1358f99afc8290e9f5ba78f95507a0de4627aaa5b6b53ea89bdb8a75c750f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-491f404d32aefa0649fedc9559c86fa6390e2fa877be93ee659b4cc31aab051f/build.json": {
+      "sha256": "d82869266e4ec6d445b844ec33220a1c723959e81b5fe0199fe0951e40165d22",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-d82869266e4ec6d445b844ec33220a1c723959e81b5fe0199fe0951e40165d22.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-71b160befcfdb19557cd31db2b30636ba594585a110e2c1748754b4d18bac4ac/component.json": {
+      "sha256": "8e3611b541c36e58f1e1758799157d9d92ba2ffa22eb92c5e2150c8ad0947218",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-8e3611b541c36e58f1e1758799157d9d92ba2ffa22eb92c5e2150c8ad0947218.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-71b160befcfdb19557cd31db2b30636ba594585a110e2c1748754b4d18bac4ac/build.json": {
+      "sha256": "d4625d17a9da65f8dc803089a71b32f5535f0cc23db6a26f3f61dd7f91791032",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-d4625d17a9da65f8dc803089a71b32f5535f0cc23db6a26f3f61dd7f91791032.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2f511e4f1e192a5c820f3603d03c7988057979a62f6784ce8c621262d202f064/component.json": {
+      "sha256": "c2af40cb93d7d726e8fa2bce50e4f203471b985205f1d03b2d7d2a48c13655e9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c2af40cb93d7d726e8fa2bce50e4f203471b985205f1d03b2d7d2a48c13655e9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2f511e4f1e192a5c820f3603d03c7988057979a62f6784ce8c621262d202f064/build.json": {
+      "sha256": "f4a39d7da230f757d7cdd69cf5db6d7f63680ea942415721df4b8c2dda78817d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-f4a39d7da230f757d7cdd69cf5db6d7f63680ea942415721df4b8c2dda78817d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-93e9f4b7a8f8db2e0c9df182c47eb3679cdc58c0315561b133e0d07ba427207f/component.json": {
+      "sha256": "eca7d8fcaede3c0b8d1f3ebda7a4f1665c9885baf8e872da18605105686aa74a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-eca7d8fcaede3c0b8d1f3ebda7a4f1665c9885baf8e872da18605105686aa74a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-93e9f4b7a8f8db2e0c9df182c47eb3679cdc58c0315561b133e0d07ba427207f/build.json": {
+      "sha256": "18e3fb8f8473388373029f1d79eedf42f0e08cc52fc01e1cb42ed716c2df03a6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-18e3fb8f8473388373029f1d79eedf42f0e08cc52fc01e1cb42ed716c2df03a6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5986b9db2fe33da8e10861f54fe185bf4316f3e9cb96e9360b3b48a0b5f41a1a/component.json": {
+      "sha256": "937abed3a8e9e92de19d0310b473482a3237b9594eb2299583e6a43cab0ae485",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-937abed3a8e9e92de19d0310b473482a3237b9594eb2299583e6a43cab0ae485.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5986b9db2fe33da8e10861f54fe185bf4316f3e9cb96e9360b3b48a0b5f41a1a/build.json": {
+      "sha256": "39205caff67cd3f51ff5f6bb2c0384d8476db8e5977dca538a5db57e6af2dc62",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-39205caff67cd3f51ff5f6bb2c0384d8476db8e5977dca538a5db57e6af2dc62.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-161c00c19a15acc8d6738015c2d15572268c60768c11fae13c3aec279be80843/component.json": {
+      "sha256": "d59e5c2237f9c7d862034b5d0ff4ddc780fec2c547e8ce4ae8d17ada3971813e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-d59e5c2237f9c7d862034b5d0ff4ddc780fec2c547e8ce4ae8d17ada3971813e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-161c00c19a15acc8d6738015c2d15572268c60768c11fae13c3aec279be80843/build.json": {
+      "sha256": "eb78d0b40662b90bca12471179ec0360063f14b20fe8d4b3b69bae5dd0216eff",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-eb78d0b40662b90bca12471179ec0360063f14b20fe8d4b3b69bae5dd0216eff.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-cf3bedcb25d030d27ab5cf0295694494597a5f48debd18f9282c8b660c5688ef/component.json": {
+      "sha256": "ff6edf549eba4748b0e2958ad1e1f3196a681b6c4d110722791e1e61c8339b8f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ff6edf549eba4748b0e2958ad1e1f3196a681b6c4d110722791e1e61c8339b8f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-cf3bedcb25d030d27ab5cf0295694494597a5f48debd18f9282c8b660c5688ef/build.json": {
+      "sha256": "a6a9da5929f1f0e9cb27e74fb4f62932175ead44eacc5d340db1e6d8967209c9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a6a9da5929f1f0e9cb27e74fb4f62932175ead44eacc5d340db1e6d8967209c9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-cba784fa9153982b44968ad9c48e020b2918eec9cba7e003edefc0a700b2a8cd/component.json": {
+      "sha256": "87cbe5e722a097ab3f159d3f2b6b77cf612257fb4a59df889c0c3ab960203da2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-87cbe5e722a097ab3f159d3f2b6b77cf612257fb4a59df889c0c3ab960203da2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-cba784fa9153982b44968ad9c48e020b2918eec9cba7e003edefc0a700b2a8cd/build.json": {
+      "sha256": "8397d39490fe4f0195ad52d29fc8049cab1f810cd2cd23e168b1d164926efad5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8397d39490fe4f0195ad52d29fc8049cab1f810cd2cd23e168b1d164926efad5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-175b66c384dcd3e94c2e0fef9fa267fa436d59e6e52bf65baaf62fbd409d016e/component.json": {
+      "sha256": "e3a6b1b5ef296f9b65e45f9c193c6081ba6cfb6e464dd658539d07ec25f27929",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-e3a6b1b5ef296f9b65e45f9c193c6081ba6cfb6e464dd658539d07ec25f27929.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-175b66c384dcd3e94c2e0fef9fa267fa436d59e6e52bf65baaf62fbd409d016e/build.json": {
+      "sha256": "2d67be7720cabfd9ae84465ce980f115adc9e6cb539b1f99b5ffa48cf04006de",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2d67be7720cabfd9ae84465ce980f115adc9e6cb539b1f99b5ffa48cf04006de.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2965a7f3adf7ff027ffc8734098c0e2802ac0a34d20fc1a8fa59f445cdb7ff26/component.json": {
+      "sha256": "a3e5506232ed5c091a3704b4800dd63a4754f6ca767d0be7b209245ede3ead7c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a3e5506232ed5c091a3704b4800dd63a4754f6ca767d0be7b209245ede3ead7c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-2965a7f3adf7ff027ffc8734098c0e2802ac0a34d20fc1a8fa59f445cdb7ff26/build.json": {
+      "sha256": "5236a22b61bb428d7c4cd568547a75db8efbe331013cd8862b31f5b1431d34b0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-5236a22b61bb428d7c4cd568547a75db8efbe331013cd8862b31f5b1431d34b0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-0b2a2bf1108ac9b6158c6e408cf6014425e9010183627ef2a05cb4de42fe04a4/component.json": {
+      "sha256": "5511e13dac8d8cc15b841bdbad866037adbe085f467b2f3aa487436574687227",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-5511e13dac8d8cc15b841bdbad866037adbe085f467b2f3aa487436574687227.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-0b2a2bf1108ac9b6158c6e408cf6014425e9010183627ef2a05cb4de42fe04a4/build.json": {
+      "sha256": "df722a365effdf3aceeea7707a8d3ef2511b577a4ab69e3571715b9ac4b2e6ca",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-df722a365effdf3aceeea7707a8d3ef2511b577a4ab69e3571715b9ac4b2e6ca.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8d2a4b7879d855daff820f7d440506ae9acd55e9481cee05f9396b4f76c94568/component.json": {
+      "sha256": "28d0203e479c1b713afa99eab456c865c2ef8d65df4e86164433bbee697f3642",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-28d0203e479c1b713afa99eab456c865c2ef8d65df4e86164433bbee697f3642.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8d2a4b7879d855daff820f7d440506ae9acd55e9481cee05f9396b4f76c94568/build.json": {
+      "sha256": "8cf85175f05bc1a55c87e5eea6ca2eb44d40d85bae75fed98c51662628e66385",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8cf85175f05bc1a55c87e5eea6ca2eb44d40d85bae75fed98c51662628e66385.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-14bbdd0f114a8bc60cc581c31ca379e7274662492ce34c653133e31ab617f0f9/component.json": {
+      "sha256": "35b242a0e850a07a62f104991c964f81fa9605c609becf06aa48050c88d4caa0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-35b242a0e850a07a62f104991c964f81fa9605c609becf06aa48050c88d4caa0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-14bbdd0f114a8bc60cc581c31ca379e7274662492ce34c653133e31ab617f0f9/build.json": {
+      "sha256": "2f97c3e20a06fc32a5dbeb301752b8555fe2637421a5d69b56d5f171fa5416e8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2f97c3e20a06fc32a5dbeb301752b8555fe2637421a5d69b56d5f171fa5416e8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-aecb4ecfde8ada917113cc0bf2b4410818cd0843cc1f70c63b4fcb42ca8e8c56/component.json": {
+      "sha256": "b73134750b403609f08ea97b612696f9a09a184328698c7c6c2c8ac2f80349f4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b73134750b403609f08ea97b612696f9a09a184328698c7c6c2c8ac2f80349f4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-aecb4ecfde8ada917113cc0bf2b4410818cd0843cc1f70c63b4fcb42ca8e8c56/build.json": {
+      "sha256": "751d6d939c294c91115c0e88b42283fbc4b4f55a8066d82e95c4d0996a8e720e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-751d6d939c294c91115c0e88b42283fbc4b4f55a8066d82e95c4d0996a8e720e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-10f073f0d352207ee8ce18d92dfe8925ae70ba51bf8bb0dc985614d7e65b46c3/component.json": {
+      "sha256": "06d5d47bf351a67c8e91297a3bc2a03baeceff93b348c64ac1b2d75a4ca4cd0a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-06d5d47bf351a67c8e91297a3bc2a03baeceff93b348c64ac1b2d75a4ca4cd0a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-10f073f0d352207ee8ce18d92dfe8925ae70ba51bf8bb0dc985614d7e65b46c3/build.json": {
+      "sha256": "732d2cd55a5627713989c9c8d512df7a69bca5de21e102ec29b8bba992dcbc3e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-732d2cd55a5627713989c9c8d512df7a69bca5de21e102ec29b8bba992dcbc3e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-985d6abe88b8b81d6b4540a4269bdbb0bc1cc864dda4309085dacacb0650725b/component.json": {
+      "sha256": "9450262b4973710264847d142ddf7f9e3fb059cfe1ff3b8fa9e568736e310ac8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-9450262b4973710264847d142ddf7f9e3fb059cfe1ff3b8fa9e568736e310ac8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-985d6abe88b8b81d6b4540a4269bdbb0bc1cc864dda4309085dacacb0650725b/build.json": {
+      "sha256": "8c4c642c1bc6889e5555e1c033f6a69c3d90ebc85bc99b3783b9d16e9eab20b6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8c4c642c1bc6889e5555e1c033f6a69c3d90ebc85bc99b3783b9d16e9eab20b6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-b15def935902ac3bae8f74ee8edf770fa4f3223ab0a3ad409e9c50ba657e8227/component.json": {
+      "sha256": "873a85c5bad41d20a2807fb8383880fa5adfb7a7507f8f71008c3ba1930089d4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-873a85c5bad41d20a2807fb8383880fa5adfb7a7507f8f71008c3ba1930089d4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-b15def935902ac3bae8f74ee8edf770fa4f3223ab0a3ad409e9c50ba657e8227/build.json": {
+      "sha256": "70010105741dba055dc06797d04f6f061ff2d560aa441a4159f77036ea2a664b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-70010105741dba055dc06797d04f6f061ff2d560aa441a4159f77036ea2a664b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5f52aeb8f68534b74516ba4a83dc719212ff9fbc96d18c00bc9889499539423a/component.json": {
+      "sha256": "de27341c6bcbf8f6efc53cfd9cb789191ee28431f085009d520ca0cb54461056",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-de27341c6bcbf8f6efc53cfd9cb789191ee28431f085009d520ca0cb54461056.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5f52aeb8f68534b74516ba4a83dc719212ff9fbc96d18c00bc9889499539423a/build.json": {
+      "sha256": "a5b0f27c9cfc6817d5fd53ce5e68326d66b8588486b5d8dd9f18154d35deb7dc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a5b0f27c9cfc6817d5fd53ce5e68326d66b8588486b5d8dd9f18154d35deb7dc.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-84d0bcff2d3a62cc3cc15b5475acaa0d16441f0ec68271b5a9cffb2893162b71/component.json": {
+      "sha256": "9da02bf70a698451b4184f6847d7cad653f205706bb6c2dd2aec317116676dff",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-9da02bf70a698451b4184f6847d7cad653f205706bb6c2dd2aec317116676dff.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-84d0bcff2d3a62cc3cc15b5475acaa0d16441f0ec68271b5a9cffb2893162b71/build.json": {
+      "sha256": "cdb39135891845b60d4320ff01af8eccb14dc20d2ac802c46368e90f3ff58f49",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-cdb39135891845b60d4320ff01af8eccb14dc20d2ac802c46368e90f3ff58f49.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e85b51d70b169e8ad64cb7f9918e3d6e1d8abd949b76744ca14e389d0787cf64/component.json": {
+      "sha256": "a73e214a73a79acce85ed5912bc5ab374be601053748c58419ec57f158b20877",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a73e214a73a79acce85ed5912bc5ab374be601053748c58419ec57f158b20877.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e85b51d70b169e8ad64cb7f9918e3d6e1d8abd949b76744ca14e389d0787cf64/build.json": {
+      "sha256": "79a4001c3a448f4eb92f7dea25026643bf8166d9ffd4cade143bb9ea4b3ecc76",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-79a4001c3a448f4eb92f7dea25026643bf8166d9ffd4cade143bb9ea4b3ecc76.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-c7ce6bf12c40113dcff4479577a8220cc21ba17e0a15d36b083745bf1d7afd85/component.json": {
+      "sha256": "9b57b03944baa3008fc01de4c93713dd7a8ec49ccff74797c89c752dfdaf8e40",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-9b57b03944baa3008fc01de4c93713dd7a8ec49ccff74797c89c752dfdaf8e40.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-c7ce6bf12c40113dcff4479577a8220cc21ba17e0a15d36b083745bf1d7afd85/build.json": {
+      "sha256": "3a13d19743d6ecf0dcfb2024408c04151d1b874c9a14c0c08f78ee7cfadf4feb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-3a13d19743d6ecf0dcfb2024408c04151d1b874c9a14c0c08f78ee7cfadf4feb.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9a15e246cb26f0565a5d05350206cc9412881c2bc3ec4d3e42980bdd7fe3a189/component.json": {
+      "sha256": "c9f64d451483c76453c87f71e337bcf3b071ad42de860b9f7c475f9471a57670",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c9f64d451483c76453c87f71e337bcf3b071ad42de860b9f7c475f9471a57670.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-9a15e246cb26f0565a5d05350206cc9412881c2bc3ec4d3e42980bdd7fe3a189/build.json": {
+      "sha256": "24b7990e5ce6e0ab363934f76416524fcc57e9ce06f2c5f09dcf5e7f187140e1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-24b7990e5ce6e0ab363934f76416524fcc57e9ce06f2c5f09dcf5e7f187140e1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-ef2a85ae56399b6739cb7716c1bd57e3e2d33756bb85936d3f3af2f65de60f19/component.json": {
+      "sha256": "51961ab3d248ba27caad6b7e803de9ff08e170cbe816e7741856abe389cb9539",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-51961ab3d248ba27caad6b7e803de9ff08e170cbe816e7741856abe389cb9539.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-ef2a85ae56399b6739cb7716c1bd57e3e2d33756bb85936d3f3af2f65de60f19/build.json": {
+      "sha256": "2b475fffefdda0b0ab35b3bdb3d8f17587dedb7b7cadff142c08a4605ca67bff",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2b475fffefdda0b0ab35b3bdb3d8f17587dedb7b7cadff142c08a4605ca67bff.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-b924c075dbec4003b5b14aff223a1d4049d73444c4aa3e0ea35ec79d410d28a6/component.json": {
+      "sha256": "97fa807914b57c9f3035228b017e3aff041ba7979b5597a7adeec4e052222f7d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-97fa807914b57c9f3035228b017e3aff041ba7979b5597a7adeec4e052222f7d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-b924c075dbec4003b5b14aff223a1d4049d73444c4aa3e0ea35ec79d410d28a6/build.json": {
+      "sha256": "a26ba04086b6ac494457f57c5d408c8ea7fd265f735e27589f52c60337a3e4e4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-a26ba04086b6ac494457f57c5d408c8ea7fd265f735e27589f52c60337a3e4e4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8665bda7a8fca12cb74170c13a622a2dc732e6607d5e57a03a7872386504c927/component.json": {
+      "sha256": "e6a16e60c1a4e9af5267728434be6e58970f124b31d4c6b4dd2b452363413cb1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-e6a16e60c1a4e9af5267728434be6e58970f124b31d4c6b4dd2b452363413cb1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8665bda7a8fca12cb74170c13a622a2dc732e6607d5e57a03a7872386504c927/build.json": {
+      "sha256": "f5e67d0ba3b836aa33beef8b7da250f2cc72613daa0cbacec9504e596eed0e22",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-f5e67d0ba3b836aa33beef8b7da250f2cc72613daa0cbacec9504e596eed0e22.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5c6d5790d3f0d2174f5bb7faf4dc658f3e3659ff91728cc052c17dde7a33567a/component.json": {
+      "sha256": "3cc49f3514577256e134c8bbfc5abdcbb2f37a071001f665c5cd9345b179f578",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3cc49f3514577256e134c8bbfc5abdcbb2f37a071001f665c5cd9345b179f578.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5c6d5790d3f0d2174f5bb7faf4dc658f3e3659ff91728cc052c17dde7a33567a/build.json": {
+      "sha256": "cdaa7d3e3c8a50a145c3059ae4252c88df65602dc4ffccc31682cdfede0a2350",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-cdaa7d3e3c8a50a145c3059ae4252c88df65602dc4ffccc31682cdfede0a2350.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-98764cec49ac942484262daece63654450dc05f14f0abe326ca326dfb792ce39/component.json": {
+      "sha256": "3805ba9b840bac404bdf6d1a012725804035e61099830d63b92199b1d2696f94",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3805ba9b840bac404bdf6d1a012725804035e61099830d63b92199b1d2696f94.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-98764cec49ac942484262daece63654450dc05f14f0abe326ca326dfb792ce39/build.json": {
+      "sha256": "491bbfd7713aae49ef2722d1ae3e76e40ca5486e1e85c1dc0bb6ae835edec789",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-491bbfd7713aae49ef2722d1ae3e76e40ca5486e1e85c1dc0bb6ae835edec789.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-75e573b5c35fe3ea27afdde8bcb3d0b1e8f9e77d7cd87316fe6f6847e534735d/component.json": {
+      "sha256": "2a7171c0ee32bcbac4b3e7951261560d78934e05ba027f0587e116f83655d83b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-2a7171c0ee32bcbac4b3e7951261560d78934e05ba027f0587e116f83655d83b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-75e573b5c35fe3ea27afdde8bcb3d0b1e8f9e77d7cd87316fe6f6847e534735d/build.json": {
+      "sha256": "0f0d215f536a85d37a4124b94f61414a2acf3e60af7c8b023e9a851027b3e2bb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0f0d215f536a85d37a4124b94f61414a2acf3e60af7c8b023e9a851027b3e2bb.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7c20f91182aa7a404f42161ca47f47a8659668e938ec74a63824acf0f00137b0/component.json": {
+      "sha256": "9b6e77628d43121a90a06d63d0820b8246093299603881519e46eda46b7a91f7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-9b6e77628d43121a90a06d63d0820b8246093299603881519e46eda46b7a91f7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7c20f91182aa7a404f42161ca47f47a8659668e938ec74a63824acf0f00137b0/build.json": {
+      "sha256": "bbf161a4e9c8344db221bc7762261d5db4256f72eb5639f48102f85e925060ec",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-bbf161a4e9c8344db221bc7762261d5db4256f72eb5639f48102f85e925060ec.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e558b79a594b462872e3f176cc48af897b638ac5e1e98f70be9a06018a57af67/component.json": {
+      "sha256": "1ee9fb023cb862934cfed1f8eb0fe6b0b83a26aeca8ba83c0f9f74fa4ae9fdce",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-1ee9fb023cb862934cfed1f8eb0fe6b0b83a26aeca8ba83c0f9f74fa4ae9fdce.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e558b79a594b462872e3f176cc48af897b638ac5e1e98f70be9a06018a57af67/build.json": {
+      "sha256": "ae4be3a719974410ffc983915548d9bde4814b6c205bcc86be33160d53e20a1e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-ae4be3a719974410ffc983915548d9bde4814b6c205bcc86be33160d53e20a1e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-4e97c9941ef3c5270e2ffeba7e39f9c02640cb6a072531aef031dd8639ae2142/component.json": {
+      "sha256": "385f1bcf4034ecce8a8cc4378ddaa9560235cb559bb83846ec62fe9bbb7a7bff",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-385f1bcf4034ecce8a8cc4378ddaa9560235cb559bb83846ec62fe9bbb7a7bff.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-4e97c9941ef3c5270e2ffeba7e39f9c02640cb6a072531aef031dd8639ae2142/build.json": {
+      "sha256": "71cb244c3540beb6fddc4e2182a6c95e6826485fe88ffb55fbbd8508a8b090c9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-71cb244c3540beb6fddc4e2182a6c95e6826485fe88ffb55fbbd8508a8b090c9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-cf4da9b3225366b32720647c2b8075dd27694058a74d28ff051355a93fb203ba/component.json": {
+      "sha256": "85bc37a5f66eb942de7b6166b2263d666c0094e9e1e550a69864bc821b0dd353",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-85bc37a5f66eb942de7b6166b2263d666c0094e9e1e550a69864bc821b0dd353.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-cf4da9b3225366b32720647c2b8075dd27694058a74d28ff051355a93fb203ba/build.json": {
+      "sha256": "9fadb0f36ea0d4e4f7ed77387d29e003d1fd12e0fb53014ce2bff585a8962505",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-9fadb0f36ea0d4e4f7ed77387d29e003d1fd12e0fb53014ce2bff585a8962505.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7b33956ca5271ef9806703088334f49db1854d865cefe06b7f96e5d6587356d7/component.json": {
+      "sha256": "54da0a3cd5312d4c8a377914c7e765f779ead19c19469602672d88772d6fb316",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-54da0a3cd5312d4c8a377914c7e765f779ead19c19469602672d88772d6fb316.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7b33956ca5271ef9806703088334f49db1854d865cefe06b7f96e5d6587356d7/build.json": {
+      "sha256": "1e213bc26ed10fd68812ed4b6426933bd037200d6a30e986427b113623511376",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1e213bc26ed10fd68812ed4b6426933bd037200d6a30e986427b113623511376.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-72fc9fbbddc138f5c04d9a35a24fee671199bbde55dc4c1f4b87196a532972be/component.json": {
+      "sha256": "7364fdb82722e89f4eabb917a967cf412acb3a4352dfd9da9d0a2d4aada96938",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-7364fdb82722e89f4eabb917a967cf412acb3a4352dfd9da9d0a2d4aada96938.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-72fc9fbbddc138f5c04d9a35a24fee671199bbde55dc4c1f4b87196a532972be/build.json": {
+      "sha256": "ef17f6485ac75521f187057ea200213e0d6f369fd741a89c7e1661512b6acecd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-ef17f6485ac75521f187057ea200213e0d6f369fd741a89c7e1661512b6acecd.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5929ef8a9ca85e075d41f4ef51a9b891e5cd20453372668260da35b5be98ffe3/component.json": {
+      "sha256": "3632033b5ac1d9fe32c9e97e09f0d09e213583c9eec4bcbae281a48e8f7f67f2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3632033b5ac1d9fe32c9e97e09f0d09e213583c9eec4bcbae281a48e8f7f67f2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5929ef8a9ca85e075d41f4ef51a9b891e5cd20453372668260da35b5be98ffe3/build.json": {
+      "sha256": "1911d2f5ad7f00733a3f27b7326b9522acd818741d6f474f4b9a0fd4de55e9ec",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1911d2f5ad7f00733a3f27b7326b9522acd818741d6f474f4b9a0fd4de55e9ec.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-6c25303ff26d15081d312e731a5cdbe234d199c402c7bb710f3f72b0ffe3c3ad/component.json": {
+      "sha256": "0e90698a868e994a7cce8269f97fbe24dced6fb029eac175cb6d319aeb261fb1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-0e90698a868e994a7cce8269f97fbe24dced6fb029eac175cb6d319aeb261fb1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-6c25303ff26d15081d312e731a5cdbe234d199c402c7bb710f3f72b0ffe3c3ad/build.json": {
+      "sha256": "4595476f3596ae474b5751f5a4885847595312ace552cc757c943013ede4d3b5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-4595476f3596ae474b5751f5a4885847595312ace552cc757c943013ede4d3b5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-67b69e357e1bd67dacdef155ae0e047bd9383516cde9c5af0724920c23a1fc0e/component.json": {
+      "sha256": "55861efc3f71ee227ac64984480f26bbda12243c3fec86bbf0bd1b37aaab7d6c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-55861efc3f71ee227ac64984480f26bbda12243c3fec86bbf0bd1b37aaab7d6c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-67b69e357e1bd67dacdef155ae0e047bd9383516cde9c5af0724920c23a1fc0e/build.json": {
+      "sha256": "673ef6b167dda0ef7f0ff94a48d882433bac98290d70f04d156a791b4ac5b7b0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-673ef6b167dda0ef7f0ff94a48d882433bac98290d70f04d156a791b4ac5b7b0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-cf863e4f94f9b5b90c2fe5d7a7b0a3d2d48b1ae229701e1d695596b8e0ea8c9f/component.json": {
+      "sha256": "5f0de2b1c9d12e2f28262466bd2cc54c1b6d344d0adfadc38eff05e4815e295f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-5f0de2b1c9d12e2f28262466bd2cc54c1b6d344d0adfadc38eff05e4815e295f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-cf863e4f94f9b5b90c2fe5d7a7b0a3d2d48b1ae229701e1d695596b8e0ea8c9f/build.json": {
+      "sha256": "c1e67ebe5e8be6631c2792cf8a75212634019455fb9d9ce28d9b4c85e16c1fdd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-c1e67ebe5e8be6631c2792cf8a75212634019455fb9d9ce28d9b4c85e16c1fdd.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3f012139ed49951f30024d6c7f6e815aec05422fe7b99f105d8064a374498f60/component.json": {
+      "sha256": "9e6c671c78bd1b20767b59190cfdea581a1b94803b9013c247d429bfa00f565d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-9e6c671c78bd1b20767b59190cfdea581a1b94803b9013c247d429bfa00f565d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3f012139ed49951f30024d6c7f6e815aec05422fe7b99f105d8064a374498f60/build.json": {
+      "sha256": "8d31b5f28a7fa8ff65bdd8679588bfc676fa2864437dae0d7daf9f662ebeafe7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-8d31b5f28a7fa8ff65bdd8679588bfc676fa2864437dae0d7daf9f662ebeafe7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-137985361e302295ddc21932bcd0a82a0ff08d3b141a063781c1ffe7ae335339/component.json": {
+      "sha256": "b9610cbd578af1adc07877bc2b5e328a2564c4a8b6c9ec4c255f96f19d01d92b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b9610cbd578af1adc07877bc2b5e328a2564c4a8b6c9ec4c255f96f19d01d92b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-137985361e302295ddc21932bcd0a82a0ff08d3b141a063781c1ffe7ae335339/build.json": {
+      "sha256": "81213642493372a70fe40b9b2be3003afd32f0c8b07f93efde713483cdfcad24",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-81213642493372a70fe40b9b2be3003afd32f0c8b07f93efde713483cdfcad24.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-73d1c0358b1f62507bf3dd2857dcc9f310d93d36fb040e1205cdb030e1345334/component.json": {
+      "sha256": "16f5e5e3ffbbadf167627a3a280849496fef2a0f6f70e43fab87e1eaa88d05a2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-16f5e5e3ffbbadf167627a3a280849496fef2a0f6f70e43fab87e1eaa88d05a2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-73d1c0358b1f62507bf3dd2857dcc9f310d93d36fb040e1205cdb030e1345334/build.json": {
+      "sha256": "610817678205991bff63278a6a67e51720d4c92ad27cdc64a53f54660686b097",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-610817678205991bff63278a6a67e51720d4c92ad27cdc64a53f54660686b097.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5ca4491daf938c49467efba7060afa54b014335aac09df6011cba0dde1fe3a61/component.json": {
+      "sha256": "92cdb5461ea07f4a74941eb4c46779c04576146f743efc53d7a281b5b9b40fee",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-92cdb5461ea07f4a74941eb4c46779c04576146f743efc53d7a281b5b9b40fee.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-5ca4491daf938c49467efba7060afa54b014335aac09df6011cba0dde1fe3a61/build.json": {
+      "sha256": "9e5753e0941e081bc8dc3a619a425c00e0227988d188bc32a22e81b1921c5148",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-9e5753e0941e081bc8dc3a619a425c00e0227988d188bc32a22e81b1921c5148.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-0c2619e90b963d558203bd918b19efa64dc5ed596dd59a8e3578516a569a168c/component.json": {
+      "sha256": "3167b6d256467093b62cd4e42728aea82f049762c29c3df762e3a356f217a40c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3167b6d256467093b62cd4e42728aea82f049762c29c3df762e3a356f217a40c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-0c2619e90b963d558203bd918b19efa64dc5ed596dd59a8e3578516a569a168c/build.json": {
+      "sha256": "333282c1ea472f40c139623c58a0769187ecfd3762386c73fd3344c3f37256be",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-333282c1ea472f40c139623c58a0769187ecfd3762386c73fd3344c3f37256be.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-90ba4e9be3f9e4fbae756d3e281b80637c0d8c21ed4458ebbd36c99bb462fdc0/component.json": {
+      "sha256": "f3a1e6f38e597aa5abc379d975884e76716fb23d2984edf0da6feedafde17c35",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-f3a1e6f38e597aa5abc379d975884e76716fb23d2984edf0da6feedafde17c35.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-90ba4e9be3f9e4fbae756d3e281b80637c0d8c21ed4458ebbd36c99bb462fdc0/build.json": {
+      "sha256": "d9c656c12f56a98095c6ac01aaf7b55e45d20a36ccee2ce807404fd78b043968",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-d9c656c12f56a98095c6ac01aaf7b55e45d20a36ccee2ce807404fd78b043968.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-92de3bc37a50702bb72230c95caded1209db908125a4a0d2111a433732295735/component.json": {
+      "sha256": "585a23f75ab097028db3a27e8a0468d73d74c3b1c85de3c82c6709fe33436dac",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-585a23f75ab097028db3a27e8a0468d73d74c3b1c85de3c82c6709fe33436dac.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-92de3bc37a50702bb72230c95caded1209db908125a4a0d2111a433732295735/build.json": {
+      "sha256": "dfa1631d2062faa3caa18eb477b9ebf5279a1c3ae34638f02777dbe51a1623d0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-dfa1631d2062faa3caa18eb477b9ebf5279a1c3ae34638f02777dbe51a1623d0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-ff0f41a80446f6a397cc52c4292e6dc5e7524864e9f4af53df2142b927e104e5/component.json": {
+      "sha256": "2f2d022badc0d00dbbe1c5635e0f3b29ce1ec261e7bb0522a1b64d67b06ea206",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-2f2d022badc0d00dbbe1c5635e0f3b29ce1ec261e7bb0522a1b64d67b06ea206.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-ff0f41a80446f6a397cc52c4292e6dc5e7524864e9f4af53df2142b927e104e5/build.json": {
+      "sha256": "263010e104567d24671d539ec6210d6cc8c5103646c0636599b0b2940aad78a6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-263010e104567d24671d539ec6210d6cc8c5103646c0636599b0b2940aad78a6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e4173d4af84bc1ff5657a0c9c95c7fd81b1f562a6e0f03eb009d77988d2d500e/component.json": {
+      "sha256": "ba7205023cb5c7766d67ced22d351743ef00ff24213c9a0c623ac9ab322cb783",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ba7205023cb5c7766d67ced22d351743ef00ff24213c9a0c623ac9ab322cb783.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-e4173d4af84bc1ff5657a0c9c95c7fd81b1f562a6e0f03eb009d77988d2d500e/build.json": {
+      "sha256": "4b5b0f18cbdaf2ab08b0c6700871a319a68583e3219c0244f42c39a568124770",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-4b5b0f18cbdaf2ab08b0c6700871a319a68583e3219c0244f42c39a568124770.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-f46956228fe98455123fab9bf15893100c267a06a7cbb32a40a0ee7f20f08e7e/component.json": {
+      "sha256": "c0b939fc41521479829593ef19e92ef7c80b5b8a65d945c25260d5559deb763f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c0b939fc41521479829593ef19e92ef7c80b5b8a65d945c25260d5559deb763f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-f46956228fe98455123fab9bf15893100c267a06a7cbb32a40a0ee7f20f08e7e/build.json": {
+      "sha256": "de289d0c52847165c2fb77291d8917030976e50d38dbf9933dffc2fc0d69b282",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-de289d0c52847165c2fb77291d8917030976e50d38dbf9933dffc2fc0d69b282.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fbcad90494d8ab246fccb442d772d7e15567f73dbfc992673ddac8a18bc22b26/component.json": {
+      "sha256": "2664aea85af5f369faa1b6008a82d27f6362670684c895b0bbe098714a950903",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-2664aea85af5f369faa1b6008a82d27f6362670684c895b0bbe098714a950903.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-fbcad90494d8ab246fccb442d772d7e15567f73dbfc992673ddac8a18bc22b26/build.json": {
+      "sha256": "7e57e2005ced89e0b3f5f1837143d7800100f25df15bd2dc18c1fc1995cbcbdb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-7e57e2005ced89e0b3f5f1837143d7800100f25df15bd2dc18c1fc1995cbcbdb.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-30d9125a321e15f729030a02f0d02d9e3fd60d5af77d3fc4f9ebeafb4bb77f39/component.json": {
+      "sha256": "b4184070384a418c9c4772f7b574067de17939bd8739529e16fa9167731dbd1f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b4184070384a418c9c4772f7b574067de17939bd8739529e16fa9167731dbd1f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-30d9125a321e15f729030a02f0d02d9e3fd60d5af77d3fc4f9ebeafb4bb77f39/build.json": {
+      "sha256": "98c6ada0079b0981ae7ecb354687b6191756e9d3abeceb97db9da68fb70ed8c4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-98c6ada0079b0981ae7ecb354687b6191756e9d3abeceb97db9da68fb70ed8c4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-73373a5f61317546e0fbd959efcff247063f7de17a26985472f8b00b7aeb65ff/component.json": {
+      "sha256": "82c2eeb9d0efac027929ccd2e22e17906ac0ce7ff34f2b9787465955c853ddb2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-82c2eeb9d0efac027929ccd2e22e17906ac0ce7ff34f2b9787465955c853ddb2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-73373a5f61317546e0fbd959efcff247063f7de17a26985472f8b00b7aeb65ff/build.json": {
+      "sha256": "6b164b14deba94a8b88388528a66c844dfed3cde5a51e887997b45a08c59ca04",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-6b164b14deba94a8b88388528a66c844dfed3cde5a51e887997b45a08c59ca04.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-a5ae113c335eb656d2ba206c3feb968a1229786a9970d2d8928d4c73785a97b5/component.json": {
+      "sha256": "ddecfebcc66c61ac013c64c535e02a5cfe26ee3388d41c439050d7dc4af8b6ee",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-ddecfebcc66c61ac013c64c535e02a5cfe26ee3388d41c439050d7dc4af8b6ee.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-a5ae113c335eb656d2ba206c3feb968a1229786a9970d2d8928d4c73785a97b5/build.json": {
+      "sha256": "e1b9822b5992cc888ad6a13c879052e26646a2bd903d5d4b44c2485b2fabd541",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-e1b9822b5992cc888ad6a13c879052e26646a2bd903d5d4b44c2485b2fabd541.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-d868ea1a9afac199f51a72c3198464bf48266395e184c5fb7c8c0f394e731a36/component.json": {
+      "sha256": "8c652dd4fec06f2e920e36b3354ab90f9b8f9994e57ce1241cb6804208a5d9f8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-8c652dd4fec06f2e920e36b3354ab90f9b8f9994e57ce1241cb6804208a5d9f8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-d868ea1a9afac199f51a72c3198464bf48266395e184c5fb7c8c0f394e731a36/build.json": {
+      "sha256": "1905b516be0d581489409507d732020cab87a63e40490ff756e756752413c197",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-1905b516be0d581489409507d732020cab87a63e40490ff756e756752413c197.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-704cfef516dcdd24282776fea9fed885d9548df90a52af27e7e835b0913701dc/component.json": {
+      "sha256": "a9780dc2f9dfcd75744136be8c42ad1544aaf3b4bf4fc6d872d4443cb2c18200",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-a9780dc2f9dfcd75744136be8c42ad1544aaf3b4bf4fc6d872d4443cb2c18200.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-704cfef516dcdd24282776fea9fed885d9548df90a52af27e7e835b0913701dc/build.json": {
+      "sha256": "0808cae9fce4afa70724ff182c878da4ad4c3fbf7941e833ea2df2e96b195338",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0808cae9fce4afa70724ff182c878da4ad4c3fbf7941e833ea2df2e96b195338.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-f6f555b1f65f8aacc5c97170d00b66f6821af1b5e4786c41e55f31e53e83ef72/component.json": {
+      "sha256": "b724ccaf3e9503755c400d66717de2e50d3f62e63a38339186f8cfe300f2a286",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b724ccaf3e9503755c400d66717de2e50d3f62e63a38339186f8cfe300f2a286.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-f6f555b1f65f8aacc5c97170d00b66f6821af1b5e4786c41e55f31e53e83ef72/build.json": {
+      "sha256": "4febeab6e4f38921978e0570d0734ce3cc58d778a738886b3957463e55b6957d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-4febeab6e4f38921978e0570d0734ce3cc58d778a738886b3957463e55b6957d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-f944f5f0289f6491a7020f8bac2c6519631f2bc92ed4a1e73cfbd32bbae1c499/component.json": {
+      "sha256": "4feba460cd1a1417547330961711b98b7301f6aee15d54336e357528a09ce33f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-4feba460cd1a1417547330961711b98b7301f6aee15d54336e357528a09ce33f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-f944f5f0289f6491a7020f8bac2c6519631f2bc92ed4a1e73cfbd32bbae1c499/build.json": {
+      "sha256": "51735f5232b4463daf893592d14d9dc4021e736540c06b3c82350b07e2453a78",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-51735f5232b4463daf893592d14d9dc4021e736540c06b3c82350b07e2453a78.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-a8315782fefafb2fc73d0313fd8454c41739c0668fd599aefd87c6f6eb1c59b8/component.json": {
+      "sha256": "1e464defd3de7ceb7938b91db745ac6a5c64b5cb915689f10320882554ac9717",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-1e464defd3de7ceb7938b91db745ac6a5c64b5cb915689f10320882554ac9717.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-a8315782fefafb2fc73d0313fd8454c41739c0668fd599aefd87c6f6eb1c59b8/build.json": {
+      "sha256": "e2f831a9c4c47a82a6a233a2f706ba6ac65cf3fe92693ebff8a2d711fa516b62",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-e2f831a9c4c47a82a6a233a2f706ba6ac65cf3fe92693ebff8a2d711fa516b62.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-bde013fb5f6383c42a89fee70775a9f940b6cc5ddca75619bfa163da6d008ef4/component.json": {
+      "sha256": "54a7f836a832d7f452b44c515e7c46099f08f3ffdeb74cbf7c517a26667f4896",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-54a7f836a832d7f452b44c515e7c46099f08f3ffdeb74cbf7c517a26667f4896.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-bde013fb5f6383c42a89fee70775a9f940b6cc5ddca75619bfa163da6d008ef4/build.json": {
+      "sha256": "41efc45f18aa109719df8066674952b0a18c22ce1a39a3c728260d004e510251",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-41efc45f18aa109719df8066674952b0a18c22ce1a39a3c728260d004e510251.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-e22940bbbd8947d5a4046d237af84644947be59d1b551923f08fb69accc383ff/component.json": {
+      "sha256": "af6f9b2589e044400ae33dfcbb1b66b613d0e77ea0854c9c226ceaeabc6b4e47",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-af6f9b2589e044400ae33dfcbb1b66b613d0e77ea0854c9c226ceaeabc6b4e47.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-e22940bbbd8947d5a4046d237af84644947be59d1b551923f08fb69accc383ff/build.json": {
+      "sha256": "823cf5cac5aa5b59043b36ad28664074c193beb980dc02e779f7c83bb637dea9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-823cf5cac5aa5b59043b36ad28664074c193beb980dc02e779f7c83bb637dea9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7963f049defb0ae325ecfc14c267909383c6265cdda3f46f571e2af01fedbe8d/component.json": {
+      "sha256": "4b0fc274d2c4baafc6404315d14613d11852d72d7c58f2d6d64b77696c0a6033",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-4b0fc274d2c4baafc6404315d14613d11852d72d7c58f2d6d64b77696c0a6033.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-7963f049defb0ae325ecfc14c267909383c6265cdda3f46f571e2af01fedbe8d/build.json": {
+      "sha256": "25017c00afea03e65b7ec087378bbc3e1699124918465c9971322a792bb4a635",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-25017c00afea03e65b7ec087378bbc3e1699124918465c9971322a792bb4a635.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8ed544dd77c14ef24c85f07cf8ce3614952aa7e82377ea385a213e67cf1248ea/component.json": {
+      "sha256": "b5c1406ac70025f89382f8d54606ee2db35530427e05d9f730815face5278630",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-b5c1406ac70025f89382f8d54606ee2db35530427e05d9f730815face5278630.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-8ed544dd77c14ef24c85f07cf8ce3614952aa7e82377ea385a213e67cf1248ea/build.json": {
+      "sha256": "4baf30a4fa53d69ba7ab5de199f361c7631f4b8a04ec2049706849b4813ece8e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-4baf30a4fa53d69ba7ab5de199f361c7631f4b8a04ec2049706849b4813ece8e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-ce9541955dade825d72e69002a46cf0bd8b474033fe6b628514622c62469612a/component.json": {
+      "sha256": "954246697c77d43523d4170b4b1132eea8aaa038754f6f10e8ad18445d88b21c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-954246697c77d43523d4170b4b1132eea8aaa038754f6f10e8ad18445d88b21c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-ce9541955dade825d72e69002a46cf0bd8b474033fe6b628514622c62469612a/build.json": {
+      "sha256": "054041e4585a3f8a5e8cc3232930dd8850036e97fc5e1757615723de8b6cc64f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-054041e4585a3f8a5e8cc3232930dd8850036e97fc5e1757615723de8b6cc64f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-23b273ef64998b9610a3cc524150eb0b8f3a1219e80fe923f42cb76c9af7daf4/component.json": {
+      "sha256": "3eb8fc3cb8431dfcbb5cb016ed4624fe7cc8f4420315392f2738817468da4c6f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3eb8fc3cb8431dfcbb5cb016ed4624fe7cc8f4420315392f2738817468da4c6f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-23b273ef64998b9610a3cc524150eb0b8f3a1219e80fe923f42cb76c9af7daf4/build.json": {
+      "sha256": "c815741d9a9ea636c8af6de9fe9ed03bc756b7f696446b75b1727f88441e1cc3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-c815741d9a9ea636c8af6de9fe9ed03bc756b7f696446b75b1727f88441e1cc3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-cada7fd3b6309f9c5244326526e218ef9d7580f6d0f329a5c0effdfaeafcd7da/component.json": {
+      "sha256": "6685f3543573eda2089b9f138e4849544b56b461cacd8cf54fa06ab08ecbdc3f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-6685f3543573eda2089b9f138e4849544b56b461cacd8cf54fa06ab08ecbdc3f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-cada7fd3b6309f9c5244326526e218ef9d7580f6d0f329a5c0effdfaeafcd7da/build.json": {
+      "sha256": "5429b45250cc3d7e5612d0f8ab5dfa54be75de574debd554897fd7ed8e836a29",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-5429b45250cc3d7e5612d0f8ab5dfa54be75de574debd554897fd7ed8e836a29.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-37c2004e1150229f67c6f6b76c3d8a9e7b45aec8f183c81ebe739a9afe797de8/component.json": {
+      "sha256": "928b2e7cf69bb12f4b132b6c0993a7d00a41ab5ffe5d95badcba5d5de4892a57",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-928b2e7cf69bb12f4b132b6c0993a7d00a41ab5ffe5d95badcba5d5de4892a57.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-37c2004e1150229f67c6f6b76c3d8a9e7b45aec8f183c81ebe739a9afe797de8/build.json": {
+      "sha256": "9de848c64f26e841e187bd686a6b0507e0be9b0b0ee1b0fb5a09463dc7aa68e9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-9de848c64f26e841e187bd686a6b0507e0be9b0b0ee1b0fb5a09463dc7aa68e9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-35ec31feb1aff40dde897a98d81f3421df6c44ecd09e1d75572cb8dc6a2af42b/component.json": {
+      "sha256": "8256b6d11b8a57d68d15d88846225a839c292423f1ea7eb3f34895add6d924e4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-8256b6d11b8a57d68d15d88846225a839c292423f1ea7eb3f34895add6d924e4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-35ec31feb1aff40dde897a98d81f3421df6c44ecd09e1d75572cb8dc6a2af42b/build.json": {
+      "sha256": "f3ee0bbed15d073423ae60a972d8d305d748e81d726fb98948b992b4c3290f0e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-f3ee0bbed15d073423ae60a972d8d305d748e81d726fb98948b992b4c3290f0e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3077af833b7133a3813f960320fd6c9900095e7efcf3919803916a47071bbcc5/component.json": {
+      "sha256": "af4dabfe0bca980a93d190b72a0afcc2958c9a878e8fd73967eb50a9795134d9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-af4dabfe0bca980a93d190b72a0afcc2958c9a878e8fd73967eb50a9795134d9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-3077af833b7133a3813f960320fd6c9900095e7efcf3919803916a47071bbcc5/build.json": {
+      "sha256": "ec61ec7e4511da1de6435c5d5bfb9e726b2c8d4618d6bb1e5ab622d434a49bb5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-ec61ec7e4511da1de6435c5d5bfb9e726b2c8d4618d6bb1e5ab622d434a49bb5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-da83c37945795020eb1e239652e14425485ce693cc769531cca524582d6f9698/component.json": {
+      "sha256": "c29f02f1648209c76c4406474b03c8a65ebaa472c57d5165c54b6d251a54daab",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c29f02f1648209c76c4406474b03c8a65ebaa472c57d5165c54b6d251a54daab.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_coordinates-da83c37945795020eb1e239652e14425485ce693cc769531cca524582d6f9698/build.json": {
+      "sha256": "c2c8a21df7650f7df70774bfbd0e7950747e3deaf21bb538879fcf29702e5719",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-c2c8a21df7650f7df70774bfbd0e7950747e3deaf21bb538879fcf29702e5719.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-428e98c7be11741d742293b13f673012eff3dd17604b7dc1bdbd1ce99511ee9a/component.json": {
+      "sha256": "3623e91d2d642519312de8ed93a714a35cd9b3664c13e4921893ccc3aaff3e20",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-3623e91d2d642519312de8ed93a714a35cd9b3664c13e4921893ccc3aaff3e20.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-428e98c7be11741d742293b13f673012eff3dd17604b7dc1bdbd1ce99511ee9a/build.json": {
+      "sha256": "0534193ba10384a84301630fc5b9d620c176aec1539d1846ebfb337586709925",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-0534193ba10384a84301630fc5b9d620c176aec1539d1846ebfb337586709925.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-addd29cbe5fc0052fc404c39334b4458a19e9cc4d7789fc9064d073b3a4e5ea3/component.json": {
+      "sha256": "be7cefac81630a22a05aa62eeecdb7c9fc1c04a0bf5be79e1e1a36e693af626a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-be7cefac81630a22a05aa62eeecdb7c9fc1c04a0bf5be79e1e1a36e693af626a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-addd29cbe5fc0052fc404c39334b4458a19e9cc4d7789fc9064d073b3a4e5ea3/build.json": {
+      "sha256": "fbd4d707c24632c054cdd758d2769f9eb07ced683d6da0d4448ef81273d7d8b5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-fbd4d707c24632c054cdd758d2769f9eb07ced683d6da0d4448ef81273d7d8b5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-57b00cb832ce88874090c36c1d9703004914d8ba3bff90bc9dbd59d5a162527b/component.json": {
+      "sha256": "edd5e1ecfc073aec8e755c2c85378014c15263a12a28f5d468b7cc7440fbc97c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-edd5e1ecfc073aec8e755c2c85378014c15263a12a28f5d468b7cc7440fbc97c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-57b00cb832ce88874090c36c1d9703004914d8ba3bff90bc9dbd59d5a162527b/build.json": {
+      "sha256": "667cb37c6040b2e31a6442ad8c9922e6c74e92fd04db0fdf0131dc21ba5a292e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-667cb37c6040b2e31a6442ad8c9922e6c74e92fd04db0fdf0131dc21ba5a292e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-18edc6807e5b3fbb3ba8a601405da700f3e485ea669c9cc0f54d22bcdd80d053/component.json": {
+      "sha256": "573eaf078fce65cd1f9a071177da91ea3102c0c21dd8b25dfecbbb93c5405985",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-573eaf078fce65cd1f9a071177da91ea3102c0c21dd8b25dfecbbb93c5405985.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-18edc6807e5b3fbb3ba8a601405da700f3e485ea669c9cc0f54d22bcdd80d053/build.json": {
+      "sha256": "24f3ba672974bbe3688e1d344fd25426703acc55122d573e1d24aad4db63b7cd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-24f3ba672974bbe3688e1d344fd25426703acc55122d573e1d24aad4db63b7cd.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-008d2960e6024a2dabf91b244f3e157012d4cce198b2222245deefe3582dfdc2/component.json": {
+      "sha256": "c07636c5578a471367699ba99a6f0333cf55ad9a8579483c91e91ae02eef16cb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/component-c07636c5578a471367699ba99a6f0333cf55ad9a8579483c91e91ae02eef16cb.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.8.0/components/sparse_axes-008d2960e6024a2dabf91b244f3e157012d4cce198b2222245deefe3582dfdc2/build.json": {
+      "sha256": "2eef4b95c50de63ad2d28fc08462675f225431f6fb85bec9b7e798d998c69066",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/build-2eef4b95c50de63ad2d28fc08462675f225431f6fb85bec9b7e798d998c69066.json"
+    },
+    "/media/carruthers/mnt1/parascape-optional-components-validation/validation.json": {
+      "sha256": "4f2969b58e2c80d5ce999d51854989e6c55ed283847c110a5e819ce7587699fa",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/validation-4f2969b58e2c80d5ce999d51854989e6c55ed283847c110a5e819ce7587699fa.json"
+    },
+    "/home/carruthers/.local/state/parascape-optional-components-audit/status.json": {
+      "sha256": "a80533bcdee4c0695e8a8444568174970883ce63849fd4376013818bec275397",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/optional_sparse_components/status-a80533bcdee4c0695e8a8444568174970883ce63849fd4376013818bec275397.json"
+    }
+  },
+  "index": {
+    "file": "323e088ddad4b8dfecb0d450c26d84ad45d3ceaa3151e8a12b48d5f45e6f681b.json",
+    "sha256": "323e088ddad4b8dfecb0d450c26d84ad45d3ceaa3151e8a12b48d5f45e6f681b"
+  },
+  "prepared_components": 195,
+  "bound_datasets": 65,
+  "archive_bytes": 10648924160,
+  "archive_parts": 195,
+  "maximum_asset_part_bytes": 1073741824,
+  "tests": "16optional installer tests +2deterministic builder tests +10existing core download tests:28distinct checks passed.",
+  "actual_proof": "Offline local transport installs three real normal-layout components plus largest real868331520byte archive split at256MiB into4parts. Complete archiveSHA unchanged across repartitioning; every restoredfile SHA verified;152original numeric records exact. No external network or official GitHub download claimed. Initial oversized-asset assertion was diagnostic:all195current archives are below1GiB,so actual multipart boundaries were tested by repartitioning a byte-identical real archive.",
+  "automation": "Enabled five-minute component preparation timer195current packs/65bounddatasets; two workers2GiB24CPU/idleIO,NASreserve25GiB. Enabled full-generation installer/reader audit timer2GiB24CPU/idleIO; current native729776confirmedlive and138/195installations at lastobservation,do not claim all finished. Rechecks unchanged generations without replay; native models/APIs not used.",
+  "hosting": "Provisional local staging portable_components/v0.0.8.0 only. Planned own-GitHub release URLs; no assets uploaded or public release. Core7 remains published unchanged.",
+  "remaining": "Connect dataset dependency resolution/shared storage to sparse reader GUI missing-data prompt;finish fullinstaller audit and lastnumeric matrix;upload/verifyall release assets and prepare nextportable release including313post7densequantities andall sparse; exactduplicates/logicalcells/source-ID-unit-context quality coverage and remainingexpression formats/studies stillunfinished.",
+  "goal_status": "active",
+  "historical_inference_status": "paused"
+}

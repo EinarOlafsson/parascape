@@ -1,0 +1,173 @@
+{
+  "epoch": 1793442174.2493916,
+  "goal": "active and incomplete",
+  "previous_turn_classification": "progress;7d/fe HDF5 contract/client checks and36 source matrices initiallypreserved",
+  "archive_manifest": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/hdf5_component_pipeline/treatment-58d9cb11825e2fe4228deb8f22ac01dd7d1732d94191539f658b6916160d1da3.json",
+  "source_import_complete_for_recognized_CSC": true,
+  "recognized_CSC_matrices": 38,
+  "verified_stored_entries": 850654002,
+  "source_worker": "Now frozen original generator7fb via bounded verifier9596wrapper; unit completedsuccessfully. Original4GB numeric artifact retained andverified withoutrewrite.",
+  "native_pipeline_units": [
+    "parascape-hdf5-components-009",
+    "parascape-hdf5-components-audit-009",
+    "parascape-hdf5-components-upload-009",
+    "parascape-local-sparse-collection"
+  ],
+  "source_integration_complete": "LiveNightly nowfe4173afterofficial8publication; ownedworkbookPythonlauncher repaired andqueued ca/bed/727/94/7d/fe chain finished",
+  "next_steps": [
+    "Combined optional generation now384components/394parts,104sparse datasets/74workbooks; assembler preserves196release8records exactly, 4integrityrefusals passed. Recheck current timer generation as workbooks advance.",
+    "All117HDF5parts7.711528960GB are serverSHAverified in draft429810405; final114component/all38reader replay passed. Do not reupload inherited18GB.",
+    "Actualownedlauncherdefault104catalogue and MatrixMarket/HDF5Qtqueries/CSVexports passed; no existingapp/tutorialrestart.",
+    "Finish originalworkbook extraction83/93 and independentaudit,then assemblefullrelease9coreincluding500quantitytables andcurrentRNA; freezecandidate+installedwheel/UI/CI/hostedassets before publication.",
+    "Continue14AnnData,remainingformats/RNA/PRIDE andfairgene/unit/sample/biologicalQCgaps; fullgoal active/incomplete,historicalinferencepaused."
+  ],
+  "parascape-hdf5-components-009": {
+    "archive_bytes": 7711528960,
+    "combined_release9_core_assembled": false,
+    "components": 114,
+    "epoch": 1793441988.4187305,
+    "parts": 117,
+    "phase": "HDF5_component_pass_complete",
+    "prepared": 38,
+    "published": false,
+    "reviews": [],
+    "selected": 38,
+    "source_index": {
+      "file": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac.json",
+      "sha256": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac"
+    }
+  },
+  "parascape-hdf5-components-audit-009": {
+    "phase": "all_component_installations_and_bound_readers_verified",
+    "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/hdf5_component_replay/all-components-installer-c8a69ae4b8583d7853988e873f0b78a4c8b0000399d1d223b4e5ccf5a877475f.json",
+    "components": 114,
+    "datasets": 38,
+    "source_index": {
+      "file": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac.json",
+      "sha256": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac"
+    },
+    "epoch": 1793441615.4184577
+  },
+  "parascape-hdf5-components-upload-009": {
+    "phase": "draft_component_assets_verified",
+    "epoch": 1793441953.2310917,
+    "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/hdf5_component_upload/upload-pass-7bc5830278664cd90303569675ea276a00e1cd4aa19f4bcd0d01f195926e7475.json",
+    "selected": 117,
+    "verified": 117,
+    "verified_bytes": 7711528960,
+    "reviews": [],
+    "source_index": {
+      "file": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac.json",
+      "sha256": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac"
+    },
+    "release_id": 429810405,
+    "draft": true,
+    "published": false
+  },
+  "parascape-local-sparse-collection": {
+    "phase": "combined_local_sparse_collection_ready",
+    "epoch": 1793441634.127508,
+    "datasets": 104,
+    "HDF5": 38,
+    "inputs": [
+      {
+        "path": "/media/carruthers/mnt1/parascape-release-data-0.0.8.0/data/sparse_datasets/catalogue.json",
+        "sha256": "2fb50f5ecc5da0727252c1f0407f838e61aa6efb9235f0c28c6b85abcee6ea76"
+      },
+      {
+        "path": "/nas_mnt/carruthers/Einar/parascape_omics/prepared_sparse_datasets/catalogue.json",
+        "sha256": "2fb50f5ecc5da0727252c1f0407f838e61aa6efb9235f0c28c6b85abcee6ea76"
+      },
+      {
+        "path": "/nas_mnt/carruthers/Einar/parascape_omics/prepared_hdf5_sparse/sparse_datasets/catalogue.json",
+        "sha256": "602efb66303279e3a6fa46179140f4db517d63bcdef4cb92b385c6118bcfa2ac"
+      }
+    ],
+    "catalogue_sha256": "e1a6a54489b76fc68c52292d20ac0a78a83cb536e1ef52ceed12de646fa4fc0a",
+    "collector_sha256": "9e453daafc13ef8e7be6468b625b3f653db950ff3973c869afd1bdc235376789",
+    "original_numerical_files_changed": false,
+    "copied_payload_hashes_verified": true,
+    "metadata_discovery_errors": [],
+    "launcher_updated": true,
+    "launcher_gap": null,
+    "application_or_tutorial_sessions_restarted": false,
+    "public_release_verified": false
+  },
+  "parascape-release-0.0.8.0": {
+    "phase": "complete",
+    "updated_epoch": 1793439680.607087,
+    "version": "0.0.8.0",
+    "commit": "9cd6855d8ff8f72f46a4cb3d7a6b19cb4a87aa09",
+    "wheel_bytes": 2175475,
+    "pypi_url": "https://pypi.org/project/parascape/0.0.8.0/",
+    "github_url": "https://github.com/EinarOlafsson/parascape/releases/tag/v0.0.8.0",
+    "publication": {
+      "Publish Python packages": {
+        "conclusion": "success",
+        "databaseId": 41182221918,
+        "name": "Publish Python packages",
+        "status": "completed"
+      }
+    },
+    "data_sha256": "7dccd05bcd1f409ae2dd0ca8188f95c0d24945aa9d930b72f26bce28ce4e86fa"
+  },
+  "latest_validation_archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/hdf5_component_pipeline/continuation-a8cc944b4aea466194a277f8c5c441effcf53dde16d6156d6b4571ca42f9dc03.json",
+  "default_collection_validation": "/media/carruthers/mnt1/parascape-combined-sparse-default-validation/validation.json",
+  "combined_optional_assembly": "10-minute native timer; separate immutable metadata generation, no public release or complete core claim",
+  "parascape-combined-components-009": {
+    "complete_release_core_assembled": false,
+    "components": 384,
+    "epoch": 1793442113.4569712,
+    "generation": "6ec1032b4745f7784ebd082c809b8231c80628dfffb9475a405978396e02058c",
+    "inherited_components_unchanged": 196,
+    "original_numeric_files_changed": false,
+    "parts": 394,
+    "phase": "combined_optional_metadata_ready",
+    "public_release_verified": false,
+    "source_code_sha256": "2072b4628448cc4d1e4246348a2ccc5b534312e870c637d0a45129371ce62992",
+    "source_generations": {
+      "hdf5": {
+        "file": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac.json",
+        "sha256": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac"
+      },
+      "inherited_release8_index_sha256": "c2685ba9f33bc9f57f2fa3709edba531632984f5f1848a1c5bd9c8c1911f0292",
+      "workbooks": {
+        "file": "069bc1b6c5d29bb90ef2cc204531b84ac994053e78479b5bc3fc88d197335d07.json",
+        "sha256": "069bc1b6c5d29bb90ef2cc204531b84ac994053e78479b5bc3fc88d197335d07"
+      }
+    },
+    "sparse_datasets": 104,
+    "workbooks": 74
+  },
+  "parascape-workbook-components-009": {
+    "phase": "preparing_workbook_components",
+    "epoch": 1793442173.736994,
+    "source_occurrences": 93,
+    "expected_workbooks": 93,
+    "extracted_workbooks": 92,
+    "prepared": 67,
+    "waiting": 0,
+    "reviews": [],
+    "publication_status": "provisional",
+    "inherited_sparse_components": 196,
+    "new_workbook_parts": 67,
+    "new_workbook_archive_bytes": 395909120
+  },
+  "parascape-workbook-assets-upload-009": {
+    "phase": "draft_component_assets_verified",
+    "epoch": 1793442070.0720832,
+    "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_assets_upload/upload-pass-4eeaccb87cd2f7737c61e3abeea925e79fcad232605c1d92376f71716226180d.json",
+    "selected": 84,
+    "verified": 84,
+    "verified_bytes": 664340480,
+    "reviews": [],
+    "source_index": {
+      "file": "069bc1b6c5d29bb90ef2cc204531b84ac994053e78479b5bc3fc88d197335d07.json",
+      "sha256": "069bc1b6c5d29bb90ef2cc204531b84ac994053e78479b5bc3fc88d197335d07",
+      "evidence_catalogue_sha256": "b3995d07ce1bb19e7a21aadd53b8925759d3da52226d2930a6b3cd176d269b24"
+    },
+    "release_id": 429810405,
+    "draft": true,
+    "published": false
+  }
+}

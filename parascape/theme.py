@@ -242,8 +242,13 @@ GLASS_ALPHA = {"menu": 0.86, "tooltip": 0.92, "popup": 0.90, "dialog": 0.90, "pa
                "bar": 0.45}
 
 #: Corner radii, spaCR's scale: `sm` for a menu item or a field, `md` for a menu or a list, `lg` for
-#: the search results, `card` for a whole window.
-RADIUS = {"sm": 4, "md": 8, "lg": 10, "card": 14}
+#: the search results, `card` for a whole window, `tile` for a launcher on the home screen -- which
+#: is spaCR's `QPushButton#AppTile`, the widest radius it uses, because a tile floats.
+RADIUS = {"sm": 4, "md": 8, "lg": 10, "card": 14, "tile": 16}
+
+#: spaCR's spacing scale (`spacr.qt.theme.SPACING`), so a ParaScape panel is laid out on the same
+#: grid as a spaCR one and the two programs read as one family rather than two.
+SPACING = {"xs": 4, "sm": 8, "md": 12, "lg": 16, "xl": 24, "xxl": 32}
 
 #: spaCR's type. Open Sans where it is installed, the platform sans-serif where it is not.
 FONT_FAMILY = '"Open Sans", "Segoe UI", "Helvetica Neue", sans-serif'

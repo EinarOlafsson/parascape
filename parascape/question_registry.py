@@ -36,6 +36,8 @@ from dataclasses import dataclass, asdict
 
 import pandas as pd
 
+from . import information_categories as IC
+
 ANSWER_TYPES = ("boolean", "category", "ranked_list", "number")
 QUESTION_CLASSES = ("A", "B", "C", "D")
 LABEL_TIERS = ("observed-direct", "observed-curated", "observed-screen", "observed-proximity", "none")
@@ -56,6 +58,15 @@ class Question:
     `evidence_allowed` empty means "every family except the forbidden ones"; listing families
     narrows it further. `label_family` must appear in `evidence_forbidden`, which is the registry's
     one structural guarantee: no question is answered from the source its own labels came from.
+
+    `label_category` is the instruction 73 information category of the labels themselves, and it is
+    the primary exclusion: the harness holds out **every column of that category**, whatever its
+    family or study, which is what the hand-written `evidence_forbidden` list failed to do. The list
+    stays, as a recorded additional override for what a category cannot express -- `pubmed` is
+    `attention` and would not be excluded from a `place` question by category alone, though for
+    host-facing it is nearly the conclusion. Left empty, the category is read off the column named in
+    `label_source` (`information_categories.label_categories`), so forgetting to declare one does not
+    silently remove the mechanism.
     """
 
     id: str
@@ -65,8 +76,9 @@ class Question:
     label_source: str                       # where the labels are read from, e.g. 'nodes.parquet:fit_no_glucose'
     label_family: str                       # the evidence family that produced them; must be held out
     label_tier: str = "observed-screen"
+    label_category: str = ""                # the information category of the LABELS (instruction 73)
     evidence_allowed: tuple = ()            # empty = everything not forbidden
-    evidence_forbidden: tuple = ()
+    evidence_forbidden: tuple = ()           # the hand-written override, kept IN ADDITION to the category
     min_labels_for_frozen_test: int = DEFAULT_MIN_LABELS_FOR_FROZEN_TEST
     status: str = "proposed"
     answerable: bool = True                 # admission test 1: a truth set exists or can be curated
@@ -90,6 +102,8 @@ class Question:
             raise ValueError(f"{self.id}: min_labels_for_frozen_test must be a non-negative integer")
         if not self.label_source or not self.label_family:
             raise ValueError(f"{self.id}: name the label source and the evidence family it belongs to")
+        if self.label_category and self.label_category not in IC.CATEGORIES:
+            raise ValueError(f"{self.id}: label_category must be one of {sorted(IC.CATEGORIES)}")
         if self.label_family not in self.evidence_forbidden:
             raise ValueError(f"{self.id}: the label family {self.label_family!r} must be in evidence_forbidden")
         overlap = set(self.evidence_allowed) & set(self.evidence_forbidden)
@@ -171,6 +185,7 @@ for _question in (
             answer_type="boolean", question_class="A",
             label_source="nodes.parquet:fit_no_glucose <= -2.0",
             label_family="crispr_glucose_limitation", label_tier="observed-screen",
+            label_category="fitness",
             evidence_forbidden=_CRISPR_FITNESS,
             status="admitted",
             note="Rung 0 of the strategy ladder carries the measurement for the 7,393 measured genes; "
@@ -182,6 +197,7 @@ for _question in (
             answer_type="boolean", question_class="B",
             label_source="nodes.parquet:screen_egress_phenotype",
             label_family="splitcas9_imaging_screen", label_tier="observed-screen",
+            label_category="phenotype",
             evidence_forbidden=("splitcas9_imaging_screen",),
             status="admitted",
             note="318 labelled genes, below the frozen-test threshold: this question may rank and "
@@ -191,7 +207,7 @@ for _question in (
             text="Does this protein reach beyond the parasite plasma membrane, into the host cell?",
             answer_type="boolean", question_class="B",
             label_source="information_map:host_facing", label_family="host_facing_truth",
-            label_tier="observed-curated",
+            label_tier="observed-curated", label_category="place",
             evidence_forbidden=("host_facing_truth", "pvm_proximity", "hosttx_effectors",
                                 "organelle_surface_turboid", "pubmed", "lopit_tgon"),
             status="scored",
@@ -203,7 +219,7 @@ for _question in (
             text="What coarse functional class does this protein belong to?",
             answer_type="category", question_class="B",
             label_source="results/function_truth_2026_11_04", label_family="function_truth",
-            label_tier="observed-curated",
+            label_tier="observed-curated", label_category="phenotype",
             evidence_forbidden=("function_truth", "quickgo", "interpro", "toxodb_ec_numbers"),
             status="scored",
             note="242 genes over 15 classes; the learning curve is still rising, so here the label "
@@ -213,7 +229,7 @@ for _question in (
             text="Which proteins is this protein most likely to bind?",
             answer_type="ranked_list", question_class="D",
             label_source="starpath crosslink pairs (1 - local FDR)", label_family="starpath_xlms",
-            label_tier="observed-direct",
+            label_tier="observed-direct", label_category="interaction",
             evidence_forbidden=("starpath_xlms", "ipms_baits", "ipms_corpus_membership"),
             min_labels_for_frozen_test=800,
             status="scored",
@@ -224,7 +240,7 @@ for _question in (
             text="Which genes provoke a favourable immune response in humans?",
             answer_type="boolean", question_class="C",
             label_source="none: no human screen exists", label_family="human_immune_screen",
-            label_tier="none",
+            label_tier="none", label_category="fitness",
             evidence_forbidden=("human_immune_screen",),
             status="gap", answerable=False,
             note="Declared gap. The missing measurement is the human twin of the Wang design: a "
@@ -235,7 +251,7 @@ for _question in (
             text="Is this protein involved in autophagy?",
             answer_type="boolean", question_class="C",
             label_source="none: fewer than 10 experimentally annotated genes",
-            label_family="quickgo", label_tier="none",
+            label_family="quickgo", label_tier="none", label_category="phenotype",
             evidence_forbidden=("quickgo",),
             status="gap", answerable=False,
             note="Declared gap: curation (the host-facing review is the template) would have to come first."),
@@ -244,7 +260,7 @@ for _question in (
             text="Does this protein carry InterPro domain IPR000719?",
             answer_type="boolean", question_class="B",
             label_source="nodes.parquet:domain flags", label_family="interpro",
-            label_tier="observed-direct",
+            label_tier="observed-direct", label_category="domain",
             evidence_forbidden=("interpro",),
             status="retired", useful=False,
             note="Fails admission test 3. It is measured, not predicted, and the answer changes no "

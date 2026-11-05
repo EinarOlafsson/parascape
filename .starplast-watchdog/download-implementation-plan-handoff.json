@@ -1,0 +1,6 @@
+{
+  "epoch": 1793446437.8767598,
+  "review": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/automation_plan/review-3130c66e96c132e149e12beb285081a2e106e5fbd0c16c52a117a0903a6ab7d0.json",
+  "goal": "active and incomplete",
+  "remaining": "Unsupported format adapters, comprehensive controls/replicates/repeats, canonical identifiers/reference versions, assay/unit/context compatibility, held-out biological QC and fairRNA-protein correlation still require implementation and validation. Complete core freeze, descriptor/version/changelog, installed-wheel and sourceCI validation, all hosted assets checked, release publication and main/PyPI promotion are not yet an unattended end-to-end9pipeline."
+}

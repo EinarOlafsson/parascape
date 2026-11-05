@@ -1,0 +1,74 @@
+{
+ "name": "compartment_expression_raw+literature_median_rank_nn5_md0.0_mcs25",
+ "spec": {
+  "name": "default",
+  "blocks": [
+   "expression_raw",
+   "literature"
+  ],
+  "categorical": [],
+  "extra_columns": [],
+  "na_policy": "median",
+  "max_missing": 0.5,
+  "scaling": "rank",
+  "block_weights": {},
+  "categorical_weight": 1.0,
+  "indicator_weight": 0.5,
+  "n_components": 3,
+  "n_neighbors": 5,
+  "min_dist": 0.0,
+  "metric": "euclidean",
+  "random_state": 42
+ },
+ "n_genes": 3000,
+ "features": [
+  "rna108740_Tachyzoites_T2_FPKM",
+  "rna108740_Tachyzoites_T4_FPKM",
+  "rna108740_Tissue_cysts_A_FPKM",
+  "rna108740_Tissue_cysts_B_FPKM",
+  "rna108740_Day3_CS4_FPKM",
+  "rna108740_Day3_CS5_FPKM",
+  "rna108740_Day3_CS6_FPKM",
+  "rna108740_Day5_CS2_FPKM",
+  "rna108740_Day5_K4_14_FPKM",
+  "rna108740_Day7_CS7_FPKM",
+  "rna108740_Day7_CS8_FPKM",
+  "rna108740_Day7_CS9_FPKM",
+  "rna206344_Unsporulated_R1",
+  "rna206344_Unsporulated_R2",
+  "rna206344_Sporulating_R1",
+  "rna206344_Sporulating_R2",
+  "rna206344_Sporulated_R1",
+  "rna206344_Sporulated_R2",
+  "n_publications",
+  "n_fulltext",
+  "n_papers_focal",
+  "n_papers_substantive",
+  "n_papers_incidental"
+ ],
+ "target": "compartment",
+ "excluded": [
+  "compartment",
+  "compartment_best",
+  "lopit_map",
+  "lopit_mcmc",
+  "lopit_unified"
+ ],
+ "clustering": {
+  "algorithm": "hdbscan",
+  "min_cluster_size": 25
+ },
+ "scores": {
+  "mean_f1": 0.12174901270916164,
+  "best_f1": 0.1940119760479042,
+  "best_label": "nucleus - chromatin",
+  "n_labels_scored": 17,
+  "n_labels_recovered": 0,
+  "objective_score": 0.06761565836298933,
+  "objective": "best_precision",
+  "objective_detail": "cluster 2 is 7% dense granules and holds 56% of it",
+  "weighting": "macro",
+  "adjusted_rand": 0.014574645359452425,
+  "adjusted_mutual_info": 0.05229287811132118
+ }
+}

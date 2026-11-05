@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAMPLE_SET>
+<SAMPLE accession="SAMN18206555" alias="GSM5140935" center_name="Biology of Apicomplexan Parasites, CIIL- UMR 8204 - U1019, CNRS" broker_name="NCBI">
+     <IDENTIFIERS>
+          <PRIMARY_ID>SAMN18206555</PRIMARY_ID>
+          <SECONDARY_ID>SRS8403143</SECONDARY_ID>
+          <EXTERNAL_ID namespace="BioSample">SAMN18206555</EXTERNAL_ID>
+          <SUBMITTER_ID namespace="Biology of Apicomplexan Parasites, CIIL- UMR 8204 - U1019, CNRS">GSM5140935</SUBMITTER_ID>
+     </IDENTIFIERS>
+     <TITLE>infected primary brain cell 1d - 3</TITLE>
+     <SAMPLE_NAME>
+          <TAXON_ID>5811</TAXON_ID>
+          <SCIENTIFIC_NAME>Toxoplasma gondii</SCIENTIFIC_NAME>
+     </SAMPLE_NAME>
+     <SAMPLE_LINKS>
+    <SAMPLE_LINK>
+        <XREF_LINK>
+            <DB>ENA-FASTQ-FILES</DB>
+            <ID><![CDATA[https://www.ebi.ac.uk/ena/portal/api/filereport?accession=SRS8403143&result=read_run&fields=run_accession,fastq_ftp,fastq_md5,fastq_bytes]]></ID>
+        </XREF_LINK>
+    </SAMPLE_LINK>
+    <SAMPLE_LINK>
+        <XREF_LINK>
+            <DB>ENA-SUBMITTED-FILES</DB>
+            <ID><![CDATA[https://www.ebi.ac.uk/ena/portal/api/filereport?accession=SRS8403143&result=read_run&fields=run_accession,submitted_ftp,submitted_md5,submitted_bytes,submitted_format]]></ID>
+        </XREF_LINK>
+    </SAMPLE_LINK>
+</SAMPLE_LINKS>
+<SAMPLE_ATTRIBUTES>
+          <SAMPLE_ATTRIBUTE>
+               <TAG>INSDC secondary accession</TAG>
+               <VALUE>SRS8403143</VALUE>
+          </SAMPLE_ATTRIBUTE>
+          <SAMPLE_ATTRIBUTE>
+               <TAG>NCBI submission package</TAG>
+               <VALUE>Generic.1.0</VALUE>
+          </SAMPLE_ATTRIBUTE>
+          <SAMPLE_ATTRIBUTE>
+               <TAG>organism</TAG>
+               <VALUE>Toxoplasma gondii</VALUE>
+          </SAMPLE_ATTRIBUTE>
+          <SAMPLE_ATTRIBUTE>
+               <TAG>tissue</TAG>
+               <VALUE>Brain cell primary culture</VALUE>
+          </SAMPLE_ATTRIBUTE>
+          <SAMPLE_ATTRIBUTE>
+               <TAG>source_name</TAG>
+               <VALUE>Brain cell primary culture infected with T. gondii 76K</VALUE>
+          </SAMPLE_ATTRIBUTE>
+          <SAMPLE_ATTRIBUTE>
+               <TAG>BioSampleModel</TAG>
+               <VALUE>Generic</VALUE>
+          </SAMPLE_ATTRIBUTE>
+          <SAMPLE_ATTRIBUTE>
+               <TAG>ENA-FIRST-PUBLIC</TAG>
+               <VALUE>2021-09-24</VALUE>
+          </SAMPLE_ATTRIBUTE>
+          <SAMPLE_ATTRIBUTE>
+               <TAG>ENA-LAST-UPDATE</TAG>
+               <VALUE>2021-09-24</VALUE>
+          </SAMPLE_ATTRIBUTE>
+     </SAMPLE_ATTRIBUTES>
+</SAMPLE>
+</SAMPLE_SET>

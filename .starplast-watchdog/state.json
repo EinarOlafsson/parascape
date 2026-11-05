@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "thread_id": "01a11675-3bc0-75b1-b16b-538f25a08a6b",
+  "source": "/home/carruthers/.codex/sessions/2026/10/07/rollout-2026-10-07T09-02-24-01a11675-3bc0-75b1-b16b-538f25a08a6b.jsonl",
+  "source_inode": 60832174,
+  "offset": 36764498,
+  "goal_status": "paused",
+  "last_activity": 1793455498.691174,
+  "stale_seconds": 900,
+  "alerted": false,
+  "current_item": "69-claude-handoff",
+  "latest_reason": "User requested a Claude takeover message. Acquisition/processing workers remain live; RNA independently verified341/1011study-run entries. Frozen release9 publisher terminal stopped_for_review after Tests41200603037 failed (6235passed/1failed UI tooltip contract); installed-wheel smoke passed. Coexpression b705f2b preview tested28checks remains isolated, landing worker waits for release repair. New named-expression helper exists and only syntax compiled; NOT tested or started. Full dataset goal active/incomplete; historical inference remains paused. No workers stopped.",
+  "source_missing": true,
+  "offset_at_configuration": 14225375,
+  "history_backfilled": true
+}

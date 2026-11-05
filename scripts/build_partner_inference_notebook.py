@@ -12,7 +12,7 @@ and the domain columns shape every choice here:
 
 Positives are the 2,843 StarPath XL-MS crosslink pairs (probability = 1 - local FDR): direct physical
 evidence. The 33,646 bait-member pull-down pairs in the information map sit at a provisional 0.5
-because no Toxoplasma CRAPome background exists; they are scored as a separate, clearly weaker set
+because no Toxoplasma background frequency background exists; they are scored as a separate, clearly weaker set
 and never mixed into the headline positives.
 
 Writes notebooks/partner_inference_2026_11_04.ipynb (executed) and results/partner_inference_2026_11_04/.
@@ -64,7 +64,7 @@ nb.md(
     '**Why the pull-down pairs are not in the headline positives.** '
     '`results/information_map_v0_2026_11_04/pairs.parquet` also holds 33,646 bait-member pairs '
     'parsed from IP-MS and BioID studies, all at a **provisional 0.5**. Without a background '
-    'frequency table — a Toxoplasma CRAPome — **a sticky contaminant is indistinguishable from a '
+    'frequency table — a Toxoplasma background frequency — **a sticky contaminant is indistinguishable from a '
     'real partner**: ribosomal proteins, chaperones, tubulin and the proteasome appear in nearly '
     'every pull-down, and nothing in the parsed table says whether a protein was found with this '
     'bait or with all baits. Training on them would teach the model "abundant and sticky", and that '
@@ -1091,7 +1091,7 @@ code("""
 
 # --------------------------------------------------------------------------- 12 pull-down set
 nb.md(
-    '## 12 · The pull-down pairs as a separate, weaker question — and what a CRAPome would add',
+    '## 12 · The pull-down pairs as a separate, weaker question — and what a background frequency would add',
     'Same machinery, positives = the 33,646 bait-member pairs at a provisional 0.5, degree-matched '
     'decoys on the pull-down degree, cold-node folds. This is **not** a headline result and it is '
     'not comparable to the crosslink question: the positives include every sticky contaminant that '
@@ -1276,7 +1276,7 @@ code("""
              '1 - local FDR (median %.4f). Direct physical evidence.\\n'
              % (len(pos), len(xl_nodes), pos.probability.median()))
     R.append('The %d bait-member pull-down pairs in the information map are **not** headline '
-             'positives: they sit at a provisional 0.5 because no Toxoplasma CRAPome background '
+             'positives: they sit at a provisional 0.5 because no Toxoplasma background frequency background '
              'exists, and without a background frequency a sticky contaminant is indistinguishable '
              'from a real partner. They are scored separately (§12).\\n' % len(pull))
     R.append('**There is no verified non-interaction set.** Negatives are decoys — pairs with no '
@@ -1352,11 +1352,11 @@ code("""
              'never reported, which depresses measured precision by an unknown amount. Nothing in '
              'the data bounds that fraction.\\n')
     R.append('## What would change it\\n')
-    R.append('* **A Toxoplasma CRAPome background** (instruction 71, product 4) is the obvious '
+    R.append('* **A Toxoplasma background frequency background** (instruction 71, product 4) is the obvious '
              'candidate and the largest single gain available: it would turn %d provisional '
              'bait-member pairs into graded co-purification evidence. The positives would grow from '
              '%d to the specific subset of those %d — and, more important for the scoring, '
-             'CRAPome-filtered co-purification is the one *independent* assay that could serve as '
+             'background frequency-filtered co-purification is the one *independent* assay that could serve as '
              'held-out truth for crosslink-trained predictions, which nothing in this notebook has. '
              'How much it would add cannot be stated as a number before the background exists; what '
              'can be stated is the ceiling: %d pairs are currently unusable as labels for want of '

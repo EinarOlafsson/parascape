@@ -1,0 +1,68 @@
+{
+ "name": "compartment_published_screens+literature_median_rank_nn15_md0.1_mcs25",
+ "spec": {
+  "name": "default",
+  "blocks": [
+   "published_screens",
+   "literature"
+  ],
+  "categorical": [],
+  "extra_columns": [],
+  "na_policy": "median",
+  "max_missing": 0.5,
+  "scaling": "rank",
+  "block_weights": {},
+  "categorical_weight": 1.0,
+  "indicator_weight": 0.5,
+  "n_components": 3,
+  "n_neighbors": 15,
+  "min_dist": 0.1,
+  "metric": "euclidean",
+  "random_state": 42
+ },
+ "n_genes": 3000,
+ "features": [
+  "crispr_gra17ko_phenotype",
+  "crispr_gra17_synthlethal_delta",
+  "crispr_gra17_candidate",
+  "crispr_gra12s1_l2fc_invitro",
+  "crispr_gra12s1_l2fc_invivo",
+  "crispr_gra12s1_disco",
+  "crispr_gra12s2_l2fc_invitro",
+  "crispr_gra12s2_l2fc_invivo",
+  "crispr_gra12s2_disco",
+  "crispr_invivo_platform_lfc",
+  "hosttx_T2",
+  "hosttx_padj",
+  "n_publications",
+  "n_fulltext",
+  "n_papers_focal",
+  "n_papers_substantive",
+  "n_papers_incidental"
+ ],
+ "target": "compartment",
+ "excluded": [
+  "compartment",
+  "compartment_best",
+  "lopit_map",
+  "lopit_mcmc",
+  "lopit_unified"
+ ],
+ "clustering": {
+  "algorithm": "hdbscan",
+  "min_cluster_size": 25
+ },
+ "scores": {
+  "mean_f1": 0.1158697782054384,
+  "best_f1": 0.188911704312115,
+  "best_label": "nucleus - chromatin",
+  "n_labels_scored": 17,
+  "n_labels_recovered": 0,
+  "objective_score": 0.05815602836879433,
+  "objective": "best_precision",
+  "objective_detail": "cluster 11 is 6% dense granules and holds 61% of it",
+  "weighting": "macro",
+  "adjusted_rand": 0.004416838846892979,
+  "adjusted_mutual_info": 0.042117954203556636
+ }
+}

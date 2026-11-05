@@ -1,0 +1,20 @@
+{
+  "version": "0.55.0",
+  "release_checks": 613,
+  "documentation": "built",
+  "tracked_build_inputs": 316,
+  "wheel_and_sdist": {
+    "starplast-0.55.0.tar.gz": {
+      "sha256": "c0768a6fd5abdc5d14d543117fb2d8561cb44d8d3362a0309407f7a0a3c0cf7b",
+      "size": 77931616
+    },
+    "starplast-0.55.0-py3-none-any.whl": {
+      "sha256": "d5741d583e7ffd0784004132961b4133097d56e152c179ddd733369e4f33c198",
+      "size": 78137077
+    }
+  },
+  "installed_wheel": "verified outside source",
+  "new_functional_resources": "exact original bytes",
+  "broader_goal": "paused",
+  "publication": "pending CI and upload"
+}

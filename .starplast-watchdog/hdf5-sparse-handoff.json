@@ -1,0 +1,162 @@
+{
+  "epoch": 1793439019.947977,
+  "goal": "active and incomplete",
+  "previous_turn_classification": "progress;94fd44parentgeneaccess committed and all48real transcriptlayers verified",
+  "producer_checkout": "/media/carruthers/mnt1/parascape-hdf5-sparse-checkout",
+  "producer_commit": "7dba1cfc9058724a8772c16fe627ee74b3cbd915",
+  "UI_checkout": "/media/carruthers/mnt1/parascape-hdf5-sparse-ui-checkout",
+  "UI_commit": "fe4173a2a27c71667672eefb70ae33c07dfaa43d",
+  "source_worker_pid": 999577,
+  "source_worker_unit": "parascape-hdf5-sparse-sources.service",
+  "source_worker_timer": "parascape-hdf5-sparse-sources.timer",
+  "integration_unit": "parascape-hdf5-sparse-followup-push.service",
+  "archive_manifest": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/hdf5_sparse/treatment-1fc6389fa2baee74c34b8c7519d18ea8f1d6ffdd53c90b421484c5556a5413d4.json",
+  "source_state": {
+    "completed_matrices": 36,
+    "epoch": 1793438778.317953,
+    "phase": "preserving_original_HDF5_CSC_sources",
+    "reviews": [],
+    "selected_HDF5_files": 62,
+    "stored_records": 434809714,
+    "unsupported_layouts": [
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306208/suppl/GSM4306208_011_me49_adata_allg.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306208/suppl/GSM4306208_011_me49_adata_raw.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306208/suppl/GSM4306208_011_me49_adata_sc_velocyto.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306210/suppl/GSM4306210_pru_adata_allg.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306210/suppl/GSM4306210_pru_adata_raw.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306210/suppl/GSM4306210_pru_adata_sc_velocyto.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306214/suppl/GSM4306214_0701+0702_adata_allg.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306214/suppl/GSM4306214_0701+0702_adata_raw.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306214/suppl/GSM4306214_0701+0702_adata_sc_velocyto.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306215/suppl/GSM4306215_RH_96well_019_adata_allg.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306215/suppl/GSM4306215_RH_96well_019_adata_filtered.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4306nnn/GSM4306215/suppl/GSM4306215_RH_96well_019_adata_raw.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145800/suppl/GSE145800_ad_mm_full.h5ad.hdf5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145800/suppl/GSE145800_adata_raw_mm.h5ad.hdf5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527908/suppl/GSM7527908_Focused-HiC_Naive_F_WT1.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527909/suppl/GSM7527909_Focused-HiC_Naive_F_WT2.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527910/suppl/GSM7527910_Focused-HiC_Naive_F_KO1.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527911/suppl/GSM7527911_Focused-HiC_Naive_F_KO2.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527912/suppl/GSM7527912_Focused-HiC_Th1_D3_F_WT1.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527913/suppl/GSM7527913_Focused-HiC_Th1_D3_F_WT2.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527914/suppl/GSM7527914_Focused-HiC_Th1_D3_F_KO1.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527915/suppl/GSM7527915_Focused-HiC_Th1_D3_F_KO2.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527916/suppl/GSM7527916_HiC_NK_WT.res1K.win15K.balance.corr.mm10.h5"
+      },
+      {
+        "reason": "HDF5 layout requires separate AnnData/other-format treatment; no expression or identity inferred",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7527nnn/GSM7527917/suppl/GSM7527917_HiC_NK_KO.res1K.win15K.balance.corr.mm10.h5"
+      }
+    ]
+  },
+  "actual_client_proof": "/media/carruthers/mnt1/parascape-hdf5-sparse-ui-client-validation/validation.json",
+  "checks_passed": 609,
+  "native_checks": 8,
+  "next_steps": [
+    "Poll confirmedlive999577withoutrestartonobservationtimeouts. All38recognizedCSCfiles selected;14AnnData and10otherHiC sourcecontainers remainexplicitgaps.",
+    "Freeze backend7dandUIfe4173clones; source worker pins7dHEAD/cleanstate andcodehashes. Do not edit activeprocessor36+files midrun; originalsourcebytes stayunchanged.",
+    "Prepare all completedHDF5coordinate/axis optionalcomponents with frozen7dbuilder into separatefuture9HDF5stage; merge descriptors/index onlyat finalcorefreeze, preserving196old sparse URLs andworkbookindex.",
+    "Replay allnewHDF5components andreaders and verifyallremoteassets beforepublication. Only2canarydatasets/6components actualQt/offlineinstaller checked; no claim all38clientchecks orhostedmodaldownload.",
+    "Add combined local source discovery or release9coremetadata merge so existingSparsebrowser sees all66MatrixMarket+newHDF5descriptors. Currentnewcollection isprepared_hdf5_sparse, notdefaultlivecollection yet.",
+    "Observe safeNightlyintegration chain afterexact8PyPIverification; fe4173waits94fd44predecessor andincludes7dbackend. Main/PyPI notpromoted bynewcontroller.",
+    "Continue AnnData layers/metadata, remainingworkbooks, RNA/PRIDE andfaircrossassay identity/unit/sample/QC work; originalgoalnotcomplete, historicalfunctional inference paused."
+  ],
+  "parascape-hdf5-sparse-followup-push": {
+    "phase": "waiting_for_checked_predecessor",
+    "epoch": 1793439002.1189115,
+    "commit": "fe4173a2a27c71667672eefb70ae33c07dfaa43d",
+    "previous_phase": "waiting_for_checked_predecessor",
+    "release_phase": "waiting_for_ci"
+  },
+  "parascape-release-0.0.8.0": {
+    "phase": "waiting_for_ci",
+    "updated_epoch": 1793439012.6622608,
+    "branch": "main",
+    "checks": {
+      "Publish Python packages": {
+        "conclusion": "",
+        "databaseId": 41182221918,
+        "name": "Publish Python packages",
+        "status": "queued"
+      }
+    }
+  },
+  "parascape-workbook-cells": {
+    "phase": "extracting_source_cells",
+    "epoch": 1793436768.9242878,
+    "selected_sources": 93,
+    "unique_workbooks": 93,
+    "completed": 83,
+    "reviews": [],
+    "extracted_cells": 57758194,
+    "measurement_admission": false
+  }
+}

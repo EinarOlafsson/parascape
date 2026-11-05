@@ -1,0 +1,61 @@
+column	table	categories	derived_from	reason	provenance_key	provenance_level_kind	confidence
+sequence	nodes.parquet	sequence	column_override	the amino-acid sequence itself			judged
+dtm_class	nodes.parquet	sequence	column_override	DeepTMHMM class of the protein, read off the sequence			judged
+tm_kd_mean	nodes.parquet	sequence	column_override	hydrophobicity of the predicted TM helices			judged
+tm_kd_max	nodes.parquet	sequence	column_override	hydrophobicity of the predicted TM helices			judged
+tm_len_mean	nodes.parquet	sequence	column_override	length of the predicted TM helices			judged
+has_pf_ortholog	nodes.parquet	conservation	column_override	whether a Plasmodium falciparum ortholog exists			judged
+has_cp_ortholog	nodes.parquet	conservation	column_override	whether a Cryptosporidium ortholog exists			judged
+lineage_specific	nodes.parquet	conservation	column_override	no ortholog outside the lineage			judged
+has_structure	nodes.parquet	structure	column_override	whether a model of the fold exists at all			judged
+ortholopit_label	nodes.parquet	place	column_override	hyperLOPIT niche transferred from an ortholog. TAGM-derived, so `place`: the trap the trait name hides, since no dataset entry claims it			judged
+ortholopit_donors	nodes.parquet	place	column_override	which orthologs donated the transferred hyperLOPIT niche			judged
+ortholopit_accuracy	nodes.parquet	place	column_override	measured accuracy of the transferred hyperLOPIT niche			judged
+ortholopit_accepted	nodes.parquet	place	column_override	whether the transferred hyperLOPIT niche was accepted			judged
+rna99395_extracellular_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse99395	translation/Ribo-seq	judged
+rna99395_extracellular_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse99395	translation/Ribo-seq	judged
+rna99395_intracellular_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse99395	translation/Ribo-seq	judged
+rna99395_intracellular_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse99395	translation/Ribo-seq	judged
+rna129869_confluent_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_confluent_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_confluent_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_subconfluent_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_subconfluent_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_subconfluent_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna245775_parent_tachy_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_tachy_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_tachy_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_prebrady_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_prebrady_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_prebrady_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_tachy_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_tachy_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_tachy_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_prebrady_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_prebrady_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_prebrady_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+lit_tier	nodes.parquet	attention	column_override	literature tier of the gene: study effort, no provenance recorded			judged
+best_model_agreement	nodes.parquet	interaction,structure	column_override	how well the measured crosslinks agree with the predicted complex: an interaction measurement used as a structural check	starpath_xlms	post_translation/XLMS	judged
+n_holes	nodes.parquet	interaction,attention,transcript,fitness	column_override	a degree count in the graph of pairs that co-expression AND co-fitness support while the literature does not co-mention them (`build_graph.structural_holes`). It embodies interaction knowledge, is defined by the ABSENCE of literature (`attention`), and is computed from co-expression and co-fitness, so all four are declared. Composite columns are where a single category would be a lie			judged
+iron_depletion_rna_log2fc	nodes.parquet	transcript	column_override	the RNA arm of a proteomics deposit: transcript, not abundance	iron_depletion_proteome	translation/proteomics	judged
+tdi_source	sequence_traits.parquet	structure	column_override	which structure the 3Di string came from			judged
+tdi_coverage	sequence_traits.parquet	structure	column_override	fraction of residues with a real 3Di letter			judged
+tdi_n_fragments	sequence_traits.parquet	structure	column_override	how many models were merged into the 3Di string			judged
+tdi_align_identity	sequence_traits.parquet	structure	column_override	identity of the alignment that transferred the 3Di string			judged
+tdi_align_coverage	sequence_traits.parquet	structure	column_override	coverage of the alignment that transferred the 3Di string			judged
+domclass_rhoptry_kinase_ropk	domain_traits.parquet	domain,place	column_override	a domain match OR a protein kinase whose PRODUCT NAME matches rhoptry|ROP\d+. The second arm reads a localisation word out of the annotation, so this column carries `place`			judged
+domclass_tm_rich	domain_traits.parquet	domain,sequence	column_override	three or more TM helices: a DeepTMHMM count, not a domain match			judged
+host_facing	information_map/values.parquet	place	column_override	the conclusion that the protein reaches beyond the parasite plasma membrane: a statement about where it is			judged
+compartment_hyperlopit	information_map/values.parquet	place	column_override	hyperLOPIT marker niche			judged
+compartment_go_cc	information_map/values.parquet	place	column_override	experimental GO cellular component			judged
+compartment_go_cc_n	information_map/values.parquet	place	column_override	number of GO cellular-component terms recorded			judged
+partner_best	information_map/values.parquet	interaction	column_override	the strongest recorded partner			judged
+partner_best_prob	information_map/values.parquet	interaction	column_override	probability of the strongest recorded partner			judged
+partner_n_ge95	information_map/values.parquet	interaction	column_override	partners recorded at probability >= 0.95			judged
+partner_n_ge50	information_map/values.parquet	interaction	column_override	partners recorded at probability >= 0.50			judged
+function_class	information_map/values.parquet	phenotype	column_override	coarse functional class. No `function` category exists in instruction 73's vocabulary; `phenotype` is the nearest kind of knowledge. Judged			judged
+function_class_n	information_map/values.parquet	phenotype	column_override	as function_class			judged
+function_go_bp	information_map/values.parquet	phenotype	column_override	experimental GO biological process; judged as function_class			judged
+function_go_bp_n	information_map/values.parquet	phenotype	column_override	as function_go_bp			judged
+function_go_mf	information_map/values.parquet	phenotype	column_override	experimental GO molecular function; judged as function_class			judged
+function_go_mf_n	information_map/values.parquet	phenotype	column_override	as function_go_mf			judged

@@ -1,0 +1,198 @@
+{
+  "Tg": {
+    "url": "https://rest.uniprot.org/uniprotkb/stream?query=%28organism_name%3A%22Toxoplasma+gondii%22%29+AND+%28reviewed%3Atrue%29&format=json",
+    "final_url": "https://rest.uniprot.org/uniprotkb/stream?query=%28organism_name%3A%22Toxoplasma+gondii%22%29+AND+%28reviewed%3Atrue%29&format=json",
+    "query": "(organism_name:\"Toxoplasma gondii\") AND (reviewed:true)",
+    "path": "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/reference/uniprot_activity/2026_10_08/Tg_reviewed.json",
+    "sha256": "f6cc244280919a919392d087c8b38481c05695434c28a095867be03d67966e40",
+    "bytes": 2679189,
+    "headers": {
+      "Vary": "accept,accept-encoding,x-uniprot-release,x-api-deployment-date, User-Agent",
+      "Cache-Control": "public, max-age=43200",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Expose-Headers": "Link, X-Total-Results, X-UniProt-Release, X-UniProt-Release-Date, X-API-Deployment-Date",
+      "X-API-Deployment-Date": "23-September-2026",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "Date": "Thu, 08 Oct 2026 17:33:28 GMT",
+      "Access-Control-Max-Age": "1728000",
+      "X-UniProt-Release": "2026_03",
+      "Transfer-Encoding": "chunked",
+      "Access-Control-Allow-Origin": "*",
+      "Connection": "close",
+      "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
+      "X-UniProt-Release-Date": "02-September-2026"
+    },
+    "retrieved_utc": "2026-10-08T17:33:36.985738+00:00",
+    "entries": 154,
+    "taxa": [
+      [
+        5811,
+        "Toxoplasma gondii"
+      ],
+      [
+        432359,
+        "Toxoplasma gondii (strain ATCC 50861 / VEG)"
+      ],
+      [
+        507601,
+        "Toxoplasma gondii (strain ATCC 50853 / GT1)"
+      ],
+      [
+        508771,
+        "Toxoplasma gondii (strain ATCC 50611 / Me49)"
+      ]
+    ]
+  },
+  "Pf": {
+    "url": "https://rest.uniprot.org/uniprotkb/stream?query=%28organism_name%3A%22Plasmodium+falciparum%22%29+AND+%28reviewed%3Atrue%29&format=json",
+    "final_url": "https://rest.uniprot.org/uniprotkb/stream?query=%28organism_name%3A%22Plasmodium+falciparum%22%29+AND+%28reviewed%3Atrue%29&format=json",
+    "query": "(organism_name:\"Plasmodium falciparum\") AND (reviewed:true)",
+    "path": "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/reference/uniprot_activity/2026_10_08/Pf_reviewed.json",
+    "sha256": "9321eae3d1edd98a23d35423c2058d0c989454dcabde40b68539c8dd1eea4549",
+    "bytes": 10340505,
+    "headers": {
+      "Vary": "accept,accept-encoding,x-uniprot-release,x-api-deployment-date, User-Agent",
+      "Cache-Control": "public, max-age=43200",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Expose-Headers": "Link, X-Total-Results, X-UniProt-Release, X-UniProt-Release-Date, X-API-Deployment-Date",
+      "X-API-Deployment-Date": "23-September-2026",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "Date": "Thu, 08 Oct 2026 17:33:37 GMT",
+      "Access-Control-Max-Age": "1728000",
+      "X-UniProt-Release": "2026_03",
+      "Transfer-Encoding": "chunked",
+      "Access-Control-Allow-Origin": "*",
+      "Connection": "close",
+      "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
+      "X-UniProt-Release-Date": "02-September-2026"
+    },
+    "retrieved_utc": "2026-10-08T17:34:08.916489+00:00",
+    "entries": 509,
+    "taxa": [
+      [
+        5833,
+        "Plasmodium falciparum"
+      ],
+      [
+        5834,
+        "Plasmodium falciparum (isolate ro-33 / Ghana)"
+      ],
+      [
+        5835,
+        "Plasmodium falciparum (isolate Camp / Malaysia)"
+      ],
+      [
+        5836,
+        "Plasmodium falciparum (isolate CDC / Honduras)"
+      ],
+      [
+        5837,
+        "Plasmodium falciparum (isolate FC27 / Papua New Guinea)"
+      ],
+      [
+        5838,
+        "Plasmodium falciparum (isolate FCR-3 / Gambia)"
+      ],
+      [
+        5839,
+        "Plasmodium falciparum (isolate K1 / Thailand)"
+      ],
+      [
+        5840,
+        "Plasmodium falciparum (isolate le5)"
+      ],
+      [
+        5841,
+        "Plasmodium falciparum (isolate mad20 / Papua New Guinea)"
+      ],
+      [
+        5842,
+        "Plasmodium falciparum (isolate NF7 / Ghana)"
+      ],
+      [
+        5843,
+        "Plasmodium falciparum (isolate NF54)"
+      ],
+      [
+        5845,
+        "Plasmodium falciparum (isolate fcm17 / Senegal)"
+      ],
+      [
+        5846,
+        "Plasmodium falciparum (isolate t4 / Thailand)"
+      ],
+      [
+        5847,
+        "Plasmodium falciparum (isolate v1)"
+      ],
+      [
+        5848,
+        "Plasmodium falciparum (isolate Wellcome)"
+      ],
+      [
+        33631,
+        "Plasmodium falciparum (isolate FCBR / Columbia)"
+      ],
+      [
+        36329,
+        "Plasmodium falciparum (isolate 3D7)"
+      ],
+      [
+        57265,
+        "Plasmodium falciparum (isolate 311)"
+      ],
+      [
+        57266,
+        "Plasmodium falciparum (isolate 7G8)"
+      ],
+      [
+        57267,
+        "Plasmodium falciparum (isolate Dd2)"
+      ],
+      [
+        57268,
+        "Plasmodium falciparum (isolate imr143)"
+      ],
+      [
+        57269,
+        "Plasmodium falciparum (isolate kf1916)"
+      ],
+      [
+        57270,
+        "Plasmodium falciparum (isolate Palo Alto / Uganda)"
+      ],
+      [
+        57276,
+        "Plasmodium falciparum (isolate tak 9)"
+      ],
+      [
+        70150,
+        "Plasmodium falciparum (isolate Nig32 / Nigeria)"
+      ],
+      [
+        70151,
+        "Plasmodium falciparum (isolate thtn / Thailand)"
+      ],
+      [
+        70152,
+        "Plasmodium falciparum (isolate fid3 / India)"
+      ],
+      [
+        70154,
+        "Plasmodium falciparum (isolate mad71 / Papua New Guinea)"
+      ],
+      [
+        132416,
+        "Plasmodium falciparum (isolate FCH-5)"
+      ],
+      [
+        137071,
+        "Plasmodium falciparum (isolate HB3)"
+      ]
+    ]
+  }
+}

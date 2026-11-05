@@ -21,7 +21,7 @@ nb.md('Instruction 72 (Einar, 2026-11-04), v0 build. One row per Toxoplasma ME49
       'trait is simply blank; unlabeled is not negative.',
       '**The probabilities are provisional (v0).** They are tier defaults, not measured: direct experiment 0.95, '
       'curated marker 0.90, single high-throughput screen call 0.80, proximity labelling 0.70; StarPath crosslinks use '
-      '1 minus their own local false-discovery rate; members of interaction studies get 0.5 until a CRAPome-style '
+      '1 minus their own local false-discovery rate; members of interaction studies get 0.5 until a background frequency-style '
       'background exists. In v1 these defaults are replaced by measured agreement between independent sources.')
 
 nb.md('## 1 · Setup, gene universe and tier defaults',
@@ -307,7 +307,7 @@ nb.md('## 9 · Binding partners (pairs table)',
       '`observed-direct`. Reference is the StarPath preprint (PMC12505969).',
       '* **Interaction studies** (BioID / pull-down tables parsed from papers): pairs are bait to every listed member, '
       'for the 31 studies where the bait gene is known. Tier `observed-screen`, probability **0.5, provisional** until a '
-      'CRAPome-style background says which members are sticky contaminants.',
+      'background frequency-style background says which members are sticky contaminants.',
       '* **Curated host interactions**: parasite gene to the named host protein, side `host`, tier `observed-curated` 0.90.')
 nb.code(r'''
 cl = pd.read_parquet('parascape/data/crosslink_models.parquet')
@@ -322,7 +322,7 @@ j = mem.merge(baits[['pmid', 'bait_gene']], on='pmid')
 j = j[j.bait_gene.isin(GENESET) & j.gene_id.isin(GENESET) & (j.bait_gene != j.gene_id)]
 p2 = pd.DataFrame({'gene_a': j.bait_gene, 'gene_b': j.gene_id, 'partner_side': 'parasite',
                    'probability': STUDY_MEMBER_P, 'source_tier': 'observed-screen',
-                   'reference': 'PMID:' + j.pmid + ' (' + j.method + '; provisional 0.5 pending CRAPome background)'})
+                   'reference': 'PMID:' + j.pmid + ' (' + j.method + '; provisional 0.5 pending background frequency background)'})
 p3 = pd.DataFrame({'gene_a': hi.gene_id, 'gene_b': hi.host_target, 'partner_side': 'host',
                    'probability': TIER_P['observed-curated'], 'source_tier': 'observed-curated',
                    'reference': hi.key_reference})
@@ -417,7 +417,7 @@ Instruction 72, v0 build. Observed facts only; no predictions, no gap filling. B
 
 ## Provisional probabilities (v0)
 Tier defaults, NOT measured: observed-direct 0.95, observed-curated 0.90, observed-screen 0.80, observed-proximity 0.70.
-StarPath crosslinks: 1 - local_fdr. Interaction-study members: 0.5, provisional until a CRAPome background exists.
+StarPath crosslinks: 1 - local_fdr. Interaction-study members: 0.5, provisional until a background frequency background exists.
 v1 replaces these by measured agreement with independent sources.
 
 ## Rules followed

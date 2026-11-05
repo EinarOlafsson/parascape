@@ -1,0 +1,20 @@
+{
+  "studies_in": 31,
+  "studies_with_contrasts": 15,
+  "contrasts": 85,
+  "by_axis": {
+    "genotype": 37,
+    "treatment": 27,
+    "time": 21
+  },
+  "by_depth": {
+    "0": 46,
+    "1": 39
+  },
+  "axes_needing_a_named_reference": 30,
+  "pairs_refused_for_an_unparsed_axis": 168,
+  "studies_with_a_refusal": 9,
+  "refusals_on_a_real_axis": 36,
+  "refusals_on_a_plate_label": 132,
+  "indistinguishable_rows": 0
+}

@@ -1,0 +1,9 @@
+question	label_category	derived	evidence_forbidden (override)
+required_without_glucose	fitness	fitness	crispr_glucose_limitation, crispr_invitro, crispr_invivo_composite, crispr_macrophage, crispr_parasite_density, crispr_serum_restriction, crispr_young2019, second_background_fitness, curated_enteric_fitness, gra12, gra17_synthlethal, invivo_platform, gse253884_5
+screen_egress_phenotype	phenotype	phenotype	splitcas9_imaging_screen
+host_facing	place	place	host_facing_truth, pvm_proximity, hosttx_effectors, organelle_surface_turboid, pubmed, lopit_tgon
+function_class	phenotype	phenotype	function_truth, quickgo, interpro, toxodb_ec_numbers
+binding_partners	interaction	interaction	starpath_xlms, ipms_baits, ipms_corpus_membership
+favourable_immune_response_human	fitness	fitness	human_immune_screen
+autophagy_involvement	phenotype	phenotype	quickgo
+has_domain_ipr000719	domain	domain	interpro

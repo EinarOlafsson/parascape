@@ -1,0 +1,68 @@
+{
+ "name": "compartment_expression_summary+protein_features_median_rank_nn50_md0.0_mcs25",
+ "spec": {
+  "name": "default",
+  "blocks": [
+   "expression_summary",
+   "protein_features"
+  ],
+  "categorical": [],
+  "extra_columns": [],
+  "na_policy": "median",
+  "max_missing": 0.5,
+  "scaling": "rank",
+  "block_weights": {},
+  "categorical_weight": 1.0,
+  "indicator_weight": 0.5,
+  "n_components": 3,
+  "n_neighbors": 50,
+  "min_dist": 0.0,
+  "metric": "euclidean",
+  "random_state": 42
+ },
+ "n_genes": 3000,
+ "features": [
+  "expr_tachy",
+  "expr_cyst",
+  "expr_max",
+  "expr_sporulated",
+  "length",
+  "n_tm",
+  "has_signal_peptide",
+  "is_tm",
+  "tm_kd_mean",
+  "tm_kd_max",
+  "n_interpro",
+  "has_domain",
+  "paralog_number",
+  "lineage_specific",
+  "mean_plddt",
+  "n_phosphosites",
+  "protein_ibaq_log2"
+ ],
+ "target": "compartment",
+ "excluded": [
+  "compartment",
+  "compartment_best",
+  "lopit_map",
+  "lopit_mcmc",
+  "lopit_unified"
+ ],
+ "clustering": {
+  "algorithm": "hdbscan",
+  "min_cluster_size": 25
+ },
+ "scores": {
+  "mean_f1": 0.14275584742907754,
+  "best_f1": 0.21830985915492956,
+  "best_label": "Golgi",
+  "n_labels_scored": 16,
+  "n_labels_recovered": 0,
+  "objective_score": 0.04932735426008968,
+  "objective": "best_precision",
+  "objective_detail": "cluster 3 is 5% dense granules and holds 18% of it",
+  "weighting": "macro",
+  "adjusted_rand": 0.023539982987110134,
+  "adjusted_mutual_info": 0.11591538679829759
+ }
+}

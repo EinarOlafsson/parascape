@@ -1,0 +1,67 @@
+{
+ "name": "compartment_localisation+protein_features_median_rank_nn15_md0.25_mcs60",
+ "spec": {
+  "name": "default",
+  "blocks": [
+   "localisation",
+   "protein_features"
+  ],
+  "categorical": [],
+  "extra_columns": [],
+  "na_policy": "median",
+  "max_missing": 0.5,
+  "scaling": "rank",
+  "block_weights": {},
+  "categorical_weight": 1.0,
+  "indicator_weight": 0.5,
+  "n_components": 3,
+  "n_neighbors": 15,
+  "min_dist": 0.25,
+  "metric": "euclidean",
+  "random_state": 42
+ },
+ "n_genes": 3000,
+ "features": [
+  "lopit_prob_map",
+  "lopit_prob_mcmc",
+  "lopit_methods_agree",
+  "length",
+  "n_tm",
+  "has_signal_peptide",
+  "is_tm",
+  "tm_kd_mean",
+  "tm_kd_max",
+  "n_interpro",
+  "has_domain",
+  "paralog_number",
+  "lineage_specific",
+  "mean_plddt",
+  "n_phosphosites",
+  "protein_ibaq_log2"
+ ],
+ "target": "compartment",
+ "excluded": [
+  "compartment",
+  "compartment_best",
+  "lopit_map",
+  "lopit_mcmc",
+  "lopit_unified"
+ ],
+ "clustering": {
+  "algorithm": "hdbscan",
+  "min_cluster_size": 60
+ },
+ "scores": {
+  "mean_f1": 0.17650391388160508,
+  "best_f1": 0.31497284716834756,
+  "best_label": "nucleus - chromatin",
+  "n_labels_scored": 16,
+  "n_labels_recovered": 0,
+  "objective_score": 0.04741379310344827,
+  "objective": "best_precision",
+  "objective_detail": "cluster 9 is 5% dense granules and holds 19% of it",
+  "weighting": "macro",
+  "adjusted_rand": 0.07016150002276782,
+  "adjusted_mutual_info": 0.1168404674184528
+ }
+}

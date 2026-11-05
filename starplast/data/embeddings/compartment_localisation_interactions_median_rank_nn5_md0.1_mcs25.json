@@ -1,0 +1,58 @@
+{
+ "name": "compartment_localisation+interactions_median_rank_nn5_md0.1_mcs25",
+ "spec": {
+  "name": "default",
+  "blocks": [
+   "localisation",
+   "interactions"
+  ],
+  "categorical": [],
+  "extra_columns": [],
+  "na_policy": "median",
+  "max_missing": 0.5,
+  "scaling": "rank",
+  "block_weights": {},
+  "categorical_weight": 1.0,
+  "indicator_weight": 0.5,
+  "n_components": 3,
+  "n_neighbors": 5,
+  "min_dist": 0.1,
+  "metric": "euclidean",
+  "random_state": 42
+ },
+ "n_genes": 3000,
+ "features": [
+  "lopit_prob_map",
+  "lopit_prob_mcmc",
+  "lopit_methods_agree",
+  "n_xlink_partners",
+  "n_struct_similar",
+  "n_ipms_partners",
+  "n_holes"
+ ],
+ "target": "compartment",
+ "excluded": [
+  "compartment",
+  "compartment_best",
+  "lopit_map",
+  "lopit_mcmc",
+  "lopit_unified"
+ ],
+ "clustering": {
+  "algorithm": "hdbscan",
+  "min_cluster_size": 25
+ },
+ "scores": {
+  "mean_f1": 0.17398461514672514,
+  "best_f1": 0.2576271186440678,
+  "best_label": "nucleus - chromatin",
+  "n_labels_scored": 17,
+  "n_labels_recovered": 0,
+  "objective_score": 0.09375,
+  "objective": "best_precision",
+  "objective_detail": "cluster 1 is 9% dense granules and holds 5% of it",
+  "weighting": "macro",
+  "adjusted_rand": 0.027516195396561957,
+  "adjusted_mutual_info": 0.0694673725886833
+ }
+}

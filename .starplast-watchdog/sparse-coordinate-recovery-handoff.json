@@ -1,0 +1,402 @@
+{
+  "operation": "recover_large_sparse_matrix_and_add_exact_coordinate_QC",
+  "epoch": 1793424082.2747223,
+  "files": {
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/sparse_values.py": {
+      "sha256": "df56879fe04a3c416f4ce6a78ef7fdb9094b900441369c66c21a2c12415a40b5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/sparse_values-df56879fe04a3c416f4ce6a78ef7fdb9094b900441369c66c21a2c12415a40b5.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/sparse_values_panel.py": {
+      "sha256": "461853630c8b7a0fc780917ac6bdc1be353d2ac2c12561d2700c15f6d419d19d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/sparse_values_panel-461853630c8b7a0fc780917ac6bdc1be353d2ac2c12561d2700c15f6d419d19d.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/sparse_record_qc.py": {
+      "sha256": "5c0ba3532ce99ea191851c83d9effa2f50df8b7ea746eee892b25b9ae7ffed5b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/sparse_record_qc-5c0ba3532ce99ea191851c83d9effa2f50df8b7ea746eee892b25b9ae7ffed5b.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/tests/test_sparse_values.py": {
+      "sha256": "2bf9ae0ec70f349ce3e57fa54dad699f9078575fe2a6c1a8f438b0e78e49acc8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/test_sparse_values-2bf9ae0ec70f349ce3e57fa54dad699f9078575fe2a6c1a8f438b0e78e49acc8.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/tests/test_sparse_record_qc.py": {
+      "sha256": "e9553a77c372f6c2edf8ac8b0f46dbc1950be0bef241fde70bcdc764cbfdd59d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/test_sparse_record_qc-e9553a77c372f6c2edf8ac8b0f46dbc1950be0bef241fde70bcdc764cbfdd59d.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/docs/dataset_browser.md": {
+      "sha256": "5d2bc74bf8ea0321e22b3bc26bdb50f3de2bdf275e8bd0d9eb31b6d3d04255e4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/dataset_browser-5d2bc74bf8ea0321e22b3bc26bdb50f3de2bdf275e8bd0d9eb31b6d3d04255e4.md"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/recover_large_sparse_coordinates.py": {
+      "sha256": "87d0c1c2d89639b497b726b403c7902cd62a8e3a22b704b59a9bd3bda64e94cd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/recover_large_sparse_coordinates-87d0c1c2d89639b497b726b403c7902cd62a8e3a22b704b59a9bd3bda64e94cd.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_bounded_sparse_recovery.py": {
+      "sha256": "58d786e5a3d7a1549a2b008eac2b99bf56cc60fe4dd20872cd214a731ffcd256",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/check_bounded_sparse_recovery-58d786e5a3d7a1549a2b008eac2b99bf56cc60fe4dd20872cd214a731ffcd256.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/audit_sparse_coordinate_order.py": {
+      "sha256": "b627b0fce5793971fd5ddddebdf202d1b73c873828107342ec939c331e0f972f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/audit_sparse_coordinate_order-b627b0fce5793971fd5ddddebdf202d1b73c873828107342ec939c331e0f972f.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_sparse_order_qc.py": {
+      "sha256": "809b8adbe6c96ed27436e7d937ddf7214a0b3369f5dcd797977208ee59998b7d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/check_sparse_order_qc-809b8adbe6c96ed27436e7d937ddf7214a0b3369f5dcd797977208ee59998b7d.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_sparse_record_qc_real_gui.py": {
+      "sha256": "40ede56f67b60bceac903d69af2f96ff75ed004b8e945a97f1ac15aee6aa6021",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/check_sparse_record_qc_real_gui-40ede56f67b60bceac903d69af2f96ff75ed004b8e945a97f1ac15aee6aa6021.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_large_sparse_query.py": {
+      "sha256": "395f2e76d63ca95e6eb4120cbab92f9e4ba9523bab74ea0bed5e1092db912d59",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/check_large_sparse_query-395f2e76d63ca95e6eb4120cbab92f9e4ba9523bab74ea0bed5e1092db912d59.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-sparse-coordinate-recovery.service": {
+      "sha256": "047ac6d97d5f8211090a1710ad98be3e69c0306845a4b34dc241168424d434cc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/parascape-sparse-coordinate-recovery-047ac6d97d5f8211090a1710ad98be3e69c0306845a4b34dc241168424d434cc.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-sparse-coordinate-qc.service": {
+      "sha256": "77fc72c1ede380d44bfdca26863405456d316abdcc84776159500ba8dc952774",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/parascape-sparse-coordinate-qc-77fc72c1ede380d44bfdca26863405456d316abdcc84776159500ba8dc952774.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-sparse-coordinate-qc.timer": {
+      "sha256": "d0340efa96ee51004b90fdc28c33fb4530703ef8517ad4af85d51b262f0559c1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/parascape-sparse-coordinate-qc-d0340efa96ee51004b90fdc28c33fb4530703ef8517ad4af85d51b262f0559c1.timer"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-large-sparse-query-check.service": {
+      "sha256": "5a9a77720af58da7281db01a4016123fbf7138cdfbd354582feba25672caab69",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/parascape-large-sparse-query-check-5a9a77720af58da7281db01a4016123fbf7138cdfbd354582feba25672caab69.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-optional-components-audit.service": {
+      "sha256": "44540077cb42f310010fff23f68dc77180d2850ddbaff5958cd91c928656d125",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/parascape-optional-components-audit-44540077cb42f310010fff23f68dc77180d2850ddbaff5958cd91c928656d125.service"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/selfchecks/a1ce4f0690f1ca3b55ee6d5d5c7b2512e65c2e4a4f3d37d5505491d77c4283f0.json": {
+      "sha256": "a1ce4f0690f1ca3b55ee6d5d5c7b2512e65c2e4a4f3d37d5505491d77c4283f0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/a1ce4f0690f1ca3b55ee6d5d5c7b2512e65c2e4a4f3d37d5505491d77c4283f0-a1ce4f0690f1ca3b55ee6d5d5c7b2512e65c2e4a4f3d37d5505491d77c4283f0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/selfchecks/817078db26a55dc17b868d920e396e521960c27248857f96c135ace68b0ba6b4.json": {
+      "sha256": "817078db26a55dc17b868d920e396e521960c27248857f96c135ace68b0ba6b4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/817078db26a55dc17b868d920e396e521960c27248857f96c135ace68b0ba6b4-817078db26a55dc17b868d920e396e521960c27248857f96c135ace68b0ba6b4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/current.json": {
+      "sha256": "895c85d0d130b6fe01d3455f4107a370fa3b152fe2de3fb4957c2edbc4d5a038",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/current-895c85d0d130b6fe01d3455f4107a370fa3b152fe2de3fb4957c2edbc4d5a038.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/949f6705d95160e252ebcf4032c5135264740aebc6b9a7d47537e4925c0e52d2.json": {
+      "sha256": "949f6705d95160e252ebcf4032c5135264740aebc6b9a7d47537e4925c0e52d2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/949f6705d95160e252ebcf4032c5135264740aebc6b9a7d47537e4925c0e52d2-949f6705d95160e252ebcf4032c5135264740aebc6b9a7d47537e4925c0e52d2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/0c043a36cd912fd12d5f12e60b791dfd6cbeb6dce29b07d1750385d80876121c.json": {
+      "sha256": "4b4a582319874a05ee1ef732f994e401867efdd1362457640c8a6cfa6194c2a1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/0c043a36cd912fd12d5f12e60b791dfd6cbeb6dce29b07d1750385d80876121c-4b4a582319874a05ee1ef732f994e401867efdd1362457640c8a6cfa6194c2a1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/0bcdc7830b43b98134e130a32269c668a92bcd87f119e82fcee945b5f500ac6e.json": {
+      "sha256": "dff936656d12ade743f361bcbb40a40ff3d5a1a687add44b80de57cfd4ee6f3a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/0bcdc7830b43b98134e130a32269c668a92bcd87f119e82fcee945b5f500ac6e-dff936656d12ade743f361bcbb40a40ff3d5a1a687add44b80de57cfd4ee6f3a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/7c86310b8710056f9a9e92b45ab7d40a29256cae085a651295fa64f640e8bf96.json": {
+      "sha256": "df6501b86b650549f73bfca3e913bdc39b58684960912ac7521f3c6d5aea7d4d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/7c86310b8710056f9a9e92b45ab7d40a29256cae085a651295fa64f640e8bf96-df6501b86b650549f73bfca3e913bdc39b58684960912ac7521f3c6d5aea7d4d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/3542f0e9a84f732428e9ef046eb31eef9397513acb323a5e61ee1856672f5351.json": {
+      "sha256": "22dfe6e816ed301a66e53a0c945e6f6ed6433b10175305bac07b16f4153ee6b1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/3542f0e9a84f732428e9ef046eb31eef9397513acb323a5e61ee1856672f5351-22dfe6e816ed301a66e53a0c945e6f6ed6433b10175305bac07b16f4153ee6b1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/b3faf2e7d0b5956f8cd36ecc20e06939b5e1ccb2b9e18cfb4c722f663e6a79b7.json": {
+      "sha256": "e2397659700259ce434fdd4bd462c59d8a1edecde092bc059ef8978f16d77a3a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/b3faf2e7d0b5956f8cd36ecc20e06939b5e1ccb2b9e18cfb4c722f663e6a79b7-e2397659700259ce434fdd4bd462c59d8a1edecde092bc059ef8978f16d77a3a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/32e024769c5b8e8999c85fceb75685a0d153684219e9597ff7cd0daeda77be26.json": {
+      "sha256": "b43a628f561f1ce4c35c62db5c98b2c09972ecaa6b35eda3b070374f6aa1f20f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/32e024769c5b8e8999c85fceb75685a0d153684219e9597ff7cd0daeda77be26-b43a628f561f1ce4c35c62db5c98b2c09972ecaa6b35eda3b070374f6aa1f20f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/f53518f8151d332902acc64e28c436058fce57c1d8b57cc89326cb16cca23701.json": {
+      "sha256": "086b789f82ab5fdbb02e8cdf96858ff52d5e1809f627c85933a51fdb67352798",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/f53518f8151d332902acc64e28c436058fce57c1d8b57cc89326cb16cca23701-086b789f82ab5fdbb02e8cdf96858ff52d5e1809f627c85933a51fdb67352798.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/f6b641830cb81afa9cad09a0b915ebdb1fe538577642e6bb93cc4124187caca1.json": {
+      "sha256": "d8a8f949a3f30ff473310179d0833d8d9e5aa23402ec489f8daf31f2608d20a0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/f6b641830cb81afa9cad09a0b915ebdb1fe538577642e6bb93cc4124187caca1-d8a8f949a3f30ff473310179d0833d8d9e5aa23402ec489f8daf31f2608d20a0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/34d90a3df6f77fe57baa3869545138e8af2fc490ae88fc69dd4c7b492f14e87f.json": {
+      "sha256": "5ced974d0522a101ab525a813ec23c61aa459ff4ffa7217e6c6245ff959e9b35",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/34d90a3df6f77fe57baa3869545138e8af2fc490ae88fc69dd4c7b492f14e87f-5ced974d0522a101ab525a813ec23c61aa459ff4ffa7217e6c6245ff959e9b35.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/80f2f2ff46c481d6b92747c8752315acd6f3469316676cd1f4efacf98d856dce.json": {
+      "sha256": "ef910baea8947008ed3b01edfa1085564d45ff63ae8afc6f578fa8da98b8c141",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/80f2f2ff46c481d6b92747c8752315acd6f3469316676cd1f4efacf98d856dce-ef910baea8947008ed3b01edfa1085564d45ff63ae8afc6f578fa8da98b8c141.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/13fe6c0b4f22efe6be394f4959f3b57154bd6ef6b02e0f8f733976f9c48480c6.json": {
+      "sha256": "ac9feec23844384af696702771399517cb15d9437da4c9400daf2b2666cc5eb9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/13fe6c0b4f22efe6be394f4959f3b57154bd6ef6b02e0f8f733976f9c48480c6-ac9feec23844384af696702771399517cb15d9437da4c9400daf2b2666cc5eb9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/02706414c96f9ab6d1fdea5dd63b2317f2f68fd863d33309b891b3f217c6b89a.json": {
+      "sha256": "bac643f34bd45886c59b458588edc777b712c205fa63a3f102220167ed650ea6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/02706414c96f9ab6d1fdea5dd63b2317f2f68fd863d33309b891b3f217c6b89a-bac643f34bd45886c59b458588edc777b712c205fa63a3f102220167ed650ea6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/9886863f44091551ba0ea69606b7ce4f4a82723c4796814021b9f875c94bfc7b.json": {
+      "sha256": "9687b5850aaa75ac454c69e0b68c639c7f01f29fe09909bfb6671de82cc50797",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/9886863f44091551ba0ea69606b7ce4f4a82723c4796814021b9f875c94bfc7b-9687b5850aaa75ac454c69e0b68c639c7f01f29fe09909bfb6671de82cc50797.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/07fad262e1ad7f8975a245e607d378a3cf04f1bc46a47ec15c9c737871826768.json": {
+      "sha256": "dc2a804532fa97ad3213a383bc1105217ecdef554fec96f28cf231717f01515e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/07fad262e1ad7f8975a245e607d378a3cf04f1bc46a47ec15c9c737871826768-dc2a804532fa97ad3213a383bc1105217ecdef554fec96f28cf231717f01515e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/e94f68554a7f9f18f412b791f0241d27b463c4f8757a2137f8c71e4ac2dfd814.json": {
+      "sha256": "343fb319aaf70a829ca8777216872d6c6a5fc6f720d97e5e21882f9e78c45bc8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/e94f68554a7f9f18f412b791f0241d27b463c4f8757a2137f8c71e4ac2dfd814-343fb319aaf70a829ca8777216872d6c6a5fc6f720d97e5e21882f9e78c45bc8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/e8bdf96c41034d77b02dbf56633777365d85db51314ca925d9cd36202d3fe1bd.json": {
+      "sha256": "7ee8b45a41797fe888243c5696384016ac9e5c78fc4b20ddefd7d0271767cbc2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/e8bdf96c41034d77b02dbf56633777365d85db51314ca925d9cd36202d3fe1bd-7ee8b45a41797fe888243c5696384016ac9e5c78fc4b20ddefd7d0271767cbc2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/15960bdb311090435ca64c5838a73688933e2ebec1b8bf62e5037b25df1d0037.json": {
+      "sha256": "06da035a6457fbeb2593d9aaf2e87f5086c676d34daa8c4c17fee6e9b2cacc91",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/15960bdb311090435ca64c5838a73688933e2ebec1b8bf62e5037b25df1d0037-06da035a6457fbeb2593d9aaf2e87f5086c676d34daa8c4c17fee6e9b2cacc91.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/75cd396da58ffcf7e7ab005a08d893faa9642932953ea8db7770377c0001e89f.json": {
+      "sha256": "a14a4aa0f1d39f854c8423914114026291f2196810aecdb0fe8ce98ccd73600a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/75cd396da58ffcf7e7ab005a08d893faa9642932953ea8db7770377c0001e89f-a14a4aa0f1d39f854c8423914114026291f2196810aecdb0fe8ce98ccd73600a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/33803f947ca7457beee4c7d6eadf08c8e9e5d22b2e5febf94ef0c7c0552edfda.json": {
+      "sha256": "6c3d726d3c8f26a8b0590437ad15b3bbbc5071680cec982316e3e9d54bddc53f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/33803f947ca7457beee4c7d6eadf08c8e9e5d22b2e5febf94ef0c7c0552edfda-6c3d726d3c8f26a8b0590437ad15b3bbbc5071680cec982316e3e9d54bddc53f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/090a257a870376bc6c100b485cfcafd66423a1f62fb2ddfcd2c8f85ddbad244c.json": {
+      "sha256": "93725d94096bd99094308b89aa0c8e42208859c3251f226d00ab6de7afc2ab51",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/090a257a870376bc6c100b485cfcafd66423a1f62fb2ddfcd2c8f85ddbad244c-93725d94096bd99094308b89aa0c8e42208859c3251f226d00ab6de7afc2ab51.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/d159078395b0ac60cbea0cf058a5739b8abbcf23a2c2c3ff343f164215132f9c.json": {
+      "sha256": "d8e190846923f2989bf441984795354aebc2851fa600ec1a07dd924670fe9df5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/d159078395b0ac60cbea0cf058a5739b8abbcf23a2c2c3ff343f164215132f9c-d8e190846923f2989bf441984795354aebc2851fa600ec1a07dd924670fe9df5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/eff970ce74bb3692026a395ec121599ef4870cd2d650b94718d53a0b8cd44ea7.json": {
+      "sha256": "1bf232d4e153ec255912515a16a4452f9298b5e450b1ad3e1aeba7330a5bf79b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/eff970ce74bb3692026a395ec121599ef4870cd2d650b94718d53a0b8cd44ea7-1bf232d4e153ec255912515a16a4452f9298b5e450b1ad3e1aeba7330a5bf79b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/11c936fb20322d32051c05d7fc26f75e125d5c688dd4eadd56355e5b082032d6.json": {
+      "sha256": "0f4d5b45d90667ce62bfd621b251c57ec8663751550e71210ae4e8bf72e27a1d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/11c936fb20322d32051c05d7fc26f75e125d5c688dd4eadd56355e5b082032d6-0f4d5b45d90667ce62bfd621b251c57ec8663751550e71210ae4e8bf72e27a1d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/860456c7a22a7b5dd52b9093c301f1be7f86f16e5c7cf6a87ddd7e77a1a07b1f.json": {
+      "sha256": "112a836f473410a939ed6a0d5c12f4ccf5e8072d80b3a1b9911e818341113916",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/860456c7a22a7b5dd52b9093c301f1be7f86f16e5c7cf6a87ddd7e77a1a07b1f-112a836f473410a939ed6a0d5c12f4ccf5e8072d80b3a1b9911e818341113916.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/340ab4c8c3fa193106ec80dc61d2aae8d13ed749e92fb0564dbece9951520e93.json": {
+      "sha256": "9c198031a1b28a393ab98156bd0d6bbd6b3eaa12b8226da6bd956280c074a22a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/340ab4c8c3fa193106ec80dc61d2aae8d13ed749e92fb0564dbece9951520e93-9c198031a1b28a393ab98156bd0d6bbd6b3eaa12b8226da6bd956280c074a22a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/befd61db600efd6f2ed897a1ea9478ee78272cb69e4bcc4c52a6c957a8c4f961.json": {
+      "sha256": "1704bb001501c7fdeb046301e7b49a777fe538461db277cbe0736d3a90bca438",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/befd61db600efd6f2ed897a1ea9478ee78272cb69e4bcc4c52a6c957a8c4f961-1704bb001501c7fdeb046301e7b49a777fe538461db277cbe0736d3a90bca438.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/694c3965e1a7f68c1208ad91b47a203a647e2ae511c81b06d410b532c65b49ae.json": {
+      "sha256": "e2865de176ad2e62118311a8a44f073948f54e7a205f69b3c25369d4816aca6a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/694c3965e1a7f68c1208ad91b47a203a647e2ae511c81b06d410b532c65b49ae-e2865de176ad2e62118311a8a44f073948f54e7a205f69b3c25369d4816aca6a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/9197e998524f7dbbcc38fb430e91397b2ab90ee8c64b1791f5bc009e23ae6f39.json": {
+      "sha256": "dd1e9ccf0c5026405e3773434683b72392c01c4fd34eaabad93b2d1398cf413e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/9197e998524f7dbbcc38fb430e91397b2ab90ee8c64b1791f5bc009e23ae6f39-dd1e9ccf0c5026405e3773434683b72392c01c4fd34eaabad93b2d1398cf413e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/afc88d9e44589966b4d3e4654550ed0aae71795f9f764a28688469352759cbca.json": {
+      "sha256": "a7a10bff5a1dd45a0dcb12d1208b54cd07ed2f36b631bac385533cd3922d017c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/afc88d9e44589966b4d3e4654550ed0aae71795f9f764a28688469352759cbca-a7a10bff5a1dd45a0dcb12d1208b54cd07ed2f36b631bac385533cd3922d017c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/28c60ce8c37cb12042ceaa3b069e87cd56f62e8efe8eef33ae53806dfdd3f4e2.json": {
+      "sha256": "28a7b819a32072eb69bc217b0424c7ff59f31c8e91424640af7a43d38e1dd817",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/28c60ce8c37cb12042ceaa3b069e87cd56f62e8efe8eef33ae53806dfdd3f4e2-28a7b819a32072eb69bc217b0424c7ff59f31c8e91424640af7a43d38e1dd817.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/7e31501a69d859beb2903d392f30023db3129a6ef03234567d11d42a934c3414.json": {
+      "sha256": "5021ec987721dc7e2f2463d4ea658746d426ba2a2bdb2a8bce0355f28f58e3fd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/7e31501a69d859beb2903d392f30023db3129a6ef03234567d11d42a934c3414-5021ec987721dc7e2f2463d4ea658746d426ba2a2bdb2a8bce0355f28f58e3fd.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/2af9613e218cf764fb891cdb2329a568292c149f0dd2bd1eb58310d36a278ba6.json": {
+      "sha256": "7e0024fb18bb04aa69795b006303eeae1cc36f9ff278dc499ccd0f8e14f4300b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/2af9613e218cf764fb891cdb2329a568292c149f0dd2bd1eb58310d36a278ba6-7e0024fb18bb04aa69795b006303eeae1cc36f9ff278dc499ccd0f8e14f4300b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/d5e2252980690cc55aa7f4b7076c08c4e6086450eb9460d6c5be13548b5eb318.json": {
+      "sha256": "0987d5ac2b41a9a3aa0d6078973817484d6536112d560c55754c737a45a0a46d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/d5e2252980690cc55aa7f4b7076c08c4e6086450eb9460d6c5be13548b5eb318-0987d5ac2b41a9a3aa0d6078973817484d6536112d560c55754c737a45a0a46d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/a5b08b314d05e9391beb2193a94059f71bbf82df37a251dc3a9340205abe3ac6.json": {
+      "sha256": "115ad18ee27df4591928978f4b3700dc68cee9cdfec0cd5c61f030f3ddf47b00",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/a5b08b314d05e9391beb2193a94059f71bbf82df37a251dc3a9340205abe3ac6-115ad18ee27df4591928978f4b3700dc68cee9cdfec0cd5c61f030f3ddf47b00.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/cd051bfedfb78a6095ad1fb071dfe9501956715f28a64660aefb93fee4c732c6.json": {
+      "sha256": "16edcd055397f60faf9a1755bd392771e0658f345abcc628f3ce17b98e9577e7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/cd051bfedfb78a6095ad1fb071dfe9501956715f28a64660aefb93fee4c732c6-16edcd055397f60faf9a1755bd392771e0658f345abcc628f3ce17b98e9577e7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/4b66a980fa2aba7d64c6c8193617f9bbaa8a192b394280f3c025fb9e48637c20.json": {
+      "sha256": "4b52073d267b13a982726528136dfcbde9cc5832343f7bb2394df05bf902ec9c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/4b66a980fa2aba7d64c6c8193617f9bbaa8a192b394280f3c025fb9e48637c20-4b52073d267b13a982726528136dfcbde9cc5832343f7bb2394df05bf902ec9c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/3b83e454b57fc5d154cc2fd2275f5a076dacdc7245f6030a8e0633bae4ae8a93.json": {
+      "sha256": "b5d0a35857345f3918171cd87ec7a76068d6746a6fb7d0aea5fe62869469fe83",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/3b83e454b57fc5d154cc2fd2275f5a076dacdc7245f6030a8e0633bae4ae8a93-b5d0a35857345f3918171cd87ec7a76068d6746a6fb7d0aea5fe62869469fe83.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/8aa6ee2daf05097a455fb9c25ce0213bfe4e0a8100a36409150458b55073e514.json": {
+      "sha256": "fd7d7565a63c3272e2d2e00ee6cea50ec59e14e07ed8b60ecadfbe74bd756ea0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/8aa6ee2daf05097a455fb9c25ce0213bfe4e0a8100a36409150458b55073e514-fd7d7565a63c3272e2d2e00ee6cea50ec59e14e07ed8b60ecadfbe74bd756ea0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/e91f776d1065cf80e39e47ae99a6b13620b6d61fdef51ab3d3ece4181ed20027.json": {
+      "sha256": "bc15c2453ed16c1c56ff689095e018467a76908cf7c7647341f2f9ab1fe70336",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/e91f776d1065cf80e39e47ae99a6b13620b6d61fdef51ab3d3ece4181ed20027-bc15c2453ed16c1c56ff689095e018467a76908cf7c7647341f2f9ab1fe70336.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/cd03710b495593edcdc9423f3cb4b2071afba5098c2fdf1c13bf8fbbc6bc3e93.json": {
+      "sha256": "d4d4db5b81fd7941784e01a44c9ffe6d12e5a745a1624b452b2bd56869e905dd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/cd03710b495593edcdc9423f3cb4b2071afba5098c2fdf1c13bf8fbbc6bc3e93-d4d4db5b81fd7941784e01a44c9ffe6d12e5a745a1624b452b2bd56869e905dd.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/42f2fc958abd37be858d9c149826619d790dffaf991d782a0bcafb529c29f80b.json": {
+      "sha256": "9601eda0b9396c7ff6cb962accf34ae1c558551d6926cfd90f4b0a92026ad611",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/42f2fc958abd37be858d9c149826619d790dffaf991d782a0bcafb529c29f80b-9601eda0b9396c7ff6cb962accf34ae1c558551d6926cfd90f4b0a92026ad611.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/3224f11e1d6e9000dbeb6b1c5eb4287a45b6681228cb9c6b128add803616eb86.json": {
+      "sha256": "9d586d26179bae546f76de887eb4263ab28abb071a3e38d6f8f2a5f45f2a7aa9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/3224f11e1d6e9000dbeb6b1c5eb4287a45b6681228cb9c6b128add803616eb86-9d586d26179bae546f76de887eb4263ab28abb071a3e38d6f8f2a5f45f2a7aa9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/448c1d857badc434ed9f2d3fa54b19d70d2770bcd0ccb9ec5a76356efd822158.json": {
+      "sha256": "94f90e0231226eb8b91c71fb7daac84c7938ea7d779fb24498482bfc3e990f60",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/448c1d857badc434ed9f2d3fa54b19d70d2770bcd0ccb9ec5a76356efd822158-94f90e0231226eb8b91c71fb7daac84c7938ea7d779fb24498482bfc3e990f60.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/4b9b5cdd803db05fdd0c7b9a34a74b29c575fd628dd6db32ff89127b11c3c7c3.json": {
+      "sha256": "edc747b9507f67bf380351ab3a4e11c76097807966857a945dca447540621eb4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/4b9b5cdd803db05fdd0c7b9a34a74b29c575fd628dd6db32ff89127b11c3c7c3-edc747b9507f67bf380351ab3a4e11c76097807966857a945dca447540621eb4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/c922053c5d0ee2664681c76d174afc86e44a7cca7bfa793eb1bd2a7aef7e0e06.json": {
+      "sha256": "f08931bee11d18023a39e8e3ff8f930dbb6ee348e99dec89f2a397302821b4db",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/c922053c5d0ee2664681c76d174afc86e44a7cca7bfa793eb1bd2a7aef7e0e06-f08931bee11d18023a39e8e3ff8f930dbb6ee348e99dec89f2a397302821b4db.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/957bc1c151ef740a2e9a25cc0a8fe357b26dc88eaad98ef7ae7a1a399596e4b1.json": {
+      "sha256": "e367fbc5c8b4aba82d0368627e17214c4fee2aa23825d4b826120684112ce1ce",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/957bc1c151ef740a2e9a25cc0a8fe357b26dc88eaad98ef7ae7a1a399596e4b1-e367fbc5c8b4aba82d0368627e17214c4fee2aa23825d4b826120684112ce1ce.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/0d5637864d09ed6d5c848e4845cea103215e7290111386570c97bf98c36bcc13.json": {
+      "sha256": "25566e5f8000ff22935db8c16dcc90548ed71230ce2796c3c2450fb082ca0683",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/0d5637864d09ed6d5c848e4845cea103215e7290111386570c97bf98c36bcc13-25566e5f8000ff22935db8c16dcc90548ed71230ce2796c3c2450fb082ca0683.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/e3d3c8042aff8a27e744eaa7efcd490793ee1da2afbcefa8aa7dfb2022705a2c.json": {
+      "sha256": "78fc6a0ca940dbc07b231550ccb4141af751c2f5dfb29efbcc3e3b8fece70f37",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/e3d3c8042aff8a27e744eaa7efcd490793ee1da2afbcefa8aa7dfb2022705a2c-78fc6a0ca940dbc07b231550ccb4141af751c2f5dfb29efbcc3e3b8fece70f37.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/73c46bbecaade191754fae8a6f6ee1d91c5b1327b073d33f22ff3610a8856ef2.json": {
+      "sha256": "012d7a89693d0774d73e590e409470619ff4e6d7ba4be69019b11efef2be9b67",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/73c46bbecaade191754fae8a6f6ee1d91c5b1327b073d33f22ff3610a8856ef2-012d7a89693d0774d73e590e409470619ff4e6d7ba4be69019b11efef2be9b67.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/9fe52c929b8c7fc1dc2d748335a3cd4d77e806f61b2ca7acd3c7db40258ec90b.json": {
+      "sha256": "2ddd8bdd15a59323d90afe4740c21de7da753da893eb929eeddbd44d50e625d7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/9fe52c929b8c7fc1dc2d748335a3cd4d77e806f61b2ca7acd3c7db40258ec90b-2ddd8bdd15a59323d90afe4740c21de7da753da893eb929eeddbd44d50e625d7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/a14f9187f7560a2755ee6906430c236f8d75fa6328daa0f7ad0c578cdc423e49.json": {
+      "sha256": "4cbee51ac998ad8110ab39c7339041e7bdcf7ef46ca114d97c0b4124fae9f7f1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/a14f9187f7560a2755ee6906430c236f8d75fa6328daa0f7ad0c578cdc423e49-4cbee51ac998ad8110ab39c7339041e7bdcf7ef46ca114d97c0b4124fae9f7f1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/6239ba40db1e05dc2bb95fc5145b679f1118ce213ceee5f77b35eebb42a71c13.json": {
+      "sha256": "cac3d581fd1df3bd4394f85bcc02a01a303a25c794690eaafad3ddfb563bcfa7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/6239ba40db1e05dc2bb95fc5145b679f1118ce213ceee5f77b35eebb42a71c13-cac3d581fd1df3bd4394f85bcc02a01a303a25c794690eaafad3ddfb563bcfa7.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/78e44a1606644efae65c062fcdcd35dbbc513dfafea59eca19827b1a1211e136.json": {
+      "sha256": "900a1b420fb8d79640e669aa1bbb416189a70eb439c3c3ddb9609f02d2b0d2fa",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/78e44a1606644efae65c062fcdcd35dbbc513dfafea59eca19827b1a1211e136-900a1b420fb8d79640e669aa1bbb416189a70eb439c3c3ddb9609f02d2b0d2fa.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/1243f0816767f71dc6e39deffc2d77ce3fc0fbb3584716b5992ab3c882d26613.json": {
+      "sha256": "df8ed429c073204d99bfdbc8a4692e8d6b3263cb22310e7c3958fb0836a31544",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/1243f0816767f71dc6e39deffc2d77ce3fc0fbb3584716b5992ab3c882d26613-df8ed429c073204d99bfdbc8a4692e8d6b3263cb22310e7c3958fb0836a31544.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/f332be9f44a8cd1bee5ee81db0781106b027910972cebf3d2f09f5d8be7f474f.json": {
+      "sha256": "8874e38f7210a629630d309cde6c6486ed756c7e9c2bab710705b2c7545b9698",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/f332be9f44a8cd1bee5ee81db0781106b027910972cebf3d2f09f5d8be7f474f-8874e38f7210a629630d309cde6c6486ed756c7e9c2bab710705b2c7545b9698.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/0c50e1132b63c0d7cbb4cad735279e9a927efd40ff950761d14efcaead30085b.json": {
+      "sha256": "226862b449cbf62a9a0be8032f943d11cebfe9b0f8ef2117b7f324f5741b38ba",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/0c50e1132b63c0d7cbb4cad735279e9a927efd40ff950761d14efcaead30085b-226862b449cbf62a9a0be8032f943d11cebfe9b0f8ef2117b7f324f5741b38ba.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/c1c53d4b4821831f9dec40ff68d044595ec21f8667e9232f0f11d21676e5b318.json": {
+      "sha256": "4284dd433b056a7eabc6ae50dec6b3ba6ffb2f5a9d6418628117a48e6151245d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/c1c53d4b4821831f9dec40ff68d044595ec21f8667e9232f0f11d21676e5b318-4284dd433b056a7eabc6ae50dec6b3ba6ffb2f5a9d6418628117a48e6151245d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/d0fb33277623805dfe58860a82336b5750ce5ec64e8122ea02a30ddf50f05c13.json": {
+      "sha256": "fece2c723f848dfd2336bb1a16600262dac8f61c6fada4433a9b1d2a4a4f96a5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/d0fb33277623805dfe58860a82336b5750ce5ec64e8122ea02a30ddf50f05c13-fece2c723f848dfd2336bb1a16600262dac8f61c6fada4433a9b1d2a4a4f96a5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/be61659a7411a58b50007f3ba94b86783b0813589384859e576a65e0077effed.json": {
+      "sha256": "66c3a671b7d2ed3e690f934f1fe08457706b1d41b288d95a93b9149176a9db05",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/be61659a7411a58b50007f3ba94b86783b0813589384859e576a65e0077effed-66c3a671b7d2ed3e690f934f1fe08457706b1d41b288d95a93b9149176a9db05.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/61b07007234e52eeadbc770991f5dc823eca2f41db842a9b46cade7cae367656.json": {
+      "sha256": "16152975ffcf40a84692b2b15fccafb2afdde23b8bf8f1956a5809047faa301d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/61b07007234e52eeadbc770991f5dc823eca2f41db842a9b46cade7cae367656-16152975ffcf40a84692b2b15fccafb2afdde23b8bf8f1956a5809047faa301d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/77de587c013fdb89e9d2a40b6efee5ad047abba99a9393d997895bb447e2e052.json": {
+      "sha256": "5ead162d9faba15fad802f8dd52ae952a701bd859a2e7082d3f1a2b4d0766dd5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/77de587c013fdb89e9d2a40b6efee5ad047abba99a9393d997895bb447e2e052-5ead162d9faba15fad802f8dd52ae952a701bd859a2e7082d3f1a2b4d0766dd5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/82a863f739df1c551981d08825a816b513d1abbbd50a6d35335f58d7e3839ddb.json": {
+      "sha256": "14b0686356e6fd0ca924d84baf47f057e67aa8a5700b9d964be7fba27bb8ba36",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/82a863f739df1c551981d08825a816b513d1abbbd50a6d35335f58d7e3839ddb-14b0686356e6fd0ca924d84baf47f057e67aa8a5700b9d964be7fba27bb8ba36.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/d215ec7e9ea3d3c279c55155019d36b4e9f6f6d29bd6b73d6c5f18659c32286f.json": {
+      "sha256": "973eb0f5372d602dfcb509b6313c7ef694d69d1e592f645227ffb9847bb52870",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/d215ec7e9ea3d3c279c55155019d36b4e9f6f6d29bd6b73d6c5f18659c32286f-973eb0f5372d602dfcb509b6313c7ef694d69d1e592f645227ffb9847bb52870.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/3d94c9aba464fac510492ad8d40bf73ef5c34fd0a7a6d36fd7b528b410e8ef93.json": {
+      "sha256": "8df2f3f7c5ae0eea728f5e863b52daf5d044712ac36bba7fb71f422068ce4a82",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/3d94c9aba464fac510492ad8d40bf73ef5c34fd0a7a6d36fd7b528b410e8ef93-8df2f3f7c5ae0eea728f5e863b52daf5d044712ac36bba7fb71f422068ce4a82.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/f74ddfb12cd39027d90db2977412b304d1b1fa95fee71b2c1f9f9d748295a8bd.json": {
+      "sha256": "5cdd964b63186e5e20a0293523a6c2ef437d293876db66e2297f2292cd8e3cf6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/f74ddfb12cd39027d90db2977412b304d1b1fa95fee71b2c1f9f9d748295a8bd-5cdd964b63186e5e20a0293523a6c2ef437d293876db66e2297f2292cd8e3cf6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_qc/a921a52c28063fa856eb8bee3e75e26bd12ed6cbd73136eb7c3795e21b286fc2.json": {
+      "sha256": "62325ccd5b0e91f8a1510cb1c8b176230fec5dfc79b1edd5befa7616ace358b8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/a921a52c28063fa856eb8bee3e75e26bd12ed6cbd73136eb7c3795e21b286fc2-62325ccd5b0e91f8a1510cb1c8b176230fec5dfc79b1edd5befa7616ace358b8.json"
+    },
+    "/home/carruthers/.local/state/parascape-sparse-coordinate-recovery/status.json": {
+      "sha256": "690585df66118b1f463299e1157e487b1f185b0f0444a5d0d913eaf841c949a9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/status-690585df66118b1f463299e1157e487b1f185b0f0444a5d0d913eaf841c949a9.json"
+    },
+    "/media/carruthers/mnt1/parascape-large-sparse-query-validation/validation.json": {
+      "sha256": "f528a3fea9b4c2e534fc583c5956627d88534babcd1560193a0ef93fb287370d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/validation-f528a3fea9b4c2e534fc583c5956627d88534babcd1560193a0ef93fb287370d.json"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/coordinate-qc/GSM8491519-coordinate-qc.png": {
+      "sha256": "6002253708d64dbd509fcf7daebea8c770f1d7809cbdda26305bb6e352ea4cfb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/GSM8491519-coordinate-qc-6002253708d64dbd509fcf7daebea8c770f1d7809cbdda26305bb6e352ea4cfb.png"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/coordinate-qc/validation.json": {
+      "sha256": "eedce9d37c3b2fc910c6c74c0eaa8154844b4e95f94ef4a0c0a9007d85b7598f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/validation-eedce9d37c3b2fc910c6c74c0eaa8154844b4e95f94ef4a0c0a9007d85b7598f.json"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/coordinate-qc/GSM8449844-qc-export.csv.json": {
+      "sha256": "26d42aac15025fd35f1cdbdd1ee612006178b23770ee261999cc101dca2173e7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/GSM8449844-qc-export.csv-26d42aac15025fd35f1cdbdd1ee612006178b23770ee261999cc101dca2173e7.json"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/coordinate-qc/GSM8449844-coordinate-qc.png": {
+      "sha256": "b6ecf43d4b6a3a043fb2a54bf76cb17d5afb522a95df30f295105499ac141185",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/GSM8449844-coordinate-qc-b6ecf43d4b6a3a043fb2a54bf76cb17d5afb522a95df30f295105499ac141185.png"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/coordinate-qc/GSM8491519-qc-export.csv.json": {
+      "sha256": "ee400a82b5179bdd5f12552e20aa36e024c46d06b98bb19b4ef2af5836ee5ea2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/GSM8491519-qc-export.csv-ee400a82b5179bdd5f12552e20aa36e024c46d06b98bb19b4ef2af5836ee5ea2.json"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/coordinate-qc/GSM8449844-qc-export.csv": {
+      "sha256": "338681501ea78e8dc2bf9a39681a196b7f38f51f93bff1c510059f5011ac1fe9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/GSM8449844-qc-export-338681501ea78e8dc2bf9a39681a196b7f38f51f93bff1c510059f5011ac1fe9.csv"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/coordinate-qc/GSM8491519-qc-export.csv": {
+      "sha256": "b510c3fbe4765079700bb2fb4c173d6264332a266c09bb14cdfdcaf5af581f39",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/GSM8491519-qc-export-b510c3fbe4765079700bb2fb4c173d6264332a266c09bb14cdfdcaf5af581f39.csv"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/recovered-312ec61cf3fa6e3f2ce11df9e2e405fec117449927043aedd3073c5f1235936a.json": {
+      "sha256": "312ec61cf3fa6e3f2ce11df9e2e405fec117449927043aedd3073c5f1235936a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_coordinate_recovery/recovered-312ec61cf3fa6e3f2ce11df9e2e405fec117449927043aedd3073c5f1235936a-312ec61cf3fa6e3f2ce11df9e2e405fec117449927043aedd3073c5f1235936a.json"
+    }
+  },
+  "original_failure": "Authoritative8GiBmemory-cgroupOOM killed originalworker657839; retry755525wasstoppedforrepair,completedstaging8140542716bytes retained. No observationtimeoutassumedterminal.",
+  "recovery": "Independentbounded65536source rows/oneParquetgroup/freshPandasparser+exactArrowint/tokencomparison validatesall1047403853originalrecords atpeak370328KiB; originalnumericalfileSHAunchanged,originalproducer codeunchanged,originalcompletedstage renamed/admittedwithnewverifier provenance; producerauto-resumed66/66cache.",
+  "runtime_reader": "Actualbillionrecordquery hit2GiB OOM before release. One-physical-rowgroup scheduling fixedmemory;48appchecks plus11recovery/8QCnativechecks pass. Fullbillionrecordnonemptyquery403885records exported,allinteger tokens/entryorderverified,peak281300KiB/207.92s. Earlieremptyfeaturequerymemory-onlyevidence retained,positivecase required.",
+  "coordinate_QC": "All66sources2264669823recordschecked. Monotone row/columnorder provesallcoordinatescontiguous;0repeatedcoordinates forallsources. Unorderedfixturesremaingloballyunknown. No aggregation/no normalization/no biologicalqualityscore. Optinzero-duplicate sourcefilter,QCcontext andsourceboundexportsidecar. ActualofflineQt2smalllayoutsCSV152/1048bytesunchanged,QCmatched; screenshotsinspected.",
+  "downstream": "196components/66datasets/203parts18789478400bytesprepared;195priorparts10648924160bytesindependentlyGitHubSHAverified inunpublishedv8draft. New8parts awaitreruninstaller auditwithfixedSreader. AuditwasinterruptedbecauseoldSsourceobsolete,thenrerun;cachecap2\u219216GiBbased81GBavailableRAMandobserved32MBanon/pagewait,no validationgateschanged. Allroutineacquisition/quantjobscontinue.",
+  "remaining": "Finishnew196component/new66readerinstallationaudit,uploadverify8newparts,preparefrozenexpandedcoreall452dense/currentRNA/66sparse/QCreports,nextversionreleasegates. Broaderstudy/format/identifier/unit/context/biologicalQC remainopen.",
+  "goal_status": "active",
+  "historical_inference_status": "paused"
+}

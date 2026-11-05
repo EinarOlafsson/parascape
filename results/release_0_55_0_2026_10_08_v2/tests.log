@@ -1,0 +1,28 @@
+........................................................................ [ 11%]
+........................................................................ [ 23%]
+........................................................................ [ 35%]
+........................................................................ [ 46%]
+........................................................................ [ 58%]
+........................................................................ [ 70%]
+........................................................................ [ 82%]
+........................................................................ [ 93%]
+.....................................                                    [100%]
+=============================== warnings summary ===============================
+tests/test_paths.py::test_running_as_a_module_prints_the_report
+  <frozen runpy>:128: RuntimeWarning: 'starplast.paths' found in sys.modules after import of package 'starplast', but prior to execution of 'starplast.paths'; this may result in unpredictable behaviour
+
+tests/test_discover_cli.py::test_a_search_runs_and_is_saved_where_the_window_will_find_it
+tests/test_discover_cli.py::test_a_search_runs_and_is_saved_where_the_window_will_find_it
+tests/test_discover_cli.py::test_a_task_already_saved_is_skipped_so_a_killed_batch_can_be_rerun
+tests/test_discover_cli.py::test_one_failing_task_does_not_take_the_batch_with_it
+tests/test_discover_cli.py::test_saved_searches_can_be_listed_and_read_without_a_window
+tests/test_discover_cli.py::test_saved_searches_can_be_listed_and_read_without_a_window
+  /home/carruthers/anaconda3/envs/starplast/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+    warn(
+
+tests/test_discover_cli.py: 16 warnings
+  /home/carruthers/anaconda3/envs/starplast/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+    warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+613 passed, 23 warnings in 42.15s

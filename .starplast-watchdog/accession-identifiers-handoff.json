@@ -1,0 +1,176 @@
+{
+  "operation": "separate_original_accession_cell_identifier_evidence",
+  "epoch": 1793405930.1156533,
+  "source_commit": "8ae766a72f1df2474b64587083c54c9ebc801056",
+  "files": {
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/protein_identifier_evidence.py": {
+      "sha256": "4fa688f779274c947cd57e22f4c2de084921e1ab892797aa47c42379b6d45fa9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/protein_identifier_evidence-4fa688f779274c947cd57e22f4c2de084921e1ab892797aa47c42379b6d45fa9.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/deposited_values_panel.py": {
+      "sha256": "cba353455ca103485719950ed41ff1952205c47650a2f984a96d584b3a84d58f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/deposited_values_panel-cba353455ca103485719950ed41ff1952205c47650a2f984a96d584b3a84d58f.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/tests/test_accession_identifier_evidence.py": {
+      "sha256": "5efb5e51bf84a002f92b6d2d67b349c0fc6aa8816f3d8579f692daac8fa4bc47",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/test_accession_identifier_evidence-5efb5e51bf84a002f92b6d2d67b349c0fc6aa8816f3d8579f692daac8fa4bc47.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/prepare_accession_identifier_evidence.py": {
+      "sha256": "51605e44ab4bc09216ff6760020d6fc9dada2a6d68ad9342819327ce68d28409",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/prepare_accession_identifier_evidence-51605e44ab4bc09216ff6760020d6fc9dada2a6d68ad9342819327ce68d28409.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_accession_identifier_evidence.py": {
+      "sha256": "61471a42bd0933c8551c74ad6f46569a094a9fceecf14944dba92d8a6c70d7c5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/check_accession_identifier_evidence-61471a42bd0933c8551c74ad6f46569a094a9fceecf14944dba92d8a6c70d7c5.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_accession_identifier_evidence.py": {
+      "sha256": "73ad6c750925745659d4236396623a980a2e299bd46524ad2263d0c1159cb624",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/validate_accession_identifier_evidence-73ad6c750925745659d4236396623a980a2e299bd46524ad2263d0c1159cb624.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_accession_identifier_evidence_v2.py": {
+      "sha256": "eea10023f5749a4cff579a2a49f676419e914d0a34ab2b6dbe9999c5069829d8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/validate_accession_identifier_evidence_v2-eea10023f5749a4cff579a2a49f676419e914d0a34ab2b6dbe9999c5069829d8.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/archive_accession_identifier_evidence.py": {
+      "sha256": "293559d29bff95f9e0786fa4d8c7bce7bb59ab4153bff4399d4f5efbde5865fa",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/archive_accession_identifier_evidence-293559d29bff95f9e0786fa4d8c7bce7bb59ab4153bff4399d4f5efbde5865fa.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-accession-identifier-evidence.service": {
+      "sha256": "244f47c4774b536bb6bbaa29fcd3d404f22f1f624025ae77b57b0bc97adeb66f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/parascape-accession-identifier-evidence-244f47c4774b536bb6bbaa29fcd3d404f22f1f624025ae77b57b0bc97adeb66f.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-accession-identifier-evidence.timer": {
+      "sha256": "fc81aa4419ceb838bd119c5690a410398aa8bd0f99a9ec62b35c1a02b5f47d62",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/parascape-accession-identifier-evidence-fc81aa4419ceb838bd119c5690a410398aa8bd0f99a9ec62b35c1a02b5f47d62.timer"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/unavailable-reference-class-1.json": {
+      "sha256": "d727bf5e34c9ca5b4fae3fd36af473a0935afb41905de12772a2a4f81d87d587",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/unavailable-reference-class-1-d727bf5e34c9ca5b4fae3fd36af473a0935afb41905de12772a2a4f81d87d587.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/validation.json": {
+      "sha256": "453a35e84eb24420a4f5034aac7930d5f58cbc3c0b63ce2c0030c81bf274af07",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/validation-453a35e84eb24420a4f5034aac7930d5f58cbc3c0b63ce2c0030c81bf274af07.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/accession-components-2.csv.treatment-9b02d7faea3f.json": {
+      "sha256": "0367cfaa24913c782d4928026f353075acf00bf6e8777f760b18a56f286513f1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-2.csv.treatment-9b02d7faea3f-0367cfaa24913c782d4928026f353075acf00bf6e8777f760b18a56f286513f1.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/unavailable-reference-class-0.json": {
+      "sha256": "dc462ccf91fab4193e57a7d1d29ca3b6ed413edb3fb63daf3171f8004823eaef",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/unavailable-reference-class-0-dc462ccf91fab4193e57a7d1d29ca3b6ed413edb3fb63daf3171f8004823eaef.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/accession-components-2.csv": {
+      "sha256": "7b0d152c50a95c9a4f14c37d999cb2807557e020cb83585ed8fa28605d85debc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-2-7b0d152c50a95c9a4f14c37d999cb2807557e020cb83585ed8fa28605d85debc.csv"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/accession-components-0.csv": {
+      "sha256": "808fa74ef7b68273422e5e0a1e6835665e1fa61947310361dd64532c2568c46b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-0-808fa74ef7b68273422e5e0a1e6835665e1fa61947310361dd64532c2568c46b.csv"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/unavailable-reference-class-2.json": {
+      "sha256": "1a67dd4fbd36ec1d055eeb45cfbfde91f644f54e260553090cd6588083a0c54b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/unavailable-reference-class-2-1a67dd4fbd36ec1d055eeb45cfbfde91f644f54e260553090cd6588083a0c54b.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/unavailable-reference-mapping-is-not-absent-expression.png": {
+      "sha256": "ec41b8d5ab869db9e3b71ab639cc23ff85a2020df637629ea4b34153b64dfc9e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/unavailable-reference-mapping-is-not-absent-expression-ec41b8d5ab869db9e3b71ab639cc23ff85a2020df637629ea4b34153b64dfc9e.png"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/accession-components-0.csv.treatment-c158aa397f31.json": {
+      "sha256": "cd3eeb32d5ff4b344e3a0cc854b8a0d05f3ed2733e5e7092a8cb1327b4f2cec4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-0.csv.treatment-c158aa397f31-cd3eeb32d5ff4b344e3a0cc854b8a0d05f3ed2733e5e7092a8cb1327b4f2cec4.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/prototype-identifier-reader-8939a3f55f65dee57ef3771bbe7883188754688c2983c46952e1d27369dfdad8.py": {
+      "sha256": "8939a3f55f65dee57ef3771bbe7883188754688c2983c46952e1d27369dfdad8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/prototype-identifier-reader-8939a3f55f65dee57ef3771bbe7883188754688c2983c46952e1d27369dfdad8-8939a3f55f65dee57ef3771bbe7883188754688c2983c46952e1d27369dfdad8.py"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/accession-components-1.csv.treatment-6b25e1bcb122.json": {
+      "sha256": "be3e0d85c911a684b375f110aae7439cd6898c0f48965685a0bf7a22f3bd3b10",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-1.csv.treatment-6b25e1bcb122-be3e0d85c911a684b375f110aae7439cd6898c0f48965685a0bf7a22f3bd3b10.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030/accession-components-1.csv": {
+      "sha256": "5e3eecf78820b6c5b10727a546ed2e4b6598cc54c08d54098e4745ec0df43f9e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-1-5e3eecf78820b6c5b10727a546ed2e4b6598cc54c08d54098e4745ec0df43f9e.csv"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/unavailable-reference-class-1.json": {
+      "sha256": "e0d742903cca6d4fea831f9add27bc117aaec6c407eb4df6b263e898de63dc11",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/unavailable-reference-class-1-e0d742903cca6d4fea831f9add27bc117aaec6c407eb4df6b263e898de63dc11.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/focused-tests.log": {
+      "sha256": "3fc3959d2f09ee05ead2b737dd1e077ac056f8b24f27038ca950b98437d75129",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/focused-tests-3fc3959d2f09ee05ead2b737dd1e077ac056f8b24f27038ca950b98437d75129.log"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/validation.json": {
+      "sha256": "8c2cda17fe8a0821352178e6384ca46b131d6eaafe3b6f49599e1e0af69da7bd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/validation-8c2cda17fe8a0821352178e6384ca46b131d6eaafe3b6f49599e1e0af69da7bd.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/unavailable-reference-class-0.json": {
+      "sha256": "47824dc71f9d9c7af245f5197332f188dc11ae9a534bf2fe49a2e5eeb1443aec",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/unavailable-reference-class-0-47824dc71f9d9c7af245f5197332f188dc11ae9a534bf2fe49a2e5eeb1443aec.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/accession-components-2.csv": {
+      "sha256": "7b0d152c50a95c9a4f14c37d999cb2807557e020cb83585ed8fa28605d85debc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-2-7b0d152c50a95c9a4f14c37d999cb2807557e020cb83585ed8fa28605d85debc.csv"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/accession-components-0.csv": {
+      "sha256": "808fa74ef7b68273422e5e0a1e6835665e1fa61947310361dd64532c2568c46b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-0-808fa74ef7b68273422e5e0a1e6835665e1fa61947310361dd64532c2568c46b.csv"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/accession-components-1.csv.treatment-ef598bd2892e.json": {
+      "sha256": "81198ce8139bb24a2a31b616b40ec2dea125b69c45dc0d1974fe712cc85fcd7a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-1.csv.treatment-ef598bd2892e-81198ce8139bb24a2a31b616b40ec2dea125b69c45dc0d1974fe712cc85fcd7a.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/accession-components-0.csv.treatment-b21efea48a4d.json": {
+      "sha256": "d79d79f36a3b31a97a861c63fc6137a4938930e287e00b99b673a4b686b86c72",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-0.csv.treatment-b21efea48a4d-d79d79f36a3b31a97a861c63fc6137a4938930e287e00b99b673a4b686b86c72.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/unavailable-reference-class-2.json": {
+      "sha256": "139d435d2997e9264cb317f91d5d0c60f8c2fb57f0a9192fff40e259a88a2819",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/unavailable-reference-class-2-139d435d2997e9264cb317f91d5d0c60f8c2fb57f0a9192fff40e259a88a2819.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/unavailable-reference-mapping-is-not-absent-expression.png": {
+      "sha256": "ec41b8d5ab869db9e3b71ab639cc23ff85a2020df637629ea4b34153b64dfc9e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/unavailable-reference-mapping-is-not-absent-expression-ec41b8d5ab869db9e3b71ab639cc23ff85a2020df637629ea4b34153b64dfc9e.png"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/offline-UI-validation.log": {
+      "sha256": "64181fc85b91e9d1ee9ef8758f90ac8a1ad3aa8262dd29711b41977c8fc98a85",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/offline-UI-validation-64181fc85b91e9d1ee9ef8758f90ac8a1ad3aa8262dd29711b41977c8fc98a85.log"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/focused-test-receipt.json": {
+      "sha256": "18352f60e14ecf8e2ba44ec779c014eb6a9f212ce5c391d563732be891b11c14",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/focused-test-receipt-18352f60e14ecf8e2ba44ec779c014eb6a9f212ce5c391d563732be891b11c14.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/accession-components-2.csv.treatment-b4ce05f9ae8f.json": {
+      "sha256": "1e000b8b34285f39cba65ec5fa28960e656098c503bb91a4852fe92b0c21b735",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-2.csv.treatment-b4ce05f9ae8f-1e000b8b34285f39cba65ec5fa28960e656098c503bb91a4852fe92b0c21b735.json"
+    },
+    "/media/carruthers/mnt1/parascape-accession-identifiers-validation-20261030-v2/accession-components-1.csv": {
+      "sha256": "5e3eecf78820b6c5b10727a546ed2e4b6598cc54c08d54098e4745ec0df43f9e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/accession_identifier_views/accession-components-1-5e3eecf78820b6c5b10727a546ed2e4b6598cc54c08d54098e4745ec0df43f9e.csv"
+    }
+  },
+  "accession_collection": {
+    "schema_version": 1,
+    "directory": "6fa4b7b15a9995176e8c4fe82a2317dc7d2299c8df875f6cd9fa8caf6138cabf",
+    "validation_sha256": "425807b7aaf409852640a39dd2facd7d80cb986cdf414aa2ab17e9ef779749b9"
+  },
+  "source_tables": 3,
+  "source_feature_row_occurrences": 75607,
+  "original_component_occurrences": 76260,
+  "old129_identifier_outputs_and_index_rows_byte_identical": true,
+  "old139_quantity_manifests_and_outputs_unchanged": true,
+  "actual132_protein_table_reader_and_Qt_views_verified": true,
+  "all76260_typed_evidence_rows_verified": true,
+  "focused_checks_passed": 64,
+  "original_numeric_bits_tokens_missingness_and_whole_row_quantities_preserved": true,
+  "source_gene_mapping_scope": "No acquired same-project FASTA reference for the two new projects; no new reference gene/GN associations inferred. Preserve explicit future declarations as qualified candidates only.",
+  "identifier_policy": "Exact semicolon source components with original field/full cell/position. Separate group and accession namespaces/root policies; no trimming/case/version/isoform conversion,protein-group identity,unique protein,gene equivalence or biological independence inferred.",
+  "unavailable_class_scope": "Record indexed class count,distinguish no indexed declarations from absent expression,and retain treatment provenance for empty queries.",
+  "native_period_minutes": 5,
+  "resources": "24CPUaffinity0-11,16-27;2GiB;BLAS/OMP2;nice19/idleIO",
+  "independent_validation": "Generator loops versus pandas explode/reference merge. Native scope/catalogue/path/mutation checks; runtime rehashed component errors refused. Actual offlineAPI/Qt,CSV/treatment and absent-reference-class view verified with source writes/NAS/network blocked; rendered screenshot inspected.",
+  "release_scope": "New original-identifier coverage and all post6 data/UI changes await next portable release; public0.0.6.0 unchanged",
+  "next_priority": "Prepare and publish isolated next-version snapshot with139quantity tables,new accessions/row-design/QC collections,all post6 UI and forced RNA catchup if independently verified; retain frozen source/installed-wheel/exactCI/PyPI gates.",
+  "dataset_goal_status": "active",
+  "full_goal_complete": false,
+  "historical_inference_goal_status": "paused"
+}

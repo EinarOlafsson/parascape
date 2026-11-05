@@ -1,0 +1,112 @@
+{
+  "operation": "repair_original_URL_transport_and_add_strict_conditional_resume_with_automatic_idle_handoff",
+  "epoch": 1793410888.9178534,
+  "files": {
+    "/home/carruthers/.local/share/parascape-download-worker/download_pride_sources.py": {
+      "sha256": "55b77f4a0e5512c372036c882d52c67cc44185b74dd3e279fbb96a7df4a2c03d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/download_pride_sources-55b77f4a0e5512c372036c882d52c67cc44185b74dd3e279fbb96a7df4a2c03d.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/download_pride_sources_v2.py": {
+      "sha256": "3d44b1679bec6d5d8bc83a0f7c0bb52e3d526fdc3c4abb3675e2acf9f7d452f2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/download_pride_sources_v2-3d44b1679bec6d5d8bc83a0f7c0bb52e3d526fdc3c4abb3675e2acf9f7d452f2.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_pride_download_v2.py": {
+      "sha256": "a16595f7de554e690de666e5a785a3a8165cd7176adc427647517a3e90542c0f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/check_pride_download_v2-a16595f7de554e690de666e5a785a3a8165cd7176adc427647517a3e90542c0f.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/handoff_pride_downloader_v2.py": {
+      "sha256": "0b5f09ebfd3e03937562dae7ba31622db2494cec48607595b34f7b71a521c81a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/handoff_pride_downloader_v2-0b5f09ebfd3e03937562dae7ba31622db2494cec48607595b34f7b71a521c81a.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_pride_downloader_handoff.py": {
+      "sha256": "b4dc447dd4002b519bc0d95149fb85812f1bf171704da6807a66707d033d3876",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/check_pride_downloader_handoff-b4dc447dd4002b519bc0d95149fb85812f1bf171704da6807a66707d033d3876.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/audit_pride_download_gaps.py": {
+      "sha256": "ec4c0205ce8b463601534667831d7318e8750b6bfe8b9880c30714276f17833e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/audit_pride_download_gaps-ec4c0205ce8b463601534667831d7318e8750b6bfe8b9880c30714276f17833e.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/archive_pride_download_recovery.py": {
+      "sha256": "6695094000126a5a07e73d15a0f4b5fb82d2c29b181840aac4d83909f33b20ed",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/archive_pride_download_recovery-6695094000126a5a07e73d15a0f4b5fb82d2c29b181840aac4d83909f33b20ed.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-pride-downloads.service": {
+      "sha256": "73b73863f60d725f94fa11b3a234f0eec8ead1a9ede8e8bde885c09cb0ba6ca9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/parascape-pride-downloads-73b73863f60d725f94fa11b3a234f0eec8ead1a9ede8e8bde885c09cb0ba6ca9.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-pride-downloader-v2-handoff.service": {
+      "sha256": "520a9cec137f8a64eb11d42ee9917605acdf22466e9a3cd7a3cf5390e1a6c9cf",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/parascape-pride-downloader-v2-handoff-520a9cec137f8a64eb11d42ee9917605acdf22466e9a3cd7a3cf5390e1a6c9cf.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-pride-download-gaps.service": {
+      "sha256": "b586f6f4c581bc5753b9c51390e4fc9d08332a9766da0506f16d3f898bf32edd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/parascape-pride-download-gaps-b586f6f4c581bc5753b9c51390e4fc9d08332a9766da0506f16d3f898bf32edd.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-pride-download-gaps.timer": {
+      "sha256": "1453f280545268cbf40295ff5a8a8ccd6c9dc05c51299ad527713b508cb628ee",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/parascape-pride-download-gaps-1453f280545268cbf40295ff5a8a8ccd6c9dc05c51299ad527713b508cb628ee.timer"
+    },
+    "/home/carruthers/.local/state/parascape-pride-downloader-v2-handoff/plan.json": {
+      "sha256": "8e04a9a74aa285210e4ac0b38d91a4327903c66867b851189da861f47ee108a1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/plan-8e04a9a74aa285210e4ac0b38d91a4327903c66867b851189da861f47ee108a1.json"
+    },
+    "/home/carruthers/.local/state/parascape-pride-downloader-v2-handoff/status.json": {
+      "sha256": "ce6cd4f8c2fee0af2fb21a5babffb9013c7acdd823aed276f858960aa39754d1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/status-ce6cd4f8c2fee0af2fb21a5babffb9013c7acdd823aed276f858960aa39754d1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/selfchecks/handoff-9f84fb81ddfbb05a08594e9558aedf027178471c5a3f994403711692d104eb7b.json": {
+      "sha256": "9f84fb81ddfbb05a08594e9558aedf027178471c5a3f994403711692d104eb7b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/handoff-9f84fb81ddfbb05a08594e9558aedf027178471c5a3f994403711692d104eb7b-9f84fb81ddfbb05a08594e9558aedf027178471c5a3f994403711692d104eb7b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/selfchecks/synthetic-0c5c9fc21dfdeea456121c52710380daa32f59e1fe9893d11f0bc7afb21740e3.json": {
+      "sha256": "0c5c9fc21dfdeea456121c52710380daa32f59e1fe9893d11f0bc7afb21740e3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/synthetic-0c5c9fc21dfdeea456121c52710380daa32f59e1fe9893d11f0bc7afb21740e3-0c5c9fc21dfdeea456121c52710380daa32f59e1fe9893d11f0bc7afb21740e3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/primary-probes-28166ea4a6dbe28a90aebb0059ebdba602b2152e6eea7d551dd6359f7c569c67.json": {
+      "sha256": "28166ea4a6dbe28a90aebb0059ebdba602b2152e6eea7d551dd6359f7c569c67",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/primary-probes-28166ea4a6dbe28a90aebb0059ebdba602b2152e6eea7d551dd6359f7c569c67-28166ea4a6dbe28a90aebb0059ebdba602b2152e6eea7d551dd6359f7c569c67.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/live-protocol-93654a20b9afa815dc34316dae3a85a44e3d1f26816bb1828653583b870faf36.json": {
+      "sha256": "93654a20b9afa815dc34316dae3a85a44e3d1f26816bb1828653583b870faf36",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/live-protocol-93654a20b9afa815dc34316dae3a85a44e3d1f26816bb1828653583b870faf36-93654a20b9afa815dc34316dae3a85a44e3d1f26816bb1828653583b870faf36.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_acquisition_gaps/current.json": {
+      "sha256": "f26fea92e512bda618956d45f38e505b9bee0429a9ea2752d0f407efd2a0b09f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/current-f26fea92e512bda618956d45f38e505b9bee0429a9ea2752d0f407efd2a0b09f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_acquisition_gaps/469559b8fafa7f10efd4088fb65248c678e2d1ebcfce814ded7de0dc201a5502.json": {
+      "sha256": "469559b8fafa7f10efd4088fb65248c678e2d1ebcfce814ded7de0dc201a5502",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/469559b8fafa7f10efd4088fb65248c678e2d1ebcfce814ded7de0dc201a5502-469559b8fafa7f10efd4088fb65248c678e2d1ebcfce814ded7de0dc201a5502.json"
+    },
+    "/tmp/parascape-pride-failure-summary.json": {
+      "sha256": "9ce36352e872281c7e297efbbaf0e611ee859a0a7554ecb6c896ff5a88d9c082",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_download_recovery/parascape-pride-failure-summary-9ce36352e872281c7e297efbbaf0e611ee859a0a7554ecb6c896ff5a88d9c082.json"
+    }
+  },
+  "observed_source_coverage": {
+    "selected": 3519,
+    "acquired_receipts": 2981,
+    "last_failed": 438,
+    "latest_started_events": 2,
+    "not_attempted": 98
+  },
+  "failure_categories": {
+    "request_URL_syntax": 107,
+    "HTTP403": 162,
+    "incomplete_payload": 139,
+    "primary_size_disagreement": 7,
+    "gzip_integrity": 1,
+    "transport_closed": 15,
+    "timeouts": 7
+  },
+  "correction": "Percent-encode path data for HTTP only,retain canonical original URL/hash/path/source metadata unchanged. New partials resume only after saved prefix SHA256,strong ETag,If-Range and exact206start/end/total/effectiveURL agreement. A200response starts fresh. Weak validators,altered prefix,changed ranges/ETag and legacy unvalidated partials are never appended.",
+  "retained_gates": "Exact primary declared byte-count or fully decompressed gzip-size checks,full gzipCRC,independent full-file SHA256 re-read,reserve25GiB; existing completed receipts byte unchanged. No scientific transformation or quantity admission.",
+  "live_proof": "Original PXD013767307869byteCSV resumed in isolated fixture from independently fetched4096byteprefix to full source,ETag/range/fullSHAverified:02701c4a3d295ccf203cb97411e3d7d088ae6d8e48ee4984a30d5040b8562ec6. Not counted as production acquisition. Encoded original whitespace URL probe returned404; missing/access-restricted sources remain explicit.",
+  "automation": "Enabled handoff service604799 waits for same verified old download process idle with1thread and retry deadline>60sec,or successful inactive service; no running transfers interrupted. Original downloader3533750still active with2growing payloads; v2is checked and queued,not yet active. Fifteen-minute gap audit coversall3519source records separately from measurement admission. All24CPUaffinity,256MiB helper/audit caps; old main resource limits and2transfer threads unchanged.",
+  "frozen_release7_modified": false,
+  "release7": "Exact nightly Tests41151180158step8stillrunning,Docs success,publisher555872active; frozen e012source/assets unchanged. Do not advance nightly.",
+  "native_goal_status": "active",
+  "all_dataset_goal_complete": false,
+  "historical_inference_status": "paused",
+  "next_actions": "Confirm queued handoff reaches verified_v2_downloader_active at natural idle boundary; monitor gapcategories and new receipts afterretry. Continue remaining acquisition,expression-format/context mapping and nextportable release after exact7 gates. Do not treat403/404or source-size disagreements as resolved by retry or weaken integrity checks."
+}

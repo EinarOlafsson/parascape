@@ -108,6 +108,29 @@ def open_action(window, e) -> str:
     return _status(window, f"{data['path']}{state}")
 
 
+def open_node(window, e) -> str:
+    """Open a home-screen node: the home dock is raised and the node acted on through its resolver.
+
+    Instruction 74 phase 2 makes every result a node; this is the half of it phase 1 can honestly
+    ship -- the nodes that exist are findable by name and open the same way a card does.
+    """
+    from . import nodes as ND
+    panel = getattr(window, "home", None)
+    if panel is None:
+        return _status(window, "the home screen is not available in this window")
+    dock = getattr(window, "home_dock", None)
+    if dock is not None:
+        dock.show()
+        dock.raise_()
+    try:
+        node = ND.get(e.data["node"], panel.nodes)
+    except KeyError:
+        return _status(window, f"{e.title} is not a node any more")
+    # `choose` draws the node here when the home screen owns it and otherwise emits the node,
+    # which `home_panel.install` has already wired to `open_node`. One path, not two.
+    return _status(window, panel.choose(node))
+
+
 def _dock(window, name: str):
     return next((d for d in window.findChildren(QtWidgets.QDockWidget)
                  if d.windowTitle() == name), None)
@@ -387,7 +410,7 @@ def open_tutorial(window, e) -> str:
 
 #: What choosing each kind of result does. A new kind needs a provider in `help_index` and an
 #: opener here, and nothing else changes.
-OPENERS = {"action": open_action, "panel": open_panel, "setting": open_setting,
+OPENERS = {"node": open_node, "action": open_action, "panel": open_panel, "setting": open_setting,
            "strategy": open_strategy, "slot": open_slot, "dataset": open_dataset,
            "doc": open_doc, "tutorial": open_tutorial}
 

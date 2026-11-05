@@ -1,0 +1,189 @@
+{
+  "operation": "freeze_and_queue_portable_release_007",
+  "epoch": 1793407407.3173401,
+  "files": {
+    "/media/carruthers/mnt1/parascape-release-data-0.0.7.0/source-freeze.json": {
+      "sha256": "010efd57bab0d4dc517277021cf94ab4e88133a1eb71bd9694204fc8f91d2831",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/source-freeze-010efd57bab0d4dc517277021cf94ab4e88133a1eb71bd9694204fc8f91d2831.json"
+    },
+    "/media/carruthers/mnt1/parascape-release-data-0.0.7.0/preparation.json": {
+      "sha256": "eea51e1cd78a786628c75fc7bd46d81e2013afe185d0ef69093d725282409df4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/preparation-eea51e1cd78a786628c75fc7bd46d81e2013afe185d0ef69093d725282409df4.json"
+    },
+    "/media/carruthers/mnt1/parascape-release-data-0.0.7.0/portable-validation.json": {
+      "sha256": "407904bf0a04171732db53d1a87bc794b8387f6897ff6a280baa41e085dbd521",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/portable-validation-407904bf0a04171732db53d1a87bc794b8387f6897ff6a280baa41e085dbd521.json"
+    },
+    "/media/carruthers/mnt1/parascape-release-data-0.0.7.0/installed-wheel-validation.json": {
+      "sha256": "bcb2b23d9c000e35ca7309871584459e07a19dedc5a359a385536bda09e584f5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/installed-wheel-validation-bcb2b23d9c000e35ca7309871584459e07a19dedc5a359a385536bda09e584f5.json"
+    },
+    "/media/carruthers/mnt1/parascape-release-data-0.0.7.0/previous-rna-preservation.json": {
+      "sha256": "86335205e0125514d95d193c9a5827db60d875a15e9b149f37a8939ee31d10e7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/previous-rna-preservation-86335205e0125514d95d193c9a5827db60d875a15e9b149f37a8939ee31d10e7.json"
+    },
+    "/media/carruthers/mnt1/parascape-release-data-0.0.7.0/previous-non-rna-preservation.json": {
+      "sha256": "cae30d9de50918aa5fc78e1aa49c728906491a6acb9be911bcf79003bbd30418",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/previous-non-rna-preservation-cae30d9de50918aa5fc78e1aa49c728906491a6acb9be911bcf79003bbd30418.json"
+    },
+    "/media/carruthers/mnt1/parascape-release-data-0.0.7.0/focused-validation.json": {
+      "sha256": "fc7e5a1db38047d2619247118496d81c969fae382dbdd1226a1aface74e70192",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/focused-validation-fc7e5a1db38047d2619247118496d81c969fae382dbdd1226a1aface74e70192.json"
+    },
+    "/media/carruthers/mnt1/parascape-release-data-0.0.7.0/final-focused-checks.log": {
+      "sha256": "440fd42798c04cb97739d807dd6f7e23a6c2957b94d5b6b342e754c3eb32258e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/final-focused-checks-440fd42798c04cb97739d807dd6f7e23a6c2957b94d5b6b342e754c3eb32258e.log"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/prepare_release_007.py": {
+      "sha256": "e509bf6d0f75711a4ad5e2d36639ecbd5dd1e0a56b6f8717af6b24627b0402aa",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/prepare_release_007-e509bf6d0f75711a4ad5e2d36639ecbd5dd1e0a56b6f8717af6b24627b0402aa.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_release_007.py": {
+      "sha256": "8ff2cb51cb4615951b63021449b30604cf777806ce1271557d8e0c072f0709e6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/validate_release_007-8ff2cb51cb4615951b63021449b30604cf777806ce1271557d8e0c072f0709e6.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_wheel_007.py": {
+      "sha256": "8fd97aac5a3bf89853d7066ba8c776d56af1e20700b866203434331dcc654baf",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/check_wheel_007-8fd97aac5a3bf89853d7066ba8c776d56af1e20700b866203434331dcc654baf.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/publish_007_when_checked.py": {
+      "sha256": "65715cd20db02f1a8bd0dd3930a7b40e18c1c1f20d920d1eea25ad6f8bef15c2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/publish_007_when_checked-65715cd20db02f1a8bd0dd3930a7b40e18c1c1f20d920d1eea25ad6f8bef15c2.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/wait_snapshot_007.py": {
+      "sha256": "6ee949c193060a8047276655f7b0ef0475e43e49ae57e490252066577aa6cc21",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/wait_snapshot_007-6ee949c193060a8047276655f7b0ef0475e43e49ae57e490252066577aa6cc21.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/archive_release_007_preparation.py": {
+      "sha256": "be8361143b5c85b14d4b59e7b3359d08fbced540e3d832f91c225bc563b9861d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/archive_release_007_preparation-be8361143b5c85b14d4b59e7b3359d08fbced540e3d832f91c225bc563b9861d.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-prepare-release-007.service": {
+      "sha256": "364784ffd38332c1c8edd2699c860246ddf83a2d35143233a82f71e05e4b889f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/parascape-prepare-release-007-364784ffd38332c1c8edd2699c860246ddf83a2d35143233a82f71e05e4b889f.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-build-release-007.service": {
+      "sha256": "253c3be08fd43130fb841b29bda20b0b58dcaeeaefc5ff269fe0fc162a1e9208",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/parascape-build-release-007-253c3be08fd43130fb841b29bda20b0b58dcaeeaefc5ff269fe0fc162a1e9208.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-validate-release-007.service": {
+      "sha256": "b77932cabf510df84e68068e0ed6f007fe71857ddceb5009adbb7cf249bd4ea4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/parascape-validate-release-007-b77932cabf510df84e68068e0ed6f007fe71857ddceb5009adbb7cf249bd4ea4.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-wheel-check-007.service": {
+      "sha256": "2b699a72b2ccd9489ac4de95307dc2518df139b109bd00a54d49cfc118930bd0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/parascape-wheel-check-007-2b699a72b2ccd9489ac4de95307dc2518df139b109bd00a54d49cfc118930bd0.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-publish-0.0.7.0.service": {
+      "sha256": "f29e220ba43cb39446606299faeeb0822be04d64424e702456e155df713cbbd3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release_007/parascape-publish-0.0.7.0-f29e220ba43cb39446606299faeeb0822be04d64424e702456e155df713cbbd3.service"
+    }
+  },
+  "source_freeze": {
+    "version": "0.0.7.0",
+    "commit": "e0126de0b484d9a937b9f8dbf884bc05fcac31e4",
+    "parent": "8ae766a72f1df2474b64587083c54c9ebc801056",
+    "frozen_epoch": 1793407018.8904533,
+    "source_checkout": "/media/carruthers/mnt1/parascape-release-0.0.7.0-checkout",
+    "data_sha256": "edfbc77286449067fa2f4ed51f197b3aaea0b9a85ed5cc4260a1abad7837ad89",
+    "data_bytes": 1006528241,
+    "files": 6174,
+    "strict_portable_installation_verified": true,
+    "native_sources": {
+      "prepare_release_007.py": "e509bf6d0f75711a4ad5e2d36639ecbd5dd1e0a56b6f8717af6b24627b0402aa",
+      "validate_release_007.py": "8ff2cb51cb4615951b63021449b30604cf777806ce1271557d8e0c072f0709e6",
+      "check_wheel_007.py": "8fd97aac5a3bf89853d7066ba8c776d56af1e20700b866203434331dcc654baf",
+      "publish_007_when_checked.py": "65715cd20db02f1a8bd0dd3930a7b40e18c1c1f20d920d1eea25ad6f8bef15c2",
+      "wait_snapshot_007.py": "6ee949c193060a8047276655f7b0ef0475e43e49ae57e490252066577aa6cc21"
+    },
+    "native_units": {
+      "parascape-prepare-release-007.service": "364784ffd38332c1c8edd2699c860246ddf83a2d35143233a82f71e05e4b889f",
+      "parascape-build-release-007.service": "253c3be08fd43130fb841b29bda20b0b58dcaeeaefc5ff269fe0fc162a1e9208",
+      "parascape-validate-release-007.service": "b77932cabf510df84e68068e0ed6f007fe71857ddceb5009adbb7cf249bd4ea4",
+      "parascape-wheel-check-007.service": "2b699a72b2ccd9489ac4de95307dc2518df139b109bd00a54d49cfc118930bd0",
+      "parascape-publish-0.0.7.0.service": "f29e220ba43cb39446606299faeeb0822be04d64424e702456e155df713cbbd3"
+    },
+    "prior_quantity_packs_byte_identical": 136,
+    "prior_RNA_cells_bit_identical": 42556317,
+    "prior_RNA_matrices": 120,
+    "focused_checks_passed": 161,
+    "all_dataset_goal_complete": false,
+    "authorization": "User requested external GitHub data,versioned PyPI releases and token-independent automation; only this frozen release,without forced branch/tag changes or bypassing CI."
+  },
+  "installed_wheel_validation": {
+    "validated_epoch": 1793407048.872572,
+    "commit": "e0126de0b484d9a937b9f8dbf884bc05fcac31e4",
+    "version": "0.0.7.0",
+    "wheel_bytes": 1919606,
+    "wheel_sha256": "628dba2700040c474a040033de5dadc6d9db6b88c3d3b4ceba80ec386a88fc7d",
+    "smoke": {
+      "verified_RNA_entries": 326,
+      "priority_study_runs": 8,
+      "deposited_query_rows": 12,
+      "catalogue_records": 692,
+      "original_value_matrices": 147,
+      "annotation_platforms": 54,
+      "annotated_query_rows": 9,
+      "whole_matrix_QC_rows": 16,
+      "network_disabled": true,
+      "NAS_reads_disabled": true,
+      "original_measurement_packs": 139,
+      "protein_quantity_packs": 132,
+      "workbench_quantity_packs": 7,
+      "original_quantity_cells": 1384744,
+      "missing_original_cells": 71153,
+      "source_quantity_columns": 1097,
+      "exact_primary_filename_matches": 16,
+      "submitted_factor_occurrences": 10,
+      "experiment_label_candidate_columns": 357,
+      "reference_source_occurrences": 52,
+      "reference_header_records": 920296,
+      "PRIDE_projects": 209,
+      "submitted_PRIDE_designs": 52,
+      "installed_actual_Compare_tabs_and_CSV_exports": true,
+      "protein_identifier_packs": 129,
+      "protein_identifier_evidence_records": 601605,
+      "installed_source_search_and_stale_export_refusal": true,
+      "accession_identifier_packs": 3,
+      "accession_identifier_evidence_records": 76260,
+      "installed_accession_components_and_unavailable_mapping_grade": true,
+      "installed_row_specific_review_only_candidates": true,
+      "installed_source_flag_treatment_and_selected_measurement_views": true
+    },
+    "clean_tracked_checkout": true,
+    "twine_strict": true,
+    "wheel_audit": true
+  },
+  "strict_verified_files": 6174,
+  "archive_bytes": 1006528241,
+  "archive_sha256": "edfbc77286449067fa2f4ed51f197b3aaea0b9a85ed5cc4260a1abad7837ad89",
+  "previous_quantity_packs_and_outputs_byte_identical": 136,
+  "previous_pinned_nonRNA_files_byte_identical": 2262,
+  "previous_RNA_matrices": 120,
+  "previous_RNA_cells_bit_identical": 42556317,
+  "RNA_entries": 326,
+  "quantity_tables": 139,
+  "original_quantity_cells": 1384744,
+  "missing_original_cells": 71153,
+  "original_source_columns": 1097,
+  "group_identifier_occurrences": 601605,
+  "accession_identifier_occurrences": 76260,
+  "scientific_treatment": "Exact copies of validated native quantities/source metadata,with two verified RNA entries appended while all prior cells and axes remain unchanged. No normalization,imputation,feature collapse,identifier conversion,assumed independence or biological prediction.",
+  "hosted_draft_release_id": 429619291,
+  "uploaded_data_digest_verified": true,
+  "complete_audit_asset": {
+    "name": "parascape-processing-audit-0.0.7.0-e0126de0b484.json",
+    "bytes": 5173592,
+    "sha256": "3813ecc9388a629d43c9dd95f4ebe2cd67f28e983816cebc7c9e5d87fdd5c207"
+  },
+  "native_publisher_unit": "parascape-publish-0.0.7.0.service",
+  "native_publisher_pid": 555872,
+  "nightly_Tests_run": 41151180158,
+  "nightly_Documentation_run": 41151180124,
+  "publication": "Exact source uploaded to nightly; Documentation passed,Tests queued. Enabled native publisher waits on exactCI,nonforced main promotion,main PyPI workflow and official wheel/descriptor validation. Do not advance nightly or alter frozen source.",
+  "live_checkout": "Frozen commit fetched as an object without moving workingtree HEAD,so postpublication wrapper can fast-forward cleanly; source/cache upgrade only after official publication.",
+  "hardware_limit": "24logical CPUs0-11,16-27;existing cache/reserve guards unchanged",
+  "dataset_goal_status": "active",
+  "full_dataset_goal_complete": false,
+  "historical_inference_goal_status": "paused"
+}

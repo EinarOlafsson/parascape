@@ -1,0 +1,80 @@
+Running as unit: starplast-release-055-ci-fixes-final-20261008.service
+........................................................................ [ 11%]
+........................................................................ [ 22%]
+..........................F..F.......................................... [ 33%]
+........................................................................ [ 44%]
+........................................................................ [ 55%]
+........................................................................ [ 66%]
+........................................................................ [ 77%]
+........................................................................ [ 88%]
+........................................................................ [ 99%]
+......                                                                   [100%]
+=================================== FAILURES ===================================
+_________________ test_the_slot_table_regenerates_identically __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-carruthers/pytest-1060/test_the_slot_table_regenerate0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x79feb22c53a0>
+
+    def test_the_slot_table_regenerates_identically(tmp_path, monkeypatch):
+        """Both files come from one list in the generator, and the coverage numbers are counted from the
+        cache on every run. A table checked in by hand goes stale the first time a dataset lands."""
+        import runpy
+        import shutil
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        csv_path = os.path.join(root, "instructions", "done", "31_slots.csv")
+        md_path = os.path.join(root, "instructions", "done", "31_slots.md")
+        if not os.path.exists(csv_path):
+            pytest.skip("the slot table has not been generated on this machine")
+        before = {p: open(p, encoding="utf8").read() for p in (csv_path, md_path)}
+        try:
+            runpy.run_path(os.path.join(root, "scripts", "generate_slot_table.py"),
+                           run_name="__main__")
+            after = {p: open(p, encoding="utf8").read() for p in (csv_path, md_path)}
+>           assert after == before, "the slot table is stale -- run scripts/generate_slot_table.py"
+E           AssertionError: the slot table is stale -- run scripts/generate_slot_table.py
+E           assert {'/tmp/starpl... shipped |\n'} == {'/tmp/starpl... shipped |\n'}
+E             
+E             Differing items:
+E             {'/tmp/starplast-055-ci-fixes-adw71kt4/instructions/done/31_slots.md': '# Slots: one place per question, and a choice ...ion · per cell-cycle phase | `GSE99395` | intracellular against extracellular ribosome profiling, already shipped |\n'} != {'/tmp/starplast-055-ci-fixes-adw71kt4/instructions/done/31_slots.md': '# Slots: one place per question, and a choice ...ion · per cell-cycle phase | `GSE99395` | intracellular against extracellular ribosome profiling, already shipped |\n'}
+E             {'/tmp/starplast-055-ci-fixes-adw71kt4/instructions/done/31_slots.csv': 'org...
+E             
+E             ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/test_dataset_scripts.py:133: AssertionError
+----------------------------- Captured stdout call -----------------------------
+297 slots -> combined, Toxoplasma and Plasmodium tables
+  A 116   B 42   C 56   empty 83
+    gene        181/222   82%
+    host_gene    12/ 50   24%
+    metabolite    3/  6   50%
+    pair         18/ 19   95%
+___________________ test_every_cited_study_carries_its_title ___________________
+
+    def test_every_cited_study_carries_its_title():
+        """A proposal that names a PMID and nothing else asks the reader to go and look up what is being
+        proposed, which is most of the work of reading a list like this."""
+        import csv as _csv
+        import re
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        path = os.path.join(root, "instructions", "done", "31_slots.csv")
+        if not os.path.exists(path):
+            pytest.skip("the slot table has not been generated on this machine")
+        sys.path.insert(0, os.path.join(root, "scripts"))
+        import generate_slot_table as G
+    
+        for r in _csv.DictReader(open(path, encoding="utf8")):
+            for pmid in re.findall(r"PMID (\d{7,8})", r["candidates"] or ""):
+>               assert pmid in G.REFERENCES, f"{r['slot']} cites {pmid} with no reference"
+E               AssertionError: Tg_transcription · sexual stages cites 40217127 with no reference
+E               assert '40217127' in {'42218142': ('2026', 'Nat Commun', 'The spatial proteome of the Plasmodium falciparum schizont illuminates the compos...'2026', 'Mol Cell Proteomics', 'Defining the Proteome of Sexually Committed Parasites in Plasmodium falciparum.'), ...}
+E                +  where {'42218142': ('2026', 'Nat Commun', 'The spatial proteome of the Plasmodium falciparum schizont illuminates the compos...'2026', 'Mol Cell Proteomics', 'Defining the Proteome of Sexually Committed Parasites in Plasmodium falciparum.'), ...} = <module 'generate_slot_table' from '/tmp/starplast-055-ci-fixes-adw71kt4/scripts/generate_slot_table.py'>.REFERENCES
+
+tests/test_dataset_scripts.py:190: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_dataset_scripts.py::test_the_slot_table_regenerates_identically
+FAILED tests/test_dataset_scripts.py::test_every_cited_study_carries_its_title
+2 failed, 652 passed in 13.19s
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 13.617s
+CPU time consumed: 13.723s

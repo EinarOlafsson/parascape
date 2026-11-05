@@ -1413,6 +1413,22 @@ class Window(QtWidgets.QMainWindow):
         self._discoveries()
         self._compare()
         self._information_map()
+        self._home()
+
+    def _home(self):
+        """The home dock, and the dock that is up when the window opens.
+
+        Installed last so it is the tab raised on startup, and installed in addition to everything
+        else: instruction 74 phase 1 is a navigation layer over the existing panels, so every dock
+        above is still built, still tabbed and still reachable from its own tab, the menus and the
+        search field. The home screen also gives the window its dropped-file target.
+        """
+        try:
+            from .home_panel import install
+            install(self)
+        except Exception as e:                        # the browser must open without it
+            self.home = None
+            self.statusBar().showMessage(f"home screen unavailable: {e}")
 
     def _information_map(self):
         """The information-map dock: what is known about a gene, and which claims are measured.

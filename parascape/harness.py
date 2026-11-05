@@ -26,8 +26,21 @@ What this module enforces automatically, for every question:
 5. **Both numbers, never one.** The nested cross-validated estimate and the frozen-test result, each
    with a Clopper-Pearson lower 90 % bound, coverage at the bar, calibration error, the baselines and
    permutation importance by family.
-6. **Small-label questions say so.** Below `question.min_labels_for_frozen_test` the frozen partition
-   is skipped, the question is flagged `no_frozen_test`, and it may rank but not fill.
+6. **A question with too few known answers says so.** The plain version of the rule: to grade a
+   question honestly we hide some genes whose answer is already known, predict them, and see how
+   often we were right. That needs enough known answers to hide a meaningful number and still have
+   enough left to learn from -- `question.min_labels_for_frozen_test`, 400 by default. Below it the
+   held-back set is skipped, the question is flagged `no_frozen_test` ("not enough known answers to
+   grade"), and it may **rank genes but not write anything into the map**. The flag is not a failure
+   of the method; it is a statement about how much is published.
+7. **The exclusion is computed from information categories, not from a hand-written list.** Inferring
+   a label of category X holds out every column of category X, whatever its name, family or study
+   (`information_categories`, instruction 73), and `identity` columns always. The hand-written
+   `evidence_forbidden` list is applied in addition and recorded as the override it is: it was the
+   mechanism, it missed three pooled fitness screens whose family names say nothing about fitness,
+   and it is now the thing that expresses what a category cannot. `evidence_selection` returns the
+   requested and the effective selection with the reason for every removal, and
+   `HarnessResult.evidence_selection` carries it into the run record.
 
 **Filling a cell requires the frozen-test lower bound to clear the bar**, which is what `may_fill`
 reports -- never the cross-validated one.
@@ -48,6 +61,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from . import information_categories as IC
 from . import organisms as O
 from . import splits as S
 from .claims import CertaintyModel, _ece, _isotonic
@@ -201,14 +215,65 @@ def partition_question(question, entities, groups, *, organism: str = O.TOXOPLAS
     return split, None
 
 
-def allowed_features(question, features: pd.DataFrame, families: pd.Series) -> pd.DataFrame:
-    """Drop every column whose family the question forbids -- the caller's chance to filter first.
+def evidence_selection(question, columns, families, *, force_include=None) -> dict:
+    """What this question may see, and why anything was removed: the instruction 73 run record.
 
-    `run_question` refuses a forbidden column rather than silently removing it, so that a leak is a
-    failure and not a quiet correction. This helper is how a caller asks for the filtering on purpose.
+    The exclusion is computed from **information categories**, not from the hand-written family
+    list. A column is removed when any of its categories matches the category of the question's own
+    labels (`information_categories.label_categories`), whatever its name, family or study -- which
+    is what catches a pooled fitness screen called `gra17_synthlethal`, where two passes of
+    hand-written guessing did not. `identity` columns are removed for every question, because an
+    accession is not evidence.
+
+    The hand-written `evidence_forbidden` list is kept and applied **in addition**, and recorded
+    separately: it expresses what a category cannot, such as holding `pubmed` out of the host-facing
+    question. It is an override, never the mechanism.
+
+    `force_include` is the escape hatch instruction 73 asks for: a mapping of column name **or**
+    category name to the reason for including it anyway. Every use is returned in the record, so a
+    deliberately circular run is visible on the scorecard rather than impossible.
+
+    Keys: `label_categories`, `requested`, `effective`, `excluded_by_category`,
+    `excluded_by_family`, `force_included`, `unannotated`.
     """
-    keep = [c for c in features.columns if question.allows(families.get(c, "unregistered"))]
-    return features[keep]
+    columns = [str(c) for c in columns]
+    families = pd.Series(families) if not isinstance(families, pd.Series) else families
+    label = tuple(IC.label_categories(question))
+    forced = {str(k): str(v) for k, v in dict(force_include or {}).items()}
+    excluded_category, excluded_family, force_used, unannotated = {}, {}, {}, []
+    effective = []
+    for column in columns:
+        carried = IC.categories_of(column)
+        if not carried:
+            unannotated.append(column)
+        hit = tuple(sorted((set(carried) & set(label)) | (set(carried) & set(IC.NEVER_A_FEATURE))))
+        reason = forced.get(column) or next((forced[c] for c in hit if c in forced), "")
+        if hit and reason:
+            force_used[column] = f"{','.join(hit)}: {reason}"
+        elif hit:
+            excluded_category[column] = ",".join(hit)
+            continue
+        family = families.get(column, "unregistered")
+        if not question.allows(family):
+            excluded_family[column] = family
+            continue
+        effective.append(column)
+    return {"label_categories": label, "requested": tuple(columns), "effective": tuple(effective),
+            "excluded_by_category": excluded_category, "excluded_by_family": excluded_family,
+            "force_included": force_used, "unannotated": tuple(unannotated)}
+
+
+def allowed_features(question, features: pd.DataFrame, families: pd.Series,
+                     *, force_include=None) -> pd.DataFrame:
+    """Drop every column the question may not see -- the caller's chance to filter first.
+
+    Both exclusions apply: the information category of the question's labels (and `identity`), and
+    the hand-written forbidden families. `run_question` refuses such a column rather than silently
+    removing it, so that a leak is a failure and not a quiet correction; this helper is how a caller
+    asks for the filtering on purpose.
+    """
+    record = evidence_selection(question, features.columns, families, force_include=force_include)
+    return features[list(record["effective"])]
 
 
 def _support_and_correctness(probability: pd.Series, truth: pd.Series):
@@ -438,7 +503,7 @@ def _family_importance(model, features, families, labels, columns, entities, rep
             .reset_index(drop=True).assign(baseline_average_precision=base))
 
 
-def evidence_identity(question, features: pd.DataFrame) -> str:
+def evidence_identity(question, features: pd.DataFrame, selection=None) -> str:
     """Hash of the question's own definition and the exact feature set used to answer it.
 
     The strategy hash alone is not enough to key the holdout budget, and the first demo run showed
@@ -446,11 +511,17 @@ def evidence_identity(question, features: pd.DataFrame) -> str:
     the model, its settings and its version untouched. Without this, re-running "the same strategy"
     on a changed feature table would pass the budget as a repeat and the frozen partition would
     quietly become a tuning set again.
+
+    `selection` is the `evidence_selection` record, and the force-included columns are hashed with
+    it: including one circular column on purpose changes what the model sees exactly as widening the
+    forbidden list does, so it must spend the partition too.
     """
     payload = {"answer_type": question.answer_type, "label_source": question.label_source,
                "label_family": question.label_family,
                "evidence_allowed": sorted(question.evidence_allowed),
                "evidence_forbidden": sorted(question.evidence_forbidden),
+               "label_categories": sorted((selection or {}).get("label_categories", ())),
+               "force_included": sorted((selection or {}).get("force_included", {})),
                "min_labels_for_frozen_test": int(question.min_labels_for_frozen_test),
                "features": sorted(map(str, features.columns))}
     return hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
@@ -512,6 +583,7 @@ class HarnessResult:
     threshold: float
     cross_validated: dict
     evidence_hash: str = ""
+    evidence_selection: dict = field(default_factory=dict)
     frozen_test: dict | None = None
     inner_scores: dict = field(default_factory=dict)
     chosen_per_outer_fold: tuple = ()
@@ -549,6 +621,9 @@ class HarnessResult:
                 "seed": self.seed, "split_identity": self.split_identity, "bar": self.bar,
                 "strategy": self.strategy, "strategy_hash": self.strategy_hash,
                 "evidence_hash": self.evidence_hash, "threshold": self.threshold,
+                "evidence_selection": {
+                    key: (list(value) if isinstance(value, tuple) else value)
+                    for key, value in self.evidence_selection.items()},
                 "cross_validated": self.cross_validated,
                 "frozen_test": self.frozen_test, "inner_scores": self.inner_scores,
                 "chosen_per_outer_fold": list(self.chosen_per_outer_fold),
@@ -570,13 +645,16 @@ def run_question(question, *, labels, features, families, groups, strategies,
                  organism: str = O.TOXOPLASMA, seed: int = 0, outer_folds: int = 3,
                  inner_folds: int = 3,
                  bar: float = BAR, pairs=None, log_path=None, root=None, record: bool = True,
-                 importance_repeats: int = 3) -> HarnessResult:
+                 importance_repeats: int = 3, force_include=None) -> HarnessResult:
     """Score one question end to end: four partitions, nested cross-validation, one frozen test.
 
     `labels` is a boolean series indexed by entity, `features` a frame over at least those entities,
     `families` a mapping from feature to evidence family, `groups` from entity to protected group
-    (orthogroup). A column whose family the question forbids raises here rather than being dropped
-    quietly -- call `allowed_features` first if filtering is what was meant.
+    (orthogroup). A column of the labels' own **information category**, or one whose family the
+    question forbids, raises here rather than being dropped quietly -- call `allowed_features` first
+    if filtering is what was meant. `force_include={'column or category': 'reason'}` includes a
+    circular column on purpose; it is recorded in `HarnessResult.evidence_selection`, shown on the
+    scorecard and hashed into the evidence identity, so it also spends the holdout budget.
 
     For a ranked-list question the entities are the *nodes* and `pairs` the labelled pairs: the
     cold-node partition keeps only same-partition pairs, so a held-out pair has both endpoints
@@ -592,8 +670,17 @@ def run_question(question, *, labels, features, families, groups, strategies,
     if not strategies:
         raise ValueError(f"{question.id}: no strategy to score")
 
-    forbidden = sorted({c for c in features.columns
-                        if not question.allows(families.get(c, "unregistered"))})
+    selection = evidence_selection(question, features.columns, families, force_include=force_include)
+    if selection["excluded_by_category"]:
+        circular = sorted(selection["excluded_by_category"])
+        raise ValueError(
+            f"{question.id}: columns of its own information category "
+            f"{list(selection['label_categories'])} are present in the feature table: "
+            f"{[(c, selection['excluded_by_category'][c]) for c in circular[:10]]} "
+            f"({len(circular)} columns). Inferring a label of category X excludes every column of "
+            f"category X (instruction 73). Call allowed_features first, or pass force_include="
+            "{'<column or category>': '<reason>'} to include one on purpose and have it recorded.")
+    forbidden = sorted(selection["excluded_by_family"])
     if forbidden:
         raise ValueError(f"{question.id}: forbidden evidence families present in the feature table: "
                          f"{forbidden[:10]} ({len(forbidden)} columns). The label family "
@@ -603,7 +690,7 @@ def run_question(question, *, labels, features, families, groups, strategies,
         if bad:
             raise ValueError(f"{question.id}: strategy {strategy.name!r} asks for forbidden families {bad}")
 
-    evidence = evidence_identity(question, features)
+    evidence = evidence_identity(question, features, selection)
     split, pair_partition = partition_question(question, entities, groups.loc[entities],
                                                organism=organism, seed=seed, pairs=pairs)
     guard = StageGuard(split)
@@ -667,9 +754,11 @@ def run_question(question, *, labels, features, families, groups, strategies,
     frozen, refusal = None, ""
     if not question.frozen_test_possible(len(labels)):
         flags.append("no_frozen_test")
-        refusal = (f"{len(labels)} labels is below min_labels_for_frozen_test="
-                   f"{question.min_labels_for_frozen_test}: nested cross-validation only. This "
-                   f"question may rank and prioritise and may not fill cells.")
+        refusal = (f"only {len(labels)} genes have a known answer for this question, and grading "
+                   f"needs at least {question.min_labels_for_frozen_test}. With fewer, any set we "
+                   f"hide is too small to tell a good strategy from a lucky one. The strategy can "
+                   f"still rank genes by how likely the answer is, and can put nothing into the "
+                   f"map. More published answers, not a better model, is what lifts this.")
     else:
         prior = holdout_uses(question.id, split.identity, log_path, root)
         changed = [use for use in prior
@@ -717,9 +806,43 @@ def run_question(question, *, labels, features, families, groups, strategies,
                          question_class=question.question_class, n_labels=int(len(labels)),
                          seed=int(seed), split_identity=split.identity, bar=float(bar),
                          strategy=strategy.name, strategy_hash=strategy.identity,
-                         evidence_hash=evidence, threshold=float(threshold),
+                         evidence_hash=evidence, evidence_selection=selection,
+                         threshold=float(threshold),
                          cross_validated=cross_validated,
                          frozen_test=frozen, inner_scores=inner_scores,
                          chosen_per_outer_fold=tuple(chosen), calibration=calibration,
                          baselines=baselines, importance=importance, flags=tuple(flags),
                          guard_calls=guard.calls, refusal=refusal)
+
+
+# --- plain language -------------------------------------------------------------------------------
+# The stored records keep their identifiers so an old run stays readable, but nothing a person reads
+# should make them learn one. Every status a run can end in has a sentence here.
+PLAIN = {
+    'no_frozen_test': 'not enough known answers to grade',
+    'frozen_test_refused': 'already graded once; a changed strategy needs a fresh set of hidden genes',
+    'frozen_test_repeat': 'graded again with the identical strategy',
+    'needs_fresh_partition': 'needs a new set of hidden genes',
+}
+PLAIN_TERMS = {
+    'frozen_test': 'the hidden genes, checked once',
+    'cross_validated': 'rotating the hidden genes through all of them',
+    'precision_lower90': 'how often it is right, taking the unlucky end of the error bar',
+    'may_fill': 'trusted enough to write into the map',
+    'min_labels_for_frozen_test': 'the fewest known answers a question needs before it can be graded',
+}
+
+
+def plain(flag: str) -> str:
+    """One flag or status in words, for a panel, a README or a sentence to Einar."""
+    return PLAIN.get(flag, flag.replace('_', ' '))
+
+
+def plain_status(flags=(), graded: bool = False, fills: bool = False) -> str:
+    """The whole outcome of a run in one sentence, with no vocabulary to look up."""
+    if not graded:
+        reasons = [plain(f) for f in flags if f in PLAIN] or ['not graded yet']
+        return f"ranks genes only -- {'; '.join(reasons)}"
+    if fills:
+        return 'graded on hidden genes and accurate enough to write into the map'
+    return 'graded on hidden genes, but not accurate enough to write into the map'

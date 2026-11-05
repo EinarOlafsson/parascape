@@ -1,0 +1,53 @@
+{
+ "name": "compartment_localisation_median_rank_nn15_md0.5_mcs25",
+ "spec": {
+  "name": "default",
+  "blocks": [
+   "localisation"
+  ],
+  "categorical": [],
+  "extra_columns": [],
+  "na_policy": "median",
+  "max_missing": 0.5,
+  "scaling": "rank",
+  "block_weights": {},
+  "categorical_weight": 1.0,
+  "indicator_weight": 0.5,
+  "n_components": 3,
+  "n_neighbors": 15,
+  "min_dist": 0.5,
+  "metric": "euclidean",
+  "random_state": 42
+ },
+ "n_genes": 3000,
+ "features": [
+  "lopit_prob_map",
+  "lopit_prob_mcmc",
+  "lopit_methods_agree"
+ ],
+ "target": "compartment",
+ "excluded": [
+  "compartment",
+  "compartment_best",
+  "lopit_map",
+  "lopit_mcmc",
+  "lopit_unified"
+ ],
+ "clustering": {
+  "algorithm": "hdbscan",
+  "min_cluster_size": 25
+ },
+ "scores": {
+  "mean_f1": 0.21494720587032515,
+  "best_f1": 0.3938906752411575,
+  "best_label": "nucleus - chromatin",
+  "n_labels_scored": 16,
+  "n_labels_recovered": 0,
+  "objective_score": 0.07482993197278912,
+  "objective": "best_precision",
+  "objective_detail": "cluster 0 is 7% dense granules and holds 17% of it",
+  "weighting": "macro",
+  "adjusted_rand": 0.041091132523180085,
+  "adjusted_mutual_info": 0.05917039289793376
+ }
+}

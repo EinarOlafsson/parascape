@@ -1,0 +1,1343 @@
+* Getting build dependencies for sdist...
+running egg_info
+creating starplast.egg-info
+writing starplast.egg-info/PKG-INFO
+writing dependency_links to starplast.egg-info/dependency_links.txt
+writing entry points to starplast.egg-info/entry_points.txt
+writing requirements to starplast.egg-info/requires.txt
+writing top-level names to starplast.egg-info/top_level.txt
+writing manifest file 'starplast.egg-info/SOURCES.txt'
+reading manifest file 'starplast.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'starplast.egg-info/SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing starplast.egg-info/PKG-INFO
+writing dependency_links to starplast.egg-info/dependency_links.txt
+writing entry points to starplast.egg-info/entry_points.txt
+writing requirements to starplast.egg-info/requires.txt
+writing top-level names to starplast.egg-info/top_level.txt
+reading manifest file 'starplast.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'starplast.egg-info/SOURCES.txt'
+running check
+creating starplast-0.55.0
+creating starplast-0.55.0/starplast
+creating starplast-0.55.0/starplast.egg-info
+creating starplast-0.55.0/starplast/data
+creating starplast-0.55.0/starplast/data/hf_release
+creating starplast-0.55.0/starplast/data/icons
+creating starplast-0.55.0/starplast/spaces
+copying files to starplast-0.55.0...
+copying LICENSE -> starplast-0.55.0
+copying README.md -> starplast-0.55.0
+copying pyproject.toml -> starplast-0.55.0
+copying starplast/__init__.py -> starplast-0.55.0/starplast
+copying starplast/__main__.py -> starplast-0.55.0/starplast
+copying starplast/ambient.py -> starplast-0.55.0/starplast
+copying starplast/analysis_panel.py -> starplast-0.55.0/starplast
+copying starplast/annotations.py -> starplast-0.55.0/starplast
+copying starplast/app.py -> starplast-0.55.0/starplast
+copying starplast/archive.py -> starplast-0.55.0/starplast
+copying starplast/artifacts.py -> starplast-0.55.0/starplast
+copying starplast/baselines.py -> starplast-0.55.0/starplast
+copying starplast/benchmark.py -> starplast-0.55.0/starplast
+copying starplast/build_graph.py -> starplast-0.55.0/starplast
+copying starplast/calibration.py -> starplast-0.55.0/starplast
+copying starplast/capabilities.py -> starplast-0.55.0/starplast
+copying starplast/cellcycle.py -> starplast-0.55.0/starplast
+copying starplast/celldiagram.py -> starplast-0.55.0/starplast
+copying starplast/chat.py -> starplast-0.55.0/starplast
+copying starplast/chromatin.py -> starplast-0.55.0/starplast
+copying starplast/claims.py -> starplast-0.55.0/starplast
+copying starplast/clustering.py -> starplast-0.55.0/starplast
+copying starplast/codons.py -> starplast-0.55.0/starplast
+copying starplast/conformal_records.py -> starplast-0.55.0/starplast
+copying starplast/console.py -> starplast-0.55.0/starplast
+copying starplast/corpus.py -> starplast-0.55.0/starplast
+copying starplast/dataset_browser.py -> starplast-0.55.0/starplast
+copying starplast/dataset_selection.py -> starplast-0.55.0/starplast
+copying starplast/dataset_space.py -> starplast-0.55.0/starplast
+copying starplast/dataset_space_inputs.py -> starplast-0.55.0/starplast
+copying starplast/datasets.py -> starplast-0.55.0/starplast
+copying starplast/deposits.py -> starplast-0.55.0/starplast
+copying starplast/discover.py -> starplast-0.55.0/starplast
+copying starplast/discoveries_panel.py -> starplast-0.55.0/starplast
+copying starplast/discovery.py -> starplast-0.55.0/starplast
+copying starplast/discovery_labels.py -> starplast-0.55.0/starplast
+copying starplast/drug_sensitivity.py -> starplast-0.55.0/starplast
+copying starplast/embedding.py -> starplast-0.55.0/starplast
+copying starplast/enteric.py -> starplast-0.55.0/starplast
+copying starplast/evidence.py -> starplast-0.55.0/starplast
+copying starplast/expression.py -> starplast-0.55.0/starplast
+copying starplast/fetch_names.py -> starplast-0.55.0/starplast
+copying starplast/forest_records.py -> starplast-0.55.0/starplast
+copying starplast/functional_agreement.py -> starplast-0.55.0/starplast
+copying starplast/functional_class_view.py -> starplast-0.55.0/starplast
+copying starplast/functional_coverage.py -> starplast-0.55.0/starplast
+copying starplast/functional_domain_profiles.py -> starplast-0.55.0/starplast
+copying starplast/functional_domains.py -> starplast-0.55.0/starplast
+copying starplast/functional_exclusions.py -> starplast-0.55.0/starplast
+copying starplast/functional_ontology.py -> starplast-0.55.0/starplast
+copying starplast/functional_pair_class.py -> starplast-0.55.0/starplast
+copying starplast/functional_profile_targets.py -> starplast-0.55.0/starplast
+copying starplast/functional_results.py -> starplast-0.55.0/starplast
+copying starplast/gallery.py -> starplast-0.55.0/starplast
+copying starplast/gene_evidence.py -> starplast-0.55.0/starplast
+copying starplast/gene_evidence_browser.py -> starplast-0.55.0/starplast
+copying starplast/glass.py -> starplast-0.55.0/starplast
+copying starplast/gpu.py -> starplast-0.55.0/starplast
+copying starplast/graphspace.py -> starplast-0.55.0/starplast
+copying starplast/ground_truth.py -> starplast-0.55.0/starplast
+copying starplast/group_ratios.py -> starplast-0.55.0/starplast
+copying starplast/guided.py -> starplast-0.55.0/starplast
+copying starplast/guided_panel.py -> starplast-0.55.0/starplast
+copying starplast/help_index.py -> starplast-0.55.0/starplast
+copying starplast/help_search.py -> starplast-0.55.0/starplast
+copying starplast/hf_publish.py -> starplast-0.55.0/starplast
+copying starplast/holdout_cv.py -> starplast-0.55.0/starplast
+copying starplast/host.py -> starplast-0.55.0/starplast
+copying starplast/host_foundation_scorecard.py -> starplast-0.55.0/starplast
+copying starplast/identity.py -> starplast-0.55.0/starplast
+copying starplast/iedb.py -> starplast-0.55.0/starplast
+copying starplast/importer.py -> starplast-0.55.0/starplast
+copying starplast/install_gpu.py -> starplast-0.55.0/starplast
+copying starplast/interaction_studies.py -> starplast-0.55.0/starplast
+copying starplast/interactions.py -> starplast-0.55.0/starplast
+copying starplast/interpret.py -> starplast-0.55.0/starplast
+copying starplast/inventory.py -> starplast-0.55.0/starplast
+copying starplast/jobs.py -> starplast-0.55.0/starplast
+copying starplast/label_records.py -> starplast-0.55.0/starplast
+copying starplast/label_space.py -> starplast-0.55.0/starplast
+copying starplast/label_space_browser.py -> starplast-0.55.0/starplast
+copying starplast/leakage.py -> starplast-0.55.0/starplast
+copying starplast/lighting.py -> starplast-0.55.0/starplast
+copying starplast/lipids.py -> starplast-0.55.0/starplast
+copying starplast/literature.py -> starplast-0.55.0/starplast
+copying starplast/localization.py -> starplast-0.55.0/starplast
+copying starplast/lod.py -> starplast-0.55.0/starplast
+copying starplast/logging_util.py -> starplast-0.55.0/starplast
+copying starplast/metabolites.py -> starplast-0.55.0/starplast
+copying starplast/methods.py -> starplast-0.55.0/starplast
+copying starplast/metrics.py -> starplast-0.55.0/starplast
+copying starplast/network_prediction.py -> starplast-0.55.0/starplast
+copying starplast/objectives.py -> starplast-0.55.0/starplast
+copying starplast/optimize.py -> starplast-0.55.0/starplast
+copying starplast/organisms.py -> starplast-0.55.0/starplast
+copying starplast/packs.py -> starplast-0.55.0/starplast
+copying starplast/palmitome.py -> starplast-0.55.0/starplast
+copying starplast/paths.py -> starplast-0.55.0/starplast
+copying starplast/pf_graph.py -> starplast-0.55.0/starplast
+copying starplast/phenotype_screen.py -> starplast-0.55.0/starplast
+copying starplast/plasmodium.py -> starplast-0.55.0/starplast
+copying starplast/precompute_features.py -> starplast-0.55.0/starplast
+copying starplast/precompute_jobs.py -> starplast-0.55.0/starplast
+copying starplast/prediction.py -> starplast-0.55.0/starplast
+copying starplast/prioritization.py -> starplast-0.55.0/starplast
+copying starplast/proteomics.py -> starplast-0.55.0/starplast
+copying starplast/provenance.py -> starplast-0.55.0/starplast
+copying starplast/query.py -> starplast-0.55.0/starplast
+copying starplast/questions.py -> starplast-0.55.0/starplast
+copying starplast/rays.py -> starplast-0.55.0/starplast
+copying starplast/recipes.py -> starplast-0.55.0/starplast
+copying starplast/record_scorecards.py -> starplast-0.55.0/starplast
+copying starplast/report.py -> starplast-0.55.0/starplast
+copying starplast/resistance.py -> starplast-0.55.0/starplast
+copying starplast/results.py -> starplast-0.55.0/starplast
+copying starplast/runs.py -> starplast-0.55.0/starplast
+copying starplast/scorecard.py -> starplast-0.55.0/starplast
+copying starplast/scorecard_browser.py -> starplast-0.55.0/starplast
+copying starplast/scorecard_view.py -> starplast-0.55.0/starplast
+copying starplast/screens.py -> starplast-0.55.0/starplast
+copying starplast/search.py -> starplast-0.55.0/starplast
+copying starplast/searches.py -> starplast-0.55.0/starplast
+copying starplast/sequence_features.py -> starplast-0.55.0/starplast
+copying starplast/slot_tree.py -> starplast-0.55.0/starplast
+copying starplast/slots.py -> starplast-0.55.0/starplast
+copying starplast/small_tables.py -> starplast-0.55.0/starplast
+copying starplast/source_refusals.py -> starplast-0.55.0/starplast
+copying starplast/sources.py -> starplast-0.55.0/starplast
+copying starplast/splits.py -> starplast-0.55.0/starplast
+copying starplast/sprite.py -> starplast-0.55.0/starplast
+copying starplast/star_edges.py -> starplast-0.55.0/starplast
+copying starplast/star_map.py -> starplast-0.55.0/starplast
+copying starplast/stopping.py -> starplast-0.55.0/starplast
+copying starplast/strategies.py -> starplast-0.55.0/starplast
+copying starplast/strategy_card.py -> starplast-0.55.0/starplast
+copying starplast/strategy_catalog.py -> starplast-0.55.0/starplast
+copying starplast/strategy_explainers.py -> starplast-0.55.0/starplast
+copying starplast/strategy_graph.py -> starplast-0.55.0/starplast
+copying starplast/strategy_learning.py -> starplast-0.55.0/starplast
+copying starplast/strategy_panel.py -> starplast-0.55.0/starplast
+copying starplast/structure_catalog.py -> starplast-0.55.0/starplast
+copying starplast/structures.py -> starplast-0.55.0/starplast
+copying starplast/techniques.py -> starplast-0.55.0/starplast
+copying starplast/theme.py -> starplast-0.55.0/starplast
+copying starplast/track_record.py -> starplast-0.55.0/starplast
+copying starplast/transfer_records.py -> starplast-0.55.0/starplast
+copying starplast/tuning.py -> starplast-0.55.0/starplast
+copying starplast/umap_gallery.py -> starplast-0.55.0/starplast
+copying starplast/umap_gallery_panel.py -> starplast-0.55.0/starplast
+copying starplast/validate.py -> starplast-0.55.0/starplast
+copying starplast/value_conformal_records.py -> starplast-0.55.0/starplast
+copying starplast/value_records.py -> starplast-0.55.0/starplast
+copying starplast/variation.py -> starplast-0.55.0/starplast
+copying starplast/verify.py -> starplast-0.55.0/starplast
+copying starplast/workflows.py -> starplast-0.55.0/starplast
+copying starplast.egg-info/PKG-INFO -> starplast-0.55.0/starplast.egg-info
+copying starplast.egg-info/SOURCES.txt -> starplast-0.55.0/starplast.egg-info
+copying starplast.egg-info/dependency_links.txt -> starplast-0.55.0/starplast.egg-info
+copying starplast.egg-info/entry_points.txt -> starplast-0.55.0/starplast.egg-info
+copying starplast.egg-info/requires.txt -> starplast-0.55.0/starplast.egg-info
+copying starplast.egg-info/top_level.txt -> starplast-0.55.0/starplast.egg-info
+copying starplast/data/af3_features.json -> starplast-0.55.0/starplast/data
+copying starplast/data/af3_features.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/af3_manifest.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/antisense_level.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/cdpk1_substrates.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/claim_recipes.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/claims.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/crosslink_models.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/crosslink_partners.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_brady_subtypes.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_crispr_glucose_limitation.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_crispr_invivo_composite.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_crispr_parasite_density.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_crispr_serum_restriction.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_gse302107_riboseq.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_gse302108_utr5.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_host_bmdm_baseline.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_host_hepatocyte_pf_infection.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_host_hff_tg_infection.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_host_k562_rhoptry_gene_evidence.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_host_k562_rhoptry_screen.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_iron_depletion_proteome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_mrna_decay_gse329845.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_organelle_surface_turboid.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_chromatin_proxiome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_committed_proteome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_febrile_phospho.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_field_variation.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_gametocyte_proteome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_hsp90_chemoproteome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_latency_transcriptome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_m6a_nanopore.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_meltome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_mrna_dynamics.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_pb_fertility_transfer.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_resistome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_rna_dependence.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_spatial_proteome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/deposit_pf_target_engagement.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/escrt_recruitment_maxvit.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/escrt_recruitment_xgboost.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/esm_features.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/esm_manifest.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/functional_agreement.json -> starplast-0.55.0/starplast/data
+copying starplast/data/functional_agreement_uncertainty.json -> starplast-0.55.0/starplast/data
+copying starplast/data/functional_domain_names.json -> starplast-0.55.0/starplast/data
+copying starplast/data/functional_results.json -> starplast-0.55.0/starplast/data
+copying starplast/data/graph.npz -> starplast-0.55.0/starplast/data
+copying starplast/data/host_bridges.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/host_foundation_summary.json -> starplast-0.55.0/starplast/data
+copying starplast/data/host_interactions.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/host_projection_withdrawals.json -> starplast-0.55.0/starplast/data
+copying starplast/data/host_species_migration.json -> starplast-0.55.0/starplast/data
+copying starplast/data/hs_host_proteins.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/iedb_bcell_epitopes.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/interaction_studies.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/interaction_study_members.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/m6a_peaks.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/melting_temperature.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/mentions.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/metabolites.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/mm_host_proteins.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/mrna_stability.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/myristoylome.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/nodes.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/pf_graph.npz -> starplast-0.55.0/starplast/data
+copying starplast/data/pf_host_bridges.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/pf_mentions.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/pf_nodes.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/plasmodb_cds.tsv.gz -> starplast-0.55.0/starplast/data
+copying starplast/data/plasmodb_identity.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/pvm_proximity.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/questions.json -> starplast-0.55.0/starplast/data
+copying starplast/data/secretome_partition.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/sexual_stages.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/slot_hierarchy.json -> starplast-0.55.0/starplast/data
+copying starplast/data/slots.json -> starplast-0.55.0/starplast/data
+copying starplast/data/star_edges.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/strategy_calibration.json -> starplast-0.55.0/starplast/data
+copying starplast/data/strategy_examples.json -> starplast-0.55.0/starplast/data
+copying starplast/data/strategy_selftests.json -> starplast-0.55.0/starplast/data
+copying starplast/data/structure_search.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/structure_search_perlabel.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/study_licenses.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_arginine_methylation.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_cds.tsv.gz -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_ec_numbers.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_enteroepithelial.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_epitopes.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_gene_location.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_h4_acetylation.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_identity.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_macrophage.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_nanopore_isoforms.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_palmitome_hydroxylamine.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_palmitome_palmitate.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_strain_gt1.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_strain_snps.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/toxodb_strain_veg.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/track_record.parquet -> starplast-0.55.0/starplast/data
+copying starplast/data/umap_gallery.json -> starplast-0.55.0/starplast/data
+copying starplast/data/umap_gallery.npz -> starplast-0.55.0/starplast/data
+copying starplast/data/umap_gallery_scores.tsv -> starplast-0.55.0/starplast/data
+copying starplast/data/hf_release/README.md -> starplast-0.55.0/starplast/data/hf_release
+copying starplast/data/hf_release/studies.parquet -> starplast-0.55.0/starplast/data/hf_release
+copying starplast/data/hf_release/study_gene_membership.parquet -> starplast-0.55.0/starplast/data/hf_release
+copying starplast/data/icons/Animal_cells.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/Apicomplexa_cells.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_01_constellation_1.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_02_constellation_2.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_03_constellation_3.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_04_constellation_4.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_05_constellation_5.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_06_constellation_6.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_07_constellation_7.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_08_constellation_8.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_09_apicoplast_1.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_10_apicoplast_2.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_11_apicoplast_3.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_12_apicoplast_4.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_13_apicoplast_5.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_14_apicoplast_6.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_15_crescent_1.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_16_crescent_2.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_17_crescent_3.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_18_crescent_4.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_19_crescent_5.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_20_crescent_6.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_21_orbit_1.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_22_orbit_2.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_23_orbit_3.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_24_orbit_4.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_25_orbit_5.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_26_orbit_6.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_27_letter_s_1.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_28_letter_s_2.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_29_letter_s_3.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_30_letter_s_4.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_31_letter_s_5.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_32_letter_s_6.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_33_letter_s_7.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_34_dark_field_1.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_35_dark_field_2.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_36_dark_field_3.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_37_dark_field_4.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_38_dark_field_5.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_39_dark_field_6.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_40_dark_field_7.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_41_galaxy_1.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_42_galaxy_2.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_43_galaxy_3.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_44_galaxy_4.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_45_galaxy_5.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_46_galaxy_6.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_47_galaxy_7.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_48_galaxy_8.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/logo_49_galaxy_9.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/data/icons/starplast.svg -> starplast-0.55.0/starplast/data/icons
+copying starplast/spaces/__init__.py -> starplast-0.55.0/starplast/spaces
+copying starplast/spaces/human.py -> starplast-0.55.0/starplast/spaces
+Writing starplast-0.55.0/setup.cfg
+Creating tar archive
+removing 'starplast-0.55.0' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing starplast.egg-info/PKG-INFO
+writing dependency_links to starplast.egg-info/dependency_links.txt
+writing entry points to starplast.egg-info/entry_points.txt
+writing requirements to starplast.egg-info/requires.txt
+writing top-level names to starplast.egg-info/top_level.txt
+reading manifest file 'starplast.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'starplast.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/starplast
+copying starplast/dataset_browser.py -> build/lib/starplast
+copying starplast/functional_profile_targets.py -> build/lib/starplast
+copying starplast/install_gpu.py -> build/lib/starplast
+copying starplast/scorecard.py -> build/lib/starplast
+copying starplast/__init__.py -> build/lib/starplast
+copying starplast/help_index.py -> build/lib/starplast
+copying starplast/conformal_records.py -> build/lib/starplast
+copying starplast/proteomics.py -> build/lib/starplast
+copying starplast/sources.py -> build/lib/starplast
+copying starplast/functional_coverage.py -> build/lib/starplast
+copying starplast/interaction_studies.py -> build/lib/starplast
+copying starplast/leakage.py -> build/lib/starplast
+copying starplast/label_records.py -> build/lib/starplast
+copying starplast/corpus.py -> build/lib/starplast
+copying starplast/prediction.py -> build/lib/starplast
+copying starplast/baselines.py -> build/lib/starplast
+copying starplast/app.py -> build/lib/starplast
+copying starplast/help_search.py -> build/lib/starplast
+copying starplast/plasmodium.py -> build/lib/starplast
+copying starplast/functional_pair_class.py -> build/lib/starplast
+copying starplast/functional_exclusions.py -> build/lib/starplast
+copying starplast/strategy_learning.py -> build/lib/starplast
+copying starplast/structures.py -> build/lib/starplast
+copying starplast/console.py -> build/lib/starplast
+copying starplast/functional_agreement.py -> build/lib/starplast
+copying starplast/glass.py -> build/lib/starplast
+copying starplast/splits.py -> build/lib/starplast
+copying starplast/inventory.py -> build/lib/starplast
+copying starplast/variation.py -> build/lib/starplast
+copying starplast/cellcycle.py -> build/lib/starplast
+copying starplast/interpret.py -> build/lib/starplast
+copying starplast/host.py -> build/lib/starplast
+copying starplast/umap_gallery_panel.py -> build/lib/starplast
+copying starplast/discovery_labels.py -> build/lib/starplast
+copying starplast/clustering.py -> build/lib/starplast
+copying starplast/search.py -> build/lib/starplast
+copying starplast/logging_util.py -> build/lib/starplast
+copying starplast/graphspace.py -> build/lib/starplast
+copying starplast/results.py -> build/lib/starplast
+copying starplast/discoveries_panel.py -> build/lib/starplast
+copying starplast/embedding.py -> build/lib/starplast
+copying starplast/host_foundation_scorecard.py -> build/lib/starplast
+copying starplast/fetch_names.py -> build/lib/starplast
+copying starplast/track_record.py -> build/lib/starplast
+copying starplast/record_scorecards.py -> build/lib/starplast
+copying starplast/structure_catalog.py -> build/lib/starplast
+copying starplast/prioritization.py -> build/lib/starplast
+copying starplast/methods.py -> build/lib/starplast
+copying starplast/capabilities.py -> build/lib/starplast
+copying starplast/strategy_panel.py -> build/lib/starplast
+copying starplast/gene_evidence_browser.py -> build/lib/starplast
+copying starplast/literature.py -> build/lib/starplast
+copying starplast/slot_tree.py -> build/lib/starplast
+copying starplast/localization.py -> build/lib/starplast
+copying starplast/__main__.py -> build/lib/starplast
+copying starplast/value_conformal_records.py -> build/lib/starplast
+copying starplast/benchmark.py -> build/lib/starplast
+copying starplast/functional_class_view.py -> build/lib/starplast
+copying starplast/importer.py -> build/lib/starplast
+copying starplast/slots.py -> build/lib/starplast
+copying starplast/value_records.py -> build/lib/starplast
+copying starplast/phenotype_screen.py -> build/lib/starplast
+copying starplast/metrics.py -> build/lib/starplast
+copying starplast/resistance.py -> build/lib/starplast
+copying starplast/objectives.py -> build/lib/starplast
+copying starplast/validate.py -> build/lib/starplast
+copying starplast/annotations.py -> build/lib/starplast
+copying starplast/claims.py -> build/lib/starplast
+copying starplast/transfer_records.py -> build/lib/starplast
+copying starplast/query.py -> build/lib/starplast
+copying starplast/star_edges.py -> build/lib/starplast
+copying starplast/dataset_space_inputs.py -> build/lib/starplast
+copying starplast/precompute_features.py -> build/lib/starplast
+copying starplast/ambient.py -> build/lib/starplast
+copying starplast/holdout_cv.py -> build/lib/starplast
+copying starplast/drug_sensitivity.py -> build/lib/starplast
+copying starplast/celldiagram.py -> build/lib/starplast
+copying starplast/scorecard_view.py -> build/lib/starplast
+copying starplast/report.py -> build/lib/starplast
+copying starplast/small_tables.py -> build/lib/starplast
+copying starplast/artifacts.py -> build/lib/starplast
+copying starplast/label_space_browser.py -> build/lib/starplast
+copying starplast/gpu.py -> build/lib/starplast
+copying starplast/label_space.py -> build/lib/starplast
+copying starplast/codons.py -> build/lib/starplast
+copying starplast/strategies.py -> build/lib/starplast
+copying starplast/dataset_selection.py -> build/lib/starplast
+copying starplast/scorecard_browser.py -> build/lib/starplast
+copying starplast/recipes.py -> build/lib/starplast
+copying starplast/gallery.py -> build/lib/starplast
+copying starplast/lighting.py -> build/lib/starplast
+copying starplast/screens.py -> build/lib/starplast
+copying starplast/verify.py -> build/lib/starplast
+copying starplast/hf_publish.py -> build/lib/starplast
+copying starplast/build_graph.py -> build/lib/starplast
+copying starplast/discovery.py -> build/lib/starplast
+copying starplast/sprite.py -> build/lib/starplast
+copying starplast/source_refusals.py -> build/lib/starplast
+copying starplast/archive.py -> build/lib/starplast
+copying starplast/chromatin.py -> build/lib/starplast
+copying starplast/functional_domains.py -> build/lib/starplast
+copying starplast/questions.py -> build/lib/starplast
+copying starplast/tuning.py -> build/lib/starplast
+copying starplast/functional_ontology.py -> build/lib/starplast
+copying starplast/sequence_features.py -> build/lib/starplast
+copying starplast/metabolites.py -> build/lib/starplast
+copying starplast/evidence.py -> build/lib/starplast
+copying starplast/gene_evidence.py -> build/lib/starplast
+copying starplast/guided.py -> build/lib/starplast
+copying starplast/calibration.py -> build/lib/starplast
+copying starplast/guided_panel.py -> build/lib/starplast
+copying starplast/interactions.py -> build/lib/starplast
+copying starplast/optimize.py -> build/lib/starplast
+copying starplast/expression.py -> build/lib/starplast
+copying starplast/stopping.py -> build/lib/starplast
+copying starplast/ground_truth.py -> build/lib/starplast
+copying starplast/workflows.py -> build/lib/starplast
+copying starplast/discover.py -> build/lib/starplast
+copying starplast/enteric.py -> build/lib/starplast
+copying starplast/runs.py -> build/lib/starplast
+copying starplast/chat.py -> build/lib/starplast
+copying starplast/strategy_card.py -> build/lib/starplast
+copying starplast/umap_gallery.py -> build/lib/starplast
+copying starplast/strategy_catalog.py -> build/lib/starplast
+copying starplast/functional_results.py -> build/lib/starplast
+copying starplast/forest_records.py -> build/lib/starplast
+copying starplast/datasets.py -> build/lib/starplast
+copying starplast/network_prediction.py -> build/lib/starplast
+copying starplast/pf_graph.py -> build/lib/starplast
+copying starplast/theme.py -> build/lib/starplast
+copying starplast/jobs.py -> build/lib/starplast
+copying starplast/strategy_graph.py -> build/lib/starplast
+copying starplast/deposits.py -> build/lib/starplast
+copying starplast/organisms.py -> build/lib/starplast
+copying starplast/paths.py -> build/lib/starplast
+copying starplast/lod.py -> build/lib/starplast
+copying starplast/identity.py -> build/lib/starplast
+copying starplast/packs.py -> build/lib/starplast
+copying starplast/analysis_panel.py -> build/lib/starplast
+copying starplast/functional_domain_profiles.py -> build/lib/starplast
+copying starplast/precompute_jobs.py -> build/lib/starplast
+copying starplast/star_map.py -> build/lib/starplast
+copying starplast/lipids.py -> build/lib/starplast
+copying starplast/rays.py -> build/lib/starplast
+copying starplast/dataset_space.py -> build/lib/starplast
+copying starplast/iedb.py -> build/lib/starplast
+copying starplast/palmitome.py -> build/lib/starplast
+copying starplast/searches.py -> build/lib/starplast
+copying starplast/strategy_explainers.py -> build/lib/starplast
+copying starplast/group_ratios.py -> build/lib/starplast
+copying starplast/provenance.py -> build/lib/starplast
+copying starplast/techniques.py -> build/lib/starplast
+creating build/lib/starplast/spaces
+copying starplast/spaces/__init__.py -> build/lib/starplast/spaces
+copying starplast/spaces/human.py -> build/lib/starplast/spaces
+creating build/lib/starplast/data
+copying starplast/data/umap_gallery.npz -> build/lib/starplast/data
+copying starplast/data/pf_graph.npz -> build/lib/starplast/data
+copying starplast/data/graph.npz -> build/lib/starplast/data
+copying starplast/data/mm_host_proteins.parquet -> build/lib/starplast/data
+copying starplast/data/af3_manifest.parquet -> build/lib/starplast/data
+copying starplast/data/claims.parquet -> build/lib/starplast/data
+copying starplast/data/claim_recipes.parquet -> build/lib/starplast/data
+copying starplast/data/pf_host_bridges.parquet -> build/lib/starplast/data
+copying starplast/data/structure_search_perlabel.parquet -> build/lib/starplast/data
+copying starplast/data/metabolites.parquet -> build/lib/starplast/data
+copying starplast/data/structure_search.parquet -> build/lib/starplast/data
+copying starplast/data/nodes.parquet -> build/lib/starplast/data
+copying starplast/data/mentions.parquet -> build/lib/starplast/data
+copying starplast/data/deposit_host_k562_rhoptry_gene_evidence.parquet -> build/lib/starplast/data
+copying starplast/data/interaction_studies.parquet -> build/lib/starplast/data
+copying starplast/data/interaction_study_members.parquet -> build/lib/starplast/data
+copying starplast/data/esm_manifest.parquet -> build/lib/starplast/data
+copying starplast/data/track_record.parquet -> build/lib/starplast/data
+copying starplast/data/crosslink_models.parquet -> build/lib/starplast/data
+copying starplast/data/pf_mentions.parquet -> build/lib/starplast/data
+copying starplast/data/star_edges.parquet -> build/lib/starplast/data
+copying starplast/data/esm_features.parquet -> build/lib/starplast/data
+copying starplast/data/host_bridges.parquet -> build/lib/starplast/data
+copying starplast/data/hs_host_proteins.parquet -> build/lib/starplast/data
+copying starplast/data/study_licenses.parquet -> build/lib/starplast/data
+copying starplast/data/host_interactions.parquet -> build/lib/starplast/data
+copying starplast/data/pf_nodes.parquet -> build/lib/starplast/data
+copying starplast/data/af3_features.parquet -> build/lib/starplast/data
+copying starplast/data/secretome_partition.tsv -> build/lib/starplast/data
+copying starplast/data/plasmodb_identity.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_target_engagement.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_arginine_methylation.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_palmitome_hydroxylamine.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_strain_veg.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_gse302107_riboseq.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_gene_location.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_febrile_phospho.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_chromatin_proxiome.tsv -> build/lib/starplast/data
+copying starplast/data/iedb_bcell_epitopes.tsv -> build/lib/starplast/data
+copying starplast/data/mrna_stability.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_crispr_parasite_density.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_mrna_decay_gse329845.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_gametocyte_proteome.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_crispr_glucose_limitation.tsv -> build/lib/starplast/data
+copying starplast/data/umap_gallery_scores.tsv -> build/lib/starplast/data
+copying starplast/data/escrt_recruitment_xgboost.tsv -> build/lib/starplast/data
+copying starplast/data/melting_temperature.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_organelle_surface_turboid.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_committed_proteome.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_field_variation.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_strain_gt1.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_h4_acetylation.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_ec_numbers.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_identity.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_host_hff_tg_infection.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_crispr_invivo_composite.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_pb_fertility_transfer.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_m6a_nanopore.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_macrophage.tsv -> build/lib/starplast/data
+copying starplast/data/myristoylome.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_epitopes.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_latency_transcriptome.tsv -> build/lib/starplast/data
+copying starplast/data/escrt_recruitment_maxvit.tsv -> build/lib/starplast/data
+copying starplast/data/crosslink_partners.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_host_bmdm_baseline.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_hsp90_chemoproteome.tsv -> build/lib/starplast/data
+copying starplast/data/pvm_proximity.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_enteroepithelial.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_palmitome_palmitate.tsv -> build/lib/starplast/data
+copying starplast/data/sexual_stages.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_rna_dependence.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_meltome.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_mrna_dynamics.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_spatial_proteome.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_iron_depletion_proteome.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_gse302108_utr5.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_host_k562_rhoptry_screen.tsv -> build/lib/starplast/data
+copying starplast/data/m6a_peaks.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_brady_subtypes.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_host_hepatocyte_pf_infection.tsv -> build/lib/starplast/data
+copying starplast/data/antisense_level.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_crispr_serum_restriction.tsv -> build/lib/starplast/data
+copying starplast/data/cdpk1_substrates.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_nanopore_isoforms.tsv -> build/lib/starplast/data
+copying starplast/data/toxodb_strain_snps.tsv -> build/lib/starplast/data
+copying starplast/data/deposit_pf_resistome.tsv -> build/lib/starplast/data
+copying starplast/data/plasmodb_cds.tsv.gz -> build/lib/starplast/data
+copying starplast/data/toxodb_cds.tsv.gz -> build/lib/starplast/data
+copying starplast/data/strategy_selftests.json -> build/lib/starplast/data
+copying starplast/data/host_foundation_summary.json -> build/lib/starplast/data
+copying starplast/data/functional_results.json -> build/lib/starplast/data
+copying starplast/data/strategy_examples.json -> build/lib/starplast/data
+copying starplast/data/functional_domain_names.json -> build/lib/starplast/data
+copying starplast/data/strategy_calibration.json -> build/lib/starplast/data
+copying starplast/data/questions.json -> build/lib/starplast/data
+copying starplast/data/functional_agreement.json -> build/lib/starplast/data
+copying starplast/data/host_species_migration.json -> build/lib/starplast/data
+copying starplast/data/umap_gallery.json -> build/lib/starplast/data
+copying starplast/data/slot_hierarchy.json -> build/lib/starplast/data
+copying starplast/data/functional_agreement_uncertainty.json -> build/lib/starplast/data
+copying starplast/data/af3_features.json -> build/lib/starplast/data
+copying starplast/data/host_projection_withdrawals.json -> build/lib/starplast/data
+copying starplast/data/slots.json -> build/lib/starplast/data
+creating build/lib/starplast/data/hf_release
+copying starplast/data/hf_release/study_gene_membership.parquet -> build/lib/starplast/data/hf_release
+copying starplast/data/hf_release/studies.parquet -> build/lib/starplast/data/hf_release
+copying starplast/data/hf_release/README.md -> build/lib/starplast/data/hf_release
+creating build/lib/starplast/data/icons
+copying starplast/data/icons/logo_15_crescent_1.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_08_constellation_8.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_37_dark_field_4.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_34_dark_field_1.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_21_orbit_1.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_20_crescent_6.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_07_constellation_7.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_14_apicoplast_6.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_33_letter_s_7.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_26_orbit_6.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_23_orbit_3.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_42_galaxy_2.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_35_dark_field_2.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_03_constellation_3.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_17_crescent_3.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_13_apicoplast_5.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_32_letter_s_6.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_30_letter_s_4.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_31_letter_s_5.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_29_letter_s_3.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_19_crescent_5.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_47_galaxy_7.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_22_orbit_2.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_05_constellation_5.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_04_constellation_4.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_46_galaxy_6.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_09_apicoplast_1.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_43_galaxy_3.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_48_galaxy_8.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_28_letter_s_2.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_18_crescent_4.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_16_crescent_2.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_06_constellation_6.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_44_galaxy_4.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_11_apicoplast_3.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_27_letter_s_1.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/Apicomplexa_cells.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_38_dark_field_5.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_36_dark_field_3.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_45_galaxy_5.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_39_dark_field_6.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_25_orbit_5.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_12_apicoplast_4.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_41_galaxy_1.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/starplast.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/Animal_cells.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_49_galaxy_9.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_24_orbit_4.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_01_constellation_1.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_40_dark_field_7.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_10_apicoplast_2.svg -> build/lib/starplast/data/icons
+copying starplast/data/icons/logo_02_constellation_2.svg -> build/lib/starplast/data/icons
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/starplast
+copying build/lib/starplast/dataset_browser.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_profile_targets.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/install_gpu.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/scorecard.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/__init__.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/help_index.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/conformal_records.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/proteomics.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/sources.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_coverage.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/interaction_studies.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/leakage.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/label_records.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/corpus.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/prediction.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/baselines.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/app.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/help_search.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/plasmodium.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_pair_class.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_exclusions.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/strategy_learning.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/structures.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/console.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_agreement.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/glass.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/splits.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/inventory.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/variation.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/cellcycle.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/interpret.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/host.py -> build/bdist.linux-x86_64/wheel/./starplast
+creating build/bdist.linux-x86_64/wheel/starplast/data
+copying build/lib/starplast/data/strategy_selftests.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/secretome_partition.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/plasmodb_cds.tsv.gz -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/plasmodb_identity.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/host_foundation_summary.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/mm_host_proteins.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_target_engagement.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_arginine_methylation.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/functional_results.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/af3_manifest.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_palmitome_hydroxylamine.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_strain_veg.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_gse302107_riboseq.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_gene_location.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_febrile_phospho.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/claims.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_chromatin_proxiome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/iedb_bcell_epitopes.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/mrna_stability.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/umap_gallery.npz -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/strategy_examples.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_crispr_parasite_density.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/claim_recipes.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/pf_host_bridges.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_mrna_decay_gse329845.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/functional_domain_names.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/pf_graph.npz -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_gametocyte_proteome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_crispr_glucose_limitation.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/umap_gallery_scores.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/escrt_recruitment_xgboost.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/melting_temperature.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_organelle_surface_turboid.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_committed_proteome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/structure_search_perlabel.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/metabolites.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/strategy_calibration.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/questions.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_field_variation.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_strain_gt1.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/functional_agreement.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+creating build/bdist.linux-x86_64/wheel/starplast/data/hf_release
+copying build/lib/starplast/data/hf_release/study_gene_membership.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data/hf_release
+copying build/lib/starplast/data/hf_release/README.md -> build/bdist.linux-x86_64/wheel/./starplast/data/hf_release
+copying build/lib/starplast/data/hf_release/studies.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data/hf_release
+copying build/lib/starplast/data/toxodb_cds.tsv.gz -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/graph.npz -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_h4_acetylation.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_ec_numbers.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/host_species_migration.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_identity.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_host_hff_tg_infection.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/structure_search.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_crispr_invivo_composite.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_pb_fertility_transfer.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_m6a_nanopore.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_macrophage.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/myristoylome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/umap_gallery.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_epitopes.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_latency_transcriptome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/escrt_recruitment_maxvit.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/nodes.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/slot_hierarchy.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/functional_agreement_uncertainty.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/mentions.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_host_k562_rhoptry_gene_evidence.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/crosslink_partners.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/interaction_studies.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_host_bmdm_baseline.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/interaction_study_members.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/esm_manifest.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_hsp90_chemoproteome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/af3_features.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/track_record.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/pvm_proximity.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_enteroepithelial.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+creating build/bdist.linux-x86_64/wheel/starplast/data/icons
+copying build/lib/starplast/data/icons/logo_15_crescent_1.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_08_constellation_8.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_37_dark_field_4.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_34_dark_field_1.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_21_orbit_1.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_20_crescent_6.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_07_constellation_7.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_14_apicoplast_6.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_33_letter_s_7.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_26_orbit_6.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_23_orbit_3.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_42_galaxy_2.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_35_dark_field_2.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_03_constellation_3.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_17_crescent_3.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_13_apicoplast_5.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_32_letter_s_6.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_30_letter_s_4.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_31_letter_s_5.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_29_letter_s_3.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_19_crescent_5.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_47_galaxy_7.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_22_orbit_2.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_05_constellation_5.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_04_constellation_4.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_46_galaxy_6.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_09_apicoplast_1.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_43_galaxy_3.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_48_galaxy_8.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_28_letter_s_2.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_18_crescent_4.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_16_crescent_2.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_06_constellation_6.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_44_galaxy_4.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_11_apicoplast_3.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_27_letter_s_1.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/Apicomplexa_cells.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_38_dark_field_5.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_36_dark_field_3.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_45_galaxy_5.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_39_dark_field_6.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_25_orbit_5.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_12_apicoplast_4.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_41_galaxy_1.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/starplast.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/Animal_cells.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_49_galaxy_9.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_24_orbit_4.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_01_constellation_1.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_40_dark_field_7.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_10_apicoplast_2.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/icons/logo_02_constellation_2.svg -> build/bdist.linux-x86_64/wheel/./starplast/data/icons
+copying build/lib/starplast/data/crosslink_models.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_palmitome_palmitate.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/sexual_stages.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/pf_mentions.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_rna_dependence.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_meltome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_mrna_dynamics.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/star_edges.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_spatial_proteome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/esm_features.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_iron_depletion_proteome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/host_bridges.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_gse302108_utr5.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_host_k562_rhoptry_screen.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/host_projection_withdrawals.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/m6a_peaks.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_brady_subtypes.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_host_hepatocyte_pf_infection.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/antisense_level.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/hs_host_proteins.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/study_licenses.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_crispr_serum_restriction.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/cdpk1_substrates.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/host_interactions.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_nanopore_isoforms.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/pf_nodes.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/af3_features.parquet -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/toxodb_strain_snps.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/deposit_pf_resistome.tsv -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/data/slots.json -> build/bdist.linux-x86_64/wheel/./starplast/data
+copying build/lib/starplast/umap_gallery_panel.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/discovery_labels.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/clustering.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/search.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/logging_util.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/graphspace.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/results.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/discoveries_panel.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/embedding.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/host_foundation_scorecard.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/fetch_names.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/track_record.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/record_scorecards.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/structure_catalog.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/prioritization.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/methods.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/capabilities.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/strategy_panel.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/gene_evidence_browser.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/literature.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/slot_tree.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/localization.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/__main__.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/value_conformal_records.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/benchmark.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_class_view.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/importer.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/slots.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/value_records.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/phenotype_screen.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/metrics.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/resistance.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/objectives.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/validate.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/annotations.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/claims.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/transfer_records.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/query.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/star_edges.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/dataset_space_inputs.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/precompute_features.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/ambient.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/holdout_cv.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/drug_sensitivity.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/celldiagram.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/scorecard_view.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/report.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/small_tables.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/artifacts.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/label_space_browser.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/gpu.py -> build/bdist.linux-x86_64/wheel/./starplast
+creating build/bdist.linux-x86_64/wheel/starplast/spaces
+copying build/lib/starplast/spaces/__init__.py -> build/bdist.linux-x86_64/wheel/./starplast/spaces
+copying build/lib/starplast/spaces/human.py -> build/bdist.linux-x86_64/wheel/./starplast/spaces
+copying build/lib/starplast/label_space.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/codons.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/strategies.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/dataset_selection.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/scorecard_browser.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/recipes.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/gallery.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/lighting.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/screens.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/verify.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/hf_publish.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/build_graph.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/discovery.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/sprite.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/source_refusals.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/archive.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/chromatin.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_domains.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/questions.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/tuning.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_ontology.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/sequence_features.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/metabolites.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/evidence.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/gene_evidence.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/guided.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/calibration.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/guided_panel.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/interactions.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/optimize.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/expression.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/stopping.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/ground_truth.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/workflows.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/discover.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/enteric.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/runs.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/chat.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/strategy_card.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/umap_gallery.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/strategy_catalog.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_results.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/forest_records.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/datasets.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/network_prediction.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/pf_graph.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/theme.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/jobs.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/strategy_graph.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/deposits.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/organisms.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/paths.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/lod.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/identity.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/packs.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/analysis_panel.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/functional_domain_profiles.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/precompute_jobs.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/star_map.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/lipids.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/rays.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/dataset_space.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/iedb.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/palmitome.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/searches.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/strategy_explainers.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/group_ratios.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/provenance.py -> build/bdist.linux-x86_64/wheel/./starplast
+copying build/lib/starplast/techniques.py -> build/bdist.linux-x86_64/wheel/./starplast
+running install_egg_info
+running egg_info
+writing starplast.egg-info/PKG-INFO
+writing dependency_links to starplast.egg-info/dependency_links.txt
+writing entry points to starplast.egg-info/entry_points.txt
+writing requirements to starplast.egg-info/requires.txt
+writing top-level names to starplast.egg-info/top_level.txt
+reading manifest file 'starplast.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'starplast.egg-info/SOURCES.txt'
+Copying starplast.egg-info to build/bdist.linux-x86_64/wheel/./starplast-0.55.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/starplast-0.55.0.dist-info/WHEEL
+creating '/tmp/starplast-release-055-95v7eqjm/dist-v4/.tmp-od64rkvn/starplast-0.55.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'starplast/__init__.py'
+adding 'starplast/__main__.py'
+adding 'starplast/ambient.py'
+adding 'starplast/analysis_panel.py'
+adding 'starplast/annotations.py'
+adding 'starplast/app.py'
+adding 'starplast/archive.py'
+adding 'starplast/artifacts.py'
+adding 'starplast/baselines.py'
+adding 'starplast/benchmark.py'
+adding 'starplast/build_graph.py'
+adding 'starplast/calibration.py'
+adding 'starplast/capabilities.py'
+adding 'starplast/cellcycle.py'
+adding 'starplast/celldiagram.py'
+adding 'starplast/chat.py'
+adding 'starplast/chromatin.py'
+adding 'starplast/claims.py'
+adding 'starplast/clustering.py'
+adding 'starplast/codons.py'
+adding 'starplast/conformal_records.py'
+adding 'starplast/console.py'
+adding 'starplast/corpus.py'
+adding 'starplast/dataset_browser.py'
+adding 'starplast/dataset_selection.py'
+adding 'starplast/dataset_space.py'
+adding 'starplast/dataset_space_inputs.py'
+adding 'starplast/datasets.py'
+adding 'starplast/deposits.py'
+adding 'starplast/discover.py'
+adding 'starplast/discoveries_panel.py'
+adding 'starplast/discovery.py'
+adding 'starplast/discovery_labels.py'
+adding 'starplast/drug_sensitivity.py'
+adding 'starplast/embedding.py'
+adding 'starplast/enteric.py'
+adding 'starplast/evidence.py'
+adding 'starplast/expression.py'
+adding 'starplast/fetch_names.py'
+adding 'starplast/forest_records.py'
+adding 'starplast/functional_agreement.py'
+adding 'starplast/functional_class_view.py'
+adding 'starplast/functional_coverage.py'
+adding 'starplast/functional_domain_profiles.py'
+adding 'starplast/functional_domains.py'
+adding 'starplast/functional_exclusions.py'
+adding 'starplast/functional_ontology.py'
+adding 'starplast/functional_pair_class.py'
+adding 'starplast/functional_profile_targets.py'
+adding 'starplast/functional_results.py'
+adding 'starplast/gallery.py'
+adding 'starplast/gene_evidence.py'
+adding 'starplast/gene_evidence_browser.py'
+adding 'starplast/glass.py'
+adding 'starplast/gpu.py'
+adding 'starplast/graphspace.py'
+adding 'starplast/ground_truth.py'
+adding 'starplast/group_ratios.py'
+adding 'starplast/guided.py'
+adding 'starplast/guided_panel.py'
+adding 'starplast/help_index.py'
+adding 'starplast/help_search.py'
+adding 'starplast/hf_publish.py'
+adding 'starplast/holdout_cv.py'
+adding 'starplast/host.py'
+adding 'starplast/host_foundation_scorecard.py'
+adding 'starplast/identity.py'
+adding 'starplast/iedb.py'
+adding 'starplast/importer.py'
+adding 'starplast/install_gpu.py'
+adding 'starplast/interaction_studies.py'
+adding 'starplast/interactions.py'
+adding 'starplast/interpret.py'
+adding 'starplast/inventory.py'
+adding 'starplast/jobs.py'
+adding 'starplast/label_records.py'
+adding 'starplast/label_space.py'
+adding 'starplast/label_space_browser.py'
+adding 'starplast/leakage.py'
+adding 'starplast/lighting.py'
+adding 'starplast/lipids.py'
+adding 'starplast/literature.py'
+adding 'starplast/localization.py'
+adding 'starplast/lod.py'
+adding 'starplast/logging_util.py'
+adding 'starplast/metabolites.py'
+adding 'starplast/methods.py'
+adding 'starplast/metrics.py'
+adding 'starplast/network_prediction.py'
+adding 'starplast/objectives.py'
+adding 'starplast/optimize.py'
+adding 'starplast/organisms.py'
+adding 'starplast/packs.py'
+adding 'starplast/palmitome.py'
+adding 'starplast/paths.py'
+adding 'starplast/pf_graph.py'
+adding 'starplast/phenotype_screen.py'
+adding 'starplast/plasmodium.py'
+adding 'starplast/precompute_features.py'
+adding 'starplast/precompute_jobs.py'
+adding 'starplast/prediction.py'
+adding 'starplast/prioritization.py'
+adding 'starplast/proteomics.py'
+adding 'starplast/provenance.py'
+adding 'starplast/query.py'
+adding 'starplast/questions.py'
+adding 'starplast/rays.py'
+adding 'starplast/recipes.py'
+adding 'starplast/record_scorecards.py'
+adding 'starplast/report.py'
+adding 'starplast/resistance.py'
+adding 'starplast/results.py'
+adding 'starplast/runs.py'
+adding 'starplast/scorecard.py'
+adding 'starplast/scorecard_browser.py'
+adding 'starplast/scorecard_view.py'
+adding 'starplast/screens.py'
+adding 'starplast/search.py'
+adding 'starplast/searches.py'
+adding 'starplast/sequence_features.py'
+adding 'starplast/slot_tree.py'
+adding 'starplast/slots.py'
+adding 'starplast/small_tables.py'
+adding 'starplast/source_refusals.py'
+adding 'starplast/sources.py'
+adding 'starplast/splits.py'
+adding 'starplast/sprite.py'
+adding 'starplast/star_edges.py'
+adding 'starplast/star_map.py'
+adding 'starplast/stopping.py'
+adding 'starplast/strategies.py'
+adding 'starplast/strategy_card.py'
+adding 'starplast/strategy_catalog.py'
+adding 'starplast/strategy_explainers.py'
+adding 'starplast/strategy_graph.py'
+adding 'starplast/strategy_learning.py'
+adding 'starplast/strategy_panel.py'
+adding 'starplast/structure_catalog.py'
+adding 'starplast/structures.py'
+adding 'starplast/techniques.py'
+adding 'starplast/theme.py'
+adding 'starplast/track_record.py'
+adding 'starplast/transfer_records.py'
+adding 'starplast/tuning.py'
+adding 'starplast/umap_gallery.py'
+adding 'starplast/umap_gallery_panel.py'
+adding 'starplast/validate.py'
+adding 'starplast/value_conformal_records.py'
+adding 'starplast/value_records.py'
+adding 'starplast/variation.py'
+adding 'starplast/verify.py'
+adding 'starplast/workflows.py'
+adding 'starplast/data/af3_features.json'
+adding 'starplast/data/af3_features.parquet'
+adding 'starplast/data/af3_manifest.parquet'
+adding 'starplast/data/antisense_level.tsv'
+adding 'starplast/data/cdpk1_substrates.tsv'
+adding 'starplast/data/claim_recipes.parquet'
+adding 'starplast/data/claims.parquet'
+adding 'starplast/data/crosslink_models.parquet'
+adding 'starplast/data/crosslink_partners.tsv'
+adding 'starplast/data/deposit_brady_subtypes.tsv'
+adding 'starplast/data/deposit_crispr_glucose_limitation.tsv'
+adding 'starplast/data/deposit_crispr_invivo_composite.tsv'
+adding 'starplast/data/deposit_crispr_parasite_density.tsv'
+adding 'starplast/data/deposit_crispr_serum_restriction.tsv'
+adding 'starplast/data/deposit_gse302107_riboseq.tsv'
+adding 'starplast/data/deposit_gse302108_utr5.tsv'
+adding 'starplast/data/deposit_host_bmdm_baseline.tsv'
+adding 'starplast/data/deposit_host_hepatocyte_pf_infection.tsv'
+adding 'starplast/data/deposit_host_hff_tg_infection.tsv'
+adding 'starplast/data/deposit_host_k562_rhoptry_gene_evidence.parquet'
+adding 'starplast/data/deposit_host_k562_rhoptry_screen.tsv'
+adding 'starplast/data/deposit_iron_depletion_proteome.tsv'
+adding 'starplast/data/deposit_mrna_decay_gse329845.tsv'
+adding 'starplast/data/deposit_organelle_surface_turboid.tsv'
+adding 'starplast/data/deposit_pf_chromatin_proxiome.tsv'
+adding 'starplast/data/deposit_pf_committed_proteome.tsv'
+adding 'starplast/data/deposit_pf_febrile_phospho.tsv'
+adding 'starplast/data/deposit_pf_field_variation.tsv'
+adding 'starplast/data/deposit_pf_gametocyte_proteome.tsv'
+adding 'starplast/data/deposit_pf_hsp90_chemoproteome.tsv'
+adding 'starplast/data/deposit_pf_latency_transcriptome.tsv'
+adding 'starplast/data/deposit_pf_m6a_nanopore.tsv'
+adding 'starplast/data/deposit_pf_meltome.tsv'
+adding 'starplast/data/deposit_pf_mrna_dynamics.tsv'
+adding 'starplast/data/deposit_pf_pb_fertility_transfer.tsv'
+adding 'starplast/data/deposit_pf_resistome.tsv'
+adding 'starplast/data/deposit_pf_rna_dependence.tsv'
+adding 'starplast/data/deposit_pf_spatial_proteome.tsv'
+adding 'starplast/data/deposit_pf_target_engagement.tsv'
+adding 'starplast/data/escrt_recruitment_maxvit.tsv'
+adding 'starplast/data/escrt_recruitment_xgboost.tsv'
+adding 'starplast/data/esm_features.parquet'
+adding 'starplast/data/esm_manifest.parquet'
+adding 'starplast/data/functional_agreement.json'
+adding 'starplast/data/functional_agreement_uncertainty.json'
+adding 'starplast/data/functional_domain_names.json'
+adding 'starplast/data/functional_results.json'
+adding 'starplast/data/graph.npz'
+adding 'starplast/data/host_bridges.parquet'
+adding 'starplast/data/host_foundation_summary.json'
+adding 'starplast/data/host_interactions.parquet'
+adding 'starplast/data/host_projection_withdrawals.json'
+adding 'starplast/data/host_species_migration.json'
+adding 'starplast/data/hs_host_proteins.parquet'
+adding 'starplast/data/iedb_bcell_epitopes.tsv'
+adding 'starplast/data/interaction_studies.parquet'
+adding 'starplast/data/interaction_study_members.parquet'
+adding 'starplast/data/m6a_peaks.tsv'
+adding 'starplast/data/melting_temperature.tsv'
+adding 'starplast/data/mentions.parquet'
+adding 'starplast/data/metabolites.parquet'
+adding 'starplast/data/mm_host_proteins.parquet'
+adding 'starplast/data/mrna_stability.tsv'
+adding 'starplast/data/myristoylome.tsv'
+adding 'starplast/data/nodes.parquet'
+adding 'starplast/data/pf_graph.npz'
+adding 'starplast/data/pf_host_bridges.parquet'
+adding 'starplast/data/pf_mentions.parquet'
+adding 'starplast/data/pf_nodes.parquet'
+adding 'starplast/data/plasmodb_cds.tsv.gz'
+adding 'starplast/data/plasmodb_identity.tsv'
+adding 'starplast/data/pvm_proximity.tsv'
+adding 'starplast/data/questions.json'
+adding 'starplast/data/secretome_partition.tsv'
+adding 'starplast/data/sexual_stages.tsv'
+adding 'starplast/data/slot_hierarchy.json'
+adding 'starplast/data/slots.json'
+adding 'starplast/data/star_edges.parquet'
+adding 'starplast/data/strategy_calibration.json'
+adding 'starplast/data/strategy_examples.json'
+adding 'starplast/data/strategy_selftests.json'
+adding 'starplast/data/structure_search.parquet'
+adding 'starplast/data/structure_search_perlabel.parquet'
+adding 'starplast/data/study_licenses.parquet'
+adding 'starplast/data/toxodb_arginine_methylation.tsv'
+adding 'starplast/data/toxodb_cds.tsv.gz'
+adding 'starplast/data/toxodb_ec_numbers.tsv'
+adding 'starplast/data/toxodb_enteroepithelial.tsv'
+adding 'starplast/data/toxodb_epitopes.tsv'
+adding 'starplast/data/toxodb_gene_location.tsv'
+adding 'starplast/data/toxodb_h4_acetylation.tsv'
+adding 'starplast/data/toxodb_identity.tsv'
+adding 'starplast/data/toxodb_macrophage.tsv'
+adding 'starplast/data/toxodb_nanopore_isoforms.tsv'
+adding 'starplast/data/toxodb_palmitome_hydroxylamine.tsv'
+adding 'starplast/data/toxodb_palmitome_palmitate.tsv'
+adding 'starplast/data/toxodb_strain_gt1.tsv'
+adding 'starplast/data/toxodb_strain_snps.tsv'
+adding 'starplast/data/toxodb_strain_veg.tsv'
+adding 'starplast/data/track_record.parquet'
+adding 'starplast/data/umap_gallery.json'
+adding 'starplast/data/umap_gallery.npz'
+adding 'starplast/data/umap_gallery_scores.tsv'
+adding 'starplast/data/hf_release/README.md'
+adding 'starplast/data/hf_release/studies.parquet'
+adding 'starplast/data/hf_release/study_gene_membership.parquet'
+adding 'starplast/data/icons/Animal_cells.svg'
+adding 'starplast/data/icons/Apicomplexa_cells.svg'
+adding 'starplast/data/icons/logo_01_constellation_1.svg'
+adding 'starplast/data/icons/logo_02_constellation_2.svg'
+adding 'starplast/data/icons/logo_03_constellation_3.svg'
+adding 'starplast/data/icons/logo_04_constellation_4.svg'
+adding 'starplast/data/icons/logo_05_constellation_5.svg'
+adding 'starplast/data/icons/logo_06_constellation_6.svg'
+adding 'starplast/data/icons/logo_07_constellation_7.svg'
+adding 'starplast/data/icons/logo_08_constellation_8.svg'
+adding 'starplast/data/icons/logo_09_apicoplast_1.svg'
+adding 'starplast/data/icons/logo_10_apicoplast_2.svg'
+adding 'starplast/data/icons/logo_11_apicoplast_3.svg'
+adding 'starplast/data/icons/logo_12_apicoplast_4.svg'
+adding 'starplast/data/icons/logo_13_apicoplast_5.svg'
+adding 'starplast/data/icons/logo_14_apicoplast_6.svg'
+adding 'starplast/data/icons/logo_15_crescent_1.svg'
+adding 'starplast/data/icons/logo_16_crescent_2.svg'
+adding 'starplast/data/icons/logo_17_crescent_3.svg'
+adding 'starplast/data/icons/logo_18_crescent_4.svg'
+adding 'starplast/data/icons/logo_19_crescent_5.svg'
+adding 'starplast/data/icons/logo_20_crescent_6.svg'
+adding 'starplast/data/icons/logo_21_orbit_1.svg'
+adding 'starplast/data/icons/logo_22_orbit_2.svg'
+adding 'starplast/data/icons/logo_23_orbit_3.svg'
+adding 'starplast/data/icons/logo_24_orbit_4.svg'
+adding 'starplast/data/icons/logo_25_orbit_5.svg'
+adding 'starplast/data/icons/logo_26_orbit_6.svg'
+adding 'starplast/data/icons/logo_27_letter_s_1.svg'
+adding 'starplast/data/icons/logo_28_letter_s_2.svg'
+adding 'starplast/data/icons/logo_29_letter_s_3.svg'
+adding 'starplast/data/icons/logo_30_letter_s_4.svg'
+adding 'starplast/data/icons/logo_31_letter_s_5.svg'
+adding 'starplast/data/icons/logo_32_letter_s_6.svg'
+adding 'starplast/data/icons/logo_33_letter_s_7.svg'
+adding 'starplast/data/icons/logo_34_dark_field_1.svg'
+adding 'starplast/data/icons/logo_35_dark_field_2.svg'
+adding 'starplast/data/icons/logo_36_dark_field_3.svg'
+adding 'starplast/data/icons/logo_37_dark_field_4.svg'
+adding 'starplast/data/icons/logo_38_dark_field_5.svg'
+adding 'starplast/data/icons/logo_39_dark_field_6.svg'
+adding 'starplast/data/icons/logo_40_dark_field_7.svg'
+adding 'starplast/data/icons/logo_41_galaxy_1.svg'
+adding 'starplast/data/icons/logo_42_galaxy_2.svg'
+adding 'starplast/data/icons/logo_43_galaxy_3.svg'
+adding 'starplast/data/icons/logo_44_galaxy_4.svg'
+adding 'starplast/data/icons/logo_45_galaxy_5.svg'
+adding 'starplast/data/icons/logo_46_galaxy_6.svg'
+adding 'starplast/data/icons/logo_47_galaxy_7.svg'
+adding 'starplast/data/icons/logo_48_galaxy_8.svg'
+adding 'starplast/data/icons/logo_49_galaxy_9.svg'
+adding 'starplast/data/icons/starplast.svg'
+adding 'starplast/spaces/__init__.py'
+adding 'starplast/spaces/human.py'
+adding 'starplast-0.55.0.dist-info/licenses/LICENSE'
+adding 'starplast-0.55.0.dist-info/METADATA'
+adding 'starplast-0.55.0.dist-info/WHEEL'
+adding 'starplast-0.55.0.dist-info/entry_points.txt'
+adding 'starplast-0.55.0.dist-info/top_level.txt'
+adding 'starplast-0.55.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built starplast-0.55.0.tar.gz and starplast-0.55.0-py3-none-any.whl

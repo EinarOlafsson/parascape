@@ -1,0 +1,35 @@
+{
+  "epoch": 1793449829.0765963,
+  "goal": "active and incomplete",
+  "archive_manifest": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/release009_automation/automation-549a59899741cfe4e007c4bedffd8bed73f72dd0b7c41a1f58297af394913214.json",
+  "commit": "7bc27143eba42c537ff169fd2cd6420f30a42b19",
+  "staging": "/media/carruthers/mnt1/parascape-release-data-0.0.9.0",
+  "source": "/media/carruthers/mnt1/parascape-release009-smoke-fix-checkout",
+  "native": {
+    "parascape-publish-release009": {
+      "MainPID": "1205187",
+      "Result": "success",
+      "ActiveState": "activating",
+      "SubState": "start"
+    },
+    "parascape-release009-installed-validation": {
+      "MainPID": "1205182",
+      "Result": "success",
+      "ActiveState": "activating",
+      "SubState": "start"
+    },
+    "parascape-downloads": {
+      "MainPID": "1155850",
+      "Result": "success",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "parascape-quant-cached": {
+      "MainPID": "3614034",
+      "Result": "success",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  },
+  "remaining": "Finish native7bcfullinstalledreplay andexactCI, thenletguardedpublisherfinishandverifypublic9. Remainingdownloads/formats, comprehensivecontrols/replicates, scientificunit/referenceharmonization andindependentbiologicalQCstillunfinished."
+}

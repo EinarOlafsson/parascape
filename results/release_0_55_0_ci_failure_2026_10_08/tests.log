@@ -1,0 +1,364 @@
+checks	Check synchronized package versions and regressions	﻿2026-10-09T01:21:20.4858828Z ##[group]Run python scripts/release.py check
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4859323Z ^[[36;1mpython scripts/release.py check^[[0m
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4859707Z ^[[36;1mpython -m pytest -m "not slow" -q^[[0m
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4924997Z shell: /usr/bin/bash -e {0}
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4925335Z env:
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4925633Z   QT_QPA_PLATFORM: offscreen
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4925955Z   PYQTGRAPH_QT_LIB: PyQt6
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4926295Z   STARPLAST_STATE: /tmp/starplast-checks
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4926629Z   OPENBLAS_NUM_THREADS: 2
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4926924Z   OMP_NUM_THREADS: 2
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4927220Z   NUMBA_NUM_THREADS: 2
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4927600Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4928088Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4928885Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4929353Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4929830Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4930288Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.4930679Z ##[endgroup]
+checks	Check synchronized package versions and regressions	2026-10-09T01:21:20.5422025Z 0.55.0
+checks	Check synchronized package versions and regressions	2026-10-09T01:22:32.2786446Z ........................................................................ [  1%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:23:14.5204563Z ........................................................................ [  2%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:23:49.1982156Z ........................................................................ [  3%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:24:23.0673749Z ....s................................................................... [  4%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:24:31.5333700Z ........................................................................ [  6%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:24:42.0427658Z ...............s........................................................ [  7%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:24.7511358Z ........................................................................ [  8%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:33.4172041Z ........................................................................ [  9%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:38.0480201Z ........................................................................ [ 11%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:38.1702208Z ........................................................................ [ 12%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:38.2490961Z ........................................................................ [ 13%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:38.3584881Z ........................................................................ [ 14%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:38.4670920Z ........................................................................ [ 15%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:38.5749796Z ........................................................................ [ 17%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:38.8248762Z ........................................................................ [ 18%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:26:44.0174291Z ........................................................................ [ 19%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:27:11.9353845Z ........................................................................ [ 20%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:27:14.6569282Z ........................................................................ [ 22%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:27:15.0973734Z .....F.F................................................................ [ 23%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:27:15.1630568Z ........................................................................ [ 24%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:27:18.1756971Z ........................................................................ [ 25%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:27:18.8511935Z ........................................................................ [ 27%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:27:42.6232945Z ........................................................................ [ 28%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:28:19.2079429Z ........................................................................ [ 29%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:29:19.0735024Z ........................................................................ [ 30%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:29:40.3401141Z ........................................................................ [ 31%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:29:40.8816202Z ........................................................................ [ 33%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:29:41.6132775Z ........................................................................ [ 34%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:29:42.1542058Z ........................................................................ [ 35%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:29:43.1584658Z ........................................................................ [ 36%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:29:43.7279942Z ........................................................................ [ 38%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:30:10.4039418Z .........................................................F.............. [ 39%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:30:11.6512012Z ........................................................................ [ 40%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:30:12.5304458Z ........................................................................ [ 41%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:30:32.6317924Z ........................................................................ [ 43%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:30:36.6600274Z ........................................................................ [ 44%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:30:41.4386794Z ........................................................................ [ 45%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:30:51.9917312Z ........................................................................ [ 46%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:31:12.9979709Z ........................................................................ [ 47%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:31:50.2568983Z ........................................................................ [ 49%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:32:12.8205647Z ........s.s............s................................................ [ 50%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:37:36.4315193Z ........................................................................ [ 51%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:37:37.2626473Z ........................................................................ [ 52%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:37:37.8757454Z ........................................................................ [ 54%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:37:38.3239865Z ........................................................................ [ 55%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:37:38.7230902Z ........................................................................ [ 56%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:38:20.8377313Z ........................................................................ [ 57%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:38:55.8910065Z .................................................ss..............sss.... [ 59%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:38:56.4406103Z ........................................................................ [ 60%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:04.0017493Z ........................................................................ [ 61%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:04.4132805Z ........................................................................ [ 62%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:06.1042818Z ........................................................................ [ 63%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:09.4789469Z ........................................................................ [ 65%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:14.0789679Z ....................................F................................... [ 66%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:29.4040970Z ........................................................................ [ 67%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:31.7172761Z .................s..s.....................................ss............ [ 68%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:54.5744360Z ..............ss..............sss.......sss......ss................s.... [ 70%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:39:59.2023484Z ..s......s.....s......s.......s.......s................................s [ 71%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:40:14.0467589Z ...s.....s......s....s.......s...................................s...... [ 72%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:40:19.4633427Z ........................................................................ [ 73%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:40:22.3551112Z ........................................................................ [ 74%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:40:25.3162861Z ........................................................................ [ 76%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:41:42.8439844Z ........................................................................ [ 77%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:43:49.1369598Z ........................................................................ [ 78%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:44:53.1577071Z ........................................................................ [ 79%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:44:53.9051204Z ........................................................................ [ 81%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:44:54.4564011Z ........................................................................ [ 82%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:45:03.3040944Z ........................................................................ [ 83%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:53:32.2027096Z ........................................................................ [ 84%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:54:17.3182401Z ........................................................................ [ 86%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:54:18.5139223Z .............................s.......................................... [ 87%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:54:44.9466411Z ........................................................................ [ 88%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:54:48.0783458Z ........................................................................ [ 89%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:54:48.1957490Z ........................................................................ [ 90%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:55:56.1313666Z ........................................................................ [ 92%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:58:37.6502010Z ........................................................................ [ 93%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:59:19.0344915Z ........................................................................ [ 94%]
+checks	Check synchronized package versions and regressions	2026-10-09T01:59:49.5528927Z ........................................................................ [ 95%]
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:12.7833482Z ........................................................................ [ 97%]
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:25.7144604Z ........................................................................ [ 98%]
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:33.8347739Z ....................................................s................... [ 99%]
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1747273Z .........................                                                [100%]
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1748199Z =================================== FAILURES ===================================
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1749561Z ______________________ test_regenerating_changes_nothing _______________________
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1750142Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1750617Z tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-1/test_regenerating_changes_noth0')
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1751303Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1751519Z     def test_regenerating_changes_nothing(tmp_path):
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1752254Z         """The check that keeps the two in step: a registry edit without a regeneration fails here."""
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1752958Z         import generate_dataset_scripts as G
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1753525Z         G.main(str(tmp_path), log=lambda *_: None)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1753890Z         for d in datasets.REGISTRY:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1754246Z             fresh = (tmp_path / f"{d.key}.py").read_text()
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1754719Z             committed = open(os.path.join(GENERATED, f"{d.key}.py")).read()
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1755167Z >           assert fresh == committed, \
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1755607Z                 f"{d.key}.py is stale -- run scripts/generate_dataset_scripts.py"
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1756306Z E           AssertionError: pf_enzyme_classification.py is stale -- run scripts/generate_dataset_scripts.py
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1757037Z E           assert '#!/usr/bin/e...   run(KEY)\n' == '#!/usr/bin/e...   run(KEY)\n'
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1757467Z E             
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1757827Z E             Skipping 70 identical leading characters in diff, use -v to show
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1758550Z E               
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1758946Z E             - EC number per gene, curated and orthology-derived kept apart
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1759529Z E             + EC numbers reported directly and inferred from orthologs, kept apart
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1759976Z E               
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1760252Z E                   level / kind : reference / annotation
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1760688Z E                   provides     : ec_number, has_ec, ec_number_orthology
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1761512Z E             -     coverage     : 1,220 curated, 335 more from orthology
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1762040Z E             +     coverage     : Declared coverage: 1,220 direct annotations; orthology-derived field separate
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1762577Z E                   accession    : PlasmoDB ec_numbers and ec_numbers_derived
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1763236Z E                   url          : https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1763902Z E                   local path   : datasets/reference/plasmodb/plasmodb_pf3d7_ec.tsv
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1764266Z E               
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1764478Z E               Quirks that cost time once:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1764969Z E             +     PlasmoDB reports direct EC annotations separately from EC numbers derived from orthologs.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1765677Z E             +     Gene-level curation/prediction provenance and the assignment release remain unresolved for
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1766334Z E             +     the installed table. `has_ec` reports a direct assignment; experimental enzyme activity has
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1766967Z E             +     not been independently verified. The slot selects the direct field by default. Orthology-
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1767591Z E             +     derived annotations require an explicit selection and retain their transfer lineage.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1768211Z E             -     PlasmoDB serves two EC fields and they are different KINDS of evidence -- one curated for
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1769191Z E             -     this organism, one inferred from the gene's OrthoMCL group -- so they are separate columns
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1769993Z E             -     and `has_ec` counts only the curated one. Merged they would be 1,584 genes with no way to
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1770584Z E             -     tell which 335 were never annotated here at all, which is inference standing where
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1771201Z E             -     annotation should. The slot lists the curated column first and its policy is `one`, so the
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1771839Z E             -     leading candidate wins and the derived field is there to be chosen deliberately rather than
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1772298Z E             -     by default.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1772524Z E               
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1772906Z E               Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1773480Z E               coverage that resolution achieves. The shipped columns are assembled by
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1774083Z E               `starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1774677Z E               inspecting or re-fetching one dataset without running the whole build.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1775050Z E               
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1775327Z E               Run:  python scripts/datasets/pf_enzyme_classification.py
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1775664Z E               """
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1775877Z E               from _common import run
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1776122Z E               
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1776333Z E               KEY = "pf_enzyme_classification"
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1776607Z E               
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1776806Z E               if __name__ == "__main__":
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1777067Z E                   run(KEY)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1777210Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1777340Z tests/test_dataset_scripts.py:44: AssertionError
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1777725Z ___________________ test_each_script_carries_its_provenance ____________________
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1778014Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1778135Z     def test_each_script_carries_its_provenance():
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1778825Z         """A script without the citation is not a record of where the data came from."""
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1779236Z         for d in datasets.REGISTRY:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1779565Z             text = open(os.path.join(GENERATED, f"{d.key}.py")).read()
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1780710Z             # Several entries genuinely have no citation or no fixed path; those lines are omitted
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1781655Z             # rather than rendered as "None", so they are only required where they exist.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1782334Z             if d.citation:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1782925Z                 assert d.citation in text, f"{d.key}.py does not cite its source"
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1783632Z             if d.path:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1784076Z                 assert d.path in text, f"{d.key}.py does not say where the file lives"
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1784624Z             assert "None" not in text.split("Fetches the source")[0].replace("normalized_by", ""), \
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1785131Z                 f"{d.key}.py renders a missing field as the literal None"
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1785465Z             if d.pmid:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1785689Z                 assert str(d.pmid) in text
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1785942Z             if d.note:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1786325Z                 # The quirks are the expensive knowledge. First few words is enough to prove it carried.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1786861Z >               assert " ".join(str(d.note).split()[:6]) in " ".join(text.split())
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1788104Z E               assert 'PlasmoDB reports direct EC annotations separately' in '#!/usr/bin/env python3 """Plasmodium enzyme classification (PlasmoDB) EC number per gene, curated and orthology-deriv...yme_classification.py """ from _common import run KEY = "pf_enzyme_classification" if __name__ == "__main__": run(KEY)'
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1790256Z E                +  where 'PlasmoDB reports direct EC annotations separately' = <built-in method join of str object at 0x7f455a544868>(['PlasmoDB', 'reports', 'direct', 'EC', 'annotations', 'separately'])
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1791341Z E                +    where <built-in method join of str object at 0x7f455a544868> = ' '.join
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1792866Z E                +  and   '#!/usr/bin/env python3 """Plasmodium enzyme classification (PlasmoDB) EC number per gene, curated and orthology-deriv...yme_classification.py """ from _common import run KEY = "pf_enzyme_classification" if __name__ == "__main__": run(KEY)' = <built-in method join of str object at 0x7f455a544868>(['#!/usr/bin/env', 'python3', '"""Plasmodium', 'enzyme', 'classification', '(PlasmoDB)', ...])
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1794367Z E                +    where <built-in method join of str object at 0x7f455a544868> = ' '.join
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1795809Z E                +    and   ['#!/usr/bin/env', 'python3', '"""Plasmodium', 'enzyme', 'classification', '(PlasmoDB)', ...] = <built-in method split of str object at 0x559eb5b0ec50>()
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1797766Z E                +      where <built-in method split of str object at 0x559eb5b0ec50> = '#!/usr/bin/env python3\n"""Plasmodium enzyme classification (PlasmoDB)\n\nEC number per gene, curated and orthology-d...ion.py\n"""\nfrom _common import run\n\nKEY = "pf_enzyme_classification"\n\nif __name__ == "__main__":\n    run(KEY)\n'.split
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1799118Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1799256Z tests/test_dataset_scripts.py:76: AssertionError
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1799653Z ___________________ test_the_cache_size_is_quoted_correctly ____________________
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1799934Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1800201Z facts = {'genes': 8140, 'columns': 443, 'columns_by_genes': {8140: 443, 5720: 168}, 'edge_types': 13, ...}
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1800558Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1800695Z     def test_the_cache_size_is_quoted_correctly(facts):
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1801197Z         """Rounded to the megabyte in prose, so exactness is not required -- but 11 against 17 is drift."""
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1801715Z         for doc in ("HANDOFF.md", "MATERIALS_AND_METHODS.md"):
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1802038Z             text = _doc(doc)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1802413Z             quoted = {int(m) for m in re.findall(r"cache (?:is|\()\s*(\d{1,3})\s*MB", text)}
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1802860Z             assert quoted, f"{doc} no longer states the cache size"
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1803377Z             for q in quoted:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1803658Z >               assert abs(q - facts["mb"]) < facts["mb"] / 3, (
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1804032Z                     f"{doc} says {q} MB; the cache is {facts['mb']:.0f} MB")
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1804448Z E               AssertionError: HANDOFF.md says 65 MB; the cache is 121 MB
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1804810Z E               assert 55.757734 < (120.757734 / 3)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1805108Z E                +  where 55.757734 = abs((65 - 120.757734))
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1805314Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1805448Z tests/test_documented_numbers.py:90: AssertionError
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1805842Z ____________________ test_no_file_gains_an_organism_literal ____________________
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1806116Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1806241Z     def test_no_file_gains_an_organism_literal():
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1806657Z         grown = {f: (n, ORGANISM_LITERALS.get(f, 0)) for f, n in _literal_counts().items()
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1807092Z                  if n > ORGANISM_LITERALS.get(f, 0)}
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1807567Z >       assert not grown, ("new \"Tg\"/\"Pf\" literals -- read starplast.organisms instead: "
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1808063Z                            + ", ".join(f"{f} {now} > {was}" for f, (now, was) in grown.items()))
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1810806Z E       AssertionError: new "Tg"/"Pf" literals -- read starplast.organisms instead: scripts/audit_functional_profile_ui.py 8 > 0, scripts/audit_label_space.py 2 > 0, scripts/audit_pf_functional_agreement.py 1 > 0, scripts/freeze_functional_profile_controls.py 1 > 0, scripts/freeze_functional_profile_knn.py 1 > 0, scripts/freeze_pf_functional_ec_controls.py 5 > 0, scripts/freeze_pf_functional_ec_forest.py 6 > 0, scripts/freeze_pf_functional_ec_knn.py 13 > 0, scripts/install_pf_functional_results.py 3 > 0, scripts/package_pf_functional_ec_results.py 2 > 0, scripts/report_pf_functional_agreement.py 2 > 0, starplast/app.py 3 > 2, starplast/functional_agreement.py 1 > 0, starplast/functional_results.py 1 > 0
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1813855Z E       assert not {'scripts/audit_functional_profile_ui.py': (8, 0), 'scripts/audit_label_space.py': (2, 0), 'scripts/audit_pf_functional_agreement.py': (1, 0), 'scripts/freeze_functional_profile_controls.py': (1, 0), ...}
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1814564Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1814680Z tests/test_organisms.py:156: AssertionError
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1815014Z =============================== warnings summary ===============================
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1815351Z tests/test_analysis.py: 1 warning
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1815611Z tests/test_benchmark.py: 6 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1815882Z tests/test_build_graph.py: 9 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1816156Z tests/test_discover_cli.py: 6 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1816430Z tests/test_embedding_edges.py: 4 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1816711Z tests/test_leakage_attacks.py: 5 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1816986Z tests/test_optimize.py: 1 warning
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1817246Z tests/test_questions_tab.py: 11 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1817523Z tests/test_recipes.py: 12 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1817777Z tests/test_search.py: 79 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1818027Z tests/test_strategies.py: 41 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1818555Z tests/test_strategy_edges.py: 12 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1818873Z tests/test_strategy_panel.py: 1 warning
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1819161Z tests/test_tuning_edges.py: 13 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1819914Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1820651Z     warn(
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1820753Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1820858Z tests/test_build_graph.py: 18 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1821134Z tests/test_embedding_edges.py: 2 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1821426Z tests/test_leakage_attacks.py: 3 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1821703Z tests/test_questions_tab.py: 22 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1821978Z tests/test_recipes.py: 28 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1822504Z tests/test_search.py: 48 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1823005Z   /home/runner/work/starplast/starplast/starplast/embedding.py:214: RuntimeWarning: All-NaN slice encountered
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1823528Z     med = np.nanmedian(X, axis=0)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1823689Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1823795Z tests/test_build_graph.py: 18 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1824073Z tests/test_embedding_edges.py: 2 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1824353Z tests/test_leakage_attacks.py: 3 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1824629Z tests/test_questions_tab.py: 22 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1824901Z tests/test_recipes.py: 28 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1825167Z tests/test_search.py: 48 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1825778Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/numpy/lib/_nanfunctions_impl.py:1593: RuntimeWarning: All-NaN slice encountered
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1826421Z     return fnb._ureduce(a,
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1826568Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1826669Z tests/test_clustering.py: 3 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1826944Z tests/test_discover_cli.py: 16 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1827217Z tests/test_embedding_edges.py: 1 warning
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1827488Z tests/test_gpu.py: 1 warning
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1827736Z tests/test_leakage_attacks.py: 4 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1828009Z tests/test_optimize.py: 4 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1828491Z tests/test_recipes.py: 28 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1828868Z tests/test_search.py: 179 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1829135Z tests/test_strategies.py: 281 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1829411Z tests/test_strategy_edges.py: 16 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1829838Z tests/test_strategy_panel.py: 1 warning
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1830107Z tests/test_tuning_edges.py: 13 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1830379Z tests/test_umap_gallery.py: 1 warning
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1831341Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1832285Z     warn(
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1832391Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1832670Z tests/test_clustering.py::test_a_continuous_feature_that_is_constant_is_not_scored
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1833473Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/scipy/stats/_stats_py.py:8492: RuntimeWarning: invalid value encountered in scalar divide
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1834118Z     h /= ties
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1834226Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1834480Z tests/test_deposits.py::test_squeezing_the_variance_is_what_makes_three_replicates_usable
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1835693Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/scipy/stats/_axis_nan_policy.py:635: RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1836791Z     res = hypotest_fun_out(*samples, axis=axis, **kwds)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1837018Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1837118Z tests/test_methods.py: 36 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1837372Z tests/test_recipes.py: 24 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1839284Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1840910Z     warnings.warn(
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1841037Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1841131Z tests/test_methods.py: 36 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1841392Z tests/test_recipes.py: 24 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1842234Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:1407: UserWarning: Inconsistent values: penalty=l1 with l1_ratio=0.0. penalty is deprecated. Please use l1_ratio only.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1843227Z     warnings.warn(
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1843346Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1843525Z tests/test_paths.py::test_running_as_a_module_prints_the_report
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1844397Z   <frozen runpy>:128: RuntimeWarning: 'starplast.paths' found in sys.modules after import of package 'starplast', but prior to execution of 'starplast.paths'; this may result in unpredictable behaviour
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1845100Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1845258Z tests/test_publishing.py::test_fetch_names_runs_as_a_module
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1846147Z   <frozen runpy>:128: RuntimeWarning: 'starplast.fetch_names' found in sys.modules after import of package 'starplast', but prior to execution of 'starplast.fetch_names'; this may result in unpredictable behaviour
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1846882Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1846983Z tests/test_search.py: 32 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1847627Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1848432Z     c /= stddev[:, None]
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1848575Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1848674Z tests/test_search.py: 32 warnings
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1849304Z   /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1849951Z     c /= stddev[None, :]
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1850090Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1850313Z tests/test_tuning_edges.py::test_quality_measures_survive_a_degenerate_embedding
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1851235Z   /home/runner/work/starplast/starplast/starplast/tuning.py:68: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1851958Z     out["continuity_proxy"] = float(spearmanr(a, b).statistic)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1852201Z 
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1852412Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1852876Z =========================== short test summary info ============================
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1853671Z FAILED tests/test_dataset_scripts.py::test_regenerating_changes_nothing - AssertionError: pf_enzyme_classification.py is stale -- run scripts/generate_dataset_scripts.py
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1854455Z assert '#!/usr/bin/e...   run(KEY)\n' == '#!/usr/bin/e...   run(KEY)\n'
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1854793Z   
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1855061Z   Skipping 70 identical leading characters in diff, use -v to show
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1855393Z     
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1855655Z   - EC number per gene, curated and orthology-derived kept apart
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1856113Z   + EC numbers reported directly and inferred from orthologs, kept apart
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1856620Z     
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1856919Z         level / kind : reference / annotation
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1857585Z         provides     : ec_number, has_ec, ec_number_orthology
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1858082Z   -     coverage     : 1,220 curated, 335 more from orthology
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1859086Z   +     coverage     : Declared coverage: 1,220 direct annotations; orthology-derived field separate
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1907791Z         accession    : PlasmoDB ec_numbers and ec_numbers_derived
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1909050Z         url          : https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1909751Z         local path   : datasets/reference/plasmodb/plasmodb_pf3d7_ec.tsv
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1910105Z     
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1910328Z     Quirks that cost time once:
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1910767Z   +     PlasmoDB reports direct EC annotations separately from EC numbers derived from orthologs.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1911426Z   +     Gene-level curation/prediction provenance and the assignment release remain unresolved for
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1912069Z   +     the installed table. `has_ec` reports a direct assignment; experimental enzyme activity has
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1912927Z   +     not been independently verified. The slot selects the direct field by default. Orthology-
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1913530Z   +     derived annotations require an explicit selection and retain their transfer lineage.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1914135Z   -     PlasmoDB serves two EC fields and they are different KINDS of evidence -- one curated for
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1914740Z   -     this organism, one inferred from the gene's OrthoMCL group -- so they are separate columns
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1915330Z   -     and `has_ec` counts only the curated one. Merged they would be 1,584 genes with no way to
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1915897Z   -     tell which 335 were never annotated here at all, which is inference standing where
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1916476Z   -     annotation should. The slot lists the curated column first and its policy is `one`, so the
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1917084Z   -     leading candidate wins and the derived field is there to be chosen deliberately rather than
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1917532Z   -     by default.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1917731Z     
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1918086Z     Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1918788Z     coverage that resolution achieves. The shipped columns are assembled by
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1919366Z     `starplast.build_graph.load_nodes()`; this script is the per-dataset view of the same source, for
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1919944Z     inspecting or re-fetching one dataset without running the whole build.
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1920302Z     
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1920562Z     Run:  python scripts/datasets/pf_enzyme_classification.py
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1921021Z     """
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1921215Z     from _common import run
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1921438Z     
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1921639Z     KEY = "pf_enzyme_classification"
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1921887Z     
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.1922075Z     if __name__ == "__main__":
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9817282Z         run(KEY)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9820240Z FAILED tests/test_dataset_scripts.py::test_each_script_carries_its_provenance - assert 'PlasmoDB reports direct EC annotations separately' in '#!/usr/bin/env python3 """Plasmodium enzyme classification (PlasmoDB) EC number per gene, curated and orthology-deriv...yme_classification.py """ from _common import run KEY = "pf_enzyme_classification" if __name__ == "__main__": run(KEY)'
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9823451Z  +  where 'PlasmoDB reports direct EC annotations separately' = <built-in method join of str object at 0x7f455a544868>(['PlasmoDB', 'reports', 'direct', 'EC', 'annotations', 'separately'])
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9824867Z  +    where <built-in method join of str object at 0x7f455a544868> = ' '.join
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9827415Z  +  and   '#!/usr/bin/env python3 """Plasmodium enzyme classification (PlasmoDB) EC number per gene, curated and orthology-deriv...yme_classification.py """ from _common import run KEY = "pf_enzyme_classification" if __name__ == "__main__": run(KEY)' = <built-in method join of str object at 0x7f455a544868>(['#!/usr/bin/env', 'python3', '"""Plasmodium', 'enzyme', 'classification', '(PlasmoDB)', ...])
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9829586Z  +    where <built-in method join of str object at 0x7f455a544868> = ' '.join
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9830521Z  +    and   ['#!/usr/bin/env', 'python3', '"""Plasmodium', 'enzyme', 'classification', '(PlasmoDB)', ...] = <built-in method split of str object at 0x559eb5b0ec50>()
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9832490Z  +      where <built-in method split of str object at 0x559eb5b0ec50> = '#!/usr/bin/env python3\n"""Plasmodium enzyme classification (PlasmoDB)\n\nEC number per gene, curated and orthology-d...ion.py\n"""\nfrom _common import run\n\nKEY = "pf_enzyme_classification"\n\nif __name__ == "__main__":\n    run(KEY)\n'.split
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9834446Z FAILED tests/test_documented_numbers.py::test_the_cache_size_is_quoted_correctly - AssertionError: HANDOFF.md says 65 MB; the cache is 121 MB
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9835262Z assert 55.757734 < (120.757734 / 3)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9835908Z  +  where 55.757734 = abs((65 - 120.757734))
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9838960Z FAILED tests/test_organisms.py::test_no_file_gains_an_organism_literal - AssertionError: new "Tg"/"Pf" literals -- read starplast.organisms instead: scripts/audit_functional_profile_ui.py 8 > 0, scripts/audit_label_space.py 2 > 0, scripts/audit_pf_functional_agreement.py 1 > 0, scripts/freeze_functional_profile_controls.py 1 > 0, scripts/freeze_functional_profile_knn.py 1 > 0, scripts/freeze_pf_functional_ec_controls.py 5 > 0, scripts/freeze_pf_functional_ec_forest.py 6 > 0, scripts/freeze_pf_functional_ec_knn.py 13 > 0, scripts/install_pf_functional_results.py 3 > 0, scripts/package_pf_functional_ec_results.py 2 > 0, scripts/report_pf_functional_agreement.py 2 > 0, starplast/app.py 3 > 2, starplast/functional_agreement.py 1 > 0, starplast/functional_results.py 1 > 0
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9842101Z assert not {'scripts/audit_functional_profile_ui.py': (8, 0), 'scripts/audit_label_space.py': (2, 0), 'scripts/audit_pf_functional_agreement.py': (1, 0), 'scripts/freeze_functional_profile_controls.py': (1, 0), ...}
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:35.9843045Z 4 failed, 5813 passed, 42 skipped, 6 deselected, 1180 warnings in 2474.43s (0:41:14)
+checks	Check synchronized package versions and regressions	2026-10-09T02:02:37.7781931Z ##[error]Process completed with exit code 1.

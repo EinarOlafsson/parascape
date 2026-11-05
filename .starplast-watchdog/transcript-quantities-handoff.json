@@ -1,0 +1,421 @@
+{
+  "epoch": 1793436701.8226874,
+  "goal": "active and incomplete",
+  "previous_turn_classification": "progress; committed7272236sample/model/exportintegrityfix",
+  "new_transcript_namespace": "/nas_mnt/carruthers/Einar/parascape_omics/prepared_deposited_values/geo_transcript_quantities",
+  "portable_namespace": "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.9.0/core_metadata/deposited_values/geo_transcript_quantities",
+  "treatment_manifest": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/transcript_quantities/treatment-d6597360e834d89b8bd0a5581aec005ae1a6ba3cbba2563f13573915ff4d7ac6.json",
+  "source_files": 12,
+  "quantity_layers": 48,
+  "cells": 468504,
+  "submitted_samples": 6,
+  "local_runtime_quantity_tables": 500,
+  "actual_offline_Qt_proof": "/media/carruthers/mnt1/parascape-geo-transcript-quantities-offline-validation/validation.json",
+  "processor_sha256": "d70df8ad6fdeadf011ef7dec2d6f35fa1b899526896c3965848da0e75a85d7a4",
+  "workbook_audit_repair": "Observed terminalfailure due sharedQCcatalogue refresh; isolated per-source bound QC metadata content from globalindexmtime, retained source hashes and change refusal; new66replay terminalsuccess",
+  "next_steps": [
+    "Continue native acquisition, workbook extraction/validation/preparation and exact offline replay/upload timers; originalall-dataset goal incomplete.",
+    "Add exact reported parent gene_id transcript selection to browser/API so users can retrieve all original transcript rows for a source gene without suffix stripping or aggregation.",
+    "Complete HDF5/other expression formats;52HDF5headers observed, official10xCSCformat checked but no HDF5payloadimportclaimed.",
+    "Finish release8queuedGitHubpublishjob and safeNightlyintegration chain; future9coredata/publicrelease still needs finalfreeze, installedclient and exactCIchecks.",
+    "Preserve unknown biological quality, reference equivalence, sample roles and faircrossassay comparison gaps; historical functional inference remains paused."
+  ],
+  "parascape-geo-transcript-quantities": {
+    "phase": "supported_original_transcript_tables_processed",
+    "updated_epoch": 1793436317.6378763,
+    "selected_source_files": 12,
+    "source_files": 12,
+    "quantity_packs": 48,
+    "review_required": 0,
+    "cells": 468504,
+    "scientific_scope": "Original submitted transcript-table quantities only. Expected counts may be fractional; TPM/FPKM and IsoPct retain source normalization. IsoPct is a source-labelled isoform percentage, not absolute expression. Exact transcript_id, reported parent gene_id, lengths and source row order remain unchanged. Alternative StringTie/ToxoDB source files linked to the same GEO sample are alternative analyses, not additional biological replicates. No transcript-to-current-gene mapping, gene-level aggregation, organism inference, normalization, imputation, feature collapse or biological quality score. Header compatibility with the RSEM format does not establish the deposited software version; upstream filtering, sample roles and cross-study scale compatibility remain unreviewed."
+  },
+  "parascape-transcript-staging-009": {
+    "phase": "checked_transcript_layers_staged",
+    "epoch": 1793436524.534986,
+    "quantity_packs": 48,
+    "source_files": 12,
+    "submitted_GEO_samples": 6,
+    "source_catalogue_sha256": "fdb15802a6e3fa0dcbe8223646ac093c1877898887a2dd429cf564ceee95d518",
+    "stager_sha256": "227f0e0e60c92a997f42270c7597aca8dc5e150d4c277eedae11d7ce570b5bf7",
+    "reader_sha256": "175210fa3c006baa3ca71c17a3780ae2eda313e9c8468ca9513ba455fc5811a9",
+    "publication_status": "provisional",
+    "public_release_verified": false,
+    "original_values_changed": false
+  },
+  "parascape-workbook-component-audit-009": {
+    "phase": "prepared_workbook_replay_pass_complete",
+    "epoch": 1793436435.146934,
+    "source_index": {
+      "file": "a2595e3d972e6e340ba7bec94a9c21596f3ecc7e68fe267763a30ad2757e468b.json",
+      "sha256": "a2595e3d972e6e340ba7bec94a9c21596f3ecc7e68fe267763a30ad2757e468b"
+    },
+    "selected": 66,
+    "verified": 66,
+    "results": [
+      {
+        "directory": "workbook_cells/041ed762980d4bfd3f9dfddbea37ef1a5c2a3a1fd49ee85add5682a791ddda7d",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-029a4a3f735ad86e051dfc81e46588165d8c36f505808a39f9403e4ca5bf11ad.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/09e16985a3ff93ff7d0c98b358b7af51b589eba272a26c1a8810c891797631be",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-4f8b918a954c63205ce21f2520f35599ecee5e37b44cd0af7a0be6951aa9ac6c.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/0b124d641f2449d73a077f4dce919bfeb6a49e7a71206a3f72d353cadf6ec601",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-f3fb792266be7ace946d7c23189c594ce952ff5d033d187b746dabaf86e75c7d.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/0b2b1dcc1964c1b38ecf4aa60c71c32fb7091192a4b0c7b93df32933b10ce433",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-3384bc17ee05b64163e9faa1fdc365994db1fd425d07d942c7ddba89849095fc.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/0ffd373f6204664834a54995a868767812e5237ebc4684ddf5363a1e4d721b1b",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-d25be58d61e71d9b65a1ad6768a7864a1177aca210ae90cc9c79835bc9d7df4e.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/116aa599dc32fe1c06aa2e324d400b1a20f962df9f96ffd9adc22869189172f7",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-4606b4c05c0336217d8224317961261f8c5581225ffcf89bee5df86f9604ce00.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/15581cb383ea82a6523a3905b5fa9ae24e329cb03625e0551508bb11eb0c773c",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-b6332a4ff4d5a70fa26da58f6d3d430cea72d4f89fb6265aec392f6d4eb3d7fe.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/1a6dcc60b2bb686068fa924d33564a49d926125841604fbbbbb81bfd03389145",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-24d14c390623b12ef3b326b8cf30985d06fa0f9d39cc6312b75aae79a0f6bef6.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/1a6f11838e0b01ebb2b7f9378876d24bc4f157c6bc718dd8fd8ba4db5de97b97",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-6a95e25cd537b7e45d048ebb3ff07748152d0f8dade22c1baf78a9add1559d26.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/1b2af42366498cf0b697043f490a629906307db967c05d69eb0efc7e4413773a",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-2cd44405a45ae38d1918b649670281e5eeba4e9b9dc47ca426f2eef8a4244dc2.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/1c58eff77cfed25ad3f177d5a8806a059b68cfb604751aff92706df544559d81",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-395c6f07a5b5505656e8453d6b5a3cdd2bd68a17080f7e6012257796840c5f92.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/23330a8e312cb7759346eea526cf42918934925a5aa0cd72ff29aad0b2dd9978",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-8696c5b6834e41b7508bbed87b4b6e4a230d5e722f63fd2d6d8a425c1724a730.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/30df63f7effccdd41f502754c8d012445d1aca4f418f7334bd3dc690b497d336",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-59558e68a99042b1758754df19788a6811b26151a4e3f06e34bf994d4c91e509.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/3293e0ae66ae5bdb83e558659416e251ec3291edbb9d7a13be6879efa52b90f6",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-150378747b270bf1067586a51e08552abbdc3b6e8636630ac9bae23417d040bd.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/34d74fdbe98e0576fc687257edbe2680decf946bac8fcb0d111d1f488d515508",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-2a93ff627943ad5b1cafdc43baf70a82d12edc39404b0cf56985a324d3e48669.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/36e14a3b9c126068569667b5f1aaaa8076bf085813f491f3080ebdd632a7164d",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-1325fab197d71d7e2d6530eecdd26ce0309c84ce23923229ad2409e31cc73a4a.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/3f0cf735b80133e40d8238f67f81d1707bc723eb2fcdece7e83f0064c3db480f",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-81dedf57e49589db2914f30e83697d7de3121055a79cfa6b313bbdb2646b1901.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/4540f9af419ecba1d401e1c6544c8a9ab9be7292c48c3fa1fc8ac64854311614",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-199d1415f248eec99dde025143ce4e704fdc8f1d59bc1d693c314ebb20380470.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/46d7382631b12cae1129ad1fdcfe755bda3ad577b7b00a7db32ee29d7ecb8469",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-5bbdb025be6aafdc43880c875b65869b8f3225ca3a472a81b461e2f0d97b469d.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/492f49ca541c0780379dc50438b86422d02a4c4f3bf35e8442722f4cb7ccb85f",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-86bbd88a9e9bd55e5e1eb9a94895b182c449065019f8a37013f4fbe178d8de03.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/4a2181aa5c0845965b9a1f86b92d22695f52523d9b336e472a718f663e8c7ceb",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-504cffa5b2e087932e4a2e7a4c5ec3ce411dd7cb85c11082c5a62dcadfb8d9a5.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/4becd8663e8671a89be01342e719e094daa95686670ed9ca05e1e24128356e25",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-75b431a27eca267b14ff1adf962f0db65a4ac5463536584e3bf9cb93e575ecde.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/537634654090ed1567d9150c8372c76bc64a019ea1e01a6970c55412214bc9d7",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-1573c6ade4079abb8e2ab420503898915a85873da33e7e0562f45d5807a3c3e6.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/598492a5bf3f65119692d2065c8dee4fb8df75d8f54150e91a422fffc0e3a22b",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-33d423095a1a607b53dd2fda0d48f45ebac178e20c8bc8c9a62826605618abb8.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/5a0b8ad521601273e5c77fb9d2b5b67711ffb8ec867cdee89e618df2db31c854",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-6a45a194a81c15fc442b4f1e387918996b675efa880b4a44c8708fdbdd39a90c.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/5dce62f9e57d7a27ae7867845b3f9ffd15068945e476ca47b019940a9ed50c65",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-68699a34aa2c4cb1fc682c1affd29aca13277ee4c156f39e74eb3133efaa8100.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/5ea1033912090dfe018562b7f6a9e308c21865594933bde8c9464487dfe24fc3",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-1211b74d0d52b5018883582ceaf826ef672b113074053ba29e03f51435ba0458.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/668a4f11be9ce32580160189e3821791612e4d548cd2aa5dae9a29365d9b0db4",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-edefea7831cb6823f17e7672c7f65ec4b123e384c856cba99edd5ce16200438c.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/6cc84ec2192712d52c1447a38cc85778fb5a98fa0bde013758d21d9df831d423",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-e702abe4db38d12d004fcc9020df07d12082973ff523fdc5d8d42e2c8d8084b8.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/6f3832a858c3465969277dbe03f90330f65c35ae889524ee620e2678b82251bf",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-565cc7c5dc879ad1656e2ccb4805da190dee419c7df1adbd3255e35e2c1a9161.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/7aa011e814e792cb5b5c8736bc331697f0a403414e116b3b9f5d1c0e2dcac57a",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-1a56d355f1f6c9cbd0f6dc73820a34505f7e96a2c5357f99c0e16d34aba35763.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/7be6fbf1966172dad86f44f489994d586df4126d7a82aae399ca4c1469eb6547",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-f95ecf113d92364cbe9f026b5ca425f5357304c096d171af4bdbdb7fe0c91e23.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/7e5fbaf43b2667a2c327fc0e327f88647f6253bd9cb38030a00b5243d791346a",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-a0e4b85c44b2a5d240e2620a375af1b6453800e78b38801809e0f1db198a1d26.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/85a15e5954fe8fc3c3771da62475201fc718400fe0abea46a254c2327f8f6372",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-6d418ab20f1d98a6f4dce823157db6b9a7ee5cddb6eb90a14690429c2ec23ab1.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/882a8761c068684f6cc21cfa2e794c97e974b37988046a1ff7855bd11fdf537c",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-67d9c1cd9735e2f6464ddec85e3d722106f18bd2204165a55dbae8d5ef60600c.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/885f178f07db7a8c73be16dc6b07026d034249ab0a5f6f37ad4ed4e1bd35a4e8",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-6b8b458e30e07fb96434e82e8f764ccb674baa04f737a2d380a2ba4cbdeb9ecc.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/9266e5312d3d34faba0d9e6669f6968a7435c3107999a5f183f7faf2e8da500c",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-29aecdd906f12fcbf689bff6201d2a2e955e4c52186fe473a4fed4a52589dcb0.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/933da6c35e21771d181261da846eb368e919edc440c6f9c4d8ad7d0bcb2a495f",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-935f9aa65e2e4b86b1948edda7dad6fc132c802df65f185958a41d3d208d50d9.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/94955437fb9c3f7a9ff2bbbb5fda824349584560ced16d784ca59ba0071388c9",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-bd73e934d9ea82a6bc8087e496ca2a26e0f7fdc328258da85f4d287c078fd25a.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/95a6e72361ddea4fc624fa3b191ea531041f6dc75c4e40a6e30e59c558641a4f",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-3ba31a099dc12ff00012c68e25c7fb73db1c64fc09f39f55b216f45fbce59126.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/96a19c7639727e332f8001216c5df630f6b2ede3c6fb85d1f43e7933736d22e0",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-faab6aa54c7a553cb81f597e635bb9b73431330bd412c03a7c5c8d938c36354f.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/9a87acc7ea2dc382ec1947132fe7e8335dff7f4e3dfa8c6ef235fcf1bc8d10e3",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-432e0273e188a282ced79d69e5864a825ad885cc77eec7c9b7e6b8ae4fcdb98c.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/9bbcca03fc594798566c55b70053e786465795d18c2a353aaa2fd80027b223a0",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-502d7a7899ab53ba5e8bf7c9eee9599fe6a5f3d4e4631ad34402c6622a8c2787.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/9f58c15d1dc725e768fb3edf65e809bc54344bd4710c4640d36b4f1dcdcee565",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-69fc970b96084610960e832cc28db0a3170079d87efb92e70146757a465d8a04.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/9f8b525eaae6a95f2c84638b36245bb5c3cf1d619097c7f24922343e3ecd3365",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-15a40ba565ca4ac1f59057991ba9e41e46b85637b42209d4830a6215c4ab3156.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/ae56d04a743709f4378d9f4e395f4e3ab3fb206d7f6ed34ddb3291a26c67e5cc",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-ad6a3775255f323d07ae4979a2043694d0e3e3d5e9e85dc16d5cc9e540ff2e43.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/af9761edc9b0ab327b55b15865de708c640af09e59394e59f9dc1207f2858e51",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-e9ffe3e19336e87f31e5a1f25ae6c7a92184778df7d97f030af73c355be7d2b3.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/b603974183ecf6bfb7efe6b56116f6d8b5f6c7dcdf6dddcff5ac3943ab298dc6",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-f2405a763ad94eba274f21dd59900f07392625ae039fcd27f9d2d67254d947c6.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/baaa622b144f019fa9807d179f096212db3f49db755c2daaf7151a0d3bd4aff2",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-1315a59ee14f450ee44adc0201a0768b1b00edd20f04d2a9ad1825dc934da560.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/bdf065184264987818ef113c8163d8fa258559865d05f6cbef61f3a1468924f9",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-354088dda9b6cd0d4fd1076a6f52a3483c24af9a62e3e94fa10e99443488069e.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/c1fbdde8277a9ca7ff1c26b626b274b38a803c25ed2c3b83c865c31506954a10",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-9e07ff9503b4db3f26a2b1e9b1c19370985e95d43c98a92fb442bdedae7cb69c.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/c2fcbe8b30c70d61339156b6a59ea992407ca26415857ab62bdbffa509a57479",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-affec41fa365efd9e19b21ac4dbdecafd474a75fe381620cb7d223943b027af2.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/c942de540995f7a74bc072fee8c2e85139100ab77d59936bcb6c91474dd512b4",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-06ae07556822ac5981737e101916f1fc133e5865129d3ce7fe06eb3ee775a8c1.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/ccef777702ef55dfcc8633c585cfd40c36430d73781cd23260d38f5e81a31d5a",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-397bf556d2e05fce1173e9e6d2cfb07d7d3ffe38ac971554b616a1902f3427c0.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/ceea3bc7a67376a8af9192fd4dce1fe3ef7a24b2ba6852c841ee02df9acebe38",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-1f5aa97b0507dbcf4d053a27ffbcaaaea284a08089dcfd987733c5e920d7443e.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/cfb67c381e9e91c8e8e298b635d05062782176e3e0eb872fe691a6defcfbe9c8",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-b52c85b27d0b988d2b58c7b5fe3602a6836e6b6faf8e2b8bc43ff6ee17807893.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/d72a79217448cfbcaa622142e43fef152ee171622c32f26cb49edba525657399",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-2c287c71dbb0b46a82a8b41875c1a2d662a2168ec30ec3a4531922df20cf9704.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/dbc27a83240a920d4a82a35dedc093c33cf951ea3e5090ec3a8ba084e1f26b06",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-0098939f0c08aa45c53646d47a188c7ecd39e90f35adf0aed169f28d0af3ae88.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/dbc404cddc3104ca009b47c816b89e04e8acaa33b1ee1ab468b8642d5ed1b012",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-c565ffe0fb70404767c8da3658ca5dce96d9b261e91a9a86ae7f8e0acc0e88fc.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/dd60b0fa9c6e3c40927c4f1c5ba451fa411dbb068bbc9f92da891ebdfffe3f46",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-24b2be83d9833a3c4b5ef86013b0eabbe366167890f4dd4ac8db9827b7dd9cb4.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/e3249f64f044980686fcca20e389dba6d5fb2b5a012462bc7fcc742d2466811c",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-c01433eef2c69009e89680c1fc095ea2a257e91c7d99b4183ac91847d8a87f19.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/e342c251d3b4617b2ff09186c9e0ebb47e06fb28e55b53403e14df2516ce7a54",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-565f304284f847cf01f34ca01a6fb5c8e607793fefa4bde7fcead5376e801cba.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/e4b6d6ab675d636ec533f2fc8f60190c2c952d063bd852de573c647546fafa1d",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-0ec07e097adfe9308d9e67624fa806f0bcd43a7a46b78332cba1a66cbad9d6b3.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/e81686f9e0db7db68cf3702970dfde65310d7ee14764f0bf323a58255408395b",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-f19bc844f0ec2ec86fbf95125f1f296156c520e41593077d62602a38ba5fbaeb.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/f9c65581015a5d3f5f26f821ede515dfde3b003894d1bbf33fc6b9cc04aefaac",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-fa76abea3ef5be0f4db5921d7a408270d1f6c9d25c5a423b5739f9038fc30a43.json",
+        "reused": false
+      },
+      {
+        "directory": "workbook_cells/fc5503a2a2d673310886a3558c67056dac70a6bf297f681af0c22b80197c6567",
+        "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_component_replay/workbook-865189dbe48471023dd9cea40af52052a9a3542241b2193aaedfe8acff906e3f.json",
+        "reused": false
+      }
+    ],
+    "entire_93_workbook_collection_complete": false,
+    "public_release_verified": false,
+    "full_worksheet_CSV_coverage_claimed": false
+  },
+  "parascape-workbook-assets-upload-009": {
+    "phase": "draft_component_assets_verified",
+    "epoch": 1793436505.7101743,
+    "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_assets_upload/upload-pass-ee3aa853f76d751e383f1021145758e10b057e9203df4d497e4dea391be3e364.json",
+    "selected": 76,
+    "verified": 76,
+    "verified_bytes": 448399360,
+    "reviews": [],
+    "source_index": {
+      "file": "a2595e3d972e6e340ba7bec94a9c21596f3ecc7e68fe267763a30ad2757e468b.json",
+      "sha256": "a2595e3d972e6e340ba7bec94a9c21596f3ecc7e68fe267763a30ad2757e468b",
+      "evidence_catalogue_sha256": "b3995d07ce1bb19e7a21aadd53b8925759d3da52226d2930a6b3cd176d269b24"
+    },
+    "release_id": 429810405,
+    "draft": true,
+    "published": false
+  },
+  "parascape-release-0.0.8.0": {
+    "phase": "waiting_for_ci",
+    "updated_epoch": 1793436648.1814554,
+    "branch": "main",
+    "checks": {
+      "Publish Python packages": {
+        "conclusion": "",
+        "databaseId": 41182221918,
+        "name": "Publish Python packages",
+        "status": "queued"
+      }
+    }
+  }
+}

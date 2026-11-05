@@ -1,0 +1,10 @@
+Processing /tmp/starplast-release-055-95v7eqjm/dist-v4/starplast-0.55.0-py3-none-any.whl
+Installing collected packages: starplast
+  Attempting uninstall: starplast
+    Found existing installation: starplast 0.43.0
+    Not uninstalling starplast at /home/carruthers/anaconda3/envs/starplast/lib/python3.12/site-packages, outside environment /tmp/starplast-release-055-95v7eqjm/installed
+    Can't uninstall 'starplast'. No files were found to uninstall.
+Successfully installed starplast-0.55.0
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: /tmp/starplast-release-055-95v7eqjm/installed/bin/python -m pip install --upgrade pip

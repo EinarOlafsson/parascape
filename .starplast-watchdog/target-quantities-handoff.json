@@ -1,0 +1,204 @@
+{
+  "epoch": 1793444084.0118132,
+  "goal": "active and incomplete",
+  "archive_manifest": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/target_quantities/treatment-464f236f2abd8b866d3485b0266e87efa4b218a63556fcafc2ad9201d9c65fde.json",
+  "validation": {
+    "source_fixture_groups": 11,
+    "full_original_source_files": 37,
+    "quantity_tables": 74,
+    "original_values": 7407826,
+    "original_GEO_samples": 37,
+    "full_local_quantity_catalogue": 574,
+    "local_catalogue_discovery_errors": [],
+    "offline_all_table_client_scope": {
+      "epoch": 1793443834.8402326,
+      "source_catalogue_sha256": "2cad7584f044867e7ee1b2434e7f35a7ed36cf72f6fb44c445ed107ea35fa8f3",
+      "checker_sha256": "0e638a23b4dfbdc1297971fa5ea18d70c71e86d6b88133adb9f651a568635b0c",
+      "processor_sha256": "07e0bd8b2b9e5a16991700232847fc6137a358ff8f3f3460f5b8b195388a08a6",
+      "source_code": {
+        "/media/carruthers/mnt1/parascape-anndata-source-checkout/parascape/deposited_values.py": "f8eecff401e9f5285b52bb66dd0cfe4933efb0d3f8ac3b2810aaea113af0a4b6",
+        "/media/carruthers/mnt1/parascape-anndata-source-checkout/parascape/deposited_values_panel.py": "da2aa9688b89d8d213f49cfe47dd1061cbe0361135b0374265402ec7e7a27428"
+      },
+      "validated_quantity_tables": 74,
+      "actual_exact_target_queries_GEO_context_tooltips_CSV_and_treatment_checked": true,
+      "protein_identifier_classes_disabled_and_protein_flag_exclusion_inert": true,
+      "nonnegative_technical_QC_and_unknown_biological_quality_preserved": true,
+      "NAS_and_network_blocked": true
+    }
+  },
+  "status": {
+    "parascape-geo-target-quantities": {
+      "phase": "supported_original_target_tables_processed",
+      "updated_epoch": 1793443622.2457397,
+      "selected_source_files": 37,
+      "source_files": 37,
+      "quantity_packs": 74,
+      "review_required": 0,
+      "cells": 7407826,
+      "scientific_scope": "Original submitted target abundance quantities only. est_counts and NumReads are source estimated abundances that may be fractional, not raw integer read counts. TPM/tpm retain source normalization and original column names. Exact reported target IDs, length/effective-length fields, tokens and row order remain unchanged. Target IDs are not assumed to be current genes or gene-level sums; index/reference equivalence and biological sample/control/replicate roles remain unreviewed. Header compatibility does not establish a deposited software version. No new normalization, imputation, suffix stripping, feature collapse, organism inference or biological quality score."
+    },
+    "parascape-target-staging-009": {
+      "phase": "checked_target_layers_staged",
+      "epoch": 1793443679.7697928,
+      "quantity_packs": 74,
+      "source_files": 37,
+      "submitted_GEO_samples": 37,
+      "source_catalogue_sha256": "2cad7584f044867e7ee1b2434e7f35a7ed36cf72f6fb44c445ed107ea35fa8f3",
+      "stager_sha256": "1eff633bd9d188a937675a29cdbc6f08b3a650f6689ff847762ec74356f213ec",
+      "reader_sha256": "f8eecff401e9f5285b52bb66dd0cfe4933efb0d3f8ac3b2810aaea113af0a4b6",
+      "publication_status": "provisional",
+      "public_release_verified": false,
+      "original_values_changed": false
+    },
+    "parascape-anndata-layers": {
+      "completed_layers": 36,
+      "epoch": 1793444029.3617086,
+      "phase": "preserving_original_AnnData_layers",
+      "reviews": [],
+      "selected_sources": 5,
+      "stored_records": 487371996
+    },
+    "parascape-anndata-components-009": {
+      "archive_bytes": 2922209280,
+      "combined_release9_core_assembled": false,
+      "components": 87,
+      "epoch": 1793443710.6176944,
+      "parts": 87,
+      "phase": "AnnData_component_pass_complete",
+      "prepared": 29,
+      "published": false,
+      "reviews": [],
+      "selected": 29,
+      "source_index": {
+        "file": "aafd1f0fea41c4ef566c697aa6df2ae36b1435482a804846fe1d70a1ca2edb38.json",
+        "sha256": "aafd1f0fea41c4ef566c697aa6df2ae36b1435482a804846fe1d70a1ca2edb38"
+      }
+    },
+    "parascape-anndata-components-audit-009": {
+      "phase": "installing_and_hashing_all_optional_components",
+      "selected": 87,
+      "verified": 87,
+      "index": {
+        "file": "aafd1f0fea41c4ef566c697aa6df2ae36b1435482a804846fe1d70a1ca2edb38.json",
+        "sha256": "aafd1f0fea41c4ef566c697aa6df2ae36b1435482a804846fe1d70a1ca2edb38"
+      },
+      "epoch": 1793444015.8730712
+    },
+    "parascape-anndata-components-upload-009": {
+      "phase": "waiting_for_exact_component_installation_audit",
+      "error": "'receipt'",
+      "epoch": 1793443886.994421
+    },
+    "parascape-local-sparse-collection": {
+      "phase": "combined_local_sparse_collection_ready",
+      "epoch": 1793444022.9921222,
+      "datasets": 139,
+      "HDF5": 38,
+      "AnnData_layers": 35,
+      "inputs": [
+        {
+          "path": "/media/carruthers/mnt1/parascape-release-data-0.0.8.0/data/sparse_datasets/catalogue.json",
+          "sha256": "2fb50f5ecc5da0727252c1f0407f838e61aa6efb9235f0c28c6b85abcee6ea76"
+        },
+        {
+          "path": "/nas_mnt/carruthers/Einar/parascape_omics/prepared_sparse_datasets/catalogue.json",
+          "sha256": "2fb50f5ecc5da0727252c1f0407f838e61aa6efb9235f0c28c6b85abcee6ea76"
+        },
+        {
+          "path": "/nas_mnt/carruthers/Einar/parascape_omics/prepared_all_sparse_datasets/catalogue.json",
+          "sha256": "e1e06ebc685bfd3676847378413328100e6f0b2b582c9d16fcc2b1626afca574"
+        },
+        {
+          "path": "/nas_mnt/carruthers/Einar/parascape_omics/prepared_hdf5_sparse/sparse_datasets/catalogue.json",
+          "sha256": "96d72117c3a0147edd178c58f34bff446b818a99b7249414d203918a188950e4"
+        },
+        {
+          "path": "/nas_mnt/carruthers/Einar/parascape_omics/prepared_anndata_layers/sparse_datasets/catalogue.json",
+          "sha256": "e6f3541f91efdae9d3712a85137e804c565b58575020d1472a65bf7c35978059"
+        }
+      ],
+      "catalogue_sha256": "9377e5ea8e2628f5ccaf2b056defe225ceaf6488543e49942f0a272220674edb",
+      "collector_sha256": "e6528c6475837b65ac6202a9f811fdaa11480f0b909080c6b9cc66c65442dbe6",
+      "original_numerical_files_changed": false,
+      "copied_payload_hashes_verified": true,
+      "metadata_discovery_errors": [],
+      "launcher_updated": false,
+      "launcher_gap": null,
+      "application_or_tutorial_sessions_restarted": false,
+      "public_release_verified": false
+    },
+    "parascape-combined-components-009": {
+      "complete_release_core_assembled": false,
+      "components": 473,
+      "epoch": 1793443725.8958218,
+      "generation": "3ba2af72185b8216be43d8e3f2e1f89415d1a73403828e083145b54f16d34370",
+      "inherited_components_unchanged": 196,
+      "original_numeric_files_changed": false,
+      "parts": 483,
+      "phase": "combined_optional_metadata_ready",
+      "public_release_verified": false,
+      "source_code_sha256": "b92441ba5f9cdeedf8b8f25c7a4e7d16b5eb8d47460212b3d44a741b99afa737",
+      "source_generations": {
+        "anndata": {
+          "file": "aafd1f0fea41c4ef566c697aa6df2ae36b1435482a804846fe1d70a1ca2edb38.json",
+          "sha256": "aafd1f0fea41c4ef566c697aa6df2ae36b1435482a804846fe1d70a1ca2edb38"
+        },
+        "hdf5": {
+          "file": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac.json",
+          "sha256": "50973ba096c9b97efc8703846671e2f53eed461c6461a04f251d398a66145aac"
+        },
+        "inherited_release8_index_sha256": "c2685ba9f33bc9f57f2fa3709edba531632984f5f1848a1c5bd9c8c1911f0292",
+        "workbooks": {
+          "file": "d79ec0e4ac0f95cf355ebb7961cf8daaa82a77ba9fe04890805a53d26884d7e1.json",
+          "sha256": "d79ec0e4ac0f95cf355ebb7961cf8daaa82a77ba9fe04890805a53d26884d7e1"
+        }
+      },
+      "sparse_datasets": 133,
+      "workbooks": 76
+    },
+    "parascape-workbook-cells": {
+      "phase": "extracting_source_cells",
+      "epoch": 1793442115.3474255,
+      "selected_sources": 93,
+      "unique_workbooks": 93,
+      "completed": 92,
+      "reviews": [],
+      "extracted_cells": 106027656,
+      "measurement_admission": false
+    },
+    "parascape-workbook-components-009": {
+      "phase": "workbook_component_pass_complete",
+      "epoch": 1793444031.45344,
+      "source_occurrences": 93,
+      "expected_workbooks": 93,
+      "extracted_workbooks": 92,
+      "prepared": 76,
+      "waiting": 16,
+      "reviews": [],
+      "publication_status": "provisional",
+      "inherited_sparse_components": 196,
+      "new_workbook_parts": 76,
+      "new_workbook_archive_bytes": 642222080,
+      "source_index": {
+        "file": "d79ec0e4ac0f95cf355ebb7961cf8daaa82a77ba9fe04890805a53d26884d7e1.json",
+        "sha256": "d79ec0e4ac0f95cf355ebb7961cf8daaa82a77ba9fe04890805a53d26884d7e1"
+      },
+      "all_workbooks_prepared": false,
+      "published": false,
+      "source_numeric_bytes_changed": false
+    }
+  },
+  "units": [
+    "parascape-geo-target-quantities",
+    "parascape-target-staging-009",
+    "parascape-target-client-proof"
+  ],
+  "next_steps": [
+    "Finish76AnnData layers and93workbooks and their independent portable installer/reader/upload checks",
+    "Assemble full release9 core with574quantitytables,currentcompletedRNA and combinedoptionalmetadata; freezecode/data, installedwheel/UI/CI and publication gates",
+    "Continue remaining expression formats and datasets; preserve source gene/reference/unit/sample mapping and add independently calibrated biological QC before fair cross-assay correlation",
+    "Monitor core size as quantitative coverage grows; move large quantity payloads to bounded optional components before the hosted-core asset limit is reached"
+  ],
+  "historical_inference": "paused",
+  "restricted_paths": "untouched"
+}

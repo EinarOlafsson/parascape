@@ -1,0 +1,66 @@
+{
+  "epoch": 1793437343.4599392,
+  "goal": "active and incomplete",
+  "previous_turn_classification": "progress; added48originaltranscriptlayers and repairedsourceQCrefresh race",
+  "commit": "94fd44c763a48f0cfcc8674e530becd207afbe18",
+  "parent": "72722368a79048ff0712cf11fb12124892a754ec",
+  "checkout": "/media/carruthers/mnt1/parascape-transcript-parent-checkout",
+  "archive_manifest": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/transcript_parent_queries/validation-13a170bb95aadc1597c00dbf0ac9827d9580631978323d849e7820e0e43adf33.json",
+  "checks_passed": 611,
+  "actual_Qt_proof": "/media/carruthers/mnt1/parascape-transcript-parent-validation/validation.json",
+  "integration_unit": "parascape-transcript-parent-followup-push.service",
+  "next_steps": [
+    "Observe release8GitHubhostedpublishjob124488996133; verified queued runnerwait, no pending deployment approval and no restart justified.",
+    "Nightly integration chain waits exact8release/live sync then ca953workbookbrowser, bed93sourceQC,7272236comparisonprovenance,94fd44parentquery; no forcedpush/mainadvance/apprestart.",
+    "Continue native allsource/RNA/PRIDE and workbook loops; remainingworkbook/HDF5/otherformats and crossassay identity/unit/sampleharmonization still incomplete.",
+    "Prepare HDF5expression import next; preserve compressed sparse entries/axes and originalfloat/integer values without densification, aggregation, normalization or invented gene equivalence.",
+    "Freeze future9coredata/optionalcomponents and perform installedclient/completepackage/exactCI checks beforepublicpublication; preserve historical functional inference pause."
+  ],
+  "parascape-transcript-parent-followup-push": {
+    "phase": "waiting_for_checked_predecessor",
+    "epoch": 1793437327.275933,
+    "commit": "94fd44c763a48f0cfcc8674e530becd207afbe18",
+    "previous_phase": "waiting_for_checked_predecessor",
+    "release_phase": "waiting_for_ci"
+  },
+  "parascape-release-0.0.8.0": {
+    "phase": "waiting_for_ci",
+    "updated_epoch": 1793437315.2967207,
+    "branch": "main",
+    "checks": {
+      "Publish Python packages": {
+        "conclusion": "",
+        "databaseId": 41182221918,
+        "name": "Publish Python packages",
+        "status": "queued"
+      }
+    }
+  },
+  "parascape-workbook-cells": {
+    "phase": "extracting_source_cells",
+    "epoch": 1793436768.9242878,
+    "selected_sources": 93,
+    "unique_workbooks": 93,
+    "completed": 83,
+    "reviews": [],
+    "extracted_cells": 57758194,
+    "measurement_admission": false
+  },
+  "parascape-workbook-assets-upload-009": {
+    "phase": "draft_component_assets_verified",
+    "epoch": 1793437115.1430762,
+    "receipt": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/workbook_assets_upload/upload-pass-7beb8132add05ca15c20d4553d7d996b53ff56af592932a8aa05a582a486d801.json",
+    "selected": 77,
+    "verified": 77,
+    "verified_bytes": 479569920,
+    "reviews": [],
+    "source_index": {
+      "file": "c962e6c37ad6960a2e3acf798b6a2b71b63453c53e6acd6f6f6236cc2c636b36.json",
+      "sha256": "c962e6c37ad6960a2e3acf798b6a2b71b63453c53e6acd6f6f6236cc2c636b36",
+      "evidence_catalogue_sha256": "b3995d07ce1bb19e7a21aadd53b8925759d3da52226d2930a6b3cd176d269b24"
+    },
+    "release_id": 429810405,
+    "draft": true,
+    "published": false
+  }
+}

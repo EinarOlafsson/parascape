@@ -1,0 +1,50 @@
+{
+  "epoch": 1793436004.2613957,
+  "goal": "active and incomplete",
+  "previous_turn_classification": "progress; created and verified72Githubdraft9assets",
+  "commit": "72722368a79048ff0712cf11fb12124892a754ec",
+  "parent": "bed93b128a699db9774f300b48046b8947c0b300",
+  "checkout": "/media/carruthers/mnt1/parascape-contrast-design-checkout",
+  "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/comparison_design/validation-fb23fc4fd4fe71fdfd384993ffe07b72f650942d385c155271978605e9b904b8.json",
+  "checks_passed": 587,
+  "source_code": {
+    "parascape/comparison_provenance.py": "f0f15b28348ff748bfafc7b40c64174481dc6210d3be8bd028f45320ce724f5b",
+    "parascape/expression_contrast.py": "1dc3ceb367fabeaf6063eb5fd8aa2f8180e3c79164e722ac304fd5deba952a44",
+    "parascape/compare_panel.py": "ff4601359141cb05cf97109614a9d45d5f9e815346f091a7e6695f5fa1cc4ea3"
+  },
+  "actual_Qt_proof": "/media/carruthers/mnt1/parascape-contrast-design-validation/validation.json",
+  "integration_unit": "parascape-comparison-design-followup-push.service",
+  "release8_workflow": 41182221918,
+  "release8_wait": "GitHub publish job124488996133 queued for ubuntu-latest runner; pending_deployments empty, no approval requested",
+  "next_steps": [
+    "Observe exact release8 publication and source integration chain; new7272236Nightlyfix waits knownbed predecessor, never forcepushes main or restarts app.",
+    "Keep native extraction/validation/workbook/replay/evidence/upload loops running; remaining19workbooks and otherformats still incomplete.",
+    "Continue quantitative source/sample/feature/unit admission and fair cross-assay comparisons; preserve unknown biology and paused historical inference.",
+    "Finish future9 core/app optional data integration and exact installed/release checks before publicpublication."
+  ],
+  "parascape-comparison-design-followup-push": {
+    "phase": "waiting_for_checked_predecessor",
+    "epoch": 1793435976.0768924,
+    "commit": "72722368a79048ff0712cf11fb12124892a754ec",
+    "previous_phase": "waiting_for_checked_predecessor",
+    "release_phase": "waiting_for_ci"
+  },
+  "parascape-release-0.0.8.0": {
+    "phase": "waiting_for_ci",
+    "updated_epoch": 1793435980.8369665,
+    "branch": "main",
+    "checks": {
+      "Publish Python packages": {
+        "conclusion": "",
+        "databaseId": 41182221918,
+        "name": "Publish Python packages",
+        "status": "queued"
+      }
+    }
+  },
+  "parascape-workbook-assets-upload-009": {
+    "phase": "waiting_for_exact_component_installation_audit",
+    "error": "Waiting for exact workbook installer and worksheet-preview replay",
+    "epoch": 1793435882.8400736
+  }
+}

@@ -41,7 +41,7 @@ Six categories, each a row of nodes:
 | **1 · One gene** | What is known about this gene · Its network · Its partners · Its expression · Its structure · What has been written about it | information map panel, star map, pairs, RNA panels, AF3/3Di, mentions |
 | **2 · One question, all genes** | The question catalogue (host-facing, needed without glucose, involved in egress, located where, ...) · Fill a gap for my gene list · *All strategies (advanced)* | questions registry + harness (73), strategy panel |
 | **3 · Compare conditions** | Two conditions · A perturbation series · Strains · Stages · Genes that move together | compare, coexpression, RNA design panels |
-| **4 · My own data** | Paste a gene list · Score my pull-down against the background · Compare my screen | compare panel, CRAPome specificity, importer |
+| **4 · My own data** | Paste a gene list · Score my pull-down against the background · Compare my screen | compare panel, background frequency specificity, importer |
 | **5 · Where it came from** | Datasets and provenance · References · Downloads | dataset coverage, deposited values, component downloads |
 
 ### Trust is integrated, not a category (Einar, 2026-11-05)
@@ -115,7 +115,7 @@ contrast preselected, the fold change shown with its standard error, and the num
 |---|---|
 | **Drop or paste a list** (first card; the window also accepts a drag-and-drop anywhere) | The file name, sheet, detected separator and chosen identifier column, all changeable; an identifier resolution report with the unresolved ones **listed, never silently dropped**; any extra per-gene columns with what each would be treated as, left for the user to confirm. Reader: `parascape/importer.py`, which accepts `.csv .tsv .txt .tab .xlsx .xls .parquet`, sniffs the separator rather than trusting the extension, and obeys its own rule that **the range decides, not the filename** |
 | **Annotate my list from the map** | Each gene with its map facts, probabilities and sources; exportable |
-| **Score my pull-down against the background** | The CRAPome specificity ranking for the hit list, with frequency shown as context only and the warning that frequency alone must not be used as a filter |
+| **Score my pull-down against the background** | The background frequency specificity ranking for the hit list, with frequency shown as context only and the warning that frequency alone must not be used as a filter |
 | **Compare my screen** | Joins the list to existing evidence, keeping unresolved identifiers visible |
 
 ### 5 · Where it came from — "which measurement, which paper"
@@ -146,7 +146,7 @@ provenance still travels with the claim.
 | Drop or paste | File name, sheet, sniffed separator, identifier column, all changeable; resolution report with unresolved identifiers **listed, not discarded**; extra per-gene columns shown with what each would be treated as. Reader `importer.py`: `.csv .tsv .txt .tab .xlsx .xls .parquet`, and **the range decides, not the filename** |
 | Annotate from the map | Every gene with its facts, probabilities and sources; exportable |
 | Answer a label for the list | A chosen label answered per gene, each marked filled or exploratory |
-| Score as a pull-down | CRAPome specificity ranking; frequency as context only, with the warning it must not be a filter |
+| Score as a pull-down | background frequency specificity ranking; frequency as context only, with the warning it must not be a filter |
 | Compare as a screen | Joins the list to existing evidence, unresolved identifiers kept visible |
 
 ### Level 2 — Label (one column of the matrix)
@@ -332,10 +332,26 @@ Changed: `parascape/app.py` (`_home`, installed last so it is the tab that is up
 `parascape/help_index.py` (a `node` kind, first in `KIND_ORDER`, and `node_entries`),
 `parascape/help_search.py` (`open_node`), `parascape/importer.py` (the separator sniff).
 
-* **Three level-1 categories** (`Gene`, `List`, `Label`) and **25 level-2 cards**: Gene 9, List 9,
-  Label 7, plus **7 level-3 question nodes** under `Label ▸ Catalogue`, one per registered question
+* **Three level-1 categories** (`Gene`, `List`, `Label`) and **26 level-2 cards**: Gene 9, List 9,
+  Label 8, plus **7 level-3 question nodes** under `Label ▸ Catalogue`, one per registered question
   except the retired `has_domain_ipr000719`. Nesting is category → node → view and no deeper, which
-  the suite checks. `Label ▸ Strategies` is marked advanced and is therefore drawn last.
+  the suite checks. `Label` is drawn in the settled order (Catalogue · Infer · Strategies ·
+  Scorecard · Map · Runs · Fill · Compare); `Strategies` is no longer "advanced", because losing
+  nothing of the previous ParaScape means the 39 strategies stay first-class. The advanced-last
+  mechanism is kept and tested, for whichever node needs it next.
+* **One search bar is the navigator** (`nodes.search`): genes by accession or product, questions,
+  strategies, datasets, panels and guide pages, ranked and interleaved by `help_index.search` over
+  all of them at once, every result drawn as a card in a `Found` section above the home sections.
+  Clicking a gene result selects that gene and opens its card, not a generic page; Down from the box
+  moves into the results and Return opens one, as the Help field behaves. Two new destination kinds
+  carry it: `gene` (select the gene, raise its card) and `entry` (hand the row to
+  `help_search.open_entry`, which already knows where each kind lives). A node made by the search
+  is marked `from_search`, which is the only exemption from the one-or-two-word title rule -- a
+  result is named by the thing it found.
+* **The layout is spaCR's.** `theme.RADIUS` gained `tile: 16` and `theme.SPACING` is spaCR's scale
+  (4/8/12/16/24/32); the cards follow its `QPushButton#AppTile` rule -- no resting rim, an accent
+  rim when focused or hovered, because a rim on every tile made the pane read as a ruled table --
+  and an unavailable card keeps a dashed one so it cannot be mistaken for a working tile.
 * **Nothing was removed.** `_home` is called after the other installs, so every dock is still built
   and still tabbed; `test_nothing_was_removed_to_make_room_for_the_home_screen` names the thirteen
   and raises each one. The home dock is the tab that is up on startup.
@@ -352,7 +368,9 @@ Changed: `parascape/app.py` (`_home`, installed last so it is the tab that is up
 * **Unavailable is a rendered state with a reason**, which is how the missing work is now visible on
   the screen rather than discovered by clicking: `Gene ▸ Similar` (needs the phase-3 neighbour
   space), `List ▸ Profile`, `List ▸ Mechanism`, `List ▸ Rank` (no set-level view exists),
-  `List ▸ Pulldown` (no CRAPome background), `List ▸ Answer/Project/Export` (until a list is
+  `List ▸ Pulldown` (no background frequency background), `Label ▸ Runs` (the harness writes
+  `results/harness_holdout_log.jsonl`, but no panel reads it back),
+  `List ▸ Answer/Map/Export` (until a list is
   dropped), `Label ▸ Fill` (no question has cleared the 90 % frozen-test bound), and the two
   declared gaps, which render as "cannot be answered yet" rather than as a page.
 * **Trust is inline and structural.** `Node.__post_init__` refuses a claim-bearing node that does

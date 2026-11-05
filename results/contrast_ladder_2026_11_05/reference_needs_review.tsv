@@ -1,0 +1,31 @@
+study	axis	n_levels	levels	why
+GSE103113	UNPARSED (free text)	2	gra18 | pru	these words vary between groups and no declared axis explains them
+GSE116539	strain	2	tgcrt ko derived from rh{delta}ku80{delta}hxg clone | type i rh{delta}ku80{delta}hxg clone	axis never carries an automatic reference
+GSE125120	UNPARSED (free text)	2	bystander | infected	these words vary between groups and no declared axis explains them
+GSE132238	UNPARSED (free text)	2	stress | unstress	these words vary between groups and no declared axis explains them
+GSE136123	UNPARSED (free text)	4	pru | rh | us | ut	these words vary between groups and no declared axis explains them
+GSE136123	genotype	2	morc kd | unstated	no level matches the reference vocabulary
+GSE139537	UNPARSED (free text)	2	etoh | shield1	these words vary between groups and no declared axis explains them
+GSE159515	UNPARSED (free text)	2	a | b	these words look like plate or batch identifiers; confirm they are not conditions
+GSE159515	stage	2	bradyzoites | tachyzoites	axis never carries an automatic reference
+GSE159515	strain	2	me49 | rh	axis never carries an automatic reference
+GSE178355	genotype	3	mettl3- aid | wtap- aid | yth1- aid	no level matches the reference vocabulary
+GSE178355	strain	3	rh::tir1::mettl3-aid | rh::tir1::wtap-aid | rh::tir1::yth1-aid	axis never carries an automatic reference
+GSE178355	treatment	3	500um iaa treatment, 16h | 500um iaa treatment, 4h | non treated	no level matches the reference vocabulary
+GSE198001	genotype	2	indirect knockout | unstated	no level matches the reference vocabulary
+GSE200962	treatment	15	48h, ph 7.4, 5% co2, 24h with auxin | 48h, ph 7.4, 5% co2, no auxin | 72h, ph 8.2, ambient air, 24h with auxin | me49 tgcyc5 bz +aux rep1 | me49 tgcyc5 bz +aux rep2 | me49 tgcyc5 bz -aux rep1	no level matches the reference vocabulary
+GSE208647	genotype	3	bradyzoite | tacyzoite | tissue cyst	no level matches the reference vocabulary
+GSE208647	tissue	2	hff cell | mouse brain	axis never carries an automatic reference
+GSE208647	treatment	3	30 days in mice | ph 7.0 | ph 8.2	no level matches the reference vocabulary
+GSE218921	tissue	2	freshly excysted sporozoites | replicating tachyzoites under different conditions	axis never carries an automatic reference
+GSE223621	genotype	3	pru-ova-tdtomato | pru-ova-tdtomato delta bfd1::mneongreen | pru-ova-tdtomato delta bfd2::hxgprt	no level matches the reference vocabulary
+GSE223869	UNPARSED (free text)	6	1a | 1b | 2a | 2b | 3a | 3b	these words look like plate or batch identifiers; confirm they are not conditions
+GSE223869	genotype	2	me49delta ku80delta bfd1::bfd1-ty | me49delta ku80delta bfd1::bfd1-tydelta bfd2	no level matches the reference vocabulary
+GSE223869	treatment	2	alkaline stress media, ambient co2 | standard culture media, 5% co2	no level matches the reference vocabulary
+GSE223877	UNPARSED (free text)	2	1a | 1b	these words look like plate or batch identifiers; confirm they are not conditions
+GSE223877	genotype	2	me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-ty | me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-tydelta bfd2::tdtomato	no level matches the reference vocabulary
+GSE224934	treatment	3	add iaa 0h | add iaa 12h | add iaa 24h	no level matches the reference vocabulary
+GSE228580	treatment	2	iaa 0h | iaa 60h	no level matches the reference vocabulary
+GSE240648	strain	2	tati-3ha-tguba1 strains cultured under 0.5 ug/ml atc (knockout strain) | tati-3ha-tguba1 strains cultured under dmso (wild strain)	axis never carries an automatic reference
+GSE245775	UNPARSED (free text)	2	riboseq | rnaseq	these words vary between groups and no declared axis explains them
+GSE245775	treatment	2	dmem ph7.4, 5%co2 | rpmi ph8.3, ambient co2	no level matches the reference vocabulary

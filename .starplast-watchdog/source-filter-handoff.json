@@ -1,0 +1,35 @@
+{
+  "operation": "read_only_measurement_source_search_and_stale_export_prevention",
+  "epoch": 1793398731.2209613,
+  "source_commit": "ccce694b30f5e08f27403f1550e958e0c472920e",
+  "files": {
+    "/home/carruthers/.local/share/parascape-download-worker/validate_deposited_source_filter.py": {
+      "sha256": "7de38f02e547584dbb6bb3c17376dcd011ffd4675047c4820c2fc08d59189f63",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/validate_deposited_source_filter-7de38f02e547584dbb6bb3c17376dcd011ffd4675047c4820c2fc08d59189f63.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/push_protein_identifier_followup.py": {
+      "sha256": "73d63fc602f4dadf4f2facc4cff62f6b22515008530e93c887509d618378e9a6",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/push_protein_identifier_followup-73d63fc602f4dadf4f2facc4cff62f6b22515008530e93c887509d618378e9a6.py"
+    },
+    "/media/carruthers/mnt1/parascape-identifier-followup-checkout/parascape/deposited_values_panel.py": {
+      "sha256": "43b2ff2df00d6a5cfcd583415c749ec874d37217d7b1aafcfbfcfb5a7c2485a5",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/deposited_values_panel-43b2ff2df00d6a5cfcd583415c749ec874d37217d7b1aafcfbfcfb5a7c2485a5.py"
+    }
+  },
+  "live_quantity_tables_exercised": 136,
+  "metadata_filter_fields": [
+    "study",
+    "source_analysis_or_filename",
+    "assay",
+    "units_or_quantity_label"
+  ],
+  "metadata_matching": "case-insensitive substring; original feature queries remain exact and case-sensitive",
+  "source_selection_retained_if_visible": true,
+  "stale_query_or_source_exports_invalidated": true,
+  "empty_source_result_actions_disabled": true,
+  "numerical_data_transformation": "none; source selection only",
+  "validation": "544 focused reader/UI/Compare/docs tests including whole-window tooltip audit;523 final documentation checks; actual136-table Qt/API/CSV offline source filtering and provenance replay",
+  "goal_status": "active",
+  "all_datasets_complete": false,
+  "next_priority": "Prepare expanded portable data release after verified0.0.5.0 publication; new data remain outside frozen0.0.5.0"
+}

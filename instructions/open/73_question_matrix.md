@@ -300,3 +300,45 @@ seed and partition sizes; every guard stage recorded; the cross-validated and fr
 bounds; the calibration curve; the holdout-log entry; which claims were kept and by whom; and the date.
 Re-running a saved record on the same release must reproduce it exactly; on a newer release it must say what
 changed.
+
+## Information categories built (2026-11-05): every column annotated, and the exclusion derived from it
+`parascape/information_categories.py`, `tests/test_information_categories.py`,
+`scripts/build_information_categories_review.py`, `results/information_categories_2026_11_05/`.
+
+* **1,056 columns over five shipped tables, none unannotated.** `nodes.parquet` (443), the
+  sequence (22), domain (313) and expression (266) trait tables and the map's own `values.parquet`
+  (20). `information_categories.unannotated()` is empty and the gate test keeps it empty; a column
+  that genuinely cannot be classed is to be left out of the mapping so the gate fails loudly rather
+  than a wrong category passing quietly.
+* **Derived from provenance, not from names.** `datasets.provenance(column, organism)` gives the
+  level and kind, and that pair is the primary rule; a dataset whose level is true but not decisive
+  gets a record of its own justified from its registry entry; a single column that differs from its
+  dataset gets an exact override. 1,003 of the 1,064 rows rest on recorded provenance (the dataset
+  registry, or the per-column registry shipped beside a trait release) and 60 on a judgement, each
+  listed with its reason in `judgements.tsv`.
+* **The traps, verified by enumerating the registry rather than by guessing.** All 16
+  `DNA/CRISPR_screen` datasets are `fitness` -- `gra17_synthlethal`, `invivo_platform` and `gra12`
+  among them -- except the host-transcription effector screen, which is `host_response` as the
+  instruction says. `fit_hyperlopit_unassigned_invivo_lib1/2` are **`fitness`, not `place`**: the
+  name records which library was screened and the measurement is guide depletion, so a name-based
+  rule gets that one exactly backwards. hyperLOPIT, TAGM and the four `ortholopit_*` columns that no
+  dataset entry claims are `place`; `pvm_proximity_positive` is `place` and `interaction`; every
+  `te*`, `rpf*` and `expr_*_RIBOseq` column is `translation` while the RNA arm of the same deposits
+  stays `transcript`; `gene_id`, `product` and `orthogroup` are `identity` and are never features.
+* **The harness exclusion is now computed from categories.** `harness.evidence_selection` returns
+  the requested and the effective selection with the reason for every removal;
+  `run_question(force_include={'<column or category>': '<reason>'})` is the recorded escape hatch,
+  and it is hashed into the evidence identity, so including a circular column on purpose spends the
+  frozen partition exactly as widening the forbidden list does. The hand-written `evidence_forbidden`
+  list is **kept as an additional, recorded override**: `pubmed` is `attention`, so no `place`
+  category would hold it out of the host-facing question, where it is nearly the conclusion. It is no
+  longer the mechanism. Each registered question now also carries `label_category`, and a question
+  that leaves it empty has it read off the column named in `label_source`.
+* **The one gap in the vocabulary, flagged rather than papered over.** Instruction 73 lists no
+  `function` category, so functional annotation (`function_class`, the GO BP and MF columns,
+  `ec_number`) is annotated `phenotype`. The exclusion that follows is right for a function question
+  and slightly wide for an imaging-phenotype question. Adding a seventeenth category is Einar's call;
+  the gate test reads the vocabulary from this file, so it will be the thing that says so.
+* **Still open from this piece:** the data picker (`Label -> Infer`) does not yet show the
+  excluded-by-circularity set, and the ingest gate that refuses a new column with no category is the
+  test rather than the loader.

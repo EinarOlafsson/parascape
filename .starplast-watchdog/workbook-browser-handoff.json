@@ -1,0 +1,183 @@
+{
+  "epoch": 1793429903.4693103,
+  "previous_goal_turn_classification": "progress",
+  "goal_status": "active",
+  "historical_inference_status": "paused",
+  "goal_complete": false,
+  "release8_commit": "9cd6855d8ff8f72f46a4cb3d7a6b19cb4a87aa09",
+  "superseded_release8_commit": "72a645982ccf642527f126230239c6bb8c64b0ce",
+  "release8_data_sha256": "7dccd05bcd1f409ae2dd0ca8188f95c0d24945aa9d930b72f26bce28ce4e86fa",
+  "release8_scientific_archive_changed": false,
+  "release8_documentation_checks_passed": 581,
+  "release8_full_release_workflow_checks_passed": 759,
+  "release8_installed_wheel_validation": {
+    "validated_epoch": 1793428891.0593197,
+    "commit": "9cd6855d8ff8f72f46a4cb3d7a6b19cb4a87aa09",
+    "version": "0.0.8.0",
+    "wheel_bytes": 2175475,
+    "wheel_sha256": "b9a58729be08c681d4aa7bef7541b14ce2014ceb2ad53b37b7a5263c63c453a2",
+    "smoke": {
+      "verified_RNA_entries": 330,
+      "priority_study_runs": 8,
+      "deposited_query_rows": 12,
+      "catalogue_records": 692,
+      "original_value_matrices": 147,
+      "annotation_platforms": 54,
+      "annotated_query_rows": 9,
+      "whole_matrix_QC_rows": 16,
+      "network_disabled": true,
+      "NAS_reads_disabled": true,
+      "original_measurement_packs": 452,
+      "protein_quantity_packs": 346,
+      "gene_quantity_packs": 99,
+      "workbench_quantity_packs": 7,
+      "installed_new_assay_views": 108,
+      "sparse_dataset_metadata_views": 66,
+      "original_quantity_cells": 7475381,
+      "missing_original_cells": 166442,
+      "source_quantity_columns": 1750,
+      "exact_primary_filename_matches": 16,
+      "submitted_factor_occurrences": 10,
+      "experiment_label_candidate_columns": 405,
+      "reference_source_occurrences": 52,
+      "reference_header_records": 920296,
+      "PRIDE_projects": 209,
+      "submitted_PRIDE_designs": 52,
+      "installed_actual_Compare_tabs_and_CSV_exports": true,
+      "protein_identifier_packs": 334,
+      "protein_identifier_evidence_records": 1236097,
+      "installed_source_search_and_stale_export_refusal": true,
+      "accession_identifier_packs": 3,
+      "accession_identifier_evidence_records": 76260,
+      "installed_accession_components_and_unavailable_mapping_grade": true,
+      "installed_row_specific_review_only_candidates": true,
+      "installed_source_flag_treatment_and_selected_measurement_views": true
+    },
+    "clean_tracked_checkout": true,
+    "twine_strict": true,
+    "wheel_audit": true
+  },
+  "release8_publisher_gate_selfchecks": {
+    "epoch": 1793429546.8919451,
+    "publisher_sha256": "03c23a3782b9074e85af9d0e41aa9355747dad49fac963e065a33b0b867bdfc0",
+    "checks": [
+      "real wheel/preservation/archive plus fixture final-audit gates reach push without mutations",
+      "refused wrong wheel commit",
+      "refused missing quantity table",
+      "refused broken sparse QC binding",
+      "refused wrong final-audit reader source",
+      "refused wrong final-audit source index"
+    ],
+    "checks_passed": 6,
+    "network_calls": 0,
+    "publication_mutations": 0,
+    "final_audit_source_binding_fixture_only": true,
+    "actual_final_component_replay_completion_claimed": false
+  },
+  "release8_final_component_audit": {
+    "phase": "installing_and_hashing_all_optional_components",
+    "selected": 196,
+    "verified": 190,
+    "index": {
+      "file": "df9c7911efeddc0931ddc6fed7596a031ea1b927c393200a5c143b068eb758c9.json",
+      "sha256": "df9c7911efeddc0931ddc6fed7596a031ea1b927c393200a5c143b068eb758c9"
+    },
+    "epoch": 1793429869.296563
+  },
+  "release8_preparation_status": {
+    "phase": "waiting_for_final_exact_source_component_audit",
+    "updated_epoch": 1793429894.1063473
+  },
+  "release8_publication_status": {},
+  "workbook_feature_commit": "ca953c7410c31dcc53618a0615485cfabd805462",
+  "workbook_feature_parent": "9cd6855d8ff8f72f46a4cb3d7a6b19cb4a87aa09",
+  "workbook_feature_checkout": "/media/carruthers/mnt1/parascape-workbook-browser-checkout",
+  "workbook_feature_checks": 621,
+  "workbook_presentation_checks": 3,
+  "workbook_actual_GUI_proof": {
+    "epoch": 1793429075.9914136,
+    "source_code": {
+      "parascape/workbook_values.py": "084eb5eb8063874e76145a65dfde36811dfda7686f2597035b9326ed14be9cc5",
+      "parascape/workbook_values_panel.py": "5bfb706836ded95351e3cac9e362aec3eef10e26d54c86cf5dfc24f9122d8eee",
+      "parascape/optional_workbook_data.py": "2e2c2e041eae0bfc4c6ddbeb5ebc23d054bb03ff43970ade030104a99f315482",
+      "parascape/data_components.py": "006fd20df1baeb44dd65ccc534e372235782de1b745592ccae4a911edd9c8de9",
+      "scripts/build_data_components.py": "2f2768ea9c95422eb2f7af1a8efa04e0b873ba53ed071a109c6255acec1ce3d8",
+      "parascape/compare_panel.py": "1b7638a3fb9b5db69a7fb49259a92789140d4992f2266899884f900278b94ed5"
+    },
+    "actual_Compare_tab": true,
+    "actual_modal_download_dialogs": true,
+    "NAS_reads_disabled": true,
+    "external_network_disabled": true,
+    "local_archive_transport": true,
+    "test_only_publication_marker": true,
+    "private_default_workbook_root_redirected": true,
+    "public_release_verified": false,
+    "workbooks": [
+      {
+        "label": "gb|TGME49_028700",
+        "sheet": 0,
+        "cells": 7,
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM2479nnn/GSM2479020/suppl/GSM2479020_C2C12_SkMC_ni_Pool-3_T--1_vs_toxo_RNA-Seq_CL.xlsx",
+        "format": "OOXML",
+        "csv_sha256": "5bc217ccc7ff445eb846390126c39bd939f65468b354a31ac46f71fe81afd5dd",
+        "offline_reopen_without_download": true,
+        "exact_source_cell_CSV_bytes_preserved": true,
+        "verification": "all_OOXML_source_cells_independently_reconciled"
+      },
+      {
+        "label": "TGGT1_226450-t26_1",
+        "sheet": 0,
+        "cells": 7,
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145660/suppl/GSE145660_SwissProt_KOPiTvsPar.DEG_down_sort.xls.gz",
+        "format": "BIFF_decoded",
+        "csv_sha256": "2a4269e5c8a38de422e36418392b8b032ac9f3d77fb048925210b9ad13ad07bf",
+        "offline_reopen_without_download": true,
+        "exact_source_cell_CSV_bytes_preserved": true,
+        "verification": "BIFF_checksums_verified_independent_reader_review_required"
+      }
+    ],
+    "component_parts_transferred": 2,
+    "no_numeric_or_biological_conversion": true
+  },
+  "workbook_followup_push": {
+    "phase": "waiting_for_publication_and_checkout_sync",
+    "updated_epoch": 1793429900.889847,
+    "commit": "ca953c7410c31dcc53618a0615485cfabd805462",
+    "release_phase": null,
+    "checkout_phase": null
+  },
+  "workbook_extraction": {
+    "phase": "extracting_source_cells",
+    "epoch": 1793429609.997688,
+    "selected_sources": 93,
+    "unique_workbooks": 93,
+    "completed": 60,
+    "reviews": [],
+    "extracted_cells": 9408105,
+    "measurement_admission": false
+  },
+  "workbook_independent_validation": {
+    "phase": "validating_complete_workbooks",
+    "epoch": 1793429816.168037,
+    "checked": 48,
+    "independently_reconciled": 39,
+    "independent_cells": 3108422,
+    "statuses": {
+      "all_OOXML_source_cells_independently_reconciled": 39,
+      "BIFF_checksums_verified_independent_reader_review_required": 9
+    },
+    "reviews": []
+  },
+  "workbook_components_009": {},
+  "workbook_component_preparation_job": "1198404; registered after final release8 component audit, without restarting it",
+  "workbook_payloads_publicly_hosted": false,
+  "workbook_comparative_admission": false,
+  "observed_native_handles": "MainPID=861156\nExecMainStatus=0\nId=parascape-release-008-final-component-audit.service\nActiveState=activating\n\nMainPID=864646\nExecMainStatus=0\nId=parascape-publish-0.0.8.0.service\nActiveState=active\n\nMainPID=870095\nExecMainStatus=0\nId=parascape-workbook-followup-push.service\nActiveState=active\n\nMainPID=0\nExecMainStatus=0\nId=parascape-workbook-components-009.service\nActiveState=inactive\n\nMainPID=845063\nExecMainStatus=0\nId=parascape-workbook-cells.service\nActiveState=activating\n\nMainPID=876415\nExecMainStatus=0\nId=parascape-workbook-cell-validation.service\nActiveState=activating\n\nMainPID=3614034\nExecMainStatus=0\nId=parascape-quant-cached.service\nActiveState=active\n\nMainPID=3533750\nExecMainStatus=0\nId=parascape-pride-downloads.service\nActiveState=active\n",
+  "next_steps": [
+    "Observe running861156 exact-source196component/66reader replay; no restart on an observation timeout. Publisher864646 waits finalreceipt then reuses203parts/core,uploads newaudit9cd,retargets owned draft withtag+commit,requires exactnewCI then nonforcedmain/PyPI verification.",
+    "Workbook followup870095 verifies actualGUI sourcehashes and waits verified8publication/live sync, then pushes ca953nightly only and updates owned live checkout/launcher if safe; no forced branches or app restarts.",
+    "Version9 native workbook component timer prepares each completed checked source, inherits original196sparse URLs/hashbindings,keeps indexprovisional and payload outsidecore; no9upload/publication programmed yet.",
+    "Inspect next extraction/independent-validation/portablecomponent results; resolve actual reviews and ten legacy BIFF raw-record/formula verification gaps; preserve unknown biological quality and unreviewed measurement roles.",
+    "Continue all remaining formats/studies/RNA acquisition and source-bound identity/quantity/unit/sample-role admission and fair comparisons; goal remains broader than this workbook browser."
+  ]
+}

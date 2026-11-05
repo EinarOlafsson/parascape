@@ -1,0 +1,66 @@
+........................................................................ [ 11%]
+........................................................................ [ 23%]
+........................................................................ [ 35%]
+..........................F.........F................................... [ 46%]
+........................................................................ [ 58%]
+........................................................................ [ 70%]
+........................................................................ [ 82%]
+........................................................................ [ 93%]
+.....................................                                    [100%]
+=================================== FAILURES ===================================
+_ test_every_public_function_and_class_has_a_docstring[functional_pair_class.py] _
+
+name = 'functional_pair_class.py'
+
+    @pytest.mark.parametrize("name", MODULES)
+    def test_every_public_function_and_class_has_a_docstring(name):
+        missing = []
+        for node in _tree(name).body:
+            public = not node.__dict__.get("name", "_").startswith("_")
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and public:
+                if not ast.get_docstring(node):
+                    missing.append(f"{name}:{node.lineno} {node.name}")
+>       assert not missing, f"no docstring: {missing}"
+E       AssertionError: no docstring: ['functional_pair_class.py:19 outcome_title']
+E       assert not ['functional_pair_class.py:19 outcome_title']
+
+tests/test_docstrings.py:39: AssertionError
+____ test_every_public_function_and_class_has_a_docstring[group_ratios.py] _____
+
+name = 'group_ratios.py'
+
+    @pytest.mark.parametrize("name", MODULES)
+    def test_every_public_function_and_class_has_a_docstring(name):
+        missing = []
+        for node in _tree(name).body:
+            public = not node.__dict__.get("name", "_").startswith("_")
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and public:
+                if not ast.get_docstring(node):
+                    missing.append(f"{name}:{node.lineno} {node.name}")
+>       assert not missing, f"no docstring: {missing}"
+E       AssertionError: no docstring: ['group_ratios.py:34 inputs']
+E       assert not ['group_ratios.py:34 inputs']
+
+tests/test_docstrings.py:39: AssertionError
+=============================== warnings summary ===============================
+tests/test_paths.py::test_running_as_a_module_prints_the_report
+  <frozen runpy>:128: RuntimeWarning: 'starplast.paths' found in sys.modules after import of package 'starplast', but prior to execution of 'starplast.paths'; this may result in unpredictable behaviour
+
+tests/test_discover_cli.py::test_a_search_runs_and_is_saved_where_the_window_will_find_it
+tests/test_discover_cli.py::test_a_search_runs_and_is_saved_where_the_window_will_find_it
+tests/test_discover_cli.py::test_a_task_already_saved_is_skipped_so_a_killed_batch_can_be_rerun
+tests/test_discover_cli.py::test_one_failing_task_does_not_take_the_batch_with_it
+tests/test_discover_cli.py::test_saved_searches_can_be_listed_and_read_without_a_window
+tests/test_discover_cli.py::test_saved_searches_can_be_listed_and_read_without_a_window
+  /home/carruthers/anaconda3/envs/starplast/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+    warn(
+
+tests/test_discover_cli.py: 16 warnings
+  /home/carruthers/anaconda3/envs/starplast/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+    warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_docstrings.py::test_every_public_function_and_class_has_a_docstring[functional_pair_class.py]
+FAILED tests/test_docstrings.py::test_every_public_function_and_class_has_a_docstring[group_ratios.py]
+2 failed, 611 passed, 23 warnings in 43.75s

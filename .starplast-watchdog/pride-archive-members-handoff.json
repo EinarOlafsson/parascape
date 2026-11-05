@@ -1,0 +1,69 @@
+{
+  "operation": "automatic_PRIDE_archive_member_discovery_and_source_cohort_QC",
+  "epoch": 1793408911.6137724,
+  "files": {
+    "/home/carruthers/.local/share/parascape-download-worker/inventory_pride_archive_members.py": {
+      "sha256": "d2c5c5b7c9a2ddbcdfc53522f2227aab2fd9e5128ff514de15127696ebd1dbe7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/inventory_pride_archive_members-d2c5c5b7c9a2ddbcdfc53522f2227aab2fd9e5128ff514de15127696ebd1dbe7.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_pride_archive_members.py": {
+      "sha256": "9f5d9baccaa68353862ce534c6d9ec8e888e3b849b11fea0a65db03de6d02732",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/check_pride_archive_members-9f5d9baccaa68353862ce534c6d9ec8e888e3b849b11fea0a65db03de6d02732.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_pride_archive_member_catalogue.py": {
+      "sha256": "6f7c2566e78104a87264930e9c921f50c4dc801e9385359e4f3ced9140742737",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/validate_pride_archive_member_catalogue-6f7c2566e78104a87264930e9c921f50c4dc801e9385359e4f3ced9140742737.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/archive_pride_member_inventory.py": {
+      "sha256": "afcf16f0e826ec934e073baaabbb1ca362ba348bd1f52e188e9d6864f4812f85",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/archive_pride_member_inventory-afcf16f0e826ec934e073baaabbb1ca362ba348bd1f52e188e9d6864f4812f85.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-pride-archive-members.service": {
+      "sha256": "a144d2f9f8360711180fb32c39d65c9f34b6463cbff43818cc0a1c003e17041a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/parascape-pride-archive-members-a144d2f9f8360711180fb32c39d65c9f34b6463cbff43818cc0a1c003e17041a.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-pride-archive-members.timer": {
+      "sha256": "6012c7321f94033314043792a6f30f5988eea4475761112987c7fc7b8b5cba0b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/parascape-pride-archive-members-6012c7321f94033314043792a6f30f5988eea4475761112987c7fc7b8b5cba0b.timer"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_members/coverage.json": {
+      "sha256": "4bb5046eccee80275312cf260cf2d2c8bd5e9786d4e3104bc6b09696dd7217d9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/coverage-4bb5046eccee80275312cf260cf2d2c8bd5e9786d4e3104bc6b09696dd7217d9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_members/cohort_qc/current.json": {
+      "sha256": "b5c589af79cb0cb6008b0b1d0fd4f19fc5f9b0bbbdf739e4df1f634239e275a9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/current-b5c589af79cb0cb6008b0b1d0fd4f19fc5f9b0bbbdf739e4df1f634239e275a9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_members/cohort_qc/b7c5901ed16108eaae1d421a06e052f4bfa7ef1c036aaff0fe03a4986d13e939.json": {
+      "sha256": "b7c5901ed16108eaae1d421a06e052f4bfa7ef1c036aaff0fe03a4986d13e939",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/b7c5901ed16108eaae1d421a06e052f4bfa7ef1c036aaff0fe03a4986d13e939-b7c5901ed16108eaae1d421a06e052f4bfa7ef1c036aaff0fe03a4986d13e939.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_members/review_evidence/53f4f482e950be52bc2598e44166cfa8d89855fb5a1fadc615dba2854d18e938.json": {
+      "sha256": "53f4f482e950be52bc2598e44166cfa8d89855fb5a1fadc615dba2854d18e938",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_member_audit/53f4f482e950be52bc2598e44166cfa8d89855fb5a1fadc615dba2854d18e938-53f4f482e950be52bc2598e44166cfa8d89855fb5a1fadc615dba2854d18e938.json"
+    }
+  },
+  "selected_archives": 108,
+  "indexed_acquired_archives": 65,
+  "waiting_for_acquisition": 41,
+  "structural_review_required": 2,
+  "original_logical_member_occurrences": 1255,
+  "declared_projects": 26,
+  "filename_only_table_candidates": 595,
+  "canonical_protein_table_filename_candidates": 43,
+  "filename_only_reference_candidates": 3,
+  "identical_archive_byte_groups": 2,
+  "scope": "Logical-member metadata only; no extraction,per-member payload CRC/SHA validation,numeric conversion,reference/database-use assertion,biological inference or measurement admission. Candidate filenames require full payload/schema/source-role reconciliation before admission.",
+  "integrity": "All successful archive source SHA256 values verified against captured acquisition receipts; cached source signatures and every member listing receipt reverified.65indexes/1255ordinals and independent count/path checks reconciled; unchanged metadata reused.",
+  "review_findings": "Two ZIP-labelled sources are not recognized as complete ZIP by the standard library. Actual SHA256 and declared primary/HTTPS byte counts match their receipts. Reasons for structural unusability remain unknown; no transfer truncation or repair inferred.",
+  "duplicate_scope": "Two pairs of identical container bytes declared under different project records are linked by exact SHA256. This does not establish biological sample independence,and unequal container hashes do not prove payload independence.",
+  "synthetic_checks": "ZIP/TAR duplicate names and ordinals,Windows/absolute/parent/NUL/link paths,declared CRC versus actual validation distinction,metadata budgets,software nonexecution,nested-archive separation,original source hashes and tampered-cache refusal passed.",
+  "automation": "Enabled five-minute timer,one-shot inventory plus independent cohort QC; flock prevents duplicate workers,1GiB memory cap,24CPUaffinity0-11,16-27,nice19/idleIO. ZIP metadata budget32MiB/200000members. Existing200GiB download-cache cap and25GiB NAS reserve unchanged.",
+  "source_quantities_modified": false,
+  "release7_frozen_source_or_assets_modified": false,
+  "native_release": "Frozen e0126de version7 publisher555872 alive; exact Documentation passed,Tests41151180158 now in progress. Do not advance nightly or alter isolated release checkout.",
+  "next_action": "Validate and byte-preservingly materialize bounded supported-format filename candidates with per-member CRC/SHA/source/archive/ordinal receipts; exclude links,encrypted/unsafe/software-only contexts and keep unknown assay/scale/biological roles explicit. Do not admit filename hints as measurements.",
+  "dataset_goal_status": "active",
+  "all_dataset_goal_complete": false,
+  "historical_inference_goal_status": "paused"
+}

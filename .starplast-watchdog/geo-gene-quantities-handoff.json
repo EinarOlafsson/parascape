@@ -1,0 +1,1154 @@
+{
+  "operation": "admit_original_GEO_gene_table_expected_count_TPM_and_FPKM",
+  "epoch": 1793412925.6767862,
+  "files": {
+    "/home/carruthers/.local/share/parascape-download-worker/process_geo_gene_quantities.py": {
+      "sha256": "e9eb2d47eaed45a55766644387e8a3e66f5808692a54eb57d5c412db420ace50",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/process_geo_gene_quantities-e9eb2d47eaed45a55766644387e8a3e66f5808692a54eb57d5c412db420ace50.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_geo_gene_quantities.py": {
+      "sha256": "06a0598b92014f4b46e451c20f091c82541a196c26d1eb1ef5f6ce9064bdfb28",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/check_geo_gene_quantities-06a0598b92014f4b46e451c20f091c82541a196c26d1eb1ef5f6ce9064bdfb28.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_geo_gene_quantities.py": {
+      "sha256": "2a59faa6a1c38f46efe44c476fd830c808dc2e43a25d3192ffe098772d8e2ecb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/validate_geo_gene_quantities-2a59faa6a1c38f46efe44c476fd830c808dc2e43a25d3192ffe098772d8e2ecb.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_geo_gene_quantities_offline_ui.py": {
+      "sha256": "836a2af59acf0e026d78bb3b2a9032a40329aea6229517fe9d22c48c54f6db1d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/check_geo_gene_quantities_offline_ui-836a2af59acf0e026d78bb3b2a9032a40329aea6229517fe9d22c48c54f6db1d.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/archive_geo_gene_quantities.py": {
+      "sha256": "889fc537408bbcb0ed43dbe1ef18bc229d4be3ba6e140c53550c8fc270dd5b03",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/archive_geo_gene_quantities-889fc537408bbcb0ed43dbe1ef18bc229d4be3ba6e140c53550c8fc270dd5b03.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-geo-gene-quantities.service": {
+      "sha256": "f5b134762b68902bdd61dfe80d1be2c41b18ee69a16145b8c19d79bcf1c2352f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/parascape-geo-gene-quantities-f5b134762b68902bdd61dfe80d1be2c41b18ee69a16145b8c19d79bcf1c2352f.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-geo-gene-quantities.timer": {
+      "sha256": "38845e839cfb415d7a2f57ed54b17c232fb42aeac90adbcbca62ce9fc28b76c8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/parascape-geo-gene-quantities-38845e839cfb415d7a2f57ed54b17c232fb42aeac90adbcbca62ce9fc28b76c8.timer"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/prepared_deposited_values/geo_gene_quantities/coverage.json": {
+      "sha256": "c41472152af009762a957e146f5c718ab8883cad149fa49c449f3555b2ca1265",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/coverage-c41472152af009762a957e146f5c718ab8883cad149fa49c449f3555b2ca1265.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/prepared_deposited_values/geo_gene_quantities/catalogue.json": {
+      "sha256": "80ed4094b9774b2e0eba96a16b3347f0ff8300cc6b9ba2066b10ab7f8e86dfea",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/catalogue-80ed4094b9774b2e0eba96a16b3347f0ff8300cc6b9ba2066b10ab7f8e86dfea.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/prepared_deposited_values/geo_gene_quantities/operations.jsonl": {
+      "sha256": "4f9eae0b67e2c0e8e540a6cdb2bbeea647b5232c94ebc44388c8dccaf3335aec",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/operations-4f9eae0b67e2c0e8e540a6cdb2bbeea647b5232c94ebc44388c8dccaf3335aec.jsonl"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_processed/rsem_source_review.json": {
+      "sha256": "ea42482cbc3697af5af3f6eab66871a7c2452aab98383fd94fc14bab58254ef2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/rsem_source_review-ea42482cbc3697af5af3f6eab66871a7c2452aab98383fd94fc14bab58254ef2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/prepared_deposited_values/geo_gene_quantities/runtime-validation/validation-4a846694468bffd269592bc94cf3bf39c341d4bb0eb1546162cfbf36167f86b6.json": {
+      "sha256": "4a846694468bffd269592bc94cf3bf39c341d4bb0eb1546162cfbf36167f86b6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/validation-4a846694468bffd269592bc94cf3bf39c341d4bb0eb1546162cfbf36167f86b6-4a846694468bffd269592bc94cf3bf39c341d4bb0eb1546162cfbf36167f86b6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/prepared_deposited_values/geo_gene_quantities/runtime-validation/synthetic-6d6bea7174cf57cf12a1e36749a47635afcdcddb7c332008607f9594f6781466.json": {
+      "sha256": "6d6bea7174cf57cf12a1e36749a47635afcdcddb7c332008607f9594f6781466",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/synthetic-6d6bea7174cf57cf12a1e36749a47635afcdcddb7c332008607f9594f6781466-6d6bea7174cf57cf12a1e36749a47635afcdcddb7c332008607f9594f6781466.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-a7c625608ba94f96.csv": {
+      "sha256": "b6128e06451e8abc687a32b7337c195700e0a29e2c6d19538d159aa44fbe08dd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-a7c625608ba94f96-b6128e06451e8abc687a32b7337c195700e0a29e2c6d19538d159aa44fbe08dd.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-a42e43f78703aa3c.csv": {
+      "sha256": "d29c368107f4c5737e6ed27340b445e7763eae162739bb60e7167578483cac63",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-a42e43f78703aa3c-d29c368107f4c5737e6ed27340b445e7763eae162739bb60e7167578483cac63.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-bfc7b3eb3802c5bd.csv.treatment-df5e93f6fca3.json": {
+      "sha256": "0de4ba5c4f01bbe004ccad2310d44624043efe5496ccd98d50db164882a4922e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-bfc7b3eb3802c5bd.csv.treatment-df5e93f6fca3-0de4ba5c4f01bbe004ccad2310d44624043efe5496ccd98d50db164882a4922e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-36ac20ed519a44ff.csv.treatment-53110d1433fa.json": {
+      "sha256": "62f045dd4c54b559dd7d0fac11cd2e05dba63c1aee83969b8a945280826c1b5a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-36ac20ed519a44ff.csv.treatment-53110d1433fa-62f045dd4c54b559dd7d0fac11cd2e05dba63c1aee83969b8a945280826c1b5a.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-21deb256f1d46ab4.csv": {
+      "sha256": "4f3f28933002e789cacd2a7dd48f5d09349997d59da8c412e646596af0ca1165",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-21deb256f1d46ab4-4f3f28933002e789cacd2a7dd48f5d09349997d59da8c412e646596af0ca1165.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-fffd7b3c16a45f67.csv": {
+      "sha256": "db2ea17d502f16cda5f679fa50bf435a7b99822fb03da3522412a0ed05418054",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-fffd7b3c16a45f67-db2ea17d502f16cda5f679fa50bf435a7b99822fb03da3522412a0ed05418054.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-23665160321933d7.csv.treatment-99305af44aab.json": {
+      "sha256": "20d68e48c43d88b61d660ad1f4b3921947b666f976e669980f236573fc0df7b1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-23665160321933d7.csv.treatment-99305af44aab-20d68e48c43d88b61d660ad1f4b3921947b666f976e669980f236573fc0df7b1.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-050e14b34db89454.csv": {
+      "sha256": "c1f21c09afe2762ed3d9d99088faf2f338dc9626759486457f6a8e3b59645d5d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-050e14b34db89454-c1f21c09afe2762ed3d9d99088faf2f338dc9626759486457f6a8e3b59645d5d.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-28bbe4fc1dc4eac9.csv": {
+      "sha256": "d1b084c784bf6e3f07ac16d376a50b79c599ed5844a37204fa88694a57952ceb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-28bbe4fc1dc4eac9-d1b084c784bf6e3f07ac16d376a50b79c599ed5844a37204fa88694a57952ceb.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-a3306277438e8a0c.csv.treatment-8cb7e6a07cce.json": {
+      "sha256": "1a62aeb8cf3ddb9cc28dd4d12dfd0e8aae06de55f51c162ad791cf2ccf4cf9e8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-a3306277438e8a0c.csv.treatment-8cb7e6a07cce-1a62aeb8cf3ddb9cc28dd4d12dfd0e8aae06de55f51c162ad791cf2ccf4cf9e8.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-e22f8d62a8bda5b0.csv": {
+      "sha256": "a8c4a132004c746d9a615e944a64c2038446927eecd502b5f2df7e644c2ad8b1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-e22f8d62a8bda5b0-a8c4a132004c746d9a615e944a64c2038446927eecd502b5f2df7e644c2ad8b1.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-6e6d28c7a86bc5fd.csv.treatment-ee381f778688.json": {
+      "sha256": "b727c37caa10da5035fa9526e732bed66e5c84d63ef32b8b84d93ceb7373abd8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-6e6d28c7a86bc5fd.csv.treatment-ee381f778688-b727c37caa10da5035fa9526e732bed66e5c84d63ef32b8b84d93ceb7373abd8.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-efc1027f6ecbbeb6.csv.treatment-700409c876a3.json": {
+      "sha256": "b0f065eb33cd9fc3ee460a9870b79544c93a3081b9e81c8a09a73c85fb36ec20",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-efc1027f6ecbbeb6.csv.treatment-700409c876a3-b0f065eb33cd9fc3ee460a9870b79544c93a3081b9e81c8a09a73c85fb36ec20.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-b6a3987b21e9ec5a.csv": {
+      "sha256": "d2d034f472348ea3bc2e40482f73c630cb0f9d59c2c7bdb5d7a972837c6bb43a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-b6a3987b21e9ec5a-d2d034f472348ea3bc2e40482f73c630cb0f9d59c2c7bdb5d7a972837c6bb43a.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-8b7479d25069b1e0.csv": {
+      "sha256": "b6edf75d1b0014e4bb85d8165d01d5e5d0c0eb53cfc34a9941112d0e46be2c9f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-8b7479d25069b1e0-b6edf75d1b0014e4bb85d8165d01d5e5d0c0eb53cfc34a9941112d0e46be2c9f.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-fdcfdaede899eb28.csv.treatment-638f26c2ba77.json": {
+      "sha256": "f1fc3c1f63dc38621d1694addc1810edf551bf11f62b95051c7fdc3344fa1fd4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-fdcfdaede899eb28.csv.treatment-638f26c2ba77-f1fc3c1f63dc38621d1694addc1810edf551bf11f62b95051c7fdc3344fa1fd4.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-9b0047c56a3d4714.csv": {
+      "sha256": "54101a13762611f66b865da3ff0837bf922ac8af3b91b602b9dd80f8ad21df3f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-9b0047c56a3d4714-54101a13762611f66b865da3ff0837bf922ac8af3b91b602b9dd80f8ad21df3f.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-e23f7f4b378222aa.csv": {
+      "sha256": "962180d2a41151b400ec22ca80804ab1ddb9fc562305d2b424ce1da9acbd8cbf",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-e23f7f4b378222aa-962180d2a41151b400ec22ca80804ab1ddb9fc562305d2b424ce1da9acbd8cbf.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-b0e96b5d6bcce591.csv": {
+      "sha256": "60e67f37b09f73fcab3d07c9bc3bd3b97f7ff265446f508c38c38e453a2b7d14",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-b0e96b5d6bcce591-60e67f37b09f73fcab3d07c9bc3bd3b97f7ff265446f508c38c38e453a2b7d14.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-20cc76931bda78ca.csv": {
+      "sha256": "e4e13ca5e74e9df6124de8fc6b59fc933d16e928a53bda820510308c60fe7eab",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-20cc76931bda78ca-e4e13ca5e74e9df6124de8fc6b59fc933d16e928a53bda820510308c60fe7eab.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-d6280f54b2ba1255.csv": {
+      "sha256": "a529516e037f21f790bf8ec218f2c729d9e988ba45b911406dcdb11545ca8014",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-d6280f54b2ba1255-a529516e037f21f790bf8ec218f2c729d9e988ba45b911406dcdb11545ca8014.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-b5c4e9d3dea26795.csv": {
+      "sha256": "11d2cfa95eeb395f9cf797401c24b6d4f7dd0818d1529c423005893324a27ffe",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-b5c4e9d3dea26795-11d2cfa95eeb395f9cf797401c24b6d4f7dd0818d1529c423005893324a27ffe.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-660372608654e14d.csv.treatment-1d795abb522c.json": {
+      "sha256": "41819b4f8d662dcd36ff62cb52a45819f20af098c8473b4e8122cd041b0aeb8f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-660372608654e14d.csv.treatment-1d795abb522c-41819b4f8d662dcd36ff62cb52a45819f20af098c8473b4e8122cd041b0aeb8f.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-789c2e8b8d94364c.csv": {
+      "sha256": "9fa42214e8b68f0e8a4783314560aa7f1ecda84f866e7e417bc248395945c3ee",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-789c2e8b8d94364c-9fa42214e8b68f0e8a4783314560aa7f1ecda84f866e7e417bc248395945c3ee.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-48f7c30c3386ff32.csv.treatment-7496222cfe1a.json": {
+      "sha256": "792e8eb0716064284ad8906b9ed5916ec8fc7d75eb40e96cf45b1160cb665a32",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-48f7c30c3386ff32.csv.treatment-7496222cfe1a-792e8eb0716064284ad8906b9ed5916ec8fc7d75eb40e96cf45b1160cb665a32.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-4f89707f85f05372.csv": {
+      "sha256": "0fa41c57775256b18900dcf14e7b814fa9ee603d7a920fde886958f826a631b1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-4f89707f85f05372-0fa41c57775256b18900dcf14e7b814fa9ee603d7a920fde886958f826a631b1.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-660372608654e14d.csv": {
+      "sha256": "75dcbcf23050da89a70fe55b19298c88a6b303953915b494774fd75a8df2db2a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-660372608654e14d-75dcbcf23050da89a70fe55b19298c88a6b303953915b494774fd75a8df2db2a.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-31ce434334a66f39.csv": {
+      "sha256": "144071b174ba320c8830a65890a01c04ac38b80d8368104c67aade741d49e7dc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-31ce434334a66f39-144071b174ba320c8830a65890a01c04ac38b80d8368104c67aade741d49e7dc.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-2f98daa79a53d569.csv": {
+      "sha256": "9e0a5e20cad1eae9067c19d1a899f340cd2630d0294b3b307b7e7d84745346b1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-2f98daa79a53d569-9e0a5e20cad1eae9067c19d1a899f340cd2630d0294b3b307b7e7d84745346b1.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-f52c62e8129d9232.csv": {
+      "sha256": "df284cb386739e33e0f1dd2520000b159115373284e4a6152bc937d9ef9e3548",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-f52c62e8129d9232-df284cb386739e33e0f1dd2520000b159115373284e4a6152bc937d9ef9e3548.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-9676b4c6875ca4b1.csv": {
+      "sha256": "4ced5cf219da876f6b201ab88d64ef467788c06235f3bb926a2ec6acfea1dab5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-9676b4c6875ca4b1-4ced5cf219da876f6b201ab88d64ef467788c06235f3bb926a2ec6acfea1dab5.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-be1917f9e0a9aea8.csv.treatment-308bccbd1eee.json": {
+      "sha256": "0e78b33cf6d5f9bbe48191e0213840b35cebdb1e0fda46a097d43e44710e3179",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-be1917f9e0a9aea8.csv.treatment-308bccbd1eee-0e78b33cf6d5f9bbe48191e0213840b35cebdb1e0fda46a097d43e44710e3179.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-7205b00f9ecbce08.csv.treatment-79c91713cb6e.json": {
+      "sha256": "6d20e5cdef99eef09980bb112e52d720c5fcb77e866edf0def76d7361ea460ef",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-7205b00f9ecbce08.csv.treatment-79c91713cb6e-6d20e5cdef99eef09980bb112e52d720c5fcb77e866edf0def76d7361ea460ef.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-3936502367685438.csv": {
+      "sha256": "5a19a82bea83035a739e70c5964503132ccc2569819821b00a165c9aeebb918f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-3936502367685438-5a19a82bea83035a739e70c5964503132ccc2569819821b00a165c9aeebb918f.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-7d6d4cbea6677767.csv": {
+      "sha256": "64042d0a534567cb13605c1c6972f66c4f46c4b80b2ba76af2872951e5c1cfdc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-7d6d4cbea6677767-64042d0a534567cb13605c1c6972f66c4f46c4b80b2ba76af2872951e5c1cfdc.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-8345c8cf275b3323.csv": {
+      "sha256": "deff50f51dc60b80329b6702847912886ffe1b5a3a7326e549aa3a4dceaea59b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-8345c8cf275b3323-deff50f51dc60b80329b6702847912886ffe1b5a3a7326e549aa3a4dceaea59b.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-c576e37a3bc6ff75.csv": {
+      "sha256": "015a6606f2e4314360d109d8a6c0ce4fe1e6f8b3d18b23c73b5793c5abee03c4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-c576e37a3bc6ff75-015a6606f2e4314360d109d8a6c0ce4fe1e6f8b3d18b23c73b5793c5abee03c4.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-20cc76931bda78ca.csv.treatment-cb930f8e64d5.json": {
+      "sha256": "2e75fd444c960e3ca7962b2d9c45f274e7f547bf25ae45702d207ffce1f6f492",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-20cc76931bda78ca.csv.treatment-cb930f8e64d5-2e75fd444c960e3ca7962b2d9c45f274e7f547bf25ae45702d207ffce1f6f492.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-7205b00f9ecbce08.csv": {
+      "sha256": "cda4be641f35bcb929ece4f7f8af56add5bde4679b93e1e6b5fc6ca72f5290d7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-7205b00f9ecbce08-cda4be641f35bcb929ece4f7f8af56add5bde4679b93e1e6b5fc6ca72f5290d7.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-4f89707f85f05372.csv.treatment-08c0f0e629cb.json": {
+      "sha256": "bbfa1fc6a463f732e72062d7b976238694d54b3d5a05325c188496ebc728481f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-4f89707f85f05372.csv.treatment-08c0f0e629cb-bbfa1fc6a463f732e72062d7b976238694d54b3d5a05325c188496ebc728481f.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-bbf5b384654b6f76.csv": {
+      "sha256": "d28123dedca4aa4df3b95d7e3182d9e18aeab3754de48aa3245e32006d23b22b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-bbf5b384654b6f76-d28123dedca4aa4df3b95d7e3182d9e18aeab3754de48aa3245e32006d23b22b.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-27a947c064dbe8ed.csv.treatment-2a1c8061bc2c.json": {
+      "sha256": "d4dc32ecfec54a4812d9e83350b1a42db17de7f9e4465d4a18769833070343d5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-27a947c064dbe8ed.csv.treatment-2a1c8061bc2c-d4dc32ecfec54a4812d9e83350b1a42db17de7f9e4465d4a18769833070343d5.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-9e31839924a11ace.csv": {
+      "sha256": "f3f2bcab412ad44c62d2d23b92e769206dcde2a47b96572248ad0dad819046f6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-9e31839924a11ace-f3f2bcab412ad44c62d2d23b92e769206dcde2a47b96572248ad0dad819046f6.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-7ed23a63ae677f6b.csv": {
+      "sha256": "9e32b138cf1896e889fc11269b97bd776ef949d088eaab7f5ee9225a6c3a1390",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-7ed23a63ae677f6b-9e32b138cf1896e889fc11269b97bd776ef949d088eaab7f5ee9225a6c3a1390.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-f325db67cb883951.csv.treatment-4af4b36be7cd.json": {
+      "sha256": "a9053079e2ec8e78de0903a08a5f9348016de8128414f3a3d02b90f58174dbe6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-f325db67cb883951.csv.treatment-4af4b36be7cd-a9053079e2ec8e78de0903a08a5f9348016de8128414f3a3d02b90f58174dbe6.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-604bfd40c1b0e388.csv.treatment-591a3d463573.json": {
+      "sha256": "f0b633c6da9b5213f9e27061ae262333120c7a58021ab5d04bbdb100dec61140",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-604bfd40c1b0e388.csv.treatment-591a3d463573-f0b633c6da9b5213f9e27061ae262333120c7a58021ab5d04bbdb100dec61140.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-ed2f717f84afef49.csv.treatment-e7226e3b65f6.json": {
+      "sha256": "3266665241c7b3d1a3ccb2a98a4f9bf35e8893be23d487734abc9825aedb6e18",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-ed2f717f84afef49.csv.treatment-e7226e3b65f6-3266665241c7b3d1a3ccb2a98a4f9bf35e8893be23d487734abc9825aedb6e18.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-8345c8cf275b3323.csv.treatment-48c55ff48cc6.json": {
+      "sha256": "e99524a168a0e3ae463640bf9ab6ab568836a3520cfd081827790ae0fb545c9c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-8345c8cf275b3323.csv.treatment-48c55ff48cc6-e99524a168a0e3ae463640bf9ab6ab568836a3520cfd081827790ae0fb545c9c.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-12d8cbb56bff86d5.csv": {
+      "sha256": "1c97a362a9d7c0a4199b28a9be4a28169c72560235b2bf59e3b013663d056332",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-12d8cbb56bff86d5-1c97a362a9d7c0a4199b28a9be4a28169c72560235b2bf59e3b013663d056332.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-36ac20ed519a44ff.csv": {
+      "sha256": "dadab5cda423da0ed35b489fd0f73e82b00644a7786d2a20e1efe5b7fa715ee1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-36ac20ed519a44ff-dadab5cda423da0ed35b489fd0f73e82b00644a7786d2a20e1efe5b7fa715ee1.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-19648a8ea3f732c2.csv.treatment-51cd14d8c309.json": {
+      "sha256": "29753408e210455c927fbb5ad47bcd47e95676099012558899658be48ff58fe8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-19648a8ea3f732c2.csv.treatment-51cd14d8c309-29753408e210455c927fbb5ad47bcd47e95676099012558899658be48ff58fe8.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-ee62fa311aa19a01.csv.treatment-144ac66f23a0.json": {
+      "sha256": "4c04ab8896ac65cb66888e1745a9acbd1adfd76a7b3c39c29ab9d09818420d0b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-ee62fa311aa19a01.csv.treatment-144ac66f23a0-4c04ab8896ac65cb66888e1745a9acbd1adfd76a7b3c39c29ab9d09818420d0b.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-789c2e8b8d94364c.csv.treatment-2315d092b407.json": {
+      "sha256": "c33e828cc2ef9fa100d7fa36ad0be590fabac30b18465540a48a543b8a1187c2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-789c2e8b8d94364c.csv.treatment-2315d092b407-c33e828cc2ef9fa100d7fa36ad0be590fabac30b18465540a48a543b8a1187c2.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-9b904e6ef9cc2029.csv.treatment-d1acb9e3b299.json": {
+      "sha256": "6f281712e24e41c5238c086e2e6c1b02daa2f77d11f4309ce79e9d67161af786",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-9b904e6ef9cc2029.csv.treatment-d1acb9e3b299-6f281712e24e41c5238c086e2e6c1b02daa2f77d11f4309ce79e9d67161af786.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-d590abb3b1b2adcf.csv.treatment-8972d018c348.json": {
+      "sha256": "88720a2f8ed4049fd9b702354f6a5079ff929ae86aa9720d6f64e231b0eec690",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-d590abb3b1b2adcf.csv.treatment-8972d018c348-88720a2f8ed4049fd9b702354f6a5079ff929ae86aa9720d6f64e231b0eec690.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-1e6991b02c16e9ad.csv.treatment-3d8caa43a917.json": {
+      "sha256": "bdca46a9d4e07e74258c9a92f0974fa819bf346619d7cba0e561f6f21fe551a3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-1e6991b02c16e9ad.csv.treatment-3d8caa43a917-bdca46a9d4e07e74258c9a92f0974fa819bf346619d7cba0e561f6f21fe551a3.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-3c7bf1cd14a3df18.csv.treatment-d1633f960447.json": {
+      "sha256": "ec1612d4f0ea5203a8158afc73b722b53f617772c19451f618a8d03c3d90072c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-3c7bf1cd14a3df18.csv.treatment-d1633f960447-ec1612d4f0ea5203a8158afc73b722b53f617772c19451f618a8d03c3d90072c.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-103ebb268cdec873.csv.treatment-021170cc201c.json": {
+      "sha256": "156a6468cba11fe9b88d9924f3f0dc2978e90fbafce76092e293e0401e29a81b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-103ebb268cdec873.csv.treatment-021170cc201c-156a6468cba11fe9b88d9924f3f0dc2978e90fbafce76092e293e0401e29a81b.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-6e6d28c7a86bc5fd.csv": {
+      "sha256": "a3b73299b021f31a286a8c73852f6734559399a7231f87c1497b147b85800855",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-6e6d28c7a86bc5fd-a3b73299b021f31a286a8c73852f6734559399a7231f87c1497b147b85800855.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-bfc7b3eb3802c5bd.csv": {
+      "sha256": "66f3e69da1a12660cb08c935dc5e35c0eb3c444a6ac05f2cbeee873cdc5a9b96",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-bfc7b3eb3802c5bd-66f3e69da1a12660cb08c935dc5e35c0eb3c444a6ac05f2cbeee873cdc5a9b96.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-9d2745e9b869e925.csv.treatment-38f6dee0aff9.json": {
+      "sha256": "04ae1a889430a31d8228e6beebb575ba98a0af9b79f38df09dcc4df534c51ae5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-9d2745e9b869e925.csv.treatment-38f6dee0aff9-04ae1a889430a31d8228e6beebb575ba98a0af9b79f38df09dcc4df534c51ae5.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-4db2e7511f60a9fe.csv.treatment-6fb4b7595a96.json": {
+      "sha256": "1ceb6ca263ff608bfc40fb467f0d8142c1092b3bf2618e18b25ea7f295c5683f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-4db2e7511f60a9fe.csv.treatment-6fb4b7595a96-1ceb6ca263ff608bfc40fb467f0d8142c1092b3bf2618e18b25ea7f295c5683f.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-ad4d069bcdda2536.csv": {
+      "sha256": "09718fec7622f65399df7c9818126abd098c05325bfaf2987674d39b4a211add",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-ad4d069bcdda2536-09718fec7622f65399df7c9818126abd098c05325bfaf2987674d39b4a211add.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-27919c12149e6b9e.csv": {
+      "sha256": "7a09cc5bfb23f257b17e5759ea7859b8d1e236aa6aad53b4c199a7b99cf97ae5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-27919c12149e6b9e-7a09cc5bfb23f257b17e5759ea7859b8d1e236aa6aad53b4c199a7b99cf97ae5.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-3a41630d93b39cda.csv.treatment-325752d45c17.json": {
+      "sha256": "d80416fb2289624588fdffdc6cba80c91adf7244049a49f352dfc81c7dd79c0c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-3a41630d93b39cda.csv.treatment-325752d45c17-d80416fb2289624588fdffdc6cba80c91adf7244049a49f352dfc81c7dd79c0c.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/validation.json": {
+      "sha256": "916698c3926bde8939298c425e2b220bcfd48849704e365a3d9826ff1d0e98c5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/validation-916698c3926bde8939298c425e2b220bcfd48849704e365a3d9826ff1d0e98c5.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-ee62fa311aa19a01.csv": {
+      "sha256": "359216054db46a8d7e1146716c70730db001b5551d0714eea9deb59cf2a5033e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-ee62fa311aa19a01-359216054db46a8d7e1146716c70730db001b5551d0714eea9deb59cf2a5033e.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-9676b4c6875ca4b1.csv.treatment-2a152b15a1a5.json": {
+      "sha256": "8b270edf5b289e71e783c01a193ec871e0237cd6a6f1e1572340619fe0bb37e0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-9676b4c6875ca4b1.csv.treatment-2a152b15a1a5-8b270edf5b289e71e783c01a193ec871e0237cd6a6f1e1572340619fe0bb37e0.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-af92b45ccde4976b.csv.treatment-25103b8b4014.json": {
+      "sha256": "baa53eefc2f68cc441d70336ce80b9291d9612afdbd549cfb68aad480dbd5ef7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-af92b45ccde4976b.csv.treatment-25103b8b4014-baa53eefc2f68cc441d70336ce80b9291d9612afdbd549cfb68aad480dbd5ef7.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-9e31839924a11ace.csv.treatment-0bae9659f23e.json": {
+      "sha256": "9e7f78d634e2efe15655c1ac56eb00080cc5b5db9ffee26dc60a0f7184afff9e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-9e31839924a11ace.csv.treatment-0bae9659f23e-9e7f78d634e2efe15655c1ac56eb00080cc5b5db9ffee26dc60a0f7184afff9e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-9b904e6ef9cc2029.csv": {
+      "sha256": "39fa9da1d1cea1d103baf3c292334ebea998d73d85b80be5be3a16c170596304",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-9b904e6ef9cc2029-39fa9da1d1cea1d103baf3c292334ebea998d73d85b80be5be3a16c170596304.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-c43a37db3c672094.csv": {
+      "sha256": "9b223f4e3f5c1a46a1cfe1f1ddb86140cc20d072c22140620b8404ced4873959",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-c43a37db3c672094-9b223f4e3f5c1a46a1cfe1f1ddb86140cc20d072c22140620b8404ced4873959.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-fdcfdaede899eb28.csv": {
+      "sha256": "f586946232ca363790b12c64e9e5ea27e89fc0c6fa9e01dbee103506dccb4518",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-fdcfdaede899eb28-f586946232ca363790b12c64e9e5ea27e89fc0c6fa9e01dbee103506dccb4518.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-dabb0c5bb70d23d2.csv": {
+      "sha256": "ca5ec4b354101866e16c7507f0a76f18c3eacf341ce03244c88eb147d4ea5263",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-dabb0c5bb70d23d2-ca5ec4b354101866e16c7507f0a76f18c3eacf341ce03244c88eb147d4ea5263.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-27919c12149e6b9e.csv.treatment-6bd94546edeb.json": {
+      "sha256": "4c2c62dee4b31403d30d100252f67173e278f95dca27e78e0a5fce99541c7002",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-27919c12149e6b9e.csv.treatment-6bd94546edeb-4c2c62dee4b31403d30d100252f67173e278f95dca27e78e0a5fce99541c7002.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-c6731470c0701173.csv.treatment-9400a6d51aa1.json": {
+      "sha256": "438fdc5555128ca4f42371309b8eae6429de17b7adb21998b694ceea04936f73",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-c6731470c0701173.csv.treatment-9400a6d51aa1-438fdc5555128ca4f42371309b8eae6429de17b7adb21998b694ceea04936f73.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-ed2f717f84afef49.csv": {
+      "sha256": "86f5cc22342c4538f6041ed2a9fd40567ab370c86d9bfb92879048c9c7d66264",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-ed2f717f84afef49-86f5cc22342c4538f6041ed2a9fd40567ab370c86d9bfb92879048c9c7d66264.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-d590abb3b1b2adcf.csv": {
+      "sha256": "74e3fb8a00bc2845af7dfe2d91068015bad864f04bd52777f334c92fec4328e1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-d590abb3b1b2adcf-74e3fb8a00bc2845af7dfe2d91068015bad864f04bd52777f334c92fec4328e1.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-5f004e7a538ecaf5.csv.treatment-68817edf12be.json": {
+      "sha256": "aca7fba9686b836356080edc8a80ae2945ac56107155e2af52baf00e898707a6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-5f004e7a538ecaf5.csv.treatment-68817edf12be-aca7fba9686b836356080edc8a80ae2945ac56107155e2af52baf00e898707a6.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-c6731470c0701173.csv": {
+      "sha256": "365472f1c0ec144a8d602ca95a76b5769547050be32e5f16cf62fa11b38c4510",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-c6731470c0701173-365472f1c0ec144a8d602ca95a76b5769547050be32e5f16cf62fa11b38c4510.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-02b25476ea641933.csv.treatment-21020ab11ece.json": {
+      "sha256": "036326aaf5ec6dce2220c0fbd48f4342d1369f9748cf6a63442c575dd2728ee6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-02b25476ea641933.csv.treatment-21020ab11ece-036326aaf5ec6dce2220c0fbd48f4342d1369f9748cf6a63442c575dd2728ee6.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-31ce434334a66f39.csv.treatment-89e7624c5b8a.json": {
+      "sha256": "0c918a8f15ac33487305932dbe73e42700fc16e53ffe3f7a9a72f5535333f761",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-31ce434334a66f39.csv.treatment-89e7624c5b8a-0c918a8f15ac33487305932dbe73e42700fc16e53ffe3f7a9a72f5535333f761.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-426a8faf0bf962c4.csv": {
+      "sha256": "5ea8052de5424ca98dc1c9c94ac3bbb878fcbcbef834a2ad20e2ed61344eec3d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-426a8faf0bf962c4-5ea8052de5424ca98dc1c9c94ac3bbb878fcbcbef834a2ad20e2ed61344eec3d.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-9e1ef8c7e9df5e21.csv": {
+      "sha256": "368948e650c21928a48ead5e299a1e8e64825964e0084382ac5a87b15ca60e84",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-9e1ef8c7e9df5e21-368948e650c21928a48ead5e299a1e8e64825964e0084382ac5a87b15ca60e84.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-224d6907689091fc.csv.treatment-0f5ec964a92b.json": {
+      "sha256": "f422d174f539c1f0c9273465a5f72930e5551e6c95af2689028876910e56355b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-224d6907689091fc.csv.treatment-0f5ec964a92b-f422d174f539c1f0c9273465a5f72930e5551e6c95af2689028876910e56355b.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-112e429dad14bbfb.csv": {
+      "sha256": "7e96cfb43e65f86d502fab69152313ee49cff3a85bcd653c32f18ae19b05d545",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-112e429dad14bbfb-7e96cfb43e65f86d502fab69152313ee49cff3a85bcd653c32f18ae19b05d545.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-8f057b179eb1130b.csv.treatment-41015a90b94a.json": {
+      "sha256": "ba8fe7e6964ac0d860d2d29ecf39b4d343b36496f0d06c206835744d3b75b18f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-8f057b179eb1130b.csv.treatment-41015a90b94a-ba8fe7e6964ac0d860d2d29ecf39b4d343b36496f0d06c206835744d3b75b18f.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-f52c62e8129d9232.csv.treatment-0e0f69d57f54.json": {
+      "sha256": "ceb41fe690020ab917ed879e7d0cfe913bf575d28625d0900f6a1783a123b061",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-f52c62e8129d9232.csv.treatment-0e0f69d57f54-ceb41fe690020ab917ed879e7d0cfe913bf575d28625d0900f6a1783a123b061.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-48f7c30c3386ff32.csv": {
+      "sha256": "c4e1d57f4645030c4eda50548a453b87e80805fa193ec069e59aecba2c4b1fdc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-48f7c30c3386ff32-c4e1d57f4645030c4eda50548a453b87e80805fa193ec069e59aecba2c4b1fdc.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-b6a3987b21e9ec5a.csv.treatment-a7a9d50998f6.json": {
+      "sha256": "170e8aa178d39cd1769bb829606fe3033e817e5116f9553e8121ee5178bc642e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-b6a3987b21e9ec5a.csv.treatment-a7a9d50998f6-170e8aa178d39cd1769bb829606fe3033e817e5116f9553e8121ee5178bc642e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-02b25476ea641933.csv": {
+      "sha256": "7ecd41caf3f6ed0c4ba99b16671edadd2ab2035fbdaf3a157cfaf37b5820f38b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-02b25476ea641933-7ecd41caf3f6ed0c4ba99b16671edadd2ab2035fbdaf3a157cfaf37b5820f38b.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-d499ce5d6c10600e.csv": {
+      "sha256": "9bc12efcc0d5f1b195782ecebdf839097ae863397628c03f33e42ad8d63fb882",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-d499ce5d6c10600e-9bc12efcc0d5f1b195782ecebdf839097ae863397628c03f33e42ad8d63fb882.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-adb6543b83b9fa74.csv.treatment-86f0b4dcb972.json": {
+      "sha256": "dd1ed2f869615570347a10d71d46fc98dcbbab6718ac42e467fb6e81ae809f98",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-adb6543b83b9fa74.csv.treatment-86f0b4dcb972-dd1ed2f869615570347a10d71d46fc98dcbbab6718ac42e467fb6e81ae809f98.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-fffd7b3c16a45f67.csv.treatment-e0e97516bec2.json": {
+      "sha256": "283c9d67344b1e8cf8017591603e0e32ffe2488698e6b982ec43a1f22ba5f28e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-fffd7b3c16a45f67.csv.treatment-e0e97516bec2-283c9d67344b1e8cf8017591603e0e32ffe2488698e6b982ec43a1f22ba5f28e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-bac4a90989b30e61.csv.treatment-8654ac4a4432.json": {
+      "sha256": "24d226488ed64fb46e3a6317ccfc5f293d109c9e1f2cf1fb3baac68199e38fa0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-bac4a90989b30e61.csv.treatment-8654ac4a4432-24d226488ed64fb46e3a6317ccfc5f293d109c9e1f2cf1fb3baac68199e38fa0.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-f8871d9576993a5b.csv.treatment-7b9352cca1da.json": {
+      "sha256": "b9fc6f402a64bfd7250e4b25a4ce90eda7f76e57d8fd3f1e122bcb9746c955d2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-f8871d9576993a5b.csv.treatment-7b9352cca1da-b9fc6f402a64bfd7250e4b25a4ce90eda7f76e57d8fd3f1e122bcb9746c955d2.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-adb6543b83b9fa74.csv": {
+      "sha256": "3b36516b2005a7639fd4f2e97758e7fafaf08bb75e9d065f448fe1ff92fad8a2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-adb6543b83b9fa74-3b36516b2005a7639fd4f2e97758e7fafaf08bb75e9d065f448fe1ff92fad8a2.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-7177387c978ad2c0.csv": {
+      "sha256": "a792555f468f99d740bec34bb5e4383e31409f09828925498ed6514735a2c4ba",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-7177387c978ad2c0-a792555f468f99d740bec34bb5e4383e31409f09828925498ed6514735a2c4ba.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-91ec79b17814cbdc.csv.treatment-9a74de7b5a0c.json": {
+      "sha256": "c3977e8c7302c2d34c8ce1fe1bbd365c8549d3e7262f8dbe79f64ee396787e22",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-91ec79b17814cbdc.csv.treatment-9a74de7b5a0c-c3977e8c7302c2d34c8ce1fe1bbd365c8549d3e7262f8dbe79f64ee396787e22.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-a3306277438e8a0c.csv": {
+      "sha256": "856f6a87689c8651edce6477d4ac42a8bc67759330e333bb8972548ba50c50cd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-a3306277438e8a0c-856f6a87689c8651edce6477d4ac42a8bc67759330e333bb8972548ba50c50cd.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-68e4994df3d3a464.csv": {
+      "sha256": "8596504270450cb9d9525123856387869baa296b66ebc80e2e31b98a1c3ad0ec",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-68e4994df3d3a464-8596504270450cb9d9525123856387869baa296b66ebc80e2e31b98a1c3ad0ec.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-d499ce5d6c10600e.csv.treatment-42c0d3bf3e32.json": {
+      "sha256": "e0386b4b671fd32dbcd4d3bec32b079da1dfc17291dde23291d92de721a555eb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-d499ce5d6c10600e.csv.treatment-42c0d3bf3e32-e0386b4b671fd32dbcd4d3bec32b079da1dfc17291dde23291d92de721a555eb.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-dc13a1ef4423fc06.csv": {
+      "sha256": "f80cc96c68629fc487bc6cb6c2a0014dffe1ffdb10b38a2172c8962cd7212526",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-dc13a1ef4423fc06-f80cc96c68629fc487bc6cb6c2a0014dffe1ffdb10b38a2172c8962cd7212526.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-79c5414b0e2adc4c.csv": {
+      "sha256": "f8e11aa7cf46a1110c545c21617baa3292964d61b713953dc6178621bbbb2684",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-79c5414b0e2adc4c-f8e11aa7cf46a1110c545c21617baa3292964d61b713953dc6178621bbbb2684.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-dabb0c5bb70d23d2.csv.treatment-2ab3f234396e.json": {
+      "sha256": "195eb1dd886efd7ab8770a51245b0f6b4f247401b387c170532f496d67e6cc25",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-dabb0c5bb70d23d2.csv.treatment-2ab3f234396e-195eb1dd886efd7ab8770a51245b0f6b4f247401b387c170532f496d67e6cc25.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-4db2e7511f60a9fe.csv": {
+      "sha256": "13917a7b140570058fcbd8f5219398626fd6ee8b50e04b4d0d439e8193b066b8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-4db2e7511f60a9fe-13917a7b140570058fcbd8f5219398626fd6ee8b50e04b4d0d439e8193b066b8.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-4182c7c166ab197a.csv": {
+      "sha256": "78ca93bbef0f1592c887a8cb20bf210a097c14e56d3e21b7a7c8dcdfa5aab4eb",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-4182c7c166ab197a-78ca93bbef0f1592c887a8cb20bf210a097c14e56d3e21b7a7c8dcdfa5aab4eb.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-3936502367685438.csv.treatment-8fe7bce1effe.json": {
+      "sha256": "a7af4a540ba7448631b5893166ac92f868a00183a57e404f185f57f9cd5d7109",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-3936502367685438.csv.treatment-8fe7bce1effe-a7af4a540ba7448631b5893166ac92f868a00183a57e404f185f57f9cd5d7109.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-4182c7c166ab197a.csv.treatment-dcf32e7b7cc8.json": {
+      "sha256": "8029d025be3ef03694088e88449cc2b4274f201b2fdaab1649239d0ea3b2ec66",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-4182c7c166ab197a.csv.treatment-dcf32e7b7cc8-8029d025be3ef03694088e88449cc2b4274f201b2fdaab1649239d0ea3b2ec66.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-9b0047c56a3d4714.csv.treatment-9e4f88a16fb3.json": {
+      "sha256": "91ca822a1f627c07316eccbeec6a3a9e4cca0f08ef1847518660f9c4d9f41d79",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-9b0047c56a3d4714.csv.treatment-9e4f88a16fb3-91ca822a1f627c07316eccbeec6a3a9e4cca0f08ef1847518660f9c4d9f41d79.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-8c624a5ec5efbae0.csv": {
+      "sha256": "08ebbf8a93f15973fc36bc8518f88bc6b61ab3f5ca081f852dcd2b26d4f90b57",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-8c624a5ec5efbae0-08ebbf8a93f15973fc36bc8518f88bc6b61ab3f5ca081f852dcd2b26d4f90b57.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-007291fcf73dcd29.csv": {
+      "sha256": "1affe7c376bc9aa997e48bc5dbe6c3c99ea3a0fdcc3b993b745f1989536155c4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-007291fcf73dcd29-1affe7c376bc9aa997e48bc5dbe6c3c99ea3a0fdcc3b993b745f1989536155c4.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-7177387c978ad2c0.csv.treatment-ec2f340eaf0a.json": {
+      "sha256": "3b13ab35f9260600e9450e2eb1f1f1668601ee75ce8169e1deafba79e7230739",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-7177387c978ad2c0.csv.treatment-ec2f340eaf0a-3b13ab35f9260600e9450e2eb1f1f1668601ee75ce8169e1deafba79e7230739.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-a937edb0dc54f2e4.csv": {
+      "sha256": "7b805496c0fc8ecf282620a2d25b3cbd9b5122426039a84fadc7d5541bf28399",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-a937edb0dc54f2e4-7b805496c0fc8ecf282620a2d25b3cbd9b5122426039a84fadc7d5541bf28399.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-79c5414b0e2adc4c.csv.treatment-78a3c31c28d9.json": {
+      "sha256": "0a598fe7c1fdc884eb7296482ebd38f63c141433069f9028ae6d587fc6abc4d1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-79c5414b0e2adc4c.csv.treatment-78a3c31c28d9-0a598fe7c1fdc884eb7296482ebd38f63c141433069f9028ae6d587fc6abc4d1.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-521bf20a96ef9bfe.csv": {
+      "sha256": "2dd944687142501bae32b455e9c767f9c2629b3f473564e0d4769366ed23366d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-521bf20a96ef9bfe-2dd944687142501bae32b455e9c767f9c2629b3f473564e0d4769366ed23366d.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-91ec79b17814cbdc.csv": {
+      "sha256": "a3f3ec41c950ad4f38c70247c544d3b8bfb5063862e96175132c36808839519a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-91ec79b17814cbdc-a3f3ec41c950ad4f38c70247c544d3b8bfb5063862e96175132c36808839519a.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-a2c384ebe5abc7db.csv": {
+      "sha256": "40e647b2abbae2518056f054ccd4724502df65e7dfe80b8a5702e01779071d50",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-a2c384ebe5abc7db-40e647b2abbae2518056f054ccd4724502df65e7dfe80b8a5702e01779071d50.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-19695568df468b7b.csv": {
+      "sha256": "84ffa692864dcad97b8db3978f560579e0b1a493b286f28da32672500fabf243",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-19695568df468b7b-84ffa692864dcad97b8db3978f560579e0b1a493b286f28da32672500fabf243.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-b0e96b5d6bcce591.csv.treatment-84a804c26327.json": {
+      "sha256": "d283bdf7de6df9d588d349aadbfb1106143e25769d402a06696ead7791445090",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-b0e96b5d6bcce591.csv.treatment-84a804c26327-d283bdf7de6df9d588d349aadbfb1106143e25769d402a06696ead7791445090.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-a937edb0dc54f2e4.csv.treatment-a5e7f9a51be1.json": {
+      "sha256": "1039f7494e1d16a9b47771ca087b023fd1b853d14bbd3142e606edaa01f3b0f0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-a937edb0dc54f2e4.csv.treatment-a5e7f9a51be1-1039f7494e1d16a9b47771ca087b023fd1b853d14bbd3142e606edaa01f3b0f0.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-9e1ef8c7e9df5e21.csv.treatment-00dec769689a.json": {
+      "sha256": "774d28a36d47bacf4c70989a339dabdd1221b0ccb23f31d9f8abe3ffaf18c64e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-9e1ef8c7e9df5e21.csv.treatment-00dec769689a-774d28a36d47bacf4c70989a339dabdd1221b0ccb23f31d9f8abe3ffaf18c64e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-92536ed0e77a6e04.csv.treatment-a1f957439127.json": {
+      "sha256": "5f4735cc5a27df3ec9f6172463f0151fe1a873c43b09bb981a9c3a3011bb8847",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-92536ed0e77a6e04.csv.treatment-a1f957439127-5f4735cc5a27df3ec9f6172463f0151fe1a873c43b09bb981a9c3a3011bb8847.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-007291fcf73dcd29.csv.treatment-86cd87595199.json": {
+      "sha256": "7ace9e082530a4e2355de39182be8ebdfc20dc1d2b95404bba8ef2f54b3e4c65",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-007291fcf73dcd29.csv.treatment-86cd87595199-7ace9e082530a4e2355de39182be8ebdfc20dc1d2b95404bba8ef2f54b3e4c65.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-8b8c2c0fa0e0bdd0.csv.treatment-7af1451b7b8d.json": {
+      "sha256": "4a793fcf9045724a04f02e93f097264e3951e81010573144798b62326de9c405",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-8b8c2c0fa0e0bdd0.csv.treatment-7af1451b7b8d-4a793fcf9045724a04f02e93f097264e3951e81010573144798b62326de9c405.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-7d02ca9105f02819.csv": {
+      "sha256": "8c21664ab1f04b38ee656499110cbf2f8596fc892d3cc6dde510ac409718d5cd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-7d02ca9105f02819-8c21664ab1f04b38ee656499110cbf2f8596fc892d3cc6dde510ac409718d5cd.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-426a8faf0bf962c4.csv.treatment-d7725c2da327.json": {
+      "sha256": "00ef4b651cae6f573b645bbf079697354cc4efe04ff50f85f2590cb81f2f7501",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-426a8faf0bf962c4.csv.treatment-d7725c2da327-00ef4b651cae6f573b645bbf079697354cc4efe04ff50f85f2590cb81f2f7501.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-0d985cc5fb87c5ed.csv": {
+      "sha256": "4fb33d53a8cc048a0b73876d6d548814665a10e53f1ff237bf9b69c7b8313bcd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-0d985cc5fb87c5ed-4fb33d53a8cc048a0b73876d6d548814665a10e53f1ff237bf9b69c7b8313bcd.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-2f98daa79a53d569.csv.treatment-56ac909bb110.json": {
+      "sha256": "22c341ef8d6f238a82f578fd6491a631765ea44814d330ad6d7e794b76e282ee",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-2f98daa79a53d569.csv.treatment-56ac909bb110-22c341ef8d6f238a82f578fd6491a631765ea44814d330ad6d7e794b76e282ee.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-7bb942d889482abe.csv": {
+      "sha256": "59c48f0b6ecdb8f968d35fc350639b1089e0202dda2f484c5f306f535b270079",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-7bb942d889482abe-59c48f0b6ecdb8f968d35fc350639b1089e0202dda2f484c5f306f535b270079.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-0fd1b1f2398275d2.csv.treatment-539e30dabd48.json": {
+      "sha256": "0c0ed571b88aed9a5229a2106e1d315876c65fb2ac093846712d29274eacfee5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-0fd1b1f2398275d2.csv.treatment-539e30dabd48-0c0ed571b88aed9a5229a2106e1d315876c65fb2ac093846712d29274eacfee5.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-521bf20a96ef9bfe.csv.treatment-f5008e4968d8.json": {
+      "sha256": "6c381da81c630798596b71a812b9a1106ad5ed40c07a985d3cc198aec19e6378",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-521bf20a96ef9bfe.csv.treatment-f5008e4968d8-6c381da81c630798596b71a812b9a1106ad5ed40c07a985d3cc198aec19e6378.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-c2be269091b92565.csv.treatment-850a3e55f749.json": {
+      "sha256": "924c5dd36f2c1c3a5ce6ac1996fd711b5c10230a8994e003789410264d58355c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-c2be269091b92565.csv.treatment-850a3e55f749-924c5dd36f2c1c3a5ce6ac1996fd711b5c10230a8994e003789410264d58355c.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-7bb942d889482abe.csv.treatment-5d3278323d1e.json": {
+      "sha256": "9dbd351e78ec54555d008b223ead0cc4e9dffdf0ad17066d8325739a6d96bb6e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-7bb942d889482abe.csv.treatment-5d3278323d1e-9dbd351e78ec54555d008b223ead0cc4e9dffdf0ad17066d8325739a6d96bb6e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-3a41630d93b39cda.csv": {
+      "sha256": "99d78049bc3923c9f4f9f9a315288aa445bab4f3ff820a5f55a8f9be3860d977",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-3a41630d93b39cda-99d78049bc3923c9f4f9f9a315288aa445bab4f3ff820a5f55a8f9be3860d977.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-3c7bf1cd14a3df18.csv": {
+      "sha256": "f21d5326fbb1fa2c0103bda269201a5c16b1ac1ae590de7e6dd613789b6695ce",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-3c7bf1cd14a3df18-f21d5326fbb1fa2c0103bda269201a5c16b1ac1ae590de7e6dd613789b6695ce.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-63076138883f464f.csv": {
+      "sha256": "051f653be957c47ad150da199e70b2d0461f9a96b0e5c3f024b8fc393d64028e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-63076138883f464f-051f653be957c47ad150da199e70b2d0461f9a96b0e5c3f024b8fc393d64028e.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-5e5fd37eff0ea0ac.csv": {
+      "sha256": "8b41213d39e2775decad13105855a8abe6a1d1c4e329a345dee33f4bc71c457c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-5e5fd37eff0ea0ac-8b41213d39e2775decad13105855a8abe6a1d1c4e329a345dee33f4bc71c457c.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-efc1027f6ecbbeb6.csv": {
+      "sha256": "fb79839e539d5aa3c57bf6f0e5e878d2527405a2bedf1822d3e6347a9475aa30",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-efc1027f6ecbbeb6-fb79839e539d5aa3c57bf6f0e5e878d2527405a2bedf1822d3e6347a9475aa30.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-5e5fd37eff0ea0ac.csv.treatment-3f0388b41629.json": {
+      "sha256": "198f53dc77aa91d8d5844144c2234ac169d6cc1df38de65cc0868063e21e82ad",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-5e5fd37eff0ea0ac.csv.treatment-3f0388b41629-198f53dc77aa91d8d5844144c2234ac169d6cc1df38de65cc0868063e21e82ad.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-7d6d4cbea6677767.csv.treatment-22c4ae6973ef.json": {
+      "sha256": "1052f386bac48f82b96e942405aa42d7a644dc84496b9ec43b9dc23b671d47ac",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-7d6d4cbea6677767.csv.treatment-22c4ae6973ef-1052f386bac48f82b96e942405aa42d7a644dc84496b9ec43b9dc23b671d47ac.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-8c624a5ec5efbae0.csv.treatment-0501072e2854.json": {
+      "sha256": "9b03cb7d92c743553fca6ce5025b6e913a99c3ef1f76aa987ffa33a5ddaa8c35",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-8c624a5ec5efbae0.csv.treatment-0501072e2854-9b03cb7d92c743553fca6ce5025b6e913a99c3ef1f76aa987ffa33a5ddaa8c35.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-27a947c064dbe8ed.csv": {
+      "sha256": "b2e5f77a10218e1ebe446e58f928fb7f1d0fe291505e4c404619486fac9c5e2a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-27a947c064dbe8ed-b2e5f77a10218e1ebe446e58f928fb7f1d0fe291505e4c404619486fac9c5e2a.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-8b7479d25069b1e0.csv.treatment-ecf63aeabdfe.json": {
+      "sha256": "6085184e70913b8b6f03425a5657b42bef979dbc2fa3d2b15761131eea7c9f58",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-8b7479d25069b1e0.csv.treatment-ecf63aeabdfe-6085184e70913b8b6f03425a5657b42bef979dbc2fa3d2b15761131eea7c9f58.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-b5c4e9d3dea26795.csv.treatment-b18591b953f2.json": {
+      "sha256": "71abd72959ba496c347b743137f604c31f3c8b308a21547752666c1a235ca348",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-b5c4e9d3dea26795.csv.treatment-b18591b953f2-71abd72959ba496c347b743137f604c31f3c8b308a21547752666c1a235ca348.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-98143511e289118b.csv": {
+      "sha256": "ad3cecf40bf9eb28d487e205f609873d0d7a360991ba6bac52d9a77f1bb4f50a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-98143511e289118b-ad3cecf40bf9eb28d487e205f609873d0d7a360991ba6bac52d9a77f1bb4f50a.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-a7c625608ba94f96.csv.treatment-1706dba383f2.json": {
+      "sha256": "2da985d1a0f47f5c5732d4d9b5f528e21ff5ed6a993f350035fa652559fa202c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-a7c625608ba94f96.csv.treatment-1706dba383f2-2da985d1a0f47f5c5732d4d9b5f528e21ff5ed6a993f350035fa652559fa202c.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-050e14b34db89454.csv.treatment-619d278df6f4.json": {
+      "sha256": "a74317510345967acec59d9d4b878490bb0ac0c8ccf6284a0356a75419122d31",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-050e14b34db89454.csv.treatment-619d278df6f4-a74317510345967acec59d9d4b878490bb0ac0c8ccf6284a0356a75419122d31.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-cf1f850fd3d64fd6.csv.treatment-6685db4b56fa.json": {
+      "sha256": "9b571285761aa8176b6909d34346486cee8b5e5b6393fad8454a3cc0bbbb5bec",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-cf1f850fd3d64fd6.csv.treatment-6685db4b56fa-9b571285761aa8176b6909d34346486cee8b5e5b6393fad8454a3cc0bbbb5bec.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-f8871d9576993a5b.csv": {
+      "sha256": "e0bd7f3d7d3419fdd3a46484047fb2df6d47a22ad09c9c78280dd11869d7f4aa",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-f8871d9576993a5b-e0bd7f3d7d3419fdd3a46484047fb2df6d47a22ad09c9c78280dd11869d7f4aa.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-23665160321933d7.csv": {
+      "sha256": "edb5c613a03c9cb462273ba0cc8ff945bc4ae4df74dafec171838934276d45c4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-23665160321933d7-edb5c613a03c9cb462273ba0cc8ff945bc4ae4df74dafec171838934276d45c4.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-a42e43f78703aa3c.csv.treatment-f639737c8fce.json": {
+      "sha256": "2d0c6621edb6d279a8338b3aa49ee5dbbd87e494e65361c1e8a7815895d15c5c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-a42e43f78703aa3c.csv.treatment-f639737c8fce-2d0c6621edb6d279a8338b3aa49ee5dbbd87e494e65361c1e8a7815895d15c5c.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-bac4a90989b30e61.csv": {
+      "sha256": "6ade6a6346f30c1750c4a0afaddcb5f5ab06ce6a4bf32f15870e294b7d9ec874",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-bac4a90989b30e61-6ade6a6346f30c1750c4a0afaddcb5f5ab06ce6a4bf32f15870e294b7d9ec874.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-b9185902b498756c.csv": {
+      "sha256": "85f9d7d5fee8b57ca3bd49450f1c8d623dc61d667222e4779fc040167e6745a6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-b9185902b498756c-85f9d7d5fee8b57ca3bd49450f1c8d623dc61d667222e4779fc040167e6745a6.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-224d6907689091fc.csv": {
+      "sha256": "f96fd060d265017165a1ab7c640c6e10d6c996612c68b0ffb996a45f92e77539",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-224d6907689091fc-f96fd060d265017165a1ab7c640c6e10d6c996612c68b0ffb996a45f92e77539.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-103ebb268cdec873.csv": {
+      "sha256": "87e8b9a105f12c455aacc6e8496dd60117001b08ddaaf3cf34623b252223542b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-103ebb268cdec873-87e8b9a105f12c455aacc6e8496dd60117001b08ddaaf3cf34623b252223542b.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-8f057b179eb1130b.csv": {
+      "sha256": "346267b63e0399a58c8d4ff04833885b4124561419f8e2d69e021d0764943cbd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-8f057b179eb1130b-346267b63e0399a58c8d4ff04833885b4124561419f8e2d69e021d0764943cbd.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-873da226850d7d3b.csv.treatment-3506b3421ab1.json": {
+      "sha256": "f2323facd129419ff27e4fe5afb57ad2163232ba321e6294e4f726b78170b3ce",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-873da226850d7d3b.csv.treatment-3506b3421ab1-f2323facd129419ff27e4fe5afb57ad2163232ba321e6294e4f726b78170b3ce.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-b9185902b498756c.csv.treatment-533882154b84.json": {
+      "sha256": "2256440752861a9f41e4e29041d7974a0839cf5768872f90a83fa05cf33a6f58",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-b9185902b498756c.csv.treatment-533882154b84-2256440752861a9f41e4e29041d7974a0839cf5768872f90a83fa05cf33a6f58.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-21deb256f1d46ab4.csv.treatment-03d948314c45.json": {
+      "sha256": "fd3df11e4b61ac3196fd6d219cceee161ccca7781ec65cf5349b449f025bb345",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-21deb256f1d46ab4.csv.treatment-03d948314c45-fd3df11e4b61ac3196fd6d219cceee161ccca7781ec65cf5349b449f025bb345.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-cf1f850fd3d64fd6.csv": {
+      "sha256": "68996534075afff150cfc33ae359b238bfde8714adc341b2f9324a1d62c5caf4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-cf1f850fd3d64fd6-68996534075afff150cfc33ae359b238bfde8714adc341b2f9324a1d62c5caf4.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-7d02ca9105f02819.csv.treatment-68d3d48c16be.json": {
+      "sha256": "594948eed64d14f9fc446501d3daf7a07a8fc54e6445fe595e5ab3819d205f20",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-7d02ca9105f02819.csv.treatment-68d3d48c16be-594948eed64d14f9fc446501d3daf7a07a8fc54e6445fe595e5ab3819d205f20.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-7ed23a63ae677f6b.csv.treatment-5058018e6157.json": {
+      "sha256": "8e3d3c2bbecc77174926fb50f15c97b585f561adee53b5e08b720792fd32df9f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-7ed23a63ae677f6b.csv.treatment-5058018e6157-8e3d3c2bbecc77174926fb50f15c97b585f561adee53b5e08b720792fd32df9f.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-aff3b33bb988cc2e.csv.treatment-d4d98601f081.json": {
+      "sha256": "ed82655d32385e876b5e2a72d3fd1d995059dac8a7dc9f7ea6cfc05de4c3344f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-aff3b33bb988cc2e.csv.treatment-d4d98601f081-ed82655d32385e876b5e2a72d3fd1d995059dac8a7dc9f7ea6cfc05de4c3344f.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-c576e37a3bc6ff75.csv.treatment-48a84877736c.json": {
+      "sha256": "66fa70eb649e78fea237aba3f54a20a4b46c52883756c825313602834a011911",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-c576e37a3bc6ff75.csv.treatment-48a84877736c-66fa70eb649e78fea237aba3f54a20a4b46c52883756c825313602834a011911.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-19695568df468b7b.csv.treatment-a5853b362309.json": {
+      "sha256": "2d15bd91cbe40f2588b9ad4eec81b01ccecf9dbc933be648cd2a8c9801b33a04",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-19695568df468b7b.csv.treatment-a5853b362309-2d15bd91cbe40f2588b9ad4eec81b01ccecf9dbc933be648cd2a8c9801b33a04.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-c43a37db3c672094.csv.treatment-9db8346ad780.json": {
+      "sha256": "aa4f14cb9a9537db758678fc756a8baee1406f8022ac161ad06ae56b0f1b1cf5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-c43a37db3c672094.csv.treatment-9db8346ad780-aa4f14cb9a9537db758678fc756a8baee1406f8022ac161ad06ae56b0f1b1cf5.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-5756904aafc3fa45.csv.treatment-91394fa01deb.json": {
+      "sha256": "50bcaab626d04ed56cdd858a1fc9229b3cad8f7ccd7a97198dc43e746ec216ac",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-5756904aafc3fa45.csv.treatment-91394fa01deb-50bcaab626d04ed56cdd858a1fc9229b3cad8f7ccd7a97198dc43e746ec216ac.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-63076138883f464f.csv.treatment-da7fc2b26938.json": {
+      "sha256": "79aa6ee76b5df798d7b3f63c612e895ee87674a0510bd06b7e7f7f0e196d791e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-63076138883f464f.csv.treatment-da7fc2b26938-79aa6ee76b5df798d7b3f63c612e895ee87674a0510bd06b7e7f7f0e196d791e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-a2c384ebe5abc7db.csv.treatment-3a573add932a.json": {
+      "sha256": "7e8b6cd306f1d1d4e40cef8a8e2b2704e98ba55c2f1f01e1669310f6778a000e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-a2c384ebe5abc7db.csv.treatment-3a573add932a-7e8b6cd306f1d1d4e40cef8a8e2b2704e98ba55c2f1f01e1669310f6778a000e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-e23f7f4b378222aa.csv.treatment-ad0b11731f20.json": {
+      "sha256": "e1901107f9df80304bf3addce97a77c134531ce04656a24a5b9e2827dd7b867e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-e23f7f4b378222aa.csv.treatment-ad0b11731f20-e1901107f9df80304bf3addce97a77c134531ce04656a24a5b9e2827dd7b867e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-bbf5b384654b6f76.csv.treatment-b0cff2dfc760.json": {
+      "sha256": "4c1964c34d9b98a58197ad6cc382e1f4418a1d02c242e4ba96e8b7b08531fb47",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-bbf5b384654b6f76.csv.treatment-b0cff2dfc760-4c1964c34d9b98a58197ad6cc382e1f4418a1d02c242e4ba96e8b7b08531fb47.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-5756904aafc3fa45.csv": {
+      "sha256": "f8f91a56645e12f701f1d0fcf722ab0cb4f87ff7747a4d0615690ee2b3ac04bc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-5756904aafc3fa45-f8f91a56645e12f701f1d0fcf722ab0cb4f87ff7747a4d0615690ee2b3ac04bc.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-e22f8d62a8bda5b0.csv.treatment-acd9b9caa9a6.json": {
+      "sha256": "7814288ac167f456ad11abf975efd221e7f24f4cbd0e6356d729de1a9d62a675",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-e22f8d62a8bda5b0.csv.treatment-acd9b9caa9a6-7814288ac167f456ad11abf975efd221e7f24f4cbd0e6356d729de1a9d62a675.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-c2be269091b92565.csv": {
+      "sha256": "d66402524949eceee4815297928cce52210a17f54eef88976039c09aa56e4443",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-c2be269091b92565-d66402524949eceee4815297928cce52210a17f54eef88976039c09aa56e4443.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-d6280f54b2ba1255.csv.treatment-5df38834b184.json": {
+      "sha256": "8c865494e88fea4147eb36c9daf16e862ae4d836cc4bfa083affcfeaa7af4fd4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-d6280f54b2ba1255.csv.treatment-5df38834b184-8c865494e88fea4147eb36c9daf16e862ae4d836cc4bfa083affcfeaa7af4fd4.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-0d985cc5fb87c5ed.csv.treatment-45fd2a0e3e25.json": {
+      "sha256": "d2ed071fd0a459e0e8218b8056d890c94b6c37a9ffa6326dda4858679027af16",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-0d985cc5fb87c5ed.csv.treatment-45fd2a0e3e25-d2ed071fd0a459e0e8218b8056d890c94b6c37a9ffa6326dda4858679027af16.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-aff3b33bb988cc2e.csv": {
+      "sha256": "3e2803c770675986593997bbc5da2c3fcec2e3f44281d60051b2ebe9c32bf4d5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-aff3b33bb988cc2e-3e2803c770675986593997bbc5da2c3fcec2e3f44281d60051b2ebe9c32bf4d5.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-5f004e7a538ecaf5.csv": {
+      "sha256": "6e0edb1dafd2230c6122bd2264387e81d5726a7c36bd0232affac27ee3bad422",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-5f004e7a538ecaf5-6e0edb1dafd2230c6122bd2264387e81d5726a7c36bd0232affac27ee3bad422.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-5281ad69a81070ea.csv.treatment-4f8421e127cd.json": {
+      "sha256": "5b085cd7c344ca1d45715852e5637537783d3f91c3f5f05e44d8de329bb349c4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-5281ad69a81070ea.csv.treatment-4f8421e127cd-5b085cd7c344ca1d45715852e5637537783d3f91c3f5f05e44d8de329bb349c4.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-1e6991b02c16e9ad.csv": {
+      "sha256": "04d00c6d238d26f20399eba3b4748196ced360fdf082faf3e346808ecdd3e98f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-1e6991b02c16e9ad-04d00c6d238d26f20399eba3b4748196ced360fdf082faf3e346808ecdd3e98f.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-f325db67cb883951.csv": {
+      "sha256": "4f741530e1146d73cf730c1664c1e55470056dc3d1382ce39f825708e5446ff9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-f325db67cb883951-4f741530e1146d73cf730c1664c1e55470056dc3d1382ce39f825708e5446ff9.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-112e429dad14bbfb.csv.treatment-9b73f708edeb.json": {
+      "sha256": "bff2fb3818c4410b0b173690068e467b207ed09e72478975def952f6911f501e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-112e429dad14bbfb.csv.treatment-9b73f708edeb-bff2fb3818c4410b0b173690068e467b207ed09e72478975def952f6911f501e.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-be1917f9e0a9aea8.csv": {
+      "sha256": "2f1f248dab6e4c1f7c9d6df84827b30ed8a954b5566dad50b1e910c2794ad6e4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-be1917f9e0a9aea8-2f1f248dab6e4c1f7c9d6df84827b30ed8a954b5566dad50b1e910c2794ad6e4.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-98143511e289118b.csv.treatment-9ff076c4248b.json": {
+      "sha256": "626f19cfd5aa34f17f6e4f9f005cb6c375f9cb0b08af65f62ffd6d384ea67407",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-98143511e289118b.csv.treatment-9ff076c4248b-626f19cfd5aa34f17f6e4f9f005cb6c375f9cb0b08af65f62ffd6d384ea67407.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-68e4994df3d3a464.csv.treatment-e5e04ca67850.json": {
+      "sha256": "e5faf25fbefa3887d65380de5d21010cba7fcc0f7519f667b025ae2f8c50c6d6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-68e4994df3d3a464.csv.treatment-e5e04ca67850-e5faf25fbefa3887d65380de5d21010cba7fcc0f7519f667b025ae2f8c50c6d6.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-8b8c2c0fa0e0bdd0.csv": {
+      "sha256": "962e9cad80c48b13bdd3ff18593e24fafade1f76d751f562252b7c8e21ab84af",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-8b8c2c0fa0e0bdd0-962e9cad80c48b13bdd3ff18593e24fafade1f76d751f562252b7c8e21ab84af.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-12d8cbb56bff86d5.csv.treatment-0ed54559eb83.json": {
+      "sha256": "aebe96e9f1ea1fe1481edb639ed66b618d30c12aec0c4d729f9960a786ba111f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-12d8cbb56bff86d5.csv.treatment-0ed54559eb83-aebe96e9f1ea1fe1481edb639ed66b618d30c12aec0c4d729f9960a786ba111f.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-873da226850d7d3b.csv": {
+      "sha256": "96431a0af8d8e7ad6c1c6fac46e692f5d9c20bf78611b3e1c4e503dcfb484757",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-873da226850d7d3b-96431a0af8d8e7ad6c1c6fac46e692f5d9c20bf78611b3e1c4e503dcfb484757.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-af92b45ccde4976b.csv": {
+      "sha256": "a39fe167db2f2e979fa87f5b0afe405816d2c47ec3097437bd52f5edcdec5d03",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-af92b45ccde4976b-a39fe167db2f2e979fa87f5b0afe405816d2c47ec3097437bd52f5edcdec5d03.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-dc13a1ef4423fc06.csv.treatment-5478c0cf6c63.json": {
+      "sha256": "6b150f4198d3fc26f430e97e27091330f4959791972e2fa3bac10cbcda1cd412",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-dc13a1ef4423fc06.csv.treatment-5478c0cf6c63-6b150f4198d3fc26f430e97e27091330f4959791972e2fa3bac10cbcda1cd412.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-92536ed0e77a6e04.csv": {
+      "sha256": "75ae4aab0f5125760ead882a7544f4f072ba1707095342a090b5c4a6eee89f8a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-92536ed0e77a6e04-75ae4aab0f5125760ead882a7544f4f072ba1707095342a090b5c4a6eee89f8a.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-9d2745e9b869e925.csv": {
+      "sha256": "6a09c4b0e37ddddb386a75edf495f8c342745b2c131f86906e73947f8fd5446a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-9d2745e9b869e925-6a09c4b0e37ddddb386a75edf495f8c342745b2c131f86906e73947f8fd5446a.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-19648a8ea3f732c2.csv": {
+      "sha256": "b6cae4eddcb61402b50327be8438706a52a09875496b8763fc711386c70168ac",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-19648a8ea3f732c2-b6cae4eddcb61402b50327be8438706a52a09875496b8763fc711386c70168ac.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-0fd1b1f2398275d2.csv": {
+      "sha256": "d45102098a0c0c6bb4a23553e807ef39dadb282531c61e0557a107a3106044d6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-0fd1b1f2398275d2-d45102098a0c0c6bb4a23553e807ef39dadb282531c61e0557a107a3106044d6.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-5281ad69a81070ea.csv": {
+      "sha256": "790750b9339401010012bf722e0aebd9aabea022d93c0a2301da9ae6d9870825",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-5281ad69a81070ea-790750b9339401010012bf722e0aebd9aabea022d93c0a2301da9ae6d9870825.csv"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-expected_count-ad4d069bcdda2536.csv.treatment-223015fcb087.json": {
+      "sha256": "5a265c5b90a7e66e5e4c4c1252814ad4b75aa525210272c1c76d795e4185cc76",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-expected_count-ad4d069bcdda2536.csv.treatment-223015fcb087-5a265c5b90a7e66e5e4c4c1252814ad4b75aa525210272c1c76d795e4185cc76.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-FPKM-28bbe4fc1dc4eac9.csv.treatment-8d729e618c36.json": {
+      "sha256": "9561116d530938b881983f17fb9c2793054fd8dcdfbcd5940f35e0ec74f7b6ad",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-FPKM-28bbe4fc1dc4eac9.csv.treatment-8d729e618c36-9561116d530938b881983f17fb9c2793054fd8dcdfbcd5940f35e0ec74f7b6ad.json"
+    },
+    "/media/carruthers/mnt1/parascape-geo-gene-quantities-offline-validation/GSE117504-TPM-604bfd40c1b0e388.csv": {
+      "sha256": "609df4aab421f5c930581679ae9355ed31ecb663a60049ebf58ee8b9cf2719c3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/GSE117504-TPM-604bfd40c1b0e388-609df4aab421f5c930581679ae9355ed31ecb663a60049ebf58ee8b9cf2719c3.csv"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/88d98a83e79d649a158640d3db3da9fb5e9d152a16cef17168b326965e3a8e22/acquisition.json": {
+      "sha256": "245508ba4eda213ad37f9d69a20242d6d9fea6ca7ff256afe18db780a5f10d12",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-245508ba4eda213ad37f9d69a20242d6d9fea6ca7ff256afe18db780a5f10d12.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/88d98a83e79d649a158640d3db3da9fb5e9d152a16cef17168b326965e3a8e22/schema_preview.json": {
+      "sha256": "35095858ab43614b488f5e5d4c39610c7ea9a20bb08cb77825ee15c869e8a303",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-35095858ab43614b488f5e5d4c39610c7ea9a20bb08cb77825ee15c869e8a303.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/ab3c0cbb07abdbeddde1bce44dcebfce2691ad2aa99f6c8a75b13f6694f103d6/acquisition.json": {
+      "sha256": "cf3b4725dd35f3e1d15c70f480130153da0c96723541fca1feca66936d2cce13",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-cf3b4725dd35f3e1d15c70f480130153da0c96723541fca1feca66936d2cce13.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/ab3c0cbb07abdbeddde1bce44dcebfce2691ad2aa99f6c8a75b13f6694f103d6/schema_preview.json": {
+      "sha256": "d840fc493466da1809ad17afb3ace2ff2b7a513e8cae088472b3f565f7c8d620",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-d840fc493466da1809ad17afb3ace2ff2b7a513e8cae088472b3f565f7c8d620.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/bb69683c0cbb4179f7c129012363c086f2a897cff6822969be5f400e7ebb134a/acquisition.json": {
+      "sha256": "86daed709e0f695b0b4786a9bfb3f2a433e05bf05929d418d1c88e2245465461",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-86daed709e0f695b0b4786a9bfb3f2a433e05bf05929d418d1c88e2245465461.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/bb69683c0cbb4179f7c129012363c086f2a897cff6822969be5f400e7ebb134a/schema_preview.json": {
+      "sha256": "19b5d1e699b0b2b1473518bcb74fae1dadab43fed314e1eac18aee06c6699b1f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-19b5d1e699b0b2b1473518bcb74fae1dadab43fed314e1eac18aee06c6699b1f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/c3c5dc230ab35f59b5ed76f44289a9aff88c604854c77e9c4e78fba6970a58fd/acquisition.json": {
+      "sha256": "61d18e09c32980f09bceb6b18a59b35d839414a142865ab2ba639a6773eef951",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-61d18e09c32980f09bceb6b18a59b35d839414a142865ab2ba639a6773eef951.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/c3c5dc230ab35f59b5ed76f44289a9aff88c604854c77e9c4e78fba6970a58fd/schema_preview.json": {
+      "sha256": "ea30939ed044f8b9fa642d00214f594669c1e5f354a6decfeb68fac553ed1303",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-ea30939ed044f8b9fa642d00214f594669c1e5f354a6decfeb68fac553ed1303.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/26c090616b8df8ed8490d3d34c3177b5e24f2dec4c29cb91a56aebf4bf3579f6/acquisition.json": {
+      "sha256": "3f8641477030ce3ebd0fb782ebb386281e59ca9ad7942c7393533a36f18d69d6",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-3f8641477030ce3ebd0fb782ebb386281e59ca9ad7942c7393533a36f18d69d6.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/26c090616b8df8ed8490d3d34c3177b5e24f2dec4c29cb91a56aebf4bf3579f6/schema_preview.json": {
+      "sha256": "525865f3ebdb67ba5824141f16f57dc33d88b62ae97f8ca42d7a79f6a1f2baec",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-525865f3ebdb67ba5824141f16f57dc33d88b62ae97f8ca42d7a79f6a1f2baec.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/cb001a9271cf2d1f23e568a98967a35e5da1e5e17bcb96cb98b9c3876d7dd6eb/acquisition.json": {
+      "sha256": "71bf77690a45ed3439e3e4ca0fb6f73f0d4fb40aa4e6361fe84bcc8981b46ae9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-71bf77690a45ed3439e3e4ca0fb6f73f0d4fb40aa4e6361fe84bcc8981b46ae9.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/cb001a9271cf2d1f23e568a98967a35e5da1e5e17bcb96cb98b9c3876d7dd6eb/schema_preview.json": {
+      "sha256": "7c6f5587bad71f150eb614ce4f20ce4f722506103be5e7f852bbc1a880f29b17",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-7c6f5587bad71f150eb614ce4f20ce4f722506103be5e7f852bbc1a880f29b17.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/20da8b38bb88857229d9e38dab1fb51a5959962423de7cf8e14e265fd27e6010/acquisition.json": {
+      "sha256": "d654655a7fe273ba64762f036188f456de9d75d84d35a2cfab34781edf13003b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-d654655a7fe273ba64762f036188f456de9d75d84d35a2cfab34781edf13003b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/20da8b38bb88857229d9e38dab1fb51a5959962423de7cf8e14e265fd27e6010/schema_preview.json": {
+      "sha256": "09f87be4d9bab67e442bf669d3b3fefd3b4cead608a91a73cddb245bff19c0c2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-09f87be4d9bab67e442bf669d3b3fefd3b4cead608a91a73cddb245bff19c0c2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/db7c012718f21b4ff0bb52237123089106ae3455c7b55a3e29f0ec402de3bf43/acquisition.json": {
+      "sha256": "590dde61697a94cb3b2d07a643da9337d3b5b9379c9d86ec44afb225d247eafe",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-590dde61697a94cb3b2d07a643da9337d3b5b9379c9d86ec44afb225d247eafe.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/db7c012718f21b4ff0bb52237123089106ae3455c7b55a3e29f0ec402de3bf43/schema_preview.json": {
+      "sha256": "275f0321d6485d642f7599c924bc89d2e40ff705f7a7d2071b40f58af5a41248",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-275f0321d6485d642f7599c924bc89d2e40ff705f7a7d2071b40f58af5a41248.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/d92fd6f1cf6cf6557107552eeb714fd3af5d5a20cb7683e02dbccb13494946ad/acquisition.json": {
+      "sha256": "df0e1954b2359d6ca18260c8f2a026134d77d1884dc443f5c41f0c38ca0ee351",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-df0e1954b2359d6ca18260c8f2a026134d77d1884dc443f5c41f0c38ca0ee351.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/d92fd6f1cf6cf6557107552eeb714fd3af5d5a20cb7683e02dbccb13494946ad/schema_preview.json": {
+      "sha256": "2430d2a7d0139cde30f8ea36d8feb70cbd96a9f859447247b3874f2b159a7f4b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-2430d2a7d0139cde30f8ea36d8feb70cbd96a9f859447247b3874f2b159a7f4b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/7c40dd1f188a28b5991430e7143744cfee9550b0d280e9d2752ecaf0d3ac1213/acquisition.json": {
+      "sha256": "7bb819ec03f3c1ee86c981df814ae713638256bac9c8029e726a32ef22a76577",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-7bb819ec03f3c1ee86c981df814ae713638256bac9c8029e726a32ef22a76577.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/7c40dd1f188a28b5991430e7143744cfee9550b0d280e9d2752ecaf0d3ac1213/schema_preview.json": {
+      "sha256": "9d901eb1887d55e5619b83ccf1368f9a503a32476924f16246ef05b7e3b05c14",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-9d901eb1887d55e5619b83ccf1368f9a503a32476924f16246ef05b7e3b05c14.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/25748d67fb5ec00f351a2330b98f389e0a049432c13bb8ae19a434525f29ac31/acquisition.json": {
+      "sha256": "ce79a15292657d3675644a3e7dcd36d595df1c24c40b05983f2b108ec4cf655c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-ce79a15292657d3675644a3e7dcd36d595df1c24c40b05983f2b108ec4cf655c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/25748d67fb5ec00f351a2330b98f389e0a049432c13bb8ae19a434525f29ac31/schema_preview.json": {
+      "sha256": "47f9d9dad45642621e1e047b15add13472f1a7f371e5286f0e7c661e74b8f9ed",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-47f9d9dad45642621e1e047b15add13472f1a7f371e5286f0e7c661e74b8f9ed.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/4bd54609efd777cd12708ba0c163e75595453c22d8eb31cf2246f24caee9db5c/acquisition.json": {
+      "sha256": "4b0fe4c04f56e834828e947dd45c02a6c546120e530e0b722597291e65767a51",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-4b0fe4c04f56e834828e947dd45c02a6c546120e530e0b722597291e65767a51.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/4bd54609efd777cd12708ba0c163e75595453c22d8eb31cf2246f24caee9db5c/schema_preview.json": {
+      "sha256": "7168729debc7cc4a6c4e434d747b57ff3882487f1607e2dbdd498270c7c7ef33",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-7168729debc7cc4a6c4e434d747b57ff3882487f1607e2dbdd498270c7c7ef33.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/f757cf528a747738a74ed74e8948aded77ca8a1a16f0fb9220401be2a32016f4/acquisition.json": {
+      "sha256": "e74e4ae769f3ba54da7f628b1ef0fbb5a302abf424c6c37fd0d91e6e7376a0a1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-e74e4ae769f3ba54da7f628b1ef0fbb5a302abf424c6c37fd0d91e6e7376a0a1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/f757cf528a747738a74ed74e8948aded77ca8a1a16f0fb9220401be2a32016f4/schema_preview.json": {
+      "sha256": "18b7b703409cb31623a2391a6df1d568fdf0c360cceb3229681abcc3dc54759f",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-18b7b703409cb31623a2391a6df1d568fdf0c360cceb3229681abcc3dc54759f.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/8ef47755b28b10adb6b0e88ebd477937c5fef401a2fe90418f8ab06c5d917763/acquisition.json": {
+      "sha256": "8c79817d68b0abb8438e0a9b458ec8e7c25b3475e50344b531cd5c6266f57bb5",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-8c79817d68b0abb8438e0a9b458ec8e7c25b3475e50344b531cd5c6266f57bb5.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/8ef47755b28b10adb6b0e88ebd477937c5fef401a2fe90418f8ab06c5d917763/schema_preview.json": {
+      "sha256": "73d4c0638825b7730d79e1536ddc28d96217c480c49764ea0ebc94e6b5b39f13",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-73d4c0638825b7730d79e1536ddc28d96217c480c49764ea0ebc94e6b5b39f13.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/28b04eddd384135eb1ed0ddbd4159caae547df20d373e62d529969fb82815bbc/acquisition.json": {
+      "sha256": "af3250c32a9a31b90c57db68c595e410e209dba82c3b8b5c521b0ffb7a00f113",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-af3250c32a9a31b90c57db68c595e410e209dba82c3b8b5c521b0ffb7a00f113.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/28b04eddd384135eb1ed0ddbd4159caae547df20d373e62d529969fb82815bbc/schema_preview.json": {
+      "sha256": "23ca4c8d1ed13baae6cf26aeec9b109d9567996d1fac6bf6e78b702e905cd388",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-23ca4c8d1ed13baae6cf26aeec9b109d9567996d1fac6bf6e78b702e905cd388.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/978380d38579f2b1ead7d276a5d051eece4c1421f5613d1652cb73c05c0a9b88/acquisition.json": {
+      "sha256": "17d9612d0a9269c97875f75a94e4c384ea7a0af7eeec6ffd83fccc4c90e5a7a0",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-17d9612d0a9269c97875f75a94e4c384ea7a0af7eeec6ffd83fccc4c90e5a7a0.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/978380d38579f2b1ead7d276a5d051eece4c1421f5613d1652cb73c05c0a9b88/schema_preview.json": {
+      "sha256": "7e02e8e50ef285d1f6e79c891ca29477b02edd74c969876f81ef84d89c193538",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-7e02e8e50ef285d1f6e79c891ca29477b02edd74c969876f81ef84d89c193538.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/829fd0e1d32bb7e772b6befc545eac1e2e4c9a8e0a46a1726812ea55ce9823ea/acquisition.json": {
+      "sha256": "b1bd8ce3db7f74a07b89e5c3f512977ccb8a295e59c962c9f19d1ca3b2745f83",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-b1bd8ce3db7f74a07b89e5c3f512977ccb8a295e59c962c9f19d1ca3b2745f83.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/829fd0e1d32bb7e772b6befc545eac1e2e4c9a8e0a46a1726812ea55ce9823ea/schema_preview.json": {
+      "sha256": "e05eab7c0b0431f2527e5edeef6f4a34efd1cb4c73291e23482705deeb8d4cdf",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-e05eab7c0b0431f2527e5edeef6f4a34efd1cb4c73291e23482705deeb8d4cdf.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/b380ca8c73ac191c05b7107dbbdb93c0a5db4a825f21d79da8e2e0a6f089d9f3/acquisition.json": {
+      "sha256": "e878cbcbbe7b69428a3064020cf9d0b28897153907df868b9552ad439dfca84b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-e878cbcbbe7b69428a3064020cf9d0b28897153907df868b9552ad439dfca84b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/b380ca8c73ac191c05b7107dbbdb93c0a5db4a825f21d79da8e2e0a6f089d9f3/schema_preview.json": {
+      "sha256": "476671d8626a76b9c0e8ddf6dba3cf4831b52f3db1e7ce328c0b46eead388abd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-476671d8626a76b9c0e8ddf6dba3cf4831b52f3db1e7ce328c0b46eead388abd.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/2fc2c1cf389213d98a2ba5ad132bcfbe5b4f2cbfdfca8d6b5b54973b3f8fd50a/acquisition.json": {
+      "sha256": "1545a21c0d43e4f3c177f9e4d9488af813c6a58ef400bba4d90a79c9ee17e7f4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-1545a21c0d43e4f3c177f9e4d9488af813c6a58ef400bba4d90a79c9ee17e7f4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/2fc2c1cf389213d98a2ba5ad132bcfbe5b4f2cbfdfca8d6b5b54973b3f8fd50a/schema_preview.json": {
+      "sha256": "e8f8a98013172e245b089f6ac51ac06102906f352b370044b02daaea0b7b7f2c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-e8f8a98013172e245b089f6ac51ac06102906f352b370044b02daaea0b7b7f2c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/4b71a80efc96fabb74e38335542cbfbd96c3a862f3c64ec9fdfe292a68718c8c/acquisition.json": {
+      "sha256": "b294c3e427dd57961927ba81365e928964445275707483e6fe708bc4a8de9205",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-b294c3e427dd57961927ba81365e928964445275707483e6fe708bc4a8de9205.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/4b71a80efc96fabb74e38335542cbfbd96c3a862f3c64ec9fdfe292a68718c8c/schema_preview.json": {
+      "sha256": "75d9f6d66978cb789c8a1e0d857580dce4dea5aad9cab21201486a76b61e9377",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-75d9f6d66978cb789c8a1e0d857580dce4dea5aad9cab21201486a76b61e9377.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/ad13c6c0ba4ec3a4b00a4f3c562b37d04bfd72b207fc076340011c8c5720f37c/acquisition.json": {
+      "sha256": "e18f985b11e288f0b8ab735e5db98036cc92d7e5cc4ef7745d36c6acc7bdc38d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-e18f985b11e288f0b8ab735e5db98036cc92d7e5cc4ef7745d36c6acc7bdc38d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/ad13c6c0ba4ec3a4b00a4f3c562b37d04bfd72b207fc076340011c8c5720f37c/schema_preview.json": {
+      "sha256": "5bdb06857cf5cdb8204039b29efcf5a026e56f243dda2beab89bd0515e0083bf",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-5bdb06857cf5cdb8204039b29efcf5a026e56f243dda2beab89bd0515e0083bf.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/df1bd0ca96a562d4080feee8e15cef39ddd527815c9f081ed224376acf9709f0/acquisition.json": {
+      "sha256": "443a93b95a4329a762f8ab17e974f976c8a2a6095c58c1d4bab7422f98a2146e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-443a93b95a4329a762f8ab17e974f976c8a2a6095c58c1d4bab7422f98a2146e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/df1bd0ca96a562d4080feee8e15cef39ddd527815c9f081ed224376acf9709f0/schema_preview.json": {
+      "sha256": "dddb2dd54dde821f9b8b7b086aa3a4d5707b52b289f1cc0899a052feeb5b6e30",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-dddb2dd54dde821f9b8b7b086aa3a4d5707b52b289f1cc0899a052feeb5b6e30.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/318a723aba8c03da0516f9c444650446ec87a21c429ff3407dedd447e4fcbf40/acquisition.json": {
+      "sha256": "ed26085723c30afeca4464390a022ede4ad9743de8f72acab9ced379951230ea",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-ed26085723c30afeca4464390a022ede4ad9743de8f72acab9ced379951230ea.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/318a723aba8c03da0516f9c444650446ec87a21c429ff3407dedd447e4fcbf40/schema_preview.json": {
+      "sha256": "d172f18feda6a12ff2697df06b8c90add741d06dbdd0508ca8f0ced016f04d62",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-d172f18feda6a12ff2697df06b8c90add741d06dbdd0508ca8f0ced016f04d62.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/ab382087d2f53f746f4370176aed91aa6712c29032cc5dd96d1f0b501642e1bc/acquisition.json": {
+      "sha256": "f7e51ad67d4489f57858f44037ad20f441b126e35a79dc68f3e72343e4a21fba",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-f7e51ad67d4489f57858f44037ad20f441b126e35a79dc68f3e72343e4a21fba.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/ab382087d2f53f746f4370176aed91aa6712c29032cc5dd96d1f0b501642e1bc/schema_preview.json": {
+      "sha256": "a151704b33da19248abcf0f3c25b1ff58f1c2befccaf4f287fd235871fd2737b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-a151704b33da19248abcf0f3c25b1ff58f1c2befccaf4f287fd235871fd2737b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/e26a4775e984a0cd49c9682db1eca3a626a3bdd0be8c39db0f6f99d0bc570a1a/acquisition.json": {
+      "sha256": "3e7609e51e8870c121093f3a8cad0ea0642246ad5b70efb0dd376e98be68cbb3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-3e7609e51e8870c121093f3a8cad0ea0642246ad5b70efb0dd376e98be68cbb3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/e26a4775e984a0cd49c9682db1eca3a626a3bdd0be8c39db0f6f99d0bc570a1a/schema_preview.json": {
+      "sha256": "6739dc2ac7879606814009640fff316c304150a93769dbe2a3a3cc95e20906c8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-6739dc2ac7879606814009640fff316c304150a93769dbe2a3a3cc95e20906c8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/5d29c084b7a171104ac0e1ef67a7d07ee4c984caab48b94fdf96c965e3e0ca78/acquisition.json": {
+      "sha256": "34568d8a40accbfff26094346d8ff8bc8b70eb7d50d0fea3fad168ba51ae081d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-34568d8a40accbfff26094346d8ff8bc8b70eb7d50d0fea3fad168ba51ae081d.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/5d29c084b7a171104ac0e1ef67a7d07ee4c984caab48b94fdf96c965e3e0ca78/schema_preview.json": {
+      "sha256": "dc281c280fe5fff236a39492b58486bd29045f3dc3260034306b6a78a6d831c4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-dc281c280fe5fff236a39492b58486bd29045f3dc3260034306b6a78a6d831c4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/fa41a55875866f08b82764c75bb58b29d596b8682270bb49259616bb1f369c33/acquisition.json": {
+      "sha256": "4afca52fb51a0d3bb76f3e81fb8972499e3e9f589af681c9629c5f6135666215",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-4afca52fb51a0d3bb76f3e81fb8972499e3e9f589af681c9629c5f6135666215.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/fa41a55875866f08b82764c75bb58b29d596b8682270bb49259616bb1f369c33/schema_preview.json": {
+      "sha256": "5f114fe8a508cdade3b9d290181e6fff693bd85f2310f9c317d148bab533a6ae",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-5f114fe8a508cdade3b9d290181e6fff693bd85f2310f9c317d148bab533a6ae.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/3baa1de803826c4a2b88690dddc5a093443ed98fa90dd025afdeb6af3e2a2a4e/acquisition.json": {
+      "sha256": "e4c3c9eb406a7cf4a2a2a69d1c46faf35ee429b2adf7fda33c7bd150891da516",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-e4c3c9eb406a7cf4a2a2a69d1c46faf35ee429b2adf7fda33c7bd150891da516.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/3baa1de803826c4a2b88690dddc5a093443ed98fa90dd025afdeb6af3e2a2a4e/schema_preview.json": {
+      "sha256": "a4ec21c66ed030f6945ed41406c75a065def48306266dffc2885fa6c6d918ca3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-a4ec21c66ed030f6945ed41406c75a065def48306266dffc2885fa6c6d918ca3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/cc4b20ad352ea4933cfa8e39d3c988ed225d22bb549044e4bb48d225517ce6ce/acquisition.json": {
+      "sha256": "25607f2397049d4d56c7245bb05c7d6fe18b872a3c436b6f7577216a517edc0a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-25607f2397049d4d56c7245bb05c7d6fe18b872a3c436b6f7577216a517edc0a.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/cc4b20ad352ea4933cfa8e39d3c988ed225d22bb549044e4bb48d225517ce6ce/schema_preview.json": {
+      "sha256": "5fcf7f8d4b9fc9ec39f41cd9e952006a215657b2ac98b0563d03f7b9433c030c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-5fcf7f8d4b9fc9ec39f41cd9e952006a215657b2ac98b0563d03f7b9433c030c.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/2c3688592b9bf2cb0cbeb0d9096d52273bf3daa801f6cd7c120b12a236edfadc/acquisition.json": {
+      "sha256": "f540bac7c87760c5301bd18fc5849335ca632c3064a9d13a82368df70aa52b89",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-f540bac7c87760c5301bd18fc5849335ca632c3064a9d13a82368df70aa52b89.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/2c3688592b9bf2cb0cbeb0d9096d52273bf3daa801f6cd7c120b12a236edfadc/schema_preview.json": {
+      "sha256": "8b50c75b796e60bcda87347bac8643dd2ff087eb63f16fe2dde28394cb972ea8",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-8b50c75b796e60bcda87347bac8643dd2ff087eb63f16fe2dde28394cb972ea8.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/93396a4cbda41c213d29fa55b992f6a309a29aa54e73db2ba29634a496d7d69a/acquisition.json": {
+      "sha256": "634932017d38ab1a15b0f1efb4905a10a293d5b06acd3e28bbb66a8aecdf68d4",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-634932017d38ab1a15b0f1efb4905a10a293d5b06acd3e28bbb66a8aecdf68d4.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/93396a4cbda41c213d29fa55b992f6a309a29aa54e73db2ba29634a496d7d69a/schema_preview.json": {
+      "sha256": "6bcee1f03610187db003d1946b0406d5d7ddd784ea216bb1beef547249715fd3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-6bcee1f03610187db003d1946b0406d5d7ddd784ea216bb1beef547249715fd3.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/bdc7b5ce617c9993499de7c610a4557333943b91b428caca5052180ad6b40e56/acquisition.json": {
+      "sha256": "078d40e8d5d3d3db6b1ab962c60349009f7322721b67540a694d78595e672885",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-078d40e8d5d3d3db6b1ab962c60349009f7322721b67540a694d78595e672885.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/bdc7b5ce617c9993499de7c610a4557333943b91b428caca5052180ad6b40e56/schema_preview.json": {
+      "sha256": "a2a4f24f4fce337789c7aa8806feae48fdf8bf67a324aea925f0a6cd07471f3b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-a2a4f24f4fce337789c7aa8806feae48fdf8bf67a324aea925f0a6cd07471f3b.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/b12dfa4bf3419b8371ce1b8ee6a70085a414d31ffc03e7cd114de63781a5f8e1/acquisition.json": {
+      "sha256": "0769c0cd05735d9169de39b00e3d7d4130a11c7595607d6ecf065a1245ff0add",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/acquisition-0769c0cd05735d9169de39b00e3d7d4130a11c7595607d6ecf065a1245ff0add.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_all_geo/files/b12dfa4bf3419b8371ce1b8ee6a70085a414d31ffc03e7cd114de63781a5f8e1/schema_preview.json": {
+      "sha256": "f0862d4591955179784f1d2ba4d52c44266db6366b5a1ea30aca5f5a84c9bd2e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/schema_preview-f0862d4591955179784f1d2ba4d52c44266db6366b5a1ea30aca5f5a84c9bd2e.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/all_geo_samples/GSE117504/geo-samples.json": {
+      "sha256": "85fc3bafac80d619aff7e61eef8ec833a6889b038aa0b8eccc0cbf4bf94f3d23",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/geo-samples-85fc3bafac80d619aff7e61eef8ec833a6889b038aa0b8eccc0cbf4bf94f3d23.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/all_geo_samples/GSE117504/validation.json": {
+      "sha256": "1328771d6d3aa4cff15c1c45350dddc5936922e4f11a9c4500e104ce3cb3fb06",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/validation-1328771d6d3aa4cff15c1c45350dddc5936922e4f11a9c4500e104ce3cb3fb06.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/all_geo_samples/GSE117504/geo-miniml.json": {
+      "sha256": "87d35d2a085a12bdfaa838560dbf6f99dee01c0c86c7de72561f91f2aaff0ab9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/geo_gene_quantity_admission/geo-miniml-87d35d2a085a12bdfaa838560dbf6f99dee01c0c86c7de72561f91f2aaff0ab9.json"
+    }
+  },
+  "processor_sha256": "e9eb2d47eaed45a55766644387e8a3e66f5808692a54eb57d5c412db420ace50",
+  "source_format_candidate_files": 45,
+  "new_original_source_files": 33,
+  "already_represented_source_files_not_duplicated": 12,
+  "new_quantity_tables": 99,
+  "original_numeric_cells": 4917429,
+  "missing_cells": 0,
+  "exact_GEO_sample_IDs": 33,
+  "source_project": "GSE117504",
+  "primary_GEO_organism_declaration": "Mus musculus; not parasite expression or inferred per-feature taxonomy",
+  "live_original_quantity_tables": 452,
+  "prior353quantity_manifests_and_declared_outputs_byte_unchanged": true,
+  "source_selection": "All cached RSEM-layout gene-table candidates accounted for:12sources already represented by preserved GSE134099preparedRSEM outputs;33new sources admitted acrossall3declared fields. Complementary source coverage,no replacement or inferred citation preference. Biological applicability remains source-qualified.",
+  "processing": "Strict original7field gene_id/transcript_id(s)/length/effective_length/expected_count/TPM/FPKM schema. Exact original rows/fullgeneIDs/transcript lists/length tokens retained; expected counts remainfractional. Original normalizedTPM/FPKM values retained without renormalization. No underscore/symbol splitting,gene-version/reference equivalence,organism inference,feature collapse,imputation or independence inference. Source nonnegative finite numeric domain enforced; missing tokens retained unchanged.",
+  "metadata": "Exactly1explicitSample:GSM identifier from primary source metadata matched to checksum-pinned GEO sample report and independently reconciled sample-ID/count receipt,with identical primaryMINiML archiveSHA. All original submitted annotations/taxa retained. Source declarations are not independently verified biological truth or replicate/control relationships.",
+  "validation": "All4917429source cells/tokens/binary64bits/missingness and original gene/transcript/length annotations independently reconciled stdlibcsv vs pandas; all99technicalQC columns checked with quality_scoreNone. Synthetic duplicateIDs/signedzero/fractionalcounts/NA/sourceTPM preservation and changed transcripts/GEO context/nonfinite/negative refusal passed. All99actualofflineQt exactgenequeries/originalGEOmetadata/tooltips/CSV+treatment passed withNAS/networkblocked; protein identifier classes disabled and protein flag exclusion inert.",
+  "automation": "Enabled5minute oneshot parascape-geo-gene-quantities.timer,24CPUaffinity0-11,16-27,2GiB,BLAS2,nice19/idleIO. Captured acquisition/source/preparation/QC/operation manifests and full software/runtime/source hashes. Existing rawRNA plan untouched.",
+  "remaining": "RNAcoverage audit109unplanned catalogue records already has cached primary metadata;18480run records incl shared runs,host,singlecell and nonRNAstrategies. Do not blindly treat them as bulk independent parasiteRNA. Other GEOdelimited/MatrixMarket/HDF5/Excel formats remain to process by verified roles. Canonical gene mapping/biologicalQC/cross-study scale/context compatibility not complete.",
+  "release": "Frozen7e012 mainPublish41156914708stillqueued,publisher555872active;new99tables local/NAS only alongside prior214postfreeze archive quantities. Subsequent portable release must include them; frozen7source/assets unchanged.",
+  "downloads": "PRIDE2983/3519selected acquired182522423630bytes,536pending as latestobserved; original main3533750active with3threads,handoff604799waitingverifiedidle. RNA327verified/1011plan,326snapshot. Corejobs remainactive24CPUlimit.",
+  "dataset_goal_status": "active",
+  "all_dataset_goal_complete": false,
+  "historical_inference_goal_status": "paused",
+  "next_actions": "Verify exact7PyPI/live-sync and queuedv2handoff. Integrate postfreeze313quantity tables plus source metadata in nextportable release. Continue remaining expression formats and comprehensive source/identifier/context compatibility; retain unavailable/incompatible cases explicitly."
+}

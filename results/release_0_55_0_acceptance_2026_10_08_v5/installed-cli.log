@@ -1,0 +1,32 @@
+usage: starplast-discover [-h] [--task MODE:LAYER[:AGAINST]] [--budget BUDGET]
+                          [--restarts RESTARTS] [--seed SEED]
+                          [--blocks BLOCKS] [--exclude EXCLUDE] [--name NAME]
+                          [--prefix PREFIX] [--out OUT] [--nodes PATH]
+                          [--list] [--read NAME] [--config CONFIG] [--top TOP]
+                          [--quiet]
+
+Search the space of maps for structure that predicts, without a window.
+
+options:
+  -h, --help            show this help message and exit
+  --task MODE:LAYER[:AGAINST]
+                        what to search for, as mode:layer or
+                        mode:layer:against -- e.g. guilt:compartment_best,
+                        conjunction:compartment_best:cellcycle_phase.
+                        Repeatable; each is saved separately as it finishes.
+  --budget BUDGET       configurations per task (default 100)
+  --restarts RESTARTS   hill-climb restarts (default 3)
+  --seed SEED           random seed (default 42)
+  --blocks BLOCKS       only these feature blocks, comma separated
+  --exclude EXCLUDE     feature blocks to keep out (default: literature, which
+                        counts study effort rather than biology)
+  --name NAME           name for a single task's saved search
+  --prefix PREFIX       name prefix when several tasks are given
+  --out OUT             where to keep searches (default: the app's cache)
+  --nodes PATH          a node table to search, if not the cached one
+  --list                list saved searches and stop
+  --read NAME           print the reading of a saved search and stop
+  --config CONFIG       which configuration to read, 0 being the winner
+                        (default 0)
+  --top TOP             findings to write out (default 8)
+  --quiet               only the per-task summary lines

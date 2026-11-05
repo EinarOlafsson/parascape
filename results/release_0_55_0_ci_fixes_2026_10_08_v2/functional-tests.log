@@ -1,0 +1,8 @@
+Running as unit: starplast-release-055-functional-regression-20261008.service
+........................................................................ [ 76%]
+......................                                                   [100%]
+94 passed in 30.74s
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 31.361s
+CPU time consumed: 32.236s

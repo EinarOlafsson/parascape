@@ -1,0 +1,68 @@
+{
+  "epoch": 1793427906.2576973,
+  "goal_status": "active",
+  "historical_inference": "paused",
+  "previous_goal_turn": "progress",
+  "extraction_status": {
+    "phase": "extracting_source_cells",
+    "epoch": 1793427872.9464426,
+    "selected_sources": 93,
+    "unique_workbooks": 93,
+    "completed": 40,
+    "reviews": [],
+    "extracted_cells": 2590753,
+    "measurement_admission": false
+  },
+  "validation_status": {
+    "phase": "validating_complete_workbooks",
+    "epoch": 1793427889.1718707,
+    "checked": 22,
+    "independently_reconciled": 20,
+    "independent_cells": 344835,
+    "statuses": {
+      "all_OOXML_source_cells_independently_reconciled": 20,
+      "BIFF_checksums_verified_independent_reader_review_required": 2
+    },
+    "reviews": []
+  },
+  "release_status": {
+    "phase": "waiting_for_ci",
+    "updated_epoch": 1793427846.5728364,
+    "branch": "nightly",
+    "checks": {
+      "Tests": {
+        "conclusion": "",
+        "databaseId": 41175583882,
+        "name": "Tests",
+        "status": "queued"
+      },
+      "Documentation": {
+        "conclusion": "",
+        "databaseId": 41175583947,
+        "name": "Documentation",
+        "status": "queued"
+      }
+    }
+  },
+  "observed_native_handles": "MainPID=845063\nExecMainStatus=0\nId=parascape-workbook-cells.service\nActiveState=activating\n\nMainPID=847813\nExecMainStatus=0\nId=parascape-workbook-cell-validation.service\nActiveState=activating\n\nMainPID=838540\nExecMainStatus=0\nId=parascape-publish-0.0.8.0.service\nActiveState=active\n\nMainPID=3614034\nExecMainStatus=0\nId=parascape-quant-cached.service\nActiveState=active\n\nMainPID=3533750\nExecMainStatus=0\nId=parascape-pride-downloads.service\nActiveState=active\n",
+  "raw_cache_limit_GiB": 200,
+  "CPUs": "0-11,16-27",
+  "all_dataset_goal_complete": false,
+  "source_stage": "/nas_mnt/carruthers/Einar/parascape_omics/prepared_workbook_cells",
+  "native_sources": [
+    "extract_excel_source_cells.py",
+    "validate_excel_source_cells.py",
+    "check_excel_source_cells.py"
+  ],
+  "offline_selfchecks_passed": 9,
+  "scope": "Whole-workbook source storage, numeric token and coordinate preservation with technical QC; currently not admitted as comparable measurements or included in frozen package8.",
+  "exactness": "OOXML physical cells, sparse blank semantics, shared/inline text, complete row/column order, raw numeric text and formula/cache separation. Independent SAX verifies every physical cell against Arrow output. Legacy BIFF preserves xlrd decoded values and binary64 hex with explicit formula/physical-presence/independent-reader gaps.",
+  "next_steps": [
+    "Let active extraction and validator units continue; never restart solely because a poll times out",
+    "After complete, inspect all93 source-cell manifests and independent reconciliation statuses; resolve actual parser reviews before admission",
+    "Add source-bound sheet/column/quantity/sample interpretation and source-value browser into subsequent package; preserve units and quantity classes rather than pool raw counts, normalized values, ratios and test statistics",
+    "Resolve legacy BIFF raw-record and formula validation gap; no false whole-source independent validation for those10files",
+    "Keep frozen release8 candidate72a6459 unchanged while exact CI queued; native publisher handles already-uploaded checked core/203parts and PyPI gates",
+    "Continue remaining RNA/acquisition/format and biological comparability work; historical inference stays paused"
+  ]
+}

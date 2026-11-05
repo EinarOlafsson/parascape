@@ -1,0 +1,130 @@
+{
+  "operation": "automatic_original_log2_admission_and_all_namespace_column_links",
+  "epoch": 1793403328.0934281,
+  "files": {
+    "/home/carruthers/.local/share/parascape-download-worker/process_protein_log2_quantities.py": {
+      "sha256": "6c6a3f4c84d63c648f3f02d8906a6dcd5e608e8d33b41e89ee201ee14bf48a4c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/process_protein_log2_quantities-6c6a3f4c84d63c648f3f02d8906a6dcd5e608e8d33b41e89ee201ee14bf48a4c.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_protein_log2_quantities.py": {
+      "sha256": "c70e58a1bca8a52f2d56119c117c092f051e6a2a3b4cbb5788cd21709b59790d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/check_protein_log2_quantities-c70e58a1bca8a52f2d56119c117c092f051e6a2a3b4cbb5788cd21709b59790d.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_protein_log2_quantities.py": {
+      "sha256": "32db37d10cefa9ae4469649e3618b82b78f9d221cc60be03dbe817b8e7206f17",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/validate_protein_log2_quantities-32db37d10cefa9ae4469649e3618b82b78f9d221cc60be03dbe817b8e7206f17.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/export_protein_column_design_links.py": {
+      "sha256": "d14bba337569a79e6310b040e6155184d8f997dce077cb8a7ca0cb6c5553b6ab",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/export_protein_column_design_links-d14bba337569a79e6310b040e6155184d8f997dce077cb8a7ca0cb6c5553b6ab.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_all_protein_column_design_links.py": {
+      "sha256": "8526d9675728cdb659d89e6bbba1ca26c45e058b98cb963e0f8cfbb2bbbda42e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/check_all_protein_column_design_links-8526d9675728cdb659d89e6bbba1ca26c45e058b98cb963e0f8cfbb2bbbda42e.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_all_protein_column_design_links.py": {
+      "sha256": "b35f4b996ed333e1717c6bf2b6eff312f6e4a2a5d92782efe50e49ebe893a62e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/validate_all_protein_column_design_links-b35f4b996ed333e1717c6bf2b6eff312f6e4a2a5d92782efe50e49ebe893a62e.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/archive_log2_and_all_links.py": {
+      "sha256": "1f378e7fd7fcca715ef04cf07a93f1a7696283dbbabc0149695e25bebe9d34d9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/archive_log2_and_all_links-1f378e7fd7fcca715ef04cf07a93f1a7696283dbbabc0149695e25bebe9d34d9.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-protein-log2-values.service": {
+      "sha256": "9dc11f73e5b2f35cca81ed42fa7a016800796fb6f633c91690307fe26aded911",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/parascape-protein-log2-values-9dc11f73e5b2f35cca81ed42fa7a016800796fb6f633c91690307fe26aded911.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-protein-log2-values.timer": {
+      "sha256": "dec4dd29aa43f621ac63e4487deae652b85b9632030131f4a5f0f98d50fab75b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/parascape-protein-log2-values-dec4dd29aa43f621ac63e4487deae652b85b9632030131f4a5f0f98d50fab75b.timer"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-protein-column-design-links.service": {
+      "sha256": "d0a90e8f651b868e3054115c79b0ecf1d5aedf881b3da02004acfdf320bf6669",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/parascape-protein-column-design-links-d0a90e8f651b868e3054115c79b0ecf1d5aedf881b3da02004acfdf320bf6669.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-protein-column-design-links.timer": {
+      "sha256": "905fe18fb2d509e8e17fd21c1b340cfa2daeae170927445004199efc42b4fcd9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/parascape-protein-column-design-links-905fe18fb2d509e8e17fd21c1b340cfa2daeae170927445004199efc42b4fcd9.timer"
+    },
+    "/media/carruthers/mnt1/parascape-log2-validation-20261030/original-log2-values.csv": {
+      "sha256": "fbc2757925dfedb6d9442610de98a4bd9e72796974be7062737927041a27694a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/original-log2-values-fbc2757925dfedb6d9442610de98a4bd9e72796974be7062737927041a27694a.csv"
+    },
+    "/media/carruthers/mnt1/parascape-log2-validation-20261030/original-log2-values.csv.treatment-430e6e218f3a.json": {
+      "sha256": "ba60b298a25af773a795d367e7d6673ac68099cba2d70a2d592472cdde9d3b56",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/original-log2-values.csv.treatment-430e6e218f3a-ba60b298a25af773a795d367e7d6673ac68099cba2d70a2d592472cdde9d3b56.json"
+    },
+    "/media/carruthers/mnt1/parascape-log2-validation-20261030/validation.json": {
+      "sha256": "fee73f4cde5ac3e36f2588290c86a836e3dd1498a3b9939c62d62e6a2e79a17d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/validation-fee73f4cde5ac3e36f2588290c86a836e3dd1498a3b9939c62d62e6a2e79a17d.json"
+    },
+    "/media/carruthers/mnt1/parascape-log2-validation-20261030/original-column-qc.csv": {
+      "sha256": "3d5c886a2464a97ac24e231678b3229eb600d4bcb676d5a765753d3ebd49bcdc",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/original-column-qc-3d5c886a2464a97ac24e231678b3229eb600d4bcb676d5a765753d3ebd49bcdc.csv"
+    },
+    "/media/carruthers/mnt1/parascape-log2-validation-20261030/log2-browsing.png": {
+      "sha256": "dbeb935cdf3a794b81e554a463e2ccb5ad7e5fcebff2702ee0a56f36c5db9217",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/log2-browsing-dbeb935cdf3a794b81e554a463e2ccb5ad7e5fcebff2702ee0a56f36c5db9217.png"
+    },
+    "/media/carruthers/mnt1/parascape-all-column-links-validation-20261030/linked-original-log2-values.csv.treatment-876360492062.json": {
+      "sha256": "52ab99ae3e5fd25505a79079f38eae389c18036e4a8904a4a54b16e0fd863436",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/linked-original-log2-values.csv.treatment-876360492062-52ab99ae3e5fd25505a79079f38eae389c18036e4a8904a4a54b16e0fd863436.json"
+    },
+    "/media/carruthers/mnt1/parascape-all-column-links-validation-20261030/linked-original-log2-values.csv": {
+      "sha256": "de45168796e207ce306084ee7b696166048b94ddf4d769d398082dd7f186d86e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/linked-original-log2-values-de45168796e207ce306084ee7b696166048b94ddf4d769d398082dd7f186d86e.csv"
+    },
+    "/media/carruthers/mnt1/parascape-all-column-links-validation-20261030/log2-source-links.png": {
+      "sha256": "5b5ef92fc811d9aed06e38b3dd456ba23dc5d267ab9d111485669d4da04ed0e3",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/log2-source-links-5b5ef92fc811d9aed06e38b3dd456ba23dc5d267ab9d111485669d4da04ed0e3.png"
+    },
+    "/media/carruthers/mnt1/parascape-all-column-links-validation-20261030/validation.json": {
+      "sha256": "43d4f3fc3fdd6ff8499e03ccd925b6ee4fb3740ac1fd97a3cc3ce2bc7bcdd1fd",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/log2_and_all_column_links/validation-43d4f3fc3fdd6ff8499e03ccd925b6ee4fb3740ac1fd97a3cc3ce2bc7bcdd1fd.json"
+    }
+  },
+  "source_commit": "f9df520b471b3ba399f68c044a6eb02606a6067f",
+  "log2_rows": 7576,
+  "log2_columns": 5,
+  "log2_cells": 37880,
+  "log2_missing_cells": 1909,
+  "previous_quantity_packs_preserved": 137,
+  "log2_synthetic_corruptions_rejected": 10,
+  "association_collection": {
+    "schema_version": 1,
+    "directory": "ed06f2416a3c19b693b915376d8eecbf50dc5f70ff9a24c02af741a381d03e9c",
+    "validation_sha256": "95b7acca69f013f7d72e4a4a856849a623941e423ff54ae51d0bcf0f432e3797"
+  },
+  "association_counts": {
+    "filename_role_unreviewed": 828,
+    "submitted_factor_row_occurrences": 10,
+    "experiment_label_candidate_columns": 357,
+    "experiment_label_row_occurrences": 357,
+    "unresolved_exact_primary_file": 12,
+    "exact_unique_primary_file": 16
+  },
+  "protein_quantity_tables": 131,
+  "associated_quantity_columns": 856,
+  "previous_association_reports_byte_identical": 65,
+  "scientific_treatment": "Keep source log2 scale, accession rows, literal filename headers and original candidate/completeness/CV/average annotations. No exponentiation, normalization, imputation, filtering, row collapse, biological sample/control/replicate identity or gene equivalence inferred. Exact primary-file and submitted-row associations only, with ambiguity/repeated occurrences retained.",
+  "selection_context": "Complementary original source quantity layouts admitted without replacing another dataset. Assay, sample identity, canonical gene mapping, cross-study compatibility and biological validation remain explicit gaps; no citation-based superiority or biological quality ranking claimed.",
+  "resources": "24CPU affinity0-11,16-27; BLAS/OMP2; new admission2GiB; existing association512MiB; five-minute native timers",
+  "validation": "All new source cells/tokens/binary64 values and annotations independently reconciled; prior137 quantity outputs and65 source-link reports unchanged; all131 association-reader contexts and actual new Qt/CSV/source tree verified with NAS/network blocked",
+  "portability": "New local quantities and expanded source links await a future portable release; frozen public0.0.6.0 unchanged",
+  "dataset_goal_status": "active",
+  "full_dataset_goal_complete": false,
+  "historical_inference_goal_status": "paused",
+  "nightly_push_verified": true,
+  "next_source_layout_review": {
+    "source": "PXD084269 ProteinQuant-Normal.tsv",
+    "source_sha256": "c5e5fc865cfe15618c83ab51cb861ae341387ef7d4a314573facb92541695af8",
+    "source_rows": 65535,
+    "source_filename_literals": 5,
+    "empty_accession_rows": 0,
+    "empty_filename_rows": 0,
+    "missing_quantity_cells": 29564,
+    "repeated_accession_filename_keys": 24820,
+    "maximum_rows_per_key": 2,
+    "admission": "Not imported yet. Preserve original row-wise PG.Quantity plus R.FileName/R.Condition/R.Replicate declarations and every repeated row. Do not pivot, collapse duplicates, infer biological independence, or call this file complete merely from its65535 row count. Use independent full-cell reconciliation and explicit same-source/alternative-representation review."
+  }
+}

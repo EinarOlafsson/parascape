@@ -1,0 +1,1065 @@
+column	table	categories	derived_from	reason	provenance_key	provenance_level_kind	confidence
+gene_id	nodes.parquet	identity	provenance:dataset	gene identifiers and product names	toxodb_identity	reference/identity	high
+length	nodes.parquet	sequence	provenance:level_kind	level/kind reference/annotation: The second species: gene structure and the protein's sequence properties	plasmodb_pf3d7_attributes	reference/annotation	high
+sequence	nodes.parquet	sequence	column_override	the amino-acid sequence itself			judged
+dtm_class	nodes.parquet	sequence	column_override	DeepTMHMM class of the protein, read off the sequence			judged
+n_tm	nodes.parquet	sequence	provenance:level_kind	level/kind reference/annotation: The second species: gene structure and the protein's sequence properties	plasmodb_pf3d7_attributes	reference/annotation	high
+has_signal_peptide	nodes.parquet	sequence	provenance:level_kind	level/kind reference/annotation: The second species: gene structure and the protein's sequence properties	plasmodb_pf3d7_attributes	reference/annotation	high
+is_tm	nodes.parquet	sequence	provenance:level_kind	level/kind reference/annotation: The second species: gene structure and the protein's sequence properties	plasmodb_pf3d7_attributes	reference/annotation	high
+tm_kd_mean	nodes.parquet	sequence	column_override	hydrophobicity of the predicted TM helices			judged
+tm_kd_max	nodes.parquet	sequence	column_override	hydrophobicity of the predicted TM helices			judged
+tm_len_mean	nodes.parquet	sequence	column_override	length of the predicted TM helices			judged
+lopit_confident	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+interpro_id	nodes.parquet	domain	provenance:level_kind	level/kind reference/domains: Domain identity and count	interpro	reference/domains	high
+interpro_desc	nodes.parquet	domain	provenance:level_kind	level/kind reference/domains: Domain identity and count	interpro	reference/domains	high
+pfam_id	nodes.parquet	domain	provenance:level_kind	level/kind reference/domains: Domain identity and count	interpro	reference/domains	high
+n_interpro	nodes.parquet	domain	provenance:level_kind	level/kind reference/domains: Domain identity and count	interpro	reference/domains	high
+has_domain	nodes.parquet	domain	provenance:level_kind	level/kind reference/domains: InterPro and Pfam domain content from the same PlasmoDB report	plasmodb_pf3d7_domains	reference/domains	high
+orthogroup	nodes.parquet	identity,conservation	provenance:dataset	the orthogroup accession. It is the protected GROUP key of every split, so it is never a feature (`identity`), and it is also homology knowledge (`conservation`)	orthomcl	reference/orthology	high
+product	nodes.parquet	identity	provenance:dataset	gene identifiers and product names	toxodb_identity	reference/identity	high
+paralog_number	nodes.parquet	conservation	provenance:level_kind	level/kind reference/orthology: OrthoMCL group, ortholog and paralog counts from the same PlasmoDB report	plasmodb_pf3d7_orthology	reference/orthology	high
+has_pf_ortholog	nodes.parquet	conservation	column_override	whether a Plasmodium falciparum ortholog exists			judged
+has_cp_ortholog	nodes.parquet	conservation	column_override	whether a Cryptosporidium ortholog exists			judged
+lineage_specific	nodes.parquet	conservation	column_override	no ortholog outside the lineage			judged
+mean_plddt	nodes.parquet	structure	provenance:level_kind	level/kind reference/structure: Per-gene mean pLDDT; coordinates fetched on demand	alphafold	reference/structure	high
+has_structure	nodes.parquet	structure	column_override	whether a model of the fold exists at all			judged
+rna108740_Tachyzoites_T2_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Tachyzoites_T4_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Tissue_cysts_A_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Tissue_cysts_B_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Day3_CS4_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Day3_CS5_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Day3_CS6_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Day5_CS2_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Day5_K4_14_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Day7_CS7_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Day7_CS8_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna108740_Day7_CS9_FPKM	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse108740	transcription/RNAseq	high
+rna206344_Unsporulated_R1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse206344	transcription/RNAseq	high
+rna206344_Unsporulated_R2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse206344	transcription/RNAseq	high
+rna206344_Sporulating_R1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse206344	transcription/RNAseq	high
+rna206344_Sporulating_R2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse206344	transcription/RNAseq	high
+rna206344_Sporulated_R1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse206344	transcription/RNAseq	high
+rna206344_Sporulated_R2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse206344	transcription/RNAseq	high
+n_phosphosites	nodes.parquet	modification	provenance:level_kind	level/kind post_translation/phosphoproteomics: Count of phosphosites per protein, no positions	phosphosites	post_translation/phosphoproteomics	high
+has_phospho	nodes.parquet	modification	provenance:level_kind	level/kind post_translation/phosphoproteomics: Count of phosphosites per protein, no positions	phosphosites	post_translation/phosphoproteomics	high
+fit_invitro_hff	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Competitive growth in fibroblasts	crispr_invitro	DNA/CRISPR_screen	high
+fit_invivo_PE	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Differential fitness x significance in six mouse tissues after acute infection	crispr_invivo_composite	DNA/CRISPR_screen	high
+fit_invivo_lung	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Differential fitness x significance in six mouse tissues after acute infection	crispr_invivo_composite	DNA/CRISPR_screen	high
+fit_invivo_liver	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Differential fitness x significance in six mouse tissues after acute infection	crispr_invivo_composite	DNA/CRISPR_screen	high
+fit_invivo_spleen	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Differential fitness x significance in six mouse tissues after acute infection	crispr_invivo_composite	DNA/CRISPR_screen	high
+fit_naive_bmdm	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Naive BMDM and IFN-gamma survival	crispr_macrophage	DNA/CRISPR_screen	high
+fit_ifng	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Naive BMDM and IFN-gamma survival	crispr_macrophage	DNA/CRISPR_screen	high
+fit_invivo_young2019	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: In vivo fitness	crispr_young2019	DNA/CRISPR_screen	high
+lopit_map	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+lopit_mcmc	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+lopit_prob_map	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+lopit_prob_mcmc	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+lopit_methods_agree	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+compartment	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+lopit_unified	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+ortholopit_label	nodes.parquet	place	column_override	hyperLOPIT niche transferred from an ortholog. TAGM-derived, so `place`: the trap the trait name hides, since no dataset entry claims it			judged
+ortholopit_donors	nodes.parquet	place	column_override	which orthologs donated the transferred hyperLOPIT niche			judged
+ortholopit_accuracy	nodes.parquet	place	column_override	measured accuracy of the transferred hyperLOPIT niche			judged
+ortholopit_accepted	nodes.parquet	place	column_override	whether the transferred hyperLOPIT niche was accepted			judged
+compartment_source	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+compartment_best	nodes.parquet	place	provenance:dataset	hyperLOPIT / TAGM marker niches -- the canonical place columns	lopit_tgon	post_translation/LOPIT	high
+expr_tachy	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoite, day 3/5/7, in vivo tissue cyst (12 columns)	gse108740	transcription/RNAseq	high
+expr_cyst	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoite, day 3/5/7, in vivo tissue cyst (12 columns)	gse108740	transcription/RNAseq	high
+expr_max	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoite, day 3/5/7, in vivo tissue cyst (12 columns)	gse108740	transcription/RNAseq	high
+expr_sporulated	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unsporulated / sporulating / sporulated, 2 replicates (6 columns)	gse206344	transcription/RNAseq	high
+crispr_gra17ko_phenotype	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screen: RH vs RH-dgra17 depletion by passage	gra17_synthlethal	DNA/CRISPR_screen	high
+crispr_gra17_synthlethal_delta	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screen: RH vs RH-dgra17 depletion by passage	gra17_synthlethal	DNA/CRISPR_screen	high
+crispr_gra17_candidate	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screen: RH vs RH-dgra17 depletion by passage	gra17_synthlethal	DNA/CRISPR_screen	high
+crispr_gra12s1_l2fc_invitro	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screens: median L2FC in vitro and in vivo, DISCO score	gra12	DNA/CRISPR_screen	high
+crispr_gra12s1_l2fc_invivo	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screens: median L2FC in vitro and in vivo, DISCO score	gra12	DNA/CRISPR_screen	high
+crispr_gra12s1_disco	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screens: median L2FC in vitro and in vivo, DISCO score	gra12	DNA/CRISPR_screen	high
+crispr_gra12s2_l2fc_invitro	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screens: median L2FC in vitro and in vivo, DISCO score	gra12	DNA/CRISPR_screen	high
+crispr_gra12s2_l2fc_invivo	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screens: median L2FC in vitro and in vivo, DISCO score	gra12	DNA/CRISPR_screen	high
+crispr_gra12s2_disco	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screens: median L2FC in vitro and in vivo, DISCO score	gra12	DNA/CRISPR_screen	high
+crispr_invivo_platform_lfc	nodes.parquet	fitness	provenance:dataset	pooled in-vivo CRISPR screen: mean log fold-change of guides	invivo_platform	DNA/CRISPR_screen	high
+fit_hyperlopit_unassigned_invivo_lib1	nodes.parquet	fitness	provenance:dataset	pooled in-vivo CRISPR screen of two targeted libraries. The column names say 'hyperlopit' only because the LIBRARY was chosen from hyperLOPIT-unassigned proteins; the measurement is guide depletion, so this is fitness and NOT place. A name-based rule gets this one exactly wrong.	gse253884_5	DNA/CRISPR_screen	high
+fit_hyperlopit_unassigned_invivo_lib2	nodes.parquet	fitness	provenance:dataset	pooled in-vivo CRISPR screen of two targeted libraries. The column names say 'hyperlopit' only because the LIBRARY was chosen from hyperLOPIT-unassigned proteins; the measurement is guide depletion, so this is fitness and NOT place. A name-based rule gets this one exactly wrong.	gse253884_5	DNA/CRISPR_screen	high
+hosttx_T2	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_padj	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+protein_ibaq_log2	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Median log2 iBAQ across replicates	proteome_pru	translation/proteomics	high
+hosttx_signature_pc01	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc02	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc03	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc04	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc05	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc06	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc07	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc08	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc09	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc10	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc11	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc12	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc13	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc14	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc15	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc16	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc17	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc18	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc19	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_pc20	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_norm	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+hosttx_signature_n_de	nodes.parquet	host_response	provenance:dataset	the host-transcription effector screen. Its level is DNA/CRISPR_screen but the readout is the HOST transcriptional response (Hotelling T2 and the per-effector signature), not parasite depletion	hosttx_effectors	DNA/CRISPR_screen	high
+invivo_TZ_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_TZ_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_WholeBrain_Acute_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_WholeBrain_Acute_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_WholeBrain_Acute_3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_WholeBrain_Chronic_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_WholeBrain_Chronic_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_WholeBrain_Chronic_3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_BZ_28DPI_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_BZ_28DPI_3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_BZ_90DPI_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_BZ_90DPI_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_BZ_120DPI_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+invivo_BZ_120DPI_3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Tachyzoites, acute/chronic whole brain, and purified bradyzoites	invivo_brain_transcriptome	transcription/RNAseq	high
+stress_5-1_unstress_red_24	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_5-2_unstress_red_24	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_5-24_stress_green_48	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_5-27_stress_green_48	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_6-1_unstress_red_24	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_6-4_unstress_red_24	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_6-16_stress_green_48	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_6-18_stress_green_48	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_7-1_unstress_red_24	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+stress_7-18_stress_green_48	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Unstressed tachyzoites and alkaline-stressed bradyzoites	gse132248_stress	transcription/RNAseq	high
+rna22258_tachyzoite	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse22258	transcription/microarray	high
+rna22258_bradyzoite	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse22258	transcription/microarray	high
+brain168465_1d_base_mean	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_1d_lfc	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_2d_base_mean	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_2d_lfc	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_4d_base_mean	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_4d_lfc	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_7d_base_mean	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_7d_lfc	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_14d_base_mean	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+brain168465_14d_lfc	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Parasite base mean and log2 fold-change at days 1, 2, 4, 7 and 14	gse168465	transcription/RNAseq	high
+rpf99395_extracellular_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse99395	translation/Ribo-seq	high
+rpf99395_extracellular_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse99395	translation/Ribo-seq	high
+rpf99395_intracellular_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse99395	translation/Ribo-seq	high
+rpf99395_intracellular_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse99395	translation/Ribo-seq	high
+rna99395_extracellular_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse99395	translation/Ribo-seq	judged
+rna99395_extracellular_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse99395	translation/Ribo-seq	judged
+rna99395_intracellular_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse99395	translation/Ribo-seq	judged
+rna99395_intracellular_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse99395	translation/Ribo-seq	judged
+te99395_extracellular_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse99395	translation/Ribo-seq	high
+te99395_extracellular_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse99395	translation/Ribo-seq	high
+te99395_intracellular_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse99395	translation/Ribo-seq	high
+te99395_intracellular_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse99395	translation/Ribo-seq	high
+rpf129869_confluent_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse129869	translation/Ribo-seq	high
+rpf129869_confluent_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse129869	translation/Ribo-seq	high
+rpf129869_confluent_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse129869	translation/Ribo-seq	high
+rna129869_confluent_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_confluent_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_confluent_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rpf129869_subconfluent_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse129869	translation/Ribo-seq	high
+rpf129869_subconfluent_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse129869	translation/Ribo-seq	high
+rpf129869_subconfluent_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: ribosome-protected fragments: translation	gse129869	translation/Ribo-seq	high
+rna129869_subconfluent_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_subconfluent_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+rna129869_subconfluent_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse129869	translation/Ribo-seq	judged
+te129869_confluent_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse129869	translation/Ribo-seq	high
+te129869_confluent_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse129869	translation/Ribo-seq	high
+te129869_confluent_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse129869	translation/Ribo-seq	high
+te129869_subconfluent_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse129869	translation/Ribo-seq	high
+te129869_subconfluent_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse129869	translation/Ribo-seq	high
+te129869_subconfluent_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse129869	translation/Ribo-seq	high
+rpf245775_parent_tachy_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rpf245775_parent_tachy_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rpf245775_parent_tachy_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rna245775_parent_tachy_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_tachy_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_tachy_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rpf245775_parent_prebrady_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rpf245775_parent_prebrady_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rpf245775_parent_prebrady_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rna245775_parent_prebrady_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_prebrady_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_parent_prebrady_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rpf245775_eif12ko_tachy_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rpf245775_eif12ko_tachy_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rpf245775_eif12ko_tachy_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rna245775_eif12ko_tachy_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_tachy_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_tachy_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rpf245775_eif12ko_prebrady_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rpf245775_eif12ko_prebrady_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rpf245775_eif12ko_prebrady_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: ribosome-protected fragments: translation	gse245775	translation/RiboSeq	high
+rna245775_eif12ko_prebrady_r1	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_prebrady_r2	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+rna245775_eif12ko_prebrady_r3	nodes.parquet	transcript	name_override	the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse245775	translation/RiboSeq	judged
+te245775_parent_tachy_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_parent_tachy_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_parent_tachy_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_parent_prebrady_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_parent_prebrady_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_parent_prebrady_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_eif12ko_tachy_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_eif12ko_tachy_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_eif12ko_tachy_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_eif12ko_prebrady_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_eif12ko_prebrady_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+te245775_eif12ko_prebrady_r3	nodes.parquet	translation	provenance:level_kind	level/kind translation/RiboSeq, and the name agrees: translational efficiency: translation, never transcript	gse245775	translation/RiboSeq	high
+bfd2_rip_log2_ip_over_input	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RIPseq: Enrichment of each transcript in the BFD2 immunoprecipitation	gse223620_bfd2_rip	transcription/RIPseq	high
+cellcycle19092_async_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_async_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_blocked_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_blocked_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_1h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_1h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_2h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_2h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_3h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_3h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_4h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_4h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_5h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_5h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_6h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_6h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_7h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_7h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_8h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_8h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_9h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_9h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_10h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_10h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_11h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_11h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_12h_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+cellcycle19092_12h_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray: Two replicates across blocked, asynchronous and hourly release states	gse19092	transcription/microarray	high
+rna51780_tachy_r1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse51780	transcription/microarray	high
+rna51780_tachy_r2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse51780	transcription/microarray	high
+rna51780_mero_r3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse51780	transcription/microarray	high
+rna51780_mero_r4	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse51780	transcription/microarray	high
+rna51780_mero_r5	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse51780	transcription/microarray	high
+rna51780_mero_r6	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/microarray, and the name agrees: the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance	gse51780	transcription/microarray	high
+cpsf4rna168155_ut_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: RNA response at 7, 24 and 48 hours after CPSF4 depletion	gse168155	transcription/RNAseq	high
+cpsf4rna168155_ut_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: RNA response at 7, 24 and 48 hours after CPSF4 depletion	gse168155	transcription/RNAseq	high
+cpsf4rna168155_iaa_7h_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: RNA response at 7, 24 and 48 hours after CPSF4 depletion	gse168155	transcription/RNAseq	high
+cpsf4rna168155_iaa_7h_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: RNA response at 7, 24 and 48 hours after CPSF4 depletion	gse168155	transcription/RNAseq	high
+cpsf4rna168155_iaa_24h_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: RNA response at 7, 24 and 48 hours after CPSF4 depletion	gse168155	transcription/RNAseq	high
+cpsf4rna168155_iaa_24h_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: RNA response at 7, 24 and 48 hours after CPSF4 depletion	gse168155	transcription/RNAseq	high
+cpsf4rna168155_iaa_48h_1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: RNA response at 7, 24 and 48 hours after CPSF4 depletion	gse168155	transcription/RNAseq	high
+cpsf4rna168155_iaa_48h_2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: RNA response at 7, 24 and 48 hours after CPSF4 depletion	gse168155	transcription/RNAseq	high
+restriction200962_7th_gt_2_kk31_kim_s1_l001	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_7th_gt_20_kk27_kim_s14_l001	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_7th_gt_22_kk29_kim_s15_l001	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_7th_gt_4_kk32_kim_s2_l001	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk17_p2wo_ph8_2_s5	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk18_p2wo_ph8_2_s1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk19_p2w_ph8_2_s22	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk20_p2w_ph8_2_s16	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk21_p5wo_ph8_2_s13	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk22_p5wo_ph8_2_s15	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk23_p5w_ph8_2_s12	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk24_p5w_ph8_2_s11	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk5_p2wo_ph7_4_s6	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk6_p2wo_ph7_4_s19	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk7_p2w_ph7_4_s14	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+restriction200962_kk8_p2w_ph7_4_s23	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Cyclin perturbations in tachyzoite and bradyzoite conditions	gse200962	transcription/RNAseq	high
+morc_MORC_UT1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC_UT2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC_UT3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC_IAA1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC_IAA2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC_IAA3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC-KD-BFD1-KO_UT1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC-KD-BFD1-KO_UT2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC-KD-BFD1-KO_UT3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC-KD-BFD1-KO_IAA1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC-KD-BFD1-KO_IAA2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_MORC-KD-BFD1-KO_IAA3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_DD-BFD1-Ty_UT1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_DD-BFD1-Ty_UT2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_DD-BFD1-Ty_UT3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_DD-BFD1-Ty_Shield1	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_DD-BFD1-Ty_Shield2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+morc_DD-BFD1-Ty_Shield3	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: MORC knockdown, BFD1 knockout and BFD1 stabilization series	morc_depletion	transcription/RNAseq	high
+proteome_log2_normalized_and_imputated_abundances_UT_R1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_UT_R2	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_UT_R3	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_24h_R1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_24h_R2	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_24h_R3	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_32h_R1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_32h_R2	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_32h_R3	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_48h_R1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_48h_R2	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_log2_normalized_and_imputated_abundances_T_48h_R3	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_lfc_UT_Vs_T_24h_log2_fold_change	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_lfc_UT_Vs_T_32h_log2_fold_change_1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+proteome_lfc_UT_Vs_T_48h_log2_fold_change_2	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Replicate abundance and log2 fold-change during pre-sexual conversion	proteome_total	translation/proteomics	high
+phospho_up_sites	nodes.parquet	modification	provenance:level_kind	level/kind post_translation/phosphoproteomics: Measured-site counts and strongest up/down phosphosite ratios	phospho_quantitative	post_translation/phosphoproteomics	high
+phospho_up_ratio	nodes.parquet	modification	provenance:level_kind	level/kind post_translation/phosphoproteomics: Measured-site counts and strongest up/down phosphosite ratios	phospho_quantitative	post_translation/phosphoproteomics	high
+phospho_down_sites	nodes.parquet	modification	provenance:level_kind	level/kind post_translation/phosphoproteomics: Measured-site counts and strongest up/down phosphosite ratios	phospho_quantitative	post_translation/phosphoproteomics	high
+phospho_down_ratio	nodes.parquet	modification	provenance:level_kind	level/kind post_translation/phosphoproteomics: Measured-site counts and strongest up/down phosphosite ratios	phospho_quantitative	post_translation/phosphoproteomics	high
+phospho_sites_measured	nodes.parquet	modification	provenance:level_kind	level/kind post_translation/phosphoproteomics: Measured-site counts and strongest up/down phosphosite ratios	phospho_quantitative	post_translation/phosphoproteomics	high
+oocyst_itraq_115_113	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: iTRAQ abundance ratios across oocyst developmental stages	oocyst_itraq	translation/proteomics	high
+oocyst_itraq_116_113	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: iTRAQ abundance ratios across oocyst developmental stages	oocyst_itraq	translation/proteomics	high
+oocyst_itraq_115_114	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: iTRAQ abundance ratios across oocyst developmental stages	oocyst_itraq	translation/proteomics	high
+oocyst_itraq_116_114	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: iTRAQ abundance ratios across oocyst developmental stages	oocyst_itraq	translation/proteomics	high
+oocyst_itraq_115_113_1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: iTRAQ abundance ratios across oocyst developmental stages	oocyst_itraq	translation/proteomics	high
+oocyst_itraq_116_113_1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: iTRAQ abundance ratios across oocyst developmental stages	oocyst_itraq	translation/proteomics	high
+oocyst_itraq_115_114_1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: iTRAQ abundance ratios across oocyst developmental stages	oocyst_itraq	translation/proteomics	high
+oocyst_itraq_116_114_1	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: iTRAQ abundance ratios across oocyst developmental stages	oocyst_itraq	translation/proteomics	high
+crispr_reporter_strain_p8_log2	nodes.parquet	fitness	provenance:dataset	guide depletion over eight passages in a second strain	second_background_fitness	DNA/CRISPR_screen	high
+diff_reporter_log2_mNG_over_bulk	nodes.parquet	phenotype,fitness	provenance:dataset	pooled CRISPR screen read out as guide enrichment in reporter-positive parasites over the bulk. The ratio largely cancels depletion, so the knowledge is a differentiation phenotype; `fitness` is kept because it is a pooled screen and the exclusion errs towards safety	differentiation_screen	DNA/CRISPR_screen	high
+cetsa_calcium_ed_score	nodes.parquet	structure	provenance:dataset	how far the melting curve moves with calcium: fold stability and ligand engagement, not abundance	thermal_shift_cetsa	post_translation/proteomics	high
+cyst_wall_max_spectral	nodes.parquet	interaction	provenance:level_kind	level/kind post_translation/IPMS: Strongest bait signal and how many baits saw the protein	cyst_wall_interactome	post_translation/IPMS	high
+cyst_wall_n_baits	nodes.parquet	interaction	provenance:level_kind	level/kind post_translation/IPMS: Strongest bait signal and how many baits saw the protein	cyst_wall_interactome	post_translation/IPMS	high
+oxidative_stress_screen_score	nodes.parquet	fitness	provenance:dataset	pooled CRISPR screening score under oxidative challenge	oxidative_stress_screen	DNA/CRISPR_screen	high
+n_acetylation_sites	nodes.parquet	modification	provenance:dataset	acetylation sites per gene	pride_acetylation	post_translation/proteomics	high
+n_proximity_partners	nodes.parquet	interaction	provenance:dataset	proximity partners per gene	pride_proximity	post_translation/proteomics	high
+n_nitrosylation_sites	nodes.parquet	modification	provenance:dataset	nitrosylation sites per gene	pride_nitrosylation	post_translation/proteomics	high
+n_ubiquitination_sites	nodes.parquet	modification	provenance:dataset	GlyGly (ubiquitin / SUMO) sites per gene	pride_ubiquitination	post_translation/proteomics	high
+n_lactylation_sites	nodes.parquet	modification	provenance:dataset	lactylation sites per gene	pride_lactylation	post_translation/proteomics	high
+n_o_fucosyl_peptides	nodes.parquet	modification	provenance:dataset	O-fucosylated peptides per gene	pride_glycosylation	post_translation/proteomics	high
+snp_total_all_strains	nodes.parquet	conservation	provenance:level_kind	level/kind reference/variation: SNPs per gene across every sequenced strain, split by effect	toxodb_strain_snps	reference/variation	high
+snp_nonsynonymous	nodes.parquet	conservation	provenance:level_kind	level/kind reference/variation: SNPs per gene across every sequenced strain, split by effect	toxodb_strain_snps	reference/variation	high
+snp_synonymous	nodes.parquet	conservation	provenance:level_kind	level/kind reference/variation: SNPs per gene across every sequenced strain, split by effect	toxodb_strain_snps	reference/variation	high
+snp_noncoding	nodes.parquet	conservation	provenance:level_kind	level/kind reference/variation: SNPs per gene across every sequenced strain, split by effect	toxodb_strain_snps	reference/variation	high
+snp_stop_codon	nodes.parquet	conservation	provenance:level_kind	level/kind reference/variation: SNPs per gene across every sequenced strain, split by effect	toxodb_strain_snps	reference/variation	high
+codon_enc	nodes.parquet	sequence	provenance:level_kind	level/kind reference/sequence: Effective number of codons, GC3, and codon adaptation index	toxodb_codon_usage	reference/sequence	high
+codon_gc3	nodes.parquet	sequence	provenance:level_kind	level/kind reference/sequence: Effective number of codons, GC3, and codon adaptation index	toxodb_codon_usage	reference/sequence	high
+codon_cai_ribosomal	nodes.parquet	sequence	provenance:level_kind	level/kind reference/sequence: Effective number of codons, GC3, and codon adaptation index	toxodb_codon_usage	reference/sequence	high
+atac_promoter_ut	nodes.parquet	chromatin	provenance:level_kind	level/kind DNA/ATACseq: Mean ATAC coverage over the promoter, relative to the genome mean	gse313048_atac	DNA/ATACseq	high
+cuttag_hdac3_promoter_ut	nodes.parquet	chromatin	provenance:level_kind	level/kind DNA/CUTandTAG: Mean HDAC3 CUT&TAG coverage over the promoter, relative to the genome mean	gse277553_cuttag	DNA/CUTandTAG	high
+palmitome_odya_vs_hydroxylamine_log2	nodes.parquet	modification	provenance:dataset	palmitoylation enrichment ratios	toxodb_palmitome	post_translation/proteomics	high
+palmitome_odya_vs_palmitate_log2	nodes.parquet	modification	provenance:dataset	palmitoylation enrichment ratios	toxodb_palmitome	post_translation/proteomics	high
+iedb_epitope_count	nodes.parquet	host_response	provenance:dataset	IEDB epitopes mapped to the gene, as above	toxodb_epitopes	reference/immunity	high
+h4_acetylation_chip_score	nodes.parquet	chromatin	provenance:level_kind	level/kind DNA/ChIPchip: Genome-wide H4 K5/K8/K12/K16 acetylation score within 1 kb of the gene	toxodb_h4_acetylation	DNA/ChIPchip	high
+macrophage_expression_percentile	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Expression percentile in ME49-infected murine macrophages	toxodb_macrophage	transcription/RNAseq	high
+escrt_recruitment_xgboost	nodes.parquet	phenotype,host_response,fitness	provenance:dataset	pooled image-based CRISPR screen of host ESCRT recruitment to the vacuole: a perturbation phenotype that is measured on a host protein	spacr_escrt_screen	DNA/CRISPR_screen	high
+escrt_recruitment_maxvit	nodes.parquet	phenotype,host_response,fitness	provenance:dataset	pooled image-based CRISPR screen of host ESCRT recruitment to the vacuole: a perturbation phenotype that is measured on a host protein	spacr_escrt_screen	DNA/CRISPR_screen	high
+n_m6a_peaks	nodes.parquet	transcript,modification	provenance:level_kind	level/kind transcription/MeRIP: How many m6A peaks the authors called on this gene in tachyzoites	m6a_peaks	transcription/MeRIP	high
+sexual_stage_8dpi_log2fc	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/scRNAseq: Enrichment at 8 days post-infection, when gametogony happens	sexual_stages	transcription/scRNAseq	high
+secretome_soluble_over_vesicle_log2	nodes.parquet	place	provenance:dataset	how a secreted protein splits between soluble and vesicular fractions	secretome_partition	post_translation/proteomics	high
+antisense_expression_percentile	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Percentile of antisense signal at this gene, across the life cycle	antisense_level	transcription/RNAseq	high
+melting_temperature_tm	nodes.parquet	structure	provenance:dataset	a protein's melting temperature: a property of the fold	melting_temperature	post_translation/proteomics	high
+n_crosslink_partners	nodes.parquet	interaction	provenance:level_kind	level/kind post_translation/XLMS: How many proteins this one crosslinks to	crosslink_interactome	post_translation/XLMS	high
+pvm_proximity_positive	nodes.parquet	place,interaction	provenance:dataset	PVM proximity labelling: the study's statement that the protein is AT the parasitophorous vacuole membrane, from a proximity assay	pvm_proximity	post_translation/proteomics	high
+cdpk1_thiophospho_peptides	nodes.parquet	modification	provenance:dataset	thiophosphorylated peptides: a phosphorylation readout	cdpk1_substrates	post_translation/proteomics	high
+mrna_remaining_5h_actinomycin	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Proportion of transcript remaining after five hours of transcription block	mrna_stability	transcription/RNAseq	high
+myristoylation_confidence	nodes.parquet	modification	provenance:dataset	N-myristoylation confidence	myristoylome	post_translation/proteomics	high
+n_arginine_methylation_sites	nodes.parquet	modification	provenance:dataset	arginine methylation sites per gene	toxodb_arginine_methylation	post_translation/proteomics	high
+novel_transcript_models	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/LongRead: How many novel TALON transcript models long reads support for this gene	toxodb_nanopore_isoforms	transcription/LongRead	high
+ees_vs_tachyzoite_log2	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Expression in the feline enteroepithelial stages against tachyzoites	toxodb_enteroepithelial	transcription/RNAseq	high
+ec_number	nodes.parquet	phenotype	provenance:dataset	EC numbers are a statement of what the enzyme does. The vocabulary of instruction 73 has no `function` category, and `phenotype` -- what the protein is held to do -- is the nearest; flagged as a judgement	toxodb_ec_numbers	reference/annotation	high
+has_ec	nodes.parquet	phenotype	provenance:dataset	EC numbers are a statement of what the enzyme does. The vocabulary of instruction 73 has no `function` category, and `phenotype` -- what the protein is held to do -- is the nearest; flagged as a judgement	toxodb_ec_numbers	reference/annotation	high
+n_bcell_epitopes	nodes.parquet	host_response	provenance:dataset	antibody epitopes: what the host immune system recognises on this protein	iedb_bcell	reference/immunity	high
+screen_actin_phenotype	nodes.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_apicoplast_phenotype	nodes.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_egress_phenotype	nodes.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_replication_phenotype	nodes.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_any_phenotype	nodes.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_scorers_agree	nodes.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+resistance_allele_count	nodes.parquet	phenotype,sequence	provenance:dataset	resistance substitutions: a drug phenotype carried by named sequence variants	curated_resistance_alleles	reference/literature	high
+resistance_compound_count	nodes.parquet	phenotype,sequence	provenance:dataset	resistance substitutions: a drug phenotype carried by named sequence variants	curated_resistance_alleles	reference/literature	high
+resistance_substitutions	nodes.parquet	phenotype,sequence	provenance:dataset	resistance substitutions: a drug phenotype carried by named sequence variants	curated_resistance_alleles	reference/literature	high
+resistance_compounds	nodes.parquet	phenotype,sequence	provenance:dataset	resistance substitutions: a drug phenotype carried by named sequence variants	curated_resistance_alleles	reference/literature	high
+drug_compounds_tested	nodes.parquet	phenotype	provenance:dataset	curated sensitivity shifts of mutants to compounds	curated_drug_sensitivity	reference/literature	high
+drug_sensitivity_shifts	nodes.parquet	phenotype	provenance:dataset	curated sensitivity shifts of mutants to compounds	curated_drug_sensitivity	reference/literature	high
+drug_sensitivity_directions	nodes.parquet	phenotype	provenance:dataset	curated sensitivity shifts of mutants to compounds	curated_drug_sensitivity	reference/literature	high
+enteric_oocyst_yield	nodes.parquet	fitness	provenance:dataset	literature-curated oocyst yield of gene disruptions through the feline stage: fitness, though its level is reference/literature	curated_enteric_fitness	reference/literature	high
+enteric_sporulation	nodes.parquet	fitness	provenance:dataset	literature-curated oocyst yield of gene disruptions through the feline stage: fitness, though its level is reference/literature	curated_enteric_fitness	reference/literature	high
+enteric_measurements	nodes.parquet	fitness	provenance:dataset	literature-curated oocyst yield of gene disruptions through the feline stage: fitness, though its level is reference/literature	curated_enteric_fitness	reference/literature	high
+cellcycle_phase	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/scRNAseq: Measured cell-cycle phase per gene, and pseudotime cluster	xue_singlecell	transcription/scRNAseq	high
+cellcycle_pseudotime	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/scRNAseq: Measured cell-cycle phase per gene, and pseudotime cluster	xue_singlecell	transcription/scRNAseq	high
+stage_enriched_derived	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Which stage a gene's own expression is highest in	stage_enriched	transcription/RNAseq	high
+stage_margin_derived	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Which stage a gene's own expression is highest in	stage_enriched	transcription/RNAseq	high
+n_bioid_studies	nodes.parquet	interaction	provenance:level_kind	level/kind post_translation/proximity_labelling: Number of downloaded proximity-labeling studies whose supplement names each gene	bioid_corpus_membership	post_translation/proximity_labelling	high
+n_ipms_studies	nodes.parquet	interaction	provenance:level_kind	level/kind post_translation/IP-MS: Number of downloaded pulldown studies whose supplement names each gene	ipms_corpus_membership	post_translation/IP-MS	high
+n_publications	nodes.parquet	attention	provenance:dataset	publication and paper counts: study effort	pubmed	reference/literature	high
+n_fulltext	nodes.parquet	attention	provenance:dataset	full-text counts: study effort	pmc_oa	reference/literature	high
+lit_tier	nodes.parquet	attention	column_override	literature tier of the gene: study effort, no provenance recorded			judged
+n_papers_focal	nodes.parquet	attention	provenance:dataset	publication and paper counts: study effort	pubmed	reference/literature	high
+n_papers_substantive	nodes.parquet	attention	provenance:dataset	publication and paper counts: study effort	pubmed	reference/literature	high
+n_papers_incidental	nodes.parquet	attention	provenance:dataset	publication and paper counts: study effort	pubmed	reference/literature	high
+attention_depth	nodes.parquet	attention	provenance:dataset	reference/literature, and the column entry agrees: focal / substantive / incidental: how hard the gene was studied	pubmed	reference/literature	high
+n_xlink_partners	nodes.parquet	interaction	provenance:level_kind	level/kind post_translation/XLMS: Measured physical proximity; residue-level crosslinks and Chai-1 complexes	starpath_xlms	post_translation/XLMS	high
+n_struct_similar	nodes.parquet	structure	provenance:dataset	structural neighbours at TM >= 0.7 over AlphaFold models	foldseek_struct	post_translation/structure	high
+n_ipms_partners	nodes.parquet	interaction	provenance:level_kind	level/kind post_translation/IPMS: Replicated pulldown vs untagged control	ipms_baits	post_translation/IPMS	high
+best_model_agreement	nodes.parquet	interaction,structure	column_override	how well the measured crosslinks agree with the predicted complex: an interaction measurement used as a structural check	starpath_xlms	post_translation/XLMS	judged
+n_host_targets	nodes.parquet	interaction	provenance:level_kind	level/kind reference/crosslink_MS: How many host proteins a gene was crosslinked to, where it was looked at	pf_host_degree	reference/crosslink_MS	high
+n_holes	nodes.parquet	interaction,attention,transcript,fitness	column_override	a degree count in the graph of pairs that co-expression AND co-fitness support while the literature does not co-mention them (`build_graph.structural_holes`). It embodies interaction knowledge, is defined by the ABSENCE of literature (`attention`), and is computed from co-expression and co-fitness, so all four are declared. Composite columns are where a single category would be a lie			judged
+af3_sequence_coverage	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+af3_mean_plddt	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+af3_plddt_q25	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+af3_confident_sequence_fraction	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+af3_very_confident_sequence_fraction	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+af3_low_confidence_modelled_fraction	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+af3_confident_rg_angstrom	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+af3_confident_contacts_per_residue	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+af3_ptm	nodes.parquet	structure	provenance:level_kind	level/kind post_translation/computed structure: sequence-verified AF3 confidence, coverage and confident-region geometry	local_af3	post_translation/computed structure	high
+fit_invivo_heart	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Differential fitness x significance in six mouse tissues after acute infection	crispr_invivo_composite	DNA/CRISPR_screen	high
+fit_invivo_brain	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Differential fitness x significance in six mouse tissues after acute infection	crispr_invivo_composite	DNA/CRISPR_screen	high
+fit_lipid_rich_p8	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness in lipid-rich and lipid-limited medium, and the lipid-dependence difference	crispr_serum_restriction	DNA/CRISPR_screen	high
+fit_lipid_limited_p8	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness in lipid-rich and lipid-limited medium, and the lipid-dependence difference	crispr_serum_restriction	DNA/CRISPR_screen	high
+fit_lipid_rich_p4p5	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness in lipid-rich and lipid-limited medium, and the lipid-dependence difference	crispr_serum_restriction	DNA/CRISPR_screen	high
+fit_lipid_limited_p4p5	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness in lipid-rich and lipid-limited medium, and the lipid-dependence difference	crispr_serum_restriction	DNA/CRISPR_screen	high
+fit_serum_differential_p8	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness in lipid-rich and lipid-limited medium, and the lipid-dependence difference	crispr_serum_restriction	DNA/CRISPR_screen	high
+fit_serum_differential_p4p5	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness in lipid-rich and lipid-limited medium, and the lipid-dependence difference	crispr_serum_restriction	DNA/CRISPR_screen	high
+te302107_tachy_r1	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse302107_riboseq	translation/Ribo-seq	high
+te302107_tachy_r2	nodes.parquet	translation	provenance:level_kind	level/kind translation/Ribo-seq, and the name agrees: translational efficiency: translation, never transcript	gse302107_riboseq	translation/Ribo-seq	high
+mrna_log2_remaining_4h_actinomycin	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/RNAseq: Wild-type mRNA remaining after 4 h of transcription block, relative to the median	mrna_decay_gse329845	transcription/RNAseq	high
+fit_complete_medium_2025	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness on glucose alone, on glutamine alone, and which carbon source a gene needs	crispr_glucose_limitation	DNA/CRISPR_screen	high
+fit_no_glutamine	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness on glucose alone, on glutamine alone, and which carbon source a gene needs	crispr_glucose_limitation	DNA/CRISPR_screen	high
+fit_no_glucose	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness on glucose alone, on glutamine alone, and which carbon source a gene needs	crispr_glucose_limitation	DNA/CRISPR_screen	high
+fit_glucose_dependence	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness on glucose alone, on glutamine alone, and which carbon source a gene needs	crispr_glucose_limitation	DNA/CRISPR_screen	high
+fit_glucose_dependence_fdr	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness on glucose alone, on glutamine alone, and which carbon source a gene needs	crispr_glucose_limitation	DNA/CRISPR_screen	high
+utr5_length	nodes.parquet	sequence	provenance:dataset	5' UTR length, upstream AUGs, uORFs and Kozak score. The deposit is RNAseq, but these columns are features of the transcript's SEQUENCE and carry no abundance; a learner using them is not reading expression	gse302108_utr5	transcription/RNAseq	high
+utr5_n_uaugs	nodes.parquet	sequence	provenance:dataset	5' UTR length, upstream AUGs, uORFs and Kozak score. The deposit is RNAseq, but these columns are features of the transcript's SEQUENCE and carry no abundance; a learner using them is not reading expression	gse302108_utr5	transcription/RNAseq	high
+utr5_n_uorfs	nodes.parquet	sequence	provenance:dataset	5' UTR length, upstream AUGs, uORFs and Kozak score. The deposit is RNAseq, but these columns are features of the transcript's SEQUENCE and carry no abundance; a learner using them is not reading expression	gse302108_utr5	transcription/RNAseq	high
+utr5_n_oorfs	nodes.parquet	sequence	provenance:dataset	5' UTR length, upstream AUGs, uORFs and Kozak score. The deposit is RNAseq, but these columns are features of the transcript's SEQUENCE and carry no abundance; a learner using them is not reading expression	gse302108_utr5	transcription/RNAseq	high
+utr5_n_inframe_ext	nodes.parquet	sequence	provenance:dataset	5' UTR length, upstream AUGs, uORFs and Kozak score. The deposit is RNAseq, but these columns are features of the transcript's SEQUENCE and carry no abundance; a learner using them is not reading expression	gse302108_utr5	transcription/RNAseq	high
+utr5_kozak_score	nodes.parquet	sequence	provenance:dataset	5' UTR length, upstream AUGs, uORFs and Kozak score. The deposit is RNAseq, but these columns are features of the transcript's SEQUENCE and carry no abundance; a learner using them is not reading expression	gse302108_utr5	transcription/RNAseq	high
+bzsub_A_expr	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/scRNAseq: Average expression in each of five subtypes of in vivo bradyzoite	brady_subtypes	transcription/scRNAseq	high
+bzsub_B_expr	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/scRNAseq: Average expression in each of five subtypes of in vivo bradyzoite	brady_subtypes	transcription/scRNAseq	high
+bzsub_C_expr	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/scRNAseq: Average expression in each of five subtypes of in vivo bradyzoite	brady_subtypes	transcription/scRNAseq	high
+bzsub_D_expr	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/scRNAseq: Average expression in each of five subtypes of in vivo bradyzoite	brady_subtypes	transcription/scRNAseq	high
+bzsub_E_expr	nodes.parquet	transcript	provenance:level_kind	level/kind transcription/scRNAseq: Average expression in each of five subtypes of in vivo bradyzoite	brady_subtypes	transcription/scRNAseq	high
+iron_depletion_protein_log2fc	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Change in each protein, and in each transcript, after 24 h of iron depletion	iron_depletion_proteome	translation/proteomics	high
+iron_depletion_protein_padj	nodes.parquet	protein_abundance	provenance:level_kind	level/kind translation/proteomics: Change in each protein, and in each transcript, after 24 h of iron depletion	iron_depletion_proteome	translation/proteomics	high
+iron_depletion_rna_log2fc	nodes.parquet	transcript	column_override	the RNA arm of a proteomics deposit: transcript, not abundance	iron_depletion_proteome	translation/proteomics	judged
+surface_apicoplast_log2fc	nodes.parquet	interaction,place	provenance:dataset	TurboID at an organelle surface: proximity (interaction) that is read as which surface the protein sits on (place)	organelle_surface_turboid	post_translation/BioID	high
+surface_apicoplast_stringent	nodes.parquet	interaction,place	provenance:dataset	TurboID at an organelle surface: proximity (interaction) that is read as which surface the protein sits on (place)	organelle_surface_turboid	post_translation/BioID	high
+surface_mitochondrion_log2fc	nodes.parquet	interaction,place	provenance:dataset	TurboID at an organelle surface: proximity (interaction) that is read as which surface the protein sits on (place)	organelle_surface_turboid	post_translation/BioID	high
+surface_mitochondrion_stringent	nodes.parquet	interaction,place	provenance:dataset	TurboID at an organelle surface: proximity (interaction) that is read as which surface the protein sits on (place)	organelle_surface_turboid	post_translation/BioID	high
+surface_er_log2fc	nodes.parquet	interaction,place	provenance:dataset	TurboID at an organelle surface: proximity (interaction) that is read as which surface the protein sits on (place)	organelle_surface_turboid	post_translation/BioID	high
+surface_er_stringent	nodes.parquet	interaction,place	provenance:dataset	TurboID at an organelle surface: proximity (interaction) that is read as which surface the protein sits on (place)	organelle_surface_turboid	post_translation/BioID	high
+fit_density_low	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness at low and high infection density, and which genes high density needs	crispr_parasite_density	DNA/CRISPR_screen	high
+fit_density_high	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness at low and high infection density, and which genes high density needs	crispr_parasite_density	DNA/CRISPR_screen	high
+fit_density_dependence	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness at low and high infection density, and which genes high density needs	crispr_parasite_density	DNA/CRISPR_screen	high
+fit_density_dependence_log10padj	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness at low and high infection density, and which genes high density needs	crispr_parasite_density	DNA/CRISPR_screen	high
+fit_density_dim	nodes.parquet	fitness	provenance:level_kind	level/kind DNA/CRISPR_screen: Fitness at low and high infection density, and which genes high density needs	crispr_parasite_density	DNA/CRISPR_screen	high
+seq_full	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+seq_mature	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+seq_nterm_flank	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+seq_cterm_flank	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+tdi_full	sequence_traits.parquet	structure	release_registry	sequence_traits README: a Foldseek 3Di string, the structural alphabet and not the sequence			high
+tdi_mature	sequence_traits.parquet	structure	release_registry	sequence_traits README: a Foldseek 3Di string, the structural alphabet and not the sequence			high
+tdi_nterm_flank	sequence_traits.parquet	structure	release_registry	sequence_traits README: a Foldseek 3Di string, the structural alphabet and not the sequence			high
+tdi_cterm_flank	sequence_traits.parquet	structure	release_registry	sequence_traits README: a Foldseek 3Di string, the structural alphabet and not the sequence			high
+n_tm	sequence_traits.parquet	sequence	provenance:level_kind	level/kind reference/annotation: The second species: gene structure and the protein's sequence properties	plasmodb_pf3d7_attributes	reference/annotation	high
+has_signal_peptide	sequence_traits.parquet	sequence	provenance:level_kind	level/kind reference/annotation: The second species: gene structure and the protein's sequence properties	plasmodb_pf3d7_attributes	reference/annotation	high
+nterm_side	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+cterm_side	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+seq_len	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+mature_len	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+nterm_len	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+cterm_len	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+tdi_source	sequence_traits.parquet	structure	column_override	which structure the 3Di string came from			judged
+tdi_coverage	sequence_traits.parquet	structure	column_override	fraction of residues with a real 3Di letter			judged
+tdi_n_fragments	sequence_traits.parquet	structure	column_override	how many models were merged into the 3Di string			judged
+tdi_align_identity	sequence_traits.parquet	structure	column_override	identity of the alignment that transferred the 3Di string			judged
+tdi_align_coverage	sequence_traits.parquet	structure	column_override	coverage of the alignment that transferred the 3Di string			judged
+flanks_identical	sequence_traits.parquet	sequence	release_registry	sequence_traits README: the sequence, its regions, their lengths and the DeepTMHMM topology			high
+dom_IPR000008	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000048	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000152	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000177	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000182	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000195	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000209	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000210	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000222	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000225	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000253	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000330	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000387	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000403	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000408	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000504	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000571	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000608	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000626	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000629	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000717	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000719	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000727	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000742	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000795	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000873	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR000884	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001005	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001163	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001214	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001251	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001353	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001394	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001412	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001471	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001487	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001594	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001609	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001611	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001623	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001650	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001680	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001752	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001757	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001806	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001841	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001849	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001881	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001932	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR001965	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR002048	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR002073	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR002110	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR002130	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR002347	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR002423	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR002553	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003029	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003323	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003409	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003439	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003593	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003607	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003609	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003959	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR003960	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR004000	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR004087	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR004088	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR004161	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR004273	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR004843	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR005225	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR006073	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR006186	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR006195	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR006387	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR007052	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR007125	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR007226	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR007863	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR008250	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR008271	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR008927	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR008978	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR008979	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR008984	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR008991	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR009000	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR009030	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR009057	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR009060	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR009072	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR009080	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR009091	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR010920	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011009	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011011	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011012	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011047	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011053	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011249	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011333	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011527	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011545	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011701	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011990	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR011992	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR012337	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR012340	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR013087	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR013320	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR013584	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR013602	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR013766	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR014001	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR014014	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR014756	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR015424	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR015500	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR015655	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR015915	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR015940	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR015947	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR016024	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR016035	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR016135	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR016181	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR017441	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR017853	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR017871	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR017907	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR018108	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR018200	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR018247	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR018253	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR018303	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR019734	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR019775	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR019787	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR019821	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR020103	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR020472	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR020568	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR020845	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR020846	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR022086	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR022742	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR023088	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR023174	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR023298	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR023299	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR023313	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR023395	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR023753	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR023828	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR024317	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR024743	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR026983	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR027409	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR027410	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR027413	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR027417	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR027640	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR027916	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR028078	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR028352	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR028889	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029000	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029021	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029033	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029044	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029045	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029052	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029055	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029058	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029063	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR029071	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR034204	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR035699	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR035706	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR035892	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR035969	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR035979	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036047	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036188	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036236	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036249	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036259	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036291	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036322	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036390	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036412	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036427	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036457	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036465	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036612	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036640	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036691	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036755	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036770	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036852	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036855	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036865	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036866	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036869	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036890	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR036915	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR038765	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR041228	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR041466	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR041569	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR041658	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR043129	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR043502	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR043519	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR044492	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR045864	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR045877	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR046341	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_IPR047575	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00004	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00005	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00009	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00022	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00024	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00063	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00069	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00071	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00076	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00082	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00085	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00106	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00118	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00122	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00125	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00149	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00153	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00160	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00176	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00179	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00225	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00226	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00227	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00233	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00240	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00270	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00271	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00400	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00415	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00439	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00443	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00481	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00498	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00501	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00566	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00583	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00642	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00650	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00664	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00702	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00847	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF00856	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF01399	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF01423	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF01529	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF01602	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF01926	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF02338	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF02493	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF03028	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF03144	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF04092	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF04969	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF05193	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF07690	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF07992	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF08373	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF08393	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF09717	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF12146	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF12314	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF12774	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF12775	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF12777	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF12780	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF12781	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF12796	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF13499	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF13540	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF13639	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF14295	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF14531	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF14580	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF14733	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF17852	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF17862	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF18198	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+dom_PF18199	domain_traits.parquet	domain	release_registry	domain_lookup.tsv gives this column's InterPro or Pfam accession and description			high
+domclass_protein_kinase	domain_traits.parquet	domain	release_registry	a named domain class built from the InterPro and Pfam lists quoted in the release README			high
+domclass_ap2_apiap2	domain_traits.parquet	domain	release_registry	a named domain class built from the InterPro and Pfam lists quoted in the release README			high
+domclass_srs_sag	domain_traits.parquet	domain	release_registry	a named domain class built from the InterPro and Pfam lists quoted in the release README			high
+domclass_ef_hand	domain_traits.parquet	domain	release_registry	a named domain class built from the InterPro and Pfam lists quoted in the release README			high
+domclass_wd40	domain_traits.parquet	domain	release_registry	a named domain class built from the InterPro and Pfam lists quoted in the release README			high
+domclass_ankyrin	domain_traits.parquet	domain	release_registry	a named domain class built from the InterPro and Pfam lists quoted in the release README			high
+domclass_rna_binding	domain_traits.parquet	domain	release_registry	a named domain class built from the InterPro and Pfam lists quoted in the release README			high
+domclass_proteasome_ubiquitin	domain_traits.parquet	domain	release_registry	a named domain class built from the InterPro and Pfam lists quoted in the release README			high
+domclass_rhoptry_kinase_ropk	domain_traits.parquet	domain,place	column_override	a domain match OR a protein kinase whose PRODUCT NAME matches rhoptry|ROP\d+. The second arm reads a localisation word out of the annotation, so this column carries `place`			judged
+domclass_tm_rich	domain_traits.parquet	domain,sequence	column_override	three or more TM helices: a DeepTMHMM count, not a domain match			judged
+n_interpro_domains	domain_traits.parquet	domain	release_registry	counts and flags over the same domain table			high
+n_pfam_domains	domain_traits.parquet	domain	release_registry	counts and flags over the same domain table			high
+has_any_domain	domain_traits.parquet	domain	release_registry	counts and flags over the same domain table			high
+domain_novel	domain_traits.parquet	domain	release_registry	counts and flags over the same domain table			high
+expr_rel_GSE103113_GRA18_LPS	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE103113_Pru_LPS	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE103113_gra18_LPS	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE103113_GRA18	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE103113_Pru	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE103113_gra18	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE103113	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE116539_crt_ko	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE116539_wildtype	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE116539	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE125120_Bystander_bradyzoite_Myr1_KO_foreskin_fibrobla	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE125120_Bystander_bradyzoite_Myr1_KO_foreskin_fibrobla	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE125120_Infected_bradyzoite_Myr1_KO_foreskin_fibroblas	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE125120_Infected_bradyzoite_Myr1_KO_foreskin_fibroblas	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE125120	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE132238_KO_stress_24h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE132238_KO_stress_24h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE132238_KO_stress_24h_array2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE132238_KO_stress_24h_array2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE132238_KO_unstress_24h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE132238_KO_unstress_24h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE132238_KO_stress_48h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE132238_KO_stress_48h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE132238_KO_unstress_48h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE132238_KO_unstress_48h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE132238_KO_stress_72h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE132238_KO_stress_72h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE132238_KO_stress_72h_array2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE132238_KO_stress_72h_array2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE132238_KO_unstress_72h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE132238_KO_unstress_72h_array1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE132238	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_Pru_FR_18h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_Pru_FR_7h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_Pru_MORC_KD_IAA_24h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_RH_MORC_KD_IAA_24h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_Pru_MORC_KD_IAA_48h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_RH_MORC_KD_IAA_7h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_Pru_MORC_KD_UT	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_Pru_US	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE136123_RH_MORC_KD_UT	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE136123	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE139537_KO_Shield1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE139537_KO_Shield1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE139537_2B4_EtOH	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE139537_2B4_EtOH	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE139537_2B4_Shield1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE139537_2B4_Shield1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE139537	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE140197_12hr_20ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE140197_12hr_20ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE140197_4hr_20ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE140197_4hr_20ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE140197_8hr_20ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE140197_8hr_20ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE140197_12hr_5ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE140197_12hr_5ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE140197_4hr_5ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE140197_4hr_5ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE140197_8hr_5ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE140197_8hr_5ng	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE140197	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE150334_iKD_AP2IX_5_Auxin	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE150334_iKD_AP2IX_5_Auxin_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE150334	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE156685_A1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE156685_A1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE156685_B1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE156685_B1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE156685_C1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE156685_C1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE156685_D1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE156685_D1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE156685_E1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE156685_E1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE156685_F1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE156685_F1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE156685_G1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE156685_G1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE156685	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE158231_T_gondii_TgIF2K_B_KO_treated	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE158231_T_gondii_TgIF2K_B_KO_treated	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE158231	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE159515_ME49_Bz_A	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE159515_ME49_Bz_B	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE159515_ME49_Tz_A	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE159515_ME49_Tz_B	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE159515_RH_Tz_A	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE159515_RH_Tz_B	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE159515	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE175919_DMSO	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE175919_MC1742	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE175919	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_METTL3_16h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_METTL3_4h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_METTL3_0h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_WTAP_16h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_WTAP_4h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_WTAP_0h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_YTH1_16h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_YTH1_4h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE178355_YTH1_0h	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE178355	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE189677_RH	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE189677_RHpit	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE189677_iKD_PT2_ATc	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE189677_iKD_PT2_ATc_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE189677	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE193614_A	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE193614_A	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE193614_B	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE193614_B	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE193614_C	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE193614_C	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE193614_D	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE193614_D	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE193614_E	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE193614_E	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE193614_F	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE193614_F	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE193614	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE193779_KOX_4_strain	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE193779_KOX_4_strain	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE193779	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE198001_CaM_indirect_knockout_with_Atc_rep1_iCaM_ATC_1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE198001_CaM_indirect_knockout_with_Atc_rep1_iCaM_ATC_1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE198001_CaM_indirect_knockout_with_Atc_rep2_iCaM_ATC_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE198001_CaM_indirect_knockout_with_Atc_rep2_iCaM_ATC_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE198001_CaM_indirect_knockout_with_Atc_rep3_iCaM_ATC_3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE198001_CaM_indirect_knockout_with_Atc_rep3_iCaM_ATC_3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE198001	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_Tz_aux	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_Tz_aux_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_Bz_aux	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCyc5_Bz_aux	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCyc5_Bz_aux_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCyc5_Bz_aux_3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCyc5_Bz_aux_4	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCycP2_Bz_aux	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCycP2_Bz_aux_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCycP2_Bz_aux_3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCycP2_Bz_aux_4	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCycP2_Tz_aux	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCycP2_Tz_aux_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCycP2_Tz_aux_3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE200962_ME49_TgCycP2_Tz_aux_4	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE200962	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE208647_ME49EW_cyst_30_days	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE208647_ME49_Tir1_strain_pH7_0_48hrs	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE208647_ME49_Tir1_strain_pH8_2_48hrs	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE208647	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE218921_T_gondii_in_vitro_bradyzoite_induction_conditi	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE218921_T_gondii_in_vitro_bradyzoite_induction_conditi	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE218921_T_gondii_VEG_BFD1_KO_Switch_Conditions	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE218921_T_gondii_VEG_BFD1_KO_Switch_Conditions	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE218921_T_gondii_VEG_ROCY1_KO_Switch_Conditions	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE218921_T_gondii_VEG_ROCY1_KO_Switch_Conditions	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE218921	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223621_parental	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223621_dBFD1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223621_dBFD2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE223621	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223819_parental_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223819_parental_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223819_200385_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223819_200385_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223819_311100_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223819_311100_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223819_224630_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223819_224630_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223819_306620_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223819_306620_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223819_253790_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223819_253790_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223819_208020_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223819_208020_mNG_mAID_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223819_parental_IAA_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223819_parental_IAA_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE223819	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_stress_1a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_stress_1b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_stress_2a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_stress_2b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_stress_3a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_stress_3b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_stress_1a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_stress_1b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_stress_2a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_stress_2b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_stress_3a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_stress_3b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_standard_1a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_standard_1b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_standard_2a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_standard_2b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_standard_3a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_WT_standard_3b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_standard_1a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_standard_1b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_standard_2a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_standard_2b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_standard_3a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE223869_bfd2_standard_3b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE223869	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223877_DD_BFD1_Shield_1a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223877_DD_BFD1_Shield_1a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223877_DD_BFD1_Shield_1b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223877_DD_BFD1_Shield_1b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223877_DD_BFD1bfd2_Shield_1a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223877_DD_BFD1bfd2_Shield_1a	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE223877_DD_BFD1bfd2_Shield_1b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE223877_DD_BFD1bfd2_Shield_1b	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE223877	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE224934_iKD_AP2XII_1_IAA_12h_biological_repeat	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE224934_iKD_AP2XII_1_IAA_12h_biological_repeat	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE224934_iKD_AP2XII_1_IAA_24h_biological_repeat	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE224934_iKD_AP2XII_1_IAA_24h_biological_repeat	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE224934	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE228580_ME49_iKD_AP2XII_1_IAA_60h_biological_repeat_1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE228580_ME49_iKD_AP2XII_1_IAA_60h_biological_repeat_1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE228580_ME49_iKD_AP2XII_1_IAA_60h_biological_repeat_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE228580_ME49_iKD_AP2XII_1_IAA_60h_biological_repeat_2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE228580_ME49_iKD_AP2XII_1_IAA_60h_biological_repeat_3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE228580_ME49_iKD_AP2XII_1_IAA_60h_biological_repeat_3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE228580	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE240648_cKd_ATc1	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE240648_cKd_ATc2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE240648_cKd_ATc3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE240648_cKd_ATc4	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE240648_cKd	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE240648	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE245775_eIF1_2_KO_tachyzoite_RNAseq	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE245775_parental_tachyzoite_RIBOseq	expression_traits.parquet	translation	release_registry	column_registry.tsv gives this column's contrast as a RIBOseq library, so it is translation			high
+expr_rel_GSE245775_parental_tachyzoite_RNAseq	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE245775_eIF1_2_KO_stress_RIBOseq	expression_traits.parquet	translation	release_registry	column_registry.tsv gives this column's contrast as a RIBOseq library, so it is translation			high
+expr_rel_GSE245775_parental_stress_RIBOseq	expression_traits.parquet	translation	release_registry	column_registry.tsv gives this column's contrast as a RIBOseq library, so it is translation			high
+expr_abs_GSE245775	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE268652_UT	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE268652_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE268652	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE268750_UT	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE268750_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE268750	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE268892_iSNF2L_IAA_0h_RNA_seq	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE268892_iSNF2L_IAA_12h_RNA_seq	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE268892_iSNF2L_IAA_24h_RNA_seq	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE268892	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE271902_Illumina_RFTS_KD_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE271902_Illumina_RFTS_KD_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE271902_Illumina_SNF2h_KD_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE271902_Illumina_SNF2h_KD_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE271902_Nanopore_SNF2h_KD_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE271902_Nanopore_SNF2h_KD_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE271902	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_GSE285297_KO	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_GSE285297_KO	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE285297	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE285353_RH_Tir1_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE285353_RH_iAP2XI_3_IAA	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE285353	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE286090_RNA_Seq_G5A_HA_tz2	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_rel_GSE286090_RNA_Seq_G5A_KO_tz3	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_GSE286090	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfc_PRJNA1008424_Trx1_mutant	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_lfcse_PRJNA1008424_Trx1_mutant	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+expr_abs_PRJNA1008424	expression_traits.parquet	transcript	release_registry	column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column			high
+host_facing	information_map/values.parquet	place	column_override	the conclusion that the protein reaches beyond the parasite plasma membrane: a statement about where it is			judged
+compartment_hyperlopit	information_map/values.parquet	place	column_override	hyperLOPIT marker niche			judged
+compartment_go_cc	information_map/values.parquet	place	column_override	experimental GO cellular component			judged
+compartment_go_cc_n	information_map/values.parquet	place	column_override	number of GO cellular-component terms recorded			judged
+partner_best	information_map/values.parquet	interaction	column_override	the strongest recorded partner			judged
+partner_best_prob	information_map/values.parquet	interaction	column_override	probability of the strongest recorded partner			judged
+partner_n_ge95	information_map/values.parquet	interaction	column_override	partners recorded at probability >= 0.95			judged
+partner_n_ge50	information_map/values.parquet	interaction	column_override	partners recorded at probability >= 0.50			judged
+function_class	information_map/values.parquet	phenotype	column_override	coarse functional class. No `function` category exists in instruction 73's vocabulary; `phenotype` is the nearest kind of knowledge. Judged			judged
+function_class_n	information_map/values.parquet	phenotype	column_override	as function_class			judged
+function_go_bp	information_map/values.parquet	phenotype	column_override	experimental GO biological process; judged as function_class			judged
+function_go_bp_n	information_map/values.parquet	phenotype	column_override	as function_go_bp			judged
+function_go_mf	information_map/values.parquet	phenotype	column_override	experimental GO molecular function; judged as function_class			judged
+function_go_mf_n	information_map/values.parquet	phenotype	column_override	as function_go_mf			judged
+screen_actin_phenotype	information_map/values.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_apicoplast_phenotype	information_map/values.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_egress_phenotype	information_map/values.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_replication_phenotype	information_map/values.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_any_phenotype	information_map/values.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high
+screen_scorers_agree	information_map/values.parquet	phenotype	provenance:level_kind	level/kind DNA/imaging_screen, and the name agrees: the split-Cas9 imaging screen's phenotype calls	splitcas9_imaging_screen	DNA/imaging_screen	high

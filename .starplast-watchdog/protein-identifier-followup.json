@@ -1,0 +1,60 @@
+{
+  "operation": "qualified_protein_identifier_browser_and_reviewed_release_recovery",
+  "recorded_epoch": 1793372961.3194966,
+  "source_commit": "a1fe0ffc34052e1855493afb0de6faae2b19d8c2",
+  "release_correction_commit": "90c2c40f1521424d93f3a7ad5129401a385614c4",
+  "files": {
+    "/home/carruthers/.local/share/parascape-download-worker/prepare_protein_identifier_evidence.py": {
+      "sha256": "90343b0234796d1a80c553bb5fcc3968e156a5389ce6c13a1b57ba8bff2c11f6",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/prepare_protein_identifier_evidence-90343b0234796d1a80c553bb5fcc3968e156a5389ce6c13a1b57ba8bff2c11f6.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_protein_identifier_evidence.py": {
+      "sha256": "e5848edfd59ebd7f1becdb58dd80460559845888f7e3c2d8175063f05408d760",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/check_protein_identifier_evidence-e5848edfd59ebd7f1becdb58dd80460559845888f7e3c2d8175063f05408d760.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_portable_protein_identifier_evidence_20261030.py": {
+      "sha256": "f8a6007c5f7cfda53acf306a6c429fbd82069c7e00719a223faf36584f40981f",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/validate_portable_protein_identifier_evidence_20261030-f8a6007c5f7cfda53acf306a6c429fbd82069c7e00719a223faf36584f40981f.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/push_protein_identifier_followup.py": {
+      "sha256": "6d99152d29371f151ef0e7cb2ae419a6d8459cb10c5dcf3bbb0ccee95992e2a9",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/push_protein_identifier_followup-6d99152d29371f151ef0e7cb2ae419a6d8459cb10c5dcf3bbb0ccee95992e2a9.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/recover_release_005_tooltips.py": {
+      "sha256": "a6093d8584925c4e15ea83031ff2a134d6e7075c58827f2e2879f9c384e1e27e",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/recover_release_005_tooltips-a6093d8584925c4e15ea83031ff2a134d6e7075c58827f2e2879f9c384e1e27e.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/publish_005_when_checked.py": {
+      "sha256": "b01ced83777d17df4fc378b9737bec91b98906f71a02286f4771d17e94067d1b",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/publish_005_when_checked-b01ced83777d17df4fc378b9737bec91b98906f71a02286f4771d17e94067d1b.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_wheel_005.py": {
+      "sha256": "28872abc503157664c0ea6eba8ab4355d85da6e4d49fc0aadf957f96ba783546",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/check_wheel_005-28872abc503157664c0ea6eba8ab4355d85da6e4d49fc0aadf957f96ba783546.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-protein-identifier-evidence.service": {
+      "sha256": "3e95ee1d31438d0c2ac9cd7a40555cabd1f754fad9871339fd9ab85b2ecada3d",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/parascape-protein-identifier-evidence-3e95ee1d31438d0c2ac9cd7a40555cabd1f754fad9871339fd9ab85b2ecada3d.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-protein-identifier-evidence.timer": {
+      "sha256": "fc81aa4419ceb838bd119c5690a410398aa8bd0f99a9ec62b35c1a02b5f47d62",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/parascape-protein-identifier-evidence-fc81aa4419ceb838bd119c5690a410398aa8bd0f99a9ec62b35c1a02b5f47d62.timer"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-identifier-followup-push.service": {
+      "sha256": "5b56fa569a35511ef4acc62f4df95868d828f5cdf7498d535fe84d1e2f64f45e",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/parascape-identifier-followup-push-5b56fa569a35511ef4acc62f4df95868d828f5cdf7498d535fe84d1e2f64f45e.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-release-005-tooltip-recovery.service": {
+      "sha256": "a0af247646fae2974eb460f1f69821d8ab7f4ce1ea83c491532a57dda918d03c",
+      "archived": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/parascape-release-005-tooltip-recovery-a0af247646fae2974eb460f1f69821d8ab7f4ce1ea83c491532a57dda918d03c.service"
+    }
+  },
+  "validation": "572 focused identifier/reader/UI/QC checks; 526 subsequent docs/identifier checks; original release failure fixed and 608 UI/reference/docs checks pass",
+  "measurements_unchanged": 72,
+  "identifier_records": 229261,
+  "identifier_original_outputs_identical": true,
+  "native_memory_limit_bytes": 2147483648,
+  "publication": "Native recovery rebuilds and checks installed wheel before exact-commit CI; follow-up waits both official publication and live checkout synchronization",
+  "goal_status": "active",
+  "historical_inference_goal": "paused"
+}

@@ -1,0 +1,69 @@
+{
+ "name": "compartment_protein_features+literature_median_rank_nn100_md0.1_mcs25",
+ "spec": {
+  "name": "default",
+  "blocks": [
+   "protein_features",
+   "literature"
+  ],
+  "categorical": [],
+  "extra_columns": [],
+  "na_policy": "median",
+  "max_missing": 0.5,
+  "scaling": "rank",
+  "block_weights": {},
+  "categorical_weight": 1.0,
+  "indicator_weight": 0.5,
+  "n_components": 3,
+  "n_neighbors": 100,
+  "min_dist": 0.1,
+  "metric": "euclidean",
+  "random_state": 42
+ },
+ "n_genes": 3000,
+ "features": [
+  "length",
+  "n_tm",
+  "has_signal_peptide",
+  "is_tm",
+  "tm_kd_mean",
+  "tm_kd_max",
+  "n_interpro",
+  "has_domain",
+  "paralog_number",
+  "lineage_specific",
+  "mean_plddt",
+  "n_phosphosites",
+  "protein_ibaq_log2",
+  "n_publications",
+  "n_fulltext",
+  "n_papers_focal",
+  "n_papers_substantive",
+  "n_papers_incidental"
+ ],
+ "target": "compartment",
+ "excluded": [
+  "compartment",
+  "compartment_best",
+  "lopit_map",
+  "lopit_mcmc",
+  "lopit_unified"
+ ],
+ "clustering": {
+  "algorithm": "hdbscan",
+  "min_cluster_size": 25
+ },
+ "scores": {
+  "mean_f1": 0.13123692827828237,
+  "best_f1": 0.2580645161290323,
+  "best_label": "ER",
+  "n_labels_scored": 15,
+  "n_labels_recovered": 0,
+  "objective_score": 0.09615384615384616,
+  "objective": "best_precision",
+  "objective_detail": "cluster 28 is 10% dense granules and holds 9% of it",
+  "weighting": "macro",
+  "adjusted_rand": 0.0348259098045323,
+  "adjusted_mutual_info": 0.1303255887260628
+ }
+}

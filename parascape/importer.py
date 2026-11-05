@@ -50,6 +50,35 @@ DUPLICATES = ("mean", "median", "max", "min", "first")
 QUANTIFICATIONS = ("none",) + tuple(TRANSFORM)
 
 
+#: How many bytes of a delimited file are enough to see its separator.
+SNIFF_BYTES = 8192
+
+#: The separators a table in this field is actually written with. The sniff is restricted to these
+#: deliberately: `csv.Sniffer` with no candidates chooses from every character, and on a
+#: single-column list of gene identifiers it picks a LETTER -- `gene\nTGME49_208830` came back as
+#: three columns split on "e". A one-column gene list is the commonest thing anybody drops.
+SEPARATORS = ",\t;|"
+
+
+def sniff_separator(path: str) -> str:
+    """The separator a delimited file uses, or "" for Excel, parquet and a single-column file."""
+    import csv
+    if os.path.splitext(str(path))[1].lower() in (".xlsx", ".xls", ".parquet"):
+        return ""
+    try:
+        with open(path, encoding="utf8", errors="replace") as handle:
+            sample = handle.read(SNIFF_BYTES)
+    except OSError:
+        return ""
+    try:
+        return csv.Sniffer().sniff(sample, delimiters=SEPARATORS).delimiter
+    except (csv.Error, ValueError):
+        head = sample.splitlines()[0] if sample.splitlines() else ""
+        counts = {sep: head.count(sep) for sep in SEPARATORS}
+        best = max(counts, key=counts.get) if counts else ""
+        return best if counts.get(best) else ""
+
+
 def read_any(path: str, sheet=0) -> pd.DataFrame:
     """Read a table in whatever format it arrived in.
 
@@ -57,13 +86,16 @@ def read_any(path: str, sheet=0) -> pd.DataFrame:
     `.txt` that are really TSV, and a `.csv` exported from Excel in a European locale is
     semicolon-separated. Guessing wrongly gives one column with everything in it, which looks like a
     file with no data rather than a file read badly.
+
+    A file with none of `SEPARATORS` in it is one column, and is read as one: the tab it is given is
+    a separator the file is known not to contain.
     """
     ext = os.path.splitext(path)[1].lower()
     if ext == ".parquet":
         return pd.read_parquet(path)
     if ext in (".xlsx", ".xls"):
         return pd.read_excel(path, sheet_name=sheet)
-    return pd.read_csv(path, sep=None, engine="python")
+    return pd.read_csv(path, sep=sniff_separator(path) or "\t", engine="python")
 
 
 def sheets_in(path: str) -> list:

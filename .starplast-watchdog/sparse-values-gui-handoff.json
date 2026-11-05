@@ -1,0 +1,97 @@
+{
+  "operation": "integrate_original_sparse_measurement_browser",
+  "epoch": 1793418940.679514,
+  "files": {
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/sparse_values.py": {
+      "sha256": "b76ce1de718fa466b931cf26ea00511a4a61bf4ebe734254661b69cdea05407d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/sparse_values-b76ce1de718fa466b931cf26ea00511a4a61bf4ebe734254661b69cdea05407d.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/sparse_query.py": {
+      "sha256": "fc1aa0d7d455709a51ab9135dbba78dc71bd5938606d3102435acb268d01645a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/sparse_query-fc1aa0d7d455709a51ab9135dbba78dc71bd5938606d3102435acb268d01645a.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/sparse_values_panel.py": {
+      "sha256": "d995ba926f5bd5dbd04906b24f523b35d0d16f222f7d702f464799df628bc46c",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/sparse_values_panel-d995ba926f5bd5dbd04906b24f523b35d0d16f222f7d702f464799df628bc46c.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/compare_panel.py": {
+      "sha256": "630b172c4f0d15aebfaad6dec4ae2c667f1713994653ea6b6f27169348837530",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/compare_panel-630b172c4f0d15aebfaad6dec4ae2c667f1713994653ea6b6f27169348837530.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/tests/test_sparse_values.py": {
+      "sha256": "5519b0c9750df2ef1b9cbbb8c9623db7c8f6c8605f38b4f7967ad07217fac137",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/test_sparse_values-5519b0c9750df2ef1b9cbbb8c9623db7c8f6c8605f38b4f7967ad07217fac137.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/tests/test_sparse_query.py": {
+      "sha256": "acb3444fa0689d533f774f6553eba002491719130e298080c57005f9f2150c53",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/test_sparse_query-acb3444fa0689d533f774f6553eba002491719130e298080c57005f9f2150c53.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/tests/test_sparse_values_panel.py": {
+      "sha256": "cc1c74630e1943f019e8ffed7596c46930d9e71268b78bb0e1cd6cb2cb04070d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/test_sparse_values_panel-cc1c74630e1943f019e8ffed7596c46930d9e71268b78bb0e1cd6cb2cb04070d.py"
+    },
+    "/media/carruthers/mnt3/claude/repo/starplast/docs/dataset_browser.md": {
+      "sha256": "36a71bc6c72e21f8695146def8d86fe4e8d73a9a14a459a649a036a650a1a0f2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/dataset_browser-36a71bc6c72e21f8695146def8d86fe4e8d73a9a14a459a649a036a650a1a0f2.md"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_sparse_panel_real_files.py": {
+      "sha256": "fc6ba99c8573f9953b20c5599be266e24547cdc4bba6bbb53cde3539ade1a771",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/check_sparse_panel_real_files-fc6ba99c8573f9953b20c5599be266e24547cdc4bba6bbb53cde3539ade1a771.py"
+    },
+    "/home/carruthers/.local/bin/parascape-live": {
+      "sha256": "c7a56709b974b2195141e7947900ce878c23129d9491686c0ab13073d9668373",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/parascape-live-c7a56709b974b2195141e7947900ce878c23129d9491686c0ab13073d9668373"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8491519-query.csv": {
+      "sha256": "b510c3fbe4765079700bb2fb4c173d6264332a266c09bb14cdfdcaf5af581f39",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8491519-query-b510c3fbe4765079700bb2fb4c173d6264332a266c09bb14cdfdcaf5af581f39.csv"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8449844-panel.png": {
+      "sha256": "5fc25d9ec63a3e4f40fd5820ecf7d999e7dc9742ba94ee79c86fbe49a5be9727",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8449844-panel-5fc25d9ec63a3e4f40fd5820ecf7d999e7dc9742ba94ee79c86fbe49a5be9727.png"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8449844-query.csv.json": {
+      "sha256": "1936680eda8225adeedadc5e29451948b0c104cffc57650a38c226818b6d5d8a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8449844-query.csv-1936680eda8225adeedadc5e29451948b0c104cffc57650a38c226818b6d5d8a.json"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/validation.json": {
+      "sha256": "305c538fa54aa42b1c406b178c34f2fc49f04417598a2ee42b567729ba2dc36b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/validation-305c538fa54aa42b1c406b178c34f2fc49f04417598a2ee42b567729ba2dc36b.json"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8449844-query.csv.previous-1793418771365484844": {
+      "sha256": "338681501ea78e8dc2bf9a39681a196b7f38f51f93bff1c510059f5011ac1fe9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8449844-query.csv-338681501ea78e8dc2bf9a39681a196b7f38f51f93bff1c510059f5011ac1fe9.previous-1793418771365484844"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8449844-query.csv": {
+      "sha256": "338681501ea78e8dc2bf9a39681a196b7f38f51f93bff1c510059f5011ac1fe9",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8449844-query-338681501ea78e8dc2bf9a39681a196b7f38f51f93bff1c510059f5011ac1fe9.csv"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8449844-query.csv.json.previous-1793418771365534067": {
+      "sha256": "b34cbc291cf786710e77858434d47d5e7135d9018ff40db9f68fd747bf70be9b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8449844-query.csv.json-b34cbc291cf786710e77858434d47d5e7135d9018ff40db9f68fd747bf70be9b.previous-1793418771365534067"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8491519-query.csv.json.previous-1793418781271166907": {
+      "sha256": "9bf94c219dd14882efb119bd398ecbfaf4b5840725b72bcbbacd3040379145a7",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8491519-query.csv.json-9bf94c219dd14882efb119bd398ecbfaf4b5840725b72bcbbacd3040379145a7.previous-1793418781271166907"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8491519-panel.png": {
+      "sha256": "1f690818f88177c82b4c996c3d1545b3a75952337c67cbc62b7db416e5cd8437",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8491519-panel-1f690818f88177c82b4c996c3d1545b3a75952337c67cbc62b7db416e5cd8437.png"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8491519-query.csv.previous-1793418781271122322": {
+      "sha256": "b510c3fbe4765079700bb2fb4c173d6264332a266c09bb14cdfdcaf5af581f39",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8491519-query.csv-b510c3fbe4765079700bb2fb4c173d6264332a266c09bb14cdfdcaf5af581f39.previous-1793418781271122322"
+    },
+    "/media/carruthers/mnt1/parascape-sparse-values-reader-validation/gui/GSM8491519-query.csv.json": {
+      "sha256": "e351ff3f48162456abed94404a28da7a037774cef386d37030c346be543d543b",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/sparse_values_gui/GSM8491519-query.csv-e351ff3f48162456abed94404a28da7a037774cef386d37030c346be543d543b.json"
+    }
+  },
+  "validation": "55 combined reader/query/Qt/existing measurement and Compare checks passed,plus new install-wiring test passed in5-test panel suite:56distinct checks. Actual offline GUI shows all65bound sources,queries2real normal/inverse layouts and replays20878168source records. Complete152and1048record CSV exports match original entry indices/coordinate/value tokens;inversepreview500exports1048. Full submitted feature/cell context and stale-query invalidation checked; both final screenshots visually inspected.",
+  "gui": "Compare > Sparse measurements. One background query at a time,interruptible betweenbatches; original labels/metadata/coordinates and int64/realvalues retained. Bounded500record preview,completeCSV export plus SHA/provenance/operations sidecar;emptyresults have sidecar,stalequeries cannotexport. Full cell metadata referenced by original source-axis positions/checksum-pinned artifact; preview displays direct original cell metadata.",
+  "launcher": "Owned parascape-live wrapper now sets three sparse roots onlywhen not already overridden. Existing7portablecache/othercollections preserved. Preimage/finalsource/checksumreceipt archived. No running sessions or nativeworkers restarted.",
+  "scope": "Existing452densequantities and all original sparse source files unchanged. No canonicalgene inference,coordinate aggregation,zero fill,normalization,biological quality admission or sample independence inferred.",
+  "remaining": "Finish lastnumericfile,exactduplicate/logicalcell audit,sourcefeature/reference/unit/context coverage,optional/sharded GitHub downloads,portable release and all remaining sourceformats/studies. Scientific faircomparison and fullgoal notcomplete.",
+  "goal_status": "active",
+  "historical_inference_status": "paused"
+}

@@ -1,0 +1,85 @@
+{
+  "operation": "verified_archive_member_table_materialization_and_original_quantity_admission",
+  "epoch": 1793409721.0381782,
+  "files": {
+    "/home/carruthers/.local/share/parascape-download-worker/materialize_pride_archive_tables.py": {
+      "sha256": "1afd6a02948c07a14536bdcefe7115344cc9bbcc4d5d781d931c81cd3f03073e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/materialize_pride_archive_tables-1afd6a02948c07a14536bdcefe7115344cc9bbcc4d5d781d931c81cd3f03073e.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_pride_archive_table_materialization.py": {
+      "sha256": "e73d1f74148f7ac8789cd0935a1624f238d9a69cf84125c2101de1c1d691afaa",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/check_pride_archive_table_materialization-e73d1f74148f7ac8789cd0935a1624f238d9a69cf84125c2101de1c1d691afaa.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/process_archived_protein_groups.py": {
+      "sha256": "9bdd84445580b0383f0005dfac05b0370d51f6a15dce7c3a59a5d59a25b79fda",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/process_archived_protein_groups-9bdd84445580b0383f0005dfac05b0370d51f6a15dce7c3a59a5d59a25b79fda.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_archived_protein_group_values.py": {
+      "sha256": "e1ad7e95e018ed3f3d8e8015855a1439913b97ce5f81837445363499b4953e2e",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/check_archived_protein_group_values-e1ad7e95e018ed3f3d8e8015855a1439913b97ce5f81837445363499b4953e2e.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/validate_archived_protein_group_values.py": {
+      "sha256": "9dba377a8788398fe83be9ebf11043612ddc26d14a0f452ae5248e657072a563",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/validate_archived_protein_group_values-9dba377a8788398fe83be9ebf11043612ddc26d14a0f452ae5248e657072a563.py"
+    },
+    "/home/carruthers/.local/share/parascape-download-worker/check_archive_quantities_offline_ui.py": {
+      "sha256": "b29a9ec3a6bd78b1abf2b6a6237e7c9b53ed09fd5f81b48199e18efbc319b770",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/check_archive_quantities_offline_ui-b29a9ec3a6bd78b1abf2b6a6237e7c9b53ed09fd5f81b48199e18efbc319b770.py"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-pride-archive-tables.service": {
+      "sha256": "d3b974d4b3e964f9a3a7bf586cc197f699d22e50b91cbe32713130c9de766374",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/parascape-pride-archive-tables-d3b974d4b3e964f9a3a7bf586cc197f699d22e50b91cbe32713130c9de766374.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-pride-archive-tables.timer": {
+      "sha256": "d6754de5aa65adf9664be747e3ce10bbd17a7b1b515e19867c5539ffffe6ee0d",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/parascape-pride-archive-tables-d6754de5aa65adf9664be747e3ce10bbd17a7b1b515e19867c5539ffffe6ee0d.timer"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-archived-protein-group-values.service": {
+      "sha256": "af4d0d2eb245047b32aac866d7aed7b4c4e4c97a2fcdc8c37e86d77760da3e82",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/parascape-archived-protein-group-values-af4d0d2eb245047b32aac866d7aed7b4c4e4c97a2fcdc8c37e86d77760da3e82.service"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-archived-protein-group-values.timer": {
+      "sha256": "e937c7e17a25ee0d3b0f3fbabee3f849ab52e9fbdf82a89589d0cee1773c85bf",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/parascape-archived-protein-group-values-e937c7e17a25ee0d3b0f3fbabee3f849ab52e9fbdf82a89589d0cee1773c85bf.timer"
+    },
+    "/home/carruthers/.config/systemd/user/parascape-quant-cached.service": {
+      "sha256": "40e45f31c4064ae3e39674248c849bddeea790a331c6c0efa5012087e4601888",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/parascape-quant-cached-40e45f31c4064ae3e39674248c849bddeea790a331c6c0efa5012087e4601888.service"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/published_pride_archive_tables/coverage.json": {
+      "sha256": "58fcbc5c961c2a31cb3e33de0e5858b2e3942c3403d6897204e8b57fb893daf2",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/coverage-58fcbc5c961c2a31cb3e33de0e5858b2e3942c3403d6897204e8b57fb893daf2.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/prepared_deposited_values/archived_protein_groups/runtime-validation/validation-7910e84a45f9c84bf2dd80b0500c9dfdbbc9c93a5e5560787c7edc1663551bc1.json": {
+      "sha256": "7910e84a45f9c84bf2dd80b0500c9dfdbbc9c93a5e5560787c7edc1663551bc1",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/validation-7910e84a45f9c84bf2dd80b0500c9dfdbbc9c93a5e5560787c7edc1663551bc1-7910e84a45f9c84bf2dd80b0500c9dfdbbc9c93a5e5560787c7edc1663551bc1.json"
+    },
+    "/nas_mnt/carruthers/Einar/parascape_omics/prepared_deposited_values/archived_protein_groups/runtime-validation/synthetic-preservation.json": {
+      "sha256": "d1add1d9367e9c4b05b1f909827af5e6426125818a563c9d592bd8480d70845a",
+      "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing/synthetic-preservation-d1add1d9367e9c4b05b1f909827af5e6426125818a563c9d592bd8480d70845a.json"
+    }
+  },
+  "materialized_tables": 43,
+  "materialized_bytes": 66144733,
+  "quantity_tables": 52,
+  "original_source_files": 26,
+  "declared_projects": 17,
+  "source_columns": 307,
+  "original_cells": 531054,
+  "missing_cells": 576,
+  "layout_review_tables": 17,
+  "prior_139_tables_and_outputs_unchanged": true,
+  "identical_payload_source_groups": 2,
+  "native_timers_enabled": true,
+  "cpu_affinity": "0-11,16-27",
+  "memory_limits": "materialization1GiB; quantities2GiB",
+  "quant_service_enabled_for_login_restart": true,
+  "scope": "Original data only. Archive CRC and SHA256 reconciled; every original row,token,numeric binary64 bits,annotation,flag and technical QC checked independently. Shared source bytes remain source reuse; no sample independence,gene equivalence,scale harmonization or biological quality inferred.",
+  "review": "Unsupported table layouts retained as original bytes,not admitted as quantities. 17need separate format review. New tables local/NAS only; frozen release7 does not include this post-freeze work.",
+  "release7_source_or_assets_modified": false,
+  "dataset_goal_status": "active",
+  "all_dataset_goal_complete": false,
+  "historical_inference_goal_status": "paused",
+  "next_actions": "Continue native download/quantification loops; review remaining17archive table layouts and other source formats. Preserve frozen7until exact CI/publication completes. All-dataset/fair-comparison goal active/incomplete.",
+  "offline_Qt_all52_query_CSV_treatment_proof": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/pride_archive_table_processing"
+}

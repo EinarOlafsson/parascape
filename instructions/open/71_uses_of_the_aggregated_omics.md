@@ -6,7 +6,7 @@ downloads continue (instruction 69); every product is rebuilt as the queue fills
 ## The request (Einar, 2026-11-04)
 * "While all this data is downloading let's discuss what useful things we could do with this data."
 * Chosen, in this order: (1) co-expression → localization, (2) perturbation atlas, (3) host response
-  atlas, (4) Toxoplasma CRAPome. All four.
+  atlas, (4) Toxoplasma background frequency. All four.
 * Context: ToxoDB hosts a curated subset of RNA-seq (genome-aligned, parasite-only, per-dataset gene
   values) and peptide evidence from submitted results. It has no cross-study matrix, no host side and no
   uniform proteomics re-search; its bulk downloads have needed a login since release 71. Overlapping
@@ -20,7 +20,7 @@ downloads continue (instruction 69); every product is rebuilt as the queue fills
 | Trait | Truth to score against (graded as in 70) | Evidence layers that should predict it |
 |---|---|---|
 | **1. Host-facing** (secreted beyond the parasite: PVM, PV lumen exported, injected into host cytosol/nucleus) | Direct: published host-cell/PVM localization by IFA/IEM, host-side BioID/TurboID hits, exported-protein screens; curation: dense granule / rhoptry hyperLOPIT markers (organelle is not the same as host-facing) | signal peptide and TEXEL-like motifs; co-expression with known secreted proteins (product 1); in vivo vs in vitro fitness; host response atlas (product 3: deleting it changes the host); fold novelty (host-facing domains are structurally novel, foldseek screen) |
-| **2. Binding partners** (parasite–parasite and parasite–host, especially for host-facing proteins) | Direct: crosslinks (StarPath XL-MS), reciprocal pull-downs, solved complexes; curation: CRAPome-filtered co-purification | co-purification across all uniformly searched pull-downs with background removed (product 4; host proteins are already in the search database as `HOST_`); co-expression and co-perturbation (products 1–2); co-localization; AF3 pair confidence for shortlisted pairs; ortholog interactions (Plasmodium) |
+| **2. Binding partners** (parasite–parasite and parasite–host, especially for host-facing proteins) | Direct: crosslinks (StarPath XL-MS), reciprocal pull-downs, solved complexes; curation: background frequency-filtered co-purification | co-purification across all uniformly searched pull-downs with background removed (product 4; host proteins are already in the search database as `HOST_`); co-expression and co-perturbation (products 1–2); co-localization; AF3 pair confidence for shortlisted pairs; ortholog interactions (Plasmodium) |
 | **3. Function** | Direct: experimental GO (EXP/IDA…), phenotypes; curation: reviewed annotation | perturbation atlas (product 2: what changes when it is lost); co-expression modules; fold-based annotation (319 proteins annotated by structure); essentiality and condition-specific fitness |
 
 * The map is one model over all layers (the ToxoNet v2 multi-task design: observed labels only, inferred evidence
@@ -77,12 +77,12 @@ downloads continue (instruction 69); every product is rebuilt as the queue fills
   TgIST → STAT1 repression) must appear in the matching contrasts; report which are recovered.
 * **Deliverable:** host signature store, effector × host-pathway table with replication counts.
 
-## 4 · Toxoplasma CRAPome (background for pull-down MS)
+## 4 · Toxoplasma background frequency (background for pull-down MS)
 * **Build:** from the uniform Sage results, every affinity-purification, BioID/TurboID or APEX
   project (classified from PRIDE metadata and sample names, checked by hand where unclear); per protein,
   the fraction of independent baits/projects in which it is detected, and its typical abundance.
 * **Use:** a specificity score for any new IP-MS hit list (e.g. the EAF1 and ATG2 pull-downs): frequent
-  flyers down-weighted, bait-specific hits kept. Comparable to the human CRAPome, which does not exist
+  flyers down-weighted, bait-specific hits kept. Comparable to the human background frequency (Mellacheruvu et al. 2013), which does not exist
   for Toxoplasma.
 * **Validation:** known complexes (e.g. MyoA motor, AMA1–RON, MIC2–M2AP) must score as specific in
   their own pull-downs and not be removed as background.
@@ -95,8 +95,8 @@ downloads continue (instruction 69); every product is rebuilt as the queue fills
 3. Products 2 and 3 share the signature code; 3 also needs per-host contrasts.
 4. Product 4 needs the MS queue past its AP/BioID projects; classification can start now.
 
-## CRAPome first pass (2026-11-05): the frequency filter fails, the specificity score works
-`results/crapome_2026_11_05/`. 63 of 203 projects finished; 61 classified (25 affinity purification,
+## background frequency first pass (2026-11-05): the frequency filter fails, the specificity score works
+`results/pulldown_background_2026_11_05/`. 63 of 203 projects finished; 61 classified (25 affinity purification,
 9 proximity labelling, 10 whole proteome, 7 PTM enrichment, 2 fractionation, 8 other, which are kept **out** of
 the background because one misclassified whole-proteome run would raise every frequency at once). 23 of 61
 classifications hinge on a judgement call and are flagged with the cue that decided them. Background: 4,449
@@ -114,7 +114,7 @@ frequent-flyer range, not below it.
 Separation AUC is only 0.743, and at a 50 % cutoff **12 of 13 complex members would be deleted**. No threshold
 removes half the flyers while keeping 85 % of the complexes. The cause is biological, not a bug: 34 experiments
 over 11 distinct baits, nearly all pull-downs from whole parasite lysate, so the abundant invasion and motility
-machinery is in every list. The human CRAPome had over 400 experiments. **Honest statement: not enough
+machinery is in every list. The human CRAPome (Mellacheruvu et al. 2013), the published resource ours imitates, had over 400 experiments. **Honest statement: not enough
 independent baits yet.** Enolase is additionally underestimated (0.24) by the unique-mapping rule on close
 paralogues, which is recorded rather than patched.
 
@@ -189,5 +189,5 @@ between studies which are currently attributed to biology.
 The ~2,200 RNA runs and 203 proteomics projects would each gain estimated cell-cycle composition, differentiation
 state and culture condition — **metadata the depositors never published**. That is new annotation rather than a
 re-description, and it is the one product here that improves every other one: contrasts become comparable once
-stage composition is a covariate, and a pull-down's lysate composition may explain the CRAPome variability that
+stage composition is a covariate, and a pull-down's lysate composition may explain the background frequency variability that
 made the frequency filter fail.

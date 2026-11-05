@@ -1,0 +1,20 @@
+{
+  "change": "Lossless byte-stream-split / ZSTD recompression only; Arrow values, schema and metadata identical. No feature or calibration values changed.",
+  "old_esm_file_sha256": "fc5a79781fddbff8c7b4c553e42412d25ccd931036f92889dcbb46a557313e2e",
+  "new_esm_file_sha256": "4b05a2df35c0cb4775318c0e1d8ea8407d01a2614ef517c8297ffe8f4410d8af",
+  "nodes.parquet": {
+    "old_sha256": "1a2fee1a4b97be8442287dfe982c991c119ece6f9f318968956f926ebe87c69c",
+    "new_sha256": "421c4698e3b5001ddcb2808e911a2de6b453f9ef8fc3bcdc590773e98336931f",
+    "verification": "Arrow table values, schema and metadata exactly equal; lossless compression only"
+  },
+  "pf_nodes.parquet": {
+    "old_sha256": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
+    "new_sha256": "eec826d8132bae5867e190da31ac2e2f7571f67f459f7d2a3601f679fb890e0d",
+    "verification": "Arrow table values, schema and metadata exactly equal; lossless compression only"
+  },
+  "hs_host_proteins.parquet": {
+    "old_sha256": "1b5af9142db5d67a4d0d3e072c541078281e750fe3c0ba8e22330a619623cfa0",
+    "new_sha256": "363615f644fd9f014e486b62234d185cfc02deb646c1e856fb031284dd95e49d",
+    "verification": "Arrow table values, schema and metadata exactly equal; lossless compression only"
+  }
+}

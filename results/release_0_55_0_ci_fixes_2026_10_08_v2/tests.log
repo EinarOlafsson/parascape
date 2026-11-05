@@ -1,0 +1,53 @@
+Running as unit: starplast-release-055-ci-fixes-tests-20261008.service
+........................................................................ [ 11%]
+........................................................................ [ 22%]
+..........................ssFs..F....................................... [ 33%]
+........................................................................ [ 44%]
+........................................................................ [ 55%]
+........................................................................ [ 66%]
+........................................................................ [ 77%]
+........................................................................ [ 88%]
+........................................................................ [ 99%]
+......                                                                   [100%]
+=================================== FAILURES ===================================
+__________ test_brain_fpkm_is_assigned_to_transcription_never_fitness __________
+
+    def test_brain_fpkm_is_assigned_to_transcription_never_fitness():
+        """The mixed transcriptome/proteome source was mislabeled as an in-vivo fitness screen.
+    
+        Its cache columns are FPKM expression measurements. Keeping the semantic assertion beside the
+        generated table prevents a later regeneration from moving them back under fitness by prefix.
+        """
+        import csv as _csv
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+>       rows = list(_csv.DictReader(open(os.path.join(root, "instructions", "done", "31_slots.csv"),
+                                         encoding="utf8")))
+E       FileNotFoundError: [Errno 2] No such file or directory: '/tmp/starplast-055-ci-fixes-adw71kt4/instructions/done/31_slots.csv'
+
+tests/test_dataset_scripts.py:164: FileNotFoundError
+___________________ test_the_cache_size_is_quoted_correctly ____________________
+
+facts = {'genes': 8140, 'columns': 443, 'columns_by_genes': {8140: 443, 5720: 168}, 'edge_types': 13, ...}
+
+    def test_the_cache_size_is_quoted_correctly(facts):
+        """Rounded to the megabyte in prose, so exactness is not required -- but 11 against 17 is drift."""
+        for doc in ("HANDOFF.md", "MATERIALS_AND_METHODS.md"):
+            text = _doc(doc)
+            quoted = {int(m) for m in re.findall(r"cache (?:is|\()\s*(\d{1,3})\s*MB", text)}
+            assert quoted, f"{doc} no longer states the cache size"
+            for q in quoted:
+>               assert abs(q - facts["mb"]) < facts["mb"] / 3, (
+                    f"{doc} says {q} MB; the cache is {facts['mb']:.0f} MB")
+E               AssertionError: MATERIALS_AND_METHODS.md says 65 MB; the cache is 121 MB
+E               assert 55.757734 < (120.757734 / 3)
+E                +  where 55.757734 = abs((65 - 120.757734))
+
+tests/test_documented_numbers.py:90: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_dataset_scripts.py::test_brain_fpkm_is_assigned_to_transcription_never_fitness
+FAILED tests/test_documented_numbers.py::test_the_cache_size_is_quoted_correctly
+2 failed, 649 passed, 3 skipped in 12.60s
+Finished with result: exit-code
+Main processes terminated with: code=exited/status=1
+Service runtime: 13.010s
+CPU time consumed: 12.580s

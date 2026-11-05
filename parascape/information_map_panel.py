@@ -53,7 +53,7 @@ TIPS = {
              'A False value is a measured negative; an empty one is not measured.',
     'partners': 'Recorded binding partners of this gene from the pairs table, strongest first, in both '
                 'directions. Crosslink probabilities are 1 - local FDR; pull-down members are provisional '
-                'until a CRAPome background exists. A missing partner is an unrecorded one.',
+                'until a background frequency background exists. A missing partner is an unrecorded one.',
     'trait': 'Choose a column of the map to see how much of the proteome carries an observed fact for it and '
              'which values that fact takes.',
     'coverage': 'Genes with an observed fact for this column, split by the source tier of the cell. The tiers '

@@ -1,0 +1,10 @@
+{
+  "registry_documentation_checks": 654,
+  "functional_app_checks": 94,
+  "current_clean_wheel_inputs": 316,
+  "frozen_results_unchanged": true,
+  "initial_ci_failures": 4,
+  "local_fixture_diagnostics": "Missing candidate/instruction files in clean test copy; complete tracked instruction tree restored. Initial generator invoked default Python3.9; rerun with validated3.12. Original logs preserved.",
+  "final_ci_commit": "715df6da7d16b1c9efedf5f66bbaaff63132946d",
+  "broader_goal": "paused"
+}
