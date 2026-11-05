@@ -287,7 +287,11 @@ def published_root(root=None) -> Path | None:
 def tier2_path(name: str, root=None) -> Path | None:
     """Where one tier-2 measurement table lives: beside the published release, or in ``results/``."""
     glob, filename = TIER2_TABLES[name]
-    for parent in [p for p in (Path(root) if root is not None else None, _REPO / 'results') if p is not None]:
+    # The published release first, then the repository's results. An installed copy has no `results`
+    # directory, so without the release directory here the tier-2 rows would be missing for every user
+    # who did not clone the repository.
+    parents = [Path(root) if root is not None else published_root(), _REPO / 'results']
+    for parent in [p for p in parents if p is not None]:
         direct = parent / filename
         if direct.is_file():
             return direct
