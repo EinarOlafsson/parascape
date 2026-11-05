@@ -78,3 +78,46 @@ the better design, and it becomes a rule the panels must follow:
 3. **Gene-centred network**: recentring, zoom, fade, node menu, full-screen information map.
 4. **ParaScape assistant prompt** aware of the question registry, reachable from every node.
 5. Retire the docks that the home screen replaces, only once each has a node.
+
+## The node catalogue: every node, and what it shows when opened
+Nesting is three deep and no deeper: **category → node → destination view**. A category is a section with a
+title, one line of purpose, and a row of cards. A card shows its title and a one-line statement of what clicking
+it does. Strategies nest one level further, under the question they answer. Every claim shown anywhere carries
+its probability, uncertainty and source tier inline, per the rule above, and the assistant is reachable from
+every node with that node's context in its briefing.
+
+### 1 · One gene — "everything known about one protein"
+Entry: the identifier box, a search result, or a gene picked from a dropped list.
+| Node | When opened |
+|---|---|
+| **What is known about this gene** | The information map full screen: one row per trait, tier 1 conclusions first then tier 2 measurements, each with value, probability, uncertainty, source tier and the reference that supports it. A measured negative is amber; **not measured is grey italic** and says the cell is empty, not "no" |
+| **Its network** | The gene at the centre; neighbours coloured by evidence kind (crosslink, co-expression, co-fitness, shared compartment), edge width by probability, fading toward the edges; click a neighbour to recentre, scroll to zoom; each neighbour carries this same node menu |
+| **Its partners** | The pair table for this gene: partner, side (parasite or host), probability, source tier, reference, and the standing line that a partner not listed has not been measured |
+| **Its expression** | Its row across the 266 expression columns, relative-to-control first, then internal reference, then absolute, each with its normalization, effective sample count and the mean sample quality behind it |
+| **Its structure** | AF3 confidence, 3Di coverage and which source it came from (measured, stitched or aligned, with identity and coverage), transmembrane topology, signal peptide, and the sequence regions |
+| **What has been written about it** | Publication and mention counts with the attention caveat stated, because study attention is a predictor of nothing biological |
+
+### 2 · One question, all genes — "ask one thing of every protein"
+| Node | When opened |
+|---|---|
+| **The question catalogue** | Every question as a row: the question in plain words, answer type, class, labels available, the cross-validated estimate **and** the frozen-test result, genes answerable at the 90 % bar, and a state: answerable, not enough labels, or no data. The header carries **effective independent axes**, so the list cannot read as more knowledge than it holds |
+| **One question** (opened from the catalogue) | Its scoreboard inline, then the ranked gene list with probability and uncertainty per gene, filterable to filled versus exploratory, with the evidence families it used and those it was forbidden to see |
+| **Answer a question for my gene list** | Takes a dropped or pasted list and returns that question's answer per gene, each marked filled or exploratory |
+| **All strategies** *(advanced, rendered last)* | One card per strategy; opening one shows what it is, its inputs, **what is downstream** — which questions it answers, which evidence families it may and may not see — and its last scoreboard |
+
+### 3 · Compare conditions — "what changes between two situations"
+Two conditions · A perturbation series · Strains (GT1, ME49, VEG) · Stages (tachyzoite, bradyzoite, oocyst,
+merozoite) · Genes that move together. Each opens the existing comparison or co-expression view with the
+contrast preselected, the fold change shown with its standard error, and the number of studies supporting it.
+
+### 4 · My own data — "bring a list and get it annotated"
+| Node | When opened |
+|---|---|
+| **Drop or paste a list** (first card; the window also accepts a drag-and-drop anywhere) | The file name, sheet, detected separator and chosen identifier column, all changeable; an identifier resolution report with the unresolved ones **listed, never silently dropped**; any extra per-gene columns with what each would be treated as, left for the user to confirm. Reader: `parascape/importer.py`, which accepts `.csv .tsv .txt .tab .xlsx .xls .parquet`, sniffs the separator rather than trusting the extension, and obeys its own rule that **the range decides, not the filename** |
+| **Annotate my list from the map** | Each gene with its map facts, probabilities and sources; exportable |
+| **Score my pull-down against the background** | The CRAPome specificity ranking for the hit list, with frequency shown as context only and the warning that frequency alone must not be used as a filter |
+| **Compare my screen** | Joins the list to existing evidence, keeping unresolved identifiers visible |
+
+### 5 · Where it came from — "which measurement, which paper"
+Datasets and provenance · References · Downloads and components. Dataset-level browsing only; per-claim
+provenance stays on the claim.
