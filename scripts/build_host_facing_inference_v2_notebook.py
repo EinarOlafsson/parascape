@@ -921,7 +921,9 @@ code("""
     rows = []
     for key in ('easy', 'hard'):
         yq, fq = QUESTIONS[key]['y'], QUESTIONS[key]['fold']
-        cols = [c for c in X_leaky.columns if c in CATEGORICAL or X_leaky.loc[yq.index, c].notna().any()]
+        # At least 10 measured values: a column observed on one or two genes has too few distinct values for
+        # sklearn's binning and raises "window shape cannot be larger than input array shape".
+        cols = [c for c in X_leaky.columns if c in CATEGORICAL or X_leaky.loc[yq.index, c].notna().sum() >= 10]
         oof_leak = pd.Series(np.nan, index=yq.index, dtype=float)
         for f in sorted(fq.unique()):
             tr, te = yq.index[fq != f], yq.index[fq == f]

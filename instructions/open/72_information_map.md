@@ -287,3 +287,25 @@ vacuole-resident. **Rule for every future column: report it against the hard neg
 genes" or "all negatives".** This does not contradict the earlier foldseek result that host-facing domains are
 structurally novel; it says novelty is a property of the secretory repertoire, so it cannot locate a protein
 within it.
+
+### Correction (2026-11-04, same evening): run 1's pass was the LABELS, not the leak
+The leakage-attribution diagnostic (`leakage_attribution.tsv`) refits the easy question on the **new** labels
+with the declared dependencies **put back**. Result: the bound moves from 0.681 to **0.694** -- nowhere near
+run 1's 0.906.
+
+| question | features | lower 90 % bound |
+|---|---|---|
+| easy | dependencies held out (run 2) | 0.681 |
+| easy | dependencies put back (run 1 style) | **0.694** |
+| hard | dependencies held out | 0.685 |
+| hard | dependencies put back | 0.685 |
+
+So the near-circular features were worth about **+0.013**, not +0.22. The earlier claim in this file and in the
+commit message "the bar fails and run 1's pass was the leak" is **wrong** and is corrected here: run 1 passed
+because **its labels were wrong**. It counted the 22 vacuole-resident dense granule proteins as host-facing
+positives -- the easiest possible positives, since they look like every other GRA -- and scoring confident calls
+on them as correct is what produced 0.906. Einar's review turned them into negatives, and the same confident
+calls became errors.
+`hosttx_padj` really was run 1's top feature, so the leak was real; it simply was not what passed the bar.
+The practical lesson is sharper than the one first drawn: **a wrong label set flatters a model far more than a
+leaky feature does**, and no feature audit would have caught it. Only the human review did.

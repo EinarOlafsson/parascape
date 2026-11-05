@@ -37,19 +37,19 @@ easy            False      within       0.60     49       38     0.7755   0.6809
 
 Robustness of the hard question across feature sets: hard question: 0 of 14 feature sets x training variants reach the bar; best lower bound ranges 0.625 to 0.727.
 
+
+**Where run 1's 0.906 went.** On the NEW labels, putting the declared dependencies back moves the easy question from AUC 0.958 / bound 0.6809 to AUC 0.962 / bound 0.6941, and the hard question to AUC 0.770 / bound 0.6850 - still short of 0.90 on the hard question. So run 1's 0.906 was carried by BOTH changes: those feature families did most of the work, and the 22 rejected dense granule proteins are now negatives that the model gets wrong either way. `leakage_attribution.tsv` (a leakage
+demonstration, not a result - nothing from it may fill anything).
+
+
+**Not a calibration artefact.** Ranking the genes by raw out-of-fold score and taking the
+top k directly, for every k from 10 upward — which is what *any* threshold rule amounts to —
+the bar is cleared by no k on any question. best precision anywhere on the ranking: easy/within k=27 22/27 precision 0.815 lower bound 0.6834; hard/all-labels k=45 37/45 precision 0.822 lower bound 0.7273; hard/within k=34 28/34 precision 0.824 lower bound 0.7108; reviewed/all-labels k=27 22/27 precision 0.815 lower bound 0.6834; reviewed/within k=17 15/17 precision 0.882 lower bound 0.7163. `precision_at_k.tsv`.
+
 With the two contested genes flipped (GRA9, NTPase II): with GRA9 and NTPase II as positives the hard question still does not reach the bar (best lower bound 0.7540).
 
 
-**More labels cannot fix this one.** The best precision the model reaches anywhere on the hard
-question — at any calibrated threshold, under either training variant — is **0.822** (45 calls, 37
-correct), which is below the 0.90 bar itself. The Clopper-Pearson lower bound converges upward to
-the true precision, so at 0.822 no number of additional labels can ever bring the bound to 0.90;
-more labels would only measure 0.822 more precisely. The binding constraint for the hard question
-is therefore **the evidence, not the label count**: against the 43 hard negatives the model has
-ROC-AUC 0.667, against the hyperLOPIT internal markers 0.984, and that gap is the whole result.
-Only once a model clears 0.90 precision does the label count become binding — at a true precision
-of 0.95 the bound needs about 65 held-out calls, i.e. roughly 150 labelled secretory genes at the
-current call rate against the 105 that exist today.
+WHICH CASE IS THIS? The second one. The best precision this model reaches anywhere - at any calibrated threshold and at any point on the raw ranking - is 0.822, which is BELOW the 0.90 bar itself. The lower confidence bound converges upward to the true precision, so with a precision of 0.822 no number of additional labels can ever bring the bound to 0.90: more labels would simply measure 0.822 more precisely. The limiting resource for the hard question is therefore NOT the number of labels - it is the evidence. Something has to be measured that distinguishes "in the vacuole" from "in the host cell", because the features available now do not: against the 43 hard negatives the model has ROC-AUC 0.67, against the hyperLOPIT internal markers it has 0.98, and that gap is the whole result. Only once a model clears 0.90 precision does the label count become the binding constraint, and at a true precision of 0.95 that would take about 65 held-out calls, i.e. roughly 152 labelled secretory genes at the current call rate against the 105 that exist today.
 
 ## Definitions
 
@@ -218,6 +218,8 @@ minus attention-adjacent (BioID/IP-MS corpus membership, PMC, proximity counts) 
 | `by_label_provenance.tsv` | AUC / FPR for each positive provenance against each negative provenance |
 | `by_label_provenance_errors.tsv` | per-provenance median score and error rate, every question |
 | `robustness_hard.tsv` | the hard-question bound with each worrying feature block removed |
+| `precision_at_k.tsv` | precision and lower bound of the top k genes by raw out-of-fold score, every k from 10 up |
+| `leakage_attribution.tsv` | the same questions with the declared dependencies put back - a leakage demonstration, not a result |
 | `predictions.tsv` | all 8,140 genes: calibrated probability per question model, out-of-fold probability, label, provenance, secretory flag, per-gene occlusion attributions |
 
 

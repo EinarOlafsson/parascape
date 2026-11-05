@@ -1,0 +1,5 @@
+question	feature_set	n_features	roc_auc	average_precision	best_lower90	at_threshold	calls	correct	reaches_bar
+easy	declared dependencies HELD OUT (this run)	398	0.9576331360946746	0.7105024298253098	0.6809030897012862	0.6	49	38	False
+easy	declared dependencies PUT BACK (leaky, run 1 style)	442	0.9621301775147929	0.7180766083363732	0.6940620678380853	0.8	32	26	False
+hard	declared dependencies HELD OUT (this run)	398	0.7542186353631695	0.7329969843979375	0.6851300155207911	0.6	57	44	False
+hard	declared dependencies PUT BACK (leaky, run 1 style)	414	0.7699926632428468	0.7828956827246947	0.6849878677065231	0.55	46	36	False
