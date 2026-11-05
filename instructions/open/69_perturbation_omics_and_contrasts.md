@@ -378,3 +378,10 @@ and RalGAP", 11.3 GB), **PXD031816**, **PXD023791** and **PXD039335** (102 RAW f
   must be left out of the CRAPome background.
 * **Detection rule for future selections:** HDX is visible in RAW filenames (`HDXMS`, `HDX`) more reliably than
   in the project title -- only PXD034607 says so in its title, while all four say so in their filenames.
+* **Confirmed working, and expected to last ~4.5 days (2026-11-04 23:00).** The tutorials session reports plaque
+  v8 went from 0.8 to 6.3 windows/s and GPU 13 % to 93 % -- the same as at Home -- so v8 was purely CPU-starved
+  and ParaScape was the main cause. At ~2.3 h/epoch it needs ~48 more epochs to its epoch-100 minimum. The cap
+  **stays until that session pings**; do not revert it early. RNA quantification runs at ~20 runs/day meanwhile
+  (~80 days for the remaining 1,746 instead of ~22). The proteomics queue is download-bound and unaffected.
+  A middle ground was offered if the maintainer wants RNA back sooner: 4 threads on CPUs 0-3, which leaves v8
+  28 free cores and should keep it near 6 windows/s.
