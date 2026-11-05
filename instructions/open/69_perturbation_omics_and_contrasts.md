@@ -394,3 +394,8 @@ and RalGAP", 11.3 GB), **PXD031816**, **PXD023791** and **PXD039335** (102 RAW f
 * **Correction to the cost estimate:** the 0-7 cap was predicted to cost ~68 runs/day; measured overnight it was
   18 runs in 6 h (~72/day), i.e. ~24 days to finish the queue rather than the ~80 claimed. One run on 4 threads
   is far more efficient than three competing for 16, so stepping back to 0-7 is much cheaper than first stated.
+* **Confirmed by measurement (2026-11-05 07:35):** with ParaScape on 0-23, plaque v8 holds 6.26 windows/s,
+  2.3 h/epoch, GPU 97 % -- unchanged from its Home speed. **Keep the 0-23 share and wide mode OFF until the
+  tutorials session reports v8 finished**, expected around 9-10 November (4.5 days from 06:50 on 2026-11-05),
+  possibly longer if its plateau rule continues. If v8 slows at any point, narrow to CPUs 0-7 first and
+  diagnose afterwards.
