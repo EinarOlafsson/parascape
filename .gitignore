@@ -24,6 +24,13 @@ parascape/data/embeddings/*
 results/*/embeddings/
 results/*/run.log
 
+# A nested `starplast/` working directory, written when something runs with the repo root as its
+# parent instead of as its cwd. It is the same embedding cache `parascape/data/embeddings/*` already
+# excludes, 74 MB of it, plus the watchdog's runtime state. Both were swept into 05a0e71c by a
+# `git add -A` and are untracked again here: neither is source, and neither was ever meant to ship.
+/starplast/
+/.starplast-watchdog/
+
 # The map gallery's per-map build checkpoint: one npz per map so a stopped build resumes. The maps
 # themselves ship in parascape/data/umap_gallery.npz, and these are the scaffolding that built it.
 results/umap_gallery_checkpoint/

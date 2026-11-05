@@ -1,8 +1,0 @@
-{
-  "epoch": 1793447271.7593637,
-  "archive_manifest": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/NAS_overflow_cache/implementation-432ab1047b183041f899e22ca3cbfdf2d66c788ab10c385d2d2e0ed5b538296e.json",
-  "goal": "active and incomplete",
-  "worker_pid": 1155850,
-  "quantification_pid_unchanged": 3614034,
-  "remaining": "All raw-download and processing coverage, other source formats, fullrelease9 gates/publication, comprehensive sample/control/replicate linkage and fair identifier/unit/context harmonization with independently evaluated biologicalQC."
-}

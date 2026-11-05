@@ -1,8 +1,0 @@
-{
-  "version": "0.0.5.0",
-  "commit": "f4372744c4c4de10abd34b5b4d8bb9e0424e61b0",
-  "frozen_checkout": "/media/carruthers/mnt1/parascape-release-0.0.5.0-checkout",
-  "stage": "/media/carruthers/mnt1/parascape-release-data-0.0.5.0",
-  "native_publisher_unit": "parascape-publish-0.0.5.0.service",
-  "policy": "Keep shared nightly checkout at90e71e7 and do not push followups while exact frozen release CI is pending. Native publisher updates clean nightly checkout and owned live-launcher default after successful official publication."
-}

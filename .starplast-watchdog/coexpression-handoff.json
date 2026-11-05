@@ -1,9 +1,0 @@
-{
-  "source_commit": "b705f2b5b5e023963176be7e7504b12f6e099f62",
-  "archive": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/coexpression/b705f2b5b5e023963176be7e7504b12f6e099f62/treatment.json",
-  "preview": "parascape-coexpression-preview",
-  "landing_status": "/home/carruthers/.local/state/parascape-coexpression-landing/status.json",
-  "scope": "First descriptive RNA/protein source-specific coexpression UI; WT RNA-protein matching and other research ideas remain proposals",
-  "dataset_goal": "active/incomplete",
-  "historical_inference": "paused"
-}

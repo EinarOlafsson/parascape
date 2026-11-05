@@ -1,8 +1,0 @@
-{
-  "epoch": 1793447703.4315264,
-  "archive_manifest": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/core_candidate_pipeline/pipeline-240d3f28e8a7a548a596f0922f3861bc060ed463f7aa5fbd06d03cefbb711184.json",
-  "goal": "active and incomplete",
-  "candidate": "/nas_mnt/carruthers/Einar/parascape_omics/portable_components/v0.0.9.0/core_candidates/7f363da0e44ddfd120e7676838ff49e5a7ebe24833243639978a4d7a458dda3d",
-  "audit": "/nas_mnt/carruthers/Einar/parascape_omics/processing_audit/core_candidate_replay/all-core-files-1742191da919768636e2c944e07913318720faeb75ac2ecb07f677f93a7fe76e.json",
-  "remaining": "Final9source/version/descriptor/wheel/CI/remote/publication gates; remaining workbook checks, downloads/sourceformats; comprehensive control/replicate linkage, scientific identifier/unit/context harmonization and independently evaluated biologicalQC."
-}
