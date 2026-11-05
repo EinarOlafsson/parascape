@@ -150,3 +150,50 @@ Four numbers published per release, never one: **questions with enough labels to
 independent axes**, **cells fillable at 90 %**, and **prospective accuracy** once the first frozen matrix is old
 enough to test. A matrix of a thousand questions carrying five facts is the failure mode to avoid, and only the
 second number reveals it.
+
+## Validation, automated: nested cross-validation AND a frozen test partition (Einar, 2026-11-05)
+"Whenever predictions are made there should always be a holdout set with known answers that the model predicts,
+and the quality of the strategy measured that way. Did you bake in a mechanism like this, or cross validation?
+Preferably both."
+
+### Honest answer: cross-validation yes, a frozen holdout no — and the primitive for it already existed
+All three scoring runs (host-facing v1 and v2, function, partners) used **5-fold cross-validation grouped by
+orthogroup**, with calibration cross-fitted. Out-of-fold predictions on known labels are a held-out measurement,
+so the estimates are not circular. **But there was no partition held back from everything.** The same folds that
+produced the reported number also chose the feature set: 14 feature-set variants were tried for host-facing and
+10 for function. Picking the best by cross-validation and then quoting its cross-validated score is optimistic,
+and the honest numbers (0.727, 0.617, 0.891) are therefore **upper bounds on what a frozen test would give**.
+Worse, `parascape/splits.py` already provides exactly the right primitive and the runs did not use it:
+`ROLES = ("train", "tune", "calibration", "test")`, `make_split` splitting whole protected groups, and
+`guard_fit`, which **raises** if a stage touches a partition it may not see (`FIT_ACCESS` lets model fitting and
+feature selection see only `train`, setting selection `train`+`tune`, calibration only `calibration`). That
+guard is the mechanism; it was simply not wired in.
+
+### What the harness must enforce, for every question, automatically
+1. **Four partitions by `splits.make_split`**, grouped by orthogroup (whole-source where a question's labels come
+   from one study; cold-node for pair questions), seed recorded. `train` fits, `tune` selects settings,
+   `calibration` fits the isotonic curve, **`test` is touched once**.
+2. **Nested cross-validation inside `train` + `tune`** for every model and feature choice. This is where the
+   searching happens and where the comparison between strategies is made.
+3. **`guard_fit` called at each stage**, so a leak raises instead of being caught in review. A question cannot
+   reach the fill step without its guard calls recorded.
+4. **A holdout budget, recorded per question.** Each strategy version may consume the `test` partition **once**;
+   the use is logged with the strategy's version hash and the result. A second look at the same partition with a
+   changed strategy makes it another tuning set, so it is refused and the question is marked as needing a fresh
+   partition. Without this the frozen test silently becomes a third cross-validation.
+5. **Both numbers published, never one**: the nested cross-validated estimate (how the strategy compares, on
+   many folds) and the frozen-test result (what it actually achieves, once). **Filling a cell requires the
+   frozen-test lower bound to clear the bar**, not the cross-validated one.
+6. **Small-label questions are exempt and must say so.** A frozen partition costs labels that a 98-gene question
+   cannot spare. Below a recorded threshold the question keeps nested cross-validation only, is flagged
+   `no_frozen_test`, and **may not fill cells** -- it can rank and prioritise, which is what those questions are
+   for. The threshold is a property of the question in the registry, not a judgement made per run.
+7. **The prospective test is the final holdout**: the filled matrix is frozen and dated, then scored against
+   papers published afterwards. No partition can be reused that way, and it is the only test immune to every
+   form of selection on today's data.
+
+### Consequence for what has already been reported
+The three published scoreboards stay as they are, relabelled as **cross-validated estimates without a frozen
+test**, which is what they are. Nothing was filled from them, so no claim has to be withdrawn -- but the
+architecture work must not repeat the omission, and re-running the three questions through the harness with a
+frozen partition is part of phase 1's gate.
