@@ -1,0 +1,15 @@
+QUESTION: Which genes does the parasite need in order to grow when glucose is withdrawn?
+7393 labels, 1765 positives, 371 features in 77 families, seed 2, split 65a23afb97ea
+
+                             cross-validated  frozen test
+n                                    5217         1082
+calls                                  33            8
+precision                          0.8788        0.875
+precision_lower90                  0.7722       0.5938
+coverage_at_bar                    0.0063       0.0074
+calibration_error                     0.0       0.0362
+roc_auc                            0.8316       0.8316
+average_precision                  0.5601       0.5871
+
+best baseline on the frozen partition: prevalence-weighted random, precision lower bound 0.2276
+fill bar 0.90 | may fill: False

@@ -1,0 +1,9 @@
+baseline	calls	precision	precision_lower90	reaches_bar	coverage	roc_auc	partition
+training majority	0			False	1.0		cross_validated
+prevalence-weighted random	1240	0.2153225806451613	0.20030381694777788	False	1.0		cross_validated
+best single feature (n_bcell_epitopes)	10	0.2	0.054528619997670766	False	1.0	0.8076923076923077	cross_validated
+ortholog copy (abstains)	0			False	0.0		cross_validated
+training majority	0			False	1.0		frozen_test
+prevalence-weighted random	238	0.2647058823529412	0.2275523505004482	False	1.0		frozen_test
+best single feature (n_bcell_epitopes)	1	0.0	0.0	False	1.0	0.8076923076923077	frozen_test
+ortholog copy (abstains)	0			False	0.0		frozen_test

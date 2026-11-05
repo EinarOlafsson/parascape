@@ -1,0 +1,2 @@
+question	strategy	partition	n	positives	threshold	calls	correct	precision	precision_lower90	reaches_bar	coverage_at_bar	calibration_error	accuracy	roc_auc	average_precision	folds
+screen_egress_phenotype	logistic	cross_validated (train+tune, nested)	222	26	0.7391	6	1	0.16666666666666666	0.017406806147310137	False	0.02702702702702703	0.0	0.8378378378378378	0.5447409733124019	0.14621886387277983	3

@@ -1,0 +1,398 @@
+{
+  "required_without_glucose": {
+    "question_id": "required_without_glucose",
+    "answer_type": "boolean",
+    "question_class": "A",
+    "n_labels": 7393,
+    "seed": 2,
+    "split_identity": "65a23afb97eab090af9ab87cd6811b4374382943a894fcdf39836bcef9d621a4",
+    "bar": 0.9,
+    "strategy": "boosted trees, every allowed family",
+    "strategy_hash": "1b4ace1f7077151fe1eba96e64d52d1860b359f529b4c92f4bb2ea09e8c42901",
+    "evidence_hash": "fe1bc60a1f4bef92f4d050ea4145aea3f791f52360b1aacf954fa87e5880d030",
+    "threshold": 0.8065,
+    "cross_validated": {
+      "partition": "cross_validated (train+tune, nested)",
+      "n": 5217,
+      "positives": 1214,
+      "threshold": 0.8065,
+      "calls": 33,
+      "correct": 29,
+      "precision": 0.8787878787878788,
+      "precision_lower90": 0.7722198908233987,
+      "reaches_bar": false,
+      "coverage_at_bar": 0.0063254744105807935,
+      "calibration_error": 2.402610302476139e-17,
+      "accuracy": 0.791067663408089,
+      "roc_auc": 0.8316338940193537,
+      "average_precision": 0.5600887137128864,
+      "folds": 3
+    },
+    "frozen_test": {
+      "partition": "frozen_test (touched once)",
+      "n": 1082,
+      "positives": 272,
+      "threshold": 0.8065,
+      "calls": 8,
+      "correct": 7,
+      "precision": 0.875,
+      "precision_lower90": 0.5937545062790738,
+      "reaches_bar": false,
+      "coverage_at_bar": 0.0073937153419593345,
+      "calibration_error": 0.03624355742396652,
+      "accuracy": 0.7781885397412199,
+      "roc_auc": 0.8315949527959331,
+      "average_precision": 0.5870793803913903
+    },
+    "inner_scores": {
+      "fold 1": {
+        "boosted trees, every allowed family": 0.576270139224008,
+        "logistic, every allowed family": 0.47993758824133576,
+        "boosted trees, expression and proteome only": 0.5335053110363052
+      },
+      "fold 2": {
+        "boosted trees, every allowed family": 0.574974337619476,
+        "logistic, every allowed family": 0.5221274110252939,
+        "boosted trees, expression and proteome only": 0.5479416150976083
+      },
+      "fold 3": {
+        "boosted trees, every allowed family": 0.5497260857564926,
+        "logistic, every allowed family": 0.4809360195505035,
+        "boosted trees, expression and proteome only": 0.5149697185751508
+      }
+    },
+    "chosen_per_outer_fold": [
+      "boosted trees, every allowed family",
+      "boosted trees, every allowed family",
+      "boosted trees, every allowed family"
+    ],
+    "calibration": {
+      "n": 1094,
+      "calibration_error": 0.04972445631478591,
+      "cross_fitted": true,
+      "calibrated": true
+    },
+    "flags": [
+      "frozen_test_repeat"
+    ],
+    "guard_calls": [
+      [
+        "setting_selection",
+        3478
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        3478
+      ],
+      [
+        "setting_selection",
+        3478
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        3478
+      ],
+      [
+        "setting_selection",
+        3478
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2318
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        2319
+      ],
+      [
+        "refit",
+        3478
+      ],
+      [
+        "setting_selection",
+        5217
+      ],
+      [
+        "refit",
+        5217
+      ],
+      [
+        "calibration",
+        1094
+      ]
+    ],
+    "refusal": "",
+    "may_fill": false
+  },
+  "screen_egress_phenotype": {
+    "question_id": "screen_egress_phenotype",
+    "answer_type": "boolean",
+    "question_class": "B",
+    "n_labels": 318,
+    "seed": 0,
+    "split_identity": "8c506310c23da8be05e8bce71bedc6bd07350272487c520aeda80bcd7de5d6e0",
+    "bar": 0.9,
+    "strategy": "logistic",
+    "strategy_hash": "cfe6ce8be1d75f7a9adeff82911e61bc5d1440b13225a705d5cd6c3d576827e9",
+    "evidence_hash": "a777da91ec860955ac9806121007e5c4aec62b2e820292656e917206928c3120",
+    "threshold": 0.7391,
+    "cross_validated": {
+      "partition": "cross_validated (train+tune, nested)",
+      "n": 222,
+      "positives": 26,
+      "threshold": 0.7391,
+      "calls": 6,
+      "correct": 1,
+      "precision": 0.16666666666666666,
+      "precision_lower90": 0.017406806147310137,
+      "reaches_bar": false,
+      "coverage_at_bar": 0.02702702702702703,
+      "calibration_error": 0.0,
+      "accuracy": 0.8378378378378378,
+      "roc_auc": 0.5447409733124019,
+      "average_precision": 0.14621886387277983,
+      "folds": 3
+    },
+    "frozen_test": null,
+    "inner_scores": {
+      "fold 1": {
+        "boosted trees": 0.19155548501577235,
+        "logistic": 0.3638821185039673
+      },
+      "fold 2": {
+        "boosted trees": 0.14284844585395587,
+        "logistic": 0.1976668653049168
+      },
+      "fold 3": {
+        "boosted trees": 0.30519469798996185,
+        "logistic": 0.28717939916626284
+      }
+    },
+    "chosen_per_outer_fold": [
+      "logistic",
+      "logistic",
+      "boosted trees"
+    ],
+    "calibration": {
+      "n": 49,
+      "calibration_error": 0.21477365851797867,
+      "cross_fitted": true,
+      "calibrated": false
+    },
+    "flags": [
+      "no_frozen_test"
+    ],
+    "guard_calls": [
+      [
+        "setting_selection",
+        148
+      ],
+      [
+        "refit",
+        98
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        98
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        148
+      ],
+      [
+        "setting_selection",
+        148
+      ],
+      [
+        "refit",
+        98
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        98
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        148
+      ],
+      [
+        "setting_selection",
+        148
+      ],
+      [
+        "refit",
+        98
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        98
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        99
+      ],
+      [
+        "refit",
+        148
+      ],
+      [
+        "setting_selection",
+        222
+      ],
+      [
+        "refit",
+        222
+      ],
+      [
+        "calibration",
+        49
+      ]
+    ],
+    "refusal": "318 labels is below min_labels_for_frozen_test=400: nested cross-validation only. This question may rank and prioritise and may not fill cells.",
+    "may_fill": false
+  }
+}

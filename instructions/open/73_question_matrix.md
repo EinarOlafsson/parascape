@@ -197,3 +197,54 @@ The three published scoreboards stay as they are, relabelled as **cross-validate
 test**, which is what they are. Nothing was filled from them, so no claim has to be withdrawn -- but the
 architecture work must not repeat the omission, and re-running the three questions through the harness with a
 frozen partition is part of phase 1's gate.
+
+## Phase 1 built (2026-11-05): the registry, the harness, and what the harness immediately caught
+`parascape/question_registry.py`, `parascape/harness.py`, `tests/test_question_registry.py`,
+`tests/test_harness.py`, `notebooks/harness_demo_2026_11_05.ipynb`,
+`results/harness_demo_2026_11_05/`, `results/harness_holdout_log.jsonl`.
+
+* **Named apart from `parascape/questions.py`**, which is instruction 45's catalogue of what the
+  *table* can be asked. The instruction 73 registry is `question_registry`; the two are different
+  objects and the first attempt at this work overwrote the older module, which the suite caught.
+* **Registry fields**: `id`, `text`, `answer_type`, `question_class` (A-D), `label_source`,
+  `label_family`, `label_tier`, `evidence_allowed`, `evidence_forbidden`,
+  `min_labels_for_frozen_test` (default 400, the arithmetic of a 0.90 Clopper-Pearson bound through
+  a 15 % partition), `status`, the three admission tests (`answerable`, `non_redundant`, `useful`)
+  and `redundant_with`. One structural guarantee: **registering a question whose `label_family` is
+  not in `evidence_forbidden` raises**. Eight questions registered, at least one per class,
+  including the two declared gaps and `has_domain_ipr000719` kept as the worked example of a
+  question rejected for failing the usefulness test.
+* **Harness**: four `splits.make_split` partitions grouped by orthogroup (`cold_node_pairs` for
+  ranked lists), `StageGuard` calling `split.guard_fit` at every stage and recording each call,
+  nested cross-validation inside train + tune where the strategy and the fill threshold are chosen,
+  isotonic calibration on the `calibration` partition only through `claims.CertaintyModel`, one
+  scored look at `test`, and both numbers returned with Clopper-Pearson lower bounds, coverage at
+  the bar, calibration error, baselines and permutation importance by family. `harness.may_fill`
+  reads the **frozen-test** bound alone.
+* **Two API frictions worth recording.** `FIT_ACCESS["model_fit"]` permits `train` only, so nested
+  cross-validation inside train + tune fits under the `refit` stage, which is the permission
+  `splits` already defines for exactly that; and a cold-node pair question is guarded with its
+  endpoint **nodes**, because that is the unit `splits` partitions.
+* **The budget hashes the evidence as well as the strategy.** Widening `evidence_forbidden` changes
+  what a model sees while leaving the model, its settings and its version identical, so the strategy
+  hash alone called a changed run a repeat. The log entry carries `strategy_hash` **and**
+  `evidence_hash`, and a change in either refuses the partition.
+* **Demonstrated on `required_without_glucose`** (class A, 7,393 labels, 1,765 positives, 371
+  features in 77 families): cross-validated lower bound **0.7722**, frozen-test lower bound
+  **0.5938** (8 calls of 1,082 test genes), ROC-AUC 0.83 on both. Nothing may be filled, and nothing
+  about glucose biology is claimed: rung 0 carries the measurement for these genes and the
+  conditional form still needs the screen's published per-gene statistics.
+  `screen_egress_phenotype` (318 labels) is flagged `no_frozen_test` and cannot fill, as designed.
+* **What the harness caught on its first use, which is the point of it.** Permutation importance and
+  the best-single-feature baseline found three further pooled CRISPR fitness screens whose family
+  names do not contain "crispr" -- `gra17_synthlethal`, `invivo_platform`, `gra12` (and
+  `gse253884_5`) -- each answering the question with the same kind of measurement. The forbidden
+  list is now enumerated by a rule (every family contributing a column named `crispr*` or `fit_*`,
+  plus the curated enteric set), and the correction cost two frozen partitions: seeds 0 and 1 are
+  spent and logged, and the reported run is seed 2. That is the budget working, and the honest price
+  of a corrected definition.
+* **Still open from phase 1's gate:** re-running host-facing, function and partners through the
+  harness with a frozen partition. Host-facing (98 reviewed genes) and function (242) are below the
+  frozen-test threshold as registered, so phase 1's gate for them is a `no_frozen_test` flag rather
+  than a number -- which is itself the finding, and the reason the three published scoreboards stay
+  labelled as cross-validated estimates.

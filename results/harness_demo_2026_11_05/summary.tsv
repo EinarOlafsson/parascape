@@ -1,0 +1,3 @@
+question	strategy	partition	n	positives	threshold	calls	correct	precision	precision_lower90	reaches_bar	coverage_at_bar	calibration_error	accuracy	roc_auc	average_precision	folds
+required_without_glucose	boosted trees, every allowed family	cross_validated (train+tune, nested)	5217	1214	0.8065	33	29	0.8787878787878788	0.7722198908233987	False	0.0063254744105807935	2.402610302476139e-17	0.791067663408089	0.8316338940193537	0.5600887137128864	3.0
+required_without_glucose	boosted trees, every allowed family	frozen_test (touched once)	1082	272	0.8065	8	7	0.875	0.5937545062790738	False	0.0073937153419593345	0.03624355742396652	0.7781885397412199	0.8315949527959331	0.5870793803913903	
