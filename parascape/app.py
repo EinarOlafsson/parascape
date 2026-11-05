@@ -1161,16 +1161,26 @@ class Window(QtWidgets.QMainWindow):
         dialog.quantification.setCurrentText(quant)
         dialog.note.setText(f"<b>{quant}</b> — {why}")
 
+    def _import_resolver(self):
+        """One identifier to one canonical gene id, or nothing. For table import.
+
+        The adaptation itself lives in `importer.single_gene_resolver`, free of Qt, because
+        `tests/test_app_controls.py` needs a real window and wedges in this environment -- logic that
+        can only be exercised through a window is logic that does not get checked.
+        """
+        from .importer import single_gene_resolver
+        return single_gene_resolver(self._gene_resolver(), self.nodes.gene_id)
+
     def apply_import(self, dialog):
         """Run the import the dialog describes and put its columns into this session."""
         from .importer import merge_into, preprocess
-        from .identity import GeneIndex
         try:
-            resolve = GeneIndex.load().resolve
-        except Exception:
+            resolve, resolution_report = self._import_resolver()
+        except Exception as exc:
             # No identity tables: the import still works on current accessions, and says it will not
             # reach the older ones rather than pretending it did.
-            resolve = None
+            resolve, resolution_report = None, lambda: ""
+            logging_util.get_logger(__name__).warning("import: no gene resolver (%s)", exc)
             self.status.showMessage("identity tables unavailable -- previous and strain accessions "
                                     "will not be resolved")
         try:
@@ -1203,10 +1213,12 @@ class Window(QtWidgets.QMainWindow):
             source['nodes'] = self.nodes
             sources[code] = source
             catalog.refresh_sources(sources, imports=self.imports, imported_organism=code)
+        resolved = resolution_report()
         self.status.showMessage(
             f"imported {len(imported.columns)} column(s) for {record['genes']:,} genes "
-            f"({record['quantification']}, {record['scaling']}) -- tick 'imported' on the Data tab "
-            f"to build a map from them")
+            f"({record['quantification']}, {record['scaling']})"
+            + (f" -- {resolved}" if resolved else "")
+            + " -- tick 'imported' on the Data tab to build a map from them")
         return record
 
     # ------------------------------------------------------------------ logging

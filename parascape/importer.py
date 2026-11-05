@@ -273,3 +273,60 @@ def merge_into(nodes: pd.DataFrame, imported: pd.DataFrame) -> pd.DataFrame:
     for c in imported.columns:
         out[c] = joined[c].to_numpy()
     return out
+
+
+def single_gene_resolver(resolver, canonical):
+    """Adapt a candidate-listing `query.GeneResolver` to the one-id-or-nothing callable `preprocess` wants.
+
+    Two different contracts meet here. `GeneResolver.resolve` returns every candidate and deliberately
+    never selects among them, which is right for a search box offering choices. `preprocess` wants an id
+    or a miss. This bridges them without softening the refusal: an identifier naming two genes resolves to
+    nothing, because silently picking one would put a column of somebody else's numbers on a gene, which is
+    worse than dropping the row.
+
+    `canonical` is the set of gene ids the current table holds; a gene outside it cannot key an imported
+    column.
+
+    Returns `(resolve, report)`. `report()` describes, after the import has run, what resolution actually
+    did -- renames, refusals and misses. This function exists because `app.apply_import` called
+    `identity.GeneIndex.load().resolve` until 2026-11-05, and `GeneIndex` has neither `load` nor `resolve`;
+    the call sat inside a bare `try/except` that fell back to no resolution at all, so no import had ever
+    mapped a previous or strain accession and nothing ever said so. Keeping the logic here, free of Qt,
+    is what lets that stay tested.
+    """
+    canonical = {str(gene) for gene in canonical}
+    counts = {"renamed": 0, "ambiguous": 0, "outside_table": 0, "unknown": 0}
+
+    def resolve(alias):
+        try:
+            resolution = resolver.resolve(alias)
+        except ValueError:
+            counts["unknown"] += 1
+            return None
+        found = {choice.entity.identifier for choice in resolution.choices}
+        here = found & canonical
+        if not here:
+            counts["outside_table" if found else "unknown"] += 1
+            return None
+        if len(here) > 1:
+            counts["ambiguous"] += 1
+            return None
+        gene = next(iter(here))
+        if gene != alias:
+            counts["renamed"] += 1
+        return gene
+
+    def report():
+        parts = []
+        if counts["renamed"]:
+            parts.append(f"{counts['renamed']:,} previous or strain accession(s) mapped to current ids")
+        if counts["ambiguous"]:
+            parts.append(f"{counts['ambiguous']:,} ambiguous identifier(s) left unresolved rather than "
+                         f"assigned to one of their genes")
+        if counts["outside_table"]:
+            parts.append(f"{counts['outside_table']:,} resolved outside the current gene table")
+        if counts["unknown"]:
+            parts.append(f"{counts['unknown']:,} matched no known gene")
+        return "; ".join(parts)
+
+    return resolve, report

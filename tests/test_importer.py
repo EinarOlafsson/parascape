@@ -298,3 +298,88 @@ def test_a_screen_export_can_use_gene_id_as_its_identifier_column():
     assert len(result) == 2
     assert record["gene_column"] == "gene_id"
     pd.testing.assert_frame_equal(frame, before)
+
+
+# ------------------------------------------------------------------ import identifier resolution
+"""Why these exist: until 2026-11-05 `app.apply_import` called `identity.GeneIndex.load().resolve`, and
+`GeneIndex` has neither `load` nor `resolve`. The call sat inside a bare `try/except` that fell back to
+`resolve=None`, so no import had ever mapped a previous or strain accession to a current one, and nothing
+reported it. The adaptation lives in `importer` rather than on the window so that it can be checked:
+`tests/test_app_controls.py` needs a real Qt window and wedges in this environment."""
+
+
+def _resolver(mapping, organism="Tg"):
+    """A GeneResolver over `{alias: [gene_id, ...]}`, built the way the real one is."""
+    from parascape import query
+    records = [query.AliasRecord(alias, query.EntityRef(organism, "gene", gene), "accession", "test:fixture")
+               for alias, genes in mapping.items() for gene in genes]
+    return query.GeneResolver(organism, records)
+
+
+def test_an_accession_resolves_to_itself_and_is_not_called_a_rename():
+    from parascape.importer import single_gene_resolver
+    resolve, report = single_gene_resolver(
+        _resolver({"TGME49_208830": ["TGME49_208830"]}), ["TGME49_208830"])
+    assert resolve("TGME49_208830") == "TGME49_208830"
+    assert report() == ""
+
+
+def test_a_previous_accession_maps_to_the_current_id_and_says_so():
+    """The failure the docstring of `import_table` names: it cost a published screen every one of its rows."""
+    from parascape.importer import single_gene_resolver
+    resolve, report = single_gene_resolver(
+        _resolver({"TGME49_008830": ["TGME49_208830"]}), ["TGME49_208830"])
+    assert resolve("TGME49_008830") == "TGME49_208830"
+    assert "1 previous or strain accession(s) mapped to current ids" in report()
+
+
+def test_an_ambiguous_identifier_resolves_to_nothing_rather_than_to_one_of_its_genes():
+    """`GeneResolver` returns every candidate and never selects; the adapter must keep that refusal.
+    Choosing one would put a column of somebody else's numbers on a gene, which is worse than a lost row."""
+    from parascape.importer import single_gene_resolver
+    resolve, report = single_gene_resolver(
+        _resolver({"SHARED": ["TGME49_208830", "TGME49_214320"]}),
+        ["TGME49_208830", "TGME49_214320"])
+    assert resolve("SHARED") is None
+    assert "1 ambiguous identifier(s) left unresolved rather than assigned" in report()
+
+
+def test_a_gene_outside_the_current_table_is_refused_and_distinguished_from_a_miss():
+    from parascape.importer import single_gene_resolver
+    resolve, report = single_gene_resolver(
+        _resolver({"ELSEWHERE": ["TGME49_999999"]}), ["TGME49_208830"])
+    assert resolve("ELSEWHERE") is None
+    assert "1 resolved outside the current gene table" in report()
+    assert "matched no known gene" not in report(), "a known gene elsewhere is not an unknown one"
+
+
+def test_an_unknown_identifier_is_counted_as_a_miss():
+    from parascape.importer import single_gene_resolver
+    resolve, report = single_gene_resolver(_resolver({}), ["TGME49_208830"])
+    assert resolve("NOT_A_GENE") is None
+    assert "1 matched no known gene" in report()
+
+
+def test_the_resolver_plugs_into_preprocess_and_actually_renames_a_row():
+    """End to end through the real `preprocess`, which is what `apply_import` calls."""
+    import pandas as pd
+    from parascape.importer import preprocess, single_gene_resolver
+
+    table = pd.DataFrame({"gene": ["TGME49_008830", "TGME49_214320"], "value": [1.0, 2.0]})
+    resolve, report = single_gene_resolver(
+        _resolver({"TGME49_008830": ["TGME49_208830"], "TGME49_214320": ["TGME49_214320"]}),
+        ["TGME49_208830", "TGME49_214320"])
+    wide, record = preprocess(table, gene_column="gene", resolve=resolve, log=lambda *a: None)
+    assert "TGME49_208830" in wide.index, "the previous accession must land on the current gene"
+    assert record["rows_resolved"] == 2
+    assert "mapped to current ids" in report()
+
+
+def test_without_a_resolver_a_previous_accession_is_simply_lost():
+    """The behaviour every import had until this was fixed, kept as a test so the regression is visible."""
+    import pandas as pd
+    from parascape.importer import preprocess
+
+    table = pd.DataFrame({"gene": ["TGME49_008830"], "value": [1.0]})
+    wide, _ = preprocess(table, gene_column="gene", resolve=None, log=lambda *a: None)
+    assert list(wide.index) == ["TGME49_008830"], "unresolved, it keys on the obsolete id"
