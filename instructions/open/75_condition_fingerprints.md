@@ -32,3 +32,6 @@ known before to the datasets." On both the RNA and the protein level.
 ## Gate
 Each axis ships only when a held-out study that reports its own condition is recovered, with the number stated.
 An axis that cannot be validated that way is published as exploratory or not at all.
+
+## Two directions, one word (2026-11-05)
+This item fingerprints a **condition** and annotates **samples**. Instruction **82** fingerprints a **gene set** from a literature meta-analysis and annotates **genes**. Same word, opposite axis of the matrix, different validation: a held-out study that states its condition here, held-out members of the set there. Keep them separate in the registry so a scorecard cannot be read across them.
