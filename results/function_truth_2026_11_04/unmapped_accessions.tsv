@@ -1,0 +1,4 @@
+accession	uniprot_id	protein_name	gene_names	orf_names	map_route
+A0A140H546	MAFB1_TOXGO	Mitochondrial association factor 1 form b1	MAF1b1	TGRH88_000130	A (UniProt ToxoDB xref)
+Q27895	NTP2_TOXGO	Nucleoside-triphosphatase 2	NTP1		A (UniProt ToxoDB xref)
+Q07828	GRA5_TOXGO	Dense granule protein 5	GRA5		unmapped

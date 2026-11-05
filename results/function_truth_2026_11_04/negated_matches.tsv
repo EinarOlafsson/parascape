@@ -1,0 +1,21 @@
+gene_id	cls	pattern	cue	guard	sentence
+TGME49_203310	proteostasis	ubiquitin	host context: host	host context	Activates host NF-kappa-B signaling pathway by interacting with TRAF6 and modulating the 'Lys-63'-linked polyubiquitination of TRAF6 (PubMed:26553469)
+TGME49_252360	host_cell_modulation	\bIFN-gamma\b	not	negation	Does not affect IFN-gamma (IFNG)-mediated parasite killing in human cells that do not possess the large variety of IRGs (PubMed:22761577)
+TGME49_254370	lipid_membrane_biology	phosphatidyl	not	negation	Does not display flippase activity towards phosphatidylserine, phosphatidic acid or phosphatidylcholine (PubMed:30742070)
+TGME49_254370	lipid_membrane_biology	\bflippase\b	not	negation	Does not display flippase activity towards phosphatidylserine, phosphatidic acid or phosphatidylcholine (PubMed:30742070)
+TGME49_242720	proteostasis	proteoly\w+	host context: host	host context	proteolytic cleavage is essential for the correct trafficking of GRA16 from the parasite into the infected host nucleus (PubMed:26270241, PubMed:26473595, PubMe
+TGME49_242720	proteostasis	\bcleav\w+\b	host context: host	host context	In tachyzoites, plays an essential role in the export of several dense granule proteins into the host cell by cleaving the localization motif RRLxx (termed Toxo
+TGME49_258580	transcription_chromatin	(?<!host )gene expression	host context: human cells	host context	May modulate gene expression in human cells (PubMed:30675671).
+TGME49_258580	proteostasis	(?<!host )autophag\w+	host context: human cells	host context	Promotes autophagy in human cells via modulation of the BCL2-BECN1 pathway (PubMed:34180401)
+TGME49_201840	stress_differentiation	bradyzoite	dispensable	negation	Aspartyl protease which is dispensable for protein degradation in the vacuolar compartment (VAC) or for tachyzoite and bradyzoite viability
+TGME49_279100	host_cell_modulation	tether\w*[^.]{0,60}host	not	negation	During host cell infection by tachyzoites, does not play a role in tethering the parasitophorous vacuole to the host mitochondria, probably because it does not 
+TGME49_279100	host_cell_modulation	host (mitochondri|nucleus|nuclear|cytosol|endocytic|lysosom)	not	negation	During host cell infection by tachyzoites, does not play a role in tethering the parasitophorous vacuole to the host mitochondria, probably because it does not 
+TGME49_260470	invasion_motility	conoid	Not	negation	Not required for microneme secretion and conoid extrusion (PubMed:30279285)
+TGME49_260470	invasion_motility	microneme secretion	Not	negation	Not required for microneme secretion and conoid extrusion (PubMed:30279285)
+TGME49_278660	invasion_motility	invasion	not	negation	Required for maintaining the viability of extracellular parasites but not for intracellular growth, egress or invasion (PubMed:30723156).
+TGME49_278660	egress	egress	not	negation	Required for maintaining the viability of extracellular parasites but not for intracellular growth, egress or invasion (PubMed:30723156).
+TGME49_279100	host_cell_modulation	tether\w*[^.]{0,60}host	not	negation	During host cell infection by tachyzoites, does not play a role in tethering the parasitophorous vacuole to the host mitochondria, probably because it does not 
+TGME49_279100	host_cell_modulation	host (mitochondri|nucleus|nuclear|cytosol|endocytic|lysosom)	not	negation	During host cell infection by tachyzoites, does not play a role in tethering the parasitophorous vacuole to the host mitochondria, probably because it does not 
+TGME49_220950	host_cell_modulation	tether\w*[^.]{0,60}host	not	negation	During host cell infection by tachyzoites, does not play a role in tethering the parasitophorous vacuole to the host mitochondria
+TGME49_220950	host_cell_modulation	host (mitochondri|nucleus|nuclear|cytosol|endocytic|lysosom)	not	negation	During host cell infection by tachyzoites, does not play a role in tethering the parasitophorous vacuole to the host mitochondria
+TGME49_266990	metabolism	biosynthe\w+	non	negation	The coatomer is a cytosolic protein complex that binds to dilysine motifs and reversibly associates with Golgi non-clathrin-coated vesicles, which further media

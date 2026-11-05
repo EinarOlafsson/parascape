@@ -1,0 +1,101 @@
+label	kind	genes	prevalence	ic_corpus	ic_structural
+apicoplast_mitochondrion	coarse_class	80	0.3306	1.6	
+cell_cycle_division	coarse_class	62	0.2562	1.96	
+cytoskeleton	coarse_class	58	0.2397	2.06	
+egress	coarse_class	42	0.1736	2.53	
+invasion_motility	coarse_class	37	0.1529	2.71	
+protein_trafficking_secretion	coarse_class	32	0.1322	2.92	
+transport_homeostasis	coarse_class	28	0.1157	3.11	
+metabolism	coarse_class	26	0.1074	3.22	
+proteostasis	coarse_class	23	0.095	3.4	
+signalling	coarse_class	20	0.0826	3.6	
+lipid_membrane_biology	coarse_class	19	0.0785	3.67	
+host_cell_modulation	coarse_class	16	0.0661	3.92	
+translation	coarse_class	9	0.0372	4.75	
+stress_differentiation	coarse_class	9	0.0372	4.75	
+transcription_chromatin	coarse_class	8	0.0331	4.92	
+GO:0005515 protein binding	go_F	17	0.0702	3.83	3.54
+GO:0046812 host cell surface binding	go_F	3	0.0124	6.33	12.29
+GO:0005509 calcium ion binding	go_F	2	0.0083	6.92	11.71
+GO:0106310 protein serine kinase activity	go_F	2	0.0083	6.92	12.29
+GO:0004609 phosphatidylserine decarboxylase activity	go_F	2	0.0083	6.92	13.29
+GO:0035662 Toll-like receptor 4 binding	go_F	2	0.0083	6.92	13.29
+GO:0035663 Toll-like receptor 2 binding	go_F	2	0.0083	6.92	13.29
+GO:0015166 polyol transmembrane transporter activity	go_F	1	0.0041	7.92	9.39
+GO:0015204 urea transmembrane transporter activity	go_F	1	0.0041	7.92	11.29
+GO:0015250 water channel activity	go_F	1	0.0041	7.92	13.29
+GO:0015254 glycerol channel activity	go_F	1	0.0041	7.92	13.29
+GO:0042802 identical protein binding	go_F	1	0.0041	7.92	12.29
+GO:0005302 L-tyrosine transmembrane transporter activity	go_F	1	0.0041	7.92	12.29
+GO:0004139 deoxyribose-phosphate aldolase activity	go_F	1	0.0041	7.92	13.29
+GO:0008047 enzyme activator activity	go_F	1	0.0041	7.92	7.41
+GO:0004332 fructose-bisphosphate aldolase activity	go_F	1	0.0041	7.92	13.29
+GO:0051015 actin filament binding	go_F	1	0.0041	7.92	12.29
+GO:0033691 sialic acid binding	go_F	1	0.0041	7.92	13.29
+GO:0003785 actin monomer binding	go_F	1	0.0041	7.92	13.29
+GO:0003789 actin filament severing activity	go_F	1	0.0041	7.92	13.29
+GO:0140311 protein sequestering activity	go_F	1	0.0041	7.92	12.29
+GO:0004845 uracil phosphoribosyltransferase activity	go_F	1	0.0041	7.92	13.29
+GO:0004672 protein kinase activity	go_F	1	0.0041	7.92	6.44
+GO:0004190 aspartic-type endopeptidase activity	go_F	1	0.0041	7.92	12.29
+GO:0004692 cGMP-dependent protein kinase activity	go_F	1	0.0041	7.92	13.29
+GO:0030553 cGMP binding	go_F	1	0.0041	7.92	13.29
+GO:0003677 DNA binding	go_F	1	0.0041	7.92	6.26
+GO:0003723 RNA binding	go_F	1	0.0041	7.92	5.94
+GO:0060090 molecular adaptor activity	go_F	1	0.0041	7.92	5.83
+GO:0005534 galactose binding	go_F	1	0.0041	7.92	13.29
+GO:0030246 carbohydrate binding	go_F	1	0.0041	7.92	7.74
+GO:0046922 peptide-O-fucosyltransferase activity	go_F	1	0.0041	7.92	13.29
+GO:0061459 L-arginine transmembrane transporter activity	go_F	1	0.0041	7.92	11.29
+GO:0001216 DNA-binding transcription activator activity	go_F	1	0.0041	7.92	11.71
+GO:0022829 wide pore channel activity	go_F	1	0.0041	7.92	9.12
+GO:0044650 adhesion of symbiont to host cell	go_P	3	0.0124	6.33	10.3
+GO:1903307 positive regulation of regulated secretory pathway	go_P	2	0.0083	6.92	10.55
+GO:0045055 regulated exocytosis	go_P	2	0.0083	6.92	9.34
+GO:0003333 amino acid transmembrane transport	go_P	2	0.0083	6.92	8.09
+GO:1901475 pyruvate transmembrane transport	go_P	2	0.0083	6.92	12.96
+GO:0044409 symbiont entry into host	go_P	2	0.0083	6.92	9.09
+GO:0075109 symbiont-mediated perturbation of host receptor-mediated signal transduction	go_P	2	0.0083	6.92	11.55
+GO:0140403 effector-mediated suppression of host innate immune response	go_P	2	0.0083	6.92	12.23
+GO:0140404 effector-mediated perturbation of host innate immune response by symbiont	go_P	2	0.0083	6.92	11.74
+GO:0006468 protein phosphorylation	go_P	2	0.0083	6.92	10.23
+GO:2000147 positive regulation of cell motility	go_P	2	0.0083	6.92	8.34
+GO:0072659 protein localization to plasma membrane	go_P	2	0.0083	6.92	11.55
+GO:0141071 symbiont-mediated activation of host MAPK cascade	go_P	1	0.0041	7.92	14.55
+GO:0006833 water transport	go_P	1	0.0041	7.92	11.96
+GO:0015791 polyol transmembrane transport	go_P	1	0.0041	7.92	11.09
+GO:0015793 glycerol transmembrane transport	go_P	1	0.0041	7.92	14.55
+GO:0071918 urea transmembrane transport	go_P	1	0.0041	7.92	13.55
+GO:0099500 vesicle fusion to plasma membrane	go_P	1	0.0041	7.92	12.96
+GO:0080144 intracellular amino acid homeostasis	go_P	1	0.0041	7.92	11.38
+GO:1903808 L-tyrosine import across plasma membrane	go_P	1	0.0041	7.92	14.55
+GO:0140886 symbiont-mediated suppression of host interferon-mediated signaling pathway	go_P	1	0.0041	7.92	12.55
+GO:0010468 regulation of gene expression	go_P	1	0.0041	7.92	4.86
+GO:0010971 positive regulation of G2/M transition of mitotic cell cycle	go_P	1	0.0041	7.92	13.55
+GO:0045595 regulation of cell differentiation	go_P	1	0.0041	7.92	5.1
+GO:0051260 protein homooligomerization	go_P	1	0.0041	7.92	12.96
+GO:0008284 positive regulation of cell population proliferation	go_P	1	0.0041	7.92	8.12
+GO:0030388 fructose 1,6-bisphosphate metabolic process	go_P	1	0.0041	7.92	14.55
+GO:0044403 biological process involved in symbiotic interaction	go_P	1	0.0041	7.92	6.09
+GO:2001171 positive regulation of ATP biosynthetic process	go_P	1	0.0041	7.92	14.55
+GO:0046718 symbiont entry into host cell	go_P	1	0.0041	7.92	9.85
+GO:0141213 symbiont-mediated generation of symbiont replication vacuole	go_P	1	0.0041	7.92	14.55
+GO:0030042 actin filament depolymerization	go_P	1	0.0041	7.92	13.55
+GO:0030837 negative regulation of actin filament polymerization	go_P	1	0.0041	7.92	12.55
+GO:0141173 symbiont-mediated suppression of host pro-inflammatory cytokine signaling	go_P	1	0.0041	7.92	14.55
+GO:0046777 protein autophosphorylation	go_P	1	0.0041	7.92	12.23
+GO:0060352 cell adhesion molecule production	go_P	1	0.0041	7.92	14.55
+GO:0016485 protein processing	go_P	1	0.0041	7.92	9.59
+GO:0016540 protein autoprocessing	go_P	1	0.0041	7.92	14.55
+GO:0140321 symbiont-mediated suppression of host autophagy	go_P	1	0.0041	7.92	14.55
+GO:1990215 symbiont-mediated perturbation of host vesicle-mediated transport	go_P	1	0.0041	7.92	12.96
+GO:0031284 positive regulation of guanylate cyclase activity	go_P	1	0.0041	7.92	14.55
+GO:0006182 cGMP biosynthetic process	go_P	1	0.0041	7.92	14.55
+GO:0010447 response to acidic pH	go_P	1	0.0041	7.92	12.96
+GO:0035865 cellular response to potassium ion	go_P	1	0.0041	7.92	13.55
+GO:0075293 response to host pH environment	go_P	1	0.0041	7.92	14.55
+GO:0036066 protein O-linked glycosylation via fucose	go_P	1	0.0041	7.92	14.55
+GO:0097638 L-arginine import across plasma membrane	go_P	1	0.0041	7.92	14.55
+GO:0045165 cell fate commitment	go_P	1	0.0041	7.92	6.61
+GO:0097436 entry into dormancy	go_P	1	0.0041	7.92	14.55
+GO:0035891 exit from host cell	go_P	1	0.0041	7.92	10.3

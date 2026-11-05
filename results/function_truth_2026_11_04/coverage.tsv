@@ -1,0 +1,16 @@
+cls	observed-curated	observed-direct	observed-screen	genes_any_tier	ic_corpus
+host_cell_modulation	10	8	0	16	3.92
+invasion_motility	34	9	0	37	2.71
+egress	7	1	35	42	2.53
+cell_cycle_division	17	1	44	62	1.96
+protein_trafficking_secretion	32	6	0	32	2.92
+signalling	19	4	0	20	3.6
+transport_homeostasis	27	6	0	28	3.11
+metabolism	26	1	0	26	3.22
+lipid_membrane_biology	19	1	0	19	3.67
+apicoplast_mitochondrion	20	0	60	80	1.6
+translation	9	0	0	9	4.75
+transcription_chromatin	7	3	0	8	4.92
+stress_differentiation	9	2	0	9	4.75
+proteostasis	23	1	0	23	3.4
+cytoskeleton	14	2	44	58	2.06

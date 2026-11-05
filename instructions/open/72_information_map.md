@@ -309,3 +309,41 @@ calls became errors.
 `hosttx_padj` really was run 1's top feature, so the leak was real; it simply was not what passed the bar.
 The practical lesson is sharper than the one first drawn: **a wrong label set flatters a model far more than a
 leaky feature does**, and no feature audit would have caught it. Only the human review did.
+
+## Function truth set (2026-11-04): 242 genes labelled, and the constraint is labels, not evidence
+`results/function_truth_2026_11_04/`. The map held ~25 genes with an experimental function; it now holds **242**
+with a coarse class, 145 of them at the two non-screen tiers.
+
+| Tier | Probability | Genes | Source |
+|---|---|---|---|
+| observed-direct | 0.95 | 32 | experimental GO (QuickGO taxon 5811, 156 annotations, 85 terms) |
+| observed-curated | 0.90 | 113 | reviewed Swiss-Prot curator FUNCTION comments (154 entries, all of Swiss-Prot Toxoplasma) |
+| observed-screen | 0.80 | 97 | arrayed splitCas9 imaging screen (PMID 35538310), process claims only |
+
+* 15 classes, all populated; 138 of 242 genes (57 %) carry more than one. Information content per label is
+  recorded (`protein binding` 3.54 against `actin filament severing activity` 13.29), which is what stops a vague
+  answer scoring like a specific one.
+* Excluded on purpose, and this is why the set is small: InterPro/Pfam, ToxoDB product names, IEA/ISS/ISO GO,
+  UniProt keywords and domain features, and CRISPR fitness (essentiality is not a function).
+* Two guards on the text rules, both auditable: a negation cue in the same sentence (ASP1 "dispensable for
+  bradyzoite viability" does not become a differentiation gene) and a host-context guard (ROP17 "promotes
+  autophagy in human cells" is host modulation). 20 discards recorded.
+* 183 PMIDs cited; a 30-id sample verified against NCBI, 30/30 resolve.
+* **Unlike host-facing, the constraint here is the label count, not the evidence.** The lower 90 % bound needs
+  ~65 held-out calls even at a true precision of 0.95, and the largest non-screen class has 37 genes, so **no
+  class can be scored on its own yet**. What it can support is the pooled multi-label question plus the CAFA
+  no-knowledge split. More curation therefore does help, which is why the review queue matters.
+* `review_queue.tsv`: 254 genes, one row per gene, worst-first; 156 score >= 3, so the top 100 is a meaningful
+  cut. Headed by genes with real evidence that no rule could classify (RON4, MIC21, RASP1/3, the enolases, GRA1
+  — reviewed entries whose FUNCTION comment is empty).
+
+### The strain-suffix mapping, checked
+21 reviewed entries are the GT1/VEG/RH88 copy with no TGME49 cross-reference and were placed on
+`TGME49_<same numeric suffix>`. `instructions/00_INDEX.txt` warns that **TGRH88 numbering does not correspond to
+ME49**, so this needed checking. All 21 were cross-checked against the independent ToxoDB product name and all
+21 agree: GC -> guanylyl cyclase, UGO -> guanylate cyclase organizer, POFUT2 -> O-fucosyltransferase, VIT ->
+vacuolar iron transporter, ZNT -> zinc transporter, AMA1/AMA3, ATP4 -> P-type ATPase4, PIT/PT2 -> phosphate
+transporters, DCX -> doublecortin, eIF6 -> binds the 60S subunit, CIAPIN1 -> cytosolic iron-sulfur assembly,
+MIC2, RASP2 -> rhoptry apical surface protein, CDC50.1 -> traffics GC and UGO to the membrane (and GC and UGO
+are themselves in the set). **Rule for future use: accept a strain-suffix mapping only when the product name
+independently corroborates it**; the index warning stands for the general case.
