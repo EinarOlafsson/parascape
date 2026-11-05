@@ -299,3 +299,28 @@ moment earlier: a UMAP is a *view of the rows*, not a fourth kind of query, so i
 | **Clusters** | The regions of the map this question lights up, and what else lives there |
 | **Fill** | Write only the answers strong enough to keep; everything weaker stays marked exploratory |
 | **Compare** | Two questions side by side, including whether they are secretly the same question |
+
+## Scope: an overhaul of the application, with the goal unchanged (Einar, 2026-11-05)
+"This is an overhaul of the application. The goal remains the same. It was just not intuitive enough to get
+through the application before, that's why we are doing this overhaul; additionally we are adding a lot of new
+data and the app needs to accommodate it."
+
+So two drivers, and both are about reaching the same goal rather than changing it:
+1. **Navigability.** The capability was there and unreachable. Hence three level-1 nodes shaped like the data,
+   one-word names with the meaning in the summary, strategies behind the questions they answer, and provenance
+   attached to values instead of parked in a page.
+2. **Scale.** The data grew and will keep growing, so the app must accommodate it by design:
+   * **Nothing loads wholesale.** The shipped map is already 53 MB and the catalogue will run to hundreds of
+     labels and thousands of columns; a panel reads the gene, the label or the list in front of it, never every
+     table. `load_published` already returns what exists and names what is missing -- that pattern generalises.
+   * **The catalogue is searched, not scrolled.** With hundreds of questions a list is unusable: ranked search
+     (`help_index`) is the primary way in, with filters on state, class, label count and answerability.
+   * **Columns are found by meaning, not by name.** Tier, family and normalization are registry fields already;
+     the UI must group by them, because `expr_lfc_GSE223877_DD_BFD1_Shield_1a` is unreadable and there are 266
+     such columns today.
+   * **Data arrives on demand.** A node that needs an absent table offers to fetch it, so the install stays
+     small as the corpus grows.
+   * **Every release is dated and frozen**, so a prediction can be tested against what was published later --
+     the prospective check in instruction 73 depends on it.
+3. **Nothing is discarded.** Every panel that exists becomes a destination behind a node. The overhaul changes
+   how the application is entered, not what it can do -- and the new data is what the new nodes exist to reach.
