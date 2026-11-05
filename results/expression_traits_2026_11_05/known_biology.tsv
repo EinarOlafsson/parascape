@@ -1,0 +1,50 @@
+source	study	column	contrast	gene	gene_id	expected	lfc	se	z	percentile	verdict
+registered column	GSE218921	(no column matched)	WT alkaline switch vs control media	BFD1	TGME49_200385	up					not available
+registered column	GSE218921	(no column matched)	WT alkaline switch vs control media	BAG1	TGME49_259020	up					not available
+registered column	GSE218921	(no column matched)	WT alkaline switch vs control media	ENO1	TGME49_268860	up					not available
+registered column	GSE218921	(no column matched)	WT alkaline switch vs control media	SAG1	TGME49_233460	down					not available
+registered column	GSE218921	expr_lfc_GSE218921_T_gondii_in_vitro_bradyzoite_induction_conditi	sporozoite bradyzoite induction	BAG1	TGME49_259020	up	5.177	0.437	11.84	100.0	pass
+registered column	GSE223877	expr_lfc_GSE223877_DD_BFD1_Shield_1a	BFD1 stabilised (Shield-1)	BAG1	TGME49_259020	up	2.632	0.55	4.79	99.5	pass
+registered column	GSE223877	expr_lfc_GSE223877_DD_BFD1_Shield_1b	BFD1 stabilised (Shield-1)	BAG1	TGME49_259020	up	2.675	0.55	4.87	99.5	pass
+registered column	GSE223877	expr_lfc_GSE223877_DD_BFD1_Shield_1a	BFD1 stabilised (Shield-1)	ENO1	TGME49_268860	up	2.844	0.341	8.34	99.6	pass
+registered column	GSE223877	expr_lfc_GSE223877_DD_BFD1_Shield_1b	BFD1 stabilised (Shield-1)	ENO1	TGME49_268860	up	2.883	0.341	8.46	99.6	pass
+registered column	GSE139537	expr_lfc_GSE139537_2B4_Shield1	BFD1 stabilised (Shield-1)	BAG1	TGME49_259020	up	1.103	0.237	4.66	94.7	pass
+registered column	GSE139537	expr_lfc_GSE139537_2B4_Shield1	BFD1 stabilised (Shield-1)	ENO1	TGME49_268860	up	0.457	0.161	2.84	77.1	weak pass (|lfc| < 0.5)
+registered column	GSE223819	expr_lfc_GSE223819_200385_mNG_mAID_IAA	BFD1 depleted under alkaline stress	BAG1	TGME49_259020	down	-7.796	0.216	-36.13	0.0	pass
+registered column	GSE223819	expr_lfc_GSE223819_311100_mNG_mAID_IAA	BFD2 depleted under alkaline stress	BAG1	TGME49_259020	down	-6.077	0.216	-28.16	0.0	pass
+registered column	GSE132238	expr_lfc_GSE132238_KO_stress_24h_array1	BFD1 knockout under stress vs WT baseline	BAG1	TGME49_259020	down	-0.027	3.868	-0.01	28.8	inconclusive (|z| < 1)
+registered column	GSE132238	expr_lfc_GSE132238_KO_stress_24h_array2	BFD1 knockout under stress vs WT baseline	BAG1	TGME49_259020	down	-0.276	3.868	-0.07	25.6	inconclusive (|z| < 1)
+registered column	GSE132238	expr_lfc_GSE132238_KO_stress_48h_array1	BFD1 knockout under stress vs WT baseline	BAG1	TGME49_259020	down	-0.0	3.868	-0.0	31.0	inconclusive (|z| < 1)
+registered column	GSE132238	expr_lfc_GSE132238_KO_stress_72h_array1	BFD1 knockout under stress vs WT baseline	BAG1	TGME49_259020	down	-0.0	3.868	-0.0	24.9	inconclusive (|z| < 1)
+registered column	GSE132238	expr_lfc_GSE132238_KO_stress_72h_array2	BFD1 knockout under stress vs WT baseline	BAG1	TGME49_259020	down	-0.0	3.868	-0.0	25.8	inconclusive (|z| < 1)
+registered column	GSE159515	expr_rel_GSE159515_ME49_Bz_A	ME49 bradyzoites vs study centre	BAG1	TGME49_259020	up	7.627			99.9	pass
+registered column	GSE159515	expr_rel_GSE159515_ME49_Bz_B	ME49 bradyzoites vs study centre	BAG1	TGME49_259020	up	7.587			99.9	pass
+registered column	GSE159515	expr_rel_GSE159515_ME49_Bz_A	ME49 bradyzoites vs study centre	ENO1	TGME49_268860	up	7.856			100.0	pass
+registered column	GSE159515	expr_rel_GSE159515_ME49_Bz_B	ME49 bradyzoites vs study centre	ENO1	TGME49_268860	up	7.864			100.0	pass
+registered column	GSE159515	expr_rel_GSE159515_ME49_Bz_A	ME49 bradyzoites vs study centre	SAG1	TGME49_233460	down	-4.482			0.0	pass
+registered column	GSE159515	expr_rel_GSE159515_ME49_Bz_B	ME49 bradyzoites vs study centre	SAG1	TGME49_233460	down	-4.342			0.0	pass
+registered column	GSE159515	expr_rel_GSE159515_ME49_Tz_A	tachyzoites vs study centre	SAG1	TGME49_233460	up	-0.053			46.7	MISS (wrong direction)
+registered column	GSE159515	expr_rel_GSE159515_ME49_Tz_B	tachyzoites vs study centre	SAG1	TGME49_233460	up	0.053			80.4	weak pass (|lfc| < 0.5)
+registered column	GSE159515	expr_rel_GSE159515_RH_Tz_A	tachyzoites vs study centre	SAG1	TGME49_233460	up	0.342			75.5	weak pass (|lfc| < 0.5)
+registered column	GSE159515	expr_rel_GSE159515_RH_Tz_B	tachyzoites vs study centre	SAG1	TGME49_233460	up	0.209			63.4	weak pass (|lfc| < 0.5)
+registered column	GSE159515	expr_rel_GSE159515_ME49_Tz_A	tachyzoites vs study centre	ENO2	TGME49_268850	up	0.015			72.0	weak pass (|lfc| < 0.5)
+registered column	GSE159515	expr_rel_GSE159515_ME49_Tz_B	tachyzoites vs study centre	ENO2	TGME49_268850	up	-0.015			56.1	MISS (wrong direction)
+registered column	GSE159515	expr_rel_GSE159515_RH_Tz_A	tachyzoites vs study centre	ENO2	TGME49_268850	up	0.453			79.3	weak pass (|lfc| < 0.5)
+registered column	GSE159515	expr_rel_GSE159515_RH_Tz_B	tachyzoites vs study centre	ENO2	TGME49_268850	up	0.226			64.5	weak pass (|lfc| < 0.5)
+registered column	GSE208647	expr_rel_GSE208647_ME49EW_cyst_30_days	30-day mouse-brain tissue cysts vs study centre	BAG1	TGME49_259020	up	10.422			100.0	pass
+registered column	GSE208647	expr_rel_GSE208647_ME49_Tir1_strain_pH8_2_48hrs	in vitro pH 8.2 bradyzoites vs study centre	BAG1	TGME49_259020	up	0.0			5.6	MISS (wrong direction)
+derived within-study	GSE159515	expr_rel_GSE159515_ME49_Tz_A - expr_rel_GSE159515_ME49_Bz_A	ME49 tachyzoite minus ME49 bradyzoite (difference of two internal columns)	SAG1	TGME49_233460	up	4.429			100.0	pass
+derived within-study	GSE159515	expr_rel_GSE159515_ME49_Tz_A - expr_rel_GSE159515_ME49_Bz_A	ME49 tachyzoite minus ME49 bradyzoite (difference of two internal columns)	ENO2	TGME49_268850	up	2.383			99.4	pass
+derived within-study	GSE159515	expr_rel_GSE159515_ME49_Tz_A - expr_rel_GSE159515_ME49_Bz_A	ME49 tachyzoite minus ME49 bradyzoite (difference of two internal columns)	BAG1	TGME49_259020	down	-7.723			0.0	pass
+derived within-study	GSE159515	expr_rel_GSE159515_ME49_Tz_A - expr_rel_GSE159515_ME49_Bz_A	ME49 tachyzoite minus ME49 bradyzoite (difference of two internal columns)	ENO1	TGME49_268860	down	-7.927			0.0	pass
+derived within-study	GSE159515	expr_rel_GSE159515_ME49_Tz_B - expr_rel_GSE159515_ME49_Bz_B	ME49 tachyzoite minus ME49 bradyzoite (second replicate pair)	SAG1	TGME49_233460	up	4.395			100.0	pass
+derived within-study	GSE159515	expr_rel_GSE159515_ME49_Tz_B - expr_rel_GSE159515_ME49_Bz_B	ME49 tachyzoite minus ME49 bradyzoite (second replicate pair)	ENO2	TGME49_268850	up	2.389			99.4	pass
+derived within-study	GSE159515	expr_rel_GSE159515_ME49_Tz_B - expr_rel_GSE159515_ME49_Bz_B	ME49 tachyzoite minus ME49 bradyzoite (second replicate pair)	BAG1	TGME49_259020	down	-7.49			0.1	pass
+derived within-study	GSE159515	expr_rel_GSE159515_ME49_Tz_B - expr_rel_GSE159515_ME49_Bz_B	ME49 tachyzoite minus ME49 bradyzoite (second replicate pair)	ENO1	TGME49_268860	down	-7.794			0.0	pass
+hidden by the control marking	GSE218921	(not a column) VEG WT, Switch vs VEG WT, Control	WT alkaline switch vs WT control media (both marked control, so no column exists)	BFD1	TGME49_200385	up	1.356			89.9	pass
+hidden by the control marking	GSE218921	(not a column) VEG WT, Switch vs VEG WT, Control	WT alkaline switch vs WT control media (both marked control, so no column exists)	BAG1	TGME49_259020	up	4.749			99.6	pass
+hidden by the control marking	GSE218921	(not a column) VEG WT, Switch vs VEG WT, Control	WT alkaline switch vs WT control media (both marked control, so no column exists)	ENO1	TGME49_268860	up	4.912			99.7	pass
+hidden by the control marking	GSE218921	(not a column) VEG WT, Switch vs VEG WT, Control	WT alkaline switch vs WT control media (both marked control, so no column exists)	SAG1	TGME49_233460	down	-1.341			2.5	pass
+hidden by the control marking	GSE132238	(not a column) WT_stress vs WT_unstress	WT alkaline stress vs WT unstressed (both marked control, so no column exists)	BAG1	TGME49_259020	up	6.919			100.0	pass
+hidden by the control marking	GSE132238	(not a column) WT_stress vs WT_unstress	WT alkaline stress vs WT unstressed (both marked control, so no column exists)	ENO1	TGME49_268860	up	6.989			100.0	pass
+hidden by the control marking	GSE132238	(not a column) WT_stress vs WT_unstress	WT alkaline stress vs WT unstressed (both marked control, so no column exists)	SAG1	TGME49_233460	down	-5.248			0.0	pass

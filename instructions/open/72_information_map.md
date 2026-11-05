@@ -431,3 +431,78 @@ is legitimately predictive rather than leaked.
   annotation-free results show they are not what carries the model.
 * A negative pair means "not recorded", not "not true", so open-world annotation biases precision **downward**.
   That makes the failure somewhat pessimistic, but 0.76 is too far from 0.90 for it to matter.
+
+## The map is in the application (2026-11-05)
+`parascape/information_map_panel.py`, an "information map" dock beside Discoveries (wired the house way:
+module-level `install(window)` plus `Window._information_map`). It reads the published release back through
+`information_map.load_published`, which resolves `$PARASCAPE_INFORMATION_MAP`, the installed cache, then the
+newest `results/information_map_v0_*`, adds the tier-2 `sequence_traits` and `domain_traits` tables, and
+reports every file it could not find instead of refusing to open.
+* **Gene view**: search by identifier or product; tier-1 conclusions first, then tier-2 measurements, each row
+  with its value, probability, source tier and the reference plus dataset from `evidence.parquet`, and the
+  gene's partners from `pairs.parquet` with their probabilities.
+* **Trait view**: coverage of one column by the source tier of the cell, and the distribution of its values.
+* **The three states are visually distinct**, which is the point of the panel: an observed fact; a *measured*
+  negative ("no — measured negative", amber); and no measurement at all ("not measured", grey italic, listed
+  only when asked for). An empty cell is never rendered as "no".
+* A banner states that **every cell is an observed fact and no predicted value is present**. It is computed
+  from the source table (`PublishedMap.predicted_cells`), so it will report filled cells as soon as a release
+  has any; there is deliberately no predictions display, because no strategy has reached the 90 % bar.
+* Tests: `tests/test_information_map_panel.py` (headless) covers the loader's partial-release behaviour, the
+  tiers, the not-measured wording and colour, the partner list, the trait view and the tooltip rule.
+
+## Expression columns built (2026-11-05), and the cross-study question answered
+`results/expression_traits_2026_11_05/` — **266 tier-2 expression columns** over all 8,140 genes, grid 97.7 %
+filled, from the 498-run snapshot: **124 relative-to-control** (62 log2 fold changes with their standard
+errors), **106 internal-reference**, **36 absolute**. Runs are weighted by the per-sample quality score,
+effective n is Kish, and each column's probability is `base x mean_quality x replication` (base 0.90 relative /
+0.85 internal / 0.80 absolute; 0.90 rather than 0.95 because the control pairing is unverified).
+
+### Are studies comparable after the uniform reprocessing? Yes for strong effects — measured, not assumed
+The lumped number over 932 themed pairs is a median Spearman of 0.036, and that number is **meaningless**: 652
+of those pairs are auxin knockdowns of *unrelated* proteins, which have no reason to agree. The named pairs,
+with a control on the test itself, are the real answer:
+
+| Expectation | Spearman |
+|---|---|
+| BFD1 stabilised, two independent labs (should agree) | **0.844 / 0.856** |
+| BFD1 stabilised with BFD2 removed (should agree less) | 0.427 |
+| Shield-1 in a line with no BFD1 to stabilise (should NOT agree) | **-0.089** |
+| BFD1 lost, two independent studies (should agree) | 0.452 |
+| BFD1 lost against BFD1 stabilised (should be negative) | **-0.545** |
+| Alkaline stress, two independent studies (internal reference) | **0.236** |
+| Bradyzoites, two independent studies (internal reference) | 0.332 |
+
+A strong perturbation reproduces across two labs at 0.85 on these values, the sign flips correctly for the
+opposite perturbation, and the no-effect control gives nothing. **That is the uniform reprocessing working.**
+Absolute profiles agree at a median 0.882 over 630 study pairs: studies agree about which genes are high; the
+differences are the hard part. The weak case is alkaline stress at 0.236, and both of those are
+internal-reference columns whose centre is a different mixture of conditions per study — which is an argument
+about normalization, and the argument for the control review below.
+
+### Known biology: 30 pass, 7 weak, 5 inconclusive, 3 miss, 4 unavailable
+Passes include BFD1 stabilisation raising BAG1 (+2.63) and ENO1 (+2.84); BFD1 depletion under alkaline stress
+dropping BAG1 **-7.80** (z = -36); 30-day mouse-brain cysts raising BAG1 +10.4; and SAG1 **+4.43** at the 100th
+percentile for tachyzoites. All three misses have structural causes, each documented: two are tachyzoite columns
+in a study whose own centre is tachyzoite (so they sit at zero by construction), and one is the middle group of a
+three-group median-centred study, where the median *is* that group's value.
+
+### The bottleneck is the control marking, not the code
+`control_link` carries **no pairing at all**: every one of the 450 kept runs reads "No verified pairing; choose
+the matching control within this study", and the snapshot states `control_pairing: unverified`. Only **17 of 36
+studies** yield a usable control, so 19 fall back to internal reference. Two cases show the cost concretely:
+* **GSE218921**: the keyword rule marked the **wild-type alkaline-switch arm** as a candidate baseline because
+  its label contains "WT", so the best alkaline contrast in the snapshot never became a column. Computed from
+  the group means it is textbook: BFD1 +1.36, BAG1 +4.75, ENO1 +4.91, SAG1 -1.34.
+* **GSE158231**: the pooled baseline mixes arsenite-treated wild type, untreated wild type and untreated
+  knockout, so its one contrast sums two effects.
+**Next action: a within-study control review**, the same shape as the host-facing review -- 36 studies, naming
+the control group per contrast. It would convert 19 studies from internal reference to relative-to-control and
+recover contrasts like GSE218921 that are currently hidden. This is the highest-value curation left on the RNA
+side.
+
+Also: 34 of 62 fold-change columns move fewer than 50 genes by 0.5 log2 (GSE132238 deposits one run per group,
+so its errors are ~3.9 log2 units and everything shrinks to zero) -- correct arithmetic, no information. Median
+split-half replicate agreement is 0.615, with 8 of 26 testable columns below 0.3; those are not evidence alone.
+40 runs are excluded for zero parasite reads (the untrimmed libraries) and return after the fastp
+re-quantification.

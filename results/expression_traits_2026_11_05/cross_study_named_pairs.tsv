@@ -1,0 +1,9 @@
+expectation	column_a	column_b	spearman
+BFD1 stabilised, two independent studies (should agree)	expr_lfc_GSE139537_2B4_Shield1	expr_lfc_GSE223877_DD_BFD1_Shield_1a	0.844
+BFD1 stabilised, the second GSE223877 replicate set (should agree)	expr_lfc_GSE139537_2B4_Shield1	expr_lfc_GSE223877_DD_BFD1_Shield_1b	0.856
+BFD1 stabilised with BFD2 removed (should agree less: BFD2 is needed)	expr_lfc_GSE139537_2B4_Shield1	expr_lfc_GSE223877_DD_BFD1bfd2_Shield_1a	0.427
+Shield-1 in a line with no BFD1 to stabilise (should NOT agree: the drug alone does nothing)	expr_lfc_GSE139537_KO_Shield1	expr_lfc_GSE223877_DD_BFD1_Shield_1a	-0.089
+BFD1 lost, two independent studies (should agree)	expr_lfc_GSE132238_KO_stress_72h_array1	expr_lfc_GSE223819_200385_mNG_mAID_IAA	0.452
+BFD1 lost against BFD1 stabilised (should be NEGATIVE: opposite perturbations)	expr_lfc_GSE132238_KO_unstress_72h_array1	expr_lfc_GSE223877_DD_BFD1_Shield_1a	-0.545
+alkaline stress, two independent studies, internal reference	expr_rel_GSE208647_ME49_Tir1_strain_pH8_2_48hrs	expr_rel_GSE223869_WT_stress_2b	0.236
+bradyzoites, two independent studies, internal reference	expr_rel_GSE159515_ME49_Bz_A	expr_rel_GSE208647_ME49_Tir1_strain_pH8_2_48hrs	0.332

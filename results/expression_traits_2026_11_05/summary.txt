@@ -1,0 +1,10 @@
+columns: 266 total -- 124 relative_to_control, 106 internal_reference, 36 library_size
+studies with a usable control group: 17; without: 19
+known biology: 30 pass, 7 weak pass, 5 inconclusive, 3 miss, 4 not available
+misses: expr_rel_GSE159515_ME49_Tz_A / SAG1 (expected up, got -0.053), expr_rel_GSE159515_ME49_Tz_B / ENO2 (expected up, got -0.015), expr_rel_GSE208647_ME49_Tir1_strain_pH8_2_48hrs / BAG1 (expected up, got 0.0)
+replicate split-half Spearman: median 0.615 over 26 splittable columns, 8 below 0.3
+cross-study, same normalization: 932 pairs, median Spearman 0.036, range -0.545 to 0.856 -- but most themed pairs perturb different genes, so see the named pairs
+by theme (same normalization, median Spearman): alkaline_bradyzoite_induction 0.075 (n=49); bfd1_gain_of_function 0.170 (n=8); bfd_loss -0.024 (n=179); bradyzoite_stage 0.120 (n=4); inducible_depletion 0.045 (n=652); tachyzoite_stage 0.004 (n=40)
+named cross-study pairs: BFD1 stabilised, two independent studies = 0.844; BFD1 stabilised, the second GSE223877 replicate set = 0.856; BFD1 stabilised with BFD2 removed = 0.427; Shield-1 in a line with no BFD1 to stabilise = -0.089; BFD1 lost, two independent studies = 0.452; BFD1 lost against BFD1 stabilised = -0.545; alkaline stress, two independent studies, internal reference = 0.236; bradyzoites, two independent studies, internal reference = 0.332
+absolute study profiles: median pairwise Spearman 0.882 over 630 study pairs
+coverage: 8140 of 8140 genes, grid 97.7 % filled
