@@ -159,3 +159,28 @@ provenance still travels with the claim.
 
 ### Level 2 — Sources
 Datasets and provenance · References · Downloads and components. Dataset-level only.
+
+## Node names: one word where possible (Einar, 2026-11-05)
+"Preferentially each node should be one or at least fewer than three but preferentially one or two words."
+So the **title carries the name and the one-line summary carries the meaning** — the card already has both, and
+a title that explains itself is a summary in the wrong place. Final names, all one word:
+
+| Level 1 | Level 2 |
+|---|---|
+| **Gene** | Facts · Network · Partners · Expression · Structure · Papers |
+| **List** | Drop · Annotate · Answer · Pulldown · Screen · Export |
+| **Label** | Catalogue · Strategy · Compare · Fill |
+| **Sources** | Datasets · References · Downloads |
+
+Level 1 is four single words, which also makes the four parallel: `Gene` is a row, `List` is a block of rows,
+`Label` is a column, `Sources` is where they came from. The summaries do the explaining, for example:
+* `Gene → Facts` — "every trait recorded for this gene, with its probability and source"
+* `Gene → Papers` — "what has been published about it, and how much of that is attention rather than biology"
+* `List → Drop` — "a csv, tsv, txt, xls, xlsx or parquet of genes, with any data per gene"
+* `List → Answer` — "answer one label for every gene in the list"
+* `List → Pulldown` — "rank a hit list against the pull-down background"
+* `Label → Catalogue` — "every question, how well it is answered, and how many genes it reaches"
+* `Label → Strategy` — "how this label is answered, and what is downstream"
+* `Label → Fill` — "write the answers that clear the 90 % bar; nothing else"
+A single-word title must never be the only thing a user reads: the summary is mandatory, not decorative, and a
+node without one fails its test.
