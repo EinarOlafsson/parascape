@@ -343,3 +343,20 @@ the snapshot remains an explicit immutable296-entry cut.
   costs no extra download. `omics_quant._trim` records the fastp version, read counts, mean read length before
   and after, and the adapter-trimmed share in `done.json` under `trimming`.
 * Runs verified before this change carry no `trimming` key; that is how an untrimmed result is recognised.
+
+## 2026-11-04 evening: ParaScape capped to 8 threads on CPUs 0-7 for plaque v8
+The tutorials session relayed a maintainer request: plaque v8 training (unit `plaque-v8-ws-20261104`, GPU, a
+single-threaded loop) was running ~7x slower than at Home because WS load was ~33 (three salmon runs, Sage and
+an autotrade backtest). ParaScape was reduced without pausing anything:
+* `parascape-.service.d/55-share-with-plaque-v8.conf`: `CPUAffinity=0-7` (was 0-7,16-23), `Nice=19`,
+  `IOSchedulingClass=idle`. Covers every parascape-* unit, so salmon, kallisto, fastp, Sage and the download
+  workers inherit it. Verified in the cgroups.
+* The guard's **wide mode is off** (`60-wide-when-idle.conf` rewritten without `--wide-cpus`): it used to claim
+  the idle cores whenever the machine looked quiet, which is what would starve v8 again.
+* Quantifier: `PARASCAPE_WORKERS=1`, `PARASCAPE_THREADS=4`, `PARASCAPE_EXTRA_WORKERS=0`; Sage keeps 4 threads.
+  Eight ParaScape threads in total.
+* Cost: RNA quantification goes from 3 concurrent runs on 16 cores to 1 on 4, roughly a quarter of the
+  throughput (~88 runs/day to ~20; the remaining 1,746 runs from ~22 days to ~80). Proteomics is download-bound
+  and barely affected. **To restore, delete `55-share-with-plaque-v8.conf`, put `--wide-cpus
+  8,9,10,11,12,13,14,24,25,26,27,28,29,30` back in `60-wide-when-idle.conf`, and set WORKERS=2, THREADS=16,
+  EXTRA_WORKERS=1.**
