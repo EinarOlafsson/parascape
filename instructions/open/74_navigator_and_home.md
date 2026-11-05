@@ -251,3 +251,51 @@ Datasets · References · Downloads.
 | **3 · Granular** | Per layer: probability floor, minimum number of supporting studies, correlation cutoff, top-k rank cutoff, whether inferred edges are admitted at all, maximum neighbours per node, and the layout controls (fade distance, zoom, recentre depth) |
 Level 1 is the default and the only thing visible until asked for. An edge always states which layer produced it
 and its probability, so a network cannot imply more certainty than its weakest edge.
+
+## Final: three level-1 nodes, provenance and the embedding baked in (Einar, 2026-11-05)
+He removed `Sources` and asked for it to be baked in. The same argument retires `Space`, which I had added a
+moment earlier: a UMAP is a *view of the rows*, not a fourth kind of query, so it belongs inside the three.
+**Level 1 is exactly the three shapes of the matrix: Gene (a row) · List (a block of rows) · Label (a column).**
+
+**Where `Sources` went.** Provenance is not a place, it is an attribute of every number:
+* every value shows its source tier and reference **inline**, and a value can be opened to its dataset;
+* `Gene → Card` carries the datasets the gene appears in and the papers it is referenced in, which is what the
+  old `Datasets` and `References` nodes were for;
+* downloads happen **on demand**: a node that needs absent data offers to fetch it then, through the existing
+  component download dialog, instead of a Downloads page nobody visits before they need it.
+
+### Gene — one protein
+| Node | Description shown on the card |
+|---|---|
+| **Card** | Its structure, the datasets it appears in, the papers that mention it, and two tables: the standard facts for any gene, and what makes this one unusual |
+| **Facts** | Every trait ever recorded for it, with how certain each is and who measured it |
+| **Predicted** | What the strategies think is true but nobody has measured, and whether that claim is strong enough to keep |
+| **Similar** | The genes that most resemble it, by whichever evidence you choose to judge resemblance |
+| **Network** | Its neighbours as a map you can walk, with you deciding what counts as a connection |
+| **Partners** | The proteins it has been shown to bind, and how good that evidence is |
+| **Expression** | Where and when it is switched on, preferring measurements made against a control |
+| **Structure** | The numbers behind the fold: confidence, topology, signal peptide, and the regions either side of the membrane |
+
+### List — many proteins
+| Node | Description shown on the card |
+|---|---|
+| **Drop** | Bring your own genes from a spreadsheet or a paste, with any data you have for them |
+| **Profile** | What this set has in common that a random set would not: places, domains, conditions, phenotypes |
+| **Mechanism** | The process or complex that best explains the set, and the explanations it cannot rule out |
+| **Rank** | The rest of the genome ordered by how well each gene would fit this set |
+| **Answer** | One question answered for every gene in the set, each with its own certainty |
+| **Pulldown** | Which of your hits are specific and which turn up in everybody's pull-downs |
+| **Project** | Where the set sits in the map of all genes, and what surrounds it |
+| **Compare** | Two sets against each other: what they share, and what separates them |
+| **Export** | Everything attached, with the origin of every value |
+
+### Label — one question across all proteins
+| Node | Description shown on the card |
+|---|---|
+| **Catalogue** | Every question the data can be asked, how well each is currently answered, and for how many genes |
+| **Infer** | Run the strategies on one question and predict it for the genes nobody has measured |
+| **Strategies** | The thirty-nine ways to infer, grouped by mechanism, each stating what it may and may not use |
+| **Scorecard** | How a strategy did on answers it was not allowed to see, against the simple baselines |
+| **Clusters** | The regions of the map this question lights up, and what else lives there |
+| **Fill** | Write only the answers strong enough to keep; everything weaker stays marked exploratory |
+| **Compare** | Two questions side by side, including whether they are secretly the same question |
