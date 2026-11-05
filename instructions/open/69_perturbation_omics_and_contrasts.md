@@ -399,3 +399,18 @@ and RalGAP", 11.3 GB), **PXD031816**, **PXD023791** and **PXD039335** (102 RAW f
   tutorials session reports v8 finished**, expected around 9-10 November (4.5 days from 06:50 on 2026-11-05),
   possibly longer if its plateau rule continues. If v8 slows at any point, narrow to CPUs 0-7 first and
   diagnose afterwards.
+
+## 2026-11-05: PRIDE flaps, so partial downloads are now resumed
+Three projects failed on `ConnectionRefusedError` despite a retry ladder spanning 38 minutes. Diagnosed rather
+than assumed: the endpoint is **intermittently** unavailable on a timescale of seconds -- the same directory URL
+answered HTTP 206 and then refused within a minute, while a small file from the same project succeeded and the
+API stayed up throughout. It is not a wrong URL (ours matches the API's `publicFileLocations` date path), not a
+missing file, and not a wholesale block on our address.
+* **Fix: aria2c now runs with `--continue=true` and a transport failure keeps the partial file**, so each
+  attempt and each later queue pass adds to it rather than starting again. Deleting the partial on failure (as
+  this code did until now) threw away exactly the progress that a flapping host allows. A partial file is still
+  deleted when the failure is *not* transport -- a wrong size or a truncated plain download -- because then it
+  cannot be trusted.
+* Aspera would be the robust answer (PRIDE publishes `prd_ascp@fasp.ebi.ac.uk` for every file, a different host
+  and protocol) but no client is installed and it is not on the usual channels. Recorded as the next option if
+  the resume behaviour proves insufficient.

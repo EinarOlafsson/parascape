@@ -60,8 +60,11 @@ def fetch(url: str, dest: Path, size: int) -> None:
             if (BIN / 'aria2c').exists() and attempt < 3:
                 # One PRIDE connection gives ~1 MB/s; a few ranged connections give several times that. More
                 # than about a dozen at once, counting every file in flight, earns a refusal.
+                # --continue resumes the ranged parts already on disk. PRIDE's HTTP endpoint flaps on a
+                # timescale of seconds (the same URL answered 206 then refused within a minute on 2026-11-05),
+                # so a partial file is progress, not rubbish: each attempt and each later pass adds to it.
                 subprocess.run([str(BIN / 'aria2c'), '-q', '-x6', '-s6', '-k8M', '--file-allocation=none',
-                                '--allow-overwrite=true', '--auto-file-renaming=false', '--connect-timeout=60',
+                                '--continue=true', '--auto-file-renaming=false', '--connect-timeout=60',
                                 '--max-tries=1', '-d', str(part.parent), '-o', part.name, url], check=True)
             else:
                 with urllib.request.urlopen(url, timeout=600) as response, part.open('wb') as out:
@@ -70,8 +73,14 @@ def fetch(url: str, dest: Path, size: int) -> None:
                 raise IOError(f'{dest.name}: {part.stat().st_size} bytes, declared {size}')
             part.replace(dest)
             return
+        except subprocess.CalledProcessError:
+            # A transport failure: keep the partial file so the next attempt resumes instead of restarting.
+            if attempt == len(RETRY_WAITS):
+                raise
+            time.sleep(RETRY_WAITS[attempt])
         except Exception:
-            part.unlink(missing_ok=True)                  # a partial file would fail the size check next time
+            # Anything else (a wrong size, a truncated plain download) leaves a file that cannot be trusted.
+            part.unlink(missing_ok=True)
             if attempt == len(RETRY_WAITS):
                 raise
             time.sleep(RETRY_WAITS[attempt])
