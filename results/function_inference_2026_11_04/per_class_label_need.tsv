@@ -1,0 +1,16 @@
+cls	genes_now	held_out_calls_now	call_rate	genes_for_22_calls	genes_for_65_calls
+apicoplast_mitochondrion	80	33	0.136	162.0	477.0
+cell_cycle_division	62	13	0.054	410.0	1210.0
+cytoskeleton	58	17	0.07	314.0	926.0
+egress	42	7	0.029	761.0	2248.0
+invasion_motility	37	4	0.017	1331.0	3933.0
+protein_trafficking_secretion	32	2	0.008	2662.0	7865.0
+transport_homeostasis	28	9	0.037	592.0	1748.0
+metabolism	26	1	0.004	5324.0	15730.0
+proteostasis	23	0	0.0		
+signalling	20	4	0.017	1331.0	3933.0
+lipid_membrane_biology	19	0	0.0		
+host_cell_modulation	16	0	0.0		
+stress_differentiation	9	0	0.0		
+translation	9	4	0.017	1331.0	3933.0
+transcription_chromatin	8	0	0.0		

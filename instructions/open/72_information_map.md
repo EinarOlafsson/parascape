@@ -394,3 +394,40 @@ function of the mass-spectrometric evidence, and the association with compartmen
 same-compartment pairs yielding more crosslinks (median 2 against 1), which is what genuine interaction
 predicts. **The crosslink labels are not circular with respect to compartment**, so the co-localisation feature
 is legitimately predictive rather than leaked.
+
+## Function scored (2026-11-04): fails the bar, but the learning curve is still climbing
+`results/function_inference_2026_11_04/`. 242 genes x 15 classes = 3,630 (gene, class) pairs, 469 positive;
+732 features in 86 families; 5 orthogroup-grouped folds; isotonic calibration (ECE 0.010).
+
+* **No threshold from 0.20 to 0.99 reaches the 0.90 bound.** Verified against the tables: the best lower bound
+  is **0.617** (at threshold 0.70) and the highest precision at any threshold is **0.760**, or 0.800 taking the
+  top k of the raw ranking. (The agent's own summary quoted 0.525 and 0.680; the shipped tables give the higher
+  figures, so its verdict was if anything conservative. The verdict is unchanged: the ceiling is below the bar.)
+* **The model is real, just not precise enough**: +0.202 average precision over the best baseline (the class
+  prior), beating it in 5 of 5 folds. Ortholog copy has coverage 0 under grouped folds, which is correct.
+* **No class can be scored on its own.** Only 1 of 15 reaches even 22 held-out calls, the minimum at which the
+  bound could reach 0.90 with perfect precision; 5 classes make no calls at all. `lipid_membrane_biology` is
+  below chance (AUC 0.456).
+* **The easy contrast appears here too.** Screen-only genes score AUC 0.893 against 0.701 for the non-screen
+  genes, with all six `screen_*` columns dropped throughout -- so it is the screen's own gene selection, which
+  no hold-out can remove. The hardest honest cut (non-screen genes, the 11 classes the screen does not support)
+  gives 7 of 7 correct: a bound of 0.720 capped by arithmetic, not by errors.
+* **The best news in the run:** on the 20 CAFA no-knowledge genes (no domain, no informative product name) the
+  pooled AUC is **0.898** against 0.771 on the 222 annotated ones. The model is *not* worse on the blanks, which
+  is the opposite of what the annotation-agreement worry predicted. Only 10 calls, so it cannot be filled on.
+* **Not annotation agreement:** an annotation-free feature set (expression, fitness, proteome only) still
+  reaches AUC 0.776 against 0.790 for everything. Domains alone 0.706, co-expression alone 0.663.
+* **Labels bind here, unlike host-facing.** The learning curve, refitting on 40/60/80/100 % of labels dropped
+  by orthogroup, is monotone and still rising: AUC 0.70 -> 0.79, average precision 0.26 -> 0.37, top-25
+  precision 0.44 -> 0.68. **Actionable: a 65-call demonstration needs about 583 labelled genes against 242
+  today, roughly 341 more.** Einar's 254-gene review queue is larger than that, and its top 100 alone takes the
+  set to ~342 genes and the non-screen set from 145 to 245. Per class the need is far worse
+  (`per_class_label_need.tsv`: 477 genes for `apicoplast_mitochondrion` to reach 65 calls).
+* **Decision: fill nothing.** 22 unlabelled cells sit above a calibrated 0.90 and 2,240 above 0.50; all stay
+  exploratory.
+* Flagged and left in, each measured rather than assumed: `has_ec` is the second feature and an EC number is
+  nearly the `metabolism` class; the protein-kinase domain is fourth while `signalling` is assigned by a
+  `kinase` text rule; `n_fulltext` (attention) is eighth. Removing them costs little, and the no-knowledge and
+  annotation-free results show they are not what carries the model.
+* A negative pair means "not recorded", not "not true", so open-world annotation biases precision **downward**.
+  That makes the failure somewhat pessimistic, but 0.76 is too far from 0.90 for it to matter.

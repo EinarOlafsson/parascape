@@ -1,0 +1,644 @@
+feature	family	importance_mean	importance_sd	scope	n_features
+fit_complete_medium_2025	crispr_glucose_limitation	0.014304516890965199	0.0015105152298574658	feature	
+has_ec	toxodb_ec_numbers	0.01237706522381495	0.0023153201920526915	feature	
+n_tm	sequence_traits	0.011864219994171052	0.001531953383039692	feature	
+dom_IPR000719	domain	0.010014457113337594	0.0007176372286515739	feature	
+h4_acetylation_chip_score	toxodb_h4_acetylation	0.007984660397838276	0.0014810536414409374	feature	
+tm_kd_mean	unregistered	0.00620801268678739	0.0010248452852766555	feature	
+melting_temperature_tm	melting_temperature	0.0061615792235441	0.0008233810766228336	feature	
+n_fulltext	pmc_oa	0.005887490643438575	0.002902017099409289	feature	
+cterm_len	sequence_traits	0.005170634509627625	0.0017509829990321447	feature	
+expr_sporulated	gse206344	0.004427164090133033	0.0007464803347287598	feature	
+fit_naive_bmdm	crispr_macrophage	0.003983878616050947	0.0014209634331679957	feature	
+iron_depletion_protein_log2fc	iron_depletion_proteome	0.0038987421094156907	0.003645685665570424	feature	
+cellcycle19092_4h_r1	gse19092	0.0036375326664148297	0.0009956947435758867	feature	
+mean_plddt	alphafold	0.003445547826251727	0.000999210778670274	feature	
+surface_er_log2fc	organelle_surface_turboid	0.0033692913691632334	0.0006210218144148593	feature	
+rna108740_Day7_CS8_FPKM	gse108740	0.0033002403610467024	0.0005628918646248732	feature	
+crispr_gra17_synthlethal_delta	gra17_synthlethal	0.003182604252935132	0.0041912212349323325	feature	
+atac_promoter_ut	gse313048_atac	0.002916781874179227	0.0004343494709847852	feature	
+te129869_confluent_r3	gse129869	0.0028581328984177237	0.0008094471015977036	feature	
+rna206344_Unsporulated_R1	gse206344	0.002794590616803335	0.0003210223664426879	feature	
+tdi_source	sequence_traits	0.002786116589948928	0.00033035740562485015	feature	
+cx_mean_support	coexpression	0.002770085703690676	0.0005218272812800552	feature	
+proteome_lfc_UT_Vs_T_24h_log2_fold_change	proteome_total	0.0027559897446846984	0.001132245036633296	feature	
+length	unregistered	0.0026140418174597224	0.0003802016852716298	feature	
+brain168465_1d_base_mean	gse168465	0.0025340524772570947	0.000307325728439109	feature	
+rna245775_parent_prebrady_r2	gse245775	0.0025118039247996973	0.0024979550833107503	feature	
+tm_kd_max	unregistered	0.0025009842169131193	0.0011815990498113633	feature	
+cellcycle19092_6h_r1	gse19092	0.0024281847636421126	0.0011104540783543337	feature	
+nterm_len	sequence_traits	0.002370084599911374	0.0011174641782771505	feature	
+cuttag_hdac3_promoter_ut	gse277553_cuttag	0.002247961220216199	0.0021924208165116322	feature	
+brain168465_2d_lfc	gse168465	0.002212871695476293	0.0005574981623305604	feature	
+rna99395_intracellular_r1	gse99395	0.0021549317450419805	0.0022452219912445816	feature	
+brain168465_14d_lfc	gse168465	0.0020727541495399646	0.0002607310253615002	feature	
+rna108740_Day3_CS4_FPKM	gse108740	0.0018383462939503918	0.0010404527882828273	feature	
+n_papers_incidental	pubmed	0.0018300602368634955	0.0008674168172115688	feature	
+fit_density_low	crispr_parasite_density	0.0018092324118334502	0.00019295634369420758	feature	
+cellcycle19092_async_r2	gse19092	0.0017700938443704721	0.00022674854044582736	feature	
+cx_frac_cytoskeleton	coexpression	0.0017157534800778158	0.0002237229938800451	feature	
+cellcycle19092_10h_r2	gse19092	0.0016801587576429355	0.001990327800881996	feature	
+te245775_parent_prebrady_r2	gse245775	0.0016481299043088111	0.0016708029546597676	feature	
+codon_enc	toxodb_codon_usage	0.0016188021167698279	0.0005400075084709447	feature	
+n_interpro	interpro	0.0015813816126554192	0.00158169829244263	feature	
+tm_len_mean	unregistered	0.0015643964095551726	0.0010730582948015506	feature	
+rna245775_parent_tachy_r1	gse245775	0.0015245171899723926	0.0009610751519542533	feature	
+fit_glucose_dependence	crispr_glucose_limitation	0.001495957581423642	0.001076943898360331	feature	
+rna206344_Sporulating_R1	gse206344	0.00149061400615208	0.000575468526177241	feature	
+rpf99395_extracellular_r1	gse99395	0.0014826660703313732	0.0011717895237217755	feature	
+cetsa_calcium_ed_score	thermal_shift_cetsa	0.0014224397225060526	0.000495739901435692	feature	
+brain168465_7d_lfc	gse168465	0.001408524403605449	8.15473384189374e-05	feature	
+fit_lipid_rich_p4p5	crispr_serum_restriction	0.0014026504913396594	0.0015043859325699449	feature	
+morc_MORC_IAA1	morc_depletion	0.0013630415421467073	0.0005878371824882496	feature	
+n_acetylation_sites	pride_acetylation	0.001333502127181511	0.0013308881720428371	feature	
+cellcycle19092_9h_r1	gse19092	0.001315784473129115	0.0008791567658962898	feature	
+cx_best_cytoskeleton	coexpression	0.0012790252642890059	0.00024403714837527968	feature	
+oocyst_itraq_116_114	oocyst_itraq	0.0012677840235091886	0.0006662606108747011	feature	
+rna51780_mero_r5	gse51780	0.0011816428905737641	0.0009615930900893723	feature	
+fit_glucose_dependence_fdr	crispr_glucose_limitation	0.001118479915892645	0.0005865976904507829	feature	
+invivo_WholeBrain_Chronic_2	invivo_brain_transcriptome	0.0010924551670992895	0.0013324964406907947	feature	
+brain168465_1d_lfc	gse168465	0.0010912629995885603	0.0012794975730170469	feature	
+rna206344_Sporulated_R2	gse206344	0.0010432059656865407	0.0004968228538102815	feature	
+oocyst_itraq_115_114	oocyst_itraq	0.001013538212173241	0.0007049205881019361	feature	
+morc_MORC-KD-BFD1-KO_IAA1	morc_depletion	0.0010132881868192833	0.00033129151757297335	feature	
+rna206344_Unsporulated_R2	gse206344	0.001007835735028384	0.0007053319913957046	feature	
+rna108740_Day5_K4_14_FPKM	gse108740	0.0009732212436655008	0.0007345004417704589	feature	
+has_signal_peptide	sequence_traits	0.0009630544768451191	0.0006335856826599864	feature	
+rna206344_Sporulated_R1	gse206344	0.0009564813142664922	0.0007280785620187136	feature	
+rna51780_tachy_r2	gse51780	0.0008953071524786527	0.0005415537502800091	feature	
+fit_serum_differential_p8	crispr_serum_restriction	0.0008935413392354152	0.000841541584028675	feature	
+fit_invivo_lung	crispr_invivo_composite	0.0008821265402150225	0.0006558112442979212	feature	
+cellcycle19092_async_r1	gse19092	0.0008504138519923229	0.0012970824687646247	feature	
+bfd2_rip_log2_ip_over_input	gse223620_bfd2_rip	0.0008309234607874472	0.0008786553262660484	feature	
+proteome_log2_normalized_and_imputated_abundances_T_48h_R1	proteome_total	0.0008203676929674127	0.00017219475241575494	feature	
+te129869_confluent_r1	gse129869	0.0008102979066344865	0.0007997813763618449	feature	
+proteome_log2_normalized_and_imputated_abundances_T_32h_R3	proteome_total	0.0007577684026563447	0.00026170917574181297	feature	
+cellcycle19092_4h_r2	gse19092	0.0007569065222544821	0.0008697241832986389	feature	
+brain168465_4d_lfc	gse168465	0.0007408433593072231	0.0014608145589402274	feature	
+antisense_expression_percentile	antisense_level	0.0007398521028001795	0.00021219613454076985	feature	
+cellcycle19092_blocked_r2	gse19092	0.0007384706045279558	0.0015564013887553404	feature	
+rna206344_Sporulating_R2	gse206344	0.000714822495541593	0.0009905356109687715	feature	
+te302107_tachy_r2	gse302107_riboseq	0.0006997404213494596	0.0008111931822283353	feature	
+snp_nonsynonymous	toxodb_strain_snps	0.0006883750485205212	0.00023408407739631957	feature	
+rna245775_eif12ko_tachy_r3	gse245775	0.0006846520892857347	0.00014563761081051718	feature	
+rna108740_Day3_CS5_FPKM	gse108740	0.0006467931311129697	0.0007634618427701183	feature	
+invivo_WholeBrain_Chronic_1	invivo_brain_transcriptome	0.0005995466094607474	0.0009981284008925906	feature	
+restriction200962_kk23_p5w_ph8_2_s12	gse200962	0.0005901504133650389	0.00018693448737076585	feature	
+oocyst_itraq_115_113	oocyst_itraq	0.0005630891664485752	2.762594244022434e-05	feature	
+crispr_gra17ko_phenotype	gra17_synthlethal	0.0005546017501030417	0.00041734397604632973	feature	
+invivo_BZ_28DPI_3	invivo_brain_transcriptome	0.0005316004229259189	0.0004919937720552392	feature	
+cellcycle19092_8h_r1	gse19092	0.0005162369006188791	0.0002289032945402496	feature	
+te245775_eif12ko_tachy_r2	gse245775	0.0005145469783394141	0.00034271300862143676	feature	
+fit_invitro_hff	crispr_invitro	0.0005040826288089106	0.00034172488829126315	feature	
+cx_mean_sim	coexpression	0.0004868087850816716	0.0005301790469024145	feature	
+rpf99395_intracellular_r2	gse99395	0.0004781731138703467	0.0002642826787015512	feature	
+n_nitrosylation_sites	pride_nitrosylation	0.00045325273754028467	0.0005263344043056669	feature	
+novel_transcript_models	toxodb_nanopore_isoforms	0.0004497371401454009	0.0002480957487682361	feature	
+proteome_lfc_UT_Vs_T_32h_log2_fold_change_1	proteome_total	0.0004476707634750536	0.0004735121863441158	feature	
+te245775_eif12ko_tachy_r1	gse245775	0.0004379471072031664	0.000289297124030021	feature	
+te245775_eif12ko_prebrady_r3	gse245775	0.00043589109867298026	0.0004884845487384983	feature	
+has_pf_ortholog	unregistered	0.0004352902407585568	0.00012606636177771725	feature	
+fit_density_dependence	crispr_parasite_density	0.0004302543860496555	0.0006936277398084535	feature	
+cpsf4rna168155_iaa_7h_2	gse168155	0.00042861813887012934	0.0002737942685272106	feature	
+oocyst_itraq_116_114_1	oocyst_itraq	0.00042499958847027247	8.02461806064183e-05	feature	
+fit_lipid_limited_p4p5	crispr_serum_restriction	0.00042071165177200626	0.003405545054375308	feature	
+n_xlink_partners	starpath_xlms	0.00040948929030100906	0.0003000664195593316	feature	
+rna99395_extracellular_r1	gse99395	0.00040417502283196516	0.00039247048629382337	feature	
+cellcycle19092_1h_r2	gse19092	0.0003972635143814629	0.0009151970692462346	feature	
+snp_synonymous	toxodb_strain_snps	0.0003877107104695021	0.000274484796431083	feature	
+oocyst_itraq_115_114_1	oocyst_itraq	0.000381665070715372	0.00018777623223603692	feature	
+cx_frac_host_cell_modulation	coexpression	0.0003778572279983239	0.0004189106052371691	feature	
+surface_apicoplast_log2fc	organelle_surface_turboid	0.0003763057622416614	0.0003280264391422757	feature	
+codon_gc3	toxodb_codon_usage	0.0003616876069097996	0.0005334250939327265	feature	
+rna245775_parent_prebrady_r1	gse245775	0.0003525060916257187	0.0005415667988066788	feature	
+rna51780_mero_r6	gse51780	0.00035073720213130155	0.0010627586965753497	feature	
+invivo_WholeBrain_Acute_1	invivo_brain_transcriptome	0.0003487498752780908	0.0004858405782104387	feature	
+cellcycle19092_10h_r1	gse19092	0.0003452360594433472	0.0006945828852442549	feature	
+stress_5-2_unstress_red_24	gse132248_stress	0.0003398310143966632	2.976577140265854e-05	feature	
+stress_5-1_unstress_red_24	gse132248_stress	0.00031111641693877995	0.0001538180999146762	feature	
+cx_best_invasion_motility	coexpression	0.0003110071530829835	0.00013865065174938613	feature	
+cx_n_labelled	coexpression	0.00028927180743478403	0.00015621697880271074	feature	
+proteome_log2_normalized_and_imputated_abundances_T_24h_R2	proteome_total	0.0002887942683705476	0.00021945521680871653	feature	
+cx_frac_protein_trafficking_secretion	coexpression	0.00028447922967626366	0.0002711320329715828	feature	
+brain168465_14d_base_mean	gse168465	0.00028245417887701185	0.00041511561330069243	feature	
+invivo_TZ_1	invivo_brain_transcriptome	0.00027894867257932665	0.00046866587360961585	feature	
+stress_7-1_unstress_red_24	gse132248_stress	0.0002778326066809796	5.6291443275871426e-05	feature	
+morc_DD-BFD1-Ty_Shield3	morc_depletion	0.00027208874473451844	4.248536371501044e-05	feature	
+invivo_BZ_120DPI_2	invivo_brain_transcriptome	0.00026352732687684455	0.00025152395385392913	feature	
+nterm_side	sequence_traits	0.0002536487018994782	1.392222542157569e-05	feature	
+rna51780_mero_r4	gse51780	0.00024085340406106623	0.0007081852913855413	feature	
+cx_frac_lipid_membrane_biology	coexpression	0.00023387141660254537	0.00011396286102015306	feature	
+te99395_intracellular_r2	gse99395	0.00022750965844673768	0.0005750746882562549	feature	
+iron_depletion_protein_padj	iron_depletion_proteome	0.00022230610423447836	0.00021805056391533138	feature	
+rna129869_subconfluent_r1	gse129869	0.0002194069139961156	0.00016735655896953482	feature	
+mature_len	sequence_traits	0.00021033104327417007	0.00010524195395575917	feature	
+restriction200962_7th_gt_4_kk32_kim_s2_l001	gse200962	0.0001953974535718698	0.00026808392916557	feature	
+cpsf4rna168155_iaa_24h_1	gse168155	0.0001871738799759659	3.945657483124666e-05	feature	
+proteome_log2_normalized_and_imputated_abundances_T_32h_R1	proteome_total	0.00018038763906363942	0.00014255921501475985	feature	
+te245775_parent_tachy_r2	gse245775	0.00017250141813794176	0.0003281588211212533	feature	
+stress_7-18_stress_green_48	gse132248_stress	0.0001718607262901998	5.176922974711827e-05	feature	
+morc_MORC-KD-BFD1-KO_IAA3	morc_depletion	0.00016255238277523842	0.0002723152646660238	feature	
+rna245775_eif12ko_tachy_r1	gse245775	0.00016219594401915374	0.00015292953374022576	feature	
+cellcycle19092_6h_r2	gse19092	0.00015339147001075526	0.000972538940364605	feature	
+restriction200962_kk8_p2w_ph7_4_s23	gse200962	0.00015325742811467258	0.00011175846592214567	feature	
+restriction200962_kk21_p5wo_ph8_2_s13	gse200962	0.00015225833215618914	0.00012442088447933006	feature	
+palmitome_odya_vs_hydroxylamine_log2	toxodb_palmitome	0.00014957828706145074	5.3160724877335124e-05	feature	
+proteome_log2_normalized_and_imputated_abundances_UT_R2	proteome_total	0.0001463195240641868	0.00013292370869690193	feature	
+af3_confident_rg_angstrom	local_af3	0.00014589582695212489	0.00017849229104088119	feature	
+phospho_down_ratio	phospho_quantitative	0.00014459668917188306	0.0001044032423120471	feature	
+snp_total_all_strains	toxodb_strain_snps	0.0001409811602587907	0.000298138325614039	feature	
+rpf129869_confluent_r1	gse129869	0.00013806406905140603	4.4009285047770915e-05	feature	
+rna108740_Tissue_cysts_A_FPKM	gse108740	0.00013628833875103016	0.00013942127686206317	feature	
+restriction200962_kk20_p2w_ph8_2_s16	gse200962	0.00013581037803650498	0.0003623850088831359	feature	
+rna245775_eif12ko_prebrady_r3	gse245775	0.00013257239772808868	0.00033298389281815135	feature	
+restriction200962_kk24_p5w_ph8_2_s11	gse200962	0.00012741026167896927	9.667181838140721e-05	feature	
+proteome_log2_normalized_and_imputated_abundances_T_48h_R2	proteome_total	0.00012513408312864183	0.0011613856556645615	feature	
+n_papers_substantive	pubmed	0.00012184847785514281	0.0004670614680779069	feature	
+rna245775_eif12ko_prebrady_r2	gse245775	0.00011443215363475072	0.00011677812832380147	feature	
+bzsub_D_expr	brady_subtypes	0.00011026173238600408	0.00041587928967455514	feature	
+rna129869_subconfluent_r2	gse129869	0.00010767647150774125	3.140262291132793e-05	feature	
+bzsub_A_expr	brady_subtypes	0.00010481738915490979	0.0005245475850682837	feature	
+cpsf4rna168155_iaa_7h_1	gse168155	9.974470708777143e-05	7.2098762260081e-05	feature	
+invivo_WholeBrain_Chronic_3	invivo_brain_transcriptome	9.943507943869594e-05	0.00022885663782260275	feature	
+oocyst_itraq_116_113_1	oocyst_itraq	9.630991943421208e-05	4.7126707006273204e-05	feature	
+morc_MORC-KD-BFD1-KO_UT1	morc_depletion	9.217372857519186e-05	1.373103120501424e-05	feature	
+sexual_stage_8dpi_log2fc	sexual_stages	8.984447191647445e-05	0.0012932170607093964	feature	
+cellcycle19092_12h_r1	gse19092	8.923162380823173e-05	0.0006420794601808203	feature	
+te302107_tachy_r1	gse302107_riboseq	8.811393690923615e-05	0.00029733384349463866	feature	
+restriction200962_kk17_p2wo_ph8_2_s5	gse200962	7.924158102401435e-05	0.00010060207621201802	feature	
+rpf99395_extracellular_r2	gse99395	7.192959374269225e-05	0.00038408188277742883	feature	
+stress_5-24_stress_green_48	gse132248_stress	7.19183572604476e-05	2.54300276246199e-05	feature	
+is_tm	unregistered	6.986348946972735e-05	0.00010245969271968649	feature	
+rpf129869_confluent_r2	gse129869	6.889124579162464e-05	0.00025923907784083727	feature	
+fit_density_high	crispr_parasite_density	6.722406576063304e-05	0.0006565445814607559	feature	
+surface_apicoplast_stringent	organelle_surface_turboid	6.664735335108289e-05	3.5470542955603516e-05	feature	
+cx_best_transport_homeostasis	coexpression	6.433038150971404e-05	4.2971555874023134e-05	feature	
+morc_DD-BFD1-Ty_UT3	morc_depletion	6.30872521939126e-05	9.385835278559339e-05	feature	
+brain168465_2d_base_mean	gse168465	6.189448464048268e-05	1.4803412554099609e-05	feature	
+restriction200962_7th_gt_22_kk29_kim_s15_l001	gse200962	6.134121187941395e-05	7.716024263359435e-05	feature	
+rpf245775_parent_tachy_r3	gse245775	5.220761515617456e-05	3.641823220515767e-05	feature	
+fit_density_dependence_log10padj	crispr_parasite_density	5.103142001807356e-05	0.00010616368759610003	feature	
+cellcycle19092_11h_r1	gse19092	4.662823092047944e-05	4.9801352962817204e-05	feature	
+restriction200962_kk7_p2w_ph7_4_s14	gse200962	4.633238522938621e-05	0.00047176221356562073	feature	
+cx_best_proteostasis	coexpression	4.539966706168519e-05	9.384519492911398e-06	feature	
+crispr_gra12s2_l2fc_invitro	gra12	4.355384742832369e-05	4.680478506997588e-06	feature	
+invivo_BZ_120DPI_3	invivo_brain_transcriptome	3.765341419944187e-05	0.0002630115498572369	feature	
+proteome_log2_normalized_and_imputated_abundances_T_32h_R2	proteome_total	3.567729188615661e-05	0.0002775441772383626	feature	
+morc_MORC_IAA3	morc_depletion	3.4693498919472855e-05	5.266547592145496e-05	feature	
+rpf245775_eif12ko_tachy_r1	gse245775	2.978561618777187e-05	8.034257410069751e-05	feature	
+cpsf4rna168155_iaa_48h_2	gse168155	2.8644367611555904e-05	0.00018940463232568336	feature	
+rpf245775_eif12ko_tachy_r3	gse245775	2.8460769943468762e-05	5.998601558171443e-05	feature	
+rna108740_Day7_CS7_FPKM	gse108740	2.7352865272352773e-05	0.00016946929113186132	feature	
+cx_frac_metabolism	coexpression	2.479736221111528e-05	9.926143859668664e-05	feature	
+rpf245775_eif12ko_tachy_r2	gse245775	2.3268001291099072e-05	5.994726313449093e-05	feature	
+utr5_n_inframe_ext	gse302108_utr5	2.1911539288747377e-05	2.1873326371680823e-05	feature	
+iedb_epitope_count	toxodb_epitopes	1.6238985411383872e-05	6.933074352887424e-05	feature	
+af3_very_confident_sequence_fraction	local_af3	7.998083850306129e-06	6.37824145740267e-06	feature	
+restriction200962_kk18_p2wo_ph8_2_s1	gse200962	6.434243246663159e-06	1.4884898051001571e-05	feature	
+af3_ptm	local_af3	5.1601695738775115e-06	9.960967231249957e-06	feature	
+rpf129869_confluent_r3	gse129869	4.913491789530304e-06	2.1115869073248232e-05	feature	
+stage_margin_derived	stage_enriched	3.672079860221148e-06	4.2530525491386944e-05	feature	
+domain_novel	domain	2.4305564466642338e-06	4.102131191609284e-06	feature	
+crispr_gra12s2_disco	gra12	1.4627619490670263e-06	3.0257159240022513e-06	feature	
+af3_confident_contacts_per_residue	local_af3	1.239188236819751e-06	3.5252977570591193e-06	feature	
+crispr_gra17_candidate	gra17_synthlethal	9.558457954768802e-07	4.571191170471349e-06	feature	
+crispr_gra12s1_disco	gra12	7.052095761054625e-07	6.704995991028025e-07	feature	
+n_struct_similar	foldseek_struct	1.1715550762847471e-07	0.00010006527859835631	feature	
+dom_PF12314	domain	0.0	0.0	feature	
+dom_PF12796	domain	0.0	0.0	feature	
+dom_PF07690	domain	0.0	0.0	feature	
+dom_PF04092	domain	0.0	0.0	feature	
+dom_PF03144	domain	0.0	0.0	feature	
+dom_PF08373	domain	0.0	0.0	feature	
+has_phospho	phosphosites	0.0	0.0	feature	
+dom_IPR028352	domain	0.0	0.0	feature	
+dom_IPR029000	domain	0.0	0.0	feature	
+dom_IPR029063	domain	0.0	0.0	feature	
+dom_IPR029071	domain	0.0	0.0	feature	
+dom_IPR035892	domain	0.0	0.0	feature	
+dom_IPR035979	domain	0.0	0.0	feature	
+domclass_ankyrin	domain	0.0	0.0	feature	
+domclass_wd40	domain	0.0	0.0	feature	
+domclass_ef_hand	domain	0.0	0.0	feature	
+domclass_srs_sag	domain	0.0	0.0	feature	
+domclass_protein_kinase	domain	0.0	0.0	feature	
+dom_PF14580	domain	0.0	0.0	feature	
+dom_PF14531	domain	0.0	0.0	feature	
+dom_PF14295	domain	0.0	0.0	feature	
+has_any_domain	domain	0.0	0.0	feature	
+n_interpro_domains	domain	0.0	0.0	feature	
+domclass_rhoptry_kinase_ropk	domain	0.0	0.0	feature	
+cx_best_stress_differentiation	coexpression	0.0	0.0	feature	
+dom_PF01602	domain	0.0	0.0	feature	
+dom_PF00856	domain	0.0	0.0	feature	
+dom_PF00415	domain	0.0	0.0	feature	
+dom_PF00439	domain	0.0	0.0	feature	
+dom_PF00664	domain	0.0	0.0	feature	
+dom_PF00702	domain	0.0	0.0	feature	
+dom_PF13540	domain	0.0	0.0	feature	
+dom_PF00271	domain	0.0	0.0	feature	
+dom_PF13499	domain	0.0	0.0	feature	
+dom_PF00400	domain	0.0	0.0	feature	
+domclass_proteasome_ubiquitin	domain	0.0	0.0	feature	
+fit_invivo_young2019	crispr_young2019	0.0	0.0	feature	
+expr_tachy	gse108740	0.0	0.0	feature	
+domclass_tm_rich	domain	0.0	0.0	feature	
+diff_reporter_log2_mNG_over_bulk	differentiation_screen	0.0	0.0	feature	
+crispr_reporter_strain_p8_log2	second_background_fitness	0.0	0.0	feature	
+dom_IPR013766	domain	0.0	0.0	feature	
+dom_IPR013584	domain	0.0	0.0	feature	
+dom_IPR012340	domain	0.0	0.0	feature	
+dom_IPR012337	domain	0.0	0.0	feature	
+dom_IPR011992	domain	0.0	0.0	feature	
+dom_IPR011990	domain	0.0	0.0	feature	
+dom_IPR011701	domain	0.0	0.0	feature	
+dom_IPR011545	domain	0.0	0.0	feature	
+dom_IPR018303	domain	0.0	0.0	feature	
+dom_IPR018247	domain	0.0	0.0	feature	
+dom_IPR018108	domain	0.0	0.0	feature	
+dom_IPR017871	domain	0.0	0.0	feature	
+dom_IPR017441	domain	0.0	0.0	feature	
+dom_IPR016024	domain	0.0	0.0	feature	
+dom_IPR015915	domain	0.0	0.0	feature	
+dom_IPR014001	domain	0.0	0.0	feature	
+dom_IPR023395	domain	0.0	0.0	feature	
+dom_IPR023299	domain	0.0	0.0	feature	
+dom_IPR023298	domain	0.0	0.0	feature	
+dom_IPR022086	domain	0.0	0.0	feature	
+dom_IPR020846	domain	0.0	0.0	feature	
+dom_IPR020568	domain	0.0	0.0	feature	
+dom_IPR020103	domain	0.0	0.0	feature	
+dom_IPR019734	domain	0.0	0.0	feature	
+dom_IPR011009	domain	0.0	0.0	feature	
+dom_IPR008991	domain	0.0	0.0	feature	
+dom_IPR009000	domain	0.0	0.0	feature	
+dom_IPR011047	domain	0.0	0.0	feature	
+phospho_up_sites	phospho_quantitative	0.0	0.0	feature	
+cyst_wall_max_spectral	cyst_wall_interactome	0.0	0.0	feature	
+dom_IPR027916	domain	0.0	0.0	feature	
+dom_IPR027417	domain	0.0	0.0	feature	
+dom_IPR036640	domain	0.0	0.0	feature	
+dom_IPR036465	domain	0.0	0.0	feature	
+dom_IPR036427	domain	0.0	0.0	feature	
+dom_IPR036412	domain	0.0	0.0	feature	
+dom_IPR005225	domain	0.0	0.0	feature	
+dom_IPR007226	domain	0.0	0.0	feature	
+dom_IPR002130	domain	0.0	0.0	feature	
+dom_IPR002553	domain	0.0	0.0	feature	
+dom_IPR008250	domain	0.0	0.0	feature	
+dom_IPR008271	domain	0.0	0.0	feature	
+dom_IPR001849	domain	0.0	0.0	feature	
+dom_IPR009030	domain	0.0	0.0	feature	
+dom_IPR009057	domain	0.0	0.0	feature	
+dom_IPR009091	domain	0.0	0.0	feature	
+dom_IPR036890	domain	0.0	0.0	feature	
+dom_IPR038765	domain	0.0	0.0	feature	
+dom_IPR043129	domain	0.0	0.0	feature	
+dom_IPR043519	domain	0.0	0.0	feature	
+dom_IPR044492	domain	0.0	0.0	feature	
+dom_IPR045864	domain	0.0	0.0	feature	
+dom_IPR036249	domain	0.0	0.0	feature	
+dom_IPR036259	domain	0.0	0.0	feature	
+dom_IPR036291	domain	0.0	0.0	feature	
+dom_IPR036322	domain	0.0	0.0	feature	
+dom_IPR011527	domain	0.0	0.0	feature	
+dom_IPR003593	domain	0.0	0.0	feature	
+dom_IPR003609	domain	0.0	0.0	feature	
+dom_IPR004000	domain	0.0	0.0	feature	
+dom_IPR004161	domain	0.0	0.0	feature	
+dom_IPR036770	domain	0.0	0.0	feature	
+n_holes	unregistered	0.0	0.0	feature	
+cyst_wall_n_baits	cyst_wall_interactome	0.0	0.0	feature	
+snp_stop_codon	toxodb_strain_snps	0.0	0.0	feature	
+dom_IPR001680	domain	0.0	0.0	feature	
+dom_IPR001806	domain	0.0	0.0	feature	
+mrna_remaining_5h_actinomycin	mrna_stability	0.0	0.0	feature	
+myristoylation_confidence	myristoylome	0.0	0.0	feature	
+n_arginine_methylation_sites	toxodb_arginine_methylation	0.0	0.0	feature	
+dom_IPR001650	domain	0.0	0.0	feature	
+dom_IPR001757	domain	0.0	0.0	feature	
+dom_IPR003029	domain	0.0	0.0	feature	
+dom_IPR003439	domain	0.0	0.0	feature	
+dom_IPR001214	domain	0.0	0.0	feature	
+dom_IPR001487	domain	0.0	0.0	feature	
+dom_IPR001609	domain	0.0	0.0	feature	
+dom_IPR001611	domain	0.0	0.0	feature	
+dom_IPR002110	domain	0.0	0.0	feature	
+dom_IPR002048	domain	0.0	0.0	feature	
+dom_IPR001881	domain	0.0	0.0	feature	
+dom_PF00160	domain	0.0	0.0	feature	
+dom_PF00122	domain	0.0	0.0	feature	
+dom_PF00085	domain	0.0	0.0	feature	
+dom_PF00153	domain	0.0	0.0	feature	
+n_ipms_partners	ipms_baits	0.0	0.0	feature	
+dom_IPR000795	domain	0.0	0.0	feature	
+dom_IPR000742	domain	0.0	0.0	feature	
+dom_IPR000727	domain	0.0	0.0	feature	
+dom_IPR000629	domain	0.0	0.0	feature	
+dom_IPR000884	domain	0.0	0.0	feature	
+dom_PF00076	domain	0.0	0.0	feature	
+n_bcell_epitopes	iedb_bcell	0.0	0.0	feature	
+dom_IPR000626	domain	0.0	0.0	feature	
+dom_PF00071	domain	0.0	0.0	feature	
+dom_IPR036755	domain	0.0	0.0	feature	
+dom_PF00063	domain	0.0	0.0	feature	
+dom_PF00069	domain	0.0	0.0	feature	
+dom_PF00024	domain	0.0	0.0	feature	
+dom_PF00022	domain	0.0	0.0	feature	
+dom_PF00005	domain	0.0	0.0	feature	
+dom_PF00009	domain	0.0	0.0	feature	
+dom_PF00240	domain	0.0	0.0	feature	
+dom_PF00176	domain	0.0	0.0	feature	
+dom_IPR046341	domain	0.0	0.0	feature	
+dom_PF00270	domain	0.0	0.0	feature	
+dom_IPR001005	domain	0.0	0.0	feature	
+dom_IPR000008	domain	0.0	0.0	feature	
+dom_IPR000152	domain	0.0	0.0	feature	
+crispr_gra12s1_l2fc_invivo	gra12	0.0	0.0	feature	
+dom_IPR000504	domain	0.0	0.0	feature	
+dom_IPR000408	domain	0.0	0.0	feature	
+dom_IPR000330	domain	0.0	0.0	feature	
+dom_IPR000225	domain	0.0	0.0	feature	
+dom_IPR000177	domain	0.0	0.0	feature	
+tdi_align_identity	sequence_traits	0.0	0.0	feature	
+flanks_identical	sequence_traits	0.0	0.0	feature	
+tdi_coverage	sequence_traits	0.0	0.0	feature	
+seq_len	sequence_traits	0.0	0.0	feature	
+tdi_align_coverage	sequence_traits	0.0	0.0	feature	
+tdi_n_fragments	sequence_traits	0.0	0.0	feature	
+domclass_rna_binding	domain	0.0	0.0	feature	
+cx_best_translation	coexpression	0.0	0.0	feature	
+cx_best_transcription_chromatin	coexpression	0.0	0.0	feature	
+has_domain	unregistered	0.0	0.0	feature	
+has_structure	unregistered	0.0	0.0	feature	
+cx_best_lipid_membrane_biology	coexpression	-2.1147871964721787e-07	0.0	feature	
+crispr_gra12s2_l2fc_invivo	gra12	-3.0533720163372635e-07	0.0	feature	
+rna108740_Day7_CS9_FPKM	gse108740	-1.110548327798444e-06	7.762251068477486e-05	feature	
+rpf245775_eif12ko_prebrady_r2	gse245775	-1.568976855548243e-06	5.476881387801257e-05	feature	
+rna108740_Tachyzoites_T4_FPKM	gse108740	-2.138825991944889e-06	4.2441579775028356e-05	feature	
+oocyst_itraq_115_113_1	oocyst_itraq	-2.9160036149796418e-06	0.00014834785715131827	feature	
+surface_mitochondrion_stringent	organelle_surface_turboid	-3.4506928266638446e-06	2.472152335334595e-06	feature	
+proteome_log2_normalized_and_imputated_abundances_T_24h_R1	proteome_total	-5.170766072407999e-06	0.00048790914291956927	feature	
+cpsf4rna168155_iaa_24h_2	gse168155	-7.750474969166662e-06	3.710746467861133e-05	feature	
+secretome_soluble_over_vesicle_log2	secretome_partition	-8.683884679598167e-06	5.0474090448669614e-06	feature	
+invivo_TZ_2	invivo_brain_transcriptome	-9.128259814694673e-06	0.00015475386427950624	feature	
+n_lactylation_sites	pride_lactylation	-1.0779733509510189e-05	0.0001026654276824323	feature	
+cx_frac_proteostasis	coexpression	-1.2549897155840947e-05	3.1984215643052755e-05	feature	
+restriction200962_kk5_p2wo_ph7_4_s6	gse200962	-1.303930891255467e-05	7.59442003351423e-05	feature	
+restriction200962_7th_gt_20_kk27_kim_s14_l001	gse200962	-1.7386167802132164e-05	0.0008913311109688506	feature	
+morc_MORC-KD-BFD1-KO_IAA2	morc_depletion	-1.828475215187586e-05	2.876999439893231e-05	feature	
+cx_frac_translation	coexpression	-2.1101186061800448e-05	6.586108873970668e-06	feature	
+crispr_invivo_platform_lfc	invivo_platform	-2.1492995849414775e-05	0.0	feature	
+n_ubiquitination_sites	pride_ubiquitination	-2.3031109936177963e-05	1.780157203301578e-05	feature	
+rna129869_subconfluent_r3	gse129869	-2.597419977408884e-05	0.00013759504950644074	feature	
+brain168465_7d_base_mean	gse168465	-3.158926556399525e-05	0.00020267466050442775	feature	
+cpsf4rna168155_ut_2	gse168155	-3.493029066808928e-05	8.658471649021823e-05	feature	
+proteome_log2_normalized_and_imputated_abundances_T_48h_R3	proteome_total	-3.613715277156482e-05	0.00018426776577470412	feature	
+rna129869_confluent_r2	gse129869	-3.730832936145919e-05	3.8195477045141836e-05	feature	
+n_o_fucosyl_peptides	pride_glycosylation	-3.754384629883756e-05	1.5956551505052514e-05	feature	
+cx_best_signalling	coexpression	-4.297371571524803e-05	9.34508344848548e-06	feature	
+rpf245775_parent_prebrady_r2	gse245775	-4.3690332453198234e-05	5.019447303108446e-05	feature	
+af3_plddt_q25	local_af3	-4.626551447482289e-05	5.148679461792342e-05	feature	
+cx_frac_transcription_chromatin	coexpression	-4.714293925321226e-05	1.5707146251277914e-05	feature	
+n_ipms_studies	ipms_corpus_membership	-5.007782940067799e-05	3.835632345332725e-05	feature	
+cx_frac_apicoplast_mitochondrion	coexpression	-5.0164292203946914e-05	0.0003992206834554266	feature	
+morc_MORC-KD-BFD1-KO_UT3	morc_depletion	-5.1787498158373246e-05	3.955045511461071e-05	feature	
+n_m6a_peaks	m6a_peaks	-5.3296899729308546e-05	9.722927144577761e-05	feature	
+morc_MORC-KD-BFD1-KO_UT2	morc_depletion	-5.337421602715405e-05	5.671573935964738e-05	feature	
+te129869_subconfluent_r2	gse129869	-5.364408511769151e-05	0.0007700475788967684	feature	
+lineage_specific	unregistered	-5.4834571489377946e-05	0.00028653465447024717	feature	
+cx_best_metabolism	coexpression	-5.625462310276941e-05	8.931110297091325e-06	feature	
+rna129869_confluent_r1	gse129869	-5.9005888849217314e-05	0.00010833154706856004	feature	
+morc_DD-BFD1-Ty_UT1	morc_depletion	-5.929960680286136e-05	5.7158763563325324e-05	feature	
+invivo_BZ_90DPI_1	invivo_brain_transcriptome	-6.417076366686351e-05	0.00032286707089874885	feature	
+rpf245775_parent_prebrady_r1	gse245775	-6.696837486162381e-05	9.059999203772189e-05	feature	
+morc_MORC_UT1	morc_depletion	-6.768458006062295e-05	7.522971578288437e-05	feature	
+surface_er_stringent	organelle_surface_turboid	-7.666646110439841e-05	3.9321365161227494e-05	feature	
+morc_DD-BFD1-Ty_Shield1	morc_depletion	-7.930817984521295e-05	3.9277860935285794e-05	feature	
+codon_cai_ribosomal	toxodb_codon_usage	-8.230277491636888e-05	0.0005113480158278782	feature	
+stress_6-18_stress_green_48	gse132248_stress	-8.394281464283819e-05	0.00022198324982816714	feature	
+rna245775_eif12ko_tachy_r2	gse245775	-8.41329166481793e-05	0.00014094814136327477	feature	
+cellcycle19092_8h_r2	gse19092	-8.478493325501472e-05	0.000615637507314804	feature	
+phospho_sites_measured	phospho_quantitative	-8.587151743140915e-05	0.00017452970162301696	feature	
+morc_MORC_UT3	morc_depletion	-8.642066493275147e-05	7.583317025347772e-05	feature	
+fit_lipid_limited_p8	crispr_serum_restriction	-8.643716512923838e-05	0.0009201572103331183	feature	
+cpsf4rna168155_iaa_48h_1	gse168155	-9.074169785261432e-05	0.0003069876849132565	feature	
+rna129869_confluent_r3	gse129869	-9.28221473436482e-05	0.00014692635019755696	feature	
+cx_frac_stress_differentiation	coexpression	-9.456805114728868e-05	3.8564801790396994e-05	feature	
+cx_frac_cell_cycle_division	coexpression	-9.686040478804984e-05	0.0005832832933112281	feature	
+rna245775_eif12ko_prebrady_r1	gse245775	-9.883812601862996e-05	0.00031754102944162314	feature	
+cpsf4rna168155_ut_1	gse168155	-0.00010306054100230518	0.0002889536805082842	feature	
+stress_6-1_unstress_red_24	gse132248_stress	-0.0001047348587546737	0.00025570946555239466	feature	
+te245775_parent_tachy_r3	gse245775	-0.00011578101896793831	0.000232096773868769	feature	
+fit_density_dim	crispr_parasite_density	-0.00011797339121122352	5.0047790847275034e-05	feature	
+morc_DD-BFD1-Ty_UT2	morc_depletion	-0.00011908586122405529	0.00023547933422257052	feature	
+cellcycle19092_3h_r2	gse19092	-0.00012161731260912356	0.0010931284426233762	feature	
+stress_6-16_stress_green_48	gse132248_stress	-0.0001227967851716305	0.0002880356817975086	feature	
+af3_low_confidence_modelled_fraction	local_af3	-0.0001334857048364002	4.3256249899063954e-05	feature	
+expr_max	gse108740	-0.00013773180718953024	0.0002557245414964779	feature	
+rna108740_Tachyzoites_T2_FPKM	gse108740	-0.00013947293396584146	0.00020835130256564494	feature	
+utr5_n_oorfs	gse302108_utr5	-0.00014400175145621677	3.915098220616053e-05	feature	
+restriction200962_kk19_p2w_ph8_2_s22	gse200962	-0.0001464609115890969	0.00021187912825349812	feature	
+morc_MORC_UT2	morc_depletion	-0.00014675965174894742	8.072680842941732e-05	feature	
+rpf245775_parent_tachy_r1	gse245775	-0.00014709526137914505	0.00012271304271348774	feature	
+restriction200962_7th_gt_2_kk31_kim_s1_l001	gse200962	-0.0001488448480300164	0.0002922881413228579	feature	
+cx_frac_signalling	coexpression	-0.00015779351450260584	0.00013510503529128286	feature	
+surface_mitochondrion_log2fc	organelle_surface_turboid	-0.00015806343124850444	0.00011761989081811633	feature	
+cx_frac_transport_homeostasis	coexpression	-0.00015836183411852925	0.00010926454737738455	feature	
+cellcycle_pseudotime	xue_singlecell	-0.00015981443076531118	7.254921691489514e-05	feature	
+ees_vs_tachyzoite_log2	toxodb_enteroepithelial	-0.00016041369594519775	0.0007338154564131685	feature	
+restriction200962_kk6_p2wo_ph7_4_s19	gse200962	-0.00016071024870700779	8.544819046991785e-05	feature	
+cx_frac_egress	coexpression	-0.00016518134972609566	0.0001426139841371859	feature	
+macrophage_expression_percentile	toxodb_macrophage	-0.00017715431425970504	5.8342887023212475e-05	feature	
+protein_ibaq_log2	proteome_pru	-0.00019132202635195142	0.00027498910521932333	feature	
+rpf245775_eif12ko_prebrady_r3	gse245775	-0.00019810159347229592	1.547234665846359e-05	feature	
+rna108740_Tissue_cysts_B_FPKM	gse108740	-0.00019878107103993292	0.000138430120901809	feature	
+rna22258_tachyzoite	gse22258	-0.00020166257342502103	0.0003630308416808188	feature	
+best_model_agreement	starpath_xlms	-0.00020634309791110286	0.0002263053765890402	feature	
+restriction200962_kk22_p5wo_ph8_2_s15	gse200962	-0.00021121509890614787	0.00020910370867636963	feature	
+rpf99395_intracellular_r1	gse99395	-0.00021321487394552566	0.00045581078181465914	feature	
+af3_confident_sequence_fraction	local_af3	-0.00021537169402295145	5.634541672849771e-05	feature	
+paralog_number	unregistered	-0.00021653768731288991	0.00012076378670554132	feature	
+brain168465_4d_base_mean	gse168465	-0.00021735407567221218	9.653959540896713e-05	feature	
+has_cp_ortholog	unregistered	-0.0002295636791834569	0.00014999335258324072	feature	
+phospho_down_sites	phospho_quantitative	-0.00023025091674907147	6.500914917660988e-05	feature	
+cx_best_egress	coexpression	-0.00023988690632309462	0.0001314437623220979	feature	
+rna108740_Day3_CS6_FPKM	gse108740	-0.0002409009084680299	0.00010997694787742837	feature	
+n_crosslink_partners	crosslink_interactome	-0.00024369950697048873	0.0001650951785780259	feature	
+rpf129869_subconfluent_r1	gse129869	-0.0002437377569106299	0.00020878468480597443	feature	
+cellcycle19092_7h_r2	gse19092	-0.00025016576462237133	0.0006002079426393371	feature	
+rpf245775_eif12ko_prebrady_r1	gse245775	-0.0002607077880347382	7.974189403464904e-05	feature	
+phospho_up_ratio	phospho_quantitative	-0.00026273179071859926	0.00022545850899119988	feature	
+cellcycle19092_9h_r2	gse19092	-0.00027386054559939515	0.0008195760661741528	feature	
+af3_mean_plddt	local_af3	-0.00028521829282577665	8.513432074940248e-05	feature	
+bzsub_C_expr	brady_subtypes	-0.0002965376972151601	0.00042817437183212544	feature	
+n_pfam_domains	domain	-0.00029706715384183086	0.00032836255100628293	feature	
+cdpk1_thiophospho_peptides	cdpk1_substrates	-0.00030323235008098787	0.00020792876203848659	feature	
+te99395_intracellular_r1	gse99395	-0.00030719477641498	0.00044049444269241884	feature	
+cellcycle19092_blocked_r1	gse19092	-0.00032085886759293986	0.0019118728692753145	feature	
+bzsub_B_expr	brady_subtypes	-0.00033984264717579205	0.0008633760505146306	feature	
+invivo_BZ_28DPI_1	invivo_brain_transcriptome	-0.00034305090274087496	0.00018151678019882672	feature	
+te129869_subconfluent_r1	gse129869	-0.00037305459431737537	0.00030370699932988376	feature	
+rpf129869_subconfluent_r3	gse129869	-0.00037386519875219165	6.321100887551305e-05	feature	
+te245775_parent_tachy_r1	gse245775	-0.00037447887144794373	8.296259322831811e-05	feature	
+cx_best_host_cell_modulation	coexpression	-0.0003779486094465656	3.914551962060319e-05	feature	
+n_papers_focal	pubmed	-0.0003929488044102832	0.0004152652094167719	feature	
+fit_no_glutamine	crispr_glucose_limitation	-0.0003950335660667381	0.0008226166553532884	feature	
+cx_best_protein_trafficking_secretion	coexpression	-0.0004060141381542204	0.00029064221353680556	feature	
+utr5_n_uaugs	gse302108_utr5	-0.00041002307949002576	0.0005509272673577227	feature	
+rna245775_parent_tachy_r3	gse245775	-0.0004243921911461686	0.0004159321778091466	feature	
+te245775_parent_prebrady_r3	gse245775	-0.0004322659991503423	0.00045950605792336477	feature	
+palmitome_odya_vs_palmitate_log2	toxodb_palmitome	-0.00045118460921813225	0.00016035205341966696	feature	
+fit_invivo_PE	crispr_invivo_composite	-0.00046020775280493825	9.089238951397984e-05	feature	
+cx_best_cell_cycle_division	coexpression	-0.00046965555434412093	0.00037186760605714	feature	
+morc_DD-BFD1-Ty_Shield2	morc_depletion	-0.0004915779836484427	1.9898183076286473e-05	feature	
+te99395_extracellular_r1	gse99395	-0.0004928424044538157	0.00023289683502615623	feature	
+rpf245775_parent_tachy_r2	gse245775	-0.000495959274382618	0.00011906688202423894	feature	
+fit_invivo_liver	crispr_invivo_composite	-0.0005013970202256505	0.000607149322932721	feature	
+crispr_gra12s1_l2fc_invitro	gra12	-0.0005278890534103539	0.00036953408978343386	feature	
+n_bioid_studies	bioid_corpus_membership	-0.000540141803289873	0.00029393438477132714	feature	
+rna245775_parent_prebrady_r3	gse245775	-0.0005586939273825031	0.00043093005372974103	feature	
+invivo_BZ_90DPI_2	invivo_brain_transcriptome	-0.0005611476102801438	0.0003220140393398135	feature	
+cellcycle19092_1h_r1	gse19092	-0.0005711471010740506	0.0002716290553854839	feature	
+rna99395_intracellular_r2	gse99395	-0.0005806963540176587	0.0001840443174130544	feature	
+snp_noncoding	toxodb_strain_snps	-0.000611388993415285	0.00011365820012796058	feature	
+stress_5-27_stress_green_48	gse132248_stress	-0.0006205350873640566	0.000129522109018267	feature	
+invivo_WholeBrain_Acute_3	invivo_brain_transcriptome	-0.0006283447362346317	0.0006219779175156675	feature	
+invivo_WholeBrain_Acute_2	invivo_brain_transcriptome	-0.0006666636223790675	0.0008591478183119206	feature	
+n_phosphosites	phosphosites	-0.0007255844187863033	0.000910183175326998	feature	
+cx_top_sim	coexpression	-0.0007363669503502868	0.000854615646207897	feature	
+rpf129869_subconfluent_r2	gse129869	-0.0007551952007045318	4.001551331603976e-05	feature	
+fit_invivo_brain	crispr_invivo_composite	-0.0007562326894233751	0.0004553272609678097	feature	
+rpf245775_parent_prebrady_r3	gse245775	-0.0007861400125364256	0.0004607089292282461	feature	
+fit_invivo_spleen	crispr_invivo_composite	-0.0008332632376256329	0.0009598813743561623	feature	
+n_publications	pubmed	-0.0008448408819723604	0.0004127161791517041	feature	
+rna245775_parent_tachy_r2	gse245775	-0.0008853106816829789	0.00043738759513423374	feature	
+morc_MORC_IAA2	morc_depletion	-0.0009052045851441851	0.0007888552564659403	feature	
+cx_frac_invasion_motility	coexpression	-0.0009120519499399479	0.0005842867817710818	feature	
+cellcycle19092_7h_r1	gse19092	-0.0009224977331506734	0.0004102041734188777	feature	
+te245775_eif12ko_prebrady_r1	gse245775	-0.0009430502356846208	0.0005400502960193454	feature	
+proteome_lfc_UT_Vs_T_48h_log2_fold_change_2	proteome_total	-0.0010204396026358882	0.0005087664261178117	feature	
+proteome_log2_normalized_and_imputated_abundances_T_24h_R3	proteome_total	-0.0010263680242578548	0.0002465981417350885	feature	
+te245775_parent_prebrady_r1	gse245775	-0.0010293592792632866	0.0014644856766944329	feature	
+cellcycle19092_3h_r1	gse19092	-0.0010464590362069444	0.0002123669501232154	feature	
+cellcycle19092_5h_r2	gse19092	-0.0010794046099067793	0.0005398642122399074	feature	
+proteome_log2_normalized_and_imputated_abundances_UT_R3	proteome_total	-0.0010837437791885174	0.00019661536201187084	feature	
+rna51780_mero_r3	gse51780	-0.0011139575106107746	0.001300715582778602	feature	
+rna51780_tachy_r1	gse51780	-0.001146618589200991	0.00042386177906465316	feature	
+oocyst_itraq_116_113	oocyst_itraq	-0.001179021846721214	0.0009414914095654002	feature	
+utr5_length	gse302108_utr5	-0.001189793030967945	0.0005598867611729642	feature	
+expr_cyst	gse108740	-0.0011974297491975834	0.0001753480690712277	feature	
+te99395_extracellular_r2	gse99395	-0.0012188594992193675	0.000985502740948401	feature	
+fit_invivo_heart	crispr_invivo_composite	-0.0012941393989634824	0.00022587802977346103	feature	
+cellcycle19092_5h_r1	gse19092	-0.00131667110840894	0.000743368493449689	feature	
+proteome_log2_normalized_and_imputated_abundances_UT_R1	proteome_total	-0.0013422801483164253	0.0006709728523820061	feature	
+cellcycle19092_2h_r2	gse19092	-0.0014108817654783223	0.000392010903381033	feature	
+cellcycle19092_11h_r2	gse19092	-0.0015489058660917803	0.0003163480486842326	feature	
+fit_lipid_rich_p8	crispr_serum_restriction	-0.0015573751623364496	0.00055614188544126	feature	
+iron_depletion_rna_log2fc	iron_depletion_proteome	-0.001572386920764816	0.0014174771636573525	feature	
+rna99395_extracellular_r2	gse99395	-0.0015732131012529127	0.0004460660373382219	feature	
+utr5_n_uorfs	gse302108_utr5	-0.001589272034459151	0.00013106086235896173	feature	
+rna108740_Day5_CS2_FPKM	gse108740	-0.0016019854739897459	0.00036781307130058505	feature	
+te129869_subconfluent_r3	gse129869	-0.0016767278802030476	0.0006057881865518073	feature	
+te245775_eif12ko_tachy_r3	gse245775	-0.0019252123984603113	0.0002607282464564933	feature	
+bzsub_E_expr	brady_subtypes	-0.0019662724355278085	0.0009619735196822198	feature	
+rna22258_bradyzoite	gse22258	-0.0019715000580968387	0.0014039092494022418	feature	
+fit_serum_differential_p4p5	crispr_serum_restriction	-0.0020355512834758414	0.0018479255051143577	feature	
+utr5_kozak_score	gse302108_utr5	-0.002037719824576049	0.00036237705284870576	feature	
+mrna_log2_remaining_4h_actinomycin	mrna_decay_gse329845	-0.00222008665170322	0.0009379220897352796	feature	
+stress_6-4_unstress_red_24	gse132248_stress	-0.0022314602097802116	0.0003902439077452631	feature	
+te129869_confluent_r2	gse129869	-0.0023352360423436283	0.0013406903504980148	feature	
+cterm_side	sequence_traits	-0.002392655289704578	0.000967262789564102	feature	
+cellcycle19092_2h_r1	gse19092	-0.0025739808140688805	0.00034800372687859117	feature	
+fit_ifng	crispr_macrophage	-0.002763746414090551	0.00043755606840391103	feature	
+oxidative_stress_screen_score	oxidative_stress_screen	-0.002810016038139259	0.0009341284497604094	feature	
+fit_no_glucose	crispr_glucose_limitation	-0.003121325009327288	0.0017241632827074943	feature	
+cellcycle19092_12h_r2	gse19092	-0.0033590019341192177	0.0005542072720858762	feature	
+te245775_eif12ko_prebrady_r2	gse245775	-0.0043199704351366925	0.0006225098197962806	feature	
+cx_best_apicoplast_mitochondrion	coexpression	-0.004510710589231803	0.0010569457881654046	feature	
+sequence_traits	sequence_traits	0.023922098133345004	0.003943681188159936	family	14.0
+gse19092	gse19092	0.016416400245045405	0.003903788724110531	family	28.0
+crispr_glucose_limitation	crispr_glucose_limitation	0.01376483296012071	0.004474676213373975	family	5.0
+unregistered	unregistered	0.012653166561771779	0.00263153868092496	family	12.0
+toxodb_ec_numbers	toxodb_ec_numbers	0.011322896685722528	0.00144921923349844	family	1.0
+gse206344	gse206344	0.011070348723907442	0.0015963084678662883	family	7.0
+crispr_serum_restriction	crispr_serum_restriction	0.009316239791887037	0.0066005409910635015	family	6.0
+domain	domain	0.00870920367884167	0.0017467005593593582	family	313.0
+pmc_oa	pmc_oa	0.007279300692341684	0.002041505047970739	family	1.0
+melting_temperature	melting_temperature	0.007084691649722486	0.0009596934112884416	family	1.0
+coexpression	coexpression	0.005854686804852649	0.003454278907274819	family	35.0
+crispr_invitro	crispr_invitro	0.005452060220633692	0.00544601383150326	family	1.0
+gse108740	gse108740	0.005110724027378555	0.0028048249612074023	family	15.0
+gse51780	gse51780	0.0049693318740554274	0.0020050346144256342	family	6.0
+gse168465	gse168465	0.004566469989979616	0.0035665205508310484	family	10.0
+toxodb_h4_acetylation	toxodb_h4_acetylation	0.004356087043635604	0.0017207328491778827	family	1.0
+gse277553_cuttag	gse277553_cuttag	0.003823106103235041	0.0017576480244087536	family	1.0
+gra17_synthlethal	gra17_synthlethal	0.003808234739438465	0.003454364632276247	family	3.0
+invivo_brain_transcriptome	invivo_brain_transcriptome	0.0026894246279768217	0.0014221072773179042	family	14.0
+gse313048_atac	gse313048_atac	0.0026449580613657764	0.0010422239835551977	family	1.0
+organelle_surface_turboid	organelle_surface_turboid	0.0025578521745395323	0.0017223631139173762	family	6.0
+gse99395	gse99395	0.0021569056161394595	0.006131407783476036	family	12.0
+proteome_total	proteome_total	0.0021444349046149114	0.0017806300807701092	family	15.0
+interpro	interpro	0.0020398006830571803	0.0024256143536057076	family	1.0
+crispr_parasite_density	crispr_parasite_density	0.0019462033260709722	0.0014447735913970835	family	5.0
+thermal_shift_cetsa	thermal_shift_cetsa	0.00169174794296032	0.0005617553291596263	family	1.0
+pubmed	pubmed	0.0013203719462757002	0.002265508926368562	family	4.0
+crispr_macrophage	crispr_macrophage	0.0011509707373707934	0.001331208905305725	family	2.0
+oocyst_itraq	oocyst_itraq	0.0011414876331264257	0.0021329027298916665	family	8.0
+toxodb_strain_snps	toxodb_strain_snps	0.0011013526120685734	0.0016003330702818149	family	5.0
+antisense_level	antisense_level	0.0010254122582481263	0.0004187842579027145	family	1.0
+alphafold	alphafold	0.0009738202363887783	0.0023230430653594803	family	1.0
+gse200962	gse200962	0.0007787778225047393	0.0020837370195349115	family	16.0
+morc_depletion	morc_depletion	0.0007602181663093454	0.0008019729369626317	family	18.0
+crispr_invivo_composite	crispr_invivo_composite	0.0006529359248947597	0.0014618649796843731	family	6.0
+foldseek_struct	foldseek_struct	0.0005385174408271242	0.00015365113699720962	family	1.0
+toxodb_nanopore_isoforms	toxodb_nanopore_isoforms	0.00045839815143874365	0.00034840141848667026	family	1.0
+pride_acetylation	pride_acetylation	0.00017520301888585	0.0008625530996779385	family	1.0
+toxodb_codon_usage	toxodb_codon_usage	0.00015753113160105192	0.0014354097333141814	family	3.0
+gse223620_bfd2_rip	gse223620_bfd2_rip	0.00011905644930184644	0.0007708092040802049	family	1.0
+xue_singlecell	xue_singlecell	6.834283477233916e-05	0.00037992404291107537	family	1.0
+toxodb_enteroepithelial	toxodb_enteroepithelial	4.5868642097224296e-05	0.0003732717181649191	family	1.0
+starpath_xlms	starpath_xlms	4.246383901954642e-05	0.0001915819766296809	family	2.0
+ipms_corpus_membership	ipms_corpus_membership	3.712060995820776e-05	0.00011343882730920127	family	1.0
+m6a_peaks	m6a_peaks	1.681793032952683e-05	6.0487090372940616e-05	family	1.0
+toxodb_epitopes	toxodb_epitopes	1.3280327943165914e-05	8.43636872402069e-05	family	1.0
+differentiation_screen	differentiation_screen	0.0	0.0	family	1.0
+pride_proximity	pride_proximity	0.0	0.0	family	1.0
+toxodb_arginine_methylation	toxodb_arginine_methylation	0.0	0.0	family	1.0
+second_background_fitness	second_background_fitness	0.0	0.0	family	1.0
+myristoylome	myristoylome	0.0	0.0	family	1.0
+crispr_young2019	crispr_young2019	0.0	0.0	family	1.0
+cyst_wall_interactome	cyst_wall_interactome	0.0	0.0	family	2.0
+curated_resistance_alleles	curated_resistance_alleles	0.0	0.0	family	2.0
+iedb_bcell	iedb_bcell	0.0	0.0	family	1.0
+mrna_stability	mrna_stability	0.0	0.0	family	1.0
+ipms_baits	ipms_baits	0.0	0.0	family	1.0
+secretome_partition	secretome_partition	-2.0318706904220996e-06	3.980185406394821e-06	family	1.0
+pride_lactylation	pride_lactylation	-1.1958939759426635e-05	7.406554431475065e-05	family	1.0
+invivo_platform	invivo_platform	-1.719439667953182e-05	8.597198339765909e-06	family	1.0
+pride_glycosylation	pride_glycosylation	-1.904617559996824e-05	1.6223981963856538e-05	family	1.0
+pride_ubiquitination	pride_ubiquitination	-2.620942616760047e-05	9.76281595066974e-06	family	1.0
+crosslink_interactome	crosslink_interactome	-4.876158615387816e-05	0.0003112338847066313	family	1.0
+stage_enriched	stage_enriched	-6.616929691120044e-05	0.00011434328531500048	family	1.0
+proteome_pru	proteome_pru	-0.00014172854618245135	0.00017275656907866035	family	1.0
+toxodb_macrophage	toxodb_macrophage	-0.00014741546666330319	4.760149952942542e-05	family	1.0
+gse302107_riboseq	gse302107_riboseq	-0.00018999779828232644	0.00033953236599206947	family	2.0
+local_af3	local_af3	-0.0002198531455582131	0.00020708683622087078	family	9.0
+toxodb_palmitome	toxodb_palmitome	-0.0003013858351373688	0.00023725667762067743	family	2.0
+cdpk1_substrates	cdpk1_substrates	-0.00030863496417605775	9.418239099586363e-05	family	1.0
+bioid_corpus_membership	bioid_corpus_membership	-0.00036472438413538423	0.0004883926626214971	family	1.0
+phosphosites	phosphosites	-0.00037406522507247295	0.0005636928837086614	family	2.0
+pride_nitrosylation	pride_nitrosylation	-0.00037730776070576955	0.00037946094100584993	family	1.0
+sexual_stages	sexual_stages	-0.0004058467368823204	0.0004340115190056595	family	1.0
+gra12	gra12	-0.0004470666732452222	0.00027891535511753214	family	6.0
+phospho_quantitative	phospho_quantitative	-0.0006322719301731117	0.0005016081639517947	family	5.0
+gse168155	gse168155	-0.0007619941420880961	0.0007682793949060467	family	8.0
+mrna_decay_gse329845	mrna_decay_gse329845	-0.0009218813082573884	0.0009862023796210018	family	1.0
+iron_depletion_proteome	iron_depletion_proteome	-0.0013529805680711049	0.004596979051010426	family	3.0
+gse22258	gse22258	-0.0019981296949813875	0.0016348123759978596	family	2.0
+oxidative_stress_screen	oxidative_stress_screen	-0.002252588081880824	0.000987638100924864	family	1.0
+gse245775	gse245775	-0.0023631054243575143	0.0024209192364494743	family	36.0
+brady_subtypes	brady_subtypes	-0.002448025616382343	0.00211903577677034	family	5.0
+gse132248_stress	gse132248_stress	-0.0031879416195904954	0.00121002560963255	family	10.0
+gse129869	gse129869	-0.0035034059193965405	0.0014243164406308715	family	18.0
+gse302108_utr5	gse302108_utr5	-0.004905599019364893	0.0019502299279833741	family	6.0
