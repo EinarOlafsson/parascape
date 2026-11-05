@@ -184,3 +184,70 @@ Level 1 is four single words, which also makes the four parallel: `Gene` is a ro
 * `Label → Fill` — "write the answers that clear the 90 % bar; nothing else"
 A single-word title must never be the only thing a user reads: the summary is mandatory, not decorative, and a
 node without one fails its test.
+
+## Corrected node design (Einar, 2026-11-05): the nodes must expose the inference, not browse the map
+His objection, and it was right: the previous design described a **browser for the information map** and left
+out what ParaScape actually is -- the 39 strategies in 9 mechanism families (`strategy_catalog`), the UMAP and
+embedding search, label inference, discoveries and claims. "That is basically the current application, so are
+you throwing away the entire application?" **Nothing is thrown away.** Every existing panel is a destination
+below, and the three nodes that were missing are the point of the program: infer a label, characterise a list,
+explore the space.
+
+**Level 1: Gene · List · Label · Space · Sources.** `Space` is added because the embedding is neither a row, a
+block nor a column -- it is the geometry all rows live in, and the UMAP gallery is a first-class feature.
+
+### Gene — one row
+| Node | Opened |
+|---|---|
+| **Card** | The summary page: the AlphaFold structure viewable, the datasets this gene appears in, the papers it is referenced in, and **two tables** — a standardised one with the most relevant data for any gene, and a second showing **how this gene is unusual** (rare or absent domain, lineage-specific, outlier expression, extreme fitness, unique modification, structure unlike anything). Replaces the separate literature node, which is folded in here |
+| **Facts** | Every trait recorded, with probability, uncertainty, source tier and reference |
+| **Predicted** | What the strategies infer for this gene that nobody has measured: the value, which strategy produced it, its held-out score, and whether it cleared the 90 % bar. Marked exploratory when it did not |
+| **Similar** | The genes most like this one, by a chosen kind of evidence — the "borrow from neighbours" family and the embedding neighbours |
+| **Network** | The edge view, with the three levels of edge control described below |
+| **Partners** | Measured interactions only, with their own probabilities |
+| **Expression** | Its row over the expression columns, relative-to-control first |
+| **Structure** | The numbers behind the Card's viewer: AF3 confidence, 3Di source and coverage, topology, signal peptide, regions |
+
+### List — a block of rows
+Family 5 of the strategy catalogue already is "a list in, a ranking and a profile out"; these nodes expose it.
+| Node | Opened |
+|---|---|
+| **Drop** | Import a csv, tsv, txt, tab, xls, xlsx or parquet of genes with any data per gene; sniffed separator, chosen identifier column, and unresolved identifiers **listed, not discarded** |
+| **Profile** | **What characterises this list**: which labels, compartments, domains, expression patterns and fitness signatures are over-represented against a matched background, each with an effect size and a p-value, and the warning when the list is too small to say |
+| **Mechanism** | **What the list points to**: the shared pathway, complex or process that best explains it, the strongest common evidence, and the competing explanations it does not distinguish |
+| **Rank** | Rank the whole genome by similarity to the list — the lookalike strategy — returning candidate members with probabilities |
+| **Answer** | Answer one chosen label for every gene in the list |
+| **Pulldown** | Rank the list against the pull-down background: specificity per protein, frequency as context only |
+| **Compare** | Two lists against each other: shared genes, and what differs in their profiles |
+| **Export** | The list with everything attached, and the provenance of each value |
+
+### Label — one column
+This is where the inference lives.
+| Node | Opened |
+|---|---|
+| **Catalogue** | Every label: the question in plain words, labels available, cross-validated and frozen-test numbers, genes answerable at the bar, and its state. Header carries effective independent axes |
+| **Infer** | **Run strategies to predict this label** for the genes nobody has measured: pick strategies or let the scorecard pick, see the held-out score, the calibration and the ranked predictions. The machine-learning core of the program |
+| **Strategies** | The 39 strategies in their 9 mechanism families, filtered to those that can address this label, each with its self-test, scorecard task and techniques |
+| **Scorecard** | Per strategy for this label: cross-validated estimate, frozen-test result, baselines, calibration error, which evidence families it used and which it was forbidden |
+| **Fill** | Write the answers that clear the 90 % frozen-test bar, and nothing else; everything below stays exploratory |
+| **Compare** | Two labels side by side: where they agree, where they disagree, and whether they are really one axis |
+
+### Space — the geometry of all rows
+| Node | Opened |
+|---|---|
+| **UMAP** | The embedding gallery, with a choice of which evidence block defines the space |
+| **Search** | A gene's neighbourhood in that space |
+| **Clusters** | The regions, and what each is enriched for |
+| **Project** | Drop a list and see where it lands |
+
+### Sources
+Datasets · References · Downloads.
+
+## Network edges: three levels of control
+| Level | What the user sets |
+|---|---|
+| **1 · General** | One control, "connect by", with presets: **Interaction** (measured only) · **Expression** (expressed together) · **Behaviour** (behaves alike across perturbations) · **Place** (same compartment) · **Structure** (similar fold) · **Everything** |
+| **2 · Layers** | Per-evidence toggles with one slider each: crosslinks, pull-downs, co-expression, co-fitness, shared compartment, shared domain, 3Di similarity, orthology — so a user can ask for "crosslinks plus co-expression, nothing else" |
+| **3 · Granular** | Per layer: probability floor, minimum number of supporting studies, correlation cutoff, top-k rank cutoff, whether inferred edges are admitted at all, maximum neighbours per node, and the layout controls (fade distance, zoom, recentre depth) |
+Level 1 is the default and the only thing visible until asked for. An edge always states which layer produced it
+and its probability, so a network cannot imply more certainty than its weakest edge.
