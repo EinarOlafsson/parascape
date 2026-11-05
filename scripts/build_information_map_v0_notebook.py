@@ -265,6 +265,26 @@ print(len(review), 'reviewed genes;', (review.value == 'yes').sum(), 'host-facin
 review.value.value_counts().to_frame('genes').T
 ''')
 
+nb.md('## 7d · Function classes from the reviewed truth set',
+      'The map held experimental GO function for 24-27 genes. The function truth set (2026-11-04) adds a coarse '
+      'class for **242 genes**: 32 from experimental GO, 113 from reviewed Swiss-Prot curator comments and 97 '
+      'from the imaging screen, with 57 % of genes carrying more than one class. It enters as a `terms` trait, '
+      'so the matrix shows the best-supported class and `function_class_n` counts how many a gene has, while '
+      'every class stays in the evidence table.',
+      'The probability is the tier of the claim that decided the gene: 0.95 for experimental GO, 0.90 for a '
+      'curator comment, 0.80 for a screen phenotype. A screen phenotype supports a *process* claim only, never '
+      'a molecular function, which is why those genes sit at the lowest tier.')
+nb.code(r'''
+FUNC = Path('results/function_truth_2026_11_04/evidence.parquet')
+func = pd.read_parquet(FUNC)
+for r in func.itertuples():
+    for cls in str(r.value).split('|'):          # multi-label genes carry several classes
+        if cls.strip():
+            add_ev(r.gene_id, 'function_class', cls.strip(), r.probability, r.source_tier, r.reference, r.dataset)
+print(len(func), 'genes;', sum(len(str(r.value).split('|')) for r in func.itertuples()), 'class assignments')
+func.source_tier.value_counts().to_frame('genes').T
+''')
+
 nb.md('## 8 · Screen phenotypes (function, observed-screen)',
       'The arrayed splitCas9 imaging screen (PMID 35538310) scored 319 genes for egress, actin, apicoplast and '
       'replication phenotypes. Here a measured "no phenotype" is a real observation of that screen (the gene was '
@@ -328,10 +348,13 @@ nb.md('## 10 · Assemble the three aligned tables',
       'and the matrix is assembled from the evidence rows, so a new column is one `register` line plus its evidence.')
 nb.code(r'''
 from parascape import information_map as im
+im.register(im.Trait('function_class', 'terms', 'Coarse function class from the reviewed truth set',
+                     family='function_truth', depends_on=('splitcas9_imaging_screen',)))
 for c in screen_cols:                               # one registry line per new column; nothing else changes
     im.register(im.Trait(c, 'measure', f'Arrayed screen result ({c}); a measured no-phenotype is False'))
 ev = im.evidence_frame(pd.DataFrame(EV, columns=list(im.EVIDENCE_COLUMNS)))
-order = ['host_facing', 'compartment_hyperlopit', 'compartment_go_cc', 'partners', 'function_go_bp', 'function_go_mf'] + screen_cols
+order = ['host_facing', 'compartment_hyperlopit', 'compartment_go_cc', 'partners', 'function_class',
+         'function_go_bp', 'function_go_mf'] + screen_cols
 values, prob, srcs = im.build(ev, GENES, pairs=pairs, order=order)
 cols = list(values.columns)
 values.notna().sum().rename('genes with a value').to_frame()
