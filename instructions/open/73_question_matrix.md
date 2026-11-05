@@ -68,3 +68,85 @@ applies: report each question against the hardest honest comparison, and "cannot
 3. Class B scored through the harness: egress and the other imaging phenotypes, localisation niches, function.
 4. Class D as ranked lists: partners, co-expression neighbours, expression response.
 5. Class C listed as gaps with what each would need, so the missing experiments are visible rather than implied.
+
+## The plan: choosing the questions, and choosing a strategy for each (Einar, 2026-11-05)
+"What questions do we ask the data to answer, and what strategy do we use to answer each systematically?"
+
+### Part 1 — How a question earns its place
+A question is admitted only if it passes three tests, each recorded in the registry so the catalogue can be
+audited rather than argued about:
+1. **Answerable.** A truth set exists, or can be made by curation. Without one the question is a wish, and it is
+   listed as a gap with what it would need (the host-facing run proved the cost of discovering this late).
+2. **Non-redundant.** It is not a restatement of a question already present. Tested by the correlation of
+   *labels*, not of predictions: the seven in-vivo tissue columns are largely one dissemination axis, and the
+   serum, lipid and density screens share a growth axis. The catalogue reports **effective independent axes**,
+   not question count.
+3. **Useful.** The answer would change a decision -- which experiment to run, how to read a screen hit. "Has
+   domain IPR000719" fails this test as a *question*: it is a feature, and it belongs on the evidence side.
+
+**A distinction that governs the whole catalogue: "important for X" is not "involved in X".** A gene required
+for growth without glucose may be a glycolytic enzyme (involved) or simply essential everywhere (not
+specifically involved). So every condition question is posed as **conditional** importance -- the interaction,
+not the absolute score -- and computed from each screen's own published per-gene statistics rather than by
+subtracting two scores, which the mouse-immune attempt showed amplifies noise.
+
+**The catalogue, built by enumeration rather than by hand** (counts are what exists today):
+
+| Source | Questions it yields | Labelled genes each |
+|---|---|---|
+| Fitness and condition screens (nutrient, lipid, serum, density, glucose, glutamine) | ~16 conditional-importance questions | ~7,395 |
+| In vivo tissue screens | 7 tissue questions + 1 dissemination pattern | ~7,460 |
+| Mouse macrophage, naive and IFN-gamma | 2 immune questions | ~7,402 |
+| Imaging screen phenotypes | egress, F-actin, apicoplast, replication | 318 |
+| hyperLOPIT niches | 26 localisation questions | 716 markers |
+| Function classes | 15 | 242 |
+| Experimental GO terms with >= 10 genes | dozens | >= 10 each |
+| PTM site tables | is phosphorylated / acetylated / methylated / ubiquitinated | 717 |
+| Cell-cycle periodicity | is cell-cycle regulated, and peak phase | ~5,377 periodic |
+| Expression columns | 266 "responds to X" questions | 8,140 |
+| Pairs | most likely partners; expressed with | 1,630 / 8,052 |
+
+That is **over 400 questions with labels already in hand**, which is how 100-1000 is reached without inventing
+any. Einar's list maps onto it directly, except for four genuine gaps that must be declared, not fudged: a
+favourable immune response **in humans** (no human screen exists), **autophagy** involvement, **protein
+scavenging**, and **sporozoite-to-tachyzoite** switching.
+
+### Part 2 — The strategy is chosen by the question, not fixed
+A ladder. Each rung is used only when the one below is insufficient, and every rung reports the same numbers:
+grouped folds, the stated baselines, isotonic calibration, the Clopper-Pearson lower bound, coverage at the
+90 % bar, the no-knowledge split, and permutation importance by family.
+
+| Rung | When it applies | What it does |
+|---|---|---|
+| **0 · Carry the measurement** | class A, ~7,400 genes measured | No model at all. Convert the measured score to an answer plus an uncertainty from the source's own statistics. Predict only the few hundred genes the screen missed. This alone answers a dozen of Einar's questions for ~90 % of genes |
+| **1 · Baselines** | every question, always | Majority, prevalence, best single feature, ortholog copy. Nothing is reported except as improvement over the best of these |
+| **2 · Per-family model, then stacking** | class B | One model per evidence family, combined by a meta-learner on out-of-fold predictions. Makes each family's contribution measurable instead of hiding 86 of them in one model |
+| **3 · Guilt by association and network propagation** | questions about complexes, pathways, co-membership | Label propagation over co-expression, crosslinks and co-fitness, with the cofitness rule: high correlation **and** top rank **and** support from several studies |
+| **4 · Matrix completion** | the matrix as a whole | Low-rank factorisation predicts a cell from the pattern of co-occurrence across all questions. The right frame when no single feature carries signal, which is what every run here has shown |
+| **5 · Multi-task joint model** | last | Shared representation across correlated questions; replaces per-question models only where it beats them on the same folds |
+
+Three rules bind every rung: positive-unlabelled weighting, because "not recorded" is not "not true";
+inverse-propensity weighting, because a well-studied gene is more likely to be measured at all; and a question
+is never answered using the family its own labels came from.
+
+### Part 3 — Phases, each with a gate
+1. **The registry and the harness.** Question registry (id, text, answer type, label source, tier, allowed and
+   forbidden families, class, status) and the scoring harness factored out of the three runs already written.
+   *Gate: one question reproduces its published scoreboard through the new harness.*
+2. **Rung 0 across class A.** Every genome-wide screen carried as a calibrated answer with uncertainty.
+   *Gate: a dozen of Einar's questions answered for ~90 % of genes, with each screen's own statistics cited.*
+   Blocker to clear first: several screens are shipped as effect sizes only; the published per-gene FDR tables
+   must be acquired.
+3. **The catalogue and the redundancy report.** All ~400 questions enumerated, with effective independent axes.
+   *Gate: Einar sees the list and prunes it.*
+4. **Rungs 1-3 on class B**, in order of label count: localisation niches (716), function (242), imaging
+   phenotypes (318), PTM (717), host-facing (98). *Gate: the per-question scoreboard, and the count of cells
+   fillable at 90 %.*
+5. **Rungs 4-5**, only if 1-3 leave cells unfillable. *Gate: beats the per-question models on the same folds.*
+6. **Freeze and date the filled matrix** for the prospective test against papers published afterwards.
+
+### What makes the whole thing honest
+Four numbers published per release, never one: **questions with enough labels to score**, **effective
+independent axes**, **cells fillable at 90 %**, and **prospective accuracy** once the first frozen matrix is old
+enough to test. A matrix of a thousand questions carrying five facts is the failure mode to avoid, and only the
+second number reveals it.
