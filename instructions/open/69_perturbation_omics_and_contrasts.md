@@ -375,7 +375,7 @@ and RalGAP", 11.3 GB), **PXD031816**, **PXD023791** and **PXD039335** (102 RAW f
 * PXD034607 and PXD039335 now carry `unsupported.json` with the reason, so the queue skips them rather than
   retrying forever. PXD031816 and PXD023791, already searched, carry `NOT_COMPARABLE.json`: the spectra are kept
   but their PSM, peptide and LFQ tables must not be used as expression or co-purification evidence, and they
-  must be left out of the background frequency background.
+  must be left out of the background table.
 * **Detection rule for future selections:** HDX is visible in RAW filenames (`HDXMS`, `HDX`) more reliably than
   in the project title -- only PXD034607 says so in its title, while all four say so in their filenames.
 * **Confirmed working, and expected to last ~4.5 days (2026-11-04 23:00).** The tutorials session reports plaque

@@ -26,7 +26,7 @@ Five rules are structural here rather than left to whoever draws the screen:
   bar, and the coverage sentence that says an unmeasured cell is not a negative. "Cannot be answered
   yet" is a state on a question, not a page.
 * **Unavailable is a state, not a crash.** A node whose data is absent, or whose view has not been
-  built yet, is shown greyed with the reason ("needs a background frequency background"), so the absence is
+  built yet, is shown greyed with the reason ("needs a background table"), so the absence is
   visible on the screen instead of being discovered by clicking -- or, worse, by the card being
   left out and the gap never being noticed.
 * **Provenance is baked in.** There is no `Sources` category: `Gene ▸ Card` carries the datasets a
@@ -400,7 +400,7 @@ class Presence:
 
     @classmethod
     def probe(cls, scores=None, gene_list_loaded: bool = False, root=None) -> "Presence":
-        """Read the machine: is a map release published, is a background frequency background here, can any
+        """Read the machine: is a map release published, is a background table here, can any
         question fill a cell."""
         from . import information_map as IM
         try:
@@ -418,7 +418,7 @@ class Presence:
 
 #: Why the pull-down specificity node cannot be opened yet. Named here because the same sentence is
 #: the one `information_map_panel` prints beside a pull-down partner.
-BACKGROUND_REASON = ("needs a background frequency background, which has not been acquired; until it exists a "
+BACKGROUND_REASON = ("needs a background table, which has not been acquired; until it exists a "
                   "pull-down member is provisional and frequency alone must not be used as a filter")
 
 #: Why no answer may be written into the matrix. Recomputed every build from the frozen-test bounds.
@@ -427,7 +427,7 @@ NOTHING_TO_FILL = (f"no question has cleared the {FILL_BAR:.0%} frozen-test boun
 
 #: Why a `List` node is greyed before anything has been dropped. Public, because the drop view has
 #: to recognise the one obstacle a loaded list removes, as distinct from the obstacles it does not
-#: (no background frequency background, no mechanism view).
+#: (no background table, no mechanism view).
 NEEDS_LIST = "needs a gene list: drop or paste one first"
 
 

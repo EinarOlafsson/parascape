@@ -12,7 +12,7 @@ and the domain columns shape every choice here:
 
 Positives are the 2,843 StarPath XL-MS crosslink pairs (probability = 1 - local FDR): direct physical
 evidence. The 33,646 bait-member pull-down pairs in the information map sit at a provisional 0.5
-because no Toxoplasma background frequency background exists; they are scored as a separate, clearly weaker set
+because no Toxoplasma background table exists; they are scored as a separate, clearly weaker set
 and never mixed into the headline positives.
 
 Writes notebooks/partner_inference_2026_11_04.ipynb (executed) and results/partner_inference_2026_11_04/.
@@ -1276,7 +1276,7 @@ code("""
              '1 - local FDR (median %.4f). Direct physical evidence.\\n'
              % (len(pos), len(xl_nodes), pos.probability.median()))
     R.append('The %d bait-member pull-down pairs in the information map are **not** headline '
-             'positives: they sit at a provisional 0.5 because no Toxoplasma background frequency background '
+             'positives: they sit at a provisional 0.5 because no Toxoplasma background table '
              'exists, and without a background frequency a sticky contaminant is indistinguishable '
              'from a real partner. They are scored separately (§12).\\n' % len(pull))
     R.append('**There is no verified non-interaction set.** Negatives are decoys — pairs with no '
@@ -1352,7 +1352,7 @@ code("""
              'never reported, which depresses measured precision by an unknown amount. Nothing in '
              'the data bounds that fraction.\\n')
     R.append('## What would change it\\n')
-    R.append('* **A Toxoplasma background frequency background** (instruction 71, product 4) is the obvious '
+    R.append('* **A Toxoplasma background table** (instruction 71, product 4) is the obvious '
              'candidate and the largest single gain available: it would turn %d provisional '
              'bait-member pairs into graded co-purification evidence. The positives would grow from '
              '%d to the specific subset of those %d — and, more important for the scoring, '

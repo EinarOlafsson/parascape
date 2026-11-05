@@ -351,7 +351,7 @@ independently corroborates it**; the index warning stands for the general case.
 ## Binding partners scored for the first time (2026-11-04): 0.891, a near miss
 `results/partner_inference_2026_11_04/`. Positives: the 2,842 StarPath XL-MS crosslink pairs over 1,630
 proteins (probability 1 - local FDR). The 33,596 bait-member pull-down pairs were kept **out** of the headline,
-because without a background frequency background a sticky contaminant is indistinguishable from a real partner. No verified
+because without a background table a sticky contaminant is indistinguishable from a real partner. No verified
 non-interaction set exists, so every negative is a decoy and three constructions were scored.
 
 | Question | Pairs | Lower 90 % bound | Reaches 0.90 |
@@ -380,7 +380,7 @@ non-interaction set exists, so every negative is a decoy and three constructions
   partners are the ones that cross compartments.
 * **Prior shift:** the labelled set is 1:1 while true pair prevalence is tiny, so transferred probabilities are
   ranking scores, not posteriors. The 223,097 candidates above 0.5 must **not** be read as likely partners.
-* **Decision: fill nothing for partners.** What would change it: the background frequency background (it would turn 33,596
+* **Decision: fill nothing for partners.** What would change it: the background table (it would turn 33,596
   provisional pairs into graded evidence and, more importantly, provide the independent assay this run lacks
   for held-out truth); reciprocal pull-downs or solved complexes for the first verified negatives; AF3 pair
   confidence on a shortlist as genuine per-pair evidence.

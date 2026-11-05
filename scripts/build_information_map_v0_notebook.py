@@ -322,7 +322,7 @@ j = mem.merge(baits[['pmid', 'bait_gene']], on='pmid')
 j = j[j.bait_gene.isin(GENESET) & j.gene_id.isin(GENESET) & (j.bait_gene != j.gene_id)]
 p2 = pd.DataFrame({'gene_a': j.bait_gene, 'gene_b': j.gene_id, 'partner_side': 'parasite',
                    'probability': STUDY_MEMBER_P, 'source_tier': 'observed-screen',
-                   'reference': 'PMID:' + j.pmid + ' (' + j.method + '; provisional 0.5 pending background frequency background)'})
+                   'reference': 'PMID:' + j.pmid + ' (' + j.method + '; provisional 0.5 pending background table)'})
 p3 = pd.DataFrame({'gene_a': hi.gene_id, 'gene_b': hi.host_target, 'partner_side': 'host',
                    'probability': TIER_P['observed-curated'], 'source_tier': 'observed-curated',
                    'reference': hi.key_reference})
@@ -417,7 +417,7 @@ Instruction 72, v0 build. Observed facts only; no predictions, no gap filling. B
 
 ## Provisional probabilities (v0)
 Tier defaults, NOT measured: observed-direct 0.95, observed-curated 0.90, observed-screen 0.80, observed-proximity 0.70.
-StarPath crosslinks: 1 - local_fdr. Interaction-study members: 0.5, provisional until a background frequency background exists.
+StarPath crosslinks: 1 - local_fdr. Interaction-study members: 0.5, provisional until a background table exists.
 v1 replaces these by measured agreement with independent sources.
 
 ## Rules followed

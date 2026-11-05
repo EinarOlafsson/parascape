@@ -176,7 +176,7 @@ def test_the_list_nodes_wait_for_a_list_and_say_so(catalogue):
 def test_the_pulldown_node_names_the_background_it_is_waiting_for(catalogue):
     node = ND.get("list_pulldown", catalogue)
     assert not node.available
-    assert "background frequency" in node.unavailable_reason
+    assert "background table" in node.unavailable_reason
     assert "must not be used as a filter" in node.unavailable_reason
 
 

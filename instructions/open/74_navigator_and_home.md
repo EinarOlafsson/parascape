@@ -368,7 +368,7 @@ Changed: `parascape/app.py` (`_home`, installed last so it is the tab that is up
 * **Unavailable is a rendered state with a reason**, which is how the missing work is now visible on
   the screen rather than discovered by clicking: `Gene ▸ Similar` (needs the phase-3 neighbour
   space), `List ▸ Profile`, `List ▸ Mechanism`, `List ▸ Rank` (no set-level view exists),
-  `List ▸ Pulldown` (no background frequency background), `Label ▸ Runs` (the harness writes
+  `List ▸ Pulldown` (no background table), `Label ▸ Runs` (the harness writes
   `results/harness_holdout_log.jsonl`, but no panel reads it back),
   `List ▸ Answer/Map/Export` (until a list is
   dropped), `Label ▸ Fill` (no question has cleared the 90 % frozen-test bound), and the two

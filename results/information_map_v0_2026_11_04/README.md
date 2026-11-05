@@ -14,7 +14,7 @@ Instruction 72, v0 build. Observed facts only; no predictions, no gap filling. B
 
 ## Provisional probabilities (v0)
 Tier defaults, NOT measured: observed-direct 0.95, observed-curated 0.90, observed-screen 0.80, observed-proximity 0.70.
-StarPath crosslinks: 1 - local_fdr. Interaction-study members: 0.5, provisional until a background frequency background exists.
+StarPath crosslinks: 1 - local_fdr. Interaction-study members: 0.5, provisional until a background table exists.
 v1 replaces these by measured agreement with independent sources.
 
 ## Rules followed

@@ -723,7 +723,7 @@ def main() -> None:
 
     nb.code(
         "def specificity(hits, background, n_experiments=None, pseudo=0.5, abundance='psm_ppm'):",
-        "    \"\"\"Score a pull-down hit list against the background frequency background.",
+        "    \"\"\"Score a pull-down hit list against the background table.",
         "",
         "    hits        : DataFrame with 'gene_id' and an abundance column in parts per million",
         "                  of that experiment's own total parasite signal.",

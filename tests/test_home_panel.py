@@ -125,9 +125,9 @@ def test_an_unavailable_card_states_why_and_does_not_open_anything(window):
     node = ND.get("list_pulldown", window.home.nodes)
     before = window.home.pages.currentIndex()
     message = window.home.choose(node)
-    assert "background frequency" in message
+    assert "background table" in message
     assert window.home.pages.currentIndex() == before
-    assert "background frequency" in window.home.note.text()
+    assert "background table" in window.home.note.text()
 
 
 def test_a_dock_card_raises_its_dock_on_the_named_tab(window):
@@ -159,7 +159,7 @@ def test_the_search_field_is_the_one_from_help_search_and_finds_nodes(window):
     node_rows = [e for e in results if e.kind == "node"]
     assert node_rows, "the home nodes are not in the search index"
     assert HI.KIND_LABEL["node"]
-    assert "background frequency" in HS.open_entry(window, node_rows[0])
+    assert "background table" in HS.open_entry(window, node_rows[0])
     window.home_dock.raise_()
 
 
@@ -333,8 +333,8 @@ def test_the_list_actions_wake_up_once_a_list_is_loaded(panel, tmp_path):
     QtWidgets.QApplication.processEvents()
     assert panel.drop_view.buttons["list_answer"].isEnabled()
     assert panel.drop_view.buttons["list_map"].isEnabled()
-    assert not panel.drop_view.buttons["list_pulldown"].isEnabled(), "there is no background frequency yet"
-    assert "background frequency" in panel.drop_view.buttons["list_pulldown"].toolTip()
+    assert not panel.drop_view.buttons["list_pulldown"].isEnabled(), "there is no background table yet"
+    assert "background table" in panel.drop_view.buttons["list_pulldown"].toolTip()
     assert "Not available" not in panel.drop_view.buttons["list_answer"].toolTip(), \
         "an enabled button must stop saying it needs a list"
 
