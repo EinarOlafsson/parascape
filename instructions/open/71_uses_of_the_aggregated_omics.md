@@ -94,3 +94,50 @@ downloads continue (instruction 69); every product is rebuilt as the queue fills
    localization. This also restarts 70.
 3. Products 2 and 3 share the signature code; 3 also needs per-host contrasts.
 4. Product 4 needs the MS queue past its AP/BioID projects; classification can start now.
+
+## CRAPome first pass (2026-11-05): the frequency filter fails, the specificity score works
+`results/crapome_2026_11_05/`. 63 of 203 projects finished; 61 classified (25 affinity purification,
+9 proximity labelling, 10 whole proteome, 7 PTM enrichment, 2 fractionation, 8 other, which are kept **out** of
+the background because one misclassified whole-proteome run would raise every frequency at once). 23 of 61
+classifications hinge on a judgement call and are flagged with the cue that decided them. Background: 4,449
+parasite proteins over 34 experiments; detection = >= 2 PSMs at 1 % FDR mapping uniquely to one gene
+(Spearman 0.95 against both a looser and a stricter rule, so nothing rests on the threshold).
+
+**The frequency column must NOT be used as a filter.** Verified: the known complexes sit inside the
+frequent-flyer range, not below it.
+
+| | frequency range |
+|---|---|
+| Frequent flyers: actin 0.97, HSP70/90 0.76-0.94, cytosolic ribosome 0.79-0.91, GAPDH 0.76-0.88 | high, as expected |
+| **Known complexes: MyoA glideosome 0.38-0.88, AMA1-RON 0.76-0.85, MIC2-M2AP 0.53-0.65, MORC/HDAC3 0.50-0.71** | **the same range** |
+
+Separation AUC is only 0.743, and at a 50 % cutoff **12 of 13 complex members would be deleted**. No threshold
+removes half the flyers while keeping 85 % of the complexes. The cause is biological, not a bug: 34 experiments
+over 11 distinct baits, nearly all pull-downs from whole parasite lysate, so the abundant invasion and motility
+machinery is in every list. The human CRAPome had over 400 experiments. **Honest statement: not enough
+independent baits yet.** Enolase is additionally underestimated (0.24) by the unique-mapping rule on close
+paralogues, which is recorded rather than patched.
+
+**The specificity score (log2 abundance fold + log2 rarity) is usable for ranking today**, and the
+abundance-fold term does the work. Bait recovery in its own pull-down, verified:
+
+| project | bait | specificity rank | percentile | rank by raw abundance |
+|---|---|---|---|---|
+| PXD016383 | MYR1 | **1** of 363 | 100 | 1 |
+| PXD038848 | TgBDP1 | **1** of 244 | 100 | 1 |
+| PXD012103 | HCE1 | **1** of 334 | 100 | 11 |
+| PXD039896 | C3 | 6 of 1,167 | 99.6 | 48 |
+| PXD032360 | GRA28 | 14 of 428 | 97.0 | 4 |
+| PXD032319 | ROP1 | 14 of 38 | 65.8 | 3 |
+
+The tagged protein is in the top 5 % of its own hit list in 8 of 11 affinity purifications (median rank 14 of
+~580, against 28 by abundance alone). The misses are correct answers: a TurboID ligase labels neighbours rather
+than enriching itself, and PXD039922 is a SPARK auxin-degron IP in which the bait is deliberately degraded.
+CDPK1 (PXD039432) is not recovered in its own pull-down at all and is worth a look.
+
+**Practical guidance:** rank a new hit list by `specificity`, read `frequency` as context only, and treat
+`median_abundance` as the useful column. For the 33,596 bait-member pairs this does not yet give a graded
+probability by frequency, but it does give each pair an abundance-fold number it did not have. **Baits are the
+limiting factor: 13 of 34 experiments have a confident bait, 10 more have a symbol absent from every ToxoDB
+product name, and 7 have a complex or non-protein bait.** Identifying more baits is worth more than finishing
+the remaining 140 projects.
