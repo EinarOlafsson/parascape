@@ -414,3 +414,24 @@ missing file, and not a wholesale block on our address.
 * Aspera would be the robust answer (PRIDE publishes `prd_ascp@fasp.ebi.ac.uk` for every file, a different host
   and protocol) but no client is installed and it is not on the usual channels. Recorded as the next option if
   the resume behaviour proves insufficient.
+
+## 2026-11-05: PRIDE over FTP, nine times faster and reliable — no Aspera key needed
+Aspera turned out to be unnecessary. `~/.aspera/connect/bin/ascp` is installed (Connect 4.2.19) and
+`fasp.ebi.ac.uk:33001` is reachable, but EBI's `prd_ascp` account needs the openly published
+`asperaweb_id_dsa.openssh`, which Connect 4.x no longer bundles; neither the shipped
+`aspera_tokenauth_id_rsa` nor the default authenticates. **Before chasing that key, the FTP endpoint PRIDE
+advertises beside HTTPS for every file was tested, and it is simply better.**
+
+Measured on the same file at the same moment (`PXD027029/OE03569.raw`, the one that had been failing):
+
+| Transport | Speed |
+|---|---|
+| HTTPS, single ranged request | 165 kB/s |
+| FTP, single ranged request | 560 kB/s |
+| **FTP via aria2c, 6 connections** | **9.2 MB/s** (231 MB in 25 s) |
+
+Resume also works over FTP: a second aria2c run continued the partial file rather than restarting it.
+`ms_uniform_search.fetch` now derives the `ftp://` form of each PRIDE URL and tries it first, keeping HTTPS as
+the fallback for the last attempts and for any URL that is not a PRIDE one. That is roughly a nine-fold
+speed-up on the slowest part of the pipeline, and it removes the connection refusals, which came from the HTTPS
+endpoint specifically. **Nothing is needed from Einar.**

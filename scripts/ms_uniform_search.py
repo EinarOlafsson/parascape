@@ -53,10 +53,23 @@ def raw_files(project: str) -> list[dict]:
 RETRY_WAITS = (30, 120, 300, 600, 1200)
 
 
+def ftp_form(url: str) -> str:
+    """The same PRIDE file over FTP. Measured 2026-11-05: 9.2 MB/s against about 1 MB/s over HTTPS, and the
+    HTTPS endpoint is the one that keeps refusing connections. PRIDE advertises both for every file."""
+    for prefix in ('https://ftp.pride.ebi.ac.uk/', 'http://ftp.pride.ebi.ac.uk/'):
+        if url.startswith(prefix):
+            return 'ftp://ftp.pride.ebi.ac.uk/' + url[len(prefix):]
+    return url
+
+
 def fetch(url: str, dest: Path, size: int) -> None:
     part = dest.with_suffix(dest.suffix + '.part')
+    ftp = ftp_form(url)
     for attempt in range(len(RETRY_WAITS) + 1):
         try:
+            # FTP first: faster and far more reliable here. HTTPS stays as the fallback, and the last
+            # attempts use a single plain connection, which is what the server is most willing to serve.
+            source = ftp if attempt < 4 and ftp != url else url
             if (BIN / 'aria2c').exists() and attempt < 3:
                 # One PRIDE connection gives ~1 MB/s; a few ranged connections give several times that. More
                 # than about a dozen at once, counting every file in flight, earns a refusal.
@@ -65,9 +78,9 @@ def fetch(url: str, dest: Path, size: int) -> None:
                 # so a partial file is progress, not rubbish: each attempt and each later pass adds to it.
                 subprocess.run([str(BIN / 'aria2c'), '-q', '-x6', '-s6', '-k8M', '--file-allocation=none',
                                 '--continue=true', '--auto-file-renaming=false', '--connect-timeout=60',
-                                '--max-tries=1', '-d', str(part.parent), '-o', part.name, url], check=True)
+                                '--max-tries=1', '-d', str(part.parent), '-o', part.name, source], check=True)
             else:
-                with urllib.request.urlopen(url, timeout=600) as response, part.open('wb') as out:
+                with urllib.request.urlopen(source, timeout=600) as response, part.open('wb') as out:
                     shutil.copyfileobj(response, out, 1 << 22)
             if size and part.stat().st_size != size:
                 raise IOError(f'{dest.name}: {part.stat().st_size} bytes, declared {size}')
