@@ -506,3 +506,32 @@ so its errors are ~3.9 log2 units and everything shrinks to zero) -- correct ari
 split-half replicate agreement is 0.615, with 8 of 26 testable columns below 0.3; those are not evidence alone.
 40 runs are excluded for zero parasite reads (the untrimmed libraries) and return after the fastp
 re-quantification.
+
+## Strategies borrowed from large-scale profile inference (Einar, 2026-11-05)
+His framing: "akin to what Google or Cambridge Analytica do, where they gather as much information about a
+person to predict the person's political leanings — I just want to do it with genes and their function." The
+structural match is real: thousands of weak signals, a sparse matrix, few confirmed labels. These are the
+techniques from that field that fit, each tied to a problem already measured here.
+
+| Borrowed technique | The problem here it addresses |
+|---|---|
+| **Positive-unlabelled learning with confidence weights** (implicit feedback, Hu/Koren/Volinsky 2008: an unwatched film is not a dislike) | Our central label problem. "Not recorded" is not "not true", and we have been handling it ad hoc. PU learning weights observed positives by confidence and unobserved cells as weak negatives with low weight -- a principled version of the rule we already follow by hand |
+| **Inverse-propensity weighting for data missing not at random** | The publication-bias shortcut. A famous gene is measured more, so the *probability a cell was observed* is itself predictable. Modelling that propensity and weighting by its inverse is a real correction, better than deleting the attention columns and hoping |
+| **Low-rank matrix completion / collaborative filtering** | The map *is* a sparse gene x trait matrix. Factorisation predicts a missing cell from the whole pattern of co-occurrence rather than from chosen features, which suits a case where no single feature carries signal (every permutation importance here is <= 0.02) |
+| **Stacking per data block with a meta-learner on out-of-fold predictions** | 732 features in 86 families, mixed types. One model over all of them hides which block contributes; a per-family model combined by a meta-learner makes each block's contribution measurable and is the honest version of our family ablations |
+| **Lookalike modelling from a seed audience** | Tiny positive sets. Ranking the genome by similarity to 65 known host-facing proteins is better posed than balanced classification against invented negatives, and it is what an ad platform does with a custom audience |
+| **Selective prediction with a reject option** (credit scoring: score bands, abstain in the middle) | Exactly our fill rule. The literature on choosing that threshold, and on reporting **coverage at fixed precision**, is directly usable -- "how many cells can we fill at 90 %" is the standard metric there |
+| **Multi-task learning with a shared representation** | Traits are correlated (host-facing, dense granule, partner). Predicting them jointly beats predicting each alone; this is stage 4 of the plan and the ToxoNet v2 design |
+| **Empirical-Bayes shrinkage toward group means** | Small-sample traits borrow strength from their group. Already used in the expression fold changes; it generalises to any thin column |
+| **Network propagation** (personalised PageRank, diffusion kernels) | Stronger than the kNN guilt-by-association already built, and it handles multi-step relationships -- what STRING and HumanBase use |
+
+### The cautionary lesson from that field, which predicts our own results
+The published psychometric work behind the Cambridge Analytica story achieved **modest** accuracy; the "thousands
+of data points per person" framing was largely marketing. The methodological point is the one we keep hitting:
+**with many weak features and few labels you get ranking ability long before you get precision.** Every run here
+shows it -- AUC 0.79 to 0.99 while precision sits below the bar. AUC is cheap; precision at a useful threshold
+is expensive. Expect that, and never report an AUC as if it were a fill rate.
+### What does not transfer
+Anything that needs their scale. They had millions of labelled people; we have 65 host-facing positives and 242
+function-labelled genes. End-to-end learned embeddings and deep nets belong to the first regime, which is why
+frozen features plus simple models remain the right choice here (stage 2 of the plan).
