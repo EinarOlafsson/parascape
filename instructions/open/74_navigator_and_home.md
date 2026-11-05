@@ -324,3 +324,78 @@ So two drivers, and both are about reaching the same goal rather than changing i
      the prospective check in instruction 73 depends on it.
 3. **Nothing is discarded.** Every panel that exists becomes a destination behind a node. The overhaul changes
    how the application is entered, not what it can do -- and the new data is what the new nodes exist to reach.
+
+## Phase 1 built (2026-11-05): the node model and the home screen
+Added: `parascape/nodes.py`, `parascape/home_panel.py`, `parascape/gene_drop.py`,
+`tests/test_nodes.py`, `tests/test_home_panel.py`, `tests/test_gene_drop.py`.
+Changed: `parascape/app.py` (`_home`, installed last so it is the tab that is up),
+`parascape/help_index.py` (a `node` kind, first in `KIND_ORDER`, and `node_entries`),
+`parascape/help_search.py` (`open_node`), `parascape/importer.py` (the separator sniff).
+
+* **Three level-1 categories** (`Gene`, `List`, `Label`) and **24 level-2 cards**: Gene 8, List 9,
+  Label 7, plus **7 level-3 question nodes** under `Label ▸ Catalogue`, one per registered question
+  except the retired `has_domain_ipr000719`. Nesting is category → node → view and no deeper, which
+  the suite checks. `Label ▸ Strategies` is marked advanced and is therefore drawn last.
+* **Nothing was removed.** `_home` is called after the other installs, so every dock is still built
+  and still tabbed; `test_nothing_was_removed_to_make_room_for_the_home_screen` names the thirteen
+  and raises each one. The home dock is the tab that is up on startup.
+* **Unavailable is a rendered state with a reason**, which is how the missing work is now visible on
+  the screen rather than discovered by clicking: `Gene ▸ Similar` (needs the phase-3 neighbour
+  space), `List ▸ Profile`, `List ▸ Mechanism`, `List ▸ Rank` (no set-level view exists),
+  `List ▸ Pulldown` (no CRAPome background), `List ▸ Answer/Project/Export` (until a list is
+  dropped), `Label ▸ Fill` (no question has cleared the 90 % frozen-test bound), and the two
+  declared gaps, which render as "cannot be answered yet" rather than as a page.
+* **Trust is inline and structural.** `Node.__post_init__` refuses a claim-bearing node that does
+  not declare probability, uncertainty and source tier, so the rule cannot be dropped by whoever
+  draws the next card. A question node carries its scoreboard -- cross-validated beside frozen test
+  -- its coverage sentence ("7,393 of 8,140 genes ... the rest are not measured, which is not a
+  negative") and its state; the catalogue header carries effective independent axes, reported as an
+  **upper bound** because the label-correlation clustering of instruction 73 has not been computed.
+* **A dropped file is a gene list.** `gene_drop` wraps `importer`, adds the resolution report in
+  which an unresolved identifier is listed rather than dropped (and an ambiguous one is never
+  guessed), and refuses an unknown extension with `importer.READABLE`. The window accepts a drop
+  anywhere through an event filter and routes it to `List ▸ Drop`.
+* **A defect the drop path found, and one it could not fix.** `importer.read_any` sniffed its
+  separator with `csv.Sniffer` and no candidate list, so on a one-column list of gene identifiers it
+  chose a LETTER: `gene\nTGME49_208830` came back as three columns split on "e". The sniff is now
+  restricted to `,`, tab, `;` and `|`, and a file with none of them is read as one column. Separate
+  and NOT fixed here: `app.apply_import` calls `identity.GeneIndex.load().resolve`, and
+  `GeneIndex` has neither `load` nor `resolve` -- the call is inside a `try/except` that silently
+  falls back to `resolve=None`, so no import has ever resolved a previous or strain accession.
+* **Still phase 1 only.** A question node opens its row in the catalogue rather than a per-question
+  panel (phase 2), `Gene ▸ Network` opens the star map as it is, without recentring or the fade
+  (phase 3), and the assistant is not yet reachable from a node (phase 4).
+
+## Two additions (Einar, 2026-11-05): a user's own layer, and the embedding as a lens
+### The embedding was undersold as `Clusters`
+He asked whether the UMAP strategies were represented by `Label → Clusters`, and doubted it. Correctly: the
+embedding is strategy **family 1 of nine** ("search the map space -- maps, walks and held-out labels", 01-06),
+plus the UMAP gallery panel, and "the regions this question lights up" is one use of it.
+
+**Fix: `Map` is one node name appearing under all three level-1 items, entering the same view with different
+context** -- a lens, not a fourth category:
+* `Gene → Map` — the space with this gene marked and its neighbourhood around it;
+* `List → Map` — the space with the set projected onto it, and what surrounds it (replaces `Project`);
+* `Label → Map` — the space coloured by the answer, showing where it concentrates (replaces `Clusters`).
+The embedding **strategies** stay where they belong, under `Label → Strategies` and `Label → Infer`: families
+1 and 2 are ways to infer, not ways to browse, and the scorecard judges them like any other.
+
+### A user's own layer, so an inference can be kept
+"There should be mechanisms that connect the one protein and labels, where if inference is done the user can
+choose to add it to their own ParaScape dataset and then it should turn up in `Predicted`."
+
+* **Accepting.** Any node that produces an inference — `Label → Infer`, `List → Answer`, `Gene → Predicted` —
+  offers **Keep**. Keeping writes the claim to the user's own layer, never to the shipped map.
+* **What is recorded with it**: the value, its probability and uncertainty, which strategy and version produced
+  it, the question, the score it was accepted at, whether it cleared the 90 % frozen-test bar, and the date.
+  A kept claim is reproducible from its record or it is not kept.
+* **Where it appears.** `Gene → Predicted` shows kept claims beside the unaccepted ones, visibly distinct from
+  both measured facts and from predictions nobody has accepted. `Facts` **never** shows a kept inference:
+  measured and inferred stay separate surfaces, which is the whole point of the probability and source columns.
+* **`Label → Fill` is the bulk form of the same action**: write the answers that clear the bar to the user's
+  layer, with the option to keep weaker ones explicitly marked exploratory. Nothing is ever written to the
+  shipped map by the application.
+* **Rules.** A kept inference is **never training data** — the no-self-training rule from instruction 72, now
+  enforceable because the layer is separate. It can be reverted, individually or by strategy version. It is
+  exportable with its provenance, so it can be shared or cited. A released map upgrade that *measures* a kept
+  claim supersedes it and says so, rather than silently agreeing with it.
