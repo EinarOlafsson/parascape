@@ -577,11 +577,13 @@ def publish(out_dir: str, log=print, readme: str | None = None,
              f"reported on seeds 4-5, so it is not the luckiest of many settings. Intervals are 95%, "
              f"by bootstrap over held-out targets and runs. "
              f"[Every number, per target and per setting](docs/calibration.md).", ""]
+    # The README carries the verdict counts and a link; the full per-strategy table is written to
+    # docs/calibration.md below. It used to be inlined here, which made one generated table 189 of
+    # the README's 366 lines -- the same numbers, in the place nobody reads them.
     for org, name in _published_spaces(summary):
         if org in summary:
             counts = pd.Series([e["grade"] for e in summary[org].values()]).value_counts()
-            block += [f"**{name}** -- " + ", ".join(f"{n} {g}" for g, n in counts.items()), "",
-                      C.markdown_table(org)]
+            block += [f"**{name}** -- " + ", ".join(f"{n} {g}" for g, n in counts.items()), ""]
     block.append(README_END)
     if README_START in text:
         a, rest = text.split(README_START, 1)
@@ -603,7 +605,7 @@ def publish(out_dir: str, log=print, readme: str | None = None,
              "[95% CI] over held-out labels and seeds, at the default settings, on "
              "*T. gondii*. [Every metric explained, the techniques behind each strategy, "
              "*P. falciparum* and the tuned settings](docs/scorecards.md).", "",
-             C.scorecard_markdown("Tg"), SCORECARD_END]
+             SCORECARD_END]
     if SCORECARD_START in text:
         a, rest = text.split(SCORECARD_START, 1)
         text = a + "\n".join(cards) + rest.split(SCORECARD_END, 1)[1]
