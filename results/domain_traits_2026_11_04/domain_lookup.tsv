@@ -1,0 +1,300 @@
+column	accession	description	gene_count	source
+dom_IPR000008	IPR000008	C2 domain	14	InterPro
+dom_IPR000048	IPR000048	IQ motif, EF-hand binding site	18	InterPro
+dom_IPR000152	IPR000152	EGF-type aspartate/asparagine hydroxylation site	11	InterPro
+dom_IPR000177	IPR000177	Apple domain	17	InterPro
+dom_IPR000182	IPR000182	GNAT domain	14	InterPro
+dom_IPR000195	IPR000195	Rab-GAP-TBC domain	16	InterPro
+dom_IPR000209	IPR000209	Peptidase S8/S53 domain	12	InterPro
+dom_IPR000210	IPR000210	BTB/POZ domain	10	InterPro
+dom_IPR000222	IPR000222	PPM-type phosphatase, divalent cation binding	10	InterPro
+dom_IPR000225	IPR000225	Armadillo	10	InterPro
+dom_IPR000253	IPR000253	Forkhead-associated (FHA) domain	10	InterPro
+dom_IPR000330	IPR000330	SNF2, N-terminal	18	InterPro
+dom_IPR000387	IPR000387	Tyrosine-specific protein phosphatases domain	10	InterPro
+dom_IPR000403	IPR000403	Phosphatidylinositol 3-/4-kinase, catalytic domain	11	InterPro
+dom_IPR000408	IPR000408	Regulator of chromosome condensation, RCC1	17	InterPro
+dom_IPR000504	IPR000504	RNA recognition motif domain	87	InterPro
+dom_IPR000571	IPR000571	Zinc finger, CCCH-type	49	InterPro
+dom_IPR000608	IPR000608	Ubiquitin-conjugating enzyme E2	17	InterPro
+dom_IPR000626	IPR000626	Ubiquitin-like domain	22	InterPro
+dom_IPR000629	IPR000629	ATP-dependent RNA helicase DEAD-box, conserved site	29	InterPro
+dom_IPR000717	IPR000717	Proteasome component (PCI) domain	11	InterPro
+dom_IPR000719	IPR000719	Protein kinase domain	168	InterPro
+dom_IPR000727	IPR000727	Target SNARE coiled-coil homology domain	11	InterPro
+dom_IPR000742	IPR000742	EGF-like domain	27	InterPro
+dom_IPR000795	IPR000795	Translational (tr)-type GTP-binding domain	21	InterPro
+dom_IPR000873	IPR000873	AMP-dependent synthetase/ligase domain	11	InterPro
+dom_IPR000884	IPR000884	Thrombospondin type-1 (TSP1) repeat	14	InterPro
+dom_IPR001005	IPR001005	SANT/Myb domain	17	InterPro
+dom_IPR001163	IPR001163	Sm domain, eukaryotic/archaea-type	15	InterPro
+dom_IPR001214	IPR001214	SET domain	18	InterPro
+dom_IPR001251	IPR001251	CRAL-TRIO lipid binding domain	13	InterPro
+dom_IPR001353	IPR001353	Proteasome, subunit alpha/beta	15	InterPro
+dom_IPR001394	IPR001394	Peptidase C19, ubiquitin carboxyl-terminal hydrolase	15	InterPro
+dom_IPR001412	IPR001412	Aminoacyl-tRNA synthetase, class I, conserved site	12	InterPro
+dom_IPR001471	IPR001471	AP2/ERF domain	45	InterPro
+dom_IPR001487	IPR001487	Bromodomain	12	InterPro
+dom_IPR001594	IPR001594	Palmitoyltransferase, DHHC domain	18	InterPro
+dom_IPR001609	IPR001609	Myosin head, motor domain	11	InterPro
+dom_IPR001611	IPR001611	Leucine-rich repeat	29	InterPro
+dom_IPR001623	IPR001623	DnaJ domain	37	InterPro
+dom_IPR001650	IPR001650	Helicase, C-terminal	79	InterPro
+dom_IPR001680	IPR001680	WD40 repeat	111	InterPro
+dom_IPR001752	IPR001752	Kinesin motor domain	21	InterPro
+dom_IPR001757	IPR001757	P-type ATPase	13	InterPro
+dom_IPR001806	IPR001806	Small GTPase	19	InterPro
+dom_IPR001841	IPR001841	Zinc finger, RING-type	64	InterPro
+dom_IPR001849	IPR001849	Pleckstrin homology domain	13	InterPro
+dom_IPR001881	IPR001881	EGF-like calcium-binding domain	15	InterPro
+dom_IPR001932	IPR001932	PPM-type phosphatase-like domain	33	InterPro
+dom_IPR001965	IPR001965	Zinc finger, PHD-type	13	InterPro
+dom_IPR002048	IPR002048	EF-hand domain	71	InterPro
+dom_IPR002073	IPR002073	3'5'-cyclic nucleotide phosphodiesterase, catalytic domain	18	InterPro
+dom_IPR002110	IPR002110	Ankyrin repeat	27	InterPro
+dom_IPR002130	IPR002130	Cyclophilin-type peptidyl-prolyl cis-trans isomerase domain	14	InterPro
+dom_IPR002347	IPR002347	Short-chain dehydrogenase/reductase SDR	15	InterPro
+dom_IPR002423	IPR002423	Chaperonin Cpn60/GroEL/TCP-1 family	10	InterPro
+dom_IPR002553	IPR002553	Clathrin/coatomer adaptor, adaptin-like, N-terminal	10	InterPro
+dom_IPR003029	IPR003029	S1 domain	10	InterPro
+dom_IPR003323	IPR003323	OTU domain	16	InterPro
+dom_IPR003409	IPR003409	MORN repeat	16	InterPro
+dom_IPR003439	IPR003439	ABC transporter-like, ATP-binding domain	24	InterPro
+dom_IPR003593	IPR003593	AAA+ ATPase domain	92	InterPro
+dom_IPR003607	IPR003607	HD/PDEase domain	18	InterPro
+dom_IPR003609	IPR003609	PAN/Apple domain	18	InterPro
+dom_IPR003959	IPR003959	ATPase, AAA-type, core	43	InterPro
+dom_IPR003960	IPR003960	ATPase, AAA-type, conserved site	20	InterPro
+dom_IPR004000	IPR004000	Actin family	11	InterPro
+dom_IPR004087	IPR004087	K Homology domain	10	InterPro
+dom_IPR004088	IPR004088	K Homology domain, type 1	11	InterPro
+dom_IPR004161	IPR004161	Translation elongation factor EFTu-like, domain 2	10	InterPro
+dom_IPR004273	IPR004273	Dynein heavy chain region D6 P-loop domain	10	InterPro
+dom_IPR004843	IPR004843	Calcineurin-like phosphoesterase domain, ApaH type	20	InterPro
+dom_IPR005225	IPR005225	Small GTP-binding protein domain	40	InterPro
+dom_IPR006073	IPR006073	GTP binding domain	22	InterPro
+dom_IPR006186	IPR006186	Serine/threonine-specific protein phosphatase/bis(5-nucleosyl)-tetraphosphatase	10	InterPro
+dom_IPR006195	IPR006195	Aminoacyl-tRNA synthetase, class II	13	InterPro
+dom_IPR006387	IPR006387	CPW-WPC domain	10	InterPro
+dom_IPR007052	IPR007052	CS domain	13	InterPro
+dom_IPR007125	IPR007125	Histone H2A/H2B/H3	10	InterPro
+dom_IPR007226	IPR007226	SRS domain	104	InterPro
+dom_IPR007863	IPR007863	Peptidase M16, C-terminal	10	InterPro
+dom_IPR008250	IPR008250	P-type ATPase, A domain superfamily	19	InterPro
+dom_IPR008271	IPR008271	Serine/threonine-protein kinase, active site	121	InterPro
+dom_IPR008927	IPR008927	6-phosphogluconate dehydrogenase-like, C-terminal domain superfamily	11	InterPro
+dom_IPR008978	IPR008978	HSP20-like chaperone	19	InterPro
+dom_IPR008979	IPR008979	Galactose-binding-like domain superfamily	11	InterPro
+dom_IPR008984	IPR008984	SMAD/FHA domain superfamily	12	InterPro
+dom_IPR008991	IPR008991	Translation protein SH3-like domain superfamily	15	InterPro
+dom_IPR009000	IPR009000	Translation protein, beta-barrel domain superfamily	29	InterPro
+dom_IPR009030	IPR009030	Growth factor receptor cysteine-rich domain superfamily	24	InterPro
+dom_IPR009057	IPR009057	Homeobox-like domain superfamily	16	InterPro
+dom_IPR009060	IPR009060	UBA-like superfamily	15	InterPro
+dom_IPR009072	IPR009072	Histone-fold	14	InterPro
+dom_IPR009080	IPR009080	Aminoacyl-tRNA synthetase, class Ia, anticodon-binding	11	InterPro
+dom_IPR009091	IPR009091	Regulator of chromosome condensation 1/beta-lactamase-inhibitor protein II	19	InterPro
+dom_IPR010920	IPR010920	LSM domain superfamily	20	InterPro
+dom_IPR011009	IPR011009	Protein kinase-like domain superfamily	196	InterPro
+dom_IPR011011	IPR011011	Zinc finger, FYVE/PHD-type	20	InterPro
+dom_IPR011012	IPR011012	Longin-like domain superfamily	21	InterPro
+dom_IPR011047	IPR011047	Quinoprotein alcohol dehydrogenase-like superfamily	12	InterPro
+dom_IPR011053	IPR011053	Single hybrid motif	10	InterPro
+dom_IPR011249	IPR011249	Metalloenzyme, LuxS/M16 peptidase-like	12	InterPro
+dom_IPR011333	IPR011333	SKP1/BTB/POZ domain superfamily	15	InterPro
+dom_IPR011527	IPR011527	ABC transporter type 1, transmembrane domain	12	InterPro
+dom_IPR011545	IPR011545	DEAD/DEAH box helicase domain	54	InterPro
+dom_IPR011701	IPR011701	Major facilitator superfamily	25	InterPro
+dom_IPR011990	IPR011990	Tetratricopeptide-like helical domain superfamily	76	InterPro
+dom_IPR011992	IPR011992	EF-hand domain pair	76	InterPro
+dom_IPR012337	IPR012337	Ribonuclease H-like superfamily	21	InterPro
+dom_IPR012340	IPR012340	Nucleic acid-binding, OB-fold	61	InterPro
+dom_IPR013087	IPR013087	Zinc finger C2H2-type	20	InterPro
+dom_IPR013320	IPR013320	Concanavalin A-like lectin/glucanase domain superfamily	13	InterPro
+dom_IPR013584	IPR013584	RAP domain	14	InterPro
+dom_IPR013602	IPR013602	Dynein heavy chain, linker	12	InterPro
+dom_IPR013766	IPR013766	Thioredoxin domain	27	InterPro
+dom_IPR014001	IPR014001	Helicase superfamily 1/2, ATP-binding domain	80	InterPro
+dom_IPR014014	IPR014014	RNA helicase, DEAD-box type, Q motif	20	InterPro
+dom_IPR014756	IPR014756	Immunoglobulin E-set	15	InterPro
+dom_IPR015424	IPR015424	Pyridoxal phosphate-dependent transferase	21	InterPro
+dom_IPR015500	IPR015500	Peptidase S8, subtilisin-related	10	InterPro
+dom_IPR015655	IPR015655	Protein phosphatase 2C family	28	InterPro
+dom_IPR015915	IPR015915	Kelch-type beta propeller	11	InterPro
+dom_IPR015940	IPR015940	Ubiquitin-associated domain	12	InterPro
+dom_IPR015947	IPR015947	PUA-like superfamily	10	InterPro
+dom_IPR016024	IPR016024	Armadillo-type fold	110	InterPro
+dom_IPR016035	IPR016035	Acyl transferase/acyl hydrolase/lysophospholipase	10	InterPro
+dom_IPR016135	IPR016135	Ubiquitin-conjugating enzyme/RWD-like	21	InterPro
+dom_IPR016181	IPR016181	Acyl-CoA N-acyltransferase	20	InterPro
+dom_IPR017441	IPR017441	Protein kinase, ATP binding site	73	InterPro
+dom_IPR017853	IPR017853	Glycoside hydrolase superfamily	13	InterPro
+dom_IPR017871	IPR017871	ABC transporter-like, conserved site	21	InterPro
+dom_IPR017907	IPR017907	Zinc finger, RING-type, conserved site	23	InterPro
+dom_IPR018108	IPR018108	Mitochondrial substrate/solute carrier	21	InterPro
+dom_IPR018200	IPR018200	Ubiquitin specific protease, conserved site	13	InterPro
+dom_IPR018247	IPR018247	EF-Hand 1, calcium-binding site	46	InterPro
+dom_IPR018253	IPR018253	DnaJ domain, conserved site	13	InterPro
+dom_IPR018303	IPR018303	P-type ATPase, phosphorylation site	18	InterPro
+dom_IPR019734	IPR019734	Tetratricopeptide repeat	46	InterPro
+dom_IPR019775	IPR019775	WD40 repeat, conserved site	37	InterPro
+dom_IPR019787	IPR019787	Zinc finger, PHD-finger	11	InterPro
+dom_IPR019821	IPR019821	Kinesin motor domain, conserved site	16	InterPro
+dom_IPR020103	IPR020103	Pseudouridine synthase, catalytic domain superfamily	19	InterPro
+dom_IPR020472	IPR020472	G-protein beta WD-40 repeat	16	InterPro
+dom_IPR020568	IPR020568	Ribosomal protein uS5 domain 2-type superfamily	29	InterPro
+dom_IPR020845	IPR020845	AMP-binding, conserved site	10	InterPro
+dom_IPR020846	IPR020846	Major facilitator superfamily domain	12	InterPro
+dom_IPR022086	IPR022086	Inner membrane complex protein	12	InterPro
+dom_IPR022742	IPR022742	Serine aminopeptidase, S33	11	InterPro
+dom_IPR023088	IPR023088	3'5'-cyclic nucleotide phosphodiesterase	14	InterPro
+dom_IPR023174	IPR023174	3'5'-cyclic nucleotide phosphodiesterase, conserved site	15	InterPro
+dom_IPR023298	IPR023298	P-type ATPase, transmembrane domain superfamily	19	InterPro
+dom_IPR023299	IPR023299	P-type ATPase, cytoplasmic domain N	14	InterPro
+dom_IPR023313	IPR023313	Ubiquitin-conjugating enzyme, active site	10	InterPro
+dom_IPR023395	IPR023395	Mitochondrial carrier domain superfamily	22	InterPro
+dom_IPR023753	IPR023753	FAD/NAD(P)-binding domain	11	InterPro
+dom_IPR023828	IPR023828	Peptidase S8, subtilisin, Ser-active site	10	InterPro
+dom_IPR024317	IPR024317	Dynein heavy chain, AAA module D4	10	InterPro
+dom_IPR024743	IPR024743	Dynein heavy chain, coiled coil stalk	10	InterPro
+dom_IPR026983	IPR026983	Dynein heavy chain	12	InterPro
+dom_IPR027409	IPR027409	GroEL-like apical domain superfamily	11	InterPro
+dom_IPR027410	IPR027410	TCP-1-like chaperonin intermediate domain superfamily	10	InterPro
+dom_IPR027413	IPR027413	GroEL-like equatorial domain superfamily	10	InterPro
+dom_IPR027417	IPR027417	P-loop containing nucleoside triphosphate hydrolase	370	InterPro
+dom_IPR027640	IPR027640	Kinesin-like protein	18	InterPro
+dom_IPR027916	IPR027916	Protein kinase-like domain, Apicomplexa	29	InterPro
+dom_IPR028078	IPR028078	AP2-coincident, C-terminal domain	15	InterPro
+dom_IPR028352	IPR028352	Protozoan surface antigen, SAG1 family	40	InterPro
+dom_IPR028889	IPR028889	Ubiquitin specific protease domain	13	InterPro
+dom_IPR029000	IPR029000	Cyclophilin-like domain superfamily	15	InterPro
+dom_IPR029021	IPR029021	Protein-tyrosine phosphatase-like	12	InterPro
+dom_IPR029033	IPR029033	Histidine phosphatase superfamily	15	InterPro
+dom_IPR029044	IPR029044	Nucleotide-diphospho-sugar transferases	21	InterPro
+dom_IPR029045	IPR029045	ClpP/crotonase-like domain superfamily	12	InterPro
+dom_IPR029052	IPR029052	Metallo-dependent phosphatase-like	25	InterPro
+dom_IPR029055	IPR029055	Nucleophile aminohydrolases, N-terminal	20	InterPro
+dom_IPR029058	IPR029058	Alpha/Beta hydrolase fold	58	InterPro
+dom_IPR029063	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily	79	InterPro
+dom_IPR029071	IPR029071	Ubiquitin-like domain superfamily	34	InterPro
+dom_IPR034204	IPR034204	Subtilisin SUB1-like catalytic domain	10	InterPro
+dom_IPR035699	IPR035699	Dynein heavy chain, hydrolytic ATP-binding dynein motor region	10	InterPro
+dom_IPR035706	IPR035706	Dynein heavy chain, ATP-binding dynein motor region	10	InterPro
+dom_IPR035892	IPR035892	C2 domain superfamily	14	InterPro
+dom_IPR035969	IPR035969	Rab-GAP-TBC domain superfamily	17	InterPro
+dom_IPR035979	IPR035979	RNA-binding domain superfamily	99	InterPro
+dom_IPR036047	IPR036047	F-box-like domain superfamily	11	InterPro
+dom_IPR036188	IPR036188	FAD/NAD(P)-binding domain superfamily	31	InterPro
+dom_IPR036236	IPR036236	Zinc finger C2H2 superfamily	14	InterPro
+dom_IPR036249	IPR036249	Thioredoxin-like superfamily	56	InterPro
+dom_IPR036259	IPR036259	MFS transporter superfamily	59	InterPro
+dom_IPR036291	IPR036291	NAD(P)-binding domain superfamily	68	InterPro
+dom_IPR036322	IPR036322	WD40-repeat-containing domain superfamily	124	InterPro
+dom_IPR036390	IPR036390	Winged helix DNA-binding domain superfamily	23	InterPro
+dom_IPR036412	IPR036412	HAD-like superfamily	41	InterPro
+dom_IPR036427	IPR036427	Bromodomain-like superfamily	12	InterPro
+dom_IPR036457	IPR036457	PPM-type phosphatase-like domain superfamily	33	InterPro
+dom_IPR036465	IPR036465	von Willebrand factor A-like domain superfamily	10	InterPro
+dom_IPR036612	IPR036612	K Homology domain, type 1 superfamily	15	InterPro
+dom_IPR036640	IPR036640	ABC transporter type 1, transmembrane domain superfamily	12	InterPro
+dom_IPR036691	IPR036691	Endonuclease/exonuclease/phosphatase superfamily	13	InterPro
+dom_IPR036755	IPR036755	SRS domain superfamily	95	InterPro
+dom_IPR036770	IPR036770	Ankyrin repeat-containing domain superfamily	30	InterPro
+dom_IPR036852	IPR036852	Peptidase S8/S53 domain superfamily	12	InterPro
+dom_IPR036855	IPR036855	Zinc finger, CCCH-type superfamily	31	InterPro
+dom_IPR036865	IPR036865	CRAL-TRIO lipid binding domain superfamily	15	InterPro
+dom_IPR036866	IPR036866	Ribonuclease Z/Hydroxyacylglutathione hydrolase-like	13	InterPro
+dom_IPR036869	IPR036869	Chaperone J-domain superfamily	37	InterPro
+dom_IPR036890	IPR036890	Histidine kinase/HSP90-like ATPase superfamily	17	InterPro
+dom_IPR036915	IPR036915	Cyclin-like superfamily	12	InterPro
+dom_IPR038765	IPR038765	Papain-like cysteine peptidase superfamily	48	InterPro
+dom_IPR041228	IPR041228	Dynein heavy chain, C-terminal domain	10	InterPro
+dom_IPR041466	IPR041466	Dynein heavy chain, AAA 5 extension domain	10	InterPro
+dom_IPR041569	IPR041569	AAA ATPase, AAA+ lid domain	19	InterPro
+dom_IPR041658	IPR041658	Dynein heavy chain AAA lid domain	10	InterPro
+dom_IPR043129	IPR043129	ATPase, nucleotide binding domain	23	InterPro
+dom_IPR043502	IPR043502	DNA/RNA polymerase superfamily	10	InterPro
+dom_IPR043519	IPR043519	Nucleotidyltransferase superfamily	13	InterPro
+dom_IPR044492	IPR044492	P-type ATPase, haloacid dehalogenase domain	10	InterPro
+dom_IPR045864	IPR045864	Class II Aminoacyl-tRNA synthetase/Biotinyl protein ligase (BPL) and lipoyl protein ligase (LPL)	21	InterPro
+dom_IPR045877	IPR045877	RNA-binding protein ZFP36-like	14	InterPro
+dom_IPR046341	IPR046341	SET domain superfamily	21	InterPro
+dom_IPR047575	IPR047575	Sm domain	15	InterPro
+dom_PF00004	PF00004	ATPase, AAA-type, core	42	Pfam
+dom_PF00005	PF00005	ABC transporter-like, ATP-binding domain	24	Pfam
+dom_PF00009	PF00009	Translational (tr)-type GTP-binding domain	21	Pfam
+dom_PF00022	PF00022	Actin family	11	Pfam
+dom_PF00024	PF00024	PAN/Apple domain	16	Pfam
+dom_PF00063	PF00063	Myosin head, motor domain	11	Pfam
+dom_PF00069	PF00069	Protein kinase domain	129	Pfam
+dom_PF00071	PF00071	Small GTPase	19	Pfam
+dom_PF00076	PF00076	RNA recognition motif domain	78	Pfam
+dom_PF00082	PF00082	Peptidase S8/S53 domain	12	Pfam
+dom_PF00085	PF00085	Thioredoxin domain	19	Pfam
+dom_PF00106	PF00106	Short-chain dehydrogenase/reductase SDR	12	Pfam
+dom_PF00118	PF00118	Chaperonin Cpn60/GroEL/TCP-1 family	10	Pfam
+dom_PF00122	PF00122		12	Pfam
+dom_PF00125	PF00125	Histone H2A/H2B/H3	10	Pfam
+dom_PF00149	PF00149	Calcineurin-like phosphoesterase domain, ApaH type	20	Pfam
+dom_PF00153	PF00153	Mitochondrial substrate/solute carrier	21	Pfam
+dom_PF00160	PF00160	Cyclophilin-type peptidyl-prolyl cis-trans isomerase domain	14	Pfam
+dom_PF00176	PF00176	SNF2, N-terminal	18	Pfam
+dom_PF00179	PF00179	Ubiquitin-conjugating enzyme E2	17	Pfam
+dom_PF00225	PF00225	Kinesin motor domain	21	Pfam
+dom_PF00226	PF00226	DnaJ domain	30	Pfam
+dom_PF00227	PF00227	Proteasome, subunit alpha/beta	15	Pfam
+dom_PF00233	PF00233	3'5'-cyclic nucleotide phosphodiesterase, catalytic domain	18	Pfam
+dom_PF00240	PF00240	Ubiquitin-like domain	13	Pfam
+dom_PF00270	PF00270	DEAD/DEAH box helicase domain	54	Pfam
+dom_PF00271	PF00271	Helicase, C-terminal	75	Pfam
+dom_PF00400	PF00400	WD40 repeat	76	Pfam
+dom_PF00415	PF00415	Regulator of chromosome condensation, RCC1	16	Pfam
+dom_PF00439	PF00439	Bromodomain	11	Pfam
+dom_PF00443	PF00443	Peptidase C19, ubiquitin carboxyl-terminal hydrolase	15	Pfam
+dom_PF00481	PF00481	PPM-type phosphatase-like domain	29	Pfam
+dom_PF00498	PF00498	Forkhead-associated (FHA) domain	10	Pfam
+dom_PF00501	PF00501	AMP-dependent synthetase/ligase domain	11	Pfam
+dom_PF00566	PF00566	Rab-GAP-TBC domain	16	Pfam
+dom_PF00583	PF00583	GNAT domain	11	Pfam
+dom_PF00642	PF00642	Zinc finger, CCCH-type	20	Pfam
+dom_PF00650	PF00650	CRAL-TRIO lipid binding domain	11	Pfam
+dom_PF00664	PF00664	ABC transporter type 1, transmembrane domain	11	Pfam
+dom_PF00702	PF00702		10	Pfam
+dom_PF00847	PF00847	AP2/ERF domain	45	Pfam
+dom_PF00856	PF00856	SET domain	15	Pfam
+dom_PF01399	PF01399	Proteasome component (PCI) domain	10	Pfam
+dom_PF01423	PF01423	Sm domain, eukaryotic/archaea-type	15	Pfam
+dom_PF01529	PF01529	Palmitoyltransferase, DHHC domain	18	Pfam
+dom_PF01602	PF01602	Clathrin/coatomer adaptor, adaptin-like, N-terminal	10	Pfam
+dom_PF01926	PF01926	GTP binding domain	21	Pfam
+dom_PF02338	PF02338	OTU domain	14	Pfam
+dom_PF02493	PF02493	MORN repeat	15	Pfam
+dom_PF03028	PF03028		10	Pfam
+dom_PF03144	PF03144	Translation elongation factor EFTu-like, domain 2	10	Pfam
+dom_PF04092	PF04092	SRS domain	104	Pfam
+dom_PF04969	PF04969	CS domain	11	Pfam
+dom_PF05193	PF05193	Peptidase M16, C-terminal	10	Pfam
+dom_PF07690	PF07690	Major facilitator superfamily	25	Pfam
+dom_PF07992	PF07992	FAD/NAD(P)-binding domain	11	Pfam
+dom_PF08373	PF08373	RAP domain	12	Pfam
+dom_PF08393	PF08393	Dynein heavy chain, linker	12	Pfam
+dom_PF09717	PF09717	CPW-WPC domain	10	Pfam
+dom_PF12146	PF12146	Serine aminopeptidase, S33	11	Pfam
+dom_PF12314	PF12314	Inner membrane complex protein	12	Pfam
+dom_PF12774	PF12774		10	Pfam
+dom_PF12775	PF12775		10	Pfam
+dom_PF12777	PF12777		10	Pfam
+dom_PF12780	PF12780		10	Pfam
+dom_PF12781	PF12781		10	Pfam
+dom_PF12796	PF12796	Ankyrin repeat	19	Pfam
+dom_PF13499	PF13499	EF-hand domain	32	Pfam
+dom_PF13540	PF13540		12	Pfam
+dom_PF13639	PF13639	Zinc finger, RING-type	20	Pfam
+dom_PF14295	PF14295	PAN/Apple domain	12	Pfam
+dom_PF14531	PF14531	Protein kinase-like domain, Apicomplexa	29	Pfam
+dom_PF14580	PF14580		10	Pfam
+dom_PF14733	PF14733	AP2-coincident, C-terminal domain	15	Pfam
+dom_PF17852	PF17852		10	Pfam
+dom_PF17862	PF17862	AAA ATPase, AAA+ lid domain	19	Pfam
+dom_PF18198	PF18198		10	Pfam
+dom_PF18199	PF18199		10	Pfam

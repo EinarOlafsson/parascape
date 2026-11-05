@@ -1,0 +1,21 @@
+item	genes
+genes in universe	8140
+genes with at least one InterPro entry	4957
+genes with at least one Pfam family	4310
+genes with any domain	4967
+genes with no domain (domain_novel)	3173
+InterPro families at >= 10 genes	221
+Pfam families at >= 10 genes	78
+genes with at least one kept family column True	2905
+InterPro lists differing from raw file	3
+InterPro ID lists at the 20-ID cap	1
+class domclass_protein_kinase	173
+class domclass_ap2_apiap2	45
+class domclass_srs_sag	110
+class domclass_ef_hand	82
+class domclass_wd40	129
+class domclass_ankyrin	30
+class domclass_rna_binding	104
+class domclass_proteasome_ubiquitin	199
+class domclass_rhoptry_kinase_ropk	50
+class domclass_tm_rich	668

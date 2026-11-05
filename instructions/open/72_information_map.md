@@ -262,3 +262,28 @@ conflicted genes kept, because Einar's review resolves each one.
   claims, while the curated gold-negative set (immunogold EM placing them in the IVN or PV lumen) says the
   opposite; the map resolves the 0.90-against-0.90 tie to "not host-facing". Flipping both still fails the bar
   (best bound 0.754), but the contested direction is the one that decides the question.
+
+## Domain columns (2026-11-04), and the easy-contrast trap confirmed as a general pattern
+`results/domain_traits_2026_11_04/`: **313 tier-2 columns** over the 8,140 genes -- 299 family flags present in
+at least 10 genes (221 InterPro, 78 Pfam; the cutoff is visible at 5/10/20/50 in the notebook), 10 named classes
+(protein kinase 173, WD40 129, SRS/SAG 110, RNA-binding 104, EF-hand 82, rhoptry kinase 50, AP2 45, ankyrin 30,
+proteasome/ubiquitin 199, transmembrane-rich 668) and 4 counts. CDPK1, ROP18, AP2XI-5 and SAG1 are all caught by
+the class they should be. 3,173 genes (39 %) carry no domain at all. Source: the ToxoDB InterPro gene-attribute
+download, whose own registry note warns "domain annotation partly records study effort, not conserved
+architecture"; a False flag means not found, not proven absent.
+
+**`domain_novel` (no InterPro and no Pfam) is the clearest demonstration yet of the easy-contrast trap:**
+
+| Comparison | host-facing with no domain | the other group | odds ratio | p |
+|---|---|---|---|---|
+| host-facing vs all genes | 46 of 65 (71 %) | 3,173 of 8,140 (39 %) | 3.79 | 2.9e-07 |
+| host-facing vs all 520 negatives | 71 % | 72 of 520 (14 %) | 15.06 | 2e-21 |
+| **host-facing vs Einar's 32 vacuole-resident negatives** | 71 % | **27 of 32 (84 %)** | **0.45** | **0.21** |
+
+Against the whole negative set it looks spectacular; against the negatives that answer the question there is no
+difference at all, and the vacuole-resident proteins are if anything *more* often domain-free. Structural
+novelty separates secreted lineage-specific proteins from conserved housekeeping proteins -- not exported from
+vacuole-resident. **Rule for every future column: report it against the hard negatives, never against "all
+genes" or "all negatives".** This does not contradict the earlier foldseek result that host-facing domains are
+structurally novel; it says novelty is a property of the secretory repertoire, so it cannot locate a protein
+within it.
