@@ -332,13 +332,23 @@ Changed: `parascape/app.py` (`_home`, installed last so it is the tab that is up
 `parascape/help_index.py` (a `node` kind, first in `KIND_ORDER`, and `node_entries`),
 `parascape/help_search.py` (`open_node`), `parascape/importer.py` (the separator sniff).
 
-* **Three level-1 categories** (`Gene`, `List`, `Label`) and **24 level-2 cards**: Gene 8, List 9,
+* **Three level-1 categories** (`Gene`, `List`, `Label`) and **25 level-2 cards**: Gene 9, List 9,
   Label 7, plus **7 level-3 question nodes** under `Label ▸ Catalogue`, one per registered question
   except the retired `has_domain_ipr000719`. Nesting is category → node → view and no deeper, which
   the suite checks. `Label ▸ Strategies` is marked advanced and is therefore drawn last.
 * **Nothing was removed.** `_home` is called after the other installs, so every dock is still built
   and still tabbed; `test_nothing_was_removed_to_make_room_for_the_home_screen` names the thirteen
   and raises each one. The home dock is the tab that is up on startup.
+* **`Map` is one node under all three categories** (`nodes.MAP_LENS`), the same `umap_gallery_panel`
+  entered with three contexts -- a gene marked, a set projected, a column coloured -- rather than a
+  fourth category; `Project` and `Clusters` are gone. The embedding strategies stay under
+  `Label ▸ Strategies` and `Label ▸ Infer`.
+* **The user's own layer has its hook, not its implementation.** `Node.produces_inference` marks the
+  four nodes that show an inference (`Gene ▸ Predicted`, `List ▸ Answer`, `Label ▸ Infer`,
+  `Label ▸ Fill`), which is where **Keep** will attach once the harness produces claims to keep. Two
+  structural guarantees already hold: a node that shows an inference must also show its probability,
+  uncertainty and source tier, and `Gene ▸ Facts` **raises** if it is ever marked as showing an
+  inference -- measured and inferred stay separate surfaces.
 * **Unavailable is a rendered state with a reason**, which is how the missing work is now visible on
   the screen rather than discovered by clicking: `Gene ▸ Similar` (needs the phase-3 neighbour
   space), `List ▸ Profile`, `List ▸ Mechanism`, `List ▸ Rank` (no set-level view exists),
@@ -399,3 +409,37 @@ choose to add it to their own ParaScape dataset and then it should turn up in `P
   enforceable because the layer is separate. It can be reverted, individually or by strategy version. It is
   exportable with its provenance, so it can be shared or cited. A released map upgrade that *measures* a kept
   claim supersedes it and says so, rather than silently agreeing with it.
+
+## Label, designed against Einar's four requirements (2026-11-05)
+He accepts `Gene` (exploratory) and `List` (compare your data to ParaScape), and names `Label` as the hard part:
+"this is where inference happens and where the data is actually used to generate new knowledge." His four
+requirements, and what each forces:
+
+| Requirement | What it forces in the Label nodes |
+|---|---|
+| Lose nothing from the previous ParaScape | all 39 strategies in their 9 mechanism families remain, reachable from `Strategies`, each keeping its own self-test and scorecard task; the UMAP gallery, discoveries, claims and strategy panels are the destinations |
+| All the new strategies implemented, accessible, intuitive, **controlled** | the new ones (positive-unlabelled weighting, propensity weighting, matrix completion, per-family stacking, lookalike ranking, selective prediction, network propagation, multi-task, shrinkage, condition fingerprints) enter the **same** catalogue with the **same** quality control: nested cross-validation, a frozen partition, baselines, calibration. An untested strategy is listed as untested, never offered as if it were equal |
+| Easy to add new data as it arrives | a column cannot enter without an information category and a family; the picker groups by those, so new data appears in the right place without a UI change |
+| Easy to save inference runs with full metadata | `Runs` is a node, and a run is reproducible or it is not saved |
+
+### Label — level 2
+| Node | Description on the card |
+|---|---|
+| **Catalogue** | Every question the data can be asked, how well each is answered, and for how many genes |
+| **Infer** | Choose a question, choose which data may be used, choose a strategy, and predict it for the genes nobody has measured |
+| **Strategies** | Every way to infer, grouped by mechanism, each stating what it may use and how it was tested |
+| **Scorecard** | How a strategy did on answers it was not allowed to see, against the simple baselines |
+| **Map** | The space of all genes coloured by this question, and where the answer concentrates |
+| **Runs** | Every inference you have run, what data it used, and the result — re-runnable |
+| **Fill** | Keep only the answers strong enough; everything weaker stays marked exploratory |
+| **Compare** | Two questions side by side, including whether they are secretly the same question |
+
+### `Infer` is a three-step builder, because that is the intuitive form of "some or all data"
+1. **Question** — pick it, or write a new one from a label source; the state says whether it can be answered.
+2. **Data** — pick *some or all* by **information category**, family and tier. The panel states what is in,
+   what was **excluded automatically to prevent circularity** (with the categories named and counted), and what
+   a force-include would cost. This step is what makes a UMAP-plus-clustering run honest rather than circular.
+3. **Strategy** — pick one, several, or let the scorecard choose; each shows what it needs and whether it has
+   ever been tested on this kind of question.
+Then it runs, and returns the cross-validated and frozen-test numbers together, the baselines, the calibration,
+and a **Keep** action that writes the accepted claims to the user's own layer.
