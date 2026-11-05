@@ -360,3 +360,21 @@ an autotrade backtest). ParaScape was reduced without pausing anything:
   and barely affected. **To restore, delete `55-share-with-plaque-v8.conf`, put `--wide-cpus
   8,9,10,11,12,13,14,24,25,26,27,28,29,30` back in `60-wide-when-idle.conf`, and set WORKERS=2, THREADS=16,
   EXTRA_WORKERS=1.**
+
+## 2026-11-04: HDX-MS projects excluded from the uniform re-search
+PXD039335 failed twice on refused downloads. The file turned out to be reachable (PRIDE is intermittently
+unavailable rather than blocking us), but its filenames revealed the real problem: it is **hydrogen-deuterium
+exchange MS**. Four of the 203 selected projects are HDX: **PXD034607** ("Hydrogen Deuterium Exchange of MAF1
+and RalGAP", 11.3 GB), **PXD031816**, **PXD023791** and **PXD039335** (102 RAW files in total).
+* **Why they must not go through this pipeline:** HDX peptides carry a variable, unknown number of deuteriums,
+  so their masses are shifted by amounts the search does not model. Searching them against an undeuterated
+  FASTA identifies a fraction of the spectra, and any protein-level quantity would reflect deuteration rather
+  than abundance.
+* **Measured, not assumed.** The two HDX projects already searched yield **1,272 and 1,883 PSMs per run**
+  against **10,717 / 13,316 / 45,527** for the standard bottom-up projects in the same pipeline -- about a tenth.
+* PXD034607 and PXD039335 now carry `unsupported.json` with the reason, so the queue skips them rather than
+  retrying forever. PXD031816 and PXD023791, already searched, carry `NOT_COMPARABLE.json`: the spectra are kept
+  but their PSM, peptide and LFQ tables must not be used as expression or co-purification evidence, and they
+  must be left out of the CRAPome background.
+* **Detection rule for future selections:** HDX is visible in RAW filenames (`HDXMS`, `HDX`) more reliably than
+  in the project title -- only PXD034607 says so in its title, while all four say so in their filenames.
