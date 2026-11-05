@@ -385,3 +385,12 @@ and RalGAP", 11.3 GB), **PXD031816**, **PXD023791** and **PXD039335** (102 RAW f
   (~80 days for the remaining 1,746 instead of ~22). The proteomics queue is download-bound and unaffected.
   A middle ground was offered if the maintainer wants RNA back sooner: 4 threads on CPUs 0-3, which leaves v8
   28 free cores and should keep it near 6 windows/s.
+* **Widened to CPUs 0-23 (2026-11-05 07:11), maintainer decision via the tutorials session:** v8 needs only
+  1-2 free cores. `55-share-with-plaque-v8.conf` now sets `CPUAffinity=0-23` (Nice=19, idle IO unchanged); the
+  guard has fast CPUs 0-23, protected 0-7, and **wide mode stays OFF so cores 24-31 can never be handed over** --
+  that is the mechanism that would otherwise creep back onto v8. Quantifier: 3 workers x 6 threads = 18, plus
+  Sage 4, so 22 threads inside a 24-core range, slack left on purpose. Verified by walking every thread of both
+  ParaScape cgroups: none is permitted on 24-31, and v8 was at 98.6 % CPU immediately after.
+* **Correction to the cost estimate:** the 0-7 cap was predicted to cost ~68 runs/day; measured overnight it was
+  18 runs in 6 h (~72/day), i.e. ~24 days to finish the queue rather than the ~80 claimed. One run on 4 threads
+  is far more efficient than three competing for 16, so stepping back to 0-7 is much cheaper than first stated.
