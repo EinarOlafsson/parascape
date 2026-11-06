@@ -101,10 +101,83 @@ def type_and_wait(page, qtbot, text):
     page.refresh()
 
 
-def test_typing_builds_a_row_of_cards_and_a_details_pane(page, qtbot):
+def test_typing_alone_shows_nothing_until_return(page, qtbot):
+    """Einar: "when I type things in the navigator they instantly appear, they should wait
+    until I hit enter"."""
+    page.field.setText("rhoptry")
+    page._edited("rhoptry")
+    qtbot.wait(300)
+    assert page._cards == [], "cards appeared before Return"
+    assert "Return" in page.feedback.text()
+
+
+def test_return_searches_and_a_second_return_opens(page, qtbot):
+    seen = []
+    page.chosen.connect(lambda kind, key: seen.append((kind, key)))
+    page.field.setText("map")
+    page.submit()
+    assert page._cards and seen == [], "the first Return searches, it does not open"
+    page.submit()
+    assert seen == [("module", "map")], "the second Return opens the highlighted card"
+
+
+def test_editing_after_a_search_asks_for_return_again(page, qtbot):
     type_and_wait(page, qtbot, "rhoptry")
-    assert page._cards and page.row.isVisible() and page.details.isVisible()
-    assert page.current() is page._cards[0].suggestion
+    page.field.setText("rhoptry neck")
+    page._edited("rhoptry neck")
+    assert page.feedback.text() == "Press Return to search."
+
+
+def test_cards_are_spacrs_squares_with_an_icon_and_a_light_centred_name(page, qtbot):
+    """Einar: the cards must look exactly like spaCR's. spaCR's are 224 px squares (smaller
+    only when the window cannot fit them), an icon over an 18 px light name, nothing else."""
+    from PySide6 import QtWidgets
+    page.resize(1600, 900)
+    type_and_wait(page, qtbot, "rhoptry")
+    card = page._cards[0]
+    final = card._final
+    assert final.width() == final.height() == NV.CARD_SIDE
+    assert card.objectName() == "EasySuggestionCard"
+    labels = card.findChildren(QtWidgets.QLabel)
+    assert any(l.pixmap() is not None and not l.pixmap().isNull() for l in labels), "no icon"
+    assert "18px" in card.name_label.styleSheet() and "300" in card.name_label.styleSheet()
+    assert len([l for l in labels if l.text()]) == 1, "spaCR cards carry the name and nothing else"
+
+
+def test_the_cards_sit_above_the_field_and_the_details_below_it(page, qtbot):
+    """spaCR's arrangement: the row of cards over the centred field, the description at the
+    foot of the page."""
+    page.resize(1600, 900)
+    type_and_wait(page, qtbot, "rhoptry")
+    field = page.field.geometry()
+    assert page._cards[0]._final.bottom() < field.top()
+    assert page.details.geometry().top() > field.bottom()
+
+
+def test_a_gene_card_names_the_product_not_the_accession(page, qtbot):
+    """Eight cards reading TGME49_... could not be told apart without hovering each."""
+    type_and_wait(page, qtbot, "TGME49_223920")
+    card = page._cards[0]
+    assert card.suggestion.kind == "gene"
+    assert "RON3" in card.name_label.text()
+    assert "TGME49_223920" in card.suggestion.detail
+
+
+def test_hovering_a_card_describes_it_below(page, qtbot):
+    type_and_wait(page, qtbot, "rhoptry")
+    second = page._cards[1]
+    page.explain(second)
+    assert second.suggestion.title.split()[0] in page.details.toPlainText()
+
+
+def test_every_card_icon_exists(index):
+    """A missing PNG would draw an empty square, silently."""
+    import os
+    from parascape import modules as MOD
+    for m in MOD.MODULES:
+        assert os.path.isfile(NV.icon_path(NV.Suggestion("module", m.key, m.name))), m.key
+    for kind in ("gene", "dataset", "question", "strategy", "guide", "panel"):
+        assert os.path.isfile(NV.icon_path(NV.Suggestion(kind, "x", "x"))), kind
 
 
 def test_return_opens_the_first_suggestion(page, qtbot):

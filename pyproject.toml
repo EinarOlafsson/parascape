@@ -74,7 +74,7 @@ packages = ["parascape", "parascape.spaces", "parascape.backdrops"]
 include-package-data = false
 
 [tool.setuptools.package-data]
-parascape = ["data_manifest.json", "data/icons/*.svg"]
+parascape = ["data_manifest.json", "data/icons/*.svg", "data/icons/spacr/*.png"]
 
 [tool.setuptools.exclude-package-data]
 parascape = ["data/embeddings/*"]

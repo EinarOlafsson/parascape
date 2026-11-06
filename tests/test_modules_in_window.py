@@ -159,3 +159,22 @@ def test_tiles_for_docks_built_late_are_not_greyed(window):
     for key in ("jobs", "console", "infer", "network", "datasets", "export"):
         assert key not in unavailable, f"{key} greyed: {unavailable.get(key)}"
     assert set(unavailable) == {"structure", "runs", "fill", "list"}, unavailable
+
+
+def test_the_navigator_can_be_turned_off_from_view_and_help(window, tmp_path, monkeypatch):
+    """Einar: "I couldn't turn off the navigator in View or Tools like I can in spaCR"."""
+    from PySide6 import QtCore
+    from parascape.backdrops import _compat as AC
+    path = str(tmp_path / "landing.ini")
+    monkeypatch.setattr(AC, "_settings",
+                        lambda: QtCore.QSettings(path, QtCore.QSettings.Format.IniFormat))
+    action = window.landing_navigator_action
+    for menu_name in ("View", "Help"):
+        menu = next(a.menu() for a in window.menuBar().actions()
+                    if a.text().replace("&", "") == menu_name)
+        assert action in menu.actions(), f"no Navigator switch in {menu_name}"
+    action.setChecked(False)
+    assert window.landing.page == "Modules"
+    assert not any(b.isVisibleTo(window.landing) for b in window.landing._switch.buttons())
+    action.setChecked(True)
+    assert window.landing.page == "Navigator"

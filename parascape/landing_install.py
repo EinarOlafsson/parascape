@@ -304,17 +304,35 @@ def install(window):
     window.addAction(home)
     window.landing_home_action = home
 
+    navigator = QtGui.QAction("Navigator", window, checkable=True)
+    navigator.setChecked(landing.navigator_enabled())
+    navigator.setToolTip("Show the Navigator -- one field for a gene, a question, a module or a "
+                         "dataset -- as the first page of Home. Off, Home is the module tiles alone.")
+    navigator.setStatusTip("Turn the Navigator on or off")
+
+    def toggle(on):
+        landing.set_navigator_enabled(on)
+        enter_landing(window)
+    navigator.toggled.connect(toggle)
+    window.landing_navigator_action = navigator
+
     menu = _view_menu(window)
     if menu is not None:
         menu.addSeparator()
         menu.addAction(home)
+        menu.addAction(navigator)
         menu.addMenu(_animation_menu(window, landing))
+    # Also in Help, which is where spaCR keeps it; Einar looked for it in View.
+    for top in window.menuBar().actions():
+        if top.text().replace("&", "") == "Help" and top.menu() is not None:
+            top.menu().addAction(navigator)
 
     window._landing_cover = _Cover(window)
     window.installEventFilter(window._landing_cover)
     _watch(window)
     _arm_later(window)
     window._landing_stay_actions.add(home)
+    window._landing_stay_actions.add(navigator)
     enter_landing(window)
     return landing
 

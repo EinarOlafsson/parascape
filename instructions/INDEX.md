@@ -101,7 +101,7 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 87 | [The network as a navigable universe](open/87_network_universe.md) — depth of field from the centre, click to travel, edge and layout controls on the right |
 | 86 | [Every module in spaCR's module shell](open/86_spacr_module_shell.md) — settings left, console, AI, actions, live preview, hyperparameter search, collapsible |
 | 85 | [Retire the old ParaScape home screen](open/85_retire_the_old_home_screen.md) — the landing is the only home; nothing the old node-card dock did is lost |
-| 84 | [The Navigator, exactly as spaCR's](open/84_navigator_exactly_like_spacr.md) — a View switch, search on Return, spaCR's 224 px square cards with icon and light centred name |
+| 84 | [The Navigator, exactly as spaCR's](open/84_navigator_exactly_like_spacr.md) — **built, waiting on Einar to compare** · a View switch, search on Return, spaCR's 224 px square cards with icon and light centred name |
 | 83 | [Move ParaScape from PyQt6 to PySide6](open/83_pyside6_migration.md) — done 2026-11-05: 6,550 passed; five latent defects found, two that would have shipped |
 | 82 | [Fingerprints from a literature meta-analysis: gene-set signatures](open/82_literature_set_fingerprints.md) — the compartment ladder; rung 4 is the hard-negative set whose absence capped host-facing at 0.822 |
 | 81 | [Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples](open/81_requantification_topup.md) — queued behind the new downloads; 40 zero-parasite runs first |

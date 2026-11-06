@@ -41,13 +41,13 @@ from . import theme as TH
 #: thing to use.
 FIELD_H = 64
 FIELD_RADIUS = 28
-FIELD_MAX_W = 760
-CARD_W = 220
-CARD_H = 104
-#: How long typing must pause before suggestions refresh. spaCR waits 600 ms because
-#: it inspects a path on disk; ParaScape's search is in memory, so it can answer
-#: sooner without searching on every keystroke of a fast typist.
-DEBOUNCE_MS = 180
+FIELD_MIN_W = 720             # spaCR: min(max(720, placeholder width), width - 48)
+CARD_SIDE = 224               # spaCR: square cards, side min(224, room)
+CARD_GAP = 20
+ICON_PX = 96
+GROW_MS = 220                 # the cards grow into place, as spaCR's do
+GROW_STAGGER_MS = 35
+DETAILS_H = 150
 MAX_CARDS = 24
 
 
@@ -128,66 +128,6 @@ def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> li
     return unique[:limit]
 
 
-def navigator_qss(palette: dict) -> str:
-    """spaCR's Navigator rules, against ParaScape's palette."""
-    P = palette
-    return f"""
-QWidget#NavigatorPage {{ background: transparent; }}
-QLineEdit#NavigatorField {{
-    background: {P["surface"]};
-    color: {P["fg"]};
-    border: 1px solid {P["border_soft"]};
-    border-radius: {FIELD_RADIUS}px;
-    font-family: {TH.FONT_FAMILY};
-    font-size: 16px;
-    padding: 0px 24px;
-    placeholder-text-color: {P["fg_muted"]};
-    selection-background-color: {P["accent"]};
-}}
-QLineEdit#NavigatorField:focus {{ border: 1px solid {P["accent"]}; }}
-QPushButton#NavigatorAsk {{
-    color: {P["fg_muted"]}; background: transparent; border: none;
-    font-size: 15px; padding: 0px 6px;
-}}
-QPushButton#NavigatorAsk:hover {{ color: {P["accent"]}; }}
-QPushButton#SuggestionCard {{
-    background: {P["surface"]};
-    color: {P["fg"]};
-    border: 1px solid {P["border_soft"]};
-    border-radius: 16px;
-    padding: 10px 12px;
-    text-align: left;
-}}
-QPushButton#SuggestionCard:hover, QPushButton#SuggestionCard:focus {{
-    border: 1px solid {P["accent"]};
-    background: {P["surface_hi"]};
-}}
-QPushButton#SuggestionCard[current="true"] {{ border: 1px solid {P["accent"]}; }}
-QLabel#CardKind {{ color: {P["accent"]}; background: transparent; font-size: 11px;
-                   font-weight: 600; letter-spacing: 0.4px; }}
-QLabel#CardTitle {{ color: {P["fg"]}; background: transparent; font-size: 14px; font-weight: 500; }}
-QLabel#CardSub {{ color: {P["fg_muted"]}; background: transparent; font-size: 11px; font-weight: 300; }}
-QTextBrowser#NavigatorDetails {{
-    color: {P["fg"]}; background: {P["surface"]};
-    border: 1px solid {P["border_soft"]}; border-radius: 10px;
-    padding: 8px 12px; font-size: 14px;
-}}
-QTextBrowser#NavigatorDetails QScrollBar:vertical {{ background: transparent; width: 8px; }}
-QTextBrowser#NavigatorDetails QScrollBar::handle:vertical {{ background: {P["border"]};
-    border-radius: 4px; min-height: 24px; }}
-QTextBrowser#NavigatorDetails QScrollBar::add-line:vertical,
-QTextBrowser#NavigatorDetails QScrollBar::sub-line:vertical {{ height: 0px; }}
-QLabel#NavigatorFeedback {{ color: {P["fg_muted"]}; background: transparent; font-size: 13px; }}
-QLabel#NavigatorHint {{ color: {P["fg_muted"]}; background: transparent; font-size: 12px; }}
-QScrollArea#NavigatorRow, QWidget#NavigatorRowBody {{ background: transparent; border: none; }}
-QScrollArea#NavigatorRow QScrollBar:horizontal {{ background: transparent; height: 8px; }}
-QScrollArea#NavigatorRow QScrollBar::handle:horizontal {{ background: {P["border"]};
-    border-radius: 4px; min-width: 32px; }}
-QScrollArea#NavigatorRow QScrollBar::add-line:horizontal,
-QScrollArea#NavigatorRow QScrollBar::sub-line:horizontal {{ width: 0px; }}
-"""
-
-
 def _subtitle(text: str) -> str:
     """The informative part of an index summary.
 
@@ -211,64 +151,189 @@ def _clip(text: str, n: int) -> str:
     return (cut or text[:n]).rstrip(" ·,;:—-") + "…"
 
 
+#: spaCR's card artwork, by ParaScape module and by the kind of a result. The images
+#: are spaCR's own (white line art on transparency, under spaCR's licence), so a
+#: ParaScape card carries the same marks as a spaCR one rather than look-alikes.
+_MODULE_ICON = {
+    "gene": "profiler", "structure": "layer_viewer", "partners": "graph_builder",
+    "expression": "pca", "map": "umap", "network": "graph_builder", "cell": "image_scatter",
+    "gallery": "trellis", "questions": "experiment_design", "infer": "ml_analyze",
+    "strategies": "model_zoo", "scorecard": "model_compare", "runs": "run_history",
+    "fill": "regression", "drop": "download", "screen": "hit_list", "list": "tabulate",
+    "export": "methods_export", "datasets": "data_manager", "information": "feature_dict",
+    "jobs": "queue", "console": "report",
+}
+_KIND_ICON = {"gene": "profiler", "dataset": "db_browser", "question": "experiment_design",
+              "strategy": "model_zoo", "guide": "report", "panel": "settings", "node": "settings"}
+
+
+def icon_path(suggestion: Suggestion) -> str:
+    """The spaCR artwork for a card, as a file path."""
+    from pathlib import Path
+    name = (_MODULE_ICON.get(suggestion.key) if suggestion.kind == "module"
+            else _KIND_ICON.get(suggestion.kind)) or "settings"
+    return str(Path(__file__).with_name("data") / "icons" / "spacr" / f"{name}.png")
+
+
+def card_name(suggestion: Suggestion) -> str:
+    """What the card says, in spaCR's one large light line.
+
+    spaCR's cards show a module name and nothing else. ParaScape's results are not all
+    modules: a search for "rhoptry" returns eight genes, and eight cards reading
+    TGME49_... would be indistinguishable without hovering each. So a gene card shows
+    its product, the thing that tells them apart, and the accession goes to the
+    details panel with everything else.
+    """
+    if suggestion.kind == "gene" and suggestion.subtitle:
+        return _clip(suggestion.subtitle, 60)
+    return _clip(suggestion.title, 60)
+
+
+#: spaCR's maturity colours, used for the cards' hover rim and fill.
+STAGE_HOVER = {"stable": "#3B82F6", "beta": "#FF00FF", "alpha": "#00CEC8"}
+
+
+def _rgba(hex_colour: str, alpha: float) -> str:
+    c = QtGui.QColor(hex_colour)
+    return f"rgba({c.red()}, {c.green()}, {c.blue()}, {alpha})"
+
+
+def navigator_qss(palette: dict) -> str:
+    """spaCR's Navigator stylesheet, value for value (`_EasyHomePage.refresh`)."""
+    P = palette
+    surface = "rgb(25, 25, 25)"               # spaCR's own field and card fill, not a token
+    details = "rgba(25, 25, 25, 0.92)"
+    stage_rules = "\n".join(
+        f"""QPushButton#EasySuggestionCard[stage="{stage}"]:hover {{
+    background-color: {_rgba(hue, 0.22)}; border: 1px solid {hue}; }}
+QPushButton#EasySuggestionCard[stage="{stage}"]:pressed {{
+    background-color: {_rgba(hue, 0.40)}; border: 1px solid {hue}; }}"""
+        for stage, hue in STAGE_HOVER.items())
+    return f"""
+QWidget#NavigatorPage {{ background: transparent; }}
+QWidget#NavigatorPage QWidget {{ font-family: "Open Sans"; font-weight: 300; }}
+QLineEdit#NavigatorField {{
+    background: {surface}; color: {P["fg"]}; border: none; border-radius: {FIELD_RADIUS}px;
+    font-size: 16px; padding: 0px 24px; placeholder-text-color: {P["fg_muted"]};
+    selection-background-color: {P["accent"]};
+}}
+QPushButton#NavigatorAsk {{ color: {P["fg"]}; background: transparent; border: none;
+    padding: 0px; font-size: 16px; }}
+QPushButton#NavigatorAsk:hover {{ color: {STAGE_HOVER["stable"]}; }}
+QPushButton#EasySuggestionCard {{
+    background: {surface}; color: {P["fg"]}; border: 1px solid {P["border"]};
+    border-radius: 16px; padding: 12px; min-width: 0px; min-height: 0px; text-align: left;
+}}
+QPushButton#EasySuggestionCard QLabel {{ color: {P["fg"]}; background: transparent;
+    border: none; font-weight: 300; }}
+QPushButton#EasySuggestionCard[current="true"] {{ border: 1px solid {STAGE_HOVER["stable"]}; }}
+{stage_rules}
+QTextBrowser#NavigatorDetails {{
+    color: {P["fg"]}; background: {details}; border: 1px solid {P["border"]};
+    border-radius: 10px; padding: 8px; font-size: 16px;
+}}
+QTextBrowser#NavigatorDetails QScrollBar:vertical {{ background: transparent; width: 8px; }}
+QTextBrowser#NavigatorDetails QScrollBar::handle:vertical {{ background: {P["border"]};
+    border-radius: 4px; min-height: 24px; }}
+QTextBrowser#NavigatorDetails QScrollBar::add-line:vertical,
+QTextBrowser#NavigatorDetails QScrollBar::sub-line:vertical {{ height: 0px; }}
+QLabel#NavigatorFeedback {{ color: {P["fg_muted"]}; background: transparent; font-size: 14px; }}
+QScrollBar#NavigatorRowScroll:horizontal {{ background: transparent; height: 10px; }}
+QScrollBar#NavigatorRowScroll::handle:horizontal {{ background: {P["border"]};
+    border-radius: 5px; min-width: 40px; }}
+QScrollBar#NavigatorRowScroll::add-line:horizontal,
+QScrollBar#NavigatorRowScroll::sub-line:horizontal {{ width: 0px; }}
+"""
+
+
 class SuggestionCard(QtWidgets.QPushButton):
-    """One answer: what kind of thing it is, its name, one line."""
+    """One result, as spaCR draws a module: its icon, and under it its name, large and light.
+
+    No description on the card, as in spaCR: hovering or focusing it puts the description
+    in the panel at the foot of the page (`NavigatorPage.explain`).
+    """
+
+    hovered = QtCore.Signal(object)
 
     def __init__(self, suggestion: Suggestion, parent=None):
         super().__init__(parent)
         self.suggestion = suggestion
-        self.setObjectName("SuggestionCard")
+        self.setObjectName("EasySuggestionCard")
+        unavailable = (suggestion.kind == "module"
+                       and bool(MOD.unavailable_reason(MOD.get(suggestion.key))))
+        self.setProperty("stage", "" if unavailable else "stable")
         self.setProperty("current", "false")
-        self.setFixedSize(CARD_W, CARD_H)
         self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
-        self.setAccessibleName(f"{KIND_WORD.get(suggestion.kind, suggestion.kind)}: {suggestion.title}")
-        self.setToolTip(suggestion.subtitle or suggestion.title)
+        self.setAccessibleName(card_name(suggestion))
+        self.setAccessibleDescription(suggestion.subtitle or suggestion.title)
+        self._final = QtCore.QRect()
+        self._animation = None
+
         col = QtWidgets.QVBoxLayout(self)
-        col.setContentsMargins(12, 8, 12, 8)
-        col.setSpacing(2)
-        kind = QtWidgets.QLabel(KIND_WORD.get(suggestion.kind, suggestion.kind.title()).upper())
-        kind.setObjectName("CardKind")
-        title = QtWidgets.QLabel(suggestion.title)
-        title.setObjectName("CardTitle")
-        # About two lines at 11 px across a 196 px card. A QLabel centres vertically, so
-        # text taller than its box was cropped at the TOP, into the title; aligning to
-        # the top makes any overflow fall off the bottom instead.
-        sub = QtWidgets.QLabel(_clip(_subtitle(suggestion.subtitle), 58))
-        sub.setObjectName("CardSub")
-        sub.setWordWrap(True)
-        sub.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignTop)
-        # Two lines at most: a dataset summary can run to hundreds of characters, and
-        # the first render showed it pouring out of the bottom of the card.
-        sub.setMaximumHeight(2 * QtGui.QFontMetrics(sub.font()).lineSpacing() + 2)
-        for label in (kind, title, sub):
-            label.setAttribute(QtCore.Qt.WidgetAttribute.WA_TransparentForMouseEvents)
-            col.addWidget(label)
+        col.setContentsMargins(12, 12, 12, 12)
+        col.setSpacing(10)
         col.addStretch(1)
-        # Elide a long title rather than letting it widen the card past its row.
-        metrics = QtGui.QFontMetrics(title.font())
-        title.setText(metrics.elidedText(suggestion.title, QtCore.Qt.TextElideMode.ElideRight,
-                                         CARD_W - 28))
+        icon = QtWidgets.QLabel()
+        icon.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        icon.setAttribute(QtCore.Qt.WidgetAttribute.WA_TransparentForMouseEvents)
+        pixmap = QtGui.QPixmap(icon_path(suggestion))
+        if not pixmap.isNull():
+            ratio = self.devicePixelRatioF() or 1.0
+            pixmap = pixmap.scaled(int(ICON_PX * ratio), int(ICON_PX * ratio),
+                                   QtCore.Qt.AspectRatioMode.KeepAspectRatio,
+                                   QtCore.Qt.TransformationMode.SmoothTransformation)
+            pixmap.setDevicePixelRatio(ratio)
+            icon.setPixmap(pixmap)
+        icon.setFixedHeight(ICON_PX)
+        if unavailable:
+            fade = QtWidgets.QGraphicsOpacityEffect(icon)
+            fade.setOpacity(0.35)
+            icon.setGraphicsEffect(fade)
+        col.addWidget(icon)
+        name = QtWidgets.QLabel(card_name(suggestion))
+        name.setObjectName("CardName")
+        name.setWordWrap(True)
+        name.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter | QtCore.Qt.AlignmentFlag.AlignTop)
+        name.setStyleSheet("font-size: 18px; font-weight: 300;")
+        name.setAttribute(QtCore.Qt.WidgetAttribute.WA_TransparentForMouseEvents)
+        col.addWidget(name)
+        col.addStretch(1)
+        self.name_label = name
 
     def set_current(self, on: bool) -> None:
         """Mark this card as the one Return would open. A property, so the stylesheet
-        draws the accent rim; repolished, because Qt does not restyle on its own."""
+        draws the rim; repolished, because Qt does not restyle on its own."""
         self.setProperty("current", "true" if on else "false")
         self.style().unpolish(self)
         self.style().polish(self)
 
+    def enterEvent(self, event):                          # noqa: N802
+        """Describe this card in the panel below, as spaCR's `explain_card` does."""
+        self.hovered.emit(self)
+        super().enterEvent(event)
+
+    def focusInEvent(self, event):                        # noqa: N802
+        """Keyboard focus describes the card too, so arrowing across reads each one."""
+        self.hovered.emit(self)
+        super().focusInEvent(event)
+
 
 class NavigatorPage(QtWidgets.QWidget):
-    """The centred field, its suggestion row and the details pane.
+    """spaCR's Navigator: one centred field, the cards above it, the details at the foot.
 
-    `chosen(kind, key)` fires when a suggestion is opened. `ask(text)` fires when the
-    person asks the assistant rather than picking a suggestion.
+    Placed by hand in `resizeEvent`, as spaCR's `_EasyHomeField._arrange` does, not by a
+    layout -- which is also what lets the cards grow into place.
 
-    :param genes: `(gene_id, product)` pairs, or a callable, for gene suggestions.
-    :param index: `help_index` rows, or a callable, for everything else.
+    Searching happens on Return, not on every keystroke: typing changes nothing below the
+    field until it is submitted, and a second Return opens the highlighted card.
+
+    `chosen(kind, key)` fires when a card is opened; `ask(text)` when the assistant is.
     """
 
     chosen = QtCore.Signal(str, str)
     ask = QtCore.Signal(str)
+
+    PROMPT = "Type a gene, a question, a module or a dataset, then press Return."
 
     def __init__(self, genes=None, index=None, parent=None):
         super().__init__(parent)
@@ -276,123 +341,224 @@ class NavigatorPage(QtWidgets.QWidget):
         self._genes, self._index = genes, index
         self._cards: list = []
         self._current = -1
+        self._searched = None
         self.setStyleSheet(navigator_qss(TH.palette_for("dark")))
 
-        col = QtWidgets.QVBoxLayout(self)
-        col.setContentsMargins(TH.SPACING["xl"], 0, TH.SPACING["xl"], TH.SPACING["xl"])
-        col.setSpacing(TH.SPACING["md"])
-        col.addStretch(3)
-
-        title = QtWidgets.QLabel("ParaScape")
-        title.setObjectName("HeroTitle")
-        title.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
-        col.addWidget(title)
-
-        row = QtWidgets.QHBoxLayout()
-        row.addStretch(1)
-        self.field = QtWidgets.QLineEdit()
+        self.field = QtWidgets.QLineEdit(self)
         self.field.setObjectName("NavigatorField")
         self.field.setFixedHeight(FIELD_H)
-        self.field.setMaximumWidth(FIELD_MAX_W)
-        self.field.setMinimumWidth(420)
-        self.field.setPlaceholderText("A gene, a question, a module or a dataset")
+        self.field.setPlaceholderText("A gene, a question, a module or a dataset  ·  Return to search")
         self.field.setAccessibleName("Search ParaScape")
         self.field.setClearButtonEnabled(True)
+        self.field.setTextMargins(0, 0, 64, 0)
         self.ask_button = QtWidgets.QPushButton("Ask", self.field)
         self.ask_button.setObjectName("NavigatorAsk")
         self.ask_button.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
-        self.ask_button.setToolTip("Ask the assistant instead of picking a suggestion. "
-                                   "Everything else on this page works with no assistant at all.")
+        self.ask_button.setToolTip("Ask the assistant instead of picking a card. Everything else "
+                                   "on this page works with no assistant at all.")
         self.ask_button.clicked.connect(lambda: self.ask.emit(self.field.text().strip()))
-        self.field.setTextMargins(0, 0, 64, 0)
-        self.field.installEventFilter(self)
-        row.addWidget(self.field, 4)
-        row.addStretch(1)
-        col.addLayout(row)
 
-        self.feedback = QtWidgets.QLabel(
-            "Try GRA16, glucose, rhoptry, conformal, or the name of a module.")
-        self.feedback.setObjectName("NavigatorHint")
+        self.feedback = QtWidgets.QLabel(self.PROMPT, self)
+        self.feedback.setObjectName("NavigatorFeedback")
         self.feedback.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
-        col.addWidget(self.feedback)
+        self.feedback.setWordWrap(True)
 
-        self.row = QtWidgets.QScrollArea()
-        self.row.setObjectName("NavigatorRow")
-        self.row.setWidgetResizable(True)
-        self.row.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
-        self.row.setFixedHeight(CARD_H + 18)
-        self.row.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        body = QtWidgets.QWidget()
-        body.setObjectName("NavigatorRowBody")
-        self._row_layout = QtWidgets.QHBoxLayout(body)
-        self._row_layout.setContentsMargins(0, 0, 0, 0)
-        self._row_layout.setSpacing(TH.SPACING["md"])
-        # A stretch on BOTH sides centres the cards under the field while they fit; once
-        # they overflow, the row's width grows and both stretches collapse, so it simply
-        # scrolls. With one stretch, a single result sat at the far left edge of the
-        # window, disconnected from the centred field it answered.
-        self._row_layout.addStretch(1)
-        self._row_layout.addStretch(1)
-        self.row.setWidget(body)
-        self.row.viewport().setAutoFillBackground(False)
-        self.row.hide()
-        col.addWidget(self.row)
-
-        self.details = QtWidgets.QTextBrowser()
+        self.details = QtWidgets.QTextBrowser(self)
         self.details.setObjectName("NavigatorDetails")
         self.details.setOpenLinks(False)
-        self.details.setMaximumHeight(160)
-        self.details.setMaximumWidth(FIELD_MAX_W)
         self.details.hide()
-        drow = QtWidgets.QHBoxLayout()
-        drow.addStretch(1)
-        drow.addWidget(self.details, 4)
-        drow.addStretch(1)
-        col.addLayout(drow)
-        col.addStretch(4)
 
-        self._debounce = QtCore.QTimer(self)
-        self._debounce.setSingleShot(True)
-        self._debounce.setInterval(DEBOUNCE_MS)
-        self._debounce.timeout.connect(self.refresh)
-        self.field.textChanged.connect(lambda _t: (self._debounce.start(), self._place_ask()))
-        self.field.returnPressed.connect(self.open_current)
+        self._scroll = QtWidgets.QScrollBar(QtCore.Qt.Orientation.Horizontal, self)
+        self._scroll.setObjectName("NavigatorRowScroll")
+        self._scroll.valueChanged.connect(lambda _v: self._arrange(animate=False))
+        self._scroll.hide()
+
+        self.field.textEdited.connect(self._edited)
+        self.field.returnPressed.connect(self.submit)
         self.field.installEventFilter(self)
 
+    # ------------------------------------------------------------------ layout
+    def _field_rect(self) -> QtCore.QRect:
+        w, h = self.width(), self.height()
+        width = min(max(FIELD_MIN_W, 0), max(180, w - 48))
+        y = max(16, (h - FIELD_H) // 2)
+        return QtCore.QRect((w - width) // 2, y, width, FIELD_H)
+
+    def resizeEvent(self, event):                          # noqa: N802
+        """Place the field, the cards above it and the details below, as spaCR does."""
+        super().resizeEvent(event)
+        self._arrange(animate=False)
+
+    def _arrange(self, animate: bool) -> None:
+        w, h = self.width(), self.height()
+        field = self._field_rect()
+        self.field.setGeometry(field)
+        self._place_ask()
+        self.feedback.setGeometry(field.left(), field.bottom() + 10, field.width(), 44)
+
+        details_w = field.width()
+        self.details.setGeometry((w - details_w) // 2, h - DETAILS_H - 16, details_w, DETAILS_H)
+
+        room = max(64, field.top() - 40)
+        side = min(CARD_SIDE, room, max(96, w - 64))
+        top = max(16, field.top() - side - 24)
+        n = len(self._cards)
+        total = n * side + max(0, n - 1) * CARD_GAP
+        left = 16
+        span = max(1, w - 32)
+        overflow = max(0, total - span)
+        self._scroll.blockSignals(True)
+        self._scroll.setRange(0, overflow)
+        self._scroll.setPageStep(span)
+        self._scroll.setSingleStep(side + CARD_GAP)
+        self._scroll.blockSignals(False)
+        self._scroll.setGeometry(left + 8, top + side + 5, max(1, span - 16), 10)
+        self._scroll.setVisible(bool(overflow))
+        start = left + max(0, (span - total) // 2) - self._scroll.value()
+        for i, card in enumerate(self._cards):
+            card._final = QtCore.QRect(start + i * (side + CARD_GAP), top, side, side)
+            if animate and _motion_allowed():
+                self._grow(card, i)
+            elif card._animation is None:
+                card.setGeometry(card._final)
+            visible = card._final.right() >= left and card._final.left() <= left + span
+            card.setVisible(visible)
+        self._fade_edges(left, span)
+        self.details.raise_()
+
+    def _grow(self, card, i: int) -> None:
+        """spaCR's arrival: each card grows from its centre, one after another."""
+        final = card._final
+        card.setGeometry(QtCore.QRect(final.center(), QtCore.QSize(1, 1)))
+        animation = QtCore.QPropertyAnimation(card, b"geometry", card)
+        animation.setDuration(GROW_MS)
+        animation.setStartValue(QtCore.QRect(final.center(), QtCore.QSize(1, 1)))
+        animation.setEndValue(final)
+        animation.setEasingCurve(QtCore.QEasingCurve.Type.OutCubic)
+
+        def done(c=card):
+            c._animation = None
+            c.setGeometry(c._final)
+        animation.finished.connect(done)
+        card._animation = animation
+        QtCore.QTimer.singleShot(i * GROW_STAGGER_MS, card, animation.start)
+
+    def _fade_edges(self, left: int, span: int) -> None:
+        """Fade cards at an edge the row continues past, as spaCR's opacity mask does."""
+        for card in self._cards:
+            r = card._final
+            fade = 1.0
+            if self._scroll.value() and r.left() < left + 44:
+                fade = max(0.25, (r.right() - left) / max(1, r.width()))
+            if self._scroll.value() < self._scroll.maximum() and r.right() > left + span - 44:
+                fade = min(fade, max(0.25, (left + span - r.left()) / max(1, r.width())))
+            effect = card.graphicsEffect()
+            if fade >= 0.999:
+                if effect is not None:
+                    card.setGraphicsEffect(None)
+            else:
+                if not isinstance(effect, QtWidgets.QGraphicsOpacityEffect):
+                    effect = QtWidgets.QGraphicsOpacityEffect(card)
+                    card.setGraphicsEffect(effect)
+                effect.setOpacity(fade)
+
+    def _place_ask(self) -> None:
+        """Inset Ask inside the field's right margin, left of the clear button."""
+        f = self.field
+        hint = self.ask_button.sizeHint()
+        clear = 34 if f.isClearButtonEnabled() and f.text() else 18
+        self.ask_button.setGeometry(f.width() - hint.width() - clear,
+                                    (f.height() - hint.height()) // 2,
+                                    hint.width(), hint.height())
+
+    def wheelEvent(self, event):                           # noqa: N802
+        """Scroll the card row sideways with the mouse wheel when it overflows."""
+        if self._scroll.isVisible():
+            delta = event.angleDelta().y() or event.angleDelta().x()
+            self._scroll.setValue(self._scroll.value() - delta)
+            event.accept()
+            return
+        super().wheelEvent(event)
+
     # ------------------------------------------------------------------ search
-    def refresh(self) -> None:
-        """Rebuild the suggestion row for what is in the field now."""
+    def _edited(self, _text: str) -> None:
+        """Typing changes nothing below the field until Return -- Einar's request."""
+        self._place_ask()
         text = self.field.text().strip()
+        if not text:
+            self._clear()
+            self.feedback.setText(self.PROMPT)
+        elif text != self._searched:
+            self.feedback.setText("Press Return to search.")
+
+    def submit(self) -> None:
+        """Return: search what is typed, or, when that is already on screen, open the card."""
+        text = self.field.text().strip()
+        if not text:
+            return
+        if text == self._searched and self._cards:
+            self._open(max(self._current, 0))
+        else:
+            self.refresh()
+
+    def open_current(self) -> None:
+        """Open the highlighted card, searching first if the field has not been searched.
+
+        Without that, a fast typist pressing Return would open the card for what they had
+        typed a moment ago rather than what is in the field.
+        """
+        text = self.field.text().strip()
+        if text and text != self._searched:
+            self.refresh()
+        if self._cards:
+            self._open(max(self._current, 0))
+
+    def _clear(self) -> None:
         for card in self._cards:
             card.setParent(None)
             card.deleteLater()
         self._cards = []
         self._current = -1
+        self._searched = None
+        self.details.hide()
+        self._scroll.hide()
+
+    def refresh(self) -> None:
+        """Search for what is in the field and grow the cards into place."""
+        text = self.field.text().strip()
+        self._clear()
         if not text:
-            self.row.hide()
-            self.details.hide()
-            self.feedback.setText("Try GRA16, glucose, rhoptry, conformal, or the name of a module.")
+            self.feedback.setText(self.PROMPT)
             return
+        self._searched = text
         found = suggestions(text, genes=self._genes, index=self._index)
         if not found:
-            self.row.hide()
-            self.details.hide()
-            self.feedback.setText(f"Nothing here matches “{text}”. "
-                                  "Ask the assistant, or try a gene id or a product name.")
+            self.feedback.setText(f"Nothing here matches “{text}”. Ask the assistant, "
+                                  "or try a gene id or a product name.")
             return
         for i, s in enumerate(found):
-            card = SuggestionCard(s)
+            card = SuggestionCard(s, self)
             card.clicked.connect(lambda _=False, k=i: self._open(k))
+            card.hovered.connect(self.explain)
             card.installEventFilter(self)
-            self._row_layout.insertWidget(self._row_layout.count() - 1, card)
+            card.show()
             self._cards.append(card)
         kinds = {}
         for s in found:
-            kinds[KIND_WORD.get(s.kind, s.kind)] = kinds.get(KIND_WORD.get(s.kind, s.kind), 0) + 1
-        self.feedback.setText(" · ".join(f"{n} {k.lower()}{'s' if n != 1 else ''}"
-                                         for k, n in kinds.items()) + " — Return opens the first")
-        self.row.show()
+            word = KIND_WORD.get(s.kind, s.kind).lower()
+            kinds[word] = kinds.get(word, 0) + 1
+        self.feedback.setText(" · ".join(f"{n} {k}{'s' if n != 1 else ''}"
+                                         for k, n in kinds.items())
+                              + " — Return opens the highlighted card")
+        self._scroll.setValue(0)
+        self._arrange(animate=True)
         self._set_current(0)
+
+    def explain(self, card) -> None:
+        """Show a card's description in the panel at the foot of the page."""
+        self.details.setHtml(card.suggestion.detail)
+        self.details.show()
+        self.details.raise_()
 
     def _set_current(self, i: int) -> None:
         if not self._cards:
@@ -403,26 +569,21 @@ class NavigatorPage(QtWidgets.QWidget):
         self._current = i
         card = self._cards[i]
         card.set_current(True)
-        self.row.ensureWidgetVisible(card, 24, 0)
-        self.details.setHtml(card.suggestion.detail)
-        self.details.show()
+        self._reveal(card)
+        self.explain(card)
+
+    def _reveal(self, card) -> None:
+        """Scroll the row so a card arrowed onto is inside it."""
+        span = max(1, self.width() - 32)
+        r = card._final
+        if r.left() < 16:
+            self._scroll.setValue(self._scroll.value() - (16 - r.left()))
+        elif r.right() > 16 + span:
+            self._scroll.setValue(self._scroll.value() + (r.right() - 16 - span))
 
     def current(self):
         """The suggestion Return would open, or None."""
         return self._cards[self._current].suggestion if 0 <= self._current < len(self._cards) else None
-
-    def open_current(self) -> None:
-        """Open the highlighted suggestion -- what Return does.
-
-        If typing has not paused long enough for the row to catch up, the row is
-        rebuilt first: otherwise a fast typist pressing Return opens the suggestion
-        for what they had typed a moment ago, not for what is in the field.
-        """
-        if self._debounce.isActive():         # Return before the row caught up with typing
-            self._debounce.stop()
-            self.refresh()
-        if self._cards:
-            self._open(max(self._current, 0))
 
     def _open(self, i: int) -> None:
         s = self._cards[i].suggestion
@@ -434,22 +595,8 @@ class NavigatorPage(QtWidgets.QWidget):
         self.chosen.emit(s.kind, s.key)
 
     # ----------------------------------------------------------------- keyboard
-    def _place_ask(self) -> None:
-        """Inset Ask inside the field's right margin, left of the clear button.
-
-        A child of a QLineEdit is drawn at its top-left corner unless something
-        positions it -- the first render put Ask above the text. spaCR re-arranges
-        its inset buttons on every resize and style change for the same reason.
-        """
-        f = self.field
-        hint = self.ask_button.sizeHint()
-        clear = 34 if f.isClearButtonEnabled() and f.text() else 14
-        self.ask_button.setGeometry(f.width() - hint.width() - clear,
-                                    (f.height() - hint.height()) // 2,
-                                    hint.width(), hint.height())
-
     def eventFilter(self, obj, event):                    # noqa: N802
-        """Down from the field enters the cards; arrows move; Escape clears or returns."""
+        """Up or Down from the field enters the cards; arrows move; Escape clears or returns."""
         if obj is self.field and event.type() in (QtCore.QEvent.Type.Resize,
                                                   QtCore.QEvent.Type.Show):
             self._place_ask()
@@ -459,11 +606,12 @@ class NavigatorPage(QtWidgets.QWidget):
         key = event.key()
         K = QtCore.Qt.Key
         if obj is self.field:
-            if key == K.Key_Down and self._cards:
+            if key in (K.Key_Up, K.Key_Down) and self._cards:
                 self._cards[max(self._current, 0)].setFocus()
                 return True
             if key == K.Key_Escape:
                 self.field.clear()
+                self._edited("")
                 return True
             return False
         if obj in self._cards:
@@ -475,10 +623,19 @@ class NavigatorPage(QtWidgets.QWidget):
                 self._set_current(self._current - 1)
                 self._cards[self._current].setFocus()
                 return True
-            if key in (K.Key_Up, K.Key_Escape):
+            if key in (K.Key_Up, K.Key_Down, K.Key_Escape):
                 self.field.setFocus()
                 return True
             if key in (K.Key_Return, K.Key_Enter):
                 self._open(self._current)
                 return True
+        return False
+
+
+def _motion_allowed() -> bool:
+    """spaCR grows its cards only when animation is on and Reduce motion is off."""
+    try:
+        from .backdrops import _compat as AC
+        return AC.get_ambient_enabled() and not AC.get_reduce_motion()
+    except Exception:
         return False

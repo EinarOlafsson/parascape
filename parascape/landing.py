@@ -90,9 +90,30 @@ class Landing(QtWidgets.QWidget):
         self._ambient = None
         if animate:
             self._install_ambient()
+        if not self.navigator_enabled():
+            for button in self._switch.buttons():
+                button.hide()
+            start = "Modules"
         self.show_page(start)
 
     # ------------------------------------------------------------------- pages
+    def navigator_enabled(self) -> bool:
+        """Whether the Navigator is on. On by default; remembered once changed."""
+        from .backdrops import _compat as AC
+        return AC._as_bool(AC._settings().value("landing/navigator", True), True)
+
+    def set_navigator_enabled(self, on: bool) -> None:
+        """Turn the Navigator on or off, as spaCR's Help ▸ Navigator does.
+
+        Off, the landing is the module tiles alone: the Navigator page and the two-way
+        switch go, and the tiles are what opens. On, the Navigator is the first page again.
+        """
+        from .backdrops import _compat as AC
+        AC._settings().setValue("landing/navigator", bool(on))
+        for button in self._switch.buttons():
+            button.setVisible(bool(on))
+        self.show_page("Navigator" if on else "Modules")
+
     def show_page(self, name: str) -> None:
         """Bring `Navigator` or `Modules` to the front."""
         self.show_page_index(self.PAGES.index(name))

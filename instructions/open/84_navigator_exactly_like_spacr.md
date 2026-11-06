@@ -1,6 +1,12 @@
 # 84 · The Navigator, exactly as spaCR's
 
-**Status: open (requested 2026-11-06).** Einar, after using it: "I couldn't turn off the navigator in View
+**Status: built 2026-11-06, waiting on the gate (Einar compares it with spaCR).** All five plan steps are
+in: View ▸ Navigator and Help ▸ Navigator (checkable, remembered in QSettings `landing/navigator`); search
+on Return only; 224 px square cards with a 96 px spaCR icon and an 18 px weight-300 name; details panel
+below the row on hover; grow-in animation with faded row edges. Tests: `tests/test_navigator.py`,
+`tests/test_modules_in_window.py::test_the_navigator_can_be_turned_off_from_view_and_help`.
+
+Requested 2026-11-06. Einar, after using it: "I couldn't turn off the navigator in View
 or Tools like I can in spaCR ... when I type things in the navigator they instantly appear, they should wait
 until I hit enter, and the cards that appear do not look at all like those in spaCR, and I want them to look
 exactly the same (I mean be in exactly the same style)."
