@@ -21,7 +21,7 @@ import math
 import random
 from dataclasses import dataclass
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 #: The controls, and the range each is allowed -- the same names and bounds spaCR uses, so a person
 #: who has set this up once does not have to learn it twice.

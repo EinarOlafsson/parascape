@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Draw ten monochrome SVG proposals and a comparison sheet.
 
-Run with QT_QPA_PLATFORM=offscreen. Requires PyQt6 and Noto Sans Light;
+Run with QT_QPA_PLATFORM=offscreen. Requires PySide6 and Noto Sans Light;
 lettering is converted to paths so the delivered SVGs need no installed font.
 These are proposals, separate from the application's selected logo.
 """
@@ -9,7 +9,7 @@ from pathlib import Path
 import html
 import zipfile
 
-from PyQt6 import QtCore, QtGui, QtSvg
+from PySide6 import QtCore, QtGui, QtSvg
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs/assets/logo-options"

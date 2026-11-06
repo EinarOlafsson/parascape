@@ -11,7 +11,7 @@ import os
 
 import pandas as pd
 import pytest
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from parascape import home_panel as HP
 from parascape import nodes as ND
@@ -24,7 +24,7 @@ EXISTING_DOCKS = ("find", "evidence", "analysis", "strategies", "start here", "s
 
 @pytest.fixture(scope="module")
 def window():
-    pytest.importorskip("PyQt6")
+    pytest.importorskip("PySide6")
     from parascape import app as A
     qapp = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     try:

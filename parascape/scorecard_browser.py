@@ -6,7 +6,7 @@ dispatching a different cohort, while the host never fits or recalibrates it.
 """
 from __future__ import annotations
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import scorecard_view as V
 
@@ -14,8 +14,8 @@ from . import scorecard_view as V
 class ScorecardBrowser(QtWidgets.QTextBrowser):
     """Render a supplied scorecard and expose its definitions without refitting."""
 
-    rows_requested = QtCore.pyqtSignal(str)
-    outcome_requested = QtCore.pyqtSignal(str)
+    rows_requested = QtCore.Signal(str)
+    outcome_requested = QtCore.Signal(str)
 
     def __init__(self, parent=None):
         super().__init__(parent)

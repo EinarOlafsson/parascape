@@ -56,7 +56,7 @@ def test_blobs_stay_a_sane_size_however_the_controls_are_set():
 def test_the_widget_paints_and_is_scenery(qapp):
     """Transparent to the mouse: a background that swallowed a click on the panel in front of it
     would be a bug nobody could describe."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     w = A.AmbientWidget()
     w.resize(300, 200)
     w.set_time(4.0)
@@ -93,7 +93,7 @@ def test_the_settings_do_not_shadow_the_widget(qapp):
     """An attribute called `size` overrides QWidget.size(), and every caller asking this widget how
     big it is gets a float and 'float object is not callable' from somewhere that never mentioned
     size. Found exactly that way."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     w = A.AmbientWidget()
     w.resize(120, 90)
     assert w.size() == QtCore.QSize(120, 90)
@@ -205,7 +205,7 @@ def test_the_window_can_be_made_to_fit_a_1080p_screen(win):
 def test_every_analysis_tab_scrolls_rather_than_forcing_the_window_taller(win):
     """The fix, stated where it can regress: a tab added later without a scroll area would put the
     window's minimum back where it was."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     tabs = win.panel.findChild(QtWidgets.QTabWidget)
     # The count is asserted so the loop below cannot pass by iterating over nothing. It moves when a
     # tab is added -- 8 since 2026-08-18, when Questions was added.
@@ -264,7 +264,7 @@ def test_with_no_screen_at_all_the_window_still_gets_a_size(win, monkeypatch):
     """The defensive branch, exercised rather than assumed. `screen()` is None before a window is
     shown and `primaryScreen()` is None on a machine with no display attached -- and this runs during
     `__init__`, so returning None here would raise before the window exists at all."""
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     monkeypatch.setattr(win, "screen", lambda: None)
     monkeypatch.setattr(QtGui.QGuiApplication, "primaryScreen", staticmethod(lambda: None))
     area = win.work_area()
@@ -327,7 +327,7 @@ def test_the_lights_orbit_outside_the_cloud(win):
 
 # --------------------------------------------------------------------------- menus and windows
 def test_preferences_is_in_the_file_menu_and_about_is_in_help(win):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     labels = {m.title(): [a.text() for a in m.actions()]
               for m in win.menuBar().findChildren(QtWidgets.QMenu)}
     assert "Preferences…" in labels["&File"]
@@ -338,7 +338,7 @@ def test_preferences_is_in_the_file_menu_and_about_is_in_help(win):
 def test_preferences_is_a_window_of_its_own(win):
     """Modal, it froze the map behind it, so every setting had to be judged from memory of what the
     map looked like a moment ago."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     d = win.open_preferences()
     assert not d.isModal()
     assert d.windowFlags() & QtCore.Qt.WindowType.Window
@@ -357,7 +357,7 @@ def test_about_says_what_is_running_rather_than_what_was_written(win):
 
 @pytest.fixture(scope="module")
 def qapp():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -369,7 +369,7 @@ def win(qapp):
     module in the run -- so leaving it scaled would resize widgets belonging to files that never
     asked for it, in whatever order the suite happens to run them.
     """
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     from parascape.app import Window
     before = QtGui.QFont(qapp.font())
     w = Window()
@@ -382,7 +382,7 @@ def win(qapp):
 def test_the_settings_are_remembered_across_a_restart(qapp, tmp_path, monkeypatch):
     """A background someone turned on, off again on the next launch, is a background they will not
     turn on twice."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     from parascape import paths
     from parascape.app import Window
     monkeypatch.setenv(paths.ENV_STATE, str(tmp_path))
@@ -417,7 +417,7 @@ def test_the_settings_are_remembered_across_a_restart(qapp, tmp_path, monkeypatc
 def test_the_background_follows_the_window_when_it_is_resized(win):
     """It is a child of the window, not laid out by it: without this it stays the size it was born,
     and the blobs stop where the window used to end."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     win.set_ambient("blobs")
     win.resize(900, 640)
     win.eventFilter(win, QtGui.QResizeEvent(QtCore.QSize(900, 640), QtCore.QSize(1200, 800)))
@@ -427,7 +427,7 @@ def test_the_background_follows_the_window_when_it_is_resized(win):
 
 def _dock_tab_bar(win):
     """The tab bar the tabified right-hand docks share, or None if they are not tabbed."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     for bar in win.findChildren(QtWidgets.QTabBar):
         if "evidence" in {bar.tabText(i) for i in range(bar.count())}:
             return bar
@@ -436,7 +436,7 @@ def _dock_tab_bar(win):
 
 def _show_tab(bar, label):
     """Switch to a dock tab the way clicking it does, and let the switch settle."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     labels = [bar.tabText(i) for i in range(bar.count())]
     bar.setCurrentIndex(labels.index(label))
     app = QtWidgets.QApplication.instance()
@@ -458,7 +458,7 @@ def test_the_background_never_climbs_on_top_of_a_panel(win):
     background. It needs no compositor, only the background switched on, which is why the first
     headless check missed it: the suite's settings leave it off.
     """
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     bar = _dock_tab_bar(win)
     if bar is None or bar.count() < 2:
         pytest.skip("the right-hand docks are not tabbed in this build")
@@ -496,7 +496,7 @@ def test_the_background_never_climbs_on_top_of_a_panel(win):
 
 def test_the_background_puts_itself_back_at_the_bottom(win):
     """`keep_behind` is the safety net for every other way the stack can be reordered."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     win.set_ambient("blobs")
     try:
         field = win._ambient_widget
@@ -512,7 +512,7 @@ def test_the_background_puts_itself_back_at_the_bottom(win):
 
 
 def test_light_options_are_remembered(win):
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     win.set_lighting_option("source", "selected gene")
     win.set_lighting_option("point_mode", "flat")
     win.set_lighting_option("mood", "warm")
@@ -598,7 +598,7 @@ def test_the_credit_survives_the_stripping(qapp):
 def test_a_tooltip_is_a_rectangle_of_prose(qapp):
     """A fixed table width does NOT constrain a tooltip -- measured at 1,588 px when it was tried.
     `white-space: pre` with the breaks already in is what holds it."""
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     from parascape import theme as TH
     text = ("One long sentence about why a control exists and what choosing badly costs, which on "
             "one line would run off the side of any monitor and be unreadable because the start "
@@ -614,7 +614,7 @@ def test_a_tooltip_is_a_rectangle_of_prose(qapp):
 
 def test_the_tooltip_is_on_the_setting_not_only_the_field(qapp):
     """The label is the word people hover over; the box beside it is the thing they click."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape import theme as TH
     w = QtWidgets.QWidget()
     form = QtWidgets.QFormLayout(w)
@@ -628,7 +628,7 @@ def test_the_tooltip_is_on_the_setting_not_only_the_field(qapp):
 
 
 def test_every_control_in_preferences_explains_itself_in_a_block(win):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     d = win.build_preferences()
     tips = [q.toolTip() for q in d.findChildren(QtWidgets.QWidget) if q.toolTip()]
     assert tips
@@ -640,7 +640,7 @@ def test_text_size_scales_the_whole_interface(win):
     """On the application's font, not a stylesheet: a stylesheet font-size does not change what a
     widget reports as its size hint, so the text grew and the boxes did not -- and labels were cut
     off at the old width."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.app import UI_SCALE_RANGE
     app = QtWidgets.QApplication.instance()
     base = win._base_font.pointSizeF()
@@ -661,7 +661,7 @@ def test_the_stylesheet_grows_with_the_text_size(win):
     here is nearly all of them. So the setting moved the app font, the sheet's hard-coded 13px
     immediately overrode it, and nothing on screen changed. The sheet has to be rebuilt at the new
     scale as well; the app font still matters, for the size hints the test above measures."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     app = QtWidgets.QApplication.instance()
     sizes = lambda: [int(t) for t in re.findall(r"font-size:\s*(\d+)px", app.styleSheet())]
     win.set_ui_scale(1.0)
@@ -677,7 +677,7 @@ def test_the_stylesheet_grows_with_the_text_size(win):
 def test_the_text_size_control_is_a_slider_that_says_where_it_is(win):
     """A number box asks for a figure nobody knows in advance. This is a thing you drag until it
     looks right -- and the read-out beside it is what lets you put it back."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.app import UI_SCALE_RANGE
     win.build_preferences()
     assert isinstance(win.zoom_box, QtWidgets.QSlider)
@@ -692,7 +692,7 @@ def test_the_text_size_control_is_a_slider_that_says_where_it_is(win):
 def test_scaling_never_compounds(win):
     """Applied to the desktop's own font every time: compounding 1.2 three times is 1.7, and the
     text creeps every time the dialog is opened."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     app = QtWidgets.QApplication.instance()
     win.set_ui_scale(1.2)
     once = app.font().pointSizeF()
@@ -708,7 +708,7 @@ def test_bigger_text_makes_a_wider_label_rather_than_a_clipped_one(win):
 
     Measured on a label, because a QListWidget's hint is a fixed 256x192 whatever is in it -- which
     is a fact about QListWidget, not about whether the scaling worked."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     win.set_ui_scale(1.0)
     QtWidgets.QApplication.processEvents()
     # Parentless and destroyed here rather than handed to Qt's deferred deletion: this file's
@@ -728,7 +728,7 @@ def test_bigger_text_makes_a_wider_label_rather_than_a_clipped_one(win):
 def test_a_font_measured_in_pixels_scales_too(win, monkeypatch):
     """Some desktops hand out a font with no point size at all -- pointSizeF is -1 and the size is
     in pixels. Scaling by a negative number would make the text vanish."""
-    from PyQt6 import QtGui, QtWidgets
+    from PySide6 import QtGui, QtWidgets
     pixel_font = QtGui.QFont(win._base_font)
     pixel_font.setPixelSize(12)
     monkeypatch.setattr(win, "_base_font", pixel_font)
@@ -756,7 +756,7 @@ def test_a_widget_destroyed_mid_walk_is_skipped(qapp):
     """findChildren hands back wrappers around C++ objects, and a widget under construction can
     destroy one while this loop runs. PyQt raises RuntimeError for the ones it can catch; without
     the guard the walk stops and the rest of the window keeps its one-line tooltips."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape import theme as TH
 
     class Vanishing(QtWidgets.QLabel):
@@ -1046,7 +1046,7 @@ def test_an_unknown_light_transport_is_refused_rather_than_mislabelled(win):
 
 def test_mouse_light_is_a_camera_flashlight_not_the_gene_under_the_pointer(win, monkeypatch):
     """Overlapping depth planes must not change the illumination source discontinuously."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     win.set_lighting("soft")
     win._lighting["source"] = "mouse flashlight"
     try:
@@ -1178,7 +1178,7 @@ def test_the_pointer_is_followed_without_a_button_held(win):
     default light source follows the pointer, and the drag that used to be the only way to move it
     is also what orbits the camera -- so the light looked stuck to the cloud, and the rest of the
     time it did not move at all. This is the whole of "I can't see the mouse light"."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     assert win.view.hasMouseTracking(), "hover events are not being delivered at all"
     seen = []
     for x in (0.2, 0.8):
@@ -1193,7 +1193,7 @@ def test_the_pointer_is_followed_without_a_button_held(win):
 def test_a_drag_off_the_edge_does_not_throw_the_light_off_the_map(win):
     """A drag that leaves the widget keeps delivering moves, with coordinates outside it. Unclamped,
     the pointer read several widths out and took its light with it."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     # A left button held is the whole point -- that is what a drag is -- and it means pyqtgraph
     # orbits the camera by the same event. The window is shared with every other test in this file,
     # and the corner lights are placed in the camera's frame, so leaving the view spun round quietly
@@ -1263,7 +1263,7 @@ def test_lighting_a_gene_lights_the_gene(qapp):
 def test_the_pointer_is_read_in_the_view_s_own_frame(win):
     """The map rotates. A light fixed in world space swings away from the pointer the moment
     anything moves, which reads as the light being broken."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     win.view.resize(200, 100)
     ev = QtGui.QMouseEvent(QtCore.QEvent.Type.MouseMove, QtCore.QPointF(150, 25),
                            QtCore.QPointF(150, 25), QtCore.Qt.MouseButton.NoButton,
@@ -1570,7 +1570,7 @@ def test_the_travelling_lights_are_selectable_and_need_no_camera(qapp):
 def test_the_five_defaults_are_what_was_asked_for(qapp, tmp_path, monkeypatch):
     """A fresh install, with nothing stored. These were chosen by the person who uses the program;
     the test exists so a later refactor cannot quietly move them back."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     from parascape import paths
     from parascape.app import Window, DEFAULT_POINT_SIZE
     monkeypatch.setenv(paths.ENV_STATE, str(tmp_path))

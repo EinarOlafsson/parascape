@@ -71,14 +71,14 @@ class Studio:
 
     def __init__(self):
         """Start Qt offscreen with a scratch settings and state directory, and open the window."""
-        defaults = {"QT_QPA_PLATFORM": "offscreen", "PYQTGRAPH_QT_LIB": "PyQt6",
+        defaults = {"QT_QPA_PLATFORM": "offscreen", "PYQTGRAPH_QT_LIB": "PySide6",
                     "PARASCAPE_GPU": "0", "LIBGL_ALWAYS_SOFTWARE": "1", "QT_OPENGL": "software",
                     "__GLX_VENDOR_LIBRARY_NAME": "mesa"}
         for key, value in defaults.items():
             os.environ.setdefault(key, value)
         self.tmp = tempfile.mkdtemp(prefix="parascape-video-")
         os.environ["PARASCAPE_STATE"] = self.tmp
-        from PyQt6 import QtCore, QtWidgets
+        from PySide6 import QtCore, QtWidgets
         QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
         for fmt in (QtCore.QSettings.Format.NativeFormat, QtCore.QSettings.Format.IniFormat):
             for scope in (QtCore.QSettings.Scope.UserScope, QtCore.QSettings.Scope.SystemScope):
@@ -101,7 +101,7 @@ class Studio:
 
     def settle(self, n: int = 8):
         """Let Qt lay out, paint and run the deferred measurements the panels post to themselves."""
-        from PyQt6 import QtCore
+        from PySide6 import QtCore
         for _ in range(n):
             self.app.processEvents()
             QtCore.QCoreApplication.sendPostedEvents()
@@ -118,13 +118,13 @@ class Studio:
 
 # --------------------------------------------------------------------------- the overlay
 def _color(name: str):
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     return QtGui.QColor(name)
 
 
 def _arrow(painter, x: float, y: float, scale: float = 1.7):
     """Draw the synthetic pointer: a plain arrow, white on black, so it reads on any panel."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     shape = [(0, 0), (0, 17), (4.2, 12.8), (7.2, 19), (9.6, 18), (6.6, 12), (12, 12)]
     poly = QtGui.QPolygonF([QtCore.QPointF(x + a * scale, y + b * scale) for a, b in shape])
     painter.setPen(QtGui.QPen(QtGui.QColor(10, 14, 16, 230), 2.4))
@@ -148,7 +148,7 @@ class Clip:
 
     def __init__(self, studio: Studio, slug: str, title: str, steps: int):
         """Prepare a clip of `steps` numbered beats, filmed from `studio`'s window."""
-        from PyQt6 import QtGui
+        from PySide6 import QtGui
         self.studio, self.slug, self.title = studio, slug, title
         self.steps, self.step = steps, 0
         self.frames = tempfile.mkdtemp(prefix=f"parascape-frames-{slug}-", dir=SCRATCH)
@@ -170,7 +170,7 @@ class Clip:
 
     def _frame(self):
         """Compose one frame: the cached window, the overlay on it, and the caption band under it."""
-        from PyQt6 import QtCore, QtGui
+        from PySide6 import QtCore, QtGui
         w, h = WINDOW
         image = QtGui.QImage(w, h + BAND, QtGui.QImage.Format.Format_RGB32)
         image.fill(_color(BAND_BG))
@@ -188,7 +188,7 @@ class Clip:
 
     def _draw_gl_note(self, p):
         """Label the empty central strip rather than leave an unexplained black column."""
-        from PyQt6 import QtCore, QtGui
+        from PySide6 import QtCore, QtGui
         view = getattr(self.studio.window, "view", None)
         if view is None or not view.isVisible():
             return
@@ -211,7 +211,7 @@ class Clip:
 
     def _draw_focus(self, p):
         """Ring the control the pointer is on, and flare it for a moment when it is pressed."""
-        from PyQt6 import QtCore, QtGui
+        from PySide6 import QtCore, QtGui
         rect = QtCore.QRectF(self.focus).adjusted(-3, -3, 3, 3)
         glow = _color(ACCENT)
         glow.setAlpha(40 + int(90 * self.flash))
@@ -229,7 +229,7 @@ class Clip:
 
     def _draw_band(self, p):
         """The caption: which beat this is, its heading, and a sentence or two under it."""
-        from PyQt6 import QtCore, QtGui
+        from PySide6 import QtCore, QtGui
         w, h = WINDOW
         p.setPen(QtGui.QPen(_color(ACCENT), 2))
         p.drawLine(0, h + 1, w, h + 1)
@@ -289,12 +289,12 @@ class Clip:
 
     def rect_of(self, widget):
         """A widget's rectangle in window coordinates, which is where the overlay draws."""
-        from PyQt6 import QtCore
+        from PySide6 import QtCore
         return QtCore.QRect(widget.mapTo(self.studio.window, QtCore.QPoint(0, 0)), widget.size())
 
     def move_to(self, target, seconds: float = 0.9, focus: bool = True):
         """Glide the pointer to a widget or rectangle, highlighting it when it arrives."""
-        from PyQt6 import QtCore
+        from PySide6 import QtCore
         rect = target if isinstance(target, QtCore.QRect) else self.rect_of(target)
         goal = (rect.center().x(), rect.center().y())
         start, frames = self.cursor, max(2, int(round(seconds * FPS)))
@@ -425,7 +425,7 @@ def choice_value(panel, value: str):
 
 def button_in(widget, text: str):
     """The first visible push button whose text contains `text`."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     for b in widget.findChildren(QtWidgets.QPushButton):
         if text.lower() in b.text().lower() and b.isVisibleTo(widget):
             return b
@@ -434,7 +434,7 @@ def button_in(widget, text: str):
 
 def tree_rect(clip: Clip, tree, item):
     """Where a tree row sits in window coordinates, so the pointer can land on that row."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     tree.scrollToItem(item)
     clip.studio.settle()
     r = tree.visualItemRect(item)
@@ -444,7 +444,7 @@ def tree_rect(clip: Clip, tree, item):
 
 def list_rect(clip: Clip, listing, row: int):
     """Where a list row sits in window coordinates, so the pointer can land on that match."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     item = listing.item(row)
     listing.scrollToItem(item)
     clip.studio.settle()
@@ -455,7 +455,7 @@ def list_rect(clip: Clip, listing, row: int):
 
 def row_rect(clip: Clip, table, row: int):
     """Where a table row sits in window coordinates."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     table.scrollToItem(table.item(row, 0))
     # scrollToItem also scrolls sideways, which would slide the column headings out of the frame.
     table.horizontalScrollBar().setValue(table.horizontalScrollBar().minimum())

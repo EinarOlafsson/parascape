@@ -77,7 +77,7 @@ def test_every_slot_appears_exactly_once_per_hierarchy(qapp):
             view = T.SlotTree(sources={organism: {}}, organism=organism)
             view.hierarchy.setCurrentText(hierarchy)
             leaves = view._leaves(view.tree.invisibleRootItem())
-            from PyQt6 import QtCore
+            from PySide6 import QtCore
             names = [i.data(0, QtCore.Qt.ItemDataRole.UserRole) for i in leaves]
             assert len(names) == len(set(names)), f"{organism}/{hierarchy} repeats a slot"
             assert set(names) == expected, f"{organism}/{hierarchy} is missing slots"
@@ -174,7 +174,7 @@ def test_the_alarm_line_turns_red_when_a_claim_is_doubled(qapp, monkeypatch):
 # --------------------------------------------------------------------------- filtering and details
 def test_the_filter_matches_names_columns_and_candidates(nodes, qapp):
     """A group row survives if anything under it matches, so filtering never hides a slot's address."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     view = T.SlotTree(organism="Tg")
     before = len(view._leaves(view.tree.invisibleRootItem()))
     view.filter.setText("bradyzoite")
@@ -190,7 +190,7 @@ def test_the_filter_matches_names_columns_and_candidates(nodes, qapp):
 
 
 def test_selecting_a_slot_shows_its_address_in_all_three_hierarchies(nodes, qapp):
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     view = T.SlotTree(organism="Tg")
     leaf = view._leaves(view.tree.invisibleRootItem())[0]
     view.tree.setCurrentItem(leaf)
@@ -210,7 +210,7 @@ def test_selecting_a_group_says_so_rather_than_showing_nothing(qapp):
 
 def test_an_empty_slot_is_coloured_rather_than_left_to_be_noticed(qapp):
     """The empty rows are the point of the window."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     from parascape import theme as TH
     view = T.SlotTree(sources={"Pf": {}}, organism="Pf")     # no table: everything reads empty
     leaf = view._leaves(view.tree.invisibleRootItem())[0]

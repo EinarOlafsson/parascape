@@ -24,7 +24,7 @@ LOGOS = sorted(f for f in os.listdir(ICONS) if f.startswith("logo_") and f.endsw
 
 @pytest.fixture(scope="module")
 def qapp():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -36,7 +36,7 @@ def _ink(name: str, size: int, qapp) -> float:
     like. Composited on white because that is the worst case for a mark that will also be shown on
     a light theme.
     """
-    from PyQt6 import QtCore, QtGui, QtSvg
+    from PySide6 import QtCore, QtGui, QtSvg
     r = QtSvg.QSvgRenderer(os.path.join(ICONS, name))
     img = QtGui.QImage(size, size, QtGui.QImage.Format.Format_ARGB32_Premultiplied)
     img.fill(0xFFFFFFFF)
@@ -139,7 +139,7 @@ def test_regenerating_produces_the_same_forty(tmp_path):
 def test_the_galaxy_drafts_put_the_parasite_at_the_centre(qapp):
     """The direction the name argues for: a star map with Toxoplasma in the middle of it. The centre
     has to be the parasite rather than a dot, or it is the orbit family again."""
-    from PyQt6 import QtCore, QtGui, QtSvg
+    from PySide6 import QtCore, QtGui, QtSvg
     for name in [f for f in LOGOS if "galaxy" in f]:
         r = QtSvg.QSvgRenderer(os.path.join(ICONS, name))
         img = QtGui.QImage(64, 64, QtGui.QImage.Format.Format_ARGB32_Premultiplied)

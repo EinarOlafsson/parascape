@@ -16,7 +16,7 @@ import os
 import re
 from pathlib import Path
 
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 
 from . import paths
 

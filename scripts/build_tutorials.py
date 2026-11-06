@@ -47,10 +47,10 @@ class Studio:
 
     def __init__(self):
         os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-        os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+        os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
         self.tmp = tempfile.mkdtemp(prefix="parascape-tutorial-")
         os.environ["PARASCAPE_STATE"] = self.tmp
-        from PyQt6 import QtCore, QtWidgets
+        from PySide6 import QtCore, QtWidgets
         QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
         for scope in (QtCore.QSettings.Scope.UserScope, QtCore.QSettings.Scope.SystemScope):
             QtCore.QSettings.setPath(QtCore.QSettings.Format.IniFormat, scope, self.tmp)
@@ -680,7 +680,7 @@ def tutorial_advanced(studio) -> dict:
 # --------------------------------------------------------------------------- the long guide
 def guide(studio, runs: dict) -> None:
     """One long page describing every feature, with real captures and generated control tables."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape import strategies as S
     from parascape.analysis_panel import AnalysisPanel
     from parascape.strategy_panel import StrategyPanel

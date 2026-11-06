@@ -27,8 +27,8 @@ def audit(output):
     output.mkdir(parents=True, exist_ok=False)
     os.environ['PARASCAPE_STATE'] = str(output / 'state')
     os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
-    os.environ.setdefault('PYQTGRAPH_QT_LIB', 'PyQt6')
-    from PyQt6 import QtCore, QtGui, QtWidgets
+    os.environ.setdefault('PYQTGRAPH_QT_LIB', 'PySide6')
+    from PySide6 import QtCore, QtGui, QtWidgets
     import pandas as pd
     from parascape import app as A, organisms as O, paths, track_record
 

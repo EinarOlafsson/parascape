@@ -14,7 +14,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import paths
 from .jobs import JobRunner, Stopped
@@ -58,7 +58,7 @@ def _fill(table, frame, limit=1000):
 
 class WorkflowDialog(QtWidgets.QDialog):
     """Three task-oriented views sharing the application's gene table and job runner."""
-    gene_selected = QtCore.pyqtSignal(str)
+    gene_selected = QtCore.Signal(str)
 
     def __init__(self, nodes, runner=None, parent=None):
         super().__init__(parent)

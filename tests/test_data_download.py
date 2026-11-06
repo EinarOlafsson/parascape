@@ -6,7 +6,7 @@ import tarfile
 
 import pytest
 
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 
 from parascape import data_manager as D, paths
 

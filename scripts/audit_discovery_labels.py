@@ -46,7 +46,7 @@ def _source_pairs(ctx,target):
 
 def freeze(output):
     """Audit every available label and functional term against pinned installed inputs."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.discoveries_panel import DiscoveriesPanel
     output = Path(output)
     if output.exists():raise ValueError('Use a new immutable audit directory')

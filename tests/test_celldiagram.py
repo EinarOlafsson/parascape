@@ -15,17 +15,17 @@ import sys
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from PyQt6 import QtCore, QtWidgets  # noqa: E402
+from PySide6 import QtCore, QtWidgets  # noqa: E402
 
 from parascape import celldiagram as CD  # noqa: E402
 
 
 @pytest.fixture(scope="module")
 def qapp():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -42,7 +42,7 @@ def _ink_pixel(diagram, sl):
     and a click anywhere landed on whichever inflated box won. That is why hit-testing renders the
     shapes, and why a test of it has to aim at a rendered pixel.
     """
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     mask = diagram.masks()[sl]
     pts = [(x, y) for x in range(mask.width()) for y in range(mask.height())
            if QtGui.QColor.fromRgba(mask.pixel(x, y)).alpha() > 200]
@@ -153,11 +153,13 @@ def test_the_drawing_renders(diagram):
     diagram.set_palette({"apicoplast": (0.0, 0.0, 1.0)}, "apicoplast")
     r = diagram.renderer()
     assert r is not None and r.isValid() and r.defaultSize().width() > 0
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     img = QtGui.QImage(220, 320, QtGui.QImage.Format.Format_ARGB32_Premultiplied)
     img.fill(0)
     p = QtGui.QPainter(img)
-    diagram.render(p)
+    # PySide6 has no single-argument render(QPainter) overload; the targetOffset is
+    # required. PyQt6 accepted render(painter) alone.
+    diagram.render(p, QtCore.QPoint())
     p.end()
     assert any(QtGui.QColor.fromRgba(img.pixel(x, y)).alpha() > 0
                for x in range(0, 220, 4) for y in range(0, 320, 4)), "nothing was drawn"
@@ -175,7 +177,7 @@ def test_a_missing_artwork_hides_the_diagram_rather_than_raising(qapp, tmp_path)
 # --------------------------------------------------------------------------- clicking
 def test_clicking_an_organelle_selects_its_compartment(diagram):
     """Both directions, or the diagram is decoration."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     diagram.set_palette({"apicoplast": (0.0, 0.0, 1.0)}, "")
     x, y = _ink_pixel(diagram, "SL0018")
     got = []
@@ -204,7 +206,7 @@ def test_clicking_a_shared_shape_steps_through_the_classes_it_stands_for(diagram
 
 
 def test_clicking_empty_space_selects_nothing(diagram):
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     diagram.set_palette({"apicoplast": (0.0, 0.0, 1.0)}, "")
     got = []
     diagram.compartment_clicked.connect(got.append)
@@ -216,7 +218,7 @@ def test_clicking_empty_space_selects_nothing(diagram):
 
 
 def test_a_right_click_does_not_select(diagram):
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     diagram.set_palette({"apicoplast": (0.0, 0.0, 1.0)}, "")
     got = []
     diagram.compartment_clicked.connect(got.append)
@@ -239,7 +241,7 @@ def test_clicking_the_middle_of_a_shape_selects_that_shape(diagram):
 
 def test_a_diagram_with_no_drawing_paints_nothing_rather_than_crashing(qapp, tmp_path):
     """The paint handler runs on every repaint; with no artwork it has to return, not raise."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     d = CD.CellDiagram(path=str(tmp_path / "nothing.svg"))
     d.resize(50, 50)
     d.paintEvent(QtGui.QPaintEvent(QtCore.QRect(0, 0, 50, 50)))
@@ -257,7 +259,7 @@ def test_a_widget_with_no_size_yet_does_not_divide_by_zero(diagram):
 def test_clicking_a_shape_whose_classes_are_not_in_the_palette_still_selects_one(diagram):
     """A shape stands for its compartments whether or not the current palette has them -- the click
     names one and the window decides what to do with it, rather than the drawing going inert."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     diagram.set_palette({}, "")
     diagram.set_palette({"apicoplast": (0.0, 0.0, 1.0)}, "")
     diagram.color_of = {}                      # a different category is showing
@@ -338,7 +340,7 @@ def test_the_drawing_is_hollow_and_only_the_selection_has_color(qapp):
     attempt to neutralise this artwork by rewriting its fills, strokes and gradient stops left it
     rendering in full color anyway, with no error and nothing in the document to explain it. A
     shape with no fill has nothing to render in any color, which is what finally settled it."""
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     d = CD.CellDiagram()
     d.resize(240, 380)
     d.set_palette({"rhoptries 1": (0.2, 0.6, 1.0)}, "")
@@ -360,7 +362,7 @@ def test_the_drawing_is_hollow_and_only_the_selection_has_color(qapp):
 
 def test_the_drawing_keeps_the_panel_s_background(qapp):
     """Transparent where the cell is not, so the diagram sits on whatever the theme paints."""
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     d = CD.CellDiagram()
     d.resize(200, 320)
     d.set_palette({}, "")
@@ -386,7 +388,7 @@ def test_the_cell_is_outlines_with_nothing_filled_behind_them(qapp):
     d.resize(240, 380)
     d.set_palette({"rhoptries 1": (0.2, 0.6, 1.0)}, "rhoptries 1")
     mask = d.masks()["SL0233"]
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     ink = sum(QtGui.QColor.fromRgba(mask.pixel(x, y)).alpha() > 200
               for x in range(mask.width()) for y in range(mask.height()))
     assert ink > 200, "the hit-test mask is only an outline"
@@ -463,7 +465,7 @@ def test_the_credit_block_is_not_part_of_the_drawing(qapp):
 
     Measured as the longest run of fully opaque pixels across a row, with nothing selected. The
     outlines are thin and anti-aliased and produce none; the logo produced 19."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     d = CD.CellDiagram()
     d.resize(240, 380)
 
@@ -521,7 +523,7 @@ def test_a_container_is_tinted_under_its_own_outlines(qapp):
 
     Measured on the painted widget: with a container selected, its area still carries near-white ink
     -- the outlines -- as well as the colour."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     d = CD.CellDiagram()
     d.resize(240, 330)
 

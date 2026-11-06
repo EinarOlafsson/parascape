@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pandas as pd
 import pytest
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from parascape import datasets as D, inventory as I, organisms as O
 from parascape.dataset_browser import DatasetBrowser

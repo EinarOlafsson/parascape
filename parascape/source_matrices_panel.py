@@ -8,7 +8,7 @@ associations. CSV exports retain sample metadata and provenance so downstream
 review can establish the appropriate units and independent experimental samples
 before quantitative comparisons are made.
 """
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 
 from . import source_matrices as S
 

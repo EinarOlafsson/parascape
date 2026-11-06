@@ -19,23 +19,23 @@ import numpy as np
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from PyQt6 import QtCore, QtWidgets  # noqa: E402
+from PySide6 import QtCore, QtWidgets  # noqa: E402
 from parascape import theme as TH  # noqa: E402
 from parascape.app import COLOR_MODES  # noqa: E402
 
 
 @pytest.fixture(scope="module")
 def app():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
 @pytest.fixture(scope="module")
 def win():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.app import Window
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     w = Window()
@@ -529,7 +529,7 @@ def test_genes_behind_the_camera_are_excluded_rather_than_wrapped(win):
 
 
 def _click(win, x, y, button=None):
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     button = button or QtCore.Qt.MouseButton.LeftButton
     return QtGui.QMouseEvent(QtCore.QEvent.Type.MouseButtonRelease,
                              QtCore.QPointF(x, y), QtCore.QPointF(x, y),
@@ -555,7 +555,7 @@ def test_clicking_empty_space_selects_nothing(win):
 
 
 def test_a_right_click_does_not_select(win):
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     got = []
     win.view.picked.connect(got.append)
     win.view.mouseReleaseEvent(_click(win, 10.0, 10.0, QtCore.Qt.MouseButton.RightButton))
@@ -630,7 +630,7 @@ def test_a_chosen_map_is_used_only_where_its_kind_suits_the_column(win):
 def test_opening_preferences_shows_the_dialog_it_builds(win):
     """Shown rather than exec'd since 0.23: modal, it froze the map behind it, so every setting had
     to be judged from memory of what the map looked like a moment ago."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     d = win.open_preferences()
     assert isinstance(d, QtWidgets.QDialog)
     assert d.isVisible() and not d.isModal()
@@ -643,7 +643,7 @@ def test_main_builds_and_shows_the_window(monkeypatch, app):
 
     QApplication is handed back the instance this process already owns -- constructing a second one is
     undefined behaviour and takes the interpreter down rather than failing a test."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     import parascape.app as A
     seen = {}
 
@@ -733,7 +733,7 @@ def test_the_left_button_has_two_modes_and_says_which(win):
 def test_a_constrained_orbit_moves_one_angle_and_leaves_the_other(win):
     """An unconstrained orbit never returns to the same view twice, which is exactly wrong for
     comparing two maps."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
 
     def drag(dx, dy):
         start = QtCore.QPointF(300.0, 300.0)
@@ -761,7 +761,7 @@ def test_a_constrained_orbit_moves_one_angle_and_leaves_the_other(win):
 
 
 def test_free_orbit_is_still_the_default_behaviour(win):
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     win.set_navigate_axis("free")
     win.set_interaction_mode("navigate")
     before = dict(win.view.opts)
@@ -929,7 +929,7 @@ def test_the_gate_being_drawn_is_painted_over_the_view(win):
     """A gate you cannot see while dragging it is a gate drawn by guesswork. Painted onto an image
     rather than rendered from the widget, which would bring the widget's background with it and
     make "drew a lasso" indistinguishable from "filled the rectangle"."""
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     ov = win.view.overlay
 
     def painted():
@@ -956,7 +956,7 @@ def test_the_overlay_follows_the_size_of_the_view(win):
 
     The handler is driven directly: these windows are never shown, and Qt defers a resize event to
     the moment a widget becomes visible -- so `resize()` alone proves nothing here."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     win.view.resize(640, 480)
     win.view.resizeEvent(QtGui.QResizeEvent(QtCore.QSize(640, 480), QtCore.QSize(399, 950)))
     assert win.view.overlay.size() == win.view.size()
@@ -965,7 +965,7 @@ def test_the_overlay_follows_the_size_of_the_view(win):
 def test_the_mouse_drives_the_gate_end_to_end(win):
     """The handlers, not the helpers: connected to the wrong events, every gate test above would
     still pass while dragging on the map did nothing at all."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
 
     def ev(kind, x, y):
         pos = QtCore.QPointF(x, y)
@@ -990,7 +990,7 @@ def test_the_mouse_drives_the_gate_end_to_end(win):
 
 def test_a_click_in_navigate_mode_still_selects_one_gene(win):
     """Select mode must not be the only way to use the map; the ordinary click has to survive it."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     win.set_interaction_mode("navigate")
     sx, sy, ok = _on_screen(win)
     i = int(ok[0])
@@ -1037,7 +1037,7 @@ def test_extending_a_gate_that_was_never_started_does_nothing(win):
 def test_the_overlay_paints_only_when_a_gate_is_in_progress(win):
     """The paint handler itself, driven directly: an overlay that painted on every frame would put
     the last gate back on screen after it had been cleared."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     ov = win.view.overlay
     ov.clear()
     ov.paintEvent(QtGui.QPaintEvent(QtCore.QRect(0, 0, 10, 10)))     # returns before painting
@@ -1070,7 +1070,7 @@ def test_nothing_is_returned_when_the_nearest_gene_is_too_far(win):
 def test_a_gated_export_can_be_cancelled_at_either_dialog(win, monkeypatch, tmp_path):
     """Two dialogs stand between the menu item and the file, and cancelling either must write
     nothing rather than a file with default columns."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     win.on_gated(np.arange(5))
     monkeypatch.setattr(win, "_ask_path", lambda *a, **k: "")
     assert win.export_gated() is None
@@ -1084,7 +1084,7 @@ def test_a_gated_export_can_be_cancelled_at_either_dialog(win, monkeypatch, tmp_
 def test_pressing_in_navigate_mode_reaches_the_camera(win):
     """Select mode intercepts the press; navigate mode must still hand it to the view, or the map
     stops rotating the moment gating exists."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     win.set_interaction_mode("navigate")
     pos = QtCore.QPointF(120.0, 140.0)
     win.view.mousePressEvent(QtGui.QMouseEvent(
@@ -1096,7 +1096,7 @@ def test_pressing_in_navigate_mode_reaches_the_camera(win):
 
 def test_the_gated_export_uses_the_columns_that_were_ticked(win, monkeypatch, tmp_path):
     import pandas as pd
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     win.on_gated(np.arange(8))
     monkeypatch.setattr(QtWidgets.QDialog, "exec", lambda self: 1)
     monkeypatch.setattr(win, "_ticked", staticmethod(lambda d: ["compartment", "n_publications"]))
@@ -1459,7 +1459,7 @@ def test_an_imported_column_can_be_colored_by_like_any_other(win, tmp_path):
 
 def test_a_table_that_resolves_to_nothing_is_refused_with_the_reason(win, tmp_path, monkeypatch):
     import pandas as pd
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     path = tmp_path / "junk.csv"
     pd.DataFrame({"id": ["not-a-gene"] * 4, "score": [1.0, 2, 3, 4]}).to_csv(path, index=False)
     d = win.build_import_dialog(str(path))
@@ -1473,7 +1473,7 @@ def test_a_table_that_resolves_to_nothing_is_refused_with_the_reason(win, tmp_pa
 
 def test_a_file_that_cannot_be_read_says_so_rather_than_opening_an_empty_dialog(win, tmp_path,
                                                                                monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     path = tmp_path / "broken.parquet"
     path.write_bytes(b"not parquet")
     monkeypatch.setattr(QtWidgets.QMessageBox, "warning", staticmethod(lambda *a, **k: None))
@@ -1512,7 +1512,7 @@ def test_asking_for_a_sheet_that_will_not_read_says_so(win, tmp_path):
 
 
 def test_cancelling_the_dialog_imports_nothing(win, tmp_path, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     before = len(win.nodes.columns)
     monkeypatch.setattr(QtWidgets.QDialog, "exec", lambda self: 0)
     assert win.import_data(_user_table(tmp_path, win, "cancel.csv")) is None
@@ -1530,7 +1530,7 @@ def test_the_import_is_reachable_from_the_file_menu(win):
 def test_importing_with_no_path_asks_for_a_file(win, tmp_path, monkeypatch):
     """The menu entry passes no path, so the file dialog is the only thing that supplies one, and
     the whole import hangs off what it returns."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     monkeypatch.setattr(QtWidgets.QFileDialog, "getOpenFileName",
                         staticmethod(lambda *a, **k: (_user_table(tmp_path, win, "asked.csv"), "")))
     monkeypatch.setattr(QtWidgets.QDialog, "exec", lambda self: 1)
@@ -1540,7 +1540,7 @@ def test_importing_with_no_path_asks_for_a_file(win, tmp_path, monkeypatch):
 
 
 def test_cancelling_the_import_file_dialog_imports_nothing(win, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     before = len(win.nodes.columns)
     monkeypatch.setattr(QtWidgets.QFileDialog, "getOpenFileName",
                         staticmethod(lambda *a, **k: ("", "")))
@@ -1597,7 +1597,7 @@ def test_the_caption_under_the_cell_never_moves_the_cell(win):
     has no organelle for, and a caption that grows takes its height from the widget above it. The
     parasite then jumps as compartments are clicked, which reads as the drawing being redrawn
     differently rather than as a caption reflowing."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     win.on_category_changed("compartment")
     for _ in range(4):
         QtWidgets.QApplication.processEvents()
@@ -1616,7 +1616,7 @@ def test_the_caption_under_the_cell_never_moves_the_cell(win):
 
 
 def test_a_caption_too_long_for_its_box_scrolls(win):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.app import DIAGRAM_NOTE_HEIGHT
     win.on_category_changed("compartment")
     win.diagram_note.setText("word " * 200)

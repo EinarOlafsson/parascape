@@ -13,7 +13,7 @@ import json
 from pathlib import Path
 import uuid
 
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import deposited_values as D
 from . import protein_identifier_evidence as I

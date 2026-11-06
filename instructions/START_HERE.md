@@ -9,7 +9,7 @@ is the way it is.
 ```bash
 cd /mnt/firecuda2/Claude/repo/parascape     # this machine
 git pull && pip install -e .
-QT_QPA_PLATFORM=offscreen PYQTGRAPH_QT_LIB=PyQt6 python -m pytest tests/ -q
+QT_QPA_PLATFORM=offscreen PYQTGRAPH_QT_LIB=PySide6 python -m pytest tests/ -q
 ```
 
 Expect 2,318 passing, 5 skipped, and roughly four minutes. Anything red is from the last session,

@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 import threading
 
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import workbook_values as W
 from . import optional_workbook_data as O
@@ -19,7 +19,7 @@ from .component_download_dialog import ComponentDownloadDialog
 
 
 class _Signals(QtCore.QObject):
-    finished = QtCore.pyqtSignal(int, object, str)
+    finished = QtCore.Signal(int, object, str)
 
 
 class _Task(QtCore.QRunnable):

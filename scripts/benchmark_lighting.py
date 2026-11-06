@@ -20,7 +20,7 @@ import time
 
 import numpy as np
 from PIL import Image, ImageDraw
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 from OpenGL import GL
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))

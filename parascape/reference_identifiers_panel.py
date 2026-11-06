@@ -7,7 +7,7 @@ hashes. It does not choose a canonical identifier, infer which search database w
 used, convert gene symbols or combine measurements. Pending sources and missing
 declarations remain gaps rather than evidence of biological absence.
 """
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 
 from . import reference_identifiers as R
 

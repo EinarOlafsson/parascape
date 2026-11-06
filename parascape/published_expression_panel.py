@@ -7,7 +7,7 @@ unlabelled cross-study comparison. Export keeps the source metadata and checksum
 """
 from __future__ import annotations
 
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 
 from . import published_expression as P
 

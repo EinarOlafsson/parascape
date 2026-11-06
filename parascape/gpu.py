@@ -104,7 +104,7 @@ def enabled() -> bool:
     if forced is not None:
         return forced and have
     try:
-        from PyQt6 import QtCore
+        from PySide6 import QtCore
         s = QtCore.QSettings("parascape", "parascape")
         want = s.value("compute/gpu", type=bool) if s.contains("compute/gpu") else have
     except Exception:

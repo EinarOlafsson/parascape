@@ -46,7 +46,7 @@ from __future__ import annotations
 
 import os
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import gene_drop as GD
 from . import nodes as ND
@@ -123,8 +123,8 @@ def _palette() -> dict:
 class _Catalogue(QtCore.QThread):
     """Rebuild the node catalogue off the main thread: it reads the results and the map release."""
 
-    ready = QtCore.pyqtSignal(object)
-    failed = QtCore.pyqtSignal(str)
+    ready = QtCore.Signal(object)
+    failed = QtCore.Signal(str)
 
     def __init__(self, gene_list_loaded: bool, parent=None):
         super().__init__(parent)
@@ -141,8 +141,8 @@ class _Catalogue(QtCore.QThread):
 class _DropReader(QtCore.QThread):
     """Read a dropped file off the main thread: a workbook takes seconds, and the window must live."""
 
-    ready = QtCore.pyqtSignal(object)
-    failed = QtCore.pyqtSignal(str)
+    ready = QtCore.Signal(object)
+    failed = QtCore.Signal(str)
 
     def __init__(self, path: str, sheet=None, known_ids=None, gene_column: str = "", parent=None):
         super().__init__(parent)
@@ -284,7 +284,7 @@ class QuestionCatalogue(QtWidgets.QWidget):
     """
 
     #: Emitted with the level-3 question node of the row that was chosen.
-    chosen = QtCore.pyqtSignal(object)
+    chosen = QtCore.Signal(object)
 
     COLUMNS = ("label", "question", "answer type", "known answers", "right when rotated",
                "right on hidden genes",
@@ -389,9 +389,9 @@ class DropView(QtWidgets.QWidget):
     """
 
     #: Emitted with a node id when one of the list actions is asked for.
-    action = QtCore.pyqtSignal(str)
+    action = QtCore.Signal(str)
     #: Emitted with a path to read, when the user chooses or changes something.
-    reread = QtCore.pyqtSignal(str, object, str)
+    reread = QtCore.Signal(str, object, str)
 
     def __init__(self, catalogue=None, parent=None):
         super().__init__(parent)
@@ -533,9 +533,9 @@ class HomePanel(QtWidgets.QWidget):
     """
 
     #: Emitted with a `nodes.Node` when a card is chosen. `install` turns it into an action.
-    node_chosen = QtCore.pyqtSignal(object)
+    node_chosen = QtCore.Signal(object)
     #: Emitted with a line for the status bar.
-    status = QtCore.pyqtSignal(str)
+    status = QtCore.Signal(str)
 
     def __init__(self, catalogue=None, known_ids=None, gene_lookup=None, index=None, parent=None):
         super().__init__(parent)

@@ -14,7 +14,7 @@ def test_species_switch_renders_without_invalid_shader_programs(tmp_path):
     # sharing before Qt creates its global OpenGL context.
     code = '''
 from parascape.app import Window
-from PyQt6 import QtWidgets, QtGui
+from PySide6 import QtWidgets, QtGui
 app = QtWidgets.QApplication([])
 first = Window(species="Toxoplasma gondii")
 first.show()

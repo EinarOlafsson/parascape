@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Draw the Toxoplasma constellation refinement as editable vector assets.
 
-Run with QT_QPA_PLATFORM=offscreen. Requires PyQt6 and Noto Sans Light.
+Run with QT_QPA_PLATFORM=offscreen. Requires PySide6 and Noto Sans Light.
 The asymmetric outline follows a tachyzoite's tapered anterior and rounded
 posterior, with a deliberately softened apex for the logo. See CDC DPDx:
 https://www.cdc.gov/dpdx/toxoplasmosis/index.html
@@ -10,7 +10,7 @@ The stars are a symbolic gene network, not anatomical structures.
 from pathlib import Path
 import zipfile
 
-from PyQt6 import QtCore, QtGui, QtSvg
+from PySide6 import QtCore, QtGui, QtSvg
 
 from generate_logo_options import outline, svg
 

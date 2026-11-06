@@ -21,7 +21,7 @@ import os
 
 import numpy as np
 import pandas as pd
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from .embedding import (BLOCKS, slot_blocks, default_spec, EmbeddingSpec, NA_POLICIES, SCALINGS, columns_for,
                         variance_share)
@@ -68,15 +68,15 @@ def _scrolled(page: QtWidgets.QWidget) -> QtWidgets.QScrollArea:
 
 class Worker(QtCore.QObject):
     """Runs one callable off the GUI thread and reports back."""
-    done = QtCore.pyqtSignal(object, object)     # result, error
-    progress = QtCore.pyqtSignal(str)
+    done = QtCore.Signal(object, object)     # result, error
+    progress = QtCore.Signal(str)
 
     def __init__(self, fn):
         """Store a callable accepting a progress callback for execution on a worker thread."""
         super().__init__()
         self.fn = fn
 
-    @QtCore.pyqtSlot()
+    @QtCore.Slot()
     def run(self):
         """Run the callable and emit its result, or its exception, never raising into Qt."""
         try:
@@ -284,28 +284,28 @@ class _Progress:
 class AnalysisPanel(QtWidgets.QWidget):
     """Data selection, tuning, clustering and the hypothesis battery."""
 
-    embedding_ready = QtCore.pyqtSignal(object, object)          # coords, gene mask
+    embedding_ready = QtCore.Signal(object, object)          # coords, gene mask
     #: A clustering, so the map can color by it. Without this the Clusters tab computed labels,
     #: printed how many there were, and threw them away -- which made the one thing this application
     #: is for, looking at structure colored by a held-out variable, impossible to actually do.
-    clusters_ready = QtCore.pyqtSignal(object)                   # labels, -1 for noise
+    clusters_ready = QtCore.Signal(object)                   # labels, -1 for noise
     #: One finished configuration of a walk, as `tuning.WalkStep`, emitted from the worker thread the
     #: moment it is computed. Qt queues it to the GUI thread, which is what lets a row and a thumbnail
     #: appear while the walk is still running rather than all at once when it ends.
-    walk_step = QtCore.pyqtSignal(object)
+    walk_step = QtCore.Signal(object)
     #: A walk is starting: whatever the last one left on screen belongs to a different sweep.
-    walk_started = QtCore.pyqtSignal()
+    walk_started = QtCore.Signal()
     #: An annotation was saved or withdrawn, so the map's fourth color has changed.
-    annotations_changed = QtCore.pyqtSignal()
+    annotations_changed = QtCore.Signal()
     #: One scored configuration of a search, as `search.RunStep`, emitted from the worker thread as
     #: each embedding finishes. Carries its clustering, because here the clustering is half of what
     #: was scored and a map shown without it is a map shown without the result.
-    search_step = QtCore.pyqtSignal(object)
+    search_step = QtCore.Signal(object)
     #: One configuration of a discovery climb, as a plain row. A row rather than a step object
     #: because the climb's artefacts -- the labels, the findings -- are held for the reading rather
     #: than drawn, and shipping them through a GUI signal every step would copy them for nothing.
-    discovery_step = QtCore.pyqtSignal(object)
-    status = QtCore.pyqtSignal(str)
+    discovery_step = QtCore.Signal(object)
+    status = QtCore.Signal(str)
 
     def __init__(self, nodes: pd.DataFrame, store=None, parent=None, runner=None,
                  annotations=None):
@@ -1587,19 +1587,40 @@ class AnalysisPanel(QtWidgets.QWidget):
         self._worker.progress.connect(self.status.emit)
         self._thread.started.connect(self._worker.run)
 
-        def relay(result, error):
-            """Join the worker thread and deliver its result or exception on the GUI thread."""
-            self._thread.quit(); self._thread.wait()
-            self._thread = None; self._worker = None
-            if error is not None:
-                if not (on_error is not None and on_error(error)):
-                    self.status.emit(f"failed: {error}")
-            else:
-                on_done(result)
-
-        self._worker.done.connect(relay)
+        # The receiver must be a bound method of an object living on the GUI thread, not the closure
+        # above. A closure has no QObject receiver, so PySide6 cannot work out a receiving thread and
+        # runs it DIRECTLY on the worker -- which is the hazard
+        # `test_the_completion_handler_runs_on_the_gui_thread` exists to catch, and which Qt itself
+        # reports as "QThread::wait: Thread tried to wait on itself" when `relay` then joins its own
+        # thread. PyQt6 hid this by wrapping a connected callable in a proxy object that belonged to
+        # the connecting thread; PySide6 does not, so the promise in this method's docstring -- that
+        # `on_done` is invoked on the GUI thread -- has to be made structurally. `self` is on the GUI
+        # thread, so an auto connection to its bound method is queued there.
+        self._private_handlers = (on_done, on_error)
+        self._worker.done.connect(self._relay_private)
         self._thread.start()
         return None
+
+    @QtCore.Slot(object, object)
+    def _relay_private(self, result, error):
+        """Join the private worker thread and deliver its result on the GUI thread.
+
+        Only for the no-runner fallback above; the JobRunner path has its own delivery. A bound slot
+        rather than a closure so the connection carries a receiver whose thread Qt can see.
+        """
+        on_done, on_error = getattr(self, "_private_handlers", (None, None))
+        thread = self._thread
+        if thread is not None:
+            thread.quit()
+            thread.wait()
+        self._thread = None
+        self._worker = None
+        self._private_handlers = (None, None)
+        if error is not None:
+            if not (on_error is not None and on_error(error)):
+                self.status.emit(f"failed: {error}")
+        elif on_done is not None:
+            on_done(result)
 
     def _on_job_finished(self, jid: int, ok: bool):
         """Deliver a finished job's result to its handler, on the GUI thread."""
@@ -1672,8 +1693,20 @@ class AnalysisPanel(QtWidgets.QWidget):
     def _table_menu(self, table, pos):
         """Show the right-click menu for a results table. `build_table_menu` makes it."""
         menu = self.build_table_menu(table)
-        menu.exec(table.viewport().mapToGlobal(pos))
+        self._show_menu(menu, table.viewport().mapToGlobal(pos))
         return menu
+
+    def _show_menu(self, menu, where) -> None:
+        """Show a context menu modally. Its own method so a test can intercept it.
+
+        `QMenu.exec` cannot be patched under PySide6: assigning `QtWidgets.QMenu.exec` appears to
+        succeed, but PySide6 resolves the call through shiboken's type slots rather than the Python
+        type dictionary, so the REAL modal loop runs and blocks for ever -- with no user to dismiss
+        it, the test hangs instead of failing. PyQt6 honoured the Python-level override, which is why
+        the old test worked. A plain Python method on a plain Python object is interceptable under
+        either binding, so the seam belongs here rather than in the test.
+        """
+        menu.exec(where)
 
     def table_kind(self, table) -> str:
         """The key a saved file records for this table -- what makes a load refuse a mismatch."""

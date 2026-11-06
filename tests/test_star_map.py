@@ -208,7 +208,7 @@ def panel(ctx, tmp_path):
 
 
 def test_every_control_explains_itself(panel):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     kinds = (QtWidgets.QAbstractButton, QtWidgets.QComboBox, QtWidgets.QAbstractSpinBox,
              QtWidgets.QLineEdit, QtWidgets.QListWidget, QtWidgets.QGraphicsView)
     missing = [type(w).__name__ + ":" + getattr(w, "text", lambda: "")()
@@ -221,8 +221,8 @@ def test_every_control_explains_itself(panel):
 
 
 def test_view_recentres_on_click_and_goes_back(panel):
-    from PyQt6 import QtCore, QtWidgets
-    from PyQt6.QtTest import QTest
+    from PySide6 import QtCore, QtWidgets
+    from PySide6.QtTest import QTest
     from parascape.star_map import _Node
     assert panel.centre_on("TGME49_100000")
     QtWidgets.QApplication.processEvents()
@@ -410,8 +410,8 @@ def _geometry(panel):
 
 def test_hovering_every_visible_item_never_moves_the_graph(panel):
     """The twitch the user reported: hovering must change colour and text, and nothing else."""
-    from PyQt6 import QtWidgets
-    from PyQt6.QtTest import QTest
+    from PySide6 import QtWidgets
+    from PySide6.QtTest import QTest
     panel.centre_on(0)
     QtWidgets.QApplication.processEvents()
     items = _hoverable(panel)
@@ -427,7 +427,7 @@ def test_hovering_every_visible_item_never_moves_the_graph(panel):
 
 
 def test_the_hover_box_keeps_its_height_whatever_it_says(panel):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     panel.centre_on(0)
     height = panel.info.height()
     panel.info.setText("x")
@@ -455,7 +455,7 @@ def test_the_layout_is_computed_once_and_then_held(panel, monkeypatch):
 
 # --------------------------------------------------------------------------- the larger views
 def test_the_panel_shows_a_neighbourhood_and_the_whole_network(panel):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.star_map import MODE_NEIGHBOURHOOD, MODE_NETWORK, MODE_STAR
     panel.centre_on(0)
     panel.set_mode(MODE_NEIGHBOURHOOD)
@@ -484,8 +484,8 @@ def test_the_large_view_caps_what_it_draws_and_says_so(panel):
 
 
 def test_hovering_the_large_view_moves_nothing(panel):
-    from PyQt6 import QtCore, QtWidgets
-    from PyQt6.QtTest import QTest
+    from PySide6 import QtCore, QtWidgets
+    from PySide6.QtTest import QTest
     from parascape.star_map import MODE_NETWORK
     panel.centre_on(0)
     panel.set_mode(MODE_NETWORK)
@@ -502,7 +502,7 @@ def test_hovering_the_large_view_moves_nothing(panel):
 
 
 def test_clicking_a_gene_in_the_large_view_recentres(panel):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.star_map import MODE_NEIGHBOURHOOD
     panel.centre_on(0)
     panel.set_mode(MODE_NEIGHBOURHOOD)

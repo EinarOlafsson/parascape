@@ -85,12 +85,12 @@ def test_filter_and_failed_integrity_clear_exports(qtbot, tmp_path):
 
 
 def test_compare_install_exposes_sparse_tab(qtbot, monkeypatch, tmp_path):
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     from parascape import compare_panel, rna_panel, rna_design_panel, published_expression_panel
     from parascape import dataset_coverage_panel, source_matrices_panel, deposited_values_panel, reference_identifiers_panel
 
     class Profiles(QtWidgets.QWidget):
-        gene_chosen = QtCore.pyqtSignal(str)
+        gene_chosen = QtCore.Signal(str)
 
     class Window(QtWidgets.QMainWindow):
         def _workflow_gene(self, gene):

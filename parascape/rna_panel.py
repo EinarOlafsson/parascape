@@ -4,7 +4,7 @@ Researchers need to see the same gene across samples without treating a missing 
 """
 from __future__ import annotations
 
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import expression_contrast as X
 from . import rna_profiles as R
@@ -13,7 +13,7 @@ from . import rna_profiles as R
 class RNAProfilesPanel(QtWidgets.QWidget):
     """A searchable, exportable per-sample expression table with explicit coverage."""
 
-    gene_chosen = QtCore.pyqtSignal(str)
+    gene_chosen = QtCore.Signal(str)
 
     def __init__(self, root: str = X.NAS, parent=None):
         super().__init__(parent)

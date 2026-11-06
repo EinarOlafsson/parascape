@@ -52,7 +52,7 @@ def test_the_matrices_are_listed_and_loaded(study_root):
 
 
 def test_the_tab_guesses_groups_compares_and_finds_the_planted_genes(study_root, tmp_path):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape.compare_panel import ComparePanel
     root, up = study_root

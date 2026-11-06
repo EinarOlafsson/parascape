@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pandas as pd
 import pytest
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from parascape import scorecard as SC
 from parascape.label_space_browser import LabelSpaceBrowser

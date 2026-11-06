@@ -28,7 +28,7 @@ Loading reads several parquet files, one of them 34 MB, so it happens in a worke
 from __future__ import annotations
 
 import pandas as pd
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import information_map as IM
 from . import theme as TH
@@ -80,8 +80,8 @@ _RUNNING: set = set()
 
 
 class _Loader(QtCore.QThread):
-    ready = QtCore.pyqtSignal(object)
-    failed = QtCore.pyqtSignal(str)
+    ready = QtCore.Signal(object)
+    failed = QtCore.Signal(str)
 
     def __init__(self, root):
         super().__init__(None)
@@ -113,7 +113,7 @@ def value_text(row) -> str:
 class InformationMapPanel(QtWidgets.QWidget):
     """The information map as two views: everything known about one gene, and the coverage of one trait."""
 
-    gene_chosen = QtCore.pyqtSignal(str)        # a gene id, for the rest of the application
+    gene_chosen = QtCore.Signal(str)        # a gene id, for the rest of the application
 
     def __init__(self, published=None, root=None, products=None, parent=None):
         super().__init__(parent)

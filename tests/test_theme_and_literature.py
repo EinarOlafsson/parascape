@@ -16,7 +16,7 @@ import pandas as pd
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from parascape import literature as LIT  # noqa: E402
@@ -299,7 +299,7 @@ def test_an_empty_column_is_categorical_rather_than_a_ramp_over_nothing():
 
 def test_the_switch_track_stays_visible_on_light_and_dark_windows():
     """The track was painted white always, which vanished on the light themes."""
-    from PyQt6 import QtGui, QtWidgets
+    from PySide6 import QtGui, QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape import theme as TH
     for window, expect in (("#f4f5f7", "#c9ced5"), ("#15171a", "#ffffff")):

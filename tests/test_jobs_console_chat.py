@@ -11,9 +11,9 @@ import sys
 import pytest
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 
-from PyQt6 import QtCore, QtWidgets  # noqa: E402
+from PySide6 import QtCore, QtWidgets  # noqa: E402
 
 from parascape import chat as C  # noqa: E402
 from parascape import jobs as J  # noqa: E402
@@ -427,7 +427,7 @@ def test_the_panel_says_what_to_install_when_nothing_is_configured(qapp, monkeyp
 
 
 def test_enter_sends_and_shift_enter_does_not(qapp):
-    from PyQt6.QtGui import QKeyEvent
+    from PySide6.QtGui import QKeyEvent
     box = C._Input()
     fired = []
     box.submitted.connect(lambda: fired.append(True))

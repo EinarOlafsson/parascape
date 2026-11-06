@@ -33,7 +33,7 @@ import os
 import re
 
 import numpy as np
-from PyQt6 import QtCore, QtGui, QtSvg, QtWidgets
+from PySide6 import QtCore, QtGui, QtSvg, QtWidgets
 
 from . import paths
 
@@ -402,7 +402,7 @@ class CellDiagram(QtWidgets.QWidget):
 
     #: A compartment the user clicked in the drawing. The window selects it in the list, which is
     #: the other half of "both directions, or the diagram is decoration".
-    compartment_clicked = QtCore.pyqtSignal(str)
+    compartment_clicked = QtCore.Signal(str)
 
     def __init__(self, parent=None, path: str = ""):
         super().__init__(parent)

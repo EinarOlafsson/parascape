@@ -34,7 +34,7 @@ colored by. Gray means unknown there and means unknown here.
 from __future__ import annotations
 
 import numpy as np
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 #: Edge of a grid thumbnail, in pixels. Large enough that a cluster reads as a cluster, small enough
 #: that a 288-configuration walk is a wall rather than a scroll.
@@ -137,7 +137,7 @@ class GalleryPanel(QtWidgets.QWidget):
 
     #: A configuration the user asked to see, as a `tuning.WalkStep`. The window shows it in the
     #: central 3D view, where it behaves like any other map -- clickable genes, color modes, edges.
-    chosen = QtCore.pyqtSignal(object)
+    chosen = QtCore.Signal(object)
 
     def __init__(self, color_fn=None, background=(0.06, 0.07, 0.09), parent=None):
         super().__init__(parent)

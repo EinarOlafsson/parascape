@@ -1,7 +1,7 @@
 """The simplified app preserves gene inspection and exposes help for its settings."""
 import numpy as np
 import pytest
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 from parascape import app as A
 
 

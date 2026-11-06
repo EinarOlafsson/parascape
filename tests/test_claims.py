@@ -115,7 +115,7 @@ def test_discoveries_respect_their_thresholds(shipped):
 
 
 def test_a_gene_card_shows_its_claims_and_opens_one(shipped):
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape import app as A
     w = A.Window()
@@ -137,7 +137,7 @@ def test_a_gene_card_shows_its_claims_and_opens_one(shipped):
 
 
 def test_the_discoveries_tab_filters_opens_a_claim_and_colours_the_map(shipped, tmp_path):
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape import app as A
     w = A.Window()
@@ -176,7 +176,7 @@ def test_the_discoveries_tab_filters_opens_a_claim_and_colours_the_map(shipped, 
 
 
 def test_start_here_leads_to_the_discoveries(shipped):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape import app as A
     from parascape import guided as G

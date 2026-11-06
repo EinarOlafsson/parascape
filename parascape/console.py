@@ -23,7 +23,7 @@ from __future__ import annotations
 import sys
 from datetime import datetime
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from .logging_util import LEVELS, parse_level
 
@@ -43,7 +43,7 @@ class Tee(QtCore.QObject):
     the GUI thread is a crash that shows up as an unrelated stack days later.
     """
 
-    text = QtCore.pyqtSignal(str, bool)          # chunk, is_error
+    text = QtCore.Signal(str, bool)          # chunk, is_error
 
     def __init__(self, stream, is_error: bool = False, parent=None):
         super().__init__(parent)

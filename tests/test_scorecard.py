@@ -259,7 +259,7 @@ def test_the_strategies_api_loads_without_qt_and_from_the_package():
             "assert 'parascape.strategies' not in sys.modules\n"
             "n = len(parascape.strategies.catalog())\n"
             "parascape.scorecard.glossary(); parascape.techniques.glossary()\n"
-            "assert 'PyQt6' not in sys.modules, 'importing the strategies pulled in Qt'\n"
+            "assert 'PySide6' not in sys.modules, 'importing the strategies pulled in Qt'\n"
             "from parascape import jobs, stopping\n"
             "assert jobs.Stopped is stopping.Stopped\n"
             "print(n)\n")

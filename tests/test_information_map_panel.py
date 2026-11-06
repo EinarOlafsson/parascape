@@ -9,7 +9,7 @@ Headless: conftest pins QT_QPA_PLATFORM=offscreen.
 """
 import pandas as pd
 import pytest
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 
 from parascape import information_map as IM
 from parascape.information_map_panel import InformationMapPanel, value_text

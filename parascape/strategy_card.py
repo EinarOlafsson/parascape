@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import math
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import scorecard as SC
 from . import strategy_explainers as EX
@@ -454,7 +454,7 @@ class ExampleCard(QtWidgets.QFrame):
 class NewInformation(QtWidgets.QWidget):
     """What the successful run added: its top calls for genes without a known label."""
 
-    gene_clicked = QtCore.pyqtSignal(str)
+    gene_clicked = QtCore.Signal(str)
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -526,12 +526,12 @@ class NewInformation(QtWidgets.QWidget):
 class StrategyCard(QtWidgets.QWidget):
     """The default view of one strategy: header, four bars, buttons, about, examples."""
 
-    run_clicked = QtCore.pyqtSignal()
-    test_clicked = QtCore.pyqtSignal()
-    details_clicked = QtCore.pyqtSignal()
-    gene_clicked = QtCore.pyqtSignal(str)
+    run_clicked = QtCore.Signal()
+    test_clicked = QtCore.Signal()
+    details_clicked = QtCore.Signal()
+    gene_clicked = QtCore.Signal(str)
     #: A `parascape://` link from the track-record line, for the evidence panel to open.
-    record_link = QtCore.pyqtSignal(str)
+    record_link = QtCore.Signal(str)
 
     def __init__(self, tips: dict | None = None, parent=None):
         super().__init__(parent)

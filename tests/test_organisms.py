@@ -48,7 +48,7 @@ def test_the_registry_reproduces_the_localization_abbreviations():
 
 
 def test_the_registry_reproduces_the_window_species():
-    pytest.importorskip("PyQt6")
+    pytest.importorskip("PySide6")
     from parascape import app
     for name, where in app.SPECIES.items():
         space = O.by_species(name)

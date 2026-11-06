@@ -4,14 +4,14 @@ Optional components can be large, so the dialog shows size and destination befor
 Transfers run off the GUI thread; cancelling stops between batches and keeps already verified files,
 so a later retry resumes instead of starting again.
 """
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import data_components as C
 
 
 class _Download(QtCore.QThread):
-    progress = QtCore.pyqtSignal(str, int)
-    completed = QtCore.pyqtSignal(bool, str)
+    progress = QtCore.Signal(str, int)
+    completed = QtCore.Signal(bool, str)
 
     def __init__(self, components, parent=None):
         super().__init__(parent)

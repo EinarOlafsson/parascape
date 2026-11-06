@@ -32,7 +32,7 @@ from __future__ import annotations
 import os
 import sys
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 #: Environment override for :func:`compositing_available`: ``1`` forces translucency, ``0`` forbids it.
 ENV_OVERRIDE = "PARASCAPE_TRANSLUCENT"
@@ -246,9 +246,9 @@ def install(app: QtWidgets.QApplication | None = None) -> GlassStyle | None:
     # Keyed on the C++ application, not on an attribute of its Python wrapper: a wrapper can be
     # collected and remade for the same application, and installing a second style then deleted
     # the first while Qt's stylesheet style still wrapped it.
-    from PyQt6 import sip
-    key = sip.unwrapinstance(app)
-    if _INSTALLED.get("app") == key and not sip.isdeleted(_INSTALLED["style"]):
+    import shiboken6
+    key = shiboken6.getCppPointer(app)[0]
+    if _INSTALLED.get("app") == key and shiboken6.isValid(_INSTALLED["style"]):
         return _INSTALLED["style"]
     palette = QtGui.QPalette(app.palette())
     style = GlassStyle()
@@ -377,8 +377,18 @@ class _Chrome(QtCore.QObject):
         return C.ArrowCursor
 
     def eventFilter(self, obj, event):
-        """Resize and show refit the card; presses on the background move or resize the window."""
-        if obj is not self.window:
+        """Resize and show refit the card; presses on the background move or resize the window.
+
+        The `getattr` is not defensive habit, it is a PySide6 fact. The filter is registered on the
+        C++ window, and during teardown an event can be delivered after this wrapper's Python
+        attributes have gone -- raising `AttributeError: '_Chrome' object has no attribute 'window'`
+        inside the Qt event loop, where it cannot be caught by the caller. PyQt6 never delivered one
+        that late, so the guard arrived with the PySide6 migration (instruction 83). It showed up only
+        when `test_glass.py` ran after other window tests, never alone, which is the signature of a
+        lifetime bug rather than a logic one.
+        """
+        window = getattr(self, "window", None)
+        if window is None or obj is not window:
             return False
         t = event.type()
         T = QtCore.QEvent.Type

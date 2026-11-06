@@ -12,7 +12,7 @@ from __future__ import annotations
 from html import escape
 import numpy as np
 import pandas as pd
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import claims as C
 from . import discovery_labels as DL
@@ -73,10 +73,10 @@ def _domain_provenance(record, *, detailed=False):
 class DiscoveriesPanel(QtWidgets.QWidget):
     """All available labels and classes, with a separate filtered claim view."""
 
-    gene_chosen = QtCore.pyqtSignal(str)        # a gene id, for the evidence panel
-    claim_chosen = QtCore.pyqtSignal(str, str)  # (gene id, label), for the claim's reasoning
-    colour_by = QtCore.pyqtSignal(str)          # a label to colour the map by
-    record_chosen = QtCore.pyqtSignal(str,str)  # target, optional class in the legacy scorecard
+    gene_chosen = QtCore.Signal(str)        # a gene id, for the evidence panel
+    claim_chosen = QtCore.Signal(str, str)  # (gene id, label), for the claim's reasoning
+    colour_by = QtCore.Signal(str)          # a label to colour the map by
+    record_chosen = QtCore.Signal(str,str)  # target, optional class in the legacy scorecard
 
     def __init__(self, organism: str, products=None, parent=None, context=None):
         super().__init__(parent)

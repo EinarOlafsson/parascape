@@ -41,7 +41,7 @@ def test_the_environment_can_force_it_off(monkeypatch):
 
 def test_it_is_off_unless_it_is_both_wanted_and_possible(monkeypatch):
     monkeypatch.delenv(gpu.ENV_GPU, raising=False)
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     s = QtCore.QSettings("parascape", "parascape")
     s.setValue("compute/gpu", False)
     s.sync()
@@ -147,7 +147,7 @@ def test_the_switch_looks_like_the_one_in_spacr(qapp):
 
 
 def test_clicking_the_switch_toggles_and_emits(qapp):
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     from parascape.theme import Switch
     s = Switch("gpu")
     s.resize(240, 24)
@@ -162,7 +162,7 @@ def test_clicking_the_switch_toggles_and_emits(qapp):
 
 
 def test_a_right_click_does_not_toggle_it(qapp):
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     from parascape.theme import Switch
     s = Switch("gpu")
     s.resize(240, 24)
@@ -188,7 +188,7 @@ def test_the_switch_reports_what_it_will_do_when_toggled(win):
 
 @pytest.fixture(scope="module")
 def qapp():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -320,7 +320,7 @@ def test_the_settings_being_unreadable_leaves_it_off(monkeypatch):
     real = builtins.__import__
 
     def no_qt(name, *a, **k):
-        if name.startswith("PyQt6"):
+        if name.startswith("PySide6"):
             raise ImportError("no Qt here")
         return real(name, *a, **k)
 

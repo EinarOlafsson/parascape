@@ -17,7 +17,7 @@ def _sha(path):
 
 def audit(output):
     """Retain exact source/card replay and real UI routes in a fresh snapshot."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from scripts.audit_functional_discoveries import audit as source_audit
     from parascape import functional_coverage as FC, functional_results as F, host_foundation_scorecard as HF
     from parascape import organisms as O, strategies as S

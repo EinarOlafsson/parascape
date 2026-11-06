@@ -21,7 +21,7 @@ sign. `CMAPS` therefore records the kind, and the UI offers only the appropriate
 """
 from __future__ import annotations
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 # --------------------------------------------------------------------------- palettes
 DARK = {
@@ -492,7 +492,7 @@ class CheckList(QtWidgets.QListWidget):
     trigger a redraw of 8,140 points, and ticking forty categories should redraw once.
     """
 
-    checkedChanged = QtCore.pyqtSignal()
+    checkedChanged = QtCore.Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -609,7 +609,7 @@ class CheckTree(QtWidgets.QTreeWidget):
       boxes is how a reader ends up holding out something they did not mean to.
     """
 
-    checkedChanged = QtCore.pyqtSignal()
+    checkedChanged = QtCore.Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -767,7 +767,7 @@ class Switch(QtWidgets.QWidget):
     a 12-pixel knob that slides, purple for off and teal for on, caption on the left.
     """
 
-    toggled = QtCore.pyqtSignal(bool)
+    toggled = QtCore.Signal(bool)
 
     def __init__(self, text: str = "", checked: bool = False, parent=None):
         super().__init__(parent)
@@ -788,7 +788,7 @@ class Switch(QtWidgets.QWidget):
         self._x = float(value)
         self.update()
 
-    knob = QtCore.pyqtProperty(float, fget=_get_knob, fset=_set_knob)
+    knob = QtCore.Property(float, fget=_get_knob, fset=_set_knob)
 
     def isChecked(self) -> bool:
         """The current state."""
@@ -884,7 +884,7 @@ def wrap_tooltips(root, width: int = TOOLTIP_WIDTH) -> int:
     names the thing and what the eye goes to first -- said nothing at all. Returns how many were
     rewritten, so a test can tell this ran.
     """
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     done = 0
     # By TYPE, not every QWidget under the root. Walking all of them crashed the interpreter -- this
     # window contains a pyqtgraph GL view, and asking its internals for a tooltip from Python is a

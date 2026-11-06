@@ -2,7 +2,7 @@
 from types import SimpleNamespace
 
 import pandas as pd
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from parascape import app as A, organisms as O
 from parascape.gene_evidence import build_resolver
@@ -102,13 +102,13 @@ def test_label_source_filters_organism_and_clears_ambiguous_selection(qapp):
 
 
 def test_reopening_gene_evidence_releases_the_previous_window(qapp, monkeypatch):
-    from PyQt6 import sip
+    import shiboken6
     from parascape import dataset_space_inputs, gene_evidence_browser
 
     class Panel(QtWidgets.QWidget):
-        source_requested = QtCore.pyqtSignal(object)
-        label_requested = QtCore.pyqtSignal(str)
-        class_requested = QtCore.pyqtSignal(str, str)
+        source_requested = QtCore.Signal(object)
+        label_requested = QtCore.Signal(str)
+        class_requested = QtCore.Signal(str, str)
 
         def __init__(self, nodes, organism, gene, space, parent):
             super().__init__(parent)
@@ -123,5 +123,5 @@ def test_reopening_gene_evidence_releases_the_previous_window(qapp, monkeypatch)
     previous = w._gene_evidence_dialog
     A.Window.open_gene_evidence(w)
     QtCore.QCoreApplication.sendPostedEvents(None, QtCore.QEvent.Type.DeferredDelete)
-    assert sip.isdeleted(previous) and not sip.isdeleted(w._gene_evidence_dialog)
+    assert not shiboken6.isValid(previous) and shiboken6.isValid(w._gene_evidence_dialog)
     w.close()

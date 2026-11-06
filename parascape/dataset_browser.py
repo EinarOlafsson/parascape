@@ -10,7 +10,7 @@ source's values or biological accuracy.
 from __future__ import annotations
 
 import pandas as pd
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from .scorecard_browser import ScorecardBrowser
 
@@ -68,7 +68,7 @@ class DatasetBrowser(QtWidgets.QWidget):
     No data download, model fit or biological-performance estimate occurs here.
     """
 
-    entity_requested = QtCore.pyqtSignal(str, str, str)
+    entity_requested = QtCore.Signal(str, str, str)
 
     def __init__(self, space, *, organism=None, parent=None):
         super().__init__(parent)

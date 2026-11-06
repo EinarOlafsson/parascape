@@ -1,7 +1,7 @@
 """Download prompts remain responsive and cannot expose cancelled datasets."""
 import threading
 
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 import pytest
 
 from parascape import component_download_dialog as D, sparse_values_panel as P

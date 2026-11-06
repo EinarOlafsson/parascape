@@ -19,7 +19,7 @@ def _sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def audit(output):
     """Verify unchanged sources, complete memberships and actual per-class recovery views."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.discoveries_panel import DiscoveriesPanel
     output = Path(output)
     if output.exists():raise ValueError('Use a new immutable functional UI audit directory')

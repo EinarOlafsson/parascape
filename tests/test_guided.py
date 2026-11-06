@@ -18,7 +18,7 @@ import pytest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from PyQt6 import QtWidgets  # noqa: E402
+from PySide6 import QtWidgets  # noqa: E402
 
 from parascape import guided as G  # noqa: E402
 from parascape import organisms as ORG  # noqa: E402

@@ -245,7 +245,7 @@ def test_the_evidence_panel_drills_from_a_gene_to_its_class_and_back(built):
     """The click path the user asked for: gene, then the class, then back to the gene."""
     if not len(built):
         pytest.skip("not built here")
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape import app as A
     w = A.Window()
@@ -275,7 +275,7 @@ def test_the_evidence_panel_drills_from_a_gene_to_its_class_and_back(built):
 def test_the_strategy_card_shows_where_it_is_weakest(built):
     if not len(built):
         pytest.skip("not built here")
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape.strategy_card import StrategyCard
     card = StrategyCard()
@@ -344,7 +344,7 @@ def test_the_gene_card_tests_another_label_on_demand(built, tmp_path, monkeypatc
     """A link per other label; clicking one runs in the background and shows the answer in place."""
     if not len(built):
         pytest.skip("not built here")
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     from parascape import paths
     monkeypatch.setattr(paths, "user_cache_dir", lambda: str(tmp_path))
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
@@ -408,7 +408,7 @@ def test_start_here_tests_your_own_genes_and_shows_the_grid(built, tmp_path, mon
     """From Start here, with a gene list: the button runs the hold-out and the grid opens."""
     if not len(built):
         pytest.skip("not built here")
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     from parascape import guided as G
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape import app as A
@@ -470,7 +470,7 @@ def test_a_gene_list_setting_can_be_tested_from_the_strategies_tab(built):
     """Every gene-list box carries Test these, and it hands the resolved genes to the window."""
     if not len(built):
         pytest.skip("not built here")
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     _app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     from parascape import app as A
     window = A.Window()

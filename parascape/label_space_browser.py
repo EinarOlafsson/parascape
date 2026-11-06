@@ -11,7 +11,7 @@ accuracy.
 import json
 
 import pandas as pd
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from .scorecard_browser import ScorecardBrowser
 
@@ -59,8 +59,8 @@ class LabelSpaceBrowser(QtWidgets.QWidget):
     tests show explicit gaps, and navigation stays within the selected organism.
     """
 
-    gene_requested = QtCore.pyqtSignal(str, str)
-    source_requested = QtCore.pyqtSignal(str)
+    gene_requested = QtCore.Signal(str, str)
+    source_requested = QtCore.Signal(str)
 
     def __init__(self, model, parent=None):
         super().__init__(parent)

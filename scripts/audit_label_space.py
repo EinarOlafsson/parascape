@@ -29,7 +29,7 @@ def audit(output, organism_code=None):
     output.mkdir(parents=True, exist_ok=False)
     os.environ['PARASCAPE_STATE'] = str(output / 'state')
     os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     import numpy as np
     from parascape import app as A, organisms as O, paths, track_record as T, strategies as S
     from parascape.label_space import LabelSpace

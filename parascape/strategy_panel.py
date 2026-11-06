@@ -29,7 +29,7 @@ import os
 
 import numpy as np
 import pandas as pd
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import calibration as CAL
 from . import scorecard as SC
@@ -158,19 +158,19 @@ class StrategyPanel(QtWidgets.QWidget):
     """The strategy list, a guide to the selected strategy, its settings, and its results."""
 
     #: A map to show: coordinates and the genes they place, as `AnalysisPanel.embedding_ready`.
-    embedding_ready = QtCore.pyqtSignal(object, object)
+    embedding_ready = QtCore.Signal(object, object)
     #: A clustering or module assignment over every gene, -1 for none.
-    clusters_ready = QtCore.pyqtSignal(object)
+    clusters_ready = QtCore.Signal(object)
     #: A gene someone clicked in a results table.
-    gene_selected = QtCore.pyqtSignal(str)
+    gene_selected = QtCore.Signal(str)
     #: A track-record link from the card (`parascape://target/...`), for the evidence panel.
-    record_link = QtCore.pyqtSignal(str)
+    record_link = QtCore.Signal(str)
     #: Gene ids from a gene-list setting, to hide together and test (the track record).
-    test_genes = QtCore.pyqtSignal(list)
-    status = QtCore.pyqtSignal(str)
+    test_genes = QtCore.Signal(list)
+    status = QtCore.Signal(str)
     #: A finished run (`strategies.StrategyResult`) and a finished self-test (`TestResult`).
-    result_ready = QtCore.pyqtSignal(object)
-    test_ready = QtCore.pyqtSignal(object)
+    result_ready = QtCore.Signal(object)
+    test_ready = QtCore.Signal(object)
 
     def __init__(self, nodes: pd.DataFrame, runner=None, analysis=None, organism: str | None = None,
                  graph=None, other=None, gated=None, parent=None):

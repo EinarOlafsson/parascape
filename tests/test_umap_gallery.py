@@ -7,7 +7,7 @@ import pandas as pd
 import pytest
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 
 from parascape import organisms  # noqa: E402
 from parascape import umap_gallery as G  # noqa: E402
@@ -378,7 +378,7 @@ def test_every_column_has_a_plain_name_and_a_tooltip():
 # --------------------------------------------------------------------------- the dock
 def test_the_panel_lists_the_maps_and_reads_the_table_both_ways(shipped):
     from parascape.umap_gallery_panel import MapGalleryPanel, LABEL_VIEW, MAP_VIEW
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     p = MapGalleryPanel(TG, gallery=shipped)
     try:
         assert [i for i, _ in p.items()] == [r["id"] for r in shipped.maps(TG)]
@@ -479,7 +479,7 @@ def test_the_panel_filters_sorts_and_groups_a_large_gallery(shipped):
     """With dozens of maps the list has to be searchable, sortable and groupable."""
     from parascape.umap_gallery_panel import (MapGalleryPanel, SORT_STRUCTURE, SORT_LABEL,
                                              SORT_GENES, SORT_GROUP)
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     USER = QtCore.Qt.ItemDataRole.UserRole
     p = MapGalleryPanel(TG, gallery=shipped)
     try:

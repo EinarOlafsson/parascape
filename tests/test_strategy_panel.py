@@ -15,7 +15,7 @@ import pandas as pd
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from parascape import strategies as S  # noqa: E402
@@ -23,7 +23,7 @@ from parascape import strategies as S  # noqa: E402
 
 @pytest.fixture(scope="module")
 def app():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -154,7 +154,7 @@ def test_the_list_shows_each_method_and_the_filter_finds_it(panel):
     """The method is in the name the list shows, so filtering by it finds every strategy using it."""
     for leaf in _leaves(panel):
         assert f"({S.get(leaf.data(0, 256)).method})" in leaf.text(0)
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     assert panel.tree.textElideMode() == QtCore.Qt.TextElideMode.ElideMiddle
     panel.filter.setText("hdbscan")
     shown = {leaf.data(0, 256) for leaf in _leaves(panel) if not leaf.isHidden()}
@@ -164,7 +164,7 @@ def test_the_list_shows_each_method_and_the_filter_finds_it(panel):
 
 def test_every_control_in_the_panel_explains_itself(panel):
     """The application-wide rule, applied to every strategy's form in turn."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     missing = []
     for s in S.catalog():
         panel.select(s.key)
@@ -225,7 +225,7 @@ def test_a_gene_list_can_be_loaded_from_a_file_an_example_or_the_gate(panel, pla
 
 
 def test_a_cancelled_file_dialog_changes_nothing(panel, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     monkeypatch.setattr(QtWidgets.QFileDialog, "getOpenFileName", lambda *a, **k: ("", ""))
     panel.select("seed_expansion")
     _p, host = panel.inputs["genes"]
@@ -239,7 +239,7 @@ def test_an_example_with_no_usable_category_says_so(app):
     p = StrategyPanel(tiny, graph={}, other=tiny, organism="Tg")
     said = []
     p.status.connect(said.append)
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     assert p.fill_example(QtWidgets.QPlainTextEdit()) == 0
     assert said and "no category" in said[-1]
     p.deleteLater()
@@ -272,7 +272,7 @@ def test_a_clicked_row_selects_its_gene(panel):
     panel.run_current()
     panel._row(panel.tables[0], 0)
     assert len(picked) == 2
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     empty = QtWidgets.QTableWidget(1, 1)
     panel._row(empty, 0)                   # a table with no gene column does nothing
     assert len(picked) == 2
@@ -303,7 +303,7 @@ def test_showing_a_map_before_anything_ran_does_nothing(panel):
 
 
 def test_jobs_run_on_the_runner_and_can_be_stopped(app, planted):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.jobs import JobRunner
     from parascape.strategy_panel import StrategyPanel
     runner = JobRunner()
@@ -428,7 +428,7 @@ def test_the_window_opens_without_the_strategies_panel(app, monkeypatch):
     monkeypatch.setitem(sys.modules, "parascape.strategy_panel", None)
     w = Window()
     try:
-        from PyQt6 import QtWidgets
+        from PySide6 import QtWidgets
         assert not hasattr(w, "strategy_panel")
         titles = {d.windowTitle() for d in w.findChildren(QtWidgets.QDockWidget)}
         assert "analysis" in titles and "strategies" not in titles

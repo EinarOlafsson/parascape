@@ -20,13 +20,13 @@ import pandas as pd
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 
 @pytest.fixture(scope="module")
 def app():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -150,7 +150,7 @@ def test_a_second_job_is_refused_while_one_is_running(panel):
 
 
 def test_a_completed_job_frees_the_slot(panel, app):
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     done = []
     panel._run(lambda progress=None: 42, done.append)
     for _ in range(200):
@@ -163,7 +163,7 @@ def test_a_completed_job_frees_the_slot(panel, app):
 
 
 def test_a_failing_job_frees_the_slot_and_reports(panel, app):
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
 
     def boom(progress=None):
         raise RuntimeError("nope")
@@ -183,7 +183,7 @@ def test_a_failing_job_frees_the_slot_and_reports(panel, app):
 def test_the_completion_handler_runs_on_the_gui_thread(panel, app):
     """Relayed through a bound method for exactly this reason: a directly-connected handler executes on
     the worker, and touching widgets from there crashes on a slow machine and works on a fast one."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     seen = {}
     main_thread = QtCore.QThread.currentThread()
 
@@ -207,7 +207,7 @@ def test_every_stage_of_the_workflow_has_a_tab(panel):
     clusters, which is an inference and exactly as strong as the held-out testing behind it, and the
     name should not claim more. Validation is the new stage that puts a number on an annotation.
     """
-    tabs = panel.findChild(type(panel).__mro__[0] if False else __import__("PyQt6.QtWidgets",
+    tabs = panel.findChild(type(panel).__mro__[0] if False else __import__("PySide6.QtWidgets",
                            fromlist=["QTabWidget"]).QTabWidget)
     titles = [tabs.tabText(i).lower() for i in range(tabs.count())]
     assert len(titles) >= 6
@@ -655,7 +655,7 @@ def test_the_focus_list_follows_the_target(panel):
 def test_absence_is_never_offered_as_a_category_to_optimise_for(panel):
     from parascape.search import ABSENCE_LABELS
     panel.target.setCurrentText("compartment")
-    from PyQt6 import QtCore as _Qt
+    from PySide6 import QtCore as _Qt
     got = {panel.focus.item(i).data(_Qt.Qt.ItemDataRole.UserRole)
            for i in range(panel.focus.count())} - {None}
     assert not {g for g in got if str(g).lower() in ABSENCE_LABELS}
@@ -680,7 +680,7 @@ def test_the_search_is_given_the_chosen_objective(panel, sync, monkeypatch):
 def test_a_tooltip_is_a_block_not_one_long_line(panel):
     """Qt lays a plain tooltip out on one line, so a two-sentence explanation becomes a strip wider
     than the window."""
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     tip = panel.mcs.toolTip()
     assert "white-space:pre" in tip, "without this Qt re-wraps and strands words on their own line"
     doc = QtGui.QTextDocument()
@@ -722,7 +722,7 @@ def test_the_range_in_the_tooltip_is_read_from_the_widget(panel):
 
 def test_hovering_the_name_works_not_only_the_field(panel):
     """The label is the word people point at; the spin box is the thing they click."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     checked = 0
     for form in panel.findChildren(QtWidgets.QFormLayout):
         for attr in ("nn", "md", "mcs", "val_folds", "search_sample"):
@@ -837,7 +837,7 @@ def test_mirroring_the_grid_does_not_re_enter(panel):
 def test_any_objective_can_be_combined_with_any_set_of_labels(panel):
     """"Precision for dense granules" and "recall for dense granules and rhoptries" are different
     questions, so the objective and the label set are independent choices."""
-    from PyQt6 import QtCore as _Qt
+    from PySide6 import QtCore as _Qt
     panel.target.setCurrentText("compartment")
     panel.focus.set_checked([])
     assert panel.objective_settings()["category"] is None, "none ticked must mean all of them"
@@ -884,7 +884,7 @@ def test_every_results_table_can_be_sorted_by_clicking_a_column(panel):
 
 def test_a_score_column_sorts_numerically_not_as_text(panel):
     """Stored as text, 0.9 sorts below 0.10, which puts the worst configurations at the top."""
-    from PyQt6 import QtCore as _Qt
+    from PySide6 import QtCore as _Qt
     panel._fill(panel.walk_table, pd.DataFrame({"score": [0.9, 0.10, 0.5]}))
     panel.walk_table.sortItems(0, _Qt.Qt.SortOrder.DescendingOrder)
     top = panel.walk_table.item(0, 0)
@@ -1179,7 +1179,7 @@ def test_a_job_nobody_is_waiting_for_is_ignored(runner_panel):
 def test_the_panel_runs_through_the_runner_when_it_has_one(runner_panel, app):
     """Its work then appears in the Jobs panel and can be stopped there, and it does not block the
     other tabs the way a private thread did."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     panel, runner = runner_panel
     got = []
     job = panel._run(lambda p: 7, got.append, name="through the runner")
@@ -1195,7 +1195,7 @@ def test_the_panel_runs_through_the_runner_when_it_has_one(runner_panel, app):
 def test_progress_from_a_job_reaches_the_status_line_and_the_job_note(runner_panel, app):
     """The note is what the Jobs panel shows for a job in flight, and for a walk it is the only
     sign that anything is happening."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     panel, runner = runner_panel
     said = []
     panel.status.connect(said.append)
@@ -1215,7 +1215,7 @@ def test_a_stopped_job_unwinds_at_its_next_progress_report(runner_panel, app):
     """Cooperative by construction: raising from the reporting callable is what stops a
     328-configuration search in seconds rather than in half an hour, and it must arrive as a stop
     rather than as a crash."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     from parascape.jobs import CANCELLED
     from threading import Event
     released = Event()
@@ -1369,7 +1369,7 @@ def test_saving_an_empty_table_says_so_rather_than_writing_a_header(panel, sync,
 
 def test_cancelling_the_save_dialog_writes_nothing(panel, monkeypatch, tmp_path):
     import pandas as pd
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     panel._fill(panel.walk_table, pd.DataFrame({"a": [1]}))
     monkeypatch.setattr(QtWidgets.QFileDialog, "getSaveFileName",
                         staticmethod(lambda *a, **k: ("", "")))
@@ -1379,7 +1379,7 @@ def test_cancelling_the_save_dialog_writes_nothing(panel, monkeypatch, tmp_path)
 def test_the_save_dialog_offers_a_name_that_says_what_the_table_is(panel, monkeypatch, tmp_path):
     """"results.csv" seven times in a downloads folder is not a set of results."""
     import pandas as pd
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     seen = {}
 
     def fake(parent, caption, name, filt):
@@ -1575,13 +1575,22 @@ def test_clicking_a_row_where_nothing_is_wired_does_nothing(panel):
 
 
 def test_the_context_menu_can_be_opened_on_a_table(panel, monkeypatch):
-    """`_table_menu` execs, which blocks; this checks the wiring reaches it and nothing else."""
+    """`_table_menu` shows the menu modally; this checks the wiring reaches it and nothing else.
+
+    Patched at `panel._show_menu`, NOT at `QtWidgets.QMenu.exec`. Patching the Qt method appears to
+    work and does nothing: PySide6 resolves `menu.exec(...)` through shiboken rather than the Python
+    type dictionary, so the real modal loop ran and this test hung for ever instead of failing --
+    with no user present, nothing dismisses the menu. PyQt6 honoured the override, which is why it
+    passed before the migration.
+    """
     import pandas as pd
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore
+    shown = []
     panel._fill(panel.walk_table, pd.DataFrame({"a": [1.0]}))
-    monkeypatch.setattr(QtWidgets.QMenu, "exec", lambda self, *a: None)
+    monkeypatch.setattr(panel, "_show_menu", lambda menu, where: shown.append(menu))
     m = panel._table_menu(panel.walk_table, QtCore.QPoint(2, 2))
     assert [a.text() for a in m.actions() if a.text()]
+    assert shown == [m], "the wiring must actually reach the modal show"
 
 
 def test_clicking_a_cell_is_what_triggers_the_row_action(panel, monkeypatch):
@@ -1851,7 +1860,7 @@ def _rows():
 
 def test_saving_with_no_path_asks_where_and_writes_there(panel, sync, tmp_path, monkeypatch):
     """The menu entry passes no path, so the dialog is the only thing that supplies one."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     target = tmp_path / "asked.csv"
     monkeypatch.setattr(QtWidgets.QFileDialog, "getSaveFileName",
                         staticmethod(lambda *a, **k: (str(target), "")))
@@ -1863,7 +1872,7 @@ def test_saving_with_no_path_asks_where_and_writes_there(panel, sync, tmp_path, 
 def test_cancelling_the_save_dialog_writes_nothing(panel, sync, tmp_path, monkeypatch):
     """Cancel means cancel. A file written to a default name the user never chose is a file they
     will not find, and a second table quietly overwriting the first."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     monkeypatch.setattr(QtWidgets.QFileDialog, "getSaveFileName",
                         staticmethod(lambda *a, **k: ("", "")))
     panel._fill(panel.search_table, _rows())
@@ -1872,7 +1881,7 @@ def test_cancelling_the_save_dialog_writes_nothing(panel, sync, tmp_path, monkey
 
 
 def test_loading_with_no_path_asks_which_file(panel, tmp_path, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     path = tmp_path / "s.csv"
     panel._fill(panel.search_table, _rows())
     panel.save_results(panel.search_table, str(path))
@@ -1885,7 +1894,7 @@ def test_loading_with_no_path_asks_which_file(panel, tmp_path, monkeypatch):
 
 def test_cancelling_the_load_dialog_leaves_the_table_alone(panel, monkeypatch):
     """Not an empty table: whatever was computed before the dialog opened is still the result."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     panel._fill(panel.search_table, _rows())
     monkeypatch.setattr(QtWidgets.QFileDialog, "getOpenFileName",
                         staticmethod(lambda *a, **k: ("", "")))
@@ -1894,7 +1903,7 @@ def test_cancelling_the_load_dialog_leaves_the_table_alone(panel, monkeypatch):
 
 
 def test_saving_everything_with_no_path_asks_where(panel, tmp_path, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     target = tmp_path / "all.parascape"
     monkeypatch.setattr(QtWidgets.QFileDialog, "getSaveFileName",
                         staticmethod(lambda *a, **k: (str(target), "")))
@@ -1904,7 +1913,7 @@ def test_saving_everything_with_no_path_asks_where(panel, tmp_path, monkeypatch)
 
 
 def test_cancelling_the_bundle_save_writes_nothing(panel, tmp_path, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     monkeypatch.setattr(QtWidgets.QFileDialog, "getSaveFileName",
                         staticmethod(lambda *a, **k: ("", "")))
     panel._fill(panel.search_table, _rows())
@@ -1913,7 +1922,7 @@ def test_cancelling_the_bundle_save_writes_nothing(panel, tmp_path, monkeypatch)
 
 
 def test_loading_a_bundle_with_no_path_asks_which_file(panel, tmp_path, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     path = tmp_path / "all.parascape"
     panel._fill(panel.search_table, _rows())
     panel.save_all_results(str(path))
@@ -1924,7 +1933,7 @@ def test_loading_a_bundle_with_no_path_asks_which_file(panel, tmp_path, monkeypa
 
 
 def test_cancelling_the_bundle_load_loads_nothing(panel, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     monkeypatch.setattr(QtWidgets.QFileDialog, "getOpenFileName",
                         staticmethod(lambda *a, **k: ("", "")))
     assert panel.load_all_results() == 0
@@ -1933,7 +1942,7 @@ def test_cancelling_the_bundle_load_loads_nothing(panel, monkeypatch):
 def test_cancelling_the_csv_dialog_writes_nothing(panel, tmp_path, monkeypatch):
     """The right-click "save as CSV" entry passes no path either, and cancel has to mean cancel
     there too -- a file under a default name is a file the user will not find again."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     panel._fill(panel.search_table, _rows())
     monkeypatch.setattr(QtWidgets.QFileDialog, "getSaveFileName",
                         staticmethod(lambda *a, **k: ("", "")))
@@ -1942,7 +1951,7 @@ def test_cancelling_the_csv_dialog_writes_nothing(panel, tmp_path, monkeypatch):
 
 
 def test_saving_a_csv_with_no_path_asks_where(panel, tmp_path, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     target = tmp_path / "asked.csv"
     panel._fill(panel.search_table, _rows())
     monkeypatch.setattr(QtWidgets.QFileDialog, "getSaveFileName",
@@ -1955,7 +1964,7 @@ def test_saving_a_csv_with_no_path_asks_where(panel, tmp_path, monkeypatch):
 def test_every_long_running_tab_has_a_visible_stop_button(panel):
     """The first thing asked about stopping was "I can't see the stop button" -- it existed only in
     the Jobs dock's right-click menu, which is not where anyone looks while watching a sweep."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     buttons = [b for b in panel.findChildren(QtWidgets.QPushButton) if b.text() == "stop"]
     assert len(buttons) >= 4, "the walk, clustering, search and validation tabs each need one"
     assert all(not b.isEnabled() for b in buttons), "stop is enabled only while something runs"
@@ -2296,7 +2305,7 @@ def test_the_feature_blocks_are_not_96_separate_check_boxes(panel):
 def test_a_block_this_cache_cannot_fill_is_greyed_rather_than_hidden(panel):
     """A block with no columns is a fact about the cache. Hiding it would read as the block not
     existing at all, which is a different claim."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     from parascape.embedding import EmbeddingSpec, columns_for
     for item in panel.blocks.leaves():
         name = item.data(0, QtCore.Qt.ItemDataRole.UserRole)
@@ -2332,14 +2341,14 @@ def test_the_blocks_are_a_category_tree_not_a_flat_list(panel):
 def test_the_tree_carries_only_feature_blocks(panel):
     """The hierarchy addresses all 119 Toxoplasma slots. A target label or a bookkeeping slot is not
     something a map can be built on, and showing it greyed would read as "measured but unavailable"."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     from parascape.embedding import SLOT_BLOCKS
     names = {i.data(0, QtCore.Qt.ItemDataRole.UserRole) for i in panel.blocks.leaves()}
     assert names == set(SLOT_BLOCKS)
 
 
 def test_ticking_a_category_ticks_everything_under_it(panel):
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     tree = panel.blocks
     tree.set_checked([])
     group = tree.topLevelItem(0)
@@ -2352,7 +2361,7 @@ def test_ticking_a_category_ticks_everything_under_it(panel):
 
 def test_a_partly_ticked_category_says_partly(panel):
     """A group that lied in either direction would be worse than no group."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     tree = panel.blocks
     group = next(tree.topLevelItem(i) for i in range(tree.topLevelItemCount())
                  if len(tree.leaves(tree.topLevelItem(i))) > 2)
@@ -2366,7 +2375,7 @@ def test_hold_a_category_out_in_one_action(panel):
     """The hold-out question: build the map on all the evidence EXCEPT this, then ask whether this
     comes back. Doing it by hand across 96 boxes is how a reader holds out something they did not
     mean to."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     tree = panel.blocks
     group = tree.topLevelItem(0)
     held = {i.data(0, QtCore.Qt.ItemDataRole.UserRole) for i in tree.leaves(group)}
@@ -2386,7 +2395,7 @@ def test_switching_hierarchy_keeps_the_same_choice(panel):
     seen from another angle, so re-addressing must not change what the map is built on."""
     tree = panel.blocks
     group = tree.topLevelItem(0)
-    group.setCheckState(0, __import__("PyQt6.QtCore", fromlist=["Qt"]).Qt.CheckState.Checked)
+    group.setCheckState(0, __import__("PySide6.QtCore", fromlist=["Qt"]).Qt.CheckState.Checked)
     before = set(panel.spec().blocks)
     for hierarchy in ("context", "biology", "evidence"):
         panel._hierarchy.setCurrentText(hierarchy)
@@ -2396,7 +2405,7 @@ def test_switching_hierarchy_keeps_the_same_choice(panel):
 
 def test_a_block_with_no_columns_cannot_be_ticked_by_a_category(panel):
     """Ticking a category must not select something the cache cannot fill."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     tree = panel.blocks
     dead = [i for i in tree.leaves() if not (i.flags() & QtCore.Qt.ItemFlag.ItemIsEnabled)]
     if not dead:

@@ -12,10 +12,10 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("PARASCAPE_GPU", "0")
 
-from PyQt6 import QtWidgets  # noqa: E402
+from PySide6 import QtWidgets  # noqa: E402
 
 OUT = os.path.join(ROOT, "results", "umap_gallery_2026_09_30")
 

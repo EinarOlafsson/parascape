@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import html
 
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import expression_contrast as X
 from . import rna_design as D

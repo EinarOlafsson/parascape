@@ -240,7 +240,7 @@ def main():
     assert len(projects) == 209 and len(designs) == 52 and sum(d['source_rows'] for d in designs.values()) == 1392
     for accession in ('ST000817', 'ST001304', 'ST002051', 'ST002053', 'ST002544', 'ST002545', 'ST002549'):
         assert C.workbench_samples(root / 'processing_audit', accession)['submitted_rows']
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape import compare_panel
     from parascape import deposited_values_panel as DP
     from parascape import reference_identifiers_panel as FP

@@ -26,8 +26,8 @@ def _scope(row):
 def audit(output):
     """Check filters, every source, original values, paging and application routes."""
     os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
-    os.environ.setdefault('PYQTGRAPH_QT_LIB', 'PyQt6')
-    from PyQt6 import QtCore, QtWidgets
+    os.environ.setdefault('PYQTGRAPH_QT_LIB', 'PySide6')
+    from PySide6 import QtCore, QtWidgets
     import pandas as pd
     import numpy as np
     from parascape import organisms as O, paths

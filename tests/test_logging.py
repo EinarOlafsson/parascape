@@ -17,7 +17,7 @@ import sys
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from parascape import logging_util as L  # noqa: E402
@@ -185,7 +185,7 @@ def test_a_console_line_reports_the_level_it_was_logged_at(line, expected):
 def qapp():
     """Held for the module's lifetime. Created and dropped inside a test, the QApplication is
     garbage-collected before the widget is built and Qt aborts the interpreter."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -217,7 +217,7 @@ def test_ordinary_output_is_never_hidden_by_a_level(pane):
 
 def test_a_level_colors_its_own_line(pane):
     from parascape.console import LEVEL_COLOR
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     pane.append("[ERROR] it fell over\n")
     doc = pane.view.document()
     block = doc.lastBlock()
@@ -271,7 +271,7 @@ def test_settings_are_isolated_from_the_user_running_the_suite(qapp):
     On Unix NativeFormat IS the ini format, so a QSettings built from (organisation, application)
     resolves as NativeFormat whatever setDefaultFormat says -- setting the path for IniFormat alone
     left every test writing to ~/.config."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     s = QtCore.QSettings("parascape", "parascape")
     assert "parascape-test-settings" in s.fileName(), s.fileName()
     s.setValue("logging/console_level", "DEBUG")

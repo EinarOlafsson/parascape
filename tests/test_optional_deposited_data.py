@@ -103,7 +103,7 @@ def test_core_metadata_contains_only_receipts_and_roundtrips_original_identity(o
 
 
 def test_UI_installs_selected_table_then_reopens_offline(qtbot,optional,monkeypatch,tmp_path):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape import deposited_values_panel as P
     x=optional;dialogs=[]
     def accept(dialog):
@@ -123,7 +123,7 @@ def test_UI_installs_selected_table_then_reopens_offline(qtbot,optional,monkeypa
 
 @pytest.mark.parametrize('changed',[False,True])
 def test_UI_cancel_or_query_change_during_download_leaves_no_stale_result(qtbot,optional,monkeypatch,changed):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape import deposited_values_panel as P
     x=optional;panel=P.DepositedValuesPanel(x['core']/'deposited_values');qtbot.addWidget(panel)
     def finish(dialog):

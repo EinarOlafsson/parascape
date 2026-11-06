@@ -22,7 +22,7 @@ and docks, which is what lets the whole panel be built and walked in a test with
 """
 from __future__ import annotations
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import guided as G
 from . import scorecard as SC
@@ -158,8 +158,8 @@ class RecommendationCard(Card):
     computed in one place rather than two.
     """
 
-    run = QtCore.pyqtSignal(str, object)
-    open_it = QtCore.pyqtSignal(str, object)
+    run = QtCore.Signal(str, object)
+    open_it = QtCore.Signal(str, object)
 
     def __init__(self, rec: G.Recommendation, organism: str, parent=None):
         super().__init__(parent)
@@ -236,15 +236,15 @@ def _short(value) -> str:
 class GuidedPanel(QtWidgets.QWidget):
     """The guided tab: the current question, the trail of answers, and the recommendations."""
 
-    status = QtCore.pyqtSignal(str)
+    status = QtCore.Signal(str)
     #: A strategy the user wants run now, and the settings the answers decided.
-    run_strategy = QtCore.pyqtSignal(str, object)
+    run_strategy = QtCore.Signal(str, object)
     #: A strategy the user wants to look at in the Strategies tab, with the same settings.
-    open_strategy = QtCore.pyqtSignal(str, object)
+    open_strategy = QtCore.Signal(str, object)
     #: Another panel that answers the question better: `guided.VIEW_MAPS` or `guided.VIEW_STAR`.
-    open_view = QtCore.pyqtSignal(str)
+    open_view = QtCore.Signal(str)
     #: Your gene ids, to hide together and ask the fast strategies about (the track record).
-    test_genes = QtCore.pyqtSignal(list)
+    test_genes = QtCore.Signal(list)
 
     def __init__(self, ctx, gated=None, parent=None):
         """Build the panel over one organism's context; other spaces are loaded if they are asked

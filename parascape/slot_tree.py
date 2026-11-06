@@ -32,7 +32,7 @@ from __future__ import annotations
 import os
 
 import pandas as pd
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import slots as S
 from . import theme as TH
@@ -453,7 +453,7 @@ class SlotTreeWindow(QtWidgets.QMainWindow):
     memory, which is exactly the comparison this is for.
     """
 
-    entity_requested = QtCore.pyqtSignal(str, str, str)
+    entity_requested = QtCore.Signal(str, str, str)
 
     def __init__(self, nodes: pd.DataFrame = None, tables: dict = None, parent=None,
                  organism: str = None, graph=None, sources: dict = None,

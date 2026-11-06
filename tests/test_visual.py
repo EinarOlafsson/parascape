@@ -15,7 +15,7 @@ import numpy as np
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from parascape import theme as TH  # noqa: E402
@@ -113,7 +113,7 @@ def test_ink_has_a_floor_so_edges_never_vanish_completely():
 # --------------------------------------------------------------------------- the app's visual state
 @pytest.fixture(scope="module")
 def win():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.app import Window
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     w = Window()

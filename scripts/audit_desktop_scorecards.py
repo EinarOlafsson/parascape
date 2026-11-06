@@ -20,7 +20,7 @@ def audit(output):
     """Check native exports and navigation, preserving immutable audit evidence."""
     started = time.monotonic()
     os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
-    from PyQt6 import QtCore, QtGui, QtWidgets
+    from PySide6 import QtCore, QtGui, QtWidgets
     from parascape import host_foundation_scorecard as HF, scorecard_view as V
     from parascape.scorecard_browser import ScorecardBrowser
 

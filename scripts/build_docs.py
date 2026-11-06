@@ -29,7 +29,7 @@ def main():
     import markdown2
     output = ROOT / "docs" / "site"
     output.mkdir(parents=True, exist_ok=True)
-    env = dict(os.environ, QT_QPA_PLATFORM="offscreen", PYQTGRAPH_QT_LIB="PyQt6")
+    env = dict(os.environ, QT_QPA_PLATFORM="offscreen", PYQTGRAPH_QT_LIB="PySide6")
     subprocess.run([sys.executable, "-m", "pdoc", "--output-directory", str(output / "api"),
                     "--docformat", "markdown", "--no-show-source",
                     "--edit-url", "parascape=https://github.com/EinarOlafsson/parascape/blob/main/parascape/",

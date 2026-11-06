@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 import threading
 
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import sparse_values as S
 from .sparse_query import prepare_query, QueryCancelled
@@ -20,7 +20,7 @@ from .component_download_dialog import ComponentDownloadDialog
 
 
 class _Signals(QtCore.QObject):
-    finished = QtCore.pyqtSignal(int, object, str)
+    finished = QtCore.Signal(int, object, str)
 
 
 class _Query(QtCore.QRunnable):
@@ -232,7 +232,7 @@ class SparseValuesPanel(QtWidgets.QWidget):
         self.summary.setText('Checking source files and reading matching records in the background…')
         QtCore.QThreadPool.globalInstance().start(self._worker)
 
-    @QtCore.pyqtSlot(int, object, str)
+    @QtCore.Slot(int, object, str)
     def _finished(self, generation, result, error):
         self._worker = None
         if generation != self._generation:

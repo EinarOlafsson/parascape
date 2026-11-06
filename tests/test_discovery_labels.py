@@ -120,7 +120,7 @@ def test_installed_function_catalogue_and_all_existing_claims_recipes_are_access
 
 
 def test_function_search_class_members_and_gene_navigation_are_distinct_from_claims(monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.discoveries_panel import DiscoveriesPanel
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     monkeypatch.setattr(C,'shipped',lambda *a:pd.DataFrame())
@@ -148,7 +148,7 @@ def test_function_search_class_members_and_gene_navigation_are_distinct_from_cla
 
 
 def test_installed_class_opens_gene_and_existing_scorecard_in_real_window():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.app import Window
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
     window = Window()

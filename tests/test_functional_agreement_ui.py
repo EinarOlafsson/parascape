@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 import pytest
-from PyQt6 import sip
+import shiboken6
 
 from parascape import claims as C, functional_agreement as A, functional_results as F
 from parascape import group_ratios as G
@@ -21,7 +21,7 @@ def panel(monkeypatch):
     panel = DiscoveriesPanel('Pf')
     yield panel
     dialog = getattr(panel, 'functional_outcome_dialog', None)
-    if dialog is not None and not sip.isdeleted(dialog): dialog.close()
+    if dialog is not None and shiboken6.isValid(dialog): dialog.close()
     panel.close()
 
 

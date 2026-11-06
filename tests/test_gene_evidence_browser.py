@@ -5,7 +5,7 @@ import json
 import numpy as np
 import pandas as pd
 import pytest
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 
 from parascape import gene_evidence_browser as G
 from parascape.scorecard_view import build_scorecard_view

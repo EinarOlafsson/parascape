@@ -37,7 +37,7 @@ def main() -> None:
         parser.error("use at least four frames and 1–50 frames per second")
     if args.width < 320 or args.height < 240:
         parser.error("use a viewport of at least 320×240")
-    from PyQt6 import QtCore, QtGui, QtWidgets
+    from PySide6 import QtCore, QtGui, QtWidgets
     import numpy as np
 
     with tempfile.TemporaryDirectory(prefix="parascape-map-") as temporary:

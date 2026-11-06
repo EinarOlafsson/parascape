@@ -13,7 +13,7 @@ import json
 import threading
 
 import numpy as np
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import coexpression as C
 from . import optional_deposited_data as O
@@ -22,8 +22,8 @@ from .comparison_provenance import export
 
 
 class _Worker(QtCore.QThread):
-    ready = QtCore.pyqtSignal(object)
-    failed = QtCore.pyqtSignal(str)
+    ready = QtCore.Signal(object)
+    failed = QtCore.Signal(str)
 
     def __init__(self, action, parent):
         super().__init__(parent)
@@ -40,7 +40,7 @@ class _Worker(QtCore.QThread):
 
 class CoexpressionPanel(QtWidgets.QWidget):
     """Explore associations across selected columns of a single measurement source."""
-    gene_chosen = QtCore.pyqtSignal(str)
+    gene_chosen = QtCore.Signal(str)
 
     def __init__(self, rna_root=None, deposited_root=None, parent=None):
         super().__init__(parent)

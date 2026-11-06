@@ -44,7 +44,7 @@ def test_source_filter_and_cancelled_generation_discard_late_results(qtbot,tmp_p
 
 
 def test_actual_missing_workbook_dialog_installs_and_then_opens_offline(qtbot,tmp_path,monkeypatch):
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     from parascape.component_download_dialog import ComponentDownloadDialog
     from test_optional_workbook_data import portable_collection
     _,metadata,_,calls=portable_collection(tmp_path,monkeypatch)

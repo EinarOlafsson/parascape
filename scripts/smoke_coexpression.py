@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 import numpy as np
-from PyQt6 import QtWidgets
+from PySide6 import QtWidgets
 from scipy.stats import spearmanr
 
 from parascape import coexpression as C
@@ -66,7 +66,7 @@ def main():
                     panel.seed.setText(str(seed))
                     panel.seed_row.setText(str(key))
                     panel.samples.blockSignals(True)
-                    from PyQt6 import QtCore
+                    from PySide6 import QtCore
                     for sample_index, sample in enumerate(matrix.samples):
                         panel.samples.item(sample_index, 0).setCheckState(
                             QtCore.Qt.CheckState.Checked if sample['column'] in columns else QtCore.Qt.CheckState.Unchecked)

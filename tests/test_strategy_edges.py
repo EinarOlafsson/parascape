@@ -394,7 +394,7 @@ def test_a_profile_of_one_gene_skips_the_network_test():
 def app():
     # Held by the fixture: an application created and not referenced is collected at once, and
     # the next widget built without one aborts the interpreter.
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 

@@ -9,7 +9,7 @@ data, infer biological accuracy or replace missing measurements with negatives.
 from copy import deepcopy
 
 import pandas as pd
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from .gene_evidence import evidence_rows
 from .scorecard_browser import ScorecardBrowser
@@ -54,9 +54,9 @@ class GeneEvidenceBrowser(QtWidgets.QWidget):
     distinct from stored zero and False values.
     """
 
-    source_requested = QtCore.pyqtSignal(object)
-    label_requested = QtCore.pyqtSignal(str)
-    class_requested = QtCore.pyqtSignal(str, str)
+    source_requested = QtCore.Signal(object)
+    label_requested = QtCore.Signal(str)
+    class_requested = QtCore.Signal(str, str)
 
     def __init__(self, nodes, organism, gene_id, space, parent=None):
         super().__init__(parent)

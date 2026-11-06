@@ -4,7 +4,7 @@ import json
 
 import pandas as pd
 import pytest
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from parascape import deposited_values as D
 from parascape import row_design_links as R

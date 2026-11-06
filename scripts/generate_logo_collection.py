@@ -10,7 +10,7 @@ import html
 import json
 import zipfile
 
-from PyQt6 import QtGui
+from PySide6 import QtGui
 from generate_logo_options import outline, svg
 from generate_constellation_logo import BODY, star_path, render
 from generate_logo_refinements import BROAD, SLENDER, COMPACT

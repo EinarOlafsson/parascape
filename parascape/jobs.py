@@ -15,7 +15,7 @@ import traceback
 from dataclasses import dataclass, field
 from typing import Any, Callable, Optional
 
-from PyQt6 import QtCore
+from PySide6 import QtCore
 
 from .logging_util import get_logger
 from .stopping import Stopped  # noqa: F401 -- re-exported: jobs.Stopped is stopping.Stopped
@@ -67,8 +67,8 @@ class Job:
 
 class _Signals(QtCore.QObject):
     """Signals emitted from the worker thread, delivered to the GUI thread by Qt."""
-    progress = QtCore.pyqtSignal(int, int, str)     # job id, percent (-1 unknown), note
-    finished = QtCore.pyqtSignal(int, bool)         # job id, ok
+    progress = QtCore.Signal(int, int, str)     # job id, percent (-1 unknown), note
+    finished = QtCore.Signal(int, bool)         # job id, ok
 
 
 class _Task(QtCore.QRunnable):
@@ -144,10 +144,10 @@ class JobRunner(QtCore.QObject):
     ends as another begins.
     """
 
-    started = QtCore.pyqtSignal(int)
-    progress = QtCore.pyqtSignal(int, int, str)
-    finished = QtCore.pyqtSignal(int, bool)
-    busy_changed = QtCore.pyqtSignal(bool)
+    started = QtCore.Signal(int)
+    progress = QtCore.Signal(int, int, str)
+    finished = QtCore.Signal(int, bool)
+    busy_changed = QtCore.Signal(bool)
 
     def __init__(self, parent=None, max_threads: int = 2):
         super().__init__(parent)

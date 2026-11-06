@@ -17,7 +17,7 @@ import sys
 import time
 
 import numpy as np
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 from OpenGL import GL
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))

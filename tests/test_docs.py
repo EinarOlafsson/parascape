@@ -56,7 +56,7 @@ def test_module_docstrings_say_why_rather_than_only_what():
 @pytest.mark.slow
 def test_the_api_reference_builds(tmp_path):
     """pdoc imports every module, so this fails on anything that cannot be imported headlessly."""
-    env = dict(os.environ, QT_QPA_PLATFORM="offscreen", PYQTGRAPH_QT_LIB="PyQt6")
+    env = dict(os.environ, QT_QPA_PLATFORM="offscreen", PYQTGRAPH_QT_LIB="PySide6")
     r = subprocess.run([sys.executable, "-m", "pdoc", "--output-directory", str(tmp_path),
                         "--no-search", "--docformat", "markdown", "parascape"],
                        cwd=ROOT, capture_output=True, env=env, timeout=600)

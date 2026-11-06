@@ -29,7 +29,7 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import umap_gallery as G
 
@@ -111,13 +111,13 @@ class MapGalleryPanel(QtWidgets.QWidget):
     """Pregenerated maps for one organism, and the label x map score table."""
 
     #: A gallery map id the user clicked: the window shows it.
-    map_chosen = QtCore.pyqtSignal(str)
+    map_chosen = QtCore.Signal(str)
     #: A label the user wants the map colored by.
-    color_label = QtCore.pyqtSignal(str)
+    color_label = QtCore.Signal(str)
     #: Color the map by the shown map's clusters.
-    color_clusters = QtCore.pyqtSignal()
+    color_clusters = QtCore.Signal()
     #: Score whatever map the window is showing.
-    score_screen = QtCore.pyqtSignal()
+    score_screen = QtCore.Signal()
 
     def __init__(self, organism: str, gallery: G.Gallery | None = None, theme: str = "dark",
                  background=(0.06, 0.07, 0.09), parent=None):

@@ -3,7 +3,7 @@ import hashlib
 import json
 
 import pytest
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from parascape.deposited_values_panel import DepositedValuesPanel
 from test_deposited_values import pack  # noqa: F401

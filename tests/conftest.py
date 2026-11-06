@@ -1,16 +1,18 @@
 """Pin the Qt binding before anything imports pyqtgraph.
 
-parascape imports PyQt6 directly. pytest-qt, if installed, imports PySide6 when the plugin loads, and
-pyqtgraph then binds itself to whichever binding it finds in sys.modules first -- PySide6 -- while the app
-keeps using PyQt6. The two halves of the GL widget then come from different bindings and the app fails to
-import under pytest while working perfectly when launched normally.
+parascape imports PySide6 directly, and pyqtgraph binds itself to whichever binding it finds in
+sys.modules first. When the dependency was PyQt6 this was a live hazard: pytest-qt imported PySide6 as its
+plugin loaded, pyqtgraph bound to that, the app kept using PyQt6, and the two halves of the GL widget came
+from different bindings -- so the app failed to import under pytest while working perfectly when launched
+normally. On PySide6 both halves agree by default, but pinning is kept: the failure was silent, load-order
+dependent, and cost an afternoon, and nothing says a future dependency cannot drag the other binding in.
 
 Setting PYQTGRAPH_QT_LIB makes pyqtgraph's choice explicit instead of load-order dependent.
 """
 import os
 
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
-os.environ.setdefault("PYTEST_QT_API", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
+os.environ.setdefault("PYTEST_QT_API", "PySide6")
 # The GL widget needs a platform plugin; offscreen keeps the suite headless.
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 # And a SOFTWARE GL context, which the suite has always used by accident and now uses on purpose.
@@ -38,7 +40,7 @@ os.environ.setdefault("__GLX_VENDOR_LIBRARY_NAME", "mesa")
 # existed. `test_settings_are_isolated_from_the_user_running_the_suite` is the check that this holds.
 import tempfile  # noqa: E402
 
-from PyQt6 import QtCore  # noqa: E402
+from PySide6 import QtCore  # noqa: E402
 
 SETTINGS_DIR = tempfile.mkdtemp(prefix="parascape-test-settings-")
 QtCore.QSettings.setDefaultFormat(QtCore.QSettings.Format.IniFormat)
@@ -70,7 +72,7 @@ import pytest  # noqa: E402
 
 @pytest.fixture(scope="session", autouse=True)
 def _one_qt_application():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     if QtWidgets.QApplication.instance() is None:
         # What `parascape.app` does at import, and it must precede the application: a shared GL
         # context group and a surface format pyqtgraph accepts.
@@ -90,7 +92,7 @@ def _close_windows_after_each_module(_one_qt_application):
     all of them: the suite slowed several-fold before this existed.
     """
     yield
-    from PyQt6 import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     app = _one_qt_application
     for widget in app.topLevelWidgets():
         widget.close()

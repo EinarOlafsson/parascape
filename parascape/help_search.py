@@ -29,7 +29,7 @@ from __future__ import annotations
 
 import os
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import help_index as HI
 from . import theme as TH
@@ -494,7 +494,7 @@ class HelpSearchField(QtWidgets.QLineEdit):
     """
 
     #: Emitted after a result was opened, with the entry.
-    opened = QtCore.pyqtSignal(object)
+    opened = QtCore.Signal(object)
 
     def __init__(self, window: QtWidgets.QMainWindow, parent=None):
         super().__init__(parent)

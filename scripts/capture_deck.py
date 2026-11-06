@@ -16,7 +16,7 @@ def main():
     """Render real controls, evidence and both map themes with isolated settings."""
     import numpy as np
     import pandas as pd
-    from PyQt6 import QtCore, QtGui, QtWidgets, QtSvg
+    from PySide6 import QtCore, QtGui, QtWidgets, QtSvg
     from parascape.app import Window
     output = ROOT / 'docs/deck/assets'
     output.mkdir(parents=True, exist_ok=True)

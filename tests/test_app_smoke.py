@@ -31,8 +31,8 @@ pytestmark = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def win():
-    pytest.importorskip("PyQt6")
-    from PyQt6 import QtWidgets
+    pytest.importorskip("PySide6")
+    from PySide6 import QtWidgets
     try:
         from parascape import app as A
     except Exception as e:                                  # pragma: no cover - environment dependent

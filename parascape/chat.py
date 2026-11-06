@@ -25,7 +25,7 @@ import time
 from html import escape as html_escape
 from typing import Iterator, Optional
 
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 # The standing caveats, sent with every question. Kept here as one string so there is a single place
 # to correct when the numbers change, rather than a claim reconstructed per prompt.
@@ -168,8 +168,8 @@ def stream(provider: Provider, prompt: str, system: str, timeout: int = 180,
 
 class _Worker(QtCore.QThread):
     """Streams one reply on a background thread, and can be stopped mid-stream."""
-    chunk = QtCore.pyqtSignal(str)
-    done = QtCore.pyqtSignal()
+    chunk = QtCore.Signal(str)
+    done = QtCore.Signal()
 
     def __init__(self, provider, prompt, system, parent=None):
         super().__init__(parent)
@@ -223,7 +223,7 @@ class _Worker(QtCore.QThread):
 class _Input(QtWidgets.QTextEdit):
     """Enter sends, Shift+Enter makes a newline -- the convention every chat box uses."""
 
-    submitted = QtCore.pyqtSignal()
+    submitted = QtCore.Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)

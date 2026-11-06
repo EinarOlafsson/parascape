@@ -209,7 +209,7 @@ def test_frozen_functional_test_opens_real_installed_gene_view():
 
 
 def test_selected_domain_provenance_keeps_source_description_and_unknown_membership(monkeypatch):
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     from parascape import claims as C, discovery_labels as D, strategies as S, track_record as T
     from parascape.discoveries_panel import DiscoveriesPanel
 

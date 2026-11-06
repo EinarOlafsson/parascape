@@ -12,7 +12,7 @@ from . import paths as _data_paths
 
 import numpy as np
 import pandas as pd
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import expression_contrast as X
 from . import theme as TH
@@ -49,8 +49,8 @@ GROUPS = ("A", "B", "—")
 class ComparePanel(QtWidgets.QWidget):
     """Choose a study and two groups; read which genes differ."""
 
-    gene_chosen = QtCore.pyqtSignal(str)
-    genes_chosen = QtCore.pyqtSignal(list)
+    gene_chosen = QtCore.Signal(str)
+    genes_chosen = QtCore.Signal(list)
 
     def __init__(self, root: str = X.NAS, titles: dict | None = None, parent=None):
         super().__init__(parent)
@@ -270,7 +270,7 @@ class ComparePanel(QtWidgets.QWidget):
         import io
         from matplotlib.figure import Figure
         from matplotlib.backends.backend_agg import FigureCanvasAgg
-        from PyQt6 import QtGui
+        from PySide6 import QtGui
         if self.volcano is None:
             self.volcano = QtWidgets.QLabel(parent=self)
             self.volcano.setScaledContents(True)

@@ -16,7 +16,7 @@ import pandas as pd
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 RNA = ["biology", ["gene expression", "RNA abundance"]]
@@ -36,7 +36,7 @@ CATALOGUE = [
 
 @pytest.fixture(scope="module")
 def app():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -249,7 +249,7 @@ def test_a_refusal_still_enables_the_pdf(panel, monkeypatch):
 
 
 def test_saving_writes_the_pdf_where_the_user_chose(panel, tmp_path, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     monkeypatch.setattr(panel, "_run", lambda fn, done, **k: done(fn(lambda *a: None)))
     panel.question_choice.setCurrentIndex(1)
     panel.run_question()
@@ -261,7 +261,7 @@ def test_saving_writes_the_pdf_where_the_user_chose(panel, tmp_path, monkeypatch
 
 
 def test_cancelling_the_save_dialog_writes_nothing(panel, tmp_path, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     monkeypatch.setattr(panel, "_run", lambda fn, done, **k: done(fn(lambda *a: None)))
     panel.question_choice.setCurrentIndex(1)
     panel.run_question()

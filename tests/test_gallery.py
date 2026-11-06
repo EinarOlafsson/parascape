@@ -24,7 +24,7 @@ import numpy as np
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from parascape import gallery as G  # noqa: E402
@@ -34,7 +34,7 @@ from parascape.tuning import WalkStep  # noqa: E402
 
 @pytest.fixture(scope="module")
 def app():
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -220,7 +220,7 @@ def test_clicking_a_thumbnail_asks_for_that_map(panel):
 
 
 def test_an_item_that_names_no_configuration_is_ignored(panel, app):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     got = []
     panel.chosen.connect(got.append)
     panel._on_item(QtWidgets.QListWidgetItem("stray"))
@@ -371,7 +371,7 @@ def test_genes_outside_the_walk_sample_are_hidden_rather_than_stacked_at_the_ori
 def test_an_unplaced_gene_cannot_be_picked(win, restored):
     """Hiding is not enough: an invisible point is still the nearest point to a click where it sits,
     so the evidence panel would open on a gene that is not in the map."""
-    from PyQt6 import QtCore, QtGui
+    from PySide6 import QtCore, QtGui
     step = _step(n=60, n_genes=win.n)
     win.use_embedding(step.coords, step.genes)
     sx, sy = win.view.project()

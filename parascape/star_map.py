@@ -45,7 +45,7 @@ import os
 
 import numpy as np
 import pandas as pd
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import star_edges as E
 from . import theme as TH
@@ -298,11 +298,11 @@ class _NetworkCanvas(QtWidgets.QWidget):
     """
 
     #: A gene was clicked (make it the centre).
-    picked = QtCore.pyqtSignal(int)
+    picked = QtCore.Signal(int)
     #: A gene was double-clicked (select it on the 3D map).
-    opened = QtCore.pyqtSignal(int)
+    opened = QtCore.Signal(int)
     #: The gene under the pointer, or -1 for none. Debounced.
-    hovered = QtCore.pyqtSignal(int)
+    hovered = QtCore.Signal(int)
 
     def __init__(self, panel, parent=None):
         super().__init__(parent)
@@ -600,10 +600,10 @@ class StarMapPanel(QtWidgets.QWidget):
     """A navigable network centred on one gene, drawing measured and inferred links by source."""
 
     #: The gene now at the centre.
-    centre_changed = QtCore.pyqtSignal(str)
+    centre_changed = QtCore.Signal(str)
     #: A gene to select on the 3D map.
-    select_on_map = QtCore.pyqtSignal(str)
-    status = QtCore.pyqtSignal(str)
+    select_on_map = QtCore.Signal(str)
+    status = QtCore.Signal(str)
 
     def __init__(self, nodes: pd.DataFrame, organism: str, ctx=None, graph=None,
                  store: E.UserEdgeStore | None = None, theme="dark",

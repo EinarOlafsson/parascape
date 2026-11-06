@@ -22,12 +22,14 @@ import sys
 import numpy as np
 import pandas as pd
 
-# pyqtgraph binds to whichever Qt it finds in sys.modules first. If anything imported PySide6 earlier,
-# its half of the GL widget comes from PySide6 while ours comes from PyQt6, and the app fails to import.
-# This package depends on PyQt6, so say so rather than depending on import order.
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+# pyqtgraph binds to whichever Qt it finds in sys.modules first. If anything imported a different
+# binding earlier, its half of the GL widget comes from that one while ours comes from ours, and the app
+# fails to import. This package depends on PySide6, so say so rather than depending on import order. It
+# mattered more when the dependency was PyQt6 and pytest-qt pulled PySide6 in behind it; naming the
+# binding explicitly is what made that harmless, and it stays for the same reason.
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 
-from PyQt6 import QtCore, QtGui, QtWidgets  # noqa: E402
+from PySide6 import QtCore, QtGui, QtWidgets  # noqa: E402
 
 from . import theme as TH  # noqa: E402
 from . import glass  # noqa: E402
@@ -470,10 +472,10 @@ def inside_polygon(x, y, poly) -> np.ndarray:
 class Map3D(gl.GLViewWidget):
     """GLViewWidget plus click-picking and gated selection, neither of which pyqtgraph provides."""
 
-    picked = QtCore.pyqtSignal(int)
+    picked = QtCore.Signal(int)
     #: The genes inside a gate the user drew, as an index array. An empty gate is a real answer --
     #: it selected nothing -- and is emitted rather than swallowed.
-    gated = QtCore.pyqtSignal(object)
+    gated = QtCore.Signal(object)
 
     def __init__(self, xyz):
         """Create a navigable OpenGL view for an (n_genes, 3) coordinate array."""
@@ -2018,10 +2020,25 @@ class Window(QtWidgets.QMainWindow):
         self._shortcuts = glass.message(self, "Keyboard shortcuts", body, rich=True)
         return self._shortcuts
 
+    def _show_menu(self, menu, where) -> None:
+        """Show a context menu modally. Its own method so a test can intercept it.
+
+        `QMenu.exec` cannot be patched under PySide6: assigning `QtWidgets.QMenu.exec` appears to
+        succeed but does nothing, because PySide6 resolves an instance call through shiboken's type
+        slots rather than the Python type dictionary. The real modal loop then runs with no user to
+        dismiss it, so a test HANGS rather than fails -- which is exactly how this was found, as a
+        suite that stopped dead instead of going red. PyQt6 honoured the override.
+
+        Patching a static method on a Qt class still works under PySide6 (verified for
+        QFileDialog.getSaveFileName, QApplication.clipboard, QDesktopServices.openUrl and
+        QGuiApplication.primaryScreen), so only instance methods need a seam like this one.
+        """
+        menu.exec(where)
+
     def _context_menu(self, pos):
         """Right-click on the map. Shows the menu; `build_context_menu` makes it."""
         m = self.build_context_menu()
-        m.exec(self.view.mapToGlobal(pos))
+        self._show_menu(m, self.view.mapToGlobal(pos))
         return m
 
     def display_choices(self) -> list:
@@ -3574,7 +3591,7 @@ class Window(QtWidgets.QMainWindow):
     def _job_menu(self, pos):
         """Right-click a job: stop it, or copy its error."""
         m = self.build_job_menu()
-        m.exec(self.jobs_view.mapToGlobal(pos))
+        self._show_menu(m, self.jobs_view.mapToGlobal(pos))
         return m
 
     def build_job_menu(self):

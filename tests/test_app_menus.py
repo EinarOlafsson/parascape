@@ -11,9 +11,9 @@ import numpy as np
 import pytest
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-os.environ.setdefault("PYQTGRAPH_QT_LIB", "PyQt6")
+os.environ.setdefault("PYQTGRAPH_QT_LIB", "PySide6")
 
-from PyQt6 import QtCore, QtWidgets  # noqa: E402
+from PySide6 import QtCore, QtWidgets  # noqa: E402
 
 import parascape.app as A  # noqa: E402
 from parascape import app as APP  # noqa: E402
@@ -435,9 +435,16 @@ def test_the_right_click_menu_carries_the_map_actions(win):
 
 
 def test_right_clicking_the_map_shows_the_menu(win, monkeypatch):
-    """The shown path, which build_context_menu exists to keep out of the tests: exec() blocks."""
+    """The shown path, which build_context_menu exists to keep out of the tests: exec() blocks.
+
+    Patched on the window, not on `QtWidgets.QMenu`. A patch of the Qt instance method appears to
+    apply and does not under PySide6 -- `QMenu.exec` has a static overload, so it is exposed as a
+    mixed static/instance method that a plain assignment cannot replace -- and the real modal loop
+    then blocks with no user to dismiss it, hanging the suite rather than failing it. See
+    `Window._show_menu`.
+    """
     shown = []
-    monkeypatch.setattr(A.QtWidgets.QMenu, "exec", lambda self, *a: shown.append(self))
+    monkeypatch.setattr(win, "_show_menu", lambda menu, where: shown.append(menu))
     menu = win._context_menu(QtCore.QPoint(3, 4))
     assert shown == [menu]
 
@@ -815,9 +822,14 @@ def test_a_running_job_is_asked_to_stop(win):
 def test_right_clicking_the_job_list_opens_the_menu(win, monkeypatch):
     """`exec` blocks on a real menu, so it is stubbed -- what is checked is that the handler builds a
     menu at the point clicked rather than raising when nothing is selected."""
-    monkeypatch.setattr(QtWidgets.QMenu, "exec", lambda self, *a: None)
+    # Patched on the window, NOT on QtWidgets.QMenu: a patch of the Qt instance method appears to
+    # apply and does not, under PySide6, so the real modal loop blocks and the test hangs instead of
+    # failing. See `Window._show_menu`.
+    shown = []
+    monkeypatch.setattr(win, "_show_menu", lambda menu, where: shown.append(menu))
     win.jobs_view.clearSelection()
     m = win._job_menu(QtCore.QPoint(4, 4))
+    assert shown == [m], "the handler must actually reach the modal show"
     assert [a.text() for a in m.actions() if a.text()][:1] == ["Stop this job"]
 
 
@@ -940,7 +952,7 @@ def test_an_export_that_cannot_grab_the_view_says_so_rather_than_crashing(win, m
 def test_an_export_with_a_real_frame_writes_it(win, monkeypatch, tmp_path):
     """The success path, on a platform that may have no GL: the frame is supplied, so what is tested
     is that a captured image reaches the disk under the name asked for."""
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     img = QtGui.QImage(8, 8, QtGui.QImage.Format.Format_ARGB32)
     img.fill(QtGui.QColor("red"))
     monkeypatch.setattr(win.view, "isValid", lambda: True)
@@ -952,7 +964,7 @@ def test_an_export_with_a_real_frame_writes_it(win, monkeypatch, tmp_path):
 
 
 def test_an_export_that_cannot_be_written_says_which_file(win, monkeypatch, tmp_path):
-    from PyQt6 import QtGui
+    from PySide6 import QtGui
     img = QtGui.QImage(8, 8, QtGui.QImage.Format.Format_ARGB32)
     img.fill(QtGui.QColor("red"))
     monkeypatch.setattr(win.view, "isValid", lambda: True)
@@ -967,7 +979,7 @@ def test_the_right_click_menu_carries_every_display_choice(win):
     """The ask: the display settings belong where a reader already is when they want them, which is
     right-clicking the map -- and in Preferences too, not instead of it. Built from one table so the
     two cannot drift, and this asserts the table is what the menu shows."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     m = win.build_context_menu()
     display = [a for a in m.actions() if a.text() == "Display"]
     assert display, "the right-click menu has no Display section"
@@ -993,7 +1005,7 @@ def test_every_display_menu_item_applies_the_option_it_names(win):
     makes the restart test in test_display.py fail, and only when the two run in the same session.
     That is exactly what happened while this test was being written.
     """
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     keys = ("display/lighting", "display/light_target_marker", "display/light_point_mode",
             "display/light_source")
     s = QtCore.QSettings("parascape", "parascape")
@@ -1037,7 +1049,7 @@ def test_the_display_menu_offers_the_full_dialog_too(win):
 def test_a_drag_and_a_right_click_tick_several_categories_at_once(win):
     """The ask: drag across the categories to select them, then right-click to check what is selected.
     Selection is how rows are chosen; ticks are what the map reads."""
-    from PyQt6 import QtCore as Q
+    from PySide6 import QtCore as Q
     win.on_category_changed("compartment")
     cl = win.comp_list
     cl.set_checked([])
@@ -1058,7 +1070,7 @@ def test_an_ordinary_click_no_longer_destroys_a_set_that_was_built_up(win):
     """The reason ticks exist rather than a highlight. With selection AS the choice, four ctrl-clicks
     of work were thrown away by one careless click, and there was no way to keep a set while clicking
     elsewhere to look at something."""
-    from PyQt6 import QtCore as Q
+    from PySide6 import QtCore as Q
     win.on_category_changed("compartment")
     cl = win.comp_list
     wanted = [cl.item(i).data(Q.Qt.ItemDataRole.UserRole) for i in range(3)]
@@ -1083,7 +1095,7 @@ def test_the_right_click_menu_offers_only_what_makes_sense(win):
 
 
 def test_check_only_selected_replaces_the_set_rather_than_adding_to_it(win):
-    from PyQt6 import QtCore as Q
+    from PySide6 import QtCore as Q
     win.on_category_changed("compartment")
     cl = win.comp_list
     cl.set_checked([cl.item(0).data(Q.Qt.ItemDataRole.UserRole)])
@@ -1107,8 +1119,8 @@ def test_a_bulk_tick_redraws_once_rather_than_once_per_category(win):
 
 
 def test_space_toggles_whatever_is_selected(win):
-    from PyQt6 import QtCore as Q
-    from PyQt6.QtGui import QKeyEvent
+    from PySide6 import QtCore as Q
+    from PySide6.QtGui import QKeyEvent
     cl = win.comp_list
     cl.set_checked([])
     cl.clearSelection()
@@ -1137,7 +1149,7 @@ def test_clicking_the_diagram_ticks_rather_than_only_highlighting(win):
 
 def test_reset_clears_the_ticks_and_not_merely_the_highlight(win):
     """A reset that left the map filtered while saying it had reset it would be worse than no button."""
-    from PyQt6 import QtCore as Q
+    from PySide6 import QtCore as Q
     win.on_category_changed("compartment")
     win.comp_list.set_checked([win.comp_list.item(0).data(Q.Qt.ItemDataRole.UserRole)])
     assert int(win.visible_mask().sum()) < win.n
@@ -1196,7 +1208,7 @@ def test_switching_species_opens_the_other_arm_and_remembers_it(qapp):
     """Restores the stored species afterwards. It is one global QSettings scope for the whole run, and
     leaving it on Plasmodium moved seventeen later tests onto a table whose genes they do not
     contain -- silently, because a Window built with no species argument reads this key."""
-    from PyQt6 import QtCore
+    from PySide6 import QtCore
     from parascape.app import Window
     settings = QtCore.QSettings("parascape", "parascape")
     before = settings.value("data/species") if settings.contains("data/species") else None
@@ -1217,7 +1229,7 @@ def test_switching_species_opens_the_other_arm_and_remembers_it(qapp):
 
 
 def test_the_species_menu_marks_the_one_that_is_open(qapp):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape.app import Window, available_species
     w = Window(species="Plasmodium falciparum")
     try:

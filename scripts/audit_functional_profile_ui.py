@@ -19,7 +19,7 @@ def sha(path):
 
 
 def audit(output, organism=_ORGANISMS.TOXOPLASMA):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     from parascape import functional_results as F, functional_agreement as A, functional_pair_class as PC, group_ratios as G, strategies as S
     from parascape.discoveries_panel import DiscoveriesPanel
     output = Path(output)

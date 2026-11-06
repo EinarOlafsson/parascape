@@ -4,17 +4,17 @@ Opening a data-dependent window before its files exist produces an obscure loade
 """
 from __future__ import annotations
 
-from PyQt6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from . import data_manager as D
 
 
 class _Download(QtCore.QThread):
-    progress = QtCore.pyqtSignal(str, int)
+    progress = QtCore.Signal(str, int)
     # `retryable` is false when pressing the button again cannot possibly help, which was the
     # confusing half of this: the destination refusal showed in a small label under a button that
     # still said "Retry download".
-    completed = QtCore.pyqtSignal(bool, str, bool)
+    completed = QtCore.Signal(bool, str, bool)
 
     def run(self):
         try:

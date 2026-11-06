@@ -430,7 +430,7 @@ def action_entries(window) -> list:
 
 
 def _docks(window) -> list:
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return window.findChildren(QtWidgets.QDockWidget)
 
 
@@ -486,7 +486,7 @@ def panel_entries(window) -> list:
 
 def _form_rows(root, prefix: str, extra: dict) -> list:
     """Every labelled row of every form layout under `root`, as setting entries."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     out, seen = [], set()
     for form in root.findChildren(QtWidgets.QFormLayout):
         for row in range(form.rowCount()):
@@ -520,7 +520,7 @@ def setting_entries(window) -> list:
             out.extend(_form_rows(tabs.widget(i), f"Analysis ▸ {label}",
                                   {"dock": "analysis", "tab": label}))
     prefs = window.preferences_dialog() if hasattr(window, "preferences_dialog") else None
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     ptabs = prefs.findChild(QtWidgets.QTabWidget) if prefs is not None else None
     if ptabs is not None:
         for i in range(ptabs.count()):

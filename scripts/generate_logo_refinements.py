@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Generate ten refinements of the approved Toxoplasma constellation as native SVGs.
 
-Run with QT_QPA_PLATFORM=offscreen. Uses PyQt6 and Noto Sans Light for outlined
+Run with QT_QPA_PLATFORM=offscreen. Uses PySide6 and Noto Sans Light for outlined
 lettering and PNG previews. The active application logo is left to its own generator.
 """
 from pathlib import Path
 import html
 import zipfile
 
-from PyQt6 import QtGui
+from PySide6 import QtGui
 
 from generate_logo_options import outline, svg
 from generate_constellation_logo import BODY, star_path, render

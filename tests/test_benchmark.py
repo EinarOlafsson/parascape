@@ -143,7 +143,7 @@ def test_the_dialog_shows_both_maps_and_both_clocks(win):
                       "backend": "cuml 26.08.00", "genes": 400, "features": 25},
               "note": "27.5x faster, and 71% of each gene's 15 nearest neighbours are the same"}
     d = win.build_comparison(result)
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     labels = [q.text() for q in d.findChildren(QtWidgets.QLabel) if q.text()]
     assert any("umap-learn 0.5.12" in t and "14.3 s" in t for t in labels)
     assert any("cuml 26.08.00" in t and "0.5 s" in t for t in labels)
@@ -159,7 +159,7 @@ def test_the_dialog_says_which_side_is_missing(win):
               "cpu": {"coords": np.random.default_rng(0).normal(size=(50, 3)), "seconds": 1.0,
                       "backend": "umap-learn 0.5.12", "genes": 50, "features": 6}}
     d = win.build_comparison(result)
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     labels = [q.text() for q in d.findChildren(QtWidgets.QLabel) if q.text()]
     assert any("not available" in t for t in labels)
     assert any("no cuml" in t for t in labels)
@@ -176,7 +176,7 @@ def test_the_button_is_in_preferences(win):
 def qapp():
     """Held for the module's lifetime. Created and dropped, it is collected out from under the
     widgets built on it, and the interpreter aborts rather than failing a test."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 
 
@@ -192,7 +192,7 @@ def test_pressing_the_button_runs_it_off_the_gui_thread_and_opens_the_result(win
     """Two UMAPs is minutes on the full proteome, so it goes through the job runner like everything
     else slow. `exec` is stubbed because a modal dialog in a test hangs forever rather than failing.
     """
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     import parascape.benchmark as BM
     shown = []
     monkeypatch.setattr(QtWidgets.QDialog, "exec", lambda self: shown.append(self) or 0)
@@ -208,7 +208,7 @@ def test_pressing_the_button_runs_it_off_the_gui_thread_and_opens_the_result(win
 
 
 def test_a_comparison_that_fails_says_so_rather_than_opening_an_empty_window(win, monkeypatch):
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     import parascape.benchmark as BM
 
     def boom(*a, **k):
@@ -227,7 +227,7 @@ def test_another_job_finishing_first_does_not_open_the_dialog(win, monkeypatch):
     unrelated job is made to finish while the comparison is still running, which is the only way to
     reach that check -- afterwards the handler has already disconnected itself."""
     import threading
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     import parascape.benchmark as BM
     go = threading.Event()
     opened = []
@@ -254,7 +254,7 @@ def test_another_job_finishing_first_does_not_open_the_dialog(win, monkeypatch):
 def test_a_second_comparison_can_be_run(win, monkeypatch):
     """The handler disconnects itself when its own job lands. If it did not, the second run would
     open two dialogs, then three -- and the first missed disconnect is the one nobody notices."""
-    from PyQt6 import QtWidgets
+    from PySide6 import QtWidgets
     import parascape.benchmark as BM
     result = {"sample": 1, "gpu_available": False, "note": "",
               "cpu": {"coords": np.zeros((5, 3)), "seconds": 0.1, "backend": "x", "genes": 5,
