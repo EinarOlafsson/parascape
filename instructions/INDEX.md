@@ -95,6 +95,14 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 68 | [Broaden Discoveries across functions and all available labels](open/68_discoveries_function_coverage.md) — 68.01 browser complete; 68.02 30%: pinned names, frozen EC recovery and real scorecards; independent activity/calibration/deployment still pending. Include both rows in full reports (51 total) |
 | 66.04 | [Correct ambiguous host projections and preserve all original gene evidence](done/66_04_host_symbol_projections.md) — 39 projections withheld, 20,010 gene rows retained; 575 follow-up checks passed |
 | 66 | [Recover missing source files and audit host candidate versions](open/66_source_recovery_and_host_candidates.md) — 4/4 complete: source recovery, RBC review, journal equivalence and verified host ambiguity correction |
+| 90 | [Release 0.0.10.0 under the new licence](open/90_release_under_the_new_licence.md) — waits on Einar's review of the spaCR licence terms |
+| 89 | [GSE60305: kallisto fails on every run](open/89_gse60305_kallisto.md) — salmon succeeds on all 18; keep a run when one quantifier fails |
+| 88 | [Proteomics downloads have slowed to a crawl](open/88_pride_download_throughput.md) — PRIDE FTP at 0.45 MB/s against 9.2 the day before; parallel files, stall restarts, a stale done counter |
+| 87 | [The network as a navigable universe](open/87_network_universe.md) — depth of field from the centre, click to travel, edge and layout controls on the right |
+| 86 | [Every module in spaCR's module shell](open/86_spacr_module_shell.md) — settings left, console, AI, actions, live preview, hyperparameter search, collapsible |
+| 85 | [Retire the old ParaScape home screen](open/85_retire_the_old_home_screen.md) — the landing is the only home; nothing the old node-card dock did is lost |
+| 84 | [The Navigator, exactly as spaCR's](open/84_navigator_exactly_like_spacr.md) — a View switch, search on Return, spaCR's 224 px square cards with icon and light centred name |
+| 83 | [Move ParaScape from PyQt6 to PySide6](open/83_pyside6_migration.md) — done 2026-11-05: 6,550 passed; five latent defects found, two that would have shipped |
 | 82 | [Fingerprints from a literature meta-analysis: gene-set signatures](open/82_literature_set_fingerprints.md) — the compartment ladder; rung 4 is the hard-negative set whose absence capped host-facing at 0.822 |
 | 81 | [Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples](open/81_requantification_topup.md) — queued behind the new downloads; 40 zero-parasite runs first |
 | 80 | [Identify the pull-down baits so the background table becomes usable](open/80_pulldown_background_baits.md) — 11 baits over 34 experiments is too few; the frequency filter would delete 12 of 13 complex members |
