@@ -62,9 +62,42 @@ def ftp_form(url: str) -> str:
     return url
 
 
+#: Files of one project fetched at once (instruction 88). Each aria2c opens six ranged connections, and PRIDE
+#: refuses more than about a dozen at once, so two files is the most that stays welcome.
+FILES_AT_ONCE = 2
+#: Below this speed a transfer counts as stalled: aria2c gives up, the partial file is kept and the next attempt
+#: resumes it. One PRIDE file sat at 0 KB/s for over 30 s with aria2c still waiting (2026-11-06).
+STALL_SPEED = '30K'
+#: Transport chosen per project by `fastest_transport`: 'ftp' or 'https'.
+TRANSPORT = {'choice': 'ftp'}
+
+
+def _probe(url: str, nbytes: int = 8 << 20, timeout: int = 40) -> float:
+    """MB/s for the first `nbytes` of a file over one transport (0 when it fails)."""
+    started = time.time()
+    try:
+        out = subprocess.run(['curl', '-s', '-o', '/dev/null', '-r', f'0-{nbytes - 1}', '-m', str(timeout),
+                              '-w', '%{size_download}', url], capture_output=True, text=True, timeout=timeout + 5)
+        got = float(out.stdout.strip() or 0)
+    except (subprocess.SubprocessError, ValueError, OSError):
+        return 0.0
+    return got / 1e6 / max(time.time() - started, 1e-3)
+
+
+def fastest_transport(url: str) -> str:
+    """Measure FTP and HTTPS on one file and keep the faster for the project. PRIDE FTP gave 9.2 MB/s on
+    2026-11-05 and 0.45 MB/s the next day; neither transport is reliably the better one."""
+    https = url if url.startswith('http') else url.replace('ftp://', 'https://', 1)
+    speeds = {'ftp': _probe(ftp_form(url)), 'https': _probe(https)}
+    TRANSPORT['choice'] = max(speeds, key=speeds.get) if any(speeds.values()) else 'ftp'
+    print(f'transport: ftp {speeds["ftp"]:.2f} MB/s, https {speeds["https"]:.2f} MB/s -> {TRANSPORT["choice"]}',
+          flush=True)
+    return TRANSPORT['choice']
+
+
 def fetch(url: str, dest: Path, size: int) -> None:
     part = dest.with_suffix(dest.suffix + '.part')
-    ftp = ftp_form(url)
+    ftp = ftp_form(url) if TRANSPORT['choice'] == 'ftp' else url
     for attempt in range(len(RETRY_WAITS) + 1):
         try:
             # FTP first: faster and far more reliable here. HTTPS stays as the fallback, and the last
@@ -78,6 +111,7 @@ def fetch(url: str, dest: Path, size: int) -> None:
                 # so a partial file is progress, not rubbish: each attempt and each later pass adds to it.
                 subprocess.run([str(BIN / 'aria2c'), '-q', '-x6', '-s6', '-k8M', '--file-allocation=none',
                                 '--continue=true', '--auto-file-renaming=false', '--connect-timeout=60',
+                                '--timeout=60', f'--lowest-speed-limit={STALL_SPEED}',
                                 '--max-tries=1', '-d', str(part.parent), '-o', part.name, source], check=True)
             else:
                 with urllib.request.urlopen(source, timeout=600) as response, part.open('wb') as out:
@@ -255,8 +289,14 @@ def main():
                     for f in files if file_kind(f['filename']) == 'unsupported']
     # One file at a time over six ranged connections: PRIDE refused two whole projects on 2026-11-04 when two
     # files were in flight at six connections each, and a single file at six measured as fast anyway.
-    for f in usable:
-        fetch(f['url'], scratch / f['filename'], int(f.get('declared_bytes') or 0))
+    if usable:
+        fastest_transport(usable[0]['url'])
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=FILES_AT_ONCE) as pool:
+        # .result() re-raises the first failure, exactly as the one-at-a-time loop did.
+        for job in [pool.submit(fetch, f['url'], scratch / f['filename'], int(f.get('declared_bytes') or 0))
+                    for f in usable]:
+            job.result()
     for f in usable:
         source = scratch / f['filename']
         base = dict(source=f['filename'], url=f['url'], source_bytes=source.stat().st_size, source_sha256=sha256(source))

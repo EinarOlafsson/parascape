@@ -42,8 +42,10 @@ def main():
                 status(phase='waiting_for_nas_space', project=p['project'], need_gb=round(need),
                        free_gb=round(shutil.disk_usage(NAS).free / 1e9))
                 time.sleep(600)
+            # Counted now, not at the start of the pass: the count taken then went stale (it read done=73
+            # for a day while prepared projects went 79 -> 83) because this line ran before each project.
             status(phase='processing', project=p['project'], raw_gb=round(p['raw_bytes'] / 1e9, 1),
-                   done=len(projects) - len(pending), total=len(projects))
+                   done=sum(1 for q in projects if handled(q)), total=len(projects))
             result = subprocess.run([PYTHON, '-u', str(HERE / 'ms_uniform_search.py'), p['project'], '--threads', threads])
             if result.returncode:
                 failures[p['project']] = result.returncode

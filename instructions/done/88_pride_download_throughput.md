@@ -1,6 +1,14 @@
 # 88 · Proteomics downloads have slowed to a crawl
 
-**Status: open (measured 2026-11-06).** The uniform proteomics re-search fell from ~17 projects a day
+**Status: done 2026-11-06 (moved to done).** `scripts/ms_uniform_search.py` (deployed; used from the next
+project): two files of a project at once (2 x 6 connections, within PRIDE's tolerance); aria2c gives up on a
+transfer below 30 KB/s (`--lowest-speed-limit`, `--timeout=60`) and the next attempt resumes the kept
+partial; before each project an 8 MB probe of FTP and HTTPS keeps the faster -- measured at once: **FTP 0.14
+MB/s, HTTPS 0.71 MB/s**, the reverse of 2026-11-05. `scripts/ms_uniform_queue.py`: the done counter is
+counted at every status write (deployed; active at the service's next restart). Tests:
+`tests/test_ms_uniform_transport.py`.
+
+Measured 2026-11-06. The uniform proteomics re-search fell from ~17 projects a day
 (2026-11-05) to ~4.
 
 ## Measured
