@@ -70,6 +70,14 @@ def _reasons(window) -> dict:
 def open_module(window, key: str) -> str:
     """Open one module in this window. Returns what the status bar was told."""
     module = MOD.get(key)
+    if key == "map" and getattr(window, "map_module", None) is not None:
+        from .map_module import open_in
+        message = open_in(window)
+        try:
+            window.statusBar().showMessage(message, 6000)
+        except Exception:
+            pass
+        return message
     if module.opens and not MOD.unavailable_reason(module):
         leave_landing(window)
     if key == "map":
@@ -272,7 +280,10 @@ def _watch(window) -> None:
 
 
 def go_home(window) -> None:
-    """Back to the landing, from anywhere."""
+    """Back to the landing, from anywhere -- and off a module shell onto the home page."""
+    landing = getattr(window, "landing", None)
+    if landing is not None and landing.page == "Module":
+        landing.show_page(landing.home_page())
     enter_landing(window)
 
 
@@ -327,6 +338,19 @@ def install(window):
         if top.text().replace("&", "") == "Help" and top.menu() is not None:
             top.menu().addAction(navigator)
 
+    # The modules that have moved onto spaCR's module shell (instruction 86). Built here,
+    # after every dock, because each one borrows the console and the assistant and moves
+    # its controls out of the panel they lived in. A failure leaves the old route.
+    window.map_module = None
+    try:
+        from . import map_module
+        window.map_module = map_module.build(window)
+        if window.map_module is not None:
+            # Into the landing at once: a shell left unparented until first opened is a
+            # top-level window of its own, deleted out of order with the window it borrows from.
+            landing.stack.addWidget(window.map_module)
+    except Exception as error:                  # the window must open without it
+        window.statusBar().showMessage(f"Map module unavailable: {error}", 8000)
     window._landing_cover = _Cover(window)
     window.installEventFilter(window._landing_cover)
     _watch(window)

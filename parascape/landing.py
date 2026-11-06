@@ -123,12 +123,33 @@ class Landing(QtWidgets.QWidget):
         typing works the moment it appears."""
         self.stack.setCurrentIndex(i)
         self._switch.button(i).setChecked(True)
+        on = self.navigator_enabled()
+        for button in self._switch.buttons():
+            button.setVisible(on)
         if self.stack.currentWidget() is self.navigator:
             self.navigator.field.setFocus()
 
+    def show_module(self, shell: QtWidgets.QWidget) -> None:
+        """Open a module in spaCR's module shell, over the same backdrop (instruction 86).
+
+        The shell is a page of this stack, as a spaCR module is a page of spaCR's window:
+        the animation keeps running behind it, and Home comes back to the tiles. The
+        Navigator/Modules switch is hidden while a module is up -- it switches home pages.
+        """
+        if self.stack.indexOf(shell) < 0:
+            self.stack.addWidget(shell)
+        self.stack.setCurrentWidget(shell)
+        for button in self._switch.buttons():
+            button.hide()
+
     @property
     def page(self) -> str:
-        return self.PAGES[self.stack.currentIndex()]
+        i = self.stack.currentIndex()
+        return self.PAGES[i] if i < len(self.PAGES) else "Module"
+
+    def home_page(self) -> str:
+        """The page Home returns to: the Navigator when it is on, else the tiles."""
+        return "Navigator" if self.navigator_enabled() else "Modules"
 
     def _from_navigator(self, kind: str, key: str) -> None:
         if kind == "module":

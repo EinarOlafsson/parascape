@@ -70,7 +70,7 @@ Issues = "https://github.com/EinarOlafsson/parascape/issues"
 Changelog = "https://github.com/EinarOlafsson/parascape/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
-packages = ["parascape", "parascape.spaces", "parascape.backdrops"]
+packages = ["parascape", "parascape.spaces", "parascape.backdrops", "parascape.panes"]
 include-package-data = false
 
 [tool.setuptools.package-data]

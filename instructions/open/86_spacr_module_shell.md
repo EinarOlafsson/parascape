@@ -1,6 +1,19 @@
 # 86 · Every module in spaCR's module shell
 
-**Status: open (instruction 74, goals 6-7; requested 2026-11-05).** Einar: "spaCR has its settings in a
+**Status: in progress -- shell built, Map moved onto it (2026-11-06).**
+- Step 1 done: spaCR's `collapsible_splitter`, `collapsible_section`, `foldable` and `collapse_arrow` are
+  vendored in `parascape/panes/` (imports pointed at `panes/_compat.py`); `parascape/shell.py` is the shell:
+  masthead with Home, Settings column that folds to its edge, runtime column of sections that fold to their
+  headings, Actions row, and the window's Console and AI chat borrowed side by side while a module is up.
+- Step 2 done for Map: `parascape/map_module.py`. The analysis panel's "2 · Map" controls are MOVED into it
+  (same widgets, so `spec()`, `run_embed`, `run_umap_walk` are unchanged), plus a live 2D preview of a gene
+  sample that redraws as n_neighbors / min_dist / seed change. The Map tile opens it; "show the 3D map" leaves
+  to the 3D view; the old tab has a button to the module.
+- Lesson: no pyqtgraph PlotWidget inside a shell -- deleting one mid-session segfaulted in
+  `QGraphicsScene::~QGraphicsScene`; the preview paints its own points.
+- Next: Infer (analysis 4 · Inference and 5 · Search), then Clusters, each moved the same way.
+
+Requested 2026-11-05 (instruction 74, goals 6-7). Einar: "spaCR has its settings in a
 container on the left, a console, AI chatbox, and an actions section. There is a live section to live test
 parameters and a hyperparameter search. I'd like you to copy this structure whenever it makes sense and when
 it doesn't build something that does ... spaCR containers are also collapsible so after setting the
