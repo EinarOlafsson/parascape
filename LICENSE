@@ -19,3 +19,25 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+-------------------------------------------------------------------------------
+PARTS OF THIS PACKAGE ARE NOT UNDER THE MIT LICENCE ABOVE
+-------------------------------------------------------------------------------
+
+The desktop interface's visual layer -- the home screen, its tiles, the
+navigator and the module shell -- is ported from spaCR
+(https://github.com/EinarOlafsson/spacr) and remains under spaCR's own terms:
+
+    BSD 3-Clause with additional noncommercial terms
+    SPDX-License-Identifier: LicenseRef-spaCR-BSD-3-Clause-Additional-Terms
+    Copyright (c) 2025-2026, Einar Birnir Olafsson and the spaCR contributors
+
+    Full text: LICENSES/spaCR-BSD-3-Clause-Additional-Terms.txt
+
+Those terms permit noncommercial use, and require that redistributions carry
+that licence and its copyright notice and identify modifications. Every ported
+file says so in its own module docstring and states that it was modified in the
+course of porting from PySide6-on-spaCR to ParaScape.
+
+**Commercial use of this package is therefore NOT granted by the MIT licence
+above alone.** If you need it, the spaCR licence explains how to ask.

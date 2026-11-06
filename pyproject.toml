@@ -8,8 +8,8 @@ version = "0.0.10.0"
 description = "Explore gene evidence and screen results in Toxoplasma and Plasmodium"
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.10"
-license = "MIT"
-license-files = ["LICENSE"]
+license = "MIT AND LicenseRef-spaCR-BSD-3-Clause-Additional-Terms"
+license-files = ["LICENSE", "LICENSES/*"]
 authors = [{name = "Einar Olafsson", email = "einar.olafsson@gmail.com"}]
 keywords = ["toxoplasma", "plasmodium", "bioinformatics", "CRISPR", "visualization"]
 classifiers = [
