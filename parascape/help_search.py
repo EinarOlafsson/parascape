@@ -109,7 +109,7 @@ def open_action(window, e) -> str:
 
 
 def open_node(window, e) -> str:
-    """Open a home-screen node: the home dock is raised and the node acted on through its resolver.
+    """Open a node: the gene-list dock is raised for the nodes it draws, then the node is acted on.
 
     Instruction 74 phase 2 makes every result a node; this is the half of it phase 1 can honestly
     ship -- the nodes that exist are findable by name and open the same way a card does.
@@ -117,15 +117,17 @@ def open_node(window, e) -> str:
     from . import nodes as ND
     panel = getattr(window, "home", None)
     if panel is None:
-        return _status(window, "the home screen is not available in this window")
-    dock = getattr(window, "home_dock", None)
-    if dock is not None:
-        dock.show()
-        dock.raise_()
+        return _status(window, "the gene list is not available in this window")
     try:
         node = ND.get(e.data["node"], panel.nodes)
     except KeyError:
         return _status(window, f"{e.title} is not a node any more")
+    # Only the nodes the dock draws itself raise it; a gene or a panel opens its own dock, and
+    # raising this one first flashed the gene list on the way.
+    dock = getattr(window, "home_dock", None)
+    if dock is not None and ND.resolve(node).kind in ("catalogue", "question", "drop"):
+        dock.show()
+        dock.raise_()
     # `choose` draws the node here when the home screen owns it and otherwise emits the node,
     # which `home_panel.install` has already wired to `open_node`. One path, not two.
     return _status(window, panel.choose(node))

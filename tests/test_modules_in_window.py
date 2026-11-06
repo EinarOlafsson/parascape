@@ -147,7 +147,7 @@ def test_the_animation_menu_offers_spacrs_themes(window):
 def test_the_window_still_builds_every_dock_it_built_before(window):
     """Nothing was removed: the landing is in front, not instead."""
     for title in ("find", "analysis", "maps", "strategies", "star map", "discoveries",
-                  "compare", "information map", "evidence", "home", "console", "jobs",
+                  "compare", "information map", "evidence", "gene list", "console", "jobs",
                   "assistant", "gallery", "start here"):
         assert title in _docks(window), title
 
@@ -178,3 +178,26 @@ def test_the_navigator_can_be_turned_off_from_view_and_help(window, tmp_path, mo
     assert not any(b.isVisibleTo(window.landing) for b in window.landing._switch.buttons())
     action.setChecked(True)
     assert window.landing.page == "Navigator"
+
+
+def test_leaving_the_landing_never_shows_a_second_home(window):
+    """Einar: "I used the navigator, typed map, clicked map and was sent to the old home screen
+    with tiles." The old node-card dock was the raised right-hand tab; it is now the gene list,
+    not raised, and draws no cards."""
+    from parascape.landing_install import go_home, open_module
+    from parascape.home_panel import DOCK_TITLE, PAGE_DROP
+    assert "home" not in _docks(window), "the old home dock is still installed"
+    go_home(window)
+    open_module(window, "map")
+    dock = window.home_dock
+    assert dock.windowTitle() == DOCK_TITLE
+    assert window.home.with_cards is False
+    assert window.home.search.isHidden(), "the old navigator field is still drawn"
+    assert window.home.pages.currentIndex() == PAGE_DROP
+
+
+def test_the_drop_module_opens_the_gene_list(window):
+    from parascape.landing_install import go_home, open_module
+    go_home(window)
+    assert open_module(window, "drop") == "gene list"
+    assert window.home.pages.currentIndex() == window.home._home_page

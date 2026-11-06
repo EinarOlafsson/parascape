@@ -537,8 +537,16 @@ class HomePanel(QtWidgets.QWidget):
     #: Emitted with a line for the status bar.
     status = QtCore.Signal(str)
 
-    def __init__(self, catalogue=None, known_ids=None, gene_lookup=None, index=None, parent=None):
+    def __init__(self, catalogue=None, known_ids=None, gene_lookup=None, index=None, parent=None,
+                 cards: bool = True):
         super().__init__(parent)
+        # `cards=False` is how the window installs it (instruction 85): the landing is the only
+        # home, so the node-card board and its search are not drawn, and the panel opens on the
+        # gene list. The catalogue and the drop page are unchanged; Back from the catalogue
+        # returns to the gene list instead of to a board that is not there.
+        self.with_cards = cards
+        self._home_page = PAGE_HOME if cards else PAGE_DROP
+        self._backs: list = []
         self.setObjectName("HomePanel")
         self.setAcceptDrops(True)
         self.known_ids = known_ids
@@ -595,6 +603,11 @@ class HomePanel(QtWidgets.QWidget):
         self.note.setWordWrap(True)
         outer.addWidget(self.note)
         self.build_cards()
+        if not cards:
+            self.search.hide()
+            self.refresh_button.hide()
+            self._backs[PAGE_DROP - 1].hide()          # the gene list is this panel's first page
+            self.show_page(PAGE_DROP)
 
     # ------------------------------------------------------------------ building
     def _with_back(self, widget: QtWidgets.QWidget) -> QtWidgets.QWidget:
@@ -605,7 +618,8 @@ class HomePanel(QtWidgets.QWidget):
         back = QtWidgets.QPushButton("← Back")
         back.setObjectName("HomeBack")
         back.setToolTip(TH.tip(TIPS["back"]))
-        back.clicked.connect(lambda: self.show_page(PAGE_HOME))
+        back.clicked.connect(lambda: self.show_page(self._home_page))
+        self._backs.append(back)
         bar = QtWidgets.QHBoxLayout()
         bar.addWidget(back)
         bar.addStretch(1)
@@ -911,7 +925,7 @@ class HomePanel(QtWidgets.QWidget):
 
 
 class _WindowDrops(QtCore.QObject):
-    """Catches a file dropped anywhere on the window and routes it to `List ▸ Drop`.
+    """Catches a file dropped anywhere on the window and routes it to the gene-list dock.
 
     An event filter rather than a subclass, because the window is `app.Window` and this is a panel
     being installed into it: the filter is removed with the panel and the window needs no knowledge
@@ -933,6 +947,9 @@ class _WindowDrops(QtCore.QObject):
                 return False
             event.acceptProposedAction()
             if event.type() == T.Drop:
+                # A file dropped on the landing must not be read behind it.
+                from .landing_install import leave_landing
+                leave_landing(self.window)
                 dock = getattr(self.window, "home_dock", None)
                 if dock is not None:
                     dock.show()
@@ -1068,22 +1085,31 @@ def open_node(window, node: ND.Node) -> str:
     return message
 
 
-def install(window) -> HomePanel | None:
-    """Add the home dock, make it the dock that is up on startup, and accept dropped files.
+#: The dock's title. It was "home" until instruction 85: the landing is the only home now, and
+#: what this dock still holds is the gene list a dropped file becomes, and the question catalogue.
+DOCK_TITLE = "gene list"
 
-    Nothing is removed: every other dock is installed exactly as before and reachable from its own
-    tab, from the menus and from the search field. The home screen is an entry point, not a
-    replacement -- instruction 74 retires a dock only in phase 5, once each has a node here.
+
+def install(window) -> HomePanel | None:
+    """Add the gene-list dock and make the whole window a target for a dropped file of genes.
+
+    Until instruction 85 this was the home dock: a board of node cards, raised at startup. The
+    landing replaced it as the home, and Einar found the old board still waiting behind it -- open
+    Map from the Navigator and the right-hand dock group showed "the old home screen with tiles".
+    So the board is not drawn (`cards=False`) and the dock is not raised: it is tabbed in with the
+    others and comes up when a file is dropped, when the Drop module is opened, or when a search
+    result it owns (a question, the catalogue) is chosen. Its attributes keep their names,
+    `window.home` and `window.home_dock`, because the drop routing and the help search use them.
     """
     nodes_table = getattr(window, "nodes", None)
     known = (nodes_table["gene_id"].astype(str).tolist()
              if nodes_table is not None and "gene_id" in getattr(nodes_table, "columns", ())
              else None)
     panel = HomePanel(known_ids=known, gene_lookup=gene_lookup(window),
-                      index=lambda: _index(window))
+                      index=lambda: _index(window), cards=False)
     panel.status.connect(lambda message: window.statusBar().showMessage(message, 6000))
     panel.node_chosen.connect(lambda node: open_node(window, node))
-    dock = QtWidgets.QDockWidget("home", window)
+    dock = QtWidgets.QDockWidget(DOCK_TITLE, window)
     dock.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
     scroll = QtWidgets.QScrollArea()
     scroll.setWidgetResizable(True)
@@ -1098,8 +1124,7 @@ def install(window) -> HomePanel | None:
               or getattr(window, "analysis_dock", None))
     if anchor is not None:
         window.tabifyDockWidget(anchor, dock)
+        anchor.raise_()                               # tabifying puts the new tab on top
     window.home, window.home_dock = panel, dock
     window._home_drops = _WindowDrops(window, panel)
-    dock.show()
-    dock.raise_()
     return panel

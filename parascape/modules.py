@@ -107,7 +107,7 @@ MODULES = (
 
     # --------------------------------------------------------- Bring your own
     Module("drop", "Drop", "a CSV, TSV, XLS or XLSX of genes, with or without values",
-           "Bring your own", opens="find", icon="drop"),
+           "Bring your own", opens="gene list", icon="drop"),
     Module("screen", "Screen", "join your screen to everything already recorded",
            "Bring your own", opens="compare", icon="screen"),
     Module("list", "List", "what a set of genes has in common, and what it points to",

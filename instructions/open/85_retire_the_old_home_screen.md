@@ -1,6 +1,16 @@
 # 85 · Retire the old ParaScape home screen
 
-**Status: open (requested 2026-11-06).** Einar: "the home screen seems to still be the home screen for
+**Status: built 2026-11-06, waiting on the gate (Einar opens Map from the Navigator).** The old node-card
+dock is now the **gene list** dock: no card board, no second search field, not raised at startup (the
+information map is the tab up). It keeps everything only it did -- the gene list a dropped file becomes
+(window-wide drop, which now also takes the landing away), the list actions that answer a question for every
+gene, and the question catalogue. The Drop module opens it. Help-search results raise it only for the nodes
+it draws (questions, catalogue, drop). Tests: `tests/test_home_panel.py`,
+`tests/test_modules_in_window.py::test_leaving_the_landing_never_shows_a_second_home`. Not done: the
+`HomePanel` class still builds its board (hidden) because its standalone tests use it; deleting that code is
+a cleanup, not a behaviour change.
+
+Requested 2026-11-06. Einar: "the home screen seems to still be the home screen for
 ParaScape".
 
 ## What is there

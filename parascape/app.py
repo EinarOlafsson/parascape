@@ -1431,19 +1431,19 @@ class Window(QtWidgets.QMainWindow):
         self._home()
 
     def _home(self):
-        """The home dock, and the dock that is up when the window opens.
+        """The gene-list dock, and the window's dropped-file target.
 
-        Installed last so it is the tab raised on startup, and installed in addition to everything
-        else: instruction 74 phase 1 is a navigation layer over the existing panels, so every dock
-        above is still built, still tabbed and still reachable from its own tab, the menus and the
-        search field. The home screen also gives the window its dropped-file target.
+        This was the home dock, raised at startup, until instruction 85: the landing is the only
+        home now, and leaving it showed this dock's old board of node cards as a second one. What
+        is left is the gene list a dropped file becomes and the question catalogue, tabbed in
+        with the other right-hand docks and not raised.
         """
         try:
             from .home_panel import install
             install(self)
         except Exception as e:                        # the browser must open without it
             self.home = None
-            self.statusBar().showMessage(f"home screen unavailable: {e}")
+            self.statusBar().showMessage(f"gene list unavailable: {e}")
 
     def _landing(self):
         """The landing view over the window: spaCR's Navigator and module tiles.

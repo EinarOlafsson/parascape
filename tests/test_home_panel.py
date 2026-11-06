@@ -61,13 +61,16 @@ def _raised_dock(window) -> str:
 
 
 # --------------------------------------------------------------------------- the entry point
-def test_the_home_dock_is_installed_and_raised_on_startup(window):
+def test_the_gene_list_dock_is_installed_but_not_raised_on_startup(window):
+    """Instruction 85: the landing is the only home. Raised on startup, this dock's old board of
+    node cards was what Einar found behind the landing after opening Map."""
     assert isinstance(getattr(window, "home", None), HP.HomePanel)
     dock = window.home_dock
-    assert dock.windowTitle() == "home"
-    assert _raised_dock(window) == "home", "the home dock is not the tab that is up on startup"
+    assert dock.windowTitle() == HP.DOCK_TITLE == "gene list"
+    assert _raised_dock(window) != HP.DOCK_TITLE, "the gene list must not be up on startup"
+    assert not window.home.with_cards and not window.home.cards[0].isVisibleTo(window.home)
     tabbed = window.tabifiedDockWidgets(dock)
-    assert tabbed, "the home dock should share the tab group with the other right-hand docks"
+    assert tabbed, "the gene list should share the tab group with the other right-hand docks"
 
 
 def test_nothing_was_removed_to_make_room_for_the_home_screen(window):
@@ -358,7 +361,7 @@ def test_the_window_accepts_a_file_dropped_anywhere(window, tmp_path):
     assert window._home_drops.eventFilter(window, event)
     assert window.home.wait_for_file()
     QtWidgets.QApplication.processEvents()
-    assert _raised_dock(window) == "home", "a dropped file must bring the home screen up"
+    assert _raised_dock(window) == HP.DOCK_TITLE, "a dropped file must bring the gene list up"
     assert window.home.pages.currentIndex() == HP.PAGE_DROP
     assert window.home.drop is not None and window.home.drop.name == "dropped.csv"
     assert window.home.genes()
