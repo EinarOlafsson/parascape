@@ -27,7 +27,7 @@ dependencies = [
     # the sip calls PyQt6 used. It ships with PySide6, but an unguarded import has to be
     # declared -- tests/test_publishing.py checks exactly that and caught this.
     "shiboken6>=6.6,<7",
-    # The animated backdrops' paint kernels (parascape.ambient). Already required by
+    # The animated backdrops' paint kernels (parascape.backdrops). Already required by
     # umap-learn, so this costs nothing; declared because ParaScape imports it itself.
     "numba>=0.51.2",
     "pyqtgraph>=0.13",
@@ -70,7 +70,7 @@ Issues = "https://github.com/EinarOlafsson/parascape/issues"
 Changelog = "https://github.com/EinarOlafsson/parascape/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
-packages = ["parascape", "parascape.spaces", "parascape.ambient"]
+packages = ["parascape", "parascape.spaces", "parascape.backdrops"]
 include-package-data = false
 
 [tool.setuptools.package-data]

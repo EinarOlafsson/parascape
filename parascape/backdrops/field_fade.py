@@ -11,7 +11,7 @@ Vendored from ``spacr/qt/widgets/field_fade.py`` (https://github.com/EinarOlafss
 
 **Modifications**: every import of a spaCR-internal module (preferences,
 gil_priority, hidpi, theme, resonance, bridge, accelerator, the fractal engines)
-is redirected to :mod:`parascape.ambient._compat`, which supplies ParaScape's
+is redirected to :mod:`parascape.backdrops._compat`, which supplies ParaScape's
 equivalents or a documented default. The animation code itself is spaCR's,
 unchanged, which is the point of ParaScape having moved to PySide6: it transfers
 rather than being rewritten. The spaceout-only themes and the fractal engine are

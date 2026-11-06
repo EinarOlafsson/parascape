@@ -254,8 +254,8 @@ class HomeScreen(QtWidgets.QWidget):
         them, which is how spaCR reads.
         """
         try:
-            from .ambient import _compat as AC
-            from .ambient import engines as AE
+            from .backdrops import _compat as AC
+            from .backdrops import engines as AE
         except Exception as exc:          # a backdrop must never stop the page opening
             self._ambient_error = f"{type(exc).__name__}: {exc}"
             return
@@ -281,6 +281,19 @@ class HomeScreen(QtWidgets.QWidget):
                 widget.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground, True)
                 widget.setAutoFillBackground(False)
                 widget.setProperty("ambient", "on")
+                widget.style().unpolish(widget)
+                widget.style().polish(widget)
+
+    def _restore_page_surfaces(self) -> None:
+        """Undo `_clear_page_surfaces`: the backdrop has gone, so the page must paint
+        its own colour again or it shows whatever is behind it -- the near-white Base
+        colour the very first render of this page caught."""
+        self.setProperty("ambient", "off")
+        for widget in (self, *self.findChildren(QtWidgets.QWidget)):
+            if widget.objectName() in ("HomeScreen", "HomeScroll",
+                                       "HomeScrollViewport", "HomeBands"):
+                widget.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground, False)
+                widget.setProperty("ambient", "off")
                 widget.style().unpolish(widget)
                 widget.style().polish(widget)
 

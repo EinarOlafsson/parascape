@@ -11,7 +11,7 @@ Vendored from ``spacr/qt/widgets/ambient.py`` (https://github.com/EinarOlafsson/
 
 **Modifications**: every import of a spaCR-internal module (preferences,
 gil_priority, hidpi, theme, resonance, bridge, accelerator, the fractal engines)
-is redirected to :mod:`parascape.ambient._compat`, which supplies ParaScape's
+is redirected to :mod:`parascape.backdrops._compat`, which supplies ParaScape's
 equivalents or a documented default. The animation code itself is spaCR's,
 unchanged, which is the point of ParaScape having moved to PySide6: it transfers
 rather than being rewritten. The spaceout-only themes and the fractal engine are
@@ -6098,11 +6098,11 @@ def _numba_cache_directory():
 _PRIME_LOCK = threading.Lock()
 _PRIME_TIMEOUT_S = 240
 _PRECOMPILED_KERNELS = frozenset((
-    "parascape.ambient.engines._scatter_packed_grains",
-    "parascape.ambient.engines._scatter_subpixel_grains",
-    "parascape.ambient.engines._blend_colored_words",
-    "parascape.ambient.engines._scatter_colored_grains",
-    "parascape.ambient.engines._warp_satin_columns",
+    "parascape.backdrops.engines._scatter_packed_grains",
+    "parascape.backdrops.engines._scatter_subpixel_grains",
+    "parascape.backdrops.engines._blend_colored_words",
+    "parascape.backdrops.engines._scatter_colored_grains",
+    "parascape.backdrops.engines._warp_satin_columns",
 ))
 _PRECOMPILE_EXCLUDED = {}
 # ParaScape: the vendored module is engines.py, and the fractal sources are not
@@ -6247,7 +6247,7 @@ def _prime_in_helper_process() -> bool:
         env["PYTHONPATH"] = os.pathsep.join(
             p for p in (package_parent, env.get("PYTHONPATH", "")) if p)
         env.setdefault("QT_QPA_PLATFORM", "offscreen")
-        code = ("import sys; from parascape.ambient.engines import "
+        code = ("import sys; from parascape.backdrops.engines import "
                 "_prime_kernel_cache; sys.exit(_prime_kernel_cache())")
         try:
             with _COMPILER_LIFECYCLE_LOCK:
