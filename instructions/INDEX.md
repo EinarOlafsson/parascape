@@ -95,10 +95,15 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 68 | [Broaden Discoveries across functions and all available labels](open/68_discoveries_function_coverage.md) — 68.01 browser complete; 68.02 30%: pinned names, frozen EC recovery and real scorecards; independent activity/calibration/deployment still pending. Include both rows in full reports (51 total) |
 | 66.04 | [Correct ambiguous host projections and preserve all original gene evidence](done/66_04_host_symbol_projections.md) — 39 projections withheld, 20,010 gene rows retained; 575 follow-up checks passed |
 | 66 | [Recover missing source files and audit host candidate versions](open/66_source_recovery_and_host_candidates.md) — 4/4 complete: source recovery, RBC review, journal equivalence and verified host ambiguity correction |
+| 95 | [spaCR's dock](open/95_spacr_dock.md) — the left column of categories and module rows, on Home and in every module |
+| 94 | [The AI box with spaCR's choices, and a free ParaScape AI](open/94_ai_box_like_spacr.md) — all four providers listed; the free one needs a worker Einar agrees to deploy |
+| 93 | [Every module in the same spaCR theme](open/93_every_module_one_theme.md) — spaCR fields, containers at spaCR pane opacity (60 %), the gene card as a shell module |
+| 92 | [The Map module preview in 3D](open/92_map_preview_in_3d.md) — a rotatable 3D preview, painted in software |
+| 91 | [Navigator: one click shows what comes next, a second click opens](open/91_navigator_module_network.md) — downstream module graph, fewer results, reset on return |
 | 90 | [Release 0.0.10.0 under the new licence](open/90_release_under_the_new_licence.md) — waits on Einar's review of the spaCR licence terms |
 | 89 | [GSE60305: kallisto fails on every run](open/89_gse60305_kallisto.md) — salmon succeeds on all 18; keep a run when one quantifier fails |
 | 88 | [Proteomics downloads have slowed to a crawl](open/88_pride_download_throughput.md) — PRIDE FTP at 0.45 MB/s against 9.2 the day before; parallel files, stall restarts, a stale done counter |
-| 87 | [The network as a navigable universe](open/87_network_universe.md) — depth of field from the centre, click to travel, edge and layout controls on the right |
+| 87 | [The network as a navigable universe](open/87_network_universe.md) — **restated 2026-11-06: whole network, gene region zoomed, zoomable, edge definitions** · depth of field from the centre, click to travel, edge and layout controls on the right |
 | 86 | [Every module in spaCR's module shell](open/86_spacr_module_shell.md) — **in progress: shell built, Map moved** · settings left, console, AI, actions, live preview, hyperparameter search, collapsible |
 | 85 | [Retire the old ParaScape home screen](open/85_retire_the_old_home_screen.md) — **built, waiting on Einar** · the landing is the only home; nothing the old node-card dock did is lost |
 | 84 | [The Navigator, exactly as spaCR's](open/84_navigator_exactly_like_spacr.md) — **built, waiting on Einar to compare** · a View switch, search on Return, spaCR's 224 px square cards with icon and light centred name |
