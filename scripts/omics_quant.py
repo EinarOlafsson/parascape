@@ -513,6 +513,33 @@ def _trim(run_acc: str, local: list) -> tuple:
     return out, kept
 
 
+#: Instruments whose reads are in colour space (two-base encoding: "T0123..."), which no k-mer
+#: quantifier can read. GSE60305 (AB SOLiD 4) failed kallisto 49 times in a day and "succeeded" in
+#: salmon with 0 of 47 million reads mapped before this was seen (instruction 89).
+COLOUR_SPACE_INSTRUMENTS = ("SOLiD",)
+COLOUR_SPACE_FILE = "colour_space.json"
+
+
+def colour_space(r: dict) -> bool:
+    """Whether a planned run's reads are colour-space SOLiD reads."""
+    model = str(r.get("instrument_model", "") or "")
+    return any(name.lower() in model.lower() for name in COLOUR_SPACE_INSTRUMENTS)
+
+
+def salmon_mapped(s_out: str) -> int | None:
+    """Reads salmon mapped, from its meta_info.json (None when it is not there)."""
+    path = os.path.join(s_out, "aux_info", "meta_info.json")
+    try:
+        with open(path) as fh:
+            return int(json.load(fh).get("num_mapped", 0))
+    except (OSError, ValueError, TypeError):
+        return None
+
+
+class NothingMapped(RuntimeError):
+    """A quantifier finished but mapped no read: a failure, whatever its exit status says."""
+
+
 def _quantify_pass(todo: list, limit: int | None, count: int):
     """One pass over the queue; returns runs deferred for scratch space, or None when the limit is hit."""
     global SCRATCH
@@ -520,7 +547,17 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
     deferred = []
     for r in todo:
         out_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
-        if os.path.exists(os.path.join(out_dir, "done.json")):
+        if os.path.exists(os.path.join(out_dir, "done.json")) or \
+                os.path.exists(os.path.join(out_dir, COLOUR_SPACE_FILE)):
+            continue
+        if colour_space(r):
+            os.makedirs(out_dir, exist_ok=True)
+            _cache_module().save(Path(out_dir) / COLOUR_SPACE_FILE, {
+                **r, "status": "not quantified",
+                "reason": "colour-space reads (AB SOLiD); kallisto and salmon cannot read them -- "
+                          "needs a colour-space aligner or the study's processed table",
+                "recorded": time.strftime("%Y-%m-%dT%H:%M:%S")})
+            log(f"{r['run_accession']} ({r['study']}): colour-space SOLiD reads; recorded, not retried")
             continue
         if not _still_planned(r["run_accession"]):
             continue                                 # removed from the plan after this worker started
@@ -558,6 +595,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
             os.makedirs(out_dir, exist_ok=True)
             local, trim = _trim(r["run_accession"], local)
             paired = len(local) == 2
+            kallisto_failed = {}
             for ref in r["references"]:
                 idx = os.path.join(NAS, "references", ref)
                 s_out = os.path.join(out_dir, f"salmon_{ref}")
@@ -569,17 +607,29 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                      "-l", "A", *reads, "-p", str(THREADS), "--validateMappings", "--gcBias",
                      "--seqBias", *SALMON_EXTRA, "-o", s_out])
                 _gzip(os.path.join(s_out, "quant.sf"))
+                mapped = salmon_mapped(s_out)
+                if mapped == 0:
+                    raise NothingMapped(f"salmon mapped 0 reads against {ref}: the reads are not "
+                                        f"this organism, or not in base space")
                 k_out = os.path.join(out_dir, f"kallisto_{ref}")
                 k_reads = local if paired else ["--single", "-l", "200", "-s", "30", local[0]]
-                run([os.path.join(BIN, "kallisto"), "quant", "-i", os.path.join(idx, "kallisto.idx"),
-                     "-o", k_out, "-t", str(THREADS), *k_reads])
+                try:
+                    run([os.path.join(BIN, "kallisto"), "quant", "-i", os.path.join(idx, "kallisto.idx"),
+                         "-o", k_out, "-t", str(THREADS), *k_reads])
+                except subprocess.CalledProcessError as error:
+                    # Salmon mapped reads, so the run is kept on its numbers and kallisto's failure
+                    # recorded: one tool must not lose a whole study again (instruction 89).
+                    kallisto_failed[ref] = f"exit {error.returncode}"
+                    log(f"{r['run_accession']}: kallisto failed against {ref} ({error.returncode}); "
+                        f"kept on salmon ({mapped:,} reads mapped)")
+                    continue
                 _gzip(os.path.join(k_out, "abundance.tsv"))
                 h5 = os.path.join(k_out, "abundance.h5")
                 if os.path.exists(h5):
                     os.remove(h5)                      # the TSV holds the same numbers
             _cache_module().save(Path(out_dir) / "done.json",
                                  {**r, "trimming": trim, "salmon": version("salmon"), "kallisto": version("kallisto"),
-                                  "salmon_extra": SALMON_EXTRA,
+                                  "salmon_extra": SALMON_EXTRA, "kallisto_failed": kallisto_failed,
                                   "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256,
                                   "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
             log(f"{r['run_accession']} ({r['study']}): quantified against {', '.join(r['references'])}")

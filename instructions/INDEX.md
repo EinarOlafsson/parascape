@@ -9,6 +9,7 @@ One file per task. This index is the status table; the files carry the reasoning
 
 | # | Task |
 |---|---|
+| 89 | [GSE60305: colour-space SOLiD reads, not a kallisto fault](done/89_gse60305_kallisto.md) — 0 of 47 M reads could map; pipeline now records colour-space runs and treats 0 mapped as failure; processed readCount table queued |
 | 68.01 | [Browse functions, class members and inference/test coverage in Discoveries](done/68_01_discoveries_label_browser.md) — 41/30 labels, exact functional membership replay, 413 final checks |
 | 01 | Nineteen gene codes resolved |
 | 02 | Six expression datasets integrated |
@@ -103,7 +104,6 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 92 | [The Map module preview in 3D](open/92_map_preview_in_3d.md) — **built, waiting on Einar** · a rotatable 3D preview, painted in software |
 | 91 | [Navigator: one click shows what comes next, a second click opens](open/91_navigator_module_network.md) — **built, waiting on Einar** · downstream module graph, fewer results, reset on return |
 | 90 | [Release 0.0.10.0 under the new licence](open/90_release_under_the_new_licence.md) — waits on Einar's review of the spaCR licence terms |
-| 89 | [GSE60305: kallisto fails on every run](open/89_gse60305_kallisto.md) — salmon succeeds on all 18; keep a run when one quantifier fails |
 | 88 | [Proteomics downloads have slowed to a crawl](open/88_pride_download_throughput.md) — PRIDE FTP at 0.45 MB/s against 9.2 the day before; parallel files, stall restarts, a stale done counter |
 | 87 | [The network as a navigable universe](open/87_network_universe.md) — **built (first version), waiting on Einar** · whole network, gene region zoomed, zoomable, edge definitions · depth of field from the centre, click to travel, edge and layout controls on the right |
 | 86 | [Every module in spaCR's module shell](open/86_spacr_module_shell.md) — **in progress: shell built, Map moved** · settings left, console, AI, actions, live preview, hyperparameter search, collapsible |
