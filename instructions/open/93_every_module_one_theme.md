@@ -1,6 +1,12 @@
 # 93 · Every module in the same spaCR theme: fields, translucent containers, the gene card
 
-**Status: open (requested 2026-11-06).** Einar: "the fields should look more like spaCR and the containers
+**Status: in progress (2026-11-06).** Done: View ▸ Container opacity (30-100 %, default 60 % =
+Einar's spaCR setting, key `prefs/pane_opacity`); every container in a module shell at that opacity with the
+animation showing through; spaCR's input rules and its field fade (vendored `backdrops/field_fade.py`, scoped
+to module shells by `parascapeFieldFade`). Next: the Gene module, synthesis first (Einar chose it 2026-11-06),
+built on the module mould that comes out of the Map review.
+
+Requested 2026-11-06. Einar: "the fields should look more like spaCR and the containers
 should have opacity like spaCR's do ... the gene card is not what I want. All modules need to be thematically
 the same."
 

@@ -263,7 +263,8 @@ def _watch(window) -> None:
     stay = set()
 
     def on_menu(action):
-        if action in stay or action.parent() is getattr(window, "landing_animation_menu", None):
+        if action in stay or action.parent() in (getattr(window, "landing_animation_menu", None),
+                                                 getattr(window, "landing_opacity_menu", None)):
             return
         leave_landing(window)
 
@@ -335,6 +336,7 @@ def install(window):
         menu.addAction(home)
         menu.addAction(navigator)
         menu.addMenu(_animation_menu(window, landing))
+        menu.addMenu(_opacity_menu(window))
     # Also in Help, which is where spaCR keeps it; Einar looked for it in View.
     for top in window.menuBar().actions():
         if top.text().replace("&", "") == "Help" and top.menu() is not None:
@@ -361,6 +363,39 @@ def install(window):
     window._landing_stay_actions.add(navigator)
     enter_landing(window)
     return landing
+
+
+#: The container opacities offered, as spaCR's preference slider's common stops.
+OPACITY_CHOICES = (30, 45, 60, 75, 90, 100)
+
+
+def _opacity_menu(window) -> QtWidgets.QMenu:
+    """View ▸ Container opacity: how solid every module's containers are, as spaCR's
+    pane-opacity preference. Lower lets more of the animated field through."""
+    from .backdrops import _compat as AC
+    from .shell import ModuleShell
+    menu = QtWidgets.QMenu("Container opacity", window)
+    menu.setToolTip("How solid the containers in every module are. Lower lets more of the "
+                    "animated background show through, as in spaCR.")
+    menu.setToolTipsVisible(True)
+    group = QtGui.QActionGroup(menu)
+    group.setExclusive(True)
+    current = int(round(AC.get_pane_opacity() * 100))
+
+    def choose(pct):
+        AC.set_pane_opacity(pct / 100)
+        for shell in window.findChildren(ModuleShell):
+            shell.refresh_style()
+    for pct in OPACITY_CHOICES:
+        action = QtGui.QAction(f"{pct} %", menu, checkable=True)
+        action.setChecked(pct == current)
+        action.setToolTip(f"Containers {pct} % solid.")
+        action.setStatusTip(f"Set every module's containers to {pct} % opacity")
+        action.triggered.connect(lambda _=False, p=pct: choose(p))
+        group.addAction(action)
+        menu.addAction(action)
+    window.landing_opacity_menu = menu
+    return menu
 
 
 def _view_menu(window):

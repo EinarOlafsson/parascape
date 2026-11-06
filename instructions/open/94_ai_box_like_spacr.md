@@ -1,6 +1,6 @@
 # 94 · The AI box with spaCR's choices, and a free ParaScape AI
 
-**Status: open (requested 2026-11-06).** Einar: "the AI box should have the options that spaCR does. And one
+**Status: open (requested 2026-11-06). Einar 2026-11-06: build AND deploy the `parascape-ai` worker on his Cloudflare account.** Einar: "the AI box should have the options that spaCR does. And one
 should be the free ParaScape AI."
 
 ## What spaCR offers (`spacr/qt/ai/providers.py`)

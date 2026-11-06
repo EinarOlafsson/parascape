@@ -33,27 +33,76 @@ from .panes.collapsible_splitter import EDGE, CollapsibleSplitter
 SETTINGS_EXTENT, RUNTIME_EXTENT = 400, 800
 
 
-def shell_qss(palette: dict) -> str:
-    """The shell's stylesheet: spaCR's masthead type and translucent section surfaces."""
-    p = palette
-    return f"""
-    QWidget#ModuleShell {{ background: transparent; }}
-    QLabel#ShellTitle {{ font-size: 30px; font-weight: 300; color: {p['fg']};
-                         background: transparent; }}
-    QLabel#ShellMuted {{ color: {p['fg_dim']}; background: transparent; }}
-    QWidget#ShellSettings, QWidget#ShellRuntimePage {{ background: transparent; }}
-    QScrollArea#ShellSettingsScroll, QScrollArea#ShellSettingsScroll > QWidget > QWidget {{
-        background: {TH.rgba(p['surface'], 0.82)}; border: 1px solid {p['border_soft']};
-        border-radius: 12px; }}
-    QWidget#ShellSection {{ background: {TH.rgba(p['surface'], 0.82)};
-                            border: 1px solid {p['border_soft']}; border-radius: 12px; }}
-    QWidget#ModuleShell QLineEdit, QWidget#ModuleShell QSpinBox,
-    QWidget#ModuleShell QDoubleSpinBox {{ min-height: 20px; }}
-    QLabel#ShellStatus {{ color: {p['fg_dim']}; background: transparent; }}
-    QPushButton#ShellHome {{ background: transparent; border: 1px solid {p['border']};
-                             border-radius: 14px; padding: 4px 14px; color: {p['fg']}; }}
-    QPushButton#ShellHome:hover {{ border-color: {p['accent']}; color: {p['accent']}; }}
+def shell_qss(palette: dict, opacity: float | None = None) -> str:
+    """The shell's stylesheet: spaCR's masthead type, its input rules, and every container
+    at the user's pane opacity, so the animation shows through as it does in spaCR.
+
+    Every rule is prefixed with the shell's id. The window's own stylesheet gives plain
+    containers an opaque page fill, so the shell first makes everything inside it
+    transparent and then paints only its containers -- at the chosen opacity -- and the
+    rules that do so must out-rank the blanket one, which an id prefix does.
     """
+    from .backdrops import _compat as AC
+    from .backdrops.field_fade import field_fade_enabled
+    p = palette
+    a = AC.get_pane_opacity() if opacity is None else float(opacity)
+    fill = TH.rgba(p["surface"], a)
+    S = "QWidget#ModuleShell"
+    fields = ", ".join(f"{S} {t}" for t in ("QLineEdit", "QSpinBox", "QDoubleSpinBox", "QComboBox"))
+    focus = ", ".join(f"{S} {t}:focus" for t in ("QLineEdit", "QSpinBox", "QDoubleSpinBox",
+                                                 "QComboBox"))
+    if field_fade_enabled():
+        # spaCR's field fade paints the fill and outline, ramping to transparent on the
+        # right; the stylesheet keeps the geometry and leaves the drawing to it.
+        chrome = "background: transparent; border: 1px solid transparent;"
+        focus_rule = ""
+    else:
+        chrome = f"background-color: {p['surface_alt']}; border: 1px solid {p['border']};"
+        focus_rule = f"{focus} {{ border: 1px solid {p['accent']}; }}"
+    return f"""
+    {S} {{ background: transparent; }}
+    {S} QWidget, {S} QScrollArea, {S} QFrame, {S} QSplitter, {S} QStackedWidget,
+    {S} QAbstractScrollArea {{ background: transparent; }}
+    {S} QLabel#ShellTitle {{ font-size: 30px; font-weight: 300; color: {p['fg']}; }}
+    {S} QLabel#ShellMuted {{ color: {p['fg_dim']}; }}
+    {S} QLabel#ShellStatus {{ color: {p['fg_dim']}; }}
+    {S} QScrollArea#ShellSettingsScroll {{ background: {fill};
+        border: 1px solid {p['border_soft']}; border-radius: 12px; }}
+    {S} QWidget#ShellSection {{ background: {fill}; border: 1px solid {p['border_soft']};
+        border-radius: 12px; }}
+    {S} QPushButton#ShellHome {{ background: transparent; border: 1px solid {p['border']};
+        border-radius: 14px; padding: 4px 14px; color: {p['fg']}; }}
+    {S} QPushButton#ShellHome:hover {{ border-color: {p['accent']}; color: {p['accent']}; }}
+    {fields} {{ {chrome} color: {p['fg']}; border-radius: 4px; padding: 4px 8px;
+        min-height: 20px; selection-background-color: {p['accent']};
+        selection-color: {p['bg']}; }}
+    {focus_rule}
+    {S} QSpinBox::up-button, {S} QSpinBox::down-button,
+    {S} QDoubleSpinBox::up-button, {S} QDoubleSpinBox::down-button {{
+        background: transparent; border: none; width: 16px; }}
+    {S} QTableWidget, {S} QTableView, {S} QPlainTextEdit, {S} QTextEdit, {S} QTextBrowser {{
+        background: {TH.rgba(p['surface_alt'], a)}; border: 1px solid {p['border_soft']};
+        border-radius: 6px; }}
+    {S} QPushButton {{ background: {TH.rgba(p['surface_hi'], max(a, 0.7))};
+        border: 1px solid {p['border']}; border-radius: 5px; padding: 6px 13px; color: {p['fg']}; }}
+    {S} QPushButton:hover {{ background: {p['accent_soft']}; border-color: {p['accent']}; }}
+    {S} QPushButton:pressed {{ background: {p['accent_lo']}; color: {p['page']}; }}
+    {S} QPushButton:disabled {{ color: {p['fg_dim']}; background: {TH.rgba(p['surface_alt'], a)}; }}
+    {S} QPushButton[primary="true"] {{ background: {p['accent']}; border-color: {p['accent']};
+        color: {p['bg']}; font-weight: 600; }}
+    {S} QPushButton[primary="true"]:hover {{ background: {p['accent_hi']}; }}
+    {S} QHeaderView::section {{ background: {TH.rgba(p['surface'], a)}; color: {p['fg_dim']};
+        border: none; padding: 4px; }}
+    """
+
+
+def install_field_fade() -> None:
+    """spaCR's field fade, for the fields inside module shells. Never raises."""
+    try:
+        from .backdrops.field_fade import install_field_fade as install
+        install()
+    except Exception:                                 # decoration must never stop a module
+        pass
 
 
 class _Borrowed(QtWidgets.QWidget):
@@ -111,6 +160,9 @@ class ModuleShell(QtWidgets.QWidget):
         super().__init__(parent)
         self.key = key
         self.setObjectName("ModuleShell")
+        from .backdrops.field_fade import SCOPE_PROPERTY
+        self.setProperty(SCOPE_PROPERTY, True)
+        install_field_fade()
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_StyledBackground, True)
         self._borrowed: list[_Borrowed] = []
         self.sections: dict[str, QtWidgets.QWidget] = {}
@@ -194,9 +246,13 @@ class ModuleShell(QtWidgets.QWidget):
 
     # ------------------------------------------------------------------ filling it
     def set_palette(self, palette: dict) -> None:
-        """Restyle the shell for a theme's palette."""
+        """Restyle the shell for a theme's palette (and the current container opacity)."""
         self._palette = palette
         self.setStyleSheet(shell_qss(palette))
+
+    def refresh_style(self) -> None:
+        """Re-read the container opacity and restyle."""
+        self.set_palette(self._palette)
 
     def add_setting(self, name: str, widget: QtWidgets.QWidget,
                     expanded: bool = True) -> CollapsibleSection:

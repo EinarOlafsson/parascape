@@ -9,7 +9,9 @@ Vendored from ``spacr/qt/widgets/field_fade.py`` (https://github.com/EinarOlafss
     SPDX-License-Identifier: LicenseRef-spaCR-BSD-3-Clause-Additional-Terms
     Full text: LICENSES/spaCR-BSD-3-Clause-Additional-Terms.txt
 
-**Modifications**: every import of a spaCR-internal module (preferences,
+**Modifications**: :func:`fades` also requires an ancestor carrying
+:data:`SCOPE_PROPERTY` -- ParaScape adopts spaCR's look one module at a time, and
+a field in a panel not yet moved onto the module shell keeps its own style. Every import of a spaCR-internal module (preferences,
 gil_priority, hidpi, theme, resonance, bridge, accelerator, the fractal engines)
 is redirected to :mod:`parascape.backdrops._compat`, which supplies ParaScape's
 equivalents or a documented default. The animation code itself is spaCR's,
@@ -87,6 +89,18 @@ FIELD_TYPES = (QLineEdit, QComboBox, QAbstractSpinBox)
 #: is not "edit this module".
 OPT_OUT_PROPERTY = "spacrNoFieldFade"
 
+#: ParaScape: only fields inside a widget with this property set fade.
+SCOPE_PROPERTY = "parascapeFieldFade"
+
+
+def _in_scope(widget) -> bool:
+    w = widget
+    while w is not None:
+        if w.property(SCOPE_PROPERTY):
+            return True
+        w = w.parentWidget()
+    return False
+
 #: Width of the painted outline, in logical pixels. Matches the ``1px``
 #: the stylesheet reserves, so turning the fade on or off never reflows
 #: a form.
@@ -147,6 +161,8 @@ def fades(widget) -> bool:
     if not isinstance(widget, FIELD_TYPES):
         return False
     if widget.property(OPT_OUT_PROPERTY):
+        return False
+    if not _in_scope(widget):
         return False
     parent = widget.parentWidget()
     if parent is None:

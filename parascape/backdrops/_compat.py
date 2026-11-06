@@ -146,6 +146,26 @@ def _hold_still_when_motion_is_reduced() -> bool:
     return False
 
 
+#: spaCR's page-panel opacity preference (`prefs/pane_opacity`, whole percent). Einar's
+#: spaCR is at 60 %, so ParaScape starts there: containers translucent over the field.
+_KEY_PANE_OPACITY = "prefs/pane_opacity"
+DEFAULT_PANE_OPACITY_PCT = 60
+
+
+def get_pane_opacity() -> float:
+    """The container opacity, 0.0-1.0."""
+    try:
+        raw = int(_settings().value(_KEY_PANE_OPACITY, DEFAULT_PANE_OPACITY_PCT))
+    except (TypeError, ValueError):
+        raw = DEFAULT_PANE_OPACITY_PCT
+    return max(0, min(100, raw)) / 100.0
+
+
+def set_pane_opacity(fraction: float) -> None:
+    """Remember the container opacity, as a whole percent."""
+    _settings().setValue(_KEY_PANE_OPACITY, int(round(max(0.0, min(1.0, float(fraction))) * 100)))
+
+
 def get_field_fade_enabled() -> bool:
     return _as_bool(_settings().value("ambient/field_fade", True), True)
 
