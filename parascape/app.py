@@ -5123,6 +5123,13 @@ def main():
     if not ensure_data():
         return
     w = Window()
+    # Error reports (instruction 97): installed here, not in Window, so a test that builds a
+    # window keeps its own exception handling.
+    try:
+        from . import report_dialog
+        report_dialog.install(w)
+    except Exception as error:                    # the window must open without it
+        w.statusBar().showMessage(f"error reporting unavailable: {error}", 8000)
     w.show()
     sys.exit(app.exec())
 

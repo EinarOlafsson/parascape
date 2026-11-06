@@ -407,23 +407,51 @@ def test_a_missing_cli_is_reported_with_how_to_install_it(qapp):
 
 def test_each_provider_builds_a_command_carrying_the_system_prompt():
     for p in C.PROVIDERS:
+        if p.hosted:
+            continue
         argv = p.argv("QUESTION", "SYSTEM")
         assert p.cli == argv[0]
         joined = " ".join(argv)
         assert "QUESTION" in joined and "SYSTEM" in joined
 
 
-def test_available_providers_only_lists_installed_ones(monkeypatch):
+def test_with_no_cli_installed_only_the_free_parascape_ai_is_available(monkeypatch):
     monkeypatch.setattr(C.shutil, "which", lambda name: None)
-    assert C.available_providers() == []
+    assert [p.name for p in C.available_providers()] == ["parascape"]
 
 
-def test_the_panel_says_what_to_install_when_nothing_is_configured(qapp, monkeypatch):
+def test_the_box_lists_spacrs_four_choices_and_picks_one_that_answers(qapp, monkeypatch):
+    """Einar: "the AI box should have the options that spaCR does, and one should be the free
+    ParaScape AI"."""
     monkeypatch.setattr(C.shutil, "which", lambda name: None)
     p = C.ChatPanel()
+    labels = [p.provider_box.itemText(i) for i in range(p.provider_box.count())]
+    assert len(labels) == 4 and "ParaScape AI (free)" in labels
+    assert sum("not installed" in label for label in labels) == 3
+    assert p.current_provider().name == "parascape"
+
+
+def test_choosing_an_uninstalled_cli_says_how_to_install_it(qapp, monkeypatch):
+    monkeypatch.setattr(C.shutil, "which", lambda name: None)
+    p = C.ChatPanel()
+    p.provider_box.setCurrentIndex(0)
     p.input.setPlainText("hello")
     p.send()
-    assert "No assistant CLI" in p.log.toPlainText()
+    text = p.log.toPlainText()
+    assert "not installed" in text and "claude.ai/install.sh" in text
+
+
+def test_the_free_ai_streams_the_relay_answer(monkeypatch):
+    from parascape import relay
+    seen = {}
+
+    def fake_ask(question, context=""):
+        seen["q"], seen["c"] = question, context
+        return "an answer"
+    monkeypatch.setattr(relay, "ask", fake_ask)
+    hosted = next(p for p in C.PROVIDERS if p.hosted)
+    out = "".join(C.stream(hosted, "Q?", "GROUND\n\nCurrent state of the viewer:\nGRA16 selected"))
+    assert out == "an answer" and seen["q"] == "Q?" and "GRA16" in seen["c"]
 
 
 def test_enter_sends_and_shift_enter_does_not(qapp):

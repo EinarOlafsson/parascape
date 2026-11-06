@@ -1,6 +1,10 @@
 # 94 · The AI box with spaCR's choices, and a free ParaScape AI
 
-**Status: open (requested 2026-11-06). Einar 2026-11-06: build AND deploy the `parascape-ai` worker on his Cloudflare account.** Einar: "the AI box should have the options that spaCR does. And one
+**Status: built 2026-11-06.** The AI box lists spaCR's four choices (Claude, ChatGPT, Gemini -- shown as
+"not installed" with install and sign-in steps when absent -- and ParaScape AI (free)), selecting the first
+that can answer. The free one asks `POST /diagnose` on the deployed `parascape-relay` worker
+(`services/parascape-relay`, Gemma 4 26B on Workers AI, 4000-neuron daily cap so spaCR keeps most of the
+account allowance) and is told what is on screen. Client: `parascape/relay.py`, `parascape/chat.py`. Einar: "the AI box should have the options that spaCR does. And one
 should be the free ParaScape AI."
 
 ## What spaCR offers (`spacr/qt/ai/providers.py`)

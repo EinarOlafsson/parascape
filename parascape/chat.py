@@ -52,15 +52,18 @@ Describe the evidence and its source. Say when a requested inference is unsuppor
 
 
 class Provider:
-    """A vendor CLI that can answer a prompt non-interactively."""
+    """A vendor CLI that can answer a prompt non-interactively -- or, `hosted`, the free
+    ParaScape AI on the relay (`parascape.relay`), which needs no CLI and no account."""
 
-    def __init__(self, name: str, label: str, cli: str, hint: str, login: str):
+    def __init__(self, name: str, label: str, cli: str, hint: str, login: str,
+                 hosted: bool = False):
         self.name, self.label, self.cli = name, label, cli
         self.install_hint, self.login_command = hint, login
+        self.hosted = hosted
 
     def available(self) -> bool:
-        """Whether this provider's CLI is on PATH."""
-        return shutil.which(self.cli) is not None
+        """Whether this provider can answer here: its CLI is on PATH, or it is hosted."""
+        return self.hosted or shutil.which(self.cli) is not None
 
     def argv(self, prompt: str, system: str) -> list[str]:
         """The command line that asks this CLI one question non-interactively."""
@@ -71,6 +74,9 @@ class Provider:
         return [self.cli, "-p", f"{system}\n\n{prompt}"]
 
 
+#: spaCR's four choices (Einar: "the AI box should have the options that spaCR does, and one
+#: should be the free ParaScape AI"). All are listed whether installed or not, as in spaCR;
+#: choosing one that is not installed says how to install it.
 PROVIDERS = [
     Provider("claude", "Claude (via Claude Code)", "claude",
              "curl -fsSL https://claude.ai/install.sh | bash", "claude setup-token"),
@@ -78,6 +84,7 @@ PROVIDERS = [
              "npm install -g @openai/codex", "codex login"),
     Provider("gemini", "Gemini (via Gemini CLI)", "gemini",
              "npm install -g @google/gemini-cli", "gemini auth login"),
+    Provider("parascape", "ParaScape AI (free)", "", "nothing to install", "", hosted=True),
 ]
 
 
@@ -102,6 +109,15 @@ def stream(provider: Provider, prompt: str, system: str, timeout: int = 180,
     can only set a flag that is checked between chunks -- and a thread blocked on a silent process
     never reaches the check, so closing the window would leave a live thread and abort the process.
     """
+    if provider.hosted:
+        from . import relay
+        context = system.split("Current state of the viewer:", 1)[1] \
+            if "Current state of the viewer:" in system else ""
+        try:
+            yield relay.ask(prompt, context.strip())
+        except Exception as exc:
+            yield f"The free ParaScape AI could not answer: {exc}"
+        return
     argv = provider.argv(prompt, system)
     try:
         proc = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -255,8 +271,9 @@ class ChatPanel(QtWidgets.QWidget):
         self.provider_box = QtWidgets.QComboBox()
         self.refresh_providers()
         self.provider_box.setToolTip(
-            "These shell out to a coding-agent CLI you have already logged in, so there is no API "
-            "key to store and nothing here is metered separately.")
+            "Claude, ChatGPT and Gemini run through their command-line tools, signed in with your "
+            "own account. ParaScape AI (free) needs nothing: it answers from a free model on the "
+            "ParaScape relay, with a daily limit, and is told what is on your screen.")
         bar.addWidget(self.provider_box, 1)
         self.send_btn = QtWidgets.QPushButton("send")
         self.send_btn.setToolTip(
@@ -278,14 +295,15 @@ class ChatPanel(QtWidgets.QWidget):
         L.addWidget(self.input)
 
     def refresh_providers(self):
-        """Repopulate the provider list from what is actually installed."""
+        """List every provider, as spaCR does; one that is not installed says so, and the
+        first that can answer here is selected (the free ParaScape AI always can)."""
         self.provider_box.clear()
-        got = available_providers()
-        for p in got:
-            self.provider_box.addItem(p.label, p.name)
-        if not got:
-            self.provider_box.addItem("no assistant CLI found", None)
-            self.provider_box.setEnabled(False)
+        for p in PROVIDERS:
+            self.provider_box.addItem(p.label if p.available() else f"{p.label} — not installed",
+                                      p.name)
+        first = next((i for i, p in enumerate(PROVIDERS) if p.available()), 0)
+        self.provider_box.setCurrentIndex(first)
+        self.provider_box.setEnabled(True)
 
     def current_provider(self) -> Optional[Provider]:
         """The selected provider, or None when nothing is installed."""
@@ -328,10 +346,17 @@ class ChatPanel(QtWidgets.QWidget):
         if not prompt or self._worker is not None:
             return
         provider = self.current_provider()
-        if provider is None:
-            hints = "\n".join(f"  {p.label}: {p.install_hint}" for p in PROVIDERS)
-            self.log.append("<p style='color:#e06c75'>No assistant CLI on PATH. Install one:</p>"
-                            f"<pre>{hints}</pre>")
+        if provider is None or not provider.available():
+            if provider is None:
+                hints = "\n".join(f"  {p.label}: {p.install_hint}" for p in PROVIDERS
+                                  if not p.hosted)
+            else:
+                hints = (f"  install: {provider.install_hint}\n"
+                         f"  then sign in: {provider.login_command}")
+            name = provider.label if provider else "No assistant"
+            self.log.append(f"<p style='color:#e06c75'>{html_escape(name)} is not installed. "
+                            "Install it, or choose ParaScape AI (free), which needs nothing:</p>"
+                            f"<pre>{html_escape(hints)}</pre>")
             return
         self.input.clear()
         self._append("you", prompt)

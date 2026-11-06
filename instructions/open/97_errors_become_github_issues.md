@@ -1,6 +1,12 @@
 # 97 · Errors become ParaScape GitHub issues, and a routine fixes them
 
-**Status: open (requested 2026-11-06).** Einar: "like in spaCR we need to set up a mechanism where errors
+**Status: built 2026-11-06.** Worker deployed (`https://parascape-relay.einar-olafsson.workers.dev`,
+D1 `parascape-support`); GitHub App `parascape-first-responder` (App ID 5647965, installation 179382040)
+created by Einar, key set by Einar. Gate met: a test report filed issue #1 as app/parascape-first-responder
+(closed). Client: `parascape/report_dialog.py` (asks once per error, shows the report word for word,
+Send / Don't send / always; Help ▸ Report a problem; Help ▸ Error reports ask/always/never) installed from
+`app.main`. Routine: Einar chose a check in the working session -- every 4 h (session cron, 7-day expiry,
+re-created when it lapses). Einar: "like in spaCR we need to set up a mechanism where errors
 get sent as ParaScape GitHub issues, and you routinely check the GitHub issues for ParaScape and fix them."
 
 ## What spaCR does
