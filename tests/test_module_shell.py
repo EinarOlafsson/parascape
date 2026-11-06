@@ -275,3 +275,53 @@ def test_a_list_steps_gene_by_gene(window, tmp_path):
     assert module.gene == ids[0]
     module._step(1)
     assert module.gene == ids[1]
+
+
+# ------------------------------------------------------------------ the Network module
+def test_the_network_shows_every_gene_and_focuses_a_typed_one(window):
+    """Einar: "I want to see the entire network with the gene's region zoomed in, with the
+    ability to zoom the network and change the edge definitions of the network" (instr. 87)."""
+    from parascape.landing_install import open_module
+    shell = window.network_module
+    assert shell is not None, "the Network module failed to build"
+    open_module(window, "network")
+    module = shell.module
+    assert len(module.view.xy) == window.n, "every gene is drawn, not only the neighbourhood"
+    gid = str(window.nodes.gene_id.iloc[0])
+    module.field.setText(gid)
+    module._typed()
+    assert module.focus == [0]
+    assert module.view.dist[0] == 0
+    assert gid in module.reading.toHtml()
+    for part in ("Your gene", "Colour by", "Which links count", "Advanced", "The network",
+                 "Your gene and its links", "Actions", "Console and AI chat"):
+        assert part in shell.sections, part
+
+
+def test_the_kinds_of_link_and_their_strength_define_the_network(window):
+    module = window.network_module.module
+    before = len(module._links)
+    for box in module.layer_boxes.values():
+        box.setChecked(False)
+    assert len(module._links) == 0
+    first = next(iter(module.layer_boxes))
+    module.layer_boxes[first].setChecked(True)
+    some = len(module._links)
+    module.strength.setValue(90)
+    module.refresh()
+    assert len(module._links) < some
+    module.strength.setValue(50)
+    for layer, box in module.layer_boxes.items():
+        from parascape.network_module import DEFAULT_LAYERS
+        box.setChecked(layer in DEFAULT_LAYERS)
+    assert len(module._links) == before
+
+
+def test_the_view_zooms_about_the_pointer_and_travels_to_a_gene(window, qtbot):
+    module = window.network_module.module
+    view = module.view
+    view.resize(800, 600)
+    view.fit()
+    view.travel_to(0, zoom=5.0)
+    qtbot.waitUntil(lambda: abs(view.zoom - 5.0) < 1e-6, timeout=3000)
+    assert np.allclose(view.center, view.xy[0])

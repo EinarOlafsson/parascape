@@ -70,13 +70,10 @@ def _reasons(window) -> dict:
 def open_module(window, key: str) -> str:
     """Open one module in this window. Returns what the status bar was told."""
     module = MOD.get(key)
-    shells = {"map": "map_module", "gene": "gene_module"}
+    shells = {"map": "map_module", "gene": "gene_module", "network": "network_module"}
     if key in shells and getattr(window, shells[key], None) is not None:
-        if key == "map":
-            from .map_module import open_in
-        else:
-            from .gene_module import open_in
-        message = open_in(window)
+        module = __import__(f"{__package__}.{shells[key]}", fromlist=["open_in"])
+        message = module.open_in(window)
         try:
             window.statusBar().showMessage(message, 6000)
         except Exception:
@@ -359,14 +356,17 @@ def install(window):
             landing.stack.addWidget(window.map_module)
     except Exception as error:                  # the window must open without it
         window.statusBar().showMessage(f"Map module unavailable: {error}", 8000)
-    window.gene_module = None
-    try:
-        from . import gene_module
-        window.gene_module = gene_module.build(window)
-        if window.gene_module is not None:
-            landing.stack.addWidget(window.gene_module)
-    except Exception as error:                  # the window must open without it
-        window.statusBar().showMessage(f"Gene module unavailable: {error}", 8000)
+    for attribute, name in (("gene_module", "gene_module"), ("network_module", "network_module")):
+        setattr(window, attribute, None)
+        try:
+            module = __import__(f"{__package__}.{name}", fromlist=["build"])
+            shell = module.build(window)
+            setattr(window, attribute, shell)
+            if shell is not None:
+                landing.stack.addWidget(shell)
+        except Exception as error:              # the window must open without it
+            window.statusBar().showMessage(f"{name.split('_')[0].title()} module unavailable: "
+                                           f"{error}", 8000)
     window._landing_cover = _Cover(window)
     window.installEventFilter(window._landing_cover)
     _watch(window)

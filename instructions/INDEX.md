@@ -105,7 +105,7 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 90 | [Release 0.0.10.0 under the new licence](open/90_release_under_the_new_licence.md) — waits on Einar's review of the spaCR licence terms |
 | 89 | [GSE60305: kallisto fails on every run](open/89_gse60305_kallisto.md) — salmon succeeds on all 18; keep a run when one quantifier fails |
 | 88 | [Proteomics downloads have slowed to a crawl](open/88_pride_download_throughput.md) — PRIDE FTP at 0.45 MB/s against 9.2 the day before; parallel files, stall restarts, a stale done counter |
-| 87 | [The network as a navigable universe](open/87_network_universe.md) — **restated 2026-11-06: whole network, gene region zoomed, zoomable, edge definitions** · depth of field from the centre, click to travel, edge and layout controls on the right |
+| 87 | [The network as a navigable universe](open/87_network_universe.md) — **built (first version), waiting on Einar** · whole network, gene region zoomed, zoomable, edge definitions · depth of field from the centre, click to travel, edge and layout controls on the right |
 | 86 | [Every module in spaCR's module shell](open/86_spacr_module_shell.md) — **in progress: shell built, Map moved** · settings left, console, AI, actions, live preview, hyperparameter search, collapsible |
 | 85 | [Retire the old ParaScape home screen](open/85_retire_the_old_home_screen.md) — **built, waiting on Einar** · the landing is the only home; nothing the old node-card dock did is lost |
 | 84 | [The Navigator, exactly as spaCR's](open/84_navigator_exactly_like_spacr.md) — **built, waiting on Einar to compare** · a View switch, search on Return, spaCR's 224 px square cards with icon and light centred name |
