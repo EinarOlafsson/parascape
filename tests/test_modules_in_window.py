@@ -69,12 +69,12 @@ def test_the_landing_covers_everything_between_the_menu_and_the_status_bar(windo
 
 
 def test_the_map_module_opens_its_shell_and_the_3d_map_is_one_action_away(window):
-    """Instruction 86: Map is a module in spaCR's shell; its "show the 3D map" action is
+    """Instruction 86: Map is a module in spaCR shell; its "Full 3D view" action is
     what takes the landing away now, and Home comes back to the home page."""
     from parascape.landing_install import go_home, landing_up, open_module
     open_module(window, "map")
     assert landing_up(window) and window.landing.page == "Module"
-    window.map_module.actions["show the 3D map"].click()
+    window.map_module.actions["Full 3D view"].click()
     assert not landing_up(window)
     go_home(window)
     assert landing_up(window) and window.landing.page != "Module"

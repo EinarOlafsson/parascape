@@ -98,8 +98,7 @@ def test_the_map_controls_moved_into_the_module_not_copied(window):
     shell = window.map_module
     assert shell is not None, "the Map module failed to build"
     panel = window.panel
-    for name in ("nn", "md", "seed", "sample", "nn_grid", "md_grid", "mcs_grid",
-                 "walk_table", "emb_name"):
+    for name in ("nn", "md", "seed", "sample", "nn_grid", "md_grid", "mcs_grid", "emb_name"):
         assert shell.isAncestorOf(getattr(panel, name)), f"{name} is not in the Map module"
     assert panel.spec().n_neighbors == panel.nn.value(), "the panel still reads the moved control"
 
@@ -111,13 +110,68 @@ def test_the_old_map_tab_points_to_the_module(window):
     assert "Open the Map module" in texts
 
 
-def test_the_map_module_has_every_part_of_spacrs_shell(window):
-    sections = set(window.map_module.sections)
-    for part in ("Projection", "Data", "Save", "Live preview", "Hyperparameter search",
+def test_the_map_module_is_built_around_its_goal(window):
+    """Instruction 96, agreed with Einar: your genes and the colouring first, what makes
+    genes similar in plain words, the UMAP settings folded under Advanced; on the right the
+    map itself, the neighbourhood reading, and finding the best map for a label."""
+    shell = window.map_module
+    sections = list(shell.sections)
+    for part in ("Your genes", "Colour by", "What makes genes similar", "Advanced",
+                 "Map", "Your genes and their neighbours", "Find the best map for a label",
                  "Actions", "Console and AI chat"):
         assert part in sections, f"no {part}"
-    actions = set(window.map_module.actions)
-    assert {"build this map", "walk hyperparameters", "show the 3D map"} <= actions
+    assert sections.index("Your genes") < sections.index("Advanced")
+    assert not shell.sections["Advanced"].is_expanded(), "the UMAP settings start folded"
+    assert shell.sections["Console and AI chat"].folder.shut, "the console starts folded"
+    actions = set(shell.actions)
+    assert {"Build this map", "Predict from neighbours", "Find the best map",
+            "Full 3D view"} <= actions
+
+
+def test_the_map_shown_is_the_current_map_not_a_sample(window):
+    module = window.map_module.module
+    module.show_current()
+    assert module.mode == "map"
+    assert len(module.view.ids) == int(window.visible_mask().sum())
+
+
+def test_a_typed_gene_is_put_on_the_map_and_read(window):
+    module = window.map_module.module
+    gid = str(window.nodes.gene_id.iloc[0])
+    module.gene_field.setText(gid)
+    module._genes_typed()
+    assert module.selected == [0] and 0 in module.view.highlight
+    html = module.reading.toHtml()
+    assert gid in html and "nearest genes" in html
+
+
+def test_a_list_file_is_put_on_the_map(window, tmp_path):
+    module = window.map_module.module
+    ids = window.nodes.gene_id.astype(str).tolist()[:5]
+    path = tmp_path / "hits.csv"
+    path.write_text("gene\n" + "\n".join(ids + ["NOT_A_GENE"]) + "\n")
+    module.load_list(str(path))
+    assert module.selected == [0, 1, 2, 3, 4]
+    assert "5 genes" in module.reading.toHtml()
+
+
+def test_ticking_a_kind_of_measurement_ticks_its_blocks(window):
+    module = window.map_module.module
+    tree = window.panel.blocks
+    box, item = next((b, it) for b, it in module.similarity.items() if not b.isChecked())
+    module._similarity_clicked(item, True)
+    keys = {leaf.data(0, QtCore.Qt.ItemDataRole.UserRole) for leaf in tree.leaves(item)
+            if leaf.flags() & QtCore.Qt.ItemFlag.ItemIsEnabled}
+    assert keys <= set(tree.checked()) and box.isChecked()
+    module._similarity_clicked(item, False)
+    assert not keys & set(tree.checked()) and not box.isChecked()
+
+
+def test_colour_by_is_the_window_choice(window):
+    module = window.map_module.module
+    other = next(t for t in window.color_sources() if t != module.colour_box.currentText())
+    module.colour_box.setCurrentText(other)
+    assert window.category_box.currentText() == other
 
 
 def test_the_console_is_in_the_module_while_it_is_up_and_back_after(window):
@@ -133,5 +187,5 @@ def test_the_console_is_in_the_module_while_it_is_up_and_back_after(window):
         assert window.console_dock.widget() is window.console
         assert window.chat_dock.widget() is window.chat
     finally:
-        window.map_module.preview.live.setChecked(False)
+        window.map_module.module.live.setChecked(False)
         window.hide()

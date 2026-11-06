@@ -216,6 +216,7 @@ class ModuleShell(QtWidgets.QWidget):
         scroll.setObjectName("ShellSettingsScroll")
         scroll.setWidgetResizable(True)
         scroll.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
+        scroll.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         scroll.setWidget(self.settings)
         self.settings_scroll = scroll
         self.body.add_pane(scroll, "Settings", mode=EDGE, fold_key=f"{key}/Settings",
@@ -267,11 +268,17 @@ class ModuleShell(QtWidgets.QWidget):
         return section
 
     def add_section(self, name: str, widget: QtWidgets.QWidget, extent: int = 240,
-                    stretch: int = 1, focus: bool = False):
-        """A section of the runtime column that folds to its heading."""
+                    stretch: int = 1, focus: bool = False, folded: bool = False):
+        """A section of the runtime column that folds to its heading.
+
+        `folded` starts it as just its heading until the user opens it (remembered once
+        they do) -- for what supports the work rather than is the work, like the console.
+        """
+        from .panes.collapsible_splitter import FoldSection
         widget.setObjectName(widget.objectName() or "ShellSection")
-        section = self.runtime.add_section(widget, name, persist_key=f"{self.key}/{name}",
-                                           extent=extent, stretch=stretch, focus=focus)
+        section = FoldSection(widget, name, persist_key=f"{self.key}/{name}", folded=folded)
+        self.runtime.add_pane(section, name, folder=section.folder, stretch=stretch,
+                              extent=extent, focus=focus)
         self.sections[name] = section
         return section
 
@@ -295,7 +302,7 @@ class ModuleShell(QtWidgets.QWidget):
         """A ready-made control in the Actions row (a Stop button that already exists)."""
         self._action_row.insertWidget(self._action_row.count() - 1, widget)
 
-    def borrow(self, name: str, docks, extent: int = 200) -> list:
+    def borrow(self, name: str, docks, extent: int = 200, folded: bool = False) -> list:
         """Show docks' panels (the console, the assistant) side by side in one section while
         the module is on screen -- spaCR's console and chat share a row the same way, so the
         two do not take the column's height twice."""
@@ -309,7 +316,7 @@ class ModuleShell(QtWidgets.QWidget):
             holder = _Borrowed(dock, f"the {self.title_label.text()} module")
             row.add_pane(holder, title, stretch=1, extent=400)
             holders.append(holder)
-        self.add_section(name, row, extent=extent, stretch=1)
+        self.add_section(name, row, extent=extent, stretch=1, folded=folded)
         self._borrowed.extend(holders)
         return holders
 
