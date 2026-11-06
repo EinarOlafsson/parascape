@@ -9,7 +9,7 @@ map. **Everything a fresh session needs is in this file.** Created 2026-08-10.
 
 ## What this is
 
-A PyQt6 desktop app. Every gene is a node in a 3D space; edges are relations drawn from real datasets. You
+A PySide6 desktop app (PyQt6 until 2026-11-05; see instruction 83). Every gene is a node in a 3D space; edges are relations drawn from real datasets. You
 click and zoom from compartment level down to a single gene's evidence. Position is **not** an arbitrary
 force-directed layout — it is a UMAP embedding of a multimodal feature matrix, so proximity means biological
 similarity.
@@ -865,7 +865,7 @@ parascape-discover --read bigA_00_guilt_compartment_best
    failures look machine-specific.
 
 1. **The suite segfaulted once, unreproducibly, on 2026-08-17.** `pytest tests/` dumped core after
-   printing its extension-module list (PyQt6, OpenGL, torch); two immediate re-runs, with random and
+   printing its extension-module list (PySide6, OpenGL, torch); two immediate re-runs, with random and
    with fixed ordering, both passed all 2,947. Recorded rather than chased because it is a Qt/GL
    teardown crash in a headless environment and not a test failure — but if it recurs, that is the
    first place to look, and `-p no:randomly` is the way to tell an ordering effect from a teardown one.

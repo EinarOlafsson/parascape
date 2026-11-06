@@ -427,7 +427,7 @@ disk. `scripts/build_star_edges.py` rebuilds `data/star_edges.parquet`.
 | Gene-gene links with provenance (the star map) | [star_edges](api/parascape/star_edges.html), [star_map](api/parascape/star_map.html) |
 | Deposited datasets, derived into columns | [deposits](api/parascape/deposits.html) |
 
-`app.Window(species=...)` requires an existing `PyQt6.QtWidgets.QApplication`.
+`app.Window(species=...)` requires an existing `PySide6.QtWidgets.QApplication`.
 Call it on the GUI thread. `app.main()` owns the application event loop and is
 intended as the console entry point. Scripts that only need tables and analyses
 should import the relevant modules directly.
