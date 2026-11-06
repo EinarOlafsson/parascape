@@ -1,0 +1,342 @@
+{
+  "modules": [
+    {
+      "key": "gene",
+      "name": "Gene",
+      "note": "everything recorded about one gene, with its sources",
+      "band": "Look up",
+      "leads_to": [
+        "partners",
+        "expression",
+        "structure",
+        "network"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "structure",
+      "name": "Structure",
+      "note": "the fold, its confidence, and what is known of it",
+      "band": "Look up",
+      "leads_to": [
+        "partners",
+        "gene"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "partners",
+      "name": "Partners",
+      "note": "what it binds, and how strongly that is evidenced",
+      "band": "Look up",
+      "leads_to": [
+        "network",
+        "infer",
+        "gene"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "expression",
+      "name": "Expression",
+      "note": "where and when its RNA and protein are measured",
+      "band": "Look up",
+      "leads_to": [
+        "map",
+        "information",
+        "gene"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "map",
+      "name": "Map",
+      "note": "the genome as a space you choose the axes of",
+      "band": "Explore",
+      "leads_to": [
+        "network",
+        "gallery",
+        "cell",
+        "infer"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "network",
+      "name": "Network",
+      "note": "a gene and its neighbourhood, edges you define",
+      "band": "Explore",
+      "leads_to": [
+        "partners",
+        "infer",
+        "export"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "cell",
+      "name": "Cell",
+      "note": "the parasite drawn, with the genes placed on it",
+      "band": "Explore",
+      "leads_to": [
+        "gene",
+        "map"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "gallery",
+      "name": "Gallery",
+      "note": "every map built so far, to compare rather than rebuild",
+      "band": "Explore",
+      "leads_to": [
+        "map",
+        "export"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "questions",
+      "name": "Questions",
+      "note": "the catalogue of what can be asked, and of what cannot",
+      "band": "Ask",
+      "leads_to": [
+        "infer",
+        "scorecard",
+        "strategies"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "infer",
+      "name": "Infer",
+      "note": "answer a question, choosing the evidence it may use",
+      "band": "Ask",
+      "leads_to": [
+        "scorecard",
+        "fill",
+        "runs",
+        "export"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "strategies",
+      "name": "Strategies",
+      "note": "39 ways to turn the data into a claim, each graded",
+      "band": "Ask",
+      "leads_to": [
+        "infer",
+        "scorecard"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "scorecard",
+      "name": "Scorecard",
+      "note": "how well each answer did on genes it was not shown",
+      "band": "Ask",
+      "leads_to": [
+        "fill",
+        "runs"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "runs",
+      "name": "Runs",
+      "note": "every inference saved, with the data and settings it used",
+      "band": "Ask",
+      "leads_to": [
+        "scorecard"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "fill",
+      "name": "Fill",
+      "note": "write answers into the map, where they clear the bar",
+      "band": "Ask",
+      "leads_to": [
+        "information",
+        "map"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "drop",
+      "name": "Drop",
+      "note": "a CSV, TSV, XLS or XLSX of genes, with or without values",
+      "band": "Bring your own",
+      "leads_to": [
+        "list",
+        "screen",
+        "infer",
+        "map"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "screen",
+      "name": "Screen",
+      "note": "join your screen to everything already recorded",
+      "band": "Bring your own",
+      "leads_to": [
+        "list",
+        "infer"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "list",
+      "name": "List",
+      "note": "what a set of genes has in common, and what it points to",
+      "band": "Bring your own",
+      "leads_to": [
+        "infer",
+        "network",
+        "export"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "export",
+      "name": "Export",
+      "note": "take a list, a table or a figure out",
+      "band": "Bring your own",
+      "leads_to": [],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "datasets",
+      "name": "Datasets",
+      "note": "all 130 sources, their coverage and their provenance",
+      "band": "Data",
+      "leads_to": [
+        "information",
+        "expression"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "information",
+      "name": "Information",
+      "note": "the gene x trait map, and how sure each cell is",
+      "band": "Data",
+      "leads_to": [
+        "gene",
+        "map",
+        "infer"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "jobs",
+      "name": "Jobs",
+      "note": "what is running, what it is costing, and how to stop it",
+      "band": "Data",
+      "leads_to": [
+        "console"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "key": "console",
+      "name": "Console",
+      "note": "what the program is doing, in its own words",
+      "band": "Data",
+      "leads_to": [
+        "jobs"
+      ],
+      "api": "",
+      "tutorial": "",
+      "preview": "",
+      "inputs": [],
+      "outputs": []
+    }
+  ]
+}

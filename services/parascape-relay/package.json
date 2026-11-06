@@ -1,0 +1,11 @@
+{
+  "name": "parascape-relay",
+  "version": "0.2.5",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker relay for anonymised ParaScape error reports and the free ParaScape AI",
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "license": "MIT"
+}
