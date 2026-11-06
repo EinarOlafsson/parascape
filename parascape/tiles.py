@@ -134,6 +134,14 @@ QWidget#HomeScreen[ambient="on"], QScrollArea#HomeScroll[ambient="on"],
 QWidget#HomeScrollViewport[ambient="on"], QWidget#HomeBands[ambient="on"] {{
     background: transparent;
 }}
+/* Pure layout containers: one row of tiles, the right-hand column. They draw
+   nothing of their own and must never cover the page. Standalone they were
+   invisible; inside the real window the application stylesheet gives a plain
+   QWidget a background, and each row and the aside became an opaque slab that hid
+   the animation behind them. */
+QWidget#HomeBandRow, QWidget#HomeAside {{
+    background: transparent;
+}}
 /* The scrollbar, which otherwise renders as a bright slab against the page. */
 QScrollArea#HomeScroll QScrollBar:vertical {{
     background: transparent;

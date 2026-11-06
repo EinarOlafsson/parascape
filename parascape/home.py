@@ -172,6 +172,7 @@ class HomeScreen(QtWidgets.QWidget):
             hint.setObjectName("TileNote")
             col.addWidget(hint)
             row = QtWidgets.QWidget()
+            row.setObjectName("HomeBandRow")
             flow = _FlowLayout(row, spacing=TH.SPACING["md"])
             for module in members:
                 tile = self._tile(module)
@@ -213,6 +214,7 @@ class HomeScreen(QtWidgets.QWidget):
         anything else on screen.
         """
         side = QtWidgets.QWidget()
+        side.setObjectName("HomeAside")
         side.setFixedWidth(ASIDE_W)
         col = QtWidgets.QVBoxLayout(side)
         col.setContentsMargins(0, 0, 0, 0)

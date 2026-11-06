@@ -1000,6 +1000,7 @@ class Window(QtWidgets.QMainWindow):
         self.set_ui_scale(self._ui_scale)
         TH.wrap_tooltips(self)
         self.redraw()
+        self._landing()
         if self._ambient_mode != "none":
             self._apply_ambient()
         if self._lighting["mode"] != "off":
@@ -1443,6 +1444,27 @@ class Window(QtWidgets.QMainWindow):
         except Exception as e:                        # the browser must open without it
             self.home = None
             self.statusBar().showMessage(f"home screen unavailable: {e}")
+
+    def _landing(self):
+        """The landing view over the window: spaCR's Navigator and module tiles.
+
+        Installed LAST, after every dock and after the menus. Each tile and Navigator result
+        opens a dock that must already exist, and the tiles grey themselves out by asking which
+        docks the window built: installed from `_home()`, as it first was, it ran before
+        `_tool_docks()` and `_menus()`, so it marked Jobs and Console "not available in this
+        window" -- they were, a moment later -- and found no View menu to add Home to.
+
+        It is an overlay: nothing underneath changes, the 3D map stays the central widget and
+        becomes the Map module, and View ▸ Home comes back here from anywhere. If anything
+        here fails the window still opens on the map, exactly as it did before the landing
+        existed.
+        """
+        self.landing = self.landing_stack = None
+        try:
+            from .landing_install import install
+            install(self)
+        except Exception as e:                        # the browser must open without it
+            self.statusBar().showMessage(f"landing unavailable: {e}")
 
     def _information_map(self):
         """The information-map dock: what is known about a gene, and which claims are measured.

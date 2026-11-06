@@ -36,9 +36,14 @@ class Module:
     :param name: what the tile says. One or two words.
     :param note: one line under the name. Says what you get, not what it is.
     :param band: which group of tiles it belongs to.
-    :param opens: the dock or view this module shows, as `dock` or `dock:tab`.
-        Empty means the view does not exist yet, and the module is unavailable
-        for that reason alone.
+    :param opens: where the module goes: a dock as `dock`, a tab in one as
+        `dock:tab`, or a window method as `action:method` (the dataset browser and
+        export are windows and dialogs, not docks). Empty means the view does not
+        exist yet, and the module is unavailable for that reason alone.
+
+        Every destination was checked against a live window, after the first
+        version of this catalogue -- written from memory -- pointed six modules at
+        tabs that did not exist. `tests/test_modules_in_window.py` keeps it checked.
     :param needs: what must be present for it to open, as free text used in the
         greyed-out reason. Empty means it only needs the app.
     :param icon: icon name, resolved by the home screen against the icon set.
@@ -68,9 +73,10 @@ MODULES = (
     Module("gene", "Gene", "everything recorded about one gene, with its sources",
            "Look up", opens="evidence", icon="gene"),
     Module("structure", "Structure", "the fold, its confidence, and what is known of it",
-           "Look up", opens="maps:Structure", icon="structure"),
+           "Look up", needs=("a structure view; AF3 summaries are on a gene's evidence for now",),
+           icon="structure"),
     Module("partners", "Partners", "what it binds, and how strongly that is evidenced",
-           "Look up", opens="evidence:Interactions", icon="partners"),
+           "Look up", opens="evidence", icon="partners"),
     Module("expression", "Expression", "where and when its RNA and protein are measured",
            "Look up", opens="compare:Gene expression", icon="expression"),
 
@@ -80,13 +86,13 @@ MODULES = (
     Module("network", "Network", "a gene and its neighbourhood, edges you define",
            "Explore", opens="star map", icon="network"),
     Module("cell", "Cell", "the parasite drawn, with the genes placed on it",
-           "Explore", opens="maps:Cell", icon="cell"),
+           "Explore", opens="find", icon="cell"),
     Module("gallery", "Gallery", "every map built so far, to compare rather than rebuild",
            "Explore", opens="gallery", icon="gallery"),
 
     # -------------------------------------------------------------------- Ask
     Module("questions", "Questions", "the catalogue of what can be asked, and of what cannot",
-           "Ask", opens="discoveries:Questions", icon="questions"),
+           "Ask", opens="analysis:8 · Questions", icon="questions"),
     Module("infer", "Infer", "answer a question, choosing the evidence it may use",
            "Ask", opens="analysis", icon="infer"),
     Module("strategies", "Strategies", "39 ways to turn the data into a claim, each graded",
@@ -107,11 +113,11 @@ MODULES = (
     Module("list", "List", "what a set of genes has in common, and what it points to",
            "Bring your own", needs=("a set-level enrichment view",), icon="list"),
     Module("export", "Export", "take a list, a table or a figure out",
-           "Bring your own", opens="compare:Export", icon="export"),
+           "Bring your own", opens="action:export_visible", icon="export"),
 
     # ------------------------------------------------------------------- Data
     Module("datasets", "Datasets", "all 130 sources, their coverage and their provenance",
-           "Data", opens="evidence:Datasets", icon="datasets"),
+           "Data", opens="action:open_dataset_browser", icon="datasets"),
     Module("information", "Information", "the gene x trait map, and how sure each cell is",
            "Data", opens="information map", icon="information"),
     Module("jobs", "Jobs", "what is running, what it is costing, and how to stop it",
@@ -167,6 +173,8 @@ def unavailable_reason(module: Module, *, docks=(), fillable: int = 0) -> str:
         return "needs " + "; ".join(module.needs)
     if not module.opens:
         return "this view has not been built yet"
+    if module.opens.startswith("action:"):
+        return ""
     if docks:
         dock = module.opens.split(":")[0]
         if dock not in docks:
