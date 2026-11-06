@@ -8,9 +8,9 @@ drift between two copies. The tab keeps a button that opens this module.
 
 New, because the shell has a place for it and spaCR has one: a **live preview**. spaCR
 re-segments a sample image as its settings change; here a sample of genes is projected
-in 2D with the n_neighbors, min_dist and seed being set, so the effect of a setting is
-seen before a full 3D map is built. It is a preview -- a sample, two dimensions, drawn
-flat -- and says so on it.
+in 3D with the n_neighbors, min_dist and seed being set, so the effect of a setting is
+seen before the full map is built. It is a preview -- a sample, drawn in software --
+and says so on it.
 """
 from __future__ import annotations
 
@@ -42,7 +42,7 @@ def wait_for_projections(timeout_ms: int = 60000) -> None:
 
 
 class _Projection(QtCore.QThread):
-    """One 2D projection of a sample, off the GUI thread."""
+    """One 3D projection of a sample, off the GUI thread."""
 
     ready = QtCore.Signal(int, object, object)        # generation, xy, colour codes
     failed = QtCore.Signal(int, str)
@@ -59,7 +59,7 @@ class _Projection(QtCore.QThread):
             pick = np.sort(rng.choice(len(X), size=min(self.size, len(X)), replace=False))
             sample = X[pick]
             import umap
-            reducer = umap.UMAP(n_components=2,
+            reducer = umap.UMAP(n_components=3,
                                 n_neighbors=int(min(self.spec.n_neighbors, len(sample) - 1)),
                                 min_dist=float(self.spec.min_dist),
                                 random_state=int(self.spec.random_state))
@@ -76,42 +76,108 @@ class _Projection(QtCore.QThread):
 
 
 class ScatterView(QtWidgets.QWidget):
-    """Points in two dimensions, drawn to fit with their aspect kept.
+    """Points in three dimensions, turning slowly, drawn in software.
 
-    Not a pyqtgraph PlotWidget: deleting one of those while the application keeps running
-    -- which is what closing a window does -- crashed PySide6 inside `QGraphicsScene`'s
-    destructor. A preview of a couple of thousand points needs none of what it brings.
+    Einar: "the umap in map is 2d not 3d". A 3D preview of the 3D map, but painted with
+    QPainter rather than a second GL view: the window's GL map must not share or lose a
+    context to a preview, and a pyqtgraph PlotWidget deleted mid-session crashed PySide6
+    inside `QGraphicsScene`'s destructor. Nearer points are drawn larger and brighter,
+    farther ones smaller and dimmer, so the depth reads without a GL depth buffer. Drag
+    to turn it; it keeps turning on its own when let go.
     """
+
+    FPS = 20
+    SPIN = 0.012                                       # radians per frame
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.xy = np.zeros((0, 2))
+        self.xyz = np.zeros((0, 3))
         self.colours: list = []
+        self.yaw, self.pitch = 0.6, 0.35
+        self._drag = None
         self.setMinimumHeight(180)
+        self.setCursor(QtCore.Qt.CursorShape.OpenHandCursor)
+        self.timer = QtCore.QTimer(self)
+        self.timer.setInterval(int(1000 / self.FPS))
+        self.timer.timeout.connect(self._turn)
 
-    def set_points(self, xy, colours) -> None:
-        """Show `xy` (n x 2), one colour per point."""
-        self.xy = np.asarray(xy, dtype=float).reshape(-1, 2)
+    def set_points(self, xyz, colours) -> None:
+        """Show `xyz` (n x 3; n x 2 is lifted flat), one colour per point."""
+        xyz = np.asarray(xyz, dtype=float)
+        if xyz.ndim == 2 and xyz.shape[1] == 2:
+            xyz = np.column_stack([xyz, np.zeros(len(xyz))])
+        xyz = xyz.reshape(-1, 3)
+        if len(xyz):
+            # Centred on the median and scaled to the 80th-percentile radius: scaled to the
+            # farthest point (or even the 98th percentile), the small outlying clusters a
+            # UMAP throws far out shrank the body of the map to a dot.
+            xyz = xyz - np.median(xyz, axis=0)
+            radius = float(np.percentile(np.linalg.norm(xyz, axis=1), 80))
+            xyz = xyz / max(1e-9, radius)
+        self.xyz = xyz
         self.colours = [QtGui.QColor(*_rgb255(c)) for c in colours]
         self.update()
+        if self.isVisible():
+            self.timer.start()
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        if len(self.xyz):
+            self.timer.start()
+
+    def hideEvent(self, event):
+        self.timer.stop()
+        super().hideEvent(event)
+
+    def _turn(self):
+        if self._drag is None:
+            self.yaw += self.SPIN
+            self.update()
+
+    def mousePressEvent(self, event):
+        self._drag = event.position()
+        self.setCursor(QtCore.Qt.CursorShape.ClosedHandCursor)
+
+    def mouseMoveEvent(self, event):
+        if self._drag is None:
+            return
+        delta = event.position() - self._drag
+        self._drag = event.position()
+        self.yaw += delta.x() * 0.01
+        self.pitch = float(np.clip(self.pitch + delta.y() * 0.01, -1.4, 1.4))
+        self.update()
+
+    def mouseReleaseEvent(self, event):
+        self._drag = None
+        self.setCursor(QtCore.Qt.CursorShape.OpenHandCursor)
+
+    def projected(self):
+        """Screen x, y, a 0-1 nearness per point, and the back-to-front drawing order."""
+        cy, sy, cp, sp = np.cos(self.yaw), np.sin(self.yaw), np.cos(self.pitch), np.sin(self.pitch)
+        x, y, z = self.xyz[:, 0], self.xyz[:, 1], self.xyz[:, 2]
+        x1, z1 = cy * x + sy * z, -sy * x + cy * z
+        y1, z2 = cp * y - sp * z1, sp * y + cp * z1
+        camera = 3.2
+        scale = camera / (camera - z2)
+        side = 0.40 * min(self.width(), 1.2 * self.height())
+        sx = self.width() / 2 + x1 * scale * side
+        sy_ = self.height() / 2 - y1 * scale * side
+        near = (z2 + 1) / 2
+        return sx, sy_, near, np.argsort(z2)
 
     def paintEvent(self, _event):
-        if not len(self.xy):
+        if not len(self.xyz):
             return
         painter = QtGui.QPainter(self)
         painter.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing, True)
         painter.setPen(QtCore.Qt.PenStyle.NoPen)
-        lo, hi = self.xy.min(axis=0), self.xy.max(axis=0)
-        span = np.maximum(hi - lo, 1e-9)
-        margin = 10
-        scale = min((self.width() - 2 * margin) / span[0], (self.height() - 2 * margin) / span[1])
-        x0 = (self.width() - span[0] * scale) / 2
-        y0 = (self.height() - span[1] * scale) / 2
-        radius = 2.0
-        for (x, y), colour in zip(self.xy, self.colours):
+        sx, sy, near, order = self.projected()
+        for i in order:
+            colour = QtGui.QColor(self.colours[i] if i < len(self.colours) else QtGui.QColor("white"))
+            colour.setAlphaF(0.35 + 0.6 * float(near[i]))
             painter.setBrush(colour)
-            painter.drawEllipse(QtCore.QPointF(x0 + (x - lo[0]) * scale,
-                                               y0 + (hi[1] - y) * scale), radius, radius)
+            r = 1.2 + 2.4 * float(near[i])
+            painter.drawEllipse(QtCore.QPointF(float(sx[i]), float(sy[i])), r, r)
         painter.end()
 
 
@@ -147,7 +213,8 @@ class LivePreview(QtWidgets.QWidget):
         layout.addLayout(row)
         self.plot = ScatterView(self)
         self.plot.setToolTip(TH.tip(
-            "A preview: a sample of genes in two dimensions with the settings on the left. "
+            "A preview: a sample of genes in three dimensions with the settings on the left; "
+            "drag to turn it. "
             "Build this map draws all of them in the 3D view."))
         layout.addWidget(self.plot, 1)
 
@@ -210,7 +277,8 @@ class LivePreview(QtWidgets.QWidget):
         colours = TH.categorical_colors(int(codes.max()) + 1 if codes is not None else 1)
         self.plot.set_points(xy, [colours[c] for c in codes] if codes is not None
                              else [colours[0]] * len(xy))
-        self.note.setText(f"preview · {len(xy):,} genes · coloured by compartment")
+        self.note.setText(f"preview in 3D · {len(xy):,} genes · coloured by compartment · "
+                          "drag to turn")
 
     def _done(self) -> None:
         worker, self._worker = self._worker, None

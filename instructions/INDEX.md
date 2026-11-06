@@ -98,7 +98,7 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 95 | [spaCR's dock](open/95_spacr_dock.md) — the left column of categories and module rows, on Home and in every module |
 | 94 | [The AI box with spaCR's choices, and a free ParaScape AI](open/94_ai_box_like_spacr.md) — all four providers listed; the free one needs a worker Einar agrees to deploy |
 | 93 | [Every module in the same spaCR theme](open/93_every_module_one_theme.md) — spaCR fields, containers at spaCR pane opacity (60 %), the gene card as a shell module |
-| 92 | [The Map module preview in 3D](open/92_map_preview_in_3d.md) — a rotatable 3D preview, painted in software |
+| 92 | [The Map module preview in 3D](open/92_map_preview_in_3d.md) — **built, waiting on Einar** · a rotatable 3D preview, painted in software |
 | 91 | [Navigator: one click shows what comes next, a second click opens](open/91_navigator_module_network.md) — **built, waiting on Einar** · downstream module graph, fewer results, reset on return |
 | 90 | [Release 0.0.10.0 under the new licence](open/90_release_under_the_new_licence.md) — waits on Einar's review of the spaCR licence terms |
 | 89 | [GSE60305: kallisto fails on every run](open/89_gse60305_kallisto.md) — salmon succeeds on all 18; keep a run when one quantifier fails |
