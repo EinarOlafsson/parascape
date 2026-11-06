@@ -64,3 +64,6 @@ docs/site/
 
 # Versioned GitHub data release assets; upload these, never commit the archive.
 /data-dist/
+
+# wrangler local state (account cache, dev databases)
+services/*/.wrangler/
