@@ -457,7 +457,9 @@ def test_every_unguarded_import_in_the_package_is_a_declared_dependency():
                 "cupy": "GPU array work; same check",
                 "hdbscan": "the fallback when scikit-learn is too old",
                 "pybigwig": "reading coverage tracks, which only the build does",
-                "huggingface_hub": "publishing a release, which the application never does"}
+                "huggingface_hub": "publishing a release, which the application never does",
+                "moderngl": "the GPU path of the animated backdrop, created only after an isolated "
+                            "probe succeeds; without it the backdrop paints on the CPU"}
     names |= set(optional)
     undeclared = {}
     for folder, _dirs, files in os.walk(os.path.join(root, "parascape")):

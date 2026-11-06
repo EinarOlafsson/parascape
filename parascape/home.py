@@ -34,7 +34,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import modules as MOD
 from . import theme as TH
-from .tiles import ASIDE_W, TILE_MAX_W, AppTile, HomePanel, tile_qss
+from .tiles import ASIDE_W, TILE_W, AppTile, HomePanel, tile_qss
 
 
 class _FlowLayout(QtWidgets.QLayout):
@@ -119,7 +119,7 @@ class HomeScreen(QtWidgets.QWidget):
     module_chosen = QtCore.Signal(str)
 
     def __init__(self, counts: dict | None = None, reasons: dict | None = None,
-                 parent=None):
+                 animate: bool = True, parent=None):
         super().__init__(parent)
         self.setObjectName("HomeScreen")
         self._reasons = dict(reasons or {})
@@ -137,6 +137,9 @@ class HomeScreen(QtWidgets.QWidget):
         split.addWidget(self._bands(), 1)
         split.addWidget(self._aside(counts or {}), 0)
         outer.addLayout(split, 1)
+        self._ambient = None
+        if animate:
+            self._install_ambient()
 
     # ------------------------------------------------------------------ pieces
     def _masthead(self) -> QtWidgets.QVBoxLayout:
@@ -196,7 +199,7 @@ class HomeScreen(QtWidgets.QWidget):
         if reason is None:
             reason = MOD.unavailable_reason(module)
         tile = AppTile(module.key, module.name, module.note, reason=reason,
-                       width=TILE_MAX_W)
+                       width=TILE_W)
         if tile.available:
             tile.clicked.connect(lambda _=False, k=module.key: self.module_chosen.emit(k))
         return tile
@@ -236,6 +239,55 @@ class HomeScreen(QtWidgets.QWidget):
         col.addWidget(running)
         col.addStretch(1)
         return side
+
+    # --------------------------------------------------------------- animation
+    def _install_ambient(self) -> None:
+        """Put spaCR's animated backdrop behind the page, if the user has it on.
+
+        spaCR's own warning, which is the whole difficulty: a backdrop is only as
+        visible as the containers above it are transparent. The page, its scroll
+        area, the viewport and the band column are opaque page colour so that,
+        with the animation OFF, nothing paints white (the bug the first render
+        caught). With it ON they must go transparent, or the animation runs
+        invisibly underneath them -- burning a timer for a picture nobody sees.
+        The tiles and panels stay opaque, so the field shows in the gaps between
+        them, which is how spaCR reads.
+        """
+        try:
+            from .ambient import _compat as AC
+            from .ambient import engines as AE
+        except Exception as exc:          # a backdrop must never stop the page opening
+            self._ambient_error = f"{type(exc).__name__}: {exc}"
+            return
+        if not AC.get_ambient_enabled():
+            return
+        theme = AC.get_ambient_theme()
+        try:
+            self._ambient = AE.install_ambient(
+                self, theme=theme, palette=AC.get_ambient_palette(),
+                background=AC.active_page_colour())
+        except Exception as exc:
+            self._ambient = None
+            self._ambient_error = f"{type(exc).__name__}: {exc}"
+            return
+        self._clear_page_surfaces()
+
+    def _clear_page_surfaces(self) -> None:
+        """Make the page's own containers transparent so the backdrop shows through."""
+        self.setProperty("ambient", "on")
+        for widget in (self, *self.findChildren(QtWidgets.QWidget)):
+            if widget.objectName() in ("HomeScreen", "HomeScroll",
+                                       "HomeScrollViewport", "HomeBands"):
+                widget.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground, True)
+                widget.setAutoFillBackground(False)
+                widget.setProperty("ambient", "on")
+                widget.style().unpolish(widget)
+                widget.style().polish(widget)
+
+    @property
+    def animated(self) -> bool:
+        """Whether a live backdrop is installed behind this page."""
+        return self._ambient is not None
 
     # ------------------------------------------------------------------- query
     def tile(self, key: str) -> AppTile:

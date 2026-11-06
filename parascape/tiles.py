@@ -126,6 +126,14 @@ QWidget#HomeBands {{
     background-color: {P["bg"]};
     border: none;
 }}
+/* With the animated backdrop on, the same containers go transparent: a backdrop
+   is only as visible as what sits above it, and these cover the whole page. The
+   opaque rule above is what applies when animation is off, so nothing reverts to
+   the near-white Base colour. */
+QWidget#HomeScreen[ambient="on"], QScrollArea#HomeScroll[ambient="on"],
+QWidget#HomeScrollViewport[ambient="on"], QWidget#HomeBands[ambient="on"] {{
+    background: transparent;
+}}
 /* The scrollbar, which otherwise renders as a bright slab against the page. */
 QScrollArea#HomeScroll QScrollBar:vertical {{
     background: transparent;
