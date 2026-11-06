@@ -207,3 +207,22 @@ def test_the_drop_module_opens_the_gene_list(window):
     go_home(window)
     assert open_module(window, "drop") == "gene list"
     assert window.home.pages.currentIndex() == window.home._home_page
+
+
+def test_the_dock_lists_home_and_every_module_and_opens_them(window):
+    """Einar: "there should also be a dock like there is in spaCR" (instruction 95)."""
+    from parascape import modules as MOD
+    from parascape.landing_install import go_home, landing_up
+    dock = window.landing.dock
+    assert dock is not None, "the dock failed to build"
+    keys = [row.key for row in dock._rows]
+    assert keys[0] == "home" and set(keys[1:]) == {m.key for m in MOD.MODULES}
+    go_home(window)
+    seen = []
+    window.landing.module_chosen.connect(lambda key: seen.append(key))
+    dock.nav_selected.emit("gene")
+    assert seen == ["gene"]
+    dock.nav_selected.emit("map")
+    assert window.landing.page == "Module", "the dock opens the Map module"
+    dock.nav_selected.emit("home")
+    assert landing_up(window) and window.landing.page != "Module"

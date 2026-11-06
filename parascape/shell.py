@@ -291,6 +291,10 @@ class ModuleShell(QtWidgets.QWidget):
                     expanded: bool = True) -> CollapsibleSection:
         """A foldable group in the Settings column."""
         section = CollapsibleSection(name, widget, expanded=expanded)
+        # The column keeps room for its widest group: with the dock beside it the splitter
+        # squeezed it until buttons were cut off.
+        self.settings_scroll.setMinimumWidth(
+            min(520, max(self.settings_scroll.minimumWidth(), widget.sizeHint().width() + 36)))
         # spaCR's header colours itself `palette(text)`, which over the landing's backdrop is the
         # dark default palette and left the headings near-invisible; the theme's own foreground.
         header = section._header

@@ -85,9 +85,15 @@ def _stop_watching_object_events(watched, watcher) -> bool:
 
 
 # ------------------------------------------------------------------ i18n
-def tr(text, /, language=None, **_kwargs) -> str:
-    """ParaScape is English only: the text itself."""
-    return str(text)
+def tr(text, /, language=None, **kwargs) -> str:
+    """ParaScape is English only: the text itself, with any named fields filled in."""
+    text = str(text)
+    if kwargs:
+        try:
+            return text.format(**kwargs)
+        except (KeyError, IndexError, ValueError):
+            return text
+    return text
 
 
 # ------------------------------------------------------------------ preferences
@@ -166,3 +172,97 @@ def field_ripple_for_widget(widget, edge=None, rect=None, strength=1.0) -> None:
         ripple(widget, edge=edge, rect=rect, strength=strength)
     except Exception:                                 # decoration must never break a fold
         pass
+
+
+# ------------------------------------------------------------------ for the dock (instruction 95)
+def _after(msec: int, owner, callback):
+    """Call `callback` once after `msec` ms unless `owner` is deleted first."""
+    if not isValid(owner):
+        return None
+    timer = QTimer(owner)
+    timer.setSingleShot(True)
+    timer.timeout.connect(callback)
+    timer.timeout.connect(timer.deleteLater)
+    timer.start(int(msec))
+    return timer
+
+
+def active_palette() -> dict:
+    """The colours of the ParaScape theme on screen."""
+    return _painting_palette()
+
+
+def make_transparent(*widgets) -> None:
+    """Stop `widgets` painting a background of their own (the app sheet gives plain containers
+    an opaque fill); a selector on the widget's own object name keeps children untouched."""
+    for widget in widgets:
+        if widget is None:
+            continue
+        name = widget.objectName() or f"transparent_{id(widget):x}"
+        widget.setObjectName(name)
+        widget.setAutoFillBackground(False)
+        rule = f"#{name} {{ background: transparent; }}"
+        if rule not in widget.styleSheet():
+            widget.setStyleSheet(widget.styleSheet() + "\n" + rule)
+
+
+class HoverDelay(QObject):
+    """Call back after the pointer rests on a widget (spaCR's tooltip policy, simplified)."""
+
+    DELAY_MS = 600
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self._timer = QTimer(self)
+        self._timer.setSingleShot(True)
+        self._timer.timeout.connect(self._fire)
+        self._widget = None
+        self._callback = None
+
+    def schedule(self, widget, callback) -> None:
+        self._widget, self._callback = widget, callback
+        self._timer.start(self.DELAY_MS)
+
+    def cancel(self) -> None:
+        self._timer.stop()
+        self._widget = self._callback = None
+
+    def cancel_for(self, widget) -> None:
+        if widget is self._widget:
+            self.cancel()
+
+    def _fire(self) -> None:
+        callback, self._callback = self._callback, None
+        if callback is not None:
+            callback()
+
+
+def scaled_px(base_px: int) -> int:
+    """No interface zoom in ParaScape: a size is its size."""
+    return max(1, int(round(base_px)))
+
+
+def _set_scaled_icon_size(widget, base_w: int, base_h=None, scale=None) -> None:
+    from PySide6.QtCore import QSize
+    widget.setIconSize(QSize(int(base_w), int(base_h or base_w)))
+
+
+def pane_surface(role: str = "surface_alt", theme=None, opacity=None) -> str:
+    """A container colour at the container opacity (View ▸ Container opacity)."""
+    from ..backdrops import _compat as AC
+    from .. import theme as TH
+    palette = _painting_palette()
+    alpha = AC.get_pane_opacity() if opacity is None else float(opacity)
+    return TH.rgba(palette.get(role, palette["surface"]), alpha)
+
+
+def get_dock_width() -> int:
+    """The dock width the user dragged to, or 0 for "fit the longest name"."""
+    try:
+        return int(_settings().value("layout/dock_width", 0))
+    except (TypeError, ValueError):
+        return 0
+
+
+def set_dock_width(width: int) -> None:
+    _settings().setValue("layout/dock_width", int(width))

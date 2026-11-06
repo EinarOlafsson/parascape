@@ -19,7 +19,7 @@ one picture.
 """
 from __future__ import annotations
 
-from PySide6 import QtCore, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import theme as TH
 from .home import HomeScreen
@@ -50,7 +50,20 @@ class Landing(QtWidgets.QWidget):
                            + f"QWidget#Landing {{ background-color: {palette['bg']}; }}"
                            + "QWidget#Landing[ambient=\"on\"] { background: transparent; }")
 
-        col = QtWidgets.QVBoxLayout(self)
+        # spaCR's dock down the left (instruction 95): Home, then every module under its
+        # band, on Home and beside every module shell alike. Folds against its edge.
+        row = QtWidgets.QHBoxLayout(self)
+        row.setContentsMargins(0, 0, 0, 0)
+        row.setSpacing(0)
+        self.dock, self.dock_edge = self._build_dock()
+        if self.dock is not None:
+            row.addWidget(self.dock)
+            row.addWidget(self.dock_edge)
+        body = QtWidgets.QWidget()
+        body.setObjectName("LandingBody")
+        body.setStyleSheet("QWidget#LandingBody { background: transparent; }")
+        row.addWidget(body, 1)
+        col = QtWidgets.QVBoxLayout(body)
         col.setContentsMargins(0, 0, 0, 0)
         col.setSpacing(0)
 
@@ -95,6 +108,48 @@ class Landing(QtWidgets.QWidget):
                 button.hide()
             start = "Modules"
         self.show_page(start)
+
+    # -------------------------------------------------------------------- dock
+    def _build_dock(self):
+        """spaCR's dock, filled from `modules.py`. (None, None) if it cannot be built -- the
+        landing must open without it."""
+        try:
+            from . import modules as MOD
+            from .navigator import Suggestion, icon_path
+            from .panes.dock import Dock, DockEdge
+        except Exception:
+            return None, None
+        rows = [("home", "Home", "the Navigator and the module tiles", "Start")]
+        rows += [(m.key, m.name, m.note, m.band) for m in MOD.MODULES]
+        icons = {}
+
+        def icon_for(key):
+            if key == "home":
+                return None
+            if key not in icons:
+                icons[key] = QtGui.QIcon(icon_path(Suggestion("module", key, key)))
+            return icons[key]
+        try:
+            dock = Dock(rows, icon_for=icon_for)
+            edge = DockEdge(dock)
+        except Exception:
+            return None, None
+        # spaCR explains a row in a strip along the window's foot rather than a tooltip;
+        # ParaScape has no strip, and every control here says what it does on hover.
+        notes = {key: (name, note) for key, name, note, _band in rows}
+        for row in dock._rows:
+            name, note = notes.get(row.key, (row.key, ""))
+            row.setToolTip(f"{name}: {note}." if note else name)
+        dock.nav_selected.connect(self._from_dock)
+        dock.setToolTip("Every module. Click one to open it; drag the edge to resize, click the "
+                        "edge to hide the dock.")
+        return dock, edge
+
+    def _from_dock(self, key: str) -> None:
+        if key == "home":
+            self.show_page(self.home_page())
+        else:
+            self.module_chosen.emit(key)
 
     # ------------------------------------------------------------------- pages
     def navigator_enabled(self) -> bool:
