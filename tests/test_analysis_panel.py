@@ -439,7 +439,7 @@ def test_clustering_reports_the_count_and_how_much_is_unassigned(panel, sync, mo
     monkeypatch.setattr(C, "cluster", lambda Y, **k: labels)
     panel.run_cluster()
     assert panel.labels is labels
-    assert any("2 clusters" in m and "17% unassigned" in m for m in sync)
+    assert any("2 groups" in m and "17% of genes in none" in m for m in sync)
 
 
 def test_the_battery_before_clustering_says_so(panel, sync):

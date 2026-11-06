@@ -5,6 +5,7 @@ actions section. There is a live section to live test parameters and a hyperpara
 search ... spaCR containers are also collapsible so after setting the settings you can
 give more space to the content."
 """
+import numpy as np
 import pytest
 from PySide6 import QtCore, QtWidgets
 
@@ -189,3 +190,45 @@ def test_the_console_is_in_the_module_while_it_is_up_and_back_after(window):
     finally:
         window.map_module.module.live.setChecked(False)
         window.hide()
+
+
+def test_groups_are_found_kept_and_read_against_a_label(window, qtbot):
+    """Einar: "I need to be able to cluster, and see if I can learn any labels based on my
+    clustering, and any cluster's precision and recall with a label"."""
+    module = window.map_module.module
+    window.panel.mcs.setValue(40)
+    module.find_groups()
+    qtbot.waitUntil(lambda: module.groups is not None, timeout=120000)
+    assert len(module.groups) == window.n
+    assert module.colour_box.currentText().startswith("clustering: "), "the map shows the groups"
+    assert module.group_table.rowCount() == len(module._group_rows) > 0
+    assert module.label_table.rowCount() > 0
+    assert "by chance" in module.groups_summary.text()
+    assert module.label_name() == module.compare_box.currentText(), \
+        "coloured by groups, neighbours are read by the compared label"
+    module._group_clicked(0, 0)
+    group = module._group_rows[0].group
+    assert set(module.selected) == set(np.flatnonzero(module.groups == group).tolist())
+
+
+def test_dropdowns_drop_below_and_scroll(window):
+    module = window.map_module.module
+    for box in (module.colour_box, module.compare_box):
+        assert "combobox-popup: 0" in box.styleSheet()
+        assert box.maxVisibleItems() >= 15
+
+
+def test_the_old_clusters_tab_points_to_the_module(window):
+    tabs = window.panel.findChild(QtWidgets.QTabWidget)
+    index = next(i for i in range(tabs.count()) if tabs.tabText(i) == "3 · Clusters")
+    texts = [b.text() for b in tabs.widget(index).findChildren(QtWidgets.QPushButton)]
+    assert "Open the Map module" in texts
+
+
+def test_a_deleted_stop_button_does_not_break_starting_a_job(window):
+    """The Map tab's stop button was deleted with its page; every job start then raised
+    'Internal C++ object already deleted'."""
+    window.panel._set_stoppable(True)
+    window.panel._set_stoppable(False)
+    from shiboken6 import isValid
+    assert all(isValid(b) for b in window.panel._stop_btns)

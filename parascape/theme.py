@@ -317,9 +317,12 @@ def stylesheet(theme: str = "dark", container_opacity: float = 1.0,
     BODY = max(int(round(13 * text_scale)), 6)
     SMALL = max(int(round(11 * text_scale)), 5)
     MENU = max(int(round(12 * text_scale)), 5)
-    MENU_GLASS = glass(theme, "menu", translucent)
+    # Menus and drop-down lists are SOLID (Einar, 2026-11-06: "dropdowns and right click menus
+    # should not be transparent"): text over whatever happens to be behind a menu is harder to
+    # read than the glass is worth. Tooltips keep the glass.
+    MENU_GLASS = glass(theme, "menu", False)
     TIP_GLASS = glass(theme, "tooltip", translucent)
-    POPUP_GLASS = glass(theme, "popup", translucent)
+    POPUP_GLASS = glass(theme, "popup", False)
     PANE_GLASS = glass(theme, "pane", True)       # inside a window: always composited by Qt itself
     BAR_GLASS = glass(theme, "bar", True)
     RIM = rim(theme, translucent)

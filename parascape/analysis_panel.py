@@ -1971,7 +1971,14 @@ class AnalysisPanel(QtWidgets.QWidget):
         return len(asked)
 
     def _set_stoppable(self, on: bool) -> None:
-        """Enable or disable all analysis stop buttons together."""
+        """Enable or disable all analysis stop buttons together.
+
+        A stop button can be deleted with the page it was on -- the Map tab's went when its
+        controls moved into the Map module -- and touching it then raised "Internal C++ object
+        already deleted" on every job start and finish. Dead buttons are dropped here.
+        """
+        from shiboken6 import isValid
+        self._stop_btns = [b for b in self._stop_btns if isValid(b)]
         for b in self._stop_btns:
             b.setEnabled(on)
 
@@ -2291,8 +2298,8 @@ class AnalysisPanel(QtWidgets.QWidget):
         # Expanded to the node table before it leaves: a clustering of a map built over a subsample
         # covers only that subsample, and the window colors all 8,140 points by it.
         self._publish_clusters(labels)
-        self.status.emit(f"{k} clusters, {100 * (labels == NOISE).mean():.0f}% unassigned "
-                         f"-- color the map by 'clusters' to see them")
+        self.status.emit(f"{k} groups, {100 * (labels == NOISE).mean():.0f}% of genes in none "
+                         f"-- the map is coloured by them")
 
     def run_battery(self):
         """Test what the clusters correspond to, using only features the map never saw."""

@@ -145,3 +145,128 @@ def label_agreement(xyz, labels, k: int = K) -> tuple:
     """(accuracy, chance) of `agreement` -- the score a map gets for one label."""
     result = agreement(xyz, labels, k=k)
     return (float("nan"), float("nan")) if result is None else (result.accuracy, result.chance)
+
+
+# ---------------------------------------------------------------------- groups (clusters)
+@dataclass
+class GroupRow:
+    """One cluster read against a label: its best-matching value, and how well it matches."""
+
+    group: int
+    size: int
+    labelled: int             # members with a known label
+    label: str                # the commonest known label among them ("" when none)
+    hits: int                 # members with that label
+    precision: float          # hits / labelled: how pure the group is for that label
+    recall: float             # hits / all genes with that label: how much of the label it holds
+    f1: float
+    unknown: int              # members whose label is unknown: the candidates
+
+
+@dataclass
+class LabelRow:
+    """One label value and the group that captures it best."""
+
+    label: str
+    genes: int                # genes with this label
+    group: int                # best group by F1, -1 when no group holds any
+    precision: float
+    recall: float
+    f1: float
+
+
+@dataclass
+class Learned:
+    """Could the label be learned from the groups? Leave-one-out within each group."""
+
+    accuracy: float           # a gene's group-mates name its label (majority, itself excluded)
+    chance: float             # the commonest label's share
+    called: int               # labelled genes that got a call (in a group with other labelled members)
+    labelled: int             # labelled genes in all
+    candidates: int           # unknown genes in groups whose precision clears CANDIDATE_PRECISION
+
+
+#: A group must be at least this pure for its unknown members to be counted as candidates.
+CANDIDATE_PRECISION = 0.6
+#: ...and hold at least this many genes of known label, so purity is not one gene.
+CANDIDATE_MIN_LABELLED = 5
+
+
+def _f1(p: float, r: float) -> float:
+    return 0.0 if p + r == 0 else 2 * p * r / (p + r)
+
+
+def group_rows(groups, labels, noise: int = -1) -> list:
+    """Every group against the label, best match first (by F1)."""
+    groups = np.asarray(groups)
+    has, values = _labelled(labels)
+    totals = Counter(values[has])
+    rows = []
+    for g in sorted(set(groups[groups != noise].tolist())):
+        inside = groups == g
+        known = values[inside & has]
+        unknown = int((inside & ~has).sum())
+        if not len(known):
+            rows.append(GroupRow(int(g), int(inside.sum()), 0, "", 0, float("nan"),
+                                 float("nan"), 0.0, unknown))
+            continue
+        label, hits = Counter(known).most_common(1)[0]
+        p, r = hits / len(known), hits / totals[label]
+        rows.append(GroupRow(int(g), int(inside.sum()), int(len(known)), str(label), int(hits),
+                             float(p), float(r), float(_f1(p, r)), unknown))
+    rows.sort(key=lambda row: (-row.f1, -row.size))
+    return rows
+
+
+def label_rows(groups, labels, noise: int = -1) -> list:
+    """Every label value and the group that captures it best (by F1), best first."""
+    groups = np.asarray(groups)
+    has, values = _labelled(labels)
+    out = []
+    for label, n in Counter(values[has]).items():
+        mine = has & (values == label)
+        best = (-1, 0.0, 0.0, 0.0)
+        for g in set(groups[mine & (groups != noise)].tolist()):
+            inside = (groups == g) & has
+            hits = int((inside & mine).sum())
+            p, r = hits / int(inside.sum()), hits / n
+            f = _f1(p, r)
+            if f > best[3]:
+                best = (int(g), p, r, f)
+        out.append(LabelRow(str(label), int(n), *best[:1], float(best[1]), float(best[2]),
+                            float(best[3])))
+    out.sort(key=lambda row: (-row.f1, -row.genes))
+    return out
+
+
+def learn_from_groups(groups, labels, noise: int = -1) -> Learned | None:
+    """For each gene of known label in a group, do its group-mates (itself excluded) name it?
+
+    The honest version of "can I learn this label from my clustering": a gene is never its
+    own evidence, genes left unclustered get no call, and the result is set against the
+    commonest label's share.
+    """
+    groups = np.asarray(groups)
+    has, values = _labelled(labels)
+    if int(has.sum()) == 0:
+        return None
+    right = called = 0
+    for g in set(groups[groups != noise].tolist()):
+        members = np.flatnonzero((groups == g) & has)
+        if len(members) < 2:
+            continue
+        counts = Counter(values[members])
+        for i in members:
+            counts[values[i]] -= 1
+            label, n = counts.most_common(1)[0]
+            counts[values[i]] += 1
+            if n == 0:
+                continue
+            called += 1
+            right += int(label == values[i])
+    commonest = Counter(values[has]).most_common(1)[0][1] / int(has.sum())
+    candidates = sum(row.unknown for row in group_rows(groups, labels, noise)
+                     if row.labelled >= CANDIDATE_MIN_LABELLED
+                     and row.precision >= CANDIDATE_PRECISION)
+    return Learned(right / called if called else float("nan"), float(commonest), int(called),
+                   int(has.sum()), int(candidates))

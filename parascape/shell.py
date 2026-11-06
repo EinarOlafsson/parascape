@@ -91,9 +91,41 @@ def shell_qss(palette: dict, opacity: float | None = None) -> str:
     {S} QPushButton[primary="true"] {{ background: {p['accent']}; border-color: {p['accent']};
         color: {p['bg']}; font-weight: 600; }}
     {S} QPushButton[primary="true"]:hover {{ background: {p['accent_hi']}; }}
+    {S} QComboBox {{ combobox-popup: 0; }}
+    {S} QComboBox QAbstractItemView {{ background: {TH.glass(theme_name(), "popup", False)};
+        color: {p['fg']}; border: 1px solid {p['border']}; outline: none;
+        selection-background-color: {p['accent']}; selection-color: {p['bg']}; }}
+    QComboBoxPrivateContainer {{ background: {TH.glass(theme_name(), "popup", False)};
+        border: 1px solid {p['border']}; }}
+    {S} QComboBox QAbstractItemView QScrollBar:vertical {{ background: transparent; width: 10px; }}
+    {S} QComboBox QAbstractItemView QScrollBar::handle:vertical {{ background: {p['border']};
+        border-radius: 4px; min-height: 24px; }}
+    {S} QMenu {{ background: {TH.glass(theme_name(), "menu", False)}; color: {p['fg']};
+        border: 1px solid {p['border']}; }}
+    {S} QMenu::item:selected {{ background: {p['accent']}; color: {p['bg']}; }}
     {S} QHeaderView::section {{ background: {TH.rgba(p['surface'], a)}; color: {p['fg_dim']};
         border: none; padding: 4px; }}
     """
+
+
+def theme_name() -> str:
+    """The ParaScape theme on screen, as the backdrop shim records it."""
+    try:
+        from .backdrops import _compat as AC
+        return AC._painting_theme()
+    except Exception:
+        return "dark"
+
+
+def solid_dropdown(combo: QtWidgets.QComboBox, rows: int = 18) -> QtWidgets.QComboBox:
+    """A combo box whose list drops BELOW the field, solid and scrollable (Einar's request),
+    rather than the style's list centred on the current item over the field."""
+    combo.setStyleSheet("QComboBox { combobox-popup: 0; }")
+    combo.setMaxVisibleItems(rows)
+    view = combo.view()
+    view.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+    view.setAutoFillBackground(True)
+    return combo
 
 
 def install_field_fade() -> None:

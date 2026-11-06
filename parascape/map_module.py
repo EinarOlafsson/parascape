@@ -33,15 +33,16 @@ from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import map_reading as MR
 from . import theme as TH
-from .shell import ModuleShell
+from .shell import ModuleShell, solid_dropdown
 
 #: Genes in a preview of new settings: enough for the structure to show, few enough that
 #: a projection takes a second or two once umap has compiled.
 PREVIEW_GENES = 1500
 #: How long the settings must rest before the preview is recomputed, in ms.
 PREVIEW_DEBOUNCE_MS = 600
-#: Where the Map tab used to be.
+#: Where the Map and Clusters tabs used to be.
 MAP_TAB = "2 · Map"
+CLUSTERS_TAB = "3 · Clusters"
 #: Neighbours listed by name under a single gene.
 LISTED = 10
 
@@ -313,7 +314,10 @@ class MapModule(QtCore.QObject):
         app = QtWidgets.QApplication.instance()
         if app is not None:
             app.aboutToQuit.connect(self.stop)
-        _replace_tab(self.panel, window)
+        _replace_tab(self.panel, window, MAP_TAB)
+        _replace_tab(self.panel, window, CLUSTERS_TAB)
+        if getattr(window, "cluster_labels", None) is not None:
+            self._groups_from_window()
         self.show_current()
 
     # ------------------------------------------------------------------ the left column
@@ -356,6 +360,7 @@ class MapModule(QtCore.QObject):
             "What the colours mean, and which label your genes' neighbours are read by. The "
             "same choice as 'color by' in the find panel."))
         self.colour_box.addItems(window.color_sources())
+        solid_dropdown(self.colour_box)
         self.colour_box.setCurrentText(window.category_box.currentText())
         self.colour_box.currentTextChanged.connect(self._colour_chosen)
         cl.addWidget(self.colour_box)
@@ -404,6 +409,9 @@ class MapModule(QtCore.QObject):
                                        ("neighbours considered", panel.nn_grid),
                                        ("spacing", panel.md_grid),
                                        ("cluster sizes", panel.mcs_grid)]))
+        al.addWidget(_muted("How groups are found:"))
+        al.addWidget(_moved(advanced, [("grouping method", panel.algo),
+                                       ("neighbourhood radius (dbscan only)", panel.eps)]))
         tree_button = QtWidgets.QPushButton("Choose individual measurements…")
         tree_button.setToolTip("The full measurement tree, block by block (analysis ▸ 1 · Data).")
         tree_button.clicked.connect(lambda: _open_data_tab(window))
@@ -459,6 +467,8 @@ class MapModule(QtCore.QObject):
         self.reading.anchorClicked.connect(self._link)
         shell.add_section("Your genes and their neighbours", self.reading, extent=210, stretch=2)
 
+        self._build_groups()
+
         best = QtWidgets.QWidget(shell)
         bl = QtWidgets.QVBoxLayout(best)
         bl.setContentsMargins(8, 4, 8, 8)
@@ -498,10 +508,213 @@ class MapModule(QtCore.QObject):
                      folded=True)
         self._update_best_note()
 
+    # ------------------------------------------------------------------ groups
+    def _build_groups(self) -> None:
+        """Groups (clusters) of the map, read against a label: can the label be learned from
+        them, and how pure and how complete is each group for it (precision and recall)."""
+        shell, panel, window = self.shell, self.panel, self.window
+        box = QtWidgets.QWidget(shell)
+        v = QtWidgets.QVBoxLayout(box)
+        v.setContentsMargins(8, 4, 8, 8)
+        row = QtWidgets.QHBoxLayout()
+        find = QtWidgets.QPushButton("Find groups")
+        find.setProperty("primary", True)
+        find.setToolTip(TH.tip("Find groups of genes that sit together on the current map "
+                               "(HDBSCAN by default; see Advanced). The map is coloured by them "
+                               "and they are kept, so you can come back to them."))
+        find.clicked.connect(self.find_groups)
+        row.addWidget(find)
+        row.addWidget(QtWidgets.QLabel("smallest group"))
+        panel.mcs.setToolTip(TH.tip("The fewest genes a group may have. Smaller finds more, "
+                                    "tighter groups and leaves fewer genes out."))
+        row.addWidget(panel.mcs)
+        row.addWidget(QtWidgets.QLabel("compare with"))
+        self.compare_box = QtWidgets.QComboBox()
+        self.compare_box.setToolTip(TH.tip("The label the groups are read against: which value "
+                                           "each group holds, how purely, and how much of it."))
+        self.compare_box.addItems([s for s in window.color_sources()
+                                   if not s.startswith(_run_prefix())])
+        solid_dropdown(self.compare_box)
+        if "compartment" in [self.compare_box.itemText(i) for i in range(self.compare_box.count())]:
+            self.compare_box.setCurrentText("compartment")
+        self.compare_box.currentTextChanged.connect(lambda *_: (self.read_groups(), self.read()))
+        row.addWidget(self.compare_box, 1)
+        sizes = QtWidgets.QPushButton("Try group sizes")
+        sizes.setToolTip(TH.tip("Group the map at a range of smallest-group sizes and score "
+                                "each grouping; the results are under 'Group sizes tried'."))
+        sizes.clicked.connect(self._try_group_sizes)
+        row.addWidget(sizes)
+        v.addLayout(row)
+        self.groups_summary = QtWidgets.QLabel("Find groups to read them against a label.")
+        self.groups_summary.setObjectName("ShellMuted")
+        self.groups_summary.setWordWrap(True)
+        self.groups_summary.setTextFormat(QtCore.Qt.TextFormat.RichText)
+        v.addWidget(self.groups_summary)
+        self.group_tabs = QtWidgets.QTabWidget()
+        self.group_table = self._table(["group", "genes", "holds mostly", "precision", "recall",
+                                        "F1", "unknown in it"])
+        self.group_table.setToolTip(TH.tip(
+            "One row per group. Precision: of its genes with a known label, the share that have "
+            "the label it holds mostly. Recall: of all genes with that label, the share inside "
+            "this group. A group can be pure and small (high precision, low recall) or broad and "
+            "mixed. 'Unknown in it' are the genes a pure group suggests a label for. Click a row "
+            "to put the group on the map."))
+        self.group_table.cellClicked.connect(self._group_clicked)
+        self.label_table = self._table(["label", "genes", "best group", "precision", "recall",
+                                        "F1"])
+        self.label_table.setToolTip(TH.tip(
+            "One row per label value: the group that captures it best, and how well. A label "
+            "with high precision AND recall is one the grouping has learned. Click a row to put "
+            "that group on the map."))
+        self.label_table.cellClicked.connect(self._label_clicked)
+        self.group_tabs.addTab(self.group_table, "Groups")
+        self.group_tabs.addTab(self.label_table, "Labels")
+        panel.cluster_table.setMinimumHeight(60)
+        self.group_tabs.addTab(panel.cluster_table, "Group sizes tried")
+        v.addWidget(self.group_tabs, 1)
+        self.groups = None
+        self._group_rows: list = []
+        self._label_rows: list = []
+        shell.add_section("Groups", box, extent=280, stretch=2)
+        panel.clusters_ready.connect(lambda *_: self._groups_from_window())
+
+    @staticmethod
+    def _table(headers) -> QtWidgets.QTableWidget:
+        table = QtWidgets.QTableWidget(0, len(headers))
+        table.setHorizontalHeaderLabels(headers)
+        table.horizontalHeader().setStretchLastSection(True)
+        table.verticalHeader().hide()
+        table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
+        table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
+        table.setSortingEnabled(False)
+        table.setMinimumHeight(80)
+        return table
+
+    def _map_for_panel(self) -> bool:
+        """Hand the panel the map on screen when it has none of its own (one loaded at start)."""
+        w, panel = self.window, self.panel
+        xyz = getattr(w, "xyz", None)
+        if xyz is None:
+            self.shell.say("No map yet: Build this map first.")
+            return False
+        if panel.coords is None:
+            placed = getattr(w, "placed", None)
+            placed = np.ones(w.n, bool) if placed is None else np.asarray(placed, bool)
+            panel.coords = np.asarray(xyz)[placed]
+            panel.rows = placed
+        return True
+
+    def find_groups(self) -> None:
+        """Group the map on screen, keep the grouping, colour by it and read it."""
+        if not self._map_for_panel():
+            return
+        self.groups_summary.setText("Finding groups…")
+        self.panel.run_cluster()
+
+    def _groups_from_window(self) -> None:
+        """The window has kept and coloured a new grouping: read it."""
+        labels = getattr(self.window, "cluster_labels", None)
+        if labels is None:
+            return
+        self.groups = np.asarray(labels)
+        self.read_groups()
+        if self.mode == "map":
+            self.show_current()
+
+    def _try_group_sizes(self) -> None:
+        if self._map_for_panel():
+            self.group_tabs.setCurrentIndex(2)
+            self.panel.run_cluster_walk()
+
+    def _values_of(self, source: str) -> np.ndarray:
+        """Any colour source as one string per gene, read the way the window reads it."""
+        w = self.window
+        old = w.category
+        w.category = source
+        try:
+            return w.category_values().astype(str).to_numpy()
+        finally:
+            w.category = old
+
+    def read_groups(self) -> None:
+        """Fill the summary and both tables for the current grouping and comparison label."""
+        if self.groups is None or len(self.groups) != self.window.n:
+            return
+        name = self.compare_box.currentText()
+        labels = self._values_of(name)
+        self._group_rows = MR.group_rows(self.groups, labels)
+        self._label_rows = MR.label_rows(self.groups, labels)
+        learned = MR.learn_from_groups(self.groups, labels)
+        n_groups = len(self._group_rows)
+        outside = int((self.groups < 0).sum())
+        text = (f"<b>{n_groups}</b> groups; {outside:,} genes in none. ")
+        if learned is not None and learned.called:
+            learned_well = [r for r in self._label_rows if r.f1 >= 0.5]
+            text += (f"Read against <b>{escape(name)}</b>: a gene's group-mates name its "
+                     f"{escape(name)} <b>{learned.accuracy:.0%}</b> of the time "
+                     f"({learned.called:,} of {learned.labelled:,} genes of known {escape(name)} "
+                     f"are in a group with others; {learned.chance:.0%} by chance). ")
+            if learned_well:
+                text += ("Learned well (F1 ≥ 0.5): " + ", ".join(
+                    f"{escape(r.label)} (group {r.group})" for r in learned_well[:6]) + ". ")
+            else:
+                text += "No label is captured by one group with F1 ≥ 0.5. "
+            if learned.candidates:
+                text += (f"<b>{learned.candidates:,}</b> genes of unknown {escape(name)} sit in "
+                         f"groups at least {MR.CANDIDATE_PRECISION:.0%} pure: candidates.")
+        self.groups_summary.setText(text)
+        self._fill(self.group_table, [
+            (r.group, r.size, r.label or "—", r.precision, r.recall, r.f1, r.unknown)
+            for r in self._group_rows])
+        self._fill(self.label_table, [
+            (r.label, r.genes, r.group if r.group >= 0 else "—", r.precision, r.recall, r.f1)
+            for r in self._label_rows])
+
+    @staticmethod
+    def _fill(table, rows) -> None:
+        table.setRowCount(len(rows))
+        for i, row in enumerate(rows):
+            for j, value in enumerate(row):
+                if isinstance(value, float):
+                    text = "—" if value != value else f"{value:.0%}"
+                else:
+                    text = f"{value:,}" if isinstance(value, int) else str(value)
+                item = QtWidgets.QTableWidgetItem(text)
+                if isinstance(value, (int, float)):
+                    item.setTextAlignment(QtCore.Qt.AlignmentFlag.AlignRight
+                                          | QtCore.Qt.AlignmentFlag.AlignVCenter)
+                table.setItem(i, j, item)
+        table.resizeColumnsToContents()
+
+    def _show_group(self, group: int) -> None:
+        if self.groups is None or group < 0:
+            return
+        self.select(np.flatnonzero(self.groups == group).tolist(), f"group {group}")
+
+    def _group_clicked(self, row: int, _col: int) -> None:
+        if 0 <= row < len(self._group_rows):
+            self._show_group(self._group_rows[row].group)
+
+    def _label_clicked(self, row: int, _col: int) -> None:
+        if 0 <= row < len(self._label_rows):
+            self._show_group(self._label_rows[row].group)
+
     # ------------------------------------------------------------------ the map shown
+    def label_name(self) -> str:
+        """The label genes are read by: the colouring, unless the map is coloured by a
+        grouping -- reading a gene's neighbours by the group they share says nothing -- in
+        which case the label the groups are compared with."""
+        colour = self.colour_box.currentText()
+        if colour.startswith(_run_prefix()) and hasattr(self, "compare_box"):
+            return self.compare_box.currentText()
+        return colour
+
     def labels(self):
-        """The current colour-by label of every gene, as strings."""
-        return self.window.category_values().astype(str).to_numpy()
+        """The reading label of every gene, as strings."""
+        name = self.label_name()
+        if name == self.window.category_box.currentText():
+            return self.window.category_values().astype(str).to_numpy()
+        return self._values_of(name)
 
     def show_current(self) -> None:
         """Show the map as built now, coloured as the window colours it."""
@@ -554,6 +767,12 @@ class MapModule(QtCore.QObject):
     def _colour_changed_elsewhere(self, text: str) -> None:
         if self.colour_box.currentText() != text:
             self.colour_box.blockSignals(True)
+            items = [self.colour_box.itemText(i) for i in range(self.colour_box.count())]
+            sources = self.window.color_sources()
+            if text not in items or items != sources:
+                # A grouping just kept (or renamed) is a new colour source.
+                self.colour_box.clear()
+                self.colour_box.addItems(sources)
             self.colour_box.setCurrentText(text)
             self.colour_box.blockSignals(False)
             self._update_best_note()
@@ -651,7 +870,7 @@ class MapModule(QtCore.QObject):
     def agreement(self):
         """How often neighbours name a gene's label on the current map (cached)."""
         w = self.window
-        key = (id(getattr(w, "xyz", None)), self.colour_box.currentText())
+        key = (id(getattr(w, "xyz", None)), self.label_name())
         if key != self._agreement_key or self._agreement is None:
             xyz = getattr(w, "xyz", None)
             self._agreement = (None if xyz is None
@@ -662,7 +881,7 @@ class MapModule(QtCore.QObject):
     def read(self) -> None:
         """Write the neighbourhood of the selection, and how far to trust it."""
         w = self.window
-        label_name = self.colour_box.currentText()
+        label_name = self.label_name()
         if not self.selected:
             agree = self.agreement()
             text = ("<p>Put a gene or a list on the map -- type it, choose a file, drop one "
@@ -897,16 +1116,25 @@ def build(window) -> ModuleShell | None:
     return MapModule(window).shell
 
 
-def _replace_tab(panel, window) -> None:
-    """Put a way to the module where the Map tab's controls were."""
+def _run_prefix() -> str:
+    try:
+        from .app import RUN_PREFIX
+        return RUN_PREFIX
+    except Exception:
+        return "run: "
+
+
+def _replace_tab(panel, window, title: str = MAP_TAB) -> None:
+    """Put a way to the module where a tab's controls were."""
     tabs = panel.findChild(QtWidgets.QTabWidget)
     if tabs is None:
         return
     for i in range(tabs.count()):
-        if tabs.tabText(i) == MAP_TAB:
+        if tabs.tabText(i) == title:
             page = QtWidgets.QWidget()
             v = QtWidgets.QVBoxLayout(page)
-            note = QtWidgets.QLabel("Building and reading the map is now the Map module.")
+            note = QtWidgets.QLabel("Building the map, reading it and finding groups in it is "
+                                    "now the Map module.")
             note.setWordWrap(True)
             go = QtWidgets.QPushButton("Open the Map module")
             go.setProperty("primary", True)

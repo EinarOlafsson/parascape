@@ -62,3 +62,43 @@ def test_a_map_that_mixes_labels_scores_near_chance():
 def test_too_few_labelled_genes_gives_no_number():
     xyz, labels = _two_clusters()
     assert MR.agreement(xyz[:5], labels[:5]) is None
+
+
+# ------------------------------------------------------------------ groups
+def _groups():
+    # group 0: 8 dense granule + 2 rhoptry + 3 unknown; group 1: 10 rhoptry; noise: 5 dense granule
+    labels = (["dense granule"] * 8 + ["rhoptry"] * 2 + [""] * 3
+              + ["rhoptry"] * 10 + ["dense granule"] * 5)
+    groups = [0] * 13 + [1] * 10 + [-1] * 5
+    return groups, labels
+
+
+def test_a_group_is_read_by_precision_and_recall():
+    groups, labels = _groups()
+    rows = {r.group: r for r in MR.group_rows(groups, labels)}
+    g0 = rows[0]
+    assert (g0.label, g0.hits, g0.labelled, g0.unknown) == ("dense granule", 8, 10, 3)
+    assert g0.precision == 0.8 and abs(g0.recall - 8 / 13) < 1e-9
+    g1 = rows[1]
+    assert g1.label == "rhoptry" and g1.precision == 1.0 and abs(g1.recall - 10 / 12) < 1e-9
+
+
+def test_each_label_names_its_best_group():
+    groups, labels = _groups()
+    rows = {r.label: r for r in MR.label_rows(groups, labels)}
+    assert rows["rhoptry"].group == 1 and rows["dense granule"].group == 0
+
+
+def test_learning_leaves_each_gene_out_and_skips_the_unclustered():
+    groups, labels = _groups()
+    learned = MR.learn_from_groups(groups, labels)
+    # group 0: 8 dense granules called right, 2 rhoptry called wrong; group 1: 10 right
+    assert learned.called == 20 and abs(learned.accuracy - 18 / 20) < 1e-9
+    assert learned.labelled == 25 and learned.chance == 13 / 25
+    assert learned.candidates == 3, "group 0 is 80% pure with 10 known, so its 3 unknowns count"
+
+
+def test_a_group_of_unknowns_is_kept_but_not_scored():
+    rows = MR.group_rows([0, 0, 1, 1], ["", "", "a", "a"])
+    unknown = next(r for r in rows if r.group == 0)
+    assert unknown.labelled == 0 and unknown.unknown == 2 and unknown.label == ""
