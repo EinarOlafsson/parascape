@@ -223,6 +223,8 @@ def enter_landing(window) -> None:
     """Cover the window with the landing. Nothing underneath changes."""
     landing = window.landing
     fit_landing(window)
+    # Einar: "navigator should be reset every time I go back to it".
+    landing.navigator.reset()
     landing.show()
     landing.raise_()
     if landing.page == "Navigator":

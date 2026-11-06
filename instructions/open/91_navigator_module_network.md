@@ -1,6 +1,13 @@
 # 91 · Navigator: one click shows what comes next, a second click opens
 
-**Status: open (requested 2026-11-06).** Einar: "I want the network if possible like in spaCR of what is
+**Status: built 2026-11-06, waiting on Einar.** One click on a module shows it with what it leads to
+(`modules.DOWNSTREAM`, at most four per step, edges drawn, the clicked path highlighted); a click on a next
+step shows what follows it; a second click on a highlighted module opens it; Back / Escape return to the
+results. "map" now gives 5 cards (Map, 7 genes, a question, 4 methods, 7 settings and panels) instead of 24;
+a group opens to its members. The Navigator is emptied every time Home is shown. Tests in
+`tests/test_navigator.py`.
+
+Requested 2026-11-06. Einar: "I want the network if possible like in spaCR of what is
 downstream of map. And a second click to open the module. Also there are way too many options when I type
 map. I'm sure some of them can be consolidated for navigator ... navigator should be reset every time I go
 back to it."

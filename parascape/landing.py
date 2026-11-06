@@ -127,6 +127,7 @@ class Landing(QtWidgets.QWidget):
         for button in self._switch.buttons():
             button.setVisible(on)
         if self.stack.currentWidget() is self.navigator:
+            self.navigator.reset()
             self.navigator.field.setFocus()
 
     def show_module(self, shell: QtWidgets.QWidget) -> None:

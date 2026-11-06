@@ -49,6 +49,9 @@ GROW_MS = 220                 # the cards grow into place, as spaCR's do
 GROW_STAGGER_MS = 35
 DETAILS_H = 150
 MAX_CARDS = 24
+FLOW_SIDE = 170               # a next-step node in the module network; the root keeps CARD_SIDE
+FLOW_GAP_X = 110              # room between columns, for the edges
+FLOW_GAP_Y = 22
 
 
 @dataclass(frozen=True)
@@ -68,6 +71,7 @@ class Suggestion:
     title: str
     subtitle: str = ""
     detail: str = ""
+    items: tuple = ()             # a ``group`` card's members
 
 
 #: The word shown on a card for each kind, so a gene and a dataset with similar
@@ -77,8 +81,21 @@ KIND_WORD = {"module": "Module", "gene": "Gene", "question": "Question",
              "guide": "Guide", "node": "Card"}
 
 
-def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> list:
-    """Everything the field should offer for `text`, best first.
+#: How a group card names its members, singular and plural.
+GROUP_WORDS = {"gene": ("gene", "genes"), "question": ("question", "questions"),
+               "strategy": ("method", "methods"), "dataset": ("dataset", "datasets"),
+               "panel": ("setting or panel", "settings and panels"),
+               "guide": ("guide page", "guide pages"), "node": ("card", "cards")}
+#: The order groups appear in, after the modules.
+GROUP_ORDER = ("gene", "question", "strategy", "dataset", "panel", "guide", "node")
+#: Modules shown before the groups: the ones the text names, at most this many.
+MAX_MODULES = 4
+#: Below this many results in all, they are shown one card each rather than grouped.
+GROUP_WHEN_MORE_THAN = 6
+
+
+def all_matches(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> list:
+    """Everything that matches `text`, one card each, best first (before grouping).
 
     Modules first when one is named outright -- typing "map" means the Map module --
     then the shared ranking over genes and the help index. The node catalogue is
@@ -128,6 +145,48 @@ def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> li
     return unique[:limit]
 
 
+def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> list:
+    """The cards the field shows for `text`: few, and each a different thing.
+
+    Einar: "there are way too many options when I type map". "map" gave 24 cards: the
+    Map module, three modules that merely mention maps, a panel also called Map, eight
+    colour-map settings, four methods, a question and seven genes. Now: the modules the
+    text names (at most four; ones that only mention it in passing only when nothing is
+    named), a panel that repeats a module's name dropped, and everything else one
+    **group card per kind** -- "7 genes", "4 methods" -- that opens to its members. A
+    short answer (six results or fewer) is shown as it is.
+    """
+    found = all_matches(text, genes=genes, index=index, limit=limit)
+    if not found:
+        return []
+    modules = [s for s in found if s.kind == "module"]
+    named = [s for s in modules if (text or "").strip().lower() in s.title.lower()]
+    modules = (named or modules)[:MAX_MODULES]
+    module_names = {s.title.lower() for s in modules}
+    rest = [s for s in found if s.kind != "module"
+            and not (s.kind == "panel" and s.title.lower() in module_names)]
+    if len(modules) + len(rest) <= GROUP_WHEN_MORE_THAN:
+        return modules + rest
+    out = list(modules)
+    by_kind: dict = {}
+    for s in rest:
+        by_kind.setdefault(s.kind, []).append(s)
+    for kind in sorted(by_kind, key=lambda k: GROUP_ORDER.index(k) if k in GROUP_ORDER else 99):
+        members = by_kind[kind]
+        if len(members) == 1:
+            out.append(members[0])
+            continue
+        one, many = GROUP_WORDS.get(kind, (kind, kind + "s"))
+        names = "".join(f"<li>{escape(card_name(m))}</li>" for m in members[:12])
+        more = f"<p>…and {len(members) - 12} more.</p>" if len(members) > 12 else ""
+        detail = (f"<h3>{len(members)} {escape(many)}</h3><ul>{names}</ul>{more}"
+                  "<p><i>Click to see them one card each.</i></p>")
+        out.append(Suggestion("group", kind, f"{len(members)} {many}",
+                              ", ".join(card_name(m) for m in members[:3]), detail,
+                              items=tuple(members)))
+    return out
+
+
 def _subtitle(text: str) -> str:
     """The informative part of an index summary.
 
@@ -170,8 +229,13 @@ _KIND_ICON = {"gene": "profiler", "dataset": "db_browser", "question": "experime
 def icon_path(suggestion: Suggestion) -> str:
     """The spaCR artwork for a card, as a file path."""
     from pathlib import Path
-    name = (_MODULE_ICON.get(suggestion.key) if suggestion.kind == "module"
-            else _KIND_ICON.get(suggestion.kind)) or "settings"
+    if suggestion.kind == "module":
+        name = _MODULE_ICON.get(suggestion.key)
+    elif suggestion.kind == "group":
+        name = _KIND_ICON.get(suggestion.key)
+    else:
+        name = _KIND_ICON.get(suggestion.kind)
+    name = name or "settings"
     return str(Path(__file__).with_name("data") / "icons" / "spacr" / f"{name}.png")
 
 
@@ -237,6 +301,9 @@ QTextBrowser#NavigatorDetails QScrollBar::handle:vertical {{ background: {P["bor
     border-radius: 4px; min-height: 24px; }}
 QTextBrowser#NavigatorDetails QScrollBar::add-line:vertical,
 QTextBrowser#NavigatorDetails QScrollBar::sub-line:vertical {{ height: 0px; }}
+QPushButton#NavigatorBack {{ color: {P["fg"]}; background: {surface};
+    border: 1px solid {P["border"]}; border-radius: 14px; padding: 5px 16px; font-size: 14px; }}
+QPushButton#NavigatorBack:hover {{ border-color: {STAGE_HOVER["stable"]}; }}
 QLabel#NavigatorFeedback {{ color: {P["fg_muted"]}; background: transparent; font-size: 14px; }}
 QScrollBar#NavigatorRowScroll:horizontal {{ background: transparent; height: 10px; }}
 QScrollBar#NavigatorRowScroll::handle:horizontal {{ background: {P["border"]};
@@ -373,6 +440,24 @@ class NavigatorPage(QtWidgets.QWidget):
         self._scroll.valueChanged.connect(lambda _v: self._arrange(animate=False))
         self._scroll.hide()
 
+        # The module network (instruction 91): one click on a module shows it with the
+        # modules it leads to; a click on one of those shows what follows it; a second
+        # click on a highlighted module opens it. `_path` is the chain clicked so far.
+        self._path: list = []
+        self._flow_cards: dict = {}
+        self._columns: list = []
+        self._top: list = []                    # the search results, to come back to
+        self._expanded = None                   # the group card being shown open, if any
+        self.back = QtWidgets.QPushButton("← Back", self)
+        self.back.setObjectName("NavigatorBack")
+        self.back.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
+        self.back.setToolTip("Back to the search results (Escape).")
+        self.back.clicked.connect(self.go_back)
+        self.back.hide()
+        self.flow_hint = QtWidgets.QLabel("", self)
+        self.flow_hint.setObjectName("NavigatorFeedback")
+        self.flow_hint.hide()
+
         self.field.textEdited.connect(self._edited)
         self.field.returnPressed.connect(self.submit)
         self.field.installEventFilter(self)
@@ -390,6 +475,9 @@ class NavigatorPage(QtWidgets.QWidget):
         self._arrange(animate=False)
 
     def _arrange(self, animate: bool) -> None:
+        if self._path:
+            self._arrange_flow(animate)
+            return
         w, h = self.width(), self.height()
         field = self._field_rect()
         self.field.setGeometry(field)
@@ -497,7 +585,7 @@ class NavigatorPage(QtWidgets.QWidget):
         if not text:
             return
         if text == self._searched and self._cards:
-            self._open(max(self._current, 0))
+            self._clicked(max(self._current, 0))
         else:
             self.refresh()
 
@@ -526,6 +614,7 @@ class NavigatorPage(QtWidgets.QWidget):
     def refresh(self) -> None:
         """Search for what is in the field and grow the cards into place."""
         text = self.field.text().strip()
+        self._leave_flow()
         self._clear()
         if not text:
             self.feedback.setText(self.PROMPT)
@@ -536,23 +625,241 @@ class NavigatorPage(QtWidgets.QWidget):
             self.feedback.setText(f"Nothing here matches “{text}”. Ask the assistant, "
                                   "or try a gene id or a product name.")
             return
+        self._top = found
+        self._expanded = None
+        self._show(found)
+        counts: dict = {}
+        for s in found:
+            kind = s.key if s.kind == "group" else s.kind
+            counts[kind] = counts.get(kind, 0) + (len(s.items) if s.kind == "group" else 1)
+        words = []
+        for kind, n in counts.items():
+            one, many = GROUP_WORDS.get(kind, (KIND_WORD.get(kind, kind).lower(),
+                                               KIND_WORD.get(kind, kind).lower() + "s"))
+            words.append(f"{n} {one if n == 1 else many}")
+        self.feedback.setText(" · ".join(words) + " — click a module to see what follows it")
+
+    def _show(self, found: list) -> None:
+        """Put one card per suggestion in the row and grow them into place."""
+        for card in self._cards:
+            card.setParent(None)
+            card.deleteLater()
+        self._cards = []
+        self._current = -1
         for i, s in enumerate(found):
             card = SuggestionCard(s, self)
-            card.clicked.connect(lambda _=False, k=i: self._open(k))
+            card.clicked.connect(lambda _=False, k=i: self._clicked(k))
             card.hovered.connect(self.explain)
             card.installEventFilter(self)
             card.show()
             self._cards.append(card)
-        kinds = {}
-        for s in found:
-            word = KIND_WORD.get(s.kind, s.kind).lower()
-            kinds[word] = kinds.get(word, 0) + 1
-        self.feedback.setText(" · ".join(f"{n} {k}{'s' if n != 1 else ''}"
-                                         for k, n in kinds.items())
-                              + " — Return opens the highlighted card")
         self._scroll.setValue(0)
         self._arrange(animate=True)
         self._set_current(0)
+
+    def _clicked(self, i: int) -> None:
+        """A click on a result: a group opens, a module shows its network, the rest open."""
+        s = self._cards[i].suggestion
+        if s.kind == "group":
+            self.expand(s)
+        elif s.kind == "module":
+            self.explore(s.key)
+        else:
+            self._open(i)
+
+    def expand(self, group: Suggestion) -> None:
+        """Show a group card's members one card each; Back returns to the results."""
+        self._expanded = group
+        self._show(list(group.items))
+        self.feedback.setText(f"{group.title} for “{self._searched}” — Escape goes back")
+        self.back.show()
+        self._place_back()
+
+    def go_back(self) -> None:
+        """One step back: out of the module network, then out of an opened group."""
+        if self._path:
+            self._leave_flow()
+            self._arrange(animate=False)
+            return
+        if self._expanded is not None:
+            self._expanded = None
+            self.back.hide()
+            self._show(self._top)
+            self.feedback.setText("Click a module to see what follows it.")
+
+    def reset(self) -> None:
+        """Empty the Navigator, as it is every time Home is shown (Einar's request)."""
+        self._leave_flow()
+        self._clear()
+        self._top, self._expanded = [], None
+        self.back.hide()
+        self.field.clear()
+        self.feedback.setText(self.PROMPT)
+        self._arrange(animate=False)
+
+    # ------------------------------------------------------------ module network
+    def explore(self, key: str) -> None:
+        """First click on a module: show it with the modules it leads to.
+
+        spaCR: "Click once to open the module network. Click twice to open the module."
+        """
+        self._path = [key]
+        self._build_flow()
+
+    def _flow_clicked(self, column: int, key: str) -> None:
+        """A node clicked: the highlighted one opens; another becomes the next step shown."""
+        if column < len(self._path) and self._path[column] == key:
+            self._open_module(key)
+            return
+        self._path = self._path[:column] + [key]
+        self._build_flow()
+
+    def _open_module(self, key: str) -> None:
+        reason = MOD.unavailable_reason(MOD.get(key))
+        if reason:
+            self.flow_hint.setText(f"{MOD.get(key).name} is not available yet: {reason}.")
+            return
+        self.chosen.emit("module", key)
+
+    def _build_flow(self) -> None:
+        """Make the cards for the chain clicked so far and what follows its last step."""
+        old = dict(self._flow_cards)
+        self._columns = [[self._path[0]]]
+        for step in self._path:
+            following = list(MOD.downstream(step))[:4]
+            if not following:
+                break
+            self._columns.append(following)
+            if len(self._columns) > len(self._path):
+                break
+        self._flow_cards = {}
+        fresh = []
+        for c, column in enumerate(self._columns):
+            for key in column:
+                ident = (c, key)
+                card = old.pop(ident, None)
+                if card is None:
+                    m = MOD.get(key)
+                    detail = (f"<h3>{escape(m.name)}</h3><p>{escape(m.note)}.</p>"
+                              f"<p><i>{escape(m.band)}</i></p>")
+                    nxt = MOD.downstream(key)
+                    if nxt:
+                        detail += ("<p>Leads to: " + ", ".join(escape(MOD.get(k).name)
+                                                               for k in nxt) + ".</p>")
+                    card = SuggestionCard(Suggestion("module", key, m.name, m.note, detail), self)
+                    card.clicked.connect(lambda _=False, col=c, k=key: self._flow_clicked(col, k))
+                    card.hovered.connect(self.explain)
+                    fresh.append(card)
+                card.set_current(c < len(self._path) and self._path[c] == key)
+                card.show()
+                self._flow_cards[ident] = card
+        for card in old.values():
+            card.setParent(None)
+            card.deleteLater()
+        for card in self._cards:
+            card.hide()
+        for widget in (self.field, self.feedback, self._scroll):
+            widget.hide()
+        self.back.show()
+        self.flow_hint.show()
+        last = MOD.get(self._path[-1])
+        self.flow_hint.setText(
+            f"{last.name}: click a highlighted module again to open it, or a next step to "
+            "see what follows it.")
+        self.explain(self._flow_cards[(len(self._path) - 1, self._path[-1])])
+        for card in fresh:
+            card._animation = None
+        self._arrange_flow(animate=True, fresh=fresh)
+        self.update()
+
+    def _leave_flow(self) -> None:
+        if not self._path and not self._flow_cards:
+            return
+        self._path = []
+        self._columns = []
+        for card in self._flow_cards.values():
+            card.setParent(None)
+            card.deleteLater()
+        self._flow_cards = {}
+        self.flow_hint.hide()
+        self.back.setVisible(self._expanded is not None)
+        self.field.show()
+        self.feedback.show()
+        for card in self._cards:
+            card.show()
+        self.update()
+
+    def _arrange_flow(self, animate: bool, fresh=()) -> None:
+        """Columns left to right: the module, what it leads to, what the chosen one leads to."""
+        w, h = self.width(), self.height()
+        self._place_back()
+        self.flow_hint.setGeometry(140, 22, max(100, w - 160), 28)
+        top = 70
+        bottom = h - DETAILS_H - 32
+        room = max(120, bottom - top)
+        xs, sides = [], []
+        x = 32
+        for c, column in enumerate(self._columns):
+            n = len(column)
+            side = CARD_SIDE if c == 0 else FLOW_SIDE
+            side = int(min(side, (room - (n - 1) * FLOW_GAP_Y) / max(1, n)))
+            xs.append(x)
+            sides.append(side)
+            x += side + FLOW_GAP_X
+        overflow = max(0, x - FLOW_GAP_X - (w - 32))
+        for c, column in enumerate(self._columns):
+            n, side = len(column), sides[c]
+            height = n * side + (n - 1) * FLOW_GAP_Y
+            y0 = top + max(0, (room - height) // 2)
+            for i, key in enumerate(column):
+                card = self._flow_cards.get((c, key))
+                if card is None:
+                    continue
+                card._final = QtCore.QRect(xs[c] - overflow, y0 + i * (side + FLOW_GAP_Y),
+                                           side, side)
+                card.setVisible(card._final.right() > 0)
+                if animate and card in fresh and _motion_allowed():
+                    self._grow(card, i)
+                elif card._animation is None:
+                    card.setGeometry(card._final)
+        self.details.setGeometry((w - self._field_rect().width()) // 2, h - DETAILS_H - 16,
+                                 self._field_rect().width(), DETAILS_H)
+        self.details.raise_()
+        self.update()
+
+    def _place_back(self) -> None:
+        hint = self.back.sizeHint()
+        self.back.setGeometry(24, 20, max(96, hint.width()), hint.height())
+        self.back.raise_()
+
+    def paintEvent(self, event):                           # noqa: N802
+        """The edges of the module network, from each step to what it leads to."""
+        super().paintEvent(event)
+        if not self._path or len(self._columns) < 2:
+            return
+        painter = QtGui.QPainter(self)
+        painter.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing, True)
+        hue = QtGui.QColor(STAGE_HOVER["stable"])
+        for c in range(1, len(self._columns)):
+            parent = self._flow_cards.get((c - 1, self._path[c - 1]))
+            if parent is None:
+                continue
+            start = QtCore.QPointF(parent._final.right(), parent._final.center().y())
+            for key in self._columns[c]:
+                child = self._flow_cards.get((c, key))
+                if child is None:
+                    continue
+                end = QtCore.QPointF(child._final.left(), child._final.center().y())
+                on_path = c < len(self._path) and self._path[c] == key
+                colour = QtGui.QColor(hue)
+                colour.setAlphaF(0.95 if on_path else 0.45)
+                painter.setPen(QtGui.QPen(colour, 2.4 if on_path else 1.4))
+                bend = (end.x() - start.x()) * 0.5
+                path = QtGui.QPainterPath(start)
+                path.cubicTo(QtCore.QPointF(start.x() + bend, start.y()),
+                             QtCore.QPointF(end.x() - bend, end.y()), end)
+                painter.drawPath(path)
+        painter.end()
 
     def explain(self, card) -> None:
         """Show a card's description in the panel at the foot of the page."""
@@ -587,6 +894,9 @@ class NavigatorPage(QtWidgets.QWidget):
 
     def _open(self, i: int) -> None:
         s = self._cards[i].suggestion
+        if s.kind == "group":
+            self.expand(s)
+            return
         if s.kind == "module" and MOD.unavailable_reason(MOD.get(s.key)):
             self._set_current(i)
             self.feedback.setText(f"{s.title} is not available yet: "
@@ -595,6 +905,17 @@ class NavigatorPage(QtWidgets.QWidget):
         self.chosen.emit(s.kind, s.key)
 
     # ----------------------------------------------------------------- keyboard
+    def keyPressEvent(self, event):                        # noqa: N802
+        """In the module network, Escape goes back and Return opens the highlighted module."""
+        K = QtCore.Qt.Key
+        if self._path and event.key() == K.Key_Escape:
+            self.go_back()
+            return
+        if self._path and event.key() in (K.Key_Return, K.Key_Enter):
+            self._open_module(self._path[-1])
+            return
+        super().keyPressEvent(event)
+
     def eventFilter(self, obj, event):                    # noqa: N802
         """Up or Down from the field enters the cards; arrows move; Escape clears or returns."""
         if obj is self.field and event.type() in (QtCore.QEvent.Type.Resize,
@@ -610,6 +931,9 @@ class NavigatorPage(QtWidgets.QWidget):
                 self._cards[max(self._current, 0)].setFocus()
                 return True
             if key == K.Key_Escape:
+                if self._expanded is not None:
+                    self.go_back()
+                    return True
                 self.field.clear()
                 self._edited("")
                 return True

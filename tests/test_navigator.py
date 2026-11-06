@@ -46,8 +46,31 @@ def test_questions_are_still_searchable(index):
 
 
 def test_methods_and_datasets_come_from_the_same_ranking(index):
-    kinds = {s.kind for s in NV.suggestions("conformal", index=index)}
+    kinds = {s.key if s.kind == "group" else s.kind
+             for s in NV.suggestions("conformal", index=index)}
     assert "strategy" in kinds
+
+
+def test_map_gives_a_handful_of_cards_not_two_dozen(index):
+    """Einar: "there are way too many options when I type map"."""
+    cards = NV.suggestions("map", genes=GENES, index=index)
+    assert len(cards) <= 8, [c.title for c in cards]
+    assert not any(c.kind == "panel" and c.title.lower() == "map" for c in cards), \
+        "a panel repeating the module's name"
+    groups = [c for c in cards if c.kind == "group"]
+    assert groups and all(len(g.items) > 1 for g in groups)
+    # Nothing but modules that only mention maps, and the panel named like the module,
+    # is dropped: every other result is a card or inside one.
+    everything = [s for s in NV.all_matches("map", genes=GENES, index=index)
+                  if s.kind != "module" and not (s.kind == "panel" and s.title.lower() == "map")]
+    inside = sum(len(g.items) for g in groups) + sum(1 for c in cards
+                                                     if c.kind not in ("group", "module"))
+    assert inside == len(everything), "grouping lost results"
+
+
+def test_a_short_answer_is_not_grouped(index):
+    cards = NV.suggestions("TGME49_223920", genes=GENES, index=index)
+    assert all(c.kind != "group" for c in cards)
 
 
 def test_the_old_node_cards_do_not_come_back(index):
@@ -118,7 +141,63 @@ def test_return_searches_and_a_second_return_opens(page, qtbot):
     page.submit()
     assert page._cards and seen == [], "the first Return searches, it does not open"
     page.submit()
-    assert seen == [("module", "map")], "the second Return opens the highlighted card"
+    assert seen == [] and page._path == ["map"], "the second Return shows the module network"
+    QtCore.QCoreApplication.processEvents()
+    from PySide6.QtTest import QTest
+    QTest.keyClick(page, QtCore.Qt.Key.Key_Return)
+    assert seen == [("module", "map")], "Return in the network opens the highlighted module"
+
+
+def test_one_click_shows_what_follows_and_a_second_opens(page, qtbot):
+    """Einar: "the network ... of what is downstream of map. And a second click to open
+    the module." spaCR: "Click once to open the module network. Click twice to open it"."""
+    from parascape import modules as MOD
+    seen = []
+    page.chosen.connect(lambda kind, key: seen.append((kind, key)))
+    type_and_wait(page, qtbot, "map")
+    page._cards[0].click()
+    assert seen == [] and page._path == ["map"]
+    assert page._columns[1] == list(MOD.downstream("map"))[:4]
+    assert not page.field.isVisible() and page.back.isVisible()
+    page._flow_cards[(1, "network")].click()
+    assert page._path == ["map", "network"] and seen == []
+    assert page._columns[2] == list(MOD.downstream("network"))[:4]
+    page._flow_cards[(1, "network")].click()
+    assert seen == [("module", "network")]
+
+
+def test_back_leaves_the_network_for_the_results(page, qtbot):
+    type_and_wait(page, qtbot, "map")
+    page._cards[0].click()
+    page.back.click()
+    assert page._path == [] and page.field.isVisible() and page._cards
+
+
+def test_a_group_opens_to_its_members_and_back_returns(page, qtbot):
+    type_and_wait(page, qtbot, "map")
+    group = next(c for c in page._cards if c.suggestion.kind == "group")
+    n = len(group.suggestion.items)
+    group.click()
+    assert len(page._cards) == n and page.back.isVisible()
+    page.back.click()
+    assert any(c.suggestion.kind == "group" for c in page._cards)
+
+
+def test_reset_empties_everything(page, qtbot):
+    """Einar: "navigator should be reset every time I go back to it"."""
+    type_and_wait(page, qtbot, "map")
+    page._cards[0].click()
+    page.reset()
+    assert page.field.text() == "" and page._cards == [] and page._path == []
+    assert page.field.isVisible() and not page.back.isVisible()
+
+
+def test_every_downstream_module_exists():
+    from parascape import modules as MOD
+    keys = {m.key for m in MOD.MODULES}
+    for key, following in MOD.DOWNSTREAM.items():
+        assert key in keys, key
+        assert set(following) <= keys, (key, set(following) - keys)
 
 
 def test_editing_after_a_search_asks_for_return_again(page, qtbot):

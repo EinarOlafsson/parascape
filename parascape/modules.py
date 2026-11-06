@@ -182,6 +182,41 @@ def unavailable_reason(module: Module, *, docks=(), fillable: int = 0) -> str:
     return ""
 
 
+#: What each module leads to, for the Navigator's module network (instruction 91): one
+#: click on a module shows these beside it, as spaCR's Navigator shows a module's
+#: documented downstream modules. Best first; the Navigator shows at most four.
+DOWNSTREAM = {
+    "gene": ("partners", "expression", "structure", "network"),
+    "structure": ("partners", "gene"),
+    "partners": ("network", "infer", "gene"),
+    "expression": ("map", "information", "gene"),
+    "map": ("network", "gallery", "cell", "infer"),
+    "network": ("partners", "infer", "export"),
+    "cell": ("gene", "map"),
+    "gallery": ("map", "export"),
+    "questions": ("infer", "scorecard", "strategies"),
+    "infer": ("scorecard", "fill", "runs", "export"),
+    "strategies": ("infer", "scorecard"),
+    "scorecard": ("fill", "runs"),
+    "runs": ("scorecard",),
+    "fill": ("information", "map"),
+    "drop": ("list", "screen", "infer", "map"),
+    "screen": ("list", "infer"),
+    "list": ("infer", "network", "export"),
+    "export": (),
+    "datasets": ("information", "expression"),
+    "information": ("gene", "map", "infer"),
+    "jobs": ("console",),
+    "console": ("jobs",),
+}
+
+
+def downstream(key: str) -> tuple:
+    """The modules `key` leads to, best first; unknown keys lead nowhere."""
+    keys = {m.key for m in MODULES}
+    return tuple(k for k in DOWNSTREAM.get(key, ()) if k in keys and k != key)
+
+
 def search(text: str) -> tuple:
     """Modules matching `text`, best first.
 
