@@ -95,6 +95,7 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 68 | [Broaden Discoveries across functions and all available labels](open/68_discoveries_function_coverage.md) — 68.01 browser complete; 68.02 30%: pinned names, frozen EC recovery and real scorecards; independent activity/calibration/deployment still pending. Include both rows in full reports (51 total) |
 | 66.04 | [Correct ambiguous host projections and preserve all original gene evidence](done/66_04_host_symbol_projections.md) — 39 projections withheld, 20,010 gene rows retained; 575 follow-up checks passed |
 | 66 | [Recover missing source files and audit host candidate versions](open/66_source_recovery_and_host_candidates.md) — 4/4 complete: source recovery, RBC review, journal equivalence and verified host ambiguity correction |
+| 97 | [Errors become ParaScape GitHub issues, and a routine fixes them](open/97_errors_become_github_issues.md) — spaCR's relay + consent dialog; GitHub App key set by Einar; scheduled triage |
 | 96 | [The ParaScape module mould, as a skill](open/96_parascape_module_skill.md) — **built: Map rebuilt, skill written** · get Map right with Einar, then write it down as the `parascape-module` skill and build the rest with it |
 | 95 | [spaCR's dock](open/95_spacr_dock.md) — the left column of categories and module rows, on Home and in every module |
 | 94 | [The AI box with spaCR's choices, and a free ParaScape AI](open/94_ai_box_like_spacr.md) — all four providers listed; the free one needs a worker Einar agrees to deploy |
