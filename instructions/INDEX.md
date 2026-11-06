@@ -11,6 +11,7 @@ One file per task. This index is the status table; the files carry the reasoning
 |---|---|
 | 89 | [GSE60305: colour-space SOLiD reads, not a kallisto fault](done/89_gse60305_kallisto.md) — 0 of 47 M reads could map; pipeline now records colour-space runs and treats 0 mapped as failure; processed readCount table queued |
 | 88 | [Proteomics downloads: parallel files, stall restarts, the faster transport](done/88_pride_download_throughput.md) — FTP 0.14 vs HTTPS 0.71 MB/s today; counter fixed |
+| 66 | [Recover missing source files and audit host candidate versions](done/66_source_recovery_and_host_candidates.md) — 4/4 complete: source recovery, RBC review, journal equivalence and verified host ambiguity correction |
 | 68.01 | [Browse functions, class members and inference/test coverage in Discoveries](done/68_01_discoveries_label_browser.md) — 41/30 labels, exact functional membership replay, 413 final checks |
 | 01 | Nineteen gene codes resolved |
 | 02 | Six expression datasets integrated |
@@ -96,7 +97,6 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 67.01 | [Keep native work continuation active and log actual stops](done/67_01_work_continuation_watchdog.md) — timer active, 12 historical boundaries/4 restrictions logged; 403 checks passed |
 | 68 | [Broaden Discoveries across functions and all available labels](open/68_discoveries_function_coverage.md) — 68.01 browser complete; 68.02 30%: pinned names, frozen EC recovery and real scorecards; independent activity/calibration/deployment still pending. Include both rows in full reports (51 total) |
 | 66.04 | [Correct ambiguous host projections and preserve all original gene evidence](done/66_04_host_symbol_projections.md) — 39 projections withheld, 20,010 gene rows retained; 575 follow-up checks passed |
-| 66 | [Recover missing source files and audit host candidate versions](open/66_source_recovery_and_host_candidates.md) — 4/4 complete: source recovery, RBC review, journal equivalence and verified host ambiguity correction |
 | 97 | [Errors become ParaScape GitHub issues, and a routine fixes them](open/97_errors_become_github_issues.md) — **built** · spaCR's relay + consent dialog; GitHub App key set by Einar; scheduled triage |
 | 96 | [The ParaScape module mould, as a skill](open/96_parascape_module_skill.md) — **built: Map rebuilt, skill written** · get Map right with Einar, then write it down as the `parascape-module` skill and build the rest with it |
 | 95 | [spaCR's dock](open/95_spacr_dock.md) — **built** · the left column of categories and module rows, on Home and in every module |
