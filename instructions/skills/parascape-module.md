@@ -79,6 +79,14 @@ what surrounds them."). Home button on the right.
   (`backdrops._compat.get_pane_opacity`, default 60 %); fields fade (scoped by
   `parascapeFieldFade`). Sections that support the work start folded.
 - Docstring on every public method; tooltip on every control (`tests/test_app_menus.py` checks).
+- Foldable groups created inside a module go through `shell.section(...)` (heading in the theme
+  colour; a bare CollapsibleSection heading is near-invisible). Every QTextBrowser with links gets
+  `shell.link_style(browser)` (Qt's default link blue is unreadable on the dark containers).
+- Facts about a gene: `gene_reading.read(published_map, gene, node_row=...)` -- the published
+  information map (`window.information_map.map`, load it with `.load()` and wait) plus the
+  window's gene-table row; categories from `information_categories` so a sentence and a
+  circularity exclusion use the same words. A prediction is never phrased as knowledge.
+- Second reference implementation: `parascape/gene_module.py` (one gene / stepping a list).
 
 ## Wording
 

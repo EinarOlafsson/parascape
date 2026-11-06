@@ -70,8 +70,12 @@ def _reasons(window) -> dict:
 def open_module(window, key: str) -> str:
     """Open one module in this window. Returns what the status bar was told."""
     module = MOD.get(key)
-    if key == "map" and getattr(window, "map_module", None) is not None:
-        from .map_module import open_in
+    shells = {"map": "map_module", "gene": "gene_module"}
+    if key in shells and getattr(window, shells[key], None) is not None:
+        if key == "map":
+            from .map_module import open_in
+        else:
+            from .gene_module import open_in
         message = open_in(window)
         try:
             window.statusBar().showMessage(message, 6000)
@@ -355,6 +359,14 @@ def install(window):
             landing.stack.addWidget(window.map_module)
     except Exception as error:                  # the window must open without it
         window.statusBar().showMessage(f"Map module unavailable: {error}", 8000)
+    window.gene_module = None
+    try:
+        from . import gene_module
+        window.gene_module = gene_module.build(window)
+        if window.gene_module is not None:
+            landing.stack.addWidget(window.gene_module)
+    except Exception as error:                  # the window must open without it
+        window.statusBar().showMessage(f"Gene module unavailable: {error}", 8000)
     window._landing_cover = _Cover(window)
     window.installEventFilter(window._landing_cover)
     _watch(window)

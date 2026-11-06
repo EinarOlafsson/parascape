@@ -232,3 +232,46 @@ def test_a_deleted_stop_button_does_not_break_starting_a_job(window):
     window.panel._set_stoppable(False)
     from shiboken6 import isValid
     assert all(isValid(b) for b in window.panel._stop_btns)
+
+
+# ------------------------------------------------------------------ the Gene module
+def test_the_gene_module_opens_and_reads_a_typed_gene(window, qtbot):
+    """Einar chose "synthesis first" for the gene card (instruction 93)."""
+    from parascape.landing_install import open_module
+    shell = window.gene_module
+    assert shell is not None, "the Gene module failed to build"
+    open_module(window, "gene")
+    assert window.landing.page == "Module"
+    module = shell.module
+    gid = str(window.nodes.gene_id.iloc[0])
+    module.field.setText(gid)
+    module._typed()
+    assert module.gene == gid
+    assert gid in module.known.toHtml()
+    sections = list(shell.sections)
+    for part in ("Your gene", "What to read", "Advanced", "What is known", "The evidence",
+                 "What is not known, and what can be inferred", "Actions",
+                 "Console and AI chat"):
+        assert part in sections, part
+    assert sections.index("What is known") < sections.index("The evidence")
+    assert not shell.sections["Advanced"].is_expanded()
+
+
+def test_unticking_a_kind_of_knowledge_removes_it_from_the_reading(window):
+    module = window.gene_module.module
+    if module.reading is None:
+        module.show(str(window.nodes.gene_id.iloc[0]))
+    module.include["fitness"].setChecked(False)
+    assert "needs it" not in module.known.toPlainText()
+    module.include["fitness"].setChecked(True)
+
+
+def test_a_list_steps_gene_by_gene(window, tmp_path):
+    module = window.gene_module.module
+    ids = window.nodes.gene_id.astype(str).tolist()[:3]
+    path = tmp_path / "three.csv"
+    path.write_text("gene\n" + "\n".join(ids) + "\n")
+    module.load_list(str(path))
+    assert module.gene == ids[0]
+    module._step(1)
+    assert module.gene == ids[1]

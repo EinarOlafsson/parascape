@@ -3,8 +3,14 @@
 **Status: in progress (2026-11-06).** Done: View ▸ Container opacity (30-100 %, default 60 % =
 Einar's spaCR setting, key `prefs/pane_opacity`); every container in a module shell at that opacity with the
 animation showing through; spaCR's input rules and its field fade (vendored `backdrops/field_fade.py`, scoped
-to module shells by `parascapeFieldFade`). Next: the Gene module, synthesis first (Einar chose it 2026-11-06),
-built on the module mould that comes out of the Map review.
+to module shells by `parascapeFieldFade`). Gene module built 2026-11-06 with the
+skill (`parascape/gene_module.py`, `parascape/gene_reading.py`): left -- your gene (field, list, drop,
+stepping) and what to read (the information categories as plain questions); right -- **What is known** (one
+sentence per kind of knowledge, each with linked sources: where it is, what it binds, how much the parasite
+needs it, when its RNA is made...), **The evidence** grouped the same way, **What is not known, and what can
+be inferred** (key traits missing, predicted cells kept apart with their certainty, and what its Map
+neighbours suggest with how often that is right against chance). Tests: `tests/test_gene_reading.py`,
+`tests/test_module_shell.py`. Remaining: the other modules through the skill (instruction 86).
 
 Requested 2026-11-06. Einar: "the fields should look more like spaCR and the containers
 should have opacity like spaCR's do ... the gene card is not what I want. All modules need to be thematically

@@ -287,6 +287,19 @@ class ModuleShell(QtWidgets.QWidget):
         """Re-read the container opacity and restyle."""
         self.set_palette(self._palette)
 
+    def section(self, name: str, widget: QtWidgets.QWidget,
+                expanded: bool = True) -> CollapsibleSection:
+        """A foldable group with a heading in the theme colour, for use anywhere in a module."""
+        section = CollapsibleSection(name, widget, expanded=expanded)
+        header = section._header
+        header.setStyleSheet(header.styleSheet().replace("palette(text)", self._palette["fg"]))
+        return section
+
+    def link_style(self, browser: QtWidgets.QTextBrowser) -> None:
+        """Links readable on the dark containers (Qt's default link blue is not)."""
+        browser.document().setDefaultStyleSheet(
+            f"a {{ color: {self._palette['accent']}; text-decoration: none; }}")
+
     def add_setting(self, name: str, widget: QtWidgets.QWidget,
                     expanded: bool = True) -> CollapsibleSection:
         """A foldable group in the Settings column."""

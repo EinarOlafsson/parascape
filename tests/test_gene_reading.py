@@ -1,0 +1,86 @@
+"""Reading one gene (the Gene module, instructions 93/96): the synthesis says what is known with
+its sources, keeps predictions out of it, and says what is not known."""
+import pandas as pd
+
+from parascape import gene_reading as GR
+
+
+class FakeMap:
+    """The three PublishedMap calls the reading uses, over a hand-made gene."""
+
+    def gene_facts(self, gene):
+        return pd.DataFrame([
+            dict(column="host_facing", tier=1, table="information map", observed=True,
+                 description="faces the host", value=True, probability=0.95,
+                 source_tier="observed-direct"),
+            dict(column="compartment_hyperlopit", tier=1, table="information map", observed=True,
+                 description="hyperLOPIT niche", value="dense granules", probability=0.9,
+                 source_tier="observed-curated"),
+            dict(column="dom_IPR000008", tier=2, table="domains", observed=True,
+                 description="C2 domain", value=False, probability=float("nan"),
+                 source_tier="measured"),
+            dict(column="essential_call", tier=1, table="information map", observed=True,
+                 description="essential", value="yes", probability=0.6,
+                 source_tier="filled: strategy 07"),
+        ])
+
+    def gene_evidence(self, gene):
+        return pd.DataFrame([
+            dict(gene_id=gene, trait="host_facing", value="yes", probability=0.95,
+                 source_tier="observed-direct", reference="PMID:23601110", dataset="review"),
+        ])
+
+    def gene_partners(self, gene):
+        return pd.DataFrame([
+            dict(partner="PP2A-B55", side="host", probability=0.9,
+                 source_tier="observed-curated", reference="PMID:23739762"),
+            dict(partner="TGME49_270250", side="parasite", probability=0.97,
+                 source_tier="observed-direct", reference="PMC12505969"),
+        ])
+
+
+def _read():
+    return GR.read(FakeMap(), "TGME49_208830", "dense granule protein GRA16")
+
+
+def test_where_it_is_names_the_place_and_its_sources():
+    text = dict(GR.synthesis(_read()))["place"]
+    assert "faces the host" in text and "dense granules" in text
+    assert "pubmed.ncbi.nlm.nih.gov/23601110" in text, "each claim links its source"
+
+
+def test_partners_are_counted_by_side_strongest_first():
+    text = dict(GR.synthesis(_read()))["interaction"]
+    assert "1 in the host, 1 in the parasite" in text
+    assert text.index("TGME49_270250") < text.index("PP2A-B55")
+
+
+def test_a_prediction_is_never_phrased_as_knowledge():
+    reading = _read()
+    assert "essential" not in " ".join(s for _c, s in GR.synthesis(reading))
+    inferred = " ".join(GR.inferences(reading))
+    assert "Predicted, not measured" in inferred and "60% certain" in inferred
+
+
+def test_an_absent_domain_is_not_something_known():
+    assert "domain" not in dict(GR.synthesis(_read()))
+
+
+def test_key_traits_without_a_value_are_listed_as_not_known():
+    class Empty(FakeMap):
+        def gene_facts(self, gene):
+            return pd.DataFrame(columns=["column", "tier", "table", "description", "observed",
+                                         "value", "probability", "source_tier"])
+    reading = GR.read(Empty(), "TGME49_000000")
+    assert len(GR.inferences(reading)) == len(GR.KEY_TRAITS)
+
+
+def test_gene_table_measurements_join_the_published_facts():
+    row = pd.Series({"gene_id": "TGME49_208830", "fit_invitro_hff": 2.28, "empty": float("nan")})
+    reading = GR.read(FakeMap(), "TGME49_208830", node_row=row)
+    fitness = dict(GR.synthesis(reading)).get("fitness", "")
+    assert "2.28" in fitness and "Sidik" not in fitness or "PMID" in fitness
+
+
+def test_sequences_are_shown_by_length():
+    assert GR.value_text("seq_full", "MAAAK") == "5 residues"

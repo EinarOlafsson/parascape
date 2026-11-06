@@ -463,6 +463,7 @@ class MapModule(QtCore.QObject):
         shell.add_section("Map", mapbox, extent=470, stretch=3)
 
         self.reading = QtWidgets.QTextBrowser(shell)
+        shell.link_style(self.reading)
         self.reading.setOpenLinks(False)
         self.reading.anchorClicked.connect(self._link)
         shell.add_section("Your genes and their neighbours", self.reading, extent=210, stretch=2)
