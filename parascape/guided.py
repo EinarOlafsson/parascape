@@ -621,6 +621,37 @@ def prefill(strategy, answers, ctx) -> dict:
     return out
 
 
+#: How far the calibration on the person's OWN label moves a strategy (instruction 60, change 6). The
+#: overall grade averages over every label it was tested on, so "this label is unlearnable by this
+#: strategy" is averaged away; the per-label cell says it directly.
+LABEL_SKILL_WEIGHT = 1.5
+LABEL_NO_SKILL_PENALTY = -2.0
+
+
+def label_weight(key: str, organism: str, label) -> float:
+    """The per-label calibration of a strategy as a ranking weight; 0 where none was measured.
+
+    Skill whose lower bound is above zero on this label adds up to `LABEL_SKILL_WEIGHT`; skill whose
+    upper bound is at or below zero -- measured, and no better than chance on this label -- costs
+    `LABEL_NO_SKILL_PENALTY`. A label the calibration never held out moves nothing.
+    """
+    if not label:
+        return 0.0
+    try:
+        from . import calibration
+        cell = ((calibration.entry(key, organism) or {}).get("per_target") or {}).get(str(label))
+    except Exception:
+        return 0.0
+    if not cell or not cell.get("conclusive"):
+        return 0.0
+    low, high, skill = cell.get("skill_low"), cell.get("skill_high"), cell.get("skill")
+    if high is not None and high <= 0:
+        return LABEL_NO_SKILL_PENALTY
+    if low is not None and low > 0 and skill is not None:
+        return LABEL_SKILL_WEIGHT * float(min(max(skill, 0.0), 1.0))
+    return 0.0
+
+
 def _score(strategy, goal: Goal, rank, grade: str, uses_subject: bool = False) -> float:
     """A strategy's place in the ranking: what it is for, what task it does, how it graded, cost.
 
@@ -697,7 +728,9 @@ def recommend(answers, ctx, limit: int = MAX_RECOMMENDED) -> list:
             continue
         grade = grade_of(strategy.key, organism)
         takes = chosen_genes and any(p.kind == "genes" for p in strategy.params)
-        rows.append((rank, strategy, grade, _score(strategy, goal, rank, grade, takes)))
+        label = answers.get("label") if subject(answers) == "label" else None
+        rows.append((rank, strategy, grade, _score(strategy, goal, rank, grade, takes)
+                     + label_weight(strategy.key, organism, label)))
     chosen = [r for r in rows if r[0] is not None]
     if len(chosen) < MIN_RECOMMENDED:
         chosen += [r for r in rows if r[0] is None]

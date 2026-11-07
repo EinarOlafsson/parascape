@@ -402,3 +402,22 @@ def test_the_help_search_can_find_the_tab_and_its_questions():
     assert any(e.title == "Start here" for e in hits)
     assert any(e.data.get("dock") == "start here"
                for e in help_index.search(index, "find more genes like mine"))
+
+
+# --------------------------------------------------------------------------- the label's own calibration
+def test_the_calibration_on_the_persons_own_label_moves_the_ranking(monkeypatch):
+    """Skill measured on this label lifts a strategy; measured no-skill on it pushes it down."""
+    from parascape import calibration
+    from parascape import guided as G
+    cells = {"good": {"per_target": {"x": {"skill": 0.4, "skill_low": 0.2, "skill_high": 0.6,
+                                            "pass_rate": 1.0, "conclusive": 5}}},
+             "bad": {"per_target": {"x": {"skill": -0.1, "skill_low": -0.2, "skill_high": -0.01,
+                                           "pass_rate": 0.0, "conclusive": 5}}},
+             "unsure": {"per_target": {"x": {"skill": 0.1, "skill_low": -0.1, "skill_high": 0.3,
+                                              "pass_rate": 0.4, "conclusive": 5}}}}
+    monkeypatch.setattr(calibration, "entry", lambda key, organism="Tg", path=None: cells.get(key))
+    assert G.label_weight("good", "Tg", "x") == pytest.approx(G.LABEL_SKILL_WEIGHT * 0.4)
+    assert G.label_weight("bad", "Tg", "x") == G.LABEL_NO_SKILL_PENALTY
+    assert G.label_weight("unsure", "Tg", "x") == 0.0
+    assert G.label_weight("good", "Tg", "never_held_out") == 0.0
+    assert G.label_weight("good", "Tg", None) == 0.0

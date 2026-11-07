@@ -121,3 +121,7 @@ Half delivered by instruction 62: the guided recommendations (`guided.py`) appen
 the strategy on the label in hand (`track_record.record_phrase`), and the Infer module lists the best
 recovering strategies for a question label. Still open: weighting the guided ranking itself by the per-label
 calibration (`per_target`, shipped in `strategy_calibration.json` for every strategy, read nowhere yet).
+
+**Done the same day:** `guided.label_weight` reads the per-label cell when the person chose a label: skill whose
+lower bound is above zero adds up to 1.5 to the ranking score, measured no-skill on that label (upper bound at
+or below zero) costs 2.0, and a label never held out moves nothing. Test in `tests/test_guided.py`.
