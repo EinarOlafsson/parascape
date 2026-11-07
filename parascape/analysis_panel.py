@@ -2660,6 +2660,41 @@ class AnalysisPanel(QtWidgets.QWidget):
             f"closure: {len(result.columns)} columns may build this map, {len(result.removed)} "
             f"of the question's own were removed")
 
+    def copy_methods_text(self):
+        """A methods paragraph, references and BibTeX for the selected question, to the clipboard.
+
+        Built from the columns the question may use (its closure), so it cites what the answer
+        rests on and nothing else; every citation comes from the dataset registry.
+        """
+        q = self.current_question()
+        if q is None or self.nodes is None:
+            return
+        from .questions import as_recipe
+        from .recipes import close
+        recipe = as_recipe(q)
+
+        def job(p):
+            """Resolve what the question may use, the columns the methods text cites."""
+            return close(self.nodes, recipe)
+
+        def done(result):
+            """Write the methods text for those columns and put it on the clipboard."""
+            from . import methods_text
+            if not result.ok:
+                self.question_report.setHtml(f"<b>refused</b><br>{result.refusal}")
+                return
+            text = methods_text.full_text(
+                result.columns, self.organism, strategy="map neighbourhoods and clusters",
+                settings={"confidence": recipe.min_precision}, n_genes=len(self.nodes),
+                held_out=recipe.holdout)
+            QtWidgets.QApplication.clipboard().setText(text)
+            import html
+            self.question_report.setHtml("<b>Methods text copied to the clipboard</b>"
+                                         f"<pre style='white-space:pre-wrap'>{html.escape(text)}</pre>")
+            self.status.emit("methods text copied: " + str(len(result.columns)) + " columns cited")
+
+        self._run(job, done, name="methods text")
+
     def run_question(self):
         """Answer the selected question, and put the control's verdict beside the answer."""
         q = self.current_question()

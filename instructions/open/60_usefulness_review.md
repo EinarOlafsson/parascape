@@ -89,3 +89,20 @@ possible". Weeks 1-2 below are the agreed order of work.
 Two standing conditions: any change to data, slots or strategies needs a fresh calibration sweep and
 a tutorial rebuild before release, and no identifier in a generated citation list may be typed from
 memory — the generator reads `datasets.py` and flags `unresolved()` rather than filling it.
+
+## Change 2 built (2026-11-06): methods paragraph, references and BibTeX
+
+`parascape/methods_text.py`: `sources(columns, organism)` resolves every column to its registry dataset and
+follows declared derivations to the measurements behind them; `methods_paragraph`, `reference_list`, `bibtex`
+and `full_text` write the text. **No identifier is typed from memory**: every citation is the registry entry
+of a column used; a dataset with no recorded publication is listed as "not yet confirmed -- confirm before
+citing" and kept out of the BibTeX; a layer ParaScape computed cites its inputs instead; a column with no
+source is named. The BibTeX holds only the fields the registry records (the citation as recorded, PMID,
+accession, URL) -- never a title, journal or DOI that would have to be guessed.
+
+In the application: Infer ▸ Save the answer ▸ **Copy the methods text** -- for the selected question, from the
+columns its closure allows (rendered and checked: 95 columns cited for the localisation question). Tests:
+`tests/test_methods_text.py` (6), `tests/test_module_shell.py` (the button and the clipboard).
+
+The registry has 103 entries without a confirmed publication; every methods text shows which of them it
+touches. Confirming them is curation, and the text makes that list visible per run.

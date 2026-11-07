@@ -343,6 +343,22 @@ def test_the_infer_module_holds_the_question_controls_moved_not_copied(window):
     assert {"Answer this question", "Check what it may use"} <= set(shell.actions)
 
 
+def test_the_infer_module_copies_a_methods_text_cited_from_the_registry(window, qtbot):
+    """The methods text cites the sources of the columns the question may use, via the clipboard."""
+    from PySide6 import QtWidgets
+    shell = window.infer_module
+    buttons = [b for b in shell.findChildren(QtWidgets.QPushButton) if b.text() == "Copy the methods text"]
+    assert len(buttons) == 1 and buttons[0].toolTip()
+    QtWidgets.QApplication.clipboard().setText("")
+    window.panel.copy_methods_text()
+    qtbot.waitUntil(lambda: "References" in QtWidgets.QApplication.clipboard().text()
+                    or "refused" in window.panel.question_report.toPlainText(), timeout=60000)
+    text = QtWidgets.QApplication.clipboard().text()
+    if text:
+        assert text.startswith("Analyses were run in ParaScape")
+        assert "BibTeX" in text
+
+
 def test_your_genes_are_read_against_the_answer(window):
     import pandas as pd
     module = window.infer_module.module

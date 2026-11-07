@@ -94,6 +94,12 @@ class InferModule(QtCore.QObject):
                           "control's verdict.")
         export.clicked.connect(self._export)
         sl.addWidget(export)
+        methods = QtWidgets.QPushButton("Copy the methods text")
+        methods.setToolTip("A methods paragraph, the numbered references and BibTeX for this "
+                           "question, from the sources of the columns it may use. A source whose "
+                           "publication is not recorded is flagged, never cited.")
+        methods.clicked.connect(panel.copy_methods_text)
+        sl.addWidget(methods)
         kept = QtWidgets.QPushButton("Export your kept claims…")
         kept.setToolTip("Every claim you kept, with its provenance, as CSV.")
         kept.clicked.connect(self._export_kept)
