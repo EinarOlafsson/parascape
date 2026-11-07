@@ -171,12 +171,36 @@ def time_from_tail(tail: str) -> str | None:
 PROBABLE_ID_RE = re.compile(r'^(\d+[a-z]|[a-z]|[a-z]\d+)$')
 
 
-def reference_rank(axis: str, level: str) -> tuple[int, str]:
+#: Reviewed reference decisions (instruction 79): {(study, axis): {kind, reference, evidence}}, loaded
+#: from parascape/data/contrast_reference_decisions.tsv by `main`. `axis` is a parsed axis or UNPARSED.
+#: kind: reference (name the reference level), condition (unparsed words that ARE a condition, with the
+#: reference word), batch (unparsed words that are replicate or plate ids), assay (two assays of the same
+#: samples, never contrasted), separate_experiments (an axis that separates experiments; no contrasts).
+DECISIONS: dict = {}
+
+
+def load_decisions(path) -> dict:
+    """Read the reviewed decisions table; {} when it is absent."""
+    path = Path(path)
+    if not path.exists():
+        return {}
+    with path.open() as fh:
+        return {(r['study'], r['axis']): r for r in csv.DictReader(fh, delimiter='\t')}
+
+
+def reference_rank(axis: str, level: str, study: str | None = None) -> tuple[int, str]:
     """How strongly `level` reads as the reference on `axis`. Lower rank wins; 99 means no claim.
 
     Returns the rank and the evidence, so every orientation in the output can be traced to the word that
-    decided it rather than to the order rows happened to arrive in.
+    decided it rather than to the order rows happened to arrive in. A reviewed decision for the study
+    outranks the vocabulary, and names its evidence.
     """
+    decision = DECISIONS.get((study, axis)) if study else None
+    if decision and decision.get('kind') in ('reference', 'condition') and decision.get('reference'):
+        ref = decision['reference'].lower()
+        hit = level == ref if decision['kind'] == 'reference' else \
+            re.search(r'(?<![a-z0-9+-])' + re.escape(ref) + r'(?![a-z0-9])', level) is not None
+        return (0, 'reviewed: ' + decision.get('evidence', '')) if hit else (98, '')
     if axis in NO_AUTO_REFERENCE:
         return 99, ''
     if axis == 'time':
@@ -233,6 +257,10 @@ def build(rows: list[dict], group_key: str, study_key: str) -> tuple[list[dict],
                 info['factors'].setdefault(axis, 'unstated')
         for label, info in labels.items():
             info['residual'] = residual_tokens(label, info['factors'])
+            # Reviewed as replicate or plate identifiers: drop them BEFORE groups are merged, so the
+            # replicates of one condition become one group instead of one contrast per replicate pair.
+            if DECISIONS.get((study, 'UNPARSED'), {}).get('kind') == 'batch':
+                info['residual'] = frozenset(t for t in info['residual'] if not PROBABLE_ID_RE.match(t))
 
     # Two groups with the same factors and the same leftover text are replicates of one condition, not two
     # conditions. GSE132238 deposits `WT_stress_24h_array1` and `..._array2` as separate sample groups;
@@ -247,7 +275,8 @@ def build(rows: list[dict], group_key: str, study_key: str) -> tuple[list[dict],
         for members_ in buckets.values():
             label, info = sorted(members_)[0]
             out[label] = {**info, 'n': sum(i['n'] for _, i in members_),
-                          'n_groups_merged': len(members_)}
+                          'n_groups_merged': len(members_),
+                          'members': sorted(l for l, _ in members_)}
         merged[study] = out
     parsed = merged
 
@@ -259,8 +288,8 @@ def build(rows: list[dict], group_key: str, study_key: str) -> tuple[list[dict],
             for axis, level in info['factors'].items():
                 levels[axis].add(level)
         varying = {a for a, v in levels.items() if len(v) > 1}
-        if not varying:
-            continue
+        if not varying and DECISIONS.get((study, 'UNPARSED'), {}).get('kind') != 'condition':
+            continue                    # (a reviewed unparsed condition can be the only axis)
 
         # Attribute each leftover token to an axis, by asking the study rather than a word list: a token
         # belongs to axis A when its presence is constant inside every level of A. `Switch Conditions` in
@@ -290,7 +319,26 @@ def build(rows: list[dict], group_key: str, study_key: str) -> tuple[list[dict],
                     break  # determined by this axis within every stratum
             else:
                 unattributed.add(token)
-        if unattributed:
+        unparsed_decision = DECISIONS.get((study, 'UNPARSED'))
+        if unparsed_decision and unattributed:
+            kind = unparsed_decision.get('kind')
+            if kind == 'batch':
+                unattributed = set()            # replicate or plate ids: they separate no condition
+            elif kind == 'condition':
+                # The leftover words ARE a condition axis nobody parsed: make them one, so pairs that
+                # differ only in them become contrasts oriented by the reviewed reference word.
+                for info in labels.values():
+                    info['factors']['condition'] = '+'.join(sorted(info['residual'] & unattributed)) or 'none'
+                    levels['condition'].add(info['factors']['condition'])
+                if len(levels['condition']) > 1:
+                    varying.add('condition')
+                    DECISIONS.setdefault((study, 'condition'), unparsed_decision)
+                unattributed = set()
+            # kind 'assay': the words stay unattributed, so no pair crosses the two assays.
+        for axis, decision in DECISIONS.items():
+            if axis[0] == study and decision.get('kind') == 'separate_experiments' and axis[1] in varying:
+                varying.discard(axis[1])        # compared only within each experiment
+        if unattributed and not unparsed_decision:
             unresolved.append({
                 'study': study, 'axis': 'UNPARSED (free text)', 'n_levels': len(unattributed),
                 'levels': ' | '.join(sorted(unattributed)[:8]),
@@ -302,9 +350,9 @@ def build(rows: list[dict], group_key: str, study_key: str) -> tuple[list[dict],
         # The reference level of each varying axis, used to measure depth.
         axis_reference = {}
         for axis in varying:
-            ranked = sorted((reference_rank(axis, l)[0], l) for l in levels[axis])
-            axis_reference[axis] = ranked[0][1] if ranked[0][0] < 99 else None
-            if axis_reference[axis] is None:
+            ranked = sorted((reference_rank(axis, l, study)[0], l) for l in levels[axis])
+            axis_reference[axis] = ranked[0][1] if ranked[0][0] < 98 else None
+            if axis_reference[axis] is None and (study, axis) not in DECISIONS:
                 unresolved.append({
                     'study': study, 'axis': axis, 'n_levels': len(levels[axis]),
                     'levels': ' | '.join(sorted(levels[axis])[:6]),
@@ -334,9 +382,9 @@ def build(rows: list[dict], group_key: str, study_key: str) -> tuple[list[dict],
                     'group_a': la, 'group_b': lb,
                 })
                 continue
-            ra, ea = reference_rank(axis, fa[axis])
-            rb, eb = reference_rank(axis, fb[axis])
-            if ra == rb == 99:
+            ra, ea = reference_rank(axis, fa[axis], study)
+            rb, eb = reference_rank(axis, fb[axis], study)
+            if min(ra, rb) >= 98:
                 continue  # neither side claims to be the baseline; left for review
             if ra <= rb:
                 base, treat, base_label, treat_label, evidence = fa, fb, la, lb, ea
@@ -369,6 +417,9 @@ def build(rows: list[dict], group_key: str, study_key: str) -> tuple[list[dict],
                 'baseline_group': base_label, 'treated_group': treat_label,
                 'n_baseline': (ia if base is fa else ib)['n'],
                 'n_treated': (ib if base is fa else ia)['n'],
+                # Every deposited group merged into each side, so a consumer can find all its runs.
+                'baseline_members': ' || '.join((ia if base is fa else ib).get('members', [base_label])),
+                'treated_members': ' || '.join((ib if base is fa else ia).get('members', [treat_label])),
             })
     return contrasts, unresolved, refused
 
@@ -376,7 +427,9 @@ def build(rows: list[dict], group_key: str, study_key: str) -> tuple[list[dict],
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--samples', default='results/rna_sample_quality_2026_11_04/sample_quality.tsv')
-    ap.add_argument('--out', default='results/contrast_ladder_2026_11_05')
+    ap.add_argument('--out', default='results/contrast_ladder_2026_11_06')
+    ap.add_argument('--decisions', default='parascape/data/contrast_reference_decisions.tsv',
+                    help="reviewed reference decisions; '' to run without them")
     ap.add_argument('--group-column', default='condition_group')
     ap.add_argument('--study-column', default='study')
     args = ap.parse_args()
@@ -384,12 +437,17 @@ def main() -> None:
     src = (REPO / args.samples) if not Path(args.samples).is_absolute() else Path(args.samples)
     with src.open() as fh:
         rows = list(csv.DictReader(fh, delimiter='\t'))
+    DECISIONS.clear()
+    if args.decisions:
+        DECISIONS.update(load_decisions(REPO / args.decisions if not Path(args.decisions).is_absolute()
+                                        else args.decisions))
     contrasts, unresolved, refused = build(rows, args.group_column, args.study_column)
 
     out = (REPO / args.out) if not Path(args.out).is_absolute() else Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     fields = ['study', 'axis', 'baseline_level', 'treated_level', 'depth', 'background', 'oriented_by',
-              'n_baseline', 'n_treated', 'baseline_group', 'treated_group']
+              'n_baseline', 'n_treated', 'baseline_group', 'treated_group', 'baseline_members',
+              'treated_members']
     contrasts.sort(key=lambda c: (c['study'], c['axis'], c['depth'], c['treated_level']))
     with (out / 'contrasts.tsv').open('w', newline='') as fh:
         w = csv.DictWriter(fh, fieldnames=fields, delimiter='\t', extrasaction='ignore')
@@ -424,6 +482,9 @@ def main() -> None:
                                          if r['looks_like'] == 'plate or batch identifier'),
         # Must stay 0. A repeated signature means two different measurements print as one row.
         'indistinguishable_rows': sum(v for v in signature.values() if v > 1),
+        'reviewed_decisions_applied': len(DECISIONS),
+        'contrasts_oriented_by_review': sum(1 for c in contrasts
+                                            if str(c.get('oriented_by', '')).startswith('reviewed')),
     }
     (out / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
     print(json.dumps(summary, indent=2))

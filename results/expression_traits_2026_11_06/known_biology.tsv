@@ -1,0 +1,27 @@
+source	study	column	contrast	gene	gene_id	expected	lfc	se	z	percentile	verdict
+registered column	GSE218921	(no column matched)	WT alkaline switch vs control media	BFD1	TGME49_200385	up					not available
+registered column	GSE218921	(no column matched)	WT alkaline switch vs control media	BAG1	TGME49_259020	up					not available
+registered column	GSE218921	(no column matched)	WT alkaline switch vs control media	ENO1	TGME49_268860	up					not available
+registered column	GSE218921	(no column matched)	WT alkaline switch vs control media	SAG1	TGME49_233460	down					not available
+registered column	GSE218921	(no column matched)	sporozoite bradyzoite induction	BAG1	TGME49_259020	up					not available
+registered column	GSE223877	(no column matched)	BFD1 stabilised (Shield-1)	BAG1	TGME49_259020	up					not available
+registered column	GSE223877	(no column matched)	BFD1 stabilised (Shield-1)	ENO1	TGME49_268860	up					not available
+registered column	GSE139537	(no column matched)	BFD1 stabilised (Shield-1)	BAG1	TGME49_259020	up					not available
+registered column	GSE139537	(no column matched)	BFD1 stabilised (Shield-1)	ENO1	TGME49_268860	up					not available
+registered column	GSE223819	(no column matched)	BFD1 depleted under alkaline stress	BAG1	TGME49_259020	down					not available
+registered column	GSE223819	(no column matched)	BFD2 depleted under alkaline stress	BAG1	TGME49_259020	down					not available
+registered column	GSE132238	(no column matched)	BFD1 knockout under stress vs WT baseline	BAG1	TGME49_259020	down					not available
+registered column	GSE159515	(no column matched)	ME49 bradyzoites vs study centre	BAG1	TGME49_259020	up					not available
+registered column	GSE159515	(no column matched)	ME49 bradyzoites vs study centre	ENO1	TGME49_268860	up					not available
+registered column	GSE159515	(no column matched)	ME49 bradyzoites vs study centre	SAG1	TGME49_233460	down					not available
+registered column	GSE159515	(no column matched)	tachyzoites vs study centre	SAG1	TGME49_233460	up					not available
+registered column	GSE159515	(no column matched)	tachyzoites vs study centre	ENO2	TGME49_268850	up					not available
+registered column	GSE208647	expr_rel_GSE208647_ME49EW_cyst_30_days	30-day mouse-brain tissue cysts vs study centre	BAG1	TGME49_259020	up	10.422			100.0	pass
+registered column	GSE208647	expr_rel_GSE208647_ME49_Tir1_strain_pH8_2_48hrs	in vitro pH 8.2 bradyzoites vs study centre	BAG1	TGME49_259020	up	0.0			5.6	MISS (wrong direction)
+hidden by the control marking	GSE218921	(not a column) VEG WT, Switch vs VEG WT, Control	WT alkaline switch vs WT control media (both marked control, so no column exists)	BFD1	TGME49_200385	up	1.356			89.9	pass
+hidden by the control marking	GSE218921	(not a column) VEG WT, Switch vs VEG WT, Control	WT alkaline switch vs WT control media (both marked control, so no column exists)	BAG1	TGME49_259020	up	4.749			99.6	pass
+hidden by the control marking	GSE218921	(not a column) VEG WT, Switch vs VEG WT, Control	WT alkaline switch vs WT control media (both marked control, so no column exists)	ENO1	TGME49_268860	up	4.912			99.7	pass
+hidden by the control marking	GSE218921	(not a column) VEG WT, Switch vs VEG WT, Control	WT alkaline switch vs WT control media (both marked control, so no column exists)	SAG1	TGME49_233460	down	-1.341			2.5	pass
+hidden by the control marking	GSE132238	(not a column) WT_stress vs WT_unstress	WT alkaline stress vs WT unstressed (both marked control, so no column exists)	BAG1	TGME49_259020	up	6.919			100.0	pass
+hidden by the control marking	GSE132238	(not a column) WT_stress vs WT_unstress	WT alkaline stress vs WT unstressed (both marked control, so no column exists)	ENO1	TGME49_268860	up	6.989			100.0	pass
+hidden by the control marking	GSE132238	(not a column) WT_stress vs WT_unstress	WT alkaline stress vs WT unstressed (both marked control, so no column exists)	SAG1	TGME49_233460	down	-5.248			0.0	pass

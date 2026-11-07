@@ -1,0 +1,17 @@
+column	study	contrast	n_treatment	n_control	genes	pearson	spearman
+expr_lfc_PRJNA705300_Model_organism_or_animal_sample_from_Toxoplasm	PRJNA705300	Model_organism_or_animal_sample_from_Toxoplasm	5	2	1449	-0.441	-0.431
+expr_lfc_PRJNA705300_Model_organism_or_animal_sample_from_Toxoplasm_2	PRJNA705300	Model_organism_or_animal_sample_from_Toxoplasm_2	2	2	1449	-0.369	-0.326
+expr_lfc_GSE271902_Illumina_SNF2h_KD_IAA	GSE271902	Illumina_SNF2h_KD_IAA	3	7	6565	0.68	0.67
+expr_lfc_GSE343877_Toxoplasma_gondii_ME49_bradyzoites_eIF5A_K49Q	GSE343877	Toxoplasma_gondii_ME49_bradyzoites_eIF5A_K49Q	3	6	7395	0.719	0.694
+expr_lfc_GSE271902_Illumina_RFTS_KD_IAA	GSE271902	Illumina_RFTS_KD_IAA	3	7	6565	0.747	0.713
+expr_lfc_PRJNA1133933_Treatment	PRJNA1133933	Treatment	2	2	6950	0.69	0.739
+expr_lfc_GSE313582_Illumina_PHD1_KD_IAA24h	GSE313582	Illumina_PHD1_KD_IAA24h	3	6	6459	0.796	0.741
+expr_lfc_GSE224934_iKD_AP2XII_1_IAA_24h_biological_repeat	GSE224934	iKD_AP2XII_1_IAA_24h_biological_repeat	3	3	6403	0.743	0.752
+expr_lfc_GSE313582_Illumina_PHD1_KD_IAA48h	GSE313582	Illumina_PHD1_KD_IAA48h	3	6	6459	0.867	0.779
+expr_lfc_GSE224934_iKD_AP2XII_1_IAA_12h_biological_repeat	GSE224934	iKD_AP2XII_1_IAA_12h_biological_repeat	3	3	6403	0.909	0.786
+expr_lfc_GSE285297_KO	GSE285297	KO	3	3	6931	0.822	0.868
+expr_lfc_GSE313582_Illumina_GCN5b_KD_IAA48h	GSE313582	Illumina_GCN5b_KD_IAA48h	3	6	6459	0.874	0.872
+expr_lfc_GSE343877_Toxoplasma_gondii_ME49_bradyzoites_eIF5A_K49R	GSE343877	Toxoplasma_gondii_ME49_bradyzoites_eIF5A_K49R	3	6	7395	0.872	0.877
+expr_lfc_GSE343877_Toxoplasma_gondii_ME49_tachyzoites_eIF5A_K49Q	GSE343877	Toxoplasma_gondii_ME49_tachyzoites_eIF5A_K49Q	3	6	7395	0.893	0.893
+expr_lfc_GSE343877_Toxoplasma_gondii_ME49_tachyzoites_eIF5A_K49R	GSE343877	Toxoplasma_gondii_ME49_tachyzoites_eIF5A_K49R	3	6	7395	0.909	0.898
+expr_lfc_GSE313582_Illumina_GCN5b_KD_IAA24h	GSE313582	Illumina_GCN5b_KD_IAA24h	3	6	6459	0.903	0.901

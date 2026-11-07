@@ -1,0 +1,4 @@
+contrast_a	contrast_b	genes	spearman	above_baseline
+GSE218921 wild type, high pH vs control medium	GSE223869 BFD1-Ty, alkaline vs standard medium	8133	0.439	True
+GSE218921 wild type, high pH vs control medium	GSE208647 pH 8.2 minus pH 7.0	8133	0.021	False
+GSE223869 BFD1-Ty, alkaline vs standard medium	GSE208647 pH 8.2 minus pH 7.0	8133	0.373	True

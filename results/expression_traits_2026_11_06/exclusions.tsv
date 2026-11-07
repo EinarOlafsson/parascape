@@ -1,0 +1,5 @@
+exclusion	runs	detail
+design rows outside the studies that have a matrix	1494	runs planned or verified but with no salmon ME49_host matrix in this snapshot
+single-cell collections and the GSE229505 quarantine	0	instruction 69: per-cell 10x libraries; 4 quarantined runs on the NAS
+zero parasite reads (untrimmed short-insert libraries)	40	studies GSE243206, GSE243207, GSE245775
+columns with no value for any gene	0	8 columns dropped, studies GSE245775, GSE98227

@@ -1,0 +1,9 @@
+study	declared_axis	unparsed_difference	looks_like	group_a	group_b
+GSE245775	genotype	riboseq / rnaseq	a real condition axis	treatment: DMEM pH7.4, 5%CO2 | eIF1-2-KO_tachyzoite_RIBOseq	treatment: DMEM pH7.4, 5%CO2 | parental_tachyzoite_RNAseq
+GSE245775	treatment	riboseq / rnaseq	a real condition axis	treatment: DMEM pH7.4, 5%CO2 | eIF1-2-KO_tachyzoite_RIBOseq	treatment: RPMI pH8.3, ambient CO2 | eIF1-2-KO_stress_RNAseq
+GSE245775	genotype	riboseq / rnaseq	a real condition axis	treatment: DMEM pH7.4, 5%CO2 | eIF1-2-KO_tachyzoite_RNAseq	treatment: DMEM pH7.4, 5%CO2 | parental_tachyzoite_RIBOseq
+GSE245775	treatment	riboseq / rnaseq	a real condition axis	treatment: DMEM pH7.4, 5%CO2 | eIF1-2-KO_tachyzoite_RNAseq	treatment: RPMI pH8.3, ambient CO2 | eIF1-2-KO_stress_RIBOseq
+GSE245775	treatment	riboseq / rnaseq	a real condition axis	treatment: DMEM pH7.4, 5%CO2 | parental_tachyzoite_RIBOseq	treatment: RPMI pH8.3, ambient CO2 | parental_stress_RNAseq
+GSE245775	treatment	riboseq / rnaseq	a real condition axis	treatment: DMEM pH7.4, 5%CO2 | parental_tachyzoite_RNAseq	treatment: RPMI pH8.3, ambient CO2 | parental_stress_RIBOseq
+GSE245775	genotype	riboseq / rnaseq	a real condition axis	treatment: RPMI pH8.3, ambient CO2 | eIF1-2-KO_stress_RIBOseq	treatment: RPMI pH8.3, ambient CO2 | parental_stress_RNAseq
+GSE245775	genotype	riboseq / rnaseq	a real condition axis	treatment: RPMI pH8.3, ambient CO2 | eIF1-2-KO_stress_RNAseq	treatment: RPMI pH8.3, ambient CO2 | parental_stress_RIBOseq

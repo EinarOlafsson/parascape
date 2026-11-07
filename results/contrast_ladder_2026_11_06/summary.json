@@ -1,0 +1,26 @@
+{
+  "studies_in": 31,
+  "studies_with_contrasts": 19,
+  "contrasts": 178,
+  "by_axis": {
+    "treatment": 100,
+    "genotype": 43,
+    "time": 21,
+    "condition": 12,
+    "stage": 1,
+    "strain": 1
+  },
+  "by_depth": {
+    "0": 115,
+    "1": 55,
+    "2": 8
+  },
+  "axes_needing_a_named_reference": 0,
+  "pairs_refused_for_an_unparsed_axis": 8,
+  "studies_with_a_refusal": 1,
+  "refusals_on_a_real_axis": 8,
+  "refusals_on_a_plate_label": 0,
+  "indistinguishable_rows": 0,
+  "reviewed_decisions_applied": 35,
+  "contrasts_oriented_by_review": 95
+}

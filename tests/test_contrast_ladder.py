@@ -201,3 +201,60 @@ def test_the_earliest_timepoint_is_the_reference():
 def test_every_orientation_records_the_word_that_decided_it():
     contrasts, _, _ = ladder(GSE218921)
     assert all(c["oriented_by"] for c in contrasts)
+
+
+# ------------------------------------------------------------------ reviewed decisions (instruction 79)
+def _with(decisions):
+    CL.DECISIONS.clear()
+    CL.DECISIONS.update(decisions)
+    return CL
+
+
+def test_a_reviewed_reference_orients_an_axis_the_vocabulary_could_not():
+    CL = _with({("S", "strain"): {"kind": "reference", "reference": "parent", "evidence": "GEO"}})
+    rows = [{"study": "S", "condition_group": "strain: parent"},
+            {"study": "S", "condition_group": "strain: mutant"}]
+    contrasts, unresolved, _ = CL.build(rows, "condition_group", "study")
+    CL.DECISIONS.clear()
+    assert [(c["baseline_level"], c["treated_level"]) for c in contrasts] == [("parent", "mutant")]
+    assert contrasts[0]["oriented_by"].startswith("reviewed")
+    assert not unresolved
+
+
+def test_replicate_ids_reviewed_as_batch_merge_into_one_group():
+    CL = _with({("S", "UNPARSED"): {"kind": "batch", "reference": "", "evidence": "GEO"}})
+    rows = [{"study": "S", "condition_group": f"treatment: {t} | {t}_{r}"}
+            for t in ("untreated", "drug") for r in ("1a", "1b")]
+    contrasts, _, refused = CL.build(rows, "condition_group", "study")
+    CL.DECISIONS.clear()
+    assert len(contrasts) == 1 and not refused
+    assert contrasts[0]["n_baseline"] == 2 and contrasts[0]["n_treated"] == 2
+
+
+def test_unparsed_words_reviewed_as_a_condition_become_an_axis():
+    CL = _with({("S", "UNPARSED"): {"kind": "condition", "reference": "etoh", "evidence": "GEO"}})
+    rows = [{"study": "S", "condition_group": "genotype: wild type | etoh"},
+            {"study": "S", "condition_group": "genotype: wild type | shield1"}]
+    contrasts, _, refused = CL.build(rows, "condition_group", "study")
+    CL.DECISIONS.clear()
+    assert [(c["axis"], c["baseline_level"], c["treated_level"]) for c in contrasts] == \
+        [("condition", "etoh", "shield1")]
+    assert not refused
+
+
+def test_an_axis_that_separates_experiments_carries_no_contrast():
+    CL = _with({("S", "genotype"): {"kind": "separate_experiments", "reference": "", "evidence": "GEO"}})
+    rows = [{"study": "S", "condition_group": "genotype: a-aid; treatment: untreated"},
+            {"study": "S", "condition_group": "genotype: b-aid; treatment: untreated"}]
+    contrasts, unresolved, _ = CL.build(rows, "condition_group", "study")
+    CL.DECISIONS.clear()
+    assert not [c for c in contrasts if c["axis"] == "genotype"] and not unresolved
+
+
+def test_every_reviewed_decision_cites_its_evidence():
+    table = CL.load_decisions(Path(__file__).resolve().parents[1] / "parascape" / "data" /
+                              "contrast_reference_decisions.tsv")
+    assert len(table) >= 30
+    for key, row in table.items():
+        assert row["evidence"].strip(), key
+        assert row["kind"] in ("reference", "condition", "batch", "assay", "separate_experiments"), key

@@ -1,0 +1,31 @@
+study	axis	kind	reference	evidence
+GSE103113	UNPARSED	condition	pru	GEO sample labels: gra18 knockout made in Pru; Pru is the parental line
+GSE116539	strain	reference	type i rh{delta}ku80{delta}hxg clone	GEO strain field: "TgCRT KO derived from RHΔku80Δhxg clone" -- the parental clone is the reference
+GSE125120	UNPARSED	condition	bystander	GEO sample labels: infected cells against bystander (uninfected) cells of the same culture
+GSE132238	UNPARSED	condition	unstress	GEO sample labels: stress against unstress
+GSE136123	UNPARSED	condition	ut	GEO GSE136123 titles: "MORC KD_UT" and "Pru_US" are the untreated controls of the IAA and FR235222 series; Pru and RH are separate experiments, each with its own untreated arm
+GSE136123	genotype	separate_experiments		GEO GSE136123: the MORC KD lines (IAA series) and parental Pru (FR235222 series) are different experiments; compared only within their own series
+GSE139537	UNPARSED	condition	etoh	GEO sample labels: Shield-1 against its vehicle, ethanol
+GSE159515	UNPARSED	batch		GEO GSE159515 overall design: "each evaluated in two biological replicates" -- A and B are replicates, not conditions
+GSE159515	stage	reference	tachyzoites	GEO GSE159515: bradyzoites were alkaline-stress induced from ME49 tachyzoites
+GSE159515	strain	reference	me49	GEO GSE159515: ME49 and RH tachyzoites; ME49 is the reference genome strain (a convention, both directions are the same measurement)
+GSE178355	genotype	separate_experiments		GEO sample labels: METTL3, WTAP and YTH1 AID lines are separate experiments, each against its own untreated arm
+GSE178355	strain	separate_experiments		as the genotype axis: one line per experiment
+GSE178355	treatment	reference	non treated	GEO sample labels: "non treated" against 500 uM IAA for 4 h or 16 h
+GSE198001	genotype	reference	unstated	GEO sample labels: indirect knockout against the line without the edit
+GSE200962	treatment	condition	-aux	GEO GSE200962 titles: each TgCycP2 / TgCyc5 line and stage has a -aux and a +aux arm; -aux is the reference within each; the parental arms are "48h, pH 7.4, 5% CO2, no auxin"
+GSE208647	genotype	reference	tacyzoite	GEO sample labels (stage written in the genotype field): bradyzoite and tissue cyst against tachyzoite
+GSE208647	tissue	reference	hff cell	GEO sample labels: in vitro HFF against mouse brain cysts
+GSE208647	treatment	reference	ph 7.0	GEO sample labels: pH 8.2 alkaline stress and 30 days in mice against pH 7.0
+GSE218921	tissue	reference	replicating tachyzoites under different conditions	GEO sample labels: freshly excysted sporozoites against replicating tachyzoites
+GSE223621	genotype	reference	pru-ova-tdtomato	GEO sample labels: the Δbfd1 and Δbfd2 lines are made in Pru-OVA-tdTomato
+GSE223869	UNPARSED	batch		GEO sample labels: 1a-3b are plate and replicate identifiers
+GSE223869	genotype	reference	me49delta ku80delta bfd1::bfd1-ty	GEO sample labels: the Δbfd2 line is made in the BFD1-Ty line
+GSE223869	treatment	reference	standard culture media, 5% co2	GEO sample labels: alkaline stress media, ambient CO2, against standard culture media
+GSE223877	UNPARSED	batch		GEO sample labels: 1a and 1b are replicate identifiers
+GSE223877	genotype	reference	me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-ty	GEO sample labels: the Δbfd2 line is made in the DD-BFD1 line
+GSE224934	treatment	reference	add iaa 0h	GEO sample labels: IAA time course from 0 h
+GSE228580	treatment	reference	iaa 0h	GEO sample labels: IAA 0 h against 60 h
+GSE240648	strain	reference	tati-3ha-tguba1 strains cultured under dmso (wild strain)	GEO sample labels: ATc (knockdown) against DMSO (wild type)
+GSE245775	UNPARSED	assay		GEO sample labels: Ribo-seq and RNA-seq are two assays of the same samples, never contrasted with each other
+GSE245775	treatment	reference	dmem ph7.4, 5%co2	GEO sample labels: RPMI pH 8.3 ambient CO2 (alkaline stress) against DMEM pH 7.4, 5% CO2

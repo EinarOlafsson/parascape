@@ -1,5 +1,5 @@
 # 79 · Within-study control review: unlock the relative expression columns
-**Status: open (requested 2026-11-05).** The highest-value curation left on the RNA side, identified while
+**Status: done 2026-11-06.** Gate met: wild-type alkaline stress agrees across studies at 0.439 (was 0.236), and the GSE218921 contrast is a column. Requested 2026-11-05.
 building the expression columns.
 
 ## Why
@@ -54,3 +54,36 @@ vocabulary could not decide.
 
 **Still open**: rebuilding the expression columns from the ladder, which is what the rest of the gate
 (alkaline agreement above 0.236) measures. The ladder is the input to that, not the result of it.
+
+## Done 2026-11-06: reviewed references applied, columns rebuilt, gate measured
+
+**Reviewed decisions.** `parascape/data/contrast_reference_decisions.tsv` holds the 30 axes that needed a named
+reference, each decided from the GEO text and the paper, with the evidence quoted. `build_contrast_ladder.py
+--decisions` reads it; batch tokens are stripped before groups merge (168 pairs had printed identically
+because of them), and a study whose only factor is `condition` now gets an axis. Result
+(`results/contrast_ladder_2026_11_06/`): **178 contrasts across 19 studies, 0 indistinguishable, 0 needing a
+reference.** 31 tests in `tests/test_contrast_ladder.py`.
+
+**Columns rebuilt** (`scripts/build_expression_traits_notebook.py`,
+`notebooks/expression_traits_2026_11_06.ipynb`, `results/expression_traits_2026_11_06/`). Every ladder contrast
+becomes an `expr_lfc_{study}_{slug}` column, normalized `relative_to_control`, with `ladder_axis`,
+`ladder_depth` and `oriented_by` in the registry. Columns with no value for any gene are no longer published
+(8 dropped: GSE245775 ribosome profiling, whose runs carry zero quality weight, and GSE98227); the drop is a
+row in `exclusions.tsv`.
+
+**The gate** (`alkaline_gate.tsv`, computed in the notebook). Wild-type alkaline against normal medium:
+
+| pair | Spearman |
+|---|---|
+| GSE218921 against GSE223869, both relative to control | **0.439** |
+| GSE223869 against GSE208647 (the baseline pair, now with a real control on one side) | 0.373 |
+| GSE218921 against GSE208647 | 0.021 |
+
+Median 0.373 against the old 0.236; two of three pairs clear it. The low pair involves GSE208647, which the
+ladder still cannot pair (its pH arms also differ in the declared stage, "Tachyzoite" against
+"Bradyzoite"), so it is compared through the difference of its two internally referenced arms. GSE200962 is
+not an alkaline contrast (both arms alkaline, the contrast is auxin) and is left out.
+
+**Not in this item:** the app information map still reads the 2026-11-05 expression table
+(`information_categories.EXPRESSION_COLUMNS` is pinned to it). The 2026-11-06 columns enter at the next
+information-map release.
