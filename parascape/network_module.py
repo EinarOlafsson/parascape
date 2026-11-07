@@ -499,6 +499,9 @@ class NetworkModule(QtCore.QObject):
                              "calls are right (Infer).")
         shell.add_action("Whole network", lambda: self.view.fit(),
                          tip="Zoom out to the whole network.")
+        shell.add_action("Open a saved bundle…", lambda: self.open_bundle(),
+                         tip="Read a bundle saved here back: its files are checked against their hashes "
+                             "and its view is restored.")
         shell.add_action("Save everything as a bundle…", lambda: self.save_bundle(),
                          tip="One folder: the tables (each marked measured, inferred or computed), "
                              "the view as a vector figure, the methods text with its references, and "
@@ -698,6 +701,11 @@ class NetworkModule(QtCore.QObject):
         from .map_module import open_in
         open_in(self.window)
         self.window.map_module.module.select(list(self.focus), "")
+
+    def open_bundle(self, folder: str = "") -> dict:
+        """Read a bundle saved by this module back and restore its view (64.39)."""
+        from . import export_bundle
+        return export_bundle.reopen(self, folder)
 
     def save_bundle(self, folder: str = "") -> str:
         """Write the focus gene's links, as measured, with the network figure; returns the folder."""

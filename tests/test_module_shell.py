@@ -393,6 +393,9 @@ def test_map_gene_and_network_save_a_bundle_a_reload_verifies(window, tmp_path, 
     folder = gene.save_bundle(str(tmp_path / "gene"))
     manifest = export_bundle.load(folder)
     assert manifest["query"]["gene"] == gid
+    other = str(window.nodes.gene_id.iloc[1])
+    gene.show(other)
+    assert gene.open_bundle(folder)["query"]["gene"] == gid and gene.gene == gid
     assert manifest["files"]["what_is_measured.csv"]["kind"] == "measured"
     open_module(window, "map")
     qtbot.wait(200)

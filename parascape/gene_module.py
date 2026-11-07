@@ -170,6 +170,9 @@ class GeneModule(QtCore.QObject):
         shell.add_action("Predict what is missing", lambda: self._open("infer"),
                          tip="Answer a question about this gene from the evidence, with how often "
                              "such answers are right (Infer).")
+        shell.add_action("Open a saved bundle…", lambda: self.open_bundle(),
+                         tip="Read a bundle saved here back: its files are checked against their hashes "
+                             "and its view is restored.")
         shell.add_action("Save everything as a bundle…", lambda: self.save_bundle(),
                          tip="One folder: what is measured about the gene, what is unusual, your kept "
                              "claims (marked inferred), the methods text with references, and a "
@@ -328,6 +331,11 @@ class GeneModule(QtCore.QObject):
         self._render_methods(r)
         self._render_evidence(r)
         self._render_inferences(r)
+
+    def open_bundle(self, folder: str = "") -> dict:
+        """Read a bundle saved by this module back and restore its view (64.39)."""
+        from . import export_bundle
+        return export_bundle.reopen(self, folder)
 
     def save_bundle(self, folder: str = "") -> str:
         """Write the current gene as an export bundle; returns the folder."""

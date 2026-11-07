@@ -1,6 +1,6 @@
 # 64.39 · Export the evidence and inference trail
 
-Status: OPEN — about 95 %, 2026-11-07. Bundles from Infer, Map, Gene and Network; an Infer bundle reopens in the application (hash-checked). Reopening Map, Gene and Network bundles remains.
+Status: DONE 2026-11-07. Bundles from Infer, Map, Gene and Network, each hash-checked on reopen and restoring its view.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -61,3 +61,8 @@ Infer ▸ Save the answer ▸ **Open a saved bundle…** (`InferModule.open_bund
 file refuses the whole bundle), the bundle's question is selected again, the kinds of evidence it left out are
 restored (now saved in the query), and its named genes are shown as the saved answer, not a re-run. Test in
 `tests/test_module_shell.py`. Open: reopening Map, Gene and Network bundles.
+
+**Map, Gene and Network reopen too (same day):** `export_bundle.reopen` verifies a bundle and restores the module's
+view -- Map: the selected genes and the colour-by label; Gene: the gene; Network: the focus gene -- without
+re-running anything. Checked on the real window (Map selection [5, 9] restored; Network focus restored) and in
+`tests/test_module_shell.py`. All done-when points of this item are met.

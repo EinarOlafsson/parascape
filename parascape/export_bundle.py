@@ -92,3 +92,39 @@ def ask_folder(parent) -> str:
     """A folder dialog for a bundle; "" when cancelled."""
     from PySide6 import QtWidgets
     return QtWidgets.QFileDialog.getExistingDirectory(parent, "Folder for the bundle") or ""
+
+
+def reopen(module, folder: str = "") -> dict:
+    """Read a bundle back into a Map, Gene or Network module: verify it, then restore its query.
+
+    Map: the selected genes and the colour-by label; Gene: the gene; Network: the focus gene. What was
+    computed is not re-run; the bundle files are the record, and the restored view is where to look again.
+    """
+    if not folder:
+        folder = ask_folder(module.shell)
+        if not folder:
+            return {}
+    try:
+        manifest = load(folder)
+    except (OSError, ValueError) as error:
+        module.shell.say(f"bundle refused: {error}")
+        return {}
+    query = manifest.get("query", {})
+    kind = query.get("module")
+    if kind == "gene" and query.get("gene"):
+        module.show(str(query["gene"]))
+    elif kind == "network" and query.get("gene"):
+        module.field.setText(str(query["gene"]))
+        module._typed()
+    elif kind == "map":
+        ids = module.window.nodes["gene_id"].astype(str).tolist()
+        wanted = [ids.index(g) for g in query.get("selected", []) if g in ids]
+        if query.get("colour_by"):
+            module._colour_chosen(str(query["colour_by"]))
+        if wanted:
+            module.select(wanted, "from the bundle")
+    else:
+        module.shell.say(f"this bundle is for the {kind or 'unknown'} module")
+        return manifest
+    module.shell.say(f"bundle opened: {folder}")
+    return manifest

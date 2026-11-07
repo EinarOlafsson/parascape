@@ -503,6 +503,9 @@ class MapModule(QtCore.QObject):
         shell.add_action("Full 3D view", lambda: _show_map(window),
                          tip="Leave the module for the map in the main window, with every tool "
                              "it has.")
+        shell.add_action("Open a saved bundle…", lambda: self.open_bundle(),
+                         tip="Read a bundle saved here back: its files are checked against their hashes "
+                             "and its view is restored.")
         shell.add_action("Save everything as a bundle…", lambda: self.save_bundle(),
                          tip="One folder: the tables (each marked measured, inferred or computed), "
                              "the view as a vector figure, the methods text with its references, and "
@@ -1080,6 +1083,11 @@ class MapModule(QtCore.QObject):
             f"Tries the Advanced settings in turn on a sample of genes and scores each map by "
             f"how often neighbours agree on {self.colour_box.currentText()} -- the label you "
             f"are colouring by. Click a row to use those settings.")
+
+    def open_bundle(self, folder: str = "") -> dict:
+        """Read a bundle saved by this module back and restore its view (64.39)."""
+        from . import export_bundle
+        return export_bundle.reopen(self, folder)
 
     def save_bundle(self, folder: str = "") -> str:
         """Write the map, its groups and their tables as an export bundle; returns the folder."""
