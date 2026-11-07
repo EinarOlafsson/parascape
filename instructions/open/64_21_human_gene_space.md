@@ -1,6 +1,6 @@
 # 64.21 · Build the human gene information space
 
-Status: OPEN — 30%, 2026-10-08. Canonical source-gene foundation and documentary v10 terms/reference verified; pack/admission gates remain open.
+Status: OPEN — 60%, 2026-11-07. Foundation, documentary terms, HPA annotations and reviewed protein links built and checked; the distributable pack (opening, attribution notices) remains.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -24,8 +24,8 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Done when
 
-- [ ] Declare canonical gene/protein mappings and per-column species, units, licenses, provenance and targets; quantify one-to-many/lost joins.
-- [ ] A notebook reproduces the build and per-source sanity checks; unique IDs, non-loss and graph-order checks pass.
+- [x] Declare canonical gene/protein mappings and per-column species, units, licenses, provenance and targets; quantify one-to-many/lost joins.
+- [x] A notebook reproduces the build and per-source sanity checks; unique IDs, non-loss and graph-order checks pass.
 - [ ] A validated distributable human pack opens independently; protein reference rows are not relabeled as genes.
 - [ ] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
 - [ ] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
@@ -118,3 +118,25 @@ executed-process VmHWM. No original foundation or admission fields were mutated.
 Pack notices/attribution, reference-gene coverage/mapping, graph/order/opening,
 release-specific publication lineage and biological benchmarks remain open.
 64.21 stays 30%; this documentary gate does not admit a distributable host pack.
+
+## Second partition: HPA annotations and shipped-protein links (2026-11-07)
+
+`scripts/build_human_gene_space_notebook.py` → `notebooks/human_gene_space_2026_11_07.ipynb`,
+`results/human_gene_space_2026_11_07/`. Built on the foundation without changing it (checked: same genes, same
+order, same values).
+
+- Human Protein Atlas annotations (RNA tissue specificity/distribution, single-cell specificity, subcellular
+  location and reliability, secretome location, protein class) attached by Ensembl id: 19,706 of 58,988 genes.
+  1,035 HPA rows have no Ensembl id and 456 HPA genes are outside the GTEx v10 universe; both are listed, none
+  added as genes. HPA licence CC BY-SA 4.0 recorded per column (attribution and share-alike on a pack).
+- The shipped protein table (`hs_host_proteins.parquet`, 20,989 UniProt rows) linked through reviewed
+  cross-references only: 17,714 proteins to one gene, 1,572 to several genes, 1,703 to none
+  (`proteins_without_gene.tsv`); 145 genes have more than one shipped protein. The links are their own table
+  (`hs_protein_gene_links.parquet`); no protein measurement is copied onto a gene.
+- `column_metadata.json` describes every column (species, unit, evidence grade, source hash, licence,
+  redistribution, missingness, allowed use). Checks pass: unique ids, every foundation gene kept in order,
+  foundation values unchanged, no protein id used as a gene, every shipped protein in the links, every column
+  described.
+
+Remaining: the distributable pack (pack format, GTEx/UniProt/HPA attribution notices, opening independently in
+ParaScape) and its benchmark gate.

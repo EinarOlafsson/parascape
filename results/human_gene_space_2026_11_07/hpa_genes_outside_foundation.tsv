@@ -1,0 +1,457 @@
+gene_id	HPA_RNA_tissue_specificity	HPA_RNA_tissue_distribution	HPA_RNA_singlecell_specificity	HPA_subcellular_location	HPA_subcellular_reliability	HPA_secretome_location	HPA_protein_class
+ENSG00000011052	Tissue enhanced	Detected in many	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000064489	Not detected	Not detected	Group enriched	Nucleoplasm;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000103426	Tissue enhanced	Detected in single	Not detected	Nucleoplasm;Mitochondria	Approved		Predicted intracellular proteins
+ENSG00000105371	Group enriched	Detected in some	Cell type enhanced			Intracellular and membrane	Blood group antigen proteins, CD markers, Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000108825	Tissue enhanced	Detected in many	Group enriched	Nuclear membrane;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000111780	Not detected	Not detected	Cell type enhanced	Mitochondria	Approved		Predicted intracellular proteins
+ENSG00000114786	Not detected	Not detected	Cell type enhanced	Vesicles	Supported		Predicted intracellular proteins
+ENSG00000124208	Low tissue specificity	Detected in many	Cell type enriched	Nucleoplasm	Supported		Predicted membrane proteins
+ENSG00000125954	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000129965	Group enriched	Detected in some	Cell type enriched	Nucleoplasm	Uncertain	Secreted to digestive system	Predicted secreted proteins
+ENSG00000130283	Tissue enriched	Detected in some	Not detected			Secreted to blood	Disease related genes, Human disease related genes, Predicted secreted proteins
+ENSG00000131152	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000136305	Tissue enhanced	Detected in many	Cell type enhanced	Golgi apparatus;Vesicles	Approved		Predicted intracellular proteins
+ENSG00000142539	Tissue enhanced	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000142684	Low tissue specificity	Detected in all	Cell type enhanced	Nucleoli	Enhanced		Essential proteins, Predicted intracellular proteins
+ENSG00000142694	Low tissue specificity	Detected in many	Cell type enhanced	Plasma membrane	Approved		Predicted intracellular proteins
+ENSG00000144785	Low tissue specificity	Detected in many	Cell type enhanced	Nucleoplasm;Centriolar satellite	Approved		Predicted intracellular proteins
+ENSG00000145337	Low tissue specificity	Detected in all	Group enriched	Nucleoplasm	Approved		Disease related genes, Essential proteins, Metabolic proteins, Predicted intracellular proteins
+ENSG00000161939	Low tissue specificity	Detected in many	Cell type enhanced	Nucleoplasm	Uncertain		Predicted membrane proteins
+ENSG00000164708	Group enriched	Detected in many	Cell type enriched	Nucleoplasm	Approved		Disease related genes, Enzymes, Human disease related genes, Metabolic proteins, Plasma proteins, Potential drug targets, Predicted intracellular proteins
+ENSG00000167644	Tissue enhanced	Detected in many	Cell type enhanced	Nucleoplasm	Supported		Predicted intracellular proteins
+ENSG00000168255	Low tissue specificity	Detected in many	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000168970	Low tissue specificity	Detected in some	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins, RAS pathway related proteins
+ENSG00000173349	Low tissue specificity	Detected in many	Cell type enhanced				Predicted membrane proteins
+ENSG00000173366	Not detected	Not detected	Cell type enhanced				Predicted membrane proteins
+ENSG00000173486	Low tissue specificity	Detected in all	Cell type enhanced	Plasma membrane	Approved	Intracellular and membrane	Enzymes, Metabolic proteins, Predicted intracellular proteins
+ENSG00000173867	Low tissue specificity	Detected in many	Cell type enhanced	Microtubules	Approved		Predicted intracellular proteins
+ENSG00000177300	Tissue enriched	Detected in some	Cell type enriched				Predicted membrane proteins, Transporters
+ENSG00000178922	Low tissue specificity	Detected in all	Cell type enhanced	Plasma membrane;Cytosol	Approved		Enzymes, Metabolic proteins, Predicted intracellular proteins
+ENSG00000183260	Tissue enriched	Detected in many	Group enriched	Nucleoplasm	Enhanced		Plasma proteins, Predicted intracellular proteins
+ENSG00000183979	Tissue enriched	Detected in some	Cell type enhanced			Secreted in other tissues	Predicted secreted proteins
+ENSG00000184716	Tissue enriched	Detected in some	Cell type enhanced				Predicted membrane proteins
+ENSG00000196826	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000197991	Not detected	Not detected	Not detected	Vesicles	Approved		Predicted membrane proteins
+ENSG00000198211	Tissue enriched	Detected in single	Not detected	Microtubules	Approved		Predicted membrane proteins
+ENSG00000205923	Low tissue specificity	Detected in many	Cell type enhanced	Nucleoplasm	Approved		Metabolic proteins, Predicted intracellular proteins
+ENSG00000206203	Tissue enriched	Detected in single	Group enriched				Enzymes, Predicted membrane proteins
+ENSG00000206549	Tissue enhanced	Detected in some	Cell type enriched				Predicted intracellular proteins
+ENSG00000211694	Tissue enhanced	Detected in many	Group enriched				Predicted intracellular proteins, T-cell receptor genes
+ENSG00000213402	Group enriched	Detected in many	Cell type enhanced	Plasma membrane	Approved	Intracellular and membrane	Predicted intracellular proteins
+ENSG00000213689	Low tissue specificity	Detected in all	Cell type enhanced	Cytosol	Supported		Disease related genes, Enzymes, Human disease related genes, Metabolic proteins, Potential drug targets, Predicted membrane proteins
+ENSG00000214447	Tissue enhanced	Detected in some	Not detected	Acrosome	Approved		Predicted membrane proteins
+ENSG00000215183	Tissue enhanced	Detected in some	Group enriched	Vesicles	Supported	Secreted in other tissues	Predicted secreted proteins
+ENSG00000215472	Tissue enhanced	Detected in all	Cell type enhanced	Endoplasmic reticulum;Cytosol	Supported		Predicted intracellular proteins
+ENSG00000221874	Tissue enhanced	Detected in some	Cell type enhanced	Nucleoplasm	Uncertain		Predicted intracellular proteins
+ENSG00000221932	Tissue enriched	Detected in some	Cell type enhanced	Golgi apparatus	Approved		Predicted intracellular proteins
+ENSG00000224916	Tissue enriched	Detected in some	Cell type enriched				Predicted membrane proteins
+ENSG00000235007	Not detected	Not detected	Cell type enhanced				Predicted membrane proteins
+ENSG00000239395	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000241489	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000241690	Tissue enriched	Detected in single	Cell type enriched	Plasma membrane	Approved		Predicted membrane proteins
+ENSG00000243207	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000244115	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000244255	Tissue enhanced	Detected in single	Not detected	Endoplasmic reticulum;Vesicles	Approved		Predicted intracellular proteins
+ENSG00000248167	Not detected	Not detected	Not detected	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000248235	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000248405	Low tissue specificity	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000248592	Tissue enhanced	Detected in some	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000248643	Low tissue specificity	Detected in many	Low cell type specificity	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000248672	Tissue enhanced	Detected in some	Cell type enhanced				Predicted membrane proteins
+ENSG00000248751	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000248871	Tissue enhanced	Detected in some	Cell type enhanced	Vesicles	Approved		Predicted intracellular proteins
+ENSG00000248919	Low tissue specificity	Detected in many	Cell type enriched	Mitochondria	Approved		Predicted intracellular proteins
+ENSG00000248993	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000249139	Group enriched	Detected in some	Group enriched			Secreted in male reproductive system	Predicted secreted proteins
+ENSG00000249141	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000249209	Low tissue specificity	Detected in single	Group enriched				Predicted intracellular proteins
+ENSG00000249240	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000249319	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000249590	Tissue enhanced	Detected in some	Not detected				Predicted membrane proteins
+ENSG00000249773	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000249884	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000249967	Tissue enhanced	Detected in single	Cell type enhanced	Plasma membrane	Uncertain		Predicted intracellular proteins
+ENSG00000250021	Low tissue specificity	Detected in all	Cell type enhanced	Vesicles	Approved		Predicted intracellular proteins
+ENSG00000250151	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000250264	Tissue enhanced	Detected in many	Not detected	Nuclear speckles;Endoplasmic reticulum	Approved		Predicted membrane proteins
+ENSG00000250349	Tissue enriched	Detected in single	Group enriched				Predicted membrane proteins
+ENSG00000250424	Tissue enhanced	Detected in single	Cell type enhanced	Plasma membrane	Approved		Predicted membrane proteins
+ENSG00000250641	Tissue enriched	Detected in single	Cell type enhanced				Predicted membrane proteins
+ENSG00000250644	Tissue enhanced	Detected in many	Cell type enhanced				Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000250709	Tissue enriched	Detected in single	Group enriched	Vesicles	Approved		Predicted intracellular proteins
+ENSG00000250741	Tissue enriched	Detected in single	Group enriched	Nucleoplasm;Plasma membrane	Approved		Predicted intracellular proteins
+ENSG00000251012	Not detected	Not detected	Group enriched				Predicted intracellular proteins
+ENSG00000251184	Group enriched	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000251201	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000251246	Not detected	Not detected	Cell type enhanced				Predicted membrane proteins
+ENSG00000251349	Tissue enriched	Detected in many	Cell type enhanced				Predicted membrane proteins
+ENSG00000251357	Not detected	Not detected	Cell type enhanced				Predicted membrane proteins
+ENSG00000251503	Tissue enriched	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000251537	Not detected	Not detected	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000251569	Group enriched	Detected in many	Cell type enhanced	Basal body;Cytosol;Acrosome	Approved		Predicted intracellular proteins
+ENSG00000253797	Low tissue specificity	Detected in many	Group enriched	Nucleoli	Approved		Predicted intracellular proteins
+ENSG00000254402	Tissue enhanced	Detected in many	Cell type enhanced	Vesicles	Approved		Predicted membrane proteins
+ENSG00000254692	Low tissue specificity	Detected in some	Group enriched	Golgi apparatus	Approved		Predicted membrane proteins
+ENSG00000254706	Low tissue specificity	Detected in many	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000254709	Tissue enhanced	Detected in many	Cell type enriched			Secreted to blood	Predicted intracellular proteins, Predicted secreted proteins
+ENSG00000254788	Tissue enhanced	Detected in many	Cell type enhanced				Predicted membrane proteins
+ENSG00000254979	Tissue enhanced	Detected in many	Cell type enhanced				Predicted membrane proteins
+ENSG00000254996	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000255071	Tissue enriched	Detected in some	Cell type enhanced				Predicted membrane proteins
+ENSG00000255072	Low tissue specificity	Detected in all	Not detected				Disease related genes, Human disease related genes, Metabolic proteins, Predicted membrane proteins
+ENSG00000255245	Tissue enhanced	Detected in some	Group enriched	Nuclear membrane;Vesicles	Approved		Predicted membrane proteins
+ENSG00000255432	Tissue enhanced	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000255439	Low tissue specificity	Detected in many	Cell type enhanced	Endoplasmic reticulum	Approved		Predicted intracellular proteins
+ENSG00000255526	Tissue enhanced	Detected in some	Not detected	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000255639	Tissue enhanced	Detected in many	Cell type enhanced	Mitochondria	Approved		Predicted intracellular proteins
+ENSG00000255641	Tissue enhanced	Detected in some	Group enriched				Predicted membrane proteins
+ENSG00000255730	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000255835	Not detected	Not detected	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000256349	Tissue enhanced	Detected in single	Cell type enriched	Midbody	Approved		Predicted intracellular proteins
+ENSG00000256453	Group enriched	Detected in some	Cell type enhanced	Nucleoplasm	Supported		Predicted intracellular proteins
+ENSG00000256500	Tissue enhanced	Detected in many	Group enriched	Plasma membrane;Acrosome;Equatorial segment	Approved		Predicted intracellular proteins
+ENSG00000256514	Low tissue specificity	Detected in all	Cell type enhanced	Centriolar satellite	Approved		Predicted intracellular proteins
+ENSG00000256646	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000256825	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000257046	Tissue enriched	Detected in some	Cell type enriched				Predicted membrane proteins
+ENSG00000257184	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000257390	Tissue enriched	Detected in single	Cell type enhanced	Nuclear speckles	Approved		Predicted intracellular proteins
+ENSG00000257411	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000257529	Low tissue specificity	Detected in all	Cell type enriched	Endoplasmic reticulum;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000257767	Tissue enhanced	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000257921	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000258311	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000258417	Not detected	Not detected	Not detected				Predicted membrane proteins
+ENSG00000258465	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000258529	Tissue enhanced	Detected in single	Cell type enhanced	Endoplasmic reticulum	Approved		Predicted membrane proteins
+ENSG00000258588	Not detected	Not detected	Cell type enhanced	Centrosome	Uncertain		Predicted intracellular proteins
+ENSG00000258644	Tissue enriched	Detected in many	Cell type enhanced	Mitochondria	Approved		Predicted intracellular proteins
+ENSG00000258674	Tissue enhanced	Detected in many	Group enriched				Predicted membrane proteins
+ENSG00000258691	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000258724	Tissue enhanced	Detected in some	Cell type enhanced	Nuclear speckles	Approved		Predicted intracellular proteins
+ENSG00000258728	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000258881	Tissue enhanced	Detected in single	Cell type enhanced				Predicted membrane proteins
+ENSG00000258989	Tissue enhanced	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000259024	Low tissue specificity	Detected in all	Cell type enhanced	Golgi apparatus	Approved		Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000259030	Tissue enhanced	Detected in many	Cell type enhanced	Vesicles	Approved		Predicted intracellular proteins
+ENSG00000259060	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000259066	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000259075	Low tissue specificity	Detected in some	Cell type enhanced	Golgi apparatus	Approved		Predicted intracellular proteins
+ENSG00000259112	Low tissue specificity	Detected in many	Cell type enriched	Mitochondria	Approved		Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000259132	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000259171	Tissue enhanced	Detected in many	Not detected				Predicted intracellular proteins
+ENSG00000259305	Low tissue specificity	Detected in all	Cell type enhanced	Nucleoplasm	Uncertain		Predicted intracellular proteins
+ENSG00000259332	Tissue enhanced	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000259371	Not detected	Not detected	Group enriched				Predicted membrane proteins
+ENSG00000259399	Low tissue specificity	Detected in many	Cell type enhanced	Mitochondria	Approved		Predicted membrane proteins
+ENSG00000259784	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000260007	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000260170	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000260238	Low tissue specificity	Detected in all	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000260272	Tissue enhanced	Detected in single	Cell type enhanced				Predicted membrane proteins
+ENSG00000260342	Tissue enhanced	Detected in some	Cell type enhanced	Endoplasmic reticulum	Approved		Predicted membrane proteins
+ENSG00000260371	Low tissue specificity	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000260537	Low tissue specificity	Detected in many	Cell type enhanced	Nucleoplasm	Uncertain		Predicted intracellular proteins
+ENSG00000260643	Tissue enhanced	Detected in many	Group enriched	Vesicles	Approved		Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000260836	Not detected	Not detected	Cell type enhanced	Endoplasmic reticulum	Approved		Predicted intracellular proteins
+ENSG00000260861	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000260914	Tissue enhanced	Detected in all	Cell type enhanced	Midbody	Approved		Predicted intracellular proteins
+ENSG00000261130	Not detected	Not detected	Cell type enhanced				Predicted membrane proteins
+ENSG00000261717	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000261793	Tissue enriched	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000261796	Low tissue specificity	Detected in all	Cell type enhanced	Nuclear speckles	Enhanced		Predicted intracellular proteins
+ENSG00000261832	Not detected	Not detected	Cell type enhanced	Nucleoplasm	Approved		Predicted membrane proteins
+ENSG00000262660	Tissue enhanced	Detected in some	Cell type enhanced	Mitochondria	Supported		Predicted membrane proteins
+ENSG00000262664	Low tissue specificity	Detected in all	Not detected	Nucleoplasm	Supported		Predicted intracellular proteins
+ENSG00000263020	Low tissue specificity	Detected in many	Not detected				Predicted intracellular proteins
+ENSG00000263620	Tissue enhanced	Detected in many	Cell type enriched				Predicted membrane proteins
+ENSG00000263715	Tissue enriched	Detected in single	Group enriched				Predicted membrane proteins
+ENSG00000264668	Tissue enhanced	Detected in single	Cell type enhanced	Nucleoli;Nucleoli rim	Approved		Predicted intracellular proteins
+ENSG00000265118	Tissue enriched	Detected in some	Cell type enhanced	Golgi apparatus;Vesicles;Plasma membrane;Primary cilium	Approved		Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000265303	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000265590	Low tissue specificity	Detected in all	Cell type enriched	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000266202	Tissue enhanced	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000266953	Group enriched	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000267001	Tissue enhanced	Detected in many	Cell type enhanced				Predicted membrane proteins
+ENSG00000267140	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000267157	Not detected	Not detected	Cell type enriched				Predicted intracellular proteins
+ENSG00000267168	Not detected	Not detected	Group enriched				Predicted intracellular proteins
+ENSG00000267173	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000267179	Not detected	Not detected	Cell type enhanced	Nucleoplasm	Uncertain		Predicted intracellular proteins
+ENSG00000267261	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000267281	Not detected	Not detected	Cell type enhanced	Nucleoplasm;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000267318	Tissue enhanced	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000267335	Tissue enriched	Detected in some	Cell type enhanced			Secreted - unknown location	Predicted intracellular proteins, Predicted secreted proteins
+ENSG00000267360	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000267561	Tissue enhanced	Detected in many	Cell type enhanced	Mitochondria	Uncertain		Predicted intracellular proteins
+ENSG00000267618	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000267740	Low tissue specificity	Detected in many	Cell type enhanced	Mitochondria;End piece	Approved		Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000267748	Tissue enhanced	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000267881	Tissue enriched	Detected in single	Group enriched				Predicted intracellular proteins
+ENSG00000267952	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000268083	Tissue enhanced	Detected in some	Cell type enhanced	Mitochondria	Uncertain		Predicted intracellular proteins
+ENSG00000268133	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000268163	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000268361	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000268434	Tissue enhanced	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000268465	Tissue enhanced	Detected in some	Cell type enhanced	Plasma membrane;Cytosol	Uncertain		Predicted intracellular proteins
+ENSG00000268533	Tissue enhanced	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000268643	Tissue enhanced	Detected in many	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000268674	Low tissue specificity	Detected in many	Not detected				Predicted intracellular proteins
+ENSG00000268750	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000268790	Tissue enhanced	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000268870	Not detected	Not detected	Cell type enhanced	Nucleoplasm	Uncertain		Predicted intracellular proteins
+ENSG00000269026	Not detected	Not detected	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000269035	Not detected	Not detected	Group enriched	Nuclear membrane	Approved		Predicted membrane proteins
+ENSG00000269095	Low tissue specificity	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000269533	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000269547	Not detected	Not detected	Cell type enhanced	Nucleoplasm;Mitochondria	Uncertain		Predicted intracellular proteins
+ENSG00000269590	Tissue enhanced	Detected in some	Cell type enhanced	Nuclear membrane;Endoplasmic reticulum	Approved		Predicted intracellular proteins
+ENSG00000269711	Group enriched	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000269897	Tissue enhanced	Detected in some	Cell type enhanced	Nuclear bodies	Approved		Predicted intracellular proteins
+ENSG00000269955	Low tissue specificity	Detected in all	Not detected	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000270181	Not detected	Not detected	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000270249	Tissue enhanced	Detected in some	Cell type enhanced	Nucleoplasm	Uncertain		Predicted intracellular proteins
+ENSG00000270299	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000270617	Low tissue specificity	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000270757	Tissue enhanced	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000271092	Low tissue specificity	Detected in many	Group enriched				Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000271254	Low tissue specificity	Detected in all	Cell type enhanced	Primary cilium;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000271810	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000272104	Low tissue specificity	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000272297	Tissue enriched	Detected in some	Group enriched				Predicted membrane proteins
+ENSG00000272414	Low tissue specificity	Detected in some	Cell type enhanced	Plasma membrane;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000272617	Low tissue specificity	Detected in all	Not detected				Predicted intracellular proteins
+ENSG00000272772	Low tissue specificity	Detected in many	Low cell type specificity	Nucleoplasm;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000272822	Tissue enhanced	Detected in some	Cell type enhanced	Nucleoplasm;Nuclear bodies	Approved		Predicted intracellular proteins
+ENSG00000272968	Tissue enriched	Detected in single	Group enriched				Predicted intracellular proteins
+ENSG00000272980	Tissue enriched	Detected in many	Cell type enhanced	Centrosome;Basal body	Approved		Predicted intracellular proteins
+ENSG00000273047	Tissue enriched	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000273049	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000273088	Tissue enhanced	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000273154	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000273155	Low tissue specificity	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000273171	Tissue enriched	Detected in single	Cell type enriched				Predicted intracellular proteins
+ENSG00000273217	Not detected	Not detected	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000273291	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000273554	Tissue enhanced	Detected in some	Group enriched				Predicted membrane proteins
+ENSG00000273748	Low tissue specificity	Detected in all	Low cell type specificity				Predicted intracellular proteins
+ENSG00000274175	Group enriched	Detected in some	Not detected	Centriolar satellite	Uncertain		Predicted intracellular proteins
+ENSG00000274792	Not detected	Not detected	Not detected	Centrosome	Uncertain		Predicted membrane proteins
+ENSG00000274810	Low tissue specificity	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000274847	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000274944	Tissue enhanced	Detected in some	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000275063	Tissue enhanced	Detected in many	Cell type enriched			Secreted to blood	Predicted secreted proteins
+ENSG00000275163	Group enriched	Detected in some	Not detected				Predicted membrane proteins
+ENSG00000275249	Not detected	Not detected	Not detected				Predicted membrane proteins
+ENSG00000275674	Tissue enhanced	Detected in some	Low cell type specificity				Predicted intracellular proteins
+ENSG00000275740	Tissue enhanced	Detected in some	Cell type enhanced	Nuclear speckles	Approved		Predicted intracellular proteins
+ENSG00000275778	Low tissue specificity	Detected in many	Cell type enriched				Predicted intracellular proteins
+ENSG00000275869	Tissue enhanced	Detected in single	Not detected	Centriolar satellite	Approved		Predicted intracellular proteins
+ENSG00000276017	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000276256	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000276302	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000276345	Tissue enhanced	Detected in many	Cell type enhanced	Nucleoli fibrillar center;Mitochondria	Approved		Predicted intracellular proteins
+ENSG00000276760	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000277196	Tissue enriched	Detected in many	Cell type enhanced	Mitochondria	Approved		Human disease related genes, Predicted intracellular proteins
+ENSG00000277400	Low tissue specificity	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000277475	Tissue enhanced	Detected in many	Not detected				Predicted membrane proteins
+ENSG00000277630	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000277836	Group enriched	Detected in many	Cell type enriched				Predicted intracellular proteins
+ENSG00000277856	Tissue enhanced	Detected in many	Cell type enriched				Predicted intracellular proteins
+ENSG00000278139	Tissue enriched	Detected in single	Group enriched	Nucleoplasm;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000278384	Tissue enhanced	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000278633	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000278704	Low tissue specificity	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000278817	Group enriched	Detected in many	Cell type enriched				Predicted intracellular proteins
+ENSG00000279073	Low tissue specificity	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000279983	Tissue enhanced	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000280571	Tissue enriched	Detected in single	Cell type enhanced	Centriolar satellite	Approved		Predicted intracellular proteins
+ENSG00000280709	Tissue enriched	Detected in single	Group enriched	Centrosome	Approved		Predicted membrane proteins
+ENSG00000280778	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000280987	Low tissue specificity	Detected in all	Cell type enhanced	Nucleoplasm	Approved		Human disease related genes, Predicted intracellular proteins
+ENSG00000281039	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000281613	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000281887	Tissue enhanced	Detected in many	Not detected	Endoplasmic reticulum	Supported		Predicted membrane proteins
+ENSG00000282218	Not detected	Not detected	Cell type enhanced	Golgi apparatus;Calyx;Mid piece	Approved		Predicted intracellular proteins
+ENSG00000282278	Tissue enhanced	Detected in some	Cell type enhanced	Nucleoplasm	Supported		Predicted intracellular proteins
+ENSG00000282804	Not detected	Not detected	Cell type enriched				Predicted intracellular proteins
+ENSG00000282988	Tissue enhanced	Detected in some	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000283149	Low tissue specificity	Detected in many	Cell type enhanced	Endoplasmic reticulum	Supported		Predicted intracellular proteins
+ENSG00000283189	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000283201	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000283208	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000283321	Group enriched	Detected in some	Cell type enhanced	Nucleoplasm;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000283496	Tissue enhanced	Detected in some	Cell type enhanced	Nuclear bodies	Uncertain		Predicted membrane proteins
+ENSG00000283761	Low tissue specificity	Detected in some	Cell type enhanced	Vesicles	Approved		Predicted membrane proteins
+ENSG00000283765	Tissue enhanced	Detected in some	Group enriched	Mitochondria	Approved		Predicted membrane proteins
+ENSG00000283782	Low tissue specificity	Detected in many	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000283809	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000283900	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000283952	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000284057	Tissue enhanced	Detected in many	Cell type enhanced	Nuclear speckles	Approved		Predicted intracellular proteins
+ENSG00000284292	Not detected	Not detected	Cell type enhanced	Cell Junctions	Approved		Predicted intracellular proteins
+ENSG00000284479	Tissue enhanced	Detected in single	Not detected				Predicted membrane proteins
+ENSG00000284505	Tissue enhanced	Detected in many	Cell type enriched			Intracellular and membrane	Predicted intracellular proteins
+ENSG00000284512	Tissue enhanced	Detected in some	Cell type enhanced	Vesicles	Approved		Predicted intracellular proteins
+ENSG00000284554	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000284684	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000284732	Not detected	Not detected	Not detected				Predicted membrane proteins
+ENSG00000284762	Tissue enhanced	Detected in many	Cell type enhanced				Human disease related genes, Predicted intracellular proteins
+ENSG00000284773	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000284776	Low tissue specificity	Detected in all	Cell type enhanced	Nucleoli;Cytosol	Uncertain		Predicted membrane proteins
+ENSG00000284895	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000284906	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000284917	Not detected	Not detected	Group enriched	Nucleoplasm;Cytosol	Uncertain		Enzymes, Predicted membrane proteins
+ENSG00000284922	Group enriched	Detected in some	Cell type enhanced	Microtubules	Uncertain		Disease related genes, Enzymes, Human disease related genes, Potential drug targets, Predicted intracellular proteins, Predicted membrane proteins
+ENSG00000284931	Tissue enriched	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000284956	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000284976	Tissue enhanced	Detected in many	Cell type enhanced				Predicted membrane proteins
+ENSG00000285025	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000285082	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285085	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285133	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000285188	Low tissue specificity	Detected in some	Cell type enhanced	Centrosome;Basal body;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000285218	Tissue enhanced	Detected in many	Group enriched				Predicted membrane proteins
+ENSG00000285245	Not detected	Not detected	Cell type enhanced	Nucleoplasm	Uncertain		Predicted intracellular proteins
+ENSG00000285253	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285283	Tissue enhanced	Detected in some	Group enriched	Endoplasmic reticulum	Supported		Predicted intracellular proteins
+ENSG00000285292	Low tissue specificity	Detected in all	Cell type enriched	Cytosol	Uncertain		Predicted intracellular proteins
+ENSG00000285304	Tissue enhanced	Detected in many	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000285330	Tissue enhanced	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285382	Tissue enhanced	Detected in some	Cell type enhanced	Vesicles	Approved		Predicted intracellular proteins
+ENSG00000285404	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285446	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285458	Low tissue specificity	Detected in many	Cell type enhanced	Focal adhesion sites	Approved		Predicted intracellular proteins
+ENSG00000285471	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285472	Tissue enriched	Detected in single	Cell type enhanced	Centrosome	Approved		Predicted membrane proteins
+ENSG00000285508	Low tissue specificity	Detected in many	Not detected				Human disease related genes, Predicted intracellular proteins
+ENSG00000285509	Not detected	Not detected	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000285526	Tissue enhanced	Detected in some	Cell type enhanced	Nucleoplasm	Approved		Predicted membrane proteins
+ENSG00000285547	Tissue enriched	Detected in single	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000285585	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285625	Tissue enhanced	Detected in some	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000285655	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000285708	Not detected	Not detected	Cell type enriched	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000285723	Low tissue specificity	Detected in many	Not detected				Human disease related genes, Predicted membrane proteins
+ENSG00000285733	Not detected	Not detected	Cell type enriched				Predicted intracellular proteins
+ENSG00000285772	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000285815	Tissue enhanced	Detected in some	Cell type enriched				Predicted membrane proteins
+ENSG00000285827	Tissue enhanced	Detected in some	Group enriched	Mitochondria	Approved		Predicted intracellular proteins
+ENSG00000285837	Tissue enhanced	Detected in single	Group enriched	Vesicles;Centriolar satellite;Centrosome	Approved		Predicted intracellular proteins
+ENSG00000285868	Tissue enriched	Detected in some	Cell type enhanced				Predicted membrane proteins
+ENSG00000285880	Not detected	Not detected	Cell type enhanced	Vesicles;Basal body	Uncertain		Predicted membrane proteins
+ENSG00000285920	Low tissue specificity	Detected in many	Group enriched	Nucleoplasm;Nucleoli;Nucleoli fibrillar center	Approved		Predicted intracellular proteins
+ENSG00000285947	Tissue enriched	Detected in single	Group enriched	Plasma membrane	Approved		Predicted membrane proteins
+ENSG00000285953	Tissue enriched	Detected in single	Cell type enhanced	Vesicles	Approved		Predicted intracellular proteins
+ENSG00000285982	Tissue enhanced	Detected in many	Cell type enhanced	Mitochondria	Approved		Predicted membrane proteins
+ENSG00000286015	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000286022	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000286075	Tissue enhanced	Detected in many	Not detected				Predicted membrane proteins
+ENSG00000286098	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000286105	Tissue enriched	Detected in some	Not detected				Predicted membrane proteins
+ENSG00000286112	Low tissue specificity	Detected in some	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000286131	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000286143	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000286165	Not detected	Not detected	Not detected	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000286185	Not detected	Not detected	Cell type enhanced	Primary cilium;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000286221	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000286235	Low tissue specificity	Detected in many	Cell type enhanced	Nucleoplasm	Approved		Predicted membrane proteins
+ENSG00000286268	Not detected	Not detected	Cell type enhanced	Nuclear membrane;Endoplasmic reticulum	Approved		Predicted membrane proteins
+ENSG00000287542	Tissue enhanced	Detected in many	Cell type enriched	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000287856	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000288000	Not detected	Not detected	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000288053	Not detected	Not detected	Cell type enhanced				Predicted membrane proteins
+ENSG00000288520	Low tissue specificity	Detected in single	Cell type enhanced	Nuclear speckles;Plasma membrane	Approved		Predicted intracellular proteins
+ENSG00000288529	Low tissue specificity	Detected in many	Not detected				Predicted intracellular proteins
+ENSG00000288570	Tissue enhanced	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000288593	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000288602	Low tissue specificity	Detected in many	Cell type enhanced	Vesicles	Uncertain		Predicted intracellular proteins
+ENSG00000288608	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288614	Low tissue specificity	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000288623	Tissue enhanced	Detected in many	Not detected				Predicted intracellular proteins
+ENSG00000288625	Tissue enhanced	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000288626	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000288629	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288634	Tissue enhanced	Detected in many	Not detected				Predicted intracellular proteins
+ENSG00000288635	Tissue enriched	Detected in some	Not detected				Predicted membrane proteins
+ENSG00000288636	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000288644	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288645	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288646	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288654	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000288661	Tissue enhanced	Detected in many	Not detected				Predicted membrane proteins
+ENSG00000288671	Not detected	Not detected	Group enriched				Predicted intracellular proteins
+ENSG00000288677	Not detected	Not detected	Not detected				Disease related genes, Human disease related genes, Predicted intracellular proteins
+ENSG00000288678	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288681	Not detected	Not detected	Cell type enriched				Predicted membrane proteins
+ENSG00000288684	Not detected	Not detected	Low cell type specificity	Plasma membrane;Cytosol	Approved		Predicted intracellular proteins
+ENSG00000288695	Tissue enhanced	Detected in some	Cell type enhanced				Predicted membrane proteins
+ENSG00000288706	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288708	Group enriched	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000288712	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288715	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000288716	Group enriched	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000288796	Tissue enriched	Detected in some	Group enriched				Predicted intracellular proteins
+ENSG00000288841	Low tissue specificity	Detected in many	Not detected				Predicted intracellular proteins
+ENSG00000288864	Low tissue specificity	Detected in some	Not detected				Predicted membrane proteins
+ENSG00000288914	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289025	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289027	Low tissue specificity	Detected in many	Not detected	Endoplasmic reticulum;Vesicles	Approved		Predicted intracellular proteins
+ENSG00000289051	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289258	Not detected	Not detected	Cell type enriched	Focal adhesion sites	Approved		Predicted membrane proteins
+ENSG00000289282	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000289325	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289346	Low tissue specificity	Detected in all	Not detected	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000289360	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289490	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000289491	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000289653	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000289690	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000289692	Tissue enhanced	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000289694	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000289697	Tissue enriched	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000289700	Tissue enhanced	Detected in some	Cell type enhanced	Cytosol	Approved		Predicted intracellular proteins
+ENSG00000289710	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289715	Tissue enriched	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000289721	Not detected	Not detected	Cell type enriched				Essential proteins, Predicted intracellular proteins
+ENSG00000289722	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000289723	Group enriched	Detected in some	Not detected				Predicted intracellular proteins, T-cell receptor genes
+ENSG00000289724	Not detected	Not detected	Cell type enhanced				Predicted intracellular proteins
+ENSG00000289746	Group enriched	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000289747	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000289760	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289761	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289762	Tissue enriched	Detected in some	Not detected				Predicted membrane proteins
+ENSG00000289763	Tissue enhanced	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000289764	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289766	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000289767	Tissue enriched	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000289768	Tissue enhanced	Detected in many	Group enriched				Predicted intracellular proteins
+ENSG00000289791	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000289809	Tissue enhanced	Detected in some	Cell type enhanced				Predicted intracellular proteins
+ENSG00000290147	Tissue enriched	Detected in some	Group enriched	Plasma membrane	Uncertain		Disease related genes, Predicted intracellular proteins
+ENSG00000290149	Tissue enriched	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000290183	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins
+ENSG00000290184	Tissue enhanced	Detected in single	Not detected				Predicted intracellular proteins
+ENSG00000290203	Not detected	Not detected	Cell type enhanced				Predicted membrane proteins, Transporters
+ENSG00000290217	Tissue enriched	Detected in single	Group enriched				Predicted intracellular proteins
+ENSG00000290292	Low tissue specificity	Detected in all	Group enriched	Nucleoli	Supported		Predicted intracellular proteins, Transcription factors
+ENSG00000290315	Not detected	Not detected	Not detected	Nucleoplasm;Cytosol;Rods & Rings	Approved		Predicted intracellular proteins
+ENSG00000290316	Tissue enhanced	Detected in single	Cell type enhanced				Predicted intracellular proteins
+ENSG00000290317	Tissue enhanced	Detected in single	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000290318	Low tissue specificity	Detected in many	Cell type enhanced				Predicted intracellular proteins
+ENSG00000290320	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000291237	Tissue enhanced	Detected in all	Cell type enhanced	Mitochondria	Supported		Cancer-related genes, Disease related genes, Enzymes, Human disease related genes, Plasma proteins, Potential drug targets, Predicted intracellular proteins
+ENSG00000291239	Not detected	Not detected	Group enriched				Predicted intracellular proteins
+ENSG00000291302	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000291303	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000291307	Not detected	Not detected	Not detected			Secreted - unknown location	Predicted intracellular proteins, Predicted secreted proteins
+ENSG00000291309	Low tissue specificity	Detected in some	Cell type enhanced				Predicted membrane proteins
+ENSG00000291312	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000291313	Tissue enhanced	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000291314	Not detected	Not detected	Not detected				Predicted intracellular proteins
+ENSG00000291315	Tissue enriched	Detected in some	Not detected				Predicted intracellular proteins
+ENSG00000291316	Low tissue specificity	Detected in all	Cell type enhanced	Nucleoplasm	Approved		Predicted intracellular proteins
+ENSG00000291317	Low tissue specificity	Detected in all	Cell type enhanced				Predicted intracellular proteins, Predicted membrane proteins

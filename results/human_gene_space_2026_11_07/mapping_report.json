@@ -1,0 +1,29 @@
+{
+ "foundation_genes": 58988,
+ "hpa_rows_without_gene_id": 1035,
+ "hpa_duplicated_ids": 0,
+ "hpa_genes_outside_foundation": 456,
+ "genes_with_hpa_annotation": 19706,
+ "shipped_proteins": 20989,
+ "proteins_by_link": {
+  "one gene": 17714,
+  "no reviewed gene": 1703,
+  "several genes": 1572
+ },
+ "genes_with_several_shipped_proteins": 145,
+ "checks": {
+  "unique_ids": true,
+  "every_foundation_gene_kept": true,
+  "foundation_values_unchanged": true,
+  "no_protein_ids_as_genes": true,
+  "every_shipped_protein_in_links": true,
+  "every_column_described": true
+ },
+ "sha256": {
+  "transcriptome": "a463c531cc643bfc1b14034688f23dfa781ab3a3a2356b324ac61ad248c4ad90",
+  "proteome": "855ada1e6e1dc12c6ecf2030c6e9699afcb907cee2f80d8564558ce85049d893",
+  "shipped_proteins": "1b5af9142db5d67a4d0d3e072c541078281e750fe3c0ba8e22330a619623cfa0",
+  "foundation_genes": "887aa9cbc1aa1074eaabdde99fd7f03d8579763695459ed36972eb673fd8f9bc",
+  "foundation_crossrefs": "2e3ce3cd7897662104ca8f7bcdcdb380f0db1c65a62b1d2c93e651fae76d3780"
+ }
+}
