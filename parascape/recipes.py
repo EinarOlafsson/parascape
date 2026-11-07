@@ -261,6 +261,26 @@ class Closure:
         return "\n".join(lines)
 
 
+#: column -> import id, registered by the application for each imported table (instruction 64.37). An
+#: imported column has no dataset in the registry, so nothing else knows which columns came together.
+IMPORT_GROUPS: dict = {}
+
+
+def register_import(columns, import_id: str) -> None:
+    """Record that `columns` arrived in one import, so a label from it holds out the rest."""
+    for c in columns:
+        IMPORT_GROUPS[str(c)] = str(import_id)
+
+
+def same_import(nodes: pd.DataFrame, holdout: str) -> dict:
+    """Every other column of the import `holdout` came from, with the reason; {} if not imported."""
+    group = IMPORT_GROUPS.get(str(holdout))
+    if group is None:
+        return {}
+    return {c: f"same import as {holdout} ({group})" for c in nodes.columns
+            if c != holdout and IMPORT_GROUPS.get(str(c)) == group}
+
+
 _CATEGORY_CACHE: dict = {}
 
 
@@ -367,6 +387,9 @@ def close(nodes: pd.DataFrame, recipe: Recipe, threshold: float = 0.8) -> Closur
     # is what a control should do, not a reason to refuse it.
     # Only the label's own category: the control keeps the association closure above, as decided.
     for c, why in same_category(nodes, holdout, recipe.organism).items():
+        if c != control:
+            excluded.setdefault(c, f"primary: {why}")
+    for c, why in same_import(nodes, holdout).items():
         if c != control:
             excluded.setdefault(c, f"primary: {why}")
     left_out = set(getattr(recipe, "leave_out_categories", ()) or ())

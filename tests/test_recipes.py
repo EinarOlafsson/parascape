@@ -770,3 +770,18 @@ def test_inputs_of_the_labels_own_kind_of_knowledge_are_held_out():
     assert "fit_invitro_hff" not in out              # another kind of knowledge stays
     assert "brain168465_14d_lfc" not in out          # the label itself is not an input
     assert R.same_category(nodes, "not_a_column_at_all", "Tg") == {}
+
+
+def test_a_label_from_an_import_holds_out_the_rest_of_that_import():
+    """Instruction 64.37: imported columns have no registry dataset; the import itself is the family."""
+    import pandas as pd
+    from parascape import recipes as R
+    nodes = pd.DataFrame({"gene_id": ["a", "b"], "imp_x": [1.0, 2.0], "imp_y": [3.0, 4.0],
+                          "other": [5.0, 6.0]})
+    R.register_import(["imp_x", "imp_y"], "file-1")
+    try:
+        out = R.same_import(nodes, "imp_x")
+        assert set(out) == {"imp_y"} and "same import" in out["imp_y"]
+        assert R.same_import(nodes, "other") == {}
+    finally:
+        R.IMPORT_GROUPS.clear()

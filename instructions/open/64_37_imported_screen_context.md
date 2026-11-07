@@ -1,6 +1,6 @@
 # 64.37 · Make user data reach the same inference flow
 
-Status: OPEN — 50%, 2026-11-07. Imports reach the strategy and guided contexts; the record carries input hash, organism and an explicit unresolved state; label exclusion and session save/load remain.
+Status: OPEN — 70%, 2026-11-07. Imports reach the strategy contexts, record hash, organism and an unresolved state, and an imported label holds out its own import; session save/load remains.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -42,5 +42,8 @@ Pending: commit, checks, artifact/benchmark identities, measured population, lim
 * **Done:** every import record carries `source_sha256` (the exact file), `organism`, and `validation` -- explicitly
   "unresolved: imported columns have no registered dataset or leakage family; closure guards them by measured
   association only". Test in `tests/test_app_controls.py`.
-* **Open:** excluding an imported label's own import from the evidence when it is used as truth (by import, not
-  only by association), and session save/load of imports with their local results.
+* **Done (same day):** an imported label holds out the rest of its own import -- the application registers each
+  import's columns (`recipes.register_import`, keyed by the file hash) and `recipes.close` excludes them with the
+  reason "same import as <label>". Test in `tests/test_recipes.py`.
+* **Open:** session save/load of imports with their local results; the same rule in the harness feature
+  selection.
