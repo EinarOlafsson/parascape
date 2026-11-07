@@ -70,7 +70,8 @@ def _reasons(window) -> dict:
 def open_module(window, key: str) -> str:
     """Open one module in this window. Returns what the status bar was told."""
     module = MOD.get(key)
-    shells = {"map": "map_module", "gene": "gene_module", "network": "network_module"}
+    shells = {"map": "map_module", "gene": "gene_module", "network": "network_module",
+              "infer": "infer_module", "questions": "infer_module"}
     if key in shells and getattr(window, shells[key], None) is not None:
         module = __import__(f"{__package__}.{shells[key]}", fromlist=["open_in"])
         message = module.open_in(window)
@@ -356,7 +357,8 @@ def install(window):
             landing.stack.addWidget(window.map_module)
     except Exception as error:                  # the window must open without it
         window.statusBar().showMessage(f"Map module unavailable: {error}", 8000)
-    for attribute, name in (("gene_module", "gene_module"), ("network_module", "network_module")):
+    for attribute, name in (("gene_module", "gene_module"), ("network_module", "network_module"),
+                            ("infer_module", "infer_module")):
         setattr(window, attribute, None)
         try:
             module = __import__(f"{__package__}.{name}", fromlist=["build"])

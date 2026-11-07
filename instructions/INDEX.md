@@ -106,7 +106,7 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 91 | [Navigator: one click shows what comes next, a second click opens](open/91_navigator_module_network.md) — **built, waiting on Einar** · downstream module graph, fewer results, reset on return |
 | 90 | [Release 0.0.10.0 under the new licence](open/90_release_under_the_new_licence.md) — waits on Einar's review of the spaCR licence terms |
 | 87 | [The network as a navigable universe](open/87_network_universe.md) — **built (first version), waiting on Einar** · whole network, gene region zoomed, zoomable, edge definitions · depth of field from the centre, click to travel, edge and layout controls on the right |
-| 86 | [Every module in spaCR's module shell](open/86_spacr_module_shell.md) — **in progress: shell built, Map moved** · settings left, console, AI, actions, live preview, hyperparameter search, collapsible |
+| 86 | [Every module in spaCR's module shell](open/86_spacr_module_shell.md) — **in progress: Map, Gene, Network, Infer on the shell (5 of 22 tiles)** · settings left, console, AI, actions, live preview, hyperparameter search, collapsible |
 | 85 | [Retire the old ParaScape home screen](open/85_retire_the_old_home_screen.md) — **built, waiting on Einar** · the landing is the only home; nothing the old node-card dock did is lost |
 | 84 | [The Navigator, exactly as spaCR's](open/84_navigator_exactly_like_spacr.md) — **built, waiting on Einar to compare** · a View switch, search on Return, spaCR's 224 px square cards with icon and light centred name |
 | 83 | [Move ParaScape from PyQt6 to PySide6](open/83_pyside6_migration.md) — done 2026-11-05: 6,550 passed; five latent defects found, two that would have shipped |

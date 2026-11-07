@@ -325,3 +325,37 @@ def test_the_view_zooms_about_the_pointer_and_travels_to_a_gene(window, qtbot):
     view.travel_to(0, zoom=5.0)
     qtbot.waitUntil(lambda: abs(view.zoom - 5.0) < 1e-6, timeout=3000)
     assert np.allclose(view.center, view.xy[0])
+
+
+# ------------------------------------------------------------------ the Infer module
+def test_the_infer_module_holds_the_question_controls_moved_not_copied(window):
+    from parascape.landing_install import open_module
+    shell = window.infer_module
+    assert shell is not None, "the Infer module failed to build"
+    open_module(window, "infer")
+    panel = window.panel
+    for name in ("question_choice", "question_detail", "question_table", "question_report",
+                 "question_pdf"):
+        assert shell.isAncestorOf(getattr(panel, name)), name
+    for part in ("Your question", "Your genes", "The question", "The answer",
+                 "How far to trust it", "Actions", "Console and AI chat"):
+        assert part in shell.sections, part
+    assert {"Answer this question", "Check what it may use"} <= set(shell.actions)
+
+
+def test_your_genes_are_read_against_the_answer(window):
+    import pandas as pd
+    module = window.infer_module.module
+    ids = window.nodes.gene_id.astype(str).tolist()
+    module.field.setText(f"{ids[0]}, {ids[1]}")
+    module._typed()
+    assert module.mine == ids[:2]
+
+    class Result:
+        inference = pd.DataFrame({"gene_id": [ids[0], ids[5]], "label": ["dense granules", "x"],
+                                  "control_agrees": [True, False]})
+    window.panel._question_result = Result()
+    module._after_answer()
+    text = module.answer_note.text()
+    assert "2</b> genes named" in text and "1</b> are named" in text and "dense granules" in text
+    window.panel._question_result = None

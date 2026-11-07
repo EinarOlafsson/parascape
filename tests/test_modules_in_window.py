@@ -121,10 +121,18 @@ def test_the_dock_watcher_ignores_the_window_appearing(window):
 def test_a_dock_module_raises_its_dock_and_tab(window):
     from parascape.landing_install import go_home, open_module
     go_home(window)
-    message = open_module(window, "questions")
-    assert message == "analysis ▸ 8 · Questions"
-    tabs = _docks(window)["analysis"].findChild(QtWidgets.QTabWidget)
-    assert tabs.tabText(tabs.currentIndex()) == "8 · Questions"
+    message = open_module(window, "expression")
+    assert message == "compare ▸ Gene expression"
+    tabs = _docks(window)["compare"].findChild(QtWidgets.QTabWidget)
+    assert tabs.tabText(tabs.currentIndex()) == "Gene expression"
+
+
+def test_questions_and_infer_open_the_infer_module(window):
+    from parascape.landing_install import go_home, open_module
+    for key in ("questions", "infer"):
+        go_home(window)
+        assert open_module(window, key) == "Infer"
+        assert window.landing.page == "Module"
 
 
 def test_an_unavailable_module_reports_rather_than_opens(window):

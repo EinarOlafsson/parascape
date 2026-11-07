@@ -11,7 +11,11 @@
   to the 3D view; the old tab has a button to the module.
 - Lesson: no pyqtgraph PlotWidget inside a shell -- deleting one mid-session segfaulted in
   `QGraphicsScene::~QGraphicsScene`; the preview paints its own points.
-- Next: Infer (analysis 4 · Inference and 5 · Search), then Clusters, each moved the same way.
+- 2026-11-06: Map rebuilt to the agreed mould (and Clusters moved into it as Groups); Gene, Network and
+  **Infer** (the analysis Questions tab moved in; Questions and Infer tiles both open it; your genes read
+  against the answer) built with the `parascape-module` skill. 5 of 22 modules on the shell.
+- Next, in order: Strategies, Scorecard, Expression, Partners, Cell, Datasets, Information, Drop, Screen,
+  Export, Gallery, Jobs, Console.
 
 Requested 2026-11-05 (instruction 74, goals 6-7). Einar: "spaCR has its settings in a
 container on the left, a console, AI chatbox, and an actions section. There is a live section to live test
