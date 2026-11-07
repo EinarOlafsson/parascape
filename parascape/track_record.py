@@ -662,7 +662,31 @@ def target_html(target: str, organism: str, ledger: pd.DataFrame | None = None) 
                       f"<th>overall</th><th>per class</th></tr>{strat_rows}</table>")
     return (f"<h4>{escape(str(target))}</h4><p>{lead}</p>"
             f"<table cellspacing='0' cellpadding='3'><tr><th align='left'>class</th>"
-            f"<th>genes</th><th align='left'>best recovered</th></tr>{rows}</table>{strategies}")
+            f"<th>genes</th><th align='left'>best recovered</th></tr>{rows}</table>{strategies}"
+            + meta_class_html(target))
+
+
+def meta_class_html(target: str) -> str:
+    """The combined model's recall per class on this label, from its untouched outer test (64.35);
+    empty when the label had no meta-inference admission test."""
+    import os
+    from html import escape
+    from .gene_reading import META_RESULTS
+    folder = META_RESULTS.get(str(target))
+    root = os.path.join(os.path.dirname(os.path.dirname(__file__)), "results")
+    path = os.path.join(root, folder or "", "meta_calls.tsv")
+    if not folder or not os.path.exists(path):
+        return ""
+    calls = pd.read_csv(path, sep="\t")
+    summary = pd.read_csv(os.path.join(root, folder, "summary.tsv"), sep="\t", index_col=0)
+    meta, best = summary.loc["meta-model", "accuracy"], summary.loc["best single", "accuracy"]
+    recall = (calls["meta_call"] == calls["truth"]).groupby(calls["truth"]).agg(["mean", "size"])
+    rows = "".join(f"<tr><td>{escape(str(c))}</td><td align='right'>{int(r['size']):,}</td>"
+                   f"<td align='right'>{r['mean']:.1%}</td></tr>" for c, r in recall.sort_values("size", ascending=False).iterrows())
+    verdict = "admitted" if meta > best else "not admitted -- the best single method stays the answer"
+    return (f"<p><b>Combined model</b> ({verdict}: {meta:.3f} against the best single method {best:.3f} on "
+            f"untouched orthogroups). Recall per class, outer test:</p><table cellspacing='0' cellpadding='3'>"
+            f"<tr><th align='left'>class</th><th>genes</th><th>recall</th></tr>{rows}</table>")
 
 
 def weakest(strategy: str, organism: str, target: str | None = None, limit: int = 3,

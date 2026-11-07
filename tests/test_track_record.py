@@ -544,3 +544,11 @@ def test_accuracy_by_agreement_is_measured_from_the_held_out_calls():
     assert agree.loc["a", "agree"] == 2 and agree.loc["a", "right"] == True      # noqa: E712
     table = T.accuracy_by_agreement(ledger, "t").set_index("agree")
     assert table.loc[2, "accuracy"] == 1.0 and table.loc[1, "genes"] == 1
+
+
+def test_a_label_page_shows_the_combined_model_per_class_when_it_was_tested():
+    html = T.meta_class_html("dtm_class")
+    if not html:
+        pytest.skip("no meta-inference results in this install")
+    assert "Combined model" in html and "admitted" in html and "recall" in html
+    assert T.meta_class_html("no_such_label") == ""

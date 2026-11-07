@@ -1,6 +1,6 @@
 # 64.35 · Expose meta-inference scorecards at every level
 
-Status: OPEN — 75%, 2026-11-07. Gene view shows combined answers for known (outer-test) and unknown genes, admitted or refused, with their tests; class and label views remain.
+Status: DONE 2026-11-07. Gene, class and label views of the combined model, admitted or refused, each with its test.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -51,3 +51,11 @@ last cell). The Gene module shows it as "predicted X by the combined model (prob
 combined answer was right 54.3 % of the time on untouched orthogroups, which is its reliability, not a certainty
 for this gene" -- the unknown-gene conditional reliability labelled as such. Open: class and label views of the
 meta-model.
+
+**Class and label views (same day):** a label page (`track_record.target_html`, reached from the gene and strategy
+cards) now ends with the combined model's verdict and its recall per class from the untouched outer test
+(`track_record.meta_class_html`) -- e.g. dtm_class: GLOB 98.5 %, TM 92.7 %, SP 55.2 %, SP+TM 30.8 % -- so a global
+accuracy is never read as a class's. Test in `tests/test_track_record.py`. All done-when points are met: each combined
+answer names its test population and verdict, paired base-versus-meta comparison and refusals are shown, known-gene
+outcomes and unknown-gene reliability are labelled apart, and class-specific recall is separate from the overall
+number.
