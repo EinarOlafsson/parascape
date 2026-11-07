@@ -1,0 +1,1 @@
+{"niche": "dense granules", "seeds": 19, "hidden": 21, "prevalence": 0.00259, "hidden_in_top50": 9, "recall_at_50": 0.429, "lift_at_50": 69.6, "hidden_in_top100": 12, "recall_at_100": 0.571, "lift_at_100": 46.4, "hidden_in_top200": 13, "recall_at_200": 0.619, "lift_at_200": 25.1}

@@ -1,0 +1,7 @@
+niche	seeds	hidden	prevalence	hidden_in_top50	recall_at_50	lift_at_50	hidden_in_top100	recall_at_100	lift_at_100	hidden_in_top200	recall_at_200	lift_at_200
+rhoptries	21	26	0.0032	14	0.538	87.4	21	0.808	65.6	21	0.808	32.8
+micronemes	15	14	0.00172	11	0.786	127.7	12	0.857	69.6	12	0.857	34.8
+dense granules	19	21	0.00259	9	0.429	69.6	12	0.571	46.4	13	0.619	25.1
+IMC	19	19	0.00234	9	0.474	76.9	10	0.526	42.7	13	0.684	27.8
+apicoplast	24	24	0.00296	4	0.167	27.1	7	0.292	23.7	8	0.333	13.5
+mitochondrion	33	35	0.00432	7	0.2	32.4	12	0.343	27.8	13	0.371	15.1

@@ -1,6 +1,6 @@
 # 64.12 · Test gene rankings and set retrieval
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 15%, 2026-11-07. First adapter: seed expansion, held-out member recovery on six localization niches; the other ranking strategies remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -33,3 +33,11 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: the first adapter, seed expansion
+
+`results/seed_expansion_benchmark_2026_11_07/README.md`. Seeds and hidden members disjoint by orthogroup; depths
+fixed before the run; hyperLOPIT compartment excluded. Recall at 100: rhoptries 0.81, micronemes 0.86, dense
+granules 0.57, IMC 0.53, mitochondrion 0.34, apicoplast 0.29 (lift 24-70 over the prevalence). Non-markers are not
+verified negatives (stated in the notebook). Next adapters: positive-unlabelled learning, gene-set search,
+recoverability, outlier ranking, enrichment, paralog profiles.
