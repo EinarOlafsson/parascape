@@ -1,6 +1,6 @@
 # 64.11 · Keep held-out numeric predictions
 
-Status: OPEN — 35%, 2026-10-08. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 55%, 2026-11-07. Value scorecards for all four mechanisms read and recorded (with the Pf scaling warning); units, train-only baseline and interval width/coverage remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -123,3 +123,20 @@ snapshot changed. Artifact identity
 `c1277015b87d6b797c03143fc5854a1acc17b5a701a3263e28d24283334a7099`.
 35%, no completion tick: other variants/mechanisms, full outer coverage and
 source/unit/independent biological admission remain open.
+
+## 2026-11-07: the value records already on the cards, and two warnings they carry
+
+Every value strategy's calibration record (sweep 2026-09-26, hidden values, measured null) carries the value
+scorecard -- Spearman, Pearson, Kendall, R², normalised RMSE, MAE, top/bottom-decile recall, coverage:
+
+* masked imputation: Spearman 0.87 (Tg) / 0.68 (Pf), R² 0.75 / 0.45 -- reliable;
+* trait regression: 0.56 / 0.52, R² 0.43 / **-3.29**, MAE 5.2 / 126.5;
+* conformal values: 0.55 / 0.50, R² 0.41 / **-3.49**;
+* condition shift: **0.07** (Tg, weak) / 0.64 (Pf).
+
+**Warnings:** for Plasmodium, trait regression and conformal values rank the hidden values reasonably but their
+values are badly scaled (R² far below zero: worse than predicting the mean) -- use them as rankings, not as values,
+until that is fixed; condition shift has almost no skill on Toxoplasma.
+
+Open: units stated on each card, skill against the matched train-only baseline (today against a shuffled null),
+and the width and achieved coverage of conformal intervals.
