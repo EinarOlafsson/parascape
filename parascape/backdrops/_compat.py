@@ -110,7 +110,11 @@ def get_ambient_enabled() -> bool:
     """Off when the user chose No animation, or switched it off."""
     if get_ambient_theme() == _engines().NO_ANIMATION:
         return False
-    return _as_bool(_settings().value(_KEY_ENABLED, True), True)
+    # PARASCAPE_AMBIENT_DEFAULT=0 starts with the animation off unless the user turned it on: CI renders
+    # in software on two cores, where an animated backdrop behind every test window costs minutes per test.
+    import os
+    default = os.environ.get("PARASCAPE_AMBIENT_DEFAULT", "1") != "0"
+    return _as_bool(_settings().value(_KEY_ENABLED, default), default)
 
 
 def get_ambient_speed() -> float:

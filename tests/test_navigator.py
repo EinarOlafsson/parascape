@@ -13,6 +13,12 @@ GENES = [("TGME49_208830", "dense granule protein GRA16"),
          ("TGME49_214320", "facilitative glucose transporter GT1")]
 
 
+
+@pytest.fixture(autouse=True)
+def _animation_on_by_default(monkeypatch):
+    """These tests are about the animation, so they keep its shipped default even where CI turns it off."""
+    monkeypatch.delenv("PARASCAPE_AMBIENT_DEFAULT", raising=False)
+
 @pytest.fixture
 def index():
     from parascape import help_index as HI
