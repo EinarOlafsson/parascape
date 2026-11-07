@@ -856,6 +856,12 @@ def question_record(organism: str, target: str, top: int = 3) -> list:
     return out
 
 
+#: Methods whose held-out errors were identical on every label measured (error correlation 1.000, orthogroup
+#: interval 1.000-1.000; `results/method_dependence_2026_11_07/`): at their recorded settings each pair is one
+#: method twice, so agreement counts them once (instruction 64.32).
+SAME_METHOD = {"stratum_focus": "feature_knn", "understudied_first": "triangulation"}
+
+
 def agreement(ledger: pd.DataFrame, target: str) -> pd.DataFrame:
     """Per gene, for one label: how many methods spoke, the plurality call, how many agreed with it,
     and whether the plurality was right -- from the held-out record (instruction 64.33).
@@ -864,6 +870,7 @@ def agreement(ledger: pd.DataFrame, target: str) -> pd.DataFrame:
     are read at each method's recorded setting, all with the gene's own answer hidden.
     """
     part = ledger[(ledger["target"].astype(str) == str(target)) & (ledger["mode"].astype(str) == "together")]
+    part = part[~part["strategy"].astype(str).isin(SAME_METHOD)]      # one vote per distinct method
     rows = []
     for gene, g in part.groupby(part["gene_id"].astype(str), observed=True):
         spoke = g[~g["abstained"].astype(bool)]

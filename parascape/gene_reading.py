@@ -412,7 +412,7 @@ def consensus_lines(gene: str, organism: str = "Tg") -> list:
         if key not in _AGREEMENT_CACHE:
             _AGREEMENT_CACHE[key] = T.accuracy_by_agreement(ledger, target).set_index("agree")
         table = _AGREEMENT_CACHE[key]
-        g = mine[mine["target"].astype(str) == target]
+        g = mine[(mine["target"].astype(str) == target) & ~mine["strategy"].astype(str).isin(T.SAME_METHOD)]
         spoke = g[~g["abstained"].astype(bool)]
         if not len(spoke):
             continue

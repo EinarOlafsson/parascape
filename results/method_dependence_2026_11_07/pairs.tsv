@@ -1,0 +1,274 @@
+label	a	b	genes	error_correlation	low	high	status
+dtm_class	cluster_guilt	feature_knn	234	-0.279	-0.402	-0.161	measured
+dtm_class	cluster_guilt	graph_convolution	235	0.156	0.04	0.262	measured
+dtm_class	cluster_guilt	layer_propagation	187	0.371	0.225	0.499	measured
+dtm_class	cluster_guilt	layer_vote	235	-0.441	-0.568	-0.295	measured
+dtm_class	cluster_guilt	map_neighbours	235	-0.154	-0.269	-0.017	measured
+dtm_class	cluster_guilt	physical_partners	37				unresolved
+dtm_class	cluster_guilt	random_forest	235	-0.425	-0.576	-0.282	measured
+dtm_class	cluster_guilt	stacking	235	0.238	0.106	0.346	measured
+dtm_class	cluster_guilt	stratum_focus	234	-0.279	-0.397	-0.155	measured
+dtm_class	cluster_guilt	structural_homology	57				unresolved
+dtm_class	cluster_guilt	supervised_classifier	235	0.174	0.052	0.297	measured
+dtm_class	cluster_guilt	triangulation	212	-0.392	-0.554	-0.261	measured
+dtm_class	cluster_guilt	understudied_first	212	-0.392	-0.548	-0.243	measured
+dtm_class	feature_knn	graph_convolution	8136	0.207	0.18	0.232	measured
+dtm_class	feature_knn	layer_propagation	6328	0.131	0.102	0.154	measured
+dtm_class	feature_knn	layer_vote	8136	0.827	0.803	0.846	measured
+dtm_class	feature_knn	map_neighbours	2499	0.82	0.791	0.845	measured
+dtm_class	feature_knn	physical_partners	1459	0.589	0.541	0.636	measured
+dtm_class	feature_knn	random_forest	8136	0.501	0.476	0.522	measured
+dtm_class	feature_knn	stacking	8136	0.23	0.204	0.252	measured
+dtm_class	feature_knn	stratum_focus	8136	1.0	1.0	1.0	measured
+dtm_class	feature_knn	structural_homology	2026	0.361	0.299	0.431	measured
+dtm_class	feature_knn	supervised_classifier	8136	0.161	0.141	0.182	measured
+dtm_class	feature_knn	triangulation	7771	0.831	0.815	0.847	measured
+dtm_class	feature_knn	understudied_first	7771	0.831	0.814	0.848	measured
+dtm_class	graph_convolution	layer_propagation	6329	0.204	0.181	0.226	measured
+dtm_class	graph_convolution	layer_vote	8137	0.236	0.211	0.262	measured
+dtm_class	graph_convolution	map_neighbours	2500	0.22	0.176	0.259	measured
+dtm_class	graph_convolution	physical_partners	1459	0.321	0.254	0.382	measured
+dtm_class	graph_convolution	random_forest	8137	0.159	0.125	0.192	measured
+dtm_class	graph_convolution	stacking	8137	0.68	0.663	0.696	measured
+dtm_class	graph_convolution	stratum_focus	8136	0.207	0.182	0.232	measured
+dtm_class	graph_convolution	structural_homology	2026	0.204	0.157	0.262	measured
+dtm_class	graph_convolution	supervised_classifier	8137	0.66	0.643	0.675	measured
+dtm_class	graph_convolution	triangulation	7772	0.32	0.296	0.345	measured
+dtm_class	graph_convolution	understudied_first	7772	0.32	0.295	0.344	measured
+dtm_class	layer_propagation	layer_vote	6329	0.117	0.094	0.141	measured
+dtm_class	layer_propagation	map_neighbours	1935	0.156	0.114	0.197	measured
+dtm_class	layer_propagation	physical_partners	1234	0.063	0.009	0.116	measured
+dtm_class	layer_propagation	random_forest	6329	0.043	0.019	0.066	measured
+dtm_class	layer_propagation	stacking	6329	0.273	0.253	0.299	measured
+dtm_class	layer_propagation	stratum_focus	6328	0.131	0.107	0.155	measured
+dtm_class	layer_propagation	structural_homology	1662	0.061	0.015	0.105	measured
+dtm_class	layer_propagation	supervised_classifier	6329	0.172	0.148	0.198	measured
+dtm_class	layer_propagation	triangulation	6165	0.121	0.095	0.142	measured
+dtm_class	layer_propagation	understudied_first	6165	0.121	0.097	0.144	measured
+dtm_class	layer_vote	map_neighbours	2500	0.707	0.672	0.739	measured
+dtm_class	layer_vote	physical_partners	1459	0.646	0.598	0.691	measured
+dtm_class	layer_vote	random_forest	8137	0.453	0.42	0.491	measured
+dtm_class	layer_vote	stacking	8137	0.267	0.24	0.287	measured
+dtm_class	layer_vote	stratum_focus	8136	0.827	0.806	0.847	measured
+dtm_class	layer_vote	structural_homology	2026	0.764	0.72	0.802	measured
+dtm_class	layer_vote	supervised_classifier	8137	0.178	0.156	0.202	measured
+dtm_class	layer_vote	triangulation	7772	0.788	0.767	0.807	measured
+dtm_class	layer_vote	understudied_first	7772	0.788	0.769	0.809	measured
+dtm_class	map_neighbours	physical_partners	453	0.543	0.443	0.627	measured
+dtm_class	map_neighbours	random_forest	2500	0.424	0.379	0.467	measured
+dtm_class	map_neighbours	stacking	2500	0.266	0.226	0.31	measured
+dtm_class	map_neighbours	stratum_focus	2499	0.82	0.793	0.847	measured
+dtm_class	map_neighbours	structural_homology	598	0.37	0.275	0.437	measured
+dtm_class	map_neighbours	supervised_classifier	2500	0.168	0.13	0.203	measured
+dtm_class	map_neighbours	triangulation	2366	0.681	0.645	0.72	measured
+dtm_class	map_neighbours	understudied_first	2366	0.681	0.645	0.714	measured
+dtm_class	physical_partners	random_forest	1459	0.289	0.215	0.353	measured
+dtm_class	physical_partners	stacking	1459	0.315	0.253	0.375	measured
+dtm_class	physical_partners	stratum_focus	1459	0.589	0.524	0.643	measured
+dtm_class	physical_partners	structural_homology	469	0.298	0.178	0.422	measured
+dtm_class	physical_partners	supervised_classifier	1459	0.314	0.255	0.373	measured
+dtm_class	physical_partners	triangulation	1411	0.568	0.513	0.631	measured
+dtm_class	physical_partners	understudied_first	1411	0.568	0.505	0.631	measured
+dtm_class	random_forest	stacking	8137	0.158	0.127	0.189	measured
+dtm_class	random_forest	stratum_focus	8136	0.501	0.471	0.522	measured
+dtm_class	random_forest	structural_homology	2026	0.241	0.154	0.343	measured
+dtm_class	random_forest	supervised_classifier	8137	0.121	0.089	0.154	measured
+dtm_class	random_forest	triangulation	7772	0.507	0.476	0.533	measured
+dtm_class	random_forest	understudied_first	7772	0.507	0.471	0.537	measured
+dtm_class	stacking	stratum_focus	8136	0.23	0.205	0.257	measured
+dtm_class	stacking	structural_homology	2026	0.254	0.189	0.309	measured
+dtm_class	stacking	supervised_classifier	8137	0.657	0.642	0.673	measured
+dtm_class	stacking	triangulation	7772	0.35	0.325	0.375	measured
+dtm_class	stacking	understudied_first	7772	0.35	0.324	0.376	measured
+dtm_class	stratum_focus	structural_homology	2026	0.361	0.307	0.422	measured
+dtm_class	stratum_focus	supervised_classifier	8136	0.161	0.137	0.184	measured
+dtm_class	stratum_focus	triangulation	7771	0.831	0.813	0.847	measured
+dtm_class	stratum_focus	understudied_first	7771	0.831	0.813	0.847	measured
+dtm_class	structural_homology	supervised_classifier	2026	0.156	0.107	0.213	measured
+dtm_class	structural_homology	triangulation	1990	0.415	0.351	0.479	measured
+dtm_class	structural_homology	understudied_first	1990	0.415	0.357	0.465	measured
+dtm_class	supervised_classifier	triangulation	7772	0.298	0.274	0.321	measured
+dtm_class	supervised_classifier	understudied_first	7772	0.298	0.274	0.32	measured
+dtm_class	triangulation	understudied_first	7772	1.0	1.0	1.0	measured
+compartment	cluster_guilt	feature_knn	322	0.353	0.258	0.432	measured
+compartment	cluster_guilt	graph_convolution	469	0.243	0.149	0.347	measured
+compartment	cluster_guilt	layer_propagation	393	0.134	0.025	0.241	measured
+compartment	cluster_guilt	layer_vote	469	0.305	0.235	0.402	measured
+compartment	cluster_guilt	map_neighbours	289	0.442	0.288	0.545	measured
+compartment	cluster_guilt	physical_partners	160	0.092	-0.065	0.22	measured
+compartment	cluster_guilt	random_forest	469	0.325	0.236	0.439	measured
+compartment	cluster_guilt	stacking	469	0.295	0.207	0.381	measured
+compartment	cluster_guilt	stratum_focus	322	0.353	0.269	0.457	measured
+compartment	cluster_guilt	structural_homology	132	0.158	-0.176	0.41	measured
+compartment	cluster_guilt	supervised_classifier	469	0.268	0.166	0.359	measured
+compartment	cluster_guilt	triangulation	317	0.288	0.168	0.399	measured
+compartment	cluster_guilt	understudied_first	317	0.288	0.182	0.397	measured
+compartment	feature_knn	graph_convolution	2802	0.373	0.342	0.411	measured
+compartment	feature_knn	layer_propagation	2300	0.096	0.057	0.136	measured
+compartment	feature_knn	layer_vote	2802	0.981	0.973	0.988	measured
+compartment	feature_knn	map_neighbours	1083	0.453	0.404	0.505	measured
+compartment	feature_knn	physical_partners	953	0.174	0.108	0.232	measured
+compartment	feature_knn	random_forest	2802	0.658	0.629	0.685	measured
+compartment	feature_knn	stacking	2802	0.414	0.377	0.442	measured
+compartment	feature_knn	stratum_focus	2802	1.0	1.0	1.0	measured
+compartment	feature_knn	structural_homology	748	0.116	0.043	0.181	measured
+compartment	feature_knn	supervised_classifier	2802	0.381	0.348	0.412	measured
+compartment	feature_knn	triangulation	2065	0.844	0.822	0.869	measured
+compartment	feature_knn	understudied_first	2065	0.844	0.817	0.868	measured
+compartment	graph_convolution	layer_propagation	3102	0.129	0.093	0.161	measured
+compartment	graph_convolution	layer_vote	3804	0.338	0.31	0.369	measured
+compartment	graph_convolution	map_neighbours	1364	0.243	0.181	0.295	measured
+compartment	graph_convolution	physical_partners	1136	0.193	0.14	0.25	measured
+compartment	graph_convolution	random_forest	3804	0.417	0.391	0.451	measured
+compartment	graph_convolution	stacking	3804	0.721	0.698	0.745	measured
+compartment	graph_convolution	stratum_focus	2802	0.373	0.343	0.404	measured
+compartment	graph_convolution	structural_homology	1060	0.206	0.141	0.268	measured
+compartment	graph_convolution	supervised_classifier	3804	0.854	0.836	0.869	measured
+compartment	graph_convolution	triangulation	2549	0.66	0.629	0.687	measured
+compartment	graph_convolution	understudied_first	2549	0.66	0.632	0.687	measured
+compartment	layer_propagation	layer_vote	3102	0.121	0.086	0.157	measured
+compartment	layer_propagation	map_neighbours	1106	-0.009	-0.064	0.051	measured
+compartment	layer_propagation	physical_partners	970	0.135	0.081	0.188	measured
+compartment	layer_propagation	random_forest	3102	0.066	0.027	0.095	measured
+compartment	layer_propagation	stacking	3102	0.171	0.137	0.2	measured
+compartment	layer_propagation	stratum_focus	2300	0.096	0.053	0.142	measured
+compartment	layer_propagation	structural_homology	867	-0.05	-0.116	0.015	measured
+compartment	layer_propagation	supervised_classifier	3102	0.113	0.079	0.15	measured
+compartment	layer_propagation	triangulation	2136	0.161	0.123	0.197	measured
+compartment	layer_propagation	understudied_first	2136	0.161	0.125	0.201	measured
+compartment	layer_vote	map_neighbours	1364	0.42	0.377	0.469	measured
+compartment	layer_vote	physical_partners	1136	0.208	0.152	0.266	measured
+compartment	layer_vote	random_forest	3804	0.572	0.546	0.597	measured
+compartment	layer_vote	stacking	3804	0.374	0.348	0.402	measured
+compartment	layer_vote	stratum_focus	2802	0.981	0.974	0.988	measured
+compartment	layer_vote	structural_homology	1060	0.163	0.108	0.222	measured
+compartment	layer_vote	supervised_classifier	3804	0.335	0.306	0.362	measured
+compartment	layer_vote	triangulation	2549	0.808	0.782	0.831	measured
+compartment	layer_vote	understudied_first	2549	0.808	0.782	0.83	measured
+compartment	map_neighbours	physical_partners	476	0.125	0.035	0.224	measured
+compartment	map_neighbours	random_forest	1364	0.448	0.406	0.495	measured
+compartment	map_neighbours	stacking	1364	0.229	0.174	0.279	measured
+compartment	map_neighbours	stratum_focus	1083	0.453	0.397	0.505	measured
+compartment	map_neighbours	structural_homology	421	0.138	0.026	0.25	measured
+compartment	map_neighbours	supervised_classifier	1364	0.252	0.2	0.301	measured
+compartment	map_neighbours	triangulation	969	0.428	0.373	0.471	measured
+compartment	map_neighbours	understudied_first	969	0.428	0.379	0.487	measured
+compartment	physical_partners	random_forest	1136	0.15	0.09	0.21	measured
+compartment	physical_partners	stacking	1136	0.215	0.158	0.269	measured
+compartment	physical_partners	stratum_focus	953	0.174	0.117	0.229	measured
+compartment	physical_partners	structural_homology	354	0.181	0.078	0.286	measured
+compartment	physical_partners	supervised_classifier	1136	0.16	0.099	0.228	measured
+compartment	physical_partners	triangulation	869	0.259	0.204	0.318	measured
+compartment	physical_partners	understudied_first	869	0.259	0.182	0.338	measured
+compartment	random_forest	stacking	3804	0.408	0.381	0.438	measured
+compartment	random_forest	stratum_focus	2802	0.658	0.631	0.681	measured
+compartment	random_forest	structural_homology	1060	0.139	0.067	0.192	measured
+compartment	random_forest	supervised_classifier	3804	0.408	0.378	0.435	measured
+compartment	random_forest	triangulation	2549	0.646	0.616	0.673	measured
+compartment	random_forest	understudied_first	2549	0.646	0.615	0.675	measured
+compartment	stacking	stratum_focus	2802	0.414	0.382	0.454	measured
+compartment	stacking	structural_homology	1060	0.229	0.152	0.289	measured
+compartment	stacking	supervised_classifier	3804	0.737	0.717	0.758	measured
+compartment	stacking	triangulation	2549	0.638	0.607	0.668	measured
+compartment	stacking	understudied_first	2549	0.638	0.613	0.664	measured
+compartment	stratum_focus	structural_homology	748	0.116	0.039	0.192	measured
+compartment	stratum_focus	supervised_classifier	2802	0.381	0.345	0.414	measured
+compartment	stratum_focus	triangulation	2065	0.844	0.819	0.869	measured
+compartment	stratum_focus	understudied_first	2065	0.844	0.816	0.866	measured
+compartment	structural_homology	supervised_classifier	1060	0.17	0.112	0.243	measured
+compartment	structural_homology	triangulation	724	0.356	0.291	0.428	measured
+compartment	structural_homology	understudied_first	724	0.356	0.273	0.422	measured
+compartment	supervised_classifier	triangulation	2549	0.7	0.672	0.725	measured
+compartment	supervised_classifier	understudied_first	2549	0.7	0.676	0.724	measured
+compartment	triangulation	understudied_first	2549	1.0	1.0	1.0	measured
+cellcycle_phase	cluster_guilt	feature_knn	86				unresolved
+cellcycle_phase	cluster_guilt	graph_convolution	88				unresolved
+cellcycle_phase	cluster_guilt	layer_propagation	72				unresolved
+cellcycle_phase	cluster_guilt	layer_vote	88				unresolved
+cellcycle_phase	cluster_guilt	map_neighbours	82				unresolved
+cellcycle_phase	cluster_guilt	physical_partners	10				unresolved
+cellcycle_phase	cluster_guilt	random_forest	88				unresolved
+cellcycle_phase	cluster_guilt	stacking	88				unresolved
+cellcycle_phase	cluster_guilt	stratum_focus	86				unresolved
+cellcycle_phase	cluster_guilt	structural_homology	10				unresolved
+cellcycle_phase	cluster_guilt	supervised_classifier	88				unresolved
+cellcycle_phase	cluster_guilt	triangulation	72				unresolved
+cellcycle_phase	cluster_guilt	understudied_first	72				unresolved
+cellcycle_phase	feature_knn	graph_convolution	860	0.358	0.296	0.424	measured
+cellcycle_phase	feature_knn	layer_propagation	724	0.186	0.12	0.25	measured
+cellcycle_phase	feature_knn	layer_vote	860	0.914	0.884	0.943	measured
+cellcycle_phase	feature_knn	map_neighbours	840	0.283	0.219	0.337	measured
+cellcycle_phase	feature_knn	physical_partners	37				unresolved
+cellcycle_phase	feature_knn	random_forest	860	0.519	0.464	0.58	measured
+cellcycle_phase	feature_knn	stacking	860	0.358	0.304	0.419	measured
+cellcycle_phase	feature_knn	stratum_focus	860	1.0	1.0	1.0	measured
+cellcycle_phase	feature_knn	structural_homology	104	0.23	0.061	0.392	measured
+cellcycle_phase	feature_knn	supervised_classifier	860	0.343	0.288	0.408	measured
+cellcycle_phase	feature_knn	triangulation	720	0.757	0.706	0.8	measured
+cellcycle_phase	feature_knn	understudied_first	720	0.757	0.712	0.8	measured
+cellcycle_phase	graph_convolution	layer_propagation	735	0.243	0.176	0.304	measured
+cellcycle_phase	graph_convolution	layer_vote	873	0.35	0.294	0.4	measured
+cellcycle_phase	graph_convolution	map_neighbours	852	0.225	0.164	0.286	measured
+cellcycle_phase	graph_convolution	physical_partners	37				unresolved
+cellcycle_phase	graph_convolution	random_forest	873	0.461	0.405	0.516	measured
+cellcycle_phase	graph_convolution	stacking	873	0.731	0.683	0.773	measured
+cellcycle_phase	graph_convolution	stratum_focus	860	0.358	0.301	0.427	measured
+cellcycle_phase	graph_convolution	structural_homology	105	0.257	0.104	0.401	measured
+cellcycle_phase	graph_convolution	supervised_classifier	873	0.824	0.78	0.859	measured
+cellcycle_phase	graph_convolution	triangulation	729	0.662	0.614	0.708	measured
+cellcycle_phase	graph_convolution	understudied_first	729	0.662	0.598	0.712	measured
+cellcycle_phase	layer_propagation	layer_vote	735	0.248	0.174	0.312	measured
+cellcycle_phase	layer_propagation	map_neighbours	720	0.082	0.015	0.153	measured
+cellcycle_phase	layer_propagation	physical_partners	34				unresolved
+cellcycle_phase	layer_propagation	random_forest	735	0.2	0.13	0.267	measured
+cellcycle_phase	layer_propagation	stacking	735	0.26	0.187	0.339	measured
+cellcycle_phase	layer_propagation	stratum_focus	724	0.186	0.118	0.258	measured
+cellcycle_phase	layer_propagation	structural_homology	89				unresolved
+cellcycle_phase	layer_propagation	supervised_classifier	735	0.195	0.126	0.27	measured
+cellcycle_phase	layer_propagation	triangulation	623	0.259	0.189	0.324	measured
+cellcycle_phase	layer_propagation	understudied_first	623	0.259	0.197	0.336	measured
+cellcycle_phase	layer_vote	map_neighbours	852	0.286	0.227	0.344	measured
+cellcycle_phase	layer_vote	physical_partners	37				unresolved
+cellcycle_phase	layer_vote	random_forest	873	0.498	0.448	0.555	measured
+cellcycle_phase	layer_vote	stacking	873	0.348	0.29	0.411	measured
+cellcycle_phase	layer_vote	stratum_focus	860	0.914	0.887	0.939	measured
+cellcycle_phase	layer_vote	structural_homology	105	0.224	0.067	0.389	measured
+cellcycle_phase	layer_vote	supervised_classifier	873	0.311	0.251	0.371	measured
+cellcycle_phase	layer_vote	triangulation	729	0.712	0.664	0.763	measured
+cellcycle_phase	layer_vote	understudied_first	729	0.712	0.662	0.755	measured
+cellcycle_phase	map_neighbours	physical_partners	37				unresolved
+cellcycle_phase	map_neighbours	random_forest	852	0.291	0.225	0.353	measured
+cellcycle_phase	map_neighbours	stacking	852	0.226	0.169	0.285	measured
+cellcycle_phase	map_neighbours	stratum_focus	840	0.283	0.234	0.352	measured
+cellcycle_phase	map_neighbours	structural_homology	104	0.033	-0.128	0.222	measured
+cellcycle_phase	map_neighbours	supervised_classifier	852	0.197	0.135	0.265	measured
+cellcycle_phase	map_neighbours	triangulation	710	0.296	0.238	0.355	measured
+cellcycle_phase	map_neighbours	understudied_first	710	0.296	0.228	0.349	measured
+cellcycle_phase	physical_partners	random_forest	37				unresolved
+cellcycle_phase	physical_partners	stacking	37				unresolved
+cellcycle_phase	physical_partners	stratum_focus	37				unresolved
+cellcycle_phase	physical_partners	structural_homology	6				unresolved
+cellcycle_phase	physical_partners	supervised_classifier	37				unresolved
+cellcycle_phase	physical_partners	triangulation	36				unresolved
+cellcycle_phase	physical_partners	understudied_first	36				unresolved
+cellcycle_phase	random_forest	stacking	873	0.445	0.388	0.506	measured
+cellcycle_phase	random_forest	stratum_focus	860	0.519	0.457	0.571	measured
+cellcycle_phase	random_forest	structural_homology	105	0.146	-0.009	0.337	measured
+cellcycle_phase	random_forest	supervised_classifier	873	0.452	0.39	0.511	measured
+cellcycle_phase	random_forest	triangulation	729	0.573	0.512	0.626	measured
+cellcycle_phase	random_forest	understudied_first	729	0.573	0.503	0.653	measured
+cellcycle_phase	stacking	stratum_focus	860	0.358	0.288	0.417	measured
+cellcycle_phase	stacking	structural_homology	105	0.103	-0.114	0.321	measured
+cellcycle_phase	stacking	supervised_classifier	873	0.779	0.742	0.827	measured
+cellcycle_phase	stacking	triangulation	729	0.653	0.59	0.705	measured
+cellcycle_phase	stacking	understudied_first	729	0.653	0.6	0.707	measured
+cellcycle_phase	stratum_focus	structural_homology	104	0.23	0.047	0.407	measured
+cellcycle_phase	stratum_focus	supervised_classifier	860	0.343	0.283	0.396	measured
+cellcycle_phase	stratum_focus	triangulation	720	0.757	0.711	0.8	measured
+cellcycle_phase	stratum_focus	understudied_first	720	0.757	0.713	0.803	measured
+cellcycle_phase	structural_homology	supervised_classifier	105	0.16	-0.028	0.337	measured
+cellcycle_phase	structural_homology	triangulation	90				unresolved
+cellcycle_phase	structural_homology	understudied_first	90				unresolved
+cellcycle_phase	supervised_classifier	triangulation	729	0.714	0.66	0.759	measured
+cellcycle_phase	supervised_classifier	understudied_first	729	0.714	0.651	0.757	measured
+cellcycle_phase	triangulation	understudied_first	729	1.0	1.0	1.0	measured

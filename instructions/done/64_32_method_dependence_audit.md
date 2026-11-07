@@ -1,6 +1,6 @@
 # 64.32 · Measure dependence between inference mechanisms
 
-Status: OPEN — 40%, 2026-11-07. Matched source-profile intervals (2026-10-08) and Pf EC error dependence with orthogroup intervals accepted; other targets and lineage remain.
+Status: DONE 2026-11-07. Pairwise error dependence of all 14 methods on three labels with orthogroup intervals; duplicate methods named and counted once.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -97,3 +97,21 @@ bootstrap 95 % interval 0.393-0.675); the forest is more accurate by 0.125 (0.05
 the training-majority call (McNemar p 0.79). Declared overlap: both read the same source feature closure, so they
 are dependent evidence and must not count as two independent votes. One cohort; the other targets and lineage
 coverage remain.
+
+## 2026-11-07 (later): every pair of methods, three labels, and two methods that are one
+
+`scripts/build_method_dependence_notebook.py` -> `results/method_dependence_2026_11_07/` (`pairs.tsv`, `summary.tsv`):
+on the strictly nested outer-test calls (all 14 recorded methods on the same genes, answers hidden), the error
+correlation of every pair with an orthogroup bootstrap interval; pairs with under 100 genes both answered are
+**unresolved** (28 of 91 on cell-cycle phase, 2 on dtm_class, none on compartment). Median pairwise error
+correlation 0.30-0.35: the methods are substantially dependent.
+
+**Two pairs are the same method at their recorded settings** -- identical errors on every label (1.000, interval
+1.000-1.000): `feature_knn` with `stratum_focus`, and `triangulation` with `understudied_first`. They must not count
+as two votes: `track_record.SAME_METHOD` now drops the second of each pair from agreement counts, so the Gene module's
+"N of M methods agree" and its measured accuracy count each method once (e.g. BAG1 on dtm class: 5 of 9, was 7 of
+11). The combined model (64.34) was unaffected in kind -- a duplicate input adds nothing it can learn from.
+
+All done-when points are met: overlap declared (shared inputs; identical pairs named), error dependence measured on
+matched cohorts with group-aware intervals, sub-methods/duplicates not counted as independent, insufficient overlap
+left unresolved.
