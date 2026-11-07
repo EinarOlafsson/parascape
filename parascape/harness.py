@@ -331,6 +331,23 @@ def _threshold_for_bar(calibrated, correct, prediction, bar: float = BAR) -> flo
     return best
 
 
+def gene_rows(name: str, probability: pd.Series, truth: pd.Series, curve, threshold: float) -> pd.DataFrame:
+    """One row per scored gene of a partition: its probability, the call, and whether it was right.
+
+    ``prediction`` is the answer given (``positive``/``negative``); ``called`` is whether it is a positive call
+    at the fill threshold (the calls `_block` counts). The same rows give every summary number of `_block`.
+    """
+    prediction, support, correct = _support_and_correctness(probability, truth)
+    calibrated = pd.Series(_apply(curve, support), index=probability.index)
+    return pd.DataFrame({"entity": probability.index.astype(str), "partition": name,
+                         "probability": probability.astype(float).to_numpy(),
+                         "prediction": np.where(prediction, "positive", "negative"),
+                         "calibrated": calibrated.to_numpy(),
+                         "called": (prediction & (calibrated >= threshold)).to_numpy(),
+                         "truth": np.where(truth.reindex(probability.index).astype(bool), "positive", "negative"),
+                         "correct": correct.to_numpy()})
+
+
 def _block(name: str, probability: pd.Series, truth: pd.Series, curve, threshold: float,
            bar: float = BAR) -> dict:
     """The same numbers for every partition: precision, its lower bound, coverage, calibration, AUC."""
@@ -616,6 +633,7 @@ class HarnessResult:
     flags: tuple = ()
     guard_calls: tuple = ()
     refusal: str = ""
+    rows: pd.DataFrame = field(default_factory=pd.DataFrame)
 
     @property
     def dominance(self) -> dict:
@@ -719,6 +737,11 @@ def run_question(question, *, labels, features, families, groups, strategies,
         if bad:
             raise ValueError(f"{question.id}: strategy {strategy.name!r} asks for forbidden families {bad}")
 
+    # Measured redundancy (instruction 73, Einar 2026-11-07: report only): inputs that move with the label
+    # column although their category differs are named on the result, never removed.
+    from .redundancy import overlap as _overlap
+    label_column = str(getattr(question, "label_source", "")).rsplit(":", 1)[-1].split(" ")[0]
+    selection["measured_overlap"] = _overlap(label_column, features.columns, organism)
     evidence = evidence_identity(question, features, selection)
     split, pair_partition = partition_question(question, entities, groups.loc[entities],
                                                organism=organism, seed=seed, pairs=pairs)
@@ -753,6 +776,7 @@ def run_question(question, *, labels, features, families, groups, strategies,
     cross_validated = _block("cross_validated (train+tune, nested)", scored, labels, pool_curve,
                              threshold, bar)
     cross_validated["folds"] = len(chosen)
+    rows = [gene_rows("cross_validated", scored, labels, pool_curve, threshold)]
 
     # --- the deployed fit, then calibration on the calibration partition only -------------------
     model, calibration_probability, used = _fit_predict(strategy, features, families, labels,
@@ -809,6 +833,7 @@ def run_question(question, *, labels, features, families, groups, strategies,
                                          index=pd.Index(test))
             frozen = _block("frozen_test (touched once)", test_probability, labels, curve,
                             threshold, bar)
+            rows.append(gene_rows("frozen_test", test_probability, labels, curve, threshold))
             if strata is not None:
                 frozen["by_stratum"] = by_stratum(test_probability, labels, curve, threshold,
                                                   pd.Series(strata), bar)
@@ -844,7 +869,8 @@ def run_question(question, *, labels, features, families, groups, strategies,
                          frozen_test=frozen, inner_scores=inner_scores,
                          chosen_per_outer_fold=tuple(chosen), calibration=calibration,
                          baselines=baselines, importance=importance, flags=tuple(flags),
-                         guard_calls=guard.calls, refusal=refusal)
+                         guard_calls=guard.calls, refusal=refusal,
+                         rows=pd.concat(rows, ignore_index=True))
 
 
 # --- plain language -------------------------------------------------------------------------------

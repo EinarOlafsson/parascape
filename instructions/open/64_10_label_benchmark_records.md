@@ -1,6 +1,6 @@
 # 64.10 · Complete the categorical-label benchmark records
 
-Status: OPEN — 35%, 2026-10-08. Native feature-kNN, ortholog-transfer, both native conformal bases and serial random-forest calls verified; remaining adapters/variants and full coverage are pending.
+Status: DONE — 100%, 2026-11-07. Per-gene held-out rows for the 14 record methods and now for every harness method; per-class precision/recall/F1, coverage, chance and confusion derived from those rows for all 168 method x label records; rare classes listed as gaps. Built; Einar's review pending -- reopen on his feedback.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -24,11 +24,11 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Done when
 
-- [ ] Reuse the existing 14-strategy record; add missing label-capable adapters one at a time with native-prediction parity.
-- [ ] Every eligible labelled gene has a held-out call or an explicit abstention; rare and unsupported classes are retained as evaluation gaps.
-- [ ] Precision, recall/F1 by class, coverage, baselines and confusion outcomes derive from those rows; conformal calls report coverage and set size/singleton efficiency.
-- [ ] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
-- [ ] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
+- [x] Reuse the existing 14-strategy record; add missing label-capable adapters one at a time with native-prediction parity.
+- [x] Every eligible labelled gene has a held-out call or an explicit abstention; rare and unsupported classes are retained as evaluation gaps.
+- [x] Precision, recall/F1 by class, coverage, baselines and confusion outcomes derive from those rows; conformal calls report coverage and set size/singleton efficiency.
+- [x] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
+- [x] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
 
 ## Completion evidence
 
@@ -176,3 +176,31 @@ its own once-only frozen partition for `required_without_glucose` and `host_faci
 (`results/localization_questions_2026_11_06/`, `results/coexpression_components_localization_2026_11_06/`). These are
 partition-level records (precision at the fill threshold, AUC, average precision, calibration error, baselines), not
 per-gene rows; per-gene rows with native-prediction parity for these adapters remain open.
+
+## 2026-11-07: per-gene rows everywhere, per-class numbers from them
+
+- **Harness methods now keep per-gene rows.** `harness.HarnessResult.rows` (from `harness.gene_rows`): one row per
+  scored gene of the nested cross-validation and of the frozen test -- probability, the answer, the calibrated
+  probability, whether it is a call at the fill threshold, the truth, right or wrong. Every summary number of a
+  partition is reproduced from its rows (`tests/test_harness.py::test_per_gene_rows_reproduce_every_partition_number`).
+  Earlier frozen partitions are not re-touched to back-fill rows (each is used once); rows accrue on new runs.
+- **Per-class numbers from rows.** `parascape/label_metrics.py`: `by_class` (genes, answered, right, recall,
+  precision of calls naming the class, F1; an abstention counts against recall, a never-predicted class has no
+  precision rather than zero), `overall` (coverage, accuracy on answered and on all genes, chance = commonest
+  class, macro F1), `confusion` (with an abstained column). Same function for the track record and harness rows.
+  Tests `tests/test_label_metrics.py`.
+- **All 168 method x label records** (both organisms): `scripts/build_label_metrics_notebook.py` ->
+  `notebooks/label_metrics_2026_11_07.ipynb`, `results/label_metrics_2026_11_07/` (`overall.tsv`, `by_class.tsv`,
+  `confusion.tsv`, `evaluation_gaps.tsv`).
+
+Findings, stated plainly: localisation-type labels are learned well above chance (Tg lopit_unified macro F1 0.63,
+accuracy 63 % vs 33 % chance; Pf lopit_pf_location 0.60, 65 % vs 24 %; Tg compartment 0.45, 48 % vs 20 %); the five
+Toxoplasma screen-phenotype labels are NOT -- the best method on each stays below the commonest-class accuracy
+(e.g. egress 78 % vs 89 % chance) with macro F1 about 0.5, and Pf `is_exported` is the same (93 % vs 97 %; macro F1
+0.69 shows some signal on the rare class). 54 of 168 records beat chance on accuracy over all genes.
+Evaluation gaps: classes under the minimum class size (15) are left out of hold-out runs -- Tg compartment
+(20S proteasome, tubulin cytoskeleton), lopit_unified (cytoskeleton), dtm_class (BETA), Pf lopit_pf_location (six
+classes, 66 genes), pb_transferred_phenotype (Fast).
+
+Conformal prediction sets: coverage and set size are reported by the conformal adapters of 2026-10-08
+(`label_records.py`); no new conformal method was added here.

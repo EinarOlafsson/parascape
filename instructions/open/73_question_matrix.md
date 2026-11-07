@@ -433,7 +433,12 @@ Toxoplasma table: 322 numeric columns measured on >= 1,000 genes, pairwise Spear
   abundance -- so a transcript-labelled question still sees transcript information through translation inputs;
   and protein length with synonymous SNP count (`sequence` vs `conservation`, a length effect).
 
-Phase 3 (catalogue and redundancy report) has its redundancy half. **Decision for Einar (not applied):** whether
-to add a measured rule next to the category rule -- hold out any input in the same measured group as the label
-(|Spearman| >= 0.8) even when its category differs. On today's table it would change only questions labelled by
-transcript or translation columns.
+Phase 3 (catalogue and redundancy report) has its redundancy half.
+
+**Decided (Einar, 2026-11-07): report only.** No new exclusion. `parascape/redundancy.py` reads the measured
+groups (shipped as `data/measured_groups_tg.tsv`) and every harness run records, in
+`evidence_selection["measured_overlap"]`, the inputs that sit in the label column's measured group although
+their category differs -- named, with the reason, and kept. The evidence hash is unchanged, so earlier frozen
+partitions keep their identity. Note: map recipes already hold out any single input whose association with the
+label reaches 0.8 (`search.excluded_detail`); the harness never did, and still does not -- it reports. Tests
+`tests/test_redundancy.py`.

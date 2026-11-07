@@ -284,3 +284,16 @@ def test_the_frozen_test_is_reported_within_each_stratum(tmp_path):
     by = result.frozen_test["by_stratum"]
     assert set(by) == {"understudied", "well-studied"}
     assert sum(v["n"] for v in by.values()) == result.frozen_test["n"]
+
+
+def test_per_gene_rows_reproduce_every_partition_number(tmp_path):
+    """Instruction 64.10: the harness keeps one row per scored gene, and its summaries derive from them."""
+    from parascape import label_metrics as LM
+    r = _run(tmp_path)
+    assert set(r.rows["partition"]) == {"cross_validated", "frozen_test"}
+    for partition, block in (("cross_validated", r.cross_validated), ("frozen_test", r.frozen_test)):
+        rows = r.rows[r.rows["partition"] == partition]
+        assert len(rows) == block["n"]
+        assert int(rows["called"].sum()) == block["calls"]
+        assert int((rows["called"] & rows["correct"]).sum()) == block["correct"]
+        assert LM.overall(rows)["accuracy_all"] == pytest.approx(block["accuracy"])

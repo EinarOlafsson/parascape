@@ -139,7 +139,7 @@ checks add elapsed time; budget them after pilot measurements.
 | [64.07](../done/64_07_strategy_capability_contracts.md) | done | 0 h | Declare what each of the 39 strategies answers | 64.01, 64.04 |
 | [64.08](../done/64_08_result_artifact_contract.md) | done | 0 h | Version inference and benchmark artifacts | 64.03, 64.05, 64.07 |
 | [64.09](../done/64_09_scorecard_aggregation.md) | done | 0 h | Make all scorecard levels use the same records | 64.04, 64.06, 64.08 |
-| [64.10](64_10_label_benchmark_records.md) | 35% | 6–12 h | Complete the categorical-label benchmark records | 64.05, 64.06, 64.07, 64.08, 64.09 |
+| [64.10](../done/64_10_label_benchmark_records.md) | done | 6–12 h | Complete the categorical-label benchmark records | 64.05, 64.06, 64.07, 64.08, 64.09 |
 | [64.11](../done/64_11_value_benchmark_records.md) | done | 6–10 h | Keep held-out numeric predictions | 64.05, 64.06, 64.07, 64.08, 64.09 |
 | [64.11a](64_11a_gse108740_double_log.md) | 25% | 2–4 h | Take the GSE108740 expression log only once | 64.11 |
 | [64.12](../done/64_12_gene_ranking_benchmarks.md) | done | 6–10 h | Test gene rankings and set retrieval | 64.05, 64.06, 64.07, 64.08, 64.09 |
@@ -207,20 +207,20 @@ already exists or passes. A strategy can have multiple task contracts for differ
 | 3 | `recoverability_atlas` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Held-out known-label recovery and predictability ranking, retaining target/class and perturbation scope. |
 | 4 | `consensus_modules` | [64.14](../done/64_14_cluster_benchmarks.md) | Known-label/module recovery on untouched genes, plus stability and coverage across map settings. |
 | 5 | `blind_battery` | [64.15](../done/64_15_replication_benchmarks.md) | Measured findings selected on discovery data and checked on disjoint verification data. |
-| 6 | `block_ablation` | [64.10](64_10_label_benchmark_records.md) | Same hidden labels with/without a feature block; paired recovery delta and pipeline contribution. |
-| 7 | `feature_knn` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden by gene/homology group; full class calls/scores and abstentions. |
-| 8 | `map_neighbours` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from map construction and neighbor voting; held-out recovery. |
-| 9 | `cluster_guilt` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from cluster enrichment/assignment; per-class calls and coverage. |
+| 6 | `block_ablation` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 7 | `feature_knn` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 8 | `map_neighbours` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 9 | `cluster_guilt` | [64.10](../done/64_10_label_benchmark_records.md) | done |
 | 10 | `label_outliers` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Synthetic corrupted labels with known originals; separately registered independent adjudication for real label-error claims. |
-| 11 | `layer_propagation` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from graph seeds with target-derived edges excluded. |
-| 12 | `layer_vote` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from every contributing voter and its weight fitting. |
-| 13 | `physical_partners` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from physical-network seeds; explicit network coverage and target exclusions. |
-| 14 | `structural_homology` | [64.10](64_10_label_benchmark_records.md) | Measured/curated function or label hidden from fold-neighbor voting; declared truth grade and mapping. |
+| 11 | `layer_propagation` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 12 | `layer_vote` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 13 | `physical_partners` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 14 | `structural_homology` | [64.10](../done/64_10_label_benchmark_records.md) | done |
 | 15 | `multiplex_modules` | [64.14](../done/64_14_cluster_benchmarks.md) | Known labels or reviewed modules hidden from module selection and evaluated on untouched groups. |
 | 16 | `link_prediction` | [64.13](../done/64_13_relationship_benchmarks.md) | Hidden experimental edges in an explicit known-node/cold-node regime; matched controls and unlabeled-pair limits. |
 | 17 | `attention_correction` | [64.13](../done/64_13_relationship_benchmarks.md) | Recovery of separately measured/curated biological relations; source-paper reuse declared and tested. |
 | 18 | `unwritten_links` | [64.13](../done/64_13_relationship_benchmarks.md) | Literature recovery is its own test; claims of physical interaction require separately measured physical truth. |
-| 19 | `supervised_classifier` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from all fitted preprocessing, classifier tuning and calibration. |
+| 19 | `supervised_classifier` | [64.10](../done/64_10_label_benchmark_records.md) | done |
 | 20 | `positive_unlabeled` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Held-out verified positives; precision/negative-class claims require an independently labelled validation sample. |
 | 21 | `trait_regression` | [64.11](../done/64_11_value_benchmark_records.md) | done |
 | 22 | `masked_imputation` | [64.11](../done/64_11_value_benchmark_records.md) | done |
@@ -230,16 +230,16 @@ already exists or passes. A strategy can have multiple task contracts for differ
 | 26 | `split_clusters` | [64.15](../done/64_15_replication_benchmarks.md) | A discovered biological split repeats with its direction/effect on disjoint validation groups. |
 | 27 | `conjunctions` | [64.15](../done/64_15_replication_benchmarks.md) | A discovered joint label/context finding repeats on disjoint validation groups. |
 | 28 | `paralog_divergence` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Ranked paralog differences checked against withheld measured/curated functional differences; both endpoints and proxy limits recorded. |
-| 29 | `ortholog_transfer` | [64.10](64_10_label_benchmark_records.md) / [64.11](../done/64_11_value_benchmark_records.md) | Receiver-species measured labels/values hidden; donor-target semantic compatibility and transfer/mapping coverage explicit. |
-| 30 | `stratum_focus` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden within declared understudied/lineage/missingness strata, with stratum-specific results. |
-| 31 | `triangulation` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from each base and the combination; shared evidence and abstention visible. |
-| 32 | `understudied_first` | [64.10](64_10_label_benchmark_records.md) | Same held-out combination test on the stated understudied population. |
+| 29 | `ortholog_transfer` | [64.10](../done/64_10_label_benchmark_records.md) / [64.11](../done/64_11_value_benchmark_records.md) | Receiver-species measured labels/values hidden; donor-target semantic compatibility and transfer/mapping coverage explicit. |
+| 30 | `stratum_focus` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 31 | `triangulation` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 32 | `understudied_first` | [64.10](../done/64_10_label_benchmark_records.md) | done |
 | 33 | `neighbour_space` | [64.13](../done/64_13_relationship_benchmarks.md) | Held-out measured relationship layer/group pairs, excluding its source from fitted features. |
 | 34 | `network_training` | [64.13](../done/64_13_relationship_benchmarks.md) | Held-out measured relationship/group pairs, excluding the trained target layer and its sources. |
-| 35 | `conformal_calls` | [64.10](64_10_label_benchmark_records.md) | Disjoint model/calibration/test labels; achieved set coverage and set/singleton efficiency. |
-| 36 | `graph_convolution` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from fitted graph model and all target-related feature/edge sources. |
-| 37 | `random_forest` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from train-fitted features, forest selection and calibration. |
-| 38 | `stacking` | [64.10](64_10_label_benchmark_records.md) | Outer held-out truth; training stacker sees only inner out-of-fold base predictions. |
+| 35 | `conformal_calls` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 36 | `graph_convolution` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 37 | `random_forest` | [64.10](../done/64_10_label_benchmark_records.md) | done |
+| 38 | `stacking` | [64.10](../done/64_10_label_benchmark_records.md) | done |
 | 39 | `conformal_values` | [64.11](../done/64_11_value_benchmark_records.md) | done |
 
 ## Execution order and gates
