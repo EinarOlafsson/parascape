@@ -1,6 +1,6 @@
 # 64.11 · Keep held-out numeric predictions
 
-Status: OPEN — 90%, 2026-11-07. All value metrics, conformal coverage and a train-only baseline on the cards; per-column units need curation (no unit field exists).
+Status: DONE — 100%, 2026-11-07. All value metrics, conformal coverage, a train-only baseline and curated units on the cards. Built; Einar's review pending -- reopen on his feedback.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -24,11 +24,11 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Done when
 
-- [ ] Mask real observed values before any dependent preprocessing; group/cell/dataset masks state their intended generalization.
-- [ ] Cards expose units, MAE/RMSE, skill against the matched train-only baseline, correlation and coverage; prediction intervals expose width and achieved coverage.
-- [ ] Derived shifts preserve both source conditions and their exclusions; out-of-range and unobserved values are not scored as truth.
-- [ ] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
-- [ ] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
+- [x] Mask real observed values before any dependent preprocessing; group/cell/dataset masks state their intended generalization.
+- [x] Cards expose units, MAE/RMSE, skill against the matched train-only baseline, correlation and coverage; prediction intervals expose width and achieved coverage.
+- [x] Derived shifts preserve both source conditions and their exclusions; out-of-range and unobserved values are not scored as truth.
+- [x] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
+- [x] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
 
 ## Completion evidence
 
@@ -150,3 +150,20 @@ self-test (`strategies` value transfer test, `scorecard.values(..., train_mean=)
 settings: skill against the training mean 0.237, R² 0.236, Spearman 0.50. The shipped calibration file shows it from
 the next sweep. **Still open:** units on each card -- no column records its unit today (the dataset registry has no
 unit field), so this needs per-dataset unit curation, not code.
+
+**Units (2026-11-07).** `parascape/units.py`: a curated unit with its basis for every value target the spaces
+declare and their dataset siblings -- CRISPR phenotype score (log2 fold change of guide abundance; Sidik 2016),
+in vivo composite score (differential fitness x significance, dimensionless; Giuliano 2024), tachyzoite/cyst/max
+expression as log2(FPKM + 1) (computed in `build_graph.py` from GSE108740), piggyBac mutagenesis index 0-1 and
+fitness score (Zhang 2018), Plasmodium stage expression (PlasmoDB report; its normalisation is not stated, and
+the unit says so), mean pLDDT 0-100. Other columns are matched by name pattern (TPM, FPKM, log2 fold change,
+pLDDT, percentile) and say "read from the column name, not curated"; anything else is "unit not recorded", never
+guessed. The value scorecard in the Strategies panel now opens with "MAE and RMSE are in the units of <column>:
+<unit> (<basis>)". Tests: `tests/test_units.py`, `tests/test_module_shell.py::test_a_value_scorecard_states_its_units`.
+
+**Found while curating (checked):** the GSE108740 source columns are labelled FPKM but range 0 to 8.9 (median
+2.7), so they are already log-scaled, and `expr_tachy`, `expr_cyst` and `expr_max` (log2(mean + 1) in
+`build_graph.py`) are doubly logged. Rankings and correlations are unaffected (monotone), but values, MAE/RMSE and
+any cross-dataset comparison of these columns are on a compressed scale. The unit now says so; the fix (take
+log2 only once, after confirming the GEO series scale) changes the shipped table and the calibration, so it is
+registered as follow-up item 64.11a rather than done silently here.

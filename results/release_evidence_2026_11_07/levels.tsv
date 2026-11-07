@@ -1,0 +1,7 @@
+level	what	where	present
+gene	each gene hidden with its orthogroup: the call, right or wrong	parascape/data/track_record.parquet; HarnessResult.rows	True
+class	recall / precision / F1 per class, confusion	results/label_metrics_2026_11_07/by_class.tsv	True
+label	coverage, accuracy against chance, macro F1	results/label_metrics_2026_11_07/overall.tsv	True
+method	calibration scorecard per method and organism	parascape/data/strategy_calibration.json	True
+meta	a model over methods, strictly nested, admitted per label	results/meta_inference_nested_2026_11_07*	True
+question	harness frozen tests, touched once and logged	results/harness_holdout_log.jsonl	True

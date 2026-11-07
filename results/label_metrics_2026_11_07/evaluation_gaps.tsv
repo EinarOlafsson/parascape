@@ -1,0 +1,13 @@
+organism	target	min_class	classes_left_out	genes_left_out	which
+Tg	compartment	15	2	23	20S proteasome (14), tubulin cytoskeleton (9)
+Tg	lopit_unified	15	1	9	cytoskeleton (9)
+Tg	dtm_class	15	1	3	BETA (3)
+Tg	screen_any_phenotype	15	0	0	
+Tg	cellcycle_phase	15	0	0	
+Tg	screen_actin_phenotype	15	0	0	
+Tg	screen_apicoplast_phenotype	15	0	0	
+Tg	screen_egress_phenotype	15	0	0	
+Tg	screen_replication_phenotype	15	0	0	
+Pf	lopit_pf_location	15	6	66	19s proteasome (14), ER 2 (13), micronemes 1 (12), micronemes 2 (10), nucleus - histones (9), plasma membrane 2 (8)
+Pf	pb_transferred_phenotype	15	1	2	Fast (2)
+Pf	is_exported	15	0	0	

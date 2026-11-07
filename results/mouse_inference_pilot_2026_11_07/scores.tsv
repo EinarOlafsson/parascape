@@ -1,0 +1,3 @@
+question	strategy	partition	n	positives	threshold	calls	correct	precision	precision_lower90	reaches_bar	coverage_at_bar	calibration_error	accuracy	roc_auc	average_precision	folds
+mm_bmdm_surface	boosted trees, mouse expression only	cross_validated (train+tune, nested)	906	107	0.5556	38	15	0.39473684210526316	0.2866010975437623	False	0.04194260485651214	7.45050329991275e-17	0.8664459161147903	0.7598224416034061	0.2701728852585284	3.0
+mm_bmdm_surface	boosted trees, mouse expression only	frozen_test (touched once)	195	22	0.5556	5	0	0.0	0.0	False	0.02564102564102564	0.03926628557187585	0.8615384615384616	0.7976878612716762	0.278647405371057	

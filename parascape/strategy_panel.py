@@ -469,9 +469,19 @@ class StrategyPanel(QtWidgets.QWidget):
                  "with 95% intervals." if any(v[1] is not None for v in shipped.values()) else
                  "Values are from one self-test on the shipped data." if shipped else
                  "Press Test to fill it in on your data.")
+        units = ""
+        if s.task == SC.T_VALUES:
+            from . import units as U
+            try:
+                defaults = s.defaults(self.ctx)
+                column = next((defaults.get(p.name) for p in s.params if p.kind == "number"), None)
+            except Exception:
+                column = None
+            if column:
+                units = f"<p>{e(U.sentence(str(column)))}</p>"
         return (f"<h4>Scorecard: {e(task.key)}</h4><p>{e(task.description)} What is hidden: "
                 f"{e(task.hidden)}. Every strategy doing this task reports these metrics, in this "
-                f"order. {e(where)}</p>"
+                f"order. {e(where)}</p>{units}"
                 f"<table cellspacing='0' cellpadding='3' border='0'><tr><th align='left'>Metric"
                 f"</th><th align='right'>Shipped data</th><th align='left'>Chance</th>"
                 f"<th align='left'>How to read it</th></tr>{rows}</table>")

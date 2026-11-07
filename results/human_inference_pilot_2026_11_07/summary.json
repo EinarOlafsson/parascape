@@ -1,0 +1,90 @@
+{
+ "scores": [
+  {
+   "location": "Nucleoplasm",
+   "genes": 12662,
+   "positives": 4651,
+   "cv_auc": 0.611,
+   "frozen_auc": 0.639,
+   "frozen_ap": 0.508,
+   "prevalence": 0.367,
+   "precision_lower90": 0.316,
+   "may_fill": false,
+   "flags": "frozen_test_repeat"
+  },
+  {
+   "location": "Plasma membrane",
+   "genes": 12662,
+   "positives": 1528,
+   "cv_auc": 0.654,
+   "frozen_auc": 0.673,
+   "frozen_ap": 0.197,
+   "prevalence": 0.121,
+   "precision_lower90": 0.17,
+   "may_fill": false,
+   "flags": "frozen_test_repeat"
+  },
+  {
+   "location": "Mitochondria",
+   "genes": 12662,
+   "positives": 911,
+   "cv_auc": 0.702,
+   "frozen_auc": 0.709,
+   "frozen_ap": 0.268,
+   "prevalence": 0.072,
+   "precision_lower90": 0.55,
+   "may_fill": false,
+   "flags": "frozen_test_repeat"
+  },
+  {
+   "location": "Golgi apparatus",
+   "genes": 12662,
+   "positives": 815,
+   "cv_auc": 0.562,
+   "frozen_auc": 0.579,
+   "frozen_ap": 0.072,
+   "prevalence": 0.064,
+   "precision_lower90": NaN,
+   "may_fill": false,
+   "flags": "frozen_test_repeat"
+  },
+  {
+   "location": "Endoplasmic reticulum",
+   "genes": 12662,
+   "positives": 455,
+   "cv_auc": 0.688,
+   "frozen_auc": 0.689,
+   "frozen_ap": 0.188,
+   "prevalence": 0.036,
+   "precision_lower90": 0.316,
+   "may_fill": false,
+   "flags": "frozen_test_repeat"
+  }
+ ],
+ "parity": {
+  "location": "Mitochondria",
+  "identical_rows": true,
+  "flags": [
+   "frozen_test_repeat"
+  ]
+ },
+ "cold_cache": {
+  "state_before": "installable",
+  "after": "Homo sapiens -- installed (2026.11.07); not calibrated. gene space for links from parasite genes; no held-out track record yet, so nothing here is calibrated for inference",
+  "genes": 58988,
+  "same_as_built": true
+ },
+ "coverage": {
+  "genes": 58988,
+  "graded_location": 12662,
+  "with_infection_response": 17629,
+  "questions": 5,
+  "fill_allowed": 0,
+  "gaps": [
+   "no human homology groups: paralogs can sit on both sides of a split",
+   "only expression evidence: no human interaction, structure or domain columns in the pack yet",
+   "HPA locations are cell-line immunofluorescence; tissue context differs",
+   "catalogue strategies other than the harness models need a human context adapter (not built)"
+  ]
+ }
+}

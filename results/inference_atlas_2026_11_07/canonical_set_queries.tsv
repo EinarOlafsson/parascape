@@ -1,0 +1,13 @@
+organism	target	methods	set_queries	rows
+Pf	is_exported	14	22	110128
+Pf	lopit_pf_location	14	38	57176
+Pf	pb_transferred_phenotype	14	23	64110
+Tg	cellcycle_phase	14	25	47278
+Tg	compartment	14	44	83304
+Tg	dtm_class	14	24	143966
+Tg	lopit_unified	14	30	83500
+Tg	screen_actin_phenotype	14	18	11508
+Tg	screen_any_phenotype	14	18	11508
+Tg	screen_apicoplast_phenotype	14	18	11508
+Tg	screen_egress_phenotype	14	18	11508
+Tg	screen_replication_phenotype	14	18	11508

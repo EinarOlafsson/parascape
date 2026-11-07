@@ -1,0 +1,5 @@
+code	species	kind	distribution	state	calibrated	note
+Tg	Toxoplasma gondii	parasite	wheel	ready	True	
+Pf	Plasmodium falciparum	parasite	wheel	ready	True	
+Hs	Homo sapiens	host	pack	installable	False	a verified pack is available in this checkout
+Mm	Mus musculus	host	pack	installable	False	a verified pack is available in this checkout

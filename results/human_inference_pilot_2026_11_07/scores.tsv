@@ -1,0 +1,6 @@
+location	genes	positives	cv_auc	frozen_auc	frozen_ap	prevalence	precision_lower90	may_fill	flags
+Nucleoplasm	12662	4651	0.611	0.639	0.508	0.367	0.316	False	frozen_test_repeat
+Plasma membrane	12662	1528	0.654	0.673	0.197	0.121	0.17	False	frozen_test_repeat
+Mitochondria	12662	911	0.702	0.709	0.268	0.072	0.55	False	frozen_test_repeat
+Golgi apparatus	12662	815	0.562	0.579	0.072	0.064		False	frozen_test_repeat
+Endoplasmic reticulum	12662	455	0.688	0.689	0.188	0.036	0.316	False	frozen_test_repeat

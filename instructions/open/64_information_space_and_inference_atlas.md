@@ -130,46 +130,47 @@ checks add elapsed time; budget them after pilot measurements.
 
 | Item | Percent done | Time left | Description | Depends on |
 |---|---:|---:|---|---|
-| [64.01](../done/64_01_entity_query_contract.md) | ✅ | 0 h | Define the entities and questions | — |
-| [64.02](../done/64_02_dataset_inventory.md) | ✅ | 0 h | Inventory the available information space | 64.01 |
-| [64.03](../done/64_03_measurement_provenance.md) | ✅ | 0 h | Trace each measurement to its source | 64.02 |
-| [64.04](../done/64_04_ground_truth_registry.md) | ✅ | 0 h | Register the ground-truth test cases | 64.01, 64.03 |
-| [64.05](../done/64_05_heldout_split_protocols.md) | ✅ | 0 h | Freeze the hold-outs and leakage rules | 64.04 |
-| [64.06](../done/64_06_benchmark_baselines.md) | ✅ | 0 h | Standardize baselines and negative controls | 64.04, 64.05 |
-| [64.07](../done/64_07_strategy_capability_contracts.md) | ✅ | 0 h | Declare what each of the 39 strategies answers | 64.01, 64.04 |
-| [64.08](../done/64_08_result_artifact_contract.md) | ✅ | 0 h | Version inference and benchmark artifacts | 64.03, 64.05, 64.07 |
-| [64.09](../done/64_09_scorecard_aggregation.md) | ✅ | 0 h | Make all scorecard levels use the same records | 64.04, 64.06, 64.08 |
+| [64.01](../done/64_01_entity_query_contract.md) | done | 0 h | Define the entities and questions | — |
+| [64.02](../done/64_02_dataset_inventory.md) | done | 0 h | Inventory the available information space | 64.01 |
+| [64.03](../done/64_03_measurement_provenance.md) | done | 0 h | Trace each measurement to its source | 64.02 |
+| [64.04](../done/64_04_ground_truth_registry.md) | done | 0 h | Register the ground-truth test cases | 64.01, 64.03 |
+| [64.05](../done/64_05_heldout_split_protocols.md) | done | 0 h | Freeze the hold-outs and leakage rules | 64.04 |
+| [64.06](../done/64_06_benchmark_baselines.md) | done | 0 h | Standardize baselines and negative controls | 64.04, 64.05 |
+| [64.07](../done/64_07_strategy_capability_contracts.md) | done | 0 h | Declare what each of the 39 strategies answers | 64.01, 64.04 |
+| [64.08](../done/64_08_result_artifact_contract.md) | done | 0 h | Version inference and benchmark artifacts | 64.03, 64.05, 64.07 |
+| [64.09](../done/64_09_scorecard_aggregation.md) | done | 0 h | Make all scorecard levels use the same records | 64.04, 64.06, 64.08 |
 | [64.10](64_10_label_benchmark_records.md) | 35% | 6–12 h | Complete the categorical-label benchmark records | 64.05, 64.06, 64.07, 64.08, 64.09 |
-| [64.11](64_11_value_benchmark_records.md) | 35% | 6–10 h | Keep held-out numeric predictions | 64.05, 64.06, 64.07, 64.08, 64.09 |
-| [64.12](64_12_gene_ranking_benchmarks.md) | 0% | 6–10 h | Test gene rankings and set retrieval | 64.05, 64.06, 64.07, 64.08, 64.09 |
-| [64.13](64_13_relationship_benchmarks.md) | 0% | 6–12 h | Test relationship and link inference | 64.05, 64.06, 64.07, 64.08, 64.09 |
-| [64.14](64_14_cluster_benchmarks.md) | 0% | 6–10 h | Test map and module recovery | 64.05, 64.06, 64.07, 64.08, 64.09 |
-| [64.15](64_15_replication_benchmarks.md) | 0% | 4–8 h | Test split-half and conjunction findings | 64.05, 64.06, 64.07, 64.08, 64.09 |
-| [64.16](64_16_confidence_applicability.md) | 0% | 6–12 h | Calibrate confidence and measure where it applies | 64.10, 64.11, 64.12, 64.13, 64.14, 64.15 |
-| [64.17](../done/64_17_shared_scorecard_component.md) | ✅ | 0 h | Expose one reusable scorecard component | 64.09, 64.16 |
-| [64.18](../done/64_18_dataset_space_browser.md) | ✅ | 0 h | Browse the selected organism's datasets | 64.02, 64.03, 64.17 |
-| [64.19](../done/64_19_gene_evidence_entry.md) | ✅ | 0 h | Make gene lookup an evidence entry point | 64.01, 64.03, 64.17, 64.18 |
-| [64.20](../done/64_20_label_class_entry.md) | ✅ | 0 h | Make labels and protein classes entry points | 64.01, 64.02, 64.17, 64.19 |
+| [64.11](../done/64_11_value_benchmark_records.md) | done | 6–10 h | Keep held-out numeric predictions | 64.05, 64.06, 64.07, 64.08, 64.09 |
+| [64.11a](64_11a_gse108740_double_log.md) | 25% | 2–4 h | Take the GSE108740 expression log only once | 64.11 |
+| [64.12](../done/64_12_gene_ranking_benchmarks.md) | done | 6–10 h | Test gene rankings and set retrieval | 64.05, 64.06, 64.07, 64.08, 64.09 |
+| [64.13](../done/64_13_relationship_benchmarks.md) | done | 6–12 h | Test relationship and link inference | 64.05, 64.06, 64.07, 64.08, 64.09 |
+| [64.14](../done/64_14_cluster_benchmarks.md) | done | 6–10 h | Test map and module recovery | 64.05, 64.06, 64.07, 64.08, 64.09 |
+| [64.15](../done/64_15_replication_benchmarks.md) | done | 4–8 h | Test split-half and conjunction findings | 64.05, 64.06, 64.07, 64.08, 64.09 |
+| [64.16](../done/64_16_confidence_applicability.md) | done | 6–12 h | Calibrate confidence and measure where it applies | 64.10, 64.11, 64.12, 64.13, 64.14, 64.15 |
+| [64.17](../done/64_17_shared_scorecard_component.md) | done | 0 h | Expose one reusable scorecard component | 64.09, 64.16 |
+| [64.18](../done/64_18_dataset_space_browser.md) | done | 0 h | Browse the selected organism's datasets | 64.02, 64.03, 64.17 |
+| [64.19](../done/64_19_gene_evidence_entry.md) | done | 0 h | Make gene lookup an evidence entry point | 64.01, 64.03, 64.17, 64.18 |
+| [64.20](../done/64_20_label_class_entry.md) | done | 0 h | Make labels and protein classes entry points | 64.01, 64.02, 64.17, 64.19 |
 | [64.21](../done/64_21_human_gene_space.md) | done 2026-11-07 | 6–12 h | Build the human gene information space | 64.01, 64.02, 64.03, 64.04, 64.05, 64.08 |
 | [64.22](../done/64_22_mouse_gene_space.md) | done 2026-11-07 | 8–16 h | Build the mouse gene information space | 64.01, 64.02, 64.03, 64.04, 64.05, 64.08 |
 | [64.23](../done/64_23_space_selection_packs.md) | done 2026-11-07 | 4–8 h | Select and install available organism spaces | 64.18, 64.21, 64.22 |
 | [64.24](../done/64_24_host_parasite_evidence.md) | done 2026-11-07 | 4–8 h | Explore typed organism-to-host connections | 64.03, 64.21, 64.22, 64.23 |
 | [64.25](../done/64_25_precompute_job_pipeline.md) | done 2026-11-07 | 4–6 h | Build a resumable precomputation pipeline | 64.08, 64.10, 64.11, 64.12, 64.13, 64.14, 64.15, 64.16 |
-| [64.26](64_26_toxoplasma_inference_pack.md) | 0% | 4–8 h + compute | Precompute the Toxoplasma inference atlas | 64.07, 64.17, 64.25 |
-| [64.27](64_27_plasmodium_inference_pack.md) | 0% | 4–8 h + compute | Precompute the Plasmodium inference atlas | 64.07, 64.17, 64.25, 64.26 |
-| [64.28](64_28_human_inference_pack.md) | 0% | 6–12 h + compute | Precompute and validate human inferences | 64.10, 64.11, 64.12, 64.13, 64.14, 64.15, 64.16, 64.21, 64.23, 64.25 |
-| [64.29](64_29_mouse_inference_pack.md) | 0% | 6–12 h + compute | Precompute and validate mouse inferences | 64.10, 64.11, 64.12, 64.13, 64.14, 64.15, 64.16, 64.22, 64.23, 64.25 |
-| [64.30](64_30_gene_inference_profile.md) | 0% | 6–10 h | Show every strategy's answer for a gene | 64.17, 64.19, 64.26, 64.27 |
-| [64.31](64_31_class_label_inference_profile.md) | 0% | 4–8 h | Compare inferences for a label or protein class | 64.17, 64.20, 64.26, 64.27, 64.30 |
-| [64.32](64_32_method_dependence_audit.md) | 30% | 6–10 h | Measure dependence between inference mechanisms | 64.03, 64.08, 64.10, 64.11, 64.12, 64.13, 64.14, 64.15, 64.16 |
-| [64.33](64_33_agreement_disagreement_view.md) | 50% | 3–6 h | Show calibrated agreement and conflicts | 64.30, 64.31, 64.32 |
-| [64.34](64_34_validated_meta_inference.md) | 0% | 8–16 h + compute | Train and test the meta-inference | 64.05, 64.06, 64.08, 64.16, 64.32, 64.33 |
-| [64.35](64_35_meta_scorecards.md) | 0% | 4–6 h | Expose meta-inference scorecards at every level | 64.17, 64.30, 64.31, 64.34 |
-| [64.36](64_36_navigation_acceptance.md) | 0% | 4–6 h | Connect every evidence and inference level | 64.18, 64.19, 64.20, 64.23, 64.24, 64.30, 64.31, 64.33, 64.35 |
-| [64.37](64_37_imported_screen_context.md) | 0% | 4–8 h | Make user data reach the same inference flow | 64.03, 64.04, 64.05, 64.08, 64.23, 64.25, 64.30 |
-| [64.38](64_38_prospective_frozen_tests.md) | 0% | 6–10 h | Freeze predictions and score new independent truth | 64.03, 64.04, 64.05, 64.08, 64.16, 64.32, 64.34 |
-| [64.39](64_39_reproducible_exports.md) | 0% | 4–8 h | Export the evidence and inference trail | 64.03, 64.08, 64.17, 64.30, 64.31, 64.35 |
-| [64.40](64_40_release_goal_acceptance.md) | 0% | 6–10 h + checks | Verify both goals end to end and release | 64.18, 64.19, 64.20, 64.21, 64.22, 64.23, 64.24, 64.26, 64.27, 64.28, 64.29, 64.30, 64.31, 64.33, 64.35, 64.36, 64.37, 64.38, 64.39 |
+| [64.26](../done/64_26_toxoplasma_inference_pack.md) | done | 4–8 h + compute | Precompute the Toxoplasma inference atlas | 64.07, 64.17, 64.25 |
+| [64.27](../done/64_27_plasmodium_inference_pack.md) | done | 4–8 h + compute | Precompute the Plasmodium inference atlas | 64.07, 64.17, 64.25, 64.26 |
+| [64.28](../done/64_28_human_inference_pack.md) | done | 6–12 h + compute | Precompute and validate human inferences | 64.10, 64.11, 64.12, 64.13, 64.14, 64.15, 64.16, 64.21, 64.23, 64.25 |
+| [64.29](../done/64_29_mouse_inference_pack.md) | done | 6–12 h + compute | Precompute and validate mouse inferences | 64.10, 64.11, 64.12, 64.13, 64.14, 64.15, 64.16, 64.22, 64.23, 64.25 |
+| [64.30](../done/64_30_gene_inference_profile.md) | done | 6–10 h | Show every strategy's answer for a gene | 64.17, 64.19, 64.26, 64.27 |
+| [64.31](../done/64_31_class_label_inference_profile.md) | done | 4–8 h | Compare inferences for a label or protein class | 64.17, 64.20, 64.26, 64.27, 64.30 |
+| [64.32](../done/64_32_method_dependence_audit.md) | done | 6–10 h | Measure dependence between inference mechanisms | 64.03, 64.08, 64.10, 64.11, 64.12, 64.13, 64.14, 64.15, 64.16 |
+| [64.33](../done/64_33_agreement_disagreement_view.md) | done | 3–6 h | Show calibrated agreement and conflicts | 64.30, 64.31, 64.32 |
+| [64.34](../done/64_34_validated_meta_inference.md) | done | 8–16 h + compute | Train and test the meta-inference | 64.05, 64.06, 64.08, 64.16, 64.32, 64.33 |
+| [64.35](../done/64_35_meta_scorecards.md) | done | 4–6 h | Expose meta-inference scorecards at every level | 64.17, 64.30, 64.31, 64.34 |
+| [64.36](../done/64_36_navigation_acceptance.md) | done | 4–6 h | Connect every evidence and inference level | 64.18, 64.19, 64.20, 64.23, 64.24, 64.30, 64.31, 64.33, 64.35 |
+| [64.37](../done/64_37_imported_screen_context.md) | done | 4–8 h | Make user data reach the same inference flow | 64.03, 64.04, 64.05, 64.08, 64.23, 64.25, 64.30 |
+| [64.38](../done/64_38_prospective_frozen_tests.md) | done | 6–10 h | Freeze predictions and score new independent truth | 64.03, 64.04, 64.05, 64.08, 64.16, 64.32, 64.34 |
+| [64.39](../done/64_39_reproducible_exports.md) | done | 4–8 h | Export the evidence and inference trail | 64.03, 64.08, 64.17, 64.30, 64.31, 64.35 |
+| [64.40](64_40_release_goal_acceptance.md) | 70% | 6–10 h + checks | Verify both goals end to end and release | 64.18, 64.19, 64.20, 64.21, 64.22, 64.23, 64.24, 64.26, 64.27, 64.28, 64.29, 64.30, 64.31, 64.33, 64.35, 64.36, 64.37, 64.38, 64.39 |
 
 ## Every current strategy's ground-truth contract
 
@@ -201,45 +202,45 @@ already exists or passes. A strategy can have multiple task contracts for differ
 
 | # | Strategy | Action | Ground-truth test |
 |---|---|---|---|
-| 1 | `holdout_search` | [64.14](64_14_cluster_benchmarks.md) | Hidden experimental labels/modules; select map/settings on inner data and score outer recovery. |
-| 2 | `geneset_hunt` | [64.12](64_12_gene_ranking_benchmarks.md) | Known set members hidden from the query seeds and map selection; test retrieval on that set's declared population. |
-| 3 | `recoverability_atlas` | [64.12](64_12_gene_ranking_benchmarks.md) | Held-out known-label recovery and predictability ranking, retaining target/class and perturbation scope. |
-| 4 | `consensus_modules` | [64.14](64_14_cluster_benchmarks.md) | Known-label/module recovery on untouched genes, plus stability and coverage across map settings. |
-| 5 | `blind_battery` | [64.15](64_15_replication_benchmarks.md) | Measured findings selected on discovery data and checked on disjoint verification data. |
+| 1 | `holdout_search` | [64.14](../done/64_14_cluster_benchmarks.md) | Hidden experimental labels/modules; select map/settings on inner data and score outer recovery. |
+| 2 | `geneset_hunt` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Known set members hidden from the query seeds and map selection; test retrieval on that set's declared population. |
+| 3 | `recoverability_atlas` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Held-out known-label recovery and predictability ranking, retaining target/class and perturbation scope. |
+| 4 | `consensus_modules` | [64.14](../done/64_14_cluster_benchmarks.md) | Known-label/module recovery on untouched genes, plus stability and coverage across map settings. |
+| 5 | `blind_battery` | [64.15](../done/64_15_replication_benchmarks.md) | Measured findings selected on discovery data and checked on disjoint verification data. |
 | 6 | `block_ablation` | [64.10](64_10_label_benchmark_records.md) | Same hidden labels with/without a feature block; paired recovery delta and pipeline contribution. |
 | 7 | `feature_knn` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden by gene/homology group; full class calls/scores and abstentions. |
 | 8 | `map_neighbours` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from map construction and neighbor voting; held-out recovery. |
 | 9 | `cluster_guilt` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from cluster enrichment/assignment; per-class calls and coverage. |
-| 10 | `label_outliers` | [64.12](64_12_gene_ranking_benchmarks.md) | Synthetic corrupted labels with known originals; separately registered independent adjudication for real label-error claims. |
+| 10 | `label_outliers` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Synthetic corrupted labels with known originals; separately registered independent adjudication for real label-error claims. |
 | 11 | `layer_propagation` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from graph seeds with target-derived edges excluded. |
 | 12 | `layer_vote` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from every contributing voter and its weight fitting. |
 | 13 | `physical_partners` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from physical-network seeds; explicit network coverage and target exclusions. |
 | 14 | `structural_homology` | [64.10](64_10_label_benchmark_records.md) | Measured/curated function or label hidden from fold-neighbor voting; declared truth grade and mapping. |
-| 15 | `multiplex_modules` | [64.14](64_14_cluster_benchmarks.md) | Known labels or reviewed modules hidden from module selection and evaluated on untouched groups. |
-| 16 | `link_prediction` | [64.13](64_13_relationship_benchmarks.md) | Hidden experimental edges in an explicit known-node/cold-node regime; matched controls and unlabeled-pair limits. |
-| 17 | `attention_correction` | [64.13](64_13_relationship_benchmarks.md) | Recovery of separately measured/curated biological relations; source-paper reuse declared and tested. |
-| 18 | `unwritten_links` | [64.13](64_13_relationship_benchmarks.md) | Literature recovery is its own test; claims of physical interaction require separately measured physical truth. |
+| 15 | `multiplex_modules` | [64.14](../done/64_14_cluster_benchmarks.md) | Known labels or reviewed modules hidden from module selection and evaluated on untouched groups. |
+| 16 | `link_prediction` | [64.13](../done/64_13_relationship_benchmarks.md) | Hidden experimental edges in an explicit known-node/cold-node regime; matched controls and unlabeled-pair limits. |
+| 17 | `attention_correction` | [64.13](../done/64_13_relationship_benchmarks.md) | Recovery of separately measured/curated biological relations; source-paper reuse declared and tested. |
+| 18 | `unwritten_links` | [64.13](../done/64_13_relationship_benchmarks.md) | Literature recovery is its own test; claims of physical interaction require separately measured physical truth. |
 | 19 | `supervised_classifier` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from all fitted preprocessing, classifier tuning and calibration. |
-| 20 | `positive_unlabeled` | [64.12](64_12_gene_ranking_benchmarks.md) | Held-out verified positives; precision/negative-class claims require an independently labelled validation sample. |
-| 21 | `trait_regression` | [64.11](64_11_value_benchmark_records.md) | Known measured traits hidden by group/context; train-only baselines and unit-aware residuals. |
-| 22 | `masked_imputation` | [64.11](64_11_value_benchmark_records.md) | Measured entries masked before fitting, with entry/group/context mask regimes stated. |
-| 23 | `condition_shift` | [64.11](64_11_value_benchmark_records.md) | Hidden condition comparisons derived from measured inputs; both source conditions and training exclusions recorded. |
-| 24 | `set_enrichment` | [64.12](64_12_gene_ranking_benchmarks.md) | Disjoint seed/validation set members and known annotation associations; enrichment significance and recovery separated. |
-| 25 | `seed_expansion` | [64.12](64_12_gene_ranking_benchmarks.md) | Known members withheld from seeds by group; retrieval on a fixed eligible universe. |
-| 26 | `split_clusters` | [64.15](64_15_replication_benchmarks.md) | A discovered biological split repeats with its direction/effect on disjoint validation groups. |
-| 27 | `conjunctions` | [64.15](64_15_replication_benchmarks.md) | A discovered joint label/context finding repeats on disjoint validation groups. |
-| 28 | `paralog_divergence` | [64.12](64_12_gene_ranking_benchmarks.md) | Ranked paralog differences checked against withheld measured/curated functional differences; both endpoints and proxy limits recorded. |
-| 29 | `ortholog_transfer` | [64.10](64_10_label_benchmark_records.md) / [64.11](64_11_value_benchmark_records.md) | Receiver-species measured labels/values hidden; donor-target semantic compatibility and transfer/mapping coverage explicit. |
+| 20 | `positive_unlabeled` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Held-out verified positives; precision/negative-class claims require an independently labelled validation sample. |
+| 21 | `trait_regression` | [64.11](../done/64_11_value_benchmark_records.md) | done |
+| 22 | `masked_imputation` | [64.11](../done/64_11_value_benchmark_records.md) | done |
+| 23 | `condition_shift` | [64.11](../done/64_11_value_benchmark_records.md) | done |
+| 24 | `set_enrichment` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Disjoint seed/validation set members and known annotation associations; enrichment significance and recovery separated. |
+| 25 | `seed_expansion` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Known members withheld from seeds by group; retrieval on a fixed eligible universe. |
+| 26 | `split_clusters` | [64.15](../done/64_15_replication_benchmarks.md) | A discovered biological split repeats with its direction/effect on disjoint validation groups. |
+| 27 | `conjunctions` | [64.15](../done/64_15_replication_benchmarks.md) | A discovered joint label/context finding repeats on disjoint validation groups. |
+| 28 | `paralog_divergence` | [64.12](../done/64_12_gene_ranking_benchmarks.md) | Ranked paralog differences checked against withheld measured/curated functional differences; both endpoints and proxy limits recorded. |
+| 29 | `ortholog_transfer` | [64.10](64_10_label_benchmark_records.md) / [64.11](../done/64_11_value_benchmark_records.md) | Receiver-species measured labels/values hidden; donor-target semantic compatibility and transfer/mapping coverage explicit. |
 | 30 | `stratum_focus` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden within declared understudied/lineage/missingness strata, with stratum-specific results. |
 | 31 | `triangulation` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from each base and the combination; shared evidence and abstention visible. |
 | 32 | `understudied_first` | [64.10](64_10_label_benchmark_records.md) | Same held-out combination test on the stated understudied population. |
-| 33 | `neighbour_space` | [64.13](64_13_relationship_benchmarks.md) | Held-out measured relationship layer/group pairs, excluding its source from fitted features. |
-| 34 | `network_training` | [64.13](64_13_relationship_benchmarks.md) | Held-out measured relationship/group pairs, excluding the trained target layer and its sources. |
+| 33 | `neighbour_space` | [64.13](../done/64_13_relationship_benchmarks.md) | Held-out measured relationship layer/group pairs, excluding its source from fitted features. |
+| 34 | `network_training` | [64.13](../done/64_13_relationship_benchmarks.md) | Held-out measured relationship/group pairs, excluding the trained target layer and its sources. |
 | 35 | `conformal_calls` | [64.10](64_10_label_benchmark_records.md) | Disjoint model/calibration/test labels; achieved set coverage and set/singleton efficiency. |
 | 36 | `graph_convolution` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from fitted graph model and all target-related feature/edge sources. |
 | 37 | `random_forest` | [64.10](64_10_label_benchmark_records.md) | Known labels hidden from train-fitted features, forest selection and calibration. |
 | 38 | `stacking` | [64.10](64_10_label_benchmark_records.md) | Outer held-out truth; training stacker sees only inner out-of-fold base predictions. |
-| 39 | `conformal_values` | [64.11](64_11_value_benchmark_records.md) | Disjoint model/calibration/test measured values; achieved interval coverage, width and point-error skill. |
+| 39 | `conformal_values` | [64.11](../done/64_11_value_benchmark_records.md) | done |
 
 ## Execution order and gates
 

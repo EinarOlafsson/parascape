@@ -1,0 +1,1568 @@
+# Pf is_exported cluster_guilt
+truth	True	abstained
+False	76	5453
+True	21	170
+
+# Pf is_exported feature_knn
+truth	False	True
+False	5390	139
+True	150	41
+
+# Pf is_exported graph_convolution
+truth	False	True
+False	5180	349
+True	51	140
+
+# Pf is_exported layer_propagation
+truth	False	True	abstained
+False	4065	1261	203
+True	58	130	3
+
+# Pf is_exported layer_vote
+truth	False	True	abstained
+False	4462	143	924
+True	128	40	23
+
+# Pf is_exported map_neighbours
+truth	False	True	abstained
+False	2409	13	3107
+True	70	8	113
+
+# Pf is_exported physical_partners
+truth	False	abstained
+False	136	5393
+True	3	188
+
+# Pf is_exported random_forest
+truth	False	True
+False	5428	101
+True	167	24
+
+# Pf is_exported stacking
+truth	False	True
+False	5125	404
+True	44	147
+
+# Pf is_exported stratum_focus
+truth	False	True
+False	5390	139
+True	150	41
+
+# Pf is_exported structural_homology
+truth	False	True	abstained
+False	1191	3	4335
+True	18	6	167
+
+# Pf is_exported supervised_classifier
+truth	False	True
+False	5157	372
+True	48	143
+
+# Pf is_exported triangulation
+truth	False	True	abstained
+False	5390	138	1
+True	144	45	2
+
+# Pf is_exported understudied_first
+truth	False	True	abstained
+False	5390	138	1
+True	144	45	2
+
+# Pf lopit_pf_location cluster_guilt
+truth	ER 1	Maurer's cleft	abstained	erythrocyte membrane	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	rhoptries	ribosomes
+20s proteasome	0	0	8	0	0	0	0	1	0	0	8
+ER 1	8	0	111	0	13	3	2	6	1	1	3
+Maurer's cleft	0	26	12	1	1	0	0	0	1	0	0
+PVM	1	8	15	0	0	0	0	0	0	2	2
+apicoplast	1	0	62	0	10	4	2	0	0	0	0
+cytosol	0	0	74	0	10	0	1	0	0	0	37
+eIF3	0	0	14	0	0	0	0	3	0	0	3
+erythrocyte membrane	0	15	25	1	0	0	0	0	0	1	0
+inner membrane complex	1	0	18	0	1	3	2	0	0	2	0
+mitochondrion	8	0	117	0	19	1	3	1	0	0	4
+mitotic apparatus	0	1	33	0	0	4	1	0	2	0	1
+nucleo-cytoplasm	0	0	99	0	10	2	4	5	0	0	26
+nucleus 1	0	0	241	0	4	20	1	91	6	0	15
+nucleus 2	0	1	42	0	1	5	0	5	0	0	0
+plasma membrane 1	0	1	46	0	1	1	0	4	0	2	5
+rhoptries	1	0	23	0	1	0	0	0	1	18	0
+ribosomes	0	0	9	0	0	0	0	0	0	0	56
+transport vesicles	0	1	79	0	4	5	2	14	1	0	8
+
+# Pf lopit_pf_location feature_knn
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	abstained	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	8	0	0	0	7	0	0	0	0	0	0	0	1	1	0	0	0	0	0
+ER 1	1	59	0	0	35	7	0	0	0	0	15	4	0	21	0	1	1	0	4
+Maurer's cleft	0	2	19	0	8	1	0	0	4	0	2	0	1	4	0	0	0	0	0
+PVM	0	1	3	4	8	0	0	0	0	0	2	0	0	5	0	0	4	1	0
+apicoplast	0	3	0	0	14	35	2	0	0	0	17	0	0	6	0	0	0	0	2
+cytosol	0	0	0	0	21	0	60	0	0	0	6	0	26	4	0	0	0	5	0
+eIF3	0	0	0	0	5	0	0	1	0	0	1	0	4	9	0	0	0	0	0
+erythrocyte membrane	0	0	6	0	10	1	0	0	20	0	0	0	0	4	0	0	1	0	0
+inner membrane complex	0	5	0	0	8	0	0	0	0	6	3	0	0	2	0	0	3	0	0
+mitochondrion	0	1	0	0	27	10	0	0	0	0	99	0	1	12	0	0	0	0	3
+mitotic apparatus	0	3	0	0	13	0	1	0	0	0	1	14	1	6	0	0	0	1	2
+nucleo-cytoplasm	2	1	0	0	41	0	21	0	0	0	4	0	43	26	0	0	1	5	2
+nucleus 1	2	0	0	0	45	3	0	0	0	0	5	0	8	291	4	0	0	10	10
+nucleus 2	0	0	0	0	10	2	0	0	0	0	2	0	0	22	18	0	0	0	0
+plasma membrane 1	0	17	0	0	23	1	0	0	0	0	3	0	0	7	0	6	2	1	0
+rhoptries	0	4	0	0	10	0	0	0	1	1	2	0	0	3	0	0	23	0	0
+ribosomes	0	0	0	0	2	0	0	0	0	0	1	0	0	5	0	0	0	57	0
+transport vesicles	0	1	0	0	29	1	9	0	1	0	6	0	6	46	1	0	0	0	14
+
+# Pf lopit_pf_location graph_convolution
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	15	0	0	0	0	0	1	0	0	1	0	0	0	0	0	0	0	0
+ER 1	1	67	0	0	11	1	4	0	3	5	9	0	2	3	23	10	0	9
+Maurer's cleft	0	3	23	2	1	0	1	9	0	0	0	1	0	1	0	0	0	0
+PVM	0	1	0	13	1	0	0	1	0	0	1	0	0	0	6	4	1	0
+apicoplast	0	5	0	0	56	1	0	0	1	9	0	0	3	1	0	0	0	3
+cytosol	0	1	1	2	0	86	0	0	1	2	1	22	1	0	0	1	0	4
+eIF3	1	0	0	0	1	0	10	0	0	0	0	1	6	0	0	0	0	1
+erythrocyte membrane	0	0	8	0	1	0	0	32	0	0	0	0	0	0	0	1	0	0
+inner membrane complex	0	1	0	0	0	0	0	0	18	0	2	0	1	0	1	4	0	0
+mitochondrion	1	9	0	0	20	2	2	0	3	111	1	1	3	0	0	0	0	0
+mitotic apparatus	0	1	0	0	0	0	1	1	0	0	29	1	0	4	0	1	1	3
+nucleo-cytoplasm	4	2	1	0	0	29	1	0	1	2	3	74	6	0	0	1	2	20
+nucleus 1	0	14	1	2	6	3	25	0	1	15	8	13	218	16	5	4	6	41
+nucleus 2	0	2	1	0	3	1	0	1	0	0	5	0	8	31	0	1	0	1
+plasma membrane 1	0	15	1	5	1	0	0	1	1	3	0	1	0	1	28	2	0	1
+rhoptries	0	3	1	1	0	0	0	1	5	2	0	0	0	0	1	29	0	1
+ribosomes	0	0	0	0	0	0	0	0	0	1	1	0	2	1	0	0	59	1
+transport vesicles	0	3	1	0	3	10	5	0	0	4	4	18	21	4	2	0	0	39
+
+# Pf lopit_pf_location layer_propagation
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	abstained	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	10	0	0	0	0	0	1	3	0	0	1	0	1	1	0	0	0	0	0
+ER 1	8	11	2	2	2	11	9	2	7	12	16	12	7	7	7	11	7	2	13
+Maurer's cleft	0	0	11	7	3	1	0	4	7	0	1	3	1	0	1	1	0	0	1
+PVM	0	2	5	2	6	1	0	3	1	0	1	1	1	2	0	2	1	0	0
+apicoplast	2	6	1	2	1	11	2	3	3	7	9	6	1	0	12	4	5	0	4
+cytosol	9	2	4	5	15	5	6	10	4	5	15	7	14	8	1	1	4	5	2
+eIF3	2	0	0	3	0	1	1	7	1	0	0	0	1	2	0	1	0	1	0
+erythrocyte membrane	1	1	10	2	0	2	2	1	16	0	0	1	0	1	2	0	1	0	2
+inner membrane complex	2	3	0	0	2	0	1	0	0	3	3	2	0	0	2	5	4	0	0
+mitochondrion	4	13	1	2	6	20	8	6	3	10	33	11	4	4	11	4	7	1	5
+mitotic apparatus	0	4	0	1	0	2	0	0	0	4	1	9	1	2	6	3	7	1	1
+nucleo-cytoplasm	12	4	4	4	11	4	12	11	4	5	9	10	6	7	9	11	4	10	9
+nucleus 1	24	18	16	9	10	22	12	44	12	9	12	11	14	67	31	17	12	6	32
+nucleus 2	1	2	1	0	0	6	0	2	1	3	1	8	3	3	12	2	6	0	3
+plasma membrane 1	1	1	3	3	3	3	1	7	3	8	4	3	3	2	2	3	6	1	3
+rhoptries	1	1	1	0	1	2	0	0	1	5	2	6	1	0	1	1	21	0	0
+ribosomes	0	1	1	2	17	0	0	3	0	1	1	2	3	0	0	2	1	31	0
+transport vesicles	6	9	5	4	5	12	2	9	5	2	3	5	6	13	7	7	5	0	9
+
+# Pf lopit_pf_location layer_vote
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	11	0	0	0	0	0	1	0	0	1	0	3	1	0	0	0	0	0
+ER 1	1	75	0	0	10	2	0	0	0	22	5	0	25	0	2	1	1	4
+Maurer's cleft	0	3	21	0	2	0	0	6	0	2	0	2	5	0	0	0	0	0
+PVM	0	1	4	6	0	0	0	0	1	3	0	0	6	0	0	5	1	1
+apicoplast	0	4	0	0	39	3	0	0	0	24	0	0	7	0	0	0	0	2
+cytosol	1	2	0	0	1	68	0	0	0	7	0	28	6	0	0	0	5	4
+eIF3	0	0	0	0	0	1	3	0	0	2	0	4	10	0	0	0	0	0
+erythrocyte membrane	0	0	6	0	2	0	0	29	0	0	0	0	4	0	0	1	0	0
+inner membrane complex	1	6	0	0	0	0	0	0	8	5	0	0	2	0	0	4	0	1
+mitochondrion	0	6	0	0	13	1	1	0	1	107	0	1	18	0	0	1	0	4
+mitotic apparatus	0	6	0	0	0	1	0	0	0	3	17	1	8	2	0	0	1	3
+nucleo-cytoplasm	3	3	0	0	2	32	0	0	0	6	0	55	31	0	0	1	5	8
+nucleus 1	3	8	0	0	9	3	0	0	0	12	1	13	299	4	0	0	11	15
+nucleus 2	0	1	0	0	3	0	0	0	0	2	0	0	28	19	0	0	0	1
+plasma membrane 1	0	23	0	0	2	3	0	0	0	6	1	2	11	0	8	2	1	1
+rhoptries	0	6	0	0	1	1	0	1	1	4	0	0	4	0	0	25	0	1
+ribosomes	0	0	0	0	0	1	0	0	0	1	0	0	6	0	0	0	57	0
+transport vesicles	2	3	0	0	1	10	0	1	0	11	0	12	52	1	0	0	0	21
+
+# Pf lopit_pf_location map_neighbours
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	abstained	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	3	0	0	0	8	0	2	0	0	0	0	0	3	1	0	0	0	0	0
+ER 1	0	24	0	0	55	2	3	0	1	2	23	8	4	21	1	0	2	0	2
+Maurer's cleft	0	1	18	1	3	1	0	0	12	0	1	1	0	3	0	0	0	0	0
+PVM	0	1	5	4	3	1	2	0	0	0	2	0	0	5	0	0	5	0	0
+apicoplast	0	6	0	0	26	11	0	0	0	0	20	0	3	10	0	1	0	0	2
+cytosol	0	2	0	0	38	2	37	0	0	1	13	0	19	6	0	0	0	3	1
+eIF3	0	0	0	0	1	0	1	3	0	0	0	0	3	11	0	1	0	0	0
+erythrocyte membrane	0	0	9	0	3	2	0	0	25	0	1	0	0	1	0	0	1	0	0
+inner membrane complex	0	2	0	0	4	0	0	0	0	12	3	0	1	0	0	0	5	0	0
+mitochondrion	1	19	0	0	48	10	2	0	0	3	50	0	1	17	0	0	0	0	2
+mitotic apparatus	0	9	0	0	9	1	1	0	1	0	0	11	0	10	0	0	0	0	0
+nucleo-cytoplasm	0	4	0	0	44	0	25	1	0	1	11	0	27	27	0	0	1	2	3
+nucleus 1	0	11	0	0	62	8	11	2	0	0	8	6	14	238	8	1	0	3	6
+nucleus 2	0	0	0	0	8	0	0	0	2	1	2	1	0	32	6	0	0	0	2
+plasma membrane 1	0	4	0	0	13	2	5	1	1	1	13	0	1	16	0	0	3	0	0
+rhoptries	0	5	0	0	7	0	0	0	2	2	2	0	0	3	0	0	23	0	0
+ribosomes	0	0	0	0	3	0	1	0	0	0	1	0	0	4	0	0	0	56	0
+transport vesicles	0	2	0	0	36	4	5	0	1	0	7	1	10	45	0	0	1	0	2
+
+# Pf lopit_pf_location physical_partners
+truth	20s proteasome	ER 1	PVM	abstained	cytosol	eIF3	erythrocyte membrane	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	plasma membrane 1	rhoptries
+20s proteasome	11	0	0	6	0	0	0	0	0	0	0	0	0
+ER 1	0	7	0	139	0	0	0	0	2	0	0	0	0
+Maurer's cleft	0	0	0	41	0	0	0	0	0	0	0	0	0
+PVM	0	0	7	21	0	0	0	0	0	0	0	0	0
+apicoplast	0	0	0	79	0	0	0	0	0	0	0	0	0
+cytosol	0	0	0	121	0	0	0	0	0	1	0	0	0
+eIF3	0	0	0	18	0	2	0	0	0	0	0	0	0
+erythrocyte membrane	0	0	1	40	0	0	0	0	0	0	1	0	0
+inner membrane complex	0	0	0	27	0	0	0	0	0	0	0	0	0
+mitochondrion	0	0	0	139	0	0	0	14	0	0	0	0	0
+mitotic apparatus	0	1	0	41	0	0	0	0	0	0	0	0	0
+nucleo-cytoplasm	0	0	0	144	1	0	0	0	0	0	0	1	0
+nucleus 1	0	0	0	377	0	0	1	0	0	0	0	0	0
+nucleus 2	0	0	0	54	0	0	0	0	0	0	0	0	0
+plasma membrane 1	0	0	0	57	0	0	0	0	0	1	0	2	0
+rhoptries	0	0	0	39	0	0	0	0	0	0	0	0	5
+ribosomes	0	0	0	65	0	0	0	0	0	0	0	0	0
+transport vesicles	0	0	0	114	0	0	0	0	0	0	0	0	0
+
+# Pf lopit_pf_location random_forest
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	14	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	1
+ER 1	1	93	0	0	9	1	0	0	1	15	4	0	18	0	4	1	0	1
+Maurer's cleft	0	1	23	0	0	0	0	15	0	1	0	1	0	0	0	0	0	0
+PVM	0	1	2	9	2	0	0	0	3	1	0	0	4	0	0	4	2	0
+apicoplast	0	4	0	0	55	1	0	0	0	14	0	0	4	1	0	0	0	0
+cytosol	0	2	0	0	0	81	0	0	0	2	0	32	4	0	0	0	0	1
+eIF3	0	0	0	0	0	1	5	0	0	0	0	0	14	0	0	0	0	0
+erythrocyte membrane	0	0	8	0	1	0	0	32	0	0	0	0	0	0	0	1	0	0
+inner membrane complex	0	2	0	0	0	0	0	0	15	1	1	0	1	0	0	7	0	0
+mitochondrion	0	9	0	0	10	1	0	0	2	113	0	4	12	0	0	1	0	1
+mitotic apparatus	0	0	0	0	0	2	0	0	0	1	26	2	6	3	0	1	1	0
+nucleo-cytoplasm	0	0	0	0	0	30	0	0	0	3	0	76	26	1	0	3	4	3
+nucleus 1	0	5	0	0	3	1	1	1	0	8	2	5	334	6	0	0	9	3
+nucleus 2	0	2	1	0	0	0	0	0	0	1	0	0	18	31	0	0	0	1
+plasma membrane 1	0	24	1	1	2	4	0	1	2	3	0	1	4	0	14	3	0	0
+rhoptries	0	5	0	0	0	0	0	2	4	3	0	0	2	0	0	27	0	1
+ribosomes	0	0	0	0	0	0	0	0	0	1	0	1	6	0	0	0	57	0
+transport vesicles	0	2	1	0	0	8	1	0	0	10	0	13	62	2	0	0	0	15
+
+# Pf lopit_pf_location stacking
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	15	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0
+ER 1	1	65	0	1	12	1	2	0	4	7	12	0	3	3	26	4	0	7
+Maurer's cleft	0	2	23	2	1	0	1	10	0	0	0	1	0	1	0	0	0	0
+PVM	0	1	3	14	0	0	0	0	0	1	1	0	0	0	3	5	0	0
+apicoplast	0	5	0	0	59	2	0	0	1	7	0	0	1	1	1	0	0	2
+cytosol	0	0	0	0	0	89	1	0	1	4	0	23	0	0	1	0	0	3
+eIF3	1	0	0	0	0	0	10	0	0	2	0	1	5	0	0	0	0	1
+erythrocyte membrane	0	0	8	0	1	0	0	32	0	0	0	0	0	0	0	1	0	0
+inner membrane complex	0	1	0	1	0	0	0	0	16	1	1	0	1	0	0	6	0	0
+mitochondrion	1	6	0	0	20	1	4	0	5	110	0	1	5	0	0	0	0	0
+mitotic apparatus	0	2	0	0	0	0	1	0	0	0	30	1	0	3	0	1	1	3
+nucleo-cytoplasm	2	1	0	1	0	28	2	0	1	2	3	82	5	0	1	1	2	15
+nucleus 1	1	10	0	1	6	3	46	0	1	9	8	14	199	20	1	4	7	48
+nucleus 2	0	2	1	0	1	0	0	1	0	1	4	0	7	33	0	2	0	2
+plasma membrane 1	0	18	1	3	1	0	0	1	1	1	0	1	0	0	29	2	0	2
+rhoptries	0	4	0	1	1	0	0	0	6	2	0	0	0	0	1	28	0	1
+ribosomes	0	0	0	0	0	0	1	0	0	0	1	1	2	1	1	0	57	1
+transport vesicles	1	4	1	0	3	7	6	0	0	5	3	20	20	3	0	0	0	41
+
+# Pf lopit_pf_location stratum_focus
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	abstained	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	8	0	0	0	7	0	0	0	0	0	0	0	1	1	0	0	0	0	0
+ER 1	1	59	0	0	35	7	0	0	0	0	15	4	0	21	0	1	1	0	4
+Maurer's cleft	0	2	19	0	8	1	0	0	4	0	2	0	1	4	0	0	0	0	0
+PVM	0	1	3	4	8	0	0	0	0	0	2	0	0	5	0	0	4	1	0
+apicoplast	0	3	0	0	14	35	2	0	0	0	17	0	0	6	0	0	0	0	2
+cytosol	0	0	0	0	21	0	60	0	0	0	6	0	26	4	0	0	0	5	0
+eIF3	0	0	0	0	5	0	0	1	0	0	1	0	4	9	0	0	0	0	0
+erythrocyte membrane	0	0	6	0	10	1	0	0	20	0	0	0	0	4	0	0	1	0	0
+inner membrane complex	0	5	0	0	8	0	0	0	0	6	3	0	0	2	0	0	3	0	0
+mitochondrion	0	1	0	0	27	10	0	0	0	0	99	0	1	12	0	0	0	0	3
+mitotic apparatus	0	3	0	0	13	0	1	0	0	0	1	14	1	6	0	0	0	1	2
+nucleo-cytoplasm	2	1	0	0	41	0	21	0	0	0	4	0	43	26	0	0	1	5	2
+nucleus 1	2	0	0	0	45	3	0	0	0	0	5	0	8	291	4	0	0	10	10
+nucleus 2	0	0	0	0	10	2	0	0	0	0	2	0	0	22	18	0	0	0	0
+plasma membrane 1	0	17	0	0	23	1	0	0	0	0	3	0	0	7	0	6	2	1	0
+rhoptries	0	4	0	0	10	0	0	0	1	1	2	0	0	3	0	0	23	0	0
+ribosomes	0	0	0	0	2	0	0	0	0	0	1	0	0	5	0	0	0	57	0
+transport vesicles	0	1	0	0	29	1	9	0	1	0	6	0	6	46	1	0	0	0	14
+
+# Pf lopit_pf_location structural_homology
+truth	20s proteasome	ER 1	Maurer's cleft	abstained	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	6	0	0	10	0	0	1	0	0	0	0	0	0	0	0	0	0
+ER 1	0	1	1	133	1	2	1	0	0	1	0	1	1	4	0	0	2
+Maurer's cleft	0	1	0	36	0	0	0	0	0	0	0	1	0	0	0	0	3
+PVM	0	0	0	27	0	1	0	0	0	0	0	0	0	0	0	0	0
+apicoplast	1	1	0	67	2	0	0	0	0	2	0	3	1	2	0	0	0
+cytosol	0	0	0	85	0	22	0	1	0	7	0	4	2	0	0	0	1
+eIF3	1	0	0	14	0	0	2	0	0	0	0	0	3	0	0	0	0
+erythrocyte membrane	0	0	0	40	0	1	0	0	0	0	0	0	0	0	0	0	1
+inner membrane complex	0	0	0	20	0	0	0	0	6	0	0	0	0	0	0	0	1
+mitochondrion	1	0	0	123	1	6	0	0	0	16	0	1	3	2	0	0	0
+mitotic apparatus	0	0	0	38	0	0	0	0	0	0	2	0	0	0	0	0	2
+nucleo-cytoplasm	0	0	3	85	2	5	0	0	1	1	0	28	15	3	0	0	3
+nucleus 1	1	1	1	291	1	5	3	0	1	3	0	21	46	2	0	1	1
+nucleus 2	0	0	0	49	0	0	0	0	0	0	0	0	3	0	0	0	2
+plasma membrane 1	0	1	0	41	2	0	0	0	0	0	0	0	0	15	1	0	0
+rhoptries	0	0	0	42	0	0	0	0	0	0	0	0	0	1	0	0	1
+ribosomes	0	0	0	64	0	0	0	0	0	0	0	0	1	0	0	0	0
+transport vesicles	0	2	0	85	0	1	2	0	1	0	0	5	4	1	0	0	13
+
+# Pf lopit_pf_location supervised_classifier
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	14	0	0	0	0	1	2	0	0	0	0	0	0	0	0	0	0	0
+ER 1	1	63	0	1	15	2	1	0	4	7	9	1	5	2	25	8	0	4
+Maurer's cleft	0	2	25	1	1	0	1	9	0	0	0	1	0	1	0	0	0	0
+PVM	0	1	1	12	0	0	0	1	0	1	1	0	0	0	6	4	1	0
+apicoplast	0	5	0	0	57	1	0	0	0	8	0	0	3	1	2	0	0	2
+cytosol	0	0	2	2	0	84	0	0	0	2	2	23	1	0	0	1	1	4
+eIF3	1	0	0	0	1	0	10	0	0	1	0	1	3	0	0	0	0	3
+erythrocyte membrane	0	0	8	0	1	0	0	32	0	0	0	0	0	0	0	1	0	0
+inner membrane complex	0	2	0	1	0	0	0	0	17	0	2	0	1	1	1	2	0	0
+mitochondrion	1	10	1	0	22	2	1	0	3	104	1	1	5	0	0	0	1	1
+mitotic apparatus	0	1	0	0	0	0	1	1	0	0	29	1	0	4	0	1	1	3
+nucleo-cytoplasm	6	2	1	0	0	30	1	0	1	1	3	69	5	0	0	2	3	22
+nucleus 1	1	12	0	2	5	5	31	0	1	16	7	13	207	20	5	2	9	42
+nucleus 2	0	2	1	0	1	1	0	1	0	0	6	0	8	31	0	2	0	1
+plasma membrane 1	0	19	1	5	0	3	0	1	1	3	0	0	0	1	23	2	0	1
+rhoptries	0	2	0	0	1	0	0	1	4	2	0	0	0	0	1	32	0	1
+ribosomes	0	0	0	0	0	0	1	0	0	1	1	0	2	1	0	0	59	0
+transport vesicles	3	1	1	0	3	9	5	0	0	3	6	18	18	6	2	0	1	38
+
+# Pf lopit_pf_location triangulation
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	abstained	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	14	0	0	0	2	0	0	0	0	0	0	0	0	1	0	0	0	0	0
+ER 1	1	59	0	0	48	6	1	0	0	0	9	6	0	15	0	3	0	0	0
+Maurer's cleft	0	2	20	1	15	0	0	0	2	0	0	0	1	0	0	0	0	0	0
+PVM	0	1	2	10	4	0	0	0	0	0	2	0	0	3	0	1	4	1	0
+apicoplast	0	3	0	0	21	40	1	0	0	0	9	0	0	5	0	0	0	0	0
+cytosol	0	0	0	0	30	0	71	0	0	0	3	1	11	3	0	0	1	0	2
+eIF3	0	0	0	0	5	0	0	5	0	0	1	0	1	8	0	0	0	0	0
+erythrocyte membrane	0	0	6	0	4	1	0	0	28	0	0	0	0	2	0	0	1	0	0
+inner membrane complex	0	2	0	0	8	0	0	0	0	13	2	0	0	1	0	0	1	0	0
+mitochondrion	0	4	0	0	26	11	1	0	0	1	98	0	1	10	0	0	0	0	1
+mitotic apparatus	0	3	0	0	15	0	0	0	0	0	0	19	1	1	2	0	0	1	0
+nucleo-cytoplasm	1	2	0	0	40	0	18	0	0	0	3	0	52	20	0	0	1	5	4
+nucleus 1	1	3	0	0	64	4	1	1	0	0	6	0	2	275	3	0	0	8	10
+nucleus 2	0	1	0	0	12	0	0	0	0	0	1	0	0	20	18	0	1	0	1
+plasma membrane 1	0	13	0	0	22	1	0	0	0	0	2	0	0	7	0	15	0	0	0
+rhoptries	0	2	0	0	11	0	0	0	0	1	4	0	0	0	0	0	26	0	0
+ribosomes	0	0	0	0	3	0	0	0	0	0	0	0	0	4	0	0	0	58	0
+transport vesicles	1	0	1	0	45	1	6	0	0	0	3	0	9	37	1	0	0	0	10
+
+# Pf lopit_pf_location understudied_first
+truth	20s proteasome	ER 1	Maurer's cleft	PVM	abstained	apicoplast	cytosol	eIF3	erythrocyte membrane	inner membrane complex	mitochondrion	mitotic apparatus	nucleo-cytoplasm	nucleus 1	nucleus 2	plasma membrane 1	rhoptries	ribosomes	transport vesicles
+20s proteasome	14	0	0	0	2	0	0	0	0	0	0	0	0	1	0	0	0	0	0
+ER 1	1	59	0	0	48	6	1	0	0	0	9	6	0	15	0	3	0	0	0
+Maurer's cleft	0	2	20	1	15	0	0	0	2	0	0	0	1	0	0	0	0	0	0
+PVM	0	1	2	10	4	0	0	0	0	0	2	0	0	3	0	1	4	1	0
+apicoplast	0	3	0	0	21	40	1	0	0	0	9	0	0	5	0	0	0	0	0
+cytosol	0	0	0	0	30	0	71	0	0	0	3	1	11	3	0	0	1	0	2
+eIF3	0	0	0	0	5	0	0	5	0	0	1	0	1	8	0	0	0	0	0
+erythrocyte membrane	0	0	6	0	4	1	0	0	28	0	0	0	0	2	0	0	1	0	0
+inner membrane complex	0	2	0	0	8	0	0	0	0	13	2	0	0	1	0	0	1	0	0
+mitochondrion	0	4	0	0	26	11	1	0	0	1	98	0	1	10	0	0	0	0	1
+mitotic apparatus	0	3	0	0	15	0	0	0	0	0	0	19	1	1	2	0	0	1	0
+nucleo-cytoplasm	1	2	0	0	40	0	18	0	0	0	3	0	52	20	0	0	1	5	4
+nucleus 1	1	3	0	0	64	4	1	1	0	0	6	0	2	275	3	0	0	8	10
+nucleus 2	0	1	0	0	12	0	0	0	0	0	1	0	0	20	18	0	1	0	1
+plasma membrane 1	0	13	0	0	22	1	0	0	0	0	2	0	0	7	0	15	0	0	0
+rhoptries	0	2	0	0	11	0	0	0	0	1	4	0	0	0	0	0	26	0	0
+ribosomes	0	0	0	0	3	0	0	0	0	0	0	0	0	4	0	0	0	58	0
+transport vesicles	1	0	1	0	45	1	6	0	0	0	3	0	9	37	1	0	0	0	10
+
+# Pf pb_transferred_phenotype cluster_guilt
+truth	Dispensable	abstained
+Dispensable	105	727
+Essential	8	1165
+Slow	5	423
+
+# Pf pb_transferred_phenotype feature_knn
+truth	Dispensable	Essential	Slow
+Dispensable	525	293	14
+Essential	109	1046	18
+Slow	117	300	11
+
+# Pf pb_transferred_phenotype graph_convolution
+truth	Dispensable	Essential	Slow
+Dispensable	540	112	180
+Essential	146	722	305
+Slow	117	172	139
+
+# Pf pb_transferred_phenotype layer_propagation
+truth	Dispensable	Essential	Slow	abstained
+Dispensable	436	173	197	26
+Essential	300	487	326	60
+Slow	145	130	136	17
+
+# Pf pb_transferred_phenotype layer_vote
+truth	Dispensable	Essential	Slow
+Dispensable	525	293	14
+Essential	109	1046	18
+Slow	117	300	11
+
+# Pf pb_transferred_phenotype map_neighbours
+truth	Dispensable	Essential	Slow	abstained
+Dispensable	363	267	27	175
+Essential	139	737	28	269
+Slow	82	211	24	111
+
+# Pf pb_transferred_phenotype physical_partners
+truth	Dispensable	Essential	Slow	abstained
+Dispensable	8	2	1	821
+Essential	0	21	19	1133
+Slow	1	6	2	419
+
+# Pf pb_transferred_phenotype random_forest
+truth	Dispensable	Essential	Slow
+Dispensable	583	244	5
+Essential	123	1043	7
+Slow	117	300	11
+
+# Pf pb_transferred_phenotype stacking
+truth	Dispensable	Essential	Slow
+Dispensable	551	105	176
+Essential	109	782	282
+Slow	112	163	153
+
+# Pf pb_transferred_phenotype stratum_focus
+truth	Dispensable	Essential	Slow
+Dispensable	525	293	14
+Essential	109	1046	18
+Slow	117	300	11
+
+# Pf pb_transferred_phenotype structural_homology
+truth	Dispensable	Essential	Slow	abstained
+Dispensable	65	73	34	660
+Essential	48	180	55	890
+Slow	28	63	28	309
+
+# Pf pb_transferred_phenotype supervised_classifier
+truth	Dispensable	Essential	Slow
+Dispensable	531	112	189
+Essential	144	732	297
+Slow	119	163	146
+
+# Pf pb_transferred_phenotype triangulation
+truth	Dispensable	Essential	Slow	abstained
+Dispensable	521	208	18	85
+Essential	114	969	13	77
+Slow	112	256	17	43
+
+# Pf pb_transferred_phenotype understudied_first
+truth	Dispensable	Essential	Slow	abstained
+Dispensable	521	208	18	85
+Essential	114	969	13	77
+Slow	112	256	17	43
+
+# Tg cellcycle_phase cluster_guilt
+truth	G1b	M	S	abstained
+C	14	2	0	248
+G1a	6	0	1	37
+G1b	16	0	2	76
+M	6	18	1	209
+S	27	5	1	204
+
+# Tg cellcycle_phase feature_knn
+truth	C	G1b	M	S	abstained
+C	165	7	55	31	6
+G1a	24	2	7	10	1
+G1b	18	21	7	46	2
+M	52	2	137	42	1
+S	43	16	48	124	6
+
+# Tg cellcycle_phase graph_convolution
+truth	C	G1a	G1b	M	S
+C	172	19	17	31	25
+G1a	16	17	6	2	3
+G1b	7	8	62	0	17
+M	36	0	1	159	38
+S	26	6	31	40	134
+
+# Tg cellcycle_phase layer_propagation
+truth	C	G1a	G1b	M	S	abstained
+C	98	26	19	47	35	39
+G1a	6	20	4	2	5	7
+G1b	3	13	42	3	22	11
+M	28	17	7	138	18	26
+S	37	23	35	42	47	53
+
+# Tg cellcycle_phase layer_vote
+truth	C	G1b	M	S
+C	170	7	54	33
+G1a	23	3	7	11
+G1b	19	24	7	44
+M	55	3	140	36
+S	49	15	48	125
+
+# Tg cellcycle_phase map_neighbours
+truth	C	G1a	G1b	M	S	abstained
+C	114	1	8	71	62	8
+G1a	14	3	3	7	16	1
+G1b	14	0	15	8	49	8
+M	68	1	4	98	59	4
+S	44	1	23	52	104	13
+
+# Tg cellcycle_phase physical_partners
+truth	C	G1b	M	S	abstained
+C	4	1	2	0	257
+G1a	0	0	0	0	44
+G1b	0	0	1	0	93
+M	3	1	21	0	209
+S	0	0	1	5	231
+
+# Tg cellcycle_phase random_forest
+truth	C	G1a	G1b	M	S
+C	188	2	7	25	42
+G1a	25	2	5	4	8
+G1b	14	0	41	2	37
+M	43	0	0	144	47
+S	36	0	17	41	143
+
+# Tg cellcycle_phase stacking
+truth	C	G1a	G1b	M	S
+C	155	30	25	33	21
+G1a	11	25	4	2	2
+G1b	6	15	61	0	12
+M	33	6	3	161	31
+S	25	15	37	37	123
+
+# Tg cellcycle_phase stratum_focus
+truth	C	G1b	M	S	abstained
+C	165	7	55	31	6
+G1a	24	2	7	10	1
+G1b	18	21	7	46	2
+M	52	2	137	42	1
+S	43	16	48	124	6
+
+# Tg cellcycle_phase structural_homology
+truth	C	G1a	G1b	M	S	abstained
+C	17	2	2	9	6	228
+G1a	2	0	0	2	0	40
+G1b	2	1	0	2	0	89
+M	16	1	1	8	6	202
+S	12	0	0	5	19	201
+
+# Tg cellcycle_phase supervised_classifier
+truth	C	G1a	G1b	M	S
+C	172	21	17	28	26
+G1a	12	16	7	3	6
+G1b	8	7	63	0	16
+M	38	1	2	157	36
+S	26	9	30	40	132
+
+# Tg cellcycle_phase triangulation
+truth	C	G1a	G1b	M	S	abstained
+C	175	1	8	29	20	31
+G1a	21	0	4	3	6	10
+G1b	11	1	28	3	22	29
+M	36	0	0	155	23	20
+S	31	0	12	41	114	39
+
+# Tg cellcycle_phase understudied_first
+truth	C	G1a	G1b	M	S	abstained
+C	175	1	8	29	20	31
+G1a	21	0	4	3	6	10
+G1b	11	1	28	3	22	29
+M	36	0	0	155	23	20
+S	31	0	12	41	114	39
+
+# Tg compartment cluster_guilt
+truth	40S ribosome	60S ribosome	ER	IMC	PM - peripheral 1	abstained	apicoplast	cytosol	dense granules	mitochondrion - membranes	mitochondrion - soluble	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	0	0	0	0	0	15	0	0	0	2	0	0	0	0	0
+40S ribosome	0	8	0	0	0	19	0	0	0	0	0	1	0	0	0
+60S ribosome	5	7	0	0	0	28	0	0	0	0	0	0	0	0	0
+ER	0	0	1	4	0	227	1	2	2	3	3	1	0	1	3
+ER 2	0	0	0	0	0	17	0	0	0	0	0	0	0	0	0
+Golgi	0	0	0	5	0	131	1	0	1	2	2	1	0	2	8
+IMC	0	0	0	11	0	73	0	0	7	1	0	1	0	0	3
+PM - integral	0	0	1	5	0	114	0	0	3	1	2	0	0	2	7
+PM - peripheral 1	0	0	0	7	18	22	0	0	1	0	0	0	0	1	0
+PM - peripheral 2	0	0	0	3	0	39	0	0	0	0	0	0	0	1	1
+apical 1	0	0	1	2	0	50	0	0	0	0	0	0	0	2	4
+apical 2	0	0	0	1	0	13	0	0	1	0	0	0	0	1	1
+apicoplast	0	0	5	0	1	139	2	2	0	0	6	9	0	2	1
+cytosol	2	1	2	13	0	542	2	4	2	16	2	5	2	1	5
+dense granules	0	0	0	15	2	167	0	0	2	0	0	3	0	1	3
+endomembrane vesicles	0	0	0	1	0	25	3	0	0	0	0	0	0	1	4
+micronemes	0	0	0	6	1	45	0	0	3	0	0	0	0	0	1
+mitochondrion - membranes	0	2	2	0	1	168	1	0	0	14	2	0	1	2	0
+mitochondrion - soluble	0	0	3	4	3	235	4	0	1	5	15	4	0	0	0
+nucleolus	0	0	0	0	0	30	0	0	0	0	0	2	0	0	0
+nucleus - chromatin	0	1	3	4	1	704	10	3	3	5	10	14	1	2	8
+nucleus - non-chromatin	0	0	5	1	0	427	2	5	0	7	5	3	0	1	5
+rhoptries 1	0	0	0	2	1	62	0	0	0	0	0	0	0	0	6
+rhoptries 2	0	0	0	1	1	40	0	0	1	0	0	0	0	3	6
+
+# Tg compartment feature_knn
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	abstained	apical 1	apicoplast	cytosol	dense granules	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	15	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0
+40S ribosome	0	12	14	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0
+60S ribosome	0	8	31	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	3	0	0	19	0	0	0	0	0	101	2	3	31	0	0	7	4	0	66	11	0	1
+ER 2	0	0	0	0	0	0	0	0	0	8	0	0	6	0	0	0	1	0	2	0	0	0
+Golgi	4	0	0	6	0	4	0	0	0	83	0	1	5	0	0	2	0	0	44	4	0	0
+IMC	0	0	0	1	0	0	34	0	0	38	3	0	5	5	0	1	0	0	7	0	1	1
+PM - integral	1	0	0	8	0	2	0	1	0	74	1	2	6	5	0	2	3	0	26	3	1	0
+PM - peripheral 1	0	0	0	1	0	0	0	0	3	23	0	0	8	8	0	1	0	0	3	0	2	0
+PM - peripheral 2	0	0	0	0	0	0	1	0	0	13	0	0	6	2	0	0	1	0	18	0	1	2
+apical 1	0	0	0	0	0	0	5	0	0	24	12	0	1	2	0	0	0	0	15	0	0	0
+apical 2	0	0	0	0	0	0	0	0	0	3	6	0	2	0	0	0	0	0	5	0	1	0
+apicoplast	1	0	0	1	1	0	0	0	0	32	0	47	21	0	0	3	20	0	36	5	0	0
+cytosol	14	0	14	0	1	0	6	0	0	118	0	1	243	3	1	1	14	0	104	79	0	0
+dense granules	0	0	0	0	0	0	2	0	2	64	3	2	11	67	5	1	1	0	30	2	1	2
+endomembrane vesicles	1	0	0	0	0	1	0	0	0	14	0	0	4	0	0	0	0	0	14	0	0	0
+micronemes	0	0	0	0	0	0	3	0	0	24	0	0	5	6	14	0	0	0	4	0	0	0
+mitochondrion - membranes	1	1	1	0	0	1	0	0	0	45	0	3	20	0	0	56	28	0	23	13	1	0
+mitochondrion - soluble	1	0	1	0	0	0	0	0	0	65	2	1	30	1	0	6	92	0	51	24	0	0
+nucleolus	0	0	0	0	0	0	0	0	0	0	0	0	5	0	0	0	1	2	0	24	0	0
+nucleus - chromatin	2	1	5	0	0	4	1	0	0	135	5	7	59	0	0	0	24	0	463	62	1	0
+nucleus - non-chromatin	3	1	5	1	0	0	0	0	0	53	1	1	65	0	0	3	18	3	122	185	0	0
+rhoptries 1	0	0	0	0	0	0	0	0	0	25	1	0	0	2	0	0	0	0	2	0	36	5
+rhoptries 2	0	0	0	0	0	0	0	0	0	17	1	0	2	0	0	0	1	0	1	0	11	19
+
+# Tg compartment graph_convolution
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	PM - peripheral 2	apical 1	apical 2	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	15	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0
+40S ribosome	0	13	13	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	1	0	0
+60S ribosome	0	9	30	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	1	0	0	121	4	42	3	23	0	7	1	1	6	8	0	8	1	8	7	0	7	0	0	0
+ER 2	1	0	0	0	4	2	0	0	0	0	1	1	1	3	1	0	0	1	1	0	0	0	0	1
+Golgi	0	0	0	32	1	54	3	25	0	4	1	1	3	6	5	7	2	1	5	0	3	0	0	0
+IMC	0	1	0	2	2	4	49	6	0	2	8	1	1	1	5	0	3	1	0	0	4	1	2	3
+PM - integral	1	0	0	18	0	25	2	47	2	7	0	1	2	2	5	6	6	1	4	0	3	0	0	3
+PM - peripheral 1	0	0	0	0	0	0	2	0	42	0	2	0	0	1	2	0	0	0	0	0	0	0	0	0
+PM - peripheral 2	0	0	0	1	0	3	3	2	0	9	3	2	0	4	3	3	0	1	1	0	6	1	1	1
+apical 1	0	0	0	0	0	0	8	1	1	2	35	3	0	0	4	0	0	0	0	0	3	0	1	1
+apical 2	0	0	0	0	0	0	2	0	0	2	6	4	0	0	0	0	0	0	0	0	0	0	3	0
+apicoplast	1	1	0	6	2	5	0	1	0	1	1	0	114	4	1	4	1	7	13	0	5	0	0	0
+cytosol	14	6	10	3	11	2	15	2	1	15	5	7	15	256	8	13	3	12	36	15	61	87	2	0
+dense granules	1	0	0	2	2	3	5	6	3	6	4	4	4	6	107	1	11	1	5	0	6	4	8	4
+endomembrane vesicles	1	0	0	0	0	8	2	3	1	1	0	0	1	3	2	6	0	0	1	0	4	0	1	0
+micronemes	0	0	0	0	0	1	4	8	1	0	0	0	0	0	6	1	33	1	1	0	0	0	0	0
+mitochondrion - membranes	0	2	0	5	1	7	3	2	0	1	0	0	9	7	1	1	0	100	44	4	3	2	1	0
+mitochondrion - soluble	0	0	0	4	1	2	0	1	0	3	2	1	19	18	2	3	0	41	151	2	10	13	1	0
+nucleolus	0	0	0	0	0	0	0	0	0	0	0	0	0	3	0	0	0	1	1	15	0	12	0	0
+nucleus - chromatin	10	3	5	11	2	17	7	9	0	32	15	3	34	85	18	15	3	9	45	6	342	95	1	2
+nucleus - non-chromatin	2	5	2	2	0	4	3	1	0	8	2	0	4	59	7	7	0	11	22	55	63	204	0	0
+rhoptries 1	0	0	0	0	0	0	0	0	2	0	0	0	0	0	4	1	0	0	0	0	0	0	52	12
+rhoptries 2	0	0	0	0	0	1	1	4	0	2	0	0	2	0	1	0	2	0	0	0	0	0	8	31
+
+# Tg compartment layer_propagation
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	PM - peripheral 2	abstained	apical 1	apical 2	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	4	0	0	1	0	2	0	0	0	1	7	0	0	0	0	0	1	0	1	0	0	0	0	0	0
+40S ribosome	0	9	17	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	1	0	0
+60S ribosome	0	13	24	0	0	0	0	0	1	0	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+ER	9	3	1	19	16	20	2	10	0	5	67	3	3	9	17	7	5	1	13	11	4	9	11	2	1
+ER 2	0	0	0	2	2	2	0	0	2	1	4	0	0	0	0	1	0	0	1	0	1	0	0	1	0
+Golgi	11	0	0	11	6	20	3	8	3	7	33	2	5	6	6	3	4	5	1	2	1	10	3	0	3
+IMC	3	0	2	2	0	1	18	3	1	0	13	11	11	0	1	4	3	5	1	1	3	1	0	5	7
+PM - integral	3	2	1	6	5	11	3	3	1	7	29	5	4	5	3	4	8	5	7	4	3	1	4	6	5
+PM - peripheral 1	0	3	4	0	2	1	0	0	10	0	6	1	0	0	2	5	1	5	0	1	0	0	1	5	2
+PM - peripheral 2	4	0	0	1	1	0	1	3	1	1	9	1	3	0	2	3	6	0	1	1	0	2	0	2	2
+apical 1	0	0	0	1	0	1	9	1	0	2	6	10	14	0	0	2	2	4	0	0	0	0	0	5	2
+apical 2	0	0	0	0	0	0	0	0	0	0	2	2	3	0	0	0	1	0	0	0	0	0	0	3	6
+apicoplast	6	1	0	5	0	6	0	6	1	3	35	1	1	49	6	6	5	0	4	9	7	6	9	1	0
+cytosol	18	36	14	31	20	23	9	14	11	16	106	3	13	27	18	8	14	9	51	31	53	12	45	7	10
+dense granules	0	7	5	2	7	5	6	1	16	3	27	6	8	6	5	20	5	30	4	1	1	3	2	12	11
+endomembrane vesicles	1	2	0	2	0	0	0	0	1	4	7	0	1	2	0	1	7	2	0	1	1	1	1	0	0
+micronemes	0	0	0	0	1	0	1	0	7	0	3	5	3	0	1	2	0	23	0	0	0	0	1	3	6
+mitochondrion - membranes	7	22	8	10	5	4	1	7	2	4	23	0	1	11	4	2	2	0	33	12	20	1	14	0	0
+mitochondrion - soluble	2	13	6	12	3	7	2	7	2	6	45	1	3	18	15	2	7	1	18	31	36	11	24	1	1
+nucleolus	0	1	1	0	1	0	1	0	0	0	0	0	0	1	0	0	0	0	4	0	16	1	6	0	0
+nucleus - chromatin	25	6	11	28	8	44	9	20	10	37	212	12	13	50	17	25	26	5	20	35	30	68	38	9	11
+nucleus - non-chromatin	9	13	5	14	10	11	3	9	4	10	72	3	1	29	22	2	11	1	31	30	93	21	54	1	2
+rhoptries 1	0	1	0	0	1	0	0	1	2	2	2	2	9	0	1	3	0	4	0	0	0	0	0	21	22
+rhoptries 2	0	0	0	0	0	0	4	0	0	0	1	1	9	1	0	1	1	4	0	0	0	0	0	16	14
+
+# Tg compartment layer_vote
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	PM - peripheral 2	apical 1	apicoplast	cytosol	dense granules	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	15	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0
+40S ribosome	0	10	16	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0
+60S ribosome	0	8	31	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	5	0	0	40	1	5	0	4	0	0	3	4	48	0	0	10	16	0	90	21	0	1
+ER 2	0	0	0	1	1	0	0	0	0	0	0	0	10	0	0	0	1	0	3	0	0	1
+Golgi	5	0	0	12	0	15	0	6	0	1	2	2	21	4	0	3	2	0	69	11	0	0
+IMC	0	0	0	1	0	0	39	0	0	0	11	0	12	9	0	2	3	0	13	2	2	2
+PM - integral	3	0	0	18	0	5	1	8	1	1	2	3	17	8	2	4	5	1	48	5	2	1
+PM - peripheral 1	0	0	0	1	0	0	0	0	10	0	0	1	15	10	1	1	2	0	5	0	3	0
+PM - peripheral 2	0	0	0	1	0	1	1	0	0	0	1	0	9	3	1	0	2	0	22	0	1	2
+apical 1	0	0	0	0	0	1	7	1	0	0	22	0	3	3	0	0	0	0	19	0	1	2
+apical 2	0	0	0	0	0	0	0	0	0	0	7	0	2	0	0	0	0	0	6	0	2	0
+apicoplast	1	0	0	3	1	1	0	0	0	0	1	51	21	1	0	4	27	0	49	7	0	0
+cytosol	15	1	15	1	1	2	12	1	0	1	1	2	278	6	1	2	22	0	141	94	2	1
+dense granules	0	0	0	0	0	3	4	2	3	0	6	2	24	82	6	2	2	0	45	8	1	3
+endomembrane vesicles	1	0	0	1	0	2	1	1	0	0	1	0	7	0	0	0	0	0	20	0	0	0
+micronemes	0	0	0	0	0	0	4	0	0	0	0	0	9	13	21	0	1	0	8	0	0	0
+mitochondrion - membranes	1	1	2	3	0	3	0	1	0	0	0	5	25	0	0	61	40	0	33	17	1	0
+mitochondrion - soluble	1	0	3	1	0	1	0	0	0	0	5	6	34	2	0	7	109	0	72	33	0	0
+nucleolus	0	0	0	0	0	0	0	0	0	0	0	0	5	0	0	0	1	2	0	24	0	0
+nucleus - chromatin	3	1	7	1	0	9	2	2	0	0	13	11	81	7	1	2	36	0	512	80	1	0
+nucleus - non-chromatin	3	1	7	3	0	0	0	2	0	0	2	1	71	2	0	3	20	4	138	204	0	0
+rhoptries 1	0	0	0	0	0	0	0	0	1	0	6	0	3	5	0	0	0	0	4	0	41	11
+rhoptries 2	0	0	0	1	0	0	0	0	0	0	1	0	2	2	0	0	3	0	3	1	16	23
+
+# Tg compartment map_neighbours
+truth	19S proteasome	40S ribosome	60S ribosome	ER	Golgi	IMC	PM - integral	PM - peripheral 1	PM - peripheral 2	abstained	apical 1	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	9	0	0	0	0	0	0	0	0	7	0	0	1	0	0	0	0	0	0	0	0	0
+40S ribosome	0	2	10	0	0	0	0	0	0	15	0	0	0	0	0	0	0	0	1	0	0	0
+60S ribosome	0	7	8	0	0	0	0	0	0	22	0	0	2	0	0	0	0	0	1	0	0	0
+ER	0	0	0	5	2	1	1	0	0	170	0	0	24	1	0	0	4	4	31	5	0	0
+ER 2	0	0	0	0	0	0	1	0	0	11	0	0	3	1	0	0	0	0	1	0	0	0
+Golgi	0	0	0	4	0	0	1	0	0	108	0	0	8	3	0	0	4	1	22	2	0	0
+IMC	0	0	0	0	0	3	0	0	0	68	0	0	10	3	0	0	3	0	8	1	0	0
+PM - integral	0	0	0	1	2	3	1	0	0	95	0	0	7	0	0	0	2	0	21	3	0	0
+PM - peripheral 1	0	0	0	0	0	0	1	19	0	24	0	0	3	1	0	1	0	0	0	0	0	0
+PM - peripheral 2	0	0	0	1	1	0	0	1	3	26	0	0	2	1	0	0	0	0	9	0	0	0
+apical 1	0	0	0	0	0	1	0	0	0	46	0	0	3	1	1	0	0	0	7	0	0	0
+apical 2	0	0	0	0	2	0	1	0	0	8	0	0	2	0	0	0	0	0	4	0	0	0
+apicoplast	0	0	0	3	0	0	0	0	0	97	0	11	11	0	0	0	1	11	32	1	0	0
+cytosol	4	1	4	9	4	3	2	1	0	366	0	2	104	2	0	0	2	11	49	35	0	0
+dense granules	0	0	0	0	0	2	0	2	0	123	0	0	1	46	0	0	1	1	10	1	1	5
+endomembrane vesicles	0	0	0	0	1	0	0	0	0	22	1	1	1	1	0	0	0	0	6	1	0	0
+micronemes	0	0	0	0	1	0	0	2	0	47	0	0	3	1	0	0	0	0	2	0	0	0
+mitochondrion - membranes	0	0	0	1	0	2	0	0	0	120	0	2	15	1	0	0	27	12	7	6	0	0
+mitochondrion - soluble	0	0	0	4	1	0	0	0	0	181	0	5	22	2	0	0	3	18	26	11	0	1
+nucleolus	0	0	0	0	0	0	1	0	0	19	0	0	1	0	0	0	0	0	5	6	0	0
+nucleus - chromatin	1	0	1	8	1	2	5	1	2	487	0	9	39	2	0	0	2	15	172	22	0	0
+nucleus - non-chromatin	3	0	0	3	1	1	2	0	0	288	0	0	49	0	0	0	4	9	43	57	1	0
+rhoptries 1	0	0	0	0	0	0	0	0	0	48	0	0	1	13	0	0	0	0	0	0	4	5
+rhoptries 2	0	0	0	0	0	0	0	0	0	32	0	0	1	5	0	1	0	1	0	0	1	11
+
+# Tg compartment physical_partners
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	PM - peripheral 2	abstained	apical 1	apical 2	apicoplast	cytosol	dense granules	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	16	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0
+40S ribosome	0	15	4	0	0	0	0	0	0	0	2	0	0	0	2	0	0	0	0	0	3	2	0	0
+60S ribosome	0	0	37	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	1	1	0	0
+ER	0	0	3	13	5	0	0	0	0	0	219	0	0	0	4	0	0	0	0	0	3	1	0	0
+ER 2	0	0	0	0	8	0	0	0	0	0	9	0	0	0	0	0	0	0	0	0	0	0	0	0
+Golgi	0	0	0	0	0	9	0	0	0	0	139	0	0	1	1	0	0	0	0	0	0	2	0	1
+IMC	0	0	0	0	0	0	34	0	0	1	59	0	0	0	2	0	0	0	0	0	0	0	0	0
+PM - integral	0	0	0	0	0	0	2	1	6	0	122	0	0	0	1	1	0	0	0	0	2	0	0	0
+PM - peripheral 1	0	0	0	0	0	0	3	1	3	0	40	0	0	0	0	1	1	0	0	0	0	0	0	0
+PM - peripheral 2	0	0	0	0	0	0	1	0	1	0	38	0	0	0	2	0	0	0	0	0	0	2	0	0
+apical 1	0	0	1	0	0	0	1	0	0	0	40	9	2	0	3	1	0	0	0	0	2	0	0	0
+apical 2	0	0	0	0	0	0	0	0	0	0	6	2	5	0	4	0	0	0	0	0	0	0	0	0
+apicoplast	0	0	0	0	6	0	0	0	0	0	138	0	0	13	5	1	0	0	0	0	2	2	0	0
+cytosol	5	7	13	0	2	1	1	2	0	0	344	1	2	5	142	6	2	0	3	2	25	33	1	2
+dense granules	0	0	0	0	2	0	0	0	0	0	137	1	0	1	3	45	1	0	1	0	1	1	0	0
+endomembrane vesicles	0	0	0	0	0	0	0	0	0	0	31	0	0	0	0	1	0	0	1	0	1	0	0	0
+micronemes	0	0	0	0	1	0	0	0	0	0	32	0	0	0	2	0	21	0	0	0	0	0	0	0
+mitochondrion - membranes	0	0	0	0	0	0	0	0	0	0	132	0	0	0	0	0	0	54	6	0	1	0	0	0
+mitochondrion - soluble	1	1	3	0	0	0	1	0	2	0	218	0	0	0	13	1	0	11	19	0	0	4	0	0
+nucleolus	0	1	1	0	0	0	0	0	0	0	19	0	0	0	3	0	0	1	0	0	0	7	0	0
+nucleus - chromatin	1	6	12	1	2	0	2	1	1	0	578	1	0	0	44	2	1	4	2	0	77	33	0	1
+nucleus - non-chromatin	1	12	12	0	1	0	3	0	0	1	262	2	0	0	26	1	0	0	0	7	28	104	1	0
+rhoptries 1	0	0	0	0	2	0	0	0	0	0	40	0	0	0	2	0	1	0	1	0	2	0	22	1
+rhoptries 2	0	0	0	0	0	1	0	0	0	0	39	0	0	0	3	0	0	0	0	0	1	0	2	6
+
+# Tg compartment random_forest
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	apical 1	apical 2	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	9	0	0	0	0	0	0	0	0	0	0	0	8	0	0	0	0	0	0	0	0	0	0
+40S ribosome	0	12	14	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0
+60S ribosome	0	4	35	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	0	0	0	161	0	22	0	12	0	0	0	1	17	1	0	0	7	1	0	24	2	0	0
+ER 2	0	0	0	0	2	1	0	0	0	0	0	0	8	1	0	0	0	1	0	3	0	1	0
+Golgi	0	0	0	73	0	32	1	10	0	2	0	2	7	6	0	1	1	0	0	17	0	0	1
+IMC	0	0	1	5	0	0	45	3	0	7	0	0	10	7	0	1	1	1	0	10	2	2	1
+PM - integral	0	0	0	41	0	18	3	34	0	3	0	0	9	6	0	4	3	1	0	11	0	2	0
+PM - peripheral 1	0	0	0	0	0	0	1	0	24	0	0	0	9	14	0	0	0	0	0	0	0	1	0
+PM - peripheral 2	0	0	0	3	0	3	2	0	0	1	0	0	10	2	0	0	0	0	0	22	0	0	1
+apical 1	0	0	0	0	0	0	9	1	0	27	0	0	2	3	0	0	0	0	0	16	0	1	0
+apical 2	0	0	0	0	0	0	3	0	0	8	1	0	1	0	0	0	0	0	0	4	0	0	0
+apicoplast	0	0	0	17	0	4	0	2	0	0	0	50	20	1	0	0	1	21	0	50	1	0	0
+cytosol	0	5	7	0	1	0	15	0	0	2	0	2	342	6	0	1	1	13	0	133	71	0	0
+dense granules	0	0	0	6	0	2	2	0	2	6	1	3	10	125	0	3	1	1	0	25	3	2	1
+endomembrane vesicles	0	0	0	10	0	4	1	1	1	0	0	0	5	1	1	0	0	0	0	9	0	1	0
+micronemes	0	0	0	4	0	0	1	8	1	0	0	0	2	5	0	34	0	0	0	1	0	0	0
+mitochondrion - membranes	0	1	0	29	0	5	0	2	0	0	0	3	33	1	0	0	59	30	0	22	7	1	0
+mitochondrion - soluble	0	0	0	11	0	1	0	0	0	1	0	4	51	2	0	0	2	122	0	60	18	1	1
+nucleolus	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	1	1	5	23	0	0
+nucleus - chromatin	0	0	5	8	0	2	7	1	1	10	0	6	105	8	0	1	1	24	0	534	55	0	1
+nucleus - non-chromatin	0	0	2	0	0	1	1	0	0	2	0	0	107	4	0	0	1	18	5	130	190	0	0
+rhoptries 1	0	0	0	0	0	0	1	0	4	0	0	0	0	7	0	0	0	0	0	2	0	44	13
+rhoptries 2	0	0	0	0	0	0	1	3	0	1	0	0	0	7	0	0	0	0	0	3	0	12	25
+
+# Tg compartment stacking
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	PM - peripheral 2	apical 1	apical 2	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	16	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0
+40S ribosome	0	15	11	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	1	0	0
+60S ribosome	0	9	30	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	2	0	0	127	8	40	2	17	0	6	2	0	7	7	0	8	0	8	4	0	6	3	0	1
+ER 2	0	0	0	1	7	0	0	1	0	1	1	1	0	1	1	0	0	1	1	0	0	0	0	1
+Golgi	1	0	0	34	1	45	2	25	0	7	3	1	3	4	3	13	3	2	2	0	4	0	0	0
+IMC	0	0	0	1	4	3	44	4	2	3	14	1	1	0	4	0	5	0	0	0	5	1	1	3
+PM - integral	1	0	0	13	1	20	1	52	2	6	2	1	2	0	5	12	8	1	2	0	4	0	0	2
+PM - peripheral 1	0	0	0	0	1	0	2	0	40	0	2	0	0	0	2	0	1	0	0	0	0	0	1	0
+PM - peripheral 2	0	0	0	1	1	4	1	0	1	16	2	1	0	3	1	4	0	0	2	0	5	0	1	1
+apical 1	0	0	0	0	0	0	4	1	1	3	31	12	0	0	2	0	0	0	0	0	2	0	2	1
+apical 2	0	0	0	0	0	0	3	0	0	1	9	3	0	0	0	0	0	0	0	0	0	0	0	1
+apicoplast	0	0	0	4	5	3	0	2	0	1	2	0	115	2	0	4	1	8	12	0	8	0	0	0
+cytosol	19	6	5	1	33	1	14	0	2	23	5	6	12	243	7	14	2	9	33	26	61	75	2	0
+dense granules	0	0	0	1	10	2	6	2	5	8	7	2	3	5	106	0	12	3	2	0	8	2	6	3
+endomembrane vesicles	1	0	0	0	1	4	0	3	2	3	0	0	1	2	0	12	0	0	0	0	4	0	1	0
+micronemes	0	0	0	0	1	1	2	3	2	0	0	0	0	0	2	1	42	1	1	0	0	0	0	0
+mitochondrion - membranes	0	1	0	7	4	5	0	3	1	2	0	0	11	6	0	2	0	99	45	3	0	3	1	0
+mitochondrion - soluble	0	0	0	5	3	0	1	2	0	4	2	3	19	16	2	5	0	30	161	3	7	11	0	0
+nucleolus	0	0	0	0	0	0	0	0	0	1	0	0	0	2	0	0	0	1	1	23	0	4	0	0
+nucleus - chromatin	7	6	1	8	13	11	6	2	1	49	21	6	27	77	16	30	3	5	47	17	335	80	1	0
+nucleus - non-chromatin	3	6	0	1	4	1	3	1	3	13	2	1	3	56	3	8	1	7	22	82	66	175	0	0
+rhoptries 1	0	0	0	0	0	0	1	0	2	0	1	1	0	0	2	1	0	0	0	0	0	0	50	13
+rhoptries 2	0	0	0	0	0	0	1	5	2	2	0	0	1	0	0	0	1	0	0	0	0	0	9	31
+
+# Tg compartment stratum_focus
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	abstained	apical 1	apicoplast	cytosol	dense granules	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	15	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0
+40S ribosome	0	12	14	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0
+60S ribosome	0	8	31	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	3	0	0	19	0	0	0	0	0	101	2	3	31	0	0	7	4	0	66	11	0	1
+ER 2	0	0	0	0	0	0	0	0	0	8	0	0	6	0	0	0	1	0	2	0	0	0
+Golgi	4	0	0	6	0	4	0	0	0	83	0	1	5	0	0	2	0	0	44	4	0	0
+IMC	0	0	0	1	0	0	34	0	0	38	3	0	5	5	0	1	0	0	7	0	1	1
+PM - integral	1	0	0	8	0	2	0	1	0	74	1	2	6	5	0	2	3	0	26	3	1	0
+PM - peripheral 1	0	0	0	1	0	0	0	0	3	23	0	0	8	8	0	1	0	0	3	0	2	0
+PM - peripheral 2	0	0	0	0	0	0	1	0	0	13	0	0	6	2	0	0	1	0	18	0	1	2
+apical 1	0	0	0	0	0	0	5	0	0	24	12	0	1	2	0	0	0	0	15	0	0	0
+apical 2	0	0	0	0	0	0	0	0	0	3	6	0	2	0	0	0	0	0	5	0	1	0
+apicoplast	1	0	0	1	1	0	0	0	0	32	0	47	21	0	0	3	20	0	36	5	0	0
+cytosol	14	0	14	0	1	0	6	0	0	118	0	1	243	3	1	1	14	0	104	79	0	0
+dense granules	0	0	0	0	0	0	2	0	2	64	3	2	11	67	5	1	1	0	30	2	1	2
+endomembrane vesicles	1	0	0	0	0	1	0	0	0	14	0	0	4	0	0	0	0	0	14	0	0	0
+micronemes	0	0	0	0	0	0	3	0	0	24	0	0	5	6	14	0	0	0	4	0	0	0
+mitochondrion - membranes	1	1	1	0	0	1	0	0	0	45	0	3	20	0	0	56	28	0	23	13	1	0
+mitochondrion - soluble	1	0	1	0	0	0	0	0	0	65	2	1	30	1	0	6	92	0	51	24	0	0
+nucleolus	0	0	0	0	0	0	0	0	0	0	0	0	5	0	0	0	1	2	0	24	0	0
+nucleus - chromatin	2	1	5	0	0	4	1	0	0	135	5	7	59	0	0	0	24	0	463	62	1	0
+nucleus - non-chromatin	3	1	5	1	0	0	0	0	0	53	1	1	65	0	0	3	18	3	122	185	0	0
+rhoptries 1	0	0	0	0	0	0	0	0	0	25	1	0	0	2	0	0	0	0	2	0	36	5
+rhoptries 2	0	0	0	0	0	0	0	0	0	17	1	0	2	0	0	0	1	0	1	0	11	19
+
+# Tg compartment structural_homology
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	PM - peripheral 2	abstained	apical 1	apical 2	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	6	0	0	0	0	0	0	0	0	0	6	0	0	0	1	0	0	0	0	0	0	1	3	0	0
+40S ribosome	0	0	1	0	0	1	0	0	0	0	23	0	0	1	1	0	0	0	0	1	0	0	0	0	0
+60S ribosome	0	0	1	0	0	0	0	0	0	0	35	0	0	0	1	0	0	0	0	0	0	0	3	0	0
+ER	0	0	0	14	0	5	0	3	0	1	200	0	0	2	12	0	0	1	1	2	0	2	3	0	2
+ER 2	0	0	0	2	0	0	0	0	0	0	10	0	0	0	4	0	0	0	0	0	0	0	1	0	0
+Golgi	0	1	0	4	0	14	0	5	0	0	111	1	0	0	6	0	0	2	0	0	0	8	1	0	0
+IMC	0	0	0	1	0	0	5	1	1	1	72	0	0	0	9	0	0	0	0	0	0	3	0	2	1
+PM - integral	0	0	0	2	0	10	1	23	0	0	85	0	0	0	3	0	0	1	0	0	0	3	1	4	2
+PM - peripheral 1	0	0	0	0	0	0	1	0	21	0	26	0	0	0	0	0	0	0	0	0	0	1	0	0	0
+PM - peripheral 2	0	0	0	1	0	2	0	0	0	1	25	0	0	0	3	1	1	0	0	0	0	7	1	2	0
+apical 1	0	0	0	0	0	1	2	0	0	0	52	0	0	0	2	0	0	0	0	0	0	1	1	0	0
+apical 2	0	0	0	0	0	0	2	0	0	0	12	0	1	0	2	0	0	0	0	0	0	0	0	0	0
+apicoplast	2	1	0	5	0	0	0	0	0	0	128	0	0	3	14	1	1	1	1	4	0	2	4	0	0
+cytosol	2	0	1	7	1	4	8	2	0	1	341	2	2	6	137	6	1	1	3	10	2	20	41	1	0
+dense granules	0	0	0	0	0	0	0	0	1	1	163	1	0	1	4	6	0	0	1	1	0	3	4	6	1
+endomembrane vesicles	0	0	0	0	0	0	0	1	0	1	26	0	0	1	1	0	0	0	0	1	0	2	0	0	1
+micronemes	0	0	0	0	0	1	0	2	1	0	48	0	0	0	1	0	0	3	0	0	0	0	0	0	0
+mitochondrion - membranes	3	0	0	2	0	0	0	0	0	0	153	0	0	1	5	1	0	0	22	2	0	3	1	0	0
+mitochondrion - soluble	1	2	0	3	0	3	0	0	0	0	224	0	0	6	13	1	1	0	3	8	0	3	5	1	0
+nucleolus	0	0	0	0	0	1	0	0	0	0	17	0	0	1	3	0	0	0	0	0	0	0	10	0	0
+nucleus - chromatin	2	0	0	3	0	9	4	2	0	2	628	1	0	2	26	0	1	0	3	2	0	43	37	4	0
+nucleus - non-chromatin	4	0	3	1	0	2	0	0	0	0	293	0	0	1	29	3	0	0	0	2	2	8	113	0	0
+rhoptries 1	0	0	0	0	0	0	0	0	0	0	47	0	0	0	0	3	0	0	0	0	0	4	0	8	9
+rhoptries 2	0	0	0	3	0	0	0	7	0	0	33	0	0	0	3	0	0	0	0	0	0	0	0	3	3
+
+# Tg compartment supervised_classifier
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	PM - peripheral 2	apical 1	apical 2	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	15	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0
+40S ribosome	0	15	11	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	1	0	0
+60S ribosome	0	7	32	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	2	0	0	123	4	42	2	16	0	6	0	2	5	8	2	8	1	10	7	0	7	2	0	1
+ER 2	2	0	0	0	5	0	0	2	0	0	1	1	0	2	1	0	0	1	1	0	0	0	0	1
+Golgi	0	1	0	36	1	49	4	27	0	4	0	1	4	6	5	3	2	2	4	0	4	0	0	0
+IMC	0	0	0	2	1	4	49	5	2	3	10	0	1	0	5	0	3	0	0	0	4	1	2	4
+PM - integral	0	0	0	16	0	26	1	49	2	5	1	2	2	2	6	6	6	2	2	1	4	0	0	2
+PM - peripheral 1	0	0	0	0	0	0	1	0	37	1	2	0	0	1	2	0	2	0	1	0	0	0	2	0
+PM - peripheral 2	0	0	0	1	0	2	2	2	1	10	4	3	0	3	2	3	0	1	2	0	6	1	0	1
+apical 1	0	0	0	0	0	1	7	1	1	2	34	4	0	0	4	0	0	0	0	0	3	0	1	1
+apical 2	0	0	0	0	0	0	3	0	0	1	8	3	0	1	0	0	0	0	0	0	0	0	1	0
+apicoplast	0	0	0	5	3	5	1	1	0	2	0	1	114	3	0	3	1	8	15	0	5	0	0	0
+cytosol	15	7	8	3	14	2	12	1	4	17	5	11	15	244	10	20	2	12	27	15	54	99	2	0
+dense granules	0	0	0	3	5	2	3	5	5	6	6	4	4	6	100	0	16	2	3	0	7	4	9	3
+endomembrane vesicles	1	0	0	1	0	7	2	1	1	1	0	0	2	2	0	8	1	0	1	0	4	1	1	0
+micronemes	0	0	0	0	0	1	4	8	3	0	0	0	0	0	5	1	32	1	1	0	0	0	0	0
+mitochondrion - membranes	0	1	1	6	1	7	3	4	0	0	0	0	12	6	0	0	0	98	43	3	4	3	1	0
+mitochondrion - soluble	0	1	0	6	0	2	0	2	0	3	2	1	22	18	3	3	0	39	147	2	11	11	1	0
+nucleolus	0	0	0	0	0	0	0	0	0	0	0	0	0	3	0	0	0	1	0	16	0	12	0	0
+nucleus - chromatin	8	6	4	8	1	12	8	6	1	37	21	5	34	82	21	22	4	8	45	6	324	105	1	0
+nucleus - non-chromatin	3	6	2	1	0	3	5	1	0	11	4	1	3	63	6	10	0	13	23	55	64	187	0	0
+rhoptries 1	0	0	0	0	0	0	2	0	2	1	2	1	0	0	3	0	0	0	0	0	0	0	50	10
+rhoptries 2	0	0	0	0	0	0	1	4	0	2	0	0	2	0	1	0	1	0	0	0	0	0	10	31
+
+# Tg compartment triangulation
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	abstained	apical 1	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	15	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0
+40S ribosome	0	11	12	0	0	0	0	0	0	3	0	0	0	0	0	0	0	0	0	0	2	0	0
+60S ribosome	0	3	34	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	0	0	0	45	0	2	0	2	0	138	0	1	20	0	0	0	2	2	0	28	7	0	1
+ER 2	0	0	0	1	1	0	0	0	0	3	0	0	10	0	0	0	0	1	0	1	0	0	0
+Golgi	0	0	0	8	0	12	0	7	0	73	1	2	9	4	0	0	0	1	0	36	0	0	0
+IMC	0	0	0	0	0	0	37	2	0	27	4	0	6	8	0	0	0	0	0	9	0	1	2
+PM - integral	0	0	0	8	0	6	1	19	1	64	0	1	4	5	0	2	0	2	0	20	1	1	0
+PM - peripheral 1	0	0	0	0	0	0	1	0	20	16	0	0	4	5	0	1	0	0	0	0	0	2	0
+PM - peripheral 2	0	0	0	0	0	0	1	0	0	18	0	0	7	2	0	0	0	1	0	14	0	0	1
+apical 1	0	0	0	0	0	0	6	1	0	26	17	0	0	2	0	0	0	0	0	5	0	1	1
+apical 2	0	0	0	0	0	0	1	0	0	9	5	0	2	0	0	0	0	0	0	0	0	0	0
+apicoplast	0	0	0	2	1	0	0	1	0	62	0	54	11	1	0	0	0	8	0	26	1	0	0
+cytosol	9	0	10	0	1	1	9	0	0	165	0	1	253	3	0	0	1	9	0	70	66	1	0
+dense granules	0	0	0	0	0	0	3	0	2	60	2	2	10	85	0	3	1	0	0	17	3	3	2
+endomembrane vesicles	0	0	0	0	0	2	1	0	0	19	0	0	1	0	2	0	0	0	0	9	0	0	0
+micronemes	0	0	0	0	0	0	1	1	0	23	0	0	3	5	0	21	0	0	0	2	0	0	0
+mitochondrion - membranes	0	0	0	1	0	2	0	2	0	68	0	5	15	0	0	0	62	21	0	9	7	1	0
+mitochondrion - soluble	0	0	0	1	0	0	0	0	0	109	1	5	24	2	0	0	3	89	0	25	15	0	0
+nucleolus	0	0	0	0	0	0	0	0	0	4	0	0	3	0	0	0	0	0	2	0	23	0	0
+nucleus - chromatin	1	2	4	0	0	3	3	1	0	186	6	9	65	6	0	1	0	16	0	403	62	1	0
+nucleus - non-chromatin	2	1	1	1	0	1	0	0	0	122	1	0	47	1	0	0	2	8	4	85	185	0	0
+rhoptries 1	0	0	0	0	0	0	0	0	1	15	0	0	0	3	0	0	0	0	0	2	0	43	7
+rhoptries 2	0	0	0	0	0	0	0	0	0	14	0	0	0	1	0	0	0	0	0	2	0	10	25
+
+# Tg compartment understudied_first
+truth	19S proteasome	40S ribosome	60S ribosome	ER	ER 2	Golgi	IMC	PM - integral	PM - peripheral 1	abstained	apical 1	apicoplast	cytosol	dense granules	endomembrane vesicles	micronemes	mitochondrion - membranes	mitochondrion - soluble	nucleolus	nucleus - chromatin	nucleus - non-chromatin	rhoptries 1	rhoptries 2
+19S proteasome	15	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0
+40S ribosome	0	11	12	0	0	0	0	0	0	3	0	0	0	0	0	0	0	0	0	0	2	0	0
+60S ribosome	0	3	34	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	1	0	0
+ER	0	0	0	45	0	2	0	2	0	138	0	1	20	0	0	0	2	2	0	28	7	0	1
+ER 2	0	0	0	1	1	0	0	0	0	3	0	0	10	0	0	0	0	1	0	1	0	0	0
+Golgi	0	0	0	8	0	12	0	7	0	73	1	2	9	4	0	0	0	1	0	36	0	0	0
+IMC	0	0	0	0	0	0	37	2	0	27	4	0	6	8	0	0	0	0	0	9	0	1	2
+PM - integral	0	0	0	8	0	6	1	19	1	64	0	1	4	5	0	2	0	2	0	20	1	1	0
+PM - peripheral 1	0	0	0	0	0	0	1	0	20	16	0	0	4	5	0	1	0	0	0	0	0	2	0
+PM - peripheral 2	0	0	0	0	0	0	1	0	0	18	0	0	7	2	0	0	0	1	0	14	0	0	1
+apical 1	0	0	0	0	0	0	6	1	0	26	17	0	0	2	0	0	0	0	0	5	0	1	1
+apical 2	0	0	0	0	0	0	1	0	0	9	5	0	2	0	0	0	0	0	0	0	0	0	0
+apicoplast	0	0	0	2	1	0	0	1	0	62	0	54	11	1	0	0	0	8	0	26	1	0	0
+cytosol	9	0	10	0	1	1	9	0	0	165	0	1	253	3	0	0	1	9	0	70	66	1	0
+dense granules	0	0	0	0	0	0	3	0	2	60	2	2	10	85	0	3	1	0	0	17	3	3	2
+endomembrane vesicles	0	0	0	0	0	2	1	0	0	19	0	0	1	0	2	0	0	0	0	9	0	0	0
+micronemes	0	0	0	0	0	0	1	1	0	23	0	0	3	5	0	21	0	0	0	2	0	0	0
+mitochondrion - membranes	0	0	0	1	0	2	0	2	0	68	0	5	15	0	0	0	62	21	0	9	7	1	0
+mitochondrion - soluble	0	0	0	1	0	0	0	0	0	109	1	5	24	2	0	0	3	89	0	25	15	0	0
+nucleolus	0	0	0	0	0	0	0	0	0	4	0	0	3	0	0	0	0	0	2	0	23	0	0
+nucleus - chromatin	1	2	4	0	0	3	3	1	0	186	6	9	65	6	0	1	0	16	0	403	62	1	0
+nucleus - non-chromatin	2	1	1	1	0	1	0	0	0	122	1	0	47	1	0	0	2	8	4	85	185	0	0
+rhoptries 1	0	0	0	0	0	0	0	0	1	15	0	0	0	3	0	0	0	0	0	2	0	43	7
+rhoptries 2	0	0	0	0	0	0	0	0	0	14	0	0	0	1	0	0	0	0	0	2	0	10	25
+
+# Tg dtm_class cluster_guilt
+truth	SP	SP+TM	TM	abstained
+GLOB	69	46	7	5931
+SP	25	15	0	636
+SP+TM	4	8	0	254
+TM	3	22	2	1115
+
+# Tg dtm_class feature_knn
+truth	GLOB	SP	SP+TM	TM	abstained
+GLOB	5972	52	1	28	0
+SP	469	188	8	10	1
+SP+TM	210	34	11	9	2
+TM	1051	26	0	65	0
+
+# Tg dtm_class graph_convolution
+truth	GLOB	SP	SP+TM	TM
+GLOB	4560	488	302	703
+SP	64	462	87	63
+SP+TM	30	52	123	61
+TM	221	115	143	663
+
+# Tg dtm_class layer_propagation
+truth	GLOB	SP	SP+TM	TM	abstained
+GLOB	2103	740	810	1004	1396
+SP	65	285	142	54	130
+SP+TM	37	50	103	38	38
+TM	262	181	211	234	254
+
+# Tg dtm_class layer_vote
+truth	GLOB	SP	SP+TM	TM
+GLOB	5967	50	1	35
+SP	380	273	6	17
+SP+TM	208	36	4	18
+TM	806	26	4	306
+
+# Tg dtm_class map_neighbours
+truth	GLOB	SP	SP+TM	TM	abstained
+GLOB	1823	41	1	20	4168
+SP	139	59	0	3	475
+SP+TM	62	11	0	1	192
+TM	323	9	0	8	802
+
+# Tg dtm_class physical_partners
+truth	GLOB	SP	SP+TM	TM	abstained
+GLOB	1122	51	15	28	4837
+SP	24	54	6	7	585
+SP+TM	11	35	3	4	213
+TM	70	19	9	18	1026
+
+# Tg dtm_class random_forest
+truth	GLOB	SP	SP+TM	TM
+GLOB	5999	54	0	0
+SP	470	206	0	0
+SP+TM	6	5	34	221
+TM	24	1	9	1108
+
+# Tg dtm_class stacking
+truth	GLOB	SP	SP+TM	TM
+GLOB	4609	461	374	609
+SP	59	480	108	29
+SP+TM	25	53	134	54
+TM	224	102	157	659
+
+# Tg dtm_class stratum_focus
+truth	GLOB	SP	SP+TM	TM	abstained
+GLOB	5972	52	1	28	0
+SP	469	188	8	10	1
+SP+TM	210	34	11	9	2
+TM	1051	26	0	65	0
+
+# Tg dtm_class structural_homology
+truth	GLOB	SP	SP+TM	TM	abstained
+GLOB	1408	21	6	27	4591
+SP	50	169	4	7	446
+SP+TM	26	6	0	3	231
+TM	55	18	2	238	829
+
+# Tg dtm_class supervised_classifier
+truth	GLOB	SP	SP+TM	TM
+GLOB	4111	612	405	925
+SP	72	459	82	63
+SP+TM	30	57	125	54
+TM	251	129	158	604
+
+# Tg dtm_class triangulation
+truth	GLOB	SP	SP+TM	TM	abstained
+GLOB	5789	48	3	57	156
+SP	358	226	4	13	75
+SP+TM	152	22	10	35	47
+TM	665	20	0	346	111
+
+# Tg dtm_class understudied_first
+truth	GLOB	SP	SP+TM	TM	abstained
+GLOB	5789	48	3	57	156
+SP	358	226	4	13	75
+SP+TM	152	22	10	35	47
+TM	665	20	0	346	111
+
+# Tg lopit_unified cluster_guilt
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	2	243	7	1	1	4	1	3	3	0
+apical_secretory	0	378	40	0	0	0	3	27	0	0
+apicoplast	3	142	3	2	1	6	9	1	0	0
+cytosol	4	536	12	2	8	2	7	9	16	3
+golgi_secretory_vesicular	0	156	21	2	0	2	3	1	2	0
+mitochondrion	7	407	3	0	1	15	5	8	19	2
+nucleus	4	1167	22	13	11	16	13	3	12	1
+pellicle_PM_IMC	2	247	34	1	0	2	0	36	2	0
+proteasome	0	23	0	0	0	0	0	0	8	0
+ribosome_RNP	0	47	0	0	0	0	1	0	0	20
+
+# Tg lopit_unified feature_knn
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	15	54	6	2	35	1	13	129	4	6	0
+apical_secretory	0	34	292	1	15	0	8	79	19	0	0
+apicoplast	2	14	2	37	16	0	28	64	0	4	0
+cytosol	0	27	17	0	199	0	28	278	14	18	18
+golgi_secretory_vesicular	6	34	11	1	9	11	5	95	8	7	0
+mitochondrion	1	26	7	5	34	1	205	183	0	1	4
+nucleus	1	39	23	5	91	6	51	1012	13	6	15
+pellicle_PM_IMC	3	60	57	2	20	1	14	91	75	1	0
+proteasome	0	0	0	0	1	0	0	0	0	30	0
+ribosome_RNP	0	0	0	0	0	0	0	3	0	0	65
+
+# Tg lopit_unified graph_convolution
+truth	ER	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	140	5	13	10	51	18	9	16	3	0
+apical_secretory	7	319	6	12	10	6	20	67	1	0
+apicoplast	10	3	116	5	6	17	6	3	1	0
+cytosol	13	19	16	321	6	41	134	28	13	8
+golgi_secretory_vesicular	45	12	4	11	81	5	10	19	0	0
+mitochondrion	16	6	33	28	11	339	23	10	0	1
+nucleus	16	38	41	236	41	100	741	30	10	9
+pellicle_PM_IMC	23	62	6	13	44	11	14	150	1	0
+proteasome	0	0	0	3	0	0	0	0	28	0
+ribosome_RNP	0	0	0	2	0	0	1	0	0	65
+
+# Tg lopit_unified layer_propagation
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	35	69	15	16	23	31	24	20	9	18	5
+apical_secretory	8	40	277	14	11	19	3	6	53	2	15
+apicoplast	9	36	3	61	11	7	13	18	4	5	0
+cytosol	62	104	38	40	52	39	102	54	33	21	54
+golgi_secretory_vesicular	16	39	23	10	8	40	8	10	18	13	2
+mitochondrion	25	71	9	39	54	16	120	41	13	19	60
+nucleus	78	274	71	106	107	100	158	215	60	41	52
+pellicle_PM_IMC	13	57	89	8	23	33	13	12	51	8	17
+proteasome	3	9	0	0	0	4	3	0	0	12	0
+ribosome_RNP	0	1	0	0	1	0	2	1	1	0	62
+
+# Tg lopit_unified layer_vote
+truth	ER	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	31	7	7	41	4	20	141	8	6	0
+apical_secretory	2	307	1	21	1	12	85	19	0	0
+apicoplast	3	4	41	17	0	29	68	1	4	0
+cytosol	0	19	0	200	0	29	293	22	20	16
+golgi_secretory_vesicular	11	13	2	12	18	6	109	10	6	0
+mitochondrion	5	8	4	37	2	217	188	1	1	4
+nucleus	2	27	5	88	6	55	1046	14	6	13
+pellicle_PM_IMC	9	59	3	29	4	19	104	96	1	0
+proteasome	0	0	0	1	0	0	0	0	30	0
+ribosome_RNP	0	0	0	0	0	0	3	0	0	65
+
+# Tg lopit_unified map_neighbours
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	6	145	4	0	26	4	19	52	9	0	0
+apical_secretory	1	259	108	0	4	7	8	29	32	0	0
+apicoplast	2	81	1	10	9	2	14	47	1	0	0
+cytosol	4	315	8	2	96	2	29	118	14	6	5
+golgi_secretory_vesicular	2	103	12	1	11	6	9	38	5	0	0
+mitochondrion	4	236	8	3	33	2	92	85	3	0	1
+nucleus	10	668	12	7	64	7	51	416	22	4	1
+pellicle_PM_IMC	3	158	24	0	19	4	12	49	55	0	0
+proteasome	0	16	0	0	3	0	0	2	0	10	0
+ribosome_RNP	0	37	0	0	1	0	0	2	0	0	28
+
+# Tg lopit_unified physical_partners
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	28	223	1	1	4	1	0	5	0	0	2
+apical_secretory	5	300	121	1	10	1	2	6	0	0	2
+apicoplast	6	134	1	19	3	0	0	4	0	0	0
+cytosol	1	349	9	3	149	1	2	64	1	6	14
+golgi_secretory_vesicular	4	169	2	1	2	7	0	2	0	0	0
+mitochondrion	0	348	1	0	10	0	95	4	3	1	5
+nucleus	4	867	9	2	75	0	6	256	7	2	34
+pellicle_PM_IMC	0	245	2	0	7	0	0	7	62	0	1
+proteasome	0	2	0	0	0	0	0	0	0	29	0
+ribosome_RNP	0	2	0	0	2	0	0	7	0	0	57
+
+# Tg lopit_unified random_forest
+truth	ER	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	154	7	1	21	22	11	35	14	0	0
+apical_secretory	4	352	2	10	3	2	58	17	0	0
+apicoplast	16	1	45	17	4	26	57	1	0	0
+cytosol	1	23	0	277	0	8	274	10	0	6
+golgi_secretory_vesicular	65	15	2	8	51	1	32	13	0	0
+mitochondrion	22	9	5	49	8	222	150	1	0	1
+nucleus	6	38	5	134	4	35	1026	7	1	6
+pellicle_PM_IMC	45	78	0	28	26	4	56	86	1	0
+proteasome	0	0	0	11	0	0	0	0	20	0
+ribosome_RNP	0	0	0	1	0	0	3	0	0	64
+
+# Tg lopit_unified stacking
+truth	ER	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	146	5	12	14	52	14	8	13	1	0
+apical_secretory	6	326	5	11	11	7	17	64	1	0
+apicoplast	8	2	124	4	8	15	4	2	0	0
+cytosol	11	14	17	336	6	37	124	31	13	10
+golgi_secretory_vesicular	29	7	5	9	103	2	10	21	1	0
+mitochondrion	20	6	35	25	15	338	25	3	0	0
+nucleus	13	33	42	208	46	89	772	42	8	9
+pellicle_PM_IMC	21	55	5	12	49	11	15	155	1	0
+proteasome	0	0	0	1	0	0	0	0	30	0
+ribosome_RNP	0	0	0	1	0	0	2	0	0	65
+
+# Tg lopit_unified stratum_focus
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	15	54	6	2	35	1	13	129	4	6	0
+apical_secretory	0	34	292	1	15	0	8	79	19	0	0
+apicoplast	2	14	2	37	16	0	28	64	0	4	0
+cytosol	0	27	17	0	199	0	28	278	14	18	18
+golgi_secretory_vesicular	6	34	11	1	9	11	5	95	8	7	0
+mitochondrion	1	26	7	5	34	1	205	183	0	1	4
+nucleus	1	39	23	5	91	6	51	1012	13	6	15
+pellicle_PM_IMC	3	60	57	2	20	1	14	91	75	1	0
+proteasome	0	0	0	0	1	0	0	0	0	30	0
+ribosome_RNP	0	0	0	0	0	0	0	3	0	0	65
+
+# Tg lopit_unified structural_homology
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	20	205	3	3	18	2	1	7	5	1	0
+apical_secretory	4	360	39	1	11	1	1	10	21	0	0
+apicoplast	5	129	1	2	14	1	6	5	2	2	0
+cytosol	8	335	10	6	135	7	14	66	12	3	3
+golgi_secretory_vesicular	2	132	4	0	8	17	0	9	14	0	1
+mitochondrion	5	375	2	6	20	4	34	15	0	4	2
+nucleus	3	928	10	5	52	10	7	226	11	6	4
+pellicle_PM_IMC	3	187	14	1	13	13	0	11	82	0	0
+proteasome	0	6	0	0	1	0	0	3	0	21	0
+ribosome_RNP	0	58	0	0	2	1	1	4	0	0	2
+
+# Tg lopit_unified supervised_classifier
+truth	ER	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	146	6	12	9	46	17	10	14	5	0
+apical_secretory	7	323	5	11	13	6	19	63	1	0
+apicoplast	10	3	117	5	8	15	6	2	1	0
+cytosol	8	18	19	314	4	38	132	36	21	9
+golgi_secretory_vesicular	39	9	6	9	86	3	11	23	1	0
+mitochondrion	16	8	37	29	10	331	28	7	0	1
+nucleus	15	44	45	249	39	88	732	30	10	10
+pellicle_PM_IMC	22	64	7	13	47	14	14	142	1	0
+proteasome	0	0	0	4	0	0	0	0	27	0
+ribosome_RNP	0	0	0	1	0	0	2	0	0	65
+
+# Tg lopit_unified triangulation
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	38	100	5	3	17	1	9	90	2	0	0
+apical_secretory	1	60	328	1	7	0	2	31	18	0	0
+apicoplast	2	60	4	41	4	0	8	48	0	0	0
+cytosol	1	108	17	1	204	0	12	219	14	10	13
+golgi_secretory_vesicular	7	80	11	1	6	18	1	59	4	0	0
+mitochondrion	2	101	7	6	18	0	211	121	0	0	1
+nucleus	1	147	28	4	87	4	31	942	5	5	8
+pellicle_PM_IMC	5	92	59	1	6	4	4	55	97	1	0
+proteasome	0	2	0	0	1	0	0	0	0	28	0
+ribosome_RNP	0	0	0	0	0	0	0	3	0	0	65
+
+# Tg lopit_unified understudied_first
+truth	ER	abstained	apical_secretory	apicoplast	cytosol	golgi_secretory_vesicular	mitochondrion	nucleus	pellicle_PM_IMC	proteasome	ribosome_RNP
+ER	38	100	5	3	17	1	9	90	2	0	0
+apical_secretory	1	60	328	1	7	0	2	31	18	0	0
+apicoplast	2	60	4	41	4	0	8	48	0	0	0
+cytosol	1	108	17	1	204	0	12	219	14	10	13
+golgi_secretory_vesicular	7	80	11	1	6	18	1	59	4	0	0
+mitochondrion	2	101	7	6	18	0	211	121	0	0	1
+nucleus	1	147	28	4	87	4	31	942	5	5	8
+pellicle_PM_IMC	5	92	59	1	6	4	4	55	97	1	0
+proteasome	0	2	0	0	1	0	0	0	0	28	0
+ribosome_RNP	0	0	0	0	0	0	0	3	0	0	65
+
+# Tg screen_actin_phenotype cluster_guilt
+truth	abstained
+False	274
+True	44
+
+# Tg screen_actin_phenotype feature_knn
+truth	False
+False	274
+True	44
+
+# Tg screen_actin_phenotype graph_convolution
+truth	False	True
+False	205	69
+True	34	10
+
+# Tg screen_actin_phenotype layer_propagation
+truth	False	True	abstained
+False	191	36	47
+True	22	9	13
+
+# Tg screen_actin_phenotype layer_vote
+truth	False	True	abstained
+False	145	13	116
+True	21	5	18
+
+# Tg screen_actin_phenotype map_neighbours
+truth	False
+False	274
+True	44
+
+# Tg screen_actin_phenotype physical_partners
+truth	False	True	abstained
+False	16	4	254
+True	5	0	39
+
+# Tg screen_actin_phenotype random_forest
+truth	False
+False	274
+True	44
+
+# Tg screen_actin_phenotype stacking
+truth	False	True
+False	172	102
+True	29	15
+
+# Tg screen_actin_phenotype stratum_focus
+truth	False
+False	274
+True	44
+
+# Tg screen_actin_phenotype structural_homology
+truth	False	True	abstained
+False	19	5	250
+True	5	0	39
+
+# Tg screen_actin_phenotype supervised_classifier
+truth	False	True
+False	204	70
+True	32	12
+
+# Tg screen_actin_phenotype triangulation
+truth	False	True	abstained
+False	263	4	7
+True	43	0	1
+
+# Tg screen_actin_phenotype understudied_first
+truth	False	True	abstained
+False	263	4	7
+True	43	0	1
+
+# Tg screen_any_phenotype cluster_guilt
+truth	abstained
+False	219
+True	99
+
+# Tg screen_any_phenotype feature_knn
+truth	False	True
+False	198	21
+True	91	8
+
+# Tg screen_any_phenotype graph_convolution
+truth	False	True
+False	121	98
+True	67	32
+
+# Tg screen_any_phenotype layer_propagation
+truth	False	True	abstained
+False	121	57	41
+True	49	31	19
+
+# Tg screen_any_phenotype layer_vote
+truth	False	True	abstained
+False	136	51	32
+True	63	27	9
+
+# Tg screen_any_phenotype map_neighbours
+truth	False	True
+False	199	20
+True	93	6
+
+# Tg screen_any_phenotype physical_partners
+truth	False	True	abstained
+False	11	5	203
+True	7	2	90
+
+# Tg screen_any_phenotype random_forest
+truth	False	True
+False	210	9
+True	92	7
+
+# Tg screen_any_phenotype stacking
+truth	False	True
+False	105	114
+True	51	48
+
+# Tg screen_any_phenotype stratum_focus
+truth	False	True
+False	198	21
+True	91	8
+
+# Tg screen_any_phenotype structural_homology
+truth	False	True	abstained
+False	14	3	202
+True	6	6	87
+
+# Tg screen_any_phenotype supervised_classifier
+truth	False	True
+False	128	91
+True	62	37
+
+# Tg screen_any_phenotype triangulation
+truth	False	True	abstained
+False	186	25	8
+True	89	9	1
+
+# Tg screen_any_phenotype understudied_first
+truth	False	True	abstained
+False	186	25	8
+True	89	9	1
+
+# Tg screen_apicoplast_phenotype cluster_guilt
+truth	abstained
+False	258
+True	60
+
+# Tg screen_apicoplast_phenotype feature_knn
+truth	False
+False	258
+True	60
+
+# Tg screen_apicoplast_phenotype graph_convolution
+truth	False	True
+False	174	84
+True	43	17
+
+# Tg screen_apicoplast_phenotype layer_propagation
+truth	False	True	abstained
+False	154	54	50
+True	34	16	10
+
+# Tg screen_apicoplast_phenotype layer_vote
+truth	False	True	abstained
+False	100	14	144
+True	28	5	27
+
+# Tg screen_apicoplast_phenotype map_neighbours
+truth	False	True
+False	256	2
+True	60	0
+
+# Tg screen_apicoplast_phenotype physical_partners
+truth	False	True	abstained
+False	13	4	241
+True	6	2	52
+
+# Tg screen_apicoplast_phenotype random_forest
+truth	False	True
+False	256	2
+True	60	0
+
+# Tg screen_apicoplast_phenotype stacking
+truth	False	True
+False	130	128
+True	34	26
+
+# Tg screen_apicoplast_phenotype stratum_focus
+truth	False
+False	258
+True	60
+
+# Tg screen_apicoplast_phenotype structural_homology
+truth	False	True	abstained
+False	18	3	237
+True	4	4	52
+
+# Tg screen_apicoplast_phenotype supervised_classifier
+truth	False	True
+False	181	77
+True	47	13
+
+# Tg screen_apicoplast_phenotype triangulation
+truth	False	True	abstained
+False	249	3	6
+True	59	1	0
+
+# Tg screen_apicoplast_phenotype understudied_first
+truth	False	True	abstained
+False	249	3	6
+True	59	1	0
+
+# Tg screen_egress_phenotype cluster_guilt
+truth	abstained
+False	283
+True	35
+
+# Tg screen_egress_phenotype feature_knn
+truth	False
+False	283
+True	35
+
+# Tg screen_egress_phenotype graph_convolution
+truth	False	True
+False	235	48
+True	28	7
+
+# Tg screen_egress_phenotype layer_propagation
+truth	False	True	abstained
+False	179	51	53
+True	25	3	7
+
+# Tg screen_egress_phenotype layer_vote
+truth	False	True	abstained
+False	172	10	101
+True	18	2	15
+
+# Tg screen_egress_phenotype map_neighbours
+truth	False	True
+False	282	1
+True	35	0
+
+# Tg screen_egress_phenotype physical_partners
+truth	False	True	abstained
+False	20	2	261
+True	3	0	32
+
+# Tg screen_egress_phenotype random_forest
+truth	False
+False	283
+True	35
+
+# Tg screen_egress_phenotype stacking
+truth	False	True
+False	131	152
+True	19	16
+
+# Tg screen_egress_phenotype stratum_focus
+truth	False
+False	283
+True	35
+
+# Tg screen_egress_phenotype structural_homology
+truth	False	True	abstained
+False	27	1	255
+True	1	0	34
+
+# Tg screen_egress_phenotype supervised_classifier
+truth	False	True
+False	239	44
+True	27	8
+
+# Tg screen_egress_phenotype triangulation
+truth	False	True	abstained
+False	281	1	1
+True	34	1	0
+
+# Tg screen_egress_phenotype understudied_first
+truth	False	True	abstained
+False	281	1	1
+True	34	1	0
+
+# Tg screen_replication_phenotype cluster_guilt
+truth	abstained
+False	274
+True	44
+
+# Tg screen_replication_phenotype feature_knn
+truth	False
+False	274
+True	44
+
+# Tg screen_replication_phenotype graph_convolution
+truth	False	True
+False	217	57
+True	37	7
+
+# Tg screen_replication_phenotype layer_propagation
+truth	False	True	abstained
+False	168	54	52
+True	32	4	8
+
+# Tg screen_replication_phenotype layer_vote
+truth	False	True	abstained
+False	104	9	161
+True	20	2	22
+
+# Tg screen_replication_phenotype map_neighbours
+truth	False
+False	274
+True	44
+
+# Tg screen_replication_phenotype physical_partners
+truth	False	True	abstained
+False	17	2	255
+True	4	2	38
+
+# Tg screen_replication_phenotype random_forest
+truth	False
+False	274
+True	44
+
+# Tg screen_replication_phenotype stacking
+truth	False	True
+False	154	120
+True	23	21
+
+# Tg screen_replication_phenotype stratum_focus
+truth	False
+False	274
+True	44
+
+# Tg screen_replication_phenotype structural_homology
+truth	False	True	abstained
+False	20	2	252
+True	5	2	37
+
+# Tg screen_replication_phenotype supervised_classifier
+truth	False	True
+False	210	64
+True	32	12
+
+# Tg screen_replication_phenotype triangulation
+truth	False	True	abstained
+False	270	2	2
+True	43	0	1
+
+# Tg screen_replication_phenotype understudied_first
+truth	False	True	abstained
+False	270	2	2
+True	43	0	1
+

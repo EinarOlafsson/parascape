@@ -1,0 +1,7 @@
+organism	location	frozen_auc	frozen_ap	may_fill
+Hs	Nucleoplasm	0.639	0.508	False
+Hs	Plasma membrane	0.673	0.197	False
+Hs	Mitochondria	0.709	0.268	False
+Hs	Golgi apparatus	0.579	0.072	False
+Hs	Endoplasmic reticulum	0.689	0.188	False
+Mm	BMDM surface	0.798	0.279	False

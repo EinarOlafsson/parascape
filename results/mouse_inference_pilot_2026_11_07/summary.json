@@ -1,0 +1,67 @@
+{
+ "scores": [
+  {
+   "question": "mm_bmdm_surface",
+   "strategy": "boosted trees, mouse expression only",
+   "partition": "cross_validated (train+tune, nested)",
+   "n": 906,
+   "positives": 107,
+   "threshold": 0.5556,
+   "calls": 38,
+   "correct": 15,
+   "precision": 0.39473684210526316,
+   "precision_lower90": 0.2866010975437623,
+   "reaches_bar": false,
+   "coverage_at_bar": 0.04194260485651214,
+   "calibration_error": 7.45050329991275e-17,
+   "accuracy": 0.8664459161147903,
+   "roc_auc": 0.7598224416034061,
+   "average_precision": 0.2701728852585284,
+   "folds": 3.0
+  },
+  {
+   "question": "mm_bmdm_surface",
+   "strategy": "boosted trees, mouse expression only",
+   "partition": "frozen_test (touched once)",
+   "n": 195,
+   "positives": 22,
+   "threshold": 0.5556,
+   "calls": 5,
+   "correct": 0,
+   "precision": 0.0,
+   "precision_lower90": 0.0,
+   "reaches_bar": false,
+   "coverage_at_bar": 0.02564102564102564,
+   "calibration_error": 0.03926628557187585,
+   "accuracy": 0.8615384615384616,
+   "roc_auc": 0.7976878612716762,
+   "average_precision": 0.278647405371057,
+   "folds": NaN
+  }
+ ],
+ "flags": [],
+ "may_fill": false,
+ "parity": {
+  "identical_rows": true,
+  "flags": [
+   "frozen_test_repeat"
+  ]
+ },
+ "cold_cache": {
+  "state_before": "installable",
+  "after": "Mus musculus -- installed (2026.11.07); not calibrated. gene space for links from parasite genes; no held-out track record yet, so nothing here is calibrated for inference",
+  "genes": 18428,
+  "same_as_pack": true
+ },
+ "coverage": {
+  "proteins": 15590,
+  "tested": 1296,
+  "detected": 150,
+  "gaps": [
+   "one observed mouse label in the pilot; the transferred locations are not truth",
+   "no mouse homology groups: paralogs can sit on both sides of a split",
+   "BMDM surface proteomics measures one cell type in culture; other tissues untested",
+   "catalogue strategies other than the harness models need a mouse context adapter (not built)"
+  ]
+ }
+}

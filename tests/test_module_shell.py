@@ -564,3 +564,13 @@ def test_the_gene_module_keeps_a_map_suggestion_and_forgets_it(window, tmp_path,
     from PySide6.QtCore import QUrl
     module._inferred_link(QUrl(f"forget:{claim.claim_id}"))
     assert KC.claims(gid).empty
+
+
+def test_a_value_scorecard_states_its_units(window):
+    """Instruction 64.11: MAE and RMSE are read in the unit of the predicted column, so the card says it."""
+    from parascape import strategies as S
+    from parascape import scorecard as SC
+    panel = window.strategy_panel
+    value = next(s for s in S.catalog() if s.task == SC.T_VALUES)
+    html = panel.scorecard_html(value)
+    assert "MAE and RMSE are in the units of" in html

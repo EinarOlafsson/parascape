@@ -1,6 +1,6 @@
 # 64.40 · Verify both goals end to end and release
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 70%, 2026-11-07. Release evidence matrix built from stored results; release waits on a green Tests workflow (stale PyQt6 setting, fix pushed separately) and on item 90 (licence review).
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -34,3 +34,32 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: the release evidence matrix
+
+`scripts/build_release_evidence_notebook.py` -> `notebooks/release_evidence_2026_11_07.ipynb`,
+`results/release_evidence_2026_11_07/`: gathered from stored results, nothing restated by hand.
+
+- **Methods** (`methods.tsv`): all 39 catalogue methods per parasite with role, evidence (held-out per-gene rows
+  + card for the 14 label methods; own held-out scorecard for the other 25), labels on which each beats chance,
+  best macro F1, deployment claims.
+- **Spaces** (`spaces.tsv`): Toxoplasma and Plasmodium ready and calibrated; human and mouse packs installable,
+  never shown calibrated.
+- **Scorecard levels** (`levels.tsv`): gene, class, label, method, meta and question, each with where it is stored.
+- **Host pilots** (`host_pilots.tsv`): human locations frozen AUC 0.58-0.71, mouse BMDM surface 0.80; none may fill.
+- **Gaps** (`open_items.tsv`, `stated_gaps.tsv`): every open progress item and every gap the finished 64.x items
+  stated in their write-ups.
+
+**What still blocks a release, stated:**
+
+1. The `Tests` workflow on nightly has not passed for the last 60 runs: `.github/workflows/checks.yml`,
+   `docs.yml` and `release.yml` set `PYQTGRAPH_QT_LIB: PyQt6` while the package depends on PySide6, so the first
+   step fails at import. The fix (set PySide6) is a separate workflow-only commit; whether this checkout may push
+   workflow changes, and what the full suite says after it, are recorded below when known.
+2. Item 90: no PyPI or pack release until Einar has reviewed the licence terms.
+3. The installed-distribution walk-through (browse a source, look up a gene/class/label, open cached inferences
+   and cards from an installed wheel, offline and cold-cache) is covered piecewise by the window tests and the
+   cold-cache checks of 64.28/64.29, not yet as one run from an installed wheel.
+4. Known order dependence in the local suite: `test_app_menus.py` then `test_app_smoke.py` in one process gives 14
+   smoke failures (the menu tests leave the Plasmodium map open); each file passes alone, and the same 14 fail on a
+   clean checkout, so this predates today's changes.
