@@ -113,3 +113,12 @@ def test_flags_and_thinly_measured_columns_are_not_ranked():
 
 def test_an_unknown_gene_reads_as_nothing_unusual():
     assert GR.unusual(_unusual_nodes(), "nope").empty
+
+
+def test_every_catalogue_method_is_accounted_for_in_a_gene_profile():
+    """Instruction 64.30: all strategies listed; those without a per-gene record say why."""
+    from parascape import strategies as S
+    profile = GR.strategy_profile("TGME49_259020", ledger=pd.DataFrame(columns=[
+        "gene_id", "mode", "strategy", "target", "prediction", "truth", "correct", "abstained"]))
+    assert len(profile) == len(S.catalog())
+    assert (profile["status"] != "").all() and not (profile["status"] == "held-out calls").any()

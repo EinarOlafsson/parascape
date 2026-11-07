@@ -337,6 +337,45 @@ def unusual_sentences(frame: pd.DataFrame) -> list:
     return out
 
 
+def strategy_profile(gene: str, organism: str = "Tg", ledger: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Every catalogue strategy, and what it said about this gene when the gene was hidden (64.30).
+
+    One row per strategy: its calibration grade, and for each label the hold-out record covers, the call it
+    made with the gene's own answer hidden -- right, wrong or abstained -- at its recorded setting. A
+    strategy that answers about structure rather than about one gene says so instead of being left out, so
+    all of the catalogue is accounted for.
+    """
+    from . import calibration, strategies as S, track_record as T
+    if ledger is None:
+        ledger = T.shipped(organism)
+    mine = ledger[(ledger["gene_id"].astype(str) == str(gene))
+                  & (ledger["mode"].astype(str) == "together")] if len(ledger) else ledger
+    recorded = set(T.supported(organism))
+    rows = []
+    for strategy in S.catalog():
+        try:
+            entry = calibration.entry(strategy.key, organism) or {}
+            grade = calibration.grade(entry) if entry else "not calibrated"
+        except Exception:
+            grade = "not calibrated"
+        part = mine[mine["strategy"].astype(str) == strategy.key] if len(mine) else mine
+        if strategy.key not in recorded:
+            calls, status = "", "answers about structure or a list, not about one gene"
+        elif not len(part):
+            calls, status = "", "no hold-out record for this gene (no label it was tested on)"
+        else:
+            bits = []
+            for r in part.itertuples(index=False):
+                if bool(r.abstained):
+                    bits.append(f"{r.target}: abstained")
+                else:
+                    verdict = "right" if r.correct is True or r.correct == 1 else "wrong"
+                    bits.append(f"{r.target}: {r.prediction} ({verdict}; truth {r.truth})")
+            calls, status = "; ".join(dict.fromkeys(bits)), "held-out calls"
+        rows.append(dict(strategy=strategy.name, key=strategy.key, grade=grade, status=status, calls=calls))
+    return pd.DataFrame(rows)
+
+
 def synthesis(reading: GeneReading) -> list:
     """(category, sentence as HTML) for each kind of knowledge the gene has, in `ORDER`.
 

@@ -423,6 +423,14 @@ def test_the_infer_data_step_holds_out_the_labels_kind_and_lets_you_leave_out_ot
     assert window.panel.question_leave_out == ()
 
 
+def test_the_gene_module_lists_what_each_method_said_held_out(window):
+    module = window.gene_module.module
+    module.show(str(window.nodes.gene_id.iloc[0]))
+    assert "What each method said about it, held out" in window.gene_module.sections
+    assert "methods were tested on this gene" in module.methods.toPlainText() \
+        or "could not be read" in module.methods.toPlainText()
+
+
 def test_your_genes_are_read_against_the_answer(window):
     import pandas as pd
     module = window.infer_module.module

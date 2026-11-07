@@ -1,6 +1,6 @@
 # 64.30 · Show every strategy's answer for a gene
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 40%, 2026-11-07. Every catalogue method listed per gene with its held-out calls and grade (Gene module); class/stratum populations for unknown genes and links to scorecards remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -34,3 +34,13 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: every method, per gene, held out
+
+`gene_reading.strategy_profile(gene)` lists all 39 catalogue strategies for a gene: the calibration grade, and for
+the 14 the hold-out record covers, each label's call with the gene's own answer hidden (right, wrong or
+abstained, with the truth); the other 25 say why they give no per-gene answer ("answers about structure or a
+list"). Shown in the Gene module as **What each method said about it, held out** (folded). Read from the shipped
+record, no recomputation (0.2 s). Tests in `tests/test_gene_reading.py` and `tests/test_module_shell.py`. Open: for
+an unknown gene, the class/stratum population behind a claim; one-click links to each scorecard; stale/pending
+states.

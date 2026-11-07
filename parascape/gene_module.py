@@ -156,6 +156,13 @@ class GeneModule(QtCore.QObject):
         shell.add_section("What is not known, and what can be inferred", self.inferred,
                           extent=170, stretch=1)
 
+        self.methods = _browser()
+        shell.link_style(self.methods)
+        self.methods.setToolTip("Every method in the catalogue: what it said about this gene when the "
+                                "gene's own answer was hidden, and how its calibration graded it.")
+        shell.add_section("What each method said about it, held out", self.methods, extent=200,
+                          stretch=1, folded=True)
+
         shell.add_action("Put it on the map", self._on_map, primary=True,
                          tip="Open the Map module with this gene marked and its neighbours read.")
         shell.add_action("Its partners in the network", lambda: self._open("network"),
@@ -318,6 +325,7 @@ class GeneModule(QtCore.QObject):
             "<p>Nothing recorded about this gene in the kinds of knowledge chosen.</p>"
         self.known.setHtml(head + body)
         self._render_unusual(r)
+        self._render_methods(r)
         self._render_evidence(r)
         self._render_inferences(r)
 
@@ -350,6 +358,23 @@ class GeneModule(QtCore.QObject):
                             tables=tables, kinds=kinds, columns=columns, nodes=self._nodes())
         self.shell.say(f"bundle written: {folder}")
         return folder
+
+    def _render_methods(self, r) -> None:
+        """Every catalogue method and its held-out calls on this gene (instruction 64.30)."""
+        try:
+            profile = GR.strategy_profile(r.gene)
+        except Exception as error:
+            self.methods.setHtml(f"<p>The hold-out record could not be read: {escape(str(error))}</p>")
+            return
+        spoke = profile[profile["status"] == "held-out calls"]
+        head = (f"<p><b>{len(spoke)}</b> of the {len(profile)} methods were tested on this gene with its "
+                "answer hidden; the others are listed with why.</p>")
+        rows = "".join(
+            f"<tr><td>{escape(p.strategy)}</td><td>{escape(p.grade)}</td>"
+            f"<td>{escape(p.calls or p.status)}</td></tr>" for p in profile.itertuples(index=False))
+        self.methods.setHtml(head + "<table cellspacing=4><tr><th align=left>method</th>"
+                             "<th align=left>graded</th><th align=left>held out, it said</th></tr>"
+                             + rows + "</table>")
 
     def _render_unusual(self, r) -> None:
         """The gene's most extreme measurements, among the kinds of knowledge chosen."""
