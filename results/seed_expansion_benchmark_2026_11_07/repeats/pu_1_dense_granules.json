@@ -1,0 +1,1 @@
+{"strategy": "positive_unlabeled", "niche": "dense granules", "split_seed": 1, "seeds": 20, "hidden": 20, "prevalence": 0.00246, "average_precision": 0.1876, "hidden_in_top50": 10, "recall_at_50": 0.5, "lift_at_50": 81.2, "hidden_in_top100": 11, "recall_at_100": 0.55, "lift_at_100": 44.7, "hidden_in_top200": 15, "recall_at_200": 0.75, "lift_at_200": 30.4}

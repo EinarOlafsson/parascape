@@ -1,0 +1,1 @@
+{"strategy": "positive_unlabeled", "niche": "apicoplast", "split_seed": 3, "seeds": 24, "hidden": 24, "prevalence": 0.00296, "average_precision": 0.1184, "hidden_in_top50": 9, "recall_at_50": 0.375, "lift_at_50": 60.9, "hidden_in_top100": 12, "recall_at_100": 0.5, "lift_at_100": 40.6, "hidden_in_top200": 15, "recall_at_200": 0.625, "lift_at_200": 25.4}

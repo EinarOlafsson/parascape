@@ -1,0 +1,1 @@
+{"strategy": "positive_unlabeled", "niche": "IMC", "split_seed": 2, "seeds": 19, "hidden": 19, "prevalence": 0.00234, "average_precision": 0.2151, "hidden_in_top50": 10, "recall_at_50": 0.526, "lift_at_50": 85.5, "hidden_in_top100": 11, "recall_at_100": 0.579, "lift_at_100": 47.0, "hidden_in_top200": 14, "recall_at_200": 0.737, "lift_at_200": 29.9}

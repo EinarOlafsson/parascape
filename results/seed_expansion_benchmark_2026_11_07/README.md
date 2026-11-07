@@ -47,3 +47,10 @@ publication counts (study effort), which the other two do not lean on; read it w
 recall is not its measure. Hidden members inside its candidates: dense granules 3, mitochondrion 3, rhoptries 2,
 IMC 2, micronemes 0, apicoplast 0 -- roughly 0.1-0.2 precision against a base rate of 0.002-0.004 where it finds
 any, and nothing for two niches.
+
+## Five splits, full ranking (positive-unlabelled learning)
+
+`pu_repeats_summary.tsv`: average precision over the whole genome ranking, mean (range) over five orthogroup splits
+-- rhoptries 0.49 (0.41-0.55), dense granules 0.21 (0.17-0.25), IMC 0.20 (0.11-0.30), micronemes 0.19 (0.10-0.25),
+apicoplast 0.16 (0.12-0.21), mitochondrion 0.08 (0.04-0.12), against random-ranking values of 0.002-0.004 (lift
+20-160). The split-to-split range is wide where a niche has few markers, which is why one split was not enough.

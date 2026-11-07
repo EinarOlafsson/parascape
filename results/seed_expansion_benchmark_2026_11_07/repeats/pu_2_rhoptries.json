@@ -1,0 +1,1 @@
+{"strategy": "positive_unlabeled", "niche": "rhoptries", "split_seed": 2, "seeds": 26, "hidden": 21, "prevalence": 0.00259, "average_precision": 0.4515, "hidden_in_top50": 14, "recall_at_50": 0.667, "lift_at_50": 108.2, "hidden_in_top100": 18, "recall_at_100": 0.857, "lift_at_100": 69.5, "hidden_in_top200": 19, "recall_at_200": 0.905, "lift_at_200": 36.7}

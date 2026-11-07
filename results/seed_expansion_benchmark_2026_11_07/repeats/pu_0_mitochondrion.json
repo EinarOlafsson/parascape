@@ -1,0 +1,1 @@
+{"strategy": "positive_unlabeled", "niche": "mitochondrion", "split_seed": 0, "seeds": 33, "hidden": 35, "prevalence": 0.00432, "average_precision": 0.0772, "hidden_in_top50": 7, "recall_at_50": 0.2, "lift_at_50": 32.4, "hidden_in_top100": 13, "recall_at_100": 0.371, "lift_at_100": 30.1, "hidden_in_top200": 15, "recall_at_200": 0.429, "lift_at_200": 17.4}

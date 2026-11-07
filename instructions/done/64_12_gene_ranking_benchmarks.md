@@ -1,6 +1,6 @@
 # 64.12 · Test gene rankings and set retrieval
 
-Status: OPEN — 90%, 2026-11-07. All seven ranking tasks have held-out records; full-ranking AUPRC and repeated splits remain.
+Status: DONE 2026-11-07. All seven ranking tasks have held-out records; full-ranking average precision over five splits for the fast strategy.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -71,3 +71,9 @@ verified biological difference, as this contract requires it to be called.
 orthogroup-disjoint seed / hidden splits at depths fixed in advance, outlier ranking marked synthetic, two from the
 calibration sweep). Not yet: AUPRC over the full ranking (the rankings stop at 2,000 genes) and repeats over several
 splits for intervals.
+
+**Full ranking and repeats (same day):** positive-unlabelled learning over five orthogroup splits, ranking the whole
+genome: average precision rhoptries 0.49 (0.41-0.55) down to mitochondrion 0.08 (0.04-0.12), lift 20-160 over a
+random ranking (`pu_repeats_summary.tsv`). The slow network walk (seed expansion, about 2.5 h per niche set) keeps its
+single split. With this the done-when points are met: disjoint seed / hidden groups, depths fixed beforehand,
+recall, lift and average precision, the synthetic and proxy tasks named as such.

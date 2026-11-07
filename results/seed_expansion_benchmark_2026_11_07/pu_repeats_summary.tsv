@@ -1,0 +1,7 @@
+niche	splits	ap_mean	ap_min	ap_max	recall100_mean	prevalence	ap_lift
+IMC	5	0.198	0.11	0.295	0.579	0.002	99.0
+apicoplast	5	0.159	0.118	0.212	0.466	0.003	53.0
+dense granules	5	0.211	0.169	0.246	0.631	0.003	70.3
+micronemes	5	0.192	0.104	0.252	0.607	0.002	96.0
+mitochondrion	5	0.078	0.043	0.116	0.287	0.004	19.5
+rhoptries	5	0.485	0.412	0.553	0.776	0.003	161.7

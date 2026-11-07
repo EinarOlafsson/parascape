@@ -1,0 +1,1 @@
+{"strategy": "positive_unlabeled", "niche": "micronemes", "split_seed": 1, "seeds": 14, "hidden": 15, "prevalence": 0.00185, "average_precision": 0.1903, "hidden_in_top50": 4, "recall_at_50": 0.267, "lift_at_50": 43.3, "hidden_in_top100": 7, "recall_at_100": 0.467, "lift_at_100": 37.9, "hidden_in_top200": 9, "recall_at_200": 0.6, "lift_at_200": 24.4}
