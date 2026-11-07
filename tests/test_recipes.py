@@ -756,3 +756,17 @@ def test_multiplex_with_every_layer_excluded_says_there_is_no_graph_left(full_no
     res = R.run(full_nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
                                      method="multiplex"), tune=False, log=lambda *a: None)
     assert not res.ok and "no graph left" in res.stopped_because
+
+
+# --------------------------------------------------------------------------- the category rule (instruction 73)
+def test_inputs_of_the_labels_own_kind_of_knowledge_are_held_out():
+    """Einar 2026-11-07: one expression contrast is not predicted from other expression columns."""
+    import pandas as pd
+    from parascape import recipes as R
+    nodes = pd.read_parquet(os.path.join(os.path.dirname(os.path.dirname(__file__)), "parascape", "data",
+                                         "nodes.parquet"))
+    out = R.same_category(nodes, "brain168465_14d_lfc", "Tg")
+    assert "expr_tachy" in out and "transcript" in out["expr_tachy"]
+    assert "fit_invitro_hff" not in out              # another kind of knowledge stays
+    assert "brain168465_14d_lfc" not in out          # the label itself is not an input
+    assert R.same_category(nodes, "not_a_column_at_all", "Tg") == {}

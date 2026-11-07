@@ -398,3 +398,21 @@ Three would change under the category rule, all with a `transcript` label:
 **Decision for Einar (not applied):** is predicting one transcriptome contrast from other transcriptome columns
 circular? Under the category rule the brain question loses nearly all its evidence and would be refused; under
 the closure it stands. Until decided, the shipped answers are unchanged, and this table is the record of the gap.
+
+## Decided and applied (Einar, 2026-11-07): strict
+
+Einar chose the strict rule: predicting a label from columns of the same information category is circular. It
+is now in `recipes.close` (`recipes.same_category`): every input sharing a category with the **label** (identity
+aside) is held out, with the reason "same information category as <label> (<category>)". Two deliberate limits:
+
+* **Inputs only, never the control check.** A control is meant to measure the same kind of thing
+  independently; applied to the control-independence check the rule refused 9 questions (one fitness screen
+  "not independent" of another). It is applied after that check.
+* **The label's category only.** Applied for the control's category too, it emptied the expression inputs of
+  two fitness questions whose control is an expression column -- beyond what was decided.
+
+Effect on the 21 map questions: 19 ship (was 21). Refused: the mouse-brain question (`brain168465_14d_lfc`,
+156 of 174 inputs were expression, as measured) and "held silent in tachyzoites" (`ees_vs_tachyzoite_log2`,
+whose 4 transcript-category columns were a whole input block). The BFD2 RIP question loses one column and
+stands. Category lookups are cached per session (a closure of all questions: 92 s -> 44 s). Test in
+`tests/test_recipes.py`; 84 recipe and question tests pass.

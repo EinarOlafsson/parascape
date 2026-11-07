@@ -255,6 +255,47 @@ class Closure:
         return "\n".join(lines)
 
 
+_CATEGORY_CACHE: dict = {}
+
+
+def _categories(organism: str):
+    """A memoised `information_categories.categories_of` for one organism: a column's categories
+    do not change within a session, and resolving them is the slow part of a closure."""
+    from functools import lru_cache
+    from . import information_categories as IC
+    if organism not in _CATEGORY_CACHE:
+        _CATEGORY_CACHE[organism] = lru_cache(maxsize=None)(lambda c: tuple(IC.categories_of(c, organism)))
+    return _CATEGORY_CACHE[organism]
+
+
+def same_category(nodes: pd.DataFrame, holdout: str, organism: str = "Tg") -> dict:
+    """Every column sharing an information category with `holdout`, with the reason (instruction 73).
+
+    Einar, 2026-11-07: the strict rule applies to the map questions too -- predicting a label from
+    columns of the same kind of knowledge is circular even where no single column correlates with
+    it (one expression contrast from forty others). `identity` is shared by everything and decides
+    nothing, so it is not a reason.
+    """
+    cats = _categories(organism)
+    try:
+        mine = set(cats(holdout)) - {"identity"}
+    except Exception:
+        return {}
+    if not mine:
+        return {}
+    out = {}
+    for c in nodes.columns:
+        if c == holdout:
+            continue
+        try:
+            shared = sorted(set(cats(c)) & mine)
+        except Exception:
+            continue
+        if shared:
+            out[c] = f"same information category as {holdout} ({', '.join(shared)})"
+    return out
+
+
 def close(nodes: pd.DataFrame, recipe: Recipe, threshold: float = 0.8) -> Closure:
     """Resolve a recipe's inputs, remove everything that restates either holdout, and say what went.
 
@@ -299,6 +340,14 @@ def close(nodes: pd.DataFrame, recipe: Recipe, threshold: float = 0.8) -> Closur
             excluded.setdefault(c, f"control: {why}")
         for L, why in excluded_layers(nodes, control, recipe.scope, threshold).items():
             banned_layers.setdefault(L, f"control: {why}")
+    # The category rule (instruction 73, Einar 2026-11-07) removes INPUTS of the label's kind of
+    # knowledge. It is applied after the control check on purpose: a control is meant to measure the
+    # same kind of thing independently (one fitness screen against another), so sharing a category
+    # is what a control should do, not a reason to refuse it.
+    # Only the label's own category: the control keeps the association closure above, as decided.
+    for c, why in same_category(nodes, holdout, recipe.organism).items():
+        if c != control:
+            excluded.setdefault(c, f"primary: {why}")
     out.excluded = excluded
     out.excluded_layers = banned_layers
     out.layers = tuple(L for L in all_edge_layers(recipe.organism) if L not in banned_layers)
