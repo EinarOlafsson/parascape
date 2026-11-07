@@ -283,6 +283,12 @@ _metric("r2", "R-squared (out of sample)", T_VALUES,
         "below 0 to 1", "0 or below (predicting the mean scores 0)",
         "The share of the hidden values' variance the prediction explains. Negative when the "
         "prediction is further off than the mean -- common for a good ranking on the wrong scale.")
+_metric("skill_vs_train_mean", "Skill against the training mean", T_VALUES,
+        "1 minus the squared prediction error over the squared error of predicting every hidden value "
+        "with the mean of the TRAINING values only (instruction 64.11).",
+        "below 0 to 1", "0 (the training mean scores 0)",
+        "The matched train-only baseline: unlike R-squared it never uses the hidden values' own mean, "
+        "so it is the honest bar a prediction has to clear.")
 _metric("nrmse", "Normalised RMSE", T_VALUES,
         "Root-mean-square error divided by the standard deviation of the hidden values.",
         "0 upward", "1 (predicting the mean)",
@@ -702,8 +708,11 @@ def cluster_recovery(cluster_of_hidden, truth_of_hidden, chosen: dict, noise: in
         "homogeneity": h, "completeness": c, "noise_share": float((cl == noise).mean())})
 
 
-def values(pred, truth) -> dict:
-    """Predicted against hidden measured values; NaN predictions lower coverage, nothing else."""
+def values(pred, truth, train_mean: float | None = None) -> dict:
+    """Predicted against hidden measured values; NaN predictions lower coverage, nothing else.
+
+    `train_mean`, when given, is the mean of the training (visible) values: the matched baseline that
+    `skill_vs_train_mean` is measured against."""
     from scipy import stats
     pred = np.asarray(pred, dtype=float)
     truth = np.asarray(truth, dtype=float)
@@ -721,6 +730,10 @@ def values(pred, truth) -> dict:
         if len(y) >= 3 and np.ptp(y) > 0 and np.std(y) > 0:
             out.update(r2=1.0 - float((err ** 2).sum()) / float(((y-y.mean()) ** 2).sum()),
                        nrmse=math.sqrt(mse) / float(np.std(y)))
+        if train_mean is not None and np.isfinite(train_mean):
+            base = float(((y - train_mean) ** 2).sum())
+            if base > 0:
+                out["skill_vs_train_mean"] = 1.0 - float((err ** 2).sum()) / base
     if len(y) >= 3 and np.ptp(y) > 0 and np.ptp(p) > 0:
         k = max(1, int(round(0.1 * len(y))))
         top_t, top_p = set(np.argsort(-y)[:k]), set(np.argsort(-p)[:k])

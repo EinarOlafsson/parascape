@@ -1,6 +1,6 @@
 # 64.11 · Keep held-out numeric predictions
 
-Status: OPEN — 75%, 2026-11-07. Value scorecards for all four mechanisms, conformal width and achieved coverage recorded (with the Pf scaling warning); units on cards and a train-only mean baseline remain.
+Status: OPEN — 90%, 2026-11-07. All value metrics, conformal coverage and a train-only baseline on the cards; per-column units need curation (no unit field exists).
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -143,3 +143,10 @@ hidden values, interval width 2.40 standard deviations of the target -- the inte
 wide. **Baseline:** R² on the cards is skill against predicting the mean, so the negative Pf values above already
 say "worse than the mean baseline". Open: units stated on each card, and the mean taken from training genes only
 rather than over the scored ones.
+
+**Train-only baseline (same day):** the value scorecard gains `skill_vs_train_mean` -- 1 minus the squared error over
+the squared error of predicting every hidden value with the mean of the training values only -- passed by every value
+self-test (`strategies` value transfer test, `scorecard.values(..., train_mean=)`). Pf trait regression at default
+settings: skill against the training mean 0.237, R² 0.236, Spearman 0.50. The shipped calibration file shows it from
+the next sweep. **Still open:** units on each card -- no column records its unit today (the dataset registry has no
+unit field), so this needs per-dataset unit curation, not code.

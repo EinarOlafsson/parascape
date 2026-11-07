@@ -1732,7 +1732,8 @@ def value_test(ctx: Context, key: str, y: pd.Series, predict: Callable, *, frac:
                  null_kind="the chance distribution of a rank correlation", t0=t0, note=note,
                  analytic=(0.0, 1.0 / math.sqrt(max(len(hidden) - 1, 1))),
                  numbers={"shuffled_refits": float(np.nanmean(nulls)) if nulls else float("nan")},
-                 task=SC.T_VALUES, scorecard=SC.values(pred[hidden], y.iloc[hidden].to_numpy()))
+                 task=SC.T_VALUES, scorecard=SC.values(pred[hidden], y.iloc[hidden].to_numpy(),
+                                                       train_mean=float(visible.mean())))
 
 
 def replication_test(ctx: Context, key: str, find: Callable, replicate: Callable,
