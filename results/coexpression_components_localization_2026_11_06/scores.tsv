@@ -1,0 +1,14 @@
+niche	markers	with_components	coexp_cv_auc	coexp_test_auc	coexp_test_ap	may_fill	all_evidence_cv_auc	all_evidence_test_auc
+ribosome	59	59	0.999	1.0	1.0	False	0.998	1.0
+rhoptries	47	47	0.975	0.996	0.943	False	0.974	0.99
+apical	41	41	0.958	0.948	0.59	False	0.943	0.96
+proteasome	28	28	0.958	0.814	0.461	False	0.978	1.0
+micronemes	29	29	0.936	0.951	0.491	False	0.932	0.985
+IMC	38	38	0.913	0.995	0.917	False	0.879	0.846
+nucleus	109	109	0.897	0.862	0.684	False	0.94	0.964
+dense granules	40	40	0.872	0.918	0.581	False	0.957	0.993
+mitochondrion	68	68	0.813	0.53	0.092	False	0.844	0.925
+apicoplast	48	48	0.803	0.898	0.645	False	0.927	0.997
+cytosol	62	62	0.799	0.856	0.684	False	0.913	0.933
+ER	39	39	0.78	0.756	0.181	False	0.831	0.863
+plasma membrane	66	66	0.669	0.554	0.075	False	0.934	0.895

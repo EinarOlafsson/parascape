@@ -130,3 +130,6 @@ seed 1). Built in the notebook, **not registered** in the application.
 
 Next for localization: more independent positives (the GO experimental set of 70.01 and the 9 IFA outcomes) to
 widen the frozen partitions, and Einar's decision on registering these questions in the application.
+
+**70.08 (2026-11-06):** co-expression scored on the localization board -- see instruction 71, product 1 through
+the harness: median AUC 0.897 from co-expression alone, matching all evidence for the division organelles.

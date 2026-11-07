@@ -191,3 +191,12 @@ state and culture condition — **metadata the depositors never published**. Tha
 re-description, and it is the one product here that improves every other one: contrasts become comparable once
 stage composition is a covariate, and a pull-down's lysate composition may explain the background frequency variability that
 made the frequency filter fail.
+
+## Product 1 through the harness (2026-11-06): co-expression alone places the division organelles
+
+`results/coexpression_components_localization_2026_11_06/README.md`. Label-free co-expression components from 57
+studies (735-run snapshot), scored per coarse niche through the harness: median cross-validated AUC **0.897**
+against 0.934 for all allowed evidence; rhoptries 0.975, apical 0.958, micronemes 0.936 and IMC 0.913 match or
+beat everything else together; plasma membrane 0.669 and ER 0.780 are where co-expression has little to say.
+This is the block 70 asked product 1 to register; it ranks well, and like every localization question it cannot
+fill until the frozen partitions hold more positives.
