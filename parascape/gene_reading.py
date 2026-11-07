@@ -376,6 +376,37 @@ def strategy_profile(gene: str, organism: str = "Tg", ledger: pd.DataFrame | Non
     return pd.DataFrame(rows)
 
 
+_AGREEMENT_CACHE: dict = {}
+
+
+def consensus_lines(gene: str, organism: str = "Tg") -> list:
+    """Per label, how many methods agreed on this gene (held out), and how often that much agreement
+    was right on this label across all genes -- measured, never a confidence made from a count (64.33)."""
+    from . import track_record as T
+    ledger = T.shipped(organism)
+    mine = ledger[(ledger["gene_id"].astype(str) == str(gene)) & (ledger["mode"].astype(str) == "together")]
+    out = []
+    for target in sorted(mine["target"].astype(str).unique()):
+        key = (organism, target)
+        if key not in _AGREEMENT_CACHE:
+            _AGREEMENT_CACHE[key] = T.accuracy_by_agreement(ledger, target).set_index("agree")
+        table = _AGREEMENT_CACHE[key]
+        g = mine[mine["target"].astype(str) == target]
+        spoke = g[~g["abstained"].astype(bool)]
+        if not len(spoke):
+            continue
+        calls = spoke["prediction"].astype(str).value_counts()
+        n = int(calls.iloc[0])
+        if n in table.index and table.loc[n, "genes"] >= 10:
+            rate = (f"on {target.replace('_', ' ')}, when {n} methods agree they were right "
+                    f"{table.loc[n, 'accuracy']:.1%} of the time ({int(table.loc[n, 'genes']):,} genes)")
+        else:
+            rate = "too few genes with this much agreement to say how often it is right"
+        out.append(f"<b>{escape(target.replace('_', ' '))}</b>: {n} of {len(spoke)} methods said "
+                   f"<b>{escape(calls.index[0])}</b> ({len(g) - len(spoke)} abstained); {rate}.")
+    return out
+
+
 def synthesis(reading: GeneReading) -> list:
     """(category, sentence as HTML) for each kind of knowledge the gene has, in `ORDER`.
 

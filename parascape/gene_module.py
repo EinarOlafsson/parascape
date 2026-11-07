@@ -379,6 +379,10 @@ class GeneModule(QtCore.QObject):
         spoke = profile[profile["status"] == "held-out calls"]
         head = (f"<p><b>{len(spoke)}</b> of the {len(profile)} methods were tested on this gene with its "
                 "answer hidden; the others are listed with why.</p>")
+        try:
+            head += "".join(f"<p>{line}</p>" for line in GR.consensus_lines(r.gene))
+        except Exception:
+            pass
         rows = "".join(
             f"<tr><td><a href='strategy:{escape(p.key)}'>{escape(p.strategy)}</a></td><td>{escape(p.grade)}</td>"
             f"<td>{escape(p.calls or p.status)}</td></tr>" for p in profile.itertuples(index=False))

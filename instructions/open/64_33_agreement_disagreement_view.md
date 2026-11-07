@@ -1,6 +1,6 @@
 # 64.33 · Show calibrated agreement and conflicts
 
-Status: OPEN — 50%, 2026-10-08. Paired rates, group intervals and class/profile routes accepted; broader calibrated comparisons remain.
+Status: OPEN — 75%, 2026-11-07. Methods that spoke, abstained and agreed per gene and label, with held-out accuracy conditional on agreement, shown in the Gene module; families per answer remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -149,3 +149,14 @@ synthetic-fixture failures (missing group_uncertainty metadata) and the initial
 acceptance assertion (compact versus expanded overlap metadata); both corrected
 without changing source results. Nightly history records commit/push; whole22/51
 unchanged. Other methods, hosts, literature and biological validation remain open.
+
+## 2026-11-07: agreement, with its measured accuracy
+
+`track_record.agreement` / `accuracy_by_agreement`: per gene and label, how many methods spoke (abstentions kept
+apart), the plurality call and how many agreed -- all held out -- and, across every gene of the label, how often the
+plurality was right at each level of agreement. Measured, it is steep: on `compartment`, 3 agreeing methods are right
+22 % of the time and 11 agreeing 90 %; on `dtm_class`, 3 agree 15 % and 11 agree 99 %. The Gene module's method section
+now opens with one line per label: "N of M methods said X (K abstained); on this label, when N methods agree they were
+right P % of the time (n genes)" (`gene_reading.consensus_lines`). The count is never turned into a probability by
+itself, and the methods share inputs (64.32), so the agreement is dependent evidence -- the measured rate is what
+carries the weight. Tests in `tests/test_track_record.py`.

@@ -798,6 +798,42 @@ def question_record(organism: str, target: str, top: int = 3) -> list:
     return out
 
 
+def agreement(ledger: pd.DataFrame, target: str) -> pd.DataFrame:
+    """Per gene, for one label: how many methods spoke, the plurality call, how many agreed with it,
+    and whether the plurality was right -- from the held-out record (instruction 64.33).
+
+    Only methods that answered count as speaking; an abstention is kept as its own count. The calls
+    are read at each method's recorded setting, all with the gene's own answer hidden.
+    """
+    part = ledger[(ledger["target"].astype(str) == str(target)) & (ledger["mode"].astype(str) == "together")]
+    rows = []
+    for gene, g in part.groupby(part["gene_id"].astype(str), observed=True):
+        spoke = g[~g["abstained"].astype(bool)]
+        if not len(spoke):
+            rows.append(dict(gene_id=gene, spoke=0, abstained=int(len(g)), plurality=None, agree=0, right=None))
+            continue
+        calls = spoke["prediction"].astype(str).value_counts()
+        top = calls.index[0]
+        truth = str(g["truth"].iloc[0])
+        rows.append(dict(gene_id=gene, spoke=int(len(spoke)), abstained=int(len(g) - len(spoke)),
+                         plurality=top, agree=int(calls.iloc[0]), right=top == truth))
+    return pd.DataFrame(rows)
+
+
+def accuracy_by_agreement(ledger: pd.DataFrame, target: str) -> pd.DataFrame:
+    """How often the plurality call is right, by how many methods agreed with it (held out).
+
+    The measured answer to "is consensus worth anything here": never a confidence made from a count.
+    """
+    a = agreement(ledger, target)
+    a = a[a["spoke"] > 0]
+    if not len(a):
+        return pd.DataFrame(columns=["agree", "genes", "right", "accuracy"])
+    out = a.groupby("agree").agg(genes=("gene_id", "size"), right=("right", "sum")).reset_index()
+    out["accuracy"] = out["right"] / out["genes"]
+    return out
+
+
 def list_html(rows: pd.DataFrame, rows_of: dict | None = None) -> str:
     """What `my_list` found, condensed first: a line per strategy, then a gene-by-strategy grid.
 

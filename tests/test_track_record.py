@@ -532,3 +532,15 @@ def test_the_questions_page_lists_the_best_recovering_strategies_first():
     assert all("compartment hidden" in phrase for _key, phrase in rows)
     rates = [T._rate(T._record_folds(key, "Tg", "compartment"))["rate"] for key, _p in rows]
     assert rates == sorted(rates, reverse=True)
+
+
+def test_accuracy_by_agreement_is_measured_from_the_held_out_calls():
+    """64.33: the plurality's held-out accuracy by how many methods agreed; never a count turned into a probability."""
+    ledger = pd.DataFrame({
+        "target": "t", "mode": "together", "gene_id": ["a"] * 3 + ["b"] * 3,
+        "prediction": ["x", "x", "y", "x", "y", "z"], "truth": ["x"] * 3 + ["z"] * 3,
+        "abstained": [False] * 6, "strategy": ["s1", "s2", "s3"] * 2})
+    agree = T.agreement(ledger, "t").set_index("gene_id")
+    assert agree.loc["a", "agree"] == 2 and agree.loc["a", "right"] == True      # noqa: E712
+    table = T.accuracy_by_agreement(ledger, "t").set_index("agree")
+    assert table.loc[2, "accuracy"] == 1.0 and table.loc[1, "genes"] == 1
