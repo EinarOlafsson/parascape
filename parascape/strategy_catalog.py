@@ -3689,9 +3689,23 @@ def _conjunction_test(ctx, p):
         out[half] = out[rng.permutation(half)]
         return out
 
+    def effect(f, half):
+        """Fold enrichment of the second label inside the cluster, on one half (> 1 = enriched)."""
+        labels = clusterings[f["selection"]]
+        inh = np.zeros(n, bool)
+        inh[half] = True
+        base = inh & (a_vals == f["category"]) & np.array([isinstance(x, str) for x in b_vals])
+        here = base & (labels == f["cluster"])
+        if not here.sum() or not base.sum():
+            return float("nan")
+        inside = (here & (b_vals == f["other_category"])).sum() / here.sum()
+        overall = (base & (b_vals == f["other_category"])).sum() / base.sum()
+        return round(float(inside / overall), 3) if overall else float("nan")
+
     find = _halves(discovery.conjunction, sub, clusterings, a, b, min_cluster=8, min_category=4)
     return S.replication_test(ctx, "conjunctions", find, replicate, scramble, np.arange(n),
-                              n_null=20, min_effect=0.2, label=f"{a} x {b} combinations")
+                              n_null=20, min_effect=0.2, label=f"{a} x {b} combinations",
+                              effect=effect)
 
 
 register(Strategy(

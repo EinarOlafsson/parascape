@@ -1,6 +1,6 @@
 # 64.15 · Test split-half and conjunction findings
 
-Status: OPEN — 80%, 2026-11-07. Split-half and independent replication measured; per-finding records with both halves and effect sizes (blind tests); conjunction effects and testable split clusters remain.
+Status: DONE 2026-11-07. Split-half and independent-dataset replication measured, kept apart; per-finding records with both halves and effect sizes for blind tests and conjunctions; split clusters recorded as too low-yield to test.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -60,3 +60,9 @@ on the first and on the second half; the blind battery supplies its association 
 squared -- undirected, since a cluster association has no sign; stated rather than invented). On Tg the 53 findings'
 effects agree between halves at Spearman 0.975. Remaining: effect functions for conjunctions and split clusters,
 and split clusters' too-few-findings problem.
+
+**Conjunctions (same day):** effect = fold enrichment of the second label inside the cluster, on each half (directional:
+above 1 is enriched). On Tg the first-half enrichments run 1.3-6.1 and the second-half 0.7-6.2; a finding whose
+second-half enrichment falls below 1 has reversed direction and is the one that failed to replicate. Remaining:
+split clusters yields 0-2 first-half findings where 3 are needed, so it cannot be scored as built -- recorded as a
+property of the mechanism.
