@@ -1,0 +1,7 @@
+method_a	method_b	same_call	both_right	both_wrong	only_a_right	only_b_right	mcnemar_p	error_correlation
+random forest	kNN	0.618	33	86	26	7	0.0013	0.536
+random forest	majority	0.487	24	74	35	19	0.0402	0.219
+random forest	prevalence	0.303	17	75	42	18	0.0027	0.109
+kNN	majority	0.401	13	82	27	30	0.7914	0.056
+kNN	prevalence	0.283	12	89	28	23	0.5758	0.099
+majority	prevalence	0.375	17	91	26	18	0.2912	0.246

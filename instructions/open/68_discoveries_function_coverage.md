@@ -418,3 +418,13 @@ current UI inputs. Source-recovery metrics do not establish biological accuracy,
 calibrated confidence, deployment or permutation importance. 68.02 stays40%,
 64.10 stays35%,22/51 whole actions. Next small task: descriptive paired method
 agreement/error dependence on this exact cohort, with shared-source limits.
+
+## Paired method agreement on the Pf EC cohort, 2026-11-07 (the next small task named above)
+
+`scripts/build_pf_ec_method_agreement_notebook.py` -> `results/pf_ec_method_agreement_2026_11_07/` (`pairs.tsv`,
+`summary.tsv`). Same 152 genes, correctness = exact EC-set equality (reproduces 59 / 40 / 43 / 35). The forest
+beats kNN (26 genes only it gets right against 7, McNemar p 0.0013) and the training majority (35 against 19,
+p 0.040); **kNN is not better than the majority call** (27 against 30, p 0.79). Forest and kNN errors correlate
+0.536, and an oracle picking the right one per gene reaches 66 of 152 against the forest's 59: kNN adds little the
+forest lacks. Limit: both read the same source features, so shared errors partly reflect shared inputs; nothing
+here is biological accuracy. Descriptive only: no fit, no tuning.
