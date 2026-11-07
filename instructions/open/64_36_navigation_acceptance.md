@@ -1,6 +1,6 @@
 # 64.36 · Connect every evidence and inference level
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 20%, 2026-11-07. Gene -> method -> scorecard is one click; the other links of the chain and width checks remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -33,3 +33,12 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: gene -> method -> scorecard in one click
+
+In the Gene module, every method of **What each method said about it, held out** is a link: one click opens the
+Strategies module with that strategy's card (guide, calibration, scorecard, track-record line) shown
+(`GeneModule.open_strategy`). Test in `tests/test_module_shell.py`. Also in place from earlier work: gene -> class
+and label pages (track record), question -> its best-recovering strategies (Infer), result -> methods text and
+bundle. Open: back/search context retention checks, host counterpart and missing-data cases at several window
+widths.

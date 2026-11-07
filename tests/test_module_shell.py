@@ -435,6 +435,10 @@ def test_the_gene_module_lists_what_each_method_said_held_out(window):
     module = window.gene_module.module
     module.show(str(window.nodes.gene_id.iloc[0]))
     assert "What each method said about it, held out" in window.gene_module.sections
+    assert "strategy:feature_knn" in module.methods.toHtml()
+    assert module.open_strategy("feature_knn")
+    assert window.strategy_panel.current.key == "feature_knn"
+    assert not module.open_strategy("no_such_strategy")
     assert "methods were tested on this gene" in module.methods.toPlainText() \
         or "could not be read" in module.methods.toPlainText()
 

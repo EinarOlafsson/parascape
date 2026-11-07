@@ -158,6 +158,8 @@ class GeneModule(QtCore.QObject):
 
         self.methods = _browser()
         shell.link_style(self.methods)
+        self.methods.setOpenLinks(False)
+        self.methods.anchorClicked.connect(lambda url: self.open_strategy(url.toString().split(":", 1)[-1]))
         self.methods.setToolTip("Every method in the catalogue: what it said about this gene when the "
                                 "gene's own answer was hidden, and how its calibration graded it.")
         shell.add_section("What each method said about it, held out", self.methods, extent=200,
@@ -378,11 +380,24 @@ class GeneModule(QtCore.QObject):
         head = (f"<p><b>{len(spoke)}</b> of the {len(profile)} methods were tested on this gene with its "
                 "answer hidden; the others are listed with why.</p>")
         rows = "".join(
-            f"<tr><td>{escape(p.strategy)}</td><td>{escape(p.grade)}</td>"
+            f"<tr><td><a href='strategy:{escape(p.key)}'>{escape(p.strategy)}</a></td><td>{escape(p.grade)}</td>"
             f"<td>{escape(p.calls or p.status)}</td></tr>" for p in profile.itertuples(index=False))
         self.methods.setHtml(head + "<table cellspacing=4><tr><th align=left>method</th>"
                              "<th align=left>graded</th><th align=left>held out, it said</th></tr>"
                              + rows + "</table>")
+
+    def open_strategy(self, key: str) -> bool:
+        """One click from a method to its card and scorecard: the Strategies module, that strategy shown."""
+        panel = getattr(self.window, "strategy_panel", None)
+        if panel is None or not key:
+            return False
+        try:
+            panel.select(key)
+        except KeyError:
+            return False
+        from .dock_module import open_in
+        open_in(self.window, "strategies")
+        return True
 
     def _render_unusual(self, r) -> None:
         """The gene's most extreme measurements, among the kinds of knowledge chosen."""
