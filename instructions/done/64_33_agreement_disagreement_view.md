@@ -1,6 +1,6 @@
 # 64.33 · Show calibrated agreement and conflicts
 
-Status: OPEN — 75%, 2026-11-07. Methods that spoke, abstained and agreed per gene and label, with held-out accuracy conditional on agreement, shown in the Gene module; families per answer remain.
+Status: DONE 2026-11-07. Per gene and label: who spoke, abstained and disagreed, with families, and the held-out accuracy of that much agreement.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -160,3 +160,10 @@ now opens with one line per label: "N of M methods said X (K abstained); on this
 right P % of the time (n genes)" (`gene_reading.consensus_lines`). The count is never turned into a probability by
 itself, and the methods share inputs (64.32), so the agreement is dependent evidence -- the measured rate is what
 carries the weight. Tests in `tests/test_track_record.py`.
+
+**Families and disagreement (same day):** each label's line also names the catalogue families of the agreeing methods
+and lists every disagreeing method with what it said (e.g. BAG1, dtm class: 7 of 11 said GLOB -- borrow-from-
+neighbours, network, cross-species, combined and advanced families -- while label propagation, the supervised
+classifier, the graph convolution and stacking said SP). All done-when points are met: aligned entity/label only,
+who spoke / abstained / disagreed with families, held-out accuracy conditional on agreement, no probability made
+from a count, dependence named.

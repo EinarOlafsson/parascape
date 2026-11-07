@@ -402,8 +402,18 @@ def consensus_lines(gene: str, organism: str = "Tg") -> list:
                     f"{table.loc[n, 'accuracy']:.1%} of the time ({int(table.loc[n, 'genes']):,} genes)")
         else:
             rate = "too few genes with this much agreement to say how often it is right"
+        from . import strategies as S
+        known = {st.key: st for st in S.catalog()}
+        family = lambda key: str(getattr(known.get(key), "family", "") or "")
+        agreed = spoke[spoke["prediction"].astype(str) == calls.index[0]]
+        others = spoke[spoke["prediction"].astype(str) != calls.index[0]]
+        fams = sorted({family(k) for k in agreed["strategy"].astype(str)} - {""})
+        against = ", ".join(f"{k} ({p})" for k, p in zip(others["strategy"].astype(str),
+                                                         others["prediction"].astype(str)))
         out.append(f"<b>{escape(target.replace('_', ' '))}</b>: {n} of {len(spoke)} methods said "
-                   f"<b>{escape(calls.index[0])}</b> ({len(g) - len(spoke)} abstained); {rate}.")
+                   f"<b>{escape(calls.index[0])}</b> ({len(g) - len(spoke)} abstained); {rate}. "
+                   f"Agreeing families: {escape(', '.join(fams) or 'unrecorded')}."
+                   + (f" Disagreeing: {escape(against)}." if against else ""))
     return out
 
 
