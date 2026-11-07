@@ -1,6 +1,6 @@
 # 64.15 · Test split-half and conjunction findings
 
-Status: OPEN — 50%, 2026-11-07. Split-half replication records exist for blind tests and conjunctions; split clusters find too few first-half findings to test; independent-dataset replication measured separately.
+Status: OPEN — 70%, 2026-11-07. Split-half and independent replication measured; per-finding records kept; effect/direction per finding and testable split clusters remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -48,3 +48,9 @@ Pending: commit, checks, artifact/benchmark identities, measured population, lim
   Spearman 0.44 (instruction 79); BFD1 gain and loss reproduce across labs (`expression_traits_2026_11_06`).
 * **Open:** per-finding records (both halves, effect, direction) on cards, and a lower finding threshold or larger
   first half for split clusters so it can be tested at all.
+
+**Per-finding records (same day):** `strategies.replication_test` now keeps one row per finding in the test's
+details -- the finding, whether it held on the second half, and the size of each half -- for every strategy built on
+it (blind tests, split clusters, conjunctions). Blind battery on Tg: 53 first-half findings, 52 replicate. Test in
+`tests/test_strategies.py`. Remaining: effect size and direction per finding (the `find` functions return feature
+names only), and split clusters' too-few-findings problem.

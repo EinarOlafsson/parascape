@@ -1759,7 +1759,12 @@ def replication_test(ctx: Context, key: str, find: Callable, replicate: Callable
                      note=note or f"only {n} findings on the first half, {min_findings} needed",
                      task=SC.T_REPL)
     rate = lambda state: float(np.mean([bool(replicate(f, half_b, state)) for f in findings]))
-    observed = rate(None)
+    # One record per finding (instruction 64.15): what was found on the first half, and whether it
+    # held on the second, with the size of each half -- not only the share that replicated.
+    held = [bool(replicate(f, half_b, None)) for f in findings]
+    observed = float(np.mean(held))
+    details = pd.DataFrame({"finding": [str(f) for f in findings], "replicated": held,
+                            "first_half_genes": len(half_a), "second_half_genes": len(half_b)})
     nulls = []
     for i in range(int(n_null)):
         ctx.check()
@@ -1769,7 +1774,7 @@ def replication_test(ctx: Context, key: str, find: Callable, replicate: Callable
                  nulls, min_effect=min_effect, n_hidden=n, min_hidden=min_findings,
                  hidden=f"{label} made on half the genes, checked on the other half",
                  null_kind=f"{n_null} runs with the second half scrambled", t0=t0,
-                 note=note, numbers={"findings": n}, task=SC.T_REPL,
+                 note=note, numbers={"findings": n}, task=SC.T_REPL, details=details,
                  scorecard=SC.replication(int(round(observed * n)), n, nulls))
 
 

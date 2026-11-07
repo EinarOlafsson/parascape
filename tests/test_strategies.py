@@ -546,3 +546,12 @@ def test_a_run_records_what_it_needs_to_be_reproduced(planted, tmp_path):
     assert prov["run_at"]
     saved = [p for p in result.save(str(tmp_path)) if p.endswith("_summary.json")][0]
     assert json.load(open(saved))["provenance"]["table"]["genes"] == prov["table"]["genes"]
+
+
+def test_a_replication_test_keeps_one_record_per_finding(planted):
+    """Instruction 64.15: both halves and each finding's outcome, not only the share."""
+    t = S.get("blind_battery").test(planted)
+    if t.verdict == "INCONCLUSIVE":
+        return
+    assert {"finding", "replicated", "first_half_genes", "second_half_genes"} <= set(t.details.columns)
+    assert abs(t.details["replicated"].mean() - t.observed) < 1e-9
