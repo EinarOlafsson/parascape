@@ -1,6 +1,6 @@
 # 64.34 · Train and test the meta-inference
 
-Status: OPEN — 40%, 2026-11-07. Pilot on dtm_class: the meta-model beats the best single method on untouched orthogroups; strict nesting of the base calls remains before admission.
+Status: DONE 2026-11-07. The pilot target (dtm_class) admitted under strict nesting; further targets are separate admissions.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -59,3 +59,24 @@ probabilities.
 (1,142), SP 0.54 (676), **SP+TM 0.28 (266)** -- the overall accuracy is carried by the two large classes, and the
 rare combined class is mostly missed; expected calibration error of the meta probabilities 0.007 (well calibrated).
 Admission still needs the strictly nested base calls.
+
+## 2026-11-07: admitted on `dtm_class` under strict nesting
+
+`scripts/build_meta_inference_nested_notebook.py` -> `results/meta_inference_nested_2026_11_07/` (one worker per base
+method, calls stored per method). 5 outer folds of whole orthogroups; inside each, every base method's calls on the
+training genes come from 3 inner folds that never see an outer-test label (32,548 inner calls per method), and its
+calls on the test genes from models fitted with the test labels hidden (8,137). The meta-model learns from the inner
+calls only and is scored once on the outer-test genes:
+
+| method | accuracy (mean, range over outer folds) |
+|---|---|
+| **meta-model** | **0.919** (0.912-0.923) |
+| best single method, chosen on the training genes | 0.902 (0.878-0.916) |
+| plurality vote | 0.817 |
+| commonest class | 0.744 |
+
+Paired: meta right where the best single is wrong on 244 genes, the reverse on 112 (McNemar p < 0.001). **Admitted
+for `dtm_class`**, with the stated weakness: recall on the rare SP+TM class is low (0.28 in the pilot) and the
+probabilities are well calibrated (0.007). Each further target is its own admission partition (this contract);
+weak and failed cases are kept in `folds.tsv`. A meta answer replaces nothing on its own: it is shown beside the
+methods it combines.
