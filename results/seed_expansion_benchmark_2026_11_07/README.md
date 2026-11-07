@@ -34,3 +34,9 @@ Recall of hidden members at depth 100 (`recovery.tsv` has every depth):
 
 Neither wins everywhere: the network walk is better for the invasion organelles, the classifier for dense
 granules and the apicoplast. Each finished niche is cached as a row file and reused by the notebook.
+
+## Third adapter: set enrichment (profile resemblance), same splits
+
+Recall at 100: rhoptries 0.692, micronemes 0.643, dense granules 0.524, IMC 0.526, apicoplast 0.333, mitochondrion
+0.229 -- never the best of the three. Its profile draws on every feature category the seeds differ in, including
+publication counts (study effort), which the other two do not lean on; read it with that in mind.

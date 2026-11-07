@@ -1,0 +1,1 @@
+{"strategy": "set_enrichment", "niche": "dense granules", "seeds": 19, "hidden": 21, "prevalence": 0.00259, "hidden_in_top50": 9, "recall_at_50": 0.429, "lift_at_50": 69.6, "hidden_in_top100": 11, "recall_at_100": 0.524, "lift_at_100": 42.5, "hidden_in_top200": 12, "recall_at_200": 0.571, "lift_at_200": 23.2}

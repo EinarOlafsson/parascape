@@ -1,0 +1,1 @@
+{"strategy": "set_enrichment", "niche": "mitochondrion", "seeds": 33, "hidden": 35, "prevalence": 0.00432, "hidden_in_top50": 5, "recall_at_50": 0.143, "lift_at_50": 23.2, "hidden_in_top100": 8, "recall_at_100": 0.229, "lift_at_100": 18.5, "hidden_in_top200": 10, "recall_at_200": 0.286, "lift_at_200": 11.6}

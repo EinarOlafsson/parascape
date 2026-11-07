@@ -69,7 +69,7 @@ def main() -> None:
             "from concurrent.futures import ThreadPoolExecutor",
             "import pandas as pd",
             "NICHES = ['rhoptries', 'micronemes', 'dense granules', 'IMC', 'apicoplast', 'mitochondrion']",
-            "STRATEGIES = ['seed_expansion', 'positive_unlabeled']",
+            "STRATEGIES = ['seed_expansion', 'positive_unlabeled', 'set_enrichment']",
             "SCRIPT = os.path.join(REPO, 'scripts', 'build_seed_expansion_benchmark_notebook.py')",
             "def run(job):",
             "    strategy, niche = job",

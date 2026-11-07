@@ -1,6 +1,6 @@
 # 64.12 · Test gene rankings and set retrieval
 
-Status: OPEN — 30%, 2026-11-07. Two adapters (seed expansion, positive-unlabelled) on six localization niches; the other ranking strategies remain.
+Status: OPEN — 45%, 2026-11-07. Three adapters (seed expansion, positive-unlabelled, set enrichment) on six localization niches; gene-set search, recoverability, outlier ranking and paralog profiles remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -45,3 +45,6 @@ recoverability, outlier ranking, enrichment, paralog profiles.
 **Second adapter (same day): positive-unlabelled learning** on the identical splits -- better than seed expansion for
 dense granules (recall at 100: 0.76 against 0.57) and the apicoplast (0.46 against 0.29), worse for the invasion
 organelles. Table in the results README.
+
+**Third adapter (same day): set enrichment** -- never the best of the three (recall at 100 0.23-0.69); its profile
+includes publication counts, so it partly ranks by study effort.

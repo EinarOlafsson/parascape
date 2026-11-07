@@ -1,0 +1,1 @@
+{"strategy": "set_enrichment", "niche": "apicoplast", "seeds": 24, "hidden": 24, "prevalence": 0.00296, "hidden_in_top50": 7, "recall_at_50": 0.292, "lift_at_50": 47.3, "hidden_in_top100": 8, "recall_at_100": 0.333, "lift_at_100": 27.1, "hidden_in_top200": 8, "recall_at_200": 0.333, "lift_at_200": 13.5}

@@ -1,0 +1,1 @@
+{"strategy": "set_enrichment", "niche": "IMC", "seeds": 19, "hidden": 19, "prevalence": 0.00234, "hidden_in_top50": 7, "recall_at_50": 0.368, "lift_at_50": 59.8, "hidden_in_top100": 10, "recall_at_100": 0.526, "lift_at_100": 42.7, "hidden_in_top200": 12, "recall_at_200": 0.632, "lift_at_200": 25.6}

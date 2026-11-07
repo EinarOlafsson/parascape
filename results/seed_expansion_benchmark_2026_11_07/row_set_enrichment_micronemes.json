@@ -1,0 +1,1 @@
+{"strategy": "set_enrichment", "niche": "micronemes", "seeds": 15, "hidden": 14, "prevalence": 0.00172, "hidden_in_top50": 8, "recall_at_50": 0.571, "lift_at_50": 92.9, "hidden_in_top100": 9, "recall_at_100": 0.643, "lift_at_100": 52.2, "hidden_in_top200": 10, "recall_at_200": 0.714, "lift_at_200": 29.0}
