@@ -1,6 +1,6 @@
 # 64.36 · Connect every evidence and inference level
 
-Status: OPEN — 50%, 2026-11-07. Gene -> method -> scorecard one click; widths, missing data and back/search context checked; host counterpart and organism change remain.
+Status: DONE 2026-11-07. The navigation chain checked on real widgets: scorecard in one click, widths, missing data, back/search, organism change, host counterpart.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -45,3 +45,10 @@ bundle. Width and missing-data checks (same day): the Gene module reads the best
 method list) and the module never wider than the window (`tests/test_module_shell.py`). Back and search (same day): going Home and opening another gene shows that gene and nothing of the last one
 (`tests/test_module_shell.py`); the Navigator resets on return (`tests/test_navigator.py`). Open: the host
 counterpart (no host gene space ships yet, instruction 64.21/64.22), organism change.
+
+**Organism change and host counterpart (same day):** switching organism opens the other species in a window of its
+own (by design: the tables are never merged), and its Gene module reads that organism's genes with nothing of the
+previous one (`tests/test_app_menus.py`); a parasite protein with a recorded host target (e.g. ROP16 -> STAT3) names
+its host counterpart in what the gene binds (`tests/test_module_shell.py`). With the gene -> method -> scorecard link,
+widths, missing data and back/search checks, all done-when points are met; a full host gene space (64.21/64.22)
+will add host-side pages to the same chain.

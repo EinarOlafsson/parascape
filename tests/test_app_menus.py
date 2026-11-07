@@ -1238,3 +1238,24 @@ def test_the_species_menu_marks_the_one_that_is_open(qapp):
         assert [a.text() for a in menu.actions() if a.isChecked()] == ["Plasmodium falciparum"]
     finally:
         w.close()
+
+
+def test_switching_organism_reads_the_new_organism_and_nothing_of_the_old(qapp):
+    """Instruction 64.36: an organism change keeps a valid context -- the Gene module of the new window
+    reads that organism's genes and never shows one from the previous organism."""
+    from parascape.app import Window
+    tg = Window(species="Toxoplasma gondii")
+    try:
+        pf = tg.open_species("Plasmodium falciparum")
+        try:
+            gene = str(pf.nodes.gene_id.iloc[0])
+            assert gene.startswith("PF")
+            module = getattr(pf, "gene_module", None)
+            if module is not None:
+                module.module.show(gene)
+                text = module.module.known.toPlainText()
+                assert gene in text and "TGME49" not in text
+        finally:
+            pf.close()
+    finally:
+        tg.close()

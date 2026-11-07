@@ -484,6 +484,22 @@ def test_going_home_and_opening_another_gene_never_shows_the_last_one(window):
     assert module.reading.gene == b
 
 
+def test_a_gene_with_a_host_target_shows_its_host_counterpart(window):
+    """Instruction 64.36: the host side is reachable from the gene -- a parasite protein with a recorded
+    host target names it in what the gene binds."""
+    import pandas as pd
+    from parascape.paths import data_dir
+    import os
+    h = pd.read_parquet(os.path.join(data_dir(), "host_interactions.parquet"))
+    h = h[h["gene_id"].astype(str).isin(set(window.nodes.gene_id.astype(str)))]
+    if not len(h):
+        pytest.skip("no host interaction for a gene of this table")
+    gene, target = str(h.iloc[0]["gene_id"]), str(h.iloc[0]["host_target"])
+    module = window.gene_module.module
+    module.show(gene)
+    assert target in module.known.toPlainText() or target in module.reading.partners.to_string()
+
+
 def test_your_genes_are_read_against_the_answer(window):
     import pandas as pd
     module = window.infer_module.module
