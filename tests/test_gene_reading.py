@@ -145,3 +145,14 @@ def test_a_record_built_on_an_older_answer_is_flagged_stale():
     changed = nodes.copy()
     changed.loc[changed["gene_id"].astype(str) == str(row["gene_id"]), "dtm_class"] = "SOMETHING_ELSE"
     assert any("dtm class" in s for s in GR.stale_records(str(row["gene_id"]), changed))
+
+
+def test_a_gene_in_a_frozen_claim_set_shows_its_frozen_prediction():
+    """64.38: the frozen prediction is visible on the gene's card, with its freeze date and hash."""
+    import os
+    path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "results", "prospective_claims_2026_11_06", "claims.tsv")
+    if not os.path.exists(path):
+        return
+    gene = pd.read_csv(path, sep="\t")["gene_id"].iloc[0]
+    line = GR.prospective_lines(gene)[0]
+    assert "Frozen prediction" in line and "rank 1 of" in line and "SHA-256" in line

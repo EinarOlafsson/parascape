@@ -397,6 +397,34 @@ def stale_records(gene: str, nodes: pd.DataFrame | None, organism: str = "Tg") -
     return out
 
 
+#: Frozen prospective claim sets (instructions 63, 64.38), newest last.
+PROSPECTIVE = ("prospective_claims_2026_11_06",)
+
+
+def prospective_lines(gene: str) -> list:
+    """Frozen predictions about this gene that await truth from a later experiment (64.38)."""
+    import os
+    root = os.path.join(os.path.dirname(os.path.dirname(__file__)), "results")
+    out = []
+    for folder in PROSPECTIVE:
+        try:
+            from .prospective import load
+            claims, manifest = load(os.path.join(root, folder))
+        except Exception:
+            continue
+        hit = claims[claims["gene_id"].astype(str) == str(gene)]
+        if not len(hit):
+            continue
+        r = hit.iloc[0]
+        score = next((c for c in claims.columns if c.startswith("probability")), None)
+        out.append(f"Frozen prediction for <b>{escape(str(manifest.get('question', '')).replace('_', ' '))}</b>: "
+                   f"probability {float(r[score]):.2f}, rank {int(r['rank']):,} of {len(claims):,}; frozen "
+                   f"{escape(str(manifest.get('frozen_at', ''))[:10])} (claims SHA-256 "
+                   f"{escape(str(manifest.get('claims_sha256', ''))[:12])}...). Waiting for a later screen to "
+                   "grade it, unchanged.")
+    return out
+
+
 _AGREEMENT_CACHE: dict = {}
 
 

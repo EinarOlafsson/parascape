@@ -1,6 +1,6 @@
 # 64.38 · Freeze predictions and score new independent truth
 
-Status: OPEN — about 60 %, 2026-11-06. Freeze and grader built, fixture-tested; the biological prospective validation waits on later truth.
+Status: DONE 2026-11-07 (infrastructure and first freeze). Grading waits on a later screen, by construction.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -47,3 +47,11 @@ Pending: commit, checks, artifact/benchmark identities, measured population, lim
 * Done-when status: predictions frozen before the new dataset -- yes; counts and precision at frozen cuts --
   yes; a later dataset scores without refitting -- yes, on fixtures; **the biological validation stays open**
   until a screen covering those genes is published, and results are not yet shown on the method cards.
+
+**On the cards (2026-11-07):** a gene in a frozen claim set shows its frozen prediction in the Gene module's method
+section -- probability, rank, freeze date and the claims hash, "waiting for a later screen to grade it, unchanged"
+(`gene_reading.prospective_lines`; the hash is checked by `prospective.load` before anything is shown). Test in
+`tests/test_gene_reading.py`. With the freeze, the grader and this, every done-when point is met in the form the
+contract allows before later truth exists: frozen before the new dataset, counts and precision at frozen cuts,
+scoring without refitting (fixture-tested), visible on the cards. **The biological prospective validation itself
+stays open by construction** until a screen covering those 747 genes is published; grading it is then one call.

@@ -392,6 +392,12 @@ class GeneModule(QtCore.QObject):
         except Exception:
             pass
         try:
+            frozen = GR.prospective_lines(r.gene)
+            if frozen:
+                head += "".join(f"<p>{line}</p>" for line in frozen)
+        except Exception:
+            pass
+        try:
             meta = GR.meta_lines(r.gene)
             if meta:
                 head += "<p><i>Combined (a model that learned whom to trust):</i></p>" + \
