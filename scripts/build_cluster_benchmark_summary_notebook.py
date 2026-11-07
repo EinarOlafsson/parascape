@@ -51,6 +51,33 @@ def main() -> None:
             "modules = pd.DataFrame(rows)",
             "modules.to_csv(os.path.join(OUT, 'module_mechanisms_held_out.tsv'), sep='\\t', index=False)",
             "modules.round(3)")
+    nb.md("### Fragmentation and reach, on each label's best map",
+          "For the best non-circular map of each label: the map's noise share and number of clusters; for the "
+          "label's best category, the share of its members clustered at all, and how many clusters it takes to cover "
+          "80 % of the clustered ones. A class spread over many small clusters is fragmented, however high its best "
+          "F1.")
+    nb.code("import numpy as np",
+            "from parascape import organisms as O",
+            "z = np.load(os.path.join(REPO, 'parascape/data/umap_gallery.npz'), allow_pickle=True)",
+            "tables = {o: pd.read_parquet(O.nodes_path(o)) for o in best.organism.unique()}",
+            "frag = []",
+            "for r in best.itertuples(index=False):",
+            "    key = f'{r.organism}__{r.map}__'",
+            "    if key + 'clusters' not in z:",
+            "        continue",
+            "    clusters, rows = z[key + 'clusters'], z[key + 'rows']",
+            "    values = tables[r.organism][r.label].astype(str).to_numpy()[rows]",
+            "    members = clusters[values == str(r.best_category)]",
+            "    clustered = members[members >= 0]",
+            "    counts = pd.Series(clustered).value_counts()",
+            "    need = int((counts.cumsum() / max(len(clustered), 1) < 0.8).sum() + 1) if len(clustered) else 0",
+            "    frag.append(dict(organism=r.organism, label=r.label, map=r.map, map_noise=round(float((clusters < 0).mean()), 3),",
+            "                     map_clusters=int(len(set(clusters[clusters >= 0]))), category=r.best_category,",
+            "                     category_members=int(len(members)), category_clustered=round(len(clustered) / max(len(members), 1), 3),",
+            "                     clusters_for_80pct=need))",
+            "fragmentation = pd.DataFrame(frag)",
+            "fragmentation.to_csv(os.path.join(OUT, 'fragmentation.tsv'), sep='\\t', index=False)",
+            "fragmentation")
     nb.write(NB)
 
 

@@ -1,0 +1,37 @@
+organism	label	map	map_noise	map_clusters	category	category_members	category_clustered	clusters_for_80pct
+Pf	chromosome	family_relation	0.44	60	07	184	0.467	9
+Tg	cellcycle_phase	family_localization	0.096	25	C	36	0.972	7
+Pf	stage_enriched_derived	family_chemistry	0.06	13	ookinete	25	0.92	5
+Tg	ortholopit_label	block_tg_organelle_surface_membrane_contact_site	0.065	17	mitochondrion	18	0.944	4
+Tg	lopit_unified	block_tg_organelle_surface_membrane_contact_site	0.065	17	mitochondrion	53	0.906	4
+Tg	compartment_best	block_tg_organelle_surface_membrane_contact_site	0.065	17	mitochondrion	53	0.906	4
+Tg	lopit_mcmc	block_tg_organelle_surface_membrane_contact_site	0.065	17	mitochondrion - membranes	35	0.914	4
+Tg	lopit_map	block_tg_organelle_surface_membrane_contact_site	0.065	17	mitochondrion - membranes	35	0.914	4
+Tg	compartment	block_tg_organelle_surface_membrane_contact_site	0.065	17	mitochondrion - membranes	35	0.914	4
+Pf	lopit_pf_location	block_pf_translation_per_cell_cycle_phase	0.197	65	ribosomes	61	0.967	3
+Tg	screen_scorers_agree	block_tg_protein_abundance_other_life_stages	0.371	41	True	12	0.833	6
+Pf	complex_spans_host	block_pf_resistance_conferring_mutation	0.263	6	False	16	0.812	4
+Pf	has_phospho	family_chemistry	0.06	13	False	290	0.903	5
+Pf	pb_transferred_phenotype	family_chemistry	0.06	13	Dispensable	105	0.952	8
+Pf	has_acetyl	family_chemistry	0.06	13	False	459	0.928	8
+Tg	ortholopit_donors	family_transcription	0.443	57	cpar+pfal	108	0.722	3
+Tg	stage_enriched_derived	combo_fitness_protein_abundance	0.496	41	bradyzoite	84	0.631	7
+Tg	screen_any_phenotype	family_ptm	0.157	39	False	34	0.853	16
+Pf	is_tm	block_pf_resistance_conferring_mutation	0.263	6	False	487	0.752	5
+Tg	screen_actin_phenotype	combo_relation_localization	0.247	33	True	17	0.882	9
+Pf	has_paralog	block_pf_resistance_conferring_mutation	0.263	6	True	151	0.689	4
+Tg	screen_egress_phenotype	block_tg_local_af3_fold_confidence_and_geometry	0.34	19	False	34	0.706	9
+Pf	is_palmitoylated	family_chemistry	0.06	13	False	662	0.938	9
+Tg	dtm_class	combo_fitness_protein_abundance	0.496	41	SP	312	0.689	10
+Tg	screen_apicoplast_phenotype	combo_relation_localization	0.247	33	False	85	0.765	15
+Pf	gene_type	all_but_relation	0.359	40	pseudogene	158	0.829	3
+Tg	screen_replication_phenotype	combo_fitness_protein_abundance	0.496	41	False	139	0.46	11
+Pf	has_domain	combo_transcription_protein_abundance	0.415	34	True	3663	0.567	23
+Pf	has_ec	all_but_translation	0.438	41	True	1220	0.49	19
+Pf	pb_transferred_liver_reduced	block_pf_protein_stage_share	0.069	83	False	313	0.939	46
+Tg	ortholopit_accepted	combo_regulation_ptm	0.428	5	True	50	0.52	3
+Pf	is_myristoylated	combo_sequence_transcription_fitness	0.498	63	True	16	0.562	5
+Pf	has_signal_peptide	block_pf_strain_variation	0.222	144	True	602	0.762	62
+Pf	has_lactyl	family_chemistry	0.06	13	False	694	0.938	9
+Pf	is_exported	combo_sequence_fitness	0.285	118	True	191	0.723	13
+Tg	compartment_source	combo_fitness_relation	0.502	66	orthoLOPIT	27	0.333	7

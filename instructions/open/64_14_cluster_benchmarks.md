@@ -1,6 +1,6 @@
 # 64.14 · Test map and module recovery
 
-Status: OPEN — 70%, 2026-11-07. Held-out cluster and module recovery summarised for maps and all three mechanisms; fragmentation and reach controls on the cards remain.
+Status: OPEN — 85%, 2026-11-07. Held-out recovery, noise and fragmentation measured for maps and mechanisms; showing them on the result cards remains.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -50,3 +50,8 @@ ships (nothing refitted):
   recovers it well (localization frozen AUC 0.85-1.0, instruction 70). Clusters are for seeing structure, not for
   calling a label.
 * **Open:** fragmentation and reach controls, and class-level confusion shown on the cards.
+
+**Fragmentation and reach (same day, `fragmentation.tsv`):** on each label's best non-circular map, the best category
+is 81-97 % clustered (noise is not the problem: maps leave 6-20 % unclustered, one 44 %) but covering 80 % of its
+clustered members takes **3-9 clusters** -- the classes are split across several clusters, which is why their F1
+stays low. Open: class-level confusion and these controls shown on the result cards (today they are tables).
