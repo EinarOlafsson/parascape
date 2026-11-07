@@ -46,6 +46,7 @@ jobs:
           LIBGL_ALWAYS_SOFTWARE: '1'
         run: xvfb-run -a -s '-screen 0 1920x1200x24' python -m pytest tests/test_app_contexts.py -q
       - name: Check synchronized package versions and regressions
+        timeout-minutes: 60
         run: |
           python scripts/release.py check
-          python -m pytest -m "not slow" -v -p no:cacheprovider --capture=sys
+          python -m pytest -m "not slow" -v -p no:cacheprovider --capture=sys -o faulthandler_timeout=300
