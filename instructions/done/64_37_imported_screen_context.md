@@ -1,6 +1,6 @@
 # 64.37 · Make user data reach the same inference flow
 
-Status: OPEN — 70%, 2026-11-07. Imports reach the strategy contexts, record hash, organism and an unresolved state, and an imported label holds out its own import; session save/load remains.
+Status: DONE 2026-11-07. Imports reach the strategies, record their input and state, hold out their own import, and save and replay exactly.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -47,3 +47,10 @@ Pending: commit, checks, artifact/benchmark identities, measured population, lim
   reason "same import as <label>". Test in `tests/test_recipes.py`.
 * **Open:** session save/load of imports with their local results; the same rule in the harness feature
   selection.
+
+**Save and replay (same day):** File ▸ **Save the imports…** writes every import record of the session (file,
+SHA-256, organism, every processing choice) as JSON; File ▸ **Replay saved imports…** imports each file again with
+the same choices and refuses one whose content changed since (`Window.save_imports`, `replay_imports`). Test in
+`tests/test_app_controls.py` (the same columns rebuilt; a changed file not re-imported). All done-when points are
+met: the import reaches the strategy context in-session, records its input, organism and an explicit unresolved
+state, holds out its own import as evidence for its own label, keeps the shipped data immutable, and saves/reloads.

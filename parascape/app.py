@@ -1021,6 +1021,58 @@ class Window(QtWidgets.QMainWindow):
             return None
         return self.apply_import(d)
 
+    def save_imports(self, path: str = "") -> str:
+        """Write this session's import records as JSON (instruction 64.37); returns the path, "" if none."""
+        import json
+        if not self.imports:
+            self.status.showMessage("nothing imported in this session")
+            return ""
+        if not path:
+            path, _ = QtWidgets.QFileDialog.getSaveFileName(self, "Save the imports", "imports.json",
+                                                            "JSON (*.json)")
+            if not path:
+                return ""
+        with open(path, "w") as fh:
+            json.dump({"organism": self.imports[-1].get("organism"), "imports": self.imports}, fh,
+                      indent=1, default=str)
+        self.status.showMessage(f"{len(self.imports)} import(s) saved to {os.path.basename(path)}")
+        return path
+
+    def replay_imports(self, path: str = "") -> list:
+        """Import each file of a saved list again with its recorded choices; a changed file is refused."""
+        import hashlib
+        import json
+        if not path:
+            path, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Replay saved imports", "", "JSON (*.json)")
+            if not path:
+                return []
+        saved = json.load(open(path))
+        done = []
+        for record in saved.get("imports", []):
+            source = record.get("source_path", "")
+            try:
+                digest = hashlib.sha256(open(source, "rb").read()).hexdigest()
+            except OSError:
+                self.status.showMessage(f"replay refused: {source} cannot be read")
+                continue
+            if record.get("source_sha256") and digest != record["source_sha256"]:
+                self.status.showMessage(f"replay refused: {os.path.basename(source)} changed since it was imported")
+                continue
+            d = self.build_import_dialog(source)
+            if d is None:
+                continue
+            for name in ("quantification", "scaling", "na_policy", "duplicates"):
+                if record.get(name) is not None:
+                    getattr(d, name).setCurrentText(str(record[name]))
+            if record.get("gene_column"):
+                d.gene_column.setCurrentText(str(record["gene_column"]))
+            d.flip.setChecked(bool(record.get("flip")))
+            d.prefix.setText(str(record.get("prefix") or "imported_"))
+            again = self.apply_import(d)
+            if again is not None:
+                done.append(again)
+        return done
+
     def build_import_dialog(self, path: str):
         """The import dialog, built but not shown.
 
@@ -1731,6 +1783,14 @@ class Window(QtWidgets.QMainWindow):
                      "recorded with the imported columns, and nothing is written into the shipped "
                      "cache.")
         a.triggered.connect(self.import_data)
+        a = f.addAction("Save the imports…")
+        a.setToolTip("Write every import of this session -- the file, its SHA-256, the organism and every "
+                     "choice made -- so the same columns can be rebuilt exactly later.")
+        a.triggered.connect(lambda: self.save_imports())
+        a = f.addAction("Replay saved imports…")
+        a.setToolTip("Read a saved import list and import each file again with the same choices; a file "
+                     "whose content changed since is refused rather than imported differently.")
+        a.triggered.connect(lambda: self.replay_imports())
         f.addSeparator()
         # One window per species. Switching opens a new window rather than swapping the table under
         # this one: nearly every panel here was built from the node table -- the category list, the

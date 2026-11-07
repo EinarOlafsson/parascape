@@ -1458,6 +1458,21 @@ def test_an_import_records_its_exact_input_organism_and_unresolved_state(win, tm
     assert record["organism"] and record["validation"].startswith("unresolved")
 
 
+def test_imports_are_saved_and_replayed_exactly_or_refused(win, tmp_path):
+    """64.37: a saved import list rebuilds the same columns; a file changed since is refused."""
+    import json
+    path = _user_table(tmp_path, win)
+    first = win.apply_import(win.build_import_dialog(path))
+    saved = win.save_imports(str(tmp_path / "imports.json"))
+    assert json.load(open(saved))["imports"][-1]["source_sha256"] == first["source_sha256"]
+    again = win.replay_imports(saved)
+    assert again and again[-1]["columns"] == first["columns"] and again[-1]["scaling"] == first["scaling"]
+    with open(path, "a") as fh:
+        fh.write("\n")                        # the file changes after it was imported
+    replayed = win.replay_imports(saved)
+    assert all(r.get("source_path") != str(path) for r in replayed)   # the changed file is not re-imported
+
+
 def test_imported_columns_reach_the_strategies_and_the_guided_panel(win, tmp_path):
     """An imported screen that reached only the evidence panel was a column that did nothing."""
     win.apply_import(win.build_import_dialog(_user_table(tmp_path, win)))
