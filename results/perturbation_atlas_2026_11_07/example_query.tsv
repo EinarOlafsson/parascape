@@ -1,0 +1,11 @@
+signature	study	contrast	spearman	genes	rank
+expr_lfc_GSE223869_genotype_me49delta_ku80delta_bfd1_bfd1_tydelta_bfd2_vs_me49d_2	GSE223869	me49delta ku80delta bfd1::bfd1-tydelta bfd2 vs me49delta ku80delta bfd1::bfd1-ty [treatment=alkaline stress media, ambient co2]	0.2804844438749221	8133	1
+expr_lfc_GSE223621_genotype_pru_ova_tdtomato_delta_bfd2_hxgprt_vs_pru_ova_tdtom	GSE223621	pru-ova-tdtomato delta bfd2::hxgprt vs pru-ova-tdtomato	0.2771727945555754	8133	2
+expr_lfc_GSE223621_genotype_pru_ova_tdtomato_delta_bfd1_mneongreen_vs_pru_ova_t	GSE223621	pru-ova-tdtomato delta bfd1::mneongreen vs pru-ova-tdtomato	0.2752419300850075	8133	3
+expr_lfc_GSE223819_genotype_me49_tir1_208020_mng_maid_vs_me49_tir1_treatment_ve	GSE223819	me49/tir1/208020-mng-maid vs me49/tir1 [treatment=vehicle (pbs)]	0.2656049340306676	8133	4
+expr_lfc_GSE223877_genotype_me49delta_ku80delta_bfd1_bfd1_tydelta_hxgprt_ptub1_2	GSE223877	me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-tydelta bfd2::tdtomato vs me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-ty [treatment=standard medium, +3um shield-1]	0.23899232092104858	8133	5
+expr_lfc_GSE223819_genotype_me49_tir1_208020_mng_maid_vs_me49_tir1_treatment_50	GSE223819	me49/tir1/208020-mng-maid vs me49/tir1 [treatment=50um iaa]	0.23473270889451955	8133	6
+expr_lfc_GSE132238_genotype_delta_bfd1_vs_wt_condition_stress_time_72_hr	GSE132238	{delta}bfd1 vs wt [condition=stress; time=72 hr]	0.22606161258817567	8133	7
+expr_lfc_GSE200962_treatment_me49_tgcycp2_bz_aux_rep2_vs_me49_tgcyc5_bz_aux_rep_2_3	GSE200962	me49 tgcycp2 bz -aux rep2 vs me49 tgcyc5 bz -aux rep1	0.21297270179302458	8133	8
+expr_lfc_GSE343877_Toxoplasma_gondii_ME49_bradyzoites_eIF5A_K49R	GSE343877	treatment: alkaline stress: pH 8.2 medium, 4 days; genotype: ME49, eIF5A-K49R point mutant (non-acetylatable, charge-conservative mimic) | Toxoplasma gondii ME49 bradyzoites, eIF5A K49R mutant, alkaline stress 4 days,	0.20926014852499106	8133	9
+expr_lfc_GSE200962_treatment_me49_tgcycp2_bz_aux_rep2_vs_me49_tgcyc5_bz_aux_rep_2_3_4	GSE200962	me49 tgcycp2 bz -aux rep2 vs me49 tgcyc5 bz -aux rep2	0.2070561359010747	8133	10

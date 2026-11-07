@@ -200,3 +200,11 @@ against 0.934 for all allowed evidence; rhoptries 0.975, apical 0.958, microneme
 beat everything else together; plasma membrane 0.669 and ER 0.780 are where co-expression has little to say.
 This is the block 70 asked product 1 to register; it ranks well, and like every localization question it cannot
 fill until the frozen partitions hold more positives.
+
+## Product 2 built (2026-11-07): the perturbation atlas finds the same perturbation in other labs
+
+`parascape/perturbation_atlas.py` + `results/perturbation_atlas_2026_11_07/README.md`. Signature store = the
+within-study contrast columns of the expression traits release; query = Spearman, own study held out; recovery
+benchmark on four curated cross-study perturbations: median best-partner rank 1-3 against chance 59-99 (BFD1
+stabilised: rank 1 both ways). Tests in `tests/test_perturbation_atlas.py`. Not done: weighting by the standard
+errors, the ToxoHub knockdown cross-check (unreleased), and a module in the application.

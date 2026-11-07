@@ -1,0 +1,5 @@
+perturbation	queries	top1	top5	median_best_rank	median_chance_rank
+AP2XII-1 knockdown	5	0.6	1.0	1.0	66.3
+Alkaline stress against normal medium, wild type	5	0.0	0.8	3.0	59.3
+BFD1 lost under stress	5	0.4	0.6	3.0	59.3
+BFD1 stabilised by Shield-1	2	1.0	1.0	1.0	98.75
