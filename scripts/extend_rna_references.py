@@ -49,6 +49,10 @@ def main():
                 continue
             for q in X.QUANTIFIERS:
                 c, t, length, samples = X.matrices(study, q, reference, str(a.root))
+                # A run with nothing mapped to this reference has no TPM: missing, as in
+                # build_rna_snapshot.py, never a column of zeros that reads as "not expressed".
+                t = t.astype('float64')
+                t.loc[:, t.sum(axis=0) == 0] = float('nan')
                 samples = samples[samples.run_accession.isin(allowed)]
                 base = a.snapshot / 'matrices' / study / f'{q}_{reference}'
                 values = pd.concat({'count': c[allowed], 'tpm': t[allowed], 'length': length[allowed]}, axis=1).astype('float32')
