@@ -1,0 +1,112 @@
+{
+ "gene_id": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "identifier",
+  "evidence_grade": "curation",
+  "source": "Ensembl (via source file)",
+  "license": "Ensembl, no restrictions",
+  "targets": "identity only",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776"
+ },
+ "gene_name": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "symbol",
+  "evidence_grade": "curation",
+  "source": "Ensembl (via source file)",
+  "license": "Ensembl, no restrictions",
+  "targets": "identity only",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776"
+ },
+ "bgee_top_score": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "Bgee expression score 0-100 (best tissue)",
+  "evidence_grade": "measured (summarised)",
+  "source": "Bgee",
+  "license": "CC0",
+  "targets": "input or numeric label",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776"
+ },
+ "bgee_top_tissue": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "Uberon tissue name",
+  "evidence_grade": "measured (summarised)",
+  "source": "Bgee",
+  "license": "CC0",
+  "targets": "input or label",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776"
+ },
+ "bgee_tissues_present": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "count of tissues",
+  "evidence_grade": "measured (summarised)",
+  "source": "Bgee",
+  "license": "CC0",
+  "targets": "input or numeric label",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776"
+ },
+ "location_from_human_ortholog": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "HPA location terms",
+  "evidence_grade": "inferred (orthology transfer)",
+  "source": "Human Protein Atlas via Ensembl Compara",
+  "license": "CC BY-SA 4.0",
+  "targets": "input only; never an observed label",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc"
+ },
+ "location_from_human_ortholog_probability": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "probability 0-1",
+  "evidence_grade": "inferred (orthology transfer)",
+  "source": "Human Protein Atlas via Ensembl Compara",
+  "license": "CC BY-SA 4.0",
+  "targets": "input only",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc"
+ },
+ "human_ortholog": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "human gene symbol",
+  "evidence_grade": "computed",
+  "source": "Ensembl Compara",
+  "license": "Ensembl, no restrictions",
+  "targets": "bridge to the human space",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc"
+ },
+ "human_ortholog_type": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "Compara homology type",
+  "evidence_grade": "computed",
+  "source": "Ensembl Compara",
+  "license": "Ensembl, no restrictions",
+  "targets": "bridge",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc"
+ },
+ "human_ortholog_confidence": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "0/1",
+  "evidence_grade": "computed",
+  "source": "Ensembl Compara",
+  "license": "Ensembl, no restrictions",
+  "targets": "bridge",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc"
+ },
+ "shipped_protein_count": {
+  "organism": "Mm",
+  "storage_unit": "gene",
+  "quantity_unit": "count",
+  "evidence_grade": "derived",
+  "source": "parascape mm_host_proteins + source UniProt column",
+  "license": "derived",
+  "targets": "identity only",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776"
+ }
+}

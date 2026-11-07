@@ -1,0 +1,45 @@
+{
+ "source_rows": 22132,
+ "rows_without_gene_id": 3704,
+ "genes": 18428,
+ "shipped_proteins": 15590,
+ "proteins_by_link": {
+  "one gene": 14439,
+  "no gene": 1151
+ },
+ "licences": {
+  "gene_id": "O",
+  "gene_name": "O",
+  "bgee_top_score": "O",
+  "bgee_top_tissue": "O",
+  "bgee_tissues_present": "O",
+  "location_from_human_ortholog": "SA",
+  "location_from_human_ortholog_probability": "SA",
+  "human_ortholog": "O",
+  "human_ortholog_type": "O",
+  "human_ortholog_confidence": "O",
+  "shipped_protein_count": "O"
+ },
+ "version": "2026.11.07",
+ "pack_sha256": "00e3c7db807553ce96309fd6280ee2c0f455081c3727585aaebfa637ef33d394",
+ "checks": {
+  "unique_ids": true,
+  "every_source_gene_kept": true,
+  "sorted_order": true,
+  "no_protein_ids_as_genes": true,
+  "every_shipped_protein_in_links": true,
+  "opened_identical": true,
+  "notice_in_pack": true
+ },
+ "source_sha256": {
+  "transcriptome": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776",
+  "proteome": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc",
+  "shipped_proteins": "30e9349d736327c680e00a3c15429bda28fc6599e2989eb9d01d539a1b725c4f"
+ },
+ "gaps": [
+  "source release versions not recorded",
+  "gene->protein from one source column, not reviewed cross-references",
+  "no observed mouse labels yet: locations are transferred from human; benchmarks belong to 64.29",
+  "Mm not registered in organisms.SPACES until host spaces are wired in (64.24)"
+ ]
+}

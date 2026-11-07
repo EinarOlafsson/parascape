@@ -213,3 +213,10 @@ def test_extra_members_travel_hash_checked_and_cannot_replace_tables(prepared, t
     assert (installed / "NOTICE.txt").read_text() == "Source attribution\n"
     with pytest.raises(ValueError, match="would replace"):
         build_pack(space, data, "4.0", {c: "O" for c in nodes}, archive, extra={space.nodes: notice})
+
+
+def test_mouse_space_is_a_pack_keyed_by_ensembl_mouse_genes():
+    from parascape.spaces.mouse import MOUSE_SPACE
+    assert MOUSE_SPACE.code == O.MOUSE and MOUSE_SPACE.distribution == "pack" and MOUSE_SPACE.kind == O.HOST
+    assert MOUSE_SPACE.matches("ENSMUSG00000051747")
+    assert not MOUSE_SPACE.matches("ENSG00000000003") and not MOUSE_SPACE.matches("A2ASS6")
