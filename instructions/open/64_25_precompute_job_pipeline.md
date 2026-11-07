@@ -1,6 +1,6 @@
 # 64.25 · Build a resumable precomputation pipeline
 
-Status: OPEN — 45%, 2026-10-08. Serial framework, frozen-result replay and numeric feature operator verified; map/model/deployment wiring remains open.
+Status: DONE — 100%, 2026-11-07. Framework, replay and feature operator (2026-10-08) plus the production track record as resumable fingerprinted partitions, piloted on real data and reproducing the shipped record exactly. Built; Einar's review pending -- reopen on his feedback.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -24,11 +24,11 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Done when
 
-- [ ] Immutable input snapshots and job fingerprints prevent mixed-source runs; interrupted jobs resume by validated completed partitions.
-- [ ] A changed dataset/target/settings fingerprint invalidates only declared downstream outputs; cancellation leaves valid earlier partitions.
-- [ ] Pilot jobs report runtime/RAM/storage, set a compute budget and package budget, and preserve audit logs and failures.
-- [ ] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
-- [ ] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
+- [x] Immutable input snapshots and job fingerprints prevent mixed-source runs; interrupted jobs resume by validated completed partitions.
+- [x] A changed dataset/target/settings fingerprint invalidates only declared downstream outputs; cancellation leaves valid earlier partitions.
+- [x] Pilot jobs report runtime/RAM/storage, set a compute budget and package budget, and preserve audit logs and failures.
+- [x] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
+- [x] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
 
 ## Completion evidence
 
@@ -94,3 +94,33 @@ Observed process peak was 401.6 MiB with an external 400 MiB cgroup limit; RSS
 and cgroup accounting differ, so no claim of process peak below 400 MiB is made.
 This remains an intermediate operator: no new classifier, accuracy, confidence
 or deployment. Remaining scientific builders and wider coverage keep the item open.
+
+## 2026-11-07: the production track record, resumable
+
+`parascape/precompute_track_record.py` runs the production hold-out computation (the exact
+`track_record.evaluate` + class and random set hold-outs of `scripts/build_track_record.py`) as one partition per
+(organism, label, method). Each partition carries a fingerprint of the node-table bytes, the method settings chosen
+for that label, and the code that computes calls (`track_record`, `strategies`, `strategy_catalog`, this module,
+fold/seed/curve constants). `run` reuses a partition only when its journal record is ok for the same fingerprint
+and its file bytes match; builds the rest; records a failure and continues with the others; stops cleanly on
+cancellation or a jobs/seconds/memory budget leaving earlier partitions valid. The journal is hash-checked and
+written atomically after every partition, with seconds, peak memory and bytes. `assemble` returns the shipped
+table format from valid partitions only; `report` gives the per-partition cost.
+
+Invalidation is declared: a changed node table rebuilds that organism, a changed setting rebuilds that method on
+that label only, changed code rebuilds everything (coarse, stated).
+
+Pilot `notebooks/precompute_track_record_pilot_2026_11_07.ipynb` (`results/precompute_track_record_pilot_2026_11_07/`):
+Toxoplasma `screen_egress_phenotype`, methods feature_knn, map_neighbours, layer_vote. Stopped after one partition,
+resumed (two built, one reused), replayed (nothing built), one setting changed (only layer_vote rebuilt). Calls
+identical to the shipped track record for all three methods (318 genes each; accuracy 0.890 / 0.887 / 0.547).
+Cost: 2.4-21.6 s per partition, 61 s in all, process peak 680 MiB (high-water mark, not isolated per partition),
+81 KB on disk. Budget for a full rebuild: 9 Toxoplasma labels x 14 methods + Plasmodium labels, about an hour of
+CPU at the current build time (`build_track_record.py` documents ~1 h with 4 workers); store under 10 MB.
+
+Tests: `tests/test_precompute_track_record.py` (5 pass: stop and resume, replay builds nothing, one changed
+setting rebuilds one partition, a changed table rebuilds all, a failure is recorded and kept out of the table,
+cancellation keeps earlier partitions, edited bytes are rebuilt, a corrupt journal is refused).
+
+Gaps, stated: partitions run serially in one process (parallel workers remain `build_track_record.py --workers`);
+code identity is coarse; deployment outputs (calls on unknown genes) are not yet partitioned this way.

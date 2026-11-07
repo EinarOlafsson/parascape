@@ -1,0 +1,5 @@
+partition	status	rows	seconds	peak_rss_bytes	bytes	error	peak_rss_MiB	KiB
+Tg__screen_egress_phenotype__feature_knn__88335b6d1e6e20ee	ok	1140	2.475	408027136	22214		389.1	21.7
+Tg__screen_egress_phenotype__layer_vote__05535630e714f418	ok	1140	17.905	712597504	16276		679.6	15.9
+Tg__screen_egress_phenotype__layer_vote__8fb26e5ef89a06a6	ok	1140	19.09	712597504	16276		679.6	15.9
+Tg__screen_egress_phenotype__map_neighbours__8ab05384bce597f5	ok	1140	21.415	712597504	22241		679.6	21.7

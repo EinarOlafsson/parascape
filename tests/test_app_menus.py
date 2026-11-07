@@ -1234,8 +1234,13 @@ def test_the_species_menu_marks_the_one_that_is_open(qapp):
     w = Window(species="Plasmodium falciparum")
     try:
         menu = next(m for m in w.menuBar().findChildren(QtWidgets.QMenu) if m.title() == "Species")
-        assert [a.text() for a in menu.actions()] == available_species()
-        assert [a.text() for a in menu.actions() if a.isChecked()] == ["Plasmodium falciparum"]
+        maps = [a for a in menu.actions() if a.isCheckable()]
+        assert [a.text() for a in maps] == available_species()
+        assert [a.text() for a in maps if a.isChecked()] == ["Plasmodium falciparum"]
+        # Host gene packs follow the maps with their state, never as calibrated (instruction 64.23).
+        hosts = [a for a in menu.actions() if not a.isCheckable() and not a.isSeparator()]
+        assert {a.text().split(" -- ")[0] for a in hosts} == {"Homo sapiens", "Mus musculus"}
+        assert all("not calibrated" in a.statusTip() for a in hosts)
     finally:
         w.close()
 

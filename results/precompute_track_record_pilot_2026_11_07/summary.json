@@ -1,0 +1,32 @@
+{
+ "target": "screen_egress_phenotype",
+ "methods": [
+  "feature_knn",
+  "map_neighbours",
+  "layer_vote"
+ ],
+ "steps": {
+  "first": {
+   "Tg__screen_egress_phenotype__feature_knn__88335b6d1e6e20ee": "built",
+   "Tg__screen_egress_phenotype__map_neighbours__8ab05384bce597f5": "pending",
+   "Tg__screen_egress_phenotype__layer_vote__8fb26e5ef89a06a6": "pending"
+  },
+  "second": {
+   "Tg__screen_egress_phenotype__feature_knn__88335b6d1e6e20ee": "reused",
+   "Tg__screen_egress_phenotype__map_neighbours__8ab05384bce597f5": "built",
+   "Tg__screen_egress_phenotype__layer_vote__8fb26e5ef89a06a6": "built"
+  },
+  "third": {
+   "Tg__screen_egress_phenotype__feature_knn__88335b6d1e6e20ee": "reused",
+   "Tg__screen_egress_phenotype__map_neighbours__8ab05384bce597f5": "reused",
+   "Tg__screen_egress_phenotype__layer_vote__8fb26e5ef89a06a6": "reused"
+  },
+  "fourth": {
+   "Tg__screen_egress_phenotype__feature_knn__88335b6d1e6e20ee": "reused",
+   "Tg__screen_egress_phenotype__map_neighbours__8ab05384bce597f5": "reused",
+   "Tg__screen_egress_phenotype__layer_vote__05535630e714f418": "built"
+  }
+ },
+ "storage_bytes": 81246,
+ "total_seconds": 60.885
+}

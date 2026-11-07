@@ -147,6 +147,15 @@ class GeneModule(QtCore.QObject):
         hl.addWidget(scroll)
         shell.add_section("The evidence", holder, extent=260, stretch=2)
 
+        self.links = _browser()
+        shell.link_style(self.links)
+        self.links.setOpenLinks(False)
+        self.links.anchorClicked.connect(lambda url: self.open_counterpart(url.toString()))
+        self.links.setToolTip("Verified links from this gene to genes of other organisms: measured "
+                              "interactions and orthology, each kept as its own kind. Click the other "
+                              "end to open it in its own organism.")
+        shell.add_section("Links to other organisms", self.links, extent=150, stretch=1, folded=True)
+
         self.inferred = _browser()
         shell.link_style(self.inferred)
         self.inferred.setOpenLinks(False)
@@ -332,6 +341,7 @@ class GeneModule(QtCore.QObject):
         self._render_unusual(r)
         self._render_methods(r)
         self._render_evidence(r)
+        self._render_links(r)
         self._render_inferences(r)
 
     def open_bundle(self, folder: str = "") -> dict:
@@ -468,6 +478,64 @@ class GeneModule(QtCore.QObject):
             section = self.shell.section(f"{title} ({len(rows)})", table,
                                          expanded=category in ("place", "interaction", "fitness"))
             self.evidence_layout.insertWidget(self.evidence_layout.count() - 1, section)
+
+    def _render_links(self, r) -> None:
+        """The gene's cross-organism links (instruction 64.24), the other end resolved in its own space."""
+        from . import bridges
+        try:
+            links = bridges.links_of(r.gene)
+        except Exception as error:
+            self.links.setHtml(f"<p>The links could not be read: {escape(str(error))}</p>")
+            return
+        self._counterparts = {}
+        lines = []
+        for i, link in enumerate(links.head(40).to_dict("records")):
+            c = bridges.counterpart(link, from_gene=r.gene)
+            self._counterparts[str(i)] = c
+            other = escape(f"{c['organism']} {c['id']}")
+            target = f"<a href='open:{i}'>{other}</a>" if c["space"] else other
+            lines.append(f"<p>{escape(link['relation'])}: {target} -- {escape(c['status'])}"
+                         + (f" <span style='color:#999'>({escape(str(link['reference']))[:80]})</span>"
+                            if str(link.get("reference", "")) not in ("", "nan") else "") + "</p>")
+        more = f"<p style='color:#999'>and {len(links) - 40} more</p>" if len(links) > 40 else ""
+        self.links.setHtml("".join(lines) + more or
+                           "<p>No verified link from this gene to another organism.</p>")
+
+    def open_counterpart(self, anchor: str) -> str:
+        """Open the other end of a link in its own organism; returns what was opened (or why not).
+
+        A parasite gene opens in that organism map and its Gene module; a host gene is shown from its own
+        host gene space, with that space's measurements and gene count.
+        """
+        c = getattr(self, "_counterparts", {}).get(anchor.split(":", 1)[-1])
+        if not c or not c["space"]:
+            return ""
+        from . import organisms
+        space = organisms.SPACES.get(c["space"])
+        if space is not None and space.distribution == "wheel":
+            window = self.window
+            if getattr(window, "species", None) != space.species and hasattr(window, "open_species"):
+                window = window.open_species(space.species)
+            open_in(window, c["genes"][0])
+            return f"{c['space']}:{c['genes'][0]}"
+        rows = c["rows"]
+        body = "".join(
+            "<tr>" + "".join(f"<td>{escape(str(v))}</td>" for v in row) + "</tr>"
+            for row in rows.head(5).itertuples(index=False))
+        self.links.setHtml(
+            f"<p><b>{escape(c['organism'])} {escape(c['id'])}</b> -- {escape(c['status'])}. "
+            "<a href='back:'>back to the links</a></p>"
+            "<table cellspacing=4><tr>" + "".join(f"<th align=left>{escape(str(k))}</th>" for k in rows.columns)
+            + "</tr>" + body + "</table>")
+        self.links.anchorClicked.disconnect()
+        self.links.anchorClicked.connect(self._back_to_links)
+        return f"{c['space']}:{','.join(c['genes'])}"
+
+    def _back_to_links(self, _url) -> None:
+        self.links.anchorClicked.disconnect()
+        self.links.anchorClicked.connect(lambda url: self.open_counterpart(url.toString()))
+        if self.reading is not None:
+            self._render_links(self.reading)
 
     def _render_inferences(self, r) -> None:
         lines = [s for s in GR.inferences(r)

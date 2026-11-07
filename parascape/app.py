@@ -1811,6 +1811,23 @@ class Window(QtWidgets.QMainWindow):
                 "inspected and disbelieved.")
             self.species_group.addAction(act)
             act.triggered.connect(lambda _c=False, n=name: self.open_species(n))
+        # Host gene spaces are data packs (instructions 64.21-64.23): shown with their state, never as
+        # calibrated; an installed one is read through the links of a parasite gene (Gene module).
+        species.addSeparator()
+        self.host_space_actions = {}
+        try:
+            from . import space_catalogue
+            hosts = [e for e in space_catalogue.catalogue() if e.code in space_catalogue.HOST_PACK_SPACES]
+        except Exception:
+            hosts = []
+        for entry in hosts:
+            act = species.addAction(space_catalogue.describe(entry).split(". ")[0])
+            act.setToolTip("Host gene space. " + space_catalogue.describe(entry)
+                           + (". Click to install it, checked against its published SHA256."
+                              if entry.state == "installable" else ""))
+            act.setEnabled(entry.state == "installable")
+            act.triggered.connect(lambda _c=False, code=entry.code: self.install_host_space(code))
+            self.host_space_actions[entry.code] = act
         f.addSeparator()
         a = f.addAction("Preferences…")
         a.setShortcut("Ctrl+,")
@@ -3266,6 +3283,22 @@ class Window(QtWidgets.QMainWindow):
         if unit == 'gene' and code in organisms.SPACES:
             window = self.open_species(organisms.get(code).species)
             window._workflow_gene(entity)
+
+    def install_host_space(self, code: str) -> str:
+        """Install a host gene pack from this checkout (checked against its SHA256); returns its folder."""
+        from . import space_catalogue
+        try:
+            where = str(space_catalogue.install(code))
+        except Exception as error:
+            self.statusBar().showMessage(f"{code} gene space not installed: {error}", 8000)
+            return ""
+        entry = next(e for e in space_catalogue.catalogue() if e.code == code)
+        act = getattr(self, "host_space_actions", {}).get(code)
+        if act is not None:
+            act.setText(space_catalogue.describe(entry).split(". ")[0])
+            act.setEnabled(False)
+        self.statusBar().showMessage(space_catalogue.describe(entry), 8000)
+        return where
 
     def open_species(self, name: str):
         """Open another species' map in a window of its own, and remember the choice.

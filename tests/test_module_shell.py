@@ -257,6 +257,39 @@ def test_the_gene_module_opens_and_reads_a_typed_gene(window, qtbot):
     assert not shell.sections["Advanced"].is_expanded()
 
 
+def test_the_gene_module_lists_links_to_other_organisms_in_their_own_spaces(window):
+    """Instruction 64.24: a link's other end is resolved in its own space, never guessed."""
+    from parascape import bridges
+    module = window.gene_module.module
+    sections = list(window.gene_module.sections)
+    assert sections.index("The evidence") < sections.index("Links to other organisms")
+    ortho = bridges.orthology_links()
+    if len(ortho):
+        gene = str(ortho.iloc[0]["source_id"])
+        module.show(gene)
+        html = module.links.toHtml()
+        assert "orthology (shared OrthoMCL group)" in html and "open:" in html
+        assert any(c["space"] == "Pf" for c in module._counterparts.values())
+    lit = bridges.host_links()
+    lit = lit[lit["target_organism"] == bridges.HOST_UNRECORDED]
+    if len(lit) and str(lit.iloc[0]["source_id"]) in set(window.nodes.gene_id.astype(str)):
+        module.show(str(lit.iloc[0]["source_id"]))
+        assert "does not say which host species" in module.links.toPlainText()
+
+
+def test_the_species_menu_lists_host_spaces_with_their_state(window, tmp_path, monkeypatch):
+    """Instruction 64.23: host gene packs are listed with an explicit state, never as calibrated."""
+    from parascape import paths, space_catalogue
+    actions = window.host_space_actions
+    assert set(actions) == set(space_catalogue.HOST_PACK_SPACES)
+    for act in actions.values():
+        assert "not calibrated" in act.statusTip()
+    if space_catalogue.local_archives("Mm"):
+        monkeypatch.setenv(paths.ENV_STATE, str(tmp_path / "state"))
+        assert window.install_host_space("Mm")
+        assert "installed" in actions["Mm"].text() and not actions["Mm"].isEnabled()
+
+
 def test_unticking_a_kind_of_knowledge_removes_it_from_the_reading(window):
     module = window.gene_module.module
     if module.reading is None:
