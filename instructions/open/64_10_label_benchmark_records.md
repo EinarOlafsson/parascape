@@ -165,3 +165,14 @@ source/control/cohort identities. 101 combined focused checks pass; resource and
 Qt diagnostics preserved. Adapter excludes importance, tuning, calibration,
 deployment and independent biological admission; remaining method/variant coverage
 still open. 64.10 stays35%; no whole-action tick.
+
+## 2026-11-07: label records of another kind, on frozen partitions
+
+Beyond the 14-strategy per-gene track record, seven label methods now have held-out records through the harness
+(instruction 73): boosted trees and the six borrowed strategies of instruction 77 (positive-unlabelled bagging,
+propensity weighting, low-rank completion, per-family stacking, lookalike ranking, network propagation), each on
+its own once-only frozen partition for `required_without_glucose` and `host_facing`
+(`results/borrowed_strategies_2026_11_06/scores.tsv`), and boosted trees for 13 localization niches
+(`results/localization_questions_2026_11_06/`, `results/coexpression_components_localization_2026_11_06/`). These are
+partition-level records (precision at the fill threshold, AUC, average precision, calibration error, baselines), not
+per-gene rows; per-gene rows with native-prediction parity for these adapters remain open.
