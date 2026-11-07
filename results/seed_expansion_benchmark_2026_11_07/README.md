@@ -18,3 +18,19 @@ ranked genome at depths fixed before the run. Universe = every gene but the seed
 The secretory and division organelles are found strongly; apicoplast and mitochondrion more weakly. Genes that
 are not markers are not verified negatives, so precision is a lower bound. One split per niche; a repeat over
 several seeds would give intervals.
+
+## Second adapter: positive-unlabelled learning, same splits
+
+Recall of hidden members at depth 100 (`recovery.tsv` has every depth):
+
+| niche | positive-unlabelled | seed expansion |
+|---|---|---|
+| rhoptries | 0.769 | 0.808 |
+| micronemes | 0.786 | 0.857 |
+| dense granules | **0.762** | 0.571 |
+| IMC | 0.474 | 0.526 |
+| apicoplast | **0.458** | 0.292 |
+| mitochondrion | 0.371 | 0.343 |
+
+Neither wins everywhere: the network walk is better for the invasion organelles, the classifier for dense
+granules and the apicoplast. Each finished niche is cached as a row file and reused by the notebook.

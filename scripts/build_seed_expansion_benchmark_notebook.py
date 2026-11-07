@@ -21,7 +21,7 @@ OUT = os.path.join(REPO, "results", f"seed_expansion_benchmark_{DATE}")
 NB = os.path.join(REPO, "notebooks", f"seed_expansion_benchmark_{DATE}.ipynb")
 
 
-def one_niche(niche: str, out_path: str) -> None:
+def one_niche(niche: str, out_path: str, strategy: str = "seed_expansion") -> None:
     """Run seed expansion for one niche and write its recovery row (run in its own process)."""
     import json
     import numpy as np
@@ -39,11 +39,12 @@ def one_niche(niche: str, out_path: str) -> None:
     seed_groups = set(groups[:len(groups) // 2])
     seeds = [g for g in members if og[g] in seed_groups]
     hidden = [g for g in members if og[g] not in seed_groups]
-    r = S.get("seed_expansion").run(ctx, genes="\n".join(seeds), exclude="compartment", top=2000)
-    ranked = [g for g in r.tables["candidates"].gene_id.astype(str) if g not in set(seeds)]
+    r = S.get(strategy).run(ctx, genes="\n".join(seeds), exclude="compartment", top=2000)
+    table = next(t for t in r.tables.values() if "gene_id" in getattr(t, "columns", []))
+    ranked = [g for g in table.gene_id.astype(str) if g not in set(seeds)]
     hits = np.isin(ranked, hidden)
     prevalence = len(hidden) / (len(nodes) - len(seeds))
-    row = dict(niche=niche, seeds=len(seeds), hidden=len(hidden), prevalence=round(prevalence, 5))
+    row = dict(strategy=strategy, niche=niche, seeds=len(seeds), hidden=len(hidden), prevalence=round(prevalence, 5))
     for k in (50, 100, 200):
         row[f"hidden_in_top{k}"] = int(hits[:k].sum())
         row[f"recall_at_{k}"] = round(float(hits[:k].sum() / len(hidden)), 3)
@@ -68,22 +69,29 @@ def main() -> None:
             "from concurrent.futures import ThreadPoolExecutor",
             "import pandas as pd",
             "NICHES = ['rhoptries', 'micronemes', 'dense granules', 'IMC', 'apicoplast', 'mitochondrion']",
+            "STRATEGIES = ['seed_expansion', 'positive_unlabeled']",
             "SCRIPT = os.path.join(REPO, 'scripts', 'build_seed_expansion_benchmark_notebook.py')",
-            "def run(niche):",
-            "    out = os.path.join(OUT, 'row_' + niche.replace(' ', '_') + '.json')",
-            "    subprocess.run([sys.executable, SCRIPT, '--niche', niche, '--out', out], check=True,",
-            "                   env={**os.environ, 'OMP_NUM_THREADS': '2'})",
-            "    return json.load(open(out))",
+            "def run(job):",
+            "    strategy, niche = job",
+            "    tag = niche.replace(' ', '_')",
+            "    out = os.path.join(OUT, f'row_{tag}.json' if strategy == 'seed_expansion' else f'row_{strategy}_{tag}.json')",
+            "    if not os.path.exists(out):      # a finished niche is reused, never silently recomputed",
+            "        subprocess.run([sys.executable, SCRIPT, '--niche', niche, '--out', out, '--strategy', strategy],",
+            "                       check=True, env={**os.environ, 'OMP_NUM_THREADS': '2'})",
+            "    row = json.load(open(out)); row.setdefault('strategy', strategy)",
+            "    return row",
+            "jobs = [(s, n) for s in STRATEGIES for n in NICHES]",
             "with ThreadPoolExecutor(max_workers=len(NICHES)) as pool:",
-            "    rows = list(pool.map(run, NICHES))",
+            "    rows = list(pool.map(run, jobs))",
             "table = pd.DataFrame(rows)",
             "table.to_csv(os.path.join(OUT, 'recovery.tsv'), sep='\\t', index=False)",
-            "table")
+            "table.pivot(index='niche', columns='strategy', values='recall_at_100')")
     nb.write(NB)
 
 
 if __name__ == "__main__":
     if "--niche" in sys.argv:
-        one_niche(sys.argv[sys.argv.index("--niche") + 1], sys.argv[sys.argv.index("--out") + 1])
+        one_niche(sys.argv[sys.argv.index("--niche") + 1], sys.argv[sys.argv.index("--out") + 1],
+                  sys.argv[sys.argv.index("--strategy") + 1] if "--strategy" in sys.argv else "seed_expansion")
     else:
         main()

@@ -1,6 +1,6 @@
 # 64.12 · Test gene rankings and set retrieval
 
-Status: OPEN — 15%, 2026-11-07. First adapter: seed expansion, held-out member recovery on six localization niches; the other ranking strategies remain.
+Status: OPEN — 30%, 2026-11-07. Two adapters (seed expansion, positive-unlabelled) on six localization niches; the other ranking strategies remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -41,3 +41,7 @@ fixed before the run; hyperLOPIT compartment excluded. Recall at 100: rhoptries 
 granules 0.57, IMC 0.53, mitochondrion 0.34, apicoplast 0.29 (lift 24-70 over the prevalence). Non-markers are not
 verified negatives (stated in the notebook). Next adapters: positive-unlabelled learning, gene-set search,
 recoverability, outlier ranking, enrichment, paralog profiles.
+
+**Second adapter (same day): positive-unlabelled learning** on the identical splits -- better than seed expansion for
+dense granules (recall at 100: 0.76 against 0.57) and the apicoplast (0.46 against 0.29), worse for the invasion
+organelles. Table in the results README.
