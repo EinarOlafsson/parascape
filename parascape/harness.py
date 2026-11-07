@@ -114,6 +114,9 @@ def _logistic(**settings):
 
 
 MODELS = {"hist_gbt": _hist_gbt, "logistic": _logistic}
+# The borrowed profile-inference strategies (instruction 77), scored by this same harness.
+from .borrowed_models import BORROWED as _BORROWED  # noqa: E402
+MODELS.update(_BORROWED)
 
 
 @dataclass(frozen=True)

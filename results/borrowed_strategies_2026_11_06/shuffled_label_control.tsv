@@ -1,0 +1,15 @@
+question	strategy	seed	cv_auc	cv_ap	cv_coverage_at_bar	test_n	test_auc	test_ap	test_calls	test_precision	test_lower90	test_coverage_at_bar	best_baseline	best_baseline_lower90	calibration_error	may_fill	flags	minutes	verdict
+required_without_glucose	boosted trees (reference)	10	0.491	0.238	0.0044	1091	0.51	0.247	6	0.3333333333333333	0.093	0.0055	best single feature (hosttx_signature_pc07)	0.196	0.049	False		0.4	reference
+required_without_glucose	positive-unlabelled bagging	11	0.499	0.242	0.0044	1084	0.494	0.23	2	0.5	0.051	0.0018	prevalence-weighted random	0.189	0.057	False		1.8	does not beat the baseline
+required_without_glucose	inverse-propensity weighting	12	0.495	0.233	0.0801	1125	0.483	0.23	56	0.17857142857142858	0.114	0.0498	prevalence-weighted random	0.24	0.032	False		3.3	does not beat the baseline
+required_without_glucose	low-rank completion	13	0.512	0.255	0.0006	1098	0.471	0.217	0			0.0	prevalence-weighted random	0.196	0.037	False		0.5	does not beat the baseline
+required_without_glucose	per-family stacking	14	0.488	0.232	0.0	1087	0.476	0.227	0			0.0	prevalence-weighted random	0.195	0.031	False		7.6	does not beat the baseline
+required_without_glucose	lookalike ranking	15	0.511	0.252	0.0176	1093	0.495	0.239	33	0.24242424242424243	0.147	0.0302	prevalence-weighted random	0.19	0.04	False		0.6	does not beat the baseline
+required_without_glucose	network propagation	16	0.517	0.251	0.0101	1115	0.479	0.224	15	0.13333333333333333	0.036	0.0135	prevalence-weighted random	0.218	0.028	False		0.6	does not beat the baseline
+host_facing	boosted trees (reference)	10	0.392	0.073	0.0	87	0.645	0.197	0			0.0	prevalence-weighted random	0.0	0.092	False		0.1	reference
+host_facing	positive-unlabelled bagging	11	0.487	0.097	0.5588	88	0.561	0.209	0			0.0	prevalence-weighted random	0.012	0.165	False		0.4	does not beat the baseline
+host_facing	inverse-propensity weighting	12	0.409	0.101	0.0122	87	0.566	0.144	1	0.0	0.0	0.0115	prevalence-weighted random	0.0	0.068	False		0.7	does not beat the baseline
+host_facing	low-rank completion	13	0.47	0.128	0.0073	87	0.398	0.083	0			0.0	prevalence-weighted random	0.0	0.088	False		0.1	does not beat the baseline
+host_facing	per-family stacking	14	0.563	0.172	0.0	85	0.574	0.239	0			0.0	prevalence-weighted random	0.01	0.048	False		6.0	does not beat the baseline
+host_facing	lookalike ranking	15	0.48	0.116	0.6578	87	0.491	0.164	6	0.0	0.0	0.069	prevalence-weighted random	0.0	0.121	False		0.1	does not beat the baseline
+host_facing	network propagation	16	0.384	0.088	0.0	86	0.852	0.455	0			0.0	prevalence-weighted random	0.01	0.097	False		0.2	does not beat the baseline

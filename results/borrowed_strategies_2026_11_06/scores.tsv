@@ -1,0 +1,15 @@
+question	strategy	seed	cv_auc	cv_ap	cv_coverage_at_bar	test_n	test_auc	test_ap	test_calls	test_precision	test_lower90	test_coverage_at_bar	best_baseline	best_baseline_lower90	calibration_error	may_fill	flags	minutes	verdict
+required_without_glucose	boosted trees (reference)	10	0.831	0.581	0.0098	1091	0.824	0.538	8	0.75	0.462	0.0073	prevalence-weighted random	0.2	0.029	False		0.5	reference
+required_without_glucose	positive-unlabelled bagging	11	0.833	0.572	0.0132	1084	0.808	0.531	17	0.7647058823529411	0.584	0.0157	prevalence-weighted random	0.169	0.039	False		2.4	ships
+required_without_glucose	inverse-propensity weighting	12	0.81	0.527	0.0351	1125	0.836	0.587	52	0.6923076923076923	0.596	0.0462	prevalence-weighted random	0.235	0.042	False		4.2	beats baseline, worse than reference
+required_without_glucose	low-rank completion	13	0.812	0.527	0.0408	1098	0.813	0.542	69	0.6666666666666666	0.584	0.0628	prevalence-weighted random	0.256	0.023	False		0.6	beats baseline, worse than reference
+required_without_glucose	per-family stacking	14	0.817	0.542	0.0	1087	0.824	0.578	0			0.0	prevalence-weighted random	0.199	0.034	False		10.5	does not beat the baseline
+required_without_glucose	lookalike ranking	15	0.773	0.479	0.0418	1093	0.772	0.455	49	0.5510204081632653	0.45	0.0448	prevalence-weighted random	0.222	0.053	False		1.0	beats baseline, worse than reference
+required_without_glucose	network propagation	16	0.781	0.487	0.0086	1115	0.781	0.451	10	0.7	0.448	0.009	prevalence-weighted random	0.179	0.04	False		0.6	beats baseline, worse than reference
+host_facing	boosted trees (reference)	10	0.949	0.721	0.0803	87	0.996	0.962	5	1.0	0.631	0.0575	best single feature (fit_density_high)	0.354	0.024	False		0.1	reference
+host_facing	positive-unlabelled bagging	11	0.954	0.735	0.049	88	0.937	0.592	14	0.5	0.305	0.1591	prevalence-weighted random	0.061	0.09	False		0.3	beats baseline, worse than reference
+host_facing	inverse-propensity weighting	12	0.946	0.687	0.0706	87	0.967	0.624	3	0.6666666666666666	0.196	0.0345	best single feature (n_bcell_epitopes)	0.1	0.024	False		0.8	beats baseline, worse than reference
+host_facing	low-rank completion	13	0.925	0.634	0.0561	87	0.997	0.975	4	1.0	0.562	0.046	best single feature (fit_density_high)	0.345	0.045	False		0.1	beats baseline, worse than reference
+host_facing	per-family stacking	14	0.937	0.541	0.0024	85	0.977	0.745	0			0.0	best single feature (fit_density_high)	0.345	0.044	False		5.9	does not beat the baseline
+host_facing	lookalike ranking	15	0.952	0.681	0.0995	87	0.995	0.969	5	1.0	0.631	0.0575	best single feature (ees_vs_tachyzoite_log2)	0.585	0.139	False		0.1	beats baseline, worse than reference
+host_facing	network propagation	16	0.824	0.369	0.0122	86	0.896	0.432	0			0.0	prevalence-weighted random	0.055	0.04	False		0.1	does not beat the baseline

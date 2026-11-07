@@ -1,5 +1,5 @@
 # 77 · The borrowed profile-inference strategies, each with its own quality control
-**Status: open (requested 2026-11-05).** The techniques identified from large-scale profile inference, now to be
+**Status: done 2026-11-06 -- six built and scored on frozen partitions, three untested with the reason; none beats boosted trees, positive-unlabelled bagging matches them.** Requested 2026-11-05. The techniques identified from large-scale profile inference, now to be
 implemented. Each enters the same catalogue and the same harness as the existing 39 strategies.
 
 ## Why
@@ -33,3 +33,26 @@ permutation importance by family. **An untested strategy is listed as untested a
 ## Gate
 Each strategy ships when it beats the best baseline on a question whose labels can support a frozen test, or is
 published as untested with the reason. None may fill a cell on a cross-validated number alone.
+
+## Done 2026-11-06
+
+Built as estimators the harness scores unchanged (`parascape/borrowed_models.py`, registered in
+`harness.MODELS`; 20 tests in `tests/test_borrowed_models.py`), and scored on the two registry questions that
+afford a frozen test: `required_without_glucose` (7,393 genes) and `host_facing` (585 curated in the
+information map). Each strategy had its own fresh partition (seeds 10-16), touched once and logged. Full table
+and reading: `results/borrowed_strategies_2026_11_06/README.md`.
+
+* **Gate**: positive-unlabelled bagging ships on glucose (frozen AP 0.531 against the reference 0.538, beats
+  the best baseline) -- an equal, not an improvement. Every other strategy is worse than boosted trees on the
+  cross-validated estimate; propensity weighting is better on its frozen partition (0.587) and worse
+  cross-validated (0.527), so undecided. **No strategy may fill** (all 14 frozen lower bounds below 0.90).
+* **The host-facing frozen test is noise-limited**: a shuffled-label run of the same pipeline gave frozen AUC
+  0.40-0.85 by chance (about 10 positives per partition). Kept as `shuffled_label_control.tsv`.
+* **Untested, with reasons** (`borrowed_models.UNTESTED`): selective prediction is the harness itself;
+  multi-task learning, empirical-Bayes shrinkage.
+* Found on the way: the harness hashes a strategy by model name and settings, not by the model code, so a
+  changed estimator must bump its `version` or it would get a second look at a spent partition. Recorded in
+  the module docstring. Also: inverse-propensity weighting cannot remove a tilt where attention nearly
+  decides the label (the weights hit the clip) -- tested and documented.
+* Also closes the host-facing part of instruction 73's phase 1 gate: host-facing now has frozen-test
+  results through the harness (585 labels; the registry note of 98 predates the hard negatives).

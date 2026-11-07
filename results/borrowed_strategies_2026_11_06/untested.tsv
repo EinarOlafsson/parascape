@@ -1,0 +1,4 @@
+strategy	verdict	reason
+selective_prediction	untested	Built into the harness rather than a model: every strategy is graded by coverage at fixed precision (`coverage_at_bar`), with the fill threshold as the reject option.
+multi_task	untested	Needs auxiliary labels that may be used beside the target. The harness excludes every column of the target's own information category, and an auxiliary label of that category would bring it back in by another door. No pair of registry questions has yet been checked for which labels may stand beside which, so it is untested until the registry records that.
+empirical_bayes_shrinkage	untested	Needs a per-cell standard error. The only columns that carry one are the expression fold changes, which are already shrunk when they are built (`expression_traits`); the node table columns carry no uncertainty to shrink by, and rescaling a column changes nothing for a tree or a standardised linear model.
