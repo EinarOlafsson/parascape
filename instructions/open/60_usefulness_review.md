@@ -152,3 +152,11 @@ continuous column measured on at least 500 genes, the ten furthest from the midd
 columns left out, filtered by "What to read". Checked on BAG1: the highest of every bradyzoite expression
 measurement -- the textbook answer. Tests in `tests/test_gene_reading.py`; rendered on the real window.
 Not done: "which strategies named it, which maps cluster it" (the star-edge cache), the other half of change 5.
+
+## Change 8, the core (2026-11-07): an imported screen reaches the strategies
+
+`StrategyPanel.set_nodes` rebuilds the strategy context over the table with the imported columns (same rows; the
+graph is kept, it is checked against gene ids), and `GuidedPanel.set_context` hands the guided panel the same
+context; `Window.apply_import` calls both. Before this an imported column reached the evidence panel and the
+map, never a strategy. Test: `tests/test_app_controls.py`. Still open from change 8: a Plasmodium importer, and a
+required leakage family for an imported column (today the measured-association closure is what guards it).

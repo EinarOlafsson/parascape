@@ -1448,6 +1448,16 @@ def test_imported_columns_can_build_a_map(win, tmp_path):
     assert panel.spec().extra_columns == ()
 
 
+def test_imported_columns_reach_the_strategies_and_the_guided_panel(win, tmp_path):
+    """An imported screen that reached only the evidence panel was a column that did nothing."""
+    win.apply_import(win.build_import_dialog(_user_table(tmp_path, win)))
+    sp = win.strategy_panel
+    assert {"imported_day3", "imported_day5"} <= set(sp.ctx.nodes.columns)
+    guided = getattr(win, "guided", None)
+    if guided is not None:
+        assert guided._contexts[sp.ctx.organism] is sp.ctx
+
+
 def test_an_imported_column_can_be_colored_by_like_any_other(win, tmp_path):
     from parascape.app import BIN_PREFIX
     win.apply_import(win.build_import_dialog(_user_table(tmp_path, win)))

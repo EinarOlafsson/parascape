@@ -298,6 +298,11 @@ class GuidedPanel(QtWidgets.QWidget):
         self.render()
 
     # ------------------------------------------------------------------ state
+
+    def set_context(self, ctx) -> None:
+        """Use a rebuilt context (after an import) for its organism from now on."""
+        self.base = ctx if ctx.organism == self.base.organism else self.base
+        self._contexts[ctx.organism] = ctx
     def context(self):
         """The table the questions are asked of: the space chosen, or the one this panel was built
         on until one is."""

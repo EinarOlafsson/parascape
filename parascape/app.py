@@ -1208,6 +1208,13 @@ class Window(QtWidgets.QMainWindow):
         if getattr(self, "panel", None) is not None:
             self.panel.nodes = self.nodes
             self.panel.add_imported(list(imported.columns))
+        # The strategies read their own context, built at start-up; rebuild it so the imported
+        # columns reach them, and hand the same context to the guided panel.
+        strategies = getattr(self, "strategy_panel", None)
+        if strategies is not None and len(self.nodes) == strategies.ctx.n:
+            ctx = strategies.set_nodes(self.nodes)
+            if getattr(self, "guided", None) is not None:
+                self.guided.set_context(ctx)
         catalog = getattr(self, '_slot_tree', None)
         if catalog is not None:
             code = SPECIES[self.species]['code']

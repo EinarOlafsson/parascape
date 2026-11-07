@@ -177,6 +177,7 @@ class StrategyPanel(QtWidgets.QWidget):
         """Build the panel over one organism's table. Nothing is computed until something is run."""
         super().__init__(parent)
         self.ctx = S.Context(nodes, graph=graph, other=other, organism=organism)
+        self._graph_arg, self._other_arg = graph, other
         self.runner, self.analysis, self.gated = runner, analysis, gated
         self.measured = load_measured(self.ctx.organism)
         self.current: S.Strategy | None = None
@@ -300,6 +301,18 @@ class StrategyPanel(QtWidgets.QWidget):
             self.tree.setCurrentItem(first.child(0))
 
     # ------------------------------------------------------------------ the list
+
+    def set_nodes(self, nodes: pd.DataFrame) -> S.Context:
+        """Rebuild the strategy context over a table with new columns (an import), same rows.
+
+        Without this an imported screen reached the evidence panel and never a strategy: the context
+        was built once, at start-up. The graph is kept -- it is checked against the gene ids, which an
+        import does not change.
+        """
+        old = self.ctx
+        self.ctx = S.Context(nodes, graph=self._graph_arg, other=self._other_arg,
+                             organism=old.organism)
+        return self.ctx
     def _populate(self):
         """Fill the tree: one branch per family, one leaf per strategy, each with its verdict."""
         self.tree.clear()
