@@ -1,6 +1,6 @@
 # 64.36 · Connect every evidence and inference level
 
-Status: OPEN — 35%, 2026-11-07. Gene -> method -> scorecard is one click; width and missing-data checks pass; back/search context and host counterpart remain.
+Status: OPEN — 50%, 2026-11-07. Gene -> method -> scorecard one click; widths, missing data and back/search context checked; host counterpart and organism change remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -42,5 +42,6 @@ Strategies module with that strategy's card (guide, calibration, scorecard, trac
 and label pages (track record), question -> its best-recovering strategies (Infer), result -> methods text and
 bundle. Width and missing-data checks (same day): the Gene module reads the best- and the least-measured gene at 1024,
 1366 and 1920 px on the real window, each section saying something (the unusual list or why there is none, the
-method list) and the module never wider than the window (`tests/test_module_shell.py`). Open: back/search context
-retention checks and the host counterpart.
+method list) and the module never wider than the window (`tests/test_module_shell.py`). Back and search (same day): going Home and opening another gene shows that gene and nothing of the last one
+(`tests/test_module_shell.py`); the Navigator resets on return (`tests/test_navigator.py`). Open: the host
+counterpart (no host gene space ships yet, instruction 64.21/64.22), organism change.

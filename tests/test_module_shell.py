@@ -466,6 +466,24 @@ def test_the_gene_module_reads_a_measured_and_a_barely_measured_gene_at_each_wid
         window.hide()
 
 
+def test_going_home_and_opening_another_gene_never_shows_the_last_one(window):
+    """Instruction 64.36: back and search keep a valid context; no stale result from another entity."""
+    from PySide6 import QtWidgets
+    from parascape.gene_module import open_in
+    from parascape.landing_install import go_home
+    a, b = (str(g) for g in window.nodes.gene_id.iloc[[10, 20]])
+    open_in(window, a)
+    QtWidgets.QApplication.processEvents()
+    go_home(window)
+    open_in(window, b)
+    QtWidgets.QApplication.processEvents()
+    module = window.gene_module.module
+    assert module.gene == b
+    text = module.known.toPlainText()
+    assert b in text and a not in text
+    assert module.reading.gene == b
+
+
 def test_your_genes_are_read_against_the_answer(window):
     import pandas as pd
     module = window.infer_module.module
