@@ -160,3 +160,15 @@ graph is kept, it is checked against gene ids), and `GuidedPanel.set_context` ha
 context; `Window.apply_import` calls both. Before this an imported column reached the evidence panel and the
 map, never a strategy. Test: `tests/test_app_controls.py`. Still open from change 8: a Plasmodium importer, and a
 required leakage family for an imported column (today the measured-association closure is what guards it).
+
+## Changes 1, 9 and 10, where they stand (2026-11-07)
+
+* **1, the 0.48.0 dock/card bug** ("go back to Strategies: the panel is empty", recorded 2026-09-29; never
+  reproduced offscreen). The tab layout it lived in is gone: Strategies is now a module that borrows the panel
+  and gives it back. A regression test for the reported symptom in that layout --
+  Strategies -> Home -> Gene -> Strategies, the panel still holds every strategy, back in its dock afterwards --
+  passes (`tests/test_modules_in_window.py`). The original desktop-only failure was not reproduced, so this is
+  a guard on the present design, not a confirmed fix of the old one.
+* **10, tutorial videos**: done 2026-10-03 (`scripts/tutorial_video.py`, six captures from the running app).
+* **9, more gallery maps kept by structure score**: not started; it needs compute and a structure-score
+  threshold, and is the one change of the ten left open.

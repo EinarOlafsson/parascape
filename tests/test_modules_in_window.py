@@ -272,6 +272,33 @@ def test_a_lent_panel_goes_back_to_its_dock(window):
         window.hide()
 
 
+def test_strategies_are_not_empty_after_going_elsewhere_and_back(window):
+    """Instruction 60, change 1: the 0.48.0 report -- "go back to Strategies: the panel is empty" --
+    in today's layout, where the Strategies module borrows the panel and gives it back."""
+    from parascape.landing_install import go_home, open_module
+    window.show()
+    try:
+        open_module(window, "strategies")
+        QtWidgets.QApplication.processEvents()
+        panel = window.tool_modules["strategies"].module.main.panel
+        count = panel.tree.topLevelItemCount()
+        assert panel is not None and count > 0
+        go_home(window)
+        open_module(window, "gene")
+        QtWidgets.QApplication.processEvents()
+        go_home(window)
+        open_module(window, "strategies")
+        QtWidgets.QApplication.processEvents()
+        again = window.tool_modules["strategies"].module.main.panel
+        assert again is panel and window.tool_modules["strategies"].isAncestorOf(panel)
+        assert panel.tree.topLevelItemCount() == count and panel.isVisibleTo(window)
+        go_home(window)
+        QtWidgets.QApplication.processEvents()
+        assert panel.tree.topLevelItemCount() == count
+    finally:
+        window.hide()
+
+
 def test_partners_reads_the_network_by_binding_evidence(window):
     from parascape.landing_install import open_module
     open_module(window, "partners")
