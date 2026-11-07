@@ -515,3 +515,20 @@ def test_the_record_never_walks_a_layer_the_strategy_would_refuse(planted):
     led = T.evaluate(planted, "layer_propagation", target, settings={"layer": layer})
     if len(led):
         assert f"layer={layer}," not in str(led["setting_key"].iloc[0])
+
+
+# --------------------------------------------------------------------------- the questions page
+def test_the_questions_page_quotes_only_the_record_of_the_label_the_question_recovers():
+    """A label the record does not hold gets nothing, never another label's rate."""
+    assert T.question_record("Tg", "compartment_best") == []
+    assert T.question_record("Tg", "") == []
+
+
+def test_the_questions_page_lists_the_best_recovering_strategies_first():
+    rows = T.question_record("Tg", "compartment", top=3)
+    if not rows:
+        pytest.skip("the shipped record does not hold compartment in this install")
+    assert 1 <= len(rows) <= 3
+    assert all("compartment hidden" in phrase for _key, phrase in rows)
+    rates = [T._rate(T._record_folds(key, "Tg", "compartment"))["rate"] for key, _p in rows]
+    assert rates == sorted(rates, reverse=True)

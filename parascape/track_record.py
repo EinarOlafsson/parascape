@@ -773,6 +773,31 @@ def record_phrase(strategy: str, organism: str, target: str | None = None) -> st
                 f"against {b['chance']:.0%} by chance)")
     return f"{head}, no better than always naming the commonest class)"
 
+def question_record(organism: str, target: str, top: int = 3) -> list:
+    """For the questions page: the strategies that recovered `target` best with it hidden.
+
+    [(strategy, phrase)], best first, from the shipped record only; empty when the record does not
+    hold this label, so no other label's rate is ever quoted for it. Ranked by the rate over
+    answered genes among strategies that answered enough genes for a rate to mean anything.
+    """
+    target = str(target or "")
+    if target not in recorded_targets(organism):
+        return []
+    ledger = shipped(organism)
+    part = ledger[(ledger["target"].astype(str) == target) & (ledger["mode"].astype(str) == "together")]
+    rows = []
+    for strategy, frame in part.groupby(part["strategy"].astype(str), observed=True):
+        r = _rate(frame)
+        if r["enough"]:
+            rows.append((r["rate"], strategy))
+    out = []
+    for _rate_value, strategy in sorted(rows, reverse=True)[:top]:
+        phrase = record_phrase(strategy, organism, target)
+        if phrase:
+            out.append((strategy, phrase))
+    return out
+
+
 def list_html(rows: pd.DataFrame, rows_of: dict | None = None) -> str:
     """What `my_list` found, condensed first: a line per strategy, then a gene-by-strategy grid.
 

@@ -2603,7 +2603,28 @@ class AnalysisPanel(QtWidgets.QWidget):
             f"{recipe.min_precision:.2f}<br><br><b>inputs</b><br>{inputs}<br><br>"
             + (f"<b>expected</b>: {q['expectation']}" if q.get("expectation") else "")
             + ("<br><br><b>This question is shipped BECAUSE it is refused</b> — "
-               + q.get("reason", "") if q.get("expect_refusal") else ""))
+               + q.get("reason", "") if q.get("expect_refusal") else "")
+            + self._question_record_html(recipe.holdout))
+
+    def _question_record_html(self, target) -> str:
+        """The hold-out track record for the label a question must recover, when the record has it."""
+        try:
+            from . import track_record
+            rows = track_record.question_record(self.organism, target)
+        except Exception:                                   # the record is a help, never a blocker
+            return ""
+        if not rows:
+            return ""
+        from . import strategies
+
+        def name(key):
+            """The plain name of a strategy key, or the key when the registry lacks it."""
+            try:
+                return getattr(strategies.get(key), "name", key)
+            except Exception:
+                return key
+        lines = "".join(f"<br>&nbsp;&nbsp;• {name(key)}: {phrase}" for key, phrase in rows)
+        return f"<br><br><b>track record</b> — the strategies that recover this label best:{lines}"
 
     def check_question(self):
         """Closure only: what this question may use, and what was taken away."""

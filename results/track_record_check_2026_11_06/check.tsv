@@ -1,0 +1,3 @@
+cells	spearman	median_abs_difference	mean_difference	beyond_sampling_error	agrees	reading	within_005
+67	0.875	0.009	-0.015	8.0	False	as recorded	
+67	0.988	0.011	0.012		True	map neighbours over the genes it placed	62.0

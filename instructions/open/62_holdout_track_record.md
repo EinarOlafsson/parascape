@@ -1,5 +1,5 @@
 # 62 · The track record: hold out genes, and show where every strategy is right and wrong
-
+**Status: stages 1-6 done (2026-11-06); pooled record agrees with the scorecard (Spearman 0.988). Left: map neighbours scorecard wording.** Designed 2026-10-03. The user request, verbatim:
 **Status: open (designed 2026-10-03).** The user's request, verbatim:
 
 > "have tests for each strategy and analysis type where we hold out genes and the test is to see if
@@ -170,3 +170,23 @@ fold. So:
 * **Abstention is not a wrong answer**, and must not be averaged into one.
 * **A class with 3 genes** cannot have a meaningful rate; show the count and say so.
 * The existing self-tests must keep working unchanged — this is an addition, not a replacement.
+
+### Status (2026-11-06): stage 2 checked, stage 6 done
+
+* **The pooled record agrees with the scorecard** -- the check stage 2 required and that was never run
+  (`scripts/build_track_record_check_notebook.py`, `notebooks/track_record_check_2026_11_06.ipynb`,
+  `results/track_record_check_2026_11_06/`). Joined on organism, strategy, target and setting, with each
+  strategy read by its own scorecard definition (correct calls per hidden gene, or precision of calls):
+  67 cells, **Spearman 0.988, median difference 0.011, 62 of 67 within 0.05**.
+* **One systematic difference, explained**: map neighbours. Its recorded setting draws the map from a
+  sample of 4,000 genes, so hidden genes outside the sample get no answer. The record counts them; the
+  scorecard counted only placed genes (as recorded, map neighbours is 0.21 lower and the overall
+  Spearman is 0.875). Over the genes it placed the two agree. **The map neighbours scorecard line
+  overstates how many hidden genes it answers** and should say "over the genes on the sampled map".
+* Three strategies (cluster guilt, physical partners, supervised classifier) were recorded at a setting
+  the calibration never tried, so they have no scorecard cell to compare with; counted, not guessed.
+* **The questions page** (the Infer module, "The question"): a question whose label the record holds now
+  lists the three strategies that recover it best, each with its hidden-label rate against the
+  commonest-class baseline (`track_record.question_record`). A label the record does not hold shows
+  nothing rather than another label's rate. Tests in `tests/test_track_record.py`.
+* Left: the map neighbours scorecard wording.
