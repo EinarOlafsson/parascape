@@ -1,0 +1,3 @@
+quantity	estimate	low	high	orthogroups
+error correlation, forest vs kNN	0.536	0.393	0.675	145
+accuracy, forest minus kNN	0.125	0.053	0.199	145

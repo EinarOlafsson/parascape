@@ -73,6 +73,30 @@ def main() -> None:
         "                             either_oracle=either, both=int((right['random forest'] & right['kNN']).sum()))])",
         "summary.to_csv(os.path.join(OUT, 'summary.tsv'), sep='\\t', index=False)",
         "summary")
+    nb.md("### Uncertainty that respects orthogroups (instruction 64.32)",
+          "Genes of one orthogroup are not independent tests, so intervals come from resampling whole "
+          "orthogroups (2,000 draws, seed 0): the error correlation of forest and kNN, and the forest-minus-kNN "
+          "accuracy difference.")
+    nb.code(
+        "groups = ct['group'].astype(str)",
+        "ids = groups.unique()",
+        "rng = np.random.default_rng(0)",
+        "by = {g: np.flatnonzero(groups.to_numpy() == g) for g in ids}",
+        "ra, rb = right['random forest'].to_numpy(), right['kNN'].to_numpy()",
+        "phis, diffs = [], []",
+        "for _ in range(2000):",
+        "    idx = np.concatenate([by[g] for g in rng.choice(ids, size=len(ids), replace=True)])",
+        "    ea, eb = (~ra[idx]).astype(float), (~rb[idx]).astype(float)",
+        "    if ea.std() and eb.std():",
+        "        phis.append(np.corrcoef(ea, eb)[0, 1])",
+        "    diffs.append(ra[idx].mean() - rb[idx].mean())",
+        "ci = pd.DataFrame([dict(quantity='error correlation, forest vs kNN', estimate=round(float(pairs.iloc[0].error_correlation), 3),",
+        "                        low=round(float(np.percentile(phis, 2.5)), 3), high=round(float(np.percentile(phis, 97.5)), 3)),",
+        "                   dict(quantity='accuracy, forest minus kNN', estimate=round(float(ra.mean() - rb.mean()), 3),",
+        "                        low=round(float(np.percentile(diffs, 2.5)), 3), high=round(float(np.percentile(diffs, 97.5)), 3))])",
+        "ci['orthogroups'] = len(ids)",
+        "ci.to_csv(os.path.join(OUT, 'group_intervals.tsv'), sep='\\t', index=False)",
+        "ci")
     nb.write(NB)
 
 

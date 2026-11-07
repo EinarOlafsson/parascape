@@ -1,6 +1,6 @@
 # 64.32 · Measure dependence between inference mechanisms
 
-Status: OPEN — 30%, 2026-10-08. First matched source-profile group intervals accepted; broader methods and lineage coverage remain.
+Status: OPEN — 40%, 2026-11-07. Matched source-profile intervals (2026-10-08) and Pf EC error dependence with orthogroup intervals accepted; other targets and lineage remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -88,3 +88,12 @@ per-gene calibration. This is a separate artifact; app comparison still uses its
 previous report. Root800MiB jobs finish under one second; initial11-check fixture
 packet retained. No new fit/source/benchmark promotion. Nightly history records
 commit/push. Next: expose pinned intervals in the existing comparison view.
+
+## 2026-11-07: error dependence on the Pf EC cohort, with orthogroup intervals
+
+`results/pf_ec_method_agreement_2026_11_07/` (built by `scripts/build_pf_ec_method_agreement_notebook.py`): on the
+frozen 152-gene Plasmodium EC cohort (145 orthogroups), forest and kNN errors correlate **0.536** (orthogroup
+bootstrap 95 % interval 0.393-0.675); the forest is more accurate by 0.125 (0.053-0.199); kNN is not better than
+the training-majority call (McNemar p 0.79). Declared overlap: both read the same source feature closure, so they
+are dependent evidence and must not count as two independent votes. One cohort; the other targets and lineage
+coverage remain.
