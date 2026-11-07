@@ -253,9 +253,10 @@ so the 2026-09-30 notebook was not overwritten). 40 ran; 2 stopped inside their 
 * **Stopped by their strategy:** Q53 (`link_prediction` refuses the cofitness layer by design -- strategy 34
   predicts it instead); Q54 (`trait_regression` on `hosttx_T2`, measured for only 252 genes).
 * **Self-tests:** PASS for Q59, Q63, Q68, Q71/Q77, Q74, Q81, Q85, Q88, Q90 and Q91; FAIL for Q95, Q97 (ortholog
-  transfer, Pf) and Q99; Q98 inconclusive. **Q91 (label outliers, Pf `is_exported`, AUROC 0.994) is suspiciously
-  high and must be checked for circularity (export is called from sequence motifs that may also be features)
-  before it is cited.**
+  transfer, Pf) and Q99; Q98 inconclusive. **Q91 (label outliers, Pf `is_exported`, AUROC 0.994) is not evidence of
+  export biology:** checked the same day -- the label's twin `export_pred_tier` is correctly banned, but the
+  label itself is ExportPred (`plasmodb_pf3d7_exportpred`), a call made from protein sequence, and sequence
+  features remain in the evidence. The number measures agreement with ExportPred's rule. Do not cite it.
 * **Read-steps not automated:** several rows end in a reading step (re-rank by another column, read a
   paralogue pair, filter to membrane classes); the calls are saved, the reading is not done. Some rows reduce to
   the same call as an earlier question (Q57/Q75/Q87 = Q11, Q58/Q82 = Q33, Q61/Q84 = Q05, Q52 = Q19).
