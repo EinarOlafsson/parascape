@@ -36,3 +36,9 @@ than finishing the remaining 140 projects.**
 ## Gate
 The frequency filter becomes usable only when a cutoff exists that removes half the frequent flyers while
 keeping 85 % of the known complexes. Until then the README says so and the score is used for ranking only.
+
+## 2026-11-07: rerun on 77 finished projects (was 73)
+
+`results/pulldown_background_2026_11_07/`: 74 classified. Separation of frequent flyers from complex members
+AUC 0.718 (was 0.710), p 0.006; at a 50 % cutoff 11 of 13 complex members would still be discarded. The gate is
+still unmet; 126 of 203 projects have not finished the queue. Rerun the builder as the queue fills.
