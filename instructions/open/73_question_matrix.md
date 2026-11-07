@@ -416,3 +416,24 @@ Effect on the 21 map questions: 19 ship (was 21). Refused: the mouse-brain quest
 whose 4 transcript-category columns were a whole input block). The BFD2 RIP question loses one column and
 stands. Category lookups are cached per session (a closure of all questions: 92 s -> 44 s). Test in
 `tests/test_recipes.py`; 84 recipe and question tests pass.
+
+## Measured redundancy (2026-11-07): which columns carry the same information
+
+Einar asked whether the map uses feature correlation to decide which features hold the same information. It did
+not (categories are provenance). `scripts/build_redundancy_report_notebook.py` ->
+`notebooks/redundancy_report_2026_11_07.ipynb`, `results/redundancy_report_2026_11_07/` measures it on the
+Toxoplasma table: 322 numeric columns measured on >= 1,000 genes, pairwise Spearman on shared genes (>= 300).
+
+* **322 columns fall into 149 groups** in which every pair has |Spearman| >= 0.8 (complete linkage); 44 groups
+  hold more than one column (`groups.tsv`, `column_groups.tsv`).
+* **About 7 independent axes** (participation ratio of the correlation eigenvalues): the 322 columns are far
+  fewer independent measurements than they look -- the honest caveat of this item, now measured.
+* **Only 2 groups cross a declared category** (`crossing_groups.tsv`): 27 ribosome-profiling columns
+  (category `translation`) move with transcript columns (`transcript`) -- footprints are dominated by mRNA
+  abundance -- so a transcript-labelled question still sees transcript information through translation inputs;
+  and protein length with synonymous SNP count (`sequence` vs `conservation`, a length effect).
+
+Phase 3 (catalogue and redundancy report) has its redundancy half. **Decision for Einar (not applied):** whether
+to add a measured rule next to the category rule -- hold out any input in the same measured group as the label
+(|Spearman| >= 0.8) even when its category differs. On today's table it would change only questions labelled by
+transcript or translation columns.

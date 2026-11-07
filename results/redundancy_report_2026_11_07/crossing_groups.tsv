@@ -1,0 +1,3 @@
+group	columns	categories	example	crosses_categories
+141	27	transcript, translation	rpf99395_extracellular_r1, rpf99395_extracellular_r2, rpf99395_intracellular_r1, rpf99395_intracellular_r2, rpf129869_confluent_r1	True
+8	2	conservation, sequence	length, snp_synonymous	True
