@@ -65,3 +65,10 @@ study own tachyzoite and converted means), each with `filled:<fingerprint>@v1` a
 usable counts -- GSE245775 has none in this snapshot); oocyst / merozoite / enteroepithelial; extracellular
 against intracellular; culture conditions; strain type (already known per run, so it is a positive control
 rather than new metadata); protein level (RNA -> protein transfer, reported separately).
+
+**Searched for the next axes, 2026-11-06** (condition text of the 717 verified runs): no run states
+extracellular, intracellular, egress, oocyst or feline enteroepithelial conditions. "Merozoites" appears in
+GSE224934 and GSE228580, but both are AP2XII-1 knockdowns from one system, and the label is applied to the
+0 h wild-type control as well, so it names the experiment, not the stage -- not an independent stated
+condition to validate against. Sporozoites appear in one study (GSE218921). These axes wait for data that
+states them, or for a curated stage label per run.
