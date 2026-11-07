@@ -1,5 +1,5 @@
 # 62 · The track record: hold out genes, and show where every strategy is right and wrong
-**Status: stages 1-6 done (2026-11-06); pooled record agrees with the scorecard (Spearman 0.988). Left: map neighbours scorecard wording.** Designed 2026-10-03. The user request, verbatim:
+**Status: stages 1-6 done (2026-11-06); pooled record agrees with the scorecard (Spearman 0.988). Map neighbours wording changed 2026-11-07; done.** Designed 2026-10-03. The user request, verbatim:
 
 > "have tests for each strategy and analysis type where we hold out genes and the test is to see if
 > the strategy recapitulates the known label or information on that gene or set of genes. Wherever
@@ -189,3 +189,9 @@ fold. So:
   commonest-class baseline (`track_record.question_record`). A label the record does not hold shows
   nothing rather than another label's rate. Tests in `tests/test_track_record.py`.
 * Left: the map neighbours scorecard wording.
+
+### 2026-11-07: the map neighbours wording
+
+`strategy_catalog._map_nn_test` now names its metric "correct calls per hidden gene on the sampled map", so the
+next calibration sweep records what the scorecard measured; the shipped `strategy_calibration.json` keeps its
+recorded text until then (its numbers are not changed). With this, nothing of instruction 62 is open.

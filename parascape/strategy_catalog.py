@@ -1354,8 +1354,11 @@ def _map_nn_test(ctx, p):
         pr, sh = S.knn_vote(coords, sub, k, query=_unlabelled_but_known(sub, tsub))
         return S.expand_prediction(pr.where(sh >= floor), pos, ctx.n)
 
+    # Scored over the hidden genes ON the sampled map: a gene the sample left off is never called,
+    # and the hold-out track record (instruction 62) counts it, so the name says which it is.
     return S.label_transfer_test(ctx, "map_neighbours", target, predict, restrict=inside,
-                                 n_null=20)
+                                 n_null=20,
+                                 metric="correct calls per hidden gene on the sampled map")
 
 
 register(Strategy(
