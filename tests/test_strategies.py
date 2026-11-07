@@ -529,3 +529,20 @@ def test_a_layer_built_from_the_label_is_refused(planted):
 def test_a_missing_column_is_named(planted):
     with pytest.raises(ValueError, match="choose a column"):
         S.get("feature_knn").run(planted, target="nope")
+
+
+# =========================================================================== provenance (instruction 60)
+def test_a_run_records_what_it_needs_to_be_reproduced(planted, tmp_path):
+    """Organism, version, table fingerprint, seed and time, in the result and in the saved JSON."""
+    import json
+    from parascape import __version__
+    from parascape.searches import fingerprint
+    result = S.get("feature_knn").run(planted)
+    prov = result.provenance
+    assert prov["organism"] == planted.organism
+    assert prov["parascape_version"] == __version__
+    assert prov["table"] == fingerprint(planted.nodes)
+    assert prov["seed"] == planted.seed
+    assert prov["run_at"]
+    saved = [p for p in result.save(str(tmp_path)) if p.endswith("_summary.json")][0]
+    assert json.load(open(saved))["provenance"]["table"]["genes"] == prov["table"]["genes"]

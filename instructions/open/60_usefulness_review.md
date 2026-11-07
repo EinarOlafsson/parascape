@@ -106,3 +106,11 @@ columns its closure allows (rendered and checked: 95 columns cited for the local
 
 The registry has 103 entries without a confirmed publication; every methods text shows which of them it
 touches. Confirming them is curation, and the text makes that list visible per run.
+
+## Change 3 built (2026-11-06): provenance on every strategy result
+
+`StrategyResult.provenance`, filled by `Strategy.run` through `strategies.run_provenance`: organism, ParaScape
+version, the table it ran on (`searches.fingerprint`: gene identifiers hashed in order, gene and column
+counts), the seed and the time; `save` writes it into the summary JSON. Test in `tests/test_strategies.py`.
+Not done here: session save/load, and the resolved column list per strategy (strategies do not yet report
+which columns they read; the methods text of change 2 uses the question closure instead).

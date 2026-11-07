@@ -149,6 +149,22 @@ def expand(values, positions, n: int, fill=NOISE) -> np.ndarray:
 
 
 # --------------------------------------------------------------------------- results
+def run_provenance(ctx, settings: dict | None = None) -> dict:
+    """Organism, version, table fingerprint, seed and time for one run (instruction 60, change 3).
+
+    A saved result without these cannot be reproduced: the same strategy on another release or
+    another organism's table gives a different answer, and nothing in the tables says which.
+    """
+    from . import __version__
+    from .searches import fingerprint
+    settings = settings or {}
+    seed = settings.get("seed", getattr(ctx, "seed", None))
+    return {"organism": getattr(ctx, "organism", None), "parascape_version": __version__,
+            "table": fingerprint(getattr(ctx, "nodes", None)),
+            "seed": None if seed is None else int(seed),
+            "run_at": time.strftime("%Y-%m-%dT%H:%M:%S")}
+
+
 @dataclass
 class StrategyResult:
     """What one run of a strategy produced, including when that is nothing.
@@ -167,6 +183,9 @@ class StrategyResult:
     numbers: dict = field(default_factory=dict)
     settings: dict = field(default_factory=dict)
     seconds: float = 0.0
+    #: What a reader needs to reproduce the run: organism, ParaScape version, the table it ran on
+    #: (`searches.fingerprint`), the seed and when. Filled by `Strategy.run`, written by `save`.
+    provenance: dict = field(default_factory=dict)
 
     @property
     def ok(self) -> bool:
@@ -186,7 +205,8 @@ class StrategyResult:
         with open(path, "w") as fh:
             json.dump({"strategy": self.strategy, "summary": self.summary,
                        "settings": self.settings, "numbers": self.numbers,
-                       "seconds": self.seconds}, fh, indent=1, default=str)
+                       "seconds": self.seconds, "provenance": self.provenance}, fh, indent=1,
+                      default=str)
         return paths + [path]
 
     def plot(self, ctx: "Context | None" = None, color=None, ax=None, size: float = 3.0):
@@ -500,6 +520,7 @@ class Strategy:
         t0 = time.monotonic()
         result = self.runner(ctx, p)
         result.settings, result.seconds = p, time.monotonic() - t0
+        result.provenance = run_provenance(ctx, p)
         return result
 
     def test(self, ctx, **params) -> TestResult:
