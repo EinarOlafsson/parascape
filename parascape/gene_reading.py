@@ -417,6 +417,44 @@ def consensus_lines(gene: str, organism: str = "Tg") -> list:
     return out
 
 
+#: Meta-inference admission partitions (instruction 64.34): label -> results folder of its nested test.
+META_RESULTS = {"dtm_class": "meta_inference_nested_2026_11_07",
+                "compartment": "meta_inference_nested_2026_11_07_compartment",
+                "cellcycle_phase": "meta_inference_nested_2026_11_07_cellcycle_phase"}
+
+
+def meta_lines(gene: str) -> list:
+    """The combined answer for a gene on each label that was tested for it (64.35): admitted or not, the
+    test it passed, and -- for a known gene -- the call made in the untouched outer test with its answer hidden."""
+    import os
+    root = os.path.join(os.path.dirname(os.path.dirname(__file__)), "results")
+    out = []
+    for label, folder in META_RESULTS.items():
+        path = os.path.join(root, folder)
+        if not os.path.exists(os.path.join(path, "summary.tsv")):
+            continue
+        summary = pd.read_csv(os.path.join(path, "summary.tsv"), sep="\t", index_col=0)
+        meta, best = summary.loc["meta-model", "accuracy"], summary.loc["best single", "accuracy"]
+        admitted = meta > best
+        test = (f"tested on untouched orthogroups: combined {meta:.3f} against the best single method "
+                f"{best:.3f}")
+        if not admitted:
+            out.append(f"<b>{escape(label.replace('_', ' '))}</b>: no combined answer -- not admitted ({test}).")
+            continue
+        calls = pd.read_csv(os.path.join(path, "meta_calls.tsv"), sep="\t")
+        row = calls[calls["gene_id"].astype(str) == str(gene)]
+        if not len(row):
+            out.append(f"<b>{escape(label.replace('_', ' '))}</b>: combined answer admitted ({test}); this gene "
+                       "has no known answer on it, so it was not in the test.")
+            continue
+        r = row.iloc[0]
+        verdict = "right" if str(r.meta_call) == str(r.truth) else f"wrong; its answer is {escape(str(r.truth))}"
+        out.append(f"<b>{escape(label.replace('_', ' '))}</b>: combined answer <b>{escape(str(r.meta_call))}</b> "
+                   f"(probability {r.meta_probability:.2f}, made with this gene's answer hidden: {verdict}); "
+                   f"admitted ({test}).")
+    return out
+
+
 def synthesis(reading: GeneReading) -> list:
     """(category, sentence as HTML) for each kind of knowledge the gene has, in `ORDER`.
 

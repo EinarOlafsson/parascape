@@ -122,3 +122,13 @@ def test_every_catalogue_method_is_accounted_for_in_a_gene_profile():
         "gene_id", "mode", "strategy", "target", "prediction", "truth", "correct", "abstained"]))
     assert len(profile) == len(S.catalog())
     assert (profile["status"] != "").all() and not (profile["status"] == "held-out calls").any()
+
+
+def test_combined_answers_say_whether_they_were_admitted():
+    """64.35: an admitted label shows the outer-test call; a failed admission says so, never a call."""
+    lines = GR.meta_lines("TGME49_259020")
+    if not lines:
+        return
+    text = " ".join(lines)
+    assert "not admitted" in text                      # cell-cycle phase failed its admission
+    assert "made with this gene's answer hidden" in text

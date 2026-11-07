@@ -1,6 +1,6 @@
 # 64.35 · Expose meta-inference scorecards at every level
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 50%, 2026-11-07. Gene view shows admitted and refused combined answers with their tests; unknown-gene combined calls and the class/label views remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -33,3 +33,13 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: the gene view
+
+The Gene module's method section now ends with **Combined**: for each label with a meta-inference admission test
+(64.34), either "no combined answer -- not admitted" with its test numbers, or the combined call for this gene made in
+the untouched outer test with the gene's answer hidden, its probability, whether it was right, and the test it passed
+("combined 0.919 against the best single method 0.902 on untouched orthogroups") -- so the known-gene outcome is
+labelled as such, and a global accuracy is never shown as this gene's (`gene_reading.meta_lines`, `META_RESULTS`).
+Open: combined calls for genes with no known answer (a deployment fit, with the label's measured accuracy as its
+conditional reliability), and class and label views.

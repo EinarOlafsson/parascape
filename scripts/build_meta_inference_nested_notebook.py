@@ -97,7 +97,7 @@ def main() -> None:
             "    parts = [p for p in pool.map(run, KEYS) if p is not None and len(p)]",
             "calls = pd.concat(parts, ignore_index=True)",
             "print(calls.strategy.nunique(), 'base methods;', calls.gene_id.nunique(), 'genes')")
-    nb.code("rows, paired = [], dict(meta_only=0, best_only=0)",
+    nb.code("rows, paired, per_gene = [], dict(meta_only=0, best_only=0), []",
             "for k in sorted(calls.outer_fold.unique()):",
             "    c = calls[calls.outer_fold == k]",
             "    tr = c[c.role == 'inner_train'].pivot_table(index='gene_id', columns='strategy', values='call', aggfunc='first').fillna('ABSTAIN')",
@@ -107,7 +107,9 @@ def main() -> None:
             "    yte = c[c.role == 'outer_test'].groupby('gene_id').truth.first().reindex(te.index)",
             "    Xtr = pd.get_dummies(tr.astype(str)); Xte = pd.get_dummies(te.astype(str)).reindex(columns=Xtr.columns, fill_value=0)",
             "    meta = LogisticRegression(max_iter=3000).fit(Xtr.astype(float), ytr)",
-            "    pm = meta.predict(Xte.astype(float))",
+            "    prob = meta.predict_proba(Xte.astype(float)); pm = meta.classes_[prob.argmax(axis=1)]",
+            "    per_gene.append(pd.DataFrame({'gene_id': te.index, 'outer_fold': int(k), 'truth': yte.to_numpy(),",
+            "                                  'meta_call': pm, 'meta_probability': prob.max(axis=1).round(4)}))",
             "    best = max(cols, key=lambda m: float((tr[m] == ytr).mean()))",
             "    pb = te[best].to_numpy()",
             "    pv = te.apply(lambda r: r[r != 'ABSTAIN'].value_counts().index[0] if (r != 'ABSTAIN').any() else 'ABSTAIN', axis=1).to_numpy()",
@@ -120,6 +122,7 @@ def main() -> None:
             "p = binomtest(paired['meta_only'], paired['meta_only'] + paired['best_only'], 0.5).pvalue",
             "admitted = bool(summary.loc['meta-model', 'accuracy'] > summary.loc['best single', 'accuracy'] and p < 0.05)",
             "res.to_csv(os.path.join(OUT, 'folds.tsv'), sep='\\t', index=False); summary.to_csv(os.path.join(OUT, 'summary.tsv'), sep='\\t')",
+            "pd.concat(per_gene).to_csv(os.path.join(OUT, 'meta_calls.tsv'), sep='\\t', index=False)",
             "print('paired:', paired, '; McNemar p', round(p, 5), '; admitted:', admitted)",
             "summary")
     nb.write(NB)
