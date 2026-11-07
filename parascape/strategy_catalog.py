@@ -1038,9 +1038,18 @@ def _battery_test(ctx, p):
                           [feature] if feature in nums else [])
         return bool(len(t) and t["p"].iloc[0] < 0.05)
 
+    def effect(feature, half):
+        """The association's size on one half (Cramer's V or epsilon squared; it has no direction)."""
+        sub = np.full(len(lab), NOISE)
+        sub[half] = lab[half]
+        t = _associations(sub, frame, [feature] if feature in cats else [],
+                          [feature] if feature in nums else [])
+        return round(float(t["effect"].iloc[0]), 4) if len(t) else float("nan")
+
     scramble = lambda half, rng: rng.permutation(lab[half])
     return S.replication_test(ctx, "blind_battery", find, replicate, scramble, np.arange(len(pos)),
-                              n_null=10, min_effect=0.2, label="held-out features the map separates")
+                              n_null=10, min_effect=0.2, label="held-out features the map separates",
+                              effect=effect)
 
 
 register(Strategy(

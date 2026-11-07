@@ -1737,7 +1737,8 @@ def value_test(ctx: Context, key: str, y: pd.Series, predict: Callable, *, frac:
 
 def replication_test(ctx: Context, key: str, find: Callable, replicate: Callable,
                      scramble: Callable, positions, *, n_null: int = 20, min_effect: float = 0.2,
-                     min_findings: int = 3, label: str = "findings", note: str = "") -> TestResult:
+                     min_findings: int = 3, label: str = "findings", note: str = "",
+                     effect: Callable | None = None) -> TestResult:
     """Pattern 5: make findings on half the genes, and ask whether they hold on the other half.
 
     `find(half_a)` returns findings from genes in `half_a` only; `replicate(finding, half_b, state)`
@@ -1765,6 +1766,9 @@ def replication_test(ctx: Context, key: str, find: Callable, replicate: Callable
     observed = float(np.mean(held))
     details = pd.DataFrame({"finding": [str(f) for f in findings], "replicated": held,
                             "first_half_genes": len(half_a), "second_half_genes": len(half_b)})
+    if effect is not None:      # `effect(finding, half)`: the finding's effect size on one half
+        details["effect_first_half"] = [effect(f, half_a) for f in findings]
+        details["effect_second_half"] = [effect(f, half_b) for f in findings]
     nulls = []
     for i in range(int(n_null)):
         ctx.check()

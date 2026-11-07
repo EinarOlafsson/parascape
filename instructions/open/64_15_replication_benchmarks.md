@@ -1,6 +1,6 @@
 # 64.15 · Test split-half and conjunction findings
 
-Status: OPEN — 70%, 2026-11-07. Split-half and independent replication measured; per-finding records kept; effect/direction per finding and testable split clusters remain.
+Status: OPEN — 80%, 2026-11-07. Split-half and independent replication measured; per-finding records with both halves and effect sizes (blind tests); conjunction effects and testable split clusters remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -54,3 +54,9 @@ details -- the finding, whether it held on the second half, and the size of each
 it (blind tests, split clusters, conjunctions). Blind battery on Tg: 53 first-half findings, 52 replicate. Test in
 `tests/test_strategies.py`. Remaining: effect size and direction per finding (the `find` functions return feature
 names only), and split clusters' too-few-findings problem.
+
+**Effect sizes per finding, both halves (same day):** `replication_test(..., effect=...)` records each finding's effect
+on the first and on the second half; the blind battery supplies its association size (Cramer's V or epsilon
+squared -- undirected, since a cluster association has no sign; stated rather than invented). On Tg the 53 findings'
+effects agree between halves at Spearman 0.975. Remaining: effect functions for conjunctions and split clusters,
+and split clusters' too-few-findings problem.
