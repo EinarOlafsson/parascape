@@ -261,6 +261,82 @@ MEASURED_MANY = ("transcript", "translation", "protein_abundance", "host_respons
                  "modification", "conservation")
 
 
+#: A column must be measured on this many genes before a percentile on it means anything.
+UNUSUAL_MIN_MEASURED = 500
+#: Categories that describe how much a gene was studied or what it is called, not what it does.
+UNUSUAL_SKIP = {"identity", "attention"}
+
+
+def unusual(nodes: pd.DataFrame, gene: str, top: int = 10, organism: str | None = None,
+            per_dataset: int = 2) -> pd.DataFrame:
+    """The gene's most extreme measurements, as percentiles among every gene measured (instruction 60).
+
+    "Of everything measured on this gene, what is unusual?" -- for each continuous column measured on at
+    least `UNUSUAL_MIN_MEASURED` genes, the share of measured genes below this one's value (ties split),
+    ranked by distance from the middle. Yes/no columns are left out (a percentile of a flag says
+    nothing), as are identity and attention columns. At most `per_dataset` lines come from one
+    dataset, so ten columns of one experiment do not crowd out everything else.
+    """
+    cols = ["column", "value", "percentile", "measured", "category", "dataset", "rank_high",
+            "rank_low"]
+    if nodes is None or "gene_id" not in nodes:
+        return pd.DataFrame(columns=cols)
+    hit = nodes.index[nodes["gene_id"].astype(str) == str(gene)]
+    if not len(hit):
+        return pd.DataFrame(columns=cols)
+    i = hit[0]
+    rows = []
+    for column in nodes.columns:
+        series = nodes[column]
+        if not pd.api.types.is_numeric_dtype(series) or pd.api.types.is_bool_dtype(series):
+            continue
+        value = series.loc[i]
+        if pd.isna(value):
+            continue
+        measured = series.dropna()
+        if len(measured) < UNUSUAL_MIN_MEASURED or measured.nunique() <= 2:
+            continue
+        category = category_of(column, organism)
+        if category in UNUSUAL_SKIP:
+            continue
+        below = float((measured < value).mean()) + 0.5 * float((measured == value).mean())
+        rows.append((column, float(value), below, int(len(measured)), category,
+                     _dataset_of(column)[0], int((measured > value).sum()) + 1,
+                     int((measured < value).sum()) + 1))
+    frame = pd.DataFrame(rows, columns=cols)
+    if not len(frame):
+        return frame
+    frame["distance"] = (frame["percentile"] - 0.5).abs()
+    frame = frame.sort_values("distance", ascending=False)
+    frame = frame[frame.groupby(frame["dataset"].where(frame["dataset"] != "", frame["column"]))
+                  .cumcount() < per_dataset]
+    return frame.head(top).drop(columns="distance").reset_index(drop=True)
+
+
+def _ordinal(n: int) -> str:
+    return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
+
+
+def unusual_sentences(frame: pd.DataFrame) -> list:
+    """One line per unusual measurement: its rank among the genes measured, and where it is from.
+
+    A rank rather than a rounded percentage: the top gene is "the highest of 8,131", never "higher
+    than 100 %", which would be false.
+    """
+    out = []
+    for r in frame.itertuples(index=False):
+        high = r.percentile >= 0.5
+        rank = r.rank_high if high else r.rank_low
+        word = "highest" if high else "lowest"
+        place = f"the {word}" if rank == 1 else f"the {_ordinal(rank)} {word}"
+        share = rank / r.measured
+        top = f", top {share:.1%}" if share >= 0.001 else ""
+        where = f" ({escape(str(r.dataset))})" if r.dataset else ""
+        out.append(f"<b>{escape(str(r.column))}</b> = {escape(value_text(r.column, r.value))}: "
+                   f"{place} of the {r.measured:,} genes measured{top}{where}.")
+    return out
+
+
 def synthesis(reading: GeneReading) -> list:
     """(category, sentence as HTML) for each kind of knowledge the gene has, in `ORDER`.
 

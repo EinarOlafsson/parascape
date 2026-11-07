@@ -125,6 +125,13 @@ class GeneModule(QtCore.QObject):
                               "knowledge, each with its sources.")
         shell.add_section("What is known", self.known, extent=300, stretch=3)
 
+        self.unusual = _browser()
+        shell.link_style(self.unusual)
+        self.unusual.setToolTip("Of everything measured on this gene, what is furthest from other "
+                                "genes: each as a percentile among every gene measured, with its "
+                                "source. Study effort and identifiers are left out.")
+        shell.add_section("What is unusual about it", self.unusual, extent=170, stretch=1)
+
         holder = QtWidgets.QWidget(shell)
         hl = QtWidgets.QVBoxLayout(holder)
         hl.setContentsMargins(0, 0, 0, 0)
@@ -305,8 +312,18 @@ class GeneModule(QtCore.QObject):
         body = "".join(f"<p>{s}</p>" for _c, s in sentences) or \
             "<p>Nothing recorded about this gene in the kinds of knowledge chosen.</p>"
         self.known.setHtml(head + body)
+        self._render_unusual(r)
         self._render_evidence(r)
         self._render_inferences(r)
+
+    def _render_unusual(self, r) -> None:
+        """The gene's most extreme measurements, among the kinds of knowledge chosen."""
+        frame = GR.unusual(self._nodes(), r.gene, top=30)
+        frame = frame[[self._wanted(c) for c in frame["category"]]].head(10) if len(frame) else frame
+        lines = GR.unusual_sentences(frame)
+        self.unusual.setHtml("".join(f"<p>{s}</p>" for s in lines) or
+                             "<p>Nothing measured on this gene stands out from other genes, or too "
+                             "little is measured on it to say.</p>")
 
     def _render_evidence(self, r) -> None:
         while self.evidence_layout.count() > 1:

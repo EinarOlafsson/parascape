@@ -143,3 +143,12 @@ the genes a result names with genes in general on the same columns, and warns at
 evidence family carries half or more of the positive importance. The Infer answer note shows the missingness
 caution under the named genes; every harness result has `.dominance`. Tests: `tests/test_diagnostics.py` (6).
 Not done: a noise check, and the warnings on the strategy cards (strategies do not report their columns).
+
+## Change 5, the measurable half (2026-11-06): what is unusual about a gene
+
+Gene module, new section **What is unusual about it** (`gene_reading.unusual` / `unusual_sentences`): of every
+continuous column measured on at least 500 genes, the ten furthest from the middle, each as an exact rank
+("the highest of the 8,131 genes measured") with its source, at most two per dataset, identity and attention
+columns left out, filtered by "What to read". Checked on BAG1: the highest of every bradyzoite expression
+measurement -- the textbook answer. Tests in `tests/test_gene_reading.py`; rendered on the real window.
+Not done: "which strategies named it, which maps cluster it" (the star-edge cache), the other half of change 5.

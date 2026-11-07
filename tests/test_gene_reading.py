@@ -84,3 +84,32 @@ def test_gene_table_measurements_join_the_published_facts():
 
 def test_sequences_are_shown_by_length():
     assert GR.value_text("seq_full", "MAAAK") == "5 residues"
+
+
+# --------------------------------------------------------------------------- what is unusual (instruction 60)
+def _unusual_nodes():
+    import numpy as np
+    rng = np.random.default_rng(0)
+    n = 800
+    frame = pd.DataFrame({"gene_id": [f"g{i}" for i in range(n)],
+                          "expr_a": rng.normal(size=n), "expr_b": rng.normal(size=n),
+                          "flag": rng.random(n) > 0.5, "thin": [1.0] * 10 + [None] * (n - 10)})
+    frame.loc[0, "expr_a"] = 99.0       # g0 is the highest on expr_a
+    frame.loc[0, "expr_b"] = 0.0        # and ordinary on expr_b
+    return frame
+
+
+def test_the_most_extreme_measurement_comes_first_as_an_exact_rank():
+    frame = GR.unusual(_unusual_nodes(), "g0")
+    assert frame.iloc[0]["column"] == "expr_a" and frame.iloc[0]["rank_high"] == 1
+    line = GR.unusual_sentences(frame.head(1))[0]
+    assert "the highest of the 800 genes measured" in line and "100" not in line
+
+
+def test_flags_and_thinly_measured_columns_are_not_ranked():
+    frame = GR.unusual(_unusual_nodes(), "g0")
+    assert "flag" not in set(frame["column"]) and "thin" not in set(frame["column"])
+
+
+def test_an_unknown_gene_reads_as_nothing_unusual():
+    assert GR.unusual(_unusual_nodes(), "nope").empty
