@@ -381,3 +381,20 @@ exactly the mechanism information categories were built to replace.
 It now carries `place` as well, so the category rule excludes it from any localisation question whatever a
 family list says. This is the conservative direction: the cost of the extra category is one feature a
 `place` question may not use, and the cost of omitting it is a host-facing model reading its own answer.
+
+## Does the category rule reach the map-and-cluster questions? Measured 2026-11-06
+
+The harness holds out a label's own information category; the Infer module's map-and-cluster questions
+(`questions.py` recipes) use the older association-based closure (`recipes.close`, `excluded_detail`). Measured
+over the 21 shipped questions: **for 18 the closure already removes every input of the label's category.**
+Three would change under the category rule, all with a `transcript` label:
+
+| question (holdout) | inputs of the label category / all inputs | examples |
+|---|---|---|
+| persist in the mouse brain at 14 d (`brain168465_14d_lfc`) | **156 / 174** | `expr_tachy`, `rna108740_Tachyzoites_*` |
+| what the BFD2 switch holds (`bfd2_rip_log2_ip_over_input`) | 1 / 27 | `novel_transcript_models` |
+| held silent in tachyzoites (`ees_vs_tachyzoite_log2`) | 4 / 51 | `n_m6a_peaks`, mRNA decay after actinomycin |
+
+**Decision for Einar (not applied):** is predicting one transcriptome contrast from other transcriptome columns
+circular? Under the category rule the brain question loses nearly all its evidence and would be refused; under
+the closure it stands. Until decided, the shipped answers are unchanged, and this table is the record of the gap.
