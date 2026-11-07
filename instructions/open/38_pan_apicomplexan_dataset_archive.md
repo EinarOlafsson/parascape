@@ -77,3 +77,12 @@ leakage-aware slot hierarchy to other Apicomplexan parasites without repeating d
 - Every successful download has a checksum and provenance record, and existing files are preserved.
 - The archive spans multiple genera and multiple non-leaking biological evidence families.
 - Failed or gated sources are explicit, so a later session does not rediscover the same dead ends.
+
+## Why it cannot be re-run as designed (checked 2026-11-06)
+
+The design re-runs discovery to pick up each new release. Since VEuPathDB release 71 (2026-09-26) the public
+`Current_Release` download paths return 404 and file access needs a login; probed again on 2026-11-06
+(`https://toxodb.org/common/downloads/Current_Release/TgondiiME49/txt/` -> 404). `archive.discover_veupathdb`
+therefore finds nothing now, and the 248-source catalogue of 2026-08-18 is the last complete one. The rule is not
+to work around the login. Gene builds come from Ensembl Genomes (release 63) instead, with NCBI and UniProt;
+VEuPathDB-only tracks (OG6 orthogroups and the like) wait on an account. Nothing else in this item is open.
