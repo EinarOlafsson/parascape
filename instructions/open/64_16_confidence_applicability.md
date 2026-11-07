@@ -45,3 +45,9 @@ question, boosted trees, fresh seed 20): frozen-test AUC **0.831 for the 1,027 g
 for 1-4 publications (87 genes), 0.857 for 5 or more (19 genes); calibration error 0.016 on the unstudied stratum.
 The ranking holds for genes nobody has studied -- nine in ten test genes. Small strata are reported with their
 counts and are not a precise comparison. Open: class rarity, mapping and missingness strata, other questions.
+
+**By missingness (same partition, a logged repeat of the identical strategy):** split into thirds by the share of
+allowed evidence measured on the gene. Ranking holds where little is measured (AUC 0.924 in the least-measured
+third, 0.758 middle, 0.747 most), but **21 of the 22 confident calls fall in the most-measured third and none in the
+least-measured**: thin-evidence genes are ordered well and never called. Calibration error 0.023-0.034 in each
+third. `results/attention_strata_2026_11_07/by_missingness.tsv`.
