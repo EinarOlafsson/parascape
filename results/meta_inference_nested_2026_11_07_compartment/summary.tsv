@@ -1,0 +1,5 @@
+method	accuracy	low	high
+meta-model	0.543	0.52	0.583
+plurality vote	0.507	0.488	0.547
+best single	0.504	0.481	0.537
+commonest class	0.202	0.177	0.216

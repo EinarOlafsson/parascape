@@ -19,9 +19,10 @@ from notebook_runner import ExecutedNotebook  # noqa: E402
 
 DATE = "2026_11_07"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(REPO, "results", f"meta_inference_nested_{DATE}")
-NB = os.path.join(REPO, "notebooks", f"meta_inference_nested_{DATE}.ipynb")
-TARGET = "dtm_class"
+TARGET = sys.argv[sys.argv.index("--target") + 1] if "--target" in sys.argv else "dtm_class"
+_SUFFIX = "" if TARGET == "dtm_class" else f"_{TARGET}"
+OUT = os.path.join(REPO, "results", f"meta_inference_nested_{DATE}{_SUFFIX}")
+NB = os.path.join(REPO, "notebooks", f"meta_inference_nested_{DATE}{_SUFFIX}.ipynb")
 OUTER, INNER, SEED = 5, 3, 100
 
 
@@ -89,7 +90,7 @@ def main() -> None:
             "def run(key):",
             "    out = os.path.join(OUT, f'calls_{key}.parquet')",
             "    if not os.path.exists(out):",
-            "        subprocess.run([sys.executable, SCRIPT, '--strategy', key], check=False,",
+            "        subprocess.run([sys.executable, SCRIPT, '--strategy', key, '--target', TARGET], check=False,",
             "                       env={**os.environ, 'OMP_NUM_THREADS': '2'})",
             "    return pd.read_parquet(out).assign(strategy=key) if os.path.exists(out) else None",
             "with ThreadPoolExecutor(max_workers=7) as pool:",

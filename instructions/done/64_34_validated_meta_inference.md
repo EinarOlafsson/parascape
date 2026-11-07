@@ -80,3 +80,13 @@ for `dtm_class`**, with the stated weakness: recall on the rare SP+TM class is l
 probabilities are well calibrated (0.007). Each further target is its own admission partition (this contract);
 weak and failed cases are kept in `folds.tsv`. A meta answer replaces nothing on its own: it is shown beside the
 methods it combines.
+
+## Further admission partitions (same day, `--target`)
+
+| label | meta-model | best single (chosen on training genes) | plurality | paired (meta-only / best-only), p | verdict |
+|---|---|---|---|---|---|
+| `dtm_class` | 0.919 | 0.902 | 0.817 | 244 / 112, < 0.001 | **admitted** |
+| `compartment` | 0.543 | 0.504 | 0.507 | 460 / 311, < 0.001 | **admitted** |
+| `cellcycle_phase` | 0.620 | 0.629 | 0.593 | 44 / 52, 0.48 | **not admitted** -- the best single method stays the answer |
+
+`results/meta_inference_nested_2026_11_07_compartment/`, `..._cellcycle_phase/`. The failed case is kept, as required.

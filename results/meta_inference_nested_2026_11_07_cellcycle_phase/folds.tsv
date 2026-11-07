@@ -1,0 +1,21 @@
+fold	method	chosen	accuracy	n
+0	meta-model		0.5771428571428572	175
+0	best single	graph_convolution	0.6457142857142857	175
+0	plurality vote		0.5657142857142857	175
+0	commonest class		0.2914285714285714	175
+1	meta-model		0.6171428571428571	175
+1	best single	graph_convolution	0.6057142857142858	175
+1	plurality vote		0.6057142857142858	175
+1	commonest class		0.36	175
+2	meta-model		0.6285714285714286	175
+2	best single	supervised_classifier	0.64	175
+2	plurality vote		0.6171428571428571	175
+2	commonest class		0.26285714285714284	175
+3	meta-model		0.6436781609195402	174
+3	best single	graph_convolution	0.6264367816091954	174
+3	plurality vote		0.5977011494252874	174
+3	commonest class		0.3275862068965517	174
+4	meta-model		0.632183908045977	174
+4	best single	supervised_classifier	0.6264367816091954	174
+4	plurality vote		0.5804597701149425	174
+4	commonest class		0.27011494252873564	174
