@@ -443,6 +443,29 @@ def test_the_gene_module_lists_what_each_method_said_held_out(window):
         or "could not be read" in module.methods.toPlainText()
 
 
+@pytest.mark.parametrize("width", [1024, 1366, 1920])
+def test_the_gene_module_reads_a_measured_and_a_barely_measured_gene_at_each_width(window, qtbot, width):
+    """Instruction 64.36: real widgets at supported widths, including the missing-data case."""
+    from PySide6 import QtWidgets
+    nodes = window.nodes
+    numeric = nodes.select_dtypes("number")
+    sparse = str(nodes.gene_id.iloc[int(numeric.notna().sum(axis=1).to_numpy().argmin())])
+    rich = str(nodes.gene_id.iloc[int(numeric.notna().sum(axis=1).to_numpy().argmax())])
+    window.resize(width, 900)
+    window.show()
+    try:
+        module = window.gene_module.module
+        for gene in (rich, sparse):
+            module.show(gene)
+            QtWidgets.QApplication.processEvents()
+            assert gene in module.known.toPlainText()
+            assert module.unusual.toPlainText().strip()          # either the unusual list or why not
+            assert module.methods.toPlainText().strip()
+        assert window.gene_module.width() <= width
+    finally:
+        window.hide()
+
+
 def test_your_genes_are_read_against_the_answer(window):
     import pandas as pd
     module = window.infer_module.module

@@ -1,6 +1,6 @@
 # 64.36 · Connect every evidence and inference level
 
-Status: OPEN — 20%, 2026-11-07. Gene -> method -> scorecard is one click; the other links of the chain and width checks remain.
+Status: OPEN — 35%, 2026-11-07. Gene -> method -> scorecard is one click; width and missing-data checks pass; back/search context and host counterpart remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -40,5 +40,7 @@ In the Gene module, every method of **What each method said about it, held out**
 Strategies module with that strategy's card (guide, calibration, scorecard, track-record line) shown
 (`GeneModule.open_strategy`). Test in `tests/test_module_shell.py`. Also in place from earlier work: gene -> class
 and label pages (track record), question -> its best-recovering strategies (Infer), result -> methods text and
-bundle. Open: back/search context retention checks, host counterpart and missing-data cases at several window
-widths.
+bundle. Width and missing-data checks (same day): the Gene module reads the best- and the least-measured gene at 1024,
+1366 and 1920 px on the real window, each section saying something (the unusual list or why there is none, the
+method list) and the module never wider than the window (`tests/test_module_shell.py`). Open: back/search context
+retention checks and the host counterpart.
