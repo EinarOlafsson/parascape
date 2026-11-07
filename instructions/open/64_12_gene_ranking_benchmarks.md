@@ -1,6 +1,6 @@
 # 64.12 · Test gene rankings and set retrieval
 
-Status: OPEN — 75%, 2026-11-07. Five adapters (seed expansion, positive-unlabelled, set enrichment, gene-set search; outlier ranking as a synthetic task); recoverability and paralog profiles remain.
+Status: OPEN — 90%, 2026-11-07. All seven ranking tasks have held-out records; full-ranking AUPRC and repeated splits remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -59,3 +59,15 @@ planted (`compartment`: 3,827 real labels of 8,140).
 **Fifth adapter (same day): gene-set search** -- a set-retrieval task (one cluster of about 16 candidates), scored as
 hidden members inside it: 2-3 for four niches, none for micronemes and apicoplast. Remaining: recoverability atlas
 (category-level, not per gene) and paralog profiles (pairs).
+
+**Recoverability and paralog profiles (same day): their held-out records already exist** in the shipped calibration
+(`strategy_calibration.json`, sweep of 2026-09-26: settings chosen on seeds 1-3, reported on seeds 4-5, against a
+measured null). Recoverability atlas: hidden-gene AUROC of the categories it ranks in its top half, skill 0.50 (Tg,
+25 conclusive runs) and 0.69 (Pf), graded reliable. Paralog divergence: AUROC of profile divergence for paralogs
+of different compartment, skill 0.16 (Tg, reliable) and 0.11 (Pf, weak) -- a paralog-label proxy, never a
+verified biological difference, as this contract requires it to be called.
+
+**Where this leaves the contract:** all seven named ranking tasks have held-out records (five built today on
+orthogroup-disjoint seed / hidden splits at depths fixed in advance, outlier ranking marked synthetic, two from the
+calibration sweep). Not yet: AUPRC over the full ranking (the rankings stop at 2,000 genes) and repeats over several
+splits for intervals.
