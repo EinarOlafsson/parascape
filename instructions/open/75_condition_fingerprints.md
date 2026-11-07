@@ -72,3 +72,9 @@ GSE224934 and GSE228580, but both are AP2XII-1 knockdowns from one system, and t
 0 h wild-type control as well, so it names the experiment, not the stage -- not an independent stated
 condition to validate against. Sporozoites appear in one study (GSE218921). These axes wait for data that
 states them, or for a curated stage label per run.
+
+**Protein level, checked 2026-11-07:** none of the 26 protein-abundance columns of the shipped table is measured on
+bradyzoites or under alkaline stress, so the RNA-built bradyzoite fingerprint has no stated protein sample to be
+tested on. The only stage-stating proteome is the oocyst iTRAQ set (8 ratio columns), whose channel-to-stage
+mapping is not recorded clearly enough to grade an oocyst axis against. This axis waits on the uniform PRIDE
+search (instruction 69) reaching a bradyzoite or oocyst proteome with stated samples.
