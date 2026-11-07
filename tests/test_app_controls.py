@@ -1448,6 +1448,16 @@ def test_imported_columns_can_build_a_map(win, tmp_path):
     assert panel.spec().extra_columns == ()
 
 
+def test_an_import_records_its_exact_input_organism_and_unresolved_state(win, tmp_path):
+    """Instruction 64.37: the input hash and organism travel with the import, and its validation
+    state says plainly that nothing registers where the columns came from."""
+    import hashlib
+    path = _user_table(tmp_path, win)
+    record = win.apply_import(win.build_import_dialog(path))
+    assert record["source_sha256"] == hashlib.sha256(open(path, "rb").read()).hexdigest()
+    assert record["organism"] and record["validation"].startswith("unresolved")
+
+
 def test_imported_columns_reach_the_strategies_and_the_guided_panel(win, tmp_path):
     """An imported screen that reached only the evidence panel was a column that did nothing."""
     win.apply_import(win.build_import_dialog(_user_table(tmp_path, win)))

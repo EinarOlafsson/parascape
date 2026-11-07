@@ -1200,6 +1200,18 @@ class Window(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.warning(self, "Import", str(exc))
             self.status.showMessage(f"import refused: {exc}")
             return None
+        # What a saved session needs to know the import again (instruction 64.37): the exact input,
+        # the organism it was read for, and an explicit validation state -- an imported column has no
+        # registered dataset or leakage family, so it is unresolved rather than silently trusted.
+        try:
+            import hashlib
+            record["source_path"] = str(dialog.path)
+            record["source_sha256"] = hashlib.sha256(open(dialog.path, "rb").read()).hexdigest()
+        except (OSError, AttributeError, TypeError):
+            record["source_sha256"] = None
+        record["organism"] = SPECIES[self.species]["code"] if getattr(self, "species", None) in SPECIES else None
+        record["validation"] = ("unresolved: imported columns have no registered dataset or leakage family; "
+                                "closure guards them by measured association only")
         self.nodes = merge_into(self.nodes, imported)
         self.imports.append(record)
         self.numerics = numeric_columns(self.nodes)

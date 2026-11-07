@@ -1,6 +1,6 @@
 # 64.37 · Make user data reach the same inference flow
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 50%, 2026-11-07. Imports reach the strategy and guided contexts; the record carries input hash, organism and an explicit unresolved state; label exclusion and session save/load remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -33,3 +33,14 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07
+
+* **Done:** a real fixture import now changes the strategy inputs in the same session -- `StrategyPanel.set_nodes`
+  and `GuidedPanel.set_context`, called by `Window.apply_import` (instruction 60, change 8; test in
+  `tests/test_app_controls.py`).
+* **Done:** every import record carries `source_sha256` (the exact file), `organism`, and `validation` -- explicitly
+  "unresolved: imported columns have no registered dataset or leakage family; closure guards them by measured
+  association only". Test in `tests/test_app_controls.py`.
+* **Open:** excluding an imported label's own import from the evidence when it is used as truth (by import, not
+  only by association), and session save/load of imports with their local results.
