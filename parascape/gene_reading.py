@@ -376,6 +376,27 @@ def strategy_profile(gene: str, organism: str = "Tg", ledger: pd.DataFrame | Non
     return pd.DataFrame(rows)
 
 
+def stale_records(gene: str, nodes: pd.DataFrame | None, organism: str = "Tg") -> list:
+    """Labels whose hold-out record for this gene no longer matches the table (64.30): the answer the record
+    was scored against differs from the gene's current value, so its right/wrong verdicts are out of date."""
+    from . import track_record as T
+    if nodes is None or "gene_id" not in nodes:
+        return []
+    ledger = T.shipped(organism)
+    mine = ledger[(ledger["gene_id"].astype(str) == str(gene)) & (ledger["mode"].astype(str) == "together")]
+    row = nodes[nodes["gene_id"].astype(str) == str(gene)]
+    if not len(mine) or not len(row):
+        return []
+    out = []
+    for target, part in mine.groupby(mine["target"].astype(str), observed=True):
+        if target not in row.columns:
+            continue
+        now, then = str(row.iloc[0][target]), str(part["truth"].iloc[0])
+        if now != then and now.lower() not in ("nan", "none", ""):
+            out.append(f"{target.replace('_', ' ')}: scored against {then}, the table now says {now}")
+    return out
+
+
 _AGREEMENT_CACHE: dict = {}
 
 

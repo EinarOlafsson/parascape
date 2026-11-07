@@ -1,6 +1,6 @@
 # 64.30 · Show every strategy's answer for a gene
 
-Status: OPEN — 85%, 2026-11-07. Every method per gene with its held-out call, grade, scorecard link, agreement and combined answer; stale-record flagging remains.
+Status: DONE 2026-11-07. One gene inference profile: every method held out, grade, scorecard link, agreement with its measured accuracy, combined answer, stale flag.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -60,3 +60,8 @@ states.
 * **All 39 catalogue entries accounted for**, unsupported ones saying why.
 * **Remaining:** a "stale" state when a record predates the current table (none is flagged today) and visible
   progress for any query-dependent work (none is launched from this section).
+
+**Stale records (same day):** `gene_reading.stale_records` compares, per label, the answer the hold-out record was
+scored against with the gene's current value; where they differ the Gene module says the record's verdicts on that
+label are out of date until it is rebuilt. Today none of 3,000 genes checked is stale. Test in
+`tests/test_gene_reading.py`. All done-when points are met.

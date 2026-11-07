@@ -380,6 +380,14 @@ class GeneModule(QtCore.QObject):
         head = (f"<p><b>{len(spoke)}</b> of the {len(profile)} methods were tested on this gene with its "
                 "answer hidden; the others are listed with why.</p>")
         try:
+            stale = GR.stale_records(r.gene, self._nodes())
+            if stale:
+                head += ("<p><b>Stale:</b> the hold-out record was built on an older answer for this gene -- "
+                         + escape("; ".join(stale)) + ". Its right/wrong verdicts on those labels are out of "
+                         "date until the record is rebuilt.</p>")
+        except Exception:
+            pass
+        try:
             head += "".join(f"<p>{line}</p>" for line in GR.consensus_lines(r.gene))
         except Exception:
             pass

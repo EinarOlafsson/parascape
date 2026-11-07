@@ -132,3 +132,16 @@ def test_combined_answers_say_whether_they_were_admitted():
     text = " ".join(lines)
     assert "not admitted" in text                      # cell-cycle phase failed its admission
     assert "made with this gene's answer hidden" in text
+
+
+def test_a_record_built_on_an_older_answer_is_flagged_stale():
+    """64.30: when the table's value no longer matches what the hold-out record was scored against."""
+    import os
+    from parascape import track_record as T
+    ledger = T.shipped("Tg")
+    row = ledger[(ledger["mode"].astype(str) == "together") & (ledger["target"].astype(str) == "dtm_class")].iloc[0]
+    nodes = pd.read_parquet(os.path.join(os.path.dirname(os.path.dirname(__file__)), "parascape", "data", "nodes.parquet"))
+    assert GR.stale_records(str(row["gene_id"]), nodes) == []
+    changed = nodes.copy()
+    changed.loc[changed["gene_id"].astype(str) == str(row["gene_id"]), "dtm_class"] = "SOMETHING_ELSE"
+    assert any("dtm class" in s for s in GR.stale_records(str(row["gene_id"]), changed))
