@@ -173,6 +173,10 @@ class LabelRow:
     precision: float
     recall: float
     f1: float
+    #: How many groups hold 80 % of the label's clustered genes, and the share left in no group:
+    #: a label split over many groups is fragmented however good its best group (64.14).
+    groups_for_80: int = 0
+    unclustered: float = 0.0
 
 
 @dataclass
@@ -233,8 +237,16 @@ def label_rows(groups, labels, noise: int = -1) -> list:
             f = _f1(p, r)
             if f > best[3]:
                 best = (int(g), p, r, f)
+        clustered = groups[mine & (groups != noise)]
+        counts = sorted(Counter(clustered.tolist()).values(), reverse=True)
+        need, covered = 0, 0
+        for c in counts:
+            if covered >= 0.8 * len(clustered):
+                break
+            covered += c
+            need += 1
         out.append(LabelRow(str(label), int(n), *best[:1], float(best[1]), float(best[2]),
-                            float(best[3])))
+                            float(best[3]), need, 1.0 - len(clustered) / n))
     out.sort(key=lambda row: (-row.f1, -row.genes))
     return out
 

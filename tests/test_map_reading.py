@@ -102,3 +102,14 @@ def test_a_group_of_unknowns_is_kept_but_not_scored():
     rows = MR.group_rows([0, 0, 1, 1], ["", "", "a", "a"])
     unknown = next(r for r in rows if r.group == 0)
     assert unknown.labelled == 0 and unknown.unknown == 2 and unknown.label == ""
+
+
+def test_a_label_split_over_groups_is_reported_as_fragmented():
+    """64.14: groups needed for 80 % of the label's grouped genes, and its unclustered share."""
+    import numpy as np
+    from parascape import map_reading as MR
+    groups = np.array([0, 0, 1, 1, 2, 2, -1, 3, 3, 3])
+    labels = np.array(["a", "a", "a", "a", "a", "a", "a", "b", "b", "b"], dtype=object)
+    rows = {r.label: r for r in MR.label_rows(groups, labels)}
+    assert rows["a"].groups_for_80 == 3 and abs(rows["a"].unclustered - 1 / 7) < 1e-9
+    assert rows["b"].groups_for_80 == 1 and rows["b"].unclustered == 0.0

@@ -573,11 +573,13 @@ class MapModule(QtCore.QObject):
             "to put the group on the map."))
         self.group_table.cellClicked.connect(self._group_clicked)
         self.label_table = self._table(["label", "genes", "best group", "precision", "recall",
-                                        "F1"])
+                                        "F1", "groups for 80 %", "in no group"])
         self.label_table.setToolTip(TH.tip(
             "One row per label value: the group that captures it best, and how well. A label "
-            "with high precision AND recall is one the grouping has learned. Click a row to put "
-            "that group on the map."))
+            "with high precision AND recall is one the grouping has learned. 'Groups for 80 %': "
+            "how many groups hold 80 % of the label's grouped genes -- a label split over many "
+            "groups is fragmented, however good its best group. 'In no group': its share left "
+            "unclustered. Click a row to put that group on the map."))
         self.label_table.cellClicked.connect(self._label_clicked)
         self.group_tabs.addTab(self.group_table, "Groups")
         self.group_tabs.addTab(self.label_table, "Labels")
@@ -679,7 +681,8 @@ class MapModule(QtCore.QObject):
             (r.group, r.size, r.label or "—", r.precision, r.recall, r.f1, r.unknown)
             for r in self._group_rows])
         self._fill(self.label_table, [
-            (r.label, r.genes, r.group if r.group >= 0 else "—", r.precision, r.recall, r.f1)
+            (r.label, r.genes, r.group if r.group >= 0 else "—", r.precision, r.recall, r.f1,
+             r.groups_for_80, r.unclustered)
             for r in self._label_rows])
 
     @staticmethod

@@ -1,6 +1,6 @@
 # 64.14 · Test map and module recovery
 
-Status: OPEN — 85%, 2026-11-07. Held-out recovery, noise and fragmentation measured for maps and mechanisms; showing them on the result cards remains.
+Status: DONE 2026-11-07. Held-out recovery, noise and fragmentation measured and shown on the Map module cards.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -55,3 +55,10 @@ ships (nothing refitted):
 is 81-97 % clustered (noise is not the problem: maps leave 6-20 % unclustered, one 44 %) but covering 80 % of its
 clustered members takes **3-9 clusters** -- the classes are split across several clusters, which is why their F1
 stays low. Open: class-level confusion and these controls shown on the result cards (today they are tables).
+
+**On the cards (same day):** the Map module **Labels** table now shows, per label, "groups for 80 %" (how many groups
+hold 80 % of its grouped genes) and "in no group" (its unclustered share), beside the best group's precision, recall
+and F1 (`map_reading.LabelRow.groups_for_80`, `.unclustered`; test in `tests/test_map_reading.py`). The **Groups**
+table shows each group's majority label with its precision -- the confusion seen from the group side. All done-when
+points are met: label-free selection, held-out recovery against chance, noise and fragmentation, geometric and
+biological metrics kept apart.
