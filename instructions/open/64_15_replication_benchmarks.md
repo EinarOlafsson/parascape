@@ -1,6 +1,6 @@
 # 64.15 · Test split-half and conjunction findings
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 50%, 2026-11-07. Split-half replication records exist for blind tests and conjunctions; split clusters find too few first-half findings to test; independent-dataset replication measured separately.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -33,3 +33,18 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: what the replication records say
+
+* **Split-half replication (calibration sweep 2026-09-26, findings selected on the first half before the second is
+  read):** blind tests -- share of first-half findings that replicate on the second half, skill 0.95 (Tg) / 0.88 (Pf),
+  every run passing; conjunctions -- 0.49 (Tg, 10 of 15 runs pass), untestable for Pf.
+* **Split clusters: untestable as built.** All 30 runs inconclusive: the first half yields 0-2 findings where 3 are
+  needed before replication can be scored (41 of the inconclusive notes read "only 0 findings on the first half").
+  This is a finding about the mechanism's yield, not a pass or fail.
+* **Independent-dataset replication, kept separate as required:** across studies, not halves of one --
+  the perturbation atlas finds the same perturbation in another lab's experiment at median rank 1-3 against chance
+  59-99 (`results/perturbation_atlas_2026_11_07/`); wild-type alkaline stress agrees between independent studies at
+  Spearman 0.44 (instruction 79); BFD1 gain and loss reproduce across labs (`expression_traits_2026_11_06`).
+* **Open:** per-finding records (both halves, effect, direction) on cards, and a lower finding threshold or larger
+  first half for split clusters so it can be tested at all.
