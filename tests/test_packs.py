@@ -202,3 +202,14 @@ def test_commands_build_against_the_installed_baseline(prepared, capsys):
     with pytest.raises(ValueError, match="loses"):
         build_space.main(args)
     assert archive.read_bytes() == before
+
+
+def test_extra_members_travel_hash_checked_and_cannot_replace_tables(prepared, tmp_path):
+    space, data, nodes, archive, sha = prepared
+    notice = tmp_path / "NOTICE.txt"
+    notice.write_text("Source attribution\n")
+    checksum = build_pack(space, data, "3.0", {c: "O" for c in nodes}, archive, extra={"NOTICE.txt": notice})
+    installed = packs.install(archive, checksum)
+    assert (installed / "NOTICE.txt").read_text() == "Source attribution\n"
+    with pytest.raises(ValueError, match="would replace"):
+        build_pack(space, data, "4.0", {c: "O" for c in nodes}, archive, extra={space.nodes: notice})

@@ -1,0 +1,26 @@
+{
+ "version": "2026.11.07",
+ "sha256": "21f7d87f4b39de3b420801bda9db9e3d9ab59e25f466b30e202fd70c08fd4462",
+ "archive": "parascape_Hs_2026.11.07.zip",
+ "licences": {
+  "gene_id": "O",
+  "gene_name": "O",
+  "gtex_fibroblast_median_tpm": "O",
+  "gtex_lcm_hepatocyte_median_tpm": "O",
+  "HPA_RNA_tissue_specificity": "SA",
+  "HPA_RNA_tissue_distribution": "SA",
+  "HPA_RNA_singlecell_specificity": "SA",
+  "HPA_subcellular_location": "SA",
+  "HPA_subcellular_reliability": "SA",
+  "HPA_secretome_location": "SA",
+  "HPA_protein_class": "SA",
+  "shipped_protein_count": "O"
+ },
+ "opened": {
+  "installed_at": "spaces/Hs/2026.11.07",
+  "genes": 58988,
+  "identical": true,
+  "notice": true,
+  "protein_rows_as_genes": 0
+ }
+}

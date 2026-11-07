@@ -1,6 +1,6 @@
 # 64.21 · Build the human gene information space
 
-Status: OPEN — 60%, 2026-11-07. Foundation, documentary terms, HPA annotations and reviewed protein links built and checked; the distributable pack (opening, attribution notices) remains.
+Status: DONE — 100%, 2026-11-07. Foundation, documentary terms, HPA annotations, reviewed protein links and a distributable pack that installs and opens on its own. Built; Einar's review pending -- reopen on his feedback.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -26,9 +26,9 @@ follow-up and its dependency rather than silently widening the item.
 
 - [x] Declare canonical gene/protein mappings and per-column species, units, licenses, provenance and targets; quantify one-to-many/lost joins.
 - [x] A notebook reproduces the build and per-source sanity checks; unique IDs, non-loss and graph-order checks pass.
-- [ ] A validated distributable human pack opens independently; protein reference rows are not relabeled as genes.
-- [ ] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
-- [ ] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
+- [x] A validated distributable human pack opens independently; protein reference rows are not relabeled as genes.
+- [x] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
+- [x] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
 
 ## Completion evidence
 
@@ -140,3 +140,22 @@ order, same values).
 
 Remaining: the distributable pack (pack format, GTEx/UniProt/HPA attribution notices, opening independently in
 ParaScape) and its benchmark gate.
+
+## Last partition: the distributable pack (2026-11-07)
+
+`scripts/build_human_pack_notebook.py` → `notebooks/human_pack_2026_11_07.ipynb`, `results/human_pack_2026_11_07/`
+(`parascape_Hs_2026.11.07.zip`, 2.5 MB, SHA256 in `SHA256`). Members: `hs_gene_nodes.parquet` (58,988 genes),
+`hs_gene_graph.npz` (3-D display layout: UMAP of log GTEx expression + HPA category indicators, cosine, seed 0;
+display only, never an input), `hs_protein_gene_links.parquet`, `column_metadata.json`, `NOTICE.txt`.
+
+- Licence per column: GTEx and UniProt-derived columns O, HPA columns SA. `NOTICE.txt` carries what the terms
+  require: GTEx source/date acknowledgment, no endorsement, a stale-version pointer; UniProt CC BY 4.0; HPA
+  CC BY-SA 4.0 with the share-alike condition.
+- `spaces.build_pack` gained `extra=` so notices, column descriptions and link tables travel hash-checked in the
+  pack and cannot replace the node table or graph (`tests/test_packs.py`, 16 pass).
+- Opened on its own: installed into an empty cache with its checksum, read back through `organisms.nodes_path` /
+  `graph_path`: identical table, valid graph order, notice present, 0 protein rows used as genes.
+
+Gaps, stated: Hs is not yet registered in `organisms.SPACES` (the app does not list it until 64.24 wires host
+spaces in), the pack is not hosted for download, and biological benchmarks on human labels belong to 64.28 (the
+human inference pack). No PyPI or pack release before the licence review in item 90.
