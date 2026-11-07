@@ -502,6 +502,9 @@ class MapModule(QtCore.QObject):
         shell.add_action("Full 3D view", lambda: _show_map(window),
                          tip="Leave the module for the map in the main window, with every tool "
                              "it has.")
+        shell.add_action("Save the figure…", lambda: self._save_figure(),
+                         tip="The view as a vector figure (SVG or PDF) or a 3x PNG, drawn again for the "
+                             "file rather than captured from the screen.")
         shell.add_action("Export", lambda: _export(window),
                          tip="Save the genes shown, with their values, as a table.")
         shell.borrow("Console and AI chat", [("Console", getattr(window, "console_dock", None)),
@@ -1072,6 +1075,18 @@ class MapModule(QtCore.QObject):
             f"Tries the Advanced settings in turn on a sample of genes and scores each map by "
             f"how often neighbours agree on {self.colour_box.currentText()} -- the label you "
             f"are colouring by. Click a row to use those settings.")
+
+    def _save_figure(self) -> str:
+        """Save the view as a figure (SVG, PDF or a 3x PNG), and say where it went."""
+        from .figure_export import ask_and_save
+        path = ask_and_save(self.view, self.shell, name=self.shell.key, title=self.figure_title())
+        if path:
+            self.shell.say(f"figure saved: {path}")
+        return path
+
+    def figure_title(self) -> str:
+        """The figure title: the module and what the view shows."""
+        return f"ParaScape {self.shell.key}"
 
     def _find_best(self) -> None:
         section = self.shell.sections.get("Find the best map for a label")

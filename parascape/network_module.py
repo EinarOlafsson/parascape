@@ -195,6 +195,13 @@ class NetworkView(QtWidgets.QWidget):
         image.setDevicePixelRatio(ratio)
         image.fill(QtCore.Qt.GlobalColor.transparent)
         painter = QtGui.QPainter(image)
+        self._draw_background(painter)
+        painter.end()
+        self._cache = (image, self.center.copy(), self.zoom, (self.width(), self.height()))
+        self.update()
+
+    def _draw_background(self, painter) -> None:
+        """The whole network, faint: the strongest chosen links and every gene off the focus."""
         p = self.to_screen(self.xy)
         links = self.links
         if links is not None and len(links):
@@ -221,9 +228,14 @@ class NetworkView(QtWidgets.QWidget):
             colour.setAlphaF(0.35)
             painter.setBrush(colour)
             painter.drawEllipse(QtCore.QPointF(float(p[i, 0]), float(p[i, 1])), 1.6, 1.6)
-        painter.end()
-        self._cache = (image, self.center.copy(), self.zoom, (self.width(), self.height()))
-        self.update()
+
+    def paint_figure(self, painter) -> None:
+        """The view as a figure: background and focus drawn as vectors, never the cached image."""
+        if not len(self.xy):
+            return
+        painter.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing, True)
+        self._draw_background(painter)
+        self._paint_focus(painter)
 
     def paintEvent(self, _event):                         # noqa: N802
         if not len(self.xy):
@@ -487,6 +499,9 @@ class NetworkModule(QtCore.QObject):
                              "calls are right (Infer).")
         shell.add_action("Whole network", lambda: self.view.fit(),
                          tip="Zoom out to the whole network.")
+        shell.add_action("Save the figure…", lambda: self._save_figure(),
+                         tip="The view as a vector figure (SVG or PDF) or a 3x PNG, drawn again for the "
+                             "file rather than captured from the screen.")
         shell.add_action("Export its links", self._export,
                          tip="Save the links of the gene in focus as a table.")
         shell.borrow("Console and AI chat", [("Console", getattr(window, "console_dock", None)),
@@ -679,6 +694,18 @@ class NetworkModule(QtCore.QObject):
         from .map_module import open_in
         open_in(self.window)
         self.window.map_module.module.select(list(self.focus), "")
+
+    def _save_figure(self) -> str:
+        """Save the view as a figure (SVG, PDF or a 3x PNG), and say where it went."""
+        from .figure_export import ask_and_save
+        path = ask_and_save(self.view, self.shell, name=self.shell.key, title=self.figure_title())
+        if path:
+            self.shell.say(f"figure saved: {path}")
+        return path
+
+    def figure_title(self) -> str:
+        """The figure title: the module and what the view shows."""
+        return f"ParaScape {self.shell.key}"
 
     def _export(self) -> None:
         if not self.focus or self._links is None:

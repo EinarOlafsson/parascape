@@ -125,3 +125,12 @@ calibration (`per_target`, shipped in `strategy_calibration.json` for every stra
 **Done the same day:** `guided.label_weight` reads the per-label cell when the person chose a label: skill whose
 lower bound is above zero adds up to 1.5 to the ranking score, measured no-skill on that label (upper bound at
 or below zero) costs 2.0, and a label never held out moves nothing. Test in `tests/test_guided.py`.
+
+## Change 4 built (2026-11-06): figure export from the module views
+
+`parascape/figure_export.py`: `save(widget, path)` writes SVG or PDF as **vectors** -- the view is drawn again
+onto the export device, so points and lines stay points and lines (checked: no embedded image in the Map or
+Network SVG) -- or a PNG at three times the screen. A view may offer `paint_figure(painter)`; the Network view
+does, because on screen its background is a cached image, and the figure draws it as vectors instead. Map and
+Network each gain **Save the figure…** (SVG / PDF / PNG). Tests: `tests/test_figure_export.py` (5). Rendered and
+checked on the real window: Map 1.9 MB SVG, Network 3.9 MB SVG with every link and gene.
