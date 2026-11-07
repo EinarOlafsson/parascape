@@ -1,0 +1,4732 @@
+[
+ {
+  "qid": "Q51",
+  "organism": "Tg",
+  "strategy": "positive_unlabeled",
+  "question": "Which uncharacterised proteins behave like known rhoptry proteins?",
+  "anchor": "PMID:41975467",
+  "grade": "reliable",
+  "settings": "{\"bags\": 15, \"top\": 300, \"genes\": \"123 genes\"}",
+  "seconds": 1.5,
+  "summary": "123 positives against the rest of the proteome, 15 bags; the 300 genes that most resemble your list are listed, scored only by models that did not train on them. Nothing on the list is assumed about any other gene: unlabelled is treated as unknown, not as negative.",
+  "rows[candidates]": 300,
+  "rows[not found]": 0,
+  "lead_table": "candidates",
+  "head": [
+   {
+    "gene_id": "TGME49_285870",
+    "product": "SAG-related sequence SRS20A",
+    "score": 5.149060856225463
+   },
+   {
+    "gene_id": "TGME49_275670",
+    "product": "alveolin domain containing intermediate filament IMC15",
+    "score": 4.866833149288423
+   },
+   {
+    "gene_id": "TGME49_293430",
+    "product": "hypothetical protein",
+    "score": 4.853950205834619
+   },
+   {
+    "gene_id": "TGME49_233030",
+    "product": "gliding-associated protein GAP70",
+    "score": 4.588175658855618
+   },
+   {
+    "gene_id": "TGME49_312950",
+    "product": "RAP-1 family protein",
+    "score": 4.4221800129573845
+   },
+   {
+    "gene_id": "TGME49_316260",
+    "product": "hypothetical protein",
+    "score": 4.330880890676278
+   },
+   {
+    "gene_id": "TGME49_210420",
+    "product": "hypothetical protein",
+    "score": 4.2391978938928325
+   },
+   {
+    "gene_id": "TGME49_246930",
+    "product": "calmodulin CAM1",
+    "score": 4.207966720971732
+   },
+   {
+    "gene_id": "TGME49_286590",
+    "product": "microtubule associated protein SPM2",
+    "score": 4.137483932211818
+   },
+   {
+    "gene_id": "TGME49_269920",
+    "product": "phosphatidylserine decarboxylase",
+    "score": 3.802165877716962
+   },
+   {
+    "gene_id": "TGME49_301420",
+    "product": "SAS6-like protein",
+    "score": 3.7939726152300683
+   },
+   {
+    "gene_id": "TGME49_252200",
+    "product": "palmitoyltransferase DHHC7",
+    "score": 3.7729715582131416
+   },
+   {
+    "gene_id": "TGME49_315770",
+    "product": "cytochrome p450",
+    "score": 3.5973038594601525
+   },
+   {
+    "gene_id": "TGME49_249570",
+    "product": "hypothetical protein",
+    "score": 3.288446789653339
+   },
+   {
+    "gene_id": "TGME49_232030",
+    "product": "inner membrane complex protein IMC21",
+    "score": 3.245230384073087
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q52",
+  "organism": "Tg",
+  "strategy": "positive_unlabeled",
+  "question": "Which proteins behave like the known PV-membrane nutrient channels?",
+  "anchor": "PMID:42555613",
+  "grade": "reliable",
+  "settings": "{\"bags\": 15, \"top\": 300, \"genes\": \"193 genes\"}",
+  "seconds": 0.2,
+  "summary": "193 positives against the rest of the proteome, 15 bags; the 300 genes that most resemble your list are listed, scored only by models that did not train on them. Nothing on the list is assumed about any other gene: unlabelled is treated as unknown, not as negative.",
+  "rows[candidates]": 300,
+  "rows[not found]": 0,
+  "lead_table": "candidates",
+  "head": [
+   {
+    "gene_id": "TGME49_220890",
+    "product": "dense granule protein GRA12A",
+    "score": 7.872312800866423
+   },
+   {
+    "gene_id": "TGME49_247195",
+    "product": "rhoptry discharge factor RDF1",
+    "score": 5.060954838492508
+   },
+   {
+    "gene_id": "TGME49_270700",
+    "product": "membrane protein MYR2",
+    "score": 5.015643758190658
+   },
+   {
+    "gene_id": "TGME49_311230",
+    "product": "basal complex component BCC7",
+    "score": 4.640933889479439
+   },
+   {
+    "gene_id": "TGME49_316710",
+    "product": "hypothetical protein",
+    "score": 4.586938608101564
+   },
+   {
+    "gene_id": "TGME49_309590",
+    "product": "rhoptry protein ROP1",
+    "score": 4.421393923844861
+   },
+   {
+    "gene_id": "TGME49_283540",
+    "product": "microneme protein MIC20",
+    "score": 4.3349171049817965
+   },
+   {
+    "gene_id": "TGME49_204050",
+    "product": "subtilisin SUB1",
+    "score": 4.266623071179582
+   },
+   {
+    "gene_id": "TGME49_257380",
+    "product": "inhibitor of cysteine protease 1",
+    "score": 4.20449071025377
+   },
+   {
+    "gene_id": "TGME49_262050",
+    "product": "rhoptry kinase family protein ROP39",
+    "score": 3.959012531872506
+   },
+   {
+    "gene_id": "TGME49_277080",
+    "product": "microneme protein MIC5",
+    "score": 3.928156827691199
+   },
+   {
+    "gene_id": "TGME49_225540",
+    "product": "hypothetical protein",
+    "score": 3.9022678660398125
+   },
+   {
+    "gene_id": "TGME49_215775",
+    "product": "rhoptry protein ROP8",
+    "score": 3.7526331541535116
+   },
+   {
+    "gene_id": "TGME49_233220",
+    "product": "hypothetical protein",
+    "score": 3.7286462298319103
+   },
+   {
+    "gene_id": "TGME49_208730",
+    "product": "microneme adhesive repeat protein MCP4",
+    "score": 3.685124278935407
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q53",
+  "organism": "Tg",
+  "strategy": "link_prediction",
+  "question": "Which genes are synthetic-lethal-like partners of GRA17 in the data?",
+  "anchor": "PMID:37498952",
+  "grade": "reliable",
+  "settings": "{\"layer\": \"cofitness\", \"top\": 300}",
+  "seconds": 0.0,
+  "status": "error",
+  "summary": "ValueError: the cofitness layer is the correlation structure of its source measurements, so completing it from its own visible edges recomputes a correlation (AUROC 0.99 however the non-pairs are drawn) rather than predicting a missed contact; strategy 34 predicts it from the other evidence instead"
+ },
+ {
+  "qid": "Q54",
+  "organism": "Tg",
+  "strategy": "trait_regression",
+  "question": "Which effectors change host transcription, judged from the host-effect columns?",
+  "anchor": "PMID:37827122",
+  "grade": "reliable",
+  "settings": "{\"target\": \"hosttx_T2\", \"top\": 200}",
+  "seconds": 1.5,
+  "status": "error",
+  "summary": "ValueError: window shape cannot be larger than input array shape"
+ },
+ {
+  "qid": "Q55",
+  "organism": "Tg",
+  "strategy": "conjunctions",
+  "question": "Which nuclear-targeted effector candidates are there beyond the known four?",
+  "anchor": "PMID:39292011",
+  "grade": "reliable",
+  "settings": "{\"a\": \"compartment\", \"b\": \"screen_any_phenotype\"}",
+  "seconds": 23.0,
+  "summary": "A map built without compartment or screen_any_phenotype; 0 clusters are enriched for a COMBINATION of the two beyond what either label alone explains (interaction ratio >= 1.25). Each is a kind of gene defined by both: nuclear AND S-phase, secreted AND fitness-conferring in vivo.",
+  "rows[conjunctions]": 0,
+  "lead_table": "conjunctions",
+  "head": [],
+  "status": "ran"
+ },
+ {
+  "qid": "Q56",
+  "organism": "Tg",
+  "strategy": "condition_shift",
+  "question": "Which in-vivo fitness hits are likely paracrine-rescued rather than cell-autonomous?",
+  "anchor": "PMID:39654402",
+  "grade": "weak",
+  "settings": "{\"condition\": \"fit_invivo_PE\", \"baseline\": \"fit_invitro_hff\"}",
+  "seconds": 10.9,
+  "summary": "The part of fit_invivo_PE that fit_invitro_hff does not explain -- the condition-specific effect -- for 7,324 genes. Other measurements predict it at out-of-fold rank correlation 0.076: little of it is predictable from the rest of the table. Negative shift: needed more in the condition than the baseline predicts.",
+  "rows[shifted genes]": 7324,
+  "rows[predicted]": 680,
+  "lead_table": "shifted genes",
+  "head": [
+   {
+    "gene_id": "TGME49_319560",
+    "product": "microneme protein MIC3",
+    "shift": -0.5632629274086923,
+    "explained": 0.05265297337544803
+   },
+   {
+    "gene_id": "TGME49_204530",
+    "product": "microneme protein MIC11",
+    "shift": -0.5625141759013108,
+    "explained": -0.14369535879302714
+   },
+   {
+    "gene_id": "TGME49_297880",
+    "product": "dense granule protein GRA23",
+    "shift": -0.5580527521155236,
+    "explained": 0.021715135546627105
+   },
+   {
+    "gene_id": "TGME49_232670",
+    "product": "hypothetical protein",
+    "shift": -0.5578590824193913,
+    "explained": -0.23369122349214405
+   },
+   {
+    "gene_id": "TGME49_288650",
+    "product": "dense granule protein GRA12",
+    "shift": -0.5576117014714674,
+    "explained": -0.029868291330461514
+   },
+   {
+    "gene_id": "TGME49_208370",
+    "product": "dense granule protein GRA46",
+    "shift": -0.5550075809463869,
+    "explained": -0.04342899556483339
+   },
+   {
+    "gene_id": "TGME49_247760",
+    "product": "acyl-CoA synthetase ACS5, putative",
+    "shift": -0.5528211627788918,
+    "explained": 0.1304734730532614
+   },
+   {
+    "gene_id": "TGME49_272460",
+    "product": "dense granule protein GRA72",
+    "shift": -0.5516895313839579,
+    "explained": -0.04558369504351081
+   },
+   {
+    "gene_id": "TGME49_316250",
+    "product": "dense granule protein GRA45",
+    "shift": -0.5492671914958847,
+    "explained": -0.062223677079119286
+   },
+   {
+    "gene_id": "TGME49_247360",
+    "product": "PAP2 superfamily protein",
+    "shift": -0.5476046862397316,
+    "explained": 0.030013351732119335
+   },
+   {
+    "gene_id": "TGME49_204130",
+    "product": "perforin-like protein PLP1",
+    "shift": -0.546614747572473,
+    "explained": 0.0827845171163361
+   },
+   {
+    "gene_id": "TGME49_313930",
+    "product": "chloroquine resistance transporter CRT",
+    "shift": -0.5448225073329586,
+    "explained": -0.04738293128120083
+   },
+   {
+    "gene_id": "TGME49_257340",
+    "product": "ras-related protein RAB4",
+    "shift": -0.5437782663952117,
+    "explained": -0.13841559587700614
+   },
+   {
+    "gene_id": "TGME49_235130",
+    "product": "rhoptry apical surface protein RASP1",
+    "shift": -0.5424377838214851,
+    "explained": -0.07522875473369581
+   },
+   {
+    "gene_id": "TGME49_316260",
+    "product": "hypothetical protein",
+    "shift": -0.539222291242687,
+    "explained": 0.015022335959250621
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q57",
+  "organism": "Tg",
+  "strategy": "supervised_classifier",
+  "question": "Which intrinsically disordered proteins look like exported effectors?",
+  "anchor": "PMID:38747635",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\"}",
+  "seconds": 0.6,
+  "summary": "A class-balanced logistic regression on 364 permitted measurements, trained on 3,804 labelled genes, calls 2,000 unlabelled genes (probability >= 0.00). 'what drives each class' lists the measurements with the largest weights -- the model's reasons, to be read as hypotheses about what defines each class.",
+  "rows[calls]": 2000,
+  "rows[what drives each class]": 192,
+  "lead_table": "calls",
+  "head": [
+   {
+    "gene_id": "TGME49_224760",
+    "product": "SAG-related sequence SRS40E",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9880545352406251
+   },
+   {
+    "gene_id": "TGME49_284010",
+    "product": "5'-3' exonuclease, N-terminal resolvase family domain-containing protein",
+    "prediction": "apicoplast",
+    "support": 0.9834420132192486
+   },
+   {
+    "gene_id": "TGME49_251740",
+    "product": "AP2 domain transcription factor AP2XII-9",
+    "prediction": "apical 1",
+    "support": 0.9790728551383547
+   },
+   {
+    "gene_id": "TGME49_278390",
+    "product": "Toxoplasma gondii family A protein",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9707695083508134
+   },
+   {
+    "gene_id": "TGME49_320250",
+    "product": "SAG-related sequence SRS15A",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9692663952534287
+   },
+   {
+    "gene_id": "TGME49_252200",
+    "product": "palmitoyltransferase DHHC7",
+    "prediction": "rhoptries 2",
+    "support": 0.9675138243249042
+   },
+   {
+    "gene_id": "TGME49_278370",
+    "product": "Toxoplasma gondii family A protein",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9644883526532771
+   },
+   {
+    "gene_id": "TGME49_280570",
+    "product": "SAG-related sequence SRS35A",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9629125240853524
+   },
+   {
+    "gene_id": "TGME49_306700",
+    "product": "hypothetical protein",
+    "prediction": "PM - peripheral 2",
+    "support": 0.9625225003634349
+   },
+   {
+    "gene_id": "TGME49_292270",
+    "product": "SAG-related sequence SRS36C",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9590088004731324
+   },
+   {
+    "gene_id": "TGME49_312950",
+    "product": "RAP-1 family protein",
+    "prediction": "rhoptries 1",
+    "support": 0.9561896153410763
+   },
+   {
+    "gene_id": "TGME49_273110",
+    "product": "SAG-related sequence SRS30D",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9515953698006745
+   },
+   {
+    "gene_id": "TGME49_311810",
+    "product": "hypothetical protein",
+    "prediction": "apicoplast",
+    "support": 0.9482349419061307
+   },
+   {
+    "gene_id": "TGME49_321470",
+    "product": "SAG-related sequence SRS12D",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9481568658073798
+   },
+   {
+    "gene_id": "TGME49_288610",
+    "product": "50S ribosomal protein L21, putative",
+    "prediction": "apicoplast",
+    "support": 0.947544971721008
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q58",
+  "organism": "Tg",
+  "strategy": "paralog_divergence",
+  "question": "Which ROP-family proteins look like tethers rather than enzymes?",
+  "anchor": "PMID:41291278",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\", \"min_shared\": 10}",
+  "seconds": 0.4,
+  "summary": "3,452 paralog pairs scored by how differently they behave across the permitted measurements (one minus the correlation of their profiles). The top of the list is where gene duplication was followed by a change of job -- sub- or neo-functionalisation -- and the bottom is redundancy.",
+  "rows[paralog pairs]": 3452,
+  "lead_table": "paralog pairs",
+  "head": [
+   {
+    "gene_a": "TGME49_207005",
+    "product_a": "SAG-related sequence SRS48Q",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.6964549261797037,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_207010",
+    "product_a": "SAG-related sequence SRS48K",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.6826047746374395,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_207015",
+    "product_a": "SRS domain-containing protein",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.6737768580756178,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_316190",
+    "product_a": "superoxide dismutase SOD3",
+    "gene_b": "TGME49_316310",
+    "product_b": "superoxide dismutase SOD1",
+    "divergence": 1.6143831732879963,
+    "compartment_a": NaN,
+    "compartment_b": "cytosol"
+   },
+   {
+    "gene_a": "TGME49_204130",
+    "product_a": "perforin-like protein PLP1",
+    "gene_b": "TGME49_272430",
+    "product_b": "perforin-like protein PLP2",
+    "divergence": 1.5772598876527255,
+    "compartment_a": "micronemes",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_308020",
+    "product_a": "SAG-related sequence SRS57",
+    "gene_b": "TGME49_224780",
+    "product_b": "SAG-related sequence SRS40B [Source:UniProtKB/TrEMBL;Acc:S8EU84]",
+    "divergence": 1.5734457593342412,
+    "compartment_a": "PM - peripheral 1",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_296640",
+    "product_a": "SAG-related sequence SRS48E",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.5273299371023876,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_315320",
+    "product_a": "SAG-related sequence SRS52A",
+    "gene_b": "TGME49_315370",
+    "product_b": "SAG-related sequence SRS53A",
+    "divergence": 1.5221880097901028,
+    "compartment_a": "PM - peripheral 1",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_316330",
+    "product_a": "superoxide dismutase SOD2",
+    "gene_b": "TGME49_316190",
+    "product_b": "superoxide dismutase SOD3",
+    "divergence": 1.5176674004222976,
+    "compartment_a": "mitochondrion - soluble",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_309352",
+    "product_a": "SAG-related sequence SRS55N",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.5146934697022627,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_275380",
+    "product_a": "SAG-related sequence SRS47D",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.5034793228022032,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_202520",
+    "product_a": "hypothetical protein",
+    "gene_b": "TGME49_326900",
+    "product_b": "hypothetical protein",
+    "divergence": 1.4923235260395384,
+    "compartment_a": "nucleus - chromatin",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_207005",
+    "product_a": "SAG-related sequence SRS48Q",
+    "gene_b": "TGME49_285870",
+    "product_b": "SAG-related sequence SRS20A",
+    "divergence": 1.4840957396711791,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_292200",
+    "product_a": "RNA recognition motif-containing protein",
+    "gene_b": "TGME49_328100",
+    "product_b": "RNA recognition motif-containing protein",
+    "divergence": 1.483087429290624,
+    "compartment_a": "nucleus - non-chromatin",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_219348",
+    "product_a": "SAG-related sequence SRS55M",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.477741461022792,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q59",
+  "organism": "Tg",
+  "strategy": "structural_homology",
+  "question": "Which secreted proteins have lipid-transfer-like structural neighbours?",
+  "anchor": "PMID:42018441",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\", \"level\": 1, \"layer\": \"struct\"}",
+  "seconds": 1.3,
+  "summary": "708 genes without a compartment annotation (at level 1) called from their struct neighbours; 89 of them are hypothetical proteins. Structural similarity needs no sequence homology, so it reaches the lineage-specific proteins orthology cannot.",
+  "rows[calls]": 708,
+  "lead_table": "calls",
+  "head": [
+   {
+    "gene_id": "TGME49_268000",
+    "product": "hypothetical protein",
+    "prediction": "ER",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_248190",
+    "product": "hypothetical protein",
+    "prediction": "cytosol",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_249600",
+    "product": "hypothetical protein",
+    "prediction": "cytosol",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_281555",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - non-chromatin",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_315450",
+    "product": "hypothetical protein",
+    "prediction": "dense granules",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_265810",
+    "product": "hypothetical protein",
+    "prediction": "cytosol",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_274150",
+    "product": "hypothetical protein",
+    "prediction": "cytosol",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_500411",
+    "product": "hypothetical protein, conserved",
+    "prediction": "apical 1",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_313660",
+    "product": "hypothetical protein",
+    "prediction": "dense granules",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_233950",
+    "product": "hypothetical protein",
+    "prediction": "cytosol",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_211860",
+    "product": "hypothetical protein",
+    "prediction": "mitochondrion - soluble",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_236790",
+    "product": "hypothetical protein",
+    "prediction": "dense granules",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_257690",
+    "product": "hypothetical protein",
+    "prediction": "ER",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_228010",
+    "product": "hypothetical protein",
+    "prediction": "19",
+    "support": 1.0,
+    "hypothetical": true
+   },
+   {
+    "gene_id": "TGME49_253020",
+    "product": "hypothetical protein",
+    "prediction": "cytosol",
+    "support": 1.0,
+    "hypothetical": true
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "correct calls per hidden gene",
+  "observed": 0.3005952380952381,
+  "chance": 0.08616071428571428,
+  "bar": 0.10744047619047618,
+  "p": 0.047619047619047616,
+  "skill": 0.2346523367529718,
+  "n_hidden": 336,
+  "test_summary": "PASS -- correct calls per hidden gene 0.301 against 0.086 \u00b1 0.016 under 20 runs on shuffled labels (bar 0.107, p 0.0476); effect +0.214, needed +0.050; 336 hidden",
+  "scorecard": {
+   "accuracy": 0.3006,
+   "coverage": 0.753,
+   "precision_of_calls": 0.3992,
+   "macro_precision": 0.2844,
+   "macro_recall": 0.2243,
+   "macro_f1": 0.2203,
+   "weighted_f1": 0.3229,
+   "kappa": 0.2351,
+   "mcc": 0.2451,
+   "macro_auroc": 0.702,
+   "macro_auprc": 0.1764
+  },
+  "test_seconds": 1.5
+ },
+ {
+  "qid": "Q61",
+  "organism": "Tg",
+  "strategy": "cluster_guilt",
+  "question": "Which conoid and apical-complex proteins are still unassigned to a position?",
+  "anchor": "PMID:41366525",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\", \"min_cluster_size\": 25}",
+  "seconds": 9.5,
+  "summary": "10 clusters are enriched for one compartment label at q < 0.05 and lift >= 2 (hypergeometric, BH-corrected over every cluster x label); their 321 unlabelled members are called with it.",
+  "rows[calls]": 321,
+  "rows[enrichment]": 72,
+  "lead_table": "enrichment",
+  "head": [
+   {
+    "cluster": 0,
+    "label": "PM - peripheral 1",
+    "hits": 19,
+    "labelled": 26,
+    "size": 219,
+    "lift": 21.061813186813183,
+    "p": 3.726719480787887e-26,
+    "q": 2.6832380261672787e-24,
+    "called": true
+   },
+   {
+    "cluster": 4,
+    "label": "60S ribosome",
+    "hits": 18,
+    "labelled": 204,
+    "size": 205,
+    "lift": 3.955882352941177,
+    "p": 9.933533080017102e-12,
+    "q": 3.5760719088061567e-10,
+    "called": true
+   },
+   {
+    "cluster": 2,
+    "label": "IMC",
+    "hits": 17,
+    "labelled": 114,
+    "size": 122,
+    "lift": 5.014254385964912,
+    "p": 1.7486874637867985e-10,
+    "q": 4.196849913088316e-09,
+    "called": true
+   },
+   {
+    "cluster": 2,
+    "label": "dense granules",
+    "hits": 19,
+    "labelled": 114,
+    "size": 122,
+    "lift": 4.338709677419354,
+    "p": 5.83367514255017e-10,
+    "q": 1.0500615256590305e-08,
+    "called": false
+   },
+   {
+    "cluster": 4,
+    "label": "40S ribosome",
+    "hits": 14,
+    "labelled": 204,
+    "size": 205,
+    "lift": 3.9558823529411766,
+    "p": 3.088096229743887e-09,
+    "q": 4.4468585708311975e-08,
+    "called": false
+   },
+   {
+    "cluster": 4,
+    "label": "mitochondrion - membranes",
+    "hits": 33,
+    "labelled": 204,
+    "size": 205,
+    "lift": 2.4174836601307192,
+    "p": 7.593512234344286e-09,
+    "q": 9.112214681213143e-08,
+    "called": false
+   },
+   {
+    "cluster": 2,
+    "label": "micronemes",
+    "hits": 9,
+    "labelled": 114,
+    "size": 122,
+    "lift": 6.371052631578947,
+    "p": 1.493820402250958e-07,
+    "q": 1.536500985172414e-06,
+    "called": false
+   },
+   {
+    "cluster": 6,
+    "label": "nucleus - chromatin",
+    "hits": 43,
+    "labelled": 139,
+    "size": 172,
+    "lift": 1.9971798561151082,
+    "p": 2.403153560785497e-07,
+    "q": 2.1628382047069476e-06,
+    "called": false
+   },
+   {
+    "cluster": 6,
+    "label": "apicoplast",
+    "hits": 19,
+    "labelled": 139,
+    "size": 172,
+    "lift": 2.8284449363586055,
+    "p": 3.0943466422273756e-06,
+    "q": 2.1866492834637223e-05,
+    "called": true
+   },
+   {
+    "cluster": 7,
+    "label": "Golgi",
+    "hits": 12,
+    "labelled": 71,
+    "size": 90,
+    "lift": 4.399818264425261,
+    "p": 3.1699375717967674e-06,
+    "q": 2.1866492834637223e-05,
+    "called": true
+   },
+   {
+    "cluster": 8,
+    "label": "nucleus - chromatin",
+    "hits": 33,
+    "labelled": 102,
+    "size": 135,
+    "lift": 2.0887058823529414,
+    "p": 3.340714183069576e-06,
+    "q": 2.1866492834637223e-05,
+    "called": true
+   },
+   {
+    "cluster": 1,
+    "label": "cytosol",
+    "hits": 19,
+    "labelled": 40,
+    "size": 40,
+    "lift": 2.75773381294964,
+    "p": 5.029386709011434e-06,
+    "q": 2.811833688018767e-05,
+    "called": true
+   },
+   {
+    "cluster": 4,
+    "label": "cytosol",
+    "hits": 57,
+    "labelled": 204,
+    "size": 205,
+    "lift": 1.6221963605586118,
+    "p": 5.076921936700552e-06,
+    "q": 2.811833688018767e-05,
+    "called": false
+   },
+   {
+    "cluster": 8,
+    "label": "mitochondrion - soluble",
+    "hits": 21,
+    "labelled": 102,
+    "size": 135,
+    "lift": 2.5561085972850677,
+    "p": 1.1235354802166817e-05,
+    "q": 5.778182469685792e-05,
+    "called": false
+   },
+   {
+    "cluster": 10,
+    "label": "mitochondrion - soluble",
+    "hits": 13,
+    "labelled": 44,
+    "size": 50,
+    "lift": 3.6681818181818184,
+    "p": 1.3257627463278074e-05,
+    "q": 6.363661182373475e-05,
+    "called": true
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q62",
+  "organism": "Tg",
+  "strategy": "multiplex_modules",
+  "question": "Which micronemal proteins partition into a secretion module and a junction module?",
+  "anchor": "PMID:42470170",
+  "grade": "weak",
+  "settings": "{\"target\": \"compartment\", \"agreement\": 0.5}",
+  "seconds": 434.2,
+  "summary": "6 communities that the layers coexpression, cofitness, cotranslation, domain, ip_ms, struct, xlms agree on; 7,822 genes placed in one. 2,000 unlabelled members are called by their community's majority compartment.",
+  "rows[modules]": 6,
+  "rows[calls]": 2000,
+  "lead_table": "modules",
+  "head": [
+   {
+    "module": 8284,
+    "size": 1811,
+    "labelled": 1247,
+    "top_label": "nucleus - chromatin",
+    "top_share": 0.22774659182036888,
+    "genes": "TGME49_232080, TGME49_306020, TGME49_268370, TGME49_253750, TGME49_292020, TGME49_226810, TGME49_268780, TGME49_230000, TGME49_306660, TGME49_239885"
+   },
+   {
+    "module": 8331,
+    "size": 1662,
+    "labelled": 508,
+    "top_label": "dense granules",
+    "top_share": 0.17913385826771652,
+    "genes": "TGME49_203665, TGME49_216335, TGME49_278205, TGME49_316430, TGME49_500421, TGME49_266435, TGME49_500344, TGME49_500258, TGME49_289050, TGME49_226470"
+   },
+   {
+    "module": 8333,
+    "size": 1635,
+    "labelled": 746,
+    "top_label": "nucleus - chromatin",
+    "top_share": 0.22386058981233245,
+    "genes": "TGME49_313630, TGME49_225745, TGME49_294820, TGME49_224870, TGME49_202070, TGME49_264140, TGME49_205562, TGME49_286270, TGME49_271145, TGME49_245440"
+   },
+   {
+    "module": 8299,
+    "size": 1531,
+    "labelled": 561,
+    "top_label": "nucleus - chromatin",
+    "top_share": 0.1836007130124777,
+    "genes": "TGME49_304630, TGME49_262825, TGME49_228690, TGME49_206550, TGME49_295610, TGME49_271010, TGME49_230830, TGME49_219660, TGME49_500227, TGME49_309980"
+   },
+   {
+    "module": 8194,
+    "size": 1178,
+    "labelled": 746,
+    "top_label": "nucleus - chromatin",
+    "top_share": 0.21715817694369974,
+    "genes": "TGME49_500435, TGME49_209000, TGME49_248510, TGME49_242625, TGME49_266010, TGME49_210700, TGME49_295710, TGME49_212880, TGME49_315860, TGME49_288940"
+   },
+   {
+    "module": 8145,
+    "size": 5,
+    "labelled": 1,
+    "top_label": "dense granules",
+    "top_share": 1.0,
+    "genes": "TGME49_500200, TGME49_500392, TGME49_500230, TGME49_500234, TGME49_500286"
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q63",
+  "organism": "Tg",
+  "strategy": "trait_regression",
+  "question": "Which kinase substrates are the egress decision nodes?",
+  "anchor": "PMID:39903669",
+  "grade": "reliable",
+  "settings": "{\"target\": \"cdpk1_thiophospho_peptides\", \"top\": 200}",
+  "seconds": 4.7,
+  "summary": "cdpk1_thiophospho_peptides predicted from 357 permitted measurements (boosted); out-of-fold rank correlation 0.364 over 367 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 7,773 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 7773,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "TGME49_308090",
+    "product": "rhoptry protein ROP5",
+    "measured": 14.0,
+    "expected": 5.923234476997757,
+    "z": 4.96772727869578
+   },
+   {
+    "gene_id": "TGME49_311720",
+    "product": "chaperonin protein BiP",
+    "measured": 16.0,
+    "expected": 8.810533814500571,
+    "z": 4.418606870624579
+   },
+   {
+    "gene_id": "TGME49_273760",
+    "product": "heat shock protein HSP70",
+    "measured": 16.0,
+    "expected": 9.081712283016305,
+    "z": 4.250783425933897
+   },
+   {
+    "gene_id": "TGME49_244560",
+    "product": "heat shock protein 90, putative",
+    "measured": 11.0,
+    "expected": 4.7604974457436295,
+    "z": 3.830705589970989
+   },
+   {
+    "gene_id": "TGME49_214080",
+    "product": "toxofilin",
+    "measured": 8.0,
+    "expected": 2.1017815593487126,
+    "z": 3.6194960648309498
+   },
+   {
+    "gene_id": "TGME49_203310",
+    "product": "dense granule protein GRA7",
+    "measured": 10.0,
+    "expected": 4.341397309311038,
+    "z": 3.4712057496708963
+   },
+   {
+    "gene_id": "TGME49_320050",
+    "product": "ribosomal protein RPL5",
+    "measured": 3.0,
+    "expected": 8.36711570999754,
+    "z": -3.3522491223935256
+   },
+   {
+    "gene_id": "TGME49_286420",
+    "product": "elongation factor 1-alpha (EF-1-ALPHA), putative",
+    "measured": 3.0,
+    "expected": 8.268099763527026,
+    "z": -3.2909714062572024
+   },
+   {
+    "gene_id": "TGME49_288380",
+    "product": "heat shock protein HSP90",
+    "measured": 12.0,
+    "expected": 6.982553951263979,
+    "z": 3.074414968943369
+   },
+   {
+    "gene_id": "TGME49_316400",
+    "product": "alpha tubulin TUBA1",
+    "measured": 8.0,
+    "expected": 3.0965533166605224,
+    "z": 3.0038645071087133
+   },
+   {
+    "gene_id": "TGME49_256760",
+    "product": "pyruvate kinase PyK1",
+    "measured": 5.0,
+    "expected": 0.1608939001749414,
+    "z": 2.9640462338589995
+   },
+   {
+    "gene_id": "TGME49_289690",
+    "product": "glyceraldehyde-3-phosphate dehydrogenase GAPDH1",
+    "measured": 5.0,
+    "expected": 9.558583188460064,
+    "z": -2.851874908867093
+   },
+   {
+    "gene_id": "TGME49_266960",
+    "product": "beta tubulin",
+    "measured": 1.0,
+    "expected": 5.175656884167476,
+    "z": -2.6148944000501624
+   },
+   {
+    "gene_id": "TGME49_318230",
+    "product": "phosphoglycerate kinase PGKI",
+    "measured": 2.0,
+    "expected": 6.114637552374295,
+    "z": -2.5771315403721595
+   },
+   {
+    "gene_id": "TGME49_232350",
+    "product": "lactate dehydrogenase LDH1",
+    "measured": 11.0,
+    "expected": 6.838873581798996,
+    "z": 2.544466883687105
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.3493117806599225,
+  "chance": 0.0,
+  "bar": 0.1938651091753118,
+  "p": 0.0015182982801039777,
+  "skill": 0.3493117806599225,
+  "n_hidden": 73,
+  "test_summary": "PASS -- rank correlation of predicted and hidden values 0.349 against 0.000 \u00b1 0.118 under the chance distribution of a rank correlation (bar 0.194, p 0.00152); effect +0.349, needed +0.100; 73 hidden",
+  "scorecard": {
+   "spearman": 0.3493,
+   "pearson": 0.7121,
+   "kendall": 0.2786,
+   "r2": 0.5017,
+   "nrmse": 0.7059,
+   "mae": 0.9998,
+   "rmse": 1.6946,
+   "top_decile_recall": 0.5714,
+   "bottom_decile_recall": 0.1429,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 3.0
+ },
+ {
+  "qid": "Q64",
+  "organism": "Tg",
+  "strategy": "condition_shift",
+  "question": "Which apicoplast proteins become dispensable when the organelle is bypassed?",
+  "anchor": "PMID:40025025",
+  "grade": "weak",
+  "settings": "{\"condition\": \"fit_complete_medium_2025\", \"baseline\": \"fit_invitro_hff\"}",
+  "seconds": 12.6,
+  "summary": "The part of fit_complete_medium_2025 that fit_invitro_hff does not explain -- the condition-specific effect -- for 7,325 genes. Other measurements predict it at out-of-fold rank correlation 0.082: little of it is predictable from the rest of the table. Negative shift: needed more in the condition than the baseline predicts.",
+  "rows[shifted genes]": 7325,
+  "rows[predicted]": 747,
+  "lead_table": "shifted genes",
+  "head": [
+   {
+    "gene_id": "TGME49_221550",
+    "product": "CMGC kinase, MAPK family, MEK kinase-related (incomplete catalytic triad)",
+    "shift": -0.6232799590570883,
+    "explained": -0.00017587933668777772
+   },
+   {
+    "gene_id": "TGME49_307070",
+    "product": "hypothetical protein",
+    "shift": -0.5794327504909663,
+    "explained": -0.05691395082176161
+   },
+   {
+    "gene_id": "TGME49_270050",
+    "product": "hypothetical protein",
+    "shift": -0.5303281354160092,
+    "explained": 0.0735693440490311
+   },
+   {
+    "gene_id": "TGME49_240580",
+    "product": "hypothetical protein",
+    "shift": -0.4892415999897612,
+    "explained": 0.06333478599094576
+   },
+   {
+    "gene_id": "TGME49_215260",
+    "product": "carbamoylphosphate synthetase",
+    "shift": -0.4878502372598887,
+    "explained": -0.10032160484947024
+   },
+   {
+    "gene_id": "TGME49_271985",
+    "product": "hypothetical protein",
+    "shift": -0.48499510382094796,
+    "explained": -0.03210140068729445
+   },
+   {
+    "gene_id": "TGME49_217722",
+    "product": "hypothetical protein",
+    "shift": -0.47982646885461044,
+    "explained": -0.05864000639763673
+   },
+   {
+    "gene_id": "TGME49_253780",
+    "product": "GTP cyclohydrolase I, putative",
+    "shift": -0.45609478389139113,
+    "explained": -0.030397198880335676
+   },
+   {
+    "gene_id": "TGME49_233220",
+    "product": "hypothetical protein",
+    "shift": -0.4552041685412312,
+    "explained": 0.056830996240718884
+   },
+   {
+    "gene_id": "TGME49_206690",
+    "product": "glideosome-associated protein with multiple-membrane spans GAPM2B",
+    "shift": -0.4535100796814805,
+    "explained": -0.09144647401453666
+   },
+   {
+    "gene_id": "TGME49_203330",
+    "product": "hypothetical protein",
+    "shift": -0.44811792100512543,
+    "explained": -0.022188967939569454
+   },
+   {
+    "gene_id": "TGME49_211910",
+    "product": "kinesin-related protein 3A, putative",
+    "shift": -0.44742333772419374,
+    "explained": 0.02477884640570162
+   },
+   {
+    "gene_id": "TGME49_212200",
+    "product": "hypothetical protein",
+    "shift": -0.44611846862461507,
+    "explained": 0.003668988895065774
+   },
+   {
+    "gene_id": "TGME49_321570",
+    "product": "beta-hydroxyacyl-acyl carrier protein dehydratase (FABZ)",
+    "shift": -0.44522002389677334,
+    "explained": -0.04274774117894474
+   },
+   {
+    "gene_id": "TGME49_207830",
+    "product": "MORN repeat-containing protein",
+    "shift": -0.44515667307026413,
+    "explained": -0.0496774352213612
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q65",
+  "organism": "Tg",
+  "strategy": "understudied_first",
+  "question": "Which predicted transporters have no publication at all?",
+  "anchor": "PMID:41582196",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\", \"min_agree\": 2}",
+  "seconds": 3.3,
+  "summary": "7,390 genes have no focal or substantive publication; 1,723 of those without a compartment label receive an agreed call, ranked by agreement times novelty. These are the cheapest discoveries: a hypothesis the data supports about a gene nobody has written about.",
+  "rows[candidates]": 1723,
+  "lead_table": "candidates",
+  "head": [
+   {
+    "gene_id": "TGME49_209000",
+    "product": "HECT-domain (ubiquitin-transferase) domain-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_225745",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_266010",
+    "product": "phosphatidylinositol 3- and 4-kinase",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_286270",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_271145",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_253870",
+    "product": "hypothetical protein",
+    "prediction": "apicoplast",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_311625",
+    "product": "bromodomain-containing protein BDP6, putative",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_270720",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_225960",
+    "product": "STE kinase",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_314875",
+    "product": "RIC1 protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_273780",
+    "product": "SWI2/SNF2-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_210345",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_294740",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_218400",
+    "product": "NEK kinase",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "TGME49_260150",
+    "product": "tetratricopeptide repeat-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.546007371007371,
+    "sources_agreeing": 3.0
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q66",
+  "organism": "Tg",
+  "strategy": "conjunctions",
+  "question": "Which genes are induced in bradyzoites and localize to the cyst wall?",
+  "anchor": "PMID:37081202",
+  "grade": "reliable",
+  "settings": "{\"a\": \"compartment\", \"b\": \"stage_enriched_derived\"}",
+  "seconds": 10.9,
+  "summary": "A map built without compartment or stage_enriched_derived; 2 clusters are enriched for a COMBINATION of the two beyond what either label alone explains (interaction ratio >= 1.25). Each is a kind of gene defined by both: nuclear AND S-phase, secreted AND fitness-conferring in vivo.",
+  "rows[conjunctions]": 2,
+  "lead_table": "conjunctions",
+  "head": [
+   {
+    "kind": "conjunction",
+    "layer": "compartment",
+    "layer_kind": "discrete",
+    "other": "stage_enriched_derived",
+    "other_kind": "discrete",
+    "cluster": 2,
+    "category": "PM - peripheral 1",
+    "other_category": "bradyzoite",
+    "n_cluster": 17,
+    "n_known": 7,
+    "n_hits": 7,
+    "purity": 1.0,
+    "background": 0.04145077720207254,
+    "lift_a": 16.083333333333332,
+    "lift_b": 4.386363636363637,
+    "joint_lift": 24.125,
+    "interaction_ratio": 1.5,
+    "product_ratio": 0.34196891191709844,
+    "lift": 1.5,
+    "p": 4.512464076720896e-12,
+    "n_predicted": 10,
+    "genes": "TGME49_309352, TGME49_301160, TGME49_320170, TGME49_301170, TGME49_267160, TGME49_321480, TGME49_234930, TGME49_273120, TGME49_315410, TGME49_208850",
+    "q": 4.512464076720896e-12,
+    "circular": false,
+    "selection": "eom"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "compartment",
+    "layer_kind": "discrete",
+    "other": "stage_enriched_derived",
+    "other_kind": "discrete",
+    "cluster": 1,
+    "category": "PM - peripheral 1",
+    "other_category": "bradyzoite",
+    "n_cluster": 17,
+    "n_known": 7,
+    "n_hits": 7,
+    "purity": 1.0,
+    "background": 0.04145077720207254,
+    "lift_a": 16.083333333333332,
+    "lift_b": 4.386363636363637,
+    "joint_lift": 24.125,
+    "interaction_ratio": 1.5,
+    "product_ratio": 0.34196891191709844,
+    "lift": 1.5,
+    "p": 4.512464076720896e-12,
+    "n_predicted": 10,
+    "genes": "TGME49_309352, TGME49_301160, TGME49_320170, TGME49_301170, TGME49_267160, TGME49_321480, TGME49_234930, TGME49_273120, TGME49_315410, TGME49_208850",
+    "q": 4.512464076720896e-12,
+    "circular": false,
+    "selection": "leaf"
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q67",
+  "organism": "Tg",
+  "strategy": "condition_shift",
+  "question": "Which differentiation factors are translationally rather than transcriptionally controlled?",
+  "anchor": "PMID:38782906",
+  "grade": "weak",
+  "settings": "{\"condition\": \"te245775_parent_prebrady_r1\", \"baseline\": \"rna245775_parent_prebrady_r1\"}",
+  "seconds": 7.4,
+  "summary": "The part of te245775_parent_prebrady_r1 that rna245775_parent_prebrady_r1 does not explain -- the condition-specific effect -- for 7,880 genes. Other measurements predict it at out-of-fold rank correlation 0.596: the condition-specific need has a signature, and 'predicted' extends it to genes never screened in the condition. Negative shift: needed more in the condition than the baseline predicts.",
+  "rows[shifted genes]": 7880,
+  "rows[predicted]": 260,
+  "lead_table": "shifted genes",
+  "head": [
+   {
+    "gene_id": "TGME49_248280",
+    "product": "hypothetical protein",
+    "shift": -0.5932088513333581,
+    "explained": -0.4408593510659873
+   },
+   {
+    "gene_id": "TGME49_314450",
+    "product": "hypothetical protein",
+    "shift": -0.5925660952715373,
+    "explained": -0.11889215780174538
+   },
+   {
+    "gene_id": "TGME49_302000",
+    "product": "chaperone clp, putative",
+    "shift": -0.5912538754993266,
+    "explained": -0.14126419068550533
+   },
+   {
+    "gene_id": "TGME49_316510",
+    "product": "zinc finger (CCCH type) motif-containing protein",
+    "shift": -0.5892952146584889,
+    "explained": -0.2703003084750086
+   },
+   {
+    "gene_id": "TGME49_300650",
+    "product": "iron-sulfur cluster assembly protein SufB",
+    "shift": -0.587121599922644,
+    "explained": -0.2652209506731246
+   },
+   {
+    "gene_id": "TGME49_296010",
+    "product": "phosphatidylinositol 3- and 4-kinase",
+    "shift": -0.5867722048999777,
+    "explained": 0.0403606097590041
+   },
+   {
+    "gene_id": "TGME49_300660",
+    "product": "RNA polymerase B",
+    "shift": -0.5863397504252862,
+    "explained": -0.3287189029218607
+   },
+   {
+    "gene_id": "TGME49_294840",
+    "product": "zinc finger (CCCH type) motif-containing protein",
+    "shift": -0.581014624515643,
+    "explained": -0.25022301049158996
+   },
+   {
+    "gene_id": "TGME49_289745",
+    "product": "hypothetical protein",
+    "shift": -0.5807756086761041,
+    "explained": -0.3423670889366742
+   },
+   {
+    "gene_id": "TGME49_238240",
+    "product": "bystin protein",
+    "shift": -0.5802251315039442,
+    "explained": 0.15581505854479027
+   },
+   {
+    "gene_id": "TGME49_219620",
+    "product": "hypothetical protein",
+    "shift": -0.57969264868527,
+    "explained": -0.24289939173772987
+   },
+   {
+    "gene_id": "TGME49_239270",
+    "product": "hypothetical protein",
+    "shift": -0.5785355066379315,
+    "explained": -0.2000421222360732
+   },
+   {
+    "gene_id": "TGME49_300690",
+    "product": "RNA polymerase C2, putative",
+    "shift": -0.5784158124581175,
+    "explained": -0.20326627400901778
+   },
+   {
+    "gene_id": "TGME49_300621",
+    "product": "ribosomal protein L2",
+    "shift": -0.5757183257190108,
+    "explained": -0.36555155382805715
+   },
+   {
+    "gene_id": "TGME49_201785",
+    "product": "hypothetical protein",
+    "shift": -0.573688032966656,
+    "explained": -0.30176705016781463
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q68",
+  "organism": "Tg",
+  "strategy": "trait_regression",
+  "question": "Which BFD2-bound transcripts are also stage-restricted?",
+  "anchor": "PMID:37081202",
+  "grade": "reliable",
+  "settings": "{\"target\": \"bfd2_rip_log2_ip_over_input\", \"top\": 200}",
+  "seconds": 14.5,
+  "summary": "bfd2_rip_log2_ip_over_input predicted from 365 permitted measurements (boosted); out-of-fold rank correlation 0.672 over 7,463 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 677 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 677,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "TGME49_227650",
+    "product": "microtubule-associated protein EB1",
+    "measured": 4.419946296402641,
+    "expected": -0.02060103535081095,
+    "z": 5.5581683166705975
+   },
+   {
+    "gene_id": "TGME49_320525",
+    "product": "DUF1308 domain-containing protein",
+    "measured": 3.38794450287407,
+    "expected": -0.846024733105057,
+    "z": 5.299683846515817
+   },
+   {
+    "gene_id": "TGME49_320530",
+    "product": "hypothetical protein",
+    "measured": 3.4197890309309487,
+    "expected": -0.525862297936171,
+    "z": 4.938921001952678
+   },
+   {
+    "gene_id": "TGME49_236400",
+    "product": "hypothetical protein",
+    "measured": 2.569320997258641,
+    "expected": -1.1328792205381515,
+    "z": 4.634298523864045
+   },
+   {
+    "gene_id": "TGME49_278245",
+    "product": "hypothetical protein",
+    "measured": 3.1268641123261665,
+    "expected": -0.3998656731636874,
+    "z": 4.41473806391945
+   },
+   {
+    "gene_id": "TGME49_241175",
+    "product": "hypothetical protein",
+    "measured": 3.6268070287487926,
+    "expected": 0.10564855433969407,
+    "z": 4.4077668630891855
+   },
+   {
+    "gene_id": "TGME49_274060",
+    "product": "2-oxoglutarate/malate translocase OMT",
+    "measured": 3.2329380290410588,
+    "expected": -0.2593289579168935,
+    "z": 4.371615882038651
+   },
+   {
+    "gene_id": "TGME49_248340",
+    "product": "GTP-binding nuclear protein ran/tc4",
+    "measured": 2.408206653478581,
+    "expected": -1.0564810478643005,
+    "z": 4.3371068165797135
+   },
+   {
+    "gene_id": "TGME49_291330",
+    "product": "RNA recognition motif-containing protein",
+    "measured": 3.499456492584423,
+    "expected": 0.12936221690374264,
+    "z": 4.218745131519305
+   },
+   {
+    "gene_id": "TGME49_205170",
+    "product": "hypothetical protein",
+    "measured": 3.226341101678183,
+    "expected": -0.1432025219384514,
+    "z": 4.218056118453902
+   },
+   {
+    "gene_id": "TGME49_210255",
+    "product": "mitochondrial import receptor subunit TOM7",
+    "measured": 3.0284423263098015,
+    "expected": -0.2977808095706628,
+    "z": 4.163850597402128
+   },
+   {
+    "gene_id": "TGME49_225510",
+    "product": "RAP domain-containing protein",
+    "measured": 3.0297983543834572,
+    "expected": -0.23213732373973556,
+    "z": 4.08340978690042
+   },
+   {
+    "gene_id": "TGME49_281480",
+    "product": "WD domain, G-beta repeat-containing protein",
+    "measured": 2.919413732406573,
+    "expected": -0.22902037549168944,
+    "z": 3.941388953900889
+   },
+   {
+    "gene_id": "TGME49_266368",
+    "product": "hypothetical protein",
+    "measured": 3.0144421320623014,
+    "expected": -0.13134685499581747,
+    "z": 3.938079199997421
+   },
+   {
+    "gene_id": "TGME49_220880",
+    "product": "dynactin subunit 3, putative",
+    "measured": 2.678553305693744,
+    "expected": -0.4598011167594576,
+    "z": 3.928776570473559
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.690342787455714,
+  "chance": 0.0,
+  "bar": 0.042587435685706436,
+  "p": 5.92138121357392e-157,
+  "skill": 0.690342787455714,
+  "n_hidden": 1493,
+  "test_summary": "PASS -- rank correlation of predicted and hidden values 0.690 against 0.000 \u00b1 0.026 under the chance distribution of a rank correlation (bar 0.043, p 5.92e-157); effect +0.690, needed +0.100; 1,493 hidden",
+  "scorecard": {
+   "spearman": 0.6903,
+   "pearson": 0.6895,
+   "kendall": 0.5045,
+   "r2": 0.4751,
+   "nrmse": 0.7245,
+   "mae": 0.5988,
+   "rmse": 0.7919,
+   "top_decile_recall": 0.4698,
+   "bottom_decile_recall": 0.4295,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 7.7
+ },
+ {
+  "qid": "Q70",
+  "organism": "Tg",
+  "strategy": "condition_shift",
+  "question": "Which uncharacterised dense-granule proteins have a stage-specific phenotype?",
+  "anchor": "PMID:40941387",
+  "grade": "weak",
+  "settings": "{\"condition\": \"fit_invivo_brain\", \"baseline\": \"fit_invitro_hff\"}",
+  "seconds": 11.3,
+  "summary": "The part of fit_invivo_brain that fit_invitro_hff does not explain -- the condition-specific effect -- for 7,324 genes. Other measurements predict it at out-of-fold rank correlation 0.183: the condition-specific need has a signature, and 'predicted' extends it to genes never screened in the condition. Negative shift: needed more in the condition than the baseline predicts.",
+  "rows[shifted genes]": 7324,
+  "rows[predicted]": 680,
+  "lead_table": "shifted genes",
+  "head": [
+   {
+    "gene_id": "TGME49_309030",
+    "product": "hypothetical protein",
+    "shift": -0.5475050386438974,
+    "explained": -0.048840179809883234
+   },
+   {
+    "gene_id": "TGME49_263520",
+    "product": "microtubule associated protein SPM1",
+    "shift": -0.5464977833958355,
+    "explained": -0.02688714724836235
+   },
+   {
+    "gene_id": "TGME49_297870",
+    "product": "inner membrane complex protein IMC36",
+    "shift": -0.5409478728987852,
+    "explained": -0.12144978006857793
+   },
+   {
+    "gene_id": "TGME49_240630",
+    "product": "inner membrane complex protein IMC35",
+    "shift": -0.5396021372988948,
+    "explained": 0.13465506734685873
+   },
+   {
+    "gene_id": "TGME49_217550",
+    "product": "dynactin subunit 6, putative",
+    "shift": -0.5379496005446132,
+    "explained": -0.11200561356096111
+   },
+   {
+    "gene_id": "TGME49_204530",
+    "product": "microneme protein MIC11",
+    "shift": -0.5370248786725389,
+    "explained": 0.033385251863689853
+   },
+   {
+    "gene_id": "TGME49_224950",
+    "product": "calcium-dependent protein kinase CDPK5",
+    "shift": -0.536604525647557,
+    "explained": 0.05511959313462033
+   },
+   {
+    "gene_id": "TGME49_271750",
+    "product": "EF hand domain-containing protein",
+    "shift": -0.5357965783972554,
+    "explained": -0.04787973481780569
+   },
+   {
+    "gene_id": "TGME49_305120",
+    "product": "transporter, solute:sodium symporter (SSS) family protein",
+    "shift": -0.5353237598181319,
+    "explained": 0.18284356223427373
+   },
+   {
+    "gene_id": "TGME49_262020",
+    "product": "hypothetical protein",
+    "shift": -0.5346288326650547,
+    "explained": 0.052954767246303915
+   },
+   {
+    "gene_id": "TGME49_316250",
+    "product": "dense granule protein GRA45",
+    "shift": -0.5343399819045905,
+    "explained": 0.30353185358771545
+   },
+   {
+    "gene_id": "TGME49_297470",
+    "product": "myosin light chain MLC2",
+    "shift": -0.5343187927039882,
+    "explained": -0.0711698829376207
+   },
+   {
+    "gene_id": "TGME49_235130",
+    "product": "rhoptry apical surface protein RASP1",
+    "shift": -0.5340768645015797,
+    "explained": -0.17231606456898307
+   },
+   {
+    "gene_id": "TGME49_247760",
+    "product": "acyl-CoA synthetase ACS5, putative",
+    "shift": -0.5337820839566245,
+    "explained": 0.16633562746369523
+   },
+   {
+    "gene_id": "TGME49_271200",
+    "product": "AP2 domain transcription factor AP2VIII-5",
+    "shift": -0.5328955028398444,
+    "explained": 0.12283517925686147
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q71",
+  "organism": "Tg",
+  "strategy": "stratum_focus",
+  "question": "Which chromatin readers are parasite-specific and fitness-conferring?",
+  "anchor": "PMID:42140435",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\", \"stratum\": \"lineage-specific\"}",
+  "seconds": 1.8,
+  "summary": "4,888 genes are lineage-specific; 1,453 of those without a compartment label are called from measurement neighbours, with conservation and orthology columns removed so the call cannot lean on them. 'accuracy by stratum' says whether these genes can be called as well as the rest.",
+  "rows[calls]": 1453,
+  "rows[accuracy by stratum]": 2,
+  "lead_table": "calls",
+  "head": [
+   {
+    "gene_id": "TGME49_228670",
+    "product": "zinc finger, C2H2 type domain-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.8708447027847555
+   },
+   {
+    "gene_id": "TGME49_312940",
+    "product": "hypothetical protein",
+    "prediction": "mitochondrion - membranes",
+    "support": 0.8144835580509119
+   },
+   {
+    "gene_id": "TGME49_295610",
+    "product": "histone lysine methyltransferase, SET, putative",
+    "prediction": "nucleus - chromatin",
+    "support": 0.803913655916779
+   },
+   {
+    "gene_id": "TGME49_278205",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.8002616993146713
+   },
+   {
+    "gene_id": "TGME49_215080",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7972481184816681
+   },
+   {
+    "gene_id": "TGME49_221280",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.796546728044557
+   },
+   {
+    "gene_id": "TGME49_283520",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7901103738099099
+   },
+   {
+    "gene_id": "TGME49_275430",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7417321903021987
+   },
+   {
+    "gene_id": "TGME49_271030",
+    "product": "AP2 domain transcription factor AP2VIII-6",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7383462057325259
+   },
+   {
+    "gene_id": "TGME49_250680",
+    "product": "TBC domain-containing protein TBC5",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7381456635143021
+   },
+   {
+    "gene_id": "TGME49_248720",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7380806618860093
+   },
+   {
+    "gene_id": "TGME49_263610",
+    "product": "tetratricopeptide repeat-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7376417289046643
+   },
+   {
+    "gene_id": "TGME49_313870",
+    "product": "zinc finger, C3HC4 type (RING finger) domain-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7370142503581528
+   },
+   {
+    "gene_id": "TGME49_250780",
+    "product": "Zn-finger in ubiquitin-hydrolases domain-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7365080430995723
+   },
+   {
+    "gene_id": "TGME49_217770",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7364826053700555
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "correct calls per hidden gene",
+  "observed": 0.2951219512195122,
+  "chance": 0.05317073170731708,
+  "bar": 0.07207317073170731,
+  "p": 0.09090909090909091,
+  "skill": 0.25553838227717673,
+  "n_hidden": 410,
+  "test_summary": "PASS -- correct calls per hidden gene 0.295 against 0.053 \u00b1 0.013 under 10 runs on shuffled labels (bar 0.072, p 0.0909); effect +0.242, needed +0.050; 410 hidden",
+  "scorecard": {
+   "accuracy": 0.2951,
+   "coverage": 0.6341,
+   "precision_of_calls": 0.4654,
+   "macro_precision": 0.4495,
+   "macro_recall": 0.1812,
+   "macro_f1": 0.2257,
+   "weighted_f1": 0.322,
+   "kappa": 0.2272,
+   "mcc": 0.2496,
+   "macro_auroc": 0.7689,
+   "macro_auprc": 0.3269
+  },
+  "test_seconds": 0.3
+ },
+ {
+  "qid": "Q73",
+  "organism": "Tg",
+  "strategy": "conjunctions",
+  "question": "Which AP2 factors are cell-cycle rather than stage regulators?",
+  "anchor": "PMID:40920096",
+  "grade": "reliable",
+  "settings": "{\"a\": \"cellcycle_phase\", \"b\": \"stage_enriched_derived\"}",
+  "seconds": 22.5,
+  "summary": "A map built without cellcycle_phase or stage_enriched_derived; 0 clusters are enriched for a COMBINATION of the two beyond what either label alone explains (interaction ratio >= 1.25). Each is a kind of gene defined by both: nuclear AND S-phase, secreted AND fitness-conferring in vivo.",
+  "rows[conjunctions]": 0,
+  "lead_table": "conjunctions",
+  "head": [],
+  "status": "ran"
+ },
+ {
+  "qid": "Q74",
+  "organism": "Tg",
+  "strategy": "trait_regression",
+  "question": "Which phosphosites sit on proteins of one compartment?",
+  "anchor": "PMID:41960867",
+  "grade": "reliable",
+  "settings": "{\"target\": \"n_phosphosites\", \"top\": 200}",
+  "seconds": 8.7,
+  "summary": "n_phosphosites predicted from 357 permitted measurements (boosted); out-of-fold rank correlation 0.216 over 1,175 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 6,965 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 6965,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "TGME49_223940",
+    "product": "gliding-associated protein GAP45",
+    "measured": 35.0,
+    "expected": 3.273931684919806,
+    "z": 13.777589584583216
+   },
+   {
+    "gene_id": "TGME49_291930",
+    "product": "RNA recognition motif-containing protein",
+    "measured": 23.0,
+    "expected": 3.81171649594397,
+    "z": 8.334549492784538
+   },
+   {
+    "gene_id": "TGME49_209850",
+    "product": "RNA recognition motif-containing protein",
+    "measured": 22.0,
+    "expected": 3.2185249030345404,
+    "z": 8.157941383549183
+   },
+   {
+    "gene_id": "TGME49_247450",
+    "product": "hypothetical protein",
+    "measured": 20.0,
+    "expected": 5.922888279736819,
+    "z": 6.115631768914136
+   },
+   {
+    "gene_id": "TGME49_231630",
+    "product": "alveolin domain containing intermediate filament IMC4",
+    "measured": 14.0,
+    "expected": 2.261320819490174,
+    "z": 5.10044589216719
+   },
+   {
+    "gene_id": "TGME49_262470",
+    "product": "C protein immunoglobulin-A-binding beta antigen, putative",
+    "measured": 13.0,
+    "expected": 1.3950155907977557,
+    "z": 5.04240485770541
+   },
+   {
+    "gene_id": "TGME49_319530",
+    "product": "serine/arginine-rich splicing factor SR1",
+    "measured": 11.0,
+    "expected": 1.4180637234195719,
+    "z": 4.16413710471153
+   },
+   {
+    "gene_id": "TGME49_321680",
+    "product": "RNA-binding protein, putative",
+    "measured": 13.0,
+    "expected": 3.5142401896864524,
+    "z": 4.12238392664471
+   },
+   {
+    "gene_id": "TGME49_231960",
+    "product": "dense granule protein GRA28",
+    "measured": 1.0,
+    "expected": 10.334872754818308,
+    "z": -4.048234659419252
+   },
+   {
+    "gene_id": "TGME49_246940",
+    "product": "gliding-associated protein GAP80",
+    "measured": 11.0,
+    "expected": 1.929689507156649,
+    "z": 3.9420245310110924
+   },
+   {
+    "gene_id": "TGME49_257750",
+    "product": "homocysteine s-methyltransferase domain-containing protein",
+    "measured": 11.0,
+    "expected": 2.028185619520971,
+    "z": 3.8992643228430657
+   },
+   {
+    "gene_id": "TGME49_248700",
+    "product": "alveolin domain containing intermediate filament IMC12",
+    "measured": 11.0,
+    "expected": 2.25259399430579,
+    "z": 3.801841707979302
+   },
+   {
+    "gene_id": "TGME49_236970",
+    "product": "SWI2/SNF2-containing PHD finger protein",
+    "measured": 11.0,
+    "expected": 2.521911198356687,
+    "z": 3.684922781617508
+   },
+   {
+    "gene_id": "TGME49_253750",
+    "product": "PLU-1 family protein",
+    "measured": 16.0,
+    "expected": 7.614196200303269,
+    "z": 3.6448590085476993
+   },
+   {
+    "gene_id": "TGME49_265250",
+    "product": "RNA recognition motif-containing protein",
+    "measured": 15.0,
+    "expected": 6.752963962256059,
+    "z": 3.584615631974983
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.300593234866235,
+  "chance": 0.0,
+  "bar": 0.1075370141007709,
+  "p": 2.1308626304653336e-06,
+  "skill": 0.300593234866235,
+  "n_hidden": 235,
+  "test_summary": "PASS -- rank correlation of predicted and hidden values 0.301 against 0.000 \u00b1 0.065 under the chance distribution of a rank correlation (bar 0.108, p 2.13e-06); effect +0.301, needed +0.100; 235 hidden",
+  "scorecard": {
+   "spearman": 0.3006,
+   "pearson": 0.4259,
+   "kendall": 0.2324,
+   "r2": 0.1381,
+   "nrmse": 0.9284,
+   "mae": 1.3501,
+   "rmse": 1.9954,
+   "top_decile_recall": 0.375,
+   "bottom_decile_recall": 0.125,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 5.3
+ },
+ {
+  "qid": "Q75",
+  "organism": "Tg",
+  "strategy": "supervised_classifier",
+  "question": "Which palmitoylated proteins are IMC or plasma-membrane residents?",
+  "anchor": "PMID:39690890",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\"}",
+  "seconds": 0.6,
+  "summary": "A class-balanced logistic regression on 364 permitted measurements, trained on 3,804 labelled genes, calls 2,000 unlabelled genes (probability >= 0.00). 'what drives each class' lists the measurements with the largest weights -- the model's reasons, to be read as hypotheses about what defines each class.",
+  "rows[calls]": 2000,
+  "rows[what drives each class]": 192,
+  "lead_table": "calls",
+  "head": [
+   {
+    "gene_id": "TGME49_224760",
+    "product": "SAG-related sequence SRS40E",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9880545352406251
+   },
+   {
+    "gene_id": "TGME49_284010",
+    "product": "5'-3' exonuclease, N-terminal resolvase family domain-containing protein",
+    "prediction": "apicoplast",
+    "support": 0.9834420132192486
+   },
+   {
+    "gene_id": "TGME49_251740",
+    "product": "AP2 domain transcription factor AP2XII-9",
+    "prediction": "apical 1",
+    "support": 0.9790728551383547
+   },
+   {
+    "gene_id": "TGME49_278390",
+    "product": "Toxoplasma gondii family A protein",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9707695083508134
+   },
+   {
+    "gene_id": "TGME49_320250",
+    "product": "SAG-related sequence SRS15A",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9692663952534287
+   },
+   {
+    "gene_id": "TGME49_252200",
+    "product": "palmitoyltransferase DHHC7",
+    "prediction": "rhoptries 2",
+    "support": 0.9675138243249042
+   },
+   {
+    "gene_id": "TGME49_278370",
+    "product": "Toxoplasma gondii family A protein",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9644883526532771
+   },
+   {
+    "gene_id": "TGME49_280570",
+    "product": "SAG-related sequence SRS35A",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9629125240853524
+   },
+   {
+    "gene_id": "TGME49_306700",
+    "product": "hypothetical protein",
+    "prediction": "PM - peripheral 2",
+    "support": 0.9625225003634349
+   },
+   {
+    "gene_id": "TGME49_292270",
+    "product": "SAG-related sequence SRS36C",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9590088004731324
+   },
+   {
+    "gene_id": "TGME49_312950",
+    "product": "RAP-1 family protein",
+    "prediction": "rhoptries 1",
+    "support": 0.9561896153410763
+   },
+   {
+    "gene_id": "TGME49_273110",
+    "product": "SAG-related sequence SRS30D",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9515953698006745
+   },
+   {
+    "gene_id": "TGME49_311810",
+    "product": "hypothetical protein",
+    "prediction": "apicoplast",
+    "support": 0.9482349419061307
+   },
+   {
+    "gene_id": "TGME49_321470",
+    "product": "SAG-related sequence SRS12D",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9481568658073798
+   },
+   {
+    "gene_id": "TGME49_288610",
+    "product": "50S ribosomal protein L21, putative",
+    "prediction": "apicoplast",
+    "support": 0.947544971721008
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q77",
+  "organism": "Tg",
+  "strategy": "stratum_focus",
+  "question": "Which Golgi proteins have no orthologue outside the apicomplexa?",
+  "anchor": "PMID:39345210",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\", \"stratum\": \"lineage-specific\"}",
+  "seconds": 0.2,
+  "summary": "4,888 genes are lineage-specific; 1,453 of those without a compartment label are called from measurement neighbours, with conservation and orthology columns removed so the call cannot lean on them. 'accuracy by stratum' says whether these genes can be called as well as the rest.",
+  "rows[calls]": 1453,
+  "rows[accuracy by stratum]": 2,
+  "lead_table": "calls",
+  "head": [
+   {
+    "gene_id": "TGME49_228670",
+    "product": "zinc finger, C2H2 type domain-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.8708447027847555
+   },
+   {
+    "gene_id": "TGME49_312940",
+    "product": "hypothetical protein",
+    "prediction": "mitochondrion - membranes",
+    "support": 0.8144835580509119
+   },
+   {
+    "gene_id": "TGME49_295610",
+    "product": "histone lysine methyltransferase, SET, putative",
+    "prediction": "nucleus - chromatin",
+    "support": 0.803913655916779
+   },
+   {
+    "gene_id": "TGME49_278205",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.8002616993146713
+   },
+   {
+    "gene_id": "TGME49_215080",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7972481184816681
+   },
+   {
+    "gene_id": "TGME49_221280",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.796546728044557
+   },
+   {
+    "gene_id": "TGME49_283520",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7901103738099099
+   },
+   {
+    "gene_id": "TGME49_275430",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7417321903021987
+   },
+   {
+    "gene_id": "TGME49_271030",
+    "product": "AP2 domain transcription factor AP2VIII-6",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7383462057325259
+   },
+   {
+    "gene_id": "TGME49_250680",
+    "product": "TBC domain-containing protein TBC5",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7381456635143021
+   },
+   {
+    "gene_id": "TGME49_248720",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7380806618860093
+   },
+   {
+    "gene_id": "TGME49_263610",
+    "product": "tetratricopeptide repeat-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7376417289046643
+   },
+   {
+    "gene_id": "TGME49_313870",
+    "product": "zinc finger, C3HC4 type (RING finger) domain-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7370142503581528
+   },
+   {
+    "gene_id": "TGME49_250780",
+    "product": "Zn-finger in ubiquitin-hydrolases domain-containing protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7365080430995723
+   },
+   {
+    "gene_id": "TGME49_217770",
+    "product": "hypothetical protein",
+    "prediction": "nucleus - chromatin",
+    "support": 0.7364826053700555
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "correct calls per hidden gene",
+  "observed": 0.2951219512195122,
+  "chance": 0.05317073170731708,
+  "bar": 0.07207317073170731,
+  "p": 0.09090909090909091,
+  "skill": 0.25553838227717673,
+  "n_hidden": 410,
+  "test_summary": "PASS -- correct calls per hidden gene 0.295 against 0.053 \u00b1 0.013 under 10 runs on shuffled labels (bar 0.072, p 0.0909); effect +0.242, needed +0.050; 410 hidden",
+  "scorecard": {
+   "accuracy": 0.2951,
+   "coverage": 0.6341,
+   "precision_of_calls": 0.4654,
+   "macro_precision": 0.4495,
+   "macro_recall": 0.1812,
+   "macro_f1": 0.2257,
+   "weighted_f1": 0.322,
+   "kappa": 0.2272,
+   "mcc": 0.2496,
+   "macro_auroc": 0.7689,
+   "macro_auprc": 0.3269
+  },
+  "test_seconds": 0.3
+ },
+ {
+  "qid": "Q80",
+  "organism": "Tg",
+  "strategy": "conjunctions",
+  "question": "Which hypothetical genes are stage-specifically induced?",
+  "anchor": "PMID:41761089",
+  "grade": "reliable",
+  "settings": "{\"a\": \"stage_enriched_derived\", \"b\": \"compartment\"}",
+  "seconds": 9.8,
+  "summary": "A map built without stage_enriched_derived or compartment; 2 clusters are enriched for a COMBINATION of the two beyond what either label alone explains (interaction ratio >= 1.25). Each is a kind of gene defined by both: nuclear AND S-phase, secreted AND fitness-conferring in vivo.",
+  "rows[conjunctions]": 2,
+  "lead_table": "conjunctions",
+  "head": [
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "compartment",
+    "other_kind": "discrete",
+    "cluster": 6,
+    "category": "bradyzoite",
+    "other_category": "PM - peripheral 1",
+    "n_cluster": 52,
+    "n_known": 6,
+    "n_hits": 5,
+    "purity": 0.8333333333333334,
+    "background": 0.04437869822485207,
+    "lift_a": 4.506666666666667,
+    "lift_b": 12.803030303030305,
+    "joint_lift": 18.77777777777778,
+    "interaction_ratio": 1.4666666666666666,
+    "product_ratio": 0.32544378698224846,
+    "lift": 1.4666666666666666,
+    "p": 4.922708786428269e-07,
+    "n_predicted": 46,
+    "genes": "TGME49_251962, TGME49_212710, TGME49_315400, TGME49_259290, TGME49_278090, TGME49_243150, TGME49_259410, TGME49_207010, TGME49_243130, TGME49_278370, TGME49_243160, TGME49_259300, TGME49_273110, TGME49_309352, TGME49_321470, TGME49_224760, TGME49_219348, TGME49_278410, TGME49_315380, TGME49_224790, TGME49_224750, TGME49_321490, TGME49_321480, TGME49_278380, TGME49_309330, TGME49_275360, TGME49_275380, TGME49_309300, TGME49_278290, TGME49_278420, TGME49_243190, TGME49_210320, TGME49_266340, TGME49_214420, TGME49_292270, TGME49_238220, TGME49_315390, TGME49_239090, TGME49_258550, TGME49_322120, TGME49_212910, TGME49_268270, TGME49_238480, TGME49_238470, TGME49_238850, TGME49_238520",
+    "q": 2.4613543932141345e-06,
+    "circular": false,
+    "selection": "eom"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "compartment",
+    "other_kind": "discrete",
+    "cluster": 3,
+    "category": "bradyzoite",
+    "other_category": "PM - peripheral 1",
+    "n_cluster": 52,
+    "n_known": 6,
+    "n_hits": 5,
+    "purity": 0.8333333333333334,
+    "background": 0.04437869822485207,
+    "lift_a": 4.506666666666667,
+    "lift_b": 12.803030303030305,
+    "joint_lift": 18.77777777777778,
+    "interaction_ratio": 1.4666666666666666,
+    "product_ratio": 0.32544378698224846,
+    "lift": 1.4666666666666666,
+    "p": 4.922708786428269e-07,
+    "n_predicted": 46,
+    "genes": "TGME49_251962, TGME49_212710, TGME49_315400, TGME49_259290, TGME49_278090, TGME49_243150, TGME49_259410, TGME49_207010, TGME49_243130, TGME49_278370, TGME49_243160, TGME49_259300, TGME49_273110, TGME49_309352, TGME49_321470, TGME49_224760, TGME49_219348, TGME49_278410, TGME49_315380, TGME49_224790, TGME49_224750, TGME49_321490, TGME49_321480, TGME49_278380, TGME49_309330, TGME49_275360, TGME49_275380, TGME49_309300, TGME49_278290, TGME49_278420, TGME49_243190, TGME49_210320, TGME49_266340, TGME49_214420, TGME49_292270, TGME49_238220, TGME49_315390, TGME49_239090, TGME49_258550, TGME49_322120, TGME49_212910, TGME49_268270, TGME49_238480, TGME49_238470, TGME49_238850, TGME49_238520",
+    "q": 1.4768126359284809e-06,
+    "circular": false,
+    "selection": "leaf"
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q81",
+  "organism": "Tg",
+  "strategy": "structural_homology",
+  "question": "Which genes fill gaps in the metabolic reconstruction?",
+  "anchor": "PMID:35196325",
+  "grade": "reliable",
+  "settings": "{\"target\": \"dtm_class\", \"level\": 1}",
+  "seconds": 1.1,
+  "summary": "0 genes without a dtm_class annotation (at level 1) called from their struct neighbours; 0 of them are hypothetical proteins. Structural similarity needs no sequence homology, so it reaches the lineage-specific proteins orthology cannot.",
+  "rows[calls]": 0,
+  "lead_table": "calls",
+  "head": [],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "correct calls per hidden gene",
+  "observed": 0.7532679738562091,
+  "chance": 0.5219771241830065,
+  "bar": 0.5459150326797385,
+  "p": 0.047619047619047616,
+  "skill": 0.48384891471543334,
+  "n_hidden": 612,
+  "test_summary": "PASS -- correct calls per hidden gene 0.753 against 0.522 \u00b1 0.013 under 20 runs on shuffled labels (bar 0.546, p 0.0476); effect +0.231, needed +0.050; 612 hidden",
+  "scorecard": {
+   "accuracy": 0.7533,
+   "coverage": 0.8448,
+   "precision_of_calls": 0.8917,
+   "macro_precision": 0.66,
+   "macro_recall": 0.5175,
+   "macro_f1": 0.5783,
+   "weighted_f1": 0.8118,
+   "kappa": 0.5321,
+   "mcc": 0.5509,
+   "macro_auroc": 0.8437,
+   "macro_auprc": 0.5416
+  },
+  "test_seconds": 1.5
+ },
+ {
+  "qid": "Q82",
+  "organism": "Tg",
+  "strategy": "paralog_divergence",
+  "question": "Which alveolin-family paralogues divided the subpellicular network between them?",
+  "anchor": "PMID:42113865",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\", \"min_shared\": 10}",
+  "seconds": 0.3,
+  "summary": "3,452 paralog pairs scored by how differently they behave across the permitted measurements (one minus the correlation of their profiles). The top of the list is where gene duplication was followed by a change of job -- sub- or neo-functionalisation -- and the bottom is redundancy.",
+  "rows[paralog pairs]": 3452,
+  "lead_table": "paralog pairs",
+  "head": [
+   {
+    "gene_a": "TGME49_207005",
+    "product_a": "SAG-related sequence SRS48Q",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.6964549261797037,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_207010",
+    "product_a": "SAG-related sequence SRS48K",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.6826047746374395,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_207015",
+    "product_a": "SRS domain-containing protein",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.6737768580756178,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_316190",
+    "product_a": "superoxide dismutase SOD3",
+    "gene_b": "TGME49_316310",
+    "product_b": "superoxide dismutase SOD1",
+    "divergence": 1.6143831732879963,
+    "compartment_a": NaN,
+    "compartment_b": "cytosol"
+   },
+   {
+    "gene_a": "TGME49_204130",
+    "product_a": "perforin-like protein PLP1",
+    "gene_b": "TGME49_272430",
+    "product_b": "perforin-like protein PLP2",
+    "divergence": 1.5772598876527255,
+    "compartment_a": "micronemes",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_308020",
+    "product_a": "SAG-related sequence SRS57",
+    "gene_b": "TGME49_224780",
+    "product_b": "SAG-related sequence SRS40B [Source:UniProtKB/TrEMBL;Acc:S8EU84]",
+    "divergence": 1.5734457593342412,
+    "compartment_a": "PM - peripheral 1",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_296640",
+    "product_a": "SAG-related sequence SRS48E",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.5273299371023876,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_315320",
+    "product_a": "SAG-related sequence SRS52A",
+    "gene_b": "TGME49_315370",
+    "product_b": "SAG-related sequence SRS53A",
+    "divergence": 1.5221880097901028,
+    "compartment_a": "PM - peripheral 1",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_316330",
+    "product_a": "superoxide dismutase SOD2",
+    "gene_b": "TGME49_316190",
+    "product_b": "superoxide dismutase SOD3",
+    "divergence": 1.5176674004222976,
+    "compartment_a": "mitochondrion - soluble",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_309352",
+    "product_a": "SAG-related sequence SRS55N",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.5146934697022627,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_275380",
+    "product_a": "SAG-related sequence SRS47D",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.5034793228022032,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_202520",
+    "product_a": "hypothetical protein",
+    "gene_b": "TGME49_326900",
+    "product_b": "hypothetical protein",
+    "divergence": 1.4923235260395384,
+    "compartment_a": "nucleus - chromatin",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_207005",
+    "product_a": "SAG-related sequence SRS48Q",
+    "gene_b": "TGME49_285870",
+    "product_b": "SAG-related sequence SRS20A",
+    "divergence": 1.4840957396711791,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   },
+   {
+    "gene_a": "TGME49_292200",
+    "product_a": "RNA recognition motif-containing protein",
+    "gene_b": "TGME49_328100",
+    "product_b": "RNA recognition motif-containing protein",
+    "divergence": 1.483087429290624,
+    "compartment_a": "nucleus - non-chromatin",
+    "compartment_b": NaN
+   },
+   {
+    "gene_a": "TGME49_219348",
+    "product_a": "SAG-related sequence SRS55M",
+    "gene_b": "TGME49_271050",
+    "product_b": "SAG-related sequence SRS34A",
+    "divergence": 1.477741461022792,
+    "compartment_a": NaN,
+    "compartment_b": "PM - peripheral 1"
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q83",
+  "organism": "Tg",
+  "strategy": "conjunctions",
+  "question": "Which apical-ring proteins are assembly factors rather than structural?",
+  "anchor": "PMID:41315181",
+  "grade": "reliable",
+  "settings": "{\"a\": \"compartment\", \"b\": \"cellcycle_phase\"}",
+  "seconds": 9.3,
+  "summary": "A map built without compartment or cellcycle_phase; 2 clusters are enriched for a COMBINATION of the two beyond what either label alone explains (interaction ratio >= 1.25). Each is a kind of gene defined by both: nuclear AND S-phase, secreted AND fitness-conferring in vivo.",
+  "rows[conjunctions]": 2,
+  "lead_table": "conjunctions",
+  "head": [
+   {
+    "kind": "conjunction",
+    "layer": "compartment",
+    "layer_kind": "discrete",
+    "other": "cellcycle_phase",
+    "other_kind": "discrete",
+    "cluster": 1,
+    "category": "PM - peripheral 1",
+    "other_category": "S",
+    "n_cluster": 21,
+    "n_known": 5,
+    "n_hits": 5,
+    "purity": 1.0,
+    "background": 0.020134228187919462,
+    "lift_a": 37.25,
+    "lift_b": 4.318840579710145,
+    "joint_lift": 49.66666666666667,
+    "interaction_ratio": 1.3333333333333335,
+    "product_ratio": 0.30872483221476515,
+    "lift": 1.3333333333333335,
+    "p": 3.168828428428343e-10,
+    "n_predicted": 16,
+    "genes": "TGME49_309352, TGME49_320230, TGME49_301150, TGME49_301160, TGME49_320200, TGME49_320170, TGME49_301180, TGME49_267130, TGME49_301170, TGME49_267160, TGME49_321490, TGME49_321480, TGME49_234930, TGME49_273120, TGME49_292260, TGME49_208850",
+    "q": 3.168828428428343e-10,
+    "circular": false,
+    "selection": "eom"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "compartment",
+    "layer_kind": "discrete",
+    "other": "cellcycle_phase",
+    "other_kind": "discrete",
+    "cluster": 0,
+    "category": "PM - peripheral 1",
+    "other_category": "S",
+    "n_cluster": 21,
+    "n_known": 5,
+    "n_hits": 5,
+    "purity": 1.0,
+    "background": 0.020134228187919462,
+    "lift_a": 37.25,
+    "lift_b": 4.318840579710145,
+    "joint_lift": 49.66666666666667,
+    "interaction_ratio": 1.3333333333333335,
+    "product_ratio": 0.30872483221476515,
+    "lift": 1.3333333333333335,
+    "p": 3.168828428428343e-10,
+    "n_predicted": 16,
+    "genes": "TGME49_309352, TGME49_320230, TGME49_301150, TGME49_301160, TGME49_320200, TGME49_320170, TGME49_301180, TGME49_267130, TGME49_301170, TGME49_267160, TGME49_321490, TGME49_321480, TGME49_234930, TGME49_273120, TGME49_292260, TGME49_208850",
+    "q": 6.337656856856686e-10,
+    "circular": false,
+    "selection": "leaf"
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q84",
+  "organism": "Tg",
+  "strategy": "cluster_guilt",
+  "question": "Which microtubule inner proteins are still hypotheticals?",
+  "anchor": "PMID:41626803",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\"}",
+  "seconds": 9.5,
+  "summary": "10 clusters are enriched for one compartment label at q < 0.05 and lift >= 2 (hypergeometric, BH-corrected over every cluster x label); their 321 unlabelled members are called with it.",
+  "rows[calls]": 321,
+  "rows[enrichment]": 72,
+  "lead_table": "enrichment",
+  "head": [
+   {
+    "cluster": 0,
+    "label": "PM - peripheral 1",
+    "hits": 19,
+    "labelled": 26,
+    "size": 219,
+    "lift": 21.061813186813183,
+    "p": 3.726719480787887e-26,
+    "q": 2.6832380261672787e-24,
+    "called": true
+   },
+   {
+    "cluster": 4,
+    "label": "60S ribosome",
+    "hits": 18,
+    "labelled": 204,
+    "size": 205,
+    "lift": 3.955882352941177,
+    "p": 9.933533080017102e-12,
+    "q": 3.5760719088061567e-10,
+    "called": true
+   },
+   {
+    "cluster": 2,
+    "label": "IMC",
+    "hits": 17,
+    "labelled": 114,
+    "size": 122,
+    "lift": 5.014254385964912,
+    "p": 1.7486874637867985e-10,
+    "q": 4.196849913088316e-09,
+    "called": true
+   },
+   {
+    "cluster": 2,
+    "label": "dense granules",
+    "hits": 19,
+    "labelled": 114,
+    "size": 122,
+    "lift": 4.338709677419354,
+    "p": 5.83367514255017e-10,
+    "q": 1.0500615256590305e-08,
+    "called": false
+   },
+   {
+    "cluster": 4,
+    "label": "40S ribosome",
+    "hits": 14,
+    "labelled": 204,
+    "size": 205,
+    "lift": 3.9558823529411766,
+    "p": 3.088096229743887e-09,
+    "q": 4.4468585708311975e-08,
+    "called": false
+   },
+   {
+    "cluster": 4,
+    "label": "mitochondrion - membranes",
+    "hits": 33,
+    "labelled": 204,
+    "size": 205,
+    "lift": 2.4174836601307192,
+    "p": 7.593512234344286e-09,
+    "q": 9.112214681213143e-08,
+    "called": false
+   },
+   {
+    "cluster": 2,
+    "label": "micronemes",
+    "hits": 9,
+    "labelled": 114,
+    "size": 122,
+    "lift": 6.371052631578947,
+    "p": 1.493820402250958e-07,
+    "q": 1.536500985172414e-06,
+    "called": false
+   },
+   {
+    "cluster": 6,
+    "label": "nucleus - chromatin",
+    "hits": 43,
+    "labelled": 139,
+    "size": 172,
+    "lift": 1.9971798561151082,
+    "p": 2.403153560785497e-07,
+    "q": 2.1628382047069476e-06,
+    "called": false
+   },
+   {
+    "cluster": 6,
+    "label": "apicoplast",
+    "hits": 19,
+    "labelled": 139,
+    "size": 172,
+    "lift": 2.8284449363586055,
+    "p": 3.0943466422273756e-06,
+    "q": 2.1866492834637223e-05,
+    "called": true
+   },
+   {
+    "cluster": 7,
+    "label": "Golgi",
+    "hits": 12,
+    "labelled": 71,
+    "size": 90,
+    "lift": 4.399818264425261,
+    "p": 3.1699375717967674e-06,
+    "q": 2.1866492834637223e-05,
+    "called": true
+   },
+   {
+    "cluster": 8,
+    "label": "nucleus - chromatin",
+    "hits": 33,
+    "labelled": 102,
+    "size": 135,
+    "lift": 2.0887058823529414,
+    "p": 3.340714183069576e-06,
+    "q": 2.1866492834637223e-05,
+    "called": true
+   },
+   {
+    "cluster": 1,
+    "label": "cytosol",
+    "hits": 19,
+    "labelled": 40,
+    "size": 40,
+    "lift": 2.75773381294964,
+    "p": 5.029386709011434e-06,
+    "q": 2.811833688018767e-05,
+    "called": true
+   },
+   {
+    "cluster": 4,
+    "label": "cytosol",
+    "hits": 57,
+    "labelled": 204,
+    "size": 205,
+    "lift": 1.6221963605586118,
+    "p": 5.076921936700552e-06,
+    "q": 2.811833688018767e-05,
+    "called": false
+   },
+   {
+    "cluster": 8,
+    "label": "mitochondrion - soluble",
+    "hits": 21,
+    "labelled": 102,
+    "size": 135,
+    "lift": 2.5561085972850677,
+    "p": 1.1235354802166817e-05,
+    "q": 5.778182469685792e-05,
+    "called": false
+   },
+   {
+    "cluster": 10,
+    "label": "mitochondrion - soluble",
+    "hits": 13,
+    "labelled": 44,
+    "size": 50,
+    "lift": 3.6681818181818184,
+    "p": 1.3257627463278074e-05,
+    "q": 6.363661182373475e-05,
+    "called": true
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q85",
+  "organism": "Tg",
+  "strategy": "trait_regression",
+  "question": "Which oxidative-stress fitness genes are not explained by anything else?",
+  "anchor": "PMID:33067458",
+  "grade": "reliable",
+  "settings": "{\"target\": \"oxidative_stress_screen_score\", \"top\": 200}",
+  "seconds": 10.5,
+  "summary": "oxidative_stress_screen_score predicted from 333 permitted measurements (boosted); out-of-fold rank correlation 0.291 over 7,384 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 756 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 756,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "TGME49_217555",
+    "product": "hypothetical protein",
+    "measured": -6.171720663894404,
+    "expected": -0.31414267159602316,
+    "z": -8.701797213533325
+   },
+   {
+    "gene_id": "TGME49_232250",
+    "product": "catalase",
+    "measured": -6.154175227448138,
+    "expected": -0.7803531433121651,
+    "z": -7.983726786621771
+   },
+   {
+    "gene_id": "TGME49_263740",
+    "product": "ABC transporter transmembrane region domain-containing protein",
+    "measured": -4.488231855376794,
+    "expected": -0.7804296642895479,
+    "z": -5.510744864005113
+   },
+   {
+    "gene_id": "TGME49_251680",
+    "product": "translationally-controlled tumor protein homolog",
+    "measured": -4.39751498084556,
+    "expected": -0.8448939725178164,
+    "z": -5.280399319335617
+   },
+   {
+    "gene_id": "TGME49_202950",
+    "product": "hypothetical protein",
+    "measured": -3.994730505599085,
+    "expected": -0.5237600715532079,
+    "z": -5.159200049739369
+   },
+   {
+    "gene_id": "TGME49_290840",
+    "product": "serine protease",
+    "measured": -3.937498509490184,
+    "expected": -0.4959237880076445,
+    "z": -5.115566077495172
+   },
+   {
+    "gene_id": "TGME49_254050",
+    "product": "optic atrophy 3 protein (opa3) protein",
+    "measured": -3.816120933359211,
+    "expected": -0.5078756782167063,
+    "z": -4.9176564598568975
+   },
+   {
+    "gene_id": "TGME49_270350",
+    "product": "hypothetical protein",
+    "measured": -3.5101493570766484,
+    "expected": -0.28086315300503195,
+    "z": -4.800452393602954
+   },
+   {
+    "gene_id": "TGME49_309730",
+    "product": "thioredoxin reductase",
+    "measured": -3.9719374384713104,
+    "expected": -0.8034324973245119,
+    "z": -4.710230803168145
+   },
+   {
+    "gene_id": "TGME49_310050",
+    "product": "RNA recognition motif-containing protein",
+    "measured": -3.526386112748687,
+    "expected": -0.4633804866294302,
+    "z": -4.553631293162222
+   },
+   {
+    "gene_id": "TGME49_290200",
+    "product": "NAD/NADP octopine/nopaline dehydrogenase, alpha-helical domain-containing protein",
+    "measured": -3.9520328816249446,
+    "expected": -0.9275085129046067,
+    "z": -4.496511054499921
+   },
+   {
+    "gene_id": "TGME49_255300",
+    "product": "hypothetical protein",
+    "measured": -3.8311267094025614,
+    "expected": -0.8828111445920043,
+    "z": -4.383389359375232
+   },
+   {
+    "gene_id": "TGME49_236000",
+    "product": "ferredoxin, putative",
+    "measured": 2.221135221478118,
+    "expected": -0.718716084077678,
+    "z": 4.356800531826995
+   },
+   {
+    "gene_id": "TGME49_257510",
+    "product": "CDP-alcohol phosphatidyltransferase superfamily protein",
+    "measured": -3.685698207066449,
+    "expected": -0.7964902961005452,
+    "z": -4.295652015988158
+   },
+   {
+    "gene_id": "TGME49_212100",
+    "product": "ubiquitin activating enzyme UBA1",
+    "measured": -3.648124497866038,
+    "expected": -0.8382529147934378,
+    "z": -4.177887933154852
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.3192632220137281,
+  "chance": 0.0,
+  "bar": 0.04281763971779283,
+  "p": 6.921192571491029e-35,
+  "skill": 0.3192632220137281,
+  "n_hidden": 1477,
+  "test_summary": "PASS -- rank correlation of predicted and hidden values 0.319 against 0.000 \u00b1 0.026 under the chance distribution of a rank correlation (bar 0.043, p 6.92e-35); effect +0.319, needed +0.100; 1,477 hidden",
+  "scorecard": {
+   "spearman": 0.3193,
+   "pearson": 0.2941,
+   "kendall": 0.2139,
+   "r2": 0.0751,
+   "nrmse": 0.9617,
+   "mae": 0.5149,
+   "rmse": 0.6794,
+   "top_decile_recall": 0.1824,
+   "bottom_decile_recall": 0.1554,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 6.1
+ },
+ {
+  "qid": "Q86",
+  "organism": "Tg",
+  "strategy": "condition_shift",
+  "question": "Which genes need glucose specifically, beyond general fitness?",
+  "anchor": "PMID:40025025",
+  "grade": "weak",
+  "settings": "{\"condition\": \"fit_no_glucose\", \"baseline\": \"fit_complete_medium_2025\"}",
+  "seconds": 11.2,
+  "summary": "The part of fit_no_glucose that fit_complete_medium_2025 does not explain -- the condition-specific effect -- for 7,393 genes. Other measurements predict it at out-of-fold rank correlation 0.325: the condition-specific need has a signature, and 'predicted' extends it to genes never screened in the condition. Negative shift: needed more in the condition than the baseline predicts.",
+  "rows[shifted genes]": 7393,
+  "rows[predicted]": 747,
+  "lead_table": "shifted genes",
+  "head": [
+   {
+    "gene_id": "TGME49_254110",
+    "product": "tryptophanyl-tRNA synthetase (TrpRS1)",
+    "shift": -0.8403275415649958,
+    "explained": -0.17887946194343365
+   },
+   {
+    "gene_id": "TGME49_272210",
+    "product": "RNA methyltransferase, putative",
+    "shift": -0.8311810561495065,
+    "explained": -0.04263939852302744
+   },
+   {
+    "gene_id": "TGME49_203270",
+    "product": "ATP-dependent Clp endopeptidase, proteolytic subunit ClpP domain-containing protein",
+    "shift": -0.8251361465510155,
+    "explained": -0.08438635258605255
+   },
+   {
+    "gene_id": "TGME49_288830",
+    "product": "NADH dehydrogenase (NDH2-II)",
+    "shift": -0.8236508632033824,
+    "explained": -0.11101528544236891
+   },
+   {
+    "gene_id": "TGME49_263550",
+    "product": "39S ribosomal protein L47, mitochondrial precursor, putative",
+    "shift": -0.8207302830001502,
+    "explained": -0.01180386135291859
+   },
+   {
+    "gene_id": "TGME49_249390",
+    "product": "glutamate/leucine/phenylalanine/valine dehydrogenase family protein",
+    "shift": -0.7972004690026316,
+    "explained": -0.11825193774628794
+   },
+   {
+    "gene_id": "TGME49_271470",
+    "product": "hypothetical protein",
+    "shift": -0.7910852045694114,
+    "explained": -0.05540092406697089
+   },
+   {
+    "gene_id": "TGME49_261380",
+    "product": "ribosomal protein S8, putative",
+    "shift": -0.7876817753057239,
+    "explained": -0.026321328809307012
+   },
+   {
+    "gene_id": "TGME49_286520",
+    "product": "hypothetical protein",
+    "shift": -0.782642943612837,
+    "explained": 0.005624391138997606
+   },
+   {
+    "gene_id": "TGME49_274060",
+    "product": "2-oxoglutarate/malate translocase OMT",
+    "shift": -0.7795551627030739,
+    "explained": -0.0410342490487978
+   },
+   {
+    "gene_id": "TGME49_208530",
+    "product": "nicotinate phosphoribosyltransferase",
+    "shift": -0.7767388094488822,
+    "explained": -0.12159478851213998
+   },
+   {
+    "gene_id": "TGME49_205470",
+    "product": "translation elongation factor 2 family protein, putative",
+    "shift": -0.7746626468678635,
+    "explained": -0.16836809533354402
+   },
+   {
+    "gene_id": "TGME49_273330",
+    "product": "hypothetical protein",
+    "shift": -0.7588652912550943,
+    "explained": 0.08173160028368064
+   },
+   {
+    "gene_id": "TGME49_230590",
+    "product": "chitobiosyldiphosphodolichol beta-mannosyltransferase",
+    "shift": -0.7581508497422931,
+    "explained": -0.13515037195533977
+   },
+   {
+    "gene_id": "TGME49_309790",
+    "product": "hypothetical protein",
+    "shift": -0.7459537422490817,
+    "explained": -0.0024210696843994135
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q87",
+  "organism": "Tg",
+  "strategy": "supervised_classifier",
+  "question": "Which iron-regulated proteins are apicoplast or mitochondrial?",
+  "anchor": "PMID:39348385",
+  "grade": "reliable",
+  "settings": "{\"target\": \"compartment\"}",
+  "seconds": 0.3,
+  "summary": "A class-balanced logistic regression on 364 permitted measurements, trained on 3,804 labelled genes, calls 2,000 unlabelled genes (probability >= 0.00). 'what drives each class' lists the measurements with the largest weights -- the model's reasons, to be read as hypotheses about what defines each class.",
+  "rows[calls]": 2000,
+  "rows[what drives each class]": 192,
+  "lead_table": "calls",
+  "head": [
+   {
+    "gene_id": "TGME49_224760",
+    "product": "SAG-related sequence SRS40E",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9880545352406251
+   },
+   {
+    "gene_id": "TGME49_284010",
+    "product": "5'-3' exonuclease, N-terminal resolvase family domain-containing protein",
+    "prediction": "apicoplast",
+    "support": 0.9834420132192486
+   },
+   {
+    "gene_id": "TGME49_251740",
+    "product": "AP2 domain transcription factor AP2XII-9",
+    "prediction": "apical 1",
+    "support": 0.9790728551383547
+   },
+   {
+    "gene_id": "TGME49_278390",
+    "product": "Toxoplasma gondii family A protein",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9707695083508134
+   },
+   {
+    "gene_id": "TGME49_320250",
+    "product": "SAG-related sequence SRS15A",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9692663952534287
+   },
+   {
+    "gene_id": "TGME49_252200",
+    "product": "palmitoyltransferase DHHC7",
+    "prediction": "rhoptries 2",
+    "support": 0.9675138243249042
+   },
+   {
+    "gene_id": "TGME49_278370",
+    "product": "Toxoplasma gondii family A protein",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9644883526532771
+   },
+   {
+    "gene_id": "TGME49_280570",
+    "product": "SAG-related sequence SRS35A",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9629125240853524
+   },
+   {
+    "gene_id": "TGME49_306700",
+    "product": "hypothetical protein",
+    "prediction": "PM - peripheral 2",
+    "support": 0.9625225003634349
+   },
+   {
+    "gene_id": "TGME49_292270",
+    "product": "SAG-related sequence SRS36C",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9590088004731324
+   },
+   {
+    "gene_id": "TGME49_312950",
+    "product": "RAP-1 family protein",
+    "prediction": "rhoptries 1",
+    "support": 0.9561896153410763
+   },
+   {
+    "gene_id": "TGME49_273110",
+    "product": "SAG-related sequence SRS30D",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9515953698006745
+   },
+   {
+    "gene_id": "TGME49_311810",
+    "product": "hypothetical protein",
+    "prediction": "apicoplast",
+    "support": 0.9482349419061307
+   },
+   {
+    "gene_id": "TGME49_321470",
+    "product": "SAG-related sequence SRS12D",
+    "prediction": "PM - peripheral 1",
+    "support": 0.9481568658073798
+   },
+   {
+    "gene_id": "TGME49_288610",
+    "product": "50S ribosomal protein L21, putative",
+    "prediction": "apicoplast",
+    "support": 0.947544971721008
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q88",
+  "organism": "Tg",
+  "strategy": "trait_regression",
+  "question": "Which proteins are engaged by calcium in the CETSA screen and localize apically?",
+  "anchor": "PMID:39903669",
+  "grade": "reliable",
+  "settings": "{\"target\": \"cetsa_calcium_ed_score\", \"top\": 200}",
+  "seconds": 10.2,
+  "summary": "cetsa_calcium_ed_score predicted from 371 permitted measurements (boosted); out-of-fold rank correlation 0.369 over 2,348 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 5,792 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 5792,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "TGME49_215610",
+    "product": "ATP synthase-associated protein",
+    "measured": 0.411414054743473,
+    "expected": 0.12061001388999278,
+    "z": 4.997584185894736
+   },
+   {
+    "gene_id": "TGME49_239330",
+    "product": "ribosomal protein RPL37",
+    "measured": 0.334591754883777,
+    "expected": 0.06430139578841185,
+    "z": 4.645741994477965
+   },
+   {
+    "gene_id": "TGME49_255900",
+    "product": "Bax inhibitor-1, putative",
+    "measured": 0.367471425705145,
+    "expected": 0.11037477911380514,
+    "z": 4.419448890437649
+   },
+   {
+    "gene_id": "TGME49_206320",
+    "product": "hypothetical protein",
+    "measured": 0.375705771728454,
+    "expected": 0.13534339963975434,
+    "z": 4.132429530275763
+   },
+   {
+    "gene_id": "TGME49_214340",
+    "product": "hypothetical protein",
+    "measured": 0.362267842359954,
+    "expected": 0.12562902670376178,
+    "z": 4.0685646292538316
+   },
+   {
+    "gene_id": "TGME49_281920",
+    "product": "V-type ATPase, D subunit protein",
+    "measured": 0.387154078233776,
+    "expected": 0.1560976465290253,
+    "z": 3.9728178868618667
+   },
+   {
+    "gene_id": "TGME49_232250",
+    "product": "catalase",
+    "measured": 0.0001193729357851,
+    "expected": 0.2304712583531519,
+    "z": -3.9410668729983755
+   },
+   {
+    "gene_id": "TGME49_288000",
+    "product": "hypothetical protein",
+    "measured": 0.359736106556537,
+    "expected": 0.13527718818795265,
+    "z": 3.859660064805869
+   },
+   {
+    "gene_id": "TGME49_233850",
+    "product": "coiled-coil domain-containing protein",
+    "measured": 0.279689835861992,
+    "expected": 0.05976705831897327,
+    "z": 3.7818580521071627
+   },
+   {
+    "gene_id": "TGME49_293300",
+    "product": "Yip1 domain-containing protein",
+    "measured": 0.335805092454772,
+    "expected": 0.1167524039482245,
+    "z": 3.7669346445526597
+   },
+   {
+    "gene_id": "TGME49_228750",
+    "product": "calcium dependent protein kinase CDPK7",
+    "measured": 0.336254869177661,
+    "expected": 0.13047276836146426,
+    "z": 3.539323009088229
+   },
+   {
+    "gene_id": "TGME49_272520",
+    "product": "transverse sutures component TSC4",
+    "measured": 0.311015122212637,
+    "expected": 0.10714371137156296,
+    "z": 3.50655164430388
+   },
+   {
+    "gene_id": "TGME49_225330",
+    "product": "hypothetical protein",
+    "measured": 0.329006498092016,
+    "expected": 0.130095680977101,
+    "z": 3.4214695908763115
+   },
+   {
+    "gene_id": "TGME49_208440",
+    "product": "ATP synthase-associated protein",
+    "measured": 0.322460723346302,
+    "expected": 0.12831587783710538,
+    "z": 3.339725615623176
+   },
+   {
+    "gene_id": "TGME49_311500",
+    "product": "ThiF family protein",
+    "measured": 0.354292382612569,
+    "expected": 0.16158083946568744,
+    "z": 3.315142205874204
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.3836738904359199,
+  "chance": 0.0,
+  "bar": 0.07595904238076588,
+  "p": 4.825667505679847e-17,
+  "skill": 0.3836738904359199,
+  "n_hidden": 470,
+  "test_summary": "PASS -- rank correlation of predicted and hidden values 0.384 against 0.000 \u00b1 0.046 under the chance distribution of a rank correlation (bar 0.076, p 4.83e-17); effect +0.384, needed +0.100; 470 hidden",
+  "scorecard": {
+   "spearman": 0.3837,
+   "pearson": 0.4008,
+   "kendall": 0.2611,
+   "r2": 0.1464,
+   "nrmse": 0.9239,
+   "mae": 0.0451,
+   "rmse": 0.0572,
+   "top_decile_recall": 0.2553,
+   "bottom_decile_recall": 0.3617,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 6.1
+ },
+ {
+  "qid": "Q89",
+  "organism": "Pf",
+  "strategy": "understudied_first",
+  "question": "Which ApiAP2 factors still have no target set in the data?",
+  "anchor": "PMID:39419713",
+  "grade": "works when tuned",
+  "settings": "{\"target\": \"lopit_pf_location\", \"min_agree\": 2}",
+  "seconds": 2.6,
+  "summary": "4,540 genes have no focal or substantive publication; 2,000 of those without a lopit_pf_location label receive an agreed call, ranked by agreement times novelty. These are the cheapest discoveries: a hypothesis the data supports about a gene nobody has written about.",
+  "rows[candidates]": 2000,
+  "lead_table": "candidates",
+  "head": [
+   {
+    "gene_id": "PF3D7_0100100",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0100400",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0100700",
+    "product": "Plasmodium exported protein, unknown function, fragment",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101100",
+    "product": "exported protein family 4",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101600",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101800",
+    "product": "stevor",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0103400",
+    "product": "zinc-carboxypeptidase, putative",
+    "prediction": "nucleus 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0106600",
+    "product": "conserved Plasmodium protein, unknown function",
+    "prediction": "apicoplast",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0106800",
+    "product": "ras-related protein Rab-5C",
+    "prediction": "plasma membrane 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0108500",
+    "product": "ELM2 domain-containing protein, putative",
+    "prediction": "nucleo-cytoplasm",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0111800",
+    "product": "eukaryotic translation initiation factor 4E, putative",
+    "prediction": "nucleus 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0114200",
+    "product": "exported protein family 3",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0114700",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0115400",
+    "product": "stevor",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0115600",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q90",
+  "organism": "Pf",
+  "strategy": "trait_regression",
+  "question": "Which genes are chromatin-driven rather than TF-driven?",
+  "anchor": "PMID:41501628",
+  "grade": "reliable",
+  "settings": "{\"target\": \"chromprox_hp1_log2fc\", \"top\": 200}",
+  "seconds": 4.1,
+  "summary": "chromprox_hp1_log2fc predicted from 136 permitted measurements (boosted); out-of-fold rank correlation 0.293 over 1,629 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 4,091 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 4091,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_0728100",
+    "product": "anaphase-promoting complex subunit 1, putative",
+    "measured": 7.35179,
+    "expected": 0.5747565577648451,
+    "z": 6.48541403340861
+   },
+   {
+    "gene_id": "PF3D7_1456000",
+    "product": "AP2 domain transcription factor AP2-HC",
+    "measured": 7.60953,
+    "expected": 0.9069443814199946,
+    "z": 6.4142959247672335
+   },
+   {
+    "gene_id": "PF3D7_0809900",
+    "product": "JmjC domain-containing protein 1, putative",
+    "measured": 6.98927,
+    "expected": 1.3165781087893929,
+    "z": 5.430464693764388
+   },
+   {
+    "gene_id": "PF3D7_1357400",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 6.32152,
+    "expected": 0.737160906342395,
+    "z": 5.346082623415759
+   },
+   {
+    "gene_id": "PF3D7_1126300",
+    "product": "DnaJ protein, putative",
+    "measured": 5.81381,
+    "expected": 0.23522409490618448,
+    "z": 5.340567643509986
+   },
+   {
+    "gene_id": "PF3D7_0506500",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 7.24591,
+    "expected": 1.845998012327011,
+    "z": 5.169885003687302
+   },
+   {
+    "gene_id": "PF3D7_0321800",
+    "product": "WD repeat-containing protein, putative",
+    "measured": 6.26945,
+    "expected": 1.0209641461028693,
+    "z": 5.0252314771732305
+   },
+   {
+    "gene_id": "PF3D7_1140700",
+    "product": "chromo domain-containing protein CDP",
+    "measured": 6.22095,
+    "expected": 1.0185202681121133,
+    "z": 4.981235237554112
+   },
+   {
+    "gene_id": "PF3D7_1123800",
+    "product": "structural maintenance of chromosomes protein 5, putative",
+    "measured": 6.2514,
+    "expected": 1.1309479513799023,
+    "z": 4.9029240459226076
+   },
+   {
+    "gene_id": "PF3D7_0827800",
+    "product": "SET domain protein, putative",
+    "measured": 6.97506,
+    "expected": 1.9564485820273512,
+    "z": 4.805638286864819
+   },
+   {
+    "gene_id": "PF3D7_1010900",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 5.05767,
+    "expected": 0.0857526028854481,
+    "z": 4.761032678732188
+   },
+   {
+    "gene_id": "PF3D7_0317700",
+    "product": "CPSF (cleavage and polyadenylation specific factor), subunit A, putative",
+    "measured": 6.20407,
+    "expected": 1.5063808157979106,
+    "z": 4.4990694556193525
+   },
+   {
+    "gene_id": "PF3D7_1010300",
+    "product": "succinate dehydrogenase subunit 4, putative",
+    "measured": 4.6399,
+    "expected": 0.04462962214047858,
+    "z": 4.401231380054777
+   },
+   {
+    "gene_id": "PF3D7_0206800",
+    "product": "merozoite surface protein 2",
+    "measured": -4.68958,
+    "expected": -0.21727183685953938,
+    "z": -4.260795313702594
+   },
+   {
+    "gene_id": "PF3D7_1462400",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 6.37945,
+    "expected": 1.9746058841358096,
+    "z": 4.2193220249675605
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.35257638404821384,
+  "chance": 0.0,
+  "bar": 0.09124818227905018,
+  "p": 1.0342900508257407e-10,
+  "skill": 0.35257638404821384,
+  "n_hidden": 326,
+  "test_summary": "PASS -- rank correlation of predicted and hidden values 0.353 against 0.000 \u00b1 0.055 under the chance distribution of a rank correlation (bar 0.091, p 1.03e-10); effect +0.353, needed +0.100; 326 hidden",
+  "scorecard": {
+   "spearman": 0.3526,
+   "pearson": 0.3451,
+   "kendall": 0.2414,
+   "r2": 0.081,
+   "nrmse": 0.9586,
+   "mae": 0.6496,
+   "rmse": 1.0042,
+   "top_decile_recall": 0.3333,
+   "bottom_decile_recall": 0.2727,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 2.7
+ },
+ {
+  "qid": "Q91",
+  "organism": "Pf",
+  "strategy": "label_outliers",
+  "question": "Which non-PEXEL proteins are nevertheless exported?",
+  "anchor": "PMID:38334391",
+  "grade": "reliable",
+  "settings": "{\"target\": \"is_exported\", \"top\": 200}",
+  "seconds": 1.3,
+  "summary": "5,720 labelled genes scored by how little their neighbourhood shares their is_exported label; the 200 most surprising are listed with the label their neighbours carry instead. Each is a mislabel, a dual or moonlighting protein, or a gene whose measurements are unusual -- all three worth knowing.",
+  "rows[surprising genes]": 200,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_0104400",
+    "product": "4-hydroxy-3-methylbut-2-enyl diphosphate reductase",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_0112800",
+    "product": "Plasmodium exported protein (hyp11), unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_0717000",
+    "product": "conserved Plasmodium membrane protein, unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_1038500",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_1133300",
+    "product": "cell division control protein CDC50B",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_1368000",
+    "product": "conserved protein, unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_1458300",
+    "product": "alpha/beta hydrolase, putative",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.046875,
+    "surprise": 0.9765625
+   },
+   {
+    "gene_id": "PF3D7_0831300",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.0,
+    "surprise": 0.9666666666666667
+   },
+   {
+    "gene_id": "PF3D7_0935500",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.0,
+    "surprise": 0.9666666666666667
+   },
+   {
+    "gene_id": "PF3D7_1102300",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.0,
+    "surprise": 0.9666666666666667
+   },
+   {
+    "gene_id": "PF3D7_1476600",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.0,
+    "surprise": 0.9666666666666667
+   },
+   {
+    "gene_id": "PF3D7_0102300",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.12,
+    "surprise": 0.94
+   },
+   {
+    "gene_id": "PF3D7_0402400",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.13333333333333333,
+    "alternative": "False",
+    "alternative_share": 0.8666666666666667,
+    "network_share": 0.0,
+    "surprise": 0.9333333333333333
+   },
+   {
+    "gene_id": "PF3D7_1038600",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.13333333333333333,
+    "alternative": "False",
+    "alternative_share": 0.8666666666666667,
+    "network_share": 0.0,
+    "surprise": 0.9333333333333333
+   },
+   {
+    "gene_id": "PF3D7_0937100",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.08,
+    "surprise": 0.9266666666666666
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "AUROC of surprise for the swapped labels",
+  "observed": 0.9936166612187959,
+  "chance": 0.5081093432699064,
+  "bar": 0.5392936470963707,
+  "p": 0.047619047619047616,
+  "skill": 0.9870228501113679,
+  "n_hidden": 286,
+  "test_summary": "PASS -- AUROC of surprise for the swapped labels 0.994 against 0.508 \u00b1 0.018 under 20 random sets of the same size (bar 0.539, p 0.0476); effect +0.486, needed +0.100; 286 hidden",
+  "scorecard": {
+   "auroc": 0.9936,
+   "auprc": 0.921,
+   "auprc_lift": 18.4209,
+   "prevalence": 0.05,
+   "pauroc_10": 0.9751,
+   "r_precision": 0.9021,
+   "precision_at_1pct": 0.9483,
+   "enrichment_at_1pct": 18.9655,
+   "recall_at_10pct": 0.9755,
+   "max_f1": 0.9053,
+   "ndcg": 0.9848
+  },
+  "test_seconds": 0.7
+ },
+ {
+  "qid": "Q93",
+  "organism": "Pf",
+  "strategy": "understudied_first",
+  "question": "Which essential genes are structurally druggable but unpublished?",
+  "anchor": "PMID:40066064",
+  "grade": "works when tuned",
+  "settings": "{\"target\": \"lopit_pf_location\", \"min_agree\": 2}",
+  "seconds": 1.3,
+  "summary": "4,540 genes have no focal or substantive publication; 2,000 of those without a lopit_pf_location label receive an agreed call, ranked by agreement times novelty. These are the cheapest discoveries: a hypothesis the data supports about a gene nobody has written about.",
+  "rows[candidates]": 2000,
+  "lead_table": "candidates",
+  "head": [
+   {
+    "gene_id": "PF3D7_0100100",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0100400",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0100700",
+    "product": "Plasmodium exported protein, unknown function, fragment",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101100",
+    "product": "exported protein family 4",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101600",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101800",
+    "product": "stevor",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0103400",
+    "product": "zinc-carboxypeptidase, putative",
+    "prediction": "nucleus 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0106600",
+    "product": "conserved Plasmodium protein, unknown function",
+    "prediction": "apicoplast",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0106800",
+    "product": "ras-related protein Rab-5C",
+    "prediction": "plasma membrane 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0108500",
+    "product": "ELM2 domain-containing protein, putative",
+    "prediction": "nucleo-cytoplasm",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0111800",
+    "product": "eukaryotic translation initiation factor 4E, putative",
+    "prediction": "nucleus 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0114200",
+    "product": "exported protein family 3",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0114700",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0115400",
+    "product": "stevor",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0115600",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q95",
+  "organism": "Pf",
+  "strategy": "trait_regression",
+  "question": "Which transporters carry resistance-selection variants?",
+  "anchor": "PMID:41922323",
+  "grade": "reliable",
+  "settings": "{\"target\": \"resistance_selection_variants\", \"top\": 200}",
+  "seconds": 2.8,
+  "summary": "resistance_selection_variants predicted from 139 permitted measurements (boosted); out-of-fold rank correlation 0.122 over 734 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 4,986 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 4986,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_1211900",
+    "product": "non-SERCA-type Ca2+ -transporting P-ATPase",
+    "measured": 46.0,
+    "expected": 13.793201059925396,
+    "z": 7.20635168172974
+   },
+   {
+    "gene_id": "PF3D7_1222600",
+    "product": "AP2 domain transcription factor AP2-G",
+    "measured": 35.0,
+    "expected": 4.3557743907526145,
+    "z": 6.8562903971600555
+   },
+   {
+    "gene_id": "PF3D7_MIT02300",
+    "product": "cytochrome b",
+    "measured": 35.0,
+    "expected": 5.428540576422842,
+    "z": 6.615959974523292
+   },
+   {
+    "gene_id": "PF3D7_1255200",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "measured": 32.0,
+    "expected": 4.88222861263091,
+    "z": 6.066263413765057
+   },
+   {
+    "gene_id": "PF3D7_0709700",
+    "product": "prodrug activation and resistance esterase",
+    "measured": 28.0,
+    "expected": 2.919402191517522,
+    "z": 5.609878048772978
+   },
+   {
+    "gene_id": "PF3D7_MIT02100",
+    "product": "cytochrome c oxidase subunit 1",
+    "measured": 2.0,
+    "expected": 26.273056533782338,
+    "z": -5.44675737205245
+   },
+   {
+    "gene_id": "PF3D7_0712400",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "measured": 27.0,
+    "expected": 2.9447707727559043,
+    "z": 5.380166050222688
+   },
+   {
+    "gene_id": "PF3D7_0509800",
+    "product": "phosphatidylinositol 4-kinase beta",
+    "measured": 22.0,
+    "expected": 1.163521612920474,
+    "z": 4.659073457901752
+   },
+   {
+    "gene_id": "PF3D7_0107500",
+    "product": "Niemann-Pick type C1-related protein",
+    "measured": 21.0,
+    "expected": 3.8095251939504364,
+    "z": 3.842263986025423
+   },
+   {
+    "gene_id": "PF3D7_1371600",
+    "product": "erythrocyte binding like protein 1, pseudogene",
+    "measured": 1.0,
+    "expected": 18.104472114522483,
+    "z": -3.840788665915733
+   },
+   {
+    "gene_id": "PF3D7_0632500",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "measured": 20.0,
+    "expected": 3.1724949076891353,
+    "z": 3.760948349988045
+   },
+   {
+    "gene_id": "PF3D7_0109800",
+    "product": "phenylalanine--tRNA ligase alpha subunit",
+    "measured": 20.0,
+    "expected": 4.051504406284626,
+    "z": 3.564024987636537
+   },
+   {
+    "gene_id": "PF3D7_1238800",
+    "product": "acyl-CoA synthetase",
+    "measured": 16.0,
+    "expected": 0.21596671913243878,
+    "z": 3.5271807081630553
+   },
+   {
+    "gene_id": "PF3D7_0312500",
+    "product": "multidrug-resistant modulator MFR3",
+    "measured": 17.0,
+    "expected": 2.3559619735488155,
+    "z": 3.2717890441103505
+   },
+   {
+    "gene_id": "PF3D7_0627800",
+    "product": "acetyl-CoA synthetase",
+    "measured": 18.0,
+    "expected": 4.107747534151933,
+    "z": 3.1033674962228375
+   }
+  ],
+  "status": "ran",
+  "verdict": "FAIL",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.03160479028505989,
+  "chance": 0.0,
+  "bar": 0.13614116867508952,
+  "p": 0.3512743964022065,
+  "skill": 0.03160479028505989,
+  "n_hidden": 147,
+  "test_summary": "FAIL -- rank correlation of predicted and hidden values 0.032 against 0.000 \u00b1 0.083 under the chance distribution of a rank correlation (bar 0.136, p 0.351); effect +0.032, needed +0.100; 147 hidden",
+  "scorecard": {
+   "spearman": 0.0316,
+   "pearson": 0.1349,
+   "kendall": 0.021,
+   "r2": -0.5074,
+   "nrmse": 1.2278,
+   "mae": 2.7711,
+   "rmse": 4.2474,
+   "top_decile_recall": 0.2,
+   "bottom_decile_recall": 0.0667,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 1.7
+ },
+ {
+  "qid": "Q96",
+  "organism": "Pf",
+  "strategy": "conjunctions",
+  "question": "Which febrile-temperature responders are also phospho-regulated?",
+  "anchor": "PMID:41960867",
+  "grade": "untestable",
+  "settings": "{\"a\": \"stage_enriched_derived\", \"b\": \"has_phospho\"}",
+  "seconds": 19.4,
+  "summary": "A map built without stage_enriched_derived or has_phospho; 4 clusters are enriched for a COMBINATION of the two beyond what either label alone explains (interaction ratio >= 1.25). Each is a kind of gene defined by both: nuclear AND S-phase, secreted AND fitness-conferring in vivo.",
+  "rows[conjunctions]": 4,
+  "lead_table": "conjunctions",
+  "head": [
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "has_phospho",
+    "other_kind": "discrete",
+    "cluster": 16,
+    "category": "ookinete",
+    "other_category": "True",
+    "n_cluster": 110,
+    "n_known": 7,
+    "n_hits": 6,
+    "purity": 0.8571428571428571,
+    "background": 0.22580645161290322,
+    "lift_a": 1.712707182320442,
+    "lift_b": 2.5067385444743935,
+    "joint_lift": 3.7959183673469385,
+    "interaction_ratio": 1.5142857142857142,
+    "product_ratio": 0.884147465437788,
+    "lift": 1.5142857142857142,
+    "p": 0.0006406642704516682,
+    "n_predicted": 103,
+    "genes": "PF3D7_0103100, PF3D7_0107800, PF3D7_0203000, PF3D7_0204600, PF3D7_0211700, PF3D7_0212800, PF3D7_0217600, PF3D7_0218200, PF3D7_0302600, PF3D7_0303100, PF3D7_0305100, PF3D7_0316400, PF3D7_0319000, PF3D7_0411200, PF3D7_0415200, PF3D7_0502600, PF3D7_0514300, PF3D7_0518100, PF3D7_0523200, PF3D7_0525200, PF3D7_0603400, PF3D7_0603800, PF3D7_0604000, PF3D7_0604300, PF3D7_0607900, PF3D7_0613500, PF3D7_0615900, PF3D7_0621700, PF3D7_0625300, PF3D7_0626400, PF3D7_0628800, PF3D7_0703000, PF3D7_0703200, PF3D7_0704000, PF3D7_0704100, PF3D7_0704200, PF3D7_0704300, PF3D7_0704700, PF3D7_0705600, PF3D7_0706100, PF3D7_0707200, PF3D7_0707500, PF3D7_0707800, PF3D7_0710000, PF3D7_0710200, PF3D7_0711400, PF3D7_0717100, PF3D7_0719400, PF3D7_0721200, PF3D7_0723700, PF3D7_0724000, PF3D7_0726600, PF3D7_0727100, PF3D7_0727500, PF3D7_0727700, PF3D7_0728100, PF3D7_0728600, PF3D7_0728800, PF3D7_0730500, PF3D7_0802500",
+    "q": 0.002591091395757875,
+    "circular": false,
+    "selection": "leaf"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "has_phospho",
+    "other_kind": "discrete",
+    "cluster": 10,
+    "category": "ookinete",
+    "other_category": "True",
+    "n_cluster": 161,
+    "n_known": 11,
+    "n_hits": 7,
+    "purity": 0.6363636363636364,
+    "background": 0.22580645161290322,
+    "lift_a": 1.55700652938222,
+    "lift_b": 2.1269296740994856,
+    "joint_lift": 2.8181818181818183,
+    "interaction_ratio": 1.325,
+    "product_ratio": 0.850991935483871,
+    "lift": 1.325,
+    "p": 0.0034785760483352127,
+    "n_predicted": 150,
+    "genes": "PF3D7_0108100, PF3D7_0202400, PF3D7_0203700, PF3D7_0210200, PF3D7_0212100, PF3D7_0215400, PF3D7_0215800, PF3D7_0219600, PF3D7_0302000, PF3D7_0302100, PF3D7_0302500, PF3D7_0303200, PF3D7_0305200, PF3D7_0305500, PF3D7_0308900, PF3D7_0309300, PF3D7_0310300, PF3D7_0310500, PF3D7_0311300, PF3D7_0314600, PF3D7_0318600, PF3D7_0319700, PF3D7_0321600, PF3D7_0321800, PF3D7_0322100, PF3D7_0323700, PF3D7_0403200, PF3D7_0403700, PF3D7_0405100, PF3D7_0405400, PF3D7_0407900, PF3D7_0412100, PF3D7_0415300, PF3D7_0416100, PF3D7_0417300, PF3D7_0417800, PF3D7_0418300, PF3D7_0420000, PF3D7_0420100, PF3D7_0420600, PF3D7_0422500, PF3D7_0423600, PF3D7_0501800, PF3D7_0503100, PF3D7_0506700, PF3D7_0506800, PF3D7_0507800, PF3D7_0508700, PF3D7_0509600, PF3D7_0511500, PF3D7_0515000, PF3D7_0516300, PF3D7_0517100, PF3D7_0519300, PF3D7_0519600, PF3D7_0520100, PF3D7_0524900, PF3D7_0602100, PF3D7_0602400, PF3D7_0604500",
+    "q": 0.005565721677336341,
+    "circular": false,
+    "selection": "leaf"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "has_phospho",
+    "other_kind": "discrete",
+    "cluster": 18,
+    "category": "ookinete",
+    "other_category": "False",
+    "n_cluster": 71,
+    "n_known": 11,
+    "n_hits": 8,
+    "purity": 0.7272727272727273,
+    "background": 0.3580645161290323,
+    "lift_a": 1.245605223505776,
+    "lift_b": 1.5196078431372548,
+    "joint_lift": 2.031122031122031,
+    "interaction_ratio": 1.3366093366093366,
+    "product_ratio": 1.0730601569311247,
+    "lift": 1.3366093366093366,
+    "p": 0.012810601403681695,
+    "n_predicted": 60,
+    "genes": "PF3D7_0104000, PF3D7_0408000, PF3D7_0507900, PF3D7_0523900, PF3D7_0616100, PF3D7_1014000, PF3D7_1022300, PF3D7_1024600, PF3D7_1025600, PF3D7_1026100, PF3D7_1027600, PF3D7_1032800, PF3D7_1036600, PF3D7_1036700, PF3D7_1106900, PF3D7_1110800, PF3D7_1111400, PF3D7_1112200, PF3D7_1112900, PF3D7_1114200, PF3D7_1114800, PF3D7_1115500, PF3D7_1116200, PF3D7_1117600, PF3D7_1118800, PF3D7_1118900, PF3D7_1122200, PF3D7_1125600, PF3D7_1134400, PF3D7_1135400, PF3D7_1135500, PF3D7_1135700, PF3D7_1138350, PF3D7_1206100, PF3D7_1217100, PF3D7_1218600, PF3D7_1224600, PF3D7_1228000, PF3D7_1231500, PF3D7_1231700, PF3D7_1232300, PF3D7_1232800, PF3D7_1238400, PF3D7_1316000, PF3D7_1316400, PF3D7_1327100, PF3D7_1341700, PF3D7_1347800, PF3D7_1352600, PF3D7_1357600, PF3D7_1369700, PF3D7_1410100, PF3D7_1417700, PF3D7_1432900, PF3D7_1444700, PF3D7_1451300, PF3D7_1455000, PF3D7_1456900, PF3D7_1465700, PF3D7_1473600",
+    "q": 0.017080801871575593,
+    "circular": false,
+    "selection": "leaf"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "has_phospho",
+    "other_kind": "discrete",
+    "cluster": 20,
+    "category": "ookinete",
+    "other_category": "False",
+    "n_cluster": 21,
+    "n_known": 6,
+    "n_hits": 5,
+    "purity": 0.8333333333333334,
+    "background": 0.3580645161290323,
+    "lift_a": 1.427255985267035,
+    "lift_b": 1.5196078431372548,
+    "joint_lift": 2.3273273273273274,
+    "interaction_ratio": 1.5315315315315317,
+    "product_ratio": 1.0730601569311249,
+    "lift": 1.5315315315315317,
+    "p": 0.023651708417474437,
+    "n_predicted": 15,
+    "genes": "PF3D7_0104500, PF3D7_0400200, PF3D7_0508600, PF3D7_0528600, PF3D7_0918500, PF3D7_1144100, PF3D7_1301700, PF3D7_1303000, PF3D7_1329600, PF3D7_1332600, PF3D7_1334700, PF3D7_1336700, PF3D7_1353000, PF3D7_1446000, PF3D7_1465400",
+    "q": 0.027030523905685073,
+    "circular": false,
+    "selection": "leaf"
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q97",
+  "organism": "Pf",
+  "strategy": "ortholog_transfer",
+  "question": "Which gametocyte-committed proteins have no Toxoplasma orthologue?",
+  "anchor": "PMID:41482054",
+  "grade": "reliable",
+  "settings": "{\"target\": \"committed_vs_asexual_log2fc\", \"source\": \"stage_enriched_derived\"}",
+  "seconds": 0.5,
+  "summary": "stage_enriched_derived carried from Tg through shared orthogroups to 375 genes. Where both species are measured (125 genes), the transferred value rank-correlates with committed_vs_asexual_log2fc at 0.049. 250 genes lacking committed_vs_asexual_log2fc receive a value from their orthologs.",
+  "rows[transferred]": 250,
+  "lead_table": "transferred",
+  "head": [
+   {
+    "gene_id": "PF3D7_0102600",
+    "product": "serine/threonine protein kinase, FIKK family",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0105800",
+    "product": "cyclin-dependent kinases regulatory subunit, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0110600",
+    "product": "phosphatidylinositol-4-phosphate 5-kinase",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0111300",
+    "product": "P-loop containing nucleoside triphosphate hydrolase, putative",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0202700",
+    "product": "octaprenyl pyrophosphate synthase",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0203300",
+    "product": "ERCC1 nucleotide excision repair protein, putative",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0203800",
+    "product": "WD repeat-containing protein, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0203900",
+    "product": "5'-3' exonuclease, putative",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0204400",
+    "product": "dynein light chain, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0209300",
+    "product": "2C-methyl-D-erythritol 2,4-cyclodiphosphate synthase",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0209600",
+    "product": "transporter, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0210300",
+    "product": "monocarboxylate transporter, putative",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0301200",
+    "product": "serine/threonine protein kinase, FIKK family",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0303900",
+    "product": "phosphatidylethanolamine-binding protein, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0307400",
+    "product": "ATP-dependent Clp protease proteolytic subunit",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   }
+  ],
+  "status": "ran",
+  "verdict": "FAIL",
+  "metric": "rank correlation of transferred and hidden values",
+  "observed": -0.10346169068891413,
+  "chance": 0.015761498142040642,
+  "bar": 0.26701813243406436,
+  "p": 0.7142857142857143,
+  "skill": -0.12113241719958695,
+  "n_hidden": 31,
+  "test_summary": "FAIL -- rank correlation of transferred and hidden values -0.103 against 0.016 \u00b1 0.164 under 20 runs with the orthologs' values dealt to random genes (bar 0.267, p 0.714); effect -0.119, needed +0.100; 31 hidden",
+  "scorecard": {
+   "spearman": -0.1035,
+   "pearson": -0.053,
+   "kendall": -0.0766,
+   "r2": -0.4792,
+   "nrmse": 1.2162,
+   "mae": 0.2579,
+   "rmse": 0.3415,
+   "top_decile_recall": 0.0,
+   "bottom_decile_recall": 0.0,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 0.1
+ },
+ {
+  "qid": "Q98",
+  "organism": "Pf",
+  "strategy": "stratum_focus",
+  "question": "Which mitochondrial proteins are apicomplexan-only?",
+  "anchor": "PMID:34494883",
+  "grade": "weak",
+  "settings": "{\"target\": \"lopit_pf_location\", \"stratum\": \"lineage-specific\"}",
+  "seconds": 0.2,
+  "summary": "404 genes are lineage-specific; 163 of those without a lopit_pf_location label are called from measurement neighbours, with conservation and orthology columns removed so the call cannot lean on them. 'accuracy by stratum' says whether these genes can be called as well as the rest.",
+  "rows[calls]": 163,
+  "rows[accuracy by stratum]": 2,
+  "lead_table": "calls",
+  "head": [
+   {
+    "gene_id": "PF3D7_1370900",
+    "product": "non-coding RNA",
+    "prediction": "mitochondrion",
+    "support": 0.8071723534328313
+   },
+   {
+    "gene_id": "PF3D7_1353000",
+    "product": "tryptophan-rich protein, pseudogene",
+    "prediction": "nucleus 1",
+    "support": 0.7968278016896106
+   },
+   {
+    "gene_id": "PF3D7_1372200",
+    "product": "histidine-rich protein III",
+    "prediction": "nucleus 1",
+    "support": 0.669752860210502
+   },
+   {
+    "gene_id": "PF3D7_MIT02500",
+    "product": "large subunit ribosomal RNA fragment B",
+    "prediction": "mitochondrion",
+    "support": 0.5998882385645692
+   },
+   {
+    "gene_id": "PF3D7_MIT02200",
+    "product": "small subunit ribosomal RNA fragment A",
+    "prediction": "mitochondrion",
+    "support": 0.599426165730271
+   },
+   {
+    "gene_id": "PF3D7_0102400",
+    "product": "lysophospholipase, putative, pseudogene",
+    "prediction": "mitochondrion",
+    "support": 0.5958027491532885
+   },
+   {
+    "gene_id": "PF3D7_0829800",
+    "product": "non-coding RNA",
+    "prediction": "mitochondrion",
+    "support": 0.5388465439275312
+   },
+   {
+    "gene_id": "PF3D7_MIT03000",
+    "product": "ribosomal RNA fragment RNA18",
+    "prediction": "mitochondrion",
+    "support": 0.5369980993656764
+   },
+   {
+    "gene_id": "PF3D7_1478900",
+    "product": "non-coding RNA",
+    "prediction": "mitochondrion",
+    "support": 0.5369713307462054
+   },
+   {
+    "gene_id": "PF3D7_MIT00600",
+    "product": "large subunit ribosomal RNA fragment C",
+    "prediction": "mitochondrion",
+    "support": 0.536084010103615
+   },
+   {
+    "gene_id": "PF3D7_1109000",
+    "product": "small nucleolar RNA snoR07",
+    "prediction": "mitochondrion",
+    "support": 0.5339150217090313
+   },
+   {
+    "gene_id": "PF3D7_0918500",
+    "product": "telomerase RNA",
+    "prediction": "mitochondrion",
+    "support": 0.4732003246516001
+   },
+   {
+    "gene_id": "PF3D7_0221500",
+    "product": "Pfmc-2TM Maurer's cleft two transmembrane protein, pseudogene",
+    "prediction": "mitochondrion",
+    "support": 0.47145495434606083
+   },
+   {
+    "gene_id": "PF3D7_0725600",
+    "product": "18S ribosomal RNA",
+    "prediction": "nucleus 1",
+    "support": 0.4707570043390356
+   },
+   {
+    "gene_id": "PF3D7_0531600",
+    "product": "18S ribosomal RNA",
+    "prediction": "nucleus 1",
+    "support": 0.4706691353343976
+   }
+  ],
+  "status": "ran",
+  "verdict": "INCONCLUSIVE",
+  "metric": "correct calls per hidden gene",
+  "observed": NaN,
+  "chance": NaN,
+  "bar": NaN,
+  "p": 1.0,
+  "skill": NaN,
+  "n_hidden": 0,
+  "test_summary": "INCONCLUSIVE -- too few labelled genes this strategy can speak about (0 hidden)",
+  "scorecard": {},
+  "test_seconds": 0.0
+ },
+ {
+  "qid": "Q99",
+  "organism": "Pf",
+  "strategy": "trait_regression",
+  "question": "Which m6A-modified transcripts are stage-restricted?",
+  "anchor": "PMID:38892332",
+  "grade": "reliable",
+  "settings": "{\"target\": \"m6a_canonical_stoichiometry\", \"top\": 200}",
+  "seconds": 4.3,
+  "summary": "m6a_canonical_stoichiometry predicted from 142 permitted measurements (boosted); out-of-fold rank correlation 0.007 over 3,622 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 2,098 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 2098,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_0805500",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 0.319127615,
+    "expected": 0.655433782413749,
+    "z": -3.3630300088804534
+   },
+   {
+    "gene_id": "PF3D7_0321600",
+    "product": "ATP-dependent RNA helicase DDX42, putative",
+    "measured": 0.26950619,
+    "expected": 0.6047606502538341,
+    "z": -3.3525171657861574
+   },
+   {
+    "gene_id": "PF3D7_1441300",
+    "product": "serine/threonine protein kinase, putative",
+    "measured": 0.2513999,
+    "expected": 0.5857677147650995,
+    "z": -3.343654275754976
+   },
+   {
+    "gene_id": "PF3D7_1412200",
+    "product": "MORN repeat protein, putative",
+    "measured": 0.32670114,
+    "expected": 0.6517144513977047,
+    "z": -3.250146852895524
+   },
+   {
+    "gene_id": "PF3D7_0215400",
+    "product": "WD repeat-containing protein, putative",
+    "measured": 0.8747716367,
+    "expected": 0.5575203365709391,
+    "z": 3.1699169665288967
+   },
+   {
+    "gene_id": "PF3D7_0820400",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 0.88353005,
+    "expected": 0.570918184674797,
+    "z": 3.12354127185062
+   },
+   {
+    "gene_id": "PF3D7_0419400",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 0.88396242,
+    "expected": 0.5729766052004776,
+    "z": 3.107287304309639
+   },
+   {
+    "gene_id": "PF3D7_1236800",
+    "product": "protein-S-isoprenylcysteine O-methyltransferase",
+    "measured": 0.32692693,
+    "expected": 0.6309878801233918,
+    "z": -3.040707481436211
+   },
+   {
+    "gene_id": "PF3D7_1001600",
+    "product": "exported lipase 2",
+    "measured": 0.8788090633,
+    "expected": 0.5756356982291143,
+    "z": 3.029194217840709
+   },
+   {
+    "gene_id": "PF3D7_0933500",
+    "product": "gamma-tubulin complex component, putative",
+    "measured": 0.8984222933,
+    "expected": 0.5961975442168282,
+    "z": 3.0197118719789744
+   },
+   {
+    "gene_id": "PF3D7_1250200",
+    "product": "CSC1-like protein, putative",
+    "measured": 0.8633023567,
+    "expected": 0.5663609310997114,
+    "z": 2.966899879336032
+   },
+   {
+    "gene_id": "PF3D7_0418100",
+    "product": "protein SOC1, putative",
+    "measured": 0.83840035,
+    "expected": 0.54277931198057,
+    "z": 2.9537013122916234
+   },
+   {
+    "gene_id": "PF3D7_1219100",
+    "product": "clathrin heavy chain, putative",
+    "measured": 0.84276678,
+    "expected": 0.550958447129208,
+    "z": 2.9155895902076105
+   },
+   {
+    "gene_id": "PF3D7_0219900",
+    "product": "Plasmodium exported protein, unknown function",
+    "measured": 0.37055555,
+    "expected": 0.6587811455560518,
+    "z": -2.882417603555714
+   },
+   {
+    "gene_id": "PF3D7_1303800",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 0.78498156,
+    "expected": 0.4980328875476376,
+    "z": 2.867012524825037
+   }
+  ],
+  "status": "ran",
+  "verdict": "FAIL",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.043265494895810976,
+  "chance": 0.0,
+  "bar": 0.061178208271885755,
+  "p": 0.12234352980072244,
+  "skill": 0.043265494895810976,
+  "n_hidden": 724,
+  "test_summary": "FAIL -- rank correlation of predicted and hidden values 0.043 against 0.000 \u00b1 0.037 under the chance distribution of a rank correlation (bar 0.061, p 0.122); effect +0.043, needed +0.100; 724 hidden",
+  "scorecard": {
+   "spearman": 0.0433,
+   "pearson": 0.0612,
+   "kendall": 0.0282,
+   "r2": -0.0598,
+   "nrmse": 1.0295,
+   "mae": 0.0816,
+   "rmse": 0.101,
+   "top_decile_recall": 0.1389,
+   "bottom_decile_recall": 0.125,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 2.6
+ },
+ {
+  "qid": "Q100",
+  "organism": "Pf",
+  "strategy": "condition_shift",
+  "question": "Which surface proteins are reversibly regulated with population state?",
+  "anchor": "PMID:40354414",
+  "grade": "reliable",
+  "settings": "{\"condition\": \"expr_gametocyte_v\", \"baseline\": \"expr_gametocyte_ii\"}",
+  "seconds": 4.3,
+  "summary": "The part of expr_gametocyte_v that expr_gametocyte_ii does not explain -- the condition-specific effect -- for 5,720 genes. Other measurements predict it at out-of-fold rank correlation 0.486: the condition-specific need has a signature, and 'predicted' extends it to genes never screened in the condition. Negative shift: needed more in the condition than the baseline predicts.",
+  "rows[shifted genes]": 5720,
+  "rows[predicted]": 0,
+  "lead_table": "shifted genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_0707000",
+    "product": "tRNA Lysine",
+    "shift": -0.7131198718956486,
+    "explained": -0.07994000762237714
+   },
+   {
+    "gene_id": "PF3D7_0706800",
+    "product": "tRNA Threonine",
+    "shift": -0.7049533203825689,
+    "explained": -0.09250838877753681
+   },
+   {
+    "gene_id": "PF3D7_1103200",
+    "product": "tRNA Glycine",
+    "shift": -0.6749370685311686,
+    "explained": -0.078081843738662
+   },
+   {
+    "gene_id": "PF3D7_1438300",
+    "product": "tRNA Methionine",
+    "shift": -0.669155622209778,
+    "explained": -0.08802733322822381
+   },
+   {
+    "gene_id": "PF3D7_0312600",
+    "product": "tRNA Valine",
+    "shift": -0.6682223356769359,
+    "explained": -0.08954235678895409
+   },
+   {
+    "gene_id": "PF3D7_1438200",
+    "product": "tRNA Selenocysteine",
+    "shift": -0.6560313541681211,
+    "explained": -0.12209621478986422
+   },
+   {
+    "gene_id": "PF3D7_1341000",
+    "product": "tRNA Arginine",
+    "shift": -0.6510037542069387,
+    "explained": -0.07079037410731218
+   },
+   {
+    "gene_id": "PF3D7_0620800",
+    "product": "tRNA Alanine",
+    "shift": -0.6431928375363822,
+    "explained": -0.08328610355198486
+   },
+   {
+    "gene_id": "PF3D7_0203500",
+    "product": "tRNA Glutamine",
+    "shift": -0.6329336108793139,
+    "explained": -0.0730198550609533
+   },
+   {
+    "gene_id": "PF3D7_1252000",
+    "product": "tRNA Glutamine",
+    "shift": -0.6329336108793139,
+    "explained": -0.0822483239844486
+   },
+   {
+    "gene_id": "PF3D7_0207700",
+    "product": "serine repeat antigen 4",
+    "shift": -0.6326850448130343,
+    "explained": -0.16347485669514714
+   },
+   {
+    "gene_id": "PF3D7_1337600",
+    "product": "tRNA Serine",
+    "shift": -0.6236823380230405,
+    "explained": -0.13104170547431887
+   },
+   {
+    "gene_id": "PF3D7_1251900",
+    "product": "tRNA Valine",
+    "shift": -0.6082283367985769,
+    "explained": -0.08254117595910125
+   },
+   {
+    "gene_id": "PF3D7_0620900",
+    "product": "tRNA Leucine",
+    "shift": -0.600008773497263,
+    "explained": -0.13906248211553243
+   },
+   {
+    "gene_id": "PF3D7_0202500",
+    "product": "early transcribed membrane protein 2",
+    "shift": -0.5922460892395229,
+    "explained": -0.027010750243380652
+   }
+  ],
+  "status": "ran"
+ }
+]

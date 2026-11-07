@@ -240,3 +240,25 @@ Two of the fourteen topics are genuinely thin, which shaped the questions:
   almost no systematic treatment. PMID:39082802 (Tachibana 2024, CRISPR screens on
   hyperLOPIT-unassigned proteins) is the closest precedent for what this software does, which makes
   Q02, Q13 and Q65 the questions closest to the field's actual frontier.
+
+## Q51-Q100 executed (2026-11-06)
+
+`scripts/run_biological_questions.py` now encodes 42 of Q51-Q100 (92 questions in all); results in
+`results/questions_2026_11_06/` (`summary.csv`, per-question tables, batch logs; run with `--only ... --no-notebook`
+so the 2026-09-30 notebook was not overwritten). 40 ran; 2 stopped inside their strategy:
+
+* **Skipped, not invented (8):** Q60 (no column "Tg_host_escrt_recruitment"; two candidates, neither named),
+  Q69 (the "cyst-wall / bradyzoite-enriched set" is not one defined set), Q72, Q76, Q78, Q79, Q92, Q94 (map,
+  star-map or Analysis-tab entry points, not strategies).
+* **Stopped by their strategy:** Q53 (`link_prediction` refuses the cofitness layer by design -- strategy 34
+  predicts it instead); Q54 (`trait_regression` on `hosttx_T2`, measured for only 252 genes).
+* **Self-tests:** PASS for Q59, Q63, Q68, Q71/Q77, Q74, Q81, Q85, Q88, Q90 and Q91; FAIL for Q95, Q97 (ortholog
+  transfer, Pf) and Q99; Q98 inconclusive. **Q91 (label outliers, Pf `is_exported`, AUROC 0.994) is suspiciously
+  high and must be checked for circularity (export is called from sequence motifs that may also be features)
+  before it is cited.**
+* **Read-steps not automated:** several rows end in a reading step (re-rank by another column, read a
+  paralogue pair, filter to membrane classes); the calls are saved, the reading is not done. Some rows reduce to
+  the same call as an earlier question (Q57/Q75/Q87 = Q11, Q58/Q82 = Q33, Q61/Q84 = Q05, Q52 = Q19).
+* Q81 calls nothing (every Tg gene already has a `dtm_class`); only its self-test says anything.
+
+The yields / thin / no verdicts of section 4 are a biological reading and are left for Einar.

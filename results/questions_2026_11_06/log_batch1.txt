@@ -1,0 +1,19 @@
+Q51 Tg positive_unlabeled ran 1.5s 123 positives against the rest of the proteome, 15 bags; the 300 genes that most resemble your list are listed, scored only by models that did not tra
+Q52 Tg positive_unlabeled ran 0.2s 193 positives against the rest of the proteome, 15 bags; the 300 genes that most resemble your list are listed, scored only by models that did not tra
+Q53 Tg link_prediction error 0.0s ValueError: the cofitness layer is the correlation structure of its source measurements, so completing it from its own visible edges recomputes a corr
+Q54 Tg trait_regression error 1.5s ValueError: window shape cannot be larger than input array shape
+Q55 Tg conjunctions ran 23.0s A map built without compartment or screen_any_phenotype; 0 clusters are enriched for a COMBINATION of the two beyond what either label alone explains 
+Q56 Tg condition_shift ran 10.9s The part of fit_invivo_PE that fit_invitro_hff does not explain -- the condition-specific effect -- for 7,324 genes. Other measurements predict it at 
+Q57 Tg supervised_classifier ran 0.6s A class-balanced logistic regression on 364 permitted measurements, trained on 3,804 labelled genes, calls 2,000 unlabelled genes (probability >= 0.00
+Q58 Tg paralog_divergence ran 0.4s 3,452 paralog pairs scored by how differently they behave across the permitted measurements (one minus the correlation of their profiles). The top of 
+Q59 Tg structural_homology ran 1.3s 708 genes without a compartment annotation (at level 1) called from their struct neighbours; 89 of them are hypothetical proteins. Structural similari
+     test: PASS metric=correct calls per hidden gene observed=0.3005952380952381 chance=0.08616071428571428 bar=0.10744047619047618 skill=0.2346523367529718
+Q61 Tg cluster_guilt ran 9.5s 10 clusters are enriched for one compartment label at q < 0.05 and lift >= 2 (hypergeometric, BH-corrected over every cluster x label); their 321 unla
+Q62 Tg multiplex_modules ran 434.2s 6 communities that the layers coexpression, cofitness, cotranslation, domain, ip_ms, struct, xlms agree on; 7,822 genes placed in one. 2,000 unlabelle
+Q63 Tg trait_regression ran 4.7s cdpk1_thiophospho_peptides predicted from 357 permitted measurements (boosted); out-of-fold rank correlation 0.364 over 367 measured genes. 'surprisin
+     test: PASS metric=rank correlation of predicted and hidden values observed=0.3493117806599225 chance=0.0 bar=0.1938651091753118 skill=0.3493117806599225
+Q64 Tg condition_shift ran 12.6s The part of fit_complete_medium_2025 that fit_invitro_hff does not explain -- the condition-specific effect -- for 7,325 genes. Other measurements pre
+Q65 Tg understudied_first ran 3.3s 7,390 genes have no focal or substantive publication; 1,723 of those without a compartment label receive an agreed call, ranked by agreement times nov
+Q66 Tg conjunctions ran 10.9s A map built without compartment or stage_enriched_derived; 2 clusters are enriched for a COMBINATION of the two beyond what either label alone explain
+Q67 Tg condition_shift ran 7.4s The part of te245775_parent_prebrady_r1 that rna245775_parent_prebrady_r1 does not explain -- the condition-specific effect -- for 7,880 genes. Other 
+wrote results/questions_2026_11_06

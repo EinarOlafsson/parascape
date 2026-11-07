@@ -1,0 +1,2099 @@
+gene_id,product,predicted
+PF3D7_0801900,"lysine-specific histone demethylase, putative",0.46922120628690134
+PF3D7_0914100,"conserved Plasmodium protein, unknown function",0.47940245865769054
+PF3D7_0620300,"conserved Plasmodium protein, unknown function",0.4980954884744255
+PF3D7_1228100,leucine-rich repeat protein,0.5045394194442969
+PF3D7_0410500,"conserved Plasmodium protein, unknown function",0.5061870943220893
+PF3D7_1146700,"kinesin-X4, putative",0.5068119984467045
+PF3D7_1317200,"AP2 domain transcription factor AP2-FG, putative",0.5068861350845775
+PF3D7_1013900,"translation initiation factor eIF-2B subunit delta, putative",0.5072311899558826
+PF3D7_1456400,"conserved Plasmodium protein, unknown function",0.511507720652108
+PF3D7_0318500,"conserved Plasmodium protein, unknown function",0.5153753106360409
+PF3D7_1475700,"tubulin epsilon chain, putative",0.5183771207155846
+PF3D7_0623400,MEI2-like RNA-binding protein,0.5204455466698799
+PF3D7_0604000,"conserved Plasmodium protein, unknown function",0.5223946644325644
+PF3D7_0202900,"palmitoyltransferase DHHC12, putative",0.5226387757844696
+PF3D7_0822400,"conserved Plasmodium protein, unknown function",0.5226898366920586
+PF3D7_0216500,"WD repeat-containing protein, putative",0.5241751859699078
+PF3D7_0816900,adenylate kinase 2,0.524285367387327
+PF3D7_1440600,"protein SOC3, putative",0.5244958972252101
+PF3D7_1147100,"dynein light chain, putative",0.524722917519743
+PF3D7_0716000,"RNA-binding protein, putative",0.5259874666129531
+PF3D7_0602700,"conserved Plasmodium protein, unknown function",0.5266032609401069
+PF3D7_1137200,apical exonemal protein,0.5266935735998836
+PF3D7_1368800,"DNA repair endonuclease XPF, putative",0.5279033235652493
+PF3D7_1308600,"conserved Plasmodium protein, unknown function",0.527915727933051
+PF3D7_1033900,"ubiquitin-conjugating enzyme E2, putative",0.5290938945226538
+PF3D7_1249400,"conserved Plasmodium protein, unknown function",0.5290955513817309
+PF3D7_1003400,"conserved Plasmodium protein, unknown function",0.5294487096370194
+PF3D7_1219700,raf kinase inhibitor,0.5300679952579557
+PF3D7_0915500,"conserved Plasmodium protein, unknown function",0.5305340363797136
+PF3D7_1324300,"conserved Plasmodium membrane protein, unknown function",0.5308127014000088
+PF3D7_1132100,"RNA-binding protein, putative",0.53128098224488
+PF3D7_0609700,protein KIC6,0.5314089598508924
+PF3D7_0921300,"RAP protein, putative",0.5317042796456526
+PF3D7_1407600,"conserved Plasmodium protein, unknown function",0.5318335071472399
+PF3D7_1371600,"erythrocyte binding like protein 1, pseudogene",0.5320616089468442
+PF3D7_1446700,"apicomplexan kinetochore protein 4, putative",0.5321481872653273
+PF3D7_API01500,apicoplast ribosomal protein L2,0.5331694935988346
+PF3D7_1362700,"conserved Plasmodium protein, unknown function",0.5333812460249753
+PF3D7_0509100,"structural maintenance of chromosomes protein 4, putative",0.5345402644062793
+PF3D7_1220000,"female development protein FD4, putative",0.5346389611357173
+PF3D7_1230100,"thioredoxin-like associated protein 1, putative",0.5354344416656835
+PF3D7_1146600,"oocyst rupture protein 1, putative",0.5357200361012543
+PF3D7_1215700,"conserved Plasmodium protein, unknown function",0.5357785465490162
+PF3D7_1021800,schizont egress antigen-1,0.5360772922211128
+PF3D7_0523500,"dynein light chain Tctex-type, putative",0.5362318051858118
+PF3D7_1306500,"MORN repeat protein, putative",0.5368301492540147
+PF3D7_0105500,"conserved protein, unknown function",0.5368332832653216
+PF3D7_1135600,"condensin-2 complex subunit D3, putative",0.5369352225510322
+PF3D7_1036500,"conserved Plasmodium protein, unknown function",0.5371207337558781
+PF3D7_1137900,"conserved Plasmodium protein, unknown function",0.5378700742240172
+PF3D7_0110400,"DNA-directed RNA polymerase II subunit RPB9, putative",0.5382256123755256
+PF3D7_0804700,"conserved Plasmodium protein, unknown function",0.5384902237361957
+PF3D7_API02600,apicoplast ribosomal protein S11,0.5386758279752791
+PF3D7_1238200,"conserved Plasmodium protein, unknown function",0.5390376885832904
+PF3D7_1206100,IMP-specific 5'-nucleotidase 1,0.5391157643200896
+PF3D7_0501400,interspersed repeat antigen,0.5391473310725774
+PF3D7_0630100,"alpha/beta hydrolase, putative",0.5393216934715233
+PF3D7_0420400,ribosome-recycling factor,0.5393368790848166
+PF3D7_1112800,"conserved protein, unknown function",0.5394140304537751
+PF3D7_1343800,"VPS13 domain-containing protein, putative",0.5395756619392358
+PF3D7_1016000,"conserved Plasmodium protein, unknown function",0.5395759505978825
+PF3D7_1325800,"conserved Plasmodium protein, unknown function",0.5396395120207297
+PF3D7_1254700,rifin,0.5397120445757841
+PF3D7_1409500,"conserved Plasmodium protein, unknown function",0.5402928383582847
+PF3D7_0905300,"dynein heavy chain, putative",0.5403882121498429
+PF3D7_0506500,"conserved Plasmodium protein, unknown function",0.5404089013226298
+PF3D7_0318800,"triosephosphate isomerase, putative",0.5405722111145395
+PF3D7_0929500,"CH domain-containing protein, putative",0.5406311329740474
+PF3D7_0109100,LCCL domain-containing protein,0.5412446594670992
+PF3D7_0418600,"regulator of chromosome condensation, putative",0.541328648892541
+PF3D7_0512800,"conserved Plasmodium protein, unknown function",0.5414889824129474
+PF3D7_1453300,"Yos1-like protein, putative",0.5416363911707781
+PF3D7_0615100,enoyl-acyl carrier reductase,0.5416818555816291
+PF3D7_1473400,"conserved protein, unknown function",0.5418208759443487
+PF3D7_1129600,"phosphatidylinositol-4-phosphate 5-kinase, putative",0.5418810675681895
+PF3D7_1433200,"conserved Plasmodium protein, unknown function",0.5419502519747489
+PF3D7_0307600,"conserved Plasmodium protein, unknown function",0.5426471395182537
+PF3D7_API04700,iron-sulfur cluster assembly protein SufB,0.5429304010475895
+PF3D7_0824000,"conserved Plasmodium protein, unknown function",0.5432948583297086
+PF3D7_0832400,stevor,0.5434735583435994
+PF3D7_1108100,"conserved Plasmodium protein, unknown function",0.5435934029344647
+PF3D7_0214300,"conserved Plasmodium protein, unknown function",0.5436370900065142
+PF3D7_0322600,"conserved Plasmodium protein, unknown function",0.5437417237042185
+PF3D7_0927200,"gametocyte development protein GD1, putative",0.5439514376686473
+PF3D7_1407000,LCCL domain-containing protein,0.5439516476436456
+PF3D7_1224200,"BRO1 domain-containing protein, putative",0.5441720397717634
+PF3D7_1436400,"conserved Plasmodium protein, unknown function",0.5443187191235467
+PF3D7_0910000,histone-lysine N-methyltransferase SET4,0.5444827679129506
+PF3D7_1351700,inner membrane complex protein 1f,0.544578057015846
+PF3D7_1423100,"ankyrin-repeat protein, putative",0.5446301526419375
+PF3D7_1031400,OTU-like cysteine protease,0.5447715878082563
+PF3D7_0610600,calcium-dependent protein kinase 2,0.5448170602674985
+PF3D7_1204000,"conserved Plasmodium protein, unknown function",0.5448490599830355
+PF3D7_1009100,"conserved Plasmodium membrane protein, unknown function",0.5448711412347828
+PF3D7_0530900,formin 1,0.5453338486275182
+PF3D7_1122900,"dynein heavy chain, putative",0.5453835099447105
+PF3D7_1339500,"ribosomal protein L49, mitochondrial, putative",0.545389847540123
+PF3D7_0311400,"kinase-related protein PKRP, putative",0.5454471965099725
+PF3D7_0407600,"conserved Plasmodium protein, unknown function",0.5455251432998092
+PF3D7_0931300,"conserved Plasmodium protein, unknown function",0.545707733456279
+PF3D7_1453600,"RAP protein, putative",0.5459755912618673
+PF3D7_1126600,"steryl ester hydrolase, putative",0.545989069332761
+PF3D7_0915000,type II NADH:ubiquinone oxidoreductase,0.5460577407244938
+PF3D7_1201400,"Plasmodium exported protein, unknown function",0.546085059760854
+PF3D7_0206300,"pentafunctional AROM polypeptide, putative, pseudogene",0.5462764176313908
+PF3D7_0601800,H/ACA snoRNA,0.5463376310680265
+PF3D7_1430500,"conserved Plasmodium protein, unknown function",0.5464091864220305
+PF3D7_1039400,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.546608912798427
+PF3D7_1024100,"ookinete maturation gene OMG1, putative",0.5466302348415155
+PF3D7_1147600,"conserved Plasmodium protein, unknown function",0.5467035000574771
+PF3D7_1208000,"ribosomal protein L29, apicoplast, putative",0.5468294237384097
+PF3D7_0920200,"CS domain protein, putative",0.5469177959933974
+PF3D7_0832100,"rifin, pseudogene",0.5469492825496612
+PF3D7_1140600,"conserved Plasmodium protein, unknown function",0.547063232112541
+PF3D7_0828700,"coiled-coil domain-containing protein 39, putative",0.5473345501736829
+PF3D7_1449600,"conserved protein, unknown function",0.5473608912412741
+PF3D7_0706700,"DNA mismatch repair protein MSH2, putative",0.5474213620768559
+PF3D7_0412200,"conserved Plasmodium protein, unknown function",0.5476726927746861
+PF3D7_0322200,"conserved protein, unknown function",0.5478371235645019
+PF3D7_1470950,"small integral membrane protein 15, putative",0.5479486400716285
+PF3D7_0626500,"centrosomal protein CEP135, putative",0.5481257729403461
+PF3D7_1113900,mitogen-activated protein kinase 2,0.5482725285309746
+PF3D7_0525900,NIMA related kinase 2,0.5483754362169552
+PF3D7_1418100,"liver specific protein 1, putative",0.5483855443662756
+PF3D7_0301400,"Plasmodium exported protein, unknown function",0.5484969228510399
+PF3D7_1356000,"conserved Plasmodium protein, unknown function",0.5486172222945418
+PF3D7_0805100,"conserved protein, unknown function",0.5486976001606974
+PF3D7_0313900,"conserved Plasmodium protein, unknown function",0.5487703507216138
+PF3D7_1020500,"ribosomal silencing factor RsfS, putative",0.5487954125152362
+PF3D7_1011600,"heptatricopeptide repeat-containing protein, putative",0.5493582836040083
+PF3D7_1028900,"inner membrane complex protein 1m, putative",0.5493705406615527
+PF3D7_1429000,"protein archease, putative",0.5494815826356599
+PF3D7_1111000,RNA cytosine C(5)-methyltransferase NSUN2,0.5498263679636032
+PF3D7_0729800,"dynein light chain, putative",0.5499655114684915
+PF3D7_0811700,"conserved Plasmodium protein, unknown function",0.5500210700249764
+PF3D7_1247800,dipeptidyl aminopeptidase 2,0.5502107964875951
+PF3D7_1005700,"peptidase, putative",0.5502161726077549
+PF3D7_0701300,"rifin, pseudogene",0.5507182451195568
+PF3D7_1138300,"conserved protein, unknown function",0.5507274813889026
+PF3D7_1444100,"conserved Plasmodium protein, unknown function",0.5508366517646192
+PF3D7_0522100,"conserved Plasmodium protein, unknown function",0.5509110100604664
+PF3D7_1363000,"conserved Plasmodium protein, unknown function",0.5510374071273695
+PF3D7_1117000,"MFS domain-containing protein P115, putative",0.551112056234462
+PF3D7_1134900,"conserved Plasmodium protein, unknown function",0.551765359095178
+PF3D7_1338400,"SprT-like domain-containing protein, putative",0.5519830337370021
+PF3D7_0212700,SRR1-like protein,0.5521081962228676
+PF3D7_1449400,"crossover junction endonuclease MUS81, putative",0.5523834424441775
+PF3D7_1342200,"conserved Plasmodium membrane protein, unknown function",0.5525098334588391
+PF3D7_0605700,"conserved Plasmodium protein, unknown function",0.5526682094774279
+PF3D7_1106800,pseudo-tyrosine kinase-like protein,0.5528153378694145
+PF3D7_0812200,serine protease HTRA2,0.5530157105133985
+PF3D7_1135200,"regulator of chromosome condensation, putative, pseudogene",0.5530657319696152
+PF3D7_0903600,"protein hook, putative",0.5533427460808377
+PF3D7_1226500,"heptatricopeptide repeat and RAP domain-containing protein, putative",0.5535444612806136
+PF3D7_0828100,"conserved Plasmodium protein, unknown function",0.5541193823992999
+PF3D7_0512400,"conserved Plasmodium protein, unknown function",0.5542294916785369
+PF3D7_1215800,"radial spoke protein 9, putative",0.5542586593322449
+PF3D7_1400100,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5542760782923558
+PF3D7_1101000,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5542912776977029
+PF3D7_1314400,"conserved protein, unknown function",0.5543729008525394
+PF3D7_1413000,"conserved Plasmodium protein, unknown function",0.5543788290797461
+PF3D7_1014200,male gamete fusion factor HAP2,0.5545303166270988
+PF3D7_1317500,"conserved protein, unknown function",0.5546045545648761
+PF3D7_1318200,glycerol-3-phosphate 1-O-acyltransferase,0.5546371990918423
+PF3D7_0719200,NIMA related kinase 4,0.5547997335412349
+PF3D7_0818300,"dynactin subunit 6, putative",0.5552512641894141
+PF3D7_0211400,beta-ketoacyl-ACP synthase III,0.5553040565728796
+PF3D7_API02100,apicoplast ribosomal protein S8,0.5553128966585655
+PF3D7_0101500,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5554078959662859
+PF3D7_0222300,"exported protein family 4, pseudogene",0.5555147603616859
+PF3D7_1102100,"Plasmodium exported protein, unknown function, pseudogene",0.5555924568663632
+PF3D7_1436800,ATP-dependent Clp protease proteolytic subunit,0.5556671959916153
+PF3D7_1020300,"cytoplasmic dynein intermediate chain, putative",0.5557039370465237
+PF3D7_1212800,"succinate dehydrogenase [ubiquinone] iron-sulfur subunit, mitochondrial",0.5557803160590062
+PF3D7_0417000,"conserved Plasmodium protein, unknown function",0.5558029601790371
+PF3D7_1016200,"Rab3 GTPase-activating protein non-catalytic subunit, putative",0.5558265269642273
+PF3D7_1316100,"inositol polyphosphate kinase, putative",0.555886302963349
+PF3D7_0218800,ribonuclease P,0.5561939418090548
+PF3D7_0700900,"exported protein family 1, pseudogene",0.5562308237037441
+PF3D7_1347300,"conserved Plasmodium membrane protein, unknown function",0.5562839141855058
+PF3D7_0626400,"CRAL/TRIO domain-containing protein, putative",0.5563915013237227
+PF3D7_0531600,18S ribosomal RNA,0.5566072231741823
+PF3D7_1039200,"Plasmodium exported protein, unknown function, pseudogene",0.5567537225461331
+PF3D7_0918700,"conserved Plasmodium protein, unknown function",0.556865130616554
+PF3D7_API04400,"DNA-directed RNA polymerase subunit beta, putative",0.5569200810319508
+PF3D7_1344600,lipoyl synthase,0.5570483812937196
+PF3D7_1471900,"conserved Plasmodium protein, unknown function",0.5570504327326994
+PF3D7_1301100,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.5571476164464098
+PF3D7_0424400,surface-associated interspersed protein 4.2 (SURFIN 4.2),0.55714819154769
+PF3D7_0216900,"conserved Plasmodium protein, unknown function",0.5572703299052726
+PF3D7_1476600,"Plasmodium exported protein, unknown function",0.5572925654814129
+PF3D7_API01700,"ribosomal protein S3, putative",0.5573025548929438
+PF3D7_0802700,"conserved Plasmodium protein, unknown function",0.5573684727985827
+PF3D7_0601300,exported protein family 1,0.5573950616051159
+PF3D7_0701200,"rifin, pseudogene",0.557483373620748
+PF3D7_1479300,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.5575582090424696
+PF3D7_0822500,dynein light chain 1,0.5577493225102802
+PF3D7_1013400,"conserved Plasmodium protein, unknown function",0.5578059449145745
+PF3D7_0307300,end-binding protein 1,0.5578386155526244
+PF3D7_1328600,"conserved Plasmodium protein, unknown function",0.5578491698391675
+PF3D7_API01300,"50S ribosomal protein L4, putative",0.5580071670834036
+PF3D7_0315300,"conserved Plasmodium protein, unknown function",0.5582027351661157
+PF3D7_0729900,"dynein heavy chain, putative",0.5582118626861754
+PF3D7_0512900,AKAP-like protein,0.5582518011927463
+PF3D7_1122800,calcium-dependent protein kinase 6,0.5582857401598881
+PF3D7_0302600,"ABC transporter B family member 4, putative",0.5583315458798039
+PF3D7_0627000,"conserved Plasmodium protein, unknown function",0.558483962762465
+PF3D7_1226100,"haloacid dehalogenase-like hydrolase, putative",0.5585348878510589
+PF3D7_1121300,tyrosine kinase-like protein,0.5586122437403119
+PF3D7_0825900,"conserved Plasmodium protein, unknown function",0.5587226514782629
+PF3D7_0809200,asparagine-rich antigen Pfa55-14,0.5588223642159963
+PF3D7_1246900,RAC-beta serine/threonine protein kinase,0.5588446786704779
+PF3D7_1101900,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5592477083822227
+PF3D7_1246700,"conserved Plasmodium protein, unknown function",0.5595226895545008
+PF3D7_1111500,"acylphosphatase, putative",0.5596322363983728
+PF3D7_0604800,"RAP protein, putative",0.559684452099473
+PF3D7_0928900,guanylate kinase,0.5596925358421116
+PF3D7_0724900,"kinesin-20, putative",0.5598296100157523
+PF3D7_0900350,"Plasmodium exported protein, unknown function, fragment, pseudogene",0.5599610018740769
+PF3D7_0626300,3-oxoacyl-acyl-carrier protein synthase I/II,0.5600042945451568
+PF3D7_0319800,"conserved Plasmodium protein, unknown function",0.5601249242936133
+PF3D7_0406900,"conserved Plasmodium protein, unknown function",0.5602512230907715
+PF3D7_0212800,"multidrug efflux pump, putative",0.5602518702518504
+PF3D7_0603600,"male development protein MD4, putative",0.560505027906651
+PF3D7_1223300,DNA gyrase subunit A,0.5606802669486587
+PF3D7_0318400,"coiled-coil domain-containing protein CCDC148/CCDC112, putative",0.5608851578309402
+PF3D7_0823500,"inner membrane complex protein 1i, putative",0.5610570586832787
+PF3D7_0305100,"conserved Plasmodium protein, unknown function",0.5611626564697122
+PF3D7_0825700,"crystalloid-specific PH domain-containing protein, putative",0.5611954136899339
+PF3D7_1404000,"DNA-directed RNA polymerase II subunit RPB4, putative",0.5612779159955706
+PF3D7_0616700,"ras GTPAse, putative",0.561349699025366
+PF3D7_MIT00400,ribosomal RNA fragment RNA17,0.5613509555035212
+PF3D7_0833100,rifin,0.5613516472092409
+PF3D7_0411400,"DEAD box ATP-dependent RNA helicase, putative",0.5614397217404269
+PF3D7_0700600,"Plasmodium exported protein, unknown function, pseudogene",0.5614612408701198
+PF3D7_0310100,calcium-dependent protein kinase 3,0.5614804277535975
+PF3D7_API02000,apicoplast ribosomal protein L14,0.5618127988267299
+PF3D7_0221700,"Plasmodium exported protein, unknown function",0.5619097763703123
+PF3D7_1451600,LCCL domain-containing protein,0.5620114685032065
+PF3D7_0732800,"erythrocyte membrane protein 1 (PfEMP1), exon 2",0.5620357832607327
+PF3D7_1320400,type I signal peptidase,0.5620841774510323
+PF3D7_0415100,"25S rRNA (uridine-N(3))-methyltransferase, putative",0.5621282684944344
+PF3D7_1114800,"glycerol-3-phosphate dehydrogenase, putative",0.5622299906400449
+PF3D7_1420500,"protein GPR89, putative",0.5622693106673199
+PF3D7_0621500,"ribonuclease P/MRP protein subunit RPP1, putative",0.5623980284156692
+PF3D7_1117200,"conserved Plasmodium protein, unknown function",0.562444321990783
+PF3D7_1351600,glycerol kinase,0.5624501763204255
+PF3D7_1141100,"conserved Plasmodium protein, unknown function",0.5624642238455237
+PF3D7_0115050,H/ACA snoRNA,0.5625264399395953
+PF3D7_0900700,rifin,0.5627794590799492
+PF3D7_1335400,reticulocyte binding protein 2 homologue a,0.5628343024362976
+PF3D7_MIT03800,ribosomal RNA fragment RNA14,0.5628346753991275
+PF3D7_1114600,"conserved Plasmodium protein, unknown function",0.5631213117012906
+PF3D7_1314800,"ubiquitin-like protein, putative",0.5631749994641532
+PF3D7_0617400,"erythrocyte membrane protein 1, PfEMP1",0.5632374460629351
+PF3D7_1023100,"dynein heavy chain, putative",0.563484349636165
+PF3D7_0605600,"nucleoside diphosphate kinase, putative",0.5635967759624178
+PF3D7_0604700,glyoxalase I-like protein GILP,0.563644950659692
+PF3D7_0832700,"Plasmodium exported protein (PHISTa-like), unknown function, pseudogene",0.5637252594620636
+PF3D7_1415100,"conserved protein, unknown function",0.5637509476061903
+PF3D7_0115150,"Plasmodium exported protein, unknown function, pseudogene",0.5638040863917859
+PF3D7_1303900,"GINS complex subunit Psf3, putative",0.5639147968663679
+PF3D7_0324200,exported protein family 3,0.5639177003200421
+PF3D7_1004900,"conserved protein, unknown function",0.5639718698335101
+PF3D7_MIT02300,cytochrome b,0.5640512022756288
+PF3D7_1148600,18S ribosomal RNA,0.5642031595968866
+PF3D7_1114000,"dynein light chain Tctex-type, putative",0.5642043272516386
+PF3D7_0815900,"dihydrolipoyl dehydrogenase, apicoplast",0.5643101491483653
+PF3D7_1443600,"gamma-tubulin complex component, putative",0.564337938211086
+PF3D7_1145000,"conserved Plasmodium protein, unknown function",0.5643441789545491
+PF3D7_0222000,exported protein family 1,0.5643699063428278
+PF3D7_1475800,"conserved Plasmodium protein, unknown function",0.5644259031193447
+PF3D7_0937800,"erythrocyte membrane protein 1, PfEMP1",0.5644448308203494
+PF3D7_API03900,tRNA Serine,0.5644811708180614
+PF3D7_API03600,chaperone protein ClpM,0.5644923333952507
+PF3D7_0531300,"conserved Plasmodium protein, unknown function",0.5645027238007643
+PF3D7_1231400,membrane protein ICM1,0.5645478745000144
+PF3D7_1241400,"female development protein FD1, putative",0.564639824276343
+PF3D7_1031200,MORN repeat-containing protein 1,0.5646415146118648
+PF3D7_1308100,"CCAAT-binding transcription factor, putative",0.5646416367583577
+PF3D7_1107900,"mechanosensitive ion channel protein, putative",0.564651928026514
+PF3D7_1138400,guanylyl cyclase alpha,0.5646710492500978
+PF3D7_0511900,"conserved Plasmodium protein, unknown function",0.5647419061074918
+PF3D7_1202600,"nuclear export mediator factor NEMF, putative",0.5648246277661498
+PF3D7_0407300,"transcription factor, putative",0.565045468923352
+PF3D7_1233200,"male development protein MD2, putative",0.565094693374907
+PF3D7_1343400,"DNA repair protein RAD5, putative",0.5651827669283295
+PF3D7_0111000,"kinesin-8B, putative",0.5651888295538762
+PF3D7_0727900,"conserved Plasmodium protein, unknown function",0.5652314018080247
+PF3D7_1029700,"conserved Plasmodium protein, unknown function",0.5652401106306972
+PF3D7_0725600,18S ribosomal RNA,0.5655488515996873
+PF3D7_0719900,"conserved Plasmodium membrane protein, unknown function",0.5655765427656408
+PF3D7_1218700,"conserved Plasmodium protein, unknown function",0.5655796962324142
+PF3D7_1446000,U5 spliceosomal RNA,0.5659336819748145
+PF3D7_0711600,Plasmodium RNA of unknown function RUF6,0.5659467463674761
+PF3D7_0800200,"erythrocyte membrane protein 1, PfEMP1",0.5659991568420345
+PF3D7_0603900,"conserved Plasmodium protein, unknown function",0.5660724548834972
+PF3D7_0701400,"exported protein family 4, pseudogene",0.5660827276766831
+PF3D7_MIT00200,ribosomal RNA fragment RNA20,0.5661375156270931
+PF3D7_API02800,apicoplast ribosomal protein S7,0.566185271236309
+PF3D7_1100600,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.5662673008312996
+PF3D7_0522900,"zinc finger protein, putative",0.5663718769577037
+PF3D7_0114500,"Plasmodium exported protein (hyp10), unknown function",0.5663871386703024
+PF3D7_0712700,Plasmodium RNA of unknown function RUF6,0.5663948897588387
+PF3D7_1329900,"conserved Plasmodium protein, unknown function",0.5664680012185586
+PF3D7_API03400,tRNA Tryptophan,0.5665575935727714
+PF3D7_0109600,cold-shock protein,0.5665939672652357
+PF3D7_0409000,"conserved Plasmodium protein, unknown function",0.5666010883851739
+PF3D7_0814100,"conserved Plasmodium protein, unknown function",0.5666248077123452
+PF3D7_1236600,"p25-alpha family protein, putative",0.5666807848786972
+PF3D7_0906400,"dynein intermediate light chain, putative",0.5667871469494704
+PF3D7_API03200,tRNA Glutamine,0.5669145182304154
+PF3D7_1416700,"conserved protein, unknown function",0.5673050125214658
+PF3D7_1372100,"Plasmodium exported protein (PHISTb), unknown function",0.5673897844514738
+PF3D7_1301800,"surface-associated interspersed protein 13.1 (SURFIN 13.1), pseudogene",0.5674186287819959
+PF3D7_1464300,"conserved Plasmodium protein, unknown function",0.5674217098943817
+PF3D7_1018900,"conserved Plasmodium protein, unknown function",0.5675650648023878
+PF3D7_1321000,"conserved Plasmodium protein, unknown function",0.5676444997262188
+PF3D7_0830300,sporozoite invasion-associated protein 2,0.5676813260810787
+PF3D7_0204500,aspartate transaminase,0.5676945853169011
+PF3D7_1424500,small nucleolar RNA snoR27,0.5678337645358864
+PF3D7_1130000,"phosphoacetylglucosamine mutase, putative",0.5678375153199913
+PF3D7_1002300,"conserved Plasmodium protein, unknown function",0.5678506360326615
+PF3D7_1204100,"conserved Plasmodium protein, unknown function",0.5678679940952754
+PF3D7_0421700,"conserved Plasmodium protein, unknown function",0.5678945820261032
+PF3D7_0937000,"Plasmodium exported protein (PHISTb), unknown function",0.5679410159958185
+PF3D7_1475900,KELT protein,0.5679689433015226
+PF3D7_0629300,"phospholipase, putative",0.5680581628049867
+PF3D7_0414500,"male development protein MD5, putative",0.5680770926414846
+PF3D7_1372900,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5681378252660932
+PF3D7_0521200,"conserved protein, unknown function",0.568196998744973
+PF3D7_0831100,surface-associated interspersed protein 8.1 (SURFIN 8.1),0.5682955801964482
+PF3D7_1315100,serine/threonine protein kinase PK9,0.5683082089582348
+PF3D7_0631200,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5683114311257357
+PF3D7_1360300,"conserved Plasmodium protein, unknown function",0.5683760846799117
+PF3D7_1331500,"ATF7-int domain-containing protein, putative",0.5683810410894196
+PF3D7_1217400,"conserved protein, unknown function",0.56851392212665
+PF3D7_API02300,apicoplast ribosomal protein S5,0.5685602177820028
+PF3D7_1442700,"conserved Plasmodium protein, unknown function",0.5686915133272661
+PF3D7_0517500,"UTP--glucose-1-phosphate uridylyltransferase, putative",0.5687187822033393
+PF3D7_1000800,"stevor, pseudogene",0.5687237795332938
+PF3D7_0631900,stevor,0.5687451989257893
+PF3D7_1211000,"kinesin-X3, putative",0.5687807648734404
+PF3D7_MIT00700,ribosomal RNA fragment RNA24t,0.5687998464183694
+PF3D7_API00300,tRNA Cysteine,0.5688872310472367
+PF3D7_0720300,"conserved Plasmodium protein, unknown function",0.5690271710097214
+PF3D7_1023700,"conserved Plasmodium protein, unknown function",0.5690367655368574
+PF3D7_0417100,mRNA-binding protein PUF2,0.5690543214322116
+PF3D7_1477900,"acyl-CoA synthetase, pseudogene",0.5691889266902468
+PF3D7_1356100,"conserved Plasmodium protein, unknown function",0.5692618630263885
+PF3D7_0315700,"STONES protein, putative",0.5693302700928321
+PF3D7_0816500,"small heat shock protein HSP20, putative",0.5693728152994096
+PF3D7_1335200,"reticulocyte binding protein homologue 6, pseudogene",0.5697374989374627
+PF3D7_1413600,"conserved Plasmodium protein, unknown function",0.5697610061725892
+PF3D7_1113500,"GTP-binding protein, putative",0.5697632395336666
+PF3D7_0404100,"AP2 domain transcription factor AP2-SP2, putative",0.5697844702535382
+PF3D7_1356800,"aurora-related kinase ARK3, putative",0.5697906726683721
+PF3D7_1222000,"tRNA-splicing ligase RtcB, putative",0.5698215213839265
+PF3D7_1460100,FYVE and coiled-coil domain-containing protein,0.5698493448265117
+PF3D7_1321100,"protein kinase domain-containing protein, putative",0.5700056586172045
+PF3D7_1403500,"dynein light chain, putative",0.5700181105050683
+PF3D7_1206500,"Tat binding protein 1(TBP-1)-interacting protein, putative",0.5700614780792935
+PF3D7_0115500,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5700868782931021
+PF3D7_1424900,small nucleolar RNA snoR30,0.570115610389314
+PF3D7_0203100,"protein kinase, putative",0.5701962421982353
+PF3D7_1312400,"translation initiation factor IF-2, putative",0.5702241405543341
+PF3D7_1119800,"alternative splicing factor ASF-1, putative",0.5702514937158804
+PF3D7_0802600,adenylyl cyclase beta,0.5702685294870679
+PF3D7_0730800,"Plasmodium exported protein, unknown function",0.5703813564042686
+PF3D7_API02200,apicoplast ribosomal protein L6,0.5704306810587313
+PF3D7_0632500,"erythrocyte membrane protein 1, PfEMP1",0.570431148970473
+PF3D7_0515900,"NLI interacting factor-like phosphatase, putative",0.5706549408487882
+PF3D7_0203800,"WD repeat-containing protein, putative",0.5707253786510188
+PF3D7_1102900,"Plasmodium exported protein (hyp11), unknown function",0.5710157251154421
+PF3D7_1325200,"lactate dehydrogenase, putative",0.5710797367579056
+PF3D7_1341800,"inner membrane complex protein 1k, putative",0.5710919235827071
+PF3D7_API01600,apicoplast ribosomal protein S19,0.5710972503029658
+PF3D7_0518900,"conserved protein, unknown function",0.5712455140344764
+PF3D7_0213600,"conserved Plasmodium protein, unknown function",0.5712571626087642
+PF3D7_0814600,"structural integrity maintenance protein SIMP, putative",0.5712688968110192
+PF3D7_1139500,"AAA family ATPase, putative",0.571292945798575
+PF3D7_0112900,"Plasmodium exported protein, unknown function",0.5713440062405524
+PF3D7_1202300,"dynein heavy chain, putative",0.5713873923856201
+PF3D7_0420800,Plasmodium RNA of unknown function RUF6,0.5715146749446993
+PF3D7_API00200,tRNA Histidine,0.5715146749446993
+PF3D7_API04800,tRNA Threonine,0.5715146749446993
+PF3D7_API05000,tRNA Methionine,0.5715146749446993
+PF3D7_API05100,tRNA Arginine,0.5715146749446993
+PF3D7_API05200,tRNA Valine,0.5715146749446993
+PF3D7_API05600,tRNA Alanine,0.5715146749446993
+PF3D7_API05800,tRNA Isoleucine,0.5715146749446993
+PF3D7_API06000,tRNA Alanine,0.5715146749446993
+PF3D7_API06200,tRNA Leucine,0.5715146749446993
+PF3D7_API06300,tRNA Arginine,0.5715146749446993
+PF3D7_API06400,tRNA Valine,0.5715146749446993
+PF3D7_API06500,tRNA Arginine,0.5715146749446993
+PF3D7_API06600,tRNA Methionine,0.5715146749446993
+PF3D7_API06800,tRNA Threonine,0.5715146749446993
+PF3D7_MIT00800,ribosomal RNA fragment RNA25t,0.5715146749446993
+PF3D7_MIT01900,ribosomal RNA fragment RNA21,0.5715146749446993
+PF3D7_0709900,"hydrolase, putative",0.5715239966897335
+PF3D7_0627600,"conserved Plasmodium protein, unknown function",0.5715631857431027
+PF3D7_1420100,"conserved Plasmodium protein, unknown function",0.5716608662914189
+PF3D7_1207400,"conserved Plasmodium protein, unknown function",0.5716810347181333
+PF3D7_1403000,"radial spoke protein 3, putative",0.5716937575129734
+PF3D7_0721700,"secreted ookinete protein, putative",0.5717192920773224
+PF3D7_0402600,stevor,0.5717341871428242
+PF3D7_0824100,"3'-5' exonuclease, putative",0.571746881155375
+PF3D7_1213400,"kelch domain-containing protein, putative",0.5717776082386715
+PF3D7_1240800,Plasmodium RNA of unknown function RUF6,0.571778016752501
+PF3D7_0507300,subtilisin-like ookinete protein SOPT,0.5718233510424451
+PF3D7_0927400,"conserved Plasmodium protein, unknown function",0.5718679059220777
+PF3D7_1016100,"conserved Plasmodium protein, unknown function",0.5719901617030148
+PF3D7_1403800,"nuclear formin-like protein MISFIT, putative",0.5719920648318735
+PF3D7_1217600,"anaphase-promoting complex subunit 10, putative",0.572034127447692
+PF3D7_0518700,mRNA-binding protein PUF1,0.572206580148427
+PF3D7_0200800,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5722105833918892
+PF3D7_0903100,"protein RER1, putative",0.5722412362486148
+PF3D7_API00600,tRNA Methionine,0.5723814000184666
+PF3D7_0303000,N-ethylmaleimide-sensitive fusion protein,0.5724072121837005
+PF3D7_1465500,potassium channel K2,0.5724293101660098
+PF3D7_1250600,"translation initiation factor eIF-2B subunit beta, putative",0.5724743356737176
+PF3D7_1231300,"conserved Plasmodium protein, unknown function",0.5725661615123699
+PF3D7_1362800,"conserved Plasmodium protein, unknown function",0.5725725367960331
+PF3D7_0104900,RNase MRP,0.5726367983477503
+PF3D7_1126800,"alternative splicing factor SR-MG, putative",0.572818691176333
+PF3D7_0602100,ATP-dependent RNA helicase MTR4,0.5729624504189899
+PF3D7_0906890,"conserved Plasmodium protein, unknown function",0.572994720827379
+PF3D7_1400600,rifin,0.573066770872828
+PF3D7_1144400,"conserved Plasmodium protein, unknown function",0.5731557214067291
+PF3D7_1244500,PIMMS57 protein,0.5731685764830347
+PF3D7_0928150,"conserved Plasmodium protein, unknown function",0.5731706782817125
+PF3D7_0708200,"conserved Plasmodium protein, unknown function",0.5731945413743831
+PF3D7_0414800,"conserved Plasmodium protein, unknown function",0.5732323394881499
+PF3D7_1454300,SNF1-related serine/threonine protein kinase KIN,0.5732998835509409
+PF3D7_API03100,tRNA Phenylalanine,0.5733015297618499
+PF3D7_1101800,exported protein family 1,0.5733051089946175
+PF3D7_1417300,"cysteine protease ATG4, putative",0.5733738579208624
+PF3D7_0221600,"Plasmodium exported protein, unknown function, pseudogene",0.5733821142077706
+PF3D7_0518400,"cyclin, putative",0.5735137570791793
+PF3D7_1315000,"conserved protein, unknown function",0.5735656198461958
+PF3D7_0110300,Plasmodium RNA of unknown function RUF5,0.5736250856181356
+PF3D7_0923800,thioredoxin reductase,0.5736605261646224
+PF3D7_0919200,"PPPDE peptidase, putative",0.5736829185145688
+PF3D7_MIT03400,ribosomal RNA fragment RNA11,0.5736950048736497
+PF3D7_1209100,"conserved Plasmodium protein, unknown function",0.5737159206987358
+PF3D7_1131500,"conserved Plasmodium protein, unknown function",0.5737183489753018
+PF3D7_0114400,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5737400517674284
+PF3D7_0730400,"IMP1-like protein, putative",0.5737843095641927
+PF3D7_1327000,"conserved protein, unknown function",0.5738187981768748
+PF3D7_0934900,"conserved Plasmodium protein, unknown function",0.57390858872553
+PF3D7_0107600,"eukaryotic translation initiation factor 2-alpha kinase 2, putative",0.5740241978992988
+PF3D7_1337700,phosphoinositide-binding protein PH2,0.5740312298485197
+PF3D7_1206400,"thiosulfate sulfurtransferase, putative",0.5740500691367092
+PF3D7_1424600,small nucleolar RNA snoR28,0.5741144437731078
+PF3D7_0705200,"conserved Plasmodium protein, unknown function",0.5742003178989932
+PF3D7_API04200,"DNA-directed RNA polymerase subunit beta'', putative",0.5742690616425777
+PF3D7_1441500,"conserved Plasmodium protein, unknown function",0.574280408683585
+PF3D7_1418600,5S ribosomal RNA,0.574318336828655
+PF3D7_1148620,5.8S ribosomal RNA,0.5743313179376612
+PF3D7_1211300,"DNA helicase MCM8, putative",0.5743322619153967
+PF3D7_1249900,"ribosomal RNA small subunit methyltransferase A2, putative",0.5743390281568012
+PF3D7_0823600,lipoate-protein ligase B,0.5745019778866579
+PF3D7_0603700,phenylalanine--tRNA ligase,0.5745556329355406
+PF3D7_0113600,"surface-associated interspersed protein 1.2 (SURFIN 1.2), pseudogene",0.5746479165981798
+PF3D7_1433500,DNA topoisomerase 2,0.5746675224471365
+PF3D7_1231200,"conserved Plasmodium protein, unknown function",0.574692033889149
+PF3D7_1206900,"conserved Plasmodium protein, unknown function",0.5747337275987326
+PF3D7_API04900,large subunit ribosomal RNA,0.5747472192331303
+PF3D7_1116300,peptidyl-prolyl cis-trans isomerase,0.5747633657796002
+PF3D7_1329500,"conserved protein, unknown function",0.5747836626591551
+PF3D7_1416600,"conserved Plasmodium protein, unknown function",0.5748270527594999
+PF3D7_0518800,"secreted ookinete protein, putative",0.5748438826154284
+PF3D7_0308900,"splicing factor 3B subunit 1, putative",0.5748578199380133
+PF3D7_0607100,"MYND-type zinc finger protein, putative",0.574878234574192
+PF3D7_0632300,rifin,0.5749500484815138
+PF3D7_0714900,tRNA Serine,0.5749575177863114
+PF3D7_1027000,"conserved Plasmodium protein, unknown function",0.5749828665152253
+PF3D7_1227300,"conserved Plasmodium protein, unknown function",0.5749955091640304
+PF3D7_1147000,sporozoite and liver stage asparagine-rich protein,0.5751579217242203
+PF3D7_1305700,"conserved Plasmodium protein, unknown function",0.5751782982604842
+PF3D7_API04300,"DNA-directed RNA polymerase subunit beta', putative",0.5752232967184564
+PF3D7_1466600,"enkurin domain-containing protein, putative",0.575233504371931
+PF3D7_0511100,"conserved Plasmodium protein, unknown function",0.575255968457394
+PF3D7_0918500,telomerase RNA,0.5752655750790359
+PF3D7_0222700,rifin,0.5752699948074271
+PF3D7_0731400,"serine/threonine protein kinase, FIKK family, pseudogene",0.5754246524214218
+PF3D7_0827100,"translation initiation factor IF-2, putative",0.5754264872407671
+PF3D7_0317100,6-cysteine protein B9,0.5754541991688396
+PF3D7_0411500,tRNA Alanine,0.575458359070545
+PF3D7_1130800,"armadillo repeat protein PF16, putative",0.5756019909668508
+PF3D7_1103000,"conserved Plasmodium protein, unknown function",0.5756905720020251
+PF3D7_1410100,"alpha/beta hydrolase, putative",0.575693126659989
+PF3D7_1452600,"conserved Plasmodium protein, unknown function",0.5756943957438306
+PF3D7_1140500,"myosin K, putative",0.5757005116556726
+PF3D7_1352700,"intron-binding protein aquarius, putative",0.5757427040321639
+PF3D7_1323500,plasmepsin V,0.5757685426608355
+PF3D7_0829800,non-coding RNA,0.5757794318673529
+PF3D7_0701700,exported protein family 1,0.5758371797180225
+PF3D7_1335500,"DNA replication complex GINS protein, putative",0.5758499004154256
+PF3D7_0304000,"inner membrane complex protein 1a, putative",0.575865878189201
+PF3D7_0113300,"Plasmodium exported protein (hyp1), unknown function",0.5759530961163362
+PF3D7_0304700,"conserved Plasmodium protein, unknown function",0.57600049718256
+PF3D7_0506300,"conserved protein, unknown function",0.5761486837031068
+PF3D7_API02700,apicoplast ribosomal protein S12,0.576177929058534
+PF3D7_1475500,LCCL domain-containing protein,0.57619395892671
+PF3D7_1034300,"thioredoxin-like associated protein 2, putative",0.5761963851769741
+PF3D7_0320400,oocyst capsule protein Cap380,0.5762159670327519
+PF3D7_0601400,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5762681897102497
+PF3D7_0315600,male development protein MD3,0.5762705069872387
+PF3D7_0621600,tRNA Serine,0.5762845519828428
+PF3D7_0508600,"conserved protein, unknown function",0.5763287493209591
+PF3D7_0222400,"rifin, pseudogene",0.5763399380811619
+PF3D7_0101700,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5764052380799171
+PF3D7_API05300,tRNA Arginine,0.5764564496033261
+PF3D7_0801100,28S ribosomal RNA,0.5764657560678151
+PF3D7_1456500,"STAG domain-containing protein, putative",0.5765070540586463
+PF3D7_0614700,"F-box protein FBXO6, putative",0.5765687146496424
+PF3D7_API04100,"30S ribosomal protein S2, putative",0.5765983110042647
+PF3D7_0622100,"conserved Plasmodium protein, unknown function",0.5766475933823391
+PF3D7_1104900,"calcium/calmodulin-dependent protein kinase, putative",0.5767264340087519
+PF3D7_0823400,"alpha/beta hydrolase, putative",0.5768083176189842
+PF3D7_0611300,"ATP synthase-associated protein, putative",0.5769325193292603
+PF3D7_MIT03500,ribosomal RNA fragment RNA22,0.5769767112768008
+PF3D7_1034700,"ADP-ribosylation factor, putative",0.5771353378504831
+PF3D7_API01000,tRNA Lysine,0.5771469207120331
+PF3D7_1132500,"amino acid transporter, putative",0.5773192184119406
+PF3D7_0307900,"conserved Plasmodium protein, unknown function",0.5773451088841063
+PF3D7_1318700,protein AAP4,0.5774492838584566
+PF3D7_0408200,"conserved Plasmodium protein, unknown function",0.5774768568582472
+PF3D7_1125000,"conserved protein, unknown function",0.5775947483641616
+PF3D7_1219400,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5776301918420103
+PF3D7_1004300,RING finger E3 ubiquitin-protein ligase,0.5776461152713501
+PF3D7_0616500,TRAP-like protein,0.5776802692048797
+PF3D7_0822900,PhIL1-interacting candidate PIC2,0.577696199739704
+PF3D7_1005300,"conserved Plasmodium protein, unknown function",0.577743015769221
+PF3D7_1020100,"flagellar outer arm dynein-associated protein, putative",0.5778251353866164
+PF3D7_1029500,"conserved Plasmodium protein, unknown function",0.5778572764145004
+PF3D7_1477000,"Plasmodium exported protein (hyp17), unknown function, pseudogene",0.5778660380019407
+PF3D7_0305800,"P-loop containing nucleoside triphosphate hydrolase, putative",0.577876342793973
+PF3D7_0817300,"conserved Plasmodium protein, unknown function",0.5778974683750344
+PF3D7_0412500,Plasmodium RNA of unknown function RUF6,0.5779060400933251
+PF3D7_1103300,tRNA Leucine,0.5780032777162974
+PF3D7_0631300,exported protein family 1,0.5781152374900382
+PF3D7_1038400,gametocyte-specific protein,0.5782097905319746
+PF3D7_1030900,ookinete surface protein P28,0.5782212187520772
+PF3D7_0514700,"MORN repeat protein, putative",0.5782558319294713
+PF3D7_0730700,tRNA Threonine,0.5782915255479327
+PF3D7_1113000,"conserved Plasmodium protein, unknown function",0.5783393742567464
+PF3D7_1317900,"nucleolar complex protein 4, putative",0.5783433885958339
+PF3D7_0508800,single-stranded DNA-binding protein,0.5784129342137052
+PF3D7_1469500,"conserved Plasmodium protein, unknown function",0.5785365323821146
+PF3D7_0826900,"conserved Plasmodium protein, unknown function",0.5785378487093302
+PF3D7_0801200,5.8S ribosomal RNA,0.57857589117731
+PF3D7_1111100,"replication factor C subunit 5, putative",0.5786217810265625
+PF3D7_1474200,"conserved Plasmodium membrane protein, unknown function",0.5787541539335105
+PF3D7_0425300,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.5787667645463043
+PF3D7_0937400,rifin,0.5787790602663977
+PF3D7_1141900,"inner membrane complex protein 1b, putative",0.5787966015153347
+PF3D7_1371000,18S ribosomal RNA,0.5789069917469197
+PF3D7_0114300,"exported protein family 4, pseudogene",0.578927395051511
+PF3D7_1422900,"14-3-3 protein, putative",0.5790670853603567
+PF3D7_0600800,"rifin, pseudogene",0.5791245082101908
+PF3D7_0510300,"stripes inner membrane complex protein, putative",0.5792294362791174
+PF3D7_0411800,"conserved Plasmodium protein, unknown function",0.5792993877364471
+PF3D7_1367200,"CLAMP domain-containing protein, putative",0.5793011468033221
+PF3D7_1127400,"conserved Plasmodium protein, unknown function",0.5793175011014114
+PF3D7_1319600,"female development protein FD3, putative",0.579359662861104
+PF3D7_1023800,"conserved Plasmodium protein, unknown function",0.5793607436826578
+PF3D7_0425000,"Plasmodium exported protein, unknown function, pseudogene",0.5793964470889391
+PF3D7_0521900,"conserved Plasmodium protein, unknown function",0.5794078515661395
+PF3D7_1478200,"Plasmodium exported protein, unknown function, pseudogene",0.5795387485312504
+PF3D7_1416400,"conserved protein, unknown function",0.5795448459883139
+PF3D7_0532700,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5795699603553601
+PF3D7_0312600,tRNA Valine,0.5796330961839057
+PF3D7_1137700,"calcium-binding protein, putative",0.5796391551956327
+PF3D7_0600600,"erythrocyte membrane protein 1 (PfEMP1), exon 2",0.5797034591822174
+PF3D7_1326300,"RNA-binding protein, putative",0.5797402896006961
+PF3D7_0516700,"ubiquitin carboxyl-terminal hydrolase 2, putative",0.5798076525258614
+PF3D7_0933100,"conserved Plasmodium protein, unknown function",0.5798332461899172
+PF3D7_1011000,inner membrane complex sub-compartment protein 1,0.5798669409478906
+PF3D7_1448200,"condensin-2 complex subunit G2, putative",0.5800233556686534
+PF3D7_0906800,"conserved Plasmodium protein, unknown function",0.5800247113916294
+PF3D7_1252000,tRNA Glutamine,0.5800386991538794
+PF3D7_0923300,perforin-like protein 3,0.5801184939009264
+PF3D7_1014800,"EF hand domain-containing protein, putative",0.5801919590904802
+PF3D7_1367300,"conserved Plasmodium protein, unknown function",0.5801959053532424
+PF3D7_0222900,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5802049103173333
+PF3D7_0112000,TatD-like deoxyribonuclease,0.5802050675920623
+PF3D7_1031300,"SAE2 domain-containing protein, putative",0.5802455772573581
+PF3D7_1236100,clustered-asparagine-rich protein,0.5803034652055615
+PF3D7_1146500,leucine-rich repeat protein,0.580324598451092
+PF3D7_0405000,"ATP-dependent RNA helicase DDX51, putative",0.5803313361081238
+PF3D7_1136100,"conserved Plasmodium protein, unknown function",0.5804431854782991
+PF3D7_0732200,rifin,0.5804583863429198
+PF3D7_0732100,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.580522998144278
+PF3D7_1029800,"heptatricopeptide repeat and RAP domain-containing protein, putative",0.5805875615595697
+PF3D7_0521100,"conserved Plasmodium protein, unknown function",0.5806151308425216
+PF3D7_0413000,Plasmodium RNA of unknown function RUF6,0.5806300320453082
+PF3D7_0402800,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5806479141338248
+PF3D7_0804200,Plasmodium RNA of unknown function RUF3,0.5806813626413039
+PF3D7_1428500,"protein kinase, putative",0.580733158602224
+PF3D7_1004100,"conserved Plasmodium protein, unknown function",0.5807811829433022
+PF3D7_1210200,"zinc finger protein, putative",0.5808007475129513
+PF3D7_0701000,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5808165897273807
+PF3D7_API04000,hypothetical chloroplast reading frame 93,0.5808237510297186
+PF3D7_1337800,calcium-dependent protein kinase 5,0.5808426894881054
+PF3D7_0716700,"conserved Plasmodium protein, unknown function",0.5808460897678533
+PF3D7_1101400,"rifin, pseudogene",0.5808705860213642
+PF3D7_0911100,"START domain-containing protein, putative",0.5808897213204732
+PF3D7_API00900,tRNA Aspartic acid,0.5808913168963874
+PF3D7_1359500,"conserved Plasmodium protein, unknown function",0.5810722287732498
+PF3D7_1372500,"stevor, pseudogene",0.581130178565999
+PF3D7_1418400,tRNA Proline,0.5811371624226641
+PF3D7_1465800,"dynein beta chain, putative",0.5811571542885106
+PF3D7_0500600,"stevor, pseudogene",0.5812114559642904
+PF3D7_1229300,PhIL1-interacting candidate PIC1,0.5812182521403259
+PF3D7_0712300,"erythrocyte membrane protein 1, PfEMP1",0.5812600290704972
+PF3D7_1479000,acyl-CoA synthetase,0.5812818883919673
+PF3D7_MIT01500,large subunit ribosomal RNA fragment F,0.5813042509548634
+PF3D7_0628400,"protease, putative",0.5813204911694656
+PF3D7_0530400,"conserved Plasmodium protein, unknown function",0.5813288824429907
+PF3D7_API05900,small subunit ribosomal RNA,0.5813730355615762
+PF3D7_1350600,"conserved Plasmodium protein, unknown function",0.5814297021093109
+PF3D7_0707420,nucleolar RNA snoR36,0.5814414669482258
+PF3D7_1435600,"conserved Plasmodium protein, unknown function",0.5814931205658235
+PF3D7_1364000,"conserved protein, unknown function",0.5815161202561232
+PF3D7_1474700,"protein kinase, putative",0.5815539802250472
+PF3D7_1335900,thrombospondin-related anonymous protein,0.5816396869467433
+PF3D7_1309120,non-coding RNA,0.5816507351529174
+PF3D7_1371200,5.8S ribosomal RNA,0.5818341753294217
+PF3D7_1235500,"N6-adenosine-methyltransferase, putative",0.5819811898206789
+PF3D7_0302300,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5820283384572262
+PF3D7_0413100,"erythrocyte membrane protein 1, PfEMP1",0.5820582123235947
+PF3D7_0101400,"exported protein family 1, pseudogene",0.5820649777745354
+PF3D7_API01200,tRNA Proline,0.5820745220727543
+PF3D7_0402200,"surface-associated interspersed protein 4.1 (SURFIN 4.1), pseudogene",0.582074912044456
+PF3D7_1100900,"exported protein family 1, pseudogene",0.582083860211053
+PF3D7_0819400,perforin-like protein 4,0.5820965607099492
+PF3D7_1357300,"dynein light chain, putative",0.5821217954764516
+PF3D7_1318500,"conserved Plasmodium protein, unknown function",0.5821311737343353
+PF3D7_0323900,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5821445384771443
+PF3D7_1114900,"filamin domain-containing protein, putative",0.5822073640598755
+PF3D7_1040400,rifin,0.5822145794046142
+PF3D7_1135400,"HotDog domain-containing protein, putative",0.5822378013079519
+PF3D7_0603800,"NdP2 protein, putative",0.582275508649926
+PF3D7_0905600,"WD repeat-containing protein 66, putative",0.5822784001972204
+PF3D7_0500100,"erythrocyte membrane protein 1, PfEMP1",0.5823892558832592
+PF3D7_1462000,thioredoxin-like protein,0.5824154279819125
+PF3D7_0936900,"Plasmodium exported protein (PHISTb), unknown function, pseudogene",0.5824542934875978
+PF3D7_0928700,"conserved Plasmodium protein, unknown function",0.5824846844037105
+PF3D7_0711800,Plasmodium RNA of unknown function RUF6,0.5825398325536486
+PF3D7_1367400,"conserved Plasmodium protein, unknown function",0.5825424716910289
+PF3D7_0832600,stevor,0.5825546341434565
+PF3D7_0816800,"meiotic recombination protein DMC1, putative",0.5825832559415134
+PF3D7_0411200,"PP-loop family protein, putative",0.5826798049009292
+PF3D7_1302200,protein UIS3,0.5827657473341827
+PF3D7_0510800,"WD repeat-containing protein, putative",0.5827669400014754
+PF3D7_1328900,"PUB domain-containing protein, putative",0.5828304893711884
+PF3D7_0203000,"repetitive organellar protein, putative",0.582886627418054
+PF3D7_1346100,protein transport protein SEC61 subunit alpha,0.5828891246823491
+PF3D7_1468400,C3H1-type zinc finger protein CZIF1,0.5829049879198148
+PF3D7_1435200,"conserved protein, unknown function",0.5829165934381026
+PF3D7_1011900,heme oxygenase,0.5829537581896604
+PF3D7_0214700,"conserved Plasmodium protein, unknown function",0.5830438735186311
+PF3D7_0624100,"conserved protein, unknown function",0.5830475319473304
+PF3D7_0304800,"conserved Plasmodium membrane protein, unknown function",0.5830579782433015
+PF3D7_1414700,"ubiquitin carboxyl-terminal hydrolase, putative",0.5831603271052952
+PF3D7_0516500,"major facilitator superfamily domain-containing protein, putative",0.5831670844685233
+PF3D7_0822800,"U5 small nuclear ribonucleoprotein 40 kDa protein, putative",0.583181185981204
+PF3D7_1133600,"conserved Plasmodium protein, unknown function",0.5832018832149258
+PF3D7_0300300,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5832260805580541
+PF3D7_1337600,tRNA Serine,0.5832434207916583
+PF3D7_0527800,tRNA Leucine,0.583287496644861
+PF3D7_API00450,tRNA Leucine,0.5833254864510973
+PF3D7_1103500,CPW-WPC family protein,0.5833550729659412
+PF3D7_API04600,hypothetical protein,0.5833825177068919
+PF3D7_1455300,"conserved protein, unknown function",0.5833879652160406
+PF3D7_API03300,tRNA Glycine,0.5834465208148062
+PF3D7_0205300,"conserved Plasmodium protein, unknown function",0.5834910190466839
+PF3D7_0221900,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5834980731521692
+PF3D7_1039100,"DnaJ protein, putative, pseudogene",0.5835200839640553
+PF3D7_1437500,"YrhK domain-containing protein, putative",0.5836058561017391
+PF3D7_1218800,"secreted ookinete protein, putative",0.5836902015181484
+PF3D7_1476400,"serine/threonine protein kinase, FIKK family, pseudogene",0.5837180338867699
+PF3D7_1447500,"inner membrane complex protein, putative",0.5837346739340943
+PF3D7_0405300,"liver specific protein 2, putative",0.5838492578929368
+PF3D7_0714800,tRNA Leucine,0.583907416431017
+PF3D7_1208200,cysteine repeat modular protein 3,0.5839516063151521
+PF3D7_1029000,"conserved Plasmodium protein, unknown function, pseudogene",0.5839545187058093
+PF3D7_0827700,"magnesium transporter, putative",0.5840138685626908
+PF3D7_1000400,rifin,0.5840213783355162
+PF3D7_1228200,"conserved Plasmodium protein, unknown function",0.5840475936313065
+PF3D7_0207300,serine repeat antigen 8,0.5842643115507469
+PF3D7_1307400,"conserved Plasmodium protein, unknown function",0.5843263653170372
+PF3D7_1408800,"conserved Plasmodium protein, unknown function",0.5843318438887677
+PF3D7_API05700,small subunit ribosomal RNA,0.5844329485262778
+PF3D7_0412600,"rifin, pseudogene",0.5844431560801306
+PF3D7_1033700,bromodomain protein 1,0.5845810417179871
+PF3D7_0631700,"rifin, pseudogene",0.5846407403780355
+PF3D7_1355900,"RWD domain-containing protein, putative",0.5847200956098431
+PF3D7_0815100,"heptatricopeptide repeat and RAP domain-containing protein, putative",0.5847222754582987
+PF3D7_0908500,"conserved Plasmodium protein, unknown function",0.584788628721875
+PF3D7_1037000,"DNA polymerase zeta catalytic subunit, putative",0.5847955984604924
+PF3D7_1460800,"snRNA-activating protein complex subunit 3, putative",0.5848376165650029
+PF3D7_0524800,"ubiquitin fusion degradation protein 1, putative",0.5848645437251195
+PF3D7_1444600,"conserved Plasmodium protein, unknown function",0.5848842908750685
+PF3D7_1024200,"RNA-binding protein, putative",0.5848845154620944
+PF3D7_0831750,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.5850195908244336
+PF3D7_1303500,sodium/hydrogen exchanger,0.5850203785736332
+PF3D7_1222600,AP2 domain transcription factor AP2-G,0.5850867775453402
+PF3D7_0813300,"NPL domain-containing protein, putative",0.5850994597136115
+PF3D7_MIT02900,ribosomal RNA fragment RNA12,0.585178460412802
+PF3D7_1019100,"conserved Plasmodium protein, unknown function",0.5851801292632826
+PF3D7_1324600,"conserved Plasmodium protein, unknown function",0.5852503066571042
+PF3D7_0827600,"conserved Plasmodium protein, unknown function",0.5854630896226246
+PF3D7_1217800,"diphthamide biosynthesis protein 3, putative",0.5855175162880625
+PF3D7_1300800,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5855903556992709
+PF3D7_1433800,"conserved Plasmodium protein, unknown function",0.5856347946851777
+PF3D7_1414900,"ATP-dependent protease, putative",0.5856879954696778
+PF3D7_MIT00500,ribosomal RNA fragment RNA23t,0.5857119168438031
+PF3D7_0608100,"conserved Plasmodium protein, unknown function",0.5857730406596988
+PF3D7_0530300,PhIL1-interacting candidate PIC6,0.5859177473414413
+PF3D7_1354800,metacaspase-1,0.585954323085517
+PF3D7_0217700,"E2F-associated phosphoprotein, putative",0.5859756355911618
+PF3D7_0904300,"conserved protein, unknown function",0.5861314315387213
+PF3D7_0324000,exported protein family 1,0.5861876368015456
+PF3D7_1402550,small nucleolar RNA snoR22,0.5862648883211689
+PF3D7_1009900,"heptatricopeptide repeat-containing protein, putative",0.5865232988730623
+PF3D7_0102400,"lysophospholipase, putative, pseudogene",0.5865581872870839
+PF3D7_1139100,"RNA-binding protein, putative",0.5866007327752377
+PF3D7_1037400,"conserved Plasmodium protein, unknown function",0.5866060873133659
+PF3D7_MIT01200,ribosomal RNA fragment RNA15,0.5866070387016926
+PF3D7_1331000,"protein kinase, putative",0.5866128216760513
+PF3D7_0424300,"erythrocyte binding antigen-165, pseudogene",0.5866500358286023
+PF3D7_MIT02600,ribosomal RNA fragment RNA4,0.5866947883312132
+PF3D7_MIT00300,ribosomal RNA fragment RNA9,0.5867238526591108
+PF3D7_MIT01100,ribosomal RNA fragment RNA1,0.5867293567133907
+PF3D7_0510000,"conserved Plasmodium protein, unknown function",0.5867394638772878
+PF3D7_1219500,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5867550285194284
+PF3D7_1127200,"conserved Plasmodium protein, unknown function",0.5868532592583672
+PF3D7_0712600,"erythrocyte membrane protein 1, PfEMP1",0.586905826209773
+PF3D7_1216700,perforin-like protein 2,0.5869823775383963
+PF3D7_0420700,"erythrocyte membrane protein 1, PfEMP1",0.5870535025647609
+PF3D7_0902700,"Plasmodium exported protein (PHISTb), unknown function, pseudogene",0.5871051191504301
+PF3D7_0510700,"conserved Plasmodium protein, unknown function",0.5872076257510038
+PF3D7_1218100,"conserved Plasmodium protein, unknown function",0.5872084376508705
+PF3D7_1417400,"rap guanine nucleotide exchange factor, putative, pseudogene",0.5872301358716272
+PF3D7_0400200,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5872316259829014
+PF3D7_0324700,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5872402048932105
+PF3D7_1327200,"ribonuclease P protein subunit RPR2, putative",0.58725469514575
+PF3D7_1338800,CPW-WPC family protein,0.5872572179901532
+PF3D7_1032200,"conserved Plasmodium protein, unknown function",0.587310448401886
+PF3D7_1100100,"erythrocyte membrane protein 1, PfEMP1",0.5873769068005141
+PF3D7_1112700,"conserved Plasmodium protein, unknown function",0.5873844495544791
+PF3D7_0202400,translation-enhancing factor,0.5873927134494059
+PF3D7_0214600,"serine/threonine protein kinase STK2, putative",0.5874010572402492
+PF3D7_1110100,C2 domain-containing membrane protein,0.58743963268866
+PF3D7_0517600,"F-actin-capping protein subunit beta, putative",0.5874518775381149
+PF3D7_0307000,small nucleolar RNA snoR03,0.5874730594840055
+PF3D7_0601500,"Plasmodium exported protein (PHISTb), unknown function",0.5875867057546087
+PF3D7_0622300,"vacuolar transporter chaperone, putative",0.5875873860467873
+PF3D7_0917200,"conserved protein, unknown function",0.5876081534037798
+PF3D7_0508900,protein AAP6,0.58767884263023
+PF3D7_1143600,"conserved Plasmodium protein, unknown function",0.5876969421293989
+PF3D7_1146800,"female development protein FD2, putative",0.5877013587732077
+PF3D7_1144800,"conserved Plasmodium protein, unknown function",0.5877821516831286
+PF3D7_1465700,"plasmepsin VIII, putative",0.5878106538813751
+PF3D7_1478700,"Plasmodium exported protein, unknown function, pseudogene",0.5878207041934276
+PF3D7_1301000,"rifin, pseudogene",0.5879620253928037
+PF3D7_1448900,"mitochondrial respiratory chain complex II subunit, putative",0.5879636449750002
+PF3D7_1302000,EMP1-trafficking protein,0.5880619265218581
+PF3D7_0513400,GTP-binding protein YihA1,0.5881059875519156
+PF3D7_0511400,"conserved Plasmodium protein, unknown function",0.5881444618501604
+PF3D7_0532000,28S ribosomal RNA,0.5881473366219252
+PF3D7_0609500,"conserved Plasmodium protein, unknown function",0.5881782248538986
+PF3D7_0504700,"centrosomal protein CEP120, putative",0.5882097811783682
+PF3D7_1312700,"conserved Plasmodium protein, unknown function",0.5882669085972858
+PF3D7_1313100,"conserved Plasmodium protein, unknown function",0.5882717987130346
+PF3D7_1475000,"mediator of RNA polymerase II transcription subunit 31, putative",0.588297292353357
+PF3D7_0114600,"stevor, pseudogene",0.5883289870094615
+PF3D7_1328700,Plasmodium RNA of unknown function RUF1,0.5883709643478745
+PF3D7_0923100,"OTU domain-containing protein, putative",0.5883729868577235
+PF3D7_1213300,"conserved Plasmodium protein, unknown function",0.58845724133205
+PF3D7_1129850,"UNC-50 protein, putative, pseudogene",0.5885806529688613
+PF3D7_1024600,"RAP protein, putative",0.5886505119912292
+PF3D7_1461500,"meiotic nuclear division protein 1, putative",0.5886994128149502
+PF3D7_1036300,duffy binding-like merozoite surface protein 2,0.5887050629144213
+PF3D7_0415300,cdc2-related protein kinase 3,0.5887380526896159
+PF3D7_1358600,"zinc finger protein, putative",0.5888171790494257
+PF3D7_API06700,large subunit ribosomal RNA,0.588839009043903
+PF3D7_0935100,"protein kish, putative",0.5888763470338857
+PF3D7_0718800,"conserved protein, unknown function",0.5889058452665868
+PF3D7_0809900,"JmjC domain-containing protein 1, putative",0.588928257075874
+PF3D7_1000100,"erythrocyte membrane protein 1, PfEMP1",0.5889313398026589
+PF3D7_0929200,"RNA-binding protein, putative",0.5889495695257311
+PF3D7_0500700,"rifin, pseudogene",0.5890237960358724
+PF3D7_0104700,"major facilitator superfamily-related transporter, putative",0.5890330346786076
+PF3D7_1013600,"conserved Plasmodium protein, unknown function",0.589215552458458
+PF3D7_1427900,leucine-rich repeat protein,0.5892322289101519
+PF3D7_0805300,"zinc finger protein, putative",0.5892571394381154
+PF3D7_1230300,"subpellicular microtubule protein 2, putative",0.5892596656959765
+PF3D7_0824300,"GTP-binding protein Obg2, putative",0.5894118345593965
+PF3D7_1035100,"probable protein, unknown function",0.589413982643725
+PF3D7_0728100,"anaphase-promoting complex subunit 1, putative",0.5894580595815994
+PF3D7_0421000,Plasmodium RNA of unknown function RUF6,0.5895561205629911
+PF3D7_1222200,small nucleolar RNA snoR15,0.5895978342048361
+PF3D7_1425100,small nucleolar RNA snoR31,0.5896112364885205
+PF3D7_API05500,tRNA Asparagine,0.5896645190716492
+PF3D7_API06100,tRNA Asparagine,0.5896645190716492
+PF3D7_0205100,"conserved Plasmodium protein, unknown function",0.5896742104636195
+PF3D7_1223500,"conserved Plasmodium protein, unknown function",0.5896782858259643
+PF3D7_1134600,CCCH-type zinc finger protein ZNF4,0.5897359630341069
+PF3D7_1143100,AP2 domain transcription factor AP2-O,0.5897614892876637
+PF3D7_0932900,"conserved Plasmodium protein, unknown function",0.5897884725487312
+PF3D7_API00100,apicoplast ribosomal protein S4,0.5898606917809572
+PF3D7_1343500,"conserved protein, unknown function",0.589870833806479
+PF3D7_0631000,"tetratricopeptide repeat protein, putative",0.5898803810005999
+PF3D7_1254500,rifin,0.5898975180176569
+PF3D7_MIT00100,ribosomal RNA fragment RNA16,0.5899090371809397
+PF3D7_0827200,"conserved Plasmodium protein, unknown function",0.5899258737850362
+PF3D7_0628900,"RAP protein, putative",0.5899368418424166
+PF3D7_0319900,"conserved protein, unknown function",0.5899442312875873
+PF3D7_1211100,"HSP20-like chaperone, putative",0.5900988790313709
+PF3D7_1321600,"cGMP-specific 3',5'-cyclic phosphodiesterase gamma, putative",0.5901129033073933
+PF3D7_1243400,"conserved Plasmodium protein, unknown function",0.5901696649580706
+PF3D7_0800100,"erythrocyte membrane protein 1, PfEMP1",0.5902448116940892
+PF3D7_MIT01800,ribosomal RNA fragment RNA26t,0.5902867407843135
+PF3D7_1026600,"conserved Plasmodium protein, unknown function",0.5902903328341988
+PF3D7_0729500,N6-adenosine-methyltransferase MT-A70,0.5903822264566259
+PF3D7_API03500,"apicoplast ribosomal protein L11, putative",0.5904875409119559
+PF3D7_0830900,"Plasmodium exported protein, unknown function",0.5905049834199657
+PF3D7_0926600,"conserved Plasmodium membrane protein, unknown function",0.5905064335851665
+PF3D7_1220200,"AP-5 complex subunit beta-1, putative, pseudogene",0.5905976252633864
+PF3D7_1206300,"conserved Plasmodium protein, unknown function",0.5906012126278013
+PF3D7_1025600,"cytochrome c oxidase copper chaperone, putative",0.5906204792922022
+PF3D7_1007800,"conserved Plasmodium protein, unknown function",0.5906336087942401
+PF3D7_1234200,"helicase, putative, pseudogene",0.5906516202679433
+PF3D7_0220900,"Plasmodium exported protein, unknown function, pseudogene",0.5906641925825
+PF3D7_1214200,histone-lysine N-methyltransferase SET5,0.590698623456916
+PF3D7_1108200,D-tyrosyl-tRNA(Tyr) deacylase,0.5907239290994389
+PF3D7_1005100,"U3 small nucleolar RNA-associated protein 25, putative",0.590731343469547
+PF3D7_1006600,"phosducin-like protein 3, putative",0.5907316478150146
+PF3D7_1020600,"conserved Plasmodium membrane protein, unknown function",0.5907420256859678
+PF3D7_1000200,rifin,0.590884970012391
+PF3D7_1339400,"cytochrome c oxidase subunit ApiCOX14, putative",0.5909315199279718
+PF3D7_1008600,"zinc finger (CCCH type) protein, putative",0.5909505961390633
+PF3D7_MIT03900,ribosomal RNA fragment RNA19,0.5909712410087972
+PF3D7_0702700,tRNA Alanine,0.5909723292556537
+PF3D7_1131400,"conserved Plasmodium protein, unknown function",0.5910716616781297
+PF3D7_1327300,subpellicular microtubule protein 3,0.5911680093444515
+PF3D7_1126400,"mediator of RNA polymerase II transcription subunit 21, putative",0.5911819916277095
+PF3D7_0931700,"PIH1 domain-containing protein, putative",0.5914120091873004
+PF3D7_0515700,glideosome-associated protein 40,0.5914164492031401
+PF3D7_0620900,tRNA Leucine,0.5914612508217415
+PF3D7_1041000,rifin,0.5914788599671887
+PF3D7_0901500,rifin,0.5915126323587179
+PF3D7_1201600,NIMA related kinase 3,0.5915581641960369
+PF3D7_0402500,"rifin, pseudogene",0.5915835326359772
+PF3D7_0408000,"conserved Plasmodium protein, unknown function",0.5915888581876515
+PF3D7_1347100,DNA topoisomerase 3,0.5916489665846526
+PF3D7_0831300,"Plasmodium exported protein, unknown function",0.5917327333338162
+PF3D7_1010500,"ankyrin-repeat protein, putative",0.5917950480990797
+PF3D7_1351300,"conserved Plasmodium membrane protein, unknown function",0.5918517567575721
+PF3D7_1000900,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5918782941969538
+PF3D7_0614600,"conserved Plasmodium protein, unknown function",0.5919101889776065
+PF3D7_API01800,apicoplast ribosomal protein L16,0.5919902964823546
+PF3D7_0936500,virulence-associated protein 1,0.5920054368998198
+PF3D7_0312900,hypothetical protein,0.592030573458775
+PF3D7_1015700,"tubulin binding cofactor c, putative",0.5920345058500366
+PF3D7_1008300,"AP-5 complex subunit sigma-1, putative, pseudogene",0.5920716412253906
+PF3D7_1221400,"inner membrane complex protein 1h, putative",0.5921117160626452
+PF3D7_0808700,"erythrocyte membrane protein 1, PfEMP1",0.5921216932064527
+PF3D7_0525800,inner membrane complex protein 1g,0.5921238589238726
+PF3D7_1038500,"Plasmodium exported protein, unknown function",0.5922349867260259
+PF3D7_0529600,tRNA Arginine,0.5922634461082021
+PF3D7_0531800,5.8S ribosomal RNA,0.5923283620573894
+PF3D7_0820600,"conserved protein, unknown function",0.5923345356964453
+PF3D7_0107100,"conserved protein, unknown function",0.5923825612342956
+PF3D7_1219600,phospholipid-transporting ATPase 2,0.5924367480672548
+PF3D7_1341700,"conserved Plasmodium protein, unknown function",0.5924379010335716
+PF3D7_1471500,"transmembrane protein 43, putative",0.5925070883847833
+PF3D7_0113400,"Plasmodium exported protein, unknown function",0.5925945595863712
+PF3D7_0731900,"rifin, pseudogene",0.5926056317880047
+PF3D7_1216800,tRNA Proline,0.5928003643092156
+PF3D7_1145400,dynamin-like protein,0.5928918369397479
+PF3D7_1467000,"magnesium transporter, putative",0.5929415918942917
+PF3D7_1200610,VAR2CSA uORF,0.5929746506486778
+PF3D7_0602800,"JmjC domain-containing protein 2, putative",0.5929890707234553
+PF3D7_1109100,"conserved Plasmodium protein, unknown function",0.5930213520277775
+PF3D7_API03700,tRNA Glycine,0.5930337771211548
+PF3D7_1208500,"conserved Plasmodium protein, unknown function",0.5930575828236818
+PF3D7_0302200,cytoadherence linked asexual protein 3.2,0.5930579177471074
+PF3D7_1460000,biotin--protein ligase 2,0.5930937570882245
+PF3D7_MIT02400,ribosomal RNA fragment RNA27t,0.5931343849286077
+PF3D7_1107600,"coiled-coil domain-containing protein 40, putative",0.5931679433086414
+PF3D7_1239200,"AP2 domain transcription factor, putative",0.5931981275197274
+PF3D7_0918400,"conserved Plasmodium protein, unknown function",0.5932509599995153
+PF3D7_0400600,"erythrocyte membrane protein 1 (PfEMP1), exon 1, pseudogene",0.5932622965317417
+PF3D7_0217000,"conserved Plasmodium membrane protein, unknown function",0.5933162955428531
+PF3D7_1476900,"Plasmodium exported protein, unknown function, pseudogene",0.5933771633697333
+PF3D7_0625900,"conserved Plasmodium protein, unknown function",0.5934122731647808
+PF3D7_0922400,para-aminobenzoic acid synthetase,0.5934182739940354
+PF3D7_1026200,"conserved protein, unknown function",0.593433841704204
+PF3D7_1145900,"conserved Plasmodium protein, unknown function",0.5934966761401637
+PF3D7_1300100,"erythrocyte membrane protein 1, PfEMP1",0.5935579779775895
+PF3D7_0809100,"erythrocyte membrane protein 1, PfEMP1",0.5936151571725833
+PF3D7_1216100,"conserved protein, unknown function",0.5936583187722606
+PF3D7_0900100,"erythrocyte membrane protein 1, PfEMP1",0.5936839837210346
+PF3D7_1329800,"conserved Plasmodium protein, unknown function",0.5936846575990393
+PF3D7_1128600,"CCR4-NOT transcription complex subunit 2, putative",0.5937625452070455
+PF3D7_1239500,DNA gyrase subunit B,0.5937864126775196
+PF3D7_1420800,"dynein light chain, putative",0.5938319511155911
+PF3D7_1040200,stevor,0.5938456199510604
+PF3D7_1010200,"DNA2/NAM7 helicase, putative",0.5939600927294242
+PF3D7_1474000,"conserved Plasmodium protein, unknown function",0.5939842920206537
+PF3D7_0819800,"tetratricopeptide repeat protein, putative",0.5940240580296481
+PF3D7_MIT02100,cytochrome c oxidase subunit 1,0.594050036777434
+PF3D7_0600100,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.5941117947925647
+PF3D7_1251500,"ATP-dependent RNA helicase DRS1, putative",0.5941384545160904
+PF3D7_1111600,"endonuclease/exonuclease/phosphatase family protein, putative",0.5941388970151842
+PF3D7_1244000,"glucose inhibited division protein a homologue, putative",0.5941405375787563
+PF3D7_API01100,tRNA Glutamic acid,0.5941570497289829
+PF3D7_API05400,tRNA Leucine,0.5941570497289829
+PF3D7_1125900,"XTBD domain-containing protein, putative",0.5941877324234578
+PF3D7_0425500,stevor,0.59419657354328
+PF3D7_API02900,elongation factor Tu,0.5942863993539402
+PF3D7_1412300,"nuclear transport factor 2, putative",0.5943330227492309
+PF3D7_1365400,"adenylyltransferase and sulfurtransferase UBA4, putative",0.5943825442482381
+PF3D7_0704500,"serine/threonine protein kinase, putative",0.5943923241451935
+PF3D7_0625000,"sphingomyelin synthase 1, putative",0.594422735821089
+PF3D7_0808600,"erythrocyte membrane protein 1, PfEMP1",0.5944355902984398
+PF3D7_0924700,"splicing factor 3A subunit 3, putative",0.5944365455033854
+PF3D7_1307300,"ATP-dependent RNA helicase DBP6, putative",0.5944390015078541
+PF3D7_0315100,eukaryotic translation initiation factor 4E,0.5944921200717989
+PF3D7_0506600,"histone deacetylase, putative, pseudogene",0.5945258323821627
+PF3D7_1210500,"conserved Plasmodium protein, unknown function",0.5945335289712829
+PF3D7_1142200,"vacuolar protein sorting-associated protein IST1-like, putative",0.5945455739545454
+PF3D7_1248300,"conserved protein, unknown function",0.5945632404792467
+PF3D7_0424200,reticulocyte binding protein homologue 4,0.5945674165868496
+PF3D7_1353000,"tryptophan-rich protein, pseudogene",0.594572404327063
+PF3D7_0402700,"rifin, pseudogene",0.5945767166176821
+PF3D7_1425600,"zinc finger protein, putative",0.594577514992472
+PF3D7_0832500,rifin,0.5945987815756993
+PF3D7_1014100,merozoite surface protein MSA180,0.5946369427339991
+PF3D7_1400900,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.5946426162631724
+PF3D7_0412800,Plasmodium RNA of unknown function RUF6,0.5946743764850039
+PF3D7_1425000,Plasmodium RNA of unknown function RUF4,0.5948314694618432
+PF3D7_1034100,"conserved protein, unknown function",0.5948328030115085
+PF3D7_1040100,rifin,0.5949324634219502
+PF3D7_API01900,apicoplast ribosomal protein S17,0.5949616161559835
+PF3D7_1149900,stevor,0.5950806723917125
+PF3D7_0806600,"kinesin-like protein, putative",0.5951032743774899
+PF3D7_1249200,"conserved Plasmodium protein, unknown function",0.5951096529966095
+PF3D7_1112900,"conserved protein, unknown function",0.5951733708810698
+PF3D7_0615200,"conserved protein, unknown function",0.5953183373434947
+PF3D7_0414400,"conserved Plasmodium protein, unknown function",0.595341050169586
+PF3D7_0617600,stevor,0.5953596113419332
+PF3D7_0725800,5.8S ribosomal RNA,0.5954692378795883
+PF3D7_1019200,"conserved Plasmodium protein, unknown function",0.5954780747453334
+PF3D7_0222500,rifin,0.595490269760484
+PF3D7_0630800,"TPH domain-containing protein, putative",0.5955123023858023
+PF3D7_1143700,"conserved Plasmodium protein, unknown function",0.5956512411262541
+PF3D7_1440400,"zinc finger protein, putative",0.5956609607608924
+PF3D7_0900800,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5956802593033524
+PF3D7_0528700,peptidyl-prolyl cis-trans isomerase,0.5957077042054449
+PF3D7_1354000,"conserved Plasmodium protein, unknown function",0.5957226483238889
+PF3D7_0213300,"conserved protein, unknown function",0.5957508198147053
+PF3D7_0903800,LCCL domain-containing protein,0.59577787657843
+PF3D7_1234400,"microgamete surface protein MiGS, putative",0.5958494529732159
+PF3D7_0833300,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.5959273775285796
+PF3D7_1140000,carbonic anhydrase,0.5959607073870277
+PF3D7_API01400,"ribosomal protein L23, putative",0.5959766696269817
+PF3D7_1252200,chitinase,0.5960493623810826
+PF3D7_0313400,"conserved Plasmodium protein, unknown function",0.5960515432677375
+PF3D7_1254300,stevor,0.5960718880593189
+PF3D7_1447600,"conserved protein, unknown function",0.5961504867296279
+PF3D7_1373200,"Plasmodium exported protein, unknown function, fragment",0.5961790728532234
+PF3D7_0924900,"alpha-tubulin N-acetyltransferase, putative",0.5962140488916252
+PF3D7_0421600,erythrocyte membrane protein 1 (PfEMP1)-like pseudogene,0.5963688478655925
+PF3D7_0114700,rifin,0.5963868698697704
+PF3D7_1320000,golgi protein 1,0.5963925881157123
+PF3D7_1253600,"rifin, pseudogene",0.5964136616878775
+PF3D7_1421000,"DIX domain-containing protein, putative",0.5964899815210603
+PF3D7_1451300,"E3 SUMO-protein ligase NSE2, putative",0.5965579592470045
+PF3D7_1436200,basal complex protein BCP1,0.5966494089398577
+PF3D7_0710800,"protein transport protein USE1, putative",0.5966862963555943
+PF3D7_0830200,28S ribosomal RNA,0.5967390858972866
+PF3D7_1111900,"Josephin domain-containing protein, putative",0.5967752166699336
+PF3D7_0321000,"conserved protein, unknown function",0.5968382860089725
+PF3D7_1235400,"tetQ family GTPase, putative",0.5968670908828955
+PF3D7_API00800,tRNA Serine,0.5968729014779534
+PF3D7_1353700,"reactive oxygen species modulator 1, putative",0.5968912933615912
+PF3D7_1131600,"kelch domain-containing protein, putative",0.5969116385662072
+PF3D7_0400100,"erythrocyte membrane protein 1, PfEMP1",0.596929666165694
+PF3D7_1228700,"conserved Plasmodium protein, unknown function",0.5969640500064124
+PF3D7_0813100,"conserved Plasmodium protein, unknown function",0.5969849466604413
+PF3D7_0711900,"rifin, pseudogene",0.5969883750548224
+PF3D7_0220400,"DnaJ protein, putative, pseudogene",0.5971180177257845
+PF3D7_0909000,"conserved Plasmodium protein, unknown function",0.5972213905897431
+PF3D7_0102000,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.5972296871296643
+PF3D7_0607900,"conserved Plasmodium protein, unknown function",0.5973703769128471
+PF3D7_1141000,"conserved Plasmodium protein, unknown function",0.5973936822429369
+PF3D7_1311300,"ATP synthase subunit gamma, mitochondrial",0.5974538935342546
+PF3D7_0412700,"erythrocyte membrane protein 1, PfEMP1",0.5974740460377369
+PF3D7_0529800,"conserved Plasmodium protein, unknown function",0.5975271529006608
+PF3D7_0915800,"glycolipid transfer protein, putative",0.5975922824795611
+PF3D7_1455800,LCCL domain-containing protein,0.5975952424720716
+PF3D7_1448400,"ubiquitin-protein ligase, putative",0.5976128687295964
+PF3D7_1038300,"conserved Plasmodium protein, unknown function",0.5976574865769166
+PF3D7_1478400,"Plasmodium exported protein, unknown function, pseudogene",0.5977346578289775
+PF3D7_1240400,"erythrocyte membrane protein 1, PfEMP1",0.59773782443766
+PF3D7_1222800,"conserved Plasmodium protein, unknown function",0.5977432100334827
+PF3D7_1475400,cysteine repeat modular protein 4,0.5977530110673372
+PF3D7_0405600,"TMEM33 domain-containing protein, putative",0.597814281192698
+PF3D7_0906600,"zinc finger protein, putative",0.5978715137025227
+PF3D7_1349600,"spindle and kinetochore-associated protein 3, putative",0.5979202644118826
+PF3D7_1129900,"major facilitator superfamily-related transporter, putative",0.5979406012599062
+PF3D7_0613300,rhoptry protein ROP14,0.5981065793300552
+PF3D7_0205200,"MORN repeat protein, putative",0.5981201512807839
+PF3D7_0830800,surface-associated interspersed protein 8.2 (SURFIN 8.2),0.5981340999410006
+PF3D7_MIT03100,ribosomal RNA fragment RNA13,0.5982940637136119
+PF3D7_1118900,"conserved protein, unknown function",0.5983572845821463
+PF3D7_0408800,"conserved Plasmodium protein, unknown function",0.5984215530331649
+PF3D7_1401500,"esterase, putative",0.5984321735459525
+PF3D7_1442600,TRAP-like protein,0.598470487796105
+PF3D7_0211100,"conserved Plasmodium protein, unknown function",0.5984987625983723
+PF3D7_1254900,"Plasmodium exported protein, unknown function, fragment",0.5985575968317345
+PF3D7_0222100,Pfmc-2TM Maurer's cleft two transmembrane protein,0.5985793589401927
+PF3D7_1209600,porphobilinogen deaminase,0.5985863661849019
+PF3D7_0100500,"erythrocyte membrane protein 1 (PfEMP1), exon 1, pseudogene",0.5986294043219208
+PF3D7_1038600,"Plasmodium exported protein, unknown function",0.5986547668467164
+PF3D7_0832250,"Plasmodium exported protein, unknown function, pseudogene",0.5987433877576605
+PF3D7_1106900,"conserved Plasmodium protein, unknown function",0.5987837685938725
+PF3D7_0106600,"conserved Plasmodium protein, unknown function",0.5988291446087641
+PF3D7_1362900,"conserved Plasmodium protein, unknown function",0.5988426914969498
+PF3D7_1225000,"conserved Plasmodium protein, unknown function",0.5988486416410295
+PF3D7_0509200,leucine-rich repeat protein,0.5988589720439847
+PF3D7_0418000,"conserved Plasmodium protein, unknown function",0.5988655894046977
+PF3D7_1039800,exported protein family 3,0.5988883088475175
+PF3D7_0420900,"erythrocyte membrane protein 1, PfEMP1",0.5989143205654285
+PF3D7_1035300,glutamate-rich protein GLURP,0.5989430092389645
+PF3D7_1417600,"ookinete surface and oocyst capsule protein OSCP, putative",0.5989444628987074
+PF3D7_0718700,"conserved Plasmodium membrane protein, unknown function",0.5989457073967581
+PF3D7_0825100,"ankyrin-repeat protein, putative",0.5989782785831697
+PF3D7_1354700,"conserved Plasmodium protein, unknown function",0.5990088097408703
+PF3D7_0214000,T-complex protein 1 subunit theta,0.5990355351311512
+PF3D7_1453100,"dynactin subunit 4, putative",0.5990442343786306
+PF3D7_1121400,"WD repeat-containing protein, putative",0.5990563657252349
+PF3D7_API00700,tRNA Tyrosine,0.5990677104505452
+PF3D7_1316000,"glycogen synthase kinase-3 alpha, putative",0.5990918990096633
+PF3D7_1465600,"conserved Plasmodium protein, unknown function",0.5991053810845799
+PF3D7_0517800,apicortin,0.5991167539510005
+PF3D7_1203300,"TBCC domain-containing protein, putative",0.5991407676180576
+PF3D7_1463000,"mediator of RNA polymerase II transcription subunit 20, putative",0.599198046109814
+PF3D7_1330300,"DnaJ protein, putative",0.5992064294087526
+PF3D7_0729000,signal recognition particle subunit SRP9,0.5992148198467324
+PF3D7_0832300,"Plasmodium exported protein (PHISTa-like), unknown function",0.5992520850835328
+PF3D7_1121800,"peptidase M16, putative",0.5992593647029093
+PF3D7_0221300,"Plasmodium exported protein, unknown function, pseudogene",0.5992981191601033
+PF3D7_1423500,"conserved Plasmodium protein, unknown function",0.5993170851636243
+PF3D7_1041300,"erythrocyte membrane protein 1, PfEMP1",0.5993440178050982
+PF3D7_1311100,"meiosis-specific nuclear structural protein 1, putative",0.5994002775703655
+PF3D7_1301300,"Plasmodium exported protein (PHISTa-like), unknown function, pseudogene",0.5994102049055356
+PF3D7_1254100,stevor,0.5994237878135064
+PF3D7_0424700,"serine/threonine protein kinase, FIKK family",0.5994335769835276
+PF3D7_0308300,PhIL1-interacting candidate PIC4,0.5994467393426202
+PF3D7_1477700,"Plasmodium exported protein (PHISTa), unknown function",0.5995415341371785
+PF3D7_0703800,"conserved Plasmodium protein, unknown function",0.5995624108023946
+PF3D7_0309400,small nucleolar RNA Me18S-Um1356,0.5996069690312072
+PF3D7_1319000,"conserved Plasmodium protein, unknown function",0.5996616128962445
+PF3D7_1412700,"AAA family ATPase, putative",0.5996729668481093
+PF3D7_1370200,tRNA Glycine,0.5996753482809077
+PF3D7_1108800,"conserved Plasmodium protein, unknown function",0.5996892774928122
+PF3D7_1430800,PhIL1 interacting protein PIP3,0.5998673394335602
+PF3D7_1208400,"amino acid transporter, putative",0.5998765568236564
+PF3D7_0818100,C3H1-type zinc finger protein CZIF2,0.5999341639013164
+PF3D7_1108000,"IWS1-like protein, putative",0.5999440720432294
+PF3D7_1417000,inner membrane complex protein 1l,0.5999801843274399
+PF3D7_0917700,"GPN-loop GTPase, putative",0.600039630003986
+PF3D7_1219900,"ribulose-phosphate 3-epimerase, putative",0.6000942151423688
+PF3D7_0701600,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6000977579269925
+PF3D7_0711700,"erythrocyte membrane protein 1, PfEMP1",0.6001026739516394
+PF3D7_1457800,"conserved Plasmodium protein, unknown function",0.6001394926592662
+PF3D7_1401000,GBPH protein,0.6001672427275422
+PF3D7_0105000,non-coding RNA,0.600203711271897
+PF3D7_1221100,"conserved Plasmodium protein, unknown function",0.6002072879956468
+PF3D7_0510100,"KH domain-containing protein, putative",0.6002464704916778
+PF3D7_1439800,"vesicle-associated membrane protein, putative",0.6003484670301661
+PF3D7_1345400,"conserved Plasmodium protein, unknown function",0.6003606350309713
+PF3D7_1431100,PhIL1 interacting protein PIP2,0.6003802781366498
+PF3D7_0410200,tRNA Isoleucine,0.6006098640247004
+PF3D7_1120800,"conserved Plasmodium protein, unknown function",0.6006315031755115
+PF3D7_1372700,rifin,0.6007623996389805
+PF3D7_1325300,"conserved Plasmodium protein, unknown function",0.6009003667549523
+PF3D7_1004800,"ADP,ATP carrier protein 2",0.6009429533827685
+PF3D7_1426500,ABC transporter G family member 2,0.6009727019629764
+PF3D7_0718300,cysteine repeat modular protein 2,0.6010243205238066
+PF3D7_1467600,"conserved Plasmodium protein, unknown function",0.6010482453757868
+PF3D7_1468000,"WD repeat-containing protein, putative",0.6010711344263886
+PF3D7_1348700,"WD repeat-containing protein 16, putative",0.6010773473050336
+PF3D7_0203500,tRNA Glutamine,0.6011215691500152
+PF3D7_1443000,serine/threonine protein kinase,0.6011662398548302
+PF3D7_1353400,"Ran-binding protein, putative",0.6012008293048763
+PF3D7_0423300,"conserved Plasmodium protein, unknown function",0.6012217771843942
+PF3D7_0101300,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6012915032666988
+PF3D7_1227200,potassium channel K1,0.6013199635130391
+PF3D7_1323400,60S ribosomal protein L23,0.6013908629722955
+PF3D7_1365700,"SNARE associated Golgi protein, putative",0.6014031295789048
+PF3D7_0718000,"dynein heavy chain, putative",0.6014159798897784
+PF3D7_0829900,non-coding RNA,0.6014551301511536
+PF3D7_1130700,structural maintenance of chromosomes protein 1,0.6015356652560359
+PF3D7_0807300,ras-related protein Rab-18,0.6015375664883835
+PF3D7_1005500,"regulator of nonsense transcripts 1, putative",0.6015416986317886
+PF3D7_1027400,"DNA-directed RNA polymerase II subunit RPB7, putative",0.6015828265431322
+PF3D7_1352600,"protein kinase, putative",0.601633080002396
+PF3D7_0712900,"erythrocyte membrane protein 1, PfEMP1",0.6016456112253983
+PF3D7_0401300,rifin,0.6017039722374544
+PF3D7_1334900,"MSP7-like protein, fragment, pseudogene",0.6017584668154587
+PF3D7_0933800,"tubulin delta chain, putative",0.6018335451436962
+PF3D7_0706800,tRNA Threonine,0.601843913826431
+PF3D7_API02400,"probable protein, unknown function",0.6018645951263808
+PF3D7_1016700,"Plasmodium exported protein (PHISTc), unknown function",0.6018816092037528
+PF3D7_0103500,"conserved Plasmodium protein, unknown function",0.6019357896491104
+PF3D7_0830100,non-coding RNA,0.6019818402808897
+PF3D7_0308400,U4 spliceosomal RNA,0.6020090578294421
+PF3D7_1473300,"CKK domain-containing protein, putative",0.6020530086049806
+PF3D7_1402100,"pseudouridine synthase, putative",0.6020820905970038
+PF3D7_1348800,"E1-E2 ATPase, putative",0.6020955610650985
+PF3D7_0417700,"conserved Plasmodium protein, unknown function",0.6020984920810284
+PF3D7_0601600,"tetratricopeptide repeat protein, putative",0.6021285478548306
+PF3D7_1240200,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.6021338302939234
+PF3D7_0621350,"protein SYS1, putative",0.602202600520407
+PF3D7_1244300,ACEA small nucleolar RNA U3,0.6022314045129074
+PF3D7_1426300,"dynein intermediate chain, putative",0.6022367747354146
+PF3D7_MIT00900,large subunit ribosomal RNA fragment G,0.6023978699878358
+PF3D7_0421400,Plasmodium RNA of unknown function RUF6,0.6023995194682933
+PF3D7_1236500,"conserved Plasmodium protein, unknown function",0.6024111584053383
+PF3D7_0423100,"AP-4 complex subunit sigma, putative",0.602422038038178
+PF3D7_0619500,acyl-CoA synthetase,0.602453293208449
+PF3D7_0413200,rifin,0.6025329257465482
+PF3D7_1432300,"importin, putative",0.6025563787764363
+PF3D7_0312700,tRNA Isoleucine,0.6025711832417995
+PF3D7_0416700,"CDGSH iron-sulfur domain-containing protein, putative",0.6026412588376895
+PF3D7_0208900,6-cysteine protein P230p,0.6026881640882916
+PF3D7_1240100,early transcribed membrane protein 12,0.6026973814069891
+PF3D7_1428400,"WD and tetratricopeptide repeats protein 1, putative",0.6027265062631226
+PF3D7_0815800,"vacuolar protein sorting-associated protein 9, putative",0.6028969375342657
+PF3D7_1230200,"vacuolar transporter chaperone, putative, pseudogene",0.6029362654375044
+PF3D7_1303000,"ATP synthase-associated protein, putative",0.6029528404675754
+PF3D7_1464100,"conserved Plasmodium protein, unknown function",0.6029744151684701
+PF3D7_0609600,"conserved Plasmodium protein, unknown function",0.6030034707329338
+PF3D7_0617700,rifin,0.6030253434476889
+PF3D7_1371300,28S ribosomal RNA,0.6030328969985642
+PF3D7_1215500,"conserved Plasmodium protein, unknown function",0.6030534741237847
+PF3D7_0611500,"EF hand domain-containing protein, putative",0.603057439567408
+PF3D7_0807700,serine protease DegP,0.6030698720892057
+PF3D7_1406500,"WD repeat-containing protein 65, putative",0.6030973098997234
+PF3D7_1240600,"erythrocyte membrane protein 1, PfEMP1",0.6031329503218724
+PF3D7_0420000,"zinc finger protein, putative",0.6032098136624511
+PF3D7_0102200,ring-infected erythrocyte surface antigen,0.603219140947343
+PF3D7_0100100,"erythrocyte membrane protein 1, PfEMP1",0.6032997028961787
+PF3D7_1473700,"nucleoporin NUP116/NSP116, putative",0.6033229375472662
+PF3D7_1249600,leucine-rich repeat protein,0.6033277713588624
+PF3D7_0408400,"conserved protein, unknown function",0.6033315396671287
+PF3D7_0412400,"erythrocyte membrane protein 1, PfEMP1",0.603365035477936
+PF3D7_1131100,"serpentine receptor 1, putative",0.6034065659727942
+PF3D7_0726050,"conserved Plasmodium protein, unknown function",0.6034763537837298
+PF3D7_1217900,"PPPDE peptidase domain-containing protein, putative",0.6035078692376624
+PF3D7_0937700,rifin,0.6035401583713929
+PF3D7_1146900,"protein YIPF6, putative",0.6036177357062461
+PF3D7_0912600,"conserved Plasmodium protein, unknown function",0.6037415980225451
+PF3D7_0107300,"conserved Plasmodium protein, unknown function",0.6038741960273586
+PF3D7_1352300,"conserved Plasmodium protein, unknown function",0.6038993746690758
+PF3D7_0112700,28S ribosomal RNA,0.6040473342152641
+PF3D7_1306000,"conserved Plasmodium protein, unknown function",0.6041358317156678
+PF3D7_1423900,small nucleolar RNA snoR23,0.6041420598260017
+PF3D7_0726000,28S ribosomal RNA,0.6042293596384759
+PF3D7_1418000,"ubiquitin fusion degradation protein 1, putative",0.6042473088941248
+PF3D7_1203800,non-coding RNA,0.6042874630799452
+PF3D7_1421700,non-coding RNA,0.6042899932342982
+PF3D7_0528300,"conserved protein, unknown function",0.6042956088412135
+PF3D7_1203700,nucleosome assembly protein,0.6043256848074323
+PF3D7_0211000,non-coding RNA,0.6043536609459722
+PF3D7_1141800,"EELM2 domain-containing protein, putative",0.6043766975576137
+PF3D7_1318900,"conserved Plasmodium protein, unknown function",0.6043823616275501
+PF3D7_0305500,"protein dopey homolog, putative",0.6044392483567049
+PF3D7_0829700,non-coding RNA,0.6045000718834782
+PF3D7_1313900,"ankyrin-repeat protein, putative",0.604586578726881
+PF3D7_0601700,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.6046098315473115
+PF3D7_API04500,hypothetical protein,0.6046563130260916
+PF3D7_0712000,"erythrocyte membrane protein 1, PfEMP1",0.6047184371241417
+PF3D7_MIT03000,ribosomal RNA fragment RNA18,0.6047560412999627
+PF3D7_0425250,"Plasmodium exported protein (PHIST), unknown function, pseudogene",0.6047620144264474
+PF3D7_1113800,"conserved Plasmodium membrane protein, unknown function",0.6047626991712906
+PF3D7_0822700,"thrombospondin-related protein 1, putative",0.6047653522976838
+PF3D7_0712400,"erythrocyte membrane protein 1, PfEMP1",0.6047691202794186
+PF3D7_0702800,tRNA Tyrosine,0.6047779479155174
+PF3D7_0608300,"heptatricopeptide repeat-containing protein, putative",0.6047952574124625
+PF3D7_0624800,"conserved Plasmodium protein, unknown function",0.6048874223329778
+PF3D7_1104500,"WD repeat-containing protein, putative",0.6048956770756605
+PF3D7_1436900,"histidine triad protein, putative",0.6049239895414766
+PF3D7_1245700,non-coding RNA,0.6049520804685061
+PF3D7_1105900,"conserved Plasmodium membrane protein, unknown function",0.6049748782666042
+PF3D7_1478500,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.6050695334376611
+PF3D7_0413400,"erythrocyte membrane protein 1 (PfEMP1), exon 1, pseudogene",0.6051336362015974
+PF3D7_1421150,C/D small nucleolar RNA,0.605138146763881
+PF3D7_0308100,"zinc finger protein, putative",0.6052840611212774
+PF3D7_0732700,rifin,0.6053294210169107
+PF3D7_1137800,"sporozoite surface protein essential for liver stage development, putative",0.605339974564741
+PF3D7_0522700,iron-sulfur cluster assembly protein SufA,0.6053575286416188
+PF3D7_1103200,tRNA Glycine,0.6054207214907104
+PF3D7_1454000,"RNA-binding protein, putative",0.6054220948988293
+PF3D7_0935600,gametocytogenesis-implicated protein,0.6054430238114413
+PF3D7_0620800,tRNA Alanine,0.6054861086695644
+PF3D7_1120600,"DDRGK domain-containing protein, putative",0.6055567762890519
+PF3D7_0421100,"erythrocyte membrane protein 1, PfEMP1",0.6056331026000735
+PF3D7_MIT03700,small subunit ribosomal RNA fragment F,0.6056799627818453
+PF3D7_0321500,"peptidase, putative",0.6057089091622369
+PF3D7_0405900,apical sushi protein,0.6057377483614789
+PF3D7_1219300,"erythrocyte membrane protein 1, PfEMP1",0.6057661421567568
+PF3D7_1417200,"CCR4-NOT transcription complex subunit NOT1, putative",0.6057744063564224
+PF3D7_1341000,tRNA Arginine,0.6057745483112882
+PF3D7_1431500,mitogen-activated protein kinase 1,0.6058351827470717
+PF3D7_1340400,"ROVER protein, putative",0.6058423007006393
+PF3D7_1131900,"conserved Plasmodium protein, unknown function",0.6058947562997141
+PF3D7_1102300,"Plasmodium exported protein, unknown function",0.60590706221685
+PF3D7_0216000,"SNF2-like chromatin remodeling ATPase, putative",0.6059919614055312
+PF3D7_1109000,small nucleolar RNA snoR07,0.6059974681554527
+PF3D7_1127700,"conserved Plasmodium protein, unknown function",0.6060232726491858
+PF3D7_0833000,rifin,0.6060985290783971
+PF3D7_1459500,"conserved Plasmodium protein, unknown function",0.6061395638711841
+PF3D7_0416900,"conserved Plasmodium protein, unknown function",0.6061402980689915
+PF3D7_0209000,6-cysteine protein P230,0.6062298815247708
+PF3D7_1370000,tRNA Arginine,0.6062713398379221
+PF3D7_1242100,"conserved Plasmodium protein, unknown function",0.6063078456674046
+PF3D7_1033800,plasmepsin VII,0.6063145906006626
+PF3D7_1476100,early transcribed membrane protein 14.2,0.6063354072039627
+PF3D7_0417900,"conserved Plasmodium protein, unknown function",0.6063587557535923
+PF3D7_1029400,cell division control protein CDC50C,0.6064462309926827
+PF3D7_0320900,histone H2A.Z,0.6065037118133926
+PF3D7_1372000,"Plasmodium exported protein (PHISTa), unknown function",0.6065362993141218
+PF3D7_1319900,"conserved Plasmodium protein, unknown function",0.6065548386627164
+PF3D7_0831900,"Plasmodium exported protein (PHIST), unknown function, pseudogene",0.6065630912383081
+PF3D7_0732600,"Plasmodium exported protein, unknown function, fragment",0.6066277062273998
+PF3D7_1330000,"PITH domain-containing protein, putative",0.6066661789948107
+PF3D7_1148500,non-coding RNA,0.6066692033480993
+PF3D7_1370900,non-coding RNA,0.6067107174706408
+PF3D7_0907300,"prefoldin-like protein, putative",0.6067495551517215
+PF3D7_0114900,"Plasmodium exported protein, unknown function, pseudogene",0.6067784706807272
+PF3D7_1313200,"methionyl-tRNA formyltransferase, putative",0.6068862365222725
+PF3D7_0723200,"conserved Plasmodium protein, unknown function",0.6068920312760971
+PF3D7_API03000,"probable protein, unknown function",0.6069427748609649
+PF3D7_1252400,"reticulocyte binding protein homologue 3, pseudogene",0.6069480233178209
+PF3D7_0921500,"conserved Plasmodium protein, unknown function",0.6069571072378867
+PF3D7_0712200,"rifin, pseudogene",0.6070613087139192
+PF3D7_1005400,"conserved Plasmodium protein, unknown function",0.6071336300362241
+PF3D7_1458800,"DNA-directed RNA polymerase III subunit RPC5, putative",0.6072053146173775
+PF3D7_1131200,"conserved Plasmodium protein, unknown function",0.6072218364534948
+PF3D7_0209500,"conserved Plasmodium protein, unknown function",0.6073583869705275
+PF3D7_0728500,"EF hand domain-containing protein, putative",0.6074249747359567
+PF3D7_1253500,"Plasmodium exported protein, unknown function",0.6074415313013046
+PF3D7_0500300,"rifin, pseudogene",0.6074503352428501
+PF3D7_0919300,"thioredoxin-like protein 1, putative",0.6074645168219441
+PF3D7_0215000,acyl-CoA synthetase,0.6074948909201168
+PF3D7_MIT01400,cytochrome c oxidase subunit 3,0.6075251011699789
+PF3D7_0632800,"erythrocyte membrane protein 1, PfEMP1",0.6075683819163524
+PF3D7_0808900,rifin,0.6075776611892455
+PF3D7_1118600,histone acetyltransferase MYST,0.6075853636759423
+PF3D7_1367800,"secreted ookinete protein, putative",0.6076041221237208
+PF3D7_1327100,"conserved protein, unknown function",0.6076318771751964
+PF3D7_0712500,"rifin, pseudogene",0.6076852644697363
+PF3D7_1424800,non-coding RNA,0.6077283387721827
+PF3D7_0631400,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6077652678778007
+PF3D7_1237300,"conserved Plasmodium protein, unknown function",0.6078371351181603
+PF3D7_1344400,"conserved Plasmodium protein, unknown function",0.6078548482323628
+PF3D7_1130300,small nucleolar RNA snoR13,0.6080741354865413
+PF3D7_0632400,rifin,0.6081158565969638
+PF3D7_0626840,small nucleolar RNA snoR35,0.6081208218249865
+PF3D7_1243700,"fused toes protein homolog FTS, putative",0.6081364662485473
+PF3D7_0714100,"MAATS1 domain-containing protein, putative",0.6081924909853134
+PF3D7_0732900,rifin,0.6083454618262609
+PF3D7_1479800,rifin,0.6083486400067222
+PF3D7_0106800,ras-related protein Rab-5C,0.6083585505681878
+PF3D7_1136200,asparagine-rich merozoite protein ARMA,0.6083663932299485
+PF3D7_0425900,rifin,0.6084125646351799
+PF3D7_0936800,"Plasmodium exported protein (PHISTc), unknown function",0.6084587282156205
+PF3D7_1463900,"rhoptry neck protein 11, putative",0.6084729066304656
+PF3D7_0726800,"dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit OST2, putative",0.6086008404872286
+PF3D7_1449500,"AP2 domain transcription factor AP2-O5, putative",0.6086761873118054
+PF3D7_0605200,"acylphosphatase, putative",0.6087347053267979
+PF3D7_0804100,small nucleolar RNA snoR06,0.6087906401070831
+PF3D7_0202300,"Plasmodium exported protein (hyp11), unknown function",0.6088074633688696
+PF3D7_1007300,"RING zinc finger protein, putative",0.6088159499178105
+PF3D7_0300500,rifin,0.6088503245808581
+PF3D7_1338500,"conserved Plasmodium protein, unknown function",0.608851172963204
+PF3D7_0400400,"erythrocyte membrane protein 1, PfEMP1",0.6088569382631188
+PF3D7_0221500,"Pfmc-2TM Maurer's cleft two transmembrane protein, pseudogene",0.608929917656295
+PF3D7_0826000,"conserved Plasmodium protein, unknown function",0.6089329962626749
+PF3D7_0903700,alpha tubulin 1,0.6089489751448265
+PF3D7_0923700,"CFAP298 domain-containing protein, putative",0.609064207360498
+PF3D7_MIT04100,large subunit ribosomal RNA fragment D,0.6090726167081665
+PF3D7_0826800,small nucleolar RNA snoR05,0.6091934613970966
+PF3D7_1456800,"V-type H(+)-translocating pyrophosphatase, putative",0.6092357791253352
+PF3D7_1126700,"conserved Plasmodium protein, unknown function",0.6093736382859805
+PF3D7_0200100,"erythrocyte membrane protein 1, PfEMP1",0.6094252627638213
+PF3D7_1119900,"protein transport protein SEC16, putative",0.6094705967930264
+PF3D7_0728000,eukaryotic translation initiation factor 2 subunit alpha,0.6094855893449986
+PF3D7_0706900,tRNA Histidine,0.609520892849196
+PF3D7_0520700,"CDC73 domain-containing protein, putative",0.6095712703697865
+PF3D7_1245600,"kinesin-15, putative",0.6096407922401142
+PF3D7_1401700,"conserved Plasmodium protein, unknown function",0.6096780063206068
+PF3D7_0210900,"conserved Plasmodium protein, unknown function",0.6097322745666139
+PF3D7_1468700,eukaryotic initiation factor 4A,0.6098287955776651
+PF3D7_1400200,rifin,0.609839399065775
+PF3D7_0425600,"rifin, pseudogene",0.609918614087661
+PF3D7_1438800,male development protein MD1,0.609987497162088
+PF3D7_0829500,"conserved Plasmodium protein, unknown function",0.6099902123483402
+PF3D7_1474400,"conserved Plasmodium protein, unknown function",0.6100637175048713
+PF3D7_0630000,CPW-WPC family protein,0.6101049043340456
+PF3D7_1413100,"conserved Plasmodium protein, unknown function",0.610203442978049
+PF3D7_0600500,rifin,0.6102904882004534
+PF3D7_1253700,rifin,0.6103133217703357
+PF3D7_1012900,autophagy-related protein 18,0.6104110915407256
+PF3D7_0112800,"Plasmodium exported protein (hyp11), unknown function",0.610585479221447
+PF3D7_0502400,merozoite surface protein 8,0.6106019820082108
+PF3D7_0605500,"cyclin dependent kinase binding protein, putative",0.6106060826932346
+PF3D7_1317700,"conserved Plasmodium protein, unknown function",0.610657975419525
+PF3D7_1420300,DNL-type zinc finger protein,0.610700479769795
+PF3D7_1479400,rifin,0.6107923520712033
+PF3D7_1117500,tyrosine--tRNA ligase,0.6108477055608046
+PF3D7_1469900,protein MGET,0.6108805023262138
+PF3D7_0115600,rifin,0.6109333033452037
+PF3D7_0417600,"conserved Plasmodium protein, unknown function",0.6110135141990597
+PF3D7_0631100,"Plasmodium exported protein (PHISTb), unknown function",0.6110379811247295
+PF3D7_1370800,non-coding RNA,0.6110483745517521
+PF3D7_0308700,"conserved protein, unknown function",0.6110791985161704
+PF3D7_0828000,rhomboid protease ROM3,0.6110863668579682
+PF3D7_0610700,"conserved Plasmodium protein, unknown function",0.6111807011579614
+PF3D7_1466000,"conserved protein, unknown function",0.6111878837338842
+PF3D7_1000700,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.6112890385920938
+PF3D7_1326900,"conserved Plasmodium membrane protein, unknown function",0.6113445609915489
+PF3D7_0533100,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.6113730249678135
+PF3D7_0800300,"erythrocyte membrane protein 1, PfEMP1",0.6114165525638905
+PF3D7_0722800,"conserved protein, unknown function",0.6114255373223293
+PF3D7_MIT04200,ribosomal RNA fragment RNA8,0.611462436435163
+PF3D7_0403000,tRNA Asparagine,0.6115105847737317
+PF3D7_1135900,"3-oxo-5-alpha-steroid 4-dehydrogenase, putative",0.6115246025798324
+PF3D7_0901000,rifin,0.6115301189247269
+PF3D7_0200900,"stevor, pseudogene",0.6115311769632332
+PF3D7_1207300,"LIMP protein, putative",0.6115457152167285
+PF3D7_0702600,"chitinase, fragment",0.611546924709079
+PF3D7_1253300,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.6115859087788517
+PF3D7_1137000,U2 spliceosomal RNA,0.6116854239597442
+PF3D7_0300100,"erythrocyte membrane protein 1, PfEMP1",0.6117096335382012
+PF3D7_1250100,osmiophilic body protein G377,0.6117329692892334
+PF3D7_0622000,"conserved Plasmodium protein, unknown function",0.6117418966583827
+PF3D7_1421300,"conserved Plasmodium protein, unknown function",0.6118673204370871
+PF3D7_1445000,"prolyl hydroxylase-like protein, putative",0.6119019389996747
+PF3D7_1131700,"conserved Plasmodium protein, unknown function",0.6119099685650842
+PF3D7_MIT02800,ribosomal RNA fragment RNA6,0.6119341337914904
+PF3D7_0113800,"DBL containing protein, unknown function",0.6119860253989523
+PF3D7_1425500,"conserved Plasmodium protein, unknown function",0.6120214491104555
+PF3D7_1406800,glideosome associated protein with multiple membrane spans 3,0.61203421804289
+PF3D7_0802400,"cyclin-like protein, putative",0.6120546416330171
+PF3D7_1407500,"multifunctional methyltransferase subunit TRM112, putative",0.61211089441608
+PF3D7_0517200,"WD repeat-containing protein, putative",0.6122201638677756
+PF3D7_1300900,stevor,0.6122378559108983
+PF3D7_1254000,rifin,0.6122617601724087
+PF3D7_1104200,chromatin remodeling protein,0.6123641388954317
+PF3D7_0211300,"ubiquinol-cytochrome-c reductase complex assembly factor 1, putative",0.6124511320172131
+PF3D7_1469800,"mediator of RNA polymerase II transcription subunit 22, putative",0.6124559364474914
+PF3D7_1364700,"WD repeat-containing protein, putative, pseudogene",0.6126091900750938
+PF3D7_0513600,"deoxyribodipyrimidine photo-lyase, putative",0.612652690996653
+PF3D7_0309300,"N2227-like protein, putative",0.6126529540515511
+PF3D7_1471200,"inorganic anion exchanger, inorganic anion antiporter",0.6127575079977852
+PF3D7_1150100,"rifin, pseudogene",0.6127637258574488
+PF3D7_1126300,"DnaJ protein, putative",0.6128183592260404
+PF3D7_MIT01000,small subunit ribosomal RNA fragment B,0.6128660478725076
+PF3D7_1424700,small nucleolar RNA snoR29,0.6130041151889412
+PF3D7_0600900,"rifin, pseudogene",0.6130653581985606
+PF3D7_1109800,small nucleolar RNA snoR12,0.6130766994306548
+PF3D7_1404400,"ribosomal protein L16, mitochondrial, putative",0.6131110379254807
+PF3D7_1373500,"erythrocyte membrane protein 1, PfEMP1",0.6131705222782323
+PF3D7_1407700,"conserved protein, unknown function",0.6131939795852142
+PF3D7_1450600,"S-adenosylmethionine-dependent methyltransferase, putative",0.6132151200590747
+PF3D7_0937200,"lysophospholipase, putative",0.6132405590957724
+PF3D7_1346000,"dynactin subunit 2, putative",0.6132624529755748
+PF3D7_0525100,acyl-CoA synthetase,0.6133822669120417
+PF3D7_1133100,"conserved Plasmodium protein, unknown function",0.6134026968857971
+PF3D7_1352900,"Plasmodium exported protein, unknown function",0.613409528574788
+PF3D7_1409400,"conserved protein, unknown function",0.6134716728099383
+PF3D7_1365600,DNA topoisomerase 6 subunit B,0.6135305185615881
+PF3D7_MIT01600,small subunit ribosomal RNA fragment E,0.6135352851515501
+PF3D7_1346800,6-cysteine protein P47,0.6135775067493529
+PF3D7_1453500,"NAD(P) transhydrogenase, putative",0.6136539850057123
+PF3D7_0207900,serine repeat antigen 2,0.6137614144794622
+PF3D7_1107400,DNA repair protein RAD51,0.6137952471037045
+PF3D7_0726300,"DNA mismatch repair protein PMS1, putative",0.6137959578648579
+PF3D7_0211900,"pseudouridine synthase, putative",0.6138361163926674
+PF3D7_0413500,phosphoglucomutase-2,0.613851755464325
+PF3D7_1240700,"rifin, pseudogene",0.6139230845450873
+PF3D7_0533000,"rifin, pseudogene",0.6139862562294731
+PF3D7_0529100,"thioredoxin-like protein, putative",0.6139901599715273
+PF3D7_1139600,"conserved Plasmodium protein, unknown function",0.6140021089868788
+PF3D7_0532800,"stevor, pseudogene",0.61405157924409
+PF3D7_1457000,signal peptide peptidase,0.614101004308416
+PF3D7_0413300,rifin,0.6141151816010604
+PF3D7_API02500,apicoplast ribosomal protein L36,0.6141260790642549
+PF3D7_1200900,"Plasmodium exported protein (PHISTc), unknown function",0.6141840987229171
+PF3D7_0222200,exported protein family 3,0.614215693874918
+PF3D7_0702100,"Plasmodium exported protein (PHISTb), unknown function, pseudogene",0.6142157660281284
+PF3D7_1212200,"conserved protein, unknown function",0.6142625269625537
+PF3D7_0618900,phosphatidylinositol N-acetylglucosaminyltransferase subunit GPI1,0.6142847131945874
+PF3D7_1100200,"erythrocyte membrane protein 1, PfEMP1",0.6143016296883322
+PF3D7_1219200,"rifin, pseudogene",0.6143621596618992
+PF3D7_0803900,C/D small nucleolar RNA,0.6143654193266195
+PF3D7_0307700,"apicomplexan kinetochore protein 10, putative",0.6144248561872614
+PF3D7_0503100,"4-diphosphocytidyl-2-C-methyl-D-erythritol kinase, putative",0.6144604093233365
+PF3D7_0931600,"conserved protein, unknown function",0.6145735014937898
+PF3D7_0200600,rifin,0.614605906817713
+PF3D7_1249700,"conserved Plasmodium protein, unknown function",0.6146137626502373
+PF3D7_1016800,"Plasmodium exported protein (PHISTc), unknown function",0.6146318136606587
+PF3D7_0810900,"conserved Plasmodium protein, unknown function",0.6147280125928913
+PF3D7_0313800,"conserved Plasmodium protein, unknown function",0.6147489076182099
+PF3D7_MIT01700,ribosomal RNA fragment RNA2,0.6147650697836771
+PF3D7_1402600,small nucleolar RNA snoR22,0.6149028125300038
+PF3D7_1301900,"Plasmodium exported protein, unknown function",0.6150051915242057
+PF3D7_1239400,"conserved protein, unknown function",0.615062089551014
+PF3D7_1254400,rifin,0.6151767657693719
+PF3D7_0113100,surface-associated interspersed protein 1.1 (SURFIN 1.1),0.6151918369162875
+PF3D7_0415800,PhIL1-interacting candidate PIC3,0.6152057046979251
+PF3D7_1333100,"conserved Plasmodium protein, unknown function",0.6152057270149532
+PF3D7_0525300,"conserved protein, unknown function",0.6152157700708936
+PF3D7_1463100,"conserved Plasmodium protein, unknown function, pseudogene",0.6152192077675629
+PF3D7_1369800,tRNA Arginine,0.6152273100625054
+PF3D7_0912400,"alkaline phosphatase, putative",0.6152658156324475
+PF3D7_0401700,"Plasmodium exported protein, unknown function, pseudogene",0.6152981632288917
+PF3D7_1252500,"Plasmodium exported protein, unknown function",0.6153658160676151
+PF3D7_0202200,EMP1-trafficking protein,0.615421155067672
+PF3D7_1100700,"stevor, pseudogene",0.6154343466893095
+PF3D7_1109300,small nucleolar RNA snR61/Z1/Z11,0.6154381786289288
+PF3D7_0301300,epoxide hydrolase 1,0.6154527978152268
+PF3D7_0112300,18S ribosomal RNA,0.6155474535352089
+PF3D7_0502500,"conserved Plasmodium protein, unknown function",0.6155591525574304
+PF3D7_1213500,"integral membrane protein GPR180, putative",0.615620251637069
+PF3D7_0221800,hypothetical protein,0.6156797789864431
+PF3D7_1421500,"mitochondrial import inner membrane translocase subunit TIM8, putative",0.6156797904559803
+PF3D7_0100300,"erythrocyte membrane protein 1, PfEMP1",0.6157742128177471
+PF3D7_1306600,"V-type proton ATPase subunit H, putative",0.6157847414990103
+PF3D7_0700700,"stevor, pseudogene",0.6157966465371865
+PF3D7_1216600,cell traversal protein for ookinetes and sporozoites,0.6159261246737069
+PF3D7_0303900,"phosphatidylethanolamine-binding protein, putative",0.6160074459582607
+PF3D7_1340100,"exosome complex component RRP42, putative",0.6160510614598441
+PF3D7_0501700,"anaphase-promoting complex subunit 3, putative",0.6161909184749017
+PF3D7_0409800,"zinc finger protein, putative",0.6162793142405261
+PF3D7_0324600,stevor,0.6163438682678622
+PF3D7_0531500,non-coding RNA,0.6163488838940211
+PF3D7_0817500,histidine triad nucleotide-binding protein 1,0.6163597479927972
+PF3D7_1039600,"exported protein family 1, pseudogene",0.616373151526587
+PF3D7_0300700,rifin,0.6164098757223763
+PF3D7_0501500,rhoptry-associated protein 3,0.616412324492543
+PF3D7_1251000,"HSP20-like chaperone, putative",0.6164312402444656
+PF3D7_1429200,"AP2 domain transcription factor AP2-O3, putative",0.6164450821517429
+PF3D7_1109600,small nucleolar RNA SNORD127,0.6164546575992441
+PF3D7_MIT03600,small subunit ribosomal RNA fragment D,0.6166378136205456
+PF3D7_0111700,"conserved protein, unknown function",0.616765719355891
+PF3D7_0617800,histone H2A,0.6167813247497347
+PF3D7_0731800,"alpha/beta hydrolase, putative",0.6168402006914916
+PF3D7_1355400,tRNA Threonine,0.6168684388102954
+PF3D7_0809250,respiratory chain complex 4 associated protein 5,0.6168899331597395
+PF3D7_1323600,"conserved protein, unknown function",0.6169908684715293
+PF3D7_0514400,tRNA Phenylalanine,0.6170240632995048
+PF3D7_1138900,non-coding RNA,0.6170257782781944
+PF3D7_1331900,small nucleolar RNA snoR18,0.617096231303973
+PF3D7_1040300,rifin,0.617168601977967
+PF3D7_0732500,rifin,0.6171954420294283
+PF3D7_0309700,"SECIS-binding protein 2, putative",0.6172675342396948
+PF3D7_0702000,"Plasmodium exported protein (hyp12), unknown function",0.6172685548210205
+PF3D7_1037800,"WD repeat-containing protein, putative",0.6173111511573468
+PF3D7_1429800,"coatomer subunit beta, putative",0.617317451442302
+PF3D7_1305800,"conserved Plasmodium protein, unknown function",0.6173441875384993
+PF3D7_0811300,CCR4-associated factor 1,0.6173754785900576
+PF3D7_0812300,"sporozoite surface protein 3, putative",0.6173815059614415
+PF3D7_0600200,"erythrocyte membrane protein 1, PfEMP1",0.6173868800315827
+PF3D7_0612300,"transmembrane protein 234, putative",0.6173890907116003
+PF3D7_0115400,stevor,0.6174605402067302
+PF3D7_0604200,"ribosomal protein L41, mitochondrial, putative",0.6175035961047846
+PF3D7_0623500,superoxide dismutase [Fe],0.6175788106892577
+PF3D7_0708600,"inner membrane complex protein 1d, putative",0.6176428716605392
+PF3D7_1036400,liver stage antigen 1,0.6176854703522313
+PF3D7_1446100,"conserved Plasmodium protein, unknown function",0.6177727570344805
+PF3D7_0324900,"erythrocyte membrane protein 1, PfEMP1",0.6177807507749423
+PF3D7_0503300,serine/arginine-rich splicing factor 12,0.617863734677811
+PF3D7_1474600,"vacuole membrane protein 1, putative",0.6178736945321344
+PF3D7_1147200,"tubulin--tyrosine ligase, putative",0.6178798131598434
+PF3D7_0217500,calcium-dependent protein kinase 1,0.6179374964758876
+PF3D7_0301100,"Plasmodium exported protein (hyp13), unknown function",0.6179457105822419
+PF3D7_1408200,AP2 domain transcription factor AP2-G2,0.6179654713281812
+PF3D7_1355200,"RAP protein, putative",0.6179660645183999
+PF3D7_0401500,"stevor, pseudogene",0.6179993691993597
+PF3D7_1003900,"dynein attachment factor-domain containing protein, putative",0.6180370392593735
+PF3D7_1116200,pyridoxine biosynthesis protein PDX2,0.6180861941986714
+PF3D7_0730200,"AP-4 complex subunit beta, putative",0.6181001616398991
+PF3D7_0423800,cysteine-rich protective antigen,0.6181313151607748
+PF3D7_1300200,rifin,0.6181623475697225
+PF3D7_1426400,"MORN repeat protein, putative",0.6181804397865523
+PF3D7_1304200,"CorA-like Mg2+ transporter protein, putative",0.6181889506203174
+PF3D7_1210800,small nucleolar RNA snoR14,0.6182547054057259
+PF3D7_1214000,"conserved protein, unknown function",0.6182778964226602
+PF3D7_1300300,"erythrocyte membrane protein 1, PfEMP1",0.6183357992277108
+PF3D7_0304100,inner membrane complex protein 1e,0.6183382412512684
+PF3D7_0924600,"conserved Plasmodium protein, unknown function",0.6183395733161424
+PF3D7_1007500,"conserved Plasmodium protein, unknown function",0.6183827105353497
+PF3D7_1438300,tRNA Methionine,0.6184065418329932
+PF3D7_1433400,"PHD finger protein PHD2, putative",0.6184186806292383
+PF3D7_0937600,"erythrocyte membrane protein 1, PfEMP1",0.6184716294187709
+PF3D7_0513700,"secreted ookinete protein, putative",0.6184886571064817
+PF3D7_MIT03300,ribosomal RNA fragment RNA7,0.6185384341825272
+PF3D7_1316300,"conserved Plasmodium protein, unknown function",0.6186405791551477
+PF3D7_1461700,"conserved Plasmodium protein, unknown function",0.6186487997591696
+PF3D7_1332100,"conserved protein, unknown function",0.6186754004016771
+PF3D7_0425050,"Plasmodium exported protein, unknown function, pseudogene",0.6186859789612079
+PF3D7_1461800,"conserved Plasmodium protein, unknown function",0.6186975006788671
+PF3D7_1233400,"conserved Plasmodium membrane protein, unknown function",0.6187261090953878
+PF3D7_0425400,"Plasmodium exported protein (PHISTa), unknown function",0.6187840053060224
+PF3D7_1100500,rifin,0.6188216565174401
+PF3D7_1114300,non-coding RNA,0.6188339683457716
+PF3D7_0401200,rifin,0.6188839712932015
+PF3D7_0201300,stevor,0.6188943252415363
+PF3D7_1341400,small nucleolar RNA snoR20,0.618973588833915
+PF3D7_1235200,V-type K+-independent H+-translocating inorganic pyrophosphatase,0.619057493837665
+PF3D7_1404200,"conserved Plasmodium protein, unknown function",0.6190740756635246
+PF3D7_1018100,"conserved Plasmodium protein, unknown function",0.6192027895449198
+PF3D7_1478300,"Plasmodium exported protein, unknown function, pseudogene",0.6192460587066988
+PF3D7_1103900,"RIIa domain-containing protein, putative",0.6192624011672936
+PF3D7_1444000,"conserved Plasmodium protein, unknown function",0.6192775773144982
+PF3D7_1480100,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.6192849662835985
+PF3D7_0800500,rifin,0.6194113149324312
+PF3D7_1460600,inner membrane complex sub-compartment protein 3,0.6194180420541251
+PF3D7_1358200,"conserved Plasmodium protein, unknown function",0.6194676834184842
+PF3D7_0801300,von Willebrand factor A domain-related protein,0.6194770472625923
+PF3D7_0713200,exported protein family 1,0.6195475773381814
+PF3D7_1455400,hemolysin III,0.6195489807983002
+PF3D7_0930200,leucine-rich repeat protein,0.6195882192623007
+PF3D7_1443200,"heptatricopeptide repeat-containing protein, putative",0.6196196154849384
+PF3D7_1477200,"Plasmodium exported protein (hyp15), unknown function",0.6196515321986649
+PF3D7_1373400,rifin,0.6197673659716885
+PF3D7_0917600,"pre-mRNA-splicing factor ATP-dependent RNA helicase PRP43, putative",0.6198539755883903
+PF3D7_1327900,"conserved Plasmodium protein, unknown function",0.6198578630111601
+PF3D7_1109700,small nucleolar RNA snoR11,0.6198848627448995
+PF3D7_0728200,"actin-like protein, putative",0.6199731949448372
+PF3D7_1367900,"conserved Plasmodium protein, unknown function",0.6201079360123983
+PF3D7_0830500,"sporozoite and liver stage tryptophan-rich protein, putative",0.6201673551381304
+PF3D7_1010400,"MORN repeat protein, putative",0.6202248605677245
+PF3D7_0814700,"conserved Plasmodium protein, unknown function",0.6202789555758628
+PF3D7_1370500,non-coding RNA,0.620282416022694
+PF3D7_1102200,erythrocyte cytoskeleton-interacting J protein,0.6202982085734889
+PF3D7_0205000,"conserved Plasmodium protein, unknown function",0.6203142605920619
+PF3D7_1354600,"60S ribosomal protein L7, putative",0.6203153962202718
+PF3D7_1403200,"EGF domain-containing protein, putative",0.6203327849213813
+PF3D7_1003200,"ribosome-binding factor A, putative",0.6203354129377284
+PF3D7_0900300,rifin,0.6203467646739717
+PF3D7_1253900,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",0.6203857787047385
+PF3D7_0100700,"Plasmodium exported protein, unknown function, fragment",0.6204111180899301
+PF3D7_1430900,"cytochrome c oxidase subunit 2B, putative",0.6204771809986206
+PF3D7_0200200,rifin,0.6205204313310776
+PF3D7_0800900,"Plasmodium exported protein (hyp7), unknown function, pseudogene",0.6206464246593725
+PF3D7_0223200,rifin,0.6206533375778132
+PF3D7_0421500,"rifin, pseudogene",0.6207053102861808
+PF3D7_1304800,small nucleolar RNA snoR16,0.6207148171334331
+PF3D7_0100400,rifin,0.6207170961785183
+PF3D7_0625100,"sphingomyelin synthase 2, putative",0.6207882193682799
+PF3D7_1336500,small nucleolar RNA snoR19,0.6208247266332896
+PF3D7_1136900,subtilisin-like protease 2,0.6208634815580644
+PF3D7_0324100,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6209223034581227
+PF3D7_0222600,rifin,0.6209380344231523
+PF3D7_1479600,rifin,0.6209833549335634
+PF3D7_0631800,rifin,0.621005387219573
+PF3D7_1451800,sortilin,0.6210266713076137
+PF3D7_0701100,rifin,0.6210769611308947
+PF3D7_1243300,"conserved Plasmodium protein, unknown function",0.6211330028149862
+PF3D7_0712800,"erythrocyte membrane protein 1, PfEMP1",0.6211871846111287
+PF3D7_1125400,"mitochondrial import inner membrane translocase subunit TIM44, putative",0.6212597297775228
+PF3D7_0527700,tRNA Glutamic acid,0.6212876636109649
+PF3D7_1122100,"GPI transamidase component GPI16, putative",0.6213558390720019
+PF3D7_0623700,"ATP-dependent RNA helicase SUV3, putative",0.6214183043493617
+PF3D7_0217400,"conserved protein, unknown function",0.6214233067361324
+PF3D7_0315200,circumsporozoite- and TRAP-related protein,0.6215204198268227
+PF3D7_0833500,"erythrocyte membrane protein 1, PfEMP1",0.6215483896600565
+PF3D7_0313300,"YGGT family protein, putative",0.6215701332900195
+PF3D7_1212400,"tetratricopeptide repeat protein, putative",0.6215909375215127
+PF3D7_1370100,tRNA Cysteine,0.6216529247859093
+PF3D7_0723100,"protein CPH1, putative",0.6217166666890103
+PF3D7_1369100,"conserved Plasmodium protein, unknown function",0.6219210084558809
+PF3D7_1125800,"kelch domain-containing protein, putative",0.6219383834730436
+PF3D7_1458100,"protein PET117, putative",0.62194890030698
+PF3D7_0715100,"C-Myc-binding protein, putative",0.6219622940691661
+PF3D7_0923900,"polyadenylate-binding protein 2, putative",0.6219631577495043
+PF3D7_1010000,"ribosomal protein L43, mitochondrial, putative",0.6220847849634312
+PF3D7_0512600,ras-related protein Rab-1B,0.6220893608603189
+PF3D7_1335300,reticulocyte binding protein 2 homologue b,0.6222405537516039
+PF3D7_0937500,rifin,0.6222652782894297
+PF3D7_1308200,carbamoyl phosphate synthetase,0.6222777834898017
+PF3D7_1427100,"lipase, putative",0.622315438410928
+PF3D7_MIT02000,ribosomal RNA fragment RNA3,0.6223668428934904
+PF3D7_1353800,"proteasome subunit alpha type-4, putative",0.6224252199641345
+PF3D7_1101100,rifin,0.6224535540748051
+PF3D7_1373000,rifin,0.62249611756519
+PF3D7_0401100,"Plasmodium exported protein, unknown function, fragment",0.6225210127445857
+PF3D7_1462600,"conserved Plasmodium membrane protein, unknown function",0.6226042031338114
+PF3D7_1424300,small nucleolar RNA snoR26,0.6226220493814069
+PF3D7_0530500,"conserved Plasmodium membrane protein, unknown function",0.6226848214146651
+PF3D7_1332200,"conserved protein, unknown function",0.6227598575975196
+PF3D7_0112500,5.8S ribosomal RNA,0.6227608785765194
+PF3D7_0100600,rifin,0.6228111149616458
+PF3D7_0929800,"conserved Plasmodium protein, unknown function",0.6228230366297084
+PF3D7_1307700,"TOM1-like protein, putative",0.6230107936265743
+PF3D7_0935390,gdv1 antisense RNA,0.6230397693198289
+PF3D7_0509800,phosphatidylinositol 4-kinase beta,0.6230597875946352
+PF3D7_0624500,"anaphase-promoting complex subunit 11, putative",0.6230607874283407
+PF3D7_0209900,non-coding RNA,0.6231103815377261
+PF3D7_0934000,"histidine--tRNA ligase, putative",0.6231346786661788
+PF3D7_0601000,exported protein family 4,0.623168465095059
+PF3D7_1234700,upregulated in late gametocytes ULG8,0.6232127794319153
+PF3D7_0221100,"Plasmodium exported protein, unknown function, pseudogene",0.6232658341575614
+PF3D7_1150300,rifin,0.6234446481719108
+PF3D7_1100800,Pfmc-2TM Maurer's cleft two transmembrane protein,0.623453292072911
+PF3D7_1465200,"mediator of RNA polymerase II transcription subunit 4, putative",0.6234687468913129
+PF3D7_1030000,"transcription elongation factor SPT4, putative",0.6234794510925337
+PF3D7_1200400,"erythrocyte membrane protein 1, PfEMP1",0.623488625587778
+PF3D7_0223100,rifin,0.6235277753319758
+PF3D7_0901200,"Plasmodium exported protein, unknown function, fragment",0.6236855413934409
+PF3D7_0109700,"rRNA biogenesis protein RRP36, putative",0.6237284707314881
+PF3D7_0936700,"lysophospholipase, putative",0.6237743951663072
+PF3D7_0109850,"phosphatidate cytidylyltransferase, putative",0.6237875986900772
+PF3D7_0713000,rifin,0.6239008630047843
+PF3D7_1301200,GBPH2 protein,0.6239244953993924
+PF3D7_1427700,"conserved Plasmodium protein, unknown function",0.6239278236578203
+PF3D7_0318700,"conserved Plasmodium protein, unknown function",0.6239907494274934
+PF3D7_0611400,SWI/SNF-related matrix-associated actin-dependent regulator of chromatin,0.6240252274413169
+PF3D7_0925100,"conserved Plasmodium protein, unknown function",0.6242554330761949
+PF3D7_0218900,Plasmodium RNA of unknown function RUF2,0.6242753661062664
+PF3D7_0222800,stevor,0.6243026325217889
+PF3D7_0426000,"erythrocyte membrane protein 1, PfEMP1",0.6243750868320516
+PF3D7_1357900,"pyrroline-5-carboxylate reductase, putative",0.624377545379113
+PF3D7_0510900,small nucleolar RNA snoR04,0.6243940319490913
+PF3D7_1428700,"heme/steroid binding domain containing protein, putative",0.6244284775663598
+PF3D7_0613800,"AP2 domain transcription factor, putative",0.6244396827479458
+PF3D7_0102500,erythrocyte binding antigen-181,0.6246992037123399
+PF3D7_1351500,small nucleolar RNA snoR21,0.6248818239769919
+PF3D7_0601200,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6249204836914882
+PF3D7_MIT02700,ribosomal RNA fragment RNA5,0.6249494616512473
+PF3D7_MIT02500,large subunit ribosomal RNA fragment B,0.6249562997443449
+PF3D7_0800800,"Plasmodium exported protein (hyp7), unknown function",0.6250466616665222
+PF3D7_1148200,non-coding RNA,0.6251451390970443
+PF3D7_0930000,"procollagen lysine 5-dioxygenase, putative",0.6252179500467655
+PF3D7_0114000,exported protein family 1,0.6252250690265516
+PF3D7_0608700,T-complex protein 1 subunit zeta,0.6252951850481816
+PF3D7_0610900,"transcription elongation factor SPT5, putative",0.6253121165612048
+PF3D7_1459200,"WD repeat-containing protein, putative",0.6253951027260725
+PF3D7_0814900,superoxide dismutase [Fe],0.625412428481423
+PF3D7_1245800,"epsin-like protein, putative",0.6254549408340367
+PF3D7_0104000,thrombospondin-related sporozoite protein,0.6254714660779808
+PF3D7_1405800,"ribosome biogenesis protein BOP1, putative",0.6254801051970901
+PF3D7_1359700,"conserved Plasmodium protein, unknown function",0.6255547892615649
+PF3D7_1201200,"Plasmodium exported protein (PHISTa-like), unknown function",0.6255943542197778
+PF3D7_1300700,rifin,0.6256516618933049
+PF3D7_0206600,"DNA-directed RNA polymerase III subunit RPC10, putative",0.6257284144755116
+PF3D7_1438200,tRNA Selenocysteine,0.6258665871501919
+PF3D7_1424000,small nucleolar RNA snoR24,0.6258725331369773
+PF3D7_0707100,tRNA Lysine,0.6259401242737305
+PF3D7_0913150,"conserved protein, unknown function",0.6259633202937771
+PF3D7_1231000,"conserved Plasmodium protein, unknown function",0.6259677735649704
+PF3D7_0408700,perforin-like protein 1,0.6259890823357191
+PF3D7_1036900,"conserved Plasmodium protein, unknown function",0.6260170556304306
+PF3D7_0618400,"LMBR1 domain-containing protein, putative",0.6260229169359945
+PF3D7_0808500,Plasmodium RNA of unknown function RUF6,0.6260962777137772
+PF3D7_0827400,"conserved protein, unknown function",0.6261369050936751
+PF3D7_1041200,rifin,0.6262074090726566
+PF3D7_1440900,"conserved Plasmodium protein, unknown function",0.62622845964129
+PF3D7_1479100,"Plasmodium exported protein, unknown function",0.626268286111558
+PF3D7_0700100,"erythrocyte membrane protein 1, PfEMP1",0.6264531795000599
+PF3D7_0620000,PIMMS43 protein,0.6265325150332625
+PF3D7_0707000,tRNA Lysine,0.6267361680161818
+PF3D7_1236650,"conserved Plasmodium protein, unknown function",0.6267793242068107
+PF3D7_1348000,"conserved Plasmodium protein, unknown function",0.6267971021999769
+PF3D7_MIT00600,large subunit ribosomal RNA fragment C,0.6268481834670044
+PF3D7_1456300,"conserved Plasmodium protein, unknown function",0.6268599369456302
+PF3D7_0532900,rifin,0.6269024188770177
+PF3D7_1422000,"cytochrome c oxidase assembly protein COX14, putative",0.6269593158752518
+PF3D7_1416000,"conserved Plasmodium protein, unknown function",0.6270010681228328
+PF3D7_0620400,merozoite surface protein 10,0.6270254593263326
+PF3D7_0814500,"conserved protein, unknown function",0.6272186705736474
+PF3D7_MIT02200,small subunit ribosomal RNA fragment A,0.6272202739295419
+PF3D7_0515400,"conserved protein, unknown function",0.6273135782722687
+PF3D7_1147800,membrane associated erythrocyte binding-like protein,0.6274060856625788
+PF3D7_1479900,stevor,0.6274595451382909
+PF3D7_1329700,apicoplast calcium binding protein 1,0.6275030118155034
+PF3D7_0631500,exported protein family 3,0.627527168277457
+PF3D7_1101500,exported protein family 4,0.6275294486699524
+PF3D7_1201100,RESA-like protein with PHIST and DnaJ domains,0.6276448691801501
+PF3D7_0714700,tRNA Asparagine,0.6277049237631459
+PF3D7_1369900,tRNA Tryptophan,0.6278932773517792
+PF3D7_1241000,Plasmodium RNA of unknown function RUF6,0.6280470253983056
+PF3D7_0223300,"erythrocyte membrane protein 1 (PfEMP1), exon 2",0.6281502628402087
+PF3D7_0600400,"erythrocyte membrane protein 1, PfEMP1",0.6282424039082304
+PF3D7_0315900,"conserved Plasmodium protein, unknown function",0.6283206658567945
+PF3D7_0731000,non-coding RNA,0.6283729889975681
+PF3D7_1478000,"Plasmodium exported protein (PHISTa), unknown function",0.628422137422256
+PF3D7_1149200,ring-infected erythrocyte surface antigen,0.6284435036958255
+PF3D7_0728700,"alpha/beta hydrolase, putative",0.6284518678914987
+PF3D7_0510600,tRNA Leucine,0.62847667557182
+PF3D7_1316400,"SAS6-like protein, putative",0.6284836613231232
+PF3D7_0833150,"Plasmodium exported protein, unknown function, fragment, pseudogene",0.6286792859306602
+PF3D7_0112100,PIMMS1 protein,0.6288462444585505
+PF3D7_0733000,"erythrocyte membrane protein 1, PfEMP1",0.6288689064616632
+PF3D7_0617500,"rifin, pseudogene",0.6289214498133359
+PF3D7_1400500,rifin,0.6289363087495246
+PF3D7_0115000,surface-associated interspersed protein 1.3 (SURFIN 1.3),0.628976824085409
+PF3D7_1401050,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",0.6289942174592273
+PF3D7_1471700,"conserved Plasmodium protein, unknown function",0.6290467635737422
+PF3D7_1411000,"conserved Plasmodium protein, unknown function",0.6291516558136727
+PF3D7_0620200,"conserved Plasmodium protein, unknown function",0.6292945943907569
+PF3D7_0916100,thioredoxin 3,0.6293358353506022
+PF3D7_0314800,"conserved Plasmodium protein, unknown function",0.6293611480891873
+PF3D7_1478900,non-coding RNA,0.6293923481223164
+PF3D7_1468600,"aminophospholipid transporter, putative",0.6294875402701461
+PF3D7_1142000,"heptatricopeptide repeat-containing protein, putative",0.629490521560108
+PF3D7_0912200,"membrane protein S54, putative",0.6295262676157697
+PF3D7_0302400,non-coding RNA,0.6295668554768885
+PF3D7_0816300,male gamete fusion factor HAP2P,0.629609199429651
+PF3D7_0408100,"conserved Plasmodium protein, unknown function",0.6298893611321131
+PF3D7_1404700,"cysteine-rich small secreted protein CSS, putative",0.6299434516292779
+PF3D7_0937100,"Plasmodium exported protein, unknown function",0.6300527980412357
+PF3D7_1226200,"conserved Plasmodium protein, unknown function",0.6300729276819849
+PF3D7_1203900,ubiquitin-conjugating enzyme E2,0.6300868034793615
+PF3D7_0833200,rifin,0.6302369057187592
+PF3D7_1421200,40S ribosomal protein S25,0.6302760876395912
+PF3D7_0411600,tRNA Glutamic acid,0.6304477116059494
+PF3D7_1010700,"dolichyl-phosphate-mannose--protein mannosyltransferase, putative",0.6304556622807929
+PF3D7_MIT03200,large subunit ribosomal RNA fragment A,0.6304588687667683
+PF3D7_0221650,"Plasmodium exported protein, unknown function, pseudogene",0.6305384239840485
+PF3D7_1137600,"conserved Plasmodium protein, unknown function",0.6305653048949399
+PF3D7_0115700,"erythrocyte membrane protein 1, PfEMP1",0.630640427577531
+PF3D7_1466400,AP2 domain transcription factor AP2-EXP,0.6306831032366514
+PF3D7_0101800,stevor,0.6306867380894536
+PF3D7_0826100,"HECT-like E3 ubiquitin ligase, putative",0.6307184933501908
+PF3D7_0115300,rifin,0.6307749897647245
+PF3D7_1339100,tRNA Methionine,0.6309058848294957
+PF3D7_1037200,"conserved Plasmodium protein, unknown function",0.6309742568180859
+PF3D7_1104600,"radial spoke head protein, putative",0.6310559937743879
+PF3D7_0702500,"Plasmodium exported protein, unknown function",0.6312210786663792
+PF3D7_0809000,Plasmodium RNA of unknown function RUF6,0.6312239033922177
+PF3D7_1369300,"conserved Plasmodium protein, unknown function",0.6312359570809308
+PF3D7_0219000,small nucleolar RNA snoR01,0.63128808375196
+PF3D7_0730600,tRNA Valine,0.6313009703873637
+PF3D7_1033300,"conserved protein, unknown function",0.6313426484276059
+PF3D7_0421800,"conserved Plasmodium protein, unknown function",0.6313448825453976
+PF3D7_1134500,"alpha/beta hydrolase, putative",0.6314382020356044
+PF3D7_0833400,rifin,0.6315068567511264
+PF3D7_0610300,non-coding RNA,0.631662688338066
+PF3D7_1253800,"Plasmodium exported protein (PHISTa), unknown function",0.6316715241171598
+PF3D7_1224100,"conserved protein, unknown function",0.6318032971481398
+PF3D7_0412100,"ribosomal protein S12, mitochondrial",0.6318057046912372
+PF3D7_0402300,reticulocyte binding protein homologue 1,0.6318468581409296
+PF3D7_1016500,"Plasmodium exported protein (PHISTc), unknown function",0.6318742960435938
+PF3D7_0424100,reticulocyte binding protein homologue 5,0.6318881528913959
+PF3D7_1454900,"conserved protein, unknown function",0.6319506801225868
+PF3D7_0114800,"Plasmodium exported protein (hyp7), unknown function",0.6319801896325501
+PF3D7_0914200,"phospholipid or glycerol acyltransferase, putative",0.632193276513984
+PF3D7_1470000,"autophagy-related protein 12, putative",0.6323276866929588
+PF3D7_1138350,"conserved protein, unknown function",0.6325328039832658
+PF3D7_0701800,rifin,0.6325382450935394
+PF3D7_1202000,ATP-dependent DNA/RNA helicase PSH2,0.632552124188086
+PF3D7_1130310,small nucleolar RNA snoR14a,0.6327207742246838
+PF3D7_1477100,"Plasmodium exported protein (hyp6), unknown function",0.6328092284174344
+PF3D7_0613600,"conserved Plasmodium protein, unknown function",0.6328401399107132
+PF3D7_0406400,cytosolic glyoxalase II,0.6329400106146091
+PF3D7_0200400,stevor,0.6329935449786988
+PF3D7_1450200,"conserved Plasmodium protein, unknown function",0.6330058307061377
+PF3D7_0421300,"erythrocyte membrane protein 1, PfEMP1",0.6330100387619572
+PF3D7_0502300,"conserved Plasmodium protein, unknown function",0.6332165974376005
+PF3D7_0801400,"conserved Plasmodium protein, unknown function",0.6333018341237057
+PF3D7_1350400,"ubiquitin-activating enzyme E1, putative",0.6333471563148814
+PF3D7_0712100,Plasmodium RNA of unknown function RUF6,0.6333618482008397
+PF3D7_0808200,plasmepsin X,0.6334916766154677
+PF3D7_1018400,"conserved Plasmodium protein, unknown function",0.6337350443972042
+PF3D7_0709050,small nucleolar RNA,0.6337459766888681
+PF3D7_0504300,"conserved Plasmodium protein, unknown function",0.6337584838465254
+PF3D7_0832900,stevor,0.6338279374440308
+PF3D7_1204400,"sexual stage-specific protein G37, putative",0.6339242527528655
+PF3D7_0215200,"conserved Plasmodium protein, unknown function",0.6340409916054781
+PF3D7_MIT01300,ribosomal RNA fragment RNA10,0.6340750541608347
+PF3D7_0201000,rifin,0.6341071703305975
+PF3D7_0900900,stevor,0.634554397938145
+PF3D7_1248200,"pre-mRNA-splicing factor RBM22, putative",0.6346308250179256
+PF3D7_0114200,exported protein family 3,0.6346468659617469
+PF3D7_0909100,"conserved Plasmodium membrane protein, unknown function",0.6346942081401556
+PF3D7_1109500,small nucleolar RNA snoR09,0.6347038072860794
+PF3D7_0912700,"conserved Plasmodium protein, unknown function",0.6347253517960881
+PF3D7_1229200,non-coding RNA,0.6347982361522497
+PF3D7_0901300,rifin,0.6348437518301426
+PF3D7_0600700,rifin,0.6348540211112715
+PF3D7_1302400,"conserved protein, unknown function",0.6350879137037302
+PF3D7_0102100,"stevor, pseudogene",0.6352265528852034
+PF3D7_1418800,signal recognition particle RNA,0.6352293178000609
+PF3D7_1339200,tRNA Proline,0.635585890021606
+PF3D7_MIT04000,large subunit ribosomal RNA fragment E,0.6356320447857039
+PF3D7_0507500,subtilisin-like protease 1,0.6356685969765096
+PF3D7_1100400,rifin,0.6359959402986562
+PF3D7_0410100,tRNA Serine,0.6361221900713676
+PF3D7_1479200,"Plasmodium exported protein (PHISTa), unknown function",0.6361301368835004
+PF3D7_0606100,"RNA-binding protein, putative",0.6362361443021216
+PF3D7_0909600,"conserved protein, unknown function",0.636378729316476
+PF3D7_0425800,"erythrocyte membrane protein 1, PfEMP1",0.6365143763357365
+PF3D7_0729100,"apicomplexan kinetochore protein 8, putative",0.6365675001340031
+PF3D7_0100900,rifin,0.6367237772797569
+PF3D7_1479500,stevor,0.6367611340028465
+PF3D7_1101300,rifin,0.6367798428188141
+PF3D7_0311000,"conserved Plasmodium protein, unknown function",0.636827611213534
+PF3D7_0305700,"ubiquitin-conjugating enzyme MMS2, putative",0.6368942321025404
+PF3D7_1148100,non-coding RNA,0.6370379957148813
+PF3D7_0113200,"Plasmodium exported protein, unknown function",0.6371090478494126
+PF3D7_1041100,rifin,0.6373469658624178
+PF3D7_0913200,elongation factor 1-beta,0.6373607320154586
+PF3D7_0621400,Pf77 protein,0.6373709312057306
+PF3D7_0830000,5.8S ribosomal RNA,0.6373726087567075
+PF3D7_1477600,surface-associated interspersed protein 14.1 (SURFIN 14.1),0.6374561899425183
+PF3D7_0713300,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.6374685682520962
+PF3D7_0402900,"probable protein, unknown function",0.6374999110611824
+PF3D7_1400700,stevor,0.6375884487134764
+PF3D7_0318000,"conserved Plasmodium protein, unknown function",0.6375918896612558
+PF3D7_1005200,"conserved Plasmodium protein, unknown function",0.6376075637515329
+PF3D7_1027900,"palmitoyltransferase DHHC10, putative",0.6377038738201151
+PF3D7_1139400,non-coding RNA,0.6377394484320272
+PF3D7_0800750,"Plasmodium exported protein, unknown function, pseudogene",0.6378158816522226
+PF3D7_1400300,rifin,0.6378686563933127
+PF3D7_1150000,rifin,0.6378802178199352
+PF3D7_0800650,H/ACA snoRNA,0.6380307404116252
+PF3D7_1435900,"conserved Plasmodium protein, unknown function",0.6381568726533388
+PF3D7_1202900,high mobility group protein B1,0.6385015543066691
+PF3D7_0936000,ring-exported protein 2,0.6385416796656839
+PF3D7_0907800,"ribosomal protein L35, apicoplast, putative",0.6385607694230075
+PF3D7_0215300,acyl-CoA synthetase,0.6385627017576472
+PF3D7_0322800,"conserved Plasmodium protein, unknown function",0.6388429213551033
+PF3D7_1025300,"conserved protein, unknown function",0.6388897911964411
+PF3D7_0114750,"Plasmodium exported protein, unknown function, fragment",0.6390097961387136
+PF3D7_1040500,rifin,0.6390143905294663
+PF3D7_1014900,protein KIC8,0.6391150858832809
+PF3D7_0221400,stevor,0.6391192358323141
+PF3D7_0220500,"Plasmodium exported protein (hyp2), unknown function",0.6392197766182688
+PF3D7_0702200,lysophospholipase LPL20,0.6392588719568348
+PF3D7_1312500,"conserved Plasmodium protein, unknown function",0.6395998379126381
+PF3D7_1039700,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6397602381884642
+PF3D7_0632250,"Plasmodium exported protein, unknown function, fragment, pseudogene",0.6398671956470174
+PF3D7_0713100,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6398953955770037
+PF3D7_1210000,"50S ribosomal protein L1, apicoplast, putative",0.6399848521299849
+PF3D7_0922700,"pre-mRNA-splicing factor 18, putative",0.6399991515399102
+PF3D7_1251900,tRNA Valine,0.6401021350193309
+PF3D7_0931900,adenylate kinase-like protein 2,0.6403634099532559
+PF3D7_0911800,"conserved Plasmodium protein, unknown function",0.6403886029369418
+PF3D7_1255200,"erythrocyte membrane protein 1, PfEMP1",0.6404107350263307
+PF3D7_0405200,protein CERLI2,0.6404839696929816
+PF3D7_1414400,serine/threonine protein phosphatase PP1,0.6405299059246737
+PF3D7_1100300,rifin,0.6406248220025753
+PF3D7_0201100,"Plasmodium exported protein, unknown function, fragment",0.6410489250259468
+PF3D7_0101200,exported protein family 3,0.6411185639837667
+PF3D7_0813900,"40S ribosomal protein S16, putative",0.641146310679205
+PF3D7_1372800,stevor,0.6413029797903452
+PF3D7_1416100,"protein SEY1, putative",0.6413211070287661
+PF3D7_0424500,"serine/threonine protein kinase, FIKK family",0.6413723803939533
+PF3D7_0412900,"erythrocyte membrane protein 1, PfEMP1",0.6413937578905394
+PF3D7_0400300,rifin,0.6414499289580413
+PF3D7_0900600,rifin,0.6415772615157187
+PF3D7_0310700,"trafficking protein particle complex subunit 4, putative",0.6415977700916841
+PF3D7_1418200,"conserved Plasmodium protein, unknown function",0.6418390712717432
+PF3D7_0729700,"zinc finger protein, putative",0.642302629112905
+PF3D7_0701500,exported protein family 3,0.6423776274515264
+PF3D7_0400700,rifin,0.6424365135539758
+PF3D7_0904200,"PH domain-containing protein, putative",0.6424444174839455
+PF3D7_1221500,"heptatricopeptide repeat-containing protein, putative",0.6424686029631419
+PF3D7_0406800,"ribosomal protein L25, putative",0.6425961196085747
+PF3D7_1418500,5S ribosomal RNA,0.6425971058840477
+PF3D7_0101000,rifin,0.6426065788232687
+PF3D7_0700400,stevor,0.6426755977194177
+PF3D7_0608000,"diphthine methyltransferase, putative",0.6427326162451754
+PF3D7_0323400,Rh5 interacting protein,0.6427436620966364
+PF3D7_1418700,5S ribosomal RNA,0.6427450674879789
+PF3D7_0700300,rifin,0.6427874605379943
+PF3D7_1040900,rifin,0.6429521244554626
+PF3D7_1330900,small nucleolar RNA snoR17,0.643157070707534
+PF3D7_0400800,stevor,0.6432111058205175
+PF3D7_1006000,"IMP1-like protein, putative",0.6432536474098256
+PF3D7_0201800,knob associated heat shock protein 40,0.6433281658796989
+PF3D7_0901400,rifin,0.643368579517361
+PF3D7_1129700,"conserved Plasmodium protein, unknown function",0.6434708254236928
+PF3D7_1417700,"conserved protein, unknown function",0.6435971432563293
+PF3D7_API03800,"probable protein, unknown function",0.6436961072361514
+PF3D7_1000500,rifin,0.643793148150326
+PF3D7_0935700,"Plasmodium exported protein, unknown function",0.6440189632714096
+PF3D7_1254600,stevor,0.6441506840816411
+PF3D7_1340200,"conserved Plasmodium protein, unknown function",0.6441564971380839
+PF3D7_1213100,U1 spliceosomal RNA,0.644316749267301
+PF3D7_0806500,"DnaJ protein, putative",0.6443175732704728
+PF3D7_1373300,rifin,0.6444225310745803
+PF3D7_0301000,acyl-CoA synthetase,0.6450661112621918
+PF3D7_0223500,"erythrocyte membrane protein 1, PfEMP1",0.6451738143389332
+PF3D7_0105600,"FtsJ-like methyltransferase, putative",0.6454001984050016
+PF3D7_1313500,"TMEM238 domain-containing protein, putative",0.6455037985462148
+PF3D7_1101200,rifin,0.6455810744542659
+PF3D7_0500400,rifin,0.6455928731421209
+PF3D7_1350500,"conserved Plasmodium protein, unknown function",0.6456763640246218
+PF3D7_0512450,"conserved Plasmodium protein, unknown function, pseudogene",0.6456930826703803
+PF3D7_1146300,"conserved Plasmodium protein, unknown function",0.6457149229264691
+PF3D7_1403300,"tetratricopeptide repeat protein, putative",0.6458375219475337
+PF3D7_0401400,rifin,0.64599120452
+PF3D7_1458000,cysteine proteinase falcipain 1,0.6461398155973658
+PF3D7_0412300,"phosphopantothenoylcysteine synthetase, putative",0.6461400734680827
+PF3D7_1030400,"conserved protein, unknown function",0.646182421643769
+PF3D7_1101600,exported protein family 3,0.6462596154550254
+PF3D7_1322400,"conserved Plasmodium protein, unknown function",0.6464639783216953
+PF3D7_1344200,endoplasmic reticulum chaperone GRP170,0.6466950669275215
+PF3D7_0423900,"probable protein, unknown function",0.6467433778866699
+PF3D7_1240500,Plasmodium RNA of unknown function RUF6,0.6468327844639109
+PF3D7_1433100,"HID1 domain-containing protein, putative",0.6471772714439571
+PF3D7_0631600,exported protein family 4,0.6473675407532457
+PF3D7_1356500,"conserved Plasmodium protein, unknown function",0.6478292569176519
+PF3D7_0800700,surface-associated interspersed protein 8.3 (SURFIN 8.3),0.6479362419179197
+PF3D7_1133000,"conserved Plasmodium protein, unknown function",0.6479494486512678
+PF3D7_1123200,leucine-rich repeat protein,0.6481085308827652
+PF3D7_0937300,rifin,0.6481613967260917
+PF3D7_0732400,rifin,0.6483231109997725
+PF3D7_1040800,rifin,0.6484716195371604
+PF3D7_1149800,rifin,0.6484913042340563
+PF3D7_0201500,"Plasmodium exported protein (hyp9), unknown function",0.6485162288449684
+PF3D7_0732000,stevor,0.6485168323951754
+PF3D7_0300400,stevor,0.6486519385044097
+PF3D7_1149700,"Plasmodium exported protein (PHISTa), unknown function, fragment",0.6487769509741339
+PF3D7_0805800,CH domain-containing protein,0.6489054885159706
+PF3D7_1240000,"3-hydroxyisobutyryl-CoA hydrolase, putative",0.6490951732180931
+PF3D7_1477800,acyl-CoA binding protein,0.6493984383248652
+PF3D7_1400400,rifin,0.6495590202804359
+PF3D7_0202100,liver stage associated protein 2,0.6496169665307161
+PF3D7_0902500,"serine/threonine protein kinase, FIKK family",0.6496200434085945
+PF3D7_1471600,"apical polar ring protein APR2, putative",0.6497118985966008
+PF3D7_0100200,rifin,0.6497884560583341
+PF3D7_0114100,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6500053669764299
+PF3D7_1223700,vacuolar iron transporter,0.6501759358373873
+PF3D7_1251200,coronin,0.650434526983434
+PF3D7_0401000,rifin,0.6505329412180494
+PF3D7_0101900,rifin,0.6505593334578575
+PF3D7_0832800,rifin,0.6505841919288449
+PF3D7_1033200,early transcribed membrane protein 10.2,0.6505973388988325
+PF3D7_0814300,"AAA family ATPase, putative",0.6507900071336664
+PF3D7_0201400,"Plasmodium exported protein (hyp10), unknown function",0.6508231319587643
+PF3D7_0500200,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",0.6508620550124885
+PF3D7_1464800,"EF-hand calcium-binding domain-containing protein, putative",0.6510704245378495
+PF3D7_0912800,"tRNA (adenine(58)-N(1))-methyltransferase non-catalytic subunit TRM6, putative",0.6516939497348524
+PF3D7_0931800,"proteasome subunit beta type-6, putative",0.6518265971638457
+PF3D7_0102700,merozoite-associated tryptophan-rich antigen,0.6519018746807559
+PF3D7_1445800,"conserved Plasmodium membrane protein, unknown function",0.6519276954237521
+PF3D7_0632600,"rifin, pseudogene",0.6520668547195381
+PF3D7_1473000,"conserved Plasmodium protein, unknown function",0.6521647984294304
+PF3D7_0301900,"conserved protein, unknown function",0.652241056508183
+PF3D7_0808800,rifin,0.6523123108238185
+PF3D7_1040600,rifin,0.6526940663968899
+PF3D7_0700200,rifin,0.652751261098109
+PF3D7_0324800,rifin,0.6529085225827117
+PF3D7_1471800,"conserved Plasmodium protein, unknown function",0.6530152933271829
+PF3D7_0300600,"Plasmodium exported protein, unknown function, fragment",0.6530383090035407
+PF3D7_0424900,"Plasmodium exported protein (PHISTa), unknown function",0.6532754025873091
+PF3D7_1233050,"dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit OST4, putative",0.6534157964078222
+PF3D7_1149500,"ring-infected erythrocyte surface antigen 2, pseudogene",0.6540174535261443
+PF3D7_0901900,"probable protein, unknown function",0.6540273908886106
+PF3D7_1334400,MSP7-like protein,0.6541347689207466
+PF3D7_1400800,rifin,0.6542067092404699
+PF3D7_0935900,ring-exported protein 1,0.6542697663934292
+PF3D7_0632000,rifin,0.6545460587006355
+PF3D7_1213000,non-coding RNA,0.6546969158702411
+PF3D7_1301600,erythrocyte binding antigen-140,0.6548932745423266
+PF3D7_1300400,rifin,0.6554339187113573
+PF3D7_0900400,rifin,0.6557419416258907
+PF3D7_0300200,rifin,0.6563040973196488
+PF3D7_0935800,cytoadherence linked asexual protein 9,0.6564623206981937
+PF3D7_0201600,PHISTb domain-containing RESA-like protein 1,0.6567564889034669
+PF3D7_0324400,rifin,0.6568371926270344
+PF3D7_1024400,"conserved Plasmodium protein, unknown function",0.656941804710353
+PF3D7_1300500,rifin,0.6573864734195632
+PF3D7_0418800,"CRONE protein, putative",0.6575236050040743
+PF3D7_0916300,"conserved Plasmodium protein, unknown function",0.6576432673227094
+PF3D7_0930700,"conserved Plasmodium protein, unknown function",0.6582689630334273
+PF3D7_1002000,"Plasmodium exported protein (hyp2), unknown function",0.6583761433364305
+PF3D7_0902900,"early transcribed membrane protein, putative",0.6585597112352081
+PF3D7_1105100,histone H2B,0.6585985215542933
+PF3D7_1419300,glutathione S-transferase,0.6586330944821703
+PF3D7_1424200,small nucleolar RNA snoR25,0.6587280195478324
+PF3D7_0718900,"conserved Plasmodium protein, unknown function",0.658800246460899
+PF3D7_1249500,"protein CutA, putative",0.6590324964495372
+PF3D7_0701900,"Plasmodium exported protein, unknown function",0.6592225359498142
+PF3D7_1339000,"conserved Plasmodium protein, unknown function",0.6596712085141613
+PF3D7_0400500,rifin,0.6597772307498023
+PF3D7_0216800,"TMEM121 domain-containing protein, putative",0.659837588323233
+PF3D7_1254200,rifin,0.6599909609305195
+PF3D7_1244200,"RNA polymerase II transcription factor B subunit 2, putative",0.6600595782817155
+PF3D7_0530750,"dolichol-phosphate mannosyltransferase subunit 3, putative",0.6603194835241967
+PF3D7_0702300,sporozoite threonine and asparagine-rich protein,0.660789983608007
+PF3D7_0300900,stevor,0.6611739728720821
+PF3D7_0400900,rifin,0.6618191965663087
+PF3D7_0201900,erythrocyte membrane protein 3,0.6623507833287015
+PF3D7_0101100,exported protein family 4,0.6624522255480539
+PF3D7_0901100,rifin,0.662514660674448
+PF3D7_0902100,"serine/threonine protein kinase, FIKK family",0.6626874075255422
+PF3D7_1372300,Plasmodium exported protein (PHISTa-like),0.6627385372337077
+PF3D7_1438100,"translocation protein SEC62, putative",0.6628752225260496
+PF3D7_1200700,acyl-CoA synthetase,0.6632001889966488
+PF3D7_0115200,rifin,0.663264446590495
+PF3D7_1020200,"conserved Plasmodium protein, unknown function",0.6638069346296779
+PF3D7_0524700,"mitochondrial import receptor subunit TOM22, putative",0.6638769186366422
+PF3D7_0700800,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6640392118423195
+PF3D7_1345700,"isocitrate dehydrogenase [NADP], mitochondrial",0.6642669909354495
+PF3D7_0221000,"Plasmodium exported protein, unknown function",0.664432348909167
+PF3D7_0301800,"Plasmodium exported protein, unknown function",0.6648421658212486
+PF3D7_1341100,U6 spliceosomal RNA,0.6651938061348843
+PF3D7_1150400,"erythrocyte membrane protein 1, PfEMP1",0.6659224329720677
+PF3D7_1040000,rifin,0.666014573801804
+PF3D7_1480000,rifin,0.6660180450332241
+PF3D7_1449700,exosome complex exonuclease RRP6,0.666154603531797
+PF3D7_1101700,Pfmc-2TM Maurer's cleft two transmembrane protein,0.6662923103407282
+PF3D7_1255000,rifin,0.6663134090589515
+PF3D7_0108900,non-coding RNA,0.6668054398060274
+PF3D7_1201300,liver stage associated protein 1,0.667402845316173
+PF3D7_1373100,rifin,0.6674664671673508
+PF3D7_0902300,"serine/threonine protein kinase, FIKK family",0.6678974410693215
+PF3D7_0823800,"DnaJ protein, putative",0.668200534675699
+PF3D7_1040700,rifin,0.6682035355415419
+PF3D7_1325000,"U6 snRNA-associated Sm-like protein LSm6, putative",0.6689283662970522
+PF3D7_1479700,rifin,0.6695140515501311
+PF3D7_0425100,"Plasmodium exported protein (hyp6), unknown function",0.66961701726609
+PF3D7_1002100,EMP1-trafficking protein,0.6697580759203684
+PF3D7_1212000,glutathione peroxidase-like thioredoxin peroxidase,0.6701469683399638
+PF3D7_0100800,rifin,0.670237637114801
+PF3D7_0201700,"DnaJ protein, putative",0.6702445374565648
+PF3D7_1254800,rifin,0.6703112365213447
+PF3D7_0608800,ornithine aminotransferase,0.6704047901217446
+PF3D7_1200300,rifin,0.6704789067863763
+PF3D7_1372200,histidine-rich protein III,0.6706826856021084
+PF3D7_0424800,"Plasmodium exported protein (PHISTb), unknown function",0.6707497964368724
+PF3D7_1150200,rifin,0.6707730679254196
+PF3D7_1302050,hypothetical protein,0.6709119281956597
+PF3D7_0706000,"importin-7, putative",0.6709390745904054
+PF3D7_1148640,28S ribosomal RNA,0.6710006248319152
+PF3D7_0115100,"Plasmodium exported protein (PHISTa), unknown function",0.6711090221362271
+PF3D7_0632700,rifin,0.671375335788479
+PF3D7_1466500,"conserved Plasmodium protein, unknown function",0.6714150992168232
+PF3D7_0700500,rifin,0.6715269651793204
+PF3D7_0901600,stevor,0.6716866103160315
+PF3D7_0301200,"serine/threonine protein kinase, FIKK family",0.6720328148719213
+PF3D7_0200300,"erythrocyte membrane protein 1 (PfEMP1), exon 2",0.6721228709603932
+PF3D7_0200700,rifin,0.6721864638552854
+PF3D7_0828800,GPI-anchored micronemal antigen,0.6726002281379995
+PF3D7_0632200,rifin,0.6729336417944789
+PF3D7_0101600,rifin,0.6731659795561094
+PF3D7_0800400,rifin,0.6732763633383774
+PF3D7_0401900,acyl-CoA synthetase,0.674199738163426
+PF3D7_0601100,exported protein family 3,0.674248418535076
+PF3D7_0324500,rifin,0.6745245201921787
+PF3D7_0500500,rifin,0.6746630337569915
+PF3D7_0411700,"conserved Plasmodium protein, unknown function",0.6749215960680369
+PF3D7_0632100,rifin,0.6763802995889713
+PF3D7_1122600,"conserved Plasmodium protein, unknown function",0.676802689458007
+PF3D7_0421200,rifin,0.6768397211061672
+PF3D7_0425700,rifin,0.6777866754388258
+PF3D7_0201200,rifin,0.6783371204386032
+PF3D7_1255100,rifin,0.6791154135681754
+PF3D7_0215900,"palmitoyltransferase DHHC11, putative",0.6792444661524032
+PF3D7_0732300,rifin,0.6793737658675874
+PF3D7_1000300,rifin,0.6809619519276024
+PF3D7_1219800,"conserved Plasmodium protein, unknown function",0.6824262761960723
+PF3D7_0817900,high mobility group protein B2,0.6829991120125731
+PF3D7_0421900,"conserved Plasmodium protein, unknown function",0.6833904096468431
+PF3D7_1039900,exported protein family 4,0.6838909287850572
+PF3D7_0202000,knob-associated histidine-rich protein,0.6842793909126372
+PF3D7_0731600,acyl-CoA synthetase,0.6849151142612597
+PF3D7_0825800,"PH-like domain-containing protein, putative",0.6849692150763376
+PF3D7_1250400,"conserved Plasmodium protein, unknown function",0.6851453851890569
+PF3D7_1409600,"histidine phosphatase, putative",0.687472134466164
+PF3D7_0630200,"secreted ookinete protein, putative",0.6874853079133021
+PF3D7_0324300,exported protein family 4,0.6909574875852457
+PF3D7_0425200,"Plasmodium exported protein (hyp15), unknown function",0.6934175005553308
+PF3D7_0920300,"conserved Plasmodium protein, unknown function",0.693458642881373
+PF3D7_0220200,"Plasmodium exported protein, unknown function",0.6941778848974057
+PF3D7_0900500,rifin,0.6974759018025449
+PF3D7_0200500,rifin,0.6989332567506503
+PF3D7_1300600,rifin,0.700714611998616
+PF3D7_0300800,rifin,0.7009264321488953
+PF3D7_0800600,"Plasmodium exported protein (PHISTa), unknown function",0.7107677566269877
+PF3D7_0223400,rifin,0.7233189594433397

@@ -1,0 +1,17 @@
+Q89 Pf understudied_first ran 2.6s 4,540 genes have no focal or substantive publication; 2,000 of those without a lopit_pf_location label receive an agreed call, ranked by agreement tim
+Q90 Pf trait_regression ran 4.1s chromprox_hp1_log2fc predicted from 136 permitted measurements (boosted); out-of-fold rank correlation 0.293 over 1,629 measured genes. 'surprising ge
+     test: PASS metric=rank correlation of predicted and hidden values observed=0.35257638404821384 chance=0.0 bar=0.09124818227905018 skill=0.35257638404821384
+Q91 Pf label_outliers ran 1.3s 5,720 labelled genes scored by how little their neighbourhood shares their is_exported label; the 200 most surprising are listed with the label their 
+     test: PASS metric=AUROC of surprise for the swapped labels observed=0.9936166612187959 chance=0.5081093432699064 bar=0.5392936470963707 skill=0.9870228501113679
+Q93 Pf understudied_first ran 1.3s 4,540 genes have no focal or substantive publication; 2,000 of those without a lopit_pf_location label receive an agreed call, ranked by agreement tim
+Q95 Pf trait_regression ran 2.8s resistance_selection_variants predicted from 139 permitted measurements (boosted); out-of-fold rank correlation 0.122 over 734 measured genes. 'surpri
+     test: FAIL metric=rank correlation of predicted and hidden values observed=0.03160479028505989 chance=0.0 bar=0.13614116867508952 skill=0.03160479028505989
+Q96 Pf conjunctions ran 19.4s A map built without stage_enriched_derived or has_phospho; 4 clusters are enriched for a COMBINATION of the two beyond what either label alone explain
+Q97 Pf ortholog_transfer ran 0.5s stage_enriched_derived carried from Tg through shared orthogroups to 375 genes. Where both species are measured (125 genes), the transferred value ran
+     test: FAIL metric=rank correlation of transferred and hidden values observed=-0.10346169068891413 chance=0.015761498142040642 bar=0.26701813243406436 skill=-0.12113241719958695
+Q98 Pf stratum_focus ran 0.2s 404 genes are lineage-specific; 163 of those without a lopit_pf_location label are called from measurement neighbours, with conservation and orthology
+     test: INCONCLUSIVE metric=correct calls per hidden gene observed=nan chance=nan bar=nan skill=nan
+Q99 Pf trait_regression ran 4.3s m6a_canonical_stoichiometry predicted from 142 permitted measurements (boosted); out-of-fold rank correlation 0.007 over 3,622 measured genes. 'surpri
+     test: FAIL metric=rank correlation of predicted and hidden values observed=0.043265494895810976 chance=0.0 bar=0.061178208271885755 skill=0.043265494895810976
+Q100 Pf condition_shift ran 4.3s The part of expr_gametocyte_v that expr_gametocyte_ii does not explain -- the condition-specific effect -- for 5,720 genes. Other measurements predict
+wrote results/questions_2026_11_06

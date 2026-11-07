@@ -1,0 +1,1374 @@
+[
+ {
+  "qid": "Q89",
+  "organism": "Pf",
+  "strategy": "understudied_first",
+  "question": "Which ApiAP2 factors still have no target set in the data?",
+  "anchor": "PMID:39419713",
+  "grade": "works when tuned",
+  "settings": "{\"target\": \"lopit_pf_location\", \"min_agree\": 2}",
+  "seconds": 2.6,
+  "summary": "4,540 genes have no focal or substantive publication; 2,000 of those without a lopit_pf_location label receive an agreed call, ranked by agreement times novelty. These are the cheapest discoveries: a hypothesis the data supports about a gene nobody has written about.",
+  "rows[candidates]": 2000,
+  "lead_table": "candidates",
+  "head": [
+   {
+    "gene_id": "PF3D7_0100100",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0100400",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0100700",
+    "product": "Plasmodium exported protein, unknown function, fragment",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101100",
+    "product": "exported protein family 4",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101600",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101800",
+    "product": "stevor",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0103400",
+    "product": "zinc-carboxypeptidase, putative",
+    "prediction": "nucleus 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0106600",
+    "product": "conserved Plasmodium protein, unknown function",
+    "prediction": "apicoplast",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0106800",
+    "product": "ras-related protein Rab-5C",
+    "prediction": "plasma membrane 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0108500",
+    "product": "ELM2 domain-containing protein, putative",
+    "prediction": "nucleo-cytoplasm",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0111800",
+    "product": "eukaryotic translation initiation factor 4E, putative",
+    "prediction": "nucleus 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0114200",
+    "product": "exported protein family 3",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0114700",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0115400",
+    "product": "stevor",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0115600",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q90",
+  "organism": "Pf",
+  "strategy": "trait_regression",
+  "question": "Which genes are chromatin-driven rather than TF-driven?",
+  "anchor": "PMID:41501628",
+  "grade": "reliable",
+  "settings": "{\"target\": \"chromprox_hp1_log2fc\", \"top\": 200}",
+  "seconds": 4.1,
+  "summary": "chromprox_hp1_log2fc predicted from 136 permitted measurements (boosted); out-of-fold rank correlation 0.293 over 1,629 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 4,091 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 4091,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_0728100",
+    "product": "anaphase-promoting complex subunit 1, putative",
+    "measured": 7.35179,
+    "expected": 0.5747565577648451,
+    "z": 6.48541403340861
+   },
+   {
+    "gene_id": "PF3D7_1456000",
+    "product": "AP2 domain transcription factor AP2-HC",
+    "measured": 7.60953,
+    "expected": 0.9069443814199946,
+    "z": 6.4142959247672335
+   },
+   {
+    "gene_id": "PF3D7_0809900",
+    "product": "JmjC domain-containing protein 1, putative",
+    "measured": 6.98927,
+    "expected": 1.3165781087893929,
+    "z": 5.430464693764388
+   },
+   {
+    "gene_id": "PF3D7_1357400",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 6.32152,
+    "expected": 0.737160906342395,
+    "z": 5.346082623415759
+   },
+   {
+    "gene_id": "PF3D7_1126300",
+    "product": "DnaJ protein, putative",
+    "measured": 5.81381,
+    "expected": 0.23522409490618448,
+    "z": 5.340567643509986
+   },
+   {
+    "gene_id": "PF3D7_0506500",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 7.24591,
+    "expected": 1.845998012327011,
+    "z": 5.169885003687302
+   },
+   {
+    "gene_id": "PF3D7_0321800",
+    "product": "WD repeat-containing protein, putative",
+    "measured": 6.26945,
+    "expected": 1.0209641461028693,
+    "z": 5.0252314771732305
+   },
+   {
+    "gene_id": "PF3D7_1140700",
+    "product": "chromo domain-containing protein CDP",
+    "measured": 6.22095,
+    "expected": 1.0185202681121133,
+    "z": 4.981235237554112
+   },
+   {
+    "gene_id": "PF3D7_1123800",
+    "product": "structural maintenance of chromosomes protein 5, putative",
+    "measured": 6.2514,
+    "expected": 1.1309479513799023,
+    "z": 4.9029240459226076
+   },
+   {
+    "gene_id": "PF3D7_0827800",
+    "product": "SET domain protein, putative",
+    "measured": 6.97506,
+    "expected": 1.9564485820273512,
+    "z": 4.805638286864819
+   },
+   {
+    "gene_id": "PF3D7_1010900",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 5.05767,
+    "expected": 0.0857526028854481,
+    "z": 4.761032678732188
+   },
+   {
+    "gene_id": "PF3D7_0317700",
+    "product": "CPSF (cleavage and polyadenylation specific factor), subunit A, putative",
+    "measured": 6.20407,
+    "expected": 1.5063808157979106,
+    "z": 4.4990694556193525
+   },
+   {
+    "gene_id": "PF3D7_1010300",
+    "product": "succinate dehydrogenase subunit 4, putative",
+    "measured": 4.6399,
+    "expected": 0.04462962214047858,
+    "z": 4.401231380054777
+   },
+   {
+    "gene_id": "PF3D7_0206800",
+    "product": "merozoite surface protein 2",
+    "measured": -4.68958,
+    "expected": -0.21727183685953938,
+    "z": -4.260795313702594
+   },
+   {
+    "gene_id": "PF3D7_1462400",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 6.37945,
+    "expected": 1.9746058841358096,
+    "z": 4.2193220249675605
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.35257638404821384,
+  "chance": 0.0,
+  "bar": 0.09124818227905018,
+  "p": 1.0342900508257407e-10,
+  "skill": 0.35257638404821384,
+  "n_hidden": 326,
+  "test_summary": "PASS -- rank correlation of predicted and hidden values 0.353 against 0.000 \u00b1 0.055 under the chance distribution of a rank correlation (bar 0.091, p 1.03e-10); effect +0.353, needed +0.100; 326 hidden",
+  "scorecard": {
+   "spearman": 0.3526,
+   "pearson": 0.3451,
+   "kendall": 0.2414,
+   "r2": 0.081,
+   "nrmse": 0.9586,
+   "mae": 0.6496,
+   "rmse": 1.0042,
+   "top_decile_recall": 0.3333,
+   "bottom_decile_recall": 0.2727,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 2.7
+ },
+ {
+  "qid": "Q91",
+  "organism": "Pf",
+  "strategy": "label_outliers",
+  "question": "Which non-PEXEL proteins are nevertheless exported?",
+  "anchor": "PMID:38334391",
+  "grade": "reliable",
+  "settings": "{\"target\": \"is_exported\", \"top\": 200}",
+  "seconds": 1.3,
+  "summary": "5,720 labelled genes scored by how little their neighbourhood shares their is_exported label; the 200 most surprising are listed with the label their neighbours carry instead. Each is a mislabel, a dual or moonlighting protein, or a gene whose measurements are unusual -- all three worth knowing.",
+  "rows[surprising genes]": 200,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_0104400",
+    "product": "4-hydroxy-3-methylbut-2-enyl diphosphate reductase",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_0112800",
+    "product": "Plasmodium exported protein (hyp11), unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_0717000",
+    "product": "conserved Plasmodium membrane protein, unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_1038500",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_1133300",
+    "product": "cell division control protein CDC50B",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_1368000",
+    "product": "conserved protein, unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.0,
+    "surprise": 1.0
+   },
+   {
+    "gene_id": "PF3D7_1458300",
+    "product": "alpha/beta hydrolase, putative",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.046875,
+    "surprise": 0.9765625
+   },
+   {
+    "gene_id": "PF3D7_0831300",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.0,
+    "surprise": 0.9666666666666667
+   },
+   {
+    "gene_id": "PF3D7_0935500",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.0,
+    "surprise": 0.9666666666666667
+   },
+   {
+    "gene_id": "PF3D7_1102300",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.0,
+    "surprise": 0.9666666666666667
+   },
+   {
+    "gene_id": "PF3D7_1476600",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.0,
+    "surprise": 0.9666666666666667
+   },
+   {
+    "gene_id": "PF3D7_0102300",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.0,
+    "alternative": "False",
+    "alternative_share": 1.0,
+    "network_share": 0.12,
+    "surprise": 0.94
+   },
+   {
+    "gene_id": "PF3D7_0402400",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.13333333333333333,
+    "alternative": "False",
+    "alternative_share": 0.8666666666666667,
+    "network_share": 0.0,
+    "surprise": 0.9333333333333333
+   },
+   {
+    "gene_id": "PF3D7_1038600",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.13333333333333333,
+    "alternative": "False",
+    "alternative_share": 0.8666666666666667,
+    "network_share": 0.0,
+    "surprise": 0.9333333333333333
+   },
+   {
+    "gene_id": "PF3D7_0937100",
+    "product": "Plasmodium exported protein, unknown function",
+    "label": "True",
+    "own_share": 0.06666666666666667,
+    "alternative": "False",
+    "alternative_share": 0.9333333333333333,
+    "network_share": 0.08,
+    "surprise": 0.9266666666666666
+   }
+  ],
+  "status": "ran",
+  "verdict": "PASS",
+  "metric": "AUROC of surprise for the swapped labels",
+  "observed": 0.9936166612187959,
+  "chance": 0.5081093432699064,
+  "bar": 0.5392936470963707,
+  "p": 0.047619047619047616,
+  "skill": 0.9870228501113679,
+  "n_hidden": 286,
+  "test_summary": "PASS -- AUROC of surprise for the swapped labels 0.994 against 0.508 \u00b1 0.018 under 20 random sets of the same size (bar 0.539, p 0.0476); effect +0.486, needed +0.100; 286 hidden",
+  "scorecard": {
+   "auroc": 0.9936,
+   "auprc": 0.921,
+   "auprc_lift": 18.4209,
+   "prevalence": 0.05,
+   "pauroc_10": 0.9751,
+   "r_precision": 0.9021,
+   "precision_at_1pct": 0.9483,
+   "enrichment_at_1pct": 18.9655,
+   "recall_at_10pct": 0.9755,
+   "max_f1": 0.9053,
+   "ndcg": 0.9848
+  },
+  "test_seconds": 0.7
+ },
+ {
+  "qid": "Q93",
+  "organism": "Pf",
+  "strategy": "understudied_first",
+  "question": "Which essential genes are structurally druggable but unpublished?",
+  "anchor": "PMID:40066064",
+  "grade": "works when tuned",
+  "settings": "{\"target\": \"lopit_pf_location\", \"min_agree\": 2}",
+  "seconds": 1.3,
+  "summary": "4,540 genes have no focal or substantive publication; 2,000 of those without a lopit_pf_location label receive an agreed call, ranked by agreement times novelty. These are the cheapest discoveries: a hypothesis the data supports about a gene nobody has written about.",
+  "rows[candidates]": 2000,
+  "lead_table": "candidates",
+  "head": [
+   {
+    "gene_id": "PF3D7_0100100",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0100400",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0100700",
+    "product": "Plasmodium exported protein, unknown function, fragment",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101100",
+    "product": "exported protein family 4",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101600",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0101800",
+    "product": "stevor",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0103400",
+    "product": "zinc-carboxypeptidase, putative",
+    "prediction": "nucleus 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0106600",
+    "product": "conserved Plasmodium protein, unknown function",
+    "prediction": "apicoplast",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0106800",
+    "product": "ras-related protein Rab-5C",
+    "prediction": "plasma membrane 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0108500",
+    "product": "ELM2 domain-containing protein, putative",
+    "prediction": "nucleo-cytoplasm",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0111800",
+    "product": "eukaryotic translation initiation factor 4E, putative",
+    "prediction": "nucleus 1",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0114200",
+    "product": "exported protein family 3",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0114700",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0115400",
+    "product": "stevor",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   },
+   {
+    "gene_id": "PF3D7_0115600",
+    "product": "rifin",
+    "prediction": "erythrocyte membrane",
+    "support": 0.6030594405594405,
+    "sources_agreeing": 3.0
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q95",
+  "organism": "Pf",
+  "strategy": "trait_regression",
+  "question": "Which transporters carry resistance-selection variants?",
+  "anchor": "PMID:41922323",
+  "grade": "reliable",
+  "settings": "{\"target\": \"resistance_selection_variants\", \"top\": 200}",
+  "seconds": 2.8,
+  "summary": "resistance_selection_variants predicted from 139 permitted measurements (boosted); out-of-fold rank correlation 0.122 over 734 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 4,986 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 4986,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_1211900",
+    "product": "non-SERCA-type Ca2+ -transporting P-ATPase",
+    "measured": 46.0,
+    "expected": 13.793201059925396,
+    "z": 7.20635168172974
+   },
+   {
+    "gene_id": "PF3D7_1222600",
+    "product": "AP2 domain transcription factor AP2-G",
+    "measured": 35.0,
+    "expected": 4.3557743907526145,
+    "z": 6.8562903971600555
+   },
+   {
+    "gene_id": "PF3D7_MIT02300",
+    "product": "cytochrome b",
+    "measured": 35.0,
+    "expected": 5.428540576422842,
+    "z": 6.615959974523292
+   },
+   {
+    "gene_id": "PF3D7_1255200",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "measured": 32.0,
+    "expected": 4.88222861263091,
+    "z": 6.066263413765057
+   },
+   {
+    "gene_id": "PF3D7_0709700",
+    "product": "prodrug activation and resistance esterase",
+    "measured": 28.0,
+    "expected": 2.919402191517522,
+    "z": 5.609878048772978
+   },
+   {
+    "gene_id": "PF3D7_MIT02100",
+    "product": "cytochrome c oxidase subunit 1",
+    "measured": 2.0,
+    "expected": 26.273056533782338,
+    "z": -5.44675737205245
+   },
+   {
+    "gene_id": "PF3D7_0712400",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "measured": 27.0,
+    "expected": 2.9447707727559043,
+    "z": 5.380166050222688
+   },
+   {
+    "gene_id": "PF3D7_0509800",
+    "product": "phosphatidylinositol 4-kinase beta",
+    "measured": 22.0,
+    "expected": 1.163521612920474,
+    "z": 4.659073457901752
+   },
+   {
+    "gene_id": "PF3D7_0107500",
+    "product": "Niemann-Pick type C1-related protein",
+    "measured": 21.0,
+    "expected": 3.8095251939504364,
+    "z": 3.842263986025423
+   },
+   {
+    "gene_id": "PF3D7_1371600",
+    "product": "erythrocyte binding like protein 1, pseudogene",
+    "measured": 1.0,
+    "expected": 18.104472114522483,
+    "z": -3.840788665915733
+   },
+   {
+    "gene_id": "PF3D7_0632500",
+    "product": "erythrocyte membrane protein 1, PfEMP1",
+    "measured": 20.0,
+    "expected": 3.1724949076891353,
+    "z": 3.760948349988045
+   },
+   {
+    "gene_id": "PF3D7_0109800",
+    "product": "phenylalanine--tRNA ligase alpha subunit",
+    "measured": 20.0,
+    "expected": 4.051504406284626,
+    "z": 3.564024987636537
+   },
+   {
+    "gene_id": "PF3D7_1238800",
+    "product": "acyl-CoA synthetase",
+    "measured": 16.0,
+    "expected": 0.21596671913243878,
+    "z": 3.5271807081630553
+   },
+   {
+    "gene_id": "PF3D7_0312500",
+    "product": "multidrug-resistant modulator MFR3",
+    "measured": 17.0,
+    "expected": 2.3559619735488155,
+    "z": 3.2717890441103505
+   },
+   {
+    "gene_id": "PF3D7_0627800",
+    "product": "acetyl-CoA synthetase",
+    "measured": 18.0,
+    "expected": 4.107747534151933,
+    "z": 3.1033674962228375
+   }
+  ],
+  "status": "ran",
+  "verdict": "FAIL",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.03160479028505989,
+  "chance": 0.0,
+  "bar": 0.13614116867508952,
+  "p": 0.3512743964022065,
+  "skill": 0.03160479028505989,
+  "n_hidden": 147,
+  "test_summary": "FAIL -- rank correlation of predicted and hidden values 0.032 against 0.000 \u00b1 0.083 under the chance distribution of a rank correlation (bar 0.136, p 0.351); effect +0.032, needed +0.100; 147 hidden",
+  "scorecard": {
+   "spearman": 0.0316,
+   "pearson": 0.1349,
+   "kendall": 0.021,
+   "r2": -0.5074,
+   "nrmse": 1.2278,
+   "mae": 2.7711,
+   "rmse": 4.2474,
+   "top_decile_recall": 0.2,
+   "bottom_decile_recall": 0.0667,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 1.7
+ },
+ {
+  "qid": "Q96",
+  "organism": "Pf",
+  "strategy": "conjunctions",
+  "question": "Which febrile-temperature responders are also phospho-regulated?",
+  "anchor": "PMID:41960867",
+  "grade": "untestable",
+  "settings": "{\"a\": \"stage_enriched_derived\", \"b\": \"has_phospho\"}",
+  "seconds": 19.4,
+  "summary": "A map built without stage_enriched_derived or has_phospho; 4 clusters are enriched for a COMBINATION of the two beyond what either label alone explains (interaction ratio >= 1.25). Each is a kind of gene defined by both: nuclear AND S-phase, secreted AND fitness-conferring in vivo.",
+  "rows[conjunctions]": 4,
+  "lead_table": "conjunctions",
+  "head": [
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "has_phospho",
+    "other_kind": "discrete",
+    "cluster": 16,
+    "category": "ookinete",
+    "other_category": "True",
+    "n_cluster": 110,
+    "n_known": 7,
+    "n_hits": 6,
+    "purity": 0.8571428571428571,
+    "background": 0.22580645161290322,
+    "lift_a": 1.712707182320442,
+    "lift_b": 2.5067385444743935,
+    "joint_lift": 3.7959183673469385,
+    "interaction_ratio": 1.5142857142857142,
+    "product_ratio": 0.884147465437788,
+    "lift": 1.5142857142857142,
+    "p": 0.0006406642704516682,
+    "n_predicted": 103,
+    "genes": "PF3D7_0103100, PF3D7_0107800, PF3D7_0203000, PF3D7_0204600, PF3D7_0211700, PF3D7_0212800, PF3D7_0217600, PF3D7_0218200, PF3D7_0302600, PF3D7_0303100, PF3D7_0305100, PF3D7_0316400, PF3D7_0319000, PF3D7_0411200, PF3D7_0415200, PF3D7_0502600, PF3D7_0514300, PF3D7_0518100, PF3D7_0523200, PF3D7_0525200, PF3D7_0603400, PF3D7_0603800, PF3D7_0604000, PF3D7_0604300, PF3D7_0607900, PF3D7_0613500, PF3D7_0615900, PF3D7_0621700, PF3D7_0625300, PF3D7_0626400, PF3D7_0628800, PF3D7_0703000, PF3D7_0703200, PF3D7_0704000, PF3D7_0704100, PF3D7_0704200, PF3D7_0704300, PF3D7_0704700, PF3D7_0705600, PF3D7_0706100, PF3D7_0707200, PF3D7_0707500, PF3D7_0707800, PF3D7_0710000, PF3D7_0710200, PF3D7_0711400, PF3D7_0717100, PF3D7_0719400, PF3D7_0721200, PF3D7_0723700, PF3D7_0724000, PF3D7_0726600, PF3D7_0727100, PF3D7_0727500, PF3D7_0727700, PF3D7_0728100, PF3D7_0728600, PF3D7_0728800, PF3D7_0730500, PF3D7_0802500",
+    "q": 0.002591091395757875,
+    "circular": false,
+    "selection": "leaf"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "has_phospho",
+    "other_kind": "discrete",
+    "cluster": 10,
+    "category": "ookinete",
+    "other_category": "True",
+    "n_cluster": 161,
+    "n_known": 11,
+    "n_hits": 7,
+    "purity": 0.6363636363636364,
+    "background": 0.22580645161290322,
+    "lift_a": 1.55700652938222,
+    "lift_b": 2.1269296740994856,
+    "joint_lift": 2.8181818181818183,
+    "interaction_ratio": 1.325,
+    "product_ratio": 0.850991935483871,
+    "lift": 1.325,
+    "p": 0.0034785760483352127,
+    "n_predicted": 150,
+    "genes": "PF3D7_0108100, PF3D7_0202400, PF3D7_0203700, PF3D7_0210200, PF3D7_0212100, PF3D7_0215400, PF3D7_0215800, PF3D7_0219600, PF3D7_0302000, PF3D7_0302100, PF3D7_0302500, PF3D7_0303200, PF3D7_0305200, PF3D7_0305500, PF3D7_0308900, PF3D7_0309300, PF3D7_0310300, PF3D7_0310500, PF3D7_0311300, PF3D7_0314600, PF3D7_0318600, PF3D7_0319700, PF3D7_0321600, PF3D7_0321800, PF3D7_0322100, PF3D7_0323700, PF3D7_0403200, PF3D7_0403700, PF3D7_0405100, PF3D7_0405400, PF3D7_0407900, PF3D7_0412100, PF3D7_0415300, PF3D7_0416100, PF3D7_0417300, PF3D7_0417800, PF3D7_0418300, PF3D7_0420000, PF3D7_0420100, PF3D7_0420600, PF3D7_0422500, PF3D7_0423600, PF3D7_0501800, PF3D7_0503100, PF3D7_0506700, PF3D7_0506800, PF3D7_0507800, PF3D7_0508700, PF3D7_0509600, PF3D7_0511500, PF3D7_0515000, PF3D7_0516300, PF3D7_0517100, PF3D7_0519300, PF3D7_0519600, PF3D7_0520100, PF3D7_0524900, PF3D7_0602100, PF3D7_0602400, PF3D7_0604500",
+    "q": 0.005565721677336341,
+    "circular": false,
+    "selection": "leaf"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "has_phospho",
+    "other_kind": "discrete",
+    "cluster": 18,
+    "category": "ookinete",
+    "other_category": "False",
+    "n_cluster": 71,
+    "n_known": 11,
+    "n_hits": 8,
+    "purity": 0.7272727272727273,
+    "background": 0.3580645161290323,
+    "lift_a": 1.245605223505776,
+    "lift_b": 1.5196078431372548,
+    "joint_lift": 2.031122031122031,
+    "interaction_ratio": 1.3366093366093366,
+    "product_ratio": 1.0730601569311247,
+    "lift": 1.3366093366093366,
+    "p": 0.012810601403681695,
+    "n_predicted": 60,
+    "genes": "PF3D7_0104000, PF3D7_0408000, PF3D7_0507900, PF3D7_0523900, PF3D7_0616100, PF3D7_1014000, PF3D7_1022300, PF3D7_1024600, PF3D7_1025600, PF3D7_1026100, PF3D7_1027600, PF3D7_1032800, PF3D7_1036600, PF3D7_1036700, PF3D7_1106900, PF3D7_1110800, PF3D7_1111400, PF3D7_1112200, PF3D7_1112900, PF3D7_1114200, PF3D7_1114800, PF3D7_1115500, PF3D7_1116200, PF3D7_1117600, PF3D7_1118800, PF3D7_1118900, PF3D7_1122200, PF3D7_1125600, PF3D7_1134400, PF3D7_1135400, PF3D7_1135500, PF3D7_1135700, PF3D7_1138350, PF3D7_1206100, PF3D7_1217100, PF3D7_1218600, PF3D7_1224600, PF3D7_1228000, PF3D7_1231500, PF3D7_1231700, PF3D7_1232300, PF3D7_1232800, PF3D7_1238400, PF3D7_1316000, PF3D7_1316400, PF3D7_1327100, PF3D7_1341700, PF3D7_1347800, PF3D7_1352600, PF3D7_1357600, PF3D7_1369700, PF3D7_1410100, PF3D7_1417700, PF3D7_1432900, PF3D7_1444700, PF3D7_1451300, PF3D7_1455000, PF3D7_1456900, PF3D7_1465700, PF3D7_1473600",
+    "q": 0.017080801871575593,
+    "circular": false,
+    "selection": "leaf"
+   },
+   {
+    "kind": "conjunction",
+    "layer": "stage_enriched_derived",
+    "layer_kind": "discrete",
+    "other": "has_phospho",
+    "other_kind": "discrete",
+    "cluster": 20,
+    "category": "ookinete",
+    "other_category": "False",
+    "n_cluster": 21,
+    "n_known": 6,
+    "n_hits": 5,
+    "purity": 0.8333333333333334,
+    "background": 0.3580645161290323,
+    "lift_a": 1.427255985267035,
+    "lift_b": 1.5196078431372548,
+    "joint_lift": 2.3273273273273274,
+    "interaction_ratio": 1.5315315315315317,
+    "product_ratio": 1.0730601569311249,
+    "lift": 1.5315315315315317,
+    "p": 0.023651708417474437,
+    "n_predicted": 15,
+    "genes": "PF3D7_0104500, PF3D7_0400200, PF3D7_0508600, PF3D7_0528600, PF3D7_0918500, PF3D7_1144100, PF3D7_1301700, PF3D7_1303000, PF3D7_1329600, PF3D7_1332600, PF3D7_1334700, PF3D7_1336700, PF3D7_1353000, PF3D7_1446000, PF3D7_1465400",
+    "q": 0.027030523905685073,
+    "circular": false,
+    "selection": "leaf"
+   }
+  ],
+  "status": "ran"
+ },
+ {
+  "qid": "Q97",
+  "organism": "Pf",
+  "strategy": "ortholog_transfer",
+  "question": "Which gametocyte-committed proteins have no Toxoplasma orthologue?",
+  "anchor": "PMID:41482054",
+  "grade": "reliable",
+  "settings": "{\"target\": \"committed_vs_asexual_log2fc\", \"source\": \"stage_enriched_derived\"}",
+  "seconds": 0.5,
+  "summary": "stage_enriched_derived carried from Tg through shared orthogroups to 375 genes. Where both species are measured (125 genes), the transferred value rank-correlates with committed_vs_asexual_log2fc at 0.049. 250 genes lacking committed_vs_asexual_log2fc receive a value from their orthologs.",
+  "rows[transferred]": 250,
+  "lead_table": "transferred",
+  "head": [
+   {
+    "gene_id": "PF3D7_0102600",
+    "product": "serine/threonine protein kinase, FIKK family",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0105800",
+    "product": "cyclin-dependent kinases regulatory subunit, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0110600",
+    "product": "phosphatidylinositol-4-phosphate 5-kinase",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0111300",
+    "product": "P-loop containing nucleoside triphosphate hydrolase, putative",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0202700",
+    "product": "octaprenyl pyrophosphate synthase",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0203300",
+    "product": "ERCC1 nucleotide excision repair protein, putative",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0203800",
+    "product": "WD repeat-containing protein, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0203900",
+    "product": "5'-3' exonuclease, putative",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0204400",
+    "product": "dynein light chain, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0209300",
+    "product": "2C-methyl-D-erythritol 2,4-cyclodiphosphate synthase",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0209600",
+    "product": "transporter, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0210300",
+    "product": "monocarboxylate transporter, putative",
+    "ortholog_value": "tachyzoite",
+    "transferred": -0.0001623344350000014
+   },
+   {
+    "gene_id": "PF3D7_0301200",
+    "product": "serine/threonine protein kinase, FIKK family",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0303900",
+    "product": "phosphatidylethanolamine-binding protein, putative",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   },
+   {
+    "gene_id": "PF3D7_0307400",
+    "product": "ATP-dependent Clp protease proteolytic subunit",
+    "ortholog_value": "oocyst",
+    "transferred": 0.04814821406872941
+   }
+  ],
+  "status": "ran",
+  "verdict": "FAIL",
+  "metric": "rank correlation of transferred and hidden values",
+  "observed": -0.10346169068891413,
+  "chance": 0.015761498142040642,
+  "bar": 0.26701813243406436,
+  "p": 0.7142857142857143,
+  "skill": -0.12113241719958695,
+  "n_hidden": 31,
+  "test_summary": "FAIL -- rank correlation of transferred and hidden values -0.103 against 0.016 \u00b1 0.164 under 20 runs with the orthologs' values dealt to random genes (bar 0.267, p 0.714); effect -0.119, needed +0.100; 31 hidden",
+  "scorecard": {
+   "spearman": -0.1035,
+   "pearson": -0.053,
+   "kendall": -0.0766,
+   "r2": -0.4792,
+   "nrmse": 1.2162,
+   "mae": 0.2579,
+   "rmse": 0.3415,
+   "top_decile_recall": 0.0,
+   "bottom_decile_recall": 0.0,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 0.1
+ },
+ {
+  "qid": "Q98",
+  "organism": "Pf",
+  "strategy": "stratum_focus",
+  "question": "Which mitochondrial proteins are apicomplexan-only?",
+  "anchor": "PMID:34494883",
+  "grade": "weak",
+  "settings": "{\"target\": \"lopit_pf_location\", \"stratum\": \"lineage-specific\"}",
+  "seconds": 0.2,
+  "summary": "404 genes are lineage-specific; 163 of those without a lopit_pf_location label are called from measurement neighbours, with conservation and orthology columns removed so the call cannot lean on them. 'accuracy by stratum' says whether these genes can be called as well as the rest.",
+  "rows[calls]": 163,
+  "rows[accuracy by stratum]": 2,
+  "lead_table": "calls",
+  "head": [
+   {
+    "gene_id": "PF3D7_1370900",
+    "product": "non-coding RNA",
+    "prediction": "mitochondrion",
+    "support": 0.8071723534328313
+   },
+   {
+    "gene_id": "PF3D7_1353000",
+    "product": "tryptophan-rich protein, pseudogene",
+    "prediction": "nucleus 1",
+    "support": 0.7968278016896106
+   },
+   {
+    "gene_id": "PF3D7_1372200",
+    "product": "histidine-rich protein III",
+    "prediction": "nucleus 1",
+    "support": 0.669752860210502
+   },
+   {
+    "gene_id": "PF3D7_MIT02500",
+    "product": "large subunit ribosomal RNA fragment B",
+    "prediction": "mitochondrion",
+    "support": 0.5998882385645692
+   },
+   {
+    "gene_id": "PF3D7_MIT02200",
+    "product": "small subunit ribosomal RNA fragment A",
+    "prediction": "mitochondrion",
+    "support": 0.599426165730271
+   },
+   {
+    "gene_id": "PF3D7_0102400",
+    "product": "lysophospholipase, putative, pseudogene",
+    "prediction": "mitochondrion",
+    "support": 0.5958027491532885
+   },
+   {
+    "gene_id": "PF3D7_0829800",
+    "product": "non-coding RNA",
+    "prediction": "mitochondrion",
+    "support": 0.5388465439275312
+   },
+   {
+    "gene_id": "PF3D7_MIT03000",
+    "product": "ribosomal RNA fragment RNA18",
+    "prediction": "mitochondrion",
+    "support": 0.5369980993656764
+   },
+   {
+    "gene_id": "PF3D7_1478900",
+    "product": "non-coding RNA",
+    "prediction": "mitochondrion",
+    "support": 0.5369713307462054
+   },
+   {
+    "gene_id": "PF3D7_MIT00600",
+    "product": "large subunit ribosomal RNA fragment C",
+    "prediction": "mitochondrion",
+    "support": 0.536084010103615
+   },
+   {
+    "gene_id": "PF3D7_1109000",
+    "product": "small nucleolar RNA snoR07",
+    "prediction": "mitochondrion",
+    "support": 0.5339150217090313
+   },
+   {
+    "gene_id": "PF3D7_0918500",
+    "product": "telomerase RNA",
+    "prediction": "mitochondrion",
+    "support": 0.4732003246516001
+   },
+   {
+    "gene_id": "PF3D7_0221500",
+    "product": "Pfmc-2TM Maurer's cleft two transmembrane protein, pseudogene",
+    "prediction": "mitochondrion",
+    "support": 0.47145495434606083
+   },
+   {
+    "gene_id": "PF3D7_0725600",
+    "product": "18S ribosomal RNA",
+    "prediction": "nucleus 1",
+    "support": 0.4707570043390356
+   },
+   {
+    "gene_id": "PF3D7_0531600",
+    "product": "18S ribosomal RNA",
+    "prediction": "nucleus 1",
+    "support": 0.4706691353343976
+   }
+  ],
+  "status": "ran",
+  "verdict": "INCONCLUSIVE",
+  "metric": "correct calls per hidden gene",
+  "observed": NaN,
+  "chance": NaN,
+  "bar": NaN,
+  "p": 1.0,
+  "skill": NaN,
+  "n_hidden": 0,
+  "test_summary": "INCONCLUSIVE -- too few labelled genes this strategy can speak about (0 hidden)",
+  "scorecard": {},
+  "test_seconds": 0.0
+ },
+ {
+  "qid": "Q99",
+  "organism": "Pf",
+  "strategy": "trait_regression",
+  "question": "Which m6A-modified transcripts are stage-restricted?",
+  "anchor": "PMID:38892332",
+  "grade": "reliable",
+  "settings": "{\"target\": \"m6a_canonical_stoichiometry\", \"top\": 200}",
+  "seconds": 4.3,
+  "summary": "m6a_canonical_stoichiometry predicted from 142 permitted measurements (boosted); out-of-fold rank correlation 0.007 over 3,622 measured genes. 'surprising genes' are the measured ones furthest from what everything else predicts -- where this gene does something its profile does not explain. 'predicted' gives a value for the 2,098 genes never measured.",
+  "rows[surprising genes]": 200,
+  "rows[predicted]": 2098,
+  "lead_table": "surprising genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_0805500",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 0.319127615,
+    "expected": 0.655433782413749,
+    "z": -3.3630300088804534
+   },
+   {
+    "gene_id": "PF3D7_0321600",
+    "product": "ATP-dependent RNA helicase DDX42, putative",
+    "measured": 0.26950619,
+    "expected": 0.6047606502538341,
+    "z": -3.3525171657861574
+   },
+   {
+    "gene_id": "PF3D7_1441300",
+    "product": "serine/threonine protein kinase, putative",
+    "measured": 0.2513999,
+    "expected": 0.5857677147650995,
+    "z": -3.343654275754976
+   },
+   {
+    "gene_id": "PF3D7_1412200",
+    "product": "MORN repeat protein, putative",
+    "measured": 0.32670114,
+    "expected": 0.6517144513977047,
+    "z": -3.250146852895524
+   },
+   {
+    "gene_id": "PF3D7_0215400",
+    "product": "WD repeat-containing protein, putative",
+    "measured": 0.8747716367,
+    "expected": 0.5575203365709391,
+    "z": 3.1699169665288967
+   },
+   {
+    "gene_id": "PF3D7_0820400",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 0.88353005,
+    "expected": 0.570918184674797,
+    "z": 3.12354127185062
+   },
+   {
+    "gene_id": "PF3D7_0419400",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 0.88396242,
+    "expected": 0.5729766052004776,
+    "z": 3.107287304309639
+   },
+   {
+    "gene_id": "PF3D7_1236800",
+    "product": "protein-S-isoprenylcysteine O-methyltransferase",
+    "measured": 0.32692693,
+    "expected": 0.6309878801233918,
+    "z": -3.040707481436211
+   },
+   {
+    "gene_id": "PF3D7_1001600",
+    "product": "exported lipase 2",
+    "measured": 0.8788090633,
+    "expected": 0.5756356982291143,
+    "z": 3.029194217840709
+   },
+   {
+    "gene_id": "PF3D7_0933500",
+    "product": "gamma-tubulin complex component, putative",
+    "measured": 0.8984222933,
+    "expected": 0.5961975442168282,
+    "z": 3.0197118719789744
+   },
+   {
+    "gene_id": "PF3D7_1250200",
+    "product": "CSC1-like protein, putative",
+    "measured": 0.8633023567,
+    "expected": 0.5663609310997114,
+    "z": 2.966899879336032
+   },
+   {
+    "gene_id": "PF3D7_0418100",
+    "product": "protein SOC1, putative",
+    "measured": 0.83840035,
+    "expected": 0.54277931198057,
+    "z": 2.9537013122916234
+   },
+   {
+    "gene_id": "PF3D7_1219100",
+    "product": "clathrin heavy chain, putative",
+    "measured": 0.84276678,
+    "expected": 0.550958447129208,
+    "z": 2.9155895902076105
+   },
+   {
+    "gene_id": "PF3D7_0219900",
+    "product": "Plasmodium exported protein, unknown function",
+    "measured": 0.37055555,
+    "expected": 0.6587811455560518,
+    "z": -2.882417603555714
+   },
+   {
+    "gene_id": "PF3D7_1303800",
+    "product": "conserved Plasmodium protein, unknown function",
+    "measured": 0.78498156,
+    "expected": 0.4980328875476376,
+    "z": 2.867012524825037
+   }
+  ],
+  "status": "ran",
+  "verdict": "FAIL",
+  "metric": "rank correlation of predicted and hidden values",
+  "observed": 0.043265494895810976,
+  "chance": 0.0,
+  "bar": 0.061178208271885755,
+  "p": 0.12234352980072244,
+  "skill": 0.043265494895810976,
+  "n_hidden": 724,
+  "test_summary": "FAIL -- rank correlation of predicted and hidden values 0.043 against 0.000 \u00b1 0.037 under the chance distribution of a rank correlation (bar 0.061, p 0.122); effect +0.043, needed +0.100; 724 hidden",
+  "scorecard": {
+   "spearman": 0.0433,
+   "pearson": 0.0612,
+   "kendall": 0.0282,
+   "r2": -0.0598,
+   "nrmse": 1.0295,
+   "mae": 0.0816,
+   "rmse": 0.101,
+   "top_decile_recall": 0.1389,
+   "bottom_decile_recall": 0.125,
+   "value_coverage": 1.0,
+   "interval_coverage": NaN,
+   "interval_coverage_answered": NaN,
+   "interval_availability": NaN,
+   "mean_interval_width": NaN,
+   "finite_mean_interval_width": NaN,
+   "unbounded_interval_share": NaN,
+   "interval_width_in_sd": NaN,
+   "promised_coverage": NaN
+  },
+  "test_seconds": 2.6
+ },
+ {
+  "qid": "Q100",
+  "organism": "Pf",
+  "strategy": "condition_shift",
+  "question": "Which surface proteins are reversibly regulated with population state?",
+  "anchor": "PMID:40354414",
+  "grade": "reliable",
+  "settings": "{\"condition\": \"expr_gametocyte_v\", \"baseline\": \"expr_gametocyte_ii\"}",
+  "seconds": 4.3,
+  "summary": "The part of expr_gametocyte_v that expr_gametocyte_ii does not explain -- the condition-specific effect -- for 5,720 genes. Other measurements predict it at out-of-fold rank correlation 0.486: the condition-specific need has a signature, and 'predicted' extends it to genes never screened in the condition. Negative shift: needed more in the condition than the baseline predicts.",
+  "rows[shifted genes]": 5720,
+  "rows[predicted]": 0,
+  "lead_table": "shifted genes",
+  "head": [
+   {
+    "gene_id": "PF3D7_0707000",
+    "product": "tRNA Lysine",
+    "shift": -0.7131198718956486,
+    "explained": -0.07994000762237714
+   },
+   {
+    "gene_id": "PF3D7_0706800",
+    "product": "tRNA Threonine",
+    "shift": -0.7049533203825689,
+    "explained": -0.09250838877753681
+   },
+   {
+    "gene_id": "PF3D7_1103200",
+    "product": "tRNA Glycine",
+    "shift": -0.6749370685311686,
+    "explained": -0.078081843738662
+   },
+   {
+    "gene_id": "PF3D7_1438300",
+    "product": "tRNA Methionine",
+    "shift": -0.669155622209778,
+    "explained": -0.08802733322822381
+   },
+   {
+    "gene_id": "PF3D7_0312600",
+    "product": "tRNA Valine",
+    "shift": -0.6682223356769359,
+    "explained": -0.08954235678895409
+   },
+   {
+    "gene_id": "PF3D7_1438200",
+    "product": "tRNA Selenocysteine",
+    "shift": -0.6560313541681211,
+    "explained": -0.12209621478986422
+   },
+   {
+    "gene_id": "PF3D7_1341000",
+    "product": "tRNA Arginine",
+    "shift": -0.6510037542069387,
+    "explained": -0.07079037410731218
+   },
+   {
+    "gene_id": "PF3D7_0620800",
+    "product": "tRNA Alanine",
+    "shift": -0.6431928375363822,
+    "explained": -0.08328610355198486
+   },
+   {
+    "gene_id": "PF3D7_0203500",
+    "product": "tRNA Glutamine",
+    "shift": -0.6329336108793139,
+    "explained": -0.0730198550609533
+   },
+   {
+    "gene_id": "PF3D7_1252000",
+    "product": "tRNA Glutamine",
+    "shift": -0.6329336108793139,
+    "explained": -0.0822483239844486
+   },
+   {
+    "gene_id": "PF3D7_0207700",
+    "product": "serine repeat antigen 4",
+    "shift": -0.6326850448130343,
+    "explained": -0.16347485669514714
+   },
+   {
+    "gene_id": "PF3D7_1337600",
+    "product": "tRNA Serine",
+    "shift": -0.6236823380230405,
+    "explained": -0.13104170547431887
+   },
+   {
+    "gene_id": "PF3D7_1251900",
+    "product": "tRNA Valine",
+    "shift": -0.6082283367985769,
+    "explained": -0.08254117595910125
+   },
+   {
+    "gene_id": "PF3D7_0620900",
+    "product": "tRNA Leucine",
+    "shift": -0.600008773497263,
+    "explained": -0.13906248211553243
+   },
+   {
+    "gene_id": "PF3D7_0202500",
+    "product": "early transcribed membrane protein 2",
+    "shift": -0.5922460892395229,
+    "explained": -0.027010750243380652
+   }
+  ],
+  "status": "ran"
+ }
+]

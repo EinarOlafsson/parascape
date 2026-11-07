@@ -1,0 +1,24 @@
+Q68 Tg trait_regression ran 14.5s bfd2_rip_log2_ip_over_input predicted from 365 permitted measurements (boosted); out-of-fold rank correlation 0.672 over 7,463 measured genes. 'surpri
+     test: PASS metric=rank correlation of predicted and hidden values observed=0.690342787455714 chance=0.0 bar=0.042587435685706436 skill=0.690342787455714
+Q70 Tg condition_shift ran 11.3s The part of fit_invivo_brain that fit_invitro_hff does not explain -- the condition-specific effect -- for 7,324 genes. Other measurements predict it 
+Q71 Tg stratum_focus ran 1.8s 4,888 genes are lineage-specific; 1,453 of those without a compartment label are called from measurement neighbours, with conservation and orthology c
+     test: PASS metric=correct calls per hidden gene observed=0.2951219512195122 chance=0.05317073170731708 bar=0.07207317073170731 skill=0.25553838227717673
+Q73 Tg conjunctions ran 22.5s A map built without cellcycle_phase or stage_enriched_derived; 0 clusters are enriched for a COMBINATION of the two beyond what either label alone exp
+Q74 Tg trait_regression ran 8.7s n_phosphosites predicted from 357 permitted measurements (boosted); out-of-fold rank correlation 0.216 over 1,175 measured genes. 'surprising genes' a
+     test: PASS metric=rank correlation of predicted and hidden values observed=0.300593234866235 chance=0.0 bar=0.1075370141007709 skill=0.300593234866235
+Q75 Tg supervised_classifier ran 0.6s A class-balanced logistic regression on 364 permitted measurements, trained on 3,804 labelled genes, calls 2,000 unlabelled genes (probability >= 0.00
+Q77 Tg stratum_focus ran 0.2s 4,888 genes are lineage-specific; 1,453 of those without a compartment label are called from measurement neighbours, with conservation and orthology c
+     test: PASS metric=correct calls per hidden gene observed=0.2951219512195122 chance=0.05317073170731708 bar=0.07207317073170731 skill=0.25553838227717673
+Q80 Tg conjunctions ran 9.8s A map built without stage_enriched_derived or compartment; 2 clusters are enriched for a COMBINATION of the two beyond what either label alone explain
+Q81 Tg structural_homology ran 1.1s 0 genes without a dtm_class annotation (at level 1) called from their struct neighbours; 0 of them are hypothetical proteins. Structural similarity ne
+     test: PASS metric=correct calls per hidden gene observed=0.7532679738562091 chance=0.5219771241830065 bar=0.5459150326797385 skill=0.48384891471543334
+Q82 Tg paralog_divergence ran 0.3s 3,452 paralog pairs scored by how differently they behave across the permitted measurements (one minus the correlation of their profiles). The top of 
+Q83 Tg conjunctions ran 9.3s A map built without compartment or cellcycle_phase; 2 clusters are enriched for a COMBINATION of the two beyond what either label alone explains (inte
+Q84 Tg cluster_guilt ran 9.5s 10 clusters are enriched for one compartment label at q < 0.05 and lift >= 2 (hypergeometric, BH-corrected over every cluster x label); their 321 unla
+Q85 Tg trait_regression ran 10.5s oxidative_stress_screen_score predicted from 333 permitted measurements (boosted); out-of-fold rank correlation 0.291 over 7,384 measured genes. 'surp
+     test: PASS metric=rank correlation of predicted and hidden values observed=0.3192632220137281 chance=0.0 bar=0.04281763971779283 skill=0.3192632220137281
+Q86 Tg condition_shift ran 11.2s The part of fit_no_glucose that fit_complete_medium_2025 does not explain -- the condition-specific effect -- for 7,393 genes. Other measurements pred
+Q87 Tg supervised_classifier ran 0.3s A class-balanced logistic regression on 364 permitted measurements, trained on 3,804 labelled genes, calls 2,000 unlabelled genes (probability >= 0.00
+Q88 Tg trait_regression ran 10.2s cetsa_calcium_ed_score predicted from 371 permitted measurements (boosted); out-of-fold rank correlation 0.369 over 2,348 measured genes. 'surprising 
+     test: PASS metric=rank correlation of predicted and hidden values observed=0.3836738904359199 chance=0.0 bar=0.07595904238076588 skill=0.3836738904359199
+wrote results/questions_2026_11_06

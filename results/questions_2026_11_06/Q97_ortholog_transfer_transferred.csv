@@ -1,0 +1,251 @@
+gene_id,product,ortholog_value,transferred
+PF3D7_0102600,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0105800,"cyclin-dependent kinases regulatory subunit, putative",oocyst,0.04814821406872941
+PF3D7_0110600,phosphatidylinositol-4-phosphate 5-kinase,oocyst,0.04814821406872941
+PF3D7_0111300,"P-loop containing nucleoside triphosphate hydrolase, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0202700,octaprenyl pyrophosphate synthase,tachyzoite,-0.0001623344350000014
+PF3D7_0203300,"ERCC1 nucleotide excision repair protein, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0203800,"WD repeat-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0203900,"5'-3' exonuclease, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0204400,"dynein light chain, putative",oocyst,0.04814821406872941
+PF3D7_0209300,"2C-methyl-D-erythritol 2,4-cyclodiphosphate synthase",tachyzoite,-0.0001623344350000014
+PF3D7_0209600,"transporter, putative",oocyst,0.04814821406872941
+PF3D7_0210300,"monocarboxylate transporter, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0301200,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0303900,"phosphatidylethanolamine-binding protein, putative",oocyst,0.04814821406872941
+PF3D7_0307400,ATP-dependent Clp protease proteolytic subunit,oocyst,0.04814821406872941
+PF3D7_0311500,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0311700,plasmepsin VI,oocyst,0.04814821406872941
+PF3D7_0316300,"inorganic pyrophosphatase, putative, inorganic pyrophosphatase",tachyzoite,-0.0001623344350000014
+PF3D7_0317500,kinesin-5,oocyst,0.04814821406872941
+PF3D7_0320200,CPW-WPC family protein,oocyst,0.04814821406872941
+PF3D7_0407700,"TH1 domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0408700,perforin-like protein 1,oocyst,0.04814821406872941
+PF3D7_0409300,"methyltransferase, putative",oocyst,0.04814821406872941
+PF3D7_0409800,"zinc finger protein, putative",oocyst,0.04814821406872941
+PF3D7_0415300,cdc2-related protein kinase 3,tachyzoite,-0.0001623344350000014
+PF3D7_0419000,"dynein regulatory complex protein, putative",oocyst,0.04814821406872941
+PF3D7_0419300,RAD51 domain-containing protein,oocyst,0.04814821406872941
+PF3D7_0422200,erythrocyte membrane-associated antigen,oocyst,0.04814821406872941
+PF3D7_0424500,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0424700,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0504500,"MOLO1 domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0509200,leucine-rich repeat protein,oocyst,0.04814821406872941
+PF3D7_0510400,"PDCD2 domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0513000,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0514000,"tubulin--tyrosine ligase, putative",oocyst,0.04814821406872941
+PF3D7_0514100,ATP-dependent DNA helicase UvrD,oocyst,0.04814821406872941
+PF3D7_0514500,"conserved Plasmodium membrane protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0515300,phosphatidylinositol 3-kinase,oocyst,0.04814821406872941
+PF3D7_0516500,"major facilitator superfamily domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0518900,"conserved protein, unknown function",bradyzoite,0.03311812434187501
+PF3D7_0521200,"conserved protein, unknown function",tachyzoite,-0.0001623344350000014
+PF3D7_0521500,"ribosomal large subunit pseudouridylate synthase, putative",oocyst,0.04814821406872941
+PF3D7_0522500,"50S ribosomal protein L17, apicoplast, putative",oocyst,0.04814821406872941
+PF3D7_0526300,"WD repeat-containing protein 55, putative",bradyzoite,0.03311812434187501
+PF3D7_0528000,"proteasome maturation factor UMP1, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0531000,"SURF1 domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0604400,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0607100,"MYND-type zinc finger protein, putative",oocyst,0.04814821406872941
+PF3D7_0614200,"cytosolic Fe-S cluster assembly factor NAR1, putative",oocyst,0.04814821406872941
+PF3D7_0615300,"GPI-anchored wall transfer protein 1, putative",oocyst,0.04814821406872941
+PF3D7_0615600,"zinc finger protein, putative",oocyst,0.04814821406872941
+PF3D7_0619000,"FPL domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0622500,"RNA methyltransferase, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0624300,CPW-WPC family protein,oocyst,0.04814821406872941
+PF3D7_0626100,"oxidoreductase, short-chain dehydrogenase family, putative",bradyzoite,0.03311812434187501
+PF3D7_0626500,"centrosomal protein CEP135, putative",oocyst,0.04814821406872941
+PF3D7_0629700,"SET domain protein, putative",oocyst,0.04814821406872941
+PF3D7_0630000,CPW-WPC family protein,oocyst,0.04814821406872941
+PF3D7_0630200,"secreted ookinete protein, putative",oocyst,0.04814821406872941
+PF3D7_0705000,"mRNA cap guanine-N7 methyltransferase, putative",oocyst,0.04814821406872941
+PF3D7_0708300,EKC/KEOPS complex subunit BUD32,oocyst,0.04814821406872941
+PF3D7_0709600,"ribonucleases P/MRP protein subunit POP1, putative",oocyst,0.04814821406872941
+PF3D7_0715100,"C-Myc-binding protein, putative",oocyst,0.04814821406872941
+PF3D7_0717100,"CRAL/TRIO domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0722800,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0723200,"conserved Plasmodium protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0726200,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0727300,DNA (cytosine-5)-methyltransferase,oocyst,0.04814821406872941
+PF3D7_0728700,"alpha/beta hydrolase, putative",oocyst,0.04814821406872941
+PF3D7_0729300,"60S ribosomal export protein NMD3, putative",oocyst,0.04814821406872941
+PF3D7_0729900,"dynein heavy chain, putative",oocyst,0.04814821406872941
+PF3D7_0730000,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0815100,"heptatricopeptide repeat and RAP domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0816500,"small heat shock protein HSP20, putative",oocyst,0.04814821406872941
+PF3D7_0816800,"meiotic recombination protein DMC1, putative",oocyst,0.04814821406872941
+PF3D7_0821900,"WPP motif-containing protein, putative",bradyzoite,0.03311812434187501
+PF3D7_0822500,dynein light chain 1,oocyst,0.04814821406872941
+PF3D7_0825300,"SAYSvFN domain-containing protein, putative",bradyzoite,0.03311812434187501
+PF3D7_0825700,"crystalloid-specific PH domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0825800,"PH-like domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0827400,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0828000,rhomboid protease ROM3,oocyst,0.04814821406872941
+PF3D7_0828600,folate transporter 1,oocyst,0.04814821406872941
+PF3D7_0831300,"Plasmodium exported protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0902000,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0902100,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0902200,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0902300,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0902400,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0902500,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0902600,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_0904200,"PH domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_0905300,"dynein heavy chain, putative",oocyst,0.04814821406872941
+PF3D7_0908700,"tRNA pseudouridine synthase, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0909500,"subpellicular microtubule protein 1, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0909700,"FHA domain protein, putative",oocyst,0.04814821406872941
+PF3D7_0911300,cysteine repeat modular protein 1,oocyst,0.04814821406872941
+PF3D7_0912200,"membrane protein S54, putative",oocyst,0.04814821406872941
+PF3D7_0913300,"conserved protein, unknown function",tachyzoite,-0.0001623344350000014
+PF3D7_0914000,"pseudouridylate synthase, putative",oocyst,0.04814821406872941
+PF3D7_0916900,Zinc finger HIT domain-containing protein 3,oocyst,0.04814821406872941
+PF3D7_0917300,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0918600,ATP-dependent DNA helicase Q1,oocyst,0.04814821406872941
+PF3D7_0919600,"dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit WBP1, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0922300,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_0922900,3-oxoacyl-[acyl-carrier-protein] reductase,tachyzoite,-0.0001623344350000014
+PF3D7_0923300,perforin-like protein 3,oocyst,0.04814821406872941
+PF3D7_0923500,"cyclin-dependent kinases regulatory subunit, putative",oocyst,0.04814821406872941
+PF3D7_0927200,"gametocyte development protein GD1, putative",bradyzoite,0.03311812434187501
+PF3D7_0927500,"dynein light chain, putative",tachyzoite,-0.0001623344350000014
+PF3D7_0929500,"CH domain-containing protein, putative",bradyzoite,0.03311812434187501
+PF3D7_0929800,"conserved Plasmodium protein, unknown function",bradyzoite,0.03311812434187501
+PF3D7_0930200,leucine-rich repeat protein,oocyst,0.04814821406872941
+PF3D7_0933800,"tubulin delta chain, putative",bradyzoite,0.03311812434187501
+PF3D7_0934700,"UBX domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_1007100,"roadblock/LC7 domain-containing protein, putative",bradyzoite,0.03311812434187501
+PF3D7_1009600,"protein phosphatase PPM10, putative",oocyst,0.04814821406872941
+PF3D7_1013500,phosphoinositide-specific phospholipase C,oocyst,0.04814821406872941
+PF3D7_1013900,"translation initiation factor eIF-2B subunit delta, putative",oocyst,0.04814821406872941
+PF3D7_1014200,male gamete fusion factor HAP2,oocyst,0.04814821406872941
+PF3D7_1014800,"EF hand domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_1015000,"FAD synthetase, putative",oocyst,0.04814821406872941
+PF3D7_1015500,"nucleotidyltransferase, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1019500,"TMEM94 domain-containing protein, putative",bradyzoite,0.03311812434187501
+PF3D7_1019700,"conserved Plasmodium protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1020400,"rRNA (cytosine-C(5))-methyltransferase, putative",oocyst,0.04814821406872941
+PF3D7_1020700,"N-acetyltransferase, GNAT family, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1020800,dihydrolipoamide acyltransferase component E2,tachyzoite,-0.0001623344350000014
+PF3D7_1023100,"dynein heavy chain, putative",oocyst,0.04814821406872941
+PF3D7_1027600,"meiotic recombination protein SPO11-2, putative",oocyst,0.04814821406872941
+PF3D7_1027900,"palmitoyltransferase DHHC10, putative",oocyst,0.04814821406872941
+PF3D7_1034100,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1103500,CPW-WPC family protein,oocyst,0.04814821406872941
+PF3D7_1104600,"radial spoke head protein, putative",oocyst,0.04814821406872941
+PF3D7_1106600,"DEAD/DEAH box helicase, putative",oocyst,0.04814821406872941
+PF3D7_1106700,"DNA replication ATP-dependent helicase/nuclease DNA2, putative",oocyst,0.04814821406872941
+PF3D7_1107100,"nucleic acid binding protein, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1107600,"coiled-coil domain-containing protein 40, putative",oocyst,0.04814821406872941
+PF3D7_1107900,"mechanosensitive ion channel protein, putative",oocyst,0.04814821406872941
+PF3D7_1110900,"ES2 protein, putative",oocyst,0.04814821406872941
+PF3D7_1111000,RNA cytosine C(5)-methyltransferase NSUN2,oocyst,0.04814821406872941
+PF3D7_1114000,"dynein light chain Tctex-type, putative",oocyst,0.04814821406872941
+PF3D7_1114800,"glycerol-3-phosphate dehydrogenase, putative",oocyst,0.04814821406872941
+PF3D7_1115100,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1117500,tyrosine--tRNA ligase,oocyst,0.04814821406872941
+PF3D7_1118900,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1122900,"dynein heavy chain, putative",oocyst,0.04814821406872941
+PF3D7_1130800,"armadillo repeat protein PF16, putative",oocyst,0.04814821406872941
+PF3D7_1133300,cell division control protein CDC50B,tachyzoite,-0.0001623344350000014
+PF3D7_1138200,"conserved protein, unknown function",bradyzoite,0.03311812434187501
+PF3D7_1139500,"AAA family ATPase, putative",oocyst,0.04814821406872941
+PF3D7_1146100,"PH-like domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_1147100,"dynein light chain, putative",oocyst,0.04814821406872941
+PF3D7_1149300,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_1200800,"serine/threonine protein kinase, FIKK family",oocyst,0.04814821406872941
+PF3D7_1202500,"trimethylguanosine synthase, putative",oocyst,0.04814821406872941
+PF3D7_1204400,"sexual stage-specific protein G37, putative",oocyst,0.04814821406872941
+PF3D7_1205200,"HAD domain ookinete protein, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1205500,"zinc finger protein, putative",oocyst,0.04814821406872941
+PF3D7_1206500,"Tat binding protein 1(TBP-1)-interacting protein, putative",oocyst,0.04814821406872941
+PF3D7_1207700,41-3 protein,oocyst,0.04814821406872941
+PF3D7_1208400,"amino acid transporter, putative",oocyst,0.04814821406872941
+PF3D7_1208600,"mitochondrial import inner membrane translocase subunit TIM10, putative",bradyzoite,0.03311812434187501
+PF3D7_1209800,"ATP synthase mitochondrial F1 complex assembly factor 1, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1209900,"ABC transporter B family member 7, putative",oocyst,0.04814821406872941
+PF3D7_1210900,GPI mannosyltransferase 1,tachyzoite,-0.0001623344350000014
+PF3D7_1211100,"HSP20-like chaperone, putative",bradyzoite,0.03311812434187501
+PF3D7_1214700,"conserved protein, unknown function",tachyzoite,-0.0001623344350000014
+PF3D7_1215800,"radial spoke protein 9, putative",oocyst,0.04814821406872941
+PF3D7_1217100,DNA topoisomerase 6 subunit A,oocyst,0.04814821406872941
+PF3D7_1217200,"multiple RNA-binding domain-containing protein 1, putative",bradyzoite,0.03311812434187501
+PF3D7_1217300,GTP-binding protein EngA,oocyst,0.04814821406872941
+PF3D7_1218800,"secreted ookinete protein, putative",oocyst,0.04814821406872941
+PF3D7_1220400,"debranching enzyme-associated ribonuclease, putative",oocyst,0.04814821406872941
+PF3D7_1221400,"inner membrane complex protein 1h, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1227200,potassium channel K1,tachyzoite,-0.0001623344350000014
+PF3D7_1232900,"nucleotidyltransferase, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1233100,"conserved protein, unknown function",tachyzoite,-0.0001623344350000014
+PF3D7_1235000,"PIH1 domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_1236600,"p25-alpha family protein, putative",oocyst,0.04814821406872941
+PF3D7_1239400,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1242400,"GAS8-like protein, putative",oocyst,0.04814821406872941
+PF3D7_1244700,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1245600,"kinesin-15, putative",oocyst,0.04814821406872941
+PF3D7_1246900,RAC-beta serine/threonine protein kinase,oocyst,0.04814821406872941
+PF3D7_1247100,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1302400,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1303500,sodium/hydrogen exchanger,tachyzoite,-0.0001623344350000014
+PF3D7_1305400,"AAR2 protein, putative",oocyst,0.04814821406872941
+PF3D7_1309200,"protein phosphatase PPM6, putative",oocyst,0.04814821406872941
+PF3D7_1311100,"meiosis-specific nuclear structural protein 1, putative",oocyst,0.04814821406872941
+PF3D7_1315100,serine/threonine protein kinase PK9,oocyst,0.04814821406872941
+PF3D7_1317500,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1318200,glycerol-3-phosphate 1-O-acyltransferase,tachyzoite,-0.0001623344350000014
+PF3D7_1322900,"CRYSP protein, putative",oocyst,0.04814821406872941
+PF3D7_1323500,plasmepsin V,oocyst,0.04814821406872941
+PF3D7_1324000,"conserved Plasmodium protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1324400,"PRELI domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_1325300,"conserved Plasmodium protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1327100,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1331100,"DNA polymerase theta, putative",oocyst,0.04814821406872941
+PF3D7_1331400,CPW-WPC family protein,oocyst,0.04814821406872941
+PF3D7_1338800,CPW-WPC family protein,oocyst,0.04814821406872941
+PF3D7_1343200,"tRNA guanosine-2'-O-methyltransferase, putative",oocyst,0.04814821406872941
+PF3D7_1347000,"WD repeat-containing protein 92, putative",oocyst,0.04814821406872941
+PF3D7_1347600,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1347800,"centrosomal protein CEP72, putative",oocyst,0.04814821406872941
+PF3D7_1348300,"elongation factor Tu, putative",oocyst,0.04814821406872941
+PF3D7_1348700,"WD repeat-containing protein 16, putative",oocyst,0.04814821406872941
+PF3D7_1349700,"peptidase, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1354300,"large subunit rRNA methyltransferase, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1357200,glutamate--tRNA ligase,oocyst,0.04814821406872941
+PF3D7_1365600,DNA topoisomerase 6 subunit B,oocyst,0.04814821406872941
+PF3D7_1401900,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1403500,"dynein light chain, putative",bradyzoite,0.03311812434187501
+PF3D7_1407000,LCCL domain-containing protein,oocyst,0.04814821406872941
+PF3D7_1411400,plastid replication-repair enzyme,oocyst,0.04814821406872941
+PF3D7_1416700,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1420100,"conserved Plasmodium protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1420800,"dynein light chain, putative",bradyzoite,0.03311812434187501
+PF3D7_1425500,"conserved Plasmodium protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1425600,"zinc finger protein, putative",bradyzoite,0.03311812434187501
+PF3D7_1426400,"MORN repeat protein, putative",oocyst,0.04814821406872941
+PF3D7_1426500,ABC transporter G family member 2,oocyst,0.04814821406872941
+PF3D7_1427800,exosome complex component RRP41,oocyst,0.04814821406872941
+PF3D7_1429100,"ribosomal protein L15, apicoplast, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1429300,CPW-WPC family protein,oocyst,0.04814821406872941
+PF3D7_1429700,"ribosomal protein L15, mitochondrial, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1431000,"ribosomal protein L17, mitochondrial, putative",oocyst,0.04814821406872941
+PF3D7_1444200,"EF-hand calcium-binding domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_1445400,protein serine/threonine kinase-1,oocyst,0.04814821406872941
+PF3D7_1446400,pyruvate dehydrogenase E1 component subunit beta,tachyzoite,-0.0001623344350000014
+PF3D7_1447600,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1451600,LCCL domain-containing protein,oocyst,0.04814821406872941
+PF3D7_1452300,DER1-like protein,tachyzoite,-0.0001623344350000014
+PF3D7_1453300,"Yos1-like protein, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1455800,LCCL domain-containing protein,oocyst,0.04814821406872941
+PF3D7_1458500,"spindle assembly abnormal protein 4, putative",tachyzoite,-0.0001623344350000014
+PF3D7_1460200,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1465500,potassium channel K2,tachyzoite,-0.0001623344350000014
+PF3D7_1465800,"dynein beta chain, putative",oocyst,0.04814821406872941
+PF3D7_1466000,"conserved protein, unknown function",oocyst,0.04814821406872941
+PF3D7_1466600,"enkurin domain-containing protein, putative",oocyst,0.04814821406872941
+PF3D7_1468300,leucine-rich repeat protein,oocyst,0.04814821406872941
+PF3D7_1470600,RAP protein RAP21,tachyzoite,-0.0001623344350000014
+PF3D7_1471200,"inorganic anion exchanger, inorganic anion antiporter",oocyst,0.04814821406872941
+PF3D7_1475400,cysteine repeat modular protein 4,oocyst,0.04814821406872941
+PF3D7_1475500,LCCL domain-containing protein,oocyst,0.04814821406872941
+PF3D7_API02700,apicoplast ribosomal protein S12,bradyzoite,0.03311812434187501
+PF3D7_MIT02300,cytochrome b,oocyst,0.04814821406872941

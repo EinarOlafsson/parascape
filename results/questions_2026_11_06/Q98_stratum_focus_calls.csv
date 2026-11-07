@@ -1,0 +1,164 @@
+gene_id,product,prediction,support
+PF3D7_1370900,non-coding RNA,mitochondrion,0.8071723534328313
+PF3D7_1353000,"tryptophan-rich protein, pseudogene",nucleus 1,0.7968278016896106
+PF3D7_1372200,histidine-rich protein III,nucleus 1,0.669752860210502
+PF3D7_MIT02500,large subunit ribosomal RNA fragment B,mitochondrion,0.5998882385645692
+PF3D7_MIT02200,small subunit ribosomal RNA fragment A,mitochondrion,0.599426165730271
+PF3D7_0102400,"lysophospholipase, putative, pseudogene",mitochondrion,0.5958027491532885
+PF3D7_0829800,non-coding RNA,mitochondrion,0.5388465439275312
+PF3D7_MIT03000,ribosomal RNA fragment RNA18,mitochondrion,0.5369980993656764
+PF3D7_1478900,non-coding RNA,mitochondrion,0.5369713307462054
+PF3D7_MIT00600,large subunit ribosomal RNA fragment C,mitochondrion,0.536084010103615
+PF3D7_1109000,small nucleolar RNA snoR07,mitochondrion,0.5339150217090313
+PF3D7_0918500,telomerase RNA,mitochondrion,0.4732003246516001
+PF3D7_0221500,"Pfmc-2TM Maurer's cleft two transmembrane protein, pseudogene",mitochondrion,0.47145495434606083
+PF3D7_0725600,18S ribosomal RNA,nucleus 1,0.4707570043390356
+PF3D7_0531600,18S ribosomal RNA,nucleus 1,0.4706691353343976
+PF3D7_1234200,"helicase, putative, pseudogene",apicoplast,0.469614170534103
+PF3D7_0726000,28S ribosomal RNA,nucleus 1,0.46950692378813635
+PF3D7_0532000,28S ribosomal RNA,nucleus 1,0.46904491917474844
+PF3D7_1370800,non-coding RNA,apicoplast,0.4669460729097337
+PF3D7_1370500,non-coding RNA,mitochondrion,0.46662368852092295
+PF3D7_1219200,"rifin, pseudogene",mitochondrion,0.4655462503652033
+PF3D7_1424600,small nucleolar RNA snoR28,mitochondrion,0.463192287953068
+PF3D7_1371300,28S ribosomal RNA,mitochondrion,0.4588470623718407
+PF3D7_0533000,"rifin, pseudogene",mitochondrion,0.4116930642169006
+PF3D7_1301300,"Plasmodium exported protein (PHISTa-like), unknown function, pseudogene",mitochondrion,0.4101680759316811
+PF3D7_0425600,"rifin, pseudogene",mitochondrion,0.40993693804874587
+PF3D7_0936900,"Plasmodium exported protein (PHISTb), unknown function, pseudogene",mitochondrion,0.4081631532583773
+PF3D7_1244300,ACEA small nucleolar RNA U3,mitochondrion,0.4072692479777897
+PF3D7_1039100,"DnaJ protein, putative, pseudogene",mitochondrion,0.4064566087033672
+PF3D7_0632250,"Plasmodium exported protein, unknown function, fragment, pseudogene",mitochondrion,0.40604347735284235
+PF3D7_1148200,non-coding RNA,mitochondrion,0.4055958717593594
+PF3D7_1424500,small nucleolar RNA snoR27,mitochondrion,0.4038040919283636
+PF3D7_0220400,"DnaJ protein, putative, pseudogene",mitochondrion,0.40367831703921175
+PF3D7_0829900,non-coding RNA,mitochondrion,0.4034853544891226
+PF3D7_0110300,Plasmodium RNA of unknown function RUF5,apicoplast,0.4028517162108293
+PF3D7_0601700,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",mitochondrion,0.40284642655097364
+PF3D7_0425300,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",mitochondrion,0.4027485491280585
+PF3D7_1008300,"AP-5 complex subunit sigma-1, putative, pseudogene",mitochondrion,0.4026757626390583
+PF3D7_0707420,nucleolar RNA snoR36,mitochondrion,0.40261926836013984
+PF3D7_0221300,"Plasmodium exported protein, unknown function, pseudogene",mitochondrion,0.4020286288583013
+PF3D7_0401700,"Plasmodium exported protein, unknown function, pseudogene",mitochondrion,0.4018447340692827
+PF3D7_1301800,"surface-associated interspersed protein 13.1 (SURFIN 13.1), pseudogene",nucleus 1,0.40151108674082425
+PF3D7_0935390,gdv1 antisense RNA,apicoplast,0.4001869852451047
+PF3D7_1216800,tRNA Proline,mitochondrion,0.3997327154710531
+PF3D7_1446000,U5 spliceosomal RNA,mitochondrion,0.39900720708302373
+PF3D7_0830000,5.8S ribosomal RNA,apicoplast,0.3988953032815241
+PF3D7_0902700,"Plasmodium exported protein (PHISTb), unknown function, pseudogene",mitochondrion,0.3985424524202407
+PF3D7_0101400,"exported protein family 1, pseudogene",mitochondrion,0.3980361219688976
+PF3D7_0831900,"Plasmodium exported protein (PHIST), unknown function, pseudogene",mitochondrion,0.39778517862230606
+PF3D7_0711600,Plasmodium RNA of unknown function RUF6,mitochondrion,0.397772972334393
+PF3D7_0533100,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",mitochondrion,0.3975206942382017
+PF3D7_0500600,"stevor, pseudogene",mitochondrion,0.397171785801641
+PF3D7_0830200,28S ribosomal RNA,mitochondrion,0.39623257630842673
+PF3D7_0114600,"stevor, pseudogene",mitochondrion,0.3961338443957158
+PF3D7_1364700,"WD repeat-containing protein, putative, pseudogene",mitochondrion,0.3956255924269672
+PF3D7_0803900,C/D small nucleolar RNA,mitochondrion,0.39506850021131423
+PF3D7_0218900,Plasmodium RNA of unknown function RUF2,mitochondrion,0.3948513520178864
+PF3D7_0410100,tRNA Serine,mitochondrion,0.3946157052505061
+PF3D7_1309120,non-coding RNA,mitochondrion,0.3893684034548446
+PF3D7_0218800,ribonuclease P,nucleus 1,0.3862575196888412
+PF3D7_0600800,"rifin, pseudogene",mitochondrion,0.34902268332222036
+PF3D7_0808500,Plasmodium RNA of unknown function RUF6,apicoplast,0.34495298731489327
+PF3D7_1100600,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",mitochondrion,0.3428646875597261
+PF3D7_1210800,small nucleolar RNA snoR14,apicoplast,0.3425459816309847
+PF3D7_1240500,Plasmodium RNA of unknown function RUF6,apicoplast,0.34249151240032394
+PF3D7_0701200,"rifin, pseudogene",mitochondrion,0.3417436525815994
+PF3D7_0800650,H/ACA snoRNA,mitochondrion,0.34172217548937983
+PF3D7_0833150,"Plasmodium exported protein, unknown function, fragment, pseudogene",mitochondrion,0.3413845999083585
+PF3D7_0700600,"Plasmodium exported protein, unknown function, pseudogene",mitochondrion,0.34130940463506737
+PF3D7_0809000,Plasmodium RNA of unknown function RUF6,apicoplast,0.3410621323760094
+PF3D7_0108900,non-coding RNA,mitochondrion,0.3408478856040697
+PF3D7_1424200,small nucleolar RNA snoR25,mitochondrion,0.3406119319853685
+PF3D7_0102000,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",mitochondrion,0.34055515684391086
+PF3D7_1400900,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",mitochondrion,0.34006051218842015
+PF3D7_0832250,"Plasmodium exported protein, unknown function, pseudogene",mitochondrion,0.33970006331964675
+PF3D7_1425100,small nucleolar RNA snoR31,apicoplast,0.33967875398230424
+PF3D7_1418400,tRNA Proline,apicoplast,0.3396499668547665
+PF3D7_1029000,"conserved Plasmodium protein, unknown function, pseudogene",mitochondrion,0.3392063905839624
+PF3D7_1421700,non-coding RNA,apicoplast,0.3389516990308097
+PF3D7_MIT00500,ribosomal RNA fragment RNA23t,mitochondrion,0.3386692548991755
+PF3D7_1241000,Plasmodium RNA of unknown function RUF6,apicoplast,0.33861286205942487
+PF3D7_0731400,"serine/threonine protein kinase, FIKK family, pseudogene",apicoplast,0.338187833985552
+PF3D7_0709050,small nucleolar RNA,mitochondrion,0.33802204549550874
+PF3D7_0531500,non-coding RNA,mitochondrion,0.3378672922338831
+PF3D7_0222400,"rifin, pseudogene",mitochondrion,0.3378314558887358
+PF3D7_MIT00100,ribosomal RNA fragment RNA16,mitochondrion,0.33781843930869265
+PF3D7_0425000,"Plasmodium exported protein, unknown function, pseudogene",mitochondrion,0.33767336558320843
+PF3D7_1372900,"erythrocyte membrane protein 1 (PfEMP1), exon 2, pseudogene",mitochondrion,0.3375399902754284
+PF3D7_0831750,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",mitochondrion,0.3373227516952069
+PF3D7_1341000,tRNA Arginine,mitochondrion,0.3372526588449169
+PF3D7_MIT03100,ribosomal RNA fragment RNA13,apicoplast,0.3371955177672625
+PF3D7_0421000,Plasmodium RNA of unknown function RUF6,mitochondrion,0.3371090907793785
+PF3D7_1213000,non-coding RNA,mitochondrion,0.3370769205507886
+PF3D7_1478400,"Plasmodium exported protein, unknown function, pseudogene",mitochondrion,0.33681769478670875
+PF3D7_1476400,"serine/threonine protein kinase, FIKK family, pseudogene",nucleus 1,0.33674080517007854
+PF3D7_0115050,H/ACA snoRNA,mitochondrion,0.33666120566092617
+PF3D7_0412800,Plasmodium RNA of unknown function RUF6,mitochondrion,0.3366246476408664
+PF3D7_MIT01200,ribosomal RNA fragment RNA15,mitochondrion,0.33650308973129317
+PF3D7_0411500,tRNA Alanine,apicoplast,0.33617518072557806
+PF3D7_0826800,small nucleolar RNA snoR05,apicoplast,0.336009502762433
+PF3D7_MIT03500,ribosomal RNA fragment RNA22,mitochondrion,0.3359176557954764
+PF3D7_1103200,tRNA Glycine,mitochondrion,0.33585765101628456
+PF3D7_MIT00700,ribosomal RNA fragment RNA24t,mitochondrion,0.3357408563971804
+PF3D7_1100900,"exported protein family 1, pseudogene",mitochondrion,0.33571202223980584
+PF3D7_0105000,non-coding RNA,nucleus 1,0.33555239362826134
+PF3D7_MIT00200,ribosomal RNA fragment RNA20,mitochondrion,0.3354733739781241
+PF3D7_1148100,non-coding RNA,mitochondrion,0.3354289029876721
+PF3D7_MIT03900,ribosomal RNA fragment RNA19,mitochondrion,0.3353831586589735
+PF3D7_1000800,"stevor, pseudogene",mitochondrion,0.33534515507226526
+PF3D7_1220200,"AP-5 complex subunit beta-1, putative, pseudogene",mitochondrion,0.33512096128558
+PF3D7_0617500,"rifin, pseudogene",mitochondrion,0.33498922545229337
+PF3D7_0114900,"Plasmodium exported protein, unknown function, pseudogene",mitochondrion,0.3348881866038415
+PF3D7_0713300,"erythrocyte membrane protein 1 (PfEMP1), pseudogene",nucleus 1,0.3348323682893271
+PF3D7_0203500,tRNA Glutamine,apicoplast,0.33467761206560703
+PF3D7_MIT03800,ribosomal RNA fragment RNA14,mitochondrion,0.3345850137904901
+PF3D7_0506600,"histone deacetylase, putative, pseudogene",apicoplast,0.3342769592456376
+PF3D7_1240800,Plasmodium RNA of unknown function RUF6,apicoplast,0.33409211492451846
+PF3D7_MIT01800,ribosomal RNA fragment RNA26t,mitochondrion,0.3340754534925536
+PF3D7_0800900,"Plasmodium exported protein (hyp7), unknown function, pseudogene",nucleus 1,0.33403549916500364
+PF3D7_1304800,small nucleolar RNA snoR16,nucleus 1,0.33392353137889746
+PF3D7_0702700,tRNA Alanine,mitochondrion,0.3338839852179779
+PF3D7_MIT03300,ribosomal RNA fragment RNA7,mitochondrion,0.3338666800070378
+PF3D7_MIT01000,small subunit ribosomal RNA fragment B,mitochondrion,0.3336819086856641
+PF3D7_MIT00400,ribosomal RNA fragment RNA17,mitochondrion,0.33354583955830147
+PF3D7_1418800,signal recognition particle RNA,mitochondrion,0.33283479065919674
+PF3D7_1114300,non-coding RNA,mitochondrion,0.33280689778433165
+PF3D7_0830100,non-coding RNA,ER 1,0.33265231399959977
+PF3D7_MIT01500,large subunit ribosomal RNA fragment F,mitochondrion,0.33257778935316445
+PF3D7_1230200,"vacuolar transporter chaperone, putative, pseudogene",mitochondrion,0.33239632129330243
+PF3D7_1424700,small nucleolar RNA snoR29,mitochondrion,0.33227540328345984
+PF3D7_1213100,U1 spliceosomal RNA,mitochondrion,0.33227211997033984
+PF3D7_1148620,5.8S ribosomal RNA,mitochondrion,0.33224265952942833
+PF3D7_0714900,tRNA Serine,mitochondrion,0.33146309516122746
+PF3D7_MIT02000,ribosomal RNA fragment RNA3,ER 1,0.3313406913478889
+PF3D7_1137000,U2 spliceosomal RNA,nucleus 1,0.3312286973530935
+PF3D7_1339100,tRNA Methionine,mitochondrion,0.33115049911192107
+PF3D7_0211000,non-coding RNA,nucleo-cytoplasm,0.3310231993612811
+PF3D7_0832100,"rifin, pseudogene",mitochondrion,0.3308619115026751
+PF3D7_1135200,"regulator of chromosome condensation, putative, pseudogene",mitochondrion,0.330756903197395
+PF3D7_1339200,tRNA Proline,apicoplast,0.3303418860232241
+PF3D7_1372500,"stevor, pseudogene",mitochondrion,0.33023263443650586
+PF3D7_0206300,"pentafunctional AROM polypeptide, putative, pseudogene",nucleus 1,0.33019619602282824
+PF3D7_0532800,"stevor, pseudogene",mitochondrion,0.32980161223553345
+PF3D7_1130300,small nucleolar RNA snoR13,mitochondrion,0.3297713990678687
+PF3D7_0512450,"conserved Plasmodium protein, unknown function, pseudogene",mitochondrion,0.3297269113038076
+PF3D7_1370000,tRNA Arginine,nucleo-cytoplasm,0.32971797951685894
+PF3D7_MIT02700,ribosomal RNA fragment RNA5,ER 1,0.3296228719797512
+PF3D7_0531800,5.8S ribosomal RNA,mitochondrion,0.3292448434632715
+PF3D7_0801200,5.8S ribosomal RNA,mitochondrion,0.329055462227814
+PF3D7_1476900,"Plasmodium exported protein, unknown function, pseudogene",mitochondrion,0.32898819484877356
+PF3D7_1402600,small nucleolar RNA snoR22,mitochondrion,0.3285493259915876
+PF3D7_1138900,non-coding RNA,mitochondrion,0.32849871630741384
+PF3D7_0114300,"exported protein family 4, pseudogene",apicoplast,0.3283318708517728
+PF3D7_0702100,"Plasmodium exported protein (PHISTb), unknown function, pseudogene",nucleus 1,0.32782791488854246
+PF3D7_1351500,small nucleolar RNA snoR21,apicoplast,0.3277927712014966
+PF3D7_MIT02400,ribosomal RNA fragment RNA27t,mitochondrion,0.327462973105139
+PF3D7_1424800,non-coding RNA,mitochondrion,0.3274337923829283
+PF3D7_0510900,small nucleolar RNA snoR04,mitochondrion,0.3273987593247611
+PF3D7_0402500,"rifin, pseudogene",apicoplast,0.32677592322707655
+PF3D7_1423900,small nucleolar RNA snoR23,mitochondrion,0.3253045657358082
+PF3D7_1000700,"Plasmodium exported protein (PHISTa), unknown function, pseudogene",apicoplast,0.3252154327691575
+PF3D7_MIT03400,ribosomal RNA fragment RNA11,mitochondrion,0.32443859848912054
+PF3D7_MIT03700,small subunit ribosomal RNA fragment F,mitochondrion,0.3224276435730177

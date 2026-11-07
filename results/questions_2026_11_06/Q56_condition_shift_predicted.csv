@@ -1,0 +1,681 @@
+gene_id,product,predicted_shift
+TGME49_277240,NTPase I,-0.21163746326231542
+TGME49_310110,hypothetical protein,-0.1724224266876285
+TGME49_500287,"phosphatidylinositol 4-kinase, putative",-0.15360874345111997
+TGME49_215055,hypothetical protein,-0.12460833997510627
+TGME49_250930,hypothetical protein,-0.11630640284664241
+TGME49_500055,"arginine and glutamate-rich protein, putative",-0.09957286611359627
+TGME49_315610,hypothetical protein,-0.09794972616923749
+TGME49_242118,myosin-light-chain kinase,-0.09540915365970719
+TGME49_500237,WD repeat-containing protein,-0.09121584967605993
+TGME49_203815,hypothetical protein,-0.0893486405236629
+TGME49_262850,"histone methyltransferase complex subunit ASH2, putative",-0.07973279043736611
+TGME49_257090,NAC domain-containing protein,-0.0760556748227519
+TGME49_253180,hypothetical protein,-0.07601001205623636
+TGME49_500124,anaphase-promoting complex subunit 1,-0.07582661124473579
+TGME49_207065,hypothetical protein,-0.07383079793509564
+TGME49_275390,hypothetical protein,-0.07261173331022061
+TGME49_328700,hypothetical protein,-0.07117376506220836
+TGME49_500128,"hypothetical protein, conserved",-0.07084961418247206
+TGME49_223150,START domain-containing protein,-0.06963298081044121
+TGME49_500327,"hypothetical protein, conserved",-0.0694863095904359
+TGME49_500163,"zinc transporter ZIP, putative",-0.06896926503369713
+TGME49_286480,hypothetical protein,-0.06787784926997341
+TGME49_300615,"ribosomal protein S3, putative",-0.06697703030413858
+TGME49_264250,hypothetical protein,-0.06634292067603866
+TGME49_500082,armadillo repeat-containing protein,-0.06185817233581839
+TGME49_207403,hypothetical protein,-0.061549543328303646
+TGME49_237130,"cytochrome b, putative",-0.05989983316334405
+TGME49_314560,hypothetical protein,-0.05915969548892103
+TGME49_265160,hypothetical protein,-0.058860449597327814
+TGME49_228020,hypothetical protein,-0.05756162364503383
+TGME49_263590,hypothetical protein,-0.05744760475454772
+TGME49_304870,hypothetical protein,-0.05731774221185972
+TGME49_296121,hypothetical protein,-0.05516094437896379
+TGME49_259970,hypothetical protein,-0.0551556899496387
+TGME49_221860,hypothetical protein,-0.05507054045891948
+TGME49_309185,hypothetical protein,-0.05215489659121306
+TGME49_228480,hypothetical protein,-0.05173190173502228
+TGME49_500385,"cilia- and flagella-associated protein 58, putative",-0.051150013258643066
+TGME49_210600,KRUF family protein,-0.04979414513970312
+TGME49_500058,"ferlin 3, putative",-0.047571963676639704
+TGME49_278750,AT hook motif domain-containing protein,-0.04737335125862488
+TGME49_242110,rhoptry kinase family protein ROP38,-0.04708057430172702
+TGME49_500418,"hypothetical protein, conserved",-0.046161092365140745
+TGME49_220525,hypothetical protein,-0.04463152917408576
+TGME49_500392,IQ calmodulin-binding motif domain-containing protein,-0.04277250183061121
+TGME49_262715,hypothetical protein,-0.04243739593810917
+TGME49_232990,hypothetical protein,-0.04107694229400238
+TGME49_287440,hypothetical protein,-0.038268615938057735
+TGME49_232110,hypothetical protein,-0.03779474844876652
+TGME49_252065,KRUF family protein,-0.037488152975391265
+TGME49_238450,hypothetical protein,-0.037194889656755645
+TGME49_500422,"RNA-dependent RNA polymerase, putative",-0.03595574521246098
+TGME49_500309,WW domain-containing protein,-0.03444781918901285
+TGME49_500032,"DLEC1 domain-containing protein, putative",-0.034280271571719444
+TGME49_214783,hypothetical protein,-0.03416255754989482
+TGME49_500224,GAF domain-containing protein,-0.03350477765029103
+TGME49_500438,SPAG17 domain-containing protein,-0.033340968124080106
+TGME49_300660,RNA polymerase B,-0.03315622701740173
+TGME49_205770,hypothetical protein,-0.03314193764906861
+TGME49_500135,Rab3-GAP domain-containing protein,-0.032777170583147185
+TGME49_306688,hypothetical protein,-0.0322422976913757
+TGME49_317820,hypothetical protein,-0.03182651980582083
+TGME49_287450,hypothetical protein,-0.029713502119829677
+TGME49_267010,hypothetical protein,-0.029112104535050008
+TGME49_323010,hypothetical protein,-0.028899042222223992
+TGME49_314660,TPRX1 protein,-0.02833289540269208
+TGME49_214410,hypothetical protein,-0.02831894258323295
+TGME49_302003,ORF E,-0.028152507156590758
+TGME49_500267,"intraflagellar transport protein IFT140, putative",-0.027329018982374678
+TGME49_220740,hypothetical protein,-0.02555368480686792
+TGME49_302009,ORF B,-0.024233782457586305
+TGME49_225958,hypothetical protein,-0.02336438623348636
+TGME49_244170,hypothetical protein,-0.021314153427324498
+TGME49_221275,hypothetical protein,-0.020338070392232815
+TGME49_500168,"cilia- and flagella-associated protein 54, putative",-0.020035190961226818
+TGME49_300650,iron-sulfur cluster assembly protein SufB,-0.01907814362019927
+TGME49_278005,hypothetical protein,-0.01882730848630222
+TGME49_500057,EF-hand domain-containing protein,-0.017993446526818387
+TGME49_315705,hypothetical protein,-0.017806974820161116
+TGME49_322800,hypothetical protein,-0.01777604249720762
+TGME49_500374,"hypothetical protein, conserved",-0.01775541020404326
+TGME49_300621,ribosomal protein L2,-0.01744096957891834
+TGME49_315340,SAG-related sequence SRS52C,-0.0171519485346667
+TGME49_219090,hypothetical protein,-0.01705062019732446
+TGME49_273020,hypothetical protein,-0.016905388454598498
+TGME49_230122,hypothetical protein,-0.01676152379477511
+TGME49_250115,hypothetical protein,-0.01651793825769689
+TGME49_232085,hypothetical protein,-0.016414026636844502
+TGME49_217951,hypothetical protein,-0.015831507597864593
+TGME49_300690,"RNA polymerase C2, putative",-0.01536613760180936
+TGME49_314650,hypothetical protein,-0.01536520194270859
+TGME49_278757,hypothetical protein,-0.014782762435963505
+TGME49_500424,"radial spoke head protein 3, putative",-0.013979297192255135
+TGME49_323100,hypothetical protein,-0.013651214924851805
+TGME49_266368,hypothetical protein,-0.01327927053295758
+TGME49_500284,"hypothetical protein, conserved",-0.013265165592175084
+TGME49_323400,cytochrome c oxidase subunit iii subfamily protein,-0.012388912656515413
+TGME49_295310,tubulin binding cofactor A protein,-0.012043101218696249
+TGME49_329600,hypothetical protein,-0.011739909351752209
+TGME49_209005,hypothetical protein,-0.00988740419378416
+TGME49_500270,"coiled-coil domain-containing protein 39, putative",-0.008091574500543163
+TGME49_232940,heat shock protein HSP20,-0.007865332945015893
+TGME49_289810,hypothetical protein,-0.007863612449142444
+TGME49_300608,"ribosomal protein L6, putative",-0.006803607966089716
+TGME49_325400,ribosomal L37ae family protein,-0.006649671053155897
+TGME49_223470,hypothetical protein,-0.005399622777607506
+TGME49_500179,FYVE zinc finger domain-containing protein,-0.0038942558450774274
+TGME49_322300,hypothetical protein,-0.003662252448713839
+TGME49_220720,hypothetical protein,-0.0034459456098299857
+TGME49_500076,tubulin epsilon chain,-0.002911124083381536
+TGME49_329620,hypothetical protein,-0.0025610309860014716
+TGME49_321700,Kinase-like domain-containing protein [Source:UniProtKB/TrEMBL;Acc:S8F8L7],-0.0021258086064767437
+TGME49_256220,hypothetical protein,-0.001582223569605114
+TGME49_323900,hypothetical protein,-0.0013806350302795788
+TGME49_237810,hypothetical protein,-0.0009455922494877744
+TGME49_291580,hypothetical protein,-0.0007408661579861263
+TGME49_287280,Toxoplasma gondii family C protein,-0.0005420659719407608
+TGME49_218130,hypothetical protein,-0.00046357325938089014
+TGME49_311050,hypothetical protein,0.00022242016918179767
+TGME49_256965,hypothetical protein,0.00035918940517419714
+TGME49_296340,hypothetical protein,0.0008383643757808474
+TGME49_287515,hypothetical protein,0.0010702109697617156
+TGME49_281040,hypothetical protein,0.001313919226137418
+TGME49_324700,hypothetical protein,0.0013244291489851944
+TGME49_500263,"dynein assembly factor 3, putative",0.0016599086309744043
+TGME49_322020,hypothetical protein,0.0019944997158157663
+TGME49_500272,"P-type ATPase, putative",0.0022726956616615124
+TGME49_329100,Toxoplasma gondii family C protein,0.002693752070571283
+TGME49_500342,3'5'-cyclic nucleotide phosphodiesterase PDE3,0.0032129330986783236
+TGME49_330000,cytochrome b,0.0032837096156118238
+TGME49_278100,Toxoplasma gondii family A protein,0.003934484933388151
+TGME49_500210,leucine rich repeat-containing protein,0.004082128146956706
+TGME49_329000,hypothetical protein,0.004368064062320892
+TGME49_270020,hypothetical protein,0.004476744300958581
+TGME49_500039,hypothetical protein,0.005241381112084725
+TGME49_313277,hypothetical protein,0.0060682215019000965
+TGME49_228980,hypothetical protein,0.007339141891912105
+TGME49_500047,Dpy-30 motif protein,0.007554232998244296
+TGME49_500273,"hypothetical protein, conserved",0.008394395039783913
+TGME49_236635,hypothetical protein,0.008732453118714083
+TGME49_500416,"hypothetical protein, conserved",0.009237967055759752
+TGME49_500116,"aspartyl/glutamyl-tRNA(Asn/Gln) amidotransferase subunit B, putative",0.009520018723928063
+TGME49_236230,hypothetical protein,0.009635779587163391
+TGME49_500083,"hypothetical protein, conserved",0.009733079633038013
+TGME49_326800,S-Adenosyl homocysteine hydrolase,0.00985224525576279
+TGME49_329200,hypothetical protein,0.010025183862734715
+TGME49_242250,Protein kinase domain-containing protein [Source:UniProtKB/TrEMBL;Acc:S8F3P2],0.010103686143040892
+TGME49_500380,"cilia- and flagella-associated protein 46, putative",0.010211598408118708
+TGME49_500143,"hypothetical protein, conserved",0.010408232116227456
+TGME49_500012,thrombospondin type 1 domain-containing protein,0.010667583247645331
+TGME49_500330,"hypothetical protein, conserved",0.010744850516845064
+TGME49_324500,"nuclear distribution protein C, putative",0.011042951345243733
+TGME49_231050,hypothetical protein,0.011541862697598125
+TGME49_328800,hypothetical protein,0.011997724819816234
+TGME49_250950,KRUF family protein,0.012242771833025547
+TGME49_323110,hypothetical protein,0.012249636089280813
+TGME49_302057,ribosomal protein S7,0.012618734566159171
+TGME49_500303,PAN domain-containing protein,0.013128771040169086
+TGME49_249665,hypothetical protein,0.013246306993358338
+TGME49_321710,Kinase-like domain-containing protein [Source:UniProtKB/TrEMBL;Acc:S8FBM1],0.013917805644761756
+TGME49_200110,hypothetical protein,0.01424230874836542
+TGME49_251665,hypothetical protein,0.014259246872468774
+TGME49_500007,"hypothetical protein, conserved",0.014328746501108956
+TGME49_500393,"hypothetical protein, conserved",0.014353770449546183
+TGME49_500363,"regulator of chromosome condensation, putative",0.014716869080569836
+TGME49_500435,HECT-domain (ubiquitin-transferase) -containing protein,0.015638061188379317
+TGME49_200260,hypothetical protein,0.015753158915790932
+TGME49_500377,"hypothetical protein, conserved",0.016358507319715228
+TGME49_500226,"patched domain-containing protein, putative",0.016850905978119723
+TGME49_324900,STAS domain-containing protein,0.016886626843319916
+TGME49_234375,hypothetical protein,0.017299109645975353
+TGME49_327200,"rhoptry neck protein, putative",0.017633553127777844
+TGME49_500283,"ATP:guanido phosphotransferase, putative",0.018698996644778795
+TGME49_500040,MORN repeat-containing protein,0.018713970512343227
+TGME49_322400,hypothetical protein,0.0192047612116994
+TGME49_209780,hypothetical protein,0.019277843483685685
+TGME49_249725,hypothetical protein,0.019708852902886945
+TGME49_500181,"calpain family cysteine protease, putative",0.019748943187807212
+TGME49_244930,hypothetical protein,0.020258565428397195
+TGME49_500191,"hypothetical protein, conserved",0.02068250884714365
+TGME49_500258,EF hand domain-containing protein,0.020821551631997632
+TGME49_500401,PAN domain-containing protein,0.021193674275216044
+TGME49_233315,hypothetical protein,0.02141561144544949
+TGME49_327800,"dynein-1-alpha heavy chain, flagellar inner arm I1 complex, putative",0.021426639386441303
+TGME49_500373,MORN repeat-containing protein,0.021863920078737494
+TGME49_500335,CFAP53 domain-containing protein,0.021949179497298424
+TGME49_500290,"hypothetical protein, conserved",0.021966260795280714
+TGME49_240940,hypothetical protein,0.02206858093322051
+TGME49_326900,hypothetical protein,0.022092250951630688
+TGME49_500389,"ATPase, AAA family protein",0.02214894327428693
+TGME49_326100,dynamin gtpase,0.022190037922107254
+TGME49_324800,tryptophanyl-tRNA synthetase,0.022455986784632974
+TGME49_322030,hypothetical protein,0.022549731344931625
+TGME49_500030,"tubulin-tyrosine ligase, putative",0.0227291166004301
+TGME49_285740,hypothetical protein,0.022856947756157705
+TGME49_300612,ribosomal protein S17,0.023387585148683585
+TGME49_326000,"RNA binding protein, putative",0.02354792214577181
+TGME49_500022,cyclic nucleotide-binding domain-containing protein,0.024046617832892164
+TGME49_270030,hypothetical protein,0.02413271547944438
+TGME49_212710,phenylalanine-4-hydroxylase,0.024559585029384823
+TGME49_500384,F-box domain-containing protein,0.02500683532069353
+TGME49_500072,"dynein heavy chain, putative",0.02511203337580418
+TGME49_328100,RNA recognition motif-containing protein,0.025137022797280525
+TGME49_293425,apicomplexan amino acid transporter ApiAT5-6,0.025174564678726946
+TGME49_308820,hypothetical protein,0.02532580629699515
+TGME49_500256,"hypothetical protein, conserved",0.02590404670401212
+TGME49_322600,cytochrome c oxidase subunit iii subfamily protein,0.026094680375631858
+TGME49_251580,hypothetical protein,0.026189842175860217
+TGME49_237595,hypothetical protein,0.02636481120264619
+TGME49_220730,hypothetical protein,0.02646960641084011
+TGME49_500414,"hypothetical protein, conserved",0.026540693158030624
+TGME49_500177,"hypothetical protein, conserved",0.027085789304519298
+TGME49_323310,hypothetical protein,0.02708802832525635
+TGME49_500144,"hypothetical protein, conserved",0.02753944177740325
+TGME49_500117,"hypothetical protein, conserved",0.02859372946721293
+TGME49_500254,"poly [ADP-ribose] polymerase, putative",0.02885853603413308
+TGME49_210100,hypothetical protein,0.02891975998427666
+TGME49_326500,hypothetical protein,0.030051394517047005
+TGME49_500311,"hypothetical protein, conserved",0.03020349227699387
+TGME49_325600,hypothetical protein,0.030525687298888927
+TGME49_308096,rhoptry kinase family protein (incomplete catalytic triad),0.030630726783512516
+TGME49_325800,EGF family domain-containing protein,0.031175966395875474
+TGME49_500204,PIBF1 domain-containing protein,0.031257085339858354
+TGME49_278310,hypothetical protein,0.03259620860597558
+TGME49_297190,hypothetical protein,0.03271212776067929
+TGME49_500222,GCC2 and GCC3 domain-containing protein,0.03282824412777746
+TGME49_326400,"ribosomal protein L10-like, putative",0.03327226161233084
+TGME49_238520,SAG-related sequence SRS22G,0.033286404911607656
+TGME49_500206,coiled-coil domain-containing protein,0.034005924825990214
+TGME49_324200,hypothetical protein,0.034103986792890124
+TGME49_300790,hypothetical protein,0.03446965096730551
+TGME49_500322,"fatty acyl-AMP ligase, putative",0.03486003236583069
+TGME49_322700,"collagen, putative",0.035302785683590535
+TGME49_324100,hypothetical protein,0.03556901991557886
+TGME49_270290,hypothetical protein,0.03582190402724614
+TGME49_500428,"hypothetical protein, conserved",0.03614953154359734
+TGME49_224780,SAG-related sequence SRS40B [Source:UniProtKB/TrEMBL;Acc:S8EU84],0.036291202574319545
+TGME49_309130,hypothetical protein,0.03669466483548449
+TGME49_500308,"phosphatidate cytidylyltransferase, putative",0.03699605324721771
+TGME49_500271,"vacuolar protein 8, putative",0.03707977570320394
+TGME49_212725,hypothetical protein,0.03711120620048486
+TGME49_300641,ribosomal protein S4,0.03712485165735886
+TGME49_500054,"c-Myc-binding protein, putative",0.03780640418918678
+TGME49_500233,"hypothetical protein, conserved",0.03794479510101817
+TGME49_323300,myosin-light-chain kinase,0.03851212516561253
+TGME49_238530,SRS domain-containing protein,0.038793640339938255
+TGME49_500016,"hypothetical protein, conserved",0.03884135438923867
+TGME49_500142,"serine-protein kinase ATM, putative",0.03923443644036044
+TGME49_500355,ankyrin repeat-containing protein,0.03944604265066659
+TGME49_500402,"hypothetical protein, conserved",0.039652681102369636
+TGME49_212830,expressed protein JLP1,0.03967385656688124
+TGME49_500095,"hypothetical protein, conserved",0.03986908580313068
+TGME49_500295,Toxoplasma gondii family B protein,0.04018052453348836
+TGME49_322500,hypothetical protein,0.04036567267933429
+TGME49_234060,hypothetical protein,0.04042585674026746
+TGME49_214787,hypothetical protein,0.0404550061437925
+TGME49_500345,"hypothetical protein, conserved",0.04061925109408173
+TGME49_500156,hypothetical protein,0.04078201224783512
+TGME49_271570,Toxoplasma gondii family D protein,0.04116408160796697
+TGME49_500388,"hypothetical protein, conserved",0.04149430442617877
+TGME49_237900,OTU domain-containing protein OTUD1E,0.041666190806267024
+TGME49_500148,GCC2 and GCC3 domain-containing protein,0.041706143408564274
+TGME49_500085,"P-type ATPase, putative",0.041717255883300906
+TGME49_500175,ankyrin repeat-containing protein,0.04172061335554889
+TGME49_221855,hypothetical protein,0.04175970007948473
+TGME49_500348,hypothetical protein,0.041857552309811696
+TGME49_500129,ankyrin repeat-containing protein,0.041889736526541974
+TGME49_500162,SSNA1 domain-containing protein,0.041930464127974965
+TGME49_279560,hypothetical protein,0.04248365127374869
+TGME49_500158,"calmodulin-binding protein, putative",0.04249204932649243
+TGME49_500325,WD repeat-containing protein,0.042634272288423494
+TGME49_500212,"hypothetical protein, conserved",0.04302244612161435
+TGME49_328900,hypothetical protein,0.04323199759559613
+TGME49_500340,"3'5'-cyclic nucleotide phosphodiesterase, putative",0.043266802639648355
+TGME49_500113,WD repeat-containing protein,0.04376250149702874
+TGME49_500045,"endo-1,3(4)-beta-glucanase, putative",0.04381068043431028
+TGME49_500232,PIH1 domain-containing protein,0.043883614911727695
+TGME49_281350,hypothetical protein,0.044451125383717836
+TGME49_500429,"hypothetical protein, conserved",0.04506041082675034
+TGME49_329700,SAG-related sequence SRS26J,0.045255606813370375
+TGME49_500421,"hypothetical protein, conserved",0.04534707125500419
+TGME49_500060,"dynein light chain, putative",0.04560816796695332
+TGME49_500245,rhoptry discharge factor RDF2,0.04627150097404855
+TGME49_231996,hypothetical protein,0.04717893688794576
+TGME49_500358,"WD domain, G-beta repeat-containing protein",0.0472326584300566
+TGME49_318120,hypothetical protein,0.04743253927160649
+TGME49_500296,KRUF family protein,0.04773631482673271
+TGME49_328600,Isoleucine-tRNA ligase,0.04782375489138223
+TGME49_500320,"hypothetical protein, conserved",0.04836986108488334
+TGME49_500196,"hypothetical protein, conserved",0.04852657217737791
+TGME49_252620,"initiation factor, subunit 2 family protein",0.04883261084552655
+TGME49_324000,"dynein heavy chain, n-terminal region 2 protein",0.0490459748694299
+TGME49_500006,"hypothetical protein, conserved",0.0495826803100383
+TGME49_500383,"cilia- and flagella-associated protein 61, putative",0.04991590869122717
+TGME49_500043,"hypothetical protein, conserved",0.04995373505361026
+TGME49_326600,"histone, putative",0.05013407181415097
+TGME49_500255,"hypothetical protein, conserved",0.05015962572631916
+TGME49_500244,"RIB43A-like with coiled-coils protein, putative",0.050181003665537016
+TGME49_500182,"regulator of chromosome condensation, putative",0.050451734092016164
+TGME49_302005,ORF F,0.05090272442526715
+TGME49_500425,"hypothetical protein, conserved",0.051171304677430335
+TGME49_326300,hypothetical protein,0.05133313638759706
+TGME49_500319,"hypothetical protein, conserved",0.05147224091802658
+TGME49_220070,hypothetical protein,0.05162243042170537
+TGME49_500430,"hypothetical protein, conserved",0.051973368268426794
+TGME49_220060,hypothetical protein,0.05211138463383175
+TGME49_500229,"hypothetical protein, conserved",0.05212570893102916
+TGME49_322010,myosin-light-chain kinase,0.05224667492862879
+TGME49_500276,Rtr1/RPAP2 family protein,0.05244324341978698
+TGME49_500328,"hypothetical protein, conserved",0.05259001261393925
+TGME49_500324,hypothetical protein,0.05273917308130915
+TGME49_500398,rhoptry neck protein RON2L2 (sporoRON2),0.052786545829535396
+TGME49_500080,"kinesin-like protein KIN14, putative",0.05280887734041492
+TGME49_500164,RIIa domain-containing protein,0.052970085956043925
+TGME49_500138,hypothetical protein,0.05345365184103021
+TGME49_500217,hypothetical protein,0.0537036426970113
+TGME49_327100,"U5 small nuclear ribonuclear protein, putative",0.05373110124120958
+TGME49_500407,hypothetical protein,0.05396028398036961
+TGME49_255060,cytochrome b(N-terminal)/b6/petB subfamily protein,0.05406179215166799
+TGME49_324300,"transitional endoplasmic reticulum ATPase, putative",0.05432559774970764
+TGME49_293368,TIP49 C-terminus family protein,0.054458197242437195
+TGME49_500188,WD repeat-containing protein,0.054463163893189746
+TGME49_500111,Toxoplasma gondii family B protein,0.0545818773859183
+TGME49_243120,Toxoplasma gondii family A protein,0.05469985635665603
+TGME49_275355,SAG-related sequence SRS47A,0.05506184700568763
+TGME49_311820,hypothetical protein,0.055140240914318954
+TGME49_500423,"MYCBP-associated protein, putative",0.05517121391693722
+TGME49_210678,OTU domain-containing protein OTUD1D,0.055172026924175444
+TGME49_500437,CASC1 domain-containing protein,0.055262973440690505
+TGME49_202860,hypothetical protein,0.055368442000188825
+TGME49_237120,hypothetical protein,0.055375944521966085
+TGME49_325500,ATP-binding Mrp/Nbp35 family protein,0.05543918635203098
+TGME49_500063,"hypothetical protein, conserved",0.05556077861425721
+TGME49_500410,"hypothetical protein, conserved",0.05580531111880577
+TGME49_500197,"intraflagellar transport protein 20, putative",0.056008764171809125
+TGME49_329300,hypothetical protein,0.056172996542704516
+TGME49_500235,"hypothetical protein, conserved",0.05623135839515161
+TGME49_500026,Toxoplasma gondii family B protein,0.05680126905798
+TGME49_500246,"intraflagellar transport protein IFT88, putative",0.0568206490620004
+TGME49_500028,"hypothetical protein, conserved",0.05704036366822929
+TGME49_500199,SAG-related sequence,0.05707800864549296
+TGME49_500313,"hypothetical protein, conserved",0.057216910630378426
+TGME49_280070,hypothetical protein,0.05728964953757435
+TGME49_500070,"coiled-coil domain-containing protein, putative",0.05744393348226906
+TGME49_300606,"ribosomal protein S5, putative",0.057476487424429845
+TGME49_300611,ribosomal protein L14,0.05787591437122988
+TGME49_500086,"hypothetical protein, conserved",0.05795059455240274
+TGME49_500378,"hypothetical protein, conserved",0.05812455500546697
+TGME49_500147,"nucleoside transporter, putative",0.058312192879835495
+TGME49_500122,"hypothetical protein, conserved",0.05836543519753384
+TGME49_500223,oocyst wall protein,0.058410149971183455
+TGME49_500166,"hypothetical protein, conserved",0.058459114425004795
+TGME49_300680,"RNA polymerase C1, putative",0.05874787310148431
+TGME49_325700,ATP-binding protein,0.059190817909155084
+TGME49_500215,"hypothetical protein, conserved",0.059512528929641866
+TGME49_500411,"hypothetical protein, conserved",0.05953141462412845
+TGME49_241305,hypothetical protein,0.05955001518520865
+TGME49_325000,hypothetical protein,0.05968391458261717
+TGME49_500239,"hypothetical protein, conserved",0.060031513254673916
+TGME49_500294,"protein BRAWNIN, putative",0.06008691337765476
+TGME49_500333,tetratricopeptide repeat-containing protein,0.060181765370534206
+TGME49_500042,AP2 domain transcription factor AP2X-10,0.06019622410601036
+TGME49_300780,hypothetical protein,0.060252157740733905
+TGME49_322120,rhoptry kinase family protein,0.06053906554312816
+TGME49_268830,ATP synthase subunit delta,0.06061942846385728
+TGME49_500102,"hypothetical protein, conserved",0.06073462526123677
+TGME49_500310,"nucleotidyltransferase, putative",0.061245964800385945
+TGME49_309230,hypothetical protein,0.06134973759915972
+TGME49_500280,"hypothetical protein, conserved",0.06142838670993344
+TGME49_500118,"hypothetical protein, conserved",0.06158660119381755
+TGME49_500021,"hypothetical protein, conserved",0.061747776731401124
+TGME49_500018,"hypothetical protein, conserved",0.06175918739355914
+TGME49_500299,hypothetical protein,0.062135955762966655
+TGME49_500353,SAG-related sequence,0.062260641321738655
+TGME49_500031,"hypothetical protein, conserved",0.06238623067409016
+TGME49_500185,"WD domain, G-beta repeat-containing protein",0.06253050051552043
+TGME49_500238,armadillo repeat-containing protein,0.06254740621167376
+TGME49_500033,"hypothetical protein, conserved",0.06276955265028168
+TGME49_328500,hypothetical protein,0.06304220031650848
+TGME49_500139,EF-hand domain-containing protein,0.0630698561464469
+TGME49_500334,"hypothetical protein, conserved",0.06309180303704852
+TGME49_500078,REJ domain-containing protein,0.06330664100635444
+TGME49_500426,"hypothetical protein, conserved",0.06356836859964611
+TGME49_500420,"hypothetical protein, conserved",0.06358409730201846
+TGME49_500419,hypothetical protein,0.06371647654501772
+TGME49_500153,WD repeat-containing protein,0.06396393294641141
+TGME49_500243,"hypothetical protein, conserved",0.06411613269136547
+TGME49_500038,"hypothetical protein, conserved",0.06425205598837128
+TGME49_327000,"U5 small nuclear ribonucleoprotein component (U5 snRNP), putative",0.06440588798564595
+TGME49_328400,"aminotransferase, class V family protein",0.06459278854738743
+TGME49_500368,"hypothetical protein, conserved",0.06464187136211964
+TGME49_500406,"succinate dehydrogenase assembly factor 3, putative",0.06470387141429554
+TGME49_500010,"hypothetical protein, conserved",0.06482184097519056
+TGME49_500257,EF hand domain-containing protein,0.06484146978125978
+TGME49_500262,"hypothetical protein, conserved",0.06500264531884338
+TGME49_500260,"hypothetical protein, conserved",0.06507221741408155
+TGME49_500436,"EF-hand calcium-binding domain-containing protein 10, putative",0.06525719814406782
+TGME49_500027,"hypothetical protein, conserved",0.06546020244694056
+TGME49_328300,"CCR4-NOT transcription complex subunit 4, putative",0.06549229288925558
+TGME49_500344,AP2 domain transcription factor AP2X-6,0.06557905895854464
+TGME49_500366,"hypothetical protein, conserved",0.0667768944420846
+TGME49_500318,zinc finger (CCCH type) motif-containing protein,0.06680398310122389
+TGME49_500136,kelch repeat protein,0.0669583302873969
+TGME49_500001,"hypothetical protein, conserved",0.06696624757672631
+TGME49_500214,"hypothetical protein, conserved",0.06715780902700158
+TGME49_322130,hypothetical protein,0.06731646685346038
+TGME49_500176,"hypothetical protein, conserved",0.06731917384381907
+TGME49_500326,"hypothetical protein, conserved",0.06738826105327993
+TGME49_500141,"hypothetical protein, conserved",0.06744476417267428
+TGME49_500339,thrombospondin type 1 domain-containing protein,0.06766014278572649
+TGME49_325300,"proteasome subunit alpha type, putative",0.06781741409348004
+TGME49_242230,rhoptry kinase family protein ROP29,0.06828687355425823
+TGME49_500053,"hypothetical protein, conserved",0.06889813799592948
+TGME49_287470,hypothetical protein,0.06898353676086867
+TGME49_327600,"exoribonuclease, putative",0.0690172252519263
+TGME49_500341,"hypothetical protein, conserved",0.06910694346013739
+TGME49_500291,"WD repeat-containing protein 19, putative",0.06923485131842239
+TGME49_500180,"dynein light chain, putative",0.06929495404884509
+TGME49_500336,"hypothetical protein, conserved",0.0695149085038944
+TGME49_500075,tetratricopeptide repeat-containing protein,0.06970669179728285
+TGME49_500382,"hypothetical protein, conserved",0.06987440976984008
+TGME49_500281,hypothetical protein,0.07010598538024064
+TGME49_500061,PAN domain-containing protein,0.07022376361805284
+TGME49_500408,"hypothetical protein, conserved",0.07036221738141131
+TGME49_500230,"hypothetical protein, conserved",0.07046428997731195
+TGME49_300618,ribosomal protein S19,0.07056014206757849
+TGME49_500127,"hypothetical protein, conserved",0.07077400951465358
+TGME49_500066,DUF501 domain-containing protein,0.0710188643217261
+TGME49_500409,"hypothetical protein, conserved",0.07124686766449666
+TGME49_500131,"hypothetical protein, conserved",0.07137816538834499
+TGME49_500093,EF hand domain-containing protein,0.07171361922238902
+TGME49_323500,hypothetical protein,0.07180844832630197
+TGME49_500003,"hypothetical protein, conserved",0.0718304430110693
+TGME49_500370,"histidine phosphatase, putative",0.07183454960793968
+TGME49_500213,"LisH domain-containing protein, putative",0.07198203016540468
+TGME49_307815,hypothetical protein,0.07198833941350288
+TGME49_500264,"hypothetical protein, conserved",0.07216764408863151
+TGME49_500417,"hypothetical protein, conserved",0.07230206029581343
+TGME49_500337,"ubiquitin-like protein, putative",0.07230683471307744
+TGME49_500390,"hypothetical protein, conserved",0.0724669796531331
+TGME49_500300,"hypothetical protein, conserved",0.07261856245858747
+TGME49_325900,zinc finger (CCCH type) motif-containing protein,0.07296692749325717
+TGME49_302450,"TFIIH basal transcription factor complex helicase XPB subunit, putative",0.07317221873309063
+TGME49_500288,"hypothetical protein, conserved",0.07382252610049857
+TGME49_500427,"hypothetical protein, conserved",0.07388851547066375
+TGME49_323700,OTU family cysteine protease,0.07389058396469465
+TGME49_500149,"hypothetical protein, conserved",0.0740239490938475
+TGME49_500220,"hypothetical protein, conserved",0.07407776843344467
+TGME49_500151,"hypothetical protein, conserved",0.07421697623003919
+TGME49_500249,"cAMP-dependent protein kinase regulatory subunit, putative",0.07433260340531408
+TGME49_500297,"hypothetical protein, conserved",0.07434395379899503
+TGME49_329500,hypothetical protein,0.07443565189513905
+TGME49_500331,"hypothetical protein, conserved",0.07508146108847372
+TGME49_500375,rhoptry kinase family protein,0.07522633340857718
+TGME49_500315,"hypothetical protein, conserved",0.07524686137679125
+TGME49_500067,"hypothetical protein, conserved",0.07553378956978725
+TGME49_500172,"hypothetical protein, conserved",0.07564022187378577
+TGME49_500241,"cysteine dioxygenase, putative",0.07571005975248138
+TGME49_500431,SHIPPO repeat domain-containing protein,0.07576251736027796
+TGME49_500346,"hypothetical protein, conserved",0.07587932318219705
+TGME49_500292,"hypothetical protein, conserved",0.07599958539091167
+TGME49_500020,SAM domain-containing protein,0.07599958539091167
+TGME49_500091,leucine-rich repeat containing protein,0.07600109329335132
+TGME49_500351,hypothetical protein,0.07653370690277585
+TGME49_500307,"DEAD/DEAH box helicase, putative",0.07665688346852123
+TGME49_500193,chromo domain-containing protein,0.07692932001430729
+TGME49_500400,"hypothetical protein, conserved",0.07714876598821696
+TGME49_500073,"hypothetical protein, conserved",0.07733329060707493
+TGME49_500332,"hypothetical protein, conserved",0.07778549313285246
+TGME49_500110,"sentrin-specific protease 8, putative",0.0780754455047675
+TGME49_500150,"hypothetical protein, conserved",0.07843906767928602
+TGME49_500105,"hypothetical protein, conserved",0.07865829009374194
+TGME49_500376,rhoptry kinase family protein,0.07896290956206141
+TGME49_500169,CFAP99 domain-containing protein,0.07921530291071441
+TGME49_327500,hypothetical protein,0.07926605372252914
+TGME49_323600,OTU family cysteine protease,0.0793787852862589
+TGME49_500404,"nucleoside diphosphate kinase, putative",0.07971008283359843
+TGME49_500350,"hypothetical protein, conserved",0.07990717648483814
+TGME49_500009,kinesin-like protein,0.07997464140046835
+TGME49_500025,GCC2 and GCC3 domain-containing protein,0.0801111442971033
+TGME49_329800,hypothetical protein,0.08027090223662671
+TGME49_500005,apicoplast DER1,0.08029963095208673
+TGME49_500011,"hypothetical protein, conserved",0.08031526537258593
+TGME49_500008,"CCCH-type zinc finger protein, putative",0.080377714646253
+TGME49_500371,hypothetical protein,0.08044424336172658
+TGME49_500379,WD repeat-containing protein,0.08051755899395228
+TGME49_500234,IQ calmodulin domain-containing protein,0.08053086540126848
+TGME49_500381,EF-hand domain-containing protein,0.08067555637270127
+TGME49_500090,"hypothetical protein, conserved",0.08076062401501044
+TGME49_500049,"hypothetical protein, conserved",0.08103271247346973
+TGME49_500369,"hypothetical protein, conserved",0.08111621118566803
+TGME49_500046,"hypothetical protein, conserved",0.08131519912283924
+TGME49_500266,"hypothetical protein, conserved",0.08152751247807005
+TGME49_500074,DUF4200 domain-containing protein,0.08160785424540548
+TGME49_301998,"ORF C, putative",0.08215322199752496
+TGME49_500134,"RNA binding protein, putative",0.08215756141379747
+TGME49_325100,hypothetical protein,0.0821727788664038
+TGME49_500195,"hypothetical protein, conserved",0.08236154482887963
+TGME49_500412,"hypothetical protein, conserved",0.08261999833617761
+TGME49_500434,"hypothetical protein, conserved",0.08297428602402751
+TGME49_500087,"hypothetical protein, conserved",0.08323258838638296
+TGME49_211920,hypothetical protein,0.08338096844562269
+TGME49_326700,"DNA-directed RNA polymerase, putative",0.08341317650561363
+TGME49_205530,hypothetical protein,0.08343991397980123
+TGME49_500248,"hypothetical protein, conserved",0.08353934833102619
+TGME49_500277,"hypothetical protein, conserved",0.08403983034372925
+TGME49_500304,"P25-alpha family protein, putative",0.08405079826437169
+TGME49_298830,hypothetical protein,0.08493599250847664
+TGME49_500097,"hypothetical protein, conserved",0.08494433256622243
+TGME49_500211,"coiled-coil domain-containing protein 103, putative",0.08514636433903136
+TGME49_292610,Toxoplasma gondii family C protein,0.08516544547253387
+TGME49_302000,"chaperone clp, putative",0.08518055768015256
+TGME49_500173,"hypothetical protein, conserved",0.08529117864117437
+TGME49_500140,"hypothetical protein, conserved",0.08542051495966135
+TGME49_500120,"hypothetical protein, conserved",0.08547142203457422
+TGME49_500044,3'5'-cyclic nucleotide phosphodiesterase PDE16,0.08582597210665291
+TGME49_500108,"hypothetical protein, conserved",0.08590932486224834
+TGME49_500354,"hypothetical protein, conserved",0.08591090995942376
+TGME49_300604,ribosomal protein L36,0.08597750178347588
+TGME49_500194,"hypothetical protein, conserved",0.08698215784154865
+TGME49_323800,OTU family cysteine protease,0.0869913949660285
+TGME49_500360,"regulator of chromosome condensation, putative",0.08715316924211759
+TGME49_500413,"hypothetical protein, conserved",0.08717253601873146
+TGME49_500338,"hypothetical protein, conserved",0.08736353986031113
+TGME49_500216,"hypothetical protein, conserved",0.08793952259062231
+TGME49_500174,KRUF family protein,0.08814766320439008
+TGME49_300700,"ribosomal protein S2, putative",0.08830959883844447
+TGME49_500062,"dynein heavy chain, putative",0.0887977665960762
+TGME49_500132,"hypothetical protein, conserved",0.08888175063570929
+TGME49_500432,"hypothetical protein, conserved",0.08899848369345673
+TGME49_500192,"hypothetical protein, conserved",0.08911814108045696
+TGME49_500252,AP2 domain transcription factor AP2XII-10,0.08913519534150814
+TGME49_500367,"hypothetical protein, conserved",0.08925235338870025
+TGME49_500178,"hypothetical protein, conserved",0.08931953087542756
+TGME49_500357,"hypothetical protein, conserved",0.0893707500442429
+TGME49_500242,"hypothetical protein, conserved",0.08951534221675955
+TGME49_500189,"E3 ubiquitin-protein ligase, putative",0.08951937604537792
+TGME49_302060,"elongation factor tu, apicoplast, putative",0.0896538414776843
+TGME49_500250,"hypothetical protein, conserved",0.08982333106994612
+TGME49_328200,phosphatidylinositol 4-kinase,0.08985989279272577
+TGME49_500365,"tRNA (guanine-N1-)-methyltransferase, putative",0.08988065066655611
+TGME49_500259,"hypothetical protein, conserved",0.09017872183846527
+TGME49_500349,hypothetical protein,0.09051639451448303
+TGME49_300613,"ribosomal protein L16, putative",0.09067665668999372
+TGME49_500221,cyclin-dependent kinase regulatory subunit protein,0.0907118851060576
+TGME49_500362,"hypothetical protein, conserved",0.09101321401412432
+TGME49_500286,"IQ calmodulin-binding protein, putative",0.09109031737896871
+TGME49_500096,"hypothetical protein, conserved",0.09150188872630731
+TGME49_500160,histone arginine methyltransferase PRMT2,0.09153770456588282
+TGME49_500014,"hypothetical protein, conserved",0.09178978306889124
+TGME49_302055,ribosomal protein S12,0.09190150902342206
+TGME49_500155,"hypothetical protein, conserved",0.09202957427506236
+TGME49_500359,"hypothetical protein, conserved",0.0923053527801236
+TGME49_500251,"hypothetical protein, conserved",0.09247881396931311
+TGME49_500094,"transmembrane protein, putative",0.09314925807974929
+TGME49_202330,hypothetical protein,0.09344850400507987
+TGME49_500198,"hypothetical protein, conserved",0.09368527310670036
+TGME49_500261,alanine--glyoxylate aminotransferase,0.0938424804372026
+TGME49_500099,"hypothetical protein, conserved",0.09391942603772599
+TGME49_321900,"fructose-1,6-bisphosphate aldolase",0.09430579313502536
+TGME49_500228,"30S ribosomal protein S10, putative",0.09439203985422873
+TGME49_500364,"apicomplexan kinetochore protein AKIT9, putative",0.09474008762190969
+TGME49_500278,"hypothetical protein, conserved",0.09512631982424576
+TGME49_500125,"mechanosensitive ion channel MscS, putative",0.09526150175049464
+TGME49_500240,"hypothetical protein, conserved",0.09557922265220839
+TGME49_500361,"aminopeptidase, putative",0.0959130231379512
+TGME49_500013,"hypothetical protein, conserved",0.09673315527433317
+TGME49_327300,Toxoplasma gondii family A protein,0.09678846404385927
+TGME49_500208,"hypothetical protein, conserved",0.0970636076180715
+TGME49_322200,"apocytochrome b, putative",0.09735534636345866
+TGME49_302053,ribosomal protein S7,0.09745826595909647
+TGME49_287510,aromatic amino acid hydrolase AAH1,0.09813392282436716
+TGME49_500092,"hypothetical protein, conserved",0.09854092967633614
+TGME49_500200,intraconoidal microtubule-associated protein ICMAP3,0.09890234628549278
+TGME49_500352,"hypothetical protein, conserved",0.09959384186174593
+TGME49_500394,CAP domain-containing protein,0.09998408977600388
+TGME49_322110,hypothetical protein,0.10014623017807948
+TGME49_500115,EGF-like domain-containing protein,0.10024497812317569
+TGME49_500305,"hypothetical protein, conserved",0.10030601132320378
+TGME49_500015,"hypothetical protein, conserved",0.10058405734948356
+TGME49_500395,"hypothetical protein, conserved",0.1009974461394422
+TGME49_500187,"hypothetical protein, conserved",0.1010660887445559
+TGME49_500203,"cytochrome c oxidase subunit 6B, putative",0.10141453157259434
+TGME49_240350,Toxoplasma gondii family E protein,0.10156916991287529
+TGME49_500098,"regulator of chromosome condensation, putative",0.1016270199665616
+TGME49_500347,"hypothetical protein, conserved",0.10199360392884582
+TGME49_500069,"hypothetical protein, conserved",0.10254134094462976
+TGME49_500190,"selenoprotein T, putative",0.10288160391070279
+TGME49_224770,SAG-related sequence SRS40D,0.10323041864557066
+TGME49_500152,SAG domain-containing protein,0.10327768525110956
+TGME49_274700,hypothetical protein,0.10339616410544208
+TGME49_500219,"zinc finger protein, putative",0.10373689818838303
+TGME49_500000,hypothetical protein,0.10388416318347657
+TGME49_500004,"peptidase, putative",0.10398030909139794
+TGME49_500171,"lipocalin, putative",0.10418126957750037
+TGME49_500282,"thioredoxin, putative",0.1048259642555027
+TGME49_500146,"guanine-nucleotide exchange factor, putative",0.10483042103614662
+TGME49_500103,hypothetical protein,0.10525385092112853
+TGME49_500034,"hypothetical protein, conserved",0.10529101157660412
+TGME49_500068,"hypothetical protein, conserved",0.10564288490072579
+TGME49_500050,"hypothetical protein, conserved",0.1059626376208569
+TGME49_500227,"dynein heavy chain, putative",0.10692835699531066
+TGME49_500079,"cilia- and flagella-associated protein 69, putative",0.10778577932911622
+TGME49_255460,EGF family domain-containing protein,0.1078650521960324
+TGME49_500440,"hypothetical protein, conserved",0.10789154543331131
+TGME49_500265,"hypothetical protein, conserved",0.10796225937714193
+TGME49_500343,thrombospondin type 1 domain-containing protein,0.10830387313702673
+TGME49_235630,hypothetical protein,0.10869547032781048
+TGME49_303050,"zinc finger, c2h2 type family protein",0.1088720880955213
+TGME49_500052,"hypothetical protein, conserved",0.11062585604025015
+TGME49_500017,"hypothetical protein, conserved",0.1112277711207783
+TGME49_500084,"hypothetical protein, conserved",0.11137964625845798
+TGME49_302150,"ATPase, AAA family protein",0.11212026609829885
+TGME49_500101,"fatty acyl-CoA reductase, putative",0.11237987603463337
+TGME49_500104,hypothetical protein,0.11288914698932832
+TGME49_500356,"hypothetical protein, conserved",0.11309023430770636
+TGME49_500399,"hypothetical protein, conserved",0.11349411584036416
+TGME49_500183,"glyoxalase, putative",0.11373159297934154
+TGME49_303450,coatomer gamma subunit,0.11389515666467641
+TGME49_500201,"hypothetical protein, conserved",0.11417337579921064
+TGME49_500161,"hypothetical protein, conserved",0.11444133904179449
+TGME49_324400,hypothetical protein,0.11518350231237495
+TGME49_301996,ORF D,0.11542816478622692
+TGME49_500119,"CRAL/TRIO domain-containing protein, putative",0.11552946336604157
+TGME49_500100,"transmembrane protein TMEM42, putative",0.11556281535007375
+TGME49_500035,"hypothetical protein, conserved",0.11731304714494895
+TGME49_355200,hypothetical protein,0.1200271003813362
+TGME49_500274,"hypothetical protein, conserved",0.12061568388830243
+TGME49_500023,"hypothetical protein, conserved",0.12263650487859634
+TGME49_500024,"mitochondrial import inner membrane translocase subunit TIM9, putative",0.12376768045633413
+TGME49_314570,hypothetical protein,0.12386602034794887
+TGME49_500109,"GPI transamidase component PIG-S, putative",0.1239796006554991
+TGME49_500002,"hypothetical protein, conserved",0.12418875372784764
+TGME49_322900,hypothetical protein,0.12428323336000512
+TGME49_500218,Toxoplasma gondii family C protein,0.12630477696737782
+TGME49_500397,MoaD/ThiS family protein,0.12696379045754919
+TGME49_500071,"sugar transporter, putative",0.12700270418521484
+TGME49_500312,dense granule protein GRA41,0.12741137306856132
+TGME49_500048,"hypothetical protein, conserved",0.12794538133154282
+TGME49_500415,Myb domain-containing protein,0.13135083859372176
+TGME49_500386,"hypothetical protein, conserved",0.13237086702016182
+TGME49_500170,"hypothetical protein, conserved",0.1332731966873086
+TGME49_323000,KRUF family protein,0.13335452065350464
+TGME49_500159,hypothetical protein,0.13379030823087018
+TGME49_500205,"hypothetical protein, conserved",0.13613651285069694
+TGME49_215785,rhoptry protein ROP2A,0.13624108350940117
+TGME49_500396,hypothetical protein,0.1365934854596836
+TGME49_500056,"selenoprotein W, putative",0.13662991005500486
+TGME49_500285,"CPBP intramembrane metalloprotease, putative",0.13854003485589875
+TGME49_500184,Toxoplasma gondii family C protein,0.13966453407878412
+TGME49_500130,SND2 domain-containing protein,0.1399626818336262
+TGME49_500301,ubiquitin-associated domain-containing protein,0.1400277444557126
+TGME49_500121,dephospho-CoA kinase,0.1401285941568893
+TGME49_500081,"hypothetical protein, conserved",0.14027927274640076
+TGME49_500202,"DEAD/DEAH box helicase, putative",0.1403925603043733
+TGME49_500316,"hypothetical protein, conserved",0.14318729698960328
+TGME49_500314,protein phosphatase PPM11C,0.1443620203366953
+TGME49_302007,"ribosomal protein L11, putative",0.1452531134754449
+TGME49_500298,"hypothetical protein, conserved",0.148262428774132
+TGME49_500036,"RNA binding protein, putative",0.14975290318490586
+TGME49_500019,"hypothetical protein, conserved",0.15302819863699627
+TGME49_500268,"hypothetical protein, conserved",0.15365595396066226
+TGME49_500107,"hypothetical protein, conserved",0.15444110280081522
+TGME49_500157,"prefoldin, putative",0.15474518075361995
+TGME49_328000,hypothetical protein,0.15486748471204745
+TGME49_500225,"hypothetical protein, conserved",0.15585022499188667
+TGME49_326200,type I fatty acid synthase,0.15693526945415737
+TGME49_327900,hypothetical protein,0.16831729251458866
+TGME49_500306,adaptor complexes medium subunit family protein,0.16843364065131294
+TGME49_500289,"hypothetical protein, conserved",0.17228737332180097
+TGME49_500126,"hypothetical protein, conserved",0.17255558145579175
+TGME49_255160,hypothetical protein,0.17560112842120146
+TGME49_300601,ribosomal protein S11,0.1756916352782364
+TGME49_325200,pyridoxal-phosphate dependent superfamily protein,0.17587122650519812
+TGME49_327400,dynein heavy chain family protein,0.17721445397481514
+TGME49_327700,hypothetical protein,0.18309636609570118
+TGME49_300631,ribosomal protein L4,0.19313926358268071
+TGME49_500439,"hypothetical protein, conserved",0.20213783670870497
+TGME49_500302,Porphobilinogen Synthase (PBGS) / Aminolevulinic Acid Dehydratase (ALAD) + Pitrilysin (apicoplast stromal processing peptidase),0.21257347161511836
+TGME49_500391,"copper amine oxidase, putative",0.23021735513781344
