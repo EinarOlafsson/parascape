@@ -94,6 +94,10 @@ class InferModule(QtCore.QObject):
                           "control's verdict.")
         export.clicked.connect(self._export)
         sl.addWidget(export)
+        kept = QtWidgets.QPushButton("Export your kept claims…")
+        kept.setToolTip("Every claim you kept, with its provenance, as CSV.")
+        kept.clicked.connect(self._export_kept)
+        sl.addWidget(kept)
         shell.add_setting("Save the answer", save, expanded=False)
 
         # ---------------------------------------------------------------- right
@@ -123,6 +127,11 @@ class InferModule(QtCore.QObject):
                          tip="Open the selected named gene in the Gene module.")
         shell.add_action("Put the answer on the map", self._to_map,
                          tip="Mark every named gene in the Map module.")
+        shell.add_action("Keep the chosen answers", self.keep_selected,
+                         tip="Add the selected named genes to your own layer of kept claims, with "
+                             "the question, the purity and the control's verdict. Kept claims show "
+                             "in the Gene module as kept, never as facts, and are never training "
+                             "data.")
         shell.borrow("Console and AI chat", [("Console", getattr(window, "console_dock", None)),
                                              ("AI chat", getattr(window, "chat_dock", None))],
                      folded=True)
@@ -234,6 +243,49 @@ class InferModule(QtCore.QObject):
         open_in(self.window)
         self.window.map_module.module.select([int(i) for i in np.flatnonzero(np.isin(ids, list(wanted)))],
                                              "the answer")
+
+    def keep_selected(self) -> int:
+        """Keep the selected named genes as claims in the user's own layer. Returns how many."""
+        from . import kept_claims as KC
+        frame = self.answer()
+        if frame is None:
+            self.shell.say("Answer the question first.")
+            return 0
+        rows = sorted({i.row() for i in self.panel.question_table.selectedIndexes()})
+        if not rows:
+            self.shell.say("Select the answers to keep in the table first.")
+            return 0
+        q = self.panel.current_question() or {}
+        try:
+            from .questions import as_recipe
+            trait = as_recipe(q).holdout
+        except Exception:
+            trait = str(q.get("question", "answer"))
+        column = self._gene_column(frame)
+        label = next((c for c in ("label", "predicted", "call", "holdout_label") if c in frame), None)
+        purity = next((c for c in ("purity", "precision", "cluster_purity") if c in frame), None)
+        kept = 0
+        for r in rows:
+            if r >= len(frame):
+                continue
+            row = frame.iloc[r]
+            p = float(row[purity]) if purity and row[purity] == row[purity] else float("nan")
+            KC.keep(KC.KeptClaim(
+                gene=str(row[column]), trait=str(trait), value=str(row[label]) if label else "named",
+                probability=p, uncertainty=("the control agrees" if bool(row.get("control_agrees"))
+                                            else "the control does not corroborate"),
+                method=f"infer:{trait}", method_version=str(q.get("id", q.get("question", ""))[:60]),
+                question=str(q.get("question", "")), accepted_score=p))
+            kept += 1
+        self.shell.say(f"Kept {kept} claims in your own layer.")
+        return kept
+
+    def _export_kept(self) -> None:
+        from . import kept_claims as KC
+        path, _ = QtWidgets.QFileDialog.getSaveFileName(self.shell, "Export your kept claims",
+                                                        "kept_claims.csv", "CSV (*.csv)")
+        if path:
+            self.shell.say(f"Exported {KC.export(path)} kept claims")
 
     def _export(self) -> None:
         frame = self.answer()

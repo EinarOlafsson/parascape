@@ -12,6 +12,7 @@ One file per task. This index is the status table; the files carry the reasoning
 | 89 | [GSE60305: colour-space SOLiD reads, not a kallisto fault](done/89_gse60305_kallisto.md) — 0 of 47 M reads could map; pipeline now records colour-space runs and treats 0 mapped as failure; processed readCount table queued |
 | 88 | [Proteomics downloads: parallel files, stall restarts, the faster transport](done/88_pride_download_throughput.md) — FTP 0.14 vs HTTPS 0.71 MB/s today; counter fixed |
 | 66 | [Recover missing source files and audit host candidate versions](done/66_source_recovery_and_host_candidates.md) — 4/4 complete: source recovery, RBC review, journal equivalence and verified host ambiguity correction |
+| 78 | [A user's own layer: keeping an inference without contaminating the map](done/78_kept_inference_layer.md) — **done** · kept claims appear in Predicted, never in Facts, never as training data |
 | 68.01 | [Browse functions, class members and inference/test coverage in Discoveries](done/68_01_discoveries_label_browser.md) — 41/30 labels, exact functional membership replay, 413 final checks |
 | 01 | Nineteen gene codes resolved |
 | 02 | Six expression datasets integrated |
@@ -114,7 +115,6 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 81 | [Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples](open/81_requantification_topup.md) — **ready; waits on downloads and on Einar installing the service** · queued behind the new downloads; 40 zero-parasite runs first |
 | 80 | [Identify the pull-down baits so the background table becomes usable](open/80_pulldown_background_baits.md) — **22 baits (was 11); gate waits on more projects** · 11 baits over 34 experiments is too few; the frequency filter would delete 12 of 13 complex members |
 | 79 | [Within-study control review](open/79_within_study_control_review.md) — **automated 2026-11-05** as the contrast ladder: parse the design, pair on one axis, nest by depth; 85 contrasts, GSE218921 alkaline recovered, review shrank from 450 runs to 30 axes |
-| 78 | [A user's own layer: keeping an inference without contaminating the map](open/78_kept_inference_layer.md) — kept claims appear in Predicted, never in Facts, never as training data |
 | 77 | [The borrowed profile-inference strategies, each with its own quality control](open/77_borrowed_inference_strategies.md) — PU learning, propensity weighting, matrix completion, stacking, lookalike, selective prediction, propagation, multi-task, shrinkage |
 | 76 | [Dataset quality, including citations normalised by age](open/76_dataset_quality_and_citations.md) — citations per year as a dataset weight only, in the attention category, never a per-gene feature |
 | 75 | [Condition fingerprints: annotate every dataset with metadata nobody published](open/75_condition_fingerprints.md) — proportions not labels; rank scoring; validated on studies that state their own condition |

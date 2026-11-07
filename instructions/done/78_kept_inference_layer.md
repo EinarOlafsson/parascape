@@ -1,5 +1,15 @@
 # 78 · A user's own layer: keeping an inference without contaminating the map
-**Status: open (requested 2026-11-05).** The user-facing half of inference; specified in instruction 74 and
+**Status: done 2026-11-06 (moved to done).** `parascape/kept_claims.py`: a separate store in the user
+cache folder (`kept_claims.jsonl`), never the release; every claim records value, probability, uncertainty,
+method and version, question, accepted score, whether it cleared the 90 % bar, the data release and the date;
+refused without its method. Shown in the Gene module under "What can be inferred" as **Kept by you** (never
+among the facts) with a *forget* link, and **Now measured -- agrees / DISAGREES** when a release measures the
+cell (`check_against`). Kept from the Map-neighbour suggestion (*keep this*, with its hit rate) and from the
+Infer module (*Keep the chosen answers*); exported with provenance (Infer ▸ Save the answer). Gate tests in
+`tests/test_kept_claims.py` (never facts, no training code imports the store, survives a release upgrade,
+superseded loudly, revert per claim and per method version).
+
+Requested 2026-11-05. The user-facing half of inference; specified in instruction 74 and
 lifted here because it is infrastructure, not layout.
 
 ## The request (Einar)

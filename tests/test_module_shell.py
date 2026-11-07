@@ -359,3 +359,18 @@ def test_your_genes_are_read_against_the_answer(window):
     text = module.answer_note.text()
     assert "2</b> genes named" in text and "1</b> are named" in text and "dense granules" in text
     window.panel._question_result = None
+
+
+def test_the_gene_module_keeps_a_map_suggestion_and_forgets_it(window, tmp_path, monkeypatch):
+    from parascape import kept_claims as KC
+    monkeypatch.setenv("PARASCAPE_KEPT_CLAIMS", str(tmp_path / "kept.jsonl"))
+    module = window.gene_module.module
+    gid = str(window.nodes.gene_id.iloc[0])
+    module.show(gid)
+    claim = module.keep_map_suggestion()
+    if claim is None:
+        pytest.skip("no labelled neighbours on the test map")
+    assert "Kept by you" in module.inferred.toHtml()
+    from PySide6.QtCore import QUrl
+    module._inferred_link(QUrl(f"forget:{claim.claim_id}"))
+    assert KC.claims(gid).empty

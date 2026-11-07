@@ -141,6 +141,8 @@ class GeneModule(QtCore.QObject):
 
         self.inferred = _browser()
         shell.link_style(self.inferred)
+        self.inferred.setOpenLinks(False)
+        self.inferred.anchorClicked.connect(self._inferred_link)
         self.inferred.setToolTip("What is not known about the gene, and what the data suggest, "
                                  "each with how often such a call is right.")
         shell.add_section("What is not known, and what can be inferred", self.inferred,
@@ -347,9 +349,78 @@ class GeneModule(QtCore.QObject):
                  if self.show_predicted.isChecked() or not s.startswith("Predicted")]
         suggestion = self._map_suggestion(r.gene)
         if suggestion:
-            lines.append(suggestion)
+            lines.append(suggestion + " <a href='keep:map'>keep this</a>")
+        lines.extend(self._kept_lines(r.gene))
         self.inferred.setHtml("".join(f"<p>{s}</p>" for s in lines)
                               or "<p>Every key trait of this gene is measured.</p>")
+
+    def _kept_lines(self, gene: str) -> list:
+        """The user's own kept claims for this gene -- shown as kept, never as facts -- and any
+        that a release now measures, said loudly (instruction 78)."""
+        from . import kept_claims as KC
+        kept = KC.claims(gene)
+        if not len(kept):
+            return []
+        superseded = {}
+        published = self._published()
+        if published is not None:
+            checked = KC.check_against(published)
+            superseded = {row.claim_id: row for row in checked.itertuples(index=False)}
+        out = []
+        for c in kept.itertuples(index=False):
+            p = "" if c.probability != c.probability else f", {float(c.probability):.0%}"
+            line = (f"<b>Kept by you</b>: {escape(str(c.trait))} = <b>{escape(str(c.value))}</b> "
+                    f"({escape(str(c.method))}{p}; release {escape(str(c.release))}, "
+                    f"{escape(str(c.kept_at)[:10])}) <a href='forget:{c.claim_id}'>forget</a>")
+            hit = superseded.get(c.claim_id)
+            if hit is not None:
+                line += (f"<br><b style='color:#d9a441'>Now measured</b>: {escape(hit.measured_value)}"
+                         f" -- the kept claim {'agrees' if hit.agrees else 'DISAGREES'}; the "
+                         f"measurement replaces it.")
+            out.append(line)
+        return out
+
+    def _inferred_link(self, url) -> None:
+        from PySide6 import QtGui
+        text = url.toString()
+        from . import kept_claims as KC
+        if text.startswith("forget:"):
+            KC.revert(text.split(":", 1)[1])
+            self.render()
+        elif text == "keep:map":
+            self.keep_map_suggestion()
+        else:
+            QtGui.QDesktopServices.openUrl(url)
+
+    def keep_map_suggestion(self):
+        """Keep what the gene's map neighbours suggest, with its hit rate, in your own layer."""
+        from . import kept_claims as KC
+        from . import map_reading as MR
+        map_module = getattr(getattr(self.window, "map_module", None), "module", None)
+        nodes = self._nodes()
+        if map_module is None or nodes is None or not self.gene:
+            return None
+        index = np.flatnonzero(nodes["gene_id"].astype(str).to_numpy() == self.gene)
+        if not len(index):
+            return None
+        hood = MR.neighbours(self.window.xyz, map_module.labels(), [int(index[0])],
+                             getattr(self.window, "placed", None))
+        if not hood.top:
+            return None
+        label, n, of = hood.top
+        agree = map_module.agreement()
+        call = agree.for_label(label) if agree is not None else None
+        claim = KC.keep(KC.KeptClaim(
+            gene=self.gene, trait=map_module.label_name(), value=label,
+            probability=call[0] if call else float("nan"),
+            uncertainty=(f"right {call[0]:.0%} of {call[1]} such calls on this map; chance "
+                         f"{agree.chance:.0%}") if call else "no record on this map",
+            method="map neighbours", method_version=f"k={MR.K}",
+            question=f"{map_module.label_name()} from its {of} nearest labelled genes on the map",
+            accepted_score=call[0] if call else float("nan")))
+        self.shell.say(f"Kept: {self.gene} {claim.trait} = {claim.value}")
+        self.render()
+        return claim
 
     def _map_suggestion(self, gene: str) -> str:
         """What the gene's neighbours on the current map suggest, with how often that is right."""
