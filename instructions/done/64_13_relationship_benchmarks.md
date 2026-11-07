@@ -1,6 +1,6 @@
 # 64.13 · Test relationship and link inference
 
-Status: OPEN — 85%, 2026-11-07. Held-out pair records for all four mechanisms; binding partners with AUPRC, baselines and decoy regimes; fixed-depth metrics on the other relationship cards remain.
+Status: DONE 2026-11-07. Held-out pair records with AUPRC, lift, fixed-depth precision and decoy regimes for all four mechanisms and binding partners; literature recovery named as such.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -55,3 +55,11 @@ degree-matched, 1,248 pairs, half positive -- model AUPRC 0.808 (lift 1.6 over t
 at recall 0.54; random 0.504; "both popular" (degree product) 0.529, so the model is not riding node degree;
 same-compartment alone reaches precision 0.85 at recall 0.49 -- compartment is most of what a decoy-based test can
 reward, which is why the same-compartment decoy regime is reported beside it.
+
+**Fixed-depth metrics were already on the cards (checked the same day):** every relationship strategy's calibration
+record carries the ranking scorecard -- AUPRC, AUPRC lift over prevalence, precision in the top 1 %, R-precision,
+recall in the top 10 % -- shown on its strategy card. Tg, default settings: link prediction AUPRC 0.607 at prevalence
+0.168 (lift 3.6), precision in the top 1 % 0.95; attention-corrected relations 0.637 at 0.525 (lift 1.2); unwritten
+links 0.244 at 0.167 (lift 1.5; literature recovery); learned neighbour and network spaces 0.802 at 0.5 (lift 1.6),
+precision 1.0 in the top 1 %. Pair records use organism-specific gene ids (TGME49_ / PF3D7_) for both endpoints.
+All done-when points are met.
