@@ -1,0 +1,14 @@
+niche	markers	cv_auc	cv_ap	test_n	test_positives	test_auc	test_ap	test_calls	test_precision	test_lower90	best_baseline_lower90	may_fill	top_families	flags
+ribosome	59	0.998	0.96	104	10	1.0	1.0	12	0.8333333333333334	0.614	0.562	False	gse51780, alphafold, bioid_corpus_membership	frozen_test_repeat
+proteasome	28	0.978	0.716	104	4	1.0	1.0	1	1.0	0.1	0.021	False	gse108740, gse19092, bioid_corpus_membership	frozen_test_repeat
+apicoplast	48	0.927	0.58	104	6	0.997	0.958	3	1.0	0.464	0.013	False	gse19092, gse22258, ipms_corpus_membership	frozen_test_repeat
+dense granules	40	0.957	0.772	104	9	0.993	0.94	0			0.0	False	gra12, gse19092, alphafold	frozen_test_repeat
+rhoptries	47	0.974	0.82	104	7	0.99	0.844	2	1.0	0.316	0.631	False	gse19092, gra12, toxodb_enteroepithelial	frozen_test_repeat
+micronemes	29	0.932	0.431	104	4	0.985	0.692	2	0.5	0.051	0.154	False	gse19092, unregistered, gse168465	frozen_test_repeat
+nucleus	109	0.94	0.818	104	12	0.964	0.736	4	0.75	0.32	0.007	False	gse19092, unregistered, proteome_total	frozen_test_repeat
+apical	41	0.943	0.718	104	4	0.96	0.8	2	1.0	0.316	0.017	False	gse19092, melting_temperature, proteome_total	frozen_test_repeat
+cytosol	62	0.913	0.675	104	10	0.933	0.643	4	0.75	0.32	0.0	False	proteome_total, unregistered, alphafold	frozen_test_repeat
+mitochondrion	68	0.844	0.437	104	13	0.925	0.685	2	1.0	0.316	0.0	False	gse19092, unregistered, foldseek_struct	frozen_test_repeat
+plasma membrane	66	0.934	0.774	104	8	0.895	0.676	2	1.0	0.316	0.051	False	foldseek_struct, myristoylome, phospho_quantitative	frozen_test_repeat
+ER	39	0.831	0.413	104	5	0.863	0.438	1	0.0	0.0	0.0	False	unregistered, gse99395, gse313048_atac	frozen_test_repeat
+IMC	38	0.879	0.507	104	5	0.846	0.559	0			0.015	False	gse19092, gse245775, thermal_shift_cetsa	frozen_test_repeat

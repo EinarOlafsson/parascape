@@ -108,3 +108,25 @@ by the harness (instruction 73) and the navigator (84). Stated here so the table
 
 **The next concrete step** is a categorical path in the harness (or a one-vs-rest decomposition over the
 coarse niches) so that `compartment` from the 718 curation-grade markers can be registered and scored.
+
+## 70.04 first results (2026-11-06): localization ranks well, and cannot fill yet
+
+`scripts/build_localization_questions_notebook.py` -> `notebooks/localization_questions_2026_11_06.ipynb`,
+`results/localization_questions_2026_11_06/`. Localization asked one coarse niche at a time (13 niches with
+at least 25 of the 718 curation-grade hyperLOPIT markers; every other marker a curated "no"), every `place`
+column held out, boosted trees, nested cross-validation, frozen partition once (seed 0; the sensitivity run
+seed 1). Built in the notebook, **not registered** in the application.
+
+* **Frozen-test AUC 0.85-1.0 for all 13 niches** (median 0.964): ribosome 1.0, proteasome 1.0, apicoplast
+  0.997, dense granules 0.993, rhoptries 0.99, micronemes 0.985, nucleus 0.964 ... IMC 0.846. The synchronised
+  cell-cycle series (`gse19092`) is the top evidence family for most niches.
+* **Nothing may fill**: a frozen partition holds 104 genes with 4-13 positives, so even perfect calls give a
+  Clopper-Pearson lower bound well under 0.90. More markers is what lifts it, not a better model.
+* **Not placed by who chose to measure.** `gra12` (a CRISPR screen of 236 secretory candidates) topped dense
+  granules and rhoptries, and being measured at all encodes that choice. Rerun with only families measured on
+  at least half the genes: median cross-validated AUC change 0.0 (dense granules 0.957 -> 0.937).
+* **Caveat that remains**: the markers were partly chosen from prior knowledge, and for dense granules the
+  genome-wide top family becomes InterPro, whose domain names can carry the location.
+
+Next for localization: more independent positives (the GO experimental set of 70.01 and the 9 IFA outcomes) to
+widen the frozen partitions, and Einar's decision on registering these questions in the application.

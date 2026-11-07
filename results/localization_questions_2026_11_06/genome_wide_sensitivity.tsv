@@ -1,0 +1,14 @@
+niche	cv_auc	test_auc	wide_cv_auc	wide_test_auc	wide_top_families	cv_change
+ribosome	0.998	1.0	0.993	0.997	gse51780, alphafold, bioid_corpus_membership	-0.005
+proteasome	0.978	1.0	0.96	1.0	gse19092, gse108740, toxodb_enteroepithelial	-0.018
+apicoplast	0.927	0.997	0.923	0.956	gse19092, crispr_serum_restriction, gse245775	-0.004
+dense granules	0.957	0.993	0.937	0.928	interpro, gse19092, gse200962	-0.02
+rhoptries	0.974	0.99	0.977	0.968	gse19092, toxodb_enteroepithelial, crispr_parasite_density	0.003
+micronemes	0.932	0.985	0.959	0.95	gse19092, gse168465, gse108740	0.027
+nucleus	0.94	0.964	0.9	0.938	gse19092, unregistered, gse245775	-0.04
+apical	0.943	0.96	0.966	0.934	gse19092, unregistered, crispr_parasite_density	0.023
+cytosol	0.913	0.933	0.915	0.912	unregistered, alphafold, toxodb_ec_numbers	0.002
+mitochondrion	0.844	0.925	0.844	0.799	foldseek_struct, unregistered, gse19092	0.0
+plasma membrane	0.934	0.895	0.918	0.879	foldseek_struct, unregistered, crispr_macrophage	-0.016
+ER	0.831	0.863	0.885	0.857	unregistered, gse19092, gse277553_cuttag	0.054
+IMC	0.879	0.846	0.928	0.977	gse19092, toxodb_strain_snps, gse168155	0.049
