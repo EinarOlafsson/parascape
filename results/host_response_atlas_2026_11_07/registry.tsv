@@ -1,0 +1,107 @@
+column	study	species	axis	baseline	treated	background	n_baseline	n_treated	host_genes	changed_2fold
+host_lfc_GSE103113_0	GSE103113	mouse	condition	pru	gra18	treatment=none	1	2	13302	41
+host_lfc_GSE103113_1	GSE103113	mouse	condition	pru	gra18	treatment=lps	1	2	13276	53
+host_lfc_GSE103113_2	GSE103113	mouse	treatment	none	lps	condition=pru	1	1	13300	1894
+host_lfc_GSE103113_3	GSE103113	mouse	treatment	none	lps	condition=gra18	2	2	13452	1643
+host_lfc_GSE125120_4	GSE125120	human	condition	bystander	infected	genotype=wild type	3	3	15356	344
+host_lfc_GSE125120_5	GSE125120	human	condition	bystander	infected	genotype=myr1 ko	3	3	15240	173
+host_lfc_GSE125120_6	GSE125120	human	genotype	wild type	myr1 ko	condition=bystander	3	3	15062	78
+host_lfc_GSE125120_7	GSE125120	human	genotype	wild type	myr1 ko	condition=infected	3	3	15542	207
+host_lfc_GSE132238_8	GSE132238	human	condition	unstress	stress	genotype=wt; time=24 hr	1	2	25658	14693
+host_lfc_GSE132238_9	GSE132238	human	condition	unstress	stress	time=48 hr; genotype=wt	1	1	24850	16743
+host_lfc_GSE132238_10	GSE132238	human	condition	unstress	stress	time=72 hr; genotype=wt	1	2	17826	12700
+host_lfc_GSE132238_11	GSE132238	human	condition	unstress	stress	genotype={delta}bfd1; time=24 hr	1	2	25506	14719
+host_lfc_GSE132238_13	GSE132238	human	condition	unstress	stress	genotype={delta}bfd1; time=72 hr	1	2	16073	10347
+host_lfc_GSE132238_14	GSE132238	human	genotype	wt	{delta}bfd1	condition=unstress; time=24 hr	1	1	26886	15008
+host_lfc_GSE132238_15	GSE132238	human	genotype	wt	{delta}bfd1	condition=stress; time=24 hr	2	2	24948	12800
+host_lfc_GSE132238_17	GSE132238	human	genotype	wt	{delta}bfd1	time=72 hr; condition=unstress	1	1	15793	11791
+host_lfc_GSE132238_18	GSE132238	human	genotype	wt	{delta}bfd1	condition=stress; time=48 hr	1	1	22470	14722
+host_lfc_GSE132238_19	GSE132238	human	genotype	wt	{delta}bfd1	condition=stress; time=72 hr	2	2	17281	7828
+host_lfc_GSE132238_20	GSE132238	human	time	24 hr	48 hr	condition=unstress; genotype=wt	1	1	25991	16226
+host_lfc_GSE132238_21	GSE132238	human	time	24 hr	72 hr	condition=unstress; genotype=wt	1	1	22315	17131
+host_lfc_GSE132238_22	GSE132238	human	time	48 hr	72 hr	condition=unstress; genotype=wt	1	1	22730	17986
+host_lfc_GSE132238_23	GSE132238	human	time	24 hr	48 hr	condition=stress; genotype=wt	2	1	24680	13866
+host_lfc_GSE132238_25	GSE132238	human	time	24 hr	72 hr	condition=stress; genotype=wt	2	2	23054	16092
+host_lfc_GSE132238_26	GSE132238	human	time	48 hr	72 hr	condition=stress; genotype=wt	1	2	20732	14187
+host_lfc_GSE132238_27	GSE132238	human	time	24 hr	72 hr	genotype={delta}bfd1; condition=unstress	1	1	23398	18914
+host_lfc_GSE132238_29	GSE132238	human	time	24 hr	48 hr	condition=stress; genotype={delta}bfd1	2	1	23108	14566
+host_lfc_GSE132238_30	GSE132238	human	time	24 hr	72 hr	condition=stress; genotype={delta}bfd1	2	2	22149	16702
+host_lfc_GSE132238_31	GSE132238	human	time	48 hr	72 hr	condition=stress; genotype={delta}bfd1	1	2	19851	15389
+host_lfc_GSE139537_32	GSE139537	human	condition	etoh	shield1	genotype=wt (me49{delta}ku80)	3	3	15270	370
+host_lfc_GSE139537_33	GSE139537	human	condition	etoh	shield1	genotype={delta}bfd1/dd-bfd1-ty	3	3	15322	1855
+host_lfc_GSE139537_34	GSE139537	human	genotype	wt (me49{delta}ku80)	{delta}bfd1/dd-bfd1-ty	condition=etoh	3	3	15246	365
+host_lfc_GSE139537_35	GSE139537	human	genotype	wt (me49{delta}ku80)	{delta}bfd1	condition=shield1	3	3	15364	322
+host_lfc_GSE139537_36	GSE139537	human	genotype	wt (me49{delta}ku80)	{delta}bfd1/dd-bfd1-ty	condition=shield1	3	3	15335	1633
+host_lfc_GSE140197_37	GSE140197	human	time	4hr	12hr	treatment=dmso (vehicle)	1	1	14630	528
+host_lfc_GSE140197_38	GSE140197	human	time	8hr	12hr	treatment=dmso (vehicle)	1	1	14650	486
+host_lfc_GSE140197_39	GSE140197	human	time	4hr	8hr	treatment=dmso (vehicle)	1	1	14506	440
+host_lfc_GSE140197_40	GSE140197	human	time	4hr	12hr	treatment=24.2 nm trte	1	1	14603	896
+host_lfc_GSE140197_41	GSE140197	human	time	8hr	12hr	treatment=24.2 nm trte	1	1	14619	550
+host_lfc_GSE140197_42	GSE140197	human	time	4hr	12hr	treatment=6 nm trte	1	1	14695	482
+host_lfc_GSE140197_43	GSE140197	human	time	8hr	12hr	treatment=6 nm trte	1	1	14706	470
+host_lfc_GSE140197_44	GSE140197	human	time	4hr	8hr	treatment=24.2 nm trte	1	1	14589	539
+host_lfc_GSE140197_45	GSE140197	human	time	4hr	8hr	treatment=6 nm trte	1	1	14566	414
+host_lfc_GSE140197_46	GSE140197	human	treatment	dmso (vehicle)	24.2 nm trte	time=4hr	1	1	14520	475
+host_lfc_GSE140197_47	GSE140197	human	treatment	dmso (vehicle)	6 nm trte	time=4hr	1	1	14500	407
+host_lfc_GSE140197_48	GSE140197	human	treatment	dmso (vehicle)	24.2 nm trte	time=12hr	1	1	14657	536
+host_lfc_GSE140197_49	GSE140197	human	treatment	dmso (vehicle)	24.2 nm trte	time=8hr	1	1	14586	439
+host_lfc_GSE140197_50	GSE140197	human	treatment	dmso (vehicle)	6 nm trte	time=12hr	1	1	14761	459
+host_lfc_GSE140197_51	GSE140197	human	treatment	dmso (vehicle)	6 nm trte	time=8hr	1	1	14577	439
+host_lfc_GSE156685_52	GSE156685	human	genotype	wild type	unstated	reference background	2	7	16858	262
+host_lfc_GSE158231_53	GSE158231	human	genotype	wild-type	tgif2k-b knock-out	treatment=untreated	3	3	15658	10640
+host_lfc_GSE158231_54	GSE158231	human	genotype	wild-type	tgif2k-b knock-out	treatment=5um sodium arsenite	4	4	14392	4680
+host_lfc_GSE158231_55	GSE158231	human	treatment	untreated	5um sodium arsenite	genotype=wild-type	3	4	16141	8154
+host_lfc_GSE158231_56	GSE158231	human	treatment	untreated	5um sodium arsenite	genotype=tgif2k-b knock-out	3	4	13335	335
+host_lfc_GSE159515_58	GSE159515	mouse	strain	me49	rh	stage=tachyzoites	2	2	81	61
+host_lfc_GSE175919_59	GSE175919	human	treatment	6 hours of treatment with dmso	6 hours of treatment with mc1742 (0.5 µm)	reference background	3	3	15470	3666
+host_lfc_GSE193614_60	GSE193614	human	genotype	wild type	unstated	reference background	2	6	16221	1675
+host_lfc_GSE193779_61	GSE193779	human	genotype	wild type	ap2x-4 knock out	reference background	3	3	13721	9357
+host_lfc_GSE200962_62	GSE200962	human	treatment	me49 tgcyc5 bz -aux rep1	48h, ph 7.4, 5% co2, 24h with auxin	reference background	4	1	14254	7800
+host_lfc_GSE200962_63	GSE200962	human	treatment	me49 tgcyc5 bz -aux rep2	48h, ph 7.4, 5% co2, 24h with auxin	reference background	4	1	13352	7092
+host_lfc_GSE200962_65	GSE200962	human	treatment	me49 tgcycp2 bz -aux rep2	48h, ph 7.4, 5% co2, 24h with auxin	reference background	4	1	14615	7301
+host_lfc_GSE200962_66	GSE200962	human	treatment	me49 tgcycp2 tz -aux rep1	48h, ph 7.4, 5% co2, 24h with auxin	reference background	4	1	15162	7812
+host_lfc_GSE200962_92	GSE200962	human	treatment	me49 tgcyc5 bz -aux rep1	me49 tgcyc5 bz -aux rep2	reference background	4	4	13598	2542
+host_lfc_GSE200962_107	GSE200962	human	treatment	me49 tgcyc5 bz -aux rep1	me49 tgcycp2 bz -aux rep2	reference background	4	4	14693	4508
+host_lfc_GSE200962_108	GSE200962	human	treatment	me49 tgcyc5 bz -aux rep2	me49 tgcycp2 bz -aux rep2	reference background	4	4	14663	4069
+host_lfc_GSE200962_122	GSE200962	human	treatment	me49 tgcyc5 bz -aux rep1	me49 tgcycp2 tz -aux rep1	reference background	4	4	14143	7300
+host_lfc_GSE200962_123	GSE200962	human	treatment	me49 tgcyc5 bz -aux rep2	me49 tgcycp2 tz -aux rep1	reference background	4	4	14062	5750
+host_lfc_GSE200962_125	GSE200962	human	treatment	me49 tgcycp2 bz -aux rep2	me49 tgcycp2 tz -aux rep1	reference background	4	4	14922	6272
+host_lfc_GSE218921_131	GSE218921	human	genotype	wild type	bfd1 ko	tissue=replicating tachyzoites under different conditions; treatment=control media conditions	3	2	14976	223
+host_lfc_GSE218921_132	GSE218921	human	genotype	wild type	rocy1 ko	tissue=replicating tachyzoites under different conditions; treatment=control media conditions	3	2	14958	236
+host_lfc_GSE218921_133	GSE218921	human	genotype	wild type	bfd1 ko	treatment=high ph, low c02, low serum conditions; tissue=replicating tachyzoites under different conditions	3	2	15021	224
+host_lfc_GSE218921_134	GSE218921	human	genotype	wild type	rocy1 ko	treatment=high ph, low c02, low serum conditions; tissue=replicating tachyzoites under different conditions	3	3	15020	205
+host_lfc_GSE218921_135	GSE218921	human	treatment	control media conditions	high ph, low c02, low serum conditions	genotype=wild type; tissue=replicating tachyzoites under different conditions	3	3	15061	1453
+host_lfc_GSE218921_136	GSE218921	human	treatment	control media conditions	high ph, low c02, low serum conditions	genotype=bfd1 ko; tissue=replicating tachyzoites under different conditions	2	2	15078	1437
+host_lfc_GSE218921_137	GSE218921	human	treatment	control media conditions	high ph, low c02, low serum conditions	genotype=rocy1 ko; tissue=replicating tachyzoites under different conditions	2	3	15043	1358
+host_lfc_GSE218921_138	GSE218921	human	treatment	control media conditions	high ph, low c02, low serum conditions	genotype=unstated; tissue=freshly excysted sporozoites	3	3	15657	3467
+host_lfc_GSE223621_139	GSE223621	mouse	genotype	pru-ova-tdtomato	pru-ova-tdtomato delta bfd1::mneongreen	reference background	3	3	15022	194
+host_lfc_GSE223621_140	GSE223621	mouse	genotype	pru-ova-tdtomato	pru-ova-tdtomato delta bfd2::hxgprt	reference background	3	3	15024	22
+host_lfc_GSE223819_141	GSE223819	human	genotype	me49/tir1	me49/tir1/200385-mng-maid	treatment=vehicle (pbs)	2	2	15115	573
+host_lfc_GSE223819_142	GSE223819	human	genotype	me49/tir1	me49/tir1/208020-mng-maid	treatment=vehicle (pbs)	2	2	14946	973
+host_lfc_GSE223819_143	GSE223819	human	genotype	me49/tir1	me49/tir1/224630-mng-maid	treatment=vehicle (pbs)	2	2	15219	581
+host_lfc_GSE223819_144	GSE223819	human	genotype	me49/tir1	me49/tir1/253790-mng-maid	treatment=vehicle (pbs)	2	2	14995	579
+host_lfc_GSE223819_145	GSE223819	human	genotype	me49/tir1	me49/tir1/306620-mng-maid	treatment=vehicle (pbs)	2	2	15023	359
+host_lfc_GSE223819_146	GSE223819	human	genotype	me49/tir1	me49/tir1/311100-mng-maid	treatment=vehicle (pbs)	2	2	15013	600
+host_lfc_GSE223819_147	GSE223819	human	genotype	me49/tir1	me49/tir1/200385-mng-maid	treatment=50um iaa	1	2	15437	1083
+host_lfc_GSE223819_148	GSE223819	human	genotype	me49/tir1	me49/tir1/208020-mng-maid	treatment=50um iaa	1	2	15370	2069
+host_lfc_GSE223819_149	GSE223819	human	genotype	me49/tir1	me49/tir1/224630-mng-maid	treatment=50um iaa	1	2	15385	1146
+host_lfc_GSE223819_150	GSE223819	human	genotype	me49/tir1	me49/tir1/253790-mng-maid	treatment=50um iaa	1	2	15213	1565
+host_lfc_GSE223819_151	GSE223819	human	genotype	me49/tir1	me49/tir1/306620-mng-maid	treatment=50um iaa	1	2	15502	1153
+host_lfc_GSE223819_152	GSE223819	human	genotype	me49/tir1	me49/tir1/311100-mng-maid	treatment=50um iaa	1	2	15086	1284
+host_lfc_GSE223819_153	GSE223819	human	treatment	vehicle (pbs)	50um iaa	genotype=me49/tir1	2	1	15057	1417
+host_lfc_GSE223819_154	GSE223819	human	treatment	vehicle (pbs)	5um iaa	genotype=me49/tir1	2	1	14742	835
+host_lfc_GSE223819_155	GSE223819	human	treatment	vehicle (pbs)	50um iaa	genotype=me49/tir1/200385-mng-maid	2	2	15414	895
+host_lfc_GSE223819_156	GSE223819	human	treatment	vehicle (pbs)	50um iaa	genotype=me49/tir1/208020-mng-maid	2	2	15131	399
+host_lfc_GSE223819_157	GSE223819	human	treatment	vehicle (pbs)	50um iaa	genotype=me49/tir1/224630-mng-maid	2	2	15448	379
+host_lfc_GSE223819_158	GSE223819	human	treatment	vehicle (pbs)	50um iaa	genotype=me49/tir1/253790-mng-maid	2	2	15114	531
+host_lfc_GSE223819_159	GSE223819	human	treatment	vehicle (pbs)	50um iaa	genotype=me49/tir1/306620-mng-maid	2	2	15345	451
+host_lfc_GSE223819_160	GSE223819	human	treatment	vehicle (pbs)	50um iaa	genotype=me49/tir1/311100-mng-maid	2	2	15030	309
+host_lfc_GSE223869_161	GSE223869	human	genotype	me49delta ku80delta bfd1::bfd1-ty	me49delta ku80delta bfd1::bfd1-tydelta bfd2	treatment=standard culture media, 5% co2	6	6	14810	654
+host_lfc_GSE223869_162	GSE223869	human	genotype	me49delta ku80delta bfd1::bfd1-ty	me49delta ku80delta bfd1::bfd1-tydelta bfd2	treatment=alkaline stress media, ambient co2	6	6	14315	168
+host_lfc_GSE223869_163	GSE223869	human	treatment	standard culture media, 5% co2	alkaline stress media, ambient co2	genotype=me49delta ku80delta bfd1::bfd1-ty	6	6	14697	1963
+host_lfc_GSE223869_164	GSE223869	human	treatment	standard culture media, 5% co2	alkaline stress media, ambient co2	genotype=me49delta ku80delta bfd1::bfd1-tydelta bfd2	6	6	14600	1616
+host_lfc_GSE223877_165	GSE223877	human	genotype	me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-ty	me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-tydelta bfd2::tdtomato	treatment=standard medium, +vehicle	6	6	14376	375
+host_lfc_GSE223877_166	GSE223877	human	genotype	me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-ty	me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-tydelta bfd2::tdtomato	treatment=standard medium, +3um shield-1	6	6	14309	679
+host_lfc_GSE223877_167	GSE223877	human	treatment	standard medium, +vehicle	standard medium, +3um shield-1	genotype=me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-ty	6	6	14406	849
+host_lfc_GSE223877_168	GSE223877	human	treatment	standard medium, +vehicle	standard medium, +3um shield-1	genotype=me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-tydelta bfd2::tdtomato	6	6	14331	324
+host_lfc_PRJNA1008424_177	PRJNA1008424	human	genotype	wild type	trx1 mutant	reference background	4	4	16282	898

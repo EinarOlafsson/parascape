@@ -1,0 +1,3 @@
+column	background	n_baseline	n_treated	host_genes	changed_2fold	MYC_lfc	spearman_between
+host_lfc_GSE125120_4	genotype=wild type	3	3	15356	344	0.05	0.536
+host_lfc_GSE125120_5	genotype=myr1 ko	3	3	15240	173	0.08	0.536

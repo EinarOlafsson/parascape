@@ -208,3 +208,10 @@ within-study contrast columns of the expression traits release; query = Spearman
 benchmark on four curated cross-study perturbations: median best-partner rank 1-3 against chance 59-99 (BFD1
 stabilised: rank 1 both ways). Tests in `tests/test_perturbation_atlas.py`. Not done: weighting by the standard
 errors, the ToxoHub knockdown cross-check (unreleased), and a module in the application.
+
+## Product 3 built (2026-11-07): the host response atlas
+
+`results/host_response_atlas_2026_11_07/README.md`: 106 host-side signatures over 18 studies from the same
+contrasts as the parasite side. The MYR1 check holds: without MYR1 the infected-cell host response is half the
+size (173 against 344 genes changed 2-fold) and only partly the same (Spearman 0.536). Open: orthologue mapping,
+a query, mock-infected contrasts. Product 4 (background frequency) is instruction 80.
