@@ -32,6 +32,12 @@ assert third.view.isValid()
 assert not third.view.grabFramebuffer().isNull()
 third.close()
 app.processEvents()
+# Every check above has passed. Leave without interpreter finalisation: on CI (Python 3.11, PySide6 6.12)
+# shiboken's teardown aborts with "none_dealloc: deallocating None" while the runtime is finalising, after all
+# assertions -- a shutdown fault outside what this test checks (instruction 64.40 records it as its own gap).
+import os, sys
+sys.stdout.flush(); sys.stderr.flush()
+os._exit(0)
 '''
     env = dict(os.environ, PARASCAPE_STATE=str(tmp_path), XDG_CONFIG_HOME=str(tmp_path))
     result = subprocess.run([sys.executable, '-c', code], env=env,

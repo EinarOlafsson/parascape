@@ -63,3 +63,10 @@ Pending: commit, checks, artifact/benchmark identities, measured population, lim
 4. Known order dependence in the local suite: `test_app_menus.py` then `test_app_smoke.py` in one process gives 14
    smoke failures (the menu tests leave the Plasmodium map open); each file passes alone, and the same 14 fail on a
    clean checkout, so this predates today's changes.
+
+**CI after the Qt binding fix (2026-11-07).** With `PYQTGRAPH_QT_LIB: PySide6` (commit 385d12e5, the workflow push
+was accepted) the first step passes. The next, `tests/test_app_contexts.py` under xvfb, passed every assertion
+(three windows, shared contexts, valid framebuffers) and then aborted while Python finalised: "Fatal Python
+error: none_dealloc: deallocating None" in shiboken teardown (Python 3.11.18, PySide6 6.12.0). The test's
+subprocess now ends with `os._exit(0)` after its checks. **Open gap:** the same teardown fault may abort the
+desktop app at exit on Python 3.11 with PySide6 6.12; not reproduced locally (Python 3.12, no xvfb here).
