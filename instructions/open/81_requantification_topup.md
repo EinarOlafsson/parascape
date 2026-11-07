@@ -1,5 +1,12 @@
 # 81 · Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples
-**Status: open (agreed 2026-11-03, scheduled after the new downloads).**
+**Status: ready, waiting on the downloads (2026-11-06).** `scripts/omics_quant.py requantify` (deployed):
+waits hourly until every planned run is quantified, then re-quantifies the 456 runs verified before
+trimming -- the zero-mapped ones (GSE243206, GSE243207, GSE245775) first -- into `requant/` beside each
+verified result, and writes `requant/compare.json` (Spearman of TPM per reference; "agrees" at >= 0.9,
+"recovered" for a run that mapped nothing before, "DIFFERS -- review" otherwise; nothing is overwritten).
+The service file is `scripts/systemd/parascape-requant.service`; **installing it is Einar's step** (a new
+persistent service was not installed without his say-so). On 2026-11-06: 723 of 999 runs done, 1,474
+priority-plan runs pending. Tests: `tests/test_omics_requant.py`.
 
 ## Why three things accumulated
 1. **Adapter trimming** arrived on 2026-11-04. Runs verified before it carry no `trimming` key in `done.json`,

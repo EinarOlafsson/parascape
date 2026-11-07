@@ -1,0 +1,28 @@
+# Re-quantification of RNA runs verified before trimming and the salmon extras (instruction 81).
+# It waits, checking hourly, until every newly planned run is quantified (Einar: only after the new
+# downloads), then re-quantifies beside each verified result -- runs that mapped nothing first -- and
+# writes requant/compare.json for each. Install:
+#   cp scripts/systemd/parascape-requant.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload && systemctl --user enable --now parascape-requant.service
+[Unit]
+Description=ParaScape re-quantification of runs verified before trimming (instruction 81)
+After=parascape-quant-cached.service
+
+[Service]
+Type=simple
+WorkingDirectory=/media/carruthers/mnt3/claude/repo/starplast
+Environment=TZ=America/Detroit
+Environment=PARASCAPE_SCRATCH=/media/carruthers/mnt1/parascape_omics_scratch/requant
+Environment=PARASCAPE_PLAN=/home/carruthers/.cache/parascape-downloads/automation/priority-plan.jsonl
+Environment=PARASCAPE_THREADS=12
+Environment=PATH=/home/carruthers/anaconda3/envs/parascape-quant/bin:/usr/bin:/bin
+ExecStart=/home/carruthers/anaconda3/envs/starplast/bin/python -u /home/carruthers/.local/share/parascape-download-worker/omics_quant.py requantify
+CPUAffinity=0-23
+Nice=19
+IOSchedulingClass=idle
+MemoryMax=48G
+Restart=on-failure
+RestartSec=300
+
+[Install]
+WantedBy=default.target

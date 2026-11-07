@@ -428,6 +428,108 @@ def _free_gb(path: str) -> float:
     return shutil.disk_usage(path).free / 1e9
 
 
+# --------------------------------------------------------------------------- re-quantification
+#: Re-quantification of runs verified before trimming and the salmon extras (instruction 81) is written
+#: beside the verified result, never over it: rnaseq/<study>/<run>/requant/. Set by `requantify`.
+REQUANT = {"subdir": ""}
+REQUANT_DIR = "requant"
+#: A re-quantified run whose transcripts agree with the verified ones at least this well (Spearman of TPM over
+#: transcripts expressed in either) agrees; below it, the difference is reported, not overwritten.
+REQUANT_AGREE = 0.9
+
+
+def _tpm(path: str):
+    import pandas as pd
+    for name in ("quant.sf.gz", "quant.sf"):
+        f = os.path.join(path, name)
+        if os.path.exists(f):
+            return pd.read_csv(f, sep="\t", usecols=["Name", "TPM"]).set_index("Name")["TPM"]
+    return None
+
+
+def compare_requant(run_dir: str, new_dir: str, references: list) -> dict:
+    """Compare a re-quantification with the verified result and write requant/compare.json."""
+    from scipy.stats import spearmanr
+    out = {"compared": time.strftime("%Y-%m-%dT%H:%M:%S"), "references": {}}
+    worst = None
+    for ref in references:
+        old = _tpm(os.path.join(run_dir, f"salmon_{ref}"))
+        new = _tpm(os.path.join(new_dir, f"salmon_{ref}"))
+        if old is None or new is None:
+            continue
+        both = old.to_frame("old").join(new.to_frame("new"), how="inner")
+        expressed = both[(both["old"] > 1) | (both["new"] > 1)]
+        old_mapped = salmon_mapped(os.path.join(run_dir, f"salmon_{ref}"))
+        new_mapped = salmon_mapped(os.path.join(new_dir, f"salmon_{ref}"))
+        rho = float(spearmanr(expressed["old"], expressed["new"]).correlation) if len(expressed) > 10 else None
+        out["references"][ref] = {"spearman": rho, "transcripts": int(len(expressed)),
+                                  "mapped_before": old_mapped, "mapped_now": new_mapped}
+        if rho is not None and (worst is None or rho < worst):
+            worst = rho
+    zero_before = any((v.get("mapped_before") or 0) == 0 and (v.get("mapped_now") or 0) > 0
+                      for v in out["references"].values())
+    out["spearman"] = None if worst is None else round(worst, 4)
+    out["verdict"] = ("recovered: mapped nothing before trimming, maps now" if zero_before
+                      else "agrees" if worst is not None and worst >= REQUANT_AGREE
+                      else "DIFFERS -- review before use" if worst is not None else "not comparable")
+    _cache_module().save(Path(new_dir) / "compare.json", out)
+    return out
+
+
+def requant_todo() -> list:
+    """Runs verified before trimming (no `trimming` in done.json) and not yet re-quantified, the runs
+    that mapped nothing first -- they contribute nothing until this runs."""
+    with open(PLAN) as fh:
+        plan_rows = [json.loads(ln) for ln in fh if ln.strip()]
+    first, rest = [], []
+    for r in plan_rows:
+        run_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
+        done = os.path.join(run_dir, "done.json")
+        if not os.path.exists(done) or os.path.exists(os.path.join(run_dir, REQUANT_DIR, "done.json")):
+            continue
+        try:
+            with open(done) as fh:
+                if "trimming" in json.load(fh):
+                    continue
+        except (OSError, ValueError):
+            continue
+        mapped = salmon_mapped(os.path.join(run_dir, f"salmon_{r['references'][0]}"))
+        (first if mapped == 0 else rest).append(r)
+    return first + rest
+
+
+def pending_new_runs() -> int:
+    """Planned runs not yet quantified (nor recorded as colour space): the new downloads."""
+    with open(PLAN) as fh:
+        plan_rows = [json.loads(ln) for ln in fh if ln.strip()]
+    n = 0
+    for r in plan_rows:
+        run_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
+        if not (os.path.exists(os.path.join(run_dir, "done.json"))
+                or os.path.exists(os.path.join(run_dir, COLOUR_SPACE_FILE))):
+            n += 1
+    return n
+
+
+def requantify(limit: int | None = None, wait: bool = True) -> None:
+    """Re-quantify the earlier runs (instruction 81) -- only once the new downloads are done, as Einar
+    asked: until then this waits, checking hourly."""
+    while wait and pending_new_runs() > 0:
+        log(f"re-quantification waits: {pending_new_runs()} new runs still to quantify")
+        time.sleep(3600)
+    REQUANT["subdir"] = REQUANT_DIR
+    todo = requant_todo()
+    log(f"re-quantifying {len(todo)} runs verified before trimming")
+    os.makedirs(SCRATCH, exist_ok=True)
+    count = 0
+    while todo:
+        deferred = _quantify_pass(todo, limit, count)
+        if deferred is None or not deferred:
+            return
+        time.sleep(600)
+        todo = deferred
+
+
 def quantify(limit: int | None = None) -> None:
     path = PLAN
     with open(path) as fh:
@@ -546,9 +648,10 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
     local_scratch = SCRATCH
     deferred = []
     for r in todo:
-        out_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
+        run_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
+        out_dir = os.path.join(run_dir, REQUANT["subdir"]) if REQUANT["subdir"] else run_dir
         if os.path.exists(os.path.join(out_dir, "done.json")) or \
-                os.path.exists(os.path.join(out_dir, COLOUR_SPACE_FILE)):
+                os.path.exists(os.path.join(run_dir, COLOUR_SPACE_FILE)):
             continue
         if colour_space(r):
             os.makedirs(out_dir, exist_ok=True)
@@ -633,6 +736,10 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                                   "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256,
                                   "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
             log(f"{r['run_accession']} ({r['study']}): quantified against {', '.join(r['references'])}")
+            if REQUANT["subdir"]:
+                verdict = compare_requant(run_dir, out_dir, r["references"])
+                log(f"{r['run_accession']}: re-quantified -- {verdict['verdict']} "
+                    f"(Spearman {verdict.get('spearman')})")
         except ScratchDeferred as e:
             log(str(e))
             deferred.append(r)
@@ -829,6 +936,9 @@ def main(argv=None) -> int:
     h.add_argument("names", nargs="*", help="default: every name in HOST_REFERENCES except ME49_host")
     q = sub.add_parser("quantify")
     q.add_argument("--limit", type=int, default=None)
+    rq = sub.add_parser("requantify", help="re-quantify runs verified before trimming (instruction 81)")
+    rq.add_argument("--limit", type=int, default=None)
+    rq.add_argument("--now", action="store_true", help="do not wait for the new downloads")
     args = ap.parse_args(argv)
     if args.cmd == "references":
         references()
@@ -838,6 +948,8 @@ def main(argv=None) -> int:
             host_reference(name)
     elif args.cmd == "runs":
         plan(args.studies, set(args.strain))
+    elif args.cmd == "requantify":
+        requantify(args.limit, wait=not args.now)
     else:
         quantify(args.limit)
     return 0
