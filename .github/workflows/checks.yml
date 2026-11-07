@@ -21,6 +21,7 @@ jobs:
       QT_QPA_PLATFORM: offscreen
       PYQTGRAPH_QT_LIB: PySide6
       PARASCAPE_STATE: /tmp/parascape-checks
+      PARASCAPE_AMBIENT_DEFAULT: '0'
       OPENBLAS_NUM_THREADS: '2'
       OMP_NUM_THREADS: '2'
       NUMBA_NUM_THREADS: '2'
