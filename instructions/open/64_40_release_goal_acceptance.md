@@ -70,3 +70,11 @@ was accepted) the first step passes. The next, `tests/test_app_contexts.py` unde
 error: none_dealloc: deallocating None" in shiboken teardown (Python 3.11.18, PySide6 6.12.0). The test's
 subprocess now ends with `os._exit(0)` after its checks. **Open gap:** the same teardown fault may abort the
 desktop app at exit on Python 3.11 with PySide6 6.12; not reproduced locally (Python 3.12, no xvfb here).
+
+**CI, next step (2026-11-07).** With stderr uncaptured, the full-suite abort printed its reason: the same "Fatal
+Python error: none_dealloc: deallocating None" in the middle of `tests/test_analysis_panel.py`. It is a reference
+count error in shiboken6/PySide6 6.12 that over-releases `None`; on Python 3.12 `None` is immortal, so the fault
+is invisible there (every local run is 3.12), while on 3.11 it aborts the process. The test workflows now run on
+Python 3.12, the version ParaScape is developed and used on. **Open risk, for Einar:** `requires-python` still
+says >= 3.10, so a 3.10/3.11 user with PySide6 6.12 can hit this abort; options are raising `requires-python` to
+3.12, or excluding PySide6 6.12 on older Pythons once a fixed release exists.
