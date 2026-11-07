@@ -42,7 +42,21 @@ def panel(app, nodes, tmp_path):
     from parascape.tuning import EmbeddingStore
     p = AnalysisPanel(nodes, store=EmbeddingStore(str(tmp_path)))
     yield p
+    _dispose(app, p)
+
+
+def _dispose(app, p):
+    """Join any private worker thread before the panel goes, then let Qt delete it now.
+
+    A QThread destroyed while running aborts the whole process (qFatal), which on CI killed the suite
+    with no Python traceback; and panels left to deleteLater without an event loop pile up across tests.
+    """
+    thread = getattr(p, "_thread", None)
+    if thread is not None:
+        thread.quit()
+        thread.wait(10000)
     p.deleteLater()
+    app.processEvents()
 
 
 # --------------------------------------------------------------------------- the worker
@@ -1106,7 +1120,7 @@ def runner_panel(app, nodes, tmp_path):
     r = JobRunner()
     p = AnalysisPanel(nodes, store=EmbeddingStore(str(tmp_path)), runner=r)
     yield p, r
-    p.deleteLater()
+    _dispose(app, p)
 
 
 def _finished(panel, runner, job, ok, on_done=None, on_error=None):
