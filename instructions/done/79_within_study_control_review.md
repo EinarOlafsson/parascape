@@ -1,5 +1,5 @@
 # 79 · Within-study control review: unlock the relative expression columns
-**Status: done 2026-11-06.** Gate met: wild-type alkaline stress agrees across studies at 0.439 (was 0.236), and the GSE218921 contrast is a column. Requested 2026-11-05.
+**Status: done 2026-11-06.** Gate met: wild-type alkaline stress agrees across studies at 0.439 (was 0.236), and the GSE218921 contrast is a column. Requested 2026-11-05. The highest-value curation left on the RNA side, identified while
 building the expression columns.
 
 ## Why

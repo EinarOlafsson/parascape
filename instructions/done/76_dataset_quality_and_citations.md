@@ -1,5 +1,5 @@
 # 76 · Dataset quality, including citations normalised by age
-**Status: done 2026-11-06.** Built and measured: sample quality predicts replicate agreement (0.47 over 41 studies); citations do not (−0.19), so they describe a dataset and do not weight it.
+**Status: done 2026-11-06.** Built and measured: sample quality predicts replicate agreement (0.47 over 41 studies); citations do not (−0.19), so they describe a dataset and do not weight it. Extends the per-sample RNA quality score
 (`results/rna_sample_quality_2026_11_04/`) upward to the dataset, and adds a bibliometric component.
 
 ## The request (Einar)

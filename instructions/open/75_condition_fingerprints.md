@@ -1,5 +1,5 @@
 # 75 · Condition fingerprints: annotate every dataset with metadata nobody published
-**Status: v1 2026-11-06 -- 2 of 8 axes shipped (cell cycle, bradyzoite), each validated on held-out studies; the other 6 open.** Requested 2026-11-05.
+**Status: v1 2026-11-06 -- 2 of 8 axes shipped (cell cycle, bradyzoite), each validated on held-out studies; the other 6 open.** Requested 2026-11-05. Moved out of instruction 71 product 5 so it has its own item.
 
 ## The request (Einar)
 Build a fingerprint from a dataset that samples a condition axis in distinct samples (cell-cycle stages, for

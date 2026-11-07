@@ -1,6 +1,5 @@
 # 62 · The track record: hold out genes, and show where every strategy is right and wrong
 **Status: stages 1-6 done (2026-11-06); pooled record agrees with the scorecard (Spearman 0.988). Left: map neighbours scorecard wording.** Designed 2026-10-03. The user request, verbatim:
-**Status: open (designed 2026-10-03).** The user's request, verbatim:
 
 > "have tests for each strategy and analysis type where we hold out genes and the test is to see if
 > the strategy recapitulates the known label or information on that gene or set of genes. Wherever
