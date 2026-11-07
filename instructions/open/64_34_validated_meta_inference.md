@@ -1,6 +1,6 @@
 # 64.34 · Train and test the meta-inference
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 40%, 2026-11-07. Pilot on dtm_class: the meta-model beats the best single method on untouched orthogroups; strict nesting of the base calls remains before admission.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -34,3 +34,23 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: the pilot on `dtm_class` (Tg)
+
+`scripts/build_meta_inference_pilot_notebook.py` -> `results/meta_inference_pilot_2026_11_07/`. Base: the held-out calls
+of the 14 recorded methods on 8,137 genes (4 classes). Meta-model: multinomial logistic regression on the one-hot
+calls, fitted on 4/5 of the orthogroups, tested on the other 1/5, five times. On the same untouched test genes:
+
+| method | accuracy (mean, range over folds) |
+|---|---|
+| **meta-model** | **0.918** (0.899-0.932) |
+| best single method, chosen on the training orthogroups | 0.903 (0.888-0.917) |
+| plurality vote | 0.819 (0.801-0.841) |
+| commonest class | 0.744 |
+
+Paired on the same genes: the meta-model is right where the best single method is wrong on 223 genes, the reverse on
+103 (McNemar p < 0.001). The plain vote is worse than the best single method -- counting agreeing methods is not a
+good combiner; learning whom to trust is. **Not yet admitted:** the base calls come from the hold-out record's own
+folds, so a base call for an outer-training gene may come from a model that saw an outer-test gene's label; admission
+needs the base methods recomputed inside each outer fold, plus per-class error and calibration of the meta
+probabilities.
