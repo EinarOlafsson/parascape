@@ -9,6 +9,9 @@ One file per task. This index is the status table; the files carry the reasoning
 
 | # | Task |
 |---|---|
+| 83 | [Move ParaScape from PyQt6 to PySide6](done/83_pyside6_migration.md) — done 2026-11-05: 6,550 passed; five latent defects found, two that would have shipped |
+| 95 | [spaCR's dock](done/95_spacr_dock.md) — **built** · the left column of categories and module rows, on Home and in every module |
+| 97 | [Errors become ParaScape GitHub issues, and a routine fixes them](done/97_errors_become_github_issues.md) — **built** · spaCR's relay + consent dialog; GitHub App key set by Einar; scheduled triage |
 | 62 | [The hold-out track record](done/62_holdout_track_record.md) — **done 2026-11-07** · pooled record agrees with the scorecard (Spearman 0.988 over 67 cells); questions page shows it; map neighbours metric renamed |
 | 60 | [What would make ParaScape most useful](done/60_usefulness_review.md) — **done 2026-11-07** · all ten changes built: methods text + BibTeX, run provenance, vector figures, what is unusual about a gene, per-label calibration, missingness/dominance warnings, imported screens reach the strategies, gallery by structure, tutorial videos, a regression guard for the empty-Strategies report |
 | 77 | [The borrowed profile-inference strategies](done/77_borrowed_inference_strategies.md) — **done 2026-11-06** · six scored on frozen partitions through the harness, three untested with the reason; none beats boosted trees, positive-unlabelled bagging matches them; nothing may fill |
@@ -103,9 +106,7 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 67.01 | [Keep native work continuation active and log actual stops](done/67_01_work_continuation_watchdog.md) — timer active, 12 historical boundaries/4 restrictions logged; 403 checks passed |
 | 68 | [Broaden Discoveries across functions and all available labels](open/68_discoveries_function_coverage.md) — 68.01 browser complete; 68.02 30%: pinned names, frozen EC recovery and real scorecards; independent activity/calibration/deployment still pending. Include both rows in full reports (51 total) |
 | 66.04 | [Correct ambiguous host projections and preserve all original gene evidence](done/66_04_host_symbol_projections.md) — 39 projections withheld, 20,010 gene rows retained; 575 follow-up checks passed |
-| 97 | [Errors become ParaScape GitHub issues, and a routine fixes them](open/97_errors_become_github_issues.md) — **built** · spaCR's relay + consent dialog; GitHub App key set by Einar; scheduled triage |
 | 96 | [The ParaScape module mould, as a skill](open/96_parascape_module_skill.md) — **built: Map rebuilt, skill written** · get Map right with Einar, then write it down as the `parascape-module` skill and build the rest with it |
-| 95 | [spaCR's dock](open/95_spacr_dock.md) — **built** · the left column of categories and module rows, on Home and in every module |
 | 94 | [The AI box with spaCR's choices, and a free ParaScape AI](open/94_ai_box_like_spacr.md) — **built** · all four providers listed; the free one needs a worker Einar agrees to deploy |
 | 93 | [Every module in the same spaCR theme](open/93_every_module_one_theme.md) — **built, waiting on Einar** · spaCR fields, containers at spaCR pane opacity (60 %), the gene card as a shell module |
 | 92 | [The Map module preview in 3D](open/92_map_preview_in_3d.md) — **built, waiting on Einar** · a rotatable 3D preview, painted in software |
@@ -115,7 +116,6 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 86 | [Every module in spaCR's module shell](open/86_spacr_module_shell.md) — **built, waiting on Einar: every available tile is a module in the shell** · settings left, console, AI, actions, live preview, hyperparameter search, collapsible |
 | 85 | [Retire the old ParaScape home screen](open/85_retire_the_old_home_screen.md) — **built, waiting on Einar** · the landing is the only home; nothing the old node-card dock did is lost |
 | 84 | [The Navigator, exactly as spaCR's](open/84_navigator_exactly_like_spacr.md) — **built, waiting on Einar to compare** · a View switch, search on Return, spaCR's 224 px square cards with icon and light centred name |
-| 83 | [Move ParaScape from PyQt6 to PySide6](open/83_pyside6_migration.md) — done 2026-11-05: 6,550 passed; five latent defects found, two that would have shipped |
 | 82 | [Fingerprints from a literature meta-analysis: gene-set signatures](open/82_literature_set_fingerprints.md) — **v1: fingerprints recover members; host-facing vs resident not separable** · the compartment ladder; rung 4 is the hard-negative set whose absence capped host-facing at 0.822 |
 | 81 | [Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples](open/81_requantification_topup.md) — **ready; waits on downloads and on Einar installing the service** · queued behind the new downloads; 40 zero-parasite runs first |
 | 80 | [Identify the pull-down baits so the background table becomes usable](open/80_pulldown_background_baits.md) — **22 baits (was 11); gate waits on more projects** · 11 baits over 34 experiments is too few; the frequency filter would delete 12 of 13 complex members |
