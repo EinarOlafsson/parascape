@@ -1,6 +1,6 @@
 # 64.30 · Show every strategy's answer for a gene
 
-Status: OPEN — 40%, 2026-11-07. Every catalogue method listed per gene with its held-out calls and grade (Gene module); class/stratum populations for unknown genes and links to scorecards remain.
+Status: OPEN — 85%, 2026-11-07. Every method per gene with its held-out call, grade, scorecard link, agreement and combined answer; stale-record flagging remains.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -44,3 +44,19 @@ list"). Shown in the Gene module as **What each method said about it, held out**
 record, no recomputation (0.2 s). Tests in `tests/test_gene_reading.py` and `tests/test_module_shell.py`. Open: for
 an unknown gene, the class/stratum population behind a claim; one-click links to each scorecard; stale/pending
 states.
+
+## 2026-11-07 (later): the open points, met by today's other work
+
+* **One click from each answer to its scorecard:** each method in the Gene module's held-out section is a link that
+  opens its strategy card with calibration, scorecard and track-record line (`GeneModule.open_strategy`, 64.36).
+* **An unknown gene's claim exposes its test population:** the combined answer for a gene with no known answer is
+  shown with the label's measured accuracy on untouched orthogroups and the number of genes it rests on (64.35); the
+  agreement line names how many genes with that much agreement the rate rests on (64.33); every method's grade
+  comes from its calibration population.
+* **Known gene uses its held-out prediction:** the track-record calls and the combined outer-test call are both
+  made with the gene's own answer hidden.
+* **Cached, no recomputation:** all read from shipped records (0.2 s for the method profile; the agreement tables
+  cached per label after their first build).
+* **All 39 catalogue entries accounted for**, unsupported ones saying why.
+* **Remaining:** a "stale" state when a record predates the current table (none is flagged today) and visible
+  progress for any query-dependent work (none is launched from this section).
