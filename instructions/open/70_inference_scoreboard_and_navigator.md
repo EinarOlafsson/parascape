@@ -99,7 +99,7 @@ by the harness (instruction 73) and the navigator (84). Stated here so the table
 | Action | Delivered by | What is still missing for localization |
 |---|---|---|
 | 70.02 whole-LOPIT exclusion | `harness.evidence_selection`: inferring a label of category `place` holds out every `place` column, whatever its family (`information_categories`); `lopit_tgon` is also named in `evidence_forbidden` where it applies | nothing for the mechanism |
-| 70.03 frozen grouped split + baselines | `harness.partition_question` (orthogroup-grouped train / tune / calibration / test, seed recorded, budget-logged) and `harness._baselines` (majority, prevalence-weighted random, single-block kNN, ortholog copy) | a localization question in the registry |
+| 70.03 frozen grouped split + baselines | `harness.partition_question` (orthogroup-grouped train / tune / calibration / test, seed recorded, budget-logged) and `harness._baselines` (training majority, prevalence-weighted random, best single feature, ortholog copy; the single-block kNN baseline proposed here is not among them) | a localization question in the registry |
 | 70.04 all strategies on the split | the borrowed strategies (77) and boosted trees run through it | **the harness scores boolean labels only** (`labels.astype(bool)` in `run_question`); a 26-niche label needs a categorical path, or one-vs-rest per coarse niche |
 | 70.05 deployment rule | `harness.may_fill`: the frozen-test Clopper-Pearson lower bound must clear 0.90 -- stricter than the 80 % proposed here, and decided on a partition touched once | -- |
 | 70.06 scoreboard view | the Infer module "How far to trust it" and the strategy cards; the track record (62) per gene, class and label | a strategy x target table for the harness results |
