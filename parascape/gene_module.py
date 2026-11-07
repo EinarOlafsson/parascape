@@ -16,6 +16,7 @@ import os
 from html import escape
 
 import numpy as np
+import pandas as pd
 from PySide6 import QtCore, QtWidgets
 
 from . import gene_reading as GR
@@ -162,6 +163,10 @@ class GeneModule(QtCore.QObject):
         shell.add_action("Predict what is missing", lambda: self._open("infer"),
                          tip="Answer a question about this gene from the evidence, with how often "
                              "such answers are right (Infer).")
+        shell.add_action("Save everything as a bundle…", lambda: self.save_bundle(),
+                         tip="One folder: what is measured about the gene, what is unusual, your kept "
+                             "claims (marked inferred), the methods text with references, and a "
+                             "manifest whose hashes show if anything was edited later.")
         shell.add_action("Full evidence panel", self._full_panel,
                          tip="The detailed evidence panel of the main window for this gene.")
         shell.add_action("Previous", lambda: self._step(-1), tip="The previous gene of the list.")
@@ -315,6 +320,36 @@ class GeneModule(QtCore.QObject):
         self._render_unusual(r)
         self._render_evidence(r)
         self._render_inferences(r)
+
+    def save_bundle(self, folder: str = "") -> str:
+        """Write the current gene as an export bundle; returns the folder."""
+        from . import export_bundle
+        from . import kept_claims
+        r = self.reading
+        if r is None:
+            self.shell.say("choose a gene first; the bundle holds its reading")
+            return ""
+        folder = folder or export_bundle.ask_folder(self.shell)
+        if not folder:
+            return ""
+        frames = [f.assign(category=c) for c, f in (r.facts or {}).items() if f is not None and len(f)]
+        facts = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+        tables, kinds = {"what is measured": facts}, {"what is measured": "measured"}
+        unusual = GR.unusual(self._nodes(), r.gene)
+        if len(unusual):
+            tables["what is unusual"], kinds["what is unusual"] = unusual, "computed"
+        if r.predicted is not None and len(r.predicted):
+            tables["predicted cells"], kinds["predicted cells"] = r.predicted, "inferred"
+        kept = kept_claims.claims(r.gene)
+        if len(kept):
+            tables["your kept claims"], kinds["your kept claims"] = kept, "inferred"
+        columns = [str(c) for c in facts.get("column", pd.Series(dtype=str)).dropna().unique()
+                   if c in self._nodes().columns] if len(facts) else []
+        export_bundle.write(folder, organism=getattr(self.window.panel, "organism", "Tg"),
+                            query={"module": "gene", "gene": r.gene, "product": r.product},
+                            tables=tables, kinds=kinds, columns=columns, nodes=self._nodes())
+        self.shell.say(f"bundle written: {folder}")
+        return folder
 
     def _render_unusual(self, r) -> None:
         """The gene's most extreme measurements, among the kinds of knowledge chosen."""

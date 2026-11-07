@@ -29,6 +29,7 @@ import os
 from html import escape
 
 import numpy as np
+import pandas as pd
 from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import map_reading as MR
@@ -502,6 +503,10 @@ class MapModule(QtCore.QObject):
         shell.add_action("Full 3D view", lambda: _show_map(window),
                          tip="Leave the module for the map in the main window, with every tool "
                              "it has.")
+        shell.add_action("Save everything as a bundle…", lambda: self.save_bundle(),
+                         tip="One folder: the tables (each marked measured, inferred or computed), "
+                             "the view as a vector figure, the methods text with its references, and "
+                             "a manifest whose hashes show if anything was edited later.")
         shell.add_action("Save the figure…", lambda: self._save_figure(),
                          tip="The view as a vector figure (SVG or PDF) or a 3x PNG, drawn again for the "
                              "file rather than captured from the screen.")
@@ -1075,6 +1080,47 @@ class MapModule(QtCore.QObject):
             f"Tries the Advanced settings in turn on a sample of genes and scores each map by "
             f"how often neighbours agree on {self.colour_box.currentText()} -- the label you "
             f"are colouring by. Click a row to use those settings.")
+
+    def save_bundle(self, folder: str = "") -> str:
+        """Write the map, its groups and their tables as an export bundle; returns the folder."""
+        from dataclasses import asdict
+        from . import export_bundle
+        from .embedding import columns_for
+        w = self.window
+        xyz = getattr(w, "xyz", None)
+        if xyz is None or not len(xyz):
+            self.shell.say("build a map first; the bundle holds it")
+            return ""
+        folder = folder or export_bundle.ask_folder(self.shell)
+        if not folder:
+            return ""
+        ids = w.nodes["gene_id"].astype(str).to_numpy()
+        coords = pd.DataFrame({"gene_id": ids[:len(xyz)], "x": xyz[:, 0], "y": xyz[:, 1],
+                               "z": xyz[:, 2] if xyz.shape[1] > 2 else np.nan})
+        labels = self.labels()
+        if labels is not None and len(labels) == len(coords):
+            coords["label"] = np.asarray(labels)
+        tables, kinds = {"map coordinates": coords}, {"map coordinates": "computed"}
+        if self.groups is not None and len(self.groups) == len(ids):
+            tables["groups"] = pd.DataFrame({"gene_id": ids, "group": self.groups})
+            kinds["groups"] = "computed"
+            for name, rows in (("groups against the label", getattr(self, "_group_rows", None)),
+                               ("labels against the groups", getattr(self, "_label_rows", None))):
+                if rows:
+                    tables[name], kinds[name] = pd.DataFrame([asdict(r) for r in rows]), "computed"
+        spec = self.panel.spec()
+        columns = [c for cols in columns_for(w.nodes, spec).values() for c in cols]
+        export_bundle.write(folder, organism=self.panel.organism,
+                            query={"module": "map", "colour_by": self.label_name(),
+                                   "selected": [str(ids[i]) for i in self.selected],
+                                   "blocks": list(spec.blocks), "n_neighbors": spec.n_neighbors,
+                                   "min_dist": spec.min_dist, "seed": spec.random_state},
+                            tables=tables, kinds=kinds, columns=columns, figures={"map": self.view},
+                            nodes=w.nodes, strategy="a UMAP map of the evidence",
+                            settings={"n_neighbors": spec.n_neighbors, "min_dist": spec.min_dist},
+                            seed=spec.random_state, n_genes=len(ids))
+        self.shell.say(f"bundle written: {folder}")
+        return folder
 
     def _save_figure(self) -> str:
         """Save the view as a figure (SVG, PDF or a 3x PNG), and say where it went."""

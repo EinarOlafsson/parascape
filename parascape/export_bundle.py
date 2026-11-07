@@ -2,8 +2,8 @@
 
 Everything a reader needs to check a result outside ParaScape, in one folder:
 
-* each table as CSV, marked **measured** or **inferred** in the manifest -- an inference never leaves
-  the program looking like a measurement;
+* each table as CSV, marked **measured**, **inferred** or **computed** in the manifest -- an inference
+  never leaves the program looking like a measurement;
 * each figure as a vector SVG (`figure_export`);
 * `methods.md`: the methods paragraph, numbered references and BibTeX, every citation from the dataset
   registry, unconfirmed sources flagged rather than cited (`methods_text`);
@@ -19,7 +19,9 @@ from pathlib import Path
 
 import pandas as pd
 
-KINDS = ("measured", "inferred")
+#: measured = observed values; inferred = a claim about a gene that was not observed; computed = derived
+#: from measurements (map coordinates, groups, ranks) without being a claim about any gene.
+KINDS = ("measured", "inferred", "computed")
 
 
 def _sha256(path: Path) -> str:
@@ -45,7 +47,7 @@ def write(folder, *, organism: str, query: dict, tables: dict, kinds: dict, colu
     missing = sorted(set(tables) - set(kinds))
     bad = sorted(n for n, k in kinds.items() if k not in KINDS)
     if missing or bad:
-        raise ValueError(f"every table must be marked measured or inferred: missing {missing}, "
+        raise ValueError(f"every table must be marked measured, inferred or computed: missing {missing}, "
                          f"unknown {bad}")
     files = {}
     for name, frame in tables.items():
@@ -84,3 +86,9 @@ def load(folder) -> dict:
     if changed:
         raise ValueError(f"changed or missing since the bundle was written: {changed}")
     return manifest
+
+
+def ask_folder(parent) -> str:
+    """A folder dialog for a bundle; "" when cancelled."""
+    from PySide6 import QtWidgets
+    return QtWidgets.QFileDialog.getExistingDirectory(parent, "Folder for the bundle") or ""

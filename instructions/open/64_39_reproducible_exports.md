@@ -1,6 +1,6 @@
 # 64.39 · Export the evidence and inference trail
 
-Status: OPEN — about 70 %, 2026-11-06. One bundle per Infer answer built and tested; adapters for the other modules open.
+Status: OPEN — about 85 %, 2026-11-07. Bundles from Infer, Map, Gene and Network built and tested; reloading a bundle into the application is open.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -44,3 +44,13 @@ refuses a bundle edited after it was written. In the application: Infer ▸ Save
 a bundle…** (named genes inferred, recovery measured, the Map view as a figure). Tests:
 `tests/test_export_bundle.py` (3), `tests/test_module_shell.py` (the Infer bundle). Open: adapters for the Map,
 Gene and Network modules, and reloading a bundle back into the application.
+
+## 2026-11-07: every gene-reading module writes the bundle
+
+Map (coordinates, groups and their tables against the label -- `computed`; the map as SVG; the methods text
+citing the columns the map was built from, with its settings and seed), Gene (what is measured -- `measured`;
+what is unusual -- `computed`; predicted cells and your kept claims -- `inferred`) and Network (the focus gene's
+links -- `measured`; the network as SVG) gain **Save everything as a bundle…**. A third kind, `computed`, marks
+what is derived from measurements without being a claim about a gene. Checked on the real window: the Map and
+Network bundles written and verified by `export_bundle.load`. Test in `tests/test_module_shell.py`. Open:
+reloading a bundle back into the application.

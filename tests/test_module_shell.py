@@ -378,6 +378,30 @@ def test_the_infer_module_saves_an_answer_as_a_bundle(window, tmp_path):
     window.panel._question_result = None
 
 
+def test_map_gene_and_network_save_a_bundle_a_reload_verifies(window, tmp_path, qtbot):
+    """Every gene-reading module leaves the program the same way: labelled tables, a manifest."""
+    from parascape import export_bundle
+    from parascape.landing_install import open_module
+    gid = str(window.nodes.gene_id.iloc[0])
+    gene = window.gene_module.module
+    gene.show(gid)
+    folder = gene.save_bundle(str(tmp_path / "gene"))
+    manifest = export_bundle.load(folder)
+    assert manifest["query"]["gene"] == gid
+    assert manifest["files"]["what_is_measured.csv"]["kind"] == "measured"
+    open_module(window, "map")
+    qtbot.wait(200)
+    m = window.map_module.module
+    if getattr(window, "xyz", None) is not None and len(window.xyz):
+        manifest = export_bundle.load(m.save_bundle(str(tmp_path / "map")))
+        assert manifest["files"]["map_coordinates.csv"]["kind"] == "computed"
+        assert "map.svg" in manifest["files"]
+    net = window.network_module.module
+    if net.focus and net._links is not None:
+        manifest = export_bundle.load(net.save_bundle(str(tmp_path / "net")))
+        assert manifest["files"]["links.csv"]["kind"] == "measured"
+
+
 def test_your_genes_are_read_against_the_answer(window):
     import pandas as pd
     module = window.infer_module.module

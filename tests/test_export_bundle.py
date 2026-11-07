@@ -29,7 +29,7 @@ def test_a_bundle_round_trips_and_labels_every_table(tmp_path):
 
 
 def test_a_table_not_marked_measured_or_inferred_is_refused(tmp_path):
-    with pytest.raises(ValueError, match="measured or inferred"):
+    with pytest.raises(ValueError, match="measured, inferred or computed"):
         E.write(tmp_path, organism="Tg", query={}, tables={"t": pd.DataFrame({"a": [1]})}, kinds={})
 
 

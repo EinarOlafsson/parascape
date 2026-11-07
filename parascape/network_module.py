@@ -499,6 +499,10 @@ class NetworkModule(QtCore.QObject):
                              "calls are right (Infer).")
         shell.add_action("Whole network", lambda: self.view.fit(),
                          tip="Zoom out to the whole network.")
+        shell.add_action("Save everything as a bundle…", lambda: self.save_bundle(),
+                         tip="One folder: the tables (each marked measured, inferred or computed), "
+                             "the view as a vector figure, the methods text with its references, and "
+                             "a manifest whose hashes show if anything was edited later.")
         shell.add_action("Save the figure…", lambda: self._save_figure(),
                          tip="The view as a vector figure (SVG or PDF) or a 3x PNG, drawn again for the "
                              "file rather than captured from the screen.")
@@ -694,6 +698,28 @@ class NetworkModule(QtCore.QObject):
         from .map_module import open_in
         open_in(self.window)
         self.window.map_module.module.select(list(self.focus), "")
+
+    def save_bundle(self, folder: str = "") -> str:
+        """Write the focus gene's links, as measured, with the network figure; returns the folder."""
+        from . import export_bundle
+        if not self.focus or self._links is None:
+            self.shell.say("choose a gene first; the bundle holds its links")
+            return ""
+        folder = folder or export_bundle.ask_folder(self.shell)
+        if not folder:
+            return ""
+        ids = self.window.nodes["gene_id"].astype(str).to_numpy()
+        table = NR.links_of(self._links, self.focus[0])
+        table.insert(0, "gene", ids[self.focus[0]])
+        table["partner"] = ids[table["partner"].to_numpy(int)]
+        layers = sorted(map(str, pd.unique(self._links["source"]))) if "source" in self._links else []
+        export_bundle.write(folder, organism=getattr(self.window.panel, "organism", "Tg"),
+                            query={"module": "network", "gene": str(ids[self.focus[0]]), "layers": layers},
+                            tables={"links": table}, kinds={"links": "measured"}, columns=[],
+                            figures={"network": self.view}, nodes=self.window.nodes,
+                            strategy="the recorded links of the chosen layers")
+        self.shell.say(f"bundle written: {folder}")
+        return folder
 
     def _save_figure(self) -> str:
         """Save the view as a figure (SVG, PDF or a 3x PNG), and say where it went."""
