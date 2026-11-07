@@ -584,6 +584,19 @@ class NetworkModule(QtCore.QObject):
         if travel and self.focus:
             self.view.travel_to(self.focus[0], zoom=5.0)
 
+    #: The kinds of link that are evidence of binding, which the Partners tile reads.
+    BINDING_LAYERS = ("xlms", "ip_ms", "unwritten_interaction")
+
+    def show_partners(self) -> None:
+        """The Partners tile: the network read by binding evidence alone."""
+        for layer, box in self.layer_boxes.items():
+            box.blockSignals(True)
+            box.setChecked(layer in self.BINDING_LAYERS)
+            box.blockSignals(False)
+        self.strength.setValue(0)
+        self.refresh()
+        self.shell.say("Partners: only links that are evidence of binding are ticked.")
+
     def _typed(self) -> None:
         nodes = self.window.nodes
         ids = nodes["gene_id"].astype(str)

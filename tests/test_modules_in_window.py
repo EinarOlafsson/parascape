@@ -118,13 +118,20 @@ def test_the_dock_watcher_ignores_the_window_appearing(window):
     window.hide()
 
 
-def test_a_dock_module_raises_its_dock_and_tab(window):
+def test_a_tool_module_lends_its_panel_with_the_right_tab_forward(window):
     from parascape.landing_install import go_home, open_module
-    go_home(window)
-    message = open_module(window, "expression")
-    assert message == "compare ▸ Gene expression"
-    tabs = _docks(window)["compare"].findChild(QtWidgets.QTabWidget)
-    assert tabs.tabText(tabs.currentIndex()) == "Gene expression"
+    window.show()
+    try:
+        go_home(window)
+        assert open_module(window, "expression") == "Expression"
+        QtWidgets.QApplication.processEvents()
+        lent = window.tool_modules["expression"].module.main.panel
+        tabs = [lent] + lent.findChildren(QtWidgets.QTabWidget)
+        tabs = next(t for t in tabs if isinstance(t, QtWidgets.QTabWidget))
+        assert tabs.tabText(tabs.currentIndex()) == "Gene expression"
+        go_home(window)
+    finally:
+        window.hide()
 
 
 def test_questions_and_infer_open_the_infer_module(window):
@@ -213,8 +220,8 @@ def test_leaving_the_landing_never_shows_a_second_home(window):
 def test_the_drop_module_opens_the_gene_list(window):
     from parascape.landing_install import go_home, open_module
     go_home(window)
-    assert open_module(window, "drop") == "gene list"
-    assert window.home.pages.currentIndex() == window.home._home_page
+    assert open_module(window, "drop") == "Drop"
+    assert window.tool_modules["drop"].module.main.dock is window.home_dock
 
 
 def test_the_dock_lists_home_and_every_module_and_opens_them(window):
@@ -234,3 +241,40 @@ def test_the_dock_lists_home_and_every_module_and_opens_them(window):
     assert window.landing.page == "Module", "the dock opens the Map module"
     dock.nav_selected.emit("home")
     assert landing_up(window) and window.landing.page != "Module"
+
+
+def test_every_tile_with_a_panel_opens_a_module_in_the_same_shell(window):
+    """Einar: "all modules need to be thematically the same"."""
+    from parascape import modules as MOD
+    from parascape.landing_install import go_home, open_module
+    from parascape.shell import ModuleShell
+    for m in MOD.MODULES:
+        if MOD.unavailable_reason(m) or m.opens.startswith("action:"):
+            continue
+        go_home(window)
+        open_module(window, m.key)
+        current = window.landing.stack.currentWidget()
+        assert isinstance(current, ModuleShell), f"{m.key} did not open a module shell"
+
+
+def test_a_lent_panel_goes_back_to_its_dock(window):
+    from parascape.landing_install import go_home, open_module
+    window.show()
+    try:
+        open_module(window, "jobs")
+        QtWidgets.QApplication.processEvents()
+        lent = window.tool_modules["jobs"].module.main.panel
+        assert lent is not None and window.tool_modules["jobs"].isAncestorOf(lent)
+        go_home(window)
+        QtWidgets.QApplication.processEvents()
+        assert window.jobs_dock.widget() is lent
+    finally:
+        window.hide()
+
+
+def test_partners_reads_the_network_by_binding_evidence(window):
+    from parascape.landing_install import open_module
+    open_module(window, "partners")
+    module = window.network_module.module
+    assert set(module.layers()) <= set(module.BINDING_LAYERS) and module.layers()
+    module._relayout()

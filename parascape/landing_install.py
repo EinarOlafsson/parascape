@@ -71,10 +71,19 @@ def open_module(window, key: str) -> str:
     """Open one module in this window. Returns what the status bar was told."""
     module = MOD.get(key)
     shells = {"map": "map_module", "gene": "gene_module", "network": "network_module",
-              "infer": "infer_module", "questions": "infer_module"}
+              "infer": "infer_module", "questions": "infer_module", "partners": "network_module"}
+    message = None
     if key in shells and getattr(window, shells[key], None) is not None:
-        module = __import__(f"{__package__}.{shells[key]}", fromlist=["open_in"])
-        message = module.open_in(window)
+        shell_module = __import__(f"{__package__}.{shells[key]}", fromlist=["open_in"])
+        message = shell_module.open_in(window)
+        if key == "partners":
+            # Partners is the network read by binding evidence: the physical links ticked.
+            window.network_module.module.show_partners()
+            message = "Partners"
+    elif key in getattr(window, "tool_modules", {}):
+        from .dock_module import open_in as open_tool
+        message = open_tool(window, key)
+    if message is not None:
         try:
             window.statusBar().showMessage(message, 6000)
         except Exception:
@@ -369,6 +378,13 @@ def install(window):
         except Exception as error:              # the window must open without it
             window.statusBar().showMessage(f"{name.split('_')[0].title()} module unavailable: "
                                            f"{error}", 8000)
+    # Every other tile with a panel: the same shell around the panel, lent while on screen.
+    window.tool_modules = {}
+    try:
+        from . import dock_module
+        window.tool_modules = dock_module.build_all(window, landing)
+    except Exception as error:                  # the window must open without them
+        window.statusBar().showMessage(f"tool modules unavailable: {error}", 8000)
     window._landing_cover = _Cover(window)
     window.installEventFilter(window._landing_cover)
     _watch(window)

@@ -1,6 +1,13 @@
 # 86 · Every module in spaCR's module shell
 
-**Status: in progress -- shell built, Map moved onto it (2026-11-06).**
+**Status: built 2026-11-06, waiting on Einar.** Every available tile opens a module in the shell:
+Map, Gene, Network (and Partners = Network by binding evidence), Infer (and Questions) built with the
+parascape-module mould; Expression, Screen, Cell, Gallery, Strategies, Scorecard, Information, Drop, Jobs and
+Console as tool modules (`parascape/dock_module.py`: the panel lent into the shell while on screen, with the
+shared masthead, Your gene, actions and folded console / AI chat). Datasets and Export open their dialogs;
+Structure, Runs, Fill and List stay greyed with their reasons. Gate test:
+`test_modules_in_window.py::test_every_tile_with_a_panel_opens_a_module_in_the_same_shell`. Later
+refinements (a mould redesign per tool module) follow Einar's review.
 - Step 1 done: spaCR's `collapsible_splitter`, `collapsible_section`, `foldable` and `collapse_arrow` are
   vendored in `parascape/panes/` (imports pointed at `panes/_compat.py`); `parascape/shell.py` is the shell:
   masthead with Home, Settings column that folds to its edge, runtime column of sections that fold to their
