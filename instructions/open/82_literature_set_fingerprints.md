@@ -1,6 +1,15 @@
 # 82 · Fingerprints from a literature meta-analysis: gene-set signatures
 
-**Status: open (requested 2026-11-05).** The second kind of fingerprint, and the one that bears directly on the
+**Status: first version 2026-11-06 (`notebooks/set_fingerprints_2026_11_06.ipynb`).** Ladder taken only
+from the graded host-facing review (98 genes): rung 3 host-facing PVM 45, rung 4 vacuole-resident 32, host
+nucleus 9, host organelle/PM 5; moving junction 3 and host cytosol 4 too few to score. Fingerprints from
+place-free profiles recover held-out members (AUROC 0.94-0.98 against 0.81-0.83 for dense granule proteins in
+general), **but host-facing and vacuole-resident are not separated**: held-out host-facing members resemble
+the vacuole-resident fingerprint more often (18) than their own (10). That is the evidence limit behind
+host-facing precision, now measured. Remaining: literature mining to enlarge rungs 1, 2 (vacuole-facing side),
+5 and 7, which needs papers read one by one, and data that sees the membrane side.
+
+Requested 2026-11-05. The second kind of fingerprint, and the one that bears directly on the
 host-facing failure.
 
 ## The request (Einar)

@@ -1,0 +1,16 @@
+project	class	bait_symbol	bait_gene	confidence	source	evidence
+PXD039979	affinity_purification	SPARKEL	TGME49_291010	paper	eLife 93877 (PMC11321763)	"we named the gene TGGT1_291010 'SPARK Elongin-Like protein'" (GT1 to ME49 by the shared gene number; ME49 product hypothetical protein)
+PXD039985	proximity_labelling	SPARKEL	TGME49_291010	paper	eLife 93877 (PMC11321763)	SPARKEL-TurboID-Ty; same gene as PXD039979
+PXD039986	proximity_labelling	SPARKEL	TGME49_291010	paper	eLife 93877 (PMC11321763)	TurboID-SPARKEL; same gene as PXD039979
+PXD043924	affinity_purification	Cdt1 (TgiRD1)	TGME49_247040	paper	EMBO J 10.1038/s44318-024-00095-4 (PMC11148040)	"we fused endogenous TGME49_247040 with a 3xmyc epitope and isolated TGME49_247040 complexes"; renamed TgiRD1
+PXD043994	affinity_purification	Cyclin-4 (TgCyc4)	TGME49_249880	paper	EMBO J 10.1038/s44318-024-00095-4 (PMC11148040)	"a single cyclin-domain-containing protein, TgCyc4 (TGME49_249880)"
+PXD054719	affinity_purification	PCNA1	TGME49_247460	paper names the gene; the pull-down itself not verified	mBio 10.1128/mbio.01119-25 (PMC12345243)	"only TgPCNA1 (TGME49_247460) was found to be essential"; FUCCI markers epitope-tagged
+PXD062403	affinity_purification	TgSIR2A	TGME49_227020	symbol match only (paper not readable)	FASEB J 10.1096/fj.202602184r (full text unavailable)	ToxoDB gene name SIR2; a second sirtuin (TGME49_267360) exists, so this needs the paper
+PXD071065	affinity_purification	TgCoqFMO	TGME49_232540	paper	Nat Commun 10.1038/s41467-026-71902-1 (PMC13369981)	"TgCoqFMO (TGGT1_232540)"; ME49 product FAD binding domain-containing protein
+PXD083501	affinity_purification	MyoL	TGME49_291020	ToxoDB gene name	ToxoDB identity table	gene name MyoL
+PXD059579	proximity_labelling	GSK3	TGME49_265330	paper	Nat Commun 10.1038/s41467-025-64701-7 (PMC12589562)	"Phylogenetic analysis identified TGGT1_265330 as a member of the GSK3 clade"; TgGSK3-BioID2-HA
+PXD063615	affinity_purification	PDIA3	TGME49_211680	paper	mBio 10.1128/mbio.03124-25 (PMC13170237)	"We termed these proteins TgPDIA3 (TGGT1_211680)"; anti-TgPDIA3 IP (was 'other')
+PXD051495	affinity_purification	PP2A-A2;PP2A-C2	TGME49_229350;TGME49_215170	paper	EMBO J 10.1038/s44318-024-00171-9 (PMC11377541)	co-IP of KD-PP2A-A2-myc (DCS4, TGGT1_229350) and KD-PP2A-C2-Ty (TGGT1_215170); two baits (was 'other')
+PXD043808	affinity_purification	AP2XI-2	TGME49_310900	paper	Nat Commun 10.1038/s41467-024-44967-z (PMC10817966)	"The AP2XI-2 gene (TGME49_310900)"; co-IP of AP2XI-2-mAID-6HA (was 'other')
+PXD037318	affinity_purification	TgH1-like	TGME49_315570	paper	mSphere 10.1128/msphere.00403-22 (PMC9769792)	"histone H1 TgH1-like (TGME49_315570)"; anti-HA IP (was 'other')
+PXD011692	affinity_purification	(not stated)		unresolved	PRIDE protocol only	co-IP buffer in the protocol, title names a guanylate cyclase platform; no paper linked in PRIDE, so no bait is assigned rather than guessed

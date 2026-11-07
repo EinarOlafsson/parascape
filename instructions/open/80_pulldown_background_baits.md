@@ -1,5 +1,17 @@
 # 80 · Identify the pull-down baits so the background becomes usable
-**Status: open (requested 2026-11-05).** The blocker found by the first pass of the background table.
+**Status: steps 1-5 done 2026-11-06; the gate waits on more projects.** Baits resolved from the depositing
+papers (Europe PMC full text) or ToxoDB gene names into `parascape/data/pulldown_baits_curated.tsv`, each row
+with its source and the identifying sentence: SPARKEL TGME49_291010, Cdt1/TgiRD1 TGME49_247040, Cyc4
+TGME49_249880, GSK3 TGME49_265330, CoqFMO TGME49_232540, MyoL TGME49_291020, PCNA1, PDIA3, PP2A-A2/C2,
+AP2XI-2, TgH1-like; four 'other' projects reclassified as affinity purifications; SIR2A kept as a symbol match
+(paper unreadable) and PXD011692 left unassigned rather than guessed. Rebuilt notebook
+`notebooks/pulldown_background_2026_11_06.ipynb`: **22 distinct confident baits over 41 experiments (was
+11 over 34)**; bait in its own top 5 % in 17 of 22 affinity purifications, median rank 6 of ~778 (28 by
+abundance). The frequency filter is still not usable (AUC 0.710; 11 of 13 complex members lost at 50 %):
+the gate needs baits from more compartments, which come with the PRIDE projects still being processed
+(instruction 88). The specificity score stays the usable product.
+
+Requested 2026-11-05. The blocker found by the first pass of the background table.
 
 ## Why
 The background frequency column is **not usable as a filter**: the known complexes sit inside the frequent-flyer

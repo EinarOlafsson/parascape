@@ -1,0 +1,7 @@
+rung	genes	fingerprint	random	dense_granule	verdict
+1 injected at the moving junction	3				too few to score
+3 PVM, host-facing	45	0.944	0.525	0.828	above the best baseline
+4 vacuole-resident (hard negative)	32	0.947	0.5	0.831	above the best baseline
+5 exported to the host cytosol	4				too few to score
+6 host nucleus	9	0.976	0.518	0.808	above the best baseline
+7 host organelle or plasma membrane	5	0.98	0.559	0.807	above the best baseline

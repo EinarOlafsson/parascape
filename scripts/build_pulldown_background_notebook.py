@@ -25,7 +25,7 @@ sys.path.insert(0, os.getcwd())
 
 from notebook_runner import ExecutedNotebook  # noqa: E402
 
-DATE = "2026_11_05"
+DATE = "2026_11_06"   # 2026_11_05 was the first pass; this one uses the curated baits
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "results", f"pulldown_background_{DATE}")
 NB = os.path.join(REPO, "notebooks", f"pulldown_background_{DATE}.ipynb")
@@ -466,6 +466,21 @@ def main() -> None:
         "                          bait_gene=genes[0] if len(genes) == 1 else ';'.join(genes),",
         "                          bait_confidence=conf, bait_how=how, bait_product=prod))",
         "bt = pd.DataFrame(bait_rows)",
+        "# Baits resolved from the depositing papers (instruction 80): each row names its source and",
+        "# the sentence that identifies the tagged gene. A symbol match alone, or no paper, stays",
+        "# ambiguous rather than being guessed. Projects the title rule left as 'other' are",
+        "# reclassified where the paper shows an affinity purification.",
+        "cur = pd.read_csv(os.path.join(REPO, 'parascape', 'data', 'pulldown_baits_curated.tsv'),",
+        "                  sep='\\t', dtype=str).fillna('')",
+        "for _, c in cur.iterrows():",
+        "    conf = ('confident' if c['confidence'] in ('paper', 'ToxoDB gene name')",
+        "            else 'ambiguous (' + c['confidence'] + ')')",
+        "    row = dict(project=c['project'], bait_symbol=c['bait_symbol'], bait_gene=c['bait_gene'],",
+        "               bait_confidence=conf, bait_how='curated: ' + c['source'], bait_product='')",
+        "    bt = pd.concat([bt[bt.project != c['project']], pd.DataFrame([row])], ignore_index=True)",
+        "    cl.loc[cl.project == c['project'], 'class'] = c['class']",
+        "print('baits resolved from papers or ToxoDB names:',",
+        "      int((cur.confidence.isin(['paper', 'ToxoDB gene name'])).sum()), 'of', len(cur))",
         "cl = cl.merge(bt, on='project', how='left')",
         "pull = cl[cl['class'].isin(['affinity_purification', 'proximity_labelling'])]",
         "print('affinity + proximity projects:', len(pull))",
@@ -953,7 +968,13 @@ def main() -> None:
 
     nb.code(
         "rec = []",
+        "conf_rows = []",
         "for _, r in pull[pull.bait_confidence == 'confident'].iterrows():",
+        "    for g_, sym_ in zip(str(r.bait_gene).split(';'), str(r.bait_symbol).split(';')):",
+        "        conf_rows.append(r.copy()); conf_rows[-1]['bait_gene'] = g_; conf_rows[-1]['bait_symbol'] = sym_",
+        "for r in conf_rows:",
+        "    if r.project not in per_project:",
+        "        continue",
         "    a_ = per_project[r.project].copy()",
         "    tot_ = a_.intensity.sum()",
         "    if not tot_ or not len(a_):",
@@ -1309,9 +1330,11 @@ def write_readme(ns: dict) -> None:
     lines.append("")
     lines.append("## Baits")
     lines.append("")
-    lines.append("%d affinity + proximity experiments; **%d have a confident bait gene** (a symbol "
-                 "read out of the title that resolves to exactly one ME49 gene through ToxoDB "
-                 "product names), covering **%d distinct bait genes**."
+    lines.append("%d affinity + proximity experiments; **%d have a confident bait gene** -- a symbol "
+                 "in the title that resolves to exactly one ME49 gene through ToxoDB product names, "
+                 "or a bait identified in the depositing paper or by its ToxoDB gene name "
+                 "(`parascape/data/pulldown_baits_curated.tsv`, each row with its source and the "
+                 "sentence that names the tagged gene) -- covering **%d distinct bait genes**."
                  % (N_EXP, n_conf, n_baits))
     lines.append("")
     for k, v in pull.bait_confidence.value_counts().items():
