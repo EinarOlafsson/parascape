@@ -1,5 +1,5 @@
 # 75 · Condition fingerprints: annotate every dataset with metadata nobody published
-**Status: open (requested 2026-11-05).** Moved out of instruction 71 product 5 so it has its own item.
+**Status: v1 2026-11-06 -- 2 of 8 axes shipped (cell cycle, bradyzoite), each validated on held-out studies; the other 6 open.** Requested 2026-11-05.
 
 ## The request (Einar)
 Build a fingerprint from a dataset that samples a condition axis in distinct samples (cell-cycle stages, for
@@ -35,3 +35,33 @@ An axis that cannot be validated that way is published as exploratory or not at 
 
 ## Two directions, one word (2026-11-05)
 This item fingerprints a **condition** and annotates **samples**. Instruction **82** fingerprints a **gene set** from a literature meta-analysis and annotates **genes**. Same word, opposite axis of the matrix, different validation: a held-out study that states its condition here, held-out members of the set there. Keep them separate in the registry so a scorecard cannot be read across them.
+
+## v1, 2026-11-06: cell cycle and bradyzoite conversion
+
+`scripts/build_condition_fingerprints_notebook.py` -> `notebooks/condition_fingerprints_2026_11_06.ipynb`,
+`results/condition_fingerprints_2026_11_06/`. 668 bulk runs of the 735-run snapshot scored by within-sample
+percentile ranks (37 runs have no values in the snapshot and are dropped: GSE243206, GSE243207, GSE245775,
+GSE98227).
+
+| axis | built on | tested on (held out) | result |
+|---|---|---|---|
+| cell cycle | Xue 2020 single-cell phases (873 genes) | synchronised series `cellcycle19092`, hours 1-12 | **all 11 hourly steps advance the phase** (shuffled hours 50 %, p 0.001); 1.44 cycles in 12 h |
+| bradyzoite (alkaline response) | GSE223869 wild type, alkaline vs standard | 7 studies that state the condition | pooled AUC **0.934**, 6 of 7 studies above 0.7 |
+| bradyzoite (conversion) | the same, and without BFD2 | the same | pooled AUC **0.922**, 6 of 7 above 0.7 |
+
+**Converter removed under stress** (held out): BFD1 knocked out (GSE132238) or depleted (GSE223819) drops both
+fingerprints in every run (AUC 1.0), from about 1.0 to 0.51-0.65. The conversion-specific version falls only
+slightly further than the general one, so most of the alkaline response already depends on BFD1; it does not
+reach zero, so part of what both read is stress that needs no converter.
+
+**New metadata, as asked:** in GSE223819 two tagged lines have a genotype field and a sample title naming
+different genes (208020 against 311100 = BFD2). The line titled 311100 converts poorly even on vehicle (0.29);
+the fingerprint sides with the titles. Recorded as evidence in `gse223819_label_evidence.tsv`, not applied.
+
+Outputs are proportions (`cellcycle_<phase>` mixture and angle; `bradyzoite_*_fraction` between the build
+study own tachyzoite and converted means), each with `filled:<fingerprint>@v1` and `depends_on`.
+
+**Open, with what each needs to be validated:** translational state (needs a second Ribo-seq study with
+usable counts -- GSE245775 has none in this snapshot); oocyst / merozoite / enteroepithelial; extracellular
+against intracellular; culture conditions; strain type (already known per run, so it is a positive control
+rather than new metadata); protein level (RNA -> protein transfer, reported separately).

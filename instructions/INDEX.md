@@ -9,6 +9,7 @@ One file per task. This index is the status table; the files carry the reasoning
 
 | # | Task |
 |---|---|
+| 76 | [Dataset quality, including citations normalised by age](done/76_dataset_quality_and_citations.md) — **done 2026-11-06** · sample quality predicts replicate agreement (0.47, 41 studies); citations do not (−0.19), so they weight nothing |
 | 79 | [Within-study control review](done/79_within_study_control_review.md) — **done 2026-11-06** · reviewed references applied; 178 contrasts, 0 indistinguishable; wild-type alkaline agrees across studies at 0.439 (was 0.236) |
 | 89 | [GSE60305: colour-space SOLiD reads, not a kallisto fault](done/89_gse60305_kallisto.md) — 0 of 47 M reads could map; pipeline now records colour-space runs and treats 0 mapped as failure; processed readCount table queued |
 | 88 | [Proteomics downloads: parallel files, stall restarts, the faster transport](done/88_pride_download_throughput.md) — FTP 0.14 vs HTTPS 0.71 MB/s today; counter fixed |
@@ -116,8 +117,7 @@ whenever an action is completed, replacing its percentage with a green tick.
 | 81 | [Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples](open/81_requantification_topup.md) — **ready; waits on downloads and on Einar installing the service** · queued behind the new downloads; 40 zero-parasite runs first |
 | 80 | [Identify the pull-down baits so the background table becomes usable](open/80_pulldown_background_baits.md) — **22 baits (was 11); gate waits on more projects** · 11 baits over 34 experiments is too few; the frequency filter would delete 12 of 13 complex members |
 | 77 | [The borrowed profile-inference strategies, each with its own quality control](open/77_borrowed_inference_strategies.md) — PU learning, propensity weighting, matrix completion, stacking, lookalike, selective prediction, propagation, multi-task, shrinkage |
-| 76 | [Dataset quality, including citations normalised by age](open/76_dataset_quality_and_citations.md) — citations per year as a dataset weight only, in the attention category, never a per-gene feature |
-| 75 | [Condition fingerprints: annotate every dataset with metadata nobody published](open/75_condition_fingerprints.md) — proportions not labels; rank scoring; validated on studies that state their own condition |
+| 75 | [Condition fingerprints: annotate every dataset with metadata nobody published](open/75_condition_fingerprints.md) — **v1: cell cycle and bradyzoite shipped, validated on held-out studies; 6 axes open** · phase advances in all 11 hourly steps; bradyzoite AUC 0.92-0.93; exposes a GSE223819 label swap
 | 74 | [A navigator and a home screen: organise ParaScape by what the user wants](open/74_navigator_and_home.md) — requested 2026-11-05; six intention categories, nodes, gene-centred network, assistant per node; strategies behind questions |
 | 73 | [The question matrix: 100-1000 trait questions, each with an answer, a probability and an uncertainty](open/73_question_matrix.md) — architecture requested 2026-11-05; 286 of 411 numeric columns already cover >=5,000 genes, so most questions are carried rather than predicted |
 | 72 | [The information map: gene × trait values, a matching probability matrix, calibrated gap filling at 95 % precision](open/72_information_map.md) — v0 observed-facts build started 2026-11-04 |

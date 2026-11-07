@@ -1,5 +1,5 @@
 # 76 · Dataset quality, including citations normalised by age
-**Status: open (requested 2026-11-05).** Extends the per-sample RNA quality score
+**Status: done 2026-11-06.** Built and measured: sample quality predicts replicate agreement (0.47 over 41 studies); citations do not (−0.19), so they describe a dataset and do not weight it.
 (`results/rna_sample_quality_2026_11_04/`) upward to the dataset, and adds a bibliometric component.
 
 ## The request (Einar)
@@ -28,3 +28,33 @@ quality metric."
 The score is published only with its components visible, and with a measured statement of whether it predicts
 replicate agreement on held-out datasets -- the same check the per-sample score had to pass (it reached 0.63,
 falling to 0.40 within study).
+
+## Done 2026-11-06
+
+`scripts/build_dataset_quality_notebook.py` -> `notebooks/dataset_quality_2026_11_06.ipynb`,
+`results/dataset_quality_2026_11_06/` (`dataset_quality.tsv`, `citations.tsv`, `gate.tsv`, README).
+
+* **Citations**: Europe PMC `citedByCount` for 279 of the 281 catalogue datasets with a PubMed id (195
+  papers), stored with the raw count, the retrieval date and the rate. Publication dates are checked
+  against NCBI E-utilities; where the two years differ the earlier date is used and the row is flagged.
+  Median 4.4 citations a year.
+* **Components, shown separately**: sample quality (mean per-sample score without its replicate term, from
+  the rebuilt `rna_sample_quality_2026_11_06` over 717 runs), split-half replicate agreement, per-run
+  replicate correlation, reproduced elsewhere (share of a study contrasts that another study reproduces at
+  Spearman at least 0.3), processing completeness, citations per year. Combined score = mean of ranks.
+* **Gate, measured.** The score has no fitted weights, so every study is held out by construction.
+
+| predictor | against per-run replicate correlation (41 studies) | against split-half agreement (7) |
+|---|---|---|
+| sample quality | **0.47** (p 0.002) | 0.86 (p 0.014) |
+| combined score without replicate terms | 0.32 (p 0.045) | 0.75 |
+| reproduced elsewhere | 0.24 (25 studies) | 0.47 |
+| processing completeness | −0.11 | constant |
+| citations per year | −0.19 (16 studies) | 2 studies only |
+
+**Decision**: where a dataset weight is needed, use sample quality. The combined score is published as a
+description, with its components; the citation rate stays in the `attention` category and weights nothing.
+
+Found on the way: the Europe PMC query needs brackets (`(a OR b) AND SRC:MED`), or the source filter binds to
+the last id only and 6 of 195 papers come back; the per-sample quality builder now takes its date as one
+constant and was rebuilt on the 735-run snapshot (`results/rna_sample_quality_2026_11_06/`).

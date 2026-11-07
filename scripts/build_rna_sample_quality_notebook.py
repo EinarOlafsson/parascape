@@ -1,6 +1,6 @@
 """Instruction 72: per-sample quality score for every verified bulk RNA-seq run of the uniform reprocessing.
 
-Writes notebooks/rna_sample_quality_2026_11_04.ipynb (executed) and results/rna_sample_quality_2026_11_04/
+Writes notebooks/rna_sample_quality_<DATE>.ipynb (executed) and results/rna_sample_quality_<DATE>/
 (sample_quality.tsv, README.md). Inputs are read-only: latest app snapshot + per-run salmon/kallisto outputs.
 """
 import sys
@@ -10,7 +10,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from notebook_runner import ExecutedNotebook  # noqa: E402
 
-nb = ExecutedNotebook('Per-sample quality score for the uniform RNA-seq reprocessing')
+#: The build date: names the notebook and the results folder; each rebuild keeps the older ones.
+DATE = '2026_11_06'
+
+nb = ExecutedNotebook('Per-sample quality score for the uniform RNA-seq reprocessing', namespace={'DATE': DATE})
 nb.md('# Per-sample quality score for the uniform RNA-seq reprocessing',
       'Instruction 72 (Einar, 2026-11-04): "there should also be a quality score for each expression sample." '
       'Every verified bulk RNA-seq run gets seven raw metrics, all measured the same way for every study, '
@@ -52,7 +55,7 @@ nb.code('import json, re, gzip',
         "snap = sorted(p for p in SNAP_ROOT.iterdir() if re.fullmatch(r'\\d{8}T\\d{6}Z-\\d+', p.name) and (p / 'rna/snapshot.json').exists())[-1]",
         "meta = json.loads((snap / 'rna/snapshot.json').read_text())",
         "RUNS = BASE / 'rnaseq'",
-        "OUT = Path('results/rna_sample_quality_2026_11_04'); OUT.mkdir(parents=True, exist_ok=True)",
+        f"OUT = Path('results/rna_sample_quality_{DATE}'); OUT.mkdir(parents=True, exist_ok=True)",
         "design = pd.read_csv(snap / 'rna/sample_design.tsv', sep='\\t', dtype=str)",
         "design['key'] = design.study + '/' + design.run_accession; design = design.set_index('key')",
         "print(snap.name, meta['verified_runs'], 'verified runs in snapshot')",
@@ -197,9 +200,9 @@ nb.code("cols = ['study', 'condition_group', 'total_reads', 'mapping_rate', 'par
         "q.index.name = 'key'",
         "q[['run'] + cols].sort_values(['study', 'run']).to_csv(OUT / 'sample_quality.tsv', sep='\\t', index=False, float_format='%.5g')",
         "qs = q.quality.quantile([.25, .5, .75]).round(3).tolist()",
-        "readme = f'''# Per-sample RNA-seq quality (v0, 2026-11-04)",
+        "readme = f'''# Per-sample RNA-seq quality (v0, {DATE.replace(\"_\", \"-\")})",
         "",
-        "Built by scripts/build_rna_sample_quality_notebook.py (notebook: notebooks/rna_sample_quality_2026_11_04.ipynb) from snapshot {snap.name}.",
+        "Built by scripts/build_rna_sample_quality_notebook.py (notebook: notebooks/rna_sample_quality_{DATE}.ipynb) from snapshot {snap.name}.",
         "{len(q)} verified runs scored; quality quartiles {qs[0]} / {qs[1]} / {qs[2]}; {int((q['flags'] != '').sum())} flagged.",
         "",
         "## Formula",
@@ -231,5 +234,5 @@ nb.code("cols = ['study', 'condition_group', 'total_reads', 'mapping_rate', 'par
         "(OUT / 'README.md').write_text(readme)",
         "print(readme[:300])")
 
-nb.write('notebooks/rna_sample_quality_2026_11_04.ipynb')
+nb.write(f'notebooks/rna_sample_quality_{DATE}.ipynb')
 print('wrote notebook')

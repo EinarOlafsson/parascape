@@ -1,0 +1,5 @@
+study	removed	fingerprint	present_runs	removed_runs	fraction_present	fraction_removed	auc
+GSE132238	BFD1 knocked out	response	5	5	0.97	0.58	1.0
+GSE132238	BFD1 knocked out	conversion	5	5	1.0	0.51	1.0
+GSE223819	BFD1 depleted by auxin	response	2	2	0.98	0.65	1.0
+GSE223819	BFD1 depleted by auxin	conversion	2	2	1.0	0.54	1.0

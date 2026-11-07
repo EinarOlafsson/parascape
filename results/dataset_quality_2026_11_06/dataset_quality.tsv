@@ -1,0 +1,693 @@
+source	accession	title	pubmed	date	cited_by	citations_per_year	first_published	retrieved	sample_quality	replicate_agreement	replicate_rho	reproduced_elsewhere	processing_completeness	quality_score	components_available	score_without_replicate
+GEO	GSE360	Macrophages and dendritic cells exposed to phylogenetically distinct parasites	12663451	2003/03/26	236.0	9.99408695652174	2003-03-27	2026-11-06						0.7849462365591398	1	0.7849462365591398
+GEO	GSE2596	Heart transplant biopsies	16794196	2005/10/24	33.0	1.6150676671579793	2006-06-01	2026-11-06						0.16845878136200718	1	0.16845878136200718
+GEO	GSE2946	Synthesis vs. Abundance, Bradyzoite Development	15685165	2005/07/16	163.0	7.488773584905661	2005-01-30	2026-11-06						0.6415770609318996	1	0.6415770609318996
+GEO	GSE2947	Thiouracil Pulse-chase, Tachyzoites and Bradyzoites mRNA stability data	15685165	2005/07/16	163.0	7.488773584905661	2005-01-30	2026-11-06						0.6415770609318996	1	0.6415770609318996
+GEO	GSE3117	Tachyzoite to bradyzoite differentiation	11994153	2005/08/13	102.0	4.160301507537689	2002-05-01	2026-11-06						0.3870967741935484	1	0.3870967741935484
+GEO	GSE3119	Differentiation mutants in the protozoan parasite Toxoplasma gondii.	11994154	2005/08/13	46.0	1.876214405360134	2002-05-01	2026-11-06						0.2007168458781362	1	0.2007168458781362
+GEO	GSE3120	Tachyzoite to bradyzoite differentiation.	12455982	2005/08/13	128.0	5.238906320035858	2002-06-01	2026-11-06						0.5232974910394266	1	0.5232974910394266
+GEO	GSE3352	Microarray analysis reveals previously unknown changes in Toxoplasma gondii infected human cells	11294868	2005/09/23	205.0	8.015012845215157	2001-04-09	2026-11-06						0.6594982078853047	1	0.6594982078853047
+GEO	GSE4401	Cell-specific analysis of mRNA synthesis and decay	15685165	2006/03/08	163.0	7.488773584905661	2005-01-30	2026-11-06						0.6415770609318996	1	0.6415770609318996
+GEO	GSE5989	"Gene expression ""Epigenomic modifications predict active promoters and gene structure in Toxoplasma gondii"""	17559302	2007/05/22	100.0	5.1458157227388	2007-06-01	2026-11-06						0.5161290322580645	1	0.5161290322580645
+GEO	GSE5992	"ChIP on chip ""Epigenomic modifications predict active promoters and gene structure in Toxoplasma gondii"""	17559302	2007/05/22	100.0	5.1458157227388	2007-06-01	2026-11-06						0.5161290322580645	1	0.5161290322580645
+GEO	GSE7262	Epigenomic modifications predict active promoters and gene structure in Toxoplasma gondii	17559302	2007/05/21	100.0	5.1458157227388	2007-06-01	2026-11-06						0.5161290322580645	1	0.5161290322580645
+GEO	GSE7850	Unique Gene Expression Profiles of Donor-Matched Human Retinal and Choroidal Vascular Endothelial Cells	17525199	2007/05/25	47.0	2.418533389687236	2007-06-01	2026-11-06						0.26523297491039427	1	0.26523297491039427
+GEO	GSE8521	IFN-gamma-inducible gene expression in Toxoplasma-infected human fibroblasts	17404298	2007/07/19	106.0	5.408087721748847	2007-04-01	2026-11-06						0.5304659498207885	1	0.5304659498207885
+GEO	GSE8773	Infection with bradyzoites has a diminished impact on host transcript levels relative to tachyzoite infection.	17088349	2007/08/15	24.0	1.2	2006-11-06	2026-11-06						0.11469534050179211	1	0.11469534050179211
+GEO	GSE11437	Expression QTL mapping of Toxoplasma gondii genes, Bradyzoite array	18552283	2008/05/22	24.0	1.3044642857142859	2008-06-13	2026-11-06						0.12903225806451613	1	0.12903225806451613
+GEO	GSE11514	Expression QTL mapping of Toxoplasma gondii genes, Tachyzoite array	18552283	2008/05/22	24.0	1.3044642857142859	2008-06-13	2026-11-06						0.12903225806451613	1	0.12903225806451613
+GEO	GSE11515	Expression QTL mapping of Toxoplasma gondii genes	18552283	2008/05/22	24.0	1.3044642857142859	2008-06-13	2026-11-06						0.12903225806451613	1	0.12903225806451613
+GEO	GSE12839	Expression data from human PBMC samples exposed to IL-12 and paired controls	19001140	2008/11/14	71.0	3.9471461187214616	2008-11-10	2026-11-06						0.3727598566308244	1	0.3727598566308244
+GEO	GSE15241	Drug-inhibition of HDAC3 and epigenetic control of differentiation in Apicomplexa parasites	19349466	2009/03/19	149.0	8.47302662307333	2009-04-06	2026-11-06						0.6881720430107527	1	0.6881720430107527
+GEO	GSE16037	Types I GT1, II Me49, III CTGara strains - tachyzoite and Compound 1	18433450	2009/05/12	89.0	4.799534918056991	2008-04-21	2026-11-06						0.4767025089605735	1	0.4767025089605735
+GEO	GSE16115	Global gene expression differences between GT1, RH-ERP2009 and RH-JSR	19801420	2009/10/26	61.0	3.568265534913517	2009-10-02	2026-11-06						0.36200716845878134	1	0.36200716845878134
+GEO	GSE18085	Response of Henle 407 cells during Toxoplasma gondii infection	19917706	2009/09/17	37.0	2.1800693660267787	2009-11-16	2026-11-06						0.25089605734767023	1	0.25089605734767023
+GEO	GSE19092	Coordinated Progression Through Two Subtranscriptomes Underlies the Tachyzoite Cycle of Toxoplasma gondii	20865045	2010/08/27	260.0	16.052231237322513	2010-08-26	2026-11-06						0.8924731182795699	1	0.8924731182795699
+GEO	GSE20145	Expression profiling of the three clonotypic lineages of Toxoplasma gondii	20974003	2010/02/02	42.0	2.6196209016393444	2010-10-25	2026-11-06						0.27956989247311825	1	0.27956989247311825
+GEO	GSE20480	Cell cycle-dependent, intercellular transmission of Toxoplasma gondii is accompanied by marked changes in parasite gene expression.	21166903	2010/12/27	66.0	4.127118644067797	2010-11-09	2026-11-06						0.3835125448028674	1	0.3835125448028674
+GEO	GSE20616	Global transcriptome analysis indicates that depletion of rps13 and ribosomes leads to cell cycle arrest in G1	21124925	2010/11/29	21.0	1.3161032944406315	2010-11-22	2026-11-06						0.13620071684587814	1	0.13620071684587814
+GEO	GSE22100	Toxoplasma gondii lysine acetyltransferase GCN5-A functions in the cellular response to alkaline stress and expression of cyst genes	21179246	2011/05/25	56.0	3.524121295658167	2010-12-16	2026-11-06						0.3548387096774194	1	0.3548387096774194
+GEO	GSE22258	72hr Toxoplasma gondii bradyzoite induction		2010/06/15											0	
+GEO	GSE22315	Expression data for various strains of Toxoplasma gondii chosen from canonical types (i.e., I,II, and III)		2010/07/31											0	
+GEO	GSE22402	Genome-wide analysis of gene expression response upon infection with Toxoplasma gondii	20709297	2010/08/01	190.0	11.681114290523482	2010-08-01	2026-11-06						0.8315412186379928	1	0.8315412186379928
+GEO	GSE22986	Microarray Expression Analysis of 3 Canonical Toxoplasma infections of human neuroepithelial cells	21149591	2011/06/24	47.0	2.9562166350955743	2010-12-13	2026-11-06						0.3046594982078853	1	0.3046594982078853
+GEO	GSE23174	Expression data from Toxoplasma gondii mutants and wild-type during bradyzoite differentiation in vitro	21209930	2010/07/27	32.0	2.0186528497409326	2010-12-30	2026-11-06						0.24014336917562723	1	0.24014336917562723
+GEO	GSE24905	Virulence differences in Toxoplasma mediated by amplification of polymorphic pseudokinases.	21586633	2011/05/03	194.0	12.536889596602974	2011-05-17	2026-11-06						0.8387096774193549	1	0.8387096774193549
+GEO	GSE25177	Toxoplasma gondii response to monensin	21098240	2010/11/06	25.0	1.566789636238847	2010-11-22	2026-11-06						0.16129032258064516	1	0.16129032258064516
+GEO	GSE25468	Expression data from Human foreskin fibroblasts (HFFs) infected with Toxoplasma gondii.	21199955	2011/01/10	363.0	22.91492395437262	2011-01-03	2026-11-06						0.967741935483871	1	0.967741935483871
+GEO	GSE25469	Expression data from WT or p65-/- mouse embryonic fibroblasts (MEFs) infected with Toxoplasma gondii.	21199955	2011/01/10	363.0	22.91492395437262	2011-01-03	2026-11-06						0.967741935483871	1	0.967741935483871
+GEO	GSE25476	Expression data from host cells infected with different strains of Toxoplasma gondii	21199955	2011/01/10	363.0	22.91492395437262	2011-01-03	2026-11-06						0.967741935483871	1	0.967741935483871
+GEO	GSE26558	Expression Quantitative Trait Locus (eQTL) Mapping of Stage-specific Gene Expression in Progeny from a type I X III Genetic Cross of Toxoplasma gondii		2012/01/11											0	
+GEO	GSE26607	Genomic hybridizations for the parents and progeny of the Toxoplasma gondii I X III genetic cross		2012/01/11											0	
+GEO	GSE26608	Expression and genomic hybridization data for the Toxoplasma gondii I X III cross		2012/01/11											0	
+GEO	GSE27972	Mouse bone marrow-derived macrophages infected with T. gondii (Type I, RH strain) for 6 hr		2011/12/31											0	
+GEO	GSE28499	Impaired Chromatin Remodelling at STAT1-Regulated Promoters Leads to Global Unresponsiveness of Toxoplasma gondii-Infected Macrophages to IFN-Gamma		2012/01/25											0	
+GEO	GSE29404	Expression Data from Toxoplasma gondii-Infected Murine Bone Marrow-Derived Macrophages	21669396	2011/05/20	201.0	13.023815859499733	2011-06-01	2026-11-06						0.8458781362007168	1	0.8458781362007168
+GEO	GSE29562	Strain-dependent host responses in chicken embryonic fibroblasts infected with Toxoplasma gondii [ME49, CEP, and Mock]	22022607	2011/05/27	18.0	1.135884588804423	2011-10-13	2026-11-06						0.1057347670250896	1	0.1057347670250896
+GEO	GSE29563	Host responses in chicken embryonic fibroblasts infected with different strains of Toxoplasma gondii [F1 progeny]	22022607	2011/05/27	18.0	1.135884588804423	2011-10-13	2026-11-06						0.1057347670250896	1	0.1057347670250896
+GEO	GSE29564	ROP16-dependent host transcriptional responses in chicken embryonic fibroblasts infected with T. gondii [RH, ROP16-KO]	22022607	2011/05/27	18.0	1.135884588804423	2011-10-13	2026-11-06						0.1057347670250896	1	0.1057347670250896
+GEO	GSE29565	Expression data from chicken embryonic fibroblasts infected with Toxoplasma gondii	22022607	2011/05/27	18.0	1.135884588804423	2011-10-13	2026-11-06						0.1057347670250896	1	0.1057347670250896
+GEO	GSE29582	Expression Data from Toxoplasma gondii Infected Murine Bone Marrow-Derived Macrophages	21669396	2011/05/29	201.0	13.023815859499733	2011-06-01	2026-11-06						0.8458781362007168	1	0.8458781362007168
+GEO	GSE29584	Expression Data from Toxoplasma gondii Infected Murine Macrophages and Dendritic Cells	21669396	2011/05/29	201.0	13.023815859499733	2011-06-01	2026-11-06						0.8458781362007168	1	0.8458781362007168
+GEO	GSE30613	[E-MTAB-549] Neospora caninum RNAseq		2011/07/14											0	
+GEO	GSE30614	[E-MTAB-550] Toxoplasma gondii RNASeq		2011/07/14											0	
+GEO	GSE31207	The Sex-Specific Changes in Gene Expression and Behavior Induced by Chronic Toxoplasma Infection in Mice		2014/07/28											0	
+GEO	GSE32104	Host gene expression response to Toxoplasma gondii infection is not different between RH∆ku80 and RH∆ku80∆rop5 parasites	23144612	2012/09/13	149.0	10.03545085745897	2012-11-08	2026-11-06						0.7885304659498208	1	0.7885304659498208
+GEO	GSE32427	Transcriptome analysis of oocyst, tachyzoite, and bradyzoite development in the type II Toxoplasma gondii strain M4.	22021236	2011/10/01	93.0	6.181665150136488	2011-10-21	2026-11-06						0.5985663082437276	1	0.5985663082437276
+GEO	GSE33802	Early T-helper 1 Differentiation Is Marked by A Follicular Helper-like Transition: Differential Roles of STAT4 and T-bet	22195747	2011/12/27	363.0	24.309818481848183	2011-12-01	2026-11-06						0.974910394265233	1	0.974910394265233
+GEO	GSE34416	Differential gene expression in mice infected with distinct Toxoplasma gondii strains	22144491	2011/12/22	22.0	1.4744036697247707	2011-12-05	2026-11-06						0.15412186379928317	1	0.15412186379928317
+GEO	GSE34913	Expression data from RAW264.7 murine macrophages infected with Toxoplasma gondii and subsequently stimulated with interferon-gamma	23240025	2013/02/19	48.0	3.2328969205236953	2012-12-11	2026-11-06						0.34408602150537637	1	0.34408602150537637
+GEO	GSE34916	Expression data from cyclohexamide treated Human Foreskin Fibroblasts (HFFs) infected with type I Toxoplasma gondii and stimulated with interferon gamma.		2015/08/01											0	
+GEO	GSE36300	Effect of AP2IX-9 overexpression on CTG transcriptome upon alkaline treatment	23572590	2013/01/01	125.0	9.206745311554748	2013-04-09	2026-11-06						0.7204301075268817	1	0.7204301075268817
+GEO	GSE36432	Cactin is essential for G1 progression in Toxoplasma gondii	22486860	2012/03/14	26.0	1.7837152516904584	2012-04-09	2026-11-06						0.1935483870967742	1	0.1935483870967742
+GEO	GSE38686	Distinct roles for IL-27 and IFN-g in the development of T-bet+ Treg required to limit infection-induced pathology	22981537	2012/09/07	318.0	22.47909812270176	2012-09-13	2026-11-06						0.9605734767025089	1	0.9605734767025089
+GEO	GSE38779	Host cell subversion by Toxoplasma GRA16,  an exported dense granule protein that targets  the host cell nucleus and alters gene expression	23601110	2013/02/06	205.0	15.074743305818401	2013-04-01	2026-11-06						0.8745519713261649	1	0.8745519713261649
+GEO	GSE38782	A Toxoplasma dense granule protein, GRA24, modulates the early immune response to infection by promoting a direct and sustained host p38 MAPK activation	24043761	2013/09/01	235.0	17.885757449468638	2013-09-16	2026-11-06						0.9283154121863799	1	0.9283154121863799
+GEO	GSE38808	The Transcription Factor T-bet Is Induced by Multiple Pathways and Prevents an Endogenous Th2 Cell Program during Th1 Cell Responses	23041064	2012/10/04	300.0	21.293237465993005	2012-10-04	2026-11-06						0.946236559139785	1	0.946236559139785
+GEO	GSE42694	Quiescent innate response to infective filariae by human Langerhans’ cells suggests a strategy of immune evasion	23429540	2012/12/04	17.0	1.239866214057508	2013-02-19	2026-11-06						0.12186379928315412	1	0.12186379928315412
+GEO	GSE43315	Discovery of a splicing regulator required for cell cycle progression	23437009	2013/01/08	36.0	2.600158196559225	2013-02-21	2026-11-06						0.27598566308243727	1	0.27598566308243727
+GEO	GSE43722	The Toxoplasma unfolded protein response	23666622	2013/05/24	48.0	3.55762987012987	2013-05-10	2026-11-06						0.35842293906810035	1	0.35842293906810035
+GEO	GSE43784	A nucleolar AAA-NTPase is required for Toxoplasma gondii division	23964771	2013/01/27	16.0	1.2164862614487928	2013-09-11	2026-11-06						0.11827956989247312	1	0.11827956989247312
+GEO	GSE44189	Expression data from human foreskin fibroblasts (HFFs) infected with type I strains of Toxoplasma gondii.	23837824	2013/08/20	41.0	3.0768954181220467	2013-07-10	2026-11-06						0.32974910394265233	1	0.32974910394265233
+GEO	GSE44191	Parasite gene expression differences between RH-ERP, RH-JSR and GT1 of Toxoplasma gondii.	23837824	2013/08/20	41.0	3.0768954181220467	2013-07-10	2026-11-06						0.32974910394265233	1	0.32974910394265233
+GEO	GSE44246	Human foreskin fibroblasts (HFFs) infected with type I strains of Toxoplasma gondii	23837824	2013/08/20	41.0	3.0768954181220467	2013-07-10	2026-11-06						0.32974910394265233	1	0.32974910394265233
+GEO	GSE45007	Comparative characterization of microRNA profiles of different genotypes of Toxoplasma gondii	23714365	2013/10/29	11.0	0.8184457119576288	2013-05-29	2026-11-06						0.07885304659498207	1	0.07885304659498207
+GEO	GSE45309	Gene expression Data from Toxoplasma gondii-Infected Murine Bone Marrow-Derived STAT6 and STAT3 Deficient Macrophages	23545295	2013/03/20	82.0	6.02989732232736	2013-04-01	2026-11-06						0.5824372759856631	1	0.5824372759856631
+GEO	GSE45310	Gene expression profiles of the small intestine and Peyer's patches from mice that were orally infected with Toxoplasma	23545295	2013/03/20	82.0	6.02989732232736	2013-04-01	2026-11-06						0.5824372759856631	1	0.5824372759856631
+GEO	GSE45632	Differential induction of TLR3-dependent innate immune signaling by closely related parasite species_I	24505488	2013/03/29	61.0	4.784249516856345	2014-02-05	2026-11-06						0.4659498207885305	1	0.4659498207885305
+GEO	GSE45633	Differential induction of TLR3-dependent innate immune signaling by closely related parasite species_II	24505488	2013/03/29	61.0	4.784249516856345	2014-02-05	2026-11-06						0.4659498207885305	1	0.4659498207885305
+GEO	GSE45634	Differential induction of TLR3-dependent innate immune signaling by closely related parasite species	24505488	2013/03/29	61.0	4.784249516856345	2014-02-05	2026-11-06						0.4659498207885305	1	0.4659498207885305
+GEO	GSE46685	Genome-wide analysis of tissue-specific gene expression by Ly6Chi inflammatory monocytes during Toxoplasma gondii infection	23708291	2013/05/25	225.0	16.730710504885995	2013-05-26	2026-11-06						0.9175627240143369	1	0.9175627240143369
+GEO	GSE47046	The genetic basis for differential macrophage activation	26510153	2013/05/18	21.0	1.9047057362801094	2015-10-28	2026-11-06						0.20430107526881722	1	0.20430107526881722
+GEO	GSE49217	In situ synthesis of peptide microarrays - shadow mask design [1]		2014/01/16											0	
+GEO	GSE50045	In situ synthesis of peptide microarrays - shadow mask design		2014/01/16											0	
+GEO	GSE51780	Toxoplasma gondii merozoite gene expression	24885521	2014/05/02	75.0	6.0008214676889375	2014-05-08	2026-11-06						0.5770609318996416	1	0.5770609318996416
+GEO	GSE54285	Analysis of impact of Toxoplasma effector MAF1 during Type II infection in WT MEFs and during Type I  infection in WT and MAVS KO MEFs	24781109	2014/01/23	154.0	12.29744206383909	2014-04-29	2026-11-06						0.8351254480286738	1	0.8351254480286738
+GEO	GSE55067	Small intestine intraepithelial CD4+ T cells after Toxoplasma gondii infection	24687959	2014/02/15	56.0	4.443623723658484	2014-03-31	2026-11-06						0.4121863799283154	1	0.4121863799283154
+GEO	GSE55298	Toxoplasma RH and Mock Infection of macrophages	24532536	2014/02/25	43.0	3.3790339931153186	2014-02-14	2026-11-06						0.35125448028673834	1	0.35125448028673834
+GEO	GSE55749	A Gain-of-Function Genomic Screen Identifies the Orphan Nuclear Receptor TLX as an Enhancer of STAT1-mediated Transcription and Immunity to Toxoplasma gondii: TLX overexpression	26196739	2015/05/29	20.0	1.770479883664566	2015-07-21	2026-11-06						0.17921146953405018	1	0.17921146953405018
+GEO	GSE55750	A Gain-of-Function Genomic Screen Identifies the Orphan Nuclear Receptor TLX as an Enhancer of STAT1-mediated Transcription and Immunity to Toxoplasma gondii: TLX siRNA	26196739	2015/05/29	20.0	1.770479883664566	2015-07-21	2026-11-06						0.17921146953405018	1	0.17921146953405018
+GEO	GSE55751	A Gain-of-Function Genomic Screen Identifies the Orphan Nuclear Receptor TLX as an Enhancer of STAT1-mediated Transcription and Immunity to Toxoplasma gondii	26196739	2015/05/29	20.0	1.770479883664566	2015-07-21	2026-11-06						0.17921146953405018	1	0.17921146953405018
+GEO	GSE55892	Parasite secreted products modulate STAT6-dependent and -independent transcription in macrophages		2019/03/01											0	
+GEO	GSE56534	Infection of macrophages by Toxoplasma Progeny from a Type II x Type III cross	24711568	2014/06/01	54.0	4.2914490861618795	2014-04-07	2026-11-06						0.3978494623655914	1	0.3978494623655914
+GEO	GSE60305	RNA-seq transcriptional profile of Toxoplasma gondii strains RH, PLK, CTG as tachyzoites and bradyzoites	25393307	2014/09/01	24.0	2.003199268738574	2014-11-13	2026-11-06					0.0	0.2620704195656757	2	0.2620704195656757
+GEO	GSE60532	plant rabt n°1-Plant RABT n°1		2014/09/10											0	
+GEO	GSE61806	Genomic Localization of TgSMC1 in Toxoplasma gondii parasites		2014/09/27											0	
+GEO	GSE61963	Gene expression analysis of Hammondia hammondi and Toxoplasma gondii sporulated oocysts	25280815	2014/10/02	11.0	0.9096105954267601	2014-10-03	2026-11-06						0.08602150537634409	1	0.08602150537634409
+GEO	GSE65472	Identification of IL-22 regulated genes in the ileum after infection with Toxoplasma gondii	25680273	2015/01/31	160.0	13.631910426871938	2015-02-10	2026-11-06						0.8566308243727598	1	0.8566308243727598
+GEO	GSE65980	Toxoplasma proteins GRA17 and GRA23 mediate the movement of small molecules between the host and the parasitophorous vacuole.	25974303	2015/05/01	228.0	19.79486570002377	2015-05-01	2026-11-06					0.0	0.6151170145477546	2	0.6151170145477546
+GEO	GSE67137	STAT1 signaling in astrocytes is essential for control of infection in the central nervous system	27834206	2016/10/20	70.0	7.004794520547945	2016-11-08	2026-11-06						0.6200716845878136	1	0.6200716845878136
+GEO	GSE68590	Klf4 expression in conventional dendritic cells is required for T helper 2 cell responses		2015/05/19											0	
+GEO	GSE73117	Evaluation of DNA-binding preferences of non-metazoan C2H2 zinc finger proteins by PBM	28877740	2017/07/10	41.0	4.472894265232975	2017-09-06	2026-11-06						0.4444444444444444	1	0.4444444444444444
+GEO	GSE73177	Toxoplasma gondii arginine methyltransferase 1 (PRMT1) regulates parasite counting during tachyzoite cell division	26838719	2015/09/18	21.0	1.9517175572519083	2016-02-02	2026-11-06						0.22580645161290322	1	0.22580645161290322
+GEO	GSE73986	An aspartyl protease defines a novel pathway for export of Toxoplasma proteins into the host cell	26576949	2015/11/19	104.0	9.482276585122317	2015-11-18	2026-11-06						0.7383512544802867	1	0.7383512544802867
+GEO	GSE77765	Detection of a Yersinia pestis homologue in rodent samples		2016/02/11											0	
+GEO	GSE79608	Toxoplasma gondii remodels the cis-regulatory landscape of infected human host cells [RNA-seq]	28100166	2017/03/08	19.0	1.9390192791282481	2017-01-18	2026-11-06						0.21505376344086022	1	0.21505376344086022
+GEO	GSE79609	Toxoplasma gondii remodels the cis-regulatory landscape of infected human host cells [ATAC-seq]	28100166	2017/03/08	19.0	1.9390192791282481	2017-01-18	2026-11-06						0.21505376344086022	1	0.21505376344086022
+GEO	GSE79610	Toxoplasma gondii remodels the cis-regulatory landscape of infected human host cells [HELP-tagging]	28100166	2017/03/08	19.0	1.9390192791282481	2017-01-18	2026-11-06						0.21505376344086022	1	0.21505376344086022
+GEO	GSE79611	Toxoplasma gondii  remodels the cis-regulatory landscape of infected human host cells [HELP-GT]	28100166	2017/03/08	19.0	1.9390192791282481	2017-01-18	2026-11-06						0.21505376344086022	1	0.21505376344086022
+GEO	GSE79612	Toxoplasma gondii remodels the cis-regulatory landscape of infected human host cells	28100166	2017/03/08	19.0	1.9390192791282481	2017-01-18	2026-11-06						0.21505376344086022	1	0.21505376344086022
+GEO	GSE81015	Genome-wide DNA methylation analysis of WERI-Rb-1 (retinal cells) infected with Toxoplasma gondii over time		2016/05/03											0	
+GEO	GSE81016	Genome-wide gene expression analysis of WERI-Rb-1 (retinal cells) infected with Toxoplasma gondii over time		2016/05/03											0	
+GEO	GSE81613	Toxoplasma gondii TgIST co-opts host chromatin repressors dampening STAT1-dependent gene regulation and IFN-γ-mediated host defenses.	27503074	2016/07/18	170.0	16.59339925173704	2016-08-08	2026-11-06						0.8960573476702509	1	0.8960573476702509
+GEO	GSE86616	Dynamic Strain- and Stage-specific tRNA Transcription and Codon Usage in divergent Toxoplasma gondii strains		2017/09/08											0	
+GEO	GSE86620	Genome-wide mapping of nucleosome positioning in Toxoplasma gondii implicates nucleosome-free regions as the major gene regulatory regions		2017/09/08											0	
+GEO	GSE87158	Expression of sulfamethoxazole biotransformation pathways in a macaque model of HIV infection	28603631	2017/07/11	3.0	0.31478023556449297	2017-04-26	2026-11-06						0.05017921146953405	1	0.05017921146953405
+GEO	GSE87834	Genome-wide localisation of histone variants in Toxoplasma gondii implicates variant exchange in transcriptional control by demarcation of functional chromatin regions	35164683	2019/04/30	21.0	4.443945538818077	2022-02-14	2026-11-06						0.4175627240143369	1	0.4175627240143369
+GEO	GSE88996	Peripheral self-reactivity regulates antigen-specific CD8 T cell responses and cell division under physiological conditions	27881740	2017/02/09	6.0	0.5992616899097621	2016-11-01	2026-11-06						0.06451612903225806	1	0.06451612903225806
+GEO	GSE89469	Analysis of the role for TgAP2IV-3 in regulating gene expression in Toxoplasma development	28251183	2016/11/03	75.0	7.617839265850945	2017-01-01	2026-11-06						0.6523297491039427	1	0.6523297491039427
+GEO	GSE90478	Histone deacetylase inhibitor MS-275 augments expression of a subset of IFN-γ-regulated genes in Toxoplasma gondii-infected macrophages but does not improve parasite control	28189488	2017/02/10	4.0	0.4107393871239809	2017-02-09	2026-11-06						0.053763440860215055	1	0.053763440860215055
+GEO	GSE92603	HFF Cells: Control vs. Toxoplasma gondii infected	29530077	2017/01/01	27.0	3.1198196773173046	2018-03-12	2026-11-06						0.33691756272401435	1	0.33691756272401435
+GEO	GSE93531	Analysis of the role for the transcription factor TgAP2IV-4 (TGGT1_318470) in regulating gene expression in Toxoplasma development	29718996	2017/01/18	88.0	10.335048231511253	2018-05-02	2026-11-06						0.8064516129032258	1	0.8064516129032258
+GEO	GSE94045	Analysis of the role for TgAP2IX-4 in regulating gene expression in Toxoplasma development	28317026	2017/01/26	55.0	5.702171444791371	2017-03-15	2026-11-06						0.5627240143369175	1	0.5627240143369175
+GEO	GSE94473	An in vitro model of intestinal infection reveals a developmentally regulated transcriptome of Toxoplasma sporozoites and a NF-κB-like signature in infected host cells	28362800	2017/04/01	19.0	1.9788280581693753	2017-03-31	2026-11-06						0.22939068100358423	1	0.22939068100358423
+GEO	GSE94595	Divergent co-transcriptomes of different host cells infected with Toxoplasma gondii reveal cell type-specific host-parasite interactions	28775382	2017/08/07	38.0	4.103932584269662	2017-08-03	2026-11-06						0.3763440860215054	1	0.3763440860215054
+GEO	GSE95105	Transcriptional profile of brain TRM in Toxoplasma gondii infection	28424687	2017/06/12	61.0	6.349458535195212	2017-03-29	2026-11-06						0.6021505376344086	1	0.6021505376344086
+GEO	GSE96724	The Transcription Factor T-bet Limits Amplification of Type I IFN Transcriptome and Circuitry in T Helper 1 Cells	28623086	2017/06/12	77.0	8.192324497524032	2017-06-13	2026-11-06						0.6666666666666666	1	0.6666666666666666
+GEO	GSE98227	T. gondii Genome Wide CRISPR Screen for Fitness-Conferring Genes	27594426	2017/04/27	773.0	75.95863599677159	2016-09-02	2026-11-06	0.028371				1.0	0.6020780961957433	3	0.6020780961957433
+GEO	GSE98677	Genome-wide gene expression analysis of human foreskin fibroblast cells infected with Toxoplasma gondii over time	29312892	2017/07/05	41.0	4.606351891725622	2017-12-12	2026-11-06						0.45161290322580644	1	0.45161290322580644
+GEO	GSE98806	Chromosomal organization and genic expression in Apicomplexan parasites is critically dictated by a versatile acetylation-methylation switch at K31 on the lateral surface of histone H4	29101771	2017/06/17	39.0	4.33102766798419	2017-11-04	2026-11-06						0.40860215053763443	1	0.40860215053763443
+GEO	GSE99395	Comparative ribosome profiling uncovers a dominant role for translational control in Toxoplasma gondii	29228904	2017/11/23	28.0	3.1448339483394836	2017-12-11	2026-11-06					0.0	0.31404174573055027	2	0.31404174573055027
+GEO	GSE100203	RNA sequencing analysis of the Lewis versus Brown Norway rat, with or without Toxoplasma gondii infection	28739829	2017/07/24	14.0	1.53374325134973	2017-09-20	2026-11-06						0.15770609318996415	1	0.15770609318996415
+GEO	GSE102500	Toxoplasma gondii hexokinase gene knock out mutant expression data		2017/08/11											0	
+GEO	GSE103113	Transcriptomic analysis by Next Generation Sequencing of mouse bone marrow derived macrophages (BMDMs) infected by Wild-Type and gra18 mutant strains of T. gondii.	30320549	2018/06/01	61.0	7.568019701086957	2018-10-15	2026-11-06	0.9680633333333333				1.0	0.7311471155873432	3	0.7311471155873432
+GEO	GSE103173	The transcription factor Bhlhe40 is a switch of inflammatory versus anti-inflammatory Th1 cell fate determination	29773643	2018/05/10	130.0	15.34168012924071	2018-05-17	2026-11-06						0.8888888888888888	1	0.8888888888888888
+GEO	GSE103985	Comprehensive understanding of identities and antigenicities of surface and secreted proteins in Toxoplasma gondii tachyzoites		2017/09/20											0	
+GEO	GSE104347	Genome-wide localisation of histone variants in Toxoplasma gondii implicates variant exchange in transcriptional control by demarcation of functional chromatin regions (ChIP-seq)	35164683	2018/03/01	21.0	4.443945538818077	2022-02-14	2026-11-06						0.4175627240143369	1	0.4175627240143369
+GEO	GSE106864	Cooperative binding of ApiAP2 transcription factors is crucial for the expression of virulence genes in Toxoplasma gondii. [RNA-seq]	29788176	2018/05/30	42.0	5.029672131147541	2018-07-01	2026-11-06					0.0	0.39647902171621335	2	0.39647902171621335
+GEO	GSE108740	Transcriptomics of Toxoplasma gondii enteroepithelial stages	30728393	2018/03/30	146.0	18.84328621908127	2019-02-06	2026-11-06					0.0	0.6133248998524141	2	0.6133248998524141
+GEO	GSE109086	Cooperative binding of ApiAP2 transcription factors is crucial for the expression of virulence genes in Toxoplasma gondii. [ChIP-chip]	29788176	2018/05/30	42.0	5.029672131147541	2018-07-01	2026-11-06						0.5053763440860215	1	0.5053763440860215
+GEO	GSE109087	Cooperative binding of ApiAP2 transcription factors is crucial for the expression of virulence genes in Toxoplasma gondii.	29788176	2018/05/30	42.0	5.029672131147541	2018-07-01	2026-11-06						0.5053763440860215	1	0.5053763440860215
+GEO	GSE109830	MYR1-dependent effectors are the major drivers of a host cell’s early response to Toxoplasma including counteracting MYR1-independent effects	29615509	2018/01/31	49.0	5.701576935329722	2018-04-03	2026-11-06						0.5591397849462365	1	0.5591397849462365
+GEO	GSE113130	Comparison of microRNA expression profiling in pig spleens among three time points after infection by Chinese I genotype strain of Toxoplasma gondii	30700253	2018/12/31	23.0	2.961138526612619	2019-01-30	2026-11-06						0.30824372759856633	1	0.30824372759856633
+GEO	GSE113618	The Toxoplasma effector TEEGR promotes parasite persistence by modulating NF-κB signalling via EZH2	31036909	2019/02/15	87.0	11.563591703056769	2019-04-29	2026-11-06						0.8243727598566308	1	0.8243727598566308
+GEO	GSE113626	The Toxoplasma effector TEEGR promotes parasite persistence by modulating NF-κB signalling via EZH2	31036909	2019/02/15	87.0	11.563591703056769	2019-04-29	2026-11-06						0.8243727598566308	1	0.8243727598566308
+GEO	GSE113658	The Toxoplasma effector TEEGR promotes parasite persistence by modulating NF-κB signalling via EZH2	31036909	2019/02/15	87.0	11.563591703056769	2019-04-29	2026-11-06						0.8243727598566308	1	0.8243727598566308
+GEO	GSE113806	Gene expression data from study on the role of  DISC1 607 variants on immune responses against Toxoplasma gondii		2020/04/27											0	
+GEO	GSE114386	Toxoplasma gondii RH strain tachyzoites Transcriptome or Gene expression		2021/05/14									0.0	0.2875816993464052	1	0.2875816993464052
+GEO	GSE116539	Transcriptome sequencing of WT and chloroquine resistance transporter (TgCRT) ortholog-deficient Toxoplasma parasites	31170269	2019/04/29	24.0	3.2346863468634686	2019-06-06	2026-11-06	0.9381775			0.0	1.0	0.44498065975769957	4	0.44498065975769957
+GEO	GSE117504	Host transcriptional responses during chronic Toxoplasma gondii infection reveals sex specific differences that lead to altered protection against secondary infection	30858341	2018/07/24	23.0	2.9927858924118276	2019-03-01	2026-11-06						0.3154121863799283	1	0.3154121863799283
+GEO	GSE119643	MicroRNA expression profile of porcine alveolar macrophages infected with Toxoplasma gondii	30696482	2019/02/07	22.0	2.8313953488372094	2019-01-29	2026-11-06						0.2974910394265233	1	0.2974910394265233
+GEO	GSE119835	Alarmin S100A11 initiates a chemokine response to the human pathogen Toxoplasma gondii		2018/12/01											0	
+GEO	GSE119848	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases [Microarray_Blood_6]	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE119849	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases [microarray_lung_6]	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE119850	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases [RNA-seq_blood4_module_testing]	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE119851	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases [RNA-seq_blood6_module_generation]	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE119852	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases [RNA-seq_HDM_sorted_CD4_Tcells]	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE119853	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases [RNA-seq_Lung_6_module_generation]	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE119854	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases [RNA-seq_Test_HDM_model_BAL_Blood]	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE119855	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases [RNA-seq_Toxoplasma_WT_IFNR_KO_4tissues]	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE119856	Global transcriptional profiling unveils the interferon network in blood and tissues across different diseases	31253760	2019/05/08	70.0	9.51171875	2019-06-28	2026-11-06						0.7562724014336918	1	0.7562724014336918
+GEO	GSE122786	Toxoplasma controls host cyclin E expression through the use of a novel MYR1-dependent effector protein, HCE1	31040242	2018/11/22	50.0	6.648161630870041	2019-04-30	2026-11-06						0.6057347670250897	1	0.6057347670250897
+GEO	GSE124222	IL-27 and TCR stimulation promote T cell expression of multiple inhibitory receptors	31356173	2019/01/17	70.0	8.96476157082749	2019-01-15	2026-11-06						0.7096774193548387	1	0.7096774193548387
+GEO	GSE124251	Genome-wide binding of the bromdomain protein TgBDP3 in the protozoan parasite Toxoplasma gondii		2023/12/18											0	
+GEO	GSE124313	Gene transcription and chromatin accessibility of conventional NK cells and ILC1s in spleens of uninfected and Toxoplasma gondii-infected Mice	31393266	2019/05/15	110.0	15.178503966754816	2019-08-08	2026-11-06						0.8799283154121864	1	0.8799283154121864
+GEO	GSE124577	Toxoplasma gondii Infection Promotes NK Cell Conversion into ILC1s and Heterogeneous ILC1 Populations	31393266	2019/02/28	110.0	15.178503966754816	2019-08-08	2026-11-06						0.8799283154121864	1	0.8799283154121864
+GEO	GSE125066	Effect of Toxoplasma gondii efector TgIST on global transcriptome of human foreskin fibroblasts (HFFs) upon type I IFN activation	31413201	2019/06/30	76.0	10.510791366906476	2019-08-14	2026-11-06						0.8100358422939068	1	0.8100358422939068
+GEO	GSE125120	RNA sequencing of host transcriptome of human foreskin fibroblast cells infected with Toxoplasma gondii bradyzoites, with and without myr1 (myc regulation 1)		2020/01/15					0.7370166666666668		0.9476		1.0	0.37606183603314164	3	0.5031171442936149
+GEO	GSE125121	RNA sequencing of host transcriptome of human foreskin fibroblast cells infected with either bradyzoites and tachyzoite of Toxoplasma gondii		2020/01/15									0.0	0.2875816993464052	1	0.2875816993464052
+GEO	GSE125122	Toxoplasma gondii bradyzoites manipulate host cell transcription		2020/01/15									0.0	0.2875816993464052	1	0.2875816993464052
+GEO	GSE128752	mRNA-seq of immortailized bone marrow derived macrophages (iBMDM) infected with type II Toxoplasma gondii		2019/03/25											0	
+GEO	GSE129724	Multi-step Epigenetic Programming of Monocytes during Infection	31872076	2019/12/31	14.0	2.033200795228628	2019-12-18	2026-11-06						0.24372759856630824	1	0.24372759856630824
+GEO	GSE129869	Ribo-seq of Toxoplasma-infected host cells	31167946	2019/05/17	22.0	2.9640354112873477	2019-06-05	2026-11-06					0.0	0.2997048281678263	2	0.2997048281678263
+GEO	GSE131171	Caspase-8 promotes c-Rel-dependent inflammatory cytokine expression and resistance against Toxoplasma gondii	31147458	2019/05/15	52.0	6.99043062200957	2019-05-30	2026-11-06						0.6164874551971327	1	0.6164874551971327
+GEO	GSE132091	Toxoplasma gondii infection of human retinal pigment epithelial cells	31118929	2019/06/04	21.0	2.793244719592134	2019-05-01	2026-11-06						0.2939068100358423	1	0.2939068100358423
+GEO	GSE132237	CRISPR-Cas9 screens to identify regulators of differentiation in Toxoplasma gondii	31955846	2020/01/16	237.0	34.82069589702333	2020-01-16	2026-11-06						0.9874551971326165	1	0.9874551971326165
+GEO	GSE132238	Single-cell RNA-sequencing of wildtype (ME49∆KU80) or mutant (ME49∆KU80∆BFD1) parasites under unstressed or stressed conditions	31955846	2020/01/16	237.0	34.82069589702333	2020-01-16	2026-11-06	0.437684375			0.2	1.0	0.5268160365883326	4	0.5268160365883326
+GEO	GSE132248	Stage-specific RNA-sequencing to identify genes differentially expressed between Toxoplasma gondii tachyzoites and bradyzoites	31955846	2020/01/16	237.0	34.82069589702333	2020-01-16	2026-11-06					0.0	0.6375184482395109	2	0.6375184482395109
+GEO	GSE132250	Identification of a master regulator of differentiation in Toxoplasma	31955846	2020/01/16	237.0	34.82069589702333	2020-01-16	2026-11-06						0.9874551971326165	1	0.9874551971326165
+GEO	GSE132803	Single-cell RNA sequencing (scRNA-seq) on Treg cells from PBS and STAg treated mice	33859437	2020/12/31	85.0	15.28618906942393	2021-04-15	2026-11-06						0.8853046594982079	1	0.8853046594982079
+GEO	GSE133144	Translocation of dense granule effectors across the parasitophorous vacuole membrane in Toxoplasma-infected cells requires the activity of ROP17, a rhoptry protein kinase		2019/07/02											0	
+GEO	GSE133952	The redox homeostasis of skeletal muscle cells regulates stage differentiation of Toxoplasma gondii	34881198	2021/11/04	11.0	2.21975138121547	2021-11-22	2026-11-06						0.25806451612903225	1	0.25806451612903225
+GEO	GSE134099	Temporal analysis of in vivo Toxoplasma gondii cysts shows novel and late stage specific transcripts.	31726967	2019/07/11	40.0	5.731659474303648	2019-11-14	2026-11-06					0.0	0.4287370862323424	2	0.4287370862323424
+GEO	GSE136060	A MORC-driven transcriptional switch controls Toxoplasma developmental trajectories and sexual commitment	32094587	2019/12/21	118.0	17.613199836534534	2020-02-24	2026-11-06						0.9229390681003584	1	0.9229390681003584
+GEO	GSE136123	A MORC-driven transcriptional switch controls Toxoplasma developmental trajectories and sexual commitment	32094587	2019/12/21	118.0	17.613199836534534	2020-02-24	2026-11-06	0.9691961111111111			0.75	1.0	0.7641372305746119	4	0.7641372305746119
+GEO	GSE137224	Infection with Toxoplasma gondii induces inheritable epigenetic changes in mouse sperm	32348768	2021/02/25	68.0	10.305809128630704	2020-04-01	2026-11-06						0.8028673835125448	1	0.8028673835125448
+GEO	GSE139537	RNA-sequencing of parasites overexpressing conditionally stabilized BFD1 to identify genes regulated by BFD1	31955846	2020/01/16	237.0	34.82069589702333	2020-01-16	2026-11-06	0.9370826666666667		0.99734	0.8	1.0	0.7514605546872868	5	0.725911059212767
+GEO	GSE139538	CUT&RUN profiling of genomic BFD1 binding sites	31955846	2020/01/16	237.0	34.82069589702333	2020-01-16	2026-11-06						0.9874551971326165	1	0.9874551971326165
+GEO	GSE140197	RNAseq of intracellular Toxoplasma gondii treated with Tartrolon E	32738587	2019/11/12	5.0	0.7957516339869282	2020-07-25	2026-11-06	0.3675833333333334				1.0	0.3246035993664077	3	0.3246035993664077
+GEO	GSE140772	The Toxoplasma gondii virulence factor ROP16 acts in cis and trans and suppresses T cell responses [BMMC_invitro_stim_24hr]	31961916	2019/11/22	50.0	7.481564932404752	2020-03-01	2026-11-06						0.6308243727598566	1	0.6308243727598566
+GEO	GSE140773	The Toxoplasma gondii virulence factor ROP16 acts in cis and trans and suppresses T cell responses [CEP_invivo_Ai6_1dpi]	31961916	2019/11/22	50.0	7.481564932404752	2020-03-01	2026-11-06						0.6308243727598566	1	0.6308243727598566
+GEO	GSE140774	The Toxoplasma gondii virulence factor ROP16 acts in cis and trans and suppresses T cell responses	31961916	2019/11/22	50.0	7.481564932404752	2020-03-01	2026-11-06						0.6308243727598566	1	0.6308243727598566
+GEO	GSE144854	Expression data from cells in peritoneal cavity of CD-1 outbred mice infected with different Toxoplasma gondii strains		2020/02/07											0	
+GEO	GSE145080	A single-parasite transcriptional atlas of Toxoplasma gondii reveals novel control of antigen expression	32065584	2020/02/12	71.0	10.567542787286063	2020-02-17	2026-11-06						0.8136200716845878	1	0.8136200716845878
+GEO	GSE145299	Rapid remodeling of poised chromatin landscapes and transcription factor repurposing facilitate gene induction in natural killer cells	33010223	2020/10/28	60.0	9.845013477088948	2020-10-02	2026-11-06						0.7813620071684588	1	0.7813620071684588
+GEO	GSE145660	Transcriptome sequencing of WT and inorganic phosphate transporter (TgPiT) ortholog-deficient Toxoplasma parasites		2021/03/01									0.0	0.2875816993464052	1	0.2875816993464052
+GEO	GSE145800	Differential impacts on host transcription by ROP and GRA effectors from the intracellular parasite Toxoplasma gondii	32518180	2020/02/25	32.0	4.992738146091414	2020-06-09	2026-11-06						0.4946236559139785	1	0.4946236559139785
+GEO	GSE145836	Human retinal Mueller glial cell (HMG) response to Toxoplasma gondii infection		2025/10/23											0	
+GEO	GSE146680	Gasdermin-D-dependent IL-1 alpha release from microglia promotes protective immunity during chronic Toxoplasma gondii infection	32703941	2020/03/10	85.0	13.515999129299086	2020-07-23	2026-11-06						0.8530465949820788	1	0.8530465949820788
+GEO	GSE146715	Dual RNA-seq analyses of porcine alveolar macrophage and Toxoplasma during infection process	32399721	2020/03/11	9.0	1.3881967905405406	2020-05-13	2026-11-06					0.0	0.21547543748682269	2	0.21547543748682269
+GEO	GSE150334	A single master regulator controls asexual cell cycle division patterns in Toxoplasma gondii [RNA-Seq]	33414462	2020/10/29	36.0	6.176139032409582	2021-01-07	2026-11-06	0.8795433333333333		0.99011	0.0	1.0	0.4622910231291774	5	0.45591255939927666
+GEO	GSE150405	A single master regulator controls asexual cell cycle division patterns in Toxoplasma gondii [ChIP-Seq]	33414462	2020/10/29	36.0	6.176139032409582	2021-01-07	2026-11-06						0.5913978494623656	1	0.5913978494623656
+GEO	GSE150406	A single master regulator controls asexual cell cycle division patterns in Toxoplasma gondii	33414462	2020/10/29	36.0	6.176139032409582	2021-01-07	2026-11-06						0.5913978494623656	1	0.5913978494623656
+GEO	GSE153330	Dual RNA-seq analysis of pig alveolar macrophage infected with china-isolated TgHB1 compared to TgRH and TgMe49 toxoplasma gondii standard strain	33102248	2020/09/12	3.0	0.4907075682937752	2020-09-25	2026-11-06					0.0	0.17425679949399114	2	0.17425679949399114
+GEO	GSE153785	Genome-Wide CRISPR Screens for Toxoplasma Gondii Genes Related to Artemisinin Susceptibility	32968076	2020/07/04	58.0	9.478523489932886	2020-09-23	2026-11-06						0.7347670250896058	1	0.7347670250896058
+GEO	GSE156685	Target identification of an antimalarial oxaborole identifies AN13762 as an alternative chemotype for targeting CPSF3 in apicomplexan parasites.	33336164	2020/11/30	34.0	5.7228110599078335	2020-11-27	2026-11-06	0.97683875				1.0	0.7446936646177633	3	0.7446936646177633
+GEO	GSE157018	Toxoplasma gondii secreted effectors co-opt host repressor complexes to inhibit necroptosis [I]	34043960	2021/05/27	76.0	13.94924623115578	2021-05-26	2026-11-06						0.8637992831541219	1	0.8637992831541219
+GEO	GSE157395	Toxoplasma and Eimeria co-opt the host cFos expression for intracellular development in mammalian cells	33510872	2021/01/27	8.0	1.371830985915493	2021-01-06	2026-11-06						0.13978494623655913	1	0.13978494623655913
+GEO	GSE158231	TgIF2K-B is an eIF2α kinase in Toxoplasma gondii that responds to oxidative stress and optimizes pathogenicity	33500345	2020/12/15	34.0	5.885545023696682	2021-01-26	2026-11-06	0.9385		0.99656		1.0	0.6724136764794885	4	0.6445190483141148
+GEO	GSE159515	Genome-wide mapping of transcription initiation in the asexual stages of Toxoplasma gondii	33553008	2021/01/22	29.0	5.005789224952741	2021-01-20	2026-11-06	0.48066666666666663			0.5	1.0	0.45982095071279133	4	0.45982095071279133
+GEO	GSE164346	Gene expression profile of primary human monocyte subsets	33627376	2021/01/07	6.0	1.0530994714079769	2021-02-24	2026-11-06						0.0967741935483871	1	0.0967741935483871
+GEO	GSE165067	MeRIPseq of Toxoplasma gondii	34324585	2021/07/19	30.0	5.689252336448598	2021-07-29	2026-11-06						0.553763440860215	1	0.553763440860215
+GEO	GSE166825	Targeted transcriptomic analysis of C57BL/6 and BALB/c mice during progressive chronic Toxoplasma gondii infection reveals changes in host and parasitic gene expression relating to neuropathology and resolution [Neuropathology]	33816350	2021/03/12	32.0	5.676542010684798	2021-03-18	2026-11-06						0.543010752688172	1	0.543010752688172
+GEO	GSE166826	Targeted transcriptomic analysis of C57BL/6 and BALB/c mice during progressive chronic Toxoplasma gondii infection reveals changes in host and parasitic gene expression relating to neuropathology and resolution [Neuroinflammation]	33816350	2021/03/12	32.0	5.676542010684798	2021-03-18	2026-11-06						0.543010752688172	1	0.543010752688172
+GEO	GSE166827	Targeted transcriptomic analysis of C57BL/6 and BALB/c mice during progressive chronic Toxoplasma gondii infection reveals changes in host and parasitic gene expression relating to neuropathology and resolution [InflammationPLUSPanel]	33816350	2021/03/12	32.0	5.676542010684798	2021-03-18	2026-11-06						0.543010752688172	1	0.543010752688172
+GEO	GSE166828	Targeted transcriptomic analysis of C57BL/6 and BALB/c mice during progressive chronic Toxoplasma gondii infection reveals changes in host and parasitic gene expression relating to neuropathology and resolution	33816350	2021/03/12	32.0	5.676542010684798	2021-03-18	2026-11-06						0.543010752688172	1	0.543010752688172
+GEO	GSE166936	Toxoplasma gondii secreted effectors co-opt host repressor complexes to inhibit necroptosis [II]	34043960	2021/05/27	76.0	13.94924623115578	2021-05-26	2026-11-06						0.8637992831541219	1	0.8637992831541219
+GEO	GSE166937	Toxoplasma gondii secreted effectors co-opt host repressor complexes to inhibit necroptosis	34043960	2021/05/27	76.0	13.94924623115578	2021-05-26	2026-11-06						0.8637992831541219	1	0.8637992831541219
+GEO	GSE167340	ChIP-seq analysis of porcine alveolar macrophages infected with T. gondii RH		2021/12/31											0	
+GEO	GSE167582	Identification of the miRNA-mRNA regulatory network of Toxoplasma gondii based on RNA-seq		2024/02/25											0	
+GEO	GSE168155	A plant-like mechanism coupling m6A reading to polyadenylation safeguards transcriptome integrity and developmental gene partitioning in Toxoplasma	34263725	2021/07/15	38.0	7.154381443298969	2021-07-15	2026-11-06					0.0	0.4556188066624499	2	0.4556188066624499
+GEO	GSE168465	Primary brain cell infection by Toxoplasma gondii reveals the dynamics of spontaneous bradyzoite differentiation and the extend of modification of neuron biology after infection	34610266	2021/09/23	27.0	5.2963211600429645	2021-10-06	2026-11-06					1.0	0.6588656968163609	2	0.6588656968163609
+GEO	GSE175919	A potent HDAC inhibitor blocks Toxoplasma gondii tachyzoite growth and profoundly disrupts parasite gene expression.	35041939	2024/05/22	23.0	4.784026195899773	2022-01-15	2026-11-06	0.8398599999999999		0.97851		1.0	0.4663477212789935	4	0.5242359860955687
+GEO	GSE176143	Comparison of microRNA expression profiling in porcine brain among three time points after infection with Chinese I genotype strain of Toxoplasma gondii	35360170	2022/03/07	14.0	3.004406580493537	2022-03-10	2026-11-06						0.3207885304659498	1	0.3207885304659498
+GEO	GSE178355	Depletion of m6A writers and readers impair 3'-end formation in Toxoplasma	34324585	2021/07/19	30.0	5.689252336448598	2021-07-29	2026-11-06	0.9236066666666667		0.99613	0.6666666666666666	1.0	0.6105129550054805	5	0.580214364488558
+GEO	GSE183731	Tbet expression by Tregs is needed to protect against Th1-mediated immunopathology during Toxoplasma infection in mice	34893511	2021/11/12	19.0	3.872628348214286	2021-12-10	2026-11-06						0.36917562724014336	1	0.36917562724014336
+GEO	GSE184350	Impact of endogenous IL-27 on innate and adaptive responses during acute and chronic toxoplasmosis	38376210	2024/03/20	13.0	4.796212121212121	2024-02-20	2026-11-06						0.4731182795698925	1	0.4731182795698925
+GEO	GSE187545	CXCR3 regulates stem and proliferative CD8+ T cells during chronic infection by promoting interactions with DCs in splenic bridging channels	35045305	2021/11/05	44.0	9.079661016949151	2022-01-01	2026-11-06						0.7168458781362007	1	0.7168458781362007
+GEO	GSE189677	Inactivation of phosphate transporters alters gene expression in T. gondii	36094254	2021/12/04	9.0	2.1683707124010554	2022-09-12	2026-11-06	0.9756425000000001		0.9882	1.0	1.0	0.611662760446025	5	0.6731150359233851
+GEO	GSE191153	Transcriptional signatures of clonally derived Toxoplasma tachyzoites	35213559	2021/12/20	13.0	2.7686588921282795	2022-02-25	2026-11-06					0.0	0.2889521399957833	2	0.2889521399957833
+GEO	GSE192419	C. elegans L4 hypodermal SLAM-ITseq		2022/12/31											0	
+GEO	GSE193532	Role of Bcl3 in Dendritic cell function in the context of Toxoplasma gondii infection	36318581	2022/08/08	8.0	1.9931787175989086	2022-11-01	2026-11-06						0.23297491039426524	1	0.23297491039426524
+GEO	GSE193614	Altiratinib blocks Toxoplasma gondii and Plasmodium falciparum development by selectively targeting   a kinase critical for splicing		2022/03/30					0.9742485714285715				1.0	0.8031171442936149	2	0.8031171442936149
+GEO	GSE193779	Nuclear factor AP2X-4 governs the expression of cell cycle and life stage regulated genes and is critical for Toxoplasma growth	35735977	2022/05/31	8.0	1.8296806512210395	2022-06-23	2026-11-06	0.9847733333333334		0.992215		1.0	0.6157572985013167	4	0.6421479427172027
+GEO	GSE197114	Anti-tumor Effect and Action Mechanism of Exosomes Derived from Toxoplasma gondii-Infected Dendritic Cells in Mice Colorectal Cancer	35600340	2022/02/24	22.0	4.843580470162749	2022-04-22	2026-11-06						0.4874551971326165	1	0.4874551971326165
+GEO	GSE197639	Protozoan-Derived Cytokine-Transgenic Macrophages Reverse Hepatic Fibrosis. 	38247166	2024/02/20	13.0	4.6551470588235295	2024-01-21	2026-11-06						0.4551971326164875	1	0.4551971326164875
+GEO	GSE198001	Double RNA-seq analysis of Calmodulin indirect knockout in Toxoplasma gondii TATI strain	36214684	2022/04/14	6.0	1.4727822580645162	2022-10-10	2026-11-06	0.9835133333333334			0.3333333333333333	1.0	0.524769903825881	4	0.524769903825881
+GEO	GSE200962	RESTRICTION checkpoint controls bradyzoite development in Toxoplasma gondii		2022/04/23					0.7568615384615385		0.98407	0.5	1.0	0.44755790996823996	4	0.48292274174627114
+GEO	GSE202115	Transcriptomic establish of pig macrophage polarization signatures and potential applications for pig health and disease		2025/05/03											0	
+GEO	GSE203655	Microglial STAT1-sufficiency is required for resistance to toxoplasmic encephalitis	36067217	2022/06/30	20.0	4.799605781865966	2022-09-06	2026-11-06						0.482078853046595	1	0.482078853046595
+GEO	GSE204751	Transcriptomic analysis of wild-type microglia isolated from fluorescent reporter mice	36067217	2022/06/30	20.0	4.799605781865966	2022-09-06	2026-11-06						0.482078853046595	1	0.482078853046595
+GEO	GSE204926	Toxoplasma IWS1 determines fitness in interferon-γ-activated host cells and mice by regulating ROP18 mRNA expression	36715543	2023/01/30	6.0	1.5926598837209303	2023-01-30	2026-11-06					0.0	0.2262281256588657	2	0.2262281256588657
+GEO	GSE205405	Metabolic labeling of cardiomyocyte-derived small extracellular-vesicle (sEV) miRNAs identifies miR-208a in cardiac regulation of lung gene expression	36250966	2022/10/26	15.0	3.6598196392785574	2022-10-01	2026-11-06						0.3655913978494624	1	0.3655913978494624
+GEO	GSE206344	Transcriptomics of Toxoplasma gondii sporulating oocysts		2022/06/20									0.0	0.2875816993464052	1	0.2875816993464052
+GEO	GSE207173	Single cell sequencing of splenocytes following T. gondii infection	36827187	2022/07/01	21.0	5.6732618343195265	2023-02-23	2026-11-06						0.5340501792114696	1	0.5340501792114696
+GEO	GSE208647	An ex vivo model of Toxoplasma recrudescence reveals host-dependent pluripotency of Toxoplasma bradyzoites.	37675999	2022/07/23	22.0	6.951124567474048	2023-09-07	2026-11-06	0.517620625		0.9583200000000001	0.0	1.0	0.370774013169996	5	0.41468702865761686
+GEO	GSE209866	ATAC-seq Identification of Chromatin Accessibility in Both Human Host Cells and the Parasite Toxoplasma gondii		2022/09/30											0	
+GEO	GSE210671	An ex vivo model of Toxoplasma recrudescence reveals the developmental plasticity of the bradyzoite stage	37675999	2023/08/28	22.0	6.951124567474048	2023-09-07	2026-11-06					0.0	0.4493464052287582	2	0.4493464052287582
+GEO	GSE210883	Neutrophils in the brain are sources of neuroprotective molecules and demonstrate functional heterogeneity during chronic Toxoplasma gondii infection	39095837	2023/12/30	1.0	0.44219128329297824	2024-08-02	2026-11-06						0.05734767025089606	1	0.05734767025089606
+GEO	GSE211225	Altered Cellular Pathways in the Blood of Patients With Guillain-Barre Syndrome	40099626	2025/08/15	3.0	1.7817073170731705	2025-03-01	2026-11-06						0.18996415770609318	1	0.18996415770609318
+GEO	GSE211727	Group 1 metabotropic glutamate receptor expression defines a T cell memory population during chronic Toxoplasma infection that enhances IFN-gamma and perforin production in the CNS	37604212	2023/08/26	8.0	2.4889267461669506	2023-08-20	2026-11-06						0.26881720430107525	1	0.26881720430107525
+GEO	GSE211957	ROCY1 binding sites in Toxoplasma gondii	37770433	2023/08/11	28.0	9.01057268722467	2023-09-28	2026-11-06						0.7132616487455197	1	0.7132616487455197
+GEO	GSE215177	Selective requirement of 3D genomic organization for the Mdm1-Il22-Ifng locus regulation in initial Th1 cell lineage specification and differentiation		2024/05/01											0	
+GEO	GSE215178	Selective requirement of 3D genomic organization for the Mdm1-Il22-Ifng locus regulation in initial Th1 cell lineage specification and differentiation		2024/05/01											0	
+GEO	GSE215179	Selective requirement of 3D genomic organization for the Mdm1-Il22-Ifng locus regulation in initial Th1 cell lineage specification and differentiation		2024/05/01											0	
+GEO	GSE215180	Selective requirement of 3D genomic organization for the Mdm1-Il22-Ifng locus regulation in initial Th1 cell lineage specification and differentiation		2024/05/01											0	
+GEO	GSE215181	Selective requirement of 3D genomic organization for the Mdm1-Il22-Ifng locus regulation in initial Th1 cell lineage specification and differentiation		2024/05/01											0	
+GEO	GSE215771	IFN-γ induced transcriptional profile of A549 cells in absence of key transcriptional regulators IRF1 and NF2	38147552	2023/12/15	32.0	11.173996175908222	2023-12-26	2026-11-06						0.8172043010752689	1	0.8172043010752689
+GEO	GSE217090	Targeting prolyl-tRNA synthetase via a series of ATP-mimetics to accelerate drug discovery against toxoplasmosis	36854028	2023/01/22	6.0	1.6269487750556795	2023-02-28	2026-11-06					0.0	0.2298123550495467	2	0.2298123550495467
+GEO	GSE217220	AP2XII-2 binding sites in Toxoplasma gondii	36786611	2023/01/24	36.0	9.661278471711977	2023-02-14	2026-11-06						0.7759856630824373	1	0.7759856630824373
+GEO	GSE217226	AP2XII-2-dependent gene regulation in Toxoplasma gondii tachyzoites	36786611	2023/01/24	36.0	9.661278471711977	2023-02-14	2026-11-06					0.0	0.5317836812144212	2	0.5317836812144212
+GEO	GSE218920	Brain transcriptome of mice infected with T. gondii parasites		2023/08/14									0.0	0.2875816993464052	1	0.2875816993464052
+GEO	GSE218921	In vitro analysis of pH responsiveness of T. gondii and H. hammondi sporozoites, and of T. gondii tachyzoites lacking either the BFD1 or the ROCY1 gene.		2023/08/14					0.5376233333333333		0.8975	0.375	1.0	0.3257446443242713	4	0.4180660298307357
+GEO	GSE222819	In vitro production of cat-restricted Toxoplasma pre-sexual stages by epigenetic reprogramming [ChIP-seq]	38093015	2023/09/16	65.0	22.4185552407932	2023-12-13	2026-11-06						0.953405017921147	1	0.953405017921147
+GEO	GSE222832	In vitro production of cat-restricted Toxoplasma pre-sexual stages by epigenetic reprogramming [ATAC-seq]	38093015	2023/09/16	65.0	22.4185552407932	2023-12-13	2026-11-06						0.953405017921147	1	0.953405017921147
+GEO	GSE222835	In vitro production of cat-restricted Toxoplasma pre-sexual stages by epigenetic reprogramming	38093015	2023/09/16	65.0	22.4185552407932	2023-12-13	2026-11-06						0.953405017921147	1	0.953405017921147
+GEO	GSE223620	Characterization of the BFD2-bound transcriptome in chronic-stage T. gondii	37081202	2023/03/31	59.0	16.62789351851852	2023-04-20	2026-11-06						0.9068100358422939	1	0.9068100358422939
+GEO	GSE223621	Effects of BFD1 (TGME49_200385) and BFD2 (TGME49_311100) deletion on gene expression in Toxoplasma gondii during infection in neurons	37081202	2023/03/31	59.0	16.62789351851852	2023-04-20	2026-11-06	0.9536633333333333		0.98922	1.0	1.0	0.7212734714414726	5	0.791835741740865
+GEO	GSE223819	Effect of depleting BFD1-regulated gene-expression factors (TGME49_253790, TGME49_208020, TGME49_224630, TGME49_306620, TGME49_311100) on the Toxoplasma transcriptome during alkaline stress	37081202	2023/03/31	59.0	16.62789351851852	2023-04-20	2026-11-06	0.8801757142857143			0.5	1.0	0.6158176421933537	4	0.6158176421933537
+GEO	GSE223869	Effect of BFD2 (TGME49_311100) deletion on gene expression in Toxoplasma gondii	37081202	2023/03/31	59.0	16.62789351851852	2023-04-20	2026-11-06	0.9174758333333334			1.0	1.0	0.7379895878947111	4	0.7379895878947111
+GEO	GSE223877	Effect of BFD2 (TGME49_311100) knockout on T. gondii gene expression during BFD1 induction	37081202	2023/03/31	59.0	16.62789351851852	2023-04-20	2026-11-06	0.88488		0.982205	1.0	1.0	0.6414986121544182	5	0.7226049725100958
+GEO	GSE224934	RNA-seq data analysis of TgAP2XII-1 on Toxoplasma gondii merozoites development	37750704	2023/05/01	29.0	9.315963060686014	2023-09-26	2026-11-06	0.68689	0.769	0.94801	1.0	1.0	0.5407271784556923	6	0.6316482589727371
+GEO	GSE228580	RNA-seq data analysis of TgAP2XII-1 on Toxoplasma gondii merozoites development [ME49 XII-1 RNAseq]	37750704	2023/05/01	29.0	9.315963060686014	2023-09-26	2026-11-06	0.9761583333333334			1.0	1.0	0.8008790282035064	4	0.8008790282035064
+GEO	GSE228581	ChIP-seq data analysis of TgAP2XII-1 on the whole genome of Toxoplasma gondii tachyzoites [XII-1 ChIPseq]	37750704	2023/05/01	29.0	9.315963060686014	2023-09-26	2026-11-06						0.7275985663082437	1	0.7275985663082437
+GEO	GSE228853	An apicomplexan bromodomain protein, TgBDP1 associates with diverse epigenetic factors to regulate essential transcriptional processes in Toxoplasma gondii	37350586	2023/05/31	6.0	1.778814935064935	2023-06-23	2026-11-06						0.1863799283154122	1	0.1863799283154122
+GEO	GSE229505	High-throughput identification of Toxoplasma gondii effector proteins that target host cell transcription	37827122	2023/07/11	25.0	8.066475265017669	2023-10-01	2026-11-06						0.6630824372759857	1	0.6630824372759857
+GEO	GSE229545	In vivo CRISPR screens for Toxoplasma using ROP/GRA sublibrary in WT and Ifngr1-deficient  mice	37269286	2023/06/12	35.0	10.194377990430622	2023-06-01	2026-11-06						0.7956989247311828	1	0.7956989247311828
+GEO	GSE229547	In vivo CRISPR screens for Toxoplasma using endomembrane-nucleus sublibrary in WT and Ifngr1-deficient  mice	37269286	2023/06/12	35.0	10.194377990430622	2023-06-01	2026-11-06						0.7956989247311828	1	0.7956989247311828
+GEO	GSE229548	In vivo CRISPR screens for Toxoplasma using metabolism sublibrary in WT and Ifngr1-deficient  mice	37269286	2023/06/12	35.0	10.194377990430622	2023-06-01	2026-11-06						0.7956989247311828	1	0.7956989247311828
+GEO	GSE230866	Expression data from human foreskin fibroblasts (HFFs)  infected with Toxoplasma gondii		2023/05/27											0	
+GEO	GSE236970	T cell intrinsic STAT1 signaling prevents aberrant Th1 responses during acute toxoplasmosis	37559725	2023/07/10	3.0	0.9131250000000001	2023-07-25	2026-11-06						0.08960573476702509	1	0.08960573476702509
+GEO	GSE240648	Profound effect of a ubiquitin activating enzyme (UAE1) on genomic expression of Toxoplasma gondii	40348811	2023/08/16	1.0	0.6701834862385321	2025-05-10	2026-11-06	0.73012125		0.961445	0.4	1.0	0.32039832770244214	5	0.34561986084756485
+GEO	GSE242000	Selective requirement of 3D genomic organization for the Mdm1-Il22-Ifng locus regulation in initial Th1 cell lineage specification and differentiation [ATAC-Seq]		2024/05/01											0	
+GEO	GSE243203	Depletion of mRNA cap-binding protein eIF4E1 drives bradyzoite formation in Toxoplasma gondii [CLIP-seq]	38747593	2023/11/02	21.0	8.475414364640883	2024-05-15	2026-11-06						0.6971326164874552	1	0.6971326164874552
+GEO	GSE243206	Depletion of mRNA cap-binding protein eIF4E1 drives bradyzoite formation in Toxoplasma gondii [RIBO-seq]	38747593	2023/11/02	21.0	8.475414364640883	2024-05-15	2026-11-06	0.031623				1.0	0.5113787119479719	3	0.5113787119479719
+GEO	GSE243207	Depletion of mRNA cap-binding protein eIF4E1 drives bradyzoite formation in Toxoplasma gondii	38747593	2023/11/02	21.0	8.475414364640883	2024-05-15	2026-11-06	0.031623				1.0	0.5113787119479719	3	0.5113787119479719
+GEO	GSE245775	Translation initiation factor eIF1.2 orchestrates Toxoplasma gondii differentiation by regulating stage-specific gene expression	38782906	2024/04/10	11.0	4.479096989966555	2024-05-23	2026-11-06	0.031623				1.0	0.42834406439719536	3	0.42834406439719536
+GEO	GSE248448	The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma gondii merogony	38278808	2023/12/19	40.0	14.39408866995074	2024-01-26	2026-11-06						0.8709677419354839	1	0.8709677419354839
+GEO	GSE249123	AP2X-1 is a negative regulator of Toxoplasma gondii sexual commitment	40823841	2025/06/25	1.0	0.8207865168539326	2025-08-18	2026-11-06						0.08243727598566308	1	0.08243727598566308
+GEO	GSE249604	AP2XII-1 and AP2XI-2 Suppress Schizogony Gene Expression in Toxoplasma gondii	38791568	2023/12/10	12.0	4.85920177383592	2024-05-18	2026-11-06						0.4910394265232975	1	0.4910394265232975
+GEO	GSE253884	In vivo CRISPR screens for Toxoplasma hyperLOPIT-unassigened proteins_1	39082802	2024/06/30	6.0	2.6467391304347827	2024-07-31	2026-11-06						0.2849462365591398	1	0.2849462365591398
+GEO	GSE253885	In vivo CRISPR screens for Toxoplasma hyperLOPIT-unassigened proteins_2	39082802	2024/06/30	6.0	2.6467391304347827	2024-07-31	2026-11-06						0.2849462365591398	1	0.2849462365591398
+GEO	GSE254302	Single-cell transcriptomic analysis of decidual immune cell landscape in the occurrence of adverse pregnancy outcomes induced by Toxoplasma gondii infection	38730500	2024/05/17	6.0	2.408241758241758	2024-05-10	2026-11-06						0.2616487455197133	1	0.2616487455197133
+GEO	GSE262241	Timecourse of transcriptional changes upon eIF4E1 depletion in Toxoplasma gondii	38747593	2024/03/26	21.0	8.475414364640883	2024-05-15	2026-11-06					0.0	0.4923571579169302	2	0.4923571579169302
+GEO	GSE263615	Transcriptome analysis of cytotrophoblasts and syncytiotrophoblasts derived from trophoblast stem cells, mock-infected or infected with Toxoplasma gondii	38771057	2024/04/12	7.0	2.843993325917686	2024-05-21	2026-11-06					0.0	0.2943284840818048	2	0.2943284840818048
+GEO	GSE266204	Cyclical transcription factor AP2XII-9 is a key activator for asexual division and apicoplast inheritance in Toxoplasma gondii tachyzoite	39207100	2024/05/05	9.0	4.114205256570713	2024-08-29	2026-11-06						0.37992831541218636	1	0.37992831541218636
+GEO	GSE267014	Spermine-induced DNA methylation change in human macrophages		2024/05/13											0	
+GEO	GSE267427	Protective function and differentiation cues of brain-resident CD8+ T cells during surveillance of latent Toxoplasma gondii infection	38838017	2024/06/10	19.0	7.850395927601809	2024-06-05	2026-11-06						0.6559139784946236	1	0.6559139784946236
+GEO	GSE267544	Classically activated macrophages undergo functionally significant nucleotide metabolism remodelling driven by nitric oxide	40759751	2025/07/16	23.0	18.183441558441558	2025-08-04	2026-11-06						0.9336917562724014	1	0.9336917562724014
+GEO	GSE267546	Classically activated macrophages undergo functionally significant nucleotide metabolism remodelling driven by nitric oxide	40759751	2025/07/16	23.0	18.183441558441558	2025-08-04	2026-11-06						0.9336917562724014	1	0.9336917562724014
+GEO	GSE268162	Toxoplasma gondii infection supports the infiltration of T cells into brain tumors	38996717	2024/08/22	7.0	3.004406580493537	2024-07-08	2026-11-06						0.3207885304659498	1	0.3207885304659498
+GEO	GSE268652	RNA-seq data analysis of TGME49_203980 on Toxoplasma gondii development [TGME49_203980 RNAseq]	40593611	2025/05/23	6.0	4.4452332657200815	2025-07-01	2026-11-06	0.9289416666666667		0.998505	1.0	1.0	0.7046403606934916	5	0.6308004508668645
+GEO	GSE268750	RNA-seq data analysis of TGME49_217480 on Toxoplasma gondii development [TGME49_217480 RNAseq]	40593611	2025/05/23	6.0	4.4452332657200815	2025-07-01	2026-11-06	0.94795		0.998355	1.0	1.0	0.7274546196053115	5	0.6654158354822491
+GEO	GSE268890	ATAC-seq data analysis of TgSNF2L on the whole genome of Toxoplasma gondii tachyzoites [SNF2L ATAC-seq]	40593611	2025/05/23	6.0	4.4452332657200815	2025-07-01	2026-11-06						0.43189964157706096	1	0.43189964157706096
+GEO	GSE268892	RNA-seq data analysis of TgSNF2L on Toxoplasma gondii development [ME49 SNF2L RNAseq]	40593611	2025/05/23	6.0	4.4452332657200815	2025-07-01	2026-11-06	0.9365188888888889		0.99813	1.0	1.0	0.697961186209439	5	0.6346466047130184
+GEO	GSE269280	A Membrane Lipid Signature Unravels the Dynamic Landscape of Group 1 ILCs across the Health-Disease Continuum		2025/02/05											0	
+GEO	GSE270492	Id2 expression level determines the development of effector vs. exhausted tissue-resident memory CD8+ T cells during CNS chronic infection		2025/05/22											0	
+GEO	GSE271900	An ISWI-related chromatin remodeler orchestrates parasite lifecycle progression by insulating gene expression in a densely packed genome [ChIP-seq]	40217127	2025/02/19	13.0	8.272212543554007	2025-04-11	2026-11-06						0.6810035842293907	1	0.6810035842293907
+GEO	GSE271901	An ISWI-related chromatin remodeler orchestrates parasite lifecycle progression by insulating gene expression in a densely packed genome [ATAC-seq]	40217127	2025/02/19	13.0	8.272212543554007	2025-04-11	2026-11-06						0.6810035842293907	1	0.6810035842293907
+GEO	GSE271902	An ISWI-related chromatin remodeler orchestrates parasite lifecycle progression by insulating gene expression in a densely packed genome [RNA-seq]	40217127	2025/02/19	13.0	8.272212543554007	2025-04-11	2026-11-06	0.7963392857142857	0.6915	0.989495	0.3333333333333333	1.0	0.45798420903595155	6	0.4996940835887705
+GEO	GSE274075	Toxoplasma gondii infection and chronic IL-1 elevation drive hippocampal DNA double-strand break signaling, leading to cognitive deficits	40841478	2025/07/30	10.0	8.263574660633484	2025-08-21	2026-11-06						0.6720430107526881	1	0.6720430107526881
+GEO	GSE274474	Diverse subpopulations of reactive mouse astrocytes following chronic Toxoplasma infection.		2024/08/30											0	
+GEO	GSE274667	Toxoplasma gondii infection and chronic IL-1 elevation drive hippocampal DNA double-strand break signaling, leading to cognitive deficits	40841478	2025/07/30	10.0	8.263574660633484	2025-08-21	2026-11-06						0.6720430107526881	1	0.6720430107526881
+GEO	GSE275112	Toxoplasma gondii transcription factor AP2XII-8 is a key regulator for the G1 phase progression and parasite division		2024/08/25											0	
+GEO	GSE276115	Toxoplasma gondii dictates placental trophoblast lineage specification through induction of decidual signaling cues [TSC_scRNA-seq]		2026/09/01											0	
+GEO	GSE276116	Toxoplasma gondii dictates placental trophoblast lineage specification through induction of decidual signaling cues [CV_bulkRNA-seq]		2026/09/01											0	
+GEO	GSE276117	Toxoplasma gondii dictates placental trophoblast lineage specification through induction of decidual signaling cues [TO_bulkRNA-seq]		2026/09/01											0	
+GEO	GSE276786	Toxoplasma gondii dictates placental trophoblast lineage specification through induction of decidual signaling cues [single nuclei multiome]		2025/09/01											0	
+GEO	GSE277550	A novel nuclear protein complex controlling the expression of developmentally regulated genes in Toxoplasma gondii [RNA-seq]	39716984	2024/12/19	8.0	4.284457478005865	2024-12-24	2026-11-06					0.0	0.34002740881298754	2	0.34002740881298754
+GEO	GSE277553	A novel nuclear protein complex controlling the expression of developmentally regulated genes in Toxoplasma gondii [CUT&TAG]		2025/09/16											0	
+GEO	GSE278553	Toxoplasma gondii infection of neurons alters the production and content of extracellular vesicles directing astrocyte phenotype and contributing to the loss of GLT-1 in the infected brain	40523037	2025/04/22	6.0	4.3139763779527565	2025-06-16	2026-11-06						0.4032258064516129	1	0.4032258064516129
+GEO	GSE278754	Toxoplasma gondii infection of neurons alters the production and content of extracellular vesicles directing astrocyte phenotype and contributing to the loss of GLT-1 in the infected brain [miRNA-Seq]	40523037	2025/04/22	6.0	4.3139763779527565	2025-06-16	2026-11-06						0.4032258064516129	1	0.4032258064516129
+GEO	GSE280122	The critical role of Toxoplasma gondii GRA1 in nutrient salvage	40576341	2025/05/28	3.0	2.204728370221328	2025-06-27	2026-11-06					0.0	0.2710309930423782	2	0.2710309930423782
+GEO	GSE280150	Divergent CD8 memory T cell subsets in an encephalitis model of Toxoplasma gondii infection		2026/10/01											0	
+GEO	GSE282299	Genome-wide Occupancy Changes of TgHDAC3 Before and After Deletion of Transcription Factor AP2XII-5		2025/11/30											0	
+GEO	GSE283441	To identify HDAC3 occupancy in the genomes of ME49 and ΔXII-5 strains	39716984	2024/12/19	8.0	4.284457478005865	2024-12-24	2026-11-06						0.3924731182795699	1	0.3924731182795699
+GEO	GSE285297	RNA-seq data analysis of TgNF7 on Toxoplasma gondii tachyzoite development		2025/12/31					0.9757816666666667	0.868	0.988835	1.0	1.0	0.7464619869210974	5	0.8201776437070554
+GEO	GSE285353	AP2XI-3-dependent gene regulation in Toxoplasma gondii tachyzoites [RNA-seq]		2026/01/01					0.9845533333333334		0.98831	1.0	1.0	0.731924977620817	4	0.845818669348081
+GEO	GSE285354	AP2XI-3 binding sites in Toxoplasma gondii [CUT&Tag]		2026/01/01											0	
+GEO	GSE286088	GCN5a is a telomeric lysine acetyltransferase whose loss primes Toxoplasma gondii for latency (CUT&Tag)		2025/02/04											0	
+GEO	GSE286090	GCN5a is a telomeric lysine acetyltransferase whose loss primes Toxoplasma gondii for latency (RNAseq)		2025/02/04					0.9935216666666666			1.0	1.0	0.8663314898609017	3	0.8663314898609017
+GEO	GSE286338	Structural and Functional Characterization of TgGSK3, a Druggable Kinase in Toxoplasma gondii	41193440	2025/01/20	0.0	0.0	2025-11-05	2026-11-06	0.9670566666666667				1.0	0.5130054006714347	3	0.5130054006714347
+GEO	GSE287334	Uncovering Biomarkers for Chronic Toxoplasmosis Detection Highlights Alternative Pathways Shaping Parasite Dormancy		2025/01/20									0.0	0.2875816993464052	1	0.2875816993464052
+GEO	GSE287537	Toxoplasma gondii chromatin remodeler SWI/SNF controls parasite division and stage specific gene expression	41193469	2025/09/17	1.0	0.9979508196721312	2025-11-05	2026-11-06						0.0931899641577061	1	0.0931899641577061
+GEO	GSE288205	The m6A demethylase FTO regulates TNF-α expression in human macrophages following Toxoplasma gondii infection	40663568	2025/07/03	0.0	0.0	2025-07-15	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE290078	In vivo CRISPR screens of Toxoplasma gondii targeting proteins of the apical complex and the pellicle.	41935076	2026/03/06	0.0	0.0	2026-04-04	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE290465	TREM2 plays a critical role in innate immune defense against acute Toxoplasma gondii infection by promoting macrophage antimicrobial activities 	42555664	2026/06/11	0.0	0.0	2026-08-05	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE293095	Cut&Tag data analysis of TgSNF2L on the whole genome of Toxoplasma gondii tachyzoites [SNF2L Cut&Tag]	40593611	2025/05/23	6.0	4.4452332657200815	2025-07-01	2026-11-06						0.43189964157706096	1	0.43189964157706096
+GEO	GSE293279	ChIP-seq data analysis of TgSNF2L on the whole genome of Toxoplasma gondii tachyzoites [SNF2L ChIP-seq]		2026/03/31											0	
+GEO	GSE293409	Cut&Tag data analysis of TgSNF2L-mAID on the whole genome of Toxoplasma gondii tachyzoites [SNF2L Cut&Tag]	40593611	2025/05/23	6.0	4.4452332657200815	2025-07-01	2026-11-06						0.43189964157706096	1	0.43189964157706096
+GEO	GSE293449	Defining neuronal responses to the neurotropic parasite Toxoplasma gondii	40444956	2025/04/24	2.0	1.3914285714285715	2025-05-30	2026-11-06						0.14695340501792115	1	0.14695340501792115
+GEO	GSE294165	Folic acid drives metabolic reprogramming to alleviate Toxoplasma gondii antigen-induced vascular injury		2026/04/28											0	
+GEO	GSE294543	Cross-lineage m5C methylome profiling reveals methylated divergence in Toxoplasma tachyzoites	40830525	2025/08/27	0.0	0.0	2025-08-19	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE295224	Dual single-cell and bulk RNA sequencing reveal transcriptional profiles underlying heterogenous host-parasite interactions in human peripheral blood mononuclear cells	40630957	2025/05/31	1.0	0.7305	2025-06-24	2026-11-06						0.07168458781362007	1	0.07168458781362007
+GEO	GSE297097	The ImmgenT Open-Source project	39705335	2025/05/14	16.0	8.518950437317784	2024-12-20	2026-11-06						0.7060931899641577	1	0.7060931899641577
+GEO	GSE300509	In vitro growth of Toxoplasma gondii tachyzoites on different host cell lines selects for changes in efficiency of invasion and parasite surface antigen gene expression	41704854	2026/02/25	0.0	0.0	2026-02-02	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE302107	5' Untranslated regions tune Toxoplasma translation [Ribosome Profiling]		2025/07/15									0.0	0.2875816993464052	1	0.2875816993464052
+GEO	GSE302108	5' Untranslated regions tune Toxoplasma translation [MPRA]		2025/07/15											0	
+GEO	GSE303275	Profound effect of asparagine-linked glycosylation protein 11 (TgALG11) on genomic expression of Toxoplasma gondii		2025/07/27					0.9649866666666668		0.9956799999999999	1.0	1.0	0.7413058406602164	4	0.7688955924250042
+GEO	GSE303606	Two distinct SWI/SNF complexes direct chromatin-linked transcriptional programs in Toxoplasma [CUT&Run]	42140969	2026/04/26	0.0	0.0	2026-05-15	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE303610	Two distinct SWI/SNF complexes direct chromatin-linked transcriptional programs in Toxoplasma [RNA-Seq]	42140969	2026/04/26	0.0	0.0	2026-05-15	2026-11-06					0.0	0.15633565254058612	2	0.15633565254058612
+GEO	GSE304633	AP2XI-3-dependent gene regulation in Toxoplasma gondii tachyzoites (Complementary data)		2026/01/01					0.9680322222222222		0.9977	0.6666666666666666	1.0	0.7366140296018344	4	0.6813390313390313
+GEO	GSE311669	Bradyzoite subtypes rule the crossroads of Toxoplasma development	41580398	2025/12/23	2.0	2.554195804195804	2026-01-24	2026-11-06					0.0	0.27999156651908075	2	0.27999156651908075
+GEO	GSE313048	Divergent SAGA Complexes Shape the Toxoplasma Transcriptome across Host-Responsive and Core Gene Networks		2026/07/23											0	
+GEO	GSE313273	Divergent SAGA Complexes Shape the Toxoplasma Transcriptome across Host-Responsive and Core Gene Networks [ChIP-Seq]		2026/07/23											0	
+GEO	GSE313318	Two distinct SWI/SNF complexes direct chromatin-linked transcriptional programs in Toxoplasma.	42140969	2026/04/26	0.0	0.0	2026-05-15	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE313582	Divergent SAGA Complexes Shape the Toxoplasma Transcriptome across Host-Responsive and Core Gene Networks [RNAseq]		2026/07/23					0.889048888888889	0.8255	0.995805	0.0	1.0	0.5351237555685189	5	0.42613541142952904
+GEO	GSE314937	Profound effect of asparagine-linked glycosylation protein 11 (TgALG11) on genomic expression of Toxoplasma gondii II		2025/12/28					0.9230733333333333		0.99803	0.5	1.0	0.6438993733828741	4	0.5495894084129378
+GEO	GSE322715	AP2Ⅺ-3 is critical for the cell cycle of Toxoplasma to progress through the G1 phase		2026/03/08											0	
+GEO	GSE325048	Identification of novel CD52+ fibroblasts in nodular prostatic hyperplasia		2026/06/04											0	
+GEO	GSE326196	Heterologous expression of interferon-stimulated genes reveals conserved anti-Toxoplasma properties between human and porcine cells	42004958	2026/03/28	0.0	0.0	2026-04-02	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE327264	TgPRO is an RNA binding protein from T. gondii that binds transcripts that encode proteins with various metabolic functions	42580337	2026/09/09	0.0	0.0	2026-08-11	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE329845	Convergent evolution of metabolic regulation governs redox adaptation in Toxoplasma	42580337	2026/06/16	0.0	0.0	2026-08-11	2026-11-06					0.0	0.15633565254058612	2	0.15633565254058612
+GEO	GSE330911	Spleen and brain T cells in Toxoplasma gondii infection- scRNA-seq, CITE-seq and TCRab [I59]	42779700	2026/05/18											0	
+GEO	GSE330985	Positive and Negative Selection of abT cells (OT-I and OT-II) in the thymus 2 - scRNA-seq, CITE-seq and TCRab [I60]	42779700	2026/05/19											0	
+GEO	GSE334992	Functional characterization of the orphan hypothetical protein TGGT1_245740, a transmembrane protein required for Toxoplasma gondii growth and virulence.		2026/06/17					0.97899		0.99543	0.0	1.0	0.6050612208610774	4	0.5953661806602982
+GEO	GSE335016	Functional characterization of the orphan hypothetical protein TGGT1_245740, a transmembrane protein required for Toxoplasma gondii growth and virulence II		2026/06/17											0	
+GEO	GSE335790	Differential gene expression in Toxoplasma gondii-infected cells with modulated IFITM2/3 expression		2026/06/24											0	
+GEO	GSE335884	Single-cell CITE-seq of peritoneal exudate cells from C57BL/6J mice during acute Toxoplasma gondii infection	40854593	2026/06/22	0.0	0.0	2025-08-01	2026-11-06						0.025089605734767026	1	0.025089605734767026
+GEO	GSE343864	Effect of eIF5A K49 acetylation status on the translatome of Toxoplasma gondii		2026/08/26											0	
+GEO	GSE343877	Effect of eIF5A K49 acetylation status on the transcriptome of Toxoplasma gondii		2026/08/26					0.972053888888889	0.885	0.9966600000000001	0.75	1.0	0.7889733779690739	5	0.7214596949891067
+GEO	GSE346252	Single-cell transcriptomic profiling of Toxoplasma gondii eIF5A K49 mutants during alkaline stress-induced differentiation		2026/09/05											0	
+GEO	GSE346445	Arginine and polyamine availability modulates Toxoplasma growth independent of host arginase 2		2026/09/11											0	
+SRA	PRJNA1008424	RNA-Seq of Toxoplasma gondii Trx1 mutant		2023/08/23 00:00					0.9380375		0.99408		1.0	0.6412275646135043	3	0.6569632981397687
+SRA	PRJNA1033534	Toxoplasma gondii Transcriptome and RIP-Seq		2023/10/30 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJDB16831	Transcriptomes of Toxoplasma gondii-infected primary brain cells from mice deficient in TLR2, CCR5, and CXCR3.		2023/11/09 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1047766	Single Cell RNA-Seq of Toxoplasma gondii AP2X-1 knockout		2023/12/02 00:00											0	
+SRA	PRJNA1053644	Single-cell survey of feline small intestinal villus post Toxoplasma gondii infection		2023/12/16 00:00											0	
+SRA	PRJNA1057042	Mus musculus Raw sequence reads		2023/12/26 00:00											0	
+SRA	PRJNA1060607	Mus musculus Raw sequence reads		2024/01/03 00:00											0	
+SRA	PRJNA1064470	Toxoplasma gondii Raw sequence reads		2024/01/14 00:00					0.32924				1.0	0.44157868275515333	2	0.44157868275515333
+SRA	PRJNA1071334	Transcriptome of mouse brain chronically infected with Toxoplasma gondii ME49 strain		2024/01/31 00:00											0	
+SRA	PRJNA1104981	Toxoplasma gondii Raw sequence reads		2024/04/26 00:00											0	
+SRA	PRJNA1107840	16s full-length sequencing of mouse fecal bacteria		2024/05/05 00:00											0	
+SRA	PRJNA1121513	Toxoplasma gondii RH strain:RH Transcriptome or Gene expression		2024/06/08 00:00					0.9448949999999999		0.992275		1.0	0.6506084276529039	3	0.6954248366013072
+SRA	PRJNA1125601	RNA-sequencing of Wild-type and knockdown Toxoplasma gondii parasites		2024/06/19 00:00											0	
+SRA	PRJNA1133933	RNA-sequencing of Wild-type and knockdown (TgCdc5) Toxoplasma gondii parasites		2024/07/10 00:00					0.805385	0.739			1.0	0.5039095980272451	3	0.5415786827551533
+SRA	PRJNA1134678	Characterization of AP2XII-9 in Toxoplasma gondii		2024/07/11 00:00											0	
+SRA	PRJNA1136065	Whole transcriptome profiles of mouse tissues following infection with Toxoplasma gondii cysts		2024/07/15 00:00											0	
+SRA	PRJNA1137608	RNA sequencing analysis of Toxoplasma gondii parasites with altered expression of IF1		2024/07/19 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA114693	Toxoplasma gondii Transcriptome or Gene expression		2012/03/20 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1148922	Toxoplasma gondii transcription factor AP2XII-8 is a key regulator for the G1 phase progression and parasite division		2024/08/16 00:00					0.8135355555555557		0.99259		1.0	0.5613026115178196	3	0.5492709904474611
+SRA	PRJNA1164455	Toxoplasma gondii Raw sequence reads		2024/09/24 00:00					0.96646125		0.9728600000000001		1.0	0.5889448879405838	3	0.749270990447461
+SRA	PRJNA1165311	Anti-Toxoplasma Activity of Docetaxel		2024/09/25 00:00					0.9879416666666666		0.99763		1.0	0.8793764076403962	3	0.8800402212166918
+SRA	PRJNA1165326	Anti-Toxoplasma activity of Quisinostat		2024/09/25 00:00					0.9877433333333333		0.996815		1.0	0.849857958609752	3	0.8723479135243841
+SRA	PRJNA1177674	Ltbr -/- mice display altered B and T cell subpopulations in the bone marrow and peritoneal cavity after Toxoplasma gondii infection		2024/10/25 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1212584	RNAseq		2025/01/19 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1233816	RNA-seq of Toxoplasma gondii tghdac2 Knockout, Complemented and Control Strains.		2025/03/09 00:00					0.9382645833333333		0.9663349999999999		1.0	0.5295327553577195	3	0.6723479135243842
+SRA	PRJNA1252425	RNA-seq for piceatannol treated Toxoplasma gondii tachyzoites		2025/04/18 00:00					0.9562949999999999		0.996985	0.5	1.0	0.6733552833265889	4	0.6213842802078097
+SRA	PRJNA1282873	Anti-Toxoplasma effect  of docetaxel		2025/06/26 00:00					0.9719283333333334				1.0	0.7877325289089995	2	0.7877325289089995
+SRA	PRJNA1306330	Bone marrow derived dendritic cells invected with Toxoplasma strains expressing different		2025/08/15 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1309712	Functional characterization of 12 novel rhoptry proteins in the type I RH strain of Toxoplasma gondii using the CRISPR-Cas9 system		2025/08/22 00:00					0.91359				1.0	0.6031171442936148	2	0.6031171442936148
+SRA	PRJNA1310676	The transcriptome data analysis of RH Delta Ku80 and RH Delta  Ku80 Delta PSPH and RH Delta  Ku80  Delta PSAT and RH Delta  Ku80  Delta PHGDH		2025/08/25 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1310733	The transcriptome data analysis of DiCre and DiCre Delta cgl Delta oastl		2025/08/25 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1346446	Reactivation of chronic toxoplasmosis proceeds through sequential expression of gene clusters that regulate biological modules		2025/10/17 00:00											0	
+SRA	PRJNA1380901	Toxoplasma gondii strain:RH88 Transcriptome or Gene expression		2025/12/13 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1433593	Host cell dependent epigenomic and transcriptomic profiling of Toxoplasma gondii infection		2026/03/06 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA1442379	Toxoplasma gondii Raw sequence reads		2026/03/25 00:00											0	
+SRA	PRJNA1446183	Toxoplasma gondii RH strain:RH Raw sequence reads		2026/03/31 00:00					0.9441083333333333				1.0	0.6877325289089995	2	0.6877325289089995
+SRA	PRJNA1471449	The influence of host factor IFITM2/3 on Toxoplasma gondii infection		2026/05/27 00:00											0	
+SRA	PRJNA1522152	Toxoplasma gondii RH strain:RH Raw sequence reads		2026/09/02 00:00					0.9506783333333333		0.89805		1.0	0.49826321189305406	3	0.7108094519859225
+SRA	PRJNA1531573	Transcriptome profiling of Toxoplasma gondii Bre1-mAID knockdown upon IAA-induced degradation		2026/09/18 00:00					0.8893616666666667		0.913755		1.0	0.42947021627079013	3	0.5954248366013072
+SRA	PRJEB2432	Neospora caninum RNAseq		2011/02/24 00:00											0	
+SRA	PRJEB2434	Toxoplasma gondii RNASeq		2011/02/25 00:00											0	
+SRA	PRJNA237214	Isolation of total RNA from the mouse forebrain during acute and chronic infection with the intracellular parasite Toxoplasma gondii. Represents host and pathogen response. Transcriptome or Gene expression		2014/02/03 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA241125	Human and Toxoplasma gondii genetics and cellular/molecular interactions		2014/03/12 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA252680	Toxoplasma gondii transcriptome during overexpression of an alternative-splicing factor		2014/06/13 00:00					0.9945566666666666		0.99028		1.0	0.7676815983846113	3	0.8954248366013071
+SRA	PRJNA287754	Toxoplasma gondii GT1 Transcriptome or Gene expression		2015/06/23 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA296539	A study about T.gondii and PK15 interaction. transcriptome		2015/09/21 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA304318	Toxoplasma gondii Transcriptome or Gene expression		2015/11/27 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA308881	Mus musculus Transcriptome or Gene expression		2016/01/15 00:00											0	
+SRA	PRJNA312796	Toxoplasma gondii small RNA seq		2016/02/22 00:00											0	
+SRA	PRJDA33425	Toxoplasma gondii		2008/12/24 00:00											0	
+SRA	PRJNA336532	Role of T. gondii genetic diversity, secreted proteins and other parasite molecules in host-pathogen interactions		2016/08/04 00:00											0	
+SRA	PRJDB2996	Full-parasites: database of full-length cDNAs of apicomplexa parasites, 2014 update		2016/08/18 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA394179	Transcriptomic analysis of BHK-21 cells transfected by Toxoplasma gondii GRA15		2017/07/13 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA418218	MicroRNA expression of mouse brain induced by Toxoplasma gondii oocysts		2017/11/14 00:00											0	
+SRA	PRJNA432301	Transcriptomic analysis of BHK-21 cells transfected by Toxoplasma gondii GRA15		2018/01/31 00:00											0	
+SRA	PRJNA474790	Mus musculus Raw sequence reads		2018/06/06 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA475428	pru strain toxoplasma transcriptome		2018/06/11 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA483261	Transcriptome or Gene Expression of Mouse Brain Induced by Toxoplasma gondii Oocysts		2018/07/28 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA510502	Transcriptome analyses define marked differences between N. caninum isolates		2018/12/18 00:00											0	
+SRA	PRJNA552423	Epididymis of mice infected with Toxoplasma gondii		2019/07/03 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA561639	parasite Toxoplasma gondii RH strain infected host cells (PK-15) at 6 h and 24h Raw sequence reads		2019/08/22 00:00											0	
+SRA	PRJNA562044	parasite Toxoplasma gondii RH strain of tachyzoite infected host cells (PK-15) at 6 h and 24h Raw sequence reads		2019/08/25 00:00											0	
+SRA	PRJNA574482	Toxoplasma gondii strain:RH Transcriptome or Gene expression		2019/09/26 00:00											0	
+SRA	PRJNA593831	Transcriptome data of Adverse Pregnancy caused by acute Toxoplasma gondii infection		2019/12/05 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA594731	RNA-Seq analysis of uninfected and Toxoplasma gondii infected HUVEC		2019/12/10 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA606986	Direct poly-A mRNA sequencing of Toxoplasma gondii and Plasmodium falciparum		2020/02/17 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA632742	Transcriptome data of testes and uterus in mice infected with Toxoplasma gondii		2020/05/14 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJDB10087	Toxoplasma GRAs modulate NFkB pathway		2020/06/17 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA642650	Transcriptional profiling reveals T cells cluster around neurons injected with Toxoplasma gondii proteins		2020/06/28 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA646376	RNA-seq of Bovine Bone Marrow-Derived Macrophages stimulated with Toxoplasma gondii and/or Interferon gamma		2020/07/15 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA661627	A Transcriptome analysis: The effect of Complement C3a on the testes of SD rats which infected Toxoplasma gondii PRU strain		2020/09/05 00:00											0	
+SRA	PRJNA662010	Toxoplasma gondii Raw sequence reads		2020/09/07 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA686822	RNA-Seq analysis of uninfected and Toxoplasma gondii infected Primary Human Neutrophils		2020/12/21 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA695200	Transcriptomics Analysis of Toxoplasma gondii-Infected Mouse Macrophages Reveals Coding and Noncoding Signatures in the Presence and Absence of MyD88		2021/01/27 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA705300	Raw reads of direct RNA sequencing of Toxoplasma gondii and Arabidopsis thaliana in the context m6A writter/reader protein knockouts		2021/02/27 00:00					0.06582433333333333	-0.3785	0.51005	0.0	1.0	0.2275922626711723	5	0.3235713088654265
+SRA	PRJNA725560	A SINGLE NUCLEOTIDE VARIANT OF cGMP-DEPENDENT PROTEIN KINASE (PKG) IS SUFFICIENT TO CONFER RESISTANCE TO MARINOPYRROLE A DERIVATIVE RL003		2021/04/27 00:00					0.7670433333333334		0.95093		1.0	0.407706614019383	3	0.526194067370538
+SRA	PRJNA725840	RNA-Seq Analysis of U21 Treated Toxoplasma gondii Tachyzoites		2021/04/28 00:00					0.7379				1.0	0.5108094519859225	2	0.5108094519859225
+SRA	PRJNA738301	Toxoplasma gondii transcriptome following the ablation of SR proteins and putative SR protein kinases		2021/06/16 00:00					0.9628378571428572		0.99611		0.6	0.6531345162622063	3	0.6260432378079437
+SRA	PRJNA739495	Nonsense-mediated decay in Toxoplasma gondii		2021/06/20 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA753595	RNA-Seq analysis of Myrislignan against Toxoplasma gondii		2021/08/10 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA754376	Transcriptome analysis of Toxoplasma gondii in altered iron conditions		2021/08/13 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA760987	Toxoplasma gondii Raw sequence reads		2021/09/06 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA782463	Sequencing Toxoplasma gondii		2021/11/22 00:00											0	
+SRA	PRJNA785130	Transcriptional analysis of  bovines macrophages infected with Besnoitia besnoiti		2021/12/01 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA791458	Vero cell Transcriptome		2021/12/21 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJDB12046	Combination for TSS-seq and RNA-seq of excysted T. gondii sporozoites		2022/01/21 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJDB12314	scRNA-seq of in vitro bradyzoite infected HFF cells		2022/02/16 00:00											0	
+SRA	PRJNA812267	Toxoplasma gondii GT1 Raw sequence reads		2022/03/02 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA819218	Toxoplasma gondii PRU and PP2A-C mutation Transcriptome or Gene expression		2022/03/24 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA859430	RNA sequencing  of mice hippocampus		2022/07/17 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA868812	RNA-Seq of Toxoplasma GRX1mutation		2022/08/11 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA876783	Whole transcriptome profiles of mouse tissues following infection with Toxoplasma gondii cysts		2022/09/05 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA882190	Chinese 1 (Wh3 and Wh6 ) tachyzoite RNA-seq		2022/09/19 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA884543	The transcriptome data analysis of ME49 and ME49 Delta 6pgdh1		2022/09/27 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA909082	Gallus gallus breed:Hy-Line variety brown Transcriptome or Gene expression		2022/12/06 00:00											0	
+SRA	PRJNA910664	Evaluation and comparison of transcriptome variation in non-infected and Toxoplasma gondii (Tehran strain) infected mice brains using RNA-sequencing		2022/12/10 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA913179	Transcriptome analysis of  mouse model of Toxoplasma gondii pneumonia		2022/12/16 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA921935	In vitro production of cat-restricted Toxoplasma  pre-sexual stages by epigenetic reprogramming		2023/01/09 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA932999	Toxoplasma gondii Raw sequence reads		2023/02/09 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA938270	Toxoplasma gondii Transcriptome or Gene expression		2023/02/24 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA943448	The transcriptome data analysis of ME-miniAID and ME-miniAID+IAA		2023/03/12 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA947324	The transcriptome data analysis of DiCre  strain  and DiCre Delta SBPase Delta TAL strain		2023/03/21 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA948388	RNA sequencing of Toxoplasma gondii		2023/03/24 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA951079	RNA-seq for bedaquiline treated Toxoplasma gondii tachyzoites		2023/04/01 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+SRA	PRJNA990465	RNA-seq of AP2XI-2 or AP2XII-1 depleted Toxoplasma gondii		2023/07/02 00:00									0.0	0.2875816993464052	1	0.2875816993464052
+PRIDE	PXD084269	Theft of Host Transferrin Receptor-1 by Toxoplasma gondii is Required for Infection: MS Proteome of Purified T. gondii Tachyzoites		2026-09-16											0	
+PRIDE	PXD083501	Immunoprecipitation of MyoL-Ty second copy		2026-09-01											0	
+PRIDE	PXD080696	Interactome analysis of the Toxoplasma gondii effectors EAF1 and GRA35 by affinity purification and data-independent acquisition mass spectrometry		2026-07-08											0	
+PRIDE	PXD079900	Glycan bead precipitation of proteins from Toxoplasma gondii lysate		2026-06-18											0	
+PRIDE	PXD079431	Mass spectrometry-based proteomic characterization of TgGCN5b and TgGNAT2 interactomes		2026-06-09											0	
+PRIDE	PXD079432	MS-based proteomic analysis of TgGCN5b-dependent acetylome and proteome		2026-06-09											0	
+PRIDE	PXD078724	A meta-analysis of phosphoproteomics datasets from Toxoplasma gondii		2026-05-22											0	
+PRIDE	PXD077563	Convergent evolution of metabolic regulation governs redox adaptation in Toxoplasma		2026-04-24											0	
+PRIDE	PXD075456	A dedicated partitioning machinery ensures faithful inheritance of the apicoplast in T. gondii		2026-03-10											0	
+PRIDE	PXD072342	Mass spectrometry-based proteomic characterization of TgGCN5b, TgPHD1, TgPZP1, TgGNAT1 and TgGNAT2 interactomes		2025-12-23											0	
+PRIDE	PXD071065	TgCoqFMO interactors identified via anti-HA MS		2025-11-22											0	
+PRIDE	PXD068413	Atomic models of the conoid from the human parasite Toxoplasma gondii		2025-09-16											0	
+PRIDE	PXD068228	Evolutionarily Convergent Mechanism of Formin Regulation Coordinates Actin Polymerization in Apicomplexan Parasites		2025-09-09											0	
+PRIDE	PXD067879	The role of methylation in egress and motility initiation in Toxoplasma gondii		2025-08-29											0	
+PRIDE	PXD067653	The mass spectrometry raw data of proteins that interact with GRA35 in neuronal cells		2025-08-24											0	
+PRIDE	PXD067210	Differentially and constantly expressed proteins identified through proteomic analysis of different Toxoplasma gondii field isolates carried out upon short- or long-term in vitro culture		2025-08-11											0	
+PRIDE	PXD066820	Two distinct SWI/SNF complexes direct chromatin-linked transcriptional programs in Toxoplasma		2025-07-31											0	
+PRIDE	PXD066828	Iron depletion proteomics of Toxoplasma tachyzoites		2025-07-31											0	
+PRIDE	PXD065585	AP2X-1 is a negative regulator of Toxoplasma gondii sexual commitment		2025-06-29											0	
+PRIDE	PXD065533	TgGPN1 interactome from Toxoplasma gondii tachyzoites		2025-06-26											0	
+PRIDE	PXD064338	Mitochondria drive a folate-based immunity against an intracellular pathogen		2025-05-27											0	
+PRIDE	PXD064226	The PP2A-2 holoenzyme orchestrates daughter cell emergence during cytokinesis in Toxoplasma gondii		2025-05-23											0	
+PRIDE	PXD063659	A Protein Disulfide Isomerase Coordinates Redox Homeostasis and ER Calcium Regulation for Optimal Lytic Cycle Progression in Toxoplasma gondii. SERCA-HA DVSF HA-IP LC-MS/MS		2025-05-06											0	
+PRIDE	PXD063619	A Protein Disulfide Isomerase Coordinates Redox Homeostasis and ER Calcium Regulation for Optimal Lytic Cycle Progression in Toxoplasma gondii. streptavadin-IP LC-MS/MS		2025-05-05											0	
+PRIDE	PXD063615	A Protein Disulfide Isomerase Coordinates Redox Homeostasis and ER Calcium Regulation for Optimal Lytic Cycle Progression in Toxoplasma gondii. DVSF anti-TgPDIA3 LC-MS/MS		2025-05-05											0	
+PRIDE	PXD063409	Quantitative proteomic analysis of the Toxoplasma gondii cytoskeleton and bioinformatic identification of highly antigenic proteins		2025-04-28											0	
+PRIDE	PXD062479	Mapping the Toxoplasma gondii cytosolic interactome by crosslinking mass spectrometry and machine learning		2025-04-01											0	
+PRIDE	PXD062489	Endogenous cathelicidin protects against Toxoplasma gondii- associated  liver damage		2025-04-01											0	
+PRIDE	PXD062403	Interacting proteomics of Toxoplasma gondii silent information regulator 2 (TgSIR2A)		2025-03-31											0	
+PRIDE	PXD060424	Proteic characterization of the IgM triplet involved in the diagnosis of congenital toxoplasmosis		2025-02-03											0	
+PRIDE	PXD059833	TgCoq5 proximity proteome in mitochondria and cytosolic fractions using FbxO14 as spatial reference		2025-01-15											0	
+PRIDE	PXD059579	MS-based proteomic characterization of Toxoplasma gondii GSK3 proxisome		2025-01-09											0	
+PRIDE	PXD058695	In vivo identification of Toxoplasma gondii antigenic proteins and in silico study of their polymorphism.		2024-12-09											0	
+PRIDE	PXD058095	Identification of immunogenic markers in Toxoplasma gondii bradyzoite proteins		2024-11-20											0	
+PRIDE	PXD057662	Toxoplasma Tepsin is essential for transport from the trans-Golgi to the vacuole		2024-11-08											0	
+PRIDE	PXD056911	MS-based proteomic characterization of Toxoplasma gondii SNF2L, SNF2h, RFTS and RSF1d interactomes		2024-10-17											0	
+PRIDE	PXD056007	Immunoprecipitation followed by mass-spectrometry of Toxoplasma gondii VMP1 immunoprecipitate		2024-09-19											0	
+PRIDE	PXD055601	An Analysis of Toxoplasma gondii Extracellular Vesicles.		2024-09-05											0	
+PRIDE	PXD055403	Regulation of the developmental programs in Toxoplasma by a novel SNF2L-containing chromatin remodeling complex		2024-08-31											0	
+PRIDE	PXD055279	Proteomic identification of a Toxoplasma gondii sporozoite-specific antigen using HDAC3 inhibitor-treated tachyzoites as surrogate		2024-08-28											0	
+PRIDE	PXD054994	Molecular markers of adaptive responses in Toxoplasma gondii to Pyrimethamine treatment		2024-08-19											0	
+PRIDE	PXD054719	FUCCI Based Study of Toxoplasma Endodyogeny		2024-08-08											0	
+PRIDE	PXD053944	Immunoprecipitation of mitochondrial ribosome complex of Toxoplasma gondii		2024-07-15											0	
+PRIDE	PXD053932	Immunoprecipitation of Toxoplasma gondii mETC supercomplex mutant		2024-07-13											0	
+PRIDE	PXD053703	TgSkp1 peptide quantification from Toxoplasma gondii tachyzoites grown in normoxia/hypoxia conditions		2024-07-05											0	
+PRIDE	PXD053452	BioID of the proteins CGP and FRM1 from Toxoplasma gondii		2024-06-27											0	
+PRIDE	PXD052656	4DLabelfree quantitative acetylation of modified proteome in Toxoplasma gondii protein fluid samples		2024-05-29											0	
+PRIDE	PXD052664	Toxoplasma gondii tachyzoites LC-MS		2024-05-29											0	
+PRIDE	PXD051549	Quantitative proteomic analysis of a Toxoplasma gondii mutant of the HCF101 protein		2024-04-18											0	
+PRIDE	PXD051551	Mass spectrometry identification of partners of the Toxoplasma gondii HCF101 protein		2024-04-18											0	
+PRIDE	PXD051495	Cytokinetic Abscission in Toxoplasma gondii is governed by Protein Phosphatase 2A and the Daughter Cell Scaffold Complex		2024-04-16											0	
+PRIDE	PXD050988	Skp1 interactome from WT and PHYA-KO Toxoplasma gondii tachyzoites		2024-03-26											0	
+PRIDE	PXD049694	TgFbxO14 interactome from Toxoplasma gondii tachyzoites		2024-03-13											0	
+PRIDE	PXD050478	G2 Phase Controls Binary Division of Toxoplasma gondii		2024-03-08											0	
+PRIDE	PXD050091	TgSkp1 interactome from Toxoplasma gondii tachyzoites in 4 mutant strains		2024-02-23											0	
+PRIDE	PXD050011	TgFbxO1 interactome from Toxoplasma gondii tachyzoites		2024-02-21											0	
+PRIDE	PXD049975	TgFbxO13 interactome from Toxoplasma gondii tachyzoites		2024-02-20											0	
+PRIDE	PXD048386	Quantitative proteomic analysis of a Toxoplasma gondii mutant of the ABCB7 mitochondrial transporter		2024-01-10											0	
+PRIDE	PXD048331	Global analysis of protein lysine lactylation profiles in the marine  bacterium Photobacterium damselae		2024-01-09											0	
+PRIDE	PXD047907	Daughter Cell Scaffold proteins drive cytokinetic abscission in Toxoplasma gondii		2023-12-18											0	
+PRIDE	PXD047027	Immunoprecipitation of Toxoplasma gondii succinate dehydrogenase complex		2023-11-16											0	
+PRIDE	PXD046583	TgFbxL2 interactome from Toxoplasma gondii tachyzoites		2023-11-01											0	
+PRIDE	PXD046167	Protein profile of purified plasma and aqueous humor-derived extracellular vesicles from patients with ocular toxoplasmosis		2023-10-16											0	
+PRIDE	PXD046083	Global proteome-wide analysis of cysteine S-nitrosylation in Toxoplasma gondii		2023-10-12											0	
+PRIDE	PXD045050	Proteomic analysis of different developmental stages of Cystoisospora suis (Apicomplexa: Coccidia) in vitro		2023-09-02											0	
+PRIDE	PXD045018	The profound effect of ubiquitin-activating enzyme 1(TgUAE1) on the protein expression of Toxoplasma gondii by 4D label-free quantitative proteomics		2023-09-01											0	
+PRIDE	PXD044725	Phosphoproteomic analysis reveals the role of ARAF in regulating the apoptosis of porcine macrophages infected with Toxoplasma gondii		2023-08-22											0	
+PRIDE	PXD044592	Toxoplasma gondii Crk4 interactome		2023-08-15											0	
+PRIDE	PXD044588	Apical annuli are specialised sites of post-invasion secretion of dense granules in Toxoplasma		2023-08-15											0	
+PRIDE	PXD044398	PKA R-dependent phosphoproteome of T. gondii treated with the phosphodiesterase inhibitor zaprinast		2023-08-06											0	
+PRIDE	PXD044361	PKG-dependent phosphoproteome of T. gondii treated with the phosphodiesterase inhibitor zaprinast		2023-08-04											0	
+PRIDE	PXD044182	Quantitative proteomic measurement of the Ca2+-dependent excretory-secretory antigen secretome of Toxoplasma gondii		2023-07-28											0	
+PRIDE	PXD044091	Immunoprecipitation of CLAMP-HA and CLAMPΔPRD-HA from the parasite T. gondii		2023-07-26											0	
+PRIDE	PXD044081	Analysis of CDPK1 targets identifies a trafficking adaptor complex that regulates microneme exocytosis in Toxoplasma - cWT and cMut IPs		2023-07-25											0	
+PRIDE	PXD044080	Analysis of CDPK1 targets identifies a trafficking adaptor complex that regulates microneme exocytosis in Toxoplasma - TGGT1_306920 IPs		2023-07-25											0	
+PRIDE	PXD043994	Toxoplasma gondii Cyclin-4 Interactome		2023-07-21											0	
+PRIDE	PXD043924	Toxoplsama gondii Cdt1 homolg interactome		2023-07-19											0	
+PRIDE	PXD043808	The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma gondii merogony		2023-07-15											0	
+PRIDE	PXD043539	Phosphoproteome analysis of TgPP1 depleted Toxoplasma gondii tachyzoites		2023-07-04											0	
+PRIDE	PXD042989	PKA C3 depletion phosphoproteomics		2023-06-14											0	
+PRIDE	PXD042937	p97/VCP targets Toxoplasma gondii vacuoles for parasite restriction in interferon-stimulated cells		2023-06-13											0	
+PRIDE	PXD042839	Eimeria necatrix Wall-Forming Bodies and Oocyst Wall Proteomic Analysis by Tandem Mass Tag (TMT) Labeling and Liquid Chromatography Tandem-Mass Spectrometry (LC-MS/MS) Techniques		2023-06-09											0	
+PRIDE	PXD042658	Mass spectrometry-based proteomic characterization of T. gondii AP2XI-2 and AP2XII-1 interactomes		2023-06-02											0	
+PRIDE	PXD042078	A cis-regulatory element controls HDAC9 expression to fine-tune inflammasome-dependent chronic inflammation		2023-05-09											0	
+PRIDE	PXD041907	The Toxoplasma protein phosphatase 6 catalytic subunit (TgPP6C) is essential for cell cycle progression and virulence		2023-05-01											0	
+PRIDE	PXD041887	T. gondi COG complex interactors LC-MS/MS		2023-04-29											0	
+PRIDE	PXD041352	LC-MS of interacting partners Toxoplasma gondii GRA57		2023-04-05											0	
+PRIDE	PXD040602	T. gondii SPARK depletion phosphoproteome		2023-03-06											0	
+PRIDE	PXD040635	SPARKEL depletion time course proteome		2023-03-06											0	
+PRIDE	PXD040598	Protein abundances following 24h of SPARK depletion in Toxoplasma gondii		2023-03-05											0	
+PRIDE	PXD039986	Proximity labeling of TurboID-SPARKEL		2023-02-09											0	
+PRIDE	PXD039979	Immunoprecipitation mass spectrometry of SPARKEL		2023-02-09											0	
+PRIDE	PXD039985	Proximity labeling of SPARKEL-TurboID		2023-02-09											0	
+PRIDE	PXD039983	Proximity labeling of SPARK-TurboID		2023-02-09											0	
+PRIDE	PXD039922	SPARK-mNG-mAID Immunoprecipitation Mass Spectrometry		2023-02-07											0	
+PRIDE	PXD039919	Immunoprecipitation mass spectrometry of SPARK-mNG		2023-02-07											0	
+PRIDE	PXD039896	PKA C3 immunoprecipitation mass spectrometry		2023-02-06											0	
+PRIDE	PXD039648	A positive feedback loop controls Toxoplasma chronic differentiation		2023-01-25											0	
+PRIDE	PXD039432	Analysis of CDPK1 targets identifies a trafficking adaptor complex that regulates microneme exocytosis in Toxoplasma - HOOK and FTS IPs		2023-01-13											0	
+PRIDE	PXD039434	Analysis of CDPK1 targets identifies a trafficking adaptor complex that regulates microneme exocytosis in Toxoplasma - FTS TurboID		2023-01-13											0	
+PRIDE	PXD039426	Analysis of CDPK1 targets identifies a trafficking adaptor complex that regulates microneme exocytosis in Toxoplasma		2023-01-13											0	
+PRIDE	PXD039400	In vitro production of cat-restricted Toxoplasma  pre-sexual stages by epigenetic reprogramming		2023-01-13											0	
+PRIDE	PXD039431	Analysis of CDPK1 targets identifies a trafficking adaptor complex that regulates microneme exocytosis in Toxoplasma - Thiophosphorylation		2023-01-13											0	
+PRIDE	PXD039335	Structural and regulatory insights into the glideosome-associated connector from Toxoplasma gondii		2023-01-09											0	
+PRIDE	PXD039148	Regulation of Toxoplasma growth and development by AMPK		2023-01-02											0	
+PRIDE	PXD038919	Label-free quantitative proteomic analyses of mouse astrocytes provides insight into the host response mechanism at different developmental stages of Toxoplasma gondii		2022-12-19											0	
+PRIDE	PXD038848	An apicomplexan bromodomain, TgBDP1 associates with diverse epigenetic factors to regulate essential transcriptional processes in Toxoplasma gondii.		2022-12-15											0	
+PRIDE	PXD038158	MOSPD2-Toxoplasma Immunoprecipitation		2022-11-17											0	
+PRIDE	PXD037318	The missed histone H1 is involved in cell division and ribosome biosynthesis in Toxoplasma gondii		2022-10-12											0	
+PRIDE	PXD035654	Interaction network of the Cysteine Repeat Modular protein complex of Toxoplasma gondii		2022-08-01											0	
+PRIDE	PXD035658	Prioritization of antimicrobial targets by CRISPR-based oligo recombineering		2022-08-01											0	
+PRIDE	PXD035106	Proteomic analysis of BioID experiments performed with Toxoplasma gondii MyoJ protein tagged with TurboID in tachyzoites		2022-07-06											0	
+PRIDE	PXD034607	Hydrogen Deuterium Exchange of MAF1 and RalGAP		2022-06-16											0	
+PRIDE	PXD034193	Protein composition of Toxoplasma endocytic and exocytic structures by proximity-dependent biotinylation		2022-05-29											0	
+PRIDE	PXD033778	Global proteomic profiling of multiple organs of cat (Felis catus) and proteome-transcriptome correlation during acute Toxoplasma gondii infection		2022-05-09											0	
+PRIDE	PXD033765	De novo mapping of the apicomplexan Ca2+-responsive phosphoproteome		2022-05-08											0	
+PRIDE	PXD033738	De novo mapping of the apicomplexan Ca2+-responsive phosphoproteome		2022-05-06											0	
+PRIDE	PXD033713	De novo mapping of the apicomplexan Ca2+-responsive proteome: temperature range thermal profiling experiment		2022-05-05											0	
+PRIDE	PXD033650	De novo mapping of the apicomplexan Ca2+-responsive proteome: concentration range thermal profiling experiment 2		2022-05-04											0	
+PRIDE	PXD033642	De novo mapping of the apicomplexan Ca2+-responsive proteome: concentration range experiment 1		2022-05-04											0	
+PRIDE	PXD033120	The protein phosphatase 2A holoenzyme is a key regulator of starch metabolism and bradyzoite differentiation in Toxoplasma gondii		2022-04-08											0	
+PRIDE	PXD033109	TgCrk2 interactome in Toxoplasma gondii RH and ME49 parasites		2022-04-08											0	
+PRIDE	PXD032362	MS-based proteomic characterization of Toxoplasma gondii BCC7 interactome		2022-03-17											0	
+PRIDE	PXD032360	MS-based proteomic characterization of Toxoplasma gondii GRA28-associated complexes		2022-03-17											0	
+PRIDE	PXD032319	Toxoplasma gondii PRU ROP1-HA Co-Immunoprecipitation		2022-03-16											0	
+PRIDE	PXD032102	Calmodulin proximal interacting proteins revealed through BioID technology in the tachyzoite stage of Toxoplasma gondii		2022-03-07											0	
+PRIDE	PXD031816	Conoid extrusion serves as gatekeeper for entry of glideosome components into the pellicular space to control motility and invasion in Apicomplexa		2022-02-21											0	
+PRIDE	PXD031649	Identification of interaction partners of the Toxoplasma gondii Cysteine Repeat Modular Proteins TGGT1_292020 and TGGT1_261080		2022-02-13											0	
+PRIDE	PXD031526	Systematic Identification of the Lysine lactylation in the Protozoan Parasite Toxoplasma gondii		2022-02-09											0	
+PRIDE	PXD031161	Identification of novel rhoptry secretion factors in Toxoplasma gondii _ ND11		2022-01-21											0	
+PRIDE	PXD031164	Identification of novel rhoptry secretion factors in Toxoplasma gondii _ ND12		2022-01-21											0	
+PRIDE	PXD031116	Proximity biotinylation of the Toxoplasma gondii basal complex		2022-01-20											0	
+PRIDE	PXD030932	Characterization of lysine acetylation in Toxoplasma gondii proteome lacking acetyl-CoA transporter 1 (AT1).		2022-01-13											0	
+PRIDE	PXD030057	A positive feedback loop mediates crosstalk between calcium, cyclic nucleotide and lipid signaling in Toxoplasma gondii.		2021-11-30											0	
+PRIDE	PXD029616	N-Acetylation of secreted proteins is widespread in Apicomplexa and independent of acetyl-CoA transporter AT1		2021-11-08											0	
+PRIDE	PXD029455	MS-based proteomic characterization of Toxoplasma gondii PRP4K and PRP8 interactomes		2021-11-01											0	
+PRIDE	PXD029463	PIM1 controls GBP1 activity to limit self-damage and guard against pathogen infection		2021-11-01											0	
+PRIDE	PXD029366	Comparative Analysis Reveals Genotype-specific Lyisne Malonylation of Toxoplasma gondii		2021-10-27											0	
+PRIDE	PXD028781	Toxoplasma gondii MOB1 interactome		2021-09-27											0	
+PRIDE	PXD024491	Mitochondria shed large SPOTs during infection-induced import stress to remodel their outer membrane		2021-09-22											0	
+PRIDE	PXD027716	Priming conditions alter the proteome near the PVM		2021-08-05											0	
+PRIDE	PXD027029	mGBP2 interacting proteins during Toxoplasma gondii infection		2021-07-01											0	
+PRIDE	PXD024912	T. gondii TIR1 strain temperature range thermal profiling experiment		2021-03-22											0	
+PRIDE	PXD024656	Toxoplasma gondii Tgj1 Hsp40 protein interaction LC-MS/MS		2021-03-11											0	
+PRIDE	PXD024326	Interactome of Toxoplasma gondii Pre-mRNA 3’ Processing Complexes		2021-02-24											0	
+PRIDE	PXD024210	Ferlins and TgDOC2 in Toxoplasma microneme, rhoptry and dense granule secretion		2021-02-17											0	
+PRIDE	PXD023854	Quantitative proteomic analysis of Toxoplasma gondii mutants of the mitochondrial and plastidic Iron sulfur cluster synthesis pathways.		2021-01-27											0	
+PRIDE	PXD023791	Identification of RON13 binding with with RON4 substrate		2021-01-25											0	
+PRIDE	PXD023485	Host proteins interacting with T. gondii Mitochondrial Association Factor 1		2021-01-08											0	
+PRIDE	PXD022785	Toxoplasma conoid proteome by BioID		2020-11-27											0	
+PRIDE	PXD022725	An Alveolata secretory machinery adapted to parasite-host cell invasion _ ND10		2020-11-25											0	
+PRIDE	PXD022700	Toxoplasma gondii; protein posttranslational modification; lactylation; metabolism; function		2020-11-25											0	
+PRIDE	PXD022713	An Alveolata secretory machinery adapted to parasite-host cell invasion		2020-11-24											0	
+PRIDE	PXD022398	Proteomic characterization of the pellicle of Toxoplasma gondii		2020-11-06											0	
+PRIDE	PXD021938	Mass spectrometry of circulating antigens products isolated from sera of mice infected with Toxoplasma gondii tachyzoites		2020-10-13											0	
+PRIDE	PXD021736	Differential proteomic analysis in a host–parasite interaction of host cells infected with Toxoplasma gondii		2020-09-29											0	
+PRIDE	PXD021516	Strucuture-function relationships of an atypical secretory kinase essential for Toxoplasma gondii invasion		2020-09-16											0	
+PRIDE	PXD019655	Regulation of phospholipid synthesis and vesicular trafficking in Toxoplasma gondii by protein kinase TgCDPK7		2020-08-24											0	
+PRIDE	PXD019917	Identification of proteins exhibiting TgDegP2-responsive thermal stability		2020-06-22											0	
+PRIDE	PXD019729	Differential protein phosphorylation during stage conversion in Toxoplasma gondii		2020-06-12											0	
+PRIDE	PXD019677	Global profiling of myristoylation in Toxoplasma gondii		2020-06-09											0	
+PRIDE	PXD018818	Thermal proteome profiling of Toxoplasma gondii treated with enhancer 1 (ENH1)		2020-04-27											0	
+PRIDE	PXD018810	Thermal proteome profiling of Toxoplasma gondii lysates treated with enhancer 1 (ENH1)		2020-04-26											0	
+PRIDE	PXD018781	Divergent features of the coenzyme Q:cytochrome c oxidoreductase complex in Toxoplasma gondii parasites		2020-04-24											0	
+PRIDE	PXD018056	Target identification of the novel Toxoplasma gondii rhoptry kinase RON13		2020-03-13											0	
+PRIDE	PXD017032	Comparative phosphoproteomic analysis of sporulated oocysts between virulent and avirulent strains of Toxoplasma gondii reveals strain-specific patterns		2020-01-09											0	
+PRIDE	PXD016845	MS-based quantitative proteomic analysis of total proteomes from T. gondii strains upon MORC’s depletion and TgHDAC3 inhibition.		2019-12-19											0	
+PRIDE	PXD016846	Mass spectrometry-based characterization of Toxoplasma gondii MORC interactome		2019-12-19											0	
+PRIDE	PXD016835	The antimalarial natural product salinipostin A identifies essential alpha/beta serine hydrolases involved in lipid metabolism in P. falciparum parasites		2019-12-19											0	
+PRIDE	PXD016810	Toxoplasma gondii eIF-5A knockdown iTraq		2019-12-18											0	
+PRIDE	PXD016383	Toxoplasma MYR1 Immunoprecipitations		2019-11-21											0	
+PRIDE	PXD016133	Elucidating the diverse roles of acetyl-CoA in the cytosol and mitochondrion of Toxoplasma gondii		2019-11-04											0	
+PRIDE	PXD015809	First Global Proteomic Analysis of Lysine Malonylation in Toxoplasma gondii		2019-10-14											0	
+PRIDE	PXD015269	High-resolution spatial proteome map of Toxoplasma gondii extracellular tachyzoite		2019-09-02											0	
+PRIDE	PXD015031	Label-free Quantitative Acetylomics Revealed Toxoplasma gondii Genotype-Specific Acetylome Signatures		2019-08-15											0	
+PRIDE	PXD014133	Global lysine crotonylation and 2-hydroxyisobutyrylation in phenotypically different Toxoplasma gondii parasites		2019-06-05											0	
+PRIDE	PXD013767	Mass spectrometry of excretory/secretory products (ectosomes, exosomes, and soluble proteins) secreted by Toxoplasma gondii tachyzoites isolated from an infected murine model.		2019-05-08											0	
+PRIDE	PXD013306	An open-format enteroid culture system for interrogation of interactions between Toxoplasma gondii and the intestinal epithelium		2019-03-29											0	
+PRIDE	PXD012103	Toxoplasma HCE1 Immunoprecipitations		2018-12-18											0	
+PRIDE	PXD011831	Proteomic analysis of multiple pig tissues reveals hundreds of Toxoplasma gondii responsive proteins that could participate in Toxoplasma gondii control in vivo, part 5		2018-11-26											0	
+PRIDE	PXD011828	Proteomic analysis of multiple pig tissues reveals hundreds of Toxoplasma gondii responsive proteins that could participate in Toxoplasma gondii control in vivo, part 3		2018-11-26											0	
+PRIDE	PXD011829	Proteomic analysis of multiple pig tissues reveals hundreds of Toxoplasma gondii responsive proteins that could participate in Toxoplasma gondii control in vivo, part 4		2018-11-26											0	
+PRIDE	PXD011830	Proteomic analysis of multiple pig tissues reveals hundreds of Toxoplasma gondii responsive proteins that could participate in Toxoplasma gondii control in vivo, part 2		2018-11-26											0	
+PRIDE	PXD011816	Proteomic analysis of multiple pig tissues reveals hundreds of Toxoplasma gondii responsive proteins that could participate in Toxoplasma gondii control in vivo		2018-11-23											0	
+PRIDE	PXD011692	Phosphatidic acid governs natural egress in Toxoplasma gondii via a guanylate cyclase receptor platform		2018-11-14											0	
+PRIDE	PXD011440	tgPOFUT2 mediated glycosylation_pft line controls		2018-10-22											0	
+PRIDE	PXD010714	tgPOFUT2 mediated glycosylation		2018-08-07											0	
+PRIDE	PXD010622	Toxoplasma gondii MIC2 TSRs glycosylation		2018-07-31											0	
+PRIDE	PXD009799	ICAP2 Immunoprecipitation results		2018-05-16											0	
+PRIDE	PXD009604	Toxoplasma GRA protein identification		2018-04-25											0	
+PRIDE	PXD008574	Aspartyl Protease 5 matures virulence factors found at the host-parasite interface in Toxoplasma gondii		2018-01-02											0	
+PRIDE	PXD008448	Proteomic profiling of human decidual immune proteins during Toxoplasma gondii infection		2017-12-14											0	
+PRIDE	PXD007777	iTRAQ-based Quantitative Phosphoproteomics Revealed Differences in Phosphorylation Modification Between Different Toxoplasma gondii Genotypes		2017-09-18											0	
+PRIDE	PXD007062	Proteome analyses define marked differences between N. caninum isolates throughout the tachyzoite lytic cycle		2017-07-17											0	
+PRIDE	PXD006235	Toxoplasma gondii aspartyl protease 3		2017-04-03											0	
+PRIDE	PXD006045	Cross-talk between PKA and PKG controls pH-dependent host cell egress of Toxoplasma gondii		2017-03-07											0	
+PRIDE	PXD005928	Proteome differences between sporulated oocysts of ToxoDB#9 and Type II Toxoplasma gondii		2017-02-15											0	
+PRIDE	PXD004895	PROTEOMIC PROFILING OF EXTRACELLULAR VESICLES OBTAINED FROM Toxoplasma gondii AND TOXOPLASMA-INFECTED CELLS		2016-08-25											0	
+PRIDE	PXD004426	O-fucosylated glycoproteins of Toxoplasma gondii		2016-06-24											0	
+PRIDE	PXD000261	Host response profile of human brain proteome in toxoplasma encephalitis		2016-05-09											0	
+PRIDE	PXD004083	Toxoplasma gondii Methylscan -  Comparative Monomethylarginine Proteomics Suggests that PRMT1 is a Significant Contributor to Arginine Monomethylation in Toxoplasma gondii		2016-05-02											0	
+PRIDE	PXD003765	Comparative proteomic analysis of Toxoplama gondii PRU oocyst during sporulation		2016-03-10											0	
+PRIDE	PXD003603	Toxoplasma gondii LC-MS/MS -  Unconventional endosome-like compartment and retromer complex in Toxoplasma gondii govern parasite integrity and host infection		2016-02-09											0	
+PRIDE	PXD003399	The comparative proteomics research of Toxoplasma infection in mice liver		2016-01-04											0	
+PRIDE	PXD003217	TRIM21 innate immune detection of GBP1-positive Toxoplasma gondii is essential for host survival		2015-11-20											0	
+PRIDE	PXD002380	Tomato (Solanum lycopersicum) lysine succinylation LC-MS/MS		2015-06-17											0	
+PRIDE	PXD000298	Neospora Caninum whole proteome study		2014-11-26											0	
+PRIDE	PXD000297	Toxoplsama Gondii whole proteome study		2014-11-24											0	
+PRIDE	PXD001042	Proteogenomic analysis of Toxoplasma gondii (comparing genome releases 6 and 10) to demonstrate the performance of the ProteoAnnotator software		2014-06-06											0	
+Metabolomics Workbench	ST002549	Lipidomic analysis of serum from mice with Toxoplasma gondii infection		2023-04-20											0	
+Metabolomics Workbench	ST002545	Lipidomic profile of Toxoplasma gondii-infected mice (Positive mode MS)		2023-04-20											0	
+Metabolomics Workbench	ST002544	Metabolomic study on the chronic Toxoplasma gondii infection in mice.		2023-04-20											0	
+Metabolomics Workbench	ST002053	Resistance to NaFAc of in vitro maturated Toxoplasma gondii bradyzoites in human myotubes.		2022-02-28											0	
+Metabolomics Workbench	ST002051	The apicomplexan parasite Toxoplasma gondii forms bradyzoite-containing tissue cysts that cause chronic and drug-tolerant infections.		2022-02-28											0	
+Metabolomics Workbench	ST001304	Multi-omics analysis delineates the distinct functions of sub-cellular acetyl-CoA pools in Toxoplasma gondii		2020-03-03											0	
+Metabolomics Workbench	ST000817	Dynamics of metabolism, proliferation and differentiation in Toxoplasma gondii mutants deficient in glycolysis and gluconeogenesis		2017-10-11											0	

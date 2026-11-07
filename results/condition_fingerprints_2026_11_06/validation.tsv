@@ -1,0 +1,4 @@
+axis	built_on	tested_on	measure	value	chance	p	detail	ships
+cell cycle	Xue 2020 single-cell phases	synchronised series cellcycle19092 (hours 1-12)	share of hourly steps that advance the phase	1.0	0.502	0.001	1.44 turns of the cycle over 12 h; dominant phase by hour: S M M C G1a G1a G1b G1b S M G1a G1a	True
+bradyzoite response	GSE223869 alkaline vs standard	7 other studies that state the condition	pooled AUC, stated bradyzoite vs tachyzoite runs	0.934	0.5		6 of 7 studies above 0.7; converter removed vs present AUC 1.00, 1.00	True
+bradyzoite conversion	GSE223869 alkaline vs standard and without BFD2	7 other studies that state the condition	pooled AUC, stated bradyzoite vs tachyzoite runs	0.922	0.5		6 of 7 studies above 0.7; converter removed vs present AUC 1.00, 1.00	True
