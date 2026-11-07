@@ -1,6 +1,6 @@
 # 64.39 · Export the evidence and inference trail
 
-Status: OPEN — about 85 %, 2026-11-07. Bundles from Infer, Map, Gene and Network built and tested; reloading a bundle into the application is open.
+Status: OPEN — about 95 %, 2026-11-07. Bundles from Infer, Map, Gene and Network; an Infer bundle reopens in the application (hash-checked). Reopening Map, Gene and Network bundles remains.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -54,3 +54,10 @@ links -- `measured`; the network as SVG) gain **Save everything as a bundle…**
 what is derived from measurements without being a claim about a gene. Checked on the real window: the Map and
 Network bundles written and verified by `export_bundle.load`. Test in `tests/test_module_shell.py`. Open:
 reloading a bundle back into the application.
+
+## 2026-11-07: an Infer bundle reopens
+
+Infer ▸ Save the answer ▸ **Open a saved bundle…** (`InferModule.open_bundle`): the manifest is verified (an edited
+file refuses the whole bundle), the bundle's question is selected again, the kinds of evidence it left out are
+restored (now saved in the query), and its named genes are shown as the saved answer, not a re-run. Test in
+`tests/test_module_shell.py`. Open: reopening Map, Gene and Network bundles.

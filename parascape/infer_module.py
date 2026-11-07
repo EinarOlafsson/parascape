@@ -16,6 +16,7 @@ import os
 from html import escape
 
 import numpy as np
+import pandas as pd
 from PySide6 import QtCore, QtWidgets
 
 from . import theme as TH
@@ -109,6 +110,12 @@ class InferModule(QtCore.QObject):
                            "publication is not recorded is flagged, never cited.")
         methods.clicked.connect(panel.copy_methods_text)
         sl.addWidget(methods)
+        reopen = QtWidgets.QPushButton("Open a saved bundle…")
+        reopen.setToolTip("Read a bundle saved here back: its files are checked against their hashes, "
+                          "its question is selected again and its named genes shown, with the left-out "
+                          "evidence restored.")
+        reopen.clicked.connect(lambda: self.open_bundle())
+        sl.addWidget(reopen)
         bundle = QtWidgets.QPushButton("Save everything as a bundle…")
         bundle.setToolTip("One folder for this answer: the named genes (marked inferred), the "
                           "recovery scores, the map as a vector figure, the methods text with its "
@@ -369,6 +376,36 @@ class InferModule(QtCore.QObject):
         if path:
             self.shell.say(f"Exported {KC.export(path)} kept claims")
 
+    def open_bundle(self, folder: str = "") -> dict:
+        """Read an Infer bundle back (64.39): verify it, select its question, show its named genes."""
+        from . import export_bundle
+        if not folder:
+            folder = export_bundle.ask_folder(self.shell)
+            if not folder:
+                return {}
+        try:
+            manifest = export_bundle.load(folder)
+        except (OSError, ValueError) as error:
+            self.shell.say(f"bundle refused: {error}")
+            return {}
+        query = manifest.get("query", {})
+        texts = [str(q.get("question", "")) for q in getattr(self.panel, "_questions", [])]
+        if query.get("question") in texts:
+            self.panel.question_choice.setCurrentIndex(texts.index(query["question"]))
+        left = tuple(query.get("leave_out_categories") or ())
+        for category, box in self.uses_boxes.items():
+            if box.isEnabled():
+                box.setChecked(category not in left)
+        self.panel.question_leave_out = left
+        named = os.path.join(folder, "named_genes.csv")
+        if os.path.exists(named):
+            frame = pd.read_csv(named)
+            self.answer_note.setText(f"From the bundle of {escape(str(manifest.get('written_at', '')))}: "
+                                     f"<b>{len(frame):,}</b> genes named (the saved answer, not a re-run).")
+            self.loaded_bundle = frame
+        self.shell.say(f"bundle opened: {folder}")
+        return manifest
+
     def save_bundle(self, folder: str = "") -> str:
         """Write the current answer as an export bundle (`export_bundle`); returns the folder."""
         result = getattr(self.panel, "_question_result", None)
@@ -394,7 +431,8 @@ class InferModule(QtCore.QObject):
         export_bundle.write(folder, organism=self.panel.organism,
                             query={"question": recipe.question, "holdout": recipe.holdout,
                                    "control": recipe.validation_holdout,
-                                   "confidence": recipe.min_precision},
+                                   "confidence": recipe.min_precision,
+                                   "leave_out_categories": list(self.panel.question_leave_out)},
                             tables=tables, kinds=kinds, columns=result.closure.columns,
                             figures=figures, nodes=self.window.nodes,
                             strategy="map neighbourhoods and clusters",

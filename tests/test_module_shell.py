@@ -376,6 +376,11 @@ def test_the_infer_module_saves_an_answer_as_a_bundle(window, tmp_path):
     assert manifest["files"]["named_genes.csv"]["kind"] == "inferred"
     assert manifest["query"]["holdout"] == "compartment_best"
     window.panel._question_result = None
+    reopened = window.infer_module.module.open_bundle(folder)
+    assert reopened["query"]["question"] == "q?"
+    assert len(window.infer_module.module.loaded_bundle) == 2
+    (tmp_path / "named_genes.csv").write_text("gene_id,label\nx,y\n")
+    assert window.infer_module.module.open_bundle(folder) == {}      # an edited bundle is refused
 
 
 def test_map_gene_and_network_save_a_bundle_a_reload_verifies(window, tmp_path, qtbot):
