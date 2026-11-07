@@ -54,3 +54,8 @@ good combiner; learning whom to trust is. **Not yet admitted:** the base calls c
 folds, so a base call for an outer-training gene may come from a model that saw an outer-test gene's label; admission
 needs the base methods recomputed inside each outer fold, plus per-class error and calibration of the meta
 probabilities.
+
+**Per class and calibration (same day, out-of-fold over the five folds):** recall GLOB 0.98 (6,053 genes), TM 0.94
+(1,142), SP 0.54 (676), **SP+TM 0.28 (266)** -- the overall accuracy is carried by the two large classes, and the
+rare combined class is mostly missed; expected calibration error of the meta probabilities 0.007 (well calibrated).
+Admission still needs the strictly nested base calls.

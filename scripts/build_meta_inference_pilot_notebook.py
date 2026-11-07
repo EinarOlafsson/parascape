@@ -74,6 +74,21 @@ def main() -> None:
             "res.to_csv(os.path.join(OUT, 'folds.tsv'), sep='\\t', index=False)",
             "print('meta right where the best single is wrong:', int(pp.meta_only), '; the reverse:', int(pp.best_only), '; McNemar p', round(test.pvalue, 4))",
             "summary")
+    nb.md("### Per class, and how well calibrated the meta probabilities are",
+          "Out-of-fold meta predictions over all five folds: accuracy within each true class (recall) and the "
+          "expected calibration error of the meta-model's top probability (10 bins).")
+    nb.code("oof_pred = pd.Series(index=X.index, dtype=object); oof_prob = pd.Series(index=X.index, dtype=float)",
+            "for tr, te in GroupKFold(5).split(X, truth, groups):",
+            "    m = LogisticRegression(max_iter=3000, C=1.0).fit(X.iloc[tr], truth.iloc[tr])",
+            "    pr = m.predict_proba(X.iloc[te])",
+            "    oof_pred.iloc[te] = m.classes_[pr.argmax(axis=1)]; oof_prob.iloc[te] = pr.max(axis=1)",
+            "right = (oof_pred == truth)",
+            "per_class = pd.DataFrame({'genes': truth.value_counts(), 'recall': right.groupby(truth).mean()}).round(3)",
+            "bins = np.clip((oof_prob * 10).astype(int), 0, 9)",
+            "ece = float(sum((bins == b).mean() * abs(right[bins == b].mean() - oof_prob[bins == b].mean()) for b in range(10) if (bins == b).any()))",
+            "per_class.to_csv(os.path.join(OUT, 'per_class.tsv'), sep='\\t')",
+            "print('expected calibration error of the meta probabilities:', round(ece, 4))",
+            "per_class")
     nb.write(NB)
 
 

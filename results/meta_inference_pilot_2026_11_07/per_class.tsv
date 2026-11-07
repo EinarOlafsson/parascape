@@ -1,0 +1,5 @@
+truth	genes	recall
+GLOB	6053	0.984
+SP	676	0.54
+SP+TM	266	0.278
+TM	1142	0.939
