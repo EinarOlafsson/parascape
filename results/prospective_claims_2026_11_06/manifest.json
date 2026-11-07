@@ -1,0 +1,15 @@
+{
+ "question": "required_without_glucose",
+ "label": "nodes.parquet:fit_no_glucose <= -2.0",
+ "frozen_at": "2026-11-06T22:46:21",
+ "parascape_version": "0.0.10.0",
+ "strategy": "boosted trees (reference)",
+ "strategy_hash": "1b4ace1f7077151fe1eba96e64d52d1860b359f529b4c92f4bb2ea09e8c42901",
+ "evidence_hash": "5b67dd8831833c612bc10cf5a1742b5ec69758bc364e8c0eb6a0a9756a8b0499",
+ "n_training": 7393,
+ "n_training_positive": 1765,
+ "n_claims": 747,
+ "claims_sha256": "6b482f1023568d8bf339621502b160aa4a91a594c95330d800aed00b02695138",
+ "held_out_record": "results/borrowed_strategies_2026_11_06/scores.tsv",
+ "grade_with": "precision in the top 50/100/200 and AUC against the next genome-wide glucose-withdrawal (or glycolysis-null) screen covering these genes"
+}

@@ -112,3 +112,16 @@ reach. All **415** focused audit/claims/track-record/registry/docstring tests pa
 regression-tested; the full final audit completed successfully with stable input hashes.
 
 Next: orthology or independent experimental verifiers; frozen prospective claims remain open.
+
+## 2026-11-06: the first frozen prospective claims
+
+`scripts/build_prospective_claims_notebook.py` -> `notebooks/prospective_claims_2026_11_06.ipynb`,
+`results/prospective_claims_2026_11_06/` (`claims.tsv`, `manifest.json`). The 747 genes the glucose-withdrawal
+screen did not measure, ranked by the probability they are needed without glucose, from the harness reference
+strategy fitted on all 7,393 measured genes (every pooled fitness screen held out; frozen-test AUC 0.824 for
+this strategy in `results/borrowed_strategies_2026_11_06/`). **Frozen**: claims SHA-256
+`6b482f10...95138`, strategy and evidence hashes, version and time in the manifest. Not fills (no strategy
+clears 0.90 on this question) -- predictions to grade, unchanged, against the next screen covering these
+genes: verify the hash, then precision in the top 50/100/200 and AUC. Many of the 747 are `TGME49_500…`
+models, newer gene models the CRISPR library predates. Next: the same freeze for localization on non-marker
+proteins once an independent localization source can grade it.

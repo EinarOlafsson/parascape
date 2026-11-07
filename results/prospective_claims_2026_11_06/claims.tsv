@@ -1,0 +1,748 @@
+gene_id	question	probability_needed	rank	product
+TGME49_249180	required_without_glucose	0.8582	1	bifunctional dihydrofolate reductase-thymidylate synthase
+TGME49_223150	required_without_glucose	0.3912	2	START domain-containing protein
+TGME49_268830	required_without_glucose	0.3865	3	ATP synthase subunit delta
+TGME49_500302	required_without_glucose	0.3656	4	Porphobilinogen Synthase (PBGS) / Aminolevulinic Acid Dehydratase (ALAD) + Pitrilysin (apicoplast stromal processing peptidase)
+TGME49_500116	required_without_glucose	0.2906	5	aspartyl/glutamyl-tRNA(Asn/Gln) amidotransferase subunit B, putative
+TGME49_500142	required_without_glucose	0.2903	6	serine-protein kinase ATM, putative
+TGME49_500306	required_without_glucose	0.2876	7	adaptor complexes medium subunit family protein
+TGME49_500124	required_without_glucose	0.2728	8	anaphase-promoting complex subunit 1
+TGME49_500308	required_without_glucose	0.2697	9	phosphatidate cytidylyltransferase, putative
+TGME49_500287	required_without_glucose	0.2552	10	phosphatidylinositol 4-kinase, putative
+TGME49_500179	required_without_glucose	0.2486	11	FYVE zinc finger domain-containing protein
+TGME49_262850	required_without_glucose	0.2451	12	histone methyltransferase complex subunit ASH2, putative
+TGME49_219820	required_without_glucose	0.2387	13	polyubiquitin UbC, putative
+TGME49_500135	required_without_glucose	0.22	14	Rab3-GAP domain-containing protein
+TGME49_500365	required_without_glucose	0.2167	15	tRNA (guanine-N1-)-methyltransferase, putative
+TGME49_212725	required_without_glucose	0.2079	16	hypothetical protein
+TGME49_257090	required_without_glucose	0.1851	17	NAC domain-containing protein
+TGME49_500128	required_without_glucose	0.1688	18	hypothetical protein, conserved
+TGME49_500307	required_without_glucose	0.1665	19	DEAD/DEAH box helicase, putative
+TGME49_295110	required_without_glucose	0.1562	20	rhoptry protein ROP7
+TGME49_500163	required_without_glucose	0.1311	21	zinc transporter ZIP, putative
+TGME49_286480	required_without_glucose	0.1304	22	hypothetical protein
+TGME49_295310	required_without_glucose	0.1148	23	tubulin binding cofactor A protein
+TGME49_500058	required_without_glucose	0.1072	24	ferlin 3, putative
+TGME49_212735	required_without_glucose	0.1059	25	transporter, major facilitator family protein
+TGME49_500076	required_without_glucose	0.1055	26	tubulin epsilon chain
+TGME49_500055	required_without_glucose	0.1011	27	arginine and glutamate-rich protein, putative
+TGME49_263590	required_without_glucose	0.0977	28	hypothetical protein
+TGME49_500392	required_without_glucose	0.0934	29	IQ calmodulin-binding motif domain-containing protein
+TGME49_500107	required_without_glucose	0.0926	30	hypothetical protein, conserved
+TGME49_500270	required_without_glucose	0.0889	31	coiled-coil domain-containing protein 39, putative
+TGME49_230122	required_without_glucose	0.0882	32	hypothetical protein
+TGME49_232940	required_without_glucose	0.0877	33	heat shock protein HSP20
+TGME49_202860	required_without_glucose	0.0844	34	hypothetical protein
+TGME49_500330	required_without_glucose	0.0828	35	hypothetical protein, conserved
+TGME49_314660	required_without_glucose	0.0769	36	TPRX1 protein
+TGME49_285740	required_without_glucose	0.0759	37	hypothetical protein
+TGME49_500237	required_without_glucose	0.0735	38	WD repeat-containing protein
+TGME49_500057	required_without_glucose	0.0728	39	EF-hand domain-containing protein
+TGME49_287515	required_without_glucose	0.0714	40	hypothetical protein
+TGME49_500385	required_without_glucose	0.0705	41	cilia- and flagella-associated protein 58, putative
+TGME49_500435	required_without_glucose	0.0699	42	HECT-domain (ubiquitin-transferase) -containing protein
+TGME49_309130	required_without_glucose	0.0686	43	hypothetical protein
+TGME49_259970	required_without_glucose	0.0671	44	hypothetical protein
+TGME49_500301	required_without_glucose	0.0654	45	ubiquitin-associated domain-containing protein
+TGME49_310110	required_without_glucose	0.0641	46	hypothetical protein
+TGME49_500183	required_without_glucose	0.0635	47	glyoxalase, putative
+TGME49_500245	required_without_glucose	0.0631	48	rhoptry discharge factor RDF2
+TGME49_500322	required_without_glucose	0.0628	49	fatty acyl-AMP ligase, putative
+TGME49_500174	required_without_glucose	0.0626	50	KRUF family protein
+TGME49_200320	required_without_glucose	0.0623	51	hypoxanthine-xanthine-guanine phosphoribosyl transferase HXGPRT
+TGME49_314560	required_without_glucose	0.062	52	hypothetical protein
+TGME49_284310	required_without_glucose	0.0605	53	hypothetical protein
+TGME49_250930	required_without_glucose	0.0599	54	hypothetical protein
+TGME49_244170	required_without_glucose	0.0595	55	hypothetical protein
+TGME49_209780	required_without_glucose	0.0584	56	hypothetical protein
+TGME49_500228	required_without_glucose	0.0564	57	30S ribosomal protein S10, putative
+TGME49_500053	required_without_glucose	0.0554	58	hypothetical protein, conserved
+TGME49_500282	required_without_glucose	0.0551	59	thioredoxin, putative
+TGME49_500005	required_without_glucose	0.055	60	apicoplast DER1
+TGME49_228020	required_without_glucose	0.055	61	hypothetical protein
+TGME49_500035	required_without_glucose	0.0549	62	hypothetical protein, conserved
+TGME49_313277	required_without_glucose	0.0543	63	hypothetical protein
+TGME49_308090	required_without_glucose	0.054	64	rhoptry protein ROP5
+TGME49_500252	required_without_glucose	0.0537	65	AP2 domain transcription factor AP2XII-10
+TGME49_500098	required_without_glucose	0.0534	66	regulator of chromosome condensation, putative
+TGME49_228480	required_without_glucose	0.0534	67	hypothetical protein
+TGME49_500109	required_without_glucose	0.0532	68	GPI transamidase component PIG-S, putative
+TGME49_500422	required_without_glucose	0.053	69	RNA-dependent RNA polymerase, putative
+TGME49_500025	required_without_glucose	0.0527	70	GCC2 and GCC3 domain-containing protein
+TGME49_500090	required_without_glucose	0.0525	71	hypothetical protein, conserved
+TGME49_500146	required_without_glucose	0.0525	72	guanine-nucleotide exchange factor, putative
+TGME49_500067	required_without_glucose	0.0519	73	hypothetical protein, conserved
+TGME49_324800	required_without_glucose	0.0516	74	tryptophanyl-tRNA synthetase
+TGME49_500024	required_without_glucose	0.0515	75	mitochondrial import inner membrane translocase subunit TIM9, putative
+TGME49_265160	required_without_glucose	0.0512	76	hypothetical protein
+TGME49_500200	required_without_glucose	0.051	77	intraconoidal microtubule-associated protein ICMAP3
+TGME49_500325	required_without_glucose	0.0504	78	WD repeat-containing protein
+TGME49_255160	required_without_glucose	0.0504	79	hypothetical protein
+TGME49_500202	required_without_glucose	0.05	80	DEAD/DEAH box helicase, putative
+TGME49_500104	required_without_glucose	0.0499	81	hypothetical protein
+TGME49_500309	required_without_glucose	0.0492	82	WW domain-containing protein
+TGME49_500286	required_without_glucose	0.0486	83	IQ calmodulin-binding protein, putative
+TGME49_500436	required_without_glucose	0.0485	84	EF-hand calcium-binding domain-containing protein 10, putative
+TGME49_328100	required_without_glucose	0.0477	85	RNA recognition motif-containing protein
+TGME49_500328	required_without_glucose	0.0476	86	hypothetical protein, conserved
+TGME49_500399	required_without_glucose	0.0471	87	hypothetical protein, conserved
+TGME49_500054	required_without_glucose	0.0471	88	c-Myc-binding protein, putative
+TGME49_500100	required_without_glucose	0.0468	89	transmembrane protein TMEM42, putative
+TGME49_500249	required_without_glucose	0.0464	90	cAMP-dependent protein kinase regulatory subunit, putative
+TGME49_500033	required_without_glucose	0.045	91	hypothetical protein, conserved
+TGME49_278750	required_without_glucose	0.0447	92	AT hook motif domain-containing protein
+TGME49_500121	required_without_glucose	0.0447	93	dephospho-CoA kinase
+TGME49_500272	required_without_glucose	0.0444	94	P-type ATPase, putative
+TGME49_500205	required_without_glucose	0.044	95	hypothetical protein, conserved
+TGME49_287470	required_without_glucose	0.0438	96	hypothetical protein
+TGME49_500008	required_without_glucose	0.0436	97	CCCH-type zinc finger protein, putative
+TGME49_277270	required_without_glucose	0.0434	98	NTPase II
+TGME49_500430	required_without_glucose	0.0434	99	hypothetical protein, conserved
+TGME49_500060	required_without_glucose	0.0432	100	dynein light chain, putative
+TGME49_500314	required_without_glucose	0.043	101	protein phosphatase PPM11C
+TGME49_500125	required_without_glucose	0.0426	102	mechanosensitive ion channel MscS, putative
+TGME49_500043	required_without_glucose	0.0425	103	hypothetical protein, conserved
+TGME49_500102	required_without_glucose	0.0425	104	hypothetical protein, conserved
+TGME49_500082	required_without_glucose	0.0424	105	armadillo repeat-containing protein
+TGME49_500096	required_without_glucose	0.0413	106	hypothetical protein, conserved
+TGME49_500130	required_without_glucose	0.0412	107	SND2 domain-containing protein
+TGME49_500007	required_without_glucose	0.0412	108	hypothetical protein, conserved
+TGME49_500254	required_without_glucose	0.0411	109	poly [ADP-ribose] polymerase, putative
+TGME49_500162	required_without_glucose	0.041	110	SSNA1 domain-containing protein
+TGME49_500304	required_without_glucose	0.0408	111	P25-alpha family protein, putative
+TGME49_252620	required_without_glucose	0.0408	112	initiation factor, subunit 2 family protein
+TGME49_500356	required_without_glucose	0.0399	113	hypothetical protein, conserved
+TGME49_267010	required_without_glucose	0.0398	114	hypothetical protein
+TGME49_289810	required_without_glucose	0.0398	115	hypothetical protein
+TGME49_500235	required_without_glucose	0.0397	116	hypothetical protein, conserved
+TGME49_500040	required_without_glucose	0.0392	117	MORN repeat-containing protein
+TGME49_500134	required_without_glucose	0.0392	118	RNA binding protein, putative
+TGME49_500416	required_without_glucose	0.0391	119	hypothetical protein, conserved
+TGME49_500386	required_without_glucose	0.0388	120	hypothetical protein, conserved
+TGME49_500221	required_without_glucose	0.0384	121	cyclin-dependent kinase regulatory subunit protein
+TGME49_500120	required_without_glucose	0.0383	122	hypothetical protein, conserved
+TGME49_500160	required_without_glucose	0.0379	123	histone arginine methyltransferase PRMT2
+TGME49_500198	required_without_glucose	0.0377	124	hypothetical protein, conserved
+TGME49_291580	required_without_glucose	0.0377	125	hypothetical protein
+TGME49_500049	required_without_glucose	0.0376	126	hypothetical protein, conserved
+TGME49_500370	required_without_glucose	0.0371	127	histidine phosphatase, putative
+TGME49_500397	required_without_glucose	0.0367	128	MoaD/ThiS family protein
+TGME49_500401	required_without_glucose	0.0366	129	PAN domain-containing protein
+TGME49_500266	required_without_glucose	0.0365	130	hypothetical protein, conserved
+TGME49_500185	required_without_glucose	0.0365	131	WD domain, G-beta repeat-containing protein
+TGME49_500136	required_without_glucose	0.0363	132	kelch repeat protein
+TGME49_500201	required_without_glucose	0.0357	133	hypothetical protein, conserved
+TGME49_500150	required_without_glucose	0.0357	134	hypothetical protein, conserved
+TGME49_500262	required_without_glucose	0.0354	135	hypothetical protein, conserved
+TGME49_500256	required_without_glucose	0.0354	136	hypothetical protein, conserved
+TGME49_500166	required_without_glucose	0.0354	137	hypothetical protein, conserved
+TGME49_500336	required_without_glucose	0.0354	138	hypothetical protein, conserved
+TGME49_500238	required_without_glucose	0.0354	139	armadillo repeat-containing protein
+TGME49_329800	required_without_glucose	0.0353	140	hypothetical protein
+TGME49_500265	required_without_glucose	0.0352	141	hypothetical protein, conserved
+TGME49_327100	required_without_glucose	0.0351	142	U5 small nuclear ribonuclear protein, putative
+TGME49_500068	required_without_glucose	0.035	143	hypothetical protein, conserved
+TGME49_500374	required_without_glucose	0.035	144	hypothetical protein, conserved
+TGME49_500193	required_without_glucose	0.035	145	chromo domain-containing protein
+TGME49_500002	required_without_glucose	0.0348	146	hypothetical protein, conserved
+TGME49_500190	required_without_glucose	0.0347	147	selenoprotein T, putative
+TGME49_500105	required_without_glucose	0.0347	148	hypothetical protein, conserved
+TGME49_500195	required_without_glucose	0.0347	149	hypothetical protein, conserved
+TGME49_326400	required_without_glucose	0.0346	150	ribosomal protein L10-like, putative
+TGME49_500364	required_without_glucose	0.0345	151	apicomplexan kinetochore protein AKIT9, putative
+TGME49_500344	required_without_glucose	0.0345	152	AP2 domain transcription factor AP2X-6
+TGME49_500014	required_without_glucose	0.0345	153	hypothetical protein, conserved
+TGME49_500194	required_without_glucose	0.0343	154	hypothetical protein, conserved
+TGME49_500036	required_without_glucose	0.0342	155	RNA binding protein, putative
+TGME49_500217	required_without_glucose	0.0341	156	hypothetical protein
+TGME49_500050	required_without_glucose	0.0341	157	hypothetical protein, conserved
+TGME49_500110	required_without_glucose	0.0341	158	sentrin-specific protease 8, putative
+TGME49_500369	required_without_glucose	0.0341	159	hypothetical protein, conserved
+TGME49_500222	required_without_glucose	0.0339	160	GCC2 and GCC3 domain-containing protein
+TGME49_500395	required_without_glucose	0.0338	161	hypothetical protein, conserved
+TGME49_500407	required_without_glucose	0.0338	162	hypothetical protein
+TGME49_500324	required_without_glucose	0.0338	163	hypothetical protein
+TGME49_500420	required_without_glucose	0.0337	164	hypothetical protein, conserved
+TGME49_500242	required_without_glucose	0.0337	165	hypothetical protein, conserved
+TGME49_500319	required_without_glucose	0.0336	166	hypothetical protein, conserved
+TGME49_323100	required_without_glucose	0.0335	167	hypothetical protein
+TGME49_500216	required_without_glucose	0.0334	168	hypothetical protein, conserved
+TGME49_500191	required_without_glucose	0.0333	169	hypothetical protein, conserved
+TGME49_500164	required_without_glucose	0.0333	170	RIIa domain-containing protein
+TGME49_500157	required_without_glucose	0.0332	171	prefoldin, putative
+TGME49_500315	required_without_glucose	0.0331	172	hypothetical protein, conserved
+TGME49_500243	required_without_glucose	0.033	173	hypothetical protein, conserved
+TGME49_500131	required_without_glucose	0.033	174	hypothetical protein, conserved
+TGME49_500427	required_without_glucose	0.0329	175	hypothetical protein, conserved
+TGME49_228980	required_without_glucose	0.0329	176	hypothetical protein
+TGME49_214783	required_without_glucose	0.0329	177	hypothetical protein
+TGME49_500371	required_without_glucose	0.0328	178	hypothetical protein
+TGME49_500352	required_without_glucose	0.0328	179	hypothetical protein, conserved
+TGME49_322010	required_without_glucose	0.0328	180	myosin-light-chain kinase
+TGME49_500126	required_without_glucose	0.0328	181	hypothetical protein, conserved
+TGME49_500431	required_without_glucose	0.0328	182	SHIPPO repeat domain-containing protein
+TGME49_500240	required_without_glucose	0.0327	183	hypothetical protein, conserved
+TGME49_500021	required_without_glucose	0.0324	184	hypothetical protein, conserved
+TGME49_500086	required_without_glucose	0.0323	185	hypothetical protein, conserved
+TGME49_235630	required_without_glucose	0.0323	186	hypothetical protein
+TGME49_500379	required_without_glucose	0.0322	187	WD repeat-containing protein
+TGME49_500094	required_without_glucose	0.0322	188	transmembrane protein, putative
+TGME49_500213	required_without_glucose	0.0321	189	LisH domain-containing protein, putative
+TGME49_500244	required_without_glucose	0.0321	190	RIB43A-like with coiled-coils protein, putative
+TGME49_500155	required_without_glucose	0.0321	191	hypothetical protein, conserved
+TGME49_500418	required_without_glucose	0.0321	192	hypothetical protein, conserved
+TGME49_500019	required_without_glucose	0.0319	193	hypothetical protein, conserved
+TGME49_500187	required_without_glucose	0.0319	194	hypothetical protein, conserved
+TGME49_500052	required_without_glucose	0.0319	195	hypothetical protein, conserved
+TGME49_500280	required_without_glucose	0.0318	196	hypothetical protein, conserved
+TGME49_500129	required_without_glucose	0.0318	197	ankyrin repeat-containing protein
+TGME49_500350	required_without_glucose	0.0318	198	hypothetical protein, conserved
+TGME49_500066	required_without_glucose	0.0317	199	DUF501 domain-containing protein
+TGME49_207065	required_without_glucose	0.0317	200	hypothetical protein
+TGME49_500234	required_without_glucose	0.0317	201	IQ calmodulin domain-containing protein
+TGME49_500159	required_without_glucose	0.0316	202	hypothetical protein
+TGME49_500313	required_without_glucose	0.0315	203	hypothetical protein, conserved
+TGME49_325800	required_without_glucose	0.0315	204	EGF family domain-containing protein
+TGME49_500180	required_without_glucose	0.0315	205	dynein light chain, putative
+TGME49_220525	required_without_glucose	0.0314	206	hypothetical protein
+TGME49_327200	required_without_glucose	0.0314	207	rhoptry neck protein, putative
+TGME49_500326	required_without_glucose	0.0313	208	hypothetical protein, conserved
+TGME49_500284	required_without_glucose	0.0313	209	hypothetical protein, conserved
+TGME49_500038	required_without_glucose	0.0313	210	hypothetical protein, conserved
+TGME49_326800	required_without_glucose	0.0313	211	S-Adenosyl homocysteine hydrolase
+TGME49_500018	required_without_glucose	0.0312	212	hypothetical protein, conserved
+TGME49_500118	required_without_glucose	0.0311	213	hypothetical protein, conserved
+TGME49_500215	required_without_glucose	0.0311	214	hypothetical protein, conserved
+TGME49_500360	required_without_glucose	0.031	215	regulator of chromosome condensation, putative
+TGME49_236230	required_without_glucose	0.031	216	hypothetical protein
+TGME49_500394	required_without_glucose	0.0309	217	CAP domain-containing protein
+TGME49_500278	required_without_glucose	0.0309	218	hypothetical protein, conserved
+TGME49_500414	required_without_glucose	0.0309	219	hypothetical protein, conserved
+TGME49_500034	required_without_glucose	0.0308	220	hypothetical protein, conserved
+TGME49_219090	required_without_glucose	0.0308	221	hypothetical protein
+TGME49_500259	required_without_glucose	0.0308	222	hypothetical protein, conserved
+TGME49_273020	required_without_glucose	0.0308	223	hypothetical protein
+TGME49_500196	required_without_glucose	0.0307	224	hypothetical protein, conserved
+TGME49_500299	required_without_glucose	0.0306	225	hypothetical protein
+TGME49_500388	required_without_glucose	0.0306	226	hypothetical protein, conserved
+TGME49_500334	required_without_glucose	0.0305	227	hypothetical protein, conserved
+TGME49_500173	required_without_glucose	0.0305	228	hypothetical protein, conserved
+TGME49_500028	required_without_glucose	0.0305	229	hypothetical protein, conserved
+TGME49_500412	required_without_glucose	0.0305	230	hypothetical protein, conserved
+TGME49_500417	required_without_glucose	0.0304	231	hypothetical protein, conserved
+TGME49_500211	required_without_glucose	0.0304	232	coiled-coil domain-containing protein 103, putative
+TGME49_500158	required_without_glucose	0.0303	233	calmodulin-binding protein, putative
+TGME49_500172	required_without_glucose	0.0303	234	hypothetical protein, conserved
+TGME49_500188	required_without_glucose	0.0303	235	WD repeat-containing protein
+TGME49_500091	required_without_glucose	0.0303	236	leucine-rich repeat containing protein
+TGME49_500390	required_without_glucose	0.0302	237	hypothetical protein, conserved
+TGME49_500227	required_without_glucose	0.0302	238	dynein heavy chain, putative
+TGME49_500428	required_without_glucose	0.0302	239	hypothetical protein, conserved
+TGME49_279100	required_without_glucose	0.0301	240	mitochondrial association factor 1a
+TGME49_500263	required_without_glucose	0.0301	241	dynein assembly factor 3, putative
+TGME49_500367	required_without_glucose	0.03	242	hypothetical protein, conserved
+TGME49_500292	required_without_glucose	0.03	243	hypothetical protein, conserved
+TGME49_500139	required_without_glucose	0.0298	244	EF-hand domain-containing protein
+TGME49_500312	required_without_glucose	0.0297	245	dense granule protein GRA41
+TGME49_500359	required_without_glucose	0.0297	246	hypothetical protein, conserved
+TGME49_500239	required_without_glucose	0.0297	247	hypothetical protein, conserved
+TGME49_500368	required_without_glucose	0.0296	248	hypothetical protein, conserved
+TGME49_500020	required_without_glucose	0.0296	249	SAM domain-containing protein
+TGME49_324300	required_without_glucose	0.0296	250	transitional endoplasmic reticulum ATPase, putative
+TGME49_500070	required_without_glucose	0.0296	251	coiled-coil domain-containing protein, putative
+TGME49_500093	required_without_glucose	0.0296	252	EF hand domain-containing protein
+TGME49_500072	required_without_glucose	0.0296	253	dynein heavy chain, putative
+TGME49_500141	required_without_glucose	0.0295	254	hypothetical protein, conserved
+TGME49_500381	required_without_glucose	0.0295	255	EF-hand domain-containing protein
+TGME49_325500	required_without_glucose	0.0295	256	ATP-binding Mrp/Nbp35 family protein
+TGME49_500297	required_without_glucose	0.0294	257	hypothetical protein, conserved
+TGME49_500288	required_without_glucose	0.0294	258	hypothetical protein, conserved
+TGME49_500349	required_without_glucose	0.0293	259	hypothetical protein
+TGME49_500311	required_without_glucose	0.0293	260	hypothetical protein, conserved
+TGME49_500078	required_without_glucose	0.0293	261	REJ domain-containing protein
+TGME49_500016	required_without_glucose	0.0291	262	hypothetical protein, conserved
+TGME49_500320	required_without_glucose	0.0291	263	hypothetical protein, conserved
+TGME49_500300	required_without_glucose	0.0291	264	hypothetical protein, conserved
+TGME49_500003	required_without_glucose	0.0291	265	hypothetical protein, conserved
+TGME49_500425	required_without_glucose	0.029	266	hypothetical protein, conserved
+TGME49_240940	required_without_glucose	0.029	267	hypothetical protein
+TGME49_500277	required_without_glucose	0.0289	268	hypothetical protein, conserved
+TGME49_500357	required_without_glucose	0.0289	269	hypothetical protein, conserved
+TGME49_500197	required_without_glucose	0.0289	270	intraflagellar transport protein 20, putative
+TGME49_500331	required_without_glucose	0.0288	271	hypothetical protein, conserved
+TGME49_500153	required_without_glucose	0.0288	272	WD repeat-containing protein
+TGME49_270020	required_without_glucose	0.0287	273	hypothetical protein
+TGME49_500161	required_without_glucose	0.0286	274	hypothetical protein, conserved
+TGME49_265650	required_without_glucose	0.0286	275	protein phosphatase 2C domain-containing protein
+TGME49_500027	required_without_glucose	0.0286	276	hypothetical protein, conserved
+TGME49_500175	required_without_glucose	0.0286	277	ankyrin repeat-containing protein
+TGME49_500440	required_without_glucose	0.0285	278	hypothetical protein, conserved
+TGME49_500294	required_without_glucose	0.0285	279	protein BRAWNIN, putative
+TGME49_500151	required_without_glucose	0.0284	280	hypothetical protein, conserved
+TGME49_500378	required_without_glucose	0.0284	281	hypothetical protein, conserved
+TGME49_500032	required_without_glucose	0.0283	282	DLEC1 domain-containing protein, putative
+TGME49_500289	required_without_glucose	0.0282	283	hypothetical protein, conserved
+TGME49_500108	required_without_glucose	0.0282	284	hypothetical protein, conserved
+TGME49_500152	required_without_glucose	0.0282	285	SAG domain-containing protein
+TGME49_500338	required_without_glucose	0.0282	286	hypothetical protein, conserved
+TGME49_500434	required_without_glucose	0.0281	287	hypothetical protein, conserved
+TGME49_500122	required_without_glucose	0.0281	288	hypothetical protein, conserved
+TGME49_500318	required_without_glucose	0.0281	289	zinc finger (CCCH type) motif-containing protein
+TGME49_500437	required_without_glucose	0.0281	290	CASC1 domain-containing protein
+TGME49_500075	required_without_glucose	0.0281	291	tetratricopeptide repeat-containing protein
+TGME49_241300	required_without_glucose	0.0281	292	hypothetical protein
+TGME49_500261	required_without_glucose	0.028	293	alanine--glyoxylate aminotransferase
+TGME49_325000	required_without_glucose	0.028	294	hypothetical protein
+TGME49_500305	required_without_glucose	0.028	295	hypothetical protein, conserved
+TGME49_500006	required_without_glucose	0.028	296	hypothetical protein, conserved
+TGME49_500276	required_without_glucose	0.0279	297	Rtr1/RPAP2 family protein
+TGME49_215055	required_without_glucose	0.0279	298	hypothetical protein
+TGME49_223470	required_without_glucose	0.0277	299	hypothetical protein
+TGME49_500432	required_without_glucose	0.0277	300	hypothetical protein, conserved
+TGME49_325100	required_without_glucose	0.0277	301	hypothetical protein
+TGME49_500212	required_without_glucose	0.0275	302	hypothetical protein, conserved
+TGME49_500097	required_without_glucose	0.0275	303	hypothetical protein, conserved
+TGME49_500030	required_without_glucose	0.0275	304	tubulin-tyrosine ligase, putative
+TGME49_500039	required_without_glucose	0.0275	305	hypothetical protein
+TGME49_500013	required_without_glucose	0.0274	306	hypothetical protein, conserved
+TGME49_325400	required_without_glucose	0.0274	307	ribosomal L37ae family protein
+TGME49_500415	required_without_glucose	0.0273	308	Myb domain-containing protein
+TGME49_500250	required_without_glucose	0.0273	309	hypothetical protein, conserved
+TGME49_500257	required_without_glucose	0.0273	310	EF hand domain-containing protein
+TGME49_500424	required_without_glucose	0.0272	311	radial spoke head protein 3, putative
+TGME49_500095	required_without_glucose	0.0272	312	hypothetical protein, conserved
+TGME49_500351	required_without_glucose	0.0272	313	hypothetical protein
+TGME49_500192	required_without_glucose	0.0272	314	hypothetical protein, conserved
+TGME49_500000	required_without_glucose	0.0272	315	hypothetical protein
+TGME49_500332	required_without_glucose	0.0272	316	hypothetical protein, conserved
+TGME49_500327	required_without_glucose	0.0271	317	hypothetical protein, conserved
+TGME49_500214	required_without_glucose	0.0271	318	hypothetical protein, conserved
+TGME49_500011	required_without_glucose	0.027	319	hypothetical protein, conserved
+TGME49_500203	required_without_glucose	0.027	320	cytochrome c oxidase subunit 6B, putative
+TGME49_304870	required_without_glucose	0.0269	321	hypothetical protein
+TGME49_500406	required_without_glucose	0.0267	322	succinate dehydrogenase assembly factor 3, putative
+TGME49_324000	required_without_glucose	0.0267	323	dynein heavy chain, n-terminal region 2 protein
+TGME49_500178	required_without_glucose	0.0266	324	hypothetical protein, conserved
+TGME49_322000	required_without_glucose	0.0266	325	myosin-light-chain kinase
+TGME49_500208	required_without_glucose	0.0266	326	hypothetical protein, conserved
+TGME49_500389	required_without_glucose	0.0265	327	ATPase, AAA family protein
+TGME49_500226	required_without_glucose	0.0265	328	patched domain-containing protein, putative
+TGME49_500001	required_without_glucose	0.0263	329	hypothetical protein, conserved
+TGME49_500199	required_without_glucose	0.0262	330	SAG-related sequence
+TGME49_292610	required_without_glucose	0.0262	331	Toxoplasma gondii family C protein
+TGME49_500073	required_without_glucose	0.0261	332	hypothetical protein, conserved
+TGME49_325700	required_without_glucose	0.0261	333	ATP-binding protein
+TGME49_500281	required_without_glucose	0.026	334	hypothetical protein
+TGME49_500342	required_without_glucose	0.0259	335	3'5'-cyclic nucleotide phosphodiesterase PDE3
+TGME49_500251	required_without_glucose	0.0258	336	hypothetical protein, conserved
+TGME49_324700	required_without_glucose	0.0258	337	hypothetical protein
+TGME49_500229	required_without_glucose	0.0258	338	hypothetical protein, conserved
+TGME49_500400	required_without_glucose	0.0257	339	hypothetical protein, conserved
+TGME49_500419	required_without_glucose	0.0257	340	hypothetical protein
+TGME49_500410	required_without_glucose	0.0256	341	hypothetical protein, conserved
+TGME49_500063	required_without_glucose	0.0256	342	hypothetical protein, conserved
+TGME49_500140	required_without_glucose	0.0256	343	hypothetical protein, conserved
+TGME49_500117	required_without_glucose	0.0256	344	hypothetical protein, conserved
+TGME49_500396	required_without_glucose	0.0255	345	hypothetical protein
+TGME49_500223	required_without_glucose	0.0254	346	oocyst wall protein
+TGME49_500348	required_without_glucose	0.0254	347	hypothetical protein
+TGME49_500138	required_without_glucose	0.0254	348	hypothetical protein
+TGME49_500316	required_without_glucose	0.0253	349	hypothetical protein, conserved
+TGME49_500241	required_without_glucose	0.0253	350	cysteine dioxygenase, putative
+TGME49_214787	required_without_glucose	0.0253	351	hypothetical protein
+TGME49_500031	required_without_glucose	0.0253	352	hypothetical protein, conserved
+TGME49_500189	required_without_glucose	0.0253	353	E3 ubiquitin-protein ligase, putative
+TGME49_500224	required_without_glucose	0.0252	354	GAF domain-containing protein
+TGME49_500347	required_without_glucose	0.0252	355	hypothetical protein, conserved
+TGME49_500148	required_without_glucose	0.0252	356	GCC2 and GCC3 domain-containing protein
+TGME49_500413	required_without_glucose	0.0252	357	hypothetical protein, conserved
+TGME49_500171	required_without_glucose	0.0251	358	lipocalin, putative
+TGME49_500343	required_without_glucose	0.025	359	thrombospondin type 1 domain-containing protein
+TGME49_500274	required_without_glucose	0.0248	360	hypothetical protein, conserved
+TGME49_500382	required_without_glucose	0.0246	361	hypothetical protein, conserved
+TGME49_500248	required_without_glucose	0.0245	362	hypothetical protein, conserved
+TGME49_500375	required_without_glucose	0.0245	363	rhoptry kinase family protein
+TGME49_500023	required_without_glucose	0.0245	364	hypothetical protein, conserved
+TGME49_500337	required_without_glucose	0.0243	365	ubiquitin-like protein, putative
+TGME49_325300	required_without_glucose	0.0242	366	proteasome subunit alpha type, putative
+TGME49_500119	required_without_glucose	0.0242	367	CRAL/TRIO domain-containing protein, putative
+TGME49_500012	required_without_glucose	0.0242	368	thrombospondin type 1 domain-containing protein
+TGME49_500376	required_without_glucose	0.0242	369	rhoptry kinase family protein
+TGME49_500069	required_without_glucose	0.0241	370	hypothetical protein, conserved
+TGME49_500402	required_without_glucose	0.0241	371	hypothetical protein, conserved
+TGME49_500113	required_without_glucose	0.024	372	WD repeat-containing protein
+TGME49_500042	required_without_glucose	0.024	373	AP2 domain transcription factor AP2X-10
+TGME49_500017	required_without_glucose	0.024	374	hypothetical protein, conserved
+TGME49_500092	required_without_glucose	0.0238	375	hypothetical protein, conserved
+TGME49_500285	required_without_glucose	0.0237	376	CPBP intramembrane metalloprotease, putative
+TGME49_500426	required_without_glucose	0.0236	377	hypothetical protein, conserved
+TGME49_500246	required_without_glucose	0.0236	378	intraflagellar transport protein IFT88, putative
+TGME49_200260	required_without_glucose	0.0235	379	hypothetical protein
+TGME49_500062	required_without_glucose	0.0235	380	dynein heavy chain, putative
+TGME49_500210	required_without_glucose	0.0235	381	leucine rich repeat-containing protein
+TGME49_500255	required_without_glucose	0.0234	382	hypothetical protein, conserved
+TGME49_302000	required_without_glucose	0.0233	383	chaperone clp, putative
+TGME49_500218	required_without_glucose	0.0233	384	Toxoplasma gondii family C protein
+TGME49_500335	required_without_glucose	0.0233	385	CFAP53 domain-containing protein
+TGME49_212830	required_without_glucose	0.0233	386	expressed protein JLP1
+TGME49_500048	required_without_glucose	0.0232	387	hypothetical protein, conserved
+TGME49_500346	required_without_glucose	0.023	388	hypothetical protein, conserved
+TGME49_500176	required_without_glucose	0.0229	389	hypothetical protein, conserved
+TGME49_322700	required_without_glucose	0.0228	390	collagen, putative
+TGME49_500373	required_without_glucose	0.0228	391	MORN repeat-containing protein
+TGME49_324500	required_without_glucose	0.0224	392	nuclear distribution protein C, putative
+TGME49_241305	required_without_glucose	0.0224	393	hypothetical protein
+TGME49_500015	required_without_glucose	0.0223	394	hypothetical protein, conserved
+TGME49_500085	required_without_glucose	0.0222	395	P-type ATPase, putative
+TGME49_500258	required_without_glucose	0.0222	396	EF hand domain-containing protein
+TGME49_500184	required_without_glucose	0.0222	397	Toxoplasma gondii family C protein
+TGME49_500233	required_without_glucose	0.0221	398	hypothetical protein, conserved
+TGME49_500296	required_without_glucose	0.0221	399	KRUF family protein
+TGME49_326200	required_without_glucose	0.0221	400	type I fatty acid synthase
+TGME49_500004	required_without_glucose	0.0221	401	peptidase, putative
+TGME49_500298	required_without_glucose	0.0221	402	hypothetical protein, conserved
+TGME49_500225	required_without_glucose	0.0221	403	hypothetical protein, conserved
+TGME49_500084	required_without_glucose	0.022	404	hypothetical protein, conserved
+TGME49_500219	required_without_glucose	0.022	405	zinc finger protein, putative
+TGME49_500056	required_without_glucose	0.022	406	selenoprotein W, putative
+TGME49_500283	required_without_glucose	0.022	407	ATP:guanido phosphotransferase, putative
+TGME49_500377	required_without_glucose	0.0219	408	hypothetical protein, conserved
+TGME49_326900	required_without_glucose	0.0218	409	hypothetical protein
+TGME49_500404	required_without_glucose	0.0218	410	nucleoside diphosphate kinase, putative
+TGME49_500409	required_without_glucose	0.0218	411	hypothetical protein, conserved
+TGME49_500273	required_without_glucose	0.0218	412	hypothetical protein, conserved
+TGME49_500071	required_without_glucose	0.0218	413	sugar transporter, putative
+TGME49_250955	required_without_glucose	0.0218	414	KRUF family protein
+TGME49_298830	required_without_glucose	0.0217	415	hypothetical protein
+TGME49_300611	required_without_glucose	0.0216	416	ribosomal protein L14
+TGME49_500355	required_without_glucose	0.0216	417	ankyrin repeat-containing protein
+TGME49_500081	required_without_glucose	0.0216	418	hypothetical protein, conserved
+TGME49_221855	required_without_glucose	0.0215	419	hypothetical protein
+TGME49_300700	required_without_glucose	0.0215	420	ribosomal protein S2, putative
+TGME49_221860	required_without_glucose	0.0214	421	hypothetical protein
+TGME49_270030	required_without_glucose	0.0213	422	hypothetical protein
+TGME49_500111	required_without_glucose	0.0212	423	Toxoplasma gondii family B protein
+TGME49_500026	required_without_glucose	0.0212	424	Toxoplasma gondii family B protein
+TGME49_500149	required_without_glucose	0.0211	425	hypothetical protein, conserved
+TGME49_318880	required_without_glucose	0.0211	426	hypothetical protein
+TGME49_500074	required_without_glucose	0.021	427	DUF4200 domain-containing protein
+TGME49_278757	required_without_glucose	0.0209	428	hypothetical protein
+TGME49_245428	required_without_glucose	0.0209	429	hypothetical protein
+TGME49_323110	required_without_glucose	0.0208	430	hypothetical protein
+TGME49_328700	required_without_glucose	0.0207	431	hypothetical protein
+TGME49_264250	required_without_glucose	0.0206	432	hypothetical protein
+TGME49_500206	required_without_glucose	0.0206	433	coiled-coil domain-containing protein
+TGME49_500264	required_without_glucose	0.0205	434	hypothetical protein, conserved
+TGME49_309230	required_without_glucose	0.0203	435	hypothetical protein
+TGME49_241610	required_without_glucose	0.0203	436	dense granule protein GRA21
+TGME49_500147	required_without_glucose	0.0202	437	nucleoside transporter, putative
+TGME49_327600	required_without_glucose	0.0201	438	exoribonuclease, putative
+TGME49_500177	required_without_glucose	0.0201	439	hypothetical protein, conserved
+TGME49_300601	required_without_glucose	0.0201	440	ribosomal protein S11
+TGME49_327900	required_without_glucose	0.02	441	hypothetical protein
+TGME49_500115	required_without_glucose	0.0199	442	EGF-like domain-containing protein
+TGME49_328600	required_without_glucose	0.0198	443	Isoleucine-tRNA ligase
+TGME49_500168	required_without_glucose	0.0197	444	cilia- and flagella-associated protein 54, putative
+TGME49_306688	required_without_glucose	0.0197	445	hypothetical protein
+TGME49_500083	required_without_glucose	0.0197	446	hypothetical protein, conserved
+TGME49_302150	required_without_glucose	0.0196	447	ATPase, AAA family protein
+TGME49_303450	required_without_glucose	0.0196	448	coatomer gamma subunit
+TGME49_236635	required_without_glucose	0.0195	449	hypothetical protein
+TGME49_325600	required_without_glucose	0.0193	450	hypothetical protein
+TGME49_250115	required_without_glucose	0.0193	451	hypothetical protein
+TGME49_323600	required_without_glucose	0.0192	452	OTU family cysteine protease
+TGME49_323700	required_without_glucose	0.0192	453	OTU family cysteine protease
+TGME49_323800	required_without_glucose	0.0192	454	OTU family cysteine protease
+TGME49_500366	required_without_glucose	0.0191	455	hypothetical protein, conserved
+TGME49_270290	required_without_glucose	0.0191	456	hypothetical protein
+TGME49_324900	required_without_glucose	0.0189	457	STAS domain-containing protein
+TGME49_500103	required_without_glucose	0.0189	458	hypothetical protein
+TGME49_500339	required_without_glucose	0.0188	459	thrombospondin type 1 domain-containing protein
+TGME49_500340	required_without_glucose	0.0188	460	3'5'-cyclic nucleotide phosphodiesterase, putative
+TGME49_327400	required_without_glucose	0.0188	461	dynein heavy chain family protein
+TGME49_500268	required_without_glucose	0.0188	462	hypothetical protein, conserved
+TGME49_500170	required_without_glucose	0.0187	463	hypothetical protein, conserved
+TGME49_210100	required_without_glucose	0.0187	464	hypothetical protein
+TGME49_500408	required_without_glucose	0.0186	465	hypothetical protein, conserved
+TGME49_500362	required_without_glucose	0.0186	466	hypothetical protein, conserved
+TGME49_327500	required_without_glucose	0.0185	467	hypothetical protein
+TGME49_300690	required_without_glucose	0.0185	468	RNA polymerase C2, putative
+TGME49_326000	required_without_glucose	0.0184	469	RNA binding protein, putative
+TGME49_500398	required_without_glucose	0.0184	470	rhoptry neck protein RON2L2 (sporoRON2)
+TGME49_500127	required_without_glucose	0.0183	471	hypothetical protein, conserved
+TGME49_500144	required_without_glucose	0.0183	472	hypothetical protein, conserved
+TGME49_500290	required_without_glucose	0.0183	473	hypothetical protein, conserved
+TGME49_300660	required_without_glucose	0.0182	474	RNA polymerase B
+TGME49_212410	required_without_glucose	0.0181	475	dense granule protein GRA11A
+TGME49_251580	required_without_glucose	0.0181	476	hypothetical protein
+TGME49_500353	required_without_glucose	0.0181	477	SAG-related sequence
+TGME49_237130	required_without_glucose	0.018	478	cytochrome b, putative
+TGME49_500341	required_without_glucose	0.0179	479	hypothetical protein, conserved
+TGME49_322800	required_without_glucose	0.0179	480	hypothetical protein
+TGME49_328000	required_without_glucose	0.0179	481	hypothetical protein
+TGME49_324100	required_without_glucose	0.0179	482	hypothetical protein
+TGME49_328300	required_without_glucose	0.0177	483	CCR4-NOT transcription complex subunit 4, putative
+TGME49_328400	required_without_glucose	0.0177	484	aminotransferase, class V family protein
+TGME49_327000	required_without_glucose	0.0177	485	U5 small nuclear ribonucleoprotein component (U5 snRNP), putative
+TGME49_314650	required_without_glucose	0.0176	486	hypothetical protein
+TGME49_500181	required_without_glucose	0.0176	487	calpain family cysteine protease, putative
+TGME49_302450	required_without_glucose	0.0175	488	TFIIH basal transcription factor complex helicase XPB subunit, putative
+TGME49_500079	required_without_glucose	0.0175	489	cilia- and flagella-associated protein 69, putative
+TGME49_500439	required_without_glucose	0.0175	490	hypothetical protein, conserved
+TGME49_300604	required_without_glucose	0.0175	491	ribosomal protein L36
+TGME49_500010	required_without_glucose	0.0175	492	hypothetical protein, conserved
+TGME49_500354	required_without_glucose	0.0174	493	hypothetical protein, conserved
+TGME49_500358	required_without_glucose	0.0173	494	WD domain, G-beta repeat-containing protein
+TGME49_200250	required_without_glucose	0.0171	495	microneme protein MIC17A
+TGME49_327700	required_without_glucose	0.0171	496	hypothetical protein
+TGME49_215785	required_without_glucose	0.0169	497	rhoptry protein ROP2A
+TGME49_500143	required_without_glucose	0.0168	498	hypothetical protein, conserved
+TGME49_250950	required_without_glucose	0.0168	499	KRUF family protein
+TGME49_287280	required_without_glucose	0.0167	500	Toxoplasma gondii family C protein
+TGME49_326700	required_without_glucose	0.0166	501	DNA-directed RNA polymerase, putative
+TGME49_500230	required_without_glucose	0.0165	502	hypothetical protein, conserved
+TGME49_500438	required_without_glucose	0.0165	503	SPAG17 domain-containing protein
+TGME49_500303	required_without_glucose	0.0163	504	PAN domain-containing protein
+TGME49_275390	required_without_glucose	0.0163	505	hypothetical protein
+TGME49_256650	required_without_glucose	0.0161	506	hypothetical protein
+TGME49_500391	required_without_glucose	0.0161	507	copper amine oxidase, putative
+TGME49_303050	required_without_glucose	0.0161	508	zinc finger, c2h2 type family protein
+TGME49_355200	required_without_glucose	0.016	509	hypothetical protein
+TGME49_301996	required_without_glucose	0.0159	510	ORF D
+TGME49_278005	required_without_glucose	0.0159	511	hypothetical protein
+TGME49_500087	required_without_glucose	0.0158	512	hypothetical protein, conserved
+TGME49_500182	required_without_glucose	0.0158	513	regulator of chromosome condensation, putative
+TGME49_323900	required_without_glucose	0.0157	514	hypothetical protein
+TGME49_500220	required_without_glucose	0.0157	515	hypothetical protein, conserved
+TGME49_500009	required_without_glucose	0.0157	516	kinesin-like protein
+TGME49_301998	required_without_glucose	0.0156	517	ORF C, putative
+TGME49_301480	required_without_glucose	0.0156	518	hypothetical protein
+TGME49_300613	required_without_glucose	0.0155	519	ribosomal protein L16, putative
+TGME49_297190	required_without_glucose	0.0154	520	hypothetical protein
+TGME49_315705	required_without_glucose	0.0154	521	hypothetical protein
+TGME49_500384	required_without_glucose	0.0154	522	F-box domain-containing protein
+TGME49_500271	required_without_glucose	0.0153	523	vacuolar protein 8, putative
+TGME49_500044	required_without_glucose	0.0153	524	3'5'-cyclic nucleotide phosphodiesterase PDE16
+TGME49_315340	required_without_glucose	0.0153	525	SAG-related sequence SRS52C
+TGME49_300650	required_without_glucose	0.0153	526	iron-sulfur cluster assembly protein SufB
+TGME49_500267	required_without_glucose	0.0152	527	intraflagellar transport protein IFT140, putative
+TGME49_328500	required_without_glucose	0.0151	528	hypothetical protein
+TGME49_309185	required_without_glucose	0.0151	529	hypothetical protein
+TGME49_329400	required_without_glucose	0.015	530	Toxoplasma gondii family C protein
+TGME49_237900	required_without_glucose	0.015	531	OTU domain-containing protein OTUD1E
+TGME49_322900	required_without_glucose	0.0149	532	hypothetical protein
+TGME49_500080	required_without_glucose	0.0149	533	kinesin-like protein KIN14, putative
+TGME49_300612	required_without_glucose	0.0148	534	ribosomal protein S17
+TGME49_500101	required_without_glucose	0.0147	535	fatty acyl-CoA reductase, putative
+TGME49_300680	required_without_glucose	0.0145	536	RNA polymerase C1, putative
+TGME49_278310	required_without_glucose	0.0144	537	hypothetical protein
+TGME49_326100	required_without_glucose	0.0143	538	dynamin gtpase
+TGME49_278100	required_without_glucose	0.0143	539	Toxoplasma gondii family A protein
+TGME49_325900	required_without_glucose	0.0142	540	zinc finger (CCCH type) motif-containing protein
+TGME49_500099	required_without_glucose	0.0141	541	hypothetical protein, conserved
+TGME49_500295	required_without_glucose	0.0141	542	Toxoplasma gondii family B protein
+TGME49_327300	required_without_glucose	0.0141	543	Toxoplasma gondii family A protein
+TGME49_311050	required_without_glucose	0.0141	544	hypothetical protein
+TGME49_214410	required_without_glucose	0.0139	545	hypothetical protein
+TGME49_329500	required_without_glucose	0.0139	546	hypothetical protein
+TGME49_249665	required_without_glucose	0.0138	547	hypothetical protein
+TGME49_500423	required_without_glucose	0.0136	548	MYCBP-associated protein, putative
+TGME49_328200	required_without_glucose	0.0135	549	phosphatidylinositol 4-kinase
+TGME49_324200	required_without_glucose	0.0135	550	hypothetical protein
+TGME49_500169	required_without_glucose	0.0135	551	CFAP99 domain-containing protein
+TGME49_500363	required_without_glucose	0.0133	552	regulator of chromosome condensation, putative
+TGME49_500022	required_without_glucose	0.0132	553	cyclic nucleotide-binding domain-containing protein
+TGME49_326500	required_without_glucose	0.0132	554	hypothetical protein
+TGME49_287450	required_without_glucose	0.0132	555	hypothetical protein
+TGME49_209005	required_without_glucose	0.0131	556	hypothetical protein
+TGME49_296121	required_without_glucose	0.0131	557	hypothetical protein
+TGME49_500393	required_without_glucose	0.0129	558	hypothetical protein, conserved
+TGME49_302055	required_without_glucose	0.0129	559	ribosomal protein S12
+TGME49_242250	required_without_glucose	0.0129	560	Protein kinase domain-containing protein [Source:UniProtKB/TrEMBL;Acc:S8F3P2]
+TGME49_293425	required_without_glucose	0.0129	561	apicomplexan amino acid transporter ApiAT5-6
+TGME49_202330	required_without_glucose	0.0129	562	hypothetical protein
+TGME49_500421	required_without_glucose	0.0128	563	hypothetical protein, conserved
+TGME49_255060	required_without_glucose	0.0128	564	cytochrome b(N-terminal)/b6/petB subfamily protein
+TGME49_500383	required_without_glucose	0.0128	565	cilia- and flagella-associated protein 61, putative
+TGME49_500411	required_without_glucose	0.0128	566	hypothetical protein, conserved
+TGME49_321900	required_without_glucose	0.0128	567	fructose-1,6-bisphosphate aldolase
+TGME49_220740	required_without_glucose	0.0127	568	hypothetical protein
+TGME49_500260	required_without_glucose	0.0126	569	hypothetical protein, conserved
+TGME49_232990	required_without_glucose	0.0126	570	hypothetical protein
+TGME49_326600	required_without_glucose	0.0126	571	histone, putative
+TGME49_271570	required_without_glucose	0.0125	572	Toxoplasma gondii family D protein
+TGME49_249725	required_without_glucose	0.0124	573	hypothetical protein
+TGME49_232110	required_without_glucose	0.0124	574	hypothetical protein
+TGME49_500291	required_without_glucose	0.0124	575	WD repeat-containing protein 19, putative
+TGME49_302057	required_without_glucose	0.0123	576	ribosomal protein S7
+TGME49_218130	required_without_glucose	0.0123	577	hypothetical protein
+TGME49_329100	required_without_glucose	0.0122	578	Toxoplasma gondii family C protein
+TGME49_500045	required_without_glucose	0.0122	579	endo-1,3(4)-beta-glucanase, putative
+TGME49_203815	required_without_glucose	0.0122	580	hypothetical protein
+TGME49_322030	required_without_glucose	0.0122	581	hypothetical protein
+TGME49_500333	required_without_glucose	0.0121	582	tetratricopeptide repeat-containing protein
+TGME49_252065	required_without_glucose	0.0121	583	KRUF family protein
+TGME49_500345	required_without_glucose	0.0121	584	hypothetical protein, conserved
+TGME49_500156	required_without_glucose	0.012	585	hypothetical protein
+TGME49_231050	required_without_glucose	0.012	586	hypothetical protein
+TGME49_327800	required_without_glucose	0.0119	587	dynein-1-alpha heavy chain, flagellar inner arm I1 complex, putative
+TGME49_242240	required_without_glucose	0.0117	588	rhoptry kinase family protein ROP19A
+TGME49_500380	required_without_glucose	0.0117	589	cilia- and flagella-associated protein 46, putative
+TGME49_221275	required_without_glucose	0.0116	590	hypothetical protein
+TGME49_323300	required_without_glucose	0.0116	591	myosin-light-chain kinase
+TGME49_217951	required_without_glucose	0.0115	592	hypothetical protein
+TGME49_500061	required_without_glucose	0.0115	593	PAN domain-containing protein
+TGME49_500310	required_without_glucose	0.0114	594	nucleotidyltransferase, putative
+TGME49_329200	required_without_glucose	0.0113	595	hypothetical protein
+TGME49_256965	required_without_glucose	0.0111	596	hypothetical protein
+TGME49_238450	required_without_glucose	0.0111	597	hypothetical protein
+TGME49_232085	required_without_glucose	0.0111	598	hypothetical protein
+TGME49_322500	required_without_glucose	0.0111	599	hypothetical protein
+TGME49_274280	required_without_glucose	0.0111	600	hypothetical protein
+TGME49_500204	required_without_glucose	0.0109	601	PIBF1 domain-containing protein
+TGME49_500429	required_without_glucose	0.0109	602	hypothetical protein, conserved
+TGME49_302053	required_without_glucose	0.0108	603	ribosomal protein S7
+TGME49_500047	required_without_glucose	0.0107	604	Dpy-30 motif protein
+TGME49_322600	required_without_glucose	0.0106	605	cytochrome c oxidase subunit iii subfamily protein
+TGME49_211920	required_without_glucose	0.0106	606	hypothetical protein
+TGME49_323000	required_without_glucose	0.0106	607	KRUF family protein
+TGME49_244930	required_without_glucose	0.0104	608	hypothetical protein
+TGME49_225958	required_without_glucose	0.0104	609	hypothetical protein
+TGME49_241710	required_without_glucose	0.0102	610	hypothetical protein
+TGME49_500232	required_without_glucose	0.0101	611	PIH1 domain-containing protein
+TGME49_308096	required_without_glucose	0.01	612	rhoptry kinase family protein (incomplete catalytic triad)
+TGME49_300641	required_without_glucose	0.01	613	ribosomal protein S4
+TGME49_262715	required_without_glucose	0.0099	614	hypothetical protein
+TGME49_302060	required_without_glucose	0.0098	615	elongation factor tu, apicoplast, putative
+TGME49_330000	required_without_glucose	0.0096	616	cytochrome b
+TGME49_292280	required_without_glucose	0.0096	617	SAG-related sequence SRS36D
+TGME49_205770	required_without_glucose	0.0096	618	hypothetical protein
+TGME49_323020	required_without_glucose	0.0095	619	KRUF family protein
+TGME49_500132	required_without_glucose	0.0095	620	hypothetical protein, conserved
+TGME49_323500	required_without_glucose	0.0093	621	hypothetical protein
+TGME49_266368	required_without_glucose	0.0092	622	hypothetical protein
+TGME49_296340	required_without_glucose	0.0091	623	hypothetical protein
+TGME49_210678	required_without_glucose	0.0091	624	OTU domain-containing protein OTUD1D
+TGME49_220730	required_without_glucose	0.0091	625	hypothetical protein
+TGME49_242118	required_without_glucose	0.009	626	myosin-light-chain kinase
+TGME49_308093	required_without_glucose	0.009	627	rhoptry kinase family protein (incomplete catalytic triad)
+TGME49_220640	required_without_glucose	0.0089	628	hypothetical protein
+TGME49_322020	required_without_glucose	0.0087	629	hypothetical protein
+TGME49_323010	required_without_glucose	0.0087	630	hypothetical protein
+TGME49_328900	required_without_glucose	0.0087	631	hypothetical protein
+TGME49_323400	required_without_glucose	0.0085	632	cytochrome c oxidase subunit iii subfamily protein
+TGME49_301890	required_without_glucose	0.0085	633	Toxoplasma gondii family B protein
+TGME49_300790	required_without_glucose	0.0085	634	hypothetical protein
+TGME49_326300	required_without_glucose	0.0083	635	hypothetical protein
+TGME49_302009	required_without_glucose	0.0083	636	ORF B
+TGME49_242230	required_without_glucose	0.0083	637	rhoptry kinase family protein ROP29
+TGME49_205530	required_without_glucose	0.0082	638	hypothetical protein
+TGME49_300615	required_without_glucose	0.0082	639	ribosomal protein S3, putative
+TGME49_251665	required_without_glucose	0.0081	640	hypothetical protein
+TGME49_308820	required_without_glucose	0.0081	641	hypothetical protein
+TGME49_296231	required_without_glucose	0.008	642	hypothetical protein
+TGME49_256220	required_without_glucose	0.0079	643	hypothetical protein
+TGME49_233315	required_without_glucose	0.0078	644	hypothetical protein
+TGME49_322200	required_without_glucose	0.0077	645	apocytochrome b, putative
+TGME49_314570	required_without_glucose	0.0077	646	hypothetical protein
+TGME49_322400	required_without_glucose	0.0077	647	hypothetical protein
+TGME49_287510	required_without_glucose	0.0076	648	aromatic amino acid hydrolase AAH1
+TGME49_277240	required_without_glucose	0.0075	649	NTPase I
+TGME49_231996	required_without_glucose	0.0075	650	hypothetical protein
+TGME49_220720	required_without_glucose	0.0074	651	hypothetical protein
+TGME49_300608	required_without_glucose	0.0073	652	ribosomal protein L6, putative
+TGME49_329000	required_without_glucose	0.0073	653	hypothetical protein
+TGME49_287460	required_without_glucose	0.0071	654	hypothetical protein
+TGME49_329300	required_without_glucose	0.0071	655	hypothetical protein
+TGME49_301690	required_without_glucose	0.0068	656	hypothetical protein
+TGME49_317820	required_without_glucose	0.0067	657	hypothetical protein
+TGME49_500361	required_without_glucose	0.0067	658	aminopeptidase, putative
+TGME49_300606	required_without_glucose	0.0067	659	ribosomal protein S5, putative
+TGME49_324400	required_without_glucose	0.0066	660	hypothetical protein
+TGME49_241310	required_without_glucose	0.0066	661	hypothetical protein
+TGME49_307815	required_without_glucose	0.0065	662	hypothetical protein
+TGME49_237595	required_without_glucose	0.0065	663	hypothetical protein
+TGME49_293368	required_without_glucose	0.0064	664	TIP49 C-terminus family protein
+TGME49_328800	required_without_glucose	0.0064	665	hypothetical protein
+TGME49_321710	required_without_glucose	0.0062	666	Kinase-like domain-containing protein [Source:UniProtKB/TrEMBL;Acc:S8FBM1]
+TGME49_210600	required_without_glucose	0.0062	667	KRUF family protein
+TGME49_500046	required_without_glucose	0.0061	668	hypothetical protein, conserved
+TGME49_253180	required_without_glucose	0.0061	669	hypothetical protein
+TGME49_292600	required_without_glucose	0.0059	670	hypothetical protein
+TGME49_325200	required_without_glucose	0.0058	671	pyridoxal-phosphate dependent superfamily protein
+TGME49_300631	required_without_glucose	0.0058	672	ribosomal protein L4
+TGME49_321700	required_without_glucose	0.0058	673	Kinase-like domain-containing protein [Source:UniProtKB/TrEMBL;Acc:S8F8L7]
+TGME49_200700	required_without_glucose	0.0057	674	Toxoplasma gondii family C protein
+TGME49_280070	required_without_glucose	0.0057	675	hypothetical protein
+TGME49_220060	required_without_glucose	0.0057	676	hypothetical protein
+TGME49_279560	required_without_glucose	0.0055	677	hypothetical protein
+TGME49_322110	required_without_glucose	0.0055	678	hypothetical protein
+TGME49_287430	required_without_glucose	0.0054	679	hypothetical protein
+TGME49_287440	required_without_glucose	0.0053	680	hypothetical protein
+TGME49_322100	required_without_glucose	0.0053	681	myosin-light-chain kinase
+TGME49_323200	required_without_glucose	0.0052	682	OTU family cysteine protease
+TGME49_220070	required_without_glucose	0.0052	683	hypothetical protein
+TGME49_200110	required_without_glucose	0.0051	684	hypothetical protein
+TGME49_329600	required_without_glucose	0.0048	685	hypothetical protein
+TGME49_302005	required_without_glucose	0.0047	686	ORF F
+TGME49_302003	required_without_glucose	0.0047	687	ORF E
+TGME49_234375	required_without_glucose	0.0047	688	hypothetical protein
+TGME49_302007	required_without_glucose	0.0047	689	ribosomal protein L11, putative
+TGME49_255460	required_without_glucose	0.0045	690	EGF family domain-containing protein
+TGME49_329620	required_without_glucose	0.0044	691	hypothetical protein
+TGME49_302050	required_without_glucose	0.0044	692	elongation factor tu, apicoplast, putative
+TGME49_322130	required_without_glucose	0.0043	693	hypothetical protein
+TGME49_203688	required_without_glucose	0.0043	694	hypothetical protein
+TGME49_237800	required_without_glucose	0.0042	695	dense granule protein GRA11B
+TGME49_300618	required_without_glucose	0.0042	696	ribosomal protein S19
+TGME49_292390	required_without_glucose	0.0042	697	KRUF family protein
+TGME49_323320	required_without_glucose	0.0042	698	hypothetical protein
+TGME49_240350	required_without_glucose	0.004	699	Toxoplasma gondii family E protein
+TGME49_238530	required_without_glucose	0.004	700	SRS domain-containing protein
+TGME49_323330	required_without_glucose	0.0039	701	hypothetical protein
+TGME49_207403	required_without_glucose	0.0039	702	hypothetical protein
+TGME49_234060	required_without_glucose	0.0038	703	hypothetical protein
+TGME49_323310	required_without_glucose	0.0037	704	hypothetical protein
+TGME49_238520	required_without_glucose	0.0037	705	SAG-related sequence SRS22G
+TGME49_243120	required_without_glucose	0.0036	706	Toxoplasma gondii family A protein
+TGME49_281350	required_without_glucose	0.0035	707	hypothetical protein
+TGME49_322120	required_without_glucose	0.0035	708	rhoptry kinase family protein
+TGME49_307470	required_without_glucose	0.0034	709	hypothetical protein
+TGME49_237810	required_without_glucose	0.0033	710	hypothetical protein
+TGME49_271580	required_without_glucose	0.0033	711	Toxoplasma gondii family D protein
+TGME49_300780	required_without_glucose	0.0033	712	hypothetical protein
+TGME49_224780	required_without_glucose	0.0033	713	SAG-related sequence SRS40B [Source:UniProtKB/TrEMBL;Acc:S8EU84]
+TGME49_242110	required_without_glucose	0.0033	714	rhoptry kinase family protein ROP38
+TGME49_281040	required_without_glucose	0.0033	715	hypothetical protein
+TGME49_300621	required_without_glucose	0.0032	716	ribosomal protein L2
+TGME49_322300	required_without_glucose	0.0031	717	hypothetical protein
+TGME49_298590	required_without_glucose	0.0031	718	hypothetical protein
+TGME49_220650	required_without_glucose	0.0031	719	hypothetical protein
+TGME49_200240	required_without_glucose	0.0031	720	microneme protein MIC17B
+TGME49_200130	required_without_glucose	0.0031	721	Toxoplasma gondii family C protein
+TGME49_300370	required_without_glucose	0.003	722	hypothetical protein
+TGME49_237120	required_without_glucose	0.003	723	hypothetical protein
+TGME49_224770	required_without_glucose	0.0028	724	SAG-related sequence SRS40D
+TGME49_311820	required_without_glucose	0.0028	725	hypothetical protein
+TGME49_200230	required_without_glucose	0.0027	726	microneme protein MIC17C
+TGME49_275355	required_without_glucose	0.0027	727	SAG-related sequence SRS47A
+TGME49_329700	required_without_glucose	0.0026	728	SAG-related sequence SRS26J
+TGME49_217961	required_without_glucose	0.0026	729	hypothetical protein
+TGME49_212420	required_without_glucose	0.0023	730	hypothetical protein
+TGME49_212710	required_without_glucose	0.0022	731	phenylalanine-4-hydroxylase
+TGME49_240325	required_without_glucose	0.002	732	Toxoplasma gondii family E protein
+TGME49_267980	required_without_glucose	0.0019	733	hypothetical protein
+TGME49_259410	required_without_glucose	0.0019	734	SAG-related sequence SRS26A
+TGME49_318120	required_without_glucose	0.0019	735	hypothetical protein
+TGME49_274700	required_without_glucose	0.0017	736	hypothetical protein
+TGME49_296640	required_without_glucose	0.0017	737	SAG-related sequence SRS48E
+TGME49_207015	required_without_glucose	0.0017	738	SRS domain-containing protein
+TGME49_266335	required_without_glucose	0.0016	739	Toxoplasma gondii family A protein
+TGME49_329710	required_without_glucose	0.0014	740	SAG-related sequence SRS26I
+TGME49_238480	required_without_glucose	0.0014	741	SAG-related sequence SRS22D
+TGME49_207010	required_without_glucose	0.0013	742	SAG-related sequence SRS48K
+TGME49_238850	required_without_glucose	0.0013	743	SAG-related sequence SRS22I
+TGME49_266340	required_without_glucose	0.0013	744	Toxoplasma gondii family A protein
+TGME49_251962	required_without_glucose	0.0013	745	SAG-related sequence SRS59K
+TGME49_259300	required_without_glucose	0.0012	746	SAG-related sequence SRS26B
+TGME49_207005	required_without_glucose	0.0011	747	SAG-related sequence SRS48Q
