@@ -354,7 +354,10 @@ def test_one_search_returns_genes_questions_and_index_rows_interleaved(catalogue
 
 def test_a_product_name_finds_the_gene_not_only_its_accession(catalogue):
     found = ND.search("dense granule", catalogue, genes=GENES)
-    assert [n.destination.target for n in found] == ["TGME49_208830"]
+    targets = [n.destination.target for n in found]
+    # The gene is found by its product; the localization question about dense granules may be found too.
+    assert "TGME49_208830" in targets
+    assert set(targets) <= {"TGME49_208830", "localization_dense_granules"}
 
 
 def test_a_searched_node_may_carry_the_name_of_what_it_found(catalogue):

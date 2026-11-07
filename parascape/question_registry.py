@@ -288,3 +288,44 @@ for _question in (
                  "worked example of a rejected question."),
 ):
     register(_question)
+
+#: Localization, one coarse hyperLOPIT niche per question (instruction 70; Einar 2026-11-07: register, rank only).
+#: (niche, markers, frozen-test AUC with all allowed evidence, its cross-validated AUC, cross-validated AUC from
+#: co-expression alone) -- `results/localization_questions_2026_11_06/`,
+#: `results/coexpression_components_localization_2026_11_06/`.
+LOCALIZATION_NICHES = (
+    ("ribosome", 59, 1.0, 0.998, 0.999),
+    ("proteasome", 28, 1.0, 0.978, 0.958),
+    ("apicoplast", 48, 0.997, 0.927, 0.803),
+    ("dense granules", 40, 0.993, 0.957, 0.872),
+    ("rhoptries", 47, 0.99, 0.974, 0.975),
+    ("micronemes", 29, 0.985, 0.932, 0.936),
+    ("nucleus", 109, 0.964, 0.94, 0.897),
+    ("apical", 41, 0.96, 0.943, 0.958),
+    ("cytosol", 62, 0.933, 0.913, 0.799),
+    ("mitochondrion", 68, 0.925, 0.844, 0.813),
+    ("plasma membrane", 66, 0.895, 0.934, 0.669),
+    ("ER", 39, 0.863, 0.831, 0.78),
+    ("IMC", 38, 0.846, 0.879, 0.913),
+)
+
+
+def localization_question(niche: str, markers: int, test_auc: float, cv_auc: float,
+                          coexp_auc: float) -> Question:
+    """One localization niche as a registry question: scored, rank only (it may not fill)."""
+    return Question(
+        id="localization_" + niche.replace(" ", "_").lower(),
+        text=f"Is this protein in the {niche}?",
+        answer_type="boolean", question_class="B",
+        label_source=f"parascape/data/lopit_markers_coarse.tsv:coarse_niche == {niche}",
+        label_family="lopit_tgon", label_tier="observed-curated", label_category="place",
+        evidence_forbidden=("lopit_tgon",), min_labels_for_frozen_test=150, status="scored",
+        note=(f"{markers} of the 718 curation-grade hyperLOPIT markers (Barylyuk 2020); every other "
+              f"marker is a curated no. Frozen-test AUC {test_auc:.3f} (cross-validated {cv_auc:.3f}) "
+              f"with every place column held out; co-expression alone {coexp_auc:.3f}. Ranks genes "
+              "and may not fill: a frozen partition holds 4-13 positives, too few for a lower bound "
+              "of 0.90. Markers partly reflect prior knowledge."))
+
+
+for _row in LOCALIZATION_NICHES:
+    register(localization_question(*_row))

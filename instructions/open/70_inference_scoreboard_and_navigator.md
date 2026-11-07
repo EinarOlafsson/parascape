@@ -133,3 +133,13 @@ widen the frozen partitions, and Einar's decision on registering these questions
 
 **70.08 (2026-11-06):** co-expression scored on the localization board -- see instruction 71, product 1 through
 the harness: median AUC 0.897 from co-expression alone, matching all evidence for the division organelles.
+
+## Registered, rank only (Einar, 2026-11-07)
+
+The 13 localization niche questions are in the registry (`question_registry.LOCALIZATION_NICHES`,
+`localization_<niche>`), status `scored`, each note carrying its frozen-test AUC, cross-validated AUC and the
+co-expression-alone AUC, and saying it may rank and may not fill. Labels ship as
+`parascape/data/lopit_markers_coarse.tsv` (718 markers from mmc5, sha256 `a58a8778...`, with the coarse niche).
+They appear in the Navigator (rendered: a search for "rhoptries" finds "Localization Rhoptries", "Is this protein
+in the rhoptries?"). 229 node, home, module, menu and search tests pass; one search test was widened because a
+product search for "dense granule" now also, correctly, finds the dense-granule question.

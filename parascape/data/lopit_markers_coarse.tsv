@@ -1,0 +1,719 @@
+gene_id	niche	coarse_niche
+TGME49_313410	19S proteasome	proteasome
+TGME49_263060	19S proteasome	proteasome
+TGME49_277500	19S proteasome	proteasome
+TGME49_292220	19S proteasome	proteasome
+TGME49_267080	19S proteasome	proteasome
+TGME49_228210	19S proteasome	proteasome
+TGME49_261210	19S proteasome	proteasome
+TGME49_261010	19S proteasome	proteasome
+TGME49_227960	19S proteasome	proteasome
+TGME49_300310	19S proteasome	proteasome
+TGME49_238180	19S proteasome	proteasome
+TGME49_229950	19S proteasome	proteasome
+TGME49_269840	19S proteasome	proteasome
+TGME49_224110	19S proteasome	proteasome
+TGME49_278050	20S proteasome	proteasome
+TGME49_249590	20S proteasome	proteasome
+TGME49_258150	20S proteasome	proteasome
+TGME49_242290	20S proteasome	proteasome
+TGME49_218920	20S proteasome	proteasome
+TGME49_239500	20S proteasome	proteasome
+TGME49_223590	20S proteasome	proteasome
+TGME49_280710	20S proteasome	proteasome
+TGME49_306930	20S proteasome	proteasome
+TGME49_287210	20S proteasome	proteasome
+TGME49_290005	20S proteasome	proteasome
+TGME49_254900	20S proteasome	proteasome
+TGME49_216450	20S proteasome	proteasome
+TGME49_314090	20S proteasome	proteasome
+TGME49_232710	40S ribosome	ribosome
+TGME49_239100	40S ribosome	ribosome
+TGME49_242330	40S ribosome	ribosome
+TGME49_205340	40S ribosome	ribosome
+TGME49_210690	40S ribosome	ribosome
+TGME49_245460	40S ribosome	ribosome
+TGME49_305520	40S ribosome	ribosome
+TGME49_232300	40S ribosome	ribosome
+TGME49_207840	40S ribosome	ribosome
+TGME49_263700	40S ribosome	ribosome
+TGME49_225080	40S ribosome	ribosome
+TGME49_263040	40S ribosome	ribosome
+TGME49_234450	40S ribosome	ribosome
+TGME49_270380	40S ribosome	ribosome
+TGME49_231140	40S ribosome	ribosome
+TGME49_213350	40S ribosome	ribosome
+TGME49_248480	40S ribosome	ribosome
+TGME49_226970	40S ribosome	ribosome
+TGME49_243570	40S ribosome	ribosome
+TGME49_229670	40S ribosome	ribosome
+TGME49_245620	40S ribosome	ribosome
+TGME49_309120	60S ribosome	ribosome
+TGME49_227360	60S ribosome	ribosome
+TGME49_261570	60S ribosome	ribosome
+TGME49_218410	60S ribosome	ribosome
+TGME49_215470	60S ribosome	ribosome
+TGME49_284560	60S ribosome	ribosome
+TGME49_312090	60S ribosome	ribosome
+TGME49_267400	60S ribosome	ribosome
+TGME49_262670	60S ribosome	ribosome
+TGME49_313390	60S ribosome	ribosome
+TGME49_204020	60S ribosome	ribosome
+TGME49_238010	60S ribosome	ribosome
+TGME49_314810	60S ribosome	ribosome
+TGME49_292130	60S ribosome	ribosome
+TGME49_232230	60S ribosome	ribosome
+TGME49_263050	60S ribosome	ribosome
+TGME49_299050	60S ribosome	ribosome
+TGME49_248390	60S ribosome	ribosome
+TGME49_288720	60S ribosome	ribosome
+TGME49_262690	60S ribosome	ribosome
+TGME49_300000	60S ribosome	ribosome
+TGME49_254440	60S ribosome	ribosome
+TGME49_229250	60S ribosome	ribosome
+TGME49_266070	60S ribosome	ribosome
+TGME49_228470	60S ribosome	ribosome
+TGME49_249250	60S ribosome	ribosome
+TGME49_289530	60S ribosome	ribosome
+TGME49_267060	60S ribosome	ribosome
+TGME49_245680	60S ribosome	ribosome
+TGME49_239760	60S ribosome	ribosome
+TGME49_244320	60S ribosome	ribosome
+TGME49_239330	60S ribosome	ribosome
+TGME49_238250	60S ribosome	ribosome
+TGME49_310490	60S ribosome	ribosome
+TGME49_231080	60S ribosome	ribosome
+TGME49_203630	60S ribosome	ribosome
+TGME49_300190	60S ribosome	ribosome
+TGME49_227600	60S ribosome	ribosome
+TGME49_250820	apical 1	apical
+TGME49_225690	apical 1	apical
+TGME49_230340	apical 1	apical
+TGME49_292950	apical 1	apical
+TGME49_258090	apical 1	apical
+TGME49_229640	apical 1	apical
+TGME49_244470	apical 1	apical
+TGME49_235380	apical 1	apical
+TGME49_308860	apical 1	apical
+TGME49_214880	apical 1	apical
+TGME49_260820	apical 1	apical
+TGME49_227000	apical 1	apical
+TGME49_225020	apical 1	apical
+TGME49_256030	apical 1	apical
+TGME49_297180	apical 1	apical
+TGME49_291880	apical 1	apical
+TGME49_222350	apical 1	apical
+TGME49_301420	apical 1	apical
+TGME49_320030	apical 1	apical
+TGME49_293190	apical 1	apical
+TGME49_266630	apical 1	apical
+TGME49_226990	apical 1	apical
+TGME49_233030	apical 1	apical
+TGME49_246950	apical 1	apical
+TGME49_275670	apical 1	apical
+TGME49_315510	apical 1	apical
+TGME49_278780	apical 1	apical
+TGME49_253600	apical 1	apical
+TGME49_239770	apical 1	apical
+TGME49_239300	apical 2	apical
+TGME49_243250	apical 2	apical
+TGME49_295850	apical 2	apical
+TGME49_234270	apical 2	apical
+TGME49_315780	apical 2	apical
+TGME49_246720	apical 2	apical
+TGME49_262010	apical 2	apical
+TGME49_246930	apical 2	apical
+TGME49_295420	apical 2	apical
+TGME49_226040	apical 2	apical
+TGME49_311260	apical 2	apical
+TGME49_208340	apical 2	apical
+TGME49_221320	apicoplast	apicoplast
+TGME49_259260	apicoplast	apicoplast
+TGME49_275690	apicoplast	apicoplast
+TGME49_240600	apicoplast	apicoplast
+TGME49_206610	apicoplast	apicoplast
+TGME49_321640	apicoplast	apicoplast
+TGME49_312110	apicoplast	apicoplast
+TGME49_222020	apicoplast	apicoplast
+TGME49_251930	apicoplast	apicoplast
+TGME49_253900	apicoplast	apicoplast
+TGME49_211440	apicoplast	apicoplast
+TGME49_287270	apicoplast	apicoplast
+TGME49_293590	apicoplast	apicoplast
+TGME49_217740	apicoplast	apicoplast
+TGME49_261850	apicoplast	apicoplast
+TGME49_262430	apicoplast	apicoplast
+TGME49_233500	apicoplast	apicoplast
+TGME49_225990	apicoplast	apicoplast
+TGME49_221330	apicoplast	apicoplast
+TGME49_305980	apicoplast	apicoplast
+TGME49_272290	apicoplast	apicoplast
+TGME49_227420	apicoplast	apicoplast
+TGME49_321570	apicoplast	apicoplast
+TGME49_272390	apicoplast	apicoplast
+TGME49_226400	apicoplast	apicoplast
+TGME49_286050	apicoplast	apicoplast
+TGME49_302050	apicoplast	apicoplast
+TGME49_264200	apicoplast	apicoplast
+TGME49_255690	apicoplast	apicoplast
+TGME49_302000	apicoplast	apicoplast
+TGME49_285700	apicoplast	apicoplast
+TGME49_264080	apicoplast	apicoplast
+TGME49_227970	apicoplast	apicoplast
+TGME49_297780	apicoplast	apicoplast
+TGME49_270910	apicoplast	apicoplast
+TGME49_249820	apicoplast	apicoplast
+TGME49_291670	apicoplast	apicoplast
+TGME49_310770	apicoplast	apicoplast
+TGME49_271420	apicoplast	apicoplast
+TGME49_295990	apicoplast	apicoplast
+TGME49_231890	apicoplast	apicoplast
+TGME49_215070	apicoplast	apicoplast
+TGME49_202440	apicoplast	apicoplast
+TGME49_298990	apicoplast	apicoplast
+TGME49_248300	apicoplast	apicoplast
+TGME49_214850	apicoplast	apicoplast
+TGME49_261070	apicoplast	apicoplast
+TGME49_208820	apicoplast	apicoplast
+TGME49_211890	apicoplast	apicoplast
+TGME49_289690	cytosol	cytosol
+TGME49_288380	cytosol	cytosol
+TGME49_219850	cytosol	cytosol
+TGME49_232350	cytosol	cytosol
+TGME49_292080	cytosol	cytosol
+TGME49_318230	cytosol	cytosol
+TGME49_256760	cytosol	cytosol
+TGME49_236040	cytosol	cytosol
+TGME49_310670	cytosol	cytosol
+TGME49_300260	cytosol	cytosol
+TGME49_250770	cytosol	cytosol
+TGME49_263090	cytosol	cytosol
+TGME49_268850	cytosol	cytosol
+TGME49_226910	cytosol	cytosol
+TGME49_288360	cytosol	cytosol
+TGME49_229990	cytosol	cytosol
+TGME49_217460	cytosol	cytosol
+TGME49_280600	cytosol	cytosol
+TGME49_272910	cytosol	cytosol
+TGME49_225930	cytosol	cytosol
+TGME49_251690	cytosol	cytosol
+TGME49_253290	cytosol	cytosol
+TGME49_205710	cytosol	cytosol
+TGME49_243710	cytosol	cytosol
+TGME49_270510	cytosol	cytosol
+TGME49_256990	cytosol	cytosol
+TGME49_297500	cytosol	cytosol
+TGME49_205440	cytosol	cytosol
+TGME49_297720	cytosol	cytosol
+TGME49_287500	cytosol	cytosol
+TGME49_202370	cytosol	cytosol
+TGME49_289650	cytosol	cytosol
+TGME49_265450	cytosol	cytosol
+TGME49_207640	cytosol	cytosol
+TGME49_289300	cytosol	cytosol
+TGME49_318410	cytosol	cytosol
+TGME49_318310	cytosol	cytosol
+TGME49_283780	cytosol	cytosol
+TGME49_297060	cytosol	cytosol
+TGME49_232340	cytosol	cytosol
+TGME49_293690	cytosol	cytosol
+TGME49_299810	cytosol	cytosol
+TGME49_210840	cytosol	cytosol
+TGME49_202530	cytosol	cytosol
+TGME49_214290	cytosol	cytosol
+TGME49_307850	cytosol	cytosol
+TGME49_234505	cytosol	cytosol
+TGME49_267050	cytosol	cytosol
+TGME49_311310	cytosol	cytosol
+TGME49_257960	cytosol	cytosol
+TGME49_244650	cytosol	cytosol
+TGME49_320740	cytosol	cytosol
+TGME49_225880	cytosol	cytosol
+TGME49_218200	cytosol	cytosol
+TGME49_220400	cytosol	cytosol
+TGME49_239310	cytosol	cytosol
+TGME49_318580	cytosol	cytosol
+TGME49_238940	cytosol	cytosol
+TGME49_239710	cytosol	cytosol
+TGME49_318750	cytosol	cytosol
+TGME49_218810	cytosol	cytosol
+TGME49_316520	cytosol	cytosol
+TGME49_288650	dense granules	dense granules
+TGME49_269690	dense granules	dense granules
+TGME49_212300	dense granules	dense granules
+TGME49_231960	dense granules	dense granules
+TGME49_203310	dense granules	dense granules
+TGME49_254470	dense granules	dense granules
+TGME49_208450	dense granules	dense granules
+TGME49_279100	dense granules	dense granules
+TGME49_312420	dense granules	dense granules
+TGME49_320490	dense granules	dense granules
+TGME49_277270	dense granules	dense granules
+TGME49_219810	dense granules	dense granules
+TGME49_239740	dense granules	dense granules
+TGME49_208830	dense granules	dense granules
+TGME49_251540	dense granules	dense granules
+TGME49_289380	dense granules	dense granules
+TGME49_277240	dense granules	dense granules
+TGME49_220950	dense granules	dense granules
+TGME49_220240	dense granules	dense granules
+TGME49_202780	dense granules	dense granules
+TGME49_213067	dense granules	dense granules
+TGME49_232000	dense granules	dense granules
+TGME49_240060	dense granules	dense granules
+TGME49_304955	dense granules	dense granules
+TGME49_290700	dense granules	dense granules
+TGME49_310780	dense granules	dense granules
+TGME49_226380	dense granules	dense granules
+TGME49_247440	dense granules	dense granules
+TGME49_228760	dense granules	dense granules
+TGME49_208740	dense granules	dense granules
+TGME49_236890	dense granules	dense granules
+TGME49_270250	dense granules	dense granules
+TGME49_227620	dense granules	dense granules
+TGME49_230180	dense granules	dense granules
+TGME49_212410	dense granules	dense granules
+TGME49_286450	dense granules	dense granules
+TGME49_227280	dense granules	dense granules
+TGME49_275440	dense granules	dense granules
+TGME49_254720	dense granules	dense granules
+TGME49_304720	dense granules	dense granules
+TGME49_208070	dense granules	dense granules
+TGME49_249670	endomembrane vesicles	endomembrane vesicles
+TGME49_291600	endomembrane vesicles	endomembrane vesicles
+TGME49_204080	endomembrane vesicles	endomembrane vesicles
+TGME49_309930	endomembrane vesicles	endomembrane vesicles
+TGME49_254010	endomembrane vesicles	endomembrane vesicles
+TGME49_321530	endomembrane vesicles	endomembrane vesicles
+TGME49_201840	endomembrane vesicles	endomembrane vesicles
+TGME49_243350	endomembrane vesicles	endomembrane vesicles
+TGME49_248670	endomembrane vesicles	endomembrane vesicles
+TGME49_263270	endomembrane vesicles	endomembrane vesicles
+TGME49_237870	endomembrane vesicles	endomembrane vesicles
+TGME49_313930	endomembrane vesicles	endomembrane vesicles
+TGME49_262460	endomembrane vesicles	endomembrane vesicles
+TGME49_230420	ER 1	ER
+TGME49_264440	ER 1	ER
+TGME49_293570	ER 1	ER
+TGME49_260630	ER 1	ER
+TGME49_242020	ER 1	ER
+TGME49_202572	ER 1	ER
+TGME49_308000	ER 1	ER
+TGME49_280610	ER 1	ER
+TGME49_230590	ER 1	ER
+TGME49_229030	ER 1	ER
+TGME49_252440	ER 1	ER
+TGME49_319300	ER 1	ER
+TGME49_269980	ER 1	ER
+TGME49_277970	ER 1	ER
+TGME49_211040	ER 1	ER
+TGME49_227790	ER 1	ER
+TGME49_203970	ER 1	ER
+TGME49_242380	ER 1	ER
+TGME49_231430	ER 1	ER
+TGME49_275568	ER 1	ER
+TGME49_216540	ER 1	ER
+TGME49_321400	ER 1	ER
+TGME49_258110	ER 1	ER
+TGME49_280740	ER 1	ER
+TGME49_256000	ER 1	ER
+TGME49_262930	ER 1	ER
+TGME49_310100	ER 1	ER
+TGME49_305870	ER 1	ER
+TGME49_214920	ER 1	ER
+TGME49_300060	ER 1	ER
+TGME49_311720	ER 2	ER
+TGME49_244560	ER 2	ER
+TGME49_211680	ER 2	ER
+TGME49_226830	ER 2	ER
+TGME49_229480	ER 2	ER
+TGME49_221210	ER 2	ER
+TGME49_272660	ER 2	ER
+TGME49_261690	ER 2	ER
+TGME49_273550	ER 2	ER
+TGME49_290160	Golgi	Golgi
+TGME49_240280	Golgi	Golgi
+TGME49_253170	Golgi	Golgi
+TGME49_271060	Golgi	Golgi
+TGME49_204060	Golgi	Golgi
+TGME49_226600	Golgi	Golgi
+TGME49_223620	Golgi	Golgi
+TGME49_293300	Golgi	Golgi
+TGME49_242720	Golgi	Golgi
+TGME49_247930	Golgi	Golgi
+TGME49_266310	Golgi	Golgi
+TGME49_300240	Golgi	Golgi
+TGME49_262710	Golgi	Golgi
+TGME49_205030	Golgi	Golgi
+TGME49_300290	Golgi	Golgi
+TGME49_248100	Golgi	Golgi
+TGME49_248840	Golgi	Golgi
+TGME49_294040	Golgi	Golgi
+TGME49_242080	Golgi	Golgi
+TGME49_263290	Golgi	Golgi
+TGME49_235470	IMC	IMC
+TGME49_286580	IMC	IMC
+TGME49_231640	IMC	IMC
+TGME49_219320	IMC	IMC
+TGME49_222220	IMC	IMC
+TGME49_230210	IMC	IMC
+TGME49_313380	IMC	IMC
+TGME49_242070	IMC	IMC
+TGME49_218240	IMC	IMC
+TGME49_235340	IMC	IMC
+TGME49_231630	IMC	IMC
+TGME49_260540	IMC	IMC
+TGME49_216000	IMC	IMC
+TGME49_295360	IMC	IMC
+TGME49_220270	IMC	IMC
+TGME49_305050	IMC	IMC
+TGME49_219170	IMC	IMC
+TGME49_230850	IMC	IMC
+TGME49_223940	IMC	IMC
+TGME49_258470	IMC	IMC
+TGME49_248700	IMC	IMC
+TGME49_316340	IMC	IMC
+TGME49_271930	IMC	IMC
+TGME49_226030	IMC	IMC
+TGME49_271970	IMC	IMC
+TGME49_269442	IMC	IMC
+TGME49_272520	IMC	IMC
+TGME49_222400	IMC	IMC
+TGME49_232030	IMC	IMC
+TGME49_304670	IMC	IMC
+TGME49_258410	IMC	IMC
+TGME49_237820	IMC	IMC
+TGME49_206690	IMC	IMC
+TGME49_239800	IMC	IMC
+TGME49_305930	IMC	IMC
+TGME49_315750	IMC	IMC
+TGME49_249850	IMC	IMC
+TGME49_232260	IMC	IMC
+TGME49_206510	micronemes	micronemes
+TGME49_204130	micronemes	micronemes
+TGME49_291890	micronemes	micronemes
+TGME49_319560	micronemes	micronemes
+TGME49_204050	micronemes	micronemes
+TGME49_208030	micronemes	micronemes
+TGME49_201780	micronemes	micronemes
+TGME49_214940	micronemes	micronemes
+TGME49_245490	micronemes	micronemes
+TGME49_255260	micronemes	micronemes
+TGME49_293900	micronemes	micronemes
+TGME49_250710	micronemes	micronemes
+TGME49_267680	micronemes	micronemes
+TGME49_218520	micronemes	micronemes
+TGME49_261780	micronemes	micronemes
+TGME49_293770	micronemes	micronemes
+TGME49_283540	micronemes	micronemes
+TGME49_277080	micronemes	micronemes
+TGME49_200250	micronemes	micronemes
+TGME49_221180	micronemes	micronemes
+TGME49_260190	micronemes	micronemes
+TGME49_204530	micronemes	micronemes
+TGME49_304490	micronemes	micronemes
+TGME49_289630	micronemes	micronemes
+TGME49_287040	micronemes	micronemes
+TGME49_245485	micronemes	micronemes
+TGME49_221480	micronemes	micronemes
+TGME49_224620	micronemes	micronemes
+TGME49_309990	micronemes	micronemes
+TGME49_261950	mitochondrion - membranes	mitochondrion
+TGME49_204400	mitochondrion - membranes	mitochondrion
+TGME49_288830	mitochondrion - membranes	mitochondrion
+TGME49_320220	mitochondrion - membranes	mitochondrion
+TGME49_231910	mitochondrion - membranes	mitochondrion
+TGME49_218280	mitochondrion - membranes	mitochondrion
+TGME49_209150	mitochondrion - membranes	mitochondrion
+TGME49_209260	mitochondrion - membranes	mitochondrion
+TGME49_274060	mitochondrion - membranes	mitochondrion
+TGME49_210790	mitochondrion - membranes	mitochondrion
+TGME49_263730	mitochondrion - membranes	mitochondrion
+TGME49_288750	mitochondrion - membranes	mitochondrion
+TGME49_226000	mitochondrion - membranes	mitochondrion
+TGME49_246540	mitochondrion - membranes	mitochondrion
+TGME49_215280	mitochondrion - membranes	mitochondrion
+TGME49_205570	mitochondrion - membranes	mitochondrion
+TGME49_316140	mitochondrion - membranes	mitochondrion
+TGME49_272490	mitochondrion - membranes	mitochondrion
+TGME49_284540	mitochondrion - membranes	mitochondrion
+TGME49_320140	mitochondrion - membranes	mitochondrion
+TGME49_267700	mitochondrion - membranes	mitochondrion
+TGME49_283590	mitochondrion - membranes	mitochondrion
+TGME49_226590	mitochondrion - membranes	mitochondrion
+TGME49_314820	mitochondrion - membranes	mitochondrion
+TGME49_258650	mitochondrion - membranes	mitochondrion
+TGME49_312220	mitochondrion - membranes	mitochondrion
+TGME49_209720	mitochondrion - membranes	mitochondrion
+TGME49_249910	mitochondrion - membranes	mitochondrion
+TGME49_305480	mitochondrion - membranes	mitochondrion
+TGME49_214150	mitochondrion - membranes	mitochondrion
+TGME49_248950	mitochondrion - membranes	mitochondrion
+TGME49_202810	mitochondrion - membranes	mitochondrion
+TGME49_235880	mitochondrion - membranes	mitochondrion
+TGME49_204370	mitochondrion - membranes	mitochondrion
+TGME49_228180	mitochondrion - membranes	mitochondrion
+TGME49_225555	mitochondrion - membranes	mitochondrion
+TGME49_251780	mitochondrion - soluble	mitochondrion
+TGME49_226730	mitochondrion - soluble	mitochondrion
+TGME49_288500	mitochondrion - soluble	mitochondrion
+TGME49_244200	mitochondrion - soluble	mitochondrion
+TGME49_215590	mitochondrion - soluble	mitochondrion
+TGME49_313140	mitochondrion - soluble	mitochondrion
+TGME49_206470	mitochondrion - soluble	mitochondrion
+TGME49_284190	mitochondrion - soluble	mitochondrion
+TGME49_267330	mitochondrion - soluble	mitochondrion
+TGME49_309752	mitochondrion - soluble	mitochondrion
+TGME49_219550	mitochondrion - soluble	mitochondrion
+TGME49_214750	mitochondrion - soluble	mitochondrion
+TGME49_268890	mitochondrion - soluble	mitochondrion
+TGME49_310290	mitochondrion - soluble	mitochondrion
+TGME49_290600	mitochondrion - soluble	mitochondrion
+TGME49_265220	mitochondrion - soluble	mitochondrion
+TGME49_271820	mitochondrion - soluble	mitochondrion
+TGME49_272670	mitochondrion - soluble	mitochondrion
+TGME49_308580	mitochondrion - soluble	mitochondrion
+TGME49_237560	mitochondrion - soluble	mitochondrion
+TGME49_292975	mitochondrion - soluble	mitochondrion
+TGME49_285970	mitochondrion - soluble	mitochondrion
+TGME49_231750	mitochondrion - soluble	mitochondrion
+TGME49_227830	mitochondrion - soluble	mitochondrion
+TGME49_214870	mitochondrion - soluble	mitochondrion
+TGME49_295370	mitochondrion - soluble	mitochondrion
+TGME49_236250	mitochondrion - soluble	mitochondrion
+TGME49_314295	mitochondrion - soluble	mitochondrion
+TGME49_202960	mitochondrion - soluble	mitochondrion
+TGME49_202350	mitochondrion - soluble	mitochondrion
+TGME49_253800	mitochondrion - soluble	mitochondrion
+TGME49_222990	mitochondrion - soluble	mitochondrion
+TGME49_311430	nucleolus	nucleus
+TGME49_311410	nucleolus	nucleus
+TGME49_234610	nucleolus	nucleus
+TGME49_218610	nucleolus	nucleus
+TGME49_313830	nucleolus	nucleus
+TGME49_232380	nucleolus	nucleus
+TGME49_261520	nucleolus	nucleus
+TGME49_269770	nucleolus	nucleus
+TGME49_310380	nucleolus	nucleus
+TGME49_205500	nucleolus	nucleus
+TGME49_232390	nucleolus	nucleus
+TGME49_319950	nucleolus	nucleus
+TGME49_295680	nucleolus	nucleus
+TGME49_209430	nucleolus	nucleus
+TGME49_313980	nucleolus	nucleus
+TGME49_305340	nucleus - chromatin	nucleus
+TGME49_236970	nucleus - chromatin	nucleus
+TGME49_214840	nucleus - chromatin	nucleus
+TGME49_273870	nucleus - chromatin	nucleus
+TGME49_310900	nucleus - chromatin	nucleus
+TGME49_235170	nucleus - chromatin	nucleus
+TGME49_247700	nucleus - chromatin	nucleus
+TGME49_243440	nucleus - chromatin	nucleus
+TGME49_320300	nucleus - chromatin	nucleus
+TGME49_286920	nucleus - chromatin	nucleus
+TGME49_218960	nucleus - chromatin	nucleus
+TGME49_288680	nucleus - chromatin	nucleus
+TGME49_205580	nucleus - chromatin	nucleus
+TGME49_310950	nucleus - chromatin	nucleus
+TGME49_227900	nucleus - chromatin	nucleus
+TGME49_321440	nucleus - chromatin	nucleus
+TGME49_209910	nucleus - chromatin	nucleus
+TGME49_226440	nucleus - chromatin	nucleus
+TGME49_250800	nucleus - chromatin	nucleus
+TGME49_213000	nucleus - chromatin	nucleus
+TGME49_224050	nucleus - chromatin	nucleus
+TGME49_216220	nucleus - chromatin	nucleus
+TGME49_217050	nucleus - chromatin	nucleus
+TGME49_269010	nucleus - chromatin	nucleus
+TGME49_315760	nucleus - chromatin	nucleus
+TGME49_318260	nucleus - chromatin	nucleus
+TGME49_239260	nucleus - chromatin	nucleus
+TGME49_210960	nucleus - chromatin	nucleus
+TGME49_306000	nucleus - chromatin	nucleus
+TGME49_273950	nucleus - chromatin	nucleus
+TGME49_237110	nucleus - chromatin	nucleus
+TGME49_290630	nucleus - chromatin	nucleus
+TGME49_270840	nucleus - chromatin	nucleus
+TGME49_247730	nucleus - chromatin	nucleus
+TGME49_215150	nucleus - chromatin	nucleus
+TGME49_300200	nucleus - chromatin	nucleus
+TGME49_305920	nucleus - chromatin	nucleus
+TGME49_255220	nucleus - chromatin	nucleus
+TGME49_282220	nucleus - chromatin	nucleus
+TGME49_223390	nucleus - non-chromatin	nucleus
+TGME49_231970	nucleus - non-chromatin	nucleus
+TGME49_314410	nucleus - non-chromatin	nucleus
+TGME49_230960	nucleus - non-chromatin	nucleus
+TGME49_205010	nucleus - non-chromatin	nucleus
+TGME49_320210	nucleus - non-chromatin	nucleus
+TGME49_236650	nucleus - non-chromatin	nucleus
+TGME49_286080	nucleus - non-chromatin	nucleus
+TGME49_275480	nucleus - non-chromatin	nucleus
+TGME49_314740	nucleus - non-chromatin	nucleus
+TGME49_217540	nucleus - non-chromatin	nucleus
+TGME49_294360	nucleus - non-chromatin	nucleus
+TGME49_221950	nucleus - non-chromatin	nucleus
+TGME49_233190	nucleus - non-chromatin	nucleus
+TGME49_305240	nucleus - non-chromatin	nucleus
+TGME49_312280	nucleus - non-chromatin	nucleus
+TGME49_243540	nucleus - non-chromatin	nucleus
+TGME49_269200	nucleus - non-chromatin	nucleus
+TGME49_310860	nucleus - non-chromatin	nucleus
+TGME49_264610	nucleus - non-chromatin	nucleus
+TGME49_202770	nucleus - non-chromatin	nucleus
+TGME49_275310	nucleus - non-chromatin	nucleus
+TGME49_318140	nucleus - non-chromatin	nucleus
+TGME49_249610	nucleus - non-chromatin	nucleus
+TGME49_244100	nucleus - non-chromatin	nucleus
+TGME49_219790	nucleus - non-chromatin	nucleus
+TGME49_267420	nucleus - non-chromatin	nucleus
+TGME49_254650	nucleus - non-chromatin	nucleus
+TGME49_265410	nucleus - non-chromatin	nucleus
+TGME49_233230	nucleus - non-chromatin	nucleus
+TGME49_229210	nucleus - non-chromatin	nucleus
+TGME49_228000	nucleus - non-chromatin	nucleus
+TGME49_218420	nucleus - non-chromatin	nucleus
+TGME49_285760	nucleus - non-chromatin	nucleus
+TGME49_314830	nucleus - non-chromatin	nucleus
+TGME49_306380	nucleus - non-chromatin	nucleus
+TGME49_243620	nucleus - non-chromatin	nucleus
+TGME49_291330	nucleus - non-chromatin	nucleus
+TGME49_203870	nucleus - non-chromatin	nucleus
+TGME49_214820	nucleus - non-chromatin	nucleus
+TGME49_270830	nucleus - non-chromatin	nucleus
+TGME49_309740	nucleus - non-chromatin	nucleus
+TGME49_270560	nucleus - non-chromatin	nucleus
+TGME49_314790	nucleus - non-chromatin	nucleus
+TGME49_205180	nucleus - non-chromatin	nucleus
+TGME49_310820	nucleus - non-chromatin	nucleus
+TGME49_224580	nucleus - non-chromatin	nucleus
+TGME49_270740	nucleus - non-chromatin	nucleus
+TGME49_213410	nucleus - non-chromatin	nucleus
+TGME49_305010	nucleus - non-chromatin	nucleus
+TGME49_286560	nucleus - non-chromatin	nucleus
+TGME49_247610	nucleus - non-chromatin	nucleus
+TGME49_275750	nucleus - non-chromatin	nucleus
+TGME49_298970	nucleus - non-chromatin	nucleus
+TGME49_289560	nucleus - non-chromatin	nucleus
+TGME49_232830	PM - integral	plasma membrane
+TGME49_259200	PM - integral	plasma membrane
+TGME49_268590	PM - integral	plasma membrane
+TGME49_240810	PM - integral	plasma membrane
+TGME49_220600	PM - integral	plasma membrane
+TGME49_214320	PM - integral	plasma membrane
+TGME49_320020	PM - integral	plasma membrane
+TGME49_294690	PM - integral	plasma membrane
+TGME49_248420	PM - integral	plasma membrane
+TGME49_257530	PM - integral	plasma membrane
+TGME49_318150	PM - integral	plasma membrane
+TGME49_249580	PM - integral	plasma membrane
+TGME49_263260	PM - integral	plasma membrane
+TGME49_233460	PM - peripheral 1	plasma membrane
+TGME49_263180	PM - peripheral 1	plasma membrane
+TGME49_308840	PM - peripheral 1	plasma membrane
+TGME49_320190	PM - peripheral 1	plasma membrane
+TGME49_233450	PM - peripheral 1	plasma membrane
+TGME49_315320	PM - peripheral 1	plasma membrane
+TGME49_297470	PM - peripheral 1	plasma membrane
+TGME49_320180	PM - peripheral 1	plasma membrane
+TGME49_273130	PM - peripheral 1	plasma membrane
+TGME49_285870	PM - peripheral 1	plasma membrane
+TGME49_273120	PM - peripheral 1	plasma membrane
+TGME49_292280	PM - peripheral 1	plasma membrane
+TGME49_320230	PM - peripheral 1	plasma membrane
+TGME49_319350	PM - peripheral 1	plasma membrane
+TGME49_301180	PM - peripheral 1	plasma membrane
+TGME49_301170	PM - peripheral 1	plasma membrane
+TGME49_315410	PM - peripheral 1	plasma membrane
+TGME49_213280	PM - peripheral 1	plasma membrane
+TGME49_267140	PM - peripheral 1	plasma membrane
+TGME49_301160	PM - peripheral 1	plasma membrane
+TGME49_320200	PM - peripheral 1	plasma membrane
+TGME49_301150	PM - peripheral 1	plasma membrane
+TGME49_320170	PM - peripheral 1	plasma membrane
+TGME49_234930	PM - peripheral 1	plasma membrane
+TGME49_281930	PM - peripheral 1	plasma membrane
+TGME49_222370	PM - peripheral 1	plasma membrane
+TGME49_271050	PM - peripheral 1	plasma membrane
+TGME49_275370	PM - peripheral 1	plasma membrane
+TGME49_285860	PM - peripheral 1	plasma membrane
+TGME49_267130	PM - peripheral 1	plasma membrane
+TGME49_292260	PM - peripheral 1	plasma membrane
+TGME49_226860	PM - peripheral 1	plasma membrane
+TGME49_254060	PM - peripheral 1	plasma membrane
+TGME49_278365	PM - peripheral 1	plasma membrane
+TGME49_208850	PM - peripheral 1	plasma membrane
+TGME49_214190	PM - peripheral 1	plasma membrane
+TGME49_207140	PM - peripheral 1	plasma membrane
+TGME49_215680	PM - peripheral 1	plasma membrane
+TGME49_315740	PM - peripheral 1	plasma membrane
+TGME49_278100	PM - peripheral 1	plasma membrane
+TGME49_321480	PM - peripheral 1	plasma membrane
+TGME49_207160	PM - peripheral 1	plasma membrane
+TGME49_238440	PM - peripheral 1	plasma membrane
+TGME49_305860	PM - peripheral 2	plasma membrane
+TGME49_314780	PM - peripheral 2	plasma membrane
+TGME49_292120	PM - peripheral 2	plasma membrane
+TGME49_313290	PM - peripheral 2	plasma membrane
+TGME49_293470	PM - peripheral 2	plasma membrane
+TGME49_311360	PM - peripheral 2	plasma membrane
+TGME49_207830	PM - peripheral 2	plasma membrane
+TGME49_212090	PM - peripheral 2	plasma membrane
+TGME49_216650	PM - peripheral 2	plasma membrane
+TGME49_281580	PM - peripheral 2	plasma membrane
+TGME49_306060	rhoptries 1	rhoptries
+TGME49_311470	rhoptries 1	rhoptries
+TGME49_223920	rhoptries 1	rhoptries
+TGME49_279420	rhoptries 1	rhoptries
+TGME49_300100	rhoptries 1	rhoptries
+TGME49_229010	rhoptries 1	rhoptries
+TGME49_253370	rhoptries 1	rhoptries
+TGME49_308090	rhoptries 1	rhoptries
+TGME49_262920	rhoptries 1	rhoptries
+TGME49_225200	rhoptries 1	rhoptries
+TGME49_295110	rhoptries 1	rhoptries
+TGME49_243730	rhoptries 1	rhoptries
+TGME49_291960	rhoptries 1	rhoptries
+TGME49_321650	rhoptries 1	rhoptries
+TGME49_282055	rhoptries 1	rhoptries
+TGME49_295125	rhoptries 1	rhoptries
+TGME49_227810	rhoptries 1	rhoptries
+TGME49_277720	rhoptries 1	rhoptries
+TGME49_214080	rhoptries 1	rhoptries
+TGME49_262730	rhoptries 1	rhoptries
+TGME49_258580	rhoptries 1	rhoptries
+TGME49_294560	rhoptries 1	rhoptries
+TGME49_210370	rhoptries 1	rhoptries
+TGME49_211290	rhoptries 1	rhoptries
+TGME49_211260	rhoptries 1	rhoptries
+TGME49_205250	rhoptries 1	rhoptries
+TGME49_252360	rhoptries 1	rhoptries
+TGME49_215775	rhoptries 1	rhoptries
+TGME49_258230	rhoptries 1	rhoptries
+TGME49_312270	rhoptries 1	rhoptries
+TGME49_203990	rhoptries 1	rhoptries
+TGME49_242820	rhoptries 1	rhoptries
+TGME49_258800	rhoptries 1	rhoptries
+TGME49_269885	rhoptries 2	rhoptries
+TGME49_308810	rhoptries 2	rhoptries
+TGME49_261750	rhoptries 2	rhoptries
+TGME49_230350	rhoptries 2	rhoptries
+TGME49_297070	rhoptries 2	rhoptries
+TGME49_315220	rhoptries 2	rhoptries
+TGME49_305590	rhoptries 2	rhoptries
+TGME49_299060	rhoptries 2	rhoptries
+TGME49_258660	rhoptries 2	rhoptries
+TGME49_262050	rhoptries 2	rhoptries
+TGME49_210820	rhoptries 2	rhoptries
+TGME49_309560	rhoptries 2	rhoptries
+TGME49_315160	rhoptries 2	rhoptries
+TGME49_218270	rhoptries 2	rhoptries
+TGME49_266960	tubulin cytoskeleton	tubulin cytoskeleton
+TGME49_221620	tubulin cytoskeleton	tubulin cytoskeleton
+TGME49_316400	tubulin cytoskeleton	tubulin cytoskeleton
+TGME49_263520	tubulin cytoskeleton	tubulin cytoskeleton
+TGME49_232410	tubulin cytoskeleton	tubulin cytoskeleton
+TGME49_232130	tubulin cytoskeleton	tubulin cytoskeleton
+TGME49_286600	tubulin cytoskeleton	tubulin cytoskeleton
+TGME49_286590	tubulin cytoskeleton	tubulin cytoskeleton
+TGME49_225790	tubulin cytoskeleton	tubulin cytoskeleton
