@@ -68,6 +68,70 @@ def worker(key: str) -> None:
     pd.DataFrame(rows).to_parquet(os.path.join(OUT, f"calls_{key}.parquet"))
 
 
+def deploy_worker(key: str) -> None:
+    """One base method's calls on the genes with NO known answer, every known label visible."""
+    import numpy as np
+    import pandas as pd
+    sys.path.insert(0, REPO)
+    from parascape import strategies as S, track_record as T
+    ctx = S.Context.shipped("Tg")
+    strategy = S.get(key)
+    truth = ctx.truth(TARGET)
+    kept = truth.where(truth.map(truth.value_counts()) >= S.MIN_CLASS)
+    unknown = np.flatnonzero(truth.isna().to_numpy())
+    chosen = T._permitted(ctx, dict(strategy.settings(ctx, target=TARGET)), TARGET)
+    pred, _s = T._predict(ctx, strategy, kept, unknown, chosen, TARGET)
+    if pred is None:
+        return
+    p = pd.Series(pred).reset_index(drop=True)
+    pd.DataFrame({"gene_id": [str(ctx.gene_ids[g]) for g in unknown],
+                  "call": [p.iloc[g] if isinstance(p.iloc[g], str) else "ABSTAIN" for g in unknown]}) \
+        .to_parquet(os.path.join(OUT, f"deploy_{key}.parquet"))
+
+
+def deploy() -> None:
+    """Combined calls for unknown genes: the meta-model fitted on the base methods' held-out calls on all
+    known genes (from the outer tests), applied to their calls on the unknown genes."""
+    import subprocess
+    from concurrent.futures import ThreadPoolExecutor
+    import numpy as np
+    import pandas as pd
+    from sklearn.linear_model import LogisticRegression
+    sys.path.insert(0, REPO)
+    from parascape import track_record as T
+    keys = T.supported("Tg")
+
+    def run(key):
+        out = os.path.join(OUT, f"deploy_{key}.parquet")
+        if not os.path.exists(out):
+            subprocess.run([sys.executable, __file__, "--deploy-strategy", key, "--target", TARGET], check=False,
+                           env={**os.environ, "OMP_NUM_THREADS": "2"})
+        return key, (pd.read_parquet(out) if os.path.exists(out) else None)
+
+    with ThreadPoolExecutor(max_workers=7) as pool:
+        unk = {k: d for k, d in pool.map(run, keys) if d is not None}
+    known = pd.concat([pd.read_parquet(os.path.join(OUT, f"calls_{k}.parquet")).assign(strategy=k) for k in unk])
+    known = known[known.role == "outer_test"]
+    tr = known.pivot_table(index="gene_id", columns="strategy", values="call", aggfunc="first").fillna("ABSTAIN")
+    y = known.groupby("gene_id").truth.first().reindex(tr.index)
+    te = pd.concat({k: d.set_index("gene_id")["call"] for k, d in unk.items()}, axis=1).fillna("ABSTAIN") \
+        if unk else pd.DataFrame()
+    if not len(te):
+        pd.DataFrame(columns=["gene_id", "meta_call", "meta_probability"]).to_csv(
+            os.path.join(OUT, "meta_calls_unknown.tsv"), sep="\t", index=False)
+        print("0 genes with no known answer for this label: nothing to call")
+        return
+    te = te.reindex(columns=tr.columns).fillna("ABSTAIN")
+    Xtr = pd.get_dummies(tr.astype(str))
+    Xte = pd.get_dummies(te.astype(str)).reindex(columns=Xtr.columns, fill_value=0)
+    meta = LogisticRegression(max_iter=3000).fit(Xtr.astype(float), y)
+    prob = meta.predict_proba(Xte.astype(float))
+    pd.DataFrame({"gene_id": te.index, "meta_call": meta.classes_[prob.argmax(axis=1)],
+                  "meta_probability": prob.max(axis=1).round(4)}).to_csv(
+        os.path.join(OUT, "meta_calls_unknown.tsv"), sep="\t", index=False)
+    print(len(te), "unknown genes given a combined call")
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     sys.path.insert(0, REPO)
@@ -125,11 +189,28 @@ def main() -> None:
             "pd.concat(per_gene).to_csv(os.path.join(OUT, 'meta_calls.tsv'), sep='\\t', index=False)",
             "print('paired:', paired, '; McNemar p', round(p, 5), '; admitted:', admitted)",
             "summary")
+    nb.md("### Combined calls for genes with no known answer (only if admitted)",
+          "The meta-model refitted on the base methods' outer-test calls on every known gene, applied to their "
+          "calls on the genes with no known answer (each made with every known label visible). Its reliability is "
+          "this label's measured accuracy above, not a per-gene certainty.")
+    nb.code("if admitted:",
+            "    subprocess.run([sys.executable, SCRIPT, '--deploy', '--target', TARGET], check=True,",
+            "                   env={**os.environ, 'OMP_NUM_THREADS': '2'})",
+            "    unknown = pd.read_csv(os.path.join(OUT, 'meta_calls_unknown.tsv'), sep='\\t')",
+            "    print(len(unknown), 'genes with no known answer given a combined call')",
+            "    print(unknown.meta_call.value_counts().head(8).to_string())",
+            "else:",
+            "    print('not admitted: no combined calls are made for unknown genes')")
     nb.write(NB)
 
 
 if __name__ == "__main__":
-    if "--strategy" in sys.argv:
+    if "--deploy-strategy" in sys.argv:
+        os.makedirs(OUT, exist_ok=True)
+        deploy_worker(sys.argv[sys.argv.index("--deploy-strategy") + 1])
+    elif "--deploy" in sys.argv:
+        deploy()
+    elif "--strategy" in sys.argv:
         os.makedirs(OUT, exist_ok=True)
         worker(sys.argv[sys.argv.index("--strategy") + 1])
     else:

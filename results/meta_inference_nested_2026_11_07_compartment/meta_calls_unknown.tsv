@@ -1,0 +1,4314 @@
+gene_id	meta_call	meta_probability
+TGME49_313630	nucleus - chromatin	0.748
+TGME49_209000	nucleus - chromatin	0.4772
+TGME49_225745	nucleus - chromatin	0.7564
+TGME49_500189	mitochondrion - membranes	0.406
+TGME49_294820	nucleus - chromatin	0.4069
+TGME49_203665	apicoplast	0.394
+TGME49_242625	dense granules	0.4276
+TGME49_266010	nucleus - chromatin	0.5686
+TGME49_500429	apicoplast	0.3554
+TGME49_500142	apicoplast	0.852
+TGME49_216335	nucleus - chromatin	0.747
+TGME49_262825	apicoplast	0.394
+TGME49_500287	apicoplast	0.688
+TGME49_500303	PM - integral	0.3534
+TGME49_288940	ER	0.4014
+TGME49_500148	ER	0.5811
+TGME49_205562	nucleus - chromatin	0.7233
+TGME49_500179	apicoplast	0.8577
+TGME49_286270	nucleus - chromatin	0.6299
+TGME49_500222	micronemes	0.2051
+TGME49_278205	nucleus - chromatin	0.3011
+TGME49_271145	nucleus - chromatin	0.748
+TGME49_245440	mitochondrion - soluble	0.3117
+TGME49_204560	cytosol	0.1971
+TGME49_500168	apicoplast	0.2476
+TGME49_316430	nucleus - chromatin	0.6112
+TGME49_206550	apicoplast	0.3931
+TGME49_211270	ER	0.8033
+TGME49_295610	nucleus - chromatin	0.6672
+TGME49_212810	mitochondrion - membranes	0.3802
+TGME49_206430	mitochondrion - soluble	0.3408
+TGME49_288190	nucleus - chromatin	0.7317
+TGME49_271010	mitochondrion - membranes	0.3802
+TGME49_230830	mitochondrion - soluble	0.3497
+TGME49_500025	PM - integral	0.2639
+TGME49_288440	nucleus - chromatin	0.3831
+TGME49_219660	cytosol	0.2078
+TGME49_246190	nucleus - chromatin	0.3857
+TGME49_500421	apicoplast	0.617
+TGME49_223480	ER	0.2916
+TGME49_253870	apicoplast	0.6937
+TGME49_311625	nucleus - chromatin	0.7233
+TGME49_500227	apicoplast	0.4009
+TGME49_209650	nucleus - chromatin	0.45
+TGME49_272155	nucleus - chromatin	0.748
+TGME49_309980	nucleus - chromatin	0.3532
+TGME49_500062	nucleus - chromatin	0.3952
+TGME49_264790	nucleus - non-chromatin	0.2235
+TGME49_235920	nucleus - chromatin	0.2841
+TGME49_203135	nucleus - chromatin	0.3509
+TGME49_243265	apicoplast	0.4113
+TGME49_500124	apicoplast	0.7711
+TGME49_267030	apicoplast	0.7125
+TGME49_295658	nucleus - chromatin	0.8662
+TGME49_242750	mitochondrion - soluble	0.3283
+TGME49_270720	nucleus - chromatin	0.748
+TGME49_500072	nucleus - non-chromatin	0.7574
+TGME49_264670	apicoplast	0.394
+TGME49_242055	apicoplast	0.5791
+TGME49_286932	nucleus - chromatin	0.5204
+TGME49_223725	nucleus - chromatin	0.3414
+TGME49_500417	nucleus - chromatin	0.3318
+TGME49_276200	IMC	0.3525
+TGME49_232010	nucleus - chromatin	0.4424
+TGME49_500344	nucleus - chromatin	0.2706
+TGME49_249840	nucleus - chromatin	0.3644
+TGME49_280390	nucleus - chromatin	0.3414
+TGME49_221280	nucleus - chromatin	0.3169
+TGME49_268010	apicoplast	0.3622
+TGME49_274010	nucleus - chromatin	0.6875
+TGME49_500057	nucleus - chromatin	0.3774
+TGME49_297210	nucleus - chromatin	0.748
+TGME49_231815	nucleus - chromatin	0.3741
+TGME49_263610	nucleus - chromatin	0.7081
+TGME49_225960	nucleus - chromatin	0.7483
+TGME49_274000	nucleus - chromatin	0.6343
+TGME49_242415	nucleus - chromatin	0.5259
+TGME49_500322	nucleus - chromatin	0.4119
+TGME49_314875	nucleus - chromatin	0.5321
+TGME49_273780	nucleus - chromatin	0.747
+TGME49_254160	nucleus - chromatin	0.4385
+TGME49_500392	apicoplast	0.347
+TGME49_238970	ER	0.5414
+TGME49_255700	apical 1	0.3165
+TGME49_310910	nucleus - non-chromatin	0.6105
+TGME49_500422	nucleus - chromatin	0.3318
+TGME49_267855	dense granules	0.3493
+TGME49_295740	nucleus - chromatin	0.6493
+TGME49_243635	cytosol	0.406
+TGME49_500254	dense granules	0.5582
+TGME49_500177	mitochondrion - membranes	0.1927
+TGME49_208050	apicoplast	0.4906
+TGME49_271370	nucleus - chromatin	0.5824
+TGME49_268035	apicoplast	0.5423
+TGME49_226755	ER	0.663
+TGME49_223060	ER	0.3563
+TGME49_500439	apicoplast	0.2857
+TGME49_229260	nucleus - chromatin	0.3766
+TGME49_210345	nucleus - chromatin	0.7081
+TGME49_208910	nucleus - chromatin	0.4737
+TGME49_500258	apicoplast	0.6256
+TGME49_294740	nucleus - chromatin	0.748
+TGME49_216430	nucleus - chromatin	0.3414
+TGME49_310970	nucleus - chromatin	0.4674
+TGME49_218400	nucleus - chromatin	0.6599
+TGME49_500309	apicoplast	0.4139
+TGME49_313900	nucleus - chromatin	0.5386
+TGME49_218560	nucleus - chromatin	0.2342
+TGME49_314920	nucleus - chromatin	0.4906
+TGME49_215080	nucleus - chromatin	0.6954
+TGME49_310530	nucleus - chromatin	0.6672
+TGME49_260150	nucleus - chromatin	0.7233
+TGME49_500237	nucleus - chromatin	0.4023
+TGME49_219260	ER	0.5839
+TGME49_218000	apicoplast	0.2861
+TGME49_204100	nucleus - chromatin	0.5871
+TGME49_293170	cytosol	0.2994
+TGME49_318240	nucleus - chromatin	0.2239
+TGME49_319370	nucleus - chromatin	0.759
+TGME49_225270	nucleus - chromatin	0.3395
+TGME49_213255	mitochondrion - soluble	0.5667
+TGME49_204380	nucleus - chromatin	0.7233
+TGME49_242640	nucleus - chromatin	0.5777
+TGME49_315190	nucleus - chromatin	0.2746
+TGME49_277550	apicoplast	0.852
+TGME49_500128	apicoplast	0.4161
+TGME49_205615	apicoplast	0.6374
+TGME49_220132	mitochondrion - membranes	0.3228
+TGME49_233960	mitochondrion - soluble	0.4202
+TGME49_309890	nucleus - chromatin	0.748
+TGME49_313210	apicoplast	0.7774
+TGME49_202490	nucleus - chromatin	0.6909
+TGME49_242435	nucleus - chromatin	0.747
+TGME49_269930	Golgi	0.2864
+TGME49_305890	apicoplast	0.688
+TGME49_217860	nucleus - chromatin	0.4437
+TGME49_264485	apicoplast	0.7371
+TGME49_221720	nucleus - chromatin	0.7233
+TGME49_248720	nucleus - chromatin	0.7547
+TGME49_223985	nucleus - chromatin	0.4037
+TGME49_224670	nucleus - chromatin	0.45
+TGME49_500384	apicoplast	0.7711
+TGME49_265190	nucleus - chromatin	0.759
+TGME49_312300	nucleus - chromatin	0.6641
+TGME49_268020	ER	0.5479
+TGME49_213635	nucleus - chromatin	0.3849
+TGME49_239910	apicoplast	0.3281
+TGME49_218490	nucleus - chromatin	0.5502
+TGME49_500099	apicoplast	0.5117
+TGME49_306300	nucleus - chromatin	0.6118
+TGME49_223450	nucleus - chromatin	0.7196
+TGME49_273380	nucleus - chromatin	0.7233
+TGME49_319860	nucleus - chromatin	0.5329
+TGME49_234430	nucleus - chromatin	0.3519
+TGME49_219650	ER	0.2573
+TGME49_264170	nucleus - chromatin	0.3463
+TGME49_316635	apicoplast	0.3821
+TGME49_277940	nucleus - chromatin	0.5858
+TGME49_244720	nucleus - chromatin	0.4641
+TGME49_312240	apicoplast	0.7652
+TGME49_275420	apicoplast	0.6148
+TGME49_239700	nucleus - chromatin	0.6471
+TGME49_500341	apicoplast	0.6079
+TGME49_284040	apicoplast	0.8355
+TGME49_319610	nucleus - chromatin	0.4501
+TGME49_500361	ER	0.504
+TGME49_242260	nucleus - chromatin	0.6954
+TGME49_285780	apicoplast	0.5263
+TGME49_284645	nucleus - chromatin	0.5879
+TGME49_285445	nucleus - chromatin	0.4846
+TGME49_257670	nucleus - chromatin	0.3761
+TGME49_311070	nucleus - chromatin	0.6223
+TGME49_500290	apicoplast	0.3937
+TGME49_213370	nucleus - chromatin	0.759
+TGME49_211310	nucleus - chromatin	0.6672
+TGME49_246760	mitochondrion - soluble	0.3491
+TGME49_203010	apical 1	0.481
+TGME49_278110	ER	0.4919
+TGME49_230080	apicoplast	0.6443
+TGME49_500380	apicoplast	0.7711
+TGME49_271780	nucleus - chromatin	0.6341
+TGME49_255390	nucleus - chromatin	0.748
+TGME49_321370	nucleus - chromatin	0.747
+TGME49_247790	nucleus - chromatin	0.7445
+TGME49_500058	ER	0.4465
+TGME49_239350	apicoplast	0.4101
+TGME49_234300	nucleus - chromatin	0.2136
+TGME49_265050	apicoplast	0.8865
+TGME49_236850	apical 1	0.3882
+TGME49_210210	ER	0.5849
+TGME49_319380	mitochondrion - membranes	0.3692
+TGME49_219070	apical 1	0.451
+TGME49_262420	nucleus - chromatin	0.748
+TGME49_231200	mitochondrion - soluble	0.2245
+TGME49_202640	apicoplast	0.5848
+TGME49_265780	nucleus - chromatin	0.5913
+TGME49_250850	nucleus - chromatin	0.6314
+TGME49_213325	nucleus - chromatin	0.696
+TGME49_233245	mitochondrion - soluble	0.3492
+TGME49_243330	apicoplast	0.4907
+TGME49_272475	nucleus - chromatin	0.759
+TGME49_237480	nucleus - chromatin	0.7233
+TGME49_500401	nucleus - chromatin	0.1877
+TGME49_263980	nucleus - chromatin	0.4101
+TGME49_219450	nucleus - chromatin	0.3394
+TGME49_256830	apicoplast	0.6564
+TGME49_237860	nucleus - chromatin	0.4272
+TGME49_293280	nucleus - chromatin	0.6877
+TGME49_201820	nucleus - chromatin	0.6335
+TGME49_319590	apicoplast	0.5423
+TGME49_241130	apicoplast	0.276
+TGME49_275430	nucleus - chromatin	0.5227
+TGME49_292035	nucleus - chromatin	0.7168
+TGME49_311510	nucleus - chromatin	0.8122
+TGME49_232360	nucleus - chromatin	0.3226
+TGME49_220208	mitochondrion - soluble	0.4334
+TGME49_217800	mitochondrion - membranes	0.6313
+TGME49_250780	nucleus - chromatin	0.748
+TGME49_260000	apicoplast	0.7652
+TGME49_278550	mitochondrion - soluble	0.6511
+TGME49_216500	apicoplast	0.8497
+TGME49_320550	nucleus - chromatin	0.3159
+TGME49_225280	nucleus - chromatin	0.4137
+TGME49_238995	endomembrane vesicles	0.2673
+TGME49_293840	nucleus - chromatin	0.3391
+TGME49_500273	apicoplast	0.7312
+TGME49_245530	Golgi	0.2528
+TGME49_224080	ER	0.8747
+TGME49_220110	nucleus - chromatin	0.7199
+TGME49_290990	nucleus - chromatin	0.6387
+TGME49_228670	nucleus - chromatin	0.5576
+TGME49_233735	nucleus - chromatin	0.7201
+TGME49_240390	cytosol	0.2377
+TGME49_291020	cytosol	0.6318
+TGME49_278260	nucleus - chromatin	0.3709
+TGME49_294860	nucleus - chromatin	0.6954
+TGME49_295770	nucleus - chromatin	0.6387
+TGME49_318770	nucleus - chromatin	0.5065
+TGME49_227300	mitochondrion - membranes	0.4195
+TGME49_258450	apicoplast	0.5317
+TGME49_278815	dense granules	0.2545
+TGME49_277030	nucleus - chromatin	0.305
+TGME49_312905	nucleus - chromatin	0.622
+TGME49_203050	nucleus - chromatin	0.6764
+TGME49_253615	nucleus - chromatin	0.3802
+TGME49_283520	nucleus - chromatin	0.747
+TGME49_244130	nucleus - chromatin	0.4078
+TGME49_249490	apicoplast	0.4288
+TGME49_277560	nucleus - chromatin	0.3825
+TGME49_500264	apicoplast	0.617
+TGME49_200385	nucleus - chromatin	0.5386
+TGME49_272590	mitochondrion - membranes	0.3872
+TGME49_206415	nucleus - chromatin	0.7233
+TGME49_272540	ER	0.2633
+TGME49_224320	mitochondrion - soluble	0.8101
+TGME49_217790	mitochondrion - membranes	0.3228
+TGME49_318470	apical 1	0.664
+TGME49_258420	nucleus - chromatin	0.5967
+TGME49_500418	mitochondrion - membranes	0.3558
+TGME49_312875	nucleus - chromatin	0.696
+TGME49_277540	apicoplast	0.7711
+TGME49_308960	mitochondrion - soluble	0.6244
+TGME49_294060	nucleus - chromatin	0.5835
+TGME49_228350	nucleus - chromatin	0.2552
+TGME49_281420	nucleus - chromatin	0.6095
+TGME49_210310	nucleus - chromatin	0.4424
+TGME49_244500	apical 1	0.664
+TGME49_235315	nucleus - chromatin	0.2163
+TGME49_239830	apical 1	0.4508
+TGME49_285425	nucleus - chromatin	0.5193
+TGME49_209270	nucleus - chromatin	0.3595
+TGME49_500260	apicoplast	0.3501
+TGME49_260270	nucleus - chromatin	0.364
+TGME49_288420	nucleus - chromatin	0.5284
+TGME49_500185	mitochondrion - soluble	0.3391
+TGME49_225090	nucleus - chromatin	0.748
+TGME49_257720	Golgi	0.289
+TGME49_257945	ER	0.5984
+TGME49_500245	ER	0.3458
+TGME49_209520	nucleus - chromatin	0.6672
+TGME49_219485	apicoplast	0.3804
+TGME49_212780	cytosol	0.605
+TGME49_218500	cytosol	0.2085
+TGME49_284620	nucleus - chromatin	0.3864
+TGME49_299150	apicoplast	0.4939
+TGME49_228390	nucleus - chromatin	0.428
+TGME49_222330	nucleus - chromatin	0.6805
+TGME49_298010	nucleus - chromatin	0.2234
+TGME49_233210	Golgi	0.3361
+TGME49_208020	nucleus - chromatin	0.4745
+TGME49_205265	PM - integral	0.373
+TGME49_287970	apical 1	0.618
+TGME49_220520	nucleus - chromatin	0.7959
+TGME49_285470	ER	0.6848
+TGME49_251450	nucleus - chromatin	0.655
+TGME49_214900	PM - integral	0.3748
+TGME49_289710	nucleus - chromatin	0.6954
+TGME49_285650	apical 1	0.4334
+TGME49_268240	nucleus - non-chromatin	0.5366
+TGME49_231800	apicoplast	0.7711
+TGME49_277490	nucleus - chromatin	0.6718
+TGME49_221830	PM - integral	0.3852
+TGME49_271770	cytosol	0.2241
+TGME49_229720	nucleus - chromatin	0.748
+TGME49_201120	nucleus - chromatin	0.747
+TGME49_244120	nucleus - chromatin	0.7114
+TGME49_211600	nucleus - chromatin	0.7483
+TGME49_250680	nucleus - chromatin	0.748
+TGME49_239580	nucleus - chromatin	0.3369
+TGME49_500438	mitochondrion - membranes	0.3558
+TGME49_255960	apicoplast	0.6148
+TGME49_273595	nucleus - chromatin	0.5284
+TGME49_216290	nucleus - chromatin	0.335
+TGME49_500220	apicoplast	0.6724
+TGME49_202970	nucleus - chromatin	0.305
+TGME49_262900	apicoplast	0.4113
+TGME49_313870	nucleus - chromatin	0.6387
+TGME49_237045	nucleus - chromatin	0.2651
+TGME49_218750	cytosol	0.3013
+TGME49_310560	Golgi	0.5397
+TGME49_282040	nucleus - chromatin	0.7317
+TGME49_250050	mitochondrion - soluble	0.3016
+TGME49_500181	apicoplast	0.7312
+TGME49_293560	nucleus - chromatin	0.6954
+TGME49_308965	Golgi	0.5307
+TGME49_311770	apical 1	0.6697
+TGME49_250760	ER	0.443
+TGME49_220290	mitochondrion - soluble	0.3379
+TGME49_204140	apicoplast	0.5089
+TGME49_270975	nucleus - chromatin	0.4715
+TGME49_240410	nucleus - chromatin	0.3391
+TGME49_269670	apicoplast	0.3559
+TGME49_312650	Golgi	0.5267
+TGME49_500383	apicoplast	0.617
+TGME49_239475	nucleus - chromatin	0.4403
+TGME49_277930	nucleus - chromatin	0.431
+TGME49_265770	nucleus - chromatin	0.6672
+TGME49_224510	nucleus - chromatin	0.516
+TGME49_229370	nucleus - chromatin	0.6987
+TGME49_500085	apicoplast	0.6256
+TGME49_316150	nucleus - non-chromatin	0.5193
+TGME49_256900	nucleus - chromatin	0.6387
+TGME49_316480	apicoplast	0.6321
+TGME49_268380	nucleus - chromatin	0.5203
+TGME49_217360	nucleus - chromatin	0.4685
+TGME49_310410	nucleus - non-chromatin	0.5761
+TGME49_220340	ER	0.3752
+TGME49_203520	ER	0.4133
+TGME49_228395	nucleus - chromatin	0.7196
+TGME49_251410	nucleus - non-chromatin	0.4371
+TGME49_311180	nucleus - chromatin	0.748
+TGME49_224160	nucleus - chromatin	0.5148
+TGME49_266670	nucleus - chromatin	0.4141
+TGME49_268320	nucleus - chromatin	0.7081
+TGME49_237510	nucleus - chromatin	0.2446
+TGME49_243298	nucleus - chromatin	0.6387
+TGME49_305310	apicoplast	0.8014
+TGME49_210270	apical 1	0.481
+TGME49_305630	mitochondrion - soluble	0.2376
+TGME49_291090	nucleus - chromatin	0.6327
+TGME49_225340	nucleus - chromatin	0.2542
+TGME49_310720	nucleus - chromatin	0.7233
+TGME49_290225	nucleus - chromatin	0.331
+TGME49_203830	nucleus - chromatin	0.3393
+TGME49_264940	cytosol	0.487
+TGME49_248150	nucleus - chromatin	0.2384
+TGME49_235950	mitochondrion - soluble	0.3402
+TGME49_311380	nucleus - chromatin	0.584
+TGME49_209970	nucleus - chromatin	0.7359
+TGME49_319580	nucleus - chromatin	0.3777
+TGME49_217910	nucleus - chromatin	0.6672
+TGME49_225770	nucleus - chromatin	0.748
+TGME49_304910	nucleus - chromatin	0.7507
+TGME49_210430	nucleus - chromatin	0.7131
+TGME49_224880	apical 2	0.2996
+TGME49_288475	nucleus - chromatin	0.5132
+TGME49_283840	mitochondrion - soluble	0.4842
+TGME49_268560	nucleus - chromatin	0.747
+TGME49_221400	nucleus - chromatin	0.8122
+TGME49_221440	nucleus - chromatin	0.748
+TGME49_316750	nucleus - chromatin	0.7233
+TGME49_310220	cytosol	0.2464
+TGME49_277530	apicoplast	0.458
+TGME49_235200	dense granules	0.6477
+TGME49_288890	apicoplast	0.7774
+TGME49_282000	ER	0.3195
+TGME49_314955	apicoplast	0.7711
+TGME49_237090	nucleus - chromatin	0.6768
+TGME49_318190	nucleus - chromatin	0.748
+TGME49_500042	mitochondrion - soluble	0.3288
+TGME49_252370	nucleus - chromatin	0.4984
+TGME49_257360	nucleus - chromatin	0.6731
+TGME49_253490	nucleus - chromatin	0.748
+TGME49_202410	nucleus - chromatin	0.748
+TGME49_316610	mitochondrion - soluble	0.8101
+TGME49_262410	nucleus - chromatin	0.7733
+TGME49_291050	Golgi	0.1978
+TGME49_221220	nucleus - chromatin	0.4704
+TGME49_306320	nucleus - chromatin	0.6387
+TGME49_224630	nucleus - chromatin	0.6703
+TGME49_280770	dense granules	0.3602
+TGME49_215620	nucleus - chromatin	0.8122
+TGME49_261730	nucleus - chromatin	0.6223
+TGME49_224230	nucleus - non-chromatin	0.492
+TGME49_217830	nucleus - chromatin	0.4333
+TGME49_239340	apicoplast	0.8854
+TGME49_213620	nucleus - chromatin	0.2563
+TGME49_318350	nucleus - chromatin	0.748
+TGME49_301222	nucleus - chromatin	0.747
+TGME49_211730	apicoplast	0.2201
+TGME49_205640	nucleus - chromatin	0.6954
+TGME49_229340	mitochondrion - membranes	0.4834
+TGME49_203200	apicoplast	0.3931
+TGME49_256880	nucleus - chromatin	0.6387
+TGME49_277050	nucleus - chromatin	0.843
+TGME49_251740	apical 1	0.3986
+TGME49_500230	apicoplast	0.5137
+TGME49_314330	ER	0.4109
+TGME49_312065	nucleus - chromatin	0.2707
+TGME49_223780	cytosol	0.4674
+TGME49_248570	apicoplast	0.5965
+TGME49_284180	nucleus - chromatin	0.748
+TGME49_265080	dense granules	0.2471
+TGME49_319880	nucleus - chromatin	0.748
+TGME49_254950	nucleus - chromatin	0.759
+TGME49_295100	nucleus - chromatin	0.7564
+TGME49_215030	nucleus - chromatin	0.3834
+TGME49_271110	mitochondrion - soluble	0.7257
+TGME49_500271	apicoplast	0.5337
+TGME49_500226	Golgi	0.6471
+TGME49_202240	mitochondrion - soluble	0.8101
+TGME49_203260	nucleus - chromatin	0.7461
+TGME49_254290	apical 1	0.4521
+TGME49_311250	nucleus - chromatin	0.7233
+TGME49_254530	mitochondrion - soluble	0.5165
+TGME49_500325	apicoplast	0.7928
+TGME49_225980	mitochondrion - membranes	0.2846
+TGME49_268220	apicoplast	0.5625
+TGME49_285480	apicoplast	0.7729
+TGME49_249440	apical 1	0.4604
+TGME49_203040	nucleus - chromatin	0.3243
+TGME49_500267	nucleus - chromatin	0.372
+TGME49_232560	nucleus - chromatin	0.3829
+TGME49_252395	nucleus - chromatin	0.3226
+TGME49_315950	nucleus - chromatin	0.3091
+TGME49_313890	nucleus - chromatin	0.3996
+TGME49_264190	nucleus - chromatin	0.613
+TGME49_270230	nucleus - chromatin	0.5737
+TGME49_211010	nucleus - chromatin	0.5423
+TGME49_260650	apicoplast	0.8318
+TGME49_269760	nucleus - chromatin	0.4122
+TGME49_203840	mitochondrion - soluble	0.8101
+TGME49_260480	apicoplast	0.3046
+TGME49_311140	nucleus - chromatin	0.4264
+TGME49_288050	mitochondrion - soluble	0.524
+TGME49_216380	PM - integral	0.5204
+TGME49_263510	nucleus - chromatin	0.696
+TGME49_252280	apicoplast	0.7711
+TGME49_254860	nucleus - chromatin	0.4099
+TGME49_311660	nucleus - chromatin	0.5657
+TGME49_269730	IMC	0.4829
+TGME49_283820	apicoplast	0.6321
+TGME49_500182	apicoplast	0.617
+TGME49_239290	apicoplast	0.6553
+TGME49_224810	mitochondrion - soluble	0.4242
+TGME49_252870	mitochondrion - soluble	0.5529
+TGME49_232530	nucleus - chromatin	0.6728
+TGME49_276960	mitochondrion - soluble	0.4562
+TGME49_278640	nucleus - chromatin	0.748
+TGME49_277740	nucleus - chromatin	0.7649
+TGME49_312330	nucleus - chromatin	0.4747
+TGME49_233040	ER	0.6699
+TGME49_238410	cytosol	0.3798
+TGME49_223440	apicoplast	0.7711
+TGME49_500040	apicoplast	0.4787
+TGME49_212140	nucleus - chromatin	0.748
+TGME49_293500	dense granules	0.5702
+TGME49_308880	apicoplast	0.394
+TGME49_500330	nucleus - chromatin	0.4634
+TGME49_314515	apicoplast	0.6595
+TGME49_271030	nucleus - chromatin	0.8122
+TGME49_320500	ER	0.6294
+TGME49_286180	apicoplast	0.4113
+TGME49_251510	nucleus - chromatin	0.748
+TGME49_286410	mitochondrion - soluble	0.4175
+TGME49_213460	mitochondrion - soluble	0.4909
+TGME49_264840	nucleus - chromatin	0.5016
+TGME49_254730	nucleus - chromatin	0.4379
+TGME49_264120	nucleus - chromatin	0.34
+TGME49_305230	mitochondrion - soluble	0.3999
+TGME49_225440	apicoplast	0.5901
+TGME49_269210	nucleus - chromatin	0.7201
+TGME49_215670	nucleus - chromatin	0.6495
+TGME49_260830	mitochondrion - soluble	0.4441
+TGME49_299020	nucleus - chromatin	0.5089
+TGME49_258710	nucleus - chromatin	0.4354
+TGME49_285160	nucleus - chromatin	0.3335
+TGME49_500348	nucleus - chromatin	0.2827
+TGME49_294610	IMC	0.3428
+TGME49_217700	nucleus - chromatin	0.8154
+TGME49_309770	nucleus - chromatin	0.4337
+TGME49_251560	nucleus - chromatin	0.5587
+TGME49_265820	nucleus - chromatin	0.748
+TGME49_228380	nucleus - chromatin	0.7733
+TGME49_500307	mitochondrion - soluble	0.4029
+TGME49_270760	nucleus - chromatin	0.547
+TGME49_247680	apicoplast	0.8854
+TGME49_500007	apicoplast	0.7114
+TGME49_260390	nucleus - chromatin	0.6909
+TGME49_309000	apicoplast	0.3388
+TGME49_267360	nucleus - chromatin	0.8401
+TGME49_258670	mitochondrion - membranes	0.5682
+TGME49_297480	apicoplast	0.3889
+TGME49_311650	nucleus - chromatin	0.4037
+TGME49_237160	nucleus - chromatin	0.2785
+TGME49_278020	nucleus - chromatin	0.5236
+TGME49_209770	apicoplast	0.7236
+TGME49_249890	nucleus - chromatin	0.7393
+TGME49_294380	nucleus - non-chromatin	0.4338
+TGME49_500423	apicoplast	0.7711
+TGME49_314840	nucleus - chromatin	0.4386
+TGME49_227370	ER	0.4004
+TGME49_260490	nucleus - chromatin	0.8505
+TGME49_235680	cytosol	0.5281
+TGME49_231980	nucleus - chromatin	0.6813
+TGME49_277260	nucleus - chromatin	0.3111
+TGME49_205190	nucleus - chromatin	0.4137
+TGME49_500292	mitochondrion - soluble	0.3391
+TGME49_256100	nucleus - chromatin	0.4911
+TGME49_266690	Golgi	0.2252
+TGME49_220920	mitochondrion - soluble	0.4334
+TGME49_237100	mitochondrion - soluble	0.5348
+TGME49_239130	nucleus - chromatin	0.6071
+TGME49_207180	apicoplast	0.5423
+TGME49_500374	apicoplast	0.394
+TGME49_218215	mitochondrion - soluble	0.3191
+TGME49_236200	nucleus - chromatin	0.2679
+TGME49_207970	cytosol	0.3817
+TGME49_500414	nucleus - chromatin	0.3318
+TGME49_313725	ER	0.3691
+TGME49_224928	mitochondrion - soluble	0.5573
+TGME49_297110	nucleus - chromatin	0.748
+TGME49_259150	mitochondrion - membranes	0.3381
+TGME49_274110	apicoplast	0.7711
+TGME49_285800	PM - integral	0.4041
+TGME49_304880	nucleus - chromatin	0.5605
+TGME49_230170	nucleus - chromatin	0.3843
+TGME49_238895	apical 1	0.4852
+TGME49_235478	nucleus - chromatin	0.4851
+TGME49_249540	nucleus - chromatin	0.696
+TGME49_319320	nucleus - chromatin	0.7376
+TGME49_237830	nucleus - chromatin	0.4743
+TGME49_240900	apical 1	0.1396
+TGME49_500366	apicoplast	0.3236
+TGME49_233770	ER	0.4076
+TGME49_259115	Golgi	0.4685
+TGME49_293250	nucleus - chromatin	0.6704
+TGME49_288700	nucleus - chromatin	0.759
+TGME49_214130	nucleus - chromatin	0.696
+TGME49_277060	mitochondrion - soluble	0.4263
+TGME49_228160	dense granules	0.8535
+TGME49_249460	nucleus - chromatin	0.3414
+TGME49_249880	nucleus - chromatin	0.2968
+TGME49_306080	nucleus - chromatin	0.6954
+TGME49_234640	nucleus - chromatin	0.6672
+TGME49_239270	apicoplast	0.6729
+TGME49_261370	nucleus - chromatin	0.4207
+TGME49_230650	nucleus - chromatin	0.748
+TGME49_253030	ER	0.3011
+TGME49_500391	nucleus - chromatin	0.4767
+TGME49_291340	mitochondrion - soluble	0.2382
+TGME49_255460	nucleus - chromatin	0.6559
+TGME49_257180	nucleus - chromatin	0.748
+TGME49_247370	Golgi	0.6
+TGME49_207200	mitochondrion - soluble	0.6423
+TGME49_290330	PM - integral	0.3606
+TGME49_270900	apicoplast	0.5886
+TGME49_292170	nucleus - chromatin	0.4138
+TGME49_239810	mitochondrion - soluble	0.4811
+TGME49_309110	apicoplast	0.6937
+TGME49_313852	mitochondrion - soluble	0.3492
+TGME49_292140	nucleus - chromatin	0.5551
+TGME49_217470	nucleus - chromatin	0.4298
+TGME49_288280	mitochondrion - soluble	0.6446
+TGME49_215550	nucleus - chromatin	0.6954
+TGME49_269320	Golgi	0.5277
+TGME49_238930	apicoplast	0.6214
+TGME49_232100	mitochondrion - soluble	0.7154
+TGME49_266730	apicoplast	0.7787
+TGME49_313760	ER	0.3465
+TGME49_262030	ER	0.4855
+TGME49_311740	nucleus - chromatin	0.4356
+TGME49_270570	apicoplast	0.4861
+TGME49_310520	PM - integral	0.7247
+TGME49_314340	Golgi	0.2676
+TGME49_238420	nucleus - chromatin	0.696
+TGME49_267570	mitochondrion - membranes	0.3992
+TGME49_204440	nucleus - chromatin	0.5746
+TGME49_287260	nucleus - chromatin	0.748
+TGME49_269060	nucleus - chromatin	0.5257
+TGME49_293258	nucleus - chromatin	0.6352
+TGME49_223700	nucleus - chromatin	0.4141
+TGME49_246200	ER	0.3739
+TGME49_263140	nucleus - chromatin	0.5003
+TGME49_266785	ER	0.6556
+TGME49_217692	PM - integral	0.7027
+TGME49_217770	nucleus - chromatin	0.748
+TGME49_260580	apical 1	0.5538
+TGME49_305020	apicoplast	0.8014
+TGME49_259560	nucleus - chromatin	0.5286
+TGME49_312500	nucleus - chromatin	0.7114
+TGME49_311730	apicoplast	0.3489
+TGME49_238980	mitochondrion - membranes	0.57
+TGME49_206650	nucleus - chromatin	0.2219
+TGME49_270340	nucleus - chromatin	0.4543
+TGME49_227930	nucleus - chromatin	0.4225
+TGME49_214630	Golgi	0.4331
+TGME49_214560	nucleus - chromatin	0.6751
+TGME49_238170	apical 1	0.6123
+TGME49_313220	apicoplast	0.733
+TGME49_255970	apicoplast	0.688
+TGME49_267760	nucleus - chromatin	0.6954
+TGME49_500192	cytosol	0.2245
+TGME49_224070	nucleus - chromatin	0.4711
+TGME49_222250	nucleus - chromatin	0.6623
+TGME49_254790	nucleus - chromatin	0.1825
+TGME49_232970	nucleus - chromatin	0.6672
+TGME49_229460	nucleus - chromatin	0.4236
+TGME49_209540	mitochondrion - soluble	0.3807
+TGME49_312370	nucleus - chromatin	0.4217
+TGME49_293330	nucleus - chromatin	0.7233
+TGME49_500333	apicoplast	0.2311
+TGME49_309080	nucleus - chromatin	0.408
+TGME49_294240	ER	0.502
+TGME49_271990	nucleus - chromatin	0.5313
+TGME49_228410	apicoplast	0.2429
+TGME49_500241	nucleus - chromatin	0.337
+TGME49_311080	apicoplast	0.6256
+TGME49_500101	mitochondrion - soluble	0.2279
+TGME49_306310	nucleus - chromatin	0.7233
+TGME49_293252	nucleus - chromatin	0.4949
+TGME49_211450	apicoplast	0.8854
+TGME49_500061	apicoplast	0.402
+TGME49_295590	mitochondrion - soluble	0.4244
+TGME49_224935	ER	0.2325
+TGME49_235580	apicoplast	0.265
+TGME49_500393	apicoplast	0.7711
+TGME49_500032	dense granules	0.8741
+TGME49_233710	PM - integral	0.5034
+TGME49_250940	apicoplast	0.3038
+TGME49_243970	nucleus - chromatin	0.748
+TGME49_237550	nucleus - chromatin	0.5967
+TGME49_261680	nucleus - chromatin	0.5782
+TGME49_209560	apicoplast	0.6261
+TGME49_270100	nucleus - chromatin	0.3318
+TGME49_205120	nucleus - chromatin	0.3471
+TGME49_500132	apicoplast	0.5137
+TGME49_313360	nucleus - chromatin	0.7649
+TGME49_500045	ER	0.6634
+TGME49_283810	nucleus - chromatin	0.2834
+TGME49_313600	nucleus - chromatin	0.6909
+TGME49_260840	mitochondrion - membranes	0.4704
+TGME49_213480	ER	0.2837
+TGME49_257610	Golgi	0.3435
+TGME49_311765	PM - integral	0.3412
+TGME49_315290	nucleus - chromatin	0.4444
+TGME49_500291	mitochondrion - soluble	0.2644
+TGME49_315420	apicoplast	0.5502
+TGME49_232320	nucleus - chromatin	0.583
+TGME49_240340	dense granules	0.3285
+TGME49_244680	apicoplast	0.4723
+TGME49_264070	dense granules	0.5405
+TGME49_500166	nucleus - chromatin	0.3625
+TGME49_219678	mitochondrion - soluble	0.416
+TGME49_312590	nucleus - chromatin	0.696
+TGME49_203800	mitochondrion - membranes	0.4695
+TGME49_240350	mitochondrion - membranes	0.635
+TGME49_240325	mitochondrion - soluble	0.3196
+TGME49_254960	nucleus - chromatin	0.4665
+TGME49_209730	nucleus - chromatin	0.3154
+TGME49_240330	nucleus - chromatin	0.3609
+TGME49_246978	mitochondrion - soluble	0.4437
+TGME49_294400	cytosol	0.3794
+TGME49_225900	nucleus - chromatin	0.4809
+TGME49_222155	apicoplast	0.7883
+TGME49_228240	ER	0.8747
+TGME49_500009	apicoplast	0.7711
+TGME49_202730	nucleus - chromatin	0.3011
+TGME49_241140	apicoplast	0.7434
+TGME49_305200	nucleus - chromatin	0.5318
+TGME49_280450	nucleus - chromatin	0.748
+TGME49_500404	apicoplast	0.3238
+TGME49_500270	nucleus - chromatin	0.5957
+TGME49_500389	apicoplast	0.3571
+TGME49_240310	cytosol	0.2274
+TGME49_226790	apicoplast	0.8355
+TGME49_500398	dense granules	0.4017
+TGME49_313340	nucleus - chromatin	0.6867
+TGME49_265100	apicoplast	0.4744
+TGME49_500080	apicoplast	0.4392
+TGME49_275830	mitochondrion - soluble	0.4535
+TGME49_213752	nucleus - chromatin	0.652
+TGME49_265205	mitochondrion - soluble	0.526
+TGME49_319520	nucleus - chromatin	0.5779
+TGME49_320680	nucleus - chromatin	0.59
+TGME49_258010	nucleus - chromatin	0.7233
+TGME49_249020	nucleus - chromatin	0.6672
+TGME49_500379	nucleus - chromatin	0.5638
+TGME49_213020	nucleus - chromatin	0.748
+TGME49_270190	nucleus - chromatin	0.2579
+TGME49_240370	dense granules	0.5238
+TGME49_212970	mitochondrion - soluble	0.5308
+TGME49_271000	cytosol	0.2119
+TGME49_313950	ER	0.3881
+TGME49_309420	PM - integral	0.4282
+TGME49_208040	apicoplast	0.6937
+TGME49_256865	apicoplast	0.5218
+TGME49_230150	nucleus - chromatin	0.3369
+TGME49_286190	Golgi	0.3757
+TGME49_241870	apicoplast	0.7711
+TGME49_243530	mitochondrion - soluble	0.6423
+TGME49_216250	cytosol	0.3671
+TGME49_253790	nucleus - chromatin	0.428
+TGME49_217390	ER	0.3152
+TGME49_261610	nucleus - chromatin	0.6359
+TGME49_234990	nucleus - chromatin	0.748
+TGME49_247270	apicoplast	0.2502
+TGME49_218290	cytosol	0.6609
+TGME49_315100	apicoplast	0.6786
+TGME49_305150	apicoplast	0.4013
+TGME49_212940	nucleus - chromatin	0.7918
+TGME49_216610	cytosol	0.4114
+TGME49_257595	mitochondrion - soluble	0.5567
+TGME49_203300	Golgi	0.3486
+TGME49_202180	mitochondrion - soluble	0.3327
+TGME49_251610	nucleus - chromatin	0.2875
+TGME49_500342	apicoplast	0.3532
+TGME49_205140	Golgi	0.1886
+TGME49_246995	nucleus - chromatin	0.382
+TGME49_306480	nucleus - chromatin	0.29
+TGME49_308940	apicoplast	0.6911
+TGME49_306950	mitochondrion - soluble	0.4053
+TGME49_293460	nucleus - chromatin	0.4872
+TGME49_207100	nucleus - chromatin	0.7156
+TGME49_225130	mitochondrion - soluble	0.4805
+TGME49_255170	mitochondrion - soluble	0.6271
+TGME49_224610	cytosol	0.2943
+TGME49_261230	nucleus - chromatin	0.4398
+TGME49_311060	nucleus - chromatin	0.742
+TGME49_248440	mitochondrion - soluble	0.5341
+TGME49_270450	mitochondrion - soluble	0.6023
+TGME49_215570	nucleus - chromatin	0.7507
+TGME49_318610	nucleus - chromatin	0.6063
+TGME49_270210	mitochondrion - soluble	0.2477
+TGME49_244630	mitochondrion - soluble	0.486
+TGME49_215990	nucleus - chromatin	0.8467
+TGME49_287160	nucleus - chromatin	0.7233
+TGME49_261990	ER	0.339
+TGME49_242670	nucleus - chromatin	0.7557
+TGME49_269270	apicoplast	0.3722
+TGME49_500310	apicoplast	0.8773
+TGME49_210400	mitochondrion - membranes	0.5679
+TGME49_254135	mitochondrion - soluble	0.9151
+TGME49_217730	apicoplast	0.4113
+TGME49_500013	ER	0.3905
+TGME49_500239	mitochondrion - soluble	0.3506
+TGME49_249215	mitochondrion - soluble	0.6743
+TGME49_500163	PM - integral	0.4849
+TGME49_310620	nucleus - chromatin	0.2815
+TGME49_221370	apical 1	0.4521
+TGME49_232980	mitochondrion - soluble	0.7154
+TGME49_220470	nucleus - chromatin	0.748
+TGME49_500256	apicoplast	0.4037
+TGME49_231470	apicoplast	0.5583
+TGME49_500363	apicoplast	0.4386
+TGME49_208580	nucleus - chromatin	0.748
+TGME49_306620	nucleus - chromatin	0.2884
+TGME49_309100	nucleus - chromatin	0.4809
+TGME49_500283	apicoplast	0.6729
+TGME49_244660	nucleus - chromatin	0.421
+TGME49_257700	apicoplast	0.5583
+TGME49_315360	nucleus - chromatin	0.4642
+TGME49_280420	nucleus - chromatin	0.322
+TGME49_285210	nucleus - chromatin	0.2365
+TGME49_230710	nucleus - chromatin	0.3667
+TGME49_285940	ER	0.1983
+TGME49_224840	Golgi	0.3569
+TGME49_306500	PM - integral	0.277
+TGME49_270670	ER	0.3657
+TGME49_235390	IMC	0.1379
+TGME49_248170	mitochondrion - soluble	0.2941
+TGME49_253150	cytosol	0.403
+TGME49_225028	apicoplast	0.268
+TGME49_278580	PM - integral	0.3782
+TGME49_200450	nucleus - chromatin	0.3316
+TGME49_253580	mitochondrion - membranes	0.5911
+TGME49_300160	nucleus - chromatin	0.3901
+TGME49_289490	apicoplast	0.5648
+TGME49_319710	cytosol	0.2958
+TGME49_278600	dense granules	0.4316
+TGME49_286520	apicoplast	0.6015
+TGME49_261955	nucleus - non-chromatin	0.3289
+TGME49_253810	nucleus - chromatin	0.4098
+TGME49_209550	mitochondrion - soluble	0.6154
+TGME49_214580	cytosol	0.3956
+TGME49_257290	nucleus - chromatin	0.5044
+TGME49_500340	PM - integral	0.3025
+TGME49_262550	nucleus - chromatin	0.7201
+TGME49_264980	nucleus - chromatin	0.7649
+TGME49_252250	nucleus - chromatin	0.7196
+TGME49_272285	apicoplast	0.4535
+TGME49_205658	cytosol	0.3207
+TGME49_312570	nucleus - chromatin	0.6223
+TGME49_202900	nucleus - chromatin	0.6403
+TGME49_500343	ER	0.3061
+TGME49_307010	nucleus - chromatin	0.7856
+TGME49_282030	nucleus - chromatin	0.6886
+TGME49_234580	nucleus - chromatin	0.4543
+TGME49_287490	dense granules	0.76
+TGME49_224180	nucleus - chromatin	0.314
+TGME49_202080	mitochondrion - soluble	0.5682
+TGME49_315580	nucleus - chromatin	0.5207
+TGME49_248240	nucleus - chromatin	0.3251
+TGME49_228710	mitochondrion - soluble	0.3705
+TGME49_278940	nucleus - chromatin	0.8122
+TGME49_312360	mitochondrion - membranes	0.4505
+TGME49_311490	mitochondrion - soluble	0.5055
+TGME49_206640	nucleus - chromatin	0.5244
+TGME49_205200	nucleus - chromatin	0.4219
+TGME49_309880	nucleus - chromatin	0.4312
+TGME49_500092	ER	0.4748
+TGME49_311700	cytosol	0.2361
+TGME49_314320	apicoplast	0.9545
+TGME49_280500	PM - integral	0.2954
+TGME49_500079	apicoplast	0.617
+TGME49_318390	nucleus - chromatin	0.5003
+TGME49_500223	nucleus - chromatin	0.6454
+TGME49_223810	ER	0.2541
+TGME49_209755	dense granules	0.3885
+TGME49_500408	apicoplast	0.4381
+TGME49_288670	nucleus - chromatin	0.439
+TGME49_271090	mitochondrion - soluble	0.5605
+TGME49_222120	nucleus - chromatin	0.5438
+TGME49_500082	mitochondrion - membranes	0.3992
+TGME49_308070	nucleus - chromatin	0.4919
+TGME49_218550	apical 1	0.2769
+TGME49_500243	mitochondrion - soluble	0.2403
+TGME49_229020	nucleus - chromatin	0.6006
+TGME49_214120	apicoplast	0.394
+TGME49_259920	apicoplast	0.7533
+TGME49_288945	nucleus - chromatin	0.3352
+TGME49_251570	ER	0.2661
+TGME49_232510	nucleus - chromatin	0.748
+TGME49_239880	dense granules	0.19
+TGME49_309060	nucleus - chromatin	0.4056
+TGME49_278240	nucleus - chromatin	0.3872
+TGME49_261790	nucleus - chromatin	0.7856
+TGME49_313740	endomembrane vesicles	0.2206
+TGME49_225110	nucleus - chromatin	0.4448
+TGME49_222700	mitochondrion - membranes	0.5075
+TGME49_237585	Golgi	0.1951
+TGME49_263410	nucleus - chromatin	0.2739
+TGME49_228730	Golgi	0.4331
+TGME49_201230	apical 1	0.5539
+TGME49_207230	nucleus - chromatin	0.4681
+TGME49_244510	apicoplast	0.6564
+TGME49_211610	nucleus - chromatin	0.3613
+TGME49_267410	nucleus - chromatin	0.2256
+TGME49_500358	nucleus - chromatin	0.5751
+TGME49_266390	nucleus - chromatin	0.6218
+TGME49_278060	nucleus - chromatin	0.748
+TGME49_207730	cytosol	0.3871
+TGME49_204360	dense granules	0.808
+TGME49_307760	Golgi	0.2697
+TGME49_257760	endomembrane vesicles	0.318
+TGME49_258490	nucleus - chromatin	0.748
+TGME49_247970	PM - integral	0.3278
+TGME49_500232	apicoplast	0.373
+TGME49_259168	apicoplast	0.8854
+TGME49_277770	mitochondrion - soluble	0.6159
+TGME49_206600	apicoplast	0.8854
+TGME49_220585	mitochondrion - soluble	0.3737
+TGME49_265280	nucleus - chromatin	0.748
+TGME49_212170	nucleus - chromatin	0.3079
+TGME49_231790	nucleus - chromatin	0.7305
+TGME49_227320	cytosol	0.3426
+TGME49_262650	nucleus - chromatin	0.3456
+TGME49_267270	endomembrane vesicles	0.3425
+TGME49_206570	apicoplast	0.3115
+TGME49_307770	apicoplast	0.5516
+TGME49_278760	mitochondrion - soluble	0.7855
+TGME49_277070	nucleus - non-chromatin	0.4772
+TGME49_213660	nucleus - chromatin	0.2833
+TGME49_254330	dense granules	0.4908
+TGME49_254830	mitochondrion - soluble	0.5682
+TGME49_228080	nucleus - chromatin	0.7081
+TGME49_208410	PM - integral	0.5187
+TGME49_316620	nucleus - chromatin	0.6819
+TGME49_256910	nucleus - chromatin	0.3693
+TGME49_306550	nucleus - chromatin	0.2599
+TGME49_274020	dense granules	0.2478
+TGME49_235860	ER	0.3381
+TGME49_257550	apical 1	0.481
+TGME49_500262	mitochondrion - soluble	0.2403
+TGME49_205050	nucleus - non-chromatin	0.24
+TGME49_220370	apical 1	0.4026
+TGME49_269940	nucleus - chromatin	0.4596
+TGME49_281380	nucleus - chromatin	0.7376
+TGME49_259155	mitochondrion - soluble	0.2209
+TGME49_213840	ER	0.4319
+TGME49_289110	nucleus - chromatin	0.357
+TGME49_244450	PM - integral	0.2328
+TGME49_308980	apicoplast	0.4535
+TGME49_305620	Golgi	0.4428
+TGME49_218800	nucleus - chromatin	0.2725
+TGME49_285990	nucleus - chromatin	0.3575
+TGME49_297340	nucleus - chromatin	0.3679
+TGME49_268000	nucleus - chromatin	0.5139
+TGME49_285810	nucleus - chromatin	0.3016
+TGME49_308010	apical 1	0.4334
+TGME49_235402	mitochondrion - soluble	0.4915
+TGME49_270940	nucleus - chromatin	0.3511
+TGME49_264210	nucleus - chromatin	0.4272
+TGME49_288930	nucleus - chromatin	0.754
+TGME49_293660	apicoplast	0.7711
+TGME49_321600	apical 1	0.688
+TGME49_239050	nucleus - chromatin	0.748
+TGME49_204280	nucleus - chromatin	0.4644
+TGME49_217610	apicoplast	0.1728
+TGME49_232240	nucleus - chromatin	0.2655
+TGME49_262120	nucleus - chromatin	0.6608
+TGME49_233490	apicoplast	0.2564
+TGME49_288730	nucleus - chromatin	0.4942
+TGME49_307580	Golgi	0.5237
+TGME49_305330	nucleus - chromatin	0.5501
+TGME49_500276	nucleus - chromatin	0.3519
+TGME49_282070	IMC	0.6804
+TGME49_244300	nucleus - chromatin	0.3574
+TGME49_297360	nucleus - chromatin	0.7233
+TGME49_292340	Golgi	0.3169
+TGME49_272270	mitochondrion - soluble	0.4244
+TGME49_294320	mitochondrion - soluble	0.3312
+TGME49_329000	apicoplast	0.5683
+TGME49_257800	apicoplast	0.3751
+TGME49_315560	ER	0.3248
+TGME49_271950	apicoplast	0.7711
+TGME49_284010	apicoplast	0.7474
+TGME49_255510	nucleus - chromatin	0.5853
+TGME49_271240	nucleus - chromatin	0.5302
+TGME49_212900	apical 1	0.3015
+TGME49_253110	apicoplast	0.2373
+TGME49_221540	nucleus - chromatin	0.5895
+TGME49_294840	nucleus - chromatin	0.4677
+TGME49_263450	nucleus - chromatin	0.3287
+TGME49_293260	nucleus - chromatin	0.3534
+TGME49_213920	apical 1	0.6991
+TGME49_233390	nucleus - chromatin	0.4587
+TGME49_257790	apicoplast	0.7711
+TGME49_252640	PM - integral	0.5383
+TGME49_222060	ER	0.4918
+TGME49_230990	mitochondrion - soluble	0.4843
+TGME49_211480	apicoplast	0.7166
+TGME49_216740	nucleus - chromatin	0.748
+TGME49_306230	nucleus - chromatin	0.3797
+TGME49_269300	ER	0.2483
+TGME49_255470	apicoplast	0.6803
+TGME49_283480	nucleus - chromatin	0.4988
+TGME49_254555	nucleus - chromatin	0.5667
+TGME49_301360	ER	0.5611
+TGME49_215370	mitochondrion - soluble	0.4834
+TGME49_224030	nucleus - chromatin	0.3687
+TGME49_283760	nucleus - chromatin	0.4217
+TGME49_255730	mitochondrion - soluble	0.3385
+TGME49_240080	endomembrane vesicles	0.2476
+TGME49_247040	nucleus - chromatin	0.7201
+TGME49_269720	nucleus - chromatin	0.4137
+TGME49_228030	PM - integral	0.2571
+TGME49_213530	nucleus - chromatin	0.2799
+TGME49_275610	nucleus - chromatin	0.3178
+TGME49_310280	nucleus - chromatin	0.5096
+TGME49_277950	mitochondrion - soluble	0.7622
+TGME49_281960	apical 1	0.5012
+TGME49_299270	apicoplast	0.4417
+TGME49_316510	nucleus - chromatin	0.43
+TGME49_203020	apicoplast	0.6347
+TGME49_318675	Golgi	0.3762
+TGME49_314220	nucleus - chromatin	0.713
+TGME49_268820	ER	0.712
+TGME49_244890	apicoplast	0.4881
+TGME49_217380	apicoplast	0.739
+TGME49_318650	rhoptries 2	0.1795
+TGME49_318130	nucleus - chromatin	0.4187
+TGME49_306490	ER	0.3615
+TGME49_257370	nucleus - chromatin	0.2816
+TGME49_226850	nucleus - chromatin	0.3844
+TGME49_226310	nucleus - chromatin	0.3179
+TGME49_218890	mitochondrion - membranes	0.7528
+TGME49_500135	nucleus - chromatin	0.645
+TGME49_224830	apicoplast	0.5771
+TGME49_269020	ER	0.5107
+TGME49_318180	apicoplast	0.7883
+TGME49_313120	apicoplast	0.5423
+TGME49_234165	cytosol	0.3519
+TGME49_248750	ER	0.4226
+TGME49_253120	nucleus - chromatin	0.4236
+TGME49_243590	cytosol	0.4305
+TGME49_243655	nucleus - chromatin	0.3626
+TGME49_262440	dense granules	0.2466
+TGME49_259080	nucleus - chromatin	0.2768
+TGME49_320515	apical 2	0.5287
+TGME49_500143	apicoplast	0.5137
+TGME49_232670	dense granules	0.8227
+TGME49_293240	nucleus - chromatin	0.3844
+TGME49_319390	mitochondrion - membranes	0.3901
+TGME49_259670	nucleus - chromatin	0.4322
+TGME49_247485	apicoplast	0.4113
+TGME49_500402	mitochondrion - membranes	0.398
+TGME49_299820	mitochondrion - soluble	0.4892
+TGME49_273330	apicoplast	0.7711
+TGME49_312175	apicoplast	0.7711
+TGME49_230905	mitochondrion - soluble	0.2597
+TGME49_299230	nucleus - chromatin	0.4654
+TGME49_251670	nucleus - chromatin	0.2399
+TGME49_224140	nucleus - non-chromatin	0.538
+TGME49_314485	mitochondrion - membranes	0.2272
+TGME49_223900	Golgi	0.4032
+TGME49_202740	nucleus - chromatin	0.6272
+TGME49_211360	mitochondrion - membranes	0.4812
+TGME49_249230	mitochondrion - soluble	0.3041
+TGME49_243210	nucleus - chromatin	0.731
+TGME49_309030	ER	0.385
+TGME49_294902	mitochondrion - soluble	0.8101
+TGME49_500046	apicoplast	0.2224
+TGME49_204870	ER	0.3959
+TGME49_263540	nucleus - chromatin	0.3858
+TGME49_263100	ER	0.2875
+TGME49_315900	cytosol	0.2529
+TGME49_257330	apicoplast	0.4113
+TGME49_237840	apicoplast	0.5625
+TGME49_232500	nucleus - chromatin	0.2294
+TGME49_257925	dense granules	0.4397
+TGME49_236780	nucleus - chromatin	0.6751
+TGME49_212110	apicoplast	0.7711
+TGME49_211400	nucleus - non-chromatin	0.6657
+TGME49_315600	nucleus - chromatin	0.5989
+TGME49_202400	nucleus - chromatin	0.2319
+TGME49_210600	nucleus - chromatin	0.3602
+TGME49_500204	mitochondrion - membranes	0.2925
+TGME49_285490	apicoplast	0.6021
+TGME49_232220	nucleus - chromatin	0.5775
+TGME49_206330	nucleus - chromatin	0.6658
+TGME49_235905	nucleus - non-chromatin	0.457
+TGME49_226090	apicoplast	0.6876
+TGME49_272730	mitochondrion - soluble	0.6271
+TGME49_218362	nucleus - chromatin	0.3393
+TGME49_264178	nucleus - chromatin	0.2595
+TGME49_272260	endomembrane vesicles	0.2603
+TGME49_221310	endomembrane vesicles	0.2387
+TGME49_258200	nucleus - chromatin	0.268
+TGME49_500044	ER	0.7125
+TGME49_222960	nucleus - chromatin	0.5697
+TGME49_216870	nucleus - chromatin	0.3276
+TGME49_232590	nucleus - chromatin	0.3581
+TGME49_215510	nucleus - chromatin	0.5287
+TGME49_283490	mitochondrion - membranes	0.4082
+TGME49_309410	apical 1	0.3001
+TGME49_208510	nucleus - chromatin	0.5313
+TGME49_280605	ER	0.4142
+TGME49_500345	apicoplast	0.3209
+TGME49_240300	nucleus - chromatin	0.748
+TGME49_316780	apicoplast	0.3998
+TGME49_286910	mitochondrion - membranes	0.3869
+TGME49_263210	nucleus - chromatin	0.6123
+TGME49_201870	apicoplast	0.4113
+TGME49_260360	mitochondrion - soluble	0.6243
+TGME49_238915	nucleus - chromatin	0.2418
+TGME49_500272	Golgi	0.7018
+TGME49_220480	apicoplast	0.4867
+TGME49_252300	dense granules	0.2334
+TGME49_259250	nucleus - chromatin	0.3669
+TGME49_300660	apicoplast	0.9057
+TGME49_263785	apicoplast	0.7237
+TGME49_221250	apical 1	0.4267
+TGME49_220380	micronemes	0.4707
+TGME49_248190	cytosol	0.3891
+TGME49_297320	apicoplast	0.3269
+TGME49_233380	nucleus - chromatin	0.4239
+TGME49_202040	apical 1	0.4789
+TGME49_244640	nucleus - chromatin	0.8748
+TGME49_227050	Golgi	0.2961
+TGME49_266940	endomembrane vesicles	0.3513
+TGME49_215328	mitochondrion - membranes	0.4781
+TGME49_275320	PM - integral	0.6086
+TGME49_220420	Golgi	0.3986
+TGME49_295640	ER	0.2294
+TGME49_206620	nucleus - chromatin	0.4623
+TGME49_253710	cytosol	0.4049
+TGME49_202580	mitochondrion - soluble	0.4083
+TGME49_229405	Golgi	0.267
+TGME49_260210	mitochondrion - soluble	0.3764
+TGME49_203900	apicoplast	0.2459
+TGME49_265230	cytosol	0.3417
+TGME49_218900	nucleus - chromatin	0.2214
+TGME49_243470	ER	0.4152
+TGME49_246140	mitochondrion - soluble	0.3925
+TGME49_309720	apical 1	0.2449
+TGME49_309280	nucleus - chromatin	0.6954
+TGME49_233320	cytosol	0.2077
+TGME49_281370	mitochondrion - soluble	0.7363
+TGME49_226940	nucleus - non-chromatin	0.5933
+TGME49_225190	apicoplast	0.8014
+TGME49_262510	apicoplast	0.7221
+TGME49_216840	nucleus - chromatin	0.562
+TGME49_271200	dense granules	0.2356
+TGME49_500113	apicoplast	0.7746
+TGME49_202190	nucleus - chromatin	0.3136
+TGME49_224680	ER	0.4286
+TGME49_262950	IMC	0.3316
+TGME49_257010	mitochondrion - membranes	0.4797
+TGME49_295935	dense granules	0.7362
+TGME49_225105	Golgi	0.3175
+TGME49_212735	mitochondrion - membranes	0.2234
+TGME49_312970	mitochondrion - membranes	0.1772
+TGME49_321610	apicoplast	0.3217
+TGME49_315480	cytosol	0.3773
+TGME49_289240	nucleus - chromatin	0.3862
+TGME49_266380	nucleus - chromatin	0.2923
+TGME49_240240	mitochondrion - membranes	0.3921
+TGME49_308030	nucleus - chromatin	0.4272
+TGME49_295980	ER	0.2141
+TGME49_254200	apicoplast	0.9578
+TGME49_246010	nucleus - chromatin	0.2569
+TGME49_221500	nucleus - chromatin	0.4135
+TGME49_288640	mitochondrion - soluble	0.4331
+TGME49_225510	mitochondrion - soluble	0.6515
+TGME49_218210	cytosol	0.4334
+TGME49_280470	apical 1	0.5001
+TGME49_500296	apicoplast	0.394
+TGME49_500367	nucleus - chromatin	0.3318
+TGME49_225590	cytosol	0.2678
+TGME49_267460	nucleus - chromatin	0.329
+TGME49_283900	nucleus - chromatin	0.7233
+TGME49_315460	mitochondrion - soluble	0.7653
+TGME49_231360	apicoplast	0.7236
+TGME49_247740	mitochondrion - soluble	0.5529
+TGME49_500385	mitochondrion - membranes	0.296
+TGME49_266890	rhoptries 1	0.4304
+TGME49_237195	mitochondrion - membranes	0.3802
+TGME49_500238	nucleus - chromatin	0.3232
+TGME49_248710	nucleus - non-chromatin	0.4748
+TGME49_237530	mitochondrion - soluble	0.53
+TGME49_259600	apicoplast	0.3582
+TGME49_217630	apicoplast	0.3935
+TGME49_269380	apicoplast	0.4728
+TGME49_209130	nucleus - chromatin	0.3146
+TGME49_500174	nucleus - chromatin	0.3178
+TGME49_294720	nucleus - chromatin	0.4424
+TGME49_215900	PM - integral	0.19
+TGME49_226390	nucleus - chromatin	0.7939
+TGME49_205650	nucleus - chromatin	0.6345
+TGME49_256040	ER	0.4994
+TGME49_222030	nucleus - chromatin	0.748
+TGME49_233550	apicoplast	0.3525
+TGME49_258400	ER	0.474
+TGME49_269390	cytosol	0.419
+TGME49_266366	PM - integral	0.7325
+TGME49_246160	Golgi	0.3106
+TGME49_217670	apicoplast	0.3463
+TGME49_316120	apicoplast	0.7711
+TGME49_209920	nucleus - chromatin	0.2734
+TGME49_312830	nucleus - chromatin	0.8122
+TGME49_291030	nucleus - chromatin	0.236
+TGME49_225830	rhoptries 1	0.2925
+TGME49_228175	mitochondrion - soluble	0.3416
+TGME49_248900	Golgi	0.5277
+TGME49_226920	nucleus - chromatin	0.3342
+TGME49_202920	apicoplast	0.6631
+TGME49_253740	nucleus - chromatin	0.5473
+TGME49_248610	Golgi	0.3516
+TGME49_229710	nucleus - chromatin	0.748
+TGME49_500285	ER	0.5845
+TGME49_500086	apicoplast	0.4928
+TGME49_500188	nucleus - chromatin	0.545
+TGME49_311760	nucleus - chromatin	0.2401
+TGME49_280522	nucleus - chromatin	0.2656
+TGME49_209050	Golgi	0.2188
+TGME49_240990	apicoplast	0.617
+TGME49_262680	nucleus - chromatin	0.5525
+TGME49_233530	PM - integral	0.3001
+TGME49_315440	Golgi	0.418
+TGME49_262530	cytosol	0.5055
+TGME49_230630	mitochondrion - soluble	0.6686
+TGME49_275780	mitochondrion - soluble	0.3725
+TGME49_257910	mitochondrion - soluble	0.3582
+TGME49_244850	nucleus - chromatin	0.388
+TGME49_275450	nucleus - chromatin	0.5144
+TGME49_500434	nucleus - chromatin	0.2466
+TGME49_304750	ER	0.7938
+TGME49_313330	Golgi	0.335
+TGME49_257050	nucleus - chromatin	0.2675
+TGME49_200350	dense granules	0.3189
+TGME49_294570	apicoplast	0.6784
+TGME49_269310	cytosol	0.5323
+TGME49_294210	cytosol	0.4594
+TGME49_215895	nucleus - chromatin	0.3707
+TGME49_254910	nucleus - chromatin	0.6201
+TGME49_290880	mitochondrion - soluble	0.3103
+TGME49_500318	nucleus - chromatin	0.4684
+TGME49_500224	nucleus - chromatin	0.2718
+TGME49_213340	nucleus - chromatin	0.3628
+TGME49_295720	apicoplast	0.3622
+TGME49_213720	mitochondrion - soluble	0.3527
+TGME49_218910	ER	0.3167
+TGME49_280725	apicoplast	0.6902
+TGME49_249160	PM - integral	0.6562
+TGME49_225400	apicoplast	0.2786
+TGME49_239670	nucleus - chromatin	0.3468
+TGME49_316320	mitochondrion - soluble	0.2213
+TGME49_260160	mitochondrion - soluble	0.5303
+TGME49_244090	mitochondrion - soluble	0.5467
+TGME49_242810	mitochondrion - membranes	0.3228
+TGME49_318640	apicoplast	0.5484
+TGME49_289170	ER	0.2907
+TGME49_267540	nucleus - chromatin	0.7504
+TGME49_288950	apical 1	0.4852
+TGME49_284170	Golgi	0.4731
+TGME49_500083	nucleus - chromatin	0.1712
+TGME49_292390	dense granules	0.2117
+TGME49_278710	apicoplast	0.5625
+TGME49_258520	ER	0.2206
+TGME49_276120	nucleus - chromatin	0.7558
+TGME49_320620	apicoplast	0.6896
+TGME49_244230	mitochondrion - soluble	0.3007
+TGME49_225920	nucleus - chromatin	0.5252
+TGME49_249450	nucleus - chromatin	0.748
+TGME49_310160	nucleus - chromatin	0.2228
+TGME49_272210	apicoplast	0.6867
+TGME49_231840	apical 1	0.276
+TGME49_233090	apicoplast	0.6766
+TGME49_500377	apicoplast	0.564
+TGME49_219230	endomembrane vesicles	0.222
+TGME49_292375	apicoplast	0.3986
+TGME49_500187	nucleus - chromatin	0.2466
+TGME49_212770	IMC	0.6254
+TGME49_220630	dense granules	0.9077
+TGME49_216950	nucleus - non-chromatin	0.4401
+TGME49_282210	rhoptries 2	0.2254
+TGME49_234200	mitochondrion - soluble	0.7379
+TGME49_322700	mitochondrion - membranes	0.2806
+TGME49_244580	mitochondrion - soluble	0.6842
+TGME49_237210	PM - integral	0.309
+TGME49_203250	mitochondrion - membranes	0.2758
+TGME49_222385	nucleus - chromatin	0.3643
+TGME49_258910	endomembrane vesicles	0.2241
+TGME49_291150	dense granules	0.4051
+TGME49_206310	apicoplast	0.5697
+TGME49_320150	nucleus - chromatin	0.5737
+TGME49_221420	cytosol	0.5014
+TGME49_271625	apicoplast	0.7388
+TGME49_200410	nucleus - chromatin	0.3844
+TGME49_259140	mitochondrion - soluble	0.8101
+TGME49_202700	mitochondrion - soluble	0.3148
+TGME49_278518	ER	0.5284
+TGME49_204510	nucleus - chromatin	0.4045
+TGME49_307800	PM - integral	0.3296
+TGME49_210490	apicoplast	0.4776
+TGME49_305950	nucleus - chromatin	0.3199
+TGME49_223130	nucleus - non-chromatin	0.3302
+TGME49_284530	ER	0.294
+TGME49_259160	mitochondrion - soluble	0.7154
+TGME49_293550	nucleus - chromatin	0.4726
+TGME49_261530	ER	0.6848
+TGME49_500169	apicoplast	0.5137
+TGME49_202650	Golgi	0.3588
+TGME49_288230	nucleus - chromatin	0.4217
+TGME49_288240	nucleus - chromatin	0.4737
+TGME49_201670	Golgi	0.2825
+TGME49_500246	mitochondrion - membranes	0.3146
+TGME49_500332	mitochondrion - membranes	0.3075
+TGME49_263690	ER	0.7248
+TGME49_211280	cytosol	0.3036
+TGME49_225108	mitochondrion - soluble	0.3732
+TGME49_291130	mitochondrion - membranes	0.4111
+TGME49_266372	mitochondrion - soluble	0.3285
+TGME49_272570	apicoplast	0.373
+TGME49_236670	ER	0.1984
+TGME49_280460	dense granules	0.8373
+TGME49_223950	Golgi	0.2249
+TGME49_256070	nucleus - chromatin	0.4514
+TGME49_289790	apicoplast	0.5308
+TGME49_315958	mitochondrion - soluble	0.5453
+TGME49_203340	cytosol	0.2868
+TGME49_319500	PM - integral	0.4404
+TGME49_292320	nucleus - chromatin	0.3774
+TGME49_228040	nucleus - chromatin	0.4619
+TGME49_290020	nucleus - chromatin	0.5162
+TGME49_311335	nucleus - chromatin	0.35
+TGME49_204290	ER	0.4918
+TGME49_315640	apicoplast	0.8014
+TGME49_272200	Golgi	0.2785
+TGME49_237600	apicoplast	0.3101
+TGME49_292935	mitochondrion - membranes	0.3033
+TGME49_220025	mitochondrion - membranes	0.2469
+TGME49_300320	apicoplast	0.8854
+TGME49_319600	nucleus - chromatin	0.2644
+TGME49_273610	apicoplast	0.5423
+TGME49_296121	apicoplast	0.4873
+TGME49_259210	nucleus - chromatin	0.3444
+TGME49_274140	nucleus - chromatin	0.3192
+TGME49_214510	ER	0.2836
+TGME49_226330	apicoplast	0.5331
+TGME49_231870	nucleus - chromatin	0.2337
+TGME49_211220	nucleus - chromatin	0.5088
+TGME49_319662	apicoplast	0.3642
+TGME49_246050	mitochondrion - soluble	0.6735
+TGME49_260230	mitochondrion - soluble	0.8101
+TGME49_320650	apicoplast	0.8318
+TGME49_221600	apicoplast	0.6382
+TGME49_314730	ER	0.7269
+TGME49_282200	mitochondrion - soluble	0.3639
+TGME49_272280	cytosol	0.3072
+TGME49_240970	apicoplast	0.5308
+TGME49_266150	apicoplast	0.2512
+TGME49_263230	PM - integral	0.5162
+TGME49_289200	mitochondrion - soluble	0.5567
+TGME49_268900	nucleus - chromatin	0.748
+TGME49_319970	ER	0.5845
+TGME49_250115	dense granules	0.3388
+TGME49_263120	mitochondrion - soluble	0.7379
+TGME49_286660	dense granules	0.4323
+TGME49_268680	apical 1	0.46
+TGME49_230555	ER	0.6038
+TGME49_261200	nucleus - chromatin	0.3475
+TGME49_250840	apical 1	0.3869
+TGME49_235640	mitochondrion - soluble	0.4995
+TGME49_305100	ER	0.7794
+TGME49_298980	apicoplast	0.3789
+TGME49_245570	nucleus - non-chromatin	0.3229
+TGME49_259890	PM - peripheral 1	0.4208
+TGME49_213820	dense granules	0.2255
+TGME49_267790	apicoplast	0.8166
+TGME49_236260	nucleus - chromatin	0.675
+TGME49_281900	nucleus - chromatin	0.4955
+TGME49_260530	cytosol	0.3147
+TGME49_240880	dense granules	0.3909
+TGME49_320260	micronemes	0.6021
+TGME49_218470	mitochondrion - soluble	0.3751
+TGME49_279440	cytosol	0.3311
+TGME49_294640	cytosol	0.3425
+TGME49_306440	nucleus - chromatin	0.8991
+TGME49_226245	mitochondrion - membranes	0.3599
+TGME49_316260	rhoptries 2	0.7503
+TGME49_297870	apical 1	0.4789
+TGME49_260410	apicoplast	0.69
+TGME49_229350	nucleus - chromatin	0.7649
+TGME49_242370	mitochondrion - membranes	0.3645
+TGME49_240210	PM - integral	0.478
+TGME49_248780	mitochondrion - soluble	0.8101
+TGME49_266110	mitochondrion - soluble	0.5105
+TGME49_273140	nucleus - non-chromatin	0.5168
+TGME49_293890	cytosol	0.3948
+TGME49_257000	ER	0.794
+TGME49_225370	cytosol	0.2426
+TGME49_232450	nucleus - chromatin	0.4672
+TGME49_243750	nucleus - chromatin	0.5463
+TGME49_233920	apicoplast	0.5211
+TGME49_249600	nucleus - chromatin	0.3899
+TGME49_280690	apicoplast	0.8803
+TGME49_315962	nucleus - chromatin	0.3882
+TGME49_313445	nucleus - chromatin	0.3785
+TGME49_295920	nucleus - chromatin	0.2448
+TGME49_269830	mitochondrion - membranes	0.4604
+TGME49_208760	dense granules	0.6481
+TGME49_313470	mitochondrion - soluble	0.3146
+TGME49_500427	mitochondrion - soluble	0.3074
+TGME49_288330	nucleus - chromatin	0.6954
+TGME49_231030	mitochondrion - membranes	0.3482
+TGME49_273290	mitochondrion - membranes	0.7239
+TGME49_248160	nucleus - chromatin	0.5938
+TGME49_313422	nucleus - chromatin	0.6651
+TGME49_223870	nucleus - chromatin	0.4112
+TGME49_202010	nucleus - chromatin	0.3926
+TGME49_238140	Golgi	0.4965
+TGME49_500017	nucleus - chromatin	0.2466
+TGME49_205520	ER	0.8689
+TGME49_211050	mitochondrion - soluble	0.3898
+TGME49_299240	nucleus - chromatin	0.2267
+TGME49_272430	cytosol	0.2187
+TGME49_500339	ER	0.464
+TGME49_246800	nucleus - chromatin	0.3995
+TGME49_207750	micronemes	0.2994
+TGME49_314110	nucleus - chromatin	0.397
+TGME49_500031	nucleus - chromatin	0.2466
+TGME49_213700	mitochondrion - soluble	0.3458
+TGME49_220440	nucleus - chromatin	0.4566
+TGME49_500030	apicoplast	0.7711
+TGME49_224940	nucleus - chromatin	0.3526
+TGME49_309160	dense granules	0.5028
+TGME49_310177	mitochondrion - membranes	0.5
+TGME49_500047	apicoplast	0.5137
+TGME49_253310	nucleus - chromatin	0.3973
+TGME49_294880	nucleus - chromatin	0.5597
+TGME49_209830	nucleus - chromatin	0.4221
+TGME49_262970	dense granules	0.1715
+TGME49_270660	apicoplast	0.816
+TGME49_231280	nucleus - chromatin	0.4664
+TGME49_315660	apicoplast	0.5791
+TGME49_311810	apicoplast	0.7533
+TGME49_216390	apicoplast	0.4492
+TGME49_312130	nucleus - chromatin	0.3873
+TGME49_246020	apicoplast	0.3716
+TGME49_314370	mitochondrion - membranes	0.3447
+TGME49_293620	apicoplast	0.8232
+TGME49_201900	nucleus - non-chromatin	0.3574
+TGME49_237170	cytosol	0.1946
+TGME49_250950	dense granules	0.3029
+TGME49_244060	nucleus - chromatin	0.397
+TGME49_267670	nucleus - chromatin	0.4595
+TGME49_257625	apicoplast	0.5583
+TGME49_306510	nucleus - chromatin	0.4205
+TGME49_210440	nucleus - chromatin	0.397
+TGME49_221430	mitochondrion - soluble	0.6571
+TGME49_201690	PM - integral	0.3539
+TGME49_224010	ER	0.8952
+TGME49_230500	mitochondrion - soluble	0.6735
+TGME49_500235	mitochondrion - membranes	0.5002
+TGME49_313200	apicoplast	0.7533
+TGME49_260030	nucleus - chromatin	0.6854
+TGME49_314055	ER	0.2979
+TGME49_207665	nucleus - chromatin	0.3894
+TGME49_223570	nucleus - chromatin	0.7806
+TGME49_239560	IMC	0.2863
+TGME49_217961	apicoplast	0.5583
+TGME49_294260	Golgi	0.3952
+TGME49_500424	mitochondrion - membranes	0.296
+TGME49_205410	mitochondrion - soluble	0.5038
+TGME49_316370	apicoplast	0.3722
+TGME49_243670	apicoplast	0.2513
+TGME49_269600	nucleus - chromatin	0.5273
+TGME49_205150	PM - integral	0.6629
+TGME49_298600	nucleus - chromatin	0.3937
+TGME49_224590	nucleus - non-chromatin	0.3831
+TGME49_216280	ER	0.2428
+TGME49_265400	nucleus - chromatin	0.2759
+TGME49_257130	mitochondrion - membranes	0.466
+TGME49_208810	mitochondrion - soluble	0.483
+TGME49_232580	nucleus - chromatin	0.4333
+TGME49_248590	mitochondrion - membranes	0.4207
+TGME49_243340	apicoplast	0.6009
+TGME49_225220	cytosol	0.2272
+TGME49_271800	nucleus - chromatin	0.748
+TGME49_229780	nucleus - chromatin	0.5885
+TGME49_281500	apicoplast	0.6564
+TGME49_250090	nucleus - chromatin	0.4413
+TGME49_271170	ER	0.474
+TGME49_296231	nucleus - chromatin	0.3166
+TGME49_308850	nucleus - chromatin	0.4517
+TGME49_230460	mitochondrion - soluble	0.4663
+TGME49_500355	apicoplast	0.4129
+TGME49_281555	endomembrane vesicles	0.2807
+TGME49_269680	dense granules	0.3752
+TGME49_266660	dense granules	0.5402
+TGME49_250670	dense granules	0.8321
+TGME49_320270	ER	0.7346
+TGME49_232475	nucleus - chromatin	0.4935
+TGME49_203960	nucleus - chromatin	0.5814
+TGME49_252400	mitochondrion - soluble	0.6735
+TGME49_271920	nucleus - chromatin	0.458
+TGME49_254630	apicoplast	0.7159
+TGME49_272415	apicoplast	0.2373
+TGME49_297640	mitochondrion - membranes	0.3758
+TGME49_262850	nucleus - chromatin	0.364
+TGME49_307980	nucleus - chromatin	0.5331
+TGME49_216285	mitochondrion - soluble	0.5341
+TGME49_244610	nucleus - chromatin	0.3625
+TGME49_255430	nucleus - chromatin	0.626
+TGME49_256800	Golgi	0.4522
+TGME49_216240	nucleus - chromatin	0.7233
+TGME49_262540	nucleus - chromatin	0.5373
+TGME49_309090	apical 1	0.3534
+TGME49_251920	mitochondrion - soluble	0.3732
+TGME49_312310	apicoplast	0.7812
+TGME49_291690	apicoplast	0.6142
+TGME49_239520	mitochondrion - soluble	0.3881
+TGME49_500370	apicoplast	0.2098
+TGME49_204040	Golgi	0.4032
+TGME49_500400	nucleus - chromatin	0.3471
+TGME49_233790	nucleus - chromatin	0.2012
+TGME49_315450	cytosol	0.2448
+TGME49_273690	nucleus - chromatin	0.6027
+TGME49_244270	ER	0.5295
+TGME49_500109	ER	0.9377
+TGME49_227400	apicoplast	0.6244
+TGME49_500228	nucleus - chromatin	0.3771
+TGME49_239365	apicoplast	0.2768
+TGME49_203270	apicoplast	0.69
+TGME49_235370	apical 1	0.4652
+TGME49_271190	mitochondrion - soluble	0.4755
+TGME49_294585	nucleus - chromatin	0.4269
+TGME49_272620	mitochondrion - membranes	0.4974
+TGME49_290190	nucleus - chromatin	0.674
+TGME49_211910	apicoplast	0.2853
+TGME49_221665	mitochondrion - membranes	0.5075
+TGME49_247850	mitochondrion - soluble	0.4842
+TGME49_309050	apicoplast	0.6023
+TGME49_254750	apicoplast	0.3722
+TGME49_210950	Golgi	0.2247
+TGME49_247652	mitochondrion - soluble	0.4083
+TGME49_254835	mitochondrion - soluble	0.5009
+TGME49_256020	mitochondrion - soluble	0.3834
+TGME49_226480	nucleus - chromatin	0.4817
+TGME49_271840	mitochondrion - soluble	0.6686
+TGME49_219180	nucleus - chromatin	0.4588
+TGME49_267875	nucleus - chromatin	0.3799
+TGME49_216760	mitochondrion - soluble	0.5912
+TGME49_266710	PM - integral	0.1927
+TGME49_295400	nucleus - chromatin	0.7201
+TGME49_500068	mitochondrion - soluble	0.3732
+TGME49_500127	mitochondrion - soluble	0.3295
+TGME49_238200	Golgi	0.5392
+TGME49_258700	PM - integral	0.3429
+TGME49_246960	nucleus - chromatin	0.2901
+TGME49_226050	nucleus - chromatin	0.6909
+TGME49_230020	endomembrane vesicles	0.2706
+TGME49_262130	nucleus - chromatin	0.4533
+TGME49_265810	ER	0.1875
+TGME49_320610	nucleus - chromatin	0.5087
+TGME49_227880	cytosol	0.3705
+TGME49_259960	nucleus - chromatin	0.3055
+TGME49_294020	Golgi	0.4646
+TGME49_267020	apicoplast	0.3892
+TGME49_288390	mitochondrion - soluble	0.6686
+TGME49_202880	apicoplast	0.8574
+TGME49_252070	ER	0.3731
+TGME49_500356	nucleus - chromatin	0.3318
+TGME49_244430	mitochondrion - soluble	0.4786
+TGME49_246780	Golgi	0.2794
+TGME49_202170	mitochondrion - soluble	0.7491
+TGME49_202020	ER	0.1826
+TGME49_310580	mitochondrion - soluble	0.3209
+TGME49_295030	dense granules	0.8121
+TGME49_273430	mitochondrion - soluble	0.7525
+TGME49_239855	PM - peripheral 2	0.2549
+TGME49_500338	nucleus - chromatin	0.2825
+TGME49_208570	dense granules	0.3261
+TGME49_306470	ER	0.7372
+TGME49_288560	apicoplast	0.3767
+TGME49_294830	nucleus - chromatin	0.4572
+TGME49_270260	dense granules	0.592
+TGME49_260550	nucleus - chromatin	0.6574
+TGME49_250360	nucleus - chromatin	0.2268
+TGME49_311820	ER	0.4252
+TGME49_225360	mitochondrion - soluble	0.5768
+TGME49_213560	apicoplast	0.7082
+TGME49_315970	cytosol	0.1877
+TGME49_277150	apicoplast	0.3501
+TGME49_209200	apical 1	0.5402
+TGME49_223430	apicoplast	0.2892
+TGME49_258690	mitochondrion - soluble	0.5013
+TGME49_207740	apicoplast	0.5516
+TGME49_217420	ER	0.4342
+TGME49_259530	ER	0.4487
+TGME49_288820	Golgi	0.2902
+TGME49_248470	cytosol	0.1961
+TGME49_299190	nucleus - chromatin	0.7233
+TGME49_306250	mitochondrion - soluble	0.8162
+TGME49_220560	PM - integral	0.7596
+TGME49_316100	mitochondrion - soluble	0.6417
+TGME49_253540	nucleus - chromatin	0.4036
+TGME49_245660	nucleus - chromatin	0.436
+TGME49_500198	cytosol	0.2075
+TGME49_232170	mitochondrion - soluble	0.2903
+TGME49_204300	apicoplast	0.4591
+TGME49_313960	mitochondrion - soluble	0.6423
+TGME49_276155	nucleus - chromatin	0.4314
+TGME49_252065	nucleus - chromatin	0.393
+TGME49_209510	nucleus - chromatin	0.2997
+TGME49_205370	PM - integral	0.6706
+TGME49_231998	ER	0.1795
+TGME49_269420	nucleus - chromatin	0.2386
+TGME49_283890	mitochondrion - soluble	0.6382
+TGME49_226610	Golgi	0.2326
+TGME49_274150	apicoplast	0.8776
+TGME49_268182	PM - integral	0.2797
+TGME49_313300	nucleus - chromatin	0.608
+TGME49_273510	ER	0.28
+TGME49_235000	mitochondrion - soluble	0.3931
+TGME49_254625	mitochondrion - membranes	0.3791
+TGME49_310710	mitochondrion - soluble	0.6096
+TGME49_500437	nucleus - chromatin	0.3771
+TGME49_309170	nucleus - chromatin	0.7233
+TGME49_207965	mitochondrion - soluble	0.3191
+TGME49_260420	nucleus - chromatin	0.7233
+TGME49_311880	apical 1	0.2865
+TGME49_274080	mitochondrion - soluble	0.5212
+TGME49_259965	mitochondrion - soluble	0.4689
+TGME49_209460	apicoplast	0.8318
+TGME49_301240	ER	0.5939
+TGME49_262740	nucleus - chromatin	0.3625
+TGME49_253970	mitochondrion - soluble	0.8101
+TGME49_227080	mitochondrion - soluble	0.5918
+TGME49_500039	mitochondrion - membranes	0.2361
+TGME49_225950	cytosol	0.2085
+TGME49_259900	dense granules	0.6196
+TGME49_288370	nucleus - chromatin	0.5516
+TGME49_213950	ER	0.3552
+TGME49_223845	mitochondrion - soluble	0.56
+TGME49_311450	mitochondrion - soluble	0.4224
+TGME49_254150	dense granules	0.3399
+TGME49_230135	endomembrane vesicles	0.2823
+TGME49_225570	dense granules	0.8393
+TGME49_245980	dense granules	0.2896
+TGME49_225530	PM - integral	0.5018
+TGME49_245770	nucleus - chromatin	0.1778
+TGME49_223520	PM - integral	0.2334
+TGME49_278840	PM - integral	0.3466
+TGME49_285260	mitochondrion - soluble	0.5453
+TGME49_207900	nucleus - chromatin	0.5313
+TGME49_216710	PM - integral	0.8038
+TGME49_202590	mitochondrion - soluble	0.5135
+TGME49_254090	mitochondrion - soluble	0.3372
+TGME49_259130	mitochondrion - membranes	0.7565
+TGME49_209300	nucleus - chromatin	0.2093
+TGME49_500277	mitochondrion - soluble	0.3391
+TGME49_243740	nucleus - chromatin	0.4816
+TGME49_238020	nucleus - chromatin	0.5459
+TGME49_225490	Golgi	0.3645
+TGME49_207600	nucleus - chromatin	0.3122
+TGME49_252620	apicoplast	0.6734
+TGME49_278120	apicoplast	0.5579
+TGME49_229280	apical 1	0.6162
+TGME49_247015	apicoplast	0.3501
+TGME49_500352	cytosol	0.3676
+TGME49_268400	mitochondrion - soluble	0.575
+TGME49_220840	nucleus - chromatin	0.2651
+TGME49_272770	nucleus - non-chromatin	0.7564
+TGME49_278730	nucleus - non-chromatin	0.4324
+TGME49_252190	dense granules	0.3109
+TGME49_289020	mitochondrion - membranes	0.4925
+TGME49_268600	nucleus - chromatin	0.5701
+TGME49_248330	Golgi	0.2684
+TGME49_500263	apicoplast	0.6786
+TGME49_232040	PM - integral	0.6604
+TGME49_252350	nucleus - chromatin	0.3457
+TGME49_268176	nucleus - chromatin	0.293
+TGME49_211650	rhoptries 1	0.3029
+TGME49_244140	apicoplast	0.7711
+TGME49_252465	mitochondrion - soluble	0.854
+TGME49_301460	nucleus - chromatin	0.2875
+TGME49_237450	mitochondrion - membranes	0.5174
+TGME49_273670	mitochondrion - soluble	0.3285
+TGME49_295010	nucleus - non-chromatin	0.505
+TGME49_329800	apicoplast	0.5901
+TGME49_319740	apicoplast	0.9131
+TGME49_278280	nucleus - chromatin	0.26
+TGME49_211330	apicoplast	0.5898
+TGME49_244030	mitochondrion - membranes	0.3577
+TGME49_278882	rhoptries 1	0.4425
+TGME49_234600	nucleus - chromatin	0.4646
+TGME49_288540	PM - integral	0.7966
+TGME49_247570	nucleus - chromatin	0.3686
+TGME49_247500	ER	0.3702
+TGME49_269750	Golgi	0.2512
+TGME49_500411	Golgi	0.5581
+TGME49_258370	rhoptries 1	0.817
+TGME49_229160	ER	0.339
+TGME49_220175	mitochondrion - soluble	0.4383
+TGME49_215750	mitochondrion - soluble	0.4098
+TGME49_315590	nucleus - chromatin	0.3095
+TGME49_227010	dense granules	0.6751
+TGME49_309840	apicoplast	0.2373
+TGME49_500012	PM - integral	0.4222
+TGME49_297310	apicoplast	0.6792
+TGME49_244590	mitochondrion - soluble	0.4306
+TGME49_225140	PM - integral	0.6325
+TGME49_328900	apicoplast	0.4805
+TGME49_500035	nucleus - chromatin	0.4158
+TGME49_500081	ER	0.4748
+TGME49_213600	mitochondrion - soluble	0.7415
+TGME49_229200	nucleus - chromatin	0.5597
+TGME49_271980	PM - peripheral 1	0.9195
+TGME49_500206	mitochondrion - soluble	0.3299
+TGME49_500390	cytosol	0.4148
+TGME49_215210	nucleus - chromatin	0.7267
+TGME49_313660	mitochondrion - soluble	0.5001
+TGME49_266740	apicoplast	0.3878
+TGME49_224950	nucleus - chromatin	0.6206
+TGME49_323020	nucleus - chromatin	0.3949
+TGME49_214280	nucleus - chromatin	0.4106
+TGME49_313110	nucleus - chromatin	0.3834
+TGME49_219620	apicoplast	0.42
+TGME49_297120	IMC	0.2599
+TGME49_256080	ER	0.6765
+TGME49_310200	nucleus - chromatin	0.3121
+TGME49_301290	PM - peripheral 2	0.2423
+TGME49_277860	mitochondrion - soluble	0.5529
+TGME49_318540	nucleus - chromatin	0.2339
+TGME49_233950	ER	0.3057
+TGME49_206710	cytosol	0.1728
+TGME49_273790	nucleus - chromatin	0.3757
+TGME49_283500	cytosol	0.1974
+TGME49_274120	apical 1	0.2413
+TGME49_247940	apicoplast	0.3048
+TGME49_309020	mitochondrion - membranes	0.6263
+TGME49_213710	nucleus - chromatin	0.3119
+TGME49_250890	apicoplast	0.4629
+TGME49_212800	cytosol	0.2685
+TGME49_271860	apicoplast	0.531
+TGME49_305570	dense granules	0.2425
+TGME49_500216	mitochondrion - soluble	0.3168
+TGME49_261970	dense granules	0.3473
+TGME49_251400	ER	0.5309
+TGME49_278340	PM - peripheral 1	0.9577
+TGME49_300250	micronemes	0.5307
+TGME49_500147	Golgi	0.3166
+TGME49_253960	mitochondrion - soluble	0.4183
+TGME49_211430	apicoplast	0.8432
+TGME49_205590	apicoplast	0.3722
+TGME49_233180	dense granules	0.4051
+TGME49_254840	cytosol	0.2071
+TGME49_221265	mitochondrion - membranes	0.5712
+TGME49_262933	nucleus - chromatin	0.4238
+TGME49_258020	ER	0.7098
+TGME49_272360	cytosol	0.5644
+TGME49_227430	PM - integral	0.5937
+TGME49_290860	PM - integral	0.8347
+TGME49_500120	nucleus - chromatin	0.3625
+TGME49_288610	apicoplast	0.8854
+TGME49_281480	nucleus - chromatin	0.3307
+TGME49_249660	ER	0.4508
+TGME49_255500	nucleus - chromatin	0.3316
+TGME49_228320	mitochondrion - soluble	0.7415
+TGME49_280435	cytosol	0.3944
+TGME49_228680	mitochondrion - membranes	0.4503
+TGME49_246660	mitochondrion - membranes	0.6597
+TGME49_273100	mitochondrion - soluble	0.5682
+TGME49_222340	mitochondrion - membranes	0.5871
+TGME49_222010	nucleus - chromatin	0.6071
+TGME49_312430	apicoplast	0.3544
+TGME49_288600	nucleus - non-chromatin	0.6984
+TGME49_281650	apical 1	0.6676
+TGME49_320730	cytosol	0.5257
+TGME49_500298	ER	0.339
+TGME49_230200	ER	0.2104
+TGME49_234670	nucleus - chromatin	0.4279
+TGME49_288880	mitochondrion - soluble	0.5438
+TGME49_254430	nucleus - chromatin	0.3364
+TGME49_318220	dense granules	0.3391
+TGME49_310250	apicoplast	0.3846
+TGME49_311800	dense granules	0.4739
+TGME49_212190	nucleus - chromatin	0.6182
+TGME49_500242	mitochondrion - soluble	0.3168
+TGME49_315730	ER	0.2648
+TGME49_271960	Golgi	0.2754
+TGME49_316090	mitochondrion - membranes	0.5115
+TGME49_258530	cytosol	0.3868
+TGME49_500144	apicoplast	0.3464
+TGME49_272530	mitochondrion - soluble	0.5075
+TGME49_215660	mitochondrion - membranes	0.4227
+TGME49_320060	ER	0.3364
+TGME49_271260	dense granules	0.52
+TGME49_283860	nucleus - chromatin	0.4112
+TGME49_260570	mitochondrion - soluble	0.3346
+TGME49_316670	ER	0.3751
+TGME49_310660	nucleus - chromatin	0.2169
+TGME49_221360	nucleus - chromatin	0.759
+TGME49_225290	rhoptries 1	0.1557
+TGME49_264472	mitochondrion - soluble	0.6735
+TGME49_305750	nucleus - non-chromatin	0.6215
+TGME49_301310	Golgi	0.332
+TGME49_255635	mitochondrion - soluble	0.8758
+TGME49_268310	nucleus - chromatin	0.4712
+TGME49_265650	dense granules	0.2546
+TGME49_235560	mitochondrion - soluble	0.4387
+TGME49_210230	mitochondrion - soluble	0.7363
+TGME49_223830	mitochondrion - soluble	0.4689
+TGME49_257580	nucleus - chromatin	0.3394
+TGME49_200370	cytosol	0.4284
+TGME49_248970	dense granules	0.2527
+TGME49_288450	cytosol	0.2459
+TGME49_294410	dense granules	0.2501
+TGME49_247660	ER	0.707
+TGME49_500416	nucleus - chromatin	0.5611
+TGME49_244190	nucleus - chromatin	0.2239
+TGME49_288060	apicoplast	0.9063
+TGME49_282230	ER	0.6705
+TGME49_272240	dense granules	0.2243
+TGME49_211860	Golgi	0.5505
+TGME49_318120	apicoplast	0.2652
+TGME49_242100	rhoptries 1	0.3095
+TGME49_202140	mitochondrion - soluble	0.3191
+TGME49_213780	apicoplast	0.8114
+TGME49_218230	mitochondrion - soluble	0.3577
+TGME49_201240	nucleus - chromatin	0.1635
+TGME49_206400	nucleus - chromatin	0.5874
+TGME49_253850	nucleus - chromatin	0.5207
+TGME49_329300	mitochondrion - membranes	0.2546
+TGME49_500349	mitochondrion - soluble	0.3074
+TGME49_500225	ER	0.3842
+TGME49_270280	nucleus - chromatin	0.4915
+TGME49_214570	Golgi	0.2365
+TGME49_234570	nucleus - chromatin	0.2948
+TGME49_253390	dense granules	0.3312
+TGME49_219500	apical 1	0.4032
+TGME49_311710	Golgi	0.2167
+TGME49_264805	cytosol	0.2264
+TGME49_300230	mitochondrion - soluble	0.2774
+TGME49_268800	ER	0.4601
+TGME49_500315	mitochondrion - soluble	0.3074
+TGME49_313710	nucleus - non-chromatin	0.3759
+TGME49_254700	mitochondrion - soluble	0.4486
+TGME49_277220	apicoplast	0.7711
+TGME49_255450	IMC	0.6253
+TGME49_292960	Golgi	0.2972
+TGME49_249620	nucleus - chromatin	0.5176
+TGME49_257420	mitochondrion - soluble	0.3356
+TGME49_207610	endomembrane vesicles	0.4453
+TGME49_284550	PM - peripheral 1	0.3961
+TGME49_235960	mitochondrion - soluble	0.2393
+TGME49_258120	ER	0.2626
+TGME49_262110	mitochondrion - membranes	0.5719
+TGME49_286670	mitochondrion - membranes	0.1718
+TGME49_287960	nucleus - chromatin	0.262
+TGME49_310730	nucleus - chromatin	0.4355
+TGME49_500257	mitochondrion - soluble	0.3732
+TGME49_257540	apicoplast	0.3281
+TGME49_216970	cytosol	0.2527
+TGME49_221550	PM - peripheral 2	0.227
+TGME49_226985	PM - integral	0.4849
+TGME49_271210	cytosol	0.2057
+TGME49_286010	PM - integral	0.3256
+TGME49_242400	Golgi	0.4133
+TGME49_266610	mitochondrion - soluble	0.345
+TGME49_249410	nucleus - chromatin	0.2778
+TGME49_260430	nucleus - non-chromatin	0.1991
+TGME49_315170	mitochondrion - soluble	0.3563
+TGME49_308990	ER	0.3389
+TGME49_205490	PM - integral	0.6988
+TGME49_241860	mitochondrion - soluble	0.8744
+TGME49_309040	nucleus - chromatin	0.62
+TGME49_266680	nucleus - non-chromatin	0.4699
+TGME49_221260	mitochondrion - soluble	0.334
+TGME49_252230	mitochondrion - soluble	0.5433
+TGME49_289930	mitochondrion - soluble	0.4427
+TGME49_275790	ER	0.7594
+TGME49_247320	mitochondrion - soluble	0.5581
+TGME49_306900	cytosol	0.3061
+TGME49_216440	dense granules	0.428
+TGME49_246650	ER	0.2731
+TGME49_257710	apicoplast	0.4127
+TGME49_278360	PM - peripheral 1	0.9397
+TGME49_301216	mitochondrion - soluble	0.8101
+TGME49_207700	nucleus - chromatin	0.2012
+TGME49_219820	cytosol	0.8714
+TGME49_211385	mitochondrion - soluble	0.345
+TGME49_289910	IMC	0.4544
+TGME49_278350	PM - peripheral 1	0.9673
+TGME49_300690	apicoplast	0.5463
+TGME49_500071	ER	0.4161
+TGME49_309380	nucleus - chromatin	0.7224
+TGME49_216470	mitochondrion - soluble	0.3299
+TGME49_320715	mitochondrion - membranes	0.5801
+TGME49_306590	nucleus - non-chromatin	0.493
+TGME49_250720	mitochondrion - soluble	0.5195
+TGME49_218450	Golgi	0.571
+TGME49_261560	mitochondrion - membranes	0.4285
+TGME49_316700	apicoplast	0.2214
+TGME49_244400	mitochondrion - soluble	0.506
+TGME49_311390	mitochondrion - membranes	0.4044
+TGME49_236020	PM - integral	0.5427
+TGME49_313000	ER	0.3518
+TGME49_316130	Golgi	0.2378
+TGME49_201220	nucleus - chromatin	0.4783
+TGME49_267490	rhoptries 2	0.2447
+TGME49_232160	PM - integral	0.3254
+TGME49_200230	micronemes	0.4383
+TGME49_224570	apicoplast	0.8283
+TGME49_500066	nucleus - chromatin	0.6407
+TGME49_259970	nucleus - chromatin	0.348
+TGME49_220170	nucleus - non-chromatin	0.494
+TGME49_203440	apicoplast	0.5452
+TGME49_259180	ER	0.3929
+TGME49_257120	rhoptries 2	0.8147
+TGME49_254400	mitochondrion - soluble	0.5798
+TGME49_310810	ER	0.7494
+TGME49_329200	apicoplast	0.2309
+TGME49_260250	nucleus - chromatin	0.748
+TGME49_291830	ER	0.5587
+TGME49_306520	nucleus - chromatin	0.4572
+TGME49_265542	mitochondrion - soluble	0.7139
+TGME49_500221	nucleus - chromatin	0.4167
+TGME49_283790	nucleus - chromatin	0.513
+TGME49_215300	nucleus - chromatin	0.7055
+TGME49_290923	mitochondrion - membranes	0.4974
+TGME49_254020	nucleus - chromatin	0.4323
+TGME49_219670	apicoplast	0.3722
+TGME49_313550	apicoplast	0.7193
+TGME49_222192	cytosol	0.3707
+TGME49_265455	dense granules	0.3917
+TGME49_500431	apicoplast	0.3556
+TGME49_271320	mitochondrion - soluble	0.3732
+TGME49_213115	apicoplast	0.3668
+TGME49_318500	apicoplast	0.6125
+TGME49_286640	mitochondrion - soluble	0.32
+TGME49_244490	nucleus - chromatin	0.4249
+TGME49_213760	Golgi	0.4991
+TGME49_297770	nucleus - chromatin	0.4424
+TGME49_200330	Golgi	0.3359
+TGME49_500005	mitochondrion - membranes	0.3396
+TGME49_208310	nucleus - chromatin	0.3915
+TGME49_227090	mitochondrion - soluble	0.5287
+TGME49_213360	endomembrane vesicles	0.2746
+TGME49_201660	mitochondrion - soluble	0.2374
+TGME49_245590	mitochondrion - membranes	0.7288
+TGME49_500117	apicoplast	0.287
+TGME49_289700	mitochondrion - membranes	0.3997
+TGME49_281545	mitochondrion - membranes	0.3615
+TGME49_309550	nucleus - chromatin	0.2985
+TGME49_232750	apicoplast	0.5454
+TGME49_247950	mitochondrion - membranes	0.572
+TGME49_204540	nucleus - non-chromatin	0.4119
+TGME49_221990	apical 1	0.4604
+TGME49_286140	apicoplast	0.7711
+TGME49_205060	apicoplast	0.3792
+TGME49_215500	cytosol	0.4201
+TGME49_311370	ER	0.3213
+TGME49_215320	endomembrane vesicles	0.3666
+TGME49_278910	mitochondrion - soluble	0.294
+TGME49_287220	nucleus - chromatin	0.3249
+TGME49_320090	nucleus - chromatin	0.2747
+TGME49_223030	ER	0.3167
+TGME49_248760	ER	0.7883
+TGME49_277572	ER	0.3734
+TGME49_297840	nucleus - chromatin	0.3924
+TGME49_244520	ER	0.6715
+TGME49_236975	nucleus - chromatin	0.3166
+TGME49_202310	nucleus - non-chromatin	0.4827
+TGME49_297925	mitochondrion - soluble	0.6686
+TGME49_500381	mitochondrion - soluble	0.349
+TGME49_289740	nucleus - chromatin	0.4092
+TGME49_242610	nucleus - non-chromatin	0.6828
+TGME49_258610	apicoplast	0.5185
+TGME49_240460	rhoptries 1	0.7534
+TGME49_269630	nucleus - chromatin	0.8051
+TGME49_258900	apical 1	0.5048
+TGME49_258840	dense granules	0.5612
+TGME49_243500	nucleus - chromatin	0.3818
+TGME49_222420	mitochondrion - membranes	0.3965
+TGME49_247710	nucleus - chromatin	0.5601
+TGME49_278230	apicoplast	0.7914
+TGME49_205090	ER	0.4229
+TGME49_251962	PM - peripheral 1	0.9325
+TGME49_241830	nucleus - non-chromatin	0.4385
+TGME49_270850	ER	0.8653
+TGME49_293420	PM - integral	0.4136
+TGME49_244160	nucleus - chromatin	0.2356
+TGME49_320530	mitochondrion - soluble	0.4107
+TGME49_293850	mitochondrion - membranes	0.5085
+TGME49_216640	dense granules	0.7188
+TGME49_273815	apicoplast	0.6347
+TGME49_226460	apicoplast	0.5988
+TGME49_500353	nucleus - chromatin	0.2309
+TGME49_251958	PM - peripheral 1	0.2718
+TGME49_291860	dense granules	0.4475
+TGME49_311755	mitochondrion - membranes	0.2405
+TGME49_254820	apicoplast	0.7883
+TGME49_316560	nucleus - chromatin	0.3679
+TGME49_236220	mitochondrion - soluble	0.2615
+TGME49_212710	mitochondrion - soluble	0.5517
+TGME49_225430	nucleus - chromatin	0.6213
+TGME49_243480	apicoplast	0.7758
+TGME49_233470	apicoplast	0.7242
+TGME49_242240	rhoptries 1	0.6216
+TGME49_322010	rhoptries 1	0.6911
+TGME49_500084	mitochondrion - soluble	0.3391
+TGME49_270890	apical 1	0.2254
+TGME49_500248	apicoplast	0.293
+TGME49_500115	PM - integral	0.2594
+TGME49_235650	ER	0.6294
+TGME49_212740	mitochondrion - membranes	0.4297
+TGME49_294600	nucleus - chromatin	0.4955
+TGME49_210280	PM - peripheral 2	0.2696
+TGME49_297410	mitochondrion - membranes	0.4187
+TGME49_239430	ER	0.6038
+TGME49_253780	mitochondrion - soluble	0.3774
+TGME49_216140	cytosol	0.2716
+TGME49_290605	apicoplast	0.5339
+TGME49_210678	apicoplast	0.3998
+TGME49_216370	mitochondrion - soluble	0.4398
+TGME49_261060	nucleus - non-chromatin	0.6958
+TGME49_500038	mitochondrion - soluble	0.3074
+TGME49_202255	nucleus - chromatin	0.4304
+TGME49_213290	apicoplast	0.8854
+TGME49_500440	mitochondrion - soluble	0.3074
+TGME49_242870	cytosol	0.5837
+TGME49_246610	ER	0.4283
+TGME49_283580	mitochondrion - soluble	0.7917
+TGME49_216980	mitochondrion - soluble	0.367
+TGME49_239570	apicoplast	0.3619
+TGME49_280720	apicoplast	0.5901
+TGME49_268930	mitochondrion - membranes	0.2767
+TGME49_262890	mitochondrion - soluble	0.4766
+TGME49_228050	Golgi	0.1489
+TGME49_202430	cytosol	0.2065
+TGME49_272265	cytosol	0.2585
+TGME49_318600	nucleus - chromatin	0.3161
+TGME49_231060	ER	0.2806
+TGME49_265430	nucleus - non-chromatin	0.2009
+TGME49_269620	nucleus - chromatin	0.6815
+TGME49_276920	Golgi	0.2397
+TGME49_204460	mitochondrion - soluble	0.345
+TGME49_218570	nucleus - non-chromatin	0.5312
+TGME49_300130	dense granules	0.8308
+TGME49_203090	mitochondrion - membranes	0.6335
+TGME49_224040	nucleus - chromatin	0.4396
+TGME49_240525	mitochondrion - membranes	0.2352
+TGME49_217590	apicoplast	0.4207
+TGME49_215170	nucleus - chromatin	0.4077
+TGME49_244335	mitochondrion - membranes	0.5628
+TGME49_227270	nucleus - chromatin	0.6255
+TGME49_300340	nucleus - non-chromatin	0.4883
+TGME49_221560	mitochondrion - membranes	0.4488
+TGME49_500183	nucleus - chromatin	0.4904
+TGME49_291900	cytosol	0.5156
+TGME49_216875	nucleus - chromatin	0.2514
+TGME49_300070	nucleus - chromatin	0.2103
+TGME49_224235	mitochondrion - membranes	0.7169
+TGME49_258680	nucleus - chromatin	0.6164
+TGME49_323200	apicoplast	0.5775
+TGME49_239600	rhoptries 1	0.8163
+TGME49_313150	cytosol	0.4627
+TGME49_288260	nucleus - chromatin	0.2182
+TGME49_293425	PM - integral	0.548
+TGME49_207820	mitochondrion - soluble	0.262
+TGME49_236790	mitochondrion - soluble	0.6461
+TGME49_220610	cytosol	0.773
+TGME49_289130	mitochondrion - membranes	0.4391
+TGME49_269160	mitochondrion - soluble	0.3817
+TGME49_313040	nucleus - chromatin	0.4578
+TGME49_270160	nucleus - chromatin	0.3986
+TGME49_220330	dense granules	0.4308
+TGME49_500087	nucleus - chromatin	0.3643
+TGME49_204270	PM - integral	0.2337
+TGME49_242860	apical 1	0.6012
+TGME49_316760	nucleus - chromatin	0.3774
+TGME49_236595	nucleus - chromatin	0.3358
+TGME49_279360	ER	0.2007
+TGME49_253320	mitochondrion - soluble	0.6686
+TGME49_210390	nucleus - non-chromatin	0.6652
+TGME49_295760	nucleus - chromatin	0.4504
+TGME49_246770	apicoplast	0.8355
+TGME49_250920	mitochondrion - soluble	0.4842
+TGME49_231090	PM - integral	0.2196
+TGME49_246120	cytosol	0.5929
+TGME49_242110	mitochondrion - soluble	0.3895
+TGME49_322100	rhoptries 1	0.5043
+TGME49_202790	mitochondrion - soluble	0.6707
+TGME49_500193	nucleus - chromatin	0.4106
+TGME49_263340	mitochondrion - soluble	0.4255
+TGME49_265320	nucleus - chromatin	0.2858
+TGME49_323500	apicoplast	0.4039
+TGME49_308096	rhoptries 1	0.5671
+TGME49_278170	apicoplast	0.76
+TGME49_291170	nucleus - chromatin	0.316
+TGME49_293830	cytosol	0.2384
+TGME49_273970	rhoptries 2	0.4204
+TGME49_252200	rhoptries 2	0.8077
+TGME49_318660	rhoptries 2	0.2205
+TGME49_500362	nucleus - chromatin	0.3224
+TGME49_272180	ER	0.4768
+TGME49_253300	Golgi	0.5959
+TGME49_248730	nucleus - chromatin	0.3163
+TGME49_275600	ER	0.6843
+TGME49_262630	dense granules	0.8906
+TGME49_500394	nucleus - chromatin	0.4019
+TGME49_254190	endomembrane vesicles	0.2241
+TGME49_216560	nucleus - chromatin	0.5305
+TGME49_225955	nucleus - chromatin	0.2163
+TGME49_240770	mitochondrion - membranes	0.5623
+TGME49_256850	ER	0.3199
+TGME49_252260	nucleus - chromatin	0.3083
+TGME49_263390	mitochondrion - soluble	0.5529
+TGME49_289060	mitochondrion - soluble	0.2741
+TGME49_269240	Golgi	0.3078
+TGME49_320290	nucleus - chromatin	0.3156
+TGME49_500335	apicoplast	0.2691
+TGME49_266270	cytosol	0.3436
+TGME49_244010	apicoplast	0.4113
+TGME49_320280	apicoplast	0.538
+TGME49_500076	nucleus - chromatin	0.3809
+TGME49_220280	PM - peripheral 1	0.9636
+TGME49_297850	mitochondrion - soluble	0.5018
+TGME49_293760	IMC	0.2929
+TGME49_205290	nucleus - chromatin	0.4358
+TGME49_273280	mitochondrion - soluble	0.4391
+TGME49_280518	nucleus - chromatin	0.2247
+TGME49_500420	mitochondrion - soluble	0.2647
+TGME49_272410	mitochondrion - soluble	0.3924
+TGME49_293490	ER	0.5629
+TGME49_221450	mitochondrion - soluble	0.4706
+TGME49_298040	apicoplast	0.4927
+TGME49_265460	nucleus - chromatin	0.625
+TGME49_209470	ER	0.5857
+TGME49_270300	nucleus - chromatin	0.4439
+TGME49_220212	mitochondrion - soluble	0.6457
+TGME49_295060	nucleus - chromatin	0.5165
+TGME49_272890	cytosol	0.3286
+TGME49_223580	nucleus - chromatin	0.511
+TGME49_256788	mitochondrion - soluble	0.3459
+TGME49_227260	nucleus - non-chromatin	0.4717
+TGME49_500155	mitochondrion - soluble	0.2647
+TGME49_202800	mitochondrion - membranes	0.7175
+TGME49_301000	cytosol	0.3634
+TGME49_500360	nucleus - chromatin	0.5062
+TGME49_276860	nucleus - chromatin	0.3548
+TGME49_305280	Golgi	0.4465
+TGME49_292100	mitochondrion - soluble	0.5445
+TGME49_203120	nucleus - chromatin	0.3059
+TGME49_500075	nucleus - chromatin	0.3889
+TGME49_221340	apicoplast	0.8554
+TGME49_215480	nucleus - chromatin	0.5404
+TGME49_500022	mitochondrion - membranes	0.3138
+TGME49_210260	rhoptries 1	0.3161
+TGME49_268350	apicoplast	0.7862
+TGME49_268210	mitochondrion - soluble	0.3997
+TGME49_214430	nucleus - chromatin	0.3905
+TGME49_283765	mitochondrion - membranes	0.5647
+TGME49_286470	nucleus - chromatin	0.6483
+TGME49_226450	dense granules	0.9392
+TGME49_286250	cytosol	0.218
+TGME49_297820	nucleus - chromatin	0.3013
+TGME49_311375	endomembrane vesicles	0.1972
+TGME49_285690	ER	0.255
+TGME49_500108	cytosol	0.305
+TGME49_307603	nucleus - chromatin	0.216
+TGME49_203170	cytosol	0.5082
+TGME49_231780	dense granules	0.2803
+TGME49_242250	mitochondrion - soluble	0.2551
+TGME49_207940	mitochondrion - soluble	0.5718
+TGME49_249470	dense granules	0.4696
+TGME49_300270	nucleus - chromatin	0.6285
+TGME49_232740	dense granules	0.2393
+TGME49_203110	endomembrane vesicles	0.2342
+TGME49_260680	cytosol	0.7461
+TGME49_239730	apicoplast	0.4123
+TGME49_312980	cytosol	0.2799
+TGME49_240840	nucleus - chromatin	0.434
+TGME49_292190	nucleus - non-chromatin	0.3806
+TGME49_500233	mitochondrion - soluble	0.3806
+TGME49_236060	apical 1	0.5914
+TGME49_500426	nucleus - chromatin	0.3108
+TGME49_226515	mitochondrion - membranes	0.5623
+TGME49_297510	nucleus - chromatin	0.3167
+TGME49_242600	dense granules	0.2315
+TGME49_263380	ER	0.3951
+TGME49_216150	ER	0.1647
+TGME49_224710	ER	0.4364
+TGME49_500140	ER	0.5845
+TGME49_209490	nucleus - chromatin	0.369
+TGME49_213810	mitochondrion - soluble	0.6973
+TGME49_256700	mitochondrion - soluble	0.4635
+TGME49_266770	dense granules	0.2284
+TGME49_288520	apicoplast	0.6628
+TGME49_213930	nucleus - non-chromatin	0.7994
+TGME49_207910	ER	0.4791
+TGME49_241610	dense granules	0.368
+TGME49_240360	apicoplast	0.7185
+TGME49_278965	Golgi	0.4271
+TGME49_240630	rhoptries 1	0.7902
+TGME49_227580	PM - integral	0.7608
+TGME49_229170	PM - integral	0.6629
+TGME49_247010	dense granules	0.7809
+TGME49_255195	cytosol	0.241
+TGME49_212030	nucleus - chromatin	0.4414
+TGME49_500376	nucleus - non-chromatin	0.2167
+TGME49_278080	PM - peripheral 1	0.9455
+TGME49_204420	Golgi	0.2554
+TGME49_313848	mitochondrion - soluble	0.3492
+TGME49_275590	ER	0.7269
+TGME49_298050	nucleus - chromatin	0.2937
+TGME49_203060	nucleus - chromatin	0.4311
+TGME49_231180	dense granules	0.4692
+TGME49_241710	nucleus - chromatin	0.3822
+TGME49_226540	dense granules	0.8112
+TGME49_248200	nucleus - chromatin	0.5887
+TGME49_272190	mitochondrion - soluble	0.6386
+TGME49_273390	mitochondrion - membranes	0.9688
+TGME49_315680	nucleus - chromatin	0.3247
+TGME49_315400	PM - peripheral 1	0.4899
+TGME49_208090	mitochondrion - soluble	0.3394
+TGME49_257690	ER	0.6765
+TGME49_288045	ER	0.3844
+TGME49_217650	nucleus - chromatin	0.3105
+TGME49_309860	apicoplast	0.5974
+TGME49_313520	mitochondrion - soluble	0.5453
+TGME49_297270	apicoplast	0.7711
+TGME49_266100	dense granules	0.8921
+TGME49_259270	PM - peripheral 1	0.9195
+TGME49_205402	nucleus - chromatin	0.4504
+TGME49_231400	nucleus - chromatin	0.5702
+TGME49_222940	dense granules	0.5119
+TGME49_242230	rhoptries 1	0.7935
+TGME49_273350	mitochondrion - soluble	0.3384
+TGME49_308590	nucleus - chromatin	0.3693
+TGME49_293010	apicoplast	0.6902
+TGME49_500365	mitochondrion - soluble	0.3725
+TGME49_243240	nucleus - non-chromatin	0.8689
+TGME49_329710	PM - peripheral 1	0.9344
+TGME49_323800	nucleus - chromatin	0.4436
+TGME49_323600	nucleus - chromatin	0.3877
+TGME49_212075	mitochondrion - membranes	0.233
+TGME49_237900	nucleus - chromatin	0.4436
+TGME49_222188	mitochondrion - soluble	0.3543
+TGME49_323700	nucleus - chromatin	0.4436
+TGME49_220530	nucleus - chromatin	0.5332
+TGME49_236280	mitochondrion - soluble	0.6423
+TGME49_202340	apicoplast	0.3298
+TGME49_500156	mitochondrion - membranes	0.2956
+TGME49_259290	PM - peripheral 1	0.9195
+TGME49_228430	nucleus - chromatin	0.1874
+TGME49_228010	apicoplast	0.6628
+TGME49_285530	mitochondrion - soluble	0.2807
+TGME49_202360	mitochondrion - soluble	0.6726
+TGME49_240950	nucleus - chromatin	0.2737
+TGME49_220940	mitochondrion - soluble	0.5928
+TGME49_312350	nucleus - chromatin	0.4267
+TGME49_236960	rhoptries 2	0.7662
+TGME49_500139	mitochondrion - soluble	0.3391
+TGME49_305490	mitochondrion - soluble	0.2094
+TGME49_248770	apicoplast	0.844
+TGME49_321430	nucleus - chromatin	0.3208
+TGME49_249425	dense granules	0.5297
+TGME49_271080	apicoplast	0.5884
+TGME49_305610	nucleus - chromatin	0.4855
+TGME49_270000	mitochondrion - soluble	0.5226
+TGME49_205020	mitochondrion - membranes	0.5322
+TGME49_219370	dense granules	0.2244
+TGME49_269400	cytosol	0.3654
+TGME49_205280	PM - integral	0.3371
+TGME49_213400	nucleus - chromatin	0.4421
+TGME49_355200	nucleus - chromatin	0.2433
+TGME49_268360	nucleus - chromatin	0.4043
+TGME49_259090	nucleus - chromatin	0.3991
+TGME49_270630	mitochondrion - soluble	0.5805
+TGME49_306920	cytosol	0.4017
+TGME49_278090	PM - peripheral 1	0.9577
+TGME49_236800	nucleus - chromatin	0.5371
+TGME49_281470	mitochondrion - membranes	0.4026
+TGME49_223630	mitochondrion - soluble	0.4613
+TGME49_258790	nucleus - chromatin	0.3706
+TGME49_221410	nucleus - chromatin	0.8983
+TGME49_233330	apicoplast	0.5583
+TGME49_237800	dense granules	0.8954
+TGME49_223560	PM - integral	0.3289
+TGME49_307650	cytosol	0.4327
+TGME49_275798	ER	0.5055
+TGME49_312950	rhoptries 1	0.8283
+TGME49_231420	ER	0.4704
+TGME49_500008	nucleus - chromatin	0.3625
+TGME49_262940	nucleus - chromatin	0.4197
+TGME49_240200	nucleus - chromatin	0.2475
+TGME49_284670	apicoplast	0.4045
+TGME49_254280	nucleus - chromatin	0.3768
+TGME49_242590	nucleus - chromatin	0.2119
+TGME49_266650	ER	0.2041
+TGME49_248225	PM - integral	0.1595
+TGME49_213100	mitochondrion - soluble	0.6147
+TGME49_500027	ER	0.3051
+TGME49_228720	nucleus - non-chromatin	0.3638
+TGME49_253020	nucleus - chromatin	0.6394
+TGME49_306530	apicoplast	0.2953
+TGME49_260460	ER	0.8617
+TGME49_300650	dense granules	0.2895
+TGME49_500210	apicoplast	0.2741
+TGME49_293800	mitochondrion - membranes	0.958
+TGME49_259070	mitochondrion - soluble	0.5684
+TGME49_231625	mitochondrion - soluble	0.4494
+TGME49_209515	mitochondrion - soluble	0.3941
+TGME49_233280	ER	0.8308
+TGME49_313780	apical 1	0.4604
+TGME49_218870	nucleus - chromatin	0.4107
+TGME49_253410	nucleus - chromatin	0.2425
+TGME49_216830	mitochondrion - soluble	0.5812
+TGME49_281560	mitochondrion - soluble	0.4842
+TGME49_293368	cytosol	0.4182
+TGME49_215520	rhoptries 2	0.2834
+TGME49_203500	ER	0.4867
+TGME49_207350	apicoplast	0.2855
+TGME49_209610	nucleus - chromatin	0.2095
+TGME49_228220	mitochondrion - soluble	0.2408
+TGME49_227440	nucleus - non-chromatin	0.3627
+TGME49_286540	nucleus - chromatin	0.4353
+TGME49_268920	apicoplast	0.7036
+TGME49_246750	mitochondrion - membranes	0.5485
+TGME49_235720	mitochondrion - soluble	0.5682
+TGME49_270610	mitochondrion - soluble	0.7992
+TGME49_220640	dense granules	0.6546
+TGME49_239795	dense granules	0.5957
+TGME49_201830	mitochondrion - soluble	0.6423
+TGME49_310260	nucleus - chromatin	0.2314
+TGME49_243180	PM - peripheral 1	0.9026
+TGME49_231770	Golgi	0.4581
+TGME49_275710	nucleus - chromatin	0.4267
+TGME49_203350	PM - integral	0.524
+TGME49_243150	PM - peripheral 1	0.9204
+TGME49_232420	nucleus - non-chromatin	0.4182
+TGME49_278860	nucleus - chromatin	0.201
+TGME49_212850	nucleus - chromatin	0.3657
+TGME49_225070	mitochondrion - soluble	0.3568
+TGME49_216990	nucleus - chromatin	0.5279
+TGME49_309850	PM - integral	0.369
+TGME49_312410	mitochondrion - soluble	0.4461
+TGME49_281990	nucleus - chromatin	0.331
+TGME49_231900	nucleus - chromatin	0.4856
+TGME49_250500	dense granules	0.4441
+TGME49_271400	apicoplast	0.7721
+TGME49_209930	apicoplast	0.5579
+TGME49_201850	nucleus - chromatin	0.2707
+TGME49_255490	apicoplast	0.2589
+TGME49_248960	mitochondrion - membranes	0.4893
+TGME49_257568	mitochondrion - membranes	0.7563
+TGME49_219510	mitochondrion - soluble	0.3356
+TGME49_221460	cytosol	0.4408
+TGME49_245748	nucleus - chromatin	0.295
+TGME49_286760	nucleus - chromatin	0.336
+TGME49_241300	dense granules	0.8646
+TGME49_207250	mitochondrion - membranes	0.2609
+TGME49_243170	PM - peripheral 1	0.976
+TGME49_238870	nucleus - chromatin	0.5438
+TGME49_265860	nucleus - chromatin	0.4557
+TGME49_248310	nucleus - chromatin	0.3984
+TGME49_241305	dense granules	0.57
+TGME49_297790	nucleus - chromatin	0.3306
+TGME49_212240	nucleus - chromatin	0.5935
+TGME49_202975	ER	0.446
+TGME49_218930	nucleus - chromatin	0.3599
+TGME49_206360	apicoplast	0.4648
+TGME49_255720	mitochondrion - soluble	0.6423
+TGME49_278145	ER	0.4759
+TGME49_286420	40S ribosome	0.3412
+TGME49_269130	Golgi	0.5083
+TGME49_256780	nucleus - chromatin	0.3307
+TGME49_305840	mitochondrion - soluble	0.5011
+TGME49_219742	micronemes	0.8341
+TGME49_293450	ER	0.3636
+TGME49_221530	nucleus - chromatin	0.3066
+TGME49_260790	mitochondrion - soluble	0.7834
+TGME49_215385	PM - integral	0.7168
+TGME49_500020	mitochondrion - soluble	0.3391
+TGME49_259410	PM - peripheral 1	0.9378
+TGME49_254180	endomembrane vesicles	0.3882
+TGME49_268860	nucleus - chromatin	0.1979
+TGME49_272510	Golgi	0.6034
+TGME49_255480	ER	0.5557
+TGME49_275660	nucleus - chromatin	0.2205
+TGME49_269110	cytosol	0.5599
+TGME49_206290	dense granules	0.3425
+TGME49_269315	mitochondrion - membranes	0.6146
+TGME49_314710	cytosol	0.3722
+TGME49_268620	mitochondrion - soluble	0.4334
+TGME49_311670	nucleus - chromatin	0.3831
+TGME49_233940	endomembrane vesicles	0.2273
+TGME49_201740	dense granules	0.3644
+TGME49_297350	nucleus - chromatin	0.3724
+TGME49_265030	nucleus - chromatin	0.2475
+TGME49_261410	nucleus - chromatin	0.3939
+TGME49_255930	mitochondrion - soluble	0.3723
+TGME49_216700	apicoplast	0.6458
+TGME49_242900	PM - peripheral 1	0.9636
+TGME49_219730	dense granules	0.4613
+TGME49_209180	micronemes	0.7686
+TGME49_204500	nucleus - chromatin	0.2753
+TGME49_205420	ER	0.2576
+TGME49_209940	PM - integral	0.6812
+TGME49_221160	mitochondrion - soluble	0.4949
+TGME49_209530	ER	0.6903
+TGME49_207010	PM - peripheral 1	0.9413
+TGME49_278930	mitochondrion - soluble	0.4159
+TGME49_291650	apical 1	0.3662
+TGME49_207400	nucleus - chromatin	0.5783
+TGME49_500364	nucleus - chromatin	0.3482
+TGME49_259520	nucleus - chromatin	0.3206
+TGME49_253500	endomembrane vesicles	0.2823
+TGME49_261670	cytosol	0.6072
+TGME49_289670	mitochondrion - soluble	0.3387
+TGME49_268190	ER	0.5437
+TGME49_276840	cytosol	0.2234
+TGME49_243130	PM - peripheral 1	0.9204
+TGME49_253160	mitochondrion - membranes	0.5926
+TGME49_232430	nucleus - chromatin	0.5985
+TGME49_294870	nucleus - chromatin	0.6551
+TGME49_210760	nucleus - chromatin	0.551
+TGME49_209640	mitochondrion - soluble	0.8101
+TGME49_310275	mitochondrion - membranes	0.5532
+TGME49_278370	PM - peripheral 1	0.9929
+TGME49_203330	PM - peripheral 1	0.1467
+TGME49_238080	mitochondrion - soluble	0.526
+TGME49_243110	dense granules	0.3322
+TGME49_269175	mitochondrion - soluble	0.6397
+TGME49_243160	PM - peripheral 1	0.9204
+TGME49_203590	apicoplast	0.2373
+TGME49_219100	apicoplast	0.617
+TGME49_259300	PM - peripheral 1	0.9797
+TGME49_276980	dense granules	0.6437
+TGME49_245600	ER	0.6963
+TGME49_240960	nucleus - chromatin	0.748
+TGME49_247310	mitochondrion - soluble	0.304
+TGME49_209620	apicoplast	0.5409
+TGME49_208990	nucleus - non-chromatin	0.411
+TGME49_267070	rhoptries 2	0.4757
+TGME49_265070	PM - integral	0.7716
+TGME49_270330	nucleus - chromatin	0.4057
+TGME49_500373	mitochondrion - soluble	0.218
+TGME49_294310	mitochondrion - membranes	0.62
+TGME49_273705	ER	0.4406
+TGME49_272440	apicoplast	0.4482
+TGME49_224740	nucleus - chromatin	0.5055
+TGME49_216160	nucleus - chromatin	0.3171
+TGME49_243550	endomembrane vesicles	0.2823
+TGME49_320710	nucleus - chromatin	0.1762
+TGME49_246490	PM - integral	0.4673
+TGME49_257650	mitochondrion - soluble	0.7491
+TGME49_500336	mitochondrion - soluble	0.2647
+TGME49_233270	apicoplast	0.2373
+TGME49_320540	mitochondrion - soluble	0.293
+TGME49_207050	nucleus - chromatin	0.3473
+TGME49_221840	apicoplast	0.2186
+TGME49_275850	PM - peripheral 1	0.6407
+TGME49_266870	PM - integral	0.4841
+TGME49_273110	PM - peripheral 1	0.9673
+TGME49_273740	cytosol	0.4172
+TGME49_500244	apicoplast	0.3556
+TGME49_289890	nucleus - chromatin	0.3657
+TGME49_312930	ER	0.3928
+TGME49_315240	ER	0.312
+TGME49_243140	PM - peripheral 1	0.9379
+TGME49_209630	nucleus - chromatin	0.3984
+TGME49_500150	mitochondrion - membranes	0.2368
+TGME49_294850	cytosol	0.5137
+TGME49_212200	ER	0.2901
+TGME49_266330	PM - peripheral 1	0.9295
+TGME49_286040	mitochondrion - membranes	0.1619
+TGME49_217880	nucleus - chromatin	0.4486
+TGME49_278920	PM - integral	0.292
+TGME49_239780	dense granules	0.2336
+TGME49_278878	dense granules	0.7186
+TGME49_217620	apicoplast	0.555
+TGME49_234440	cytosol	0.6865
+TGME49_500371	mitochondrion - soluble	0.3074
+TGME49_270350	Golgi	0.3239
+TGME49_322030	mitochondrion - soluble	0.3951
+TGME49_323310	apicoplast	0.2249
+TGME49_311300	mitochondrion - soluble	0.3455
+TGME49_239650	nucleus - chromatin	0.6171
+TGME49_249330	nucleus - chromatin	0.2998
+TGME49_240470	Golgi	0.588
+TGME49_243120	PM - peripheral 1	0.9204
+TGME49_309352	PM - peripheral 1	0.9286
+TGME49_286150	mitochondrion - membranes	0.4512
+TGME49_212275	nucleus - chromatin	0.3157
+TGME49_243100	PM - peripheral 1	0.9405
+TGME49_316890	mitochondrion - membranes	0.1852
+TGME49_247240	cytosol	0.8719
+TGME49_207980	mitochondrion - soluble	0.3366
+TGME49_295390	dense granules	0.4051
+TGME49_263595	nucleus - non-chromatin	0.6746
+TGME49_314660	mitochondrion - soluble	0.5934
+TGME49_295440	mitochondrion - soluble	0.3948
+TGME49_258920	ER	0.4912
+TGME49_208718	nucleus - chromatin	0.4497
+TGME49_314670	mitochondrion - membranes	0.5558
+TGME49_301140	PM - peripheral 1	0.9714
+TGME49_229915	cytosol	0.3119
+TGME49_255060	mitochondrion - membranes	0.913
+TGME49_278180	mitochondrion - membranes	0.3388
+TGME49_217710	endomembrane vesicles	0.224
+TGME49_293610	mitochondrion - membranes	0.5171
+TGME49_500136	nucleus - chromatin	0.2593
+TGME49_221270	apical 1	0.4499
+TGME49_255710	PM - integral	0.38
+TGME49_235630	dense granules	0.4192
+TGME49_210450	mitochondrion - soluble	0.3254
+TGME49_301470	PM - integral	0.4156
+TGME49_321470	PM - peripheral 1	0.9673
+TGME49_312340	nucleus - non-chromatin	0.527
+TGME49_231880	dense granules	0.5713
+TGME49_228370	nucleus - chromatin	0.2503
+TGME49_311780	nucleus - chromatin	0.4476
+TGME49_224760	PM - peripheral 1	0.9673
+TGME49_211320	nucleus - chromatin	0.4675
+TGME49_293600	apicoplast	0.6023
+TGME49_213970	mitochondrion - soluble	0.4733
+TGME49_500331	nucleus - chromatin	0.2466
+TGME49_219348	PM - peripheral 1	0.9571
+TGME49_278410	PM - peripheral 1	0.9204
+TGME49_216040	mitochondrion - soluble	0.6614
+TGME49_203358	nucleus - non-chromatin	0.7843
+TGME49_315380	PM - peripheral 1	0.9397
+TGME49_263570	cytosol	0.6218
+TGME49_282020	ER	0.6989
+TGME49_267380	PM - integral	0.7451
+TGME49_306070	nucleus - chromatin	0.2261
+TGME49_263670	nucleus - non-chromatin	0.365
+TGME49_232690	Golgi	0.5676
+TGME49_267725	mitochondrion - soluble	0.7041
+TGME49_266880	mitochondrion - membranes	0.3278
+TGME49_231120	mitochondrion - soluble	0.7192
+TGME49_275640	micronemes	0.4236
+TGME49_280530	mitochondrion - soluble	0.44
+TGME49_224790	PM - peripheral 1	0.9204
+TGME49_202050	Golgi	0.325
+TGME49_262800	mitochondrion - soluble	0.3459
+TGME49_320250	PM - peripheral 1	0.9882
+TGME49_500053	mitochondrion - soluble	0.3128
+TGME49_224750	PM - peripheral 1	0.9577
+TGME49_250220	dense granules	0.2148
+TGME49_299000	nucleus - chromatin	0.2644
+TGME49_319360	dense granules	0.3155
+TGME49_315260	nucleus - chromatin	0.403
+TGME49_253660	endomembrane vesicles	0.2488
+TGME49_255370	apicoplast	0.8854
+TGME49_287510	nucleus - chromatin	0.427
+TGME49_251600	nucleus - non-chromatin	0.5379
+TGME49_228980	apicoplast	0.5129
+TGME49_224770	PM - peripheral 1	0.9673
+TGME49_304480	ER	0.327
+TGME49_244860	cytosol	0.479
+TGME49_267160	PM - peripheral 1	0.9219
+TGME49_310340	mitochondrion - membranes	0.434
+TGME49_301690	dense granules	0.4838
+TGME49_226230	nucleus - chromatin	0.2502
+TGME49_237080	mitochondrion - membranes	0.4512
+TGME49_267642	nucleus - chromatin	0.5386
+TGME49_321390	mitochondrion - membranes	0.3857
+TGME49_240400	mitochondrion - soluble	0.3053
+TGME49_287430	nucleus - chromatin	0.2121
+TGME49_206660	nucleus - chromatin	0.233
+TGME49_297910	PM - peripheral 1	0.4421
+TGME49_500110	nucleus - chromatin	0.3318
+TGME49_292150	dense granules	0.7037
+TGME49_319670	nucleus - non-chromatin	0.3698
+TGME49_320240	PM - peripheral 1	0.9204
+TGME49_202940	PM - integral	0.6938
+TGME49_246110	endomembrane vesicles	0.523
+TGME49_228280	mitochondrion - soluble	0.6007
+TGME49_321490	PM - peripheral 1	0.9577
+TGME49_202210	apicoplast	0.1754
+TGME49_270273	mitochondrion - soluble	0.2214
+TGME49_230130	apicoplast	0.4007
+TGME49_240930	mitochondrion - membranes	0.3483
+TGME49_278380	PM - peripheral 1	0.9397
+TGME49_246070	PM - peripheral 1	0.9577
+TGME49_309330	PM - peripheral 1	0.9493
+TGME49_273995	mitochondrion - soluble	0.6909
+TGME49_316270	nucleus - non-chromatin	0.3198
+TGME49_260610	nucleus - non-chromatin	0.3055
+TGME49_254760	cytosol	0.3147
+TGME49_244360	nucleus - chromatin	0.428
+TGME49_316450	apicoplast	0.3372
+TGME49_240243	mitochondrion - soluble	0.7415
+TGME49_271335	cytosol	0.3625
+TGME49_275360	PM - peripheral 1	0.9577
+TGME49_289640	mitochondrion - soluble	0.6622
+TGME49_310680	nucleus - chromatin	0.2859
+TGME49_252330	mitochondrion - membranes	0.5114
+TGME49_228990	cytosol	0.3568
+TGME49_201720	nucleus - non-chromatin	0.2704
+TGME49_297920	nucleus - chromatin	0.3683
+TGME49_285770	mitochondrion - membranes	0.2917
+TGME49_231950	dense granules	0.4038
+TGME49_500326	mitochondrion - membranes	0.3547
+TGME49_287470	nucleus - chromatin	0.2473
+TGME49_232640	nucleus - non-chromatin	0.3576
+TGME49_500073	nucleus - chromatin	0.3318
+TGME49_313940	mitochondrion - membranes	0.3603
+TGME49_500134	nucleus - chromatin	0.5943
+TGME49_221930	ER	0.1795
+TGME49_286928	mitochondrion - soluble	0.2364
+TGME49_255920	apicoplast	0.3501
+TGME49_286550	nucleus - non-chromatin	0.5471
+TGME49_232140	ER	0.2626
+TGME49_238260	mitochondrion - soluble	0.5426
+TGME49_214330	ER	0.2487
+TGME49_218510	ER	0.5624
+TGME49_278680	dense granules	0.364
+TGME49_244080	dense granules	0.3011
+TGME49_275380	PM - peripheral 1	0.9673
+TGME49_281970	mitochondrion - soluble	0.6289
+TGME49_309300	PM - peripheral 1	0.9204
+TGME49_295430	dense granules	0.3424
+TGME49_219110	nucleus - chromatin	0.3118
+TGME49_285920	nucleus - chromatin	0.3485
+TGME49_234940	ER	0.3642
+TGME49_265290	apicoplast	0.7185
+TGME49_259205	nucleus - chromatin	0.2595
+TGME49_278390	PM - peripheral 1	0.9577
+TGME49_238160	PM - integral	0.431
+TGME49_224290	PM - integral	0.4342
+TGME49_271285	ER	0.5079
+TGME49_204390	nucleus - chromatin	0.6217
+TGME49_312460	apicoplast	0.2139
+TGME49_204520	dense granules	0.6584
+TGME49_254920	mitochondrion - soluble	0.5682
+TGME49_267980	cytosol	0.2099
+TGME49_268940	ER	0.2275
+TGME49_324700	apicoplast	0.4498
+TGME49_313050	dense granules	0.8737
+TGME49_278330	PM - peripheral 1	0.9397
+TGME49_214540	apicoplast	0.4395
+TGME49_207130	PM - peripheral 1	0.9455
+TGME49_500090	mitochondrion - soluble	0.3732
+TGME49_208380	nucleus - chromatin	0.2537
+TGME49_281510	ER	0.2527
+TGME49_205720	cytosol	0.5421
+TGME49_217940	apicoplast	0.2399
+TGME49_220740	apicoplast	0.5456
+TGME49_207005	PM - peripheral 1	0.9397
+TGME49_207015	PM - peripheral 1	0.9673
+TGME49_253550	cytosol	0.5265
+TGME49_271892	mitochondrion - soluble	0.3366
+TGME49_263010	nucleus - chromatin	0.1596
+TGME49_278290	PM - peripheral 1	0.9253
+TGME49_500297	cytosol	0.4373
+TGME49_257970	PM - integral	0.4084
+TGME49_269120	ER	0.4127
+TGME49_287170	nucleus - chromatin	0.6946
+TGME49_500199	nucleus - chromatin	0.2983
+TGME49_327900	nucleus - chromatin	0.2847
+TGME49_226300	nucleus - chromatin	0.3618
+TGME49_278420	PM - peripheral 1	0.5491
+TGME49_269860	nucleus - chromatin	0.2491
+TGME49_266450	cytosol	0.6201
+TGME49_500094	ER	0.7121
+TGME49_500278	Golgi	0.4775
+TGME49_216850	nucleus - chromatin	0.3104
+TGME49_209570	cytosol	0.4853
+TGME49_252990	mitochondrion - soluble	0.3154
+TGME49_251790	nucleus - non-chromatin	0.5346
+TGME49_236630	nucleus - chromatin	0.3084
+TGME49_278320	PM - peripheral 1	0.9397
+TGME49_202285	ER	0.3367
+TGME49_236050	cytosol	0.6199
+TGME49_236400	ER	0.5176
+TGME49_268390	mitochondrion - soluble	0.4215
+TGME49_249980	dense granules	0.1715
+TGME49_301300	nucleus - non-chromatin	0.4535
+TGME49_207070	ER	0.8277
+TGME49_288220	endomembrane vesicles	0.1817
+TGME49_262170	mitochondrion - soluble	0.5643
+TGME49_500305	apicoplast	0.4922
+TGME49_253510	ER	0.4902
+TGME49_256650	dense granules	0.5509
+TGME49_251580	apicoplast	0.5933
+TGME49_270950	nucleus - chromatin	0.2097
+TGME49_244480	Golgi	0.392
+TGME49_266860	ER	0.2138
+TGME49_230535	nucleus - chromatin	0.335
+TGME49_269150	PM - integral	0.713
+TGME49_278430	PM - peripheral 1	0.9397
+TGME49_264960	mitochondrion - soluble	0.5637
+TGME49_289340	dense granules	0.3618
+TGME49_221570	nucleus - non-chromatin	0.6485
+TGME49_222110	cytosol	0.3986
+TGME49_316770	mitochondrion - soluble	0.5682
+TGME49_243190	PM - peripheral 1	0.9577
+TGME49_272900	nucleus - chromatin	0.6402
+TGME49_215140	dense granules	0.3333
+TGME49_212180	mitochondrion - membranes	0.3767
+TGME49_224860	nucleus - non-chromatin	0.6891
+TGME49_500100	ER	0.5174
+TGME49_320005	mitochondrion - soluble	0.8101
+TGME49_311040	mitochondrion - membranes	0.33
+TGME49_326400	cytosol	0.1611
+TGME49_216090	Golgi	0.5106
+TGME49_218860	mitochondrion - membranes	0.285
+TGME49_216940	Golgi	0.25
+TGME49_319680	nucleus - chromatin	0.2705
+TGME49_202750	nucleus - non-chromatin	0.4833
+TGME49_219160	apicoplast	0.298
+TGME49_294785	mitochondrion - soluble	0.4689
+TGME49_210320	PM - peripheral 1	0.9266
+TGME49_202290	PM - integral	0.4615
+TGME49_216400	nucleus - chromatin	0.3468
+TGME49_212937	mitochondrion - membranes	0.5484
+TGME49_299040	PM - integral	0.5461
+TGME49_500316	Golgi	0.4271
+TGME49_315520	micronemes	0.4672
+TGME49_269910	ER	0.2136
+TGME49_210330	PM - peripheral 1	0.9195
+TGME49_205760	ER	0.4226
+TGME49_244240	mitochondrion - soluble	0.6532
+TGME49_229300	apicoplast	0.8014
+TGME49_240575	ER	0.2782
+TGME49_315540	ER	0.3888
+TGME49_221685	mitochondrion - soluble	0.5667
+TGME49_271070	apicoplast	0.3101
+TGME49_254660	cytosol	0.7524
+TGME49_274170	dense granules	0.9101
+TGME49_286060	mitochondrion - membranes	0.5682
+TGME49_256220	apicoplast	0.4411
+TGME49_240580	ER	0.6857
+TGME49_310400	nucleus - chromatin	0.3618
+TGME49_253480	nucleus - chromatin	0.3335
+TGME49_226532	ER	0.3482
+TGME49_321800	nucleus - chromatin	0.5669
+TGME49_201810	nucleus - chromatin	0.3066
+TGME49_266340	PM - peripheral 1	0.9577
+TGME49_203030	ER	0.454
+TGME49_210420	rhoptries 2	0.712
+TGME49_239510	ER	0.3863
+TGME49_500252	mitochondrion - soluble	0.3128
+TGME49_247640	mitochondrion - soluble	0.6464
+TGME49_281460	dense granules	0.3165
+TGME49_248690	apical 1	0.3829
+TGME49_251710	Golgi	0.5704
+TGME49_310830	apicoplast	0.2583
+TGME49_242300	mitochondrion - soluble	0.4862
+TGME49_277010	mitochondrion - soluble	0.3448
+TGME49_239755	PM - integral	0.7364
+TGME49_322110	apicoplast	0.259
+TGME49_314550	mitochondrion - soluble	0.6837
+TGME49_209810	nucleus - chromatin	0.3727
+TGME49_293720	dense granules	0.1815
+TGME49_241010	nucleus - chromatin	0.4925
+TGME49_248350	nucleus - chromatin	0.209
+TGME49_213850	PM - integral	0.4122
+TGME49_214420	dense granules	0.8604
+TGME49_248820	ER	0.2683
+TGME49_238210	PM - integral	0.3005
+TGME49_326800	apicoplast	0.2807
+TGME49_500002	cytosol	0.2196
+TGME49_500176	nucleus - chromatin	0.3322
+TGME49_305760	apicoplast	0.4113
+TGME49_299260	nucleus - chromatin	0.2293
+TGME49_249510	mitochondrion - soluble	0.6062
+TGME49_229330	ER	0.257
+TGME49_266910	rhoptries 1	0.5825
+TGME49_228420	ER	0.194
+TGME49_249950	nucleus - non-chromatin	0.4888
+TGME49_284590	mitochondrion - soluble	0.6172
+TGME49_321710	rhoptries 1	0.78
+TGME49_215600	mitochondrion - soluble	0.6735
+TGME49_209585	Golgi	0.472
+TGME49_213860	Golgi	0.2595
+TGME49_314450	cytosol	0.3158
+TGME49_325100	apicoplast	0.2826
+TGME49_209070	apicoplast	0.3501
+TGME49_273750	dense granules	0.383
+TGME49_312210	mitochondrion - soluble	0.4233
+TGME49_278565	Golgi	0.2215
+TGME49_307030	cytosol	0.4543
+TGME49_321550	nucleus - chromatin	0.5756
+TGME49_241180	PM - integral	0.7951
+TGME49_222935	dense granules	0.1479
+TGME49_219530	mitochondrion - soluble	0.6717
+TGME49_500334	mitochondrion - soluble	0.2647
+TGME49_500211	mitochondrion - soluble	0.3391
+TGME49_257572	mitochondrion - membranes	0.3248
+TGME49_244515	nucleus - chromatin	0.199
+TGME49_247750	nucleus - chromatin	0.3356
+TGME49_205430	IMC	0.2832
+TGME49_298960	nucleus - chromatin	0.242
+TGME49_248430	nucleus - chromatin	0.4002
+TGME49_223420	nucleus - chromatin	0.683
+TGME49_311790	mitochondrion - soluble	0.6958
+TGME49_500019	ER	0.3458
+TGME49_500194	mitochondrion - soluble	0.3124
+TGME49_292270	PM - peripheral 1	0.9473
+TGME49_305580	cytosol	0.4328
+TGME49_291040	apicoplast	0.1629
+TGME49_214340	cytosol	0.4399
+TGME49_251940	nucleus - chromatin	0.3813
+TGME49_315370	PM - peripheral 1	0.9397
+TGME49_217580	mitochondrion - soluble	0.8101
+TGME49_294180	cytosol	0.7912
+TGME49_328500	dense granules	0.2398
+TGME49_243680	cytosol	0.6659
+TGME49_210770	apicoplast	0.4904
+TGME49_307000	nucleus - chromatin	0.2967
+TGME49_232290	apicoplast	0.5337
+TGME49_329500	apicoplast	0.2281
+TGME49_310480	mitochondrion - membranes	0.2934
+TGME49_238220	endomembrane vesicles	0.1859
+TGME49_264150	dense granules	0.5916
+TGME49_221818	mitochondrion - soluble	0.6896
+TGME49_226740	micronemes	0.9502
+TGME49_255940	mitochondrion - soluble	0.6668
+TGME49_232210	nucleus - chromatin	0.3113
+TGME49_236530	nucleus - chromatin	0.5459
+TGME49_500078	apicoplast	0.3556
+TGME49_244170	nucleus - chromatin	0.3482
+TGME49_246555	ER	0.1795
+TGME49_203375	mitochondrion - soluble	0.3227
+TGME49_313318	mitochondrion - membranes	0.36
+TGME49_299800	Golgi	0.1842
+TGME49_286610	mitochondrion - soluble	0.6423
+TGME49_220180	apicoplast	0.5305
+TGME49_202910	dense granules	0.2778
+TGME49_315390	PM - peripheral 1	0.9397
+TGME49_278040	nucleus - non-chromatin	0.4416
+TGME49_300360	mitochondrion - membranes	0.9116
+TGME49_268700	mitochondrion - membranes	0.5434
+TGME49_313880	ER	0.2105
+TGME49_220120	nucleus - chromatin	0.3917
+TGME49_220650	apicoplast	0.2707
+TGME49_500409	mitochondrion - membranes	0.6334
+TGME49_240680	Golgi	0.4656
+TGME49_225315	ER	0.3329
+TGME49_500215	mitochondrion - soluble	0.2942
+TGME49_273720	apicoplast	0.3218
+TGME49_203890	dense granules	0.8966
+TGME49_300180	nucleus - chromatin	0.5157
+TGME49_229230	PM - peripheral 1	0.331
+TGME49_224170	PM - peripheral 1	0.7066
+TGME49_229320	cytosol	0.508
+TGME49_263350	PM - integral	0.7461
+TGME49_269582	cytosol	0.3158
+TGME49_271025	apicoplast	0.617
+TGME49_206390	mitochondrion - soluble	0.2768
+TGME49_304730	nucleus - chromatin	0.4458
+TGME49_251800	mitochondrion - membranes	0.3793
+TGME49_223490	nucleus - non-chromatin	0.576
+TGME49_320580	ER	0.3834
+TGME49_500014	nucleus - chromatin	0.3411
+TGME49_273040	cytosol	0.2658
+TGME49_210975	apicoplast	0.7937
+TGME49_252450	apicoplast	0.7711
+TGME49_318380	apicoplast	0.3176
+TGME49_318450	nucleus - chromatin	0.5328
+TGME49_262090	apicoplast	0.3703
+TGME49_253830	mitochondrion - soluble	0.4892
+TGME49_284160	apicoplast	0.688
+TGME49_222930	mitochondrion - soluble	0.3885
+TGME49_263170	mitochondrion - soluble	0.5405
+TGME49_252255	mitochondrion - membranes	0.4232
+TGME49_266105	nucleus - chromatin	0.187
+TGME49_254603	mitochondrion - soluble	0.389
+TGME49_236190	cytosol	0.3304
+TGME49_500346	apicoplast	0.4285
+TGME49_236290	ER	0.4186
+TGME49_293780	dense granules	0.5552
+TGME49_500328	mitochondrion - soluble	0.3506
+TGME49_220080	mitochondrion - soluble	0.4013
+TGME49_202500	IMC	0.5491
+TGME49_233610	nucleus - chromatin	0.3926
+TGME49_309790	mitochondrion - soluble	0.8957
+TGME49_216375	ER	0.4909
+TGME49_298060	dense granules	0.2288
+TGME49_202510	PM - integral	0.7409
+TGME49_293790	dense granules	0.5343
+TGME49_298830	mitochondrion - membranes	0.4489
+TGME49_291910	dense granules	0.7785
+TGME49_262470	nucleus - chromatin	0.3352
+TGME49_303450	Golgi	0.2616
+TGME49_203080	cytosol	0.5702
+TGME49_500289	Golgi	0.4536
+TGME49_294750	mitochondrion - soluble	0.8101
+TGME49_234460	nucleus - chromatin	0.4264
+TGME49_234507	ER	0.3425
+TGME49_286430	mitochondrion - soluble	0.3998
+TGME49_500347	ER	0.5174
+TGME49_240530	nucleus - chromatin	0.278
+TGME49_221350	ER	0.5408
+TGME49_254890	micronemes	0.3535
+TGME49_500191	mitochondrion - soluble	0.2921
+TGME49_278690	Golgi	0.2076
+TGME49_225720	mitochondrion - soluble	0.6491
+TGME49_227070	Golgi	0.2678
+TGME49_258220	nucleus - chromatin	0.5433
+TGME49_270790	nucleus - chromatin	0.3342
+TGME49_500151	cytosol	0.4148
+TGME49_203505	ER	0.5061
+TGME49_500119	apicoplast	0.3887
+TGME49_262020	apicoplast	0.617
+TGME49_275760	nucleus - chromatin	0.3351
+TGME49_249365	mitochondrion - soluble	0.3191
+TGME49_236120	mitochondrion - soluble	0.4689
+TGME49_271750	cytosol	0.7606
+TGME49_312540	nucleus - chromatin	0.3904
+TGME49_220540	nucleus - chromatin	0.4688
+TGME49_258810	PM - peripheral 1	0.6057
+TGME49_269170	apicoplast	0.3923
+TGME49_500350	mitochondrion - soluble	0.3137
+TGME49_285300	nucleus - chromatin	0.3806
+TGME49_313750	apicoplast	0.6125
+TGME49_270700	dense granules	0.8968
+TGME49_219840	apicoplast	0.7601
+TGME49_319700	rhoptries 1	0.1864
+TGME49_202930	dense granules	0.8347
+TGME49_299172	mitochondrion - soluble	0.7415
+TGME49_205662	mitochondrion - soluble	0.3871
+TGME49_297647	nucleus - chromatin	0.3708
+TGME49_248210	ER	0.3545
+TGME49_239090	PM - peripheral 1	0.9455
+TGME49_224800	ER	0.8454
+TGME49_219210	cytosol	0.7149
+TGME49_299990	nucleus - chromatin	0.6821
+TGME49_255200	dense granules	0.3065
+TGME49_200290	PM - integral	0.3869
+TGME49_294290	ER	0.5638
+TGME49_315550	ER	0.4843
+TGME49_300048	dense granules	0.5223
+TGME49_273080	nucleus - chromatin	0.5282
+TGME49_230470	PM - integral	0.2753
+TGME49_217500	cytosol	0.6849
+TGME49_500096	mitochondrion - soluble	0.3732
+TGME49_266360	mitochondrion - soluble	0.6491
+TGME49_258550	PM - peripheral 1	0.9577
+TGME49_238960	nucleus - chromatin	0.365
+TGME49_213570	ER	0.5507
+TGME49_233405	nucleus - chromatin	0.2454
+TGME49_310090	apicoplast	0.5901
+TGME49_270820	nucleus - non-chromatin	0.1489
+TGME49_263310	nucleus - chromatin	0.3471
+TGME49_289810	mitochondrion - membranes	0.4
+TGME49_305080	cytosol	0.3033
+TGME49_241165	mitochondrion - soluble	0.5341
+TGME49_291080	apicoplast	0.7816
+TGME49_228020	mitochondrion - membranes	0.595
+TGME49_500149	ER	0.2827
+TGME49_266500	mitochondrion - soluble	0.6735
+TGME49_216053	mitochondrion - membranes	0.4954
+TGME49_500121	ER	0.5845
+TGME49_305000	dense granules	0.2853
+TGME49_228780	mitochondrion - membranes	0.2066
+TGME49_269850	mitochondrion - soluble	0.3184
+TGME49_264110	mitochondrion - soluble	0.6306
+TGME49_242880	mitochondrion - soluble	0.6197
+TGME49_267010	apicoplast	0.3722
+TGME49_307640	rhoptries 1	0.4134
+TGME49_310235	dense granules	0.301
+TGME49_297090	ER	0.4247
+TGME49_228440	mitochondrion - soluble	0.2585
+TGME49_500001	mitochondrion - soluble	0.3506
+TGME49_216965	dense granules	0.4008
+TGME49_249400	apicoplast	0.2474
+TGME49_500018	mitochondrion - soluble	0.3074
+TGME49_278620	cytosol	0.1703
+TGME49_228620	nucleus - chromatin	0.2981
+TGME49_315350	ER	0.373
+TGME49_207790	mitochondrion - soluble	0.3191
+TGME49_231860	cytosol	0.361
+TGME49_500067	mitochondrion - soluble	0.3732
+TGME49_500131	nucleus - chromatin	0.3806
+TGME49_295995	ER	0.4222
+TGME49_200320	cytosol	0.3173
+TGME49_202110	ER	0.5579
+TGME49_249190	mitochondrion - soluble	0.4159
+TGME49_267820	nucleus - chromatin	0.4091
+TGME49_216270	mitochondrion - soluble	0.6686
+TGME49_320070	nucleus - chromatin	0.5046
+TGME49_225413	apicoplast	0.4114
+TGME49_301370	PM - integral	0.5246
+TGME49_244620	nucleus - chromatin	0.2567
+TGME49_299220	cytosol	0.1961
+TGME49_253080	nucleus - chromatin	0.4476
+TGME49_266130	PM - integral	0.2767
+TGME49_225300	apical 1	0.5081
+TGME49_247400	nucleus - chromatin	0.3018
+TGME49_231125	PM - integral	0.4214
+TGME49_500274	ER	0.4863
+TGME49_321700	cytosol	0.407
+TGME49_284570	mitochondrion - soluble	0.6765
+TGME49_316290	nucleus - chromatin	0.3868
+TGME49_319630	mitochondrion - membranes	0.2507
+TGME49_258880	mitochondrion - soluble	0.345
+TGME49_258850	cytosol	0.592
+TGME49_286170	apicoplast	0.7185
+TGME49_500395	mitochondrion - membranes	0.3547
+TGME49_500266	mitochondrion - soluble	0.4132
+TGME49_249570	rhoptries 1	0.9218
+TGME49_250030	nucleus - chromatin	0.3111
+TGME49_305060	mitochondrion - soluble	0.5193
+TGME49_298590	nucleus - chromatin	0.3223
+TGME49_266980	Golgi	0.2625
+TGME49_315120	mitochondrion - soluble	0.7371
+TGME49_221455	apicoplast	0.7883
+TGME49_203700	ER	0.7275
+TGME49_215885	Golgi	0.3257
+TGME49_307020	apical 1	0.5538
+TGME49_500015	Golgi	0.2164
+TGME49_218850	apicoplast	0.3501
+TGME49_500412	mitochondrion - soluble	0.349
+TGME49_243560	cytosol	0.3858
+TGME49_209710	apicoplast	0.7883
+TGME49_248380	ER	0.4603
+TGME49_239660	nucleus - chromatin	0.3244
+TGME49_500357	mitochondrion - soluble	0.2647
+TGME49_232960	nucleus - chromatin	0.6822
+TGME49_321900	mitochondrion - membranes	0.5547
+TGME49_289920	dense granules	0.7973
+TGME49_229240	PM - peripheral 1	0.9642
+TGME49_240610	apicoplast	0.5137
+TGME49_221855	apicoplast	0.5137
+TGME49_231590	cytosol	0.4549
+TGME49_325800	dense granules	0.3565
+TGME49_300606	apicoplast	0.7246
+TGME49_300090	ER	0.4046
+TGME49_232950	PM - integral	0.1716
+TGME49_208980	ER	0.5489
+TGME49_297100	mitochondrion - membranes	0.5087
+TGME49_299790	nucleus - chromatin	0.3751
+TGME49_252320	nucleus - non-chromatin	0.5374
+TGME49_209705	mitochondrion - membranes	0.7528
+TGME49_203740	Golgi	0.4184
+TGME49_304450	ER	0.5599
+TGME49_218880	cytosol	0.5107
+TGME49_300621	apicoplast	0.8147
+TGME49_247780	PM - integral	0.859
+TGME49_219240	nucleus - chromatin	0.3949
+TGME49_302450	apicoplast	0.6299
+TGME49_214160	apicoplast	0.6937
+TGME49_303050	apicoplast	0.7601
+TGME49_306450	ER	0.5509
+TGME49_283882	ER	0.6237
+TGME49_324900	apicoplast	0.4012
+TGME49_281360	ER	0.5967
+TGME49_292610	mitochondrion - membranes	0.7418
+TGME49_220460	cytosol	0.1973
+TGME49_283450	endomembrane vesicles	0.2675
+TGME49_268610	ER	0.5428
+TGME49_208330	ER	0.4498
+TGME49_500324	mitochondrion - soluble	0.3137
+TGME49_322120	apicoplast	0.5748
+TGME49_237070	cytosol	0.1805
+TGME49_263330	dense granules	0.4948
+TGME49_312635	nucleus - chromatin	0.4551
+TGME49_231390	nucleus - chromatin	0.4236
+TGME49_204330	cytosol	0.2721
+TGME49_218130	apicoplast	0.3654
+TGME49_255380	nucleus - chromatin	0.3262
+TGME49_326900	Golgi	0.3018
+TGME49_500288	mitochondrion - soluble	0.3074
+TGME49_278160	Golgi	0.7011
+TGME49_212910	ER	0.3503
+TGME49_211675	ER	0.3551
+TGME49_260340	mitochondrion - soluble	0.4374
+TGME49_321580	Golgi	0.387
+TGME49_255680	cytosol	0.4775
+TGME49_205670	Golgi	0.39
+TGME49_234590	nucleus - chromatin	0.2937
+TGME49_270650	cytosol	0.3698
+TGME49_270805	mitochondrion - membranes	0.1937
+TGME49_291660	Golgi	0.7235
+TGME49_500281	ER	0.346
+TGME49_265380	apicoplast	0.6686
+TGME49_235010	PM - integral	0.169
+TGME49_318300	mitochondrion - soluble	0.4439
+TGME49_500010	PM - integral	0.3612
+TGME49_313277	apicoplast	0.5625
+TGME49_306280	cytosol	0.2772
+TGME49_322210	mitochondrion - membranes	0.614
+TGME49_285670	PM - integral	0.5303
+TGME49_240230	endomembrane vesicles	0.2748
+TGME49_243720	nucleus - non-chromatin	0.1705
+TGME49_200340	nucleus - chromatin	0.5552
+TGME49_217720	PM - integral	0.47
+TGME49_235430	mitochondrion - membranes	0.3741
+TGME49_500259	nucleus - chromatin	0.2524
+TGME49_264990	IMC	0.4029
+TGME49_287515	mitochondrion - membranes	0.3537
+TGME49_238060	dense granules	0.1806
+TGME49_323900	mitochondrion - membranes	0.2507
+TGME49_222280	mitochondrion - soluble	0.5165
+TGME49_307045	nucleus - chromatin	0.2668
+TGME49_316190	cytosol	0.3133
+TGME49_263245	ER	0.3061
+TGME49_209590	Golgi	0.4163
+TGME49_305498	mitochondrion - membranes	0.2674
+TGME49_305090	mitochondrion - soluble	0.6423
+TGME49_297290	dense granules	0.2896
+TGME49_500320	mitochondrion - soluble	0.2647
+TGME49_242710	mitochondrion - membranes	0.3214
+TGME49_256792	nucleus - chromatin	0.3656
+TGME49_266900	Golgi	0.4279
+TGME49_288310	dense granules	0.1988
+TGME49_500354	mitochondrion - membranes	0.3396
+TGME49_265420	apical 1	0.3397
+TGME49_240480	cytosol	0.2884
+TGME49_240800	nucleus - chromatin	0.5285
+TGME49_247025	ER	0.2738
+TGME49_500369	mitochondrion - soluble	0.2647
+TGME49_323010	dense granules	0.906
+TGME49_261620	apicoplast	0.4388
+TGME49_269330	apical 1	0.2136
+TGME49_282160	apicoplast	0.4417
+TGME49_307840	cytosol	0.3858
+TGME49_225680	nucleus - chromatin	0.3352
+TGME49_300990	dense granules	0.2935
+TGME49_265538	cytosol	0.3174
+TGME49_204000	Golgi	0.5478
+TGME49_329700	PM - peripheral 1	0.3511
+TGME49_500190	nucleus - non-chromatin	0.2653
+TGME49_209860	nucleus - non-chromatin	0.6522
+TGME49_270680	dense granules	0.1716
+TGME49_242390	cytosol	0.2177
+TGME49_312245	mitochondrion - membranes	0.2702
+TGME49_305530	dense granules	0.7716
+TGME49_260400	dense granules	0.5291
+TGME49_210740	endomembrane vesicles	0.1555
+TGME49_500093	apicoplast	0.3556
+TGME49_251857	dense granules	0.2227
+TGME49_500375	nucleus - chromatin	0.3422
+TGME49_323330	apicoplast	0.4708
+TGME49_266065	mitochondrion - soluble	0.3312
+TGME49_500234	apicoplast	0.2824
+TGME49_261390	PM - integral	0.4704
+TGME49_242650	ER	0.6215
+TGME49_252860	mitochondrion - membranes	0.543
+TGME49_313460	apicoplast	0.7101
+TGME49_500054	mitochondrion - membranes	0.2806
+TGME49_248360	mitochondrion - membranes	0.8091
+TGME49_213380	nucleus - chromatin	0.3762
+TGME49_249770	endomembrane vesicles	0.2522
+TGME49_276810	mitochondrion - membranes	0.5525
+TGME49_258040	apicoplast	0.5122
+TGME49_213880	cytosol	0.2869
+TGME49_299980	apicoplast	0.4852
+TGME49_267290	Golgi	0.2378
+TGME49_245428	dense granules	0.5984
+TGME49_299010	nucleus - chromatin	0.3285
+TGME49_305600	nucleus - chromatin	0.3405
+TGME49_500214	cytosol	0.1976
+TGME49_283530	nucleus - chromatin	0.2667
+TGME49_294812	mitochondrion - soluble	0.5391
+TGME49_323400	mitochondrion - membranes	0.8908
+TGME49_280810	ER	0.6812
+TGME49_248790	mitochondrion - membranes	0.4748
+TGME49_500286	dense granules	0.2502
+TGME49_227040	apicoplast	0.7288
+TGME49_298840	nucleus - chromatin	0.397
+TGME49_261630	cytosol	0.4009
+TGME49_500219	mitochondrion - soluble	0.2134
+TGME49_247620	apicoplast	0.3619
+TGME49_500172	mitochondrion - soluble	0.2647
+TGME49_215055	apicoplast	0.3654
+TGME49_249960	mitochondrion - membranes	0.3008
+TGME49_325200	apicoplast	0.3242
+TGME49_300040	cytosol	0.362
+TGME49_206700	mitochondrion - soluble	0.3722
+TGME49_320130	mitochondrion - soluble	0.4631
+TGME49_279550	Golgi	0.3566
+TGME49_252310	nucleus - chromatin	0.2153
+TGME49_203070	Golgi	0.5027
+TGME49_237490	cytosol	0.2416
+TGME49_263590	nucleus - chromatin	0.3489
+TGME49_200130	nucleus - chromatin	0.4003
+TGME49_226260	dense granules	0.8898
+TGME49_249698	mitochondrion - soluble	0.5467
+TGME49_305110	dense granules	0.6167
+TGME49_313235	ER	0.652
+TGME49_216200	nucleus - chromatin	0.2454
+TGME49_203770	Golgi	0.3082
+TGME49_234060	mitochondrion - membranes	0.3582
+TGME49_321685	apicoplast	0.265
+TGME49_205398	Golgi	0.3617
+TGME49_500036	nucleus - chromatin	0.4117
+TGME49_260325	mitochondrion - soluble	0.6668
+TGME49_254640	Golgi	0.3365
+TGME49_248560	ER	0.2168
+TGME49_273530	nucleus - chromatin	0.3
+TGME49_255620	PM - integral	0.2438
+TGME49_319890	rhoptries 1	0.4101
+TGME49_301330	nucleus - chromatin	0.3292
+TGME49_249200	PM - integral	0.7522
+TGME49_245520	mitochondrion - soluble	0.4955
+TGME49_265140	cytosol	0.3227
+TGME49_216490	mitochondrion - soluble	0.5682
+TGME49_306680	dense granules	0.3138
+TGME49_500105	mitochondrion - soluble	0.2647
+TGME49_315345	PM - peripheral 1	0.9077
+TGME49_281350	mitochondrion - membranes	0.3008
+TGME49_270020	apicoplast	0.3501
+TGME49_271015	mitochondrion - membranes	0.569
+TGME49_300700	apicoplast	0.4898
+TGME49_500407	mitochondrion - soluble	0.2647
+TGME49_248445	IMC	0.4084
+TGME49_221910	cytosol	0.3587
+TGME49_321170	ER	0.4007
+TGME49_251520	ER	0.862
+TGME49_500021	cytosol	0.4148
+TGME49_264010	nucleus - non-chromatin	0.4321
+TGME49_327700	dense granules	0.4766
+TGME49_229220	dense granules	0.7526
+TGME49_237893	apicoplast	0.3198
+TGME49_280680	mitochondrion - soluble	0.3405
+TGME49_268685	mitochondrion - soluble	0.6423
+TGME49_212280	mitochondrion - soluble	0.3041
+TGME49_230610	ER	0.8411
+TGME49_316420	endomembrane vesicles	0.4197
+TGME49_286020	mitochondrion - membranes	0.5097
+TGME49_328600	apicoplast	0.7975
+TGME49_500070	apicoplast	0.4285
+TGME49_500406	apicoplast	0.3501
+TGME49_248620	apicoplast	0.8355
+TGME49_212160	ER	0.3401
+TGME49_239720	mitochondrion - soluble	0.7448
+TGME49_259020	endomembrane vesicles	0.1858
+TGME49_324000	apicoplast	0.4791
+TGME49_271590	nucleus - chromatin	0.3109
+TGME49_306010	mitochondrion - membranes	0.1912
+TGME49_201100	ER	0.5857
+TGME49_292250	PM - peripheral 1	0.9295
+TGME49_266700	nucleus - chromatin	0.29
+TGME49_221970	nucleus - non-chromatin	0.5443
+TGME49_285930	micronemes	0.6422
+TGME49_500026	Golgi	0.3147
+TGME49_256010	mitochondrion - soluble	0.7363
+TGME49_310990	nucleus - chromatin	0.5741
+TGME49_232550	nucleus - chromatin	0.3569
+TGME49_217040	nucleus - chromatin	0.2413
+TGME49_280070	apicoplast	0.4655
+TGME49_256025	mitochondrion - soluble	0.3583
+TGME49_306980	nucleus - chromatin	0.3964
+TGME49_240255	mitochondrion - membranes	0.6996
+TGME49_287990	apicoplast	0.7005
+TGME49_275700	mitochondrion - membranes	0.4074
+TGME49_213746	ER	0.2503
+TGME49_268670	ER	0.4161
+TGME49_257810	mitochondrion - soluble	0.4696
+TGME49_315630	mitochondrion - membranes	0.234
+TGME49_500218	Golgi	0.4796
+TGME49_213748	mitochondrion - soluble	0.326
+TGME49_216800	nucleus - chromatin	0.511
+TGME49_287280	mitochondrion - membranes	0.3788
+TGME49_265340	ER	0.2866
+TGME49_272905	ER	0.5437
+TGME49_500184	Golgi	0.4559
+TGME49_233670	dense granules	0.2424
+TGME49_329400	nucleus - chromatin	0.2452
+TGME49_310360	mitochondrion - membranes	0.8381
+TGME49_203230	nucleus - chromatin	0.537
+TGME49_500063	mitochondrion - soluble	0.3074
+TGME49_300615	apicoplast	0.8712
+TGME49_500351	nucleus - chromatin	0.2524
+TGME49_271580	PM - integral	0.4086
+TGME49_261040	mitochondrion - membranes	0.4873
+TGME49_270170	dense granules	0.4762
+TGME49_209740	mitochondrion - membranes	0.7634
+TGME49_315090	ER	0.3588
+TGME49_214400	rhoptries 1	0.8963
+TGME49_262160	nucleus - non-chromatin	0.2651
+TGME49_287250	ER	0.3401
+TGME49_269780	Golgi	0.3349
+TGME49_221900	mitochondrion - soluble	0.6958
+TGME49_272680	dense granules	0.6206
+TGME49_314440	apicoplast	0.2481
+TGME49_300790	mitochondrion - membranes	0.3278
+TGME49_500095	apicoplast	0.4285
+TGME49_249685	mitochondrion - soluble	0.6006
+TGME49_216920	mitochondrion - membranes	0.4489
+TGME49_296640	PM - peripheral 1	0.9673
+TGME49_291840	mitochondrion - soluble	0.2249
+TGME49_225420	cytosol	0.3858
+TGME49_293520	mitochondrion - membranes	0.2211
+TGME49_204010	mitochondrion - membranes	0.5219
+TGME49_274700	apicoplast	0.8854
+TGME49_203362	mitochondrion - soluble	0.6096
+TGME49_294595	nucleus - chromatin	0.307
+TGME49_307830	dense granules	0.2181
+TGME49_249930	PM - integral	0.3268
+TGME49_244840	nucleus - chromatin	0.3494
+TGME49_238270	apicoplast	0.4168
+TGME49_207650	nucleus - chromatin	0.2261
+TGME49_251750	PM - peripheral 2	0.1826
+TGME49_311440	PM - peripheral 1	0.4707
+TGME49_237894	apicoplast	0.7857
+TGME49_202375	apicoplast	0.71
+TGME49_224780	PM - peripheral 1	0.2602
+TGME49_327200	apicoplast	0.308
+TGME49_217030	mitochondrion - soluble	0.4012
+TGME49_325900	mitochondrion - membranes	0.2578
+TGME49_291810	cytosol	0.8517
+TGME49_217490	apicoplast	0.4871
+TGME49_216910	mitochondrion - soluble	0.3095
+TGME49_211920	nucleus - chromatin	0.4125
+TGME49_269410	mitochondrion - membranes	0.4288
+TGME49_236880	dense granules	0.6196
+TGME49_271174	ER	0.6033
+TGME49_265175	apicoplast	0.5583
+TGME49_302150	apicoplast	0.7015
+TGME49_206350	ER	0.8786
+TGME49_500129	nucleus - chromatin	0.2653
+TGME49_271570	nucleus - chromatin	0.3896
+TGME49_233370	ER	0.4167
+TGME49_291010	apicoplast	0.6786
+TGME49_290645	apicoplast	0.7185
+TGME49_268910	mitochondrion - soluble	0.6686
+TGME49_206520	dense granules	0.4271
+TGME49_242740	PM - peripheral 1	0.9195
+TGME49_318490	mitochondrion - membranes	0.5467
+TGME49_233290	apicoplast	0.3693
+TGME49_284310	nucleus - chromatin	0.6543
+TGME49_240730	PM - integral	0.3868
+TGME49_295662	dense granules	0.2098
+TGME49_268270	PM - peripheral 1	0.9725
+TGME49_237240	cytosol	0.3793
+TGME49_236870	dense granules	0.8357
+TGME49_224100	mitochondrion - membranes	0.3687
+TGME49_248677	mitochondrion - soluble	0.3653
+TGME49_235710	mitochondrion - soluble	0.552
+TGME49_307460	mitochondrion - membranes	0.36
+TGME49_229270	PM - peripheral 1	0.9195
+TGME49_217160	ER	0.4905
+TGME49_310590	ER	0.2532
+TGME49_255360	dense granules	0.3659
+TGME49_271410	apicoplast	0.7883
+TGME49_287200	mitochondrion - membranes	0.4668
+TGME49_308820	mitochondrion - membranes	0.6999
+TGME49_236900	Golgi	0.4629
+TGME49_227940	Golgi	0.3694
+TGME49_264700	nucleus - chromatin	0.2525
+TGME49_260860	apicoplast	0.7533
+TGME49_219610	nucleus - chromatin	0.4619
+TGME49_225970	nucleus - chromatin	0.471
+TGME49_292600	mitochondrion - soluble	0.5042
+TGME49_223690	mitochondrion - soluble	0.612
+TGME49_500158	mitochondrion - soluble	0.3168
+TGME49_327600	apicoplast	0.2657
+TGME49_294990	dense granules	0.9405
+TGME49_325000	nucleus - chromatin	0.2226
+TGME49_278070	PM - peripheral 1	0.3366
+TGME49_254460	nucleus - chromatin	0.2232
+TGME49_500118	cytosol	0.4096
+TGME49_500069	apicoplast	0.2384
+TGME49_300370	mitochondrion - soluble	0.2295
+TGME49_264225	nucleus - chromatin	0.3755
+TGME49_259580	mitochondrion - soluble	0.7253
+TGME49_273340	endomembrane vesicles	0.333
+TGME49_306700	nucleus - chromatin	0.3352
+TGME49_500028	mitochondrion - soluble	0.2647
+TGME49_271375	nucleus - chromatin	0.2827
+TGME49_243700	nucleus - chromatin	0.4976
+TGME49_307260	ER	0.4244
+TGME49_220145	apicoplast	0.5497
+TGME49_294680	PM - integral	0.447
+TGME49_201730	cytosol	0.2071
+TGME49_249725	apicoplast	0.4459
+TGME49_305635	mitochondrion - soluble	0.6464
+TGME49_297280	apicoplast	0.1461
+TGME49_291310	ER	0.668
+TGME49_207780	apicoplast	0.3477
+TGME49_314350	apicoplast	0.5308
+TGME49_234400	PM - peripheral 1	0.9673
+TGME49_215410	cytosol	0.3958
+TGME49_500419	cytosol	0.1647
+TGME49_215540	cytosol	0.1611
+TGME49_500386	mitochondrion - soluble	0.3732
+TGME49_291580	mitochondrion - membranes	0.5171
+TGME49_210412	PM - integral	0.6022
+TGME49_235600	apicoplast	0.289
+TGME49_247340	nucleus - chromatin	0.186
+TGME49_500152	dense granules	0.2259
+TGME49_271040	PM - peripheral 1	0.8998
+TGME49_271220	cytosol	0.2421
+TGME49_220880	nucleus - non-chromatin	0.2774
+TGME49_280430	ER	0.4691
+TGME49_266300	IMC	0.215
+TGME49_244070	dense granules	0.3202
+TGME49_223915	ER	0.273
+TGME49_202450	mitochondrion - soluble	0.599
+TGME49_500413	nucleus - chromatin	0.3806
+TGME49_247720	apicoplast	0.7711
+TGME49_500175	nucleus - chromatin	0.2653
+TGME49_310690	dense granules	0.1747
+TGME49_290930	dense granules	0.306
+TGME49_251665	apicoplast	0.5337
+TGME49_220850	apicoplast	0.8854
+TGME49_200590	ER	0.342
+TGME49_267000	apicoplast	0.5933
+TGME49_222180	mitochondrion - soluble	0.4892
+TGME49_314415	ER	0.5666
+TGME49_259030	mitochondrion - membranes	0.3235
+TGME49_500006	mitochondrion - membranes	0.2806
+TGME49_288590	nucleus - chromatin	0.3498
+TGME49_315340	PM - peripheral 1	0.4389
+TGME49_500171	nucleus - chromatin	0.6407
+TGME49_237190	rhoptries 1	0.7299
+TGME49_266720	ER	0.4829
+TGME49_210970	dense granules	0.3403
+TGME49_287440	mitochondrion - membranes	0.5558
+TGME49_323300	PM - integral	0.4477
+TGME49_202330	apicoplast	0.8854
+TGME49_206440	nucleus - chromatin	0.5278
+TGME49_326100	nucleus - chromatin	0.4634
+TGME49_231020	mitochondrion - soluble	0.5682
+TGME49_308050	cytosol	0.4201
+TGME49_311485	mitochondrion - soluble	0.344
+TGME49_202090	mitochondrion - soluble	0.3191
+TGME49_285790	nucleus - chromatin	0.2593
+TGME49_222130	nucleus - non-chromatin	0.5661
+TGME49_300641	apicoplast	0.7601
+TGME49_324300	Golgi	0.5339
+TGME49_284420	dense granules	0.7198
+TGME49_500425	cytosol	0.4148
+TGME49_500382	Golgi	0.3166
+TGME49_218350	dense granules	0.521
+TGME49_300300	mitochondrion - soluble	0.5042
+TGME49_230870	ER	0.44
+TGME49_320040	cytosol	0.7169
+TGME49_207150	PM - peripheral 1	0.9469
+TGME49_319960	mitochondrion - membranes	0.6989
+TGME49_318360	nucleus - chromatin	0.2702
+TGME49_221295	dense granules	0.4574
+TGME49_289590	nucleus - chromatin	0.5386
+TGME49_289610	Golgi	0.377
+TGME49_223668	cytosol	0.8723
+TGME49_217810	apicoplast	0.3703
+TGME49_306050	ER	0.5857
+TGME49_314570	Golgi	0.3329
+TGME49_217665	nucleus - chromatin	0.4723
+TGME49_237270	mitochondrion - soluble	0.5399
+TGME49_300055	PM - integral	0.3006
+TGME49_500033	mitochondrion - soluble	0.3648
+TGME49_500138	mitochondrion - membranes	0.4231
+TGME49_296000	nucleus - chromatin	0.2809
+TGME49_500048	nucleus - chromatin	0.2997
+TGME49_267045	mitochondrion - membranes	0.202
+TGME49_500016	mitochondrion - soluble	0.3074
+TGME49_229910	cytosol	0.1481
+TGME49_253460	mitochondrion - membranes	0.3798
+TGME49_232700	mitochondrion - soluble	0.3167
+TGME49_318340	mitochondrion - soluble	0.5764
+TGME49_297190	apicoplast	0.577
+TGME49_320525	mitochondrion - membranes	0.4693
+TGME49_500299	mitochondrion - soluble	0.3168
+TGME49_285350	nucleus - chromatin	0.5173
+TGME49_205080	dense granules	0.4323
+TGME49_203280	nucleus - non-chromatin	0.5002
+TGME49_245550	PM - integral	0.408
+TGME49_296340	mitochondrion - membranes	0.3056
+TGME49_315300	nucleus - chromatin	0.2629
+TGME49_310940	apicoplast	0.2939
+TGME49_206560	nucleus - chromatin	0.2602
+TGME49_294808	mitochondrion - membranes	0.3804
+TGME49_268178	dense granules	0.2063
+TGME49_310470	mitochondrion - membranes	0.874
+TGME49_290610	nucleus - chromatin	0.3776
+TGME49_278400	nucleus - chromatin	0.1773
+TGME49_203470	apicoplast	0.5901
+TGME49_297700	apicoplast	0.4668
+TGME49_273020	apicoplast	0.8854
+TGME49_238480	PM - peripheral 1	0.9204
+TGME49_311420	ER	0.3301
+TGME49_290000	PM - peripheral 1	0.6732
+TGME49_314650	mitochondrion - soluble	0.3725
+TGME49_306334	apicoplast	0.3148
+TGME49_314910	cytosol	0.7241
+TGME49_288020	mitochondrion - membranes	0.6941
+TGME49_201160	nucleus - chromatin	0.4809
+TGME49_246700	nucleus - chromatin	0.1979
+TGME49_249750	mitochondrion - soluble	0.3491
+TGME49_270040	dense granules	0.4669
+TGME49_278753	ER	0.1944
+TGME49_249520	nucleus - chromatin	0.4393
+TGME49_261590	cytosol	0.6779
+TGME49_251910	dense granules	0.2334
+TGME49_207420	mitochondrion - membranes	0.932
+TGME49_225460	cytosol	0.2007
+TGME49_254635	Golgi	0.2758
+TGME49_310600	rhoptries 2	0.2449
+TGME49_227130	dense granules	0.4174
+TGME49_240920	apicoplast	0.8854
+TGME49_316410	endomembrane vesicles	0.3288
+TGME49_247630	PM - integral	0.3999
+TGME49_311170	nucleus - chromatin	0.35
+TGME49_220150	mitochondrion - soluble	0.7389
+TGME49_315500	dense granules	0.301
+TGME49_258890	mitochondrion - soluble	0.3438
+TGME49_205210	nucleus - chromatin	0.5376
+TGME49_238470	PM - peripheral 1	0.9316
+TGME49_227590	dense granules	0.627
+TGME49_245650	cytosol	0.572
+TGME49_237810	mitochondrion - soluble	0.3818
+TGME49_232940	IMC	0.5407
+TGME49_270520	mitochondrion - soluble	0.4678
+TGME49_275355	PM - peripheral 1	0.9052
+TGME49_228310	Golgi	0.3313
+TGME49_212420	dense granules	0.7205
+TGME49_231055	dense granules	0.1966
+TGME49_238460	PM - peripheral 1	0.9316
+TGME49_203720	IMC	0.3035
+TGME49_238500	PM - peripheral 1	0.9316
+TGME49_218740	dense granules	0.2268
+TGME49_235360	mitochondrion - soluble	0.8758
+TGME49_216720	dense granules	0.9904
+TGME49_500111	Golgi	0.4271
+TGME49_231050	apicoplast	0.7709
+TGME49_300608	apicoplast	0.8725
+TGME49_304980	apicoplast	0.3719
+TGME49_320770	nucleus - chromatin	0.2119
+TGME49_232655	PM - integral	0.2391
+TGME49_222870	nucleus - non-chromatin	0.3597
+TGME49_238490	PM - peripheral 1	0.9405
+TGME49_205480	nucleus - chromatin	0.637
+TGME49_229660	mitochondrion - membranes	0.585
+TGME49_232110	mitochondrion - soluble	0.4197
+TGME49_272300	nucleus - chromatin	0.2892
+TGME49_227310	mitochondrion - soluble	0.2592
+TGME49_281530	nucleus - chromatin	0.3751
+TGME49_500091	mitochondrion - soluble	0.3074
+TGME49_254780	Golgi	0.1987
+TGME49_328000	apicoplast	0.3641
+TGME49_263680	mitochondrion - soluble	0.5292
+TGME49_285740	mitochondrion - membranes	0.2103
+TGME49_283460	endomembrane vesicles	0.35
+TGME49_328100	nucleus - chromatin	0.5064
+TGME49_267585	nucleus - chromatin	0.4376
+TGME49_280580	PM - peripheral 1	0.6189
+TGME49_262860	nucleus - chromatin	0.4244
+TGME49_254380	cytosol	0.3388
+TGME49_240365	mitochondrion - membranes	0.3228
+TGME49_238850	PM - peripheral 1	0.9811
+TGME49_269085	apicoplast	0.7185
+TGME49_500312	mitochondrion - membranes	0.6101
+TGME49_215165	Golgi	0.3039
+TGME49_243520	apicoplast	0.7711
+TGME49_277680	mitochondrion - soluble	0.2528
+TGME49_248425	mitochondrion - soluble	0.3527
+TGME49_259570	mitochondrion - soluble	0.5498
+TGME49_319935	apicoplast	0.3693
+TGME49_292325	nucleus - chromatin	0.2564
+TGME49_234310	cytosol	0.6218
+TGME49_500052	mitochondrion - membranes	0.3547
+TGME49_230122	mitochondrion - membranes	0.5115
+TGME49_207950	ER	0.2642
+TGME49_307480	mitochondrion - soluble	0.2646
+TGME49_215650	nucleus - chromatin	0.2813
+TGME49_238450	apicoplast	0.7185
+TGME49_242310	apicoplast	0.3589
+TGME49_236940	dense granules	0.3798
+TGME49_311320	PM - integral	0.4349
+TGME49_306688	apicoplast	0.5183
+TGME49_245740	apicoplast	0.3619
+TGME49_238520	PM - peripheral 1	0.9397
+TGME49_231996	mitochondrion - soluble	0.4237
+TGME49_243420	ER	0.2864
+TGME49_257460	Golgi	0.4433
+TGME49_277020	apicoplast	0.7573
+TGME49_219570	nucleus - chromatin	0.3786
+TGME49_328800	apicoplast	0.345
+TGME49_220870	mitochondrion - membranes	0.5488
+TGME49_202860	mitochondrion - soluble	0.3257
+TGME49_329100	Golgi	0.2356
+TGME49_500265	apicoplast	0.4285
+TGME49_307470	apicoplast	0.5137
+TGME49_233360	dense granules	0.2812
+TGME49_233200	mitochondrion - soluble	0.6519
+TGME49_298820	mitochondrion - membranes	0.7008
+TGME49_294760	mitochondrion - soluble	0.4755
+TGME49_203682	PM - integral	0.2947
+TGME49_261700	apicoplast	0.2462
+TGME49_295600	PM - peripheral 1	0.9031
+TGME49_500003	mitochondrion - soluble	0.3137
+TGME49_218460	dense granules	0.2119
+TGME49_202445	mitochondrion - membranes	0.6276
+TGME49_326200	apicoplast	0.3616
+TGME49_219090	apicoplast	0.617
+TGME49_298090	mitochondrion - membranes	0.5239
+TGME49_280570	PM - peripheral 1	0.9617
+TGME49_272595	ER	0.4095
+TGME49_308830	Golgi	0.239
+TGME49_294390	cytosol	0.4386
+TGME49_276870	nucleus - chromatin	0.211
+TGME49_214100	nucleus - chromatin	0.2961
+TGME49_255715	mitochondrion - soluble	0.6524
+TGME49_222290	nucleus - non-chromatin	0.5791
+TGME49_312690	nucleus - chromatin	0.4002
+TGME49_234340	mitochondrion - soluble	0.4125
+TGME49_253755	dense granules	0.6916
+TGME49_236230	apicoplast	0.8854
+TGME49_500251	mitochondrion - soluble	0.2597
+TGME49_268835	apicoplast	0.5137
+TGME49_264100	mitochondrion - membranes	0.4375
+TGME49_269640	endomembrane vesicles	0.1736
+TGME49_207680	cytosol	0.7333
+TGME49_292350	PM - peripheral 1	0.9842
+TGME49_276830	mitochondrion - soluble	0.3725
+TGME49_224845	nucleus - chromatin	0.2381
+TGME49_297680	dense granules	0.376
+TGME49_310650	nucleus - chromatin	0.258
+TGME49_230640	mitochondrion - soluble	0.5467
+TGME49_236635	apicoplast	0.5137
+TGME49_226490	dense granules	0.4163
+TGME49_326600	apicoplast	0.6625
+TGME49_500170	ER	0.2871
+TGME49_304870	mitochondrion - membranes	0.3437
+TGME49_223470	apicoplast	0.6937
+TGME49_209090	mitochondrion - membranes	0.7102
+TGME49_320410	dense granules	0.3975
+TGME49_329620	apicoplast	0.4085
+TGME49_500049	nucleus - chromatin	0.2466
+TGME49_305455	mitochondrion - soluble	0.6091
+TGME49_244260	dense granules	0.4211
+TGME49_200480	dense granules	0.4026
+TGME49_259620	nucleus - chromatin	0.2644
+TGME49_306870	ER	0.546
+TGME49_269775	nucleus - chromatin	0.3668
+TGME49_289900	cytosol	0.5759
+TGME49_322300	mitochondrion - membranes	0.3754
+TGME49_249720	mitochondrion - membranes	0.6291
+TGME49_232990	dense granules	0.2637
+TGME49_209780	apicoplast	0.8403
+TGME49_209095	nucleus - chromatin	0.3437
+TGME49_301890	nucleus - chromatin	0.3905
+TGME49_235890	mitochondrion - soluble	0.6905
+TGME49_500130	apicoplast	0.1739
+TGME49_301260	apicoplast	0.2801
+TGME49_279405	mitochondrion - soluble	0.4825
+TGME49_291920	PM - peripheral 1	0.2602
+TGME49_266480	PM - integral	0.4814
+TGME49_233925	mitochondrion - soluble	0.2552
+TGME49_259100	dense granules	0.1806
+TGME49_217370	dense granules	0.8404
+TGME49_317820	apicoplast	0.8854
+TGME49_215270	apicoplast	0.8854
+TGME49_500415	cytosol	0.4096
+TGME49_237120	PM - integral	0.5355
+TGME49_216415	ER	0.3152
+TGME49_290570	mitochondrion - soluble	0.6735
+TGME49_230900	mitochondrion - soluble	0.3357
+TGME49_292335	nucleus - chromatin	0.4748
+TGME49_273065	ER	0.2657
+TGME49_500212	ER	0.3051
+TGME49_500208	nucleus - chromatin	0.2466
+TGME49_500295	Golgi	0.2776
+TGME49_204110	mitochondrion - soluble	0.3999
+TGME49_276230	cytosol	0.2086
+TGME49_288850	Golgi	0.4639
+TGME49_306880	apicoplast	0.5308
+TGME49_222080	Golgi	0.434
+TGME49_265160	apicoplast	0.8014
+TGME49_250100	dense granules	0.7849
+TGME49_314720	cytosol	0.4649
+TGME49_236830	apicoplast	0.8854
+TGME49_273300	apicoplast	0.5429
+TGME49_263490	mitochondrion - soluble	0.4415
+TGME49_216770	dense granules	0.8412
+TGME49_318632	mitochondrion - soluble	0.518
+TGME49_244920	PM - integral	0.2479
+TGME49_278310	apicoplast	0.5137
+TGME49_276820	mitochondrion - soluble	0.3129
+TGME49_314250	dense granules	0.6454
+TGME49_259590	ER	0.3755
+TGME49_215970	cytosol	0.4433
+TGME49_215930	mitochondrion - soluble	0.626
+TGME49_224932	mitochondrion - soluble	0.6705
+TGME49_243220	nucleus - chromatin	0.3011
+TGME49_266335	PM - peripheral 1	0.9219
+TGME49_210815	Golgi	0.2376
+TGME49_278460	nucleus - chromatin	0.2285
+TGME49_285820	apicoplast	0.3589
+TGME49_251660	nucleus - chromatin	0.382
+TGME49_294285	PM - integral	0.2458
+TGME49_327800	apicoplast	0.2467
+TGME49_212830	apicoplast	0.617
+TGME49_263250	ER	0.344
+TGME49_300980	apicoplast	0.2429
+TGME49_283470	ER	0.2265
+TGME49_314560	mitochondrion - membranes	0.8569
+TGME49_320720	mitochondrion - soluble	0.6958
+TGME49_233170	mitochondrion - soluble	0.3458
+TGME49_240940	apicoplast	0.7883
+TGME49_319690	apicoplast	0.453
+TGME49_208770	nucleus - chromatin	0.2584
+TGME49_215960	dense granules	0.717
+TGME49_238505	mitochondrion - membranes	0.53
+TGME49_287450	nucleus - chromatin	0.3667
+TGME49_322130	dense granules	0.2202
+TGME49_284680	dense granules	0.5279
+TGME49_243770	apicoplast	0.5137
+TGME49_322020	dense granules	0.2637
+TGME49_206460	nucleus - chromatin	0.4282
+TGME49_316235	mitochondrion - soluble	0.48
+TGME49_287240	apicoplast	0.2713
+TGME49_226925	Golgi	0.3149
+TGME49_215130	nucleus - chromatin	0.5908
+TGME49_288455	nucleus - chromatin	0.2125
+TGME49_239690	mitochondrion - membranes	0.6843
+TGME49_273650	ER	0.2216
+TGME49_295300	ER	0.3973
+TGME49_232630	cytosol	0.4581
+TGME49_309130	mitochondrion - soluble	0.3957
+TGME49_232085	apicoplast	0.5901
+TGME49_231450	mitochondrion - membranes	0.5114
+TGME49_265060	mitochondrion - soluble	0.4171
+TGME49_232200	dense granules	0.4283
+TGME49_254040	mitochondrion - membranes	0.4375
+TGME49_205170	dense granules	0.2475
+TGME49_283800	dense granules	0.3672
+TGME49_247260	mitochondrion - membranes	0.2806
+TGME49_251860	apicoplast	0.5901
+TGME49_226930	apicoplast	0.4681
+TGME49_500217	mitochondrion - soluble	0.2647
+TGME49_313650	nucleus - chromatin	0.2622
+TGME49_251650	apicoplast	0.4561
+TGME49_226820	apicoplast	0.2899
+TGME49_296020	ER	0.3502
+TGME49_271850	dense granules	0.521
+TGME49_227330	dense granules	0.7597
+TGME49_260330	nucleus - chromatin	0.2364
+TGME49_228640	apicoplast	0.8854
+TGME49_220310	dense granules	0.1966
+TGME49_237130	mitochondrion - membranes	0.6945
+TGME49_307815	mitochondrion - membranes	0.5076
+TGME49_266290	apicoplast	0.7711
+TGME49_220070	apicoplast	0.2707
+TGME49_252890	mitochondrion - soluble	0.4352
+TGME49_292245	mitochondrion - soluble	0.5112
+TGME49_251390	mitochondrion - soluble	0.3386
+TGME49_286480	mitochondrion - soluble	0.3178
+TGME49_304690	dense granules	0.6965
+TGME49_224130	IMC	0.5491
+TGME49_212775	ER	0.1737
+TGME49_251440	nucleus - chromatin	0.2418
+TGME49_250905	mitochondrion - membranes	0.2985
+TGME49_281030	nucleus - chromatin	0.423
+TGME49_224275	apicoplast	0.4174
+TGME49_216420	apicoplast	0.435
+TGME49_269470	mitochondrion - membranes	0.3937
+TGME49_228480	mitochondrion - soluble	0.3257
+TGME49_278522	mitochondrion - soluble	0.3209
+TGME49_270030	mitochondrion - membranes	0.1906
+TGME49_211080	nucleus - chromatin	0.3011
+TGME49_325600	dense granules	0.438
+TGME49_500213	nucleus - chromatin	0.5349
+TGME49_259280	apicoplast	0.4871
+TGME49_205730	PM - peripheral 2	0.2621
+TGME49_312120	Golgi	0.5109
+TGME49_288900	mitochondrion - soluble	0.6159
+TGME49_250000	mitochondrion - membranes	0.2297
+TGME49_267610	nucleus - chromatin	0.4396
+TGME49_231991	apicoplast	0.5106
+TGME49_321460	nucleus - chromatin	0.4668
+TGME49_277830	apicoplast	0.7185
+TGME49_294370	Golgi	0.5552
+TGME49_231175	endomembrane vesicles	0.2605
+TGME49_235440	nucleus - non-chromatin	0.2443
+TGME49_500359	mitochondrion - membranes	0.206
+TGME49_302060	PM - integral	0.4434
+TGME49_239640	Golgi	0.4249
+TGME49_261770	dense granules	0.4597
+TGME49_277730	nucleus - chromatin	0.3079
+TGME49_254340	ER	0.6459
+TGME49_256965	mitochondrion - membranes	0.6492
+TGME49_207955	PM - integral	0.6984
+TGME49_273915	mitochondrion - membranes	0.3472
+TGME49_304755	nucleus - chromatin	0.4516
+TGME49_240260	mitochondrion - membranes	0.3031
+TGME49_500410	PM - integral	0.3612
+TGME49_299570	dense granules	0.4993
+TGME49_218955	nucleus - chromatin	0.2282
+TGME49_273985	mitochondrion - membranes	0.4903
+TGME49_214480	mitochondrion - soluble	0.6735
+TGME49_310840	mitochondrion - membranes	0.7131
+TGME49_500249	nucleus - chromatin	0.3889
+TGME49_279460	mitochondrion - membranes	0.3641
+TGME49_500304	mitochondrion - soluble	0.3128
+TGME49_217855	dense granules	0.4927
+TGME49_224905	mitochondrion - membranes	0.3008
+TGME49_286525	mitochondrion - membranes	0.5168
+TGME49_305830	nucleus - chromatin	0.3452
+TGME49_500388	mitochondrion - soluble	0.3168
+TGME49_500397	mitochondrion - soluble	0.535
+TGME49_205530	mitochondrion - membranes	0.6333
+TGME49_283855	apicoplast	0.2539
+TGME49_500000	mitochondrion - soluble	0.2647
+TGME49_500159	ER	0.5174
+TGME49_289870	endomembrane vesicles	0.2355
+TGME49_261300	apicoplast	0.394
+TGME49_231110	ER	0.622
+TGME49_202568	nucleus - non-chromatin	0.2756
+TGME49_306720	mitochondrion - soluble	0.4968
+TGME49_324100	apicoplast	0.4805
+TGME49_204090	Golgi	0.4698
+TGME49_264730	mitochondrion - soluble	0.5165
+TGME49_302057	apicoplast	0.5991
+TGME49_306270	dense granules	0.6131
+TGME49_261220	nucleus - non-chromatin	0.7665
+TGME49_210787	mitochondrion - soluble	0.8356
+TGME49_221275	apicoplast	0.5137
+TGME49_225953	mitochondrion - membranes	0.5609
+TGME49_307090	nucleus - chromatin	0.2898
+TGME49_253770	mitochondrion - soluble	0.2585
+TGME49_205070	apicoplast	0.2592
+TGME49_214070	nucleus - chromatin	0.6088
+TGME49_205450	mitochondrion - soluble	0.4545
+TGME49_280510	mitochondrion - soluble	0.5265
+TGME49_245760	dense granules	0.1816
+TGME49_314418	nucleus - chromatin	0.8637
+TGME49_291005	endomembrane vesicles	0.214
+TGME49_311830	nucleus - non-chromatin	0.3976
+TGME49_500103	nucleus - chromatin	0.3322
+TGME49_202100	ER	0.6556
+TGME49_267520	mitochondrion - soluble	0.3807
+TGME49_320560	nucleus - chromatin	0.4388
+TGME49_316690	mitochondrion - soluble	0.4501
+TGME49_283495	nucleus - chromatin	0.3189
+TGME49_320105	mitochondrion - membranes	0.4302
+TGME49_500197	apicoplast	0.4285
+TGME49_273310	dense granules	0.9077
+TGME49_209900	mitochondrion - soluble	0.663
+TGME49_500122	cytosol	0.2196
+TGME49_262715	mitochondrion - membranes	0.431
+TGME49_215530	rhoptries 2	0.3726
+TGME49_309610	ER	0.5485
+TGME49_240490	nucleus - chromatin	0.4807
+TGME49_229005	mitochondrion - membranes	0.2806
+TGME49_324800	nucleus - chromatin	0.2994
+TGME49_288010	nucleus - chromatin	0.3369
+TGME49_203705	nucleus - chromatin	0.3457
+TGME49_272020	mitochondrion - membranes	0.5631
+TGME49_225005	mitochondrion - membranes	0.3064
+TGME49_326500	mitochondrion - membranes	0.3599
+TGME49_310110	apicoplast	0.8069
+TGME49_264250	mitochondrion - membranes	0.4338
+TGME49_309095	Golgi	0.3037
+TGME49_207020	mitochondrion - soluble	0.7397
+TGME49_289660	ER	0.349
+TGME49_200600	mitochondrion - membranes	0.2806
+TGME49_311075	nucleus - chromatin	0.586
+TGME49_216155	mitochondrion - membranes	0.4354
+TGME49_313775	apicoplast	0.7185
+TGME49_295460	ER	0.7275
+TGME49_294300	dense granules	0.1966
+TGME49_235590	nucleus - chromatin	0.3681
+TGME49_258085	apicoplast	0.6454
+TGME49_252080	Golgi	0.2672
+TGME49_309230	mitochondrion - soluble	0.4478
+TGME49_316210	mitochondrion - soluble	0.4613
+TGME49_315855	apicoplast	0.4022
+TGME49_254670	PM - integral	0.4045
+TGME49_209583	ER	0.6074
+TGME49_306730	mitochondrion - soluble	0.4843
+TGME49_200700	nucleus - chromatin	0.2691
+TGME49_217951	apicoplast	0.3339
+TGME49_225958	apicoplast	0.5309
+TGME49_237595	mitochondrion - membranes	0.1929
+TGME49_315705	mitochondrion - membranes	0.2681
+TGME49_313160	mitochondrion - soluble	0.4967
+TGME49_500097	apicoplast	0.2817
+TGME49_305485	mitochondrion - soluble	0.1946
+TGME49_301415	Golgi	0.3362
+TGME49_295945	nucleus - chromatin	0.2038
+TGME49_233792	apicoplast	0.2622
+TGME49_322600	apicoplast	0.345
+TGME49_288265	ER	0.5124
+TGME49_243980	mitochondrion - soluble	0.6765
+TGME49_299160	ER	0.2455
+TGME49_315330	PM - peripheral 1	0.9219
+TGME49_253530	mitochondrion - soluble	0.3933
+TGME49_270277	mitochondrion - membranes	0.4375
+TGME49_310173	mitochondrion - membranes	0.2863
+TGME49_287235	mitochondrion - soluble	0.4325
+TGME49_218260	nucleus - chromatin	0.5997
+TGME49_243900	mitochondrion - soluble	0.2585
+TGME49_261240	nucleus - chromatin	0.9523
+TGME49_254740	dense granules	0.382
+TGME49_307575	PM - integral	0.7331
+TGME49_279000	endomembrane vesicles	0.2823
+TGME49_205630	nucleus - chromatin	0.2889
+TGME49_274290	mitochondrion - membranes	0.3945
+TGME49_307070	mitochondrion - soluble	0.2203
+TGME49_300601	Golgi	0.8859
+TGME49_500436	mitochondrion - soluble	0.349
+TGME49_280465	mitochondrion - soluble	0.4544
+TGME49_326300	dense granules	0.4766
+TGME49_264260	cytosol	0.1945
+TGME49_324500	dense granules	0.2345
+TGME49_217520	rhoptries 1	0.7454
+TGME49_228110	mitochondrion - membranes	0.2954
+TGME49_277055	apicoplast	0.6321
+TGME49_264620	apicoplast	0.5137
+TGME49_202205	Golgi	0.2324
+TGME49_313305	apicoplast	0.5864
+TGME49_246763	cytosol	0.2242
+TGME49_327300	nucleus - chromatin	0.309
+TGME49_316600	nucleus - chromatin	0.2656
+TGME49_289860	Golgi	0.4763
+TGME49_226825	nucleus - chromatin	0.5353
+TGME49_222305	mitochondrion - membranes	0.5545
+TGME49_233315	mitochondrion - membranes	0.5163
+TGME49_285665	mitochondrion - membranes	0.5477
+TGME49_286460	Golgi	0.1737
+TGME49_201785	dense granules	0.6903
+TGME49_269280	mitochondrion - membranes	0.5095
+TGME49_310510	nucleus - chromatin	0.35
+TGME49_254606	mitochondrion - soluble	0.4523
+TGME49_281040	apicoplast	0.617
+TGME49_275795	apicoplast	0.2325
+TGME49_290250	mitochondrion - membranes	0.2478
+TGME49_302007	apicoplast	0.2655
+TGME49_287460	Golgi	0.3869
+TGME49_267470	mitochondrion - membranes	0.4979
+TGME49_500050	apicoplast	0.3556
+TGME49_320660	mitochondrion - soluble	0.4769
+TGME49_289030	nucleus - chromatin	0.3171
+TGME49_327000	mitochondrion - membranes	0.3611
+TGME49_276880	nucleus - chromatin	0.2313
+TGME49_306860	apicoplast	0.5486
+TGME49_314885	nucleus - chromatin	0.3352
+TGME49_313840	nucleus - chromatin	0.4136
+TGME49_226565	apicoplast	0.373
+TGME49_292275	PM - peripheral 1	0.9408
+TGME49_207065	mitochondrion - membranes	0.5687
+TGME49_261380	mitochondrion - soluble	0.6419
+TGME49_278790	mitochondrion - membranes	0.5017
+TGME49_322400	mitochondrion - membranes	0.6335
+TGME49_210100	apicoplast	0.4314
+TGME49_300613	Golgi	0.3935
+TGME49_243940	dense granules	0.729
+TGME49_204045	nucleus - chromatin	0.4384
+TGME49_314482	mitochondrion - soluble	0.2585
+TGME49_254680	nucleus - chromatin	0.2339
+TGME49_306035	mitochondrion - membranes	0.3791
+TGME49_245475	dense granules	0.5034
+TGME49_241175	nucleus - chromatin	0.3649
+TGME49_272450	dense granules	0.2208
+TGME49_312850	nucleus - chromatin	0.3604
+TGME49_313475	dense granules	0.2258
+TGME49_253180	apicoplast	0.306
+TGME49_225170	ER	0.3037
+TGME49_310045	mitochondrion - membranes	0.5623
+TGME49_200260	mitochondrion - membranes	0.6945
+TGME49_200595	apicoplast	0.3501
+TGME49_201170	IMC	0.7707
+TGME49_236150	mitochondrion - membranes	0.4585
+TGME49_214835	cytosol	0.1928
+TGME49_308930	mitochondrion - soluble	0.4789
+TGME49_232955	apicoplast	0.3727
+TGME49_250930	apicoplast	0.2814
+TGME49_290010	apicoplast	0.733
+TGME49_223120	Golgi	0.1651
+TGME49_202600	endomembrane vesicles	0.2233
+TGME49_203685	PM - integral	0.27
+TGME49_202065	apicoplast	0.3589
+TGME49_200110	apicoplast	0.617
+TGME49_309150	dense granules	0.3821
+TGME49_254590	cytosol	0.7048
+TGME49_500229	mitochondrion - soluble	0.3074
+TGME49_273075	nucleus - chromatin	0.7309
+TGME49_272560	endomembrane vesicles	0.2958
+TGME49_297980	mitochondrion - soluble	0.2944
+TGME49_239550	cytosol	0.2268
+TGME49_267435	mitochondrion - membranes	0.1906
+TGME49_222948	mitochondrion - soluble	0.3142
+TGME49_251530	mitochondrion - membranes	0.3855
+TGME49_239083	mitochondrion - soluble	0.3449
+TGME49_279540	mitochondrion - soluble	0.3028
+TGME49_271790	nucleus - chromatin	0.376
+TGME49_295140	Golgi	0.3062
+TGME49_316580	nucleus - chromatin	0.3381
+TGME49_248490	mitochondrion - soluble	0.5956
+TGME49_227615	mitochondrion - membranes	0.2806
+TGME49_217660	nucleus - chromatin	0.3352
+TGME49_201750	ER	0.2041
+TGME49_500282	mitochondrion - soluble	0.349
+TGME49_500043	nucleus - chromatin	0.2997
+TGME49_323320	dense granules	0.3469
+TGME49_500102	nucleus - chromatin	0.2997
+TGME49_225250	mitochondrion - soluble	0.8146
+TGME49_500173	nucleus - chromatin	0.2644
+TGME49_500034	nucleus - non-chromatin	0.1961
+TGME49_215347	mitochondrion - soluble	0.3566
+TGME49_279560	apicoplast	0.3968
+TGME49_299015	nucleus - chromatin	0.3545
+TGME49_229190	apicoplast	0.4712
+TGME49_207690	cytosol	0.7909
+TGME49_238860	dense granules	0.4513
+TGME49_250020	nucleus - chromatin	0.2612
+TGME49_249665	apicoplast	0.3619
+TGME49_267350	nucleus - non-chromatin	0.8827
+TGME49_216785	mitochondrion - membranes	0.3997
+TGME49_327400	apicoplast	0.6266
+TGME49_327500	nucleus - chromatin	0.3461
+TGME49_300611	apicoplast	0.8139
+TGME49_266600	dense granules	0.3449
+TGME49_286465	mitochondrion - membranes	0.6335
+TGME49_266368	mitochondrion - soluble	0.5054
+TGME49_294805	cytosol	0.2721
+TGME49_311155	mitochondrion - soluble	0.5854
+TGME49_271985	dense granules	0.2034
+TGME49_290280	apicoplast	0.3446
+TGME49_269417	rhoptries 2	0.387
+TGME49_213415	apicoplast	0.373
+TGME49_247980	Golgi	0.3855
+TGME49_256035	cytosol	0.2209
+TGME49_227335	rhoptries 2	0.275
+TGME49_325400	nucleus - chromatin	0.5359
+TGME49_241155	PM - integral	0.2896
+TGME49_240620	nucleus - chromatin	0.2806
+TGME49_278300	endomembrane vesicles	0.1513
+TGME49_223770	dense granules	0.1966
+TGME49_309025	mitochondrion - membranes	0.4752
+TGME49_288300	dense granules	0.2208
+TGME49_254485	nucleus - chromatin	0.2633
+TGME49_280375	apicoplast	0.3767
+TGME49_297643	apicoplast	0.6266
+TGME49_313025	Golgi	0.4698
+TGME49_220720	nucleus - chromatin	0.3667
+TGME49_322500	nucleus - chromatin	0.3667
+TGME49_217724	mitochondrion - membranes	0.7076
+TGME49_223400	dense granules	0.306
+TGME49_225435	apicoplast	0.2707
+TGME49_221860	apicoplast	0.5071
+TGME49_251900	mitochondrion - membranes	0.5558
+TGME49_325700	apicoplast	0.2723
+TGME49_500396	ER	0.5174
+TGME49_322800	mitochondrion - membranes	0.536
+TGME49_315715	mitochondrion - soluble	0.2682
+TGME49_231992	dense granules	0.4841
+TGME49_272593	nucleus - chromatin	0.385
+TGME49_283770	nucleus - chromatin	0.3437
+TGME49_231230	dense granules	0.2942
+TGME49_310455	nucleus - chromatin	0.2115
+TGME49_240780	mitochondrion - membranes	0.7484
+TGME49_300780	apicoplast	0.4856
+TGME49_311050	apicoplast	0.7601
+TGME49_220060	apicoplast	0.6266
+TGME49_242850	Golgi	0.4285
+TGME49_500195	nucleus - chromatin	0.2644
+TGME49_273060	mitochondrion - soluble	0.4659
+TGME49_281590	dense granules	0.2935
+TGME49_311815	mitochondrion - membranes	0.6373
+TGME49_214295	mitochondrion - membranes	0.7154
+TGME49_500337	mitochondrion - soluble	0.3074
+TGME49_270290	apicoplast	0.7825
+TGME49_246535	mitochondrion - membranes	0.585
+TGME49_279310	dense granules	0.4669
+TGME49_322900	apicoplast	0.1704
+TGME49_284660	mitochondrion - soluble	0.3865
+TGME49_233780	Golgi	0.5617
+TGME49_260620	PM - integral	0.6001
+TGME49_308075	rhoptries 2	0.4615
+TGME49_258225	dense granules	0.6659
+TGME49_214860	apicoplast	0.8854
+TGME49_203815	nucleus - chromatin	0.3032
+TGME49_209120	ER	0.8413
+TGME49_263135	Golgi	0.2683
+TGME49_249370	cytosol	0.5842
+TGME49_316550	nucleus - chromatin	0.2385
+TGME49_203100	dense granules	0.3754
+TGME49_221865	nucleus - chromatin	0.371
+TGME49_220730	apicoplast	0.2202
+TGME49_328400	cytosol	0.1611
+TGME49_500280	ER	0.3436
+TGME49_500319	nucleus - chromatin	0.2644
+TGME49_277700	mitochondrion - soluble	0.3458
+TGME49_202735	apicoplast	0.8371
+TGME49_270655	mitochondrion - soluble	0.5188
+TGME49_314490	dense granules	0.5393
+TGME49_248280	dense granules	0.4192
+TGME49_267120	mitochondrion - membranes	0.3583
+TGME49_247560	Golgi	0.2508
+TGME49_500162	nucleus - chromatin	0.3355
+TGME49_264230	PM - integral	0.2139
+TGME49_227100	cytosol	0.2396
+TGME49_265065	mitochondrion - soluble	0.424
+TGME49_224020	mitochondrion - membranes	0.6914
+TGME49_238110	cytosol	0.4847
+TGME49_500060	nucleus - chromatin	0.3108
+TGME49_310515	mitochondrion - membranes	0.2706
+TGME49_234375	mitochondrion - membranes	0.6945
+TGME49_307015	mitochondrion - membranes	0.293
+TGME49_207210	dense granules	0.2122
+TGME49_313418	mitochondrion - membranes	0.6095
+TGME49_267340	mitochondrion - soluble	0.624
+TGME49_205425	apicoplast	0.7185
+TGME49_320470	ER	0.2952
+TGME49_289745	nucleus - chromatin	0.3352
+TGME49_500250	cytosol	0.4148
+TGME49_264630	nucleus - chromatin	0.1893
+TGME49_222075	dense granules	0.2269
+TGME49_312940	mitochondrion - membranes	0.9132
+TGME49_286200	nucleus - chromatin	0.2671
+TGME49_264075	nucleus - chromatin	0.4666
+TGME49_314715	dense granules	0.36
+TGME49_231990	rhoptries 2	0.2051
+TGME49_294030	ER	0.3002
+TGME49_308945	ER	0.4221
+TGME49_205230	nucleus - chromatin	0.2261
+TGME49_294230	mitochondrion - membranes	0.7336
+TGME49_201390	dense granules	0.9518
+TGME49_204395	mitochondrion - membranes	0.8787
+TGME49_324200	apicoplast	0.6329
+TGME49_217555	cytosol	0.5092
+TGME49_217728	mitochondrion - membranes	0.5302
+TGME49_278757	apicoplast	0.4068
+TGME49_298070	nucleus - chromatin	0.2383
+TGME49_213590	nucleus - chromatin	0.2607
+TGME49_244900	rhoptries 1	0.2831
+TGME49_260850	mitochondrion - membranes	0.3394
+TGME49_204325	mitochondrion - membranes	0.3101
+TGME49_226705	PM - integral	0.4849
+TGME49_328200	mitochondrion - membranes	0.3441
+TGME49_325500	apicoplast	0.5152
+TGME49_264875	nucleus - chromatin	0.2547
+TGME49_302003	apicoplast	0.5775
+TGME49_232770	apicoplast	0.3496
+TGME49_291160	ER	0.5468
+TGME49_224560	dense granules	0.2573
+TGME49_226010	mitochondrion - soluble	0.4784
+TGME49_244165	nucleus - chromatin	0.6471
+TGME49_276850	cytosol	0.2303
+TGME49_220525	nucleus - chromatin	0.3862
+TGME49_306390	mitochondrion - soluble	0.3931
+TGME49_307060	mitochondrion - membranes	0.6131
+TGME49_267990	apicoplast	0.3002
+TGME49_221240	ER	0.2351
+TGME49_286570	Golgi	0.4438
+TGME49_244930	mitochondrion - membranes	0.7528
+TGME49_203985	nucleus - chromatin	0.2752
+TGME49_269425	nucleus - chromatin	0.3811
+TGME49_500240	mitochondrion - soluble	0.2647
+TGME49_289370	micronemes	0.4396
+TGME49_278245	nucleus - chromatin	0.3491
+TGME49_310215	nucleus - chromatin	0.3957
+TGME49_300052	rhoptries 1	0.1756
+TGME49_320135	Golgi	0.3538
+TGME49_320780	nucleus - chromatin	0.2286
+TGME49_309185	mitochondrion - soluble	0.4375
+TGME49_238530	mitochondrion - soluble	0.3982
+TGME49_329600	apicoplast	0.6027
+TGME49_277980	cytosol	0.2473
+TGME49_221585	nucleus - chromatin	0.5435
+TGME49_262480	cytosol	0.5898
+TGME49_275390	mitochondrion - membranes	0.2841
+TGME49_295105	dense granules	0.8114
+TGME49_295970	Golgi	0.698
+TGME49_255175	apicoplast	0.4125
+TGME49_311850	apicoplast	0.8014
+TGME49_313677	apicoplast	0.5137
+TGME49_268660	ER	0.2764
+TGME49_231994	mitochondrion - membranes	0.3721
+TGME49_219780	apicoplast	0.8854
+TGME49_500311	mitochondrion - soluble	0.2597
+TGME49_500428	mitochondrion - soluble	0.3074
+TGME49_238165	apicoplast	0.188
+TGME49_207403	mitochondrion - membranes	0.2706
+TGME49_309405	dense granules	0.5146
+TGME49_500011	nucleus - non-chromatin	0.1811
+TGME49_279355	ER	0.3397
+TGME49_237835	apicoplast	0.447
+TGME49_249575	dense granules	0.2344
+TGME49_313250	mitochondrion - membranes	0.4819
+TGME49_283870	mitochondrion - membranes	0.2364
+TGME49_215955	Golgi	0.2942
+TGME49_230970	cytosol	0.3517
+TGME49_307080	dense granules	0.1966
+TGME49_266675	apicoplast	0.4293
+TGME49_246210	mitochondrion - membranes	0.5428
+TGME49_227630	nucleus - chromatin	0.3266
+TGME49_268765	dense granules	0.3321
+TGME49_328300	apicoplast	0.3634
+TGME49_253760	dense granules	0.5815
+TGME49_264240	nucleus - chromatin	0.2371
+TGME49_240755	Golgi	0.229
+TGME49_274280	apicoplast	0.3002
+TGME49_219828	mitochondrion - membranes	0.4622
+TGME49_206910	apicoplast	0.6443
+TGME49_248660	mitochondrion - membranes	0.4187
+TGME49_230205	apicoplast	0.2474
+TGME49_312680	mitochondrion - soluble	0.398
+TGME49_249935	cytosol	0.6123
+TGME49_268985	nucleus - chromatin	0.3731
+TGME49_326700	apicoplast	0.2479
+TGME49_244950	apicoplast	0.3501
+TGME49_299995	dense granules	0.5068
+TGME49_296015	dense granules	0.4972
+TGME49_313322	mitochondrion - membranes	0.5075
+TGME49_307270	nucleus - chromatin	0.3349
+TGME49_500205	mitochondrion - soluble	0.3732
+TGME49_305220	nucleus - chromatin	0.2606
+TGME49_500056	mitochondrion - soluble	0.4474
+TGME49_500180	apicoplast	0.3556
+TGME49_297465	mitochondrion - soluble	0.6755
+TGME49_500368	mitochondrion - soluble	0.3074
+TGME49_222260	PM - integral	0.4238
+TGME49_240790	mitochondrion - soluble	0.4562
+TGME49_500023	ER	0.4318
+TGME49_223485	mitochondrion - membranes	0.3429
+TGME49_285825	dense granules	0.1877
+TGME49_231865	mitochondrion - membranes	0.6025
+TGME49_201775	apicoplast	0.4314
+TGME49_295130	nucleus - chromatin	0.1236
+TGME49_500399	mitochondrion - soluble	0.2387
+TGME49_319695	mitochondrion - soluble	0.7434
+TGME49_223530	nucleus - chromatin	0.3739
+TGME49_224575	mitochondrion - soluble	0.3392
+TGME49_326000	apicoplast	0.3236
+TGME49_251470	ER	0.7323
+TGME49_315570	nucleus - chromatin	0.5286
+TGME49_216585	dense granules	0.3659
+TGME49_310055	mitochondrion - membranes	0.3686
+TGME49_500378	mitochondrion - soluble	0.3074
+TGME49_208722	mitochondrion - soluble	0.2883
+TGME49_286595	dense granules	0.1656
+TGME49_324400	apicoplast	0.3641
+TGME49_260375	mitochondrion - membranes	0.5484
+TGME49_248673	ER	0.2553
+TGME49_213065	mitochondrion - soluble	0.4792
+TGME49_268170	apicoplast	0.7428
+TGME49_500024	mitochondrion - soluble	0.5258
+TGME49_250350	mitochondrion - soluble	0.4792
+TGME49_294225	mitochondrion - membranes	0.792
+TGME49_286485	mitochondrion - membranes	0.4375
+TGME49_263030	cytosol	0.7666
+TGME49_255245	mitochondrion - membranes	0.7096
+TGME49_314310	dense granules	0.9089
+TGME49_297065	mitochondrion - membranes	0.3228
+TGME49_311425	mitochondrion - membranes	0.3136
+TGME49_228065	mitochondrion - soluble	0.3774
+TGME49_306710	nucleus - chromatin	0.2339
+TGME49_240270	mitochondrion - soluble	0.6686
+TGME49_217875	mitochondrion - membranes	0.4044
+TGME49_328700	ER	0.2799
+TGME49_281600	nucleus - chromatin	0.3038
+TGME49_221415	mitochondrion - membranes	0.2988
+TGME49_203688	PM - integral	0.2439
+TGME49_500255	PM - integral	0.3026
+TGME49_500268	ER	0.5265
+TGME49_295685	nucleus - chromatin	0.3138
+TGME49_217722	apicoplast	0.5901
+TGME49_313055	mitochondrion - membranes	0.3012
+TGME49_500141	mitochondrion - soluble	0.3291
+TGME49_217450	mitochondrion - soluble	0.6686
+TGME49_315495	nucleus - chromatin	0.3416
+TGME49_278005	apicoplast	0.2658
+TGME49_274090	mitochondrion - soluble	0.426
+TGME49_227920	mitochondrion - membranes	0.9656
+TGME49_313385	mitochondrion - soluble	0.3814
+TGME49_309830	apicoplast	0.294
+TGME49_288465	mitochondrion - membranes	0.4958
+TGME49_223045	apicoplast	0.2176
+TGME49_307450	apicoplast	0.3838
+TGME49_259895	PM - integral	0.5195
+TGME49_306455	PM - integral	0.3603
+TGME49_322200	mitochondrion - soluble	0.362
+TGME49_244015	apicoplast	0.3641
+TGME49_250685	nucleus - chromatin	0.3352
+TGME49_277685	IMC	0.2591
+TGME49_277705	mitochondrion - membranes	0.694
+TGME49_500161	mitochondrion - soluble	0.2071
+TGME49_201110	mitochondrion - membranes	0.4376
+TGME49_500203	nucleus - chromatin	0.3268
+TGME49_214115	nucleus - chromatin	0.3584
+TGME49_500430	apicoplast	0.3381
+TGME49_500164	mitochondrion - soluble	0.2423
+TGME49_205770	mitochondrion - membranes	0.3137
+TGME49_298080	nucleus - chromatin	0.2655
+TGME49_306692	dense granules	0.1966
+TGME49_289160	nucleus - chromatin	0.2359
+TGME49_210783	mitochondrion - membranes	0.3292
+TGME49_243545	nucleus - chromatin	0.1958
+TGME49_241310	dense granules	0.3828
+TGME49_500157	mitochondrion - soluble	0.1727
+TGME49_293410	ER	0.8277
+TGME49_314800	cytosol	0.4512
+TGME49_244940	nucleus - chromatin	0.221
+TGME49_500294	ER	0.5174
+TGME49_317830	mitochondrion - membranes	0.3798
+TGME49_271115	nucleus - chromatin	0.3413
+TGME49_210715	dense granules	0.4147
+TGME49_500313	cytosol	0.4148
+TGME49_301996	Golgi	0.2988
+TGME49_302053	apicoplast	0.1639
+TGME49_293372	apicoplast	0.2786
+TGME49_258720	cytosol	0.8334
+TGME49_209005	apicoplast	0.5992
+TGME49_245630	PM - integral	0.3656
+TGME49_327100	mitochondrion - soluble	0.2582
+TGME49_212760	mitochondrion - soluble	0.7415
+TGME49_217726	mitochondrion - membranes	0.3622
+TGME49_243302	mitochondrion - membranes	0.237
+TGME49_300612	Golgi	0.2319
+TGME49_313530	ER	0.7275
+TGME49_204505	apicoplast	0.5137
+TGME49_500196	mitochondrion - soluble	0.463
+TGME49_214385	mitochondrion - membranes	0.7769
+TGME49_297725	nucleus - chromatin	0.5562
+TGME49_300618	apicoplast	0.3693
+TGME49_228145	mitochondrion - soluble	0.4219
+TGME49_223025	PM - integral	0.2355
+TGME49_301998	dense granules	0.1661
+TGME49_307050	mitochondrion - membranes	0.2924
+TGME49_219690	nucleus - non-chromatin	0.3167
+TGME49_254140	mitochondrion - soluble	0.4681
+TGME49_276940	ER	0.6637
+TGME49_252090	apicoplast	0.5137
+TGME49_214787	apicoplast	0.4139
+TGME49_285865	mitochondrion - membranes	0.1998
+TGME49_500104	mitochondrion - soluble	0.3418
+TGME49_500432	nucleus - chromatin	0.3625
+TGME49_210255	mitochondrion - membranes	0.6873
+TGME49_500201	mitochondrion - membranes	0.4612
+TGME49_237700	apicoplast	0.303
+TGME49_214783	apicoplast	0.7729
+TGME49_263020	mitochondrion - membranes	0.4327
+TGME49_291850	cytosol	0.4392
+TGME49_210682	cytosol	0.2003
+TGME49_209945	mitochondrion - membranes	0.4327
+TGME49_500126	ER	0.6857
+TGME49_302005	apicoplast	0.6294
+TGME49_325300	apicoplast	0.2467
+TGME49_242340	40S ribosome	0.4581
+TGME49_234550	nucleus - chromatin	0.27
+TGME49_288245	ER	0.4405
+TGME49_277920	mitochondrion - membranes	0.9268
+TGME49_268300	cytosol	0.7654
+TGME49_302009	nucleus - chromatin	0.346
+TGME49_213580	nucleus - non-chromatin	0.5541
+TGME49_300604	apicoplast	0.2395
+TGME49_500178	nucleus - non-chromatin	0.2229

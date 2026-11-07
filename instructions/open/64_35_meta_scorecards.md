@@ -1,6 +1,6 @@
 # 64.35 · Expose meta-inference scorecards at every level
 
-Status: OPEN — 50%, 2026-11-07. Gene view shows admitted and refused combined answers with their tests; unknown-gene combined calls and the class/label views remain.
+Status: OPEN — 75%, 2026-11-07. Gene view shows combined answers for known (outer-test) and unknown genes, admitted or refused, with their tests; class and label views remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -43,3 +43,11 @@ the untouched outer test with the gene's answer hidden, its probability, whether
 labelled as such, and a global accuracy is never shown as this gene's (`gene_reading.meta_lines`, `META_RESULTS`).
 Open: combined calls for genes with no known answer (a deployment fit, with the label's measured accuracy as its
 conditional reliability), and class and label views.
+
+**Unknown genes (same day):** for an admitted label the meta-model is refitted on the base methods' outer-test calls
+on all known genes and applied to their calls on the genes with no known answer (each made with every known label
+visible): 4,313 unassigned genes get a combined compartment call (`meta_calls_unknown.tsv`, run from the notebook's
+last cell). The Gene module shows it as "predicted X by the combined model (probability p); on this label the
+combined answer was right 54.3 % of the time on untouched orthogroups, which is its reliability, not a certainty
+for this gene" -- the unknown-gene conditional reliability labelled as such. Open: class and label views of the
+meta-model.

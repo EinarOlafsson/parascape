@@ -444,8 +444,18 @@ def meta_lines(gene: str) -> list:
         calls = pd.read_csv(os.path.join(path, "meta_calls.tsv"), sep="\t")
         row = calls[calls["gene_id"].astype(str) == str(gene)]
         if not len(row):
-            out.append(f"<b>{escape(label.replace('_', ' '))}</b>: combined answer admitted ({test}); this gene "
-                       "has no known answer on it, so it was not in the test.")
+            unknown_path = os.path.join(path, "meta_calls_unknown.tsv")
+            unk = pd.read_csv(unknown_path, sep="\t") if os.path.exists(unknown_path) else pd.DataFrame()
+            hit = unk[unk["gene_id"].astype(str) == str(gene)] if len(unk) else unk
+            if len(hit):
+                h = hit.iloc[0]
+                out.append(f"<b>{escape(label.replace('_', ' '))}</b>: predicted <b>{escape(str(h.meta_call))}</b> "
+                           f"by the combined model (probability {h.meta_probability:.2f}); this gene has no known "
+                           f"answer -- on this label the combined answer was right {meta:.1%} of the time on "
+                           "untouched orthogroups, which is its reliability, not a certainty for this gene.")
+            else:
+                out.append(f"<b>{escape(label.replace('_', ' '))}</b>: combined answer admitted ({test}); this "
+                           "gene has no known answer and no combined call was made for it.")
             continue
         r = row.iloc[0]
         verdict = "right" if str(r.meta_call) == str(r.truth) else f"wrong; its answer is {escape(str(r.truth))}"
