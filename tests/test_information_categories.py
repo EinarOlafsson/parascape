@@ -32,7 +32,7 @@ TABLE_FILES = {
     "nodes.parquet": ROOT / "parascape" / "data" / "nodes.parquet",
     "sequence_traits.parquet": ROOT / "results" / "sequence_traits_2026_11_04" / "sequence_traits.parquet",
     "domain_traits.parquet": ROOT / "results" / "domain_traits_2026_11_04" / "domain_traits.parquet",
-    "expression_traits.parquet": ROOT / "results" / "expression_traits_2026_11_05" / "expression_traits.parquet",
+    "expression_traits.parquet": ROOT / "results" / "expression_traits_2026_11_06" / "expression_traits.parquet",
     "information_map/values.parquet": ROOT / "results" / "information_map_v0_2026_11_04" / "values.parquet",
 }
 INSTRUCTION = ROOT / "instructions" / "open" / "73_question_matrix.md"
