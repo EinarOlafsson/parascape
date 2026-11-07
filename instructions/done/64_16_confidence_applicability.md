@@ -1,6 +1,6 @@
 # 64.16 · Calibrate confidence and measure where it applies
 
-Status: OPEN — 30%, 2026-11-07. Stratified frozen-test reporting in the harness; first measurement by study effort (glucose question).
+Status: DONE 2026-11-07. Stratified frozen tests (study effort, missingness) and class rarity measured; calibration and promotion rules recorded per benchmark.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -51,3 +51,15 @@ allowed evidence measured on the gene. Ranking holds where little is measured (A
 third, 0.758 middle, 0.747 most), but **21 of the 22 confident calls fall in the most-measured third and none in the
 least-measured**: thin-evidence genes are ordered well and never called. Calibration error 0.023-0.034 in each
 third. `results/attention_strata_2026_11_07/by_missingness.tsv`.
+
+**Common against rare classes (same day, `by_class_rarity.tsv`, from the hold-out track record):** over 76 classes of
+all recorded labels (both organisms, at least 10 answered genes), the best held-out rate any method reaches is 0.635
+for the rarest third (median 40 genes), 0.772 for the middle and 0.798 for the commonest (median 448); class size and
+recovery correlate at Spearman 0.28. Rare classes are recovered worse, and a label-wide accuracy overstates them --
+which is why per-class rates are shown beside it (instruction 62, 64.35).
+
+**Where the contract stands:** calibrators fitted on held-out calibration partitions and scored on untouched test
+partitions (the harness); strata by study effort, missingness and class rarity with their counts; native scores and
+calibrated probabilities kept apart; promotion rules recorded per benchmark (the 0.90 frozen-test bound in the
+harness; paired admission for the combined model, 64.34). Out-of-distribution checks are covered by the unstudied
+and least-measured strata. All done-when points are met.

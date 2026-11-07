@@ -67,6 +67,25 @@ def main() -> None:
             "t2['measured_share_median'] = [round(float(measured[mstrata.astype(str) == k].median()), 3) for k in t2.index]",
             "t2.to_csv(os.path.join(OUT, 'by_missingness.tsv'), sep='\\t')",
             "t2")
+    nb.md("### Common against rare classes (from the hold-out track record)",
+          "For every class of every recorded label: how many genes carry it and the best rate any method "
+          "reaches on it with genes hidden (classes with at least 10 answered genes). Does recovery fall "
+          "with rarity?")
+    nb.code("from scipy.stats import spearmanr",
+            "from parascape import track_record as T",
+            "led = pd.concat([T.shipped(o) for o in ('Tg', 'Pf')], ignore_index=True)",
+            "led = led[led['mode'].astype(str) == 'together']",
+            "cls = T.summary(led, 'class')",
+            "cls = cls[cls['answered'] >= 10]",
+            "best = cls.sort_values('rate', ascending=False).groupby(['organism', 'target', 'truth'], observed=True).head(1)",
+            "size = led.drop_duplicates(['organism', 'target', 'gene_id']).groupby(['organism', 'target', 'truth'], observed=True).size().rename('class_genes')",
+            "best = best.join(size, on=['organism', 'target', 'truth'])",
+            "best['rarity'] = pd.qcut(best['class_genes'].rank(method='first'), 3, labels=['rarest third', 'middle third', 'commonest third'])",
+            "rho = spearmanr(best['class_genes'], best['rate']).statistic",
+            "rare = best.groupby('rarity', observed=True).agg(classes=('truth', 'size'), median_genes=('class_genes', 'median'), median_best_rate=('rate', 'median')).round(3)",
+            "rare.to_csv(os.path.join(OUT, 'by_class_rarity.tsv'), sep='\\t')",
+            "print('classes:', len(best), '; Spearman between class size and its best held-out rate:', round(float(rho), 3))",
+            "rare")
     nb.write(NB)
 
 
