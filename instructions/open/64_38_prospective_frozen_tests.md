@@ -1,6 +1,6 @@
 # 64.38 · Freeze predictions and score new independent truth
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — about 60 %, 2026-11-06. Freeze and grader built, fixture-tested; the biological prospective validation waits on later truth.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -34,3 +34,16 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-06: the freeze and the grader
+
+* **Freeze** (instruction 63): `results/prospective_claims_2026_11_06/` -- 747 genes the glucose-withdrawal
+  screen did not measure, ranked; `manifest.json` holds the claims SHA-256, strategy and evidence hashes,
+  version and time. Built by `scripts/build_prospective_claims_notebook.py`, frozen before any later truth.
+* **Grader**: `parascape/prospective.py` -- `load` refuses a set whose file no longer matches its frozen hash;
+  `grade(folder, truth)` fits nothing, puts every claim in tested (correct / wrong) or unmeasured, and reports
+  precision at the top-k cuts fixed in the module (50, 100, 200) plus AUC over tested genes.
+  `tests/test_prospective.py` (4, fixtures plus the shipped freeze still matching its hash).
+* Done-when status: predictions frozen before the new dataset -- yes; counts and precision at frozen cuts --
+  yes; a later dataset scores without refitting -- yes, on fixtures; **the biological validation stays open**
+  until a screen covering those genes is published, and results are not yet shown on the method cards.
