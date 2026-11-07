@@ -100,6 +100,12 @@ class InferModule(QtCore.QObject):
                            "publication is not recorded is flagged, never cited.")
         methods.clicked.connect(panel.copy_methods_text)
         sl.addWidget(methods)
+        bundle = QtWidgets.QPushButton("Save everything as a bundle…")
+        bundle.setToolTip("One folder for this answer: the named genes (marked inferred), the "
+                          "recovery scores, the map as a vector figure, the methods text with its "
+                          "references, and a manifest whose hashes show if anything was edited later.")
+        bundle.clicked.connect(self.save_bundle)
+        sl.addWidget(bundle)
         kept = QtWidgets.QPushButton("Export your kept claims…")
         kept.setToolTip("Every claim you kept, with its provenance, as CSV.")
         kept.clicked.connect(self._export_kept)
@@ -303,6 +309,40 @@ class InferModule(QtCore.QObject):
                                                         "kept_claims.csv", "CSV (*.csv)")
         if path:
             self.shell.say(f"Exported {KC.export(path)} kept claims")
+
+    def save_bundle(self, folder: str = "") -> str:
+        """Write the current answer as an export bundle (`export_bundle`); returns the folder."""
+        result = getattr(self.panel, "_question_result", None)
+        if result is None or getattr(result, "inference", None) is None:
+            self.shell.say("answer a question first; the bundle holds its answer")
+            return ""
+        if not folder:
+            folder = QtWidgets.QFileDialog.getExistingDirectory(self.shell, "Folder for the bundle")
+            if not folder:
+                return ""
+        from . import export_bundle
+        recipe = result.recipe
+        tables, kinds = {"named genes": result.inference}, {"named genes": "inferred"}
+        if len(getattr(result, "per_cluster", [])):
+            tables["clusters"], kinds["clusters"] = result.per_cluster, "inferred"
+        if len(getattr(result, "recovery", [])):
+            tables["recovery of the held-out label"], kinds["recovery of the held-out label"] = \
+                result.recovery, "measured"
+        figures = {}
+        view = getattr(getattr(getattr(self.window, "map_module", None), "module", None), "view", None)
+        if view is not None and view.width() > 10:
+            figures["map"] = view
+        export_bundle.write(folder, organism=self.panel.organism,
+                            query={"question": recipe.question, "holdout": recipe.holdout,
+                                   "control": recipe.validation_holdout,
+                                   "confidence": recipe.min_precision},
+                            tables=tables, kinds=kinds, columns=result.closure.columns,
+                            figures=figures, nodes=self.window.nodes,
+                            strategy="map neighbourhoods and clusters",
+                            settings={"confidence": recipe.min_precision},
+                            n_genes=len(self.window.nodes), held_out=recipe.holdout)
+        self.shell.say(f"bundle written: {folder}")
+        return folder
 
     def _export(self) -> None:
         frame = self.answer()

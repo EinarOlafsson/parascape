@@ -359,6 +359,25 @@ def test_the_infer_module_copies_a_methods_text_cited_from_the_registry(window, 
         assert "BibTeX" in text
 
 
+def test_the_infer_module_saves_an_answer_as_a_bundle(window, tmp_path):
+    """The named genes leave marked inferred, with the methods text and a manifest a reload verifies."""
+    import pandas as pd
+    from types import SimpleNamespace
+    from parascape import export_bundle
+    ids = window.nodes.gene_id.astype(str).tolist()
+    recipe = SimpleNamespace(question="q?", holdout="compartment_best", validation_holdout="ec_number",
+                             min_precision=0.3)
+    window.panel._question_result = SimpleNamespace(
+        recipe=recipe, inference=pd.DataFrame({"gene_id": ids[:2], "label": ["a", "b"]}),
+        per_cluster=pd.DataFrame(), recovery=pd.DataFrame({"label": ["a"], "recall": [0.5]}),
+        closure=SimpleNamespace(columns=tuple(window.nodes.columns[:5])))
+    folder = window.infer_module.module.save_bundle(str(tmp_path))
+    manifest = export_bundle.load(folder)
+    assert manifest["files"]["named_genes.csv"]["kind"] == "inferred"
+    assert manifest["query"]["holdout"] == "compartment_best"
+    window.panel._question_result = None
+
+
 def test_your_genes_are_read_against_the_answer(window):
     import pandas as pd
     module = window.infer_module.module

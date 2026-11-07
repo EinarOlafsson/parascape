@@ -1,6 +1,6 @@
 # 64.39 · Export the evidence and inference trail
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — about 70 %, 2026-11-06. One bundle per Infer answer built and tested; adapters for the other modules open.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -33,3 +33,14 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-06: the bundle
+
+`parascape/export_bundle.py`: `write(folder, ...)` puts each table as CSV, **marked measured or inferred** (a
+table without the mark is refused), each figure as a vector SVG (`figure_export`), `methods.md` (methods
+paragraph, references and BibTeX from the registry; unconfirmed sources flagged, never cited) and
+`manifest.json` (query, organism, version, table fingerprint, evidence columns, SHA-256 of every file). `load`
+refuses a bundle edited after it was written. In the application: Infer ▸ Save the answer ▸ **Save everything as
+a bundle…** (named genes inferred, recovery measured, the Map view as a figure). Tests:
+`tests/test_export_bundle.py` (3), `tests/test_module_shell.py` (the Infer bundle). Open: adapters for the Map,
+Gene and Network modules, and reloading a bundle back into the application.
