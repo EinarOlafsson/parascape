@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       QT_QPA_PLATFORM: offscreen
-      PYQTGRAPH_QT_LIB: PyQt6
+      PYQTGRAPH_QT_LIB: PySide6
       PARASCAPE_STATE: /tmp/parascape-checks
       OPENBLAS_NUM_THREADS: '2'
       OMP_NUM_THREADS: '2'

@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       QT_QPA_PLATFORM: offscreen
-      PYQTGRAPH_QT_LIB: PyQt6
+      PYQTGRAPH_QT_LIB: PySide6
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

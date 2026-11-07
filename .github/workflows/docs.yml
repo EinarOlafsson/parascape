@@ -27,7 +27,7 @@ jobs:
       - run: python scripts/build_docs.py
         env:
           QT_QPA_PLATFORM: offscreen
-          PYQTGRAPH_QT_LIB: PyQt6
+          PYQTGRAPH_QT_LIB: PySide6
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/site
