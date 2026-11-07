@@ -402,6 +402,27 @@ def test_map_gene_and_network_save_a_bundle_a_reload_verifies(window, tmp_path, 
         assert manifest["files"]["links.csv"]["kind"] == "measured"
 
 
+def test_the_infer_data_step_holds_out_the_labels_kind_and_lets_you_leave_out_others(window):
+    """Instruction 74: the label's own kind of evidence is shown held out; unticking another kind
+    reaches the recipe, and closure removes those columns with the reason."""
+    from dataclasses import replace
+    from parascape.recipes import close
+    module = window.infer_module.module
+    module.refresh_uses()
+    boxes = module.uses_boxes
+    assert boxes, "the question's inputs hold no categorised evidence"
+    free = [c for c, b in boxes.items() if b.isEnabled()]
+    assert free
+    boxes[free[0]].setChecked(False)
+    assert window.panel.question_leave_out == (free[0],)
+    recipe = window.panel._question_recipe(window.panel.current_question())
+    assert recipe.leave_out_categories == (free[0],)
+    closure = close(window.nodes, recipe)
+    assert any("left out by you" in why for why in closure.excluded.values())
+    module.refresh_uses()
+    assert window.panel.question_leave_out == ()
+
+
 def test_your_genes_are_read_against_the_answer(window):
     import pandas as pd
     module = window.infer_module.module

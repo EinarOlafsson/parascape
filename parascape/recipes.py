@@ -98,6 +98,10 @@ class Recipe:
     #: happens to have rather than a fact about biology. Enrichment means the same thing at any base
     #: rate, and it is already what the CONTROL is judged by -- the primary deserves the same test.
     min_enrichment: float = 2.0
+    #: Kinds of knowledge (information categories) the user chose to leave out of the inputs, on top of
+    #: what closure removes (instruction 74, the Infer data step). Recorded in the recipe so the answer
+    #: can be rebuilt with the same choice.
+    leave_out_categories: tuple = ()
     #: The purity a cluster must reach as well, carried onto every named gene as its confidence.
     #: Kept as a floor rather than the gate because enrichment and reliability are different
     #: questions: a cluster 15% X where X is 3% everywhere is five-fold enriched and still wrong
@@ -132,6 +136,7 @@ class Recipe:
     def __post_init__(self):
         self.inputs = tuple(_normalize_address(a) for a in self.inputs)
         self.spec = dict(self.spec)
+        self.leave_out_categories = tuple(self.leave_out_categories or ())
 
     @property
     def name(self) -> str:
@@ -142,6 +147,7 @@ class Recipe:
         """The recipe as JSON-safe data. Addresses become lists, since JSON has no tuples."""
         d = asdict(self)
         d["inputs"] = [list(a) if isinstance(a, tuple) else a for a in self.inputs]
+        d["leave_out_categories"] = list(self.leave_out_categories)
         return d
 
     @classmethod
@@ -296,6 +302,21 @@ def same_category(nodes: pd.DataFrame, holdout: str, organism: str = "Tg") -> di
     return out
 
 
+def input_categories(nodes: pd.DataFrame, recipe: Recipe) -> dict:
+    """category -> number of columns, over the columns a recipe's inputs name (before closure).
+
+    What the Infer data step offers to leave out; the label's own categories are reported separately
+    by `same_category`."""
+    cats = _categories(recipe.organism)
+    counts: dict = {}
+    for address in recipe.inputs:
+        for block in address_blocks(address, recipe.organism):
+            for c in columns_for(nodes, EmbeddingSpec(blocks=(block,))).get(block, []):
+                for cat in cats(c):
+                    counts[cat] = counts.get(cat, 0) + 1
+    return dict(sorted(counts.items()))
+
+
 def close(nodes: pd.DataFrame, recipe: Recipe, threshold: float = 0.8) -> Closure:
     """Resolve a recipe's inputs, remove everything that restates either holdout, and say what went.
 
@@ -348,6 +369,15 @@ def close(nodes: pd.DataFrame, recipe: Recipe, threshold: float = 0.8) -> Closur
     for c, why in same_category(nodes, holdout, recipe.organism).items():
         if c != control:
             excluded.setdefault(c, f"primary: {why}")
+    left_out = set(getattr(recipe, "leave_out_categories", ()) or ())
+    if left_out:
+        cats = _categories(recipe.organism)
+        for c in nodes.columns:
+            if c in (holdout, control):
+                continue
+            chosen = sorted(set(cats(c)) & left_out)
+            if chosen:
+                excluded.setdefault(c, f"left out by you ({', '.join(chosen)})")
     out.excluded = excluded
     out.excluded_layers = banned_layers
     out.layers = tuple(L for L in all_edge_layers(recipe.organism) if L not in banned_layers)

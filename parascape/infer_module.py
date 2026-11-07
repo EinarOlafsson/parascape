@@ -62,6 +62,15 @@ class InferModule(QtCore.QObject):
                             "and an independent control. One is shipped because it is refused."))
         shell.add_setting("Your question", q)
 
+        uses = QtWidgets.QWidget(shell)
+        self.uses_layout = QtWidgets.QVBoxLayout(uses)
+        self.uses_layout.setContentsMargins(6, 2, 6, 6)
+        self.uses_note = _muted("")
+        self.uses_layout.addWidget(self.uses_note)
+        self.uses_boxes: dict = {}
+        shell.add_setting("What the answer may use", uses)
+        panel.question_choice.currentIndexChanged.connect(lambda *_: self.refresh_uses())
+
         mine = QtWidgets.QWidget(shell)
         ml = QtWidgets.QVBoxLayout(mine)
         ml.setContentsMargins(6, 2, 6, 6)
@@ -152,6 +161,56 @@ class InferModule(QtCore.QObject):
         panel.status.connect(lambda *_: self._after_answer())
         _replace_tab(panel, window)
         panel.show_question()
+        self.refresh_uses()
+
+    # ------------------------------------------------------------------ what the answer may use
+    def refresh_uses(self) -> None:
+        """One tick box per kind of evidence the question's inputs hold; the label's own kind is
+        shown held out, with the reason, and cannot be ticked (instruction 74, the data step)."""
+        from .recipes import _categories, input_categories
+        for box in self.uses_boxes.values():
+            box.setParent(None)
+            box.deleteLater()
+        self.uses_boxes = {}
+        self.panel.question_leave_out = ()
+        q = self.panel.current_question()
+        nodes = getattr(self.window, "nodes", None)
+        if q is None or nodes is None:
+            self.uses_note.setText("Choose a question to see what its answer may use.")
+            return
+        from .questions import as_recipe
+        recipe = as_recipe(q)
+        try:
+            counts = input_categories(nodes, recipe)
+            held = set(_categories(recipe.organism)(recipe.holdout)) - {"identity"}
+        except Exception as error:
+            self.uses_note.setText(f"Could not read the inputs: {error}")
+            return
+        own = ", ".join(sorted(c.replace("_", " ") for c in held)) or "none recorded"
+        self.uses_note.setText("Kinds of evidence the question's inputs hold. Untick one to leave it "
+                               f"out. Held out always: the label's own kind ({own}), so the answer "
+                               "is not circular.")
+        for category, n in counts.items():
+            if category == "identity":
+                continue
+            box = QtWidgets.QCheckBox(f"{category.replace('_', ' ')} ({n} column{'s' if n != 1 else ''})")
+            if category in held:
+                box.setChecked(False)
+                box.setEnabled(False)
+                box.setToolTip(f"Held out: {category.replace('_', ' ')} is the kind of knowledge the "
+                               "label itself is, so using it would predict the label from itself.")
+            else:
+                box.setChecked(True)
+                box.setToolTip(f"Untick to build the answer without any {category.replace('_', ' ')} "
+                               "column.")
+                box.toggled.connect(lambda *_: self._uses_changed())
+            self.uses_layout.addWidget(box)
+            self.uses_boxes[category] = box
+
+    def _uses_changed(self) -> None:
+        left = tuple(c for c, b in self.uses_boxes.items() if b.isEnabled() and not b.isChecked())
+        self.panel.question_leave_out = left
+        self.shell.say("leaving out: " + (", ".join(c.replace("_", " ") for c in left) or "nothing"))
 
     # ------------------------------------------------------------------ your genes
     def _ids(self) -> np.ndarray:

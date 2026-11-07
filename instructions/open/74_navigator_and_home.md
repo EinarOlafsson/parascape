@@ -461,3 +461,14 @@ requirements, and what each forces:
    ever been tested on this kind of question.
 Then it runs, and returns the cross-validated and frozen-test numbers together, the baselines, the calibration,
 and a **Keep** action that writes the accepted claims to the user's own layer.
+
+## 2026-11-07: the Infer data step
+
+Step 2 of the three-step Infer builder is in the Infer module: **What the answer may use** lists the kinds of
+evidence (information categories) the question's inputs hold, with column counts; the label's own kind is named
+as held out always; unticking a kind leaves it out (`Recipe.leave_out_categories`, applied by `recipes.close`
+with the reason "left out by you", recorded in the recipe so the answer can be rebuilt). Every question action
+of the panel (answer, check, methods text) goes through `AnalysisPanel._question_recipe`, so the choice reaches
+all of them. Rendered on the real window; test in `tests/test_module_shell.py`. This also closes instruction
+73's open point "the data picker does not yet show the excluded-by-circularity set". Step 3 (choose the
+strategy) remains: the map questions run one method, the recipe.

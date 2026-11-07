@@ -2581,6 +2581,17 @@ class AnalysisPanel(QtWidgets.QWidget):
         i = self.question_choice.currentIndex()
         return self._questions[i] if 0 <= i < len(self._questions) else None
 
+    #: Information categories the user left out in the Infer data step (instruction 74).
+    question_leave_out: tuple = ()
+
+    def _question_recipe(self, q):
+        """The recipe of question `q`, with the kinds of evidence the user chose to leave out."""
+        from dataclasses import replace
+        from .questions import as_recipe
+        recipe = as_recipe(q)
+        return replace(recipe, leave_out_categories=tuple(self.question_leave_out)) \
+            if self.question_leave_out else recipe
+
     def show_question(self):
         """Describe the selected question without running anything."""
         q = self.current_question()
@@ -2591,7 +2602,7 @@ class AnalysisPanel(QtWidgets.QWidget):
             return
         from .questions import as_recipe
         from .recipes import address_label
-        recipe = as_recipe(q)
+        recipe = self._question_recipe(q)
         inputs = "<br>".join("&nbsp;&nbsp;• " + address_label(a) for a in recipe.inputs)
         self.question_detail.setHtml(
             f"<b>{q.get('question', '')}</b><br><i>{q.get('axis', '')}</i><br><br>"
@@ -2633,7 +2644,7 @@ class AnalysisPanel(QtWidgets.QWidget):
             return
         from .questions import as_recipe
         from .recipes import close
-        recipe = as_recipe(q)
+        recipe = self._question_recipe(q)
 
         def job(p):
             """Check whether the selected recipe has its required evidence inputs."""
@@ -2671,7 +2682,7 @@ class AnalysisPanel(QtWidgets.QWidget):
             return
         from .questions import as_recipe
         from .recipes import close
-        recipe = as_recipe(q)
+        recipe = self._question_recipe(q)
 
         def job(p):
             """Resolve what the question may use, the columns the methods text cites."""
@@ -2702,7 +2713,7 @@ class AnalysisPanel(QtWidgets.QWidget):
             return
         from .questions import as_recipe
         from .recipes import run as run_recipe
-        recipe = as_recipe(q)
+        recipe = self._question_recipe(q)
         self._start_table(self.question_table, [])
         self.question_report.setPlainText("")
         self._question_result = None
