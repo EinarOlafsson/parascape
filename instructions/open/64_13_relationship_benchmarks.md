@@ -1,6 +1,6 @@
 # 64.13 · Test relationship and link inference
 
-Status: OPEN — 70%, 2026-11-07. Held-out pair records exist for all four mechanisms and binding partners (cold-node, decoy regimes stated); AUPRC/lift at fixed depth on the cards remains.
+Status: OPEN — 85%, 2026-11-07. Held-out pair records for all four mechanisms; binding partners with AUPRC, baselines and decoy regimes; fixed-depth metrics on the other relationship cards remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -49,3 +49,9 @@ Pending: commit, checks, artifact/benchmark identities, measured population, lim
   Unknown pairs stay unlabelled; decoys are named as decoys.
 * **Open:** AUPRC, lift and precision at fixed depth stored for each relationship card (today the cards carry AUROC
   skill), and endpoint organism IDs written into the pair records.
+
+**Average precision and baselines for binding partners (same day, from `scoreboard.tsv`, not refitted):** cold-node,
+degree-matched, 1,248 pairs, half positive -- model AUPRC 0.808 (lift 1.6 over the 0.50 prevalence), precision 0.79
+at recall 0.54; random 0.504; "both popular" (degree product) 0.529, so the model is not riding node degree;
+same-compartment alone reaches precision 0.85 at recall 0.49 -- compartment is most of what a decoy-based test can
+reward, which is why the same-compartment decoy regime is reported beside it.
