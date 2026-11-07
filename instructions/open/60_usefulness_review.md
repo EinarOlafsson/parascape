@@ -114,3 +114,10 @@ version, the table it ran on (`searches.fingerprint`: gene identifiers hashed in
 counts), the seed and the time; `save` writes it into the summary JSON. Test in `tests/test_strategies.py`.
 Not done here: session save/load, and the resolved column list per strategy (strategies do not yet report
 which columns they read; the methods text of change 2 uses the question closure instead).
+
+## Change 6, where it stands (2026-11-06)
+
+Half delivered by instruction 62: the guided recommendations (`guided.py`) append the measured hold-out rate for
+the strategy on the label in hand (`track_record.record_phrase`), and the Infer module lists the best
+recovering strategies for a question label. Still open: weighting the guided ranking itself by the per-label
+calibration (`per_target`, shipped in `strategy_calibration.json` for every strategy, read nowhere yet).
