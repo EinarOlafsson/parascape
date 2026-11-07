@@ -1,0 +1,1 @@
+{"strategy": "geneset_hunt", "niche": "IMC", "seeds": 19, "hidden": 19, "prevalence": 0.00234, "hidden_in_top50": 2, "recall_at_50": 0.105, "lift_at_50": 17.1, "hidden_in_top100": 2, "recall_at_100": 0.105, "lift_at_100": 8.5, "hidden_in_top200": 2, "recall_at_200": 0.105, "lift_at_200": 5.9}

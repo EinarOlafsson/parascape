@@ -39,7 +39,8 @@ def one_niche(niche: str, out_path: str, strategy: str = "seed_expansion") -> No
     seed_groups = set(groups[:len(groups) // 2])
     seeds = [g for g in members if og[g] in seed_groups]
     hidden = [g for g in members if og[g] not in seed_groups]
-    r = S.get(strategy).run(ctx, genes="\n".join(seeds), exclude="compartment", top=2000)
+    extra = {"top": 2000} if any(p.name == "top" for p in S.get(strategy).params) else {}
+    r = S.get(strategy).run(ctx, genes="\n".join(seeds), exclude="compartment", **extra)
     table = next(t for t in r.tables.values() if "gene_id" in getattr(t, "columns", []))
     ranked = [g for g in table.gene_id.astype(str) if g not in set(seeds)]
     hits = np.isin(ranked, hidden)
@@ -69,7 +70,7 @@ def main() -> None:
             "from concurrent.futures import ThreadPoolExecutor",
             "import pandas as pd",
             "NICHES = ['rhoptries', 'micronemes', 'dense granules', 'IMC', 'apicoplast', 'mitochondrion']",
-            "STRATEGIES = ['seed_expansion', 'positive_unlabeled', 'set_enrichment']",
+            "STRATEGIES = ['seed_expansion', 'positive_unlabeled', 'set_enrichment', 'geneset_hunt']",
             "SCRIPT = os.path.join(REPO, 'scripts', 'build_seed_expansion_benchmark_notebook.py')",
             "def run(job):",
             "    strategy, niche = job",

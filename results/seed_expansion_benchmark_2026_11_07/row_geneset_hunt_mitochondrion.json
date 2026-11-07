@@ -1,0 +1,1 @@
+{"strategy": "geneset_hunt", "niche": "mitochondrion", "seeds": 33, "hidden": 35, "prevalence": 0.00432, "hidden_in_top50": 3, "recall_at_50": 0.086, "lift_at_50": 13.9, "hidden_in_top100": 3, "recall_at_100": 0.086, "lift_at_100": 6.9, "hidden_in_top200": 5, "recall_at_200": 0.143, "lift_at_200": 6.7}

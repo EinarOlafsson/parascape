@@ -1,0 +1,1 @@
+{"strategy": "geneset_hunt", "niche": "rhoptries", "seeds": 21, "hidden": 26, "prevalence": 0.0032, "hidden_in_top50": 2, "recall_at_50": 0.077, "lift_at_50": 12.5, "hidden_in_top100": 2, "recall_at_100": 0.077, "lift_at_100": 11.0, "hidden_in_top200": 2, "recall_at_200": 0.077, "lift_at_200": 11.0}

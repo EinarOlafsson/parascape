@@ -1,6 +1,6 @@
 # 64.12 · Test gene rankings and set retrieval
 
-Status: OPEN — 60%, 2026-11-07. Four adapters (seed expansion, positive-unlabelled, set enrichment; outlier ranking as a synthetic task); gene-set search, recoverability and paralog profiles remain.
+Status: OPEN — 75%, 2026-11-07. Five adapters (seed expansion, positive-unlabelled, set enrichment, gene-set search; outlier ranking as a synthetic task); recoverability and paralog profiles remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -55,3 +55,7 @@ table, label-outlier ranking run on the corrupted label. Precision among its top
 0.34, cell-cycle phase 0.32 (base rate 0.05); cell-cycle phase recall 0.51 at 100. It finds planted mistakes;
 it adjudicates no real annotation. Placeholder values (`unassigned`, `unknown`) are not labels and are never
 planted (`compartment`: 3,827 real labels of 8,140).
+
+**Fifth adapter (same day): gene-set search** -- a set-retrieval task (one cluster of about 16 candidates), scored as
+hidden members inside it: 2-3 for four niches, none for micronemes and apicoplast. Remaining: recoverability atlas
+(category-level, not per gene) and paralog profiles (pairs).

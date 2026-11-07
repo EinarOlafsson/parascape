@@ -17,3 +17,9 @@ dense granules	19	21	0.00259	9	0.429	69.6	11	0.524	42.5	12	0.571	23.2	set_enrich
 IMC	19	19	0.00234	7	0.368	59.8	10	0.526	42.7	12	0.632	25.6	set_enrichment
 apicoplast	24	24	0.00296	7	0.292	47.3	8	0.333	27.1	8	0.333	13.5	set_enrichment
 mitochondrion	33	35	0.00432	5	0.143	23.2	8	0.229	18.5	10	0.286	11.6	set_enrichment
+rhoptries	21	26	0.0032	2	0.077	12.5	2	0.077	11.0	2	0.077	11.0	geneset_hunt
+micronemes	15	14	0.00172	0	0.0	0.0	0	0.0	0.0	0	0.0	0.0	geneset_hunt
+dense granules	19	21	0.00259	3	0.143	50.4	3	0.143	50.4	3	0.143	50.4	geneset_hunt
+IMC	19	19	0.00234	2	0.105	17.1	2	0.105	8.5	2	0.105	5.9	geneset_hunt
+apicoplast	24	24	0.00296	0	0.0	0.0	0	0.0	0.0	0	0.0	0.0	geneset_hunt
+mitochondrion	33	35	0.00432	3	0.086	13.9	3	0.086	6.9	5	0.143	6.7	geneset_hunt

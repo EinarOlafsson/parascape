@@ -40,3 +40,10 @@ granules and the apicoplast. Each finished niche is cached as a row file and reu
 Recall at 100: rhoptries 0.692, micronemes 0.643, dense granules 0.524, IMC 0.526, apicoplast 0.333, mitochondrion
 0.229 -- never the best of the three. Its profile draws on every feature category the seeds differ in, including
 publication counts (study effort), which the other two do not lean on; read it with that in mind.
+
+## Fourth: gene-set search, which is set retrieval, not a ranking
+
+`geneset_hunt` returns ONE cluster (about 16 candidates), the best of 16 map and clustering settings, so depth-100
+recall is not its measure. Hidden members inside its candidates: dense granules 3, mitochondrion 3, rhoptries 2,
+IMC 2, micronemes 0, apicoplast 0 -- roughly 0.1-0.2 precision against a base rate of 0.002-0.004 where it finds
+any, and nothing for two niches.

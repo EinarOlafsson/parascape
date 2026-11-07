@@ -1,0 +1,1 @@
+{"strategy": "geneset_hunt", "niche": "dense granules", "seeds": 19, "hidden": 21, "prevalence": 0.00259, "hidden_in_top50": 3, "recall_at_50": 0.143, "lift_at_50": 50.4, "hidden_in_top100": 3, "recall_at_100": 0.143, "lift_at_100": 50.4, "hidden_in_top200": 3, "recall_at_200": 0.143, "lift_at_200": 50.4}
