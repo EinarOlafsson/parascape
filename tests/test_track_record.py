@@ -552,3 +552,11 @@ def test_a_label_page_shows_the_combined_model_per_class_when_it_was_tested():
         pytest.skip("no meta-inference results in this install")
     assert "Combined model" in html and "admitted" in html and "recall" in html
     assert T.meta_class_html("no_such_label") == ""
+
+
+def test_a_class_page_keeps_measured_and_predicted_members_apart():
+    """64.31: known membership and inferred membership on separate lines, the inference with its precision."""
+    html = T.class_members_html("compartment", "apicoplast")
+    assert "Measured members" in html
+    if "Predicted members" in html:
+        assert "right" in html and "may not carry over" in html

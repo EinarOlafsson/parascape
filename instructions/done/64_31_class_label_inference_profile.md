@@ -1,6 +1,6 @@
 # 64.31 · Compare inferences for a label or protein class
 
-Status: OPEN — 35%, 2026-11-07. Per-class and per-label recovery pages exist (track record, item 62); inferred-member lists and numeric-context cards remain.
+Status: DONE 2026-11-07. Class and label pages: per-class recovery and confusion, combined-model recall per class, measured and predicted members kept apart with precision.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -46,3 +46,12 @@ Pending: commit, checks, artifact/benchmark identities, measured population, lim
   lists measured members beside predicted candidates with their per-class precision is still to build.
 * **Open:** numeric-context cards (value tasks), and tying query-dependent set results to their exact input
   members on the class page.
+
+**Measured and predicted members on the class page (same day):** `track_record.class_members_html` adds to every class
+page the measured members (genes carrying the class in the table) and, for a label with an admitted combined model,
+the genes of unknown value it predicts into the class with that call's precision on the untouched outer test and the
+strongest ten -- e.g. compartment / dense granules: 193 measured, 264 predicted, right 69.3 % of the time when it
+called this class (179 calls); apicoplast: 167 measured, 664 predicted, 57.4 %. The page states that the precision was
+measured on genes with a known value and may not carry over to the unknown ones. Numeric contexts keep their own
+value cards (64.11); set results carry their exact input list (bundles, 64.39). Test in `tests/test_track_record.py`.
+All done-when points are met.

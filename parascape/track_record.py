@@ -596,7 +596,41 @@ def class_html(target: str, label: str, organism: str,
     return (f"<h4>{escape(str(label))}</h4><p>{lead}</p>{up}"
             f"<table cellspacing='0' cellpadding='3'><tr><th align='left'>strategy</th>"
             f"<th>right</th><th align='left'>rate [95%]</th>"
-            f"<th align='left'>called instead</th></tr>{rows}</table>")
+            f"<th align='left'>called instead</th></tr>{rows}</table>"
+            + class_members_html(target, label, organism))
+
+
+def class_members_html(target: str, label: str, organism: str = "Tg") -> str:
+    """Measured members of a class beside the genes the combined model predicts into it (64.31), with the
+    precision of that prediction on the untouched outer test -- known and inferred membership kept apart."""
+    import os
+    from html import escape
+    from .gene_reading import META_RESULTS
+    from . import organisms
+    folder = META_RESULTS.get(str(target))
+    root = os.path.join(os.path.dirname(os.path.dirname(__file__)), "results")
+    try:
+        nodes = pd.read_parquet(organisms.nodes_path(organism))
+    except Exception:
+        return ""
+    measured = int((nodes[target].astype(str) == str(label)).sum()) if target in nodes else 0
+    text = f"<p><b>Measured members:</b> {measured:,} genes carry {escape(str(label))} in the table.</p>"
+    if not folder or not os.path.exists(os.path.join(root, folder, "meta_calls_unknown.tsv")):
+        return text
+    known = pd.read_csv(os.path.join(root, folder, "meta_calls.tsv"), sep="\t")
+    unknown = pd.read_csv(os.path.join(root, folder, "meta_calls_unknown.tsv"), sep="\t")
+    called = known[known["meta_call"].astype(str) == str(label)]
+    precision = (called["truth"].astype(str) == str(label)).mean() if len(called) else float("nan")
+    predicted = unknown[unknown["meta_call"].astype(str) == str(label)]
+    if not len(predicted):
+        return text + "<p>The combined model predicts no gene of unknown value into this class.</p>"
+    names = ", ".join(escape(g) for g in predicted.sort_values("meta_probability", ascending=False)
+                      ["gene_id"].astype(str).head(10))
+    return text + (f"<p><b>Predicted members</b> (combined model, genes with no known value): "
+                   f"{len(predicted):,} -- when it called this class on the untouched outer test it was right "
+                   f"{precision:.1%} of the time ({len(called):,} calls). Strongest: {names}. That precision "
+                   f"was measured on genes with a known value; genes without one may be harder cases, so it "
+                   f"may not carry over to them.</p>")
 
 
 def target_html(target: str, organism: str, ledger: pd.DataFrame | None = None) -> str:
