@@ -598,6 +598,12 @@ class HarnessResult:
     refusal: str = ""
 
     @property
+    def dominance(self) -> dict:
+        """Whether one evidence family carries most of the importance (`diagnostics.dominance`)."""
+        from .diagnostics import dominance
+        return dominance(self.importance)
+
+    @property
     def may_fill(self) -> bool:
         """Whether this question may write cells as facts: the frozen-test lower bound clears the bar."""
         if self.frozen_test is None or "no_frozen_test" in self.flags:

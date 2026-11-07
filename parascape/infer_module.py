@@ -223,8 +223,19 @@ class InferModule(QtCore.QObject):
                 text += f"<br>Of your {len(self.mine)} genes, <b>{len(hits)}</b> are named: {what}."
             else:
                 text += f"<br>None of your {len(self.mine)} genes is named."
+        text += self._artefact_warning(frame[column].astype(str).tolist())
         self.answer_note.setTextFormat(QtCore.Qt.TextFormat.RichText)
         self.answer_note.setText(text)
+
+    def _artefact_warning(self, genes: list) -> str:
+        """A warning when the named genes rest on filled-in values more than on measurements."""
+        result = getattr(self.panel, "_question_result", None)
+        columns = getattr(getattr(result, "closure", None), "columns", ())
+        if not columns:
+            return ""
+        from .diagnostics import missingness
+        check = missingness(self.window.nodes, columns, genes)
+        return f"<br><b>Caution:</b> {escape(check['sentence'])}" if check.get("warn") else ""
 
     def _row_gene(self, row: int) -> str:
         frame = self.answer()

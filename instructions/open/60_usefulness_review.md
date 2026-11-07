@@ -134,3 +134,12 @@ Network SVG) -- or a PNG at three times the screen. A view may offer `paint_figu
 does, because on screen its background is a cached image, and the figure draws it as vectors instead. Map and
 Network each gain **Save the figure…** (SVG / PDF / PNG). Tests: `tests/test_figure_export.py` (5). Rendered and
 checked on the real window: Map 1.9 MB SVG, Network 3.9 MB SVG with every link and gene.
+
+## Change 7 built (2026-11-06): missingness and dominance warnings
+
+`parascape/diagnostics.py`: `missingness(nodes, columns, genes)` compares the share of evidence missing for
+the genes a result names with genes in general on the same columns, and warns at a gap of 15 points or more
+("their places rest on filled-in values more than on measurements"); `dominance(importance)` warns when one
+evidence family carries half or more of the positive importance. The Infer answer note shows the missingness
+caution under the named genes; every harness result has `.dominance`. Tests: `tests/test_diagnostics.py` (6).
+Not done: a noise check, and the warnings on the strategy cards (strategies do not report their columns).
