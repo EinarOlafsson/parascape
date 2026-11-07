@@ -1,6 +1,5 @@
 # 60 · What would make ParaScape most useful (review at 0.49.0)
-
-**Status: open (reviewed 2026-09-30).** A read-only review of the whole program against the way a
+**Status: done 2026-11-07 -- all ten changes built (1 as a regression guard; 5, 8 with stated remainders).** Reviewed 2026-09-30. A read-only review of the whole program against the way a
 working biologist uses it, asked for by the user: "think about how to make this tool as useful as
 possible". Weeks 1-2 below are the agreed order of work.
 
@@ -170,5 +169,8 @@ required leakage family for an imported column (today the measured-association c
   passes (`tests/test_modules_in_window.py`). The original desktop-only failure was not reproduced, so this is
   a guard on the present design, not a confirmed fix of the old one.
 * **10, tutorial videos**: done 2026-10-03 (`scripts/tutorial_video.py`, six captures from the running app).
-* **9, more gallery maps kept by structure score**: not started; it needs compute and a structure-score
-  threshold, and is the one change of the ten left open.
+* **9, more gallery maps kept by structure score**: done earlier, found on re-reading (`umap_gallery.py`):
+  the gallery is three fixed reference maps plus leave-one-family-out, one-per-family, one-per-experiment and
+  combination maps, each feature set searched over UMAP and clustering settings and the best **label-free
+  structure score** shipped. **With this, all ten changes of the review are built**, change 1 as a guard on
+  the present design rather than a reproduced fix.
