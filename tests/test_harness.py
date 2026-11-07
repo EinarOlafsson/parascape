@@ -273,3 +273,14 @@ def test_a_question_with_no_signal_cannot_fill(tmp_path):
     assert 0.35 < result.cross_validated["roc_auc"] < 0.65
     assert result.frozen_test["precision_lower90"] < 0.90
     assert not H.may_fill(result)
+
+
+def test_the_frozen_test_is_reported_within_each_stratum(tmp_path):
+    """Instruction 64.16: the same threshold and calibration, read again inside each stratum."""
+    labels, features, families, groups = _data()
+    strata = pd.Series(["well-studied" if i % 2 else "understudied" for i in range(len(labels))],
+                       index=labels.index)
+    result = _run(tmp_path, data=(labels, features, families, groups), strata=strata)
+    by = result.frozen_test["by_stratum"]
+    assert set(by) == {"understudied", "well-studied"}
+    assert sum(v["n"] for v in by.values()) == result.frozen_test["n"]

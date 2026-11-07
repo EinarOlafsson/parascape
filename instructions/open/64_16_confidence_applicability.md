@@ -1,6 +1,6 @@
 # 64.16 · Calibrate confidence and measure where it applies
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 30%, 2026-11-07. Stratified frozen-test reporting in the harness; first measurement by study effort (glucose question).
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -33,3 +33,15 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: frozen tests read within strata, and the first measurement
+
+`harness.run_question(..., strata=...)` adds `frozen_test["by_stratum"]`: the frozen-test numbers again within each
+stratum, with the threshold and calibration chosen on train + tune applied unchanged (strata under 10 genes or
+with one class report counts only). Test in `tests/test_harness.py`.
+
+First measurement (`results/attention_strata_2026_11_07/`, `scripts/build_attention_strata_notebook.py`; the glucose
+question, boosted trees, fresh seed 20): frozen-test AUC **0.831 for the 1,027 genes with no publication**, 0.853
+for 1-4 publications (87 genes), 0.857 for 5 or more (19 genes); calibration error 0.016 on the unstudied stratum.
+The ranking holds for genes nobody has studied -- nine in ten test genes. Small strata are reported with their
+counts and are not a precise comparison. Open: class rarity, mapping and missingness strata, other questions.

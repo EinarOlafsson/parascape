@@ -360,6 +360,26 @@ def _block(name: str, probability: pd.Series, truth: pd.Series, curve, threshold
             "average_precision": float(average_precision_score(y, probability)) if two_classes else float("nan")}
 
 
+def by_stratum(probability: pd.Series, truth: pd.Series, curve, threshold: float, strata: pd.Series,
+               bar: float = BAR) -> dict:
+    """The frozen-test numbers again within each stratum (instruction 64.16): understudied against
+    well-studied genes, common against rare classes. The threshold and calibration are the ones chosen on
+    train + tune, applied unchanged; a stratum with fewer than 10 genes or one class reports its counts only."""
+    out = {}
+    strata = strata.reindex(probability.index)
+    for name in sorted(strata.dropna().unique(), key=str):
+        idx = strata.index[strata == name]
+        y = truth.reindex(idx).astype(bool)
+        if len(idx) < 10 or y.nunique() < 2:
+            out[str(name)] = {"n": int(len(idx)), "positives": int(y.sum()), "too_few": True}
+            continue
+        block = _block(f"stratum {name}", probability.loc[idx], truth, curve, threshold, bar)
+        out[str(name)] = {k: block[k] for k in ("n", "positives", "calls", "precision",
+                                                "precision_lower90", "roc_auc", "average_precision",
+                                                "calibration_error")}
+    return out
+
+
 def _grouped_folds(entities, labels, groups, n_folds: int):
     """Grouped folds over an index, falling back to fewer folds than asked when groups are scarce."""
     from sklearn.model_selection import GroupKFold
@@ -654,7 +674,7 @@ def run_question(question, *, labels, features, families, groups, strategies,
                  organism: str = O.TOXOPLASMA, seed: int = 0, outer_folds: int = 3,
                  inner_folds: int = 3,
                  bar: float = BAR, pairs=None, log_path=None, root=None, record: bool = True,
-                 importance_repeats: int = 3, force_include=None) -> HarnessResult:
+                 importance_repeats: int = 3, force_include=None, strata=None) -> HarnessResult:
     """Score one question end to end: four partitions, nested cross-validation, one frozen test.
 
     `labels` is a boolean series indexed by entity, `features` a frame over at least those entities,
@@ -789,6 +809,9 @@ def run_question(question, *, labels, features, families, groups, strategies,
                                          index=pd.Index(test))
             frozen = _block("frozen_test (touched once)", test_probability, labels, curve,
                             threshold, bar)
+            if strata is not None:
+                frozen["by_stratum"] = by_stratum(test_probability, labels, curve, threshold,
+                                                  pd.Series(strata), bar)
             if record:
                 record_holdout_use({"question_id": question.id, "strategy": strategy.name,
                                     "strategy_hash": strategy.identity,
