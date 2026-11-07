@@ -1,0 +1,7 @@
+mechanism	organism	metric	conclusive	observed	chance	skill	skill_low	skill_high	grade
+holdout_search	Tg	F1 of hidden genes in the cluster chosen for their label on known genes	25	0.3762	0.3225	0.0711	0.0345	0.1053	weak
+holdout_search	Pf	F1 of hidden genes in the cluster chosen for their label on known genes	20	0.5361	0.5034	0.0871	0.0087	0.1947	weak
+consensus_modules	Tg	F1 of hidden genes in the module chosen for their label on known genes	25	0.3864	0.3356	0.073	0.0139	0.1274	weak
+consensus_modules	Pf	F1 of hidden genes in the module chosen for their label on known genes	20	0.5031	0.4455	0.1452	0.0345	0.2842	weak
+multiplex_modules	Tg	F1 of hidden genes in the community chosen for their label on known genes	25	0.3451	0.3036	0.054	0.0174	0.0848	weak
+multiplex_modules	Pf	F1 of hidden genes in the community chosen for their label on known genes	20	0.2492	0.2245	0.0295	-0.0317	0.0885	weak

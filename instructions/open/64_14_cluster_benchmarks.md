@@ -1,6 +1,6 @@
 # 64.14 · Test map and module recovery
 
-Status: OPEN — 0%, 2026-10-07. Existing foundations are reused; completion of this acceptance contract is not yet verified.
+Status: OPEN — 70%, 2026-11-07. Held-out cluster and module recovery summarised for maps and all three mechanisms; fragmentation and reach controls on the cards remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -33,3 +33,20 @@ follow-up and its dependency rather than silently widening the item.
 ## Completion evidence
 
 Pending: commit, checks, artifact/benchmark identities, measured population, limitations and dated result.
+
+## 2026-11-07: what the held-out records say
+
+`scripts/build_cluster_benchmark_summary_notebook.py` -> `results/cluster_benchmark_summary_2026_11_07/`, read from what
+ships (nothing refitted):
+
+* **Maps** (`umap_gallery_scores.tsv`, 2,502 label x map scores): every map chosen by a label-free structure score, so
+  no withheld label picked a winner; maps whose inputs restate the label set aside as circular. The best non-circular
+  map per label lifts category F1 only 0.10-0.17 over its shuffled-label chance (cell-cycle phase 0.36 against 0.25;
+  compartment 0.24 against 0.14). Geometric quality (`structure`) and recovery (`category_skill`) are separate metrics.
+* **Module mechanisms**, held out (cluster chosen for a label on known genes, scored on hidden genes, measured null):
+  map search skill 0.07 (Tg) / 0.09 (Pf), consensus modules 0.07 / 0.15, multiplex modules 0.05 / 0.03 -- all graded
+  weak.
+* **Reading:** clusters drawn without the label recover it only weakly, while a model trained for the label
+  recovers it well (localization frozen AUC 0.85-1.0, instruction 70). Clusters are for seeing structure, not for
+  calling a label.
+* **Open:** fragmentation and reach controls, and class-level confusion shown on the cards.
