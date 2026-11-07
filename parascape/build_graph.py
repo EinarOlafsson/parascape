@@ -85,9 +85,17 @@ def load_nodes() -> pd.DataFrame:
     tach = [c for c in rna if "Tachyzoite" in c or "Tachyzoites" in c]
     cyst = [c for c in rna if "Tissue_cyst" in c or "Tissue_cysts" in c]
     spor = [c for c in rna if "Sporulat" in c or "Unsporulated" in c]
-    n["expr_tachy"] = np.log2(n[tach].mean(axis=1) + 1) if tach else np.nan
-    n["expr_cyst"] = np.log2(n[cyst].mean(axis=1) + 1) if cyst else np.nan
-    n["expr_max"] = np.log2(n[rna].max(axis=1) + 1) if rna else np.nan
+    # The rna108740_* columns arrive as ln(FPKM + 1) of GEO's GSE108740_FPKM.xlsx (checked 2026-11-07, exact to
+    # 2e-15), still named _FPKM. Undo that log before averaging, then take log2 once: the summaries were a log of
+    # a log until instruction 64.11a. Only GSE108740 is FPKM; the other rna* families are centred log values
+    # (median 0), so expr_max is taken over GSE108740 samples only rather than mixing scales.
+    fpkm = [c for c in rna if c.startswith("rna108740_")]
+    linear = np.expm1(n[fpkm]) if fpkm else n[[]]
+    tach = [c for c in fpkm if "Tachyzoite" in c or "Tachyzoites" in c]
+    cyst = [c for c in fpkm if "Tissue_cyst" in c or "Tissue_cysts" in c]
+    n["expr_tachy"] = np.log2(linear[tach].mean(axis=1) + 1) if tach else np.nan
+    n["expr_cyst"] = np.log2(linear[cyst].mean(axis=1) + 1) if cyst else np.nan
+    n["expr_max"] = np.log2(linear[fpkm].max(axis=1) + 1) if fpkm else np.nan
     n["expr_sporulated"] = np.log2(n[spor].mean(axis=1) + 1) if spor else np.nan
 
     # Published screens and mass-spec abundance, joined on gene id. Left missing where a targeted screen

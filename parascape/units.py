@@ -22,15 +22,19 @@ CURATED = {
     **{c: ("composite score: differential fitness multiplied by its significance, dimensionless "
            "(negative = depleted in the tissue)",
            "Giuliano et al. 2024, PMID 38977907 (dataset crispr_invivo_composite)") for c in _INVIVO},
-    # The shipped GSE108740 columns are labelled FPKM but are exactly ln(FPKM + 1) of the GEO supplementary table
-    # (checked 2026-11-07 against GSE108740_FPKM.xlsx), so these summaries are a log of a log (instruction 64.11a).
-    "expr_tachy": ("log2(x + 1) of the mean tachyzoite value, where x = ln(FPKM + 1) of the GSE108740 table: "
-                   "a doubly logged value",
-                   "computed in build_graph.py from the GSE108740 columns; scale checked 2026-11-07"),
-    "expr_cyst": ("log2(x + 1) of the mean tissue-cyst value, x = ln(FPKM + 1) (doubly logged)",
-                  "computed in build_graph.py from the GSE108740 columns; scale checked 2026-11-07"),
-    "expr_max": ("log2(x + 1) of the highest sample, x = ln(FPKM + 1) (doubly logged)",
-                 "computed in build_graph.py from the GSE108740 columns; scale checked 2026-11-07"),
+    # The rna108740_* columns themselves are ln(FPKM + 1) of GEO's GSE108740_FPKM.xlsx (checked 2026-11-07); the
+    # summaries below undo that log and take log2 once (instruction 64.11a).
+    "expr_tachy": ("log2(FPKM + 1) of the mean tachyzoite FPKM",
+                   "GSE108740 (GEO, FPKM); computed in build_graph.py, corrected 2026-11-07 (64.11a)"),
+    "expr_cyst": ("log2(FPKM + 1) of the mean tissue-cyst FPKM",
+                  "GSE108740 (GEO, FPKM); computed in build_graph.py, corrected 2026-11-07 (64.11a)"),
+    "expr_max": ("log2(FPKM + 1) of the highest GSE108740 sample",
+                 "GSE108740 (GEO, FPKM); computed in build_graph.py, corrected 2026-11-07 (64.11a)"),
+    **{c: ("ln(FPKM + 1), despite the _FPKM in the name", "GSE108740 (GEO FPKM table), logged upstream; checked 2026-11-07")
+       for c in ("rna108740_Tachyzoites_T2_FPKM", "rna108740_Tachyzoites_T4_FPKM", "rna108740_Tissue_cysts_A_FPKM",
+                 "rna108740_Tissue_cysts_B_FPKM", "rna108740_Day3_CS4_FPKM", "rna108740_Day3_CS5_FPKM",
+                 "rna108740_Day3_CS6_FPKM", "rna108740_Day5_CS2_FPKM", "rna108740_Day5_K4_14_FPKM",
+                 "rna108740_Day7_CS7_FPKM", "rna108740_Day7_CS8_FPKM", "rna108740_Day7_CS9_FPKM")},
     "piggybac_mis": ("mutagenesis index score, 0 to 1 (low = the gene resists disruption, likely essential)",
                      "Zhang et al. 2018, PMID 29724925 (dataset plasmodb_pf3d7_piggybac)"),
     "piggybac_mfs": ("mutant fitness score (low = fitness cost)",
