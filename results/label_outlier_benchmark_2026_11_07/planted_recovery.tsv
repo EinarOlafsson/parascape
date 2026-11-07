@@ -1,0 +1,4 @@
+label	labelled	planted	prevalence	precision_at_50	recall_at_50	precision_at_100	recall_at_100	precision_at_200	recall_at_200
+compartment	8140	407	0.05	0.42	0.052	0.49	0.12	0.515	0.253
+dtm_class	8140	407	0.05	0.74	0.091	0.72	0.177	0.73	0.359
+cellcycle_phase	873	43	0.049	0.32	0.372	0.22	0.512	0.14	0.651

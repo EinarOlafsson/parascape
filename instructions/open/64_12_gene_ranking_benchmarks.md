@@ -1,6 +1,6 @@
 # 64.12 · Test gene rankings and set retrieval
 
-Status: OPEN — 45%, 2026-11-07. Three adapters (seed expansion, positive-unlabelled, set enrichment) on six localization niches; gene-set search, recoverability, outlier ranking and paralog profiles remain.
+Status: OPEN — 60%, 2026-11-07. Four adapters (seed expansion, positive-unlabelled, set enrichment; outlier ranking as a synthetic task); gene-set search, recoverability and paralog profiles remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -48,3 +48,10 @@ organelles. Table in the results README.
 
 **Third adapter (same day): set enrichment** -- never the best of the three (recall at 100 0.23-0.69); its profile
 includes publication counts, so it partly ranks by study effort.
+
+**Fourth adapter (same day): outlier ranking, marked SYNTHETIC** (`scripts/build_label_outlier_benchmark_notebook.py`,
+`results/label_outlier_benchmark_2026_11_07/`): 5 % of a label's values swapped to another class in a copy of the
+table, label-outlier ranking run on the corrupted label. Precision among its top 50: dtm_class 0.74, compartment
+0.42, cell-cycle phase 0.32 (base rate 0.05); cell-cycle phase recall 0.51 at 100. It finds planted mistakes;
+it adjudicates no real annotation. Note: `compartment` counts 8,140 labelled genes, so a placeholder value is
+counted as a label there and may be swapped into a "mistake"; not corrected in this pass.
