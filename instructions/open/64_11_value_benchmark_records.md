@@ -1,6 +1,6 @@
 # 64.11 · Keep held-out numeric predictions
 
-Status: OPEN — 55%, 2026-11-07. Value scorecards for all four mechanisms read and recorded (with the Pf scaling warning); units, train-only baseline and interval width/coverage remain.
+Status: OPEN — 75%, 2026-11-07. Value scorecards for all four mechanisms, conformal width and achieved coverage recorded (with the Pf scaling warning); units on cards and a train-only mean baseline remain.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -138,5 +138,8 @@ scorecard -- Spearman, Pearson, Kendall, R², normalised RMSE, MAE, top/bottom-d
 values are badly scaled (R² far below zero: worse than predicting the mean) -- use them as rankings, not as values,
 until that is fixed; condition shift has almost no skill on Toxoplasma.
 
-Open: units stated on each card, skill against the matched train-only baseline (today against a shuffled null),
-and the width and achieved coverage of conformal intervals.
+**Conformal intervals (same day, `conformal_values` self-test on Tg):** promised coverage 0.90, achieved **0.908** on
+hidden values, interval width 2.40 standard deviations of the target -- the intervals keep their promise, and are
+wide. **Baseline:** R² on the cards is skill against predicting the mean, so the negative Pf values above already
+say "worse than the mean baseline". Open: units stated on each card, and the mean taken from training genes only
+rather than over the scored ones.
