@@ -9,6 +9,23 @@ the vacuole-resident fingerprint more often (18) than their own (10). That is th
 host-facing precision, now measured. Remaining: literature mining to enlarge rungs 1, 2 (vacuole-facing side),
 5 and 7, which needs papers read one by one, and data that sees the membrane side.
 
+**Second version 2026-11-08 (`notebooks/set_fingerprints_2026_11_08.ipynb`, `--literature`).** Literature
+mining of Europe PMC abstracts gave 49 rows, each with a quote that matches its abstract word for word, plus the
+PMID (`results/literature_set_candidates_2026_11_08/`). 46 rows were mapped to gene ids. 7 rows were left out:
+side not stated, ectopic expression only, a name that matches the wrong gene, or a protein placed on both sides.
+17 genes were added or moved (`results/set_fingerprints_2026_11_08/literature_changes.tsv`). Notably, 8 review
+"host-facing" PVM genes (GRA6, GRA9, GRA12, GRA42, MYR1-3) are vacuole-facing by their quotes, and GRA45 moves
+the other way. The review recorded only host-facing yes/no, not the side.
+Ladder: rung 1: 5 genes, rung 2 (new): 14, rung 3: 39, rung 4: 26, rung 5: 4 (not scored), rung 6: 9, rung 7: 5.
+**Six rungs pass the per-rung gate**: held-out AUROC is 0.94-0.98, against 0.78-0.83 for dense granule
+proteins. Confusion is reported. **The sides are still not separated**: held-out host-facing members go 9 to
+their own rung, 8 to vacuole-facing and 8 to vacuole-resident, and vacuole-facing members go only 3 of 14 to
+their own. The ladder-level success test (rung 4 large enough to lift host-facing precision above 0.822) is
+**not met**: rung 4 shrank from 32 to 26 as genes moved to rung 2. The candidate ranking is not informative
+in this version: its top hits are not dense granule proteins. Open: rung 5 (host cytosol, 4 genes); full-text
+mining for rungs 4 and 5; data that sees the membrane side. Einar may want the review-vs-literature side
+overrides checked (17 listed).
+
 Requested 2026-11-05. The second kind of fingerprint, and the one that bears directly on the
 host-facing failure.
 

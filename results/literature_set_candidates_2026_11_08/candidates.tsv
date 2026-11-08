@@ -1,0 +1,50 @@
+protein	gene_id	category	pmids	year	quote	method
+GRA16	TGME49_208830	host_nucleus	23601110	2013	GRA16 as a dense granule protein that is exported through the PV membrane and reaches the host cell nucleus	IF; export assay
+GRA24	TGME49_230180	host_nucleus	24043761	2013	GRA24, a novel dense granule protein which traffics from the vacuole to the host cell nucleus	IF; knockout
+GRA28		host_nucleus	34781732	2021	GRA28 is secreted into the host cell, where it localizes to the nucleus	IF; knockout
+HCE1/TEEGR		host_nucleus	31040242	2019	a novel Toxoplasma effector protein that is exported from the parasitophorous vacuole in a MYR1-dependent manner and localizes to the host's nucleus	IF; heterologous expression
+HCE1/TEEGR		host_nucleus	31036909	2019	Once exported into the host cell, TEEGR ends up in the nucleus	IF
+TgIST		host_nucleus	27414498	2016	(TgIST), translocates to the host cell nucleus, where it recruits Mi-2/NuRD to STAT1-dependent promoters	IF; ChIP
+TgNSM		host_nucleus	34043960	2021	secreted effectors that localize to the host cell nucleus and find that the chronic bradyzoite stage secretes effector TgNSM	IF
+GRA84		host_nucleus	40464784	2025	secreted into the PV and exported into the host cell nucleus	IF; knockout
+TgPP2C-hn		host_nucleus	17085638	2007	deliver a parasite-derived protein phosphatase 2C (PP2C-hn) into the host cell and direct it to the host nucleus	IF; invasion assay
+GRA10		host_nucleus	17876161	2007	Toxoplasma gondii GRA10 expressed as a GFP-GRA10 fusion protein in HeLa cells moved to the nucleoli within the nucleus	ectopic expression in host cells (not infection)
+GRA18		host_cytosol	30320549	2018	GRA18 that once released in the host cell cytoplasm forms versatile complexes with regulatory elements of the β-catenin destruction complex	IF; co-IP
+TgWIP		host_cytosol	31600500	2019	TgWIP is secreted into the host cell upon invasion and interacts with the host WAVE regulatory complex and SHP2 phosphatase	IF; co-IP
+GRA45		pvm_host_facing	33067458	2020	critical for correct localization of GRAs into the PVM and secretion of GRA effectors into the host cytoplasm	CRISPR screen; IF
+ROP18	TGME49_205250	pvm_host_facing	22906355	2012	ROP18 traffics to the parasitophorous vacuole membrane (PVM) where it is tethered to the cytosolic face of this host-pathogen interface	IF; mutagenesis
+ROP17		pvm_host_facing	31366709	2019	ROP17 resides on the host cytosol side of the PVM in infected cells	IF; trans-complementation
+ROP54		pvm_host_facing	27303719	2016	ROP54, which is injected into the host cell upon invasion and traffics to the cytoplasmic face of the parasitophorous vacuole membrane (PVM)	IF; knockout
+GRA64	TGME49_202620	pvm_host_facing	35730903	2022	GRA64 is on the parasitophorous vacuolar membrane (PVM) and is partially exposed to the host cell cytoplasm	IF; BioID/co-IP
+GRA14		pvm_host_facing	18765740	2008	GRA14 has an unexpected topology in the PVM with its C terminus facing the host cytoplasm and its N terminus facing the vacuolar lumen	topology (protease protection/IF)
+GRA5		pvm_host_facing	10198072	1999	GRA5 was inserted into the PVM as a transmembrane protein with its N-terminal domain extending into the cytoplasm and its C terminus in the vacuole lumen	topology assay
+GRA61	TGGT1_269950	pvm_host_facing	34749525	2021	validate three parasite proteins (TGGT1_269950 [GRA61], TGGT1_215360 [GRA62], and TGGT1_217530 [GRA63]) and four new host proteins	miniTurbo proximity labelling at host-cytosolic PVM face; IF
+GRA62	TGGT1_215360	pvm_host_facing	34749525	2021	validate three parasite proteins (TGGT1_269950 [GRA61], TGGT1_215360 [GRA62], and TGGT1_217530 [GRA63]) and four new host proteins	miniTurbo proximity labelling at host-cytosolic PVM face; IF
+GRA63	TGGT1_217530	pvm_host_facing	34749525	2021	validate three parasite proteins (TGGT1_269950 [GRA61], TGGT1_215360 [GRA62], and TGGT1_217530 [GRA63]) and four new host proteins	miniTurbo proximity labelling at host-cytosolic PVM face; IF
+GRA3		pvm_host_facing	19127325	2008	GRA3 and CAMLG were shown to be co-localized in the PVM of host cells	IF; Y2H
+GRA14		pvm_vacuole_facing	18765740	2008	targeted to membranous structures within the vacuole known as the intravacuolar network and to the vacuolar membrane surrounding the parasite	IF; topology
+GRA5		pvm_vacuole_facing	10198072	1999	GRA5 was inserted into the PVM as a transmembrane protein with its N-terminal domain extending into the cytoplasm and its C terminus in the vacuole lumen	topology assay
+GRA2		pvm_vacuole_facing	12134078	2002	the unique nanotubule conformation of the network is induced by the parasite secretory protein GRA2	immuno-EM/IF; knockout
+GRA6		pvm_vacuole_facing	10498186	1999	GRA6 was rapidly translocated to the posterior end of the parasite where, like previously reported for GRA2, it bound to a cluster of multi-lamellar vesicles that give rise to the network	IF; fractionation
+GRA4		pvm_vacuole_facing	10498186	1999	GRA4 was distributed throughout the lumen of the vacuole and only later became associated with the mature network	IF; fractionation
+GRA9		pvm_vacuole_facing	15491588	2004	GRA9, like GRA2, GRA4 and GRA6, associates with the network of tubular membranes connected to the parasitophorous vacuole delimiting membrane	IF; immuno-EM
+GRA12		pvm_vacuole_facing	33883265	2021	Similar to GRA12, GRA12A, GRA12B, and GRA12D colocalized with the dense granules in extracellular tachyzoites, with GRA2 and the intravacuolar network	IF; knockout
+GRA12A/B/D		pvm_vacuole_facing	33883265	2021	GRA12A, GRA12B, and GRA12D colocalized with the dense granules in extracellular tachyzoites, with GRA2 and the intravacuolar network	IF
+GRA83		pvm_vacuole_facing	37768053	2023	a novel dense granule protein named GRA83, which localizes to the parasitophorous vacuole (PV) in tachyzoites and bradyzoites	IF; knockout
+MYR1	TGGT1_254470	pvm_vacuole_facing	26838724	2016	both of which are ultimately found within the parasitophorous vacuole and at the parasitophorous vacuole membrane	IF; knockout
+MYR2		pvm_vacuole_facing	29357375	2018	MYR2 and MYR3 are secreted into the PV space and co-localize with PV membranes and MYR1	IF; co-IP
+MYR3		pvm_vacuole_facing	29357375	2018	MYR2 and MYR3 are secreted into the PV space and co-localize with PV membranes and MYR1	IF; co-IP
+GRA44		pvm_vacuole_facing	32075881	2020	both major cleavage fragments are secreted into the parasitophorous vacuole	IF; western
+MYR4	TGGT1_211460	pvm_vacuole_facing	32075880	2020	several MYR1-interacting and novel PV-localized proteins via affinity purification of MYR1, including TGGT1_211460 (dubbed MYR4)	affinity purification of MYR1; IF
+GRA35		pvm_vacuole_facing	30622189	2019	GRA42 and GRA43 mediate the correct localization of other GRAs, including GRA35, to the parasitophorous vacuole membrane	IF; knockout (PVM, side not stated)
+GRA42		pvm_vacuole_facing	30622189	2019	Deletion of GRA42 or GRA43 resulted in GRA35 (and other GRAs) being retained inside the parasitophorous vacuole	IF; knockout
+GRA43		pvm_vacuole_facing	30622189	2019	Deletion of GRA42 or GRA43 resulted in GRA35 (and other GRAs) being retained inside the parasitophorous vacuole	IF; knockout
+MAF1b		host_organelle_or_pm	24781109	2014	we use exogenous expression of MAF1 to show that it binds host mitochondria	IF; heterologous expression; knockout
+MAF1b		host_organelle_or_pm	28567444	2017	knockdown of two MIB complex components, MIC60 and SAM50, substantially reduces mitochondrial association with the parasitophorous vacuole membrane	IF; co-IP
+ROP39		host_organelle_or_pm	34590698	2021	ROP39 expressed exogenously in HFFs localized on host mitochondria	IF; mito fractionation
+RON2	TGME49_300100	moving_junction	24651769	2014	RON2 spans the host plasma membrane while RONs 4/5/8 localize to its cytosolic face	IF; invasion assays
+RON4		moving_junction	24651769	2014	RONs 4/5/8 localize to its cytosolic face	IF
+RON5		moving_junction	19134112	2009	We report here two novel MJ proteins, RON5 and RON8	IF; co-IP
+RON8		moving_junction	19134112	2009	Upon secretion, we show that RON8 within the MJ localizes to the cytoplasmic face of the host plasma membrane	IF; differential permeabilisation
+RON4L1		moving_junction	29263399	2017	Upon secretion during invasion, RON4L1 is associated with MJ and targeted to the cytosolic face of the host membrane	IF; knockout
+AMA1	TGME49_255260	moving_junction	19247437	2009	AMA1 and RON4 in particular, have been localised to the MJ during invasion	IF

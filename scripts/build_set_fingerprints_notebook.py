@@ -18,7 +18,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from notebook_runner import ExecutedNotebook  # noqa: E402
 
-DATE = "2026_11_06"
+LITERATURE = "--literature" in sys.argv   # add results/literature_set_candidates_2026_11_08/literature_rungs.tsv
+DATE = "2026_11_08" if LITERATURE else "2026_11_06"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "results", f"set_fingerprints_{DATE}")
 NB = os.path.join(REPO, "notebooks", f"set_fingerprints_{DATE}.ipynb")
@@ -27,7 +28,7 @@ NB = os.path.join(REPO, "notebooks", f"set_fingerprints_{DATE}.ipynb")
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     nb = ExecutedNotebook("Set fingerprints for the host-facing compartment ladder",
-                          namespace={"REPO": REPO, "OUT": OUT})
+                          namespace={"REPO": REPO, "OUT": OUT, "LITERATURE": LITERATURE})
     nb.md(
         "**What this is.** Instruction 82 asks for fingerprints of *gene sets* defined by the "
         "literature -- proteins on the host-facing side of the vacuole membrane, proteins exported "
@@ -73,6 +74,19 @@ def main() -> None:
         "truth['rung'] = truth.apply(rung_of, axis=1)",
         "ladder = truth[truth.rung != ''][['gene_id', 'protein', 'rung', 'deciding_strength',",
         "                                  'deciding_pmid']]",
+        "changes = pd.DataFrame()",
+        "if LITERATURE:   # literature rungs (scripts/merge_literature_ladder.py): new genes join; PVM genes take the quoted side",
+        "    lit = pd.read_csv(os.path.join(REPO, 'results/literature_set_candidates_2026_11_08/literature_rungs.tsv'), sep='\\t')",
+        "    lit = lit.assign(deciding_strength='direct', deciding_pmid=lit.pmids)",
+        "    old = ladder.set_index('gene_id').rung",
+        "    pvm = set(truth[truth.deciding_place.astype(str).str.startswith(('PVM', 'PV_'))].gene_id)",
+        "    take = lit[~lit.gene_id.isin(old.index) | lit.gene_id.isin(pvm)]",
+        "    changes = take.assign(review_rung=take.gene_id.map(old).fillna('(not in the review)'))",
+        "    changes = changes[changes.review_rung != changes.rung][['gene_id', 'protein', 'review_rung', 'rung', 'pmids']]",
+        "    ladder = pd.concat([ladder[~ladder.gene_id.isin(take.gene_id)],",
+        "                        take[['gene_id', 'protein', 'rung', 'deciding_strength', 'deciding_pmid']]], ignore_index=True)",
+        "    changes.to_csv(os.path.join(OUT, 'literature_changes.tsv'), sep='\\t', index=False)",
+        "    print(len(changes), 'genes added or moved by the literature')",
         "ladder = ladder[ladder.gene_id.isin(set(nodes.gene_id.astype(str)))]",
         "ladder.to_csv(os.path.join(OUT, 'ladder.tsv'), sep='\\t', index=False)",
         "counts = ladder.groupby('rung').agg(genes=('gene_id', 'size'),",
@@ -200,8 +214,8 @@ def main() -> None:
         "cand.head(25)")
 
     nb.md("## 6 · What this shows, and what it does not",
-          "* The ladder is only as large as the graded review; rungs 1, 5, 6 and 7 have too few "
-          "members to be scored and need the literature mining the instruction describes.",
+          "* The ladder is only as large as its graded sources; a rung with fewer than 5 members is "
+          "not scored (section 1) and needs more papers read.",
           "* A fingerprint that is not above the dense-granule baseline knows no more than "
           "'this is a dense granule protein' -- reported as such.",
           "* **Host-facing and vacuole-resident are not told apart by these profiles**: held-out "
@@ -230,7 +244,9 @@ def _readme() -> None:
     lines = ["# Set fingerprints for the host-facing compartment ladder (instruction 82)", "",
              f"Notebook: `notebooks/set_fingerprints_{DATE}.ipynb` (executed). Builder: "
              "`scripts/build_set_fingerprints_notebook.py`. Ladder from "
-             "`results/host_facing_truth_2026_11_04` only; place columns excluded.", "",
+             "`results/host_facing_truth_2026_11_04`" + (
+                 " plus the literature rungs (`literature_changes.tsv` lists every gene added or moved)"
+                 if LITERATURE else " only") + "; place columns excluded.", "",
              "## Held-out recovery (AUROC, leave-one-out)", "", _md(rec), "",
              "## Confusion between scored rungs (row: true, column: assigned)", "",
              _md(conf, index=True), "",

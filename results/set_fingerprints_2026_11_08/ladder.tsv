@@ -1,0 +1,103 @@
+gene_id	protein	rung	deciding_strength	deciding_pmid
+TGME49_204270	GRA60	4 vacuole-resident (hard negative)	direct	33040458
+TGME49_204340	GRA54	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_208370	GRA46	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_213067	GRA36	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_215220	GRA22	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_215980	hypothetical protein	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_219810	GRA40	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_230705	GRA51	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_232000	GRA30	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_236890	GRA37	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_240090	ROP34	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_244530	GRA49	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_254000	GRA47	4 vacuole-resident (hard negative)	direct	38380952
+TGME49_260520	dense granule protein GRA53	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_267740	GRA48	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_268790	GRA58	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_269690	GRA29	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_270250	GRA1	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_270320	PPM3C	4 vacuole-resident (hard negative)	inferred	33370417
+TGME49_275860	GRA12B	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_289380	GRA39	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_309760	GRA55	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_309930	GRA56	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_312420	GRA38	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_313440	GRA59	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_319340	GRA52	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_203290	GRA34	3 PVM, host-facing	proximity	34749525
+TGME49_203310	GRA7	3 PVM, host-facing	direct	26247512
+TGME49_203600	GRA50	3 PVM, host-facing	proximity	34749525
+TGME49_204130	PLP1	3 PVM, host-facing	direct	19095897
+TGME49_208030	MIC4	7 host organelle or plasma membrane	direct	42791346
+TGME49_208830	GRA16	6 host nucleus	direct	23601110
+TGME49_212300	GRA32	3 PVM, host-facing	proximity	34749525
+TGME49_214080	toxofilin	5 exported to the host cytosol	direct	19732057
+TGME49_215785	ROP2	3 PVM, host-facing	direct	11448993
+TGME49_217680	GRA57	3 PVM, host-facing	proximity	34749525
+TGME49_218520	MIC6	7 host organelle or plasma membrane	direct	42791346
+TGME49_220240	GRA31	3 PVM, host-facing	proximity	34749525
+TGME49_220950	hypothetical protein	3 PVM, host-facing	proximity	34749525
+TGME49_222170	GRA17	3 PVM, host-facing	direct	25974303
+TGME49_226380	GRA35	3 PVM, host-facing	direct	38376248
+TGME49_227280	GRA3	3 PVM, host-facing	direct	19127325
+TGME49_229010	RON4	1 injected at the moving junction	direct	16309467
+TGME49_230180	GRA24	6 host nucleus	direct	24043761
+TGME49_231960	GRA28	6 host nucleus	direct	34781732
+TGME49_235140	TgNSM	6 host nucleus	direct	34043960
+TGME49_237880	GRA13	3 PVM, host-facing	proximity	34749525
+TGME49_239010	TEEGR	6 host nucleus	direct	31036909
+TGME49_239740	GRA14	3 PVM, host-facing	direct	18765740
+TGME49_240060	TgIST	6 host nucleus	direct	27414498
+TGME49_247440	GRA33	3 PVM, host-facing	proximity	34749525
+TGME49_247520	TgWIP	5 exported to the host cytosol	direct	31600500
+TGME49_254720	GRA8	3 PVM, host-facing	proximity	34749525
+TGME49_261740	ROP47	6 host nucleus	direct	24070999
+TGME49_262050	ROP39	7 host organelle or plasma membrane	direct	34590698
+TGME49_262730	ROP16	6 host nucleus	direct	17183270
+TGME49_263090	14-3-3 protein	3 PVM, host-facing	proximity	34749525
+TGME49_270240	MAG1	5 exported to the host cytosol	direct	34006649
+TGME49_272460	GRA72	3 PVM, host-facing	direct	38380952
+TGME49_275470	GRA15	3 PVM, host-facing	direct	21199955
+TGME49_277270	NTPase II	3 PVM, host-facing	proximity	34749525
+TGME49_279100	MAF1a1	3 PVM, host-facing	direct	24781109
+TGME49_282055	PP2CHN	3 PVM, host-facing	proximity	34749525
+TGME49_286450	GRA5	3 PVM, host-facing	direct	10198072
+TGME49_288840	GRA18	5 exported to the host cytosol	direct	30320549
+TGME49_290700	GRA25	3 PVM, host-facing	proximity	34749525
+TGME49_291890	MIC1	7 host organelle or plasma membrane	direct	42791346
+TGME49_294970	GRA84	6 host nucleus	direct	40464784
+TGME49_295110	ROP7	3 PVM, host-facing	proximity	34749525
+TGME49_295125	ROP4	3 PVM, host-facing	direct	15470260
+TGME49_297880	GRA23	3 PVM, host-facing	direct	25974303
+TGME49_300100	RON2	7 host organelle or plasma membrane	direct	19247437
+TGME49_304740	ROP35	3 PVM, host-facing	proximity	34749525
+TGME49_306060	RON8	1 injected at the moving junction	direct	19134112
+TGME49_308090	ROP5	3 PVM, host-facing	direct	22761577
+TGME49_309590	ROP1	3 PVM, host-facing	proximity	34749525
+TGME49_311470	RON5	1 injected at the moving junction	direct	24651769
+TGME49_320490	GRA66	3 PVM, host-facing	direct	42818749
+TGME49_202620	GRA64	3 PVM, host-facing	direct	35730903
+TGME49_205250	ROP18	3 PVM, host-facing	direct	22906355
+TGME49_210370	ROP54	3 PVM, host-facing	direct	27303719
+TGME49_211460	MYR4	2 PVM, vacuole-facing	direct	32075880
+TGME49_215360	GRA62	3 PVM, host-facing	direct	34749525
+TGME49_217530	GRA63	3 PVM, host-facing	direct	34749525
+TGME49_220890	GRA12A/B/D	2 PVM, vacuole-facing	direct	33883265
+TGME49_227620	GRA2	2 PVM, vacuole-facing	direct	12134078
+TGME49_228170	GRA44	2 PVM, vacuole-facing	direct	32075881
+TGME49_236870	GRA42	2 PVM, vacuole-facing	direct	30622189
+TGME49_237015	GRA43	2 PVM, vacuole-facing	direct	30622189
+TGME49_237230	MYR3	2 PVM, vacuole-facing	direct	29357375
+TGME49_251540	GRA9	2 PVM, vacuole-facing	direct	15491588
+TGME49_253370	RON4L1	1 injected at the moving junction	direct	29263399
+TGME49_254470	MYR1	2 PVM, vacuole-facing	direct	26838724
+TGME49_255260	AMA1	1 injected at the moving junction	direct	19247437
+TGME49_258580	ROP17	3 PVM, host-facing	direct	31366709
+TGME49_269950	GRA61	3 PVM, host-facing	direct	34749525
+TGME49_270700	MYR2	2 PVM, vacuole-facing	direct	29357375
+TGME49_275440	GRA6	2 PVM, vacuole-facing	direct	10498186
+TGME49_288650	GRA12	2 PVM, vacuole-facing	direct	33883265
+TGME49_297900	GRA83	2 PVM, vacuole-facing	direct	37768053
+TGME49_310780	GRA4	2 PVM, vacuole-facing	direct	10498186
+TGME49_316250	GRA45	3 PVM, host-facing	direct	33067458

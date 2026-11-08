@@ -1,0 +1,7 @@
+	1 injected at the moving junction	2 PVM, vacuole-facing	3 PVM, host-facing	4 vacuole-resident (hard negative)	6 host nucleus	7 host organelle or plasma membrane
+1 injected at the moving junction	3	0	0	1	0	1
+2 PVM, vacuole-facing	0	3	1	3	5	2
+3 PVM, host-facing	2	8	9	8	6	6
+4 vacuole-resident (hard negative)	1	6	2	12	1	4
+6 host nucleus	0	2	2	0	5	0
+7 host organelle or plasma membrane	1	0	1	0	0	3
