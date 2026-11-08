@@ -1,0 +1,32 @@
+{
+ "summary": {
+  "runs": 460,
+  "studies": 38,
+  "accuracy": 0.876,
+  "chance": 0.161,
+  "study_majority_right": 0.868,
+  "recall": {
+   "I": 0.906,
+   "II": 0.931,
+   "III": 0.0
+  },
+  "studies_per_type": {
+   "I": 25,
+   "II": 14,
+   "III": 1
+  },
+  "validated_types": [
+   "I",
+   "II"
+  ],
+  "accuracy_validated_types": 0.918
+ },
+ "snapshot": "20261108T141047Z-896",
+ "version": "v1",
+ "annotated_runs": 369,
+ "stated": {
+  "I": 223,
+  "II": 216,
+  "III": 21
+ }
+}

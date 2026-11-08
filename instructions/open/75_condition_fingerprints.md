@@ -1,5 +1,5 @@
 # 75 · Condition fingerprints: annotate every dataset with metadata nobody published
-**Status: v1 2026-11-06 -- 2 of 8 axes shipped (cell cycle, bradyzoite), each validated on held-out studies; the other 6 open.** Requested 2026-11-05. Moved out of instruction 71 product 5 so it has its own item.
+**Status: v1 -- 3 of 8 axes shipped (cell cycle, bradyzoite 2026-11-06; strain type 2026-11-08), each validated on held-out studies; the other 5 wait on data that states them.** Requested 2026-11-05. Moved out of instruction 71 product 5 so it has its own item.
 
 ## The request (Einar)
 Build a fingerprint from a dataset that samples a condition axis in distinct samples (cell-cycle stages, for
@@ -78,3 +78,22 @@ bradyzoites or under alkaline stress, so the RNA-built bradyzoite fingerprint ha
 tested on. The only stage-stating proteome is the oocyst iTRAQ set (8 ratio columns), whose channel-to-stage
 mapping is not recorded clearly enough to grade an oocyst axis against. This axis waits on the uniform PRIDE
 search (instruction 69) reaching a bradyzoite or oocyst proteome with stated samples.
+
+## Strain type (2026-11-08): the positive control, shipped
+
+`scripts/build_strain_fingerprint_notebook.py` -> `notebooks/strain_fingerprint_2026_11_08.ipynb`,
+`results/strain_fingerprint_2026_11_08/` (leave-one-study-out rows, annotations, summary). Stated strain read from
+the run attributes whose key names the parasite strain (mouse/host strain keys skipped): type I (RH, GT1), II (ME49,
+Prugniaud/Pru/PTG), III (VEG, CTG, CEP); 460 runs in 40 studies state a type (I 223, II 216, III 21).
+
+Validation, leave one study out (gene selection and centroids from the other studies only; nearest centroid by
+correlation over the 300 genes that best separate the types in training): **91.8 % of held-out runs right on the
+types that can be validated (I recall 90.6 %, II 93.1 %; 87.6 % over all 460 runs)**, the majority of runs right in
+33 of 38 studies. Type III is stated by a single study (GSE218921), so it cannot be validated by leaving studies
+out -- with that study held out, no type III run is left to learn from (0 of 21); it is reported as unvalidated
+and inferred type III calls are flagged `type_validated=False`. Two other studies miss: PRJNA753595 (type I, 0 of
+12) and PRJNA884543 (type II, 2 of 6).
+
+Annotations for the 369 runs that state no strain are written as inferred (`filled:strain_type@v1`, with the
+correlation margin), never evidence for a gene. Stated limit: reads are mapped to the ME49 (type II) reference, so
+part of the signal is mapping of polymorphic genes, which follows strain origin but is not purely expression.
