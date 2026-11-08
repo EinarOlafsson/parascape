@@ -25,7 +25,7 @@ sys.path.insert(0, os.getcwd())
 
 from notebook_runner import ExecutedNotebook  # noqa: E402
 
-DATE = "2026_11_07"   # 2026_11_05 first pass; 2026_11_06 curated baits; 2026_11_07 four more projects
+DATE = "2026_11_08"   # 2026_11_05 first pass; 2026_11_06 curated baits; 2026_11_07 four more projects; 2026_11_08 97 finished
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "results", f"pulldown_background_{DATE}")
 NB = os.path.join(REPO, "notebooks", f"pulldown_background_{DATE}.ipynb")

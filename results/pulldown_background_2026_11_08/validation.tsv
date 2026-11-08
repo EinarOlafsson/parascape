@@ -1,0 +1,312 @@
+set_name	kind	symbol	gene_id	product_name	experiments_detected	n_experiments	frequency	median_abundance	median_psm_ppm	compartment
+GAPDH	expected frequent flyer	GAPDH	TGME49_269190	glyceraldehyde-3-phosphate dehydrogenase GAPDH2	42	50	0.84	583.3124909232365	791.6693836525794	apicoplast
+GAPDH	expected frequent flyer	GAPDH	TGME49_289690	glyceraldehyde-3-phosphate dehydrogenase GAPDH1	39	50	0.78	1417.6854443063053	1078.2318107148662	cytosol
+HSP70/HSP90	expected frequent flyer	HSP70/HSP90	TGME49_273760	heat shock protein HSP70	47	50	0.94	4074.9509321537153	4650.3885665819225	cytosol
+HSP70/HSP90	expected frequent flyer	HSP70/HSP90	TGME49_288380	heat shock protein HSP90	44	50	0.88	1816.2776108261605	2071.605286197754	cytosol
+HSP70/HSP90	expected frequent flyer	HSP70/HSP90	TGME49_244560	heat shock protein 90, putative	40	50	0.8	1639.7019873760323	1530.6966821340343	ER 2
+actin	expected frequent flyer	actin	TGME49_209030	actin ACT1	48	50	0.96	10568.361186215072	10067.00034991758	cytosol
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_227360	ribosomal protein RPL3	47	50	0.94	3031.90515563734	2189.5909371253606	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_204020	ribosomal protein RPL8	47	50	0.94	3544.3591536879785	2280.332080721561	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_309120	ribosomal protein RPL4	46	50	0.92	1955.239122812593	2199.2710740578586	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_226970	ribosomal protein RPS11	46	50	0.92	2400.4272592980783	2410.414211076022	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_263700	ribosomal protein RPS14	46	50	0.92	2765.06063494476	2064.9493159515473	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_245460	ribosomal protein RPS8	45	50	0.9	2582.3275749300765	2546.1298724903063	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_232710	ribosomal protein RPS3A	44	50	0.88	3046.0117522685177	2615.8719448528227	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_232300	ribosomal protein RPS3	44	50	0.88	1702.4052731021038	1858.3229934933015	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_288720	ribosomal protein RPL10	44	50	0.88	2021.298711220138	1763.256486659302	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_262670	ribosomal protein RPL18A	44	50	0.88	1663.1150528840976	1552.0405612325374	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_263040	ribosomal protein RPS16	44	50	0.88	1528.4046048903056	1852.1290801550692	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_299050	ribosomal protein RPL17	43	50	0.86	1991.9292408971762	1836.2251699630165	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_242330	ribosomal protein RPS5	43	50	0.86	1083.7122267891605	1167.2905782715586	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_215460	ribosomal protein RPS24	43	50	0.86	3066.106489483459	1947.611193766784	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_267400	ribosomal protein RPL32	43	50	0.86	2408.993325164688	1923.9860198215836	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_261570	ribosomal protein RPL7A	42	50	0.84	2387.0415155542405	1683.267894667185	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_207440	ribosomal protein RPS4	42	50	0.84	4058.9844310771196	3876.0195196987543	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_263050	ribosomal protein RPL13	42	50	0.84	1914.6636745147352	1932.3702085437294	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_284560	ribosomal protein RPL9	42	50	0.84	1317.518965335627	1389.755348587963	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_248480	ribosomal protein RPS9	42	50	0.84	1918.3794673848706	1318.0179112843134	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_289530	ribosomal protein RPL19	42	50	0.84	924.4401246514301	607.5084629158976	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_238010	ribosomal protein RPL23A	42	50	0.84	1107.6210621949792	553.467102498935	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_225080	ribosomal protein RPS18	42	50	0.84	2652.8209870391634	1860.1671929433683	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_270380	ribosomal protein RPS13	42	50	0.84	1719.4819297851516	1471.2453822660163	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_229670	ribosomal protein RPS23	42	50	0.84	2706.3901843661433	3049.022767013653	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_312090	ribosomal protein RPL23	42	50	0.84	657.5506459110215	684.0538269300182	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_305520	ribosomal protein RPS2	41	50	0.82	1760.0593660603042	1061.7102612781111	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_314810	ribosomal protein RPL7	41	50	0.82	1549.733895623682	1241.3830481427765	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_292130	ribosomal protein RPL13A	41	50	0.82	1469.792201253959	1467.0532159456293	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_239100	ribosomal protein RPS7	41	50	0.82	1756.0488261650107	1638.9363984060096	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_309820	ribosomal protein RPL11	41	50	0.82	1201.4020190778797	873.7888499228136	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_245680	ribosomal protein RPL21	41	50	0.82	1370.27486162639	1073.474051278407	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_262690	ribosomal protein RPL27	41	50	0.82	1009.5611836783683	873.7490872133169	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_210690	ribosomal protein RPS6	40	50	0.8	2539.2782041057912	2567.0664151133824	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_313390	ribosomal protein RPL6	40	50	0.8	2113.8570313832297	1631.7132391774007	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_244320	ribosomal protein RPL24	40	50	0.8	741.465205470678	726.503476378673	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_213350	ribosomal protein RPS15	40	50	0.8	779.8302439700336	1304.085235850278	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_310490	ribosomal protein RPL27A	40	50	0.8	2094.212754992882	987.9763753642935	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_248390	ribosomal protein RPL26	40	50	0.8	1638.5770356483079	1688.733162629781	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_267060	ribosomal protein RPL14	40	50	0.8	793.9160513529511	945.2732125609709	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_239760	ribosomal protein RPL22	40	50	0.8	727.7510233486973	638.7932861404122	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_234450	ribosomal protein RPS15A	40	50	0.8	718.3371296317017	697.8989013087881	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_243570	ribosomal protein RPS26	40	50	0.8	1142.524794386047	549.7140287800253	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_300000	ribosomal protein RPL18	39	50	0.78	1905.1896631061138	1968.9421454164676	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_231140	ribosomal protein RPS25	39	50	0.78	781.576455868474	518.1777220313018	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_218410	ribosomal protein RPP0	38	50	0.76	874.6029614171175	753.02000240858	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_228470	ribosomal protein RPL15	38	50	0.76	763.7173717893274	651.6360443582018	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_254440	ribosomal protein RPL12	38	50	0.76	239.41903419378895	192.46372381846385	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_229250	ribosomal protein RPL28	38	50	0.76	699.8927483253856	635.8863020575726	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_266070	ribosomal protein RPL31	38	50	0.76	977.4035612793225	787.5977699599032	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_215470	ribosomal protein RPL10A	37	50	0.74	396.05287450425783	549.6641210306842	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_212290	ribosomal protein RPS19	37	50	0.74	932.2071438819196	761.20963893534	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_207840	ribosomal protein RPS17	37	50	0.74	1722.2600716045217	1224.4017814431395	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_231080	ribosomal protein RPL38	36	50	0.72	443.5080450252218	663.759734378118	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_227600	ribosomal protein RPL34	35	50	0.7	618.9107786122856	353.63178443296266	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_250810	ribosomal protein RPL35	35	50	0.7	684.8472136069597	1323.374914355589	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_232230	ribosomal protein RPL30	35	50	0.7	316.63056996216517	301.7571657145499	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_203630	ribosomal protein RPL44	35	50	0.7	1257.8226559002446	1134.9932161627278	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_249250	ribosomal protein RPL35A	34	50	0.68	609.5464777145066	548.0803452871253	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_238250	ribosomal protein RPL36	33	50	0.66	455.8563242634322	578.6341675457107	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_309810	ribosomal protein RPP2	32	50	0.64	263.2684651669081	346.3941583540037	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_239330	ribosomal protein RPL37	30	50	0.6	264.9637855723096	545.1542072798647	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_205340	ribosomal protein RPS12	27	50	0.54	182.2907776650075	154.9616357456953	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_300190	ribosomal protein RPL37A	27	50	0.54	277.71839952987733	207.90497825633676	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_264450	DNA topoisomerase III beta-1, putative	19	50	0.38	50.30869138756526	51.28733752391207	60S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_245620	ribosomal-ubiquitin protein RPS27A	19	50	0.38	372.7384548856235	202.8664793992152	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_240590	DNA-directed RNA polymerase II RPB5	17	50	0.34	53.59173122654983	95.10792658568835	40S ribosome
+cytosolic ribosome (hyperLOPIT marker)	expected frequent flyer	ribosome	TGME49_254300	hypothetical protein	13	50	0.26	88.00834586636189	28.28998521110957	40S ribosome
+enolase	expected frequent flyer	enolase	TGME49_268850	enolase 2	25	50	0.5	250.8068102108581	590.8377892776253	cytosol
+enolase	expected frequent flyer	enolase	TGME49_268860		0	50	0.0			
+tubulin	expected frequent flyer	tubulin	TGME49_316400	alpha tubulin TUBA1	48	50	0.96	5946.907327448645	7826.221859780968	tubulin cytoskeleton
+tubulin	expected frequent flyer	tubulin	TGME49_266960	beta tubulin	42	50	0.84	1124.432112595892	1086.1205422179537	tubulin cytoskeleton
+tubulin	expected frequent flyer	tubulin	TGME49_221620	beta-tubulin, putative	37	50	0.74	371.752049589139	540.9003994317933	tubulin cytoskeleton
+tubulin	expected frequent flyer	tubulin	TGME49_226870	tubulin gamma chain	24	50	0.48	36.84866512791504	61.04473921235467	nucleus - chromatin
+tubulin	expected frequent flyer	tubulin	TGME49_231770		0	50	0.0			
+tubulin	expected frequent flyer	tubulin	TGME49_212240		0	50	0.0			
+AMA1-RON	known complex	RON4	TGME49_229010	rhoptry neck protein RON4	42	50	0.84	1561.6700764013128	1839.095996542646	rhoptries 1
+AMA1-RON	known complex	RON2	TGME49_300100	rhoptry neck protein RON2	41	50	0.82	1483.336821659962	1633.2090724562604	rhoptries 1
+AMA1-RON	known complex	AMA1	TGME49_255260	apical membrane antigen AMA1	38	50	0.76	614.1456742936277	1135.345187430853	micronemes
+MIC2-M2AP	known complex	MIC2	TGME49_201780	microneme protein MIC2	30	50	0.6	210.55056643904206	177.7297967714451	micronemes
+MIC2-M2AP	known complex	M2AP	TGME49_214940	MIC2-associated protein M2AP	29	50	0.58	185.66333192547836	167.33601359235783	micronemes
+MORC/HDAC3	known complex	MORC	TGME49_305340	ATPase MORC	35	50	0.7	112.9041400583677	252.93470383458282	nucleus - chromatin
+MORC/HDAC3	known complex	HDAC3	TGME49_227290	histone deacetylase HDAC3	25	50	0.5	42.915188890179984	87.10346645198906	nucleus - chromatin
+MyoA glideosome	known complex	MyoA	TGME49_235470	myosin A	43	50	0.86	1881.929899511305	2655.7908125266576	IMC
+MyoA glideosome	known complex	GAP50	TGME49_219320	gliding-associated protein GAP50	40	50	0.8	1370.9854348593701	1021.3331033801937	IMC
+MyoA glideosome	known complex	MLC1	TGME49_257680	myosin light chain MLC1	36	50	0.72	382.3092839260223	501.8702704879397	IMC
+MyoA glideosome	known complex	GAP45	TGME49_223940	gliding-associated protein GAP45	33	50	0.66	268.1477081905639	247.27379136797344	IMC
+MyoA glideosome	known complex	GAP40	TGME49_249850	GAP40 protein	30	50	0.6	186.46901181132574	179.44069105702738	IMC
+MyoA glideosome	known complex	ELC1	TGME49_269442	essential light chain ELC1	20	50	0.4	56.92230333295994	53.766126149930386	IMC
+actin (any)	loose family (comparison only)	actin (any)	TGME49_209030	actin ACT1	48	50	0.96	10568.361186215072	10067.00034991758	cytosol
+actin (any)	loose family (comparison only)	actin (any)	TGME49_248630	actin-related protein ARP1	23	50	0.46	78.8747359628515	110.78456223998514	cytosol
+actin (any)	loose family (comparison only)	actin (any)	TGME49_248890	actin-like protein ALP3b	19	50	0.38	31.700272773833014	86.25606620396627	nucleus - chromatin
+actin (any)	loose family (comparison only)	actin (any)	TGME49_258050	actin like protein ALP2a	19	50	0.38	54.568178877989	126.57305063341356	nucleus - chromatin
+actin (any)	loose family (comparison only)	actin (any)	TGME49_219280	actin like protein ALP1	19	50	0.38	53.29685773091682	80.29119767530362	cytosol
+actin (any)	loose family (comparison only)	actin (any)	TGME49_220400	actin depolymerizing factor ADF	17	50	0.34	251.79614960817088	468.3180810619275	cytosol
+actin (any)	loose family (comparison only)	actin (any)	TGME49_253040	actin-related protein ARP4A	12	50	0.24	41.01572016599666	91.64029562206176	nucleus - chromatin
+actin (any)	loose family (comparison only)	actin (any)	TGME49_257710	actin-like protein ALP 5	5	50	0.1	24.480935939021908	54.022665463066424	unassigned
+actin (any)	loose family (comparison only)	actin (any)	TGME49_221410	actin-like protein ALP4	4	50	0.08	28.966157606959428	116.5826251616436	unassigned
+actin (any)	loose family (comparison only)	actin (any)	TGME49_234670	actin-like family protein	1	50	0.02	26.56595232350584	7.555661878513416	unassigned
+actin (any)	loose family (comparison only)	actin (any)	TGME49_269240	actin-like family protein	1	50	0.02		22.745695849543093	unassigned
+actin (any)	loose family (comparison only)	actin (any)	TGME49_294850		0	50	0.0			
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_273760	heat shock protein HSP70	47	50	0.94	4074.9509321537153	4650.3885665819225	cytosol
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_288380	heat shock protein HSP90	44	50	0.88	1816.2776108261605	2071.605286197754	cytosol
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_244560	heat shock protein 90, putative	40	50	0.8	1639.7019873760323	1530.6966821340343	ER 2
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_251780	heat shock protein	38	50	0.76	581.1685591521167	696.3301699644535	mitochondrion - soluble
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_247550	heat shock protein HSP60	37	50	0.74	463.687231169376	694.5100683156298	mitochondrion - soluble
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_286720	heat shock protein HSP28	31	50	0.62	291.9077443764487	244.60322167835133	mitochondrion - membranes
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_292920	heat shock protein 75, putative	21	50	0.42	313.02734344966865	379.8689082139573	mitochondrion - soluble
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_312600	heat shock protein HSP21	21	50	0.42	69.45568513686823	68.81628490520744	cytosol
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_310430	Hsp90 domain-containing protein	20	50	0.4	18.325285845522618	42.23346200316354	apicoplast
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_289600	heat shock protein HSP29	17	50	0.34	38.47908959681914	98.89883908825637	cytosol
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_318560	ATPase/histidine kinase/DNA gyrase B/HSP90 domain-containing protein	13	50	0.26	21.15334682774873	16.918017357146844	mitochondrion - soluble
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_232660	Hsp70 interacting protein HIP	12	50	0.24	114.8523294008295	93.15128174016331	cytosol
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_265310	heat shock protein 40, putative	12	50	0.24	80.51129160115369	91.38945266060439	nucleus - non-chromatin
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_321520	HSP20-like chaperone	7	50	0.14	49.40352178659843	60.924386121693104	cytosol
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_210800	activator of hsp90 ATPase, putative	4	50	0.08	92.55772896017326	40.01154189572094	cytosol
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_272230	heat shock protein hslv, putative	1	50	0.02		9.692639779717164	mitochondrion - soluble
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_310600	heat shock factor binding protein 1 protein	1	50	0.02	74.7383913710906	143.821649085211	unassigned
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_244020	activator of hsp90 atpase 1 family protein	1	50	0.02	38.910666797715116	23.81759657423635	cytosol
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_293260		0	50	0.0			
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_227050		0	50	0.0			
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_263170		0	50	0.0			
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_324600		0	50	0.0			
+heat shock (any)	loose family (comparison only)	heat shock (any)	TGME49_232940		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_227360	ribosomal protein RPL3	47	50	0.94	3031.90515563734	2189.5909371253606	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_204020	ribosomal protein RPL8	47	50	0.94	3544.3591536879785	2280.332080721561	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_309120	ribosomal protein RPL4	46	50	0.92	1955.239122812593	2199.2710740578586	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_226970	ribosomal protein RPS11	46	50	0.92	2400.4272592980783	2410.414211076022	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_263700	ribosomal protein RPS14	46	50	0.92	2765.06063494476	2064.9493159515473	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_245460	ribosomal protein RPS8	45	50	0.9	2582.3275749300765	2546.1298724903063	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_232710	ribosomal protein RPS3A	44	50	0.88	3046.0117522685177	2615.8719448528227	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_232300	ribosomal protein RPS3	44	50	0.88	1702.4052731021038	1858.3229934933015	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_288720	ribosomal protein RPL10	44	50	0.88	2021.298711220138	1763.256486659302	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_262670	ribosomal protein RPL18A	44	50	0.88	1663.1150528840976	1552.0405612325374	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_263040	ribosomal protein RPS16	44	50	0.88	1528.4046048903056	1852.1290801550692	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_299050	ribosomal protein RPL17	43	50	0.86	1991.9292408971762	1836.2251699630165	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_242330	ribosomal protein RPS5	43	50	0.86	1083.7122267891605	1167.2905782715586	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_215460	ribosomal protein RPS24	43	50	0.86	3066.106489483459	1947.611193766784	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_267400	ribosomal protein RPL32	43	50	0.86	2408.993325164688	1923.9860198215836	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_320050	ribosomal protein RPL5	42	50	0.84	1805.1090702346864	1672.114755682774	cytosol
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_261570	ribosomal protein RPL7A	42	50	0.84	2387.0415155542405	1683.267894667185	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_207440	ribosomal protein RPS4	42	50	0.84	4058.9844310771196	3876.0195196987543	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_263050	ribosomal protein RPL13	42	50	0.84	1914.6636745147352	1932.3702085437294	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_284560	ribosomal protein RPL9	42	50	0.84	1317.518965335627	1389.755348587963	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_248480	ribosomal protein RPS9	42	50	0.84	1918.3794673848706	1318.0179112843134	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_289530	ribosomal protein RPL19	42	50	0.84	924.4401246514301	607.5084629158976	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_238010	ribosomal protein RPL23A	42	50	0.84	1107.6210621949792	553.467102498935	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_225080	ribosomal protein RPS18	42	50	0.84	2652.8209870391634	1860.1671929433683	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_270380	ribosomal protein RPS13	42	50	0.84	1719.4819297851516	1471.2453822660163	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_229670	ribosomal protein RPS23	42	50	0.84	2706.3901843661433	3049.022767013653	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_312090	ribosomal protein RPL23	42	50	0.84	657.5506459110215	684.0538269300182	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_305520	ribosomal protein RPS2	41	50	0.82	1760.0593660603042	1061.7102612781111	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_314810	ribosomal protein RPL7	41	50	0.82	1549.733895623682	1241.3830481427765	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_292130	ribosomal protein RPL13A	41	50	0.82	1469.792201253959	1467.0532159456293	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_239100	ribosomal protein RPS7	41	50	0.82	1756.0488261650107	1638.9363984060096	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_309820	ribosomal protein RPL11	41	50	0.82	1201.4020190778797	873.7888499228136	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_245680	ribosomal protein RPL21	41	50	0.82	1370.27486162639	1073.474051278407	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_262690	ribosomal protein RPL27	41	50	0.82	1009.5611836783683	873.7490872133169	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_223050	ribosomal protein RPS20	41	50	0.82	740.4394570087616	826.929553314845	nucleus - chromatin
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_266060	ribosomal protein RPSA	40	50	0.8	648.6438770851948	849.0846331401772	cytosol
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_210690	ribosomal protein RPS6	40	50	0.8	2539.2782041057912	2567.0664151133824	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_313390	ribosomal protein RPL6	40	50	0.8	2113.8570313832297	1631.7132391774007	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_244320	ribosomal protein RPL24	40	50	0.8	741.465205470678	726.503476378673	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_213350	ribosomal protein RPS15	40	50	0.8	779.8302439700336	1304.085235850278	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_310490	ribosomal protein RPL27A	40	50	0.8	2094.212754992882	987.9763753642935	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_248390	ribosomal protein RPL26	40	50	0.8	1638.5770356483079	1688.733162629781	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_267060	ribosomal protein RPL14	40	50	0.8	793.9160513529511	945.2732125609709	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_239760	ribosomal protein RPL22	40	50	0.8	727.7510233486973	638.7932861404122	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_234450	ribosomal protein RPS15A	40	50	0.8	718.3371296317017	697.8989013087881	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_243570	ribosomal protein RPS26	40	50	0.8	1142.524794386047	549.7140287800253	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300000	ribosomal protein RPL18	39	50	0.78	1905.1896631061138	1968.9421454164676	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_231140	ribosomal protein RPS25	39	50	0.78	781.576455868474	518.1777220313018	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_218410	ribosomal protein RPP0	38	50	0.76	874.6029614171175	753.02000240858	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_228470	ribosomal protein RPL15	38	50	0.76	763.7173717893274	651.6360443582018	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_254440	ribosomal protein RPL12	38	50	0.76	239.41903419378895	192.46372381846385	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_229250	ribosomal protein RPL28	38	50	0.76	699.8927483253856	635.8863020575726	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_266070	ribosomal protein RPL31	38	50	0.76	977.4035612793225	787.5977699599032	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_215470	ribosomal protein RPL10A	37	50	0.74	396.05287450425783	549.6641210306842	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_212290	ribosomal protein RPS19	37	50	0.74	932.2071438819196	761.20963893534	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_207840	ribosomal protein RPS17	37	50	0.74	1722.2600716045217	1224.4017814431395	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_275810	ribosomal protein RPS10	36	50	0.72	527.7219345516123	373.0744476337452	nucleus - chromatin
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_231080	ribosomal protein RPL38	36	50	0.72	443.5080450252218	663.759734378118	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_227600	ribosomal protein RPL34	35	50	0.7	618.9107786122856	353.63178443296266	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_250810	ribosomal protein RPL35	35	50	0.7	684.8472136069597	1323.374914355589	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_232230	ribosomal protein RPL30	35	50	0.7	316.63056996216517	301.7571657145499	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_203630	ribosomal protein RPL44	35	50	0.7	1257.8226559002446	1134.9932161627278	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_249250	ribosomal protein RPL35A	34	50	0.68	609.5464777145066	548.0803452871253	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_238250	ribosomal protein RPL36	33	50	0.66	455.8563242634322	578.6341675457107	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_309810	ribosomal protein RPP2	32	50	0.64	263.2684651669081	346.3941583540037	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_209290	ribosomal protein RPS28	32	50	0.64	150.4680139978225	202.3752137079926	cytosol
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_254620	ribosomal protein RPL39	32	50	0.64	495.47284743498705	2054.091157814767	nucleus - chromatin
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_259240	ribosomal protein RPS21	31	50	0.62	153.7609135020479	135.4075637144086	cytosol
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_239330	ribosomal protein RPL37	30	50	0.6	264.9637855723096	545.1542072798647	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_217570	ribosomal protein RPS27	30	50	0.6	287.5729966461815	587.6211847015107	nucleus - chromatin
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_242340	ribosomal protein RPS29	30	50	0.6	955.2822235228971	252.34988101928656	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_205340	ribosomal protein RPS12	27	50	0.54	182.2907776650075	154.9616357456953	40S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300190	ribosomal protein RPL37A	27	50	0.54	277.71839952987733	207.90497825633676	60S ribosome
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_313560	60S ribosomal protein L7a, putative	25	50	0.5	176.16448264094015	107.04795343398466	cytosol
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_314750	ribosomal protein L1, putative	24	50	0.48	95.69153578726699	82.69224581101845	nucleus - non-chromatin
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_291850	ribosomal protein RPS30	21	50	0.42	210.92143448914186	180.27117134573146	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_260260	ribosomal protein RPP1	16	50	0.32	116.86463099330435	88.05985768932624	nucleus - non-chromatin
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_242680	ribosomal protein RPL24e	14	50	0.28	105.13763971638105	31.586703094620333	nucleus - non-chromatin
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_273060	ribosomal protein S17, putative	13	50	0.26	362.12073470128473	68.05095460593164	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_253800	ribosomal protein L15, putative	10	50	0.2	13.457198718487493	56.029851669220776	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_252270	L1P family of ribosomal protein	10	50	0.2	73.16075212701962	33.241898307146556	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_250730	60S ribosomal protein L7-B, putative	10	50	0.2	32.153106894162434	42.92484559507089	nucleus - non-chromatin
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_251950	ribosomal protein l7/l12 c-terminal domain-containing protein	9	50	0.18	104.38922465415624	61.188292033153274	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_209430	40S ribosomal protein S4, putative	9	50	0.18	38.558135306769614	30.60994670797246	nucleolus
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_310118	ribosomal protein S29, putative	8	50	0.16	21.09090807406004	19.083848875837113	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_202350	50S ribosomal protein L21, putative	7	50	0.14	69.92083185791793	113.175302348824	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_203620	ribosomal protein RPS35	7	50	0.14	15.530478026995546	50.519131116543285	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_219770	30S ribosomal protein S12, putative	7	50	0.14	24.91406984984387	60.616418823203915	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_313960	ribosomal protein L19 protein	6	50	0.12	593.7134090509109	464.9698368733248	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_254400	LSU ribosomal protein L2P, putative	6	50	0.12	28.678849704302678	80.6534542438277	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_230050	50S ribosomal protein L3, putative	6	50	0.12	63.341883151160836	113.88040763696078	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_278220	ribosomal protein L46, putative	6	50	0.12	39.433234489897444	15.205957200019505	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_216010	ribosomal protein RPL24	6	50	0.12	270.08865470559215	187.97965668718658	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_231120	ribosomal protein S11, putative	6	50	0.12	7.794820749374698	32.24630036828225	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_289140	ribosomal protein l22/l43, putative	6	50	0.12	7.755784893721269	10.899308279040955	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_263550	39S ribosomal protein L47, mitochondrial precursor, putative	5	50	0.1	17.820749155725082	19.06454974617274	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_254380	ribosomal protein L11, putative	5	50	0.1	10.578261933228928	49.94862095170833	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_277700	ribosomal protein S14 precursor, putative	5	50	0.1	105.6069740707919	61.9888952168589	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_220300	ribosomal protein L15 protein	4	50	0.08	9.654170666879079	32.13005930308489	apicoplast
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_285970	30S ribosomal protein S5, putative	4	50	0.08	68.26487669193867	60.16259903792568	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_275330	ribosomal protein RPL29	4	50	0.08	71.58278122357471	107.34985285839291	apicoplast
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_500228	30S ribosomal protein S10, putative	4	50	0.08	134.18123006078534	188.96746726442848	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_316110	ribosomal protein RPS15	4	50	0.08	11.24321352709695	50.07162123500295	apicoplast
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_207940	ribosomal protein S9, putative	4	50	0.08	29.70002070072401	27.70885301030947	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_216040	30S ribosomal protein S15, putative	4	50	0.08	29.05726471699574	89.08496111549344	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_226280	ribosomal protein L28, putative	4	50	0.08	145.8101751894972	231.65093765936084	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_297170	50S ribosomal protein L17, putative	4	50	0.08	8.30592794684332	12.931654582455987	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_293310	ribosomal protein L20, putative	4	50	0.08	46.6249646732252	67.66441221196098	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_302055	ribosomal protein S12	4	50	0.08	41.91058506890262	59.38626947588385	Golgi
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_244580	L1P family of ribosomal protein	3	50	0.06	75.30224220373628	164.74630045105405	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_222990	ribosomal protein S18, putative	3	50	0.06	30.56244270632514	71.00009802079929	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_214870	ribosomal protein L9, N-terminal domain-containing protein	3	50	0.06	2593.4964173118838	227.58694099873108	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_246000	large subunit ribosomal protein IMG2	3	50	0.06	381.72328326693435	24.6204823439511	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_218850	ribosomal protein RPS9	3	50	0.06		13.275636500852361	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_260660	50S ribosomal protein L23, putative	3	50	0.06	14.533275321915164	87.63588847654125	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_225240	50S ribosomal protein L13, putative	3	50	0.06	3957.826816679569	26.01337603010319	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_318420	30S ribosomal protein S16, putative	3	50	0.06	756.4203946254321	44.075702704448396	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_234550	ribosomal protein RPL29	3	50	0.06	26.823134834460365	15.457797525303455	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_223660	50S ribosomal protein L4, putative	2	50	0.04	2030.0572177915826	2962.0858457152153	mitochondrion - soluble
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_313550	ribosomal protein RPL22	2	50	0.04		15.698014747535025	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_217590	50S ribosomal protein L17, putative	2	50	0.04	2.49765956735165	17.994421809070026	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_211870	LSU ribosomal protein L18P, putative	2	50	0.04	48.984458188737	92.18166700213642	apicoplast
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300621	ribosomal protein L2	2	50	0.04	9.611666720387674	2.4953929524061005	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300700	ribosomal protein S2, putative	2	50	0.04	13.38193853287065	12.938305666862554	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_308930	50S ribosomal protein L33, putative	2	50	0.04	644.4438306040569	614.0258829212535	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_284660	mitochondrial ribosomal protein s6-2, putative	2	50	0.04	242.73828434753955	427.91945148302045	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_217670	ribosomal protein RPS6	1	50	0.02	106.36968050196285	60.02942327962629	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_285530	ribosomal protein RPL35	1	50	0.02	7.633663215217914	9.929586864279887	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_201830	ribosomal protein L37	1	50	0.02	885.6720629513866	1140.817086868395	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_293600	ribosomal protein RPL27	1	50	0.02	58.58410534796361	121.25356292032943	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_286610	ribosomal protein RPS14, putative	1	50	0.02	18.43276573865655	127.92559069125254	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_209710	ribosomal protein RPL28	1	50	0.02		50.77275753277945	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_239720	50S ribosomal protein l24, putative	1	50	0.02	3031.9538738812084	2128.110443519494	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300631	ribosomal protein L4	1	50	0.02	82.11516751249776	360.78941016965314	apicoplast
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_220150	50S ribosomal protein L16, putative	1	50	0.02	7724.789400394146	5870.247227422966	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_261380	ribosomal protein S8, putative	1	50	0.02		234.81689456963983	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_225250	LSU ribosomal protein L14P, putative	1	50	0.02	930.4160972556094	556.7907897580545	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_312680	60S ribosomal protein L27, putative	1	50	0.02	829.5572072761031	1041.3440457282716	unassigned
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_288610		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_243480		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_289230		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_326400		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300606		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_268685		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300615		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300641		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300608		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_302057		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300601		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_302007		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300613		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300611		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_302053		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300612		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300618		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_263020		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_213580		0	50	0.0			
+ribosomal protein (any)	loose family (comparison only)	ribosomal protein (any)	TGME49_300604		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_316400	alpha tubulin TUBA1	48	50	0.96	5946.907327448645	7826.221859780968	tubulin cytoskeleton
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_266960	beta tubulin	42	50	0.84	1124.432112595892	1086.1205422179537	tubulin cytoskeleton
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_221620	beta-tubulin, putative	37	50	0.74	371.752049589139	540.9003994317933	tubulin cytoskeleton
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_226870	tubulin gamma chain	24	50	0.48	36.84866512791504	61.04473921235467	nucleus - chromatin
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_297420	beta-tubulin cofactor D, putative	8	50	0.16	32.75786436045098	65.18763568829841	endomembrane vesicles
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_310130	gamma-tubulin complex component, putative	7	50	0.14	6.8475192357843415	28.228778084150772	nucleus - chromatin
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_244500	Tubulin-tyrosine ligase family protein	5	50	0.1	92.8805182312044	9.107043008833207	unassigned
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_228410	Tubulin-tyrosine ligase family protein	3	50	0.06	32.44127697209952	14.905301658446687	unassigned
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_307760	Tubulin-tyrosine ligase family protein	3	50	0.06	31.36497864160253	5.661858488335672	unassigned
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_318240	Tubulin-tyrosine ligase family protein	2	50	0.04		2.4288895618041937	unassigned
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_264950	tubulin binding cofactor c, putative	2	50	0.04	118.51743760776164	22.870179394655906	cytosol
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_267450	alpha-tubulin suppressor protein	1	50	0.02	6.781766131947586	7.5108022308590545	micronemes
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_319600	alpha-tubulin N-acetyltransferase, putative	1	50	0.02		10.254224337342391	unassigned
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_295310	tubulin binding cofactor A protein	1	50	0.02		0.463609386746774	nucleus - non-chromatin
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_285780		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_265080		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_500030		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_207600		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_500076		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_231400		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_231770		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_212240		0	50	0.0			
+tubulin (any)	loose family (comparison only)	tubulin (any)	TGME49_278930		0	50	0.0			

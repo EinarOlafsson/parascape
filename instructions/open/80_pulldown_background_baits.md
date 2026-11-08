@@ -42,3 +42,14 @@ keeping 85 % of the known complexes. Until then the README says so and the score
 `results/pulldown_background_2026_11_07/`: 74 classified. Separation of frequent flyers from complex members
 AUC 0.718 (was 0.710), p 0.006; at a 50 % cutoff 11 of 13 complex members would still be discarded. The gate is
 still unmet; 126 of 203 projects have not finished the queue. Rerun the builder as the queue fills.
+
+## 2026-11-08: rerun on 97 finished projects (was 77)
+
+`results/pulldown_background_2026_11_08/`: 94 classified; 50 background experiments (affinity 40 + proximity 10),
+29 with a confident bait, 25 distinct baits (was 22). Separation of frequent flyers from complex members AUC 0.689
+(was 0.718), p 0.015; at a 50 % cutoff 12 of 13 complex members would still be discarded, and no cutoff meets the
+gate (half the flyers removed, at most 15 % of complex members lost). More projects of the same kind (whole-parasite
+lysate) do not move it; baits from other compartments are what is needed. The specificity score holds: bait in
+its own top 5 % in 20 of 25 affinity purifications, median rank 8 of ~808 (31 by abundance). 18 projects are still
+class `other` and 5 affinity purifications have no confident bait -- the next bait-resolution pass. 106 of 203
+projects remain in the queue.
