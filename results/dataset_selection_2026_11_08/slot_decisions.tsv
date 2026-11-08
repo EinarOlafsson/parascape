@@ -1,0 +1,61 @@
+slot	organism	policy	candidates	scorable	decision	reason	best
+Pf_host_proteome_human_erythrocyte	Pf	average	2	2	add proposed	the slot has no installed default; best candidate host_erythrocyte_proteome:rbc_membrane_psms (score 4.8)	host_erythrocyte_proteome:rbc_membrane_psms
+Pf_host_surface_receptor_repertoire_human_erythrocyte	Pf	fill	4	4	add proposed	the slot has no installed default; best candidate host_erythrocyte_surface:rbc_surface_copies_uk (score 4.4)	host_erythrocyte_surface:rbc_surface_copies_uk
+Pf_target_engagement_thermal_shift	Pf	average	2	2	add proposed	the slot has no installed default; best candidate pf_target_engagement:engaged_n_compounds_tested (score 0.0)	pf_target_engagement:engaged_n_compounds_tested
+Tg_5_utr_architecture	Tg	fill	6	6	add proposed	the slot has no installed default; best candidate gse302108_utr5:utr5_length (score 0.0)	gse302108_utr5:utr5_length
+Tg_host_gene_requirement_rhoptry_discharge	Tg	fill	3	3	add proposed	the slot has no installed default; best candidate host_k562_rhoptry_screen:rhoptry_discharge_score (score 0.0)	host_k562_rhoptry_screen:rhoptry_discharge_score
+Tg_host_surface_receptor_repertoire_mouse_bone_marrow_macrophage	Tg	fill	2	2	add proposed	the slot has no installed default; best candidate host_macrophage_surfaceome:bmdm_surface_detected (score 35.8)	host_macrophage_surfaceome:bmdm_surface_detected
+Tg_protein_abundance_tachyzoite	Tg	fill	2	2	add proposed	the slot has no installed default; best candidate proteome_total:proteome_ (score 24.4)	proteome_total:proteome_
+Pf_acetylation	Pf	one	2	2	keep	no candidate beats the installed default by 25 %	pf_acetylome:has_acetyl
+Pf_cell_cycle_timing_label	Pf	one	2	2	keep	the installed default ranks first (score 2.5)	pf_idc_timing:idc_peak_hour
+Pf_field_variation_and_resistance_markers	Pf	one	4	4	keep	no candidate beats the installed default by 25 %	pf_field_variation:field_variant_fraction
+Pf_fitness_transferred_from_pb	Pf	one	2	2	keep	no candidate beats the installed default by 25 %	pf_berghei_transfer:pb_transfer_confidence
+Pf_phosphorylation_asexual_blood_stage	Pf	one	2	2	keep	no candidate beats the installed default by 25 %	pf_phosphoproteome_meta:has_phospho
+Pf_protein_abundance_sexually_committed	Pf	one	2	2	keep	the installed default ranks first (score 2.9)	pf_committed_proteome:committed_vs_asexual_log2fc
+Pf_rna_dependence_of_complexes	Pf	one	2	2	keep	the installed default ranks first (score 4.5)	pf_rna_dependence:rna_dependent
+Pf_splicing_isoform_use	Pf	one	2	2	keep	the installed default ranks first (score 1.5)	pf_isoforms:n_transcript_models
+Pf_thermal_stability_melting_temperature_asexual_blood_stage	Pf	one	2	2	keep	the installed default ranks first (score 3.9)	pf_meltome:melting_temperature_tm
+Tg_localization_measured	Tg	one	3	3	keep	no candidate beats the installed default by 25 %	lopit_tgon:lopit_confident
+Pf_lactylation_asexual_blood_stage	Pf	one	2	2	replace proposed	pf_lactylome:has_lactyl scores 6.5 against 5.0 for the installed default -- a proposal; biological admission still owed	pf_lactylome:has_lactyl
+Pf_between_species_selection_dn_ds	Pf	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	pf_field_variation:dnds_laverania
+Pf_complex_membership	Pf	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	pf_complexes:complex_id
+Pf_fitness_transmission_transferred_from_pb	Pf	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	pf_pb_fertility_transfer:fertility_female
+Pf_host_response_to_infection_human_hepatocyte	Pf	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	host_hepatocyte_pf_infection:hepatocyte_pf_infection_log2fc
+Pf_protein_abundance_under_stress	Pf	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	pf_hsp90_chemoproteome:hsp90_inhibition_ga_log2fc
+Pf_resistance_conferring_mutation	Pf	separate	4	4	separate cohorts	the slot policy keeps these datasets apart; no choice to make	pf_resistome:resistance_selection_clones
+Pf_rna_modification_asexual_blood_stage	Pf	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	pf_m6a_nanopore:m6a_n_canonical_sites
+Pf_transcription_dormancy_recrudescence	Pf	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	pf_latency_transcriptome:latency_log2fc
+Pf_transcription_per_cell_cycle_phase	Pf	separate	2	1	separate cohorts	the slot policy keeps these datasets apart; no choice to make	pf_riboseq:riboseq_mrna_
+Pf_transcription_under_stress_conversion	Pf	separate	3	0	separate cohorts	the slot policy keeps these datasets apart; no choice to make	
+Pf_transcription_under_tf_or_chromatin_perturbation	Pf	separate	3	0	separate cohorts	the slot policy keeps these datasets apart; no choice to make	
+Tg_downloaded_study_membership	Tg	separate	2	0	separate cohorts	the slot policy keeps these datasets apart; no choice to make	
+Tg_drug_sensitivity	Tg	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	curated_drug_sensitivity:drug_compounds_tested
+Tg_fitness_carbon_source_withdrawal	Tg	separate	5	5	separate cohorts	the slot policy keeps these datasets apart; no choice to make	crispr_glucose_limitation:fit_complete_medium_2025
+Tg_fitness_parasite_density	Tg	separate	5	5	separate cohorts	the slot policy keeps these datasets apart; no choice to make	crispr_parasite_density:fit_density_low
+Tg_fitness_serum_restriction	Tg	separate	3	3	separate cohorts	the slot policy keeps these datasets apart; no choice to make	crispr_serum_restriction:fit_lipid_rich_
+Tg_fitness_targeted_in_vivo_young_2019	Tg	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	invivo_platform:crispr_invivo_platform_lfc
+Tg_host_response_to_infection_human_fibroblast	Tg	separate	2	0	separate cohorts	the slot policy keeps these datasets apart; no choice to make	
+Tg_host_transcriptional_effect_per_effector	Tg	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	hosttx_effectors:hosttx_T2
+Tg_interaction_degree_crosslink_ms	Tg	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	starpath_xlms:n_xlink_partners
+Tg_organelle_surface_membrane_contact_site	Tg	separate	3	3	separate cohorts	the slot policy keeps these datasets apart; no choice to make	organelle_surface_turboid:surface_apicoplast_
+Tg_resistance_conferring_mutation	Tg	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	curated_resistance_alleles:resistance_allele_count
+Tg_rna_stability_half_life	Tg	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	mrna_stability:mrna_remaining_5h_actinomycin
+Tg_transcription_under_stress_conversion	Tg	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	gse132248_stress:stress_
+Tg_translation_efficiency_tachyzoite	Tg	separate	4	4	separate cohorts	the slot policy keeps these datasets apart; no choice to make	gse245775:te245775_parent_tachy_
+Tg_translation_tachyzoite	Tg	separate	3	3	separate cohorts	the slot policy keeps these datasets apart; no choice to make	gse245775:rpf245775_parent_tachy_
+Tg_translation_under_initiation_factor_depletion	Tg	separate	2	2	separate cohorts	the slot policy keeps these datasets apart; no choice to make	gse245775:rpf245775_eif12ko_
+Pf_domain_content	Pf	one	2	0	unknown	no candidate can be scored: no citation rate (reference_resource_publication_unresolved)	
+Pf_export_pexel_trafficking	Pf	one	2	0	unknown	no candidate can be scored: no citation rate (reference_resource_publication_unresolved)	
+Pf_fold_confidence_disorder	Pf	one	2	0	unknown	no candidate can be scored: no citation rate (reference_resource_publication_unresolved)	
+Pf_literature_attention	Pf	one	2	0	unknown	no candidate can be scored: no citation rate (derived_or_local_no_own_publication)	
+Pf_membrane_topology	Pf	one	3	0	unknown	no candidate can be scored: no citation rate (reference_resource_publication_unresolved)	
+Pf_paralogy	Pf	one	2	0	unknown	no candidate can be scored: no citation rate (reference_resource_publication_unresolved)	
+Pf_sequence_basics	Pf	one	5	0	unknown	no candidate can be scored: no citation rate (reference_resource_publication_unresolved)	
+Pf_transcription_trophozoite	Pf	one	2	0	unknown	no candidate can be scored: no citation rate (unresolved_publication)	
+Tg_domain_content	Tg	one	1	0	unknown	no candidate can be scored: no citation rate (reference_resource_publication_unresolved)	
+Tg_fold_confidence_disorder	Tg	one	1	0	unknown	no candidate can be scored: no citation rate (reference_resource_publication_unresolved)	
+Tg_literature_attention	Tg	one	3	0	unknown	no candidate can be scored: no citation rate (derived_or_local_no_own_publication); no citation rate (reference_resource_publication_unresolved)	
+Tg_phosphorylation_site_count	Tg	one	2	0	unknown	no candidate can be scored: no citation rate (unresolved_publication)	
+Tg_transcription_bradyzoite_tissue_cyst	Tg	average	4	0	unknown	no candidate can be scored: no citation rate (accession_publications_need_review)	
+Tg_transcription_oocyst_sporozoite	Tg	average	2	0	unknown	no candidate can be scored: no citation rate (accession_publications_need_review)	
+Tg_transcription_tachyzoite	Tg	one	8	5	unknown	the installed default cannot be scored (no citation rate (accession_publications_need_review)), so no comparison is possible	gse51780:rna51780_tachy_

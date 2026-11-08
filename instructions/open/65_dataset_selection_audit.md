@@ -156,5 +156,21 @@ mapping and best-source selection remain unresolved; 65.04 stays4%.
   phosphosites, five ToxoDB dataset pages, plasmodb_pf3d7_expression, pf_febrile_stress, pf_sir2_perturbation,
   antisense_level -- the ToxoDB/PlasmoDB dataset pages sit behind the VEuPathDB login (see 38).
 
-Still open: batch 4 (origin-paper verification for all 162; the 11 unresolved and 2 to confirm above) and
-batch 5 (keep/add/replace decisions per comparable alternative).
+* **Batch 5, the slot decisions (2026-11-08):** `scripts/build_slot_decisions_notebook.py` ->
+  `notebooks/slot_decisions_2026_11_08.ipynb`, `results/dataset_selection_2026_11_08/slot_decisions.tsv`,
+  `slot_candidates_scored.tsv`, `slot_proposals.tsv`. 65.03 could rank **nothing** (`rankable_groups` 0 for all
+  297 slots) because every candidate lacked a publication identity; the publications resolved in batch 4 make
+  Einar's rule computable. Citation rates for the 10 newly resolved publications were fetched from Europe PMC
+  (`citation_rates_resolved.tsv`); 105 of 162 sources now have one.
+
+  Of the 60 slots with more than one candidate dataset: **27 separate cohorts** (the slot policy keeps them
+  apart, so there is nothing to choose), **10 keep** (the installed default ranks first or is not beaten by the
+  25 % margin), **7 additions proposed** (the slot has no installed default), **1 replacement proposed**
+  (Pf lactylation: `pf_lactylome:has_lactyl` 6.5 against 5.0), **15 unknown** with the reason named per slot --
+  mostly reference resources and the ToxoDB/PlasmoDB pages behind the login (38).
+
+  Nothing is promoted automatically: the 8 proposals carry their margin and still owe the biological admission
+  check (organism, stage, assay, units, mapping). That check is what remains of 65.04.
+
+Still open: batch 4 (origin-paper verification for all 162; the 11 unresolved and 2 to confirm above) and the
+biological admission check on the 8 batch-5 proposals.

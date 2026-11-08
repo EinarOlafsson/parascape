@@ -1,0 +1,11 @@
+dataset_id	publication_id	pubYear	citedByCount	citations_per_year	title
+morc_depletion	PMID:40389644	2025	7	7.0	Uncovering biomarkers for chronic toxoplasmosis detection highlights alternative
+proteome_pru	PMID:38278808;PMID:40823841	2024	40	20.0	The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma gondi
+ipms_baits	PMID:38278808	2024	40	20.0	The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma gondi
+pride_acetylation	PMID:42778561	2026	0	0.0	Divergent SAGA complexes shape the Toxoplasma transcriptome for lytic cycle prog
+pride_proximity	PMID:41193440	2025	0	0.0	Structural and functional characterization of TgGSK3, a druggable kinase in Toxo
+pride_glycosylation	PMID:27663739	2016	41	4.1	O-fucosylated glycoproteins form assemblies in close proximity to the nuclear po
+pride_nitrosylation	PMID:37959749	2023	8	2.67	Global Proteome-Wide Analysis of Cysteine S-Nitrosylation in <i>Toxoplasma gondi
+pride_lactylation	PMID:35610722	2022	34	8.5	Systematic identification of the lysine lactylation in the protozoan parasite To
+pride_ubiquitination	doi:10.1128/MSPHERE.00511-23	2023	7	2.33	p97/VCP targets &lt;i&gt;Toxoplasma gondii&lt;/i&gt; vacuoles for parasite restr
+pf_phosphoproteome_meta	PMID:39475123	2024	3	1.5	Phosphorylation in the &lt;i&gt;Plasmodium falciparum&lt;/i&gt; Proteome: A Meta
