@@ -137,6 +137,12 @@ def _permitted(ctx, chosen: dict, target: str) -> dict:
         chosen = {**chosen, "layer": allowed[0] if allowed else None}
     return chosen
 
+#: (organism, label) -> the other parasite label its orthologs carry (instruction 63: the orthology verifier).
+ORTHOLOG_SOURCES = {(organisms.TOXOPLASMA, "compartment"): "lopit_pf_location",
+                    (organisms.TOXOPLASMA, "lopit_unified"): "lopit_pf_location",
+                    (organisms.FALCIPARUM, "lopit_pf_location"): "lopit_unified"}
+
+
 def _predict(ctx, strategy, visible: pd.Series, query, settings: dict, target: str):
     """(prediction, support) from one strategy, given the visible labels only.
 
@@ -227,6 +233,25 @@ def _predict(ctx, strategy, visible: pd.Series, query, settings: dict, target: s
         truth_at_level = C._ec_level(ctx.truth(target), int(settings.get("level", 1)))
         visible = pd.Series(visible).reset_index(drop=True).where(truth_at_level.notna())
         return S.graph_vote(A, visible, query)
+    if key == "ortholog_transfer":
+        # The other parasite measured this gene's orthologs; how its labels map onto this species labels is
+        # learned from the VISIBLE genes only, so a hidden gene (and its orthogroup, hidden with it) never
+        # contributes its own answer. An independent measurement: a verifier, not a generator (instruction 63).
+        # A label is carried from the matching label of the other parasite; the catalogue default source
+        # (a numeric screen) means nothing for a location label, so the declared pair wins.
+        source = ORTHOLOG_SOURCES.get((ctx.organism, target), settings.get("source"))
+        if not source:
+            return None, None
+        try:
+            src, numeric_src = C._through_orthologs(ctx, source)
+        except Exception:
+            return None, None
+        vis = pd.Series(visible).reset_index(drop=True)
+        src = src.reset_index(drop=True)
+        if not (src.notna() & vis.notna()).any():
+            return None, None
+        pred = C._transfer_map(src, vis, numeric_src, False)(src).where(src.notna())
+        return pred, None
     if key in ("triangulation", "understudied_first"):
         pred, agree, _p = C._triangulate(C._tri_sources(ctx, target, int(settings.get("k", 15))),
                                          visible, query, int(settings.get("min_agree", 2)))

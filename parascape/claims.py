@@ -333,7 +333,10 @@ def verified_model(ledger: pd.DataFrame, generator: str, verifiers) -> VerifiedM
 # --------------------------------------------------------------------------- claims about unknown genes
 #: Strategies asked to verify. Any of them qualifies only if measured independent of the generator.
 VERIFIER_CANDIDATES = ("physical_partners", "structural_homology", "layer_propagation", "feature_knn",
-                       "supervised_classifier", "random_forest", "map_neighbours")
+                       "supervised_classifier", "random_forest", "map_neighbours",
+                       # The other parasite measured the orthologs (track_record.ORTHOLOG_SOURCES): chosen only
+                       # where its mistakes are measured independent of the generator, like every verifier.
+                       "ortholog_transfer")
 
 
 @dataclass

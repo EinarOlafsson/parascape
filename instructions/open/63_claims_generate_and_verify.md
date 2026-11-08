@@ -125,3 +125,27 @@ clears 0.90 on this question) -- predictions to grade, unchanged, against the ne
 genes: verify the hash, then precision in the top 50/100/200 and AUC. Many of the 747 are `TGME49_500…`
 models, newer gene models the CRISPR library predates. Next: the same freeze for localization on non-marker
 proteins once an independent localization source can grade it.
+
+## 2026-11-08: the orthology verifier
+
+`track_record._predict` now answers for `ortholog_transfer`: a gene's orthologs in the other parasite carry their
+measured label (`track_record.ORTHOLOG_SOURCES`: Tg compartment and lopit_unified <- Pf `lopit_pf_location`; Pf
+`lopit_pf_location` <- Tg `lopit_unified`), mapped onto this species labels from the VISIBLE genes only, folds by
+orthogroup as for every method. Held-out record (added to `track_record.parquet`, `strategy == ortholog_transfer`):
+Tg compartment 950 of 3,804 genes answered, 57.5 % right (chance 20.2 %); Tg lopit_unified 964 answered, 76.5 %
+(chance 33.1 %); Pf lopit_pf_location 881 of 1,580 answered, 62.4 %.
+
+It is a verifier candidate (`claims.VERIFIER_CANDIDATES`) and, like every verifier, is chosen only where its
+mistakes are measured independent of the generator:
+
+* **Tg: not independent.** It repeats the random forest mistakes 1.57x (compartment; 95 % upper 1.82) and 1.95x
+  (lopit_unified; upper 2.32) as often as independence predicts -- the threshold is an upper end below 1.6 -- so it
+  is not used for Toxoplasma claims. Both evidently read the same ambiguous localisation boundaries.
+* **Pf: independent** (ratio 1.21, upper 1.44 against the random forest). The recipe for Pf location became random
+  forest checked by orthology: **548 confident held-out calls at 88.0 % precision, against 90 at 87.8 % before**
+  (map_neighbours checked by shared fold), certainty calibration error 0.026, after the check 0.038. Shipped claims
+  23,252 (was 19,798); Pf location claims 4,074 (was 620), 1,051 tested, orthology agreeing on 506 and disagreeing
+  on 580.
+
+Test `tests/test_claims.py::test_the_orthology_verifier_is_used_only_where_its_mistakes_are_independent`.
+Next: frozen prospective localization claims once an independent localization source can grade them.

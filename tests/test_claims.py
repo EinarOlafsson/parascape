@@ -204,3 +204,19 @@ def test_start_here_leads_to_the_discoveries(shipped):
         assert G.VIEW_DISCOVERIES in opened
     finally:
         w.close()
+
+
+def test_the_orthology_verifier_is_used_only_where_its_mistakes_are_independent():
+    """Instruction 63: orthology (the other parasite measured the orthologs) is a verifier candidate, chosen
+    only where it does not repeat the generator mistakes -- measured, not assumed."""
+    from parascape import track_record as T
+    assert "ortholog_transfer" in C.VERIFIER_CANDIDATES
+    assert T.ORTHOLOG_SOURCES[("Pf", "lopit_pf_location")] == "lopit_unified"
+    for organism, target in (("Tg", "compartment"), ("Pf", "lopit_pf_location")):
+        led = T.shipped(organism)
+        led = led[led["target"].astype(str) == target]
+        if "ortholog_transfer" not in set(led["strategy"].astype(str)):
+            continue
+        table = C._independence(led, "random_forest").set_index("verifier")
+        row = table.loc["ortholog_transfer"]
+        assert row["independent"] == (row["ratio_high"] < C.INDEPENDENT_BELOW)
