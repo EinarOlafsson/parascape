@@ -10,13 +10,14 @@ from __future__ import annotations
 import os
 from functools import lru_cache
 
+from . import organisms
 import pandas as pd
 
-_FILES = {"Tg": "measured_groups_tg.tsv"}
+_FILES = {organisms.TOXOPLASMA: "measured_groups_tg.tsv"}
 
 
 @lru_cache(maxsize=None)
-def groups(organism: str = "Tg") -> pd.DataFrame:
+def groups(organism: str = organisms.TOXOPLASMA) -> pd.DataFrame:
     """column, group, category for every column the report measured (empty when there is no report)."""
     name = _FILES.get(organism)
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", name) if name else ""
@@ -24,7 +25,7 @@ def groups(organism: str = "Tg") -> pd.DataFrame:
         columns=["column", "group", "category"])
 
 
-def overlap(label_column: str, inputs, organism: str = "Tg", table: pd.DataFrame | None = None) -> dict:
+def overlap(label_column: str, inputs, organism: str = organisms.TOXOPLASMA, table: pd.DataFrame | None = None) -> dict:
     """{input: reason} for inputs in the label column's measured group but of a different category."""
     g = groups(organism) if table is None else table
     if not len(g) or label_column not in set(g["column"]):

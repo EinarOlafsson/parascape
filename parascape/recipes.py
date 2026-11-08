@@ -41,6 +41,7 @@ from dataclasses import asdict, dataclass, field
 import numpy as np
 import pandas as pd
 
+from . import organisms
 from .embedding import EmbeddingSpec, columns_for, embed
 from .search import (ABSENCE_LABELS, CLUSTER_GRID, DEFAULT_SEED, TARGETS, all_edge_layers,
                      best_clustering, excluded_detail, excluded_edges, excluded_layers,
@@ -294,7 +295,7 @@ def _categories(organism: str):
     return _CATEGORY_CACHE[organism]
 
 
-def same_category(nodes: pd.DataFrame, holdout: str, organism: str = "Tg") -> dict:
+def same_category(nodes: pd.DataFrame, holdout: str, organism: str = organisms.TOXOPLASMA) -> dict:
     """Every column sharing an information category with `holdout`, with the reason (instruction 73).
 
     Einar, 2026-11-07: the strict rule applies to the map questions too -- predicting a label from

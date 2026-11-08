@@ -22,6 +22,7 @@ from PySide6 import QtCore, QtWidgets
 from . import gene_reading as GR
 from . import theme as TH
 from .shell import ModuleShell
+from . import organisms
 
 
 def _muted(text: str) -> QtWidgets.QLabel:
@@ -373,7 +374,7 @@ class GeneModule(QtCore.QObject):
             tables["your kept claims"], kinds["your kept claims"] = kept, "inferred"
         columns = [str(c) for c in facts.get("column", pd.Series(dtype=str)).dropna().unique()
                    if c in self._nodes().columns] if len(facts) else []
-        export_bundle.write(folder, organism=getattr(self.window.panel, "organism", "Tg"),
+        export_bundle.write(folder, organism=getattr(self.window.panel, "organism", organisms.TOXOPLASMA),
                             query={"module": "gene", "gene": r.gene, "product": r.product},
                             tables=tables, kinds=kinds, columns=columns, nodes=self._nodes())
         self.shell.say(f"bundle written: {folder}")

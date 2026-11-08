@@ -28,8 +28,8 @@ def one_niche(niche: str, out_path: str, strategy: str = "seed_expansion", split
     import numpy as np
     import pandas as pd
     sys.path.insert(0, REPO)
-    from parascape import strategies as S
-    ctx = S.Context.shipped("Tg")
+    from parascape import organisms as O, strategies as S
+    ctx = S.Context.shipped(O.TOXOPLASMA)
     nodes = ctx.nodes.set_index("gene_id")
     m = pd.read_csv(os.path.join(REPO, "parascape/data/lopit_markers_coarse.tsv"), sep="\t")
     members = [g for g in m[m.coarse_niche == niche].gene_id if g in nodes.index]

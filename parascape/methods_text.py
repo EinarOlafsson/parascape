@@ -8,9 +8,9 @@ same rule `datasets.unresolved()` exists for. The BibTeX carries only what the r
 citation as recorded, the PMID, the accession and the URL -- and never a title, journal or DOI that
 would have to be guessed.
 
-    text = methods_paragraph(columns, "Tg", strategy="feature_knn", settings={"k": 15}, seed=0)
-    refs = reference_list(sources(columns, "Tg"))
-    bib = bibtex(sources(columns, "Tg"))
+    text = methods_paragraph(columns, organisms.TOXOPLASMA, strategy="feature_knn", settings={"k": 15}, seed=0)
+    refs = reference_list(sources(columns, organisms.TOXOPLASMA))
+    bib = bibtex(sources(columns, organisms.TOXOPLASMA))
 
 No window here; every rule is testable.
 """
@@ -19,10 +19,11 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from . import organisms
 from . import datasets as D
 
 #: Words for an organism code, for the sentence.
-ORGANISM_WORDS = {"Tg": "Toxoplasma gondii (ME49)", "Pf": "Plasmodium falciparum (3D7)"}
+ORGANISM_WORDS = {organisms.TOXOPLASMA: "Toxoplasma gondii (ME49)", organisms.FALCIPARUM: "Plasmodium falciparum (3D7)"}
 
 
 @dataclass

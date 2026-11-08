@@ -600,7 +600,7 @@ def class_html(target: str, label: str, organism: str,
             + class_members_html(target, label, organism))
 
 
-def class_members_html(target: str, label: str, organism: str = "Tg") -> str:
+def class_members_html(target: str, label: str, organism: str = organisms.TOXOPLASMA) -> str:
     """Measured members of a class beside the genes the combined model predicts into it (64.31), with the
     precision of that prediction on the untouched outer test -- known and inferred membership kept apart."""
     import os

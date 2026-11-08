@@ -31,8 +31,8 @@ def worker(key: str) -> None:
     import numpy as np
     import pandas as pd
     sys.path.insert(0, REPO)
-    from parascape import strategies as S, track_record as T
-    ctx = S.Context.shipped("Tg")
+    from parascape import organisms as O, strategies as S, track_record as T
+    ctx = S.Context.shipped(O.TOXOPLASMA)
     strategy = S.get(key)
     truth = ctx.truth(TARGET)
     kept = truth.where(truth.map(truth.value_counts()) >= S.MIN_CLASS)
@@ -73,8 +73,8 @@ def deploy_worker(key: str) -> None:
     import numpy as np
     import pandas as pd
     sys.path.insert(0, REPO)
-    from parascape import strategies as S, track_record as T
-    ctx = S.Context.shipped("Tg")
+    from parascape import organisms as O, strategies as S, track_record as T
+    ctx = S.Context.shipped(O.TOXOPLASMA)
     strategy = S.get(key)
     truth = ctx.truth(TARGET)
     kept = truth.where(truth.map(truth.value_counts()) >= S.MIN_CLASS)
@@ -99,7 +99,7 @@ def deploy() -> None:
     from sklearn.linear_model import LogisticRegression
     sys.path.insert(0, REPO)
     from parascape import track_record as T
-    keys = T.supported("Tg")
+    keys = T.supported(O.TOXOPLASMA)
 
     def run(key):
         out = os.path.join(OUT, f"deploy_{key}.parquet")
@@ -149,7 +149,7 @@ def main() -> None:
             "from sklearn.linear_model import LogisticRegression",
             "from scipy.stats import binomtest",
             "from parascape import track_record as T",
-            "KEYS = T.supported('Tg')",
+            "from parascape import organisms as O; KEYS = T.supported(O.TOXOPLASMA)",
             "SCRIPT = os.path.join(REPO, 'scripts', 'build_meta_inference_nested_notebook.py')",
             "def run(key):",
             "    out = os.path.join(OUT, f'calls_{key}.parquet')",

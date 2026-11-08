@@ -28,6 +28,7 @@ from . import map_reading as MR
 from . import network_reading as NR
 from . import theme as TH
 from .shell import ModuleShell, solid_dropdown
+from . import organisms
 
 #: A colour per measured layer, for links and the legend.
 LAYER_COLOURS = {
@@ -721,7 +722,7 @@ class NetworkModule(QtCore.QObject):
         table.insert(0, "gene", ids[self.focus[0]])
         table["partner"] = ids[table["partner"].to_numpy(int)]
         layers = sorted(map(str, pd.unique(self._links["source"]))) if "source" in self._links else []
-        export_bundle.write(folder, organism=getattr(self.window.panel, "organism", "Tg"),
+        export_bundle.write(folder, organism=getattr(self.window.panel, "organism", organisms.TOXOPLASMA),
                             query={"module": "network", "gene": str(ids[self.focus[0]]), "layers": layers},
                             tables={"links": table}, kinds={"links": "measured"}, columns=[],
                             figures={"network": self.view}, nodes=self.window.nodes,

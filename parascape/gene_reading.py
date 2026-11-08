@@ -19,6 +19,8 @@ from html import escape
 
 import pandas as pd
 
+from . import organisms
+
 #: The categories a synthesis reads, in the order a biologist asks about a gene, each with the
 #: heading of its evidence section.
 ORDER = (
@@ -129,7 +131,7 @@ def _dataset_of(column: str) -> tuple:
     """(dataset name, "PMID:n" or "") for a gene-table column, from the dataset registry."""
     try:
         from . import datasets as D
-        d = D.provenance(column, "Tg") or D.provenance(column)
+        d = D.provenance(column, organisms.TOXOPLASMA) or D.provenance(column)
     except Exception:
         d = None
     if d is None:
@@ -337,7 +339,7 @@ def unusual_sentences(frame: pd.DataFrame) -> list:
     return out
 
 
-def strategy_profile(gene: str, organism: str = "Tg", ledger: pd.DataFrame | None = None) -> pd.DataFrame:
+def strategy_profile(gene: str, organism: str = organisms.TOXOPLASMA, ledger: pd.DataFrame | None = None) -> pd.DataFrame:
     """Every catalogue strategy, and what it said about this gene when the gene was hidden (64.30).
 
     One row per strategy: its calibration grade, and for each label the hold-out record covers, the call it
@@ -376,7 +378,7 @@ def strategy_profile(gene: str, organism: str = "Tg", ledger: pd.DataFrame | Non
     return pd.DataFrame(rows)
 
 
-def stale_records(gene: str, nodes: pd.DataFrame | None, organism: str = "Tg") -> list:
+def stale_records(gene: str, nodes: pd.DataFrame | None, organism: str = organisms.TOXOPLASMA) -> list:
     """Labels whose hold-out record for this gene no longer matches the table (64.30): the answer the record
     was scored against differs from the gene's current value, so its right/wrong verdicts are out of date."""
     from . import track_record as T
@@ -428,7 +430,7 @@ def prospective_lines(gene: str) -> list:
 _AGREEMENT_CACHE: dict = {}
 
 
-def consensus_lines(gene: str, organism: str = "Tg") -> list:
+def consensus_lines(gene: str, organism: str = organisms.TOXOPLASMA) -> list:
     """Per label, how many methods agreed on this gene (held out), and how often that much agreement
     was right on this label across all genes -- measured, never a confidence made from a count (64.33)."""
     from . import track_record as T

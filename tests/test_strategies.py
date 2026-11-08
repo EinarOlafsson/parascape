@@ -467,7 +467,7 @@ def test_every_strategy_finds_what_was_planted(key, planted, planted_big):
     checked = result.scorecard
     if s.task == SC.T_VALUES:
         # Native value_test produces point estimates, without predictive intervals.
-        point_keys = ("spearman", "pearson", "kendall", "r2", "nrmse", "mae", "rmse",
+        point_keys = ("spearman", "pearson", "kendall", "r2", "skill_vs_train_mean", "nrmse", "mae", "rmse",
                       "top_decile_recall", "bottom_decile_recall", "value_coverage")
         interval_keys = ("interval_coverage", "interval_coverage_answered", "interval_availability",
                          "mean_interval_width", "finite_mean_interval_width", "unbounded_interval_share",

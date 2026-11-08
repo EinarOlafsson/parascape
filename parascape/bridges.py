@@ -37,7 +37,7 @@ def host_links() -> pd.DataFrame:
     if os.path.exists(path):
         h = pd.read_parquet(path)
         for r in h.itertuples(index=False):
-            rows.append(dict(source_organism="Tg" if "Toxoplasma" in str(r.organism) else str(r.organism),
+            rows.append(dict(source_organism=organisms.TOXOPLASMA if "Toxoplasma" in str(r.organism) else str(r.organism),
                              source_id=str(r.gene_id or r.parasite_protein), target_organism=HOST_UNRECORDED,
                              target_id=str(r.host_target), relation="measured interaction (curated literature)",
                              context=str(r.interaction_mode), support=float(r.confidence)
@@ -46,7 +46,7 @@ def host_links() -> pd.DataFrame:
     if os.path.exists(path):
         p = pd.read_parquet(path)
         for r in p.itertuples(index=False):
-            rows.append(dict(source_organism="Pf", source_id=str(r.gene_id), target_organism="human",
+            rows.append(dict(source_organism=organisms.FALCIPARUM, source_id=str(r.gene_id), target_organism="human",
                              target_id=f"{r.host_name} ({r.host_id})", relation="measured interaction (crosslinking MS)",
                              context=f"{int(r.crosslinks)} crosslink(s)", support=float(r.crosslinks),
                              reference=str(r.evidence)))
@@ -56,13 +56,13 @@ def host_links() -> pd.DataFrame:
 def orthology_links() -> pd.DataFrame:
     """Toxoplasma <-> Plasmodium genes sharing an OrthoMCL group in their own node tables."""
     try:
-        tg = pd.read_parquet(organisms.nodes_path("Tg"), columns=["gene_id", "orthogroup"]).dropna()
-        pf = pd.read_parquet(organisms.nodes_path("Pf"), columns=["gene_id", "orthogroup"]).dropna()
+        tg = pd.read_parquet(organisms.nodes_path(organisms.TOXOPLASMA), columns=["gene_id", "orthogroup"]).dropna()
+        pf = pd.read_parquet(organisms.nodes_path(organisms.FALCIPARUM), columns=["gene_id", "orthogroup"]).dropna()
     except Exception:
         return pd.DataFrame(columns=COLUMNS)
     m = tg.merge(pf, on="orthogroup", suffixes=("_tg", "_pf"))
-    return pd.DataFrame({"source_organism": "Tg", "source_id": m["gene_id_tg"].astype(str),
-                         "target_organism": "Pf", "target_id": m["gene_id_pf"].astype(str),
+    return pd.DataFrame({"source_organism": organisms.TOXOPLASMA, "source_id": m["gene_id_tg"].astype(str),
+                         "target_organism": organisms.FALCIPARUM, "target_id": m["gene_id_pf"].astype(str),
                          "relation": "orthology (shared OrthoMCL group)", "context": m["orthogroup"].astype(str),
                          "support": float("nan"), "reference": "node tables (orthogroup column)"}, columns=COLUMNS)
 
