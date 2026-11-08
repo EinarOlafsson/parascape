@@ -227,3 +227,9 @@ def test_cryptosporidium_space_is_keyed_by_cryptodb_genes():
     assert CRYPTO_SPACE.code == O.CRYPTOSPORIDIUM and CRYPTO_SPACE.kind == O.PARASITE
     assert CRYPTO_SPACE.matches("cgd4_2900") and not CRYPTO_SPACE.matches("Cgd2_140")
     assert not CRYPTO_SPACE.matches("TGME49_262730")
+
+
+def test_berghei_space_is_keyed_by_pbanka_genes():
+    from parascape.spaces.berghei import BERGHEI_SPACE
+    assert BERGHEI_SPACE.code == O.BERGHEI and BERGHEI_SPACE.kind == O.PARASITE
+    assert BERGHEI_SPACE.matches("PBANKA_0100021") and not BERGHEI_SPACE.matches("PF3D7_0100100")

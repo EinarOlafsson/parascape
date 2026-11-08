@@ -345,4 +345,20 @@ Cryptosporidium location of 626 of 1,086 labelled genes **56.7 % right, against 
 (20 location classes).
 
 Not distributed: CryptoDB tables and the Guerin supplement carry licence code V until their redistribution terms
-are verified; the table is local. P. berghei (PlasmoGEM) and P. vivax remain.
+are verified; the table is local. P. berghei follows; P. vivax remains.
+
+## WP6: Plasmodium berghei ANKA (2026-11-08)
+
+`parascape/spaces/berghei.py` (`BERGHEI_SPACE`, code `Pb`, PBANKA identifiers) and
+`scripts/build_berghei_space_notebook.py` -> `notebooks/berghei_space_2026_11_08.ipynb`,
+`results/berghei_space_2026_11_08/`. 4,912 PBANKA genes from the PlasmoDB-68 annotated proteome on disk, with the
+PlasmoGEM blood-stage knockout screen in its native home (Bushell et al. 2017, PMC5509546 Table S1: phenotype,
+relative growth rate and interval, the named P. falciparum ortholog).
+
+* **WP6 acceptance holds:** the P. falciparum `pb_transferred_phenotype` equals the projection of this space through
+  the named orthologs for all 2,395 Pf genes it reaches (0 differ); 40 further Pf genes carry a transfer not reached
+  from these named orthologs.
+* **Benchmark on P. berghei truth:** the P. falciparum piggyBac mutagenesis index of the named ortholog separates
+  essential from dispensable P. berghei knockouts at AUC 0.789 (1,964 genes, 1,153 essential).
+
+Local only until the PlasmoDB annotation terms are verified (code V); PlasmoGEM supplement is PMC open access.

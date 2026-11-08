@@ -1,0 +1,18 @@
+{
+ "acceptance": {
+  "pf_genes_carrying_transfer": 2435,
+  "reached_from_pb_space": 2395,
+  "identical": 2395,
+  "differing": 0
+ },
+ "benchmark": {
+  "genes": 1964,
+  "essential": 1153,
+  "auc": 0.789
+ },
+ "genes": 4912,
+ "sha256": {
+  "proteome": "24b5472cf3c3b0d3fb8f6f4f3ed9e8ddeda4e2936d5156e8f9c466c7da7cb143",
+  "plasmogem": "b1d990663d8d8bf18ab48132c08afee178bbc07e4e7b902545a72c1dbd6e3a74"
+ }
+}
