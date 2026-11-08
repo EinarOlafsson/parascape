@@ -2015,6 +2015,10 @@ class Window(QtWidgets.QMainWindow):
         self.label_browser_act = t.addAction('Labels and classes')
         self.label_browser_act.setToolTip('Browse annotation membership, class balance, source records and available held-out scorecards.')
         self.label_browser_act.triggered.connect(lambda: self.open_label_browser())
+        self.question_scoreboard_act = t.addAction('Question scoreboard')
+        self.question_scoreboard_act.setToolTip('Every question scored on held-out genes: how well it is answered '
+                                                'against chance, and whether it may fill the map.')
+        self.question_scoreboard_act.triggered.connect(self.open_question_scoreboard)
         t.addSeparator()
         for dock in (self.console_dock, self.jobs_dock, self.chat_dock,
                      getattr(self, "analysis_dock", None), getattr(self, "strategies_dock", None),
@@ -3283,6 +3287,13 @@ class Window(QtWidgets.QMainWindow):
         if unit == 'gene' and code in organisms.SPACES:
             window = self.open_species(organisms.get(code).species)
             window._workflow_gene(entity)
+
+    def open_question_scoreboard(self):
+        """Show the question scoreboard (instructions 70.06, 73); returns the dialog."""
+        from . import question_scoreboard as QS
+        self._question_scoreboard = QS.dialog(self)
+        self._question_scoreboard.show()
+        return self._question_scoreboard
 
     def install_host_space(self, code: str) -> str:
         """Install a host gene pack from this checkout (checked against its SHA256); returns its folder."""

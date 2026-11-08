@@ -1,6 +1,6 @@
 # 70 · One inference scoreboard, one deployment rule, and a question-first navigator
 
-**Status: open (requested 2026-10-31).**
+**Status: DONE 2026-11-08.** Every action delivered (harness, navigator, question scoreboard in the app); localization cannot fill until there are more markers. Built; Einar's review pending -- reopen on his feedback. (Requested 2026-10-31.)
 
 **Paused 2026-11-01** while Einar's dataset goal ("finish all downloads and implement and normalize all
 datasets") takes priority. Direct-tier evidence acquired so far: QuickGO experimental cellular-component
@@ -143,3 +143,19 @@ co-expression-alone AUC, and saying it may rank and may not fill. Labels ship as
 They appear in the Navigator (rendered: a search for "rhoptries" finds "Localization Rhoptries", "Is this protein
 in the rhoptries?"). 229 node, home, module, menu and search tests pass; one search test was widened because a
 product search for "dense granule" now also, correctly, finds the dense-granule question.
+
+## 2026-11-08: the remaining actions delivered
+
+* **70.04, a categorical label on the split:** one-vs-rest per class -- the question catalogue (instruction 73)
+  scored every `compartment` and `lopit_unified` class with at least 50 genes through the harness (27 place
+  questions, median frozen-test AUC 0.934; secretory organelles 0.98-0.999, holding on genome-wide evidence only).
+* **70.06, the scoreboard view:** `parascape/question_scoreboard.py` and Tools > Question scoreboard in the
+  application: every scored question with its held-out AUC against chance, average precision against the share of
+  yes, whether it may fill the map, and the evidence that carries it, sortable; shipped as
+  `data/question_scoreboard.tsv` (198 questions). Tests `tests/test_question_scoreboard.py`.
+* **70.08, co-expression as a strategy:** label-free co-expression components scored per niche through the harness
+  (instruction 71, product 1): median cross-validated AUC 0.897, matching or beating all evidence for rhoptries,
+  apical, micronemes and IMC.
+
+Every action of the plan is now delivered. Localization still cannot fill: the frozen partitions hold too few
+markers for a 0.90 lower bound -- more markers, not a better model, is what changes that.
