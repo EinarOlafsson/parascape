@@ -1,6 +1,6 @@
 # 53 · One space per organism, then links between pathogen, vector and host
 
-**Status: open (designed 2026-09-26).**
+**Status: open (designed 2026-09-26). 2026-11-08: WP0 and WP1 done, WP3 (Hs, Mm) done to its acceptance, WP7/WP9 partly; rat, cat, vectors and other apicomplexans (WP4-6) not started -- they need data acquisition, much of it behind the VEuPathDB login (item 38).**
 
 Crash recovery: all implementation commits through `05650fd` survived and were pushed. The 45
 focused recovery checks passed. Documentation CI passed; test CI had 4,138 passes and one stale
@@ -310,3 +310,23 @@ share-alike, **V** verify the terms first, **X** local build only.
   contains BioGRID and IntAct. These are one family each: holding one out must hold out the others.
 * The Pf host contexts in `generate_slot_table.py` already name Anopheles midgut and salivary gland.
   Those become bridge slots into the Ag space, not Pf columns.
+
+## Progress through instruction 64 (2026-11-08)
+
+* **WP0 (registry):** done earlier (R0-R4); the organism-literal ratchet now also holds every file touched in 64
+  (literals replaced by `parascape.organisms` constants, 2026-11-07).
+* **WP1 (space framework and packs):** done. `packs.py` (hash-checked install, tamper and size refusal, interrupted
+  activation), `spaces.build_pack` (lost IDs/columns/values refused; `extra=` members for notices and link tables),
+  `space_catalogue.py` (ready / installed / installable / unavailable, never calibrated without a track record).
+* **WP3 (Hs, Mm):** done to its acceptance. Hs: 58,988 unique ENSG genes (GTEx v10, GENCODE 39); **19,268 of the
+  19,400 reviewed human proteins with an Ensembl cross-reference resolve to a gene in the universe (99.3 %, bar
+  95 %)**; GTEx values replay exactly from source text (foundation, 64.21); HPA annotations attached; distributable
+  pack with per-column licences (O / SA) and notice. Mm: 18,428 unique ENSMUSG genes (Bgee, Ensembl Compara), human-
+  ortholog locations kept as inferred, pack built (64.22). Host pilots measured on host truth (64.28/64.29).
+* **WP7 (leakage per space):** the category and measured-redundancy rules apply to any space through the harness;
+  per-space attack tests (GTEx->HPA etc.) not yet written.
+* **WP9 (UI):** host spaces listed in the Species menu with their state and installable from there; a host gene opens
+  from its pack through a parasite gene's links (64.23/64.24). A host space as a full map window is not built.
+* **Phase 2:** organism-qualified bridges with relation types (`bridges.py`), counterpart resolution in its own space.
+* **Not started:** WP2 (slot generator per space), WP4 (Rn, Fc), WP5 (Ag, As), WP6 (Cp, Pb, Pv), WP8 (strategies
+  across N spaces).
