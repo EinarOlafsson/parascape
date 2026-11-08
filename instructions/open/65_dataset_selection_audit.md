@@ -19,7 +19,7 @@ accuracy. Unknown dates/counts/coverage remain unknown, not zero or guessed.
 | [65.01](../done/65_01_dataset_selection_policy.md) | ✅ | 0 h | Implement and test a versioned selection policy |
 | [65.02](../done/65_02_publication_identity_audit.md) | ✅ | 0 h | Audit publication identity and citation rates for all 162 registered sources |
 | [65.03](../done/65_03_slot_literature_discovery.md) | ✅ | 0 h | Search every current slot for literature challengers and expose comparison gaps |
-| 65.04 | 4% | 16–30 h + compute | Review biological eligibility and deeper literature; validate/promote replacements and rerun affected checks |
+| 65.04 | 12% | 14–28 h + compute | Review biological eligibility and deeper literature; validate/promote replacements and rerun affected checks |
 
 65.02 depends on 65.01; 65.03 depends on 65.01/65.02; 65.04 depends on all three.
 Each completion requires recorded evidence, relevant checks, a commit and nightly
@@ -133,3 +133,19 @@ source/date attribution. This is documentary eligibility evidence, not a new
 citation-rate comparison, a source promotion, V11 association or an installed
 human gene space. Release-to-publication lineage, measured version/quantity
 mapping and best-source selection remain unresolved; 65.04 stays4%.
+
+## 65.04, 2026-11-08: measured comprehensiveness, and batch 3 closed by 64.21
+
+* **Comprehensiveness measured** (`scripts/build_dataset_comprehensiveness.py` ->
+  `results/dataset_selection_2026_11_08/source_review_queue.csv`, a new queue version; the 2026-10-07 one is kept):
+  for 140 of the 162 sources, the genes of their organism table with a value in any registered column, and that
+  share -- median 0.80 (Tg 92 sources, median 0.80; Pf 48, median 0.85). 22 stay "unknown" with the reason: 12 have
+  no registered column in the shipped tables, 10 are not gene tables of a shipped organism (host protein tables,
+  source-only, metabolites). This is the "more comprehensive" term of Einar's selection rule, now a number.
+* **Batch 3 (GTEx lineage)** is closed by instruction 64.21: the v10 release-to-GENCODE39/GRCh38 lineage and the GTEx
+  public-data terms were verified from authoritative captures (`results/human_reference_terms_2026_10_08_v5/`), and
+  the human gene space replays every GTEx value from source text.
+* Batches 1-2 were closed under instruction 66 (rhoptry screen supplement, RBC deposit).
+
+Still open: batch 4 (the review queue: origin-paper verification for all 162, the 25 unresolved publications) and
+batch 5 (keep/add/replace decisions per comparable alternative).
