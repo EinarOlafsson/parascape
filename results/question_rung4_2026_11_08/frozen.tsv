@@ -1,0 +1,70 @@
+question	category	chosen_mostly	frozen_auc	rung1_frozen_auc	precision_lower90	may_fill	rung1_may_fill
+cat_lopit_unified_ribosome_RNP	place	boosted trees	0.9996428571428573	0.9452772404900064	0.6144783085321186	False	False
+cat_compartment_rhoptries_1	place	boosted trees	0.9961106309420916	0.9992985737666588	0.416109625380471	False	False
+cat_compartment_rhoptries_2	place	boosted trees	0.9890666666666666	0.985963477786863		False	False
+cat_compartment_dense_granules	place	boosted trees	0.9831027935991321	0.9468955815589232	0.6897565521874542	False	False
+cat_pvm_proximity_positive_1_0	place	boosted trees	0.975187265917603	1.0	0.774263682681127	False	False
+cat_compartment_unassigned	place	boosted trees	0.9743330546477161	0.9740741729634474	0.8973716253567291	False	False
+cat_lopit_unified_apicoplast	place	boosted trees	0.9619398403928792	0.95508166969147	0.3162277660168379	False	False
+cat_lopit_unified_apical_secretory	place	boosted trees	0.9583569023569024	0.9344176534931278	0.901453291218357	True	False
+cat_compartment_cytosol	place	boosted trees	0.9581608460033118	0.9487627365356625	0.7669541223708649	False	False
+cat_compartment_micronemes	place	boosted trees	0.9580195085813064	0.9989335520918784		False	False
+cat_lopit_unified_mitochondrion	place	boosted trees	0.9519451622164801	0.9034463189392768	0.680613943822977	False	False
+cat_compartment_IMC	place	boosted trees	0.9434114793856103	0.9206381813201862	0.416109625380471	False	False
+cat_compartment_PM_integral	place	boosted trees	0.941970310391363	0.9464432686654908		False	False
+cat_n_acetylation_sites_4_0	modification	boosted trees	0.9396508788765928	0.9387080235836964	0.9101079598047883	True	False
+cat_compartment_Golgi	place	boosted trees	0.9320294466279868	0.9048536562987428	0.03451061539437024	False	False
+cat_lopit_unified_nucleus	place	boosted trees	0.9282275132275132	0.9140990914733932	0.9212804126625771	True	True
+cat_compartment_nucleus_non_chromatin	place	boosted trees	0.9273590781687947	0.9509999203250736	0.4765712235048313	False	False
+cat_compartment_mitochondrion_soluble	place	boosted trees	0.9254876808068299	0.9220642102995044	0.3542159288726092	False	False
+cat_compartment_apicoplast	place	boosted trees	0.9250201775625505	0.9076686951370564	0.09999999999999998	False	False
+cat_compartment_nucleus_chromatin	place	boosted trees	0.9242758481479879	0.9089114400443556	0.6897565521874542	False	False
+cat_lopit_unified_ER	place	boosted trees	0.9223584905660378	0.9317460317460318	0.3204605837218183	False	False
+cat_lopit_unified_pellicle_PM_IMC	place	boosted trees	0.9192380952380952	0.8873794549266248	0.1958001056590917	False	False
+cat_compartment_ER	place	boosted trees	0.918382893769045	0.9522460376118912	0.3751414812204622	False	False
+cat_lopit_unified_cytosol	place	boosted trees	0.9143475088597041	0.9163972965030854	0.6287777560223577	False	False
+cat_compartment_mitochondrion_membranes	place	boosted trees	0.9059041835357625	0.8975141521043564	0.46415888336127786	False	False
+cat_has_ec_1_0	function	boosted trees	0.9011700416035948	0.8898967241459882	0.7493253886845302	False	False
+cat_n_acetylation_sites_1_0	modification	boosted trees	0.8795306652280926	0.8832403147841114	0.793286033961763	False	False
+cat_compartment_apical_1	place	boosted trees	0.874984565995802	0.9788351107465136		False	False
+cat_has_phospho_1	modification	boosted trees	0.8706874842608915	0.8666114099484645	0.6316376362100743	False	False
+cat_lopit_unified_golgi_secretory_vesicular	place	boosted trees	0.8480247993005327	0.8739524195728575	0.05131670194948619	False	False
+cat_n_xlink_partners_high	interaction	boosted trees	0.8457522299306245	0.8644245182991481	0.8186229237577051	False	False
+cat_cdpk1_thiophospho_peptides_high	modification	boosted trees	0.8298245614035087	0.7894736842105263	0.44826916761640095	False	False
+cat_n_crosslink_partners_2_0	interaction	boosted trees	0.7841807909604519	0.6128625472887768	0.0	False	False
+cat_ec_number_3_1_3_16_Protein_serine_threonine_phosphatase	function	low_rank_completion	0.7774869109947644	0.8909722222222223	0.0	False	False
+cat_n_crosslink_partners_1_0	interaction	boosted trees	0.7770979020979022	0.7412587412587412	0.7854851608256171	False	False
+cat_diff_reporter_log2_mNG_over_bulk_change	phenotype	boosted trees	0.773076923076923	0.8877551020408163	0.3204605837218183	False	False
+cat_surface_apicoplast_stringent_1_0	interaction	low_rank_completion	0.7728365384615384	0.7528409090909091	0.24663645328846656	False	False
+cat_n_nitrosylation_sites_1_0	modification	low_rank_completion	0.7718820861678004	0.6801470588235294	0.813957349418499	False	False
+cat_surface_apicoplast_log2fc_change	interaction	low_rank_completion	0.7612456747404844	0.6276729559748427	0.0	False	False
+cat_screen_replication_phenotype_True	phenotype	low_rank_completion	0.75	0.5523809523809524	0.05131670194948619	False	False
+cat_n_o_fucosyl_peptides_8_0	modification	boosted trees	0.7290969899665551	0.705685618729097	0.115825278029763	False	False
+cat_surface_er_log2fc_high	interaction	low_rank_completion	0.7243532560214094	0.7395833333333331	0.09999999999999998	False	False
+cat_screen_actin_phenotype_True	phenotype	low_rank_completion	0.7095238095238094	0.5		False	False
+cat_n_holes_0	interaction	boosted trees	0.6935574229691877	0.7251696708749908	0.9374415721959528	True	True
+cat_n_acetylation_sites_3_0	modification	boosted trees	0.6917986425339366	0.6584090283512248		False	False
+cat_phospho_down_sites_high	modification	low_rank_completion	0.6909090909090909	0.6052238805970149	0.4735881550707608	False	False
+cat_n_acetylation_sites_2_0	modification	boosted trees	0.688182739246569	0.6730800064133398	0.07882344616014127	False	False
+cat_palmitome_odya_vs_hydroxylamine_log2_change	modification	boosted trees	0.6862745098039216	0.7711111111111111	0.1958001056590917	False	False
+cat_surface_mitochondrion_stringent_1_0	interaction	boosted trees	0.6691919191919191	0.5947712418300654		False	False
+cat_surface_er_stringent_1_0	interaction	low_rank_completion	0.6619718309859155	0.7880952380952382		False	False
+cat_n_nitrosylation_sites_2_0	modification	low_rank_completion	0.6608927381745503	0.4564102564102564	0.0	False	False
+cat_phospho_sites_measured_high	modification	boosted trees	0.6593149540517962	0.6633469526727954	0.3162277660168379	False	False
+cat_n_arginine_methylation_sites_high	modification	low_rank_completion	0.6577777777777778	0.5879629629629629	0.16923334198206869	False	False
+cat_n_holes_1	interaction	boosted trees	0.6559243366319292	0.6880894902313048		False	False
+cat_palmitome_odya_vs_palmitate_log2_change	modification	boosted trees	0.603448275862069	0.6409356725146199		False	False
+cat_screen_any_phenotype_True	phenotype	low_rank_completion	0.5880952380952381	0.4675675675675675	0.05131670194948619	False	False
+cat_n_lactylation_sites_1_0	modification	boosted trees	0.5877061469265368	0.6693548387096775	0.5327330213346689	False	False
+cat_n_o_fucosyl_peptides_6_0	modification	low_rank_completion	0.5651515151515151	0.3928571428571428		False	False
+cat_n_o_fucosyl_peptides_5_0	modification	boosted trees	0.5551378446115288	0.6877880184331797		False	False
+cat_surface_mitochondrion_log2fc_change	interaction	low_rank_completion	0.5424836601307189	0.8454545454545455		False	False
+cat_n_nitrosylation_sites_3_0	modification	low_rank_completion	0.5274725274725275	0.5819444444444446	0.0	False	False
+cat_n_lactylation_sites_3_0	modification	boosted trees	0.4474789915966387	0.5496031746031746	0.0	False	False
+cat_n_lactylation_sites_2_0	modification	low_rank_completion	0.4446022727272727	0.5534825870646766	0.0	False	False
+cat_phospho_down_ratio_high	modification	boosted trees	0.4269607843137255	0.5687751004016064	0.0	False	False
+cat_phospho_up_ratio_high	modification	boosted trees	0.4218468468468468	0.4671717171717171		False	False
+cat_screen_apicoplast_phenotype_True	phenotype	boosted trees	0.4095238095238095	0.4523809523809524	0.09999999999999998	False	False
+cat_screen_egress_phenotype_True	phenotype	low_rank_completion	0.39430894308943093	0.3787878787878788		False	False
+cat_secretome_soluble_over_vesicle_log2_change	place	boosted trees	0.35	0.5196078431372549	0.0	False	False
+cat_n_proximity_partners_2_0	interaction	boosted trees				False	False

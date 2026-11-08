@@ -10,6 +10,7 @@ different partition, so differences there are partly the split).
     python scripts/score_question_catalogue.py --models hist_gbt,family_stacking,graph_propagation --seed 2 \
         --categories place,function,phenotype,modification,interaction --out results/question_scores_rungs23_2026_11_08
     python scripts/build_question_rungs23_notebook.py
+    python scripts/build_question_rungs23_notebook.py --rung4   # scores from --models hist_gbt,low_rank_completion --seed 3
 """
 from __future__ import annotations
 
@@ -22,13 +23,15 @@ from notebook_runner import ExecutedNotebook  # noqa: E402
 
 DATE = "2026_11_08"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(REPO, "results", f"question_rungs23_{DATE}")
-NB = os.path.join(REPO, "notebooks", f"question_rungs23_{DATE}.ipynb")
+RUNG = "4" if "--rung4" in sys.argv else "23"   # --rung4: boosted trees against low-rank completion (seed 3)
+SCORES = f"results/question_scores_rung4_{DATE}" if RUNG == "4" else f"results/question_scores_rungs23_{DATE}"
+OUT = os.path.join(REPO, "results", f"question_rung{RUNG}_{DATE}" if RUNG == "4" else f"question_rungs23_{DATE}")
+NB = os.path.join(REPO, "notebooks", f"question_rung{RUNG}_{DATE}.ipynb" if RUNG == "4" else f"question_rungs23_{DATE}.ipynb")
 
 
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
-    nb = ExecutedNotebook("Strategy ladder rungs 2-3 on curated-label questions", namespace={"REPO": REPO, "OUT": OUT})
+    nb = ExecutedNotebook("Strategy ladder rung 4 on curated-label questions" if RUNG == "4" else "Strategy ladder rungs 2-3 on curated-label questions", namespace={"REPO": REPO, "OUT": OUT, "SCORES": SCORES})
     nb.md("**What this tests (instruction 73, phase 4).** Whether a model per evidence family combined (rung 2) or "
           "network propagation (rung 3) answers the curated-label questions better than boosted trees on all the "
           "evidence at once (rung 1), and whether more cells become fillable at the 90 % bar.",
@@ -36,7 +39,7 @@ def main() -> None:
           "harness selection score). The frozen test is touched once, for the strategy the inner folds chose.",
           f"Built {_dt.date.today().isoformat()}.")
     nb.code("import glob, json, os, numpy as np, pandas as pd",
-            "recs = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(REPO, 'results/question_scores_rungs23_2026_11_08/*.json')))]",
+            "recs = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(REPO, SCORES, '*.json')))]",
             "R = pd.DataFrame([r for r in recs if 'error' not in r])",
             "errors = [r for r in recs if 'error' in r]",
             "rung1 = pd.read_csv(os.path.join(REPO, 'results/question_scoreboard_2026_11_08/scores.tsv'), sep='\\t').set_index('question')",

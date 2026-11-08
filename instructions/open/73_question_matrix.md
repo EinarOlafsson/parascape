@@ -521,3 +521,35 @@ its name, so its identity is unchanged.
   fill under rung 1 but not here: its lower bound is 0.885 on this partition.
 - **Gate:** the per-question scoreboard and the fillable count are reported. Rungs 1-3 leave the curated-label
   cells unfillable, so by the plan **phase 5 (rungs 4-5: matrix completion, multi-task) is the next step**.
+
+## Phase 5, rung 4 (low-rank completion) on the same questions (2026-11-08)
+
+**The run:**
+- The same 69 questions were scored on a fresh partition (seed 3), with boosted trees and `low_rank_completion`
+  offered to the inner folds.
+- Output: `results/question_scores_rung4_2026_11_08/`. Notebook: `notebooks/question_rung4_2026_11_08.ipynb`
+  (`build_question_rungs23_notebook.py --rung4`); results in `results/question_rung4_2026_11_08/`.
+
+**Gate: beat the per-question models on the same folds. Not met.**
+- Boosted trees win 52 of 68 questions; low-rank completion wins 16.
+- The median inner gain is 0.000 (maximum 0.106).
+- Low-rank completion helps only for the imaging phenotypes (0.295 against 0.256) and slightly for interaction.
+  It is clearly worse for place (0.344 against 0.494) and function.
+
+**Fillable questions on this partition: 4, all chosen as boosted trees.**
+- lopit_unified apical-secretory, lower bound 0.901.
+- lopit_unified nucleus, lower bound 0.921.
+- Acetylation-site count, lower bound 0.910.
+- `n_holes`, which is bookkeeping.
+
+**Partition variance:** the extra fills come from the partition, not the method.
+- The nucleus question fills on seeds 0 and 3 but not on seed 2 (0.885).
+- Apical-secretory and acetylation are just above the bar here and below it on seed 0.
+- These sit at the 90 % edge. Before a fill from them is trusted, the bar should be required on more than one
+  partition.
+
+**Rung 5:** the multi-task model stays untested, for the reason recorded in `borrowed_models.UNTESTED`: the
+registry does not yet record which labels may stand beside which.
+
+**Verdict:** rungs 2-4 add no measurable gain over boosted trees on the curated labels. The evidence, not the
+method, is the limit.
