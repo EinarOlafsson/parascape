@@ -149,3 +149,25 @@ mistakes are measured independent of the generator:
 
 Test `tests/test_claims.py::test_the_orthology_verifier_is_used_only_where_its_mistakes_are_independent`.
 Next: frozen prospective localization claims once an independent localization source can grade them.
+
+## 2026-11-08: the frozen prospective localization claims
+
+`scripts/build_prospective_localization_notebook.py` -> `notebooks/prospective_localization_2026_11_08.ipynb`,
+`results/prospective_localization_2026_11_08/`. The companion of the glucose freeze, for the question Einar asks
+most: where is a protein?
+
+* **The claims.** All 4,313 genes with no unified hyperLOPIT assignment, each given its most likely niche with a
+  probability and the margin over the runner-up. One model per niche (9 modelled; proteasome 31 and cytoskeleton 9
+  have too few assigned genes), fitted on the 3,827 assigned genes, **every column of the place category held
+  out** -- 370 allowed evidence columns, so no localisation measurement can restate the answer.
+* **1,866 of the 4,313 have a clear best niche** (margin at least 0.2); the rest are not placed by this evidence
+  and say so in their own row.
+* **Frozen:** claims SHA-256 `0773e04f...02adb`, strategy hash, version, date in `manifest.json`.
+* **Not fills**, and the registry says why: a frozen partition of a localization question holds 4-13 positives,
+  far too few for a lower bound of 0.90. These are predictions to grade.
+* **How to grade it** (in the manifest): verify the hash, then accuracy against the commonest-niche baseline on
+  whatever genes an independent source places -- a new hyperLOPIT, a tagging campaign, or curated per-protein
+  papers -- overall and among the clear-margin claims.
+
+Both freezes now exist, so step 3 of this instruction (prospective tests) is built. What remains is outside the
+program: the future data that grades them.

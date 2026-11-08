@@ -1,0 +1,30 @@
+{
+ "question": "prospective_localization (one model per niche)",
+ "label": "nodes.parquet:lopit_unified",
+ "frozen_at": "2026-11-08T12:59:21",
+ "parascape_version": "0.0.10.0",
+ "strategy": "boosted trees (reference)",
+ "strategy_hash": "1b4ace1f7077151fe1eba96e64d52d1860b359f529b4c92f4bb2ea09e8c42901",
+ "niches": [
+  "ER",
+  "apical_secretory",
+  "apicoplast",
+  "cytosol",
+  "golgi_secretory_vesicular",
+  "mitochondrion",
+  "nucleus",
+  "pellicle_PM_IMC",
+  "ribosome_RNP"
+ ],
+ "niches_not_modelled": [
+  "proteasome (31)",
+  "cytoskeleton (9)"
+ ],
+ "n_training": 3827,
+ "n_claims": 4313,
+ "n_clear_margin": 1866,
+ "evidence_columns": 370,
+ "claims_sha256": "0773e04f683dd29fa88d83588ce000ecdc3d6ac07ce1931ec61a53d978102adb",
+ "held_out_record": "parascape/question_registry.py: LOCALIZATION_NICHES (frozen-test AUC per niche)",
+ "grade_with": "accuracy against the commonest-niche baseline on the genes an independent localisation source places (new hyperLOPIT, tagging campaign or curated per-protein papers), overall and among claims with margin >= 0.2"
+}
