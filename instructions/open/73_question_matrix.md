@@ -495,3 +495,29 @@ leak. The carriers are biology: secretory-organelle and PVM proteins are made in
 the top family throughout), and translation-efficiency changes are carried by other studies RNA -- the measured
 redundancy of footprints with mRNA that Einar chose to report rather than exclude. These questions still cannot
 fill because their frozen partitions hold few positives; ranking is what they offer.
+
+## Phase 4, rungs 2-3 on the curated-label questions (2026-11-08)
+
+`scripts/score_question_catalogue.py` now takes `--models`, `--seed` and `--categories`. The rung-1 strategy keeps
+its name, so its identity is unchanged.
+
+**The run:**
+- The 69 admitted questions of place, function, phenotype, modification and interaction were re-scored on a fresh
+  partition (seed 2).
+- Three strategies were offered to the inner folds: boosted trees (rung 1), one model per evidence family
+  combined (rung 2, `family_stacking`) and network propagation (rung 3, `graph_propagation`).
+- Output: `results/question_scores_rungs23_2026_11_08/` (69 questions, 0 errors). Notebook:
+  `notebooks/question_rungs23_2026_11_08.ipynb`; results in `results/question_rungs23_2026_11_08/`.
+
+**Rungs 2-3 add almost nothing on these labels.**
+- **Same folds:** boosted trees win the inner folds on 49 of 68 questions.
+  - Propagation wins 11: interaction 5, phenotype 3, modification 3.
+  - Stacking wins 8.
+  - The median gain in inner average precision over rung 1 is 0.000 (mean 0.006, maximum 0.101).
+- **By category:** propagation is clearly worse for place (median 0.247 against 0.494) and function. It is better
+  only for the imaging phenotypes (0.251 against 0.203), which stay near chance anyway.
+- **Frozen test:** median AUC 0.764 for the chosen strategy. Rung 1 on seed 0 gave 0.817, on a different partition.
+- **Fillable cells:** only one (`n_holes`, which is bookkeeping, not biology). `lopit_unified` nucleus could
+  fill under rung 1 but not here: its lower bound is 0.885 on this partition.
+- **Gate:** the per-question scoreboard and the fillable count are reported. Rungs 1-3 leave the curated-label
+  cells unfillable, so by the plan **phase 5 (rungs 4-5: matrix completion, multi-task) is the next step**.

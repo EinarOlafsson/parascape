@@ -40,6 +40,11 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--shard", default="0/1")
     ap.add_argument("--out", default=OUT)
+    ap.add_argument("--models", default="hist_gbt",
+                    help="comma-separated harness models; several are chosen between by the inner folds "
+                         "(rungs 2-3: hist_gbt,family_stacking,graph_propagation)")
+    ap.add_argument("--seed", type=int, default=0, help="partition seed; a new strategy set needs a new seed")
+    ap.add_argument("--categories", default="", help="comma-separated label categories to score (default all)")
     args = ap.parse_args(argv)
     i, n = map(int, args.shard.split("/"))
     import numpy as np
@@ -50,6 +55,11 @@ def main(argv=None) -> int:
     nodes = pd.read_parquet(os.path.join(ROOT, "parascape", "data", "nodes.parquet")).set_index("gene_id")
     cat = pd.read_csv(CATALOGUE, sep="\t")
     cat = cat[cat["admitted"]].reset_index(drop=True)
+    if args.categories:
+        cat = cat[cat["category"].isin(args.categories.split(","))].reset_index(drop=True)
+    settings = {"hist_gbt": dict(max_iter=150), "family_stacking": dict(max_iter=60)}
+    names = {"hist_gbt": "boosted trees"}   # the name is part of the strategy identity: keep rung 1 unchanged
+    strategies = [H.Strategy.of(names.get(m, m), m, **settings.get(m, {})) for m in args.models.split(",")]
 
     def family_of(column):
         found = ds.provenance(column, O.TOXOPLASMA)
@@ -78,7 +88,7 @@ def main(argv=None) -> int:
                 features = H.allowed_features(q, full, families)
                 r = H.run_question(q, labels=labels.astype(bool), features=features, families=families,
                                    groups=groups_all.reindex(entities),
-                                   strategies=[H.Strategy.of("boosted trees", "hist_gbt", max_iter=150)], seed=0,
+                                   strategies=strategies, seed=args.seed,
                                    importance_repeats=1, log_path=os.path.join(ROOT, H.HOLDOUT_LOG))
                 ft = r.frozen_test or {}
                 rec = dict(question=qid, column=row.column, category=row.category, wording=wording,
@@ -88,6 +98,7 @@ def main(argv=None) -> int:
                            precision_lower90=ft.get("precision_lower90"), may_fill=bool(r.may_fill),
                            flags=list(r.flags), refusal=r.refusal,
                            top_families=r.importance.head(3)["family"].tolist() if len(r.importance) else [],
+                           seed=args.seed, chosen=list(r.chosen_per_outer_fold), inner_scores=r.inner_scores,
                            seconds=round(time.monotonic() - t0, 1))
             except Exception as error:
                 rec = dict(question=qid, column=row.column, category=row.category, wording=wording,

@@ -1,0 +1,70 @@
+question	category	boosted trees	family_stacking	graph_propagation	best	gain_over_rung1
+cat_cdpk1_thiophospho_peptides_high	modification	0.581	0.5817	0.5567	family_stacking	0.0007
+cat_compartment_ER	place	0.4527	0.4522	0.0968	boosted trees	0.0
+cat_compartment_Golgi	place	0.2806	0.265	0.0835	boosted trees	0.0
+cat_compartment_IMC	place	0.3484	0.3238	0.2457	boosted trees	0.0
+cat_compartment_PM_integral	place	0.1894	0.1672	0.0618	boosted trees	0.0
+cat_compartment_apical_1	place	0.2393	0.2095	0.1641	boosted trees	0.0
+cat_compartment_apicoplast	place	0.245	0.2302	0.0877	boosted trees	0.0
+cat_compartment_cytosol	place	0.5598	0.5467	0.29	boosted trees	0.0
+cat_compartment_dense_granules	place	0.672	0.6566	0.2264	boosted trees	0.0
+cat_compartment_micronemes	place	0.5173	0.5136	0.2151	boosted trees	0.0
+cat_compartment_mitochondrion_membranes	place	0.4785	0.4483	0.2803	boosted trees	0.0
+cat_compartment_mitochondrion_soluble	place	0.3408	0.3198	0.1436	boosted trees	0.0
+cat_compartment_nucleus_chromatin	place	0.5475	0.5487	0.2541	family_stacking	0.0012
+cat_compartment_nucleus_non_chromatin	place	0.4608	0.4544	0.2598	boosted trees	0.0
+cat_compartment_rhoptries_1	place	0.6676	0.6239	0.2508	boosted trees	0.0
+cat_compartment_rhoptries_2	place	0.4345	0.3299	0.2739	boosted trees	0.0
+cat_compartment_unassigned	place	0.9751	0.9728	0.9244	boosted trees	0.0
+cat_diff_reporter_log2_mNG_over_bulk_change	phenotype	0.4357	0.4202	0.3705	boosted trees	0.0
+cat_ec_number_3_1_3_16_Protein_serine_threonine_phosphatase	function	0.1216	0.1218	0.1145	family_stacking	0.0002
+cat_has_ec_1_0	function	0.5922	0.5806	0.2715	boosted trees	0.0
+cat_has_phospho_1	modification	0.4825	0.4817	0.2859	boosted trees	0.0
+cat_lopit_unified_ER	place	0.5241	0.5163	0.1699	boosted trees	0.0
+cat_lopit_unified_apical_secretory	place	0.8164	0.8034	0.5025	boosted trees	0.0
+cat_lopit_unified_apicoplast	place	0.4564	0.4306	0.2472	boosted trees	0.0
+cat_lopit_unified_cytosol	place	0.564	0.5431	0.3228	boosted trees	0.0
+cat_lopit_unified_golgi_secretory_vesicular	place	0.277	0.2665	0.1254	boosted trees	0.0
+cat_lopit_unified_mitochondrion	place	0.697	0.6702	0.3662	boosted trees	0.0
+cat_lopit_unified_nucleus	place	0.8185	0.8149	0.6167	boosted trees	0.0
+cat_lopit_unified_pellicle_PM_IMC	place	0.4939	0.4816	0.2095	boosted trees	0.0
+cat_lopit_unified_ribosome_RNP	place	0.866	0.8584	0.808	boosted trees	0.0
+cat_n_acetylation_sites_1_0	modification	0.7463	0.7496	0.5874	family_stacking	0.0033
+cat_n_acetylation_sites_2_0	modification	0.249	0.2592	0.2345	family_stacking	0.0102
+cat_n_acetylation_sites_3_0	modification	0.2482	0.2503	0.2285	family_stacking	0.0021
+cat_n_acetylation_sites_4_0	modification	0.8727	0.8676	0.7368	boosted trees	0.0
+cat_n_arginine_methylation_sites_high	modification	0.5243	0.4977	0.5151	boosted trees	0.0
+cat_n_crosslink_partners_1_0	interaction	0.893	0.8843	0.8995	graph_propagation	0.0065
+cat_n_crosslink_partners_2_0	interaction	0.2899	0.2888	0.3374	graph_propagation	0.0475
+cat_n_holes_0	interaction	0.972	0.9717	0.9586	boosted trees	0.0
+cat_n_holes_1	interaction	0.0899	0.0914	0.0677	family_stacking	0.0015
+cat_n_lactylation_sites_1_0	modification	0.7244	0.7145	0.7158	boosted trees	0.0
+cat_n_lactylation_sites_2_0	modification	0.2871	0.2663	0.3207	graph_propagation	0.0336
+cat_n_lactylation_sites_3_0	modification	0.1965	0.1699	0.1742	boosted trees	0.0
+cat_n_nitrosylation_sites_1_0	modification	0.7954	0.7941	0.8003	graph_propagation	0.0049
+cat_n_nitrosylation_sites_2_0	modification	0.2779	0.2273	0.2353	boosted trees	0.0
+cat_n_nitrosylation_sites_3_0	modification	0.1462	0.1502	0.1919	graph_propagation	0.0457
+cat_n_o_fucosyl_peptides_5_0	modification	0.6247	0.5634	0.6088	boosted trees	0.0
+cat_n_o_fucosyl_peptides_6_0	modification	0.2716	0.1447	0.2109	boosted trees	0.0
+cat_n_o_fucosyl_peptides_8_0	modification	0.5274	0.4824	0.3684	boosted trees	0.0
+cat_n_proximity_partners_2_0	interaction					
+cat_n_xlink_partners_high	interaction	0.6671	0.6679	0.5225	family_stacking	0.0008
+cat_palmitome_odya_vs_hydroxylamine_log2_change	modification	0.2872	0.2673	0.2512	boosted trees	0.0
+cat_palmitome_odya_vs_palmitate_log2_change	modification	0.4032	0.3952	0.2916	boosted trees	0.0
+cat_phospho_down_ratio_high	modification	0.2842	0.2374	0.2697	boosted trees	0.0
+cat_phospho_down_sites_high	modification	0.4446	0.437	0.4418	boosted trees	0.0
+cat_phospho_sites_measured_high	modification	0.458	0.4535	0.3842	boosted trees	0.0
+cat_phospho_up_ratio_high	modification	0.2282	0.2146	0.2234	boosted trees	0.0
+cat_pvm_proximity_positive_1_0	place	0.9748	0.9626	0.3635	boosted trees	0.0
+cat_screen_actin_phenotype_True	phenotype	0.2064	0.1439	0.1607	boosted trees	0.0
+cat_screen_any_phenotype_True	phenotype	0.3483	0.3343	0.3908	graph_propagation	0.0425
+cat_screen_apicoplast_phenotype_True	phenotype	0.2	0.1969	0.2127	graph_propagation	0.0127
+cat_screen_egress_phenotype_True	phenotype	0.1628	0.1408	0.1375	boosted trees	0.0
+cat_screen_replication_phenotype_True	phenotype	0.189	0.1629	0.2899	graph_propagation	0.1009
+cat_secretome_soluble_over_vesicle_log2_change	place	0.2583	0.2169	0.2059	boosted trees	0.0
+cat_surface_apicoplast_log2fc_change	interaction	0.3749	0.3448	0.3951	graph_propagation	0.0202
+cat_surface_apicoplast_stringent_1_0	interaction	0.606	0.605	0.5032	boosted trees	0.0
+cat_surface_er_log2fc_high	interaction	0.4758	0.457	0.3486	boosted trees	0.0
+cat_surface_er_stringent_1_0	interaction	0.178	0.1751	0.2064	graph_propagation	0.0284
+cat_surface_mitochondrion_log2fc_change	interaction	0.4244	0.4043	0.3908	boosted trees	0.0
+cat_surface_mitochondrion_stringent_1_0	interaction	0.2444	0.2236	0.3115	graph_propagation	0.0671
