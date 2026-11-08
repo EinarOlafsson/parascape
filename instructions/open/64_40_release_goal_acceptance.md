@@ -1,6 +1,6 @@
 # 64.40 · Verify both goals end to end and release
 
-Status: OPEN — 85%, 2026-11-08. Release evidence matrix built; the Tests workflow on nightly is GREEN (run 42435594490, commit d3aaea10); release waits on item 90 (licence review) and the installed-wheel walk-through.
+Status: OPEN — 90%, 2026-11-08. Evidence matrix built; CI green (run 42435594490); installed-wheel walk-through passes. Release waits on item 90 (licence review), a new data asset carrying the corrected Tg table, and the Python 3.10/3.11 decision.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -94,3 +94,16 @@ Toxoplasma frozen functional recoveries were re-run on fresh splits (64.11a). CI
 replay, real-GL species switches under xvfb, version sync, and the full not-slow suite -- the first green run in at
 least 60. Blocking a release now: item 90 (Einar's licence review); the one-run installed-wheel walk-through; the
 Python 3.10/3.11 + PySide6 6.12 shutdown abort (decision for Einar).
+
+**Installed-wheel walk-through (2026-11-08).** `scripts/check_installed_wheel.py`: `git archive HEAD` -> wheel (no
+dependencies; 3.25 MB) -> `pip install --target` into a scratch folder -> a fresh isolated interpreter in another
+directory imports the INSTALLED package (asserted) with empty state/config/cache and walks: data resolves, Tg 8,140
+and Pf 5,720 genes, 670,696 Tg held-out rows, 15,893 Tg claims, the Gene module reads a gene with its held-out
+methods section, the gene and class records open, a strategy card renders. All pass. The data cache came from
+`PARASCAPE_CACHE` (this checkout), standing in for `parascape-data --download`.
+
+Found on the way, for the release: (1) the published data asset is still `parascape-data-0.0.9.0.tar.gz` (898 MB),
+which predates today's GSE108740 fix, so the next release must publish a new data asset and `data_manifest.json`;
+(2) this machine's checkout holds an untracked `starplast/` folder (an old nested artifact tree) that a local
+`pip wheel .` sweeps into a 70 MB wheel -- release builds from a clean checkout (CI, `git archive`) do not include
+it, but local builds should use `scripts/check_installed_wheel.py` or a clean tree.
