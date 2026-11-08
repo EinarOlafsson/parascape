@@ -1,0 +1,385 @@
+column	category	kind	labelled	classes	question	registered	group	answerable	restates	non_redundant	admitted
+crispr_gra17ko_phenotype	fitness	value	7553		Is the gene needed for growth under crispr gra17ko phenotype?		40.0	True		True	True
+crispr_gra17_synthlethal_delta	fitness	value	7553		Is the gene needed for growth under crispr gra17 synthlethal delta?		47.0	True		True	True
+crispr_gra17_candidate	fitness	class	7553	3.0	Is the gene needed for growth under crispr gra17 candidate?		149.0	True		True	True
+fit_density_low	fitness	value	7461		Is the gene needed for growth under fit density low?		36.0	True		True	True
+fit_density_high	fitness	value	7461		Is the gene needed for growth under fit density high?		36.0	True	fit_density_low	False	False
+fit_invivo_heart	fitness	value	7460		Is the gene needed for growth under fit invivo heart?		12.0	True		True	True
+fit_invivo_brain	fitness	value	7460		Is the gene needed for growth under fit invivo brain?		13.0	True		True	True
+fit_invivo_lung	fitness	value	7460		Is the gene needed for growth under fit invivo lung?		14.0	True		True	True
+fit_invivo_liver	fitness	value	7460		Is the gene needed for growth under fit invivo liver?		14.0	True	fit_invivo_lung	False	False
+fit_invivo_spleen	fitness	value	7460		Is the gene needed for growth under fit invivo spleen?		14.0	True	fit_invivo_lung	False	False
+fit_invivo_PE	fitness	value	7460		Is the gene needed for growth under fit invivo PE?		15.0	True		True	True
+fit_naive_bmdm	fitness	value	7402		Is the gene needed for growth under fit naive bmdm?		41.0	True		True	True
+fit_ifng	fitness	value	7402		Is the gene needed for growth under fit ifng?		46.0	True		True	True
+fit_lipid_rich_p8	fitness	value	7395		Is the gene needed for growth under fit lipid rich p8?		38.0	True		True	True
+fit_lipid_limited_p8	fitness	value	7395		Is the gene needed for growth under fit lipid limited p8?		38.0	True	fit_lipid_rich_p8	False	False
+fit_lipid_rich_p4p5	fitness	value	7395		Is the gene needed for growth under fit lipid rich p4p5?		38.0	True	fit_lipid_rich_p8	False	False
+fit_lipid_limited_p4p5	fitness	value	7395		Is the gene needed for growth under fit lipid limited p4p5?		38.0	True	fit_lipid_rich_p8	False	False
+fit_serum_differential_p8	fitness	value	7395		Is the gene needed for growth under fit serum differential p8?		73.0	True		True	True
+fit_serum_differential_p4p5	fitness	value	7395		Is the gene needed for growth under fit serum differential p4p5?		74.0	True		True	True
+fit_glucose_dependence	fitness	value	7393		Is the gene needed for growth under fit glucose dependence?		1.0	True		True	True
+fit_glucose_dependence_fdr	fitness	value	7393		Is the gene needed for growth under fit glucose dependence fdr?		2.0	True		True	True
+fit_no_glutamine	fitness	value	7393		Is the gene needed for growth under fit no glutamine?		37.0	True		True	True
+fit_no_glucose	fitness	value	7393		Is the gene needed for growth under fit no glucose?	required_without_glucose	37.0	True	fit_no_glutamine	False	False
+fit_complete_medium_2025	fitness	value	7393		Is the gene needed for growth under fit complete medium 2025?		39.0	True		True	True
+oxidative_stress_screen_score	fitness	value	7384		Is the gene needed for growth under oxidative stress screen score?		42.0	True		True	True
+fit_invitro_hff	fitness	value	7325		Is the gene needed for growth under fit invitro hff?		38.0	True	fit_lipid_rich_p8	False	False
+fit_density_dim	fitness	class	5379	2.0	Is the gene needed for growth under fit density dim?			True		True	True
+fit_density_dependence	fitness	value	5291		Is the gene needed for growth under fit density dependence?		16.0	True		True	True
+fit_density_dependence_log10padj	fitness	value	4173		Is the gene needed for growth under fit density dependence log10padj?		23.0	True		True	True
+fit_hyperlopit_unassigned_invivo_lib1	fitness	value	291		Is the gene needed for growth under fit hyperlopit unassigned invivo lib1?			True		True	True
+fit_hyperlopit_unassigned_invivo_lib2	fitness	value	290		Is the gene needed for growth under fit hyperlopit unassigned invivo lib2?			True		True	True
+crispr_gra12s1_l2fc_invitro	fitness	value	236		Is the gene needed for growth under crispr gra12s1 l2fc invitro?			True		True	True
+crispr_gra12s1_l2fc_invivo	fitness	value	236		Is the gene needed for growth under crispr gra12s1 l2fc invivo?			True		True	True
+crispr_gra12s1_disco	fitness	value	236		Is the gene needed for growth under crispr gra12s1 disco?			True		True	True
+crispr_gra12s2_l2fc_invitro	fitness	value	232		Is the gene needed for growth under crispr gra12s2 l2fc invitro?			True		True	True
+crispr_gra12s2_l2fc_invivo	fitness	value	232		Is the gene needed for growth under crispr gra12s2 l2fc invivo?			True		True	True
+crispr_gra12s2_disco	fitness	value	232		Is the gene needed for growth under crispr gra12s2 disco?			True		True	True
+crispr_invivo_platform_lfc	fitness	value	168		Is the gene needed for growth under crispr invivo platform lfc?			True		True	True
+crispr_reporter_strain_p8_log2	fitness	value	131		Is the gene needed for growth under crispr reporter strain p8 log2?			False		True	False
+fit_invivo_young2019	fitness	value	115		Is the gene needed for growth under fit invivo young2019?			False		True	False
+enteric_oocyst_yield	fitness	class	8	3.0	Is the gene needed for growth under enteric oocyst yield?			False		True	False
+enteric_sporulation	fitness	class	8	4.0	Is the gene needed for growth under enteric sporulation?			False		True	False
+enteric_measurements	fitness	class	8	2.0	Is the gene needed for growth under enteric measurements?			False		True	False
+has_ec	function	class	8140	2.0	What does the gene do (has ec)?			True		True	True
+ec_number	function	class	1313	587.0	What does the gene do (ec number)?			True		True	True
+hosttx_T2	host_response	value	252		What does the host do in response (hosttx T2)?			True		True	True
+hosttx_padj	host_response	value	252		What does the host do in response (hosttx padj)?			True		True	True
+iedb_epitope_count	host_response	value	221		What does the host do in response (iedb epitope count)?			True		True	True
+n_bcell_epitopes	host_response	class	34	12.0	What does the host do in response (n bcell epitopes)?			False		True	False
+hosttx_signature_pc01	host_response	value	22		What does the host do in response (hosttx signature pc01)?			False		True	False
+hosttx_signature_pc02	host_response	value	22		What does the host do in response (hosttx signature pc02)?			False		True	False
+hosttx_signature_pc03	host_response	value	22		What does the host do in response (hosttx signature pc03)?			False		True	False
+hosttx_signature_pc04	host_response	value	22		What does the host do in response (hosttx signature pc04)?			False		True	False
+hosttx_signature_pc05	host_response	value	22		What does the host do in response (hosttx signature pc05)?			False		True	False
+hosttx_signature_pc06	host_response	value	22		What does the host do in response (hosttx signature pc06)?			False		True	False
+hosttx_signature_pc07	host_response	value	22		What does the host do in response (hosttx signature pc07)?			False		True	False
+hosttx_signature_pc08	host_response	value	22		What does the host do in response (hosttx signature pc08)?			False		True	False
+hosttx_signature_pc09	host_response	value	22		What does the host do in response (hosttx signature pc09)?			False		True	False
+hosttx_signature_pc10	host_response	value	22		What does the host do in response (hosttx signature pc10)?			False		True	False
+hosttx_signature_pc11	host_response	value	22		What does the host do in response (hosttx signature pc11)?			False		True	False
+hosttx_signature_pc12	host_response	value	22		What does the host do in response (hosttx signature pc12)?			False		True	False
+hosttx_signature_pc13	host_response	value	22		What does the host do in response (hosttx signature pc13)?			False		True	False
+hosttx_signature_pc14	host_response	value	22		What does the host do in response (hosttx signature pc14)?			False		True	False
+hosttx_signature_pc15	host_response	value	22		What does the host do in response (hosttx signature pc15)?			False		True	False
+hosttx_signature_pc16	host_response	value	22		What does the host do in response (hosttx signature pc16)?			False		True	False
+hosttx_signature_pc17	host_response	value	22		What does the host do in response (hosttx signature pc17)?			False		True	False
+hosttx_signature_pc18	host_response	value	22		What does the host do in response (hosttx signature pc18)?			False		True	False
+hosttx_signature_pc19	host_response	value	22		What does the host do in response (hosttx signature pc19)?			False		True	False
+hosttx_signature_pc20	host_response	value	22		What does the host do in response (hosttx signature pc20)?			False		True	False
+hosttx_signature_norm	host_response	value	22		What does the host do in response (hosttx signature norm)?			False		True	False
+hosttx_signature_n_de	host_response	value	22		What does the host do in response (hosttx signature n de)?			False		True	False
+n_ipms_partners	interaction	class	8140	7.0	What does the protein bind (n ipms partners)?		45.0	True		True	True
+n_host_targets	interaction	class	8140	3.0	What does the protein bind (n host targets)?		81.0	True		True	True
+n_holes	interaction	class	8140	4.0	What does the protein bind (n holes)?		85.0	True		True	True
+n_xlink_partners	interaction	value	8140		What does the protein bind (n xlink partners)?		108.0	True		True	True
+n_bioid_studies	interaction	value	8140		What does the protein bind (n bioid studies)?		110.0	True		True	True
+n_ipms_studies	interaction	value	8140		What does the protein bind (n ipms studies)?		111.0	True		True	True
+n_proximity_partners	interaction	class	1742	2.0	What does the protein bind (n proximity partners)?			True		True	True
+best_model_agreement	interaction	value	1306		What does the protein bind (best model agreement)?		109.0	True		True	True
+surface_er_log2fc	interaction	value	514		What does the protein bind (surface er log2fc)?			True		True	True
+surface_er_stringent	interaction	class	514	2.0	What does the protein bind (surface er stringent)?			True		True	True
+n_crosslink_partners	interaction	class	494	11.0	What does the protein bind (n crosslink partners)?			True		True	True
+surface_apicoplast_log2fc	interaction	value	447		What does the protein bind (surface apicoplast log2fc)?			True		True	True
+surface_apicoplast_stringent	interaction	class	447	2.0	What does the protein bind (surface apicoplast stringent)?			True		True	True
+surface_mitochondrion_log2fc	interaction	value	353		What does the protein bind (surface mitochondrion log2fc)?			True		True	True
+surface_mitochondrion_stringent	interaction	class	353	2.0	What does the protein bind (surface mitochondrion stringent)?			True		True	True
+cyst_wall_max_spectral	interaction	value	56		What does the protein bind (cyst wall max spectral)?			False		True	False
+cyst_wall_n_baits	interaction	value	56		What does the protein bind (cyst wall n baits)?			False		True	False
+has_phospho	modification	class	8140	2.0	Is the protein modified (has phospho)?			True		True	True
+n_acetylation_sites	modification	class	3921	8.0	Is the protein modified (n acetylation sites)?		113.0	True		True	True
+phospho_sites_measured	modification	value	1603		Is the protein modified (phospho sites measured)?		82.0	True		True	True
+phospho_up_sites	modification	value	1182		Is the protein modified (phospho up sites)?		82.0	True	phospho_sites_measured	False	False
+phospho_up_ratio	modification	value	1182		Is the protein modified (phospho up ratio)?		83.0	True		True	True
+n_phosphosites	modification	value	1175		Is the protein modified (n phosphosites)?		82.0	True	phospho_sites_measured	False	False
+phospho_down_sites	modification	value	717		Is the protein modified (phospho down sites)?			True		True	True
+phospho_down_ratio	modification	value	717		Is the protein modified (phospho down ratio)?			True		True	True
+n_nitrosylation_sites	modification	class	660	9.0	Is the protein modified (n nitrosylation sites)?			True		True	True
+n_lactylation_sites	modification	class	515	10.0	Is the protein modified (n lactylation sites)?			True		True	True
+palmitome_odya_vs_palmitate_log2	modification	value	488		Is the protein modified (palmitome odya vs palmitate log2)?			True		True	True
+palmitome_odya_vs_hydroxylamine_log2	modification	value	470		Is the protein modified (palmitome odya vs hydroxylamine log2)?			True		True	True
+n_o_fucosyl_peptides	modification	class	394	5.0	Is the protein modified (n o fucosyl peptides)?			True		True	True
+n_arginine_methylation_sites	modification	value	368		Is the protein modified (n arginine methylation sites)?			True		True	True
+cdpk1_thiophospho_peptides	modification	value	367		Is the protein modified (cdpk1 thiophospho peptides)?			True		True	True
+n_ubiquitination_sites	modification	class	130	7.0	Is the protein modified (n ubiquitination sites)?			False		True	False
+myristoylation_confidence	modification	class	65	3.0	Is the protein modified (myristoylation confidence)?			False		True	False
+screen_actin_phenotype	phenotype	class	318	2.0	What happens when the gene is perturbed (screen actin phenotype)?			True		True	True
+screen_apicoplast_phenotype	phenotype	class	318	2.0	What happens when the gene is perturbed (screen apicoplast phenotype)?			True		True	True
+screen_egress_phenotype	phenotype	class	318	2.0	What happens when the gene is perturbed (screen egress phenotype)?	screen_egress_phenotype		True		True	True
+screen_replication_phenotype	phenotype	class	318	2.0	What happens when the gene is perturbed (screen replication phenotype)?			True		True	True
+screen_any_phenotype	phenotype	class	318	2.0	What happens when the gene is perturbed (screen any phenotype)?			True		True	True
+diff_reporter_log2_mNG_over_bulk	phenotype	value	237		What happens when the gene is perturbed (diff reporter log2 mNG over bulk)?			True		True	True
+screen_scorers_agree	phenotype	class	74	2.0	What happens when the gene is perturbed (screen scorers agree)?			False		True	False
+escrt_recruitment_xgboost	phenotype	class	10	10.0	What happens when the gene is perturbed (escrt recruitment xgboost)?			False		True	False
+escrt_recruitment_maxvit	phenotype	class	6	6.0	What happens when the gene is perturbed (escrt recruitment maxvit)?			False		True	False
+drug_compounds_tested	phenotype	class	3	1.0	What happens when the gene is perturbed (drug compounds tested)?			False		True	False
+drug_sensitivity_shifts	phenotype	class	3	2.0	What happens when the gene is perturbed (drug sensitivity shifts)?			False		True	False
+drug_sensitivity_directions	phenotype	class	3	3.0	What happens when the gene is perturbed (drug sensitivity directions)?			False		True	False
+resistance_allele_count	phenotype	class	1	1.0	What happens when the gene is perturbed (resistance allele count)?			False		True	False
+resistance_compound_count	phenotype	class	1	1.0	What happens when the gene is perturbed (resistance compound count)?			False		True	False
+resistance_substitutions	phenotype	class	1	1.0	What happens when the gene is perturbed (resistance substitutions)?			False		True	False
+resistance_compounds	phenotype	class	1	1.0	What happens when the gene is perturbed (resistance compounds)?			False		True	False
+lopit_confident	place	class	8140	2.0	Where is the protein (lopit confident)?			True		True	True
+compartment	place	class	8140	27.0	Where is the protein (compartment)?			True		True	True
+ortholopit_accepted	place	class	8140	2.0	Where is the protein (ortholopit accepted)?			True		True	True
+compartment_source	place	class	8140	3.0	Where is the protein (compartment source)?			True		True	True
+compartment_best	place	class	8140	12.0	Where is the protein (compartment best)?			True		True	True
+lopit_prob_map	place	value	3827		Where is the protein (lopit prob map)?		79.0	True		True	True
+lopit_prob_mcmc	place	value	3827		Where is the protein (lopit prob mcmc)?		80.0	True		True	True
+lopit_map	place	class	3827	26.0	Where is the protein (lopit map)?			True		True	True
+lopit_mcmc	place	class	3827	27.0	Where is the protein (lopit mcmc)?			True		True	True
+lopit_methods_agree	place	class	3827	2.0	Where is the protein (lopit methods agree)?			True		True	True
+lopit_unified	place	class	3827	11.0	Where is the protein (lopit unified)?			True		True	True
+pvm_proximity_positive	place	class	1274	2.0	Where is the protein (pvm proximity positive)?			True		True	True
+ortholopit_label	place	class	952	11.0	Where is the protein (ortholopit label)?			True		True	True
+ortholopit_donors	place	class	952	3.0	Where is the protein (ortholopit donors)?			True		True	True
+ortholopit_accuracy	place	value	910		Where is the protein (ortholopit accuracy)?			True		True	True
+secretome_soluble_over_vesicle_log2	place	value	165		Where is the protein (secretome soluble over vesicle log2)?			True		True	True
+iron_depletion_protein_log2fc	protein_abundance	value	4932		How much protein is there in iron depletion protein log2fc?		58.0	True		True	True
+iron_depletion_protein_padj	protein_abundance	value	4932		How much protein is there in iron depletion protein padj?		76.0	True		True	True
+proteome_lfc_UT_Vs_T_24h_log2_fold_change	protein_abundance	value	3005		How much protein is there in proteome lfc UT Vs T 24h log2 fold change?		65.0	True		True	True
+proteome_lfc_UT_Vs_T_32h_log2_fold_change_1	protein_abundance	value	3005		How much protein is there in proteome lfc UT Vs T 32h log2 fold change 1?		65.0	True	proteome_lfc_UT_Vs_T_24h_log2_fold_change	False	False
+proteome_lfc_UT_Vs_T_48h_log2_fold_change_2	protein_abundance	value	3005		How much protein is there in proteome lfc UT Vs T 48h log2 fold change 2?		66.0	True		True	True
+proteome_log2_normalized_and_imputated_abundances_UT_R1	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances UT R1?		112.0	True		True	True
+proteome_log2_normalized_and_imputated_abundances_UT_R2	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances UT R2?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_UT_R3	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances UT R3?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_24h_R1	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 24h R1?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_24h_R2	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 24h R2?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_24h_R3	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 24h R3?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_32h_R1	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 32h R1?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_32h_R2	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 32h R2?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_32h_R3	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 32h R3?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_48h_R1	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 48h R1?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_48h_R2	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 48h R2?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+proteome_log2_normalized_and_imputated_abundances_T_48h_R3	protein_abundance	value	3005		How much protein is there in proteome log2 normalized and imputated abundances T 48h R3?		112.0	True	proteome_log2_normalized_and_imputated_abundances_UT_R1	False	False
+oocyst_itraq_115_113_1	protein_abundance	value	2079		How much protein is there in oocyst itraq 115 113 1?		49.0	True		True	True
+oocyst_itraq_116_113_1	protein_abundance	value	2079		How much protein is there in oocyst itraq 116 113 1?		49.0	True	oocyst_itraq_115_113_1	False	False
+oocyst_itraq_115_114_1	protein_abundance	value	2079		How much protein is there in oocyst itraq 115 114 1?		49.0	True	oocyst_itraq_115_113_1	False	False
+oocyst_itraq_116_114_1	protein_abundance	value	2079		How much protein is there in oocyst itraq 116 114 1?		49.0	True	oocyst_itraq_115_113_1	False	False
+oocyst_itraq_115_113	protein_abundance	value	2068		How much protein is there in oocyst itraq 115 113?		48.0	True		True	True
+oocyst_itraq_116_113	protein_abundance	value	2068		How much protein is there in oocyst itraq 116 113?		48.0	True	oocyst_itraq_115_113	False	False
+oocyst_itraq_115_114	protein_abundance	value	2068		How much protein is there in oocyst itraq 115 114?		48.0	True	oocyst_itraq_115_113	False	False
+oocyst_itraq_116_114	protein_abundance	value	2068		How much protein is there in oocyst itraq 116 114?		48.0	True	oocyst_itraq_115_113	False	False
+protein_ibaq_log2	protein_abundance	value	748		How much protein is there in protein ibaq log2?			True		True	True
+antisense_expression_percentile	transcript	value	8140		Does the gene respond in antisense expression percentile?		11.0	True		True	True
+macrophage_expression_percentile	transcript	value	8140		Does the gene respond in macrophage expression percentile?		136.0	True		True	True
+rna206344_Sporulated_R1	transcript	value	7974		Does the gene respond in rna206344 Sporulated R1?		120.0	True		True	True
+rna206344_Sporulated_R2	transcript	value	7974		Does the gene respond in rna206344 Sporulated R2?		120.0	True	rna206344_Sporulated_R1	False	False
+rna206344_Unsporulated_R1	transcript	value	7974		Does the gene respond in rna206344 Unsporulated R1?		121.0	True		True	True
+rna206344_Unsporulated_R2	transcript	value	7974		Does the gene respond in rna206344 Unsporulated R2?		121.0	True	rna206344_Unsporulated_R1	False	False
+rna206344_Sporulating_R1	transcript	value	7974		Does the gene respond in rna206344 Sporulating R1?		121.0	True	rna206344_Unsporulated_R1	False	False
+rna206344_Sporulating_R2	transcript	value	7974		Does the gene respond in rna206344 Sporulating R2?		121.0	True	rna206344_Unsporulated_R1	False	False
+expr_sporulated	transcript	value	7974		Does the gene respond in expr sporulated?		121.0	True	rna206344_Unsporulated_R1	False	False
+rna129869_confluent_r1	transcript	value	7880		Does the gene respond in rna129869 confluent r1?		141.0	True	rpf129869_confluent_r1	False	False
+rna129869_confluent_r2	transcript	value	7880		Does the gene respond in rna129869 confluent r2?		141.0	True	rpf129869_confluent_r1	False	False
+rna129869_confluent_r3	transcript	value	7880		Does the gene respond in rna129869 confluent r3?		141.0	True	rpf129869_confluent_r1	False	False
+rna129869_subconfluent_r1	transcript	value	7880		Does the gene respond in rna129869 subconfluent r1?		141.0	True	rpf129869_confluent_r1	False	False
+rna129869_subconfluent_r2	transcript	value	7880		Does the gene respond in rna129869 subconfluent r2?		141.0	True	rpf129869_confluent_r1	False	False
+rna129869_subconfluent_r3	transcript	value	7880		Does the gene respond in rna129869 subconfluent r3?		141.0	True	rpf129869_confluent_r1	False	False
+bzsub_A_expr	transcript	value	7880		Does the gene respond in bzsub A expr?		143.0	True		True	True
+bzsub_B_expr	transcript	value	7880		Does the gene respond in bzsub B expr?		143.0	True	bzsub_A_expr	False	False
+bzsub_C_expr	transcript	value	7880		Does the gene respond in bzsub C expr?		143.0	True	bzsub_A_expr	False	False
+bzsub_D_expr	transcript	value	7880		Does the gene respond in bzsub D expr?		143.0	True	bzsub_A_expr	False	False
+bzsub_E_expr	transcript	value	7880		Does the gene respond in bzsub E expr?		144.0	True		True	True
+stress_5-24_stress_green_48	transcript	value	7880		Does the gene respond in stress 5-24 stress green 48?		145.0	True		True	True
+stress_5-27_stress_green_48	transcript	value	7880		Does the gene respond in stress 5-27 stress green 48?		145.0	True	stress_5-24_stress_green_48	False	False
+stress_6-16_stress_green_48	transcript	value	7880		Does the gene respond in stress 6-16 stress green 48?		145.0	True	stress_5-24_stress_green_48	False	False
+stress_6-18_stress_green_48	transcript	value	7880		Does the gene respond in stress 6-18 stress green 48?		145.0	True	stress_5-24_stress_green_48	False	False
+stress_7-18_stress_green_48	transcript	value	7880		Does the gene respond in stress 7-18 stress green 48?		145.0	True	stress_5-24_stress_green_48	False	False
+rna245775_parent_tachy_r1	transcript	value	7880		Does the gene respond in rna245775 parent tachy r1?		146.0	True		True	True
+rna245775_parent_tachy_r2	transcript	value	7880		Does the gene respond in rna245775 parent tachy r2?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_parent_tachy_r3	transcript	value	7880		Does the gene respond in rna245775 parent tachy r3?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_parent_prebrady_r1	transcript	value	7880		Does the gene respond in rna245775 parent prebrady r1?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_parent_prebrady_r2	transcript	value	7880		Does the gene respond in rna245775 parent prebrady r2?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_parent_prebrady_r3	transcript	value	7880		Does the gene respond in rna245775 parent prebrady r3?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_eif12ko_tachy_r1	transcript	value	7880		Does the gene respond in rna245775 eif12ko tachy r1?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_eif12ko_tachy_r2	transcript	value	7880		Does the gene respond in rna245775 eif12ko tachy r2?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_eif12ko_tachy_r3	transcript	value	7880		Does the gene respond in rna245775 eif12ko tachy r3?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_eif12ko_prebrady_r1	transcript	value	7880		Does the gene respond in rna245775 eif12ko prebrady r1?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_eif12ko_prebrady_r2	transcript	value	7880		Does the gene respond in rna245775 eif12ko prebrady r2?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna245775_eif12ko_prebrady_r3	transcript	value	7880		Does the gene respond in rna245775 eif12ko prebrady r3?		146.0	True	rna245775_parent_tachy_r1	False	False
+restriction200962_kk20_p2w_ph8_2_s16	transcript	value	7880		Does the gene respond in restriction200962 kk20 p2w ph8 2 s16?		146.0	True	rna245775_parent_tachy_r1	False	False
+stress_5-1_unstress_red_24	transcript	value	7880		Does the gene respond in stress 5-1 unstress red 24?		147.0	True		True	True
+stress_5-2_unstress_red_24	transcript	value	7880		Does the gene respond in stress 5-2 unstress red 24?		147.0	True	stress_5-1_unstress_red_24	False	False
+stress_6-1_unstress_red_24	transcript	value	7880		Does the gene respond in stress 6-1 unstress red 24?		147.0	True	stress_5-1_unstress_red_24	False	False
+stress_6-4_unstress_red_24	transcript	value	7880		Does the gene respond in stress 6-4 unstress red 24?		147.0	True	stress_5-1_unstress_red_24	False	False
+stress_7-1_unstress_red_24	transcript	value	7880		Does the gene respond in stress 7-1 unstress red 24?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_7th_gt_2_kk31_kim_s1_l001	transcript	value	7880		Does the gene respond in restriction200962 7th gt 2 kk31 kim s1 l001?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_7th_gt_20_kk27_kim_s14_l001	transcript	value	7880		Does the gene respond in restriction200962 7th gt 20 kk27 kim s14 l001?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_7th_gt_22_kk29_kim_s15_l001	transcript	value	7880		Does the gene respond in restriction200962 7th gt 22 kk29 kim s15 l001?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_7th_gt_4_kk32_kim_s2_l001	transcript	value	7880		Does the gene respond in restriction200962 7th gt 4 kk32 kim s2 l001?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk17_p2wo_ph8_2_s5	transcript	value	7880		Does the gene respond in restriction200962 kk17 p2wo ph8 2 s5?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk18_p2wo_ph8_2_s1	transcript	value	7880		Does the gene respond in restriction200962 kk18 p2wo ph8 2 s1?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk19_p2w_ph8_2_s22	transcript	value	7880		Does the gene respond in restriction200962 kk19 p2w ph8 2 s22?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk21_p5wo_ph8_2_s13	transcript	value	7880		Does the gene respond in restriction200962 kk21 p5wo ph8 2 s13?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk22_p5wo_ph8_2_s15	transcript	value	7880		Does the gene respond in restriction200962 kk22 p5wo ph8 2 s15?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk23_p5w_ph8_2_s12	transcript	value	7880		Does the gene respond in restriction200962 kk23 p5w ph8 2 s12?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk24_p5w_ph8_2_s11	transcript	value	7880		Does the gene respond in restriction200962 kk24 p5w ph8 2 s11?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk5_p2wo_ph7_4_s6	transcript	value	7880		Does the gene respond in restriction200962 kk5 p2wo ph7 4 s6?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk6_p2wo_ph7_4_s19	transcript	value	7880		Does the gene respond in restriction200962 kk6 p2wo ph7 4 s19?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk7_p2w_ph7_4_s14	transcript	value	7880		Does the gene respond in restriction200962 kk7 p2w ph7 4 s14?		147.0	True	stress_5-1_unstress_red_24	False	False
+restriction200962_kk8_p2w_ph7_4_s23	transcript	value	7880		Does the gene respond in restriction200962 kk8 p2w ph7 4 s23?		147.0	True	stress_5-1_unstress_red_24	False	False
+cpsf4rna168155_ut_1	transcript	value	7869		Does the gene respond in cpsf4rna168155 ut 1?		135.0	True		True	True
+cpsf4rna168155_ut_2	transcript	value	7869		Does the gene respond in cpsf4rna168155 ut 2?		135.0	True	cpsf4rna168155_ut_1	False	False
+cpsf4rna168155_iaa_7h_1	transcript	value	7869		Does the gene respond in cpsf4rna168155 iaa 7h 1?		135.0	True	cpsf4rna168155_ut_1	False	False
+cpsf4rna168155_iaa_7h_2	transcript	value	7869		Does the gene respond in cpsf4rna168155 iaa 7h 2?		135.0	True	cpsf4rna168155_ut_1	False	False
+cpsf4rna168155_iaa_24h_1	transcript	value	7869		Does the gene respond in cpsf4rna168155 iaa 24h 1?		135.0	True	cpsf4rna168155_ut_1	False	False
+cpsf4rna168155_iaa_24h_2	transcript	value	7869		Does the gene respond in cpsf4rna168155 iaa 24h 2?		135.0	True	cpsf4rna168155_ut_1	False	False
+cpsf4rna168155_iaa_48h_1	transcript	value	7869		Does the gene respond in cpsf4rna168155 iaa 48h 1?		135.0	True	cpsf4rna168155_ut_1	False	False
+cpsf4rna168155_iaa_48h_2	transcript	value	7869		Does the gene respond in cpsf4rna168155 iaa 48h 2?		135.0	True	cpsf4rna168155_ut_1	False	False
+morc_MORC_IAA1	transcript	value	7841		Does the gene respond in morc MORC IAA1?		133.0	True		True	True
+morc_MORC_IAA2	transcript	value	7841		Does the gene respond in morc MORC IAA2?		133.0	True	morc_MORC_IAA1	False	False
+morc_MORC_IAA3	transcript	value	7841		Does the gene respond in morc MORC IAA3?		133.0	True	morc_MORC_IAA1	False	False
+morc_MORC-KD-BFD1-KO_IAA1	transcript	value	7841		Does the gene respond in morc MORC-KD-BFD1-KO IAA1?		133.0	True	morc_MORC_IAA1	False	False
+morc_MORC-KD-BFD1-KO_IAA2	transcript	value	7841		Does the gene respond in morc MORC-KD-BFD1-KO IAA2?		133.0	True	morc_MORC_IAA1	False	False
+morc_MORC-KD-BFD1-KO_IAA3	transcript	value	7841		Does the gene respond in morc MORC-KD-BFD1-KO IAA3?		133.0	True	morc_MORC_IAA1	False	False
+morc_DD-BFD1-Ty_UT1	transcript	value	7841		Does the gene respond in morc DD-BFD1-Ty UT1?		134.0	True		True	True
+morc_DD-BFD1-Ty_UT2	transcript	value	7841		Does the gene respond in morc DD-BFD1-Ty UT2?		134.0	True	morc_DD-BFD1-Ty_UT1	False	False
+morc_DD-BFD1-Ty_UT3	transcript	value	7841		Does the gene respond in morc DD-BFD1-Ty UT3?		134.0	True	morc_DD-BFD1-Ty_UT1	False	False
+morc_DD-BFD1-Ty_Shield1	transcript	value	7841		Does the gene respond in morc DD-BFD1-Ty Shield1?		134.0	True	morc_DD-BFD1-Ty_UT1	False	False
+morc_DD-BFD1-Ty_Shield2	transcript	value	7841		Does the gene respond in morc DD-BFD1-Ty Shield2?		134.0	True	morc_DD-BFD1-Ty_UT1	False	False
+morc_DD-BFD1-Ty_Shield3	transcript	value	7841		Does the gene respond in morc DD-BFD1-Ty Shield3?		134.0	True	morc_DD-BFD1-Ty_UT1	False	False
+morc_MORC_UT1	transcript	value	7841		Does the gene respond in morc MORC UT1?		136.0	True	macrophage_expression_percentile	False	False
+morc_MORC_UT2	transcript	value	7841		Does the gene respond in morc MORC UT2?		136.0	True	macrophage_expression_percentile	False	False
+morc_MORC_UT3	transcript	value	7841		Does the gene respond in morc MORC UT3?		136.0	True	macrophage_expression_percentile	False	False
+morc_MORC-KD-BFD1-KO_UT1	transcript	value	7841		Does the gene respond in morc MORC-KD-BFD1-KO UT1?		136.0	True	macrophage_expression_percentile	False	False
+morc_MORC-KD-BFD1-KO_UT2	transcript	value	7841		Does the gene respond in morc MORC-KD-BFD1-KO UT2?		136.0	True	macrophage_expression_percentile	False	False
+morc_MORC-KD-BFD1-KO_UT3	transcript	value	7841		Does the gene respond in morc MORC-KD-BFD1-KO UT3?		136.0	True	macrophage_expression_percentile	False	False
+ees_vs_tachyzoite_log2	transcript	value	7739		Does the gene respond in ees vs tachyzoite log2?		68.0	True		True	True
+rna108740_Day3_CS4_FPKM	transcript	value	7739		Does the gene respond in rna108740 Day3 CS4 FPKM?		115.0	True		True	True
+rna108740_Day3_CS5_FPKM	transcript	value	7739		Does the gene respond in rna108740 Day3 CS5 FPKM?		115.0	True	rna108740_Day3_CS4_FPKM	False	False
+rna108740_Day3_CS6_FPKM	transcript	value	7739		Does the gene respond in rna108740 Day3 CS6 FPKM?		115.0	True	rna108740_Day3_CS4_FPKM	False	False
+rna108740_Day5_K4_14_FPKM	transcript	value	7739		Does the gene respond in rna108740 Day5 K4 14 FPKM?		115.0	True	rna108740_Day3_CS4_FPKM	False	False
+rna108740_Day7_CS7_FPKM	transcript	value	7739		Does the gene respond in rna108740 Day7 CS7 FPKM?		115.0	True	rna108740_Day3_CS4_FPKM	False	False
+rna108740_Day7_CS8_FPKM	transcript	value	7739		Does the gene respond in rna108740 Day7 CS8 FPKM?		115.0	True	rna108740_Day3_CS4_FPKM	False	False
+rna108740_Day7_CS9_FPKM	transcript	value	7739		Does the gene respond in rna108740 Day7 CS9 FPKM?		115.0	True	rna108740_Day3_CS4_FPKM	False	False
+rna108740_Day5_CS2_FPKM	transcript	value	7739		Does the gene respond in rna108740 Day5 CS2 FPKM?		116.0	True		True	True
+expr_max	transcript	value	7739		Does the gene respond in expr max?		117.0	True		True	True
+rna108740_Tissue_cysts_A_FPKM	transcript	value	7739		Does the gene respond in rna108740 Tissue cysts A FPKM?		130.0	True		True	True
+rna108740_Tissue_cysts_B_FPKM	transcript	value	7739		Does the gene respond in rna108740 Tissue cysts B FPKM?		130.0	True	rna108740_Tissue_cysts_A_FPKM	False	False
+expr_cyst	transcript	value	7739		Does the gene respond in expr cyst?		130.0	True	rna108740_Tissue_cysts_A_FPKM	False	False
+rna108740_Tachyzoites_T2_FPKM	transcript	value	7739		Does the gene respond in rna108740 Tachyzoites T2 FPKM?		136.0	True	macrophage_expression_percentile	False	False
+rna108740_Tachyzoites_T4_FPKM	transcript	value	7739		Does the gene respond in rna108740 Tachyzoites T4 FPKM?		136.0	True	macrophage_expression_percentile	False	False
+expr_tachy	transcript	value	7739		Does the gene respond in expr tachy?		136.0	True	macrophage_expression_percentile	False	False
+invivo_BZ_28DPI_1	transcript	value	7663		Does the gene respond in invivo BZ 28DPI 1?		130.0	True	rna108740_Tissue_cysts_A_FPKM	False	False
+invivo_BZ_28DPI_3	transcript	value	7663		Does the gene respond in invivo BZ 28DPI 3?		130.0	True	rna108740_Tissue_cysts_A_FPKM	False	False
+invivo_BZ_90DPI_1	transcript	value	7663		Does the gene respond in invivo BZ 90DPI 1?		130.0	True	rna108740_Tissue_cysts_A_FPKM	False	False
+invivo_BZ_90DPI_2	transcript	value	7663		Does the gene respond in invivo BZ 90DPI 2?		130.0	True	rna108740_Tissue_cysts_A_FPKM	False	False
+invivo_BZ_120DPI_2	transcript	value	7663		Does the gene respond in invivo BZ 120DPI 2?		130.0	True	rna108740_Tissue_cysts_A_FPKM	False	False
+invivo_BZ_120DPI_3	transcript	value	7663		Does the gene respond in invivo BZ 120DPI 3?		130.0	True	rna108740_Tissue_cysts_A_FPKM	False	False
+invivo_WholeBrain_Chronic_1	transcript	value	7663		Does the gene respond in invivo WholeBrain Chronic 1?		131.0	True		True	True
+invivo_WholeBrain_Chronic_3	transcript	value	7663		Does the gene respond in invivo WholeBrain Chronic 3?		131.0	True	invivo_WholeBrain_Chronic_1	False	False
+invivo_WholeBrain_Chronic_2	transcript	value	7663		Does the gene respond in invivo WholeBrain Chronic 2?		132.0	True		True	True
+invivo_TZ_1	transcript	value	7663		Does the gene respond in invivo TZ 1?		136.0	True	macrophage_expression_percentile	False	False
+invivo_TZ_2	transcript	value	7663		Does the gene respond in invivo TZ 2?		136.0	True	macrophage_expression_percentile	False	False
+invivo_WholeBrain_Acute_1	transcript	value	7663		Does the gene respond in invivo WholeBrain Acute 1?		137.0	True		True	True
+invivo_WholeBrain_Acute_2	transcript	value	7663		Does the gene respond in invivo WholeBrain Acute 2?		138.0	True		True	True
+invivo_WholeBrain_Acute_3	transcript	value	7663		Does the gene respond in invivo WholeBrain Acute 3?		139.0	True		True	True
+rna99395_extracellular_r1	transcript	value	7506		Does the gene respond in rna99395 extracellular r1?		140.0	True		True	True
+rna99395_extracellular_r2	transcript	value	7506		Does the gene respond in rna99395 extracellular r2?		140.0	True	rna99395_extracellular_r1	False	False
+rna99395_intracellular_r1	transcript	value	7506		Does the gene respond in rna99395 intracellular r1?		140.0	True	rna99395_extracellular_r1	False	False
+rna99395_intracellular_r2	transcript	value	7506		Does the gene respond in rna99395 intracellular r2?		140.0	True	rna99395_extracellular_r1	False	False
+cellcycle_pseudotime	transcript	class	7499	3.0	Does the gene respond in cellcycle pseudotime?		64.0	True		True	True
+bfd2_rip_log2_ip_over_input	transcript	value	7463		Does the gene respond in bfd2 rip log2 ip over input?		10.0	True		True	True
+brain168465_7d_lfc	transcript	value	7393		Does the gene respond in brain168465 7d lfc?		77.0	True		True	True
+brain168465_7d_base_mean	transcript	value	7393		Does the gene respond in brain168465 7d base mean?		146.0	True	rna245775_parent_tachy_r1	False	False
+brain168465_4d_lfc	transcript	value	7369		Does the gene respond in brain168465 4d lfc?		77.0	True	brain168465_7d_lfc	False	False
+brain168465_4d_base_mean	transcript	value	7369		Does the gene respond in brain168465 4d base mean?		146.0	True	rna245775_parent_tachy_r1	False	False
+brain168465_14d_lfc	transcript	value	7334		Does the gene respond in brain168465 14d lfc?		77.0	True	brain168465_7d_lfc	False	False
+brain168465_14d_base_mean	transcript	value	7334		Does the gene respond in brain168465 14d base mean?		146.0	True	rna245775_parent_tachy_r1	False	False
+brain168465_2d_lfc	transcript	value	7055		Does the gene respond in brain168465 2d lfc?		78.0	True		True	True
+brain168465_2d_base_mean	transcript	value	7055		Does the gene respond in brain168465 2d base mean?		146.0	True	rna245775_parent_tachy_r1	False	False
+brain168465_1d_lfc	transcript	value	6908		Does the gene respond in brain168465 1d lfc?		78.0	True	brain168465_2d_lfc	False	False
+brain168465_1d_base_mean	transcript	value	6908		Does the gene respond in brain168465 1d base mean?		146.0	True	rna245775_parent_tachy_r1	False	False
+rna22258_tachyzoite	transcript	value	6564		Does the gene respond in rna22258 tachyzoite?		128.0	True		True	True
+rna22258_bradyzoite	transcript	value	6564		Does the gene respond in rna22258 bradyzoite?		129.0	True		True	True
+cellcycle19092_async_r1	transcript	value	6504		Does the gene respond in cellcycle19092 async r1?		17.0	True		True	True
+cellcycle19092_async_r2	transcript	value	6504		Does the gene respond in cellcycle19092 async r2?		18.0	True		True	True
+cellcycle19092_blocked_r1	transcript	value	6504		Does the gene respond in cellcycle19092 blocked r1?		24.0	True		True	True
+cellcycle19092_blocked_r2	transcript	value	6504		Does the gene respond in cellcycle19092 blocked r2?		24.0	True	cellcycle19092_blocked_r1	False	False
+cellcycle19092_11h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 11h r1?		25.0	True		True	True
+cellcycle19092_11h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 11h r2?		26.0	True		True	True
+cellcycle19092_12h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 12h r2?		26.0	True	cellcycle19092_11h_r2	False	False
+cellcycle19092_1h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 1h r2?		27.0	True		True	True
+cellcycle19092_1h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 1h r1?		28.0	True		True	True
+cellcycle19092_12h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 12h r1?		29.0	True		True	True
+cellcycle19092_5h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 5h r1?		30.0	True		True	True
+cellcycle19092_5h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 5h r2?		30.0	True	cellcycle19092_5h_r1	False	False
+cellcycle19092_9h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 9h r1?		31.0	True		True	True
+cellcycle19092_10h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 10h r1?		32.0	True		True	True
+cellcycle19092_7h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 7h r1?		50.0	True		True	True
+cellcycle19092_7h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 7h r2?		50.0	True	cellcycle19092_7h_r1	False	False
+cellcycle19092_3h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 3h r1?		51.0	True		True	True
+cellcycle19092_4h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 4h r1?		52.0	True		True	True
+cellcycle19092_8h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 8h r1?		53.0	True		True	True
+cellcycle19092_3h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 3h r2?		54.0	True		True	True
+cellcycle19092_4h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 4h r2?		55.0	True		True	True
+cellcycle19092_9h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 9h r2?		56.0	True		True	True
+cellcycle19092_6h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 6h r1?		59.0	True		True	True
+cellcycle19092_6h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 6h r2?		60.0	True		True	True
+cellcycle19092_10h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 10h r2?		61.0	True		True	True
+cellcycle19092_2h_r1	transcript	value	6504		Does the gene respond in cellcycle19092 2h r1?		62.0	True		True	True
+cellcycle19092_2h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 2h r2?		62.0	True	cellcycle19092_2h_r1	False	False
+cellcycle19092_8h_r2	transcript	value	6504		Does the gene respond in cellcycle19092 8h r2?		63.0	True		True	True
+rna51780_mero_r3	transcript	value	6504		Does the gene respond in rna51780 mero r3?		114.0	True		True	True
+rna51780_mero_r4	transcript	value	6504		Does the gene respond in rna51780 mero r4?		114.0	True	rna51780_mero_r3	False	False
+rna51780_mero_r5	transcript	value	6504		Does the gene respond in rna51780 mero r5?		114.0	True	rna51780_mero_r3	False	False
+rna51780_mero_r6	transcript	value	6504		Does the gene respond in rna51780 mero r6?		114.0	True	rna51780_mero_r3	False	False
+rna51780_tachy_r1	transcript	value	6504		Does the gene respond in rna51780 tachy r1?		128.0	True	rna22258_tachyzoite	False	False
+rna51780_tachy_r2	transcript	value	6504		Does the gene respond in rna51780 tachy r2?		128.0	True	rna22258_tachyzoite	False	False
+mrna_log2_remaining_4h_actinomycin	transcript	value	5997		Does the gene respond in mrna log2 remaining 4h actinomycin?		69.0	True		True	True
+sexual_stage_8dpi_log2fc	transcript	value	4463		Does the gene respond in sexual stage 8dpi log2fc?		67.0	True		True	True
+iron_depletion_rna_log2fc	transcript	value	3103		Does the gene respond in iron depletion rna log2fc?		57.0	True		True	True
+stage_margin_derived	transcript	value	1911		Does the gene respond in stage margin derived?		22.0	True		True	True
+stage_enriched_derived	transcript	class	1911	3.0	Does the gene respond in stage enriched derived?			True		True	True
+cellcycle_phase	transcript	class	873	5.0	Does the gene respond in cellcycle phase?			True		True	True
+n_m6a_peaks	transcript	value	837		Does the gene respond in n m6a peaks?			True		True	True
+novel_transcript_models	transcript	class	798	12.0	Does the gene respond in novel transcript models?			True		True	True
+mrna_remaining_5h_actinomycin	transcript	value	412		Does the gene respond in mrna remaining 5h actinomycin?			True		True	True
+te129869_subconfluent_r2	translation	value	7880		Is the gene translated differently in te129869 subconfluent r2?		19.0	True		True	True
+te129869_subconfluent_r3	translation	value	7880		Is the gene translated differently in te129869 subconfluent r3?		19.0	True	te129869_subconfluent_r2	False	False
+te129869_subconfluent_r1	translation	value	7880		Is the gene translated differently in te129869 subconfluent r1?		20.0	True		True	True
+te129869_confluent_r2	translation	value	7880		Is the gene translated differently in te129869 confluent r2?		21.0	True		True	True
+te245775_parent_tachy_r3	translation	value	7880		Is the gene translated differently in te245775 parent tachy r3?		88.0	True		True	True
+te245775_eif12ko_prebrady_r3	translation	value	7880		Is the gene translated differently in te245775 eif12ko prebrady r3?		89.0	True		True	True
+te245775_parent_tachy_r2	translation	value	7880		Is the gene translated differently in te245775 parent tachy r2?		90.0	True		True	True
+te129869_confluent_r1	translation	value	7880		Is the gene translated differently in te129869 confluent r1?		91.0	True		True	True
+te129869_confluent_r3	translation	value	7880		Is the gene translated differently in te129869 confluent r3?		92.0	True		True	True
+te245775_parent_prebrady_r2	translation	value	7880		Is the gene translated differently in te245775 parent prebrady r2?		93.0	True		True	True
+te245775_parent_prebrady_r3	translation	value	7880		Is the gene translated differently in te245775 parent prebrady r3?		94.0	True		True	True
+te245775_parent_prebrady_r1	translation	value	7880		Is the gene translated differently in te245775 parent prebrady r1?		95.0	True		True	True
+te245775_eif12ko_prebrady_r2	translation	value	7880		Is the gene translated differently in te245775 eif12ko prebrady r2?		96.0	True		True	True
+te245775_eif12ko_tachy_r1	translation	value	7880		Is the gene translated differently in te245775 eif12ko tachy r1?		97.0	True		True	True
+te245775_eif12ko_tachy_r3	translation	value	7880		Is the gene translated differently in te245775 eif12ko tachy r3?		97.0	True	te245775_eif12ko_tachy_r1	False	False
+te245775_eif12ko_prebrady_r1	translation	value	7880		Is the gene translated differently in te245775 eif12ko prebrady r1?		98.0	True		True	True
+te245775_eif12ko_tachy_r2	translation	value	7880		Is the gene translated differently in te245775 eif12ko tachy r2?		99.0	True		True	True
+te245775_parent_tachy_r1	translation	value	7880		Is the gene translated differently in te245775 parent tachy r1?		100.0	True		True	True
+rpf129869_confluent_r1	translation	value	7880		Is the gene translated differently in rpf129869 confluent r1?		141.0	True		True	True
+rpf129869_confluent_r3	translation	value	7880		Is the gene translated differently in rpf129869 confluent r3?		141.0	True	rpf129869_confluent_r1	False	False
+rpf129869_subconfluent_r1	translation	value	7880		Is the gene translated differently in rpf129869 subconfluent r1?		141.0	True	rpf129869_confluent_r1	False	False
+rpf129869_subconfluent_r2	translation	value	7880		Is the gene translated differently in rpf129869 subconfluent r2?		141.0	True	rpf129869_confluent_r1	False	False
+rpf129869_subconfluent_r3	translation	value	7880		Is the gene translated differently in rpf129869 subconfluent r3?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_parent_tachy_r1	translation	value	7880		Is the gene translated differently in rpf245775 parent tachy r1?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_parent_tachy_r2	translation	value	7880		Is the gene translated differently in rpf245775 parent tachy r2?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_parent_tachy_r3	translation	value	7880		Is the gene translated differently in rpf245775 parent tachy r3?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_parent_prebrady_r1	translation	value	7880		Is the gene translated differently in rpf245775 parent prebrady r1?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_parent_prebrady_r2	translation	value	7880		Is the gene translated differently in rpf245775 parent prebrady r2?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_parent_prebrady_r3	translation	value	7880		Is the gene translated differently in rpf245775 parent prebrady r3?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_eif12ko_tachy_r1	translation	value	7880		Is the gene translated differently in rpf245775 eif12ko tachy r1?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_eif12ko_tachy_r2	translation	value	7880		Is the gene translated differently in rpf245775 eif12ko tachy r2?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_eif12ko_tachy_r3	translation	value	7880		Is the gene translated differently in rpf245775 eif12ko tachy r3?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_eif12ko_prebrady_r1	translation	value	7880		Is the gene translated differently in rpf245775 eif12ko prebrady r1?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_eif12ko_prebrady_r2	translation	value	7880		Is the gene translated differently in rpf245775 eif12ko prebrady r2?		141.0	True	rpf129869_confluent_r1	False	False
+rpf245775_eif12ko_prebrady_r3	translation	value	7880		Is the gene translated differently in rpf245775 eif12ko prebrady r3?		141.0	True	rpf129869_confluent_r1	False	False
+rpf129869_confluent_r2	translation	value	7880		Is the gene translated differently in rpf129869 confluent r2?		142.0	True		True	True
+te99395_extracellular_r1	translation	value	7506		Is the gene translated differently in te99395 extracellular r1?		101.0	True		True	True
+te99395_extracellular_r2	translation	value	7506		Is the gene translated differently in te99395 extracellular r2?		101.0	True	te99395_extracellular_r1	False	False
+te99395_intracellular_r1	translation	value	7506		Is the gene translated differently in te99395 intracellular r1?		103.0	True		True	True
+te99395_intracellular_r2	translation	value	7506		Is the gene translated differently in te99395 intracellular r2?		104.0	True		True	True
+rpf99395_extracellular_r1	translation	value	7506		Is the gene translated differently in rpf99395 extracellular r1?		141.0	True	rpf129869_confluent_r1	False	False
+rpf99395_extracellular_r2	translation	value	7506		Is the gene translated differently in rpf99395 extracellular r2?		141.0	True	rpf129869_confluent_r1	False	False
+rpf99395_intracellular_r1	translation	value	7506		Is the gene translated differently in rpf99395 intracellular r1?		141.0	True	rpf129869_confluent_r1	False	False
+rpf99395_intracellular_r2	translation	value	7506		Is the gene translated differently in rpf99395 intracellular r2?		141.0	True	rpf129869_confluent_r1	False	False
+te302107_tachy_r2	translation	value	5961		Is the gene translated differently in te302107 tachy r2?		102.0	True		True	True
+te302107_tachy_r1	translation	value	5917		Is the gene translated differently in te302107 tachy r1?		102.0	True	te302107_tachy_r2	False	False

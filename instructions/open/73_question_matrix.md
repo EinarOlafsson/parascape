@@ -442,3 +442,24 @@ their category differs -- named, with the reason, and kept. The evidence hash is
 partitions keep their identity. Note: map recipes already hold out any single input whose association with the
 label reaches 0.8 (`search.excluded_detail`); the harness never did, and still does not -- it reports. Tests
 `tests/test_redundancy.py`.
+
+## The catalogue (2026-11-08): phase 3 complete, waiting for Einar to prune
+
+`scripts/build_question_catalogue_notebook.py` -> `notebooks/question_catalogue_2026_11_08.ipynb`,
+`results/question_catalogue_2026_11_08/catalogue.tsv` (one row per candidate), `declared_gaps.tsv`, `summary.json`.
+Enumerated by rule from the Toxoplasma table, not by hand: every label-capable column becomes one question worded
+from its information category ("Is the gene needed for growth under X?", "Where is the protein (X)?", "Does the gene
+respond in X?" ...); identity, sequence, study-effort, structure and domain columns are not biology questions and
+are skipped.
+
+* **384 candidate questions**; 342 answerable (>= 150 labelled genes, the harness frozen-test default).
+* **165 restate another** -- they sit in a measured redundancy group (|Spearman| >= 0.8 for every pair) behind the
+  column with the most labelled genes, and are listed with the one they restate.
+* **177 admitted** (answerable and non-redundant), by category: transcript 62, fitness 30, translation 22, place 16,
+  interaction 15, modification 13, protein abundance 8, phenotype 6, host response 3, function 2. By the measured
+  rule these are 177 independent questions; the correlation-matrix estimate earlier (about 7 independent axes over
+  all 322 numeric columns) is a reminder that "independent at 0.8" is a low bar.
+* Declared gaps (no column can label them): favourable immune response in humans, autophagy involvement, protein
+  scavenging, sporozoite-to-tachyzoite switching.
+
+**Gate: Einar sees the list and prunes it** (phase 3). Then phase 4 runs rungs 1-3 on the kept class-B questions.
