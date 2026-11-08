@@ -7,10 +7,10 @@ missing its publication identity, so no citation rate existed and `rankable_grou
     highest citations per year, a slight preference for newer, a preference for more comprehensive.
 
 This notebook joins each candidate to its source in the queue, scores it, and records one decision per slot:
-**keep** (the installed default ranks first, or is the only admissible candidate), **replace proposed** (another
-candidate ranks clearly higher -- a proposal for Einar, never an automatic promotion), **separate** (the slot
-policy keeps cohorts apart, so there is nothing to choose between), or **unknown** (the data the rule needs is
-still missing, named per slot). Nothing is promoted automatically and no incumbent is declared best by default.
+**keep** (the installed default ranks first, or is not beaten by the margin), **replace proposed** (another
+candidate ranks clearly higher -- a proposal for Einar, never an automatic promotion), **nothing to choose** (the
+slot policy is `separate`, `fill` or `average`, so every candidate is used and there is no single default), or
+**unknown** (the data the rule needs is still missing, named per slot). Only a `one` slot has a default at all. Nothing is promoted automatically and no incumbent is declared best by default.
 
     python scripts/build_slot_decisions_notebook.py
 """
@@ -43,6 +43,10 @@ def main() -> None:
           "**What this is not.** An automatic promotion. A replacement is a *proposal*, with its margin and the "
           "biological checks still owed; a slot whose data is incomplete stays `unknown` and says what is "
           "missing.",
+          "**Only a `one` slot can be replaced.** A `fill` or `average` slot uses every candidate it has, and a "
+          "`separate` slot keeps them apart, so for those there is nothing to select -- an earlier version of "
+          "this notebook read their empty default list as a missing default and called them additions, which "
+          "was wrong.",
           f"Built {_dt.date.today().isoformat()}.")
     nb.code("import json, os, numpy as np, pandas as pd",
             "slots = pd.read_csv(os.path.join(REPO, 'results/dataset_selection_2026_10_07/slot_comparisons.csv'))",
@@ -103,15 +107,18 @@ def main() -> None:
             "    scored = g[g.score.notna()].sort_values('score', ascending=False)",
             "    best = scored.iloc[0] if len(scored) else None",
             "    installed = g[g.installed_default]",
-            "    if policy == 'separate':",
-            "        decision, why = 'separate cohorts', 'the slot policy keeps these datasets apart; no choice to make'",
+            "    if policy != 'one':",
+            "        # Only a 'one' slot has a default to choose: `audit_dataset_selection` sets default_patterns",
+            "        # for policy 'one' alone. 'separate' keeps cohorts apart, 'fill' and 'average' use every",
+            "        # candidate together, so for all three there is nothing to select and nothing to replace.",
+            "        decision = {'separate': 'separate cohorts', 'fill': 'all candidates used (fill)',",
+            "                    'average': 'all candidates used (average)'}[policy]",
+            "        why = 'the slot policy uses every candidate; there is no single default to choose or replace'",
             "    elif best is None:",
             "        decision, why = 'unknown', 'no candidate can be scored: ' + '; '.join(sorted(set(g.gap)) - {''} if isinstance(g.gap, str) else sorted({x for x in g.gap if x}))",
             "    elif len(installed) and best.dataset_id in set(installed.dataset_id):",
             "        decision, why = 'keep', f'the installed default ranks first (score {best.score:.1f})'",
-            "    elif not len(installed):",
-            "        decision, why = 'add proposed', f'the slot has no installed default; best candidate {best.dataset_id} (score {best.score:.1f})'",
-            "    else:",
+                        "    else:",
             "        inst = installed[installed.score.notna()]",
             "        if not len(inst):",
             "            decision, why = 'unknown', f'the installed default cannot be scored ({\"; \".join(x for x in installed.gap if x)}), so no comparison is possible'",
@@ -131,7 +138,7 @@ def main() -> None:
     nb.md("## 3 · The proposals, in full",
           "These are the rows for Einar: a replacement or an addition the rule prefers. Each still needs the "
           "biological admission check (organism, stage, assay, units, mapping) before anything is installed.")
-    nb.code("P = D[D.decision.isin(['replace proposed', 'add proposed'])]",
+    nb.code("P = D[D.decision == 'replace proposed']",
             "P.to_csv(os.path.join(OUT, 'slot_proposals.tsv'), sep='\\t', index=False)",
             "print(len(P), 'proposals')",
             "P[['slot', 'organism', 'decision', 'best', 'reason']]")

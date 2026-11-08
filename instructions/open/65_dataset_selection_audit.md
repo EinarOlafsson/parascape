@@ -158,28 +158,31 @@ mapping and best-source selection remain unresolved; 65.04 stays4%.
 
 * **Batch 5, the slot decisions (2026-11-08):** `scripts/build_slot_decisions_notebook.py` ->
   `notebooks/slot_decisions_2026_11_08.ipynb`, `results/dataset_selection_2026_11_08/slot_decisions.tsv`,
-  `slot_candidates_scored.tsv`, `slot_proposals.tsv`. 65.03 could rank **nothing** (`rankable_groups` 0 for all
-  297 slots) because every candidate lacked a publication identity; the publications resolved in batch 4 make
-  Einar's rule computable. Citation rates for the 10 newly resolved publications were fetched from Europe PMC
-  (`citation_rates_resolved.tsv`); 105 of 162 sources now have one.
+  `slot_candidates_scored.tsv`, `slot_proposals.tsv`, `slot_proposal_admission.tsv`. 65.03 could rank **nothing**
+  (`rankable_groups` 0 for all 297 slots) because every candidate lacked a publication identity; the publications
+  resolved in batch 4 make Einar's rule computable. Citation rates for the 10 newly resolved publications were
+  fetched from Europe PMC (`citation_rates_resolved.tsv`); 105 of 162 sources now have one.
 
-  Of the 60 slots with more than one candidate dataset: **27 separate cohorts** (the slot policy keeps them
-  apart, so there is nothing to choose), **10 keep** (the installed default ranks first or is not beaten by the
-  25 % margin), **7 additions proposed** (the slot has no installed default), **1 replacement proposed**
-  (Pf lactylation: `pf_lactylome:has_lactyl` 6.5 against 5.0), **15 unknown** with the reason named per slot --
-  mostly reference resources and the ToxoDB/PlasmoDB pages behind the login (38).
+  **Only a `one` slot has a default that can be chosen or replaced.** `audit_dataset_selection` fills
+  `default_patterns` for policy `one` alone; a `fill` or `average` slot uses every candidate it has and a
+  `separate` slot keeps them apart. A first version of this pass read those empty default lists as missing
+  defaults and called nine slots additions -- wrong, and corrected here before anything was installed.
 
-  Nothing is promoted automatically: the 8 proposals carry their margin and still owe the biological admission
-  check (organism, stage, assay, units, mapping). That check is what remains of 65.04.
+  Of the 60 slots with more than one candidate dataset:
 
-* **Batch 5, admission of the proposals (same day):** `slot_proposal_admission.tsv` sets each proposal beside
-  what its slot declares. **All 8 pass the organism check** (4 are host datasets for host slots, which is right).
-  Seven candidate names match their slot context and unit. **One is refused:**
-  `Tg_protein_abundance_tachyzoite <- proteome_total` is the AP2XII-1/AP2XI-2 **perturbation** total proteome, and
-  the slot asks for unperturbed tachyzoite abundance -- a perturbation series cannot be the default for it. Whether
-  its control arm alone is eligible is a biological judgement, left for Einar.
-  The other seven are admissible on the recorded metadata and wait only on Einar's word to install, because
-  installing changes what the shipped package selects.
+  | Decision | Slots |
+  |---|---:|
+  | nothing to choose: separate cohorts | 27 |
+  | nothing to choose: every candidate used (fill 5, average 4) | 9 |
+  | keep the installed default | 10 |
+  | **replacement proposed** | **1** |
+  | unknown, reason named per slot | 13 |
 
-Still open: batch 4 (origin-paper verification for all 162; the 11 unresolved and 2 to confirm above); installing
-the 7 admissible additions; the AP2XII-1 control-arm judgement.
+  The one proposal is Pf lactylation: `pf_lactylome:has_lactyl` scores 6.5 against 5.0 for the installed default.
+  It passes the organism check and its name matches the slot context and unit (`slot_proposal_admission.tsv`), and
+  Einar chose on 2026-11-08 to leave it until he has looked at it. Nothing was installed.
+
+  The 13 unknown slots are mostly reference resources and the ToxoDB/PlasmoDB pages behind the login (38).
+
+Still open: batch 4 (origin-paper verification for all 162; the 11 unresolved and 2 to confirm above); Einar's
+look at the Pf lactylation replacement.

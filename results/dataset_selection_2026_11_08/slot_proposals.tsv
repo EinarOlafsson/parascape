@@ -1,9 +1,2 @@
 slot	organism	policy	candidates	scorable	decision	reason	best
-Pf_host_proteome_human_erythrocyte	Pf	average	2	2	add proposed	the slot has no installed default; best candidate host_erythrocyte_proteome:rbc_membrane_psms (score 4.8)	host_erythrocyte_proteome:rbc_membrane_psms
-Pf_host_surface_receptor_repertoire_human_erythrocyte	Pf	fill	4	4	add proposed	the slot has no installed default; best candidate host_erythrocyte_surface:rbc_surface_copies_uk (score 4.4)	host_erythrocyte_surface:rbc_surface_copies_uk
-Pf_target_engagement_thermal_shift	Pf	average	2	2	add proposed	the slot has no installed default; best candidate pf_target_engagement:engaged_n_compounds_tested (score 0.0)	pf_target_engagement:engaged_n_compounds_tested
-Tg_5_utr_architecture	Tg	fill	6	6	add proposed	the slot has no installed default; best candidate gse302108_utr5:utr5_length (score 0.0)	gse302108_utr5:utr5_length
-Tg_host_gene_requirement_rhoptry_discharge	Tg	fill	3	3	add proposed	the slot has no installed default; best candidate host_k562_rhoptry_screen:rhoptry_discharge_score (score 0.0)	host_k562_rhoptry_screen:rhoptry_discharge_score
-Tg_host_surface_receptor_repertoire_mouse_bone_marrow_macrophage	Tg	fill	2	2	add proposed	the slot has no installed default; best candidate host_macrophage_surfaceome:bmdm_surface_detected (score 35.8)	host_macrophage_surfaceome:bmdm_surface_detected
-Tg_protein_abundance_tachyzoite	Tg	fill	2	2	add proposed	the slot has no installed default; best candidate proteome_total:proteome_ (score 24.4)	proteome_total:proteome_
 Pf_lactylation_asexual_blood_stage	Pf	one	2	2	replace proposed	pf_lactylome:has_lactyl scores 6.5 against 5.0 for the installed default -- a proposal; biological admission still owed	pf_lactylome:has_lactyl
