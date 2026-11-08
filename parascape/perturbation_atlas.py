@@ -101,3 +101,40 @@ def recovery(store: dict, groups: dict) -> pd.DataFrame:
                              top1=best == 1, top5=best <= 5,
                              best_partner=hits.loc[hits["rank"] == best, "signature"].iloc[0]))
     return pd.DataFrame(rows)
+
+
+def host_store(atlas: str | None = None) -> dict:
+    """The host response atlas (instruction 71, product 3) as a signature store for `query` and `recovery`.
+
+    Same shape as `load`: host fold changes (host genes x signatures) and their registry, with a readable contrast
+    label. Human and mouse signatures share no gene identifiers, so a query only ever meets its own species.
+    """
+    root = os.path.join(os.path.dirname(os.path.dirname(__file__)), "results")
+    if atlas is None:
+        found = sorted(d for d in os.listdir(root) if d.startswith("host_response_atlas_20")
+                       and os.path.exists(os.path.join(root, d, "host_signatures.parquet")))
+        atlas = os.path.join(root, found[-1])
+    lfc = pd.read_parquet(os.path.join(atlas, "host_signatures.parquet"))
+    reg = pd.read_csv(os.path.join(atlas, "registry.tsv"), sep="\t").set_index("column")
+    reg["contrast_label"] = (reg["axis"].astype(str) + ": " + reg["treated"].astype(str) + " vs "
+                             + reg["baseline"].astype(str) + " (" + reg["background"].astype(str) + ")")
+    keep = [c for c in lfc.columns if c in reg.index and lfc[c].notna().sum() >= MIN_SHARED_GENES]
+    return {"lfc": lfc[keep], "registry": reg.loc[keep], "release": os.path.basename(atlas)}
+
+
+def replicate_groups(store: dict, min_studies: int = 2) -> dict:
+    """Signatures naming the same treated condition, in the same host species, in at least `min_studies` studies.
+
+    A data-driven replication set for `recovery`: the treated label is normalised (case, spaces, punctuation);
+    a group names a perturbation only when independent studies state it.
+    """
+    reg = store["registry"]
+    key = (reg["species"].astype(str) + "|" + reg["axis"].astype(str) + "|"
+           + reg["treated"].astype(str).str.lower().str.replace(r"[^a-z0-9]+", "", regex=True))
+    groups = {}
+    for k, cols in reg.groupby(key).groups.items():
+        if k.rsplit("|", 1)[-1] in ("unstated", "none", "nan", "", "control", "wt", "wildtype"):
+            continue                               # a missing or baseline label names no perturbation
+        if reg.loc[list(cols), "study"].nunique() >= min_studies:
+            groups[k] = list(cols)
+    return groups

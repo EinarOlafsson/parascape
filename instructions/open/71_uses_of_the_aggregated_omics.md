@@ -215,3 +215,17 @@ errors, the ToxoHub knockdown cross-check (unreleased), and a module in the appl
 contrasts as the parasite side. The MYR1 check holds: without MYR1 the infected-cell host response is half the
 size (173 against 344 genes changed 2-fold) and only partly the same (Spearman 0.536). Open: orthologue mapping,
 a query, mock-infected contrasts. Product 4 (background frequency) is instruction 80.
+
+## Product 3, the query (2026-11-08)
+
+`perturbation_atlas.host_store()` serves the host response atlas to the same `query` and `recovery` as the parasite
+signatures (human and mouse never meet: they share no gene identifiers); `replicate_groups` finds perturbations
+stated by at least two studies in the same host species (missing or baseline labels name nothing). Tests in
+`tests/test_perturbation_atlas.py`.
+
+**Result, stated plainly:** on the host side only one perturbation is stated by two independent studies -- deltaBFD1
+in human cells (GSE132238, GSE139537). Each signature best other-lab partner ranks 8th-66th (median 21) against 16-40
+expected by chance, never in the top 5: the host response to a bradyzoite-differentiation knockout is reproduced
+weakly across labs, unlike the parasite side where perturbations find their partner at rank 1-3. The query works;
+the host atlas needs more replicated perturbations (mock-infected and IFN-gamma contrasts) before its recovery can
+be judged. Open: orthologue mapping between human and mouse signatures.

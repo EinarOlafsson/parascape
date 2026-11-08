@@ -36,3 +36,14 @@ def test_recovery_reports_the_partner_rank_against_chance():
 def test_too_few_shared_genes_are_not_compared():
     store = _store(n=500)
     assert P.query(store["lfc"]["a1"], store).empty
+
+
+def test_host_replicate_groups_need_two_studies_and_a_named_perturbation():
+    import pandas as pd
+    from parascape import perturbation_atlas as P
+    reg = pd.DataFrame({"study": ["A", "B", "A", "C", "D"], "species": ["human"] * 5, "axis": ["genotype"] * 5,
+                        "treated": ["deltaBFD1", "delta-BFD1", "unstated", "unstated", "MYR1"]},
+                       index=["a1", "b1", "a2", "c2", "d1"])
+    groups = P.replicate_groups({"registry": reg})
+    assert list(groups) == ["human|genotype|deltabfd1"]          # MYR1 is one study; "unstated" names nothing
+    assert all(len(set(reg.loc[v, "study"])) >= 2 for v in groups.values())
