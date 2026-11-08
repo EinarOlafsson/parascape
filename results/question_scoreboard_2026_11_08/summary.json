@@ -1,0 +1,8 @@
+{
+ "questions": 198,
+ "median_frozen_auc": 0.758,
+ "above_070": 134,
+ "near_chance": 30,
+ "may_fill": 7,
+ "errors": 0
+}

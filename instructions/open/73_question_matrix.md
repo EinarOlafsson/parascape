@@ -462,4 +462,28 @@ are skipped.
 * Declared gaps (no column can label them): favourable immune response in humans, autophagy involvement, protein
   scavenging, sporozoite-to-tachyzoite switching.
 
-**Gate: Einar sees the list and prunes it** (phase 3). Then phase 4 runs rungs 1-3 on the kept class-B questions.
+**Gate passed (Einar, 2026-11-08: keep all admitted).** Bookkeeping columns were then excluded by rule (provenance, method
+variants and posteriors of one assay, inferred transfers, study counts, p-values, derived labels): 158 admitted.
+
+## Phase 4, rung 1 for every admitted question (2026-11-08)
+
+`scripts/score_question_catalogue.py` (resumable, sharded; one JSON per question in
+`results/question_scores_2026_11_08/`) and `scripts/build_question_scoreboard_notebook.py` ->
+`notebooks/question_scoreboard_2026_11_08.ipynb`, `results/question_scoreboard_2026_11_08/`. Each admitted column
+becomes yes/no questions (the extreme 20 % of a value column in the direction it means; each class with >= 50 genes
+against the rest), scored through the harness with boosted trees: the label dataset family and information
+category held out, orthogroup-grouped nested CV, the frozen test touched once and logged.
+
+**198 questions from 158 admitted columns, 0 errors: median frozen-test AUC 0.758; 134 at >= 0.70; 30 near chance
+(< 0.60); 7 may fill.** By category (median frozen AUC): place 0.934 (27 questions), function 0.890, protein
+abundance 0.843, transcript 0.764 (67), translation 0.762 (22), interaction 0.740, fitness 0.669 (31; 13 near
+chance), modification 0.661 (22; 8 near chance), host response 0.593, phenotype 0.484 (6; the imaging screen
+phenotypes are not predicted, as the track record also found).
+
+**To review before any of these is trusted** (recorded, not hidden): `pvm_proximity_positive` scores AUC 1.000 --
+almost certainly a leak through a column of the same experiment not yet tied to its family; three may-fill
+questions have labels that are not clean biology (`fit_density_dependence_log10padj` is a p-value column the rule
+missed, `crispr_gra17_candidate_0` a candidate flag, `n_holes` a structural-hole count). The four other may-fill
+questions (`invivo_WholeBrain_Acute_1` change, `lopit_unified` nucleus, macrophage-expression high, a ribosome-
+profiling change) are the ones to examine first. Next: the leak check on the AUC >= 0.99 questions, then rungs 2-3
+on class B.

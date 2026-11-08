@@ -45,7 +45,6 @@ enteric_measurements	fitness	class	8	2.0	Is the gene needed for growth under ent
 has_ec	function	class	8140	2.0	What does the gene do (has ec)?			True		True	True
 ec_number	function	class	1313	587.0	What does the gene do (ec number)?			True		True	True
 hosttx_T2	host_response	value	252		What does the host do in response (hosttx T2)?			True		True	True
-hosttx_padj	host_response	value	252		What does the host do in response (hosttx padj)?			True		True	True
 iedb_epitope_count	host_response	value	221		What does the host do in response (iedb epitope count)?			True		True	True
 n_bcell_epitopes	host_response	class	34	12.0	What does the host do in response (n bcell epitopes)?			False		True	False
 hosttx_signature_pc01	host_response	value	22		What does the host do in response (hosttx signature pc01)?			False		True	False
@@ -74,10 +73,7 @@ n_ipms_partners	interaction	class	8140	7.0	What does the protein bind (n ipms pa
 n_host_targets	interaction	class	8140	3.0	What does the protein bind (n host targets)?		81.0	True		True	True
 n_holes	interaction	class	8140	4.0	What does the protein bind (n holes)?		85.0	True		True	True
 n_xlink_partners	interaction	value	8140		What does the protein bind (n xlink partners)?		108.0	True		True	True
-n_bioid_studies	interaction	value	8140		What does the protein bind (n bioid studies)?		110.0	True		True	True
-n_ipms_studies	interaction	value	8140		What does the protein bind (n ipms studies)?		111.0	True		True	True
 n_proximity_partners	interaction	class	1742	2.0	What does the protein bind (n proximity partners)?			True		True	True
-best_model_agreement	interaction	value	1306		What does the protein bind (best model agreement)?		109.0	True		True	True
 surface_er_log2fc	interaction	value	514		What does the protein bind (surface er log2fc)?			True		True	True
 surface_er_stringent	interaction	class	514	2.0	What does the protein bind (surface er stringent)?			True		True	True
 n_crosslink_partners	interaction	class	494	11.0	What does the protein bind (n crosslink partners)?			True		True	True
@@ -110,7 +106,6 @@ screen_egress_phenotype	phenotype	class	318	2.0	What happens when the gene is pe
 screen_replication_phenotype	phenotype	class	318	2.0	What happens when the gene is perturbed (screen replication phenotype)?			True		True	True
 screen_any_phenotype	phenotype	class	318	2.0	What happens when the gene is perturbed (screen any phenotype)?			True		True	True
 diff_reporter_log2_mNG_over_bulk	phenotype	value	237		What happens when the gene is perturbed (diff reporter log2 mNG over bulk)?			True		True	True
-screen_scorers_agree	phenotype	class	74	2.0	What happens when the gene is perturbed (screen scorers agree)?			False		True	False
 escrt_recruitment_xgboost	phenotype	class	10	10.0	What happens when the gene is perturbed (escrt recruitment xgboost)?			False		True	False
 escrt_recruitment_maxvit	phenotype	class	6	6.0	What happens when the gene is perturbed (escrt recruitment maxvit)?			False		True	False
 drug_compounds_tested	phenotype	class	3	1.0	What happens when the gene is perturbed (drug compounds tested)?			False		True	False
@@ -120,24 +115,11 @@ resistance_allele_count	phenotype	class	1	1.0	What happens when the gene is pert
 resistance_compound_count	phenotype	class	1	1.0	What happens when the gene is perturbed (resistance compound count)?			False		True	False
 resistance_substitutions	phenotype	class	1	1.0	What happens when the gene is perturbed (resistance substitutions)?			False		True	False
 resistance_compounds	phenotype	class	1	1.0	What happens when the gene is perturbed (resistance compounds)?			False		True	False
-lopit_confident	place	class	8140	2.0	Where is the protein (lopit confident)?			True		True	True
 compartment	place	class	8140	27.0	Where is the protein (compartment)?			True		True	True
-ortholopit_accepted	place	class	8140	2.0	Where is the protein (ortholopit accepted)?			True		True	True
-compartment_source	place	class	8140	3.0	Where is the protein (compartment source)?			True		True	True
-compartment_best	place	class	8140	12.0	Where is the protein (compartment best)?			True		True	True
-lopit_prob_map	place	value	3827		Where is the protein (lopit prob map)?		79.0	True		True	True
-lopit_prob_mcmc	place	value	3827		Where is the protein (lopit prob mcmc)?		80.0	True		True	True
-lopit_map	place	class	3827	26.0	Where is the protein (lopit map)?			True		True	True
-lopit_mcmc	place	class	3827	27.0	Where is the protein (lopit mcmc)?			True		True	True
-lopit_methods_agree	place	class	3827	2.0	Where is the protein (lopit methods agree)?			True		True	True
 lopit_unified	place	class	3827	11.0	Where is the protein (lopit unified)?			True		True	True
 pvm_proximity_positive	place	class	1274	2.0	Where is the protein (pvm proximity positive)?			True		True	True
-ortholopit_label	place	class	952	11.0	Where is the protein (ortholopit label)?			True		True	True
-ortholopit_donors	place	class	952	3.0	Where is the protein (ortholopit donors)?			True		True	True
-ortholopit_accuracy	place	value	910		Where is the protein (ortholopit accuracy)?			True		True	True
 secretome_soluble_over_vesicle_log2	place	value	165		Where is the protein (secretome soluble over vesicle log2)?			True		True	True
 iron_depletion_protein_log2fc	protein_abundance	value	4932		How much protein is there in iron depletion protein log2fc?		58.0	True		True	True
-iron_depletion_protein_padj	protein_abundance	value	4932		How much protein is there in iron depletion protein padj?		76.0	True		True	True
 proteome_lfc_UT_Vs_T_24h_log2_fold_change	protein_abundance	value	3005		How much protein is there in proteome lfc UT Vs T 24h log2 fold change?		65.0	True		True	True
 proteome_lfc_UT_Vs_T_32h_log2_fold_change_1	protein_abundance	value	3005		How much protein is there in proteome lfc UT Vs T 32h log2 fold change 1?		65.0	True	proteome_lfc_UT_Vs_T_24h_log2_fold_change	False	False
 proteome_lfc_UT_Vs_T_48h_log2_fold_change_2	protein_abundance	value	3005		How much protein is there in proteome lfc UT Vs T 48h log2 fold change 2?		66.0	True		True	True
@@ -331,8 +313,6 @@ rna51780_tachy_r2	transcript	value	6504		Does the gene respond in rna51780 tachy
 mrna_log2_remaining_4h_actinomycin	transcript	value	5997		Does the gene respond in mrna log2 remaining 4h actinomycin?		69.0	True		True	True
 sexual_stage_8dpi_log2fc	transcript	value	4463		Does the gene respond in sexual stage 8dpi log2fc?		67.0	True		True	True
 iron_depletion_rna_log2fc	transcript	value	3103		Does the gene respond in iron depletion rna log2fc?		57.0	True		True	True
-stage_margin_derived	transcript	value	1911		Does the gene respond in stage margin derived?		22.0	True		True	True
-stage_enriched_derived	transcript	class	1911	3.0	Does the gene respond in stage enriched derived?			True		True	True
 cellcycle_phase	transcript	class	873	5.0	Does the gene respond in cellcycle phase?			True		True	True
 n_m6a_peaks	transcript	value	837		Does the gene respond in n m6a peaks?			True		True	True
 novel_transcript_models	transcript	class	798	12.0	Does the gene respond in novel transcript models?			True		True	True
