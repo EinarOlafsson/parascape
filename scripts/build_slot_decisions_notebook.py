@@ -135,6 +135,35 @@ def main() -> None:
             "P.to_csv(os.path.join(OUT, 'slot_proposals.tsv'), sep='\\t', index=False)",
             "print(len(P), 'proposals')",
             "P[['slot', 'organism', 'decision', 'best', 'reason']]")
+    nb.md("## 4 · The admission sheet for each proposal",
+          "What the admission rule asks of a candidate -- organism, stage, assay, quantity, units, mapping -- "
+          "set beside what the slot declares and what the registry records. The organism check is mechanical and "
+          "decided here; stage, assay and units are read from the registry name and note, which is a prepared "
+          "comparison for Einar, not a verdict. A proposal with an organism mismatch is refused outright.")
+    nb.code("from parascape import datasets as ds",
+            "reg = {d.key: d for d in ds.REGISTRY}",
+            "slot_meta = slots.set_index('slot')[['organism', 'name', 'context', 'unit', 'policy']]",
+            "sheet = []",
+            "for r in P.itertuples(index=False):",
+            "    cand = C[(C.slot == r.slot) & (C.dataset_id == r.best)].iloc[0]",
+            "    d = reg.get(cand.source_id)",
+            "    meta = slot_meta.loc[r.slot]",
+            "    same = (d is not None and str(d.organism) == str(meta.organism))",
+            "    host_slot = 'host_' in r.slot or '_human_' in r.slot or '_mouse_' in r.slot",
+            "    organism_check = ('ok' if same else",
+            "                      ('host dataset for a host slot' if (d is not None and host_slot) else",
+            "                       f'MISMATCH: candidate {getattr(d, \"organism\", \"?\")} against slot {meta.organism}'))",
+            "    sheet.append(dict(slot=r.slot, decision=r.decision, candidate=r.best, source=cand.source_id,",
+            "                      slot_context=meta.context, slot_unit=meta.unit, slot_policy=meta.policy,",
+            "                      candidate_name=getattr(d, 'name', ''), candidate_level=getattr(d, 'level', ''),",
+            "                      candidate_coverage=getattr(d, 'coverage', ''), candidate_note=str(getattr(d, 'note', ''))[:300],",
+            "                      publication=cand.publication_id, citations_per_year=cand.citations_per_year,",
+            "                      comprehensiveness=cand.comprehensiveness, organism_check=organism_check,",
+            "                      stage_assay_units='for Einar: does the name and note match the slot context and unit above?'))",
+            "S = pd.DataFrame(sheet)",
+            "S.to_csv(os.path.join(OUT, 'slot_proposal_admission.tsv'), sep='\\t', index=False)",
+            "print(int((S.organism_check.str.startswith('MISMATCH')).sum()), 'proposals refused on organism')",
+            "S[['slot', 'candidate', 'slot_context', 'slot_unit', 'candidate_name', 'organism_check']]")
     nb.write(NB)
 
 

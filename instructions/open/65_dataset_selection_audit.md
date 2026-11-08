@@ -172,5 +172,14 @@ mapping and best-source selection remain unresolved; 65.04 stays4%.
   Nothing is promoted automatically: the 8 proposals carry their margin and still owe the biological admission
   check (organism, stage, assay, units, mapping). That check is what remains of 65.04.
 
-Still open: batch 4 (origin-paper verification for all 162; the 11 unresolved and 2 to confirm above) and the
-biological admission check on the 8 batch-5 proposals.
+* **Batch 5, admission of the proposals (same day):** `slot_proposal_admission.tsv` sets each proposal beside
+  what its slot declares. **All 8 pass the organism check** (4 are host datasets for host slots, which is right).
+  Seven candidate names match their slot context and unit. **One is refused:**
+  `Tg_protein_abundance_tachyzoite <- proteome_total` is the AP2XII-1/AP2XI-2 **perturbation** total proteome, and
+  the slot asks for unperturbed tachyzoite abundance -- a perturbation series cannot be the default for it. Whether
+  its control arm alone is eligible is a biological judgement, left for Einar.
+  The other seven are admissible on the recorded metadata and wait only on Einar's word to install, because
+  installing changes what the shipped package selects.
+
+Still open: batch 4 (origin-paper verification for all 162; the 11 unresolved and 2 to confirm above); installing
+the 7 admissible additions; the AP2XII-1 control-arm judgement.
