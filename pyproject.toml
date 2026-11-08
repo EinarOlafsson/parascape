@@ -7,7 +7,7 @@ name = "parascape"
 version = "0.0.10.0"
 description = "Explore gene evidence and screen results in Toxoplasma and Plasmodium"
 readme = {file = "README.md", content-type = "text/markdown"}
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = "MIT AND LicenseRef-spaCR-BSD-3-Clause-Additional-Terms"
 license-files = ["LICENSE", "LICENSES/*"]
 authors = [{name = "Einar Olafsson", email = "einar.olafsson@gmail.com"}]

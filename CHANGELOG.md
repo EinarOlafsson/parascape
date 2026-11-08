@@ -2,7 +2,23 @@
 
 ## Unreleased
 
-## 0.0.10.0 — 2026-11-05
+## 0.0.10.0 — 2026-11-08
+
+- Requires Python 3.12. With PySide6 6.12, Python 3.10 and 3.11 can abort at exit (shiboken over-releases
+  `None`, which is immortal only from 3.12).
+- Fix the Toxoplasma stage expression summaries: the GSE108740 columns arrive as ln(FPKM + 1), and
+  `expr_tachy`, `expr_cyst` and `expr_max` took a second log on top. They are now log2(FPKM + 1) of the GEO
+  values; `expr_max` covers the GSE108740 genes only. The map layout, track record, claims, frozen functional
+  recoveries (re-run on fresh splits) and the Toxoplasma calibration were rebuilt on the corrected table.
+- Human and mouse gene spaces as installable data packs: genes, Human Protein Atlas annotations (human), Bgee
+  expression and human-ortholog locations kept as inferred (mouse), reviewed gene-protein links kept apart from
+  genes. Listed in the Species menu with their state, never shown as calibrated.
+- A gene's links to other organisms open the other end in its own organism (Gene module).
+- Per-class records (recall, precision, F1, coverage, confusion) for every method and label, derived from the
+  per-gene held-out rows; the harness now keeps per-gene rows too.
+- Curated units on value scorecards; measured redundancy between columns reported on every harness run.
+- Inference atlas manifests for both parasites, a resumable track-record builder, and human and mouse pilot
+  benchmarks on their own truth.
 
 - Browse the information map: one row per gene trait with its value, calibrated
   probability, source tier and the published reference behind it, plus that gene's

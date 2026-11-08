@@ -11,7 +11,7 @@
 
 [![ParaScape website](https://img.shields.io/badge/Website-ParaScape-0A7BBB)](https://einarolafsson.github.io/projects/parascape/)
 [![Linux, macOS and Windows](https://img.shields.io/badge/Linux%20OSX%20Win-lightgrey?logo=linux&logoColor=white)](#install)
-[![Python 3.10 or newer](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](#install)
+[![Python 3.12 or newer](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](#install)
 [![Qt interface](https://img.shields.io/badge/GUI-Qt-41CD52?logo=qt&logoColor=white)](https://einarolafsson.github.io/parascape/guide.html)
 [![Tests on main](https://img.shields.io/github/actions/workflow/status/EinarOlafsson/parascape/checks.yml?branch=main&event=push&label=Tests&logo=pytest&logoColor=white)](https://github.com/EinarOlafsson/parascape/actions/workflows/checks.yml?query=branch%3Amain)
 [![GitHub issues](https://img.shields.io/github/issues/EinarOlafsson/parascape?label=Issues&logo=github)](https://github.com/EinarOlafsson/parascape/issues)
@@ -73,7 +73,7 @@ thing it is.
 
 ## Install
 
-Python 3.10 or newer. The desktop app needs a display and OpenGL.
+Python 3.12 or newer. The desktop app needs a display and OpenGL.
 
 From a checkout:
 
