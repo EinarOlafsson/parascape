@@ -1,6 +1,6 @@
 # 64.40 · Verify both goals end to end and release
 
-Status: OPEN — 70%, 2026-11-07. Release evidence matrix built from stored results; release waits on a green Tests workflow (stale PyQt6 setting, fix pushed separately) and on item 90 (licence review).
+Status: OPEN — 85%, 2026-11-08. Release evidence matrix built; the Tests workflow on nightly is GREEN (run 42435594490, commit d3aaea10); release waits on item 90 (licence review) and the installed-wheel walk-through.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -89,3 +89,8 @@ follow Einar's solid-menu decision of 2026-11-06; chat tests collect their unpar
 later GC on a worker thread segfaulted) and expect the hosted assistant to be chosen when no CLI is installed; the
 Toxoplasma frozen functional recoveries were re-run on fresh splits (64.11a). CI runs with
 `PARASCAPE_AMBIENT_DEFAULT=0` (no backdrop animation behind test windows) and a 60-minute cap on the suite step.
+
+**Green (2026-11-08).** Tests workflow run 42435594490 on nightly (commit d3aaea10) passed every step: packaged layout
+replay, real-GL species switches under xvfb, version sync, and the full not-slow suite -- the first green run in at
+least 60. Blocking a release now: item 90 (Einar's licence review); the one-run installed-wheel walk-through; the
+Python 3.10/3.11 + PySide6 6.12 shutdown abort (decision for Einar).
