@@ -1,6 +1,6 @@
 # 64 · Explore the evidence space and inspect every inference, with ground-truth scorecards
 
-Status: OPEN — 39/41 actions complete (95.1%), 2026-11-08. Every sub-item done except 64.40 (release, in progress 2026-11-08 under Einar's go-ahead).
+Status: DONE — 41/41, 2026-11-08. Every sub-item done; released as ParaScape 0.0.10.0. Built; Einar's review pending -- reopen on his feedback.
 
 This is the current execution plan under the user's clarified goals. Instructions 53, 60, 62 and 63
 retain their completed work, design decisions and evidence; this plan controls their integration order.
@@ -170,7 +170,7 @@ checks add elapsed time; budget them after pilot measurements.
 | [64.37](../done/64_37_imported_screen_context.md) | done | 4–8 h | Make user data reach the same inference flow | 64.03, 64.04, 64.05, 64.08, 64.23, 64.25, 64.30 |
 | [64.38](../done/64_38_prospective_frozen_tests.md) | done | 6–10 h | Freeze predictions and score new independent truth | 64.03, 64.04, 64.05, 64.08, 64.16, 64.32, 64.34 |
 | [64.39](../done/64_39_reproducible_exports.md) | done | 4–8 h | Export the evidence and inference trail | 64.03, 64.08, 64.17, 64.30, 64.31, 64.35 |
-| [64.40](64_40_release_goal_acceptance.md) | 90% | 6–10 h + checks | Verify both goals end to end and release | 64.18, 64.19, 64.20, 64.21, 64.22, 64.23, 64.24, 64.26, 64.27, 64.28, 64.29, 64.30, 64.31, 64.33, 64.35, 64.36, 64.37, 64.38, 64.39 |
+| [64.40](../done/64_40_release_goal_acceptance.md) | done | 6–10 h + checks | Verify both goals end to end and release | 64.18, 64.19, 64.20, 64.21, 64.22, 64.23, 64.24, 64.26, 64.27, 64.28, 64.29, 64.30, 64.31, 64.33, 64.35, 64.36, 64.37, 64.38, 64.39 |
 
 ## Every current strategy's ground-truth contract
 

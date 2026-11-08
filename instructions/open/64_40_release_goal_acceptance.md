@@ -1,6 +1,6 @@
 # 64.40 · Verify both goals end to end and release
 
-Status: OPEN — 90%, 2026-11-08. Evidence matrix built; CI green (run 42435594490); installed-wheel walk-through passes. Release waits on item 90 (licence review), a new data asset carrying the corrected Tg table, and the Python 3.10/3.11 decision.
+Status: DONE — 100%, 2026-11-08. ParaScape 0.0.10.0 released (PyPI + GitHub release v0.0.10.0 with the corrected data asset), CI green, installed-wheel walk-through passes. Built; Einar's review pending -- reopen on his feedback.
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -24,12 +24,12 @@ follow-up and its dependency rather than silently widening the item.
 
 ## Done when
 
-- [ ] From an installed distribution, users browse a source, look up a gene/class/label, inspect applicable cached inferences and meta-results, and open their grounded cards.
-- [ ] Offline/cold-cache/missing-pack/import/organism-switch cases pass; memory/storage/runtime budgets and stale-artifact guards are measured.
-- [ ] Every strategy has an appropriate explicit test and its evaluated scope, or remains visibly unvalidated with its truth-acquisition item still open.
-- [ ] Fresh calibration and current tutorials/docs accompany changed data/methods; required CI and package checks pass before the standing authorized release flow.
-- [ ] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
-- [ ] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
+- [x] From an installed distribution, users browse a source, look up a gene/class/label, inspect applicable cached inferences and meta-results, and open their grounded cards.
+- [x] Offline/cold-cache/missing-pack/import/organism-switch cases pass; memory/storage/runtime budgets and stale-artifact guards are measured.
+- [x] Every strategy has an appropriate explicit test and its evaluated scope, or remains visibly unvalidated with its truth-acquisition item still open.
+- [x] Fresh calibration and current tutorials/docs accompany changed data/methods; required CI and package checks pass before the standing authorized release flow.
+- [x] Relevant automated checks and any required biological benchmark evidence are recorded, including failures and gaps.
+- [x] The result is reviewable, the parent tracker is updated, and the validated change is committed and pushed to nightly.
 
 ## Completion evidence
 
@@ -107,3 +107,17 @@ which predates today's GSE108740 fix, so the next release must publish a new dat
 (2) this machine's checkout holds an untracked `starplast/` folder (an old nested artifact tree) that a local
 `pip wheel .` sweeps into a 70 MB wheel -- release builds from a clean checkout (CI, `git archive`) do not include
 it, but local builds should use `scripts/check_installed_wheel.py` or a clean tree.
+
+## Released (2026-11-08)
+
+Einar approved the release under `MIT AND LicenseRef-spaCR-BSD-3-Clause-Additional-Terms` and chose to require
+Python 3.12. ParaScape 0.0.10.0 is on PyPI (wheel and sdist, `requires-python >=3.12`) and on GitHub release
+v0.0.10.0 (tag at 66701876, with `parascape-data-0.0.10.0.tar.gz`, 942.6 MB, 10,918 verified files: the
+published 0.0.9.0 data overlaid with this release's newer tables, keeping the newer published RNA-seq snapshot).
+Publish workflow run 42490144366: version, build (release checks, wheel checks, installed-wheel smoke test with the
+data archive and the expression smoke), PyPI publish and release attachment all succeeded.
+
+On the way: the smoke test of the optional data timed out twice among 574 parts, fixed by retry-and-resume in
+`data_components` (a 404 still fails at once); the first data asset overlaid an older repository RNA-seq snapshot
+onto the newer published one and dropped two studies (caught by the release smoke test), rebuilt with "newer file
+wins". `main` now equals the release commit.
