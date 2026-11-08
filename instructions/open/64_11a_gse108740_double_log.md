@@ -1,6 +1,6 @@
 # 64.11a · Take the GSE108740 expression log only once
 
-Status: OPEN — 60%, 2026-11-07. Scale confirmed from GEO; Einar chose fix and rebuild; table and map fixed, track record/claims/calibration rebuild next. Registered from 64.11 (units curation).
+Status: DONE — 100%, 2026-11-08. Table, map, track record, claims, Tg frozen functional recoveries and Tg calibration rebuilt on the corrected expression columns. Built; Einar's review pending -- reopen on his feedback. Registered from 64.11 (units curation).
 
 Parent: [64 · Information space and inference atlas](64_information_space_and_inference_atlas.md).
 
@@ -15,10 +15,10 @@ values, MAE/RMSE, value-strategy calibration and any comparison with other expre
 
 - [x] The scale of the GSE108740 series is confirmed from GEO / the paper (log2 FPKM, or log2(FPKM + 1)).
 - [x] `build_graph.py` takes the log once (or not at all) for these summaries; `units.CURATED` updated to match.
-- [ ] The shipped table, value-strategy calibration and the track record entries that use these columns are
+- [x] The shipped table, value-strategy calibration and the track record entries that use these columns are
       rebuilt (`precompute_track_record` reuses everything not depending on the node table only when the table is
       unchanged, so this is a full Tg rebuild), and the change is recorded in the CHANGELOG.
-- [ ] The result is committed and pushed to nightly.
+- [x] The result is committed and pushed to nightly.
 
 ## Evidence (2026-11-07)
 
@@ -48,3 +48,22 @@ expr_max 0-14.0; gene order nearly unchanged (Spearman with the old values 0.999
 
 Still to do: rebuild the Toxoplasma track record and claims (their features include these columns), refresh the
 value-strategy calibration for Toxoplasma, CHANGELOG entry.
+
+## Rebuilt (2026-11-07/08)
+
+- **Track record (Tg):** rebuilt with `build_track_record.py --organism Tg --workers 4` and merged with the
+  unchanged Pf rows (1,038,372 rows). Accuracy per label moves by at most 0.002 -- expected, since the fix keeps
+  each gene's rank.
+- **Claims:** rebuilt from the new record: 19,798 (was 19,641).
+- **Frozen functional recoveries (Tg):** bound to the old node bytes, so refused; re-run on fresh splits (Einar:
+  "Re-run on a fresh split") -- EC FN-EC-01 seed 24 (184 test genes, native replay exact) and Pfam seed 20261107
+  (686 test genes, 317 with training-unsupported profiles); Pf entries unchanged
+  (`scripts/replace_tg_functional_results.py`).
+- **Calibration:** a fresh Tg sweep (4,275 runs, `results/calibration_2026-11-07/`) published together with the
+  unchanged Pf runs of the shipped 2026-09-26b sweep (Pf calibration identical to before). Tg changes: conjunctions
+  default skill 0.49 -> 0.41 (still reliable); condition_shift and map_neighbours graded "works when tuned" (were
+  "weak"); everything else within 0.03. The sweep cannot separate the expression fix from strategy code changes
+  since 2026-09-26.
+- **Slot table:** expr_max now covers the 7,739 GSE108740 genes (it used to reach 8,131 by mixing other series).
+- The published data asset (0.0.9.0) still carries the old table; the next release publishes the corrected one
+  (64.40).

@@ -141,7 +141,7 @@ checks add elapsed time; budget them after pilot measurements.
 | [64.09](../done/64_09_scorecard_aggregation.md) | done | 0 h | Make all scorecard levels use the same records | 64.04, 64.06, 64.08 |
 | [64.10](../done/64_10_label_benchmark_records.md) | done | 6–12 h | Complete the categorical-label benchmark records | 64.05, 64.06, 64.07, 64.08, 64.09 |
 | [64.11](../done/64_11_value_benchmark_records.md) | done | 6–10 h | Keep held-out numeric predictions | 64.05, 64.06, 64.07, 64.08, 64.09 |
-| [64.11a](64_11a_gse108740_double_log.md) | 25% | 2–4 h | Take the GSE108740 expression log only once | 64.11 |
+| [64.11a](../done/64_11a_gse108740_double_log.md) | done | 2–4 h | Take the GSE108740 expression log only once | 64.11 |
 | [64.12](../done/64_12_gene_ranking_benchmarks.md) | done | 6–10 h | Test gene rankings and set retrieval | 64.05, 64.06, 64.07, 64.08, 64.09 |
 | [64.13](../done/64_13_relationship_benchmarks.md) | done | 6–12 h | Test relationship and link inference | 64.05, 64.06, 64.07, 64.08, 64.09 |
 | [64.14](../done/64_14_cluster_benchmarks.md) | done | 6–10 h | Test map and module recovery | 64.05, 64.06, 64.07, 64.08, 64.09 |
@@ -170,7 +170,7 @@ checks add elapsed time; budget them after pilot measurements.
 | [64.37](../done/64_37_imported_screen_context.md) | done | 4–8 h | Make user data reach the same inference flow | 64.03, 64.04, 64.05, 64.08, 64.23, 64.25, 64.30 |
 | [64.38](../done/64_38_prospective_frozen_tests.md) | done | 6–10 h | Freeze predictions and score new independent truth | 64.03, 64.04, 64.05, 64.08, 64.16, 64.32, 64.34 |
 | [64.39](../done/64_39_reproducible_exports.md) | done | 4–8 h | Export the evidence and inference trail | 64.03, 64.08, 64.17, 64.30, 64.31, 64.35 |
-| [64.40](64_40_release_goal_acceptance.md) | 70% | 6–10 h + checks | Verify both goals end to end and release | 64.18, 64.19, 64.20, 64.21, 64.22, 64.23, 64.24, 64.26, 64.27, 64.28, 64.29, 64.30, 64.31, 64.33, 64.35, 64.36, 64.37, 64.38, 64.39 |
+| [64.40](64_40_release_goal_acceptance.md) | 90% | 6–10 h + checks | Verify both goals end to end and release | 64.18, 64.19, 64.20, 64.21, 64.22, 64.23, 64.24, 64.26, 64.27, 64.28, 64.29, 64.30, 64.31, 64.33, 64.35, 64.36, 64.37, 64.38, 64.39 |
 
 ## Every current strategy's ground-truth contract
 

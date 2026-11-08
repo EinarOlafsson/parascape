@@ -108,23 +108,19 @@ rather than the model, where nobody sees it.
 
 <!-- calibration:start -->
 
-Measured 2026-09-26 over 7,640 self-tests. **Skill** puts every metric on one scale: 0 is the same
-procedure on shuffled data, 1 is perfect. *Tuned* is the best setting chosen on seeds 1-3 and reported
-on seeds 4-5, so it is not the luckiest of many settings. Intervals are 95%, by bootstrap over
-held-out targets and runs. [Every number, per target and per setting](docs/calibration.md).
+Latest publication 2026-11-08 (7,640 self-tests in this sweep). Tables retain earlier results for unswept strategies and species, with each entry's sweep recorded in the calibration file. Each strategy's self-test runs over a grid of its settings, several held-out known labels and five seeds. **Skill** puts every metric on one scale -- 0 is the same procedure on shuffled data, 1 is perfect. *Tuned* is the best setting chosen on seeds 1-3 and reported on seeds 4-5, so it is not the luckiest of many settings. Intervals are 95%, by bootstrap over held-out targets and runs. [Every number, per target and per setting](docs/calibration.md).
 
-***T. gondii*** -- 30 reliable, 8 weak, 1 untestable
+**Plasmodium falciparum** -- 26 reliable, 9 weak, 2 untestable, 2 works when tuned
 
-***P. falciparum*** -- 26 reliable, 9 weak, 2 untestable, 2 works when tuned
+**Toxoplasma gondii** -- 30 reliable, 6 weak, 2 works when tuned, 1 untestable
 
 <!-- calibration:end -->
 
 <!-- scorecards:start -->
 
-Skill says how far above chance a strategy is; the scorecard says in what way. Each strategy performs
-one of six tasks, and every strategy performing a task reports that task's metrics in the same order,
-on the same hidden genes as its verdict. [Every metric explained, the techniques behind each strategy,
-*P. falciparum* and the tuned settings](docs/scorecards.md).
+### Scorecards: the same metrics for every strategy doing the same task
+
+Skill says how far above chance a strategy is; the scorecard says in what way. Each strategy performs one of six tasks, and every strategy performing a task reports that task's metrics, in this order, on the same hidden genes as its verdict: mean [95% CI] over held-out labels and seeds, at the default settings, on *T. gondii*. [Every metric explained, the techniques behind each strategy, *P. falciparum* and the tuned settings](docs/scorecards.md).
 
 <!-- scorecards:end -->
 
