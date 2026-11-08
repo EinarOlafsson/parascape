@@ -1,0 +1,12 @@
+dataset_id	accession	pmid	doi	title	status
+morc_depletion	PXD058095	40389644	10.1038/s44321-025-00252-0	Identification of immunogenic markers in Toxoplasma gondii bradyzoites	linked by PRIDE; title is about bradyzoite markers, consistent with MORC depletion inducing bradyzoite genes -- confirm the RNA-seq workbook is this paper's
+proteome_pru	PXD043808	38278808	10.1038/s41467-024-44967-z	The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma sexual commitment	linked by PRIDE (first of two projects)
+proteome_pru	PXD065585	40823841	10.1128/mbio.00052-25	AP2X-1 is a negative regulator of Toxoplasma gondii sexual commitment	linked by PRIDE (second project)
+ipms_baits	PXD043808	38278808	10.1038/s41467-024-44967-z	AP2XI-2 ...	linked by PRIDE; same projects as proteome_pru
+pride_acetylation	PXD079431	42778561	10.1038/s41467-026-77153-4	Proteomic characterization of TgGCN5b and TgGNAT	linked by PRIDE
+pride_proximity	PXD059579	41193440	10.1038/s41467-025-64701-7	GSK3 proxisome of Toxoplasma gondii	linked by PRIDE
+pride_glycosylation	PXD004426	27663739		O-fucosylated glycoproteins of Toxoplasma gondii	linked by PRIDE
+pride_nitrosylation	PXD046083	37959749	10.3390/molecules28217329	Proteome-wide cysteine S-nitrosylation in Toxoplasma	linked by PRIDE
+pride_lactylation	PXD031526	35610722	10.1186/s13071-022-05315-6	Lysine lactylation in Toxoplasma	linked by PRIDE
+pride_ubiquitination	PXD042937		10.1128/MSPHERE.00511-23	p97/VCP targets Toxoplasma vacuoles for parasite restriction	linked by PRIDE by DOI only (no PMID recorded there); check the dataset is the ubiquitination one
+pf_phosphoproteome_meta	PXD046874	39475123	10.1021/acs.jproteome.4c00418	Phosphorylation in the Plasmodium falciparum proteome: a meta-analysis	linked by PRIDE

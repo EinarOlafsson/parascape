@@ -147,5 +147,14 @@ mapping and best-source selection remain unresolved; 65.04 stays4%.
   the human gene space replays every GTEx value from source text.
 * Batches 1-2 were closed under instruction 66 (rhoptry screen supplement, RBC deposit).
 
-Still open: batch 4 (the review queue: origin-paper verification for all 162, the 25 unresolved publications) and
+* **Batch 4, unresolved publications (2026-11-08, part):** of the 25, 10 sources now have their publication from
+  the PRIDE project reference (`results/dataset_selection_2026_11_08/publication_resolution.tsv`; queue columns
+  `publication_status`/`publication_id` updated). Two need a check before acceptance: morc_depletion (PXD058095 is
+  linked to a bradyzoite-marker paper, PMID 40389644 -- confirm the RNA-seq workbook is from it) and
+  pride_ubiquitination (PXD042937 linked by DOI only, 10.1128/MSPHERE.00511-23). Four corpus sources
+  (bioid/ipms/pulldown corpora) are reclassified: many publications, cited per row. 11 remain unresolved: lopit_cpar,
+  phosphosites, five ToxoDB dataset pages, plasmodb_pf3d7_expression, pf_febrile_stress, pf_sir2_perturbation,
+  antisense_level -- the ToxoDB/PlasmoDB dataset pages sit behind the VEuPathDB login (see 38).
+
+Still open: batch 4 (origin-paper verification for all 162; the 11 unresolved and 2 to confirm above) and
 batch 5 (keep/add/replace decisions per comparable alternative).
