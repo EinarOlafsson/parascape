@@ -157,3 +157,29 @@ def test_cached_part_link_is_refused_without_touching_target(tmp_path, monkeypat
     with pytest.raises(ValueError, match='Unsafe cached'):
         C.download(component, tmp_path)
     assert user_file.read_bytes() == payloads[component['parts'][0]['url']]
+
+
+def test_a_stalled_part_is_retried_and_a_missing_one_is_not(monkeypatch, tmp_path):
+    """Hundreds of small release parts: one stalled read must not end the install; a 404 must end it at once."""
+    import urllib.error
+    from parascape import data_components as DC
+    monkeypatch.setattr(DC.time if hasattr(DC, "time") else __import__("time"), "sleep", lambda s: None)
+    calls = []
+
+    def flaky(part, cache, progress, cancelled):
+        calls.append(1)
+        if len(calls) < 3:
+            raise TimeoutError("The read operation timed out")
+        return "done"
+    monkeypatch.setattr(DC, "_download_part_once", flaky)
+    assert DC._download_part({}, tmp_path, None, None) == "done" and len(calls) == 3
+
+    def missing(part, cache, progress, cancelled):
+        calls.append(1)
+        raise urllib.error.HTTPError("u", 404, "Not Found", {}, None)
+    calls.clear()
+    monkeypatch.setattr(DC, "_download_part_once", missing)
+    import pytest
+    with pytest.raises(urllib.error.HTTPError):
+        DC._download_part({}, tmp_path, None, None)
+    assert len(calls) == 1

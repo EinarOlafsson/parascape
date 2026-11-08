@@ -17,6 +17,7 @@ import shutil
 import tarfile
 import tempfile
 from urllib.parse import urlsplit
+import urllib.error
 import urllib.request
 import uuid
 
@@ -153,7 +154,27 @@ def _lock(root):
         yield
 
 
+#: Attempts per part, and the pause before each retry. A stalled connection to the release host is common across
+#: hundreds of small parts; the partial file is kept, so a retry resumes where the stalled read stopped.
+ATTEMPTS = 4
+RETRY_PAUSE_SECONDS = (5, 15, 45)
+
+
 def _download_part(part, cache, progress, cancelled):
+    """Fetch one verified part, retrying a stalled or dropped connection and resuming the partial file."""
+    import time
+    for attempt in range(ATTEMPTS):
+        try:
+            return _download_part_once(part, cache, progress, cancelled)
+        except (TimeoutError, ConnectionError, urllib.error.URLError) as error:
+            client_error = isinstance(error, urllib.error.HTTPError) and error.code < 500
+            if client_error or attempt == ATTEMPTS - 1:
+                raise
+            _checkpoint(cancelled)
+            time.sleep(RETRY_PAUSE_SECONDS[min(attempt, len(RETRY_PAUSE_SECONDS) - 1)])
+
+
+def _download_part_once(part, cache, progress, cancelled):
     target = cache / part['sha256']
     if target.is_symlink():
         raise ValueError('Unsafe cached optional-data file')

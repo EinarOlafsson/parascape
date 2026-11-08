@@ -1,6 +1,6 @@
 # 64 · Explore the evidence space and inspect every inference, with ground-truth scorecards
 
-Status: OPEN — 13/40 actions complete (32.5%), 2026-10-08. Shared scorecards and dataset/gene/label browsers accepted; categorical adapters remain.
+Status: OPEN — 39/41 actions complete (95.1%), 2026-11-08. Every sub-item done except 64.40 (release, in progress 2026-11-08 under Einar's go-ahead).
 
 This is the current execution plan under the user's clarified goals. Instructions 53, 60, 62 and 63
 retain their completed work, design decisions and evidence; this plan controls their integration order.
