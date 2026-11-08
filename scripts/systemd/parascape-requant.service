@@ -14,13 +14,13 @@ WorkingDirectory=/media/carruthers/mnt3/claude/repo/starplast
 Environment=TZ=America/Detroit
 Environment=PARASCAPE_SCRATCH=/media/carruthers/mnt1/parascape_omics_scratch/requant
 Environment=PARASCAPE_PLAN=/home/carruthers/.cache/parascape-downloads/automation/priority-plan.jsonl
-Environment=PARASCAPE_THREADS=12
+Environment=PARASCAPE_THREADS=8
 Environment=PATH=/home/carruthers/anaconda3/envs/parascape-quant/bin:/usr/bin:/bin
 ExecStart=/home/carruthers/anaconda3/envs/starplast/bin/python -u /home/carruthers/.local/share/parascape-download-worker/omics_quant.py requantify
 CPUAffinity=0-23
 Nice=19
 IOSchedulingClass=idle
-MemoryMax=48G
+MemoryMax=24G
 Restart=on-failure
 RestartSec=300
 

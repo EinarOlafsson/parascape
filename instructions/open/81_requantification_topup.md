@@ -27,3 +27,12 @@ downloaded. The 40 zero-parasite runs come first, because they currently contrib
 ## Gate
 The 40 runs produce non-zero parasite mapping; every re-quantified run agrees with its previous values within
 the expected tolerance, and any that does not is reported rather than overwritten.
+
+## Installed (2026-11-08, Einar: "Yes, install it")
+
+`parascape-requant.service` is installed as a user unit and running (`systemctl --user status parascape-requant`),
+with MemoryMax lowered to 24G and 8 threads (the shared machine RAM rules: long jobs together under ~80 GB); the
+RAM ledger has its line. As designed it waits for the new downloads first: at start, "1313 new runs still to
+quantify". It re-checks hourly, then re-quantifies beside each verified result (the 40 zero-parasite runs first) and
+writes `requant/compare.json`; nothing is overwritten. The gate (non-zero parasite mapping for the 40, every run
+agreeing within tolerance or reported) is checked when it has run.
