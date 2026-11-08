@@ -9,6 +9,7 @@ One file per task. This index is the status table; the files carry the reasoning
 
 | # | Task |
 |---|---|
+| 68 | [Broaden Discoveries beyond localization](done/68_discoveries_function_coverage.md) — **done 2026-11-08**: functional targets, benchmarks and 79,289 precomputed functional claims (EC major classes, graded; none fills) · built; Einar's review pending -- reopen on his feedback |
 | 74 | [Navigator and home](done/74_navigator_and_home.md) — **done 2026-11-08**: phases delivered by 84-97; Infer step 3 lets you answer with any harness method, graded on held-out genes · built; Einar's review pending -- reopen on his feedback |
 | 70 | [Inference scoreboard and navigator](done/70_inference_scoreboard_and_navigator.md) — **done 2026-11-08**: every action delivered; Tools > Question scoreboard shows all 198 questions scored on held-out genes · built; Einar's review pending -- reopen on his feedback |
 | 90 | [Release 0.0.10.0 under the new licence](done/90_release_under_the_new_licence.md) — **done 2026-11-08**: approved by Einar; 0.0.10.0 on PyPI (Python 3.12+) and GitHub with the corrected data asset |
@@ -117,7 +118,6 @@ whenever an action is completed, replacing its percentage with a green tick.
 | # | Task |
 |---|---|
 | 67.01 | [Keep native work continuation active and log actual stops](done/67_01_work_continuation_watchdog.md) — timer active, 12 historical boundaries/4 restrictions logged; 403 checks passed |
-| 68 | [Broaden Discoveries across functions and all available labels](open/68_discoveries_function_coverage.md) — 68.01 browser complete; 68.02 30%: pinned names, frozen EC recovery and real scorecards; independent activity/calibration/deployment still pending. Include both rows in full reports (51 total) |
 | 66.04 | [Correct ambiguous host projections and preserve all original gene evidence](done/66_04_host_symbol_projections.md) — 39 projections withheld, 20,010 gene rows retained; 575 follow-up checks passed |
 | 82 | [Fingerprints from a literature meta-analysis: gene-set signatures](open/82_literature_set_fingerprints.md) — **v1: fingerprints recover members; host-facing vs resident not separable** · the compartment ladder; rung 4 is the hard-negative set whose absence capped host-facing at 0.822 |
 | 81 | [Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples](open/81_requantification_topup.md) — **ready; waits on downloads and on Einar installing the service** · queued behind the new downloads; 40 zero-parasite runs first · 2026-11-08: service installed on Einar go-ahead; waits for the 1,313 new runs |

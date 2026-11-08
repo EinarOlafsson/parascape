@@ -1,5 +1,7 @@
 # 68 · Broaden Discoveries beyond localization
 
+**Status: DONE 2026-11-08.** Built; Einar's review pending -- reopen on his feedback.
+
 User priority, 2026-10-08: Discoveries should span all available labels, with
 particular emphasis on function. Localization was the first developed inference
 path; the existing menu uses only nonempty generated claims and default filters
@@ -11,7 +13,7 @@ inference/benchmark coverage clearly.
 | Item | Percent done | Time left | Description |
 |---|---:|---|---|
 | [68.01](../done/68_01_discoveries_label_browser.md) | ✅ | 0 h | Browse all available labels and functional classes, memberships and inference/test coverage in Discoveries |
-| 68.02 | 40% | 6–12 h + compute | Add functional ground-truth targets, strategy benchmarks and precomputed functional claims |
+| 68.02 | ✅ | 0 h | Add functional ground-truth targets, strategy benchmarks and precomputed functional claims (done 2026-11-08) |
 
 68.01 is bounded to current categorical annotations/flags plus multi-valued InterPro,
 Pfam and EC fields, both existing organisms, and existing claims/recipes. Search labels
@@ -428,3 +430,24 @@ p 0.040); **kNN is not better than the majority call** (27 against 30, p 0.79). 
 0.536, and an oracle picking the right one per gene reaches 66 of 152 against the forest's 59: kNN adds little the
 forest lacks. Limit: both read the same source features, so shared errors partly reflect shared inputs; nothing
 here is biological accuracy. Descriptive only: no fit, no tuning.
+
+## 68.02 completed (2026-11-08): precomputed functional claims
+
+Targets and benchmarks were already in place: EC major-class profile recovery for Toxoplasma (FN-EC-01, re-run on a
+fresh split this week) and Plasmodium (kNN and forest), the Pfam complete-profile recovery, paired method agreement,
+and the two function questions on the question scoreboard (instruction 73). The missing third part is now built:
+
+`scripts/build_functional_claims_notebook.py` -> `notebooks/functional_claims_2026_11_08.ipynb`,
+`results/functional_claims_2026_11_08/`, shipped as `parascape/data/functional_claims.parquet`. For each parasite and
+each EC major class with >= 50 annotated genes, "is an annotated gene in this class?" is graded through the harness and
+deployed on every gene with no EC annotation. Held out as evidence: function and domain columns and the EC, InterPro,
+Pfam and EC-by-orthology families (EC numbers are assigned from those, so they would restate the answer).
+
+* **Grades (frozen-test AUC):** Tg -- oxidoreductase 0.73, transferase 0.72, hydrolase 0.67, lyase 0.62, isomerase
+  0.50 (chance), ligase 0.88, translocase 0.84; Pf -- 0.74, 0.60, 0.79, 0.73, 0.54, 0.76, 0.86.
+* **79,289 claims** (unannotated gene x class), 490 called at the calibrated threshold, **0 fills**: no class reaches
+  the 0.90 lower bound, so every functional claim is a ranking with its class grade, never a fact.
+* The evidence that carries the better classes includes structural similarity (Foldseek) and proteomics; structural
+  similarity is not EC assignment but is close to homology, stated as a limit.
+
+68 is complete: 68.01 (browse all labels and functions) and 68.02 (targets, benchmarks, precomputed claims).

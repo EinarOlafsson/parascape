@@ -1,0 +1,15 @@
+organism	ec_class	name	genes	called	fills
+Pf	1	oxidoreductase	4500	46	0
+Pf	2	transferase	4500	238	0
+Pf	3	hydrolase	4500	8	0
+Pf	4	lyase	4500	0	0
+Pf	5	isomerase	4500	4	0
+Pf	6	ligase	4500	4	0
+Pf	7	translocase	4500	6	0
+Tg	1	oxidoreductase	6827	4	0
+Tg	2	transferase	6827	146	0
+Tg	3	hydrolase	6827	27	0
+Tg	4	lyase	6827	2	0
+Tg	5	isomerase	6827	0	0
+Tg	6	ligase	6827	3	0
+Tg	7	translocase	6827	2	0

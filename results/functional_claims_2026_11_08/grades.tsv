@@ -1,0 +1,15 @@
+organism	ec_class	name	annotated	positives	frozen_auc	average_precision	share	precision_lower90	may_fill	top_evidence
+Tg	1	oxidoreductase	1313	166	0.7310429447852761	0.35577638039391957	0.12642802741812642		False	gse206344, iron_depletion_proteome, unregistered
+Tg	2	transferase	1313	547	0.7248362120309708	0.639285376752083	0.4166031987814166	0.6812920690579612	False	foldseek_struct, crispr_serum_restriction, local_af3
+Tg	3	hydrolase	1313	420	0.6669761273209549	0.5747594744395464	0.31987814166031986		False	unregistered, foldseek_struct, gse19092
+Tg	4	lyase	1313	67	0.6209553158705701	0.10512504120235132	0.051028179741051026		False	crispr_invivo_composite, gse108740, gse168465
+Tg	5	isomerase	1313	68	0.4958241758241758	0.10845808327336523	0.05178979436405179		False	gse245775, toxodb_codon_usage, crispr_glucose_limitation
+Tg	6	ligase	1313	92	0.878314393939394	0.5574880231253408	0.07006854531607007	0.3162277660168379	False	proteome_total, oocyst_itraq, gse51780
+Tg	7	translocase	1313	75	0.8448168839230291	0.5833538465891407	0.05712109672505712		False	unregistered, pride_acetylation, foldseek_struct
+Pf	1	oxidoreductase	1220	108	0.7448275862068966	0.27709079277609977	0.08852459016393442		False	plasmodb_pf3d7_expression, pf_mrna_dynamics, pf_foldseek_struct
+Pf	2	transferase	1220	458	0.6010756919847828	0.49422624038733687	0.37540983606557377	0.4017613726941901	False	pf_foldseek_struct, pf_alphafold_confidence, plasmodb_pf3d7_attributes
+Pf	3	hydrolase	1220	469	0.7891808712121212	0.7662291881243651	0.3844262295081967		False	pf_alphafold_confidence, pf_hsp90_chemoproteome, pf_riboseq
+Pf	4	lyase	1220	62	0.7320419693301049	0.12946186104553814	0.05081967213114754		False	pf_pb_fertility_transfer, pf_riboseq, pf_foldseek_struct
+Pf	5	isomerase	1220	68	0.5407586763518967	0.04393260030386912	0.05573770491803279	0.0	False	pf_spatial_proteome, pf_riboseq, pf_febrile_stress
+Pf	6	ligase	1220	123	0.7644970414201183	0.547827772735741	0.10081967213114754	0.5623413251903491	False	pf_latency_transcriptome, plasmodb_pf3d7_piggybac, plasmodb_pf3d7_attributes
+Pf	7	translocase	1220	53	0.8627925746569814	0.7901008679333803	0.04344262295081967		False	plasmodb_pf3d7_attributes, pf_hsp90_chemoproteome, pf_codon_usage
