@@ -535,3 +535,31 @@ is expensive. Expect that, and never report an AUC as if it were a fill rate.
 Anything that needs their scale. They had millions of labelled people; we have 65 host-facing positives and 242
 function-labelled genes. End-to-end learned embeddings and deep nets belong to the first regime, which is why
 frozen features plus simple models remain the right choice here (stage 2 of the plan).
+
+## 2026-11-08: the first filled cells
+
+`harness.deploy` applies a question deployed fit (train + tune, calibrated on the calibration partition) to genes
+with no label: probability, calibrated probability, `called` (yes and calibrated >= the threshold chosen on train +
+tune) and `fills` (called, and the question may fill). `scripts/build_information_map_fills_notebook.py` ->
+`notebooks/information_map_fills_2026_11_08.ipynb`, `results/information_map_fills_2026_11_08/`.
+
+From the question scoreboard (instruction 73): the questions whose frozen-test lower bound on precision reached 0.90,
+minus three whose labels are bookkeeping (`fit_density_dependence_log10padj`, `crispr_gra17_candidate`, `n_holes`),
+re-run with the identical strategy and split (logged as repeats) and deployed. **Applicability rule added:** if the
+genes without a label would be filled far more often than the label occurs (> 3x its prevalence), they are a
+different population (missing not at random) and the held-out precision does not carry over -- no fills, reason
+recorded.
+
+* **28 cells filled**: 19 genes "among the largest 20 % of changes in acute whole-brain infection" (in vivo
+  transcriptome; 477 unmeasured genes, fill rate 4 %, frozen lower bound 0.916) and 9 proteins "in the nucleus"
+  (hyperLOPIT unified; 4,313 unassigned, fill rate 0.2 %, lower bound 0.926).
+* **Withheld:** the ribosome-profiling change question would fill 254 of its 260 unmeasured genes (98 % against a 24 %
+  prevalence) -- not applicable, recorded; the macrophage-expression question has no unmeasured gene.
+* In the published map (`parascape/data/information_map/`) each fill sits in its own `filled_<question>` column
+  (observed columns untouched), probability = calibrated probability, source `filled:hist_gbt@2026-11-08 <question>`,
+  described "FILLED (predicted, never observed)" (`column_descriptions.json`, read by `load_published`); evidence rows
+  in the same form. The panel banner now says 28 cells are predicted. Filled cells are never training labels.
+
+Tests: `tests/test_harness.py::test_deploy_applies_the_deployed_fit_and_fills_only_when_the_question_may`,
+`tests/test_information_map_panel.py::test_the_shipped_release_loads_if_it_is_present` (every predicted cell is a
+fill, in a described filled column, with a probability).

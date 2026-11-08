@@ -575,6 +575,11 @@ def load_published(root=None, tier2=True) -> PublishedMap:
     for name in ('probability', 'source'):
         if name in loaded:
             loaded[name].index = loaded[name].index.astype(str)
+    # Filled columns (instruction 72) carry their question in words beside the release.
+    described = found / 'column_descriptions.json'
+    if described.is_file():
+        import json
+        loaded.setdefault('_descriptions', {}).update(json.loads(described.read_text()))
     return PublishedMap(root=found, values=values,
                         probability=loaded.get('probability', pd.DataFrame()),
                         source=loaded.get('source', pd.DataFrame()),

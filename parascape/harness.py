@@ -634,6 +634,9 @@ class HarnessResult:
     guard_calls: tuple = ()
     refusal: str = ""
     rows: pd.DataFrame = field(default_factory=pd.DataFrame)
+    #: The deployed fit (train + tune), the columns it reads and the calibration curve fitted on the calibration
+    #: partition: what `deploy` applies to genes with no label. Not part of the serialised record.
+    deployed: dict = field(default_factory=dict, repr=False)
 
     @property
     def dominance(self) -> dict:
@@ -677,6 +680,25 @@ class HarnessResult:
                 "calibration": self.calibration, "flags": list(self.flags),
                 "guard_calls": [list(call) for call in self.guard_calls],
                 "refusal": self.refusal, "may_fill": self.may_fill}
+
+
+def deploy(result: HarnessResult, features: pd.DataFrame) -> pd.DataFrame:
+    """Apply the deployed fit to genes with no label: probability, calibrated probability, and the call.
+
+    `called` is True only where the answer is yes AND the calibrated probability reaches the threshold chosen on
+    train + tune -- the same rule that made the frozen-test precision -- and `fills` is True only where, in
+    addition, the question may fill (`may_fill`). Every other row ranks a gene; none of them is a fact.
+    """
+    d = result.deployed or {}
+    if not d:
+        raise ValueError("this result has no deployed fit")
+    probability = pd.Series(d["model"].predict_proba(features[d["columns"]])[:, 1], index=features.index)
+    yes = probability >= 0.5
+    support = np.where(yes, probability, 1.0 - probability)
+    calibrated = pd.Series(_apply(d["curve"], support), index=features.index)
+    called = yes & (calibrated >= result.threshold)
+    return pd.DataFrame({"probability": probability, "calibrated": calibrated, "called": called,
+                         "fills": called & bool(result.may_fill)})
 
 
 def may_fill(result: HarnessResult) -> bool:
@@ -870,7 +892,8 @@ def run_question(question, *, labels, features, families, groups, strategies,
                          chosen_per_outer_fold=tuple(chosen), calibration=calibration,
                          baselines=baselines, importance=importance, flags=tuple(flags),
                          guard_calls=guard.calls, refusal=refusal,
-                         rows=pd.concat(rows, ignore_index=True))
+                         rows=pd.concat(rows, ignore_index=True),
+                         deployed={"model": model, "columns": list(used), "curve": curve})
 
 
 # --- plain language -------------------------------------------------------------------------------

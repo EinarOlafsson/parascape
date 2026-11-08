@@ -1,0 +1,4 @@
+{
+ "filled_invivo_WholeBrain_Acute_1_change": "FILLED (predicted, never observed): Does the gene respond in invivo WholeBrain Acute 1? -- yes when among the largest 20 % of changes (|invivo_WholeBrain_Acute_1| >= 5.04)",
+ "filled_lopit_unified_nucleus": "FILLED (predicted, never observed): Where is the protein (lopit unified)? -- yes when lopit_unified = nucleus"
+}

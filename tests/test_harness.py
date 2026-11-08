@@ -297,3 +297,15 @@ def test_per_gene_rows_reproduce_every_partition_number(tmp_path):
         assert int(rows["called"].sum()) == block["calls"]
         assert int((rows["called"] & rows["correct"]).sum()) == block["correct"]
         assert LM.overall(rows)["accuracy_all"] == pytest.approx(block["accuracy"])
+
+
+def test_deploy_applies_the_deployed_fit_and_fills_only_when_the_question_may(tmp_path):
+    """Instruction 72: a gap is filled with the calibrated probability, and only where the question may fill."""
+    labels, features, families, groups = _data()
+    r = _run(tmp_path)
+    out = H.deploy(r, features.iloc[:50])
+    assert list(out.columns) == ["probability", "calibrated", "called", "fills"]
+    assert out["calibrated"].between(0, 1).all()
+    assert (out["fills"] <= out["called"]).all()
+    if not r.may_fill:
+        assert not out["fills"].any()

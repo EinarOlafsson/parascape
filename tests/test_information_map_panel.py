@@ -118,12 +118,23 @@ def test_a_filled_cell_would_turn_the_banner_round(release):
 
 
 def test_the_shipped_release_loads_if_it_is_present():
-    """The real 2026-11-04 release, when the repository holds it: no predicted cell, and genes to show."""
+    """The real release, when the repository holds it: genes to show, and every predicted cell a FILL.
+
+    Since 2026-11-08 the release holds its first filled cells (instruction 72): each sits in a `filled_` column
+    described as filled, carries a `filled:` source and its calibrated probability, and observed columns hold
+    no predicted cell."""
     published = IM.load_published()
     if published.values.empty:
         pytest.skip('no published information map in this checkout')
-    assert published.predicted_cells().empty
     assert len(published.genes) > 1000 and 'host_facing' in published.columns(1)
+    predicted = published.predicted_cells()
+    assert predicted['column'].str.startswith('filled_').all()
+    assert predicted['source_tier'].str.startswith('filled:').all()
+    described = published.catalogue.set_index('column')['description']
+    assert all(described[c].startswith('FILLED') for c in set(predicted['column']))
+    assert all(0 <= published.probability.at[g, c] <= 1 for g, c in zip(predicted['gene_id'], predicted['column']))
+    if len(predicted):
+        assert 'predicted' in published.banner()
 
 
 # --------------------------------------------------------------------------- the gene view
