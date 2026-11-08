@@ -1,6 +1,6 @@
 # 74 · A navigator and a home screen: organise ParaScape by what the user wants, not by what it contains
 
-**Status: open (requested 2026-11-05).** Implements the navigator half of instruction 70 and supersedes its
+**Status: DONE 2026-11-08.** Phases delivered by items 84-97 (navigator, module shell, network, AI box, retired home) and Infer step 3 (choose the method). Built; Einar's review pending -- reopen on his feedback. (Requested 2026-11-05.) Implements the navigator half of instruction 70 and supersedes its
 sketch. Related: 73 (the question matrix the navigator must expose).
 
 ## The request (Einar, 2026-11-05)
@@ -472,3 +472,20 @@ of the panel (answer, check, methods text) goes through `AnalysisPanel._question
 all of them. Rendered on the real window; test in `tests/test_module_shell.py`. This also closes instruction
 73's open point "the data picker does not yet show the excluded-by-circularity set". Step 3 (choose the
 strategy) remains: the map questions run one method, the recipe.
+
+## 2026-11-08: Infer step 3, choose the method (Einar: "Add harness methods")
+
+The Infer module has a **How to answer** setting (after "What the answer may use"): map groups (the recipe, as
+before) or any harness method -- boosted trees, logistic regression and the six borrowed strategies
+(`parascape/harness_answer.py`, `METHODS`). A harness method answers each yes/no form of the question label (the
+same rule as the question catalogue: extreme 20 % of a value, each class with >= 50 genes against the rest; labels
+such as "unassigned" are the genes to answer, not a class), is graded through `harness.run_question` on held-out
+genes (frozen test touched once and logged), then fitted on all labelled genes to rank the unlabelled ones. "How far
+to trust it" shows the grade per answer (held-out AUC against 0.5, average precision against the share of yes, may
+fill); the answer table shows each ranked gene with its most likely answer. Same evidence as the recipe: closure and
+the user's left-out kinds apply. Example (the compartment_best question, boosted trees): held-out AUC 0.75-1.00 per
+class over 3,855 labelled genes, 4,285 unassigned genes ranked, none may fill.
+
+Tests: `tests/test_module_shell.py::test_the_infer_module_answers_with_a_chosen_method_and_shows_its_grade`;
+rendered on the real window. Phases 1-5 of this item are delivered by 84 (navigator), 85 (retired home), 86
+(module shell), 87/91 (network), 94 (assistant) and 93/95 (theme, dock).

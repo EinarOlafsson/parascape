@@ -72,6 +72,24 @@ class InferModule(QtCore.QObject):
         shell.add_setting("What the answer may use", uses)
         panel.question_choice.currentIndexChanged.connect(lambda *_: self.refresh_uses())
 
+        how = QtWidgets.QWidget(shell)
+        hl = QtWidgets.QVBoxLayout(how)
+        hl.setContentsMargins(6, 2, 6, 6)
+        from . import harness_answer as HA
+        self.method_choice = QtWidgets.QComboBox()
+        self.method_choice.addItem("Map groups (name genes in groups mostly one label)", "map")
+        for key, name in HA.METHODS.items():
+            self.method_choice.addItem(f"{name}, graded on held-out genes", key)
+        self.method_choice.setToolTip(TH.tip(
+            "How the question is answered. Map groups build the map from what the question may use and name "
+            "genes in groups that are mostly one label. Every other method answers each yes/no form of the "
+            "label, is graded on genes it never saw (a frozen test, touched once), then ranks the genes with "
+            "no label; a ranking whose grade does not reach the fill bar is never written as fact."))
+        solid_dropdown(self.method_choice)
+        hl.addWidget(self.method_choice)
+        hl.addWidget(_muted("Same question, same evidence; only the method changes."))
+        shell.add_setting("How to answer", how)
+
         mine = QtWidgets.QWidget(shell)
         ml = QtWidgets.QVBoxLayout(mine)
         ml.setContentsMargins(6, 2, 6, 6)
@@ -143,10 +161,10 @@ class InferModule(QtCore.QObject):
         shell.link_style(panel.question_report)
         shell.add_section("How far to trust it", panel.question_report, extent=180, stretch=1)
 
-        shell.add_action("Answer this question", panel.run_question, primary=True,
-                         tip="Build the map from what the question may use, group it, and name the "
-                             "unlabelled genes in groups that are mostly one label; the control is "
-                             "scored on the same groups.")
+        shell.add_action("Answer this question", self.answer_question, primary=True,
+                         tip="Answer with the chosen method: map groups name the unlabelled genes in "
+                             "groups that are mostly one label (the control scored on the same groups); "
+                             "any other method is graded on held-out genes, then ranks the unlabelled ones.")
         shell.add_action("Check what it may use", panel.check_question,
                          tip="Without building anything: which inputs the question may use, and "
                              "what was removed because it would restate the answer.")
@@ -169,6 +187,59 @@ class InferModule(QtCore.QObject):
         _replace_tab(panel, window)
         panel.show_question()
         self.refresh_uses()
+
+    # ------------------------------------------------------------------ how to answer
+    def method(self) -> str:
+        """The chosen method key: "map" or a harness model (`harness_answer.METHODS`)."""
+        return str(self.method_choice.currentData() or "map")
+
+    def answer_question(self) -> None:
+        """Answer the selected question with the chosen method (instruction 74, Infer step 3)."""
+        if self.method() == "map":
+            self.panel.run_question()
+            return
+        panel = self.panel
+        q = panel.current_question()
+        if q is None or panel.nodes is None:
+            return
+        recipe = panel._question_recipe(q)
+        model = self.method()
+        panel._start_table(panel.question_table, [])
+        panel.question_report.setPlainText("")
+        self._harness_result = None
+
+        def job(p):
+            """Grade the method on the question, then rank the unlabelled genes."""
+            from . import harness_answer as HA
+            return HA.answer(panel.nodes, recipe, model, log=p)
+
+        panel._run(job, self._harness_done, name=f"answer ({model}: {recipe.holdout})")
+
+    def _harness_done(self, result) -> None:
+        """Show the ranked genes and, above everything, how the method was graded."""
+        from . import harness_answer as HA
+        self._harness_result = result
+        panel = self.panel
+        if result.get("refusal"):
+            panel.question_report.setHtml(f"<b>no answer</b><br>{escape(result['refusal'])}")
+            return
+        grades, calls = result["grades"], result["calls"]
+        if len(calls):
+            best = calls.sort_values("probability", ascending=False).drop_duplicates("gene_id")
+            panel._fill(panel.question_table, best.head(500).round({"probability": 3}))
+        rows = "".join(
+            f"<tr><td>{escape(str(g.label))}</td><td align=right>{g.labelled:,}</td>"
+            f"<td align=right>{g.frozen_auc:.2f}</td><td align=right>{g.average_precision:.2f}</td>"
+            f"<td align=right>{g.share_of_yes:.0%}</td><td>{'yes' if g.may_fill else 'no'}</td></tr>"
+            for g in grades.itertuples(index=False))
+        fills = int(grades["may_fill"].sum()) if len(grades) else 0
+        panel.question_report.setHtml(
+            f"<b>{escape(HA.METHODS.get(self.method(), self.method()))}</b>, graded on genes it never saw "
+            f"(0.5 is chance). {fills} of {len(grades)} answers may fill the map; the others rank genes only."
+            "<table cellspacing=4><tr><th align=left>answer</th><th>labelled</th><th>held-out AUC</th>"
+            "<th>average precision</th><th>share of yes</th><th>may fill</th></tr>" + rows + "</table>")
+        self.answer_note.setText(f"{calls['gene_id'].nunique() if len(calls) else 0:,} unlabelled genes ranked; "
+                                 "each shows its most likely answer. Double-click a gene to read it.")
 
     # ------------------------------------------------------------------ what the answer may use
     def refresh_uses(self) -> None:

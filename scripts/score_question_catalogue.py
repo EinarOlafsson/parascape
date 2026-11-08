@@ -30,41 +30,9 @@ sys.path.insert(0, ROOT)
 
 CATALOGUE = os.path.join(ROOT, "results", "question_catalogue_2026_11_08", "catalogue.tsv")
 OUT = os.path.join(ROOT, "results", "question_scores_2026_11_08")
-EXTREME = 0.2
-MIN_CLASS = 50
 
 
-def _safe(text: str) -> str:
-    return re.sub(r"[^A-Za-z0-9]+", "_", str(text)).strip("_")[:80]
-
-
-def binary_labels(column, kind, category, series):
-    """[(suffix, wording, boolean labels over the labelled genes)] for one catalogue row."""
-    import numpy as np
-    s = series.dropna()
-    out = []
-    if kind == "value":
-        v = s.astype(float)
-        if category == "fitness":
-            cut = v.quantile(EXTREME)
-            out.append(("low", f"among the most depleted 20 % ({column} <= {cut:.3g})", v <= cut))
-        elif (v < 0).any() and (v > 0).any():
-            cut = v.abs().quantile(1 - EXTREME)
-            out.append(("change", f"among the largest 20 % of changes (|{column}| >= {cut:.3g})", v.abs() >= cut))
-        else:
-            cut = v.quantile(1 - EXTREME)
-            out.append(("high", f"among the highest 20 % ({column} >= {cut:.3g})", v >= cut))
-        return out
-    values = s.astype(str)
-    counts = values.value_counts()
-    if len(counts) == 2:
-        pos = "True" if "True" in counts.index else sorted(counts.index)[-1]
-        out.append((_safe(pos), f"{column} = {pos}", values == pos))
-        return out
-    for cls, n in counts.items():
-        if n >= MIN_CLASS and n <= len(values) - MIN_CLASS:
-            out.append((_safe(cls), f"{column} = {cls}", values == cls))
-    return out
+from parascape.harness_answer import EXTREME, MIN_CLASS, _safe, binary_labels  # noqa: E402,F401  (one definition)
 
 
 def main(argv=None) -> int:

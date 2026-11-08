@@ -574,3 +574,28 @@ def test_a_value_scorecard_states_its_units(window):
     value = next(s for s in S.catalog() if s.task == SC.T_VALUES)
     html = panel.scorecard_html(value)
     assert "MAE and RMSE are in the units of" in html
+
+
+def test_the_infer_module_answers_with_a_chosen_method_and_shows_its_grade(window, monkeypatch):
+    """Instruction 74, Infer step 3: the same question answered by a harness method, graded on held-out genes."""
+    import pandas as pd
+    from parascape import harness_answer as HA
+    shell = window.infer_module
+    module = shell.module
+    sections = list(shell.sections)
+    assert sections.index("What the answer may use") < sections.index("How to answer") < sections.index("Your genes")
+    keys = [module.method_choice.itemData(i) for i in range(module.method_choice.count())]
+    assert keys[0] == "map" and set(HA.METHODS) <= set(keys)
+    ids = window.nodes.gene_id.astype(str).tolist()
+    fake = {"refusal": "", "grades": pd.DataFrame([dict(label="x = yes", labelled=500, frozen_auc=0.81,
+                                                        average_precision=0.4, share_of_yes=0.1, may_fill=False)]),
+            "calls": pd.DataFrame({"gene_id": ids[:3], "answer": ["x = yes"] * 3, "probability": [0.9, 0.6, 0.2],
+                                   "may_fill": [False] * 3})}
+    monkeypatch.setattr(HA, "answer", lambda *a, **k: fake)
+    monkeypatch.setattr(window.panel, "_run", lambda job, done, name="", on_error=None: done(job(lambda *_: None)))
+    module.method_choice.setCurrentIndex(keys.index("hist_gbt"))
+    module.answer_question()
+    report = window.panel.question_report.toPlainText()
+    assert "graded on genes it never saw" in report and "0.81" in report and "rank genes only" in report
+    assert window.panel.question_table.rowCount() == 3
+    module.method_choice.setCurrentIndex(0)
