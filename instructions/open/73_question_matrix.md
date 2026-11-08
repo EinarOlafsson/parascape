@@ -485,5 +485,13 @@ almost certainly a leak through a column of the same experiment not yet tied to 
 questions have labels that are not clean biology (`fit_density_dependence_log10padj` is a p-value column the rule
 missed, `crispr_gra17_candidate_0` a candidate flag, `n_holes` a structural-hole count). The four other may-fill
 questions (`invivo_WholeBrain_Acute_1` change, `lopit_unified` nucleus, macrophage-expression high, a ribosome-
-profiling change) are the ones to examine first. Next: the leak check on the AUC >= 0.99 questions, then rungs 2-3
-on class B.
+profiling change) are the ones to examine first. Leak check below; next: rungs 2-3 on class B.
+
+**Leak check of the AUC >= 0.97 questions (2026-11-08).** Each re-scored on a fresh split (seed 1) with only the
+evidence families measured on at least half the genes, so a library chosen around a biology (the GRA12 CRISPR
+subset) cannot carry the answer by its coverage: `results/question_scoreboard_2026_11_08/leak_check_wide_families.tsv`.
+All ten hold: 0.96-0.999 (pvm_proximity_positive 0.997, rhoptries 0.998/0.999, micronemes 0.982). Not a coverage
+leak. The carriers are biology: secretory-organelle and PVM proteins are made in sharp cell-cycle waves (GSE19092 is
+the top family throughout), and translation-efficiency changes are carried by other studies RNA -- the measured
+redundancy of footprints with mRNA that Einar chose to report rather than exclude. These questions still cannot
+fill because their frozen partitions hold few positives; ranking is what they offer.

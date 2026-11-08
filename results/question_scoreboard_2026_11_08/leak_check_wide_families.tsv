@@ -1,0 +1,11 @@
+question	all_evidence_auc	wide_only_auc	top_wide
+cat_compartment_apical_1	0.979	0.979	['gse19092', 'gse302108_utr5', 'bioid_corpus_membership']
+cat_compartment_micronemes	0.999	0.982	['pubmed', 'gse313048_atac', 'crispr_invivo_composite']
+cat_compartment_rhoptries_1	0.999	0.998	['gse19092', 'invivo_brain_transcriptome', 'gse245775']
+cat_compartment_rhoptries_2	0.986	0.999	['gse19092', 'iron_depletion_proteome', 'crispr_parasite_density']
+cat_compartment_unassigned	0.974	0.962	['iron_depletion_proteome', 'bioid_corpus_membership', 'gse245775']
+cat_pvm_proximity_positive_1_0	1.0	0.997	['crispr_parasite_density', 'gse19092', 'iron_depletion_proteome']
+cat_rna99395_extracellular_r1_change	0.974	0.969	['gse129869', 'gse245775', 'gse313048_atac']
+cat_rpf129869_confluent_r1_change	0.985	0.981	['gse245775', 'gse168465', 'mrna_decay_gse329845']
+cat_te129869_confluent_r2_change	0.991	0.986	['gse245775', 'gse168465', 'gse99395']
+cat_te129869_subconfluent_r1_change	0.979	0.963	['gse168465', 'mrna_decay_gse329845', 'gse245775']
