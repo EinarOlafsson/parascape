@@ -1,0 +1,1087 @@
+gene	fold	truth	tg_location	predicted	commonest
+cgd1_1080	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_1110	0	ER	ER	ER	PAM cl. 1
+cgd1_1250	0	PAM cl. 4			PAM cl. 1
+cgd1_1570	0	PAM cl. 1			PAM cl. 1
+cgd1_1660	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd1_1830	0	ER	ER	ER	PAM cl. 1
+cgd1_1890	0	ER	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd1_1970	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd1_2040	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_2060	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd1_2500	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_2730	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_2790	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_3020	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_3040	0	PAM cl. 1	apicoplast	PAM cl. 1	PAM cl. 1
+cgd1_3340	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_3540	0	PAM cl. 10			PAM cl. 1
+cgd1_3550	0	Oocyst wall			PAM cl. 1
+cgd1_3850	0	ER			PAM cl. 1
+cgd1_400	0	PAM cl. 10			PAM cl. 1
+cgd1_620	0	PAM cl. 4			PAM cl. 1
+cgd1_750	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_780	0	ER	ER	ER	PAM cl. 1
+cgd1_870	0	PAM cl. 7			PAM cl. 1
+cgd2_1030	0	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd2_1140	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd2_1460	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_200	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_2000	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd2_2100	0	CB			PAM cl. 1
+cgd2_2200	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd2_2210	0	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd2_2250	0	PAM cl. 5	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd2_2340	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_2660	0	ER			PAM cl. 1
+cgd2_2710	0	PAM cl. 10	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_2890	0	PAM cl. 1	apicoplast	PAM cl. 1	PAM cl. 1
+cgd2_3010	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_3080	0	Microneme			PAM cl. 1
+cgd2_3730	0	PAM cl. 9			PAM cl. 1
+cgd2_4020	0	PAM cl. 9			PAM cl. 1
+cgd2_4080	0	PAM cl. 3			PAM cl. 1
+cgd2_4380	0	Mitosome			PAM cl. 1
+cgd2_540	0	IMC/PM			PAM cl. 1
+cgd2_750	0	PAM cl. 1			PAM cl. 1
+cgd2_790	0	CB			PAM cl. 1
+cgd2_940	0	ER			PAM cl. 1
+cgd3_1250	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd3_130	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_1580	0	ER			PAM cl. 1
+cgd3_1750	0	PAM cl. 4			PAM cl. 1
+cgd3_1870	0	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_1900	0	ER	ER	ER	PAM cl. 1
+cgd3_2190	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_2440	0	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd3_2503	0	ER			PAM cl. 1
+cgd3_2750	0	Rhoptry			PAM cl. 1
+cgd3_3440	0	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd3_3460	0	PAM cl. 10			PAM cl. 1
+cgd3_3600	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_4020	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_60	0	PAM cl. 8			PAM cl. 1
+cgd3_720	0	PAM cl. 8			PAM cl. 1
+cgd3_80	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_880	0	IMC/PM			PAM cl. 1
+cgd4_1150	0	ER	ER	ER	PAM cl. 1
+cgd4_1350	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_1940	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_2080	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd4_210	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_2340	0	Microneme			PAM cl. 1
+cgd4_2350	0	Microneme	apical_secretory	Rhoptry	PAM cl. 1
+cgd4_2460	0	PAM cl. 9			PAM cl. 1
+cgd4_250	0	20S proteasome	proteasome	20S proteasome	PAM cl. 1
+cgd4_2690	0	PAM cl. 5			PAM cl. 1
+cgd4_2840	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_2860	0	PAM cl. 7	cytoskeleton	PAM cl. 7	PAM cl. 1
+cgd4_2910	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_3040	0	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd4_3280	0	PAM cl. 3			PAM cl. 1
+cgd4_3300	0	IMC/PM	apical_secretory	Rhoptry	PAM cl. 1
+cgd4_3530	0	PAM cl. 4			PAM cl. 1
+cgd4_3760	0	ER	ER	ER	PAM cl. 1
+cgd4_3770	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_4140	0	ER			PAM cl. 1
+cgd4_4200	0	ER	ER	ER	PAM cl. 1
+cgd4_4400	0	ER			PAM cl. 1
+cgd4_470	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd4_850	0	PAM cl. 4			PAM cl. 1
+cgd5_1020	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd5_1120	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_1650	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_1710	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_1780	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_1820	0	20S proteasome	proteasome	20S proteasome	PAM cl. 1
+cgd5_20	0	Rhoptry			PAM cl. 1
+cgd5_220	0	PAM cl. 3			PAM cl. 1
+cgd5_2590	0	ER	ER	ER	PAM cl. 1
+cgd5_2820	0	Microneme			PAM cl. 1
+cgd5_3160	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_3230	0	PAM cl. 1	mitochondrion	Mitosome	PAM cl. 1
+cgd5_3420	0	IMC/PM			PAM cl. 1
+cgd5_3490	0	PAM cl. 1	apicoplast	PAM cl. 1	PAM cl. 1
+cgd5_3823	0	60S Ribosome			PAM cl. 1
+cgd5_4080	0	IMC/PM	apical_secretory	Rhoptry	PAM cl. 1
+cgd5_440	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_4430	0	PAM cl. 2			PAM cl. 1
+cgd5_4560	0	PAM cl. 2			PAM cl. 1
+cgd5_640	0	IMC/PM	apical_secretory	Rhoptry	PAM cl. 1
+cgd5_670	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_1030	0	PAM cl. 4			PAM cl. 1
+cgd6_1110	0	PAM cl. 4			PAM cl. 1
+cgd6_1570	0	PAM cl. 7			PAM cl. 1
+cgd6_1590	0	PAM cl. 2			PAM cl. 1
+cgd6_190	0	PAM cl. 8			PAM cl. 1
+cgd6_1950	0	PAM cl. 3			PAM cl. 1
+cgd6_200	0	Oocyst wall			PAM cl. 1
+cgd6_2470	0	Oocyst wall			PAM cl. 1
+cgd6_2490	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_2503	0	ER			PAM cl. 1
+cgd6_263	0	PAM cl. 2			PAM cl. 1
+cgd6_313	0	CB			PAM cl. 1
+cgd6_3130	0	IMC/PM			PAM cl. 1
+cgd6_3270	0	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd6_3340	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd6_3540	0	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_4390	0	IMC/PM			PAM cl. 1
+cgd6_4500	0	PAM cl. 8			PAM cl. 1
+cgd6_4640	0	Oocyst wall			PAM cl. 1
+cgd6_4650	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_4770	0	PAM cl. 5			PAM cl. 1
+cgd6_4910	0	PAM cl. 5			PAM cl. 1
+cgd6_4960	0	PAM cl. 7			PAM cl. 1
+cgd6_5330	0	PAM cl. 4			PAM cl. 1
+cgd6_5350	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd6_5360	0	PAM cl. 4			PAM cl. 1
+cgd6_5450	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd6_5460	0	IMC/PM			PAM cl. 1
+cgd6_570	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd6_750	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_950	0	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_1060	0	ER			PAM cl. 1
+cgd7_1130	0	PAM cl. 3			PAM cl. 1
+cgd7_1170	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_1300	0	PAM cl. 4			PAM cl. 1
+cgd7_1340	0	PAM cl. 4			PAM cl. 1
+cgd7_180	0	Oocyst wall			PAM cl. 1
+cgd7_1873	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_1900	0	IMC/PM	mitochondrion	Mitosome	PAM cl. 1
+cgd7_1930	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_1960	0	Microneme	apical_secretory	Rhoptry	PAM cl. 1
+cgd7_20	0	PAM cl. 2			PAM cl. 1
+cgd7_210	0	PAM cl. 1			PAM cl. 1
+cgd7_2140	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_2420	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_2440	0	PAM cl. 5			PAM cl. 1
+cgd7_2500	0	PAM cl. 6			PAM cl. 1
+cgd7_2540	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_2650	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_2670	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_2900	0	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd7_3280	0	ER	ER	ER	PAM cl. 1
+cgd7_330	0	ER	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd7_3350	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_3800	0	PAM cl. 4			PAM cl. 1
+cgd7_3820	0	PAM cl. 4			PAM cl. 1
+cgd7_3880	0	ER	ER	ER	PAM cl. 1
+cgd7_4190	0	ER	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd7_4260	0	PAM cl. 3			PAM cl. 1
+cgd7_4280	0	PAM cl. 4			PAM cl. 1
+cgd7_4310	0	Oocyst wall	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd7_4340	0	PAM cl. 4			PAM cl. 1
+cgd7_4360	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_4530	0	PAM cl. 4			PAM cl. 1
+cgd7_4540	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd7_4760	0	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_4810	0	CB			PAM cl. 1
+cgd7_5210	0	PAM cl. 10			PAM cl. 1
+cgd7_5400	0	Oocyst wall			PAM cl. 1
+cgd7_550	0	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd7_850	0	Oocyst wall	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd8_1030	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_110	0	Mitosome			PAM cl. 1
+cgd8_1680	0	PAM cl. 2			PAM cl. 1
+cgd8_1860	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_190	0	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_20	0	ER			PAM cl. 1
+cgd8_2130	0	PAM cl. 3			PAM cl. 1
+cgd8_2710	0	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd8_2820	0	ER	ER	ER	PAM cl. 1
+cgd8_30	0	Mitosome			PAM cl. 1
+cgd8_300	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_3030	0	PAM cl. 4			PAM cl. 1
+cgd8_3080	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_3170	0	ER	ER	ER	PAM cl. 1
+cgd8_3270	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_3310	0	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_3320	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_340	0	PAM cl. 6			PAM cl. 1
+cgd8_3450	0	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd8_3600	0	PAM cl. 4			PAM cl. 1
+cgd8_3770	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_3900	0	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_3970	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_4110	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_4290	0	CB			PAM cl. 1
+cgd8_4400	0	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_4490	0	PAM cl. 6			PAM cl. 1
+cgd8_4570	0	IMC/PM			PAM cl. 1
+cgd8_4620	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_520	0	Rhoptry			PAM cl. 1
+cgd8_5350	0	PAM cl. 4			PAM cl. 1
+cgd8_540	0	Rhoptry	apical_secretory	Rhoptry	PAM cl. 1
+cgd8_580	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_610	0	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_680	0	PAM cl. 4			PAM cl. 1
+cgd8_790	0	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_840	0	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd1_1340	1	PAM cl. 3			PAM cl. 2
+cgd1_1380	1	Rhoptry	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd1_1433	1	PAM cl. 4			PAM cl. 2
+cgd1_1710	1	Mitosome	mitochondrion	Mitosome	PAM cl. 2
+cgd1_2450	1	Mitosome	mitochondrion	Mitosome	PAM cl. 2
+cgd1_2470	1	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 2
+cgd1_2580	1	PAM cl. 5			PAM cl. 2
+cgd1_290	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd1_3000	1	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd1_3140	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd1_3200	1	ER	ER	ER	PAM cl. 2
+cgd1_330	1	PAM cl. 1	apicoplast	PAM cl. 1	PAM cl. 2
+cgd1_3630	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd1_3670	1	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 2
+cgd1_3730	1	Mitosome	mitochondrion	Mitosome	PAM cl. 2
+cgd1_3780	1	PAM cl. 4			PAM cl. 2
+cgd1_3790	1	PAM cl. 4			PAM cl. 2
+cgd1_640	1	PAM cl. 9	golgi_secretory_vesicular	ER	PAM cl. 2
+cgd1_880	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd1_90	1	PAM cl. 5			PAM cl. 2
+cgd1_920	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd2_1070	1	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd2_1200	1	ER	ER	ER	PAM cl. 2
+cgd2_1900	1	PAM cl. 2			PAM cl. 2
+cgd2_210	1	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 2
+cgd2_2310	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd2_2530	1	PAM cl. 4			PAM cl. 2
+cgd2_270	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd2_2840	1	PAM cl. 2			PAM cl. 2
+cgd2_2940	1	PAM cl. 5			PAM cl. 2
+cgd2_30	1	PAM cl. 7	ER	ER	PAM cl. 2
+cgd2_3030	1	PAM cl. 4			PAM cl. 2
+cgd2_3250	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd2_3290	1	ER			PAM cl. 2
+cgd2_3700	1	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 2
+cgd2_3750	1	ER			PAM cl. 2
+cgd2_3830	1	PAM cl. 10			PAM cl. 2
+cgd2_4150	1	IMC/PM			PAM cl. 2
+cgd2_4180	1	IMC/PM			PAM cl. 2
+cgd2_4350	1	Oocyst wall			PAM cl. 2
+cgd2_770	1	Mitosome			PAM cl. 2
+cgd2_810	1	PAM cl. 7	cytosol	PAM cl. 1	PAM cl. 2
+cgd3_1480	1	Mitosome	mitochondrion	Mitosome	PAM cl. 2
+cgd3_1540	1	Oocyst wall			PAM cl. 2
+cgd3_1690	1	PAM cl. 4			PAM cl. 2
+cgd3_1780	1	Rhoptry			PAM cl. 2
+cgd3_2220	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd3_2410	1	PAM cl. 3	cytosol	PAM cl. 1	PAM cl. 2
+cgd3_2470	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd3_2530	1	20S proteasome	proteasome	PAM cl. 2	PAM cl. 2
+cgd3_2630	1	ER	ER	ER	PAM cl. 2
+cgd3_2800	1	PAM cl. 10	nucleus	PAM cl. 2	PAM cl. 2
+cgd3_2890	1	PAM cl. 6	nucleus	PAM cl. 2	PAM cl. 2
+cgd3_3210	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd3_3580	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd3_3830	1	IMC/PM			PAM cl. 2
+cgd3_3900	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd3_3950	1	PAM cl. 2			PAM cl. 2
+cgd3_600	1	PAM cl. 4			PAM cl. 2
+cgd3_840	1	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 2
+cgd3_970	1	Mitosome			PAM cl. 2
+cgd4_1650	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_1970	1	Microneme			PAM cl. 2
+cgd4_2040	1	PAM cl. 3			PAM cl. 2
+cgd4_2260	1	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd4_2300	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_2360	1	PAM cl. 6	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_2420	1	Rhoptry			PAM cl. 2
+cgd4_2540	1	PAM cl. 2	proteasome	PAM cl. 2	PAM cl. 2
+cgd4_2560	1	IMC/PM	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_2580	1	ER			PAM cl. 2
+cgd4_30	1	Microneme			PAM cl. 2
+cgd4_3080	1	PAM cl. 1	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd4_3130	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_3160	1	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd4_32	1	Microneme			PAM cl. 2
+cgd4_3230	1	PAM cl. 5			PAM cl. 2
+cgd4_3290	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd4_3330	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd4_3360	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_3460	1	PAM cl. 4			PAM cl. 2
+cgd4_3850	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_3970	1	PAM cl. 4			PAM cl. 2
+cgd4_40	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_4030	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd4_4330	1	PAM cl. 1			PAM cl. 2
+cgd4_4340	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd4_490	1	PAM cl. 3			PAM cl. 2
+cgd4_540	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd4_690	1	PAM cl. 2			PAM cl. 2
+cgd4_80	1	ER	ER	ER	PAM cl. 2
+cgd4_840	1	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd4_890	1	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 2
+cgd4_960	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd5_1030	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd5_1080	1	ER			PAM cl. 2
+cgd5_1150	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd5_1270	1	ER	ER	ER	PAM cl. 2
+cgd5_1440	1	PAM cl. 4			PAM cl. 2
+cgd5_1450	1	PAM cl. 4			PAM cl. 2
+cgd5_2190	1	Mitosome	mitochondrion	Mitosome	PAM cl. 2
+cgd5_230	1	PAM cl. 1			PAM cl. 2
+cgd5_2300	1	ER	ER	ER	PAM cl. 2
+cgd5_2310	1	PAM cl. 3			PAM cl. 2
+cgd5_2430	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd5_2570	1	PAM cl. 3			PAM cl. 2
+cgd5_2580	1	ER			PAM cl. 2
+cgd5_2670	1	PAM cl. 1			PAM cl. 2
+cgd5_2730	1	PAM cl. 9			PAM cl. 2
+cgd5_2990	1	PAM cl. 10	nucleus	PAM cl. 2	PAM cl. 2
+cgd5_3210	1	PAM cl. 4			PAM cl. 2
+cgd5_3310	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd5_3450	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd5_3500	1	ER			PAM cl. 2
+cgd5_3720	1	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd5_3850	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd5_4540	1	PAM cl. 1			PAM cl. 2
+cgd5_480	1	PAM cl. 1	proteasome	PAM cl. 2	PAM cl. 2
+cgd5_610	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd5_930	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_1000	1	Rhoptry			PAM cl. 2
+cgd6_1083	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd6_1170	1	PAM cl. 4			PAM cl. 2
+cgd6_1180	1	PAM cl. 4			PAM cl. 2
+cgd6_1270	1	ER	ER	ER	PAM cl. 2
+cgd6_1363	1	PAM cl. 3			PAM cl. 2
+cgd6_1500	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd6_1630	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_1660	1	Microneme			PAM cl. 2
+cgd6_2160	1	PAM cl. 10			PAM cl. 2
+cgd6_2280	1	ER			PAM cl. 2
+cgd6_2600	1	PAM cl. 3			PAM cl. 2
+cgd6_2720	1	ER			PAM cl. 2
+cgd6_2840	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_3220	1	IMC/PM	golgi_secretory_vesicular	ER	PAM cl. 2
+cgd6_340	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_3420	1	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 2
+cgd6_3510	1	IMC/PM			PAM cl. 2
+cgd6_3570	1	PAM cl. 5			PAM cl. 2
+cgd6_3580	1	PAM cl. 5			PAM cl. 2
+cgd6_3610	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_3790	1	PAM cl. 1	apicoplast	PAM cl. 1	PAM cl. 2
+cgd6_3930	1	Rhoptry			PAM cl. 2
+cgd6_4130	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_4190	1	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd6_4320	1	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd6_4540	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd6_4630	1	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd6_4750	1	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 2
+cgd6_4840	1	Oocyst wall	golgi_secretory_vesicular	ER	PAM cl. 2
+cgd6_4850	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd6_4940	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd6_5030	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_5080	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_5320	1	PAM cl. 3			PAM cl. 2
+cgd6_560	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd6_700	1	PAM cl. 1			PAM cl. 2
+cgd6_710	1	Oocyst wall			PAM cl. 2
+cgd6_960	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_1410	1	Mitosome	mitochondrion	Mitosome	PAM cl. 2
+cgd7_1640	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd7_1660	1	PAM cl. 7	cytoskeleton	PAM cl. 7	PAM cl. 2
+cgd7_1710	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_1713	1	IMC/PM			PAM cl. 2
+cgd7_1840	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd7_2050	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_2060	1	PAM cl. 7	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_2400	1	Mitosome	apicoplast	PAM cl. 1	PAM cl. 2
+cgd7_2570	1	PAM cl. 8	nucleus	PAM cl. 2	PAM cl. 2
+cgd7_2840	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_300	1	CB			PAM cl. 2
+cgd7_3180	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_3790	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd7_3810	1	PAM cl. 4			PAM cl. 2
+cgd7_3830	1	PAM cl. 9			PAM cl. 2
+cgd7_3860	1	PAM cl. 4			PAM cl. 2
+cgd7_3870	1	PAM cl. 4			PAM cl. 2
+cgd7_400	1	PAM cl. 1			PAM cl. 2
+cgd7_4330	1	Microneme			PAM cl. 2
+cgd7_4450	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_4830	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd7_4880	1	IMC/PM			PAM cl. 2
+cgd7_5000	1	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 2
+cgd7_5010	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_5120	1	ER			PAM cl. 2
+cgd7_5280	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd7_5520	1	Microneme	apical_secretory	Rhoptry	PAM cl. 2
+cgd7_790	1	PAM cl. 1			PAM cl. 2
+cgd7_820	1	PAM cl. 3			PAM cl. 2
+cgd7_950	1	ER	ER	ER	PAM cl. 2
+cgd8_1450	1	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 2
+cgd8_1530	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd8_1670	1	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 2
+cgd8_1700	1	PAM cl. 1			PAM cl. 2
+cgd8_1830	1	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 2
+cgd8_193	1	Mitosome			PAM cl. 2
+cgd8_1930	1	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 2
+cgd8_210	1	PAM cl. 5			PAM cl. 2
+cgd8_2150	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd8_2300	1	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 2
+cgd8_2370	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd8_2460	1	PAM cl. 1			PAM cl. 2
+cgd8_2540	1	PAM cl. 5			PAM cl. 2
+cgd8_2690	1	PAM cl. 6			PAM cl. 2
+cgd8_3540	1	ER			PAM cl. 2
+cgd8_4010	1	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 2
+cgd8_4060	1	PAM cl. 2	proteasome	PAM cl. 2	PAM cl. 2
+cgd8_4200	1	PAM cl. 6			PAM cl. 2
+cgd8_4230	1	Oocyst wall			PAM cl. 2
+cgd8_4350	1	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 2
+cgd8_4830	1	Oocyst wall			PAM cl. 2
+cgd8_4910	1	PAM cl. 3			PAM cl. 2
+cgd8_500	1	PAM cl. 7			PAM cl. 2
+cgd8_5030	1	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 2
+cgd8_530	1	Microneme			PAM cl. 2
+cgd8_5300	1	PAM cl. 4			PAM cl. 2
+cgd8_620	1	Oocyst wall			PAM cl. 2
+cgd1_1000	2	PAM cl. 10			PAM cl. 1
+cgd1_120	2	Mitosome			PAM cl. 1
+cgd1_1290	2	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd1_1530	2	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd1_1540	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_1770	2	ER	ER	ER	PAM cl. 1
+cgd1_1870	2	Rhoptry	apical_secretory	Rhoptry	PAM cl. 1
+cgd1_2020	2	PAM cl. 3			PAM cl. 1
+cgd1_2760	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_2970	2	ER	ER	ER	PAM cl. 1
+cgd1_3210	2	IMC/PM			PAM cl. 1
+cgd1_3480	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_3810	2	PAM cl. 9			PAM cl. 1
+cgd1_420	2	20S proteasome	proteasome	20S proteasome	PAM cl. 1
+cgd1_660	2	PAM cl. 1			PAM cl. 1
+cgd2_1020	2	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd2_1350	2	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd2_1450	2	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd2_1510	2	PAM cl. 6			PAM cl. 1
+cgd2_1520	2	ER			PAM cl. 1
+cgd2_1590	2	Oocyst wall			PAM cl. 1
+cgd2_1650	2	ER	ER	ER	PAM cl. 1
+cgd2_2050	2	20S proteasome	proteasome	20S proteasome	PAM cl. 1
+cgd2_2090	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_250	2	PAM cl. 6	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_2910	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_2970	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_300	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_3240	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_3260	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_3270	2	PAM cl. 3	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_3350	2	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd2_3930	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_4103	2	PAM cl. 6			PAM cl. 1
+cgd2_600	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_850	2	Oocyst wall			PAM cl. 1
+cgd2_920	2	PAM cl. 1	apical_secretory	Rhoptry	PAM cl. 1
+cgd2_930	2	PAM cl. 1	apical_secretory	Rhoptry	PAM cl. 1
+cgd3_1330	2	Rhoptry			PAM cl. 1
+cgd3_1460	2	PAM cl. 2			PAM cl. 1
+cgd3_1630	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_1730	2	Rhoptry			PAM cl. 1
+cgd3_1770	2	Rhoptry			PAM cl. 1
+cgd3_1940	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_2050	2	PAM cl. 1			PAM cl. 1
+cgd3_2180	2	PAM cl. 8			PAM cl. 1
+cgd3_2540	2	PAM cl. 3			PAM cl. 1
+cgd3_3080	2	PAM cl. 3			PAM cl. 1
+cgd3_3120	2	Mitosome			PAM cl. 1
+cgd3_3190	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_330	2	PAM cl. 1			PAM cl. 1
+cgd3_3330	2	PAM cl. 3			PAM cl. 1
+cgd3_3370	2	Microneme			PAM cl. 1
+cgd3_3700	2	Oocyst wall			PAM cl. 1
+cgd3_3840	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_3850	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_3870	2	PAM cl. 5	golgi_secretory_vesicular	ER	PAM cl. 1
+cgd3_3880	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_3890	2	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd3_3970	2	PAM cl. 5	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_550	2	ER	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd3_640	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_660	2	PAM cl. 8			PAM cl. 1
+cgd3_710	2	IMC/PM			PAM cl. 1
+cgd4_1730	2	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_220	2	PAM cl. 5			PAM cl. 1
+cgd4_2270	2	ER	ER	ER	PAM cl. 1
+cgd4_2280	2	IMC/PM			PAM cl. 1
+cgd4_240	2	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_2590	2	PAM cl. 1			PAM cl. 1
+cgd4_2600	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_2790	2	ER	ER	ER	PAM cl. 1
+cgd4_3000	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_3430	2	IMC/PM			PAM cl. 1
+cgd4_3570	2	Mitosome			PAM cl. 1
+cgd4_3580	2	PAM cl. 4			PAM cl. 1
+cgd4_4040	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_4460	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_4503	2	Microneme			PAM cl. 1
+cgd4_500	2	Oocyst wall			PAM cl. 1
+cgd4_570	2	PAM cl. 7	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_580	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_590	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_650	2	PAM cl. 10			PAM cl. 1
+cgd4_810	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_1140	2	PAM cl. 2			PAM cl. 1
+cgd5_1220	2	PAM cl. 1			PAM cl. 1
+cgd5_1240	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_1590	2	IMC/PM			PAM cl. 1
+cgd5_1720	2	PAM cl. 5			PAM cl. 1
+cgd5_1970	2	PAM cl. 6	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_2070	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_210	2	PAM cl. 3			PAM cl. 1
+cgd5_2320	2	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd5_2330	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_2473	2	Mitosome			PAM cl. 1
+cgd5_2530	2	IMC/PM			PAM cl. 1
+cgd5_2760	2	Rhoptry			PAM cl. 1
+cgd5_2860	2	PAM cl. 2			PAM cl. 1
+cgd5_3073	2	Oocyst wall			PAM cl. 1
+cgd5_3220	2	20S proteasome	proteasome	20S proteasome	PAM cl. 1
+cgd5_3360	2	PAM cl. 1	mitochondrion	Mitosome	PAM cl. 1
+cgd5_3510	2	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd5_3730	2	ER	ER	ER	PAM cl. 1
+cgd5_3820	2	ER	ER	ER	PAM cl. 1
+cgd5_3890	2	PAM cl. 5			PAM cl. 1
+cgd5_390	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_3950	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_4140	2	Mitosome			PAM cl. 1
+cgd5_4400	2	PAM cl. 1	apicoplast	PAM cl. 1	PAM cl. 1
+cgd5_680	2	PAM cl. 7	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_750	2	PAM cl. 1			PAM cl. 1
+cgd5_950	2	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_970	2	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd6_1050	2	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd6_1340	2	ER	ER	ER	PAM cl. 1
+cgd6_1730	2	PAM cl. 5			PAM cl. 1
+cgd6_1770	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_2040	2	ER	ER	ER	PAM cl. 1
+cgd6_2090	2	Oocyst wall			PAM cl. 1
+cgd6_210	2	Oocyst wall			PAM cl. 1
+cgd6_2180	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_2310	2	PAM cl. 8			PAM cl. 1
+cgd6_2450	2	PAM cl. 7	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_2560	2	PAM cl. 3			PAM cl. 1
+cgd6_260	2	ER	ER	ER	PAM cl. 1
+cgd6_2620	2	ER	ER	ER	PAM cl. 1
+cgd6_2690	2	PAM cl. 7	apicoplast	PAM cl. 1	PAM cl. 1
+cgd6_3170	2	ER	ER	ER	PAM cl. 1
+cgd6_3190	2	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd6_3530	2	ER			PAM cl. 1
+cgd6_3720	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_3750	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_3910	2	PAM cl. 2			PAM cl. 1
+cgd6_3940	2	Rhoptry			PAM cl. 1
+cgd6_3970	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_4153	2	PAM cl. 5			PAM cl. 1
+cgd6_4160	2	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd6_4440	2	Oocyst wall			PAM cl. 1
+cgd6_4660	2	PAM cl. 2			PAM cl. 1
+cgd6_470	2	ER	ER	ER	PAM cl. 1
+cgd6_5070	2	ER	ER	ER	PAM cl. 1
+cgd6_5250	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_5420	2	PAM cl. 4			PAM cl. 1
+cgd6_5440	2	PAM cl. 4			PAM cl. 1
+cgd6_60	2	PAM cl. 4			PAM cl. 1
+cgd6_670	2	Oocyst wall			PAM cl. 1
+cgd6_690	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_70	2	ER	mitochondrion	Mitosome	PAM cl. 1
+cgd6_760	2	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd6_780	2	Microneme			PAM cl. 1
+cgd6_840	2	ER	ER	ER	PAM cl. 1
+cgd6_920	2	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd7_1400	2	PAM cl. 8			PAM cl. 1
+cgd7_1490	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_1540	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_160	2	PAM cl. 1			PAM cl. 1
+cgd7_1670	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_1790	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_1800	2	Oocyst wall			PAM cl. 1
+cgd7_1810	2	ER	ER	ER	PAM cl. 1
+cgd7_1910	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_2070	2	PAM cl. 4			PAM cl. 1
+cgd7_2110	2	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_2190	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_2680	2	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_2910	2	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_3250	2	ER			PAM cl. 1
+cgd7_3290	2	ER	ER	ER	PAM cl. 1
+cgd7_3640	2	IMC/PM	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_3930	2	PAM cl. 2			PAM cl. 1
+cgd7_4020	2	Microneme			PAM cl. 1
+cgd7_4160	2	ER			PAM cl. 1
+cgd7_4380	2	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd7_4460	2	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_4480	2	PAM cl. 2			PAM cl. 1
+cgd7_4570	2	PAM cl. 6			PAM cl. 1
+cgd7_4620	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_5080	2	ER			PAM cl. 1
+cgd7_5150	2	Oocyst wall			PAM cl. 1
+cgd7_5300	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_5340	2	PAM cl. 5			PAM cl. 1
+cgd7_5360	2	PAM cl. 2			PAM cl. 1
+cgd7_5530	2	Microneme			PAM cl. 1
+cgd7_580	2	IMC/PM			PAM cl. 1
+cgd7_613	2	PAM cl. 3			PAM cl. 1
+cgd7_700	2	ER	ER	ER	PAM cl. 1
+cgd7_910	2	PAM cl. 1	apicoplast	PAM cl. 1	PAM cl. 1
+cgd8_1460	2	PAM cl. 6			PAM cl. 1
+cgd8_1520	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_1620	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_1770	2	PAM cl. 9			PAM cl. 1
+cgd8_2100	2	PAM cl. 1			PAM cl. 1
+cgd8_2270	2	IMC/PM			PAM cl. 1
+cgd8_240	2	ER			PAM cl. 1
+cgd8_2650	2	PAM cl. 2			PAM cl. 1
+cgd8_2770	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_293	2	ER	ER	ER	PAM cl. 1
+cgd8_2930	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_3100	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_3350	2	Oocyst wall			PAM cl. 1
+cgd8_3460	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_350	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_3520	2	ER			PAM cl. 1
+cgd8_3730	2	IMC/PM			PAM cl. 1
+cgd8_3870	2	Oocyst wall			PAM cl. 1
+cgd8_3940	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_4300	2	CB			PAM cl. 1
+cgd8_4720	2	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_4750	2	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_4810	2	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_4850	2	ER			PAM cl. 1
+cgd8_510	2	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_570	2	PAM cl. 2	proteasome	20S proteasome	PAM cl. 1
+cgd8_60	2	PAM cl. 5			PAM cl. 1
+cgd8_630	2	PAM cl. 1			PAM cl. 1
+cgd8_860	2	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_1330	3	PAM cl. 5			PAM cl. 1
+cgd1_1500	3	PAM cl. 3			PAM cl. 1
+cgd1_1600	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_2220	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_2480	3	PAM cl. 2			PAM cl. 1
+cgd1_2490	3	20S proteasome	proteasome	PAM cl. 2	PAM cl. 1
+cgd1_2560	3	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd1_2600	3	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_3160	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_320	3	PAM cl. 1			PAM cl. 1
+cgd1_340	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_3490	3	PAM cl. 8			PAM cl. 1
+cgd1_3500	3	PAM cl. 8	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd1_3510	3	PAM cl. 8	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd1_440	3	ER	ER	ER	PAM cl. 1
+cgd1_570	3	ER			PAM cl. 1
+cgd1_580	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_1090	3	ER	ER	ER	PAM cl. 1
+cgd2_1430	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_1500	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_1690	3	ER	ER	ER	PAM cl. 1
+cgd2_170	3	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd2_1740	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_1770	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_1850	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_1910	3	IMC/PM			PAM cl. 1
+cgd2_20	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_2020	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_2040	3	PAM cl. 6			PAM cl. 1
+cgd2_2070	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_2110	3	CB			PAM cl. 1
+cgd2_2160	3	ER			PAM cl. 1
+cgd2_2640	3	PAM cl. 8			PAM cl. 1
+cgd2_2790	3	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_3110	3	PAM cl. 9			PAM cl. 1
+cgd2_3210	3	PAM cl. 4			PAM cl. 1
+cgd2_3360	3	PAM cl. 4			PAM cl. 1
+cgd2_3370	3	PAM cl. 2	proteasome	PAM cl. 2	PAM cl. 1
+cgd2_3670	3	PAM cl. 6			PAM cl. 1
+cgd2_4260	3	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd2_4270	3	Microneme	apical_secretory	Rhoptry	PAM cl. 1
+cgd2_430	3	PAM cl. 4			PAM cl. 1
+cgd2_4320	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_530	3	20S proteasome	proteasome	PAM cl. 2	PAM cl. 1
+cgd2_550	3	ER	ER	ER	PAM cl. 1
+cgd2_640	3	IMC/PM	golgi_secretory_vesicular	ER	PAM cl. 1
+cgd2_760	3	PAM cl. 1	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd3_1160	3	PAM cl. 5			PAM cl. 1
+cgd3_1300	3	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd3_1710	3	Rhoptry			PAM cl. 1
+cgd3_1740	3	Mitosome			PAM cl. 1
+cgd3_1860	3	Oocyst wall	apical_secretory	Rhoptry	PAM cl. 1
+cgd3_190	3	Oocyst wall			PAM cl. 1
+cgd3_2020	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_2170	3	20S proteasome	proteasome	PAM cl. 2	PAM cl. 1
+cgd3_2250	3	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd3_2620	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_2680	3	PAM cl. 5	ER	ER	PAM cl. 1
+cgd3_2690	3	ER	ER	ER	PAM cl. 1
+cgd3_280	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_2880	3	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_300	3	60S Ribosome			PAM cl. 1
+cgd3_3060	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_3100	3	Microneme	apical_secretory	Rhoptry	PAM cl. 1
+cgd3_3160	3	ER	ER	ER	PAM cl. 1
+cgd3_3290	3	Mitosome			PAM cl. 1
+cgd3_350	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_3740	3	IMC/PM	golgi_secretory_vesicular	ER	PAM cl. 1
+cgd3_3770	3	PAM cl. 2	ER	ER	PAM cl. 1
+cgd3_380	3	PAM cl. 2			PAM cl. 1
+cgd3_4250	3	PAM cl. 9			PAM cl. 1
+cgd3_650	3	PAM cl. 4			PAM cl. 1
+cgd3_830	3	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd3_920	3	PAM cl. 2	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd4_1030	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_1080	3	ER			PAM cl. 1
+cgd4_1120	3	ER	ER	ER	PAM cl. 1
+cgd4_1170	3	PAM cl. 2	proteasome	PAM cl. 2	PAM cl. 1
+cgd4_1580	3	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_1790	3	Rhoptry	apical_secretory	Rhoptry	PAM cl. 1
+cgd4_1920	3	PAM cl. 5			PAM cl. 1
+cgd4_2010	3	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_2020	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_2980	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_320	3	PAM cl. 8			PAM cl. 1
+cgd4_3610	3	ER			PAM cl. 1
+cgd4_4000	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_4020	3	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd4_510	3	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_770	3	PAM cl. 3			PAM cl. 1
+cgd4_880	3	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_90	3	PAM cl. 5			PAM cl. 1
+cgd5_1040	3	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_1060	3	IMC/PM			PAM cl. 1
+cgd5_1520	3	Microneme			PAM cl. 1
+cgd5_1530	3	PAM cl. 4			PAM cl. 1
+cgd5_1580	3	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd5_1890	3	PAM cl. 3			PAM cl. 1
+cgd5_2030	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_2210	3	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd5_2740	3	PAM cl. 9			PAM cl. 1
+cgd5_2840	3	PAM cl. 6			PAM cl. 1
+cgd5_3300	3	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_3370	3	PAM cl. 10			PAM cl. 1
+cgd5_3400	3	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd5_3430	3	ER	ER	ER	PAM cl. 1
+cgd5_360	3	PAM cl. 8	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd5_3650	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_3690	3	ER	ER	ER	PAM cl. 1
+cgd5_3740	3	PAM cl. 1	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd5_730	3	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_850	3	PAM cl. 6	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_90	3	PAM cl. 3			PAM cl. 1
+cgd6_1430	3	PAM cl. 3			PAM cl. 1
+cgd6_1450	3	Oocyst wall			PAM cl. 1
+cgd6_1910	3	PAM cl. 6			PAM cl. 1
+cgd6_2080	3	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_2210	3	IMC/PM			PAM cl. 1
+cgd6_2430	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_2900	3	Oocyst wall			PAM cl. 1
+cgd6_2913	3	IMC/PM	golgi_secretory_vesicular	ER	PAM cl. 1
+cgd6_2920	3	Oocyst wall			PAM cl. 1
+cgd6_2970	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_3070	3	PAM cl. 9			PAM cl. 1
+cgd6_3080	3	PAM cl. 4			PAM cl. 1
+cgd6_3290	3	PAM cl. 6	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_3400	3	PAM cl. 2			PAM cl. 1
+cgd6_3470	3	IMC/PM			PAM cl. 1
+cgd6_3640	3	PAM cl. 7			PAM cl. 1
+cgd6_3730	3	Oocyst wall			PAM cl. 1
+cgd6_3830	3	IMC/PM	golgi_secretory_vesicular	ER	PAM cl. 1
+cgd6_3850	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_3990	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_4110	3	PAM cl. 3			PAM cl. 1
+cgd6_4200	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_4400	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_4530	3	ER			PAM cl. 1
+cgd6_4550	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd6_4620	3	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd6_4970	3	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd6_5280	3	PAM cl. 4			PAM cl. 1
+cgd6_5430	3	Mitosome			PAM cl. 1
+cgd6_660	3	ER	apical_secretory	Rhoptry	PAM cl. 1
+cgd6_680	3	IMC/PM			PAM cl. 1
+cgd6_720	3	ER	ER	ER	PAM cl. 1
+cgd6_820	3	CB			PAM cl. 1
+cgd6_850	3	ER			PAM cl. 1
+cgd7_1270	3	PAM cl. 4			PAM cl. 1
+cgd7_1430	3	ER	ER	ER	PAM cl. 1
+cgd7_1583	3	PAM cl. 3			PAM cl. 1
+cgd7_1793	3	PAM cl. 5	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd7_1830	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_200	3	PAM cl. 9	apicoplast	PAM cl. 1	PAM cl. 1
+cgd7_220	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_2300	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_2320	3	PAM cl. 1			PAM cl. 1
+cgd7_2330	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_2340	3	PAM cl. 4			PAM cl. 1
+cgd7_2430	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_2790	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_2940	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_3070	3	ER			PAM cl. 1
+cgd7_320	3	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_3260	3	PAM cl. 3			PAM cl. 1
+cgd7_3270	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_3310	3	PAM cl. 1			PAM cl. 1
+cgd7_3500	3	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_3650	3	PAM cl. 2			PAM cl. 1
+cgd7_3960	3	PAM cl. 8	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_4060	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_4070	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_4120	3	ER			PAM cl. 1
+cgd7_4220	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_4270	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_4300	3	IMC/PM			PAM cl. 1
+cgd7_4420	3	PAM cl. 4	golgi_secretory_vesicular	ER	PAM cl. 1
+cgd7_4490	3	PAM cl. 4			PAM cl. 1
+cgd7_4630	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_4710	3	PAM cl. 2			PAM cl. 1
+cgd7_4720	3	IMC/PM			PAM cl. 1
+cgd7_4790	3	PAM cl. 3	apical_secretory	Rhoptry	PAM cl. 1
+cgd7_4840	3	PAM cl. 6	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_4933	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_830	3	PAM cl. 1			PAM cl. 1
+cgd8_1180	3	IMC/PM			PAM cl. 1
+cgd8_1430	3	PAM cl. 2	apical_secretory	Rhoptry	PAM cl. 1
+cgd8_1550	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_1780	3	PAM cl. 4			PAM cl. 1
+cgd8_1820	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_1870	3	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_1880	3	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_2160	3	PAM cl. 4	apical_secretory	Rhoptry	PAM cl. 1
+cgd8_2200	3	PAM cl. 7			PAM cl. 1
+cgd8_2250	3	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_2340	3	60S Ribosome	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_2410	3	ER	ER	ER	PAM cl. 1
+cgd8_2670	3	Oocyst wall			PAM cl. 1
+cgd8_2853	3	PAM cl. 1			PAM cl. 1
+cgd8_2870	3	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd8_2940	3	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_3140	3	Mitosome	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_3190	3	ER	ER	ER	PAM cl. 1
+cgd8_3340	3	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_3430	3	IMC/PM	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_3720	3	PAM cl. 2			PAM cl. 1
+cgd8_3850	3	ER	ER	ER	PAM cl. 1
+cgd8_4360	3	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd8_4660	3	Oocyst wall			PAM cl. 1
+cgd8_4760	3	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_5080	3	Oocyst wall			PAM cl. 1
+cgd8_5140	3	ER			PAM cl. 1
+cgd8_5310	3	PAM cl. 4			PAM cl. 1
+cgd8_5360	3	PAM cl. 4			PAM cl. 1
+cgd8_70	3	ER	golgi_secretory_vesicular	ER	PAM cl. 1
+cgd8_700	3	Mitosome			PAM cl. 1
+cgd8_780	3	PAM cl. 3			PAM cl. 1
+cgd8_880	3	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_1230	4	PAM cl. 4			PAM cl. 1
+cgd1_1280	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_1350	4	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd1_1510	4	CB			PAM cl. 1
+cgd1_1550	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_1900	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_2130	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd1_2260	4	PAM cl. 7	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_230	4	ER	ER	ER	PAM cl. 1
+cgd1_2400	4	ER			PAM cl. 1
+cgd1_270	4	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd1_2870	4	ER	ER	ER	PAM cl. 1
+cgd1_3640	4	PAM cl. 9			PAM cl. 1
+cgd1_450	4	IMC/PM			PAM cl. 1
+cgd1_590	4	PAM cl. 4			PAM cl. 1
+cgd1_800	4	Oocyst wall	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd1_820	4	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd1_850	4	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd1_950	4	Rhoptry			PAM cl. 1
+cgd2_1170	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_120	4	60S Ribosome			PAM cl. 1
+cgd2_1280	4	PAM cl. 1			PAM cl. 1
+cgd2_1290	4	IMC/PM			PAM cl. 1
+cgd2_1370	4	PAM cl. 2			PAM cl. 1
+cgd2_1440	4	20S proteasome	proteasome	PAM cl. 2	PAM cl. 1
+cgd2_1870	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_220	4	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_2350	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_2510	4	Oocyst wall			PAM cl. 1
+cgd2_2580	4	PAM cl. 4			PAM cl. 1
+cgd2_2770	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_280	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd2_2900	4	Rhoptry			PAM cl. 1
+cgd2_3000	4	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd2_3040	4	Oocyst wall			PAM cl. 1
+cgd2_3100	4	ER			PAM cl. 1
+cgd2_3180	4	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_3200	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_3300	4	PAM cl. 6			PAM cl. 1
+cgd2_360	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd2_370	4	Rhoptry	apical_secretory	Microneme	PAM cl. 1
+cgd2_3913	4	PAM cl. 6			PAM cl. 1
+cgd2_3950	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_40	4	PAM cl. 5			PAM cl. 1
+cgd2_4120	4	PAM cl. 1	mitochondrion	Mitosome	PAM cl. 1
+cgd2_480	4	Mitosome			PAM cl. 1
+cgd2_860	4	20S proteasome	proteasome	PAM cl. 2	PAM cl. 1
+cgd2_900	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd2_990	4	PAM cl. 1			PAM cl. 1
+cgd3_1090	4	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_1290	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_1350	4	PAM cl. 2			PAM cl. 1
+cgd3_1450	4	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_160	4	PAM cl. 10			PAM cl. 1
+cgd3_1700	4	PAM cl. 4			PAM cl. 1
+cgd3_1840	4	PAM cl. 3			PAM cl. 1
+cgd3_2010	4	Rhoptry	apical_secretory	Microneme	PAM cl. 1
+cgd3_2090	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_2150	4	ER	ER	ER	PAM cl. 1
+cgd3_2200	4	20S proteasome	proteasome	PAM cl. 2	PAM cl. 1
+cgd3_2830	4	PAM cl. 2			PAM cl. 1
+cgd3_3170	4	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_320	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_3310	4	PAM cl. 3			PAM cl. 1
+cgd3_3470	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd3_3750	4	PAM cl. 1	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_3790	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd3_3930	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd3_4040	4	IMC/PM			PAM cl. 1
+cgd3_510	4	ER			PAM cl. 1
+cgd3_530	4	PAM cl. 4			PAM cl. 1
+cgd3_560	4	PAM cl. 4			PAM cl. 1
+cgd3_590	4	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd3_693	4	PAM cl. 4			PAM cl. 1
+cgd3_860	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd3_910	4	Rhoptry	apical_secretory	Microneme	PAM cl. 1
+cgd4_1070	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_1230	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd4_1330	4	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd4_1830	4	PAM cl. 1			PAM cl. 1
+cgd4_2130	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_230	4	PAM cl. 4			PAM cl. 1
+cgd4_2370	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_2373	4	PAM cl. 5			PAM cl. 1
+cgd4_2390	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_2400	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd4_2510	4	PAM cl. 4			PAM cl. 1
+cgd4_300	4	ER			PAM cl. 1
+cgd4_3090	4	Oocyst wall			PAM cl. 1
+cgd4_3150	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_3270	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_3620	4	Microneme			PAM cl. 1
+cgd4_3810	4	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd4_3860	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_3950	4	PAM cl. 2	proteasome	PAM cl. 2	PAM cl. 1
+cgd4_3990	4	PAM cl. 5			PAM cl. 1
+cgd4_4080	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd4_670	4	Oocyst wall			PAM cl. 1
+cgd4_700	4	IMC/PM	apical_secretory	Microneme	PAM cl. 1
+cgd4_740	4	PAM cl. 1	mitochondrion	Mitosome	PAM cl. 1
+cgd4_820	4	PAM cl. 3			PAM cl. 1
+cgd4_940	4	PAM cl. 1			PAM cl. 1
+cgd5_100	4	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_1410	4	PAM cl. 5	ER	ER	PAM cl. 1
+cgd5_1480	4	PAM cl. 4			PAM cl. 1
+cgd5_1490	4	PAM cl. 4			PAM cl. 1
+cgd5_1663	4	IMC/PM			PAM cl. 1
+cgd5_1880	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_1960	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_2230	4	ER	ER	ER	PAM cl. 1
+cgd5_2360	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_2510	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_2800	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_2900	4	IMC/PM	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_3040	4	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd5_3130	4	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd5_3170	4	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd5_330	4	PAM cl. 5			PAM cl. 1
+cgd5_3460	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd5_3830	4	PAM cl. 5			PAM cl. 1
+cgd5_4170	4	PAM cl. 6			PAM cl. 1
+cgd5_4180	4	PAM cl. 5	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd5_4210	4	20S proteasome	proteasome	PAM cl. 2	PAM cl. 1
+cgd5_4370	4	PAM cl. 1			PAM cl. 1
+cgd5_4470	4	Microneme			PAM cl. 1
+cgd5_4480	4	PAM cl. 3			PAM cl. 1
+cgd5_690	4	IMC/PM			PAM cl. 1
+cgd5_70	4	PAM cl. 1			PAM cl. 1
+cgd6_1020	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_1070	4	ER	ER	ER	PAM cl. 1
+cgd6_1080	4	Microneme			PAM cl. 1
+cgd6_110	4	ER			PAM cl. 1
+cgd6_120	4	PAM cl. 7	ER	ER	PAM cl. 1
+cgd6_1390	4	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd6_1490	4	ER	ER	ER	PAM cl. 1
+cgd6_1740	4	PAM cl. 3			PAM cl. 1
+cgd6_1960	4	ER	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd6_2220	4	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd6_2260	4	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_2330	4	Microneme			PAM cl. 1
+cgd6_2460	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd6_273	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_2830	4	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_2980	4	ER	ER	ER	PAM cl. 1
+cgd6_3010	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_3050	4	PAM cl. 4			PAM cl. 1
+cgd6_3180	4	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd6_3380	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_3630	4	Rhoptry			PAM cl. 1
+cgd6_3710	4	40S Ribosome			PAM cl. 1
+cgd6_4240	4	PAM cl. 5			PAM cl. 1
+cgd6_4350	4	PAM cl. 2	proteasome	PAM cl. 2	PAM cl. 1
+cgd6_4510	4	PAM cl. 3			PAM cl. 1
+cgd6_4610	4	PAM cl. 3	nucleus	PAM cl. 2	PAM cl. 1
+cgd6_4760	4	PAM cl. 7	cytoskeleton	PAM cl. 7	PAM cl. 1
+cgd6_4780	4	ER			PAM cl. 1
+cgd6_5140	4	ER	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd6_5310	4	PAM cl. 4			PAM cl. 1
+cgd6_800	4	Microneme			PAM cl. 1
+cgd6_880	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_10	4	ER			PAM cl. 1
+cgd7_1080	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_120	4	IMC/PM	pellicle_PM_IMC	IMC/PM	PAM cl. 1
+cgd7_1310	4	ER	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd7_1650	4	PAM cl. 6			PAM cl. 1
+cgd7_1730	4	CB			PAM cl. 1
+cgd7_1820	4	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_2013	4	ER			PAM cl. 1
+cgd7_2250	4	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_2260	4	ER	ER	ER	PAM cl. 1
+cgd7_2620	4	PAM cl. 4	apicoplast	PAM cl. 1	PAM cl. 1
+cgd7_2850	4	Microneme	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd7_3010	4	ER			PAM cl. 1
+cgd7_3660	4	20S proteasome	proteasome	PAM cl. 2	PAM cl. 1
+cgd7_3720	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_3940	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_4050	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd7_4180	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_430	4	PAM cl. 5			PAM cl. 1
+cgd7_4500	4	PAM cl. 4			PAM cl. 1
+cgd7_4560	4	Oocyst wall			PAM cl. 1
+cgd7_4680	4	PAM cl. 4			PAM cl. 1
+cgd7_470	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_4730	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_480	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd7_5140	4	CB			PAM cl. 1
+cgd7_5180	4	PAM cl. 2	nucleus	PAM cl. 2	PAM cl. 1
+cgd7_5270	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_10	4	PAM cl. 1			PAM cl. 1
+cgd8_1150	4	PAM cl. 3	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_1160	4	PAM cl. 1			PAM cl. 1
+cgd8_1720	4	PAM cl. 7			PAM cl. 1
+cgd8_1800	4	PAM cl. 4			PAM cl. 1
+cgd8_1840	4	40S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd8_2120	4	PAM cl. 1	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_2330	4	Microneme	golgi_secretory_vesicular	IMC/PM	PAM cl. 1
+cgd8_2360	4	Mitosome	mitochondrion	Mitosome	PAM cl. 1
+cgd8_2530	4	Rhoptry			PAM cl. 1
+cgd8_2550	4	ER			PAM cl. 1
+cgd8_2560	4	Mitosome	ER	ER	PAM cl. 1
+cgd8_2790	4	IMC/PM			PAM cl. 1
+cgd8_2810	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_2890	4	PAM cl. 2	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_3480	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd8_3610	4	PAM cl. 4			PAM cl. 1
+cgd8_3830	4	Microneme			PAM cl. 1
+cgd8_3980	4	PAM cl. 5			PAM cl. 1
+cgd8_4040	4	PAM cl. 5	nucleus	PAM cl. 2	PAM cl. 1
+cgd8_420	4	PAM cl. 2			PAM cl. 1
+cgd8_430	4	60S Ribosome	ribosome_RNP	60S Ribosome	PAM cl. 1
+cgd8_4310	4	CB			PAM cl. 1
+cgd8_440	4	60S Ribosome	cytosol	PAM cl. 1	PAM cl. 1
+cgd8_4880	4	ER			PAM cl. 1
+cgd8_4890	4	PAM cl. 3			PAM cl. 1
+cgd8_5090	4	Oocyst wall			PAM cl. 1
+cgd8_5380	4	PAM cl. 4			PAM cl. 1
+cgd8_690	4	PAM cl. 4			PAM cl. 1

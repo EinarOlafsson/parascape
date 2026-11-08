@@ -1,0 +1,18 @@
+{
+ "benchmark": {
+  "labelled": 1086,
+  "classes": 20,
+  "with_tg_ortholog_location": 626,
+  "answered": 626,
+  "right": 0.567,
+  "chance_on_answered": 0.219
+ },
+ "genes": 3923,
+ "sha256": {
+  "genes": "548a2dc27f9975e727f7e6cd630d55a6ef3a42767d975d3878b047f92084ea4f",
+  "lopit": "ad269a227475b6ab602e0dd67ef5023d83e2294855e1184356f5bbf4ea6ff1a1",
+  "stage": "33d583d90a644488b716aa3b4781cf4c855ad9480e0c1c5770ffd4b01fe05f51",
+  "interpro": "1f252bc3a1f3c606f5c764d237f27bc5fa7e27bfbadbbc0f9c82f298c94832ac",
+  "tm": "76013ad2f0717ecaf77570d59a21979b3fb07a6a03f79b0134154b1122ceca35"
+ }
+}

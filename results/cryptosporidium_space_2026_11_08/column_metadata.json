@@ -1,0 +1,114 @@
+{
+ "gene_id": {
+  "organism": "Cp",
+  "source": "CryptoDB / OrthoMCL (VEuPathDB)",
+  "kind": "identity",
+  "source_sha256": "548a2dc27f9975e727f7e6cd630d55a6ef3a42767d975d3878b047f92084ea4f",
+  "licence": "V (verify redistribution terms)"
+ },
+ "product": {
+  "organism": "Cp",
+  "source": "CryptoDB / OrthoMCL (VEuPathDB)",
+  "kind": "annotation",
+  "source_sha256": "548a2dc27f9975e727f7e6cd630d55a6ef3a42767d975d3878b047f92084ea4f",
+  "licence": "V (verify redistribution terms)"
+ },
+ "orthogroup": {
+  "organism": "Cp",
+  "source": "CryptoDB / OrthoMCL (VEuPathDB)",
+  "kind": "orthology",
+  "source_sha256": "548a2dc27f9975e727f7e6cd630d55a6ef3a42767d975d3878b047f92084ea4f",
+  "licence": "V (verify redistribution terms)"
+ },
+ "protein_length": {
+  "organism": "Cp",
+  "source": "CryptoDB / OrthoMCL (VEuPathDB)",
+  "kind": "sequence",
+  "source_sha256": "548a2dc27f9975e727f7e6cd630d55a6ef3a42767d975d3878b047f92084ea4f",
+  "licence": "V (verify redistribution terms)"
+ },
+ "lopit_location": {
+  "organism": "Cp",
+  "source": "Guerin et al. 2023 hyperLOPIT supplement",
+  "kind": "place (measured)",
+  "source_sha256": "ad269a227475b6ab602e0dd67ef5023d83e2294855e1184356f5bbf4ea6ff1a1",
+  "licence": "V (verify redistribution terms)"
+ },
+ "lopit_assigned": {
+  "organism": "Cp",
+  "source": "Guerin et al. 2023 hyperLOPIT supplement",
+  "kind": "place (measured)",
+  "source_sha256": "ad269a227475b6ab602e0dd67ef5023d83e2294855e1184356f5bbf4ea6ff1a1",
+  "licence": "V (verify redistribution terms)"
+ },
+ "measured_stage": {
+  "organism": "Cp",
+  "source": "Tandel et al. 2019 single-cell RNA-seq",
+  "kind": "transcript (measured)",
+  "source_sha256": "33d583d90a644488b716aa3b4781cf4c855ad9480e0c1c5770ffd4b01fe05f51",
+  "licence": "V (verify redistribution terms)"
+ },
+ "stage_asexual_pct": {
+  "organism": "Cp",
+  "source": "Tandel et al. 2019 single-cell RNA-seq",
+  "kind": "transcript (measured)",
+  "source_sha256": "33d583d90a644488b716aa3b4781cf4c855ad9480e0c1c5770ffd4b01fe05f51",
+  "licence": "V (verify redistribution terms)"
+ },
+ "stage_female_pct": {
+  "organism": "Cp",
+  "source": "Tandel et al. 2019 single-cell RNA-seq",
+  "kind": "transcript (measured)",
+  "source_sha256": "33d583d90a644488b716aa3b4781cf4c855ad9480e0c1c5770ffd4b01fe05f51",
+  "licence": "V (verify redistribution terms)"
+ },
+ "stage_logFC_female_vs_asexual": {
+  "organism": "Cp",
+  "source": "Tandel et al. 2019 single-cell RNA-seq",
+  "kind": "transcript (measured)",
+  "source_sha256": "33d583d90a644488b716aa3b4781cf4c855ad9480e0c1c5770ffd4b01fe05f51",
+  "licence": "V (verify redistribution terms)"
+ },
+ "stage_sporozoite_specific": {
+  "organism": "Cp",
+  "source": "Tandel et al. 2019 single-cell RNA-seq",
+  "kind": "transcript (measured)",
+  "source_sha256": "33d583d90a644488b716aa3b4781cf4c855ad9480e0c1c5770ffd4b01fe05f51",
+  "licence": "V (verify redistribution terms)"
+ },
+ "interpro_ids": {
+  "organism": "Cp",
+  "source": "InterPro via CryptoDB",
+  "kind": "domain (predicted)",
+  "source_sha256": "1f252bc3a1f3c606f5c764d237f27bc5fa7e27bfbadbbc0f9c82f298c94832ac",
+  "licence": "V (verify redistribution terms)"
+ },
+ "n_interpro": {
+  "organism": "Cp",
+  "source": "InterPro via CryptoDB",
+  "kind": "domain (predicted)",
+  "source_sha256": "1f252bc3a1f3c606f5c764d237f27bc5fa7e27bfbadbbc0f9c82f298c94832ac",
+  "licence": "V (verify redistribution terms)"
+ },
+ "dtm_type": {
+  "organism": "Cp",
+  "source": "DeepTMHMM run in this project",
+  "kind": "structure (predicted)",
+  "source_sha256": "76013ad2f0717ecaf77570d59a21979b3fb07a6a03f79b0134154b1122ceca35",
+  "licence": "O (computed here)"
+ },
+ "tm_n_signal": {
+  "organism": "Cp",
+  "source": "DeepTMHMM run in this project",
+  "kind": "structure (predicted)",
+  "source_sha256": "76013ad2f0717ecaf77570d59a21979b3fb07a6a03f79b0134154b1122ceca35",
+  "licence": "O (computed here)"
+ },
+ "tm_n_tm": {
+  "organism": "Cp",
+  "source": "DeepTMHMM run in this project",
+  "kind": "structure (predicted)",
+  "source_sha256": "76013ad2f0717ecaf77570d59a21979b3fb07a6a03f79b0134154b1122ceca35",
+  "licence": "O (computed here)"
+ }
+}

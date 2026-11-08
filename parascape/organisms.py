@@ -18,6 +18,7 @@ from dataclasses import dataclass, field
 
 PARASITE, HOST, VECTOR = "parasite", "host", "vector"
 TOXOPLASMA, FALCIPARUM, HUMAN, MOUSE = "Tg", "Pf", "Hs", "Mm"
+CRYPTOSPORIDIUM = "Cp"
 
 #: Protein reference tables precede the full host gene spaces. UniProt identifiers do not encode
 #: their organism, so callers must select a species explicitly instead of guessing from a prefix.

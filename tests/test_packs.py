@@ -220,3 +220,10 @@ def test_mouse_space_is_a_pack_keyed_by_ensembl_mouse_genes():
     assert MOUSE_SPACE.code == O.MOUSE and MOUSE_SPACE.distribution == "pack" and MOUSE_SPACE.kind == O.HOST
     assert MOUSE_SPACE.matches("ENSMUSG00000051747")
     assert not MOUSE_SPACE.matches("ENSG00000000003") and not MOUSE_SPACE.matches("A2ASS6")
+
+
+def test_cryptosporidium_space_is_keyed_by_cryptodb_genes():
+    from parascape.spaces.crypto import CRYPTO_SPACE
+    assert CRYPTO_SPACE.code == O.CRYPTOSPORIDIUM and CRYPTO_SPACE.kind == O.PARASITE
+    assert CRYPTO_SPACE.matches("cgd4_2900") and not CRYPTO_SPACE.matches("Cgd2_140")
+    assert not CRYPTO_SPACE.matches("TGME49_262730")

@@ -330,3 +330,19 @@ share-alike, **V** verify the terms first, **X** local build only.
 * **Phase 2:** organism-qualified bridges with relation types (`bridges.py`), counterpart resolution in its own space.
 * **Not started:** WP2 (slot generator per space), WP4 (Rn, Fc), WP5 (Ag, As), WP6 (Cp, Pb, Pv), WP8 (strategies
   across N spaces).
+
+## WP6 started: Cryptosporidium parvum (2026-11-08)
+
+`parascape/spaces/crypto.py` (`CRYPTO_SPACE`, code `Cp`, CryptoDB `cgd` identifiers, organisms.CRYPTOSPORIDIUM) and
+`scripts/build_cryptosporidium_space_notebook.py` -> `notebooks/cryptosporidium_space_2026_11_08.ipynb`,
+`results/cryptosporidium_space_2026_11_08/` (gene table, column metadata, benchmark rows). From the sources already on
+disk, each hashed: 3,923 Iowa II genes (18 non-`cgd` rows listed and left out) with product, OrthoMCL group, length;
+measured hyperLOPIT location (Guerin 2023), measured stage (Tandel 2019 single-cell), InterPro, DeepTMHMM.
+
+**Benchmark on Cryptosporidium truth:** the hyperLOPIT location measured on a gene's Toxoplasma orthologs, mapped to
+Cryptosporidium locations on training genes only (folds over whole OrthoMCL groups), predicts the measured
+Cryptosporidium location of 626 of 1,086 labelled genes **56.7 % right, against 21.9 % for the commonest class**
+(20 location classes).
+
+Not distributed: CryptoDB tables and the Guerin supplement carry licence code V until their redistribution terms
+are verified; the table is local. P. berghei (PlasmoGEM) and P. vivax remain.
