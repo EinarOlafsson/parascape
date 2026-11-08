@@ -123,13 +123,23 @@ def test_a_gene_card_shows_its_claims_and_opens_one(shipped):
         d = C.discoveries("Tg")
         if not len(d):
             pytest.skip("no Toxoplasma discoveries built")
+        # A discovery an independent check reaches: the first one may have none, and its card then says
+        # so instead of showing the checks table this test reads.
+        cl = C.shipped()
+        verdicts = [c for c in cl.columns if str(c).endswith(" verdict")]
+        checked = cl[(cl["organism"].astype(str) == "Tg") & cl[verdicts].notna().any(axis=1)
+                     & (cl["status"].astype(str) != "outside tested range")]
+        d = d[d["gene_id"].astype(str).isin(set(checked["gene_id"].astype(str)))]
+        if not len(d):
+            pytest.skip("no Toxoplasma discovery has an independent check")
         ids = w.nodes.gene_id.astype(str)
         row = int(ids[ids == str(d["gene_id"].iloc[0])].index[0])
         w.show_detail(row)
         html = w.detail.toHtml()
         assert "What ParaScape claims" in html and "parascape://claim/" in html
-        link = "parascape://claim/" + html.split("parascape://claim/", 1)[1].split('"', 1)[0]
-        w._detail_link(QtCore.QUrl(link))
+        gene = str(d["gene_id"].iloc[0])
+        target = str(checked[checked["gene_id"].astype(str) == gene]["target"].iloc[0])
+        w._detail_link(QtCore.QUrl(f"parascape://claim/{gene}/{target}"))
         shown = w.detail.toHtml()
         assert "Independent checks" in shown and "back to the gene" in shown
     finally:

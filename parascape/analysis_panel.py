@@ -2052,6 +2052,10 @@ class AnalysisPanel(QtWidgets.QWidget):
         Runs on the GUI thread -- see the connection in `__init__`. The gallery is fed from the same
         signal by the window, so the row and the thumbnail appear together.
         """
+        # A step can arrive after the panel was closed (the walk ran on a worker); its table is gone then.
+        from shiboken6 import isValid
+        if not isValid(self) or not isValid(self.walk_table):
+            return
         self._append(self.walk_table, step.row)
         self.status.emit(f"walk {step.index} of {step.total}: {step.label}")
 

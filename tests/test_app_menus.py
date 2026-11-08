@@ -1248,7 +1248,12 @@ def test_the_species_menu_marks_the_one_that_is_open(qapp):
 def test_switching_organism_reads_the_new_organism_and_nothing_of_the_old(qapp):
     """Instruction 64.36: an organism change keeps a valid context -- the Gene module of the new window
     reads that organism's genes and never shows one from the previous organism."""
+    from PySide6 import QtCore
     from parascape.app import Window
+    # open_species remembers the choice; restore it, or every later test opens on Plasmodium (the 14
+    # test_app_smoke failures that followed this file in one run).
+    settings = QtCore.QSettings("parascape", "parascape")
+    before = settings.value("data/species") if settings.contains("data/species") else None
     tg = Window(species="Toxoplasma gondii")
     try:
         pf = tg.open_species("Plasmodium falciparum")
@@ -1264,3 +1269,5 @@ def test_switching_organism_reads_the_new_organism_and_nothing_of_the_old(qapp):
             pf.close()
     finally:
         tg.close()
+        settings.remove("data/species") if before is None else settings.setValue("data/species", before)
+        settings.sync()

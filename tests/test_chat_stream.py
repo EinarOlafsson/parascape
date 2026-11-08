@@ -259,6 +259,7 @@ def test_the_worker_emits_chunks_and_finishes(qapp):
     QtWidgets.QApplication.processEvents()
     assert done == [True]
     assert "hello from the worker" in "".join(got)
+    _collect_here(w)
 
 
 def test_stopping_the_worker_halts_delivery(qapp):
@@ -271,6 +272,21 @@ def test_stopping_the_worker_halts_delivery(qapp):
     assert w.wait(15000), "the worker never finished"
     QtWidgets.QApplication.processEvents()
     assert len(got) <= 1, "a stopped worker went on delivering the whole stream"
+    _collect_here(w)
+
+
+def _collect_here(worker):
+    """Delete a finished, unparented worker on THIS (the GUI) thread, now.
+
+    Left to the garbage collector, the wrapper was collected later on whichever thread happened to
+    allocate -- a later test's worker thread -- and Qt deleted the QThread from a thread that did not
+    own it: a segfault three tests on. A worker with a parent (as in the panel) never has this problem.
+    """
+    import gc
+    worker.deleteLater()
+    QtWidgets.QApplication.processEvents()
+    del worker
+    gc.collect()
 
 
 def test_send_streams_a_reply_into_the_log(qapp, panels):
@@ -347,10 +363,17 @@ def test_the_accent_falls_back_when_the_theme_is_unavailable(qapp, panels):
     assert panel._accent("you") != panel._accent("assistant")
 
 
-def test_refresh_providers_disables_the_box_when_none_are_installed(qapp, panels, monkeypatch):
+def test_with_no_command_line_installed_the_hosted_assistant_is_chosen(qapp, panels, monkeypatch):
+    """Every provider is listed, as spaCR does; ones not installed say so, and the hosted ParaScape AI,
+    which needs nothing installed, is selected -- so the box stays usable."""
     monkeypatch.setattr(C.shutil, "which", lambda name: None)
     panel = C.ChatPanel()
     panels.append(panel)
     panel.refresh_providers()
-    assert not panel.provider_box.isEnabled()
-    assert panel.current_provider() is None
+    assert panel.provider_box.isEnabled()
+    assert panel.provider_box.count() == len(C.PROVIDERS)
+    chosen = panel.current_provider()
+    assert chosen is not None and chosen.hosted
+    for i, p in enumerate(C.PROVIDERS):
+        if not p.hosted:
+            assert "not installed" in panel.provider_box.itemText(i)

@@ -56,8 +56,13 @@ def _rule(sheet, selector):
 
 def test_menus_tooltips_and_lists_are_rounded_glass_in_the_stylesheet():
     sheet = TH.stylesheet("dark")
-    for selector in ("QMenu", "QToolTip", "QComboBox QAbstractItemView",
-                     "QFrame#HelpSearchResults"):
+    # Menus and drop-down lists are SOLID near-black (Einar, 2026-11-06: "dropdowns and right click menus
+    # should not be transparent"); tooltips keep the glass. All stay rounded.
+    for selector in ("QMenu", "QComboBox QAbstractItemView"):
+        rule = _rule(sheet, selector)
+        assert "rgba(" not in rule.split("border")[0], f"{selector} must be solid"
+        assert "border-radius" in rule, f"{selector} has square corners"
+    for selector in ("QToolTip",):
         rule = _rule(sheet, selector)
         assert "rgba(0, 0, 0, " in rule, f"{selector} is not black glass"
         assert "border-radius" in rule, f"{selector} has square corners"
@@ -124,7 +129,7 @@ def test_a_shown_menu_paints_nothing_in_its_corners(qapp):
     img = menu.grab().toImage()
     assert img.pixelColor(0, 0).alpha() == 0, "a square corner survived"
     middle = img.pixelColor(img.width() // 2, img.height() // 2)
-    assert 150 < middle.alpha() < 255, "the body is glass: mostly opaque, not solid"
+    assert middle.alpha() == 255, "the body is solid (Einar, 2026-11-06), only the corners are clear"
     menu.hide()
 
 
@@ -311,6 +316,6 @@ def test_preferences_is_still_a_window_of_its_own_when_dressed(win):
 def test_the_window_applies_the_theme_the_painted_parts_read(win, qapp):
     win.apply_theme("light")
     assert qapp.property("parascapeTheme") == "light"
-    assert "rgba(255, 255, 255, " in _rule(qapp.styleSheet(), "QMenu")
+    assert "#fefefe" in _rule(qapp.styleSheet(), "QMenu")          # solid near-white menus
     win.apply_theme("dark")
-    assert "rgba(0, 0, 0, " in _rule(qapp.styleSheet(), "QMenu")
+    assert "#020202" in _rule(qapp.styleSheet(), "QMenu")          # solid near-black menus

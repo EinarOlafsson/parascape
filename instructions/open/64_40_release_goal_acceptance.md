@@ -60,9 +60,10 @@ Pending: commit, checks, artifact/benchmark identities, measured population, lim
 3. The installed-distribution walk-through (browse a source, look up a gene/class/label, open cached inferences
    and cards from an installed wheel, offline and cold-cache) is covered piecewise by the window tests and the
    cold-cache checks of 64.28/64.29, not yet as one run from an installed wheel.
-4. Known order dependence in the local suite: `test_app_menus.py` then `test_app_smoke.py` in one process gives 14
-   smoke failures (the menu tests leave the Plasmodium map open); each file passes alone, and the same 14 fail on a
-   clean checkout, so this predates today's changes.
+4. ~~Order dependence: `test_app_menus.py` then `test_app_smoke.py` gave 14 smoke failures.~~ Fixed 2026-11-07:
+   the 64.36 organism-switch test remembered Plasmodium as the species and never restored it (the "clean
+   checkout" comparison already contained that test). It now restores the setting; menus + smoke pass together
+   (103 passed).
 
 **CI after the Qt binding fix (2026-11-07).** With `PYQTGRAPH_QT_LIB: PySide6` (commit 385d12e5, the workflow push
 was accepted) the first step passes. The next, `tests/test_app_contexts.py` under xvfb, passed every assertion
@@ -78,3 +79,13 @@ is invisible there (every local run is 3.12), while on 3.11 it aborts the proces
 Python 3.12, the version ParaScape is developed and used on. **Open risk, for Einar:** `requires-python` still
 says >= 3.10, so a 3.10/3.11 user with PySide6 6.12 can hit this abort; options are raising `requires-python` to
 3.12, or excluding PySide6 6.12 on older Pythons once a fixed release exists.
+
+**CI suite cleanup (2026-11-07).** With the suite finally running to 93 % on CI, the remaining failures were fixed:
+organism literals replaced by `parascape.organisms` constants (bridges, gene_reading, gene_module, network_module,
+methods_text, recipes, redundancy, track_record, two scripts); the value-scorecard test knows the train-mean skill;
+the slot table regenerated (expr_max now covers GSE108740 genes only, 7,739); the claims card test opens a claim an
+independent check reaches; a late walk step no longer writes into a deleted table (`analysis_panel`); glass tests
+follow Einar's solid-menu decision of 2026-11-06; chat tests collect their unparented workers on the GUI thread (a
+later GC on a worker thread segfaulted) and expect the hosted assistant to be chosen when no CLI is installed; the
+Toxoplasma frozen functional recoveries were re-run on fresh splits (64.11a). CI runs with
+`PARASCAPE_AMBIENT_DEFAULT=0` (no backdrop animation behind test windows) and a 60-minute cap on the suite step.
