@@ -563,3 +563,22 @@ recorded.
 Tests: `tests/test_harness.py::test_deploy_applies_the_deployed_fit_and_fills_only_when_the_question_may`,
 `tests/test_information_map_panel.py::test_the_shipped_release_loads_if_it_is_present` (every predicted cell is a
 fill, in a described filled column, with a probability).
+
+## 2026-11-08: fills must hold on 2 of 3 partitions (Einar)
+
+Instruction 73 phase 5 showed that a question at the edge of the 90 % bar can pass or fail by the luck of the
+split. Einar chose the rule: **a question fills only if its frozen-test lower bound reaches 0.90 on at least 2 of 3
+partitions** -- seed 0 and two fresh seeds, 4 and 5, with the same strategy each time.
+
+`notebooks/information_map_fills_2026_11_08.ipynb` section 1 applies it;
+`results/information_map_fills_2026_11_08/partition_stability.tsv`:
+
+| question | seed 0 | seed 4 | seed 5 | fills |
+|---|---|---|---|---|
+| in-vivo whole brain, acute, change | 0.916 | 0.902 | 0.868 | yes (19 cells) |
+| hyperLOPIT unified nucleus | 0.926 | 0.848 | 0.823 | **withdrawn (9 cells)** |
+| macrophage expression high | 0.901 | 0.925 | 0.894 | yes, but every gene is measured: no cells |
+| ribosome profiling, confluent, change | 0.904 | 0.830 | 0.914 | yes, but not applicable (98 % fill rate): no cells |
+
+**The map now holds 19 filled cells, all of them in-vivo brain response.** Earlier `filled_` columns are removed
+before each write, so a withdrawn question leaves nothing behind. The map tests pass (22).

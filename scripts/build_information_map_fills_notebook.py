@@ -50,7 +50,43 @@ def main() -> None:
             "groups = groups.where(groups.notna(), pd.Series({g: 'self:' + g for g in nodes.index}))",
             "cat = pd.read_csv(os.path.join(REPO, 'results/question_catalogue_2026_11_08/catalogue.tsv'), sep='\\t').set_index('column')",
             "chosen[['question', 'column', 'category', 'frozen_auc', 'precision_lower90']]")
-    nb.md("## 1 · Re-run, deploy, keep the fills")
+    nb.md("## 1 · Does the bar hold on other partitions?",
+          "Einar (2026-11-08): a question fills only if its frozen-test lower bound reaches 0.90 on **at least 2 "
+          "of 3** partitions -- the original (seed 0) and two fresh ones (seeds 4 and 5, unused by any other run "
+          "of these questions), the same strategy each time. One frozen test at the edge of the bar can pass by "
+          "the luck of the split: the nucleus question cleared it on seeds 0 and 3 and missed on seed 2 (0.885).")
+    nb.code("SEEDS = (0, 4, 5)",
+            "def as_question(r):",
+            "    row = cat.loc[r.column]",
+            "    for suffix, wording, labels in HA.binary_labels(r.column, row.kind, row.category, nodes[r.column]):",
+            "        qid = f'cat_{HA._safe(r.column)}_{suffix}'",
+            "        if qid == r.question:",
+            "            family = fam(r.column)",
+            "            q = Question(id=qid, text=f'{row.question} -- yes when {wording}', answer_type='boolean', question_class='B',",
+            "                         label_source=f'nodes.parquet:{r.column}', label_family=family, evidence_forbidden=(family,),",
+            "                         label_tier='observed-screen', label_category=row.category, status='scored')",
+            "            return q, labels",
+            "    raise KeyError(r.question)",
+            "stab = []",
+            "for r in chosen.itertuples(index=False):",
+            "    q, labels = as_question(r)",
+            "    feats = H.allowed_features(q, nodes.loc[labels.index, numeric].astype('float64'), families)",
+            "    for seed in SEEDS:",
+            "        res = H.run_question(q, labels=labels.astype(bool), features=feats, families=families,",
+            "                             groups=groups.reindex(labels.index),",
+            "                             strategies=[H.Strategy.of('boosted trees', 'hist_gbt', max_iter=150)], seed=seed,",
+            "                             importance_repeats=1, log_path=H.HOLDOUT_LOG)",
+            "        stab.append(dict(question=r.question, seed=seed, frozen_auc=round(res.frozen_test['roc_auc'], 3),",
+            "                         lower90=round(res.frozen_test['precision_lower90'], 3), may_fill=bool(res.may_fill)))",
+            "St = pd.DataFrame(stab)",
+            "St.to_csv(os.path.join(OUT, 'partition_stability.tsv'), sep='\\t', index=False)",
+            "passes = St.groupby('question').may_fill.sum()",
+            "stable = set(passes[passes >= 2].index)",
+            "print('fill on >= 2 of 3 partitions:', sorted(stable))",
+            "print('withheld (bar not met on 2 of 3):', sorted(set(passes.index) - stable))",
+            "chosen = chosen[chosen.question.isin(stable)]",
+            "St.pivot(index='question', columns='seed', values='lower90')")
+    nb.md("## 2 · Re-run, deploy, keep the fills")
     nb.code("fills, summary = [], []",
             "TAG = 'filled:hist_gbt@2026-11-08'",
             "for r in chosen.itertuples(index=False):",
@@ -95,26 +131,27 @@ def main() -> None:
             "F = pd.DataFrame(fills); Sm = pd.DataFrame(summary)",
             "F.to_csv(os.path.join(OUT, 'fills.tsv'), sep='\\t', index=False); Sm.to_csv(os.path.join(OUT, 'summary.tsv'), sep='\\t', index=False)",
             "Sm")
-    nb.md("## 2 · Into the published map",
+    nb.md("## 3 · Into the published map",
           "One column per question, holding only its fills; probability = calibrated probability; source = the tag "
-          "and the question. Evidence rows appended in the same form. Observed columns are not touched.")
+          "and the question. Evidence rows appended in the same form. Observed columns are not touched. Every "
+          "earlier `filled_` column is removed first, so a question withheld by the partition rule leaves no cells.")
     nb.code("values = pd.read_parquet(os.path.join(MAP, 'values.parquet')); prob = pd.read_parquet(os.path.join(MAP, 'probability.parquet'))",
             "source = pd.read_parquet(os.path.join(MAP, 'source.parquet')); evidence = pd.read_parquet(os.path.join(MAP, 'evidence.parquet'))",
             "before = {k: v.shape for k, v in dict(values=values, probability=prob, source=source, evidence=evidence).items()}",
+            "for frame in (values, prob, source):",
+            "    frame.drop(columns=[c for c in frame.columns if c.startswith('filled_')], inplace=True)",
             "for col in Sm[Sm.filled > 0].column:",
-            "    for frame in (values, prob, source):",
-            "        if col in frame.columns:",
-            "            frame.drop(columns=col, inplace=True)",
             "    rows = F[F.trait == col].set_index('gene_id')",
             "    values[col] = rows.value.map(lambda v: v == 'True').reindex(values.index).astype('object')",
             "    prob[col] = rows.probability.reindex(values.index)",
             "    source[col] = rows.source_tier.reindex(values.index)",
-            "evidence = evidence[~evidence.trait.isin(Sm.column)]",
+            "evidence = evidence[~evidence.trait.astype(str).str.startswith('filled_')]",
             "evidence = pd.concat([evidence, F[evidence.columns.intersection(F.columns)]], ignore_index=True)",
             "values.to_parquet(os.path.join(MAP, 'values.parquet')); prob.to_parquet(os.path.join(MAP, 'probability.parquet'))",
             "source.to_parquet(os.path.join(MAP, 'source.parquet')); evidence.to_parquet(os.path.join(MAP, 'evidence.parquet'), index=False)",
             "desc_path = os.path.join(MAP, 'column_descriptions.json')",
             "desc = json.load(open(desc_path)) if os.path.exists(desc_path) else {}",
+            "desc = {k: v for k, v in desc.items() if not k.startswith('filled_')}",
             "desc.update({r.column: f'FILLED (predicted, never observed): {r.question}' for r in Sm[Sm.filled > 0].itertuples(index=False)})",
             "json.dump(desc, open(desc_path, 'w'), indent=1)",
             "after = {k: v.shape for k, v in dict(values=values, probability=prob, source=source, evidence=evidence).items()}",

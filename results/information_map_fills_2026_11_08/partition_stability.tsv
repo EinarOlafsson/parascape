@@ -1,0 +1,13 @@
+question	seed	frozen_auc	lower90	may_fill
+cat_invivo_WholeBrain_Acute_1_change	0	0.874	0.916	True
+cat_invivo_WholeBrain_Acute_1_change	4	0.899	0.902	True
+cat_invivo_WholeBrain_Acute_1_change	5	0.881	0.868	False
+cat_lopit_unified_nucleus	0	0.914	0.926	True
+cat_lopit_unified_nucleus	4	0.917	0.848	False
+cat_lopit_unified_nucleus	5	0.914	0.823	False
+cat_macrophage_expression_percentile_high	0	0.969	0.901	True
+cat_macrophage_expression_percentile_high	4	0.951	0.925	True
+cat_macrophage_expression_percentile_high	5	0.954	0.894	False
+cat_rpf129869_confluent_r1_change	0	0.985	0.904	True
+cat_rpf129869_confluent_r1_change	4	0.974	0.83	False
+cat_rpf129869_confluent_r1_change	5	0.984	0.914	True
