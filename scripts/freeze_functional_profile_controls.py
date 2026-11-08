@@ -13,6 +13,7 @@ import argparse
 from collections import Counter
 from dataclasses import asdict
 import hashlib
+import os
 import json
 from pathlib import Path
 import shutil
@@ -22,10 +23,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from parascape import organisms as _ORGANISMS
-SNAPSHOT = ROOT / 'results/functional_profile_targets_2026_10_08_v3'
-SNAPSHOT_SHA256 = '4990b6a7ff640e22daf27420994f1ea0cbe356930cb4656b8f8ca84dbdd2eadf'
+SNAPSHOT = Path(os.environ.get('PARASCAPE_FN_DOM_SNAPSHOT', ROOT / 'results/functional_profile_targets_2026_10_08_v3'))
+SNAPSHOT_SHA256 = os.environ.get('PARASCAPE_FN_DOM_SNAPSHOT_SHA256', '4990b6a7ff640e22daf27420994f1ea0cbe356930cb4656b8f8ca84dbdd2eadf')
 CONTROL_ID = 'FN-DOM-CONTROL-01-Tg-pfam-complete-profile'
-SEED = 20261008
+SEED = int(os.environ.get('PARASCAPE_FN_DOM_SEED', 20261008))
 
 
 def _sha(path):
@@ -196,7 +197,8 @@ def prepare(output):
     output = Path(output)
     contract, source_scope, receipts = load_snapshot(SNAPSHOT)
     assert len(contract.rows) == 8140 and sum(contract.eligibility) == 4310
-    assert len(contract.split.entities('test')) == 635
+    if SEED == 20261008:                 # the original split's populations; a new seed draws its own
+        assert len(contract.split.entities('test')) == 635
     source_path = Path(source_scope['source_census_path'])
     assert _sha(source_path) == source_scope['source_census_sha256']
     receipts[str(source_path)] = source_scope['source_census_sha256']
@@ -211,7 +213,9 @@ def prepare(output):
              'classifier_or_feature_fitting_performed': False, 'biological_admission': False}
     _write(output / 'control_scope.json', scope)
     rows, scores, cards, classes = build_controls(contract, seed=SEED)
-    assert len(rows) == 635 and int((~rows.training_supported).sum()) == 333
+    if SEED == 20261008:
+        assert len(rows) == 635 and int((~rows.training_supported).sum()) == 333
+    assert len(rows) == len(contract.split.entities('test'))
     rows.to_parquet(output / 'test_rows.parquet', index=False)
     _write(output / 'control_cards.json', cards)
     _write(output / 'class_cards.json', classes)

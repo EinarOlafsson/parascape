@@ -1,0 +1,32 @@
+{
+  "sha256": "302c2e2edcc23ec0f40f6ae4fb8320a63b1161c838fdba02b8508874e63fba9f",
+  "source_artifact_identity": "b6030c3783d330c100b3079cd49d113df84c3b844af1bc3f10479f5234365186",
+  "rows": 686,
+  "unsupported_test_genes": 317,
+  "profile_classes": 472,
+  "domain_member_classes": 598,
+  "source_payload_receipts": 12,
+  "native_displayed_payloads": [
+    "rows.json",
+    "card.json",
+    "class_cards.json",
+    "baseline_cards.json"
+  ],
+  "member_derivation": {
+    "recipe": "recorded_profile_member_cards_v1",
+    "namespace": "pfam",
+    "source_rows_sha256": "fd9ea098948f6a443ed97780021a0b508e9fbd3e215a555f86cba9b197c070f8",
+    "payload_sha256": "fe71d5e862a0076cb26531c94325ec63b4d4edb37437a80b9f047e34216ac671"
+  },
+  "biological_admission": false,
+  "calibrated_confidence": null,
+  "counts": {
+    "abstained": 664,
+    "answered": 22,
+    "correct": 13,
+    "eligible": 686,
+    "unique_biological_entities": 686,
+    "wrong": 9
+  },
+  "bytes": 26638598
+}

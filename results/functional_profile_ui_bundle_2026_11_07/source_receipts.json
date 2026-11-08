@@ -1,0 +1,74 @@
+[
+  {
+    "name": "baseline_cards.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/baseline_cards.json",
+    "bytes": 381910,
+    "sha256": "3342236bcd339262346a4851ee7e3ac6232748d434fb3bdb8b8cf06c21d14bd6"
+  },
+  {
+    "name": "baseline_comparisons.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/baseline_comparisons.json",
+    "bytes": 1651,
+    "sha256": "aaf0771b2b843035aeabca43bb482c912f03160430785d4c459b076dad8a79d7"
+  },
+  {
+    "name": "card.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/card.json",
+    "bytes": 83325,
+    "sha256": "b1a6f3b73c416a0712da6fb105f4268024fe0cbdbe8474ce347ad6b0fbdf0446"
+  },
+  {
+    "name": "class_cards.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/class_cards.json",
+    "bytes": 25376050,
+    "sha256": "96e5499149697252c97cfff2ce0ac576ff8f145acd549b5e39fa3bf8ac060f95"
+  },
+  {
+    "name": "class_scores.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/class_scores.json",
+    "bytes": 6459565,
+    "sha256": "bf37925430566cb8c2e789c27e1fd6a4c7661ca85e7361384af5df5af76da4f6"
+  },
+  {
+    "name": "exclusions.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/exclusions.json",
+    "bytes": 38720,
+    "sha256": "375b5e85a3029ce146fcc4f3913572011fe9276ba96a97f356f69a2bd6369a4a"
+  },
+  {
+    "name": "feature_provenance.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/feature_provenance.json",
+    "bytes": 123964,
+    "sha256": "1777391cab12d1a15ce16b5406cf36037d4a0f7857f1841417cf576106aa0eb7"
+  },
+  {
+    "name": "model_state.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/model_state.json",
+    "bytes": 24630003,
+    "sha256": "24f884fcd8c2dc55e4c89dc9c01fe2cd9c88ce80d24bc53e25e32b749c65da04"
+  },
+  {
+    "name": "native_class_scores.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/native_class_scores.json",
+    "bytes": 4151281,
+    "sha256": "b5ff14b5095f5364cab938aba51489408eada1e60bd6bd6f81c869926bf824ec"
+  },
+  {
+    "name": "raw_votes.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/raw_votes.json",
+    "bytes": 1053685,
+    "sha256": "4949b6a139ad595d0eeb874db9850e544aa5416016d1eff6af4ef31e52ffcd3f"
+  },
+  {
+    "name": "rows.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/rows.json",
+    "bytes": 136763,
+    "sha256": "fd9ea098948f6a443ed97780021a0b508e9fbd3e215a555f86cba9b197c070f8"
+  },
+  {
+    "name": "view_snapshot.json",
+    "path": "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/view_snapshot.json",
+    "bytes": 84119,
+    "sha256": "fec4f384ebf814746ad2c99197a74a766ccf8db6dfc5839b6f468010cba356fc"
+  }
+]

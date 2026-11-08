@@ -1,0 +1,4652 @@
+{
+  "benchmarks": [
+    {
+      "metadata": {
+        "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+        "biological_admission": false,
+        "calibrated_confidence": null,
+        "organism": "Tg",
+        "source_artifact_identity": "63171124d85dee3f504dfba4c42f58e7ee7261e09541e31a4af558f5e5e11b5a",
+        "source_context": "Installed Toxoplasma gene EC annotations resolved through pinned ENZYME nomenclature; gene-level curation/prediction provenance unresolved.",
+        "source_directory": "results/functional_ec_knn_pilot_2026_11_07_seed24",
+        "source_manifest": {
+          "files": {
+            "baseline_cards.json": {
+              "bytes": 8452,
+              "sha256": "812e325bb1a5dd7ef39a5cae1af1796351c52e6b33c324664e51c2e3f9b2b1d2"
+            },
+            "card.json": {
+              "bytes": 4528,
+              "sha256": "a5fd9abdc7bcb1d11a50311f46e334720784e92ad262045ef64490860a6cf1e0"
+            },
+            "class_scores.json": {
+              "bytes": 22830,
+              "sha256": "b833a386e6bcf3169b84fc304fe4e9bfba6ab3cbf032ae55be70e4aa99e0c58c"
+            },
+            "major_class_cards.json": {
+              "bytes": 2932,
+              "sha256": "f840578a9ca4337435bdc4f9fdec0cfb12aa28760c85dca1dfe77ab1824675e0"
+            },
+            "model_state.json": {
+              "bytes": 7296951,
+              "sha256": "f0da012647094bf0af8d2f95ba31617087bdb1f187bece3b9a5e3bb213265b80"
+            },
+            "profile_class_cards.json": {
+              "bytes": 27853,
+              "sha256": "a1426536c117c6ea870bf6ad650d910e8607bd9d22f9eca1813aad1ffbf2ca50"
+            },
+            "row_columns.json": {
+              "bytes": 86,
+              "sha256": "39fba28b8b887dcf9a75256e688c330f76ecaf661fde0715038677e4f6c338c2"
+            },
+            "rows.json": {
+              "bytes": 30329,
+              "sha256": "0a45f500113442d956562813c0da652fcc9fa5d01813bb046246c0558edadb9f"
+            }
+          },
+          "identity": "63171124d85dee3f504dfba4c42f58e7ee7261e09541e31a4af558f5e5e11b5a",
+          "key": "76485e6aea936eeb60e0b26507a74d6defba189b73ccea4ce93a7c48e6b11526",
+          "schema_version": 1,
+          "spec": {
+            "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+            "calibration_scope": "",
+            "code_version": "c55953313d85633ade72c755ffd3972903aaa9be+functional-ec-pilot",
+            "confidence_kind": "method_support",
+            "dependencies": [
+              {
+                "kind": "code",
+                "name": "freeze_functional_ec_pilot",
+                "sha256": "ab70549d8dee56a86d6371b01cd2638088b62cd441329ea7492a8480e6c1a998"
+              },
+              {
+                "kind": "code",
+                "name": "functional_ontology",
+                "sha256": "04442b4c061e2ad35ceff108a96e26e18119908f271bcf0af17431d3a891966d"
+              },
+              {
+                "kind": "code",
+                "name": "discovery_labels",
+                "sha256": "c89f92394c6a2eea3ccdcb491f1c892892f2a15802896453bb356a5e5fabde5b"
+              },
+              {
+                "kind": "code",
+                "name": "label_records",
+                "sha256": "05870874f9ec301d27392c8404037bb077b61e1f96bb7c019893f8ad0168edaf"
+              },
+              {
+                "kind": "code",
+                "name": "strategies",
+                "sha256": "f691849d4c66b36347e490e1ee3d01e1675c24ac522f33dab141d7856d355e01"
+              },
+              {
+                "kind": "code",
+                "name": "splits",
+                "sha256": "6898360c7f5acfa3aa97e4004d20db19ee7a4bea224a85c2a537c2e729b7d23f"
+              },
+              {
+                "kind": "code",
+                "name": "search",
+                "sha256": "54d7fc6dbaa401a2c7883ddc8440461940e3045f99a44117d2e4aead363cf6ba"
+              },
+              {
+                "kind": "code",
+                "name": "slots",
+                "sha256": "b9d4a2ee3ad81a688a81fbf60335ec5c6b673ce79b6a9c3e1d79c5e1b46b6e1d"
+              },
+              {
+                "kind": "code",
+                "name": "embedding",
+                "sha256": "cc1af4aef37b8ce1d9baf1c7b95e7bc45b055b386e7e9ea3860d633086aa1d97"
+              },
+              {
+                "kind": "code",
+                "name": "datasets",
+                "sha256": "41a21735ad7360d4a77762e669106b1b1541caa52694284265cfb1112baa3105"
+              },
+              {
+                "kind": "code",
+                "name": "artifacts",
+                "sha256": "405ca2f936d1c6e9110bea9db99cd03cf23dd0f544a83ce39ea80d599bdcbfed"
+              },
+              {
+                "kind": "code",
+                "name": "record_scorecards",
+                "sha256": "0b5c44349bf1817f01050607185fab5ac3cccd3bdf987b30360d58d65a63489a"
+              },
+              {
+                "kind": "code",
+                "name": "scorecard",
+                "sha256": "eb34e39b9ecf061b98e9d7cbf2b1ad69fba9f07e4bd473237122cbf80d95ac47"
+              },
+              {
+                "kind": "code",
+                "name": "baselines",
+                "sha256": "c6bf728de19a3b53aaa3d40c71ab85854162295ec3ca15d9bfcd86117d4600f5"
+              },
+              {
+                "kind": "code",
+                "name": "capabilities",
+                "sha256": "6659d9c0cf4eab8d1b932d06a50c0c0818b6903efb279c04835464d61934d723"
+              },
+              {
+                "kind": "table",
+                "name": "installed_nodes",
+                "sha256": "3d8f287465581d93d7c96cfeb001d98b1a42eb369ec9e2c8bcef882153c032b0"
+              },
+              {
+                "kind": "source",
+                "name": "ENZYME",
+                "sha256": "6e1f553fcaa15ba7018344d4181012002547cf15febeb9d3a03dacdd75963001"
+              },
+              {
+                "kind": "truth",
+                "name": "complete_major_class_profiles",
+                "sha256": "a6fee05d56e2b479dcd0c01f69345fb3393c94fa2a0a89cbc1ad29067dbf6b6e"
+              },
+              {
+                "kind": "split",
+                "name": "nested",
+                "sha256": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205"
+              },
+              {
+                "kind": "exclusions",
+                "name": "training_source_closure",
+                "sha256": "ccd9c0f8df0a9488b66388cb2a7d971819aff8b54f28a8dc7aad4eb85d03e419"
+              }
+            ],
+            "entity_order": [
+              "TGME49_229630",
+              "TGME49_264670",
+              "TGME49_500422",
+              "TGME49_281400",
+              "TGME49_223985",
+              "TGME49_250850",
+              "TGME49_237480",
+              "TGME49_232360",
+              "TGME49_500314",
+              "TGME49_246060",
+              "TGME49_235950",
+              "TGME49_289070",
+              "TGME49_311660",
+              "TGME49_269730",
+              "TGME49_253440",
+              "TGME49_500302",
+              "TGME49_235680",
+              "TGME49_266730",
+              "TGME49_262030",
+              "TGME49_202230",
+              "TGME49_226790",
+              "TGME49_241870",
+              "TGME49_306480",
+              "TGME49_249820",
+              "TGME49_272650",
+              "TGME49_223840",
+              "TGME49_229020",
+              "TGME49_259920",
+              "TGME49_290960",
+              "TGME49_306550",
+              "TGME49_254420",
+              "TGME49_243610",
+              "TGME49_220350",
+              "TGME49_257800",
+              "TGME49_275610",
+              "TGME49_272670",
+              "TGME49_207080",
+              "TGME49_280410",
+              "TGME49_262760",
+              "TGME49_235905",
+              "TGME49_281980",
+              "TGME49_255250",
+              "TGME49_266920",
+              "TGME49_306460",
+              "TGME49_260210",
+              "TGME49_281370",
+              "TGME49_210830",
+              "TGME49_263740",
+              "TGME49_202920",
+              "TGME49_313330",
+              "TGME49_294440",
+              "TGME49_257050",
+              "TGME49_206310",
+              "TGME49_206610",
+              "TGME49_278518",
+              "TGME49_310670",
+              "TGME49_315640",
+              "TGME49_267100",
+              "TGME49_246690",
+              "TGME49_268770",
+              "TGME49_239620",
+              "TGME49_288330",
+              "TGME49_210750",
+              "TGME49_261030",
+              "TGME49_264450",
+              "TGME49_246800",
+              "TGME49_226072",
+              "TGME49_294690",
+              "TGME49_500004",
+              "TGME49_254110",
+              "TGME49_243340",
+              "TGME49_217350",
+              "TGME49_215250",
+              "TGME49_230460",
+              "TGME49_297640",
+              "TGME49_255890",
+              "TGME49_270910",
+              "TGME49_209580",
+              "TGME49_266710",
+              "TGME49_294930",
+              "TGME49_263870",
+              "TGME49_214470",
+              "TGME49_300350",
+              "TGME49_216810",
+              "TGME49_257480",
+              "TGME49_205550",
+              "TGME49_211330",
+              "TGME49_214280",
+              "TGME49_202460",
+              "TGME49_306960",
+              "TGME49_263220",
+              "TGME49_258020",
+              "TGME49_207620",
+              "TGME49_305910",
+              "TGME49_219130",
+              "TGME49_318730",
+              "TGME49_282230",
+              "TGME49_500225",
+              "TGME49_254410",
+              "TGME49_218200",
+              "TGME49_224060",
+              "TGME49_216970",
+              "TGME49_263130",
+              "TGME49_260240",
+              "TGME49_216790",
+              "TGME49_259180",
+              "TGME49_310810",
+              "TGME49_318580",
+              "TGME49_278910",
+              "TGME49_248760",
+              "TGME49_318275",
+              "TGME49_204400",
+              "TGME49_204460",
+              "TGME49_315770",
+              "TGME49_232340",
+              "TGME49_251880",
+              "TGME49_500193",
+              "TGME49_207590",
+              "TGME49_215740",
+              "TGME49_202800",
+              "TGME49_292100",
+              "TGME49_320210",
+              "TGME49_200430",
+              "TGME49_203110",
+              "TGME49_227790",
+              "TGME49_225990",
+              "TGME49_309752",
+              "TGME49_246920",
+              "TGME49_273490",
+              "TGME49_243990",
+              "TGME49_318330",
+              "TGME49_318560",
+              "TGME49_239490",
+              "TGME49_293450",
+              "TGME49_269110",
+              "TGME49_285850",
+              "TGME49_225550",
+              "TGME49_209620",
+              "TGME49_246490",
+              "TGME49_248850",
+              "TGME49_279390",
+              "TGME49_208718",
+              "TGME49_231190",
+              "TGME49_311780",
+              "TGME49_213970",
+              "TGME49_300140",
+              "TGME49_316270",
+              "TGME49_316450",
+              "TGME49_310680",
+              "TGME49_211670",
+              "TGME49_281510",
+              "TGME49_226300",
+              "TGME49_224220",
+              "TGME49_310400",
+              "TGME49_283710",
+              "TGME49_205430",
+              "TGME49_202910",
+              "TGME49_209260",
+              "TGME49_218920",
+              "TGME49_200290",
+              "TGME49_230470",
+              "TGME49_271610",
+              "TGME49_238000",
+              "TGME49_240860",
+              "TGME49_245710",
+              "TGME49_297060",
+              "TGME49_212910",
+              "TGME49_224900",
+              "TGME49_254260",
+              "TGME49_247350",
+              "TGME49_305290",
+              "TGME49_309210",
+              "TGME49_202300",
+              "TGME49_232410",
+              "TGME49_291310",
+              "TGME49_288620",
+              "TGME49_254900",
+              "TGME49_212310",
+              "TGME49_249240",
+              "TGME49_210787",
+              "TGME49_310960",
+              "TGME49_312250",
+              "TGME49_328200",
+              "TGME49_251470"
+            ],
+            "evaluation_partition": "test",
+            "evaluation_scope_json": "{\"benchmark_status\":\"candidate\",\"biological_admission\":false,\"context\":{\"assay\":\"reference EC annotation; individual evidence unresolved\",\"organism\":\"Tg\",\"stage\":\"unresolved\",\"strain\":\"ME49\"},\"eligible_population\":184,\"limitations\":[\"0 eligible genes lack resolved homology groups\",\"Biological accuracy requires a separately admitted independent truth source\",\"Exact profile recovery preserves multiple major classes; novel combinations may be unsupported\",\"Gene-level EC curation/experimental/predicted evidence grades remain unresolved\",\"Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation\",\"Nomenclature resolution is not a new gene activity measurement\",\"Source release and complete homology/source independence remain unresolved\",\"Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives\",\"Vote shares and class scores are method support, not calibrated probabilities\"],\"negative_semantics\":\"complete recorded annotation profiles; biological absence unknown\",\"source_annotated_genes\":1313,\"source_ids\":[\"toxodb_ec_numbers\"],\"truth_grade\":\"unresolved\",\"unit\":\"gene\",\"unknown_genes\":6827,\"unresolved_annotated_genes\":87}",
+            "feature_access": "inductive",
+            "fit_entities": [
+              "TGME49_294820",
+              "TGME49_266010",
+              "TGME49_500142",
+              "TGME49_228690",
+              "TGME49_500287",
+              "TGME49_204560",
+              "TGME49_316430",
+              "TGME49_295610",
+              "TGME49_288440",
+              "TGME49_254370",
+              "TGME49_232010",
+              "TGME49_242415",
+              "TGME49_301270",
+              "TGME49_226755",
+              "TGME49_218400",
+              "TGME49_313900",
+              "TGME49_218560",
+              "TGME49_307040",
+              "TGME49_315190",
+              "TGME49_261080",
+              "TGME49_239910",
+              "TGME49_222800",
+              "TGME49_215700",
+              "TGME49_231370",
+              "TGME49_319610",
+              "TGME49_208070",
+              "TGME49_286160",
+              "TGME49_203010",
+              "TGME49_278110",
+              "TGME49_244880",
+              "TGME49_219070",
+              "TGME49_238400",
+              "TGME49_226950",
+              "TGME49_272475",
+              "TGME49_256830",
+              "TGME49_237860",
+              "TGME49_221320",
+              "TGME49_311510",
+              "TGME49_216500",
+              "TGME49_236860",
+              "TGME49_318770",
+              "TGME49_264660",
+              "TGME49_277030",
+              "TGME49_206510",
+              "TGME49_308960",
+              "TGME49_281420",
+              "TGME49_235315",
+              "TGME49_257945",
+              "TGME49_221830",
+              "TGME49_314410",
+              "TGME49_253170",
+              "TGME49_269460",
+              "TGME49_244700",
+              "TGME49_228750",
+              "TGME49_240410",
+              "TGME49_500085",
+              "TGME49_316150",
+              "TGME49_270865",
+              "TGME49_225770",
+              "TGME49_234970",
+              "TGME49_277530",
+              "TGME49_235200",
+              "TGME49_291050",
+              "TGME49_320460",
+              "TGME49_249260",
+              "TGME49_211730",
+              "TGME49_225260",
+              "TGME49_245500",
+              "TGME49_226910",
+              "TGME49_222900",
+              "TGME49_500325",
+              "TGME49_239250",
+              "TGME49_258990",
+              "TGME49_312100",
+              "TGME49_283820",
+              "TGME49_308880",
+              "TGME49_239420",
+              "TGME49_254730",
+              "TGME49_306290",
+              "TGME49_285160",
+              "TGME49_294610",
+              "TGME49_239130",
+              "TGME49_274110",
+              "TGME49_312230",
+              "TGME49_235478",
+              "TGME49_269885",
+              "TGME49_233770",
+              "TGME49_249460",
+              "TGME49_292170",
+              "TGME49_292140",
+              "TGME49_296010",
+              "TGME49_228330",
+              "TGME49_206650",
+              "TGME49_290640",
+              "TGME49_255970",
+              "TGME49_500241",
+              "TGME49_500101",
+              "TGME49_315885",
+              "TGME49_280790",
+              "TGME49_308810",
+              "TGME49_500045",
+              "TGME49_318460",
+              "TGME49_226800",
+              "TGME49_212970",
+              "TGME49_262400",
+              "TGME49_239020",
+              "TGME49_240890",
+              "TGME49_500342",
+              "TGME49_284190",
+              "TGME49_220360",
+              "TGME49_293460",
+              "TGME49_242020",
+              "TGME49_261230",
+              "TGME49_238040",
+              "TGME49_260310",
+              "TGME49_272740",
+              "TGME49_208580",
+              "TGME49_278660",
+              "TGME49_230710",
+              "TGME49_235390",
+              "TGME49_204080",
+              "TGME49_253580",
+              "TGME49_219430",
+              "TGME49_500340",
+              "TGME49_314500",
+              "TGME49_240650",
+              "TGME49_280560",
+              "TGME49_234580",
+              "TGME49_262430",
+              "TGME49_272720",
+              "TGME49_218550",
+              "TGME49_249560",
+              "TGME49_258210",
+              "TGME49_292080",
+              "TGME49_235020",
+              "TGME49_318620",
+              "TGME49_273410",
+              "TGME49_259260",
+              "TGME49_207640",
+              "TGME49_271120",
+              "TGME49_224350",
+              "TGME49_276170",
+              "TGME49_307770",
+              "TGME49_226960",
+              "TGME49_297720",
+              "TGME49_285540",
+              "TGME49_233860",
+              "TGME49_253290",
+              "TGME49_249390",
+              "TGME49_244450",
+              "TGME49_202630",
+              "TGME49_204280",
+              "TGME49_273360",
+              "TGME49_315560",
+              "TGME49_237890",
+              "TGME49_224240",
+              "TGME49_252640",
+              "TGME49_261050",
+              "TGME49_216740",
+              "TGME49_254555",
+              "TGME49_310280",
+              "TGME49_318675",
+              "TGME49_244200",
+              "TGME49_253120",
+              "TGME49_243590",
+              "TGME49_293240",
+              "TGME49_251670",
+              "TGME49_230420",
+              "TGME49_285490",
+              "TGME49_221310",
+              "TGME49_214170",
+              "TGME49_315220",
+              "TGME49_500272",
+              "TGME49_226730",
+              "TGME49_263785",
+              "TGME49_288920",
+              "TGME49_246530",
+              "TGME49_275320",
+              "TGME49_238950",
+              "TGME49_220420",
+              "TGME49_295640",
+              "TGME49_219540",
+              "TGME49_265230",
+              "TGME49_251850",
+              "TGME49_243440",
+              "TGME49_272490",
+              "TGME49_249320",
+              "TGME49_257010",
+              "TGME49_300020",
+              "TGME49_315480",
+              "TGME49_254200",
+              "TGME49_270840",
+              "TGME49_288640",
+              "TGME49_305480",
+              "TGME49_269190",
+              "TGME49_212130",
+              "TGME49_233930",
+              "TGME49_299070",
+              "TGME49_209050",
+              "TGME49_247540",
+              "TGME49_244850",
+              "TGME49_289300",
+              "TGME49_224460",
+              "TGME49_200350",
+              "TGME49_269920",
+              "TGME49_213340",
+              "TGME49_202572",
+              "TGME49_295720",
+              "TGME49_316320",
+              "TGME49_289170",
+              "TGME49_267540",
+              "TGME49_219630",
+              "TGME49_320620",
+              "TGME49_272210",
+              "TGME49_237210",
+              "TGME49_312520",
+              "TGME49_230590",
+              "TGME49_297220",
+              "TGME49_263690",
+              "TGME49_264820",
+              "TGME49_272200",
+              "TGME49_237500",
+              "TGME49_224200",
+              "TGME49_307570",
+              "TGME49_301010",
+              "TGME49_299810",
+              "TGME49_243280",
+              "TGME49_232620",
+              "TGME49_272280",
+              "TGME49_234360",
+              "TGME49_230555",
+              "TGME49_261600",
+              "TGME49_235640",
+              "TGME49_247590",
+              "TGME49_236260",
+              "TGME49_294640",
+              "TGME49_237470",
+              "TGME49_280690",
+              "TGME49_321620",
+              "TGME49_313470",
+              "TGME49_217460",
+              "TGME49_277720",
+              "TGME49_271760",
+              "TGME49_285170",
+              "TGME49_202610",
+              "TGME49_259950",
+              "TGME49_306260",
+              "TGME49_288800",
+              "TGME49_257625",
+              "TGME49_210440",
+              "TGME49_219850",
+              "TGME49_294260",
+              "TGME49_265000",
+              "TGME49_286120",
+              "TGME49_269600",
+              "TGME49_232580",
+              "TGME49_229780",
+              "TGME49_281500",
+              "TGME49_271170",
+              "TGME49_290580",
+              "TGME49_226080",
+              "TGME49_318710",
+              "TGME49_254630",
+              "TGME49_209190",
+              "TGME49_233790",
+              "TGME49_273690",
+              "TGME49_244270",
+              "TGME49_247760",
+              "TGME49_310080",
+              "TGME49_300260",
+              "TGME49_265870",
+              "TGME49_266950",
+              "TGME49_226480",
+              "TGME49_256990",
+              "TGME49_259960",
+              "TGME49_310150",
+              "TGME49_289350",
+              "TGME49_233905",
+              "TGME49_272420",
+              "TGME49_243800",
+              "TGME49_260140",
+              "TGME49_231430",
+              "TGME49_276130",
+              "TGME49_258690",
+              "TGME49_259530",
+              "TGME49_277850",
+              "TGME49_216170",
+              "TGME49_316100",
+              "TGME49_293380",
+              "TGME49_254010",
+              "TGME49_243350",
+              "TGME49_206590",
+              "TGME49_289620",
+              "TGME49_299168",
+              "TGME49_294190",
+              "TGME49_313820",
+              "TGME49_263580",
+              "TGME49_293770",
+              "TGME49_202590",
+              "TGME49_300120",
+              "TGME49_243740",
+              "TGME49_225490",
+              "TGME49_220840",
+              "TGME49_208320",
+              "TGME49_278280",
+              "TGME49_252500",
+              "TGME49_267480",
+              "TGME49_278882",
+              "TGME49_247500",
+              "TGME49_305920",
+              "TGME49_258770",
+              "TGME49_244590",
+              "TGME49_297650",
+              "TGME49_288360",
+              "TGME49_294700",
+              "TGME49_216540",
+              "TGME49_278740",
+              "TGME49_222710",
+              "TGME49_224950",
+              "TGME49_293190",
+              "TGME49_233010",
+              "TGME49_256080",
+              "TGME49_269430",
+              "TGME49_288740",
+              "TGME49_215590",
+              "TGME49_217600",
+              "TGME49_247250",
+              "TGME49_289940",
+              "TGME49_309265",
+              "TGME49_259550",
+              "TGME49_309730",
+              "TGME49_205710",
+              "TGME49_288830",
+              "TGME49_284580",
+              "TGME49_320730",
+              "TGME49_203970",
+              "TGME49_201700",
+              "TGME49_254430",
+              "TGME49_299210",
+              "TGME49_225290",
+              "TGME49_267330",
+              "TGME49_305980",
+              "TGME49_200370",
+              "TGME49_285980",
+              "TGME49_264030",
+              "TGME49_263710",
+              "TGME49_268590",
+              "TGME49_202140",
+              "TGME49_206400",
+              "TGME49_320630",
+              "TGME49_234570",
+              "TGME49_259830",
+              "TGME49_249620",
+              "TGME49_264000",
+              "TGME49_271210",
+              "TGME49_201840",
+              "TGME49_209150",
+              "TGME49_242400",
+              "TGME49_216600",
+              "TGME49_241860",
+              "TGME49_256970",
+              "TGME49_221260",
+              "TGME49_289930",
+              "TGME49_305940",
+              "TGME49_301216",
+              "TGME49_236010",
+              "TGME49_316700",
+              "TGME49_311390",
+              "TGME49_252440",
+              "TGME49_267490",
+              "TGME49_265542",
+              "TGME49_233310",
+              "TGME49_210840",
+              "TGME49_266760",
+              "TGME49_305260",
+              "TGME49_210790",
+              "TGME49_227090",
+              "TGME49_245590",
+              "TGME49_262050",
+              "TGME49_232750",
+              "TGME49_229940",
+              "TGME49_320570",
+              "TGME49_311370",
+              "TGME49_244520",
+              "TGME49_306330",
+              "TGME49_202310",
+              "TGME49_243500",
+              "TGME49_247710",
+              "TGME49_278230",
+              "TGME49_241830",
+              "TGME49_270850",
+              "TGME49_268340",
+              "TGME49_216640",
+              "TGME49_249670",
+              "TGME49_209985",
+              "TGME49_253430",
+              "TGME49_258640",
+              "TGME49_230450",
+              "TGME49_212710",
+              "TGME49_306630",
+              "TGME49_212740",
+              "TGME49_210280",
+              "TGME49_202680",
+              "TGME49_283780",
+              "TGME49_290670",
+              "TGME49_294200",
+              "TGME49_261950",
+              "TGME49_220100",
+              "TGME49_205440",
+              "TGME49_231060",
+              "TGME49_276920",
+              "TGME49_205250",
+              "TGME49_240090",
+              "TGME49_319570",
+              "TGME49_262380",
+              "TGME49_293590",
+              "TGME49_222020",
+              "TGME49_233110",
+              "TGME49_288500",
+              "TGME49_312200",
+              "TGME49_306540",
+              "TGME49_247220",
+              "TGME49_226400",
+              "TGME49_313140",
+              "TGME49_295760",
+              "TGME49_217850",
+              "TGME49_249030",
+              "TGME49_249010",
+              "TGME49_232730",
+              "TGME49_263070",
+              "TGME49_270320",
+              "TGME49_318660",
+              "TGME49_201380",
+              "TGME49_252360",
+              "TGME49_275600",
+              "TGME49_254190",
+              "TGME49_256760",
+              "TGME49_289550",
+              "TGME49_255690",
+              "TGME49_248600",
+              "TGME49_297850",
+              "TGME49_213680",
+              "TGME49_262750",
+              "TGME49_220212",
+              "TGME49_295060",
+              "TGME49_297070",
+              "TGME49_206470",
+              "TGME49_227260",
+              "TGME49_225800",
+              "TGME49_210260",
+              "TGME49_213520",
+              "TGME49_286470",
+              "TGME49_307603",
+              "TGME49_319920",
+              "TGME49_236210",
+              "TGME49_276190",
+              "TGME49_232090",
+              "TGME49_305320",
+              "TGME49_301440",
+              "TGME49_242600",
+              "TGME49_263380",
+              "TGME49_283850",
+              "TGME49_304470",
+              "TGME49_314430",
+              "TGME49_270550",
+              "TGME49_232250",
+              "TGME49_240630",
+              "TGME49_283830",
+              "TGME49_275590",
+              "TGME49_254690",
+              "TGME49_222160",
+              "TGME49_298990",
+              "TGME49_315680",
+              "TGME49_293180",
+              "TGME49_320220",
+              "TGME49_202340",
+              "TGME49_228290",
+              "TGME49_257730",
+              "TGME49_238190",
+              "TGME49_218780",
+              "TGME49_305460",
+              "TGME49_282055",
+              "TGME49_305800",
+              "TGME49_211680",
+              "TGME49_272290",
+              "TGME49_285680",
+              "TGME49_219550",
+              "TGME49_262940",
+              "TGME49_265450",
+              "TGME49_257510",
+              "TGME49_260460",
+              "TGME49_235970",
+              "TGME49_292120",
+              "TGME49_209160",
+              "TGME49_257740",
+              "TGME49_268920",
+              "TGME49_279450",
+              "TGME49_289580",
+              "TGME49_281990",
+              "TGME49_231900",
+              "TGME49_227290",
+              "TGME49_281630",
+              "TGME49_261760",
+              "TGME49_305840",
+              "TGME49_235620",
+              "TGME49_239630",
+              "TGME49_268850",
+              "TGME49_268860",
+              "TGME49_290340",
+              "TGME49_232390",
+              "TGME49_255480",
+              "TGME49_215290",
+              "TGME49_257960",
+              "TGME49_305030",
+              "TGME49_205420",
+              "TGME49_257750",
+              "TGME49_221170",
+              "TGME49_314042",
+              "TGME49_300310",
+              "TGME49_273740",
+              "TGME49_251930",
+              "TGME49_318230",
+              "TGME49_301120",
+              "TGME49_278878",
+              "TGME49_234440",
+              "TGME49_311300",
+              "TGME49_261010",
+              "TGME49_207980",
+              "TGME49_244870",
+              "TGME49_315620",
+              "TGME49_255060",
+              "TGME49_293610",
+              "TGME49_293390",
+              "TGME49_213000",
+              "TGME49_216680",
+              "TGME49_265330",
+              "TGME49_207060",
+              "TGME49_287510",
+              "TGME49_211230",
+              "TGME49_205380",
+              "TGME49_242070",
+              "TGME49_258110",
+              "TGME49_214760",
+              "TGME49_226370",
+              "TGME49_217740",
+              "TGME49_243910",
+              "TGME49_285920",
+              "TGME49_267550",
+              "TGME49_286220",
+              "TGME49_293810",
+              "TGME49_313050",
+              "TGME49_238940",
+              "TGME49_256090",
+              "TGME49_205720",
+              "TGME49_229360",
+              "TGME49_310440",
+              "TGME49_225880",
+              "TGME49_209570",
+              "TGME49_244150",
+              "TGME49_244480",
+              "TGME49_221590",
+              "TGME49_316770",
+              "TGME49_210960",
+              "TGME49_247510",
+              "TGME49_244240",
+              "TGME49_240575",
+              "TGME49_267390",
+              "TGME49_253480",
+              "TGME49_310760",
+              "TGME49_223672",
+              "TGME49_226030",
+              "TGME49_271888",
+              "TGME49_289690",
+              "TGME49_310830",
+              "TGME49_262910",
+              "TGME49_248400",
+              "TGME49_229330",
+              "TGME49_228420",
+              "TGME49_235700",
+              "TGME49_307030",
+              "TGME49_216930",
+              "TGME49_232350",
+              "TGME49_228180",
+              "TGME49_291040",
+              "TGME49_215070",
+              "TGME49_222840",
+              "TGME49_294180",
+              "TGME49_229140",
+              "TGME49_240640",
+              "TGME49_216880",
+              "TGME49_259690",
+              "TGME49_247360",
+              "TGME49_285750",
+              "TGME49_318430",
+              "TGME49_231910",
+              "TGME49_229320",
+              "TGME49_218410",
+              "TGME49_262520",
+              "TGME49_310700",
+              "TGME49_286210",
+              "TGME49_231920",
+              "TGME49_319650",
+              "TGME49_218220",
+              "TGME49_285240",
+              "TGME49_222970",
+              "TGME49_319700",
+              "TGME49_316330",
+              "TGME49_306930",
+              "TGME49_318750",
+              "TGME49_242880",
+              "TGME49_307640",
+              "TGME49_259660",
+              "TGME49_247920",
+              "TGME49_227020",
+              "TGME49_244620",
+              "TGME49_236070",
+              "TGME49_306970",
+              "TGME49_321900",
+              "TGME49_225470",
+              "TGME49_303050",
+              "TGME49_306450",
+              "TGME49_315130",
+              "TGME49_270650",
+              "TGME49_262490",
+              "TGME49_216450",
+              "TGME49_207710",
+              "TGME49_316190",
+              "TGME49_242290",
+              "TGME49_239500",
+              "TGME49_242390",
+              "TGME49_278050",
+              "TGME49_290005",
+              "TGME49_281920",
+              "TGME49_312480",
+              "TGME49_314000",
+              "TGME49_277970",
+              "TGME49_325200",
+              "TGME49_287210",
+              "TGME49_288750",
+              "TGME49_500407",
+              "TGME49_328600",
+              "TGME49_320120",
+              "TGME49_225420",
+              "TGME49_285760",
+              "TGME49_289180",
+              "TGME49_240590",
+              "TGME49_240560",
+              "TGME49_252490",
+              "TGME49_316310",
+              "TGME49_326100",
+              "TGME49_270560",
+              "TGME49_310470",
+              "TGME49_226000",
+              "TGME49_221210",
+              "TGME49_259570",
+              "TGME49_213800",
+              "TGME49_230520",
+              "TGME49_205700",
+              "TGME49_233400",
+              "TGME49_233140",
+              "TGME49_249760",
+              "TGME49_243580",
+              "TGME49_270780",
+              "TGME49_261540",
+              "TGME49_258930",
+              "TGME49_290040",
+              "TGME49_258940",
+              "TGME49_320140",
+              "TGME49_240550",
+              "TGME49_314820",
+              "TGME49_217560"
+            ],
+            "fit_role": "train",
+            "gaps": [
+              "0 eligible genes lack resolved homology groups",
+              "Biological accuracy requires a separately admitted independent truth source",
+              "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+              "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+              "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+              "Nomenclature resolution is not a new gene activity measurement",
+              "Source release and complete homology/source independence remain unresolved",
+              "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+              "Vote shares and class scores are method support, not calibrated probabilities"
+            ],
+            "output": {
+              "kind": "label_calls",
+              "semantics": "label with method-specific support; not calibrated probability",
+              "unit": "gene"
+            },
+            "partition_id": "outer:test:01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+            "query_json": "{\"context\":{\"condition\":\"\",\"host\":\"\",\"stage\":\"\",\"strain\":\"\",\"tissue\":\"\"},\"entities\":[],\"kind\":\"label\",\"organism\":\"Tg\",\"output\":\"inferences\",\"schema_version\":1,\"target\":\"ec_major_classes\",\"values\":[]}",
+            "role": "held_out",
+            "schema_version": 1,
+            "seed": 23,
+            "settings_json": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+            "status": "ok",
+            "strategy": "feature_knn",
+            "target": "ec_major_classes",
+            "task": "label calls"
+          }
+        },
+        "source_targets": [
+          "ec_number"
+        ],
+        "strategy": "feature_knn",
+        "summary": {
+          "artifact_identity": "63171124d85dee3f504dfba4c42f58e7ee7261e09541e31a4af558f5e5e11b5a",
+          "biological_benchmark_admitted": false,
+          "calibration": 179,
+          "confidence": "uncalibrated native support",
+          "counts": {
+            "abstained": 8,
+            "answered": 176,
+            "correct": 77,
+            "eligible": 184,
+            "unique_biological_entities": 184,
+            "wrong": 99
+          },
+          "eligible_profiles": 1226,
+          "feature_columns": 349,
+          "interpretation": "Functional annotation-profile recovery; independent biological accuracy unknown",
+          "major_class_cards": [
+            {
+              "biological_precision": null,
+              "biological_recall": null,
+              "calibrated_confidence": null,
+              "class": "1",
+              "coverage": 0.9565217391304348,
+              "eligible": 184,
+              "f1": 0.0,
+              "false_negative": 20,
+              "false_positive": 1,
+              "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+              "known_positive_genes": 20,
+              "precision": 0.0,
+              "recall": 0.0,
+              "reference_prevalence": 0.10869565217391304,
+              "true_positive": 0
+            },
+            {
+              "biological_precision": null,
+              "biological_recall": null,
+              "calibrated_confidence": null,
+              "class": "2",
+              "coverage": 0.9565217391304348,
+              "eligible": 184,
+              "f1": 0.6,
+              "false_negative": 16,
+              "false_positive": 72,
+              "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+              "known_positive_genes": 82,
+              "precision": 0.4782608695652174,
+              "recall": 0.8048780487804879,
+              "reference_prevalence": 0.44565217391304346,
+              "true_positive": 66
+            },
+            {
+              "biological_precision": null,
+              "biological_recall": null,
+              "calibrated_confidence": null,
+              "class": "3",
+              "coverage": 0.9565217391304348,
+              "eligible": 184,
+              "f1": 0.2564102564102564,
+              "false_negative": 36,
+              "false_positive": 22,
+              "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+              "known_positive_genes": 46,
+              "precision": 0.3125,
+              "recall": 0.21739130434782608,
+              "reference_prevalence": 0.25,
+              "true_positive": 10
+            },
+            {
+              "biological_precision": null,
+              "biological_recall": null,
+              "calibrated_confidence": null,
+              "class": "4",
+              "coverage": 0.9565217391304348,
+              "eligible": 184,
+              "f1": 0.0,
+              "false_negative": 6,
+              "false_positive": 1,
+              "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+              "known_positive_genes": 6,
+              "precision": 0.0,
+              "recall": 0.0,
+              "reference_prevalence": 0.03260869565217391,
+              "true_positive": 0
+            },
+            {
+              "biological_precision": null,
+              "biological_recall": null,
+              "calibrated_confidence": null,
+              "class": "5",
+              "coverage": 0.9565217391304348,
+              "eligible": 184,
+              "f1": 0.0,
+              "false_negative": 6,
+              "false_positive": 0,
+              "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+              "known_positive_genes": 6,
+              "precision": null,
+              "recall": 0.0,
+              "reference_prevalence": 0.03260869565217391,
+              "true_positive": 0
+            },
+            {
+              "biological_precision": null,
+              "biological_recall": null,
+              "calibrated_confidence": null,
+              "class": "6",
+              "coverage": 0.9565217391304348,
+              "eligible": 184,
+              "f1": 0.42857142857142855,
+              "false_negative": 7,
+              "false_positive": 1,
+              "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+              "known_positive_genes": 10,
+              "precision": 0.75,
+              "recall": 0.3,
+              "reference_prevalence": 0.05434782608695652,
+              "true_positive": 3
+            },
+            {
+              "biological_precision": null,
+              "biological_recall": null,
+              "calibrated_confidence": null,
+              "class": "7",
+              "coverage": 0.9565217391304348,
+              "eligible": 184,
+              "f1": 0.0,
+              "false_negative": 16,
+              "false_positive": 0,
+              "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+              "known_positive_genes": 16,
+              "precision": null,
+              "recall": 0.0,
+              "reference_prevalence": 0.08695652173913043,
+              "true_positive": 0
+            }
+          ],
+          "majority_baseline_metrics": {
+            "accuracy": 0.43478260869565216,
+            "coverage": 1.0,
+            "kappa": 0.0,
+            "macro_auprc": null,
+            "macro_auroc": null,
+            "macro_f1": 0.06734006734006734,
+            "macro_precision": 0.04830917874396135,
+            "macro_recall": 0.1111111111111111,
+            "mcc": 0.0,
+            "precision_of_calls": 0.43478260869565216,
+            "weighted_f1": 0.2635046113306983
+          },
+          "metrics": {
+            "accuracy": 0.41847826086956524,
+            "coverage": 0.9565217391304348,
+            "kappa": 0.07481203007518802,
+            "macro_auprc": 0.21100531124378533,
+            "macro_auroc": 0.6040275286500603,
+            "macro_f1": 0.1413486275871597,
+            "macro_precision": 0.169585346215781,
+            "macro_recall": 0.1463768115942029,
+            "mcc": 0.0867707833958645,
+            "precision_of_calls": 0.4375,
+            "weighted_f1": 0.34267969100438184
+          },
+          "multi_major_class_test_genes": 2,
+          "organism": "Tg",
+          "profile_classes": 12,
+          "target": "ec_major_classes",
+          "test": 184,
+          "train": 671,
+          "tune": 192,
+          "unsupported_test_profiles": {}
+        },
+        "target": "ec_major_classes",
+        "truth_grade": "unresolved",
+        "upstream_model_reference": {
+          "bytes": 7296951,
+          "path": "held_out/model_state.json",
+          "sha256": "f0da012647094bf0af8d2f95ba31617087bdb1f187bece3b9a5e3bb213265b80"
+        }
+      },
+      "payloads": {
+        "baseline_cards.json": {
+          "majority": {
+            "cohort_identity": "bdb4a43b17775d6d7791aa44092df2b3de98440a4c713b01ac08a69796ef65ab",
+            "counts": {
+              "abstained": 0,
+              "answered": 184,
+              "correct": 80,
+              "eligible": 184,
+              "unique_biological_entities": 184,
+              "wrong": 104
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.43478260869565216,
+              "accuracy_among_calls": 0.43478260869565216,
+              "confusion": [
+                {
+                  "count": 1,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"1\",\"2\"]"
+                },
+                {
+                  "count": 19,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"1\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"2\",\"4\"]"
+                },
+                {
+                  "count": 80,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 46,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 5,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"4\"]"
+                },
+                {
+                  "count": 6,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"5\"]"
+                },
+                {
+                  "count": 10,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"6\"]"
+                },
+                {
+                  "count": 16,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"7\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.3599833504098361,
+                  0.5140277777777776
+                ],
+                "accuracy_among_calls": [
+                  0.3599833504098361,
+                  0.5140277777777776
+                ],
+                "biological_groups": 162,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.43478260869565216,
+              "coverage": 1.0,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.06734006734006734,
+              "macro_precision": 0.04830917874396135,
+              "macro_recall": 0.1111111111111111,
+              "mcc": 0.0,
+              "precision_of_calls": 0.43478260869565216,
+              "weighted_f1": 0.2635046113306983
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "9a2a0b86a41652adb9beabb57743942d244e23ee88bd15afbb5531e4f10b66e6",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          },
+          "prevalence_call": {
+            "cohort_identity": "bdb4a43b17775d6d7791aa44092df2b3de98440a4c713b01ac08a69796ef65ab",
+            "counts": {
+              "abstained": 0,
+              "answered": 184,
+              "correct": 46,
+              "eligible": 184,
+              "unique_biological_entities": 184,
+              "wrong": 138
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.25,
+              "accuracy_among_calls": 0.25,
+              "confusion": [
+                {
+                  "count": 1,
+                  "prediction": "[\"1\"]",
+                  "truth": "[\"1\",\"2\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"1\"]",
+                  "truth": "[\"1\"]"
+                },
+                {
+                  "count": 10,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"1\"]"
+                },
+                {
+                  "count": 6,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"1\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"5\"]",
+                  "truth": "[\"1\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"6\"]",
+                  "truth": "[\"1\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"2\",\"4\"]"
+                },
+                {
+                  "count": 8,
+                  "prediction": "[\"1\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": "[\"2\",\"4\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 30,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 21,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"4\",\"7\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 6,
+                  "prediction": "[\"4\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 5,
+                  "prediction": "[\"5\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 6,
+                  "prediction": "[\"6\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"7\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 6,
+                  "prediction": "[\"1\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 20,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 13,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": "[\"4\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": "[\"5\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 3,
+                  "prediction": "[\"6\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"4\"]"
+                },
+                {
+                  "count": 3,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"4\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"7\"]",
+                  "truth": "[\"4\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"1\"]",
+                  "truth": "[\"5\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"5\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"5\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": "[\"5\"]",
+                  "truth": "[\"5\"]"
+                },
+                {
+                  "count": 8,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"6\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"4\"]",
+                  "truth": "[\"6\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"7\"]",
+                  "truth": "[\"6\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"1\"]",
+                  "truth": "[\"7\"]"
+                },
+                {
+                  "count": 6,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"7\"]"
+                },
+                {
+                  "count": 5,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"7\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": "[\"4\"]",
+                  "truth": "[\"7\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"5\"]",
+                  "truth": "[\"7\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"6\"]",
+                  "truth": "[\"7\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.19101123595505617,
+                  0.3128491620111732
+                ],
+                "accuracy_among_calls": [
+                  0.19101123595505617,
+                  0.3128491620111732
+                ],
+                "biological_groups": 162,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.25,
+              "coverage": 1.0,
+              "kappa": -0.024986880878375622,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.10470523445888752,
+              "macro_precision": 0.09855379188712522,
+              "macro_recall": 0.11595262310365285,
+              "mcc": -0.025118837439459963,
+              "precision_of_calls": 0.25,
+              "weighted_f1": 0.24712159496677188
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "43ef12f18941aef7997c790ca8a8000439196ce419db6004dfdce2e02b5aec8a",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          }
+        },
+        "card.json": {
+          "cohort_identity": "bdb4a43b17775d6d7791aa44092df2b3de98440a4c713b01ac08a69796ef65ab",
+          "counts": {
+            "abstained": 8,
+            "answered": 176,
+            "correct": 77,
+            "eligible": 184,
+            "unique_biological_entities": 184,
+            "wrong": 99
+          },
+          "evaluation_parameters": {
+            "class_scores": {
+              "columns": [
+                "[\"1\",\"2\",\"6\"]",
+                "[\"1\",\"2\"]",
+                "[\"1\"]",
+                "[\"2\",\"3\"]",
+                "[\"2\",\"4\"]",
+                "[\"2\"]",
+                "[\"3\"]",
+                "[\"4\",\"7\"]",
+                "[\"4\"]",
+                "[\"5\"]",
+                "[\"6\"]",
+                "[\"7\"]"
+              ],
+              "rows": 184,
+              "sha256": "12f4a300d050c5faea3341d5ae5ff07c51f98da0f972ac8613278ed4a95ddf7b"
+            }
+          },
+          "extra": {
+            "accuracy_all_hidden": 0.41847826086956524,
+            "accuracy_among_calls": 0.4375,
+            "confusion": [
+              {
+                "count": 1,
+                "prediction": "[\"2\"]",
+                "truth": "[\"1\",\"2\"]"
+              },
+              {
+                "count": 13,
+                "prediction": "[\"2\"]",
+                "truth": "[\"1\"]"
+              },
+              {
+                "count": 5,
+                "prediction": "[\"3\"]",
+                "truth": "[\"1\"]"
+              },
+              {
+                "count": 1,
+                "prediction": null,
+                "truth": "[\"1\"]"
+              },
+              {
+                "count": 1,
+                "prediction": "[\"2\"]",
+                "truth": "[\"2\",\"4\"]"
+              },
+              {
+                "count": 1,
+                "prediction": "[\"1\"]",
+                "truth": "[\"2\"]"
+              },
+              {
+                "count": 64,
+                "prediction": "[\"2\"]",
+                "truth": "[\"2\"]"
+              },
+              {
+                "count": 13,
+                "prediction": "[\"3\"]",
+                "truth": "[\"2\"]"
+              },
+              {
+                "count": 1,
+                "prediction": "[\"4\"]",
+                "truth": "[\"2\"]"
+              },
+              {
+                "count": 1,
+                "prediction": null,
+                "truth": "[\"2\"]"
+              },
+              {
+                "count": 34,
+                "prediction": "[\"2\"]",
+                "truth": "[\"3\"]"
+              },
+              {
+                "count": 10,
+                "prediction": "[\"3\"]",
+                "truth": "[\"3\"]"
+              },
+              {
+                "count": 2,
+                "prediction": null,
+                "truth": "[\"3\"]"
+              },
+              {
+                "count": 3,
+                "prediction": "[\"2\"]",
+                "truth": "[\"4\"]"
+              },
+              {
+                "count": 1,
+                "prediction": "[\"6\"]",
+                "truth": "[\"4\"]"
+              },
+              {
+                "count": 1,
+                "prediction": null,
+                "truth": "[\"4\"]"
+              },
+              {
+                "count": 4,
+                "prediction": "[\"2\"]",
+                "truth": "[\"5\"]"
+              },
+              {
+                "count": 1,
+                "prediction": "[\"3\"]",
+                "truth": "[\"5\"]"
+              },
+              {
+                "count": 1,
+                "prediction": null,
+                "truth": "[\"5\"]"
+              },
+              {
+                "count": 6,
+                "prediction": "[\"2\"]",
+                "truth": "[\"6\"]"
+              },
+              {
+                "count": 1,
+                "prediction": "[\"3\"]",
+                "truth": "[\"6\"]"
+              },
+              {
+                "count": 3,
+                "prediction": "[\"6\"]",
+                "truth": "[\"6\"]"
+              },
+              {
+                "count": 12,
+                "prediction": "[\"2\"]",
+                "truth": "[\"7\"]"
+              },
+              {
+                "count": 2,
+                "prediction": "[\"3\"]",
+                "truth": "[\"7\"]"
+              },
+              {
+                "count": 2,
+                "prediction": null,
+                "truth": "[\"7\"]"
+              }
+            ],
+            "single_outcome": false,
+            "uncertainty": {
+              "accuracy_all_hidden": [
+                0.3474946374946375,
+                0.4918953274305251
+              ],
+              "accuracy_among_calls": [
+                0.3618575355016033,
+                0.5145519864750634
+              ],
+              "biological_groups": 162,
+              "draws": 500,
+              "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+              "status": "descriptive_group_bootstrap"
+            }
+          },
+          "metric_status": {
+            "accuracy": "available",
+            "coverage": "available",
+            "kappa": "available",
+            "macro_auprc": "available",
+            "macro_auroc": "available",
+            "macro_f1": "available",
+            "macro_precision": "available",
+            "macro_recall": "available",
+            "mcc": "available",
+            "precision_of_calls": "available",
+            "weighted_f1": "available"
+          },
+          "metrics": {
+            "accuracy": 0.41847826086956524,
+            "coverage": 0.9565217391304348,
+            "kappa": 0.07481203007518802,
+            "macro_auprc": 0.21100531124378533,
+            "macro_auroc": 0.6040275286500603,
+            "macro_f1": 0.1413486275871597,
+            "macro_precision": 0.169585346215781,
+            "macro_recall": 0.1463768115942029,
+            "mcc": 0.0867707833958645,
+            "precision_of_calls": 0.4375,
+            "weighted_f1": 0.34267969100438184
+          },
+          "parameter_identity": "3644481620ba72999fbc411a1a8ffc60bc31826c9cf152add30b8dafa3e4c38c",
+          "records_identity": "7bb6a40e2181ef0841d5a4bb42fbd6e12e79e0c50ff90767deddfd693e70108c",
+          "scope": {
+            "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+            "gaps": [
+              "0 eligible genes lack resolved homology groups",
+              "Biological accuracy requires a separately admitted independent truth source",
+              "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+              "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+              "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+              "Nomenclature resolution is not a new gene activity measurement",
+              "Source release and complete homology/source independence remain unresolved",
+              "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+              "Vote shares and class scores are method support, not calibrated probabilities"
+            ],
+            "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+            "organism": "Tg",
+            "partition": "outer_test",
+            "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+            "seed": 24,
+            "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+            "strategy": "feature_knn",
+            "target": "ec_major_classes",
+            "task": "label calls",
+            "truth_grade": "unresolved",
+            "unit": "gene"
+          },
+          "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+          "small_sample": false
+        },
+        "major_class_cards.json": [
+          {
+            "biological_precision": null,
+            "biological_recall": null,
+            "calibrated_confidence": null,
+            "class": "1",
+            "coverage": 0.9565217391304348,
+            "eligible": 184,
+            "f1": 0.0,
+            "false_negative": 20,
+            "false_positive": 1,
+            "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+            "known_positive_genes": 20,
+            "precision": 0.0,
+            "recall": 0.0,
+            "reference_prevalence": 0.10869565217391304,
+            "true_positive": 0
+          },
+          {
+            "biological_precision": null,
+            "biological_recall": null,
+            "calibrated_confidence": null,
+            "class": "2",
+            "coverage": 0.9565217391304348,
+            "eligible": 184,
+            "f1": 0.6,
+            "false_negative": 16,
+            "false_positive": 72,
+            "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+            "known_positive_genes": 82,
+            "precision": 0.4782608695652174,
+            "recall": 0.8048780487804879,
+            "reference_prevalence": 0.44565217391304346,
+            "true_positive": 66
+          },
+          {
+            "biological_precision": null,
+            "biological_recall": null,
+            "calibrated_confidence": null,
+            "class": "3",
+            "coverage": 0.9565217391304348,
+            "eligible": 184,
+            "f1": 0.2564102564102564,
+            "false_negative": 36,
+            "false_positive": 22,
+            "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+            "known_positive_genes": 46,
+            "precision": 0.3125,
+            "recall": 0.21739130434782608,
+            "reference_prevalence": 0.25,
+            "true_positive": 10
+          },
+          {
+            "biological_precision": null,
+            "biological_recall": null,
+            "calibrated_confidence": null,
+            "class": "4",
+            "coverage": 0.9565217391304348,
+            "eligible": 184,
+            "f1": 0.0,
+            "false_negative": 6,
+            "false_positive": 1,
+            "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+            "known_positive_genes": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "reference_prevalence": 0.03260869565217391,
+            "true_positive": 0
+          },
+          {
+            "biological_precision": null,
+            "biological_recall": null,
+            "calibrated_confidence": null,
+            "class": "5",
+            "coverage": 0.9565217391304348,
+            "eligible": 184,
+            "f1": 0.0,
+            "false_negative": 6,
+            "false_positive": 0,
+            "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+            "known_positive_genes": 6,
+            "precision": null,
+            "recall": 0.0,
+            "reference_prevalence": 0.03260869565217391,
+            "true_positive": 0
+          },
+          {
+            "biological_precision": null,
+            "biological_recall": null,
+            "calibrated_confidence": null,
+            "class": "6",
+            "coverage": 0.9565217391304348,
+            "eligible": 184,
+            "f1": 0.42857142857142855,
+            "false_negative": 7,
+            "false_positive": 1,
+            "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+            "known_positive_genes": 10,
+            "precision": 0.75,
+            "recall": 0.3,
+            "reference_prevalence": 0.05434782608695652,
+            "true_positive": 3
+          },
+          {
+            "biological_precision": null,
+            "biological_recall": null,
+            "calibrated_confidence": null,
+            "class": "7",
+            "coverage": 0.9565217391304348,
+            "eligible": 184,
+            "f1": 0.0,
+            "false_negative": 16,
+            "false_positive": 0,
+            "interpretation": "Recovery of recorded complete profiles; not independent biological activity accuracy",
+            "known_positive_genes": 16,
+            "precision": null,
+            "recall": 0.0,
+            "reference_prevalence": 0.08695652173913043,
+            "true_positive": 0
+          }
+        ],
+        "profile_class_cards.json": [
+          {
+            "class": "[\"1\",\"2\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.005434782608695652,
+              "f1": 0.0,
+              "false_negative": 1,
+              "false_positive": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "true_positive": 0
+            },
+            "cohort_identity": "32b84391c28c3484d44ad59288b83aafa5ab3b83a354ed4957a05b928e1c8401",
+            "counts": {
+              "abstained": 0,
+              "answered": 1,
+              "correct": 0,
+              "eligible": 1,
+              "unique_biological_entities": 1,
+              "wrong": 1
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.0,
+              "accuracy_among_calls": 0.0,
+              "confusion": [
+                {
+                  "count": 1,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"1\",\"2\"]"
+                }
+              ],
+              "single_outcome": true,
+              "uncertainty": {
+                "biological_groups": 1,
+                "reason": "Fewer than five biological groups",
+                "status": "unavailable"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.0,
+              "coverage": 1.0,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.0,
+              "macro_precision": 0.0,
+              "macro_recall": 0.0,
+              "mcc": 0.0,
+              "precision_of_calls": 0.0,
+              "weighted_f1": 0.0
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "515dc44696fd18905902cc7a54f94d7ed351cc93189dd41d108789178e47f03d",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": true
+          },
+          {
+            "class": "[\"1\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.10326086956521739,
+              "f1": 0.0,
+              "false_negative": 19,
+              "false_positive": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "true_positive": 0
+            },
+            "cohort_identity": "99264ed89f69184eeabd34df73fc7d68823a2139d3d27e529cd85bc0d00e8419",
+            "counts": {
+              "abstained": 1,
+              "answered": 18,
+              "correct": 0,
+              "eligible": 19,
+              "unique_biological_entities": 19,
+              "wrong": 18
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.0,
+              "accuracy_among_calls": 0.0,
+              "confusion": [
+                {
+                  "count": 13,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"1\"]"
+                },
+                {
+                  "count": 5,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"1\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": null,
+                  "truth": "[\"1\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.0,
+                  0.0
+                ],
+                "accuracy_among_calls": [
+                  0.0,
+                  0.0
+                ],
+                "biological_groups": 15,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.0,
+              "coverage": 0.9473684210526315,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.0,
+              "macro_precision": 0.0,
+              "macro_recall": 0.0,
+              "mcc": 0.0,
+              "precision_of_calls": 0.0,
+              "weighted_f1": 0.0
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "7ac1c3cdc2b74008d5020e3f2cd14b5cee8f0715be38230949683d59faa8b748",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          },
+          {
+            "class": "[\"2\",\"4\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.005434782608695652,
+              "f1": 0.0,
+              "false_negative": 1,
+              "false_positive": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "true_positive": 0
+            },
+            "cohort_identity": "3287127bef6bc4bf9a42de44cba82f1837f28593975d6ae0156fa746e4973dcd",
+            "counts": {
+              "abstained": 0,
+              "answered": 1,
+              "correct": 0,
+              "eligible": 1,
+              "unique_biological_entities": 1,
+              "wrong": 1
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.0,
+              "accuracy_among_calls": 0.0,
+              "confusion": [
+                {
+                  "count": 1,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"2\",\"4\"]"
+                }
+              ],
+              "single_outcome": true,
+              "uncertainty": {
+                "biological_groups": 1,
+                "reason": "Fewer than five biological groups",
+                "status": "unavailable"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.0,
+              "coverage": 1.0,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.0,
+              "macro_precision": 0.0,
+              "macro_recall": 0.0,
+              "mcc": 0.0,
+              "precision_of_calls": 0.0,
+              "weighted_f1": 0.0
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "a7bb87698b3d0f748b87caf35a024f69e0fa01bd155a9ce969abc91de9e82bb5",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": true
+          },
+          {
+            "class": "[\"2\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.43478260869565216,
+              "f1": 0.5871559633027522,
+              "false_negative": 16,
+              "false_positive": 74,
+              "precision": 0.463768115942029,
+              "recall": 0.8,
+              "true_positive": 64
+            },
+            "cohort_identity": "7244ebd78e7c5fe0786f476a617b5028069d4cc8921a22e3d6f2bc837aa284c5",
+            "counts": {
+              "abstained": 1,
+              "answered": 79,
+              "correct": 64,
+              "eligible": 80,
+              "unique_biological_entities": 80,
+              "wrong": 15
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.8,
+              "accuracy_among_calls": 0.810126582278481,
+              "confusion": [
+                {
+                  "count": 1,
+                  "prediction": "[\"1\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 64,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 13,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"4\"]",
+                  "truth": "[\"2\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": null,
+                  "truth": "[\"2\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.7073170731707317,
+                  0.8947878787878787
+                ],
+                "accuracy_among_calls": [
+                  0.7169515669515669,
+                  0.9026168699186992
+                ],
+                "biological_groups": 74,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.8,
+              "coverage": 0.9875,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.888888888888889,
+              "macro_precision": 1.0,
+              "macro_recall": 0.8,
+              "mcc": 0.0,
+              "precision_of_calls": 0.810126582278481,
+              "weighted_f1": 0.888888888888889
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "78298a8260f6f99a87ae7df87dd75f276f972e0d7213f48c51d3c72fa74dcfe8",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          },
+          {
+            "class": "[\"3\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.25,
+              "f1": 0.2564102564102564,
+              "false_negative": 36,
+              "false_positive": 22,
+              "precision": 0.3125,
+              "recall": 0.21739130434782608,
+              "true_positive": 10
+            },
+            "cohort_identity": "f21c229f28a65a9af058b3b5b2ac5484e5ae0db51ee631713abe4b5065764fcf",
+            "counts": {
+              "abstained": 2,
+              "answered": 44,
+              "correct": 10,
+              "eligible": 46,
+              "unique_biological_entities": 46,
+              "wrong": 34
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.21739130434782608,
+              "accuracy_among_calls": 0.22727272727272727,
+              "confusion": [
+                {
+                  "count": 34,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 10,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"3\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": null,
+                  "truth": "[\"3\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.10332532051282052,
+                  0.3406794003868472
+                ],
+                "accuracy_among_calls": [
+                  0.10953453453453454,
+                  0.35291666666666655
+                ],
+                "biological_groups": 36,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.21739130434782608,
+              "coverage": 0.9565217391304348,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.3571428571428571,
+              "macro_precision": 1.0,
+              "macro_recall": 0.21739130434782608,
+              "mcc": 0.0,
+              "precision_of_calls": 0.22727272727272727,
+              "weighted_f1": 0.3571428571428571
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "0e71b97f2354f2426f65ff142ccbac16b584545e7b477a7bf21b8af349059832",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          },
+          {
+            "class": "[\"4\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.02717391304347826,
+              "f1": 0.0,
+              "false_negative": 5,
+              "false_positive": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "true_positive": 0
+            },
+            "cohort_identity": "e5222133a0b1ab8ed8c673f25c43e2a9365590316224f4c19eb8e12c1e1737f9",
+            "counts": {
+              "abstained": 1,
+              "answered": 4,
+              "correct": 0,
+              "eligible": 5,
+              "unique_biological_entities": 5,
+              "wrong": 4
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.0,
+              "accuracy_among_calls": 0.0,
+              "confusion": [
+                {
+                  "count": 3,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"4\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"6\"]",
+                  "truth": "[\"4\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": null,
+                  "truth": "[\"4\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.0,
+                  0.0
+                ],
+                "accuracy_among_calls": [
+                  0.0,
+                  0.0
+                ],
+                "biological_groups": 5,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.0,
+              "coverage": 0.8,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.0,
+              "macro_precision": 0.0,
+              "macro_recall": 0.0,
+              "mcc": 0.0,
+              "precision_of_calls": 0.0,
+              "weighted_f1": 0.0
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "b76b89ce6de94ce1cfc7c86a1c38dcece353643fd83db2210200c86c56907bb1",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          },
+          {
+            "class": "[\"5\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.03260869565217391,
+              "f1": 0.0,
+              "false_negative": 6,
+              "false_positive": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "true_positive": 0
+            },
+            "cohort_identity": "7073df60352061fda296e982a31da73a3b1ff7b7b1727d7b053b7823636b6b24",
+            "counts": {
+              "abstained": 1,
+              "answered": 5,
+              "correct": 0,
+              "eligible": 6,
+              "unique_biological_entities": 6,
+              "wrong": 5
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.0,
+              "accuracy_among_calls": 0.0,
+              "confusion": [
+                {
+                  "count": 4,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"5\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"5\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": null,
+                  "truth": "[\"5\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.0,
+                  0.0
+                ],
+                "accuracy_among_calls": [
+                  0.0,
+                  0.0
+                ],
+                "biological_groups": 6,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.0,
+              "coverage": 0.8333333333333334,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.0,
+              "macro_precision": 0.0,
+              "macro_recall": 0.0,
+              "mcc": 0.0,
+              "precision_of_calls": 0.0,
+              "weighted_f1": 0.0
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "004a58a478e08307adcd7defd59a2782e165f5ada78bd26c72684e68ff52ba2b",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          },
+          {
+            "class": "[\"6\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.05434782608695652,
+              "f1": 0.4285714285714285,
+              "false_negative": 7,
+              "false_positive": 1,
+              "precision": 0.75,
+              "recall": 0.3,
+              "true_positive": 3
+            },
+            "cohort_identity": "b5cb494bfe59bfed493e72ec02107723b7e29941b4c363fb003e713a51ef0b49",
+            "counts": {
+              "abstained": 0,
+              "answered": 10,
+              "correct": 3,
+              "eligible": 10,
+              "unique_biological_entities": 10,
+              "wrong": 7
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.3,
+              "accuracy_among_calls": 0.3,
+              "confusion": [
+                {
+                  "count": 6,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"6\"]"
+                },
+                {
+                  "count": 1,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"6\"]"
+                },
+                {
+                  "count": 3,
+                  "prediction": "[\"6\"]",
+                  "truth": "[\"6\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.1,
+                  0.6
+                ],
+                "accuracy_among_calls": [
+                  0.1,
+                  0.6
+                ],
+                "biological_groups": 10,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.3,
+              "coverage": 1.0,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.4615384615384615,
+              "macro_precision": 1.0,
+              "macro_recall": 0.3,
+              "mcc": 0.0,
+              "precision_of_calls": 0.3,
+              "weighted_f1": 0.4615384615384615
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "df330ddcb9df1d6af4fe3a45390dd5237e760e7bcf62c3c2fe268f16fd0281ad",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          },
+          {
+            "class": "[\"7\"]",
+            "class_metrics": {
+              "evaluation_prevalence": 0.08695652173913043,
+              "f1": 0.0,
+              "false_negative": 16,
+              "false_positive": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "true_positive": 0
+            },
+            "cohort_identity": "4e1968f4ec021c48c764c5347e08a957d3971bc77421a890b19820a614791494",
+            "counts": {
+              "abstained": 2,
+              "answered": 14,
+              "correct": 0,
+              "eligible": 16,
+              "unique_biological_entities": 16,
+              "wrong": 14
+            },
+            "evaluation_parameters": {},
+            "extra": {
+              "accuracy_all_hidden": 0.0,
+              "accuracy_among_calls": 0.0,
+              "confusion": [
+                {
+                  "count": 12,
+                  "prediction": "[\"2\"]",
+                  "truth": "[\"7\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": "[\"3\"]",
+                  "truth": "[\"7\"]"
+                },
+                {
+                  "count": 2,
+                  "prediction": null,
+                  "truth": "[\"7\"]"
+                }
+              ],
+              "single_outcome": false,
+              "uncertainty": {
+                "accuracy_all_hidden": [
+                  0.0,
+                  0.0
+                ],
+                "accuracy_among_calls": [
+                  0.0,
+                  0.0
+                ],
+                "biological_groups": 16,
+                "draws": 500,
+                "limits": "Groups supplied by caller; not an individual-gene probability or source-independence proof",
+                "status": "descriptive_group_bootstrap"
+              }
+            },
+            "metric_status": {
+              "accuracy": "available",
+              "coverage": "available",
+              "kappa": "available",
+              "macro_auprc": "unavailable_for_this_cohort_or_truth",
+              "macro_auroc": "unavailable_for_this_cohort_or_truth",
+              "macro_f1": "available",
+              "macro_precision": "available",
+              "macro_recall": "available",
+              "mcc": "available",
+              "precision_of_calls": "available",
+              "weighted_f1": "available"
+            },
+            "metrics": {
+              "accuracy": 0.0,
+              "coverage": 0.875,
+              "kappa": 0.0,
+              "macro_auprc": null,
+              "macro_auroc": null,
+              "macro_f1": 0.0,
+              "macro_precision": 0.0,
+              "macro_recall": 0.0,
+              "mcc": 0.0,
+              "precision_of_calls": 0.0,
+              "weighted_f1": 0.0
+            },
+            "parameter_identity": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "records_identity": "bd3f13cda78fa95da044b2c67c037752768cc211fedb193a6171a8f826169039",
+            "scope": {
+              "benchmark_id": "FN-EC-01:Tg:major_class_profiles",
+              "gaps": [
+                "0 eligible genes lack resolved homology groups",
+                "Biological accuracy requires a separately admitted independent truth source",
+                "Exact profile recovery preserves multiple major classes; novel combinations may be unsupported",
+                "Gene-level EC curation/experimental/predicted evidence grades remain unresolved",
+                "Native training rank transform is frozen; whole-context ranking is not used for inductive evaluation",
+                "Nomenclature resolution is not a new gene activity measurement",
+                "Source release and complete homology/source independence remain unresolved",
+                "Unannotated/unresolvable profiles remain unknown; no genome-wide verified negatives",
+                "Vote shares and class scores are method support, not calibrated probabilities"
+              ],
+              "negative_semantics": "complete recorded annotation profiles; biological absence unknown",
+              "organism": "Tg",
+              "partition": "outer_test",
+              "protocol": "01bdb9fbb2474c774f22d17f51188c95f1b46d8bd32bf64c42399ced70cd4205",
+              "seed": 24,
+              "settings": "{\"feature_transform\":\"native training ranks; frozen query ECDF\",\"k\":15,\"min_share\":0.3,\"ontology\":\"pinned ENZYME 02-Sep-2026\",\"selection\":\"fixed before testing\",\"target\":\"complete major-class profile\"}",
+              "strategy": "feature_knn",
+              "target": "ec_major_classes",
+              "task": "label calls",
+              "truth_grade": "unresolved",
+              "unit": "gene"
+            },
+            "scope_identity": "e2841355687bff54d5d65bab76696cf04eb7e5092ef58de5e04ff235e507cd4a",
+            "small_sample": false
+          }
+        ],
+        "rows.json": [
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_229630",
+            "group": "OG6_132980",
+            "prediction": "[\"2\"]",
+            "support": 0.46492562654500874,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_264670",
+            "group": "OG6_152009",
+            "prediction": "[\"2\"]",
+            "support": 0.732783505679621,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_500422",
+            "group": "OG6_102351",
+            "prediction": "[\"2\"]",
+            "support": 0.6011342199297047,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_281400",
+            "group": "OG6_491742",
+            "prediction": "[\"2\"]",
+            "support": 0.535261468920425,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_223985",
+            "group": "OG6_100742",
+            "prediction": "[\"2\"]",
+            "support": 0.7313722503652812,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_250850",
+            "group": "OG6_491752",
+            "prediction": "[\"2\"]",
+            "support": 0.6630262013052738,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_237480",
+            "group": "OG6_103155",
+            "prediction": "[\"2\"]",
+            "support": 0.6719868548760527,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_232360",
+            "group": "OG6_102772",
+            "prediction": "[\"2\"]",
+            "support": 0.7999838711711098,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_500314",
+            "group": "OG6_100742",
+            "prediction": "[\"2\"]",
+            "support": 0.804954342639551,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_246060",
+            "group": "OG6_101824",
+            "prediction": "[\"2\"]",
+            "support": 0.462136352716242,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_235950",
+            "group": "OG6_116777",
+            "prediction": "[\"3\"]",
+            "support": 0.403215027459713,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_289070",
+            "group": "OG6_100379",
+            "prediction": "[\"2\"]",
+            "support": 0.5309814062817566,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_311660",
+            "group": "OG6_489763",
+            "prediction": "[\"2\"]",
+            "support": 0.5950329348377288,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_269730",
+            "group": "OG6_148535",
+            "prediction": "[\"2\"]",
+            "support": 0.662764240563533,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_253440",
+            "group": "OG6_100556",
+            "prediction": "[\"2\"]",
+            "support": 0.5396900273666212,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_500302",
+            "group": "OG6_110270",
+            "prediction": "[\"6\"]",
+            "support": 0.40025902662654556,
+            "truth": "[\"4\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_235680",
+            "group": "OG6_110270",
+            "prediction": "[\"3\"]",
+            "support": 0.5419935346714115,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_266730",
+            "group": "OG6_101393",
+            "prediction": "[\"2\"]",
+            "support": 0.7361555892446022,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_262030",
+            "group": "OG6_102923",
+            "prediction": "[\"2\"]",
+            "support": 0.8681231361283286,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_202230",
+            "group": "OG6_114105",
+            "prediction": "[\"2\"]",
+            "support": 0.6023614172604129,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_226790",
+            "group": "OG6_489987",
+            "prediction": "[\"2\"]",
+            "support": 0.523008617094085,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_241870",
+            "group": "OG6_101161",
+            "prediction": "[\"2\"]",
+            "support": 0.45018861095539686,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_306480",
+            "group": "OG6_222837",
+            "prediction": "[\"2\"]",
+            "support": 0.6683468534313453,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_249820",
+            "group": "OG6_174861",
+            "prediction": "[\"2\"]",
+            "support": 0.6653289407479932,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_272650",
+            "group": "OG6_100946",
+            "prediction": "[\"2\"]",
+            "support": 0.6572849856719573,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_223840",
+            "group": "OG6_101446",
+            "prediction": "[\"2\"]",
+            "support": 0.4620045580588921,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_229020",
+            "group": "OG6_160728",
+            "prediction": "[\"2\"]",
+            "support": 0.7359384460972683,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_259920",
+            "group": "OG6_102331",
+            "prediction": "[\"2\"]",
+            "support": 0.5365158066486032,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_290960",
+            "group": "OG6_115132",
+            "prediction": "[\"2\"]",
+            "support": 0.6628611371656092,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_306550",
+            "group": "OG6_492256",
+            "prediction": "[\"2\"]",
+            "support": 0.3352504630706176,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_254420",
+            "group": "OG6_144769",
+            "prediction": "[\"2\"]",
+            "support": 0.5330025896521015,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_243610",
+            "group": "OG6_491474",
+            "prediction": "[\"2\"]",
+            "support": 0.53772754295334,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_220350",
+            "group": "OG6_489430",
+            "prediction": "[\"2\"]",
+            "support": 0.5351751456749928,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_257800",
+            "group": "OG6_101058",
+            "prediction": "[\"2\"]",
+            "support": 0.5915633777098959,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_275610",
+            "group": "OG6_491362",
+            "prediction": "[\"2\"]",
+            "support": 0.7439087923961165,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_272670",
+            "group": "OG6_102110",
+            "prediction": "[\"2\"]",
+            "support": 0.7373608879120359,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_207080",
+            "group": "OG6_100632",
+            "prediction": "[\"2\"]",
+            "support": 0.7320996889275584,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_280410",
+            "group": "OG6_100946",
+            "prediction": "[\"2\"]",
+            "support": 0.5986679000626052,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_262760",
+            "group": "OG6_490858",
+            "prediction": "[\"2\"]",
+            "support": 0.4001011145516008,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_235905",
+            "group": "OG6_100263",
+            "prediction": "[\"2\"]",
+            "support": 0.6068650288652008,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_281980",
+            "group": "OG6_101561",
+            "prediction": "[\"3\"]",
+            "support": 0.46009235907411,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_255250",
+            "group": "OG6_101428",
+            "prediction": "[\"3\"]",
+            "support": 0.4077105865025256,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_266920",
+            "group": "OG6_100946",
+            "prediction": "[\"3\"]",
+            "support": 0.5533416685227748,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_306460",
+            "group": "OG6_111201",
+            "prediction": "[\"2\"]",
+            "support": 0.6048386551568549,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_260210",
+            "group": "OG6_102331",
+            "prediction": "[\"2\"]",
+            "support": 0.47020559428671566,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_281370",
+            "group": "OG6_101058",
+            "prediction": "[\"2\"]",
+            "support": 0.4772574594418629,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_210830",
+            "group": "OG6_101068",
+            "prediction": "[\"2\"]",
+            "support": 0.6024873572969033,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_263740",
+            "group": "OG6_146178",
+            "prediction": "[\"2\"]",
+            "support": 0.47260976734056337,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_202920",
+            "group": "OG6_106370",
+            "prediction": "[\"2\"]",
+            "support": 0.7381986667116435,
+            "truth": "[\"2\",\"4\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_313330",
+            "group": "OG6_490468",
+            "prediction": "[\"2\"]",
+            "support": 0.7981388184234185,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_294440",
+            "group": "OG6_101428",
+            "prediction": "[\"2\"]",
+            "support": 0.535694578280852,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_257050",
+            "group": "OG6_102860",
+            "prediction": "[\"2\"]",
+            "support": 0.669919166751164,
+            "truth": "[\"1\",\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_206310",
+            "group": "OG6_101203",
+            "prediction": "[\"2\"]",
+            "support": 0.8033149759746252,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_206610",
+            "group": "OG6_101258",
+            "prediction": "[\"2\"]",
+            "support": 0.385423153728035,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_278518",
+            "group": "OG6_119709",
+            "prediction": "[\"3\"]",
+            "support": 0.32873074565408045,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_310670",
+            "group": "OG6_100699",
+            "prediction": "[\"3\"]",
+            "support": 0.40505970446544703,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_315640",
+            "group": "OG6_101396",
+            "prediction": "[\"2\"]",
+            "support": 0.7921689467076503,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_267100",
+            "group": "OG6_100270",
+            "prediction": "[\"2\"]",
+            "support": 0.5970469746108578,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_246690",
+            "group": "OG6_110800",
+            "prediction": "[\"2\"]",
+            "support": 0.4620818333362083,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_268770",
+            "group": "OG6_185668",
+            "prediction": "[\"2\"]",
+            "support": 0.5972166868348572,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_239620",
+            "group": "OG6_103434",
+            "prediction": "[\"2\"]",
+            "support": 0.46533712782072634,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_288330",
+            "group": "OG6_490258",
+            "prediction": "[\"2\"]",
+            "support": 0.5302416771649897,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_210750",
+            "group": "OG6_102538",
+            "prediction": "[\"2\"]",
+            "support": 0.602575097936649,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_261030",
+            "group": "OG6_101920",
+            "prediction": "[\"2\"]",
+            "support": 0.7313060130578954,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_264450",
+            "group": "OG6_103726",
+            "prediction": "[\"2\"]",
+            "support": 0.4629575515886471,
+            "truth": "[\"5\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_246800",
+            "group": "OG6_102438",
+            "prediction": "[\"2\"]",
+            "support": 0.5327490962371987,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_226072",
+            "group": "OG6_102108",
+            "prediction": "[\"3\"]",
+            "support": 0.47032754238327024,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_294690",
+            "group": "OG6_127785",
+            "prediction": "[\"2\"]",
+            "support": 0.409639475445795,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_500004",
+            "group": "OG6_101530",
+            "prediction": "[\"2\"]",
+            "support": 0.612149350291499,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_254110",
+            "group": "OG6_101334",
+            "prediction": "[\"2\"]",
+            "support": 0.8000199452825507,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_243340",
+            "group": "OG6_127997",
+            "prediction": "[\"2\"]",
+            "support": 0.5326267026964127,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_217350",
+            "group": "OG6_103808",
+            "prediction": "[\"2\"]",
+            "support": 0.5441011683734316,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_215250",
+            "group": "OG6_101973",
+            "prediction": "[\"2\"]",
+            "support": 0.5992781044143726,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_230460",
+            "group": "OG6_104110",
+            "prediction": "[\"2\"]",
+            "support": 0.3383309159791271,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_297640",
+            "group": "OG6_100535",
+            "prediction": "[\"2\"]",
+            "support": 0.7983737254173422,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_255890",
+            "group": "OG6_100481",
+            "prediction": "[\"2\"]",
+            "support": 0.32696267015779934,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_270910",
+            "group": "OG6_114319",
+            "prediction": "[\"2\"]",
+            "support": 0.4157312049827025,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_209580",
+            "group": "OG6_124785",
+            "prediction": "[\"2\"]",
+            "support": 0.8028068062834081,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_266710",
+            "group": "OG6_158214",
+            "prediction": "[\"2\"]",
+            "support": 0.692237856400056,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_294930",
+            "group": "OG6_107201",
+            "prediction": "[\"2\"]",
+            "support": 0.6000164168400647,
+            "truth": "[\"4\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_263870",
+            "group": "OG6_103886",
+            "prediction": "[\"6\"]",
+            "support": 0.4635325841780464,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_214470",
+            "group": "OG6_101235",
+            "prediction": "[\"2\"]",
+            "support": 0.7341255934614646,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_300350",
+            "group": "OG6_102414",
+            "prediction": "[\"2\"]",
+            "support": 0.47494671989846343,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_216810",
+            "group": "OG6_103434",
+            "prediction": "[\"3\"]",
+            "support": 0.467937149274661,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_257480",
+            "group": "OG6_102015",
+            "prediction": "[\"2\"]",
+            "support": 0.664475236032901,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_205550",
+            "group": "OG6_490309",
+            "prediction": "[\"2\"]",
+            "support": 0.8005605653556538,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_211330",
+            "group": "OG6_100342",
+            "prediction": "[\"2\"]",
+            "support": 0.6544582753586222,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_214280",
+            "group": "OG6_102300",
+            "prediction": "[\"2\"]",
+            "support": 0.7986374786039269,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_202460",
+            "group": "OG6_117937",
+            "prediction": "[\"2\"]",
+            "support": 0.5369318719877886,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_306960",
+            "group": "OG6_101233",
+            "prediction": "[\"6\"]",
+            "support": 0.4068182808932628,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_263220",
+            "group": "OG6_223027",
+            "prediction": "[\"3\"]",
+            "support": 0.5332698131595803,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_258020",
+            "group": "OG6_106807",
+            "prediction": "[\"1\"]",
+            "support": 0.340738634148501,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_207620",
+            "group": "OG6_100481",
+            "prediction": "[\"2\"]",
+            "support": 0.32820138483223316,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_305910",
+            "group": "OG6_100692",
+            "prediction": "[\"2\"]",
+            "support": 0.40207148709085916,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_219130",
+            "group": "OG6_201108",
+            "prediction": "[\"2\"]",
+            "support": 0.5911540907268742,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_318730",
+            "group": "OG6_102903",
+            "prediction": "[\"2\"]",
+            "support": 0.47527852950656985,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_282230",
+            "group": "OG6_100343",
+            "prediction": "[\"2\"]",
+            "support": 0.3992087243064822,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_500225",
+            "group": "OG6_100742",
+            "prediction": "[\"2\"]",
+            "support": 0.679862040282165,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_254410",
+            "group": "OG6_100742",
+            "prediction": "[\"2\"]",
+            "support": 0.40425588645092136,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_218200",
+            "group": "OG6_109569",
+            "prediction": "[\"3\"]",
+            "support": 0.33579107934298574,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_224060",
+            "group": "OG6_133230",
+            "prediction": "[\"3\"]",
+            "support": 0.4027500080924433,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_216970",
+            "group": "OG6_100479",
+            "prediction": "[\"3\"]",
+            "support": 0.6683996115900606,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_263130",
+            "group": "OG6_101980",
+            "prediction": "[\"3\"]",
+            "support": 0.5998948823211426,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_260240",
+            "group": "OG6_101138",
+            "prediction": "[\"2\"]",
+            "support": 0.5342495119839372,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_216790",
+            "group": "OG6_101314",
+            "prediction": "[\"2\"]",
+            "support": 0.33420135595377504,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_259180",
+            "group": "OG6_100154",
+            "prediction": "[\"2\"]",
+            "support": 0.397314016948215,
+            "truth": "[\"4\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_310810",
+            "group": "OG6_105728",
+            "prediction": "[\"2\"]",
+            "support": 0.5987527155974509,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_318580",
+            "group": "OG6_100912",
+            "prediction": "[\"3\"]",
+            "support": 0.5938788797176642,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_278910",
+            "group": "OG6_100154",
+            "prediction": "[\"2\"]",
+            "support": 0.5403961686050851,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_248760",
+            "group": "OG6_113449",
+            "prediction": "[\"3\"]",
+            "support": 0.33468644146787724,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_318275",
+            "group": "OG6_109652",
+            "prediction": "[\"2\"]",
+            "support": 0.5982277021759218,
+            "truth": "[\"5\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_204400",
+            "group": "OG6_100771",
+            "prediction": "[\"2\"]",
+            "support": 0.3329376499351237,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": true,
+            "calibrated_confidence": null,
+            "entity": "TGME49_204460",
+            "group": "OG6_101527",
+            "prediction": null,
+            "support": 0.27171475532420614,
+            "truth": "[\"4\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_315770",
+            "group": "OG6_132452",
+            "prediction": "[\"3\"]",
+            "support": 0.4802162488601695,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": true,
+            "calibrated_confidence": null,
+            "entity": "TGME49_232340",
+            "group": "OG6_100270",
+            "prediction": null,
+            "support": 0.26406235393163896,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_251880",
+            "group": "OG6_101224",
+            "prediction": "[\"6\"]",
+            "support": 0.3453168693220077,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_500193",
+            "group": "OG6_101530",
+            "prediction": "[\"2\"]",
+            "support": 0.6153830302224167,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_207590",
+            "group": "OG6_137272",
+            "prediction": "[\"2\"]",
+            "support": 0.5447982518008492,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_215740",
+            "group": "OG6_101916",
+            "prediction": "[\"2\"]",
+            "support": 0.7306771726245725,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_202800",
+            "group": "OG6_102743",
+            "prediction": "[\"2\"]",
+            "support": 0.7355931132109984,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_292100",
+            "group": "OG6_101723",
+            "prediction": "[\"2\"]",
+            "support": 0.5391972787389167,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_320210",
+            "group": "OG6_102145",
+            "prediction": "[\"2\"]",
+            "support": 0.4603236937024733,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_200430",
+            "group": "OG6_102571",
+            "prediction": "[\"2\"]",
+            "support": 0.533444223643804,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_203110",
+            "group": "OG6_101980",
+            "prediction": "[\"4\"]",
+            "support": 0.3377187528085157,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_227790",
+            "group": "OG6_102563",
+            "prediction": "[\"2\"]",
+            "support": 0.6064953253789986,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_225990",
+            "group": "OG6_101327",
+            "prediction": "[\"2\"]",
+            "support": 0.6004755104230918,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_309752",
+            "group": "OG6_100409",
+            "prediction": "[\"3\"]",
+            "support": 0.33498566732904533,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_246920",
+            "group": "OG6_101659",
+            "prediction": "[\"2\"]",
+            "support": 0.3971800342131165,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_273490",
+            "group": "OG6_100656",
+            "prediction": "[\"2\"]",
+            "support": 0.32474496833435773,
+            "truth": "[\"6\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_243990",
+            "group": "OG6_194569",
+            "prediction": "[\"2\"]",
+            "support": 0.6681286440123506,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_318330",
+            "group": "OG6_100632",
+            "prediction": "[\"2\"]",
+            "support": 0.605051721612629,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_318560",
+            "group": "OG6_103927",
+            "prediction": "[\"2\"]",
+            "support": 0.46677067234261227,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_239490",
+            "group": "OG6_101723",
+            "prediction": "[\"3\"]",
+            "support": 0.5287170033767165,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_293450",
+            "group": "OG6_109670",
+            "prediction": "[\"2\"]",
+            "support": 0.6251672570001737,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_269110",
+            "group": "OG6_100416",
+            "prediction": "[\"2\"]",
+            "support": 0.4627634227388536,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_285850",
+            "group": "OG6_114677",
+            "prediction": "[\"2\"]",
+            "support": 0.6005579049262072,
+            "truth": "[\"5\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_225550",
+            "group": "OG6_102081",
+            "prediction": "[\"2\"]",
+            "support": 0.4761838382305404,
+            "truth": "[\"4\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_209620",
+            "group": "OG6_491673",
+            "prediction": "[\"2\"]",
+            "support": 0.3975252462832635,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_246490",
+            "group": "OG6_490050",
+            "prediction": "[\"2\"]",
+            "support": 0.5955935858029734,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_248850",
+            "group": "OG6_100342",
+            "prediction": "[\"2\"]",
+            "support": 0.5985207948899343,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_279390",
+            "group": "OG6_101895",
+            "prediction": "[\"2\"]",
+            "support": 0.33360339606399064,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_208718",
+            "group": "OG6_101823",
+            "prediction": "[\"2\"]",
+            "support": 0.6716707153394773,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_231190",
+            "group": "OG6_100709",
+            "prediction": "[\"2\"]",
+            "support": 0.4699666365483633,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_311780",
+            "group": "OG6_100471",
+            "prediction": "[\"2\"]",
+            "support": 0.5339793749442102,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_213970",
+            "group": "OG6_100487",
+            "prediction": "[\"2\"]",
+            "support": 0.5960455795738531,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_300140",
+            "group": "OG6_101050",
+            "prediction": "[\"2\"]",
+            "support": 0.3416652729827862,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_316270",
+            "group": "OG6_102449",
+            "prediction": "[\"2\"]",
+            "support": 0.4096203310899559,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_316450",
+            "group": "OG6_100372",
+            "prediction": "[\"2\"]",
+            "support": 0.606361806229362,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_310680",
+            "group": "OG6_107288",
+            "prediction": "[\"2\"]",
+            "support": 0.32673366256992215,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_211670",
+            "group": "OG6_108845",
+            "prediction": "[\"2\"]",
+            "support": 0.6031601568920503,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_281510",
+            "group": "OG6_100555",
+            "prediction": "[\"2\"]",
+            "support": 0.6040561714327259,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_226300",
+            "group": "OG6_101971",
+            "prediction": "[\"2\"]",
+            "support": 0.3242165943790331,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_224220",
+            "group": "OG6_100547",
+            "prediction": "[\"2\"]",
+            "support": 0.6525660405572306,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_310400",
+            "group": "OG6_101901",
+            "prediction": "[\"2\"]",
+            "support": 0.4011716772498472,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_283710",
+            "group": "OG6_100372",
+            "prediction": "[\"2\"]",
+            "support": 0.4636641288710003,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": true,
+            "calibrated_confidence": null,
+            "entity": "TGME49_205430",
+            "group": "OG6_102105",
+            "prediction": null,
+            "support": 0.2705744251339232,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": true,
+            "calibrated_confidence": null,
+            "entity": "TGME49_202910",
+            "group": "OG6_162756",
+            "prediction": null,
+            "support": 0.2629148567513954,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": true,
+            "calibrated_confidence": null,
+            "entity": "TGME49_209260",
+            "group": "OG6_133121",
+            "prediction": null,
+            "support": 0.2612643888435854,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_218920",
+            "group": "OG6_100897",
+            "prediction": "[\"3\"]",
+            "support": 0.6206761322044598,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_200290",
+            "group": "OG6_100562",
+            "prediction": "[\"3\"]",
+            "support": 0.5270779923102235,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_230470",
+            "group": "OG6_489475",
+            "prediction": "[\"3\"]",
+            "support": 0.39714900403736153,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_271610",
+            "group": "OG6_207714",
+            "prediction": "[\"3\"]",
+            "support": 0.673185161026895,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_238000",
+            "group": "OG6_134701",
+            "prediction": "[\"2\"]",
+            "support": 0.7337249954346059,
+            "truth": "[\"5\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_240860",
+            "group": "OG6_100535",
+            "prediction": "[\"2\"]",
+            "support": 0.4696840959284402,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_245710",
+            "group": "OG6_139075",
+            "prediction": "[\"2\"]",
+            "support": 0.5425048829909062,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": true,
+            "calibrated_confidence": null,
+            "entity": "TGME49_297060",
+            "group": "OG6_101500",
+            "prediction": null,
+            "support": 0.2644356011070681,
+            "truth": "[\"5\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_212910",
+            "group": "OG6_100562",
+            "prediction": "[\"2\"]",
+            "support": 0.4697681792130929,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_224900",
+            "group": "OG6_100712",
+            "prediction": "[\"3\"]",
+            "support": 0.5326485974152321,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_254260",
+            "group": "OG6_103881",
+            "prediction": "[\"2\"]",
+            "support": 0.6056766090312932,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_247350",
+            "group": "OG6_105522",
+            "prediction": "[\"3\"]",
+            "support": 0.3244867971721298,
+            "truth": "[\"5\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_305290",
+            "group": "OG6_101237",
+            "prediction": "[\"3\"]",
+            "support": 0.38882261242546984,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_309210",
+            "group": "OG6_100111",
+            "prediction": "[\"3\"]",
+            "support": 0.33032303873456254,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_202300",
+            "group": "OG6_100769",
+            "prediction": "[\"3\"]",
+            "support": 0.5318421907019228,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_232410",
+            "group": "OG6_118095",
+            "prediction": "[\"3\"]",
+            "support": 0.34052882789245176,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": true,
+            "calibrated_confidence": null,
+            "entity": "TGME49_291310",
+            "group": "OG6_102000",
+            "prediction": null,
+            "support": 0.26761086672699796,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_288620",
+            "group": "OG6_101299",
+            "prediction": "[\"2\"]",
+            "support": 0.6028840387353626,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_254900",
+            "group": "OG6_102061",
+            "prediction": "[\"3\"]",
+            "support": 0.3994608013077082,
+            "truth": "[\"3\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_212310",
+            "group": "OG6_100711",
+            "prediction": "[\"3\"]",
+            "support": 0.3349694200016266,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_249240",
+            "group": "OG6_100851",
+            "prediction": "[\"3\"]",
+            "support": 0.3214748837475566,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_210787",
+            "group": "OG6_101299",
+            "prediction": "[\"2\"]",
+            "support": 0.67096877026014,
+            "truth": "[\"1\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_310960",
+            "group": "OG6_102324",
+            "prediction": "[\"2\"]",
+            "support": 0.5372758043420496,
+            "truth": "[\"7\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_312250",
+            "group": "OG6_101491",
+            "prediction": "[\"2\"]",
+            "support": 0.46401631479441885,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": true,
+            "calibrated_confidence": null,
+            "entity": "TGME49_328200",
+            "group": "OG6_489779",
+            "prediction": null,
+            "support": 0.28989920152059284,
+            "truth": "[\"2\"]"
+          },
+          {
+            "abstained": false,
+            "calibrated_confidence": null,
+            "entity": "TGME49_251470",
+            "group": "OG6_368841",
+            "prediction": "[\"2\"]",
+            "support": 0.4755276215113637,
+            "truth": "[\"7\"]"
+          }
+        ]
+      }
+    }
+  ],
+  "schema_version": 1
+}

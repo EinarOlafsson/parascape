@@ -1,0 +1,16 @@
+{
+  "source_artifact_identity": "b6030c3783d330c100b3079cd49d113df84c3b844af1bc3f10479f5234365186",
+  "namespace": "pfam",
+  "test_genes": 686,
+  "unsupported_test_genes": 317,
+  "native_payloads": [
+    "rows.json",
+    "card.json",
+    "class_cards.json",
+    "baseline_cards.json"
+  ],
+  "derived_payload": "major_class_cards.json",
+  "fitting_performed": false,
+  "biological_admission": false,
+  "memory_cap_bytes": 419430400
+}

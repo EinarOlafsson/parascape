@@ -1,0 +1,16 @@
+{
+  "input_sha256": {
+    "/media/carruthers/mnt3/claude/repo/starplast/results/functional_ec_knn_pilot_2026_11_07_seed24/held_out/manifest.json": "02999a02285ac9fccee5e5d40093f23e7c6be7f7d573c88b2b576508f48a5ce8",
+    "/media/carruthers/mnt3/claude/repo/starplast/results/functional_ec_knn_pilot_2026_11_07_seed24/summary.json": "c1ccf8746759ddfd14f1a0a55d94e4f3a8d2926670d10e6972f4e612c82f5a7f",
+    "/media/carruthers/mnt3/claude/repo/starplast/scripts/package_functional_results.py": "c7051c4874b8b0288c0a89701529bedfa24aa2760968a893ece288569e34b6ed",
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/functional_results.py": "a275e3cef6678b4328004e69ad1f7696c3722884b0ceb419ee19deb2181baaf8",
+    "/media/carruthers/mnt3/claude/repo/starplast/scripts/notebook_runner.py": "e319e5a584ad4ce60be32d22818f6f987d9969e743b01acdcb40ea4b173b9e34"
+  },
+  "output_sha256": {
+    "receipt.json": "8ad85839a68c43a21b4d4e1c098854b96c3b5f459b1bca3441348b0358645928",
+    "functional_results.json": "8cc4a3e8cc4e2b856d31840b2a2e83a2d265aa29258040b27e11bf5d59cb173c",
+    "code/package_functional_results.py": "c7051c4874b8b0288c0a89701529bedfa24aa2760968a893ece288569e34b6ed",
+    "code/notebook_runner.py": "e319e5a584ad4ce60be32d22818f6f987d9969e743b01acdcb40ea4b173b9e34",
+    "code/functional_results.py": "a275e3cef6678b4328004e69ad1f7696c3722884b0ceb419ee19deb2181baaf8"
+  }
+}

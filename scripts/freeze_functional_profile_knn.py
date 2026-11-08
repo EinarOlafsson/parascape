@@ -272,13 +272,17 @@ def freeze(output):
     nodes = pd.read_parquet(node_paths[0])
     features, exclusions, provenance = prepare_inputs(nodes, contract)
     del nodes
-    assert len(features) == 4310 and len(contract.training_labels()) == 2381
+    assert len(features) == 4310
+    if P.SEED == 20261008:                # the original split's populations; a new seed draws its own
+        assert len(contract.training_labels()) == 2381
     P._write(output / 'candidate_scope.json', {'pilot_id': PILOT_ID, 'settings': SETTINGS,
         'target_identity': contract.identity, 'cohort_identity': contract.cohort_identity,
         'split_identity': contract.split.identity, 'prepared_manifest_sha256': P.SNAPSHOT_SHA256,
         'source_scope': source_scope, 'feature_provenance': provenance, 'exclusions': asdict(exclusions)})
     result = fit_recovery(features, contract, exclusions)
-    assert len(result['rows']) == 635 and int((~result['rows'].training_supported).sum()) == 333
+    if P.SEED == 20261008:
+        assert len(result['rows']) == 635 and int((~result['rows'].training_supported).sum()) == 333
+    assert len(result['rows']) == len(contract.split.entities('test'))
     replay = fit_recovery(features, contract, exclusions)
     for key in ('card', 'class_cards', 'raw_votes', 'baseline_cards', 'baseline_comparisons', 'view_snapshot'):
         assert result[key] == replay[key], key
@@ -325,7 +329,9 @@ def freeze(output):
         assert P._sha(path) == digest, 'Changed input: ' + path
     P._write(output / 'input_manifest.json', receipts)
     summary = {'pilot_id': PILOT_ID, 'whole_genes': len(contract.rows), 'eligible_genes': len(features),
-        'train_genes': 2381, 'test_genes': 635, 'unsupported_test_genes': 333, 'unknown_genes': 3830,
+        'train_genes': len(contract.training_labels()), 'test_genes': len(result['rows']),
+        'unsupported_test_genes': int((~result['rows'].training_supported).sum()),
+        'unknown_genes': len(contract.rows) - len(features),
         'selected_feature_columns': features.columns.tolist(), 'kept_feature_columns': result['batch'].model_state['kept_columns'],
         'native_training_classes': len(result['batch'].class_scores.columns), 'recorded_source_classes': len(result['class_scores'].columns),
         'metrics': result['card']['metrics'], 'counts': result['card']['counts'], 'baseline_comparisons': result['baseline_comparisons'],

@@ -1,0 +1,48 @@
+{
+  "input_sha256": {
+    "/media/carruthers/mnt3/claude/repo/starplast/scripts/package_functional_profile_results.py": "1602b1e7d7359f5ebe0037e3d484868885e6536e99685ee55b8973c8b118598f",
+    "/media/carruthers/mnt3/claude/repo/starplast/parascape/functional_results.py": "a275e3cef6678b4328004e69ad1f7696c3722884b0ceb419ee19deb2181baaf8",
+    "/media/carruthers/mnt3/claude/repo/starplast/scripts/notebook_runner.py": "e319e5a584ad4ce60be32d22818f6f987d9969e743b01acdcb40ea4b173b9e34",
+    "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/held_out/manifest.json": "f9f04744306cfed65cd3c2c4fca525aecafb32e3c0acedc00cef118c4fa3101d",
+    "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/summary.json": "fb04799e619c5b905405762f51c42ecf6a7a0b30656febf0cbeabf9f8cf8dcd8",
+    "/media/carruthers/mnt3/claude/repo/starplast/results/functional_profile_knn_2026_11_07/split.json": "6fb8d84b267eb523c8cf2ce1cfdfdeb548e2f0a5c72ea9822d6e6d9de002745b"
+  },
+  "outputs": {
+    "source_receipts.json": {
+      "sha256": "50717347767225e65658cc11c32d5ce8262c180f8a14d6a718cf99d07f8b43cf",
+      "bytes": 3283
+    },
+    "runtime.json": {
+      "sha256": "ceb606723189b42c5824a5cbda445c84913a1607f3ee97089f2f9eb7d90fe27b",
+      "bytes": 113
+    },
+    "packaging.ipynb": {
+      "sha256": "efc8d6ad55e0661c056ab2193fe54c70e45788962ccf17608c5f2df7ab620b87",
+      "bytes": 2274
+    },
+    "receipt.json": {
+      "sha256": "a72b53a2914a7dc0a9edc5ba45f5909baf1cf2a7aed9a41b8452eb5aed79486f",
+      "bytes": 972
+    },
+    "functional_results.json": {
+      "sha256": "302c2e2edcc23ec0f40f6ae4fb8320a63b1161c838fdba02b8508874e63fba9f",
+      "bytes": 26638598
+    },
+    "scope.json": {
+      "sha256": "071be281d7a1906e050f9ab5b9991a2113ac2a8ad83a275795a64500743631c1",
+      "bytes": 433
+    },
+    "code/notebook_runner.py": {
+      "sha256": "e319e5a584ad4ce60be32d22818f6f987d9969e743b01acdcb40ea4b173b9e34",
+      "bytes": 4103
+    },
+    "code/functional_results.py": {
+      "sha256": "a275e3cef6678b4328004e69ad1f7696c3722884b0ceb419ee19deb2181baaf8",
+      "bytes": 22693
+    },
+    "code/package_functional_profile_results.py": {
+      "sha256": "1602b1e7d7359f5ebe0037e3d484868885e6536e99685ee55b8973c8b118598f",
+      "bytes": 9677
+    }
+  }
+}

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import os
 import json
 from pathlib import Path
 import shutil
@@ -21,8 +22,8 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from parascape import functional_results as F,organisms as O
 
-SOURCE=ROOT/'results/functional_profile_knn_2026_10_08_v4'
-SOURCE_ID='9320c31e664376117f67de114398846d8a642aa8196ceeeee4b1b0a9471fd628'
+SOURCE=Path(os.environ.get('PARASCAPE_FN_DOM_SOURCE',ROOT/'results/functional_profile_knn_2026_10_08_v4'))
+SOURCE_ID=os.environ.get('PARASCAPE_FN_DOM_SOURCE_ID','9320c31e664376117f67de114398846d8a642aa8196ceeeee4b1b0a9471fd628')
 NATIVE=('rows.json','card.json','class_cards.json','baseline_cards.json')
 
 
@@ -55,7 +56,8 @@ def package(output):
     table=next(d for d in spec['dependencies'] if d['kind']=='table' and d['name']=='installed_nodes')
     if _sha(O.nodes_path(O.TOXOPLASMA))!=table['sha256']:raise ValueError('Installed source differs from original artifact')
     original=json.loads((SOURCE/'summary.json').read_text())
-    if original['artifact_identity']!=SOURCE_ID or original['test_genes']!=635 or original['unsupported_test_genes']!=333:
+    TEST,UNSUPPORTED=original['test_genes'],original['unsupported_test_genes']   # 635 and 333 for the 2026-10-08 source
+    if original['artifact_identity']!=SOURCE_ID or len(json.loads((SOURCE/'held_out/rows.json').read_text()))!=TEST:
         raise ValueError('Keep every accepted test gene and unsupported reference profile')
     mapping={'train':'train_genes','test':'test_genes','eligible_profiles':'eligible_genes'}
     summary={**original,**{name:original[source] for name,source in mapping.items()}}
@@ -82,8 +84,8 @@ def package(output):
             'source_rows_sha256':manifest['files']['rows.json']['sha256'],'payload_sha256':F._hash(members)},
         'biological_admission':False,'calibrated_confidence':None,
         'control_interpretation':'Original control names/scopes retained; same split, target, cohort and test population, distinct control benchmark/strategy address'}
-    _write(output/'scope.json',{'source_artifact_identity':SOURCE_ID,'namespace':'pfam','test_genes':635,
-        'unsupported_test_genes':333,'native_payloads':list(NATIVE),'derived_payload':'major_class_cards.json',
+    _write(output/'scope.json',{'source_artifact_identity':SOURCE_ID,'namespace':'pfam','test_genes':TEST,
+        'unsupported_test_genes':UNSUPPORTED,'native_payloads':list(NATIVE),'derived_payload':'major_class_cards.json',
         'fitting_performed':False,'biological_admission':False,'memory_cap_bytes':400*1024*1024})
     path=output/'functional_results.json'
     with path.open('wb') as stream:
@@ -96,12 +98,12 @@ def package(output):
         stream.write(b',"major_class_cards.json":'+F._canonical(members).encode()+b'}}]}\n')
     digest=_sha(path)
     benchmark=F.load(path,expected_sha256=digest)[0]
-    if benchmark.namespace!='pfam' or benchmark.rows!=rows or len(benchmark.rows)!=635:
+    if benchmark.namespace!='pfam' or benchmark.rows!=rows or len(benchmark.rows)!=TEST:
         raise ValueError('Packaged profile population differs')
-    if sum(row['training_supported'] is False for row in benchmark.rows)!=333:raise ValueError('Unsupported profiles were dropped')
+    if sum(row['training_supported'] is False for row in benchmark.rows)!=UNSUPPORTED:raise ValueError('Unsupported profiles were dropped')
     for receipt in receipts:
         if _sha(receipt['path'])!=receipt['sha256']:raise ValueError('Original source changed during packaging')
-    receipt={'sha256':digest,'source_artifact_identity':SOURCE_ID,'rows':635,'unsupported_test_genes':333,
+    receipt={'sha256':digest,'source_artifact_identity':SOURCE_ID,'rows':TEST,'unsupported_test_genes':UNSUPPORTED,
         'profile_classes':len(benchmark.profile_class_cards),'domain_member_classes':len(members),
         'source_payload_receipts':len(receipts),'native_displayed_payloads':list(NATIVE),
         'member_derivation':metadata['membership_derivation'],'biological_admission':False,'calibrated_confidence':None,

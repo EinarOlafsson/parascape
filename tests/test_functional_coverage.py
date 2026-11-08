@@ -72,9 +72,12 @@ def test_verified_packaged_recovery_never_migrates_to_other_source_or_organism()
     assert _row(document,O.TOXOPLASMA,'ec_number','ec_number')['reference_recovery']['status']=='unavailable'
     assert document['summary']['reference_recovery_addresses']==document['summary']['unique_reference_artifacts']==2
     domain=_row(document,O.TOXOPLASMA,'pfam_id','pfam_id_complete_profile')
-    assert domain['reference_recovery']['rows']==635
-    assert domain['reference_recovery']['correct']==12
-    assert domain['reference_recovery']['abstained']==615
+    # Counts come from the shipped Pfam recovery itself: its split was redrawn (seed 20261107) when the node table
+    # changed on 2026-11-07, and 635/12/615 belonged to the old one.
+    pfam=next(b for b in benchmarks if b.namespace=='pfam')
+    assert domain['reference_recovery']['rows']==len(pfam.rows)==pfam.card['counts']['eligible']
+    assert domain['reference_recovery']['correct']==pfam.card['counts']['correct']
+    assert domain['reference_recovery']['abstained']==pfam.card['counts']['abstained']
     assert domain['reference_recovery']['source_artifact_identity']!=target['reference_recovery']['source_artifact_identity']
     assert domain['independent_biological_test']['status']=='unavailable'
 

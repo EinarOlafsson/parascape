@@ -1,0 +1,14 @@
+{
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/data/nodes.parquet": "3d8f287465581d93d7c96cfeb001d98b1a42eb369ec9e2c8bcef882153c032b0",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/data/pf_nodes.parquet": "410d5fb58c15c0f110de2e1fd61910d4ae10508709847b1777cb3e7bc88d3641",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/data/functional_domain_names.json": "66b1fc949d23dbf67f125d4eac11949c0e0fc6bd03eb3ad5020c2fd0796564de",
+  "/media/carruthers/mnt3/claude/repo/starplast/scripts/census_functional_domain_profiles.py": "82d0239781342e1d4e9fad5289efac0cc834cd6fcf5cc174d36cee976c809ded",
+  "/media/carruthers/mnt3/claude/repo/starplast/scripts/notebook_runner.py": "e319e5a584ad4ce60be32d22818f6f987d9969e743b01acdcb40ea4b173b9e34",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/functional_domain_profiles.py": "3e161f539dc3473086711276565d284b8d81614f52d02b274e4573e7ef05fd07",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/functional_domains.py": "c6fb2bb5fc089426f112ed3af5a35d412ed7c4cf26cfbc845ea0e130a87bd1d7",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/strategies.py": "f691849d4c66b36347e490e1ee3d01e1675c24ac522f33dab141d7856d355e01",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/embedding.py": "cc1af4aef37b8ce1d9baf1c7b95e7bc45b055b386e7e9ea3860d633086aa1d97",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/provenance.py": "dd81809fdbfcc5497d2e864fb1a973c1b082ff22a6ca34872aa8531979442256",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/organisms.py": "6f4c9b99fddd600a65642d28e3af14df85c5e5353ce3bff6f640122e0b46ca87",
+  "/media/carruthers/mnt3/claude/repo/starplast/parascape/datasets.py": "41a21735ad7360d4a77762e669106b1b1541caa52694284265cfb1112baa3105"
+}

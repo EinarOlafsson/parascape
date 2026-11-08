@@ -13,6 +13,7 @@ import argparse
 from collections import Counter
 from dataclasses import asdict
 import hashlib
+import os
 import json
 from pathlib import Path
 import re
@@ -22,9 +23,11 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-CENSUS = ROOT / 'results/functional_domain_profile_census_2026_10_08'
+# Defaults are the 2026-10-08 build; a rebuild on a changed node table names its census and a new seed
+# (a used frozen partition is never reused).
+CENSUS = Path(os.environ.get('PARASCAPE_FN_DOM_CENSUS', ROOT / 'results/functional_domain_profile_census_2026_10_08'))
 PREPARATION_ID = 'FN-DOM-PREP-01-Tg-pfam-complete-profile'
-SEED = 20261008
+SEED = int(os.environ.get('PARASCAPE_FN_DOM_SEED', 20261008))
 FRACTIONS = (0.55, 0.15, 0.15, 0.15)
 
 

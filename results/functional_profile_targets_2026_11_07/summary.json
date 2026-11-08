@@ -1,0 +1,77 @@
+{
+  "preparation_id": "FN-DOM-PREP-01-Tg-pfam-complete-profile",
+  "organism": "Tg",
+  "source_target": "pfam_id",
+  "whole_universe": 8140,
+  "eligible_complete_profiles": 4310,
+  "unknown_states": {
+    "unannotated": 3830
+  },
+  "unique_complete_profiles": 2279,
+  "recorded_memberships": 5952,
+  "unresolved_homology_whole_universe": 0,
+  "unresolved_homology_eligible": 0,
+  "roles": {
+    "train": {
+      "role_genes": 2352,
+      "role_protected_groups": 2090,
+      "supported_genes": 2352,
+      "unsupported_genes": 0,
+      "training_profile_support_fraction": 1.0
+    },
+    "tune": {
+      "role_genes": 634,
+      "role_protected_groups": 571,
+      "supported_genes": 301,
+      "unsupported_genes": 333,
+      "training_profile_support_fraction": 0.4747634069400631
+    },
+    "calibration": {
+      "role_genes": 638,
+      "role_protected_groups": 571,
+      "supported_genes": 307,
+      "unsupported_genes": 331,
+      "training_profile_support_fraction": 0.48119122257053293
+    },
+    "test": {
+      "role_genes": 686,
+      "role_protected_groups": 570,
+      "supported_genes": 369,
+      "unsupported_genes": 317,
+      "training_profile_support_fraction": 0.5379008746355685
+    }
+  },
+  "identities": {
+    "raw_installed_source": "3d8f287465581d93d7c96cfeb001d98b1a42eb369ec9e2c8bcef882153c032b0",
+    "raw_cell_census": "b35ded15e09f16fe669c9f1191fc8bfb025c2382d511cac38a662b037ae7d613",
+    "target": "7a6a08398f85dfdd9bcde47c7a0f75358f4d4020551277e644dba598f484a0dd",
+    "cohort": "844543a68983d794b51c3faf237aaf6788a77c38934e69e4f82035e1d5121b8d",
+    "split": "20b3cb99218e9a6f9f4451d50f937a5cfddb8d18e2899c29100d67223f4df829",
+    "capacity_payloads": {
+      "train": "7c47e75345d798d56b60123a59e2cb809b6cc8cda0d847b18343a9fc629086ef",
+      "tune": "91c63bc814a35fbc7bd3dcfeb63ddb859c77cf08be7c184f714f9a6f87f149e2",
+      "calibration": "55bf050f09dd83ef54826cd6e365d2ff3c68f5ea7e1181fcbfeda9b4119a7457",
+      "test": "12d3301db74ac7928ae5af3c465c7b6248f7250b394a121aa53953a844e224e3"
+    },
+    "preparation_scope": "5315b195624de2c991799afbf0540fa3ec6b1a0a1cfda199709c574a6d43216a"
+  },
+  "exact_source_cell_replay": true,
+  "exact_full_universe_record_replay": true,
+  "exact_capacity_replay": true,
+  "protected_group_boundaries_verified": true,
+  "unsupported_profiles_retained": true,
+  "fitting_performed": false,
+  "model_accuracy": null,
+  "biological_accuracy": null,
+  "biological_admission": false,
+  "source_assignment_release": "unresolved",
+  "individual_gene_evidence_grade": "unresolved",
+  "negative_semantics": "Nonmembership in a complete recorded profile means reference-profile omission only; unannotated/malformed profiles are unknown; biological domain absence is not adjudicated",
+  "capacity_interpretation": "Observed training-profile support, not model inference capacity or accuracy",
+  "process_peak_rss_mib_at_summary": 161.07421875,
+  "software_versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5"
+  }
+}

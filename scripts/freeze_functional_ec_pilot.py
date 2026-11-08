@@ -79,7 +79,7 @@ def _native(features,labels,split,state):
     return calls,shares.iloc[query],scores
 
 
-def freeze(output):
+def freeze(output, seed=23):
     """Fit one predeclared EC-profile adapter without seeing hidden truth or changing runtime data."""
     output=Path(output)
     if output.exists():raise ValueError('Use a new immutable functional pilot directory')
@@ -89,7 +89,7 @@ def freeze(output):
     eligible=profiles.gene_id[profiles.eligible].tolist()
     groups=ctx.groups()[profiles.eligible.to_numpy()].tolist()
     benchmark='FN-EC-01:'+O.TOXOPLASMA+':major_class_profiles'
-    split=make_split(eligible,groups,organism=O.TOXOPLASMA,benchmark_id=benchmark,seed=23,feature_access='inductive')
+    split=make_split(eligible,groups,organism=O.TOXOPLASMA,benchmark_id=benchmark,seed=seed,feature_access='inductive')
     frame[TARGET]=truth
     training=frame.loc[list(split.entities('train'))].reset_index(drop=True)
     exclusions=make_exclusions(training,('ec_number',TARGET),benchmark_id=benchmark,split=split)
@@ -120,10 +120,10 @@ def freeze(output):
         str(sum(str(g).startswith('__') for g in groups))+' eligible genes lack resolved homology groups'))))
     settings={'k':15,'min_share':.3,'target':'complete major-class profile','selection':'fixed before testing',
         'feature_transform':'native training ranks; frozen query ECDF','ontology':'pinned ENZYME 02-Sep-2026'}
-    scope=R.RecordScope(O.TOXOPLASMA,'feature_knn',TARGET,SC.T_LABEL,A.canonical_object(settings),23,split.identity,
+    scope=R.RecordScope(O.TOXOPLASMA,'feature_knn',TARGET,SC.T_LABEL,A.canonical_object(settings),seed,split.identity,
         'outer_test',benchmark,'unresolved','gene','complete recorded annotation profiles; biological absence unknown',gaps)
     card=R.aggregate(rows,scope,parameters={'class_scores':batch.class_scores.reset_index(drop=True)})
-    baseline=B.label_baselines(labels,split,seed=23)
+    baseline=B.label_baselines(labels,split,seed=seed)
     baseline_cards={}
     for column in ('majority','prevalence_call'):
         base_rows=rows.drop(columns=['prediction','abstained']).assign(prediction=baseline[column].to_numpy())
@@ -211,7 +211,7 @@ def verify(output):
     assert _json(R.aggregate(rows,scope,parameters={'class_scores':batch.class_scores.reset_index(drop=True)}))==payload['card.json']
     assert _json(R.class_cards(rows,scope))==payload['profile_class_cards.json']
     assert F.member_class_cards(rows)==payload['major_class_cards.json']
-    baseline=B.label_baselines(labels,split,seed=23)
+    baseline=B.label_baselines(labels,split,seed=scope.seed)
     for column in ('majority','prevalence_call'):
         base_rows=rows.drop(columns=['prediction','abstained']).assign(prediction=baseline[column].to_numpy())
         assert _json(R.aggregate(base_rows,scope))==payload['baseline_cards.json'][column]
@@ -223,10 +223,15 @@ def main():
     """Execute fitting and native replay; preserve any failed wrapper as a diagnostic notebook."""
     from notebook_runner import ExecutedNotebook
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,required=True)
-    args=parser.parse_args();nb=ExecutedNotebook('Functional EC profiles: frozen native kNN recovery and capacity')
-    nb.md('FN-EC-01, fixed seed 23/k=15/min-share=.3, protected homology groups, complete major-class profiles. All assigned EC entries must uniquely resolve into active pinned nomenclature; overlapping major classes stay in the full profile. Unknown or unresolved genes never become negatives. Train-only feature selection/ranks/imputation; conservatively exclude enzyme/domain/homology annotations. Native profile calls and class scores remain uncalibrated method support. Candidate reference recovery is not independent measured gene activity.')
+    parser.add_argument('--review',type=Path,default=None,help='functional source review directory (its node hashes must be current)')
+    parser.add_argument('--seed',type=int,default=23,help='split seed; a re-run after its frozen test was used needs a new one')
+    args=parser.parse_args()
+    if args.review is not None:
+        globals()['REVIEW']=args.review.resolve()
+    nb=ExecutedNotebook('Functional EC profiles: frozen native kNN recovery and capacity')
+    nb.md(f'FN-EC-01, fixed seed {args.seed}/k=15/min-share=.3, protected homology groups, complete major-class profiles. All assigned EC entries must uniquely resolve into active pinned nomenclature; overlapping major classes stay in the full profile. Unknown or unresolved genes never become negatives. Train-only feature selection/ranks/imputation; conservatively exclude enzyme/domain/homology annotations. Native profile calls and class scores remain uncalibrated method support. Candidate reference recovery is not independent measured gene activity.')
     try:
-        nb.code('from scripts.freeze_functional_ec_pilot import freeze, verify',f'summary=freeze({str(args.out)!r})','summary')
+        nb.code('import scripts.freeze_functional_ec_pilot as P',f'P.REVIEW=__import__("pathlib").Path({str(globals()["REVIEW"])!r})','from scripts.freeze_functional_ec_pilot import freeze, verify',f'summary=freeze({str(args.out)!r}, seed={args.seed})','summary')
         nb.md('Independent rank construction and native vote replay, exact float scores, retained abstentions/unseen profile combinations, profile/member class cards and matched train-only baselines. No original data/calibration changes and no new verified unknown-gene claims.')
         nb.code(f'verification=verify({str(args.out)!r})','verification')
     except Exception as exc:
