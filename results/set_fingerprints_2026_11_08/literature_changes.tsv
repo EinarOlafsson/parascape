@@ -1,7 +1,5 @@
 gene_id	protein	review_rung	rung	pmids
 TGME49_211460	MYR4	4 vacuole-resident (hard negative)	2 PVM, vacuole-facing	32075880
-TGME49_220890	GRA12A/B/D	(not in the review)	2 PVM, vacuole-facing	33883265
-TGME49_227620	GRA2	4 vacuole-resident (hard negative)	2 PVM, vacuole-facing	12134078
 TGME49_228170	GRA44	4 vacuole-resident (hard negative)	2 PVM, vacuole-facing	32075881
 TGME49_236870	GRA42	3 PVM, host-facing	2 PVM, vacuole-facing	30622189
 TGME49_237015	GRA43	4 vacuole-resident (hard negative)	2 PVM, vacuole-facing	30622189
@@ -11,8 +9,11 @@ TGME49_253370	RON4L1	(not in the review)	1 injected at the moving junction	29263
 TGME49_254470	MYR1	3 PVM, host-facing	2 PVM, vacuole-facing	26838724
 TGME49_255260	AMA1	(not in the review)	1 injected at the moving junction	19247437
 TGME49_270700	MYR2	3 PVM, host-facing	2 PVM, vacuole-facing	29357375
-TGME49_275440	GRA6	3 PVM, host-facing	2 PVM, vacuole-facing	10498186
 TGME49_288650	GRA12	3 PVM, host-facing	2 PVM, vacuole-facing	33883265
 TGME49_297900	GRA83	(not in the review)	2 PVM, vacuole-facing	37768053
 TGME49_310780	GRA4	4 vacuole-resident (hard negative)	2 PVM, vacuole-facing	10498186
 TGME49_316250	GRA45	4 vacuole-resident (hard negative)	3 PVM, host-facing	33067458
+TGME49_217430	TgPI-1	(not in the review)	4 vacuole-resident (hard negative)	40154616
+TGME49_253330	BPK1	(not in the review)	4 vacuole-resident (hard negative)	30850550
+TGME49_289540	SFP1	(not in the review)	4 vacuole-resident (hard negative)	32907954
+TGME49_308970	GRA12D	(not in the review)	4 vacuole-resident (hard negative)	33883265

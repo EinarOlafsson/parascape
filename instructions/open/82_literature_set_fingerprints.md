@@ -26,6 +26,26 @@ in this version: its top hits are not dense granule proteins. Open: rung 5 (host
 mining for rungs 4 and 5; data that sees the membrane side. Einar may want the review-vs-literature side
 overrides checked (17 listed).
 
+**Full-text pass, same day.** 896 open-access full texts were screened for the two thin rungs
+(`results/literature_set_candidates_2026_11_08/fulltext_candidates.tsv`, 37 quote-checked rows; mapped and graded
+in `fulltext_candidates_mapped.tsv`). 23 rows were left out and the reason recorded: 10 quote earlier work rather
+than a new experiment, 9 do not state the lumen or the side, and 4 have no unique ToxoDB product match (LCAT,
+WNG1, 14-3-3). 3 genes are left out of the ladder entirely because two papers place them differently -- GRA2,
+GRA6 and GRA12A are on the vacuole-facing membrane in one paper and in the lumen or on the IVN in another
+(`literature_conflicts.tsv`).
+
+Ladder after both passes: rung 1: 5, rung 2: 11, rung 3: 40, **rung 4: 31** (was 26, and 32 in the review before
+any mining), rung 5: 4 (still too few to score), rung 6: 9, rung 7: 5. Six rungs still pass recovery (0.93-0.98
+against 0.78-0.84 for dense granule proteins). **Both gates stay unmet.** The sides are no better separated:
+held-out host-facing members go 11 to their own rung, 8 to vacuole-facing and 6 to vacuole-resident; 2 of 11
+vacuole-facing members match their own rung. Rung 4 did not pass its pre-mining size, so the attainable
+host-facing precision is not lifted above 0.822.
+
+**What the full-text pass settles:** the host-cytosol rung cannot be built from the published literature at
+abstract or full-text level -- 896 papers yielded 4 rows, all of them hedged. Proteins exported into the host
+and described as soluble there are nearly always reported in the nucleus. Separating the membrane sides needs
+data that sees the side (protease protection, proximity labelling from the host side), not more reading.
+
 Requested 2026-11-05. The second kind of fingerprint, and the one that bears directly on the
 host-facing failure.
 

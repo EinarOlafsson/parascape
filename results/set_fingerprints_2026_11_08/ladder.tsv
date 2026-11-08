@@ -6,19 +6,16 @@ TGME49_213067	GRA36	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_215220	GRA22	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_215980	hypothetical protein	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_219810	GRA40	4 vacuole-resident (hard negative)	proximity	34749525
+TGME49_227620	GRA2	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_230705	GRA51	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_232000	GRA30	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_236890	GRA37	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_240090	ROP34	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_244530	GRA49	4 vacuole-resident (hard negative)	proximity	34749525
-TGME49_254000	GRA47	4 vacuole-resident (hard negative)	direct	38380952
 TGME49_260520	dense granule protein GRA53	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_267740	GRA48	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_268790	GRA58	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_269690	GRA29	4 vacuole-resident (hard negative)	proximity	34749525
-TGME49_270250	GRA1	4 vacuole-resident (hard negative)	proximity	34749525
-TGME49_270320	PPM3C	4 vacuole-resident (hard negative)	inferred	33370417
-TGME49_275860	GRA12B	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_289380	GRA39	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_309760	GRA55	4 vacuole-resident (hard negative)	proximity	34749525
 TGME49_309930	GRA56	4 vacuole-resident (hard negative)	proximity	34749525
@@ -58,6 +55,7 @@ TGME49_262730	ROP16	6 host nucleus	direct	17183270
 TGME49_263090	14-3-3 protein	3 PVM, host-facing	proximity	34749525
 TGME49_270240	MAG1	5 exported to the host cytosol	direct	34006649
 TGME49_272460	GRA72	3 PVM, host-facing	direct	38380952
+TGME49_275440	GRA6	3 PVM, host-facing	proximity	34749525
 TGME49_275470	GRA15	3 PVM, host-facing	direct	21199955
 TGME49_277270	NTPase II	3 PVM, host-facing	proximity	34749525
 TGME49_279100	MAF1a1	3 PVM, host-facing	direct	24781109
@@ -83,8 +81,6 @@ TGME49_210370	ROP54	3 PVM, host-facing	direct	27303719
 TGME49_211460	MYR4	2 PVM, vacuole-facing	direct	32075880
 TGME49_215360	GRA62	3 PVM, host-facing	direct	34749525
 TGME49_217530	GRA63	3 PVM, host-facing	direct	34749525
-TGME49_220890	GRA12A/B/D	2 PVM, vacuole-facing	direct	33883265
-TGME49_227620	GRA2	2 PVM, vacuole-facing	direct	12134078
 TGME49_228170	GRA44	2 PVM, vacuole-facing	direct	32075881
 TGME49_236870	GRA42	2 PVM, vacuole-facing	direct	30622189
 TGME49_237015	GRA43	2 PVM, vacuole-facing	direct	30622189
@@ -96,8 +92,15 @@ TGME49_255260	AMA1	1 injected at the moving junction	direct	19247437
 TGME49_258580	ROP17	3 PVM, host-facing	direct	31366709
 TGME49_269950	GRA61	3 PVM, host-facing	direct	34749525
 TGME49_270700	MYR2	2 PVM, vacuole-facing	direct	29357375
-TGME49_275440	GRA6	2 PVM, vacuole-facing	direct	10498186
 TGME49_288650	GRA12	2 PVM, vacuole-facing	direct	33883265
 TGME49_297900	GRA83	2 PVM, vacuole-facing	direct	37768053
 TGME49_310780	GRA4	2 PVM, vacuole-facing	direct	10498186
 TGME49_316250	GRA45	3 PVM, host-facing	direct	33067458
+TGME49_217430	TgPI-1	4 vacuole-resident (hard negative)	direct	40154616
+TGME49_253330	BPK1	4 vacuole-resident (hard negative)	direct	30850550
+TGME49_254000	GRA47	4 vacuole-resident (hard negative)	direct	38380952
+TGME49_270250	GRA1	4 vacuole-resident (hard negative)	direct	38270431
+TGME49_270320	TgPPM3C	4 vacuole-resident (hard negative)	direct	33370417
+TGME49_275860	GRA12B	4 vacuole-resident (hard negative)	direct	33883265
+TGME49_289540	SFP1	4 vacuole-resident (hard negative)	direct	32907954
+TGME49_308970	GRA12D	4 vacuole-resident (hard negative)	direct	33883265

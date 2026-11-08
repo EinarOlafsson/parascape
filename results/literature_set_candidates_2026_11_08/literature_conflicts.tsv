@@ -1,0 +1,7 @@
+gene_id	protein	category	pmids	rung	conflict
+TGME49_220890	GRA12A/B/D	pvm_vacuole_facing	33883265	2 PVM, vacuole-facing	True
+TGME49_227620	GRA2	pvm_vacuole_facing	12134078	2 PVM, vacuole-facing	True
+TGME49_275440	GRA6	pvm_vacuole_facing	10498186	2 PVM, vacuole-facing	True
+TGME49_220890	GRA12A	vacuole_resident	33883265	4 vacuole-resident (hard negative)	True
+TGME49_227620	GRA2	vacuole_resident	38270431	4 vacuole-resident (hard negative)	True
+TGME49_275440	GRA6	vacuole_resident	20333242	4 vacuole-resident (hard negative)	True

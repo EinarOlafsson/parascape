@@ -6,8 +6,6 @@ TGME49_210370	ROP54	pvm_host_facing	27303719	3 PVM, host-facing
 TGME49_211460	MYR4	pvm_vacuole_facing	32075880	2 PVM, vacuole-facing
 TGME49_215360	GRA62	pvm_host_facing	34749525	3 PVM, host-facing
 TGME49_217530	GRA63	pvm_host_facing	34749525	3 PVM, host-facing
-TGME49_220890	GRA12A/B/D	pvm_vacuole_facing	33883265	2 PVM, vacuole-facing
-TGME49_227620	GRA2	pvm_vacuole_facing	12134078	2 PVM, vacuole-facing
 TGME49_228170	GRA44	pvm_vacuole_facing	32075881	2 PVM, vacuole-facing
 TGME49_229010	RON4	moving_junction	24651769	1 injected at the moving junction
 TGME49_230180	GRA24	host_nucleus	24043761	6 host nucleus
@@ -27,7 +25,6 @@ TGME49_258580	ROP17	pvm_host_facing	31366709	3 PVM, host-facing
 TGME49_262050	ROP39	host_organelle_or_pm	34590698	7 host organelle or plasma membrane
 TGME49_269950	GRA61	pvm_host_facing	34749525	3 PVM, host-facing
 TGME49_270700	MYR2	pvm_vacuole_facing	29357375	2 PVM, vacuole-facing
-TGME49_275440	GRA6	pvm_vacuole_facing	10498186	2 PVM, vacuole-facing
 TGME49_288650	GRA12	pvm_vacuole_facing	33883265	2 PVM, vacuole-facing
 TGME49_288840	GRA18	host_cytosol	30320549	5 exported to the host cytosol
 TGME49_294970	GRA84	host_nucleus	40464784	6 host nucleus
@@ -37,3 +34,11 @@ TGME49_306060	RON8	moving_junction	19134112	1 injected at the moving junction
 TGME49_310780	GRA4	pvm_vacuole_facing	10498186	2 PVM, vacuole-facing
 TGME49_311470	RON5	moving_junction	19134112	1 injected at the moving junction
 TGME49_316250	GRA45	pvm_host_facing	33067458	3 PVM, host-facing
+TGME49_217430	TgPI-1	vacuole_resident	40154616	4 vacuole-resident (hard negative)
+TGME49_253330	BPK1	vacuole_resident	30850550	4 vacuole-resident (hard negative)
+TGME49_254000	GRA47	vacuole_resident	38380952	4 vacuole-resident (hard negative)
+TGME49_270250	GRA1	vacuole_resident	38270431	4 vacuole-resident (hard negative)
+TGME49_270320	TgPPM3C	vacuole_resident	33370417	4 vacuole-resident (hard negative)
+TGME49_275860	GRA12B	vacuole_resident	33883265	4 vacuole-resident (hard negative)
+TGME49_289540	SFP1	vacuole_resident	32907954	4 vacuole-resident (hard negative)
+TGME49_308970	GRA12D	vacuole_resident	33883265	4 vacuole-resident (hard negative)
