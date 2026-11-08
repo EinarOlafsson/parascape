@@ -53,3 +53,22 @@ lysate) do not move it; baits from other compartments are what is needed. The sp
 its own top 5 % in 20 of 25 affinity purifications, median rank 8 of ~808 (31 by abundance). 18 projects are still
 class `other` and 5 affinity purifications have no confident bait -- the next bait-resolution pass. 106 of 203
 projects remain in the queue.
+
+**Bait-resolution pass, same day.** The 23 unresolved or `other` projects were read from their PRIDE records and
+papers (`results/pulldown_background_2026_11_08/bait_resolution_candidates.tsv`, each row with a quote and its
+source). 18 new rows were added to `parascape/data/pulldown_baits_curated.tsv`:
+- Confident baits: RON4, GRA57, CDPK1, TgHCF101, PDIA3 (TurboID), AP2X-1/MORC/HDAC3, BCC4/APP1.
+- Not confident:
+  - Nd10 and MAF1a/b: symbol only, no gene id.
+  - Human GBP1: a host bait.
+- Nine projects reclassified as not pull-downs: PTM enrichment, whole proteome, crosslinking.
+
+A gene id written in the PRIDE record now counts as confident; the change is recorded in the builder.
+
+Results:
+- **36 experiments with a confident bait, 30 distinct baits (was 25).**
+- Specificity: the bait is in its own top 5 % in 25 of 32 affinity purifications, median rank 10 of about 808.
+- The frequency filter is unchanged (AUC 0.689; 12 of 13 complex members lost at 50 %): more baits do not change
+  which proteins appear in every experiment. Gate unmet.
+
+Still open: PXD011692 (paper not open access). Next step: the queue (106 projects).

@@ -6,16 +6,17 @@ excluded: unsupported.json	12
 excluded: NOT_COMPARABLE.json (HDX-MS)	2
 finished and classified	94
 still waiting in the queue	106
-experiments in the background (affinity + proximity)	50
-of those with a confident bait gene	29
-distinct confident bait genes	25
-runs behind those experiments	440
+experiments in the background (affinity + proximity)	60
+of those with a confident bait gene	36
+distinct confident bait genes	30
+runs behind those experiments	585
 PSM rows read	15956399
 PSMs at 1% FDR, target	3975917
-parasite proteins in the background table	4952
-class: affinity_purification	40
+parasite proteins in the background table	5125
+class: affinity_purification	48
+class: crosslinking	1
 class: fractionation	2
-class: other	18
-class: proximity_labelling	10
-class: ptm_enrichment	11
-class: whole_proteome	13
+class: other	3
+class: proximity_labelling	12
+class: ptm_enrichment	13
+class: whole_proteome	15
