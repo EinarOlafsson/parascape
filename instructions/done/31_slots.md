@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**360 slots: 125 covered well, 46 partly, 56 thinly, 133 empty.**
+**360 slots: 126 covered well, 46 partly, 56 thinly, 132 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -387,7 +387,7 @@ quantity were approximating on 2026-08-13.
 | Tg_host surface / receptor repertoire · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **-** |  |  |  | `` | fill | — |
 | Tg_host response to infection · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **B** | 10631 |  | 55.7% | `hff_tg_infection_log2fc, hff_tg_infection_padj` | separate | — |
 | Tg_host proteome · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | average | — |
-| Tg_host transcriptome · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | average | — |
+| Tg_host transcriptome · human monocyte | human monocyte; tachyzoite, infected monocyte | **A** | 19135 |  | 100.0% | `monocyte_tpm` | average | — |
 | Tg_host surface / receptor repertoire · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | fill | — |
 | Tg_host response to infection · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | separate | — |
 | Tg_host proteome · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **-** |  |  |  | `` | average | — |

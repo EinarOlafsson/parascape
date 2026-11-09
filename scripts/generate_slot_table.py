@@ -893,6 +893,10 @@ HOST_COLUMNS = {
     # laser-captured hepatocyte is a cell type rather than a liver.
     "host transcriptome · human fibroblast": ["fibroblast_tpm"],
     "host transcriptome · human hepatocyte": ["hepatocyte_tpm"],
+    # No GTEx tissue is a monocyte: whole blood is a mixture dominated by neutrophil and erythroid
+    # genes, so this question needed the Human Protein Atlas blood atlas (instruction 41, 2026-11-09).
+    "host transcriptome · human monocyte": ["monocyte_tpm"],
+    "host transcriptome · human myeloid dendritic cell": ["myeloid_dc_tpm"],
     # FANTOM5 mouse CAGE. Brain is the mean of four adult regions, because a bradyzoite cyst is not
     # confined to one; muscle is the atlas's only skeletal-muscle sample and it is juvenile.
     "host transcriptome · mouse brain": ["brain_tpm"],

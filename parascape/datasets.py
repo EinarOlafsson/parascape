@@ -2943,6 +2943,22 @@ REGISTRY = [
                  "zero is a non-detection at that depth rather than a measured absence: 4,281 of 5,720 genes "
                  "are seen at all at 36 h against 5,591 at 7 d. Einar took the call to use it on 2026-11-09 "
                  "knowing it covers part of the slot.", organism=organisms.FALCIPARUM),
+    Dataset("host_immune_cell_rna", "Human immune-cell transcription (blood atlas)", "transcription",
+            "RNAseq",
+            "How much each gene is transcribed in a human monocyte and in a myeloid dendritic cell",
+            ("monocyte_tpm", "myeloid_dc_tpm"),
+            "19,135 reviewed proteins",
+            citation="Human Protein Atlas blood atlas, consensus immune-cell RNA (rna_immune_cell.tsv)",
+            url="https://www.proteinatlas.org/download/tsv/rna_immune_cell.tsv.zip",
+            path="datasets/host/immune_cell_rna/rna_immune_cell.tsv.zip",
+            note="The monocyte is the cell Toxoplasma is carried in and the one the host-transcriptome slot "
+                 "asks about, and NO GTEx tissue is a monocyte -- whole blood is a mixture dominated by "
+                 "neutrophil and erythroid genes, so that question could not be answered from the tissue "
+                 "atlas at all. nTPM rather than TPM, because the Atlas normalises across cell types so two "
+                 "columns can be compared, which is what a repertoire question does. Two of the eighteen cell "
+                 "types are carried: the rest are lymphocyte subsets no slot of this map names, and eighteen "
+                 "columns answering two questions is a denominator problem, not coverage.",
+            organism=organisms.HUMAN),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

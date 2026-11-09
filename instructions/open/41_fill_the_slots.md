@@ -2824,3 +2824,27 @@ its own FASTA and its own selection rule, which is a new instruction rather than
 
 **The rule this makes unavoidable:** any further literature sweep must subtract the registry's own accessions
 before proposing anything. Two of the eight "admissible" candidates were already installed.
+
+## 2026-11-09: a host slot filled, from a source no tissue atlas could answer
+
+`Tg_host transcriptome · human monocyte` <- the Human Protein Atlas blood atlas
+(`host_immune_cell_rna`, `monocyte_tpm` and `myeloid_dc_tpm`, 19,135 reviewed proteins each).
+
+**Why it needed its own source.** The monocyte is the cell Toxoplasma is carried in, and **no GTEx tissue is a
+monocyte**: whole blood is a mixture dominated by neutrophil and erythroid genes, so the question could not be
+answered from the tissue atlas however it was sliced. The blood atlas measures the cell type directly.
+
+`nTPM` rather than `TPM`, because the Atlas normalises across cell types so two columns can be compared, which
+is what a repertoire question does. Two of the eighteen cell types are carried; the rest are lymphocyte subsets
+no slot of this map names, and eighteen columns answering two questions is a denominator problem, not coverage.
+Keyed by Ensembl through the reviewed-UniProt index, never by symbol. The human host table grew 20,989 -> 21,010
+proteins.
+
+A false start worth recording: the two cell types were first joined on (host_id, host_name), and one accession
+arrives under two gene names in that table, so the merge refused with "cannot reindex on an axis with duplicate
+labels". Joined on the accession alone, keeping the first name.
+
+**Found on the way:** no host-table column carries an information category -- `monocyte_tpm` and the
+long-shipped `fibroblast_tpm` alike. The ingest gate added to instruction 73 covers the two parasite tables
+only, because `SHIPPED_COLUMNS` is built from them. The host table is used through bridges rather than as
+question evidence, so nothing is leaking today, but the gate stops at the species boundary and should not.

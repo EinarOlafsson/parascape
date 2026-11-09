@@ -1584,6 +1584,59 @@ def pf_midgut_transcriptome(root: str) -> pd.DataFrame:
     return frame.reset_index(names="gene_id") if not frame.empty else frame
 
 
+IMMUNE_RNA = ("host", "immune_cell_rna", "rna_immune_cell.tsv.zip")
+#: The immune cells a Toxoplasma or Plasmodium question actually asks about. The Human Protein Atlas table
+#: holds eighteen; the rest are lymphocyte subsets no slot of this map names, and carrying them would be
+#: eighteen columns answering two questions.
+IMMUNE_CELLS = {"classical monocyte": "monocyte_tpm", "myeloid DC": "myeloid_dc_tpm"}
+
+
+def human_immune_cell_rna(root: str) -> pd.DataFrame:
+    """Human immune-cell transcription (Human Protein Atlas blood atlas), by cell type.
+
+    The monocyte is the cell Toxoplasma is carried in and the one the host-transcriptome slot asks about, and
+    no GTEx tissue is a monocyte -- whole blood is a mixture dominated by neutrophils and erythroid genes, so
+    the question could not be answered from the tissue atlas at all.
+
+    `nTPM` rather than `TPM`: the Atlas normalises across cell types so two columns can be compared, which is
+    exactly what a repertoire question does. Keyed by Ensembl through the reviewed-UniProt index, never by
+    symbol.
+    """
+    path = _file(root, *IMMUNE_RNA)
+    if path is None:
+        return pd.DataFrame()
+    import zipfile
+
+    with zipfile.ZipFile(path) as archive:
+        name = next((n for n in archive.namelist() if n.endswith(".tsv")), None)
+        if name is None:
+            return pd.DataFrame()
+        with archive.open(name) as handle:
+            table = pd.read_csv(handle, sep="\t")
+    needed = {"Gene", "Gene name", "Immune cell", "nTPM"}
+    if not needed.issubset(table.columns):
+        return pd.DataFrame()
+    index = _index(root, "human")
+    if not index:
+        return pd.DataFrame()
+    frames = []
+    for cell, column in IMMUNE_CELLS.items():
+        block = table[table["Immune cell"] == cell]
+        if block.empty:
+            continue
+        values = pd.DataFrame({column: pd.to_numeric(block["nTPM"], errors="coerce").to_numpy()})
+        frames.append(_keyed(values, block["Gene"], block["Gene name"], index, values[column]))
+    if not frames:
+        return pd.DataFrame()
+    # Joined on host_id ALONE. One accession can arrive under two gene names (the Atlas keeps both the
+    # current symbol and a synonym), so indexing on (host_id, host_name) makes duplicate labels and the
+    # merge refuses; the first name is kept and the values are joined by accession.
+    joined = frames[0]
+    for other in frames[1:]:
+        joined = joined.merge(other.drop(columns="host_name"), on="host_id", how="outer")
+    return joined.drop_duplicates("host_id").reset_index(drop=True)
+
+
 # --------------------------------------------------------------------------- the list
 @dataclass(frozen=True)
 class Deposit:
@@ -1633,6 +1686,7 @@ DEPOSITS = (
     Deposit("host_bmdm_baseline", "Mm", bmdm_baseline),
     Deposit("host_hepatocyte_pf_infection", "Hs", hepatocyte_pf_infection),
     Deposit("host_k562_rhoptry_screen", "Hs", k562_rhoptry_screen),
+    Deposit("host_immune_cell_rna", organisms.HUMAN, human_immune_cell_rna),
 )
 
 

@@ -5607,7 +5607,9 @@
     "axis": "host effect",
     "context": "human monocyte; tachyzoite, infected monocyte",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "monocyte_tpm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
