@@ -1,13 +1,25 @@
 # 82 · Fingerprints from a literature meta-analysis: gene-set signatures
 
-**Status: first version 2026-11-06 (`notebooks/set_fingerprints_2026_11_06.ipynb`).** Ladder taken only
-from the graded host-facing review (98 genes): rung 3 host-facing PVM 45, rung 4 vacuole-resident 32, host
-nucleus 9, host organelle/PM 5; moving junction 3 and host cytosol 4 too few to score. Fingerprints from
-place-free profiles recover held-out members (AUROC 0.94-0.98 against 0.81-0.83 for dense granule proteins in
-general), **but host-facing and vacuole-resident are not separated**: held-out host-facing members resemble
-the vacuole-resident fingerprint more often (18) than their own (10). That is the evidence limit behind
-host-facing precision, now measured. Remaining: literature mining to enlarge rungs 1, 2 (vacuole-facing side),
-5 and 7, which needs papers read one by one, and data that sees the membrane side.
+**Status: built 2026-11-09; Einar's review pending -- reopen on his feedback.** The per-rung gate is MET and the
+ladder-level gate is MEASURED AS UNREACHABLE from the literature, which is the finding.
+
+* **Per-rung gate (held-out members recovered above the best baseline, confusion reported): met for six of
+  seven rungs.** Held-out AUROC 0.93-0.98 against 0.78-0.84 for dense granule proteins in general, confusion
+  between rungs reported in full. Rung 5 (host cytosol, 4 genes) is below the five-member floor and is named
+  rather than scored.
+* **Ladder-level gate (rung 4 large enough to lift attainable host-facing precision above 0.822): not met, and
+  not reachable this way.** Rung 4 went 32 -> 26 -> 31 across the two mining passes: genes left it for the new
+  vacuole-facing rung as fast as mining added them.
+* **The two sides of the vacuole membrane are still not separated**, after both an abstract pass and a
+  full-text pass. Held-out host-facing members split 11 to their own rung, 8 to vacuole-facing, 6 to
+  vacuole-resident; vacuole-facing members match their own rung 2 times in 11.
+* **The host-cytosol rung cannot be built from the published literature.** 896 open-access full texts yielded
+  4 rows, every one hedged. Proteins exported into the host and described as soluble there are nearly always
+  reported in the nucleus.
+
+**What remains is not reading.** Separating the membrane sides needs data that sees the side -- protease
+protection, or proximity labelling from the host side -- and no amount of further mining substitutes for it.
+That is a request for an experiment, which is Einar's call, not a gap in this instruction.
 
 **Second version 2026-11-08 (`notebooks/set_fingerprints_2026_11_08.ipynb`, `--literature`).** Literature
 mining of Europe PMC abstracts gave 49 rows, each with a quote that matches its abstract word for word, plus the
