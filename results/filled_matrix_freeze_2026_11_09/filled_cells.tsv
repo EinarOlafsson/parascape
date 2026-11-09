@@ -1,0 +1,20 @@
+gene_id	column	source_tier	question	partitions_cleared	lower_bounds
+TGME49_202100	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_205020	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_207150	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_207955	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_211080	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_212275	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_213380	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_221275	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_232170	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_236635	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_236900	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_238270	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_265065	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_265160	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_272593	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_278518	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_293800	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_310650	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868
+TGME49_321700	filled_invivo_WholeBrain_Acute_1_change	filled:hist_gbt@2026-11-08 cat_invivo_WholeBrain_Acute_1_change	cat_invivo_WholeBrain_Acute_1_change	0, 4	0.916, 0.902, 0.868

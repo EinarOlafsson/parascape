@@ -1,0 +1,13 @@
+{
+ "frozen_at": "2026-11-09T07:58:47",
+ "parascape_version": "0.0.10.0",
+ "filled_cells": 19,
+ "columns": [
+  "filled_invivo_WholeBrain_Acute_1_change"
+ ],
+ "genes": 19,
+ "filled_cells_sha256": "89acbe4f9998843eed4485672416bf03947126fc41e9465410df12655d079553",
+ "bar": "the fills claim 90 % precision at the frozen-test lower bound, on at least 2 of 3 partitions (Einar's rule, 2026-11-08)",
+ "grade_with": "verify the hash, then for the genes a later paper measures for that trait, report the share of filled cells that were right; the claim fails if it falls below 90 %",
+ "note": "Only the PREDICTED cells are frozen. Every other cell of the map is a measurement, and a measurement needs no prospective test."
+}

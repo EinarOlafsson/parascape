@@ -652,3 +652,20 @@ A bug worth recording: the first run failed on 66 of 69 questions with "window s
 array shape" -- a boosted-tree binner refusing a column with one distinct value, naming neither the column nor
 the cause. `methods._DropConstant` exists for exactly that, and the per-task fits here are the smallest subsets
 in the codebase, so they are where the guard was missing. Now applied inside `MultiTask`.
+
+## Phase 6, 2026-11-09: the filled matrix is frozen and dated
+
+`scripts/freeze_filled_matrix.py` -> `results/filled_matrix_freeze_2026_11_09/` (`filled_cells.tsv`,
+`manifest.json`). **19 filled cells, 19 genes, one column** (the in-vivo whole-brain acute response), SHA-256
+`89acbe4f...9553`, version and timestamp in the manifest.
+
+Only the **predicted** cells are frozen, and that is the whole point of the phase: every other cell of the map
+is a measurement, and a measurement needs no prospective test. Each frozen cell carries the question that
+produced it, the partitions that question cleared and its lower bound on each of the three
+(`0, 4` here, at 0.916, 0.902 and 0.868), so a later reader can see exactly what was claimed and on what basis.
+
+How to grade it, in the manifest: verify the hash, then for the genes a later paper measures for that trait,
+report the share of filled cells that were right. **The claim fails below 90 %**, which is the bar the fills
+assert at their frozen-test lower bound under Einar's 2-of-3 rule.
+
+All six phases of this instruction are now built and graded.
