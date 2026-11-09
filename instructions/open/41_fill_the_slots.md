@@ -2777,3 +2777,30 @@ project is in the uniform re-search), GSE339382 (AP2-HS ChIP: peaks, which need 
 per-gene), GSE267362 (CLIP-seq: bigwig only, so also needs processing). Two wait on Einar: GSE337518, whose ChIP
 target is described as a double-stranded-DNA-binding protein rather than a classical ApiAP2, and GSE284537, which
 covers late ookinete and oocyst but not sporozoite and so would fill only part of its slot.
+
+## 2026-11-09, fourth pass: a gene build acquired, and a candidate refused on its own data
+
+**Plasmodium gene coordinates are now on disk.** Neither shipped table carries gene start, end or strand, and
+PlasmoDB is behind the login (38), so the build came from the source Einar approved for gene builds: Ensembl
+Protists release 63 (`datasets/reference/ensembl_protists_r63/`, with `URLS.txt` and `SHA256SUMS.txt`).
+5,318 genes, all `PF3D7_`, every one of them in the shipped table (5,318 of its 5,720 rows). Any slot filled from
+peaks, intervals or neighbourhood needs this, and nothing could do that before.
+
+**GSE339382 (AP2-HS ChIP) is refused, and only the deposited data shows why.** The GEO record reads exactly like
+a usable ChIP-seq of a transcription factor, which is what the verification pass judged it on. The peak files
+disagree with each other:
+
+| Arm | Replicate 1 | Replicate 2 |
+|---|---:|---:|
+| with choline | 25 peaks (20 genes) | 1,727 peaks (651 genes) |
+| choline-depleted | 19 peaks (12 genes) | 1,680 peaks (666 genes) |
+
+Peaks were assigned to a gene when they overlap it or its 2 kb promoter. Keeping only genes reproducible in
+**both** replicates leaves 18 with choline, 12 without, **21 in all**. That is a short candidate list, not a
+per-gene binding map: for the other 5,699 genes "not bound" would be unmeasured rather than measured as negative,
+which is exactly the distinction this catalogue refuses to blur. Recorded in `source_refusals.py` (161 entries),
+so the index cannot re-propose it.
+
+**The lesson for the verification pass:** reading the record is necessary and not sufficient. A record can be
+accurate and the deposit still unusable, and only opening the data tells you. The 8 "admissible" verdicts of this
+morning were record-level judgements; this is the first to be opened, and it fell.

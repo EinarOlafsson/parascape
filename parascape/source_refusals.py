@@ -341,6 +341,16 @@ REFUSED_CANDIDATES = {
         "wrong assay: deposit is CUT&RUN for protein lactylation (panKla, H4K12la); slot needs ubiquitin/SUMO-enrichment proteomics",
     ("Pf_ubiquitination / SUMOylation · asexual blood stage", "PXD042503"):
         "wrong assay: deposit is global LC-MS of clinical severe-malaria isolates, no PTM enrichment stated; slot needs ubiquitin/SUMO-enrichment proteomics",
+    # --- 2026-11-09, refused on the DEPOSITED DATA rather than on the record (instruction 41). The
+    # GEO record reads exactly like a usable ChIP-seq of a transcription factor, and the verification
+    # pass judged it admissible on that basis. The peak files say otherwise: replicate 1 holds 25
+    # peaks and replicate 2 holds 1,727 (19 against 1,680 in the choline-depleted arm), so the
+    # replicates do not agree on what was bound. Assigning peaks to genes and keeping only those
+    # reproducible in BOTH replicates leaves 18 genes with choline, 12 without, 21 in all -- a short
+    # candidate list, not a per-gene binding map, and for the other 5,699 genes "not bound" would be
+    # unmeasured rather than measured-as-negative. Gene coordinates from Ensembl Protists r63.
+    ("Pf_TF binding \u00b7 per factor", "GSE339382"):
+        "replicates disagree: 25 peaks against 1,727; only 21 genes reproduce in both, so this is a candidate list and not a per-gene binding map",
 }
 
 
