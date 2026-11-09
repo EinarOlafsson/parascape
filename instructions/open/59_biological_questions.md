@@ -263,3 +263,21 @@ so the 2026-09-30 notebook was not overwritten). 40 ran; 2 stopped inside their 
 * Q81 calls nothing (every Tg gene already has a `dtm_class`); only its self-test says anything.
 
 The yields / thin / no verdicts of section 4 are a biological reading and are left for Einar.
+
+## 2026-11-09: the verdict sheet (Einar's go-ahead)
+
+`scripts/build_verdict_sheet.py` -> `results/verdict_sheet_2026_11_09/` (`README.md` to read and answer,
+`verdict_sheet.tsv` for the record). **27 of the 42 run questions carry no verdict**: 18 graded reliable, 6 weak,
+2 works-when-tuned, 1 untestable.
+
+Each entry puts in one place what a biological reading needs: the question in its own words, the anchor paper,
+the grade the run gave itself, its self-test against chance where it has one, what the run says it did, and the
+first six genes it actually called **with their product names** -- so the call can be read as biology rather
+than as a list of identifiers. Write PASS, FAIL or INCONCLUSIVE against each qid and I will record it in
+`summary.csv` beside the 11 PASS, 3 FAIL and 1 INCONCLUSIVE already there.
+
+The grade and the verdict are deliberately separate: the grade is the software's statement that the method
+worked, the verdict is whether the answer is true or useful. A reliable run can give a biologically empty
+answer, and a weak run can still point at the right gene. One entry already shows why the distinction matters --
+Q53 graded reliable but its summary is a refusal: completing the co-fitness layer from its own edges recomputes
+a correlation rather than predicting anything, so the strategy declined.
