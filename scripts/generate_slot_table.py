@@ -2029,6 +2029,12 @@ PF_PATTERNS = {
     "transcription · liver stage": ["expr_pf_liver_day6"],
     "translation efficiency · asexual blood stage": ["pf_translation_efficiency_log2",
                                                      "pf_ribosome_footprint_cpm"],
+    # Efficiency per cycle phase, computed from the footprint and mRNA pairs already shipped
+    # (`scripts/add_pf_translation_efficiency_per_phase.py`); nothing was downloaded for it.
+    # Footprints and the derived efficiency only: the matched mRNA columns answer `transcription ·
+    # per cell-cycle phase` and the polysome columns `translation · asexual blood stage`, and a
+    # column belongs to ONE slot -- claiming them here made three slots share their evidence.
+    "translation · per cell-cycle phase": ["riboseq_rpf_", "te_"],
     # Curated first: `one` picks the leading candidate, and the orthology-derived field is inference.
     "enzyme classification": ["ec_number", "has_ec", "ec_number_orthology"],
     "host interaction degree": ["n_host_targets"],

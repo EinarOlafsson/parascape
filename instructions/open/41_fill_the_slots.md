@@ -2738,3 +2738,42 @@ also means those columns were invisible to the category closure rather than held
 lower-case spelling. **31 Plasmodium columns are still uncategorised** (`gene_type`, `chromosome`, the piggyBac
 indices, the PTM flags, the epitope counts and others); Toxoplasma has none. That is the next thing to close, and
 it is a judgement per column rather than a spelling fix.
+
+## 2026-11-09, third pass: the index proposed a dataset that was already shipped
+
+Acquiring the next admissible candidate, GSE58402, showed it needs no acquiring: **GSE58402 is already in the
+registry as `pf_riboseq`** -- same accession, same PMID 25493618 -- and its ribosome-footprint and mRNA densities
+per blood-stage phase have been in `pf_nodes.parquet` for months. The translation-efficiency slot read empty only
+because no column divided footprints by mRNA, which is what efficiency is. I had already downloaded the ten
+per-gene files before noticing; they were discarded, and nothing was added to the dataset taxonomy.
+
+`scripts/add_pf_translation_efficiency_per_phase.py` computes it instead, registered as
+`pf_derived_translation_efficiency` (DERIVED, naming the ten columns it comes from):
+
+| Column | Genes |
+|---|---:|
+| te_ring_derived | 2,182 |
+| te_early_trophozoite_derived | 2,397 |
+| te_late_trophozoite_derived | 2,983 |
+| te_schizont_derived | 2,631 |
+| te_merozoite_derived | 1,174 |
+| te_phase_span_derived | 3,020 |
+
+log2(footprints / mRNA) within the **same** phase, so a phase a gene was not measured in stays missing rather
+than borrowing another phase's mRNA; the sources are length-normalised densities, so the ratio needs no further
+correction. The span needs two phases, because one phase is a value and not a change.
+
+**Two lessons for the index, and the second is a rule the catalogue already had:**
+1. **The index does not check the registry before proposing.** It offered a dataset ParaScape ships. Any further
+   sweep should subtract the registry's own accessions first; otherwise "admissible candidate" can mean "already
+   installed".
+2. **A column belongs to exactly one slot.** Claiming the matched mRNA and polysome columns for the new
+   efficiency slot made three slots share evidence, and `test_the_column_partition_holds_for_every_species`
+   caught it. The slot now claims the footprints and the derived columns only; the mRNA columns stay with
+   `transcription · per cell-cycle phase` and the polysome columns with `translation · asexual blood stage`.
+
+Still to acquire of the 8 admissible: PXD075878 (a selection change for instruction 65, since no proposed PRIDE
+project is in the uniform re-search), GSE339382 (AP2-HS ChIP: peaks, which need gene coordinates to become
+per-gene), GSE267362 (CLIP-seq: bigwig only, so also needs processing). Two wait on Einar: GSE337518, whose ChIP
+target is described as a double-stranded-DNA-binding protein rather than a classical ApiAP2, and GSE284537, which
+covers late ookinete and oocyst but not sporozoite and so would fill only part of its slot.

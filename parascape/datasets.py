@@ -2889,6 +2889,26 @@ REGISTRY = [
                  "RNA and so cannot give a ratio. A gene with no footprints AND no mRNA is missing "
                  "rather than zero: it was not measured, not measured as untranslated. One stage only "
                  "(trophozoite), so this is not a cycle-wide efficiency.", organism=organisms.FALCIPARUM),
+    Dataset("pf_derived_translation_efficiency", "Translation efficiency per blood-stage phase (DERIVED)",
+            "translation", "riboseq",
+            "Ribosome footprints over mRNA in the same phase, and how much that changes across the cycle",
+            ("te_ring_derived", "te_early_trophozoite_derived", "te_late_trophozoite_derived",
+             "te_schizont_derived", "te_merozoite_derived", "te_phase_span_derived"),
+            "1,174 to 2,983 genes per phase; 3,020 with a span",
+            derived_from=("riboseq_rpf_ring", "riboseq_rpf_early_trophozoite",
+                          "riboseq_rpf_late_trophozoite", "riboseq_rpf_schizont",
+                          "riboseq_rpf_merozoite", "riboseq_mrna_ring",
+                          "riboseq_mrna_early_trophozoite", "riboseq_mrna_late_trophozoite",
+                          "riboseq_mrna_schizont", "riboseq_mrna_merozoite"),
+            path="scripts/add_pf_translation_efficiency_per_phase.py",
+            note="Computed, not acquired, and the reason is worth recording: the literature index proposed "
+                 "GSE58402 for the translation-efficiency slot, and GSE58402 was ALREADY shipped as "
+                 "`pf_riboseq` -- same accession, same PMID 25493618. The slot read empty only because no "
+                 "column divided footprints by mRNA, which is what efficiency is. log2(RPF/mRNA) within the "
+                 "SAME phase, so a phase a gene was not measured in stays missing rather than borrowing "
+                 "another phase's mRNA; the sources are already length-normalised densities, so the ratio "
+                 "needs no further correction. The span needs two phases, because one phase is a value and "
+                 "not a change.", organism=organisms.FALCIPARUM),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}
