@@ -425,9 +425,28 @@ either.
 | Fc | 19,588 | 19,564 | 16,010 |
 
 Both pass `spaces.validate_nodes` (unique, non-missing, canonical ids) and both are listed by
-`space_catalogue` as **unavailable** -- which is the honest state, because no pack is built. **Neither holds a
-single measurement**, so neither can answer a question or be calibrated: a space can name genes long before it
-can say anything about them, and the catalogue reports that rather than hiding it.
+`space_catalogue` as **unavailable**, which is the honest state because no pack is built.
+
+**Both now hold measurements as well**, the same two the mouse space carries, so the three host spaces answer
+the same question the same way (Bgee expression calls, `datasets/host/bgee_expression`, hashed):
+
+| Space | Genes tested by Bgee | Expressed somewhere | Tissues |
+|---|---:|---:|---:|
+| Rn | 18,134 of 23,141 | 17,802 | 22 |
+| Fc | 18,862 of 19,588 | 18,596 | 12 |
+
+`bgee_top_score` is the best expression score over the tissues a gene is called present in and
+`bgee_tissues_present` how many those are. A gene Bgee tested and found absent everywhere keeps a measured
+**zero**; a gene Bgee never tested stays **missing**. That distinction is the whole point: absent is a result,
+untested is not.
+
+Cat coverage turned out better than expected -- 96 % of its genes are tested, against 78 % for rat -- so the
+earlier note that Bgee's cat coverage is thin was wrong.
+
+**The Bgee source is NOT in `datasets.REGISTRY`, on purpose.** That registry describes what the application
+ships, and it refuses an organism whose table is not shipped (`unknown dataset organism: Rn`). Rat and cat
+tables live in `results/` until a pack is built, so the source is recorded where it belongs for now: hashed in
+the notebook manifest, with its URL beside the files. It joins the registry when the packs do.
 
 The cat matters out of proportion to its data: it is the only species where Toxoplasma completes its sexual
 cycle, so the enteroepithelial stages exist in no other host, and several slots naming feline tissue have never

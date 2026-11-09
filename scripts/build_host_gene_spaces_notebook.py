@@ -88,7 +88,38 @@ def main() -> None:
             "                             ids_canonical=bool(t.gene_id.map(s.matches).all()))",
             "                        for s, t in tables.items()])",
             "summary")
-    nb.md("## 2 · Validate and write",
+    nb.md("## 2 · What Bgee says each gene is expressed in",
+          "The same two columns the mouse space carries, so the three host spaces answer the same question the "
+          "same way: the best expression score over the tissues a gene is called present in, and how many "
+          "tissues those are. A gene called absent everywhere keeps a score and a count of zero -- Bgee tested "
+          "it, so that is a measurement, not a gap. A gene Bgee never tested stays missing.")
+    nb.code("BGEE = os.path.join('host', 'bgee_expression')",
+            "bgee_files = {RAT_SPACE: 'Rattus_norvegicus_expr_simple.tsv.gz',",
+            "              CAT_SPACE: 'Felis_catus_expr_simple.tsv.gz'}",
+            "for space, table in list(tables.items()):",
+            "    path = os.path.join(root, BGEE, bgee_files[space])",
+            "    if not os.path.exists(path):",
+            "        print(space.code, 'no Bgee file'); continue",
+            "    calls = pd.read_csv(path, sep='\t')",
+            "    calls.columns = [c.strip('\"') for c in calls.columns]",
+            "    calls['score'] = pd.to_numeric(calls['Expression score'], errors='coerce')",
+            "    present = calls[calls.Expression == 'present']",
+            "    top = present.groupby('Gene ID').score.max()",
+            "    count = present.groupby('Gene ID').size()",
+            "    tested = calls['Gene ID'].drop_duplicates()",
+            "    table['bgee_top_score'] = table.gene_id.map(top)",
+            "    table['bgee_tissues_present'] = table.gene_id.map(count)",
+            "    # Tested and never present is a measured zero; never tested stays missing.",
+            "    was_tested = table.gene_id.isin(set(tested))",
+            "    for column in ('bgee_top_score', 'bgee_tissues_present'):",
+            "        table.loc[was_tested & table[column].isna(), column] = 0",
+            "    hashes[space.code + '_bgee'] = sha(path)",
+            "    print(f'{space.code}: {int(was_tested.sum())} of {len(table)} genes tested by Bgee, '",
+            "          f'{int(table.bgee_tissues_present.gt(0).sum())} expressed somewhere, '",
+            "          f'{calls[\'Anatomical entity ID\'].nunique()} tissues')",
+            "pd.DataFrame({s.code: t[['bgee_top_score', 'bgee_tissues_present']].notna().sum()",
+            "              for s, t in tables.items()}).T")
+    nb.md("## 3 · Validate and write",
           "`spaces.validate_nodes` is the same check every space passes: unique, non-missing, canonical ids. "
           "A space whose ids do not match its own pattern is refused here rather than at first use.")
     nb.code("from parascape.spaces import validate_nodes",
@@ -102,14 +133,14 @@ def main() -> None:
             "json.dump(written, open(os.path.join(OUT, 'manifest.json'), 'w'), indent=1)",
             "print('written:', {k: v['rows'] for k, v in written.items()})",
             "pd.DataFrame(written).T[['rows', 'file', 'build']]")
-    nb.md("## 3 · What these spaces cannot do yet",
+    nb.md("## 4 · What these spaces cannot do yet",
           "Neither holds a measurement, so neither can answer a question or be calibrated. What each needs "
           "first is stated here so the gap is a list rather than a feeling.")
     nb.code("needs = pd.DataFrame([",
-            "    dict(space='Rn', first_need='expression per tissue (Bgee has rat; the mouse space used Bgee)',",
-            "         then='human ortholog links, for transferring annotation the way the mouse space does'),",
-            "    dict(space='Fc', first_need='expression per tissue; Bgee coverage of cat is thin',",
-            "         then='the enteroepithelial series -- the stages that exist in no other host'),",
+            "    dict(space='Rn', first_need='human ortholog links, for transferring annotation as the mouse space does',",
+            "         then='an infection series: no rat Toxoplasma transcriptome is on disk'),",
+            "    dict(space='Fc', first_need='the enteroepithelial series -- the stages that exist in no other host',",
+            "         then='human or mouse ortholog links'),",
             "])",
             "needs.to_csv(os.path.join(OUT, 'what_each_space_needs.tsv'), sep='\\t', index=False)",
             "needs")
