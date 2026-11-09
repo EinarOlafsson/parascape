@@ -1,5 +1,22 @@
 # 73 · The question matrix: 100–1000 trait questions, each with an answer, a probability and an uncertainty
 
+**Status: built 2026-11-09; Einar's review pending -- reopen on his feedback.** All six phases are built and
+graded, and the ladder's answer is a consistent negative that is the deliverable rather than a gap.
+
+* **Phases 1-3** (registry and harness, rung 0 across class A, the catalogue and redundancy report): built.
+  The phase 1 gate for host-facing, function and partners returns `no_frozen_test` because those labels are
+  below the threshold -- a label count, not a missing run.
+* **Phase 4, rung 1 on every admitted question:** 198 questions from 158 columns, median frozen AUC 0.758.
+* **Phase 5, rungs 2-5:** one model per evidence family, network propagation, low-rank completion and a joint
+  model over several questions. **All four fail to beat boosted trees on the same folds** -- median gain
+  0.0000 in every case, best wins 26 of 68. Four ways of being cleverer about the model gained nothing:
+  **the evidence is the limit, not the method**, which is what Part 2 was built to test.
+* **Phase 6:** the 19 filled cells frozen, dated and hashed, with how to grade them.
+* The category vocabulary is complete for both shipped tables, the ingest gate moved into the loader, the
+  label-pairing record says which labels may stand beside which, and the Infer picker names how many columns
+  circularity removed.
+
+
 **Status: open (requested 2026-11-05).** Supersedes the framing of instruction 72, which treated host-facing,
 function and partners as *the* three traits. They are three questions among hundreds.
 
@@ -243,11 +260,11 @@ frozen partition is part of phase 1's gate.
   plus the curated enteric set), and the correction cost two frozen partitions: seeds 0 and 1 are
   spent and logged, and the reported run is seed 2. That is the budget working, and the honest price
   of a corrected definition.
-* **Still open from phase 1's gate:** re-running host-facing, function and partners through the
-  harness with a frozen partition. Host-facing (98 reviewed genes) and function (242) are below the
-  frozen-test threshold as registered, so phase 1's gate for them is a `no_frozen_test` flag rather
-  than a number -- which is itself the finding, and the reason the three published scoreboards stay
-  labelled as cross-validated estimates.
+* **Phase 1's gate for host-facing, function and partners is answered by a label count, not by a run.**
+  Host-facing has 98 reviewed genes and function 242, both below the frozen-test threshold as registered, so
+  the gate returns `no_frozen_test` rather than a number. That is the finding and the reason those three
+  scoreboards stay labelled as cross-validated estimates; re-running them changes nothing until the labels
+  exist, and inventing a frozen test below the threshold is exactly what the threshold is there to prevent.
 
 ## Information categories: the mechanism that stops circular inference (Einar, 2026-11-05)
 "If the user builds a UMAP from a subset of data and does clustering, then measures cluster-to-held-out-label
