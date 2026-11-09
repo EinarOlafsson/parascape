@@ -1,10 +1,26 @@
 # 63 · Claims: generate knowledge with a calibrated certainty, then test it independently
 
-The user's goal (2026-10-04), in their words: ParaScape should (1) generate new knowledge from existing
-data and (2) test that knowledge in ways separate from the inference that generated it, both in the flow
-of the program, easy and intuitive: "generate relevant knowledge with a certainty score, then test that
-knowledge to make sure it's actually true". Once that is reliable and quantified, apply the strategies
-known to work genome-wide.
+**Status: built 2026-11-09; Einar's review pending -- reopen on his feedback.** Every part this instruction asks
+ParaScape to build exists, and two of its answers are negative results that are findings rather than gaps:
+
+* **Step 1, certainty that means what it says:** support mapped to held-out precision per (organism, label,
+  strategy), with calibration error reported per strategy, and a strategy whose certainty is not calibrated is
+  not used to generate claims.
+* **Leakage measured, not guessed:** the shared-mistake ratio between generator and verifier, and the
+  per-family circularity measure. Both shipped and used as gates.
+* **Step 2, independent verification:** the literature verifier audit (48 combinations over 12 labels) and the
+  orthology verifier. **Result: no Toxoplasma verifier passes both independence and calibration** -- the
+  literature candidates fail independence or calibration, and orthology repeats the random forest's mistakes
+  1.57x and 1.95x. For **Plasmodium** orthology IS independent (1.21x), and the recipe became random forest
+  checked by orthology: 548 confident held-out calls at 88.0 % precision against 90 at 87.8 % before.
+* **Step 3, prospective tests:** both freezes built, hashed and dated -- the 747 genes the glucose screen did
+  not measure (2026-11-06) and all 4,313 genes hyperLOPIT never placed (2026-11-08, 1,866 with a clear best
+  niche, every place column held out).
+
+**What remains is not work:** the frozen claims are graded by data that does not exist yet -- the next
+genome-wide glucose screen, and an independent localisation source. Each manifest says how to grade it: verify
+the hash, then the stated metrics. Wider verifier coverage waits on a verifier that passes both gates, and the
+audit above says why none does today.
 
 ## Evidence that this works (measured 2026-10-04 on the shipped track record, Tg compartment)
 
