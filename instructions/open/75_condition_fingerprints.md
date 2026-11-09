@@ -1,5 +1,25 @@
 # 75 · Condition fingerprints: annotate every dataset with metadata nobody published
-**Status: v1 -- 3 of 8 axes shipped (cell cycle, bradyzoite 2026-11-06; strain type 2026-11-08), each validated on held-out studies; the other 5 wait on data that states them.** Requested 2026-11-05. Moved out of instruction 71 product 5 so it has its own item.
+**Status: built 2026-11-09; Einar's review pending -- reopen on his feedback.** The gate of this instruction is
+per axis -- "each axis ships only when a held-out study that reports its own condition is recovered... an axis
+that cannot be validated that way is published as exploratory or not at all" -- and it is met on both sides.
+
+* **Three axes shipped, each validated on a held-out study that states its own condition:** cell cycle and
+  bradyzoite conversion (2026-11-06) and strain type (2026-11-08, 91.8 % on types I and II; type III
+  unvalidated because one study carries it, and it is marked so).
+* **Five axes are NOT published, which is what the gate instructs for an axis no data can validate:**
+  * *translational state* needs a second Ribo-seq study with usable counts; GSE245775 has none in this snapshot.
+  * *oocyst / merozoite / enteroepithelial, extracellular against intracellular, culture conditions*: the
+    condition text of all 717 verified runs was searched on 2026-11-06 and **no run states them**. "Merozoites"
+    appears in two studies, but both are one AP2XII-1 knockdown system that applies the label to its wild-type
+    control too, so it names the experiment and not the stage.
+  * *protein level*: measured on 2026-11-09 and the obstacle is now a number rather than an absence. A stated
+    bradyzoite proteome exists (PXD058095), but of the 150 genes that RISE on conversion the best of 15
+    whole-proteome projects measures **10**, against 17-61 of the 150 that fall. The falling set is abundant
+    tachyzoite protein and is detected; the rising set is the bradyzoite-specific protein and no proteome
+    reaches it, including the bradyzoite one. **The axis is blocked by depth on the bradyzoite side**, and no
+    number of further tachyzoite projects changes that.
+
+What remains is data that states a condition, or a deep bradyzoite proteome. Neither is work in this repository.
 
 ## The request (Einar)
 Build a fingerprint from a dataset that samples a condition axis in distinct samples (cell-cycle stages, for
