@@ -97,3 +97,24 @@ and inferred type III calls are flagged `type_validated=False`. Two other studie
 Annotations for the 369 runs that state no strain are written as inferred (`filled:strain_type@v1`, with the
 correlation margin), never evidence for a gene. Stated limit: reads are mapped to the ME49 (type II) reference, so
 part of the signal is mapping of polymorphic genes, which follows strain origin but is not purely expression.
+
+## Protein level, measured 2026-11-08: the obstacle is depth, not the fingerprint
+
+The 2026-11-07 note said this axis waited for the uniform PRIDE search to reach a bradyzoite or oocyst proteome
+with stated samples. It has: **PXD058095, a bradyzoite proteome** (two runs, finished in the uniform Sage search).
+`scripts/build_protein_bradyzoite_axis_notebook.py` -> `notebooks/protein_bradyzoite_axis_2026_11_08.ipynb`,
+`results/protein_bradyzoite_axis_2026_11_08/`. It carries no internal tachyzoite control, so the controls are the
+other 14 finished whole-proteome projects, scored identically by within-sample rank.
+
+**The test could not be run, and the reason is a measurement:** no project measures enough of the fingerprint.
+Of the 150 genes that **rise** on conversion, the best project measures **10**; PXD058095 itself measures 10 of
+150 and detects 789 proteins in all. Of the 150 that **fall**, projects measure 17-61.
+
+That asymmetry is the finding. The falling set is ordinary abundant tachyzoite protein and is detected; the rising
+set is the bradyzoite-specific protein, and none of these proteomes reaches it -- including the bradyzoite one.
+So the axis is not blocked by the fingerprint or by the absence of a stated sample any more: it is blocked by
+**depth on the bradyzoite side**. What it needs is a deep bradyzoite proteome, not another tachyzoite one, and
+no amount of further tachyzoite projects from the queue will change the answer.
+
+Four whole-proteome projects have no readable LFQ table (PXD021736, PXD021938, PXD035658, PXD055279) and are
+listed in `project_scores.tsv` rather than silently skipped.

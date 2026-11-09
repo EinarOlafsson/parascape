@@ -1,0 +1,16 @@
+project	title	genes	rises_measured	falls_measured	verdict
+PXD058095	Identification of immunogenic markers in Toxoplasma gondii bradyzoite proteins	789.0	10.0	36.0	too few fingerprint genes measured
+PXD000261	Host response profile of human brain proteome in toxoplasma encephalitis	13.0	0.0	1.0	too few fingerprint genes measured
+PXD001042	Proteogenomic analysis of Toxoplasma gondii (comparing genome releases 6 and 10) to demons	1653.0	6.0	52.0	too few fingerprint genes measured
+PXD004895	PROTEOMIC PROFILING OF EXTRACELLULAR VESICLES OBTAINED FROM Toxoplasma gondii AND TOXOPLAS	632.0	0.0	47.0	too few fingerprint genes measured
+PXD008448	Proteomic profiling of human decidual immune proteins during Toxoplasma gondii infection	9.0	0.0	0.0	too few fingerprint genes measured
+PXD021736	Differential proteomic analysis in a host–parasite interaction of host cells infected with				no readable LFQ table
+PXD021938	Mass spectrometry of circulating antigens products isolated from sera of mice infected wit				no readable LFQ table
+PXD035658	Prioritization of antimicrobial targets by CRISPR-based oligo recombineering				no readable LFQ table
+PXD040598	Protein abundances following 24h of SPARK depletion in Toxoplasma gondii	1278.0	3.0	54.0	too few fingerprint genes measured
+PXD040635	SPARKEL depletion time course proteome	1256.0	5.0	55.0	too few fingerprint genes measured
+PXD044588	Apical annuli are specialised sites of post-invasion secretion of dense granules in Toxopl	196.0	0.0	27.0	too few fingerprint genes measured
+PXD055279	Proteomic identification of a Toxoplasma gondii sporozoite-specific antigen using HDAC3 in				no readable LFQ table
+PXD059833	TgCoq5 proximity proteome in mitochondria and cytosolic fractions using FbxO14 as spatial 	1510.0	5.0	52.0	too few fingerprint genes measured
+PXD064338	Mitochondria drive a folate-based immunity against an intracellular pathogen	306.0	5.0	17.0	too few fingerprint genes measured
+PXD077563	Convergent evolution of metabolic regulation governs redox adaptation in Toxoplasma	1558.0	1.0	61.0	too few fingerprint genes measured

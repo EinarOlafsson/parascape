@@ -1,0 +1,11 @@
+{
+ "projects": 15,
+ "scored_projects": 0,
+ "bradyzoite_rank": null,
+ "verdict": "no project measures enough of the fingerprint: the depth of these proteomes, not the fingerprint, is what blocks the axis",
+ "rises_in_fingerprint": 150,
+ "falls_in_fingerprint": 150,
+ "rises_measured_max": 10,
+ "falls_measured_max": 61,
+ "minimum_required": 40
+}
