@@ -229,3 +229,28 @@ expected by chance, never in the top 5: the host response to a bradyzoite-differ
 weakly across labs, unlike the parasite side where perturbations find their partner at rank 1-3. The query works;
 the host atlas needs more replicated perturbations (mock-infected and IFN-gamma contrasts) before its recovery can
 be judged. Open: orthologue mapping between human and mouse signatures.
+
+## Product 3, crossing the species (2026-11-08)
+
+The last open point of product 3. `perturbation_atlas.host_symbol_map()` keys human and mouse host genes by the
+gene symbol they share (human from `hs_genes.parquet`, mouse from the mouse protein-gene links joined to the
+shipped mouse host table), and `cross_species(store)` re-indexes the whole atlas on that symbol.
+`scripts/build_host_cross_species_notebook.py` -> `notebooks/host_cross_species_2026_11_08.ipynb`,
+`results/host_cross_species_2026_11_08/`.
+
+* **What the crossing costs, counted:** 31,151 symbols, **10,881 measured in both species**; 3.1 M gene-signature
+  values dropped for want of a one-to-one symbol. It is a symbol mapping, not tested orthology, and a gene family
+  whose member count differs between the species is dropped rather than guessed.
+* **One perturbation is stated in both species: the BFD1 knockout.** gra18, LPS and BFD2 appear in the mouse
+  signatures only, so they cannot be crossed.
+* **Result: the host response to the BFD1 knockout crosses the species.** The mouse deltaBFD1 signature
+  (GSE223621) finds a human deltaBFD1 signature as its **best partner of 99**, against a chance rank of 50.
+  Spearman is low (0.203) -- the shared part is a minority of each response -- but the ordering is unambiguous.
+* Contrast with the same-species result above: within human cells the deltaBFD1 partner ranks 8th-66th. Across
+  species it ranks first. The host response has a reproducible core that a mouse cell and a human cell share,
+  and a much larger species- or lab-specific part.
+
+Tests: `test_the_symbol_map_is_one_to_one_within_each_species`,
+`test_crossing_the_species_puts_human_and_mouse_on_one_index` (6 pass).
+
+Product 3 has no open points left. Products 1-4 of this instruction are built; product 4 continues as 80.

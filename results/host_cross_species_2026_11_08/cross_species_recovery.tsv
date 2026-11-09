@@ -1,0 +1,7 @@
+mouse_signature	perturbation	comparable	same_perturbation_signatures	best_same_rank	chance_rank	best_rho	best_same_rho	top_match	top_match_label
+host_lfc_GSE103113_0	gra18	99	0		50.0	0.133		host_lfc_GSE223819_153	treatment: 50um iaa vs vehicle (pbs) (genotype=me49/tir1)
+host_lfc_GSE103113_1	gra18	99	0		50.0	0.142		host_lfc_GSE125120_4	condition: infected vs bystander (genotype=wild type)
+host_lfc_GSE103113_2	lps	99	0		50.0	0.181		host_lfc_GSE193614_60	genotype: unstated vs wild type (reference background)
+host_lfc_GSE103113_3	lps	99	0		50.0	0.138		host_lfc_GSE125120_7	genotype: myr1 ko vs wild type (condition=infected)
+host_lfc_GSE223621_139	bfd1	99	14	1.0	50.0	0.203	0.203	host_lfc_GSE223877_166	genotype: me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-tydelta bfd2::tdtomato vs me49delta ku80delta bfd1::bfd1-tydelta hxgprt::ptub1-dd-bfd1-ty (treatment=standard medium, +3um shield-1)
+host_lfc_GSE223621_140	bfd2	99	0		50.0	0.131		host_lfc_GSE223869_162	genotype: me49delta ku80delta bfd1::bfd1-tydelta bfd2 vs me49delta ku80delta bfd1::bfd1-ty (treatment=alkaline stress media, ambient co2)

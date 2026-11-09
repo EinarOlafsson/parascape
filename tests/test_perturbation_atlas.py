@@ -47,3 +47,31 @@ def test_host_replicate_groups_need_two_studies_and_a_named_perturbation():
     groups = P.replicate_groups({"registry": reg})
     assert list(groups) == ["human|genotype|deltabfd1"]          # MYR1 is one study; "unstated" names nothing
     assert all(len(set(reg.loc[v, "study"])) >= 2 for v in groups.values())
+
+
+def test_the_symbol_map_is_one_to_one_within_each_species():
+    """A symbol that names several genes in a species is dropped, not guessed (instruction 71)."""
+    from parascape import perturbation_atlas as PA
+
+    mapping = PA.host_symbol_map()
+    assert set(mapping.species) == {"human", "mouse"}
+    for species, group in mapping.groupby("species"):
+        assert group.symbol.is_unique, f"{species}: a symbol names more than one gene"
+        assert group.gene_id.is_unique
+
+
+def test_crossing_the_species_puts_human_and_mouse_on_one_index():
+    """`cross_species` re-indexes both species on shared symbols and says what the crossing cost."""
+    from parascape import perturbation_atlas as PA
+
+    store = PA.host_store()
+    crossed = PA.cross_species(store)
+    assert list(crossed["lfc"].columns) == list(store["lfc"].columns)
+    assert crossed["lfc"].index.is_unique
+    assert not any(str(i).startswith("HOST:") for i in crossed["lfc"].index)
+    assert crossed["dropped"]["rows_without_symbol"] > 0
+    registry = crossed["registry"]
+    human = [c for c in crossed["lfc"].columns if registry.loc[c, "species"] == "human"]
+    mouse = [c for c in crossed["lfc"].columns if registry.loc[c, "species"] == "mouse"]
+    shared = crossed["lfc"][human].notna().any(axis=1) & crossed["lfc"][mouse].notna().any(axis=1)
+    assert int(shared.sum()) > 1000, "the species should now meet on thousands of symbols"

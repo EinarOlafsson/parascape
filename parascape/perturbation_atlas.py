@@ -138,3 +138,61 @@ def replicate_groups(store: dict, min_studies: int = 2) -> dict:
         if reg.loc[list(cols), "study"].nunique() >= min_studies:
             groups[k] = list(cols)
     return groups
+
+
+def host_symbol_map(root: str | None = None) -> pd.DataFrame:
+    """Human and mouse host genes keyed by the symbol they share, for crossing the species (instruction 71).
+
+    Returns `species, gene_id, symbol`. Human symbols come from the human gene space (`hs_genes.parquet`), mouse
+    ones from the mouse protein-gene links joined to the shipped mouse host table. The symbol is upper-cased, so
+    mouse `Bfd1` meets human `BFD1`.
+
+    This is a symbol mapping, not a tested orthology: it cannot resolve a gene family where one species has
+    several members, and it says nothing about which member is the functional counterpart. A symbol that names
+    more than one gene in a species is dropped rather than guessed, and the count of those is the honest measure
+    of what the mapping misses.
+    """
+    here = os.path.dirname(os.path.dirname(__file__))
+    root = root or os.path.join(here, "results")
+    human = pd.read_parquet(os.path.join(root, "human_gene_space_2026_11_07", "hs_genes.parquet"),
+                            columns=["gene_id", "gene_name"])
+    links = pd.read_parquet(os.path.join(root, "mouse_gene_space_2026_11_07", "mm_protein_gene_links.parquet"))
+    names = pd.read_parquet(os.path.join(here, "parascape", "data", "mm_host_proteins.parquet"),
+                            columns=["host_id", "host_name"])
+    mouse = links.merge(names, on="host_id")[["gene_id", "host_name"]].rename(columns={"host_name": "gene_name"})
+    frames = []
+    for species, frame in (("human", human), ("mouse", mouse)):
+        frame = frame.dropna()
+        frame = frame[frame.gene_name.astype(str).str.len() > 0]
+        frame = frame.assign(symbol=frame.gene_name.astype(str).str.upper(), species=species)
+        frame = frame.drop_duplicates(["gene_id", "symbol"])
+        counts = frame.symbol.value_counts()
+        frames.append(frame[frame.symbol.isin(counts[counts == 1].index)][["species", "gene_id", "symbol"]])
+    return pd.concat(frames, ignore_index=True)
+
+
+def cross_species(store: dict, root: str | None = None) -> dict:
+    """The host atlas re-indexed on shared gene symbols, so human and mouse signatures can meet.
+
+    The store's rows are versioned Ensembl ids prefixed `HOST:`; both are reduced to the plain id, mapped to a
+    symbol with `host_symbol_map`, and signatures of both species are stacked on that symbol index. A gene with
+    no symbol, or a symbol that is not one-to-one in its species, is dropped. The returned store has the same
+    shape as `host_store`, with `dropped` recording what the crossing cost.
+    """
+    mapping = host_symbol_map(root)
+    by_species = {s: dict(zip(g.gene_id, g.symbol)) for s, g in mapping.groupby("species")}
+    lfc, reg = store["lfc"], store["registry"]
+    plain = pd.Index(lfc.index.astype(str)).str.replace("^HOST:", "", regex=True).str.replace(r"\.\d+$", "", regex=True)
+    columns, kept, dropped = {}, 0, 0
+    for column in lfc.columns:
+        species = str(reg.loc[column, "species"])
+        symbols = pd.Series(plain.map(by_species.get(species, {})), index=lfc.index)
+        values = lfc[column][symbols.notna()]
+        index = symbols[symbols.notna()]
+        series = values.groupby(index.values).mean()        # a symbol reached twice: the mean of its rows
+        columns[column] = series
+        kept += len(series)
+        dropped += int(symbols.isna().sum())
+    crossed = pd.DataFrame(columns)
+    return {"lfc": crossed, "registry": reg, "release": store["release"] + " (symbols)",
+            "dropped": dict(rows_without_symbol=dropped, symbols=len(crossed))}
