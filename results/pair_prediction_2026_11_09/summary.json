@@ -1,0 +1,9 @@
+{
+ "train_pairs": 13540,
+ "test_pairs": 2234,
+ "test_positive_share": 0.5,
+ "auroc": 0.913,
+ "average_precision": 0.833,
+ "auroc_fame_baseline": 0.998,
+ "average_precision_fame": 0.998
+}

@@ -608,3 +608,38 @@ four that cleared the bar on 2 of 3 partitions. Three more questions cleared it 
 every gene is already measured, one because it would have filled 98 % of the unmeasured genes (so the measured
 precision does not carry over), and the nucleus question because it failed the partition rule. More cells need
 more labels or better evidence, not another model.
+
+## 2026-11-09: stage 5, pairs with whole proteins held out -- popularity beats the model
+
+`scripts/build_pair_prediction_notebook.py` -> `notebooks/pair_prediction_2026_11_09.ipynb`,
+`results/pair_prediction_2026_11_09/`. The last untested stage, and the only one the instruction 73 ladder said
+nothing about, because its unit is a pair rather than a gene.
+
+**Whole proteins held out, not pairs.** Genes split by orthogroup through the harness's own `splits.make_split`;
+a pair is kept only when BOTH endpoints fall in the same partition, so a test pair has two unseen proteins.
+13,540 training pairs, 2,234 test pairs, balanced 50/50 with one drawn negative per recorded pair. Features are
+symmetric functions of the two genes over 120 well-covered columns -- |a - b|, the smaller, the larger -- with
+the absolute difference there because of the StarPath finding about CRISPR-fitness differences.
+
+**The result:**
+
+| | AUROC | Average precision |
+|---|---:|---:|
+| boosted trees on 360 pair features | 0.913 | 0.833 |
+| **popularity alone** (product of the two proteins' recorded partner counts) | **0.998** | **0.998** |
+
+**The model does not beat popularity, and the importance table says why it looked good:** of the three kinds of
+feature, `max` (the larger of the two values) carries 0.267 of the permutation importance, `min` 0.043 and the
+absolute difference **0.006**. The fitness columns contribute **0.000**, difference or otherwise. So the model
+learnt "is at least one of these two proteins abundant and well measured", which is popularity wearing a
+model's clothes -- the same trap the degree-matched baseline of strategy 33 exists to catch.
+
+**The StarPath fitness-difference feature did not carry its weight here.** That finding may still hold in its
+own setting (its pairs, its screen); it does not transfer to this table with these columns.
+
+Honest record of a false start: the negatives were first drawn to match degree on both ends, which starves them
+-- only 9,021 of 13,540 positives found a partner and the test set came out 94 % positive. Simple sampling with
+the popularity baseline reported beside the model is the version that answers the question.
+
+**Stage 5 is answered: no.** Pairs are not predictable from these measurements beyond how often each protein has
+already been recorded as a partner.
