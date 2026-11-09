@@ -116,7 +116,7 @@ def query_for(slot) -> str:
     sample/deposit review; publications naming a stage are not proof of an assay
     in that stage. First pages by citations and date are both retained.
     """
-    from generate_slot_table import ASSAY_TERMS
+    from generate_slot_table import ASSAY_TERMS, species_of
 
     subject = ""
     if slot.unit == "host_gene":
@@ -138,11 +138,13 @@ def query_for(slot) -> str:
                     "fibroblast": ('fibroblasts', 'HFF')}
         tissue_terms = [f'"{tissue}"', *synonyms.get(tissue, ()), '"tissue atlas"', 'FANTOM5', 'GTEx']
         context = 'TITLE_ABS:(' + ' OR '.join(tissue_terms) + ')' if " · " in slot.name else ""
-        organism = host or f'TITLE_ABS:"{O.get(slot.organism).species}"'
+        organism = host or f'TITLE_ABS:"{species_of(slot.organism)}"'
         if "infection" in question or "gene requirement" in question or "vacuole" in question:
-            organism += f' AND TITLE_ABS:"{O.get(slot.organism).species}"'
+            organism += f' AND TITLE_ABS:"{species_of(slot.organism)}"'
     else:
-        organism = f'TITLE_ABS:"{O.get(slot.organism).species}"'
+        # `species_of`, not the registry: a space of instruction 53 WP2 is declared without being
+        # registered, and a slot of it must still be asked about by its own species.
+        organism = f'TITLE_ABS:"{species_of(slot.organism)}"'
         assay = ASSAY_TERMS.get(slot.axis, "").strip("()")
         question = slot.name.split(" · ", 1)[0]
         if not assay:
@@ -154,7 +156,7 @@ def query_for(slot) -> str:
             if words:
                 subject = "TITLE_ABS:(" + " OR ".join('"' + word + '"' for word in words) + ")"
         context = ""
-        if slot.context in O.get(slot.organism).contexts:
+        if slot.organism in O.SPACES and slot.context in O.get(slot.organism).contexts:
             context = f'TITLE_ABS:"{slot.context}"'
     # Quoted multiword assay alternatives cannot dissolve into independent words.
     assay = " OR ".join('"' + term.strip().strip('"') + '"' for term in assay.split(" OR ") if term.strip())

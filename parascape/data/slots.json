@@ -13665,5 +13665,2044 @@
     "target_family": "host_response_to_infection_anopheles_salivary_gland",
     "target_columns": [],
     "role": "never"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · sporozoite",
+    "axis": "transcription",
+    "context": "sporozoite",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "sporozoite"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "sporozoite",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "sporozoite",
+      "transcription"
+    ],
+    "target_family": "transcription_sporozoite",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · trophozoite",
+    "axis": "transcription",
+    "context": "trophozoite",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_trophozoite",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · type I meront",
+    "axis": "transcription",
+    "context": "type I meront",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_type_i_meront",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · merozoite",
+    "axis": "transcription",
+    "context": "merozoite",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "merozoite"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "merozoite",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "merozoite",
+      "transcription"
+    ],
+    "target_family": "transcription_merozoite",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · type II meront",
+    "axis": "transcription",
+    "context": "type II meront",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_type_ii_meront",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · microgamont",
+    "axis": "transcription",
+    "context": "microgamont",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_microgamont",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · macrogamont",
+    "axis": "transcription",
+    "context": "macrogamont",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_macrogamont",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · zygote",
+    "axis": "transcription",
+    "context": "zygote",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_zygote",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · oocyst",
+    "axis": "transcription",
+    "context": "oocyst",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "average",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "oocyst"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "oocyst",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "oocyst",
+      "transcription"
+    ],
+    "target_family": "transcription_oocyst",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · per cell-cycle phase",
+    "axis": "transcription",
+    "context": "cell cycle",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_per_cell_cycle_phase",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · under stress / conversion",
+    "axis": "transcription",
+    "context": "alkaline, stress",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "stage conversion"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_under_stress_conversion",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · under TF or chromatin perturbation",
+    "axis": "transcription",
+    "context": "perturbation",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_under_tf_or_chromatin_perturbation",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · maximum observed across stages",
+    "axis": "transcription",
+    "context": "cross-stage summary",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_maximum_observed_across_stages",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "cell-cycle timing label",
+    "axis": "transcription",
+    "context": "single-parasite atlas",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "cell-cycle timing",
+    "target_columns": [
+      "cellcycle_phase",
+      "cellcycle_pseudotime"
+    ],
+    "role": "target"
+  },
+  {
+    "organism": "Cp",
+    "name": "life-cycle stage label (derived)",
+    "axis": "transcription",
+    "context": "cross-stage derived target",
+    "unit": "gene",
+    "patterns": [
+      "measured_stage"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "derived target labels",
+      "life-cycle stage"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "life-cycle stage",
+    "target_columns": [
+      "stage_enriched_derived",
+      "stage_margin_derived"
+    ],
+    "role": "target"
+  },
+  {
+    "organism": "Cp",
+    "name": "translation · trophozoite",
+    "axis": "translation",
+    "context": "trophozoite",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "translation",
+      "ribosome occupancy",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein synthesis",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "translation"
+    ],
+    "target_family": "translation_trophozoite",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "translation · per cell-cycle phase",
+    "axis": "translation",
+    "context": "cell cycle",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "translation",
+      "ribosome occupancy",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein synthesis",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "translation"
+    ],
+    "target_family": "translation_per_cell_cycle_phase",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "translation · under stress",
+    "axis": "translation",
+    "context": "extracellular stress or iron",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "translation",
+      "ribosome occupancy",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein synthesis",
+      "stage-unspecified",
+      "extracellular or starvation"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "translation"
+    ],
+    "target_family": "translation_under_stress",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "translation efficiency · extracellular stress",
+    "axis": "translation",
+    "context": "extracellular stress",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "translation",
+      "ribosome occupancy",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein synthesis",
+      "stage-unspecified",
+      "extracellular or starvation"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "translation"
+    ],
+    "target_family": "translation_efficiency_extracellular_stress",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "translation efficiency · trophozoite",
+    "axis": "translation",
+    "context": "trophozoite",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "translation",
+      "ribosome occupancy",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein synthesis",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "translation"
+    ],
+    "target_family": "translation_efficiency_trophozoite",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "protein abundance · other life stages",
+    "axis": "protein abundance",
+    "context": "stages",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "protein",
+      "abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "protein abundance"
+    ],
+    "target_family": "protein_abundance_other_life_stages",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "phosphorylation · kinase-substrate",
+    "axis": "PTM",
+    "context": "perturbation",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "protein",
+      "post-translational state",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "protein state",
+      "post-translational modification",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "PTM"
+    ],
+    "target_family": "phosphorylation_kinase_substrate",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "acetylation",
+    "axis": "PTM",
+    "context": "life stages",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "protein",
+      "post-translational state",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "protein state",
+      "post-translational modification",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "PTM"
+    ],
+    "target_family": "acetylation",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "protein abundance · under stress",
+    "axis": "protein abundance",
+    "context": "iron depletion, 24 h",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "protein",
+      "abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "protein abundance"
+    ],
+    "target_family": "protein_abundance_under_stress",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "transcription · under iron depletion",
+    "axis": "transcription",
+    "context": "iron depletion, 24 h",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "transcription_under_iron_depletion",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "organelle surface / membrane contact site",
+    "axis": "localization",
+    "context": "TurboID on outer membranes",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "spatial biology",
+      "localization",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "cell organization",
+      "localization and topology",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "localization"
+    ],
+    "target_family": "organelle_surface_membrane_contact_site",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "fitness · oxidative stress",
+    "axis": "fitness",
+    "context": "oxidant",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "perturbational measurements",
+      "genetic screens",
+      "fitness",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "parasite phenotype",
+      "fitness and essentiality",
+      "stage-unspecified",
+      "oxidative stress"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "fitness"
+    ],
+    "target_family": "fitness_oxidative_stress",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "drug sensitivity",
+    "axis": "fitness",
+    "context": "compound",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "perturbational measurements",
+      "genetic screens",
+      "fitness",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "parasite phenotype",
+      "fitness and essentiality",
+      "stage-unspecified",
+      "drug or compound"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "fitness"
+    ],
+    "target_family": "drug_sensitivity",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "TF binding · per factor",
+    "axis": "regulation",
+    "context": "ChIP / CUT&RUN",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "regulation",
+      "chromatin and RNA regulation",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene regulation",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "regulation"
+    ],
+    "target_family": "tf_binding_per_factor",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "chromatin accessibility",
+    "axis": "regulation",
+    "context": "stages",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "regulation",
+      "chromatin and RNA regulation",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene regulation",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "regulation"
+    ],
+    "target_family": "chromatin_accessibility",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "5' UTR architecture",
+    "axis": "sequence",
+    "context": "reannotated transcripts",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "fill",
+    "candidates": [],
+    "evidence_path": [
+      "intrinsic and reference",
+      "sequence and evolution",
+      "gene attributes",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "intrinsic properties",
+      "sequence structure and evolution",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "sequence"
+    ],
+    "target_family": "5_utr_architecture",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "splicing / isoform use",
+    "axis": "regulation",
+    "context": "stages",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "regulation",
+      "chromatin and RNA regulation",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene regulation",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "regulation"
+    ],
+    "target_family": "splicing_isoform_use",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "membrane topology",
+    "axis": "localization",
+    "context": "sequence",
+    "unit": "gene",
+    "patterns": [
+      "dtm_type",
+      "tm_n_tm",
+      "tm_n_signal"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "intrinsic and reference",
+      "sequence-derived",
+      "membrane topology"
+    ],
+    "biology_path": [
+      "cell organization",
+      "localization and topology",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "localization"
+    ],
+    "target_family": "membrane topology",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "exposure to host cytosol",
+    "axis": "localization",
+    "context": "PVM, export",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "fill",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "spatial biology",
+      "localization",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "cell organization",
+      "localization and topology",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "localization"
+    ],
+    "target_family": "subcellular localization",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "secretome / excreted",
+    "axis": "localization",
+    "context": "ESA",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "spatial biology",
+      "localization",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "cell organization",
+      "localization and topology",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "localization"
+    ],
+    "target_family": "subcellular localization",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "co-transcription",
+    "axis": "relation",
+    "context": "stage series",
+    "unit": "pair",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "co_transcription",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "co-translation",
+    "axis": "relation",
+    "context": "ribosome profiling",
+    "unit": "pair",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "co_translation",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "co-fitness",
+    "axis": "relation",
+    "context": "seven screens",
+    "unit": "pair",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "co_fitness",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "interaction · crosslink MS",
+    "axis": "relation",
+    "context": "measured contact",
+    "unit": "pair",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "interaction_crosslink_ms",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "interaction · IP-MS, parasite-parasite",
+    "axis": "relation",
+    "context": "pulldown",
+    "unit": "pair",
+    "patterns": [],
+    "policy": "fill",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "interaction_ip_ms_parasite_parasite",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "interaction · proximity labelling",
+    "axis": "relation",
+    "context": "BioID / TurboID",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "fill",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "interaction_proximity_labelling",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "interaction · structural similarity",
+    "axis": "relation",
+    "context": "Foldseek",
+    "unit": "pair",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "interaction_structural_similarity",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "interaction · with host proteins",
+    "axis": "relation",
+    "context": "host IP-MS",
+    "unit": "pair",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "host-cell or host-derived",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "interaction_with_host_proteins",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "shared orthogroup",
+    "axis": "relation",
+    "context": "OrthoMCL",
+    "unit": "pair",
+    "patterns": [
+      "orthogroup"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "shared_orthogroup",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "shared domain",
+    "axis": "relation",
+    "context": "InterPro",
+    "unit": "pair",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "shared_domain",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "interaction degree · crosslink MS",
+    "axis": "relation",
+    "context": "measured contact",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "interaction_degree_crosslink_ms",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "interaction degree · IP-MS",
+    "axis": "relation",
+    "context": "curated pulldown",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "interaction_degree_ip_ms",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "interaction degree · structural similarity",
+    "axis": "relation",
+    "context": "Foldseek",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "gene-gene",
+      "association or interaction",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-parasite",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "relation"
+    ],
+    "target_family": "interaction_degree_structural_similarity",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "host interaction degree",
+    "axis": "host effect",
+    "context": "curated parasite-host interactions",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "parasite-host",
+      "host effect",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-host",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "host-cell or host-derived",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "host effect"
+    ],
+    "target_family": "host_interaction_degree",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "downloaded-study membership",
+    "axis": "NEVER a feature",
+    "context": "BioID / IP-MS corpus coverage",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "excluded from embeddings",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "provenance and analysis metadata",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "NEVER a feature"
+    ],
+    "target_family": "downloaded_study_membership",
+    "target_columns": [],
+    "role": "metadata"
+  },
+  {
+    "organism": "Cp",
+    "name": "analysis-derived structural holes",
+    "axis": "NEVER a feature",
+    "context": "coexpression + cofitness - literature",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "excluded from embeddings",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "provenance and analysis metadata",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "NEVER a feature"
+    ],
+    "target_family": "analysis_derived_structural_holes",
+    "target_columns": [],
+    "role": "never"
+  },
+  {
+    "organism": "Cp",
+    "name": "assay confidence and significance",
+    "axis": "NEVER a feature",
+    "context": "target evidence metadata",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "excluded from embeddings",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "provenance and analysis metadata",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "NEVER a feature"
+    ],
+    "target_family": "assay_confidence_and_significance",
+    "target_columns": [],
+    "role": "metadata"
+  },
+  {
+    "organism": "Cp",
+    "name": "host transcriptional effect per effector",
+    "axis": "host effect",
+    "context": "dual perturb-seq",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "relational measurements",
+      "parasite-host",
+      "host effect",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "molecular relationships",
+      "parasite-host",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "host effect"
+    ],
+    "target_family": "host_transcriptional_effect_per_effector",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "domain content",
+    "axis": "sequence",
+    "context": "InterPro",
+    "unit": "gene",
+    "patterns": [
+      "interpro_ids"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "intrinsic and reference",
+      "sequence and evolution",
+      "gene attributes",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "intrinsic properties",
+      "sequence structure and evolution",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "sequence"
+    ],
+    "target_family": "domain_content",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "fold confidence / disorder",
+    "axis": "sequence",
+    "context": "AlphaFold",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "intrinsic and reference",
+      "sequence and evolution",
+      "gene attributes",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "intrinsic properties",
+      "sequence structure and evolution",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "sequence"
+    ],
+    "target_family": "fold_confidence_disorder",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "conservation breadth",
+    "axis": "sequence",
+    "context": "OrthoMCL",
+    "unit": "gene",
+    "patterns": [
+      "orthogroup"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "intrinsic and reference",
+      "sequence and evolution",
+      "gene attributes",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "intrinsic properties",
+      "sequence structure and evolution",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "sequence"
+    ],
+    "target_family": "conservation_breadth",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "paralogy",
+    "axis": "sequence",
+    "context": "OrthoMCL",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "intrinsic and reference",
+      "sequence and evolution",
+      "gene attributes",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "intrinsic properties",
+      "sequence structure and evolution",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "sequence"
+    ],
+    "target_family": "paralogy",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "sequence basics",
+    "axis": "sequence",
+    "context": "protein",
+    "unit": "gene",
+    "patterns": [
+      "protein_length"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "intrinsic and reference",
+      "sequence and evolution",
+      "gene attributes",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "intrinsic properties",
+      "sequence structure and evolution",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "reference or computational",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "sequence"
+    ],
+    "target_family": "sequence_basics",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "strain variation",
+    "axis": "sequence",
+    "context": "population",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "intrinsic and reference",
+      "sequence and evolution",
+      "gene attributes",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "intrinsic properties",
+      "sequence structure and evolution",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "sequence"
+    ],
+    "target_family": "strain_variation",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "literature attention",
+    "axis": "NEVER a feature",
+    "context": "PubMed / PMC",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "excluded from embeddings",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "provenance and analysis metadata",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "NEVER a feature"
+    ],
+    "target_family": "literature attention",
+    "target_columns": [
+      "attention_depth",
+      "lit_tier"
+    ],
+    "role": "never"
+  },
+  {
+    "organism": "Cp",
+    "name": "gene identity and annotation",
+    "axis": "NEVER a feature",
+    "context": "ToxoDB",
+    "unit": "gene",
+    "patterns": [
+      "gene_id",
+      "product"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "excluded from embeddings",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "provenance and analysis metadata",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "NEVER a feature"
+    ],
+    "target_family": "gene_identity_and_annotation",
+    "target_columns": [],
+    "role": "metadata"
+  },
+  {
+    "organism": "Cp",
+    "name": "localization · measured",
+    "axis": "localization",
+    "context": "hyperLOPIT, Iowa II",
+    "unit": "gene",
+    "patterns": [
+      "lopit_location"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "spatial biology",
+      "localization",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "cell organization",
+      "localization and topology",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "localization"
+    ],
+    "target_family": "subcellular localization",
+    "target_columns": [
+      "compartment",
+      "lopit_map",
+      "lopit_mcmc",
+      "lopit_unified"
+    ],
+    "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "stage share · single cell",
+    "axis": "transcription",
+    "context": "single-cell, whole life cycle",
+    "unit": "gene",
+    "patterns": [
+      "stage_asexual_pct",
+      "stage_female_pct",
+      "stage_logFC_female_vs_asexual",
+      "stage_sporozoite_specific"
+    ],
+    "policy": "separate",
+    "candidates": [],
+    "evidence_path": [
+      "molecular measurements",
+      "RNA",
+      "transcript abundance",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "gene expression",
+      "RNA abundance",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "transcription"
+    ],
+    "target_family": "stage_share_single_cell",
+    "target_columns": [],
+    "role": "feature"
   }
 ]

@@ -608,6 +608,178 @@ def _no_toxoplasma_content(row):
     return tuple(row)
 
 
+#: A space that is not Toxoplasma or Plasmodium declares its own biology here, and the mirror reads
+#: it (WP2 of instruction 53). Nothing is translated: the question SHAPE carries across apicomplexans
+#: ("transcription, in one stage"), the stage list never does.
+#:
+#: `fitness_stages` empty means no genome-wide fitness screen exists in that organism, so the mirror
+#: omits fitness slots entirely rather than creating denominators for experiments nobody can run --
+#: the same rule that shortened the Plasmodium fitness list.
+#:
+#: **Plasmodium berghei has no entry on purpose.** The Plasmodium arm already covers it: `ORGANISMS["Pf"]`
+#: queries berghei, vivax, knowlesi and yoelii by design, because the genome-scale fitness and
+#: liver-stage data are largely berghei. A parallel `Pb` table would ask every Plasmodium question
+#: twice and split the data that fills it.
+SPACE_SLOTS = {
+    "Cp": {
+        "species": "Cryptosporidium parvum",
+        # The space must be registered before anything asks `organisms.get("Cp")` -- the literature
+        # query of a slot is built from the registered species, not from the string above.
+        "module": "parascape.spaces.crypto",
+        "attribute": "CRYPTO_SPACE",
+        # The intracellular developmental series of C. parvum, in order. Not mapped onto the
+        # Toxoplasma stages: a type I meront is not a tachyzoite and a macrogamont is not a
+        # bradyzoite, so a mirrored name would be a false equivalence with a plausible look.
+        "stages": ("sporozoite", "trophozoite", "type I meront", "merozoite", "type II meront",
+                   "microgamont", "macrogamont", "zygote", "oocyst"),
+        "default_stage": "trophozoite",
+        # Single-cell RNA of the whole series exists (Tandel 2019), so transcription is stage-resolved.
+        "staged_axes": ("transcription",),
+        # No genome-wide fitness screen in Cryptosporidium: transfection is possible but a pooled,
+        # counted mutant library at genome scale is not, so every fitness slot would be unanswerable
+        # by construction.
+        "fitness_stages": (),
+        # Contexts that belong to another parasite laboratory, not to this one. The fibroblast and
+        # the macrophage are what Toxoplasma is grown in; the brain, the cat and the cyst wall are
+        # Toxoplasma biology. Cryptosporidium is an intestinal epithelial parasite.
+        "excluded_contexts": ("feline", "enteric", "cyst wall", "bradyzoite checkpoint", "brain",
+                              "macrophage", "hff", "bmdm", "mouse", "tachyzoite"),
+    },
+}
+
+
+#: Where each further space gene table is built. Read by `main` to grade that space slots against
+#: its own genes; a space whose table is absent grades empty rather than against another organism.
+SPACE_TABLES = {"Cp": os.path.join("results", "cryptosporidium_space_2026_11_08", "cp_gene_nodes.parquet")}
+
+
+#: The columns of each further space own gene table, attached to the slot they answer. Without this
+#: a mirrored slot is a question with no measurement, which is honest but useless: the point of WP2
+#: is that a space grades its own coverage.
+SPACE_PATTERNS = {
+    "Cp": {
+        # DeepTMHMM ran on every protein, so a topology call exists for all 3,923: 100 % is right.
+        "membrane topology": ("dtm_type", "tm_n_tm", "tm_n_signal"),
+        # `interpro_ids` only, and the empty strings are emptied to missing in `_space_table` below:
+        # `n_interpro` is 0 rather than missing where a gene has no domain, and the id column holds
+        # "" for the same genes, so either as shipped would report 100 % coverage for a question
+        # about domains that 1,348 of 3,923 genes have no answer to.
+        "domain content": ("interpro_ids",),
+        "sequence basics": ("protein_length",),
+        "shared orthogroup": ("orthogroup",),
+        "conservation breadth": ("orthogroup",),
+        "gene identity and annotation": ("gene_id", "product"),
+        "life-cycle stage label (derived)": ("measured_stage",),
+    },
+}
+
+#: Slots a further space has that Toxoplasma mirroring cannot produce, because the Toxoplasma slot
+#: that would mirror names its own study. Cryptosporidium has a MEASURED hyperLOPIT location
+#: (Guerin 2023) and MEASURED single-cell stage shares (Tandel 2019), and both are real questions
+#: about this organism, so they are declared here rather than smuggled past STUDY_SPECIFIC.
+SPACE_EXTRA_SLOTS = {
+    "Cp": [
+        # `lopit_location` alone: `lopit_assigned` is a flag that exists for every gene, so including
+        # it would read 100 % coverage for a measurement made on 1,103 of 3,923 genes.
+        ("localization \u00b7 measured", "localization", "hyperLOPIT, Iowa II", "gene",
+         ["lopit_location"], "one"),
+        ("stage share \u00b7 single cell", "transcription", "single-cell, whole life cycle", "gene",
+         ["stage_asexual_pct", "stage_female_pct", "stage_logFC_female_vs_asexual",
+          "stage_sporozoite_specific"], "separate"),
+    ],
+}
+
+
+def _space_table(frame):
+    """A space gene table with empty strings read as missing, so coverage counts answers.
+
+    `coverage` counts a value as present when it is not null, and these tables store "no domain" and
+    "no location" as an empty string rather than as nothing. Left alone, a question about domains
+    reads 100 % covered because every row has a cell. Emptying them is the difference between
+    "every gene was looked at" and "every gene has an answer", and it is the second that a slot
+    grade claims.
+    """
+    return frame.replace({"": None})
+
+
+def _with_space_patterns(row, code: str):
+    """Attach a space own columns to the slot they answer, as `_with_pf_patterns` does for Pf."""
+    patterns = SPACE_PATTERNS.get(code, {}).get(row[0])
+    return row if not patterns else (row[0], row[1], row[2], row[3], list(patterns)) + tuple(row[5:])
+
+
+def available_spaces() -> tuple:
+    """The further spaces whose module loads, so their declaration can be trusted.
+
+    The space is NOT registered in `organisms`: only Tg and Pf are registered on import, and
+    registering a third one here would change what every other caller sees as a side effect of
+    generating the slot table -- including the Species menu and any test that runs afterwards.
+    `species_of` is how a consumer reads the species instead.
+    """
+    import importlib
+
+    found = []
+    for code, space in SPACE_SLOTS.items():
+        try:
+            module = importlib.import_module(space["module"])
+            declared = getattr(module, space["attribute"])
+            if declared.species != space["species"]:    # the module is the source of truth
+                print(f"  space {code}: module says {declared.species!r}, table says {space['species']!r}")
+            found.append(code)
+        except Exception as error:                      # a space whose module cannot load is named
+            print(f"  space {code} unavailable: {type(error).__name__}: {error}")
+    return tuple(found)
+
+
+def species_of(code: str) -> str:
+    """The species of any space, registered (Tg, Pf) or only declared (instruction 53, WP2)."""
+    from parascape import organisms
+
+    if code in organisms.SPACES:
+        return organisms.get(code).species
+    return SPACE_SLOTS.get(code, {}).get("species", "")
+
+
+def _space_mirror(rows, code: str):
+    """The base Toxoplasma questions, asked of another space (instruction 53, WP2).
+
+    Same rules as the Plasmodium mirror, read from `SPACE_SLOTS[code]`: a generic question is
+    mirrored once; a stage-bearing question on a stage-resolved axis is re-asked once per stage of
+    THAT organism; on any other axis it is asked once in the default stage; an axis whose stage list
+    is empty is dropped. A question naming a particular experiment is never mirrored.
+    """
+    space = SPACE_SLOTS[code]
+    stage_words = re.compile(r"tachyzoite|bradyzoite|oocyst|sporozoite|merozoite|sexual|cyst|feline"
+                             r"|enteric|brain|macrophage|hff|bmdm", re.I)
+    out, seen = [], set()
+    for name, axis, context, unit, patterns, policy, candidates in rows:
+        text = f"{name} {context}".lower()
+        if any(word in text for word in space["excluded_contexts"]):
+            continue
+        if any(word in text for word in STUDY_SPECIFIC):
+            continue
+        if not stage_words.search(text):
+            if name in seen:
+                continue
+            seen.add(name)
+            out.append((name, axis, context, unit, [], policy, []))
+            continue
+        question = name.split(" \u00b7 ")[0]
+        if axis == "fitness":
+            stages = space["fitness_stages"]
+        elif axis in space["staged_axes"]:
+            stages = space["stages"]
+        else:
+            stages = (space["default_stage"],)
+        for stage in stages:
+            mirrored = f"{question} \u00b7 {stage}"
+            if mirrored in seen:
+                continue
+            seen.add(mirrored)
+            out.append((mirrored, axis, stage, unit, [], policy, []))
+    return out
+
+
 def _pf_mirror(rows):
     """The base Toxoplasma questions, asked of Plasmodium.
 
@@ -1900,7 +2072,12 @@ def all_slots(organism: str | None = None) -> list:
           + [_definition(_with_pf_patterns(_no_toxoplasma_content(row)), "Pf")
              for row in NEW_SHARED]
           + [_definition(_with_pf_patterns(row), "Pf") for row in NEW_PLASMODIUM])
-    out = toxo + pf
+    registered = available_spaces()
+    spaces = [_definition(_with_space_patterns(row, code), code) for code in sorted(registered)
+              for row in _space_mirror(SLOTS, code)]
+    spaces += [_definition(row, code) for code in sorted(SPACE_EXTRA_SLOTS)
+               if code in registered for row in SPACE_EXTRA_SLOTS[code]]
+    out = toxo + pf + spaces
     if organism:
         out = [row for row in out if row["organism"] == organism]
     proposals = _merge_candidate_references()
@@ -2349,7 +2526,7 @@ def _write_markdown(rows, path=OUT_MD) -> None:
 
 
 def _rows(definitions, nodes, graph, metabolites=None, bridges=None, pf_nodes=None,
-          pf_graph=None, pf_bridges=None, hosts=None) -> list:
+          pf_graph=None, pf_bridges=None, hosts=None, space_nodes=None) -> list:
     """One row per slot: the definitions with measured cache coverage attached. `metabolites` is the
     table whose rows are compounds; slots declaring `unit="metabolite"` are graded against it and
     against its own denominator."""
@@ -2360,6 +2537,10 @@ def _rows(definitions, nodes, graph, metabolites=None, bridges=None, pf_nodes=No
     pf_nodes = pd.DataFrame() if pf_nodes is None else pf_nodes
     pf_bridges = pd.DataFrame() if pf_bridges is None else pf_bridges
     hosts = pd.DataFrame() if hosts is None else hosts
+    # One gene table per further space (instruction 53, WP2), so a space slot is graded against its
+    # own genes: scoring 3,923 Cryptosporidium genes out of 8,140 Toxoplasma ones would report a
+    # complete column as half covered.
+    space_nodes = {} if space_nodes is None else space_nodes
     n_genes, rows = len(nodes), []
     for definition in definitions:
         slot, axis = definition["name"], definition["axis"]
@@ -2418,6 +2599,11 @@ def _rows(definitions, nodes, graph, metabolites=None, bridges=None, pf_nodes=No
             covered, cols = coverage(pf_nodes, columns)
             positive = evidence(pf_nodes, cols)
             detail = f"{len(cols)} columns" if cols else ""
+        elif definition["organism"] in space_nodes and len(space_nodes[definition["organism"]]):
+            table = space_nodes[definition["organism"]]
+            covered, cols = coverage(table, columns)
+            positive = evidence(table, cols)
+            detail = f"{len(cols)} columns" if cols else ""
         else:
             covered, cols, detail = 0, [], ""
         if positive is None:
@@ -2429,6 +2615,8 @@ def _rows(definitions, nodes, graph, metabolites=None, bridges=None, pf_nodes=No
             denominator = len(metabolites)
         elif definition["organism"] == "Pf":
             denominator = len(pf_nodes)
+        elif definition["organism"] in space_nodes:
+            denominator = len(space_nodes[definition["organism"]])
         else:
             denominator = n_genes
         frac = covered / denominator if denominator else 0.0
@@ -2531,7 +2719,15 @@ def main() -> int:
     pf_bridges = pd.read_parquet(_pb) if os.path.exists(_pb) else pd.DataFrame()
     from parascape import host
     hosts = host.shipped_tables()
-    rows = _rows(definitions, nodes, z, metabolites, bridges, pf_nodes, pf_graph, pf_bridges, hosts)
+    # The further spaces grade against their own gene tables where those are built (WP2). A space
+    # declared in SPACE_SLOTS whose table is not built yet grades empty and says so.
+    space_nodes = {}
+    for code, where in SPACE_TABLES.items():
+        path = os.path.join(_ROOT, where)
+        if os.path.exists(path):
+            space_nodes[code] = _space_table(pd.read_parquet(path))
+    rows = _rows(definitions, nodes, z, metabolites, bridges, pf_nodes, pf_graph, pf_bridges, hosts,
+                 space_nodes=space_nodes)
     toxo_rows = [row for row in rows if row["organism"] == "Tg"]
     pf_rows = [row for row in rows if row["organism"] == "Pf"]
     os.makedirs(os.path.dirname(OUT_CSV), exist_ok=True)
@@ -2545,7 +2741,8 @@ def main() -> int:
         fh.write("\n")
     _write_hierarchy(definitions)
     empty = sum(1 for r in rows if r["grade"] == "-")
-    print(f"{len(rows)} slots -> combined, Toxoplasma and Plasmodium tables")
+    print(f"{len(rows)} slots -> combined, Toxoplasma and Plasmodium tables "
+          f"(further spaces: {', '.join(sorted(set(r['organism'] for r in rows) - {_organisms.TOXOPLASMA, _organisms.FALCIPARUM})) or 'none'})")
     print(f"  A {sum(1 for r in rows if r['grade'] == 'A')}   "
           f"B {sum(1 for r in rows if r['grade'] == 'B')}   "
           f"C {sum(1 for r in rows if r['grade'] == 'C')}   empty {empty}")

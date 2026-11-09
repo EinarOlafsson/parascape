@@ -64,7 +64,11 @@ def test_every_slot_has_an_explicit_organism_scoped_query():
     for slot in S.all_slots():
         query = A.query_for(slot)
         assert "TITLE_ABS:" in query and "[Title/Abstract]" not in query
-        assert any(name in query for name in ("Toxoplasma gondii", "Plasmodium falciparum", "Homo sapiens", "Mus musculus", "Anopheles"))
+        # Every declared species, not a fixed list: a further space (instruction 53, WP2) must be
+        # asked about by ITS species, and a hardcoded list would let it fall back to another one.
+        import generate_slot_table as G
+        species = {G.species_of(code) for code in list(O.SPACES) + list(G.SPACE_SLOTS)}
+        assert any(name in query for name in species | {"Homo sapiens", "Mus musculus", "Anopheles"})
 
 
 def test_host_baselines_are_distinct_from_infection_questions():

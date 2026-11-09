@@ -1,6 +1,6 @@
 # 53 · One space per organism, then links between pathogen, vector and host
 
-**Status: open (designed 2026-09-26). 2026-11-08: WP0 and WP1 done, WP3 (Hs, Mm) done to its acceptance, WP7/WP9 partly; rat, cat, vectors and other apicomplexans (WP4-6) not started -- they need data acquisition, much of it behind the VEuPathDB login (item 38).**
+**Status: open (designed 2026-09-26). 2026-11-08: WP0, WP1 and WP2 done, WP3 (Hs, Mm) done to its acceptance, WP6 has Cp and Pb, WP7/WP9 partly; rat, cat and vectors (WP4-5) not started -- they need data acquisition, much of it behind the VEuPathDB login (item 38).**
 
 Crash recovery: all implementation commits through `05650fd` survived and were pushed. The 45
 focused recovery checks passed. Documentation CI passed; test CI had 4,138 passes and one stale
@@ -328,8 +328,33 @@ share-alike, **V** verify the terms first, **X** local build only.
 * **WP9 (UI):** host spaces listed in the Species menu with their state and installable from there; a host gene opens
   from its pack through a parasite gene's links (64.23/64.24). A host space as a full map window is not built.
 * **Phase 2:** organism-qualified bridges with relation types (`bridges.py`), counterpart resolution in its own space.
-* **Not started:** WP2 (slot generator per space), WP4 (Rn, Fc), WP5 (Ag, As), WP6 (Cp, Pb, Pv), WP8 (strategies
-  across N spaces).
+* **WP2 (slot generator per space): built 2026-11-08.** `scripts/generate_slot_table.py` no longer hardcodes two
+  organisms. A further space declares its own biology in `SPACE_SLOTS` -- stages, which axes are stage-resolved, the
+  default stage, and the contexts that belong to another parasite laboratory -- and `_space_mirror` asks the base
+  Toxoplasma questions of it under the same rules as the Plasmodium mirror. Nothing is translated: the question
+  shape carries across apicomplexans, the stage list never does.
+  * **Cryptosporidium parvum: 63 slots**, graded against its own 3,923 genes (`SPACE_TABLES`), not against the
+    Toxoplasma gene count. Nine carry real measurements: membrane topology 100 %, orthogroup 100 %, sequence
+    basics 100 %, identity 100 %, conservation 100 %, domain content 65.6 %, measured hyperLOPIT location 28.1 %,
+    single-cell stage share 37.1 %, derived stage label 37.1 %. Catalogue: 360 slots (was 297).
+  * **Fitness slots are omitted for Cryptosporidium on purpose:** `fitness_stages` is empty because no pooled,
+    counted genome-scale mutant library exists in it, and a slot for an experiment nobody can run is a denominator
+    that makes every coverage figure read low for no reason -- the rule that already shortened the Plasmodium list.
+  * **Two slots are declared rather than mirrored:** measured hyperLOPIT location (Guerin 2023) and the
+    single-cell stage share (Tandel 2019). The Toxoplasma slots that would mirror onto them name their own study,
+    which `STUDY_SPECIFIC` rightly refuses, so they are declared with their columns instead of smuggled past it.
+  * **Coverage counts answers, not cells:** `_space_table` reads empty strings as missing, because these tables
+    store "no domain" and "no location" as `""`. Left alone, domain content read 100 % covered when 1,348 of
+    3,923 genes have no domain at all.
+  * **A further space is declared, never registered.** Registering a third space inside the generator changed
+    what every later caller saw -- two registry tests began to fail by test order alone -- so `species_of` reads
+    the species from the declaration and `organisms.SPACES` keeps holding Tg and Pf. Tests
+    `test_the_catalog_has_both_organisms_and_stable_prefixed_keys` and
+    `test_every_slot_has_an_explicit_organism_scoped_query` now assert the property rather than a fixed pair.
+  * **Plasmodium berghei gets no slots, on purpose.** The Plasmodium arm already queries berghei, vivax, knowlesi
+    and yoelii by design, because the genome-scale fitness and liver-stage data are largely berghei. A parallel Pb
+    table would ask every Plasmodium question twice and split the data that fills it.
+* **Not started:** WP4 (Rn, Fc), WP5 (Ag, As), WP6 remainder (Pv), WP8 (strategies across N spaces).
 
 ## WP6 started: Cryptosporidium parvum (2026-11-08)
 

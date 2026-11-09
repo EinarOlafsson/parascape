@@ -33,13 +33,21 @@ def test_the_catalog_has_both_organisms_and_stable_prefixed_keys():
     # stay prefixed and resolvable, and that the Plasmodium arm covers the same QUESTIONS as the
     # Toxoplasma one -- which is the thing a mirror can silently fail to do.
     assert len(catalog) > 130
-    assert {item.organism for item in catalog} == {"Tg", "Pf"}
-    assert all(item.key.startswith(("Tg_", "Pf_")) for item in catalog)
+    codes = {item.organism for item in catalog}
+    # Both parasite arms must be there. Further spaces (instruction 53, WP2) may join, so the test
+    # requires the two and allows the rest rather than naming a fixed set that a new space breaks.
+    assert {"Tg", "Pf"} <= codes
+    assert all(item.key.startswith(tuple(code + "_" for code in codes)) for item in catalog)
     assert slots.by_key(slots.all_slots("Tg")[0].key) is not None
 
     toxo_axes = {item.axis for item in slots.all_slots("Tg")}
     pf_axes = {item.axis for item in slots.all_slots("Pf")}
     assert toxo_axes <= pf_axes, f"axes asked of Toxoplasma and not of Plasmodium: {toxo_axes - pf_axes}"
+    # A further space asks a SUBSET: its excluded contexts remove questions that belong to another
+    # parasite laboratory, so the test is that it invents no axis of its own.
+    for code in codes - {"Tg", "Pf"}:
+        axes = {item.axis for item in slots.all_slots(code)}
+        assert axes <= toxo_axes, f"{code} asks axes no Toxoplasma slot asks: {axes - toxo_axes}"
 
 
 def test_one_uses_only_the_chosen_candidate():

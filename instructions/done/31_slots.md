@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**297 slots: 116 covered well, 42 partly, 56 thinly, 83 empty.**
+**360 slots: 121 covered well, 46 partly, 56 thinly, 137 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -112,6 +112,23 @@ quantity were approximating on 2026-08-13.
 | Pf_transcription · gametocyte | gametocyte I-V | **A** | 5720 |  | 100.0% | `expr_gametocyte_` | average | **GID/CTLH E3 ligase complex control cell fate programs for sexual development of Plasmodium falciparum** (GEO 2026) [41986327](https://pubmed.ncbi.nlm.nih.gov/41986327/) [GSE314126](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE314126)<br>**PbAP2-TR plays a role in regulating major transcriptomic changes from early to late trophozoite [PbAP2-TR_RNA-seq]** (GEO 2025) [41484140](https://pubmed.ncbi.nlm.nih.gov/41484140/) [GSE290541](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE290541)<br>**The Serine/Threonine Protein Phosphatase 6 Is Required for Efficient Gametogenesis in Sexual-Stage Plasmodium berghei** (GEO 2025) [40623036](https://pubmed.ncbi.nlm.nih.gov/40623036/) [GSE271105](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE271105)<br>**An inner membrane complex protein IMC1g in Plasmodium berghei plays an essential role in asexual erythrocytic proliferation and transmission** (GEO 2024) [39576115](https://pubmed.ncbi.nlm.nih.gov/39576115/) [GSE269994](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE269994)<br>[GSE228948](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE228948) — from the GEO index, verify assay and parasite-gene shape<br>**Changes in heterochromatin distribution during the initial stages of sexual development  in Plasmodium falciparum** (GEO 2024) [39369041](https://pubmed.ncbi.nlm.nih.gov/39369041/) [GSE252334](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE252334)<br>[GSE267361](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE267361) — from the GEO index, verify assay and parasite-gene shape<br>[GSE270631](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE270631) — from the GEO index, verify assay and parasite-gene shape |
 | Pf_transcription · dormancy / recrudescence | artemisinin quiescence | **A** | 4887 |  | 85.4% | `latency_log2fc, latency_classifier_member` | separate | `bioRxiv 10.64898/2026.09.13.751295` — single-cell latency after drug and nutrient stress, with the paper's 200-gene classifier<br>[GSE301593](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301593) — from the GEO index, verify assay and parasite-gene shape<br>**MYST-mediated epigenetic regulation determines the adaptive artemisinin-resistant in Plasmodium falciparum [scRNA-Seq]** (GEO 2025) [40877256](https://pubmed.ncbi.nlm.nih.gov/40877256/) [GSE291953](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE291953)<br>**MYST-mediated epigenetic regulation determines the adaptive artemisinin-resistant in Plasmodium falciparum [scRNA-Seq]** (GEO 2025) [40877256](https://pubmed.ncbi.nlm.nih.gov/40877256/) [GSE246115](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE246115)<br>**MYST-mediated epigenetic regulation determines the adaptive artemisinin-resistant in Plasmodium falciparum [scRNA-Seq]** (GEO 2025) [40877256](https://pubmed.ncbi.nlm.nih.gov/40877256/) [GSE246114](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE246114)<br>**MYST-mediated epigenetic regulation determines the adaptive artemisinin-resistant in Plasmodium falciparum [scRNA-Seq]** (GEO 2025) [40877256](https://pubmed.ncbi.nlm.nih.gov/40877256/) [GSE246116](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE246116)<br>**Investigating metabolism of artemisinin-resistant falciparum malaria parasites: mitochondrial rather than apicoplast pathways are key targets?** (GEO 2024) [39332236](https://pubmed.ncbi.nlm.nih.gov/39332236/) [GSE207610](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE207610)<br>**Total RNA sequencing of Plasmodium falciparum field parasites 2018-2020 collected from Cambodia and Vietnam** (GEO 2024) [39639029](https://pubmed.ncbi.nlm.nih.gov/39639029/) [GSE242548](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE242548)<br>**Transcriptome-module phenotype association study implicates extracellular vesicles biogenesis in Plasmodium falciparum artemisinin resistance** (GEO 2022) [36061874](https://pubmed.ncbi.nlm.nih.gov/36061874/) [GSE210644](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE210644) |
 | Pf_transcription rate · asexual blood stage | 4-thiouracil labelling, hourly | **B** | 4364 |  | 76.3% | `transcription_rate_4tu` | one | **Genome-wide real-time in vivo transcriptional dynamics during Plasmodium falciparum blood-stage development.** (Nat Commun 2018) [29985403](https://pubmed.ncbi.nlm.nih.gov/29985403/) [GSE66669](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE66669) |
+| Cp_transcription · sporozoite | sporozoite | **-** |  |  |  | `` | average | — |
+| Cp_transcription · trophozoite | trophozoite | **-** |  |  |  | `` | average | — |
+| Cp_transcription · type I meront | type I meront | **-** |  |  |  | `` | average | — |
+| Cp_transcription · merozoite | merozoite | **-** |  |  |  | `` | average | — |
+| Cp_transcription · type II meront | type II meront | **-** |  |  |  | `` | average | — |
+| Cp_transcription · microgamont | microgamont | **-** |  |  |  | `` | average | — |
+| Cp_transcription · macrogamont | macrogamont | **-** |  |  |  | `` | average | — |
+| Cp_transcription · zygote | zygote | **-** |  |  |  | `` | average | — |
+| Cp_transcription · oocyst | oocyst | **-** |  |  |  | `` | average | — |
+| Cp_transcription · per cell-cycle phase | cell cycle | **-** |  |  |  | `` | separate | — |
+| Cp_transcription · under stress / conversion | alkaline, stress | **-** |  |  |  | `` | separate | — |
+| Cp_transcription · under TF or chromatin perturbation | perturbation | **-** |  |  |  | `` | separate | — |
+| Cp_transcription · maximum observed across stages | cross-stage summary | **-** |  |  |  | `` | one | — |
+| Cp_cell-cycle timing label | single-parasite atlas | **-** |  |  |  | `` | one | — |
+| Cp_life-cycle stage label (derived) | cross-stage derived target | **B** | 1455 |  | 37.1% | `measured_stage` | one | — |
+| Cp_transcription · under iron depletion | iron depletion, 24 h | **-** |  |  |  | `` | one | — |
+| Cp_stage share · single cell | single-cell, whole life cycle | **B** | 1455 |  | 37.1% | `stage_asexual_pct, stage_female_pct, stage_logFC_female_vs_asexual, stage_sporozoite_specific` | separate | — |
 
 ### translation
 
@@ -133,6 +150,11 @@ quantity were approximating on 2026-08-13.
 | Pf_translation efficiency · extracellular stress | extracellular stress | **-** |  |  |  | `` | separate | — |
 | Pf_codon usage / translation efficiency | sequence-derived | **A** | 5318 |  | 93.0% | `codon_` | one | — |
 | Pf_translation · gametocyte | stage V gametocyte, click chemistry | **B** | 2544 | 705 | 44.5% | `gametocyte_newly_made` | one | [PXD075878](https://www.ebi.ac.uk/pride/archive/projects/PXD075878) — protein still being made in a quiescent gametocyte |
+| Cp_translation · trophozoite | trophozoite | **-** |  |  |  | `` | one | — |
+| Cp_translation · per cell-cycle phase | cell cycle | **-** |  |  |  | `` | one | — |
+| Cp_translation · under stress | extracellular stress or iron | **-** |  |  |  | `` | separate | — |
+| Cp_translation efficiency · extracellular stress | extracellular stress | **-** |  |  |  | `` | separate | — |
+| Cp_translation efficiency · trophozoite | trophozoite | **-** |  |  |  | `` | separate | — |
 
 ### protein abundance
 
@@ -152,6 +174,8 @@ quantity were approximating on 2026-08-13.
 | Pf_thermal stability (melting temperature) · asexual blood stage | asexual blood stage, intact-cell CETSA | **B** | 2040 |  | 35.7% | `melting_temperature_tm, melting_temperature_sd` | one | **MAP-X reveals distinct protein complex dynamics across Plasmodium falciparum blood stages.** (Nat Microbiol 2025) [41315737](https://pubmed.ncbi.nlm.nih.gov/41315737/) [PXD056075](https://www.ebi.ac.uk/pride/archive/projects/PXD056075) |
 | Pf_chaperone dependence | Hsp90 inhibition, two scaffolds | **B** | 3049 | 124 | 53.3% | `hsp90_dependent` | one | [PXD079493](https://www.ebi.ac.uk/pride/archive/projects/PXD079493) — geldanamycin and XL888 chemoproteomics, 131 dependent proteins |
 | Pf_protein abundance · sexually committed | MSRP1-sorted committed parasites | **B** | 1950 |  | 34.1% | `committed_vs_asexual_log2fc, committed_vs_asexual_fdr` | one | **Defining the Proteome of Sexually Committed Parasites in Plasmodium falciparum.** (Mol Cell Proteomics 2026) [41482054](https://pubmed.ncbi.nlm.nih.gov/41482054/) [PXD059080](https://www.ebi.ac.uk/pride/archive/projects/PXD059080) |
+| Cp_protein abundance · other life stages | stages | **-** |  |  |  | `` | separate | — |
+| Cp_protein abundance · under stress | iron depletion, 24 h | **-** |  |  |  | `` | separate | — |
 
 ### PTM
 
@@ -179,6 +203,8 @@ quantity were approximating on 2026-08-13.
 | Pf_glycosylation · asexual blood stage | asexual blood stage | **-** |  |  |  | `` | one | [GSE304394](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE304394) — from the GEO index, verify assay and parasite-gene shape<br>**DNA sequence context and the chromatin landscape differentiate sequence-specific transcription factor binding in the human malaria parasite, Plasmodium falciparum** (GEO 2024) [38966997](https://pubmed.ncbi.nlm.nih.gov/38966997/) [GSE212052](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE212052)<br>**Histone post translation modification and Transcriptional differences during the Plasmodium schizont-to-ring transition** (GEO 2023) [37322481](https://pubmed.ncbi.nlm.nih.gov/37322481/) [GSE215427](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE215427)<br>**Histone post translation modification and Transcriptional differences during the Plasmodium schizont-to-ring transition** (GEO 2023) [37322481](https://pubmed.ncbi.nlm.nih.gov/37322481/) [GSE215426](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE215426)<br>**The Plasmodium falciparum Nuclear Protein Phosphatase NIF4 is Required for Efficient Merozoite Invasion and Regulates Artemisinin Sensitivity** (GEO 2022) [35938722](https://pubmed.ncbi.nlm.nih.gov/35938722/) [GSE208865](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE208865)<br>**Metabolic survival adaptations of Plasmodium falciparum exposed to sub-lethal doses of fosmidomycin** (GEO 2021) [33495219](https://pubmed.ncbi.nlm.nih.gov/33495219/) [GSE159516](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159516)<br>**The G9a histone methyltransferase inhibitor BIX-01294 modulates gene expression during gametocyte development and transmission** (GEO 2019) [31615031](https://pubmed.ncbi.nlm.nih.gov/31615031/) [GSE136008](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE136008)<br>**Quantitative time-course profiling of Plasmodium falciparum transcripts and proteins throughout the 48-hour intraerythrocytic developmental cycle** (GEO 2011) [21558492](https://pubmed.ncbi.nlm.nih.gov/21558492/) [GSE24416](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24416) |
 | Pf_palmitoylation · asexual blood stage | asexual blood stage | **A** | 5720 | 503 | 100.0% | `is_palmitoylated` | separate | [GSE304394](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE304394) — from the GEO index, verify assay and parasite-gene shape<br>**DNA sequence context and the chromatin landscape differentiate sequence-specific transcription factor binding in the human malaria parasite, Plasmodium falciparum** (GEO 2024) [38966997](https://pubmed.ncbi.nlm.nih.gov/38966997/) [GSE212052](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE212052)<br>**Histone post translation modification and Transcriptional differences during the Plasmodium schizont-to-ring transition** (GEO 2023) [37322481](https://pubmed.ncbi.nlm.nih.gov/37322481/) [GSE215427](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE215427)<br>**Histone post translation modification and Transcriptional differences during the Plasmodium schizont-to-ring transition** (GEO 2023) [37322481](https://pubmed.ncbi.nlm.nih.gov/37322481/) [GSE215426](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE215426)<br>**The Plasmodium falciparum Nuclear Protein Phosphatase NIF4 is Required for Efficient Merozoite Invasion and Regulates Artemisinin Sensitivity** (GEO 2022) [35938722](https://pubmed.ncbi.nlm.nih.gov/35938722/) [GSE208865](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE208865)<br>**Metabolic survival adaptations of Plasmodium falciparum exposed to sub-lethal doses of fosmidomycin** (GEO 2021) [33495219](https://pubmed.ncbi.nlm.nih.gov/33495219/) [GSE159516](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159516)<br>**The G9a histone methyltransferase inhibitor BIX-01294 modulates gene expression during gametocyte development and transmission** (GEO 2019) [31615031](https://pubmed.ncbi.nlm.nih.gov/31615031/) [GSE136008](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE136008)<br>**Quantitative time-course profiling of Plasmodium falciparum transcripts and proteins throughout the 48-hour intraerythrocytic developmental cycle** (GEO 2011) [21558492](https://pubmed.ncbi.nlm.nih.gov/21558492/) [GSE24416](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24416) |
 | Pf_phosphorylation · febrile heat stress | infected erythrocyte at 39 degrees | **B** | 1874 |  | 32.8% | `febrile_phospho_` | separate | **Physiological febrile heat stress increases cytoadhesion through increased protein trafficking in Plasmodium falciparum.** (Elife 2026) [42126964](https://pubmed.ncbi.nlm.nih.gov/42126964/) [PXD073843](https://www.ebi.ac.uk/pride/archive/projects/PXD073843) |
+| Cp_phosphorylation · kinase-substrate | perturbation | **-** |  |  |  | `` | separate | — |
+| Cp_acetylation | life stages | **-** |  |  |  | `` | one | — |
 
 ### localization
 
@@ -197,6 +223,11 @@ quantity were approximating on 2026-08-13.
 | Pf_secretome / excreted | ESA | **C** | 184 |  | 3.2% | `ev_studies` | one | [PXD006925](https://www.ebi.ac.uk/pride/archive/projects/PXD006925) — from the PRIDE index, verify the modification and the organism<br>[GSE317694](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE317694) — from the GEO index, verify assay and parasite-gene shape<br>**The DEAD-box RNA helicase PfDOZI imposes opposing actions on RNA metabolism in Plasmodium falciparum** (GEO 2024) [38702310](https://pubmed.ncbi.nlm.nih.gov/38702310/) [GSE189034](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE189034)<br>**P. falciparum Complicated Malaria: Modulation and Connectivity between Exportome and Variant Surface Gene Families** (GEO 2015) [26022315](https://pubmed.ncbi.nlm.nih.gov/26022315/) [GSE59844](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE59844) |
 | Pf_export / PEXEL trafficking | erythrocyte cytosol | **A** | 5720 |  | 100.0% | `export_pred_tier, is_exported` | one | [GSE317694](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE317694) — from the GEO index, verify assay and parasite-gene shape<br>**P. falciparum Complicated Malaria: Modulation and Connectivity between Exportome and Variant Surface Gene Families** (GEO 2015) [26022315](https://pubmed.ncbi.nlm.nih.gov/26022315/) [GSE59844](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE59844) |
 | Pf_localization · schizont | late schizont, hyperLOPIT | **B** | 3000 |  | 52.4% | `lopit_pf_location, lopit_pf_svm_score` | one | **The spatial proteome of the Plasmodium falciparum schizont illuminates the composition and evolutionary trajectories of its organelles.** (Nat Commun 2026) [42218142](https://pubmed.ncbi.nlm.nih.gov/42218142/) [PXD070842](https://www.ebi.ac.uk/pride/archive/projects/PXD070842) |
+| Cp_organelle surface / membrane contact site | TurboID on outer membranes | **-** |  |  |  | `` | separate | — |
+| Cp_membrane topology | sequence | **A** | 3923 |  | 100.0% | `dtm_type, tm_n_tm, tm_n_signal` | one | — |
+| Cp_exposure to host cytosol | PVM, export | **-** |  |  |  | `` | fill | — |
+| Cp_secretome / excreted | ESA | **-** |  |  |  | `` | one | — |
+| Cp_localization · measured | hyperLOPIT, Iowa II | **B** | 1103 |  | 28.1% | `lopit_location` | one | — |
 
 ### fitness
 
@@ -242,6 +273,8 @@ quantity were approximating on 2026-08-13.
 | Pf_fitness · transferred from Pb | P. berghei, PlasmoGEM | **B** | 2447 |  | 42.8% | `pb_transferred_phenotype, pb_transferred_growth_rate, pb_transfer_confidence` | one | — |
 | Pf_fitness · liver stage transferred from Pb | P. berghei liver stage | **C** | 754 |  | 13.2% | `pb_transferred_liver_log2fc, pb_transferred_liver_reduced` | one | — |
 | Pf_fitness · transmission transferred from Pb | P. berghei mosquito stages | **C** | 1121 |  | 19.6% | `fertility_female, fertility_male` | separate | — |
+| Cp_fitness · oxidative stress | oxidant | **-** |  |  |  | `` | one | — |
+| Cp_drug sensitivity | compound | **-** |  |  |  | `` | separate | — |
 
 ### regulation
 
@@ -260,6 +293,9 @@ quantity were approximating on 2026-08-13.
 | Pf_RNA modification · asexual blood stage | asexual blood stage, nanopore | **A** | 5285 |  | 92.4% | `m6a_n_canonical_sites, m6a_canonical_stoichiometry` | separate | `bioRxiv 10.64898/2026.05.19.726191` — per-transcript m6A sites and stoichiometry<br>[GSE337518](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE337518) — from the GEO index, verify assay and parasite-gene shape<br>[GSE339382](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE339382) — from the GEO index, verify assay and parasite-gene shape<br>[GSE298061](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298061) — from the GEO index, verify assay and parasite-gene shape<br>[GSE298024](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298024) — from the GEO index, verify assay and parasite-gene shape<br>[GSE326228](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE326228) — from the GEO index, verify assay and parasite-gene shape<br>[GSE295105](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE295105) — from the GEO index, verify assay and parasite-gene shape<br>[GSE295104](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE295104) — from the GEO index, verify assay and parasite-gene shape<br>[GSE317694](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE317694) — from the GEO index, verify assay and parasite-gene shape |
 | Pf_chromatin state · asexual blood stage | asexual blood stage, proxiomes | **B** | 2019 |  | 35.3% | `chromprox_` | separate | `bioRxiv 10.1101/2025.09.23.678001` — HP1, H3K27ac, H3K4me3 and centromere proximity proteomes<br>[GSE337518](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE337518) — from the GEO index, verify assay and parasite-gene shape<br>[GSE339382](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE339382) — from the GEO index, verify assay and parasite-gene shape<br>[GSE298061](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298061) — from the GEO index, verify assay and parasite-gene shape<br>[GSE298024](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298024) — from the GEO index, verify assay and parasite-gene shape<br>[GSE326228](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE326228) — from the GEO index, verify assay and parasite-gene shape<br>[GSE295105](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE295105) — from the GEO index, verify assay and parasite-gene shape<br>[GSE295104](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE295104) — from the GEO index, verify assay and parasite-gene shape<br>[GSE317694](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE317694) — from the GEO index, verify assay and parasite-gene shape |
 | Pf_antigenic variation family expression | var / rif / stevor | **-** |  |  |  | `` | separate | **Method for deletion of variant surface antigen genes at subtelomeric region of Plasmodium falciparum.** (GEO 2025) [40562206](https://pubmed.ncbi.nlm.nih.gov/40562206/) [GSE296188](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE296188)<br>**ChIPseq of the P. falciparum bromodomain proteins PfBDP7 and PfBDP1 in early and mature schizonts** (GEO 2021) [35493110](https://pubmed.ncbi.nlm.nih.gov/35493110/) [GSE186984](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE186984) |
+| Cp_TF binding · per factor | ChIP / CUT&RUN | **-** |  |  |  | `` | separate | — |
+| Cp_chromatin accessibility | stages | **-** |  |  |  | `` | one | — |
+| Cp_splicing / isoform use | stages | **-** |  |  |  | `` | one | — |
 
 ### sequence
 
@@ -282,6 +318,13 @@ quantity were approximating on 2026-08-13.
 | Pf_strain variation | population | **A** | 5720 |  | 100.0% | `snp_` | one | [GSE316842](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE316842) — from the GEO index, verify assay and parasite-gene shape<br>[GSE330120](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE330120) — from the GEO index, verify assay and parasite-gene shape<br>[GSE329817](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE329817) — from the GEO index, verify assay and parasite-gene shape<br>[GSE329816](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE329816) — from the GEO index, verify assay and parasite-gene shape<br>[GSE329814](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE329814) — from the GEO index, verify assay and parasite-gene shape<br>**Differential Expression of Mitochondrial Natural Antisense Transcripts in Clinical Samples of Plasmodium falciparum Across Multiple Disease Phenotypes** (GEO 2026) [41820854](https://pubmed.ncbi.nlm.nih.gov/41820854/) [GSE272963](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272963)<br>[GSE301003](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301003) — from the GEO index, verify assay and parasite-gene shape<br>**Transcriptome-wide analysis of Sense and Natural Antisense Transcripts (NATs) in Plasmodium vivax clinical isolates from uncomplicated or complicated diseases manifestation.** (GEO 2026) [41398591](https://pubmed.ncbi.nlm.nih.gov/41398591/) [GSE300144](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE300144) |
 | Pf_field variation and resistance markers | clinical isolates | **A** | 5233 |  | 91.5% | `field_pnps_adj, field_variant_fraction, pf6_field_dnds, pf6_field_nonsyn_snvs` | one | [GSE316842](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE316842) — from the GEO index, verify assay and parasite-gene shape<br>**Differential Expression of Mitochondrial Natural Antisense Transcripts in Clinical Samples of Plasmodium falciparum Across Multiple Disease Phenotypes** (GEO 2026) [41820854](https://pubmed.ncbi.nlm.nih.gov/41820854/) [GSE272963](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272963)<br>[GSE301003](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301003) — from the GEO index, verify assay and parasite-gene shape<br>**Transcriptome-wide analysis of Sense and Natural Antisense Transcripts (NATs) in Plasmodium vivax clinical isolates from uncomplicated or complicated diseases manifestation.** (GEO 2026) [41398591](https://pubmed.ncbi.nlm.nih.gov/41398591/) [GSE300144](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE300144)<br>**Iron deficiency protects against Plasmodium infection and drives parasite molecular reprofiling.** (GEO 2026) [41758949](https://pubmed.ncbi.nlm.nih.gov/41758949/) [GSE302727](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE302727)<br>[GSE304394](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE304394) — from the GEO index, verify assay and parasite-gene shape<br>[GSE301038](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301038) — from the GEO index, verify assay and parasite-gene shape<br>**MYST-mediated epigenetic regulation determines the adaptive artemisinin-resistant in Plasmodium falciparum [scRNA-Seq]** (GEO 2025) [40877256](https://pubmed.ncbi.nlm.nih.gov/40877256/) [GSE291953](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE291953) |
 | Pf_between-species selection (dN/dS) | Laverania and Plasmodium orthologs | **A** | 5232 |  | 91.5% | `dnds_laverania, dnds_plasmodium` | separate | **The spatial proteome of the Plasmodium falciparum schizont illuminates the composition and evolutionary trajectories of its organelles.** (Nat Commun 2026) [42218142](https://pubmed.ncbi.nlm.nih.gov/42218142/) `Nat Commun Supplementary Data 3` |
+| Cp_5' UTR architecture | reannotated transcripts | **-** |  |  |  | `` | fill | — |
+| Cp_domain content | InterPro | **B** | 2575 |  | 65.6% | `interpro_ids` | one | — |
+| Cp_fold confidence / disorder | AlphaFold | **-** |  |  |  | `` | one | — |
+| Cp_conservation breadth | OrthoMCL | **A** | 3923 |  | 100.0% | `orthogroup` | one | — |
+| Cp_paralogy | OrthoMCL | **-** |  |  |  | `` | one | — |
+| Cp_sequence basics | protein | **A** | 3923 |  | 100.0% | `protein_length` | one | — |
+| Cp_strain variation | population | **-** |  |  |  | `` | one | — |
 
 ### relation
 
@@ -319,6 +362,19 @@ quantity were approximating on 2026-08-13.
 | Pf_RNA-binding protein targets | CLIP / RIP | **-** |  |  |  | `` | separate | [GSE267362](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE267362) — from the GEO index, verify assay and parasite-gene shape<br>[GSE267361](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE267361) — from the GEO index, verify assay and parasite-gene shape |
 | Pf_complex membership | crosslink MS interactome | **C** | 128 |  | 2.2% | `complex_id, complex_size, complex_spans_host` | separate | — |
 | Pf_RNA dependence of complexes | sucrose gradient with and without RNase | **B** | 3671 |  | 64.2% | `rna_dependent, rna_dependence_qvalue` | one | **Proteome-Wide Identification of RNA-dependent proteins and an emerging role for RNAs in Plasmodium falciparum protein complexes.** (Nat Commun 2024) [38355719](https://pubmed.ncbi.nlm.nih.gov/38355719/) `MSV000091565` |
+| Cp_co-transcription | stage series | **-** |  |  |  | `` | separate | — |
+| Cp_co-translation | ribosome profiling | **-** |  |  |  | `` | separate | — |
+| Cp_co-fitness | seven screens | **-** |  |  |  | `` | separate | — |
+| Cp_interaction · crosslink MS | measured contact | **-** |  |  |  | `` | one | — |
+| Cp_interaction · IP-MS, parasite-parasite | pulldown | **-** |  |  |  | `` | fill | — |
+| Cp_interaction · proximity labelling | BioID / TurboID | **-** |  |  |  | `` | fill | — |
+| Cp_interaction · structural similarity | Foldseek | **-** |  |  |  | `` | one | — |
+| Cp_interaction · with host proteins | host IP-MS | **-** |  |  |  | `` | separate | — |
+| Cp_shared orthogroup | OrthoMCL | **A** | 3923 |  | 100.0% | `orthogroup` | one | — |
+| Cp_shared domain | InterPro | **-** |  |  |  | `` | one | — |
+| Cp_interaction degree · crosslink MS | measured contact | **-** |  |  |  | `` | separate | — |
+| Cp_interaction degree · IP-MS | curated pulldown | **-** |  |  |  | `` | one | — |
+| Cp_interaction degree · structural similarity | Foldseek | **-** |  |  |  | `` | one | — |
 
 ### host effect
 
@@ -379,6 +435,8 @@ quantity were approximating on 2026-08-13.
 | Pf_host transcriptome · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **-** |  |  |  | `` | average | — |
 | Pf_host surface / receptor repertoire · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **-** |  |  |  | `` | fill | — |
 | Pf_host response to infection · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **-** |  |  |  | `` | separate | — |
+| Cp_host interaction degree | curated parasite-host interactions | **-** |  |  |  | `` | one | — |
+| Cp_host transcriptional effect per effector | dual perturb-seq | **-** |  |  |  | `` | separate | — |
 
 ### NEVER a feature
 
@@ -394,6 +452,11 @@ quantity were approximating on 2026-08-13.
 | Pf_assay confidence and significance | target evidence metadata | **-** |  |  |  | `` | one | — |
 | Pf_literature attention | PubMed / PMC | **A** | 5720 |  | 100.0% | `n_publications, n_papers_, attention_depth` | one | — |
 | Pf_gene identity and annotation | ToxoDB | **A** | 5720 |  | 100.0% | `gene_id, product, gene_type, chromosome, alphafold_accession` | one | — |
+| Cp_downloaded-study membership | BioID / IP-MS corpus coverage | **-** |  |  |  | `` | separate | — |
+| Cp_analysis-derived structural holes | coexpression + cofitness - literature | **-** |  |  |  | `` | one | — |
+| Cp_assay confidence and significance | target evidence metadata | **-** |  |  |  | `` | one | — |
+| Cp_literature attention | PubMed / PMC | **-** |  |  |  | `` | one | — |
+| Cp_gene identity and annotation | ToxoDB | **A** | 3923 |  | 100.0% | `gene_id, product` | one | — |
 
 ### metabolism
 
@@ -537,7 +600,7 @@ Read off the table above: this is the many-to-many the mechanism has to carry, n
 | `ip_ms` | Pf_interaction · IP-MS, parasite-parasite; Tg_interaction · IP-MS, parasite-parasite |
 | `struct` | Pf_interaction · structural similarity; Tg_interaction · structural similarity |
 | `bridge:host` | Pf_interaction · with host proteins; Tg_interaction · with host proteins |
-| `orthogroup` | Pf_conservation breadth; Pf_shared orthogroup; Tg_conservation breadth; Tg_shared orthogroup |
+| `orthogroup` | Cp_conservation breadth; Cp_shared orthogroup; Pf_conservation breadth; Pf_shared orthogroup; Tg_conservation breadth; Tg_shared orthogroup |
 | `domain` | Pf_shared domain; Tg_shared domain |
 | `n_struct_similar` | Pf_interaction degree · structural similarity; Tg_interaction degree · structural similarity |
 | `n_host_targets` | Pf_host interaction degree; Tg_host interaction degree |
@@ -550,12 +613,13 @@ Read off the table above: this is the many-to-many the mechanism has to carry, n
 | `n_publications` | Pf_literature attention; Tg_literature attention |
 | `n_papers_` | Pf_literature attention; Tg_literature attention |
 | `attention_depth` | Pf_literature attention; Tg_literature attention |
-| `gene_id` | Pf_gene identity and annotation; Tg_gene identity and annotation |
-| `product` | Pf_gene identity and annotation; Tg_gene identity and annotation |
+| `gene_id` | Cp_gene identity and annotation; Pf_gene identity and annotation; Tg_gene identity and annotation |
+| `product` | Cp_gene identity and annotation; Pf_gene identity and annotation; Tg_gene identity and annotation |
 | `ec_number` | Pf_enzyme classification; Tg_enzyme classification |
 | `has_ec` | Pf_enzyme classification; Tg_enzyme classification |
 | `codon_` | Pf_codon usage / translation efficiency; Tg_codon usage / translation efficiency |
 | `n_bcell_epitopes` | Pf_seroreactivity / antigenicity; Tg_seroreactivity / antigenicity |
+| `interpro_ids` | Cp_domain content; Pf_domain content |
 
 ### Candidates opened and refused
 

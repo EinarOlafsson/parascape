@@ -24,9 +24,10 @@ OUT = os.path.join(ROOT, "results", "dataset_selection_2026_11_08")
 
 def main() -> int:
     """Measure coverage per dataset and write the updated queue."""
-    from parascape import datasets as D
-    tables = {"Tg": pd.read_parquet(os.path.join(ROOT, "parascape/data/nodes.parquet")),
-              "Pf": pd.read_parquet(os.path.join(ROOT, "parascape/data/pf_nodes.parquet"))}
+    from parascape import datasets as D, organisms as O
+    # Read the table each parasite space declares rather than naming files per organism literal.
+    tables = {code: pd.read_parquet(os.path.join(ROOT, "parascape/data", O.get(code).nodes))
+              for code in (O.TOXOPLASMA, O.FALCIPARUM)}
     by_key = {d.key: d for d in D.REGISTRY}
     q = pd.read_csv(QUEUE)
     genes, share, note = [], [], []
