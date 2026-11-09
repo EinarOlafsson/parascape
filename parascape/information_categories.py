@@ -896,6 +896,28 @@ def unannotated(columns=None, organism: str = organisms.TOXOPLASMA) -> tuple:
     return tuple(c for c in members if not categories_of(c, organism))
 
 
+def check_ingest(columns, organism: str = organisms.TOXOPLASMA, where: str = "this table") -> tuple:
+    """Refuse a table that carries a column no category can be stated for (instruction 73, phase 1).
+
+    The gate used to live only in `tests/test_information_categories.py`, which catches it in review but not at
+    load time -- so a column added by a build could reach a user's copy uncategorised, where no question can
+    say whether using it would be circular. Both shipped tables became fully categorised on 2026-11-09, which
+    is what makes a loader gate possible rather than a permanent exception.
+
+    Returns the offending columns and raises `ValueError` naming them, because the fix is to declare the
+    category, not to drop the column: a measurement nobody can classify is a measurement nobody should infer
+    from, and silently ignoring it is the failure this module exists to end.
+    """
+    missing = unannotated(columns, organism)
+    if missing:
+        raise ValueError(
+            f"{where}: {len(missing)} column(s) carry no information category: {list(missing)[:10]}"
+            f"{' ...' if len(missing) > 10 else ''}. A column with no category cannot be held out by "
+            f"category, so no question may use it. Declare it in `information_categories` "
+            f"(LEVEL_KIND_CATEGORIES, DATASET_CATEGORIES or OVERRIDE_PATTERNS) and say why.")
+    return missing
+
+
 def excluded_for(label_category, columns=None, organism: str = organisms.TOXOPLASMA) -> tuple:
     """Every column that must be excluded when inferring a label of this category (or categories).
 

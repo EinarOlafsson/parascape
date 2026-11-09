@@ -291,3 +291,33 @@ def test_every_registered_question_states_or_can_derive_its_label_category():
         if question.id == "registry_probe":                   # a fixture of the registry's own tests
             continue
         assert C.label_categories(question), f"{question.id} has no label category"
+
+
+def test_the_ingest_gate_refuses_an_uncategorised_column_at_load_time():
+    """The gate lives in the loader now, not only in this file (instruction 73, phase 1).
+
+    A column added by a build could previously reach a user's copy uncategorised, where no question can say
+    whether using it would be circular. Both shipped tables became fully categorised on 2026-11-09, which is
+    what makes this a gate rather than a permanent exception.
+    """
+    import pytest
+
+    from parascape import information_categories as C
+
+    assert C.check_ingest(["gene_id", "compartment"], "Tg") == ()
+    with pytest.raises(ValueError) as raised:
+        C.check_ingest(["gene_id", "a_column_nobody_declared"], "Tg", where="fake.parquet")
+    message = str(raised.value)
+    assert "a_column_nobody_declared" in message and "fake.parquet" in message
+    assert "information_categories" in message, "the error must say where to declare the category"
+
+
+def test_both_shipped_tables_pass_the_ingest_gate():
+    """Neither table may carry an uncategorised column, in either organism's terms."""
+    import pandas as pd
+
+    from parascape import information_categories as C, organisms as O, paths
+
+    for table, code in (("nodes.parquet", O.TOXOPLASMA), ("pf_nodes.parquet", O.FALCIPARUM)):
+        columns = pd.read_parquet(paths.cache_file(table)).columns
+        assert C.check_ingest(columns, code, where=table) == ()

@@ -58,7 +58,23 @@ def load_nodes(path: str = None):
     where = path or os.path.join(paths.data_dir(), "nodes.parquet")
     if not os.path.exists(where):
         raise SystemExit(f"No node table at {where}. Run:  python -m parascape.build_graph")
-    return pd.read_parquet(where)
+    nodes = pd.read_parquet(where)
+    # The ingest gate of instruction 73. It REFUSES only the shipped cache, where an uncategorised column is a
+    # build fault we can fix; a table the caller names is their own -- a fixture, an experiment, a private
+    # build -- and refusing it would make the gate an obstacle rather than a guarantee, so that warns instead.
+    from . import information_categories as IC, organisms as O
+    code = O.FALCIPARUM if os.path.basename(where).startswith("pf_") else O.TOXOPLASMA
+    shipped = os.path.abspath(where) == os.path.abspath(os.path.join(paths.data_dir(), os.path.basename(where)))
+    try:
+        IC.check_ingest(nodes.columns, code, where=os.path.basename(where))
+    except ValueError:
+        if shipped and path is None:
+            raise
+        import warnings
+        missing = IC.unannotated(nodes.columns, code)
+        warnings.warn(f"{os.path.basename(where)}: {len(missing)} column(s) carry no information category "
+                      f"({list(missing)[:6]}); no question may use them until they are declared.", stacklevel=2)
+    return nodes
 
 
 def store_for(root: str = None):

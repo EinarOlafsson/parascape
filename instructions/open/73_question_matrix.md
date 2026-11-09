@@ -340,9 +340,16 @@ changed.
   annotated `phenotype` -- right for a function question, slightly wide for an imaging-phenotype one.
   Einar took the call on 2026-11-05: `function` is now the seventeenth category and holds those
   columns. See "A seventeenth category" below for why `phenotype` was the wrong home.
+* **The ingest gate moved into the loader, 2026-11-09.** `information_categories.check_ingest` refuses a table
+  carrying a column no category can be stated for, and `discover.load_nodes` calls it. It REFUSES only the
+  shipped cache, where an uncategorised column is a build fault; a table the caller names is their own -- a
+  fixture, an experiment, a private build -- and refusing it would make the gate an obstacle rather than a
+  guarantee, so that warns instead. Possible only because both shipped tables became fully categorised the same
+  day; before that the gate would have been a permanent exception. Tests:
+  `test_the_ingest_gate_refuses_an_uncategorised_column_at_load_time`,
+  `test_both_shipped_tables_pass_the_ingest_gate`.
 * **Still open from this piece:** the data picker (`Label -> Infer`) does not yet show the
-  excluded-by-circularity set, and the ingest gate that refuses a new column with no category is the
-  test rather than the loader.
+  excluded-by-circularity set.
 
 
 ## A seventeenth category: `function` (Einar, 2026-11-05)
