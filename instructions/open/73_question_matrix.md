@@ -553,3 +553,34 @@ registry does not yet record which labels may stand beside which.
 
 **Verdict:** rungs 2-4 add no measurable gain over boosted trees on the curated labels. The evidence, not the
 method, is the limit.
+
+## 2026-11-09: every shipped column now carries an information category
+
+Found while filling two Plasmodium slots (instruction 41): **31 of the 171 Plasmodium columns carried no
+information category at all**, while Toxoplasma had none left. An uncategorised column is treated as unusable, so
+nothing leaked -- but it was invisible to the category closure rather than held out by it, which is the failure
+this vocabulary exists to end.
+
+The cause was mostly the level/kind pair of a column's dataset being absent from `LEVEL_KIND_CATEGORIES`, so ten
+pairs were judged from what the assay measures and added:
+
+| level / kind | category | why |
+|---|---|---|
+| DNA / insertion screen | fitness | piggyBac mutagenesis indices |
+| DNA / in_vitro_evolution | conservation | how often a gene mutates under selection, and field dN/dS |
+| transcription / nanopore | transcript | isoform and transcript-model counts |
+| post_translation / lactylation, acetylation, myristoylation, palmitoylation | modification | the modification is the readout |
+| post_translation / RDeeP | interaction | whether a protein's behaviour depends on RNA binding |
+| reference / immunity | sequence | epitope counts are properties of the sequence |
+| reference / literature | attention | how much a gene has been studied |
+| translation / riboseq | translation | the lower-case spelling of a pair already mapped |
+
+Three datasets share `post_translation/proteomics` with eighteen others that mean different things, so the pair
+cannot decide them and each was judged on its own: `pf_target_engagement` is **interaction** (whether a compound
+binds, not how abundant the protein is), `pf_febrile_phospho` is **modification** (the readout is phosphosites;
+the fever is the contrast), `pf_secretome` is **place** (how many studies found it in extracellular vesicles is
+a statement about where it is, not how studied it is). `gene_type` and `chromosome` are **identity**, the one
+category that is never a feature -- a model reading a chromosome number is reading gene neighbourhood.
+
+**Both shipped tables are now fully categorised: 443 Toxoplasma and 171 Plasmodium columns, none unannotated.**
+Tests: 309 pass over categories, harness, redundancy, claims, strategies and the scoreboard.

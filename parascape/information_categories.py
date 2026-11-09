@@ -106,6 +106,21 @@ LEVEL_KIND_CATEGORIES = {
     # `pf_translation_efficiency` resolve to NO category, which instruction 73 treats as unusable --
     # found on 2026-11-09 while adding the second of those datasets.
     ("translation", "riboseq"): ("translation",),
+    # --- Added 2026-11-09 (instruction 73 leakage closure). 31 Plasmodium columns carried NO
+    # category because their dataset's level/kind pair was absent here, while Toxoplasma had none
+    # left. An uncategorised column is treated as unusable, so nothing leaked -- but it was also
+    # invisible to the closure rather than held out by it, which is the failure this module exists
+    # to end. Each pair below is judged from what the assay measures, not from its level alone.
+    ("DNA", "insertion screen"): ("fitness",),
+    ("DNA", "in_vitro_evolution"): ("conservation",),
+    ("transcription", "nanopore"): ("transcript",),
+    ("post_translation", "lactylation"): ("modification",),
+    ("post_translation", "acetylation"): ("modification",),
+    ("post_translation", "myristoylation"): ("modification",),
+    ("post_translation", "palmitoylation"): ("modification",),
+    ("post_translation", "RDeeP"): ("interaction",),
+    ("reference", "immunity"): ("sequence",),
+    ("reference", "literature"): ("attention",),
     ("translation", "proteomics"): ("protein_abundance",),
     ("post_translation", "LOPIT"): ("place",),
     ("post_translation", "BioID"): ("interaction",),
@@ -132,6 +147,18 @@ LEVEL_KIND_CATEGORIES = {
 #: that bundle several kinds of knowledge (`post_translation/proteomics`) are resolved one deposit at
 #: a time. Every entry is `key -> (categories, why)`.
 DATASET_CATEGORIES = {
+    # --- 2026-11-09 (instruction 73). These three share level/kind `post_translation/proteomics`
+    # with eighteen other datasets that mean different things, so the pair cannot decide them and
+    # each is judged from what it measures.
+    "pf_target_engagement": (("interaction",),
+                             "thermal proteome profiling: whether a COMPOUND binds this protein, "
+                             "which is a binding measurement and not an abundance one"),
+    "pf_febrile_phospho": (("modification",),
+                           "phosphosites whose occupancy changes at febrile temperature: the "
+                           "readout is a modification, the heat is the contrast"),
+    "pf_secretome": (("place",),
+                     "how many studies found the protein in extracellular vesicles: a statement "
+                     "about WHERE the protein is, not about how studied it is"),
     # Pooled CRISPR screens whose family name says nothing about fitness. All three of the ones the
     # harness's importance table surfaced are here, and they are `fitness` by the level/kind rule
     # already -- recorded explicitly so the check is a statement and not a coincidence.
@@ -289,6 +316,11 @@ COLUMN_CATEGORIES = {
 #: which is the error instruction 73 names explicitly ("translational-efficiency and Ribo-seq
 #: columns are translation, not transcript" -- and the converse holds for their RNA arm).
 OVERRIDE_PATTERNS = (
+    # 2026-11-09: the gene's own annotation, carried for display and grouping. `identity` is the
+    # one category that is NEVER a feature, which is exactly right for a chromosome number -- a
+    # model that reads it is reading gene neighbourhood, not biology.
+    (re.compile(r"^(gene_type|chromosome)$"), ("identity",),
+     "the gene's own annotation from the genome build: identity, never a feature"),
     (re.compile(r"^rna\d+_"), ("transcript",),
      "the RNA arm of a Ribo-seq or RNAseq deposit: RNA abundance"),
     (re.compile(r"^rpf\d+_"), ("translation",), "ribosome-protected fragments: translation"),
