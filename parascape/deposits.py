@@ -1523,6 +1523,67 @@ def pf_dbsp_occupancy(root: str) -> pd.DataFrame:
     return pd.DataFrame({"gene_id": series.index, "dbsp_occupancy": series.round(4).to_numpy()})
 
 
+PF_MIDGUT = ("transcription", "scRNAseq", "GSE284537")
+#: 36 h is the late ookinete, 48 h to 7 d the developing oocyst. The deposit also holds an EcR-knockdown arm
+#: (dsEcR) and an Anopheles arm; neither is read here -- a knockdown answers a different question, and the
+#: mosquito table is not a Plasmodium table.
+MIDGUT_TIMEPOINTS = ("36h", "48h", "4d", "7d")
+
+
+def pf_midgut_transcriptome(root: str) -> pd.DataFrame:
+    """Parasite transcription in the mosquito midgut (GSE284537), pseudo-bulked per timepoint.
+
+    Single-cell matrices summed over every cell of a sample, replicates added, then log2(CPM + 1) per
+    timepoint. Only the **dsGFP control** arms: the series pairs each timepoint with an ecdysone-receptor
+    knockdown, which is a perturbation and a different question.
+
+    **What it covers, and what it does not.** 36 h is the late ookinete and 48 h to 7 d the developing oocyst.
+    There is no sporozoite timepoint, so the mosquito-stage slot is filled for two stages of three and says so.
+    Depth differs sharply by timepoint -- summed counts run 371,390 (48 h) to 3,866,156 (7 d) -- and a zero is a
+    non-detection at that depth rather than a measured absence, which matters for the early timepoints where
+    4,281 of 5,720 genes are seen at all.
+    """
+    import gzip
+    import glob
+    import re
+
+    import numpy as np
+
+    folder = os.path.join(root, *PF_MIDGUT)
+    if not os.path.isdir(folder):
+        return pd.DataFrame()
+    per_timepoint: dict = {}
+    for matrix in sorted(glob.glob(os.path.join(folder, "*_Pf_*matrix.mtx.gz"))):
+        tag = re.search(r"_Pf_r\d-(\w+)-GFP", os.path.basename(matrix))
+        features = matrix.replace("matrix.mtx.gz", "features.tsv.gz")
+        if tag is None or not os.path.exists(features):
+            continue
+        with gzip.open(features, "rt") as handle:
+            genes = [line.split("\t")[0] for line in handle.read().splitlines()]
+        totals = np.zeros(len(genes))
+        with gzip.open(matrix, "rt") as handle:
+            line = handle.readline()
+            while line.startswith("%"):
+                line = handle.readline()               # the header and its dimensions line
+            for line in handle:
+                gene, _cell, value = line.split()
+                totals[int(gene) - 1] += int(value)
+        per_timepoint.setdefault(tag.group(1), []).append(pd.Series(totals, index=genes))
+    if not per_timepoint:
+        return pd.DataFrame()
+    columns = {}
+    for timepoint in MIDGUT_TIMEPOINTS:
+        replicates = per_timepoint.get(timepoint)
+        if not replicates:
+            continue
+        summed = sum(replicates)
+        if summed.sum() <= 0:
+            continue
+        columns[f"expr_midgut_{timepoint}"] = np.log2(1e6 * summed / summed.sum() + 1).round(4)
+    frame = pd.DataFrame(columns)
+    return frame.reset_index(names="gene_id") if not frame.empty else frame
+
+
 # --------------------------------------------------------------------------- the list
 @dataclass(frozen=True)
 class Deposit:
@@ -1567,6 +1628,7 @@ DEPOSITS = (
     Deposit("pf_liver_transcriptome", organisms.FALCIPARUM, pf_liver_transcriptome),
     Deposit("pf_translation_efficiency", organisms.FALCIPARUM, pf_translation_efficiency),
     Deposit("pf_dbsp_occupancy", organisms.FALCIPARUM, pf_dbsp_occupancy),
+    Deposit("pf_midgut_transcriptome", organisms.FALCIPARUM, pf_midgut_transcriptome),
     Deposit("host_hff_tg_infection", "Hs", hff_tg_infection),
     Deposit("host_bmdm_baseline", "Mm", bmdm_baseline),
     Deposit("host_hepatocyte_pf_infection", "Hs", hepatocyte_pf_infection),

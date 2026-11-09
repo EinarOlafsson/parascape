@@ -2926,6 +2926,23 @@ REGISTRY = [
                  "confidence one replicate does not support. Its target is described as a double-stranded-DNA "
                  "binding protein rather than a classical ApiAP2; Einar took the call to use it on 2026-11-09.",
             organism=organisms.FALCIPARUM),
+    Dataset("pf_midgut_transcriptome", "Mosquito-midgut transcription, ookinete to oocyst", "transcription",
+            "scRNAseq",
+            "How much each gene is transcribed in the mosquito midgut, at four points after the blood meal",
+            ("expr_midgut_36h", "expr_midgut_48h", "expr_midgut_4d", "expr_midgut_7d"),
+            "5,720 genes at four timepoints", accession="GSE284537",
+            citation="GSE284537, single-cell RNA of infected Anopheles midguts",
+            url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE284537",
+            path="datasets/transcription/scRNAseq/GSE284537/",
+            note="Single-cell matrices summed over every cell, replicates added, log2(CPM + 1) per timepoint. "
+                 "Only the dsGFP CONTROL arms: the series pairs each timepoint with an ecdysone-receptor "
+                 "knockdown, which is a perturbation and a different question, and its Anopheles arm is not a "
+                 "Plasmodium table. 36 h is the late ookinete and 48 h to 7 d the developing oocyst -- there is "
+                 "NO sporozoite timepoint, so the mosquito-stage slot is filled for two stages of three. Depth "
+                 "differs sharply by timepoint (371,390 summed counts at 48 h against 3,866,156 at 7 d), and a "
+                 "zero is a non-detection at that depth rather than a measured absence: 4,281 of 5,720 genes "
+                 "are seen at all at 36 h against 5,591 at 7 d. Einar took the call to use it on 2026-11-09 "
+                 "knowing it covers part of the slot.", organism=organisms.FALCIPARUM),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

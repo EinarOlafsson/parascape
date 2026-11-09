@@ -11346,7 +11346,9 @@
     "axis": "transcription",
     "context": "ookinete, oocyst, sporozoite",
     "unit": "gene",
-    "patterns": [],
+    "patterns": [
+      "expr_midgut_"
+    ],
     "policy": "separate",
     "candidates": [
       [

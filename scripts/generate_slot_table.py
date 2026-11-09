@@ -2029,6 +2029,8 @@ PF_PATTERNS = {
     "transcription · liver stage": ["expr_pf_liver_day6"],
     # One factor, one replicate, a continuous occupancy (instruction 41, Einar's call 2026-11-09).
     "TF binding · per factor": ["dbsp_occupancy"],
+    # Ookinete and oocyst only: the series has no sporozoite timepoint (instruction 41, Einar's call).
+    "transcription · mosquito stages": ["expr_midgut_"],
     "translation efficiency · asexual blood stage": ["pf_translation_efficiency_log2",
                                                      "pf_ribosome_footprint_cpm"],
     # Efficiency per cycle phase, computed from the footprint and mRNA pairs already shipped
