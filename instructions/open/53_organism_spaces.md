@@ -1,6 +1,6 @@
 # 53 · One space per organism, then links between pathogen, vector and host
 
-**Status: open (designed 2026-09-26). 2026-11-08: WP0, WP1 and WP2 done, WP3 (Hs, Mm) done to its acceptance, WP6 has Cp and Pb, WP7/WP9 partly; rat, cat and vectors (WP4-5) not started -- they need data acquisition, much of it behind the VEuPathDB login (item 38).**
+**Status: open (designed 2026-09-26). 2026-11-08: WP0, WP1, WP2 and WP8 done, WP3 (Hs, Mm) done to its acceptance, WP6 has Cp and Pb, WP7/WP9 partly; rat, cat and vectors (WP4-5) not started -- they need data acquisition, much of it behind the VEuPathDB login (item 38).**
 
 Crash recovery: all implementation commits through `05650fd` survived and were pushed. The 45
 focused recovery checks passed. Documentation CI passed; test CI had 4,138 passes and one stale
@@ -354,7 +354,25 @@ share-alike, **V** verify the terms first, **X** local build only.
   * **Plasmodium berghei gets no slots, on purpose.** The Plasmodium arm already queries berghei, vivax, knowlesi
     and yoelii by design, because the genome-scale fitness and liver-stage data are largely berghei. A parallel Pb
     table would ask every Plasmodium question twice and split the data that fills it.
-* **Not started:** WP4 (Rn, Fc), WP5 (Ag, As), WP6 remainder (Pv), WP8 (strategies across N spaces).
+* **WP8 (strategies across N spaces): built 2026-11-09.** `parascape/strategy_applicability.py` reads what a
+  space holds in the words strategies use to declare what they need ("a categorical column", "two or more edge
+  layers", "the other organism's table") and answers, per strategy, whether it could run and which requirement
+  is missing. Nothing is run: this is applicability, never a measure of how well a strategy works, which stays
+  the track record. `scripts/build_strategy_applicability_notebook.py` ->
+  `notebooks/strategy_applicability_2026_11_08.ipynb`, `results/strategy_applicability_2026_11_08/`.
+  * **Of 39 strategies: Tg 39, Pf 39, Cp 27.**
+  * **Every one of the 12 blocked in Cryptosporidium is blocked by missing EVIDENCE, not by the organism:**
+    9 wait on a graph (no edge layer, no interaction, crosslink/IP-MS, structural-similarity or co-mention
+    layer), 2 on a literature-attention column, 1 on a counterpart table. So the build order is: the
+    Cryptosporidium graph first, then its Toxoplasma counterpart table; most of the 12 open with the first.
+  * A requirement the checker has never seen is **allowed**, not refused, so a new strategy cannot be silently
+    blocked everywhere by wording the checker does not know.
+  * A naming trap, found and fixed: the shipped graphs call interaction evidence `xlms` and `ip_ms`, so a check
+    looking for "crosslink" alone reported Plasmodium as having no interaction layer when it has both. The
+    layer-name fragments are now spelled out in `INTERACTION_LAYERS`, and a test asserts both shipped parasite
+    spaces run every strategy -- a block there is a bug in the checker, not a fact about the space.
+  * Tests: `tests/test_strategy_applicability.py` (5).
+* **Not started:** WP4 (Rn, Fc), WP5 (Ag, As), WP6 remainder (Pv).
 
 ## WP6 started: Cryptosporidium parvum (2026-11-08)
 

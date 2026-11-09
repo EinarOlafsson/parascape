@@ -1,0 +1,118 @@
+space	number	strategy	family	task	needs	applicable	missing
+Tg	1	holdout_search	Search the map space	cluster recovery	a categorical column	True	
+Tg	2	geneset_hunt	Search the map space	set retrieval	a gene list	True	
+Tg	3	recoverability_atlas	Search the map space	ranking	a categorical column	True	
+Tg	4	consensus_modules	Search the map space	cluster recovery	(nothing in particular)	True	
+Tg	5	blind_battery	Search the map space	replication	(nothing in particular)	True	
+Tg	6	block_ablation	Search the map space	label calls	a categorical column	True	
+Tg	7	feature_knn	Borrow from neighbours	label calls	a categorical column	True	
+Tg	8	map_neighbours	Borrow from neighbours	label calls	a categorical column	True	
+Tg	9	cluster_guilt	Borrow from neighbours	label calls	a categorical column	True	
+Tg	10	label_outliers	Borrow from neighbours	ranking	a categorical column	True	
+Tg	11	layer_propagation	Walk the networks	label calls	a categorical column; an edge layer	True	
+Tg	12	layer_vote	Walk the networks	label calls	a categorical column	True	
+Tg	13	physical_partners	Walk the networks	label calls	a crosslink or IP-MS layer	True	
+Tg	14	structural_homology	Walk the networks	label calls	a structural-similarity layer	True	
+Tg	15	multiplex_modules	Walk the networks	cluster recovery	two or more edge layers	True	
+Tg	16	link_prediction	Walk the networks	ranking	an interaction layer	True	
+Tg	17	attention_correction	Walk the networks	ranking	a co-mention layer	True	
+Tg	18	unwritten_links	Walk the networks	ranking	measurement and literature layers	True	
+Tg	19	supervised_classifier	Learn from examples	label calls	a categorical column	True	
+Tg	20	positive_unlabeled	Learn from examples	ranking	a gene list	True	
+Tg	21	trait_regression	Learn from examples	values	a numeric column	True	
+Tg	22	masked_imputation	Learn from examples	values	(nothing in particular)	True	
+Tg	23	condition_shift	Learn from examples	values	two numeric columns	True	
+Tg	24	set_enrichment	Start from a gene list	ranking	a gene list	True	
+Tg	25	seed_expansion	Start from a gene list	ranking	a gene list	True	
+Tg	26	split_clusters	Contrast and combine layers	replication	two categorical columns	True	
+Tg	27	conjunctions	Contrast and combine layers	replication	two categorical columns	True	
+Tg	28	paralog_divergence	Contrast and combine layers	ranking	orthogroups	True	
+Tg	29	ortholog_transfer	Cross species and strata	values	the other organism's table	True	
+Tg	30	stratum_focus	Cross species and strata	label calls	a categorical column	True	
+Tg	31	triangulation	Combine strategies	label calls	a categorical column	True	
+Tg	32	understudied_first	Combine strategies	label calls	a categorical column; a literature-attention column	True	
+Tg	33	neighbour_space	Combine strategies	ranking	at least one edge layer	True	
+Tg	34	network_training	Combine strategies	ranking	at least one edge layer	True	
+Tg	35	conformal_calls	Advanced models	label calls	a categorical column	True	
+Tg	36	graph_convolution	Advanced models	label calls	a categorical column; measured edge layers	True	
+Tg	37	random_forest	Advanced models	label calls	a categorical column	True	
+Tg	38	stacking	Advanced models	label calls	a categorical column	True	
+Tg	39	conformal_values	Advanced models	values	a numeric column	True	
+Pf	1	holdout_search	Search the map space	cluster recovery	a categorical column	True	
+Pf	2	geneset_hunt	Search the map space	set retrieval	a gene list	True	
+Pf	3	recoverability_atlas	Search the map space	ranking	a categorical column	True	
+Pf	4	consensus_modules	Search the map space	cluster recovery	(nothing in particular)	True	
+Pf	5	blind_battery	Search the map space	replication	(nothing in particular)	True	
+Pf	6	block_ablation	Search the map space	label calls	a categorical column	True	
+Pf	7	feature_knn	Borrow from neighbours	label calls	a categorical column	True	
+Pf	8	map_neighbours	Borrow from neighbours	label calls	a categorical column	True	
+Pf	9	cluster_guilt	Borrow from neighbours	label calls	a categorical column	True	
+Pf	10	label_outliers	Borrow from neighbours	ranking	a categorical column	True	
+Pf	11	layer_propagation	Walk the networks	label calls	a categorical column; an edge layer	True	
+Pf	12	layer_vote	Walk the networks	label calls	a categorical column	True	
+Pf	13	physical_partners	Walk the networks	label calls	a crosslink or IP-MS layer	True	
+Pf	14	structural_homology	Walk the networks	label calls	a structural-similarity layer	True	
+Pf	15	multiplex_modules	Walk the networks	cluster recovery	two or more edge layers	True	
+Pf	16	link_prediction	Walk the networks	ranking	an interaction layer	True	
+Pf	17	attention_correction	Walk the networks	ranking	a co-mention layer	True	
+Pf	18	unwritten_links	Walk the networks	ranking	measurement and literature layers	True	
+Pf	19	supervised_classifier	Learn from examples	label calls	a categorical column	True	
+Pf	20	positive_unlabeled	Learn from examples	ranking	a gene list	True	
+Pf	21	trait_regression	Learn from examples	values	a numeric column	True	
+Pf	22	masked_imputation	Learn from examples	values	(nothing in particular)	True	
+Pf	23	condition_shift	Learn from examples	values	two numeric columns	True	
+Pf	24	set_enrichment	Start from a gene list	ranking	a gene list	True	
+Pf	25	seed_expansion	Start from a gene list	ranking	a gene list	True	
+Pf	26	split_clusters	Contrast and combine layers	replication	two categorical columns	True	
+Pf	27	conjunctions	Contrast and combine layers	replication	two categorical columns	True	
+Pf	28	paralog_divergence	Contrast and combine layers	ranking	orthogroups	True	
+Pf	29	ortholog_transfer	Cross species and strata	values	the other organism's table	True	
+Pf	30	stratum_focus	Cross species and strata	label calls	a categorical column	True	
+Pf	31	triangulation	Combine strategies	label calls	a categorical column	True	
+Pf	32	understudied_first	Combine strategies	label calls	a categorical column; a literature-attention column	True	
+Pf	33	neighbour_space	Combine strategies	ranking	at least one edge layer	True	
+Pf	34	network_training	Combine strategies	ranking	at least one edge layer	True	
+Pf	35	conformal_calls	Advanced models	label calls	a categorical column	True	
+Pf	36	graph_convolution	Advanced models	label calls	a categorical column; measured edge layers	True	
+Pf	37	random_forest	Advanced models	label calls	a categorical column	True	
+Pf	38	stacking	Advanced models	label calls	a categorical column	True	
+Pf	39	conformal_values	Advanced models	values	a numeric column	True	
+Cp	1	holdout_search	Search the map space	cluster recovery	a categorical column	True	
+Cp	2	geneset_hunt	Search the map space	set retrieval	a gene list	True	
+Cp	3	recoverability_atlas	Search the map space	ranking	a categorical column	True	
+Cp	4	consensus_modules	Search the map space	cluster recovery	(nothing in particular)	True	
+Cp	5	blind_battery	Search the map space	replication	(nothing in particular)	True	
+Cp	6	block_ablation	Search the map space	label calls	a categorical column	True	
+Cp	7	feature_knn	Borrow from neighbours	label calls	a categorical column	True	
+Cp	8	map_neighbours	Borrow from neighbours	label calls	a categorical column	True	
+Cp	9	cluster_guilt	Borrow from neighbours	label calls	a categorical column	True	
+Cp	10	label_outliers	Borrow from neighbours	ranking	a categorical column	True	
+Cp	12	layer_vote	Walk the networks	label calls	a categorical column	True	
+Cp	19	supervised_classifier	Learn from examples	label calls	a categorical column	True	
+Cp	20	positive_unlabeled	Learn from examples	ranking	a gene list	True	
+Cp	21	trait_regression	Learn from examples	values	a numeric column	True	
+Cp	22	masked_imputation	Learn from examples	values	(nothing in particular)	True	
+Cp	23	condition_shift	Learn from examples	values	two numeric columns	True	
+Cp	24	set_enrichment	Start from a gene list	ranking	a gene list	True	
+Cp	25	seed_expansion	Start from a gene list	ranking	a gene list	True	
+Cp	26	split_clusters	Contrast and combine layers	replication	two categorical columns	True	
+Cp	27	conjunctions	Contrast and combine layers	replication	two categorical columns	True	
+Cp	28	paralog_divergence	Contrast and combine layers	ranking	orthogroups	True	
+Cp	30	stratum_focus	Cross species and strata	label calls	a categorical column	True	
+Cp	31	triangulation	Combine strategies	label calls	a categorical column	True	
+Cp	35	conformal_calls	Advanced models	label calls	a categorical column	True	
+Cp	37	random_forest	Advanced models	label calls	a categorical column	True	
+Cp	38	stacking	Advanced models	label calls	a categorical column	True	
+Cp	39	conformal_values	Advanced models	values	a numeric column	True	
+Cp	11	layer_propagation	Walk the networks	label calls	a categorical column; an edge layer	False	no edge layer
+Cp	13	physical_partners	Walk the networks	label calls	a crosslink or IP-MS layer	False	no crosslink or IP-MS layer
+Cp	14	structural_homology	Walk the networks	label calls	a structural-similarity layer	False	no structural-similarity layer
+Cp	15	multiplex_modules	Walk the networks	cluster recovery	two or more edge layers	False	0 edge layers
+Cp	16	link_prediction	Walk the networks	ranking	an interaction layer	False	no interaction layer
+Cp	17	attention_correction	Walk the networks	ranking	a co-mention layer	False	no co-mention layer
+Cp	18	unwritten_links	Walk the networks	ranking	measurement and literature layers	False	no literature-attention column
+Cp	29	ortholog_transfer	Cross species and strata	values	the other organism's table	False	no partner table declared for this space
+Cp	32	understudied_first	Combine strategies	label calls	a categorical column; a literature-attention column	False	no literature-attention column
+Cp	33	neighbour_space	Combine strategies	ranking	at least one edge layer	False	no edge layer
+Cp	34	network_training	Combine strategies	ranking	at least one edge layer	False	no edge layer
+Cp	36	graph_convolution	Advanced models	label calls	a categorical column; measured edge layers	False	no edge layer

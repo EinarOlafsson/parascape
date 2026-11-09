@@ -1,0 +1,13 @@
+space	number	strategy	family	missing
+Cp	11	layer_propagation	Walk the networks	no edge layer
+Cp	13	physical_partners	Walk the networks	no crosslink or IP-MS layer
+Cp	14	structural_homology	Walk the networks	no structural-similarity layer
+Cp	15	multiplex_modules	Walk the networks	0 edge layers
+Cp	16	link_prediction	Walk the networks	no interaction layer
+Cp	17	attention_correction	Walk the networks	no co-mention layer
+Cp	18	unwritten_links	Walk the networks	no literature-attention column
+Cp	29	ortholog_transfer	Cross species and strata	no partner table declared for this space
+Cp	32	understudied_first	Combine strategies	no literature-attention column
+Cp	33	neighbour_space	Combine strategies	no edge layer
+Cp	34	network_training	Combine strategies	no edge layer
+Cp	36	graph_convolution	Advanced models	no edge layer

@@ -1,0 +1,4 @@
+code	genes	categorical	numeric	edge_layers	has_partner_table	has_orthogroups	has_literature_attention
+Tg	8140	29	410	55	True	True	True
+Pf	5720	25	141	28	True	True	True
+Cp	3923	7	7	0	False	True	False
