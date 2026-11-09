@@ -2662,3 +2662,46 @@ which says what was searched and what would fill it. Publishing the sweep's left
 verdict would say two opposite things at once -- nobody has made this measurement, and here are six
 studies that would fill it -- and the second is the one a work queue gets built on. The file is
 kept as the record of what the sweep saw, not as a queue.
+
+## 2026-11-09: every proposed candidate for an empty slot, opened and judged
+
+The literature index had proposed candidates for 26 of the 137 empty slots. Each was read in its own GEO or
+PRIDE record -- not from the index entry, not from a title -- and judged on four things: does the deposit measure
+the quantity the slot names, is it the organism, does it cover the stage or host cell, and would it give per-gene
+values genome-wide. `results/slot_candidate_verification_2026_11_09.tsv`: 160 slot-candidate pairs over 26 slots
+and 97 distinct accessions, each verdict carrying a verbatim quote from the record.
+
+| Verdict | Pairs |
+|---|---:|
+| wrong assay | 131 |
+| admissible | 8 |
+| cannot tell from the record | 8 |
+| wrong organism | 7 |
+| wrong stage or host | 6 |
+
+**144 are now refused in `parascape/source_refusals.py`** (16 refusals before, 160 after), so the index cannot
+propose them again and the next sweep does not re-open them. Only 7 slots still carry a proposal.
+
+**The 8 admissible, by slot:**
+* *translation efficiency, asexual blood stage*: GSE58402 (ribosome profiling with mRNA, ring to merozoite) and
+  GSE286083 (Ribo-seq with matched RNA, trophozoite only, and its i14G1-12 drug arm must be excluded).
+* *protein abundance, other life stages*: PXD075878 (whole proteome of stage V gametocytes; that one stage only).
+* *transcription factor binding*: GSE337518 (PfDBSP) and GSE339382 (AP2-HS), one factor each. PfDBSP is described
+  as a double-stranded-DNA-binding protein rather than a classical ApiAP2 -- Einar to say whether it counts.
+* *RNA-binding protein targets*: GSE267362 (CLIP-seq of PfMD3 in gametocytes).
+* *transcription, liver stage*: GSE220039 (in vivo early liver stage) -- parasite read depth per gene to check.
+* *transcription, mosquito stages*: GSE284537 (single-cell, infected midguts; late ookinete and oocyst, not
+  sporozoite).
+
+**What the 131 wrong-assay verdicts say about the index, and it is the useful finding:** the index proposes
+whatever GEO series mention the biology, and GEO holds sequencing. Every PTM, fitness, metabolite, flux, lipid,
+proximity-labelling, crosslink-MS, host-receptor and co-fitness slot was offered ChIP-seq, RNA-seq or arrays.
+Those slots will not be filled from a GEO sweep at all; they need PRIDE, Metabolights or a screen supplement, and
+the index should not be asked for them again.
+
+**Also measured:** none of the 5 PRIDE projects proposed for empty slots (PXD042503, PXD046874, PXD048354,
+PXD060218, PXD075878) is in the uniform re-search selection of instruction 65, so the one admissible proteomics
+candidate (PXD075878) is not downloaded. Adding it is a selection change for Einar, not a slot fill.
+
+Open: the 8 admissible deposits are proposals, not fills -- each needs acquisition and the per-gene table built
+before its slot grades above empty.

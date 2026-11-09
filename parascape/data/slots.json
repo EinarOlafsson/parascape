@@ -7807,61 +7807,6 @@
         "",
         "PXD075878",
         "from the PRIDE index; verify the modification and the organism"
-      ],
-      [
-        "",
-        "PXD060218",
-        "from the PRIDE index; verify the modification and the organism"
-      ],
-      [
-        "",
-        "PXD048354",
-        "from the PRIDE index; verify the modification and the organism"
-      ],
-      [
-        "",
-        "PXD046874",
-        "from the PRIDE index; verify the modification and the organism"
-      ],
-      [
-        "",
-        "GSE267361",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35938722",
-        "GSE208865",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34145386",
-        "GSE164175",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE152608",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "32076635",
-        "GSE111333",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "32017676",
-        "GSE116219",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "31384004",
-        "GSE123839",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34593836",
-        "GSE128115",
-        "from the GEO index; verify assay and parasite-gene shape"
       ]
     ],
     "evidence_path": [
@@ -8276,48 +8221,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "one",
-    "candidates": [
-      [
-        "",
-        "GSE304394",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "38966997",
-        "GSE212052",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37322481",
-        "GSE215427",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37322481",
-        "GSE215426",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35938722",
-        "GSE208865",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "33495219",
-        "GSE159516",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "31615031",
-        "GSE136008",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "21558492",
-        "GSE24416",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "molecular measurements",
       "protein",
@@ -8349,53 +8253,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "one",
-    "candidates": [
-      [
-        "",
-        "PXD042503",
-        "from the PRIDE index; verify the modification and the organism"
-      ],
-      [
-        "",
-        "GSE304394",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "38966997",
-        "GSE212052",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37322481",
-        "GSE215427",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37322481",
-        "GSE215426",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35938722",
-        "GSE208865",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "33495219",
-        "GSE159516",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "31615031",
-        "GSE136008",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "21558492",
-        "GSE24416",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "molecular measurements",
       "protein",
@@ -8427,48 +8285,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "one",
-    "candidates": [
-      [
-        "",
-        "GSE304394",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "38966997",
-        "GSE212052",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37322481",
-        "GSE215427",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37322481",
-        "GSE215426",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35938722",
-        "GSE208865",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "33495219",
-        "GSE159516",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "31615031",
-        "GSE136008",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "21558492",
-        "GSE24416",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "molecular measurements",
       "protein",
@@ -8749,38 +8566,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "one",
-    "candidates": [
-      [
-        "",
-        "GSE228948",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE228947",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE175931",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE157709",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE149773",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE149772",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "perturbational measurements",
       "genetic screens",
@@ -8844,48 +8630,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "one",
-    "candidates": [
-      [
-        "",
-        "GSE228948",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE228947",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE119516",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37219373",
-        "GSE223497",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "36624300",
-        "GSE205012",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37067430",
-        "GSE188542",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE175931",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE157709",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "perturbational measurements",
       "genetic screens",
@@ -8917,48 +8662,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "one",
-    "candidates": [
-      [
-        "40558503",
-        "GSE284527",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE228948",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE228947",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37349497",
-        "GSE214535",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE119516",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37219373",
-        "GSE223497",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "36624300",
-        "GSE205012",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37067430",
-        "GSE188542",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "perturbational measurements",
       "genetic screens",
@@ -8990,38 +8694,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "one",
-    "candidates": [
-      [
-        "",
-        "GSE228948",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE228947",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE175931",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE157709",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE149773",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE149772",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "perturbational measurements",
       "genetic screens",
@@ -9098,32 +8771,12 @@
       ],
       [
         "",
-        "GSE298061",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE298024",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
         "GSE329816",
         "from the GEO index; verify assay and parasite-gene shape"
       ],
       [
         "",
-        "GSE295105",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
         "GSE295104",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "41871101",
-        "GSE299944",
         "from the GEO index; verify assay and parasite-gene shape"
       ]
     ],
@@ -9159,43 +8812,8 @@
     "policy": "one",
     "candidates": [
       [
-        "",
-        "GSE337518",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE298061",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE298024",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE304394",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "40877256",
-        "GSE246114",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
         "40877256",
         "GSE246116",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE288146",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "39412522",
-        "GSE239393",
         "from the GEO index; verify assay and parasite-gene shape"
       ]
     ],
@@ -9688,48 +9306,7 @@
     "unit": "pair",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "34593836",
-        "GSE128115",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE104223",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE103507",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "31045574",
-        "GSE103259",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE103042",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE99486",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "28531310",
-        "GSE85478",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "28938907",
-        "GSE94273",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "relational measurements",
       "gene-gene",
@@ -9861,23 +9438,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "fill",
-    "candidates": [
-      [
-        "41460168",
-        "GSE267413",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE231838",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35938722",
-        "GSE208865",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "relational measurements",
       "gene-gene",
@@ -10086,23 +9647,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "",
-        "GSE278140",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "36808528",
-        "GSE208757",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "28531310",
-        "GSE85478",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "relational measurements",
       "gene-gene",
@@ -10348,13 +9893,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "",
-        "GSE78931",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "relational measurements",
       "parasite-host",
@@ -10755,28 +10294,7 @@
     "unit": "metabolite",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "34593836",
-        "GSE128115",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34593836",
-        "GSE127079",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE123495",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "25453034",
-        "GSE94274",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "molecular measurements",
       "metabolism",
@@ -10807,23 +10325,7 @@
     "unit": "metabolite",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "35064153",
-        "GSE176469",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "32059044",
-        "GSE136169",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "19073607",
-        "GSE13578",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "molecular measurements",
       "metabolism",
@@ -10854,28 +10356,7 @@
     "unit": "metabolite",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "37277533",
-        "GSE197916",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "36788578",
-        "GSE218998",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35064153",
-        "GSE176469",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "33495219",
-        "GSE159516",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "molecular measurements",
       "metabolism",
@@ -11064,11 +10545,6 @@
       [
         "",
         "GSE267362",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE267361",
         "from the GEO index; verify assay and parasite-gene shape"
       ]
     ],
@@ -11403,33 +10879,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "",
-        "GSE317694",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE291233",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37392389",
-        "GSE180258",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37392389",
-        "GSE180257",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34145386",
-        "GSE164175",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "perturbational measurements",
       "cell phenotype",
@@ -11461,48 +10911,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "40558503",
-        "GSE284527",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE228948",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE228947",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37349497",
-        "GSE214535",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE119516",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37219373",
-        "GSE223497",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "36624300",
-        "GSE205012",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37067430",
-        "GSE188542",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "perturbational measurements",
       "genetic screens",
@@ -11895,31 +11304,6 @@
         "from the GEO index; verify assay and parasite-gene shape"
       ],
       [
-        "37392389",
-        "GSE180258",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37392389",
-        "GSE180257",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37392389",
-        "GSE180256",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37322481",
-        "GSE215429",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37322481",
-        "GSE215426",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
         "39891010",
         "GSE220039",
         "from the GEO index; verify assay and parasite-gene shape"
@@ -11968,38 +11352,8 @@
         "from the GEO index; verify assay and parasite-gene shape"
       ],
       [
-        "40623036",
-        "GSE271105",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "40164831",
-        "GSE284425",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "39576115",
-        "GSE269994",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
         "38702310",
         "GSE189034",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37392389",
-        "GSE180258",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37392389",
-        "GSE180257",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37392389",
-        "GSE180256",
         "from the GEO index; verify assay and parasite-gene shape"
       ]
     ],
@@ -12222,28 +11576,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "34365503",
-        "GSE175931",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE157709",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE149773",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34365503",
-        "GSE149772",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "perturbational measurements",
       "genetic screens",
@@ -12410,18 +11743,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "40562206",
-        "GSE296188",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35493110",
-        "GSE186984",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "molecular measurements",
       "regulation",
@@ -12498,48 +11820,7 @@
     "unit": "gene",
     "patterns": [],
     "policy": "separate",
-    "candidates": [
-      [
-        "",
-        "GSE301430",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "40410577",
-        "GSE274138",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35210361",
-        "GSE159126",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "35210361",
-        "GSE159124",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE186820",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "37013531",
-        "GSE180985",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34340541",
-        "GSE166390",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "34340541",
-        "GSE166258",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ]
-    ],
+    "candidates": [],
     "evidence_path": [
       "relational measurements",
       "parasite-host",

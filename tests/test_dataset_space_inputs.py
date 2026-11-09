@@ -60,7 +60,9 @@ def test_graph_mapping_retains_exact_index_binding_and_publication_route(monkeyp
 
 
 def test_scoped_refusals_match_the_canonical_generator_dictionary():
-    assert len(R.REFUSED_CANDIDATES) == len(R.records()) == 16
+    # A count, because the two views of the same refusals must not drift apart. It grows when
+    # proposals are opened and refused: 16 on 2026-08-19, 160 after the 2026-11-09 verification.
+    assert len(R.REFUSED_CANDIDATES) == len(R.records()) == 160
     assert all(row['question'] and row['reason'] for row in R.records())
     assert len(R.records([])) == 0
 
