@@ -45,6 +45,10 @@ def main(argv=None) -> int:
                          "(rungs 2-3: hist_gbt,family_stacking,graph_propagation)")
     ap.add_argument("--seed", type=int, default=0, help="partition seed; a new strategy set needs a new seed")
     ap.add_argument("--categories", default="", help="comma-separated label categories to score (default all)")
+    ap.add_argument("--auxiliary", action="store_true",
+                    help="offer the joint model the catalogue labels of OTHER information categories as "
+                         "auxiliary tasks (instruction 73 rung 5); a label of the target's own category is "
+                         "never offered, which is the rule `label_pairing` states")
     args = ap.parse_args(argv)
     i, n = map(int, args.shard.split("/"))
     import numpy as np
@@ -82,6 +86,28 @@ def main(argv=None) -> int:
                          evidence_forbidden=(family,), label_tier="observed-screen", label_category=row.category,
                          status="scored")
             entities = labels.index
+            if args.auxiliary:
+                # Auxiliary labels: catalogue columns whose information category does not intersect the
+                # target's, so the joint model cannot recover the evidence the harness excluded.
+                from parascape import borrowed_models as BM, information_categories as IC
+                own = set(IC.categories_of(row.column, O.TOXOPLASMA)) or {row.category}
+                offered = {}
+                for other in cat.itertuples(index=False):
+                    if other.column == row.column:
+                        continue
+                    cats = set(IC.categories_of(other.column, O.TOXOPLASMA))
+                    if not cats or (cats & own):
+                        continue
+                    series = nodes[other.column]
+                    if series.notna().sum() < 200:
+                        continue
+                    numeric_label = pd.api.types.is_numeric_dtype(series) and not pd.api.types.is_bool_dtype(series)
+                    flag = (series > series.median()) if numeric_label else series.astype(str).eq(
+                        series.astype(str).value_counts().idxmax())
+                    offered[other.column] = flag.where(series.notna()).astype(float)
+                    if len(offered) >= 12:            # a dozen tasks is already a wide shared representation
+                        break
+                BM.set_auxiliary(pd.DataFrame(offered) if offered else None)
             t0 = time.monotonic()
             try:
                 full = nodes.loc[entities, numeric].astype("float64")

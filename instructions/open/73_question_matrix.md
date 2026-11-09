@@ -618,3 +618,37 @@ a test now asserts the Plasmodium side resolves to Pf.
 Tests: `tests/test_label_pairing.py` (5). `borrowed_models.UNTESTED["multi_task"]` now states what actually
 remains: the joint estimator itself, scored on the same folds as the per-question models -- which rungs 2, 3 and 4
 all failed to beat, so the prior is that this one will too.
+
+## Phase 5 graded, 2026-11-09 (Einar's go-ahead): the joint model does not beat the per-question models either
+
+`borrowed_models.MultiTask` implements rung 5, and `label_pairing` decides what it may learn beside the target.
+The shared representation is explicit rather than hidden in a network: each auxiliary label is learned from the
+same evidence by cross-fitting, so every gene gets an auxiliary prediction made without its own auxiliary label,
+and those predictions are appended to the evidence. A gene missing an auxiliary label still receives its
+prediction -- which is the point, since the auxiliary task exists to carry information from the genes that have
+the label to the genes that do not. `score_question_catalogue.py --models hist_gbt,multi_task --auxiliary`
+offers up to twelve catalogue labels whose information category does not intersect the target's.
+
+The same 69 curated-label questions, fresh partition (seed 5), 0 errors. Output:
+`results/question_scores_rung5_2026_11_09/`, notebook `notebooks/question_rung5_2026_11_09.ipynb`.
+
+**Gate: beat the per-question models on the same folds. Not met, and by the smallest margin of any rung.**
+- Boosted trees win the inner folds on 42 of 68; the joint model wins 26.
+- Median gain in inner average precision: **0.0000**; mean 0.0019; maximum 0.0167 -- a tenth of what rungs 2-4
+  managed at their best, and those did not beat it either.
+- By category the two are within 0.007 everywhere: place 0.473 against 0.466, modification 0.353 against 0.350,
+  phenotype 0.228 against 0.226, interaction equal, function equal.
+- Three questions may fill on this partition and **all three chose boosted trees**, so the fills are not the
+  joint model's doing: compartment-unassigned (lower bound 0.918), acetylation-site count (0.909), and `n_holes`,
+  which is bookkeeping.
+
+**The ladder is now complete and the answer is consistent.** Rungs 2, 3, 4 and 5 -- one model per evidence
+family, network propagation, low-rank completion and a joint model over several questions -- all fail to beat
+boosted trees over all the allowed evidence at once, on the same folds, on these labels. Four different ways of
+being cleverer about the model gained nothing. **The evidence is the limit, not the method**, which is the
+finding Part 2 of this instruction was built to test.
+
+A bug worth recording: the first run failed on 66 of 69 questions with "window shape cannot be larger than input
+array shape" -- a boosted-tree binner refusing a column with one distinct value, naming neither the column nor
+the cause. `methods._DropConstant` exists for exactly that, and the per-task fits here are the smallest subsets
+in the codebase, so they are where the guard was missing. Now applied inside `MultiTask`.

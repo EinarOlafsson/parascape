@@ -23,15 +23,23 @@ from notebook_runner import ExecutedNotebook  # noqa: E402
 
 DATE = "2026_11_08"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RUNG = "4" if "--rung4" in sys.argv else "23"   # --rung4: boosted trees against low-rank completion (seed 3)
-SCORES = f"results/question_scores_rung4_{DATE}" if RUNG == "4" else f"results/question_scores_rungs23_{DATE}"
-OUT = os.path.join(REPO, "results", f"question_rung{RUNG}_{DATE}" if RUNG == "4" else f"question_rungs23_{DATE}")
-NB = os.path.join(REPO, "notebooks", f"question_rung{RUNG}_{DATE}.ipynb" if RUNG == "4" else f"question_rungs23_{DATE}.ipynb")
+RUNG = "5" if "--rung5" in sys.argv else "4" if "--rung4" in sys.argv else "23"
+SCORES = ({"4": f"results/question_scores_rung4_{DATE}",
+           "5": "results/question_scores_rung5_2026_11_09"}.get(RUNG)
+          or f"results/question_scores_rungs23_{DATE}")
+OUT = os.path.join(REPO, "results",
+                   "question_rung5_2026_11_09" if RUNG == "5"
+                   else f"question_rung{RUNG}_{DATE}" if RUNG == "4" else f"question_rungs23_{DATE}")
+NB = os.path.join(REPO, "notebooks",
+                  "question_rung5_2026_11_09.ipynb" if RUNG == "5"
+                  else f"question_rung{RUNG}_{DATE}.ipynb" if RUNG == "4" else f"question_rungs23_{DATE}.ipynb")
 
 
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
-    nb = ExecutedNotebook("Strategy ladder rung 4 on curated-label questions" if RUNG == "4" else "Strategy ladder rungs 2-3 on curated-label questions", namespace={"REPO": REPO, "OUT": OUT, "SCORES": SCORES})
+    nb = ExecutedNotebook("Strategy ladder rung 5 (joint model) on curated-label questions" if RUNG == "5"
+                          else "Strategy ladder rung 4 on curated-label questions" if RUNG == "4"
+                          else "Strategy ladder rungs 2-3 on curated-label questions", namespace={"REPO": REPO, "OUT": OUT, "SCORES": SCORES})
     nb.md("**What this tests (instruction 73, phase 4).** Whether a model per evidence family combined (rung 2) or "
           "network propagation (rung 3) answers the curated-label questions better than boosted trees on all the "
           "evidence at once (rung 1), and whether more cells become fillable at the 90 % bar.",

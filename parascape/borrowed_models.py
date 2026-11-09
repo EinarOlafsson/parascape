@@ -385,21 +385,124 @@ class GraphPropagation(_Base):
         return self._proba((q - lo) / max(hi - lo, 1e-9))
 
 
+#: Auxiliary labels a joint model may learn beside the target, as a frame indexed like the features with one
+#: column per auxiliary task. Set by the caller, because WHICH labels may stand beside a target is a question
+#: about leakage (`label_pairing`) and not something a model may decide for itself.
+_AUXILIARY: pd.DataFrame | None = None
+
+
+def set_auxiliary(labels) -> None:
+    """Tell `MultiTask` which auxiliary labels it may learn beside the target.
+
+    `labels` is a frame indexed by entity with one boolean-or-missing column per auxiliary task, already
+    filtered by `label_pairing.auxiliaries_for` -- a label of the target's own information category must never
+    arrive here, because it would return the evidence the harness excluded by another door.
+    """
+    global _AUXILIARY
+    _AUXILIARY = None if labels is None else pd.DataFrame(labels)
+
+
+class MultiTask(_Base):
+    """Rung 5: learn the target beside the auxiliary labels that may stand next to it.
+
+    The shared representation is explicit rather than hidden in a network. Each auxiliary label is learned from
+    the same evidence by cross-fitting (internal folds), so every gene receives an auxiliary prediction made
+    without its own auxiliary label; those predictions are appended to the evidence and the target is learned
+    from the pair. A gene missing an auxiliary label still receives its prediction, which is the point: the
+    auxiliary task exists to carry information from the genes that HAVE it to the genes that do not.
+
+    With no auxiliary labels set this is the boosted-trees baseline, and says so in `tasks_`: a joint model with
+    nothing to be joint with must not quietly look like something else.
+    """
+
+    def __init__(self, folds: int = 3, seed: int = 0, **gbt):
+        self._settings = dict(folds=folds, seed=seed, **gbt)
+        self.folds, self.seed, self.gbt = folds, seed, gbt
+
+    @staticmethod
+    def _fit_gbt(frame, labels, seed, settings):
+        """Boosted trees over a frame, with constant columns dropped first.
+
+        A fold of a fold can leave a column with one distinct value, and since scikit-learn 1.9 the
+        histogram binner raises "window shape cannot be larger than input array shape" on such a column --
+        naming neither the column nor the cause. `methods._DropConstant` exists for this; the per-task fits
+        here are the smallest subsets in the codebase, so they are where it was missing. Found when 66 of 69
+        questions failed with that message.
+        """
+        from .methods import _DropConstant
+
+        guard = _DropConstant().fit(frame.to_numpy(dtype=float))
+        kept = [frame.columns[j] for j in guard.keep_]
+        model = _gbt(random_state=seed, **settings).fit(frame[kept], labels)
+        return model, kept
+
+    def _auxiliary_for(self, index):
+        if _AUXILIARY is None or not len(_AUXILIARY.columns):
+            return pd.DataFrame(index=index)
+        return _AUXILIARY.reindex(index)
+
+    def fit(self, X, y):
+        """Cross-fit each auxiliary task, then fit the target on the evidence plus those predictions."""
+        from sklearn.model_selection import KFold
+
+        X = pd.DataFrame(X)
+        # The appended task columns are named, so every column name must be a string: sklearn refuses a
+        # frame whose names mix integers and strings, which is what a positionally-named feature table gives.
+        X.columns = X.columns.astype(str)
+        aux = self._auxiliary_for(X.index)
+        self.tasks_ = [c for c in aux.columns if aux[c].notna().sum() >= 50
+                       and 0 < float(pd.Series(aux[c]).dropna().astype(float).mean()) < 1]
+        self.task_models_, extra = {}, pd.DataFrame(index=X.index)
+        for task in self.tasks_:
+            labelled = aux[task].dropna()
+            scores = pd.Series(np.nan, index=X.index)
+            folds = KFold(n_splits=min(self.folds, max(2, len(labelled) // 25)), shuffle=True,
+                          random_state=self.seed)
+            rows = np.asarray(labelled.index)
+            for train, _test in folds.split(rows):
+                fitted, kept = self._fit_gbt(X.loc[rows[train]], labelled.loc[rows[train]].astype(int),
+                                             self.seed, self.gbt)
+                held = X.index.difference(rows[train])
+                scores.loc[held] = fitted.predict_proba(X.loc[held, kept])[:, 1]
+            # Fitted on every labelled gene, for the genes the folds never held out and for scoring later.
+            model, kept = self._fit_gbt(X.loc[rows], labelled.astype(int), self.seed, self.gbt)
+            self.task_models_[task] = (model, kept)
+            missing = scores.isna()
+            if missing.any():
+                scores.loc[missing] = model.predict_proba(X.loc[missing, kept])[:, 1]
+            extra[f"task:{task}"] = scores.to_numpy()
+        joined = pd.concat([X, extra], axis=1)
+        self.model_, self.columns_ = self._fit_gbt(joined, np.asarray(y).astype(int), self.seed, self.gbt)
+        return self
+
+    def predict_proba(self, X):
+        """Score the auxiliary tasks with their fitted models, then the target."""
+        X = pd.DataFrame(X)
+        X.columns = X.columns.astype(str)
+        extra = pd.DataFrame(index=X.index)
+        for task, (model, kept) in self.task_models_.items():
+            extra[f"task:{task}"] = model.predict_proba(X[kept])[:, 1]
+        joined = pd.concat([X, extra], axis=1).reindex(columns=self.columns_)
+        return self.model_.predict_proba(joined)
+
+
 BORROWED = {
     "pu_bagging": PUBagging,
     "propensity_weighted": PropensityWeighted,
     "low_rank_completion": LowRankCompletion,
+    "multi_task": MultiTask,
     "family_stacking": FamilyStacking,
     "lookalike": Lookalike,
     "graph_propagation": GraphPropagation,
 }
+
 
 #: The strategies of instruction 77 that are not scored as models here, and why.
 UNTESTED = {
     "selective_prediction": (
         "Built into the harness rather than a model: every strategy is graded by coverage at fixed "
         "precision (`coverage_at_bar`), with the fill threshold as the reject option."),
-    "multi_task": (
+    "_multi_task_was_here": (
         "Needs auxiliary labels that may be used beside the target, and `label_pairing` now records "
         "which: 228 of the 420 ordered pairs of registry questions may be learned together, each "
         "with the reason, and 190 of the refusals are two labels of the same information category -- "

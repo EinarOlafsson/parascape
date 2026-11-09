@@ -1,0 +1,13 @@
+{
+ "questions": 69,
+ "errors": 0,
+ "median_frozen_auc": 0.8,
+ "median_rung1_frozen_auc": 0.817,
+ "may_fill": 3,
+ "rung1_may_fill": 2,
+ "inner_best": {
+  "boosted trees": 42,
+  "multi_task": 26,
+  "": 1
+ }
+}
