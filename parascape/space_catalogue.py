@@ -20,7 +20,10 @@ from dataclasses import dataclass
 
 from . import organisms
 
-HOST_PACK_SPACES = ("Hs", "Mm")
+#: Host spaces distributed as packs. Rn and Fc joined on 2026-11-09 with their gene builds only: they are
+#: listed as unavailable until a pack is built, which is the honest state -- a declared space with no
+#: measurement can name genes and answer nothing.
+HOST_PACK_SPACES = ("Hs", "Mm", "Rn", "Fc")
 _REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -44,6 +47,12 @@ def _host_space(code: str):
     if code == "Hs":
         from .spaces.human import HUMAN_SPACE
         return HUMAN_SPACE
+    if code == "Rn":
+        from .spaces.rat import RAT_SPACE
+        return RAT_SPACE
+    if code == "Fc":
+        from .spaces.cat import CAT_SPACE
+        return CAT_SPACE
     from .spaces.mouse import MOUSE_SPACE
     return MOUSE_SPACE
 

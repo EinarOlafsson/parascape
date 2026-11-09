@@ -19,6 +19,9 @@ from dataclasses import dataclass, field
 PARASITE, HOST, VECTOR = "parasite", "host", "vector"
 TOXOPLASMA, FALCIPARUM, HUMAN, MOUSE = "Tg", "Pf", "Hs", "Mm"
 CRYPTOSPORIDIUM, BERGHEI = "Cp", "Pb"
+#: Further hosts and a vector (instruction 53, WP4-5). The rat is where the behavioural work is done, the cat
+#: is the definitive host where the sexual stages occur, and Anopheles carries Plasmodium.
+RAT, CAT, ANOPHELES, VIVAX = "Rn", "Fc", "Ag", "Pv"
 
 #: Protein reference tables precede the full host gene spaces. UniProt identifiers do not encode
 #: their organism, so callers must select a species explicitly instead of guessing from a prefix.

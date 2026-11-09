@@ -405,3 +405,33 @@ relative growth rate and interval, the named P. falciparum ortholog).
   essential from dispensable P. berghei knockouts at AUC 0.789 (1,964 genes, 1,153 essential).
 
 Local only until the PlasmoDB annotation terms are verified (code V); PlasmoGEM supplement is PMC open access.
+
+## WP4 started 2026-11-09: the rat and cat spaces -- and a wrong assumption corrected
+
+**These were recorded as blocked behind the VEuPathDB login for weeks, and they never were.** A rat and a cat
+are vertebrates; their gene builds are on Ensembl and nothing about them needs a parasite database. The
+assumption was carried from the VEuPathDB note and applied to species nobody had checked. Checked on
+2026-11-09: rat (mRatBN7.2), cat (Felis_catus_9.0) and Anopheles gambiae (AgamP4, Ensembl Metazoa) are all
+public, and so is **P. vivax** (PvP01 v2, Ensembl Protists) -- so WP5 and the Pv part of WP6 are not blocked
+either.
+
+`parascape/spaces/rat.py` (`RAT_SPACE`, Rn) and `parascape/spaces/cat.py` (`CAT_SPACE`, Fc);
+`scripts/build_host_gene_spaces_notebook.py` -> `notebooks/host_gene_spaces_2026_11_09.ipynb`,
+`results/host_gene_spaces_2026_11_09/`. Builds hashed in the dataset taxonomy with their URLs.
+
+| Space | Genes | Protein coding | Named |
+|---|---:|---:|---:|
+| Rn | 23,141 | 23,098 | 21,346 |
+| Fc | 19,588 | 19,564 | 16,010 |
+
+Both pass `spaces.validate_nodes` (unique, non-missing, canonical ids) and both are listed by
+`space_catalogue` as **unavailable** -- which is the honest state, because no pack is built. **Neither holds a
+single measurement**, so neither can answer a question or be calibrated: a space can name genes long before it
+can say anything about them, and the catalogue reports that rather than hiding it.
+
+The cat matters out of proportion to its data: it is the only species where Toxoplasma completes its sexual
+cycle, so the enteroepithelial stages exist in no other host, and several slots naming feline tissue have never
+had a species to hang on.
+
+What each needs next is written in `what_each_space_needs.tsv`: expression per tissue first (Bgee has rat; its
+cat coverage is thin), then human-ortholog links for the rat, and the enteroepithelial series for the cat.
