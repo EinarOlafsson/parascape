@@ -584,3 +584,37 @@ category that is never a feature -- a model reading a chromosome number is readi
 
 **Both shipped tables are now fully categorised: 443 Toxoplasma and 171 Plasmodium columns, none unannotated.**
 Tests: 309 pass over categories, harness, redundancy, claims, strategies and the scoreboard.
+
+## 2026-11-09: the blocker on rung 5 is recorded, not guessed
+
+Rung 5 (a joint model over several questions) was untested for one stated reason: the harness excludes every
+column of a target's own information category, so an **auxiliary label** of that category would bring the
+excluded evidence back in by another door -- and nobody had written down which labels may stand beside which.
+The category vocabulary became complete for both shipped tables earlier today, which is what made that record
+derivable rather than a matter of opinion.
+
+`parascape/label_pairing.py` derives it. Two labels may be learned together when their information categories do
+not intersect, neither label's dataset family is on the other's forbidden list (checked in **both** directions,
+since a question forbids what would restate its own answer), and they are about the same organism.
+
+**228 of the 420 ordered pairs of registry questions may be learned together.** The refusals say why:
+
+| Reason | Pairs |
+|---|---:|
+| both labels are `place` | 182 |
+| both labels are `phenotype` | 6 |
+| both labels are `fitness` | 2 |
+| a label drawn from a family the other question forbids (`interpro`) | 2 |
+
+Every pair carries its reason, so a refusal can be argued with rather than guessed at. Worked examples:
+host-facing may be helped by function, binding partners, autophagy, immune response, the domain question, glucose
+fitness and the egress screen -- and by **no** localization niche, which is the rule doing its job.
+
+**Two things found while deriving it.** The registry records no organism field, so the organism is read from the
+table named in `label_source`; and matching that name in registration order called every Plasmodium question
+Toxoplasma, because `nodes.parquet` is a substring of `pf_nodes.parquet`. Longest table name first fixes it, and
+a test now asserts the Plasmodium side resolves to Pf.
+
+Tests: `tests/test_label_pairing.py` (5). `borrowed_models.UNTESTED["multi_task"]` now states what actually
+remains: the joint estimator itself, scored on the same folds as the per-question models -- which rungs 2, 3 and 4
+all failed to beat, so the prior is that this one will too.

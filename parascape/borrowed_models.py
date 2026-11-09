@@ -400,11 +400,12 @@ UNTESTED = {
         "Built into the harness rather than a model: every strategy is graded by coverage at fixed "
         "precision (`coverage_at_bar`), with the fill threshold as the reject option."),
     "multi_task": (
-        "Needs auxiliary labels that may be used beside the target. The harness excludes every "
-        "column of the target's own information category, and an auxiliary label of that category "
-        "would bring it back in by another door. No pair of registry questions has yet been "
-        "checked for which labels may stand beside which, so it is untested until the registry "
-        "records that."),
+        "Needs auxiliary labels that may be used beside the target, and `label_pairing` now records "
+        "which: 228 of the 420 ordered pairs of registry questions may be learned together, each "
+        "with the reason, and 190 of the refusals are two labels of the same information category -- "
+        "the auxiliary label being the target question in different words. What remains before this "
+        "is graded is the strategy itself: a joint estimator that takes those auxiliary labels and "
+        "is scored on the same folds as the per-question models, which rungs 2-4 all failed to beat."),
     "empirical_bayes_shrinkage": (
         "Needs a per-cell standard error. The only columns that carry one are the expression fold "
         "changes, which are already shrunk when they are built (`expression_traits`); the node "
