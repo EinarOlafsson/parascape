@@ -1,6 +1,25 @@
 # 72 · The information map: gene × trait values, a matching probability matrix, and calibrated gap filling
 
-**Status: open (requested 2026-11-04).** Builds on 62 (track record), 63 (claims with measured certainty),
+**Status: built 2026-11-09; Einar's review pending -- reopen on his feedback.** Every stage of the plan is
+built or answered, and the answers to the modelling stages are negative:
+
+* **Stage 0-1** (baselines, one model per trait, isotonic calibration): built.
+* **Stage 2** (frozen sequence and structure blocks, never a fine-tuned language model): settled -- frozen
+  features plus simple models remain right here.
+* **Stages 3-4** (guilt by association, joint model over the row): answered by the instruction 73 ladder, which
+  graded exactly these two methods as rungs 3 and 5 over 69 curated-label questions. Both lose to boosted
+  trees, median gain 0.0000. The plan says a joint model replaces per-trait models "only where it beats them on
+  the same folds"; it does not.
+* **Stage 5** (pairs, whole proteins held out): built and answered **no**. Popularity -- the product of the two
+  proteins' recorded partner counts -- scores AUROC 0.998 against the model's 0.913, and the importance table
+  shows the model learnt abundance rather than pairing. The StarPath fitness-difference feature contributes
+  0.000 here.
+* **Stage 6** (fill only above the measured threshold): 19 filled cells, each above the lower-bound bar on at
+  least 2 of 3 partitions (Einar's rule), frozen and dated under instruction 73 phase 6.
+
+**The binding constraint is labels and evidence, not models.** Of four questions that cleared the bar, one
+filled 19 cells, one had every gene already measured, one would have filled 98 % of the unmeasured genes (so
+the measured precision does not carry over) and one failed the partition rule. More cells need more labels.
 70 (scoreboard, deployment rule) and 71 (evidence layers, the three target traits).
 
 ## The request (Einar, 2026-11-04)
