@@ -2027,6 +2027,8 @@ PF_PATTERNS = {
     # earlier days hold 408 to 71,738 parasite reads in all, too few for a per-gene value -- and
     # GSE286083's DMSO arms only, its inhibitor arm being a different question.
     "transcription · liver stage": ["expr_pf_liver_day6"],
+    # One factor, one replicate, a continuous occupancy (instruction 41, Einar's call 2026-11-09).
+    "TF binding · per factor": ["dbsp_occupancy"],
     "translation efficiency · asexual blood stage": ["pf_translation_efficiency_log2",
                                                      "pf_ribosome_footprint_cpm"],
     # Efficiency per cycle phase, computed from the footprint and mRNA pairs already shipped

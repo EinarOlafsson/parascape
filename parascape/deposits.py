@@ -1444,6 +1444,85 @@ def pf_translation_efficiency(root: str) -> pd.DataFrame:
                          "pf_ribosome_footprint_cpm": np.log2(footprints + 1).round(4).to_numpy()})
 
 
+PF_DBSP_CHIP = ("DNA", "ChIPseq", "GSE337518", "GSM9856928_PfDBSP_inputnormalized.bedgraph.gz")
+PF_GENE_BUILD = ("reference", "ensembl_protists_r63",
+                 "Plasmodium_falciparum.GCA000002765v3.63.gff3.gz")
+PROMOTER_WINDOW = 2000
+
+
+def _pf_gene_intervals(root: str):
+    """Plasmodium gene coordinates from the Ensembl Protists r63 build, or None when it is absent.
+
+    Neither shipped table carries gene start, end or strand, and PlasmoDB is behind a login, so the build is
+    the only way to turn an interval track into a per-gene value.
+    """
+    import gzip
+    import re
+
+    path = _file(root, *PF_GENE_BUILD)
+    if path is None:
+        return None
+    rows = []
+    with gzip.open(path, "rt") as handle:
+        for line in handle:
+            if line.startswith("#"):
+                continue
+            field = line.rstrip("\n").split("\t")
+            if len(field) < 9 or field[2] != "gene":
+                continue
+            found = re.search(r"ID=gene:([^;]+)", field[8])
+            rows.append((found.group(1) if found else "", field[0], int(field[3]), int(field[4]), field[6]))
+    return pd.DataFrame(rows, columns=["gene_id", "seqid", "start", "end", "strand"])
+
+
+def pf_dbsp_occupancy(root: str) -> pd.DataFrame:
+    """How much PfDBSP sits on each gene (GSE337518): ChIP coverage divided by input, averaged per gene.
+
+    The deposit is an interval track, not a peak list, so the per-gene value is the input-normalised coverage
+    averaged over the gene and 2 kb upstream of its start -- the promoter on the strand the gene is read from.
+    Averaging over a step function is done by cumulative signal, so the answer is exact rather than sampled.
+
+    **One replicate.** The series holds a single ChIP sample and a single input, so replicate agreement cannot
+    be checked at all. That is a different limitation from the AP2-HS series refused on 2026-11-09, whose two
+    replicates disagreed 25 peaks against 1,727; here there is nothing to disagree with. Einar took the call to
+    use it on 2026-11-09 knowing its target is described as a double-stranded-DNA-binding protein rather than a
+    classical ApiAP2. A continuous occupancy, never a bound/not-bound flag: calling a threshold would invent a
+    confidence the single replicate does not support.
+    """
+    import numpy as np
+
+    path = _file(root, *PF_DBSP_CHIP)
+    genes = _pf_gene_intervals(root)
+    if path is None or genes is None or genes.empty:
+        return pd.DataFrame()
+    track = pd.read_csv(path, sep="\t", header=None, names=["seqid", "start", "end", "value"])
+    scored = {}
+    for chrom, block in genes.groupby("seqid"):
+        chromosome = track[track.seqid == chrom]
+        if chromosome.empty:
+            continue
+        edges = np.concatenate([chromosome.start.to_numpy(), [chromosome.end.to_numpy()[-1]]])
+        values = chromosome.value.to_numpy()
+        cumulative = np.concatenate([[0.0], np.cumsum(values * np.diff(edges))])
+
+        def mean_over(low, high):
+            i = int(np.clip(np.searchsorted(edges, low, "right") - 1, 0, len(values) - 1))
+            j = int(np.clip(np.searchsorted(edges, high, "right") - 1, 0, len(values) - 1))
+            if j <= i:
+                return float(values[i])
+            total = (cumulative[j] - cumulative[i + 1] + values[i] * (edges[i + 1] - low)
+                     + values[j] * (high - edges[j]))
+            return float(total / max(high - low, 1))
+        for gene in block.itertuples():
+            low = gene.start - PROMOTER_WINDOW if gene.strand == "+" else gene.start
+            high = gene.end if gene.strand == "+" else gene.end + PROMOTER_WINDOW
+            scored[gene.gene_id] = mean_over(max(low, 0), high)
+    if not scored:
+        return pd.DataFrame()
+    series = pd.Series(scored)
+    return pd.DataFrame({"gene_id": series.index, "dbsp_occupancy": series.round(4).to_numpy()})
+
+
 # --------------------------------------------------------------------------- the list
 @dataclass(frozen=True)
 class Deposit:
@@ -1487,6 +1566,7 @@ DEPOSITS = (
     Deposit("pf_resistome", "Pf", pf_resistome),
     Deposit("pf_liver_transcriptome", organisms.FALCIPARUM, pf_liver_transcriptome),
     Deposit("pf_translation_efficiency", organisms.FALCIPARUM, pf_translation_efficiency),
+    Deposit("pf_dbsp_occupancy", organisms.FALCIPARUM, pf_dbsp_occupancy),
     Deposit("host_hff_tg_infection", "Hs", hff_tg_infection),
     Deposit("host_bmdm_baseline", "Mm", bmdm_baseline),
     Deposit("host_hepatocyte_pf_infection", "Hs", hepatocyte_pf_infection),

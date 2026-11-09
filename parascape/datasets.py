@@ -2909,6 +2909,23 @@ REGISTRY = [
                  "another phase's mRNA; the sources are already length-normalised densities, so the ratio "
                  "needs no further correction. The span needs two phases, because one phase is a value and "
                  "not a change.", organism=organisms.FALCIPARUM),
+    Dataset("pf_dbsp_occupancy", "PfDBSP occupancy per gene", "DNA", "ChIPseq",
+            "How much PfDBSP sits on each gene and its promoter, as ChIP coverage over input",
+            ("dbsp_occupancy",),
+            "5,318 genes", accession="GSE337518",
+            citation="GSE337518, PfDBSP ChIP-seq in P. falciparum 3D7",
+            url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE337518",
+            path="datasets/DNA/ChIPseq/GSE337518/GSM9856928_PfDBSP_inputnormalized.bedgraph.gz",
+            note="An interval track, not a peak list, so the per-gene value is input-normalised coverage "
+                 "averaged over the gene and 2 kb upstream of its start on the strand it is read from; the "
+                 "gene coordinates come from Ensembl Protists r63, since neither shipped table carries them "
+                 "and PlasmoDB is behind a login. ONE REPLICATE: a single ChIP and a single input, so "
+                 "replicate agreement cannot be checked -- unlike the AP2-HS series refused the same day, "
+                 "whose replicates disagreed 25 peaks against 1,727, here there is nothing to disagree with. "
+                 "A continuous occupancy and never a bound/not-bound flag, because a threshold would invent a "
+                 "confidence one replicate does not support. Its target is described as a double-stranded-DNA "
+                 "binding protein rather than a classical ApiAP2; Einar took the call to use it on 2026-11-09.",
+            organism=organisms.FALCIPARUM),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

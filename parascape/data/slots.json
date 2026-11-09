@@ -8760,17 +8760,14 @@
     "axis": "regulation",
     "context": "ChIP / CUT&RUN",
     "unit": "gene",
-    "patterns": [],
+    "patterns": [
+      "dbsp_occupancy"
+    ],
     "policy": "separate",
     "candidates": [
       [
         "",
         "GSE337518",
-        "from the GEO index; verify assay and parasite-gene shape"
-      ],
-      [
-        "",
-        "GSE339382",
         "from the GEO index; verify assay and parasite-gene shape"
       ],
       [

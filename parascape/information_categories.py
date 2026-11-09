@@ -91,6 +91,8 @@ LEVEL_KIND_CATEGORIES = {
     ("DNA", "CRISPR_screen"): ("fitness",),
     ("DNA", "imaging_screen"): ("phenotype",),
     ("DNA", "ATACseq"): ("chromatin",),
+    # 2026-11-09: where a DNA-binding protein sits is chromatin evidence, not a property of the gene.
+    ("DNA", "ChIPseq"): ("chromatin",),
     ("DNA", "CUTandTAG"): ("chromatin",),
     ("DNA", "ChIPchip"): ("chromatin",),
     ("transcription", "RNAseq"): ("transcript",),
