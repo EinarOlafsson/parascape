@@ -67,6 +67,8 @@ class InferModule(QtCore.QObject):
         self.uses_layout = QtWidgets.QVBoxLayout(uses)
         self.uses_layout.setContentsMargins(6, 2, 6, 6)
         self.uses_note = _muted("")
+        #: column -> why it is held out for circularity, for the tooltip and for the tests.
+        self._circular: dict = {}
         self.uses_layout.addWidget(self.uses_note)
         self.uses_boxes: dict = {}
         shell.add_setting("What the answer may use", uses)
@@ -261,13 +263,28 @@ class InferModule(QtCore.QObject):
         try:
             counts = input_categories(nodes, recipe)
             held = set(_categories(recipe.organism)(recipe.holdout)) - {"identity"}
+            from .recipes import same_category
+            circular = same_category(nodes, recipe.holdout, recipe.organism)
         except Exception as error:
             self.uses_note.setText(f"Could not read the inputs: {error}")
             return
         own = ", ".join(sorted(c.replace("_", " ") for c in held)) or "none recorded"
+        # The COUNT of held-out columns, not only the kinds: "place is held out" does not tell a reader
+        # whether that cost them two columns or two hundred, and the answer changes how much to trust what
+        # is left (instruction 73).
         self.uses_note.setText("Kinds of evidence the question's inputs hold. Untick one to leave it "
                                f"out. Held out always: the label's own kind ({own}), so the answer "
-                               "is not circular.")
+                               f"is not circular -- {len(circular)} column"
+                               f"{'s' if len(circular) != 1 else ''} left out for that reason.")
+        self._circular = circular
+        if circular:
+            listing = "\n".join(f"{column}: {reason}" for column, reason in sorted(circular.items())[:40])
+            if len(circular) > 40:
+                listing += f"\n... and {len(circular) - 40} more"
+            self.uses_note.setToolTip("Held out because each shares the label's kind of knowledge:\n\n"
+                                      + listing)
+        else:
+            self.uses_note.setToolTip("No column shares the label's kind of knowledge.")
         for category, n in counts.items():
             if category == "identity":
                 continue

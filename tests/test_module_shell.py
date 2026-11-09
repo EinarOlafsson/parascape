@@ -464,6 +464,27 @@ def test_the_infer_data_step_holds_out_the_labels_kind_and_lets_you_leave_out_ot
     assert window.panel.question_leave_out == ()
 
 
+def test_the_infer_data_step_says_how_many_columns_circularity_removed(window):
+    """Instruction 73: the kinds are not enough -- the COUNT and the columns themselves are shown.
+
+    "place is held out" does not tell a reader whether that cost two columns or two hundred, and the answer
+    changes how much to trust what is left. The names and reasons go in the tooltip, because the note must stay
+    one line.
+    """
+    module = window.infer_module.module
+    module.refresh_uses()
+    note = module.uses_note.text()
+    assert "left out for that reason" in note
+    circular = module._circular
+    assert isinstance(circular, dict)
+    assert str(len(circular)) in note, "the note must carry the number of columns held out"
+    tooltip = module.uses_note.toolTip()
+    if circular:
+        first = sorted(circular)[0]
+        assert first in tooltip and circular[first][:12] in tooltip
+    else:
+        assert "No column shares" in tooltip
+
 def test_the_gene_module_lists_what_each_method_said_held_out(window):
     module = window.gene_module.module
     module.show(str(window.nodes.gene_id.iloc[0]))

@@ -348,8 +348,13 @@ changed.
   day; before that the gate would have been a permanent exception. Tests:
   `test_the_ingest_gate_refuses_an_uncategorised_column_at_load_time`,
   `test_both_shipped_tables_pass_the_ingest_gate`.
-* **Still open from this piece:** the data picker (`Label -> Infer`) does not yet show the
-  excluded-by-circularity set.
+* **The data picker shows the excluded set, 2026-11-09.** `Label -> Infer` -> "What the answer may use" now
+  names the COUNT of columns circularity removed, with the columns and their reasons in the tooltip. The kinds
+  alone were not enough: "place is held out" does not tell a reader whether that cost two columns or two
+  hundred, and the answer changes how much to trust what is left. On the shipped question it reads "the label's
+  own kind (place), so the answer is not circular -- 45 columns left out for that reason", and the tooltip
+  names each (`compartment: same information category as compartment_best (place)` ...). Rendered and read in
+  the real window. Test: `test_the_infer_data_step_says_how_many_columns_circularity_removed`.
 
 
 ## A seventeenth category: `function` (Einar, 2026-11-05)
