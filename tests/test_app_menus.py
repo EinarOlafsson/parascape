@@ -1238,9 +1238,17 @@ def test_the_species_menu_marks_the_one_that_is_open(qapp):
         assert [a.text() for a in maps] == available_species()
         assert [a.text() for a in maps if a.isChecked()] == ["Plasmodium falciparum"]
         # Host gene packs follow the maps with their state, never as calibrated (instruction 64.23).
+        # Rat and cat joined on 2026-11-09 with gene builds only: they are listed so a reader knows the
+        # space exists, and DISABLED because no pack can be installed, which is their honest state.
+        from parascape import space_catalogue
         hosts = [a for a in menu.actions() if not a.isCheckable() and not a.isSeparator()]
-        assert {a.text().split(" -- ")[0] for a in hosts} == {"Homo sapiens", "Mus musculus"}
+        named = {a.text().split(" -- ")[0] for a in hosts}
+        assert named == {space_catalogue._host_space(c).species for c in space_catalogue.HOST_PACK_SPACES}
+        assert {"Homo sapiens", "Mus musculus"} <= named
         assert all("not calibrated" in a.statusTip() for a in hosts)
+        states = {e.code: e.state for e in space_catalogue.catalogue()}
+        for code, act in w.host_space_actions.items():
+            assert act.isEnabled() == (states[code] == "installable"), code
     finally:
         w.close()
 
