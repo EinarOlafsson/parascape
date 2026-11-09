@@ -186,3 +186,26 @@ mapping and best-source selection remain unresolved; 65.04 stays4%.
 
 Still open: batch 4 (origin-paper verification for all 162; the 11 unresolved and 2 to confirm above); Einar's
 look at the Pf lactylation replacement.
+
+## 65.04 batch 4, origin-paper verification (2026-11-08)
+
+`scripts/verify_origin_papers.py` -> `results/dataset_selection_2026_11_08/origin_paper_verification.tsv`; the
+queue column `origin_paper_verified` is written from it. The check that can be automated: does the paper recorded
+for a source actually name the deposit the data came from? Europe PMC is searched for the accession and the
+recorded publication must be among the papers that name it.
+
+| Verdict | Sources |
+|---|---:|
+| **verified**: the recorded paper names the deposit | 25 |
+| supplementary table of a named paper: the recorded location IS the paper, nothing to cross-check | 92 |
+| no accession recorded, so this check cannot apply | 30 |
+| no publication recorded (the 11 of batch 4) | 11 |
+| accession named in other papers, not the recorded one -- read before accepting | 2 |
+| real deposit that no indexed paper names (PXD058095, GSE302107) | 2 |
+
+**PXD058095 is the morc_depletion link flagged earlier**, and this check does not support it: no indexed paper
+names that deposit, so the PRIDE reference is the only evidence. It stays flagged for Einar.
+
+25 of 162 sources are verified by deposit. For the 92 supplementary-table sources the paper is the location, so
+verification means reading the table against the installed columns -- that is reading work, not a query, and it
+is what remains of batch 4.

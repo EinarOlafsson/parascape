@@ -1,0 +1,163 @@
+dataset_id	accession	verdict	detail
+esm2_protein		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+local_af3		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+xue_singlecell		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+stage_enriched		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+toxodb_identity	ToxoDB ME49	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_strain_snps	ToxoDB ME49	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_codon_usage	ToxoDB ME49	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+orthomcl	OrthoMCL release 6.21	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+interpro		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+alphafold	UP000001529 (taxid 508771), AlphaFold DB	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+lopit_tgon		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+lopit_pfal		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+lopit_cpar		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+gse108740	GSE108740	no publication recorded	accession_publications_need_review
+gse206344	GSE206344	no publication recorded	accession_publications_need_review
+gse22258	GSE22258	no publication recorded	accession_publications_need_review
+gse168465	GSE168465	verified	GSE168465 is named in PMID 34610266, the recorded paper
+gse99395	GSE99395	verified	GSE99395 is named in PMID 29228904, the recorded paper
+gse129869	GSE129869	verified	GSE129869 is named in PMID 31167946, the recorded paper
+gse19092	GSE19092	verified	GSE19092 is named in PMID 20865045, the recorded paper
+gse51780	GSE51780	verified	GSE51780 is named in PMID 24885521, the recorded paper
+gse168155	GSE168155	verified	GSE168155 is named in PMID 34263725, the recorded paper
+gse200962	GSE200962	no publication recorded	accession_publications_need_review
+gse253884_5	GSE253884	verified	GSE253884 is named in PMID 39082802, the recorded paper
+invivo_brain_transcriptome		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+gse132248_stress	GSE132248	accession found in other papers	GSE132248 appears in PMID 39533086, not in the recorded 31955846 -- read before accepting
+morc_depletion	PXD058095	accession not found in any paper text	Europe PMC returned no paper naming PXD058095
+crispr_invitro		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+crispr_invivo_composite	Nat Microbiol 2024 Supplementary Data 5	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+crispr_serum_restriction	Nat Commun 2025 Supplementary Data 2 (MOESM4)	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+crispr_glucose_limitation	bioRxiv 10.1101/2025.07.27.667068 Table S1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+crispr_parasite_density	Cell 2026 Supplementary Table 1 (mmc2)	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+crispr_macrophage		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+crispr_young2019		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+gra17_synthlethal		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+invivo_platform		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+gra12		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+hosttx_effectors		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+bioid_corpus_membership		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+ipms_corpus_membership		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+proteome_pru	PXD043808	verified	PXD043808 is named in PMID 38278808, the recorded paper
+proteome_total	PXD039400	verified	PXD039400 is named in PMID 38093015, the recorded paper
+phosphosites		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+phospho_quantitative	PXD017032	verified	PXD017032 is named in PMID 35164288, the recorded paper
+oocyst_itraq	PXD003765	verified	PXD003765 is named in PMID 28626452, the recorded paper
+starpath_xlms		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+ipms_baits	PXD043808	verified	PXD043808 is named in PMID 38278808, the recorded paper
+foldseek_struct		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+bioid_corpus		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+pulldown_corpus		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+pubmed		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+pmc_oa		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+gse223620_bfd2_rip	GSE223620	no publication recorded	accession_publications_need_review
+gse245775	GSE245775	verified	GSE245775 is named in PMID 38782906, the recorded paper
+gse313048_atac	GSE313048	no publication recorded	accession_publications_need_review
+gse277553_cuttag	GSE277553	no publication recorded	accession_publication_not_found
+toxodb_palmitome	ToxoDB Foe palmitome	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+iedb_bcell	IEDB bcell_search	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_epitopes	ToxoDB / IEDB	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_h4_acetylation	ToxoDB Hakimi/Ali H4 acetylation	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_macrophage	ToxoDB Saeij 29 strains	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_ec_numbers	ToxoDB ME49	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+crosslink_interactome	mBio 02159-25 supplementary file s0004	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pvm_proximity	mBio 00260-21 Data Set S1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+cdpk1_substrates	eLife 85654 supplementary file 6	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+mrna_stability	PLoS Pathogens 1012857 Table S12	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+mrna_decay_gse329845	GSE329845	verified	GSE329845 is named in PMID 42580337, the recorded paper
+gse302107_riboseq	GSE302107	accession not found in any paper text	Europe PMC returned no paper naming GSE302107
+gse302108_utr5	GSE302108 / bioRxiv 10.1101/2025.07.14.664749 Supplementary Data 4	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+brady_subtypes	GSE311669 / Supplementary Data 1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+iron_depletion_proteome	mBio Tables S1 and S2	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+organelle_surface_turboid	bioRxiv 10.64898/2026.08.05.743015 Table S1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+myristoylome	eLife 57861 supplementary file 4	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_arginine_methylation	ToxoDB Yakubu monomethylarginine	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_nanopore_isoforms	ToxoDB Stuart/Ralph nanopore	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+toxodb_enteroepithelial	ToxoDB Ramakrishnan enteroepithelial	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pride_acetylation	PXD079431	verified	PXD079431 is named in PMID 42778561, the recorded paper
+pride_proximity	PXD059579	verified	PXD059579 is named in PMID 41193440, the recorded paper
+pride_glycosylation	PXD004426	verified	PXD004426 is named in PMID 27663739, the recorded paper
+pride_nitrosylation	PXD046083	verified	PXD046083 is named in PMID 37959749, the recorded paper
+pride_lactylation	PXD031526	verified	PXD031526 is named in PMID 35610722, the recorded paper
+pride_ubiquitination	PXD042937	no publication recorded	resolved_by_pride_reference (confirm)
+oxidative_stress_screen	PMC8216390 Data Sheet 1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+spacr_escrt_screen	spaCR screen	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+myr1_host_ip	PXD016383	verified	PXD016383 is named in PMID 32075880, the recorded paper
+pv_host_uptake	PLoS Pathogens 1010138 supplementary table	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+metabolome_iron	mBio 03788-25 Tables S3 and S5	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+lipidome_vesicles	Front Cell Infect Microbiol 1745625 Tables 1-3	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+curated_enteric_fitness	PMIDs 28288194	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+curated_drug_sensitivity	mBio	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+curated_resistance_alleles	Int J Parasitol Drugs Drug Resist	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+splitcas9_imaging_screen	Nat Microbiol 41564-2022-01114 Supplementary Tables 2 and 3B	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+plasmodb_pf3d7_attributes	PlasmoDB GenesByTaxon attributesTabular	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+plasmodb_pf3d7_orthology	PlasmoDB GenesByTaxon attributesTabular	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+plasmodb_pf3d7_domains	PlasmoDB GenesByTaxon attributesTabular	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+plasmodb_pf3d7_snps	PlasmoDB GenesByTaxon attributesTabular	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_latency_transcriptome	bioRxiv 10.64898/2026.09.13.751295 Supplementary Tables 7 and 24	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_m6a_nanopore	bioRxiv 10.64898/2026.05.19.726191 Supplementary Tables 6-8	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_gametocyte_proteome	PXD075878 / bioRxiv 10.64898/2026.03.24.713170 Extended Data Tables 1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_target_engagement	PXD048737-PXD048772 / bioRxiv 10.64898/2026.01.30.702724 Table S3	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_febrile_phospho	PXD073843 / eLife Supplementary File 1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_chromatin_proxiome	bioRxiv 10.1101/2025.09.23.678001 Tables S1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_meltome	PXD056075 / Nat Microbiol Supplementary Table 1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_pb_fertility_transfer	Cell Systems Table S1 sheet A	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+plasmodb_pf3d7_piggybac	PlasmoDB GenesByTaxon attributesTabular	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+plasmodb_pf3d7_expression	PlasmoDB: Su seven stages, Bunnik polysomal IDC, Gomez-Diaz mosquito stages	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_alphafold_confidence	AlphaFold DB API, per UniProt accession	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_febrile_stress	PlasmoDB Pfal3D7 Febrile temps RNA-Seq	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_sir2_perturbation	PlasmoDB Sir2 KO Marray	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_iedb_bcell	IEDB bcell_search	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_iedb_tcell	IEDB tcell_search	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_derived_stage_labels		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+plasmodb_identity	PlasmoDB 3D7	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_riboseq	GSE58402	verified	GSE58402 is named in PMID 25493618, the recorded paper
+pf_berghei_liver_transfer	Cell 2019 Table S2 (PlasmoGEM liver stage)	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+host_erythrocyte_proteome	Sci Data 06792 Supplementary Table S1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_foldseek_struct		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+host_erythrocyte_surface	Commun Biol 0596 Supplementary Data 2A	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+host_mouse_tissue_transcriptome	E-MTAB-3579	accession found in other papers	E-MTAB-3579 appears in PMID 32867693, 35688908, 41261966, 42686776, not in the recorded 24670764 -- read before accepting
+host_gtex_transcriptome	GTEx v10	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+host_k562_rhoptry_screen	bioRxiv 10.1101/2025.10.16.682961 v2 Table S1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+host_hff_tg_infection	GSE335016	no publication recorded	accession_publication_not_found
+host_bmdm_baseline	GSE267544	verified	GSE267544 is named in PMID 40759751, the recorded paper
+host_hepatocyte_pf_infection	GSE263643	verified	GSE263643 is named in PMID 41428747, the recorded paper
+host_macrophage_surfaceome	PLoS ONE 0121314 S1 File	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_literature	PubMed	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_berghei_transfer	Cell 2017 Table S1 (PlasmoGEM)	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_idc_timing	GSE163144	verified	GSE163144 is named in PMID 34668757, the recorded paper
+pf_ip_ms	Nat Commun 16044 Supplementary Tables 1-5	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_cdpk1_dependent_sites	Nat Commun 00053 Supplementary Data 2a	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_secretome	Wellcome Open Res 11910 S2 (PRIDE PXD006925)	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_isoforms	Malar J 05376 Supplementary Data 2	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_lactylome	PLoS Genet 1011991 S1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_acetylome	Sci Rep 19722 S2	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_myristoylome	PLoS Biol 3001408 S11	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_palmitome	Front Cell Infect Microbiol Table 3	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_phosphoproteome_meta	PXD046874	verified	PXD046874 is named in PMID 39475123, the recorded paper
+plasmodb_pf3d7_exportpred	PlasmoDB GenesByExportPrediction	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_host_degree		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+pf_enzyme_classification	PlasmoDB ec_numbers and ec_numbers_derived	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_codon_usage	PlasmoDB-68 Pfalciparum3D7 AnnotatedCDSs	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_host_bridge_xlms	Cell Rep mmc1 sheet D	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_complexes	Cell Rep mmc5 Clusters	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_crosslink_ms	Cell Rep mmc1 sheet D	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_relation_layers		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+cotranslation_edges		no accession to look for	the source records no deposit, so the paper cannot be confirmed this way
+m6a_peaks	PLoS Pathogens 1009335 Table S3A	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+sexual_stages	PMC13042011 supplementary media-2	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+secretome_partition	ToxoDB Ramirez-Flores vesicles	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+antisense_level	ToxoDB full life-cycle transcriptome, Antisense	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+melting_temperature	eLife 80336 supplementary file 3	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+thermal_shift_cetsa	PMC9436416 Supplementary file 3	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+cyst_wall_interactome	PMC7002340 Data Set S1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+second_background_fitness	GSE132237	no publication recorded	accession_publication_not_found
+differentiation_screen	GSE132237	no publication recorded	accession_publication_not_found
+pf_spatial_proteome	PXD070842 / Nat Commun Supplementary Data 1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_field_variation	Nat Commun Supplementary Data 3	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_mrna_dynamics	GSE66669 / Nat Commun Supplementary Data 2	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_hsp90_chemoproteome	PXD079493 / bioRxiv 10.64898/2026.08.28.747854 Tables S1-S2	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_rna_dependence	MassIVE MSV000091565 / Nat Commun Supplementary Data 1	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_committed_proteome	PXD059080 / MCP Table S3	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
+pf_resistome	Science Supplementary Data 3	supplementary table of a named paper	the recorded location is the paper itself, so there is no deposit to cross-check
