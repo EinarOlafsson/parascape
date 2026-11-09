@@ -2804,3 +2804,23 @@ so the index cannot re-propose it.
 **The lesson for the verification pass:** reading the record is necessary and not sufficient. A record can be
 accurate and the deposit still unusable, and only opening the data tells you. The 8 "admissible" verdicts of this
 morning were record-level judgements; this is the first to be opened, and it fell.
+
+## 2026-11-09: the index proposed an installed dataset a second time
+
+Einar approved adding PXD075878 to the uniform re-search selection (instruction 65) so it could fill
+`Pf_protein abundance · other life stages`. **It needs neither, and two separate reasons say so:**
+
+1. **It is already shipped.** `pf_gametocyte_proteome` IS PXD075878 -- same accession -- and it already fills
+   `Pf_protein abundance · gametocyte` (2,528 genes, 44.2 %). The slot the index proposed it for, "other life
+   stages", would have been a second copy of the gametocyte column under a different slot name. This is the
+   second time today the index has offered a dataset ParaScape ships, after GSE58402.
+2. **It could not have been searched there anyway.** Every one of the 104 searched projects used
+   `parascape_ms_ME49_human_mouse_contaminants.fasta`, and the reference directory holds no Plasmodium protein
+   FASTA. The selection rule is explicitly Toxoplasma (`toxoplasm|gondii|maf1|gra/rop/mic|pvm|parasitophorous`).
+   A Plasmodium gametocyte proteome searched against a Toxoplasma database would identify next to nothing.
+
+So the selection is unchanged and nothing was added to it. If a Plasmodium proteome lane is ever wanted it needs
+its own FASTA and its own selection rule, which is a new instruction rather than an addition to this one.
+
+**The rule this makes unavoidable:** any further literature sweep must subtract the registry's own accessions
+before proposing anything. Two of the eight "admissible" candidates were already installed.
