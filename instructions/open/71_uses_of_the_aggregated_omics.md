@@ -1,6 +1,6 @@
 # 71 · What the aggregated omics are for: four products on the uniform RNA and MS data
 
-**Status: open, planning (requested 2026-11-04).** Work can start on the runs already verified while
+**Status: built 2026-11-08; Einar's review pending -- reopen on his feedback.** All four products are built: (1) co-expression -> localization through the harness, (2) the perturbation atlas, (3) the host response atlas with its query, cross-lab recovery and the species crossed, (4) the background frequency, which continues as instruction 80 (its own gate). Originally: Work can start on the runs already verified while
 downloads continue (instruction 69); every product is rebuilt as the queue fills, never hand-patched.
 
 ## The request (Einar, 2026-11-04)
