@@ -1378,6 +1378,72 @@ def pf_resistome(root: str) -> pd.DataFrame:
     return out.reset_index()
 
 
+PF_LIVER_COUNTS = ("transcription", "RNAseq", "GSE220039",
+                   "GSE220039_PfHsMmu_GRCh38_GRCm39_Pf3D7v58_raw_counts.csv.gz")
+PF_TE_COUNTS = ("translation", "riboseq", "GSE286083", "GSE286083_raw_counts.txt.gz")
+
+
+def pf_liver_transcriptome(root: str) -> pd.DataFrame:
+    """Parasite transcription in the liver stage (GSE220039): humanised-mouse liver, days 0 to 6.
+
+    Reads mapped jointly to P. falciparum, human and mouse; only the 5,720 PF3D7 rows are kept, and
+    counts are renormalised to the PARASITE total of each sample, because the parasite is a tiny
+    minority of a liver biopsy and a joint CPM would be a statement about hepatocytes.
+
+    **Only day 6 is shipped, and the reason is the measurement.** The parasite reads in the whole
+    series are 408 on day 0, 27,260 on day 2 and 71,738 on day 4, against 9,165,928 on day 6. Across
+    5,720 genes, day 4 averages twelve reads a gene and day 2 under five, so a per-gene value for
+    those days would be noise wearing a number. Day 6 is the late liver stage just before merozoite
+    release, which is the biology the slot asks for; the early days are named here and left out.
+    """
+    path = _file(root, *PF_LIVER_COUNTS)
+    if path is None:
+        return pd.DataFrame()
+    counts = pd.read_csv(path)
+    counts = counts.rename(columns={counts.columns[0]: "gene_id"})
+    counts["gene_id"] = counts["gene_id"].astype(str).str.strip()
+    parasite = counts[counts.gene_id.str.startswith("PF3D7_")].set_index("gene_id")
+    day6 = [c for c in parasite.columns if str(c).startswith("Day6.")]
+    if not day6:
+        return pd.DataFrame()
+    total = parasite[day6].to_numpy().sum()
+    cpm = 1e6 * parasite[day6].sum(axis=1) / total
+    return pd.DataFrame({"gene_id": parasite.index,
+                         "expr_pf_liver_day6": np.log2(cpm + 1).round(4).to_numpy()})
+
+
+def pf_translation_efficiency(root: str) -> pd.DataFrame:
+    """How much each transcript is translated in the blood stage (GSE286083): Ribo-seq over mRNA.
+
+    Ribosome profiling and matched total RNA of the same trophozoite cultures. Only the **DMSO**
+    arms are used: the series also holds an i14G1-12 inhibitor arm, and a drug-treated sample
+    answers a different question from "how well is this transcript translated".
+
+    Cycloheximide-arrested ribosome footprints, because the harringtonine arms have no matched RNA
+    and so cannot give a ratio. Efficiency is log2 of footprint CPM over mRNA CPM, which is the
+    published definition; a gene with no footprints and no mRNA is left missing rather than zero.
+    """
+    path = _file(root, *PF_TE_COUNTS)
+    if path is None:
+        return pd.DataFrame()
+    counts = pd.read_csv(path, sep="\t", index_col=0)
+    counts.index = counts.index.astype(str).str.strip()
+    ribo = [c for c in counts.columns if c.startswith("RIBO_CHX_DMSO")]
+    rna = [c for c in counts.columns if c.startswith("RNA_CHX_DMSO")]
+    if not ribo or not rna:
+        return pd.DataFrame()
+    def cpm(columns):
+        block = counts[columns]
+        return 1e6 * block.sum(axis=1) / block.to_numpy().sum()
+    footprints, transcripts = cpm(ribo), cpm(rna)
+    measured = (footprints > 0) & (transcripts > 0)
+    efficiency = pd.Series(np.nan, index=counts.index)
+    efficiency[measured] = np.log2(footprints[measured] / transcripts[measured])
+    return pd.DataFrame({"gene_id": counts.index,
+                         "pf_translation_efficiency_log2": efficiency.round(4).to_numpy(),
+                         "pf_ribosome_footprint_cpm": np.log2(footprints + 1).round(4).to_numpy()})
+
+
 # --------------------------------------------------------------------------- the list
 @dataclass(frozen=True)
 class Deposit:
@@ -1419,6 +1485,8 @@ DEPOSITS = (
     Deposit("pf_rna_dependence", "Pf", pf_rna_dependence),
     Deposit("pf_committed_proteome", "Pf", pf_committed_proteome),
     Deposit("pf_resistome", "Pf", pf_resistome),
+    Deposit("pf_liver_transcriptome", organisms.FALCIPARUM, pf_liver_transcriptome),
+    Deposit("pf_translation_efficiency", organisms.FALCIPARUM, pf_translation_efficiency),
     Deposit("host_hff_tg_infection", "Hs", hff_tg_infection),
     Deposit("host_bmdm_baseline", "Mm", bmdm_baseline),
     Deposit("host_hepatocyte_pf_infection", "Hs", hepatocyte_pf_infection),

@@ -7615,7 +7615,10 @@
     "axis": "translation",
     "context": "asexual blood stage",
     "unit": "gene",
-    "patterns": [],
+    "patterns": [
+      "pf_translation_efficiency_log2",
+      "pf_ribosome_footprint_cpm"
+    ],
     "policy": "separate",
     "candidates": [
       [
@@ -11295,7 +11298,9 @@
     "axis": "transcription",
     "context": "hepatocyte",
     "unit": "gene",
-    "patterns": [],
+    "patterns": [
+      "expr_pf_liver_day6"
+    ],
     "policy": "one",
     "candidates": [
       [

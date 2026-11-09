@@ -2023,6 +2023,12 @@ PF_PATTERNS = {
     "interaction · with host proteins": ["bridge:host"],
     "noncoding and antisense transcription": ["antisense_"],
     "codon usage / translation efficiency": ["codon_"],
+    # Acquired 2026-11-09 after reading the deposit (instruction 41): GSE220039 day 6 only -- the
+    # earlier days hold 408 to 71,738 parasite reads in all, too few for a per-gene value -- and
+    # GSE286083's DMSO arms only, its inhibitor arm being a different question.
+    "transcription · liver stage": ["expr_pf_liver_day6"],
+    "translation efficiency · asexual blood stage": ["pf_translation_efficiency_log2",
+                                                     "pf_ribosome_footprint_cpm"],
     # Curated first: `one` picks the leading candidate, and the orthology-derived field is inference.
     "enzyme classification": ["ec_number", "has_ec", "ec_number_orthology"],
     "host interaction degree": ["n_host_targets"],

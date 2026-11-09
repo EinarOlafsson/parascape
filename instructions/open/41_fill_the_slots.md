@@ -2705,3 +2705,36 @@ candidate (PXD075878) is not downloaded. Adding it is a selection change for Ein
 
 Open: the 8 admissible deposits are proposals, not fills -- each needs acquisition and the per-gene table built
 before its slot grades above empty.
+
+## 2026-11-09, later: two slots actually filled
+
+The first two of the 8 admissible deposits are acquired, derived and merged, so the slots grade A rather than
+empty. The catalogue moves 135 empty (was 137), `gene` coverage 191 of 276 (was 189).
+
+* **`Pf_translation efficiency · asexual blood stage`** <- GSE286083, as `pf_translation_efficiency_log2`
+  (5,405 genes) and `pf_ribosome_footprint_cpm` (5,720). Ribosome footprints over matched mRNA of the same
+  trophozoite cultures. **Only the DMSO arms**: the series also holds an i14G1-12 inhibitor arm, which answers a
+  different question. Cycloheximide footprints only, because the harringtonine arms have no matched RNA and so
+  cannot give a ratio. A gene with no footprints AND no mRNA is missing rather than zero -- it was not measured,
+  not measured as untranslated. One stage, so this is not a cycle-wide efficiency.
+* **`Pf_transcription · liver stage`** <- GSE220039, as `expr_pf_liver_day6` (5,720 genes). Reads mapped jointly
+  to parasite, human and mouse; only the PF3D7 rows are kept and renormalised to the **parasite** total, because
+  the parasite is a small minority of a liver biopsy and a joint CPM would describe hepatocytes.
+  **Only day 6 is shipped, and that is the measurement talking:** the series holds 408 parasite reads on day 0,
+  27,260 on day 2 and 71,738 on day 4, against 9,165,928 on day 6. Over 5,720 genes that is twelve reads a gene on
+  day 4 and under five on day 2, so an early-day column would be noise wearing a number. Day 6 is the late liver
+  stage before merozoite release, which is what the slot asks. The P. vivax arm of the same series is not read:
+  there is no shipped vivax table to put it in.
+
+Both followed the ordinary path -- deposit in the dataset taxonomy with `URLS.txt` and `SHA256SUMS.txt`, a derive
+function in `deposits.py`, a registry entry, `derive_deposits.py` then `add_deposits.py`, the slot patterns, the
+regenerated catalogue, dataset scripts and `docs/datasets.md`.
+
+**A leakage hazard found on the way, and worth Einar's eye.** The information category of a column is resolved
+from its dataset's level and kind, and the registry spells one kind two ways: `translation/riboseq` in lower case
+was in NO category map, so the ten `riboseq_*` columns of `pf_riboseq` -- shipped for months -- carried no
+category at all. Instruction 73 treats an uncategorised column as unusable, which is the safe failure, but it
+also means those columns were invisible to the category closure rather than held out by it. Fixed by mapping the
+lower-case spelling. **31 Plasmodium columns are still uncategorised** (`gene_type`, `chromosome`, the piggyBac
+indices, the PTM flags, the epitope counts and others); Toxoplasma has none. That is the next thing to close, and
+it is a judgement per column rather than a spelling fix.

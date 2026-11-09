@@ -2857,6 +2857,38 @@ REGISTRY = [
                  "opposite of the choice made for the R-DeeP flag, where the run did quantify every "
                  "protein it reports. The Pf6 columns are field variation over 5,970 isolates, with "
                  "the deposit's -1 for 'not computable' read as missing.", organism=organisms.FALCIPARUM),
+    Dataset("pf_liver_transcriptome", "Liver-stage transcription, late (day 6)", "transcription",
+            "RNAseq",
+            "How much each gene is transcribed in the late liver stage, in a humanised mouse",
+            ("expr_pf_liver_day6",),
+            "5,720 genes", pmid="41428747", accession="GSE220039",
+            citation="GSE220039, Plasmodium falciparum and P. vivax liver stages in humanised mice",
+            url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE220039",
+            path="datasets/transcription/RNAseq/GSE220039/"
+                 "GSE220039_PfHsMmu_GRCh38_GRCm39_Pf3D7v58_raw_counts.csv.gz",
+            note="Reads mapped jointly to parasite, human and mouse; only the PF3D7 rows are kept and "
+                 "renormalised to the PARASITE total, because the parasite is a small minority of a "
+                 "liver biopsy and a joint CPM would describe hepatocytes. ONLY DAY 6 IS SHIPPED, and "
+                 "the reason is the measurement: the series holds 408 parasite reads on day 0, 27,260 "
+                 "on day 2 and 71,738 on day 4, against 9,165,928 on day 6 -- across 5,720 genes that "
+                 "is twelve reads a gene on day 4 and under five on day 2, so an early-day column "
+                 "would be noise wearing a number. Day 6 is the late liver stage before merozoite "
+                 "release, which is what the slot asks for. The P. vivax arm of the same series is not "
+                 "read here: there is no shipped vivax table to put it in.", organism=organisms.FALCIPARUM),
+    Dataset("pf_translation_efficiency", "Translation efficiency, asexual blood stage", "translation",
+            "riboseq",
+            "How much each transcript is translated, as ribosome footprints over its own mRNA",
+            ("pf_translation_efficiency_log2", "pf_ribosome_footprint_cpm"),
+            "5,720 genes", pmid="41099697", accession="GSE286083",
+            citation="GSE286083, ribosome profiling with matched RNA in P. falciparum trophozoites",
+            url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE286083",
+            path="datasets/translation/riboseq/GSE286083/GSE286083_raw_counts.txt.gz",
+            note="Only the DMSO arms are used. The series also holds an i14G1-12 inhibitor arm, and a "
+                 "drug-treated sample answers a different question from how well a transcript is "
+                 "translated. Cycloheximide footprints, because the harringtonine arms have no matched "
+                 "RNA and so cannot give a ratio. A gene with no footprints AND no mRNA is missing "
+                 "rather than zero: it was not measured, not measured as untranslated. One stage only "
+                 "(trophozoite), so this is not a cycle-wide efficiency.", organism=organisms.FALCIPARUM),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

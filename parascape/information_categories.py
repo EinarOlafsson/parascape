@@ -101,6 +101,11 @@ LEVEL_KIND_CATEGORIES = {
     ("transcription", "MeRIP"): ("transcript", "modification"),
     ("translation", "Ribo-seq"): ("translation",),
     ("translation", "RiboSeq"): ("translation",),
+    # The registry also spells this kind in lower case, and the spelling is not a category: without
+    # this line the ten `riboseq_*` columns of `pf_riboseq` and the two of
+    # `pf_translation_efficiency` resolve to NO category, which instruction 73 treats as unusable --
+    # found on 2026-11-09 while adding the second of those datasets.
+    ("translation", "riboseq"): ("translation",),
     ("translation", "proteomics"): ("protein_abundance",),
     ("post_translation", "LOPIT"): ("place",),
     ("post_translation", "BioID"): ("interaction",),
@@ -317,6 +322,14 @@ PATTERNS = (
      "column_registry.tsv gives this column's contrast as a RIBOseq library, so it is translation"),
     (re.compile(r"^expr_(rel|abs|lfc|lfcse)_"), ("transcript",), "release_registry",
      "column_registry.tsv gives the study, contrast and normalization of an RNA-abundance column"),
+    # Acquired 2026-11-09 (instruction 41). Ribosome footprints and the efficiency computed from
+    # them are TRANSLATION; the liver-stage column is an RNA abundance, so it is transcript. Both
+    # are declared here rather than left uncategorised, because a column with no category cannot be
+    # held out by category and would quietly cross the leakage closure of instruction 73.
+    (re.compile(r"^pf_(translation_efficiency|ribosome_footprint)"), ("translation",),
+     "release_registry", "Ribo-seq footprints over matched mRNA in the same cultures (GSE286083)"),
+    (re.compile(r"^expr_pf_liver_day\d+$"), ("transcript",), "release_registry",
+     "parasite RNA abundance in the late liver stage, renormalised to parasite reads (GSE220039)"),
 )
 
 # --------------------------------------------------------------------------- the columns
