@@ -582,3 +582,29 @@ partitions** -- seed 0 and two fresh seeds, 4 and 5, with the same strategy each
 
 **The map now holds 19 filled cells, all of them in-vivo brain response.** Earlier `filled_` columns are removed
 before each write, so a withdrawn question leaves nothing behind. The map tests pass (22).
+
+## 2026-11-09: stages 3 and 4 are answered by the strategy ladder, and the answer is no
+
+Stages 3 and 4 of the plan above -- guilt by association over the evidence graph, and a joint model over the
+whole row -- are the same two methods instruction 73 graded as rungs 3 and 5, on the same kind of labels. Both
+lost, on the same folds, by the harness's own selection score:
+
+| Stage here | Rung there | Wins of 68 questions | Median gain over boosted trees |
+|---|---|---:|---:|
+| 3 · guilt by association | 3 · network propagation | 11 | 0.0000 |
+| 4 · joint model over the row | 5 · multi-task | 26 | 0.0000 |
+
+The plan says a joint model "replaces per-trait models only where it beats them on the same folds". It does not,
+so it does not replace them, and building a second implementation of a method already measured on 69 questions
+would spend the frozen-test budget to re-learn a known answer. Stage 2 was settled earlier the same way
+(frozen features plus simple models, recorded above).
+
+**What is genuinely untested here is stage 5, pairs with whole proteins held out** -- the StarPath finding that
+the CRISPR-fitness difference of a pair is predictive. That is a different unit (a pair, not a gene) and the
+ladder says nothing about it.
+
+**And the binding constraint is not the method at all.** 19 filled cells stand in this map, from one question of
+four that cleared the bar on 2 of 3 partitions. Three more questions cleared it and filled nothing: one because
+every gene is already measured, one because it would have filled 98 % of the unmeasured genes (so the measured
+precision does not carry over), and the nucleus question because it failed the partition rule. More cells need
+more labels or better evidence, not another model.
