@@ -392,10 +392,19 @@ share-alike, **V** verify the terms first, **X** local build only.
   organelle genes apart -- `PVP01_API05000`, `PVP01_MIT02100` -- so 33 genes (30 apicoplast, 3 mitochondrial)
   failed validation. Falciparum already handles exactly this; the vivax pattern now matches it.
 
-  All four are listed by `space_catalogue` as **unavailable**: gene build only, no pack. Ag and Pv hold no
-  measurement at all; what each needs first is in `what_each_space_needs.tsv` -- for Ag the Anopheles arm of
-  GSE284537, which is already on disk and unread, and for Pv the vivax arm of GSE220039, likewise on disk.
-  883 tests pass, the Species menu among them.
+  All four are listed by `space_catalogue` as **unavailable**: gene build only, no pack.
+
+  **Both new spaces now hold measurements too, from arms of series already read for other species.** I had
+  said these were "already on disk"; only the falciparum halves were, and the other halves were downloaded:
+  * **Pv: liver-stage expression for all 6,523 genes** (`expr_pv_liver`), from the vivax arm of GSE220039 --
+    the same humanised-liver series read for falciparum. **Controls only**: it pairs them with a PI4K-inhibitor
+    arm, which is a drug experiment and a different question. 9.05 M parasite reads over three controls, and
+    counts renormalised to the parasite total because the parasite is a minority of a liver biopsy.
+  * **Ag: midgut expression at four timepoints** (`expr_midgut_36h/48h/4d/7d`) for all 12,614 genes, from the
+    Anopheles arm of GSE284537 -- the mosquito's own genes responding to infection, where the parasite arm of
+    the same files filled the Plasmodium mosquito-stage slot. Control (dsGFP) arms only, pseudo-bulked.
+
+  883 tests pass including the Species menu, and 750 again after the measurements were added.
 * **Not started:** WP5's second vector (As, Anopheles stephensi).
 
 ## WP6 started: Cryptosporidium parvum (2026-11-08)

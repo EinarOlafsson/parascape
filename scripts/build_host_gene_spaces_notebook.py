@@ -150,7 +150,76 @@ def main() -> None:
             "          f'ortholog; {other} more have only one-to-many or many-to-many and are left empty')",
             "pd.DataFrame({s.code: t[['human_ortholog', 'human_ortholog_high_confidence']].notna().sum()",
             "              for s, t in tables.items() if 'human_ortholog' in t}).T")
-    nb.md("## 4 · Validate and write",
+    nb.md("## 4 · What the parasite space already has on disk",
+          "The P. vivax arm of GSE220039 -- the same humanised-liver series read for falciparum, whose vivax "
+          "half had never been opened. **Controls only**: the series pairs them with a PI4K-inhibitor arm, "
+          "which is a drug experiment and a different question. Counts are renormalised to the PARASITE total, "
+          "because the parasite is a small minority of a liver biopsy.")
+    nb.code("import numpy as np",
+            "PV_LIVER = os.path.join('transcription', 'RNAseq', 'GSE220039',",
+            "                        'GSE220039_PvHsMmu_GRCh38_GRCm39_P01v58_raw_counts.csv.gz')",
+            "pv_path = os.path.join(root, PV_LIVER)",
+            "if VIVAX_SPACE in tables and os.path.exists(pv_path):",
+            "    counts = pd.read_csv(pv_path)",
+            "    counts = counts.rename(columns={counts.columns[0]: 'gene_id'})",
+            "    counts['gene_id'] = counts.gene_id.astype(str).str.strip()",
+            "    parasite = counts[counts.gene_id.str.startswith('PVP01_')].set_index('gene_id')",
+            "    controls = [c for c in parasite.columns if 'Cont' in c]",
+            "    total = parasite[controls].to_numpy().sum()",
+            "    cpm = 1e6 * parasite[controls].sum(axis=1) / total",
+            "    table = tables[VIVAX_SPACE]",
+            "    table['expr_pv_liver'] = table.gene_id.map(np.log2(cpm + 1).round(4))",
+            "    hashes['Pv_liver'] = sha(pv_path)",
+            "    print(f'Pv: {len(controls)} control samples, {int(total):,} parasite reads, '",
+            "          f'{int(table.expr_pv_liver.notna().sum())} of {len(table)} genes with a value')",
+            "    print('   drug arm excluded:', [c for c in parasite.columns if 'PI4K' in c])",
+            "else:",
+            "    print('no vivax liver counts on disk')",
+            "tables[VIVAX_SPACE].head(3) if VIVAX_SPACE in tables else 'no vivax table'")
+    nb.md("## 5 · What the vector space already has on disk",
+          "The Anopheles arm of GSE284537 -- the same infected-midgut series read for the Plasmodium "
+          "mosquito-stage slot, whose mosquito half had never been opened. The **control (dsGFP)** arms only, "
+          "pseudo-bulked per timepoint: the series pairs each with an ecdysone-receptor knockdown, which is a "
+          "perturbation and a different question. These are the mosquito's own genes responding to infection.")
+    nb.code("import glob, gzip, re",
+            "AG_DIR = os.path.join('transcription', 'scRNAseq', 'GSE284537')",
+            "ag_dir = os.path.join(root, AG_DIR)",
+            "matrices = sorted(glob.glob(os.path.join(ag_dir, '*_AnG_*matrix.mtx.gz')))",
+            "if ANOPHELES_SPACE in tables and matrices:",
+            "    per_timepoint = {}",
+            "    for matrix in matrices:",
+            "        tag = re.search(r'_AnG_r\\d-(\\w+)-GFP', os.path.basename(matrix))",
+            "        features = matrix.replace('matrix.mtx.gz', 'features.tsv.gz')",
+            "        if tag is None or not os.path.exists(features):",
+            "            continue",
+            "        with gzip.open(features, 'rt') as handle:",
+            "            genes = [line.split('\\t')[0] for line in handle.read().splitlines()]",
+            "        totals = np.zeros(len(genes))",
+            "        with gzip.open(matrix, 'rt') as handle:",
+            "            line = handle.readline()",
+            "            while line.startswith('%'):",
+            "                line = handle.readline()",
+            "            for line in handle:",
+            "                gene, _cell, value = line.split()",
+            "                totals[int(gene) - 1] += int(value)",
+            "        per_timepoint.setdefault(tag.group(1), []).append(pd.Series(totals, index=genes))",
+            "    table = tables[ANOPHELES_SPACE]",
+            "    for timepoint in ('36h', '48h', '4d', '7d'):",
+            "        replicates = per_timepoint.get(timepoint)",
+            "        if not replicates:",
+            "            continue",
+            "        summed = sum(replicates)",
+            "        if summed.sum() <= 0:",
+            "            continue",
+            "        table[f'expr_midgut_{timepoint}'] = table.gene_id.map(",
+            "            np.log2(1e6 * summed / summed.sum() + 1).round(4))",
+            "    made = [c for c in table.columns if c.startswith('expr_midgut_')]",
+            "    print(f'Ag: {len(made)} timepoints, {int(table[made].notna().all(axis=1).sum())} of {len(table)}'",
+            "          f' genes with a value in each')",
+            "else:",
+            "    print('no Anopheles matrices on disk')",
+            "tables[ANOPHELES_SPACE].head(3) if ANOPHELES_SPACE in tables else 'no vector table'")
+    nb.md("## 6 · Validate and write",
           "`spaces.validate_nodes` is the same check every space passes: unique, non-missing, canonical ids. "
           "A space whose ids do not match its own pattern is refused here rather than at first use.")
     nb.code("from parascape.spaces import validate_nodes",
@@ -164,7 +233,7 @@ def main() -> None:
             "json.dump(written, open(os.path.join(OUT, 'manifest.json'), 'w'), indent=1)",
             "print('written:', {k: v['rows'] for k, v in written.items()})",
             "pd.DataFrame(written).T[['rows', 'file', 'build']]")
-    nb.md("## 5 · What these spaces cannot do yet",
+    nb.md("## 7 · What these spaces cannot do yet",
           "Neither holds a measurement, so neither can answer a question or be calibrated. What each needs "
           "first is stated here so the gap is a list rather than a feeling.")
     nb.code("needs = pd.DataFrame([",
@@ -172,10 +241,10 @@ def main() -> None:
             "         then='a pack, so the space can be installed and leave results/'),",
             "    dict(space='Fc', first_need='the enteroepithelial series -- the stages that exist in no other host',",
             "         then='a pack, so the space can be installed and leave results/'),",
-            "    dict(space='Ag', first_need='midgut and salivary-gland expression; GSE284537 holds an Anopheles arm',",
-            "         then='the infected-mosquito contrasts, which are the point of a vector space'),",
-            "    dict(space='Pv', first_need='the vivax arm of GSE220039, already on disk and not yet read',",
-            "         then='hypnozoite data -- the stage falciparum does not have'),",
+            "    dict(space='Ag', first_need='the salivary gland, where the sporozoite waits; the midgut is now covered',",
+            "         then='a pack, so the space can be installed and leave results/'),",
+            "    dict(space='Pv', first_need='hypnozoite data -- the dormant stage falciparum does not have',",
+            "         then='a pack, so the space can be installed and leave results/'),",
             "])",
             "needs.to_csv(os.path.join(OUT, 'what_each_space_needs.tsv'), sep='\\t', index=False)",
             "needs")

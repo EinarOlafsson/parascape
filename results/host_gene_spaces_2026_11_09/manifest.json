@@ -52,7 +52,11 @@
    "seqid",
    "start",
    "end",
-   "strand"
+   "strand",
+   "expr_midgut_36h",
+   "expr_midgut_48h",
+   "expr_midgut_4d",
+   "expr_midgut_7d"
   ],
   "file": "ag_gene_nodes.parquet",
   "build": [
@@ -70,7 +74,8 @@
    "seqid",
    "start",
    "end",
-   "strand"
+   "strand",
+   "expr_pv_liver"
   ],
   "file": "pv_gene_nodes.parquet",
   "build": [
