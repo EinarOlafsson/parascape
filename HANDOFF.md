@@ -211,8 +211,12 @@ are dense-granule proteins, which are disordered, so this is expected rather tha
 
 **3e. Offline browsing uses verified downloaded measurements; coordinates are the one exception.** (Added v1.3.) The
 cache is 278 MB and carries 443 columns for all 8,140 Toxoplasma genes, and is downloaded from GitHub into a versioned user data folder; it is excluded from the package.
-Beside it sits the Plasmodium cache -- `pf_nodes.parquet`, 175 columns for 5,720 genes, and
+Beside it sits the Plasmodium cache -- `pf_nodes.parquet`, 168 columns for 5,720 genes, and
 `pf_graph.npz` -- which is a separate table and graph on purpose and never joined to the first
+That column count is pinned, not incidental: the frozen functional recovery benchmarks are bound to
+the exact bytes of `pf_nodes.parquet`, so a new Plasmodium deposit that would widen the table is
+held back in `deposits.HELD_OUT_OF_NODES` (still derived, still shipped as its own table) until the
+benchmark is re-prepared on the wider table.
 Both organism caches are included in the GitHub data asset; `paths.py` resolves the downloaded folder or an explicit override. An earlier `keep` allowlist silently shipped
 3 of 18 RNA columns and 7 of 8 fitness screens; the build now ships every column that survives, with an
 explicit drop list. Structures resolve on demand (`structures.py`) because 6,538 AlphaFold models plus

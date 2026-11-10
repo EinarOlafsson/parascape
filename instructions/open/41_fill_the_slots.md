@@ -2934,7 +2934,7 @@ A full run (6,995 passed, 42 skipped) found **11 failures, all mine**. Four are 
    answer, not a gap. `pf_ribosome_footprint_cpm` stays: a footprint count is a condition.
 2. The stale `_multi_task_was_here` key is gone from `borrowed_models.UNTESTED`, and the test now asserts
    multi_task moved to the implemented set rather than out of the module.
-3. `HANDOFF.md` quoted 168 Plasmodium columns; the cache has 175.
+3. `HANDOFF.md` quoted 168 Plasmodium columns; the cache had 175 at the time (held back to 168 on 2026-11-10, below).
 4. The Plasmodium **layout was rebuilt** (`scripts/rebuild_layouts.py --organism Pf`): the graph records the
    SHA-256 of the node table it was built from, and adding columns broke that tie.
 
@@ -2959,3 +2959,34 @@ budget on published accuracy numbers and is a decision, not a chore.
 
 **The choice is Einar's:** re-run the Pf recoveries, or revert the three Plasmodium column additions (the
 liver-stage, TF-binding and mosquito-stage fills) to restore the binding.
+
+## 2026-11-10: Einar chose to hold the four Plasmodium deposits out of the shipped table
+
+He picked **hold the columns out** over re-running the frozen recoveries. Done, and the binding is exact
+again: `parascape/data/pf_nodes.parquet` is byte-identical to the file the benchmarks were frozen against
+(SHA-256 `410d5fb5…`), the Plasmodium graph is the layout built from those same bytes, and the seven
+`test_functional_agreement_ui` tests pass.
+
+**What that means, said plainly.** The held-out accuracy of a frozen recovery is a statement about the table
+it was measured on. Those runs chose 132 features out of a 168-column table; from a 175-column table the same
+method chooses differently, so the wider table is a different experiment rather than the same one with more
+context. Re-running is legitimate but spends the held-out budget on published numbers, which is why it was
+Einar's call and not mine.
+
+**Nothing is lost.** Each deposit is still derived and still ships as its own table in
+`parascape/data/deposit_<key>.tsv`:
+
+| deposit | columns held out |
+|---|---|
+| `pf_liver_transcriptome` | `expr_pf_liver_day6` |
+| `pf_translation_efficiency` | `pf_ribosome_footprint_cpm` |
+| `pf_dbsp_occupancy` | `dbsp_occupancy` |
+| `pf_midgut_transcriptome` | `expr_midgut_36h`, `expr_midgut_48h`, `expr_midgut_4d`, `expr_midgut_7d` |
+
+The hold lives in `deposits.HELD_OUT_OF_NODES`, which `parasite_columns` skips, so re-running
+`scripts/add_deposits.py` cannot quietly widen the table again. Undoing it is deleting a key from that
+mapping once the Pf functional pipeline is re-prepared on the wider table.
+
+**Four Plasmodium gene slots therefore read empty again**, and that is the honest state rather than a
+regression: 130 slots empty, gene coverage 189 of 276, host 19 of 50. `HANDOFF.md` says 168 columns and says
+why the count is pinned.

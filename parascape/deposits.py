@@ -1817,6 +1817,26 @@ DEPOSITS = (
     Deposit("host_mouse_tissue_proteome", organisms.MOUSE, mouse_tissue_proteome),
 )
 
+#: Deposits that are derived and shipped, but deliberately NOT merged into the node table.
+#:
+#: The frozen Plasmodium functional recovery benchmarks are bound to the exact bytes of
+#: `pf_nodes.parquet` (`functional_results.require_context`). That is not pedantry about a checksum:
+#: the held-out accuracy is a statement about the 168-column table those runs chose their 132
+#: features from, and a wider table is a different experiment rather than the same one with more
+#: context. Merging these four widened it to 175 columns, and the functional panel then correctly
+#: refused to show a frozen result against a source it was not measured on.
+#:
+#: Einar chose on 2026-11-10 to keep the shipped table as the benchmarks were frozen against,
+#: rather than spend the one-shot held-out budget again. Nothing is lost: each deposit is still
+#: derived and still ships as `parascape/data/deposit_<key>.tsv`, and the hold is undone by deleting
+#: a key here and re-running `scripts/add_deposits.py` once the benchmark is re-prepared.
+HELD_OUT_OF_NODES = {
+    "pf_liver_transcriptome": "expr_pf_liver_day6",
+    "pf_translation_efficiency": "pf_ribosome_footprint_cpm",
+    "pf_dbsp_occupancy": "dbsp_occupancy",
+    "pf_midgut_transcriptome": "expr_midgut_36h, expr_midgut_48h, expr_midgut_4d, expr_midgut_7d",
+}
+
 
 def table_path(base: str, key: str) -> str:
     """Where a derived deposit table is cached, so the merge can run without the raw files."""
@@ -1865,7 +1885,7 @@ def parasite_columns(base: str, organism: str, ids, resolve=None, log=print) -> 
     ids = pd.Index([str(i) for i in ids])
     out = pd.DataFrame(index=ids)
     for dep in DEPOSITS:
-        if dep.organism != organism:
+        if dep.organism != organism or dep.key in HELD_OUT_OF_NODES:
             continue
         frame = _read(base, dep.key)
         if frame.empty:
