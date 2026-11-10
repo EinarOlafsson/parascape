@@ -415,8 +415,33 @@ share-alike, **V** verify the terms first, **X** local build only.
 **The catalogue now holds nine spaces** -- Tg, Pf, Hs, Mm, Rn, Fc, Pv (parasite or host) and Ag, As (vector) --
 against two at the start of the week. 798 tests pass.
 
-* **Still open in this instruction:** WP3's acceptance beyond Hs and Mm, WP7's per-space attack tests
-  (GTEx -> HPA and the like), and packs for the five new spaces so they can leave `results/`.
+* **WP7 done 2026-11-09: the leakage rules now apply per space, and five attacks prove it.**
+  `tests/test_space_leakage.py`. The rules were written once in the harness and claimed to hold in any space;
+  that claim was worth only the attacks it survived, and the first attack found a real hole.
+
+  **The hole: all five new spaces carried NO category on any column.** The closure excludes evidence BY
+  category, so a column with none is not excluded by anything -- a space nobody annotated has no leakage
+  protection at all, silently. Fixed with rules in `OVERRIDE_PATTERNS`, and the first test asserts every
+  column of every further space is categorised, so the next space cannot arrive unprotected.
+
+  The five attacks, each one either already possible here or a rename away:
+  1. *An uncategorised column* -- caught, as above.
+  2. *Coordinates and annotation as features*: `seqid`, `start`, `end`, `strand`, `biotype`, `gene_name` are
+     **identity**, the one category that is never a feature. A model reading a start coordinate is reading
+     gene neighbourhood, which is how gene order leaks into an answer about biology.
+  3. *Annotation transferred along an ortholog, used to predict what it came from*: the mouse space copies
+     locations from human orthologs. Those columns are **place**, so a question about location excludes them
+     -- they ARE that location, copied. A pattern bug let `location_from_human_ortholog` through while
+     catching `hpa_location_from_human_ortholog`; the test caught it before it was committed.
+  4. *The ortholog link itself* is **conservation**, the same kind of evidence as an orthogroup, so a question
+     about conservation excludes it.
+  5. *An unknown category name* raises rather than excluding nothing, which is the silent failure the
+     vocabulary replaces.
+
+  1,059 tests pass over categories, harness, redundancy, claims, strategies, catalogue and slots.
+
+* **Still open in this instruction:** WP3's acceptance beyond Hs and Mm, and packs for the five new spaces so
+  they can leave `results/`.
 
 ## WP6 started: Cryptosporidium parvum (2026-11-08)
 

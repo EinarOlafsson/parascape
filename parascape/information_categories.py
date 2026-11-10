@@ -318,6 +318,29 @@ COLUMN_CATEGORIES = {
 #: which is the error instruction 73 names explicitly ("translational-efficiency and Ribo-seq
 #: columns are translation, not transcript" -- and the converse holds for their RNA arm).
 OVERRIDE_PATTERNS = (
+    # --- 2026-11-09, instruction 53 WP7. The further spaces (Rn, Fc, Ag, As, Pv) carried NO category on any
+    # column, so the leakage closure could say nothing about them: it excludes columns BY category, and a
+    # column with none is simply invisible to it. These rules are what make the rule apply per space.
+    #
+    # Coordinates and the gene's own annotation are `identity`, the one category that is never a feature. A
+    # model reading a chromosome, a start coordinate or a biotype is reading gene neighbourhood and
+    # annotation status, which is how a species' gene order leaks into an answer about biology.
+    (re.compile(r"^(biotype|seqid|strand|start|end|gene_name)$"), ("identity",),
+     "the gene's own name, coordinates and annotation from the genome build: identity, never a feature"),
+    # An ortholog LINK is conservation, like an orthogroup. It matters because annotation transferred along it
+    # (the mouse space's `*_from_human_ortholog` columns) must never be used to predict the thing it was
+    # transferred from -- the link and the transferred value are the same statement twice.
+    (re.compile(r"^human_ortholog(_high_confidence)?$"), ("conservation",),
+     "a one-to-one ortholog link, the same kind of evidence as an orthogroup"),
+    # A value copied along an ortholog link carries the category of what it copies, so the closure excludes it
+    # from any question about that kind of knowledge: a transferred location is place evidence, not a new
+    # observation, whatever the column is called.
+    (re.compile(r"location.*_from_.*_ortholog$|location_from_"), ("place",),
+     "a location transferred from an ortholog: place evidence, inferred rather than observed"),
+    (re.compile(r"^bgee_(top_score|tissues_present)$"), ("transcript",),
+     "Bgee expression calls: how much and in how many tissues a gene is transcribed"),
+    (re.compile(r"^expr_midgut_|^expr_pv_liver$"), ("transcript",),
+     "RNA abundance in a vector or parasite space, per timepoint or stage"),
     # 2026-11-09: the gene's own annotation, carried for display and grouping. `identity` is the
     # one category that is NEVER a feature, which is exactly right for a chromosome number -- a
     # model that reads it is reading gene neighbourhood, not biology.
