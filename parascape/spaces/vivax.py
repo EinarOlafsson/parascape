@@ -17,4 +17,7 @@ VIVAX_SPACE = O.Space(O.VIVAX, 'Plasmodium vivax', 'Ensembl Protists PvP01 v2', 
     # digits alone refuses 33 real genes, 30 apicoplast and 3 mitochondrial.
     r'PVP01_(?:\d{7}|API\d{5}|MIT\d{5})', ('PVP01_',), 'PlasmoDB',
     'https://plasmodb.org/plasmo/app/record/gene/{id}',
-    'pv_gene_nodes.parquet', graph='pv_gene_graph.npz', orthomcl='pviv', distribution='pack')
+    'pv_gene_nodes.parquet', orthomcl='pviv', distribution='pack')
+# No graph: no edges have been computed for this space. The attribute is left unset rather than naming a
+# file that does not exist -- `build_pack` validates whatever a space declares, so a claimed graph is a
+# promise the pack cannot keep. It is set when the first edge layer is built. (no graph yet)

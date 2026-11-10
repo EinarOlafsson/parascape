@@ -14,4 +14,7 @@ from .. import organisms as O
 RAT_SPACE = O.Space(O.RAT, 'Rattus norvegicus', 'Ensembl mRatBN7.2', O.HOST,
     r'ENSRNOG\d{11}', ('ENSRNOG',), 'Ensembl',
     'https://www.ensembl.org/Rattus_norvegicus/Gene/Summary?g={id}',
-    'rn_gene_nodes.parquet', graph='rn_gene_graph.npz', distribution='pack')
+    'rn_gene_nodes.parquet', distribution='pack')
+# No graph: no edges have been computed for this space. The attribute is left unset rather than naming a
+# file that does not exist -- `build_pack` validates whatever a space declares, so a claimed graph is a
+# promise the pack cannot keep. It is set when the first edge layer is built. (no graph yet)

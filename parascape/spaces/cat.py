@@ -15,4 +15,7 @@ from .. import organisms as O
 CAT_SPACE = O.Space(O.CAT, 'Felis catus', 'Ensembl Felis_catus_9.0', O.HOST,
     r'ENSFCAG\d{11}', ('ENSFCAG',), 'Ensembl',
     'https://www.ensembl.org/Felis_catus/Gene/Summary?g={id}',
-    'fc_gene_nodes.parquet', graph='fc_gene_graph.npz', distribution='pack')
+    'fc_gene_nodes.parquet', distribution='pack')
+# No graph: no edges have been computed for this space. The attribute is left unset rather than naming a
+# file that does not exist -- `build_pack` validates whatever a space declares, so a claimed graph is a
+# promise the pack cannot keep. It is set when the first edge layer is built. (no graph yet)

@@ -14,4 +14,7 @@ from .. import organisms as O
 ANOPHELES_SPACE = O.Space(O.ANOPHELES, 'Anopheles gambiae', 'Ensembl Metazoa AgamP4', O.VECTOR,
     r'AGAP\d{6}', ('AGAP',), 'VectorBase',
     'https://vectorbase.org/vectorbase/app/record/gene/{id}',
-    'ag_gene_nodes.parquet', graph='ag_gene_graph.npz', distribution='pack')
+    'ag_gene_nodes.parquet', distribution='pack')
+# No graph: no edges have been computed for this space. The attribute is left unset rather than naming a
+# file that does not exist -- `build_pack` validates whatever a space declares, so a claimed graph is a
+# promise the pack cannot keep. It is set when the first edge layer is built. (no graph yet)

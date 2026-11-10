@@ -15,4 +15,7 @@ from .. import organisms as O
 STEPHENSI_SPACE = O.Space(O.STEPHENSI, 'Anopheles stephensi', 'Ensembl Metazoa AsteS1', O.VECTOR,
     r'ASTE\d{6}', ('ASTE',), 'VectorBase',
     'https://vectorbase.org/vectorbase/app/record/gene/{id}',
-    'as_gene_nodes.parquet', graph='as_gene_graph.npz', distribution='pack')
+    'as_gene_nodes.parquet', distribution='pack')
+# No graph: no edges have been computed for this space. The attribute is left unset rather than naming a
+# file that does not exist -- `build_pack` validates whatever a space declares, so a claimed graph is a
+# promise the pack cannot keep. It is set when the first edge layer is built. (no graph yet)

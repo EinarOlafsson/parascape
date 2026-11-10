@@ -28,6 +28,11 @@ HOST_PACK_SPACES = ("Hs", "Mm", "Rn", "Fc")
 #: Spaces declared with a gene build but no pack yet: the mosquito vector and the second malaria parasite
 #: (instruction 53, WP5 and WP6). Listed so a reader knows they exist; `unavailable` until a pack is built.
 DECLARED_ONLY_SPACES = ("Ag", "Pv", "As")
+
+#: Every space distributed as a pack, whichever list declares it. The state of each is read from disk the same
+#: way -- installed, a verified archive here, or nothing -- so a newly built pack shows up without a code
+#: change. Before 2026-11-09 the second group was hardcoded `unavailable` and three real packs stayed hidden.
+PACK_SPACES = HOST_PACK_SPACES + DECLARED_ONLY_SPACES
 _REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -106,7 +111,7 @@ def catalogue(roots=None) -> list:
         out.append(Entry(code, space.species, space.kind, space.distribution,
                          "ready" if present else "unavailable", calibrated=present and _calibrated(code),
                          note="" if present else "its map cache is not built here"))
-    for code in HOST_PACK_SPACES:
+    for code in PACK_SPACES:
         space = _host_space(code)
         archives = local_archives(code, roots)
         try:
@@ -127,10 +132,6 @@ def catalogue(roots=None) -> list:
         else:
             out.append(Entry(code, space.species, space.kind, "pack", "unavailable",
                              note=broken or "no pack installed and none available here"))
-    for code in DECLARED_ONLY_SPACES:
-        space = _host_space(code)
-        out.append(Entry(code, space.species, space.kind, "pack", "unavailable",
-                         note="gene build only; no measurement and no pack yet"))
     return out
 
 
@@ -140,8 +141,8 @@ def install(code: str, archive: str = "", sha256: str = "", roots=None):
     Without arguments the newest local archive is used. A pack without a published checksum is refused.
     """
     from . import packs
-    if code not in HOST_PACK_SPACES:
-        raise ValueError(f"{code} is not a host pack space")
+    if code not in PACK_SPACES:
+        raise ValueError(f"{code} is not a pack space")
     if not archive:
         archives = local_archives(code, roots)
         if not archives:

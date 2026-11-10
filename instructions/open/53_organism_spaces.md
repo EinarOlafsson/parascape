@@ -440,8 +440,34 @@ against two at the start of the week. 798 tests pass.
 
   1,059 tests pass over categories, harness, redundancy, claims, strategies, catalogue and slots.
 
-* **Still open in this instruction:** WP3's acceptance beyond Hs and Mm, and packs for the five new spaces so
-  they can leave `results/`.
+* **Packs built 2026-11-09 for all five new spaces** (`scripts/build_space_packs.py` ->
+  `results/space_packs_2026_11_09/`, with `SHA256` and `packs.json`). Each was installed from its archive and
+  its contents checked, so the round trip is tested rather than assumed.
+
+  | Space | Genes | Pack | Withheld |
+  |---|---:|---|---|
+  | Rn | 23,141 | 733 KiB | -- |
+  | Fc | 19,588 | 625 KiB | -- |
+  | Ag | 12,614 | 198 KiB | the four `expr_midgut_*` |
+  | As | 13,336 | 211 KiB | -- |
+  | Pv | 6,523 | 104 KiB | `expr_pv_liver` |
+
+  **A pack may only carry columns whose licence is verified open**, which is what `packs.build` enforces. The
+  Ensembl builds, Bgee calls and Compara orthologs are open and go in. The five columns derived from GEO series
+  do NOT: a GEO submission states no licence of its own, and deciding that a depositor's data may be
+  redistributed is a judgement about someone else's rights rather than a technical detail. Those columns stay
+  in `results/` for local use and each pack's `NOTICE.txt` names what was withheld and why. **Einar to confirm**
+  -- if GEO deposits are fine to redistribute it is a one-line change.
+
+  Two faults the packing exposed:
+  * Every new space **declared a graph file that does not exist**, because no edges have been computed. The
+    attribute is now unset rather than naming a missing file: `build_pack` validates whatever a space declares,
+    so a claimed graph is a promise the pack cannot keep.
+  * The catalogue **hardcoded the three newest spaces as `unavailable`**, so three real packs stayed hidden.
+    It now reads every pack space's state from disk (`PACK_SPACES`), and `install` accepts them, so the next
+    pack appears without a code change. All nine spaces report their true state; 813 tests pass.
+
+* **Still open in this instruction:** WP3's acceptance beyond Hs and Mm.
 
 ## WP6 started: Cryptosporidium parvum (2026-11-08)
 
