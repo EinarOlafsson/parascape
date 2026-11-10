@@ -86,3 +86,24 @@ The design re-runs discovery to pick up each new release. Since VEuPathDB releas
 therefore finds nothing now, and the 248-source catalogue of 2026-08-18 is the last complete one. The rule is not
 to work around the login. Gene builds come from Ensembl Genomes (release 63) instead, with NCBI and UniProt;
 VEuPathDB-only tracks (OG6 orthogroups and the like) wait on an account. Nothing else in this item is open.
+
+## 2026-11-09: what the API key would unblock, named exactly
+
+VEuPathDB supports a **personal API key**, separate from the password, from Profile -> "Web Service Access"
+(`/a/app/user/profile#serviceAccess`), sent as `Authorization: Bearer <key>`. Verified directly: the service
+returns 401 naming the key and where to get it. There is **no anonymous route** -- every `common/downloads`
+path 404s and no Globus or Galaxy endpoint serves release files without login. Basic auth and `.netrc` are not
+supported. Downloads moved to `/a/service/raw-files/...`, listed through the `dfile` record type.
+
+Einar asked for a token in a file rather than a password; that is exactly what this is, and it can be
+regenerated from the same tab if it leaks.
+
+**Named uses, rather than a general request:**
+1. **The Anopheles gambiae space fails its WP3 acceptance** (instruction 53): VectorBase's AgamP4 carries 1,271
+   AGAP genes Ensembl Metazoa does not, and VectorBase is a VEuPathDB site. One GFF fixes one failing space.
+2. **The five ToxoDB dataset pages of instruction 65.04** whose publications could not be resolved.
+3. The VEuPathDB-curated per-gene tables, which Ensembl does not carry and which this instruction is about.
+
+**What the key is NOT needed for, corrected 2026-11-09:** the rat, cat, Anopheles and P. vivax GENE BUILDS,
+all of which are public on Ensembl and were built without it. That assumption had sat in instruction 53 for
+weeks and blocked four species for no reason.

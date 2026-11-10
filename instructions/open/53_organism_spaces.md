@@ -495,6 +495,15 @@ against two at the start of the week. 798 tests pass.
   `Fc` passes on 94 resolvable genes, which is a weak sample and is marked as such; `As` cannot be checked at
   all until either a reviewed proteome or someone else's gene list exists for it.
 
+  **Diagnosed, 2026-11-09: the Anopheles gap is annotation, not a stale release, and VectorBase is behind the
+  login.** Ensembl Metazoa release 63 was fetched and holds 12,627 genes against release 60's 12,614 -- thirteen
+  more, so the release is not the cause. The difference is between the two annotations themselves: VectorBase's
+  AgamP4 carries **1,271 AGAP genes Ensembl does not** (ordinary ids: AGAP000729, AGAP001105, AGAP001129 ...),
+  and Ensembl carries 40 VectorBase does not. **VectorBase is a VEuPathDB site and its download paths 404
+  without a login** (`https://vectorbase.org/common/downloads/...`), so rebuilding `Ag` from the right source
+  is the first concrete, named thing the VEuPathDB API key (instruction 38) would unblock -- not a general
+  request for access, but one file for one failing space.
+
 ## WP6 started: Cryptosporidium parvum (2026-11-08)
 
 `parascape/spaces/crypto.py` (`CRYPTO_SPACE`, code `Cp`, CryptoDB `cgd` identifiers, organisms.CRYPTOSPORIDIUM) and
