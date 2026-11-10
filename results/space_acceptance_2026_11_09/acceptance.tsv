@@ -1,0 +1,6 @@
+space	species	genes	reviewed_proteins	reviewed_with_ensembl	resolve_rate	verdict	check	detail
+Rn	Rattus norvegicus	23141	8239	3881	1.0	passes	reviewed proteome	3881 of 3881 cross-referenced genes are in the universe
+Fc	Felis catus	19588	234	94	1.0	passes	reviewed proteome	94 of 94 cross-referenced genes are in the universe
+Ag	Anopheles gambiae	12614	303	0	0.9082	FAILS the 95 % bar	independent gene list	12574 of 13845 genes in the genes quantified in GSE284537 by its authors' own Cell Ranger run are in the universe
+As	Anopheles stephensi	13336	9	0		cannot be checked	none available	only 9 reviewed proteins exist, and no independent gene list on disk
+Pv	Plasmodium vivax	6523	11	0	0.9507	passes	independent gene list	6523 of 6861 genes in the genes counted in GSE220039 by its authors' own pipeline are in the universe

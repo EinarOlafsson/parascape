@@ -467,7 +467,33 @@ against two at the start of the week. 798 tests pass.
     It now reads every pack space's state from disk (`PACK_SPACES`), and `install` accepts them, so the next
     pack appears without a code change. All nine spaces report their true state; 813 tests pass.
 
-* **Still open in this instruction:** WP3's acceptance beyond Hs and Mm.
+* **WP3 acceptance applied to all five new spaces, 2026-11-09** (`scripts/check_space_acceptance.py` ->
+  `results/space_acceptance_2026_11_09/`). The Hs/Mm acceptance was: at least 95 % of that species' reviewed
+  UniProt proteins carrying an Ensembl cross-reference resolve to a gene in the universe. It asks the only
+  question that matters about a gene universe -- is anything real missing -- from a source that did not build it.
+
+  | Space | Genes | Check used | Rate | Verdict |
+  |---|---:|---|---:|---|
+  | Rn | 23,141 | reviewed proteome (8,239 proteins) | 100.0 % | passes |
+  | Fc | 19,588 | reviewed proteome (234 proteins, 94 resolvable) | 100.0 % | passes, on a thin sample |
+  | Pv | 6,523 | independent gene list | 95.1 % | passes, barely |
+  | **Ag** | 12,614 | independent gene list | **90.8 %** | **FAILS** |
+  | As | 13,336 | none available | -- | cannot be checked |
+
+  **The measure does not transfer to every species, and that is a finding.** It needs a reviewed proteome, and
+  the less-studied species barely have one: As has **9** reviewed proteins and Pv **11**. A 95 % bar over nine
+  proteins says something about nine proteins, not about a universe of 13,336 genes. So each space gets
+  whichever check is meaningful -- the reviewed proteome where one exists, otherwise coverage of a gene list
+  produced by someone else's pipeline (the genes a published series quantified).
+
+  **Ag fails, and the acceptance test is what caught it.** The authors of GSE284537 quantified 13,845 AGAP
+  genes; the Ensembl Metazoa AgamP4 build holds 12,614, so 1,271 genes other people measure are missing from
+  our universe. **The Ensembl build is the wrong source for this species** -- VectorBase is where Anopheles
+  annotation is maintained, and its AgamP4 gene set is the larger one. Rebuilding `Ag` from VectorBase is the
+  fix; until then the space is listed as it is and its coverage is recorded here.
+
+  `Fc` passes on 94 resolvable genes, which is a weak sample and is marked as such; `As` cannot be checked at
+  all until either a reviewed proteome or someone else's gene list exists for it.
 
 ## WP6 started: Cryptosporidium parvum (2026-11-08)
 

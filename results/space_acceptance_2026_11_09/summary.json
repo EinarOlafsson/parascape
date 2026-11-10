@@ -1,0 +1,15 @@
+{
+ "bar": 0.95,
+ "min_reviewed": 100,
+ "passing": [
+  "Fc",
+  "Pv",
+  "Rn"
+ ],
+ "failing": [
+  "Ag"
+ ],
+ "unchecked": [
+  "As"
+ ]
+}
