@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**156 slots: 76 covered well, 21 partly, 40 thinly, 19 empty.**
+**156 slots: 76 covered well, 22 partly, 40 thinly, 18 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -247,8 +247,8 @@ quantity were approximating on 2026-08-13.
 | Tg_host transcriptome · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **A** | 8635 |  | 100.0% | `skeletal_muscle_tpm` | average | — |
 | Tg_host surface / receptor repertoire · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **-** |  |  |  | `` | fill | — |
 | Tg_host response to infection · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **-** |  |  |  | `` | separate | — |
-| Tg_host proteome · human neuron | human neuron; bradyzoite, neuronal cyst | **-** |  |  |  | `` | average | — |
-| Tg_host transcriptome · human neuron | human neuron; bradyzoite, neuronal cyst | **A** | 18939 |  | 100.0% | `neuron_excitatory_ncpm, neuron_inhibitory_ncpm, astrocyte_ncpm, microglia_ncpm` | average | — |
+| Tg_host proteome · human neuron | human neuron; bradyzoite, neuronal cyst | **B** | 13806 |  | 72.1% | `astrocyte_protein_ppm, brain_protein_ppm` | average | — |
+| Tg_host transcriptome · human neuron | human neuron; bradyzoite, neuronal cyst | **A** | 18939 |  | 99.0% | `neuron_excitatory_ncpm, neuron_inhibitory_ncpm, astrocyte_ncpm, microglia_ncpm` | average | — |
 | Tg_host surface / receptor repertoire · human neuron | human neuron; bradyzoite, neuronal cyst | **-** |  |  |  | `` | fill | — |
 | Tg_host response to infection · human neuron | human neuron; bradyzoite, neuronal cyst | **-** |  |  |  | `` | separate | — |
 | Tg_host protein recruitment to the vacuole | parasitophorous vacuole; tachyzoite in HFF | **A** | 12 |  | 100.0% | `pv_enrichment_log2` | one | **Toxoplasma gondii exploits the host ESCRT machinery for parasite uptake of host cytosolic proteins.** (PLoS Pathog 2021) [34898650](https://pubmed.ncbi.nlm.nih.gov/34898650/) `PLoS Pathog` |

@@ -6098,7 +6098,10 @@
     "axis": "host effect",
     "context": "human neuron; bradyzoite, neuronal cyst",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "astrocyte_protein_ppm",
+      "brain_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
@@ -12448,7 +12451,9 @@
     "axis": "host effect",
     "context": "human hepatocyte; liver stage and hypnozoite",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "liver_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [

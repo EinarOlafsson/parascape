@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**141 slots: 46 covered well, 21 partly, 16 thinly, 58 empty.**
+**141 slots: 46 covered well, 22 partly, 16 thinly, 57 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -222,10 +222,10 @@ quantity were approximating on 2026-08-13.
 | Pf_host transcriptome · human bone marrow | human bone marrow; gametocyte, sequestered | **-** |  |  |  | `` | average | — |
 | Pf_host surface / receptor repertoire · human bone marrow | human bone marrow; gametocyte, sequestered | **-** |  |  |  | `` | fill | — |
 | Pf_host response to infection · human bone marrow | human bone marrow; gametocyte, sequestered | **-** |  |  |  | `` | separate | — |
-| Pf_host proteome · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **-** |  |  |  | `` | average | — |
-| Pf_host transcriptome · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **A** | 19087 |  | 100.0% | `hepatocyte_tpm` | average | — |
+| Pf_host proteome · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **B** | 15108 |  | 78.4% | `liver_protein_ppm` | average | — |
+| Pf_host transcriptome · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **A** | 19087 |  | 99.1% | `hepatocyte_tpm` | average | — |
 | Pf_host surface / receptor repertoire · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **-** |  |  |  | `` | fill | — |
-| Pf_host response to infection · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **B** | 12550 |  | 65.7% | `hepatocyte_pf_infection_log2fc, hepatocyte_pf_infection_padj` | separate | — |
+| Pf_host response to infection · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **B** | 12550 |  | 65.1% | `hepatocyte_pf_infection_log2fc, hepatocyte_pf_infection_padj` | separate | — |
 | Pf_host proteome · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | average | — |
 | Pf_host transcriptome · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | average | — |
 | Pf_host surface / receptor repertoire · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | fill | — |

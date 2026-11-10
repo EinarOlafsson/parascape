@@ -2862,3 +2862,19 @@ the Atlas measures them separately; collapsing them would be our averaging rathe
 Same shape as the monocyte fill earlier today, and the same lesson: the host slots that stayed empty are the
 ones no tissue atlas covers, because the tissue is not the unit the biology happens in. 131 slots empty, down
 from 137 this morning; gene coverage 193 of 276, host 14 of 50.
+
+## 2026-11-09: two host PROTEOME slots, from PaxDb
+
+`Tg_host proteome · human neuron` (13,806 proteins, 72.1 %) and `Pf_host proteome · human hepatocyte`
+(15,108, 78.4 %) <- PaxDb v6.1 integrated sets (`host_tissue_proteome`: astrocyte, brain, liver).
+
+**Parts per million of the proteome**, which is what makes two tissues comparable: a raw intensity is a
+property of the run, a ppm is a property of the sample. The **integrated** sets are used -- a weighted average
+over the studies PaxDb holds for that tissue -- rather than any single deposit.
+
+**The join is by gene symbol, and that is the weak point, so the coverage is reported per column rather than
+summarised.** PaxDb identifies proteins by Ensembl PROTEIN id (ENSP) and no ENSP-to-gene map is on disk; the
+shipped index maps gene ids and symbols. A symbol no reviewed protein claims is dropped rather than guessed at,
+which is why astrocyte reaches 9,930 proteins and liver 15,108 rather than all 21,020.
+
+129 slots empty, down from 137 this morning; host coverage 16 of 50.

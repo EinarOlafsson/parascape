@@ -2974,6 +2974,20 @@ REGISTRY = [
                  "separately; collapsing them would be our averaging rather than theirs. nCPM is the "
                  "Atlas's cross-cell-type normalisation, so two columns can be compared.",
             organism=organisms.HUMAN),
+    Dataset("host_tissue_proteome", "Human tissue protein abundance (PaxDb)", "translation", "proteomics",
+            "How abundant each protein is in a human tissue, in parts per million of the proteome",
+            ("astrocyte_protein_ppm", "brain_protein_ppm", "liver_protein_ppm"),
+            "9,930 to 15,108 proteins per tissue",
+            citation="PaxDb v6.1 integrated datasets (https://pax-db.org)",
+            url="https://pax-db.org/downloads/latest/datasets/9606/",
+            path="datasets/host/paxdb/",
+            note="Parts per million of the proteome, which is what makes two tissues comparable: a raw "
+                 "intensity is a property of the run, a ppm is a property of the sample. The INTEGRATED sets "
+                 "are used, a weighted average over the studies PaxDb holds for that tissue, rather than any "
+                 "single deposit. Joined by gene SYMBOL, which is the weaker join and is why coverage is "
+                 "reported per column: PaxDb identifies proteins by Ensembl PROTEIN id and no ENSP-to-gene "
+                 "map is on disk, so a symbol no reviewed protein claims is dropped rather than guessed.",
+            organism=organisms.HUMAN),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

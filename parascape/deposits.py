@@ -1599,6 +1599,56 @@ BRAIN_CELLS = {"brain excitatory neurons": "neuron_excitatory_ncpm",
                "astrocytes": "astrocyte_ncpm", "microglia": "microglia_ncpm"}
 
 
+PAXDB = ("host", "paxdb")
+#: PaxDb integrated proteome -> the column it becomes. Integrated means a weighted average over the studies
+#: PaxDb holds for that tissue, which is why it is used rather than any single deposit.
+PAXDB_SETS = {"9606-ASTROCYTE-integrated.txt": "astrocyte_protein_ppm",
+              "9606-BRAIN-integrated.txt": "brain_protein_ppm",
+              "9606-LIVER-integrated.txt": "liver_protein_ppm"}
+
+
+def human_tissue_proteome(root: str) -> pd.DataFrame:
+    """How abundant each protein is in a human tissue (PaxDb integrated sets).
+
+    Abundance in parts per million of the proteome, which is what makes two tissues comparable: a raw
+    intensity is a property of the run, a ppm is a property of the sample.
+
+    Keyed by gene SYMBOL, which is the weaker join and is why the coverage is reported: PaxDb identifies
+    proteins by Ensembl PROTEIN id (ENSP), the shipped index maps Ensembl GENE ids and symbols, and no
+    ENSP-to-gene map is on disk. A symbol that no reviewed protein claims is dropped rather than guessed at.
+    """
+    import os as _os
+
+    folder = _os.path.join(root, *PAXDB)
+    if not _os.path.isdir(folder):
+        return pd.DataFrame()
+    index = _index(root, "human", symbols=True)
+    by_symbol = (index or {}).get("by_symbol") or {}
+    if not by_symbol:
+        return pd.DataFrame()
+    frames = []
+    for name, column in PAXDB_SETS.items():
+        path = _os.path.join(folder, name)
+        if not _os.path.exists(path):
+            continue
+        table = pd.read_csv(path, sep="\t", comment="#",
+                            names=["gene_name", "string_external_id", "abundance"])
+        table = table.dropna(subset=["gene_name", "abundance"])
+        table["host_id"] = table.gene_name.astype(str).str.strip().map(by_symbol)
+        table = table[table.host_id.notna()].copy()
+        table[column] = pd.to_numeric(table.abundance, errors="coerce")
+        block = (table.sort_values(column, ascending=False)
+                 .drop_duplicates("host_id")[["host_id", "gene_name", column]]
+                 .rename(columns={"gene_name": "host_name"}))
+        frames.append(block)
+    if not frames:
+        return pd.DataFrame()
+    joined = frames[0]
+    for other in frames[1:]:
+        joined = joined.merge(other.drop(columns="host_name"), on="host_id", how="outer")
+    return joined.drop_duplicates("host_id").reset_index(drop=True)
+
+
 def human_brain_cell_rna(root: str) -> pd.DataFrame:
     """Human brain-cell transcription by cell type (Human Protein Atlas single-cell).
 
@@ -1738,6 +1788,7 @@ DEPOSITS = (
     Deposit("host_k562_rhoptry_screen", "Hs", k562_rhoptry_screen),
     Deposit("host_immune_cell_rna", organisms.HUMAN, human_immune_cell_rna),
     Deposit("host_brain_cell_rna", organisms.HUMAN, human_brain_cell_rna),
+    Deposit("host_tissue_proteome", organisms.HUMAN, human_tissue_proteome),
 )
 
 

@@ -900,6 +900,9 @@ HOST_COLUMNS = {
     # it, which is the difference the question asks about (instruction 41, 2026-11-09).
     "host transcriptome · human neuron": ["neuron_excitatory_ncpm", "neuron_inhibitory_ncpm",
                                           "astrocyte_ncpm", "microglia_ncpm"],
+    # PaxDb integrated proteomes, in ppm so two tissues compare (instruction 41, 2026-11-09).
+    "host proteome · human neuron": ["astrocyte_protein_ppm", "brain_protein_ppm"],
+    "host proteome · human hepatocyte": ["liver_protein_ppm"],
     "host transcriptome · human myeloid dendritic cell": ["myeloid_dc_tpm"],
     # FANTOM5 mouse CAGE. Brain is the mean of four adult regions, because a bradyzoite cyst is not
     # confined to one; muscle is the atlas's only skeletal-muscle sample and it is juvenile.
