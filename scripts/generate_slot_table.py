@@ -2590,6 +2590,12 @@ def _rows(definitions, nodes, graph, metabolites=None, bridges=None, pf_nodes=No
         # `None` until a branch measures it; a slot filled by edges or by a bridge has no column to
         # ask, so its positive count IS its coverage and is filled in after the chain.
         positive = None
+        # The columns that are actually IN the table, as opposed to the patterns the slot would
+        # accept. They differ whenever a measurement is derived but deliberately not merged into the
+        # node table (`deposits.HELD_OUT_OF_NODES`): the slot is then correctly graded empty, and
+        # naming the pattern beside that grade claimed a fill that is not there. Each coverage
+        # branch below sets this; `None` means no branch asked a table.
+        cols = None
         if crossing:
             # A bridge is graded on the pairs it carries and the parasite genes it reaches, because
             # its other end is not in this table at all. Each arm against its own bridge file: a
@@ -2667,7 +2673,9 @@ def _rows(definitions, nodes, graph, metabolites=None, bridges=None, pf_nodes=No
             # Printed beside coverage rather than instead of it: a slot answered for every gene
             # because most answers are "no" is not the same as one measured across every gene.
             "positive": positive if positive != covered else "",
-            "filled_by": ", ".join([f"bridge:{c}" for c in crossing] or edges or columns), "detail": detail, "policy": policy,
+            "filled_by": ", ".join([f"bridge:{c}" for c in crossing] or edges
+                                   or (columns if cols is None else cols)),
+            "detail": detail, "policy": policy,
             # Semicolons inside a note are replaced, because the field itself is semicolon-joined:
             # `from the GEO index; verify assay and parasite-gene shape` used to split into two
             # candidates, one of them the fragment `verify assay and parasite-gene shape)`.

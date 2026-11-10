@@ -1420,8 +1420,13 @@ def pf_translation_efficiency(root: str) -> pd.DataFrame:
     answers a different question from "how well is this transcript translated".
 
     Cycloheximide-arrested ribosome footprints, because the harringtonine arms have no matched RNA
-    and so cannot give a ratio. Efficiency is log2 of footprint CPM over mRNA CPM, which is the
-    published definition; a gene with no footprints and no mRNA is left missing rather than zero.
+    and so cannot give a ratio.
+
+    **Only the footprint abundance is returned, never the efficiency ratio.** The ratio -- log2 of
+    footprint CPM over mRNA CPM, the published definition -- has been computed twice here from two
+    instruments and refused both times (`tests/test_plasmodium.py`). A footprint count is a
+    condition that was measured; the ratio is a quantity this project has decided not to ship. It is
+    still computed below, so the guard against a zero denominator stays honest, and then dropped.
     """
     path = _file(root, *PF_TE_COUNTS)
     if path is None:

@@ -144,8 +144,13 @@ def test_every_registered_dataset_contributes_at_least_one_column(nodes):
     graph = np.load(os.path.join(P.data_dir(), "graph.npz"))
     layers = {k.split("__")[0] for k in graph.files if "__" in k}
     missing = {}
+    # A deposit held out of the node table on purpose contributes its own shipped table and no node
+    # column, so reading its absence as a broken join is the fifth kind of contribution this test
+    # has had to learn. The hold is a recorded decision (`deposits.HELD_OUT_OF_NODES`), not a gap:
+    # the frozen Plasmodium benchmarks are bound to the exact bytes of `pf_nodes.parquet`.
+    from parascape.deposits import HELD_OUT_OF_NODES
     for d in datasets.REGISTRY:
-        if not d.columns:
+        if not d.columns or d.key in HELD_OUT_OF_NODES:
             continue
         # An entry whose columns are `edge:<layer>` contributes an EDGE LAYER and never a node
         # column, so it is checked against the graph. Reading it as a missing column was the first
