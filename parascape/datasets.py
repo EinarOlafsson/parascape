@@ -2988,6 +2988,22 @@ REGISTRY = [
                  "reported per column: PaxDb identifies proteins by Ensembl PROTEIN id and no ENSP-to-gene "
                  "map is on disk, so a symbol no reviewed protein claims is dropped rather than guessed.",
             organism=organisms.HUMAN),
+    Dataset("host_mouse_tissue_proteome", "Mouse tissue protein abundance (PaxDb)", "translation",
+            "proteomics",
+            "How abundant each protein is in mouse brain, macrophage or muscle, in parts per million",
+            ("mouse_brain_protein_ppm", "bmdm_protein_ppm", "skeletal_muscle_protein_ppm"),
+            "4,603 to 10,347 proteins per tissue",
+            citation="PaxDb v6.1 integrated datasets (https://pax-db.org)",
+            url="https://pax-db.org/downloads/latest/datasets/10090/",
+            path="datasets/host/paxdb/",
+            note="The three tissues a Toxoplasma question asks about in the mouse: brain, where the cyst "
+                 "sits; macrophage, the cell that carries the parasite; muscle, the other tissue cysts are "
+                 "found in. Same measure and same symbol join as the human sets, against the mouse index -- "
+                 "a mouse protein is not a human one and the two host tables stay separate. Coverage is "
+                 "reported per column because the symbol join drops what it cannot resolve. The names differ "
+                 "from the human set on purpose: a host slot resolves to ONE organism, and the generator "
+                 "refuses a column name two species claim.",
+            organism=organisms.MOUSE),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

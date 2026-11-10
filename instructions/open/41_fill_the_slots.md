@@ -2878,3 +2878,22 @@ shipped index maps gene ids and symbols. A symbol no reviewed protein claims is 
 which is why astrocyte reaches 9,930 proteins and liver 15,108 rather than all 21,020.
 
 129 slots empty, down from 137 this morning; host coverage 16 of 50.
+
+## 2026-11-09: the three mouse proteome slots
+
+`Tg_host proteome · mouse brain` (10,347 proteins, 80.1 %), `· mouse skeletal muscle` (7,838, 71.1 %) and
+`· mouse bone-marrow macrophage` (4,603, 28.9 %) <- PaxDb v6.1 mouse integrated sets
+(`host_mouse_tissue_proteome`). Brain is where the cyst sits, macrophage the cell that carries the parasite,
+muscle the other tissue cysts are found in.
+
+**A collision the generator caught:** the mouse columns were first named `brain_protein_ppm` like the human
+ones, and the build refused with *"host slot 'mouse brain' matches more than one organism"*. A host slot
+resolves a column to ONE organism, so a name two species claim is ambiguous by construction. The mouse columns
+are now `mouse_brain_protein_ppm`, `bmdm_protein_ppm` and `skeletal_muscle_protein_ppm`, the last two matching
+`bmdm_tpm` and `skeletal_muscle_tpm` already beside them. Worth keeping: the guard is in the generator, not in
+a test, so it fails at build time rather than after a release.
+
+The macrophage proteome reaches only 4,603 proteins, far below the others -- that is the deposit, not the
+join, and the coverage says so rather than being averaged away.
+
+**126 slots empty, down from 137 this morning. Host coverage 19 of 50, from 12.**

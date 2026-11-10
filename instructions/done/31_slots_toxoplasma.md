@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**156 slots: 76 covered well, 22 partly, 40 thinly, 18 empty.**
+**156 slots: 75 covered well, 26 partly, 40 thinly, 15 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -235,16 +235,16 @@ quantity were approximating on 2026-08-13.
 | Tg_host transcriptome · human monocyte | human monocyte; tachyzoite, infected monocyte | **A** | 19135 |  | 100.0% | `monocyte_tpm` | average | — |
 | Tg_host surface / receptor repertoire · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | fill | — |
 | Tg_host response to infection · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | separate | — |
-| Tg_host proteome · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **-** |  |  |  | `` | average | — |
-| Tg_host transcriptome · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **A** | 15437 |  | 99.1% | `bmdm_tpm` | average | — |
-| Tg_host surface / receptor repertoire · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **C** | 1296 | 150 | 8.3% | `bmdm_surface_detected, bmdm_surface_intensity` | fill | — |
+| Tg_host proteome · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **B** | 4603 |  | 28.9% | `bmdm_protein_ppm` | average | — |
+| Tg_host transcriptome · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **A** | 15437 |  | 97.1% | `bmdm_tpm` | average | — |
+| Tg_host surface / receptor repertoire · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **C** | 1296 | 150 | 8.1% | `bmdm_surface_detected, bmdm_surface_intensity` | fill | — |
 | Tg_host response to infection · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **-** |  |  |  | `` | separate | — |
-| Tg_host proteome · mouse brain | mouse brain; bradyzoite, chronic CNS infection | **-** |  |  |  | `` | average | — |
-| Tg_host transcriptome · mouse brain | mouse brain; bradyzoite, chronic CNS infection | **A** | 9763 |  | 100.0% | `brain_tpm` | average | — |
+| Tg_host proteome · mouse brain | mouse brain; bradyzoite, chronic CNS infection | **A** | 10347 |  | 80.1% | `mouse_brain_protein_ppm` | average | — |
+| Tg_host transcriptome · mouse brain | mouse brain; bradyzoite, chronic CNS infection | **B** | 9763 |  | 75.6% | `brain_tpm` | average | — |
 | Tg_host surface / receptor repertoire · mouse brain | mouse brain; bradyzoite, chronic CNS infection | **-** |  |  |  | `` | fill | — |
 | Tg_host response to infection · mouse brain | mouse brain; bradyzoite, chronic CNS infection | **-** |  |  |  | `` | separate | — |
-| Tg_host proteome · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **-** |  |  |  | `` | average | — |
-| Tg_host transcriptome · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **A** | 8635 |  | 100.0% | `skeletal_muscle_tpm` | average | — |
+| Tg_host proteome · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **B** | 7838 |  | 71.1% | `skeletal_muscle_protein_ppm` | average | — |
+| Tg_host transcriptome · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **B** | 8635 |  | 78.3% | `skeletal_muscle_tpm` | average | — |
 | Tg_host surface / receptor repertoire · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **-** |  |  |  | `` | fill | — |
 | Tg_host response to infection · mouse skeletal muscle | mouse skeletal muscle; bradyzoite, chronic muscle infection | **-** |  |  |  | `` | separate | — |
 | Tg_host proteome · human neuron | human neuron; bradyzoite, neuronal cyst | **B** | 13806 |  | 72.1% | `astrocyte_protein_ppm, brain_protein_ppm` | average | — |

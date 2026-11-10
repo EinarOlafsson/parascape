@@ -5705,7 +5705,9 @@
     "axis": "host effect",
     "context": "mouse bone-marrow macrophage; tachyzoite, BMDM",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "bmdm_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
@@ -5838,7 +5840,9 @@
     "axis": "host effect",
     "context": "mouse brain; bradyzoite, chronic CNS infection",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "mouse_brain_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
@@ -5968,7 +5972,9 @@
     "axis": "host effect",
     "context": "mouse skeletal muscle; bradyzoite, chronic muscle infection",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "skeletal_muscle_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [

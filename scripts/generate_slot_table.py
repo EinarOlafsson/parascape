@@ -903,6 +903,10 @@ HOST_COLUMNS = {
     # PaxDb integrated proteomes, in ppm so two tissues compare (instruction 41, 2026-11-09).
     "host proteome · human neuron": ["astrocyte_protein_ppm", "brain_protein_ppm"],
     "host proteome · human hepatocyte": ["liver_protein_ppm"],
+    # The mouse table carries its own brain/macrophage/muscle ppm columns (same names, other species).
+    "host proteome · mouse brain": ["mouse_brain_protein_ppm"],
+    "host proteome · mouse bone-marrow macrophage": ["bmdm_protein_ppm"],
+    "host proteome · mouse skeletal muscle": ["skeletal_muscle_protein_ppm"],
     "host transcriptome · human myeloid dendritic cell": ["myeloid_dc_tpm"],
     # FANTOM5 mouse CAGE. Brain is the mean of four adult regions, because a bradyzoite cyst is not
     # confined to one; muscle is the atlas's only skeletal-muscle sample and it is juvenile.

@@ -1605,29 +1605,29 @@ PAXDB = ("host", "paxdb")
 PAXDB_SETS = {"9606-ASTROCYTE-integrated.txt": "astrocyte_protein_ppm",
               "9606-BRAIN-integrated.txt": "brain_protein_ppm",
               "9606-LIVER-integrated.txt": "liver_protein_ppm"}
+#: The mouse sets, in their own table: a mouse protein is not a human one and the two host tables are separate.
+#: Names must not collide with the human set: the slot generator resolves a host column to ONE organism and
+#: refuses a name two species claim ("host slot 'mouse brain' matches more than one organism"). `brain_protein_ppm`
+#: is the human column, so the mouse brain takes its own name and the other two use this table's own wording
+#: (`bmdm_`, `skeletal_muscle_`), matching `bmdm_tpm` and `skeletal_muscle_tpm` beside them.
+PAXDB_MOUSE_SETS = {"10090-BRAIN-integrated.txt": "mouse_brain_protein_ppm",
+                    "10090-MACROPHAGE-integrated.txt": "bmdm_protein_ppm",
+                    "10090-MUSCLE-integrated.txt": "skeletal_muscle_protein_ppm"}
 
 
-def human_tissue_proteome(root: str) -> pd.DataFrame:
-    """How abundant each protein is in a human tissue (PaxDb integrated sets).
-
-    Abundance in parts per million of the proteome, which is what makes two tissues comparable: a raw
-    intensity is a property of the run, a ppm is a property of the sample.
-
-    Keyed by gene SYMBOL, which is the weaker join and is why the coverage is reported: PaxDb identifies
-    proteins by Ensembl PROTEIN id (ENSP), the shipped index maps Ensembl GENE ids and symbols, and no
-    ENSP-to-gene map is on disk. A symbol that no reviewed protein claims is dropped rather than guessed at.
-    """
+def _paxdb(root: str, sets: dict, species: str) -> pd.DataFrame:
+    """One PaxDb column per named file, joined by gene symbol against that species' reviewed proteins."""
     import os as _os
 
     folder = _os.path.join(root, *PAXDB)
     if not _os.path.isdir(folder):
         return pd.DataFrame()
-    index = _index(root, "human", symbols=True)
+    index = _index(root, species, symbols=True)
     by_symbol = (index or {}).get("by_symbol") or {}
     if not by_symbol:
         return pd.DataFrame()
     frames = []
-    for name, column in PAXDB_SETS.items():
+    for name, column in sets.items():
         path = _os.path.join(folder, name)
         if not _os.path.exists(path):
             continue
@@ -1647,6 +1647,28 @@ def human_tissue_proteome(root: str) -> pd.DataFrame:
     for other in frames[1:]:
         joined = joined.merge(other.drop(columns="host_name"), on="host_id", how="outer")
     return joined.drop_duplicates("host_id").reset_index(drop=True)
+
+
+def human_tissue_proteome(root: str) -> pd.DataFrame:
+    """How abundant each protein is in a human tissue (PaxDb integrated sets).
+
+    Abundance in parts per million of the proteome, which is what makes two tissues comparable: a raw
+    intensity is a property of the run, a ppm is a property of the sample.
+
+    Keyed by gene SYMBOL, which is the weaker join and is why the coverage is reported: PaxDb identifies
+    proteins by Ensembl PROTEIN id (ENSP), the shipped index maps Ensembl GENE ids and symbols, and no
+    ENSP-to-gene map is on disk. A symbol that no reviewed protein claims is dropped rather than guessed at.
+    """
+    return _paxdb(root, PAXDB_SETS, "human")
+
+
+def mouse_tissue_proteome(root: str) -> pd.DataFrame:
+    """How abundant each protein is in a mouse tissue (PaxDb integrated sets).
+
+    The same measure and the same symbol join as the human sets, against the MOUSE index: brain for the cyst,
+    macrophage for the cell that carries the parasite, muscle for the other tissue cysts are found in.
+    """
+    return _paxdb(root, PAXDB_MOUSE_SETS, "mouse")
 
 
 def human_brain_cell_rna(root: str) -> pd.DataFrame:
@@ -1789,6 +1811,7 @@ DEPOSITS = (
     Deposit("host_immune_cell_rna", organisms.HUMAN, human_immune_cell_rna),
     Deposit("host_brain_cell_rna", organisms.HUMAN, human_brain_cell_rna),
     Deposit("host_tissue_proteome", organisms.HUMAN, human_tissue_proteome),
+    Deposit("host_mouse_tissue_proteome", organisms.MOUSE, mouse_tissue_proteome),
 )
 
 
