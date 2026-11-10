@@ -2897,3 +2897,20 @@ The macrophage proteome reaches only 4,603 proteins, far below the others -- tha
 join, and the coverage says so rather than being averaged away.
 
 **126 slots empty, down from 137 this morning. Host coverage 19 of 50, from 12.**
+
+## 2026-11-10: what the remaining host slots need, and one dead end
+
+The host slots still empty are **surface / receptor repertoire** (5), **host response to infection** (10) and
+the Anopheles and human bone-marrow / dermis / erythrocyte tissues. None is a sweep away:
+
+* **Surface repertoire: the Cell Surface Protein Atlas is not fetchable.** `wlab.ethz.ch/cspa/` lists
+  `data/S1_File.xlsx` and `data/S2_File.xlsx`, and both return the site's own HTML page (80,303 bytes of
+  `<!DOCTYPE html>`), not a workbook. Recorded so nobody retries those URLs expecting data. The slot wants a
+  MEASURED surface proteome, so the Human Protein Atlas "predicted membrane protein" class is not a
+  substitute -- that is a prediction, and the slot asks what was found on the surface.
+* **Host response to infection** needs an infected-versus-uninfected series per tissue, which is per-slot
+  acquisition rather than one source.
+* **The Anopheles host slots** (midgut, salivary gland) have their data already: `Ag` now holds midgut
+  expression at four timepoints. They read empty because a host slot is graded against the shipped HOST
+  tables, and the mosquito is a space of its own. Connecting them is slot-generator work, not acquisition --
+  the cheapest remaining win in this instruction.
