@@ -2944,11 +2944,18 @@ level up: `functional_results.require_context` binds each frozen recovery to the
 so. The UI degrades safely; the tests assert it shows benchmarks.
 
 The established remedy is to re-run the frozen Pf recoveries (precedent: 64.11a did exactly this for
-Toxoplasma, "re-run on fresh splits after the node table changed"). **It cannot be run in this checkout**:
-`scripts/freeze_pf_functional_ec_knn.py` loads a preparation packet whose manifest records absolute paths from
-before the repository was renamed (`repo/parascape/...`), so it fails on a missing file. Re-preparing that
-packet, or teaching it to resolve paths relatively, is the work -- and it spends frozen-test budget on
-published accuracy numbers, which is not a 3 a.m. decision.
+Toxoplasma, "re-run on fresh splits after the node table changed").
+
+**Looked at properly, `freeze_pf_functional_ec_knn.py` is not that tool.** It loads a preparation packet from
+2026-10-08 and asserts, through `P._sha(source_paths[0])`, that the node file **at the absolute path recorded
+then** still hashes to the value recorded then. It reproduces one pinned artifact; it cannot re-bind anything
+to today's table, and it fails here because that path predates the repository rename
+(`repo/parascape/...`). An earlier note in this file said the blocker was "a stale path"; the truer statement
+is that the stage is pinned to its original source by design.
+
+So the remedy is a **re-preparation of the whole Pf functional pipeline** -- controls, then kNN, then forest,
+then install -- against the current table, which is what 64.11a did for Toxoplasma. That spends frozen-test
+budget on published accuracy numbers and is a decision, not a chore.
 
 **The choice is Einar's:** re-run the Pf recoveries, or revert the three Plasmodium column additions (the
 liver-stage, TF-binding and mosquito-stage fills) to restore the binding.
