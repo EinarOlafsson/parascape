@@ -27,7 +27,7 @@ HOST_PACK_SPACES = ("Hs", "Mm", "Rn", "Fc")
 
 #: Spaces declared with a gene build but no pack yet: the mosquito vector and the second malaria parasite
 #: (instruction 53, WP5 and WP6). Listed so a reader knows they exist; `unavailable` until a pack is built.
-DECLARED_ONLY_SPACES = ("Ag", "Pv")
+DECLARED_ONLY_SPACES = ("Ag", "Pv", "As")
 _REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -63,6 +63,9 @@ def _host_space(code: str):
     if code == "Pv":
         from .spaces.vivax import VIVAX_SPACE
         return VIVAX_SPACE
+    if code == "As":
+        from .spaces.stephensi import STEPHENSI_SPACE
+        return STEPHENSI_SPACE
     from .spaces.mouse import MOUSE_SPACE
     return MOUSE_SPACE
 

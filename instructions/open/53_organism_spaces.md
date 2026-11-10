@@ -405,7 +405,18 @@ share-alike, **V** verify the terms first, **X** local build only.
     the same files filled the Plasmodium mosquito-stage slot. Control (dsGFP) arms only, pseudo-bulked.
 
   883 tests pass including the Species menu, and 750 again after the measurements were added.
-* **Not started:** WP5's second vector (As, Anopheles stephensi).
+* **WP5 completed 2026-11-09 with the second vector:** `parascape/spaces/stephensi.py` (`As`, Ensembl Metazoa
+  AsteS1, 13,336 genes). A separate space rather than a strain of gambiae: stephensi is a different species
+  that carries malaria across South Asia and has spread into Africa, where it breeds in urban containers
+  rather than rural pools -- a question about where a vector lives, or which insecticide reaches it, has a
+  different answer in each. The same reason vivax is kept apart from falciparum.
+  Gene build only; no stephensi measurement is on disk, which `what_each_space_needs.tsv` records.
+
+**The catalogue now holds nine spaces** -- Tg, Pf, Hs, Mm, Rn, Fc, Pv (parasite or host) and Ag, As (vector) --
+against two at the start of the week. 798 tests pass.
+
+* **Still open in this instruction:** WP3's acceptance beyond Hs and Mm, WP7's per-space attack tests
+  (GTEx -> HPA and the like), and packs for the five new spaces so they can leave `results/`.
 
 ## WP6 started: Cryptosporidium parvum (2026-11-08)
 

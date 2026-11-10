@@ -65,6 +65,24 @@
   ],
   "build_sha256": "f6c881106bccffb87406836a9e579811de2ad51809d6e4b5785fdd9feef212bf"
  },
+ "As": {
+  "rows": 13336,
+  "columns": [
+   "gene_id",
+   "gene_name",
+   "biotype",
+   "seqid",
+   "start",
+   "end",
+   "strand"
+  ],
+  "file": "as_gene_nodes.parquet",
+  "build": [
+   "reference/ensembl_metazoa_r60",
+   "Anopheles_stephensi.AsteS1.60.gff3.gz"
+  ],
+  "build_sha256": "b9919cf879f18a9962f929d9381f97c5008fbebe7b5a14bf8daca18bcf1430bc"
+ },
  "Pv": {
   "rows": 6523,
   "columns": [

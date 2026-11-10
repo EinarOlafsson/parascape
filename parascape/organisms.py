@@ -22,6 +22,9 @@ CRYPTOSPORIDIUM, BERGHEI = "Cp", "Pb"
 #: Further hosts and a vector (instruction 53, WP4-5). The rat is where the behavioural work is done, the cat
 #: is the definitive host where the sexual stages occur, and Anopheles carries Plasmodium.
 RAT, CAT, ANOPHELES, VIVAX = "Rn", "Fc", "Ag", "Pv"
+#: The second vector (instruction 53, WP5): Anopheles stephensi carries malaria in South Asia and has spread
+#: into Africa, where it breeds in cities rather than in the countryside as gambiae does.
+STEPHENSI = "As"
 
 #: Protein reference tables precede the full host gene spaces. UniProt identifiers do not encode
 #: their organism, so callers must select a species explicitly instead of guessing from a prefix.
