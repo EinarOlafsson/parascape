@@ -896,6 +896,10 @@ HOST_COLUMNS = {
     # No GTEx tissue is a monocyte: whole blood is a mixture dominated by neutrophil and erythroid
     # genes, so this question needed the Human Protein Atlas blood atlas (instruction 41, 2026-11-09).
     "host transcriptome · human monocyte": ["monocyte_tpm"],
+    # The cyst sits in a neuron; bulk brain tissue averages that cell together with the glia reacting to
+    # it, which is the difference the question asks about (instruction 41, 2026-11-09).
+    "host transcriptome · human neuron": ["neuron_excitatory_ncpm", "neuron_inhibitory_ncpm",
+                                          "astrocyte_ncpm", "microglia_ncpm"],
     "host transcriptome · human myeloid dendritic cell": ["myeloid_dc_tpm"],
     # FANTOM5 mouse CAGE. Brain is the mean of four adult regions, because a bradyzoite cyst is not
     # confined to one; muscle is the atlas's only skeletal-muscle sample and it is juvenile.

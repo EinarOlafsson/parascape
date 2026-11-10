@@ -1591,6 +1591,56 @@ IMMUNE_RNA = ("host", "immune_cell_rna", "rna_immune_cell.tsv.zip")
 IMMUNE_CELLS = {"classical monocyte": "monocyte_tpm", "myeloid DC": "myeloid_dc_tpm"}
 
 
+SINGLE_CELL_RNA = ("host", "single_cell_rna", "rna_single_cell_type.tsv.zip")
+#: The brain cell types a Toxoplasma question asks about. The Atlas holds about eighty; these four are the
+#: ones a cyst is found in or surrounded by -- the neuron it lives in, and the glia that respond to it.
+BRAIN_CELLS = {"brain excitatory neurons": "neuron_excitatory_ncpm",
+               "brain inhibitory neurons": "neuron_inhibitory_ncpm",
+               "astrocytes": "astrocyte_ncpm", "microglia": "microglia_ncpm"}
+
+
+def human_brain_cell_rna(root: str) -> pd.DataFrame:
+    """Human brain-cell transcription by cell type (Human Protein Atlas single-cell).
+
+    The bradyzoite cyst sits inside a NEURON, and the cells that surround it are astrocytes and microglia. No
+    bulk brain tissue answers that: a tissue average mixes the cell the parasite lives in with the ones that
+    react to it, and the question is about the difference.
+
+    Excitatory and inhibitory neurons are kept apart because they are separate measurements in the source and
+    the Atlas reports them so; collapsing them would be our averaging, not theirs. `nCPM` is the Atlas's
+    cross-cell-type normalisation, so two columns can be compared.
+    """
+    path = _file(root, *SINGLE_CELL_RNA)
+    if path is None:
+        return pd.DataFrame()
+    import zipfile
+
+    with zipfile.ZipFile(path) as archive:
+        name = next((n for n in archive.namelist() if n.endswith(".tsv")), None)
+        if name is None:
+            return pd.DataFrame()
+        with archive.open(name) as handle:
+            table = pd.read_csv(handle, sep="\t")
+    if not {"Gene", "Gene name", "Cell type", "nCPM"}.issubset(table.columns):
+        return pd.DataFrame()
+    index = _index(root, "human")
+    if not index:
+        return pd.DataFrame()
+    frames = []
+    for cell, column in BRAIN_CELLS.items():
+        block = table[table["Cell type"] == cell]
+        if block.empty:
+            continue
+        values = pd.DataFrame({column: pd.to_numeric(block["nCPM"], errors="coerce").to_numpy()})
+        frames.append(_keyed(values, block["Gene"], block["Gene name"], index, values[column]))
+    if not frames:
+        return pd.DataFrame()
+    joined = frames[0]
+    for other in frames[1:]:
+        joined = joined.merge(other.drop(columns="host_name"), on="host_id", how="outer")
+    return joined.drop_duplicates("host_id").reset_index(drop=True)
+
+
 def human_immune_cell_rna(root: str) -> pd.DataFrame:
     """Human immune-cell transcription (Human Protein Atlas blood atlas), by cell type.
 
@@ -1687,6 +1737,7 @@ DEPOSITS = (
     Deposit("host_hepatocyte_pf_infection", "Hs", hepatocyte_pf_infection),
     Deposit("host_k562_rhoptry_screen", "Hs", k562_rhoptry_screen),
     Deposit("host_immune_cell_rna", organisms.HUMAN, human_immune_cell_rna),
+    Deposit("host_brain_cell_rna", organisms.HUMAN, human_brain_cell_rna),
 )
 
 

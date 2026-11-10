@@ -2959,6 +2959,21 @@ REGISTRY = [
                  "types are carried: the rest are lymphocyte subsets no slot of this map names, and eighteen "
                  "columns answering two questions is a denominator problem, not coverage.",
             organism=organisms.HUMAN),
+    Dataset("host_brain_cell_rna", "Human brain-cell transcription by cell type", "transcription",
+            "scRNAseq",
+            "How much each gene is transcribed in a neuron, an astrocyte or a microglial cell",
+            ("neuron_excitatory_ncpm", "neuron_inhibitory_ncpm", "astrocyte_ncpm", "microglia_ncpm"),
+            "18,939 reviewed proteins",
+            citation="Human Protein Atlas single-cell RNA (rna_single_cell_type.tsv)",
+            url="https://www.proteinatlas.org/download/tsv/rna_single_cell_type.tsv.zip",
+            path="datasets/host/single_cell_rna/rna_single_cell_type.tsv.zip",
+            note="The bradyzoite cyst sits inside a NEURON, and the cells around it are astrocytes and "
+                 "microglia. Bulk brain tissue cannot answer that: a tissue average mixes the cell the "
+                 "parasite lives in with the ones reacting to it, and the question is the difference. "
+                 "Excitatory and inhibitory neurons are kept apart because the Atlas measures them "
+                 "separately; collapsing them would be our averaging rather than theirs. nCPM is the "
+                 "Atlas's cross-cell-type normalisation, so two columns can be compared.",
+            organism=organisms.HUMAN),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

@@ -2848,3 +2848,17 @@ labels". Joined on the accession alone, keeping the first name.
 long-shipped `fibroblast_tpm` alike. The ingest gate added to instruction 73 covers the two parasite tables
 only, because `SHIPPED_COLUMNS` is built from them. The host table is used through bridges rather than as
 question evidence, so nothing is leaking today, but the gate stops at the species boundary and should not.
+
+## 2026-11-09: the human neuron slot, from the cell the cyst lives in
+
+`Tg_host transcriptome · human neuron` <- the Human Protein Atlas single-cell data (`host_brain_cell_rna`),
+18,939 reviewed proteins with four columns: excitatory neuron, inhibitory neuron, astrocyte, microglia.
+
+**Why a tissue atlas could not answer it.** The bradyzoite cyst sits inside a NEURON, and the cells around it
+are astrocytes and microglia. Bulk brain tissue averages the cell the parasite lives in together with the ones
+reacting to it -- and that difference is the question. Excitatory and inhibitory neurons are kept apart because
+the Atlas measures them separately; collapsing them would be our averaging rather than theirs.
+
+Same shape as the monocyte fill earlier today, and the same lesson: the host slots that stayed empty are the
+ones no tissue atlas covers, because the tissue is not the unit the biology happens in. 131 slots empty, down
+from 137 this morning; gene coverage 193 of 276, host 14 of 50.

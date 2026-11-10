@@ -6130,7 +6130,12 @@
     "axis": "host effect",
     "context": "human neuron; bradyzoite, neuronal cyst",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "neuron_excitatory_ncpm",
+      "neuron_inhibitory_ncpm",
+      "astrocyte_ncpm",
+      "microglia_ncpm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
