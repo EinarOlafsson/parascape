@@ -2368,7 +2368,13 @@ HOST_VERDICTS = {
         "UniProt accessions and Anopheles has 301 reviewed entries against 14,559 total, so the "
         "identifier contract does not reach this organism. It needs the reference proteome as the "
         "canonical-accession source rather than Swiss-Prot, which is a change to "
-        "`host.uniprot_index` and should be made deliberately rather than discovered mid-load."),
+        "`host.uniprot_index` and should be made deliberately rather than discovered mid-load. "
+        "UPDATE 2026-11-10: the first blocker is half gone -- midgut expression at four timepoints "
+        "now exists for 12,614 AGAP genes, from the Anopheles arm of GSE284537, and lives in the Ag "
+        "SPACE (`anopheles_midgut_*`). It cannot reach this HOST slot because the second blocker "
+        "stands: the host table keys on reviewed UniProt accessions and Anopheles still has about "
+        "300 of them, while the space keys on AGAP gene ids. So this is an identifier-contract "
+        "change, not wiring. The salivary gland has no data either way."),
     ("human dermis",): (
         "missing",
         "Swept 2026-08-22. GTEx v10 carries `Skin_Sun_Exposed_Lower_leg` and "

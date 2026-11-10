@@ -2910,7 +2910,12 @@ the Anopheles and human bone-marrow / dermis / erythrocyte tissues. None is a sw
   substitute -- that is a prediction, and the slot asks what was found on the surface.
 * **Host response to infection** needs an infected-versus-uninfected series per tissue, which is per-slot
   acquisition rather than one source.
-* **The Anopheles host slots** (midgut, salivary gland) have their data already: `Ag` now holds midgut
-  expression at four timepoints. They read empty because a host slot is graded against the shipped HOST
-  tables, and the mosquito is a space of its own. Connecting them is slot-generator work, not acquisition --
-  the cheapest remaining win in this instruction.
+* **The Anopheles host slots** (midgut, salivary gland): **I called this "the cheapest remaining win" and was
+  wrong.** `Ag` does now hold midgut expression at four timepoints, so the data exists -- but the generator
+  already records why it cannot reach the slot, from the 2026-08-22 sweep: **the host table keys on reviewed
+  UniProt accessions, and Anopheles has about 300 of them against 14,559 entries**, while the space keys on
+  AGAP gene ids. Connecting them means changing the identifier contract (`host.uniprot_index` taking the
+  reference proteome rather than Swiss-Prot as the canonical source), which that note says should be done
+  deliberately rather than discovered mid-load. The salivary gland has no data either way.
+
+  The lesson is mine: a recorded verdict existed and said this, and I proposed the work without reading it.
