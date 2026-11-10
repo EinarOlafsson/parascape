@@ -4,7 +4,7 @@
 How much each transcript is translated, as ribosome footprints over its own mRNA
 
     level / kind : translation / riboseq
-    provides     : pf_translation_efficiency_log2, pf_ribosome_footprint_cpm
+    provides     : pf_ribosome_footprint_cpm
     coverage     : 5,720 genes
     citation     : GSE286083, ribosome profiling with matched RNA in P. falciparum trophozoites
     PMID         : 41099697
