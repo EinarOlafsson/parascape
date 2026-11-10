@@ -2,6 +2,58 @@
 
 ## Unreleased
 
+## 0.0.11.0 — 2026-11-10
+
+### Added
+
+- Five further organism spaces, declared and installable as data packs: rat, cat, *Anopheles gambiae*,
+  *Anopheles stephensi* and *Plasmodium vivax*. Each carries its Ensembl gene build, and the rat and cat
+  spaces also Bgee expression calls and Ensembl Compara human orthologs. They are listed with their real
+  state and never shown as calibrated: a space that holds a gene build and no measurements can name genes
+  and hold data, and can answer no question until measurements arrive.
+- Acceptance checks for those spaces, with the measure chosen per species rather than applied blindly. The
+  95 % reviewed-proteome bar needs a reviewed proteome, and the less-studied species barely have one: rat has
+  8,239 reviewed proteins, cat 234, *A. gambiae* 303, but *A. stephensi* has 9 and *P. vivax* 11. Where the
+  bar would be a statement about nine proteins, coverage is checked instead against an independent gene list
+  that someone else's pipeline produced.
+- Leakage attacks for the new spaces, so a question answered in one organism cannot quietly borrow another
+  organism's labels, and a slot generator that refuses any column two organisms both claim.
+- Which labels may legitimately stand beside each other when a question is asked
+  (`parascape.label_pairing`): 228 of the 420 ordered label pairs are allowed, the rest refused by name.
+- Which strategy is applicable to which space, from the evidence that space actually holds
+  (`parascape.strategy_applicability`), rather than offering every method everywhere.
+- A multi-task strategy (cross-fitted auxiliary tasks appended as features), completing the five-rung
+  strategy ladder.
+- Frozen prospective localisation claims and a frozen filled-matrix manifest, so a later run can be held to
+  what was predicted before the answer was known.
+- Host transcriptome and proteome columns: monocyte and brain cell-type expression from the Human Protein
+  Atlas single-cell data, and human and mouse tissue proteomes from PaxDb v6.1 as parts per million of the
+  proteome, which is what makes two tissues comparable.
+- Plasmodium liver-stage, PfDBSP occupancy and mosquito-stage measurements, derived and shipped as their own
+  tables (see the fix below for why they are not merged into the node table).
+- A verdict sheet of 27 open source decisions, each with the evidence behind it, for Einar to rule on.
+
+### Fixed
+
+- The mass-spectrometry search no longer runs out of memory. A timsTOF `.d` acquisition is a directory, so
+  measuring it with one file size gave 0 bytes, the batch size was chosen as though the run were small, and
+  four large runs were searched at once; directories are now measured by their contents. The search cap is
+  24 GiB, because the dominant cost is the fragment index rather than the batch.
+- Every column of both shipped tables now resolves to an information category, and the loader refuses a
+  shipped table carrying a column that does not — an uncategorised column was previously silent.
+- The Plasmodium node table is held at the 168 columns the frozen functional recovery benchmarks were
+  measured on. Those runs chose 132 features out of that table; from a wider table the same method chooses
+  differently, so a wider table is a different experiment rather than the same one with more context. Four
+  new Plasmodium deposits are therefore derived and shipped as their own tables but held out of the node
+  table (`deposits.HELD_OUT_OF_NODES`) until the benchmark is re-prepared.
+- Removed a derived translation-efficiency ratio that had been computed and refused twice before, from two
+  instruments. The footprint count stays, because a count is a condition; the ratio does not.
+- The column picker reports how many columns were excluded to keep a question from answering itself, instead
+  of excluding them silently.
+- The Species menu lists every pack space with the state read from disk, rather than a written-in list.
+- 144 of 160 candidate studies for empty slots are refused with the reason recorded, so a later pass does not
+  re-litigate them.
+
 ## 0.0.10.0 — 2026-11-08
 
 - Requires Python 3.12. With PySide6 6.12, Python 3.10 and 3.11 can abort at exit (shiboken over-releases
