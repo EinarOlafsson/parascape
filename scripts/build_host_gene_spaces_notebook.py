@@ -119,7 +119,26 @@ def main() -> None:
             "          f'{calls[\'Anatomical entity ID\'].nunique()} tissues')",
             "pd.DataFrame({s.code: t[['bgee_top_score', 'bgee_tissues_present']].notna().sum()",
             "              for s, t in tables.items()}).T")
-    nb.md("## 3 · Validate and write",
+    nb.md("## 3 · The human ortholog of each gene",
+          "What lets annotation transfer from human the way the mouse space does. One-to-one only: a gene with "
+          "several human counterparts has no single one to copy from, and picking one would invent a certainty "
+          "the homology does not have. The count of the other kinds is kept so the loss is visible.")
+    nb.code("ORTHO = {RAT_SPACE: 'rn_human_orthologs.tsv', CAT_SPACE: 'fc_human_orthologs.tsv'}",
+            "for space, table in tables.items():",
+            "    path = os.path.join(OUT, ORTHO[space])",
+            "    if not os.path.exists(path):",
+            "        print(space.code, 'no ortholog file'); continue",
+            "    links = pd.read_csv(path, sep='\t')",
+            "    one = links[links.homology_type == 'ortholog_one2one'].drop_duplicates('gene_id')",
+            "    table['human_ortholog'] = table.gene_id.map(one.set_index('gene_id').human_gene_id)",
+            "    table['human_ortholog_high_confidence'] = table.gene_id.map(",
+            "        one.set_index('gene_id').is_high_confidence).astype('Float64')",
+            "    other = links[links.homology_type != 'ortholog_one2one'].gene_id.nunique()",
+            "    print(f'{space.code}: {int(table.human_ortholog.notna().sum())} genes with a one-to-one human '",
+            "          f'ortholog; {other} more have only one-to-many or many-to-many and are left empty')",
+            "pd.DataFrame({s.code: t[['human_ortholog', 'human_ortholog_high_confidence']].notna().sum()",
+            "              for s, t in tables.items()}).T")
+    nb.md("## 4 · Validate and write",
           "`spaces.validate_nodes` is the same check every space passes: unique, non-missing, canonical ids. "
           "A space whose ids do not match its own pattern is refused here rather than at first use.")
     nb.code("from parascape.spaces import validate_nodes",
@@ -133,14 +152,14 @@ def main() -> None:
             "json.dump(written, open(os.path.join(OUT, 'manifest.json'), 'w'), indent=1)",
             "print('written:', {k: v['rows'] for k, v in written.items()})",
             "pd.DataFrame(written).T[['rows', 'file', 'build']]")
-    nb.md("## 4 · What these spaces cannot do yet",
+    nb.md("## 5 · What these spaces cannot do yet",
           "Neither holds a measurement, so neither can answer a question or be calibrated. What each needs "
           "first is stated here so the gap is a list rather than a feeling.")
     nb.code("needs = pd.DataFrame([",
-            "    dict(space='Rn', first_need='human ortholog links, for transferring annotation as the mouse space does',",
-            "         then='an infection series: no rat Toxoplasma transcriptome is on disk'),",
+            "    dict(space='Rn', first_need='an infection series: no rat Toxoplasma transcriptome is on disk',",
+            "         then='a pack, so the space can be installed and leave results/'),",
             "    dict(space='Fc', first_need='the enteroepithelial series -- the stages that exist in no other host',",
-            "         then='human or mouse ortholog links'),",
+            "         then='a pack, so the space can be installed and leave results/'),",
             "])",
             "needs.to_csv(os.path.join(OUT, 'what_each_space_needs.tsv'), sep='\\t', index=False)",
             "needs")

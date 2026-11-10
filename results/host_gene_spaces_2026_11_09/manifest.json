@@ -10,7 +10,9 @@
    "end",
    "strand",
    "bgee_top_score",
-   "bgee_tissues_present"
+   "bgee_tissues_present",
+   "human_ortholog",
+   "human_ortholog_high_confidence"
   ],
   "file": "rn_gene_nodes.parquet",
   "build": "Rattus_norvegicus.mRatBN7.2.113.gff3.gz",
@@ -27,7 +29,9 @@
    "end",
    "strand",
    "bgee_top_score",
-   "bgee_tissues_present"
+   "bgee_tissues_present",
+   "human_ortholog",
+   "human_ortholog_high_confidence"
   ],
   "file": "fc_gene_nodes.parquet",
   "build": "Felis_catus.Felis_catus_9.0.113.gff3.gz",
