@@ -182,7 +182,11 @@ def main() -> None:
           "The Anopheles arm of GSE284537 -- the same infected-midgut series read for the Plasmodium "
           "mosquito-stage slot, whose mosquito half had never been opened. The **control (dsGFP)** arms only, "
           "pseudo-bulked per timepoint: the series pairs each with an ecdysone-receptor knockdown, which is a "
-          "perturbation and a different question. These are the mosquito's own genes responding to infection.")
+          "perturbation and a different question. These are the mosquito's own genes responding to infection.",
+          "**Named `anopheles_midgut_*`, not `expr_midgut_*`.** The Plasmodium table already carries "
+          "`expr_midgut_*` from the PARASITE arm of the same files, and one name meaning two species' "
+          "expression is how a join goes quietly wrong -- the same collision the mouse and human protein "
+          "columns hit an hour earlier.")
     nb.code("import glob, gzip, re",
             "AG_DIR = os.path.join('transcription', 'scRNAseq', 'GSE284537')",
             "ag_dir = os.path.join(root, AG_DIR)",
@@ -213,9 +217,9 @@ def main() -> None:
             "        summed = sum(replicates)",
             "        if summed.sum() <= 0:",
             "            continue",
-            "        table[f'expr_midgut_{timepoint}'] = table.gene_id.map(",
+            "        table[f'anopheles_midgut_{timepoint}'] = table.gene_id.map(",
             "            np.log2(1e6 * summed / summed.sum() + 1).round(4))",
-            "    made = [c for c in table.columns if c.startswith('expr_midgut_')]",
+            "    made = [c for c in table.columns if c.startswith('anopheles_midgut_')]",
             "    print(f'Ag: {len(made)} timepoints, {int(table[made].notna().all(axis=1).sum())} of {len(table)}'",
             "          f' genes with a value in each')",
             "else:",

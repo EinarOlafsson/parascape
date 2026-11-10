@@ -17,9 +17,9 @@
    "human_ortholog_high_confidence"
   ],
   "withheld": [],
-  "archive": "parascape_Rn_2026.11.09.zip",
-  "sha256": "fd6ea487c7d34f8fabbb123e747f58f5a9113ff6405f1984efd1578ffa4d700d",
-  "bytes": 750638
+  "archive": "parascape_Rn_2026.11.10.zip",
+  "sha256": "4e5cdf0ad8b677acbd8851a6c20e32add355df8be2c33c649d319d20e3f457b3",
+  "bytes": 750637
  },
  "Fc": {
   "species": "Felis catus",
@@ -39,9 +39,9 @@
    "human_ortholog_high_confidence"
   ],
   "withheld": [],
-  "archive": "parascape_Fc_2026.11.09.zip",
-  "sha256": "fc021e19635c77edceb68820bce97edc915e57a4891aae351b4761e1a807b774",
-  "bytes": 640530
+  "archive": "parascape_Fc_2026.11.10.zip",
+  "sha256": "6f710303fad3ecc84e2980bd45d70ca7936f2586db315608d31bed37a006342e",
+  "bytes": 640531
  },
  "Ag": {
   "species": "Anopheles gambiae",
@@ -57,14 +57,14 @@
    "strand"
   ],
   "withheld": [
-   "expr_midgut_36h",
-   "expr_midgut_48h",
-   "expr_midgut_4d",
-   "expr_midgut_7d"
+   "anopheles_midgut_36h",
+   "anopheles_midgut_48h",
+   "anopheles_midgut_4d",
+   "anopheles_midgut_7d"
   ],
-  "archive": "parascape_Ag_2026.11.09.zip",
-  "sha256": "95f6a7ecd20f2fa1d4708e82e8134c2dcfdceaf80cc5dba40eb23fa03cdaca0d",
-  "bytes": 203364
+  "archive": "parascape_Ag_2026.11.10.zip",
+  "sha256": "8d14dc2a4ada0267370d46cb261ad14c2789f371d75a7dd328284739e05970eb",
+  "bytes": 203366
  },
  "As": {
   "species": "Anopheles stephensi",
@@ -80,9 +80,9 @@
    "strand"
   ],
   "withheld": [],
-  "archive": "parascape_As_2026.11.09.zip",
-  "sha256": "883f47ad874503f7748c5be7dd4c56c59fba446828d3fcc06c7d447c828524e5",
-  "bytes": 216413
+  "archive": "parascape_As_2026.11.10.zip",
+  "sha256": "3aedd528cc3877fee8c82fadab97fd2f10927a829a8fe189a1df4818be333eec",
+  "bytes": 216414
  },
  "Pv": {
   "species": "Plasmodium vivax",
@@ -100,8 +100,8 @@
   "withheld": [
    "expr_pv_liver"
   ],
-  "archive": "parascape_Pv_2026.11.09.zip",
-  "sha256": "e0ae929abc72a98bee279c05fdee0cc8e0f67b72d841d6ac15f7121ff0341d0b",
-  "bytes": 107287
+  "archive": "parascape_Pv_2026.11.10.zip",
+  "sha256": "18ea9ad16859c0d47d11a7fee497a71414148b0df5fbcc750d178d56e4d0b6c2",
+  "bytes": 107288
  }
 }

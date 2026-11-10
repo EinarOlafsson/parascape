@@ -339,7 +339,7 @@ OVERRIDE_PATTERNS = (
      "a location transferred from an ortholog: place evidence, inferred rather than observed"),
     (re.compile(r"^bgee_(top_score|tissues_present)$"), ("transcript",),
      "Bgee expression calls: how much and in how many tissues a gene is transcribed"),
-    (re.compile(r"^expr_midgut_|^expr_pv_liver$"), ("transcript",),
+    (re.compile(r"^expr_midgut_|^expr_pv_liver$|^anopheles_midgut_"), ("transcript",),
      "RNA abundance in a vector or parasite space, per timepoint or stage"),
     # 2026-11-09: the gene's own annotation, carried for display and grouping. `identity` is the
     # one category that is NEVER a feature, which is exactly right for a chromosome number -- a

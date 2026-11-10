@@ -44,10 +44,10 @@ OPEN_SOURCES = {
 WITHHELD = {
     "expr_pv_liver": "derived from GEO GSE220039, which states no licence; redistribution is the depositor's "
                      "call and not ours to assume",
-    "expr_midgut_36h": "derived from GEO GSE284537, which states no licence",
-    "expr_midgut_48h": "derived from GEO GSE284537, which states no licence",
-    "expr_midgut_4d": "derived from GEO GSE284537, which states no licence",
-    "expr_midgut_7d": "derived from GEO GSE284537, which states no licence",
+    "anopheles_midgut_36h": "derived from GEO GSE284537, which states no licence",
+    "anopheles_midgut_48h": "derived from GEO GSE284537, which states no licence",
+    "anopheles_midgut_4d": "derived from GEO GSE284537, which states no licence",
+    "anopheles_midgut_7d": "derived from GEO GSE284537, which states no licence",
 }
 
 

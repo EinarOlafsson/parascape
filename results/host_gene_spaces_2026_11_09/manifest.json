@@ -53,10 +53,10 @@
    "start",
    "end",
    "strand",
-   "expr_midgut_36h",
-   "expr_midgut_48h",
-   "expr_midgut_4d",
-   "expr_midgut_7d"
+   "anopheles_midgut_36h",
+   "anopheles_midgut_48h",
+   "anopheles_midgut_4d",
+   "anopheles_midgut_7d"
   ],
   "file": "ag_gene_nodes.parquet",
   "build": [

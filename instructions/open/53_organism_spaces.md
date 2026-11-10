@@ -400,11 +400,17 @@ share-alike, **V** verify the terms first, **X** local build only.
     the same humanised-liver series read for falciparum. **Controls only**: it pairs them with a PI4K-inhibitor
     arm, which is a drug experiment and a different question. 9.05 M parasite reads over three controls, and
     counts renormalised to the parasite total because the parasite is a minority of a liver biopsy.
-  * **Ag: midgut expression at four timepoints** (`expr_midgut_36h/48h/4d/7d`) for all 12,614 genes, from the
+  * **Ag: midgut expression at four timepoints** (`anopheles_midgut_36h/48h/4d/7d`) for all 12,614 genes, from the
     Anopheles arm of GSE284537 -- the mosquito's own genes responding to infection, where the parasite arm of
     the same files filled the Plasmodium mosquito-stage slot. Control (dsGFP) arms only, pseudo-bulked.
 
   883 tests pass including the Species menu, and 750 again after the measurements were added.
+
+  **Renamed 2026-11-10 before it could bite.** Those columns were first called `expr_midgut_*` -- exactly the
+  names the Plasmodium table carries for the PARASITE arm of the same files. One name meaning two species'
+  expression is how a join goes quietly wrong, and it is the same collision the mouse and human PaxDb columns
+  hit the same night (`host slot 'mouse brain' matches more than one organism`). The mosquito's are now
+  `anopheles_midgut_*`; packs rebuilt, categories updated, 809 tests pass.
 * **WP5 completed 2026-11-09 with the second vector:** `parascape/spaces/stephensi.py` (`As`, Ensembl Metazoa
   AsteS1, 13,336 genes). A separate space rather than a strain of gambiae: stephensi is a different species
   that carries malaria across South Asia and has spread into Africa, where it breeds in urban containers
