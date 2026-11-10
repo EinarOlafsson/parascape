@@ -441,10 +441,15 @@ endpoint specifically. **Nothing is needed from Einar.**
 The tutorials session reported v8 finished at 20:19, so cores 24-31 are no longer reserved and the share set up
 on 2026-11-05 is reverted:
 
-* `55-share-with-plaque-v8.conf`: `CPUAffinity=0-31` (was 0-23). Nice 19 and idle IO are unchanged, which is
-  what makes widening safe -- any other job wins the CPU and the disk whatever ParaScape is doing.
-* `60-wide-when-idle.conf`: **wide mode back ON** (`--wide-cpus 24,...,31`). Fast CPUs stay 0-23 with 0-7
-  protected; 24-31 are taken only while nothing else wants them and given back as soon as other work appears.
+* `55-share-with-plaque-v8.conf` **deleted**, so the standing `50-cpu-limit-16.conf` governs again:
+  `CPUAffinity=0-7 16-23`, Einar's half-the-machine share of 2026-11-02.
+* `60-wide-when-idle.conf`: **wide mode back ON**, fast CPUs 0-7 and 16-23 with 0-7 protected, spare cores
+  `--wide-cpus 8-14,24-30` borrowed only while nothing else wants them and given back as soon as other work
+  appears; `--quiet-seconds 180` as before the plaque period.
+* **A mistake caught on the way, recorded because it would have been invisible:** the first revert set
+  `CPUAffinity=0-31`, reading "restore your normal share" as "take the whole machine". The normal share is
+  HALF -- 16 logical CPUs -- and the memory file saying so was read only after the change was applied. Reverting
+  to a remembered state is not the same as reverting to the documented one.
 * Guard restarted and active; it reports `protected` and "waiting for sustained quiet", which is correct with a
   plaque v9 GPU evaluation running on 4 threads -- it will widen on its own once the machine is quiet.
 
