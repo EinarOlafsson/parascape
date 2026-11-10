@@ -481,3 +481,22 @@ depend on the batch. If it OOMs again the honest options are a smaller search sp
 cap is a decision about a shared machine rather than a detail to raise quietly.
 
 This blocked instructions 80 and 65 all day: both wait on projects from this queue.
+
+## 2026-11-10, 06:10: the batch fix was half of it; the cap was the other half
+
+The timsTOF batching fix was real -- the project that had looped all day finished, 105 -> 106 -- but the service
+was **OOM-killed twice more within four hours**, and the log shows why the first diagnosis was incomplete:
+those kills came at `processing files 12 .. 16`, a batch of FOUR. That project's runs are ordinary files under
+400 MB, so the batch rule was behaving correctly; they simply do not fit beside the index.
+
+**Sage's fragment index is 423,476,460 fragments over 16,857,874 peptides, and that cost does not depend on
+batching at all.** The service reached 17.2 GB against a 16 GiB cap. No batching rule can fix that.
+
+**Einar's decision (2026-11-10): raise the cap to 24 GiB.** `parascape-ms-uniform.service.d/60-memory-24g.conf`.
+On a 124 GB box with RNA quantification running this leaves about 55 GB free, well under the 80 GB warn line of
+the RAM rules; a line was added to `ram_leases.md`. Restarted clean and being watched through a full project
+rather than declared fixed on a clean start -- which is the mistake made with the batch fix.
+
+**The honest shape of the original diagnosis:** batching was a genuine bug and worth fixing (a timsTOF `.d` is a
+directory, so its size measured as zero), but calling it *the* cause was premature. It explained one project,
+not the queue.
