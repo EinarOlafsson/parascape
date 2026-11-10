@@ -455,3 +455,29 @@ on 2026-11-05 is reverted:
 
 A plaque v9 GPU evaluation runs now and other GPU jobs follow; the tutorials session says none of them needs a
 CPU reservation. If any of them slows, narrow to CPUs 0-7 first and diagnose afterwards, as before.
+
+## 2026-11-10: the uniform MS search had been dead in an OOM loop for 15 hours
+
+Found by noticing that the finished-project count had not moved all day (105 of 203 at 09:00 and still 105 at
+23:30) while the RNA count had. `parascape-ms-uniform` was starting, working for an hour, being OOM-killed and
+restarting: **restart counter 20, nothing finished since 08:33**. The figure reported in that morning's
+progress table was stale rather than slow, which is the kind of number a progress report is supposed to catch.
+
+**The cause.** `ms_uniform_search.py` chooses how many runs Sage holds at once -- one for very large runs,
+otherwise four -- from `p.stat().st_size if p.is_file() else 0`. **A timsTOF run is a `.d` DIRECTORY, not a
+file**, so every run of such a project measured as zero bytes, `largest` came out 0, the batch stayed at 4, and
+Sage loaded four ~1.6 GB runs together against a 16 GiB cap. PXD045018 (8 timsTOF runs, 13 GB) looped on that
+all day.
+
+**The fix** measures a directory by what it contains (`_run_bytes`), so that project now runs one at a time.
+Confirmed working: `processing files 0 .. 1` then `1 .. 2`, no kill, restart counter back to 0. The change is
+in the worker script, not this repository; the original is kept at
+`scratchpad/ms_uniform_search.py.bak`. It changes memory behaviour only -- not the search settings, the FASTA
+or any result.
+
+**Still tight, and worth Einar's eye:** even at one run per batch the service sits at 99.96 % of its 16 GiB
+cap, because the fragment index alone is 423,476,460 fragments over 16,857,874 peptides and that cost does not
+depend on the batch. If it OOMs again the honest options are a smaller search space or a larger cap, and the
+cap is a decision about a shared machine rather than a detail to raise quietly.
+
+This blocked instructions 80 and 65 all day: both wait on projects from this queue.
