@@ -469,19 +469,49 @@ def test_the_background_never_climbs_on_top_of_a_panel(win):
     # shown, so on a window that never was, the background stays where it was lowered and the round
     # trip is clean however broken the program is.
     win.show()
+    # Take the landing away FIRST. A window opens on the landing overlay, and the overlay leaves on
+    # the first thing that brings a dock forward -- which is this test's own first tab switch. So
+    # the "before" grab was the landing and the "after" grab the dock, they differed by 15 % of the
+    # area, and the test reported a stacking bug that was not there. It passed whenever the landing
+    # happened not to be armed yet, which is why CI saw it pass and fail on the same code. The
+    # subject here is dock stacking, so the overlay has to be gone before either grab is taken.
+    from parascape import landing_install
+    landing_install.leave_landing(win)
+    QtWidgets.QApplication.instance().processEvents()
     win.set_ambient("blobs")
     # The field is a function of the clock, so stopping it makes two renders comparable. It also
     # means only the switch itself can put the background back where it belongs.
     win._ambient_widget.stop()
     win._ambient_widget.set_time(0.0)
+    dock = win.right_dock
+
+    def painted_over_the_dock():
+        """What the WINDOW paints where the dock is standing now.
+
+        The rectangle is read again for every grab rather than once up front. A tab round trip can
+        settle the dock one pixel from where it was, and cropping the old rectangle then compared
+        the panel against itself shifted by a pixel -- a difference in every row, reported as the
+        background covering the panel. Grabbing the window rather than the dock is the point of the
+        test and is kept: `dock.grab()` renders the dock itself and would look correct even with the
+        background painted on top of it.
+        """
+        where = QtCore.QRect(dock.mapTo(win, QtCore.QPoint(0, 0)), dock.size())
+        return win.grab().toImage().copy(where)
+
     try:
+        # One round trip before measuring. The FIRST switch after a resize settles the dock a pixel
+        # narrower, which re-lays its border and header and changed 1.2 % of the pixels -- all of
+        # them on the edges, none of them the background. Comparing the state before that settling
+        # against the state after it made a layout wobble look like the bug this test is for. Both
+        # grabs are taken from the settled state instead, so the equality stays strict and still
+        # means what it says: the panel, not the background, is what is painted there.
         _show_tab(bar, "evidence")
-        dock = win.right_dock
-        rect = QtCore.QRect(dock.mapTo(win, QtCore.QPoint(0, 0)), dock.size())
-        before = win.grab().toImage().copy(rect)
         _show_tab(bar, other)
         _show_tab(bar, "evidence")
-        after = win.grab().toImage().copy(rect)
+        before = painted_over_the_dock()
+        _show_tab(bar, other)
+        _show_tab(bar, "evidence")
+        after = painted_over_the_dock()
         assert not before.isNull() and before.size() == after.size()
         assert after == before, (
             "the panel is not painted after switching away and back -- what is drawn over it is "
