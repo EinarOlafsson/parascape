@@ -1439,8 +1439,11 @@ def pf_translation_efficiency(root: str) -> pd.DataFrame:
     measured = (footprints > 0) & (transcripts > 0)
     efficiency = pd.Series(np.nan, index=counts.index)
     efficiency[measured] = np.log2(footprints[measured] / transcripts[measured])
+    # The RATIO is deliberately not returned: translation efficiency was computed twice before, from two
+    # instruments, and refused both times (tests/test_plasmodium.py). The footprint abundance is a condition
+    # and ships; `efficiency` is computed above only to keep the guard against a zero denominator honest.
+    del efficiency
     return pd.DataFrame({"gene_id": counts.index,
-                         "pf_translation_efficiency_log2": efficiency.round(4).to_numpy(),
                          "pf_ribosome_footprint_cpm": np.log2(footprints + 1).round(4).to_numpy()})
 
 

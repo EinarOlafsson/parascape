@@ -116,8 +116,11 @@ def test_graph_propagation_is_deterministic_and_scores_without_the_scoring_label
 
 
 def test_the_untested_strategies_say_why():
-    assert set(B.UNTESTED) == {"selective_prediction", "multi_task", "empirical_bayes_shrinkage"}
+    """`multi_task` left this list on 2026-11-09: it is implemented and graded (instruction 73 rung 5),
+    and it loses to boosted trees, which is a measured answer rather than an untested one."""
+    assert set(B.UNTESTED) == {"selective_prediction", "empirical_bayes_shrinkage"}
     assert all(len(reason.split()) > 15 for reason in B.UNTESTED.values())
+    assert "multi_task" in B.BORROWED, "it moved from untested to implemented, not out of the module"
 
 
 def test_a_borrowed_strategy_runs_through_the_whole_harness(tmp_path):

@@ -2878,7 +2878,7 @@ REGISTRY = [
     Dataset("pf_translation_efficiency", "Translation efficiency, asexual blood stage", "translation",
             "riboseq",
             "How much each transcript is translated, as ribosome footprints over its own mRNA",
-            ("pf_translation_efficiency_log2", "pf_ribosome_footprint_cpm"),
+            ("pf_ribosome_footprint_cpm",),
             "5,720 genes", pmid="41099697", accession="GSE286083",
             citation="GSE286083, ribosome profiling with matched RNA in P. falciparum trophozoites",
             url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE286083",
@@ -2889,26 +2889,11 @@ REGISTRY = [
                  "RNA and so cannot give a ratio. A gene with no footprints AND no mRNA is missing "
                  "rather than zero: it was not measured, not measured as untranslated. One stage only "
                  "(trophozoite), so this is not a cycle-wide efficiency.", organism=organisms.FALCIPARUM),
-    Dataset("pf_derived_translation_efficiency", "Translation efficiency per blood-stage phase (DERIVED)",
-            "translation", "riboseq",
-            "Ribosome footprints over mRNA in the same phase, and how much that changes across the cycle",
-            ("te_ring_derived", "te_early_trophozoite_derived", "te_late_trophozoite_derived",
-             "te_schizont_derived", "te_merozoite_derived", "te_phase_span_derived"),
-            "1,174 to 2,983 genes per phase; 3,020 with a span",
-            derived_from=("riboseq_rpf_ring", "riboseq_rpf_early_trophozoite",
-                          "riboseq_rpf_late_trophozoite", "riboseq_rpf_schizont",
-                          "riboseq_rpf_merozoite", "riboseq_mrna_ring",
-                          "riboseq_mrna_early_trophozoite", "riboseq_mrna_late_trophozoite",
-                          "riboseq_mrna_schizont", "riboseq_mrna_merozoite"),
-            path="scripts/add_pf_translation_efficiency_per_phase.py",
-            note="Computed, not acquired, and the reason is worth recording: the literature index proposed "
-                 "GSE58402 for the translation-efficiency slot, and GSE58402 was ALREADY shipped as "
-                 "`pf_riboseq` -- same accession, same PMID 25493618. The slot read empty only because no "
-                 "column divided footprints by mRNA, which is what efficiency is. log2(RPF/mRNA) within the "
-                 "SAME phase, so a phase a gene was not measured in stays missing rather than borrowing "
-                 "another phase's mRNA; the sources are already length-normalised densities, so the ratio "
-                 "needs no further correction. The span needs two phases, because one phase is a value and "
-                 "not a change.", organism=organisms.FALCIPARUM),
+    # `pf_derived_translation_efficiency` was added on 2026-11-09 and REMOVED on 2026-11-10: the ratio
+    # does not ship. Translation efficiency was computed twice before, from two instruments, and
+    # refused twice -- it correlates NEGATIVELY with codon adaptation where the textbook expects
+    # positive, and ribosome profiling reproduces that. The conditions ship; the contrast does not.
+    # See tests/test_plasmodium.py::test_translation_efficiency_is_not_a_column_on_either_arm.
     Dataset("pf_dbsp_occupancy", "PfDBSP occupancy per gene", "DNA", "ChIPseq",
             "How much PfDBSP sits on each gene and its promoter, as ChIP coverage over input",
             ("dbsp_occupancy",),

@@ -2919,3 +2919,36 @@ the Anopheles and human bone-marrow / dermis / erythrocyte tissues. None is a sw
   deliberately rather than discovered mid-load. The salivary gland has no data either way.
 
   The lesson is mine: a recorded verdict existed and said this, and I proposed the work without reading it.
+
+## 2026-11-10: the full suite, and what adding columns to pf_nodes actually costs
+
+A full run (6,995 passed, 42 skipped) found **11 failures, all mine**. Four are fixed; seven need a decision.
+
+**Fixed:**
+1. **`pf_translation_efficiency_log2` and the six `te_*_derived` columns are REMOVED.**
+   `tests/test_plasmodium.py::test_translation_efficiency_is_not_a_column_on_either_arm` exists because that
+   ratio was computed twice, from two instruments, and refused twice: it correlates NEGATIVELY with codon
+   adaptation where the textbook expects positive, and ribosome profiling reproduces that. **The conditions
+   ship; the contrast does not.** I added it on 2026-11-09 without reading the refusal, and the slot
+   `Pf_translation efficiency · asexual blood stage` is now UNCLAIMED again -- its emptiness is the recorded
+   answer, not a gap. `pf_ribosome_footprint_cpm` stays: a footprint count is a condition.
+2. The stale `_multi_task_was_here` key is gone from `borrowed_models.UNTESTED`, and the test now asserts
+   multi_task moved to the implemented set rather than out of the module.
+3. `HANDOFF.md` quoted 168 Plasmodium columns; the cache has 175.
+4. The Plasmodium **layout was rebuilt** (`scripts/rebuild_layouts.py --organism Pf`): the graph records the
+   SHA-256 of the node table it was built from, and adding columns broke that tie.
+
+**Not fixed, and it needs Einar.** The seven `test_functional_agreement_ui` failures are the same tie, one
+level up: `functional_results.require_context` binds each frozen recovery to the exact bytes of
+`pf_nodes.parquet`, so after the new columns the panel **correctly refuses to show stale accuracy** and says
+so. The UI degrades safely; the tests assert it shows benchmarks.
+
+The established remedy is to re-run the frozen Pf recoveries (precedent: 64.11a did exactly this for
+Toxoplasma, "re-run on fresh splits after the node table changed"). **It cannot be run in this checkout**:
+`scripts/freeze_pf_functional_ec_knn.py` loads a preparation packet whose manifest records absolute paths from
+before the repository was renamed (`repo/parascape/...`), so it fails on a missing file. Re-preparing that
+packet, or teaching it to resolve paths relatively, is the work -- and it spends frozen-test budget on
+published accuracy numbers, which is not a 3 a.m. decision.
+
+**The choice is Einar's:** re-run the Pf recoveries, or revert the three Plasmodium column additions (the
+liver-stage, TF-binding and mosquito-stage fills) to restore the binding.
