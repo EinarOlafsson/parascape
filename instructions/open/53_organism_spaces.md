@@ -372,7 +372,31 @@ share-alike, **V** verify the terms first, **X** local build only.
     layer-name fragments are now spelled out in `INTERACTION_LAYERS`, and a test asserts both shipped parasite
     spaces run every strategy -- a block there is a bug in the checker, not a fact about the space.
   * Tests: `tests/test_strategy_applicability.py` (5).
-* **Not started:** WP4 (Rn, Fc), WP5 (Ag, As), WP6 remainder (Pv).
+* **WP5 and the Pv half of WP6, built 2026-11-09** in the same pass as WP4, because the same wrong assumption
+  had blocked all three. `parascape/spaces/anopheles.py` (`Ag`, **kind `vector`** -- the parasite completes its
+  sexual cycle in the mosquito, so ookinete, oocyst and sporozoite happen inside this animal) and
+  `parascape/spaces/vivax.py` (`Pv`).
+
+  | Space | Kind | Genes | Build |
+  |---|---|---:|---|
+  | Rn | host | 23,141 | Ensembl 113 mRatBN7.2 |
+  | Fc | host | 19,588 | Ensembl 113 Felis_catus_9.0 |
+  | Ag | vector | 12,614 | Ensembl Metazoa 60 AgamP4 |
+  | Pv | parasite | 6,523 | Ensembl Protists 63 PvP01 v2 |
+
+  **P. vivax is kept apart from falciparum, not folded into it:** vivax forms hypnozoites and falciparum does
+  not, so a slot about dormancy means something different in each and one table answering for both would be a
+  false equivalence.
+
+  **A pattern that refused real genes:** the first `Pv` id pattern was digits only, and the build names its
+  organelle genes apart -- `PVP01_API05000`, `PVP01_MIT02100` -- so 33 genes (30 apicoplast, 3 mitochondrial)
+  failed validation. Falciparum already handles exactly this; the vivax pattern now matches it.
+
+  All four are listed by `space_catalogue` as **unavailable**: gene build only, no pack. Ag and Pv hold no
+  measurement at all; what each needs first is in `what_each_space_needs.tsv` -- for Ag the Anopheles arm of
+  GSE284537, which is already on disk and unread, and for Pv the vivax arm of GSE220039, likewise on disk.
+  883 tests pass, the Species menu among them.
+* **Not started:** WP5's second vector (As, Anopheles stephensi).
 
 ## WP6 started: Cryptosporidium parvum (2026-11-08)
 

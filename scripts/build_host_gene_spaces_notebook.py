@@ -34,8 +34,11 @@ def main() -> None:
     sys.path.insert(0, REPO)
     nb = ExecutedNotebook("The rat and cat gene spaces",
                           namespace={"REPO": REPO, "OUT": OUT, "BUILDS": BUILDS})
-    nb.md("**What this builds (instruction 53, WP4).** One row per rat gene and one per cat gene, from the "
-          "Ensembl builds: id, symbol, biotype, chromosome, start, end, strand.",
+    nb.md("**What this builds (instruction 53, WP4-6).** One row per gene for four species, from their Ensembl "
+          "builds: id, symbol, biotype, chromosome, start, end, strand. Rat and cat are Toxoplasma hosts; "
+          "Anopheles gambiae is the VECTOR that carries Plasmodium through its sexual cycle; P. vivax is the "
+          "other human malaria parasite, kept apart from falciparum because it forms hypnozoites and "
+          "falciparum does not.",
           "**Both were recorded as blocked behind the VEuPathDB login, and that was wrong.** A rat and a cat "
           "are vertebrates; their builds are on Ensembl and nothing about them needs a parasite database. The "
           "assumption went unchecked for weeks.",
@@ -46,14 +49,19 @@ def main() -> None:
           f"Built {_dt.date.today().isoformat()}.")
     nb.code("import gzip, hashlib, json, os, re, pandas as pd",
             "from parascape import paths",
+            "from parascape.spaces.anopheles import ANOPHELES_SPACE",
             "from parascape.spaces.cat import CAT_SPACE",
             "from parascape.spaces.rat import RAT_SPACE",
+            "from parascape.spaces.vivax import VIVAX_SPACE",
             "root = paths.dataset_root()",
-            "SOURCES = {RAT_SPACE: 'Rattus_norvegicus.mRatBN7.2.113.gff3.gz',",
-            "           CAT_SPACE: 'Felis_catus.Felis_catus_9.0.113.gff3.gz'}",
+            "SOURCES = {RAT_SPACE: ('reference/ensembl_r113', 'Rattus_norvegicus.mRatBN7.2.113.gff3.gz'),",
+            "           CAT_SPACE: ('reference/ensembl_r113', 'Felis_catus.Felis_catus_9.0.113.gff3.gz'),",
+            "           ANOPHELES_SPACE: ('reference/ensembl_metazoa_r60', 'Anopheles_gambiae.AgamP4.60.chr.gff3.gz'),",
+            "           VIVAX_SPACE: ('reference/ensembl_protists_r63',",
+            "                         'Plasmodium_vivax_gca900093555.GCA900093555v2.63.gff3.gz')}",
             "def sha(path):",
             "    return hashlib.sha256(open(path, 'rb').read()).hexdigest()",
-            "paths_by_space = {s: os.path.join(root, BUILDS, f) for s, f in SOURCES.items()}",
+            "paths_by_space = {s: os.path.join(root, where, f) for s, (where, f) in SOURCES.items()}",
             "for space, path in paths_by_space.items():",
             "    print(space.code, os.path.basename(path), 'present:', os.path.exists(path))",
             "hashes = {s.code: sha(p) for s, p in paths_by_space.items() if os.path.exists(p)}",
@@ -97,6 +105,8 @@ def main() -> None:
             "bgee_files = {RAT_SPACE: 'Rattus_norvegicus_expr_simple.tsv.gz',",
             "              CAT_SPACE: 'Felis_catus_expr_simple.tsv.gz'}",
             "for space, table in list(tables.items()):",
+            "    if space not in bgee_files:",
+            "        continue                       # Bgee covers vertebrates; the mosquito and the parasite are not in it",
             "    path = os.path.join(root, BGEE, bgee_files[space])",
             "    if not os.path.exists(path):",
             "        print(space.code, 'no Bgee file'); continue",
@@ -118,13 +128,15 @@ def main() -> None:
             "          f'{int(table.bgee_tissues_present.gt(0).sum())} expressed somewhere, '",
             "          f'{calls[\'Anatomical entity ID\'].nunique()} tissues')",
             "pd.DataFrame({s.code: t[['bgee_top_score', 'bgee_tissues_present']].notna().sum()",
-            "              for s, t in tables.items()}).T")
+            "              for s, t in tables.items() if 'bgee_top_score' in t}).T")
     nb.md("## 3 · The human ortholog of each gene",
           "What lets annotation transfer from human the way the mouse space does. One-to-one only: a gene with "
           "several human counterparts has no single one to copy from, and picking one would invent a certainty "
           "the homology does not have. The count of the other kinds is kept so the loss is visible.")
     nb.code("ORTHO = {RAT_SPACE: 'rn_human_orthologs.tsv', CAT_SPACE: 'fc_human_orthologs.tsv'}",
             "for space, table in tables.items():",
+            "    if space not in ORTHO:",
+            "        continue                       # a human ortholog means nothing for a mosquito or a parasite",
             "    path = os.path.join(OUT, ORTHO[space])",
             "    if not os.path.exists(path):",
             "        print(space.code, 'no ortholog file'); continue",
@@ -137,7 +149,7 @@ def main() -> None:
             "    print(f'{space.code}: {int(table.human_ortholog.notna().sum())} genes with a one-to-one human '",
             "          f'ortholog; {other} more have only one-to-many or many-to-many and are left empty')",
             "pd.DataFrame({s.code: t[['human_ortholog', 'human_ortholog_high_confidence']].notna().sum()",
-            "              for s, t in tables.items()}).T")
+            "              for s, t in tables.items() if 'human_ortholog' in t}).T")
     nb.md("## 4 · Validate and write",
           "`spaces.validate_nodes` is the same check every space passes: unique, non-missing, canonical ids. "
           "A space whose ids do not match its own pattern is refused here rather than at first use.")
@@ -160,6 +172,10 @@ def main() -> None:
             "         then='a pack, so the space can be installed and leave results/'),",
             "    dict(space='Fc', first_need='the enteroepithelial series -- the stages that exist in no other host',",
             "         then='a pack, so the space can be installed and leave results/'),",
+            "    dict(space='Ag', first_need='midgut and salivary-gland expression; GSE284537 holds an Anopheles arm',",
+            "         then='the infected-mosquito contrasts, which are the point of a vector space'),",
+            "    dict(space='Pv', first_need='the vivax arm of GSE220039, already on disk and not yet read',",
+            "         then='hypnozoite data -- the stage falciparum does not have'),",
             "])",
             "needs.to_csv(os.path.join(OUT, 'what_each_space_needs.tsv'), sep='\\t', index=False)",
             "needs")

@@ -15,7 +15,10 @@
    "human_ortholog_high_confidence"
   ],
   "file": "rn_gene_nodes.parquet",
-  "build": "Rattus_norvegicus.mRatBN7.2.113.gff3.gz",
+  "build": [
+   "reference/ensembl_r113",
+   "Rattus_norvegicus.mRatBN7.2.113.gff3.gz"
+  ],
   "build_sha256": "3f7909df473a03e65af12c37bf7bb7e42a89623d14053224e78fb82168eae3c4"
  },
  "Fc": {
@@ -34,7 +37,46 @@
    "human_ortholog_high_confidence"
   ],
   "file": "fc_gene_nodes.parquet",
-  "build": "Felis_catus.Felis_catus_9.0.113.gff3.gz",
+  "build": [
+   "reference/ensembl_r113",
+   "Felis_catus.Felis_catus_9.0.113.gff3.gz"
+  ],
   "build_sha256": "aa4a27e48a358078e23b4a2c37b33105e4366aa5e2495364b6ea6bcde7968068"
+ },
+ "Ag": {
+  "rows": 12614,
+  "columns": [
+   "gene_id",
+   "gene_name",
+   "biotype",
+   "seqid",
+   "start",
+   "end",
+   "strand"
+  ],
+  "file": "ag_gene_nodes.parquet",
+  "build": [
+   "reference/ensembl_metazoa_r60",
+   "Anopheles_gambiae.AgamP4.60.chr.gff3.gz"
+  ],
+  "build_sha256": "f6c881106bccffb87406836a9e579811de2ad51809d6e4b5785fdd9feef212bf"
+ },
+ "Pv": {
+  "rows": 6523,
+  "columns": [
+   "gene_id",
+   "gene_name",
+   "biotype",
+   "seqid",
+   "start",
+   "end",
+   "strand"
+  ],
+  "file": "pv_gene_nodes.parquet",
+  "build": [
+   "reference/ensembl_protists_r63",
+   "Plasmodium_vivax_gca900093555.GCA900093555v2.63.gff3.gz"
+  ],
+  "build_sha256": "f1dc232c5911159466a1cf895f4d7a888d137ffe1c1f0c086e633a7e812d03c8"
  }
 }

@@ -24,6 +24,10 @@ from . import organisms
 #: listed as unavailable until a pack is built, which is the honest state -- a declared space with no
 #: measurement can name genes and answer nothing.
 HOST_PACK_SPACES = ("Hs", "Mm", "Rn", "Fc")
+
+#: Spaces declared with a gene build but no pack yet: the mosquito vector and the second malaria parasite
+#: (instruction 53, WP5 and WP6). Listed so a reader knows they exist; `unavailable` until a pack is built.
+DECLARED_ONLY_SPACES = ("Ag", "Pv")
 _REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -53,6 +57,12 @@ def _host_space(code: str):
     if code == "Fc":
         from .spaces.cat import CAT_SPACE
         return CAT_SPACE
+    if code == "Ag":
+        from .spaces.anopheles import ANOPHELES_SPACE
+        return ANOPHELES_SPACE
+    if code == "Pv":
+        from .spaces.vivax import VIVAX_SPACE
+        return VIVAX_SPACE
     from .spaces.mouse import MOUSE_SPACE
     return MOUSE_SPACE
 
@@ -114,6 +124,10 @@ def catalogue(roots=None) -> list:
         else:
             out.append(Entry(code, space.species, space.kind, "pack", "unavailable",
                              note=broken or "no pack installed and none available here"))
+    for code in DECLARED_ONLY_SPACES:
+        space = _host_space(code)
+        out.append(Entry(code, space.species, space.kind, "pack", "unavailable",
+                         note="gene build only; no measurement and no pack yet"))
     return out
 
 
