@@ -435,3 +435,18 @@ Resume also works over FTP: a second aria2c run continued the partial file rathe
 the fallback for the last attempts and for any URL that is not a PRIDE one. That is roughly a nine-fold
 speed-up on the slowest part of the pipeline, and it removes the connection refusals, which came from the HTTPS
 endpoint specifically. **Nothing is needed from Einar.**
+
+## 2026-11-09: the plaque v8 reservation is lifted
+
+The tutorials session reported v8 finished at 20:19, so cores 24-31 are no longer reserved and the share set up
+on 2026-11-05 is reverted:
+
+* `55-share-with-plaque-v8.conf`: `CPUAffinity=0-31` (was 0-23). Nice 19 and idle IO are unchanged, which is
+  what makes widening safe -- any other job wins the CPU and the disk whatever ParaScape is doing.
+* `60-wide-when-idle.conf`: **wide mode back ON** (`--wide-cpus 24,...,31`). Fast CPUs stay 0-23 with 0-7
+  protected; 24-31 are taken only while nothing else wants them and given back as soon as other work appears.
+* Guard restarted and active; it reports `protected` and "waiting for sustained quiet", which is correct with a
+  plaque v9 GPU evaluation running on 4 threads -- it will widen on its own once the machine is quiet.
+
+A plaque v9 GPU evaluation runs now and other GPU jobs follow; the tutorials session says none of them needs a
+CPU reservation. If any of them slows, narrow to CPUs 0-7 first and diagnose afterwards, as before.
