@@ -349,3 +349,42 @@ Running total: **35 of 63 verified by reading, 4 keyed differently, 3 not gene-k
 18 whose file is still not here** -- 10 of those behind the symlinks to the other machine. One Europe PMC
 download (`oxidative_stress_screen`, PMC8216390) stalled rather than failed and was stopped by PID after ten
 minutes; it is worth a retry when the box is free.
+
+## 65.04, 2026-11-10 (later): fetching completed, and the tally now
+
+Two tooling gaps were found by using the tools rather than reading them. The fetcher recorded where it had to
+leave a file it could not place, but the verifier never read that mapping, so a successfully fetched file was
+still reported as absent; `resolve` now consults `supplementary_fetched_paths.json`, which makes the sources
+behind dangling symlinks checkable **where they sit**, with the broken tree left alone. And the fetcher had a
+socket timeout but no deadline -- one Europe PMC endpoint trickled bytes for ten minutes without tripping it
+and stalled the pass until it was killed by PID. Reads are chunked against a 240-second deadline now.
+
+Fetch outcome over all 21: **2 placed, 2 fetched and left beside their download** (the symlinked ones),
+**5 where the archive does not contain the recorded filename**, and **9 downloads that failed at the source**.
+
+| Verdict | Sources |
+|---|---:|
+| the table names the genes we ship | 36 |
+| the file is still not here | 14 |
+| read: keyed on something other than gene accessions | 5 |
+| not keyed on genes, so the check does not apply | 3 |
+| no file recorded, only a paper | 3 |
+| read but no identifier found -- needs a person | 2 |
+
+**`pf_complexes` joins the keyed-differently group on direct evidence:** its `Clusters` sheet has a column
+literally named `uniprot` and carries host and parasite accessions together (P02549, human spectrin, beside
+A0A5K1K8E0), because the table is host-pathogen complexes. Our column is keyed on PF3D7 gene accessions.
+
+**Five archives do not contain the filename the record names** -- `cyst_wall_interactome`,
+`host_macrophage_surfaceome`, `pf_isoforms`, `pf_secretome`, `splitcas9_imaging_screen`,
+`thermal_shift_cetsa`. That is a provenance finding rather than a download failure: what is installed came
+from somewhere the record does not name. It is the single most useful thing this pass produced and it needs a
+person, not a retry.
+
+**Two read but yielded no identifier** -- `pf_cdpk1_dependent_sites` (an .xls whose real header sits below a
+title row) and `spacr_escrt_screen` (the record names a directory, not a file). Both need the file named
+before a check means anything.
+
+The 14 still absent now wait on Europe PMC answering: `pf_crosslink_ms`, `pf_ip_ms`, `pf_lactylome`,
+`pf_palmitome`, `cyst_wall_interactome` and `oxidative_stress_screen` all time out, `pf_acetylome` returns an
+HTTP error. Not a tooling problem any more.

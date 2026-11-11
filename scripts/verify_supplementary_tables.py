@@ -60,6 +60,10 @@ KEYED_DIFFERENTLY = {
     "host_gtex_transcriptome":
         "the GTEx median-TPM matrix is keyed on ENSG gene identifiers while the human host table is keyed "
         "on UniProt accessions, so the two never match as strings; the link is the identity layer",
+    "pf_complexes":
+        "the Clusters sheet has a column literally named `uniprot` and holds both host and parasite "
+        "accessions (P02549 human spectrin beside A0A5K1K8E0), because the table is host-pathogen "
+        "complexes; our column is keyed on PF3D7 gene accessions, so the two never match as strings",
     "pf_resistome":
         "the table is one row per SNV in compound-selected clones, and two of the six installed columns "
         "(pf6_field_dnds, pf6_field_nonsyn_snvs) come from the Pf6 field data instead, so this table is "
