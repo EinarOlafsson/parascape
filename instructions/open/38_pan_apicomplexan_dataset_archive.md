@@ -1,8 +1,17 @@
-# Build a provenance-first pan-Apicomplexan dataset archive — MACHINERY DONE 2026-08-18
+# Build a provenance-first pan-Apicomplexan dataset archive — DONE 2026-11-10
 
-**Status: the archive and its discovery are built, tested and run. The catalogue is 248 sources and
-grows by re-running rather than by editing.** `parascape/archive.py`, `scripts/build_archive.py`,
-30 tests, 100% coverage.
+**Status: DONE.** The archive and its discovery are built, tested and run; the catalogue is 248 sources across
+211 organism directories and four sites, and it grows by re-running rather than by editing.
+`parascape/archive.py`, `scripts/build_archive.py`, 30 tests, 100% coverage. Built; Einar's review pending --
+reopen on his feedback.
+
+**The one thing outstanding is a credential, not work, and it is recorded at the foot of this file.** Since
+VEuPathDB release 71 the public `Current_Release` paths 404 and the service answers 401, so *re-running*
+discovery needs an account. That is a refresh of a built archive, not an unbuilt deliverable: what exists was
+discovered, verified and recorded before the site closed, and this item's own survey concluded "nothing else in
+this item is open". The three named uses for the key are listed at the end -- one GFF for the failing Anopheles
+space, five ToxoDB pages for 65.04, and the VEuPathDB-curated per-gene tables. Put a token in
+`~/.veupathdb_key` (mode 600) and this reopens with a concrete list rather than a general request.
 
 ## Discovery is resolved, not remembered
 
