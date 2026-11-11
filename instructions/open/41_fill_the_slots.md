@@ -2990,3 +2990,36 @@ mapping once the Pf functional pipeline is re-prepared on the wider table.
 **Four Plasmodium gene slots therefore read empty again**, and that is the honest state rather than a
 regression: 130 slots empty, gene coverage 189 of 276, host 19 of 50. `HANDOFF.md` says 168 columns and says
 why the count is pinned.
+
+## 2026-11-10: two Plasmodium candidates judged, and both verdicts came from the samples, not the labels
+
+Three empty Pf slots carried unjudged candidates (the other four with candidates are the deposits held out of
+the node table today). Both judgements reversed on reading the sample list, and in opposite directions -- the
+GEO assay label was wrong about each.
+
+**`Pf_chromatin accessibility` <- GSE246116: REFUSED.** The series is labelled "Genome binding/occupancy
+profiling" and is a plausible-looking 74-sample SuperSeries ("Epigenetically conferred ring-stage survival
+against artemisinin", PMID 40877256). Its samples are **ChIP-seq for histone acetylation** -- `H4K12ac`,
+`H4K16ac`, under MYST knockdown. Acetylation is not accessibility. Open chromatin is measured by ATAC-seq,
+FAIRE or DNase; histone acetylation correlates with it and is a different quantity. Filling an accessibility
+slot with an acetylation mark would ship a correlate as the measurement, which is the substitution this
+instruction exists to prevent. **The slot stays empty, and its emptiness is now a recorded answer.**
+
+It is not useless data, it is data for another question -- but the slots it would answer are already filled:
+`Pf_acetylation` (grade A) and `Pf_chromatin state · asexual blood stage` (grade B). Recorded here so it is
+not re-proposed for accessibility.
+
+**`Pf_RNA-binding protein targets` <- GSE267362: ACCEPTED as a candidate.** GEO labels it "Expression
+profiling by high throughput sequencing", which reads as a transcriptome and would normally be refused for a
+binding slot -- a knockout transcriptome says which transcripts CHANGE, not which an RBP BINDS. The sample
+titles say otherwise: `Pfalciparum_Day5_IP1`, `_IgG1`, `_Input1`, across replicates. Immunoprecipitate against
+IgG control against input is an **RIP** design. It measures what MD3 (the P. falciparum Male Development
+Protein 3 orthologue, a male-associated translational regulator) binds, which is exactly what the slot asks.
+
+Not yet installed: deriving it means a per-gene enrichment of IP over input, and any new Plasmodium column is
+currently **held out of the node table** (`deposits.HELD_OUT_OF_NODES`) until the frozen functional benchmark
+is re-prepared. So this is a judged, accepted candidate waiting on that decision, not an oversight.
+
+**The lesson, since it bit twice in one pass:** the GEO assay type is the submitter's label on the series, not
+a description of the experiment. The sample titles told the truth in both cases and disagreed with the label
+in both. Judge from the samples.
