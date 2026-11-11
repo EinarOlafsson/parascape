@@ -615,3 +615,26 @@ whose coordinates belong to a different assembly.
 So the conclusion stands, now with evidence rather than inheritance: **rebuilding `Ag` correctly needs the
 AgamP4 annotation from VectorBase, and that needs the VEuPathDB key.** One file, for one failing space. NCBI is
 recorded here as tried and rejected, with the counts, so it is not re-tried as a shortcut.
+
+## 2026-11-10: what WP9's last piece actually needs, checked rather than estimated
+
+"A host space as a full map window is not built" reads like a UI task with nothing blocking it. It is not, and
+the difference matters for scheduling it.
+
+**A map is a layout, and no host layout exists.** `hs_host_proteins.parquet` (27 columns) and
+`mm_host_proteins.parquet` (10) carry no coordinate column of any kind, and the only layout files shipped are
+`graph.npz` and `pf_graph.npz` -- Toxoplasma and Plasmodium. Opening a host space as a map therefore needs an
+embedding computed over the host table first: 58,988 human genes for `Hs`, 18,428 for `Mm`.
+
+So the remaining work is in three parts, and only the third is the window:
+
+1. **Decide what makes two host genes similar**, which is not inherited from the parasite side. The parasite
+   map is built from measurement blocks the harness knows; the human table is GTEx tissue medians plus HPA
+   annotations plus ortholog-derived fields, and choosing among them IS the claim the map would make.
+2. **Build and freeze the layout**, with the node-file SHA-256 recorded the way `pf_graph.npz` does, so the
+   map cannot drift from the table it was built from -- the tie that broke twice this week.
+3. **Open it in the window**, which is the module work this item has been describing.
+
+Step 2 is real machine time on a shared box (a 58,988-row embedding), so this piece is gated on machine time in
+the same way items 69, 80 and 81 are, not merely on effort. Recorded here so it is not picked up as a quick UI
+job and then found to need an afternoon of compute.
