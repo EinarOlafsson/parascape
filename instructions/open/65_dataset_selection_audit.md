@@ -449,3 +449,22 @@ headline it would have read as "38, near enough 39" and two sources would have q
 From 33 verified and 21 absent at the start of this pass, to **39 verified and 9 absent**. The nine that
 remain fail at the source, and `pf_ip_ms` proved those failures are transient rather than permanent: it timed
 out twice and then fetched 8.3 MB on the third attempt. A later retry is worth more than a diagnosis.
+
+## 65.04, 2026-11-10: none of the five "provenance defects" was real
+
+`pf_secretome` was the last survivor of the five archives I reported as not containing the file the record
+names -- the one I said was "a real record problem rather than five". The tar support found it one level in,
+as a `.tgz` member of the Wellcome Open Research article bundle, 38,581 bytes. **So all five were tooling, and
+the provenance finding I reported does not exist.**
+
+That is worth stating as plainly as the original claim. I wrote it up as "the single most useful thing this
+pass produced", and acting on it would have meant looking for a defect in five sources that are intact.
+
+**40 of 63 verified.** Seven files remain absent and those failures are persistent, not transient: eight
+downloads failed again on a third pass (`cyst_wall_interactome`, `oxidative_stress_screen`, `pf_acetylome`,
+both `pf_berghei_*`, `pf_lactylome`, `pf_palmitome`, `thermal_shift_cetsa`), so the earlier note that a retry
+beats a diagnosis was also too broad -- it was true of `pf_ip_ms` and of `pf_secretome`, and false of these.
+
+Final tally for the pass: from 0 verified and no reading done, to **40 verified, 5 keyed on something other
+than gene accessions, 3 not gene-keyed, 4 read without yielding an identifier, 3 recording no file, 1 with no
+installed column, and 7 whose file this machine cannot fetch.**

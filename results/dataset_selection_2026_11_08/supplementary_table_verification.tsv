@@ -26,7 +26,7 @@ myristoylome	the table names the genes we ship	65 of 65 installed genes appear i
 organelle_surface_turboid	the table names the genes we ship	742 of 742 installed genes appear in the table (100%); the table names 742 identifiers [6 sheet(s), column read from nodes.parquet]
 oxidative_stress_screen	file not on this machine	datasets/quarantine/2026_08_16_unverified/Tg/fitness_oxidative_stress/ is recorded but absent here
 pf_acetylome	file not on this machine	datasets/post_translation/acetylome/26813983/srep19722-s2.xls is recorded but absent here
-pf_berghei_liver_transfer	file not on this machine	datasets/reference/plasmodb/pb_transfer/31730853/mmc2.xlsx is recorded but absent here
+pf_berghei_liver_transfer	table could not be read	1 sheet(s)
 pf_berghei_transfer	file not on this machine	datasets/reference/plasmodb/pb_transfer/28708996/mmc1.xlsx is recorded but absent here
 pf_cdpk1_dependent_sites	table could not be read	6 sheet(s)
 pf_chromatin_proxiome	the table names the genes we ship	1,897 of 2,019 installed genes appear in the table (94%); the table names 2,060 identifiers [4 sheet(s), column read from pf_nodes.parquet]
@@ -50,7 +50,7 @@ pf_palmitome	file not on this machine	datasets/post_translation/palmitome/362500
 pf_pb_fertility_transfer	the table names the genes we ship	1,121 of 1,121 installed genes appear in the table (100%); the table names 1,456 identifiers [3 sheet(s), column read from pf_nodes.parquet]
 pf_resistome	read: keyed on something other than gene accessions	the table is one row per SNV in compound-selected clones, and two of the six installed columns (pf6_field_dnds, pf6_field_nonsyn_snvs) come from the Pf6 field data instead, so this table is expected to cover only part of the column set
 pf_rna_dependence	the table names the genes we ship	3,666 of 3,671 installed genes appear in the table (100%); the table names 4,668 identifiers [4 sheet(s), column read from pf_nodes.parquet]
-pf_secretome	file not on this machine	datasets/post_translation/secretome/28944300/5c097a1c-efe5-4ed8-b97b-f9ba656268a6.xlsx is recorded but absent here
+pf_secretome	the table names the genes we ship	184 of 184 installed genes appear in the table (100%); the table names 236 identifiers [6 sheet(s), column read from pf_nodes.parquet]
 pf_spatial_proteome	the table names the genes we ship	2,998 of 3,000 installed genes appear in the table (100%); the table names 3,000 identifiers [2 sheet(s), column read from pf_nodes.parquet]
 pf_target_engagement	the table names the genes we ship	3,092 of 3,126 installed genes appear in the table (99%); the table names 4,413 identifiers [text table, column read from pf_nodes.parquet]
 plasmodb_pf3d7_piggybac	the table names the genes we ship	5,385 of 5,385 installed genes appear in the table (100%); the table names 10,694 identifiers [parquet, column read from pf_nodes.parquet]

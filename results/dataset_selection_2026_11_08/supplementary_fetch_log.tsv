@@ -1,3 +1,10 @@
 dataset_id	outcome	detail
-pf_isoforms	fetched, left beside the download	datasets/transcription/isoforms/40316999/SupplementaryData2.xlsx is behind a symlink to another machine (/mnt/firecuda2/Claude/repo/starplast/datasets/transcription/isoforms); kept at /media/carruthers/mnt3/claude/parascape_supp_fetch/pf_isoforms/Supplementary Data050425/SupplementaryData2.xlsx (938,292 bytes)
-splitcas9_imaging_screen	fetched, left beside the download	datasets/DNA/imaging_screen/35538310/41564_2022_1114_MOESM4_ESM.xlsx is behind a symlink to another machine (/mnt/firecuda2/Claude/repo/starplast/datasets/DNA/imaging_screen); kept at /media/carruthers/mnt3/claude/parascape_supp_fetch/splitcas9_imaging_screen/41564_2022_1114_MOESM4_ESM.xlsx (72,628 bytes)
+cyst_wall_interactome	download failed	TimeoutError: The read operation timed out
+oxidative_stress_screen	download failed	HTTPError: HTTP Error 500: Internal Server Error
+pf_acetylome	download failed	TimeoutError: The read operation timed out
+pf_berghei_liver_transfer	download failed	HTTPError: HTTP Error 500: Internal Server Error
+pf_berghei_transfer	download failed	TimeoutError: The read operation timed out
+pf_lactylome	download failed	TimeoutError: The read operation timed out
+pf_palmitome	download failed	TimeoutError: gave up after 240s, 7,340,032 bytes
+pf_secretome	placed	datasets/post_translation/secretome/28944300/5c097a1c-efe5-4ed8-b97b-f9ba656268a6.xlsx (38,581 bytes)
+thermal_shift_cetsa	download failed	HTTPError: HTTP Error 500: Internal Server Error
