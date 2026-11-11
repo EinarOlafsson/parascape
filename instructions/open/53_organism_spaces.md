@@ -590,3 +590,28 @@ had a species to hang on.
 
 What each needs next is written in `what_each_space_needs.tsv`: expression per tissue first (Bgee has rat; its
 cat coverage is thin), then human-ortholog links for the rat, and the enteroepithelial series for the cat.
+
+## 2026-11-10: NCBI is not a way round the VectorBase login, and here is why
+
+The Anopheles blocker was re-tested rather than taken from the note. `vectorbase.org/common/downloads/...`
+still answers **404** without a login, so that half stands.
+
+The obvious workaround is NCBI, which carries the same species and keeps the VectorBase accessions
+(`locus_tag=AgaP_AGAP000002`, `Dbxref=VectorBase:AGAP000002`). It is **not** a substitute, and the numbers say
+why. `GCF_000005575.2` is **AgamP3**, while the space is built on **AgamP4**:
+
+| | genes |
+|---|---:|
+| NCBI AgamP3, AGAP accessions | 13,233 |
+| our Ag space, Ensembl Metazoa AgamP4 | 12,614 |
+| in NCBI and not in ours | 2,086 |
+| in ours and not in NCBI | 1,467 |
+
+The difference runs **both ways**. These are two annotations of two assembly versions, not an old copy and a new
+one, so merging them would produce a gene universe matching neither source -- precisely the silent
+mis-assignment the strain-suffix rule exists to prevent (decision 2b). Taking the union would add 2,086 genes
+whose coordinates belong to a different assembly.
+
+So the conclusion stands, now with evidence rather than inheritance: **rebuilding `Ag` correctly needs the
+AgamP4 annotation from VectorBase, and that needs the VEuPathDB key.** One file, for one failing space. NCBI is
+recorded here as tried and rejected, with the counts, so it is not re-tried as a shortcut.
