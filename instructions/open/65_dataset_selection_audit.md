@@ -209,3 +209,52 @@ names that deposit, so the PRIDE reference is the only evidence. It stays flagge
 25 of 162 sources are verified by deposit. For the 92 supplementary-table sources the paper is the location, so
 verification means reading the table against the installed columns -- that is reading work, not a query, and it
 is what remains of batch 4.
+
+## 65.04 batch 4, 2026-11-10: the check was asking the wrong authority
+
+The verification ran the wrong way round. It searched Europe PMC full text for an accession and required the
+recorded paper to be among the hits. That fails whenever the origin paper does not spell its accession in
+indexed text, which is common in older papers and in consortium data -- so a correct record reads as suspicious.
+Both sources flagged "read before accepting" were correct:
+
+* **`E-MTAB-3579`** is the FANTOM5 mouse CAGE deposit, and the recorded 24670764 IS the FANTOM5 flagship
+  ("A promoter-level mammalian expression atlas", Nature 2014). The four papers that name the accession are
+  re-users of the atlas, not its origin.
+* **`GSE132248`** records exactly the citation GEO lists for it (31955846).
+
+`scripts/verify_origin_papers.py` now asks the **deposit first** -- GEO carries the citation a submitter
+attached to a series, BioStudies carries it for ArrayExpress and PRIDE -- and only falls back to full text when
+the deposit names nobody. A source the deposit and the record disagree on is reported as a disagreement with
+both named, rather than as a missing paper. Where neither route can settle it, `READ_AND_DECIDED` holds the
+answer WITH its evidence, so the verdict can be checked rather than trusted.
+
+| Verdict | Sources |
+|---|---:|
+| verified by the deposit | 14 |
+| verified by the paper text | 12 |
+| verified by reading, evidence recorded | 1 |
+| supplementary table of a named paper | 63 |
+| no publication recorded in the queue | 40 |
+| no accession recorded | 30 |
+| no paper names the accession (`PXD058095`, `GSE302107`) | 2 |
+
+**The committed verification table was also stale.** It described 121 sources as having a publication where the
+queue holds 105; the queue moved on 2026-11-08 and the verification was never re-run. They agree again now.
+
+**Publications found for the queue gaps**, from the deposits themselves, ready to fill `publication_id`:
+
+| accession | paper | source |
+|---|---|---|
+| GSE108740 | 30728393 | GEO citation |
+| GSE206344 | 41761089 | Europe PMC |
+| GSE22258 | 20709297 | Europe PMC |
+| GSE200962 | 35652638 | Europe PMC |
+| GSE223620 | 37081202 | GEO citation |
+| GSE313048 | 42778561 | GEO citation |
+| GSE132237 | 31955846 | GEO citation |
+| PXD042937 | 37975677 | Europe PMC, confirms the PRIDE reference |
+| GSE277553 | none | no paper names it; the deposit declares none |
+| GSE335016 | none | no paper names it; the deposit declares none |
+
+Still open in batch 4: filling those publications into the queue, and the 63 supplementary-table sources, where
+verification means reading each table against the installed columns -- reading work, not a query.
