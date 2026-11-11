@@ -296,3 +296,45 @@ The three that remain are explained in the script with the evidence inside each 
 **What cannot be finished here: 21 of the 63 source files are not on this machine.** They are recorded with
 their paths and were presumably kept where they were acquired. Those 21 need the files before the same check
 can run; nothing else about them is unresolved.
+
+## 65.04, 2026-11-10: "the file is not on this machine" was an assumption, and it hid something
+
+The 21 unverifiable supplementary sources all record a URL, so not having the file was a statement about work
+not done rather than about the data. `scripts/fetch_missing_supplementary.py` fetches them from what the
+registry already says: most URLs are a Europe PMC `supplementaryFiles` endpoint, which serves a ZIP of
+everything a paper deposited, so the archive is opened and the member matching the recorded basename is taken
+out. Where that basename is absent the members are listed rather than a guess being made -- picking "the
+spreadsheet that looks right" is how the wrong table gets installed.
+
+**What the first run found is more useful than the files.** `os.makedirs` raised `FileNotFoundError` on a path
+it should have been able to create, and the reason is that **part of this dataset tree is symlinked to the
+other machine**:
+
+```
+datasets/post_translation/acetylome -> /mnt/firecuda2/Claude/repo/starplast/datasets/post_translation/acetylome
+```
+
+**10 of the 21 sit behind such a link**, including the whole `datasets/quarantine` subtree. They are not
+missing: they live on the home machine, and here the links dangle. Two consequences worth writing down:
+
+* a directory that `ls -ld` shows as present can resolve nowhere, so "the file is absent" and "the path is
+  broken" look identical from a script;
+* had `/mnt/firecuda2` been mounted, creating those directories would have written **into the home machine's
+  own checkout of this repository**. The fetcher now refuses to write through a dangling link, keeps the file
+  beside its download and records the real location in `supplementary_fetched_paths.json`, so verification
+  never depends on repairing a tree that points somewhere else.
+
+Reached before the run was stopped (the box was needed idle for an unrelated GPU measurement):
+
+| source | outcome |
+|---|---|
+| `host_erythrocyte_proteome` | placed, 822,887 bytes |
+| `host_erythrocyte_surface` | placed, 725,839 bytes |
+| `host_gtex_transcriptome` | placed, 8,846,936 bytes |
+| `cyst_wall_interactome` | the archive does not contain `cyst_wall` |
+| `host_macrophage_surfaceome` | the archive does not contain `S1_File.xlsx` |
+
+Those last two are a **provenance finding, not a download failure**: the recorded filename is not in the
+supplementary bundle the paper actually deposited, so what is installed came from somewhere the record does
+not name. Both need a person to look before anything is re-fetched. (`host_macrophage_surfaceome` is the CSPA
+source whose download links were already found to serve the site HTML rather than a workbook.)
