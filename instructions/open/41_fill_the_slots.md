@@ -3053,3 +3053,28 @@ not studies that measure the thing.
 
 The rest stay empty, which remains a true statement about what has been measured. Recorded so the same
 searches are not re-run expecting a different answer.
+
+### Every proposal from that pass, judged
+
+An unjudged proposal is worth nothing -- it leaves a slot looking like it has a lead when nobody has checked.
+All 14 slots that received candidates are decided here.
+
+| slot | top proposal | verdict |
+|---|---|---|
+| `Cp_transcription · oocyst` | GSE232438 | **ACCEPT.** "Transcriptional control of the Cryptosporidium lifecycle", *C. parvum*, 22 samples, RNA-seq, PMID 38811723. Right organism, right assay, lifecycle stages are what the slot asks |
+| `Pf_host transcriptome · Anopheles midgut` | GSE284425 | **ACCEPT, pending a tissue check.** "Parasite and vector circadian clocks mediate efficient malaria transmission", *P. berghei* + *A. stephensi*, 62 samples. The host here is the mosquito and the Pf arm takes berghei by design; still to confirm midgut tissue is sampled and mosquito genes are quantified per gene |
+| `Pf_host transcriptome · human erythrocyte` | GSE301430 | **REFUSE.** It is human **monocytes**, not erythrocytes -- "Innate immune sensing of *P. falciparum* sporozoites and blood stages by human monocytes", and one sample. Wrong cell type, and the cell type IS the slot |
+| `Pf_chromatin accessibility` | GSE246116 | **REFUSE.** ChIP-seq for histone acetylation, not accessibility (judged above) |
+| `Pf_RNA-binding protein targets` | GSE267362 | **ACCEPT**, an RIP design behind an "expression profiling" label (judged above) |
+| `Pf_S-nitrosylation · asexual blood stage` | GSE304394 | **REFUSE.** Protein **lactylation** and a chromatin series. A different modification is not a weaker version of the one asked for |
+| `Tg_host surface / receptor repertoire · human monocyte` | GSE313273 | **REFUSE.** A *Toxoplasma* SAGA transcriptome series; it says nothing about a human monocyte surface repertoire |
+| `Cp_transcription · zygote` | GSE263667 | **REFUSE.** PFAS toxicology; the hit is vocabulary, not organism |
+| `Cp_transcription · maximum across stages` | GSE332872 | **REFUSE.** Human gut microbiome subspecies survey |
+| `Cp_translation · under stress` | GSE277946 | **REFUSE.** Not *Cryptosporidium* |
+| `Cp_translation efficiency · extracellular stress` | GSE277946 | **REFUSE.** Same series, same reason |
+| `Cp_secretome / excreted` | GSE319436 | **REFUSE.** A proximity-mapping method paper, not a *Cryptosporidium* secretome |
+| `Cp_co-translation`, `Cp_interaction · with host proteins`, `Cp_interaction degree · IP-MS`, `Cp_fold confidence / disorder` | GSE2077 | **REFUSE, all four.** The same *Garcinia mangostana* screen was returned for every one of them, which is the signature of a query that has degenerated to common words rather than found anything |
+
+**Two accepts from 81 proposals.** That ratio is the finding: a GEO index search on slot words is a way of
+listing studies that share vocabulary, and judging is the entire value. The twelve refusals are recorded so
+the same searches are not run again expecting a different answer.
