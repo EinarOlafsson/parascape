@@ -23,6 +23,7 @@ import shutil
 import sys
 import time
 import urllib.request
+import tarfile
 import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -138,15 +139,25 @@ def main(argv=None) -> int:
             # One level of nesting: several publishers bundle the supplementary ZIP inside the
             # article ZIP (Malaria Journal's MOESM1_ESM.zip, Wellcome Open Research's .tgz).
             if inner is None:
-                for nested in [n for n in names if n.lower().endswith((".zip",))]:
+                for nested in [n for n in names if n.lower().endswith((".zip", ".tgz", ".tar.gz"))]:
                     try:
                         with zipfile.ZipFile(fetched) as outer:
                             outer.extract(nested, folder)
                         candidate = os.path.join(folder, nested)
                         if zipfile.is_zipfile(candidate):
                             inner, _ = member_named(candidate, basename, folder)
-                            if inner is not None:
-                                break
+                        elif tarfile.is_tarfile(candidate):
+                            # Wellcome Open Research bundles its supplementary data as .tgz inside the
+                            # article archive. A tar member is checked for escaping its directory the same
+                            # way a zip member is -- tar has carried absolute paths since long before zip.
+                            with tarfile.open(candidate) as ball:
+                                hit = next((m for m in ball.getmembers()
+                                            if m.isfile() and os.path.basename(m.name) == basename), None)
+                                if hit and not os.path.isabs(hit.name) and ".." not in hit.name.split("/"):
+                                    ball.extract(hit, folder)
+                                    inner = os.path.join(folder, hit.name)
+                        if inner is not None:
+                            break
                     except Exception:
                         continue
             if inner is None:
@@ -173,10 +184,27 @@ def main(argv=None) -> int:
         rows.append(dict(dataset_id=key, outcome="placed", detail=f"{recorded} ({size:,} bytes)"))
         placed[key] = destination
         print(f"{key:<30}placed {size:>12,} bytes", flush=True)
-    if placed:
-        import json
-        with open(os.path.join(OUT, "supplementary_fetched_paths.json"), "w") as handle:
-            json.dump(placed, handle, indent=1, sort_keys=True)
+    # MERGE, never replace. This file is the only record of where a fetched file ended up when the tree is
+    # symlinked away, and rewriting it per run silently forgot everything an earlier run had fetched: two
+    # sources that verified an hour ago went back to "file not on this machine" because a later pass happened
+    # to time out on them, while their files sat on disk the whole time. An entry is dropped only when the
+    # file it points at is gone -- the same rule as `add_deposits.py`, which refuses a merge that loses values.
+    import json
+    mapping_path = os.path.join(OUT, "supplementary_fetched_paths.json")
+    try:
+        with open(mapping_path) as handle:
+            known = json.load(handle)
+    except (OSError, ValueError):
+        known = {}
+    kept = {k: v for k, v in known.items() if os.path.exists(v)}
+    dropped = sorted(set(known) - set(kept))
+    merged = {**kept, **placed}
+    if merged != known:
+        with open(mapping_path, "w") as handle:
+            json.dump(merged, handle, indent=1, sort_keys=True)
+    if dropped:
+        print(f"dropped from the map (file gone): {', '.join(dropped)}")
+    print(f"fetched-file map: {len(merged)} entries ({len(placed)} from this run)")
     if rows:
         frame = pd.DataFrame(rows)
         frame.to_csv(os.path.join(OUT, "supplementary_fetch_log.tsv"), sep="\t", index=False)

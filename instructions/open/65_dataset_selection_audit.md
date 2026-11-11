@@ -417,3 +417,35 @@ directory rather than a file, which is a separate problem.
 data until you look at what it found instead. The strain prefixes, the ENSG identifiers, the organism-wrong
 table and now the Office files were all the same mistake: I read my own tool's silence as a statement about
 the world. Each time, looking at the actual content turned a "finding" into a bug.
+
+## 65.04, 2026-11-10 (final): 39 of 63, and a map that stopped forgetting
+
+Two more fixes, both found by watching the number go the wrong way.
+
+**Nested tarballs.** `pf_secretome` and others bundle the supplementary archive inside the article archive as
+`.tgz`, not `.zip`. One level of tar is now followed, with the same check against a member escaping its
+directory that the zip path has.
+
+**The fetched-file map was rewritten per run, so it forgot.** `supplementary_fetched_paths.json` is the only
+record of where a file ended up when the tree is symlinked away, and rebuilding it from scratch each pass
+discarded everything an earlier pass had fetched. `pf_isoforms` and `splitcas9_imaging_screen` had verified an
+hour earlier and went back to "file not on this machine" because a later run happened to time out on them --
+while one of the two files was still sitting on disk. The map now MERGES, and an entry is dropped only when
+the file it points at is gone, which is the rule `add_deposits.py` already applies to a losing merge.
+
+That regression is the useful part. **A count that goes down is information**; had I only looked at the
+headline it would have read as "38, near enough 39" and two sources would have quietly reverted.
+
+| Verdict | Sources |
+|---|---:|
+| the table names the genes we ship | 39 |
+| the file is still not here | 9 |
+| read: keyed on something other than gene accessions | 5 |
+| not keyed on genes, so the check does not apply | 3 |
+| no file recorded, only a paper | 3 |
+| read but no identifier found | 3 |
+| no installed column to compare | 1 |
+
+From 33 verified and 21 absent at the start of this pass, to **39 verified and 9 absent**. The nine that
+remain fail at the source, and `pf_ip_ms` proved those failures are transient rather than permanent: it timed
+out twice and then fetched 8.3 MB on the third attempt. A later retry is worth more than a diagnosis.
