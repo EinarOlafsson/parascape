@@ -401,6 +401,46 @@ ORGANISMS = {
                   'OR "P. falciparum"[Title/Abstract] OR "P. berghei"[Title/Abstract])'),
         "stages": "ring, trophozoite, schizont, gametocyte, sporozoite, liver",
     },
+    # The further spaces (instruction 53). Added 2026-11-10 because `propose_datasets.py` reads this
+    # table and raised KeyError('Cp') the moment the slot generator stopped hardcoding two organisms:
+    # candidate discovery had quietly become impossible for every space beyond Toxoplasma and
+    # Plasmodium. Quoted binomials for the same reason as above -- a bare genus word is too loose,
+    # and a disease name is not an organism.
+    "Cp": {
+        "species": "Cryptosporidium parvum",
+        "query": ('("Cryptosporidium parvum"[Title/Abstract] OR "C. parvum"[Title/Abstract] '
+                  'OR "Cryptosporidium hominis"[Title/Abstract])'),
+        "stages": "sporozoite, trophozoite, meront, gamont, oocyst",
+    },
+    "Pv": {
+        "species": "Plasmodium vivax",
+        "query": ('("Plasmodium vivax"[Title/Abstract] OR "P. vivax"[Title/Abstract])'),
+        "stages": "ring, trophozoite, schizont, gametocyte, sporozoite, hypnozoite, liver",
+    },
+    "Ag": {
+        "species": "Anopheles gambiae",
+        "query": ('("Anopheles gambiae"[Title/Abstract] OR "A. gambiae"[Title/Abstract])'),
+        "stages": "larva, pupa, adult, midgut, salivary gland",
+    },
+    "As": {
+        "species": "Anopheles stephensi",
+        "query": ('("Anopheles stephensi"[Title/Abstract] OR "A. stephensi"[Title/Abstract])'),
+        "stages": "larva, pupa, adult, midgut, salivary gland",
+    },
+    "Rn": {
+        "species": "Rattus norvegicus",
+        "query": ('("Rattus norvegicus"[Title/Abstract] OR rat[Title/Abstract] '
+                  'OR rats[Title/Abstract])'),
+        "stages": "",
+    },
+    "Fc": {
+        "species": "Felis catus",
+        # The definitive host, so a query without Toxoplasma would return veterinary medicine at
+        # large. Kept broad enough to find a cat gene-expression study, no broader.
+        "query": ('("Felis catus"[Title/Abstract] OR feline[Title/Abstract] '
+                  'OR cat[Title/Abstract])'),
+        "stages": "",
+    },
 }
 
 #: How to ask for the assay behind an axis. Queries are BUILT from the slot definition rather than

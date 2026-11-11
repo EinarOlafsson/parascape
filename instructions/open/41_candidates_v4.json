@@ -1,0 +1,834 @@
+{
+  "Tg::host surface / receptor repertoire · human monocyte": [
+    {
+      "pmid": "42778561",
+      "title": "Divergent SAGA Complexes Shape the Toxoplasma Transcriptome across Host-Responsive and Core Gene Networks [ChIP-Seq]",
+      "year": "2026",
+      "journal": "GEO",
+      "accession": "GSE313273",
+      "samples": 20,
+      "query": "\"Toxoplasma gondii\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR monocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "42778561",
+      "title": "Divergent SAGA Complexes Shape the Toxoplasma Transcriptome across Host-Responsive and Core Gene Networks",
+      "year": "2026",
+      "journal": "GEO",
+      "accession": "GSE313048",
+      "samples": 6,
+      "query": "\"Toxoplasma gondii\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR monocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Functional characterization of the orphan hypothetical protein TGGT1_245740, a transmembrane protein required for Toxoplasma gondii growth and virulence.",
+      "year": "2026",
+      "journal": "GEO",
+      "accession": "GSE334992",
+      "samples": 6,
+      "query": "\"Toxoplasma gondii\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR monocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "41704854",
+      "title": "In vitro growth of Toxoplasma gondii tachyzoites on different host cell lines selects for changes in efficiency of invasion and parasite surface antigen gene expression",
+      "year": "2026",
+      "journal": "GEO",
+      "accession": "GSE300509",
+      "samples": 55,
+      "query": "\"Toxoplasma gondii\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR monocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Uncovering Biomarkers for Chronic Toxoplasmosis Detection Highlights Alternative Pathways Shaping Parasite Dormancy",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE287334",
+      "samples": 18,
+      "query": "\"Toxoplasma gondii\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR monocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37827122",
+      "title": "High-throughput identification of Toxoplasma gondii effector proteins that target host cell transcription",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE229505",
+      "samples": 36,
+      "query": "\"Toxoplasma gondii\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR monocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37081202",
+      "title": "Effect of BFD2 (TGME49_311100) knockout on T. gondii gene expression during BFD1 induction",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE223877",
+      "samples": 24,
+      "query": "\"Toxoplasma gondii\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR monocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37081202",
+      "title": "Effect of BFD2 (TGME49_311100) deletion on gene expression in Toxoplasma gondii",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE223869",
+      "samples": 24,
+      "query": "\"Toxoplasma gondii\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR monocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    }
+  ],
+  "Pf::S-nitrosylation · asexual blood stage": [
+    {
+      "pmid": "",
+      "title": "Lactate-Driven Protein Lactylation Regulates Virulence in Plasmodium falciparum",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE304394",
+      "samples": 48,
+      "query": "\"Plasmodium\"[Organism] AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[All Fields] OR blood[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "38966997",
+      "title": "DNA sequence context and the chromatin landscape differentiate sequence-specific transcription factor binding in the human malaria parasite, Plasmodium falciparum",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE212052",
+      "samples": 8,
+      "query": "\"Plasmodium\"[Organism] AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[All Fields] OR blood[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37322481",
+      "title": "Transcriptional differences during the Plasmodium schizont-to-ring transition [RNA-seq]",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE215427",
+      "samples": 6,
+      "query": "\"Plasmodium\"[Organism] AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[All Fields] OR blood[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37322481",
+      "title": "Histone post translation modification differences during the Plasmodium schizont-to-ring transition [ChIP-seq]",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE215426",
+      "samples": 28,
+      "query": "\"Plasmodium\"[Organism] AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[All Fields] OR blood[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "35938722",
+      "title": "The Plasmodium falciparum Nuclear Protein Phosphatase NIF4 is Required for Efficient Merozoite Invasion and Regulates Artemisinin Sensitivity",
+      "year": "2022",
+      "journal": "GEO",
+      "accession": "GSE208865",
+      "samples": 18,
+      "query": "\"Plasmodium\"[Organism] AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[All Fields] OR blood[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "33495219",
+      "title": "Metabolic survival adaptations of Plasmodium falciparum exposed to sub-lethal doses of fosmidomycin",
+      "year": "2021",
+      "journal": "GEO",
+      "accession": "GSE159516",
+      "samples": 27,
+      "query": "\"Plasmodium\"[Organism] AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[All Fields] OR blood[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "31615031",
+      "title": "The G9a histone methyltransferase inhibitor BIX-01294 modulates gene expression during gametocyte development and transmission",
+      "year": "2019",
+      "journal": "GEO",
+      "accession": "GSE136008",
+      "samples": 12,
+      "query": "\"Plasmodium\"[Organism] AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[All Fields] OR blood[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "21558492",
+      "title": "Quantitative time-course profiling of Plasmodium falciparum transcripts and proteins throughout the 48-hour intraerythrocytic developmental cycle",
+      "year": "2011",
+      "journal": "GEO",
+      "accession": "GSE24416",
+      "samples": 24,
+      "query": "\"Plasmodium\"[Organism] AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[All Fields] OR blood[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "42718588",
+      "title": "Multi-platform evidence of GSDMD-dependent pyroptosis in malaria with a potential role for TLR7.",
+      "year": "2026",
+      "journal": "Frontiers in immunology",
+      "accession": "GSE132050",
+      "note": "automatically proposed; verify assay and parasite-gene shape",
+      "query": "(\"Plasmodium falciparum\"[Title/Abstract] OR \"Plasmodium berghei\"[Title/Abstract] OR \"Plasmodium vivax\"[Title/Abstract] OR \"Plasmodium knowlesi\"[Title/Abstract] OR \"Plasmodium yoelii\"[Title/Abstract] OR \"P. falciparum\"[Title/Abstract] OR \"P. berghei\"[Title/Abstract]) AND (phosphoproteome OR acetylome OR ubiquitinome OR glycoproteome OR palmitoylome OR post-translational) AND (asexual[Title/Abstract] OR blood[Title/Abstract] OR stage[Title/Abstract])"
+    }
+  ],
+  "Pf::host transcriptome · human erythrocyte": [
+    {
+      "pmid": "",
+      "title": "Innate immune sensing of Plasmodium falciparum sporozoites and blood stages by human monocytes",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE301430",
+      "samples": 1,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR erythrocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "40410577",
+      "title": "Feeding with a ketonic diet confers complete protection against malaria",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE274138",
+      "samples": 6,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR erythrocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37279274",
+      "title": "The Parasite Intraerythrocytic Cycle and Human Circadian Cycle are Coupled During Malaria Infection",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE209877",
+      "samples": 159,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR erythrocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "36223427",
+      "title": "Identification of antimalarial compounds that inhibit Apicomplexan AP2 transcription factor proteins in the human malaria parasite Plasmodium falciparum [ChIP-seq]",
+      "year": "2022",
+      "journal": "GEO",
+      "accession": "GSE208155",
+      "samples": 8,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR erythrocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "35210361",
+      "title": "5-methylcytosine modification-mediated mRNA stabilization is associated with sexual development of malaria parasites [BisRNA-seq]",
+      "year": "2022",
+      "journal": "GEO",
+      "accession": "GSE159126",
+      "samples": 14,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR erythrocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "35210361",
+      "title": "5-methylcytosine modification-mediated mRNA stabilization is associated with sexual development of malaria parasites [Half-life]",
+      "year": "2022",
+      "journal": "GEO",
+      "accession": "GSE159125",
+      "samples": 8,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR erythrocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "35210361",
+      "title": "5-methylcytosine modification-mediated mRNA stabilization is associated with sexual development of malaria parasites [RNA-seq]",
+      "year": "2022",
+      "journal": "GEO",
+      "accession": "GSE159124",
+      "samples": 14,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR erythrocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Transcriptome analysis of Plasmodium falciparum isolates from Benin reveals specific gene expression associated with cerebral malaria",
+      "year": "2021",
+      "journal": "GEO",
+      "accession": "GSE186820",
+      "samples": 30,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (human[All Fields] OR erythrocyte[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    }
+  ],
+  "Pf::host transcriptome · Anopheles midgut": [
+    {
+      "pmid": "40164831",
+      "title": "Parasite and vector circadian clocks mediate efficient malaria transmission",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE284425",
+      "samples": 62,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (Anopheles[All Fields] OR midgut[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Genome-wide investigation of transcriptional regulation in malaria sporozoite [RNA-Seq]",
+      "year": "2022",
+      "journal": "GEO",
+      "accession": "GSE212753",
+      "samples": 8,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (Anopheles[All Fields] OR midgut[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "36634679",
+      "title": "Transcriptome changes during inducable gametocytogenesis in Plasmodium berghei parasites",
+      "year": "2021",
+      "journal": "GEO",
+      "accession": "GSE168817",
+      "samples": 28,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (Anopheles[All Fields] OR midgut[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "34593836",
+      "title": "Malaria Host Pathogen Center Experiment 07A and 07B - Macaca fascicularis infected with Plasmodium knowlesi to produce and integrate clinical, hematological, parasitological, omics, telemetric and histopathological measures of acute primary infection.",
+      "year": "2019",
+      "journal": "GEO",
+      "accession": "GSE128115",
+      "samples": 115,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (Anopheles[All Fields] OR midgut[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "34593836",
+      "title": "Malaria Host Pathogen Center Experiment 06: Macaca mulatta infected with Plasmodium knowlesi sporozoites to produce and integrate clinical, hematological, parasitological, omics, telemetric, and histopathological measures of acute primary infection.",
+      "year": "2019",
+      "journal": "GEO",
+      "accession": "GSE127079",
+      "samples": 47,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (Anopheles[All Fields] OR midgut[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Malaria Host Pathogen Interaction Center Experiment 30: Pilot experiment for Macaca mulatta infected with Plasmodium knowlesi Malayan strain sporozoites to produce and integrate measures of acute primary infection.",
+      "year": "2019",
+      "journal": "GEO",
+      "accession": "GSE123495",
+      "samples": 63,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (Anopheles[All Fields] OR midgut[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "30177743",
+      "title": "Transcriptome changes during inducible gametocytogenesis in Plasmodium berghei parasites",
+      "year": "2018",
+      "journal": "GEO",
+      "accession": "GSE110201",
+      "samples": 32,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (Anopheles[All Fields] OR midgut[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Dual RNA-sequencing of host and pathogen during Plasmodium berghei infection of hepatocytes in vitro",
+      "year": "2018",
+      "journal": "GEO",
+      "accession": "GSE78931",
+      "samples": 18,
+      "query": "\"Plasmodium\"[Organism] AND (host response OR host transcriptome OR effector OR host-pathogen) AND (Anopheles[All Fields] OR midgut[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    }
+  ],
+  "Cp::transcription · zygote": [
+    {
+      "pmid": "39392652",
+      "title": "Unveiling the molecular effects of replacement and legacy PFASs: Transcriptomic analysis of zebrafish embryos reveals surprising similarities and potencies",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE263667",
+      "samples": 44,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (zygote[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Plant parasitic nematodes single embryo RNA sequencing",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE268038",
+      "samples": 162,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (zygote[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "40099490",
+      "title": "Spatio-temporal transcriptome maps in the early embryos of Oikopleura dioica",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE139330",
+      "samples": 67,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (zygote[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "32728215",
+      "title": "Epigenetic regulator function through mouse gastrulation",
+      "year": "2020",
+      "journal": "GEO",
+      "accession": "GSE137337",
+      "samples": 54,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (zygote[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Identification of transcriptome changes associated with toxic effects of methanolic coal dust extract on fish early life stage by RNASeq",
+      "year": "2020",
+      "journal": "GEO",
+      "accession": "GSE128900",
+      "samples": 9,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (zygote[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "30922236",
+      "title": "H3K4me3 and H3K27me3 modification profiling in early zebrafish embryo",
+      "year": "2019",
+      "journal": "GEO",
+      "accession": "GSE110663",
+      "samples": 29,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (zygote[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "30061115",
+      "title": "High resolution annotation of Zebrafish transcriptome using long-read sequencing",
+      "year": "2018",
+      "journal": "GEO",
+      "accession": "GSE101843",
+      "samples": 4,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (zygote[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "28818938",
+      "title": "Comprehensive single cell transcriptional profiling of a multicellular organism by combinatorial indexing",
+      "year": "2017",
+      "journal": "GEO",
+      "accession": "GSE98561",
+      "samples": 10,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (zygote[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    }
+  ],
+  "Cp::transcription · oocyst": [
+    {
+      "pmid": "38811723",
+      "title": "Transcriptional control of the Cryptosporidium lifecycle",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE232438",
+      "samples": 22,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (oocyst[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "32019802",
+      "title": "RNA-Seq Analysis Illuminates the Early Stages of Plasmodium Liver infection",
+      "year": "2020",
+      "journal": "GEO",
+      "accession": "GSE145731",
+      "samples": 35,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (oocyst[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "28078755",
+      "title": "Whole genome RNA micro array analysis of Plasmodium berghei sporozoites infected host cells",
+      "year": "2016",
+      "journal": "GEO",
+      "accession": "GSE72049",
+      "samples": 8,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (oocyst[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "42440248",
+      "title": "Integrated Transcriptomic Profiling and In Vitro Evaluation of Garcinia Mangostana Phytochemicals Against Cryptosporidium Parvum.",
+      "year": "2026",
+      "journal": "Cell biochemistry and biophysics",
+      "accession": "GSE2077",
+      "note": "automatically proposed; verify assay and parasite-gene shape",
+      "query": "(\"Cryptosporidium parvum\"[Title/Abstract] OR \"C. parvum\"[Title/Abstract] OR \"Cryptosporidium hominis\"[Title/Abstract]) AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (oocyst[Title/Abstract])"
+    }
+  ],
+  "Cp::transcription · maximum observed across stages": [
+    {
+      "pmid": "42619874",
+      "title": "Phenotypic heterogeneity in the human gut microbiome revealed by subspecies-resolution single-cell transcriptomics [synthetic microbiome scRNA-Seq data] ",
+      "year": "2026",
+      "journal": "GEO",
+      "accession": "GSE332872",
+      "samples": 5,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (cross-stage[All Fields] OR summary[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "41593847",
+      "title": "Dabigatran protection against lipopolysaccharide induced endotoxemia is not mediated through its anticoagulant function",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE245299",
+      "samples": 6,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (cross-stage[All Fields] OR summary[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Large-scale, quantitative proteomics reveals key proteins required for planarian regeneration initiation",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE232894",
+      "samples": 6,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (cross-stage[All Fields] OR summary[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "39438113",
+      "title": "TF ChIP-seq Caenorhabditis elegans (supplemental II)",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE280222",
+      "samples": 0,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (cross-stage[All Fields] OR summary[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "39438113",
+      "title": "TF ChIP-seq Drosophila melanogaster  (supplemental II)",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE280221",
+      "samples": 0,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (cross-stage[All Fields] OR summary[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "39438113",
+      "title": "TF ChIP-seq Caenorhabditis elegans (supplemental)",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE280215",
+      "samples": 54,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (cross-stage[All Fields] OR summary[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "39438113",
+      "title": "TF ChIP-seq Drosophila melanogaster (supplemental)",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE280213",
+      "samples": 17,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (cross-stage[All Fields] OR summary[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "39438113",
+      "title": "TF ChIP-seq Drosophila melanogaster II",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE278904",
+      "samples": 147,
+      "query": "\"\"[Organism] AND (RNA-seq OR transcriptome OR transcriptomic OR microarray OR scRNA-seq) AND (cross-stage[All Fields] OR summary[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    }
+  ],
+  "Cp::translation · under stress": [
+    {
+      "pmid": "",
+      "title": "Reductive death is averted by a conserved de novo lipogenic switch",
+      "year": "2026",
+      "journal": "GEO",
+      "accession": "GSE277946",
+      "samples": 42,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "39658061",
+      "title": "Two distinct Trypanosoma eIF4F complexes co-exist, bind different mRNAs and are regulated during nutritional stress",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE263777",
+      "samples": 65,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37011204",
+      "title": "Arabidopsis HOT3/eIF5B1 constrains rRNA RNAi by facilitating 18S rRNA maturation during translation initiation (Ribo-Seq)",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE223168",
+      "samples": 8,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37011204",
+      "title": "Arabidopsis HOT3/eIF5B1 constrains rRNA RNAi by facilitating 18S rRNA maturation during translation initiation (18S END-Seq)",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE223167",
+      "samples": 48,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Translational efficiency in mock- and heat-treated N.benthamiana leaves",
+      "year": "2022",
+      "journal": "GEO",
+      "accession": "GSE210708",
+      "samples": 12,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37232385",
+      "title": "Remapping the SRA: Drosophila melanogaster RNA-Seq data from the Sequence Read Archive",
+      "year": "2018",
+      "journal": "GEO",
+      "accession": "GSE117217",
+      "samples": 14423,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "21723504",
+      "title": "Lifespan extension via eIF4G inhibition is mediated by post-transcriptional remodeling of stress response gene expression in C. elegans",
+      "year": "2011",
+      "journal": "GEO",
+      "accession": "GSE28665",
+      "samples": 24,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "20816092",
+      "title": "Insulin-like Signaling Determines Survival During Stress via Post Transcriptional Mechanisms in C. elegans.",
+      "year": "2010",
+      "journal": "GEO",
+      "accession": "GSE22383",
+      "samples": 72,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    }
+  ],
+  "Cp::translation efficiency · extracellular stress": [
+    {
+      "pmid": "",
+      "title": "Reductive death is averted by a conserved de novo lipogenic switch",
+      "year": "2026",
+      "journal": "GEO",
+      "accession": "GSE277946",
+      "samples": 42,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "39658061",
+      "title": "Two distinct Trypanosoma eIF4F complexes co-exist, bind different mRNAs and are regulated during nutritional stress",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE263777",
+      "samples": 65,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37011204",
+      "title": "Arabidopsis HOT3/eIF5B1 constrains rRNA RNAi by facilitating 18S rRNA maturation during translation initiation (Ribo-Seq)",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE223168",
+      "samples": 8,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37011204",
+      "title": "Arabidopsis HOT3/eIF5B1 constrains rRNA RNAi by facilitating 18S rRNA maturation during translation initiation (18S END-Seq)",
+      "year": "2023",
+      "journal": "GEO",
+      "accession": "GSE223167",
+      "samples": 48,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "",
+      "title": "Translational efficiency in mock- and heat-treated N.benthamiana leaves",
+      "year": "2022",
+      "journal": "GEO",
+      "accession": "GSE210708",
+      "samples": 12,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "37232385",
+      "title": "Remapping the SRA: Drosophila melanogaster RNA-Seq data from the Sequence Read Archive",
+      "year": "2018",
+      "journal": "GEO",
+      "accession": "GSE117217",
+      "samples": 14423,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "21723504",
+      "title": "Lifespan extension via eIF4G inhibition is mediated by post-transcriptional remodeling of stress response gene expression in C. elegans",
+      "year": "2011",
+      "journal": "GEO",
+      "accession": "GSE28665",
+      "samples": 24,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "20816092",
+      "title": "Insulin-like Signaling Determines Survival During Stress via Post Transcriptional Mechanisms in C. elegans.",
+      "year": "2010",
+      "journal": "GEO",
+      "accession": "GSE22383",
+      "samples": 72,
+      "query": "\"\"[Organism] AND (ribosome profiling OR Ribo-seq OR translatome OR polysome) AND (extracellular[All Fields] OR stress[All Fields])",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    }
+  ],
+  "Cp::secretome / excreted": [
+    {
+      "pmid": "42816603",
+      "title": "in vivo proximity-based mapping of subcellular proteomes, transcriptomes, and RNA structuromes II",
+      "year": "2026",
+      "journal": "GEO",
+      "accession": "GSE319436",
+      "samples": 19,
+      "query": "\"\"[Organism] AND (hyperLOPIT OR spatial proteome OR subcellular localization OR GFP tagging OR exportome OR secretome)",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "41339630",
+      "title": "Effect of depletion of ZFC3H1, PABPN1 and CNOT4 on gene expression in human cells.",
+      "year": "2025",
+      "journal": "GEO",
+      "accession": "GSE261505",
+      "samples": 12,
+      "query": "\"\"[Organism] AND (hyperLOPIT OR spatial proteome OR subcellular localization OR GFP tagging OR exportome OR secretome)",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "39511409",
+      "title": "IKKα signaling in the nucleus or cytoplasm of keratinocytes leads to opposite skin phenotypes.",
+      "year": "2024",
+      "journal": "GEO",
+      "accession": "GSE239533",
+      "samples": 18,
+      "query": "\"\"[Organism] AND (hyperLOPIT OR spatial proteome OR subcellular localization OR GFP tagging OR exportome OR secretome)",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "27203113",
+      "title": "The DNA affinity purification DAP-Seq assay [ChIP-seq]",
+      "year": "2016",
+      "journal": "GEO",
+      "accession": "GSE60142",
+      "samples": 6,
+      "query": "\"\"[Organism] AND (hyperLOPIT OR spatial proteome OR subcellular localization OR GFP tagging OR exportome OR secretome)",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "23873913",
+      "title": "Genome-wide transcriptional profiling of the purple sulfur bacterium Allochromatium vinosum DSM 180T during growth on different reduced sulfur compounds [Set2]",
+      "year": "2013",
+      "journal": "GEO",
+      "accession": "GSE44041",
+      "samples": 4,
+      "query": "\"\"[Organism] AND (hyperLOPIT OR spatial proteome OR subcellular localization OR GFP tagging OR exportome OR secretome)",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "23873913",
+      "title": "Genome-wide transcriptional profiling of the purple sulfur bacterium Allochromatium vinosum DSM 180T during growth on different reduced sulfur compounds [Set1]",
+      "year": "2013",
+      "journal": "GEO",
+      "accession": "GSE44040",
+      "samples": 9,
+      "query": "\"\"[Organism] AND (hyperLOPIT OR spatial proteome OR subcellular localization OR GFP tagging OR exportome OR secretome)",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "23620052",
+      "title": "Direct proteomic quantification of the secretome of activated immune cells",
+      "year": "2013",
+      "journal": "GEO",
+      "accession": "GSE41490",
+      "samples": 20,
+      "query": "\"\"[Organism] AND (hyperLOPIT OR spatial proteome OR subcellular localization OR GFP tagging OR exportome OR secretome)",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    },
+    {
+      "pmid": "22955620",
+      "title": "RNA Subcellular Localization by Paired End diTag Sequencing from ENCODE/GIS",
+      "year": "2011",
+      "journal": "GEO",
+      "accession": "GSE33600",
+      "samples": 31,
+      "query": "\"\"[Organism] AND (hyperLOPIT OR spatial proteome OR subcellular localization OR GFP tagging OR exportome OR secretome)",
+      "note": "from the GEO index; verify assay and parasite-gene shape"
+    }
+  ],
+  "Cp::co-translation": [
+    {
+      "pmid": "42440248",
+      "title": "Integrated Transcriptomic Profiling and In Vitro Evaluation of Garcinia Mangostana Phytochemicals Against Cryptosporidium Parvum.",
+      "year": "2026",
+      "journal": "Cell biochemistry and biophysics",
+      "accession": "GSE2077",
+      "note": "automatically proposed; verify assay and parasite-gene shape",
+      "query": "(\"Cryptosporidium parvum\"[Title/Abstract] OR \"C. parvum\"[Title/Abstract] OR \"Cryptosporidium hominis\"[Title/Abstract]) AND (interactome OR interaction OR co-immunoprecipitation OR BioID OR TurboID OR crosslinking mass spectrometry OR yeast two-hybrid) AND (ribosome[Title/Abstract] OR profiling[Title/Abstract])"
+    }
+  ],
+  "Cp::interaction · with host proteins": [
+    {
+      "pmid": "42440248",
+      "title": "Integrated Transcriptomic Profiling and In Vitro Evaluation of Garcinia Mangostana Phytochemicals Against Cryptosporidium Parvum.",
+      "year": "2026",
+      "journal": "Cell biochemistry and biophysics",
+      "accession": "GSE2077",
+      "note": "automatically proposed; verify assay and parasite-gene shape",
+      "query": "(\"Cryptosporidium parvum\"[Title/Abstract] OR \"C. parvum\"[Title/Abstract] OR \"Cryptosporidium hominis\"[Title/Abstract]) AND (interactome OR interaction OR co-immunoprecipitation OR BioID OR TurboID OR crosslinking mass spectrometry OR yeast two-hybrid) AND (host[Title/Abstract] OR IP-MS[Title/Abstract])"
+    }
+  ],
+  "Cp::interaction degree · IP-MS": [
+    {
+      "pmid": "42440248",
+      "title": "Integrated Transcriptomic Profiling and In Vitro Evaluation of Garcinia Mangostana Phytochemicals Against Cryptosporidium Parvum.",
+      "year": "2026",
+      "journal": "Cell biochemistry and biophysics",
+      "accession": "GSE2077",
+      "note": "automatically proposed; verify assay and parasite-gene shape",
+      "query": "(\"Cryptosporidium parvum\"[Title/Abstract] OR \"C. parvum\"[Title/Abstract] OR \"Cryptosporidium hominis\"[Title/Abstract]) AND (interactome OR interaction OR co-immunoprecipitation OR BioID OR TurboID OR crosslinking mass spectrometry OR yeast two-hybrid) AND (curated[Title/Abstract] OR pulldown[Title/Abstract])"
+    }
+  ],
+  "Cp::fold confidence / disorder": [
+    {
+      "pmid": "42440248",
+      "title": "Integrated Transcriptomic Profiling and In Vitro Evaluation of Garcinia Mangostana Phytochemicals Against Cryptosporidium Parvum.",
+      "year": "2026",
+      "journal": "Cell biochemistry and biophysics",
+      "accession": "GSE2077",
+      "note": "automatically proposed; verify assay and parasite-gene shape",
+      "query": "(\"Cryptosporidium parvum\"[Title/Abstract] OR \"C. parvum\"[Title/Abstract] OR \"Cryptosporidium hominis\"[Title/Abstract]) AND (genome OR domain OR ortholog OR paralog OR AlphaFold OR structure prediction) AND (AlphaFold[Title/Abstract])"
+    }
+  ]
+}

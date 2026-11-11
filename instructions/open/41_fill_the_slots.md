@@ -3023,3 +3023,33 @@ is re-prepared. So this is a judged, accepted candidate waiting on that decision
 **The lesson, since it bit twice in one pass:** the GEO assay type is the submitter's label on the series, not
 a description of the experiment. The sample titles told the truth in both cases and disagreed with the label
 in both. Judge from the samples.
+
+## 2026-11-10: candidate discovery was broken for every space beyond Tg and Pf
+
+Running `scripts/propose_datasets.py` over the empty slots raised `KeyError: 'Cp'` and stopped the whole pass.
+`ORGANISMS` in the slot generator still held two organisms, while the slot table has carried further spaces
+since WP2 of instruction 53 (2026-11-08). **One Cryptosporidium slot was ending discovery for all 119**, and
+nothing said so -- the pass simply died.
+
+Two fixes, because either alone leaves the trap:
+
+* `ORGANISMS` now carries `Cp`, `Pv`, `Ag`, `As`, `Rn` and `Fc`, with quoted binomials for the same reason the
+  Plasmodium entry uses them -- a bare genus word is too loose and a disease name is not an organism. The cat
+  entry is deliberately broad enough to find a feline expression study and no broader.
+* `query_for` returns no query for an organism it has no terms for, and the pass reports and skips it. A space
+  nobody has written search terms for is a gap in a table, not a reason to abandon the other spaces.
+
+**The pass then ran: 119 slots, 81 proposals, 14 slots with at least one candidate** -- and the honest reading
+is that almost all of it is noise. The Cryptosporidium searches returned PFAS toxicology, nematode embryos, a
+human gut microbiome survey, *Trypanosoma* eIF4F and a *Garcinia mangostana* screen; four separate Cp slots
+were handed the same irrelevant GSE2077. A GEO index search on slot words finds studies that share vocabulary,
+not studies that measure the thing.
+
+**One real candidate, and it is the first ever proposed for a further space:**
+
+| slot | accession | why it qualifies |
+|---|---|---|
+| `Cp_transcription · oocyst` | GSE232438 | "Transcriptional control of the Cryptosporidium lifecycle", *C. parvum*, 22 samples, RNA-seq, PMID 38811723 -- the right organism, the right assay, and lifecycle stages are what the slot asks for |
+
+The rest stay empty, which remains a true statement about what has been measured. Recorded so the same
+searches are not re-run expecting a different answer.

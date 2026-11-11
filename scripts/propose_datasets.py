@@ -27,8 +27,17 @@ BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 
 
 def query_for(slot: dict) -> str:
-    """The reproducible PubMed query for one slot."""
-    organism = slots.ORGANISMS[slot["organism"]]["query"]
+    """The reproducible PubMed query for one slot, or "" when its organism has no search terms.
+
+    An unknown organism used to raise KeyError and end the whole pass. That happened the moment the
+    slot generator stopped hardcoding two organisms: one Cryptosporidium slot stopped discovery for
+    all 119. A space nobody has written search terms for is a gap in `ORGANISMS`, not a reason to
+    abandon the other spaces, so it is reported and skipped.
+    """
+    entry = slots.ORGANISMS.get(slot["organism"])
+    if entry is None:
+        return ""
+    organism = entry["query"]
     assay = slots.ASSAY_TERMS.get(slot["axis"], "")
     context = re.sub(r"[^A-Za-z0-9 -]", " ", slot["context"]).strip()
     words = [word for word in context.split() if len(word) >= 4 and word.lower() not in {"gene"}]
@@ -214,6 +223,10 @@ def main(argv=None) -> int:
     for index, row in enumerate(definitions, 1):
         query = query_for(row)
         key = f"{row['organism']}::{row['name']}"
+        if not query:
+            print(f"{index}/{len(definitions)} {key}: skipped -- no search terms for organism "
+                  f"{row['organism']} in ORGANISMS", flush=True)
+            continue
         try:
             # Both sources: GEO's index first, because every hit there is fetchable by
             # construction, then the literature for anything GEO does not carry -- proteomics in
