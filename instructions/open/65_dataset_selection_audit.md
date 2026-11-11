@@ -258,3 +258,41 @@ queue holds 105; the queue moved on 2026-11-08 and the verification was never re
 
 Still open in batch 4: filling those publications into the queue, and the 63 supplementary-table sources, where
 verification means reading each table against the installed columns -- reading work, not a query.
+
+## 65.04 batch 4, 2026-11-10: the 63 supplementary-table sources, read
+
+`scripts/verify_supplementary_tables.py` ->
+`results/dataset_selection_2026_11_08/supplementary_table_verification.tsv`.
+
+A supplementary-table source records a LOCATION, not a deposit, so the origin check could only say "the
+location is the paper itself". Verifying one means opening the table and asking whether the genes we carry a
+value for are the genes that table is about. The script does NOT re-derive the column -- reimplementing 39
+derivations would test the script rather than the data -- it checks the identity link, which is where this kind
+of source goes wrong.
+
+| Verdict | Sources |
+|---|---:|
+| the table names the genes we ship | 33 |
+| read: keyed on something other than gene accessions | 3 |
+| not keyed on genes, so the check does not apply | 3 |
+| the file was never kept on this machine | 21 |
+| no file recorded, only a paper | 3 |
+
+**Two of my own mistakes were in the first run, and both looked like data problems.** It picked the first
+shipped table that merely CONTAINED the column name, so `pf_meltome` was compared against Toxoplasma genes
+because both tables carry `melting_temperature`; and it compared strain-prefixed accessions literally, so four
+CRISPR screens whose tables are entirely GT1 reported 0 % against ME49 genes that are the same genes. Ten of
+the eleven flags disappeared once the table was chosen by organism and the strain taken off the accession.
+
+The three that remain are explained in the script with the evidence inside each file, not left as flags:
+
+* **`pf_hsp90_chemoproteome`** is keyed on a "UniProt ID" column, so the link to our gene-keyed column runs
+  through the identity layer and cannot be seen by matching accessions.
+* **`host_k562_rhoptry_screen`** is MAGeCK output keyed on gene SYMBOLS while the host table is keyed on
+  UniProt accessions; its first sheet is a README, which is why so few identifiers appear at all.
+* **`pf_resistome`** is one row per SNV in compound-selected clones, and two of its six installed columns come
+  from the Pf6 field data instead, so this table is expected to cover only part of the column set.
+
+**What cannot be finished here: 21 of the 63 source files are not on this machine.** They are recorded with
+their paths and were presumably kept where they were acquired. Those 21 need the files before the same check
+can run; nothing else about them is unresolved.
