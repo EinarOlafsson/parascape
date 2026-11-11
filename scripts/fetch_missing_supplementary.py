@@ -21,6 +21,7 @@ import argparse
 import os
 import shutil
 import sys
+import time
 import urllib.request
 import zipfile
 
@@ -30,6 +31,7 @@ OUT = os.path.join(ROOT, "results", "dataset_selection_2026_11_08")
 #: Where a recorded `datasets/...` path is rooted, matching verify_supplementary_tables.py.
 DESTINATION = (os.environ.get("STARPLAST_DATA_PARENT")
                or "/media/carruthers/mnt3/claude/toxoplasma_projects")
+STALL_SECONDS = 240
 AGENT = {"User-Agent": "parascape/0.0.11.0 (dataset provenance check; einar.olafsson@gmail.com)"}
 
 
@@ -41,8 +43,18 @@ def download(url: str, into: str) -> str:
         name += ".zip"                                   # the Europe PMC endpoint serves an archive
     target = os.path.join(into, name)
     request = urllib.request.Request(url, headers=AGENT)
-    with urllib.request.urlopen(request, timeout=300) as response, open(target, "wb") as handle:
-        shutil.copyfileobj(response, handle)
+    # A deadline as well as a socket timeout. One Europe PMC endpoint trickled bytes for ten minutes without
+    # ever tripping the timeout, which stalls the whole pass on a single source; a slow server is a reason to
+    # move on, not to wait indefinitely.
+    deadline = time.monotonic() + STALL_SECONDS
+    with urllib.request.urlopen(request, timeout=120) as response, open(target, "wb") as handle:
+        while True:
+            chunk = response.read(1 << 20)
+            if not chunk:
+                break
+            handle.write(chunk)
+            if time.monotonic() > deadline:
+                raise TimeoutError(f"gave up after {STALL_SECONDS}s, {handle.tell():,} bytes")
     return target
 
 

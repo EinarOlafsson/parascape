@@ -73,13 +73,30 @@ NOT_GENE_KEYED = {
 }
 
 
-def resolve(path: str):
-    """The recorded path on this machine, or None when the file was never kept here."""
+def fetched_elsewhere() -> dict:
+    """Where `fetch_missing_supplementary.py` actually put each file it could not place.
+
+    Part of the dataset tree is symlinked to another machine and those links dangle here, so a fetched file is
+    kept beside its download instead. Verification should not depend on repairing that tree: the file is
+    readable where it is, and this mapping says where that is.
+    """
+    import json
+    path = os.path.join(OUT, "supplementary_fetched_paths.json")
+    try:
+        with open(path) as handle:
+            return json.load(handle)
+    except (OSError, ValueError):
+        return {}
+
+
+def resolve(path: str, key: str = "", fetched=None):
+    """The file on this machine -- where the registry says, or where the fetcher had to leave it."""
     for base in BASES:
         candidate = os.path.join(base, path)
         if os.path.exists(candidate):
             return candidate
-    return None
+    local = (fetched or {}).get(key, "")
+    return local if local and os.path.exists(local) else None
 
 
 def identifiers_in(path: str) -> tuple:
@@ -160,6 +177,7 @@ def main() -> int:
     wanted = sorted(set(verification.loc[
         verification.verdict == "supplementary table of a named paper", "dataset_id"]))
     registry = {d.key: d for d in ds.REGISTRY}
+    fetched = fetched_elsewhere()
     rows = []
     for key in wanted:
         entry = registry[key]
@@ -176,7 +194,7 @@ def main() -> int:
             rows.append(dict(dataset_id=key, verdict="no file recorded",
                              detail="the source records a paper but no file, so there is nothing to open"))
             continue
-        path = resolve(recorded)
+        path = resolve(recorded, key, fetched)
         if path is None:
             rows.append(dict(dataset_id=key, verdict="file not on this machine",
                              detail=f"{recorded} is recorded but absent here"))
