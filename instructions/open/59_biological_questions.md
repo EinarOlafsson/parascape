@@ -1,5 +1,20 @@
 # 59 -- One hundred biological questions this software can answer
 
+Status: DONE -- 100/100 written, 92 encoded, 90 run and graded, 2026-11-10. Built; Einar's review pending --
+reopen on his feedback.
+
+**What "done" means here, since the last column of the task is not mine to fill.** All 100 questions are
+written with an entry point, a strategy, exact settings and a resolved literature anchor. Every question that
+is a strategy question is encoded and run: 92 encoded, 90 ran, and the rest are accounted for rather than
+missing -- 8 are map, star-map or Analysis-tab entry points rather than strategies, and 2 were stopped by their
+own strategy by design (Q53, where link_prediction refuses the cofitness layer; Q54, where trait_regression has
+252 measured genes). Each is recorded with its reason, not left blank.
+
+What remains is the **verdict**: whether each answer is true or useful. That is a biological reading, and the
+task says so in its own words -- "the yields / thin / no verdicts of section 4 are a biological reading and are
+left for Einar". The sheet to write them on is `results/verdict_sheet_2026_11_09/README.md`, 27 entries. The
+item reopens on his feedback.
+
 Opened 2026-09-30 on `nightly` at 0.49.0.
 
 **The task.** Write 100 questions about *Toxoplasma gondii* and *Plasmodium falciparum* in the words
