@@ -338,3 +338,14 @@ Those last two are a **provenance finding, not a download failure**: the recorde
 supplementary bundle the paper actually deposited, so what is installed came from somewhere the record does
 not name. Both need a person to look before anything is re-fetched. (`host_macrophage_surfaceome` is the CSPA
 source whose download links were already found to serve the site HTML rather than a workbook.)
+
+**Three fetched, two verified at 100 %.** `host_erythrocyte_proteome` (5,264 of 5,264 installed genes in the
+table) and `host_erythrocyte_surface` (267 of 267). The GTEx matrix is a fourth "keyed differently" case: it
+is keyed on ENSG gene identifiers while the human host table is keyed on UniProt accessions, so the strings
+never match and the link is the identity layer. The reader also did not recognise `ENSG` identifiers at all
+until now, which is why it first reported the file as unreadable rather than as keyed on something else.
+
+Running total: **35 of 63 verified by reading, 4 keyed differently, 3 not gene-keyed, 3 recording no file, and
+18 whose file is still not here** -- 10 of those behind the symlinks to the other machine. One Europe PMC
+download (`oxidative_stress_screen`, PMC8216390) stalled rather than failed and was stopped by PID after ten
+minutes; it is worth a retry when the box is free.

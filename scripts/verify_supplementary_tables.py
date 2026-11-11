@@ -38,6 +38,7 @@ BASES = (os.environ.get("STARPLAST_DATA_PARENT")
 IDENTIFIER = re.compile(
     r"\b(TGME49_\d{6}[A-Z]?|TGGT1_\d{6}[A-Z]?|TGVEG_\d{6}[A-Z]?"
     r"|PF3D7_\d{7}|PVP01_(?:\d{7}|API\d{5}|MIT\d{5})|PBANKA_\d{6}"
+    r"|ENS(?:MUS|RNO|FCA)?G\d{11}"
     r"|[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})\b")
 
 #: At or above this share of the installed genes found in the table, the table is the one we say it is.
@@ -56,6 +57,9 @@ KEYED_DIFFERENTLY = {
     "host_k562_rhoptry_screen":
         "the data sheet is MAGeCK output keyed on gene SYMBOLS while the host table is keyed on UniProt "
         "accessions; the first sheet is a README, which is why so few identifiers appear at all",
+    "host_gtex_transcriptome":
+        "the GTEx median-TPM matrix is keyed on ENSG gene identifiers while the human host table is keyed "
+        "on UniProt accessions, so the two never match as strings; the link is the identity layer",
     "pf_resistome":
         "the table is one row per SNV in compound-selected clones, and two of the six installed columns "
         "(pf6_field_dnds, pf6_field_nonsyn_snvs) come from the Pf6 field data instead, so this table is "

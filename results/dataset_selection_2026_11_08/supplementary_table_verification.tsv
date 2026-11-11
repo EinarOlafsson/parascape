@@ -10,10 +10,10 @@ curated_drug_sensitivity	no file recorded	the source records a paper but no file
 curated_enteric_fitness	no file recorded	the source records a paper but no file, so there is nothing to open
 curated_resistance_alleles	no file recorded	the source records a paper but no file, so there is nothing to open
 cyst_wall_interactome	file not on this machine	datasets/quarantine/2026_08_16_unverified/Tg/cyst_wall/ is recorded but absent here
-gse302108_utr5	the table names the genes we ship	5,825 of 5,825 installed genes appear in the table (100%); the table names 5,992 identifiers [2 sheet(s), column read from nodes.parquet]
-host_erythrocyte_proteome	file not on this machine	datasets/host/erythrocyte/41654503/41597_2026_6792_MOESM2_ESM.xlsx is recorded but absent here
-host_erythrocyte_surface	file not on this machine	datasets/host/erythrocyte/31552303/42003_2019_596_MOESM6_ESM.xlsx is recorded but absent here
-host_gtex_transcriptome	file not on this machine	datasets/host/gtex/32913098/GTEx_Analysis_v10_RNASeQCv2.4.2_gene_median_tpm.gct.gz is recorded but absent here
+gse302108_utr5	the table names the genes we ship	5,825 of 5,825 installed genes appear in the table (100%); the table names 13,935 identifiers [2 sheet(s), column read from nodes.parquet]
+host_erythrocyte_proteome	the table names the genes we ship	5,264 of 5,264 installed genes appear in the table (100%); the table names 5,271 identifiers [3 sheet(s), column read from hs_host_proteins.parquet]
+host_erythrocyte_surface	the table names the genes we ship	267 of 267 installed genes appear in the table (100%); the table names 1,310 identifiers [6 sheet(s), column read from hs_host_proteins.parquet]
+host_gtex_transcriptome	read: keyed on something other than gene accessions	the GTEx median-TPM matrix is keyed on ENSG gene identifiers while the human host table is keyed on UniProt accessions, so the two never match as strings; the link is the identity layer
 host_k562_rhoptry_screen	read: keyed on something other than gene accessions	the data sheet is MAGeCK output keyed on gene SYMBOLS while the host table is keyed on UniProt accessions; the first sheet is a README, which is why so few identifiers appear at all
 host_macrophage_surfaceome	file not on this machine	datasets/host/cspa/25894527/S1_File.xlsx is recorded but absent here
 iron_depletion_proteome	the table names the genes we ship	4,886 of 4,942 installed genes appear in the table (99%); the table names 10,110 identifiers [1 sheet(s), column read from nodes.parquet]
@@ -54,7 +54,7 @@ pf_secretome	file not on this machine	datasets/post_translation/secretome/289443
 pf_spatial_proteome	the table names the genes we ship	2,998 of 3,000 installed genes appear in the table (100%); the table names 3,000 identifiers [2 sheet(s), column read from pf_nodes.parquet]
 pf_target_engagement	the table names the genes we ship	3,092 of 3,126 installed genes appear in the table (99%); the table names 4,413 identifiers [text table, column read from pf_nodes.parquet]
 plasmodb_pf3d7_piggybac	the table names the genes we ship	5,385 of 5,385 installed genes appear in the table (100%); the table names 10,694 identifiers [parquet, column read from pf_nodes.parquet]
-pv_host_uptake	the table names the genes we ship	12 of 12 installed genes appear in the table (100%); the table names 21,056 identifiers [parquet, column read from hs_host_proteins.parquet]
+pv_host_uptake	the table names the genes we ship	12 of 12 installed genes appear in the table (100%); the table names 21,096 identifiers [parquet, column read from hs_host_proteins.parquet]
 pvm_proximity	the table names the genes we ship	1,274 of 1,274 installed genes appear in the table (100%); the table names 1,274 identifiers [text table, column read from nodes.parquet]
 secretome_partition	the table names the genes we ship	165 of 165 installed genes appear in the table (100%); the table names 171 identifiers [text table, column read from nodes.parquet]
 sexual_stages	the table names the genes we ship	4,463 of 4,463 installed genes appear in the table (100%); the table names 4,566 identifiers [text table, column read from nodes.parquet]
