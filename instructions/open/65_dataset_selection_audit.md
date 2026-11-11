@@ -388,3 +388,32 @@ before a check means anything.
 The 14 still absent now wait on Europe PMC answering: `pf_crosslink_ms`, `pf_ip_ms`, `pf_lactylome`,
 `pf_palmitome`, `cyst_wall_interactome` and `oxidative_stress_screen` all time out, `pf_acetylome` returns an
 HTTP error. Not a tooling problem any more.
+
+## 65.04, 2026-11-10: correcting my own finding -- three of the five "provenance defects" were my bug
+
+I wrote above that five archives do not contain the file the record names, and called it "the single most
+useful thing this pass produced", needing a person rather than a retry. **That was wrong for three of the
+five, and the error was mine.**
+
+Looking at what the archives actually held, rather than at the fact that a lookup failed:
+
+* `host_macrophage_surfaceome` and `splitcas9_imaging_screen` held `[Content_Types].xml`, `_rels/.rels` and
+  `xl/worksheets/sheet1.xml`. **That is the spreadsheet itself.** An `.xlsx` IS a ZIP, so `is_zipfile` says
+  yes to one, and the code was looking for the file inside itself.
+* `pf_isoforms` held the article's figures and `12936_2025_5376_MOESM1_ESM.zip` -- the supplementary data one
+  level further in. `pf_secretome` the same shape with Wellcome Open Research `.tgz` members.
+
+`is_office_file` now tells an Office document from a bundle by looking for the OOXML part, and one level of
+nesting is followed. Three of the five recovered immediately: `host_macrophage_surfaceome` placed (2.7 MB),
+`pf_isoforms` and `splitcas9_imaging_screen` fetched.
+
+**38 of 63 verified now**, up from 36, and the absent count is 13.
+
+What is left of that finding is one case, not five: `pf_secretome`, whose article bundle carries `.tgz`
+members rather than `.zip` and is not followed. `thermal_shift_cetsa` times out and its record names a
+directory rather than a file, which is a separate problem.
+
+**The lesson is the one that keeps recurring in this item.** A lookup that fails is not evidence about the
+data until you look at what it found instead. The strain prefixes, the ENSG identifiers, the organism-wrong
+table and now the Office files were all the same mistake: I read my own tool's silence as a statement about
+the world. Each time, looking at the actual content turned a "finding" into a bug.

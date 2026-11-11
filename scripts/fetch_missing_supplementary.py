@@ -58,6 +58,21 @@ def download(url: str, into: str) -> str:
     return target
 
 
+def is_office_file(path: str) -> bool:
+    """True when a ZIP is actually an .xlsx/.docx, which is a ZIP with an OOXML part inside.
+
+    This caught me out: five sources were reported as "the archive does not contain the recorded file" and I
+    wrote them up as a provenance defect. Two were nothing of the sort -- the download WAS the spreadsheet,
+    and the code was looking for the file inside itself. An Office document is a ZIP, so `is_zipfile` says
+    yes to one, and only the content tells them apart.
+    """
+    try:
+        with zipfile.ZipFile(path) as bundle:
+            return "[Content_Types].xml" in bundle.namelist()
+    except Exception:
+        return False
+
+
 def member_named(archive: str, basename: str, into: str):
     """Extract the member whose basename matches, or return None and leave the archive alone.
 
@@ -118,8 +133,22 @@ def main(argv=None) -> int:
             rows.append(dict(dataset_id=key, outcome="download failed", detail=f"{type(exc).__name__}: {exc}"))
             print(f"{key:<30}download failed: {type(exc).__name__}", flush=True)
             continue
-        if zipfile.is_zipfile(fetched):
+        if zipfile.is_zipfile(fetched) and not is_office_file(fetched):
             inner, names = member_named(fetched, basename, folder)
+            # One level of nesting: several publishers bundle the supplementary ZIP inside the
+            # article ZIP (Malaria Journal's MOESM1_ESM.zip, Wellcome Open Research's .tgz).
+            if inner is None:
+                for nested in [n for n in names if n.lower().endswith((".zip",))]:
+                    try:
+                        with zipfile.ZipFile(fetched) as outer:
+                            outer.extract(nested, folder)
+                        candidate = os.path.join(folder, nested)
+                        if zipfile.is_zipfile(candidate):
+                            inner, _ = member_named(candidate, basename, folder)
+                            if inner is not None:
+                                break
+                    except Exception:
+                        continue
             if inner is None:
                 rows.append(dict(dataset_id=key, outcome="recorded file not in the archive",
                                  detail=f"looked for {basename}; archive holds {', '.join(names[:6])}"))

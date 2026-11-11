@@ -15,7 +15,7 @@ host_erythrocyte_proteome	the table names the genes we ship	5,264 of 5,264 insta
 host_erythrocyte_surface	the table names the genes we ship	267 of 267 installed genes appear in the table (100%); the table names 1,310 identifiers [6 sheet(s), column read from hs_host_proteins.parquet]
 host_gtex_transcriptome	read: keyed on something other than gene accessions	the GTEx median-TPM matrix is keyed on ENSG gene identifiers while the human host table is keyed on UniProt accessions, so the two never match as strings; the link is the identity layer
 host_k562_rhoptry_screen	read: keyed on something other than gene accessions	the data sheet is MAGeCK output keyed on gene SYMBOLS while the host table is keyed on UniProt accessions; the first sheet is a README, which is why so few identifiers appear at all
-host_macrophage_surfaceome	file not on this machine	datasets/host/cspa/25894527/S1_File.xlsx is recorded but absent here
+host_macrophage_surfaceome	the table names the genes we ship	1,296 of 1,296 installed genes appear in the table (100%); the table names 2,805 identifiers [6 sheet(s), column read from mm_host_proteins.parquet]
 iron_depletion_proteome	the table names the genes we ship	4,886 of 4,942 installed genes appear in the table (99%); the table names 10,110 identifiers [1 sheet(s), column read from nodes.parquet]
 lipidome_vesicles	not keyed on genes, so this check does not apply	the rows are lipid species in the metabolite table, not genes
 m6a_peaks	the table names the genes we ship	829 of 837 installed genes appear in the table (99%); the table names 866 identifiers [text table, column read from nodes.parquet]
@@ -39,13 +39,13 @@ pf_gametocyte_proteome	the table names the genes we ship	2,540 of 2,544 installe
 pf_host_bridge_xlms	not keyed on genes, so this check does not apply	it contributes bridge rows between two organisms, not a node column
 pf_hsp90_chemoproteome	read: keyed on something other than gene accessions	the table is keyed on a 'UniProt ID' column, not on PF3D7 gene accessions, so the link to our gene-keyed column runs through the identity layer and cannot be seen by matching accessions
 pf_ip_ms	file not on this machine	datasets/reference/plasmodb/ip_ms/28691708/ncomms16044-s1.pdf is recorded but absent here
-pf_isoforms	file not on this machine	datasets/transcription/isoforms/40316999/SupplementaryData2.xlsx is recorded but absent here
+pf_isoforms	the table names the genes we ship	1,838 of 1,857 installed genes appear in the table (99%); the table names 1,852 identifiers [3 sheet(s), column read from pf_nodes.parquet]
 pf_lactylome	file not on this machine	datasets/post_translation/lactylome/41417877/pgen.1011991.s014.xlsx is recorded but absent here
 pf_latency_transcriptome	the table names the genes we ship	4,874 of 4,887 installed genes appear in the table (100%); the table names 4,874 identifiers [1 sheet(s), column read from pf_nodes.parquet]
 pf_m6a_nanopore	the table names the genes we ship	5,285 of 5,285 installed genes appear in the table (100%); the table names 5,611 identifiers [17 sheet(s), column read from pf_nodes.parquet]
 pf_meltome	the table names the genes we ship	2,039 of 2,040 installed genes appear in the table (100%); the table names 8,518 identifiers [6 sheet(s), column read from pf_nodes.parquet]
 pf_mrna_dynamics	the table names the genes we ship	4,572 of 4,572 installed genes appear in the table (100%); the table names 4,581 identifiers [3 sheet(s), column read from pf_nodes.parquet]
-pf_myristoylome	the table names the genes we ship	608 of 609 installed genes appear in the table (100%); the table names 831 identifiers [1 sheet(s), column read from pf_nodes.parquet]
+pf_myristoylome	file not on this machine	datasets/post_translation/myristoylome/34695132/pbio.3001408.s011.xlsx is recorded but absent here
 pf_palmitome	file not on this machine	datasets/post_translation/palmitome/36250062/Table_3.xlsx is recorded but absent here
 pf_pb_fertility_transfer	the table names the genes we ship	1,121 of 1,121 installed genes appear in the table (100%); the table names 1,456 identifiers [3 sheet(s), column read from pf_nodes.parquet]
 pf_resistome	read: keyed on something other than gene accessions	the table is one row per SNV in compound-selected clones, and two of the six installed columns (pf6_field_dnds, pf6_field_nonsyn_snvs) come from the Pf6 field data instead, so this table is expected to cover only part of the column set
@@ -58,7 +58,7 @@ pv_host_uptake	the table names the genes we ship	12 of 12 installed genes appear
 pvm_proximity	the table names the genes we ship	1,274 of 1,274 installed genes appear in the table (100%); the table names 1,274 identifiers [text table, column read from nodes.parquet]
 secretome_partition	the table names the genes we ship	165 of 165 installed genes appear in the table (100%); the table names 171 identifiers [text table, column read from nodes.parquet]
 sexual_stages	the table names the genes we ship	4,463 of 4,463 installed genes appear in the table (100%); the table names 4,566 identifiers [text table, column read from nodes.parquet]
-spacr_escrt_screen	table could not be read	unsupported file type
-splitcas9_imaging_screen	file not on this machine	datasets/DNA/imaging_screen/35538310/41564_2022_1114_MOESM4_ESM.xlsx is recorded but absent here
+spacr_escrt_screen	file not on this machine	datasets/quarantine/2026_08_16_unverified/Tg/escrt_screen/ is recorded but absent here
+splitcas9_imaging_screen	the table names the genes we ship	315 of 318 installed genes appear in the table (99%); the table names 331 identifiers [7 sheet(s), column read from nodes.parquet]
 thermal_shift_cetsa	file not on this machine	datasets/quarantine/2026_08_16_unverified/Tg/thermal_shift/ is recorded but absent here
 toxodb_palmitome	the table names the genes we ship	468 of 488 installed genes appear in the table (96%); the table names 476 identifiers [text table, column read from nodes.parquet]

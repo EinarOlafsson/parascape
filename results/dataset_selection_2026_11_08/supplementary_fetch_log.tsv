@@ -1,0 +1,6 @@
+dataset_id	outcome	detail
+host_macrophage_surfaceome	placed	datasets/host/cspa/25894527/S1_File.xlsx (2,721,208 bytes)
+pf_isoforms	fetched, left beside the download	datasets/transcription/isoforms/40316999/SupplementaryData2.xlsx is behind a symlink to another machine (/mnt/firecuda2/Claude/repo/starplast/datasets/transcription/isoforms); kept at /media/carruthers/mnt3/claude/parascape_supp_fetch/pf_isoforms/Supplementary Data050425/SupplementaryData2.xlsx (938,292 bytes)
+pf_secretome	recorded file not in the archive	looked for 5c097a1c-efe5-4ed8-b97b-f9ba656268a6.xlsx; archive holds wellcomeopenres-2-14296-s0001.tgz, wellcomeopenres-2-14296-g0000.gif, wellcomeopenres-2-14296-s0000.tgz, wellcomeopenres-2-14296-g0001.jpg, wellcomeopenres-2-14296-g0002.jpg, wellcomeopenres-2-14296-g0002.gif
+splitcas9_imaging_screen	fetched, left beside the download	datasets/DNA/imaging_screen/35538310/41564_2022_1114_MOESM4_ESM.xlsx is behind a symlink to another machine (/mnt/firecuda2/Claude/repo/starplast/datasets/DNA/imaging_screen); kept at /media/carruthers/mnt3/claude/parascape_supp_fetch/splitcas9_imaging_screen/41564_2022_1114_MOESM4_ESM.xlsx (72,628 bytes)
+thermal_shift_cetsa	download failed	TimeoutError: gave up after 240s, 19,922,944 bytes
