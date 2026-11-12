@@ -446,7 +446,7 @@ new), and the two closed tables in `tests/test_module_catalogue.py` (5, new). Ve
 
 ## WP10 as built, 2026-11-12
 
-Einar words, which are the acceptance criteria: *"now when i put in a gene and pressed the modual that came
+The words of Einar, which are the acceptance criteria: *"now when i put in a gene and pressed the modual that came
 up for the gene, i was brought to the old version of parascape. this also needs to be overhauled."* And:
 *"the new interface is really close to what i wanted in terms of the navigator screen. but everything behind
 it seems to be unchanged."*

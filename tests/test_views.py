@@ -1,9 +1,9 @@
 """Every view the catalogue declares is real, named and reachable -- and the reverse.
 
 Instruction 98, WP1 counted what WP10 had to fix: 29 tabs inside five docks and four
-further windows that **the navigator could not name at all**. That is the whole of Einar
-complaint that "everything behind the navigator seems to be unchanged": the modules were
-in the right shell and the views inside them had no names anybody could type.
+further windows that **the navigator could not name at all**. That is the whole of the
+complaint from Einar that "everything behind the navigator seems to be unchanged": the
+modules were in the right shell and the views inside them had no names anybody could type.
 
 WP10 declares each of them on the module whose panel holds it
 (:class:`parascape.modules.View`). These tests hold the two directions that matter:
@@ -107,25 +107,38 @@ def _docks(win):
     return {d.windowTitle(): d for d in win.findChildren(QtWidgets.QDockWidget)}
 
 
-def _current_tab(win, dock_title: str) -> str:
-    """The tab on top of the panel of one dock, wherever that panel currently lives.
+def _panel_of(win, dock_title: str):
+    """The panel of one dock, wherever it currently lives.
 
-    A borrowed panel sits under the module shell while the module is on screen, so asking
-    the dock alone would answer about an empty frame.
+    A borrowed panel sits under the module shell while that module is on screen and under
+    its dock the rest of the time, so asking the dock alone would answer about the
+    one-line note left in its place. These tests share one window and the order they run
+    in is not fixed, so every reader of a panel has to go through this.
     """
     dock = _docks(win)[dock_title]
-    panel = dock.widget()
-    for shell in win.tool_modules.values():
+    for shell in getattr(win, "tool_modules", {}).values():
         borrowed = getattr(getattr(shell, "module", None), "main", None)
         if getattr(borrowed, "dock", None) is dock and getattr(borrowed, "panel", None):
-            panel = borrowed.panel
-    tabs = panel if isinstance(panel, QtWidgets.QTabWidget) else \
-        panel.findChild(QtWidgets.QTabWidget)
+            return borrowed.panel
+    return dock.widget()
+
+
+def _tabs_widget(panel):
+    """The tab widget of a panel, which may be the panel itself."""
+    if isinstance(panel, QtWidgets.QTabWidget):
+        return panel
+    return panel.findChild(QtWidgets.QTabWidget) if panel is not None else None
+
+
+def _current_tab(win, dock_title: str) -> str:
+    """The tab on top of the panel of one dock."""
+    tabs = _tabs_widget(_panel_of(win, dock_title))
     return tabs.tabText(tabs.currentIndex()) if tabs else ""
 
 
-def _tabs_of(dock):
-    tabs = dock.findChild(QtWidgets.QTabWidget)
+def _tabs_of(win, dock_title: str) -> list:
+    """Every tab label of the panel of one dock."""
+    tabs = _tabs_widget(_panel_of(win, dock_title))
     return [tabs.tabText(i) for i in range(tabs.count())] if tabs else []
 
 
@@ -142,7 +155,7 @@ def test_every_declared_view_exists_in_the_window(window, pair):
     docks = _docks(window)
     assert dock in docks, f"{module.key} ▸ {view.name}: no {dock!r} dock"
     if tab:
-        assert tab in _tabs_of(docks[dock]), \
+        assert tab in _tabs_of(window, dock), \
             f"{module.key} ▸ {view.name}: no {tab!r} tab in {dock}"
 
 
@@ -155,10 +168,9 @@ def test_every_tab_in_the_window_is_a_view_a_module_or_a_signpost(window):
     """
     moved = {"analysis:2 · Map", "analysis:3 · Clusters", "analysis:8 · Questions"}
     named = {v.opens for _m, v in MOD.views()} | {m.opens for m in MOD.MODULES} | moved
-    docks = _docks(window)
     orphans = []
     for title in ("analysis", "compare", "discoveries", "information map", "strategies"):
-        for tab in _tabs_of(docks[title]):
+        for tab in _tabs_of(window, title):
             if f"{title}:{tab}" not in named:
                 orphans.append(f"{title}:{tab}")
     assert not orphans, f"tabs nobody can name: {orphans}"

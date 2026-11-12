@@ -306,8 +306,8 @@ class PredictModule(QtCore.QObject):
 
         self.run_button = shell.add_action(
             "Predict", self.run, primary=True,
-            tip="Score every method fold by fold on groups it was not trained on, then call "
-                "the genes that carry no measurement.")
+            tip="Score the chosen method fold by fold on groups it was not trained on, then "
+                "call the genes that carry no measurement.")
         self.cancel_button = shell.add_action(
             "Stop", self.cancel,
             tip="Stop between model fits, so nothing is killed half way through one.")

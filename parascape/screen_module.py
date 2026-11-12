@@ -195,7 +195,7 @@ class ScreenModule(QtCore.QObject):
         self.reading = QtWidgets.QTextBrowser(shell)
         shell.link_style(self.reading)
         self.reading.setHtml("<p>Compare and this says how many rows resolved to a gene here, "
-                             "how many carry a measurement, and what became of the rest.</p>")
+                             "how many carry a usable number, and what became of the rest.</p>")
         shell.add_section("How much of it joined", self.reading, extent=180, stretch=1)
 
         from .next_steps import NextSteps
@@ -208,8 +208,8 @@ class ScreenModule(QtCore.QObject):
 
         self.compare_button = shell.add_action(
             "Compare with what is recorded", self.compare, primary=True,
-            tip="Join every row to the gene table: which resolved, which carry a measurement "
-                "already, and which do not.")
+            tip="Join every row to the gene table: which identifiers resolved, which rows "
+                "carry a usable number, and what the gene table already holds for each.")
         shell.add_action("Put these genes on the map", self._on_map,
                          tip="Open the Map module with the genes of your screen marked and "
                              "their neighbours read.")
