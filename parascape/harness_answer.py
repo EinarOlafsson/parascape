@@ -1,6 +1,6 @@
 """Answer an Infer question with a harness method instead of map groups (instruction 74, Infer step 3).
 
-The question keeps its recipe: the same label (the recipe holdout), the same evidence after closure (circular
+The question keeps its question template: the same label (the holdout of the template), the same evidence after closure (circular
 columns and the kinds the user left out removed). What changes is the method. For each yes/no form of the label
 (`binary_labels`), the chosen method is graded through `harness.run_question` -- orthogroup-grouped nested
 cross-validation and a frozen test touched once -- and then fitted on every labelled gene to rank the genes that
@@ -17,7 +17,7 @@ import pandas as pd
 EXTREME = 0.2
 MIN_CLASS = 50
 
-#: model key -> what the user reads. Map groups (the recipe) are the default and are not a harness model.
+#: model key -> what the user reads. Map groups (the question template) are the default and are not a harness model.
 METHODS = {
     "hist_gbt": "Boosted trees",
     "logistic": "Logistic regression",
@@ -74,9 +74,9 @@ def label_kind(series) -> str:
     return "value" if numeric and series.nunique() > 12 else "class"
 
 
-def answer(nodes: pd.DataFrame, recipe, model: str = "hist_gbt", organism: str | None = None, seed: int = 0,
+def answer(nodes: pd.DataFrame, template, model: str = "hist_gbt", organism: str | None = None, seed: int = 0,
            log=None, record: bool = True) -> dict:
-    """Grade the method on the recipe question, then rank the unlabelled genes.
+    """Grade the method on the question template, then rank the unlabelled genes.
 
     Returns ``{"refusal", "grades": DataFrame, "calls": DataFrame}``: one grade row per yes/no form of the label
     (frozen-test AUC, average precision, the lower bound, may it fill), and the unlabelled genes with the
@@ -84,13 +84,13 @@ def answer(nodes: pd.DataFrame, recipe, model: str = "hist_gbt", organism: str |
     """
     from . import borrowed_models as B, datasets as ds, harness as H, information_categories as IC
     from . import organisms as O
-    from . import recipes as R
+    from . import question_templates as R
     from .question_registry import Question
     say = log or (lambda _m: None)
-    organism = organism or getattr(recipe, "organism", O.TOXOPLASMA)
+    organism = organism or getattr(template, "organism", O.TOXOPLASMA)
     if model not in METHODS:
         raise ValueError(f"unknown method {model!r}")
-    closure = R.close(nodes, recipe)
+    closure = R.close(nodes, template)
     if not closure.ok:
         return {"refusal": closure.refusal, "grades": pd.DataFrame(), "calls": pd.DataFrame()}
     table = nodes.set_index("gene_id")
@@ -122,7 +122,7 @@ def answer(nodes: pd.DataFrame, recipe, model: str = "hist_gbt", organism: str |
     unlabelled = table.index[series.isna()]
     for suffix, wording, labels in binary_labels(column, label_kind(series), category, series):
         qid = f"infer_{_safe(column)}_{suffix}_{model}"
-        q = Question(id=qid, text=f"{recipe.question} -- yes when {wording}", answer_type="boolean",
+        q = Question(id=qid, text=f"{template.question} -- yes when {wording}", answer_type="boolean",
                      question_class="B", label_source=f"nodes.parquet:{column}", label_family=label_family,
                      evidence_forbidden=(label_family,), label_tier="observed-screen", label_category=category,
                      status="scored")

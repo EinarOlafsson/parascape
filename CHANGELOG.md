@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Changed
+
+- The word "recipe" now means one thing: a saved bundle of module settings, as in spaCR. The way of asking one
+  biological question in the Infer module, which was also called a recipe, is now a **question template**.
+  `parascape.recipes` became `parascape.question_templates` (`Recipe` is `QuestionTemplate`, `RecipeResult` is
+  `TemplateResult`, `RecipeStore` is `TemplateStore`, `questions.as_recipe` is `as_template`,
+  `report.recipe_pdf` is `question_pdf`), and the settings recipes took the plain name, `parascape.recipes`.
+  Files written by the old store have the same fields and still load. Code that still imports `run`, `close`
+  or the other old names from `parascape.recipes` fails with a message that names the new place.
+
 ## 0.0.11.0 — 2026-11-10
 
 ### Added

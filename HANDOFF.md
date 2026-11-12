@@ -918,7 +918,8 @@ parascape-discover --read bigA_00_guilt_compartment_best
 
 ## Asking a question, which is what 44-47 added (2026-08-18)
 
-A **recipe** is a named biological question: inputs as category addresses, a holdout the map must
+A **question template** (called a *recipe* until 2026-11-12, when that word went to saved settings, as in
+spaCR) is a named biological question: inputs as category addresses, a holdout the map must
 recover, and a **validation holdout** that should behave the same way if the answer is real. It is
 the unit the application now offers -- tab **8 · Questions** -- and `parascape/data/questions.json`
 ships a hundred candidates of which twenty are offered, one per DISTINCT holdout, plus one kept
@@ -926,7 +927,7 @@ deliberately BECAUSE closure refuses it.
 
 Four things here were established by measurement and should not be quietly reversed:
 
-* **Closure runs at CLASS scope for a recipe, not `target_family`.** The narrow default keeps
+* **Closure runs at CLASS scope for a question template, not `target_family`.** The narrow default keeps
   sequence predictors, so a localisation question accepted membrane topology and would have
   recovered hyperLOPIT by predicting it from signal peptide and TM count.
 * **The inference gate is ENRICHMENT over the label's base rate, not purity.** A fixed purity bar is

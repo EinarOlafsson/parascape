@@ -1,1008 +1,700 @@
-#!/usr/bin/env python3
-"""A recipe: one biological question, the measurements allowed to answer it, and two holdouts.
+"""Recipes: named, reusable and shareable bundles of module settings.
 
-The level sweep in `search` builds one map from EVERYTHING and holds out one category at a time. That
-asks *"is this category redundant given all the others"* -- a property of the CATALOGUE. It is a fair
-audit and it is not a biological question, which is why its output has been hard to read biologically.
+This is the ParaScape counterpart of ``spacr/qt/recipes.py``, and it exists for the same reason.
+A lab or a person often returns to one set of settings, such as "Map by expression and
+chromatin, tight spacing". A table of settings saved in a folder has no name, no record of the
+module it belongs to and no record of the version of ParaScape that wrote it.
 
-A recipe asks *"can THESE measurements predict THIS label"*. That is a hypothesis: it has a wrong
-answer, it names what would refute it, and what comes back is a list of genes rather than a score.
+A recipe records all four:
 
-**The validation holdout is the part that makes it trustworthy.** A second, independent label that
-SHOULD map the same way is a positive control inside every run. Without it a good score says "the map
-found structure"; with it, "the map found the structure I asked about" can be told apart from "the map
-found something else that happens to separate genes". If the primary recovers and the control does
-not, the recovery is probably an artefact of what was fed in -- and that is a result, reported beside
-the inference rather than hidden.
+* it has a **name** that the user chose;
+* it knows its **module**, so applying a Map recipe to Network is REFUSED rather than writing
+  keys that do not apply there (the keys that two modules happen to share are exactly the
+  generic ones, so a cross-module apply would write only those and still report success);
+* it records the **version** of ParaScape it was captured with, and applying it under a
+  different one says so and lists, by name, the settings that the module no longer has;
+* it is **one file**, so sharing a recipe is sending a file.
 
-**Hand-picking inputs REMOVES a guard, so this module adds it back.** The level sweep closed leakage
-automatically by holding out a whole class; choosing inputs by hand gives that up. The danger is
-predictable per question type -- for LOCALISATION it is anything sequence-derived, because signal
-peptide, TM count and orthoLOPIT transfer predict localisation well enough that a recipe admitting
-them "recovers" LOPIT by PREDICTING it rather than by finding biology. So before a recipe builds
-anything:
+Storage is ``~/.parascape/recipes/<module>/<slug>.json``, or the folder named by the
+environment variable :data:`RECIPE_DIR_ENV`, with one subfolder for each module so a listing is
+already scoped to that module and a whole module of recipes can be handed over by copying one
+folder.
 
-* `excluded_detail` runs on the primary holdout AND on the validation holdout, at class scope;
-* everything it removes from the chosen inputs is REPORTED, with the mechanism that caught it;
-* a recipe whose inputs still restate a holdout after that is REFUSED, not silently trimmed;
-* the two holdouts are checked against each other, because two labels from one experiment are not two
-  observations and a control that is a copy controls nothing.
+The file is plain JSON::
 
-That last check is not hypothetical on this table: `compartment`, `compartment_best`,
-`lopit_unified`, `lopit_map`, `lopit_mcmc` and `ortholopit_label` are six views of one experiment, and
-any pair of them would look like a question with a control.
+    {
+      "parascape_recipe": 1,
+      "name": "Tight map by expression",
+      "module": "map",
+      "parascape_version": "0.0.11.0",
+      "created": "2026-11-12T09:41:07",
+      "notes": "",
+      "settings": {"n_neighbors": 15, "min_dist": 0.05, ...}
+    }
+
+``parascape_recipe`` is the version of the file format and ``parascape_version`` is the version
+of the application. They change for unrelated reasons, so a reader accepts any file whose format
+version it can read, whatever application version wrote it.
+
+A recipe is always a bundle of settings, here and in spaCR. Until 2026-11-12 this word also named
+the way of asking one biological question in the Infer module, with the measurements allowed to
+answer it. That is now a **question template** and lives in :mod:`parascape.question_templates`;
+the old names still answer, with a message, from the bottom of this file.
+
+Nothing here imports Qt, so the logic is tested without a display and a script can read, apply
+or share recipes. The panel that shows them is :mod:`parascape.recipes_panel`.
 """
 from __future__ import annotations
 
+import datetime as _dt
+import hashlib
 import json
 import os
-from dataclasses import asdict, dataclass, field
+import re
+import tempfile
+import unicodedata
+from dataclasses import dataclass, field
+from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
 
-import numpy as np
-import pandas as pd
+#: Environment variable that moves the recipe folder, so a lab can keep its recipes on shared
+#: storage and a test can keep them out of the home folder.
+RECIPE_DIR_ENV = "PARASCAPE_RECIPE_DIR"
 
-from . import organisms
-from .embedding import EmbeddingSpec, columns_for, embed
-from .search import (ABSENCE_LABELS, CLUSTER_GRID, DEFAULT_SEED, TARGETS, all_edge_layers,
-                     best_clustering, excluded_detail, excluded_edges, excluded_layers,
-                     map_quality, score_recovery,
-                     tune_umap)
+#: Version of the file format. Raised only when a reader would need to behave differently.
+FORMAT_VERSION = 1
 
-#: How much a control label must be enriched in a cluster, over its own rate across the whole map,
-#: before it counts as agreeing with the primary. Two-fold is a low bar deliberately: the control is
-#: asked to CORROBORATE a cluster the primary already picked out, not to recover the map by itself,
-#: and a control label that is merely at its base rate in the cluster says nothing either way.
-CONTROL_ENRICHMENT = 2.0
+#: Longest stem of a file name taken from a recipe name, so a pasted paragraph cannot make a path
+#: the file system refuses.
+_SLUG_LIMIT = 60
 
-#: The floor for scoring anything, matched to `score_recovery`'s own. A label with eight members is
-#: recovered or not by luck.
-MIN_LABEL = 15
+_NOT_ALNUM = re.compile(r"[^a-z0-9]+")
+
+#: File names that some systems refuse whatever their extension, which matters because a recipe
+#: file is meant to be sent to other people.
+_RESERVED = frozenset(
+    {"con", "prn", "aux", "nul"}
+    | {f"com{n}" for n in range(1, 10)}
+    | {f"lpt{n}" for n in range(1, 10)})
 
 
-# --------------------------------------------------------------------------- the object
+class RecipeError(ValueError):
+    """Anything wrong with a recipe: unreadable, not a recipe, or not for this module.
+
+    A subclass of :class:`ValueError` so a caller that only wants to show the message can catch
+    one type, while a caller that must tell the cases apart can catch the narrower ones.
+    """
+
+
+class NotARecipeError(RecipeError):
+    """The file is unreadable, is not valid JSON or is not a ParaScape recipe."""
+
+
+class WrongModuleError(RecipeError):
+    """The recipe was captured in a different module and is refused here."""
+
+
+class RecipeExistsError(RecipeError):
+    """A recipe of that name is already saved for this module."""
+
+
+def parascape_version() -> str:
+    """The running version of ParaScape, or ``"unknown"`` when it cannot be read.
+
+    Read here rather than imported at the top so that a recipe can still be loaded and shown in
+    an environment where the package metadata is broken, which is when a record of the version
+    matters most.
+    """
+    try:
+        from . import __version__
+        return str(__version__)
+    except Exception:
+        return "unknown"
+
+
+def recipes_dir(module: Optional[str] = None, create: bool = True) -> str:
+    """The folder that holds recipes, optionally the one for a single module.
+
+    ``~/.parascape/recipes``, or the folder named by :data:`RECIPE_DIR_ENV`. There is one
+    subfolder for each module, so a listing is scoped without reading every file and a user can
+    hand over the recipes of one module by copying one folder.
+
+    :param module: key of the module whose subfolder is wanted; omit for the top folder.
+    :param create: make the folder when it is missing. A reader that only wants to look passes
+        ``False`` so that looking never creates anything.
+    """
+    override = os.environ.get(RECIPE_DIR_ENV, "").strip()
+    root = (os.path.abspath(os.path.expanduser(override)) if override
+            else os.path.join(os.path.expanduser("~"), ".parascape", "recipes"))
+    if module:
+        root = os.path.join(root, slug(module) or "unknown")
+    if create:
+        os.makedirs(root, exist_ok=True)
+    return root
+
+
+def slug(text: str) -> str:
+    """A file name stem that is safe for any file system, made from a recipe name.
+
+    The name the user typed is kept inside the file and is what they read, so the stem only has
+    to be safe and typeable. Accented letters are folded to plain ones ("Café" becomes "cafe"),
+    every other run of characters becomes one hyphen, path separators and dots can never survive
+    (so a name cannot reach outside the folder), and the length is limited. A name with no
+    plain letters at all ("日本語", "???") gets a short fingerprint of itself instead of an
+    empty stem, so two such names do not share a file. A reserved system name gets a suffix.
+
+    Two different names can still give the same stem ("A b" and "a-b"); :func:`save_recipe`
+    resolves that, so this function alone is not a unique key.
+
+    :param text: the name to turn into a stem.
+    """
+    raw = str(text or "")
+    folded = unicodedata.normalize("NFKD", raw).encode("ascii", "ignore").decode("ascii")
+    stem = _NOT_ALNUM.sub("-", folded.lower()).strip("-")[:_SLUG_LIMIT].strip("-")
+    if not stem:
+        if not raw.strip():
+            return ""
+        stem = "recipe-" + hashlib.sha1(raw.strip().encode("utf-8")).hexdigest()[:8]
+    if stem in _RESERVED:
+        stem += "-recipe"
+    return stem
+
+
+def _same_name(a: str, b: str) -> bool:
+    """Whether two recipe names are the same name, ignoring case and surrounding spaces.
+
+    Used so that "Tight map" and "tight map " are one recipe rather than two files that differ
+    only in how they were typed.
+    """
+    return str(a).strip().casefold() == str(b).strip().casefold()
+
+
+def _jsonable(value: Any) -> Any:
+    """Turn the odd values a settings widget can hand over into plain JSON values.
+
+    Sets become sorted lists (tuples already become lists in JSON) and numpy scalars become Python numbers. Anything else becomes
+    its text, which is better than refusing to save a recipe over one stray value.
+    """
+    if isinstance(value, (set, frozenset)):
+        return sorted(value, key=str)
+    item = getattr(value, "item", None)
+    if callable(item):
+        try:
+            return item()
+        except Exception:
+            pass
+    return str(value)
+
+
 @dataclass
 class Recipe:
-    """A named biological question, saved so that its answer can be rebuilt rather than remembered.
+    """One named bundle of settings for one module.
 
-    `inputs` are category ADDRESSES rather than column names: ``("evidence", ("molecular
-    measurements", "transcription"))`` names a branch of one hierarchy and takes every slot beneath
-    it, so a recipe keeps meaning something after a slot is added. A bare string is taken as a block
-    name, which is what an imported table or a legacy recipe uses.
-
-    `excluded` is deliberately NOT a field a user fills in: it is what closure removed, recorded by
-    the run. A recipe that carried its own exclusions could disagree with the guard that produced
-    them.
+    :param name: the name the user chose; its slug becomes the stem of the file.
+    :param module: key of the module the settings were captured in; it picks the subfolder and
+        is checked when the recipe is applied.
+    :param settings: setting key mapped to the value it had.
+    :param parascape_version: version of ParaScape that captured it; filled in on save when empty.
+    :param created: ISO timestamp, to the second; filled in on save when empty and used to list
+        the newest first.
+    :param notes: free text kept with the recipe.
+    :param path: the file it was read from or written to. Not written into the file, because a
+        file that moves would then lie about where it is.
     """
-    question: str
-    inputs: tuple = ()
-    holdout: str = ""
-    validation_holdout: str = ""
-    organism: str = "Tg"
-    #: Class scope, and NOT the `target_family` default the sweep uses -- this was measured, not
-    #: assumed. `target_family` closes the family that estimates the same quantity, and it
-    #: deliberately KEEPS sequence predictors: there is a test asserting exactly that. Asked "which
-    #: proteins are on the PVM", a recipe scoped that way accepted `membrane topology` as an input --
-    #: signal peptide, TM count -- and would have "recovered" hyperLOPIT by predicting it from
-    #: sequence, which is the failure instruction 44 exists to prevent. `biology` closes the first two
-    #: levels of what a measurement is ABOUT, which is what a holdout is a statement about.
-    scope: str = "biology"
-    seed: int = DEFAULT_SEED
-    spec: dict = field(default_factory=dict)
-    #: How much a label must be CONCENTRATED in a cluster, over its rate across the whole map,
-    #: before that cluster may name its unlabelled genes. This is the gate, and precision is not.
-    #:
-    #: Measured, and the reason is that a fixed purity bar is a different statistical demand for
-    #: every question. `compartment` has 24 classes and a typical one covers 3% of labelled genes, so
-    #: 0.80 purity there is a 25-fold enrichment; a quantity binned into thirds has 33% per class, so
-    #: the same 0.80 is 2.4-fold. Gating on purity therefore asks almost nothing of a rare label and
-    #: nearly the impossible of a common one, which is an accident of how many classes the holdout
-    #: happens to have rather than a fact about biology. Enrichment means the same thing at any base
-    #: rate, and it is already what the CONTROL is judged by -- the primary deserves the same test.
-    min_enrichment: float = 2.0
-    #: Kinds of knowledge (information categories) the user chose to leave out of the inputs, on top of
-    #: what closure removes (instruction 74, the Infer data step). Recorded in the recipe so the answer
-    #: can be rebuilt with the same choice.
-    leave_out_categories: tuple = ()
-    #: The purity a cluster must reach as well, carried onto every named gene as its confidence.
-    #: Kept as a floor rather than the gate because enrichment and reliability are different
-    #: questions: a cluster 15% X where X is 3% everywhere is five-fold enriched and still wrong
-    #: about five genes in six. Enrichment says the signal is real; precision says how often an
-    #: individual prediction will be right, and a reader needs both numbers.
-    #:
-    #: **0.30 was chosen by measurement, and the measurement was a surprise.** Every shipped question
-    #: was run once and 25 candidate gates applied to the same clusterings, scored not by how many
-    #: genes they named but by how many of those the INDEPENDENT CONTROL corroborated
-    #: (`instructions/done/45_gate_choice.csv`). At enrichment >= 2 the corroboration rate falls
-    #: monotonically as this floor rises -- 0.3: 46.0%, 0.4: 41.5%, 0.5: 31.7%, 0.6: 22.3%,
-    #: 0.8: 9.9% -- so the purest clusters are precisely the ones the control does NOT back. The
-    #: reading: high purity is reached by small tight clusters of rare labels, where a sparse control
-    #: has too few genes to agree; the moderately pure, strongly enriched clusters are the large
-    #: coherent ones where it can. Raising this floor was selecting against corroborated answers.
-    #:
-    #: It still does work rather than being switched off: a 24-class holdout at 2x enrichment reaches
-    #: only ~6% purity, and naming genes from a cluster that is 6% one label would be wrong 94 times
-    #: in a hundred. 0.30 is where reliability stops being free and starts costing corroboration.
-    min_precision: float = 0.3
-    holdout_bins: int = 0          # >0 bins a QUANTITY into that many classes before scoring
-    control_bins: int = 0
-    #: How the question is answered. Every method produces a PARTITION -- clusters, or out-of-fold
-    #: predicted classes -- and everything after that is identical, so two methods on one question are
-    #: compared on the same closure, the same control and the same statistics rather than on their
-    #: own separate write-ups.
-    method: str = "umap+hdbscan"
-    axis: str = ""                 # which of the catalogue's axes this question belongs to
-    expectation: str = ""          # what a believable answer looks like, written before the run
-    expect_refusal: bool = False   # a recipe kept BECAUSE it is refused; see instruction 45
 
-    def __post_init__(self):
-        self.inputs = tuple(_normalize_address(a) for a in self.inputs)
-        self.spec = dict(self.spec)
-        self.leave_out_categories = tuple(self.leave_out_categories or ())
+    name: str
+    module: str
+    settings: Dict[str, Any] = field(default_factory=dict)
+    parascape_version: str = ""
+    created: str = ""
+    notes: str = ""
+    path: str = ""
 
-    @property
-    def name(self) -> str:
-        """The question is the name. A recipe with a second name would soon have two meanings."""
-        return self.question
+    def to_json(self) -> Dict[str, Any]:
+        """The mapping that is written to disk.
 
-    def to_dict(self) -> dict:
-        """The recipe as JSON-safe data. Addresses become lists, since JSON has no tuples."""
-        d = asdict(self)
-        d["inputs"] = [list(a) if isinstance(a, tuple) else a for a in self.inputs]
-        d["leave_out_categories"] = list(self.leave_out_categories)
-        return d
+        The version and the time are stamped here when missing, so a recipe built by hand and a
+        recipe captured from a module are written the same way.
+        """
+        return {
+            "parascape_recipe": FORMAT_VERSION,
+            "name": self.name,
+            "module": self.module,
+            "parascape_version": self.parascape_version or parascape_version(),
+            "created": self.created or _dt.datetime.now().isoformat(timespec="seconds"),
+            "notes": self.notes,
+            "settings": json.loads(json.dumps(self.settings, default=_jsonable)),
+        }
 
     @classmethod
-    def from_dict(cls, d) -> "Recipe":
-        """Rebuild a recipe from stored data, ignoring fields a later version added.
+    def from_json(cls, data: Any, path: str = "") -> "Recipe":
+        """Build a recipe from parsed JSON, refusing anything that is not one.
 
-        Ignoring rather than raising: a recipe saved by a newer build must still load, or upgrading
-        the program destroys the questions somebody already asked.
+        An arbitrary JSON file, such as a ``package.json``, must never be applied as settings, so
+        the format marker is required. A format version newer than this build reads is refused
+        with a message that says so, rather than guessed at. A file that does not say which
+        module it is for is refused too, because a recipe that cannot be checked against a
+        module cannot be applied safely.
+
+        :param data: the parsed JSON.
+        :param path: the file it came from, kept on the recipe.
+        :raises NotARecipeError: when the data is not a usable recipe.
         """
-        d = dict(d)
-        d["inputs"] = tuple(_normalize_address(a) for a in d.get("inputs", ()))
-        return cls(**{k: v for k, v in d.items() if k in cls.__dataclass_fields__})
+        if not isinstance(data, dict) or "parascape_recipe" not in data:
+            raise NotARecipeError("this is not a ParaScape recipe (it has no recipe format marker)")
+        version = data["parascape_recipe"]
+        if isinstance(version, bool) or not isinstance(version, int) or version < 1:
+            raise NotARecipeError(f"the recipe format marker {version!r} is not a format number")
+        if version > FORMAT_VERSION:
+            raise NotARecipeError(
+                f"this recipe uses file format {version}, which is newer than this ParaScape "
+                f"reads (it reads formats up to {FORMAT_VERSION}); update ParaScape to use it")
+        module = data.get("module")
+        if not isinstance(module, str) or not module.strip():
+            raise NotARecipeError("this recipe does not say which module it is for")
+        settings = data.get("settings")
+        if not isinstance(settings, dict):
+            raise NotARecipeError("this recipe has no settings")
+        return cls(
+            name=str(data.get("name") or "Untitled"),
+            module=module.strip(),
+            settings=dict(settings),
+            parascape_version=str(data.get("parascape_version") or "unknown"),
+            created=str(data.get("created") or ""),
+            notes=str(data.get("notes") or ""),
+            path=path,
+        )
 
 
-def _normalize_address(address):
-    """One address shape, whatever it arrived as.
+# ---------------------------------------------------------------------------- files
 
-    JSON has no tuples, so a saved recipe comes back as lists; a hand-written one is a tuple; and a
-    bare block name is a string. All three become either ``str`` or ``(hierarchy, (part, ...))``.
+def _write_text(path: str, text: str) -> None:
+    """Write a file so that it is either the old file or the new one, never half of one.
+
+    The text goes to a temporary file in the same folder and is moved into place, because a
+    recipe cut short by a crash would be the corrupt file that the next listing has to report.
+
+    :param path: destination file.
+    :param text: what to write.
     """
-    if isinstance(address, str):
-        return address
-    hierarchy, path = address
-    if isinstance(path, str):
-        path = (path,)
-    return (hierarchy, tuple(path))
-
-
-def address_label(address) -> str:
-    """An address as one readable string, for a report a person reads."""
-    if isinstance(address, str):
-        return address
-    hierarchy, path = address
-    return f"{hierarchy}: {' > '.join(path)}"
-
-
-def address_blocks(address, organism: str = "Tg") -> tuple:
-    """The blocks one address names. A slot key IS a block, which is what lets an address be input."""
-    if isinstance(address, str):
-        return (address,)
-    from . import slots
-    hierarchy, path = address
-    return tuple(s.key for s in slots.slots_in_group(path, organism=organism, hierarchy=hierarchy))
-
-
-def label_series(frame: pd.DataFrame, column: str, bins: int = 0) -> pd.Series:
-    """One holdout column as labels, with absence expressed as absence.
-
-    Two conversions, and both of them decide what the answer means rather than how it looks.
-
-    **A quantity is binned or it cannot be a holdout at all.** Most of the targets worth asking about
-    are numeric -- every fitness screen, every abundance, every epitope count -- and scored raw they
-    produce thousands of one-member classes, none of which clears the floor, so the recipe returns
-    "nothing recovered" for a question the data could have answered. Quantile bins via
-    `runs.bin_column`, which reports fewer bins than asked for rather than inventing distinctions in a
-    mostly-constant column.
-
-    **"unassigned" is not a class, it is a gene waiting to be named.** hyperLOPIT writes `unassigned`
-    where it could not place a protein, and left as a string it becomes the commonest label in the
-    table: clusters get "recovered" as unassigned, and -- worse -- the genes this whole module exists
-    to name are counted as already labelled and never predicted. Mapped to absence, they become
-    exactly what they are: the candidates.
-    """
-    s = frame[column]
-    if bins:
-        from .runs import bin_column
-        s = bin_column(s, bins=bins)
-    text = s.astype("object").where(s.notna(), None)
-    return pd.Series([None if (v is None or str(v).strip().lower() in ABSENCE_LABELS) else v
-                      for v in text], index=frame.index, dtype="object")
-
-
-# --------------------------------------------------------------------------- closure
-@dataclass
-class Closure:
-    """What a recipe is allowed to build from, and everything taken away from it, with the reason.
-
-    Reported BEFORE anything is built, because the interesting failure is a recipe that would have
-    scored well on inputs it should never have been given.
-    """
-    blocks: tuple = ()
-    columns: tuple = ()
-    excluded: dict = field(default_factory=dict)      # every banned column -> why
-    removed: dict = field(default_factory=dict)       # of those, the ones the inputs asked for
-    #: Graph layers, which are a leak surface of their own. A method that traverses edges rather than
-    #: reading columns can recover a label from the layer built out of it, and no column guard can
-    #: see that -- `compartment` is 118,712 edges as well as the commonest holdout here.
-    layers: tuple = ()                                # the edge layers a graph method may traverse
-    excluded_layers: dict = field(default_factory=dict)
-    dropped_blocks: dict = field(default_factory=dict)
-    emptied: tuple = ()
-    holdout_column: str = ""
-    control_column: str = ""
-    refusal: str = ""
-
-    @property
-    def ok(self) -> bool:
-        return not self.refusal
-
-    def report(self) -> str:
-        """The closure as text, which is what goes in a log and in a methods section."""
-        if self.refusal:
-            return f"REFUSED: {self.refusal}"
-        lines = [f"{len(self.blocks)} block(s), {len(self.columns)} column(s) may build this map;"
-                 f" {len(self.excluded)} column(s) excluded",
-                 f"{len(self.layers)} edge layer(s) may be traversed; "
-                 f"{len(self.excluded_layers)} excluded"
-                 + (": " + ", ".join(sorted(self.excluded_layers)) if self.excluded_layers else "")]
-        for block, why in sorted(self.dropped_blocks.items()):
-            lines.append(f"  dropped {block}: {why}")
-        return "\n".join(lines)
-
-
-#: column -> import id, registered by the application for each imported table (instruction 64.37). An
-#: imported column has no dataset in the registry, so nothing else knows which columns came together.
-IMPORT_GROUPS: dict = {}
-
-
-def register_import(columns, import_id: str) -> None:
-    """Record that `columns` arrived in one import, so a label from it holds out the rest."""
-    for c in columns:
-        IMPORT_GROUPS[str(c)] = str(import_id)
-
-
-def same_import(nodes: pd.DataFrame, holdout: str) -> dict:
-    """Every other column of the import `holdout` came from, with the reason; {} if not imported."""
-    group = IMPORT_GROUPS.get(str(holdout))
-    if group is None:
-        return {}
-    return {c: f"same import as {holdout} ({group})" for c in nodes.columns
-            if c != holdout and IMPORT_GROUPS.get(str(c)) == group}
-
-
-_CATEGORY_CACHE: dict = {}
-
-
-def _categories(organism: str):
-    """A memoised `information_categories.categories_of` for one organism: a column's categories
-    do not change within a session, and resolving them is the slow part of a closure."""
-    from functools import lru_cache
-    from . import information_categories as IC
-    if organism not in _CATEGORY_CACHE:
-        _CATEGORY_CACHE[organism] = lru_cache(maxsize=None)(lambda c: tuple(IC.categories_of(c, organism)))
-    return _CATEGORY_CACHE[organism]
-
-
-def same_category(nodes: pd.DataFrame, holdout: str, organism: str = organisms.TOXOPLASMA) -> dict:
-    """Every column sharing an information category with `holdout`, with the reason (instruction 73).
-
-    Einar, 2026-11-07: the strict rule applies to the map questions too -- predicting a label from
-    columns of the same kind of knowledge is circular even where no single column correlates with
-    it (one expression contrast from forty others). `identity` is shared by everything and decides
-    nothing, so it is not a reason.
-    """
-    cats = _categories(organism)
+    folder = os.path.dirname(os.path.abspath(path))
+    os.makedirs(folder, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=".recipe-", suffix=".tmp", dir=folder)
     try:
-        mine = set(cats(holdout)) - {"identity"}
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(text)
+        os.replace(tmp, path)
     except Exception:
-        return {}
-    if not mine:
-        return {}
-    out = {}
-    for c in nodes.columns:
-        if c == holdout:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
+def _read_name(path: str) -> Optional[str]:
+    """The name stored in a recipe file, or ``None`` when the file cannot be read as a recipe.
+
+    :param path: the file to look in.
+    """
+    try:
+        return load_recipe(path).name
+    except RecipeError:
+        return None
+
+
+def _free_path(folder: str, name: str, own_path: str = "") -> str:
+    """The file that a recipe of this name should be written to, without taking anyone else.
+
+    The stem of the name is tried first. A file already there is replaced only when it is the
+    same recipe: the file this recipe was loaded from, or one that holds the same name. A file
+    that holds a different name (two names that slug alike, such as "Tight map" and
+    "tight-map"), or one that cannot be read at all, is left alone and the next free stem
+    ("-2", "-3", ...) is used. Replacing a corrupt file would destroy the evidence that the user
+    needs to see.
+
+    :param folder: the module folder.
+    :param name: the display name of the recipe.
+    :param own_path: file the recipe already lives in, if any.
+    """
+    base = slug(name) or "recipe"
+    own = os.path.abspath(own_path) if own_path else ""
+    n = 1
+    while True:
+        stem = base if n == 1 else f"{base}-{n}"
+        path = os.path.join(folder, f"{stem}.json")
+        if not os.path.exists(path):
+            return path
+        if own and os.path.abspath(path) == own:
+            return path
+        existing = _read_name(path)
+        if existing is not None and _same_name(existing, name):
+            return path
+        n += 1
+
+
+def save_recipe(recipe: Recipe, directory: Optional[str] = None) -> str:
+    """Write a recipe to its module folder and return the path of the file.
+
+    A recipe with the same name as one already saved replaces it (saving again is how a recipe is
+    updated). A different name that happens to give the same file stem is given its own file, so
+    saving never silently overwrites another recipe. The version and the time are stamped on the
+    recipe when empty.
+
+    :param recipe: the bundle to write; its ``path`` is set to the file written.
+    :param directory: write here instead of the module folder, for sharing.
+    :raises RecipeError: when the recipe has no name or no module.
+    """
+    if not str(recipe.name or "").strip():
+        raise RecipeError("a recipe needs a name")
+    if not str(recipe.module or "").strip():
+        raise RecipeError("a recipe needs the module it is for")
+    recipe.name = str(recipe.name).strip()
+    recipe.parascape_version = recipe.parascape_version or parascape_version()
+    recipe.created = recipe.created or _dt.datetime.now().isoformat(timespec="seconds")
+    folder = directory or recipes_dir(recipe.module)
+    os.makedirs(folder, exist_ok=True)
+    path = _free_path(folder, recipe.name, recipe.path if not directory else "")
+    _write_text(path, json.dumps(recipe.to_json(), indent=2, sort_keys=True) + "\n")
+    recipe.path = path
+    return path
+
+
+def load_recipe(path: str) -> Recipe:
+    """Read one recipe file, saying plainly what is wrong with it if it cannot be read.
+
+    :param path: the file.
+    :raises NotARecipeError: when the file cannot be opened, is not valid JSON, or is not a
+        usable recipe. The message names the file and the reason, so a listing can show it.
+    """
+    name = os.path.basename(str(path))
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except json.JSONDecodeError as exc:
+        raise NotARecipeError(f"{name} is not valid JSON ({exc.msg}, line {exc.lineno})") from exc
+    except UnicodeDecodeError as exc:
+        raise NotARecipeError(f"{name} is not a text file") from exc
+    except OSError as exc:
+        raise NotARecipeError(f"{name} could not be opened ({exc.strerror or exc})") from exc
+    try:
+        return Recipe.from_json(data, path=str(path))
+    except NotARecipeError as exc:
+        raise NotARecipeError(f"{name}: {exc}") from exc
+
+
+@dataclass
+class Listing:
+    """The result of reading a recipe folder: what was usable and what was not.
+
+    :param recipes: the readable recipes of the module, newest first.
+    :param problems: ``(path, reason)`` for every file that was not usable. Reported rather than
+        dropped, because a recipe that has silently vanished from the list looks like a recipe
+        that was never saved.
+    """
+
+    recipes: List[Recipe] = field(default_factory=list)
+    problems: List[Tuple[str, str]] = field(default_factory=list)
+
+
+def scan_recipes(module: str) -> Listing:
+    """Read the recipe folder of a module and report every file that could not be used.
+
+    A file is a problem when it is not valid JSON, is not a recipe, or is a recipe that says it
+    is for a different module than the folder it sits in (typically copied into the wrong
+    folder by hand). Looking never creates the folder.
+
+    :param module: key of the module.
+    """
+    out = Listing()
+    folder = recipes_dir(module, create=False)
+    if not os.path.isdir(folder):
+        return out
+    for entry in sorted(os.listdir(folder)):
+        if not entry.endswith(".json") or entry.startswith("."):
+            continue
+        path = os.path.join(folder, entry)
+        if not os.path.isfile(path):
             continue
         try:
-            shared = sorted(set(cats(c)) & mine)
-        except Exception:
+            recipe = load_recipe(path)
+        except RecipeError as exc:
+            out.problems.append((path, str(exc)))
             continue
-        if shared:
-            out[c] = f"same information category as {holdout} ({', '.join(shared)})"
+        if recipe.module != module:
+            out.problems.append((
+                path, f"{entry} is for the {recipe.module!r} module but is filed under "
+                      f"{module!r}; it was not listed"))
+            continue
+        out.recipes.append(recipe)
+    out.recipes.sort(key=lambda r: (r.created, r.name), reverse=True)
     return out
 
 
-def input_categories(nodes: pd.DataFrame, recipe: Recipe) -> dict:
-    """category -> number of columns, over the columns a recipe's inputs name (before closure).
+def list_recipes(module: str) -> List[Recipe]:
+    """The readable recipes of a module, newest first.
 
-    What the Infer data step offers to leave out; the label's own categories are reported separately
-    by `same_category`."""
-    cats = _categories(recipe.organism)
-    counts: dict = {}
-    for address in recipe.inputs:
-        for block in address_blocks(address, recipe.organism):
-            for c in columns_for(nodes, EmbeddingSpec(blocks=(block,))).get(block, []):
-                for cat in cats(c):
-                    counts[cat] = counts.get(cat, 0) + 1
-    return dict(sorted(counts.items()))
+    Use :func:`scan_recipes` when the files that could not be read must be reported too.
 
-
-def close(nodes: pd.DataFrame, recipe: Recipe, threshold: float = 0.8) -> Closure:
-    """Resolve a recipe's inputs, remove everything that restates either holdout, and say what went.
-
-    Four refusals, and each of them was a way this could have produced a confident wrong answer:
-
-    * a holdout that is not a column here -- the question cannot be scored at all;
-    * a control that is not independent of the primary, which is the same experiment twice;
-    * an input address emptied entirely by closure, which means the user asked to predict a label
-      from itself. Trimming that silently would leave a smaller recipe answering a question nobody
-      asked;
-    * nothing left to build from.
+    :param module: key of the module.
     """
-    out = Closure()
-    holdout = TARGETS.get(recipe.holdout, recipe.holdout)
-    out.holdout_column = holdout
-    if not holdout or holdout not in nodes.columns:
-        out.refusal = f"the holdout {recipe.holdout!r} is not a column in this table"
-        return out
-
-    excluded = {c: f"primary: {why}" for c, why in
-                excluded_detail(nodes, holdout, threshold=threshold, scope=recipe.scope).items()}
-    banned_layers = {L: f"primary: {why}"
-                     for L, why in excluded_layers(nodes, holdout, recipe.scope,
-                                                   threshold).items()}
-
-    control = TARGETS.get(recipe.validation_holdout, recipe.validation_holdout)
-    out.control_column = control
-    if control:
-        if control not in nodes.columns:
-            out.refusal = (f"the validation holdout {recipe.validation_holdout!r} is not a column "
-                           f"in this table")
-            return out
-        # The control is checked against the primary's own closure. Two labels one experiment
-        # produced are not two observations, and this is the mechanism that already knows it.
-        if control in excluded:
-            out.refusal = (f"the validation holdout {control!r} is not independent of the primary "
-                           f"{holdout!r} -- {excluded[control].split(': ', 1)[1]}. A control that is "
-                           f"a copy controls nothing")
-            return out
-        for c, why in excluded_detail(nodes, control, threshold=threshold,
-                                      scope=recipe.scope).items():
-            excluded.setdefault(c, f"control: {why}")
-        for L, why in excluded_layers(nodes, control, recipe.scope, threshold).items():
-            banned_layers.setdefault(L, f"control: {why}")
-    # The category rule (instruction 73, Einar 2026-11-07) removes INPUTS of the label's kind of
-    # knowledge. It is applied after the control check on purpose: a control is meant to measure the
-    # same kind of thing independently (one fitness screen against another), so sharing a category
-    # is what a control should do, not a reason to refuse it.
-    # Only the label's own category: the control keeps the association closure above, as decided.
-    for c, why in same_category(nodes, holdout, recipe.organism).items():
-        if c != control:
-            excluded.setdefault(c, f"primary: {why}")
-    for c, why in same_import(nodes, holdout).items():
-        if c != control:
-            excluded.setdefault(c, f"primary: {why}")
-    left_out = set(getattr(recipe, "leave_out_categories", ()) or ())
-    if left_out:
-        cats = _categories(recipe.organism)
-        for c in nodes.columns:
-            if c in (holdout, control):
-                continue
-            chosen = sorted(set(cats(c)) & left_out)
-            if chosen:
-                excluded.setdefault(c, f"left out by you ({', '.join(chosen)})")
-    out.excluded = excluded
-    out.excluded_layers = banned_layers
-    out.layers = tuple(L for L in all_edge_layers(recipe.organism) if L not in banned_layers)
-
-    if not recipe.inputs:
-        out.refusal = "the recipe names no inputs"
-        return out
-
-    kept, emptied, absent, unknown = [], [], [], []
-    for address in recipe.inputs:
-        blocks = address_blocks(address, recipe.organism)
-        if not blocks:
-            # A misspelt address must be loud. Resolved to nothing and passed over quietly, it would
-            # produce a map built from the OTHER inputs and an answer to a question nobody asked.
-            unknown.append(address_label(address))
-            continue
-        survivors, leaked = [], False
-        for block in blocks:
-            cols = columns_for(nodes, EmbeddingSpec(blocks=(block,))).get(block, [])
-            if not cols:
-                out.dropped_blocks.setdefault(block, "no columns in this cache")
-                continue
-            leaking = {c: excluded[c] for c in cols if c in excluded}
-            if leaking:
-                first = sorted(leaking)[0]
-                out.dropped_blocks[block] = f"{first} -- {leaking[first]}"
-                out.removed.update(leaking)
-                leaked = True
-                continue
-            survivors.append(block)
-        if not survivors:
-            # Emptied by the guard and emptied by an empty cache are different facts about the
-            # recipe, and reporting the second as the first would tell a user their question is
-            # circular when the truth is that this build has no such data.
-            (emptied if leaked else absent).append(address_label(address))
-        kept.extend(survivors)
-
-    out.emptied = tuple(emptied)
-    # Order-preserving deduplication: two addresses may legitimately name the same slot, and a block
-    # fed twice would be weighted twice.
-    out.blocks = tuple(dict.fromkeys(kept))
-    if unknown:
-        out.refusal = "these inputs name nothing in this catalogue: " + "; ".join(unknown)
-        return out
-    if emptied:
-        out.refusal = ("these inputs restate a holdout and were removed entirely rather than "
-                       "trimmed: " + "; ".join(emptied))
-        return out
-    if absent:
-        out.refusal = "these inputs have no columns in this build: " + "; ".join(absent)
-        return out
-    out.columns = tuple(c for cols in columns_for(
-        nodes, EmbeddingSpec(blocks=out.blocks)).values() for c in cols)
-    # Belt and braces, and it costs nothing: assert the survivors really are clean. A block is
-    # dropped whole, so a banned column reaching this point would mean the two column lookups
-    # disagree -- which is exactly the kind of silent leak this module exists to stop.
-    still = sorted(set(out.columns) & set(excluded))
-    if still:
-        out.refusal = f"columns that restate a holdout survived closure: {', '.join(still)}"
-    return out
+    return scan_recipes(module).recipes
 
 
-# --------------------------------------------------------------------------- the control
-def dominant_by_cluster(labels: np.ndarray, values: pd.Series, min_label: int = MIN_LABEL,
-                        enrichment: float = CONTROL_ENRICHMENT) -> pd.DataFrame:
-    """Which label dominates each cluster, how much of it that label holds, and whether that is more
-    than the label holds everywhere.
+def find_recipe(module: str, name: str) -> Optional[Recipe]:
+    """The saved recipe of a module with this name, or ``None``.
 
-    Written for the validation holdout and used for the primary as well, because "how pure is this
-    cluster" is the same computation as "does the control corroborate it". Sharing it is what makes
-    the near-miss report honest: the purity quoted when nothing clears the confidence threshold is
-    computed by the same code that decides whether the control agrees, so the two can never drift.
+    Used to ask "replace the existing one?" before a save, instead of replacing it unasked.
 
-    Per cluster: the commonest control label, how much of the cluster it holds, how much of the whole
-    map that label holds, and the ratio. Enrichment rather than raw share, because a label carried by
-    60% of all genes is not evidence when it is carried by 60% of a cluster.
-
-    `agrees` is False for two quite different reasons and they are told apart in `why`: too few
-    control-labelled genes in the cluster to say anything, or enough of them sitting at their base
-    rate. Reporting both as "no" would let a cluster nobody could evaluate read like a cluster the
-    control refuted.
+    :param module: key of the module.
+    :param name: the name to look for; case and surrounding spaces are ignored.
     """
-    labels = np.asarray(labels)
-    values = values.astype("object").where(values.notna(), None).to_numpy()
-    known = np.array([v is not None for v in values])
-    rows = []
-    base = pd.Series([str(v) for v in values[known]]).value_counts(normalize=True) if known.any() \
-        else pd.Series(dtype=float)
-    for cl in sorted({int(v) for v in labels if v >= 0}):
-        m = (labels == cl) & known
-        n = int(m.sum())
-        if not n:
-            rows.append({"cluster": cl, "label": "", "n_labelled": 0,
-                         "share_in_cluster": float("nan"), "base_rate": float("nan"),
-                         "enrichment": float("nan"), "agrees": False,
-                         "why": "no gene in this cluster carries a label"})
-            continue
-        counts = pd.Series([str(v) for v in values[m]]).value_counts()
-        top, n_top = str(counts.index[0]), int(counts.iloc[0])
-        # The base rate cannot be zero here: `top` was counted among this cluster's genes, and this
-        # cluster's genes are part of the base. No guard, because there is nothing to guard against.
-        share, rate = n_top / n, float(base[top])
-        ratio = share / rate
-        if n < min_label:
-            agrees, why = False, f"only {n} labelled gene(s); the floor is {min_label}"
-        elif ratio >= enrichment:
-            agrees, why = True, f"{top} is {ratio:.1f}x its rate across the map"
-        else:
-            agrees, why = False, f"{top} sits at {ratio:.1f}x its rate across the map"
-        rows.append({"cluster": cl, "label": top, "n_labelled": n,
-                     "share_in_cluster": share, "base_rate": rate, "enrichment": ratio,
-                     "agrees": agrees, "why": why})
-    return pd.DataFrame(rows)
+    for recipe in list_recipes(module):
+        if _same_name(recipe.name, name):
+            return recipe
+    return None
 
 
-def recovery_by_cluster(labels: np.ndarray, truth: pd.Series,
-                        min_label: int = MIN_LABEL) -> pd.DataFrame:
-    """Every scoreable label against every cluster: precision, recall and F1 for each pair.
+def delete_recipe(recipe: Recipe) -> bool:
+    """Remove the file of a recipe. ``True`` when a file was removed.
 
-    `score_recovery` answers "was this label isolated SOMEWHERE", which is the right question for a
-    score and the wrong one for reading a map. A label can be split cleanly across three clusters --
-    a real finding about sub-structure -- and come back with one mediocre best-cluster F1 that hides
-    it. This is the table a person actually looks at, and the one instruction 43 asks for.
-
-    Pairs with no overlap are KEPT as zeros rather than omitted. A missing row reads as "not
-    computed"; a zero says the cluster was checked against that label and holds none of it, and the
-    difference matters when the question is where a label is absent.
+    :param recipe: the recipe whose ``path`` is deleted; with no path nothing is removed.
     """
-    labels = np.asarray(labels)
-    text = truth.astype("object").where(truth.notna(), None).to_numpy()
-    known = np.array([v is not None for v in text])
-    counts = pd.Series([str(v) for v in text[known]]).value_counts() if known.any() \
-        else pd.Series(dtype=int)
-    keep = [lab for lab, n in counts.items() if n >= min_label]
-    clusters = sorted({int(v) for v in labels if v >= 0})
-    rows = []
-    for lab in keep:
-        is_label = np.array([str(v) == lab for v in text]) & known
-        for cl in clusters:
-            in_cluster = labels == cl
-            inter = int((is_label & in_cluster).sum())
-            n_cluster_labelled = int((in_cluster & known).sum())
-            prec = inter / n_cluster_labelled if n_cluster_labelled else 0.0
-            rec = inter / int(is_label.sum())
-            rows.append({"label": lab, "cluster": cl, "n_label": int(is_label.sum()),
-                         "n_labelled_in_cluster": n_cluster_labelled, "n_in_cluster": inter,
-                         "precision": prec, "recall": rec,
-                         "f1": 2 * prec * rec / (prec + rec) if (prec + rec) else 0.0})
-    return pd.DataFrame(rows)
+    if not recipe.path or not os.path.isfile(recipe.path):
+        return False
+    os.remove(recipe.path)
+    return True
 
 
-def infer(labels: np.ndarray, truth: pd.Series, gene_index, min_enrichment: float = 2.0,
-          min_precision: float = 0.3, min_labelled: int = MIN_LABEL) -> pd.DataFrame:
-    """Name the unlabelled genes in clusters where a label is genuinely concentrated.
+def rename_recipe(recipe: Recipe, new_name: str) -> str:
+    """Give a saved recipe a new name and move its file to match.
 
-    Two gates rather than one, because they answer different questions and a single number hides
-    whichever it is not. Enrichment says the label is more concentrated here than at large -- that the
-    cluster carries signal about it. Precision says how often a prediction drawn from this cluster
-    will actually be right, and it rides on every row as the prediction's confidence.
+    The new file is written before the old one is removed, so a failure part way leaves the
+    recipe under its old name rather than under neither.
 
-    Built on `dominant_by_cluster`, which is also what scores the control, so "is this label
-    concentrated in this cluster" is computed once and means one thing throughout.
+    :param recipe: the saved recipe; its ``name`` and ``path`` are updated.
+    :param new_name: the new name; surrounding spaces are dropped.
+    :returns: the new path.
+    :raises RecipeError: when the name is empty.
+    :raises RecipeExistsError: when another recipe of the module already has that name.
     """
-    dom = dominant_by_cluster(labels, truth, min_label=min_labelled, enrichment=min_enrichment)
-    labels = np.asarray(labels)
-    values = truth.astype("object").where(truth.notna(), None).to_numpy()
-    unlabelled = np.array([v is None for v in values])
-    genes = np.asarray(gene_index)
-    out = []
-    for _, r in dom.iterrows():
-        if not r.agrees or r.share_in_cluster < min_precision:
-            continue
-        for gene in genes[(labels == r.cluster) & unlabelled]:
-            out.append({"gene_id": gene, "predicted": r.label, "cluster": int(r.cluster),
-                        "cluster_precision": float(r.share_in_cluster),
-                        "enrichment": float(r.enrichment), "base_rate": float(r.base_rate),
-                        "n_labelled_in_cluster": int(r.n_labelled)})
-    return pd.DataFrame(out)
+    name = str(new_name or "").strip()
+    if not name:
+        raise RecipeError("a recipe needs a name")
+    if not _same_name(name, recipe.name):
+        other = find_recipe(recipe.module, name)
+        if other is not None:
+            raise RecipeExistsError(f"a recipe called {name!r} already exists for this module")
+    old_name, old_path = recipe.name, recipe.path
+    recipe.name = name
+    folder = os.path.dirname(old_path) if old_path else recipes_dir(recipe.module)
+    try:
+        # The old file is not offered as "own" so that a rename never lands on it by the stem
+        # alone: it is replaced only if the stem is genuinely free or holds this same name.
+        recipe.path = ""
+        path = save_recipe(recipe, directory=folder)
+    except Exception:
+        recipe.name, recipe.path = old_name, old_path
+        raise
+    if old_path and os.path.abspath(old_path) != os.path.abspath(path) and os.path.isfile(old_path):
+        os.remove(old_path)
+    return path
 
 
-# --------------------------------------------------------------------------- running one
-@dataclass
-class RecipeResult:
-    """Everything one recipe produced, including the reasons it produced nothing.
+def capture_recipe(module: str, name: str, settings: Dict[str, Any], notes: str = "") -> Recipe:
+    """Build a recipe from the settings a module has right now.
 
-    A refused recipe and a degenerate map both come back as a result rather than an exception: both
-    are answers to the question that was asked, and a caller that has to catch an exception to learn
-    "this map cannot support a claim" will sooner or later report the exception as a failure of the
-    program instead of a finding about the data.
+    Every value is kept, including the ones the user never touched, so the recipe reproduces the
+    same result after a default changes.
+
+    :param module: key of the module the settings come from.
+    :param name: the name the user chose.
+    :param settings: setting key mapped to its current value.
+    :param notes: free text to keep with it.
+    :raises RecipeError: when the name or the module is empty.
     """
-    recipe: Recipe
-    closure: Closure
-    quality: dict = field(default_factory=dict)
-    settings: dict = field(default_factory=dict)
-    summary: dict = field(default_factory=dict)
-    inference_note: str = ""
-    recovery: pd.DataFrame = field(default_factory=pd.DataFrame)
-    per_cluster: pd.DataFrame = field(default_factory=pd.DataFrame)
-    inference: pd.DataFrame = field(default_factory=pd.DataFrame)
-    control: pd.DataFrame = field(default_factory=pd.DataFrame)
-    control_summary: dict = field(default_factory=dict)
-    #: Which measurements a model actually used, when the method is one that can say. Empty for the
-    #: clustering path, which cannot.
-    coefficients: pd.DataFrame = field(default_factory=pd.DataFrame)
-    genes: np.ndarray = field(default_factory=lambda: np.array([], dtype=bool))
-    labels: np.ndarray = field(default_factory=lambda: np.array([], dtype=int))
-    #: The embedding itself, and the two label columns as the map saw them. Kept because a figure
-    #: rebuilt from a seed is a figure nobody checked: the report draws the coordinates that were
-    #: actually scored, not a re-run that should agree with them.
-    coords: np.ndarray = field(default_factory=lambda: np.zeros((0, 3)))
-    truth: pd.Series = field(default_factory=lambda: pd.Series(dtype="object"))
-    control_truth: pd.Series = field(default_factory=lambda: pd.Series(dtype="object"))
-    #: Other maps the tuner considered, each fully scored. A report that shows only the winner hides
-    #: what the choice was between.
-    alternatives: list = field(default_factory=list)
-    stopped_because: str = ""
+    if not str(name or "").strip():
+        raise RecipeError("a recipe needs a name")
+    if not str(module or "").strip():
+        raise RecipeError("a recipe needs the module it is for")
+    return Recipe(name=str(name).strip(), module=str(module).strip(), settings=dict(settings),
+                  notes=str(notes or ""))
+
+
+def export_recipe(recipe: Recipe, path: str) -> str:
+    """Write one recipe as a single file anywhere, for sending to someone.
+
+    :param recipe: the recipe to share.
+    :param path: destination file.
+    :returns: the path written.
+    """
+    _write_text(path, json.dumps(recipe.to_json(), indent=2, sort_keys=True) + "\n")
+    return path
+
+
+def import_recipe(path: str, module: str, replace: bool = False) -> Recipe:
+    """Read a shared recipe file and save it for a module.
+
+    A recipe for another module is refused, because it would be listed here and then be refused
+    again on every apply. An unreadable file is reported with the reason.
+
+    :param path: the file that was sent.
+    :param module: key of the module importing it.
+    :param replace: replace a recipe of the same name instead of refusing.
+    :raises NotARecipeError: when the file is not a usable recipe.
+    :raises WrongModuleError: when it is for a different module.
+    :raises RecipeExistsError: when the name is taken and ``replace`` is false.
+    """
+    recipe = load_recipe(path)
+    if recipe.module != module:
+        raise WrongModuleError(
+            f"{recipe.name!r} is a recipe for the {recipe.module!r} module, not {module!r}")
+    existing = find_recipe(module, recipe.name)
+    if existing is not None and not replace:
+        raise RecipeExistsError(f"a recipe called {recipe.name!r} already exists for this module")
+    recipe.path = existing.path if existing is not None else ""
+    save_recipe(recipe)
+    return recipe
+
+
+# ---------------------------------------------------------------------------- applying
+
+@dataclass(frozen=True)
+class ApplyPlan:
+    """What applying a recipe to a module would do, worked out before anything is written.
+
+    :param name: name of the recipe.
+    :param made_with: version of ParaScape that captured it.
+    :param running: version of ParaScape that is running.
+    :param settings: the settings the module has, which are the ones that will be written.
+    :param missing: names of settings in the recipe that the module no longer has, sorted. They
+        are skipped, and listed in full so the user can judge whether the recipe still means
+        what it did.
+    """
+
+    name: str
+    made_with: str
+    running: str
+    settings: Dict[str, Any]
+    missing: Tuple[str, ...] = ()
 
     @property
-    def ok(self) -> bool:
-        return not self.stopped_because
+    def version_differs(self) -> bool:
+        """Whether the recipe was captured with another version than the one running."""
+        return self.made_with != self.running
 
-    def tables(self) -> dict:
-        """The result as saveable tables, for `results.save_bundle`."""
-        return {"recovery": self.recovery, "per_cluster": self.per_cluster,
-                "inference": self.inference, "control": self.control}
+    @property
+    def needs_confirmation(self) -> bool:
+        """Whether the user should be told something before it is applied.
+
+        True for a version difference or for any setting that no longer exists. A recipe from the
+        same version with every setting present is applied without a question.
+        """
+        return self.version_differs or bool(self.missing)
+
+    def note(self) -> str:
+        """A plain sentence for the user: the version gap and the settings that are gone.
+
+        Empty when there is nothing to say. The settings are named in full rather than counted,
+        because "3 settings are ignored" gives no way to judge whether they matter.
+        """
+        parts = []
+        if self.version_differs:
+            parts.append(
+                f"This recipe was saved with ParaScape {self.made_with}; you are running "
+                f"{self.running}.")
+        if self.missing:
+            names = ", ".join(self.missing)
+            many = len(self.missing) != 1
+            parts.append(
+                f"{'These settings are' if many else 'This setting is'} not in this module any "
+                f"more and will be left out: {names}.")
+        return " ".join(parts)
 
 
-def build_map(nodes: pd.DataFrame, recipe: Recipe, closure: Closure, settings: dict,
-              log=print) -> RecipeResult:
-    """Build one map at the given UMAP settings, cluster it, score it, and name genes.
+def plan_apply(recipe: Recipe, module: str, known_keys: Iterable[str],
+               running: Optional[str] = None) -> ApplyPlan:
+    """Work out what applying a recipe to a module would do, or refuse it.
 
-    Split out of `run` so the winning configuration and the alternatives kept for the report go
-    through IDENTICAL code. A report whose alternatives were scored by a second, shorter path would
-    be comparing the winner against something else.
+    The refusal comes first and is absolute: a recipe from another module is never partly
+    applied.
+
+    :param recipe: the recipe to apply.
+    :param module: key of the module it would be applied to.
+    :param known_keys: the names of every setting the module has now.
+    :param running: override the running version (tests).
+    :raises WrongModuleError: when the recipe was captured in a different module.
     """
-    spec = EmbeddingSpec(blocks=closure.blocks, random_state=recipe.seed,
-                         **{**recipe.spec, **settings})
-    coords, _names, kept = embed(nodes, spec, log=lambda *a: None)
-    coords = np.asarray(coords)
-
-    # A cluster that cannot hold MIN_LABEL labelled genes cannot support a claim about them, and
-    # the tuner does not know that: `map_quality` rewards evenness, so on this catalogue it chose 121
-    # clusters of ~40 genes -- a beautifully even map that named ZERO genes, because no cluster held
-    # fifteen labelled ones at 80% purity. The floor is derived from the holdout's COVERAGE (what
-    # fraction of genes carry any label at all), never from which labels recover: tuning on the
-    # latter would be choosing hyperparameters by the answer.
-    # Measured on the genes that are actually IN the map, not on the whole table. A missing-value
-    # policy that drops rows changes which genes the labels describe, so the labelled fraction of the
-    # table is the wrong denominator for a floor about the map's clusters.
-    sub = nodes.loc[kept] if kept is not None else nodes
-    labelled = float(label_series(sub, closure.holdout_column, recipe.holdout_bins).notna().mean())
-    floor = int(np.ceil(MIN_LABEL / labelled)) if labelled else MIN_LABEL
-    sizes = tuple(v for v in CLUSTER_GRID["min_cluster_size"] if v >= floor) or (floor,)
-    log(f"clusters must hold >= {floor} genes for {MIN_LABEL} of them to carry a label "
-        f"({100 * labelled:.0f}% of genes are labelled); trying {sizes}")
-    chosen = best_clustering(coords, grid={**CLUSTER_GRID, "min_cluster_size": sizes},
-                             log=lambda *a: None)
-    from .clustering import cluster
-    from .search import TUNE_CLUSTERING
-    params = {k: chosen[k] for k in ("min_cluster_size", "min_samples")
-              if k in chosen and chosen[k] != "auto"}
-    params = {k: int(v) for k, v in params.items()}
-    labels = cluster(coords, **{**TUNE_CLUSTERING, **params})
-    quality = map_quality(labels)
-    settings = {**settings, **params}
-
-    genes = np.zeros(len(nodes), dtype=bool)
-    genes[np.arange(len(nodes))[kept] if kept is not None else np.arange(len(nodes))] = True
-    result = RecipeResult(recipe=recipe, closure=closure, quality=quality, settings=settings,
-                          genes=genes, labels=labels, coords=coords)
-    if not quality["usable"]:
-        # A recipe on a degenerate map returns that and stops. There is no score to report and a
-        # number here would be read as one.
-        result.stopped_because = f"the map cannot support a claim: {quality['why_not']}"
-        log(result.stopped_because)
-        return result
-
-    truth = label_series(sub, closure.holdout_column, recipe.holdout_bins)
-    result.truth = truth
-    result.summary, result.recovery = score_recovery(labels, truth, min_label=MIN_LABEL)
-    result.per_cluster = recovery_by_cluster(labels, truth)
-    result.inference = infer(labels, truth, np.asarray(sub["gene_id"]),
-                             min_enrichment=recipe.min_enrichment,
-                             min_precision=recipe.min_precision)
-    if not len(result.inference):
-        # An empty answer must say how close it came. "No genes" and "no cluster was 80% pure, the
-        # purest was 75%" are different findings, and only the second tells a reader whether the
-        # question failed or the threshold did.
-        purity = dominant_by_cluster(labels, truth)
-        scoreable = purity[purity.n_labelled >= MIN_LABEL]
-        result.inference_note = (
-            f"no cluster reached {recipe.min_enrichment:.1f}x enrichment at "
-            f"{recipe.min_precision:.2f} purity; the best scoreable cluster was "
-            f"{scoreable.enrichment.max():.1f}x at "
-            f"{scoreable.loc[scoreable.enrichment.idxmax(), 'share_in_cluster']:.2f} purity "
-            f"({scoreable.loc[scoreable.enrichment.idxmax(), 'label']})"
-            if len(scoreable) else
-            f"no cluster holds {MIN_LABEL} labelled genes, so none can support a prediction")
-        log(result.inference_note)
-    if closure.control_column:
-        control_truth = label_series(sub, closure.control_column, recipe.control_bins)
-        result.control_truth = control_truth
-        result.control = dominant_by_cluster(labels, control_truth).rename(
-            columns={"label": "control_label", "n_labelled": "n_control_labelled"})
-        result.control_summary, _per = score_recovery(labels, control_truth, min_label=MIN_LABEL)
-        # The agreement goes on the inference's own rows. A control reported in a separate table is a
-        # control nobody reads next to the thing it qualifies -- which is the entire point of it.
-        if len(result.inference):
-            cols = ["cluster", "control_label", "n_control_labelled", "enrichment", "agrees", "why"]
-            result.inference = result.inference.merge(
-                result.control[cols].rename(columns={"agrees": "control_agrees",
-                                                     "why": "control_says",
-                                                     "enrichment": "control_enrichment"}),
-                on="cluster", how="left")
-    log(f"{len(result.inference)} gene(s) named"
-        + (f", {int(result.inference['control_agrees'].fillna(False).sum())} of them in clusters the "
-           f"control corroborates" if "control_agrees" in result.inference else ""))
-    return result
+    if recipe.module != module:
+        raise WrongModuleError(
+            f"This recipe is for the {recipe.module!r} module, not {module!r}, so it was not "
+            f"applied.")
+    known = set(known_keys)
+    keep = {k: v for k, v in recipe.settings.items() if k in known}
+    missing = tuple(sorted(k for k in recipe.settings if k not in known))
+    return ApplyPlan(
+        name=recipe.name,
+        made_with=recipe.parascape_version or "unknown",
+        running=running if running is not None else parascape_version(),
+        settings=keep,
+        missing=missing)
 
 
-def build_model(nodes: pd.DataFrame, recipe: Recipe, closure: Closure, log=print) -> RecipeResult:
-    """Answer a question with a classifier instead of a clustering, scored out of fold.
+@dataclass(frozen=True)
+class ApplyReport:
+    """What applying a recipe did.
 
-    The partition here is the out-of-fold predicted class, so `score_recovery` reports genuine
-    cross-validated performance rather than memorisation, and `infer` names the unlabelled genes in
-    predicted classes that are concentrated enough to support a claim. Everything downstream --
-    including whether the independent control corroborates the answer -- is the code the clustering
-    path uses, unchanged.
-    """
-    from . import methods
-    from .embedding import build_matrix
-    spec = EmbeddingSpec(blocks=closure.blocks, random_state=recipe.seed, **recipe.spec)
-    if recipe.method == "boosted":
-        # Raw, with the gaps intact. Every missing-value policy resolves absence before the model
-        # sees it, and this method's entire argument is that it should not be resolved: a tree learns
-        # a split for the missing branch, so "not measured" becomes evidence.
-        X, names = methods.raw_matrix(nodes, closure.columns)
-        kept = None
-    else:
-        X, names, kept = build_matrix(nodes, spec, log=lambda *a: None)
-    sub = nodes.loc[kept] if kept is not None else nodes
-    truth = label_series(sub, closure.holdout_column, recipe.holdout_bins)
-
-    if recipe.method == "multiplex":
-        n_graph = methods.graph_size()
-        if n_graph is not None and len(nodes) != n_graph:
-            return RecipeResult(recipe=recipe, closure=closure, stopped_because=(
-                f"multiplex communities need the full node table the graph was built from: the "
-                f"graph has {n_graph:,} nodes and this table has {len(nodes):,}."))
-        if not closure.layers:
-            return RecipeResult(recipe=recipe, closure=closure, stopped_because=(
-                "leakage closure excluded every edge layer, so there is no graph left to cluster"))
-        fit = methods.multiplex_communities(closure.layers, len(nodes), seed=recipe.seed)
-        sub, truth = nodes, label_series(nodes, closure.holdout_column, recipe.holdout_bins)
-    elif recipe.method.startswith("propagation"):
-        _, _, layer = recipe.method.partition(":")
-        if not layer:
-            # A result rather than an exception, like every other refusal here: "this cannot be
-            # asked that way" is a finding about the recipe, and a caller that must catch an
-            # exception to learn it will eventually report it as a crash.
-            return RecipeResult(recipe=recipe, closure=closure, stopped_because=(
-                "name the layer to propagate over, as propagation:<layer>. The layers mean different "
-                "things and two of them are attention-biased, so there is no sensible merged "
-                "default. Available here: " + ", ".join(closure.layers)))
-        if layer in closure.excluded_layers:
-            # The edge guard, enforced where it matters rather than only reported. Diffusing a label
-            # across the layer built out of that label recovers it perfectly and means nothing.
-            return RecipeResult(recipe=recipe, closure=closure, stopped_because=(
-                f"the {layer!r} layer is excluded for this holdout: "
-                f"{closure.excluded_layers[layer]}"))
-        if layer not in closure.layers:
-            return RecipeResult(recipe=recipe, closure=closure, stopped_because=(
-                f"no layer named {layer!r}; this catalogue has "
-                + ", ".join(closure.layers)))
-        # The graph's node ids are POSITIONS IN THE FULL NODE TABLE, so a walk over any other table
-        # maps every edge to the wrong gene -- and silently, since the indices remain in range for a
-        # large enough subset. Refused rather than guessed: there is no correct answer from a sample.
-        n_graph = methods.graph_size()
-        if n_graph is not None and len(nodes) != n_graph:
-            return RecipeResult(recipe=recipe, closure=closure, stopped_because=(
-                f"propagation needs the full node table the graph was built from: the graph has "
-                f"{n_graph:,} nodes and this table has {len(nodes):,}. Edge ids are positions in "
-                f"that table, so a subset would walk between the wrong genes."))
-        positions = np.arange(len(nodes))[kept] if kept is not None else np.arange(len(nodes))
-        fit = methods.propagation(layer, positions, truth, len(nodes), seed=recipe.seed)
-    elif recipe.method == "boosted":
-        fit = methods.boosted(np.asarray(X), truth, seed=recipe.seed)
-    else:
-        fit = methods.logistic(np.asarray(X), truth, seed=recipe.seed)
-    labels = np.asarray(fit["partition"])
-    genes = np.zeros(len(nodes), dtype=bool)
-    genes[np.arange(len(nodes))[kept] if kept is not None else np.arange(len(nodes))] = True
-    result = RecipeResult(recipe=recipe, closure=closure, settings=fit["settings"],
-                          genes=genes, labels=labels, truth=truth,
-                          quality=map_quality(labels))
-    result.coefficients = (
-        methods.importances(fit["model"], list(names), np.asarray(X), truth, recipe.seed)
-        if recipe.method == "boosted"
-        else methods.coefficients(fit["model"], fit["classes"], list(names)))
-    # An unsupervised method has no classes to learn: its partition IS the grouping, exactly as the
-    # clustering path's is, so the "nothing to train on" check does not apply to it.
-    if not fit.get("unsupervised") and not len(fit["classes"]):
-        result.stopped_because = ("too few labelled genes to train and score a classifier on this "
-                                  "holdout")
-        return result
-
-    if fit.get("unsupervised"):
-        result.summary, result.recovery = score_recovery(labels, truth, min_label=MIN_LABEL)
-        result.inference = infer(labels, truth, np.asarray(sub["gene_id"]),
-                                 min_enrichment=recipe.min_enrichment,
-                                 min_precision=recipe.min_precision)
-    else:
-        result.summary, result.recovery = methods.classification_recovery(labels, truth, fit["classes"])
-        result.inference = methods.classification_candidates(
-            labels, truth, np.asarray(sub["gene_id"]), fit["classes"], result.recovery,
-            min_precision=recipe.min_precision, min_enrichment=recipe.min_enrichment)
-    result.per_cluster = recovery_by_cluster(labels, truth)
-    if len(result.inference) and len(fit["classes"]):
-        # The partition's ids are class codes, so the class each one MEANS goes on the row. A table
-        # saying "group 3" where the model said "dense granules" would be unreadable. An unsupervised
-        # partition has no such mapping: its groups are groups, and `predicted` already names the
-        # label they turned out to carry.
-        result.inference["predicted_class"] = [fit["classes"][int(c)] if int(c) >= 0 else ""
-                                               for c in result.inference.cluster]
-    if closure.control_column:
-        control_truth = label_series(sub, closure.control_column, recipe.control_bins)
-        result.control_truth = control_truth
-        result.control = dominant_by_cluster(labels, control_truth).rename(
-            columns={"label": "control_label", "n_labelled": "n_control_labelled"})
-        result.control_summary, _p = score_recovery(labels, control_truth, min_label=MIN_LABEL)
-        if len(result.inference):
-            cols = ["cluster", "control_label", "n_control_labelled", "enrichment", "agrees", "why"]
-            result.inference = result.inference.merge(
-                result.control[cols].rename(columns={"agrees": "control_agrees",
-                                                     "why": "control_says",
-                                                     "enrichment": "control_enrichment"}),
-                on="cluster", how="left")
-    log(f"{recipe.method}: {len(fit['classes'])} classes, "
-        f"mean F1 {result.summary.get('mean_f1', float('nan')):.3f}, "
-        f"{len(result.inference)} gene(s) named")
-    return result
-
-
-def run(nodes: pd.DataFrame, recipe: Recipe, tune: bool = True, sample: int = 1500,
-        alternatives: int = 0, log=print) -> RecipeResult:
-    """Answer one question: close leakage, tune a map, cluster it, score it, and name genes.
-
-    The order matters and it is the argument of the whole module. Closure runs FIRST and reports
-    before anything is built, so a refusal costs no compute and is legible. Tuning runs on what
-    survived. The clustering is checked for degeneracy before it is scored, because a recovery number
-    computed on a bisection reads exactly like a real one. Only then is the primary holdout scored,
-    the unlabelled genes in concentrated clusters named, and the control put on the SAME clusters
-    beside them.
-
-    `alternatives` keeps the next best UMAP settings, each built and scored in full, for the report:
-    a document that shows only the winner hides what the choice was between. They cost a full build
-    each, so the default is none.
-    """
-    closure = close(nodes, recipe)
-    log(closure.report())
-    if not closure.ok:
-        return RecipeResult(recipe=recipe, closure=closure, stopped_because=closure.refusal)
-    if recipe.method != "umap+hdbscan":
-        return build_model(nodes, recipe, closure, log=log)
-
-    choices = [{}]
-    if tune:
-        spec = EmbeddingSpec(blocks=closure.blocks, random_state=recipe.seed, **recipe.spec)
-        walk = tune_umap(nodes, spec, sample=sample, seed=recipe.seed, log=lambda *a: None)
-        usable = walk[walk["usable"]] if len(walk) else walk
-        if not len(usable):
-            return RecipeResult(recipe=recipe, closure=closure,
-                                stopped_because="no UMAP setting gave a map worth clustering")
-        ranked = usable.sort_values(["stage", "score"], ascending=[False, False])
-        # Distinct settings only: the walk scores each configuration on a sample and again in full,
-        # so the same n_neighbors/min_dist pair appears twice and would otherwise be "the
-        # alternative" to itself.
-        seen, choices = set(), []
-        for _, row in ranked.iterrows():
-            key = (int(row["n_neighbors"]), float(row["min_dist"]))
-            if key in seen:
-                continue
-            seen.add(key)
-            choices.append({"n_neighbors": key[0], "min_dist": key[1]})
-            if len(choices) > alternatives:
-                break
-
-    result = build_map(nodes, recipe, closure, choices[0], log=log)
-    for other in choices[1:]:
-        log(f"building alternative map {other}")
-        result.alternatives.append(build_map(nodes, recipe, closure, other, log=lambda *a: None))
-    return result
-
-
-# --------------------------------------------------------------------------- keeping them
-class RecipeStore:
-    """Recipes on disk, so a question asked once can be asked again after the window closes.
-
-    One JSON file per recipe, named from the question rather than a counter: the file list is then
-    the question list, and two runs of the same question overwrite rather than accumulate.
+    :param plan: the plan that was carried out.
+    :param applied: how many settings the module reported as written.
     """
 
-    def __init__(self, root: str | None = None):
-        self.root = root
-        self.recipes: list = []
-        if root:
-            os.makedirs(root, exist_ok=True)
-
-    @staticmethod
-    def filename(recipe: Recipe) -> str:
-        """A filesystem-safe name from the question itself."""
-        safe = "".join(c if c.isalnum() or c in " -_" else " " for c in recipe.question)
-        return "_".join(safe.split())[:120].lower() + ".json"
-
-    def add(self, recipe: Recipe) -> Recipe:
-        """Keep a recipe, replacing any earlier one asking the same question."""
-        self.recipes = [r for r in self.recipes if r.question != recipe.question] + [recipe]
-        if self.root:
-            with open(os.path.join(self.root, self.filename(recipe)), "w") as fh:
-                json.dump(recipe.to_dict(), fh, indent=2)
-        return recipe
-
-    def get(self, question: str) -> Recipe | None:
-        """The recipe asking this question, or None."""
-        return next((r for r in self.recipes if r.question == question), None)
-
-    def remove(self, question: str) -> bool:
-        """Forget a question and delete its file. False if it was not kept here."""
-        recipe = self.get(question)
-        if recipe is None:
-            return False
-        self.recipes = [r for r in self.recipes if r.question != question]
-        path = os.path.join(self.root, self.filename(recipe)) if self.root else None
-        if path and os.path.exists(path):
-            os.remove(path)
-        return True
-
-    def load_all(self) -> list:
-        """Every saved recipe, newest last. A file that is not a recipe is skipped, not fatal."""
-        if not self.root or not os.path.isdir(self.root):
-            return self.recipes
-        for name in sorted(os.listdir(self.root)):
-            if not name.endswith(".json"):
-                continue
-            try:
-                with open(os.path.join(self.root, name)) as fh:
-                    recipe = Recipe.from_dict(json.load(fh))
-            except (ValueError, TypeError, KeyError):
-                continue
-            if not any(r.question == recipe.question for r in self.recipes):
-                self.recipes.append(recipe)
-        return self.recipes
+    plan: ApplyPlan
+    applied: int
 
 
-# --------------------------------------------------------------------------- relevance (43)
-#: Genes named from one cluster beyond which more is not better. A claim about forty genes is a
-#: result; a claim about four hundred is usually a cluster that swallowed a compartment.
-GOOD_REACH = 40
+def apply_recipe(recipe: Recipe, module: str, known_keys: Iterable[str],
+                 write: Callable[[Dict[str, Any]], int],
+                 running: Optional[str] = None) -> ApplyReport:
+    """Apply a recipe to a module through the function the module gives for writing settings.
 
-#: Enrichment at which strength saturates. Ten-fold concentration is already a strong claim, and
-#: letting a 300-fold rare-label cluster dominate the ranking would rank by rarity rather than by
-#: interest.
-STRONG_ENRICHMENT = 10.0
+    Planning and writing are one call so that no caller can write the settings and skip the
+    module check. The module is passed in as a key and a writer rather than as a window, which
+    keeps this function free of Qt.
 
-
-def relevance(inference: pd.DataFrame, nodes: pd.DataFrame) -> pd.DataFrame:
-    """Rank named genes by how much they are worth following up. A HEURISTIC, and it says so.
-
-    Instruction 43 asked for a biological-relevance score and warned that it must never override the
-    raw numbers it summarises, so the four terms are added as COLUMNS and the ranking is one more
-    column beside them. A reader who disagrees with the weighting -- and anyone who cares about one
-    gene family will -- re-sorts on the term they care about instead of arguing with a number they
-    cannot see inside. That is the same contract `interpret.interest` already makes for discovery
-    findings, and `novelty` is imported from there rather than reimplemented.
-
-    The four terms:
-
-    * **strength** -- how concentrated the label is in the cluster, saturating at ten-fold, because
-      beyond that the ranking would be sorting by how rare the label is;
-    * **reach** -- how many genes the cluster names, saturating at forty, because a cluster naming
-      four hundred has usually swallowed a compartment rather than found one;
-    * **novelty** -- how unstudied those genes are. A gene can be unlocalised and still be one of the
-      twenty everybody works on, and predicting its compartment is a smaller contribution than
-      predicting one for a gene with no literature at all;
-    * **corroborated** -- whether the INDEPENDENT control agrees. This is the term with the most
-      claim to be there, and it is the one no other ranking in this project has: it is the difference
-      between "the map found structure" and "the map found the structure I asked about".
+    :param recipe: the recipe to apply.
+    :param module: key of the module it is applied to.
+    :param known_keys: the names of every setting the module has now.
+    :param write: called once with the settings to write; returns how many it wrote.
+    :param running: override the running version (tests).
+    :raises WrongModuleError: when the recipe belongs to a different module; nothing is written.
     """
-    from .interpret import novelty
-    if inference is None or not len(inference):
-        return pd.DataFrame()
-    out = inference.copy()
-    enrichment = pd.to_numeric(out.get("enrichment", 1.0), errors="coerce").fillna(1.0)
-    out["strength"] = np.clip(np.log1p(enrichment) / np.log1p(STRONG_ENRICHMENT), 0.0, 1.0)
-    per_cluster = out.groupby("cluster")["gene_id"].transform("size")
-    out["reach"] = np.clip(np.log1p(per_cluster) / np.log1p(GOOD_REACH), 0.0, 1.0)
-    out["novelty"] = [novelty(nodes, [g]) for g in out["gene_id"]]
-    agrees = out.get("control_agrees", pd.Series(False, index=out.index)).fillna(False).astype(bool)
-    # A halving rather than a zeroing: an uncorroborated claim is weaker, not void, and several
-    # questions here have controls too sparse to corroborate anything at all -- scoring those to zero
-    # would rank a question's answers by whether its control happened to be dense.
-    out["corroborated"] = agrees
-    out["relevance"] = out.strength * out.reach * out.novelty * np.where(agrees, 1.0, 0.5)
-    return out.sort_values(["relevance", "strength"], ascending=False).reset_index(drop=True)
+    plan = plan_apply(recipe, module, known_keys, running=running)
+    applied = int(write(dict(plan.settings)) or 0)
+    return ApplyReport(plan=plan, applied=applied)
+
+
+# --------------------------------------------------------------------------- names that moved
+#: What this module used to export, before it held settings recipes. Each name maps to where the same
+#: thing is now. ``Recipe`` is missing on purpose: it still exists here with a different meaning, so
+#: it cannot be redirected, and a call written for the old one fails on its own arguments.
+_MOVED = {
+    "RecipeResult": "TemplateResult", "RecipeStore": "TemplateStore",
+    **{name: name for name in (
+        "Closure", "CONTROL_ENRICHMENT", "GOOD_REACH", "IMPORT_GROUPS", "MIN_LABEL",
+        "STRONG_ENRICHMENT", "address_blocks", "address_label", "build_map", "build_model", "close",
+        "dominant_by_cluster", "infer", "input_categories", "label_series", "recovery_by_cluster",
+        "register_import", "relevance", "run", "same_category", "same_import")},
+}
+
+
+def __getattr__(name: str):
+    """Say where a name that used to live here has gone, instead of reporting it as unknown.
+
+    Code written before 2026-11-12 imports ``run`` or ``close`` from here. It must fail, because
+    the settings recipes have no such thing, and the failure should say what to import instead.
+    """
+    if name in _MOVED:
+        raise ImportError(
+            f"parascape.recipes.{name} moved: the recipes of a biological question are now question "
+            f"templates, so use parascape.question_templates.{_MOVED[name]}. A recipe in "
+            f"parascape.recipes is a bundle of module settings.")
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

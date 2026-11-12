@@ -511,6 +511,33 @@ def test_the_infer_module_holds_the_question_controls_moved_not_copied(window):
     assert {"Answer this question", "Check what it may use"} <= set(shell.actions)
 
 
+def test_the_infer_module_offers_question_templates_and_never_calls_one_a_recipe(window):
+    """A recipe is a bundle of settings (as in spaCR). The Infer module must still offer its ways of
+    asking a question, under the new word, and no text a person can read there may use the old one --
+    not a label, not a tooltip, not the choices in a list."""
+    from parascape.landing_install import open_module
+    shell = window.infer_module
+    open_module(window, "infer")
+    panel = window.panel
+    assert panel.question_choice.count() > 0, "the Infer module offers no questions at all"
+    panel.question_choice.setCurrentIndex(0)
+    seen = []
+    for widget in [shell] + shell.findChildren(QtWidgets.QWidget):
+        seen.append(widget.toolTip())
+        for getter in ("text", "toPlainText", "title", "placeholderText"):
+            if hasattr(widget, getter):
+                try:
+                    seen.append(str(getattr(widget, getter)()))
+                except TypeError:
+                    pass
+        if isinstance(widget, QtWidgets.QComboBox):
+            seen += [widget.itemText(i) for i in range(widget.count())]
+    seen += list(shell.sections) + list(shell.actions)
+    readable = "\n".join(t for t in seen if t)
+    assert "recipe" not in readable.lower(), "the Infer module still says recipe"
+    assert "question template" in readable.lower(), "the Infer module does not say what a question is"
+
+
 def test_the_infer_module_copies_a_methods_text_cited_from_the_registry(window, qtbot):
     """The methods text cites the sources of the columns the question may use, via the clipboard."""
     from PySide6 import QtWidgets
@@ -533,10 +560,10 @@ def test_the_infer_module_saves_an_answer_as_a_bundle(window, tmp_path):
     from types import SimpleNamespace
     from parascape import export_bundle
     ids = window.nodes.gene_id.astype(str).tolist()
-    recipe = SimpleNamespace(question="q?", holdout="compartment_best", validation_holdout="ec_number",
+    template = SimpleNamespace(question="q?", holdout="compartment_best", validation_holdout="ec_number",
                              min_precision=0.3)
     window.panel._question_result = SimpleNamespace(
-        recipe=recipe, inference=pd.DataFrame({"gene_id": ids[:2], "label": ["a", "b"]}),
+        template=template, inference=pd.DataFrame({"gene_id": ids[:2], "label": ["a", "b"]}),
         per_cluster=pd.DataFrame(), recovery=pd.DataFrame({"label": ["a"], "recall": [0.5]}),
         closure=SimpleNamespace(columns=tuple(window.nodes.columns[:5])))
     folder = window.infer_module.module.save_bundle(str(tmp_path))
@@ -580,9 +607,9 @@ def test_map_gene_and_network_save_a_bundle_a_reload_verifies(window, tmp_path, 
 
 def test_the_infer_data_step_holds_out_the_labels_kind_and_lets_you_leave_out_others(window):
     """Instruction 74: the label's own kind of evidence is shown held out; unticking another kind
-    reaches the recipe, and closure removes those columns with the reason."""
+    reaches the question template, and closure removes those columns with the reason."""
     from dataclasses import replace
-    from parascape.recipes import close
+    from parascape.question_templates import close
     module = window.infer_module.module
     module.refresh_uses()
     boxes = module.uses_boxes
@@ -591,9 +618,9 @@ def test_the_infer_data_step_holds_out_the_labels_kind_and_lets_you_leave_out_ot
     assert free
     boxes[free[0]].setChecked(False)
     assert window.panel.question_leave_out == (free[0],)
-    recipe = window.panel._question_recipe(window.panel.current_question())
-    assert recipe.leave_out_categories == (free[0],)
-    closure = close(window.nodes, recipe)
+    template = window.panel._question_template(window.panel.current_question())
+    assert template.leave_out_categories == (free[0],)
+    closure = close(window.nodes, template)
     assert any("left out by you" in why for why in closure.excluded.values())
     module.refresh_uses()
     assert window.panel.question_leave_out == ()

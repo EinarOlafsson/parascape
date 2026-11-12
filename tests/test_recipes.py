@@ -1,787 +1,598 @@
-#!/usr/bin/env python3
-"""Recipes: a question, its inputs, its holdout, and the control that says whether to believe it.
+"""Recipes of module settings (instruction 98, work package 6).
 
-These tests are written as ATTACKS wherever a guard exists. A recipe is a hand-picked set of inputs,
-which is precisely the situation the level sweep protected us from automatically, so the interesting
-question is never "does it run" -- it is "can I get it to answer a question with the answer".
+A recipe is a named bundle of the settings of one module, kept as one file, that knows its module
+and the version of ParaScape it was saved with. These tests mirror what spaCR guarantees for its
+own recipes: a round trip, a refusal across modules, a version gap that names the settings that
+have gone, a damaged file that is reported rather than ignored, an overridable folder, and a name
+with awkward characters that gets a safe file without taking another recipe file.
+
+They are not about :mod:`parascape.question_templates`, which holds the way of asking a biological
+question in the Infer module. That was called a recipe until 2026-11-12; the last tests of this file
+check that the old names say where they went.
 """
 import json
 import os
 
-import numpy as np
-import pandas as pd
 import pytest
 
 from parascape import recipes as R
 
 
-# --------------------------------------------------------------------------- fixtures
-@pytest.fixture(scope="module")
-def nodes():
-    """A real slice of the shipped table. Real, because a recipe addresses the real hierarchy."""
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(root, "parascape", "data", "nodes.parquet")
-    if not os.path.exists(path):
-        pytest.skip("built node table not present")
-    return pd.read_parquet(path).sample(n=400, random_state=0).reset_index(drop=True)
+@pytest.fixture
+def folder(tmp_path, monkeypatch):
+    """Keep every recipe in a scratch folder so no test touches the home folder of the user."""
+    root = tmp_path / "recipes"
+    monkeypatch.setenv(R.RECIPE_DIR_ENV, str(root))
+    return root
+
+
+def make(name="Tight map", module="map", **settings):
+    """A recipe with a few settings, captured the way a module captures its own."""
+    return R.capture_recipe(module, name, settings or {"n_neighbors": 15, "min_dist": 0.05})
+
+
+# ------------------------------------------------------------------ round trip and format
+def test_a_recipe_survives_a_save_and_a_load(folder):
+    recipe = R.capture_recipe("map", "Tight map", {"n_neighbors": 15, "min_dist": 0.05,
+                                                  "measurements": ["a", "b"], "live": True},
+                              notes="for the screen")
+    path = R.save_recipe(recipe)
+    assert path == str(folder / "map" / "tight-map.json")
+    loaded = R.load_recipe(path)
+    assert loaded.name == "Tight map" and loaded.module == "map"
+    assert loaded.settings == recipe.settings
+    assert loaded.notes == "for the screen"
+    assert loaded.parascape_version == R.parascape_version()
+    assert loaded.created and loaded.path == path
+    assert [r.name for r in R.list_recipes("map")] == ["Tight map"]
+
+
+def test_the_file_is_one_json_with_the_documented_keys(folder):
+    path = R.save_recipe(make())
+    with open(path, encoding="utf-8") as handle:
+        data = json.load(handle)
+    assert set(data) == {"parascape_recipe", "name", "module", "parascape_version", "created",
+                         "notes", "settings"}
+    assert data["parascape_recipe"] == R.FORMAT_VERSION == 1
+    assert data["module"] == "map" and data["parascape_version"] == R.parascape_version()
+    assert data["settings"] == {"n_neighbors": 15, "min_dist": 0.05}
+    assert not any(f.startswith(".recipe-") for f in os.listdir(folder / "map")), "temp file left"
+
+
+def test_the_format_version_is_not_the_application_version(folder):
+    """A file written by any application version is read when its format is one this reads."""
+    path = R.save_recipe(make())
+    data = json.load(open(path))
+    data["parascape_version"] = "9.9.9"
+    json.dump(data, open(path, "w"))
+    assert R.load_recipe(path).parascape_version == "9.9.9"
+
+
+def test_numpy_values_and_sets_are_kept_as_plain_data(folder):
+    np = pytest.importorskip("numpy")
+    recipe = R.capture_recipe("map", "np", {"a": np.float64(0.5), "b": np.int64(3), "c": {"x", "y"}})
+    loaded = R.load_recipe(R.save_recipe(recipe))
+    assert loaded.settings == {"a": 0.5, "b": 3, "c": ["x", "y"]}
+
+
+# ------------------------------------------------------------------ the refusals
+def test_a_recipe_from_another_module_is_refused_and_nothing_is_written(folder):
+    recipe = make(module="map")
+    written = []
+    with pytest.raises(R.WrongModuleError) as error:
+        R.apply_recipe(recipe, "network", {"n_neighbors", "min_dist"},
+                       lambda values: written.append(values) or len(values))
+    assert "'map'" in str(error.value) and "'network'" in str(error.value)
+    assert written == [], "a refused recipe must not be partly applied"
+    with pytest.raises(R.WrongModuleError):
+        R.plan_apply(recipe, "network", {"n_neighbors"})
+
+
+def test_importing_a_recipe_made_in_another_module_is_refused(folder, tmp_path):
+    shared = tmp_path / "from_a_colleague.json"
+    R.export_recipe(make(module="map"), str(shared))
+    with pytest.raises(R.WrongModuleError):
+        R.import_recipe(str(shared), "network")
+    assert R.list_recipes("network") == []
+
+
+def test_a_version_gap_names_the_settings_the_module_no_longer_has(folder):
+    recipe = R.capture_recipe(
+        "map", "old", {"n_neighbors": 15, "min_dist": 0.05, "retired_b": 1, "retired_a": 2})
+    recipe.parascape_version = "0.0.9.0"
+    plan = R.plan_apply(recipe, "map", {"n_neighbors", "min_dist", "seed"}, running="0.0.11.0")
+    assert plan.version_differs and plan.needs_confirmation
+    assert plan.missing == ("retired_a", "retired_b")
+    assert plan.settings == {"n_neighbors": 15, "min_dist": 0.05}
+    note = plan.note()
+    assert "0.0.9.0" in note and "0.0.11.0" in note
+    assert "retired_a" in note and "retired_b" in note, "the settings are named, not counted"
+    seen = []
+    report = R.apply_recipe(recipe, "map", {"n_neighbors", "min_dist", "seed"},
+                            lambda values: seen.append(values) or len(values), running="0.0.11.0")
+    assert seen == [{"n_neighbors": 15, "min_dist": 0.05}], "the missing settings are not written"
+    assert report.applied == 2
+
+
+def test_a_missing_setting_is_reported_even_when_the_version_is_the_same(folder):
+    recipe = R.capture_recipe("map", "r", {"n_neighbors": 15, "gone": 1})
+    recipe.parascape_version = "1.0"
+    plan = R.plan_apply(recipe, "map", {"n_neighbors"}, running="1.0")
+    assert not plan.version_differs and plan.missing == ("gone",) and plan.needs_confirmation
+
+
+def test_a_matching_recipe_needs_no_question(folder):
+    recipe = R.capture_recipe("map", "r", {"n_neighbors": 15})
+    recipe.parascape_version = "1.0"
+    plan = R.plan_apply(recipe, "map", {"n_neighbors", "seed"}, running="1.0")
+    assert not plan.needs_confirmation and plan.note() == ""
+
+
+def test_a_damaged_file_is_reported_not_ignored(folder):
+    R.save_recipe(make("Good"))
+    mod = folder / "map"
+    (mod / "broken.json").write_text("{not json at all", encoding="utf-8")
+    (mod / "package.json").write_text(json.dumps({"name": "x", "version": "1"}), encoding="utf-8")
+    (mod / "newer.json").write_text(json.dumps(
+        {"parascape_recipe": 2, "module": "map", "settings": {}}), encoding="utf-8")
+    (mod / "no_module.json").write_text(json.dumps(
+        {"parascape_recipe": 1, "settings": {}}), encoding="utf-8")
+    (mod / "no_settings.json").write_text(json.dumps(
+        {"parascape_recipe": 1, "module": "map"}), encoding="utf-8")
+    (mod / "binary.json").write_bytes(b"\xff\xfe\x00\x80")
+    other = make("Misfiled", module="network")
+    other.path = ""
+    R.save_recipe(other, directory=str(mod))
+    listing = R.scan_recipes("map")
+    assert [r.name for r in listing.recipes] == ["Good"], "good recipes are still listed"
+    reasons = {os.path.basename(p): why for p, why in listing.problems}
+    assert set(reasons) == {"broken.json", "package.json", "newer.json", "no_module.json",
+                            "no_settings.json", "binary.json", "misfiled.json"}
+    assert "not valid JSON" in reasons["broken.json"]
+    assert "not a ParaScape recipe" in reasons["package.json"]
+    assert "newer" in reasons["newer.json"] and "2" in reasons["newer.json"]
+    assert "module" in reasons["no_module.json"]
+    assert "settings" in reasons["no_settings.json"]
+    assert "'network'" in reasons["misfiled.json"]
+    for why in reasons.values():
+        assert why, "every problem says why"
+    with pytest.raises(R.NotARecipeError) as error:
+        R.load_recipe(str(mod / "broken.json"))
+    assert "broken.json" in str(error.value)
+    with pytest.raises(R.NotARecipeError):
+        R.load_recipe(str(mod / "missing.json"))
+
+
+def test_saving_never_overwrites_a_damaged_file(folder):
+    mod = folder / "map"
+    mod.mkdir(parents=True)
+    (mod / "tight-map.json").write_text("garbage", encoding="utf-8")
+    path = R.save_recipe(make("Tight map"))
+    assert os.path.basename(path) == "tight-map-2.json"
+    assert (mod / "tight-map.json").read_text(encoding="utf-8") == "garbage"
+
+
+# ------------------------------------------------------------------ storage
+def test_the_folder_override_is_honoured(tmp_path, monkeypatch):
+    elsewhere = tmp_path / "shared" / "lab"
+    monkeypatch.setenv(R.RECIPE_DIR_ENV, str(elsewhere))
+    path = R.save_recipe(make())
+    assert path.startswith(str(elsewhere / "map"))
+    assert R.recipes_dir() == str(elsewhere)
+    assert R.recipes_dir("map") == str(elsewhere / "map")
+
+
+def test_without_an_override_the_folder_is_under_the_home_folder(tmp_path, monkeypatch):
+    monkeypatch.delenv(R.RECIPE_DIR_ENV, raising=False)
+    monkeypatch.setenv("HOME", str(tmp_path))
+    monkeypatch.setenv("USERPROFILE", str(tmp_path))
+    assert R.recipes_dir("map", create=False) == str(tmp_path / ".parascape" / "recipes" / "map")
+
+
+def test_looking_creates_no_folder(folder):
+    assert R.scan_recipes("map").recipes == []
+    assert R.find_recipe("map", "nothing") is None
+    assert not folder.exists()
+
+
+def test_each_module_has_its_own_folder_and_list(folder):
+    R.save_recipe(make("A", module="map"))
+    R.save_recipe(make("B", module="network"))
+    assert [r.name for r in R.list_recipes("map")] == ["A"]
+    assert [r.name for r in R.list_recipes("network")] == ["B"]
+    assert (folder / "map").is_dir() and (folder / "network").is_dir()
+
+
+# ------------------------------------------------------------------ names and file names
+def test_awkward_names_give_safe_file_names_that_stay_inside_the_folder(folder):
+    names = ["../../etc/passwd", "a/b\\c:d*e?f", "Café ☕ crème", "日本語", "???", "CON",
+             "x" * 500, ".hidden", "tab\tname\nnewline"]
+    for name in names:
+        path = R.save_recipe(R.capture_recipe("map", name, {"k": 1}))
+        assert os.path.dirname(path) == str(folder / "map"), name
+        stem = os.path.basename(path)[:-5]
+        assert stem and all(c.isalnum() or c == "-" for c in stem), (name, stem)
+        assert len(stem) <= 70
+        assert R.load_recipe(path).name == name.strip(), "the display name is kept verbatim"
+    assert R.slug("Café ☕ crème") == "cafe-creme"
+    assert R.slug("CON") == "con-recipe"
+    assert R.slug("日本語").startswith("recipe-") and R.slug("日本語") != R.slug("???")
+    assert not (folder / "etc").exists() and not (folder.parent / "etc").exists()
+
+
+def test_names_that_slug_alike_do_not_collide(folder):
+    first = R.save_recipe(R.capture_recipe("map", "Tight map", {"k": 1}))
+    second = R.save_recipe(R.capture_recipe("map", "tight-map", {"k": 2}))
+    third = R.save_recipe(R.capture_recipe("map", "Tight  Map!", {"k": 3}))
+    assert len({first, second, third}) == 3
+    by_name = {r.name: r.settings["k"] for r in R.list_recipes("map")}
+    assert by_name == {"Tight map": 1, "tight-map": 2, "Tight  Map!": 3}, "nothing was overwritten"
+
+
+def test_two_names_with_no_plain_letters_do_not_collide(folder):
+    a = R.save_recipe(R.capture_recipe("map", "日本語", {"k": 1}))
+    b = R.save_recipe(R.capture_recipe("map", "中文", {"k": 2}))
+    assert a != b and len(R.list_recipes("map")) == 2
+
+
+def test_saving_the_same_name_again_replaces_it(folder):
+    R.save_recipe(R.capture_recipe("map", "Tight map", {"k": 1}))
+    R.save_recipe(R.capture_recipe("map", "tight MAP ", {"k": 2}))
+    listing = R.list_recipes("map")
+    assert len(listing) == 1 and listing[0].settings == {"k": 2}
+
+
+def test_a_recipe_needs_a_name_and_a_module(folder):
+    with pytest.raises(R.RecipeError):
+        R.capture_recipe("map", "   ", {})
+    with pytest.raises(R.RecipeError):
+        R.capture_recipe("", "x", {})
+
+
+# ------------------------------------------------------------------ rename, delete, share
+def test_rename_moves_the_file_and_refuses_a_taken_name(folder):
+    a = make("A")
+    R.save_recipe(a)
+    b = make("B")
+    R.save_recipe(b)
+    with pytest.raises(R.RecipeExistsError):
+        R.rename_recipe(b, "a")
+    assert b.name == "B" and os.path.isfile(b.path), "a refused rename changes nothing"
+    old = a.path
+    new = R.rename_recipe(a, "Wider map")
+    assert os.path.basename(new) == "wider-map.json" and not os.path.exists(old)
+    assert sorted(r.name for r in R.list_recipes("map")) == ["B", "Wider map"]
+    with pytest.raises(R.RecipeError):
+        R.rename_recipe(a, "  ")
+
+
+def test_rename_changing_only_the_case_keeps_one_file(folder):
+    recipe = make("tight map")
+    R.save_recipe(recipe)
+    R.rename_recipe(recipe, "Tight Map")
+    assert [r.name for r in R.list_recipes("map")] == ["Tight Map"]
+    assert len(os.listdir(folder / "map")) == 1
+
+
+def test_delete_removes_the_file(folder):
+    recipe = make()
+    R.save_recipe(recipe)
+    assert R.delete_recipe(recipe) is True
+    assert R.list_recipes("map") == [] and R.delete_recipe(recipe) is False
+
+
+def test_sharing_is_one_file_that_another_person_can_import(folder, tmp_path, monkeypatch):
+    recipe = R.capture_recipe("map", "Tight map", {"n_neighbors": 15}, notes="n")
+    sent = tmp_path / "outbox" / "tight.json"
+    R.export_recipe(recipe, str(sent))
+    monkeypatch.setenv(R.RECIPE_DIR_ENV, str(tmp_path / "their_folder"))
+    got = R.import_recipe(str(sent), "map")
+    assert got.name == "Tight map" and got.settings == {"n_neighbors": 15} and got.notes == "n"
+    assert [r.name for r in R.list_recipes("map")] == ["Tight map"]
+    with pytest.raises(R.RecipeExistsError):
+        R.import_recipe(str(sent), "map")
+    again = R.import_recipe(str(sent), "map", replace=True)
+    assert len(R.list_recipes("map")) == 1 and again.path
+
+
+def test_importing_a_damaged_file_says_why(folder, tmp_path):
+    bad = tmp_path / "bad.json"
+    bad.write_text("[1, 2", encoding="utf-8")
+    with pytest.raises(R.NotARecipeError) as error:
+        R.import_recipe(str(bad), "map")
+    assert "bad.json" in str(error.value) and "JSON" in str(error.value)
+
+
+# ------------------------------------------------------------------ the panel
+from PySide6 import QtCore, QtWidgets  # noqa: E402
 
 
 @pytest.fixture(scope="module")
-def full_nodes():
-    """The WHOLE table. The graph's edge endpoints are positions in it, so anything that walks the
-    graph has to be given it entire; every other test here uses the 400-row sample for speed."""
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(root, "parascape", "data", "nodes.parquet")
-    if not os.path.exists(path):
-        pytest.skip("built node table not present")
-    return pd.read_parquet(path)
-
-
-RNA = ("biology", ("gene expression", "RNA abundance"))
-FITNESS = ("biology", ("parasite phenotype", "fitness and essentiality"))
-LOCALIZATION = ("biology", ("cell organization", "localization and topology"))
-
-
-# --------------------------------------------------------------------------- the object
-def test_an_address_survives_the_round_trip_through_json():
-    """JSON has no tuples. A recipe reloaded from disk must address the same branch it was saved
-    with, or a saved question quietly becomes a different question."""
-    r = R.Recipe(question="q", inputs=[RNA, "a_block"], holdout="compartment")
-    back = R.Recipe.from_dict(json.loads(json.dumps(r.to_dict())))
-    assert back.inputs == r.inputs == (RNA, "a_block")
-    assert back.to_dict() == r.to_dict()
-
-
-def test_a_one_part_path_may_be_written_as_a_bare_string():
-    assert R.Recipe(question="q", inputs=[("biology", "metabolism")]).inputs == \
-           (("biology", ("metabolism",)),)
-
-
-def test_an_unknown_field_in_a_saved_recipe_is_ignored_rather_than_fatal():
-    """A recipe saved by a later version must still load, or an upgrade destroys saved work."""
-    r = R.Recipe.from_dict({"question": "q", "inputs": [], "invented_later": 7})
-    assert r.question == "q" and not hasattr(r, "invented_later")
-
-
-def test_the_question_is_the_name():
-    assert R.Recipe(question="Where does GRA16 go?").name == "Where does GRA16 go?"
-
-
-def test_an_address_reads_as_one_line_and_resolves_to_slots():
-    assert R.address_label(RNA) == "biology: gene expression > RNA abundance"
-    assert R.address_label("a_block") == "a_block"
-    assert len(R.address_blocks(RNA)) > 1
-    assert R.address_blocks("a_block") == ("a_block",)
-
-
-# --------------------------------------------------------------------------- labels
-def test_a_quantity_is_unusable_as_a_holdout_until_it_is_binned():
-    """The failure this prevents is silent: scored raw, a continuous column produces one class per
-    gene, nothing clears the floor, and the recipe reports that nothing recovered -- for a question
-    the data could have answered."""
-    frame = pd.DataFrame({"x": np.linspace(0, 1, 200)})
-    assert R.label_series(frame, "x").nunique() == 200
-    binned = R.label_series(frame, "x", bins=4)
-    assert binned.nunique() == 4 and (binned.value_counts() >= 15).all()
-
-
-def test_unassigned_is_a_gene_waiting_to_be_named_not_a_class():
-    """hyperLOPIT writes `unassigned` where it could not place a protein. Left as a string it becomes
-    the commonest label in the table, clusters get "recovered" as unassigned, and the genes this
-    module exists to name are counted as already labelled and never predicted."""
-    frame = pd.DataFrame({"compartment": ["nucleus", "unassigned", "", None, "cytosol"]})
-    got = R.label_series(frame, "compartment")
-    assert list(got.notna()) == [True, False, False, False, True]
-
-
-def test_a_binned_quantitys_missing_values_do_not_become_a_bin():
-    frame = pd.DataFrame({"x": [1.0, 2.0, 3.0, 4.0, np.nan]})
-    assert R.label_series(frame, "x", bins=2).isna().sum() == 1
-
-
-# --------------------------------------------------------------------------- closure
-def test_a_recipe_that_predicts_a_label_from_itself_is_refused_not_trimmed(nodes):
-    """The sharpest attack on this module. Asked to predict compartment FROM localisation, a builder
-    that trimmed silently would return a smaller recipe answering a question nobody asked."""
-    c = R.close(nodes, R.Recipe(question="q", inputs=[LOCALIZATION], holdout="compartment"))
-    assert not c.ok
-    assert "restate a holdout" in c.refusal and "localization and topology" in c.refusal
-
-
-def test_class_scope_is_what_closes_the_sequence_predictors(nodes):
-    """Measured, not assumed, and it is why `scope` does not default to the sweep's `target_family`.
-
-    `target_family` closes the family estimating the same quantity and deliberately KEEPS sequence
-    predictors -- there is a test in test_search.py asserting exactly that. A localisation recipe
-    scoped that way accepts membrane topology as an input and recovers hyperLOPIT by predicting it
-    from signal peptide and TM count, which is the failure this module exists to prevent.
-    """
-    ask = dict(question="q", inputs=[LOCALIZATION], holdout="compartment")
-    assert R.close(nodes, R.Recipe(**ask, scope="target_family")).ok
-    assert not R.close(nodes, R.Recipe(**ask, scope="biology")).ok
-
-
-def test_a_control_that_is_a_copy_of_the_primary_is_refused(nodes):
-    """Six columns on this table are views of one hyperLOPIT experiment. Any pair of them would look
-    like a question with an independent control."""
-    c = R.close(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment",
-                                validation_holdout="lopit_map"))
-    assert not c.ok and "controls nothing" in c.refusal
-
-
-def test_a_holdout_that_is_not_a_column_is_refused_before_anything_is_built(nodes):
-    assert "not a column" in R.close(nodes, R.Recipe(
-        question="q", inputs=[RNA], holdout="no_such_column")).refusal
-    assert "not a column" in R.close(nodes, R.Recipe(
-        question="q", inputs=[RNA], holdout="")).refusal
-
-
-def test_a_control_that_is_not_a_column_is_refused(nodes):
-    c = R.close(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment",
-                                validation_holdout="no_such_column"))
-    assert not c.ok and "validation holdout" in c.refusal
-
-
-def test_a_recipe_with_no_inputs_is_refused(nodes):
-    assert "names no inputs" in R.close(
-        nodes, R.Recipe(question="q", inputs=[], holdout="compartment")).refusal
-
-
-def test_a_block_with_no_columns_here_is_reported_rather_than_silently_missing(nodes):
-    c = R.close(nodes, R.Recipe(question="q", inputs=[RNA, "not_a_real_block"],
-                                holdout="compartment"))
-    assert c.dropped_blocks["not_a_real_block"] == "no columns in this cache"
-
-
-def test_closure_says_which_mechanism_removed_each_column(nodes):
-    """"Excluded" is not a report. Which of the five mechanisms caught it is the fact a reader
-    checks, and it is what distinguishes a copy of the target from a same-experiment sibling."""
-    c = R.close(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                validation_holdout="cellcycle_phase"))
-    assert c.ok, c.refusal
-    assert any(w.startswith("primary:") for w in c.excluded.values())
-    assert any(w.startswith("control:") for w in c.excluded.values())
-    assert "excluded" in c.report() and str(len(c.blocks)) in c.report()
-
-
-def test_a_refused_closure_reports_the_refusal_and_nothing_else(nodes):
-    assert R.close(nodes, R.Recipe(question="q", inputs=[LOCALIZATION],
-                                   holdout="compartment")).report().startswith("REFUSED:")
-
-
-def test_the_same_block_named_by_two_addresses_is_fed_in_once(nodes):
-    """A block weighted twice is a block the map was told to care about twice."""
-    c = R.close(nodes, R.Recipe(question="q", inputs=[RNA, RNA], holdout="compartment"))
-    assert len(c.blocks) == len(set(c.blocks))
-
-
-def test_a_cell_cycle_question_may_not_be_asked_of_rna(nodes):
-    """A real trap, found by this test suite rather than reasoned about, and it constrains which
-    questions instruction 45 may ship: `cellcycle_phase` comes from single-parasite RNA sequencing
-    and lives under `gene expression > RNA abundance`, so a recipe feeding transcription while
-    holding out cell-cycle phase is asking RNA to predict a label derived from RNA."""
-    c = R.close(nodes, R.Recipe(question="q", inputs=[RNA], holdout="cellcycle_phase"))
-    assert not c.ok and "RNA abundance" in c.refusal
-
-
-def test_an_address_that_names_nothing_is_refused_rather_than_passed_over(nodes):
-    """A misspelt address resolved to nothing and skipped quietly would build a map from the OTHER
-    inputs and answer a question nobody asked."""
-    c = R.close(nodes, R.Recipe(question="q", inputs=[RNA, ("biology", ("no such branch",))],
-                                holdout="compartment"))
-    assert not c.ok and "name nothing in this catalogue" in c.refusal
-
-
-def test_an_input_absent_from_this_build_is_not_reported_as_circular(nodes):
-    """Emptied by the guard and emptied by an empty cache are different facts. Reporting the second
-    as the first tells a user their question is circular when the truth is that the data is missing."""
-    c = R.close(nodes, R.Recipe(question="q", inputs=["not_a_real_block"], holdout="compartment"))
-    assert not c.ok and "no columns in this build" in c.refusal
-    assert "restate" not in c.refusal
-
-
-def test_a_banned_column_reaching_the_matrix_is_caught_even_if_the_lookups_disagree(nodes, monkeypatch):
-    """The belt-and-braces guard, attacked by making the thing it guards against actually happen.
-
-    Blocks are dropped whole, so a banned column can only survive if the per-block lookup and the
-    combined lookup disagree. That should be impossible -- which is exactly why it is worth one test
-    rather than a comment claiming it cannot happen.
-    """
-    real = R.columns_for
-
-    def disagreeing(frame, spec):
-        if len(spec.blocks) == 1:
-            return real(frame, spec)
-        return {"pretend": ["compartment"]}
-    monkeypatch.setattr(R, "columns_for", disagreeing)
-    c = R.close(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment"))
-    assert not c.ok and "survived closure" in c.refusal
-
-
-# --------------------------------------------------------------------------- the control
-def _labels(*sizes):
-    return np.concatenate([np.full(n, i) for i, n in enumerate(sizes)])
-
-
-def test_a_control_enriched_over_its_base_rate_agrees():
-    labels = _labels(40, 40)
-    control = pd.Series(["host"] * 35 + ["other"] * 5 + ["other"] * 40)
-    got = R.dominant_by_cluster(labels, control)
-    assert got.loc[0, "agrees"] and got.loc[0, "enrichment"] > 1.9
-    assert not got.loc[1, "agrees"]
-
-
-def test_a_control_sitting_at_its_base_rate_is_not_agreement():
-    """The failure mode this exists for: a label carried by 60% of everything is not evidence when
-    it is carried by 60% of a cluster."""
-    labels = _labels(40, 40)
-    got = R.dominant_by_cluster(labels, pd.Series(["host"] * 24 + ["x"] * 16 +
-                                                  ["host"] * 24 + ["x"] * 16))
-    assert not got.agrees.any() and "sits at" in got.loc[0, "why"]
-
-
-def test_too_few_control_labels_is_reported_differently_from_disagreement():
-    """A cluster nobody could evaluate must not read like a cluster the control refuted."""
-    labels = _labels(40, 40)
-    control = pd.Series([None] * 36 + ["host"] * 4 + [None] * 40, dtype=object)
-    got = R.dominant_by_cluster(labels, control)
-    assert not got.loc[0, "agrees"] and "the floor is 15" in got.loc[0, "why"]
-    assert got.loc[1, "n_labelled"] == 0
-    assert "no gene in this cluster carries a label" in got.loc[1, "why"]
-
-
-def test_the_base_rate_a_cluster_is_measured_against_includes_that_cluster():
-    """There is no zero-denominator guard because there cannot be a zero denominator, and this is the
-    test that says so rather than a comment claiming it."""
-    labels = _labels(30, 30)
-    got = R.dominant_by_cluster(labels, pd.Series([None] * 30 + ["only_here"] * 30, dtype=object))
-    assert got.loc[1, "base_rate"] == 1.0 and got.loc[1, "enrichment"] == 1.0
-    assert np.isfinite(got.enrichment.dropna()).all()
-
-
-def test_noise_genes_are_not_a_cluster():
-    labels = np.array([-1] * 20 + [0] * 20)
-    assert list(R.dominant_by_cluster(labels, pd.Series(["a"] * 40)).cluster) == [0]
-
-
-# --------------------------------------------------------------------------- per cluster
-def test_a_label_split_across_clusters_is_visible_per_cluster_not_only_at_its_best():
-    """The reading failure this table exists for. A label cleanly split across three clusters is a
-    real finding about sub-structure, and `score_recovery` reports it as one mediocre best-cluster
-    F1 -- which looks like a label that did not recover."""
-    labels = _labels(30, 30, 30)
-    truth = pd.Series(["split"] * 90)
-    got = R.recovery_by_cluster(labels, truth)
-    assert len(got) == 3 and (got.precision == 1.0).all()
-    assert got.recall.sum() == pytest.approx(1.0)
-
-
-def test_a_cluster_holding_none_of_a_label_is_a_zero_not_a_missing_row():
-    """A missing row reads as "not computed"; a zero says the cluster was checked and holds none."""
-    labels = _labels(30, 30)
-    truth = pd.Series(["a"] * 30 + ["b"] * 30)
-    got = R.recovery_by_cluster(labels, truth)
-    assert len(got) == 4 and (got.f1 == 0).sum() == 2
-
-
-def test_a_label_under_the_floor_is_not_scored_per_cluster():
-    labels = _labels(30, 30)
-    truth = pd.Series(["a"] * 50 + ["rare"] * 10)
-    assert set(R.recovery_by_cluster(labels, truth).label) == {"a"}
-
-
-def test_an_unlabelled_table_scores_nothing_per_cluster():
-    assert R.recovery_by_cluster(_labels(20, 20), pd.Series([None] * 40, dtype=object)).empty
-
-
-# --------------------------------------------------------------------------- running one
-def test_a_refused_recipe_returns_a_result_rather_than_raising(nodes):
-    """A caller that must catch an exception to learn "this cannot be asked" will sooner or later
-    report it as a failure of the program instead of a finding about the data."""
-    res = R.run(nodes, R.Recipe(question="q", inputs=[LOCALIZATION], holdout="compartment"),
-                log=lambda *a: None)
-    assert not res.ok and "restate a holdout" in res.stopped_because
-    assert res.recovery.empty and res.inference.empty
-
-
-def test_a_degenerate_map_returns_the_verdict_and_no_score(nodes, monkeypatch):
-    """A recovery number computed on a bisection reads exactly like a real one."""
-    monkeypatch.setattr("parascape.clustering.cluster",
-                        lambda X, **k: np.zeros(len(X), dtype=int))
-    res = R.run(nodes, R.Recipe(question="q", inputs=[RNA, FITNESS], holdout="compartment"),
-                tune=False, log=lambda *a: None)
-    assert not res.ok and "cannot support a claim" in res.stopped_because
-    assert res.summary == {} and res.recovery.empty
-    assert res.labels.size and res.genes.any()
-
-
-def test_a_recipe_no_umap_setting_can_map_says_so(nodes, monkeypatch):
-    monkeypatch.setattr(R, "tune_umap", lambda *a, **k: pd.DataFrame({"usable": [False]}))
-    res = R.run(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment"),
-                log=lambda *a: None)
-    assert "no UMAP setting" in res.stopped_because
-
-
-def test_an_empty_tuning_table_is_not_an_exception(nodes, monkeypatch):
-    monkeypatch.setattr(R, "tune_umap", lambda *a, **k: pd.DataFrame())
-    assert "no UMAP setting" in R.run(nodes, R.Recipe(question="q", inputs=[RNA],
-                                                     holdout="compartment"),
-                                      log=lambda *a: None).stopped_because
-
-
-def _fake_clusters(n):
-    """Three clusters with real noise -- a partition with no noise is degenerate and scores nothing."""
-    lab = np.arange(n) % 3
-    lab[::7] = -1
-    return lab
-
-
-def test_a_run_names_genes_and_puts_the_controls_verdict_on_the_same_rows(nodes, monkeypatch):
-    """The whole deliverable in one assertion: the inference is genes, and the control that qualifies
-    it is on the inference's own rows rather than in a table beside it that nobody reads."""
-    lab = _fake_clusters(len(nodes))
-    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
-    truth = np.array([None] * len(nodes), dtype=object)
-    control = np.array([None] * len(nodes), dtype=object)
-    for cl, name in ((0, "pvm"), (1, "cytosol")):
-        truth[np.where(lab == cl)[0][:40]] = name      # pure, and well above the floor
-    # The control carries evidence about DIFFERENT genes -- the ones the primary leaves unlabelled,
-    # which is the real situation and also the only one the independence guard permits: a control
-    # built from the primary's own rows is measurably a copy of it and is refused, as it should be.
-    control[np.where(lab == 0)[0][40:75]] = "host"
-    control[np.where(lab == 1)[0][40:55]] = "not host"
-    control[np.where(lab == 2)[0][:40]] = "not host"
-    frame = nodes.copy()
-    frame["compartment"] = truth
-    frame["a_control"] = control
-    res = R.run(frame, R.Recipe(question="q", inputs=[RNA, FITNESS], holdout="compartment",
-                                validation_holdout="a_control"), tune=False, log=lambda *a: None)
-    assert res.ok, res.stopped_because
-    assert len(res.inference), "a pure cluster with 40 labelled genes named nobody"
-    assert {"control_agrees", "control_says", "enrichment"} <= set(res.inference.columns)
-    assert set(res.inference.predicted) <= {"pvm", "cytosol"}
-    assert res.inference.control_agrees.any(), "a control confined to one cluster did not agree"
-    assert set(res.tables()) == {"recovery", "per_cluster", "inference", "control"}
-    assert res.control_summary
-    assert len(res.per_cluster) == len(set(res.per_cluster.label)) * len(set(res.per_cluster.cluster))
-
-
-def test_a_run_without_a_control_still_infers(nodes, monkeypatch):
-    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
-    res = R.run(nodes, R.Recipe(question="q", inputs=[RNA, FITNESS], holdout="compartment"),
-                tune=False, log=lambda *a: None)
-    assert res.ok and res.control.empty and res.control_summary == {}
-
-
-def test_the_cluster_floor_comes_from_coverage_and_is_stated(nodes, monkeypatch, capsys):
-    """The finding this exists for: tuning maximises evenness, which on the real catalogue chose 121
-    clusters of ~40 genes -- an even, usable, entirely useless map that named ZERO genes, because no
-    cluster held fifteen LABELLED ones at 80% purity. A cluster must be big enough that the floor is
-    reachable, and how big depends on what fraction of genes carry a label at all."""
-    seen = {}
-    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
-    monkeypatch.setattr(R, "best_clustering",
-                        lambda coords, grid=None, log=None: seen.update(grid or {}) or {})
-    frame = nodes.copy()
-    frame["compartment"] = np.where(np.arange(len(frame)) % 4 == 0, "pvm", None)   # 25% labelled
-    R.run(frame, R.Recipe(question="q", inputs=[RNA], holdout="compartment"),
-          tune=False, log=lambda *a: None)
-    assert min(seen["min_cluster_size"]) >= R.MIN_LABEL / 0.25
-    assert all(v >= 60 for v in seen["min_cluster_size"])
-
-
-def test_tuning_chooses_the_settings_and_records_them(nodes, monkeypatch):
-    """A run whose settings are not recorded cannot be rebuilt, and an unrebuildable hit is not a
-    result."""
-    monkeypatch.setattr(R, "tune_umap", lambda *a, **k: pd.DataFrame(
-        [{"n_neighbors": 7, "min_dist": 0.3, "usable": True, "score": 1.0, "stage": "full"},
-         {"n_neighbors": 9, "min_dist": 0.9, "usable": True, "score": 0.1, "stage": "full"}]))
-    monkeypatch.setattr("parascape.clustering.cluster",
-                        lambda X, **k: np.repeat(np.arange(3), len(X) // 3 + 1)[:len(X)])
-    res = R.run(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment"),
-                log=lambda *a: None)
-    assert res.settings["n_neighbors"] == 7 and res.settings["min_dist"] == 0.3
-
-
-# --------------------------------------------------------------------------- keeping them
-def test_a_saved_recipe_reloads_as_the_same_question(tmp_path):
-    store = R.RecipeStore(str(tmp_path))
-    store.add(R.Recipe(question="Where does GRA16 go?", inputs=[RNA], holdout="compartment"))
-    back = R.RecipeStore(str(tmp_path)).load_all()
-    assert len(back) == 1 and back[0].inputs == (RNA,)
-
-
-def test_asking_the_same_question_twice_overwrites_rather_than_accumulates(tmp_path):
-    store = R.RecipeStore(str(tmp_path))
-    store.add(R.Recipe(question="same", inputs=[RNA]))
-    store.add(R.Recipe(question="same", inputs=[FITNESS]))
-    assert len(store.recipes) == 1 and store.recipes[0].inputs == (FITNESS,)
-    assert len(os.listdir(tmp_path)) == 1
-
-
-def test_a_question_with_punctuation_still_gets_a_filename(tmp_path):
-    store = R.RecipeStore(str(tmp_path))
-    store.add(R.Recipe(question="Which proteins face the host? (PVM/dense granule)"))
-    name = os.listdir(tmp_path)[0]
-    assert name.endswith(".json") and "/" not in name and "?" not in name
-
-
-def test_a_file_that_is_not_a_recipe_is_skipped_rather_than_fatal(tmp_path):
-    (tmp_path / "notes.txt").write_text("not a recipe")
-    (tmp_path / "broken.json").write_text("{ not json")
-    (tmp_path / "wrong.json").write_text(json.dumps(["a list, not a recipe"]))
-    assert R.RecipeStore(str(tmp_path)).load_all() == []
-
-
-def test_loading_twice_does_not_duplicate(tmp_path):
-    store = R.RecipeStore(str(tmp_path))
-    store.add(R.Recipe(question="q"))
-    assert len(store.load_all()) == 1 and len(store.load_all()) == 1
-
-
-def test_a_store_with_no_root_keeps_recipes_in_memory_only():
-    store = R.RecipeStore()
-    store.add(R.Recipe(question="q"))
-    assert store.get("q") is not None and store.load_all() == store.recipes
-    assert store.remove("q") and store.get("q") is None
-
-
-def test_removing_a_question_removes_its_file(tmp_path):
-    store = R.RecipeStore(str(tmp_path))
-    store.add(R.Recipe(question="q"))
-    assert store.remove("q") and os.listdir(tmp_path) == []
-    assert not store.remove("q")
-
-
-def test_a_store_whose_directory_disappeared_returns_what_it_has(tmp_path):
-    store = R.RecipeStore(str(tmp_path / "gone"))
-    os.rmdir(store.root)
-    assert store.load_all() == []
-
-
-def test_the_same_recipe_run_twice_gives_the_same_answer(nodes):
-    """"Rebuilt from its seed" is an acceptance criterion, so it is asserted by rebuilding rather
-    than by observing that a seed is stored. A hit nobody can reproduce is not a result -- and every
-    stage here is a place a rebuild can silently diverge: the matrix, the UMAP, the clustering.
-
-    Run without tuning, because tuning subsamples and this asks about the map, not the search.
-    """
-    recipe = R.Recipe(question="q", inputs=[RNA, FITNESS], holdout="compartment", seed=7)
-    first = R.run(nodes, recipe, tune=False, log=lambda *a: None)
-    second = R.run(nodes, recipe, tune=False, log=lambda *a: None)
-    assert np.array_equal(first.labels, second.labels)
-    assert np.array_equal(first.genes, second.genes)
-    assert first.settings == second.settings
-    assert first.summary == second.summary
-    pd.testing.assert_frame_equal(first.inference, second.inference)
-
-
-def test_a_different_seed_is_a_different_map(nodes):
-    """The other half of the same claim: if the seed did not reach the embedding, two seeds would
-    agree and the reproducibility above would be vacuous."""
-    ask = dict(question="q", inputs=[RNA, FITNESS], holdout="compartment")
-    a = R.run(nodes, R.Recipe(**ask, seed=7), tune=False, log=lambda *a: None)
-    b = R.run(nodes, R.Recipe(**ask, seed=8), tune=False, log=lambda *a: None)
-    assert not np.array_equal(a.labels, b.labels)
-
-
-# --------------------------------------------------------------------------- the edge guard (47)
-def test_a_graph_method_may_not_traverse_the_layer_its_holdout_was_built_from(nodes):
-    """The largest leak in this project, and until instruction 47 nothing could see it.
-
-    `compartment` is the most-used holdout here AND a 118,712-edge layer made by joining genes that
-    share a compartment. Propagating a label along that layer recovers it perfectly, and every
-    column-based guard passes, because none of them can see an edge.
-    """
-    c = R.close(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment"))
-    assert c.ok
-    assert "compartment" in c.excluded_layers
-    assert "compartment" not in c.layers
-    assert "Tg_shared_compartment" in c.excluded_layers["compartment"]
-
-
-def test_the_edge_guard_holds_at_class_scope_which_is_what_recipes_use(nodes):
-    """Measured, and it inverted the assumption this was built on. Asked at CLASS scope -- what every
-    recipe uses -- the slot selection bans nothing for `compartment`, because `Tg_shared_compartment`
-    sits under `molecular relationships` while the label sits under `cell organization`. The class of
-    the target does not contain the layer built from the target. The family is therefore closed
-    unconditionally, whatever scope is asked for.
-    """
-    from parascape import slots
-    from parascape.search import excluded_edges, scoped_slots
-    class_layers = {layer for slot in scoped_slots("compartment", "biology")
-                    for layer in slots.edge_types(slot)}
-    assert "compartment" not in class_layers, \
-        "the biology class of compartment now contains its own edge layer; this test is stale"
-    for scope in ("direct", "target_family", "biology", "evidence", "context"):
-        assert "compartment" in excluded_edges("compartment", scope), scope
-
-
-def test_a_holdout_no_edge_layer_is_built_from_bans_no_layer(nodes):
-    """The guard must not simply ban everything: a graph method is useless with no graph."""
-    c = R.close(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="cellcycle_phase"))
-    assert c.ok and not c.excluded_layers
-    assert len(c.layers) == len(R.all_edge_layers("Tg"))
-
-
-def test_the_controls_layers_are_banned_as_well_as_the_primarys(nodes):
-    """A control is a holdout too, and a map that traversed the control's own layer would corroborate
-    itself."""
-    # Fitness inputs, not RNA: `cellcycle_phase` IS RNA-derived, so an RNA-fed recipe is refused
-    # before it reaches the edge guard -- as this file's own earlier test asserts.
-    c = R.close(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="cellcycle_phase",
-                                validation_holdout="compartment"))
-    assert c.ok, c.refusal
-    assert c.excluded_layers["compartment"].startswith("control:")
-
-
-def test_the_closure_report_says_which_layers_may_be_traversed(nodes):
-    report = R.close(nodes, R.Recipe(question="q", inputs=[FITNESS],
-                                     holdout="compartment")).report()
-    assert "edge layer" in report and "compartment" in report
-
-
-def test_alternative_maps_are_built_and_are_actually_different(nodes, monkeypatch):
-    """The report shows what the winner was chosen against, so the alternatives have to be real
-    builds rather than the same map listed twice. The walk scores every configuration once on a
-    sample and again in full, so the same settings arrive twice and would otherwise become "the
-    alternative" to themselves."""
-    monkeypatch.setattr(R, "tune_umap", lambda *a, **k: pd.DataFrame([
-        {"n_neighbors": 7, "min_dist": 0.0, "usable": True, "score": 1.0, "stage": "full"},
-        {"n_neighbors": 7, "min_dist": 0.0, "usable": True, "score": 0.9, "stage": "sample"},
-        {"n_neighbors": 40, "min_dist": 0.3, "usable": True, "score": 0.5, "stage": "full"},
-    ]))
-    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
-    res = R.run(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment"),
-                alternatives=1, log=lambda *a: None)
-    assert len(res.alternatives) == 1
-    assert res.settings["n_neighbors"] == 7
-    assert res.alternatives[0].settings["n_neighbors"] == 40, "the duplicate was taken as the alternative"
-
-
-def test_no_alternatives_are_built_unless_asked_for(nodes, monkeypatch):
-    """They cost a full embedding each."""
-    monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: _fake_clusters(len(X)))
-    res = R.run(nodes, R.Recipe(question="q", inputs=[RNA], holdout="compartment"),
-                tune=False, log=lambda *a: None)
-    assert res.alternatives == []
-
-
-# --------------------------------------------------------------------------- method dispatch (47)
-def test_propagation_without_a_named_layer_is_refused_with_the_choices(nodes):
-    """There is no sensible merged default: the layers mean different things and two of them are
-    attention-biased, so a walk over the merged graph carries the literature's popularity contest
-    into every answer."""
-    res = R.run(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                method="propagation"), tune=False, log=lambda *a: None)
-    assert not res.ok and "name the layer" in res.stopped_because
-    assert "xlms" in res.stopped_because
-
-
-def test_propagation_may_not_walk_the_layer_its_holdout_was_built_from(nodes):
-    """The edge guard enforced where it matters rather than merely reported. Diffusing a label across
-    the layer built out of that label recovers it perfectly and means nothing."""
-    res = R.run(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                method="propagation:compartment"), tune=False, log=lambda *a: None)
-    assert not res.ok and "excluded for this holdout" in res.stopped_because
-
-
-def test_an_unknown_layer_is_refused_and_the_real_ones_are_listed(nodes):
-    res = R.run(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                method="propagation:invented"), tune=False, log=lambda *a: None)
-    assert not res.ok and "no layer named" in res.stopped_because
-
-
-def test_a_classifier_answers_the_same_recipe_and_says_what_it_used(nodes):
-    """Every method produces a partition, so everything downstream is one code path. The classifier
-    additionally reports which measurements carried the answer, which a clustering cannot."""
-    res = R.run(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                method="logistic"), tune=False, log=lambda *a: None)
-    assert res.ok, res.stopped_because
-    assert res.summary.get("n_labels_scored", 0) > 0
-    assert len(res.coefficients), "the linear method reported no coefficients"
-    assert set(res.coefficients.columns) == {"label", "feature", "coefficient"}
-    if len(res.inference):
-        assert "predicted_class" in res.inference.columns
-
-
-def test_a_holdout_with_too_few_labels_to_train_on_says_so(nodes):
-    frame = nodes.copy()
-    frame["sparse_label"] = None
-    frame.loc[frame.index[:8], "sparse_label"] = "a"
-    res = R.run(frame, R.Recipe(question="q", inputs=[FITNESS], holdout="sparse_label",
-                                method="logistic"), tune=False, log=lambda *a: None)
-    assert not res.ok and "too few labelled genes" in res.stopped_because
-
-
-def test_a_walk_over_a_subset_is_refused_because_edge_ids_are_positions(nodes):
-    """Found by a test that used the 400-row fixture: the graph's endpoints are positions in the FULL
-    table, so a subset walks between the wrong genes -- and stays in range once the subset is large
-    enough, which is the silent version of the same bug."""
-    res = R.run(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                method="propagation:xlms"), tune=False, log=lambda *a: None)
-    assert not res.ok and "full node table" in res.stopped_because
-
-
-def test_propagation_answers_a_recipe_and_the_control_judges_it_the_same_way(full_nodes):
-    """The unification, asserted end to end: a walk over an edge layer produces a partition, and from
-    there it is the clustering path's own code -- the same scoring, the same naming, and the same
-    independent control on the same groups."""
-    res = R.run(full_nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                     validation_holdout="cellcycle_phase",
-                                     method="propagation:xlms"), tune=False, log=lambda *a: None)
-    assert res.ok, res.stopped_because
-    assert res.settings["method"] == "propagation:xlms"
-    assert res.summary.get("n_labels_scored", 0) > 0
-    assert not res.control.empty, "the control was not put on the walk's own groups"
-    assert res.coefficients.empty, "a walk has no per-column weights to report"
-
-
-def test_propagation_answers_a_holdout_too_sparse_for_any_clustering(full_nodes):
-    """The constraint propagation exists to remove. A clustering needs MIN_LABEL labelled genes
-    INSIDE one cluster before it can say anything; a label carried by 40 genes spread over 8,140
-    cannot reach that in any partition, and the whole question is unanswerable by that route.
-    Seeded with the same 40, a walk scores reached genes and abstains elsewhere."""
-    frame = full_nodes.copy()
-    rng = np.random.default_rng(0)
-    picked = rng.choice(len(frame), 40, replace=False)
-    sparse = np.array([None] * len(frame), dtype=object)
-    sparse[picked[:20]] = "near"
-    sparse[picked[20:]] = "far"
-    frame["sparse_label"] = sparse
-    res = R.run(frame, R.Recipe(question="q", inputs=[FITNESS], holdout="sparse_label",
-                                method="propagation:xlms"), tune=False, log=lambda *a: None)
-    assert res.ok, res.stopped_because
-    assert 0 < (res.labels >= 0).sum() < len(res.labels)
-    assert res.summary["score_kind"] == "out_of_fold_fixed_class_prediction"
-
-
-# --------------------------------------------------------------------------- relevance (43)
-def _named(n=12, enrichment=5.0, agrees=True):
-    return pd.DataFrame({"gene_id": [f"TGME49_{200000+i}" for i in range(n)],
-                         "predicted": ["pvm"] * n, "cluster": [1] * n,
-                         "cluster_precision": [0.6] * n, "enrichment": [enrichment] * n,
-                         "base_rate": [0.12] * n, "n_labelled_in_cluster": [30] * n,
-                         "control_agrees": [agrees] * n})
-
-
-def test_relevance_keeps_its_terms_as_columns_rather_than_folding_them_away(nodes):
-    """Instruction 43 required the score never override the raw numbers it summarises. A reader who
-    disagrees with the weighting re-sorts on the term they care about."""
-    out = R.relevance(_named(), nodes)
-    assert {"strength", "reach", "novelty", "corroborated", "relevance"} <= set(out.columns)
-    assert (out.enrichment == 5.0).all(), "the raw numbers were replaced by the score"
-
-
-def test_a_corroborated_claim_outranks_an_identical_uncorroborated_one(nodes):
-    """The term no other ranking in this project has: the difference between "the map found
-    structure" and "the map found the structure I asked about"."""
-    backed = R.relevance(_named(agrees=True), nodes).relevance.iloc[0]
-    alone = R.relevance(_named(agrees=False), nodes).relevance.iloc[0]
-    assert backed > alone == pytest.approx(backed / 2, rel=1e-6)
-
-
-def test_an_uncorroborated_claim_is_weakened_rather_than_voided(nodes):
-    """Several shipped questions have controls too sparse to corroborate anything at all; scoring
-    those to zero would rank a question's answers by whether its control happened to be dense."""
-    assert R.relevance(_named(agrees=False), nodes).relevance.iloc[0] > 0
-
-
-def test_strength_saturates_so_a_rare_label_does_not_win_by_being_rare(nodes):
-    modest = R.relevance(_named(enrichment=10.0), nodes).strength.iloc[0]
-    extreme = R.relevance(_named(enrichment=300.0), nodes).strength.iloc[0]
-    assert modest == pytest.approx(1.0, abs=0.01) and extreme == pytest.approx(1.0, abs=0.01)
-
-
-def test_reach_saturates_so_a_cluster_that_swallowed_a_compartment_does_not_win(nodes):
-    small = R.relevance(_named(n=40), nodes).reach.iloc[0]
-    huge = R.relevance(_named(n=400), nodes).reach.iloc[0]
-    assert small == pytest.approx(1.0, abs=0.02) and huge == pytest.approx(1.0, abs=0.02)
-
-
-def test_nothing_named_ranks_to_an_empty_table_rather_than_an_error(nodes):
-    assert R.relevance(pd.DataFrame(), nodes).empty
-    assert R.relevance(None, nodes).empty
-
-
-def test_relevance_is_sorted_so_the_first_row_is_the_one_to_read(nodes):
-    mixed = pd.concat([_named(n=4, enrichment=2.0, agrees=False),
-                       _named(n=4, enrichment=9.0, agrees=True)], ignore_index=True)
-    out = R.relevance(mixed, nodes)
-    assert out.relevance.is_monotonic_decreasing and out.enrichment.iloc[0] == 9.0
-
-
-def test_boosting_answers_the_same_recipe_and_reports_what_it_relied_on(nodes):
-    """Same closure, same control, same statistics -- and the matrix is built RAW for this one,
-    because resolving the gaps before the model sees them is what it exists not to do."""
-    res = R.run(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                validation_holdout="cellcycle_phase", method="boosted"),
-                tune=False, log=lambda *a: None)
-    assert res.ok, res.stopped_because
-    assert res.settings["missing"] == "native"
-    assert len(res.coefficients), "the tree reported nothing it relied on"
-    assert set(res.coefficients.columns) == {"feature", "importance", "sd"}
-    assert not res.control.empty
-
-
-def test_multiplex_communities_are_scored_like_any_other_partition(full_nodes, monkeypatch):
-    """The dispatch, with the communities stubbed: greedy modularity over eight layers of an
-    8,140-node graph takes minutes, and what is being tested here is the wiring -- that an
-    unsupervised partition reaches the same scoring, naming and control as every other method."""
-    groups = np.arange(len(full_nodes)) % 30
-    groups[::11] = -1
-    monkeypatch.setattr("parascape.methods.multiplex_communities", lambda *a, **k: {
-        "partition": groups, "classes": [], "model": None, "unsupervised": True,
-        "settings": {"method": "multiplex", "layers": ["xlms"]}})
-    res = R.run(full_nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                     validation_holdout="cellcycle_phase", method="multiplex"),
-                tune=False, log=lambda *a: None)
-    assert res.ok, res.stopped_because
-    assert res.settings["method"] == "multiplex"
-    assert res.summary.get("n_labels_scored", 0) > 0
-    assert not res.control.empty
-    assert "predicted_class" not in res.inference.columns, \
-        "an unsupervised partition has no class codes to translate"
-
-
-def test_multiplex_on_a_subset_table_is_refused(nodes):
-    res = R.run(nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                method="multiplex"), tune=False, log=lambda *a: None)
-    assert not res.ok and "full node table" in res.stopped_because
-
-
-def test_multiplex_with_every_layer_excluded_says_there_is_no_graph_left(full_nodes, monkeypatch):
-    """Closure can legitimately remove them all, and "no graph" is a finding rather than a crash."""
-    monkeypatch.setattr(R, "all_edge_layers", lambda organism="Tg": ())
-    res = R.run(full_nodes, R.Recipe(question="q", inputs=[FITNESS], holdout="compartment",
-                                     method="multiplex"), tune=False, log=lambda *a: None)
-    assert not res.ok and "no graph left" in res.stopped_because
-
-
-# --------------------------------------------------------------------------- the category rule (instruction 73)
-def test_inputs_of_the_labels_own_kind_of_knowledge_are_held_out():
-    """Einar 2026-11-07: one expression contrast is not predicted from other expression columns."""
-    import pandas as pd
-    from parascape import recipes as R
-    nodes = pd.read_parquet(os.path.join(os.path.dirname(os.path.dirname(__file__)), "parascape", "data",
-                                         "nodes.parquet"))
-    out = R.same_category(nodes, "brain168465_14d_lfc", "Tg")
-    assert "expr_tachy" in out and "transcript" in out["expr_tachy"]
-    assert "fit_invitro_hff" not in out              # another kind of knowledge stays
-    assert "brain168465_14d_lfc" not in out          # the label itself is not an input
-    assert R.same_category(nodes, "not_a_column_at_all", "Tg") == {}
-
-
-def test_a_label_from_an_import_holds_out_the_rest_of_that_import():
-    """Instruction 64.37: imported columns have no registry dataset; the import itself is the family."""
-    import pandas as pd
-    from parascape import recipes as R
-    nodes = pd.DataFrame({"gene_id": ["a", "b"], "imp_x": [1.0, 2.0], "imp_y": [3.0, 4.0],
-                          "other": [5.0, 6.0]})
-    R.register_import(["imp_x", "imp_y"], "file-1")
+def qapp():
+    return QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
+
+
+@pytest.fixture
+def screen(qapp, folder):
+    """A small module with one of each kind of control, and a panel on it."""
+    from parascape.recipes_panel import RecipePanel, widget_setting
+    holder = QtWidgets.QWidget()
+    spin = QtWidgets.QSpinBox()
+    spin.setRange(2, 100)
+    spin.setValue(25)
+    dspin = QtWidgets.QDoubleSpinBox()
+    dspin.setRange(0, 1)
+    dspin.setValue(0.1)
+    combo = QtWidgets.QComboBox()
+    combo.addItems(["hdbscan", "dbscan"])
+    tick = QtWidgets.QCheckBox()
+    text = QtWidgets.QLineEdit("5, 15")
+    for w in (spin, dspin, combo, tick, text):
+        w.setParent(holder)
+    applied = []
+    panel = RecipePanel("map", [widget_setting("n", spin), widget_setting("d", dspin),
+                                widget_setting("method", combo), widget_setting("tick", tick),
+                                widget_setting("grid", text)],
+                        after_apply=lambda: applied.append(1))
+    panel.answers = []
+    panel.warnings = []
+    panel.ask_yes_no = lambda title, text: (panel.answers.append((title, text)) or True)
+    panel.warn = lambda title, text: panel.warnings.append((title, text))
+    panel.holder = holder
+    panel.controls = dict(spin=spin, dspin=dspin, combo=combo, tick=tick, text=text)
+    panel.applied_calls = applied
+    yield panel
+    holder.deleteLater()
+    panel.deleteLater()
+
+
+def test_the_panel_saves_and_applies_a_recipe_round_trip(screen):
+    c = screen.controls
+    c["spin"].setValue(15)
+    c["dspin"].setValue(0.05)
+    c["combo"].setCurrentText("dbscan")
+    c["tick"].setChecked(True)
+    c["text"].setText("1, 2")
+    saved = screen.save_as("Tight")
+    assert saved.settings == {"n": 15, "d": 0.05, "method": "dbscan", "tick": True, "grid": "1, 2"}
+    assert [r.name for r in screen.recipes()] == ["Tight"] and screen.selected().name == "Tight"
+    c["spin"].setValue(40)
+    c["combo"].setCurrentText("hdbscan")
+    c["tick"].setChecked(False)
+    c["text"].setText("x")
+    report = screen.apply_selected()
+    assert report.applied == 5 and screen.answers == [], "same version, nothing missing: no question"
+    assert (c["spin"].value(), c["dspin"].value(), c["combo"].currentText(),
+            c["tick"].isChecked(), c["text"].text()) == (15, 0.05, "dbscan", True, "1, 2")
+    assert screen.applied_calls == [1]
+    assert "Applied" in screen.detail_text() and "5 settings" in screen.detail_text()
+
+
+def test_the_panel_asks_before_applying_an_old_recipe_and_names_what_is_gone(screen, folder):
+    old = R.capture_recipe("map", "Old", {"n": 10, "retired_one": 1, "retired_two": 2})
+    old.parascape_version = "0.0.1"
+    R.save_recipe(old)
+    screen.reload()
+    assert "retired_one" in screen.detail_text() and "retired_two" in screen.detail_text()
+    assert "0.0.1" in screen.detail_text(), "told before applying, not after"
+    screen.apply_selected()
+    assert len(screen.answers) == 1
+    assert "retired_one" in screen.answers[0][1] and "0.0.1" in screen.answers[0][1]
+    assert screen.controls["spin"].value() == 10
+    screen.answers.clear()
+    screen.controls["spin"].setValue(50)
+    screen.ask_yes_no = lambda t, x: False
+    assert screen.apply_selected() is None and screen.controls["spin"].value() == 50, "declined"
+    assert screen.apply_selected(confirmed=True).applied == 1
+
+
+def test_the_panel_refuses_a_recipe_of_another_module(screen, folder):
+    wrong = R.capture_recipe("network", "Net", {"n": 5})
+    path = R.save_recipe(wrong)
+    # put it where the map recipes are, as a person copying files by hand would
+    target = folder / "map" / "net.json"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    os.replace(path, target)
+    screen.reload()
+    assert screen.recipes() == [], "listed nowhere as usable"
+    assert "'network'" in screen.problems_text()
+    assert not screen.problems.isHidden()
+    # and applying one that was selected from elsewhere is refused with nothing written
+    screen._listed = [wrong]
+    screen.choice.clear()
+    screen.choice.addItem("Net")
+    screen.controls["spin"].setValue(33)
+    assert "network" in screen.detail_text() and not screen.buttons["Apply"].isEnabled()
+    assert screen.apply_selected() is None
+    assert screen.controls["spin"].value() == 33
+    assert screen.warnings and "network" in screen.warnings[-1][1]
+
+
+def test_a_choice_that_is_not_offered_any_more_is_reported_and_the_rest_apply(screen, folder):
+    R.save_recipe(R.capture_recipe("map", "Gone", {"n": 11, "method": "optics", "d": 7.0}))
+    screen.reload()
+    report = screen.apply_selected()
+    assert report.applied == 1 and screen.controls["spin"].value() == 11
+    text = screen.detail_text()
+    assert "method" in text and "optics" in text and "d" in text
+    assert screen.controls["combo"].currentText() == "hdbscan"
+
+
+def test_the_panel_asks_before_replacing_and_before_deleting(screen):
+    screen.save_as("Same")
+    screen.controls["spin"].setValue(77)
+    screen.ask_yes_no = lambda t, x: False
+    assert screen.save_as("same") is None
+    assert screen.recipes()[0].settings["n"] == 25, "declined, so not replaced"
+    screen.ask_yes_no = lambda t, x: True
+    assert screen.save_as("same").settings["n"] == 77 and len(screen.recipes()) == 1
+    screen.ask_yes_no = lambda t, x: False
+    assert screen.delete() is False and len(screen.recipes()) == 1
+    screen.ask_yes_no = lambda t, x: True
+    assert screen.delete() is True and screen.recipes() == []
+    assert not screen.buttons["Apply"].isEnabled(), "nothing to apply"
+    assert "No recipes yet" in screen.detail_text()
+
+
+def test_the_panel_renames_shares_and_imports(screen, tmp_path):
+    screen.save_as("One")
+    assert screen.rename("Two") and [r.name for r in screen.recipes()] == ["Two"]
+    out = tmp_path / "share.json"
+    screen.choose_save = lambda suggested: str(out)
+    screen.share()
+    assert json.load(open(out))["name"] == "Two"
+    screen.delete()
+    screen.choose_open = lambda: str(out)
+    assert screen.import_file().name == "Two"
+    bad = tmp_path / "bad.json"
+    bad.write_text("nope", encoding="utf-8")
+    screen.choose_open = lambda: str(bad)
+    assert screen.import_file() is None and "bad.json" in screen.warnings[-1][1]
+
+
+def test_every_control_of_the_panel_has_a_tooltip(screen):
+    controls = [screen.choice, screen.problems] + list(screen.buttons.values())
+    assert [w for w in controls if not w.toolTip()] == []
+    assert set(screen.buttons) == {"Apply", "Save current settings…", "Share…", "Import…",
+                                   "Rename…", "Delete"}
+
+
+def test_a_control_a_recipe_cannot_keep_is_a_mistake_at_build_time(qapp):
+    from parascape.recipes_panel import widget_setting
+    with pytest.raises(TypeError):
+        widget_setting("x", QtWidgets.QLabel("no"))
+
+
+def test_a_number_outside_the_range_of_the_control_is_refused(qapp):
+    from parascape.recipes_panel import widget_setting
+    spin = QtWidgets.QSpinBox()
+    spin.setRange(2, 10)
+    setting = widget_setting("n", spin)
+    with pytest.raises(ValueError):
+        setting.set(500)
+    with pytest.raises(ValueError):
+        setting.set("a lot")
+    with pytest.raises(ValueError):
+        setting.set(True)
+
+
+def test_the_shell_gives_a_module_a_recipes_group_that_starts_folded(qapp, folder, tmp_path,
+                                                                    monkeypatch):
+    from parascape.backdrops import _compat as AC
+    ini = str(tmp_path / "shell.ini")
+    monkeypatch.setattr(AC, "_settings",
+                        lambda: QtCore.QSettings(ini, QtCore.QSettings.Format.IniFormat))
+    from parascape.recipes_panel import widget_setting
+    from parascape.shell import ModuleShell
+    shell = ModuleShell("t_recipes", "Test")
+    box = QtWidgets.QSpinBox()
+    shell.add_setting("A group", box)
+    panel = shell.add_recipes([widget_setting("n", box)])
+    assert shell.recipes is panel and "Recipes" in shell.sections
+    assert not shell.sections["Recipes"].is_expanded()
+    names = list(shell.sections)
+    assert names.index("Recipes") > names.index("A group")
+    shell.close()
+
+
+# ------------------------------------------------------------------ in the real window
+@pytest.fixture(scope="module")
+def window(qapp):
+    from parascape import app as A
     try:
-        out = R.same_import(nodes, "imp_x")
-        assert set(out) == {"imp_y"} and "same import" in out["imp_y"]
-        assert R.same_import(nodes, "other") == {}
-    finally:
-        R.IMPORT_GROUPS.clear()
+        win = A.Window(species="Toxoplasma gondii")
+    except Exception as error:                      # pragma: no cover - needs a GL context
+        pytest.skip(f"cannot create the window offscreen: {error}")
+    yield win
+    from parascape.map_module import wait_for_projections
+    wait_for_projections()
+    win.close()
+    qapp.processEvents()
+
+
+def test_the_map_module_keeps_and_restores_its_settings_as_a_recipe(window, folder):
+    shell = window.map_module
+    assert shell is not None and shell.recipes is not None
+    assert not shell.sections["Recipes"].is_expanded()
+    names = list(shell.sections)
+    assert names.index("Recipes") > names.index("Advanced")
+    panel, module = shell.recipes, shell.module
+    module.live.setChecked(False)
+    window.panel.nn.setValue(17)
+    window.panel.md.setValue(0.3)
+    window.panel.seed.setValue(7)
+    before = sorted(window.panel.blocks.checked())
+    panel.save_as("Map recipe test")
+    window.panel.nn.setValue(60)
+    window.panel.md.setValue(0.0)
+    window.panel.seed.setValue(1)
+    window.panel.blocks.set_checked([])
+    panel.apply_selected(confirmed=True)
+    assert (window.panel.nn.value(), window.panel.md.value(), window.panel.seed.value()) == (17, 0.3, 7)
+    assert sorted(window.panel.blocks.checked()) == before, "the exact measurements come back"
+    saved = R.find_recipe("map", "Map recipe test")
+    assert saved.module == "map" and "measurements" in saved.settings
+    module.live.setChecked(True)
+    window.panel.nn.setValue(25)
+    window.panel.md.setValue(0.1)
+    window.panel.seed.setValue(42)
+
+
+def test_a_map_recipe_is_refused_by_the_network_module(window, folder):
+    network = window.network_module
+    assert network is not None and network.recipes is not None
+    R.save_recipe(R.capture_recipe("map", "From map", {"n_neighbors": 9}))
+    recipe = R.find_recipe("map", "From map")
+    with pytest.raises(R.WrongModuleError):
+        R.apply_recipe(recipe, "network", network.recipes.settings, lambda v: len(v))
+    assert R.list_recipes("network") == []
+
+
+def test_the_network_module_keeps_its_links_and_strength_as_a_recipe(window, folder):
+    network = window.network_module
+    module, panel = network.module, network.recipes
+    assert not network.sections["Recipes"].is_expanded()
+    keys = set(panel.settings)
+    assert {"colour_by", "link_strength", "arrange_genes", "sharp_link_steps",
+            "name_linked_genes"} <= keys
+    assert all(f"links_{layer}" in keys for layer in module.layer_boxes)
+    layer = next(iter(module.layer_boxes))
+    before = {name: box.isChecked() for name, box in module.layer_boxes.items()}
+    module.strength.setValue(70)
+    panel.save_as("Network recipe test")
+    module.strength.setValue(20)
+    module.layer_boxes[layer].setChecked(not before[layer])
+    panel.apply_selected(confirmed=True)
+    assert module.strength.value() == 70
+    assert {name: box.isChecked() for name, box in module.layer_boxes.items()} == before
+    module.strength.setValue(50)
+
+
+# --------------------------------------------------------------------------- the old names
+def test_an_old_import_from_the_recipes_of_a_question_says_where_the_name_went():
+    """`parascape.recipes` used to hold the way of asking a question. Code that still imports from it
+    must fail, since a settings recipe has no `run`, and the failure must say what to import."""
+    with pytest.raises(ImportError, match=r"question_templates\.run"):
+        from parascape.recipes import run  # noqa: F401
+    with pytest.raises(ImportError, match=r"question_templates\.TemplateStore"):
+        from parascape.recipes import RecipeStore  # noqa: F401
+
+
+def test_every_moved_name_points_at_something_that_exists():
+    """A message that sends a reader to a name that is not there is worse than no message."""
+    from parascape import question_templates as Q
+    for old, new in R._MOVED.items():
+        assert hasattr(Q, new), f"{old} is said to have moved to {new}, which is not in question_templates"
+        assert not old in dir(R), f"{old} is both here and said to have moved"
+
+
+def test_a_name_that_never_existed_is_still_an_ordinary_attribute_error():
+    with pytest.raises(AttributeError):
+        R.no_such_thing
+    assert not hasattr(R, "no_such_thing")
+
+
+def test_the_word_recipe_in_this_module_has_one_meaning():
+    """The class that remains under the old name is the settings recipe, which has no question."""
+    assert not hasattr(R.Recipe, "question") and not hasattr(R.Recipe, "holdout")
+    assert {"name", "module", "settings"} <= set(R.Recipe.__dataclass_fields__)

@@ -123,7 +123,7 @@ ORGANISM_LITERALS = {
     "parascape/plasmodium.py": 1,
     "parascape/prioritization.py": 3,
     "parascape/proteomics.py": 11,
-    "parascape/recipes.py": 2,
+    "parascape/question_templates.py": 2,
     "parascape/search.py": 6,
     "parascape/slot_tree.py": 2,
     "parascape/slots.py": 5,

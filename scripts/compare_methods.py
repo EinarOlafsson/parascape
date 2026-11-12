@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One question, several methods, one control judging all of them.
 
-Instruction 47's deliverable. Every method answers the SAME recipe -- same leakage closure, same
+Instruction 47's deliverable. Every method answers the SAME question template -- same leakage closure, same
 seed, same holdout, same validation control -- so the numbers below differ because the methods do,
 not because each was written up on its own terms.
 
@@ -36,8 +36,8 @@ def main() -> int:
     ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
 
-    from parascape.questions import as_recipe, load, shipped
-    from parascape.recipes import run
+    from parascape.questions import as_template, load, shipped
+    from parascape.question_templates import run
 
     nodes = pd.read_parquet(NODES)
     catalogue = shipped(nodes, load())
@@ -46,7 +46,7 @@ def main() -> int:
     wanted = [m.strip() for m in args.methods.split(",") if m.strip()]
     rows = []
     for i, q in enumerate(catalogue, 1):
-        base = as_recipe(q)
+        base = as_template(q)
         for method in wanted:
             result = run(nodes, replace(base, method=method),
                          tune=(method == "umap+hdbscan"), log=lambda *a: None)

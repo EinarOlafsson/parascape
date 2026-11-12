@@ -1265,7 +1265,7 @@ class Window(QtWidgets.QMainWindow):
         record["validation"] = ("unresolved: imported columns have no registered dataset or leakage family; "
                                 "closure guards them by measured association only")
         self.nodes = merge_into(self.nodes, imported)
-        from .recipes import register_import
+        from .question_templates import register_import
         register_import(imported.columns, record.get("source_sha256") or f"import {len(self.imports) + 1}")
         self.imports.append(record)
         self.numerics = numeric_columns(self.nodes)

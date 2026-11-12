@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ways of answering a recipe other than clustering a UMAP, judged by the same control.
+"""Ways of answering a question template other than clustering a UMAP, judged by the same control.
 
 Instruction 47. Until now every claim this program made came out of one procedure: embed a feature
 matrix, cluster it, and see whether a held-out label comes back. That is a deliberately conservative
@@ -484,7 +484,7 @@ def multiplex_communities(layers, n_nodes: int, resolution: float = 1.0, seed: i
 def classification_recovery(codes, truth, classes):
     """Score fixed class identities on held-out predictions; abstentions are errors.
 
-    Returns the legacy summary/table shape for recipe consumers, with an explicit
+    Returns the legacy summary/table shape for question template consumers, with an explicit
     score_kind. Class labels are never remapped by looking at evaluation answers.
     """
     from .holdout_cv import ABSTAIN, _known, score_predictions

@@ -2486,8 +2486,8 @@ class AnalysisPanel(QtWidgets.QWidget):
         w = QtWidgets.QWidget()
         v = QtWidgets.QVBoxLayout(w)
         note = QtWidgets.QLabel(
-            "A recipe asks whether a chosen set of measurements can predict a label they were never "
-            "given. Pick a question: its inputs, its holdout and its validation control are already "
+            "A question template asks whether a chosen set of measurements can predict a label they were "
+            "never given. Pick a question: its inputs, its holdout and its validation control are already "
             "chosen, and anything that would restate the holdout is removed before the map is built "
             "— that removal is shown, with the mechanism that caught each column. What comes back "
             "is a list of genes, each carrying the purity of the cluster it came from and whether "
@@ -2561,9 +2561,9 @@ class AnalysisPanel(QtWidgets.QWidget):
         """Write the last run to a PDF the user chooses."""
         if self._question_result is None:
             return
-        from .report import recipe_pdf
+        from .report import question_pdf
         default = "".join(c if c.isalnum() else "_" for c in
-                          self._question_result.recipe.question)[:60].strip("_") + ".pdf"
+                          self._question_result.template.question)[:60].strip("_") + ".pdf"
         path, _ = QtWidgets.QFileDialog.getSaveFileName(self, "Save the figures", default,
                                                         "PDF (*.pdf)")
         if not path:
@@ -2571,10 +2571,10 @@ class AnalysisPanel(QtWidgets.QWidget):
         result = self._question_result
 
         def job(p):
-            """Render the selected recipe results and figures into a PDF file."""
-            return recipe_pdf(result, path)
+            """Render the selected question results and figures into a PDF file."""
+            return question_pdf(result, path)
 
-        self._run(job, self._pdf_done, name="recipe report")
+        self._run(job, self._pdf_done, name="question report")
 
     def _pdf_done(self, path):
         """Report the completed figure export path in the panel status."""
@@ -2588,13 +2588,13 @@ class AnalysisPanel(QtWidgets.QWidget):
     #: Information categories the user left out in the Infer data step (instruction 74).
     question_leave_out: tuple = ()
 
-    def _question_recipe(self, q):
-        """The recipe of question `q`, with the kinds of evidence the user chose to leave out."""
+    def _question_template(self, q):
+        """The question template of question `q`, with the kinds of evidence the user chose to leave out."""
         from dataclasses import replace
-        from .questions import as_recipe
-        recipe = as_recipe(q)
-        return replace(recipe, leave_out_categories=tuple(self.question_leave_out)) \
-            if self.question_leave_out else recipe
+        from .questions import as_template
+        template = as_template(q)
+        return replace(template, leave_out_categories=tuple(self.question_leave_out)) \
+            if self.question_leave_out else template
 
     def show_question(self):
         """Describe the selected question without running anything."""
@@ -2604,22 +2604,22 @@ class AnalysisPanel(QtWidgets.QWidget):
                 "No questions are shipped yet. Generate them with "
                 "scripts/generate_question_table.py.")
             return
-        from .questions import as_recipe
-        from .recipes import address_label
-        recipe = self._question_recipe(q)
-        inputs = "<br>".join("&nbsp;&nbsp;• " + address_label(a) for a in recipe.inputs)
+        from .questions import as_template
+        from .question_templates import address_label
+        template = self._question_template(q)
+        inputs = "<br>".join("&nbsp;&nbsp;• " + address_label(a) for a in template.inputs)
         self.question_detail.setHtml(
             f"<b>{q.get('question', '')}</b><br><i>{q.get('axis', '')}</i><br><br>"
-            f"<b>holdout</b> — the label the map must recover: <code>{recipe.holdout}</code>"
-            + (f" (binned into {recipe.holdout_bins})" if recipe.holdout_bins else "") + "<br>"
+            f"<b>holdout</b> — the label the map must recover: <code>{template.holdout}</code>"
+            + (f" (binned into {template.holdout_bins})" if template.holdout_bins else "") + "<br>"
             f"<b>control</b> — should behave the same way if the answer is real: "
-            f"<code>{recipe.validation_holdout or 'none available'}</code><br>"
+            f"<code>{template.validation_holdout or 'none available'}</code><br>"
             f"<b>confidence</b> — a cluster must be this pure before its genes are named: "
-            f"{recipe.min_precision:.2f}<br><br><b>inputs</b><br>{inputs}<br><br>"
+            f"{template.min_precision:.2f}<br><br><b>inputs</b><br>{inputs}<br><br>"
             + (f"<b>expected</b>: {q['expectation']}" if q.get("expectation") else "")
             + ("<br><br><b>This question is shipped BECAUSE it is refused</b> — "
                + q.get("reason", "") if q.get("expect_refusal") else "")
-            + self._question_record_html(recipe.holdout))
+            + self._question_record_html(template.holdout))
 
     def _question_record_html(self, target) -> str:
         """The hold-out track record for the label a question must recover, when the record has it."""
@@ -2646,13 +2646,13 @@ class AnalysisPanel(QtWidgets.QWidget):
         q = self.current_question()
         if q is None or self.nodes is None:
             return
-        from .questions import as_recipe
-        from .recipes import close
-        recipe = self._question_recipe(q)
+        from .questions import as_template
+        from .question_templates import close
+        template = self._question_template(q)
 
         def job(p):
-            """Check whether the selected recipe has its required evidence inputs."""
-            return close(self.nodes, recipe)
+            """Check whether the selected question template has its required evidence inputs."""
+            return close(self.nodes, template)
 
         self._run(job, self._closure_done, name="closure check")
 
@@ -2684,13 +2684,13 @@ class AnalysisPanel(QtWidgets.QWidget):
         q = self.current_question()
         if q is None or self.nodes is None:
             return
-        from .questions import as_recipe
-        from .recipes import close
-        recipe = self._question_recipe(q)
+        from .questions import as_template
+        from .question_templates import close
+        template = self._question_template(q)
 
         def job(p):
             """Resolve what the question may use, the columns the methods text cites."""
-            return close(self.nodes, recipe)
+            return close(self.nodes, template)
 
         def done(result):
             """Write the methods text for those columns and put it on the clipboard."""
@@ -2700,8 +2700,8 @@ class AnalysisPanel(QtWidgets.QWidget):
                 return
             text = methods_text.full_text(
                 result.columns, self.organism, strategy="map neighbourhoods and clusters",
-                settings={"confidence": recipe.min_precision}, n_genes=len(self.nodes),
-                held_out=recipe.holdout)
+                settings={"confidence": template.min_precision}, n_genes=len(self.nodes),
+                held_out=template.holdout)
             QtWidgets.QApplication.clipboard().setText(text)
             import html
             self.question_report.setHtml("<b>Methods text copied to the clipboard</b>"
@@ -2715,23 +2715,23 @@ class AnalysisPanel(QtWidgets.QWidget):
         q = self.current_question()
         if q is None or self.nodes is None:
             return
-        from .questions import as_recipe
-        from .recipes import run as run_recipe
-        recipe = self._question_recipe(q)
+        from .questions import as_template
+        from .question_templates import run as run_template
+        template = self._question_template(q)
         self._start_table(self.question_table, [])
         self.question_report.setPlainText("")
         self._question_result = None
         self.question_pdf.setEnabled(False)
 
         def job(p):
-            """Run the selected recipe with a pinned backend and generate comparison maps."""
+            """Run the selected question template with a pinned backend and generate comparison maps."""
             from . import gpu
             with gpu.pinned():
                 # Two alternative maps are built so the PDF can show what the winner was chosen
                 # against. They cost a build each, which is why nothing else asks for them.
-                return run_recipe(self.nodes, recipe, alternatives=2, log=p)
+                return run_template(self.nodes, template, alternatives=2, log=p)
 
-        self._run(job, self._question_done, name=f"question ({recipe.holdout})")
+        self._run(job, self._question_done, name=f"question ({template.holdout})")
 
     def _question_done(self, result):
         """Report the answer, and be explicit when there is not one."""

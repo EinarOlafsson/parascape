@@ -413,7 +413,7 @@ disk. `scripts/build_star_edges.py` rebuilds `data/star_edges.parquet`.
 | Pregenerated maps and label x map scores | [umap_gallery](api/parascape/umap_gallery.html), [umap_gallery_panel](api/parascape/umap_gallery_panel.html) |
 | Search and assess held-out recovery | [search](api/parascape/search.html), [validate](api/parascape/validate.html), [holdout_cv](api/parascape/holdout_cv.html) |
 | Rank candidate findings | [discovery](api/parascape/discovery.html), [optimize](api/parascape/optimize.html) |
-| Store analyses and recipes | [runs](api/parascape/runs.html), [searches](api/parascape/searches.html), [recipes](api/parascape/recipes.html) |
+| Store analyses, question templates and settings recipes | [runs](api/parascape/runs.html), [searches](api/parascape/searches.html), [question_templates](api/parascape/question_templates.html), [recipes](api/parascape/recipes.html) |
 | Embed the desktop interface | [app](api/parascape/app.html), [analysis_panel](api/parascape/analysis_panel.html) |
 | Guided workflows | [workflows](api/parascape/workflows.html) |
 | Group-aware classification, regression and multi-label evaluation | [prediction](api/parascape/prediction.html) |

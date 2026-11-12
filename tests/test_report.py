@@ -6,14 +6,14 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from parascape import recipes as R
+from parascape import question_templates as R
 from parascape import report as RP
 
 
 def _result(n=300, with_control=True, refused=False):
     """A finished run, assembled directly rather than by running one: the report is being tested,
     not the pipeline, and a real run would put minutes into every assertion."""
-    recipe = R.Recipe(question="Which unplaced proteins sit with the dense granules?",
+    template = R.QuestionTemplate(question="Which unplaced proteins sit with the dense granules?",
                       inputs=[("biology", ("parasite phenotype", "fitness and essentiality"))],
                       holdout="compartment", validation_holdout="a_control",
                       axis="localisation and export", expectation="dense granules cluster")
@@ -22,7 +22,7 @@ def _result(n=300, with_control=True, refused=False):
                         excluded={"compartment": "primary: the target itself"},
                         removed={"lopit_map": "primary: measured association"},
                         refusal="the holdout restates itself" if refused else "")
-    res = R.RecipeResult(recipe=recipe, closure=closure)
+    res = R.TemplateResult(template=template, closure=closure)
     if refused:
         res.stopped_because = closure.refusal
         return res
@@ -61,7 +61,7 @@ def _pages(path) -> int:
 
 
 def test_a_run_becomes_a_multi_page_pdf(tmp_path):
-    path = RP.recipe_pdf(_result(), str(tmp_path / "r.pdf"))
+    path = RP.question_pdf(_result(), str(tmp_path / "r.pdf"))
     assert os.path.exists(path) and _pages(path) >= 2
 
 
@@ -69,23 +69,23 @@ def test_every_alternative_map_gets_its_own_page(tmp_path):
     """A report that showed only the winner would hide what the choice was between."""
     res = _result()
     res.alternatives = [_result(), _result()]
-    one = _pages(RP.recipe_pdf(_result(), str(tmp_path / "one.pdf")))
-    three = _pages(RP.recipe_pdf(res, str(tmp_path / "three.pdf")))
+    one = _pages(RP.question_pdf(_result(), str(tmp_path / "one.pdf")))
+    three = _pages(RP.question_pdf(res, str(tmp_path / "three.pdf")))
     assert three == one + 2
 
 
-def test_a_refused_recipe_still_produces_a_document_saying_why(tmp_path):
+def test_a_refused_question_template_still_produces_a_document_saying_why(tmp_path):
     """A reader looking for the run must find the reason, not an absent file."""
-    path = RP.recipe_pdf(_result(refused=True), str(tmp_path / "refused.pdf"))
+    path = RP.question_pdf(_result(refused=True), str(tmp_path / "refused.pdf"))
     assert _pages(path) == 2                       # the cover, and the refusal
 
 
 def test_a_run_with_no_control_still_reports(tmp_path):
-    assert _pages(RP.recipe_pdf(_result(with_control=False), str(tmp_path / "n.pdf"))) >= 2
+    assert _pages(RP.question_pdf(_result(with_control=False), str(tmp_path / "n.pdf"))) >= 2
 
 
 def test_the_directory_is_created_rather_than_required(tmp_path):
-    path = RP.recipe_pdf(_result(), str(tmp_path / "deep" / "nested" / "r.pdf"))
+    path = RP.question_pdf(_result(), str(tmp_path / "deep" / "nested" / "r.pdf"))
     assert os.path.exists(path)
 
 
@@ -96,7 +96,7 @@ def test_nothing_scoreable_draws_a_panel_that_says_so_rather_than_an_empty_axis(
     res.recovery = pd.DataFrame()
     res.per_cluster = pd.DataFrame()
     res.control = pd.DataFrame()
-    assert _pages(RP.recipe_pdf(res, str(tmp_path / "empty.pdf"))) >= 2
+    assert _pages(RP.question_pdf(res, str(tmp_path / "empty.pdf"))) >= 2
 
 
 def test_a_control_present_but_absent_from_every_cluster_says_it_cannot_judge(tmp_path):
@@ -104,14 +104,14 @@ def test_a_control_present_but_absent_from_every_cluster_says_it_cannot_judge(tm
     control: silence is not corroboration and must not be drawn as if it were."""
     res = _result()
     res.control = res.control.assign(n_control_labelled=0)
-    assert _pages(RP.recipe_pdf(res, str(tmp_path / "silent.pdf"))) >= 2
+    assert _pages(RP.question_pdf(res, str(tmp_path / "silent.pdf"))) >= 2
 
 
 def test_a_scatter_with_more_labels_than_colours_keeps_the_rest_as_other(tmp_path):
     res = _result(n=600)
     res.truth = pd.Series([f"label {i % 40}" for i in range(600)], dtype="object")
     res.per_cluster = R.recovery_by_cluster(res.labels, res.truth)
-    assert _pages(RP.recipe_pdf(res, str(tmp_path / "many.pdf"))) >= 2
+    assert _pages(RP.question_pdf(res, str(tmp_path / "many.pdf"))) >= 2
 
 
 def test_a_map_with_no_genes_at_all_does_not_crash_the_document(tmp_path):
@@ -123,7 +123,7 @@ def test_a_map_with_no_genes_at_all_does_not_crash_the_document(tmp_path):
     res.recovery = pd.DataFrame()
     res.per_cluster = pd.DataFrame()
     res.control = pd.DataFrame()
-    assert _pages(RP.recipe_pdf(res, str(tmp_path / "none.pdf"))) >= 2
+    assert _pages(RP.question_pdf(res, str(tmp_path / "none.pdf"))) >= 2
 
 
 def test_the_clusters_the_answer_rests_on_are_split_by_whether_the_control_backs_them(tmp_path):
@@ -133,7 +133,7 @@ def test_the_clusters_the_answer_rests_on_are_split_by_whether_the_control_backs
     res.inference = res.inference.assign(
         control_agrees=[i % 2 == 0 for i in range(len(res.inference))])
     assert len(res.inference), "the fixture named nobody, so this asserts nothing"
-    assert _pages(RP.recipe_pdf(res, str(tmp_path / "rests.pdf"))) >= 2
+    assert _pages(RP.question_pdf(res, str(tmp_path / "rests.pdf"))) >= 2
 
 
 def test_a_control_spanning_orders_of_magnitude_is_drawn_on_a_log_axis(tmp_path):
@@ -144,7 +144,7 @@ def test_a_control_spanning_orders_of_magnitude_is_drawn_on_a_log_axis(tmp_path)
     assert len(scoreable) >= 2, "the fixture cannot exercise a range with one scoreable cluster"
     res.control = res.control.assign(
         enrichment=[1.1 if i else 400.0 for i in range(len(res.control))])
-    assert _pages(RP.recipe_pdf(res, str(tmp_path / "log.pdf"))) >= 2
+    assert _pages(RP.question_pdf(res, str(tmp_path / "log.pdf"))) >= 2
 
 
 def test_a_run_that_named_nobody_says_so_where_the_answer_would_have_been(tmp_path):
@@ -152,7 +152,7 @@ def test_a_run_that_named_nobody_says_so_where_the_answer_would_have_been(tmp_pa
     reads as a broken figure."""
     res = _result()
     res.inference = pd.DataFrame()
-    assert _pages(RP.recipe_pdf(res, str(tmp_path / "nobody.pdf"))) >= 2
+    assert _pages(RP.question_pdf(res, str(tmp_path / "nobody.pdf"))) >= 2
 
 
 def test_outliers_do_not_own_the_axis(tmp_path):
@@ -174,4 +174,4 @@ def test_fixed_class_candidates_report_held_out_precision(tmp_path):
     res.inference = pd.DataFrame({"gene_id": ["g1"], "cluster": [0],
                                   "predicted": ["dense granules"],
                                   "cv_class_precision": [.75], "enrichment": [3.]})
-    assert _pages(RP.recipe_pdf(res, str(tmp_path / "classification.pdf"))) >= 2
+    assert _pages(RP.question_pdf(res, str(tmp_path / "classification.pdf"))) >= 2

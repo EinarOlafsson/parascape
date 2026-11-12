@@ -99,7 +99,7 @@ def test_checking_a_sound_question_reports_what_closure_removed(panel, monkeypat
 def test_running_a_question_puts_the_genes_in_the_table_and_the_control_beside_them(panel, nodes,
                                                                                    monkeypatch):
     """The whole tab in one test: click run, get genes, and get told whether to believe them."""
-    from parascape import recipes
+    from parascape import question_templates
 
     lab = np.arange(len(nodes)) % 3
     lab[::7] = -1
@@ -117,7 +117,7 @@ def test_running_a_question_puts_the_genes_in_the_table_and_the_control_beside_t
     panel._questions = [{**CATALOGUE[0], "validation_holdout": "a_control", "min_precision": 0.7}]
     monkeypatch.setattr(panel, "_run",
                         lambda fn, done, **k: done(fn(lambda *a: None)))
-    monkeypatch.setattr(recipes, "tune_umap", lambda nodes, spec, **k: pd.DataFrame(
+    monkeypatch.setattr(question_templates, "tune_umap", lambda nodes, spec, **k: pd.DataFrame(
         [{"n_neighbors": 15, "min_dist": 0.0, "usable": True, "score": 1.0, "stage": "full"}]))
     panel.run_question()
     assert panel.question_table.rowCount() > 0
@@ -129,7 +129,7 @@ def test_an_answer_no_control_corroborates_says_so_rather_than_looking_like_one(
                                                                                monkeypatch):
     """An uncorroborated list of genes looks exactly like a corroborated one on screen, and the whole
     argument for having a control is that the difference decides whether to believe the answer."""
-    from parascape import recipes
+    from parascape import question_templates
     lab = np.arange(len(nodes)) % 3
     lab[::7] = -1
     monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: lab[:len(X)])
@@ -140,7 +140,7 @@ def test_an_answer_no_control_corroborates_says_so_rather_than_looking_like_one(
     panel.nodes["compartment"] = truth
     panel._questions = [{**CATALOGUE[0], "validation_holdout": "", "min_precision": 0.7}]
     monkeypatch.setattr(panel, "_run", lambda fn, done, **k: done(fn(lambda *a: None)))
-    monkeypatch.setattr(recipes, "tune_umap", lambda nodes, spec, **k: pd.DataFrame(
+    monkeypatch.setattr(question_templates, "tune_umap", lambda nodes, spec, **k: pd.DataFrame(
         [{"n_neighbors": 15, "min_dist": 0.0, "usable": True, "score": 1.0, "stage": "full"}]))
     panel.run_question()
     assert "corroborates none of these clusters" in panel.question_report.toPlainText()
@@ -171,7 +171,7 @@ def test_an_empty_catalogue_says_how_to_generate_one(app, nodes, tmp_path, monke
 def test_an_answer_that_names_nobody_says_how_close_it_came(panel, nodes, monkeypatch):
     """"No genes" and "the best cluster was 1.4x enriched at 0.62 purity" are different findings, and
     only the second tells a reader whether the question failed or the gate did."""
-    from parascape import recipes
+    from parascape import question_templates
     lab = np.arange(len(nodes)) % 3
     lab[::7] = -1
     monkeypatch.setattr("parascape.clustering.cluster", lambda X, **k: lab[:len(X)])
@@ -183,7 +183,7 @@ def test_an_answer_that_names_nobody_says_how_close_it_came(panel, nodes, monkey
     panel.nodes["compartment"] = truth
     panel._questions = [{**CATALOGUE[0], "validation_holdout": "", "min_precision": 0.99}]
     monkeypatch.setattr(panel, "_run", lambda fn, done, **k: done(fn(lambda *a: None)))
-    monkeypatch.setattr(recipes, "tune_umap", lambda nodes, spec, **k: pd.DataFrame(
+    monkeypatch.setattr(question_templates, "tune_umap", lambda nodes, spec, **k: pd.DataFrame(
         [{"n_neighbors": 15, "min_dist": 0.0, "usable": True, "score": 1.0, "stage": "full"}]))
     panel.run_question()
     # The note names BOTH numbers now: how enriched the best cluster was and how pure. Either alone

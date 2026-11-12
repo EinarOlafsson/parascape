@@ -32,10 +32,10 @@ def test_the_catalogue_round_trips(tmp_path):
     assert Q.load(str(path))[0]["question"] == "q"
 
 
-def test_a_catalogue_entry_becomes_a_recipe_without_carrying_its_verdict():
-    """A projection rather than a cast. `Recipe.from_dict` ignores what it does not know, and letting
+def test_a_catalogue_entry_becomes_a_question_template_without_carrying_its_verdict():
+    """A projection rather than a cast. `QuestionTemplate.from_dict` ignores what it does not know, and letting
     it do so here too would let a typo'd key ride along unnoticed in both directions."""
-    r = Q.as_recipe({"question": "q", "inputs": [RNA], "holdout": "compartment",
+    r = Q.as_template({"question": "q", "inputs": [RNA], "holdout": "compartment",
                      "verdict": "keep", "reason": "because", "holdout_bins": 3})
     assert r.question == "q" and r.holdout_bins == 3
     assert not hasattr(r, "verdict") and not hasattr(r, "reason")
@@ -86,8 +86,8 @@ def test_only_questions_that_pass_closure_may_be_offered(nodes):
     assert len(Q.shipped(None, catalogue)) == 2
 
 
-def test_a_recipe_expected_to_fail_is_shipped_deliberately(nodes):
-    """Instruction 45 asks for at least one recipe expected to FAIL, kept and labelled as such. A
+def test_a_question_template_expected_to_fail_is_shipped_deliberately(nodes):
+    """Instruction 45 asks for at least one question template expected to FAIL, kept and labelled as such. A
     library where everything works is a library that has been fitted to its answers."""
     catalogue = [{"question": "known circular, kept as a demonstration", "inputs": [LOCALIZATION],
                   "holdout": "compartment", "verdict": "drop", "expect_refusal": True}]
@@ -97,7 +97,7 @@ def test_a_recipe_expected_to_fail_is_shipped_deliberately(nodes):
 def test_the_shipped_catalogue_is_consistent_with_itself():
     """Guards the real file: every entry names an axis the project declares, nothing is both kept
     and expected to fail, and no two shipped questions hold out the same label -- which is the rule
-    that stops twenty recipes being one recipe run twenty times."""
+    that stops twenty question templates being one template run twenty times."""
     catalogue = Q.load()
     assert len(catalogue) >= 100, "the hundred questions instruction 45 asked for"
     for q in catalogue:
@@ -108,4 +108,4 @@ def test_the_shipped_catalogue_is_consistent_with_itself():
     assert len(holdouts) == len(set(holdouts)), "two shipped questions hold out the same label"
     assert len(shipped) == 20, f"{len(shipped)} shipped, expected 20"
     assert sum(1 for q in catalogue if q.get("expect_refusal")) >= 1, \
-        "no recipe is expected to fail; a library where everything works is fitted to its answers"
+        "no question template is expected to fail; a library where everything works is fitted to its answers"

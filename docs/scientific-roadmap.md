@@ -29,13 +29,13 @@ registry entries, which include computed layers as well as source datasets.
 | Biological context | `slots.py`: organism, question, context, entity type, combination policy | Keep replicate and condition detail before producing gene-level features |
 | Balanced feature blocks | `embedding.py`: scaling, missingness policies, block variance normalization | Use this machinery consistently, with task-specific feature selection |
 | Multiple prediction methods | `methods.py`: logistic regression, boosted trees, single-layer propagation, multiplex communities | Compare them with the same task, data, splits, and prediction metrics |
-| Leakage controls | `search.py`, `recipes.py`: target families, derived inputs, excluded edge layers | Perform label-dependent decisions within training folds |
+| Leakage controls | `search.py`, `question_templates.py`: target families, derived inputs, excluded edge layers | Perform label-dependent decisions within training folds |
 | Validation and candidates | `validate.py`, `holdout_cv.py`, candidate tables and exports | Make one consistent evaluation and prediction contract reach every user-facing result |
 | Map quality and rankings | `metrics.py`: trustworthiness, neighbourhood purity, AUROC/AUPRC | Separate projection quality, biological recovery, and prospective prediction quality |
 
 Code references: [embedding](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/embedding.py),
 [methods](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/methods.py),
-[recipes](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/recipes.py),
+[question templates](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/recipes.py), which was called `recipes.py` at that commit,
 [nested validation](https://github.com/EinarOlafsson/parascape/blob/ac9019b/parascape/holdout_cv.py).
 
 ## Is the UMAP design rational?
@@ -46,7 +46,7 @@ function, an interaction, or a probability that a gene has a trait. An organism
 also has no single universal similarity: two genes can be close in expression and
 far apart in sequence, localization, or fitness.
 
-The current `recipes.build_map` clusters projected coordinates, and
+The current `question_templates.build_map` clusters projected coordinates, and
 `EmbeddingSpec` defaults to three dimensions. The headless nested-CV experiment
 also constructs three-dimensional UMAPs. This makes a display decision part of
 the inference method. I would compare feature-space neighbours, PCA/factor-space
@@ -76,7 +76,7 @@ for browsing; it cannot independently validate localization prediction.
 ## Correctness priorities before adding more algorithms
 
 1. **Score classifier outputs as predictions with fixed class meanings.**
-   `recipes.build_model` currently passes out-of-fold class codes to
+   `question_templates.build_model` currently passes out-of-fold class codes to
    `search.score_recovery`, which finds the best cluster for each true label.
    That is a descriptive partition score, not classifier accuracy. In a synthetic
    60-gene example with every A called B and every B called A, classification
@@ -102,7 +102,7 @@ for browsing; it cannot independently validate localization prediction.
    remain a declared rule. [Scikit-learn's leakage guidance](https://scikit-learn.org/stable/common_pitfalls.html).
 
 4. **Do not present cluster purity as a calibrated per-gene probability.**
-   `recipes.infer` attaches cluster precision to every candidate in that cluster.
+   `question_templates.infer` attaches cluster precision to every candidate in that cluster.
    This is group-level evidence from the labelled subset. It need not apply to a
    poorly measured gene at the edge of the group. Report support, held-out
    performance, disagreement, and missingness; calibrate model probabilities on

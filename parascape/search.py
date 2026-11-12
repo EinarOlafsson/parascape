@@ -298,7 +298,7 @@ def excluded_edges(target: str, scope: str = "biology") -> dict:
     because none of them can see an edge.
 
     **The family is ALWAYS closed, whatever scope is asked for, and that was measured rather than
-    assumed.** Asked at class scope -- which is what every recipe uses -- this banned NOTHING for
+    assumed.** Asked at class scope -- which is what every question template uses -- this banned NOTHING for
     `compartment`, while `target_family` banned the layer: `Tg_shared_compartment` sits under
     `molecular relationships > parasite-parasite` in the biology tree, because an edge joining two
     genes IS a relational measurement, while the `compartment` label sits under
@@ -385,7 +385,7 @@ def excluded_layers(nodes: pd.DataFrame, target: str, scope: str = "biology",
 
 
 def all_edge_layers(organism: str = "Tg") -> tuple:
-    """Every edge layer the catalogue declares, which is the vocabulary a recipe may draw from."""
+    """Every edge layer the catalogue declares, which is the vocabulary a question template may draw from."""
     from . import slots
     return tuple(sorted({layer for slot in slots.all_slots(organism)
                          for layer in slots.edge_types(slot)}))
@@ -507,7 +507,7 @@ def excluded_for(nodes: pd.DataFrame, target: str, threshold=0.8,
     """The target, everything that restates it, and everything the same experiment produced.
 
     The set of :func:`excluded_detail`. A caller that only has to BAN columns wants this; one that
-    has to say what it banned and why -- a recipe reporting its closure before it builds anything --
+    has to say what it banned and why -- a question template reporting its closure before it builds anything --
     wants the detail.
     """
     return set(excluded_detail(nodes, target, threshold=threshold, scope=scope))
@@ -1202,7 +1202,7 @@ def sweep_inference(nodes: pd.DataFrame, spec, hierarchy: str = "evidence", leve
     measurement. It comes out as its own table, carrying the category, the cluster and the
     enrichment that produced it.
     """
-    from .recipes import infer, label_series, relevance
+    from .question_templates import infer, label_series, relevance
     rows = []
 
     def collect(row, labels, kept, held_columns):

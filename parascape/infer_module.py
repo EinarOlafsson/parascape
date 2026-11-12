@@ -59,8 +59,9 @@ class InferModule(QtCore.QObject):
         panel.question_choice.view().setTextElideMode(QtCore.Qt.TextElideMode.ElideNone)
         panel.question_choice.view().setMinimumWidth(640)
         ql.addWidget(panel.question_choice)
-        ql.addWidget(_muted("Each question comes with what it may use, the label it must recover "
-                            "and an independent control. One is shipped because it is refused."))
+        ql.addWidget(_muted("Each question is a question template: it names what it may use, the label "
+                            "it must recover and an independent control. One is shipped because it "
+                            "is refused."))
         shell.add_setting("Your question", q)
 
         uses = QtWidgets.QWidget(shell)
@@ -204,7 +205,7 @@ class InferModule(QtCore.QObject):
         q = panel.current_question()
         if q is None or panel.nodes is None:
             return
-        recipe = panel._question_recipe(q)
+        template = panel._question_template(q)
         model = self.method()
         panel._start_table(panel.question_table, [])
         panel.question_report.setPlainText("")
@@ -213,9 +214,9 @@ class InferModule(QtCore.QObject):
         def job(p):
             """Grade the method on the question, then rank the unlabelled genes."""
             from . import harness_answer as HA
-            return HA.answer(panel.nodes, recipe, model, log=p)
+            return HA.answer(panel.nodes, template, model, log=p)
 
-        panel._run(job, self._harness_done, name=f"answer ({model}: {recipe.holdout})")
+        panel._run(job, self._harness_done, name=f"answer ({model}: {template.holdout})")
 
     def _harness_done(self, result) -> None:
         """Show the ranked genes and, above everything, how the method was graded."""
@@ -247,7 +248,7 @@ class InferModule(QtCore.QObject):
     def refresh_uses(self) -> None:
         """One tick box per kind of evidence the question's inputs hold; the label's own kind is
         shown held out, with the reason, and cannot be ticked (instruction 74, the data step)."""
-        from .recipes import _categories, input_categories
+        from .question_templates import _categories, input_categories
         for box in self.uses_boxes.values():
             box.setParent(None)
             box.deleteLater()
@@ -258,13 +259,13 @@ class InferModule(QtCore.QObject):
         if q is None or nodes is None:
             self.uses_note.setText("Choose a question to see what its answer may use.")
             return
-        from .questions import as_recipe
-        recipe = as_recipe(q)
+        from .questions import as_template
+        template = as_template(q)
         try:
-            counts = input_categories(nodes, recipe)
-            held = set(_categories(recipe.organism)(recipe.holdout)) - {"identity"}
-            from .recipes import same_category
-            circular = same_category(nodes, recipe.holdout, recipe.organism)
+            counts = input_categories(nodes, template)
+            held = set(_categories(template.organism)(template.holdout)) - {"identity"}
+            from .question_templates import same_category
+            circular = same_category(nodes, template.holdout, template.organism)
         except Exception as error:
             self.uses_note.setText(f"Could not read the inputs: {error}")
             return
@@ -434,8 +435,8 @@ class InferModule(QtCore.QObject):
             return 0
         q = self.panel.current_question() or {}
         try:
-            from .questions import as_recipe
-            trait = as_recipe(q).holdout
+            from .questions import as_template
+            trait = as_template(q).holdout
         except Exception:
             trait = str(q.get("question", "answer"))
         column = self._gene_column(frame)
@@ -505,7 +506,7 @@ class InferModule(QtCore.QObject):
             if not folder:
                 return ""
         from . import export_bundle
-        recipe = result.recipe
+        template = result.template
         tables, kinds = {"named genes": result.inference}, {"named genes": "inferred"}
         if len(getattr(result, "per_cluster", [])):
             tables["clusters"], kinds["clusters"] = result.per_cluster, "inferred"
@@ -517,15 +518,15 @@ class InferModule(QtCore.QObject):
         if view is not None and view.width() > 10:
             figures["map"] = view
         export_bundle.write(folder, organism=self.panel.organism,
-                            query={"question": recipe.question, "holdout": recipe.holdout,
-                                   "control": recipe.validation_holdout,
-                                   "confidence": recipe.min_precision,
+                            query={"question": template.question, "holdout": template.holdout,
+                                   "control": template.validation_holdout,
+                                   "confidence": template.min_precision,
                                    "leave_out_categories": list(self.panel.question_leave_out)},
                             tables=tables, kinds=kinds, columns=result.closure.columns,
                             figures=figures, nodes=self.window.nodes,
                             strategy="map neighbourhoods and clusters",
-                            settings={"confidence": recipe.min_precision},
-                            n_genes=len(self.window.nodes), held_out=recipe.holdout)
+                            settings={"confidence": template.min_precision},
+                            n_genes=len(self.window.nodes), held_out=template.holdout)
         self.shell.say(f"bundle written: {folder}")
         return folder
 

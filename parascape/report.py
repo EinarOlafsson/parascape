@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The figures a recipe run would go into a paper with.
+"""The figures that a run of a question template would go into a paper with.
 
 Instruction 46. The application already lets a result be read on screen; this writes the same run out
 as a document somebody could put in a manuscript -- vector output, one page per map, and every number
@@ -235,20 +235,20 @@ def _cover(pdf, result, version: str):
     """The page that makes the rest of the document evidence rather than pictures."""
     import matplotlib.pyplot as plt
     fig = plt.figure(figsize=(11.7, 8.3))
-    fig.text(0.06, 0.94, "parascape — recipe report", fontsize=15, weight="bold")
-    fig.text(0.06, 0.90, result.recipe.question, fontsize=11, wrap=True)
+    fig.text(0.06, 0.94, "parascape — question report", fontsize=15, weight="bold")
+    fig.text(0.06, 0.90, result.template.question, fontsize=11, wrap=True)
     closure = result.closure
     removed = "\n".join(f"    {c} — {why}" for c, why in sorted(closure.removed.items())[:12]) \
         or "    nothing the question named had to be removed"
     body = (
-        f"axis                {result.recipe.axis or '—'}\n"
+        f"axis                {result.template.axis or '—'}\n"
         f"holdout             {closure.holdout_column}"
-        f"{f' (binned into {result.recipe.holdout_bins})' if result.recipe.holdout_bins else ''}\n"
+        f"{f' (binned into {result.template.holdout_bins})' if result.template.holdout_bins else ''}\n"
         f"validation holdout  {closure.control_column or 'none available'}\n"
-        f"gate                enrichment >= {result.recipe.min_enrichment:.2f}, "
-        f"purity >= {result.recipe.min_precision:.2f}\n"
-        f"seed                {result.recipe.seed}\n"
-        f"leakage scope       {result.recipe.scope}\n\n"
+        f"gate                enrichment >= {result.template.min_enrichment:.2f}, "
+        f"purity >= {result.template.min_precision:.2f}\n"
+        f"seed                {result.template.seed}\n"
+        f"leakage scope       {result.template.scope}\n\n"
         f"inputs after closure  {len(closure.blocks)} blocks, {len(closure.columns)} columns\n"
         f"excluded overall      {len(closure.excluded)} columns\n"
         f"removed from the inputs this question named ({len(closure.removed)}):\n{removed}\n\n"
@@ -257,7 +257,7 @@ def _cover(pdf, result, version: str):
     )
     import textwrap
     body += "expectation\n" + "\n".join(
-        "    " + line for line in textwrap.wrap(result.recipe.expectation or "—", 96))
+        "    " + line for line in textwrap.wrap(result.template.expectation or "—", 96))
     fig.text(0.06, 0.86, body, fontsize=8, family="monospace", va="top")
     fig.text(0.06, 0.04, f"parascape {version} · generated {datetime.now():%Y-%m-%d %H:%M} · "
                          f"every figure below is from the run described here", fontsize=6)
@@ -272,14 +272,14 @@ def _map_page(pdf, result, index: int, total: int):
     grid = fig.add_gridspec(2, 5, height_ratios=[1.10, 1.0], hspace=0.42, wspace=0.30,
                             left=0.055, right=0.985, top=0.90, bottom=0.08)
     q = result.quality
-    fig.suptitle(f"map {index} of {total} — {result.recipe.question}", fontsize=11, y=0.97)
+    fig.suptitle(f"map {index} of {total} — {result.template.question}", fontsize=11, y=0.97)
 
     _table(fig.add_subplot(grid[0, 0]), [
         ("n_neighbors", result.settings.get("n_neighbors", "—")),
         ("min_dist", result.settings.get("min_dist", "—")),
         ("components", np.asarray(result.coords).shape[1] if len(result.coords) else "—"),
         ("metric", "euclidean"),
-        ("seed", result.recipe.seed),
+        ("seed", result.template.seed),
         ("backend", result.summary.get("backend", "—")),
         ("genes mapped", int(np.sum(result.genes))),
     ], "UMAP")
@@ -329,10 +329,10 @@ def _map_page(pdf, result, index: int, total: int):
     plt.close(fig)
 
 
-def recipe_pdf(result, path: str) -> str:
+def question_pdf(result, path: str) -> str:
     """Write the run to `path` as a PDF and return the path.
 
-    A refused recipe still gets a document: the refusal and what caused it is the result, and a
+    A refused question template still gets a document: the refusal and what caused it is the result, and a
     reader looking for the run needs to find the reason rather than an absent file.
     """
     import matplotlib

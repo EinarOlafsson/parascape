@@ -1,6 +1,6 @@
 """The recipe controls of a module: save its settings under a name, apply one, share one.
 
-The logic lives in :mod:`parascape.module_recipes` and has no Qt. This file only shows it. A module
+The logic lives in :mod:`parascape.recipes` and has no Qt. This file only shows it. A module
 declares which of its controls are settings (:class:`Setting`, or :func:`widget_setting` for an
 ordinary spin box, drop-down, tick box or text field) and hands them to
 ``ModuleShell.add_recipes``, which puts this panel in the Settings column as a section that
@@ -18,7 +18,7 @@ from typing import Any, Callable, Dict, Iterable, List, Optional
 
 from PySide6 import QtCore, QtWidgets
 
-from . import module_recipes as R
+from . import recipes as R
 from . import theme as TH
 
 

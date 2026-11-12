@@ -5,7 +5,7 @@ Instruction 45's acceptance is not "the twenty exist" but "the twenty run end to
 genes", so this runs them and records the outcome per question: the map that was built, what
 recovered, how many genes were named, and whether the independent control corroborated any of them.
 
-It is slow on purpose -- each question tunes its own UMAP and its own clustering, because a recipe
+It is slow on purpose -- each question tunes its own UMAP and its own clustering, because a question template
 that reused another question's map would be answering with a map chosen for a different question.
 Expect minutes per question. Results are written after EACH question rather than at the end, so a run
 that is interrupted keeps what it has.
@@ -39,8 +39,8 @@ def main() -> int:
                     help="extra maps to build and show in the PDF, so the winner has a comparison")
     args = ap.parse_args()
 
-    from parascape.questions import as_recipe, load, shipped
-    from parascape.recipes import run
+    from parascape.questions import as_template, load, shipped
+    from parascape.question_templates import run
 
     nodes = pd.read_parquet(NODES)
     catalogue = shipped(nodes, load())
@@ -50,21 +50,21 @@ def main() -> int:
 
     rows = []
     for i, q in enumerate(catalogue, 1):
-        recipe = as_recipe(q)
+        template = as_template(q)
         t0 = time.time()
-        print(f"[{i}/{len(catalogue)}] {recipe.question}")
-        result = run(nodes, recipe, tune=not args.no_tune,
+        print(f"[{i}/{len(catalogue)}] {template.question}")
+        result = run(nodes, template, tune=not args.no_tune,
                      alternatives=args.alternatives if args.pdf_dir else 0, log=lambda *a: None)
         if args.pdf_dir:
-            from parascape.report import recipe_pdf
-            safe = "".join(c if c.isalnum() else "_" for c in recipe.question)[:60].strip("_")
-            recipe_pdf(result, os.path.join(args.pdf_dir, f"{i:02d}_{safe}.pdf"))
+            from parascape.report import question_pdf
+            safe = "".join(c if c.isalnum() else "_" for c in template.question)[:60].strip("_")
+            question_pdf(result, os.path.join(args.pdf_dir, f"{i:02d}_{safe}.pdf"))
         agreed = 0
         if len(result.inference) and "control_agrees" in result.inference:
             agreed = int(result.inference["control_agrees"].fillna(False).sum())
         rows.append({
-            "question": recipe.question, "axis": recipe.axis,
-            "expect_refusal": recipe.expect_refusal,
+            "question": template.question, "axis": template.axis,
+            "expect_refusal": template.expect_refusal,
             "ran": result.ok, "stopped_because": result.stopped_because,
             "clusters": result.quality.get("clusters", 0),
             "settings": json.dumps(result.settings),
