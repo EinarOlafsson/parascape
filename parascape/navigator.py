@@ -18,8 +18,9 @@ kept and what answers it is replaced. Suggestions come from
 :func:`parascape.modules.search` and :func:`parascape.nodes.search`, which ranks
 genes, questions, strategies, datasets, panels and guide pages in one call, so the
 best answer wins whatever kind of thing it is. spaCR's path inspection, protocol
-editor and workflow builder are not ported; its AI button is, routed to
-ParaScape's assistant.
+editor and workflow builder are not ported; its AI symbol is, drawn and
+behaving as in spaCR (`parascape.ai_button`): a ring-and-dot switch in the field, an answer
+written below it, a right-click to choose the provider.
 
 Kept from spaCR: the 64 px pill field with its 28 px radius and 16 px type; the
 row of suggestion cards beneath it with faded edges; a details pane for the card
@@ -34,8 +35,10 @@ from html import escape
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
+from . import iconset
 from . import modules as MOD
 from . import theme as TH
+from .ai_button import AiButton, ProviderDialog
 
 #: Field geometry, spaCR's: a tall pill, so the one thing on the page reads as the
 #: thing to use.
@@ -52,6 +55,7 @@ MAX_CARDS = 24
 FLOW_SIDE = 170               # a next-step node in the module network; the root keeps CARD_SIDE
 FLOW_GAP_X = 110              # room between columns, for the edges
 FLOW_GAP_Y = 22
+AI_ROOM = 60                  # right margin of the field: the AI symbol and a gap
 
 
 @dataclass(frozen=True)
@@ -210,33 +214,19 @@ def _clip(text: str, n: int) -> str:
     return (cut or text[:n]).rstrip(" ·,;:—-") + "…"
 
 
-#: spaCR's card artwork, by ParaScape module and by the kind of a result. The images
-#: are spaCR's own (white line art on transparency, under spaCR's licence), so a
-#: ParaScape card carries the same marks as a spaCR one rather than look-alikes.
-_MODULE_ICON = {
-    "gene": "profiler", "structure": "layer_viewer", "partners": "graph_builder",
-    "expression": "pca", "map": "umap", "network": "graph_builder", "cell": "image_scatter",
-    "gallery": "trellis", "questions": "experiment_design", "infer": "ml_analyze",
-    "strategies": "model_zoo", "scorecard": "model_compare", "runs": "run_history",
-    "fill": "regression", "drop": "download", "screen": "hit_list", "list": "tabulate",
-    "export": "methods_export", "datasets": "data_manager", "information": "feature_dict",
-    "jobs": "queue", "console": "report",
-}
-_KIND_ICON = {"gene": "profiler", "dataset": "db_browser", "question": "experiment_design",
-              "strategy": "model_zoo", "guide": "report", "panel": "settings", "node": "settings"}
-
-
 def icon_path(suggestion: Suggestion) -> str:
-    """The spaCR artwork for a card, as a file path."""
-    from pathlib import Path
+    """The spaCR artwork for a card, as a file path, from the one icon provider.
+
+    Kept as a function of the card so a caller never needs to know whether the card is a module
+    or a kind of result; the tables live in :mod:`parascape.iconset` and nowhere else.
+
+    :param suggestion: the card.
+    """
     if suggestion.kind == "module":
-        name = _MODULE_ICON.get(suggestion.key)
-    elif suggestion.kind == "group":
-        name = _KIND_ICON.get(suggestion.key)
-    else:
-        name = _KIND_ICON.get(suggestion.kind)
-    name = name or "settings"
-    return str(Path(__file__).with_name("data") / "icons" / "spacr" / f"{name}.png")
+        return iconset.module_icon_file(suggestion.key)
+    if suggestion.kind == "group":
+        return iconset.kind_icon_file(suggestion.key)
+    return iconset.kind_icon_file(suggestion.kind)
 
 
 def card_name(suggestion: Suggestion) -> str:
@@ -281,9 +271,6 @@ QLineEdit#NavigatorField {{
     font-size: 16px; padding: 0px 24px; placeholder-text-color: {P["fg_muted"]};
     selection-background-color: {P["accent"]};
 }}
-QPushButton#NavigatorAsk {{ color: {P["fg"]}; background: transparent; border: none;
-    padding: 0px; font-size: 16px; }}
-QPushButton#NavigatorAsk:hover {{ color: {STAGE_HOVER["stable"]}; }}
 QPushButton#EasySuggestionCard {{
     background: {surface}; color: {P["fg"]}; border: 1px solid {P["border"]};
     border-radius: 16px; padding: 12px; min-width: 0px; min-height: 0px; text-align: left;
@@ -343,14 +330,8 @@ class SuggestionCard(QtWidgets.QPushButton):
         icon = QtWidgets.QLabel()
         icon.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         icon.setAttribute(QtCore.Qt.WidgetAttribute.WA_TransparentForMouseEvents)
-        pixmap = QtGui.QPixmap(icon_path(suggestion))
-        if not pixmap.isNull():
-            ratio = self.devicePixelRatioF() or 1.0
-            pixmap = pixmap.scaled(int(ICON_PX * ratio), int(ICON_PX * ratio),
-                                   QtCore.Qt.AspectRatioMode.KeepAspectRatio,
-                                   QtCore.Qt.TransformationMode.SmoothTransformation)
-            pixmap.setDevicePixelRatio(ratio)
-            icon.setPixmap(pixmap)
+        ratio = self.devicePixelRatioF() or 1.0
+        icon.setPixmap(iconset.pixmap(icon_path(suggestion), ICON_PX, "dark", ratio))
         icon.setFixedHeight(ICON_PX)
         if unavailable:
             fade = QtWidgets.QGraphicsOpacityEffect(icon)
@@ -394,11 +375,12 @@ class NavigatorPage(QtWidgets.QWidget):
     Searching happens on Return, not on every keystroke: typing changes nothing below the
     field until it is submitted, and a second Return opens the highlighted card.
 
-    `chosen(kind, key)` fires when a card is opened; `ask(text)` when the assistant is.
+    `chosen(kind, key)` fires when a card is opened. The assistant is the ring-and-dot switch at
+    the end of the field, as in spaCR: when it is on and a search finds nothing, the question is
+    answered in the panel below the field.
     """
 
     chosen = QtCore.Signal(str, str)
-    ask = QtCore.Signal(str)
 
     PROMPT = "Type a gene, a question, a module or a dataset, then press Return."
 
@@ -414,16 +396,16 @@ class NavigatorPage(QtWidgets.QWidget):
         self.field = QtWidgets.QLineEdit(self)
         self.field.setObjectName("NavigatorField")
         self.field.setFixedHeight(FIELD_H)
-        self.field.setPlaceholderText("A gene, a question, a module or a dataset  ·  Return to search")
+        self.field.setPlaceholderText("A gene, a question, a module or a dataset  ·  Return to search  ·  ◉ asks the assistant")
         self.field.setAccessibleName("Search ParaScape")
-        self.field.setClearButtonEnabled(True)
-        self.field.setTextMargins(0, 0, 64, 0)
-        self.ask_button = QtWidgets.QPushButton("Ask", self.field)
-        self.ask_button.setObjectName("NavigatorAsk")
-        self.ask_button.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
-        self.ask_button.setToolTip("Ask the assistant instead of picking a card. Everything else "
-                                   "on this page works with no assistant at all.")
-        self.ask_button.clicked.connect(lambda: self.ask.emit(self.field.text().strip()))
+        self.field.setToolTip("Type a gene, a product, a question, a module or a dataset and "
+                              "press Return. Everything here works with no assistant at all.")
+        # No clear button: Einar does not want the small cross anywhere. Escape empties the field
+        # (the key handling below), so the field needs no helper here.
+        self.field.setClearButtonEnabled(False)
+        self.field.setTextMargins(0, 0, AI_ROOM, 0)
+        self.ai_button = AiButton(self.field)
+        self._ai_state_init()
 
         self.feedback = QtWidgets.QLabel(self.PROMPT, self)
         self.feedback.setObjectName("NavigatorFeedback")
@@ -459,6 +441,7 @@ class NavigatorPage(QtWidgets.QWidget):
         self.flow_hint.hide()
 
         self.field.textEdited.connect(self._edited)
+        self.field.textEdited.connect(self.ai_button.typed)
         self.field.returnPressed.connect(self.submit)
         self.field.installEventFilter(self)
 
@@ -481,7 +464,7 @@ class NavigatorPage(QtWidgets.QWidget):
         w, h = self.width(), self.height()
         field = self._field_rect()
         self.field.setGeometry(field)
-        self._place_ask()
+        self._place_ai()
         self.feedback.setGeometry(field.left(), field.bottom() + 10, field.width(), 44)
 
         details_w = field.width()
@@ -550,14 +533,12 @@ class NavigatorPage(QtWidgets.QWidget):
                     card.setGraphicsEffect(effect)
                 effect.setOpacity(fade)
 
-    def _place_ask(self) -> None:
-        """Inset Ask inside the field's right margin, left of the clear button."""
+    def _place_ai(self) -> None:
+        """Put the AI symbol inside the right end of the field, centred, as spaCR does."""
         f = self.field
-        hint = self.ask_button.sizeHint()
-        clear = 34 if f.isClearButtonEnabled() and f.text() else 18
-        self.ask_button.setGeometry(f.width() - hint.width() - clear,
-                                    (f.height() - hint.height()) // 2,
-                                    hint.width(), hint.height())
+        self.ai_button.move(f.width() - self.ai_button.width() - 12,
+                            (f.height() - self.ai_button.height()) // 2)
+        self.ai_button.raise_()
 
     def wheelEvent(self, event):                           # noqa: N802
         """Scroll the card row sideways with the mouse wheel when it overflows."""
@@ -571,9 +552,9 @@ class NavigatorPage(QtWidgets.QWidget):
     # ------------------------------------------------------------------ search
     def _edited(self, _text: str) -> None:
         """Typing changes nothing below the field until Return -- Einar's request."""
-        self._place_ask()
         text = self.field.text().strip()
         if not text:
+            self._cancel_ai()
             self._clear()
             self.feedback.setText(self.PROMPT)
         elif text != self._searched:
@@ -614,6 +595,7 @@ class NavigatorPage(QtWidgets.QWidget):
     def refresh(self) -> None:
         """Search for what is in the field and grow the cards into place."""
         text = self.field.text().strip()
+        self._cancel_ai()
         self._leave_flow()
         self._clear()
         if not text:
@@ -622,8 +604,13 @@ class NavigatorPage(QtWidgets.QWidget):
         self._searched = text
         found = suggestions(text, genes=self._genes, index=self._index)
         if not found:
-            self.feedback.setText(f"Nothing here matches “{text}”. Ask the assistant, "
-                                  "or try a gene id or a product name.")
+            if self.ai_button.isChecked():
+                self.feedback.setText(f"Nothing here matches “{text}”. Asking the assistant…")
+                self.ask_ai(text)
+            else:
+                self.feedback.setText(
+                    f"Nothing here matches “{text}”. Try a gene id or a product name, or "
+                    "click the ring at the end of the field to turn the assistant on and ask.")
             return
         self._top = found
         self._expanded = None
@@ -690,12 +677,217 @@ class NavigatorPage(QtWidgets.QWidget):
     def reset(self) -> None:
         """Empty the Navigator, as it is every time Home is shown (Einar's request)."""
         self._leave_flow()
+        self._cancel_ai()
         self._clear()
         self._top, self._expanded = [], None
         self.back.hide()
         self.field.clear()
         self.feedback.setText(self.PROMPT)
         self._arrange(animate=False)
+
+    # ------------------------------------------------------------ the assistant
+    def _ai_state_init(self) -> None:
+        """Set up the state of the assistant: no provider yet, nothing running.
+
+        The provider is remembered between runs, as spaCR remembers it, so the first click of a
+        later session turns the assistant on without asking again.
+        """
+        self._ai_provider = self._saved_provider()
+        self._ai_worker = None
+        self._ai_retired: list = []
+        self._ai_text = ""
+        self._ai_timer = QtCore.QTimer(self)
+        self._ai_timer.setSingleShot(True)
+        self._ai_timer.setInterval(50)
+        self._ai_timer.timeout.connect(self._render_ai)
+        self.ai_button.set_provider(self._ai_provider or "parascape")
+        self.ai_button.clicked.connect(self._toggle_ai)
+        self.ai_button.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.CustomContextMenu)
+        self.ai_button.customContextMenuRequested.connect(self.choose_provider)
+        self._update_ai_tooltip()
+
+    @staticmethod
+    def _saved_provider() -> str:
+        """The provider chosen in an earlier session, or an empty string when none was."""
+        from . import chat
+        value = str(QtCore.QSettings("parascape", "parascape").value("navigator/ai_provider", "")
+                    or "")
+        return value if value in {p.name for p in chat.PROVIDERS} else ""
+
+    def _update_ai_tooltip(self) -> None:
+        """Say what the AI symbol is doing now and how to change it, as spaCR does."""
+        from . import chat
+        label = next((p.label for p in chat.PROVIDERS if p.name == self._ai_provider), "")
+        if self.ai_button.isChecked():
+            self.ai_button.setToolTip(f"AI: {label}. Click to turn it off; right-click to change "
+                                      "the provider. A search that finds nothing is answered "
+                                      "below the field.")
+        else:
+            self.ai_button.setToolTip("The assistant is off. Click to turn it on; right-click to "
+                                      "choose which assistant answers.")
+
+    def _toggle_ai(self, on: bool) -> None:
+        """Turn the assistant on or off from a click on the symbol.
+
+        Turning it off cancels an answer in progress. Turning it on with no provider chosen yet
+        asks which one, rather than guessing, and leaves it off if the question is dismissed.
+
+        :param on: the state the symbol now shows.
+        """
+        if not on:
+            was_running = self._ai_worker is not None
+            self._cancel_ai()
+            if was_running:
+                self.feedback.setText("Cancelled.")
+        elif not self._ai_provider:
+            self.ai_button.setChecked(False)
+            self.choose_provider(turn_on=True)
+            return
+        self.ai_button.set_provider(self._ai_provider or "parascape")
+        self._update_ai_tooltip()
+
+    def choose_provider(self, *_args, turn_on: bool = True) -> str:
+        """Ask which assistant should answer, and turn the symbol on when one is chosen.
+
+        :param turn_on: switch the assistant on after a choice, as spaCR does.
+        :returns: the provider chosen, or an empty string when the question was dismissed.
+        """
+        from . import chat
+        dialog = ProviderDialog(chat.PROVIDERS, self._ai_provider, self)
+        try:
+            from . import glass
+            glass.dress(dialog)
+        except Exception:
+            pass
+        chosen = ""
+        if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
+            chosen = dialog.selected()
+            self._cancel_ai()
+            self._ai_provider = chosen
+            QtCore.QSettings("parascape", "parascape").setValue("navigator/ai_provider", chosen)
+            self.ai_button.set_provider(chosen)
+            if turn_on:
+                self.ai_button.setChecked(True)
+        dialog.deleteLater()
+        self._update_ai_tooltip()
+        return chosen
+
+    @staticmethod
+    def _ai_system() -> str:
+        """The standing instructions for the assistant in the Navigator.
+
+        The caveats of the chat panel, plus the list of modules so that an answer can point to the
+        module that does what was asked, and the rule that the Navigator only advises.
+        """
+        from . import chat
+        modules = "; ".join(f"{m.name} ({m.note})" for m in MOD.MODULES)
+        return (f"{chat.GROUNDING}\n\nThe Navigator is an advice interface. Answer in text, and "
+                "name the ParaScape module that would do what is asked. Do not claim to run "
+                f"anything.\n\nThe modules are: {modules}.")
+
+    def ask_ai(self, text: str) -> None:
+        """Send one question to the chosen assistant and write the answer below the field.
+
+        Nothing is sent unless the symbol is on and a provider is chosen. A provider that is not
+        installed says how to install it, in the panel, instead of failing silently.
+
+        :param text: the question.
+        """
+        from . import chat
+        provider = next((p for p in chat.PROVIDERS if p.name == self._ai_provider), None)
+        if provider is None:
+            self.feedback.setText("No assistant chosen. Right-click the ring to choose one.")
+            return
+        self._cancel_ai()
+        self.details.show()
+        self.details.raise_()
+        if not provider.available():
+            self.details.setMarkdown(
+                f"**{provider.label}** is not installed.\n\nInstall it with\n\n"
+                f"    {provider.install_hint}\n\nthen sign in with\n\n    {provider.login_command}"
+                "\n\nor right-click the ring and choose the free ParaScape AI, which needs nothing.")
+            return
+        self._ai_text = ""
+        self.details.setMarkdown("Thinking…")
+        worker = chat._Worker(provider, text, self._ai_system(), self)
+        worker.chunk.connect(self._ai_chunk)
+        worker.done.connect(self._ai_done)
+        self._ai_worker = worker
+        self.ai_button.set_busy(True)
+        worker.start()
+
+    def _ai_chunk(self, text: str) -> None:
+        """Take a piece of the answer and redraw the panel, at most every fifty milliseconds."""
+        if self.sender() is not self._ai_worker:
+            return
+        self._ai_text += text
+        if not self._ai_timer.isActive():
+            self._ai_timer.start()
+
+    def _render_ai(self) -> None:
+        """Draw the answer so far in the details panel, as formatted text."""
+        self.details.setMarkdown(self._ai_text or "Thinking…")
+        self.details.show()
+        self.details.raise_()
+
+    def _ai_done(self) -> None:
+        """The answer is complete: stop the waiting motion and draw the whole of it."""
+        if self.sender() is not self._ai_worker:
+            return
+        self._ai_timer.stop()
+        self._retire(self._ai_worker)
+        self._ai_worker = None
+        self.ai_button.set_busy(False)
+        self._ai_text = self._ai_text.strip() or "(no output; try again or choose another assistant)"
+        self._render_ai()
+
+    def _retire(self, worker) -> None:
+        """Keep a stopped worker alive until its thread has really finished.
+
+        Destroying a `QThread` that is still running aborts the interpreter, so a cancelled worker
+        is kept here and released by its own `finished` signal.
+
+        :param worker: the worker to let go of.
+        """
+        if worker is None:
+            return
+        for signal in (worker.chunk, worker.done):
+            try:
+                signal.disconnect()
+            except (RuntimeError, TypeError):
+                pass
+        self._ai_retired.append(worker)
+
+        def release(w=worker):
+            """Drop the finished worker from the list and let Qt delete it."""
+            if w in self._ai_retired:
+                self._ai_retired.remove(w)
+            w.deleteLater()
+        if worker.isFinished():
+            release()
+        else:
+            worker.finished.connect(release)
+
+    def _cancel_ai(self) -> None:
+        """Stop any answer in progress, quietly, without waiting for the thread."""
+        self._ai_timer.stop()
+        worker, self._ai_worker = self._ai_worker, None
+        if worker is not None:
+            worker.stop()
+            self._retire(worker)
+        self.ai_button.set_busy(False)
+
+    def hideEvent(self, event):                            # noqa: N802
+        """Stop an answer that nobody is looking at when another page comes on screen."""
+        self._cancel_ai()
+        super().hideEvent(event)
+
+    def closeEvent(self, event):                           # noqa: N802
+        """Never leave a running thread behind when the page goes away."""
+        self._cancel_ai()
+        for worker in list(self._ai_retired):
+            worker.wait(2000)
+        super().closeEvent(event)
 
     # ------------------------------------------------------------ module network
     def explore(self, key: str) -> None:
@@ -920,7 +1112,7 @@ class NavigatorPage(QtWidgets.QWidget):
         """Up or Down from the field enters the cards; arrows move; Escape clears or returns."""
         if obj is self.field and event.type() in (QtCore.QEvent.Type.Resize,
                                                   QtCore.QEvent.Type.Show):
-            self._place_ask()
+            self._place_ai()
             return False
         if event.type() != QtCore.QEvent.Type.KeyPress:
             return False

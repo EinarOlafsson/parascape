@@ -227,10 +227,8 @@ def test_a_dressed_dialog_keeps_what_its_title_bar_did(qapp):
     d.show()
     qapp.processEvents()
     chrome = d._glass_chrome
-    close = d.findChild(QtWidgets.QToolButton, glass.CLOSE_NAME)
-    assert close is chrome.close and close.isVisible()
-    assert d.rect().contains(close.geometry()), "the close mark is inside the card"
-    assert "white-space:pre" in close.toolTip(), "the close mark explains itself in a block"
+    assert not any(b.text().strip() in ("✕", "×", "x") for b in d.findChildren(QtWidgets.QAbstractButton)), \
+        "no small cross: Einar does not want one anywhere"
     start = d.pos()
     QtTest.QTest.mousePress(d, QtCore.Qt.MouseButton.LeftButton, pos=QtCore.QPoint(200, 12))
     QtTest.QTest.mouseMove(d, QtCore.QPoint(230, 42))
@@ -239,8 +237,8 @@ def test_a_dressed_dialog_keeps_what_its_title_bar_did(qapp):
     assert chrome.edges_at(QtCore.QPoint(2, d.height() // 2)) == QtCore.Qt.Edge.LeftEdge
     assert chrome.edges_at(QtCore.QPoint(d.width() - 1, d.height() - 1)) == \
         (QtCore.Qt.Edge.RightEdge | QtCore.Qt.Edge.BottomEdge)
-    close.click()
-    assert not d.isVisible()
+    QtTest.QTest.keyClick(d, QtCore.Qt.Key.Key_Escape)
+    assert not d.isVisible(), "Escape closes a dressed dialog, which has no cross"
 
 
 def test_dressing_is_idempotent_and_refuses_a_window_already_shown(qapp):
@@ -319,3 +317,17 @@ def test_the_window_applies_the_theme_the_painted_parts_read(win, qapp):
     assert "#fefefe" in _rule(qapp.styleSheet(), "QMenu")          # solid near-white menus
     win.apply_theme("dark")
     assert "#020202" in _rule(qapp.styleSheet(), "QMenu")          # solid near-black menus
+
+
+def test_a_dressed_main_window_closes_on_escape_and_says_so(qapp):
+    """A window that is not a dialog has no Escape rule of its own, and no cross to click."""
+    w = QtWidgets.QMainWindow()
+    w.setCentralWidget(QtWidgets.QLabel("body"))
+    glass.dress(w)
+    told = []
+    w._glass_chrome.dismissed.connect(lambda: told.append(True))
+    w.resize(300, 200)
+    w.show()
+    qapp.processEvents()
+    QtTest.QTest.keyClick(w, QtCore.Qt.Key.Key_Escape)
+    assert not w.isVisible() and told

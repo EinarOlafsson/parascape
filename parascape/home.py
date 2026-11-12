@@ -32,6 +32,7 @@ from __future__ import annotations
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
+from . import iconset
 from . import modules as MOD
 from . import theme as TH
 from .tiles import ASIDE_W, TILE_W, AppTile, HomePanel, tile_qss
@@ -200,7 +201,7 @@ class HomeScreen(QtWidgets.QWidget):
         if reason is None:
             reason = MOD.unavailable_reason(module)
         tile = AppTile(module.key, module.name, module.note, reason=reason,
-                       width=TILE_W)
+                       icon=iconset.module_icon(module.key), width=TILE_W)
         if tile.available:
             tile.clicked.connect(lambda _=False, k=module.key: self.module_chosen.emit(k))
         return tile

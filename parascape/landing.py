@@ -19,8 +19,9 @@ one picture.
 """
 from __future__ import annotations
 
-from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
+from . import iconset
 from . import theme as TH
 from .home import HomeScreen
 from .navigator import NavigatorPage
@@ -32,12 +33,10 @@ class Landing(QtWidgets.QWidget):
 
     `module_chosen(key)` fires for a module, from either page. `item_chosen(kind, key)`
     fires for anything else the Navigator offers -- a gene, a question, a dataset.
-    `ask(text)` fires when the person asks the assistant.
     """
 
     module_chosen = QtCore.Signal(str)
     item_chosen = QtCore.Signal(str, str)
-    ask = QtCore.Signal(str)
 
     PAGES = ("Navigator", "Modules")
 
@@ -97,7 +96,6 @@ class Landing(QtWidgets.QWidget):
 
         self._switch.idClicked.connect(self.show_page_index)
         self.navigator.chosen.connect(self._from_navigator)
-        self.navigator.ask.connect(self.ask)
         self.home.module_chosen.connect(self.module_chosen)
 
         self._ambient = None
@@ -115,20 +113,19 @@ class Landing(QtWidgets.QWidget):
         landing must open without it."""
         try:
             from . import modules as MOD
-            from .navigator import Suggestion, icon_path
             from .panes.dock import Dock, DockEdge
         except Exception:
             return None, None
         rows = [("home", "Home", "the Navigator and the module tiles", "Start")]
         rows += [(m.key, m.name, m.note, m.band) for m in MOD.MODULES]
-        icons = {}
+        # Every symbol comes from the one provider, and is asked for here, outside the guarded
+        # block below: a module with no symbol must fail loudly in a test, not silently leave the
+        # dock out.
+        icons = {key: iconset.module_icon(key) for key, _n, _d, _b in rows}
 
         def icon_for(key):
-            if key == "home":
-                return None
-            if key not in icons:
-                icons[key] = QtGui.QIcon(icon_path(Suggestion("module", key, key)))
-            return icons[key]
+            """The symbol of a dock row, from the one icon provider."""
+            return icons.get(key)
         try:
             dock = Dock(rows, icon_for=icon_for)
             edge = DockEdge(dock)

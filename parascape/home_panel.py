@@ -49,6 +49,7 @@ import os
 from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import gene_drop as GD
+from . import no_cross
 from . import nodes as ND
 from . import theme as TH
 
@@ -565,7 +566,7 @@ class HomePanel(QtWidgets.QWidget):
         top = QtWidgets.QHBoxLayout()
         self.search = QtWidgets.QLineEdit()
         self.search.setObjectName("HomeSearch")
-        self.search.setClearButtonEnabled(True)
+        no_cross.clear_on_escape(self.search)     # no small cross; Escape empties the field
         self.search.setPlaceholderText("What do you want to know?")
         self.search.setToolTip(TH.tip(TIPS["search"]))
         self.search.textChanged.connect(self.filter_cards)

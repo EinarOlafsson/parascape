@@ -1667,6 +1667,7 @@ class Window(QtWidgets.QMainWindow):
         self.gallery = GalleryPanel(color_fn=self.colors_for_genes, background=bg)
         self.gallery.chosen.connect(self.show_walk_map)
         self.gallery_dock = QtWidgets.QDockWidget("gallery", self)
+        self.gallery_dock.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)   # no cross; the Tools menu shows and hides it
         self.gallery_dock.setWidget(self.gallery)
         self.addDockWidget(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea, self.gallery_dock)
         self.gallery_dock.hide()
@@ -3175,8 +3176,8 @@ class Window(QtWidgets.QMainWindow):
             self._slot_tree.entity_requested.connect(self._dataset_entity)
             self._slot_tree.setWindowFlag(QtCore.Qt.WindowType.Window, True)
             if glass.dress(self._slot_tree):
-                # Closing it from its own close mark unticks the menu item that opened it.
-                self._slot_tree._glass_chrome.close.clicked.connect(
+                # Closing it by any route unticks the menu item that opened it.
+                self._slot_tree._glass_chrome.dismissed.connect(
                     lambda: self.slot_tree_act.setChecked(False))
         self._slot_tree.show()
         self._slot_tree.raise_()
@@ -3589,6 +3590,7 @@ class Window(QtWidgets.QMainWindow):
         self.console = ConsolePanel()
         self.console.install()
         self.console_dock = QtWidgets.QDockWidget("console", self)
+        self.console_dock.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)   # no cross; the Tools menu shows and hides it
         self.console_dock.setWidget(self.console)
 
         jobs_w = QtWidgets.QWidget()
@@ -3628,6 +3630,7 @@ class Window(QtWidgets.QMainWindow):
         jl.addWidget(self.jobs_view, 1)
 
         self.jobs_dock = QtWidgets.QDockWidget("jobs", self)
+        self.jobs_dock.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)   # no cross; the Tools menu shows and hides it
         self.jobs_dock.setWidget(jobs_w)
         # A resource read costs a couple of file reads, so it is polled slowly and only while the
         # panel is visible -- a meter that samples every second is itself a background job.
@@ -3638,6 +3641,7 @@ class Window(QtWidgets.QMainWindow):
 
         self.chat = ChatPanel(context_provider=self.describe_state)
         self.chat_dock = QtWidgets.QDockWidget("assistant", self)
+        self.chat_dock.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)   # no cross; the Tools menu shows and hides it
         self.chat_dock.setWidget(self.chat)
 
         area = QtCore.Qt.DockWidgetArea.BottomDockWidgetArea

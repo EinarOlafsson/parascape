@@ -31,6 +31,7 @@ import numpy as np
 import pandas as pd
 from PySide6 import QtCore, QtGui, QtWidgets
 
+from . import no_cross
 from . import umap_gallery as G
 
 #: Edge of a map thumbnail in the list, in pixels.
@@ -154,7 +155,7 @@ class MapGalleryPanel(QtWidgets.QWidget):
         find = QtWidgets.QHBoxLayout()
         self.search = QtWidgets.QLineEdit()
         self.search.setPlaceholderText("filter maps…")
-        self.search.setClearButtonEnabled(True)
+        no_cross.clear_on_escape(self.search)     # no small cross; Escape empties the field
         self.search.setToolTip(
             "Show only the maps whose name, group, evidence family or description contains this "
             "text — try 'fitness', 'transcription', 'all but' or 'pairs'. Space-separated words all "

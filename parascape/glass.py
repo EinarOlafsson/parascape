@@ -24,8 +24,10 @@ near-black and their corners are cut with a window mask, which rounds them on an
 ``PARASCAPE_TRANSLUCENT`` environment variable (``0`` or ``1``) overrides the check.
 
 A dressed window has no title bar -- the rounded card is the window -- so :func:`dress` gives it back
-what the title bar did: the title painted at the top, a close mark, dragging by the background, and
-resizing from the edges. Escape still closes a dialog.
+what the title bar did: the title painted at the top, dragging by the background, and resizing from
+the edges. There is deliberately no close mark: Einar does not want a small cross anywhere. Escape
+closes a dressed window, a dialog by its own rule and any other window by :class:`_Chrome`, and a
+dialog keeps its own Close or Cancel button where it has one.
 """
 from __future__ import annotations
 
@@ -55,7 +57,7 @@ POPUP_RADIUS = 8
 #: outermost controls and the edges that resize the window are covered by them.
 RIM_ROOM = 10
 
-#: Height of the band a dressed window paints its title in, and where the close mark sits.
+#: Height of the band a dressed window paints its title in.
 TITLE_BAND = 30
 
 #: How close to an edge, in pixels, a press resizes rather than moves.
@@ -63,7 +65,6 @@ EDGE = 7
 
 #: Object names, so the stylesheet and the tests can find the parts.
 CARD_NAME = "GlassCard"
-CLOSE_NAME = "GlassClose"
 
 #: Popup classes the filter dresses, by Qt class name. `QComboBoxPrivateContainer` is the frame that
 #: holds a combo box's drop-down list; it is private, so it is recognised by name.
@@ -322,9 +323,12 @@ class _Chrome(QtCore.QObject):
     must not require subclassing it.
     """
 
-    def __init__(self, window: QtWidgets.QWidget, card: GlassCard, close: QtWidgets.QToolButton):
+    #: Emitted when the window is closed by any route, so a menu item that opened it can untick.
+    dismissed = QtCore.Signal()
+
+    def __init__(self, window: QtWidgets.QWidget, card: GlassCard):
         super().__init__(window)
-        self.window, self.card, self.close = window, card, close
+        self.window, self.card = window, card
         self._drag = None          # (global press point, window top-left) during a manual move
         self._resize = None        # (edges, global press point, geometry) during a manual resize
         window.setMouseTracking(True)
@@ -332,17 +336,11 @@ class _Chrome(QtCore.QObject):
         self.fit()
 
     def fit(self):
-        """Keep the card covering the window, the close mark in its corner, and the mask cut."""
+        """Keep the card covering the window, and the mask cut when there is no compositor."""
         w = self.window
         rect = w.rect()
         self.card.setGeometry(rect)
         self.card.lower()
-        if self.close is not None:
-            size = self.close.sizeHint()
-            self.close.setGeometry(rect.width() - size.width() - RIM_ROOM,
-                                   max((TITLE_BAND - size.height()) // 2, 2),
-                                   size.width(), size.height())
-            self.close.raise_()
         if not compositing_available() and rect.width() > 0 and rect.height() > 0:
             w.setMask(rounded_region(rect, self.card.radius))
 
@@ -396,6 +394,14 @@ class _Chrome(QtCore.QObject):
             self.fit()
         elif t == T.WindowTitleChange:
             self.card.update()
+        elif t == T.Close:
+            self.dismissed.emit()
+        elif (t == T.KeyPress and event.key() == QtCore.Qt.Key.Key_Escape
+              and not isinstance(window, QtWidgets.QDialog)):
+            # A dialog closes itself on Escape. Any other dressed window has no title bar and no
+            # close mark, so Escape, when nothing inside it used the key, is how it is dismissed.
+            window.close()
+            return True
         elif t == T.MouseButtonPress and event.button() == QtCore.Qt.MouseButton.LeftButton:
             return self._press(event)
         elif t == T.MouseMove:
@@ -462,7 +468,7 @@ def _widen_margins(window: QtWidgets.QWidget, title: bool) -> None:
                               m.right() + RIM_ROOM, m.bottom() + RIM_ROOM)
 
 
-def dress(window: QtWidgets.QWidget, title: bool = True, closable: bool = True) -> bool:
+def dress(window: QtWidgets.QWidget, title: bool = True) -> bool:
     """Make a window ParaScape built into a rounded glass card. True if it was dressed.
 
     Call it after the window's layout exists and before its first show. A window already shown (its
@@ -472,7 +478,6 @@ def dress(window: QtWidgets.QWidget, title: bool = True, closable: bool = True) 
 
     :param window: a top-level `QDialog` or `QMainWindow`.
     :param title: paint the window title in the top band (dropping the title bar would lose it).
-    :param closable: add a close mark in the top-right corner.
     """
     if window.property(GLASS) or window.property(NO_GLASS):
         return False
@@ -486,18 +491,7 @@ def dress(window: QtWidgets.QWidget, title: bool = True, closable: bool = True) 
     _widen_margins(window, title)
     card = GlassCard(window, title=title)
     card.lower()
-    close = None
-    if closable:
-        from . import theme as TH
-        close = QtWidgets.QToolButton(window)
-        close.setObjectName(CLOSE_NAME)
-        close.setText("✕")
-        close.setAutoRaise(True)
-        close.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
-        close.setToolTip(TH.tip("Close this window. Escape does the same, and the window can be "
-                                "moved by dragging its background and resized from its edges."))
-        close.clicked.connect(window.close)
-    window._glass_chrome = _Chrome(window, card, close)
+    window._glass_chrome = _Chrome(window, card)
     # Re-read the stylesheet now that the window carries the property its rules are keyed on.
     style = window.style()
     style.unpolish(window)

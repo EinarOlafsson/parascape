@@ -159,21 +159,6 @@ def open_item(window, kind: str, key: str) -> str:
     return open_node(window, ND.entry_node(entry))
 
 
-def ask(window, text: str) -> None:
-    """Hand the question to the assistant dock and send it."""
-    chat = getattr(window, "chat", None)
-    dock = getattr(window, "chat_dock", None)
-    if chat is None or dock is None:
-        window.statusBar().showMessage("the assistant is not available in this window", 6000)
-        return
-    leave_landing(window)
-    dock.show()
-    dock.raise_()
-    if text:
-        chat.input.setPlainText(text)
-        chat.send()
-
-
 def _docks(window):
     return [d for d in window.findChildren(QtWidgets.QDockWidget)]
 
@@ -319,7 +304,6 @@ def install(window):
 
     landing.module_chosen.connect(lambda key: open_module(window, key))
     landing.item_chosen.connect(lambda kind, key: open_item(window, kind, key))
-    landing.ask.connect(lambda text: ask(window, text))
 
     home = QtGui.QAction("Home", window)
     # Alt+Home, the browser convention. Ctrl+Shift+H was the first choice and was already

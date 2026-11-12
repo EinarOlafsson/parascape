@@ -297,22 +297,85 @@ def test_nothing_found_says_so(page, qtbot):
     assert not page._cards and "Nothing here matches" in page.feedback.text()
 
 
-def test_ask_sits_inside_the_field_on_the_right(page, qtbot):
+def test_the_ai_symbol_sits_inside_the_field_on_the_right(page, qtbot):
     """A child of a QLineEdit is drawn at (0, 0) unless something positions it; the
-    first render put Ask above the text at the top left."""
+    first render put the assistant above the text at the top left."""
     type_and_wait(page, qtbot, "rhoptry")
-    page._place_ask()
-    geo = page.ask_button.geometry()
+    page._place_ai()
+    geo = page.ai_button.geometry()
     assert geo.x() > page.field.width() // 2
     assert 0 <= geo.y() and geo.bottom() <= page.field.height()
+    assert page.field.textMargins().right() >= geo.width(), "typed text stops before the symbol"
 
 
-def test_ask_sends_the_text_to_the_assistant(page, qtbot):
+def test_the_ai_symbol_is_a_switch_that_is_off_until_clicked(page):
+    """As in spaCR: a ring whose dot is drawn only while the assistant is on."""
+    assert page.ai_button.isCheckable() and not page.ai_button.isChecked()
+    assert "off" in page.ai_button.toolTip()
+
+
+def test_a_search_with_no_answer_offers_the_assistant_instead_of_asking_it(page, qtbot):
+    """With the assistant off nothing is sent anywhere, and the page says how to turn it on."""
+    type_and_wait(page, qtbot, "zzqxnotathing")
+    assert page._ai_worker is None
+    assert "ring" in page.feedback.text()
+
+
+def test_with_the_assistant_on_a_search_with_no_answer_is_answered_below(page, qtbot, monkeypatch):
+    """The answer is streamed into the details panel, the ring shows it is busy, then settles."""
+    from parascape import chat
+    monkeypatch.setattr(chat, "stream", lambda *a, **k: iter(["The ", "answer ", "is 42."]))
+    page._ai_provider = "parascape"
+    page.ai_button.setChecked(True)
+    page.field.setText("zzqxnotathing")
+    page.refresh()
+    assert page.ai_button.busy
+    qtbot.waitUntil(lambda: not page.ai_button.busy, timeout=5000)
+    assert "The answer is 42." in page.details.toPlainText()
+
+
+def test_turning_the_assistant_off_cancels_an_answer_in_progress(page, qtbot, monkeypatch):
+    import threading
+    from parascape import chat
+    release = threading.Event()
+
+    def slow(*a, **k):
+        release.wait(5)
+        yield "late"
+    monkeypatch.setattr(chat, "stream", slow)
+    page._ai_provider = "parascape"
+    page.ai_button.setChecked(True)
+    page.ask_ai("anything")
+    assert page.ai_button.busy
+    page.ai_button.setChecked(False)
+    page._toggle_ai(False)
+    release.set()
+    assert not page.ai_button.busy and page._ai_worker is None
+    qtbot.waitUntil(lambda: not page._ai_retired, timeout=5000)
+
+
+def test_the_first_click_with_no_provider_asks_which_one(page, monkeypatch):
+    """Not guessing a provider: choosing is also when a person agrees to what is shared."""
     asked = []
-    page.ask.connect(asked.append)
-    page.field.setText("which GRAs reach the host nucleus?")
-    page.ask_button.click()
-    assert asked == ["which GRAs reach the host nucleus?"]
+    monkeypatch.setattr(page, "choose_provider", lambda *a, **k: asked.append(True) or "")
+    page._ai_provider = ""
+    page.ai_button.setChecked(True)
+    page._toggle_ai(True)
+    assert asked and not page.ai_button.isChecked()
+
+
+def test_the_provider_sets_the_colour_of_the_dot(page):
+    from parascape.ai_button import PROVIDER_COLORS
+    for name, colour in PROVIDER_COLORS.items():
+        page.ai_button.set_provider(name)
+        assert page.ai_button.color().name().upper() == colour.upper()
+
+
+def test_typing_pulses_the_dot_without_sending_anything(page, qtbot):
+    page.ai_button.setChecked(True)
+    page._ai_provider = "parascape"
+    page.field.textEdited.emit("g")
+    assert page.ai_button._pulse > 0 and page._ai_worker is None
 
 
 def test_escape_clears_the_field(page, qtbot):

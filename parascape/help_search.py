@@ -501,7 +501,8 @@ class HelpSearchField(QtWidgets.QLineEdit):
     def __init__(self, window: QtWidgets.QMainWindow, parent=None):
         super().__init__(parent)
         self.setObjectName(FIELD_NAME)
-        self.setClearButtonEnabled(True)
+        # No small cross inside the field (Einar). Escape empties it: see keyPressEvent below.
+        self.setClearButtonEnabled(False)
         self.setPlaceholderText("Search ParaScape…")
         self.setAccessibleName("Search ParaScape")
         self.setToolTip(TH.tip(

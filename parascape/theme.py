@@ -459,10 +459,6 @@ def stylesheet(theme: str = "dark", container_opacity: float = 1.0,
                                         border-radius: {R['md']}px; }}
     *[glass="true"] QGroupBox {{ background: {PANE_GLASS}; border-color: {INNER_RIM}; }}
     *[glass="true"] QTabBar {{ background: transparent; }}
-    QToolButton#GlassClose {{ background: transparent; border: none; color: {p['fg_muted']};
-                              font-size: {BODY}px; padding: 2px 6px;
-                              border-radius: {R['sm']}px; }}
-    QToolButton#GlassClose:hover {{ background: {p['error']}; color: #ffffff; }}
     QLabel#GlassMessageText {{ padding: 4px 6px 8px 6px; }}
     """
 
