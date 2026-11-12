@@ -284,3 +284,33 @@ exactly what they read before.
   `tests/test_symbols_and_no_cross.py` runs it on the real `app.Window` and after opening every dock module.
 * Left open: the native title bar of an undressed window is drawn by the window manager and has its own
   cross; it cannot be changed from inside the application.
+
+## Status 2026-11-12: WP1, WP2, WP3, WP5 and WP6 built
+
+| WP | state |
+|---|---|
+| WP1 take stock | **done** — 22 modules, 15 docks, 29 tabs, 9 further windows, inventoried by opening each file |
+| WP2 typed subjects | **done** — `parascape/ports.py`, 13 subjects, 50 tests, no Qt import |
+| WP3 one catalogue | **done** — `parascape/modules.py` extended; the tool specs and shell routes computed from it; 25 tests |
+| WP5 symbols, no cross | **done** — `parascape/iconset.py`, `parascape/ai_button.py`, `parascape/no_cross.py`; 16 tests |
+| WP6 recipes | **done** — `parascape/module_recipes.py`, `parascape/recipes_panel.py`; 38 tests |
+| WP4, WP7, WP8, WP9, WP10, WP11 | not started; they are the ones Einar will actually see |
+
+**Two tables that can now disagree, which is the exact failure spaCR documents as bug #16i.** Both must be
+closed before WP7, because the tree is computed from them:
+
+1. `iconset.MODULE_ICON` maps a module key to a symbol, while the catalogue row has its own icon field. One
+   of the two has to feed the other.
+2. `modules.DOWNSTREAM` is still hand-written and sits beside a computed `ports.next_modules()`. The
+   hand-written one is what the navigator offers today. WP7 should delete it and read the computed answer,
+   which is the whole point of WP2.
+
+**What WP6 did not wire, and the wording risk.** `parascape/recipes.py` already means something else -- the
+Infer biological-question recipes -- so the settings recipes live in `module_recipes.py`. Map and Network have
+a Recipes group; Gene, Infer and the dock modules do not, because a gene or a question is a subject rather
+than a setting. **If both kinds ever appear in the Infer module the word "recipe" will mean two things on one
+screen**, which is a naming decision for Einar rather than a thing to guess at.
+
+**Three agents shared one working tree and that was a mistake of mine.** One agent's uncommitted edits made
+another's test run fail (`test_the_dock_watcher_ignores_the_window_appearing`), which was then reported as a
+possible defect. It passes on committed code. Later work packages should use separate worktrees.
