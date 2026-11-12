@@ -64,6 +64,10 @@ KEYED_DIFFERENTLY = {
         "the Clusters sheet has a column literally named `uniprot` and holds both host and parasite "
         "accessions (P02549 human spectrin beside A0A5K1K8E0), because the table is host-pathogen "
         "complexes; our column is keyed on PF3D7 gene accessions, so the two never match as strings",
+    "pf_lactylome":
+        "the K(La) sheet is keyed on a 'Gene ID' column of PfNF54_ accessions (PfNF54_030025900, histone "
+        "H2A variant) -- the NF54 annotation, not 3D7. NF54 and 3D7 numbering do not map by stripping a "
+        "prefix the way the Toxoplasma strains do, so the link is genuinely the identity layer",
     "pf_resistome":
         "the table is one row per SNV in compound-selected clones, and two of the six installed columns "
         "(pf6_field_dnds, pf6_field_nonsyn_snvs) come from the Pf6 field data instead, so this table is "

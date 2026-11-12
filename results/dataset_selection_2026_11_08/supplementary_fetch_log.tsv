@@ -1,8 +1,2 @@
 dataset_id	outcome	detail
-cyst_wall_interactome	recorded file not in the archive	looked for cyst_wall; archive holds mBio.02699-19-sf001.tif, mBio.02699-19-f0001.jpg, mBio.02699-19-f0002.gif, mBio.02699-19-sf004.jpg, mBio.02699-19-sf005.tif, mBio.02699-19-f0004.jpg
-oxidative_stress_screen	download failed	TimeoutError: The read operation timed out
-pf_acetylome	download failed	TimeoutError: The read operation timed out
-pf_berghei_transfer	download failed	TimeoutError: The read operation timed out
-pf_lactylome	download failed	TimeoutError: The read operation timed out
-pf_palmitome	download failed	TimeoutError: The read operation timed out
-thermal_shift_cetsa	download failed	IncompleteRead: IncompleteRead(223080 bytes read)
+pf_lactylome	fetched, left beside the download	datasets/post_translation/lactylome/41417877/pgen.1011991.s014.xlsx is behind a symlink to another machine (/mnt/firecuda2/Claude/repo/starplast/datasets/post_translation/lactylome); kept at /media/carruthers/mnt3/claude/parascape_supp_fetch/pf_lactylome/pgen.1011991.s014.xlsx (361,224 bytes)

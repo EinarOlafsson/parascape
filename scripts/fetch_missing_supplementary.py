@@ -38,17 +38,35 @@ DESTINATION = (os.environ.get("STARPLAST_DATA_PARENT")
 #: seven of them, and I read that as "the source is broken" three times over two days before probing the
 #: endpoints directly: they answer HTTP 200 and stream throughout. Slow is not failed.
 STALL_SECONDS = 120
+
+#: Direct publisher URLs, tried when the recorded Europe PMC endpoint will not deliver.
+#:
+#: Europe PMC is one route to a supplementary file, not the only one, and for some articles it is a bad one:
+#: `pgen.1011991.s014.xlsx` stalls there for two minutes and arrives from PLoS in **0.45 seconds**. Each entry
+#: here was tested, not guessed. Springer is absent on purpose -- `static-content.springer.com` answers 403 to
+#: an automated request, so for the Scientific Reports acetylome there is no programmatic route and a person
+#: has to fetch it from a browser.
+PUBLISHER_URLS = {
+    "pf_lactylome": "https://journals.plos.org/plosgenetics/article/file"
+                    "?id=10.1371/journal.pgen.1011991.s014&type=supplementary",
+}
 #: An overall ceiling, generous enough for a slow but progressing transfer, so one endpoint cannot hang a pass.
 CEILING_SECONDS = 1800
 AGENT = {"User-Agent": "parascape/0.0.11.0 (dataset provenance check; einar.olafsson@gmail.com)"}
 
 
-def download(url: str, into: str) -> str:
-    """Fetch one URL into its own directory and return the local path."""
+def download(url: str, into: str, expected: str = "") -> str:
+    """Fetch one URL into its own directory and return the local path.
+
+    `expected` is the basename the record names, used when the URL carries none. A publisher endpoint often
+    ends `article/file?id=...`, which gives a basename of "file" with no extension; defaulting that to `.zip`
+    saved a perfectly good spreadsheet as `file.zip`, and the reader then refused it as an unsupported type.
+    The file was never the problem -- the name was, and the right name was already in the record.
+    """
     os.makedirs(into, exist_ok=True)
     name = os.path.basename(url.split("?")[0]) or "download"
     if not os.path.splitext(name)[1]:
-        name += ".zip"                                   # the Europe PMC endpoint serves an archive
+        name = expected or (name + ".zip")               # the Europe PMC endpoint serves an archive
     target = os.path.join(into, name)
     request = urllib.request.Request(url, headers=AGENT)
     # Give up only when nothing is ARRIVING. A transfer that is merely slow is still a transfer, and these
@@ -139,11 +157,20 @@ def main(argv=None) -> int:
             print(f"{key}: would fetch {url[:70]} -> {recorded}")
             continue
         folder = os.path.join(args.into, key)
-        try:
-            fetched = download(url, folder)
-        except Exception as exc:
-            rows.append(dict(dataset_id=key, outcome="download failed", detail=f"{type(exc).__name__}: {exc}"))
-            print(f"{key:<30}download failed: {type(exc).__name__}", flush=True)
+        # The publisher first where one is known to answer, because for these articles it is not a fallback
+        # in quality -- it is the same file, served in under a second instead of stalling for two minutes.
+        attempts = ([PUBLISHER_URLS[key], url] if key in PUBLISHER_URLS else [url])
+        fetched, failure = None, None
+        for attempt in attempts:
+            try:
+                fetched = download(attempt, folder, basename)
+                break
+            except Exception as exc:
+                failure = exc
+        if fetched is None:
+            rows.append(dict(dataset_id=key, outcome="download failed",
+                             detail=f"{type(failure).__name__}: {failure}"))
+            print(f"{key:<30}download failed: {type(failure).__name__}", flush=True)
             continue
         if zipfile.is_zipfile(fetched) and not is_office_file(fetched):
             inner, names = member_named(fetched, basename, folder)

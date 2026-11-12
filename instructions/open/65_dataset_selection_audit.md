@@ -510,3 +510,25 @@ one of the symlinks pointing at the other machine. The verified file is recorded
 **41 of 63 verified.** Six files remain unfetchable, and those six now fail for a reason rather than for a
 timeout that measured the wrong thing: five stall with no bytes arriving for two minutes, one drops the
 connection mid-transfer.
+
+## 65.04, 2026-11-12: Europe PMC is one route, not the route
+
+Two of the six "unfetchable" files were about the route, not the file.
+
+**`pf_lactylome` arrives from PLoS in 0.45 seconds** where Europe PMC stalls for two minutes on the same
+content. `PUBLISHER_URLS` now holds tested direct URLs, tried first where one is known. Springer is
+deliberately absent: `static-content.springer.com` answers **403** to an automated request, so the Scientific
+Reports acetylome has no programmatic route and needs a person with a browser.
+
+Then it still would not read, and that was mine twice more:
+
+* The PLoS endpoint ends `article/file?id=...`, so the URL carries no filename. Defaulting a missing extension
+  to `.zip` saved a perfectly good spreadsheet as `file.zip` and the reader refused it as an unsupported type.
+  The right name was in the record all along; `download` now takes the expected basename.
+* Named correctly, it reads -- and contains **no `PF3D7_` identifier at all**. Its `Gene ID` column is
+  `PfNF54_030025900`: the **NF54 annotation**, not 3D7. Unlike the Toxoplasma strains, NF54 and 3D7 numbering
+  do not map by stripping a prefix, so this one genuinely needs the identity layer. Recorded as keyed
+  differently, with the evidence.
+
+**41 of 63 verified, 6 keyed on something other than 3D7 gene accessions, 5 still unfetchable.** Of those
+five, four stall and one drops its connection; `pf_acetylome` additionally has no automated route at all.

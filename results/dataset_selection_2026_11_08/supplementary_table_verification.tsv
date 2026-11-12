@@ -40,7 +40,7 @@ pf_host_bridge_xlms	not keyed on genes, so this check does not apply	it contribu
 pf_hsp90_chemoproteome	read: keyed on something other than gene accessions	the table is keyed on a 'UniProt ID' column, not on PF3D7 gene accessions, so the link to our gene-keyed column runs through the identity layer and cannot be seen by matching accessions
 pf_ip_ms	table could not be read	PDF, not a table a program can read
 pf_isoforms	the table names the genes we ship	1,838 of 1,857 installed genes appear in the table (99%); the table names 1,852 identifiers [3 sheet(s), column read from pf_nodes.parquet]
-pf_lactylome	file not on this machine	datasets/post_translation/lactylome/41417877/pgen.1011991.s014.xlsx is recorded but absent here
+pf_lactylome	read: keyed on something other than gene accessions	the K(La) sheet is keyed on a 'Gene ID' column of PfNF54_ accessions (PfNF54_030025900, histone H2A variant) -- the NF54 annotation, not 3D7. NF54 and 3D7 numbering do not map by stripping a prefix the way the Toxoplasma strains do, so the link is genuinely the identity layer
 pf_latency_transcriptome	the table names the genes we ship	4,874 of 4,887 installed genes appear in the table (100%); the table names 4,874 identifiers [1 sheet(s), column read from pf_nodes.parquet]
 pf_m6a_nanopore	the table names the genes we ship	5,285 of 5,285 installed genes appear in the table (100%); the table names 5,611 identifiers [17 sheet(s), column read from pf_nodes.parquet]
 pf_meltome	the table names the genes we ship	2,039 of 2,040 installed genes appear in the table (100%); the table names 8,518 identifiers [6 sheet(s), column read from pf_nodes.parquet]
