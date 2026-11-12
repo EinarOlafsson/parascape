@@ -60,5 +60,5 @@ secretome_partition	the table names the genes we ship	165 of 165 installed genes
 sexual_stages	the table names the genes we ship	4,463 of 4,463 installed genes appear in the table (100%); the table names 4,566 identifiers [text table, column read from nodes.parquet]
 spacr_escrt_screen	table could not be read	unsupported file type
 splitcas9_imaging_screen	the table names the genes we ship	315 of 318 installed genes appear in the table (99%); the table names 331 identifiers [7 sheet(s), column read from nodes.parquet]
-thermal_shift_cetsa	file not on this machine	datasets/quarantine/2026_08_16_unverified/Tg/thermal_shift/ is recorded but absent here
+thermal_shift_cetsa	the table names the genes we ship	2,325 of 2,348 installed genes appear in the table (99%); the table names 6,546 identifiers [6 sheet(s), column read from nodes.parquet]
 toxodb_palmitome	the table names the genes we ship	468 of 488 installed genes appear in the table (96%); the table names 476 identifiers [text table, column read from nodes.parquet]

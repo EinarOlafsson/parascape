@@ -532,3 +532,22 @@ Then it still would not read, and that was mine twice more:
 
 **41 of 63 verified, 6 keyed on something other than 3D7 gene accessions, 5 still unfetchable.** Of those
 five, four stall and one drops its connection; `pf_acetylome` additionally has no automated route at all.
+
+## 65.04, 2026-11-12: the thermal-shift source identified from the eLife API
+
+`thermal_shift_cetsa` records a directory (`datasets/quarantine/2026_08_16_unverified/Tg/thermal_shift/`),
+so there was no filename to look for and Europe PMC would not deliver the bundle. The eLife API lists an
+article's assets directly: `api.elifesciences.org/articles/80336` returns 26 of them, six supplements.
+
+Three were candidates and two matched the installed genes at 99 %, which is **not** enough to choose between
+them -- they are two experiments on the same proteome. The sheet names decide it:
+
+* `elife-80336-supp3.xlsx` -- inputs `4.1_input_noCa_R1` … `4.4_input_plusCa_R2`, and a sheet named
+  **`4.6_mineCETSA ED score`**. Calcium, and the ED score itself.
+* `elife-80336-supp4.xlsx` -- a temperature series (`54C`, `58C`, `50C`) ending in AUC, no ED score.
+
+The installed column is `cetsa_calcium_ed_score`. **supp3 is the source**: 2,325 of its 2,348 genes, 99 %.
+Recorded in the fetched-paths map, since the quarantine subtree is symlinked to the other machine.
+
+**42 of 63 verified.** My guessed CDN URL used `-v2` and 404'd; the API gave `-v3`. Guessing a URL pattern is
+not a route, and asking the publisher's own index is.
