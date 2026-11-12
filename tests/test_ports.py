@@ -178,6 +178,17 @@ def test_required_only_narrows_the_consumers():
     assert "map" not in P.consumers_of(P.GENE_LIST, required_only=True)
 
 
+def test_the_modules_that_run_work_are_what_produce_a_job():
+    """Jobs and Console were a dead end: they consume a job, nothing declared
+    producing one, and the only advice `check_ready` could give was that this
+    "cannot be reached from here" -- while every long build in the application
+    was handing work to the same runner."""
+    assert set(P.producers_of(P.JOB)) == {"map", "infer", "strategies"}
+    assert "jobs" in P.next_modules("map")
+    fix = P.check_ready("jobs").errors[0].fix
+    assert "build a map" in fix
+
+
 def test_clicking_a_gene_is_a_way_of_producing_one():
     """The first version declared no producer of a gene at all, so a reader with
     no gene chosen was told one could not be reached -- with the map in front of

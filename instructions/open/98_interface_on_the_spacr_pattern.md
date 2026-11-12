@@ -141,7 +141,7 @@ A `?` marks a subject the module can work without.
 
 | module | takes | hands on | opens | mould | in navigator |
 |---|---|---|---|---|---|
-| **Map** (`map`) | gene_list?, trait? | space, gene_list?, gene? | module shell | yes — `map_module.py` | yes |
+| **Map** (`map`) | gene_list?, trait? | space, gene_list?, gene?, job? | module shell | yes — `map_module.py` | yes |
 | **Network** (`network`) | gene?, gene_list?, space? | gene_pair, gene_list?, gene? | module shell | yes — `network_module.py` | yes |
 | **Cell** (`cell`) | gene?, trait? | gene_list?, gene? | shell over the `find` dock | shell only | yes |
 | **Gallery** (`gallery`) | space | space | shell over the `gallery` dock | shell only | yes |
@@ -151,8 +151,8 @@ A `?` marks a subject the module can work without.
 | module | takes | hands on | opens | mould | in navigator |
 |---|---|---|---|---|---|
 | **Questions** (`questions`) | — | question | module shell | yes — `infer_module.py` | yes |
-| **Infer** (`infer`) | question, gene_list?, trait? | claim, gene_list?, run | module shell | yes — `infer_module.py` | yes |
-| **Strategies** (`strategies`) | trait?, gene_list? | claim?, scorecard | shell over the `strategies` dock | shell only | yes |
+| **Infer** (`infer`) | question, gene_list?, trait? | claim, gene_list?, run, job? | module shell | yes — `infer_module.py` | yes |
+| **Strategies** (`strategies`) | trait?, gene_list? | claim?, scorecard, job? | shell over the `strategies` dock | shell only | yes |
 | **Scorecard** (`scorecard`) | trait?, claim? | scorecard | shell over the `discoveries` dock | shell only | yes |
 | **Runs** (`runs`) | run | scorecard? | nothing built | no | greyed: no panel reads `results/harness_holdout_log.jsonl` |
 | **Fill** (`fill`) | claim, scorecard | trait | nothing built | no | greyed: no question has cleared its 90 % bar |

@@ -161,7 +161,11 @@ SCORECARD = "scorecard"
 RUN = "run"
 #: A registered source, its coverage and its provenance.
 DATASET = "dataset"
-#: Work running now, or finished this session with its outcome kept.
+#: Work running now, or finished this session with its outcome kept. Produced
+#: by the three modules that hand work to the job runner (`app.Window.jobs`):
+#: Map, Infer and Strategies. Declaring it with no producer left Jobs and
+#: Console as a dead end whose only advice was "this cannot be reached from
+#: here", while every long build in the application was making one.
 JOB = "job"
 
 #: Every subject ParaScape declares, in the order they are introduced above:
@@ -225,6 +229,7 @@ SUBJECT_SOURCES: Dict[str, str] = {
     SCREEN: "Drop your own table of genes and values.",
     TRAIT: "Choose one in the colour-by control, or on the information map.",
     QUESTION: "Choose one from the question catalogue.",
+    JOB: "Start something that runs: build a map, answer a question, test a strategy.",
 }
 
 
@@ -528,6 +533,8 @@ _DECLARATIONS = (
             # the map in front of them was handing out genes all day.
             Port(GENE, "picked", required=False,
                  description="the gene you clicked on the map"),
+            Port(JOB, "work", required=False,
+                 description="the build, while it is running"),
         )),
     ModulePorts(
         key="network",
@@ -596,6 +603,8 @@ _DECLARATIONS = (
             Port(GENE_LIST, "candidates", required=False,
                  description="the named genes as a list, to carry on"),
             Port(RUN, "run", description="the inference saved, with its data and settings"),
+            Port(JOB, "work", required=False,
+                 description="the inference, while it is running"),
         )),
     ModulePorts(
         key="strategies",
@@ -611,6 +620,8 @@ _DECLARATIONS = (
                  description="what the chosen strategy claims"),
             Port(SCORECARD, "grades",
                  description="how well each strategy did on genes it was not shown"),
+            Port(JOB, "work", required=False,
+                 description="the test, while it is running"),
         )),
     ModulePorts(
         key="scorecard",
