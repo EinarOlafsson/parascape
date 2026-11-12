@@ -559,8 +559,13 @@ _DECLARATIONS = (
         produces=(
             Port(GENE_LIST, "in_compartment", required=False,
                  description="the genes placed in the chosen compartment"),
-            Port(GENE, "picked", required=False,
-                 description="the gene you clicked in the drawing"),
+            # The field beside the drawing, not the drawing itself: clicking an
+            # organelle ticks a COMPARTMENT (`app.Window.select_compartment`),
+            # and only the search field selects a gene. Written after opening
+            # the file, because "clicked in the drawing" was the obvious guess
+            # and was wrong.
+            Port(GENE, "found", required=False,
+                 description="the gene found with the field beside the drawing"),
         )),
     ModulePorts(
         key="gallery",
