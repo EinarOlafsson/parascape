@@ -27,6 +27,17 @@ os.environ.setdefault("LIBGL_ALWAYS_SOFTWARE", "1")
 os.environ.setdefault("QT_OPENGL", "software")
 os.environ.setdefault("__GLX_VENDOR_LIBRARY_NAME", "mesa")
 
+# Cap the threads of OpenMP and BLAS, because without a cap one test can take over ten minutes. Measured on
+# 2026-11-12 on a 24-CPU machine at a load average of 70: `test_boosting_answers_the_same_question_template...`
+# (a 400-row histogram gradient boosting over 24 classes) took 7 seconds with four threads and was
+# still inside the first fit after ten minutes with the default of 24. OpenMP threads wait for each other
+# at a barrier, so when the machine has more runnable threads than CPUs every barrier waits for a thread
+# that is not running, and a call that is short on a quiet machine becomes unbounded on a busy one. A
+# test of wiring gains nothing from 24 threads. `setdefault`, so a person who wants more sets it.
+os.environ.setdefault("OMP_NUM_THREADS", "4")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "4")
+os.environ.setdefault("MKL_NUM_THREADS", "4")
+
 
 # Preferences persist through QSettings, and a test run must not write into the settings file of
 # whoever is running it -- nor read one, since a developer with logging enabled would otherwise have
