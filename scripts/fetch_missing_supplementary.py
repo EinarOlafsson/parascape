@@ -32,7 +32,14 @@ OUT = os.path.join(ROOT, "results", "dataset_selection_2026_11_08")
 #: Where a recorded `datasets/...` path is rooted, matching verify_supplementary_tables.py.
 DESTINATION = (os.environ.get("STARPLAST_DATA_PARENT")
                or "/media/carruthers/mnt3/claude/toxoplasma_projects")
-STALL_SECONDS = 240
+#: Seconds with NO BYTES ARRIVING before a download is abandoned. A stall detector, not a total-time limit,
+#: and the difference is the whole point. These Europe PMC endpoints serve at roughly 40 KB/s, so a 10 MB
+#: bundle needs four minutes of perfectly healthy transfer. The previous 240-second TOTAL deadline killed
+#: seven of them, and I read that as "the source is broken" three times over two days before probing the
+#: endpoints directly: they answer HTTP 200 and stream throughout. Slow is not failed.
+STALL_SECONDS = 120
+#: An overall ceiling, generous enough for a slow but progressing transfer, so one endpoint cannot hang a pass.
+CEILING_SECONDS = 1800
 AGENT = {"User-Agent": "parascape/0.0.11.0 (dataset provenance check; einar.olafsson@gmail.com)"}
 
 
@@ -44,18 +51,22 @@ def download(url: str, into: str) -> str:
         name += ".zip"                                   # the Europe PMC endpoint serves an archive
     target = os.path.join(into, name)
     request = urllib.request.Request(url, headers=AGENT)
-    # A deadline as well as a socket timeout. One Europe PMC endpoint trickled bytes for ten minutes without
-    # ever tripping the timeout, which stalls the whole pass on a single source; a slow server is a reason to
-    # move on, not to wait indefinitely.
-    deadline = time.monotonic() + STALL_SECONDS
-    with urllib.request.urlopen(request, timeout=120) as response, open(target, "wb") as handle:
+    # Give up only when nothing is ARRIVING. A transfer that is merely slow is still a transfer, and these
+    # endpoints are slow: measured at about 40 KB/s, serving HTTP 200 the whole way.
+    started = time.monotonic()
+    last_byte = started
+    with urllib.request.urlopen(request, timeout=STALL_SECONDS) as response, open(target, "wb") as handle:
         while True:
-            chunk = response.read(1 << 20)
+            chunk = response.read(1 << 18)
+            now = time.monotonic()
             if not chunk:
                 break
+            if now - last_byte > STALL_SECONDS:
+                raise TimeoutError(f"stalled {STALL_SECONDS}s with {handle.tell():,} bytes")
+            if now - started > CEILING_SECONDS:
+                raise TimeoutError(f"over {CEILING_SECONDS}s, {handle.tell():,} bytes")
             handle.write(chunk)
-            if time.monotonic() > deadline:
-                raise TimeoutError(f"gave up after {STALL_SECONDS}s, {handle.tell():,} bytes")
+            last_byte = now
     return target
 
 

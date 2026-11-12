@@ -468,3 +468,26 @@ beats a diagnosis was also too broad -- it was true of `pf_ip_ms` and of `pf_sec
 Final tally for the pass: from 0 verified and no reading done, to **40 verified, 5 keyed on something other
 than gene accessions, 3 not gene-keyed, 4 read without yielding an identifier, 3 recording no file, 1 with no
 installed column, and 7 whose file this machine cannot fetch.**
+
+## 65.04, 2026-11-12: "slow" and "failed" were the same word, and that hid one of seven
+
+I called the seven unfetchable sources persistent failures at the source, on the evidence that they failed
+three passes in an hour and again a day later. Probing the endpoints directly instead of trusting my own
+error message: `PMC7002340` and `PMC4728587` both answer **HTTP 200 and stream throughout**, at roughly
+40 KB/s. A 10 MB bundle therefore needs four minutes of perfectly healthy transfer.
+
+`STALL_SECONDS` was a **total-time deadline wearing the name of a stall detector**. It killed a transfer that
+was merely slow, raised `TimeoutError`, and I read that as the source being broken -- for three days, across
+four passes. It is now a real stall detector: give up when nothing ARRIVES for 120 s, with a 30-minute ceiling
+so one endpoint still cannot hang a pass.
+
+With that fix `cyst_wall_interactome` downloads and gets far enough to open its archive. Six others still fail
+and now fail *informatively*: five stall with no bytes for two minutes, and `thermal_shift_cetsa` raises
+`IncompleteRead`, the connection dropping mid-transfer. Those six are genuine source failures. The
+distinction between "slow" and "stalled" is the thing that was missing, and no amount of retrying would have
+produced it.
+
+**The pattern, for the record, since it is now five for five.** Every "finding" I reported in this item that
+later proved false had the same shape: my tool failed, and I described the world instead of the tool. Strain
+prefixes, ENSG identifiers, the wrong organism's table, Office files that are ZIPs, and now a timeout that
+measured the wrong thing. In each case the correction came from looking at what the tool actually returned.
