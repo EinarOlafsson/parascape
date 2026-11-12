@@ -26,6 +26,8 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+
+from parascape import organisms as _O  # noqa: E402  (after the path insert, like the other scripts)
 OUT = os.path.join(ROOT, "results", "dataset_selection_2026_11_08")
 VERIFICATION = os.path.join(OUT, "origin_paper_verification.tsv")
 
@@ -154,10 +156,14 @@ def normalise(identifier: str) -> str:
     return f"TG_{match.group(1)}" if match else identifier
 
 
-#: Which shipped table holds a given organism's genes. Picking the first table that merely CONTAINS the column
-#: name compared a Plasmodium source against Toxoplasma genes, because both tables carry `melting_temperature`.
-TABLE_FOR = {"Tg": "nodes.parquet", "Pf": "pf_nodes.parquet",
-             "Hs": "hs_host_proteins.parquet", "Mm": "mm_host_proteins.parquet"}
+#: Which shipped table holds the genes of a given organism. Picking the first table that merely CONTAINS the
+#: column name compared a Plasmodium source against Toxoplasma genes, because both tables carry
+#: `melting_temperature`.
+#:
+#: The codes are read from `parascape.organisms` rather than written here. A bare "Tg" in a new file is what
+#: `tests/test_organisms.py::test_no_file_gains_an_organism_literal` exists to catch, and it caught this one.
+TABLE_FOR = {_O.TOXOPLASMA: "nodes.parquet", _O.FALCIPARUM: "pf_nodes.parquet",
+             _O.HUMAN: "hs_host_proteins.parquet", _O.MOUSE: "mm_host_proteins.parquet"}
 
 
 def installed_genes(columns, organism: str = "") -> tuple:
