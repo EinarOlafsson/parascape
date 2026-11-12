@@ -67,6 +67,12 @@ FLOW_FIRST = None
 FLOW_MORE = 4
 FLOW_GAP_X = 110              # room between columns, for the edges
 FLOW_GAP_Y = 22
+#: Room between two lanes of one wrapped column. Narrower than FLOW_GAP_X, which separates
+#: one STEP from the next and carries the edges drawn between them; lanes are one step.
+FLOW_GAP_X_LANE = 24
+#: The smallest square whose name is still readable. Below this the column wraps into lanes
+#: instead of shrinking: at 48 px "Partners" drew as "Par" across its own symbol.
+FLOW_MIN_SIDE = 96
 AI_ROOM = 60                  # right margin of the field: the AI symbol and a gap
 
 
@@ -1327,25 +1333,41 @@ class NavigatorPage(QtWidgets.QWidget):
         top = 70
         bottom = h - DETAILS_H - 32
         room = max(120, bottom - top)
-        xs, sides = [], []
+        xs, sides, wraps = [], [], []
         x = 32
         for c, column in enumerate(self._columns):
             n = len(column)
             side = CARD_SIDE if c == 0 else FLOW_SIDE
-            side = int(min(side, (room - (n - 1) * FLOW_GAP_Y) / max(1, n)))
+            # WRAP rather than shrink past legibility. Dividing the height by the number of
+            # cards made a column of nine into 48 px squares, and at that size the name is
+            # unreadable however it is elided -- "Partners" drew as "Par" over its own symbol.
+            # The height is the scarce dimension here and the width is nearly all empty, so a
+            # column that would go below FLOW_MIN_SIDE becomes two or more lanes instead.
+            rows = n
+            lanes = 1
+            while rows > 1 and (room - (rows - 1) * FLOW_GAP_Y) / rows < FLOW_MIN_SIDE:
+                lanes += 1
+                rows = -(-n // lanes)                      # ceiling division
+            side = int(min(side, (room - (rows - 1) * FLOW_GAP_Y) / max(1, rows)))
             xs.append(x)
             sides.append(side)
-            x += side + FLOW_GAP_X
+            wraps.append(rows)
+            x += side * lanes + FLOW_GAP_X_LANE * (lanes - 1) + FLOW_GAP_X
         overflow = max(0, x - FLOW_GAP_X - (w - 32))
         for c, column in enumerate(self._columns):
-            n, side = len(column), sides[c]
-            height = n * side + (n - 1) * FLOW_GAP_Y
+            n, side, rows = len(column), sides[c], wraps[c]
+            height = rows * side + (rows - 1) * FLOW_GAP_Y
             y0 = top + max(0, (room - height) // 2)
             for i, key in enumerate(column):
                 card = self._flow_cards.get((c, key))
                 if card is None:
                     continue
-                card._final = QtCore.QRect(xs[c] - overflow, y0 + i * (side + FLOW_GAP_Y),
+                # Down the lane first, then across: a reader follows one lane to its end,
+                # and the ready offers are sorted before the blocked ones, so filling across
+                # would scatter the blocked ones through the ready.
+                lane, row = divmod(i, rows)
+                card._final = QtCore.QRect(xs[c] - overflow + lane * (side + FLOW_GAP_X_LANE),
+                                           y0 + row * (side + FLOW_GAP_Y),
                                            side, side)
                 card.fit(side)
                 card.setVisible(card._final.right() > 0)
