@@ -2,6 +2,11 @@
 
 **Status: DONE 2026-08-18.** `parascape/recipes.py`, 49 tests, 100% coverage, no `pragma`.
 
+**Renamed 2026-11-12 (instruction 98).** "Recipe" now means a saved bundle of settings, as in spaCR, so what this
+file calls a recipe is a **question template**: `parascape/question_templates.py`, `QuestionTemplate`,
+`TemplateResult`, `TemplateStore`, and `parascape/recipes.py` is the settings module. The text below is left as
+written, because it is the record of what was decided in August.
+
 ## What shipped
 
 `Recipe` (question, inputs as category addresses, holdout, validation_holdout, seed, spec,

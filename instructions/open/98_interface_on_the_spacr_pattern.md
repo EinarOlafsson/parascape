@@ -293,7 +293,7 @@ exactly what they read before.
 | WP2 typed subjects | **done** — `parascape/ports.py`, 13 subjects, 50 tests, no Qt import |
 | WP3 one catalogue | **done** — `parascape/modules.py` extended; the tool specs and shell routes computed from it; 25 tests |
 | WP5 symbols, no cross | **done** — `parascape/iconset.py`, `parascape/ai_button.py`, `parascape/no_cross.py`; 16 tests |
-| WP6 recipes | **done** — `parascape/module_recipes.py`, `parascape/recipes_panel.py`; 38 tests |
+| WP6 recipes | **done** — `parascape/recipes.py` (named `module_recipes.py` until 2026-11-12), `parascape/recipes_panel.py`; 38 tests |
 | WP8 the gene card | **done 2026-11-12** — see below |
 | WP4, WP7, WP9, WP10, WP11 | not started; they are the ones Einar will actually see |
 
@@ -306,8 +306,8 @@ closed before WP7, because the tree is computed from them:
    hand-written one is what the navigator offers today. WP7 should delete it and read the computed answer,
    which is the whole point of WP2.
 
-**What WP6 did not wire, and the wording risk.** `parascape/recipes.py` already means something else -- the
-Infer biological-question recipes -- so the settings recipes live in `module_recipes.py`. Map and Network have
+**What WP6 did not wire, and the wording risk (closed 2026-11-12, see "The word recipe" below).** `parascape/recipes.py` meant something else -- the
+Infer biological-question recipes -- so the settings recipes lived in `module_recipes.py`. Map and Network have
 a Recipes group; Gene, Infer and the dock modules do not, because a gene or a question is a subject rather
 than a setting. **If both kinds ever appear in the Infer module the word "recipe" will mean two things on one
 screen**, which is a naming decision for Einar rather than a thing to guess at.
@@ -339,6 +339,33 @@ own rule is that no declared section may be empty.
 the same answer from declared subjects. WP8 deletes the hand-written one and reads the computed one -- that is
 what makes clicking the gene card reveal the right modules rather than a list someone maintained by hand. The
 same applies to `iconset.MODULE_ICON` against the icon field of a catalogue row: one must feed the other.
+
+## The word "recipe", settled 2026-11-12
+
+**A recipe is a named bundle of the settings of one module, and nothing else**, here and in spaCR. It lives in
+`parascape/recipes.py` (`Recipe`, `save_recipe`, `apply_recipe`), is shown by `parascape/recipes_panel.py`, and is
+kept as one JSON file under `~/.parascape/recipes/<module>/`. The module was `module_recipes.py` until this day.
+
+**The way of asking one biological question in the Infer module is a question template**: one question, the
+measurements allowed to answer it, the label to hold out and the independent control. It lives in
+`parascape/question_templates.py` (`QuestionTemplate`, `TemplateResult`, `TemplateStore`; `questions.as_template`
+turns a catalogue entry into one; `report.question_pdf` writes the report of a run). It was chosen over "plan",
+"test" and "design" because the sentences already written around it fit: a template is reusable, is stored
+without data, and is applied to whichever table is loaded, and nothing else in the Infer code uses the word.
+The screen still says "question" wherever it can, since that is what a person picks.
+
+**What was kept.** Files written by the old `RecipeStore` have the same fields and still load, and the format of
+the settings recipes (`"parascape_recipe": 1`) did not change. A name that used to be importable from
+`parascape.recipes` (`run`, `close`, `RecipeStore` and the rest) now raises an `ImportError` that names the new
+place. No `RecipeStore` folder is created by the application itself, so there is no stored question template
+on any machine except the ones a person made by hand.
+
+**Not renamed, on purpose.** An embedding keeps a "full recipe" (`EmbeddingSpec`, stored in a run or an embedding)
+because that is a bundle of settings and the meaning is the settled one. Two other uses are a third meaning and
+are left for a later decision: `claims.Recipe` and the `claim_recipes` table (which generator and verifiers a
+label uses), and `baselines.BaselineRecipe`. The text of the catalogue `questions.json` still says "recipe" in
+the reasons of 13 questions; it is hashed into the data release, so it was not edited, and none of those
+reasons is shown on screen.
 
 ## WP8 as built, 2026-11-12
 
