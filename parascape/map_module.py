@@ -34,6 +34,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import map_reading as MR
 from . import theme as TH
+from .recipes_panel import Setting, widget_setting
 from .shell import ModuleShell, solid_dropdown
 
 #: Genes in a preview of new settings: enough for the structure to show, few enough that
@@ -429,7 +430,61 @@ class MapModule(QtCore.QObject):
         sv.addWidget(panel.emb_name, 1)
         sv.addWidget(save_button)
         shell.add_setting("Save this map", save, expanded=False)
+        shell.add_recipes(self.recipe_settings(), after_apply=self._recipe_applied)
         self._sync_similarity()
+
+    # ------------------------------------------------------------------ recipes
+    def recipe_settings(self) -> list:
+        """The settings of the Map module that a recipe keeps (instruction 98, work package 6).
+
+        Listed by name here, in one place, so that what a recipe holds is the same as what the
+        module offers and a setting that is added or removed shows up in the check of an old
+        recipe. The measurements are kept exactly, not as the plain-language boxes, because the
+        boxes cannot say which individual measurements were chosen under them.
+        """
+        panel = self.panel
+        tree = panel.blocks
+
+        def usable() -> set:
+            keys = set()
+            for i in range(tree.topLevelItemCount()):
+                for leaf in tree.leaves(tree.topLevelItem(i)):
+                    if leaf.flags() & QtCore.Qt.ItemFlag.ItemIsEnabled:
+                        keys.add(leaf.data(0, QtCore.Qt.ItemDataRole.UserRole))
+            return keys
+
+        def put_measurements(value):
+            if not isinstance(value, list):
+                raise ValueError("the measurements are not a list")
+            have = usable()
+            keep = [k for k in value if k in have]
+            tree.set_checked(sorted(keep))
+            gone = len(value) - len(keep)
+            if gone:
+                return (f"{gone} measurement(s) in the recipe are not in this data and were "
+                        f"left out.")
+            return None
+
+        return [
+            widget_setting("colour_by", self.colour_box, "colour by"),
+            Setting("measurements", lambda: sorted(tree.checked()), put_measurements,
+                    "what makes genes similar"),
+            widget_setting("n_neighbors", panel.nn, "neighbours considered"),
+            widget_setting("min_dist", panel.md, "spacing"),
+            widget_setting("seed", panel.seed, "seed"),
+            widget_setting("preview_changes", self.live, "preview a change before building it"),
+            widget_setting("genes_per_try", panel.sample, "genes per try"),
+            widget_setting("try_neighbours", panel.nn_grid, "neighbours tried"),
+            widget_setting("try_spacing", panel.md_grid, "spacings tried"),
+            widget_setting("try_cluster_sizes", panel.mcs_grid, "cluster sizes tried"),
+            widget_setting("grouping_method", panel.algo, "grouping method"),
+            widget_setting("neighbourhood_radius", panel.eps, "neighbourhood radius"),
+        ]
+
+    def _recipe_applied(self) -> None:
+        """Redraw after a recipe has been applied: tick the plain boxes, then preview."""
+        self._sync_similarity()
+        self._settings_changed()
 
     # ------------------------------------------------------------------ the right column
     def _build_runtime(self) -> None:

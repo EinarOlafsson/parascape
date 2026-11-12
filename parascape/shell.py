@@ -199,6 +199,7 @@ class ModuleShell(QtWidgets.QWidget):
         self._borrowed: list[_Borrowed] = []
         self.sections: dict[str, QtWidgets.QWidget] = {}
         self.actions: dict[str, QtWidgets.QPushButton] = {}
+        self.recipes = None                      # the recipe panel, once `add_recipes` is called
 
         outer = QtWidgets.QVBoxLayout(self)
         outer.setContentsMargins(24, 20, 24, 16)
@@ -315,6 +316,27 @@ class ModuleShell(QtWidgets.QWidget):
         self._settings_layout.insertWidget(self._settings_layout.count() - 1, section)
         self.sections[name] = section
         return section
+
+    def add_recipes(self, settings, after_apply=None, name: str = "Recipes"):
+        """The Recipes group of the Settings column: save the settings of this module under a
+        name, apply one, share one. It starts folded, like the Save group of every module.
+
+        Recipes are what spaCR calls the same thing, so a person who knows one finds the other
+        (instruction 98, work package 6). They are scoped to this module by its key and carry
+        the version of ParaScape they were saved with, so applying one to another module is
+        refused.
+
+        :param settings: the :class:`parascape.recipes_panel.Setting` list of the module, which
+            is both what a recipe keeps and what an old recipe is checked against.
+        :param after_apply: called after a recipe is applied, so the module can redraw.
+        :param name: the heading of the group.
+        :returns: the panel, also kept as ``self.recipes``.
+        """
+        from .recipes_panel import RecipePanel
+        panel = RecipePanel(self.key, settings, after_apply=after_apply, parent=self)
+        self.recipes = panel
+        self.add_setting(name, panel, expanded=False)
+        return panel
 
     def add_section(self, name: str, widget: QtWidgets.QWidget, extent: int = 240,
                     stretch: int = 1, focus: bool = False, folded: bool = False):

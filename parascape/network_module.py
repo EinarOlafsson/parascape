@@ -27,6 +27,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 from . import map_reading as MR
 from . import network_reading as NR
 from . import theme as TH
+from .recipes_panel import Setting, widget_setting
 from .shell import ModuleShell, solid_dropdown
 from . import organisms
 
@@ -461,6 +462,23 @@ class NetworkModule(QtCore.QObject):
         self.names.toggled.connect(lambda on: (setattr(self.view, "show_names", on), self.view.update()))
         al.addRow(self.names)
         shell.add_setting("Advanced", advanced, expanded=False)
+        shell.add_recipes(self.recipe_settings(), after_apply=self.refresh)
+
+    def recipe_settings(self) -> list:
+        """The settings of the Network module that a recipe keeps (instruction 98, work package 6).
+
+        The gene in focus is not kept: a recipe is how the module is set up, not which gene it is
+        looking at. The kinds of link are kept by their layer name, one setting for each, so a
+        layer that a data release drops is reported by name when an old recipe is applied.
+        """
+        out = [widget_setting("colour_by", self.colour_box, "colour by"),
+               widget_setting("link_strength", self.strength, "how strong a link must be"),
+               widget_setting("arrange_genes", self.arrange, "arrange genes"),
+               widget_setting("sharp_link_steps", self.sharp, "sharp link steps"),
+               widget_setting("name_linked_genes", self.names, "name the genes linked to it")]
+        for layer, box in self.layer_boxes.items():
+            out.append(widget_setting(f"links_{layer}", box, f"links: {layer}"))
+        return out
 
     # ------------------------------------------------------------------ right
     def _build_runtime(self) -> None:
