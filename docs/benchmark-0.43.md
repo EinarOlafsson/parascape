@@ -8,7 +8,7 @@ clear improvement on their own.
 
 These are held-out predictions of existing measurements, not newly validated
 gene annotations. The results support using the map for exploration and the
-**Tools → Predict a trait** workflow for quantitative comparisons.
+**Predict** module for quantitative comparisons.
 
 ## Evaluation
 

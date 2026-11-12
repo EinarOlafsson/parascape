@@ -183,7 +183,7 @@ def test_the_modules_that_run_work_are_what_produce_a_job():
     producing one, and the only advice `check_ready` could give was that this
     "cannot be reached from here" -- while every long build in the application
     was handing work to the same runner."""
-    assert set(P.producers_of(P.JOB)) == {"map", "infer", "strategies"}
+    assert set(P.producers_of(P.JOB)) == {"map", "infer", "predict", "strategies"}
     assert "jobs" in P.next_modules("map")
     fix = P.check_ready("jobs").errors[0].fix
     assert "build a map" in fix

@@ -1061,8 +1061,6 @@ def open_node(window, node: ND.Node) -> str:
             dialog = DataDownloadDialog(window)
             window._home_dialog = dialog              # kept alive; a local would be collected
             dialog.show()
-        elif action.kind == "workflow":
-            window._open_workflows(int(action.target))
         elif action.kind == "gene":
             # Select the gene first, then show its card: the card reads the selection, so the other
             # order shows the previous gene's card for a moment.

@@ -164,19 +164,20 @@ def _preference_tabs(window):
 
 
 def open_panel(window, e) -> str:
-    """Show a dock on the named tab, or open Preferences, a workflow or the slot tree."""
+    """Show a dock on the named tab, open a declared view of a module, or Preferences.
+
+    A view goes through `landing_install.open_view`, which is the one route to every view
+    the catalogue declares (instruction 98, WP10). Opening it here by raising its dock
+    would be a second route, and a second route is what let the search field and the
+    navigator disagree about where a tab lives.
+    """
     data = e.data
     if "preferences" in data:
         _select_tab(_preference_tabs(window), data["preferences"])
         return _status(window, f"Preferences ▸ {data['preferences']}")
-    if "workflow" in data:
-        window._open_workflows(int(data["workflow"]))
-        return _status(window, f"Guided workflows ▸ {e.title}")
-    if "slot_tree" in data:
-        window.slot_tree_act.setChecked(True)
-        tree = getattr(window, "_slot_tree", None) or window.open_slot_tree()
-        tree.raise_()
-        return _status(window, "Slot tree")
+    if "view" in data:
+        from .landing_install import open_view
+        return _status(window, open_view(window, data["module"], data["view"]))
     d = _raise_dock(window, data.get("dock", ""))
     if d is None:
         return _status(window, f"The {e.title} panel is not available.")

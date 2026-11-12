@@ -199,9 +199,9 @@ browsing, so this layout is not independent validation of localization. Ordered 
 input/coordinate hashes, recipe, actual backend and library versions accompany each archive.
 Points are rendered with translucent blending and depth testing; edge opacity scales with weight.
 
-The guided prediction workflow fits its own transforms inside family holdouts, independently
-of the opening map. Its methods, calibration and export contract are described in
-[the workflow guide](docs/workflows.md). The structure-search results below describe the
+The Predict module fits its own transforms inside family holdouts, independently of the
+opening map. Its methods, calibration and export contract are described in
+[the module guide](docs/workflows.md). The structure-search results below describe the
 historical pre-0.43 analysis, not performance measurements of the rebuilt default layout.
 
 ## Structure search and held-out label recovery

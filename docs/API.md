@@ -415,7 +415,7 @@ disk. `scripts/build_star_edges.py` rebuilds `data/star_edges.parquet`.
 | Rank candidate findings | [discovery](api/parascape/discovery.html), [optimize](api/parascape/optimize.html) |
 | Store analyses, question templates and settings recipes | [runs](api/parascape/runs.html), [searches](api/parascape/searches.html), [question_templates](api/parascape/question_templates.html), [recipes](api/parascape/recipes.html) |
 | Embed the desktop interface | [app](api/parascape/app.html), [analysis_panel](api/parascape/analysis_panel.html) |
-| Guided workflows | [workflows](api/parascape/workflows.html) |
+| Predict a column, and compare a screen of your own | [predict_module](api/parascape/predict_module.html), [screen_module](api/parascape/screen_module.html) |
 | Group-aware classification, regression and multi-label evaluation | [prediction](api/parascape/prediction.html) |
 | Weighted transductive networks | [network_prediction](api/parascape/network_prediction.html) |
 | Typed observations and reviewed assertions | [evidence](api/parascape/evidence.html) |

@@ -384,12 +384,32 @@ def test_typing_a_gene_in_the_navigator_lands_on_the_gene_card(window):
     assert window.gene_module.module.gene == gene
 
 
-def test_the_gene_route_never_reaches_the_pre_navigator_workflow_window(window):
-    """WP10 retires `workflows.py`; WP8 only has to stop the gene route reaching it."""
+def test_the_pre_navigator_workflow_window_is_gone_entirely(window):
+    """WP8 stopped the gene route reaching `workflows.py`; WP10 retired the file.
+
+    Both halves are held here. The gene route must not build it, and the window must not
+    be buildable at all -- the module, the opener and the menu items are all gone, and
+    its three tabs are the Gene, Predict and Screen modules.
+    """
+    import os
+
+    import parascape
+
     from parascape.landing_install import open_item
     open_item(window, "gene", str(window.nodes.gene_id.iloc[3]))
     assert not hasattr(window, "workflows_dialog"), \
         "opening a gene built the pre-navigator Workflows window"
+    assert not hasattr(window, "_open_workflows"), \
+        "the opener of the retired window is still on the window"
+    # The FILE beside the package that is loaded, not an import: an editable install
+    # elsewhere on this machine can still answer for `parascape.workflows`, and what is
+    # being checked is that this copy of ParaScape no longer ships it.
+    assert not os.path.exists(os.path.join(os.path.dirname(parascape.__file__),
+                                           "workflows.py")), \
+        "workflows.py is still in the package"
+    for shell in ("predict_module", "screen_module"):
+        assert getattr(window, shell, None) is not None, \
+            f"{shell} replaces part of the retired window and was not built"
 
 
 def test_the_gene_module_lists_links_to_other_organisms_in_their_own_spaces(window):

@@ -128,7 +128,7 @@ ORGANISM_LITERALS = {
     "parascape/slot_tree.py": 2,
     "parascape/slots.py": 5,
     "parascape/strategies.py": 15,
-    "parascape/workflows.py": 1,
+    # workflows.py was retired by instruction 98, WP10, and took its one literal with it.
 }
 
 

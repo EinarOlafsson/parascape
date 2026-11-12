@@ -13,8 +13,9 @@ kind            where the rows come from
 ``node``        `parascape.nodes.catalogue` -- the cards of the home screen, so what the
                 program can be asked about is searchable by name
 ``action``      every command in the window's menu bar, with its tooltip and status tip
-``panel``       every dock, every tab of the analysis, strategy and preference panels, the
-                guided workflows and the slot tree
+``panel``       every dock, every view declared on a module in `parascape.modules` (the
+                tabs of the panels and the windows that read one of them), every tab of
+                the analysis panel and every tab of Preferences
 ``setting``     every labelled control in the analysis panel and in Preferences, and every
                 display choice the map's right-click menu offers
 ``strategy``    `parascape.strategies.catalog` -- key, number, name, method, family, question
@@ -64,7 +65,7 @@ REPO = "https://github.com/EinarOlafsson/parascape/blob/main/"
 PUBLISHED = {"index": "ParaScape documentation", "guide": "User guide", "API": "Python API",
              "datasets": "Dataset catalogue", "structures": "Protein structures",
              "protein-sequences": "Protein sequences", "releases": "Releases",
-             "workflows": "Guided workflows", "benchmark-0.43": "Benchmark 0.43",
+             "workflows": "Explore, predict and compare", "benchmark-0.43": "Benchmark 0.43",
              "repository-review": "Repository review", "scientific-roadmap": "Scientific roadmap",
              "calibration": "Strategy calibration", "graphspace": "Integrated neighbour space",
              "strategies": "Strategy catalogue"}
@@ -450,12 +451,30 @@ DOCK_HELP = {
 
 
 def panel_entries(window) -> list:
-    """Every dock, and every tab inside the analysis, strategy, preference and workflow panels."""
+    """Every dock, every view declared on a module, the analysis tabs and Preferences.
+
+    THE VIEWS COME FROM THE CATALOGUE (instruction 98, WP10). Until WP10 this function
+    hand-listed the analysis tabs, the strategy tabs and the three guided workflows, and
+    said nothing at all about the eleven tabs of the compare dock, the five of discoveries
+    or the two of the information map -- which is why the navigator could not name them and
+    why Einar reported that everything behind it was unchanged. Those views are declared on
+    the module they belong to (`modules.Module.views`) and read from there, so a view is
+    searchable by having a row in the catalogue and in no other way.
+
+    The analysis tabs are still walked off the live panel as well. They are the only tabs
+    whose own tooltip is worth matching on, and three of them are now signposts to the
+    modules that took their controls, which the walk reports honestly and a declaration
+    would have to be told.
+    """
     out = []
     for d in _docks(window):
         name = d.windowTitle()
         out.append(entry("panel", name.capitalize(), "Panel", DOCK_HELP.get(name, ""),
                          dock=name))
+    from . import modules as MOD
+    for module, view in MOD.views():
+        out.append(entry("panel", view.name, f"{module.name} ▸ view", view.shows,
+                         module=module.key, view=view.name))
     panel = getattr(window, "panel", None)
     tabs = getattr(panel, "tabs", None)
     if tabs is not None:
@@ -464,23 +483,9 @@ def panel_entries(window) -> list:
             out.append(entry("panel", label.split("·")[-1].strip(), "Analysis ▸ tab",
                              f"analysis panel {label} {plain(tabs.tabToolTip(i))}",
                              dock="analysis", tab=label))
-    strat = getattr(window, "strategy_panel", None)
-    if strat is not None:
-        for i in range(strat.tabs.count()):
-            label = strat.tabs.tabText(i)
-            out.append(entry("panel", f"Strategy {label.lower()}", "Strategies ▸ Details",
-                             f"strategies panel details {label}", dock="strategies",
-                             tab=label))
-    for i, label in enumerate(("Explore a gene", "Predict a trait", "Compare a screen")):
-        out.append(entry("panel", label, "Tools ▸ Guided workflows",
-                         "guided workflow with source evidence, held-out evaluation and exports",
-                         workflow=i))
     for label in ("Appearance", "Display", "Window"):
         out.append(entry("panel", f"Preferences: {label}", "File ▸ Preferences",
                          f"preferences settings {label}", preferences=label))
-    out.append(entry("panel", "Slot tree", "Tools ▸ Slot tree",
-                     "every information category, its address in three hierarchies, and what "
-                     "fills it; the empty ones are coloured", slot_tree="1"))
     return out
 
 

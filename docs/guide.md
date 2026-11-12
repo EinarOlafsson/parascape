@@ -14,7 +14,7 @@ result, **Return** or a click goes to it, and **Esc** closes the list.
 | Result | Where it takes you |
 |---|---|
 | command | Carries out the menu command; a submenu opens where it sits in the menu bar |
-| panel | Shows the dock on the named tab, or opens Preferences, a guided workflow or the slot tree |
+| panel | Opens the dock, or a view declared on a module -- a tab of the panel that module shows, or a window that reads it -- or a page of Preferences |
 | strategy | Raises the Strategies tab with that strategy selected and its card showing (Details ▸ holds its Guide) |
 | setting | Opens the analysis tab or Preferences page holding the control, scrolls to it and outlines it; a display choice such as **Theme: paper** is applied |
 | slot | Opens the slot tree on the slot's organism with the slot selected |
@@ -484,7 +484,7 @@ For clearer figures, use neutral lighting and disable distance fading when
 comparing colours. Lighting and camera settings change presentation only.
 
 Menus, tooltips, drop-down lists and ParaScape's own windows (Preferences, the
-guided workflows, the slot tree, explanations) are rounded panes of translucent
+the slot tree, explanations) are rounded panes of translucent
 black, or translucent white on a light theme, as in spaCR. These windows have no
 title bar: drag the background to move one, drag an edge to resize it, and close it
 with the **✕** in its corner (**Esc** also closes a dialog). On an X11 desktop without a compositor the

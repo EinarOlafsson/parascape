@@ -295,7 +295,8 @@ exactly what they read before.
 | WP5 symbols, no cross | **done** — `parascape/iconset.py`, `parascape/ai_button.py`, `parascape/no_cross.py`; 16 tests |
 | WP6 recipes | **done** — `parascape/recipes.py` (named `module_recipes.py` until 2026-11-12), `parascape/recipes_panel.py`; 38 tests |
 | WP8 the gene card | **done 2026-11-12** — see below |
-| WP4, WP7, WP9, WP10, WP11 | not started; they are the ones Einar will actually see |
+| WP10 retire the old windows, route every orphan | **done 2026-11-12** — see "WP10 as built" |
+| WP4, WP7, WP9, WP11 | not started; they are the ones Einar will actually see |
 
 **Two tables that can now disagree, which is the exact failure spaCR documents as bug #16i.** Both must be
 closed before WP7, because the tree is computed from them:
@@ -442,3 +443,180 @@ gene route reaches it, and `test_module_shell.py` holds that.
 new), the gene card in `tests/test_module_shell.py` (10, new), the reveal in `tests/test_navigator.py` (8,
 new), and the two closed tables in `tests/test_module_catalogue.py` (5, new). Verified by rendering the real
 `app.Window` offscreen at 1920x1080 with `XDG_CONFIG_HOME` in a scratch directory and looking at it.
+
+## WP10 as built, 2026-11-12
+
+Einar words, which are the acceptance criteria: *"now when i put in a gene and pressed the modual that came
+up for the gene, i was brought to the old version of parascape. this also needs to be overhauled."* And:
+*"the new interface is really close to what i wanted in terms of the navigator screen. but everything behind
+it seems to be unchanged."*
+
+WP8 stopped the GENE route reaching the old window. WP10 takes the window away, and gives every view behind
+the navigator a name and a route.
+
+### The mechanism: a view is declared on the module it belongs to
+
+Twenty-nine more tiles on Home would have answered "everything behind the navigator is unchanged" with a
+wall. Deleting twenty-nine panels would have dropped measurements. The middle answer is `modules.View`: a
+name, one plain line saying what data is on screen, and one destination (`dock`, `dock:tab` or
+`action:method`), declared on the catalogue row of the module whose panel already holds it. There is no
+second table -- the search index (`help_index.panel_entries`) is computed from these rows, and
+`landing_install.open_view` is the one route to them. A view of a dock the module borrows opens **inside the
+module shell** with its tab brought forward; a view somewhere else leaves the landing and opens there,
+honestly, as a panel. `tests/test_views.py` holds both directions: every declared view exists in a real
+window, and every tab in a real window is a view, a module, or a signpost left where a module took the
+controls.
+
+### 1. `workflows.py` -- RETIRED, after moving what only it could do
+
+The three tabs were checked by opening them, not by their names.
+
+| tab | what it alone could do | decision |
+|---|---|---|
+| Explore a gene | gene search, then the evidence rows of that gene with sources | **(c) deleted** — the Gene card (WP8) does all of it and more, and this was the screen Einar landed on |
+| Predict a trait | `prediction.run`: eight methods, holdout by family, folds, abstention, the full run export. **Nothing else in ParaScape calls it** | **(b) its own catalogue row** — the new `predict` module, controls MOVED into `parascape/predict_module.py` |
+| Compare a screen | `prioritization.compare_screen`: your CSV joined to the gene table with the source hash kept. **Nothing else in ParaScape calls it** | **(a) routed to the module that claims to do it** — `screen`, rebuilt as `parascape/screen_module.py`, controls MOVED |
+
+`parascape/workflows.py` and `tests/test_workflows.py` are deleted, with the three Tools menu items,
+`Window._open_workflows`, the `workflow` destination kind of `nodes.py`, the branch in `home_panel`, the
+branch in `help_search.open_panel` and the three rows of `help_index`. `tests/test_module_shell.py` holds
+that the file is gone from the package and that both replacements were built.
+
+**The Screen tile was wrong before this, which is the complaint in one click.** It said "join your screen to
+everything already recorded" and opened the `compare` dock -- somebody else published RNA-seq. It reads a
+screen now, and its declared ports (`SCREEN` in, `GENE_LIST` and `TRAIT` out) finally describe what it does.
+
+### 2. `star map` -- KEPT, and the deletion is Einar to make
+
+WP1 recorded it as dead weight the Network module replaced. **Opening both says otherwise.** The Network
+module reads `star_edges.measured_edges` alone. The star map also draws `shipped_edges` -- the inferred
+links of the 39 strategies -- and `UserEdgeStore`, the links from runs of your own made in the Strategies
+tab, kept on disk between sessions, with saved link definitions (`DefinitionStore`). Deleting it would lose
+the only view of every inferred link in ParaScape, which is the one thing WP10 is not allowed to do.
+
+So: **(c) candidate for deletion, needs Einar**, and the code stays. It is now a declared view of Network --
+"Links with their provenance" -- so it has a name and a route instead of being a dock nobody could ask for.
+The two honest options are for Einar to choose between: either the Network module absorbs the inferred and
+your-run layers (a work package of its own, and the right end state), or the star map stays as the one place
+links are drawn with their provenance.
+
+### 3. Every orphan tab and window, with its decision
+
+Decisions: **(a)** a view of a module that already exists, routed there; **(b)** a catalogue row of its own;
+**(c)** dead. Each was opened and read; none was judged from its name.
+
+#### The `analysis` dock, 8 tabs
+
+| tab | what it shows | decision | reason |
+|---|---|---|---|
+| 1 · Data | the 96 measurement blocks as a tree in three hierarchies, each with its coverage, plus the scaling and missing-value rules | **(a)** view of **Map**, "Choose individual measurements" | the Map module "What makes genes similar" is the coarse version of this, and its Advanced already had a button here; the fine choice had no name |
+| 2 · Map | *(moved into the Map module in instruction 86; the tab is a signpost)* | — | already done |
+| 3 · Clusters | *(moved into the Map module; the tab is a signpost)* | — | already done |
+| 4 · Inference | the held-out battery: one row per measurement the map never saw, scored against the groups it found, with the best single group per value | **(a)** view of **Infer**, "What the groups mean, held out" | the only place the battery runs, and the Map module already sent people here by a button with no name |
+| 5 · Search | walks combinations of data and settings, scoring how well a held-out label comes back | **(a)** view of **Map**, "Find the best map for a label" | the Map module has a folded section fed by this walk; the target choice and the per-run table live only here |
+| 6 · Validation | hides a share of the genes that carry a label, picks the group holding most of the rest, scores against the hidden ones, per category | **(a)** view of **Scorecard**, "Hide labels and see if they come back" | it measures how often a call of that kind is right, which is what Scorecard is for |
+| 7 · Discover | hill-climbs maps and groupings for structure that PREDICTS, read back as ranked claims with their caveats | **(a)** view of **Infer**, "Hill-climb for claims" | the only place the discovery climb runs, and its output is claims, which is what Infer produces |
+| 8 · Questions | *(moved into the Infer module; the tab is a signpost)* | — | already done |
+
+#### The `compare` dock, 11 tabs
+
+The Expression module borrows this dock, so its ten other tabs are views of Expression. Ownership here is
+not a judgement about subject matter: it is the module whose main section literally contains them, which is
+the one fact a test can check.
+
+| tab | what it shows | decision |
+|---|---|---|
+| Gene expression | where and when the RNA and protein of one gene are measured | — it IS the Expression module (`opens`) |
+| Studies & samples | each quantified study, its samples, and how they were grouped | **(a)** view of Expression |
+| Coexpression | the genes whose expression rises and falls with the one chosen, per source | **(a)** view of Expression |
+| Published expression | the values the original papers published, as published | **(a)** view of Expression |
+| Deposited matrices | whole deposited measurement matrices, read from the source file | **(a)** view of Expression |
+| Other measurements | deposited values that are not expression, with source and units | **(a)** view of Expression |
+| Sparse measurements | measurements recorded for a few genes, kept sparse rather than filled with zeros | **(a)** view of Expression |
+| Original workbooks | the supplementary workbooks as the authors shipped them, sheet by sheet | **(a)** view of Expression |
+| Reference identifiers | which identifier in a source maps to which gene here, and what did not map | **(a)** view of Expression |
+| Dataset coverage | how many genes each dataset actually covers | **(a)** view of Expression |
+| Condition comparison | two groups of samples from one study: which genes differ, by how much, how sure | **(a)** view of Expression |
+
+Nothing here was deleted. Every one of the ten reads a different file and shows numbers that appear nowhere
+else; "dead" was not true of any of them.
+
+#### The `discoveries` dock, 5 tabs — all views of **Scorecard**, which borrows it
+
+| tab | what it shows | decision |
+|---|---|---|
+| Labels and functions | every label, how many genes carry it, where that membership was recorded | **(a)** |
+| Inferred claims | the claims already computed, each with its certainty and whether anything independent agreed | **(a)** |
+| Functional tests | the frozen functional benchmarks and what each method scored on them | **(a)** |
+| Strategy coverage | which strategies have been run on which labels, and which pairs have not | **(a)** |
+| Host source status | each host-facing source, what it covers, whether it is loaded | **(a)** |
+
+#### The `information map` dock, 2 tabs — views of **Information**, which borrows it
+
+| tab | what it shows | decision |
+|---|---|---|
+| One gene | one gene trait by trait, each cell marked measured, a measured no, or not measured at all | **(a)** |
+| One trait | one trait across every gene: coverage by source tier and the values it takes | **(a)** |
+
+#### The `strategies` dock, 3 tabs — views of **Strategies**, which borrows it
+
+| tab | what it shows | decision |
+|---|---|---|
+| Guide | what the chosen strategy does and what it may use | **(a)**; `open_view` calls `show_details()` first, because these sit behind the card |
+| Settings | every setting of the chosen strategy, with the range each is allowed | **(a)** |
+| Results | what it returned, its verdict and its tables | **(a)** |
+
+#### The two docks that had no module at all
+
+| dock | what it shows | decision | reason |
+|---|---|---|---|
+| `maps` | the maps that ship with ParaScape, grouped by what each was built from, with how well every label maps onto every one of them | **(a)** view of **Gallery**, "Maps shipped ready-made" | Gallery is "every map built so far, to compare rather than rebuild", which is this; the label-by-map score table exists nowhere else |
+| `start here` | one question at a time, ending at the strategies worth running | **(a)** view of **Strategies**, "Start here" | it is a way INTO the strategies and ends on their cards; a tile of its own would be a second front door beside the navigator, which is the thing being removed |
+
+#### The further windows
+
+| window | what it shows | decision | reason |
+|---|---|---|---|
+| Dataset browser | all sources, their coverage and provenance | — it IS the Datasets module | already reachable |
+| Slot tree (`slot_tree.py`) | every information category in three hierarchies, what fills it, the empty ones coloured | **(a)** view of **Datasets**, "Slot tree" | it is the catalogue of what is measured, which is what Datasets is about; the Tools toggle stays |
+| Gene evidence browser (`gene_evidence_browser.py`) | one gene, every record behind it, missing values included | **(a)** view of **Gene**, "Every record behind one gene" | it was reachable only by clicking a link in the evidence dock. `Window.open_gene_evidence` now says in the status bar when no gene is chosen, instead of returning None silently |
+| Label space browser (`label_space_browser.py`) | label membership, class balance, source records, recorded scorecards | **(a)** view of **Scorecard**, "Labels and classes" | it is memberships and the held-out scorecards against them |
+| Question scoreboard (`question_scoreboard.py`) | every registered question scored held out, and whether it may fill the map | **(a)** view of **Questions**, "Question scoreboard" | Questions is "the catalogue of what can be asked, and of what cannot"; this is how each one has done |
+| Workflows (`workflows.py`) | three tabs | **(c) DELETED**, after moving two of them into modules — see above |
+| Preferences | Appearance, Display, Window | — left in the menus | settings are not a module, and the search field still finds each page |
+| Download dialogs | what can be fetched and what is already here | — left in the menus | the same |
+
+### What else changed, and why
+
+* **`opens` is empty for Map, Network, Predict and Screen.** It is where a module GOES, and these four go to
+  a shell of their own. It used to name a dock each was loosely associated with, which greyed Network out
+  whenever the star map dock failed to build -- a dock Network does not use. A module with a `shell:` builder
+  is no longer greyed for want of a view (`modules.unavailable_reason`), which is also what lets Predict and
+  Screen be available at all: they come from a window that no longer exists.
+* **Two new rows in the catalogue**, so 23 modules rather than 22, and 32 declared views.
+* **`ports.py` gained `predict`**: it takes a trait and optionally your genes, and hands on a claim, a
+  scorecard, a saved run and a job. It is the free-hand counterpart of Infer, where the question arrives with
+  its holdout already chosen and checked; the module says so on screen rather than leaving the two looking
+  interchangeable.
+
+### Verified by looking
+
+The real `app.Window` was rendered offscreen at 1920x1080 with `XDG_CONFIG_HOME` in a scratch directory, and
+walked: the navigator, both new modules, and every declared view. **No view reported "not available", and no
+menu item pointing at the retired window was left anywhere in the menu bar.** The Coexpression view opens
+inside the Expression shell with its tab forward; the star map view leaves the landing and raises its dock.
+
+### Tests
+
+`tests/test_views.py` (44, new). Changed: `test_module_catalogue.py` (the six shell builders),
+`test_ports.py` (Predict produces a job), `test_module_shell.py` (the retired window is gone from the
+package), `test_home_panel.py` and `test_glass.py` (their `workflow` branches).
+
+### Left for Einar
+
+1. **The star map.** Delete it only once the Network module draws the inferred and your-run links, or keep
+   it. The code is untouched either way.
+2. **The deck** (`docs/deck/`) still says "Open these guided workflows from the Tools menu" on slide 4 and
+   shows a picture of that window. The slide images are rendered from a running application, so bringing them
+   up to date is a pass of its own rather than an edit. `docs/workflows.md`, `docs/index.md`, `docs/guide.md`
+   and `docs/API.md` are correct as of this change.

@@ -1,8 +1,11 @@
 # Explore, predict and compare
 
-The **Tools** menu has three guided entry points. Advanced map and model controls
-remain in the analysis dock. Each workflow uses the organism currently open in
-the main window.
+Three modules on the home screen, one per task. They were one window in the Tools
+menu until ParaScape 0.0.12; instruction 98 retired that window and made each of
+its three tabs a module in the same shell as every other, because it duplicated
+Gene, Infer and Screen and was where typing a gene used to land. Advanced map and
+model controls remain in the analysis dock. Each module uses the organism
+currently open in the main window.
 
 The [0.43 benchmark](benchmark-0.43.md) compares the prediction methods on held-out
 localization and protein abundance measurements, including source ablations and
@@ -10,7 +13,7 @@ shuffled-label controls.
 
 ## Explore a gene
 
-Search an accession, symbol or product description. Double-click a match to select
+The **Gene** module. Search an accession, symbol or product description. Double-click a match to select
 it on the map and inspect its measurements, missing values, evidence status and
 source links. A gene-table value is often an aggregate: it does not recover the
 original replicate, time point or uncertainty when those details were not kept.
@@ -18,7 +21,7 @@ Legacy summaries without an explicit evidence classification say **unclassified*
 
 ## Predict a trait
 
-Choose an observed outcome, its type, a method and the grouping used for evaluation.
+The **Predict** module. Choose an observed outcome, its type, a method and the grouping used for evaluation.
 **Orthogroup** keeps related proteins together; random gene folds answer an easier
 question and may overestimate transfer to new families. A study or condition column
 can be used when it actually identifies the intended held-out groups. ParaScape
@@ -36,7 +39,7 @@ For Toxoplasma, **Include frozen protein sequence features** loads the bundled
 available. Sequence or structure evidence is not automatically an improvement;
 evaluate the additions on the same held-out genes.
 
-**Evaluate and predict** runs in the shared Jobs panel. Feature exclusions,
+**Predict** runs in the shared Jobs panel. Feature exclusions,
 imputation, scaling and dimensionality reduction are fitted on training genes.
 The target, its registered relatives and derived inputs are excluded. Labels in
 the calibration and evaluation groups are not used for fitting those transforms.
@@ -60,7 +63,7 @@ family or domain shift prevents an unconditional coverage guarantee. Multi-label
 tasks are available through the API as separate measured binary columns with
 unknown entries preserved.
 
-**Export full run** writes `predictions.csv`, `per_class.csv` and `run.json`.
+**Save the whole run** writes `predictions.csv`, `per_class.csv` and `run.json`.
 The JSON records settings, input identity, exact training/calibration/test gene
 IDs, excluded features, actual estimators and package versions. Results remain
 model hypotheses. Comparing methods here is development validation; evaluating a
@@ -68,7 +71,7 @@ selected winner prospectively requires new independent data.
 
 ## Compare a screen
 
-Open a gene-level CSV/TSV from spaCR or another measurement pipeline. Choose the
+The **Screen** module. Open a gene-level CSV/TSV from spaCR or another measurement pipeline. Choose the
 gene identifier and measured-value columns. Identifiers are resolved through the
 current table and its identity catalogue. Ambiguous/unresolved identifiers remain
 visible; missing or nonnumeric values stay missing, and a measured zero stays zero.

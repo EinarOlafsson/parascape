@@ -103,8 +103,6 @@ def test_every_node_resolves_to_a_destination_this_window_has(window):
         elif action.kind == "window":
             if not callable(getattr(window, action.target, None)):
                 unresolved.append(f"{node.id}: window has no {action.target}()")
-        elif action.kind == "workflow":
-            assert callable(getattr(window, "_open_workflows", None))
         elif action.kind == "dialog":
             from parascape.data_download_dialog import DataDownloadDialog
             assert DataDownloadDialog is not None

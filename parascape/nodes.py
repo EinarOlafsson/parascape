@@ -53,7 +53,6 @@ KINDS = ("gene", "question", "strategy", "dataset", "panel", "guide")
 #: ``dock``       a dock of the main window, by its title, optionally on a named tab
 #: ``window``     a method of the main window that opens something (`open_gene_evidence`)
 #: ``dialog``     a dialog built on demand (the data downloader)
-#: ``workflow``   one of the guided workflow tabs, by index
 #: ``catalogue``  the label catalogue, drawn by the home screen itself
 #: ``question``   one question of that catalogue, by its registry id
 #: ``drop``       the home screen's own drop target, on one of its steps
@@ -62,7 +61,7 @@ KINDS = ("gene", "question", "strategy", "dataset", "panel", "guide")
 #: ``entry``      a `help_index` row the search returned -- a strategy, a dataset, a panel, a guide
 #:                page -- opened by `help_search.open_entry`, so the navigator reaches everything
 #:                the search field already reached
-DESTINATION_KINDS = ("dock", "window", "dialog", "workflow", "catalogue", "question", "drop",
+DESTINATION_KINDS = ("dock", "window", "dialog", "catalogue", "question", "drop",
                      "gene", "entry", "unavailable")
 
 #: What must be shown beside a claim, in the same view as the claim itself. Instruction 74, after
@@ -114,7 +113,7 @@ class Destination:
     """Where a node goes, named by what already exists rather than by a new screen.
 
     :ivar kind: one of `DESTINATION_KINDS`.
-    :ivar target: a dock title, a window method, a question id, a workflow index, a step name.
+    :ivar target: a dock title, a window method, a question id, a step name.
     :ivar tab: the tab inside the destination dock, when it has tabs.
     :ivar section: which part of the destination to point at, for the status line.
     """
@@ -305,7 +304,6 @@ def resolve(node: Node) -> Action:
     where = {"dock": lambda: f"the {d.target} panel" + (f", {d.tab}" if d.tab else ""),
              "window": lambda: f"{d.target}()",
              "dialog": lambda: f"the {d.target} dialog",
-             "workflow": lambda: f"guided workflow {d.target}",
              "catalogue": lambda: "the label catalogue",
              "question": lambda: f"question {d.target}",
              "drop": lambda: f"the drop target ({d.target or 'file'})",

@@ -1633,17 +1633,6 @@ class Window(QtWidgets.QMainWindow):
             self.star_map = None
             self.statusBar().showMessage(f"star map unavailable: {e}")
 
-    def _open_workflows(self, tab=0):
-        """Open task-oriented exploration, prediction and measured-screen comparison."""
-        from .workflows import WorkflowDialog
-        if not hasattr(self, 'workflows_dialog'):
-            self.workflows_dialog = WorkflowDialog(self.nodes, runner=self.jobs, parent=self)
-            self.workflows_dialog.gene_selected.connect(self._workflow_gene)
-            glass.dress(self.workflows_dialog)
-        self.workflows_dialog.tabs.setCurrentIndex(tab)
-        self.workflows_dialog.show()
-        self.workflows_dialog.raise_()
-
     def _record_link(self, url: str):
         """A track-record link from a strategy card: open it in the evidence panel and show it."""
         self._detail_link(QtCore.QUrl(url))
@@ -1990,11 +1979,11 @@ class Window(QtWidgets.QMainWindow):
         # ---- Tools
         t = mb.addMenu("&Tools")
         t.setToolTipsVisible(True)
-        for index, title in enumerate(('Explore a gene…', 'Predict a trait…', 'Compare a screen…')):
-            action = t.addAction(title)
-            action.setToolTip('Open a guided workflow with source evidence, held-out evaluation and portable exports.')
-            action.triggered.connect(lambda _checked=False, tab=index: self._open_workflows(tab))
-        t.addSeparator()
+        # The three guided workflows that used to open here are modules now (instruction 98,
+        # WP10): Gene reads a gene, Predict predicts a column, Screen joins a screen of your
+        # own. They were a window of their own that duplicated three modules and was the one
+        # Einar landed in, so the menu items went with the window rather than being left as
+        # a second way in to the same work.
         # A toggle beside the panel toggles, not a "…" that only ever opens. It sits with the other
         # things you show and hide, which is where a reader looks for it.
         self.slot_tree_act = t.addAction("Slot tree")
@@ -3195,6 +3184,11 @@ class Window(QtWidgets.QMainWindow):
         from .gene_evidence_browser import GeneEvidenceBrowser
         row = self.sel if row is None else row
         if row is None or not 0 <= row < len(self.nodes):
+            # Reached from the Gene module as a declared view now (instruction 98, WP10), so
+            # it has to say why nothing opened. Returning None silently made it look broken.
+            self.statusBar().showMessage(
+                "Every record behind one gene: choose a gene first -- type one in the Gene "
+                "module or click one on the map.", 6000)
             return None
         previous = getattr(self, '_gene_evidence_dialog', None)
         if previous is not None:

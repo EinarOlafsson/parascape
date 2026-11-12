@@ -190,6 +190,90 @@ def open_module(window, key: str, subject: str = "", value: str = "") -> str:
     return message
 
 
+def open_view(window, key: str, name: str) -> str:
+    """Open one declared view of a module. Returns what the status bar was told.
+
+    WHY A VIEW IS OPENED THROUGH ITS MODULE (instruction 98, WP10). The inventory found
+    29 tabs and four windows the navigator could not name. Each is declared on the module
+    whose panel holds it (`modules.View`), and this is the one route to them, so a view
+    cannot be reachable without being declared and cannot be declared without being
+    reachable -- which is what `tests/test_views.py` holds in both directions.
+
+    A view that lives in the dock its module borrows is opened IN the module, with its tab
+    brought forward, because that is the shell Einar asked every module to look like. A
+    view in some other dock, or in a window of its own, leaves the landing and opens there:
+    honest about being a panel rather than pretending to be part of the module.
+
+    :param window: the main window.
+    :param key: the key of the module the view belongs to.
+    :param name: the name of the view, as declared.
+    :returns: a line for the status bar; never raises, because this is called from a click.
+    """
+    try:
+        module = MOD.get(key)
+    except KeyError:
+        return f"there is no {key} module"
+    view = next((v for v in module.views if v.name.lower() == name.strip().lower()), None)
+    if view is None:
+        return f"{module.name} has no view called {name}"
+    if view.opens.startswith("action:"):
+        method = getattr(window, view.opens.split(":", 1)[1], None)
+        if not callable(method):
+            return f"{view.name} cannot be opened in this window"
+        leave_landing(window)
+        try:
+            method()
+        except Exception as error:               # a broken view must not take the window
+            return f"could not open {view.name}: {type(error).__name__}: {error}"
+        return view.name
+    dock, _, tab = view.opens.partition(":")
+    inside = module.opens.partition(":")[0]
+    if dock == inside and key in getattr(window, "tool_modules", {}):
+        # The module already shows this dock: open the module and turn to the tab, so the
+        # view arrives inside the shell rather than as a bare panel beside the map.
+        from .dock_module import open_in as open_tool
+        message = open_tool(window, key)
+        if _turn_to_tab(window, key, dock, tab):
+            return f"{message} ▸ {view.name}"
+        return message
+    return raise_dock(window, dock, tab)
+
+
+def _turn_to_tab(window, key: str, dock: str, tab: str) -> bool:
+    """Bring a tab forward in the panel a tool module borrows. Did it work?
+
+    The panel is LENT: while the module is on screen it lives under the shell, and the rest
+    of the time under its dock. It is the SAME object either way, so this asks the module
+    for it and falls back to the dock -- which matters because a module takes its panel on
+    the show event, and a module opened in the same breath as a tab being chosen has not
+    had one yet.
+    """
+    if not tab:
+        return False
+    shell = getattr(window, "tool_modules", {}).get(key)
+    borrowed = getattr(getattr(shell, "module", None), "main", None)
+    panel = getattr(borrowed, "panel", None)
+    if panel is None:
+        holder = next((d for d in window.findChildren(QtWidgets.QDockWidget)
+                       if d.windowTitle() == dock), None)
+        panel = holder.widget() if holder is not None else None
+    if panel is None:
+        return False
+    # The Strategies tabs sit BEHIND the card of the chosen strategy, in a stack. Asking the
+    # panel to show its details first is what the search field has always done; without it
+    # the tab is selected under a card nobody has moved out of the way.
+    if hasattr(panel, "show_details"):
+        panel.show_details()
+    for tabs in [panel] + panel.findChildren(QtWidgets.QTabWidget):
+        if not isinstance(tabs, QtWidgets.QTabWidget):
+            continue
+        for i in range(tabs.count()):
+            if tabs.tabText(i) == tab:
+                tabs.setCurrentIndex(i)
+                return True
+    return False
+
+
 def raise_dock(window, title: str, tab: str = "") -> str:
     """Show a dock, bring it forward, and select a tab in it. Reports, never raises:
     a dock that failed to install must leave the landing usable."""

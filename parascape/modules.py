@@ -56,6 +56,35 @@ from . import ports as PORTS
 
 
 @dataclass(frozen=True)
+class View:
+    """One named view that belongs to a module without being a module of its own.
+
+    WHY THIS EXISTS (instruction 98, WP10). The inventory counted 29 tabs inside five
+    docks and four windows that the navigator could not name at all. Each of them shows
+    real measurements, so none could be dropped; and twenty-nine more tiles on Home
+    would have answered "everything behind the navigator is unchanged" with a wall.
+
+    A view is the middle answer: it is declared HERE, beside the module whose main
+    section already contains it, so it has a name, a plain sentence about what it shows
+    and one declared destination. The search field finds it by that name
+    (`help_index.panel_entries` is computed from these rows) and
+    `landing_install.open_view` opens it. It inherits the ports of the module that owns
+    it, because a tab of a panel acts on whatever subject the panel is reading.
+
+    :param name: what it is called, which is the tab label where there is one. What a
+        person would type to look for it.
+    :param shows: one plain line saying what data is on screen. Not what it is called
+        again.
+    :param opens: where it is, in the same spelling as :attr:`Module.opens`:
+        ``dock``, ``dock:tab`` or ``action:method``.
+    """
+
+    name: str
+    shows: str
+    opens: str
+
+
+@dataclass(frozen=True)
 class Module:
     """One tile on the home screen.
 
@@ -66,8 +95,10 @@ class Module:
     :param band: which group of tiles it belongs to.
     :param opens: where the module goes: a dock as `dock`, a tab in one as
         `dock:tab`, or a window method as `action:method` (the dataset browser and
-        export are windows and dialogs, not docks). Empty means the view does not
-        exist yet, and the module is unavailable for that reason alone.
+        export are windows and dialogs, not docks). Empty means one of two things: the
+        view does not exist yet, and the module is unavailable for that reason alone; or
+        the module is built by a shell of its own (`builder` starts ``shell:``) and goes
+        to no dock, which is Map, Network, Predict and Screen.
 
         Every destination was checked against a live window, after the first
         version of this catalogue -- written from memory -- pointed six modules at
@@ -99,6 +130,10 @@ class Module:
           ``opens``: the same shell, borrowing a panel that already exists.
         * ``""`` -- not built at all. It opens whatever ``opens`` names, or
           nothing when ``opens`` is empty too.
+    :param views: the named views that belong to this module -- the tabs of the panel it
+        shows, and the separate windows that read the same thing. See :class:`View`.
+        They are declared here rather than in a second table so that a view cannot drift
+        away from the module it belongs to, which is bug #16i again.
     """
 
     key: str
@@ -110,6 +145,7 @@ class Module:
     icon: str = ""
     instruction: str = ""
     builder: str = ""
+    views: tuple = ()
 
     @property
     def section(self) -> str:
@@ -158,7 +194,13 @@ MODULES = (
     Module("gene", "Gene", "everything recorded about one gene, with its sources",
            "Look up", opens="evidence", icon="profiler",
            instruction="Name a gene, or step through a list one gene at a time.",
-           builder="shell:gene_module"),
+           builder="shell:gene_module",
+           views=(
+               View("Every record behind one gene",
+                    "one gene, column by column, including the empty ones, each with the "
+                    "record it came from",
+                    "action:open_gene_evidence"),
+           )),
     Module("structure", "Structure", "the fold, its confidence, and what is known of it",
            "Look up", needs=("a structure view; AF3 summaries are on the evidence of a gene for now",),
            icon="layer_viewer",
@@ -170,17 +212,73 @@ MODULES = (
     Module("expression", "Expression", "where and when its RNA and protein are measured",
            "Look up", opens="compare:Gene expression", icon="pca",
            instruction="Choose a gene; compare where and when it is made, across stages and strains.",
-           builder="tool"),
+           builder="tool",
+           views=(
+               View("Studies & samples",
+                    "each quantified study, its samples and how they were grouped",
+                    "compare:Studies & samples"),
+               View("Coexpression",
+                    "the genes whose expression rises and falls with the one chosen",
+                    "compare:Coexpression"),
+               View("Published expression",
+                    "the values the original papers published, as published",
+                    "compare:Published expression"),
+               View("Deposited matrices",
+                    "whole deposited measurement matrices, read from the source file",
+                    "compare:Deposited matrices"),
+               View("Other measurements",
+                    "deposited values that are not expression, with their source and units",
+                    "compare:Other measurements"),
+               View("Sparse measurements",
+                    "measurements recorded for only a few genes, kept sparse rather than "
+                    "filled in with zeros",
+                    "compare:Sparse measurements"),
+               View("Original workbooks",
+                    "the supplementary workbooks as the authors shipped them, sheet by sheet",
+                    "compare:Original workbooks"),
+               View("Reference identifiers",
+                    "which identifier in a source maps to which gene here, and what did not map",
+                    "compare:Reference identifiers"),
+               View("Dataset coverage",
+                    "how many genes each dataset actually covers, dataset by dataset",
+                    "compare:Dataset coverage"),
+               View("Condition comparison",
+                    "two groups of samples from one study: which genes differ, by how much "
+                    "and how sure",
+                    "compare:Condition comparison"),
+           )),
 
     # ---------------------------------------------------------------- Explore
+    # `opens` is empty for Map and Network on purpose. It is where a module GOES, and
+    # these two go to a shell of their own; it used to name the dock each was loosely
+    # associated with (`maps`, `star map`), which was never where either opened and which
+    # greyed Network out whenever the star map dock failed to build. Both of those docks
+    # are declared views now -- of Gallery and of Network -- so each has exactly one name.
     Module("map", "Map", "the genome as a space you choose the axes of",
-           "Explore", opens="maps", icon="umap",
+           "Explore", icon="umap",
            instruction="Put your genes on the map and read what surrounds them.",
-           builder="shell:map_module"),
+           builder="shell:map_module",
+           views=(
+               View("Choose individual measurements",
+                    "every measurement block, how many genes it covers, and the scaling and "
+                    "missing-value rules the map is built under",
+                    "analysis:1 · Data"),
+               View("Find the best map for a label",
+                    "each combination of settings tried, scored by how well a label the map "
+                    "never saw comes back",
+                    "analysis:5 · Search"),
+           )),
     Module("network", "Network", "a gene and its neighbourhood, edges you define",
-           "Explore", opens="star map", icon="graph_builder",
+           "Explore", icon="graph_builder",
            instruction="Name a gene to bring its region into focus; tick the links that count.",
-           builder="shell:network_module"),
+           builder="shell:network_module",
+           views=(
+               View("Links with their provenance",
+                    "one gene at the centre and its links on rings around it, coloured by "
+                    "which layer, which strategy or which run of yours says so -- the "
+                    "inferred links the Network module does not draw",
+                    "star map"),
+           )),
     Module("cell", "Cell", "the parasite drawn, with the genes placed on it",
            "Explore", opens="find", icon="image_scatter",
            instruction="Choose a compartment or a gene to see where it sits in the cell.",
@@ -188,25 +286,93 @@ MODULES = (
     Module("gallery", "Gallery", "every map built so far, to compare rather than rebuild",
            "Explore", opens="gallery", icon="trellis",
            instruction="Click a map to show it; compare maps rather than rebuild them.",
-           builder="tool"),
+           builder="tool",
+           views=(
+               View("Maps shipped ready-made",
+                    "the maps that ship with ParaScape, grouped by what each was built "
+                    "from, with how well every label maps onto every one of them",
+                    "maps"),
+           )),
 
     # -------------------------------------------------------------------- Ask
     Module("questions", "Questions", "the catalogue of what can be asked, and of what cannot",
            "Ask", opens="analysis:8 · Questions", icon="experiment_design",
            instruction="Read what can be asked, and what the answer would have to clear.",
-           builder="shell:infer_module"),
+           builder="shell:infer_module",
+           views=(
+               View("Question scoreboard",
+                    "every registered question scored on genes held out: its held-out AUC "
+                    "against chance, and whether it may write into the map",
+                    "action:open_question_scoreboard"),
+           )),
     Module("infer", "Infer", "answer a question, choosing the evidence it may use",
            "Ask", opens="analysis", icon="ml_analyze",
            instruction="Choose a question, then choose what evidence it may use.",
-           builder="shell:infer_module"),
+           builder="shell:infer_module",
+           views=(
+               View("What the groups mean, held out",
+                    "one row per measurement the map never saw, scored against the groups "
+                    "the map found, with the best single group for each value",
+                    "analysis:4 · Inference"),
+               View("Hill-climb for claims",
+                    "a search over maps and groupings for structure that predicts, read "
+                    "back as ranked claims with their numbers and their caveats",
+                    "analysis:7 · Discover"),
+           )),
+    Module("predict", "Predict", "predict any measured column, and measure how often that is right",
+           "Ask", icon="ml_analyze",
+           instruction="Choose a column to predict, a method, and what to hold out.",
+           builder="shell:predict_module"),
     Module("strategies", "Strategies", "39 ways to turn the data into a claim, each graded",
            "Ask", opens="strategies", icon="model_zoo",
            instruction="Choose a strategy to see what it does, what it may use and how well it did.",
-           builder="tool"),
+           builder="tool",
+           views=(
+               View("Guide",
+                    "what the chosen strategy does, in words, and what it may and may not use",
+                    "strategies:Guide"),
+               View("Settings",
+                    "every setting of the chosen strategy, with the range each is allowed",
+                    "strategies:Settings"),
+               View("Results",
+                    "what the chosen strategy returned, its verdict and its tables",
+                    "strategies:Results"),
+               View("Start here",
+                    "one question at a time, from what you have to the strategies worth "
+                    "running on it",
+                    "start here"),
+           )),
     Module("scorecard", "Scorecard", "how well each answer did on genes it was not shown",
            "Ask", opens="discoveries", icon="model_compare",
            instruction="Choose a label to see which methods recover it, and how often they are right.",
-           builder="tool"),
+           builder="tool",
+           views=(
+               View("Labels and functions",
+                    "every label, how many genes carry it and where that membership was "
+                    "recorded",
+                    "discoveries:Labels and functions"),
+               View("Inferred claims",
+                    "the claims already computed, each with its certainty and whether "
+                    "anything independent agreed",
+                    "discoveries:Inferred claims"),
+               View("Functional tests",
+                    "the frozen functional benchmarks and what each method scored on them",
+                    "discoveries:Functional tests"),
+               View("Strategy coverage",
+                    "which strategies have been run on which labels, and which pairs have not",
+                    "discoveries:Strategy coverage"),
+               View("Host source status",
+                    "each host-facing source, what it covers and whether it is loaded",
+                    "discoveries:Host source status"),
+               View("Hide labels and see if they come back",
+                    "a share of the genes that already carry a label hidden, then scored "
+                    "against the hidden ones, reported per category",
+                    "analysis:6 · Validation"),
+               View("Labels and classes",
+                    "label membership, class balance, the source records and the held-out "
+                    "scorecards recorded against each",
+                    "action:open_label_browser"),
+           )),
     Module("runs", "Runs", "every inference saved, with the data and settings it used",
            "Ask", needs=("a panel that reads results/harness_holdout_log.jsonl",),
            icon="run_history",
@@ -221,9 +387,9 @@ MODULES = (
            instruction="Drop a CSV, TSV or Excel file of genes here, or choose one.",
            builder="tool"),
     Module("screen", "Screen", "join your screen to everything already recorded",
-           "Bring your own", opens="compare", icon="hit_list",
-           instruction="Load your screen table and compare it with the recorded conditions.",
-           builder="tool"),
+           "Bring your own", icon="hit_list",
+           instruction="Open your measured table, say which columns it uses, then compare.",
+           builder="shell:screen_module"),
     Module("list", "List", "what a set of genes has in common, and what it points to",
            "Bring your own", needs=("a set-level enrichment view",), icon="tabulate",
            instruction="Hand it a set of genes to see what they share, and how surprising that is."),
@@ -234,11 +400,27 @@ MODULES = (
     # ------------------------------------------------------------------- Data
     Module("datasets", "Datasets", "all 130 sources, their coverage and their provenance",
            "Data", opens="action:open_dataset_browser", icon="data_manager",
-           instruction="Browse the sources; each one says what it covers and where it came from."),
+           instruction="Browse the sources; each one says what it covers and where it came from.",
+           views=(
+               View("Slot tree",
+                    "every information category, its address in each of the three "
+                    "hierarchies, and what fills it -- the empty ones coloured",
+                    "action:open_slot_tree"),
+           )),
     Module("information", "Information", "the gene x trait map, and how sure each cell is",
            "Data", opens="information map", icon="feature_dict",
            instruction="Search a gene or choose a trait; every cell shows its source and certainty.",
-           builder="tool"),
+           builder="tool",
+           views=(
+               View("One gene",
+                    "one gene, trait by trait, with each cell marked measured, a measured "
+                    "no, or not measured at all",
+                    "information map:One gene"),
+               View("One trait",
+                    "one trait across every gene: how many carry an observed fact for it, "
+                    "by source tier, and the values it takes",
+                    "information map:One trait"),
+           )),
     Module("jobs", "Jobs", "what is running, what it is costing, and how to stop it",
            "Data", opens="jobs", icon="queue",
            instruction="Select a job to stop it; finished jobs keep their outcome here.",
@@ -350,6 +532,66 @@ def shell_modules() -> tuple:
     return tuple(out)
 
 
+def views() -> tuple:
+    """Every declared view, as `((Module, View), ...)`, in catalogue order.
+
+    The one place the views are gathered. The search index, the tree and the tests all
+    read this rather than walking the rows themselves, so a view can only be reached by
+    being declared on a module.
+    """
+    return tuple((m, v) for m in MODULES for v in m.views)
+
+
+def module_views(key: str) -> tuple:
+    """The views declared on one module.
+
+    :param key: a module key.
+    :raises KeyError: when there is no such module, rather than quietly returning none
+        and leaving a mistyped key looking like a module with no views.
+    """
+    return tuple(get(key).views)
+
+
+def find_view(name: str):
+    """The module and the view with this name, matched without regard to case.
+
+    :param name: a view name, as declared.
+    :returns: `(Module, View)`.
+    :raises KeyError: when nothing is called that.
+    """
+    wanted = (name or "").strip().lower()
+    for module, view in views():
+        if view.name.lower() == wanted:
+            return module, view
+    raise KeyError(f"no view {name!r}; have {sorted(v.name for _m, v in views())}")
+
+
+def search_views(text: str) -> tuple:
+    """The views matching `text`, best first, as `((Module, View), ...)`.
+
+    Ranked the same way :func:`search` ranks modules, so a view named by what was typed
+    comes before one that merely mentions it in the line about what it shows.
+    """
+    q = (text or "").strip().lower()
+    if not q:
+        return ()
+    scored = []
+    for module, view in views():
+        name = view.name.lower()
+        if name == q:
+            rank = 0
+        elif name.startswith(q):
+            rank = 1
+        elif q in name:
+            rank = 2
+        elif q in view.shows.lower():
+            rank = 3
+        else:
+            continue
+        scored.append((rank, view.name, module, view))
+    return tuple((m, v) for _r, _n, m, v in sorted(scored, key=lambda x: (x[0], x[1])))
+
+
 def unavailable_reason(module: Module, *, docks=(), fillable: int = 0) -> str:
     """Why this module cannot be opened right now, or empty when it can.
 
@@ -369,6 +611,12 @@ def unavailable_reason(module: Module, *, docks=(), fillable: int = 0) -> str:
         return "no question has cleared its 90% bar yet, so there is nothing to write"
     if module.needs:
         return "needs " + "; ".join(module.needs)
+    if module.builder.startswith("shell:"):
+        # A module with its own shell is built by `landing_install`, not by a dock, so
+        # `opens` says only where its controls came from. Predict and Screen came out of
+        # the window instruction 98 retired and so came from nowhere; greying them for
+        # want of a dock would grey the two modules WP10 exists to provide.
+        return ""
     if not module.opens:
         return "this view has not been built yet"
     if module.opens.startswith("action:"):

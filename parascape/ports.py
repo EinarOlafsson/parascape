@@ -612,6 +612,28 @@ _DECLARATIONS = (
                  description="the inference, while it is running"),
         )),
     ModulePorts(
+        key="predict",
+        # The free-hand counterpart of `infer`: there the question arrives with its
+        # holdout already chosen and checked, here the user chooses the column, the
+        # method and what to hold out. It was the "Predict a trait" tab of the window
+        # instruction 98 retired, and it is declared as its own module because nothing
+        # else in ParaScape runs `prediction.run`.
+        summary="predict any measured column, with how often such a call is right",
+        consumes=(
+            Port(TRAIT, "target", description="the measured column to predict"),
+            Port(GENE_LIST, "yours", required=False,
+                 description="your own genes, to read the hypotheses against"),
+        ),
+        produces=(
+            Port(CLAIM, "hypotheses",
+                 description="a call for each gene that carries no measurement, with its support"),
+            Port(SCORECARD, "held_out",
+                 description="how the method did on the groups it was not trained on"),
+            Port(RUN, "run", description="the whole evaluated run, with its splits and provenance"),
+            Port(JOB, "work", required=False,
+                 description="the evaluation, while it is running"),
+        )),
+    ModulePorts(
         key="strategies",
         summary="the ways of turning the data into a claim, each graded",
         consumes=(

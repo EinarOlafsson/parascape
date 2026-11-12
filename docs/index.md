@@ -6,7 +6,7 @@
 [Editable PowerPoint](deck/parascape_deck.pptx) · [Slide transcript](deck/transcript.md)
 
 [Explore a gene, predict a trait or compare a screen](workflows.md) using the
-guided workflows in the Tools menu.
+Gene, Predict and Screen modules on the home screen.
 
 Explore gene evidence and screen results in *Toxoplasma gondii* and
 *Plasmodium falciparum*. ParaScape combines gene maps with expression, fitness,

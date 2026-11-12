@@ -127,7 +127,7 @@ Skill says how far above chance a strategy is; the scorecard says in what way. E
 [All 39 strategies](https://github.com/EinarOlafsson/parascape/blob/main/docs/strategies.md) ·
 [their measured verdicts](https://github.com/EinarOlafsson/parascape/blob/main/docs/calibration.md) ·
 [every scorecard metric](https://github.com/EinarOlafsson/parascape/blob/main/docs/scorecards.md) ·
-[guided workflows](https://github.com/EinarOlafsson/parascape/blob/main/docs/workflows.md)
+[explore, predict and compare](https://github.com/EinarOlafsson/parascape/blob/main/docs/workflows.md)
 
 ## Explore a screen
 

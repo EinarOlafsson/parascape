@@ -298,9 +298,9 @@ def test_every_window_parascape_builds_is_dressed(win, tmp_path):
     tree = win.open_slot_tree()
     assert glass.is_dressed(tree)
     win.slot_tree_act.setChecked(False)
-    win._open_workflows(0)
-    assert glass.is_dressed(win.workflows_dialog)
-    win.workflows_dialog.close()
+    # The guided-workflow window was dressed here too. Instruction 98, WP10, retired it: its
+    # three tabs are the Gene, Predict and Screen modules, which live in the module shell and
+    # are not floating windows, so there is no glass to check on them.
 
 
 def test_preferences_is_still_a_window_of_its_own_when_dressed(win):
