@@ -68,13 +68,18 @@ def _reasons(window) -> dict:
 
 
 def open_module(window, key: str) -> str:
-    """Open one module in this window. Returns what the status bar was told."""
+    """Open one module in this window. Returns what the status bar was told.
+
+    Which Python module builds which key is read from the catalogue
+    (`modules.Module.builder`) rather than from a dict kept here. The dict was
+    a sixth table of the same facts, and a module added to `modules.py` without
+    a line added here simply opened nothing.
+    """
     module = MOD.get(key)
-    shells = {"map": "map_module", "gene": "gene_module", "network": "network_module",
-              "infer": "infer_module", "questions": "infer_module", "partners": "network_module"}
+    built_by = MOD.shell_module(key)
     message = None
-    if key in shells and getattr(window, shells[key], None) is not None:
-        shell_module = __import__(f"{__package__}.{shells[key]}", fromlist=["open_in"])
+    if built_by and getattr(window, built_by, None) is not None:
+        shell_module = __import__(f"{__package__}.{built_by}", fromlist=["open_in"])
         message = shell_module.open_in(window)
         if key == "partners":
             # Partners is the network read by binding evidence: the physical links ticked.
@@ -356,24 +361,28 @@ def install(window):
     # The modules that have moved onto spaCR's module shell (instruction 86). Built here,
     # after every dock, because each one borrows the console and the assistant and moves
     # its controls out of the panel they lived in. A failure leaves the old route.
-    window.map_module = None
-    try:
-        from . import map_module
-        window.map_module = map_module.build(window)
-        if window.map_module is not None:
-            # Into the landing at once: a shell left unparented until first opened is a
-            # top-level window of its own, deleted out of order with the window it borrows from.
-            landing.stack.addWidget(window.map_module)
-    except Exception as error:                  # the window must open without it
-        window.statusBar().showMessage(f"Map module unavailable: {error}", 8000)
-    for attribute, name in (("gene_module", "gene_module"), ("network_module", "network_module"),
-                            ("infer_module", "infer_module")):
-        setattr(window, attribute, None)
+    #
+    # WHICH ones is read from the catalogue (`modules.shell_modules`), not listed here:
+    # the list and the table had to agree, and Map was built by its own copy of this block
+    # purely because it was written first. The window attribute carries the same name as
+    # the Python module, which is what `open_module` looks the shell up by.
+    #
+    # Every attribute is set to None BEFORE any of them is built, because each
+    # shell reads the others through `getattr(window, "map_module", None)` and
+    # a shell built first would otherwise see an attribute that does not exist
+    # rather than one that is not ready. The default makes both read the same,
+    # which is exactly the kind of agreement that stops holding the day somebody
+    # drops the default.
+    for name in MOD.shell_modules():
+        setattr(window, name, None)
+    for name in MOD.shell_modules():
         try:
             module = __import__(f"{__package__}.{name}", fromlist=["build"])
             shell = module.build(window)
-            setattr(window, attribute, shell)
+            setattr(window, name, shell)
             if shell is not None:
+                # Into the landing at once: a shell left unparented until first opened is a
+                # top-level window of its own, deleted out of order with the window it borrows from.
                 landing.stack.addWidget(shell)
         except Exception as error:              # the window must open without it
             window.statusBar().showMessage(f"{name.split('_')[0].title()} module unavailable: "

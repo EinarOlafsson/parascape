@@ -11,6 +11,15 @@ the dock works as before.
 
 `SPECS` is the one list of which tile is which panel; a module rebuilt with the mould later
 simply leaves it.
+
+COMPUTED FROM THE CATALOGUE (instruction 98, WP3)
+=================================================
+`SPECS` used to be written out here: ten keys, each with its own title, its own description
+and its own dock name, beside the same ten rows in `modules.py` carrying the same three
+things in slightly different words. Two tables saying one thing is how a module ends up
+named one way on its tile and another on its own masthead. The rows are now derived from
+the catalogue -- a module joins this list by setting `builder="tool"` there, and leaves it
+by setting a shell builder instead.
 """
 from __future__ import annotations
 
@@ -18,6 +27,7 @@ from dataclasses import dataclass
 
 from PySide6 import QtCore, QtWidgets
 
+from . import modules as MOD
 from . import theme as TH
 from .shell import ModuleShell, _Borrowed
 
@@ -35,32 +45,24 @@ class Spec:
     console: bool = True      # False for the console itself (it cannot be lent twice)
 
 
-SPECS = (
-    Spec("expression", "Expression", "where and when a gene's RNA and protein are measured",
-         "Choose a gene; compare its expression across stages, strains and conditions.",
-         "compare", "Gene expression"),
-    Spec("screen", "Screen", "your screen joined to everything already recorded",
-         "Load your screen table and compare it with the recorded conditions.", "compare"),
-    Spec("cell", "Cell", "the parasite drawn, with genes placed where they are found",
-         "Choose a compartment or a gene to see where it sits in the cell.", "find"),
-    Spec("gallery", "Gallery", "every map built so far, side by side",
-         "Click a map to show it; compare maps rather than rebuild them.", "gallery"),
-    Spec("strategies", "Strategies", "the ways of turning the data into a claim, each graded",
-         "Choose a strategy to see what it does, what it may use and how well it did.",
-         "strategies"),
-    Spec("scorecard", "Scorecard", "how well each answer did on genes it was not shown",
-         "Choose a label to see which methods recover it, and how often they are right.",
-         "discoveries"),
-    Spec("information", "Information", "the gene x trait map, and how sure each cell is",
-         "Search a gene or choose a trait; every cell shows its source and certainty.",
-         "information map"),
-    Spec("drop", "Drop", "a file of genes, read and resolved",
-         "Drop a CSV, TSV or Excel file of genes here, or choose one.", "gene list"),
-    Spec("jobs", "Jobs", "what is running, what it is costing, and how to stop it",
-         "Select a job to stop it; finished jobs keep their outcome here.", "jobs"),
-    Spec("console", "Console", "what the program is doing, in its own words",
-         "Filter by level or text; copy what you need for a report.", "console", console=False),
-)
+def _spec(module) -> Spec:
+    """Turn one catalogue row into the spec this file builds a module from.
+
+    The dock and the tab come from `opens`, which is the destination the window
+    was checked against (`tests/test_modules_in_window.py`); naming them again
+    here is what let six of them drift to views that did not exist.
+
+    :param module: a `modules.Module` whose builder is ``"tool"``.
+    """
+    dock, _, tab = module.opens.partition(":")
+    # The console cannot lend itself its own console: `shell.borrow` would take
+    # the panel the module IS showing and put it in the folded section under it.
+    return Spec(module.key, module.name, module.note, module.instruction,
+                dock, tab, console=module.key != "console")
+
+
+#: Which tile is which panel, derived from `modules.MODULES`.
+SPECS = tuple(_spec(module) for module in MOD.tool_modules())
 BY_KEY = {spec.key: spec for spec in SPECS}
 
 
