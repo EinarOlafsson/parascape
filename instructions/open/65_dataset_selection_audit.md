@@ -551,3 +551,33 @@ Recorded in the fetched-paths map, since the quarantine subtree is symlinked to 
 
 **42 of 63 verified.** My guessed CDN URL used `-v2` and 404'd; the API gave `-v3`. Guessing a URL pattern is
 not a route, and asking the publisher's own index is.
+
+## 65.04, 2026-11-12 (final): 42 verified, and every remaining case has a reason
+
+Three more resolved by reading the files rather than the failure message.
+
+* **`PBANKA_` accessions are SEVEN digits**, and the identifier pattern allowed six, so
+  `pf_berghei_liver_transfer` read as yielding no identifier at all. Widened, it finds 1,355 -- and overlaps
+  the installed genes by **zero, which is correct**: the table is *P. berghei* and the column is on
+  *P. falciparum* genes. `pb_transferred_liver_log2fc` is a TRANSFERRED phenotype, carried across by
+  orthology, so a zero accession overlap is what it should be.
+* **`pf_cdpk1_dependent_sites`** is keyed on bare numeric protein ids -- `3885720(S422)` in a Phosphosite
+  column, under a title row three deep -- with no gene accession anywhere.
+* **`pf_lactylome`** is keyed on the NF54 annotation (`PfNF54_030025900`), recorded earlier today.
+
+| Verdict | Sources |
+|---|---:|
+| the table names the genes we ship | 42 |
+| keyed on something other than a 3D7/ME49 gene accession, each with its evidence | 8 |
+| not keyed on genes, so the check does not apply | 3 |
+| no file recorded, only a paper | 3 |
+| the file is still not here | 4 |
+| read but not a table a program can use | 2 |
+| no installed column to compare | 1 |
+
+**Nothing in this item is now unexplained.** The four absent files stall at Europe PMC or need a browser
+(`pf_acetylome`, Springer 403). The two unreadable ones are a PDF (`pf_ip_ms` -- the record names a PDF, and
+no amount of tooling makes a PDF a table) and `spacr_escrt_screen`, whose record names a directory.
+
+From 0 verified when this work started to 42 of 63, and the 21 that are not verified are each accounted for
+by name and reason rather than sitting in a single "could not check" bucket.

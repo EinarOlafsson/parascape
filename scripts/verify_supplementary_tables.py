@@ -37,7 +37,7 @@ BASES = (os.environ.get("STARPLAST_DATA_PARENT")
 #: Gene identifiers these sources are keyed on, plus UniProt accessions for the proteomics tables.
 IDENTIFIER = re.compile(
     r"\b(TGME49_\d{6}[A-Z]?|TGGT1_\d{6}[A-Z]?|TGVEG_\d{6}[A-Z]?"
-    r"|PF3D7_\d{7}|PVP01_(?:\d{7}|API\d{5}|MIT\d{5})|PBANKA_\d{6}"
+    r"|PF3D7_\d{7}|PVP01_(?:\d{7}|API\d{5}|MIT\d{5})|PBANKA_\d{6,7}"
     r"|ENS(?:MUS|RNO|FCA)?G\d{11}"
     r"|[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})\b")
 
@@ -68,6 +68,14 @@ KEYED_DIFFERENTLY = {
         "the K(La) sheet is keyed on a 'Gene ID' column of PfNF54_ accessions (PfNF54_030025900, histone "
         "H2A variant) -- the NF54 annotation, not 3D7. NF54 and 3D7 numbering do not map by stripping a "
         "prefix the way the Toxoplasma strains do, so the link is genuinely the identity layer",
+    "pf_cdpk1_dependent_sites":
+        "the phosphosite sheets are keyed on bare NUMERIC protein ids -- '3885720(S422)' in a Phosphosite "
+        "column, with a real header three rows down under a title row -- and carry no gene accession of any "
+        "kind, so the link to a gene-keyed column is the identity layer",
+    "pf_berghei_liver_transfer":
+        "the table is keyed on PBANKA_ accessions and the installed column on P. falciparum genes, which is "
+        "the point rather than a mismatch -- `pb_transferred_liver_log2fc` is a TRANSFERRED phenotype, "
+        "P. berghei measurements carried across by orthology, so an accession overlap of zero is expected",
     "pf_resistome":
         "the table is one row per SNV in compound-selected clones, and two of the six installed columns "
         "(pf6_field_dnds, pf6_field_nonsyn_snvs) come from the Pf6 field data instead, so this table is "
