@@ -53,11 +53,15 @@ GROW_STAGGER_MS = 35
 DETAILS_H = 150
 MAX_CARDS = 24
 FLOW_SIDE = 170               # a next-step node in the module network; the root keeps CARD_SIDE
-#: How many next steps the first column after the clicked module shows. Six, not four,
-#: because Einar asked for ALL the modules that take one gene to come downstream of the
-#: gene card, and there are six of them: "so all the modules that take 1 gene and do
-#: something should come downstream of the gene card module."
-FLOW_FIRST = 6
+#: How many next steps the first column after the clicked module shows: ALL OF THEM, which
+#: is what Einar asked for twice -- "so all the modules that take 1 gene and do something
+#: should come downstream of the gene card module", and then "after clicking it all the
+#: moduals that come downstream of gene lists". A number here was wrong twice in one day:
+#: six was right for a gene until a list wanted eight, and eight was right for a list until
+#: WP10 added Predict and it wanted nine. The column shrinks its cards to fit and elides
+#: their names rather than dropping any (`_arrange_flow`, `SuggestionCard.fit`), so there is
+#: nothing for a limit to protect.
+FLOW_FIRST = None
 #: How many each column after that shows: fewer, because by then it is a path being
 #: traced rather than the question that was asked.
 FLOW_MORE = 4
@@ -207,7 +211,107 @@ def module_offers_for_genes(found) -> list:
     return out
 
 
-def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> list:
+def subject_words(kind: str, value: str) -> str:
+    """What is in hand, in words fit to read on a card: "28 genes", not 28 accessions.
+
+    A gene is its own name and reads perfectly; a list is the first subject in ParaScape
+    whose value does not. The module network printed "Opens with TGME49_248510,TGME49_304720,
+    …" across the details panel, which told a reader nothing the count would not have.
+
+    :param kind: the subject kind, from :mod:`parascape.ports`.
+    :param value: what is in it.
+    """
+    from . import ports as PORTS
+    if not value:
+        return ""
+    if kind != PORTS.GENE_LIST:
+        return value
+    from . import list_reading as LR
+    n = len(LR.split_identifiers(value))
+    return f"{n:,} gene{'' if n == 1 else 's'}"
+
+
+def genes_in_text(text: str, genes=None, resolve=None) -> list:
+    """The genes a typed LIST names, in the order typed; ``[]`` when it is not a list.
+
+    What makes something a list rather than a search is that it names SEVERAL things
+    (``list_reading.looks_like_a_list``) and that at least two of them are genes of this
+    table. "rhoptry neck protein" is three words and no genes, so it stays a search; a
+    pasted column of accessions is a list.
+
+    :param text: what was typed.
+    :param genes: ``(gene_id, product)`` pairs, or a callable taking the query -- the same
+        gene lookup :func:`all_matches` is given.
+    :param resolve: a callable taking the identifiers and returning the ones that are genes.
+        Preferred when there is one, because `genes` is a SEARCH over the whole query: asked
+        for a pasted column of 300 accessions it looks for one string containing all of them
+        and finds nothing, and asked for them one at a time it is 300 scans of the table.
+        `landing_install` passes `list_reading.resolve`, which is one vectorised match.
+    :returns: the gene identifiers, AS THE TABLE SPELLS THEM, in the order typed. Spelled by
+        the table rather than by whoever typed them, because everything downstream matches on
+        the identifier and a lowercase paste would then reach nothing.
+    """
+    from . import list_reading as LR
+    tokens = LR.split_identifiers(text)
+    if len(tokens) < 2:
+        return []
+    if callable(resolve):
+        try:
+            found = [str(g) for g in (resolve(tokens) or [])]
+        except Exception:                   # a bad resolver must not break the field
+            return []
+        return found if len(found) >= 2 else []
+    known: dict = {}
+    try:
+        rows = genes if not callable(genes) else ()
+        for row in rows or ():
+            first = row[0] if isinstance(row, (tuple, list)) else row
+            known.setdefault(str(first).lower(), str(first))
+    except Exception:                       # a bad lookup must not break the field
+        return []
+    found = [known[t.lower()] for t in tokens if t.lower() in known]
+    return found if len(found) >= 2 else []
+
+
+def module_offers_for_a_list(found: list) -> list:
+    """The modules to offer when what was typed is a list of genes, the list card first.
+
+    Einar, 2026-11-12: "if i type in a list of genes, the same logic but this time not gene
+    card instead a gene list module and after clicking it all the moduals that come
+    downstream of gene lists."
+
+    Each carries the list as its subject, so opening one fills it in rather than leaving it
+    to be pasted a second time. Ready ones first and a blocked one last is
+    :func:`parascape.modules.downstream_of_subject`, which is spaCR's own order in its
+    chaining strip.
+
+    :param found: the genes of the list, from :func:`genes_in_text`.
+    :returns: module suggestions, at most :data:`MAX_MODULES`, or [] when it is not a list.
+    """
+    if len(found) < 2:
+        return []
+    from . import ports as PORTS
+    value = ",".join(found)
+    words = f"{len(found):,} genes"
+    keys = ["list"] + [k for k in MOD.downstream_of_subject(PORTS.GENE_LIST, without="list")]
+    out = []
+    for key in keys[:MAX_MODULES]:
+        m = MOD.get(key)
+        reason = MOD.unavailable_reason(m)
+        detail = (f"<h3>{escape(m.name)}</h3><p>{escape(m.note)}.</p>"
+                  f"<p>Opens with your <b>{escape(words)}</b> already in it: "
+                  + escape(", ".join(found[:6]))
+                  + (f" and {len(found) - 6:,} more" if len(found) > 6 else "")
+                  + f".</p><p><i>{escape(m.band)}</i></p>")
+        if reason:
+            detail += f"<p><b>Not available:</b> {escape(reason)}.</p>"
+        out.append(Suggestion("module", key, m.name, m.note, detail,
+                              blocked=reason, subject=(PORTS.GENE_LIST, value)))
+    return out
+
+
+def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS,
+                resolve_list=None) -> list:
     """The cards the field shows for `text`: few, and each a different thing.
 
     Einar: "there are way too many options when I type map". "map" gave 24 cards: the
@@ -217,7 +321,33 @@ def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> li
     named), a panel that repeats a module's name dropped, and everything else one
     **group card per kind** -- "7 genes", "4 methods" -- that opens to its members. A
     short answer (six results or fewer) is shown as it is.
+
+    A TYPED LIST IS ANSWERED FIRST, and differently (instruction 98, WP9). Several
+    identifiers that name several genes are not a search for any one of them: they are a
+    list, and what to do with a list is the gene list card and the modules that read a list.
+    The genes themselves are kept as one group card, so the list can still be opened and
+    walked through from here.
     """
+    listed = genes_in_text(text, genes, resolve=resolve_list)
+    if listed:
+        cards = module_offers_for_a_list(listed)
+        # The genes themselves, as ONE group card. One card each would be three hundred
+        # cards for a pasted column, and the thing somebody typing a list wants is what to
+        # do with the list -- the modules above. The group still opens to its members, so a
+        # single gene of the list is one click further away and no more.
+        members = tuple(Suggestion("gene", g, g, "",
+                                   f"<h3>{escape(g)}</h3>"
+                                   "<p><i>One gene of your list</i></p>")
+                        for g in listed)
+        one, many = GROUP_WORDS["gene"]
+        cards.append(Suggestion(
+            "group", "gene", f"{len(members)} {one if len(members) == 1 else many}",
+            ", ".join(g for g in listed[:3]),
+            f"<h3>{len(members)} {escape(many)} in your list</h3><ul>"
+            + "".join(f"<li>{escape(g)}</li>" for g in listed[:12]) + "</ul>"
+            + (f"<p>…and {len(members) - 12:,} more.</p>" if len(members) > 12 else "")
+            + "<p><i>Click to see them one card each.</i></p>", items=members))
+        return cards
     found = all_matches(text, genes=genes, index=index, limit=limit)
     if not found:
         return []
@@ -429,13 +559,25 @@ class SuggestionCard(QtWidgets.QPushButton):
         :param side: the edge of the card, in device-independent pixels.
         """
         px = max(24, min(ICON_PX, side - 72))
+        # The name ELIDED to the card, which the column of EIGHT made necessary (instruction
+        # 98, WP9: eight modules read a list). Eight cards in the height of one is an 84 px
+        # square, and "Expression" was drawn as "xpression" -- clipped at both ends, so
+        # neither end said which module it was. Elided it reads "Expressio…", which does.
+        #
+        # The size is set BEFORE the text is measured, and the early return below it: a
+        # measurement made against the font the label is about to stop using is a
+        # measurement of the wrong thing.
+        size = max(11, min(18, side // 9))
+        self.name_label.setStyleSheet(f"font-size: {size}px; font-weight: 300;")
+        font = QtGui.QFont(self.name_label.font())
+        font.setPixelSize(size)
+        self.name_label.setText(QtGui.QFontMetrics(font).elidedText(
+            card_name(self.suggestion), QtCore.Qt.TextElideMode.ElideRight, max(20, side - 24)))
         if self.icon_label.height() == px:
             return
         ratio = self.devicePixelRatioF() or 1.0
         self.icon_label.setPixmap(iconset.pixmap(icon_path(self.suggestion), px, "dark", ratio))
         self.icon_label.setFixedHeight(px)
-        self.name_label.setStyleSheet(
-            f"font-size: {max(11, min(18, side // 9))}px; font-weight: 300;")
 
     def set_current(self, on: bool) -> None:
         """Mark this card as the one Return would open. A property, so the stylesheet
@@ -473,10 +615,15 @@ class NavigatorPage(QtWidgets.QWidget):
 
     PROMPT = "Type a gene, a question, a module or a dataset, then press Return."
 
-    def __init__(self, genes=None, index=None, parent=None):
+    def __init__(self, genes=None, index=None, resolve_list=None, parent=None):
         super().__init__(parent)
         self.setObjectName("NavigatorPage")
         self._genes, self._index = genes, index
+        #: Resolves a list of identifiers against the gene table in one go. Separate from
+        #: `genes`, which is a SEARCH taking the whole query -- asked for a pasted column
+        #: of 300 accessions it looks for one string containing all of them and finds
+        #: nothing. See `genes_in_text`.
+        self._resolve_list = resolve_list
         self._cards: list = []
         self._current = -1
         self._searched = None
@@ -692,7 +839,8 @@ class NavigatorPage(QtWidgets.QWidget):
             return
         self._searched = text
         self.set_subject()
-        found = suggestions(text, genes=self._genes, index=self._index)
+        found = suggestions(text, genes=self._genes, index=self._index,
+                            resolve_list=self._resolve_list)
         # What is in hand, for everything opened from here on: the gene the search is
         # about. A module card carries it on itself, but a card the user reaches another
         # way -- Return, the arrow keys, a group opened and closed -- must find it too.
@@ -1058,11 +1206,36 @@ class NavigatorPage(QtWidgets.QWidget):
                 return offer.blocked, offer.fix
         return "", ""
 
+    def following(self, key: str, first: bool = False) -> tuple:
+        """What comes after one module in the network: the modules to draw in the next column.
+
+        The FIRST column after the card that was clicked is the modules that read THE
+        SUBJECT IN HAND, which is what Einar asked for in both of his sentences: "all the
+        modules that take 1 gene and do something should come downstream of the gene card
+        module", and then "after clicking it all the moduals that come downstream of gene
+        lists". Later columns are the modules that read anything the step before hands on,
+        because by then it is a path being traced rather than the question that was asked.
+
+        Written as a method because the two answers were one before, and the one answer was
+        wrong for a list: `modules.downstream("list")` is the readers of a list, of a trait
+        and of one gene in one tuple, and the first eight of that is not "what follows a
+        list" -- it only happened to be "what follows a gene" because there were exactly
+        six of those and the column showed six.
+
+        :param key: the module the column follows.
+        :param first: whether this is the first column after the clicked card.
+        :returns: module keys, ready ones first.
+        """
+        kind, _value = self.subject
+        if first and kind:
+            return MOD.downstream_of_subject(kind, without=key)
+        return MOD.downstream(key)
+
     def _build_flow(self) -> None:
         """Make the cards for the chain clicked so far and what follows its last step.
 
-        The first column after the clicked module shows everything that follows it, up to
-        :data:`FLOW_FIRST`; later columns show fewer. Each card is checked against what is
+        The first column after the clicked module shows EVERYTHING that follows it
+        (:data:`FLOW_FIRST`); later columns show fewer. Each card is checked against what is
         in hand and a card that cannot work is drawn greyed, carrying the reason and the fix
         in the panel at the foot -- instruction 98, and spaCR's own rule for its chaining
         strip: an offer either works, or is shown greyed with the reason it cannot.
@@ -1070,8 +1243,9 @@ class NavigatorPage(QtWidgets.QWidget):
         old = dict(self._flow_cards)
         self._columns = [[self._path[0]]]
         for step in self._path:
-            limit = FLOW_FIRST if len(self._columns) == 1 else FLOW_MORE
-            following = list(MOD.downstream(step))[:limit]
+            first = len(self._columns) == 1
+            limit = FLOW_FIRST if first else FLOW_MORE
+            following = list(self.following(step, first=first))[:limit]
             if not following:
                 break
             self._columns.append(following)
@@ -1094,7 +1268,8 @@ class NavigatorPage(QtWidgets.QWidget):
                         detail += (f"<p><b>Not ready:</b> {escape(blocked)}.</p>"
                                    + (f"<p>{escape(fix)}</p>" if fix else ""))
                     elif value:
-                        detail += (f"<p>Opens with <b>{escape(value)}</b> already in it.</p>")
+                        detail += (f"<p>Opens with <b>{escape(subject_words(kind, value))}"
+                                   f"</b> already in it.</p>")
                     nxt = MOD.downstream(key)
                     if nxt:
                         detail += ("<p>Leads to: " + ", ".join(escape(MOD.get(k).name)

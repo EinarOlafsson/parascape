@@ -556,6 +556,25 @@ class GeneModule(QtCore.QObject):
         self.genes = list(genes)
         self._fill_matches(self.genes, f"{len(genes)} genes from the gene list")
 
+    def show_list(self, genes) -> list:
+        """Step through a list of genes, starting at the first; returns the ones kept.
+
+        The other half of the port the card has always declared -- "a list to step through,
+        one gene at a time". It is how a list carried in from the gene list card arrives
+        (instruction 98, WP9): the identifiers that name a gene of this table fill the list
+        on the left, the first is read, and Previous and Next walk the rest. An identifier
+        that names nothing is left out of the walk and said in the line under the list,
+        never silently counted as a gene.
+
+        :param genes: the identifiers, in the order they were given.
+        :returns: the ones that are genes of this table.
+        """
+        from . import list_reading as LR
+        resolved = LR.resolve(self._nodes(), list(genes or []))
+        self.genes = list(resolved.genes)
+        self._fill_matches(self.genes, resolved.sentence())
+        return self.genes
+
     def _step(self, by: int) -> None:
         row = self.matches.currentRow()
         if self.matches.count():
@@ -970,15 +989,28 @@ def build(window) -> ModuleShell | None:
 
 
 def open_in(window, gene: str = "") -> str:
-    """Show the Gene module over the window, reading `gene` when given."""
+    """Show the Gene module over the window, reading `gene` when given.
+
+    :param window: the main window.
+    :param gene: one gene, or SEVERAL separated by commas -- a list, which the card steps
+        through one gene at a time. Its own port says so ("a list to step through, one gene
+        at a time") and there is a button for taking the gene list whole, but until
+        instruction 98 WP9 a list handed in here went into the search field as one string
+        and matched nothing: somebody who came from the gene list card and clicked Gene got
+        an empty card. See `list_reading.split_identifiers`.
+    """
     from .landing_install import enter_landing
+    from . import list_reading as LR
     landing = getattr(window, "landing", None)
     shell = getattr(window, "gene_module", None)
     if landing is None or shell is None:
         return "the Gene module is not available in this window"
     landing.show_module(shell)
     enter_landing(window)
-    if gene:
+    ids = LR.split_identifiers(gene)
+    if len(ids) > 1:
+        shell.module.show_list(ids)
+    elif gene:
         shell.module.field.setText(gene)
         shell.module._typed()
     return "Gene"

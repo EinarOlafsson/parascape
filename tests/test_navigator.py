@@ -557,3 +557,128 @@ def test_the_subject_is_forgotten_when_the_navigator_is_reset(page, qtbot):
     assert page.subject[0] == "gene"
     page.reset()
     assert page.subject == ("", "")
+
+
+# ------------------------------- instruction 98, WP9: a typed LIST of genes
+LIST_TEXT = "TGME49_208830, TGME49_223920, TGME49_214320"
+
+
+def test_several_identifiers_that_name_genes_are_read_as_a_list():
+    """What makes something a list is that it names SEVERAL genes. One is a search, and
+    three words that name none stay a search too."""
+    assert NV.genes_in_text(LIST_TEXT, GENES) == [g for g, _ in GENES]
+    assert NV.genes_in_text("TGME49_208830", GENES) == []
+    assert NV.genes_in_text("rhoptry neck protein", GENES) == []
+
+
+def test_a_pasted_list_is_recognised_however_it_was_typed():
+    for text in ("TGME49_208830 TGME49_223920", "TGME49_208830\nTGME49_223920",
+                 "tgme49_208830;TGME49_223920"):
+        assert len(NV.genes_in_text(text, GENES)) == 2, text
+    # Spelled as the table spells them, never as they were typed.
+    assert NV.genes_in_text("tgme49_208830, tgme49_223920", GENES) == \
+        ["TGME49_208830", "TGME49_223920"]
+
+
+def test_typing_a_list_offers_the_gene_list_card_first():
+    """Einar, 2026-11-12: "if i type in a list of genes, the same logic but this time not
+    gene card instead a gene list module"."""
+    hits = NV.suggestions(LIST_TEXT, genes=GENES, index=None)
+    assert hits[0].kind == "module" and hits[0].key == "list"
+    assert hits[0].subject == ("gene_list", ",".join(g for g, _ in GENES))
+    assert "3 genes" in hits[0].detail
+
+
+def test_the_modules_offered_for_a_list_all_read_a_list():
+    from parascape import ports as P
+    hits = NV.suggestions(LIST_TEXT, genes=GENES, index=None)
+    offered = [s.key for s in hits if s.kind == "module"]
+    assert offered and offered[0] == "list"
+    for key in offered:
+        assert key in P.consumers_of(P.GENE_LIST), key
+        card = next(s for s in hits if s.kind == "module" and s.key == key)
+        assert card.subject[0] == P.GENE_LIST and card.subject[1], key
+
+
+def test_the_genes_of_a_typed_list_are_one_group_card_not_three_hundred():
+    hits = NV.suggestions(LIST_TEXT, genes=GENES, index=None)
+    group = next(s for s in hits if s.kind == "group")
+    assert group.key == "gene" and len(group.items) == 3
+    assert all(m.kind == "gene" for m in group.items)
+
+
+def test_a_list_is_said_as_a_count_never_as_its_accessions():
+    """A gene is its own name; a list of forty is "40 genes"."""
+    from parascape import ports as P
+    assert NV.subject_words(P.GENE, "TGME49_208830") == "TGME49_208830"
+    assert NV.subject_words(P.GENE_LIST, LIST_TEXT) == "3 genes"
+    assert NV.subject_words(P.GENE_LIST, "") == ""
+
+
+def test_clicking_the_gene_list_card_reveals_the_modules_downstream_of_a_list(page, qtbot):
+    """Einar: "after clicking it all the moduals that come downstream of gene lists"."""
+    from parascape import modules as MOD
+    from parascape import ports as P
+    seen = []
+    page.chosen.connect(lambda kind, key: seen.append((kind, key)))
+    type_and_wait(page, qtbot, LIST_TEXT)
+    card = next(c for c in page._cards
+                if c.suggestion.kind == "module" and c.suggestion.key == "list")
+    card.click()
+    assert seen == [] and page._path == ["list"], "the first click opens the network"
+    assert set(page._columns[1]) == set(P.consumers_of(P.GENE_LIST)) - {"list"}
+    assert page._columns[1] == list(MOD.downstream_of_subject(P.GENE_LIST, without="list"))
+    assert NV.FLOW_FIRST is None, "all of them, so a number here cannot go stale again"
+    assert len(page._flow_cards) == 1 + len(page._columns[1]), "every one of them is drawn"
+
+
+def test_every_module_revealed_after_a_list_carries_it_and_says_why_it_cannot(page, qtbot):
+    """Offered pre-filled, and an offer that cannot work shown greyed WITH THE REASON."""
+    type_and_wait(page, qtbot, LIST_TEXT)
+    next(c for c in page._cards
+         if c.suggestion.kind == "module" and c.suggestion.key == "list").click()
+    assert page.subject == ("gene_list", ",".join(g for g, _ in GENES))
+    greyed = 0
+    for (column, key), card in page._flow_cards.items():
+        if column != 1:
+            continue
+        s = card.suggestion
+        assert s.subject[0] == "gene_list", key
+        if s.blocked:
+            greyed += 1
+            assert s.blocked.lower() in s.detail.lower(), key
+            assert "Not ready" in s.detail, key
+        else:
+            # The count, never the accessions.
+            assert "3 genes" in s.detail, key
+            assert "TGME49_208830," not in s.detail, key
+    assert greyed, "Infer needs a question, so one offer must be greyed with its reason"
+
+
+def test_the_first_column_follows_the_subject_in_hand_not_a_slice_of_everything(page, qtbot):
+    """`modules.downstream("list")` is the readers of a list, of a trait and of one gene in
+    one tuple; the first eight of that is not "what follows a list"."""
+    from parascape import ports as P
+    from parascape import modules as MOD
+    type_and_wait(page, qtbot, LIST_TEXT)
+    assert page.following("list", first=True) == \
+        MOD.downstream_of_subject(P.GENE_LIST, without="list")
+    assert page.following("list", first=False) == MOD.downstream("list")
+
+
+def test_a_card_name_too_long_for_a_small_card_is_elided_not_clipped(page, qtbot):
+    """Eight cards in the height of one is an 84 px square, and "Expression" was drawn as
+    "xpression" -- clipped at both ends, so neither end said which module it was."""
+    type_and_wait(page, qtbot, LIST_TEXT)
+    card = next(c for c in page._cards
+                if c.suggestion.kind == "module" and c.suggestion.key == "list")
+    card.fit(84)
+    assert card.name_label.text() != "Gene list" or len("Gene list") < 10
+    long_one = next(c for c in page._cards if c.suggestion.kind == "module")
+    long_one.fit(84)
+    from PySide6 import QtGui
+    font = QtGui.QFont(long_one.name_label.font())
+    font.setPixelSize(max(11, min(18, 84 // 9)))
+    assert QtGui.QFontMetrics(font).horizontalAdvance(long_one.name_label.text()) <= 84 - 20
+    long_one.fit(224)
+    assert long_one.name_label.text() == NV.card_name(long_one.suggestion)

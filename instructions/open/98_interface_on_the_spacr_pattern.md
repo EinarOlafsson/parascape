@@ -295,8 +295,9 @@ exactly what they read before.
 | WP5 symbols, no cross | **done** — `parascape/iconset.py`, `parascape/ai_button.py`, `parascape/no_cross.py`; 16 tests |
 | WP6 recipes | **done** — `parascape/recipes.py` (named `module_recipes.py` until 2026-11-12), `parascape/recipes_panel.py`; 38 tests |
 | WP8 the gene card | **done 2026-11-12** — see below |
+| WP9 the gene list card | **done 2026-11-12** — see "WP9 as built" |
 | WP10 retire the old windows, route every orphan | **done 2026-11-12** — see "WP10 as built" |
-| WP4, WP7, WP9, WP11 | not started; they are the ones Einar will actually see |
+| WP4, WP7, WP11 | not started; they are the ones Einar will actually see |
 
 **Two tables that can now disagree, which is the exact failure spaCR documents as bug #16i.** Both must be
 closed before WP7, because the tree is computed from them:
@@ -443,6 +444,121 @@ gene route reaches it, and `test_module_shell.py` holds that.
 new), the gene card in `tests/test_module_shell.py` (10, new), the reveal in `tests/test_navigator.py` (8,
 new), and the two closed tables in `tests/test_module_catalogue.py` (5, new). Verified by rendering the real
 `app.Window` offscreen at 1920x1080 with `XDG_CONFIG_HOME` in a scratch directory and looking at it.
+
+## WP9 as built, 2026-11-12
+
+Einar's words, which were the acceptance criteria: *"if i type in a list of genes, the same logic but this
+time not gene card instead a gene list module and after clicking it all the moduals that come downstream of
+gene lists."*
+
+**The one sentence the mould asks for.** This module lets you take a list of genes and see what the genes of
+it share that other genes do not -- and how much of the list is measured at all -- so that you can tell what
+the list points to, and which of its gaps are worth inferring.
+
+**The card is the `list` tile, built rather than greyed.** WP1 recorded List as one of the four modules
+honestly greyed out, "needs a set-level enrichment view". That view is what WP9 is, so the row lost its
+`needs`, gained `builder="shell:list_module"` and is named **Gene list** rather than List, to pair with the
+gene card.
+
+**What the card shows, and why.** A list card that is only a table of identifiers fails the first goal of the
+mould: it makes the information no more accessible than the file the list arrived in, and synthesises nothing.
+So the identifiers are the FOLDED section at the bottom, and what opens first is the only thing about a list
+that cannot be read off the genes one at a time:
+
+1. **What the genes of the list share** (the thing itself, large, with the focus). Every label any gene can
+   carry, counted inside the list and outside it, kept where the list holds it at least 1.5 times as often as
+   the rest AND rarely enough that a random list of the same size would do it less than once in 20 tries. Both
+   bars are said out loud in the line above the table, because a bar that hides things without saying so is a
+   bar nobody can argue with. Each row: the label, the measurement, how many of the list carry it out of how
+   many of the list are measured for it, the same share among the other genes, and how surprising it is in
+   plain words ("once in 2,122 random lists"). A share with nothing to compare it against cannot be read --
+   half a list in the nucleus means nothing until you know what half the genome does.
+2. **Where the genes of the list are in the parasite** -- the schematic Einar named, on the list as on one
+   gene: a second `celldiagram.CellDiagram`, fed from `window.color_of` so the card and the map cannot
+   disagree about what a colour means, coloured for the compartment most of the list is in, with how much of
+   the list is in it against how much of the rest of the genome is. Clicking another organelle reads that one
+   instead and ticks it in the find panel. A list with nothing placed says **unknown**, in words, and the
+   parasite is drawn grey.
+3. **How much of the list is measured**, per kind of knowledge, least measured first, each against the share
+   of the genes OUTSIDE the list -- which is what tells a badly measured list apart from a kind of knowledge
+   nobody has measured for anything. They are different problems with different answers.
+4. **What is unknown for most of the list**, which is where inference is the only way forward and is therefore
+   what the card hands to Infer -- the second goal of the mould.
+
+Every sentence is computed by **`parascape/list_reading.py`**, which has no Qt in it: `split_identifiers`,
+`resolve` (an identifier that names no gene is reported, never dropped), `shared_labels` with `merge_by_value`,
+`coverage`, `unknown_for_most`, and `spread` for the drawing. 27 tests on a made-up table.
+
+**What clicking it reveals**: the eight modules that read a list -- Gene, Partners, Expression, Map, Network,
+Strategies, Export ready, and **Infer greyed with its reason** ("a question is needed and none is in hand"),
+kept in the row rather than dropped. The same offers appear twice from one function (`next_steps.offers`, the
+same one the gene card uses): as the row at the foot of the card, and as the first column of the navigator
+module network when the gene list card is clicked once.
+
+**The port declaration that was wrong, and the correction.** `consumers_of("gene_list")` returns nine modules
+and all nine were right -- each was opened and each does read several genes. What was wrong was what
+`check_ready` said about three of them. **Gene, Partners and Expression each declared one gene as REQUIRED and
+a list as optional**, which reads as "it needs a gene and may also be given a list". What they actually do is
+read either: the gene card steps THROUGH a list (its own port says so, "a list to step through, one gene at a
+time") and has a button for taking the gene list whole; the Partners port says "several genes, whose partners
+are shown together"; and the field of the expression panel says "Enter one or more exact reference gene IDs".
+So somebody holding a list was told all three could not work on it, in the one place a list is the thing in
+hand.
+
+`ports.Port` gained **`one_of`**: the name of a set of ports of which ANY ONE will do. Only `check_ready`
+reads it, `required_kinds` is unchanged -- what the module NEEDS has not changed; what changed is the
+admission that two different things can meet the need. With nothing at all in hand nothing in the set is
+filled, so those modules are still reported as not ready, now with a reason that names both ways of fixing it
+("one gene or a list of genes is needed and none is in hand").
+
+Two further corrections, both of wiring rather than of a declaration:
+
+* **The `list` module produces the list itself**, declared FIRST, before the trait it was already declaring.
+  `modules.downstream` walks the produced ports in declared order, so with the trait first the first column of
+  the module network under the gene list card was the readers of a trait. It also produces one gene, because
+  a gene of the list opens on its own from the folded table.
+* **Export handed a list now writes the list.** Its catalogue row opens `export_visible`, which writes every
+  gene passing the class filter -- so the offer "Export, with your 28 genes already in it" would have written
+  eight thousand of them. `carry_subject` gates a list carried into the window (the gate is what the
+  application already means by "this set of genes is in hand": the map marks it, the strategy panel fills a
+  gene box from it, `describe_gate` reports it), and `open_module` routes Export to `export_gated` when a list
+  is what is in hand.
+
+**The navigator routes a typed list.** `genes_in_text` recognises several identifiers that name several genes
+-- commas, semicolons, spaces, tabs or new lines, in any mixture, matched ignoring case and spelled as the
+table spells them. One identifier is still a search, and three words that name no gene are still a search.
+The resolution is one vectorised match through a `resolve_list` callable handed to the Navigator by
+`landing_install`: the gene lookup beside it is a SEARCH taking the whole query, which asked for a pasted
+column of 300 accessions looks for one gene whose product contains that whole string. The genes themselves
+are kept as ONE group card -- one card each would be three hundred cards -- which opens to its members.
+`open_item(window, "gene_list", ...)` opens the card, as `open_item(window, "gene", ...)` opens the gene card.
+
+**Three things found by looking at the render that no test caught**, which is why the mould asks for it:
+
+1. The card opened with FIVE rows all saying "dense granules" -- one finding said once per measurement that
+   agrees with it, filling the top of the card and pushing everything else off the screen. `merge_by_value`
+   keeps the strongest and names the rest ("lopit map (and 2 more that agree)"), so the agreement is reported
+   as what it is -- corroboration -- rather than as five findings.
+2. "How much of the list is measured" was fifteen paragraphs in a pane that showed two of them. As a sorted
+   table with one summary line above it, the same height shows six and they can be read down the column.
+3. The column of EIGHT next steps shrinks each card to an 84 px square, and "Expression" was drawn as
+   "xpression" -- clipped at both ends, so neither end said which module it was. `SuggestionCard.fit` now
+   elides. The details panel under it printed "Opens with TGME49_248510,TGME49_304720,…"; it says "Opens with
+   28 genes" now (`navigator.subject_words`, and `next_steps.Offer.shown` for the row on the card).
+
+`FLOW_FIRST` is now **None -- all of them**, because Einar asked for all of them and a number here was wrong
+twice in one day: six was right for a gene until a list wanted eight, and eight was right for a list until
+WP10 landed Predict and it wanted nine. The column shrinks its cards to fit and elides their names rather
+than dropping any, so there is nothing for a limit to protect. The first column after a clicked card is also
+computed from the SUBJECT IN HAND (`NavigatorPage.following`) rather than from the first N of everything the
+module hands on -- which only happened to be right for a gene because there were exactly six of those and the
+column showed six.
+
+**Tests**: `tests/test_list_reading.py` (27, new), `tests/test_list_card_in_window.py` (15, new, on the real
+`app.Window`), the typed list and the reveal in `tests/test_navigator.py` (10, new), the offers in
+`tests/test_next_steps.py` (5, new), and `Port.one_of` in `tests/test_ports.py` (4, new). Verified by
+rendering the real `app.Window` offscreen at 1920x1080 with `XDG_CONFIG_HOME` in a scratch directory, typing
+a list of 28 dense-granule genes, opening the card, clicking it, and looking at every image.
 
 ## WP10 as built, 2026-11-12
 

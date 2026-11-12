@@ -177,9 +177,11 @@ def test_tiles_for_docks_built_late_are_not_greyed(window):
     """Installed from `_home()`, the landing ran before `_tool_docks()` and greyed Jobs and
     Console as "not available in this window" -- docks that existed a moment later."""
     unavailable = window.landing.home.unavailable()
-    for key in ("jobs", "console", "infer", "network", "datasets", "export"):
+    for key in ("jobs", "console", "infer", "network", "datasets", "export", "list"):
         assert key not in unavailable, f"{key} greyed: {unavailable.get(key)}"
-    assert set(unavailable) == {"structure", "runs", "fill", "list"}, unavailable
+    # Three, not four: the gene list card was built in instruction 98, WP9, so `list` is no
+    # longer honestly greyed for the absence of a set-level view.
+    assert set(unavailable) == {"structure", "runs", "fill"}, unavailable
 
 
 def test_the_navigator_can_be_turned_off_from_view_and_help(window, tmp_path, monkeypatch):

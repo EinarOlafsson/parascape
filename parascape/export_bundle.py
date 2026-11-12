@@ -95,10 +95,12 @@ def ask_folder(parent) -> str:
 
 
 def reopen(module, folder: str = "") -> dict:
-    """Read a bundle back into a Map, Gene or Network module: verify it, then restore its query.
+    """Read a bundle back into a Map, Gene, Network or gene list module: verify it, then restore
+    its query.
 
-    Map: the selected genes and the colour-by label; Gene: the gene; Network: the focus gene. What was
-    computed is not re-run; the bundle files are the record, and the restored view is where to look again.
+    Map: the selected genes and the colour-by label; Gene: the gene; Network: the focus gene;
+    gene list: the genes of the list. What was computed is not re-run; the bundle files are the
+    record, and the restored view is where to look again.
     """
     if not folder:
         folder = ask_folder(module.shell)
@@ -116,6 +118,15 @@ def reopen(module, folder: str = "") -> dict:
     elif kind == "network" and query.get("gene"):
         module.field.setText(str(query["gene"]))
         module._typed()
+    elif kind == "list":
+        # The whole list, which the bundle carries as identifiers rather than as a count
+        # (instruction 98, WP9): the card is restored to the genes it was reading.
+        ids = [str(g) for g in query.get("genes", [])]
+        if not ids:
+            module.shell.say("this bundle holds no list to restore")
+            return manifest
+        module.box.setPlainText("\n".join(ids))
+        module.set_genes(ids, "a saved bundle")
     elif kind == "map":
         ids = module.window.nodes["gene_id"].astype(str).tolist()
         wanted = [ids.index(g) for g in query.get("selected", []) if g in ids]

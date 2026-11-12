@@ -453,3 +453,44 @@ def test_ports_imports_nothing_else_out_of_parascape():
                           capture_output=True, text=True)
     assert done.returncode == 0, done.stderr
     assert done.stdout.strip() == "", f"ports imported {done.stdout.strip()}"
+
+
+# -------------------------- instruction 98, WP9: one subject OR another (`Port.one_of`)
+def test_a_port_set_is_satisfied_by_any_one_of_its_members():
+    """The Gene card reads one gene OR a list it steps through. Declaring the gene required
+    and the list optional said "it needs a gene and may also be given a list", which greyed
+    the Gene card out for somebody holding a list."""
+    for key in ("gene", "partners", "expression"):
+        spec = P.module_ports(key)
+        names = {p.one_of for p in spec.consumes if p.one_of}
+        assert len(names) == 1, key
+        kinds = {p.kind for p in spec.consumes if p.one_of}
+        assert kinds == {P.GENE, P.GENE_LIST}, key
+        assert P.check_ready(key, P.Subject(P.GENE_LIST, value="A,B")).ok, key
+        assert P.check_ready(key, P.Subject(P.GENE, value="A")).ok, key
+
+
+def test_what_a_module_needs_has_not_changed_only_how_it_can_be_met():
+    """`required_kinds` is untouched: the Gene card still NEEDS genes, and a list is a way
+    of giving it some rather than a second requirement."""
+    assert P.module_ports("gene").required_kinds() == (P.GENE,)
+    assert P.module_ports("partners").required_kinds() == (P.GENE,)
+
+
+def test_an_empty_set_still_leaves_the_module_not_ready():
+    """With nothing at all in hand nothing in the set is filled, so the module is still
+    reported as not ready -- with a reason that names both ways of fixing it."""
+    for key in ("gene", "partners", "expression"):
+        readiness = P.check_ready(key)
+        assert not readiness.ok, key
+        message = readiness.errors[0].message
+        assert "one gene" in message and "a list of genes" in message, key
+        assert readiness.errors[0].fix
+
+
+def test_the_gene_list_module_hands_the_list_on_before_anything_else():
+    """`modules.downstream` walks the produced ports in declared order, so the first column
+    of the module network under the gene list card is the modules that read a LIST."""
+    produced = [p.kind for p in P.module_ports("list").produces]
+    assert produced[0] == P.GENE_LIST
+    assert set(produced) == {P.GENE_LIST, P.TRAIT, P.GENE}

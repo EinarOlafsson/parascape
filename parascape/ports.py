@@ -373,6 +373,28 @@ class Port:
         this and by nothing else.
     :param required: False for a subject the module can work without. Map works
         with no genes chosen at all; it just shows every gene.
+    :param one_of: the name of a set of ports of which ANY ONE will do, so that
+        a module can say "one gene, OR a list of them" instead of having to
+        pick which of the two it needs.
+
+        Added for instruction 98, WP9, and the reason is a wrong answer it gave
+        Einar. The Gene card declared one gene as required and a list as
+        optional, which reads as "it needs a gene and may also be given a
+        list". What it actually does is step THROUGH a list -- its own port
+        says so, "a list to step through, one gene at a time" -- and it has a
+        button for taking the gene list whole. So somebody holding a list of
+        forty genes was told the Gene card could not work on it, in the one
+        place a list is the thing in hand. The same was true of Partners,
+        whose port says "several genes, whose partners are shown together",
+        and of Expression, whose field reads "one or more exact gene
+        accessions".
+
+        Only :func:`check_ready` reads it: a required port whose set has any
+        member filled counts as satisfied. :func:`required_kinds` is unchanged,
+        because what the module NEEDS has not changed -- what changed is the
+        admission that two different things can meet the need. With nothing at
+        all in hand nothing in the set is filled, so such a module is still
+        reported as not ready, with its own reason.
     :param description: one line, in plain words, for :func:`describe_ports` and
         for the reason text on a greyed offer.
     """
@@ -381,6 +403,7 @@ class Port:
     role: str
     required: bool = True
     description: str = ""
+    one_of: str = ""
 
 
 @dataclass(frozen=True)
@@ -478,8 +501,12 @@ _DECLARATIONS = (
         key="gene",
         summary="one gene, read as sentences, with its sources",
         consumes=(
-            Port(GENE, "gene", description="the gene to read"),
-            Port(GENE_LIST, "list", required=False,
+            # One gene OR a list: the card steps through a list and has a button for
+            # taking the gene list whole, so being handed a list is not a reason it
+            # cannot work. See `Port.one_of`.
+            Port(GENE, "gene", one_of="the genes to read",
+                 description="the gene to read"),
+            Port(GENE_LIST, "list", required=False, one_of="the genes to read",
                  description="a list to step through, one gene at a time"),
         ),
         produces=(
@@ -498,8 +525,9 @@ _DECLARATIONS = (
         key="partners",
         summary="what one gene binds, and how strongly that is evidenced",
         consumes=(
-            Port(GENE, "gene", description="the gene whose partners to show"),
-            Port(GENE_LIST, "list", required=False,
+            Port(GENE, "gene", one_of="the genes to show partners of",
+                 description="the gene whose partners to show"),
+            Port(GENE_LIST, "list", required=False, one_of="the genes to show partners of",
                  description="several genes, whose partners are shown together"),
         ),
         produces=(
@@ -511,8 +539,11 @@ _DECLARATIONS = (
         key="expression",
         summary="where and when the RNA and protein of a gene are measured",
         consumes=(
-            Port(GENE, "gene", description="the gene to profile"),
-            Port(GENE_LIST, "list", required=False,
+            # "Enter one or more exact reference gene IDs" is what the field of the
+            # expression panel says, so a list is as good an input as a gene.
+            Port(GENE, "gene", one_of="the genes to profile",
+                 description="the gene to profile"),
+            Port(GENE_LIST, "list", required=False, one_of="the genes to profile",
                  description="several genes, profiled together"),
         ),
         produces=(Port(TRAIT, "profile", required=False,
@@ -710,8 +741,19 @@ _DECLARATIONS = (
         key="list",
         summary="what a set of genes has in common, and what it points to",
         consumes=(Port(GENE_LIST, "genes", description="the set to characterise"),),
-        produces=(Port(TRAIT, "shared", required=False,
-                       description="what the set shares, as labels with how surprising each is"),)),
+        produces=(
+            # THE LIST ITSELF FIRST, and the order matters: `modules.downstream` walks the
+            # produced ports in declared order, so the first column of the module network
+            # under this card is the modules that read a list -- which is the answer Einar
+            # asked for, "all the moduals that come downstream of gene lists". Declaring
+            # the trait first put the readers of a trait there instead.
+            Port(GENE_LIST, "same",
+                 description="the list itself, to carry into the next module"),
+            Port(TRAIT, "shared", required=False,
+                 description="what the set shares, as labels with how surprising each is"),
+            Port(GENE, "picked", required=False,
+                 description="the gene of the list you opened, read on its own"),
+        )),
     ModulePorts(
         key="export",
         # Produces nothing: what leaves the application is a file, and a file is
@@ -1038,13 +1080,21 @@ def check_ready(module: str,
     for item in offered:
         by_kind.setdefault(item.kind, []).append(item)
 
+    # The sets of ports of which any one will do (`Port.one_of`), resolved before the
+    # ports are judged: a required port is satisfied either by its own kind being in
+    # hand or by a sibling of its set being in hand. Resolved first because the sibling
+    # may be declared after it -- the Gene card names the gene before the list.
+    filled_sets = {
+        port.one_of for port in spec.consumes
+        if port.one_of and any(c for c in by_kind.get(port.kind, []))}
+
     problems: List[Problem] = []
     satisfied: List[str] = []
     missing: List[str] = []
     for port in spec.consumes:
         candidates = by_kind.get(port.kind, [])
         filled = [c for c in candidates if c]
-        if filled:
+        if filled or (port.one_of and port.one_of in filled_sets):
             satisfied.append(port.role)
             continue
         if candidates:
@@ -1055,8 +1105,15 @@ def check_ready(module: str,
             fix = (f"Choose {describe_subject(port.kind)} first: "
                    f"{port.description or port.role}.")
         else:
-            message = f"{describe_subject(port.kind)} is needed and none is in hand"
-            fix = _fix_for(port.kind, spec.key)
+            # Nothing of this kind offered at all. When something else would have done
+            # instead (`Port.one_of`), say so: "one gene is needed" is a problem reported
+            # in a way that hides half of its own fix, when a list of them would do.
+            instead = [p for p in spec.consumes
+                       if port.one_of and p.one_of == port.one_of and p.kind != port.kind]
+            kinds = [describe_subject(port.kind)] + [describe_subject(p.kind) for p in instead]
+            message = f"{_listing(kinds)} is needed and none is in hand"
+            fix = " ".join([_fix_for(port.kind, spec.key)]
+                           + [_fix_for(p.kind, spec.key) for p in instead])
         if port.required:
             missing.append(port.kind)
             problems.append(Problem(ERROR, port.role, message, fix))

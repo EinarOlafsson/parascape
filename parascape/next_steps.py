@@ -50,6 +50,10 @@ class Offer:
     :param note: the one-line plain-words description from the catalogue.
     :param subject: the subject being handed on, e.g. ``"gene"``.
     :param value: what is in it -- the gene identifier -- so the offer pre-fills.
+    :param shown: how to SAY what is in it, when the value itself is too long to read. A gene
+        is its own name; a list of forty genes is "40 genes", and printing the forty
+        accessions in a tooltip would be a wall of text where a count was wanted. Empty
+        means the value reads well enough on its own, which is the case for one gene.
     :param readiness: the verdict of :func:`parascape.ports.check_ready`.
     :param reason: why it cannot be opened in this window at all, from
         :func:`parascape.modules.unavailable_reason`. Separate from `readiness`
@@ -64,6 +68,12 @@ class Offer:
     value: str
     readiness: PORTS.Readiness
     reason: str = ""
+    shown: str = ""
+
+    @property
+    def words(self) -> str:
+        """What is in hand, in words fit to read: :attr:`shown` when there is one."""
+        return self.shown or self.value
 
     @property
     def ok(self) -> bool:
@@ -102,7 +112,7 @@ class Offer:
         """The tooltip: what it would do, or why it cannot and what to do instead."""
         if self.ok:
             what = PORTS.describe_subject(self.subject)
-            with_it = f" with {what} {self.value} already filled in" if self.value else ""
+            with_it = f" with {what} {self.words} already filled in" if self.value else ""
             # Only the first letter: `str.capitalize` lowercases the rest, which turned
             # "its RNA and protein" into "its rna and protein" on five tooltips.
             note = self.note[:1].upper() + self.note[1:]
@@ -111,7 +121,7 @@ class Offer:
 
 
 def offers(subject: str, value: str = "", *, without: str = "",
-           available=None) -> Tuple[Offer, ...]:
+           available=None, shown: str = "") -> Tuple[Offer, ...]:
     """Every module that can take `subject`, checked, ready ones first.
 
     The list comes from :func:`parascape.modules.downstream_of_subject`, which reads the
@@ -125,6 +135,8 @@ def offers(subject: str, value: str = "", *, without: str = "",
     :param without: a module key to leave out, normally the one making the offer.
     :param available: ``{key: reason}`` for the modules this window cannot open, from
         `landing_install._reasons`. Omitted, the catalogue answers on its own.
+    :param shown: how to say what is in hand when the value is too long to read -- "40
+        genes" for a list. See :attr:`Offer.shown`.
     :returns: one :class:`Offer` per module, ready ones first.
     """
     reasons = dict(available or {})
@@ -133,7 +145,7 @@ def offers(subject: str, value: str = "", *, without: str = "",
         module = MOD.get(key)
         held = PORTS.Subject(subject, value=value or None)
         out.append(Offer(module=key, name=module.name, note=module.note, subject=subject,
-                         value=str(value or ""),
+                         value=str(value or ""), shown=str(shown or ""),
                          readiness=PORTS.check_ready(key, held),
                          reason=reasons.get(key, MOD.unavailable_reason(module))))
     return tuple(sorted(out, key=lambda o: not o.ok))
@@ -174,14 +186,18 @@ class NextSteps(QtWidgets.QWidget):
         layout.addWidget(self._row)
         self.buttons: dict = {}
 
-    def set_subject(self, value: str, *, available=None, without: str = "") -> Tuple[Offer, ...]:
+    def set_subject(self, value: str, *, available=None, without: str = "",
+                    shown: str = "") -> Tuple[Offer, ...]:
         """Redraw the offers for one value of the subject; returns what was offered.
 
         :param value: the gene (or other subject) in hand; empty means none chosen yet.
         :param available: ``{key: reason}`` for modules this window cannot open.
         :param without: a module key to leave out, normally the one offering.
+        :param shown: how to say what is in hand when the value is too long to read -- "40
+            genes" rather than forty accessions. See :attr:`Offer.shown`.
         """
-        self._offers = offers(self.subject, value, without=without, available=available)
+        self._offers = offers(self.subject, value, without=without, available=available,
+                              shown=shown)
         while self._row_layout.count() > 1:
             item = self._row_layout.takeAt(0)
             if item.widget() is not None:
@@ -200,7 +216,7 @@ class NextSteps(QtWidgets.QWidget):
         ready = sum(1 for o in self._offers if o.ok)
         what = PORTS.describe_subject(self.subject)
         if value:
-            self.lead.setText(f"With {what} <b>{value}</b> in hand, {ready} of "
+            self.lead.setText(f"With {what} <b>{shown or value}</b> in hand, {ready} of "
                               f"{len(self._offers)} of these can run now:")
         else:
             # Some of these read a gene they can do without, so "none of them can run" would

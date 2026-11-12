@@ -41,7 +41,8 @@ class Landing(QtWidgets.QWidget):
     PAGES = ("Navigator", "Modules")
 
     def __init__(self, counts=None, reasons=None, genes=None, index=None,
-                 animate: bool = True, start: str = "Navigator", parent=None):
+                 animate: bool = True, start: str = "Navigator", resolve_list=None,
+                 parent=None):
         super().__init__(parent)
         self.setObjectName("Landing")
         palette = TH.palette_for("dark")
@@ -88,7 +89,8 @@ class Landing(QtWidgets.QWidget):
 
         self.stack = QtWidgets.QStackedWidget()
         self.stack.setObjectName("LandingStack")
-        self.navigator = NavigatorPage(genes=genes, index=index)
+        self.navigator = NavigatorPage(genes=genes, index=index,
+                                       resolve_list=resolve_list)
         self.home = HomeScreen(counts=counts, reasons=reasons, animate=False)
         self.stack.addWidget(self.navigator)
         self.stack.addWidget(self.home)

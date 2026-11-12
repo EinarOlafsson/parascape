@@ -205,20 +205,22 @@ def test_only_the_console_declines_to_lend_itself_a_console():
 
 
 def test_the_shell_builders_are_read_from_the_catalogue():
-    """Eight keys, six builders: Partners is the Network module read by binding
+    """Nine keys, seven builders: Partners is the Network module read by binding
     evidence, and Questions is the Infer module opened on its catalogue.
 
     Predict and Screen joined in instruction 98, WP10: they are the two halves of the
     retired `workflows.py` window that nothing else in ParaScape could do, rebuilt on
-    the shell rather than deleted with it."""
+    the shell rather than deleted with it. Gene list joined in WP9."""
     assert MOD.shell_module("map") == "map_module"
     assert MOD.shell_module("partners") == "network_module"
     assert MOD.shell_module("questions") == "infer_module"
     assert MOD.shell_module("predict") == "predict_module"
     assert MOD.shell_module("screen") == "screen_module"
+    assert MOD.shell_module("list") == "list_module", "the gene list card (98, WP9)"
     assert MOD.shell_module("drop") == "", "a tool is not built by a shell module"
     assert set(MOD.shell_modules()) == {"map_module", "gene_module", "network_module",
-                                        "infer_module", "predict_module", "screen_module"}
+                                        "infer_module", "predict_module", "screen_module",
+                                        "list_module"}
     assert len(MOD.shell_modules()) == len(set(MOD.shell_modules()))
 
 

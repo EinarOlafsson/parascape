@@ -78,12 +78,12 @@ def _subject_in_hand(landing) -> tuple:
     return getattr(navigator, "subject", ("", "")) if navigator is not None else ("", "")
 
 
-def _takes_a_gene(shell_module) -> bool:
-    """Whether a module's `open_in` accepts a gene as well as the window.
+def _takes_a_subject(shell_module) -> bool:
+    """Whether a module's `open_in` accepts a subject as well as the window.
 
-    Read from the signature rather than listed here: a list of which shells take a gene
-    would be a table of the same facts as the code, kept in step by hand, which is the one
-    thing instruction 98 is about.
+    Read from the signature rather than listed here: a list of which shells take one would
+    be a table of the same facts as the code, kept in step by hand, which is the one thing
+    instruction 98 is about.
     """
     import inspect
     try:
@@ -104,14 +104,25 @@ def carry_subject(window, subject: str, value: str) -> bool:
     information map, the compare tabs and the find panel all follow the window selection.
     A module built on its own shell is additionally handed the gene by name, below.
 
+    A LIST is carried by GATING it (instruction 98, WP9). The gate is what the application
+    already means by "this set of genes is the one in hand": the map marks it, `describe_gate`
+    reports what is in it, the strategy panel has a button that fills a gene box from it, and
+    File ▸ Export gated selection writes it. Inventing a second window-wide notion of a
+    chosen list beside that one would be two tables of the same fact, which is what this
+    instruction exists to remove.
+
     :param window: the main window.
-    :param subject: a subject from :mod:`parascape.ports`; only ``gene`` is carried today,
-        and anything else is reported as not taken rather than silently ignored.
-    :param value: what is in it.
+    :param subject: a subject from :mod:`parascape.ports`; ``gene`` and ``gene_list`` are
+        carried, and anything else is reported as not taken rather than silently ignored.
+    :param value: what is in it. A list is identifiers separated by commas.
     :returns: True when the window was moved onto the subject.
     """
     from . import ports as PORTS
-    if subject != PORTS.GENE or not value:
+    if not value:
+        return False
+    if subject == PORTS.GENE_LIST:
+        return _carry_list(window, value)
+    if subject != PORTS.GENE:
         return False
     select = getattr(window, "_workflow_gene", None)
     if not callable(select):
@@ -119,6 +130,31 @@ def carry_subject(window, subject: str, value: str) -> bool:
     try:
         select(str(value))
     except Exception:                   # a selection that fails must not stop the module
+        return False
+    return True
+
+
+def _carry_list(window, value: str) -> bool:
+    """Gate the genes of a list in the window. Returns whether the gate took.
+
+    :param window: the main window.
+    :param value: the identifiers, separated by commas.
+    """
+    nodes = getattr(window, "nodes", None)
+    if nodes is None or "gene_id" not in getattr(nodes, "columns", ()):
+        return False
+    from . import list_reading as LR
+    wanted = {g.lower() for g in LR.split_identifiers(value)}
+    if not wanted:
+        return False
+    try:
+        import numpy as np
+        ids = nodes["gene_id"].astype(str).str.lower().to_numpy()
+        index = np.flatnonzero(np.isin(ids, np.array(sorted(wanted))))
+        if not len(index):
+            return False
+        window.on_gated(index)
+    except Exception:                   # a gate that fails must not stop the module
         return False
     return True
 
@@ -144,10 +180,16 @@ def open_module(window, key: str, subject: str = "", value: str = "") -> str:
     message = None
     if built_by and getattr(window, built_by, None) is not None:
         shell_module = __import__(f"{__package__}.{built_by}", fromlist=["open_in"])
-        # Only the shells that READ a gene take one; `map_module.open_in` and
+        # Only the shells that READ a subject take one; `map_module.open_in` and
         # `infer_module.open_in` take the window alone, and passing an argument they do
         # not accept would turn an offer into a TypeError in front of Einar.
-        if carried and _takes_a_gene(shell_module):
+        #
+        # On the VALUE rather than on `carried`, which is what WP8 asked: a window that
+        # cannot hold the subject itself is no reason to open the module empty. The gene
+        # card handed a list has the list even where `_workflow_gene` is missing, and a
+        # module opened empty leaves the thing to be typed a second time, which is what
+        # the whole offer exists to stop.
+        if value and _takes_a_subject(shell_module):
             message = shell_module.open_in(window, str(value))
         else:
             message = shell_module.open_in(window)
@@ -171,7 +213,19 @@ def open_module(window, key: str, subject: str = "", value: str = "") -> str:
     elif not module.opens:
         message = f"{module.name}: {MOD.unavailable_reason(module)}"
     elif module.opens.startswith("action:"):
-        method = getattr(window, module.opens.split(":", 1)[1], None)
+        name = module.opens.split(":", 1)[1]
+        # Export handed a LIST writes the list, not the whole visible map (instruction 98,
+        # WP9). Export declares that it reads a list of genes, and `export_visible` -- the
+        # action on its catalogue row -- writes every gene passing the class filter, so the
+        # offer "Export, with your 40 genes already in it" wrote eight thousand of them.
+        # `carry_subject` has just gated the list, and `export_gated` is the action that
+        # writes a gated set: a separate action on purpose, because the two answer different
+        # questions. So the subject in hand decides which of the two is meant.
+        from . import ports as PORTS
+        if (name == "export_visible" and subject == PORTS.GENE_LIST and carried
+                and callable(getattr(window, "export_gated", None))):
+            name = "export_gated"
+        method = getattr(window, name, None)
         if not callable(method):
             message = f"{module.name} cannot be opened in this window"
         else:
@@ -303,11 +357,19 @@ def open_item(window, kind: str, key: str) -> str:
     landing away and raised the evidence dock -- the pre-navigator window. It now selects
     the gene in the window, exactly as before, so every panel behind the card is reading
     the same gene, and then shows the gene card over it.
+
+    A LIST OF GENES OPENS THE GENE LIST CARD. Einar, 2026-11-12: "if i type in a list of
+    genes, the same logic but this time not gene card instead a gene list module". The kind
+    is ``gene_list`` and the key is the identifiers separated by commas, which is what the
+    Navigator resolved them to, so nothing is typed a second time.
     """
     from .home_panel import _index, open_node
     if kind == "gene":
         from . import ports as PORTS
         return open_module(window, "gene", subject=PORTS.GENE, value=key)
+    if kind == "gene_list":
+        from . import ports as PORTS
+        return open_module(window, "list", subject=PORTS.GENE_LIST, value=key)
     # Everything else opens in a dock, so the overlay has to go: a panel raised behind the
     # landing is one nobody sees.
     leave_landing(window)
@@ -459,9 +521,20 @@ def install(window):
     from .home_panel import _index, gene_lookup
     from .landing import Landing
 
+    def resolve_list(ids):
+        """The identifiers that are genes of this table, as the table spells them.
+
+        Given to the Navigator so a typed LIST can be recognised in one vectorised match
+        (instruction 98, WP9). The gene lookup beside it is a SEARCH taking the whole query,
+        which asked for "TGME49_1, TGME49_2" looks for one gene whose product contains that
+        whole string, and finds nothing.
+        """
+        from . import list_reading as LR
+        return LR.resolve(getattr(window, "nodes", None), ids).genes
+
     landing = Landing(counts=_counts(window), reasons=_reasons(window),
                       genes=gene_lookup(window), index=lambda: _index(window),
-                      parent=window)
+                      resolve_list=resolve_list, parent=window)
     window.landing = landing
     window.landing_stack = None                 # the stack design is gone; see the docstring
 
