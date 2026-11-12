@@ -314,3 +314,27 @@ screen**, which is a naming decision for Einar rather than a thing to guess at.
 **Three agents shared one working tree and that was a mistake of mine.** One agent's uncommitted edits made
 another's test run fail (`test_the_dock_watcher_ignores_the_window_appearing`), which was then reported as a
 possible defect. It passes on committed code. Later work packages should use separate worktrees.
+
+## Einar's decisions, 2026-11-12
+
+**1. The settings recipes keep the word "recipe"**, matching spaCR, where a recipe is always a saved settings
+bundle. The Infer biological-question recipes are renamed -- "question templates" or a better word -- across
+`parascape/recipes.py` and the five modules that import it, and `module_recipes.py` then takes the plain name.
+The point of the restructure is that the word means one thing in both applications; two meanings on one screen
+would undo it.
+
+**2. The gene card path is built first** (WP8, then WP9), ahead of the tree and the search. It is the exact
+journey that dropped Einar into the old window: type a gene, click the module offered, land in
+`workflows.py`. It is therefore the thing he will notice fixed.
+
+**3. The tree keeps ParaScape's own headings** -- Start / Look up / Explore / Ask / Bring your own / Data --
+rather than mirroring spaCR's sections. They describe what the user is trying to do; spaCR's describe an
+imaging pipeline that ParaScape does not have. There are no segmentation models or plates here, and spaCR's
+own rule is that no declared section may be empty.
+
+### What WP8 must close first
+
+`modules.DOWNSTREAM` is hand-written and is what the navigator offers today. `ports.next_modules()` computes
+the same answer from declared subjects. WP8 deletes the hand-written one and reads the computed one -- that is
+what makes clicking the gene card reveal the right modules rather than a list someone maintained by hand. The
+same applies to `iconset.MODULE_ICON` against the icon field of a catalogue row: one must feed the other.
