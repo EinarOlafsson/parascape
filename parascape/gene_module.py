@@ -1,4 +1,4 @@
-"""The Gene module: everything recorded about one gene, synthesised, with its sources.
+"""The GENE CARD: everything recorded about one gene, synthesised, with its sources.
 
 Built with the parascape-module mould (instruction 96); Einar chose "synthesis first"
 (2026-11-06). The module lets you take a gene -- or step through a list -- and read what is
@@ -9,6 +9,39 @@ is NOT known and what can be inferred, with how often such a call is right.
 The facts come from the published information map (`information_map.PublishedMap`, loaded by
 the information-map panel) and the window's own gene table; `gene_reading` turns them into the
 sentences, so every sentence is testable without a window.
+
+WHAT WORK PACKAGE 8 OF INSTRUCTION 98 CHANGED, AND WHY
+=====================================================
+Einar, 2026-11-12: "if i type a gene into the navigator i get a few moduals that pop up, one
+should be the gene card (overhauled to mach the spacr module structure but with the same
+information as before including the parasite schematic), when i click the gene card once i
+should see the moduals downstream of one gene (like the network in spacr)."
+
+Three things followed, and nothing was taken away to make room for them:
+
+1. **The parasite schematic is the thing itself.** The mould asks the right-hand column to
+   open with the real current data, large, never a button away. For a gene card that is the
+   parasite drawn with the organelle the gene is found in filled in -- the schematic Einar
+   named by name. It was in the `find` dock and nowhere else, so somebody reading a gene
+   could not see where it sat without leaving the card. The drawing is
+   :class:`parascape.celldiagram.CellDiagram`, fed from the window's own ``color_of``, so
+   the gene card and the map cannot disagree about what a colour means. Clicking an
+   organelle ticks that compartment in the window, as it does beside the map.
+
+   A SECOND INSTANCE of the widget, not the window's one moved here. The mould says move
+   rather than copy, and that rule is about CONTROLS whose methods must keep reading them.
+   The drawing is a stateless SVG view -- its state is the palette and the selection, both
+   passed in on every redraw -- and the `find` dock is lent whole to the Cell module, which
+   could not then borrow a widget this card had taken.
+
+2. **The lens**, which the mould asks every module for: which measurement is read as "where
+   it is". There are six placement columns in the gene table; the card follows the colour-by
+   control of the window when that is one of them, and says which it is reading.
+
+3. **What follows a gene** is offered at the foot of the card, as spaCR offers successors
+   above its Run button (:mod:`parascape.next_steps`): every module that reads one gene,
+   pre-filled with this one, each checked with ``ports.check_ready``, and one that cannot
+   work shown greyed with the reason rather than dropped.
 """
 from __future__ import annotations
 
@@ -20,8 +53,9 @@ import pandas as pd
 from PySide6 import QtCore, QtWidgets
 
 from . import gene_reading as GR
+from . import ports as PORTS
 from . import theme as TH
-from .shell import ModuleShell
+from .shell import ModuleShell, solid_dropdown
 from . import organisms
 
 
@@ -48,7 +82,7 @@ class GeneModule(QtCore.QObject):
         self.genes: list = []                          # a list being stepped through
         self.reading = None
         self.shell = shell = ModuleShell(
-            "gene", "Gene", "everything recorded about one gene, with its sources",
+            "gene", "Gene card", "everything recorded about one gene, with its sources",
             instruction="Type a gene, or choose a list and step through it.")
         shell.module = self
         shell.setAcceptDrops(True)
@@ -78,10 +112,16 @@ class GeneModule(QtCore.QObject):
                                  "You can also drop the file on this module."))
         choose.clicked.connect(self._choose_list)
         use = QtWidgets.QPushButton("Use the gene list")
-        use.setToolTip("The list last dropped on ParaScape (the gene list panel).")
+        use.setToolTip(TH.tip("The list last dropped on ParaScape (the gene list panel)."))
         use.clicked.connect(self._use_gene_list)
+        clear = QtWidgets.QPushButton("Clear")
+        clear.setToolTip(TH.tip("Forget the gene and the list, and empty the card."))
+        # Through a lambda: `clicked` carries a checked flag, and handing it straight to a
+        # slot that takes no arguments is a call that only fails when somebody presses it.
+        clear.clicked.connect(lambda _checked=False: self.clear())
         row.addWidget(choose)
         row.addWidget(use)
+        row.addWidget(clear)
         v.addLayout(row)
         self.matches = QtWidgets.QListWidget()
         self.matches.setToolTip("Click a gene to read it. Up and Down step through the list.")
@@ -92,6 +132,26 @@ class GeneModule(QtCore.QObject):
         self.match_note = _muted("")
         v.addWidget(self.match_note)
         shell.add_setting("Your gene", mine)
+
+        lens = QtWidgets.QWidget(shell)
+        ll = QtWidgets.QVBoxLayout(lens)
+        ll.setContentsMargins(6, 2, 6, 6)
+        self.place_box = QtWidgets.QComboBox()
+        self.place_box.setToolTip(TH.tip(
+            "Which measurement is read as 'where it is' when the parasite is drawn. Several "
+            "measurements place a gene in the cell -- the curated compartment, and the "
+            "individual estimates behind it -- and they do not always agree. This is the same "
+            "choice as 'color by' in the find panel whenever the two can be the same."))
+        self.place_box.addItems(self._placement_columns())
+        solid_dropdown(self.place_box)
+        self.place_box.setCurrentText(GR.preferred_placement_column(
+            self._placement_columns(), self._window_colour()))
+        self.place_box.currentTextChanged.connect(self._place_chosen)
+        ll.addWidget(self.place_box)
+        self.place_note = _muted("")
+        ll.addWidget(self.place_note)
+        shell.add_setting("Where it is, read by", lens)
+        self._follow_window_colour()
 
         kinds = QtWidgets.QWidget(shell)
         kl = QtWidgets.QVBoxLayout(kinds)
@@ -118,9 +178,29 @@ class GeneModule(QtCore.QObject):
         al.addWidget(self.show_predicted)
         shell.add_setting("Advanced", advanced, expanded=False)
 
+        keep = QtWidgets.QWidget(shell)
+        kp = QtWidgets.QVBoxLayout(keep)
+        kp.setContentsMargins(6, 2, 6, 6)
+        kp.addWidget(_muted("Keep this reading as files you can hand to somebody else, "
+                            "or read one back."))
+        save = QtWidgets.QPushButton("Save everything as a bundle…")
+        save.setToolTip(TH.tip("One folder: what is measured about the gene, what is unusual, "
+                               "your kept claims (marked inferred), the methods text with "
+                               "references, and a manifest whose hashes show if anything was "
+                               "edited later."))
+        save.clicked.connect(lambda: self.save_bundle())
+        reopen = QtWidgets.QPushButton("Open a saved bundle…")
+        reopen.setToolTip(TH.tip("Read a bundle saved here back: its files are checked against "
+                                 "their hashes and its view is restored."))
+        reopen.clicked.connect(lambda: self.open_bundle())
+        kp.addWidget(save)
+        kp.addWidget(reopen)
+        shell.add_setting("Save", keep, expanded=False)
+
     # ------------------------------------------------------------------ right
     def _build_runtime(self) -> None:
         shell, window = self.shell, self.window
+        self._build_parasite()
         self.known = _browser()
         shell.link_style(self.known)
         self.known.setToolTip("What is known about the gene, one sentence per kind of "
@@ -170,25 +250,25 @@ class GeneModule(QtCore.QObject):
         shell.link_style(self.methods)
         self.methods.setOpenLinks(False)
         self.methods.anchorClicked.connect(lambda url: self.open_strategy(url.toString().split(":", 1)[-1]))
-        self.methods.setToolTip("Every method in the catalogue: what it said about this gene when the "
-                                "gene's own answer was hidden, and how its calibration graded it.")
+        self.methods.setToolTip("Every method in the catalogue: what it said about this gene when "
+                                "the recorded answer for it was hidden, and how its calibration "
+                                "graded it.")
         shell.add_section("What each method said about it, held out", self.methods, extent=200,
                           stretch=1, folded=True)
 
+        from .next_steps import NextSteps
+        self.next_steps = NextSteps(PORTS.GENE, shell)
+        self.next_steps.chosen.connect(lambda key, _kind, gene: self._open(key, gene))
+        shell.add_section("What you can do with this gene next", self.next_steps,
+                          extent=110, stretch=0)
+        self.next_steps.set_subject("", available=self._reasons(), without="gene")
+
         shell.add_action("Put it on the map", self._on_map, primary=True,
                          tip="Open the Map module with this gene marked and its neighbours read.")
-        shell.add_action("Its partners in the network", lambda: self._open("network"),
-                         tip="See the gene among its recorded partners (Network).")
         shell.add_action("Predict what is missing", lambda: self._open("infer"),
                          tip="Answer a question about this gene from the evidence, with how often "
-                             "such answers are right (Infer).")
-        shell.add_action("Open a saved bundle…", lambda: self.open_bundle(),
-                         tip="Read a bundle saved here back: its files are checked against their hashes "
-                             "and its view is restored.")
-        shell.add_action("Save everything as a bundle…", lambda: self.save_bundle(),
-                         tip="One folder: what is measured about the gene, what is unusual, your kept "
-                             "claims (marked inferred), the methods text with references, and a "
-                             "manifest whose hashes show if anything was edited later.")
+                             "such answers are right (Infer). Infer is asked a question rather "
+                             "than a gene, which is why it is here and not among the next steps.")
         shell.add_action("Full evidence panel", self._full_panel,
                          tip="The detailed evidence panel of the main window for this gene.")
         shell.add_action("Previous", lambda: self._step(-1), tip="The previous gene of the list.")
@@ -198,9 +278,212 @@ class GeneModule(QtCore.QObject):
                      folded=True)
         self.known.setHtml("<p>Type a gene on the left to read what is known about it.</p>")
 
+    # ------------------------------------------------------- where it is in the parasite
+    def _build_parasite(self) -> None:
+        """The parasite drawn, with the organelle this gene is found in filled in.
+
+        The thing the card is about, so it is first in the runtime column, large and showing
+        the real reading rather than a sample. Einar named the schematic as something the
+        restructure must keep; this is where it is kept.
+        """
+        shell = self.shell
+        from .celldiagram import CellDiagram, available as diagram_available
+        holder = QtWidgets.QWidget(shell)
+        # The caption BESIDE the drawing, not under it. The drawing is portrait, so its
+        # width follows its height; under a caption in a column a thousand pixels wide it
+        # was a thumbnail with nine hundred pixels of empty space on either side of it.
+        layout = QtWidgets.QHBoxLayout(holder)
+        layout.setContentsMargins(8, 4, 8, 8)
+        layout.setSpacing(16)
+        self.parasite = CellDiagram(holder) if diagram_available() else None
+        if self.parasite is not None:
+            self.parasite.compartment_clicked.connect(self._organelle_clicked)
+            # NO minimum height. Asking for 260 px in a section the splitter opened at 265
+            # left the layout unable to fit the caption, and Qt laid the caption ON TOP of
+            # the drawing -- the parasite was drawn through the sentence describing it.
+            self.parasite.setMinimumHeight(0)
+            layout.addWidget(self.parasite, 2)
+        words = QtWidgets.QWidget(holder)
+        wl = QtWidgets.QVBoxLayout(words)
+        wl.setContentsMargins(0, 0, 0, 0)
+        wl.addStretch(1)
+        self.parasite_note = _muted("Type a gene on the left to see where in the cell it is.")
+        self.parasite_note.setToolTip(TH.tip(
+            "Where the gene is found, which measurement says so, and -- when nothing is "
+            "measured -- that it is unknown, which is not the same as the gene being nowhere."))
+        wl.addWidget(self.parasite_note)
+        self.parasite_trust = _muted("")
+        self.parasite_trust.setToolTip(TH.tip(
+            "How many genes this measurement covers, and how often a guess with no evidence "
+            "would be right -- the number any suggestion has to beat."))
+        wl.addWidget(self.parasite_trust)
+        wl.addStretch(1)
+        layout.addWidget(words, 3)
+        # The largest share of the runtime column, which is what "the thing itself, large"
+        # means when ten sections compete for the height. The splitter opens each pane at
+        # its EXTENT, scaled so they fill the column -- stretch only decides who grows when
+        # the window is resized -- so the number that makes the parasite large is this one.
+        # At 420 against the 1,650 the other nine ask for, it opened 186 px tall.
+        shell.add_section("Where it is in the parasite", holder, extent=900, stretch=6,
+                          focus=True)
+
+    def _placement_columns(self) -> list:
+        """The measurements of the gene table that place a gene in an organelle the drawing has."""
+        from .celldiagram import COMPARTMENT_SL
+        try:
+            return GR.placement_columns(self._nodes(), COMPARTMENT_SL)
+        except Exception:                                  # a card must open on any table
+            return []
+
+    def _window_colour(self) -> str:
+        """What the window is colouring by right now, or "" when it has no such control."""
+        box = getattr(self.window, "category_box", None)
+        return box.currentText() if box is not None else ""
+
+    def _follow_window_colour(self) -> None:
+        """Keep the lens in step with the colour-by control of the window, both ways.
+
+        One source of truth: the card and the map must never show two different compartments
+        for one gene. The window wins when its choice is a placement; when it is something
+        else entirely -- a run, a binned number -- the card keeps the placement it had, because
+        there is nothing sensible to follow it to.
+        """
+        box = getattr(self.window, "category_box", None)
+        if box is None:
+            return
+        box.currentTextChanged.connect(self._colour_changed_elsewhere)
+
+    def _colour_changed_elsewhere(self, text: str) -> None:
+        """The window was recoloured: follow it when the new colouring places genes."""
+        if text and text in self._placement_columns() and self.place_box.currentText() != text:
+            self.place_box.setCurrentText(text)
+
+    def _place_chosen(self, text: str) -> None:
+        """The lens changed: redraw the parasite, and recolour the window to match."""
+        box = getattr(self.window, "category_box", None)
+        if box is not None and text and box.currentText() != text:
+            try:
+                if text in self.window.color_sources():
+                    box.setCurrentText(text)
+            except Exception:                              # recolouring is not worth a crash
+                pass
+        self._render_parasite()
+
+    def placement(self):
+        """Where the current gene is placed, with the chance baseline; None with no gene.
+
+        :returns: a :class:`parascape.gene_reading.Placement`, or None.
+        """
+        column = self.place_box.currentText()
+        if not self.gene or not column:
+            return None
+        nodes = self._nodes()
+        source = "compartment_source" if nodes is not None and \
+            "compartment_source" in nodes.columns else ""
+        return GR.placement(nodes, self.gene, column, source)
+
+    def _adopt_lens(self, place) -> bool:
+        """Colour the window by the lens when it has no colour for what the card is showing.
+
+        ONE PALETTE, which is the rule `celldiagram` is built on: the fills come from
+        `window.color_of`, the same dict the points on the map are drawn from, so the
+        drawing and the map cannot disagree about what a colour means. The cost of that
+        rule is this method: when the window is coloured by something else -- it opens on
+        `compartment_best`, whose groupings the artwork has no shape for -- there is no
+        colour for "dense granules" and the organelle came out unfilled.
+
+        Rather than mix in a colour of its own, the card moves the window onto the
+        measurement it is reading, and says so. Nothing is invented and the two views go on
+        meaning the same thing.
+
+        :param place: the reading from :meth:`placement`.
+        :returns: whether the window was recoloured.
+        """
+        colours = getattr(self.window, "color_of", {}) or {}
+        box = getattr(self.window, "category_box", None)
+        if not place.known or place.compartment in colours or box is None:
+            return False
+        try:
+            if place.column not in self.window.color_sources():
+                return False
+            box.setCurrentText(place.column)
+        except Exception:                                  # colour is not worth a crash
+            return False
+        self.shell.say(f"The map and the find panel are now coloured by "
+                       f"{place.column.replace('_', ' ')}, so the drawing and the map "
+                       f"mean the same thing by a colour.")
+        return True
+
+    def _render_parasite(self) -> None:
+        """Fill the organelle the gene is found in, and say what that rests on."""
+        place = self.placement()
+        if place is None:
+            self.parasite_note.setText("Type a gene on the left to see where in the cell it is.")
+            self.parasite_trust.setText("")
+            if self.parasite is not None:
+                self.parasite.set_palette(getattr(self.window, "color_of", {}) or {}, "")
+            return
+        self.place_note.setText(f"Reading {place.column.replace('_', ' ')}.")
+        self._adopt_lens(place)
+        if self.parasite is not None:
+            # The window's own palette, never a second one: two palettes are two claims about
+            # what a colour means and one of them drifts.
+            self.parasite.set_palette(getattr(self.window, "color_of", {}) or {},
+                                      place.compartment)
+            shared = self.parasite.showing()
+        else:
+            shared = ""
+        note = GR.placement_sentence(place)
+        if shared:
+            note += f" <span style='color:#999'>({escape(shared)})</span>"
+        self.parasite_note.setText(note)
+        self.parasite_trust.setText(GR.placement_trust(place))
+
+    def _organelle_clicked(self, name: str) -> None:
+        """An organelle clicked: tick that compartment in the window, as the find panel does."""
+        picker = getattr(self.window, "select_compartment", None)
+        if callable(picker):
+            picker(name)
+        self.shell.say(f"{name} ticked in the find panel")
+
     # ------------------------------------------------------------------ choosing a gene
     def _nodes(self):
         return getattr(self.window, "nodes", None)
+
+    def _reasons(self) -> dict:
+        """Which modules this window cannot actually open, by the docks it really built.
+
+        Asked of the window rather than of the catalogue so a greyed offer says what is
+        true HERE -- a dock that failed to install greys its module with that reason, not
+        with a general one.
+        """
+        try:
+            from .landing_install import _reasons
+            return _reasons(self.window)
+        except Exception:
+            return {}
+
+    def clear(self) -> None:
+        """Forget the gene and the list, and empty the card.
+
+        The mould asks every module for a way back to nothing. Without it the only way to
+        stop looking at a gene was to type another one, which left somebody who wanted a
+        clean start reading a card they had finished with.
+        """
+        self.gene = ""
+        self.genes = []
+        self.reading = None
+        self.field.clear()
+        self.matches.blockSignals(True)
+        self.matches.clear()
+        self.matches.blockSignals(False)
+        self.match_note.setText("")
+        self.known.setHtml("<p>Type a gene on the left to read what is known about it.</p>")
+        for browser in (self.unusual, self.links, self.inferred, self.methods):
+            browser.setHtml("")
+        self._render_parasite()
+        self.next_steps.set_subject("", available=self._reasons(), without="gene")
+        self.shell.say("")
 
     def _product(self, gene: str) -> str:
         nodes = self._nodes()
@@ -339,6 +622,8 @@ class GeneModule(QtCore.QObject):
         body = "".join(f"<p>{s}</p>" for _c, s in sentences) or \
             "<p>Nothing recorded about this gene in the kinds of knowledge chosen.</p>"
         self.known.setHtml(head + body)
+        self._render_parasite()
+        self.next_steps.set_subject(r.gene, available=self._reasons(), without="gene")
         self._render_unusual(r)
         self._render_methods(r)
         self._render_evidence(r)
@@ -654,14 +939,17 @@ class GeneModule(QtCore.QObject):
         if len(index):
             map_shell.module.select([int(index[0])], "")
 
-    def _open(self, key: str) -> None:
+    def _open(self, key: str, gene: str = "") -> str:
+        """Open another module with this gene already in it; returns what was opened.
+
+        The second half of the offer: a next step that opened an empty module would leave
+        the gene to be typed again, which is the thing the chaining strip exists to stop.
+        The gene is handed over through `landing_install.open_module`, which is the one
+        route every module is opened by.
+        """
         from .landing_install import open_module
-        if self.gene and hasattr(self.window, "_workflow_gene"):
-            try:
-                self.window._workflow_gene(self.gene)
-            except Exception:
-                pass
-        open_module(self.window, key)
+        gene = gene or self.gene
+        return open_module(self.window, key, subject=PORTS.GENE, value=gene)
 
     def _full_panel(self) -> None:
         from .landing_install import leave_landing

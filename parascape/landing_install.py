@@ -67,20 +67,90 @@ def _reasons(window) -> dict:
     return out
 
 
-def open_module(window, key: str) -> str:
+def _subject_in_hand(landing) -> tuple:
+    """What the Navigator is holding, as ``(kind, value)``; ``("", "")`` when nothing.
+
+    Asked of the landing at the moment a module is opened rather than carried on the
+    signal, because the module tiles open modules too and they hold no subject -- a second
+    signal for the same event would be a second thing to keep in step.
+    """
+    navigator = getattr(landing, "navigator", None)
+    return getattr(navigator, "subject", ("", "")) if navigator is not None else ("", "")
+
+
+def _takes_a_gene(shell_module) -> bool:
+    """Whether a module's `open_in` accepts a gene as well as the window.
+
+    Read from the signature rather than listed here: a list of which shells take a gene
+    would be a table of the same facts as the code, kept in step by hand, which is the one
+    thing instruction 98 is about.
+    """
+    import inspect
+    try:
+        return len(inspect.signature(shell_module.open_in).parameters) > 1
+    except (TypeError, ValueError):
+        return False
+
+
+def carry_subject(window, subject: str, value: str) -> bool:
+    """Put a subject into the window before a module is opened on it. Returns whether it took.
+
+    This is the pre-filling half of an offer (instruction 98, WP8): a next step that opened
+    an empty module would leave the gene to be typed a second time, which is the whole thing
+    spaCR's chaining strip exists to stop.
+
+    One gene is carried by SELECTING it in the window -- the same route the search field
+    uses -- because that is what every panel already reads: the evidence dock, the
+    information map, the compare tabs and the find panel all follow the window selection.
+    A module built on its own shell is additionally handed the gene by name, below.
+
+    :param window: the main window.
+    :param subject: a subject from :mod:`parascape.ports`; only ``gene`` is carried today,
+        and anything else is reported as not taken rather than silently ignored.
+    :param value: what is in it.
+    :returns: True when the window was moved onto the subject.
+    """
+    from . import ports as PORTS
+    if subject != PORTS.GENE or not value:
+        return False
+    select = getattr(window, "_workflow_gene", None)
+    if not callable(select):
+        return False
+    try:
+        select(str(value))
+    except Exception:                   # a selection that fails must not stop the module
+        return False
+    return True
+
+
+def open_module(window, key: str, subject: str = "", value: str = "") -> str:
     """Open one module in this window. Returns what the status bar was told.
 
     Which Python module builds which key is read from the catalogue
     (`modules.Module.builder`) rather than from a dict kept here. The dict was
     a sixth table of the same facts, and a module added to `modules.py` without
     a line added here simply opened nothing.
+
+    :param window: the main window.
+    :param key: the module key.
+    :param subject: the kind of thing being carried in, e.g. ``"gene"``. Empty opens the
+        module on whatever it was already showing, which is what every caller before
+        instruction 98 wanted.
+    :param value: what is in the subject -- the gene identifier.
     """
     module = MOD.get(key)
     built_by = MOD.shell_module(key)
+    carried = carry_subject(window, subject, value)
     message = None
     if built_by and getattr(window, built_by, None) is not None:
         shell_module = __import__(f"{__package__}.{built_by}", fromlist=["open_in"])
-        message = shell_module.open_in(window)
+        # Only the shells that READ a gene take one; `map_module.open_in` and
+        # `infer_module.open_in` take the window alone, and passing an argument they do
+        # not accept would turn an offer into a TypeError in front of Einar.
+        if carried and _takes_a_gene(shell_module):
+            message = shell_module.open_in(window, str(value))
+        else:
+            message = shell_module.open_in(window)
         if key == "partners":
             # Partners is the network read by binding evidence: the physical links ticked.
             window.network_module.module.show_partners()
@@ -141,13 +211,22 @@ def raise_dock(window, title: str, tab: str = "") -> str:
 
 
 def open_item(window, kind: str, key: str) -> str:
-    """Open a gene, question, method, dataset, panel or guide the Navigator found."""
+    """Open a gene, question, method, dataset, panel or guide the Navigator found.
+
+    A GENE OPENS THE GENE CARD. Einar, 2026-11-12: "now when i put in a gene and pressed
+    the modual that came up for the gene, i was brought to the old version of parascape.
+    this also needs to be overhauled." It went to `home_panel.open_node`, which took the
+    landing away and raised the evidence dock -- the pre-navigator window. It now selects
+    the gene in the window, exactly as before, so every panel behind the card is reading
+    the same gene, and then shows the gene card over it.
+    """
     from .home_panel import _index, open_node
-    # The gene is selected ON the map, and every other item opens in a dock, so both
-    # need the overlay gone: a selection made behind the landing is one nobody sees.
-    leave_landing(window)
     if kind == "gene":
-        return open_node(window, ND.gene_node(key))
+        from . import ports as PORTS
+        return open_module(window, "gene", subject=PORTS.GENE, value=key)
+    # Everything else opens in a dock, so the overlay has to go: a panel raised behind the
+    # landing is one nobody sees.
+    leave_landing(window)
     entry = next((e for e in _index(window)
                   if getattr(e, "title", None) == key and getattr(e, "kind", None) == kind), None)
     if entry is None:
@@ -302,7 +381,10 @@ def install(window):
     window.landing = landing
     window.landing_stack = None                 # the stack design is gone; see the docstring
 
-    landing.module_chosen.connect(lambda key: open_module(window, key))
+    # The subject the Navigator is holding travels with the module it opens, so a module
+    # reached by typing a gene opens already reading that gene rather than empty.
+    landing.module_chosen.connect(
+        lambda key: open_module(window, key, *_subject_in_hand(landing)))
     landing.item_chosen.connect(lambda kind, key: open_item(window, kind, key))
 
     home = QtGui.QAction("Home", window)

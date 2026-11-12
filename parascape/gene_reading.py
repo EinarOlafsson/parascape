@@ -616,3 +616,218 @@ def inferences(reading: GeneReading) -> list:
                        f"= <b>{escape(value_text(row.column, row.value))}</b>"
                        f" ({escape(str(row.source_tier))}{p}).")
     return out
+
+
+# ------------------------------------------------- where in the parasite the gene is
+#
+# The gene card draws the parasite with the organelle the gene is found in coloured in --
+# the schematic Einar named as a thing that must survive the restructure. Which organelle
+# that is is a reading of the gene table, so it is computed here, as a pure function of a
+# table and a gene, and tested without a window.
+#
+# The drawable compartment names are passed IN rather than imported: `celldiagram` is a Qt
+# widget module, and a reading function that cannot be imported on a machine with no display
+# is a reading function that cannot be tested cheaply.
+
+@dataclass(frozen=True)
+class Placement:
+    """Where one gene is drawn in the parasite, and how far that is worth trusting.
+
+    :param gene: the gene read.
+    :param compartment: the organelle it is found in, or ``""`` for unknown. Unknown is
+        never "not there": the gene card draws it grey and says "unknown" in words.
+    :param column: the measurement that says so, e.g. ``compartment``.
+    :param source: what kind of evidence that measurement is, when the table carries it
+        beside the value (``hyperLOPIT``), else ``""``.
+    :param measured: how many genes have a value for that measurement.
+    :param total: how many genes are in the table.
+    :param commonest: the answer that comes up most often among the measured ones -- what a
+        guess would say.
+    :param commonest_n: how many genes have that commonest answer.
+    """
+
+    gene: str
+    compartment: str = ""
+    column: str = ""
+    source: str = ""
+    measured: int = 0
+    total: int = 0
+    commonest: str = ""
+    commonest_n: int = 0
+
+    @property
+    def known(self) -> bool:
+        """Whether the gene has a measured place at all."""
+        return bool(self.compartment)
+
+    @property
+    def coverage_percent(self) -> int:
+        """What share of genes this measurement covers, as a whole number of percent."""
+        return int(round(100 * self.measured / self.total)) if self.total else 0
+
+    @property
+    def chance_percent(self) -> int:
+        """How often a guess of the commonest answer would be right, as a whole number."""
+        return int(round(100 * self.commonest_n / self.measured)) if self.measured else 0
+
+
+#: Values that mean "no compartment was assigned" rather than naming one. They are
+#: measured absences and are drawn grey, exactly as the map draws them.
+UNPLACED = ("", "unassigned", "unknown", "none", "nan", "na")
+
+
+#: How much of a column has to be drawable before it counts as a placement: more than
+#: half of the genes it places. `compartment_best` passed a "does any value match" test --
+#: it has a cytosol and an apicoplast -- while most of what it holds (`nucleus`,
+#: `apical_secretory`, `pellicle_PM_IMC`) are coarser groupings the artwork has no shape
+#: for, so choosing it drew an empty parasite for four genes in five.
+DRAWABLE_SHARE = 0.5
+
+
+def placement_columns(nodes, drawable) -> list:
+    """The columns of the gene table that place a gene in an organelle the drawing has.
+
+    Read from the table rather than named here, for the reason `celldiagram.groups_in`
+    reads the artwork rather than trusting its own mapping: a column named in code and
+    absent from the data is a silent nothing. And read by how MUCH of it the drawing can
+    colour rather than by whether anything in it matches -- see :data:`DRAWABLE_SHARE`.
+
+    :param nodes: the gene table.
+    :param drawable: the compartment names the drawing can colour, as any container of
+        strings (``celldiagram.COMPARTMENT_SL``).
+    :returns: the column names, in table order.
+    """
+    if nodes is None or not len(getattr(nodes, "columns", ())):
+        return []
+    names = {str(d) for d in drawable}
+    out = []
+    for column in nodes.columns:
+        series = nodes[column]
+        if series.dtype.kind not in ("O", "U", "S") and str(series.dtype) != "str":
+            continue
+        try:
+            values = series.dropna().astype(str)
+        except Exception:                     # a column of arrays is not a placement
+            continue
+        placed = values[~values.str.strip().str.lower().isin(UNPLACED)]
+        if not len(placed):
+            continue
+        if placed.isin(names).mean() > DRAWABLE_SHARE:
+            out.append(str(column))
+    return out
+
+
+def placed_at(nodes, gene: str, column: str) -> str:
+    """The compartment one gene is measured in, or ``""`` when none is.
+
+    :param nodes: the gene table.
+    :param gene: the gene identifier.
+    :param column: one of :func:`placement_columns`.
+    """
+    if nodes is None or not column or column not in getattr(nodes, "columns", ()):
+        return ""
+    hit = nodes[nodes["gene_id"].astype(str) == str(gene)]
+    if not len(hit):
+        return ""
+    value = str(hit.iloc[0][column])
+    return "" if value.strip().lower() in UNPLACED else value
+
+
+def placement(nodes, gene: str, column: str, source_column: str = "") -> Placement:
+    """Where one gene sits in the parasite, with what a guess would have said.
+
+    The chance baseline is here rather than in the module because it is the number that
+    decides whether the drawing is telling anybody anything: if nine genes in ten are
+    nucleus, a nucleus is not news. Instruction 98 asks for every suggestion to be reported
+    against chance with n, and this is the n.
+
+    :param nodes: the gene table.
+    :param gene: the gene identifier.
+    :param column: the placement column being read.
+    :param source_column: a column saying what kind of evidence placed it, when the table
+        has one (``compartment_source``). Absent is not an error.
+    :returns: a :class:`Placement`; ``known`` is False when nothing is measured.
+    """
+    where = placed_at(nodes, gene, column)
+    if nodes is None or not column or column not in getattr(nodes, "columns", ()):
+        return Placement(gene=str(gene))
+    values = nodes[column].astype(str)
+    placed = values[~values.str.strip().str.lower().isin(UNPLACED)]
+    counts = placed.value_counts()
+    source = ""
+    if source_column and source_column in nodes.columns and where:
+        hit = nodes[nodes["gene_id"].astype(str) == str(gene)]
+        if len(hit):
+            value = str(hit.iloc[0][source_column])
+            source = "" if value.strip().lower() in UNPLACED else value
+    return Placement(gene=str(gene), compartment=where, column=str(column), source=source,
+                     measured=int(len(placed)), total=int(len(nodes)),
+                     commonest=str(counts.index[0]) if len(counts) else "",
+                     commonest_n=int(counts.iloc[0]) if len(counts) else 0)
+
+
+def placement_sentence(place: Placement) -> str:
+    """One line saying where the gene is drawn, and what said so. Plain words, HTML.
+
+    Unknown is said as "unknown", never implied by an empty drawing: a grey parasite with
+    no caption reads as "this gene is nowhere", which is a claim nobody made.
+
+    :param place: the reading from :func:`placement`.
+    """
+    what = escape(str(place.column).replace("_", " ")) or "where it is"
+    if not place.known:
+        return (f"<b>{escape(place.gene)}</b>: where it is in the cell is "
+                "<b>unknown</b> &mdash; no compartment is measured for it, which is not the "
+                "same as it being nowhere. The parasite is drawn grey.")
+    said = f", by {escape(place.source)}" if place.source else ""
+    return (f"<b>{escape(place.gene)}</b> is found in the <b>{escape(place.compartment)}</b>"
+            f"{said}. The organelle is filled in the colour that compartment has on the map "
+            f"and in the list beside it ({what}).")
+
+
+def placement_trust(place: Placement) -> str:
+    """How far to trust a placement, against chance, with the number it rests on. HTML.
+
+    :param place: the reading from :func:`placement`.
+    :returns: a sentence, or ``""`` when nothing is measured at all.
+    """
+    if not place.total or not place.measured:
+        return ""
+    head = (f"Where a gene is, is measured for <b>{place.measured:,}</b> of the "
+            f"{place.total:,} genes in this table ({place.coverage_percent} %).")
+    if not place.commonest:
+        return head
+    chance = (f" The commonest answer is <b>{escape(place.commonest)}</b>, which covers "
+              f"{place.chance_percent} % of the measured genes &mdash; so a guess with no "
+              f"evidence at all would be right about {place.chance_percent} % of the time.")
+    if place.known:
+        return head + chance
+    return (head + chance + " Nothing is measured for this gene, so no guess is made here; "
+            "what the data suggest is below, with how often such a call is right.")
+
+
+#: The placement column to prefer when the window has not already chosen one. It is the
+#: curated compartment the map and the find panel are coloured by, so the gene card and the
+#: rest of the window say the same thing by default. The others (`lopit_map`, `lopit_mcmc`,
+#: `ortholopit_label`) are the individual estimates behind it and are offered, not assumed.
+PREFERRED_PLACEMENT = "compartment"
+
+
+def preferred_placement_column(columns, current: str = "") -> str:
+    """Which placement to read by: what the window already shows, else the curated one.
+
+    Written so the gene card never silently disagrees with the map beside it. `current` is
+    whatever the colour-by control of the window is set to; when that is a placement, it
+    wins, because two views of one gene showing two different compartments is the kind of
+    quiet disagreement this restructure exists to remove.
+
+    :param columns: the placement columns, from :func:`placement_columns`.
+    :param current: the colour source the window is on, which may not be a placement.
+    :returns: one column name, or ``""`` when there are none.
+    """
+    columns = [str(c) for c in columns]
+    if not columns:
+        return ""
+    if current and str(current) in columns:
+        return str(current)
+    return PREFERRED_PLACEMENT if PREFERRED_PLACEMENT in columns else columns[0]

@@ -105,15 +105,52 @@ def test_the_modules_downstream_of_one_gene_are_all_in_the_catalogue():
     assert set(P.consumers_of(P.GENE_LIST)) <= keys
 
 
-def test_every_hand_written_downstream_entry_names_a_real_module():
-    """`DOWNSTREAM` is the ranked order the navigator draws, and it is still
-    written by hand. WP7 replaces it with the computed graph; until then this
-    at least stops it naming something that does not exist."""
-    keys = {m.key for m in MOD.MODULES}
-    for key, following in MOD.DOWNSTREAM.items():
-        assert key in keys, key
-        for target in following:
-            assert target in keys, f"{key} leads to {target}, which is not a module"
+def test_nothing_hand_writes_what_follows_a_module_any_more():
+    """Instruction 98, what WP8 had to close first: `DOWNSTREAM` was twenty-two
+    hand-written lists beside a computed `ports.next_modules`, and the
+    hand-written one was what the navigator offered. It is gone, and the
+    catalogue is not allowed to grow another."""
+    assert not hasattr(MOD, "DOWNSTREAM"), \
+        "what follows a module is computed from the declared subjects, not listed"
+
+
+def test_what_follows_a_module_is_what_reads_what_it_hands_on():
+    """Every offer is a module that declares it reads one of the subjects the
+    first one declares it produces -- which is the whole reason the graph can be
+    checked rather than trusted."""
+    for module in MOD.MODULES:
+        produced = set(module.produces)
+        for target in MOD.downstream(module.key):
+            reads = set(MOD.get(target).consumes)
+            assert reads & produced, \
+                f"{module.key} offers {target}, which reads none of {sorted(produced)}"
+
+
+def test_the_modules_downstream_of_one_gene_are_the_ones_that_take_a_gene():
+    """Einar: "all the modules that take 1 gene and do something should come
+    downstream of the gene card module"."""
+    offered = MOD.downstream_of_subject(P.GENE, without="gene")
+    assert set(offered) == set(P.consumers_of(P.GENE)) - {"gene"}
+    assert set(offered) == {"cell", "expression", "information", "network",
+                            "partners", "structure"}
+
+
+def test_an_offer_nobody_can_take_is_never_the_first_one():
+    """spaCR sorts its next steps ready first, blocked last. Structure has no
+    view built, and before this it was the first thing offered under a gene."""
+    offered = MOD.downstream_of_subject(P.GENE, without="gene")
+    blocked = [k for k in offered if MOD.unavailable_reason(MOD.get(k))]
+    assert offered[0] not in blocked
+    assert offered[-len(blocked):] == tuple(blocked) if blocked else True
+
+
+def test_the_symbol_of_a_module_is_declared_once():
+    """Instruction 98: `iconset.MODULE_ICON` and the icon field of a catalogue
+    row held the same fact twice. The catalogue feeds the icon set."""
+    from parascape import iconset
+    icons = iconset._load_module_icons()
+    for module in MOD.MODULES:
+        assert icons[module.key] == module.icon, module.key
 
 
 # ----------------------------------------------------------- the declared row

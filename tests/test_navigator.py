@@ -41,7 +41,32 @@ def test_a_gene_is_found_by_its_product(index):
 
 def test_a_gene_is_found_by_its_accession(index):
     hits = NV.suggestions("TGME49_223920", genes=GENES, index=index)
-    assert hits[0].kind == "gene" and hits[0].key == "TGME49_223920"
+    assert any(s.kind == "gene" and s.key == "TGME49_223920" for s in hits)
+
+
+def test_typing_a_gene_offers_the_gene_card_first():
+    """Einar, 2026-11-12: "if i type a gene into the navigator i get a few moduals
+    that pop up, one should be the gene card"."""
+    hits = NV.suggestions("TGME49_223920", genes=GENES, index=None)
+    assert hits[0].kind == "module" and hits[0].key == "gene"
+    assert hits[0].subject == ("gene", "TGME49_223920")
+    assert "TGME49_223920" in hits[0].detail
+
+
+def test_the_modules_offered_for_a_gene_all_read_one_gene():
+    from parascape import ports as P
+    hits = NV.suggestions("TGME49_223920", genes=GENES, index=None)
+    offered = [s.key for s in hits if s.kind == "module"]
+    assert offered, "a typed gene offers no module at all"
+    for key in offered:
+        assert key in P.consumers_of(P.GENE), key
+        assert dict(s.subject for s in hits if s.key == key)
+
+
+def test_naming_a_module_still_wins_over_the_gene_modules():
+    """Typing "map" means the Map module, even when a gene product mentions a map."""
+    hits = NV.suggestions("map", genes=GENES, index=None)
+    assert hits[0].kind == "module" and hits[0].key == "map"
 
 
 def test_questions_are_still_searchable(index):
@@ -163,11 +188,11 @@ def test_one_click_shows_what_follows_and_a_second_opens(page, qtbot):
     type_and_wait(page, qtbot, "map")
     page._cards[0].click()
     assert seen == [] and page._path == ["map"]
-    assert page._columns[1] == list(MOD.downstream("map"))[:4]
+    assert page._columns[1] == list(MOD.downstream("map"))[:NV.FLOW_FIRST]
     assert not page.field.isVisible() and page.back.isVisible()
     page._flow_cards[(1, "network")].click()
     assert page._path == ["map", "network"] and seen == []
-    assert page._columns[2] == list(MOD.downstream("network"))[:4]
+    assert page._columns[2] == list(MOD.downstream("network"))[:NV.FLOW_MORE]
     page._flow_cards[(1, "network")].click()
     assert seen == [("module", "network")]
 
@@ -199,11 +224,16 @@ def test_reset_empties_everything(page, qtbot):
 
 
 def test_every_downstream_module_exists():
+    """What follows a module is computed from the declared subjects now, so this is
+    really a check that the two tables have not drifted: every key the graph answers
+    with is a module the navigator can draw a card for."""
     from parascape import modules as MOD
     keys = {m.key for m in MOD.MODULES}
-    for key, following in MOD.DOWNSTREAM.items():
-        assert key in keys, key
-        assert set(following) <= keys, (key, set(following) - keys)
+    for module in MOD.MODULES:
+        following = MOD.downstream(module.key)
+        assert set(following) <= keys, (module.key, set(following) - keys)
+        assert module.key not in following, f"{module.key} follows itself"
+        assert len(set(following)) == len(following), module.key
 
 
 def test_editing_after_a_search_asks_for_return_again(page, qtbot):
@@ -240,10 +270,12 @@ def test_the_cards_sit_above_the_field_and_the_details_below_it(page, qtbot):
 
 
 def test_a_gene_card_names_the_product_not_the_accession(page, qtbot):
-    """Eight cards reading TGME49_... could not be told apart without hovering each."""
+    """Eight cards reading TGME49_... could not be told apart without hovering each.
+
+    The gene cards come after the modules that read a gene now (instruction 98, WP8),
+    so this looks for the gene card rather than taking the first one."""
     type_and_wait(page, qtbot, "TGME49_223920")
-    card = page._cards[0]
-    assert card.suggestion.kind == "gene"
+    card = next(c for c in page._cards if c.suggestion.kind == "gene")
     assert "RON3" in card.name_label.text()
     assert "TGME49_223920" in card.suggestion.detail
 
@@ -428,11 +460,28 @@ def test_a_module_from_either_page_arrives_the_same_way(landing):
     assert seen == ["map", "gene"]
 
 
-def test_a_gene_from_the_navigator_is_an_item_not_a_module(landing):
+def test_a_gene_from_the_navigator_opens_the_gene_card_holding_that_gene(landing):
+    """Einar, 2026-11-12: "now when i put in a gene and pressed the modual that came up
+    for the gene, i was brought to the old version of parascape." It opened the gene as a
+    NODE, which raised the pre-navigator evidence dock. Return on a typed gene now opens
+    the gene card module, and the gene travels with it."""
+    seen = []
+    landing.module_chosen.connect(lambda key: seen.append(key))
+    landing.navigator.field.setText("TGME49_223920")
+    landing.navigator.open_current()
+    assert seen == ["gene"]
+    assert landing.navigator.subject == ("gene", "TGME49_223920")
+
+
+def test_a_gene_card_among_the_results_still_opens_as_an_item(landing):
+    """The gene results themselves are still items; `open_item` is what routes them to
+    the gene card now, so the kind on the signal has not changed."""
     seen = []
     landing.item_chosen.connect(lambda kind, key: seen.append((kind, key)))
     landing.navigator.field.setText("TGME49_223920")
-    landing.navigator.open_current()
+    landing.navigator.refresh()
+    card = next(c for c in landing.navigator._cards if c.suggestion.kind == "gene")
+    landing.navigator._open(landing.navigator._cards.index(card))
     assert seen == [("gene", "TGME49_223920")]
 
 
@@ -447,3 +496,64 @@ def test_the_theme_can_be_changed_live(landing):
     assert landing.property("ambient") == "off"
     assert landing.home.property("ambient") == "off"
     assert not landing.stack.testAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
+
+
+# ------------------------------------ instruction 98, WP8: clicking the gene card
+def test_clicking_the_gene_card_once_reveals_the_modules_downstream_of_one_gene(page, qtbot):
+    """Einar, 2026-11-12: "when i click the gene card once i should see the moduals
+    downstream of one gene (like the network in spacr). so all the modules that take 1
+    gene and do something should come downstream of the gene card module"."""
+    from parascape import modules as MOD
+    from parascape import ports as P
+    seen = []
+    page.chosen.connect(lambda kind, key: seen.append((kind, key)))
+    type_and_wait(page, qtbot, "TGME49_223920")
+    card = next(c for c in page._cards
+                if c.suggestion.kind == "module" and c.suggestion.key == "gene")
+    card.click()
+    assert seen == [] and page._path == ["gene"], "the first click opens the network"
+    assert set(page._columns[1]) == set(P.consumers_of(P.GENE)) - {"gene"}
+    assert page._columns[1] == list(MOD.downstream_of_subject(P.GENE, without="gene"))
+
+
+def test_every_module_revealed_carries_the_gene_and_says_why_it_cannot(page, qtbot):
+    """Instruction 98: offered pre-filled, and an offer that cannot work shown greyed
+    WITH THE REASON."""
+    type_and_wait(page, qtbot, "TGME49_223920")
+    next(c for c in page._cards
+         if c.suggestion.kind == "module" and c.suggestion.key == "gene").click()
+    assert page.subject == ("gene", "TGME49_223920")
+    greyed = 0
+    for (column, key), card in page._flow_cards.items():
+        if column != 1:
+            continue
+        s = card.suggestion
+        assert s.subject == ("gene", "TGME49_223920"), key
+        if s.blocked:
+            greyed += 1
+            assert s.blocked.lower() in s.detail.lower(), key
+            assert "Not ready" in s.detail, key
+        else:
+            assert "TGME49_223920" in s.detail, key
+    assert greyed, "Structure has no view built, so one offer must be greyed with its reason"
+
+
+def test_a_greyed_offer_refuses_to_open_and_says_what_is_missing(page, qtbot):
+    seen = []
+    page.chosen.connect(lambda kind, key: seen.append((kind, key)))
+    type_and_wait(page, qtbot, "TGME49_223920")
+    next(c for c in page._cards
+         if c.suggestion.kind == "module" and c.suggestion.key == "gene").click()
+    blocked = next(k for (c, k) in page._flow_cards if c == 1
+                   and page._flow_cards[(c, k)].suggestion.blocked)
+    page._flow_cards[(1, blocked)].click()         # make it the step shown
+    page._flow_cards[(1, blocked)].click()         # and try to open it
+    assert seen == [], "a greyed offer must not open"
+    assert "not available" in page.flow_hint.text() or "cannot" in page.flow_hint.text()
+
+
+def test_the_subject_is_forgotten_when_the_navigator_is_reset(page, qtbot):
+    type_and_wait(page, qtbot, "TGME49_223920")
+    assert page.subject[0] == "gene"
+    page.reset()
+    assert page.subject == ("", "")

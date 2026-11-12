@@ -53,6 +53,14 @@ GROW_STAGGER_MS = 35
 DETAILS_H = 150
 MAX_CARDS = 24
 FLOW_SIDE = 170               # a next-step node in the module network; the root keeps CARD_SIDE
+#: How many next steps the first column after the clicked module shows. Six, not four,
+#: because Einar asked for ALL the modules that take one gene to come downstream of the
+#: gene card, and there are six of them: "so all the modules that take 1 gene and do
+#: something should come downstream of the gene card module."
+FLOW_FIRST = 6
+#: How many each column after that shows: fewer, because by then it is a path being
+#: traced rather than the question that was asked.
+FLOW_MORE = 4
 FLOW_GAP_X = 110              # room between columns, for the edges
 FLOW_GAP_Y = 22
 AI_ROOM = 60                  # right margin of the field: the AI symbol and a gap
@@ -76,6 +84,14 @@ class Suggestion:
     subtitle: str = ""
     detail: str = ""
     items: tuple = ()             # a ``group`` card's members
+    #: Why this offer cannot be taken with what is in hand, or "" when it can.
+    #: Instruction 98: "an offer that cannot work shown greyed WITH THE REASON".
+    #: Separate from `modules.unavailable_reason`, which is about the window rather
+    #: than about what the user is holding; a card is greyed for either.
+    blocked: str = ""
+    #: What is being carried into the module: ``(subject kind, value)``, so an offer
+    #: opens pre-filled rather than empty.
+    subject: tuple = ()
 
 
 #: The word shown on a card for each kind, so a gene and a dataset with similar
@@ -149,6 +165,48 @@ def all_matches(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> li
     return unique[:limit]
 
 
+def gene_in(found) -> str:
+    """The gene a list of results is about, or ``""`` when it is about no gene.
+
+    :param found: suggestions from :func:`all_matches`.
+    :returns: the identifier of the best gene among them.
+    """
+    for s in found:
+        if s.kind == "gene":
+            return s.key
+    return ""
+
+
+def module_offers_for_genes(found) -> list:
+    """The modules to offer when what was typed found genes, the gene card first.
+
+    Each carries the gene as its subject, so opening one fills it in rather than
+    leaving it to be typed a second time. Ready ones first and a blocked one last is
+    :func:`parascape.modules.downstream_of_subject`, which is spaCR's own order in its
+    chaining strip.
+
+    :param found: suggestions from :func:`all_matches`.
+    :returns: module suggestions, at most :data:`MAX_MODULES`, or [] when no gene matched.
+    """
+    gene = gene_in(found)
+    if not gene:
+        return []
+    from . import ports as PORTS
+    keys = ["gene"] + [k for k in MOD.downstream_of_subject(PORTS.GENE, without="gene")]
+    out = []
+    for key in keys[:MAX_MODULES]:
+        m = MOD.get(key)
+        reason = MOD.unavailable_reason(m)
+        detail = (f"<h3>{escape(m.name)}</h3><p>{escape(m.note)}.</p>"
+                  f"<p>Opens with <b>{escape(gene)}</b> already in it.</p>"
+                  f"<p><i>{escape(m.band)}</i></p>")
+        if reason:
+            detail += f"<p><b>Not available:</b> {escape(reason)}.</p>"
+        out.append(Suggestion("module", key, m.name, m.note, detail,
+                              blocked=reason, subject=(PORTS.GENE, gene)))
+    return out
+
+
 def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> list:
     """The cards the field shows for `text`: few, and each a different thing.
 
@@ -165,6 +223,16 @@ def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> li
         return []
     modules = [s for s in found if s.kind == "module"]
     named = [s for s in modules if (text or "").strip().lower() in s.title.lower()]
+    if not named:
+        # Einar, 2026-11-12: "if i type a gene into the navigator i get a few moduals that
+        # pop up, one should be the gene card". Typing a gene used to offer gene CARDS --
+        # nodes, which opened the pre-navigator evidence dock -- and no module at all. The
+        # modules that read one gene are offered first now, the gene card first of them.
+        #
+        # Only when the text does not NAME a module: typing "map" means the Map module, and
+        # burying it under gene modules because some gene product mentions a map would be a
+        # worse answer than the one this replaces.
+        modules = module_offers_for_genes(found) + modules
     modules = (named or modules)[:MAX_MODULES]
     module_names = {s.title.lower() for s in modules}
     rest = [s for s in found if s.kind != "module"
@@ -313,8 +381,9 @@ class SuggestionCard(QtWidgets.QPushButton):
         super().__init__(parent)
         self.suggestion = suggestion
         self.setObjectName("EasySuggestionCard")
-        unavailable = (suggestion.kind == "module"
-                       and bool(MOD.unavailable_reason(MOD.get(suggestion.key))))
+        unavailable = bool(suggestion.blocked) or (
+            suggestion.kind == "module"
+            and bool(MOD.unavailable_reason(MOD.get(suggestion.key))))
         self.setProperty("stage", "" if unavailable else "stable")
         self.setProperty("current", "false")
         self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
@@ -347,6 +416,26 @@ class SuggestionCard(QtWidgets.QPushButton):
         col.addWidget(name)
         col.addStretch(1)
         self.name_label = name
+        self.icon_label = icon
+
+    def fit(self, side: int) -> None:
+        """Shrink the symbol so the name has room on a card smaller than a spaCR square.
+
+        The module network squeezes a column of six into the height of one, and at that
+        size a 96 px symbol and an 18 px name do not both fit: the name was drawn across
+        the middle of the symbol, so "Information" read as "formatio". The symbol gives way,
+        because the name is the part that tells two cards apart.
+
+        :param side: the edge of the card, in device-independent pixels.
+        """
+        px = max(24, min(ICON_PX, side - 72))
+        if self.icon_label.height() == px:
+            return
+        ratio = self.devicePixelRatioF() or 1.0
+        self.icon_label.setPixmap(iconset.pixmap(icon_path(self.suggestion), px, "dark", ratio))
+        self.icon_label.setFixedHeight(px)
+        self.name_label.setStyleSheet(
+            f"font-size: {max(11, min(18, side // 9))}px; font-weight: 300;")
 
     def set_current(self, on: bool) -> None:
         """Mark this card as the one Return would open. A property, so the stylesheet
@@ -602,7 +691,15 @@ class NavigatorPage(QtWidgets.QWidget):
             self.feedback.setText(self.PROMPT)
             return
         self._searched = text
+        self.set_subject()
         found = suggestions(text, genes=self._genes, index=self._index)
+        # What is in hand, for everything opened from here on: the gene the search is
+        # about. A module card carries it on itself, but a card the user reaches another
+        # way -- Return, the arrow keys, a group opened and closed -- must find it too.
+        for s in found:
+            if s.subject:
+                self.set_subject(*s.subject)
+                break
         if not found:
             if self.ai_button.isChecked():
                 self.feedback.setText(f"Nothing here matches “{text}”. Asking the assistant…")
@@ -650,7 +747,7 @@ class NavigatorPage(QtWidgets.QWidget):
         if s.kind == "group":
             self.expand(s)
         elif s.kind == "module":
-            self.explore(s.key)
+            self.explore(s.key, s.subject)
         else:
             self._open(i)
 
@@ -680,6 +777,7 @@ class NavigatorPage(QtWidgets.QWidget):
         self._cancel_ai()
         self._clear()
         self._top, self._expanded = [], None
+        self.set_subject()
         self.back.hide()
         self.field.clear()
         self.feedback.setText(self.PROMPT)
@@ -890,11 +988,34 @@ class NavigatorPage(QtWidgets.QWidget):
         super().closeEvent(event)
 
     # ------------------------------------------------------------ module network
-    def explore(self, key: str) -> None:
+    @property
+    def subject(self) -> tuple:
+        """What is in hand, as ``(subject kind, value)``; ``("", "")`` when nothing is.
+
+        Set by a search that found a gene, and carried into whatever module is opened, so
+        a module reached through the Navigator opens already reading it. Einar's journey --
+        type a gene, click the card it offers -- is this value travelling.
+        """
+        return getattr(self, "_subject", ("", ""))
+
+    def set_subject(self, kind: str = "", value: str = "") -> None:
+        """Say what is in hand. Empty arguments mean nothing is.
+
+        :param kind: a subject from :mod:`parascape.ports`, such as ``"gene"``.
+        :param value: what is in it.
+        """
+        self._subject = (str(kind or ""), str(value or ""))
+
+    def explore(self, key: str, subject: tuple = ()) -> None:
         """First click on a module: show it with the modules it leads to.
 
         spaCR: "Click once to open the module network. Click twice to open the module."
+
+        :param key: the module clicked.
+        :param subject: ``(kind, value)`` to carry into it, from the card that was clicked.
         """
+        if subject:
+            self.set_subject(*subject)
         self._path = [key]
         self._build_flow()
 
@@ -907,18 +1028,50 @@ class NavigatorPage(QtWidgets.QWidget):
         self._build_flow()
 
     def _open_module(self, key: str) -> None:
+        """Open a module from the network, unless something stops it -- and then say what.
+
+        Two different things can stop it and they are reported apart: the window has no
+        such view (the catalogue knows), or the module cannot work on what is in hand (the
+        declared subjects know, through `ports.check_ready`).
+        """
         reason = MOD.unavailable_reason(MOD.get(key))
         if reason:
             self.flow_hint.setText(f"{MOD.get(key).name} is not available yet: {reason}.")
             return
+        blocked, fix = self._readiness(key)
+        if blocked:
+            self.flow_hint.setText(f"{MOD.get(key).name} cannot work on this: {blocked}. {fix}")
+            return
         self.chosen.emit("module", key)
 
+    def _readiness(self, key: str) -> tuple:
+        """``(why it cannot work on what is in hand, what to do)``; ``("", "")`` when it can.
+
+        :param key: the module key being offered.
+        """
+        kind, value = self.subject
+        if not kind:
+            return "", ""
+        from . import next_steps as NS
+        for offer in NS.offers(kind, value, without=""):
+            if offer.module == key:
+                return offer.blocked, offer.fix
+        return "", ""
+
     def _build_flow(self) -> None:
-        """Make the cards for the chain clicked so far and what follows its last step."""
+        """Make the cards for the chain clicked so far and what follows its last step.
+
+        The first column after the clicked module shows everything that follows it, up to
+        :data:`FLOW_FIRST`; later columns show fewer. Each card is checked against what is
+        in hand and a card that cannot work is drawn greyed, carrying the reason and the fix
+        in the panel at the foot -- instruction 98, and spaCR's own rule for its chaining
+        strip: an offer either works, or is shown greyed with the reason it cannot.
+        """
         old = dict(self._flow_cards)
         self._columns = [[self._path[0]]]
         for step in self._path:
-            following = list(MOD.downstream(step))[:4]
+            limit = FLOW_FIRST if len(self._columns) == 1 else FLOW_MORE
+            following = list(MOD.downstream(step))[:limit]
             if not following:
                 break
             self._columns.append(following)
@@ -926,6 +1079,7 @@ class NavigatorPage(QtWidgets.QWidget):
                 break
         self._flow_cards = {}
         fresh = []
+        kind, value = self.subject
         for c, column in enumerate(self._columns):
             for key in column:
                 ident = (c, key)
@@ -934,11 +1088,20 @@ class NavigatorPage(QtWidgets.QWidget):
                     m = MOD.get(key)
                     detail = (f"<h3>{escape(m.name)}</h3><p>{escape(m.note)}.</p>"
                               f"<p><i>{escape(m.band)}</i></p>")
+                    blocked, fix = self._readiness(key)
+                    blocked = blocked or MOD.unavailable_reason(m)
+                    if blocked:
+                        detail += (f"<p><b>Not ready:</b> {escape(blocked)}.</p>"
+                                   + (f"<p>{escape(fix)}</p>" if fix else ""))
+                    elif value:
+                        detail += (f"<p>Opens with <b>{escape(value)}</b> already in it.</p>")
                     nxt = MOD.downstream(key)
                     if nxt:
                         detail += ("<p>Leads to: " + ", ".join(escape(MOD.get(k).name)
                                                                for k in nxt) + ".</p>")
-                    card = SuggestionCard(Suggestion("module", key, m.name, m.note, detail), self)
+                    card = SuggestionCard(
+                        Suggestion("module", key, m.name, m.note, detail, blocked=blocked,
+                                   subject=(kind, value) if kind else ()), self)
                     card.clicked.connect(lambda _=False, col=c, k=key: self._flow_clicked(col, k))
                     card.hovered.connect(self.explain)
                     fresh.append(card)
@@ -1009,6 +1172,7 @@ class NavigatorPage(QtWidgets.QWidget):
                     continue
                 card._final = QtCore.QRect(xs[c] - overflow, y0 + i * (side + FLOW_GAP_Y),
                                            side, side)
+                card.fit(side)
                 card.setVisible(card._final.right() > 0)
                 if animate and card in fresh and _motion_allowed():
                     self._grow(card, i)
@@ -1085,10 +1249,13 @@ class NavigatorPage(QtWidgets.QWidget):
         return self._cards[self._current].suggestion if 0 <= self._current < len(self._cards) else None
 
     def _open(self, i: int) -> None:
+        """Open the card at `i`, refusing with a reason when it cannot be opened."""
         s = self._cards[i].suggestion
         if s.kind == "group":
             self.expand(s)
             return
+        if s.subject:
+            self.set_subject(*s.subject)
         if s.kind == "module" and MOD.unavailable_reason(MOD.get(s.key)):
             self._set_current(i)
             self.feedback.setText(f"{s.title} is not available yet: "

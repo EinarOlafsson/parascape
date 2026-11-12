@@ -257,6 +257,141 @@ def test_the_gene_module_opens_and_reads_a_typed_gene(window, qtbot):
     assert not shell.sections["Advanced"].is_expanded()
 
 
+# -------------------------------------------- the gene card to the mould (98, WP8)
+def test_the_gene_card_is_laid_out_in_the_order_the_mould_asks_for(window):
+    """Masthead, then the subject, the lens, the choice that changes the meaning,
+    Advanced folded and Save folded on the left; the thing itself first on the right,
+    then the synthesis, then what can be inferred, then the next step."""
+    shell = window.gene_module
+    sections = list(shell.sections)
+    for part in ("Your gene", "Where it is, read by", "What to read", "Advanced", "Save",
+                 "Where it is in the parasite", "What is known",
+                 "What you can do with this gene next", "Actions"):
+        assert part in sections, part
+    assert sections.index("Your gene") < sections.index("Where it is, read by")
+    assert sections.index("Where it is, read by") < sections.index("What to read")
+    assert sections.index("What to read") < sections.index("Advanced") < sections.index("Save")
+    assert sections.index("Where it is in the parasite") < sections.index("What is known")
+    assert sections.index("What is known") \
+        < sections.index("What is not known, and what can be inferred")
+    assert sections.index("What is not known, and what can be inferred") \
+        < sections.index("What you can do with this gene next")
+    assert sections.index("What you can do with this gene next") < sections.index("Actions")
+    assert not shell.sections["Advanced"].is_expanded()
+    assert not shell.sections["Save"].is_expanded()
+    assert shell.sections["Console and AI chat"].shut, "the console must start folded"
+    assert shell.title_label.text() == "Gene card"
+
+
+def test_the_parasite_schematic_survived_the_restructure(window):
+    """Einar named the parasite schematic as a thing the overhaul must keep. It is the
+    thing the card is about, so it is the first section of the runtime column, and it
+    shows the real reading rather than a sample."""
+    from parascape.celldiagram import CellDiagram
+    module = window.gene_module.module
+    assert isinstance(module.parasite, CellDiagram), "no parasite drawing on the gene card"
+    placed = window.nodes[window.nodes["compartment"].astype(str) == "dense granules"]
+    gene = str(placed.gene_id.iloc[0])
+    module.show(gene)
+    place = module.placement()
+    assert place.compartment == "dense granules"
+    assert "dense granules" in module.parasite_note.text()
+    assert module.parasite.selected == "dense granules"
+    # The window's own palette, never a second one.
+    assert module.parasite.color_of == window.color_of
+    assert module.parasite.fills(), "the organelle is not filled in"
+
+
+def test_a_gene_with_no_measured_compartment_says_unknown_rather_than_nothing(window):
+    unplaced = window.nodes[window.nodes["compartment"].astype(str) == "unassigned"]
+    module = window.gene_module.module
+    module.show(str(unplaced.gene_id.iloc[0]))
+    assert "unknown" in module.parasite_note.text()
+    assert not module.parasite.fills(), "an unknown place must colour nothing"
+
+
+def test_the_parasite_is_read_by_the_same_label_the_window_is_coloured_by(window):
+    """One source of truth: the card and the map must not show two different
+    compartments for one gene."""
+    module = window.gene_module.module
+    columns = module._placement_columns()
+    assert "compartment" in columns
+    other = next(c for c in columns if c != "compartment")
+    window.category_box.setCurrentText(other)
+    assert module.place_box.currentText() == other
+    module.place_box.setCurrentText("compartment")
+    assert window.category_box.currentText() == "compartment"
+
+
+def test_the_trust_line_reports_against_chance_with_n(window):
+    module = window.gene_module.module
+    module.show(str(window.nodes.gene_id.iloc[0]))
+    trust = module.parasite_trust.text()
+    assert "measured for" in trust and "commonest answer" in trust
+    assert "by chance" in trust or "no evidence at all" in trust
+    assert f"{module.placement().measured:,}" in trust
+
+
+def test_the_card_offers_every_module_that_reads_a_gene_pre_filled(window):
+    """Einar: "so all the modules that take 1 gene and do something should come
+    downstream of the gene card module"."""
+    from parascape import ports as P
+    module = window.gene_module.module
+    gene = str(window.nodes.gene_id.iloc[0])
+    module.show(gene)
+    offered = module.next_steps.offers
+    assert {o.module for o in offered} == set(P.consumers_of(P.GENE)) - {"gene"}
+    assert all(o.value == gene for o in offered)
+    blocked = [o for o in offered if not o.ok]
+    assert blocked and all(o.blocked and o.fix for o in blocked)
+    for offer in offered:
+        assert module.next_steps.buttons[offer.module].isEnabled() is offer.ok
+
+
+def test_clearing_the_card_empties_it_and_the_offers(window):
+    """Through the button, not the method: `clicked` carries a checked flag, and a slot
+    taking no arguments fails only when somebody presses it."""
+    module = window.gene_module.module
+    module.show(str(window.nodes.gene_id.iloc[0]))
+    clear = next(b for b in module.shell.settings.findChildren(QtWidgets.QPushButton)
+                 if b.text() == "Clear")
+    clear.click()
+    assert module.gene == "" and module.reading is None
+    assert module.field.text() == "" and module.matches.count() == 0
+    assert "Type a gene" in module.parasite_note.text()
+    assert all(o.value == "" for o in module.next_steps.offers)
+
+
+def test_a_next_step_opens_the_module_with_the_gene_in_it(window):
+    """The pre-filling half of an offer: a next step that opened an empty module would
+    leave the gene to be typed a second time."""
+    module = window.gene_module.module
+    gene = str(window.nodes.gene_id.iloc[1])
+    module.show(gene)
+    module.next_steps.buttons["network"].click()
+    assert window.landing.page == "Module"
+    assert window.search.text() == gene, "the window was not moved onto the gene"
+
+
+def test_typing_a_gene_in_the_navigator_lands_on_the_gene_card(window):
+    """Einar: "now when i put in a gene and pressed the modual that came up for the gene,
+    i was brought to the old version of parascape". It opened the evidence dock."""
+    from parascape.landing_install import open_item
+    gene = str(window.nodes.gene_id.iloc[2])
+    open_item(window, "gene", gene)
+    assert window.landing.page == "Module"
+    assert window.landing.stack.currentWidget() is window.gene_module
+    assert window.gene_module.module.gene == gene
+
+
+def test_the_gene_route_never_reaches_the_pre_navigator_workflow_window(window):
+    """WP10 retires `workflows.py`; WP8 only has to stop the gene route reaching it."""
+    from parascape.landing_install import open_item
+    open_item(window, "gene", str(window.nodes.gene_id.iloc[3]))
+    assert not hasattr(window, "workflows_dialog"), \
+        "opening a gene built the pre-navigator Workflows window"
+
+
 def test_the_gene_module_lists_links_to_other_organisms_in_their_own_spaces(window):
     """Instruction 64.24: a link's other end is resolved in its own space, never guessed."""
     from parascape import bridges

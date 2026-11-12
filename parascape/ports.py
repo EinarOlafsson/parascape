@@ -9,7 +9,12 @@ fails. ParaScape had nothing equivalent. What it had instead was
 ``modules.DOWNSTREAM`` -- twenty-two hand-written lists saying which module
 follows which -- which is the answer without the reason, and which nobody can
 check. A module added to ``modules.MODULES`` and forgotten in ``DOWNSTREAM``
-simply leads nowhere, silently.
+simply led nowhere, silently.
+
+That list is **gone** (instruction 98, WP8, 2026-11-12).
+:func:`parascape.modules.downstream` computes the same answer from the
+declarations below, and ``tests/test_module_catalogue.py`` fails if anything
+writes one down again.
 
 THE TRANSLATION FROM spaCR
 --------------------------

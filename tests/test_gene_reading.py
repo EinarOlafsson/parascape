@@ -156,3 +156,85 @@ def test_a_gene_in_a_frozen_claim_set_shows_its_frozen_prediction():
     gene = pd.read_csv(path, sep="\t")["gene_id"].iloc[0]
     line = GR.prospective_lines(gene)[0]
     assert "Frozen prediction" in line and "rank 1 of" in line and "SHA-256" in line
+
+
+# --------------------------------------- where in the parasite the gene is (98, WP8)
+#
+# The gene card draws the parasite with the organelle the gene is found in filled in --
+# the schematic Einar named by name. These are the pure functions behind that drawing,
+# tested on a made-up table so the chance baseline can be checked by counting.
+
+DRAWABLE = ("dense granules", "rhoptries 1", "nucleus - chromatin", "apicoplast")
+
+
+def placement_table():
+    """A gene table with one placement column, one that is not, and one unplaced gene."""
+    return pd.DataFrame({
+        "gene_id": ["A", "B", "C", "D", "E"],
+        "compartment": ["dense granules", "nucleus - chromatin", "nucleus - chromatin",
+                        "unassigned", "rhoptries 1"],
+        "compartment_source": ["hyperLOPIT", "hyperLOPIT", "orthoLOPIT", "unknown",
+                               "hyperLOPIT"],
+        "fitness": [1.0, 2.0, 3.0, 4.0, 5.0],
+        "product": ["a", "b", "c", "d", "e"],
+    })
+
+
+def test_a_placement_column_is_found_by_what_is_in_it_not_by_its_name():
+    """`compartment_best` looks like a placement and holds coarser groupings the artwork
+    has no shape for; picking columns by name would have drawn nothing."""
+    nodes = placement_table()
+    nodes["compartment_best"] = ["nucleus", "nucleus", "nucleus", "unassigned", "apical"]
+    found = GR.placement_columns(nodes, DRAWABLE)
+    assert found == ["compartment"]
+
+
+def test_a_column_the_drawing_mostly_cannot_colour_is_not_a_placement():
+    """"Does anything in it match" kept `compartment_best`, which has a cytosol and an
+    apicoplast among four fifths of groupings the artwork has no shape for -- so choosing
+    it drew an empty parasite for most genes."""
+    nodes = placement_table()
+    nodes["mostly_coarse"] = ["apicoplast", "nucleus", "nucleus", "apical", "pellicle"]
+    assert "mostly_coarse" not in GR.placement_columns(nodes, DRAWABLE)
+
+
+def test_a_gene_with_no_measured_compartment_is_unknown_and_never_implied_no():
+    place = GR.placement(placement_table(), "D", "compartment", "compartment_source")
+    assert not place.known and place.compartment == ""
+    assert "unknown" in GR.placement_sentence(place)
+    assert "not the same as it being nowhere" in GR.placement_sentence(place)
+
+
+def test_a_placement_names_the_organelle_and_what_measured_it():
+    place = GR.placement(placement_table(), "A", "compartment", "compartment_source")
+    assert place.known and place.compartment == "dense granules"
+    assert place.source == "hyperLOPIT"
+    assert "dense granules" in GR.placement_sentence(place)
+    assert "hyperLOPIT" in GR.placement_sentence(place)
+
+
+def test_the_chance_baseline_is_the_commonest_answer_with_its_n():
+    """Instruction 98: every suggestion reported against chance, with n, as whole numbers."""
+    place = GR.placement(placement_table(), "A", "compartment", "compartment_source")
+    assert (place.measured, place.total) == (4, 5)          # D is unassigned
+    assert place.commonest == "nucleus - chromatin" and place.commonest_n == 2
+    assert place.coverage_percent == 80 and place.chance_percent == 50
+    trust = GR.placement_trust(place)
+    assert "4</b> of the 5" in trust and "50 %" in trust and "80 %" in trust
+    assert "." not in trust.split("%")[0][-4:], "percentages are whole numbers"
+
+
+def test_a_table_with_no_placement_at_all_reads_as_unknown_rather_than_raising():
+    nodes = placement_table().drop(columns=["compartment"])
+    assert GR.placement_columns(nodes, DRAWABLE) == []
+    place = GR.placement(nodes, "A", "compartment")
+    assert not place.known and GR.placement_trust(place) == ""
+
+
+def test_the_window_colouring_wins_when_it_is_a_placement():
+    """The card and the map must never show two different compartments for one gene."""
+    columns = ["compartment", "lopit_map"]
+    assert GR.preferred_placement_column(columns, "lopit_map") == "lopit_map"
+    assert GR.preferred_placement_column(columns, "fitness") == "compartment"
+    assert GR.preferred_placement_column(["lopit_map"], "") == "lopit_map"
+    assert GR.preferred_placement_column([], "anything") == ""

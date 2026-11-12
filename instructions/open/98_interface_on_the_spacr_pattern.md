@@ -294,7 +294,8 @@ exactly what they read before.
 | WP3 one catalogue | **done** — `parascape/modules.py` extended; the tool specs and shell routes computed from it; 25 tests |
 | WP5 symbols, no cross | **done** — `parascape/iconset.py`, `parascape/ai_button.py`, `parascape/no_cross.py`; 16 tests |
 | WP6 recipes | **done** — `parascape/module_recipes.py`, `parascape/recipes_panel.py`; 38 tests |
-| WP4, WP7, WP8, WP9, WP10, WP11 | not started; they are the ones Einar will actually see |
+| WP8 the gene card | **done 2026-11-12** — see below |
+| WP4, WP7, WP9, WP10, WP11 | not started; they are the ones Einar will actually see |
 
 **Two tables that can now disagree, which is the exact failure spaCR documents as bug #16i.** Both must be
 closed before WP7, because the tree is computed from them:
@@ -338,3 +339,79 @@ own rule is that no declared section may be empty.
 the same answer from declared subjects. WP8 deletes the hand-written one and reads the computed one -- that is
 what makes clicking the gene card reveal the right modules rather than a list someone maintained by hand. The
 same applies to `iconset.MODULE_ICON` against the icon field of a catalogue row: one must feed the other.
+
+## WP8 as built, 2026-11-12
+
+Einar's words, which were the acceptance criteria: *"if i type a gene into the navigator i get a few moduals
+that pop up, one should be the gene card (overhauled to mach the spacr module structure but with the same
+information as before including the parasite schematic), when i click the gene card once i should see the
+moduals downstream of one gene (like the network in spacr). so all the modules that take 1 gene and do
+something should come downstream of the gene card module."* And: *"now when i put in a gene and pressed the
+modual that came up for the gene, i was brought to the old version of parascape. this also needs to be
+overhauled."*
+
+**Both tables that could disagree are closed.**
+
+* `modules.DOWNSTREAM` is **deleted**. `modules.downstream(key)` is computed from the declared subjects: for
+  each subject a module hands on, in the order it declares them, the modules that read that subject, ready
+  ones first and blocked ones last -- which is the order spaCR sorts its own next steps in
+  (`chaining.next_steps`: `(not ok, module)`). Optional readers count as well as required ones, which is the
+  difference from `ports.next_modules`: Network reads a gene it can do without, and leaving Network out of
+  what follows a gene would have been wrong in the one place Einar was looking.
+  `modules.downstream_of_subject(kind)` answers the narrower question, and
+  `downstream_of_subject("gene", without="gene")` is the six modules Einar asked for.
+* `iconset.MODULE_ICON` is **built from the catalogue** (`iconset._load_module_icons`). The icon field of a
+  row now holds the NAME OF THE spaCR ARTWORK (`profiler`, `umap`) rather than a second word for the module,
+  which is the fact it was pretending to hold while the real one lived in the icon set.
+
+**No port declaration needed correcting.** `consumers_of("gene")` returns cell, expression, gene, information,
+network, partners and structure, and opening each of the seven confirmed it: every one reads a gene, and no
+module that reads a gene is missing from it. Map was checked and deliberately left out -- it declares a gene
+LIST and a trait, and the single gene the Gene card sends it is sent as a selection, not as a port.
+
+**The gene card** (`parascape/gene_module.py`, masthead "Gene card"). Nothing was dropped; three things were
+added and the order was put right:
+
+* Left column, in the order the mould asks for: **Your gene** (field, Choose a list, Use the gene list,
+  **Clear** -- new, the mould asks every module for a way back to nothing), **Where it is, read by** (the lens
+  -- new), **What to read** (the choice that changes the meaning), **Advanced** folded, **Save** folded (the
+  two bundle buttons moved here out of the action row).
+* Right column: **Where it is in the parasite** first, large, with focus -- **the parasite schematic, which
+  survived**; then What is known, What is unusual, The evidence, Links to other organisms (folded), What is
+  not known and what can be inferred, What each method said held out (folded), **What you can do with this
+  gene next** (new), Actions, Console and AI chat (folded).
+* The schematic is a second `celldiagram.CellDiagram`, not the one from the `find` dock moved: the rule of the
+  mould, "move, do not copy", is about CONTROLS whose methods must keep reading them, and the `find` dock is
+  lent whole to the Cell module, which could not then borrow a widget the gene card had taken. It is fed from
+  `window.color_of` -- the one palette the window itself draws with, never a second one -- and clicking an organelle ticks that
+  compartment in the find panel, so it works in both directions as it does beside the map.
+* Where the gene sits is a pure reading (`gene_reading.placement_columns`, `placed_at`, `placement`,
+  `placement_sentence`, `placement_trust`, `preferred_placement_column`), tested on a made-up table. A column
+  counts as a placement when the drawing can colour MORE THAN HALF of what it holds: "does anything in it
+  match" admitted `compartment_best`, four fifths of which are coarser groupings the artwork has no shape for.
+* Trust against chance, with n, under the drawing: "Where a gene is, is measured for 3,827 of the 8,140 genes
+  in this table (47 %). The commonest answer is nucleus - chromatin, which covers 20 % of the measured genes
+  -- so a guess with no evidence at all would be right about 20 % of the time." A gene with no measured
+  compartment says **unknown**, in words, and the parasite is drawn grey.
+* One palette: when the window is coloured by something the drawing has no shape for, the card moves the
+  window onto the measurement it is reading and says so, rather than mixing in a colour of its own.
+
+**What clicking it reveals** (`parascape/next_steps.py`, ported in shape from `spacr/qt/chaining.py`): the six
+modules that read one gene -- Partners, Expression, Network, Cell, Information, and Structure greyed because
+no structure view is built -- each pre-filled with the gene, each checked with `ports.check_ready`, and the
+blocked one kept in the row with its reason and its fix in the tooltip rather than dropped. The same offers
+appear twice, on purpose and from one function: as the row at the foot of the card, and as the first column of
+the navigator module network when the gene card is clicked once.
+
+**The route is fixed.** `landing_install.open_item(window, "gene", ...)` opened the gene as a NODE, which took
+the landing away and raised the evidence dock -- the pre-navigator window Einar landed in. It now opens the
+gene card with the gene in it. Typing a gene in the navigator offers the gene card first and the other
+single-gene modules after it, each carrying the gene; `open_module` gained `subject` and `value`, and
+`carry_subject` selects the gene in the window so every panel behind the card is reading the same gene.
+`workflows.py` is untouched and still reachable from its menu -- retiring it is WP10 -- but nothing on the
+gene route reaches it, and `test_module_shell.py` holds that.
+
+**Tests**: `tests/test_next_steps.py` (9, new), the placement readings in `tests/test_gene_reading.py` (7,
+new), the gene card in `tests/test_module_shell.py` (10, new), the reveal in `tests/test_navigator.py` (8,
+new), and the two closed tables in `tests/test_module_catalogue.py` (5, new). Verified by rendering the real
+`app.Window` offscreen at 1920x1080 with `XDG_CONFIG_HOME` in a scratch directory and looking at it.

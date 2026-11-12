@@ -41,18 +41,36 @@ FALLBACK = "settings"
 #: Setting this to ``1`` makes a missing symbol raise instead of falling back.
 ENV_STRICT = "PARASCAPE_STRICT_ICONS"
 
+#: Symbols for rows that are drawn like a module but are not one, so have no catalogue row.
+#: Home is the only one: the row that takes you back to the tiles.
+EXTRA_ICON = {"home": "home"}
+
 #: The spaCR artwork used for each ParaScape module, by module key. One symbol per module, and the
 #: symbol is the one spaCR uses for the nearest thing it already has.
-MODULE_ICON = {
-    "home": "home",
-    "gene": "profiler", "structure": "layer_viewer", "partners": "graph_builder",
-    "expression": "pca", "map": "umap", "network": "graph_builder", "cell": "image_scatter",
-    "gallery": "trellis", "questions": "experiment_design", "infer": "ml_analyze",
-    "strategies": "model_zoo", "scorecard": "model_compare", "runs": "run_history",
-    "fill": "regression", "drop": "download", "screen": "hit_list", "list": "tabulate",
-    "export": "methods_export", "datasets": "data_manager", "information": "feature_dict",
-    "jobs": "queue", "console": "report",
-}
+#:
+#: BUILT FROM THE CATALOGUE, not written here. Instruction 98 names this and
+#: ``modules.Module.icon`` as two tables holding one fact -- the bug spaCR records as #16i, where
+#: Home grouped by one table and the tabs by another -- and says one must feed the other. The
+#: catalogue is the one that feeds: a module gets a symbol by having a row in
+#: :data:`parascape.modules.MODULES`, and a module added without one fails
+#: ``tests/test_module_catalogue.py`` rather than appearing as a blank square in front of Einar.
+MODULE_ICON = dict(EXTRA_ICON)
+
+
+def _load_module_icons() -> dict:
+    """Fill :data:`MODULE_ICON` from the module catalogue; returns it.
+
+    Imported late, inside a function, for the reason the module docstring gives: this file must be
+    readable without a display and without dragging the rest of ParaScape in behind it. The
+    catalogue is pure Python (it imports only :mod:`parascape.ports`), so the cost is small, but
+    doing it at call time also means a test that registers a module afterwards can refresh.
+    """
+    from . import modules as _modules
+    MODULE_ICON.update(EXTRA_ICON)
+    for module in _modules.MODULES:
+        if module.icon:
+            MODULE_ICON[module.key] = module.icon
+    return MODULE_ICON
 
 #: The spaCR artwork for a result that is not a module, by the kind of result.
 KIND_ICON = {
@@ -98,7 +116,7 @@ def module_icon_name(key: str) -> str:
 
     :param key: the module key, as in the module catalogue.
     """
-    name = MODULE_ICON.get(key)
+    name = _load_module_icons().get(key)
     return name if name else _missing(f"module {key!r} has no spaCR symbol in MODULE_ICON")
 
 
@@ -231,8 +249,9 @@ def problems(module_keys) -> list:
     :returns: an empty list when every module and every kind has a symbol file.
     """
     wrong = []
+    icons = _load_module_icons()
     for key in module_keys:
-        name = MODULE_ICON.get(key)
+        name = icons.get(key)
         if not name:
             wrong.append(f"module {key!r} has no spaCR symbol")
         elif not (ICON_DIR / f"{name}.png").is_file():

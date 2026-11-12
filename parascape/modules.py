@@ -74,7 +74,17 @@ class Module:
         tabs that did not exist. `tests/test_modules_in_window.py` keeps it checked.
     :param needs: what must be present for it to open, as free text used in the
         greyed-out reason. Empty means it only needs the app.
-    :param icon: icon name, resolved by the home screen against the icon set.
+    :param icon: the piece of spaCR artwork this module is drawn with, named as
+        spaCR names the file (``profiler``, ``umap``), without ``.png``.
+
+        THE NAME OF THE ARTWORK, not a word for the module. It used to be the
+        latter -- ``icon="gene"`` beside ``name="Gene"`` -- which said nothing
+        the key did not already say, while the fact it was pretending to hold
+        lived in a second table, ``iconset.MODULE_ICON``. Two tables holding one
+        fact is the bug spaCR records as #16i, and instruction 98 named this
+        pair as one of the two still open. :data:`parascape.iconset.MODULE_ICON`
+        is now built from this column, so a module gets its symbol by having a
+        row here and in no other way.
     :param instruction: what to DO first, in one line, shown under the name in
         the module shell. It lived in `dock_module.SPECS` for ten modules and
         nowhere for the rest; it belongs beside the name it goes under.
@@ -146,95 +156,95 @@ BANDS = (
 MODULES = (
     # ---------------------------------------------------------------- Look up
     Module("gene", "Gene", "everything recorded about one gene, with its sources",
-           "Look up", opens="evidence", icon="gene",
+           "Look up", opens="evidence", icon="profiler",
            instruction="Name a gene, or step through a list one gene at a time.",
            builder="shell:gene_module"),
     Module("structure", "Structure", "the fold, its confidence, and what is known of it",
            "Look up", needs=("a structure view; AF3 summaries are on the evidence of a gene for now",),
-           icon="structure",
+           icon="layer_viewer",
            instruction="Name a gene to see its fold and how far the fold is to be trusted."),
     Module("partners", "Partners", "what it binds, and how strongly that is evidenced",
-           "Look up", opens="evidence", icon="partners",
+           "Look up", opens="evidence", icon="graph_builder",
            instruction="Name a gene; the links drawn are the physical ones, with their evidence.",
            builder="shell:network_module"),
     Module("expression", "Expression", "where and when its RNA and protein are measured",
-           "Look up", opens="compare:Gene expression", icon="expression",
+           "Look up", opens="compare:Gene expression", icon="pca",
            instruction="Choose a gene; compare where and when it is made, across stages and strains.",
            builder="tool"),
 
     # ---------------------------------------------------------------- Explore
     Module("map", "Map", "the genome as a space you choose the axes of",
-           "Explore", opens="maps", icon="map",
+           "Explore", opens="maps", icon="umap",
            instruction="Put your genes on the map and read what surrounds them.",
            builder="shell:map_module"),
     Module("network", "Network", "a gene and its neighbourhood, edges you define",
-           "Explore", opens="star map", icon="network",
+           "Explore", opens="star map", icon="graph_builder",
            instruction="Name a gene to bring its region into focus; tick the links that count.",
            builder="shell:network_module"),
     Module("cell", "Cell", "the parasite drawn, with the genes placed on it",
-           "Explore", opens="find", icon="cell",
+           "Explore", opens="find", icon="image_scatter",
            instruction="Choose a compartment or a gene to see where it sits in the cell.",
            builder="tool"),
     Module("gallery", "Gallery", "every map built so far, to compare rather than rebuild",
-           "Explore", opens="gallery", icon="gallery",
+           "Explore", opens="gallery", icon="trellis",
            instruction="Click a map to show it; compare maps rather than rebuild them.",
            builder="tool"),
 
     # -------------------------------------------------------------------- Ask
     Module("questions", "Questions", "the catalogue of what can be asked, and of what cannot",
-           "Ask", opens="analysis:8 · Questions", icon="questions",
+           "Ask", opens="analysis:8 · Questions", icon="experiment_design",
            instruction="Read what can be asked, and what the answer would have to clear.",
            builder="shell:infer_module"),
     Module("infer", "Infer", "answer a question, choosing the evidence it may use",
-           "Ask", opens="analysis", icon="infer",
+           "Ask", opens="analysis", icon="ml_analyze",
            instruction="Choose a question, then choose what evidence it may use.",
            builder="shell:infer_module"),
     Module("strategies", "Strategies", "39 ways to turn the data into a claim, each graded",
-           "Ask", opens="strategies", icon="strategies",
+           "Ask", opens="strategies", icon="model_zoo",
            instruction="Choose a strategy to see what it does, what it may use and how well it did.",
            builder="tool"),
     Module("scorecard", "Scorecard", "how well each answer did on genes it was not shown",
-           "Ask", opens="discoveries", icon="scorecard",
+           "Ask", opens="discoveries", icon="model_compare",
            instruction="Choose a label to see which methods recover it, and how often they are right.",
            builder="tool"),
     Module("runs", "Runs", "every inference saved, with the data and settings it used",
            "Ask", needs=("a panel that reads results/harness_holdout_log.jsonl",),
-           icon="runs",
+           icon="run_history",
            instruction="Pick a saved run to see what it asked, what it used and what came back."),
     Module("fill", "Fill", "write answers into the map, where they clear the bar",
-           "Ask", needs=("a question that has cleared its 90% bar",), icon="fill",
+           "Ask", needs=("a question that has cleared its 90% bar",), icon="regression",
            instruction="Check the track record, then write in only the answers that clear the bar."),
 
     # --------------------------------------------------------- Bring your own
     Module("drop", "Drop", "a CSV, TSV, XLS or XLSX of genes, with or without values",
-           "Bring your own", opens="gene list", icon="drop",
+           "Bring your own", opens="gene list", icon="download",
            instruction="Drop a CSV, TSV or Excel file of genes here, or choose one.",
            builder="tool"),
     Module("screen", "Screen", "join your screen to everything already recorded",
-           "Bring your own", opens="compare", icon="screen",
+           "Bring your own", opens="compare", icon="hit_list",
            instruction="Load your screen table and compare it with the recorded conditions.",
            builder="tool"),
     Module("list", "List", "what a set of genes has in common, and what it points to",
-           "Bring your own", needs=("a set-level enrichment view",), icon="list",
+           "Bring your own", needs=("a set-level enrichment view",), icon="tabulate",
            instruction="Hand it a set of genes to see what they share, and how surprising that is."),
     Module("export", "Export", "take a list, a table or a figure out",
-           "Bring your own", opens="action:export_visible", icon="export",
+           "Bring your own", opens="action:export_visible", icon="methods_export",
            instruction="Choose the columns to take out, then where to write them."),
 
     # ------------------------------------------------------------------- Data
     Module("datasets", "Datasets", "all 130 sources, their coverage and their provenance",
-           "Data", opens="action:open_dataset_browser", icon="datasets",
+           "Data", opens="action:open_dataset_browser", icon="data_manager",
            instruction="Browse the sources; each one says what it covers and where it came from."),
     Module("information", "Information", "the gene x trait map, and how sure each cell is",
-           "Data", opens="information map", icon="information",
+           "Data", opens="information map", icon="feature_dict",
            instruction="Search a gene or choose a trait; every cell shows its source and certainty.",
            builder="tool"),
     Module("jobs", "Jobs", "what is running, what it is costing, and how to stop it",
-           "Data", opens="jobs", icon="jobs",
+           "Data", opens="jobs", icon="queue",
            instruction="Select a job to stop it; finished jobs keep their outcome here.",
            builder="tool"),
     Module("console", "Console", "what the program is doing, in its own words",
-           "Data", opens="console", icon="console",
+           "Data", opens="console", icon="report",
            instruction="Filter by level or text; copy what you need for a report.",
            builder="tool"),
 )
@@ -370,39 +380,80 @@ def unavailable_reason(module: Module, *, docks=(), fillable: int = 0) -> str:
     return ""
 
 
-#: What each module leads to, for the Navigator's module network (instruction 91): one
-#: click on a module shows these beside it, as spaCR's Navigator shows a module's
-#: documented downstream modules. Best first; the Navigator shows at most four.
-DOWNSTREAM = {
-    "gene": ("partners", "expression", "structure", "network"),
-    "structure": ("partners", "gene"),
-    "partners": ("network", "infer", "gene"),
-    "expression": ("map", "information", "gene"),
-    "map": ("network", "gallery", "cell", "infer"),
-    "network": ("partners", "infer", "export"),
-    "cell": ("gene", "map"),
-    "gallery": ("map", "export"),
-    "questions": ("infer", "scorecard", "strategies"),
-    "infer": ("scorecard", "fill", "runs", "export"),
-    "strategies": ("infer", "scorecard"),
-    "scorecard": ("fill", "runs"),
-    "runs": ("scorecard",),
-    "fill": ("information", "map"),
-    "drop": ("list", "screen", "infer", "map"),
-    "screen": ("list", "infer"),
-    "list": ("infer", "network", "export"),
-    "export": (),
-    "datasets": ("information", "expression"),
-    "information": ("gene", "map", "infer"),
-    "jobs": ("console",),
-    "console": ("jobs",),
-}
+def _catalogue_order(keys) -> tuple:
+    """Put module keys into the order the catalogue draws them, dropping any it has not got.
+
+    The bands run Look up, Explore, Ask, Bring your own, Data, which is the order of
+    somebody working: read the gene, see where it sits, ask what is missing. Sorting
+    the offers alphabetically instead -- which is what :mod:`parascape.ports` returns,
+    because a graph has no opinion about which answer to read first -- put Cell before
+    Partners for no reason anybody could say out loud.
+
+    :param keys: module keys in any order.
+    :returns: the ones that are real modules, in catalogue order, each once.
+    """
+    wanted = set(keys)
+    return tuple(m.key for m in MODULES if m.key in wanted)
+
+
+def downstream_of_subject(kind: str, *, without: str = "") -> tuple:
+    """The modules that can take one subject, ready ones first, in catalogue order.
+
+    This is the answer Einar asked for by name: "all the modules that take 1 gene and
+    do something should come downstream of the gene card module" is
+    ``downstream_of_subject("gene", without="gene")``.
+
+    Ready first and blocked last is spaCR's own order in the chaining strip
+    (``spacr.chaining.next_steps`` sorts ``(not ok, module)``), and it matters here
+    because the first offer under a gene card was otherwise Structure, which has no
+    view built and is drawn greyed. An offer somebody cannot take should not be the
+    first thing they are shown.
+
+    :param kind: a subject from :mod:`parascape.ports`, such as ``"gene"``.
+    :param without: a module key to leave out -- normally the one doing the offering,
+        since the Gene card is itself a reader of genes and offering itself is noise.
+    :returns: module keys, ready ones first.
+    """
+    keys = [k for k in PORTS.consumers_of(kind) if k != without]
+    ordered = _catalogue_order(keys)
+    return tuple(sorted(ordered, key=lambda k: (bool(unavailable_reason(get(k))),
+                                                ordered.index(k))))
 
 
 def downstream(key: str) -> tuple:
-    """The modules `key` leads to, best first; unknown keys lead nowhere."""
-    keys = {m.key for m in MODULES}
-    return tuple(k for k in DOWNSTREAM.get(key, ()) if k in keys and k != key)
+    """The modules that can work on something `key` hands on, best first.
+
+    COMPUTED, not written down. Until instruction 98 this was ``DOWNSTREAM``: a
+    hand-written dict of twenty-two lists saying which module follows which, with no
+    reason recorded for any of it and nothing to check it against. A module added to
+    :data:`MODULES` and forgotten there simply led nowhere, silently, and a module
+    whose inputs changed went on being offered after the wrong thing.
+
+    The answer now comes from the declared subjects (:mod:`parascape.ports`): for each
+    subject this module hands on, in the order it declares them, the modules that read
+    that subject. So "what follows the Gene card" is answered by what the Gene card
+    produces -- a gene, the pairs it names, what could be inferred about it -- and by
+    what every other module says it reads.
+
+    Optional readers count as well as required ones, which is the difference between
+    this and :func:`parascape.ports.next_modules`. Network reads a gene it can do
+    without, and leaving Network out of what follows a gene would have been wrong in
+    the one place Einar was looking.
+
+    :param key: a module key. One with nothing declared leads nowhere rather than
+        raising, because this is called while drawing.
+    :returns: module keys, ready ones first, never including `key` itself.
+    """
+    try:
+        spec = PORTS.module_ports(key)
+    except PORTS.UnknownModule:
+        return ()
+    out: list = []
+    for port in spec.produces:
+        for candidate in downstream_of_subject(port.kind, without=key):
+            if candidate not in out:
+                out.append(candidate)
+    return tuple(out)
 
 
 def search(text: str) -> tuple:
