@@ -106,3 +106,181 @@ ParaScape is already powerful and this is a restructuring, not a rewrite. No ana
 frozen result may be dropped in the move. In particular the Plasmodium node table is pinned to the frozen
 functional benchmarks (`deposits.HELD_OUT_OF_NODES`), and the gene card's parasite schematic was named by
 Einar as something to keep.
+
+## WP1 inventory
+
+Taken 2026-11-12 against ParaScape 0.0.11.0 on `nightly`, by opening every file rather than reading
+the names. Nothing here is guessed: where a module says what it takes, that is what its code reads.
+
+**The count.** 22 modules, 15 docks, 29 tabs inside five of those docks, and the main window
+plus 9 further windows and dialogs.
+Of the 22 modules, **4 have been through the module mould** (`.claude/skills/parascape-module`):
+Map, Gene, Network and Infer, each with its own file and its own tested reading functions. Two more
+keys open one of those four shells (Partners is Network read by binding evidence; Questions is Infer
+opened on its catalogue), so **6 of 22 keys reach a mould-built module**. **10 more sit in the
+spaCR shell but have not been laid out to the mould** — they borrow an existing dock panel whole
+(`dock_module.py`), so they look alike and are not yet goal-first inside. **6 have neither**: four
+are honestly greyed out because the view does not exist (Structure, Runs, Fill, List) and two are
+window actions rather than modules (Datasets, Export).
+
+**What "takes" and "hands on" mean.** The subject, in the sense of WP2 — `parascape/ports.py`.
+A `?` marks a subject the module can work without.
+
+### The modules
+
+#### Look up
+
+| module | takes | hands on | opens | mould | in navigator |
+|---|---|---|---|---|---|
+| **Gene** (`gene`) | gene, gene_list? | gene?, gene_pair?, claim? | module shell | yes — `gene_module.py` | yes |
+| **Structure** (`structure`) | gene | — | nothing built | no | greyed: no structure view; AF3 summaries are on the evidence of a gene for now |
+| **Partners** (`partners`) | gene, gene_list? | gene_pair, gene_list? | module shell | yes — `network_module.py` | yes |
+| **Expression** (`expression`) | gene, gene_list? | trait? | shell over the `compare` dock, tab "Gene expression" | shell only | yes |
+
+#### Explore
+
+| module | takes | hands on | opens | mould | in navigator |
+|---|---|---|---|---|---|
+| **Map** (`map`) | gene_list?, trait? | space, gene_list?, gene? | module shell | yes — `map_module.py` | yes |
+| **Network** (`network`) | gene?, gene_list?, space? | gene_pair, gene_list?, gene? | module shell | yes — `network_module.py` | yes |
+| **Cell** (`cell`) | gene?, trait? | gene_list?, gene? | shell over the `find` dock | shell only | yes |
+| **Gallery** (`gallery`) | space | space | shell over the `gallery` dock | shell only | yes |
+
+#### Ask
+
+| module | takes | hands on | opens | mould | in navigator |
+|---|---|---|---|---|---|
+| **Questions** (`questions`) | — | question | module shell | yes — `infer_module.py` | yes |
+| **Infer** (`infer`) | question, gene_list?, trait? | claim, gene_list?, run | module shell | yes — `infer_module.py` | yes |
+| **Strategies** (`strategies`) | trait?, gene_list? | claim?, scorecard | shell over the `strategies` dock | shell only | yes |
+| **Scorecard** (`scorecard`) | trait?, claim? | scorecard | shell over the `discoveries` dock | shell only | yes |
+| **Runs** (`runs`) | run | scorecard? | nothing built | no | greyed: no panel reads `results/harness_holdout_log.jsonl` |
+| **Fill** (`fill`) | claim, scorecard | trait | nothing built | no | greyed: no question has cleared its 90 % bar |
+
+#### Bring your own
+
+| module | takes | hands on | opens | mould | in navigator |
+|---|---|---|---|---|---|
+| **Drop** (`drop`) | — | gene_list, screen? | shell over the `gene list` dock | shell only | yes |
+| **Screen** (`screen`) | screen | gene_list, trait? | shell over the `compare` dock | shell only | yes |
+| **List** (`list`) | gene_list | trait? | nothing built | no | greyed: no set-level enrichment view |
+| **Export** (`export`) | gene_list?, space?, trait?, claim? | — | window action `export_visible` | no | yes |
+
+#### Data
+
+| module | takes | hands on | opens | mould | in navigator |
+|---|---|---|---|---|---|
+| **Datasets** (`datasets`) | — | dataset | window action `open_dataset_browser` | no | yes |
+| **Information** (`information`) | gene?, trait?, dataset? | trait, claim?, gene? | shell over the `information map` dock | shell only | yes |
+| **Jobs** (`jobs`) | job | — | shell over the `jobs` dock | shell only | yes |
+| **Console** (`console`) | job | — | shell over the `console` dock | shell only | yes |
+
+### The docks
+
+Fifteen, all built by `app.Window`. The landing covers them rather than hiding them, so every one of
+these is still reachable behind it. "Lent" means a module borrows the panel while it is on screen
+and gives it back (`shell._Borrowed`).
+
+| dock | built by | what it shows | lent to | reachable from the navigator |
+|---|---|---|---|---|
+| `find` | `app._left` | the search field, the colour-by control and the parasite drawing | Cell | yes, as Cell |
+| `evidence` | `app._right` | one gene read as text, with links into its sources | — | yes, as Gene and Partners (which open the shells instead) |
+| `analysis` | `app._analysis` + `analysis_panel.py` | eight tabs: data, map, clusters, inference, search, validation, discover, questions | Infer (tab 8 only) | tab 8 only, as Questions |
+| `strategies` | `strategy_panel.py` | 39 named ways of inferring something, each graded and self-testing | Strategies | yes |
+| `maps` | `umap_gallery_panel.py` | the pregenerated maps and their label scores | — | **no** |
+| `star map` | `star_map.py` | one gene and its links, by source | — | the Network module replaced it; the dock is still installed |
+| `discoveries` | `discoveries_panel.py` | five tabs: labels, inferred claims, functional tests, strategy coverage, host sources | Scorecard | yes, as Scorecard |
+| `compare` | `compare_panel.py` | eleven tabs of measured values and study design | Expression (tab 1), Screen | yes, as Expression and Screen |
+| `information map` | `information_map_panel.py` | two tabs: one gene, one trait — measured facts with source and certainty | Information | yes |
+| `gene list` | `home_panel.py` | the gene list a dropped file becomes, and the question catalogue | Drop | yes, as Drop |
+| `start here` | `guided_panel.py` | one question at a time, ending at the recommended strategies | — | **no** |
+| `gallery` | `gallery.py` | a wall of thumbnails, one per map in a walk | Gallery | yes |
+| `console` | `console.py` | what the program is doing, filterable | Console (and folded into every other module) | yes |
+| `jobs` | `app._tool_docks` | what is running, what it costs, how to stop it | Jobs | yes |
+| `assistant` | `chat.py` | the AI chat | folded into every module | the Ask button on the navigator |
+
+### The tabs inside those docks
+
+29 in all, across five of the fifteen docks; the other ten hold one panel each. These are where
+most of the application actually lives, and all but three of them are
+reachable only by finding the right dock and then the right tab — which is the "everything behind
+the navigator is unchanged" Einar reported.
+
+| dock | tabs | reachable by name |
+|---|---|---|
+| `analysis` | 1 · Data, 2 · Map, 3 · Clusters, 4 · Inference, 5 · Search, 6 · Validation, 7 · Discover, 8 · Questions | only "8 · Questions", as the Questions module |
+| `compare` | Gene expression, Studies & samples, Coexpression, Published expression, Deposited matrices, Other measurements, Sparse measurements, Original workbooks, Reference identifiers, Dataset coverage, Condition comparison | only "Gene expression", as the Expression module |
+| `discoveries` | Labels and functions, Inferred claims, Functional tests, Strategy coverage, Host source status | no |
+| `information map` | One gene, One trait | no |
+| `strategies` | Guide, Settings, Results | no |
+
+Two tabs of the eight in `analysis` have been MOVED into modules rather than copied: "2 · Map"
+into the Map module and "8 · Questions" into Infer, with the panel widgets reparented so
+`AnalysisPanel.spec()`, `run_embed`, `run_umap_walk`, `check_question` and `run_question` still read
+exactly what they read before.
+
+### The windows and dialogs
+
+| window | opened by | what it shows | reachable from the navigator |
+|---|---|---|---|
+| `app.Window` | the application | the 3D map as the central widget, every dock, the landing over all of it | it is the application |
+| Dataset browser (`dataset_browser.py`) | `Window.open_dataset_browser` | all sources, their coverage and provenance | yes, as Datasets |
+| Slot tree (`slot_tree.py`, a `QMainWindow`) | `Window.open_slot_tree` | two tabs: Slots, Datasets | **no** |
+| Gene evidence browser (`gene_evidence_browser.py`) | `Window.open_gene_evidence` | one gene, every record behind it | **no** — reached by clicking a link in the evidence dock |
+| Label space browser (`label_space_browser.py`) | `Window.open_label_browser` | two tabs: membership and sources, strategies and recorded tests | **no** |
+| Workflows (`workflows.py`) | `Window._open_workflows` | three tabs: explore a gene, predict a trait, compare a screen | **no** — this is the pre-navigator front door and WP10 retires it |
+| Question scoreboard (`question_scoreboard.py`) | `Window.open_question_scoreboard` | how each registered question has done | **no** |
+| Preferences (`app.build_preferences`) | `Window.open_preferences` | three tabs: Appearance, Display, Window | the menus |
+| Download dialogs (`data_download_dialog.py`, `component_download_dialog.py`) | the Data menu | what can be fetched and what is already here | the menus |
+
+### What the inventory says about the rest of the work
+
+1. **The modules are not the problem; the routes to them are.** Ten of the twenty-two already sit in
+   the right shell, and four are properly to the mould. What is unreachable is the 29 tabs and
+   five of the nine further windows, almost none of which the navigator can name.
+2. **`Workflows` is the pre-navigator window Einar described.** Three tabs — explore a gene, predict
+   a trait, compare a screen — that duplicate Gene, Infer and Screen. WP10 retires it rather than
+   leaving it reachable from the menus.
+3. **Two docks have no module at all**: `maps` (the pregenerated maps, which the Gallery module
+   arguably covers) and `start here` (the guided panel). Both are candidates for the tree in WP7
+   rather than for new tiles.
+4. **`star map` is dead weight.** The Network module replaced what it did; the dock is still built
+   and still installed. Deciding whether it goes is part of WP10, not of WP1.
+5. **Nothing consumes a compound.** Drug sensitivity exists only as per-gene columns
+   (`datasets.curated_drug_sensitivity`), so the subject is declared in `ports.py` and has no module
+   to hand one to. That is recorded rather than quietly dropped, and
+   `tests/test_ports.py::test_nothing_takes_a_compound_yet_and_that_is_recorded_not_hidden` says so.
+
+### WP2 and WP3 as built
+
+* **`parascape/ports.py`** declares 13 subjects — the seven Einar named, plus question, claim,
+  scorecard, run, dataset and job, which the inventory above forced. It has `consumers_of`,
+  `producers_of`, `next_modules`, `upstream_modules`, `route` and `check_ready`, is standard library
+  only, and imports nothing else out of ParaScape. `tests/test_ports.py` has 50 tests including two
+  that run a fresh interpreter to hold the purity line.
+* **`parascape/modules.py`** is the one catalogue, extended rather than replaced: it gained
+  `instruction`, `builder`, `section`, and `consumes`/`produces` read from `ports.py`.
+  `dock_module.SPECS` and the shell routes in `landing_install` are now computed from it, so the
+  four tables that described these modules are one. `tests/test_module_catalogue.py` has
+  `test_no_section_is_empty` and `test_no_module_is_in_two_sections` by name, checks that every row
+  has ports and that every reachable module in a real window is a row.
+
+## WP5 status (symbols and the small cross) -- done 2026-11-12
+
+* **One icon provider**: `parascape/iconset.py`. Every module tile, dock row and result card gets its
+  symbol from it, by module key or kind of result, re-inked for the theme and cached. The artwork is
+  byte-identical to spaCR (a test compares the files). A symbol that cannot be found raises
+  `MissingIcon` under pytest and falls back to the settings symbol, with a logged warning, outside it.
+  `home.png` was added for the Home row; the Home module tiles now carry their symbols (they had none).
+* **The AI symbol**: `parascape/ai_button.py`, drawn as spaCR draws it (ring, provider-coloured dot only
+  while on, pulse while typing, circling marker or glow while waiting, still when Reduce motion is on).
+  Click switches it on or off; right-click, or the first click with no provider, chooses the provider;
+  with it on, a search that finds nothing is answered in the panel below the field. The old Ask word
+  that opened the assistant dock is gone, so the dock is reached from the Tools menu only.
+* **No small cross**: removed the clear button from four search fields (Navigator, Search ParaScape,
+  Home search, maps filter; Escape empties them), the closable flag from the console, jobs, assistant
+  and gallery docks (the Tools menu shows and hides them), and the close mark from every glass window
+  (Escape closes it). `parascape/no_cross.py` finds any cross by walking a real window; the test
+  `tests/test_symbols_and_no_cross.py` runs it on the real `app.Window` and after opening every dock module.
+* Left open: the native title bar of an undressed window is drawn by the window manager and has its own
+  cross; it cannot be changed from inside the application.
