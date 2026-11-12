@@ -491,3 +491,22 @@ produced it.
 later proved false had the same shape: my tool failed, and I described the world instead of the tool. Strain
 prefixes, ENSG identifiers, the wrong organism's table, Office files that are ZIPs, and now a timeout that
 measured the wrong thing. In each case the correction came from looking at what the tool actually returned.
+
+## 65.04, 2026-11-12: the cyst-wall source is identified, and the record names a directory
+
+Fixing the timeout let `cyst_wall_interactome` download, and its archive answers the question the record could
+not. `PMC7002340` (mBio 02699-19) holds 19 members, of which one is the data: **`mBio.02699-19-sd001.xls`**,
+566 KB, sheets `Group 1`, `Group 1_raw`, `Group 2`, `Group 2_raw`.
+
+Checked rather than assumed to be the right file: **all 56 genes carrying `cyst_wall_max_spectral` or
+`cyst_wall_n_baits` appear in it, 56 of 56.** It is the source.
+
+The registry records `datasets/quarantine/2026_08_16_unverified/Tg/cyst_wall/` -- a directory, with no file
+named -- which is why this source could never be checked. The path should name
+`mBio.02699-19-sd001.xls`; it cannot be written there yet because the whole `datasets/quarantine` subtree is
+one of the symlinks pointing at the other machine. The verified file is recorded in
+`supplementary_fetched_paths.json` so the check runs from where it actually sits.
+
+**41 of 63 verified.** Six files remain unfetchable, and those six now fail for a reason rather than for a
+timeout that measured the wrong thing: five stall with no bytes arriving for two minutes, one drops the
+connection mid-transfer.

@@ -9,7 +9,7 @@ crosslink_interactome	the table names the genes we ship	494 of 494 installed gen
 curated_drug_sensitivity	no file recorded	the source records a paper but no file, so there is nothing to open
 curated_enteric_fitness	no file recorded	the source records a paper but no file, so there is nothing to open
 curated_resistance_alleles	no file recorded	the source records a paper but no file, so there is nothing to open
-cyst_wall_interactome	file not on this machine	datasets/quarantine/2026_08_16_unverified/Tg/cyst_wall/ is recorded but absent here
+cyst_wall_interactome	the table names the genes we ship	56 of 56 installed genes appear in the table (100%); the table names 64 identifiers [7 sheet(s), column read from nodes.parquet]
 gse302108_utr5	the table names the genes we ship	5,825 of 5,825 installed genes appear in the table (100%); the table names 13,935 identifiers [2 sheet(s), column read from nodes.parquet]
 host_erythrocyte_proteome	the table names the genes we ship	5,264 of 5,264 installed genes appear in the table (100%); the table names 5,271 identifiers [3 sheet(s), column read from hs_host_proteins.parquet]
 host_erythrocyte_surface	the table names the genes we ship	267 of 267 installed genes appear in the table (100%); the table names 1,310 identifiers [6 sheet(s), column read from hs_host_proteins.parquet]

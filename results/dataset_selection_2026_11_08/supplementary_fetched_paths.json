@@ -1,4 +1,5 @@
 {
+ "cyst_wall_interactome": "/media/carruthers/mnt3/claude/parascape_supp_fetch/cyst_wall_interactome/mBio.02699-19-sd001.xls",
  "pf_crosslink_ms": "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/reference/plasmodb/crosslink/41966402/mmc1.xlsx",
  "pf_ip_ms": "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/reference/plasmodb/ip_ms/28691708/ncomms16044-s1.pdf",
  "pf_isoforms": "/media/carruthers/mnt3/claude/parascape_supp_fetch/pf_isoforms/Supplementary Data050425/SupplementaryData2.xlsx",

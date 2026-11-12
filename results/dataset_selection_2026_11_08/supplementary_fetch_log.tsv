@@ -1,10 +1,8 @@
 dataset_id	outcome	detail
-cyst_wall_interactome	download failed	TimeoutError: The read operation timed out
-oxidative_stress_screen	download failed	HTTPError: HTTP Error 500: Internal Server Error
+cyst_wall_interactome	recorded file not in the archive	looked for cyst_wall; archive holds mBio.02699-19-sf001.tif, mBio.02699-19-f0001.jpg, mBio.02699-19-f0002.gif, mBio.02699-19-sf004.jpg, mBio.02699-19-sf005.tif, mBio.02699-19-f0004.jpg
+oxidative_stress_screen	download failed	TimeoutError: The read operation timed out
 pf_acetylome	download failed	TimeoutError: The read operation timed out
-pf_berghei_liver_transfer	download failed	HTTPError: HTTP Error 500: Internal Server Error
 pf_berghei_transfer	download failed	TimeoutError: The read operation timed out
 pf_lactylome	download failed	TimeoutError: The read operation timed out
-pf_palmitome	download failed	TimeoutError: gave up after 240s, 7,340,032 bytes
-pf_secretome	placed	datasets/post_translation/secretome/28944300/5c097a1c-efe5-4ed8-b97b-f9ba656268a6.xlsx (38,581 bytes)
-thermal_shift_cetsa	download failed	HTTPError: HTTP Error 500: Internal Server Error
+pf_palmitome	download failed	TimeoutError: The read operation timed out
+thermal_shift_cetsa	download failed	IncompleteRead: IncompleteRead(223080 bytes read)
