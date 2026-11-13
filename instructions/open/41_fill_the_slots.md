@@ -3256,3 +3256,37 @@ and what happens to the rest. That is a real piece of work with its own acceptan
 3. then admit GSE271211, whose biological checks already pass.
 
 Step 2 is the one I underestimated.
+
+## 2026-11-13: the CPATCC to cgd map, built and validated -- 2,571 genes, 66 per cent
+
+Having said the mapping needed sequence-level work, I tested the cheapest version of that rather
+than leaving it as an estimate. These are two annotations of ONE organism, so most proteins should
+be byte-identical, and they are. `scripts/build_cpatcc_cgd_map.py`, re-runnable, no alignment tool:
+
+* locus tags from the ATCC **GFF**, because the protein FASTA names the tag only for uncharacterized
+  proteins -- 2,719 of 3,896 carry a product name instead, which is why a first pass saw only 1,177;
+* proteins matched by exact sequence, accepting a pair only when one ATCC gene and one cgd gene
+  share a sequence that appears nowhere else.
+
+**2,571 one-to-one pairs: 66 per cent of the 3,892 ATCC genes, 68 per cent of the 3,805 cgd genes.**
+
+**It is a correspondence rather than a coincidence**, and the structural check is what says so.
+Sorted by ATCC numbering, the pairs fall into **10 contiguous same-chromosome blocks** over all 8
+chromosomes, median block 299 genes, **zero isolated single genes**. Two annotations of one genome
+number their genes along the same chromosomes; scattered singletons would be the signature of
+sequence matches that are individually real and wrong as a map.
+
+**The test found a flaw in my own map.** Uniqueness per SEQUENCE is not uniqueness per GENE: a gene
+with two protein products appears under two hashes and can take a partner from each.
+`CPATCC_0027530` matched `cgd2_3260` and `cgd2_3270`, two adjacent genes, because the ATCC
+annotation merges a locus CryptoDB splits. Keeping either would be choosing, so both are dropped and
+counted. That is 2 pairs of 2,573, and it was found by the test rather than by reading the code.
+
+**The remaining third needs alignment**, and is left unmapped rather than filled by proximity. A
+reader who assumed completeness would silently drop a third of the oocyst measurements, so
+`tests/test_cpatcc_cgd_map.py` asserts the map is NOT complete as well as asserting it is coherent.
+
+So of the three steps listed earlier for `Cp_transcription · oocyst`, step 2 is done. What remains
+is step 1, registering the existing `cgd` table as the Cp reference, and step 3, admitting
+GSE271211 against it at 66 per cent gene coverage -- both of which change what ParaScape ships and
+belong with the other slot decisions waiting for Einar.
