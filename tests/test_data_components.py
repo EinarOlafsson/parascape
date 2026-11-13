@@ -183,3 +183,38 @@ def test_a_stalled_part_is_retried_and_a_missing_one_is_not(monkeypatch, tmp_pat
     with pytest.raises(urllib.error.HTTPError):
         DC._download_part({}, tmp_path, None, None)
     assert len(calls) == 1
+
+
+# ------------------------------------------- the data move to Hugging Face (2026-11-13)
+"""Every component released so far has its parts on GitHub and keeps them, so both bases are
+accepted: the one configured for the move and the GitHub releases the published indexes name."""
+
+
+def test_both_the_configured_host_and_the_published_github_release_are_accepted(monkeypatch):
+    monkeypatch.delenv(C.ENV_HOST, raising=False)
+    assert C.hosts() == (C.COMPONENT_HOST + '/', C.GITHUB_RELEASES + '/')
+    component, _, _ = fixture_component()
+    assert C.validate(component)['download_bytes'] == component['archive_size']
+    moved = dict(component, parts=[dict(part, url=f'{C.COMPONENT_HOST}/v1/part-{i}')
+                                   for i, part in enumerate(component['parts'])])
+    assert C.validate(moved) == C.validate(component), 'the same component, served from the new host'
+
+
+def test_a_component_host_setting_moves_the_accepted_base(monkeypatch):
+    monkeypatch.setenv(C.ENV_HOST, 'https://data.example.org/components')
+    assert 'https://data.example.org/components/' in C.hosts()
+    component, _, _ = fixture_component()
+    component['parts'][0] = dict(component['parts'][0], url='https://data.example.org/components/v1/part-0')
+    assert C.validate(component)
+
+
+@pytest.mark.parametrize('bad', ['http://github.com/EinarOlafsson/parascape/releases/download/v1/p',
+                                 'https://elsewhere.example/v1/p',
+                                 'https://github.com/EinarOlafsson/parascape/releases/download/v1/../p',
+                                 'https://github.com/EinarOlafsson/parascape/releases/download/v1/p?t=1'])
+def test_an_address_off_the_accepted_bases_is_still_refused(monkeypatch, bad):
+    monkeypatch.delenv(C.ENV_HOST, raising=False)
+    component, _, _ = fixture_component()
+    component['parts'][0] = dict(component['parts'][0], url=bad)
+    with pytest.raises(ValueError, match='Unexpected optional-data download host'):
+        C.validate(component)

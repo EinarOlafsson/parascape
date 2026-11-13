@@ -441,10 +441,13 @@ Shared row-level scorecard aggregation and denominator reconciliation: [record s
 
 ## Downloaded application data and RNA expression
 
-The wheel contains code and a versioned GitHub data descriptor. Open the app to
+The wheel contains code and a versioned data descriptor. Open the app to
 accept its download popup, or run `parascape-data --download` without a display.
-`parascape.data_manager.status()` checks local availability; `download()` explicitly
-retrieves and verifies the pinned public GitHub asset. No network request occurs
+`parascape.data_manager.status()` checks local availability, including which host it would use;
+`download()` explicitly retrieves and verifies the pinned public archive from the
+[Hugging Face dataset repository](https://huggingface.co/datasets/einarolafsson/parascape-data), falling back to the GitHub release asset for that version.
+`$PARASCAPE_DATA_HOST` replaces the base address and `$PARASCAPE_DATA_URL` the whole address, so
+moving the data again is a setting rather than a code change; the checksums are checked either way. No network request occurs
 just from importing a module. `parascape.rna_profiles.profiles` reads per-gene
 expression; `parascape.rna_design.samples` exposes submitted sample/run links,
 replicate/control evidence and processing coverage.

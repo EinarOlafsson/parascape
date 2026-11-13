@@ -1,4 +1,4 @@
-"""Install checksum-pinned optional datasets from individually bounded GitHub assets.
+"""Install checksum-pinned optional datasets from individually bounded published assets.
 
 Components have independent immutable directories. Shared axes download once;
 large archives use ordered parts, and every part, archive and extracted file is
@@ -25,6 +25,34 @@ from . import paths
 
 PREFIX = '/EinarOlafsson/parascape/releases/download/'
 KINDS = {'sparse_coordinates', 'sparse_axes', 'workbook_cells', 'deposited_values'}
+
+#: Where optional-data parts may be published. The parts of every component released so far are
+#: GitHub release assets and stay there; the data move to Hugging Face (2026-11-13) reaches them when
+#: their index is rebuilt, and this setting is what a rebuilt index is then checked against, so the
+#: move is a configuration change rather than another edit here.
+ENV_HOST = 'PARASCAPE_COMPONENT_HOST'
+COMPONENT_HOST = 'https://huggingface.co/datasets/einarolafsson/parascape-data/resolve/main/components'
+GITHUB_RELEASES = 'https://github.com/EinarOlafsson/parascape/releases/download'
+
+
+def hosts() -> tuple:
+    """Every accepted base address for a part, each ending in a slash, in no particular order."""
+    configured = (os.environ.get(ENV_HOST) or COMPONENT_HOST).rstrip('/') + '/'
+    return tuple(dict.fromkeys((configured, GITHUB_RELEASES + '/')))
+
+
+def _part_url(value):
+    """Accept a part address only under an accepted base, as <version>/<asset> and nothing else."""
+    bases = hosts()
+    base = next((b for b in bases if isinstance(value, str) and value.startswith(b)), None)
+    tail = value[len(base):] if base else ''
+    url = urlsplit(value if isinstance(value, str) else '')
+    if (base is None or url.scheme != 'https' or url.query or url.fragment
+            or len(tail.split('/')) != 2
+            or any(not re.fullmatch('[A-Za-z0-9._-]+', token) or token in ('.', '..')
+                   for token in tail.split('/'))):
+        raise ValueError('Unexpected optional-data download host or release path')
+    return value
 
 
 def storage_root() -> Path:
@@ -72,11 +100,7 @@ def validate(component: dict) -> dict:
     _digest(component['archive_sha256'])
     for part in component['parts']:
         _digest(part['sha256'])
-        url = urlsplit(part['url'])
-        tail = url.path[len(PREFIX):] if url.path.startswith(PREFIX) else ''
-        if (url.scheme != 'https' or url.netloc != 'github.com' or url.query or url.fragment
-                or len(tail.split('/')) != 2 or any(not re.fullmatch('[A-Za-z0-9._-]+', token) or token in ('.', '..') for token in tail.split('/'))):
-            raise ValueError('Unexpected optional-data download host or release path')
+        _part_url(part['url'])
         if type(part['size']) is not int or not 0 < part['size'] <= 1024**3:
             raise ValueError('Optional archive parts must be at most one GiB')
     content = dict(directory=directory, files=component['files'])

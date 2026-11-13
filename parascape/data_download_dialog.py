@@ -39,7 +39,7 @@ class DataDownloadDialog(QtWidgets.QDialog):
         layout = QtWidgets.QVBoxLayout(self)
         state = D.status()
         label = QtWidgets.QLabel(f'ParaScape needs its data to open. Download the data for version {state["version"]} '
-                                 f'from GitHub ({state["download_bytes"] / 1024**2:.0f} MiB)?\n\n'
+                                 f'from {state.get("host") or "Hugging Face"} ({state["download_bytes"] / 1024**2:.0f} MiB)?\n\n'
                                  f'Data folder: {state["directory"]}\n\n'
                                  'Once installed, browsing works offline. Existing data is preserved if the download fails.')
         label.setWordWrap(True)
@@ -52,7 +52,7 @@ class DataDownloadDialog(QtWidgets.QDialog):
         layout.addWidget(self.bar)
         buttons = QtWidgets.QHBoxLayout()
         self.start = QtWidgets.QPushButton('Download data')
-        self.start.setToolTip('Download the versioned public GitHub data asset and verify its checksums before opening ParaScape.')
+        self.start.setToolTip('Download the versioned public data archive for this version and verify its checksums before opening ParaScape.')
         self.start.clicked.connect(self._start)
         buttons.addWidget(self.start)
         self.cancel = QtWidgets.QPushButton('Cancel')

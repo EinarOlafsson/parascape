@@ -1,6 +1,6 @@
 # Compare RNA-seq expression
 
-The GitHub data download includes an offline snapshot of verified study/run entries,
+The published data download includes an offline snapshot of verified study/run entries,
 selected from the ongoing processing queue. Use `snapshot()` below for the exact
 coverage and provenance of your installed data release. This is a
 partial release; a study may not yet contain all replicates or its control group.
@@ -97,7 +97,7 @@ zeros, missingness, invalid values and coverage; the biological quality score
 remains unavailable until independently calibrated. Acquired files or locally
 prepared packs do not establish that a public release includes them.
 
-Quantity tables can be supplied as optional GitHub data components. The core
+Quantity tables can be supplied as optional hosted data components. The core
 contains their original manifest and reconciliation receipt so the source
 catalogue remains browsable before downloading the measurements. Querying a
 missing table offers **Download selected dataset**, showing its size, destination,
@@ -130,13 +130,13 @@ and identifiers and do not establish cross-assay comparability.
 The bundled reference is **ME49_host**: ME49 parasite transcripts compete with human
 and mouse transcripts; the parasite genome supplies Salmon decoys. Both Salmon
 and kallisto results are included. All already-verified ME49, GT1 and VEG alternative-reference quantifications for
-these completed runs are included in the GitHub pack. Availability varies by study.
+these completed runs are included in the published pack. Availability varies by study.
 Alternative strain builds retain their own exact reference gene identifiers.
 Set `PARASCAPE_OMICS` before starting ParaScape to select another matrix pack.
 
 Transcript estimated counts and TPM are summed by the exact reference transcript-to-gene
 mapping. Host genes are excluded from parasite tables; the host count fraction is
-retained per sample, and parasite TPM is reclosed to one million. The GitHub data pack includes counts, TPM and effective lengths for both quantifiers
+retained per sample, and parasite TPM is reclosed to one million. The published data pack includes counts, TPM and effective lengths for both quantifiers
 for every completed run. Lengths are transcript-TPM weighted, with a mean-length
 fallback for unexpressed genes.
 Matrices use float32 storage; full-precision quantification sources remain in the

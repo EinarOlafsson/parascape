@@ -12,8 +12,9 @@ Figures were read from the built cache at commit `29b0bd9`.
 
 parascape is a desktop application written in Python 3.10 using PySide6 (6.12.0) and pyqtgraph (0.13.7) for
 OpenGL rendering, with pandas, NumPy, scikit-learn and umap-learn for data processing. It provides a precomputed cache (337 MB), including all 443 columns for 8,140 genes and all 13 relation
-types (296,412 edges), through a versioned GitHub data release. First launch offers the data
-download; after installation, browsing requires neither a network connection nor raw source datasets.
+types (296,412 edges), through a versioned data release published as a Hugging Face dataset
+repository (https://huggingface.co/datasets/einarolafsson/parascape-data); the identical archive for each released version is also attached to its GitHub
+release, which earlier application versions still read. First launch offers the data download; after installation, browsing requires neither a network connection nor raw source datasets.
 The verified cache is installed in a writable user data folder. The wheel carries application code,
 icons and a small checksum descriptor instead of scientific datasets. Source
 code, the cache, and a notebook that reproduces every download are available at

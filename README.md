@@ -49,8 +49,7 @@ python -m pip install parascape
 parascape
 ```
 
-On first launch a prompt offers the versioned data download from GitHub. After it verifies,
-browsing works offline; the datasets live outside the package. Protein structures are fetched
+On first launch a prompt offers the versioned data download from [Hugging Face](https://huggingface.co/datasets/einarolafsson/parascape-data). After it verifies, browsing works offline; the datasets live outside the package. Protein structures are fetched
 when requested and cached.
 
 ## Where to start in the app

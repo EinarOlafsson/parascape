@@ -55,7 +55,9 @@ extras of the same project.
 `parascape[structures]` adds local structure parsing. Reading the bundled feature
 tables requires neither extra.
 
-Scientific data is hosted as a versioned GitHub release asset. First launch offers
+Scientific data is hosted as a versioned archive in the Hugging Face dataset repository
+[einarolafsson/parascape-data](https://huggingface.co/datasets/einarolafsson/parascape-data), with the identical archive kept on the GitHub release for
+that version as a fallback. First launch offers
 a download when files are missing; installation verifies archive and per-file SHA-256
 checksums, stages extraction, and preserves existing data on failure. Once installed,
 browsing is offline. `parascape-data --download` supports headless installations.
@@ -149,21 +151,34 @@ python -m twine check --strict dist/*
 ```
 
 Start with an empty `dist/` directory so files from older versions are not included.
-The wheel check requires code, icons and the versioned GitHub data descriptor.
+The wheel check requires code, icons and the versioned data descriptor.
 It rejects bundled scientific datasets, saved embeddings, unconditional CUDA
 dependencies and files above PyPI’s default upload limit. The installed-wheel
-smoke test verifies and installs the pinned GitHub asset before loading gene data.
+smoke test verifies and installs the pinned published asset before loading gene data.
 
 The desktop installers in `packaging/` are separate from PyPI. Their existing
 workflow runs manually or on a `v*` tag.
 
 
-## Versioned GitHub data assets
+## Versioned data assets
 
 After the version bump, build the data asset with `python scripts/build_data_release.py`.
-Commit the generated `parascape/data_manifest.json` with the source changes on nightly.
-After checks pass, publish `data-dist/parascape-data-VERSION.tar.gz` on the GitHub
-release `vVERSION` at that exact commit **before** promoting to main. The release
+Commit the generated `parascape/data_manifest.json` with the source changes on nightly. The
+descriptor records both addresses: Hugging Face first, the GitHub release second.
+
+After checks pass, upload `data-dist/parascape-data-VERSION.tar.gz` to the dataset repository
+[einarolafsson/parascape-data](https://huggingface.co/datasets/einarolafsson/parascape-data) at `releases/VERSION/`, together with `data_manifest.json`
+and a `SHA256SUMS` of the files inside it, and update the top-level `SHA256SUMS` there:
+
+```bash
+huggingface-cli upload einarolafsson/parascape-data \
+    data-dist/parascape-data-VERSION.tar.gz releases/VERSION/parascape-data-VERSION.tar.gz \
+    --repo-type dataset
+```
+
+Also publish the same file on the GitHub release `vVERSION` at that exact commit **before**
+promoting to main, because the release workflow reads it from there and because installations of
+earlier versions fetch it from there. The release
 workflow downloads this existing asset and verifies it against the descriptor while
 smoke-testing the installed wheel. It does not rebuild an archive whose compression
 bytes could vary across platforms. PyPI publication happens only after this check;
@@ -182,8 +197,10 @@ A core-data `data_components.json` index has `schema_version: 1`, a version,
 `components`, and a dataset-to-component dependency map. Component keys are
 `sparse_coordinates/<pack-sha>` or `sparse_axes/<pack-sha>`. Each component declares
 its original files with exact sizes and SHA-256 checksums, one complete archive
-checksum/size, and an ordered list of GitHub release URLs with individual part
-sizes/checksums. Every part is at most 1 GiB. Shared axes use the same component
+checksum/size, and an ordered list of part URLs with individual part sizes/checksums. A part
+address is accepted under the GitHub release base, where every published component still is, or
+under `$PARASCAPE_COMPONENT_HOST`, which is how they reach Hugging Face when their index is
+rebuilt. Every part is at most 1 GiB. Shared axes use the same component
 identity across datasets.
 
 Prepare an existing independently validated pack without changing its contents:

@@ -75,7 +75,7 @@ def test_missing_data_offers_download_and_cancel_without_opening_window(qtbot, m
     assert not G.ensure_data()
     dialog = G.DataDownloadDialog();qtbot.addWidget(dialog)
     assert dialog.start.text() == 'Download data'
-    assert 'GitHub' in dialog.findChildren(G.QtWidgets.QLabel)[0].text()
+    assert 'Hugging Face' in dialog.findChildren(G.QtWidgets.QLabel)[0].text()
 
 
 def test_present_data_does_not_offer_download(monkeypatch):
@@ -214,3 +214,127 @@ def test_an_ordinary_network_failure_still_offers_a_retry(qtbot, monkeypatch):
     dialog._start()
     qtbot.waitUntil(lambda: dialog.start.isEnabled(), timeout=5000)
     assert dialog.start.text() == 'Retry download'
+
+
+# ------------------------------------------------- the data moved to Hugging Face (2026-11-13)
+"""Einar: "all of the data that parascape uses should be hosted on huggingface in my account.
+otherwise the space limits on github will fill quickly." The archive is the same archive and the
+checksum contract is unchanged; what changed is where it is fetched from, that a second host is
+tried when the first does not answer, and that the host is a setting. Nothing here touches the
+network: the fetch is replaced by a stub that records the addresses it was asked for."""
+
+
+def descriptor_for(tmp_path):
+    asset, descriptor = archive(tmp_path, {'nodes.parquet': b'data'})
+    descriptor.update(version='9.9.9', asset='parascape-data-9.9.9.tar.gz',
+                      url=f'{D.HOST}/9.9.9/parascape-data-9.9.9.tar.gz',
+                      fallback_url=f'{D.GITHUB_RELEASES}/v9.9.9/parascape-data-9.9.9.tar.gz')
+    return asset, descriptor
+
+
+def test_hugging_face_is_tried_first_and_the_github_release_second(tmp_path, monkeypatch):
+    monkeypatch.delenv(D.ENV_HOST, raising=False)
+    monkeypatch.delenv(D.ENV_URL, raising=False)
+    _, descriptor = descriptor_for(tmp_path)
+    assert D.sources(descriptor) == [descriptor['url'], descriptor['fallback_url']]
+    assert D.sources(descriptor)[0].startswith('https://huggingface.co/datasets/einarolafsson/')
+    assert D.host_name(descriptor) == 'Hugging Face'
+
+
+def test_the_shipped_descriptor_points_at_hugging_face_with_github_behind_it(monkeypatch):
+    monkeypatch.delenv(D.ENV_HOST, raising=False)
+    monkeypatch.delenv(D.ENV_URL, raising=False)
+    description = D.manifest()
+    first, second = D.sources(description)
+    assert first == f'{D.HOST}/{description["version"]}/{description["asset"]}'
+    assert second == f'{D.GITHUB_RELEASES}/v{description["version"]}/{description["asset"]}'
+
+
+def test_the_host_is_a_setting_not_an_edit(tmp_path, monkeypatch):
+    _, descriptor = descriptor_for(tmp_path)
+    monkeypatch.setenv(D.ENV_HOST, 'https://data.example.org/parascape/')
+    assert D.sources(descriptor)[0] == 'https://data.example.org/parascape/9.9.9/parascape-data-9.9.9.tar.gz'
+    assert D.host_name(descriptor) == 'data.example.org'
+    monkeypatch.setenv(D.ENV_URL, 'https://data.example.org/exactly/this.tar.gz')
+    assert D.sources(descriptor) == ['https://data.example.org/exactly/this.tar.gz']
+
+
+@pytest.mark.parametrize('bad', ['http://huggingface.co/x', 'https://elsewhere.example/x',
+                                 'https://huggingface.co/a/../b', 'https://huggingface.co/x?token=1'])
+def test_an_address_off_the_known_hosts_is_refused_before_any_request(tmp_path, monkeypatch, bad):
+    monkeypatch.delenv(D.ENV_HOST, raising=False)
+    monkeypatch.setenv(D.ENV_URL, bad)
+    _, descriptor = descriptor_for(tmp_path)
+    with pytest.raises(ValueError, match='Unexpected data download host'):
+        D.sources(descriptor)
+
+
+def test_an_unanswering_first_host_falls_through_to_the_second_and_still_verifies(tmp_path, monkeypatch):
+    """The reason the GitHub release stays published. The stub serves the real archive only from the
+    fallback address, and the install must succeed with the pinned checksums unchanged."""
+    import urllib.error
+    asset, descriptor = descriptor_for(tmp_path)
+    monkeypatch.delenv(D.ENV_HOST, raising=False)
+    monkeypatch.delenv(D.ENV_URL, raising=False)
+    asked = []
+
+    def stub(url, part, description, progress=None, cancelled=None):
+        asked.append(url)
+        if url != description['fallback_url']:
+            raise urllib.error.HTTPError(url, 404, 'Not Found', {}, None)
+        part.write_bytes(asset.read_bytes())
+
+    monkeypatch.setattr(D, '_fetch', stub)
+    target = tmp_path / 'installed'
+    assert D.download(target, descriptor) == target.absolute()
+    assert asked == [descriptor['url'], descriptor['fallback_url']]
+    assert D.status(target, descriptor)['ready']
+
+
+def test_a_failure_on_every_host_names_every_host(tmp_path, monkeypatch):
+    asset, descriptor = descriptor_for(tmp_path)
+    monkeypatch.delenv(D.ENV_HOST, raising=False)
+    monkeypatch.delenv(D.ENV_URL, raising=False)
+    monkeypatch.setattr(D, '_fetch', lambda *a, **k: (_ for _ in ()).throw(OSError('refused')))
+    with pytest.raises(OSError) as caught:
+        D.download(tmp_path / 'installed', descriptor)
+    assert 'huggingface.co' in str(caught.value) and 'github.com' in str(caught.value)
+
+
+def test_a_hosted_archive_that_is_the_wrong_bytes_is_still_refused(tmp_path, monkeypatch):
+    """Changing host changes where the bytes come from and nothing about what is accepted."""
+    _, descriptor = descriptor_for(tmp_path)
+    monkeypatch.delenv(D.ENV_HOST, raising=False)
+    monkeypatch.delenv(D.ENV_URL, raising=False)
+    monkeypatch.setattr(D, '_fetch', lambda url, part, *a, **k: part.write_bytes(b'x' * descriptor['size']))
+    with pytest.raises(ValueError, match='checksum mismatch'):
+        D.download(tmp_path / 'installed', descriptor)
+    assert not (tmp_path / 'installed').exists()
+
+
+def test_an_early_end_is_a_failure_rather_than_a_truncated_install(tmp_path, monkeypatch):
+    _, descriptor = descriptor_for(tmp_path)
+
+    class Response:
+        status, headers = 200, {}
+
+        def read(self, size):
+            return b''
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    monkeypatch.setattr(D.urllib.request, 'urlopen', lambda *a, **k: Response())
+    with pytest.raises(OSError, match='ended early'):
+        D._fetch(descriptor['url'], tmp_path / 'part', descriptor)
+
+
+def test_the_download_dialog_names_the_host_it_will_use(qtbot, monkeypatch):
+    from parascape import data_download_dialog as G
+    monkeypatch.setattr(D, 'status', lambda: {'ready': False, 'version': 'test', 'host': 'Hugging Face',
+                                              'download_bytes': 1024, 'directory': '/cache/data'})
+    dialog = G.DataDownloadDialog();qtbot.addWidget(dialog)
+    assert 'Hugging Face' in dialog.findChildren(G.QtWidgets.QLabel)[0].text()

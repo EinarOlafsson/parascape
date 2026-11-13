@@ -28,9 +28,14 @@ def check_wheel(path: Path) -> None:
         import json
         descriptor = json.loads(archive.read('parascape/data_manifest.json'))
         if not descriptor.get('sha256') or not descriptor.get('files') or descriptor.get('version') != info['Version']:
-            raise ValueError('Missing or mismatched GitHub data release descriptor')
-        if not descriptor['url'].startswith('https://github.com/EinarOlafsson/parascape/releases/download/'):
-            raise ValueError('Data must be hosted on the official GitHub release')
+            raise ValueError('Missing or mismatched data release descriptor')
+        # Both addresses, because the data is published on Hugging Face and the identical archive stays
+        # on the GitHub release for the versions already installed. A wheel that names only one host
+        # leaves somebody without a fallback.
+        if not descriptor['url'].startswith('https://huggingface.co/datasets/einarolafsson/parascape-data/'):
+            raise ValueError('Data must be hosted in the official Hugging Face dataset repository')
+        if not descriptor['fallback_url'].startswith('https://github.com/EinarOlafsson/parascape/releases/download/'):
+            raise ValueError('The GitHub release asset must stay recorded as the fallback')
         if any(n.startswith('parascape/data/') and not n.startswith('parascape/data/icons/') for n in names):
             raise ValueError('Scientific data must be downloaded, not bundled in the wheel')
         for requirement in info.get_all("Requires-Dist", []):

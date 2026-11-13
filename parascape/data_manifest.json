@@ -1,5 +1,6 @@
 {
   "asset": "parascape-data-0.0.12.0.tar.gz",
+  "fallback_url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.12.0/parascape-data-0.0.12.0.tar.gz",
   "files": {
     "af3_features.json": {
       "sha256": "f07484a81d3fd720b7ccd984b817f4cdac68ecaf87d5ec46020145a317ad39a7",
@@ -43721,6 +43722,6 @@
   "schema_version": 1,
   "sha256": "6e676191021fec9a5afd8e7762ae7f5ba042de6791b4c4eb238bcd25be958fdb",
   "size": 944323064,
-  "url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.12.0/parascape-data-0.0.12.0.tar.gz",
+  "url": "https://huggingface.co/datasets/einarolafsson/parascape-data/resolve/main/releases/0.0.12.0/parascape-data-0.0.12.0.tar.gz",
   "version": "0.0.12.0"
 }

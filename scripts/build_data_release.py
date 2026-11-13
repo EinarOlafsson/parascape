@@ -1,4 +1,9 @@
-"""Build a deterministic GitHub data asset and its small package descriptor."""
+"""Build a deterministic data release archive and its small package descriptor.
+
+The descriptor records where the archive is published: the Hugging Face dataset repository first,
+then the GitHub release asset, which stays published and is the fallback. `parascape.data_manager`
+tries them in that order and verifies the checksums here against whatever arrives.
+"""
 from __future__ import annotations
 
 import argparse
@@ -11,7 +16,7 @@ import sys
 import tarfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from parascape import __version__
+from parascape import __version__, data_manager
 
 
 def build(source: Path, output: Path, descriptor: Path):
@@ -54,7 +59,8 @@ def build(source: Path, output: Path, descriptor: Path):
                 archive.addfile(info, io.BytesIO(data))
     digest = hashlib.sha256(asset.read_bytes()).hexdigest()
     info = {'schema_version': 1, 'version': __version__, 'asset': name,
-            'url': f'https://github.com/EinarOlafsson/parascape/releases/download/v{__version__}/{name}',
+            'url': f'{data_manager.HOST}/{__version__}/{name}',
+            'fallback_url': f'{data_manager.GITHUB_RELEASES}/v{__version__}/{name}',
             'size': asset.stat().st_size, 'sha256': digest, 'files': entries}
     descriptor.write_text(json.dumps(info, indent=2, sort_keys=True) + '\n')
     print(f'{asset}: {asset.stat().st_size / 1e6:.1f} MB, {len(entries)} verified files')

@@ -1,9 +1,20 @@
-"""Install versioned GitHub data releases without placing datasets inside the wheel.
+"""Install versioned data releases without placing datasets inside the wheel.
 
 Archive and individual file checksums are pinned by the package. Installation is
 staged and verified before becoming visible; failed downloads never replace data.
 
 Keeping release data outside the wheel reduces installation size while checksum-pinned assets preserve reproducibility across machines and application upgrades.
+
+The data is hosted on Hugging Face, as a dataset repository under Einar's account (decision of
+2026-11-13: a GitHub release has a space limit the data would reach soon, and a dataset repository
+does not). The GitHub release asset for each version stays where it is, and is tried second, so an
+install of an earlier version keeps working and a Hugging Face outage is not a dead end. Which host
+is used is a setting rather than a code change: `$PARASCAPE_DATA_HOST` replaces the base address and
+`$PARASCAPE_DATA_URL` replaces the whole address of this version's archive.
+
+Neither host is trusted with what it serves. The archive is accepted only when its size and SHA-256
+match the descriptor in the wheel, and then only when every file inside it matches too, so changing
+the host changes where the bytes come from and nothing about what is accepted.
 """
 from __future__ import annotations
 
@@ -15,15 +26,85 @@ from pathlib import Path, PurePosixPath
 import shutil
 import tarfile
 import tempfile
+from urllib.parse import urlsplit
+import urllib.error
 import urllib.request
 import uuid
 
 from . import paths
 
+#: Base address of the data host, and the per-version archive address, as settings. A move to
+#: another host is then a configuration change for everybody who already has this version.
+ENV_HOST = 'PARASCAPE_DATA_HOST'
+ENV_URL = 'PARASCAPE_DATA_URL'
+
+#: The Hugging Face dataset repository that now holds every release archive. Paths under it are
+#: `<version>/<asset name>`, matching the layout in that repository.
+HOST = 'https://huggingface.co/datasets/einarolafsson/parascape-data/resolve/main/releases'
+
+#: Where the published archives were before the move, and where the ones for earlier versions
+#: remain. Tried after the host above.
+GITHUB_RELEASES = 'https://github.com/EinarOlafsson/parascape/releases/download'
+
+#: Hosts a download may come from. The configured host is added to this set, so setting
+#: `$PARASCAPE_DATA_HOST` is enough; an address that matches neither is refused before any request.
+HOSTS = ('huggingface.co', 'github.com')
+
+
+def host() -> str:
+    """The configured base address for release archives, without its trailing slash."""
+    return (os.environ.get(ENV_HOST) or HOST).rstrip('/')
+
+
+def _checked_url(url: str) -> str:
+    """Refuse an address that is not https on a known host before anything is requested."""
+    parts = urlsplit(url)
+    allowed = set(HOSTS) | {urlsplit(host()).netloc}
+    if (parts.scheme != 'https' or parts.netloc not in allowed or parts.query or parts.fragment
+            or '..' in PurePosixPath(parts.path).parts):
+        raise ValueError('Unexpected data download host: ' + url)
+    return url
+
+
+def sources(description=None) -> list:
+    """Every address for this version's archive, in the order they are tried.
+
+    An explicit `$PARASCAPE_DATA_URL` is used alone, because somebody who names one address means
+    that one. Otherwise the configured host comes first and the addresses recorded in the descriptor
+    follow, which is what keeps a published GitHub asset working as a fallback.
+    """
+    description = description if description is not None else manifest()
+    explicit = os.environ.get(ENV_URL)
+    if explicit:
+        return [_checked_url(explicit)]
+    # A descriptor records its asset name; one written before it did is read from its address, and
+    # one with neither -- a descriptor assembled in a test -- falls back to the name the builder gives.
+    asset = (description.get('asset')
+             or (PurePosixPath(urlsplit(description['url']).path).name if description.get('url') else '')
+             or f"parascape-data-{description['version']}.tar.gz")
+    candidates = [f"{host()}/{description['version']}/{asset}"]
+    candidates += [description[key] for key in ('url', 'fallback_url') if description.get(key)]
+    out = []
+    for url in candidates:
+        if url not in out:
+            out.append(_checked_url(url))
+    return out
+
 
 def manifest() -> dict:
     """Read the release descriptor included with this application version."""
     return json.loads(Path(__file__).with_name('data_manifest.json').read_text())
+
+
+#: What to call each host where a person reads it. An address nobody has named reads as its own
+#: hostname, which is more use in a dialog than a word chosen for it here.
+HOST_NAMES = {'huggingface.co': 'Hugging Face', 'github.com': 'GitHub'}
+
+
+def host_name(description=None) -> str:
+    """The first host a download would use, named the way it is written about."""
+    netloc = urlsplit(sources(description)[0]).netloc
+    return HOST_NAMES.get(netloc, netloc)
 
 
 def status(destination=None, description=None) -> dict:
@@ -33,7 +114,8 @@ def status(destination=None, description=None) -> dict:
     missing = [name for name, entry in description['files'].items()
                if not (root / name).is_file() or (root / name).stat().st_size != entry['size']]
     return {'ready': not missing, 'directory': str(root), 'missing': missing,
-            'version': description['version'], 'download_bytes': description['size']}
+            'version': description['version'], 'download_bytes': description['size'],
+            'host': host_name(description), 'urls': sources(description)}
 
 
 def _hash(path, progress=None, phase='Checking the downloaded archive'):
@@ -141,6 +223,43 @@ def install_archive(archive, destination=None, description=None, progress=None, 
             shutil.rmtree(staging)
 
 
+def _fetch(url, part, description, progress=None, cancelled=None):
+    """Fetch the archive from one address into `part`, resuming whatever is already there."""
+    offset = part.stat().st_size if part.exists() else 0
+    if offset >= description['size'] and progress:
+        # The download loop below is skipped when the part file is already complete, and it was
+        # the only thing reporting progress -- so a resumed, finished download read 0 %.
+        progress('Download already complete; checking it', description['size'], description['size'])
+    if offset > description['size']:
+        part.unlink(); offset = 0
+    if offset == description['size']:
+        return
+    headers = {'User-Agent': 'ParaScape data installer'}
+    if offset:
+        headers['Range'] = f'bytes={offset}-'
+    request = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(request, timeout=60) as response:
+        if response.status != 206:
+            offset = 0
+        elif response.headers.get('Content-Range', '').split('/')[0] != f'bytes {offset}-{description["size"] - 1}':
+            raise ValueError('Unexpected download range response')
+        with part.open('ab' if offset else 'wb') as out:
+            while True:
+                if cancelled and cancelled():
+                    raise InterruptedError('Data download cancelled; partial download retained')
+                block = response.read(1024 * 1024)
+                if not block:
+                    break
+                offset += len(block)
+                if offset > description['size']:
+                    raise ValueError('Download exceeds the expected data size')
+                out.write(block)
+                if progress:
+                    progress('Downloading data', offset, description['size'])
+    if offset != description['size']:
+        raise OSError(f'The data download ended early at {offset} of {description["size"]} bytes')
+
+
 def _download_locked(destination=None, description=None, progress=None, cancelled=None) -> Path:
     description = description if description is not None else manifest()
     root = Path(destination or paths.data_dir()).absolute()
@@ -148,43 +267,28 @@ def _download_locked(destination=None, description=None, progress=None, cancelle
     required = description['size'] + sum(x['size'] for x in description['files'].values())
     if shutil.disk_usage(root.parent).free < required + 64 * 1024**2:
         raise OSError('Not enough free space for the download and verified data')
-    if not description['url'].startswith('https://github.com/EinarOlafsson/parascape/releases/download/'):
-        raise ValueError('Unexpected data download host')
+    addresses = sources(description)
     # Before any bytes move. A destination that cannot receive the install is worth knowing now
     # rather than after 898 MB, which is exactly how this failed when Einar first ran it.
     check_destination(root)
     part = root.parent / ('.parascape-' + description['sha256'] + '.part')
     try:
-        offset = part.stat().st_size if part.exists() else 0
-        if offset >= description['size'] and progress:
-            # The download loop below is skipped when the part file is already complete, and it was
-            # the only thing reporting progress -- so a resumed, finished download read 0 %.
-            progress('Download already complete; checking it', description['size'], description['size'])
-        if offset > description['size']:
-            part.unlink(); offset = 0
-        if offset < description['size']:
-            headers = {'User-Agent': 'ParaScape data installer'}
-            if offset:
-                headers['Range'] = f'bytes={offset}-'
-            request = urllib.request.Request(description['url'], headers=headers)
-            with urllib.request.urlopen(request, timeout=60) as response:
-                if response.status != 206:
-                    offset = 0
-                elif response.headers.get('Content-Range', '').split('/')[0] != f'bytes {offset}-{description["size"] - 1}':
-                    raise ValueError('Unexpected download range response')
-                with part.open('ab' if offset else 'wb') as out:
-                    while True:
-                        if cancelled and cancelled():
-                            raise InterruptedError('Data download cancelled; partial download retained')
-                        block = response.read(1024 * 1024)
-                        if not block:
-                            break
-                        offset += len(block)
-                        if offset > description['size']:
-                            raise ValueError('Download exceeds the expected data size')
-                        out.write(block)
-                        if progress:
-                            progress('Downloading data', offset, description['size'])
+        # Each address in turn, so an unreachable host is not a dead end while the same archive is
+        # published on another. Whatever arrives still has to match the pinned checksum below, so
+        # trying a second host cannot widen what gets installed. Cancellation stops the whole thing.
+        failures = []
+        for index, url in enumerate(addresses):
+            try:
+                _fetch(url, part, description, progress, cancelled)
+                break
+            except (OSError, ValueError) as error:
+                if isinstance(error, InterruptedError):
+                    raise
+                failures.append(f'{urlsplit(url).netloc}: {error}')
+                if index == len(addresses) - 1:
+                    raise OSError('The data download failed on every host -- ' + '; '.join(failures)) from error
+                if progress:
+                    progress(f'{urlsplit(url).netloc} did not answer; trying another host', 0, description['size'])
         if _hash(part, progress) != description['sha256']:
             part.unlink()
             raise ValueError('Data download checksum mismatch; retry the download')
