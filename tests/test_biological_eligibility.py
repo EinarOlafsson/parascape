@@ -145,6 +145,32 @@ def test_an_unknown_queues_the_row_and_never_passes_it():
                         "evidence_grade": "inferred"}) == "admitted"
 
 
+def test_a_reference_resource_takes_its_quantity_from_the_assay_rather_than_queueing():
+    """`level: reference` says the source is a resource, not a point on the central dogma, so the
+    level does not speak to the quantity -- but the assay does.
+
+    Calling these "unknown" queued 28 rows for a reading with nothing specific to read. A queue
+    padded with rows that need no work hides the rows that do, which is the false-ineligible mistake
+    pointing the other way.
+    """
+    slot = next(s for s in S.all_slots() if s.key == "Tg_resistance_conferring_mutation")
+    curated = next(e for e in datasets.REGISTRY if e.key == "curated_resistance_alleles")
+    assert curated.level == "reference", "the fixture no longer exercises this path"
+    verdicts, _ = E.check(slot, curated, tuple(curated.columns or ()))
+    assert verdicts["quantity"] == "carried by the assay"
+    assert E.admission(verdicts) != "needs reading"
+
+
+def test_a_reference_resource_whose_assay_cannot_answer_is_still_unknown():
+    """The pass is conditional on the assay actually establishing the quantity. A resource whose
+    assay cannot answer the axis must stay in the queue."""
+    slot = next(s for s in S.all_slots() if s.axis == "metabolism" and s.unit == "gene")
+    orth = next(e for e in datasets.REGISTRY
+                if e.level == "reference" and E.normalise_kind(e.kind) == "orthology")
+    verdicts, _ = E.check(slot, orth, ())
+    assert verdicts["quantity"] == "unknown"
+
+
 def test_being_inferred_rather_than_measured_does_not_by_itself_block_a_source():
     """Curated evidence is the only route to a Toxoplasma resistance allele. It must be marked as
     inferred and it must still be admissible; the grade is a label, not a verdict."""

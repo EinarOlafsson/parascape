@@ -270,8 +270,22 @@ def check(slot, entry, columns: tuple, pattern: str = "") -> dict:
         verdicts["quantity"] = "not applicable"
         evidence["quantity"] = f"slot role '{slot.role}', axis '{slot.axis}': never a feature"
     elif allowed is None:
-        verdicts["quantity"] = "unknown"
-        evidence["quantity"] = "source level 'reference' states a resource, not a quantity"
+        # `level: reference` says the source is a resource rather than a point on the central
+        # dogma, so the level field does not speak to the quantity -- but the ASSAY check does, and
+        # for all 28 such candidates it passes. Calling these "unknown" queued 28 rows for a reading
+        # with nothing specific to read, which is the false-ineligible mistake pointing the other
+        # way: a queue padded with rows that need no work hides the rows that do.
+        can = MEASURES.get(kind)
+        if can is not None and (slot.axis in can or slot.axis == "host effect"
+                                or (channel and channel == slot.axis)):
+            verdicts["quantity"] = "carried by the assay"
+            evidence["quantity"] = (f"level 'reference' states a resource, not a quantity; the "
+                                    f"quantity is established by the assay, and '{entry.kind}' "
+                                    f"does measure '{slot.axis}'")
+        else:
+            verdicts["quantity"] = "unknown"
+            evidence["quantity"] = ("level 'reference' states a resource, not a quantity, and the "
+                                    "assay does not establish it either")
     else:
         ok = slot.axis in allowed or (channel and channel == slot.axis)
         verdicts["quantity"] = "fits" if ok else "mismatch"

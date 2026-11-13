@@ -19,7 +19,7 @@ accuracy. Unknown dates/counts/coverage remain unknown, not zero or guessed.
 | [65.01](../done/65_01_dataset_selection_policy.md) | ✅ | 0 h | Implement and test a versioned selection policy |
 | [65.02](../done/65_02_publication_identity_audit.md) | ✅ | 0 h | Audit publication identity and citation rates for all 162 registered sources |
 | [65.03](../done/65_03_slot_literature_discovery.md) | ✅ | 0 h | Search every current slot for literature challengers and expose comparison gaps |
-| 65.04 | 70% | 6–12 h | Review biological eligibility and deeper literature; validate/promote replacements and rerun affected checks. **Done:** origin-paper verification for all 162 (asks the deposit, not full text); supplementary-table verification for all 63 (42 verified by reading, the other 21 each accounted for by name and reason); and the **biological eligibility read** for all 156 candidates filling a slot — 87 admitted, 69 queued for reading, **0 biologically ineligible**, with 31 marked inferred rather than measured (`results/dataset_selection_2026_11_08/README_biological_eligibility.md`, 18 regression tests). **Remaining:** the 69 queued readings (28 `level: reference`, 27 stage not named by the column, 14 access), the batch-5 replacement Einar chose to look at himself, and 4 files this machine cannot fetch |
+| 65.04 | 75% | 6–12 h | Review biological eligibility and deeper literature; validate/promote replacements and rerun affected checks. **Done:** origin-paper verification for all 162 (asks the deposit, not full text); supplementary-table verification for all 63 (42 verified by reading, the other 21 each accounted for by name and reason); and the **biological eligibility read** for all 156 candidates filling a slot — 115 admitted, 41 queued for reading, **0 biologically ineligible**, with 31 marked inferred rather than measured (`results/dataset_selection_2026_11_08/README_biological_eligibility.md`, 20 regression tests). **Remaining:** the 41 queued readings (27 stage not named by the column, 14 access), the batch-5 replacement Einar chose to look at himself, and 4 files this machine cannot fetch |
 
 65.02 depends on 65.01; 65.03 depends on 65.01/65.02; 65.04 depends on all three.
 Each completion requires recorded evidence, relevant checks, a commit and nightly
@@ -581,3 +581,63 @@ no amount of tooling makes a PDF a table) and `spacr_escrt_screen`, whose record
 
 From 0 verified when this work started to 42 of 63, and the 21 that are not verified are each accounted for
 by name and reason rather than sitting in a single "could not check" bucket.
+
+## 65.04, 2026-11-13: the biological eligibility read, and a table that was too strict
+
+The admission step, for all **156 candidates that currently fill a slot** (66 sources, 60 slots).
+`scripts/verify_biological_eligibility.py`, offline and deterministic. It compares two declarations
+rather than my reading of a paper: what the slot asks (`axis`, `unit`, `context`, the three facet
+paths, `role`) against what the source declares (`organism`, `kind`, `level`, `coverage`,
+`accession`, column names).
+
+| Verdict | Candidates |
+|---|---:|
+| admitted on declared grounds | 115 |
+| needs reading | 41 |
+| **biologically ineligible** | **0** |
+
+Organism, unit and mapping fit for all 156. **31 are inferred rather than measured** and are
+labelled so; being inferred is a grade, not a verdict, because curated reading is the only route to
+a Toxoplasma resistance allele.
+
+**The first version of this check called 36 candidates ineligible, and every one was a correct
+pairing.** The capability table was too narrow: BioID was not allowed to report localization, though
+a bait anchored in an outer membrane reports what is near it; proteomics was not allowed to answer a
+chemistry question, though thermal proteome profiling is target engagement; whole-genome sequencing
+of evolved clones was not allowed to be sequence; curated reading was not allowed to carry chemistry
+or fitness; and RNA-seq was confined to steady-state abundance, so decay after transcriptional
+arrest and the architecture of an untranslated region both came out as mismatches. A strict
+admission table rejects good evidence with a confident verdict, and that is harder to notice than
+the opposite error because a rejection reads as rigour. Every widening now names the source that
+justified it.
+
+Three further traps, each of which produced a confident wrong answer before it was found, and each
+now a regression test confirmed to fail when its guard is removed:
+
+* **The channel is chosen by the column, not the assay.** A ribosome-profiling deposit ships the
+  footprint channel and the matched RNA channel. Reading the assay alone called five correct
+  candidates a mismatch, among them `riboseq_mrna_`, which says what it is in its own name.
+* **Prose that mentions a stage may be denying it.** `gse245775` matched "bradyzoite" from its note,
+  and that note exists to say the opposite: the arms are labelled `pre-bradyzoites`, "named for that
+  and not for bradyzoite". A column name is now a declaration; prose is something to read.
+* **A candidate must not inherit a stage from a sibling column.** `rna108740_Day` was credited with
+  "bradyzoite" because `rna108740_Tissue_cysts` sits in the same deposit.
+
+A fourth correction went the other way. 28 rows record `level: reference`, which states a resource
+rather than a point on the central dogma, and an earlier version queued all 28 as unknown -- putting
+28 rows in front of a reader with nothing specific to read. The level does not speak to the quantity
+for those, but the assay does, and for all 28 it establishes it. They now read **carried by the
+assay**. A queue padded with rows that need no work hides the rows that do.
+
+**One finding about the registry itself.** Two assays are spelled more than one way across 13
+entries: `Ribo-seq` / `RiboSeq` / `riboseq`, and `IP-MS` / `IPMS`. Anything grouping by assay without
+folding them treats one assay as two or three. Recorded in `assay_spelling_drift.json`, with a test
+that fails if a third starts to drift.
+
+**Coverage gap, stated rather than hidden:** Cp declares 63 slots and the registry holds no Cp
+source, so no Cp candidate appears in this table at all.
+
+The 41 that need reading: 27 where the slot asks about a life stage the column does not name, 7 that
+are measurements with no recorded accession, and 7 that are both. Report:
+`results/dataset_selection_2026_11_08/README_biological_eligibility.md`. Tests:
+`tests/test_biological_eligibility.py`, 20 passed.

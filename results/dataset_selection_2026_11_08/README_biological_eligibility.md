@@ -28,8 +28,8 @@ pass — the rule instruction 65 sets for dates and counts, which matters more f
 
 | | candidates | share |
 |---|---:|---:|
-| admitted on declared grounds | 87 | 56 per cent |
-| needs reading | 69 | 44 per cent |
+| admitted on declared grounds | 115 | 74 per cent |
+| needs reading | 41 | 26 per cent |
 | **biologically ineligible** | **0** | **0 per cent** |
 
 **No candidate now filling a slot is biologically ineligible on declared grounds.** Organism, unit
@@ -40,14 +40,19 @@ annotation, orthology. They are admitted as evidence and labelled, never counted
 Being inferred is a grade, not a verdict: curated reading is the only route to a Toxoplasma
 resistance allele, because this organism has no resistome to parse.
 
-### What the 69 need, and why
+### What the 41 need, and why
 
 | what is unknown | rows | what has to be read |
 |---|---:|---|
-| quantity | 28 | the source records `level: reference`, which states a resource rather than a quantity, so the axis cannot be checked from the declaration |
 | stage | 27 | the slot asks about a life stage that the column does not name |
 | access | 7 | a measurement with no recorded accession |
 | access and stage | 7 | both of the above |
+
+A further **28 rows record `level: reference`**, which states a resource rather than a point on the
+central dogma. The level field does not speak to the quantity for those, but the assay does, and for
+all 28 the assay establishes it — so they read **carried by the assay** and are admitted rather than
+queued. An earlier version of this table queued them, which put 28 rows in front of a reader with
+nothing specific to read. A queue padded with rows that need no work hides the rows that do.
 
 ## What I got wrong first, and what it cost
 
