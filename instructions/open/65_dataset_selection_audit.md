@@ -735,3 +735,28 @@ and `mrna_decay_gse329845` moved from unknown to tachyzoite on the same evidence
 settled this way: GSE22258 names its columns `tachyzoite` and `bradyzoite` while no sample
 characteristic in that series declares a stage at all, so those remain column-name claims and are
 recorded as such rather than counted as verified.
+
+## 65.04, 2026-11-13: the nine deposit-silent rows do not resolve from abstracts either
+
+Checked, so that nobody repeats it. For the nine candidates whose GEO series declares no stage in
+any sample characteristic, the next authority is the paper, and the abstract does not settle them:
+
+* **GSE99395** (PMID 29228904, Hassan et al., BMC Genomics 2017) -- the abstract names **no life
+  stage at all**.
+* **GSE129869** (PMID 31167946, Holmes et al., mSphere 2019) -- the abstract says "Toxoplasma
+  tachyzoites secrete an arsenal of effector proteins", which is a sentence about the biology of the
+  organism, not a statement about what was in these tubes. Counting it would be the same mistake as
+  reading "bradyzoite" out of the `gse245775` note that exists to deny it.
+* **GSE22258** and **GSE302107** record no PMID at all; the second is a 2025 bioRxiv preprint.
+
+So these nine need the full text or the authors, and that is their correct terminal state rather
+than a verdict reached from a background sentence. `gse22258` is the one worth a person looking at,
+because its columns are NAMED `rna22258_tachyzoite` and `rna22258_bradyzoite` while no sample
+characteristic in the series declares a stage -- the names are almost certainly right and are
+currently believed on nothing but their own say-so.
+
+Separately, the four rows reported as "several stages, column unmapped" are not a problem: those
+columns (`expr_tachy`, `expr_cyst`, and the two `eif12ko_` patterns) are DERIVED summaries rather
+than raw sample columns, so matching them against sample titles cannot work by construction. Their
+stage is already settled by the column name and, for the first two, by `parascape/units.py`, which
+documents them as the mean tachyzoite and mean tissue-cyst FPKM.
