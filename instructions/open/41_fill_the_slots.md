@@ -3290,3 +3290,35 @@ So of the three steps listed earlier for `Cp_transcription · oocyst`, step 2 is
 is step 1, registering the existing `cgd` table as the Cp reference, and step 3, admitting
 GSE271211 against it at 66 per cent gene coverage -- both of which change what ParaScape ships and
 belong with the other slot decisions waiting for Einar.
+
+## 2026-11-13: Cp registered and the oocyst slot filled -- Einar decided "register Cp + admit GSE271211"
+
+Both done, and the slot grades.
+
+* **The deposit.** `scripts/build_cryptosporidium_oocyst_deposit.py` reads GSE271211 and writes
+  `stage_measured_cryptosporidium_oocyst_GSE271211.csv` to the dataset root. **Only the three
+  `Inoculum` samples at time zero** -- undigested oocysts in triplicate -- become the slot column; the
+  twelve digestion arms are oocysts under the excystation trigger and are kept as their own columns
+  for a perturbation slot to claim. Mean log2 CPM, per sample, then averaged.
+* **The identifiers.** Keyed on `CPATCC_` from GCA_015245375.1 against a table keyed on `cgd` from
+  GCA_000165345.1, so the values arrive through the 2,571-gene exact-protein map. **2,566 of 3,923
+  genes carry a value.** The third the map does not reach **stays missing rather than zero**, because
+  "not measured here" and "measured and absent" are different answers.
+* **The space.** `build_cryptosporidium_space_notebook.py` gains the source, so
+  `cp_gene_nodes.parquet` carries `expr_oocyst` and `oocyst_detected` with provenance, source
+  checksum and licence `P (public GEO deposit)`. Two columns added, none lost, row count unchanged.
+* **The slot.** `SPACE_PATTERNS["Cp"]` gains `transcription · oocyst -> expr_oocyst`.
+  `Cp_transcription · oocyst` now grades **B, 2,566 genes, 65.4 per cent**. Exactly one slot changed.
+  `oocyst_detected` is deliberately NOT a pattern: it is a flag present wherever the measurement is,
+  so it would read the same coverage twice.
+
+**This is the first MEASURED transcription in the Cryptosporidium space.** Until now all nine graded
+Cp slots came from the gene table itself, which is what the eligibility read of instruction 65 was
+reporting when it said 63 Cp slots and zero Cp sources.
+
+**One honest qualification about that audit line.** It counts `datasets.REGISTRY` entries, and the Cp
+space does not use `datasets.REGISTRY` at all -- it has its own build and its own column metadata. So
+this work fills the slot and gives it provenance, but it does not change the number that audit
+prints. Making Cp visible to that audit is a separate piece of work about where the audit looks.
+
+Tests as CI runs them, without the cache pin: 338 passed.
