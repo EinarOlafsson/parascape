@@ -1,0 +1,44 @@
+{
+ "Hs_tissue": {
+  "space": "Hs",
+  "lens": "tissue",
+  "features": [
+   "fibroblast_tpm",
+   "hepatocyte_tpm",
+   "monocyte_tpm",
+   "myeloid_dc_tpm",
+   "neuron_excitatory_ncpm",
+   "neuron_inhibitory_ncpm",
+   "astrocyte_ncpm",
+   "microglia_ncpm",
+   "astrocyte_protein_ppm",
+   "brain_protein_ppm",
+   "liver_protein_ppm"
+  ],
+  "genes": 21020,
+  "genes_with_any_value": 19314,
+  "executed_method": "umap",
+  "node_file_sha256": "0940ed9c2a0f17d42b8a70644010f387878a3adef8ea408b67bdd3dd28d5af29",
+  "coordinates_sha256": "f8540f56a287c6c29e862f24204a98f891e58fd8264be2b077a137d3e0d8c73e"
+ },
+ "Hs_parasite_facing": {
+  "space": "Hs",
+  "lens": "parasite_facing",
+  "features": [
+   "pv_enrichment_log2",
+   "hff_tg_infection_log2fc",
+   "hepatocyte_pf_infection_log2fc",
+   "rhoptry_discharge_score",
+   "rhoptry_discharge_beta",
+   "rbc_membrane_psms",
+   "rbc_cytoplasm_psms",
+   "rbc_surface_copies_uk",
+   "rbc_surface_copies_senegal"
+  ],
+  "genes": 21020,
+  "genes_with_any_value": 20492,
+  "executed_method": "umap",
+  "node_file_sha256": "0940ed9c2a0f17d42b8a70644010f387878a3adef8ea408b67bdd3dd28d5af29",
+  "coordinates_sha256": "7ee0f8e3d6833a95539bbc0e7f5b78edf348faed79d9f359720fee4d646ad6a3"
+ }
+}

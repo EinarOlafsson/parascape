@@ -638,3 +638,59 @@ So the remaining work is in three parts, and only the third is the window:
 Step 2 is real machine time on a shared box (a 58,988-row embedding), so this piece is gated on machine time in
 the same way items 69, 80 and 81 are, not merely on effort. Recorded here so it is not picked up as a quick UI
 job and then found to need an afternoon of compute.
+
+## 2026-11-13: WP9 step 1 and step 2 -- host layouts as two selectable lenses
+
+Einar chose **"both, as selectable lenses"** for what makes two host genes similar. Built by
+`scripts/build_host_layouts.py` into `results/host_layouts_2026_11_13/`.
+
+* **`tissue`** -- similar when expressed in the same tissues and cell types.
+* **`parasite_facing`** -- similar in how they respond to infection and in what the parasite does to
+  them: vacuole enrichment, the fibroblast and hepatocyte response to infection, rhoptry discharge,
+  the erythrocyte surface.
+
+Every host gene keeps a position in both: a gene no lens measures is NOT dropped, because dropping
+it would make a map of what has been studied look like a map of the proteome.
+
+| lens | genes | features | with at least one value |
+|---|---:|---:|---|
+| Hs tissue | 21,020 | 11 | 19,314 (91.9 per cent) |
+| Hs parasite-facing | 21,020 | 9 | 20,492 (97.5 per cent) |
+| Mm tissue | 16,473 | 6 | 16,417 (99.7 per cent) |
+| **Mm parasite-facing** | 16,473 | 1 | **147 (0.9 per cent) -- REFUSED** |
+
+**Two corrections to what this item previously recorded.**
+
+**1. The compute estimate was wrong, and the row count behind it was wrong.** This file said 58,988
+human genes and called the embedding "real machine time... an afternoon of compute", which is why
+the piece was scheduled alongside items 69, 80 and 81. The table holds **21,020 human and 16,473
+mouse** genes, and all four lenses build in about two minutes on eight cores. It was never gated on
+machine time.
+
+**2. The mouse parasite-facing lens is refused, not built.** It has one column and 147 of 16,473
+genes carry a value. Built anyway -- and it was, before the guard -- it produced **16,473 distinct
+positions**, because UMAP spreads points apart even when their inputs are identical: 99 per cent of
+that map was the repulsion term acting on median-imputed copies of one row. It looks like a map and
+is noise, which is worse than no map because nobody can see which it is. `MINIMUM_MEASURED = 0.10`
+now refuses any lens below a tenth, and records the refusal in the summary rather than omitting it.
+
+The thinness is itself the finding: **the mouse table carries one parasite-facing measurement**, the
+macrophage surface. A second would make the lens real.
+
+**Still to do (step 3):** opening these in the window, which is the module work. Each layout records
+its features, its recipe and the SHA-256 of the node file it was built from, so the window can
+refuse a layout that does not match the table it is shown beside.
+
+**The host layouts are NOT bit-reproducible, and the freeze has to mean the file rather than the
+recipe.** Two rebuilds of the same lens from the same table differ by up to 97 units, and a test
+that ran both inside ONE process differs too -- so it is not the environment between runs, it is
+umap-learn here, which does not honour `random_state` as a guarantee. The Toxoplasma layout DID
+reproduce to the bit on 2026-11-13, so whatever makes that one stable does not carry over to this
+path, and I have not found what it is.
+
+What this costs: the tie recorded in each layout (`node_file_sha256` plus `coordinates_sha256`) still
+says exactly which table a layout belongs to and detects any later drift, which is what WP9 step 2
+asked for. What it cannot promise is that rebuilding reproduces the same coordinates. So the shipped
+file is the artefact, not a recipe that regenerates it -- and anyone rebuilding gets a different,
+equally valid arrangement of the same data. Worth deciding before step 3 whether that is acceptable
+for a map people will compare between sessions.
