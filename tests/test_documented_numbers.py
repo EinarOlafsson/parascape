@@ -26,6 +26,7 @@ import pytest
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
+import parascape  # noqa: E402
 from parascape import paths  # noqa: E402
 
 DOCS = ("README.md", "HANDOFF.md", "MATERIALS_AND_METHODS.md")
@@ -42,8 +43,18 @@ def facts():
     # measuring them here turns "you used this application" into "the documentation is wrong", which
     # is the opposite of what this test is for.
     written_while_running = {"embeddings", "runs", "logs"}
+    # Measured against the PACKAGED data directory rather than `paths.data_dir()`, and the
+    # difference is not academic. `data_dir()` is whatever the search chain resolves, so on a
+    # machine where the full data release is installed it is that release -- 1,214 MB of tables
+    # plus the per-run omics directories -- while the sentence in the documents is about the cache
+    # the package ships, 337 MB. Measuring the resolved directory made this test report the size of
+    # whichever data happened to be installed, so it passed in CI and failed on a developer machine
+    # for opposite reasons. It cost a red nightly and a documentation change that was wrong in the
+    # direction of the machine that measured it.
+    packaged = os.path.join(os.path.dirname(os.path.abspath(parascape.__file__)), "data")
+    root = packaged if os.path.exists(os.path.join(packaged, "nodes.parquet")) else paths.data_dir()
     size = 0
-    for dp, dirs, fs in os.walk(paths.data_dir()):
+    for dp, dirs, fs in os.walk(root):
         dirs[:] = [d for d in dirs if d not in written_while_running]
         size += sum(os.path.getsize(os.path.join(dp, f)) for f in fs)
     # The second species has its own cache, and a document quoting its shape should be held to it
@@ -83,11 +94,20 @@ def test_the_cache_column_count_is_quoted_correctly(facts):
 def test_the_cache_size_is_quoted_correctly(facts):
     """Rounded to the megabyte in prose, so exactness is not required -- but 11 against 17 is drift.
 
-    The digit count is not capped. It was `\\d{1,3}`, which could not match the size the cache had
-    actually grown to: both documents said 278 MB, a figure from the 0.0.3.0 era, while the installed
-    release was 1,214 MB. Four digits did not match the pattern, so the test could only have reported
-    "no longer states the cache size" -- and a reader was told the download was a quarter of its size.
-    Thousands separators are accepted because that is how a four-digit number is written in prose.
+    The digit count is not capped, which is a leftover from a mistake worth keeping written down.
+    The pattern was `\\d{1,3}`. I measured the cache at 1,214 MB, concluded both documents understated
+    it more than four-fold, raised the documented figure and widened the pattern to fit four digits.
+
+    **The measurement was wrong, not the documents.** I had pointed `PARASCAPE_CACHE` at the full
+    data release earlier in the same session, so `data_dir()` resolved to that release rather than to
+    the cache the package ships. I changed the measuring instrument and then reported the instrument.
+    The shipped cache is 337 MB, the documents said 278 MB, and that gap was ordinary drift well
+    inside the tolerance here. The wrong figure passed locally for the same reason it was wrong, and
+    CI caught it: 'HANDOFF.md says 1214 MB; the cache is 337 MB'.
+
+    So `facts` now measures the PACKAGED directory rather than whatever `data_dir()` resolves, and
+    the pattern keeps its wider digit count because a thousands separator costs nothing and a capped
+    one could only ever report "no longer states the cache size".
     """
     for doc in ("HANDOFF.md", "MATERIALS_AND_METHODS.md"):
         text = _doc(doc)
