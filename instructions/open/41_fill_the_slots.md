@@ -3078,3 +3078,34 @@ All 14 slots that received candidates are decided here.
 **Two accepts from 81 proposals.** That ratio is the finding: a GEO index search on slot words is a way of
 listing studies that share vocabulary, and judging is the entire value. The twelve refusals are recorded so
 the same searches are not run again expecting a different answer.
+
+## 2026-11-13: both accepts fail their own check -- two from 81 becomes none
+
+The previous pass ended "Two accepts from 81 proposals". One carried an explicit outstanding
+condition and nobody had discharged it; checking it, and then checking the other the same way,
+refuses both. Asked of the deposit, not the paper title.
+
+**`Pf_host transcriptome · Anopheles midgut` <- GSE284425: REFUSE.** It was accepted "pending a
+tissue check", and the tissue check fails. All **62 of 62 samples** record
+`tissue: Salivary glands` and `source name: Salivary glands`. There is no midgut sample in the
+series. Salivary gland is not a shortage of midgut: it is the other end of the vector, and the
+parasite stage there (sporozoite) is not the stage the midgut slot asks about. This is the same
+class of mistake as `rna108740_Day` in instruction 65 -- the right organism and the right experiment
+in the wrong compartment -- and it would have been invisible once loaded.
+
+**`Cp_transcription · oocyst` <- GSE232438: REFUSE for THIS slot.** The organism is right (22 of 22
+*C. parvum*) and it is a genuine lifecycle series, but **no sample is an oocyst**. The 22 titles are
+`crypto24hrs` through `crypto54hrs`, `infected_in_vivo`, four `Male_in_vitro`, and twelve
+`MybM_OE`/`WT` Shield-1 and vehicle arms. Every mention of "oocyst" in the series is in the GROWTH
+PROTOCOL -- "infected with 250,000 oocysts", "300,000 AP2-M tdNeon oocysts per well" -- where the
+oocyst is the INOCULUM, not the thing measured. A word search for the slot term finds it, and finds
+it in the sentence describing what was put on the cells.
+
+This refusal is narrower than the other one: the series may well suit a different Cp slot, such as
+intracellular development or a maximum across stages, and it is worth proposing there. It does not
+answer an oocyst question.
+
+**So the ratio is 0 accepts from 81 proposals**, and the lesson the previous pass drew is stronger
+than it stated: a GEO index search on slot words lists studies that share vocabulary, and the
+judging is not merely the value -- without it the hit rate here would have been zero per cent while
+reading as two per cent. A conditional accept with nobody assigned to the condition is an accept.
