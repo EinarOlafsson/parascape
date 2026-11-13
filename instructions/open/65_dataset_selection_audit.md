@@ -19,7 +19,7 @@ accuracy. Unknown dates/counts/coverage remain unknown, not zero or guessed.
 | [65.01](../done/65_01_dataset_selection_policy.md) | ✅ | 0 h | Implement and test a versioned selection policy |
 | [65.02](../done/65_02_publication_identity_audit.md) | ✅ | 0 h | Audit publication identity and citation rates for all 162 registered sources |
 | [65.03](../done/65_03_slot_literature_discovery.md) | ✅ | 0 h | Search every current slot for literature challengers and expose comparison gaps |
-| 65.04 | 75% | 6–12 h | Review biological eligibility and deeper literature; validate/promote replacements and rerun affected checks. **Done:** origin-paper verification for all 162 (asks the deposit, not full text); supplementary-table verification for all 63 (42 verified by reading, the other 21 each accounted for by name and reason); and the **biological eligibility read** for all 156 candidates filling a slot — 115 admitted, 41 queued for reading, **0 biologically ineligible**, with 31 marked inferred rather than measured (`results/dataset_selection_2026_11_08/README_biological_eligibility.md`, 20 regression tests). **Remaining:** the 41 queued readings (27 stage not named by the column, 14 access), the batch-5 replacement Einar chose to look at himself, and 4 files this machine cannot fetch |
+| 65.04 | 75% | 6–12 h | Review biological eligibility and deeper literature; validate/promote replacements and rerun affected checks. **Done:** origin-paper verification for all 162 (asks the deposit, not full text); supplementary-table verification for all 63 (42 verified by reading, the other 21 each accounted for by name and reason); and the **biological eligibility read** for all 156 candidates filling a slot — 115 admitted, 41 queued for reading, **0 biologically ineligible**, with 31 marked inferred rather than measured (`results/dataset_selection_2026_11_08/README_biological_eligibility.md`, 21 regression tests). **Remaining:** the 41 queued readings (27 stage not named by the column, 14 access), the batch-5 replacement Einar chose to look at himself, and 4 files this machine cannot fetch |
 
 65.02 depends on 65.01; 65.03 depends on 65.01/65.02; 65.04 depends on all three.
 Each completion requires recorded evidence, relevant checks, a commit and nightly
@@ -641,3 +641,38 @@ The 41 that need reading: 27 where the slot asks about a life stage the column d
 are measurements with no recorded accession, and 7 that are both. Report:
 `results/dataset_selection_2026_11_08/README_biological_eligibility.md`. Tests:
 `tests/test_biological_eligibility.py`, 20 passed.
+
+## 65.04, 2026-11-13: asking the deposit for the stage, and a bradyzoite slot that is two thirds cat
+
+The declaration check cannot resolve a stage the column does not name, so
+`scripts/resolve_stage_from_deposit.py` asks the submitter, through the per-sample characteristics
+in GEO. Of the 34 stage readings, 6 sources carry a GEO series and could be asked; 23 rows have no
+deposit to ask, and 6 belong to series where no sample names a stage at all, so the paper is the
+only authority left for those.
+
+**One disagreement, and it is real.** `Tg_transcription_bradyzoite_tissue_cyst` carries the column
+pattern `rna108740_Day`. That pattern selects 14 samples of GSE108740, and the submitter declares
+every one of them `developmental stage: Enteropithelial stages`, host `Felis catus` — the stages in
+the gut of the cat, not bradyzoites in a tissue cyst in a mouse.
+
+The slot averages 12 columns and **eight of them are the cat samples**. Against the same slot with
+those columns removed, over 7,865 genes: Spearman 0.79, with 3,105 genes (39 per cent) moving more
+than 10 percentile points and 973 (12 per cent) moving more than 25.
+
+Two things say this was not deliberate. No rationale is recorded anywhere for putting the Day
+columns in a bradyzoite slot, and `expr_cyst` — the curated summary of the same deposit — is
+documented as "the mean tissue-cyst FPKM", so the hand-built column already excludes what the
+pattern pulls in. `rna108740_Day` over-matches.
+
+**The slot is unchanged, deliberately.** Removing the pattern changes the feature values every
+downstream model sees, which has consequences for the frozen benchmarks, so it is a decision to take
+deliberately rather than overnight. Recommended: drop `rna108740_Day` from that slot, and if the cat
+stages are wanted as evidence — which they reasonably might be — give them a slot of their own,
+since no slot currently asks about the enteroepithelial stages at all.
+
+Two bugs of my own, found while checking the finding and both now regression tests. The comparison
+read the stages a slot asks about from its three facet paths but not from `context`, and
+`Tg_transcription_oocyst_sporozoite` names 'oocyst' only in `context` — so oocyst data, which is
+exactly what that slot is for, came out as disagreeing with its own slot. And rows where there was
+no deposit to ask were being listed as disagreements, which buried the one real finding under 23
+rows that say nothing.

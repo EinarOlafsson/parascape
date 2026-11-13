@@ -118,6 +118,15 @@ def test_a_candidate_does_not_inherit_a_stage_from_a_sibling_column():
 # ------------------------------------------------------------------ the slots that are exempt
 
 
+def test_a_slot_that_names_a_stage_only_in_its_context_still_asks_for_it():
+    """`Tg_transcription_oocyst_sporozoite` carries 'sporozoite' in all three facet paths and
+    'oocyst, sporulation' only in `context`. Reading the paths alone made oocyst data -- which is
+    exactly what that slot is for -- look like a disagreement with its own slot."""
+    slot = next(s for s in S.all_slots() if s.key == "Tg_transcription_oocyst_sporozoite")
+    assert "oocyst" in slot.context.lower(), "the fixture no longer exercises the trap"
+    assert {"oocyst", "sporozoite"} <= E.stage_words(slot)
+
+
 def test_a_slot_that_is_never_a_feature_is_not_asked_whether_its_quantity_fits():
     """Asking whether a source fits an axis literally called "NEVER a feature" is a category error,
     not a finding."""

@@ -89,6 +89,45 @@ Three further traps, each of which produced a confident wrong answer before it w
 All four are regression tests in `tests/test_biological_eligibility.py` (18 tests), and each was
 confirmed to fail when the guard is removed.
 
+## Asking the deposit, and the one real defect it found
+
+A declaration check cannot resolve a stage the column does not name, so `resolve_stage_from_deposit.py`
+asks the authority that knows: the submitter, through the per-sample characteristics in GEO. Same
+principle the origin-paper check settled on — ask the deposit before the paper — applied to biology
+instead of provenance. Of the 34 stage readings, 6 sources carry a GEO series and could be asked;
+the other 23 rows have no deposit to ask, and 6 belong to series where no sample names a stage at
+all, so for those the paper is the only authority left.
+
+**It found one disagreement, and it is a real one.**
+
+> `Tg_transcription_bradyzoite_tissue_cyst` includes the column pattern `rna108740_Day`. That
+> pattern selects 14 samples of GSE108740, and the submitter declares every one of them
+> **`developmental stage: Enteropithelial stages`**, host **`Felis catus`**. Those are the stages in
+> the gut of the cat, not bradyzoites in a tissue cyst in a mouse.
+
+The slot averages 12 columns. **Eight of the 12 are the cat enteroepithelial samples**; only
+`rna108740_Tissue_cysts_A/B`, `expr_cyst` and `rna22258_bradyzoite` are the stage the slot asks for.
+
+What it costs, measured against the same slot with the cat columns removed, over 7,865 genes:
+
+| | |
+|---|---|
+| agreement of the two versions | Spearman 0.79 |
+| genes moving more than 10 percentile points | 3,105 (39 per cent) |
+| genes moving more than 25 percentile points | 973 (12 per cent) |
+
+Two things say the inclusion was not deliberate. There is **no recorded rationale** anywhere for
+putting the Day columns in a bradyzoite slot. And `expr_cyst`, the curated summary of the same
+deposit, is documented as "the mean **tissue-cyst** FPKM" — the hand-built column excludes exactly
+what the pattern pulls in. The pattern `rna108740_Day` simply over-matches.
+
+**I have not changed the slot.** Removing the pattern changes the feature values every downstream
+model sees for that slot, which is a scientific change with consequences for the frozen benchmarks,
+so it is a decision to take deliberately rather than overnight. The recommendation is to drop
+`rna108740_Day` from the patterns of `Tg_transcription_bradyzoite_tissue_cyst`, and — if the cat
+stages are wanted as evidence, which they reasonably might be — to give them a slot of their own,
+since no slot currently asks about the enteroepithelial stages.
+
 ## One finding about the registry itself
 
 Two assays are spelled more than one way across 13 entries: `Ribo-seq` / `RiboSeq` / `riboseq`, and

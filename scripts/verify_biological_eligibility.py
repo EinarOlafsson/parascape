@@ -182,7 +182,11 @@ EXEMPT_ROLES = {"never", "metadata"}
 def stage_words(slot) -> set:
     """The life stage the slot asks about, from the facets rather than from the slot name."""
     words = set()
-    for path in (slot.evidence_path, slot.biology_path, slot.context_path):
+    # `context` is read alongside the three facet paths because it is sometimes the only place a
+    # stage is written. `Tg_transcription_oocyst_sporozoite` carries 'sporozoite' in all three paths
+    # and 'oocyst, sporulation' only in `context`, so reading the paths alone made oocyst data --
+    # which is exactly what that slot is for -- look like a disagreement with its own slot.
+    for path in (slot.evidence_path, slot.biology_path, slot.context_path, (slot.context,)):
         for part in path:
             p = str(part).lower()
             for stage in ("tachyzoite", "bradyzoite", "sporozoite", "oocyst", "merozoite",
