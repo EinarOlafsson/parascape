@@ -813,3 +813,16 @@ a changed table is refused; the refused mouse lens stays refused; protein spaces
 `detect`; a protein window opens through each lens and shows the protein panel; an installed mouse gene pack
 opens as its own map. Rendered offscreen in the real Window (Map module) for human proteins by both lenses and
 for mouse genes, and looked at.
+
+## 2026-11-13: Einar decided the two pack questions
+
+* **GEO-derived columns may be redistributed, with citation.** "Yes, with citation." Every GEO-derived column
+  ships in its pack with its GEO accession and the paper behind it named in `NOTICE.txt`. This closes the
+  question open since 2026-11-09. It is not the one-line change the earlier note promised: `packs.build`
+  accepts only `O` and `SA`, so GEO columns need their own licence class (public deposit, cited) that the
+  builder accepts only when an accession and a citation are both recorded. Moved into the hosting work below.
+* **All ParaScape data moves to Hugging Face, in the account of Einar.** "all of the data that parascape uses
+  should be hosted on huggingface in my account. otherwise the space limits on github will fill quickly."
+  The gene and protein packs therefore go to a Hugging Face dataset, not to GitHub release assets, and the
+  downloader reads from there. The 0.0.11.x data release already being published to GitHub on this date
+  finishes as planned; the move follows it.
