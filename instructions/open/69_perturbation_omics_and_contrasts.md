@@ -500,3 +500,34 @@ rather than declared fixed on a clean start -- which is the mistake made with th
 **The honest shape of the original diagnosis:** batching was a genuine bug and worth fixing (a timsTOF `.d` is a
 directory, so its size measured as zero), but calling it *the* cause was premature. It explained one project,
 not the queue.
+
+## 2026-11-13: the throughput note is stale, and the queue is not stalled
+
+Checked because the file still carries a "~80 days for the remaining 1,746" estimate, and anyone
+reading it now would be misled. The services are **active and working**: `parascape-quant-cached`,
+`parascape-requant` and `parascape-ms-uniform` all running, a run finished at 03:22 and the next
+started at 03:33, two salmon processes at 455-485 per cent CPU.
+
+**1,042 runs are done.** What changed is the size of what is left, not the health of the queue.
+
+| | 11-06 to 11-10 | 11-10 to now |
+|---|---:|---:|
+| runs finished per day | 111.8 | 3.8 |
+| median depth of a run | 33.3 M reads | 320.5 M reads |
+| **reads processed per day** | **3.72 G** | **1.22 G** |
+
+The runs now in the queue are **9.6 times deeper**, which accounts for most of the 29-fold fall in
+runs per day. It does not account for all of it: reads per day also fell about three-fold, so a very
+deep run costs more per read than a shallow one -- plausibly I/O against the NAS, or the combined
+`ME49_host` index, but that is a guess and is recorded as one.
+
+**So a figure in runs per day is not a useful estimate for this queue any more**, because it depends
+entirely on the depth mix of whatever is next. Reads per day is the honest measure of capacity.
+
+**Nothing here is a fault to fix.** The resource allocation is exactly the documented one -- 16
+logical CPUs (`0-7 16-23`) from the drop-in Einar set on 2026-11-02 -- and the workers use about 9
+of them. The only question worth Einar's eye is whether the three-fold loss of reads per day on deep
+runs is worth chasing; it is a shared-machine question rather than something to change quietly.
+
+`parascape-requant` (instruction 81) logs `1168 new runs still to quantify`, unchanged hourly. That
+is correct behaviour: it is waiting on this queue, not stuck.
