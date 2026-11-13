@@ -635,3 +635,22 @@ costs more than host salmon itself. Narrowing the later pass to the slow project
 shows "cheap stages done; salmon against ME49_host waits for the later pass"; no `salmon quant` against
 `ME49_host/salmon_index` starts until the log says "starting the host salmon pass". Progress: runs finished =
 `done.json`; runs with cheap stages = `done.json` plus `stages.json`. Tests: `tests/test_omics_host_salmon_later.py`.
+
+**Update the same day -- Einar: defer host salmon for the three slow projects only.** The cost table above showed
+that deriving the reads again costs more than host salmon itself for most projects, so the later pass is now
+limited to GSE210671, GSE223819 and GSE223621; every other run does host salmon in its first pass, as before.
+- Set in `~/.config/systemd/user/parascape-quant-cached.service.d/96-host-salmon-later-slow-studies.conf`:
+  `Environment=PARASCAPE_HOST_SALMON_LATER_STUDIES=GSE210671,GSE223819,GSE223621` (a new file; nothing was
+  overwritten). The queue supervisor restarts that same unit, so a restart keeps it.
+- The first bridge was drained (it finishes its current run, SRR20946773 of GSE210671, which is deferred under
+  either setting). `parascape-quant-bridge2` carries the same variable and starts when the first bridge has
+  finished, so the bridges never run side by side; it drains itself when the old main process exits.
+- A run left with `stages.json` from a study that is no longer deferred finishes its host salmon in the first
+  pass, not at the end.
+- The empty claim files of the switch-over live only in the claims folder of the old service, which the new code
+  clears at start; they never block new-code workers (the bridges use no claim folder).
+- Checked on SRR8907198 (GSE129869): salmon against `ME49_host` ran in the first pass and `done.json` was written.
+
+Expected time with 3 workers: every run except the slow host salmon in about 9.9 days, then the slow host-salmon
+pass (a handful of GSE210671 runs, about 13 hours each including the reads) in about 1 more day: about 11.6 days
+for the whole queue, against about 10.8 days in the old order and 15.5 days with every study deferred.

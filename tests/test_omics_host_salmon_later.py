@@ -121,6 +121,18 @@ def test_the_later_pass_can_be_narrowed_to_named_studies(tmp_path, monkeypatch):
     assert ("salmon", "ME49_host", "SRR0000001") in calls
 
 
+def test_a_staged_run_of_a_study_no_longer_deferred_finishes_in_the_first_pass(tmp_path, monkeypatch):
+    calls = []
+    _fake_tools(tmp_path, monkeypatch, calls)
+    Q._quantify_pass([RUN], None, 0, Q.CHEAP)                 # staged while every study was deferred
+    monkeypatch.setattr(Q, "HOST_SALMON_LATER_STUDIES", {"GSE210671"})
+    calls.clear()
+    Q._quantify_pass([RUN], None, 0, Q.CHEAP)
+    run_dir = tmp_path / "nas" / "rnaseq" / "GSE1" / "SRR0000001"
+    assert calls == [("salmon", "ME49_host", "SRR0000001")]
+    assert (run_dir / "done.json").exists() and not (run_dir / Q.STAGES_FILE).exists()
+
+
 def test_one_pass_when_nothing_is_deferred(tmp_path, monkeypatch):
     calls = []
     _fake_tools(tmp_path, monkeypatch, calls)

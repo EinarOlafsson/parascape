@@ -739,12 +739,20 @@ def _kallisto(ref: str, local: list, k_out: str) -> str | None:
     return None
 
 
-def _skip(phase: str, run_dir: str, out_dir: str) -> bool:
-    """Whether this pass leaves a run alone: finished, colour space, or not at this pass's stage."""
+def _deferred_study(study: str) -> bool:
+    """Whether a study has its host salmon in the later pass (every study when none are named)."""
+    return not HOST_SALMON_LATER_STUDIES or study in HOST_SALMON_LATER_STUDIES
+
+
+def _skip(phase: str, run_dir: str, out_dir: str, study: str = "") -> bool:
+    """Whether this pass leaves a run alone: finished, colour space, or not at this pass's stage. A run left
+    waiting for host salmon whose study is no longer deferred finishes in the first pass."""
     if os.path.exists(os.path.join(out_dir, "done.json")) or os.path.exists(os.path.join(run_dir, COLOUR_SPACE_FILE)):
         return True
     staged = os.path.exists(os.path.join(out_dir, STAGES_FILE))
-    return staged if phase == CHEAP else (not staged) if phase == HOST else False
+    if phase == CHEAP:
+        return staged and _deferred_study(study)
+    return (not staged) if phase == HOST else False
 
 
 def _quantify_pass(todo: list, limit: int | None, count: int, phase: str = ALL):
@@ -757,7 +765,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int, phase: str = ALL):
     for r in todo:
         run_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
         out_dir = os.path.join(run_dir, REQUANT["subdir"]) if REQUANT["subdir"] else run_dir
-        if _skip(phase, run_dir, out_dir):
+        if _skip(phase, run_dir, out_dir, r["study"]):
             continue
         if _draining():
             log(f"drain marker {DRAIN_FILE} present: no new run taken")
@@ -785,7 +793,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int, phase: str = ALL):
             continue                                 # another quantifier process has this run
         if not _claim(r["run_accession"]):
             continue                                 # another worker has this run
-        if _skip(phase, run_dir, out_dir):
+        if _skip(phase, run_dir, out_dir, r["study"]):
             _release(r["run_accession"])             # moved on by another worker after the check above
             continue
         local = []
@@ -808,7 +816,7 @@ def _quantify_pass(todo: list, limit: int | None, count: int, phase: str = ALL):
                 continue
             os.makedirs(out_dir, exist_ok=True)
             local, trim = _trim(r["run_accession"], local)
-            if phase == HOST:
+            if phase == HOST or os.path.exists(os.path.join(out_dir, STAGES_FILE)):
                 _host_salmon(r, out_dir, local, trim)
             else:
                 _cheap_or_all(r, out_dir, local, trim, phase)
@@ -840,8 +848,8 @@ def _quantify_pass(todo: list, limit: int | None, count: int, phase: str = ALL):
 
 def _cheap_or_all(r: dict, out_dir: str, local: list, trim: dict, phase: str) -> None:
     """Every stage (ALL), or every stage but the later-pass salmon (CHEAP; then stages.json, not done.json)."""
-    deferred_study = not HOST_SALMON_LATER_STUDIES or r["study"] in HOST_SALMON_LATER_STUDIES
-    later = [ref for ref in r["references"] if ref in HOST_SALMON_LATER] if phase == CHEAP and deferred_study else []
+    later = ([ref for ref in r["references"] if ref in HOST_SALMON_LATER]
+             if phase == CHEAP and _deferred_study(r["study"]) else [])
     kallisto_failed, stages = {}, ["archive", "reads", "fastp"]
     for ref in r["references"]:
         mapped = None
