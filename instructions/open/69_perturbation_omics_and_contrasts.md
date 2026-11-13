@@ -531,3 +531,55 @@ runs is worth chasing; it is a shared-machine question rather than something to 
 
 `parascape-requant` (instruction 81) logs `1168 new runs still to quantify`, unchanged hourly. That
 is correct behaviour: it is waiting on this queue, not stuck.
+
+## 2026-11-13: why deep runs are slower per read
+
+Profiled while the queue kept running. Nothing was stopped, restarted or changed; no service setting, script or
+environment value was touched, and no commit was made.
+
+**The slow stage is salmon mapping against the combined `ME49_host` index. It is not the NAS, not decompression
+and not the download.** Stage times for the in-flight run SRR20946779 (GSE210671, 408 M reads after trimming):
+
+| stage | time |
+|---|---:|
+| verify the archive | 10 min |
+| stream archive into gzip (fastq-dump with pigz) | 50 min |
+| fastp trimming | 21 min |
+| salmon against `ME49` (parasite only) | 12.6 min |
+| kallisto against `ME49` | 21 min |
+| **salmon against `ME49_host`** | **more than 7 hours and still running** |
+
+Measured on that process: all 6 threads sit at 99.9 per cent CPU, the input is read at about 0.65 MB/s and the
+mapping file grows at about 0.5 MB/s. System wide iowait is 9.6 per cent, input and scratch are on local mnt1, and
+kallisto on the same host index reads its input at about 11.7 MB/s. So the machine is busy computing, not waiting.
+
+**It is the reads, not the depth.** Across the 1,002 runs with a host salmon result, the 13 runs of GSE210671 map
+8,321 fragments per second against the host index (125.5 hours for 3,760 M fragments). The other 989 runs map
+38,077 per second (264.2 hours for 36,217 M fragments), and several 350 to 400 M fragment runs of other projects
+finished in under an hour. The parasite-only index handles the same GSE210671 reads at about 270,000 per second,
+so the cost sits in the host part of the index (1,141,159 references, human plus mouse plus parasite). Deep runs
+only look slower because the deep runs now queued happen to come from this project (GSE223819 and GSE223621 were
+also slow). A rate in reads per day therefore depends on which projects are next, not only on depth.
+
+**A test confirms where the time goes.** On the first 20,000 pairs of SRR20946779 (2 threads, same index),
+mapping took 18.2 s with default settings and 2.9 s with `--maxOccsPerHit 50` (6.3 times faster). Gibbs sampling and
+the bias options were not the cause: the mapping phase alone is slow. This points at repeated host sequence: reads
+whose k-mers occur in very many references make the mapper expand huge candidate lists.
+
+**That flag changes the answer**, so it was not applied: the fraction mapped dropped from 60.5 to 55.9 per cent
+on the test pairs. Reads that hit repeated host sequence are exactly the ones that would be dropped, and the stored
+`salmon_ME49_host` results would no longer match earlier runs.
+
+**Changes made: none** (no resource use changed, so no line in `ram_leases.md`). Thread count is not the lever: 3
+workers at 6 threads already fill the 16 CPU share, and the cost is per read inside each thread.
+
+**Proposals, by expected gain (all need code or an explicit decision by Einar):**
+1. Do not run salmon against `ME49_host` for runs whose parasite-only salmon result already shows a low parasite
+   fraction (about 21.5 per cent here), or run kallisto only against the host index: kallisto against the same
+   index took 42 min for 1.07 G reads. Expected gain: most of the 125 hours and the 8 to 21 hour runs.
+2. Add `--maxOccsPerHit` (for example 50 to 200) to the host salmon call for slow projects only, and record the mapped
+   fraction change as a flag in `done.json`. Expected gain up to 6 times on those runs, at a small, documented loss of
+   repeat-hit reads.
+3. Move the host salmon to a separate later pass (as instruction 81 does for re-quantification) so the cheap
+   stages of all queued runs finish first.
+4. Minor: swap is full (2.0 GB used) while 70 GB is cache; not the cause, but worth a look.
