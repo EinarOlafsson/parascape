@@ -1128,10 +1128,27 @@ NEW_PLASMODIUM = [
 
 #: Toxoplasma-specific slots, for the same reason in the other direction.
 NEW_TOXOPLASMA = _host_slots(HOST_CONTEXTS_TG) + [
+    # The AP2XII-1/AP2XI-2 depletion proteome (PXD039400), which `protein abundance · tachyzoite`
+    # used to swallow whole. TWO slots, because an abundance and a log2 fold change are different
+    # quantities: one slot holding both would reproduce the defect these exist to remove. Both are
+    # `separate`, so the 24, 32 and 48 h arms stay distinct. Toxoplasma only -- the stages are
+    # cat-restricted and no other species in the map has the factor.
+    ("protein abundance · pre-sexual reprogramming", "protein abundance",
+     "AP2XII-1 conditional depletion, pre-sexual", "gene",
+     ["proteome_log2_normalized_and_imputated_abundances_T_"], "separate",
+     [("38093015", "PXD039400", "in vitro pre-sexual stages")]),
+    ("protein change · pre-sexual reprogramming", "protein abundance",
+     "AP2XII-1 conditional depletion against untreated, log2 fold change", "gene",
+     ["proteome_lfc_"], "separate",
+     [("38093015", "PXD039400", "in vitro pre-sexual stages")]),
     ("local AF3 fold confidence and geometry", "sequence", "AlphaFold 3 local predictions",
      "gene", ["af3_"], "separate", []),
+    # `rna108740_Day` joins as an ALTERNATIVE, not a second input: the policy is `one`, so the slot
+    # still answers from `ees_vs_tachyzoite_log2` by default and never averages a log2 ratio with
+    # FPKM. The Day columns are per-sample enteroepithelial abundances, moved here from the
+    # bradyzoite slot that wrongly held them; this is the only slot that asks about these stages.
     ("transcription · in vivo enteric", "transcription", "feline enterocyte", "gene",
-     ["ees_vs_tachyzoite_log2"], "one"),
+     ["ees_vs_tachyzoite_log2", "rna108740_Day"], "one"),
     # CURATED, and the third slot filled that way. The sweeps that closed this looked for a POOLED
     # SCREEN through the enteroepithelial stages and correctly found none -- the sexual cycle runs
     # only in a felid and nobody has put a barcoded library through a cat. But the slot asks whether
@@ -1176,8 +1193,13 @@ SLOTS = [
       "rna99395_intracellular_", "rna129869_", "rna51780_tachy_", "rna245775_parent_tachy_"],
      "one",
      []),
+    # `rna108740_Day` is NOT here, and was until 2026-11-13. It selects 14 samples of GSE108740 that
+    # the submitter declares `developmental stage: Enteropithelial stages`, host `Felis catus` --
+    # the stages in the gut of the cat -- and they were eight of the twelve columns this slot
+    # averaged. Asked of the deposit, not of the column name, which says only "Day" (instruction
+    # 65.04). They now answer `transcription · in vivo enteric`, which is about exactly that.
     ("transcription · bradyzoite / tissue cyst", "transcription", "bradyzoite", "gene",
-     ["expr_cyst", "rna108740_Tissue_cysts", "rna108740_Day", "rna22258_bradyzoite"], "average",
+     ["expr_cyst", "rna108740_Tissue_cysts", "rna22258_bradyzoite"], "average",
      [("41580398", "GSE311669", "bradyzoite subtypes, 2026")]),
     ("transcription · oocyst / sporozoite", "transcription", "oocyst, sporulation", "gene",
      ["rna206344_", "expr_sporulated"], "average", []),
@@ -1283,8 +1305,12 @@ SLOTS = [
      [("38782906", "GSE245775", "RNA matched to delta-eIF1.2 ribosome profiling")]),
 
     # ---------------------------------------------------------------- protein level
+    # `proteome_` was a prefix, and selected 15 columns: 3 untreated, 9 of AP2XII-1-depleted parasites
+    # being reprogrammed towards pre-sexual stages, and 3 log2 FOLD CHANGES -- all collapsed by row
+    # mean into one number in a slot that says tachyzoite and unperturbed. Narrowed to the untreated
+    # arm (instruction 65.04); the other twelve have slots of their own below.
     ("protein abundance · tachyzoite", "protein abundance", "tachyzoite", "gene",
-     ["proteome_", "protein_ibaq_log2"], "fill",
+     ["proteome_log2_normalized_and_imputated_abundances_UT_", "protein_ibaq_log2"], "fill",
      [("40716488", "PXD063409", "cytoskeleton proteome"),
       ("25867681", "PXD000297", "proteogenomics")]),
     ("protein abundance · other life stages", "protein abundance", "stages", "gene", ["oocyst_"],
@@ -1637,7 +1663,14 @@ HOST_TISSUE = ("brain", "liver", "lung", "spleen", "peritoneum", "gut", "intesti
 CONDITIONS = (("interferon", ("ifn", "interferon")),
               ("oxidative stress", ("oxidant", "oxidative", "peroxide")),
               ("drug or compound", ("compound", "drug", "inhibitor", "evolution", "thermal")),
-              ("genetic background", ("background", "knockout", "delta-", "second strain")),
+              # `knockdown` and `conditional depletion` added 2026-11-13, and deliberately NOT bare
+              # `depletion`. A conditional depletion of a gene changes the genetic background as
+              # much as a knockout does, and without a term for it the AP2XII-1 proteome came out
+              # `unperturbed`. But bare `depletion` also matches "iron depletion", and widening to it
+              # reclassified six nutrient-starvation slots across three species as genetic -- found
+              # by diffing the regenerated table, not by reading the list.
+              ("genetic background", ("background", "knockout", "delta-", "second strain",
+                                      "knockdown", "conditional depletion")),
               ("extracellular or starvation", ("extracellular", "starvation", "egress")),
               ("stage conversion", ("conversion", "differentiation", "checkpoint")))
 

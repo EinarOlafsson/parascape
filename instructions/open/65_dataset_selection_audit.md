@@ -760,3 +760,30 @@ columns (`expr_tachy`, `expr_cyst`, and the two `eif12ko_` patterns) are DERIVED
 than raw sample columns, so matching them against sample titles cannot work by construction. Their
 stage is already settled by the column name and, for the first two, by `parascape/units.py`, which
 documents them as the mean tachyzoite and mean tissue-cyst FPKM.
+
+## 65.04, 2026-11-13: both slot fixes applied, at the source -- Einar decided "apply both + rebuild"
+
+Applied in `scripts/generate_slot_table.py`, not in `slots.json`. The prepared script edited
+`slots.json`, which is GENERATED, so the next regeneration would have silently reverted it; it is
+removed.
+
+* **Fix A.** `rna108740_Day` leaves `transcription · bradyzoite / tissue cyst` and joins
+  `transcription · in vivo enteric` -- a slot that already existed for exactly those stages, so no
+  duplicate was created. It joins as an ALTERNATIVE under policy `one`, so the enteric slot still
+  answers from `ees_vs_tachyzoite_log2` by default and never averages a log2 ratio with FPKM.
+* **Fix B.** `protein abundance · tachyzoite` takes `proteome_log2_..._UT_` only. The twelve columns
+  it used to swallow get two new Toxoplasma-only slots, `protein abundance · pre-sexual
+  reprogramming` and `protein change · pre-sexual reprogramming` -- abundance and fold change kept
+  apart, both `separate`.
+* **Vocabulary.** The new slots first came out `unperturbed`, because the perturbation terms knew
+  `knockout` but not depletion. Widening to bare `depletion` reclassified six IRON-depletion slots
+  across three species as genetic -- found by diffing the regenerated table. Narrowed to `knockdown`
+  and `conditional depletion`; the final diff against the original is exactly two added slots and
+  three pattern changes. Left as found: `CPSF4 depletion` is still classed `unperturbed`.
+* **The map.** The Toxoplasma layout recipe uses both changed slots, so `graph.npz` is rebuilt:
+  8,140 genes, 331 features (was 319 -- the twelve new columns). The layout is deterministic (a second
+  rebuild is identical to the bit), so the change is real: the median gene keeps 60 per cent of its 15
+  nearest neighbours, 64 per cent keep at least half, 5 per cent keep almost none.
+
+Tests run as CI runs them (no cache pin): 179 passed including the packaged-layout check.
+**Still to do: the data release rebuild and publish**, so installed copies get the new slots.

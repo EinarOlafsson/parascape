@@ -49,7 +49,6 @@
     "patterns": [
       "expr_cyst",
       "rna108740_Tissue_cysts",
-      "rna108740_Day",
       "rna22258_bradyzoite"
     ],
     "policy": "average",
@@ -1275,7 +1274,7 @@
     "context": "tachyzoite",
     "unit": "gene",
     "patterns": [
-      "proteome_",
+      "proteome_log2_normalized_and_imputated_abundances_UT_",
       "protein_ibaq_log2"
     ],
     "policy": "fill",
@@ -6236,6 +6235,86 @@
   },
   {
     "organism": "Tg",
+    "name": "protein abundance · pre-sexual reprogramming",
+    "axis": "protein abundance",
+    "context": "AP2XII-1 conditional depletion, pre-sexual",
+    "unit": "gene",
+    "patterns": [
+      "proteome_log2_normalized_and_imputated_abundances_T_"
+    ],
+    "policy": "separate",
+    "candidates": [
+      [
+        "38093015",
+        "PXD039400",
+        "in vitro pre-sexual stages"
+      ]
+    ],
+    "evidence_path": [
+      "molecular measurements",
+      "protein",
+      "abundance",
+      "sexual"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein abundance",
+      "sexual",
+      "genetic background"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "sexual",
+      "protein abundance"
+    ],
+    "target_family": "protein_abundance_pre_sexual_reprogramming",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Tg",
+    "name": "protein change · pre-sexual reprogramming",
+    "axis": "protein abundance",
+    "context": "AP2XII-1 conditional depletion against untreated, log2 fold change",
+    "unit": "gene",
+    "patterns": [
+      "proteome_lfc_"
+    ],
+    "policy": "separate",
+    "candidates": [
+      [
+        "38093015",
+        "PXD039400",
+        "in vitro pre-sexual stages"
+      ]
+    ],
+    "evidence_path": [
+      "molecular measurements",
+      "protein",
+      "abundance",
+      "sexual"
+    ],
+    "biology_path": [
+      "gene expression",
+      "protein abundance",
+      "sexual",
+      "genetic background"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "sexual",
+      "protein abundance"
+    ],
+    "target_family": "protein_change_pre_sexual_reprogramming",
+    "target_columns": [],
+    "role": "feature"
+  },
+  {
+    "organism": "Tg",
     "name": "local AF3 fold confidence and geometry",
     "axis": "sequence",
     "context": "AlphaFold 3 local predictions",
@@ -6275,7 +6354,8 @@
     "context": "feline enterocyte",
     "unit": "gene",
     "patterns": [
-      "ees_vs_tachyzoite_log2"
+      "ees_vs_tachyzoite_log2",
+      "rna108740_Day"
     ],
     "policy": "one",
     "candidates": [

@@ -68,6 +68,9 @@ Slots are the leaves of three independent trees. A single tree would create fals
       - stage-unspecified
         - Tg_protein_abundance_other_life_stages
         - Tg_protein_abundance_under_stress
+      - sexual
+        - Tg_protein_abundance_pre_sexual_reprogramming
+        - Tg_protein_change_pre_sexual_reprogramming
     - post-translational state
       - tachyzoite
         - Tg_phosphorylation_site_count
@@ -323,6 +326,10 @@ Slots are the leaves of three independent trees. A single tree would create fals
       - unperturbed
         - Tg_protein_abundance_other_life_stages
         - Tg_protein_abundance_under_stress
+    - sexual
+      - genetic background
+        - Tg_protein_abundance_pre_sexual_reprogramming
+        - Tg_protein_change_pre_sexual_reprogramming
 - protein state
   - post-translational modification
     - tachyzoite
@@ -638,6 +645,10 @@ Slots are the leaves of three independent trees. A single tree would create fals
         - phenotype
           - Tg_host_escrt_recruitment
           - Tg_invasion_and_egress_phenotype
+      - sexual
+        - protein abundance
+          - Tg_protein_abundance_pre_sexual_reprogramming
+          - Tg_protein_change_pre_sexual_reprogramming
   - mouse
     - macrophage
       - tachyzoite (implied)
