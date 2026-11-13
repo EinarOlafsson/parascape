@@ -3154,3 +3154,41 @@ So the Cp arm needs two things, both public and neither blocked:
 
 Recorded as a lead with its evidence rather than started: a gene build is real machine time and the
 box is saturated with the instruction 69 queue.
+
+## 2026-11-13: the Anopheles midgut slot, searched properly
+
+Query recorded:
+
+    Anopheles[Organism] AND midgut[All Fields] AND (Plasmodium[All Fields] OR infection[All Fields])
+    AND gse[Filter]                                  -> 28 series
+
+**One series is genuinely midgut, and it is single-cell.**
+
+**GSE284537 (PMID 41125888)** -- 32 of 32 samples record `tissue: midgut` AND `source name: midgut`,
+dual-organism *Anopheles gambiae* + ***Plasmodium falciparum*** (so the Pf arm does not have to take
+berghei here), 36 h / 2 d / 4 d / 7 d post infectious blood meal, four biological replicates, with
+dsGFP-injected controls beside dsEcR knockdowns. The tissue, the organisms and the design all fit
+the slot.
+
+**The obstacle is the readout, not the biology.** `library_source = transcriptomic single cell`, and
+the only supplementary file is `GSE284537_RAW.tar` with no processed gene table. Per-gene host
+values would need the RAW tar processed and pseudobulked per sample, and this repository keeps an
+`rnaseq_excluded_single_cell` directory, so single-cell may be excluded from the omics queue by
+policy rather than by difficulty. **That is a decision for Einar rather than a refusal:** the slot
+asks for a host transcriptome, and a pseudobulk of a midgut single-cell series is one, provided the
+exclusion is about pipeline fit rather than about the evidence.
+
+**The bulk alternatives are not midgut, whatever their titles say.** Each was checked against the
+deposit:
+
+| series | what the title suggests | what the samples record |
+|---|---|---|
+| GSE271070 | "...symbiotic bacteria in the mosquito **midgut**" | 18 of 18 `tissue: Body without head` |
+| GSE197159 | *Anopheles* response to *Plasmodium* | 8 of 8 `Whole body` |
+| GSE231944 | "transcriptome of *P. malariae* in the mosquito" | 2 midgut, 3 salivary gland -- and it measures the PARASITE, not the host |
+
+GSE271070 is worth noting on its own: its title names the midgut and its samples are whole bodies
+with the heads removed. That is the third time in two days a title has promised a compartment the
+deposit does not contain, after GSE284425 (salivary glands sold as midgut) and GSE232438 (oocysts
+that were the inoculum). The rule this file already states -- judge from the samples, not the title
+-- keeps earning its place.
