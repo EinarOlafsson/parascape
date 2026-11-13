@@ -694,3 +694,33 @@ asked for. What it cannot promise is that rebuilding reproduces the same coordin
 file is the artefact, not a recipe that regenerates it -- and anyone rebuilding gets a different,
 equally valid arrangement of the same data. Worth deciding before step 3 whether that is acceptable
 for a map people will compare between sessions.
+
+## 2026-11-13: WP9 step 3 is blocked deeper than the layout, and the layout was never the blocker
+
+Checked before building the window, and it changes what step 3 needs.
+
+**The registered host spaces have no node table shipped.** `HUMAN_SPACE` and `MOUSE_SPACE` declare
+`hs_gene_nodes.parquet` and `mm_gene_nodes.parquet` with gene patterns `ENSG\d{11}` and
+`ENSMUSG\d{11}`. **Neither file exists in the data directory.** So `organisms.codes(available=True)`
+cannot return them and nothing can open them, with or without a layout.
+
+**The tables that DO exist are a different object.** `hs_host_proteins.parquet` (21,020 rows) and
+`mm_host_proteins.parquet` (16,473) -- the two this item named when it scoped the work -- are keyed
+on **UniProt accessions** (`A0A024R1R8`, `A0A087WPF7`), not on Ensembl gene ids. They are the host
+PROTEIN tables that back the host bridges, not the host GENE spaces. `validate_nodes` would refuse
+either of them for its space, correctly, because the identifiers do not match the declared pattern.
+
+So the layouts built above are coherent and useful -- they lay out the host protein tables, which is
+what this item pointed at -- but they **cannot be served as the Hs or Mm space** without one of:
+
+1. **building the host gene tables** the spaces declare, which is the WP3 acquisition work this item
+   records as "done to its acceptance" for a different meaning of done; or
+2. **declaring the protein tables as their own spaces**, with a UniProt pattern, which is a design
+   decision about whether ParaScape has a host gene space, a host protein space, or both; or
+3. **mapping the protein layout onto gene ids** through the existing bridges, which inherits every
+   ambiguity of a protein-to-gene mapping.
+
+**This supersedes the 2026-11-10 note above.** That note said the missing piece was a layout and
+that the work was gated on machine time. The layout takes two minutes and is now built; the actual
+gap is that the host spaces point at tables nobody has shipped, and choosing which of the three
+routes above to take is Einar's call rather than a detail to settle while building a window.
