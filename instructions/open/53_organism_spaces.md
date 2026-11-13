@@ -814,6 +814,13 @@ a changed table is refused; the refused mouse lens stays refused; protein spaces
 opens as its own map. Rendered offscreen in the real Window (Map module) for human proteins by both lenses and
 for mouse genes, and looked at.
 
+**The full suite found one test this change had to rewrite.** The focused run made while building this did not
+cover it: `tests/test_module_shell.py::test_the_species_menu_lists_host_spaces_with_their_state` asserted that an
+installed host gene pack leaves a *disabled* menu entry, which was the old behaviour -- an installed pack was a
+dead entry. It now opens its map, so the entry stays enabled, and the test asserts that instead, keeping what
+instruction 64.23 asked for: the state is spelled out and never reads as calibrated. A pack with no layout (rat,
+cat) is still disabled once installed. Full suite on the rebased branch: 7,569 passed, 42 skipped, 1 h 6 min.
+
 ## 2026-11-13: Einar decided the two pack questions
 
 * **GEO-derived columns may be redistributed, with citation.** "Yes, with citation." Every GEO-derived column

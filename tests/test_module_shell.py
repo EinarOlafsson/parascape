@@ -442,7 +442,12 @@ def test_the_species_menu_lists_host_spaces_with_their_state(window, tmp_path, m
     if space_catalogue.local_archives("Mm"):
         monkeypatch.setenv(paths.ENV_STATE, str(tmp_path / "state"))
         assert window.install_host_space("Mm")
-        assert "installed" in actions["Mm"].text() and not actions["Mm"].isEnabled()
+        # Instruction 53 WP9 (2026-11-13): an installed pack that has a layout is no longer a dead
+        # entry -- the same entry now opens its map. Its state is still spelled out, and still not
+        # calibrated. A pack without a layout (rat, cat) stays disabled once installed.
+        assert "installed" in actions["Mm"].text() and "not calibrated" in actions["Mm"].statusTip()
+        assert actions["Mm"].isEnabled()
+        assert "open its map" in actions["Mm"].toolTip()
 
 
 def test_unticking_a_kind_of_knowledge_removes_it_from_the_reading(window):
