@@ -52,6 +52,9 @@ GROW_MS = 220                 # the cards grow into place, as spaCR's do
 GROW_STAGGER_MS = 35
 DETAILS_H = 150
 MAX_CARDS = 24
+#: The longest name a card draws before it is shortened. Three lines of an 18 px font
+#: across a 224 px square, measured on the render rather than chosen: see `card_name`.
+CARD_NAME_CHARS = 46
 FLOW_SIDE = 170               # a next-step node in the module network; the root keeps CARD_SIDE
 #: How many next steps the first column after the clicked module shows: ALL OF THEM, which
 #: is what Einar asked for twice -- "so all the modules that take 1 gene and do something
@@ -80,7 +83,7 @@ AI_ROOM = 60                  # right margin of the field: the AI symbol and a g
 class Suggestion:
     """One card under the field.
 
-    :param kind: ``module``, ``gene``, ``question``, ``strategy``, ``dataset``,
+    :param kind: ``module``, ``view``, ``gene``, ``question``, ``strategy``, ``dataset``,
         ``panel`` or ``guide`` -- what the card opens.
     :param key: what opening it is told: a module key, a gene id, or an index title.
     :param title: the card's heading.
@@ -102,11 +105,16 @@ class Suggestion:
     #: What is being carried into the module: ``(subject kind, value)``, so an offer
     #: opens pre-filled rather than empty.
     subject: tuple = ()
+    #: For a ``view`` card, the key of the module the view belongs to. A view is addressed
+    #: by two names -- the module that shows it and its own -- and is drawn with the symbol
+    #: of that module, because a tab of a panel has no identity of its own to have a
+    #: symbol for.
+    owner: str = ""
 
 
 #: The word shown on a card for each kind, so a gene and a dataset with similar
 #: names are never confused.
-KIND_WORD = {"module": "Module", "gene": "Gene", "question": "Question",
+KIND_WORD = {"module": "Module", "view": "View", "gene": "Gene", "question": "Question",
              "strategy": "Method", "dataset": "Dataset", "panel": "Panel",
              "guide": "Guide", "node": "Card"}
 
@@ -115,22 +123,84 @@ KIND_WORD = {"module": "Module", "gene": "Gene", "question": "Question",
 GROUP_WORDS = {"gene": ("gene", "genes"), "question": ("question", "questions"),
                "strategy": ("method", "methods"), "dataset": ("dataset", "datasets"),
                "panel": ("setting or panel", "settings and panels"),
-               "guide": ("guide page", "guide pages"), "node": ("card", "cards")}
-#: The order groups appear in, after the modules.
-GROUP_ORDER = ("gene", "question", "strategy", "dataset", "panel", "guide", "node")
+               "guide": ("guide page", "guide pages"), "node": ("card", "cards"),
+               "view": ("view", "views")}
+#: The order groups appear in, after the modules. A view first of them, because a view is
+#: part of a module and so is nearer to what the person was looking for than a gene whose
+#: product happens to mention the word.
+GROUP_ORDER = ("view", "gene", "question", "strategy", "dataset", "panel", "guide", "node")
 #: Modules shown before the groups: the ones the text names, at most this many.
 MAX_MODULES = 4
 #: Below this many results in all, they are shown one card each rather than grouped.
 GROUP_WHEN_MORE_THAN = 6
 
 
+#: How many modules and views one query may offer before the grouping gets to them.
+#: Six was the number for modules alone; the views behind them are the same handful of
+#: answers one level down, so the pool is widened rather than the cards.
+MAX_NAMED = 12
+
+
+def module_card(m) -> Suggestion:
+    """One module as a card, with what it takes and what follows it in the details pane.
+
+    The details pane is where "what each module takes and what follows it" can be read
+    without opening anything, which is what instruction 98 asks of the tree as well --
+    and both read :func:`parascape.modules.takes_words` and
+    :func:`parascape.modules.hands_on_words`, so the two cannot disagree.
+
+    :param m: a :class:`parascape.modules.Module`.
+    """
+    reason = MOD.unavailable_reason(m)
+    detail = (f"<h3>{escape(m.name)}</h3><p>{escape(m.note)}.</p>"
+              f"<p><i>{escape(m.band)}</i></p>")
+    takes = MOD.takes_words(m.key)
+    if takes:
+        detail += f"<p>Takes {escape(takes)}.</p>"
+    nxt = MOD.downstream(m.key)
+    if nxt:
+        detail += ("<p>Leads to: "
+                   + ", ".join(escape(MOD.get(k).name) for k in nxt) + ".</p>")
+    if m.views:
+        detail += (f"<p>{len(m.views)} view"
+                   f"{'' if len(m.views) == 1 else 's'} behind it: "
+                   + ", ".join(escape(v.name) for v in m.views) + ".</p>")
+    if reason:
+        detail += f"<p><b>Not available:</b> {escape(reason)}.</p>"
+    return Suggestion("module", m.key, m.name, m.note, detail, blocked=reason)
+
+
+def view_card(m, v) -> Suggestion:
+    """One declared view as a card, naming the module it is behind.
+
+    WHY A VIEW IS A CARD AT ALL (instruction 98, WP4). WP10 gave every panel and window
+    behind the navigator a name, and the search field could only reach those names through
+    the help index -- which is built off a live window, so a view was unfindable until one
+    existed, and then only as a row called "panel" indistinguishable from a dock. A view is
+    a different thing from a dock and says so on its card.
+
+    :param m: the module the view belongs to.
+    :param v: the :class:`parascape.modules.View`.
+    """
+    reason = MOD.unavailable_reason(m)
+    detail = (f"<h3>{escape(v.name)}</h3><p>{escape(v.shows)}.</p>"
+              f"<p>A view of <b>{escape(m.name)}</b>.</p>"
+              f"<p><i>{escape(m.band)}</i></p>")
+    if reason:
+        detail += f"<p><b>Not available:</b> {escape(reason)}.</p>"
+    return Suggestion("view", v.name, v.name, f"a view of {m.name}: {v.shows}", detail,
+                      blocked=reason, owner=m.key)
+
+
 def all_matches(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> list:
     """Everything that matches `text`, one card each, best first (before grouping).
 
-    Modules first when one is named outright -- typing "map" means the Map module --
-    then the shared ranking over genes and the help index. The node catalogue is
-    passed empty on purpose: those are the old Gene/List/Label cards, and the
-    modules have replaced them as the front door.
+    Modules and the views behind them first, from ONE ranking
+    (:func:`parascape.modules.search_all`) -- typing "map" means the Map module and typing
+    "coexpression" means a tab of the Expression panel, and a list of modules followed by a
+    list of views could not say which. Then the shared ranking over genes and the help
+    index. The node catalogue is passed empty on purpose: those are the old
+    Gene/List/Label cards, and the modules have replaced them as the front door.
 
     :param genes: `(gene_id, product)` pairs, or a callable taking the query.
     :param index: `help_index` rows, or a callable returning them.
@@ -139,13 +209,8 @@ def all_matches(text: str, genes=None, index=None, limit: int = MAX_CARDS) -> li
     if not q:
         return []
     out = []
-    for m in MOD.search(q)[:6]:
-        reason = MOD.unavailable_reason(m)
-        detail = (f"<h3>{escape(m.name)}</h3><p>{escape(m.note)}.</p>"
-                  f"<p><i>{escape(m.band)}</i></p>")
-        if reason:
-            detail += f"<p><b>Not available:</b> {escape(reason)}.</p>"
-        out.append(Suggestion("module", m.key, m.name, m.note, detail))
+    for kind, m, v in MOD.search_all(q)[:MAX_NAMED]:
+        out.append(module_card(m) if kind == "module" else view_card(m, v))
     try:
         from . import nodes as N
         # The node catalogue minus its old Gene/List/Label cards: the modules replaced
@@ -357,7 +422,12 @@ def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS,
     found = all_matches(text, genes=genes, index=index, limit=limit)
     if not found:
         return []
-    modules = [s for s in found if s.kind == "module"]
+    # A module and a view behind one are both answers to "which part of ParaScape did I
+    # mean", so they compete for the same few cards at the top, in the order
+    # `modules.search_all` ranked them. A view that does not win a place is NOT dropped:
+    # it falls through into the groups below, because it matched and somebody who typed
+    # the word should still be able to reach it.
+    modules = [s for s in found if s.kind in ("module", "view")]
     named = [s for s in modules if (text or "").strip().lower() in s.title.lower()]
     if not named:
         # Einar, 2026-11-12: "if i type a gene into the navigator i get a few moduals that
@@ -369,10 +439,26 @@ def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS,
         # burying it under gene modules because some gene product mentions a map would be a
         # worse answer than the one this replaces.
         modules = module_offers_for_genes(found) + modules
-    modules = (named or modules)[:MAX_MODULES]
-    module_names = {s.title.lower() for s in modules}
-    rest = [s for s in found if s.kind != "module"
-            and not (s.kind == "panel" and s.title.lower() in module_names)]
+    # THE MODULE A NAMED VIEW IS BEHIND IS OFFERED TOO, found by rendering: typing
+    # "coexpression" named a view of Expression and offered the Coexpression tab alone,
+    # with no way to the module that shows it -- because only cards whose TITLE holds the
+    # typed word survive the `named` filter, and "Expression" does not hold
+    # "coexpression". The owner is the way in to the view, so it comes straight after it.
+    # Only the owner, never every module that merely mentions the word: dropping those is
+    # what the filter is for ("there are way too many options when I type map").
+    pool = list(named or modules)
+    for card in list(pool):
+        if card.kind == "view" and card.owner not in {c.key for c in pool}:
+            pool.insert(pool.index(card) + 1, module_card(MOD.get(card.owner)))
+    modules = pool[:MAX_MODULES]
+    shown = {(s.kind, s.key) for s in modules}
+    # A panel row that repeats the name of a module or of a view is the SAME thing twice:
+    # `help_index.panel_entries` builds a panel row for every declared view, so a window
+    # with an index offered "Coexpression" as a view and again as a panel. The view is
+    # kept, because it says which module it is behind and the panel row does not.
+    taken = {s.title.lower() for s in found if s.kind in ("module", "view")}
+    rest = [s for s in found if s.kind != "module" and (s.kind, s.key) not in shown
+            and not (s.kind == "panel" and s.title.lower() in taken)]
     if len(modules) + len(rest) <= GROUP_WHEN_MORE_THAN:
         return modules + rest
     out = list(modules)
@@ -428,6 +514,11 @@ def icon_path(suggestion: Suggestion) -> str:
     """
     if suggestion.kind == "module":
         return iconset.module_icon_file(suggestion.key)
+    if suggestion.kind == "view":
+        # The symbol of the module the view is behind: a tab of a panel has no identity of
+        # its own to have a symbol for, and giving every view one symbol would say that a
+        # view is a kind of thing rather than a part of a module.
+        return iconset.module_icon_file(suggestion.owner)
     if suggestion.kind == "group":
         return iconset.kind_icon_file(suggestion.key)
     return iconset.kind_icon_file(suggestion.kind)
@@ -441,10 +532,15 @@ def card_name(suggestion: Suggestion) -> str:
     TGME49_... would be indistinguishable without hovering each. So a gene card shows
     its product, the thing that tells them apart, and the accession goes to the
     details panel with everything else.
+
+    SHORTENED TO WHAT THE CARD CAN DRAW, found by rendering rather than by a test. A
+    224 px square with a 96 px symbol in it leaves about three lines for the name, and a
+    strategy is named by a whole sentence -- "20 · Learn what makes your list special,
+    from positives…" ran to four and the last of them was drawn over the edge of its own
+    card. Sixty characters was the length of the longest name anybody had looked at.
     """
-    if suggestion.kind == "gene" and suggestion.subtitle:
-        return _clip(suggestion.subtitle, 60)
-    return _clip(suggestion.title, 60)
+    return _clip(suggestion.subtitle if suggestion.kind == "gene" and suggestion.subtitle
+                 else suggestion.title, CARD_NAME_CHARS)
 
 
 #: spaCR's maturity colours, used for the cards' hover rim and fill.
@@ -1453,10 +1549,14 @@ class NavigatorPage(QtWidgets.QWidget):
             return
         if s.subject:
             self.set_subject(*s.subject)
-        if s.kind == "module" and MOD.unavailable_reason(MOD.get(s.key)):
+        # A view is refused for the same reason its module is: the view is a tab of the
+        # panel that module shows, so a module this window could not build has no tab to
+        # turn to. Reported by name rather than silently doing nothing.
+        owner = s.owner if s.kind == "view" else (s.key if s.kind == "module" else "")
+        if owner and MOD.unavailable_reason(MOD.get(owner)):
             self._set_current(i)
             self.feedback.setText(f"{s.title} is not available yet: "
-                                  f"{MOD.unavailable_reason(MOD.get(s.key))}.")
+                                  f"{MOD.unavailable_reason(MOD.get(owner))}.")
             return
         self.chosen.emit(s.kind, s.key)
 

@@ -2,6 +2,31 @@
 
 ## Unreleased
 
+### Added
+
+- **The rail down the left is a tree of what ParaScape can do.** It was a flat list of six headings with the
+  modules of each under them. It now opens on a progression: under **Start**, the subject you have -- one
+  gene, a list of genes, a trait, a screen of your own, a question, a job -- and under each of those, the
+  modules that read it, ready ones first and a blocked one kept with the reason it cannot be taken. Under
+  every module sit the views behind it and the modules that follow it, so all 32 named views are reachable
+  from the rail. Every row is computed from the one module catalogue and the declared subjects
+  (`parascape.tree`, drawn by `parascape.module_tree`); nothing about what leads where is written down twice.
+- **The navigator search finds a module by what it does and by what you would call it.** Module names and the
+  names of the 32 views are ranked together, so "coexpression" opens on the tab of the Expression panel and
+  "expression" on the module. A module is also found by the subjects it reads, which come from its declared
+  ports, and by the words a parasitologist uses rather than the name on the tile -- "interactome",
+  "pulldown", "LOPIT", "rhoptry", "CRISPR", "UMAP", "AlphaFold", "RNA-seq", "gene set" -- none of which
+  matched anything before. The eight bands of the ranking are declared in `parascape.modules`. A search with
+  matches shows cards, as before; only a search with no match asks the assistant.
+
+### Fixed
+
+- The landing could vanish the moment the main window appeared, depending on whether a 400 ms timer fired
+  before the window manager reported its panels visible. The guard is a deadline read when the signal arrives
+  rather than a timer that arms, so there is nothing left to race.
+- A result card drew a long name over its own edge: a strategy named by a whole sentence ran to four lines in
+  a square with room for three.
+
 ### Changed
 
 - The word "recipe" now means one thing: a saved bundle of module settings, as in spaCR. The way of asking one

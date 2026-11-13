@@ -134,6 +134,22 @@ class Module:
         shows, and the separate windows that read the same thing. See :class:`View`.
         They are declared here rather than in a second table so that a view cannot drift
         away from the module it belongs to, which is bug #16i again.
+    :param words: the OTHER WORDS somebody would type for this module -- the ones a
+        parasitologist uses rather than the name on the tile. "interactome" for Partners,
+        "LOPIT" and "rhoptry" for Cell, "UMAP" for Map, "CRISPR" and "fitness" for Screen.
+
+        WHY THEY ARE DECLARED HERE (instruction 98, WP4). The search field could already
+        match the name and the one-line note, which is why typing "interactome" found
+        nothing at all: no tile is called that and no note contains it. A synonym table of
+        its own would be a second table about the same twenty-three modules, which is the
+        failure this whole instruction exists to remove, so the words sit on the row they
+        belong to. They are ranked BELOW every part of the name and above a hit in the
+        note (:data:`OTHER_WORD`), because somebody who typed the name of a module means
+        that module.
+
+        Words that come free from the declared subjects are NOT repeated here: a module
+        that reads one gene is already findable by "gene" through
+        :func:`what_it_does`, which reads the ports.
     """
 
     key: str
@@ -146,6 +162,7 @@ class Module:
     instruction: str = ""
     builder: str = ""
     views: tuple = ()
+    words: tuple = ()
 
     @property
     def section(self) -> str:
@@ -195,6 +212,8 @@ MODULES = (
            "Look up", opens="evidence", icon="profiler",
            instruction="Name a gene, or step through a list one gene at a time.",
            builder="shell:gene_module",
+           words=("accession", "locus", "annotation", "product", "protein", "ToxoDB",
+                  "orthologue", "gene card", "what is known"),
            views=(
                View("Every record behind one gene",
                     "one gene, column by column, including the empty ones, each with the "
@@ -204,15 +223,23 @@ MODULES = (
     Module("structure", "Structure", "the fold, its confidence, and what is known of it",
            "Look up", needs=("a structure view; AF3 summaries are on the evidence of a gene for now",),
            icon="layer_viewer",
+           words=("fold", "AlphaFold", "AF3", "pLDDT", "domain", "PDB", "crystal",
+                  "secondary structure"),
            instruction="Name a gene to see its fold and how far the fold is to be trusted."),
     Module("partners", "Partners", "what it binds, and how strongly that is evidenced",
            "Look up", opens="evidence", icon="graph_builder",
+           words=("interactome", "interaction", "binding", "complex", "pulldown",
+                  "immunoprecipitation", "IP-MS", "crosslink", "XL-MS", "two-hybrid",
+                  "proximity labelling", "BioID"),
            instruction="Name a gene; the links drawn are the physical ones, with their evidence.",
            builder="shell:network_module"),
     Module("expression", "Expression", "where and when its RNA and protein are measured",
            "Look up", opens="compare:Gene expression", icon="pca",
            instruction="Choose a gene; compare where and when it is made, across stages and strains.",
            builder="tool",
+           words=("RNA-seq", "transcriptome", "transcript", "mRNA", "proteome", "abundance",
+                  "stage", "tachyzoite", "bradyzoite", "sporozoite", "life cycle",
+                  "coexpression", "differential expression"),
            views=(
                View("Studies & samples",
                     "each quantified study, its samples and how they were grouped",
@@ -258,6 +285,8 @@ MODULES = (
            "Explore", icon="umap",
            instruction="Put your genes on the map and read what surrounds them.",
            builder="shell:map_module",
+           words=("UMAP", "embedding", "projection", "atlas", "latent space", "clusters",
+                  "clustering", "neighbours", "dimensionality reduction", "PCA", "t-SNE"),
            views=(
                View("Choose individual measurements",
                     "every measurement block, how many genes it covers, and the scaling and "
@@ -272,6 +301,8 @@ MODULES = (
            "Explore", icon="graph_builder",
            instruction="Name a gene to bring its region into focus; tick the links that count.",
            builder="shell:network_module",
+           words=("graph", "edges", "neighbourhood", "star map", "interactome", "pathway",
+                  "guilt by association", "connected"),
            views=(
                View("Links with their provenance",
                     "one gene at the centre and its links on rings around it, coloured by "
@@ -281,12 +312,17 @@ MODULES = (
            )),
     Module("cell", "Cell", "the parasite drawn, with the genes placed on it",
            "Explore", opens="find", icon="image_scatter",
+           words=("compartment", "localisation", "localization", "organelle", "rhoptry",
+                  "dense granule", "micronème", "microneme", "apicoplast", "inner membrane "
+                  "complex", "parasitophorous vacuole", "LOPIT", "hyperLOPIT", "schematic",
+                  "where it sits"),
            instruction="Choose a compartment or a gene to see where it sits in the cell.",
            builder="tool"),
     Module("gallery", "Gallery", "every map built so far, to compare rather than rebuild",
            "Explore", opens="gallery", icon="trellis",
            instruction="Click a map to show it; compare maps rather than rebuild them.",
            builder="tool",
+           words=("thumbnails", "wall", "ready-made maps", "compare maps", "contact sheet"),
            views=(
                View("Maps shipped ready-made",
                     "the maps that ship with ParaScape, grouped by what each was built "
@@ -299,6 +335,8 @@ MODULES = (
            "Ask", opens="analysis:8 · Questions", icon="experiment_design",
            instruction="Read what can be asked, and what the answer would have to clear.",
            builder="shell:infer_module",
+           words=("hypothesis", "biological question", "catalogue", "what can be asked",
+                  "question templates"),
            views=(
                View("Question scoreboard",
                     "every registered question scored on genes held out: its held-out AUC "
@@ -309,6 +347,8 @@ MODULES = (
            "Ask", opens="analysis", icon="ml_analyze",
            instruction="Choose a question, then choose what evidence it may use.",
            builder="shell:infer_module",
+           words=("inference", "prediction", "annotate", "impute", "fill the gaps",
+                  "machine learning", "held out", "guess what is missing"),
            views=(
                View("What the groups mean, held out",
                     "one row per measurement the map never saw, scored against the groups "
@@ -321,12 +361,16 @@ MODULES = (
            )),
     Module("predict", "Predict", "predict any measured column, and measure how often that is right",
            "Ask", icon="ml_analyze",
+           words=("classifier", "model", "cross-validation", "holdout", "folds", "AUC",
+                  "random forest", "train", "abstention", "free-hand prediction"),
            instruction="Choose a column to predict, a method, and what to hold out.",
            builder="shell:predict_module"),
     Module("strategies", "Strategies", "39 ways to turn the data into a claim, each graded",
            "Ask", opens="strategies", icon="model_zoo",
            instruction="Choose a strategy to see what it does, what it may use and how well it did.",
            builder="tool",
+           words=("methods", "approaches", "families", "mechanisms", "self-test",
+                  "ways of inferring", "guide"),
            views=(
                View("Guide",
                     "what the chosen strategy does, in words, and what it may and may not use",
@@ -346,6 +390,8 @@ MODULES = (
            "Ask", opens="discoveries", icon="model_compare",
            instruction="Choose a label to see which methods recover it, and how often they are right.",
            builder="tool",
+           words=("benchmark", "track record", "AUC", "precision", "recall", "validation",
+                  "against chance", "how often right", "class balance", "labels"),
            views=(
                View("Labels and functions",
                     "every label, how many genes carry it and where that membership was "
@@ -376,33 +422,44 @@ MODULES = (
     Module("runs", "Runs", "every inference saved, with the data and settings it used",
            "Ask", needs=("a panel that reads results/harness_holdout_log.jsonl",),
            icon="run_history",
+           words=("history", "log", "provenance", "what I ran", "reproduce", "saved runs"),
            instruction="Pick a saved run to see what it asked, what it used and what came back."),
     Module("fill", "Fill", "write answers into the map, where they clear the bar",
            "Ask", needs=("a question that has cleared its 90% bar",), icon="regression",
+           words=("write in", "accept", "commit", "promote a claim", "fill the map"),
            instruction="Check the track record, then write in only the answers that clear the bar."),
 
     # --------------------------------------------------------- Bring your own
     Module("drop", "Drop", "a CSV, TSV, XLS or XLSX of genes, with or without values",
            "Bring your own", opens="gene list", icon="download",
+           words=("upload", "import", "load my file", "CSV", "TSV", "Excel", "XLSX",
+                  "spreadsheet", "paste genes"),
            instruction="Drop a CSV, TSV or Excel file of genes here, or choose one.",
            builder="tool"),
     Module("screen", "Screen", "join your screen to everything already recorded",
            "Bring your own", icon="hit_list",
+           words=("CRISPR", "knockout", "fitness", "phenotype", "hits", "my screen",
+                  "my data", "prioritise candidates", "join my table"),
            instruction="Open your measured table, say which columns it uses, then compare.",
            builder="shell:screen_module"),
     Module("list", "Gene list", "what a list of genes shares that other genes do not",
            "Bring your own", opens="gene list", icon="tabulate",
+           words=("gene set", "set", "enrichment", "over-representation", "GO terms",
+                  "what they share", "my candidates", "shared labels"),
            instruction="Paste or choose a list of genes to see what they share, and how "
                        "surprising that is.",
            builder="shell:list_module"),
     Module("export", "Export", "take a list, a table or a figure out",
            "Bring your own", opens="action:export_visible", icon="methods_export",
+           words=("download", "save", "write out", "figure", "table", "CSV", "supplementary"),
            instruction="Choose the columns to take out, then where to write them."),
 
     # ------------------------------------------------------------------- Data
     Module("datasets", "Datasets", "all 130 sources, their coverage and their provenance",
            "Data", opens="action:open_dataset_browser", icon="data_manager",
            instruction="Browse the sources; each one says what it covers and where it came from.",
+           words=("sources", "studies", "publications", "provenance", "coverage",
+                  "where the data came from", "citations", "accessions"),
            views=(
                View("Slot tree",
                     "every information category, its address in each of the three "
@@ -413,6 +470,8 @@ MODULES = (
            "Data", opens="information map", icon="feature_dict",
            instruction="Search a gene or choose a trait; every cell shows its source and certainty.",
            builder="tool",
+           words=("what is measured", "gaps", "missing", "coverage", "certainty",
+                  "information map", "trait", "matrix", "observed"),
            views=(
                View("One gene",
                     "one gene, trait by trait, with each cell marked measured, a measured "
@@ -425,10 +484,12 @@ MODULES = (
            )),
     Module("jobs", "Jobs", "what is running, what it is costing, and how to stop it",
            "Data", opens="jobs", icon="queue",
+           words=("running", "queue", "progress", "stop", "cancel", "memory", "busy"),
            instruction="Select a job to stop it; finished jobs keep their outcome here.",
            builder="tool"),
     Module("console", "Console", "what the program is doing, in its own words",
            "Data", opens="console", icon="report",
+           words=("log", "output", "errors", "traceback", "messages", "what went wrong"),
            instruction="Filter by level or text; copy what you need for a report.",
            builder="tool"),
 )
@@ -571,27 +632,11 @@ def find_view(name: str):
 def search_views(text: str) -> tuple:
     """The views matching `text`, best first, as `((Module, View), ...)`.
 
-    Ranked the same way :func:`search` ranks modules, so a view named by what was typed
-    comes before one that merely mentions it in the line about what it shows.
+    Ranked by :func:`match_score`, the same bands :func:`search` ranks modules by, so a
+    view named by what was typed comes before one that merely mentions it in the line
+    about what it shows.
     """
-    q = (text or "").strip().lower()
-    if not q:
-        return ()
-    scored = []
-    for module, view in views():
-        name = view.name.lower()
-        if name == q:
-            rank = 0
-        elif name.startswith(q):
-            rank = 1
-        elif q in name:
-            rank = 2
-        elif q in view.shows.lower():
-            rank = 3
-        else:
-            continue
-        scored.append((rank, view.name, module, view))
-    return tuple((m, v) for _r, _n, m, v in sorted(scored, key=lambda x: (x[0], x[1])))
+    return tuple((m, v) for kind, m, v in search_all(text) if kind == "view")
 
 
 def unavailable_reason(module: Module, *, docks=(), fillable: int = 0) -> str:
@@ -715,21 +760,201 @@ def search(text: str) -> tuple:
 
     :returns: matching modules, most relevant first.
     """
-    q = (text or "").strip().lower()
-    if not q:
+    return tuple(m for kind, m, _v in search_all(text) if kind == "module")
+
+
+# --------------------------------------------------------------------- the ranking
+# WHAT THE SEARCH RANKS ON (instruction 98, WP4), and why in this order. The bands are
+# spaCR's (`spacr.qt.help_index._term_score`), so one query ranks the same way in both
+# applications, with ONE band added for the words declared on a row (`Module.words`).
+#
+# Einar asked that the navigator find a module by its name, by the name of a view behind
+# it, by WHAT IT DOES, and by "the words a parasitologist would use rather than the
+# internal name". Those are four different strengths of evidence that a person meant this
+# module, and the order between them is the whole ranking: somebody who typed a name meant
+# that thing, and must never have it buried under twenty rows whose description happens to
+# mention the word.
+#
+#: Typed in full: "map" for Map. Nothing beats it.
+NAME_EXACT = 100.0
+#: A whole word of the name: "gene" for "Gene list".
+NAME_WORD = 80.0
+#: The name begins with it: "expr" for Expression. Plus a little for how much of the name
+#: was typed, so a short name matched nearly in full beats a long one matched at the start.
+NAME_STARTS = 60.0
+#: A word of the name begins with it: "coex" for "Coexpression".
+WORD_STARTS = 50.0
+#: Somewhere inside the name: "ap" in Map.
+NAME_INSIDE = 40.0
+#: One of the OTHER WORDS declared for it (:attr:`Module.words`): "interactome" for
+#: Partners. Below every part of the name, because a module NAMED by what was typed is a
+#: better answer than one that merely answers to the word; above what it does, because
+#: these words were declared for this module deliberately and a description hit was not.
+OTHER_WORD = 30.0
+#: The letters are all there in order and close enough together: "corexpr" for
+#: Coexpression. spaCR measured the spread a fuzzy match is allowed.
+FUZZY = 20.0
+#: In what it DOES -- the one-line note, what to do first, the section, the plain names and
+#: meanings of every subject it reads and hands on, and the line a view says about what is
+#: on screen. Lowest on purpose.
+WHAT_IT_DOES = 10.0
+
+
+def what_it_does(module: "Module", view: "View" = None) -> str:
+    """Everything about a module that is not its name, lowercased, for matching.
+
+    Computed from the catalogue row and from the declared subjects, never written out a
+    second time: the note, what to do first, the section it is filed under, the plain name
+    and the meaning of every subject it reads and hands on, and -- for a view -- the line
+    saying what is on screen. So "trait" finds every module that reads one without the
+    word "trait" being typed anywhere on the row.
+
+    :param module: the module.
+    :param view: one of its views, when a view is being matched rather than the module.
+    :returns: one lowercased string.
+    """
+    pieces = [module.note, module.instruction, module.band]
+    try:
+        spec = PORTS.module_ports(module.key)
+    except PORTS.UnknownModule:
+        spec = None
+    if spec is not None:
+        for port in spec.consumes + spec.produces:
+            pieces.append(PORTS.describe_subject(port.kind))
+            pieces.append(PORTS.explain_subject(port.kind))
+            pieces.append(port.description)
+    if view is not None:
+        pieces.extend([view.shows, module.name])
+    return " ".join(str(p) for p in pieces if p).lower()
+
+
+def _term_score(term: str, name: str, words, does: str):
+    """How well one typed word matches one candidate, or None when it does not match.
+
+    :param term: one lowercased word of the query.
+    :param name: the name of the module, or of the view.
+    :param words: the other words declared for it.
+    :param does: what it does, from :func:`what_it_does`, already lowercased.
+    :returns: a score in the bands above, higher being better, or None.
+    """
+    from . import help_index as HI        # stdlib only, and it owns the name splitting
+    whole, _tail, parts = HI._name_parts(name)
+    if whole == term:
+        return NAME_EXACT
+    if term in parts:
+        return NAME_WORD
+    if whole.startswith(term):
+        return NAME_STARTS + 10.0 * len(term) / max(len(whole), 1)
+    if any(p.startswith(term) for p in parts):
+        return WORD_STARTS + 10.0 * len(term) / max(len(whole), 1)
+    if term in whole:
+        return NAME_INSIDE
+    best = None
+    for word in words or ():
+        low = str(word).lower()
+        if low == term or term in low.split():
+            best = OTHER_WORD + 5.0
+            break
+        if low.startswith(term) or term in low:
+            best = OTHER_WORD
+    if best is not None:
+        return best
+    span = HI._subsequence_span(term, whole) if len(term) >= 3 else None
+    if span is not None:
+        return FUZZY + 10.0 * len(term) / max(span, 1)
+    if term in does:
+        return WHAT_IT_DOES
+    return None
+
+
+def match_score(text: str, name: str, words=(), does: str = ""):
+    """How well a whole query matches one candidate, or None when any word of it misses.
+
+    The words of the query are ANDed, as spaCR ands them, so a second word narrows the
+    answer rather than widening it: "gene list" is not everything about genes plus
+    everything about lists.
+
+    :param text: what was typed.
+    :param name: the name of the module or of the view.
+    :param words: the other words declared for it.
+    :param does: what it does, from :func:`what_it_does`.
+    :returns: the summed score, or None when a word of the query matches nothing.
+    """
+    terms = str(text or "").lower().split()
+    if not terms:
+        return None
+    total = 0.0
+    for term in terms:
+        one = _term_score(term, name, words, does)
+        if one is None:
+            return None
+        total += one
+    return total
+
+
+def search_all(text: str) -> tuple:
+    """Modules AND views matching `text`, best first, from one ranking.
+
+    One ranking over both rather than two lists stapled together, because the best answer
+    to "coexpression" is a VIEW -- a tab of the panel the Expression module shows -- while
+    the best answer to "expression" is the module itself. Two lists could not say which,
+    and before instruction 98 the navigator could not name a view at all.
+
+    A module and a view that score the same put the module first: a module is the coarser
+    thing and is what somebody typing one word usually means.
+
+    :param text: what was typed.
+    :returns: ``(("module", Module, None) | ("view", Module, View), ...)``, best first.
+    """
+    if not str(text or "").strip():
         return ()
     scored = []
-    for m in MODULES:
-        name, note = m.name.lower(), m.note.lower()
-        if name == q:
-            rank = 0
-        elif name.startswith(q):
-            rank = 1
-        elif q in name:
-            rank = 2
-        elif q in note or q in m.band.lower():
-            rank = 3
-        else:
-            continue
-        scored.append((rank, m.name, m))
-    return tuple(m for _, _, m in sorted(scored))
+    for module in MODULES:
+        value = match_score(text, module.name, module.words, what_it_does(module))
+        if value is not None:
+            scored.append((-value, 0, module.name.lower(), ("module", module, None)))
+    for module, view in views():
+        value = match_score(text, view.name, module.words, what_it_does(module, view))
+        if value is not None:
+            scored.append((-value, 1, view.name.lower(), ("view", module, view)))
+    scored.sort(key=lambda row: row[:3])
+    return tuple(row[3] for row in scored)
+
+
+def takes_words(key: str) -> str:
+    """What one module needs, in one plain phrase; "" when it needs nothing at all.
+
+    Said in the words of :mod:`parascape.ports` rather than in words of its own, so the
+    tree, the tooltips and the reason written on a greyed offer all name a subject the
+    same way.
+
+    :param key: a module key.
+    :returns: e.g. ``"one gene"``, or ``"one gene, and a list of genes if you have one"``.
+    """
+    try:
+        spec = PORTS.module_ports(key)
+    except PORTS.UnknownModule:
+        return ""
+    need = [PORTS.describe_subject(k) for k in dict.fromkeys(spec.required_kinds())]
+    spare = [PORTS.describe_subject(k) for k in dict.fromkeys(spec.optional_kinds())]
+    if need and spare:
+        return f"{PORTS.listing(need)}, and {PORTS.listing(spare)} if you have one"
+    if need:
+        return PORTS.listing(need)
+    if spare:
+        return f"{PORTS.listing(spare)} if you have one"
+    return ""
+
+
+def hands_on_words(key: str) -> str:
+    """What one module hands on, in one plain phrase; "" when it hands on nothing.
+
+    :param key: a module key.
+    :returns: e.g. ``"a pair of genes or a list of genes"``.
+    """
+    try:
+        spec = PORTS.module_ports(key)
+    except PORTS.UnknownModule:
+        return ""
+    kinds = dict.fromkeys(p.kind for p in spec.produces)
+    return PORTS.listing([PORTS.describe_subject(k) for k in kinds])

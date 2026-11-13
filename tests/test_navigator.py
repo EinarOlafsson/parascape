@@ -6,6 +6,7 @@ rendering the page rather than reading the code.
 import pytest
 from PySide6 import QtCore
 
+from parascape import modules as MOD
 from parascape import navigator as NV
 
 GENES = [("TGME49_208830", "dense granule protein GRA16"),
@@ -682,3 +683,119 @@ def test_a_card_name_too_long_for_a_small_card_is_elided_not_clipped(page, qtbot
     assert QtGui.QFontMetrics(font).horizontalAdvance(long_one.name_label.text()) <= 84 - 20
     long_one.fit(224)
     assert long_one.name_label.text() == NV.card_name(long_one.suggestion)
+
+
+# ----------------------------------------------------- what the search ranks on (WP4)
+# Einar: "the navigator should have a search bar like spacr". Typing a gene and a gene
+# list already worked; what WP4 added is module names, view names, what a module DOES,
+# and the words a parasitologist would use rather than the internal name. The bands are
+# declared in `modules.py` beside the reason for the order between them.
+
+
+def test_a_name_typed_in_full_beats_everything_else():
+    first = NV.suggestions("map", index=None)[0]
+    assert (first.kind, first.key) == ("module", "map")
+    assert MOD.match_score("map", "Map") == MOD.NAME_EXACT
+
+
+def test_the_word_a_parasitologist_uses_finds_the_module():
+    """"interactome" is the name of no tile and appears in no note, so before WP4 it
+    found nothing at all. The words are declared on the catalogue row."""
+    for typed, wanted in (("interactome", {"partners", "network"}),
+                          ("LOPIT", {"cell"}),
+                          ("CRISPR", {"screen"}),
+                          ("rhoptry", {"cell"}),
+                          ("AlphaFold", {"structure"}),
+                          ("UMAP", {"map"})):
+        keys = {m.key for m in MOD.search(typed)}
+        assert wanted <= keys, (typed, keys)
+
+
+def test_a_declared_word_never_outranks_a_name():
+    """Somebody who typed a name meant that module. "network" is a declared word of
+    Partners and the name of another module, and the other module wins."""
+    assert MOD.search("network")[0].key == "network"
+
+
+def test_what_a_module_does_is_matched_and_ranked_last():
+    """The subjects a module reads come from the ports, so "trait" finds every module
+    that reads one without the word being written on any row."""
+    from parascape import ports as P
+    keys = {m.key for m in MOD.search("trait")}
+    assert set(P.consumers_of(P.TRAIT)) <= keys
+    scorecard = MOD.get("scorecard")
+    assert MOD.match_score("trait", scorecard.name, scorecard.words,
+                           MOD.what_it_does(scorecard)) == MOD.WHAT_IT_DOES
+    assert MOD.match_score("trait", scorecard.name) is None, \
+        "the word is not on the row; it comes from the declared subjects"
+
+
+def test_a_view_behind_a_module_is_findable_by_its_own_name():
+    """WP10 gave every panel behind the navigator a name; WP4 makes the field answer to
+    it. Before this a view could be reached only through the help index of a live
+    window, and then only as a row called "panel"."""
+    cards = NV.suggestions("coexpression", index=None)
+    assert cards[0].kind == "view" and cards[0].key == "Coexpression"
+    assert cards[0].owner == "expression"
+    assert "Expression" in cards[0].detail
+
+
+def test_every_declared_view_can_be_found_by_typing_its_name():
+    for module, view in MOD.views():
+        found = [s for s in NV.all_matches(view.name, index=None)
+                 if s.kind == "view" and s.key == view.name]
+        assert found, view.name
+        assert found[0].owner == module.key
+
+
+def test_a_module_wins_its_own_name_back_from_its_views():
+    """"expression" names the module; "coexpression" names a tab of the panel it shows."""
+    assert NV.suggestions("expression", index=None)[0].key == "expression"
+
+
+def test_a_view_that_matched_is_never_silently_dropped(index):
+    """Only four cards sit at the top. A view that does not win one of them falls into
+    the groups below rather than being lost, which is what "grouping lost results"
+    checks for the other kinds."""
+    cards = NV.suggestions("expression", genes=GENES, index=index)
+    reachable = set()
+    for card in cards:
+        reachable |= ({(card.kind, card.key)} if card.kind != "group"
+                      else {(m.kind, m.key) for m in card.items})
+    for s in NV.all_matches("expression", genes=GENES, index=index):
+        if s.kind == "view":
+            assert ("view", s.key) in reachable, s.key
+
+
+def test_a_module_card_says_what_it_takes_and_what_follows_it():
+    card = next(s for s in NV.all_matches("partners", index=None) if s.kind == "module")
+    assert "Takes one gene" in card.detail
+    assert "Leads to" in card.detail
+
+
+def test_the_words_of_a_query_narrow_rather_than_widen():
+    both = {m.key for m in MOD.search("gene list")}
+    assert "list" in both
+    assert both <= {m.key for m in MOD.search("gene")}
+
+
+def test_a_search_with_matches_shows_cards_and_never_asks_the_assistant(page, qtbot,
+                                                                       monkeypatch):
+    """Deliberately different from spaCR and recorded as such: only a search with NO
+    match goes to the assistant."""
+    asked = []
+    monkeypatch.setattr(page, "ask_ai", lambda text: asked.append(text))
+    page.ai_button.setChecked(True)
+    type_and_wait(page, qtbot, "interactome")
+    assert page._cards and not asked
+    type_and_wait(page, qtbot, "zzzzzznothinghere")
+    assert not page._cards and asked == ["zzzzzznothinghere"]
+
+
+def test_opening_a_view_from_the_navigator_names_its_module(page, qtbot):
+    chosen = []
+    page.chosen.connect(lambda kind, key: chosen.append((kind, key)))
+    type_and_wait(page, qtbot, "coexpression")
+    page._open(0)
+    assert chosen == [("view", "Coexpression")]
+    assert MOD.find_view("Coexpression")[0].key == "expression"

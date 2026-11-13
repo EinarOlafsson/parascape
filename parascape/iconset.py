@@ -76,6 +76,10 @@ def _load_module_icons() -> dict:
 KIND_ICON = {
     "gene": "profiler", "dataset": "db_browser", "question": "experiment_design",
     "strategy": "model_zoo", "guide": "report", "panel": "settings", "node": "settings",
+    # A view card is drawn with the symbol of the module it is behind, which
+    # `navigator.icon_path` asks for by that module key. This one is for the GROUP card
+    # that stands for several views at once, which belongs to no single module.
+    "view": "layer_viewer",
 }
 
 

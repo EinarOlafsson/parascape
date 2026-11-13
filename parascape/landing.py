@@ -37,6 +37,10 @@ class Landing(QtWidgets.QWidget):
 
     module_chosen = QtCore.Signal(str)
     item_chosen = QtCore.Signal(str, str)
+    #: ``(module key, view name)`` for one of the 32 declared views, chosen in the tree
+    #: down the left or named in the Navigator. Separate from `item_chosen` because a view
+    #: is addressed by two names rather than one.
+    view_chosen = QtCore.Signal(str, str)
 
     PAGES = ("Navigator", "Modules")
 
@@ -45,13 +49,17 @@ class Landing(QtWidgets.QWidget):
                  parent=None):
         super().__init__(parent)
         self.setObjectName("Landing")
+        self._reasons = dict(reasons or {})
         palette = TH.palette_for("dark")
         self.setStyleSheet(tile_qss(palette) + _switch_qss(palette)
                            + f"QWidget#Landing {{ background-color: {palette['bg']}; }}"
                            + "QWidget#Landing[ambient=\"on\"] { background: transparent; }")
 
-        # spaCR's dock down the left (instruction 95): Home, then every module under its
-        # band, on Home and beside every module shell alike. Folds against its edge.
+        # spaCR's dock down the left (instruction 95), now the TREE of what ParaScape can
+        # do (instruction 98, WP7): the six headings, a progression over what you have
+        # under the first of them, and under a module the views behind it and the modules
+        # that follow it. On Home and beside every module shell alike; folds against its
+        # edge.
         row = QtWidgets.QHBoxLayout(self)
         row.setContentsMargins(0, 0, 0, 0)
         row.setSpacing(0)
@@ -99,6 +107,10 @@ class Landing(QtWidgets.QWidget):
         self._switch.idClicked.connect(self.show_page_index)
         self.navigator.chosen.connect(self._from_navigator)
         self.home.module_chosen.connect(self.module_chosen)
+        # Whichever way a module is opened -- a tile, the Navigator, the tree itself -- the
+        # tree shows where in it the person now is. A rail that stayed shut while a module
+        # filled the window would be a map that never says "you are here".
+        self.module_chosen.connect(self._mark_in_tree)
 
         self._ambient = None
         if animate:
@@ -111,37 +123,38 @@ class Landing(QtWidgets.QWidget):
 
     # -------------------------------------------------------------------- dock
     def _build_dock(self):
-        """spaCR's dock, filled from `modules.py`. (None, None) if it cannot be built -- the
-        landing must open without it."""
+        """The tree of what ParaScape can do, down the left. (None, None) when it cannot
+        be built -- the landing must open without it.
+
+        Every row is computed by `parascape.tree` from the one catalogue and the declared
+        subjects, so this only asks for the widget and the symbols. It is still called
+        `dock`, because that is what every caller and three test files already call it and
+        a rename would be a second name for one thing.
+        """
         try:
-            from . import modules as MOD
-            from .panes.dock import Dock, DockEdge
+            from .module_tree import ModuleTree
+            from .panes.dock import DockEdge
+            from . import tree as TREE
         except Exception:
             return None, None
-        rows = [("home", "Home", "the Navigator and the module tiles", "Start")]
-        rows += [(m.key, m.name, m.note, m.band) for m in MOD.MODULES]
-        # Every symbol comes from the one provider, and is asked for here, outside the guarded
-        # block below: a module with no symbol must fail loudly in a test, not silently leave the
-        # dock out.
-        icons = {key: iconset.module_icon(key) for key, _n, _d, _b in rows}
+        # Every symbol comes from the one provider, and is asked for here, outside the
+        # guarded block below: a module with no symbol must fail loudly in a test, not
+        # silently leave the tree out. A view is drawn with the symbol of the module it
+        # belongs to, which `module_tree.refresh_icons` asks for by that module key.
+        keys = {"home"} | {node.key for _d, node in TREE.walk(TREE.tree())
+                           if node.kind in ("module", "step")}
+        icons = {key: iconset.module_icon(key) for key in sorted(keys)}
 
         def icon_for(key):
-            """The symbol of a dock row, from the one icon provider."""
+            """The symbol of one row of the tree, from the one icon provider."""
             return icons.get(key)
         try:
-            dock = Dock(rows, icon_for=icon_for)
+            dock = ModuleTree(icon_for=icon_for, reasons=self._reasons)
             edge = DockEdge(dock)
         except Exception:
             return None, None
-        # spaCR explains a row in a strip along the window's foot rather than a tooltip;
-        # ParaScape has no strip, and every control here says what it does on hover.
-        notes = {key: (name, note) for key, name, note, _band in rows}
-        for row in dock._rows:
-            name, note = notes.get(row.key, (row.key, ""))
-            row.setToolTip(f"{name}: {note}." if note else name)
         dock.nav_selected.connect(self._from_dock)
-        dock.setToolTip("Every module. Click one to open it; drag the edge to resize, click the "
-                        "edge to hide the dock.")
+        dock.view_selected.connect(self.view_chosen)
         return dock, edge
 
     def _from_dock(self, key: str) -> None:
@@ -149,6 +162,15 @@ class Landing(QtWidgets.QWidget):
             self.show_page(self.home_page())
         else:
             self.module_chosen.emit(key)
+
+    def _mark_in_tree(self, key: str) -> None:
+        """Open the tree down to the module that was just opened, from wherever it was.
+
+        :param key: the module key.
+        """
+        dock = getattr(self, "dock", None)
+        if dock is not None and hasattr(dock, "open_to"):
+            dock.open_to(key)
 
     # ------------------------------------------------------------------- pages
     def navigator_enabled(self) -> bool:

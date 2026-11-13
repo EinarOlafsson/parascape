@@ -244,6 +244,20 @@ def open_module(window, key: str, subject: str = "", value: str = "") -> str:
     return message
 
 
+def _say(window, message: str) -> str:
+    """Put one line in the status bar, and never fail for want of a status bar.
+
+    :param window: the main window.
+    :param message: what to say.
+    :returns: the message, so a caller can report it.
+    """
+    try:
+        window.statusBar().showMessage(message, 6000)
+    except Exception:                       # a window without a bar must still work
+        pass
+    return message
+
+
 def open_view(window, key: str, name: str) -> str:
     """Open one declared view of a module. Returns what the status bar was told.
 
@@ -370,6 +384,16 @@ def open_item(window, kind: str, key: str) -> str:
     if kind == "gene_list":
         from . import ports as PORTS
         return open_module(window, "list", subject=PORTS.GENE_LIST, value=key)
+    if kind == "view":
+        # One of the 32 declared views, named in the Navigator (instruction 98, WP4). The
+        # key is the view name, which the catalogue keeps unique, and `find_view` answers
+        # which module it belongs to -- so the Navigator does not have to carry two names
+        # through a signal that takes one.
+        try:
+            module, view = MOD.find_view(key)
+        except KeyError:
+            return _say(window, f"{key}: there is no view by that name")
+        return _say(window, open_view(window, module.key, view.name))
     # Everything else opens in a dock, so the overlay has to go: a panel raised behind the
     # landing is one nobody sees.
     leave_landing(window)
@@ -400,8 +424,7 @@ class _Cover(QtCore.QObject):
         if obj is self._window and event.type() in (QtCore.QEvent.Type.Resize,
                                                     QtCore.QEvent.Type.Show):
             fit_landing(self._window)
-            if event.type() == QtCore.QEvent.Type.Show:
-                _arm_later(self._window)
+            _arm_later(self._window)
         return False
 
 
@@ -414,12 +437,39 @@ def _arm_later(window) -> None:
     When the window first appears every dock reports that it became visible. Read as "the
     person opened a panel", that would take the landing away the instant the application
     opened. No test catches it -- the suite never shows a window -- so it is guarded here:
-    visibility changes during the show itself are ignored, and the watcher wakes once the
-    event loop has finished putting the window on screen.
+    visibility changes while the window is still being put on screen are ignored.
+
+    A DEADLINE READ WHEN THE SIGNAL ARRIVES, NOT A TIMER THAT ARMS. This was
+    ``QTimer.singleShot(400, ...)``, and the two were in a race: the platform delivers
+    those dock visibility changes asynchronously, so whether the landing survived a show
+    depended on whether the timer fired before they arrived. Instruction 98 records the
+    failure (`test_the_dock_watcher_ignores_the_window_appearing`) being reported as a
+    possible defect and passing on committed code, which is what a race looks like. WP7
+    settled it: the rail became the tree, the window got slower to put on screen by a
+    tenth of a second, and the race turned into a reliable failure.
+
+    Read as a deadline there is nothing to race. Every show AND every resize pushes it
+    forward, because a window being put on screen resizes several times while it settles,
+    and the question being asked is "has anything stopped happening yet".
+
+    :param window: the main window.
     """
+    import time
+    window._landing_quiet_until = time.monotonic() + ARM_AFTER_MS / 1000.0
+    # Kept because it is what the attribute was called, and because reading it is how
+    # anything outside asks whether the watcher is awake.
     window._landing_armed = False
     QtCore.QTimer.singleShot(ARM_AFTER_MS, window,
                              lambda: setattr(window, "_landing_armed", True))
+
+
+def _watcher_awake(window) -> bool:
+    """Whether a dock becoming visible should now be read as the person opening a panel.
+
+    :param window: the main window.
+    """
+    import time
+    return time.monotonic() >= getattr(window, "_landing_quiet_until", 0.0)
 
 
 def fit_landing(window) -> None:
@@ -483,7 +533,7 @@ def _watch(window) -> None:
     for dock in _docks(window):
         dock.visibilityChanged.connect(
             lambda visible, d=dock: leave_landing(window, keep=d)
-            if visible and landing_up(window) and getattr(window, "_landing_armed", False)
+            if visible and landing_up(window) and _watcher_awake(window)
             else None)
 
     stay = set()
@@ -543,6 +593,9 @@ def install(window):
     landing.module_chosen.connect(
         lambda key: open_module(window, key, *_subject_in_hand(landing)))
     landing.item_chosen.connect(lambda kind, key: open_item(window, kind, key))
+    # One of the 32 declared views, chosen in the tree down the left or named in the
+    # Navigator. `open_view` is the one route to a view, so both go through it.
+    landing.view_chosen.connect(lambda key, name: _say(window, open_view(window, key, name)))
 
     home = QtGui.QAction("Home", window)
     # Alt+Home, the browser convention. Ctrl+Shift+H was the first choice and was already

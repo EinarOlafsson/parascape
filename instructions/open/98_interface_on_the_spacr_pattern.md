@@ -297,7 +297,9 @@ exactly what they read before.
 | WP8 the gene card | **done 2026-11-12** — see below |
 | WP9 the gene list card | **done 2026-11-12** — see "WP9 as built" |
 | WP10 retire the old windows, route every orphan | **done 2026-11-12** — see "WP10 as built" |
-| WP4, WP7, WP11 | not started; they are the ones Einar will actually see |
+| WP7 the tree | **done 2026-11-12** — see "WP7 and WP4 as built" |
+| WP4 navigator search | **done 2026-11-12** — see "WP7 and WP4 as built" |
+| WP11 | not started |
 
 **Two tables that can now disagree, which is the exact failure spaCR documents as bug #16i.** Both must be
 closed before WP7, because the tree is computed from them:
@@ -727,6 +729,138 @@ inside the Expression shell with its tab forward; the star map view leaves the l
 `tests/test_views.py` (44, new). Changed: `test_module_catalogue.py` (the six shell builders),
 `test_ports.py` (Predict produces a job), `test_module_shell.py` (the retired window is gone from the
 package), `test_home_panel.py` and `test_glass.py` (their `workflow` branches).
+
+## WP7 and WP4 as built, 2026-11-12
+
+The words of Einar, which are the acceptance criteria: *"there should be a tree of things that parascape can
+do, and this progression should guide the user to the modual they want. just like in spacr. the one in spacr
+works really well, so study it and implement conceptually the same thing in parascape."* And: *"the navigator
+should have a search bar like spacr."*
+
+### The tree (WP7)
+
+**Where it is.** The rail down the left, on the navigator and beside every module shell alike. It was a flat
+list -- six headings, and under each the modules of that band -- which answered "what is there" and not "what
+do I do next", and could not name the 29 tabs and four windows behind the navigator at all.
+
+**How it is computed.** `parascape/tree.py`, no Qt, from the one catalogue and the declared subjects and
+nothing else. `parascape/module_tree.py` turns its rows into widgets and decides nothing. Four levels:
+
+```
+Start                        the progression. Open when the rail appears; the other five shut
+  Home                       back to the Navigator and the module tiles
+  One gene  ▾                a subject you can bring -- from ports.SUBJECT_SOURCES
+    → Gene  → Partners  → Expression  → Network  → Cell  → Information  → Structure (greyed)
+  A list of genes · A trait · A screen of your own · A question · A job
+Look up  ▾                   the five bands of the catalogue, in catalogue order
+  Gene ▸ · Structure · Partners ▸ · Expression ▾
+    Studies & samples … Condition comparison      the 10 views behind Expression
+    → Map  → Cell  → Infer  → Predict  → Strategies  → Scorecard  → Export  → Information
+Explore · Ask · Bring your own · Data
+```
+
+* A **heading** is one of the six. Click to open or shut; shutting one forgets which module under it was
+  unfolded, because reopening it to a module unfolded minutes ago is not what "show me Look up" means.
+* A **subject** is the progression, and it is the one real difference from spaCR. spaCR progresses because its
+  sections are stages of one imaging run; ParaScape has no single run. What it has is the subject in hand, so
+  the tree answers "what becomes available once something is in hand" with
+  `modules.downstream_of_subject(kind)` -- the same function the gene card and the gene list card offer, ready
+  ones first and a blocked one kept with its reason.
+* A **module** is filed under the heading its catalogue row declares, with what it TAKES and what it HANDS ON
+  in its tooltip, from `modules.takes_words` and `modules.hands_on_words` (which read the ports). Clicking it
+  opens it **and** unfolds it; only one module per heading stays unfolded, because nine modules each unfolding
+  ten views is a rail past the length of any screen.
+* Under a module: **its declared views** (all 32 are in the tree, which is the point -- a view not in it is a
+  panel behind the navigator that nothing can name), then **what follows it**, `modules.downstream(key)`.
+
+**Does any module need two headings? No, and the tree is built so that the question has one answer.** Each of
+the 23 is filed once, under its catalogue band. The rows under *Start* are REFERENCES
+(`tree.Node.reference`), marked as such, and `tree.find` and `tree.section_of` never return one, so "where
+does this module live" has one answer. `test_module_catalogue.py::test_no_module_is_in_two_sections` is
+**unchanged and still passes**, because it is about the catalogue and the catalogue did not change; the new
+`tests/test_tree.py` holds the tree side of the same rule. Offering a module under a subject is not filing it
+twice -- it is naming it where it is useful, which is the whole of the progression.
+
+**Start is a heading and not a band**, and deliberately. It holds no module: Home is not one and a subject is
+not one, and `modules.BANDS` is the declaration that a section HAS modules (`test_no_section_is_empty` says so
+by name). spaCR keeps `SECTION_HELP` out of its own `SECTION_ORDER` for exactly this reason and records that
+putting it in was tried first and reverted.
+
+### The search (WP4)
+
+**What it ranks on**, in order, and the order IS the ranking. The bands are spaCR's
+(`spacr.qt.help_index._term_score`) with one added, declared in `modules.py` beside the reason:
+
+| band | | matched against |
+|---|---|---|
+| 100 | typed in full | the name of the module or of the view |
+| 80 | a whole word of the name | |
+| 60 | the name begins with it | plus a little for how much of the name was typed |
+| 50 | a word of the name begins with it | |
+| 40 | somewhere inside the name | |
+| **30** | **one of the OTHER WORDS declared for it** | `Module.words` -- "interactome", "LOPIT", "CRISPR" |
+| 20 | the letters in order and close together | the fuzzy spelling |
+| 10 | what it DOES | the note, what to do first, the section, **every subject it reads and hands on**, and what a view says is on screen |
+
+The words of a query are ANDed, so a second word narrows. Modules and views are ranked **together**
+(`modules.search_all`): the best answer to "coexpression" is a tab of the Expression panel and the best answer
+to "expression" is the module, and two lists stapled together could not say which. A tie puts the module
+first.
+
+**What was added and why each.** Module names and what a module does were already matched, against the name
+and the one-line note only. New: the **32 view names**, so WP10's naming of everything behind the navigator is
+reachable by typing it (before this, a view could be found only through the help index of a LIVE window, and
+then only as a row called "panel"); the **subjects from the ports**, so "trait" finds every module that reads
+one without the word being written on any row; and the **words a parasitologist uses** -- "interactome",
+"pulldown", "LOPIT", "rhoptry", "CRISPR", "UMAP", "AlphaFold", "RNA-seq", "gene set", "enrichment" -- none of
+which is the name of anything in ParaScape, so each of them found nothing at all before. They are declared on
+the catalogue row rather than in a synonym table, because a second table about the same 23 modules is the
+failure this instruction exists to remove.
+
+**Not regressed, and tested:** a typed gene still offers the gene card first with the gene in it, and a typed
+list still offers the gene list card. **The AI symbol is unchanged**: a search WITH matches shows cards and
+never asks the assistant; only a search with no match does. That differs from spaCR on purpose and
+`test_a_search_with_matches_shows_cards_and_never_asks_the_assistant` now says so by name.
+
+### Four things found by LOOKING that no test caught
+
+1. **The rail sized itself on the text and ignored the indent.** A row three levels in starts 38 px from the
+   edge, so "Published expression", "Other measurements" and "Sparse measurements" were elided in a rail wide
+   enough for every one of them.
+2. **The module a named view belongs to was dropped.** Typing "coexpression" offered the Coexpression tab and
+   no way to the module that shows it, because only cards whose TITLE holds the typed word survive the filter
+   that keeps "map" from returning two dozen cards -- and "Expression" does not hold "coexpression". The owner
+   of a named view is now offered straight after it, and only the owner.
+3. **A strategy is named by a whole sentence** and a 224 px card with a 96 px symbol in it has room for about
+   three lines. "20 · Learn what makes your list special, from positives…" ran to four and the last was drawn
+   over the edge of its own card. Names on cards are shortened to what the card can draw.
+4. **One view name fits in the rail at no width the dock allows** ("Hide labels and see if they come back"), so
+   every row tooltip opens with the name of the row.
+
+### One race, turned into a reliable failure and then fixed
+
+`test_the_dock_watcher_ignores_the_window_appearing` is the test this instruction records as "reported as a
+possible defect; passes on committed code". It was a race: the platform delivers the dock visibility changes
+of a window being shown asynchronously, and whether the landing survived depended on whether a 400 ms
+`QTimer` had fired first. The tree made the window a tenth of a second slower to put on screen and the race
+became a reliable failure. `landing_install._arm_later` now records a DEADLINE that every show and every
+resize pushes forward, and `_watcher_awake` reads it when the signal arrives, so there is nothing left to
+race.
+
+### Tests
+
+`tests/test_tree.py` (34, new: what the tree computes, and the rail built from it). Added to
+`tests/test_navigator.py` (12: the bands, the parasitologist words, the views, the assistant rule). The three
+Home tests left red by WP9 and WP10 were corrected on nightly while this was being built (04585995) and are
+not touched here.
+
+### Verified by looking
+
+The real `app.Window` rendered offscreen at 1920x1080 with `XDG_CONFIG_HOME` in a scratch directory and the
+animation at its shipped default: the rail with Start open, Look up open, Expression unfolded with its ten
+views and eight next steps, Scorecard unfolded with its seven, the progression under "One gene", and the
+field answering "interactome", "coexpression", "map", "LOPIT", "what is known", a gene accession and a query
+that matches nothing.
 
 ### Left for Einar
 

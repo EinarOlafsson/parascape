@@ -273,6 +273,21 @@ def _listing(words: Sequence[str]) -> str:
     return ", ".join(words[:-1]) + " or " + words[-1]
 
 
+def listing(words: Sequence[str]) -> str:
+    """Join names the way a sentence does, for anything outside this module.
+
+    The public name of :func:`_listing`. It exists because the tree
+    (:mod:`parascape.tree`) and the readiness messages built here both say what
+    a module takes, and two joins written separately read differently -- one
+    with an Oxford comma, one without -- for no reason a reader could see. One
+    join, two callers.
+
+    :param words: the names to join, already in the order to say them.
+    :returns: ``"a"``, ``"a or b"``, ``"a, b or c"``; empty for nothing.
+    """
+    return _listing(words)
+
+
 # ------------------------------------------------------------------- problems
 
 #: A problem that stops the module working.
