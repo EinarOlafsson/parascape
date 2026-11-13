@@ -3226,3 +3226,33 @@ So for GSE271211 the remaining work is:
 I am recording the correction rather than quietly editing the earlier entry, because the earlier
 entry is what a reader would have acted on, and "no gene table exists" would have sent them to build
 one that is already there.
+
+## 2026-11-13: the CPATCC mapping is harder than I said -- tested, not assumed
+
+I wrote above that mapping `CPATCC_` to `cgd` is "a locus-tag or coordinate join rather than a
+build". **I tested that and it is wrong.** Recording it because an underestimate in a handover is
+worse than no estimate: it sends someone to do an afternoon of work expecting an hour.
+
+What the checks established:
+
+* **NCBI Gene holds no `CPATCC_` record at all** (`esearch db=gene term=CPATCC_0000020` -> 0 hits),
+  so there is no locus-tag lookup to join on.
+* The locus tags belong to **`GCA_015245375.1` (ASM1524537v1), *C. parvum* IOWA-ATCC**, annotated by
+  the University of Georgia, released 2022-10-21, with **4,035 genes** -- which matches the
+  GSE271211 counts file row for row (4,035 data rows). That identifies the annotation beyond doubt.
+* The `cgd` table is built on **`GCA_000165345.1` (ASM16534v1), Iowa II**, with **3,923 genes**.
+
+**These are two different assemblies with two independent annotations.** Coordinates do not
+correspond, the gene counts differ by 112, and there is no shared identifier. A mapping therefore
+needs sequence-level correspondence -- reciprocal best hits over the two proteomes, or an alignment
+of one annotation onto the other assembly -- followed by a check of how many genes map one-to-one
+and what happens to the rest. That is a real piece of work with its own acceptance, not a join.
+
+**So the shortest honest path to filling `Cp_transcription · oocyst` is:**
+
+1. register the existing `cgd` gene table as the Cp reference (instruction 53 WP6 finishing);
+2. build and validate a `CPATCC_` <-> `cgd` correspondence from the two proteomes, reporting the
+   one-to-one rate and the unmapped remainder rather than assuming completeness;
+3. then admit GSE271211, whose biological checks already pass.
+
+Step 2 is the one I underestimated.
