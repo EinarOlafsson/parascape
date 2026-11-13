@@ -148,8 +148,8 @@ TOOLTIPS = {
     "md_grid": "The min_dist values the WALK sweeps. Comma-separated or min:max:step. Low values "
                "make dense clumps that look like clusters whether or not they are, so a grid that "
                "only samples low min_dist will flatter every clustering that follows.",
-    "nn_grid2": "The n_neighbors values the search sweeps. Mirrors the Map tab.",
-    "md_grid2": "The min_dist values the search sweeps. Mirrors the Map tab.",
+    "nn_grid2": "The n_neighbors values the search sweeps. Mirrors the Map module.",
+    "md_grid2": "The min_dist values the search sweeps. Mirrors the Map module.",
     "mcs_grid": "The min_cluster_size values the SEARCH sweeps when clustering each embedding. "
                 "This is the guard against the degenerate answer, so sweeping it low is sweeping "
                 "toward solutions that win on purity by shattering into singletons.",
