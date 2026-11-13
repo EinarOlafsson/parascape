@@ -534,15 +534,28 @@ def test_the_infer_module_holds_the_question_controls_moved_not_copied(window):
 def test_the_infer_module_offers_question_templates_and_never_calls_one_a_recipe(window):
     """A recipe is a bundle of settings (as in spaCR). The Infer module must still offer its ways of
     asking a question, under the new word, and no text a person can read there may use the old one --
-    not a label, not a tooltip, not the choices in a list."""
+    not a label, not a tooltip, not the choices in a list.
+
+    THE RECIPES GROUP ITSELF IS LEFT OUT OF THE WALK, and that is the whole point of the rename.
+    Instruction 98 recorded the risk by name: "if both kinds ever appear in the Infer module the
+    word recipe will mean two things on one screen". Einar settled it -- a recipe is always a
+    saved bundle of settings -- and WP11 gave Infer the settings recipes every other module with
+    settings has. So the word now appears on this screen, once, meaning the settled thing, and
+    what this test holds is that nothing about a QUESTION is called a recipe.
+    """
     from parascape.landing_install import open_module
     shell = window.infer_module
     open_module(window, "infer")
     panel = window.panel
     assert panel.question_choice.count() > 0, "the Infer module offers no questions at all"
     panel.question_choice.setCurrentIndex(0)
+    assert shell.recipes is not None, "Infer has settings and therefore a Recipes group"
+    settings_recipes = {shell.recipes, shell.sections["Recipes"]}
+    settings_recipes |= set(shell.sections["Recipes"].findChildren(QtWidgets.QWidget))
     seen = []
     for widget in [shell] + shell.findChildren(QtWidgets.QWidget):
+        if widget in settings_recipes:
+            continue
         seen.append(widget.toolTip())
         for getter in ("text", "toPlainText", "title", "placeholderText"):
             if hasattr(widget, getter):
@@ -552,9 +565,10 @@ def test_the_infer_module_offers_question_templates_and_never_calls_one_a_recipe
                     pass
         if isinstance(widget, QtWidgets.QComboBox):
             seen += [widget.itemText(i) for i in range(widget.count())]
-    seen += list(shell.sections) + list(shell.actions)
+    seen += [name for name in shell.sections if name != "Recipes"] + list(shell.actions)
     readable = "\n".join(t for t in seen if t)
-    assert "recipe" not in readable.lower(), "the Infer module still says recipe"
+    assert "recipe" not in readable.lower(), \
+        "the Infer module calls something other than its settings a recipe"
     assert "question template" in readable.lower(), "the Infer module does not say what a question is"
 
 

@@ -19,7 +19,9 @@ import numpy as np
 import pandas as pd
 from PySide6 import QtCore, QtWidgets
 
+from . import ports as PORTS
 from . import theme as TH
+from .recipes_panel import Setting, widget_setting
 from .shell import ModuleShell, solid_dropdown
 
 QUESTIONS_TAB = "8 · Questions"
@@ -40,9 +42,7 @@ class InferModule(QtCore.QObject):
         self.window = window
         self.panel = panel = window.panel
         self.mine: list = []                           # gene ids the user brought
-        self.shell = shell = ModuleShell(
-            "infer", "Infer", "ask the data a question; get genes named, with how far to trust them",
-            instruction="Choose a question, check what it may use, then answer it.")
+        self.shell = shell = ModuleShell.for_module("infer")
         shell.module = self
 
         # ---------------------------------------------------------------- left
@@ -62,7 +62,7 @@ class InferModule(QtCore.QObject):
         ql.addWidget(_muted("Each question is a question template: it names what it may use, the label "
                             "it must recover and an independent control. One is shipped because it "
                             "is refused."))
-        shell.add_setting("Your question", q)
+        shell.add_setting("Your question", q, subject=PORTS.QUESTION)
 
         uses = QtWidgets.QWidget(shell)
         self.uses_layout = QtWidgets.QVBoxLayout(uses)
@@ -114,7 +114,7 @@ class InferModule(QtCore.QObject):
         ml.addLayout(row)
         self.mine_note = _muted("No genes of yours: the whole answer is shown.")
         ml.addWidget(self.mine_note)
-        shell.add_setting("Your genes", mine)
+        shell.add_setting("Your genes", mine, subject=PORTS.GENE_LIST)
 
         save = QtWidgets.QWidget(shell)
         sl = QtWidgets.QVBoxLayout(save)
@@ -148,6 +148,7 @@ class InferModule(QtCore.QObject):
         kept.clicked.connect(self._export_kept)
         sl.addWidget(kept)
         shell.add_setting("Save the answer", save, expanded=False)
+        shell.add_recipes(self.recipe_settings())
 
         # ---------------------------------------------------------------- right
         shell.link_style(panel.question_detail)
@@ -163,6 +164,19 @@ class InferModule(QtCore.QObject):
         shell.add_section("The answer", answer, extent=360, stretch=3)
         shell.link_style(panel.question_report)
         shell.add_section("How far to trust it", panel.question_report, extent=180, stretch=1)
+
+        # What follows an answer (instruction 98, WP11, found by rendering the two side by
+        # side). Infer and Predict are the two halves of one thing -- a question whose holdout
+        # is already chosen, and a free-hand run -- and both hand on a claim, but only Predict
+        # offered what to do with it. The offers are the same function the gene card uses, so
+        # the two modules cannot come to differ about what follows a claim.
+        from .next_steps import NextSteps
+        self.next_steps = NextSteps(PORTS.CLAIM, shell,
+                                    lead="Next, with what this answer says:")
+        self.next_steps.chosen.connect(lambda key, _kind, _value: self._open(key))
+        shell.add_section("What you can do with this next", self.next_steps,
+                          extent=110, stretch=0)
+        self.next_steps.set_subject("", available=self._reasons(), without="infer")
 
         shell.add_action("Answer this question", self.answer_question, primary=True,
                          tip="Answer with the chosen method: map groups name the unlabelled genes in "
@@ -243,6 +257,42 @@ class InferModule(QtCore.QObject):
             "<th>average precision</th><th>share of yes</th><th>may fill</th></tr>" + rows + "</table>")
         self.answer_note.setText(f"{calls['gene_id'].nunique() if len(calls) else 0:,} unlabelled genes ranked; "
                                  "each shows its most likely answer. Double-click a gene to read it.")
+
+    # ------------------------------------------------------------------ recipes
+    def recipe_settings(self) -> list:
+        """The settings of the Infer module that a recipe keeps (instruction 98, WP11).
+
+        THE QUESTION IS NOT ONE. Einar settled that a question is the SUBJECT of this module,
+        and a question also carries its own holdout and its own control -- it is a question
+        template (`parascape.question_templates`), which is a different thing from a recipe and
+        was renamed so that the two words could not be confused on this screen. A recipe here
+        is how the question is ANSWERED: which method, and which kinds of evidence are left out
+        of what the question would otherwise allow.
+
+        The tick boxes are rebuilt for each question, so they are read live rather than held
+        from build time, and what is kept is WHAT WAS LEFT OUT rather than what was ticked:
+        a recipe applied to another question then leaves out the same kinds of evidence where
+        that question offers them, and says so by name where it does not.
+        """
+        def get_left_out():
+            return sorted(name for name, box in self.uses_boxes.items() if not box.isChecked())
+
+        def put_left_out(value):
+            if not isinstance(value, list):
+                raise ValueError("what to leave out of the answer is not a list")
+            leave = {str(v) for v in value}
+            for name, box in self.uses_boxes.items():
+                if box.isEnabled():
+                    box.setChecked(name not in leave)
+            gone = sorted(leave - set(self.uses_boxes))
+            if gone:
+                return (f"this question does not offer {', '.join(gone)}, so that part of the "
+                        f"recipe was left out.")
+            return None
+
+        return [widget_setting("method", self.method_choice, "how to answer"),
+                Setting("evidence_left_out", get_left_out, put_left_out,
+                        "evidence left out of the answer")]
 
     # ------------------------------------------------------------------ what the answer may use
     def refresh_uses(self) -> None:
@@ -410,6 +460,19 @@ class InferModule(QtCore.QObject):
         if gene:
             from .gene_module import open_in
             open_in(self.window, gene)
+
+    def _open(self, key: str) -> str:
+        """Open another module, which is how an answer becomes the next step."""
+        from .landing_install import open_module
+        return open_module(self.window, key)
+
+    def _reasons(self) -> dict:
+        """Which modules this window cannot open, so a blocked offer says why."""
+        from .landing_install import _reasons
+        try:
+            return _reasons(self.window)
+        except Exception:
+            return {}
 
     def _to_map(self) -> None:
         frame = self.answer()

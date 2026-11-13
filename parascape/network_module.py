@@ -26,6 +26,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import map_reading as MR
 from . import network_reading as NR
+from . import ports as PORTS
 from . import theme as TH
 from .recipes_panel import Setting, widget_setting
 from .shell import ModuleShell, solid_dropdown
@@ -359,10 +360,7 @@ class NetworkModule(QtCore.QObject):
         self._links = None
         self._adj = None
         self._agreement = None
-        self.shell = shell = ModuleShell(
-            "network", "Network", "every gene and the links between them, yours in focus",
-            instruction="Choose a gene and the kinds of link; zoom with the wheel, drag to move, "
-                        "click a gene to travel to it.")
+        self.shell = shell = ModuleShell.for_module("network")
         shell.module = self
         self._build_settings()
         self._build_runtime()
@@ -392,7 +390,7 @@ class NetworkModule(QtCore.QObject):
         v.addWidget(self.field)
         self.focus_note = _muted("No gene in focus: the whole network is shown.")
         v.addWidget(self.focus_note)
-        shell.add_setting("Your gene", mine)
+        shell.add_setting("Your gene", mine, subject=PORTS.GENE)
 
         colour = QtWidgets.QWidget(shell)
         cl = QtWidgets.QVBoxLayout(colour)

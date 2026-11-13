@@ -39,6 +39,7 @@ from PySide6 import QtCore, QtWidgets
 
 from . import ports as PORTS
 from . import theme as TH
+from .recipes_panel import widget_setting
 from .shell import ModuleShell, solid_dropdown
 
 #: Rows shown in the table. The export carries every one.
@@ -96,9 +97,7 @@ class ScreenModule(QtCore.QObject):
         self.screen: pd.DataFrame | None = None
         self.source: dict = {}
         self.comparison: pd.DataFrame | None = None
-        self.shell = shell = ModuleShell(
-            "screen", "Screen", "join your screen to everything already recorded",
-            instruction="Open your measured table, say which columns it uses, then compare.")
+        self.shell = shell = ModuleShell.for_module("screen")
         shell.module = self
         self._build_settings()
         self._build_runtime()
@@ -126,7 +125,7 @@ class ScreenModule(QtCore.QObject):
         ml.addLayout(row)
         self.file_note = _muted("No table open. Nothing is read from disk until you open one.")
         ml.addWidget(self.file_note)
-        shell.add_setting("Your screen", mine)
+        shell.add_setting("Your screen", mine, subject=PORTS.SCREEN)
 
         which = QtWidgets.QWidget(shell)
         wl = QtWidgets.QVBoxLayout(which)
@@ -173,6 +172,22 @@ class ScreenModule(QtCore.QObject):
         self.export_button.clicked.connect(self._export)
         sl.addWidget(self.export_button)
         shell.add_setting("Save", save, expanded=False)
+        shell.add_recipes(self.recipe_settings())
+
+    def recipe_settings(self) -> list:
+        """The settings of the Screen module that a recipe keeps (instruction 98, WP11).
+
+        The TABLE is the subject and is not kept -- a recipe that reopened a file from
+        the disk of somebody else would be a recipe that only works on one machine. What is kept is which
+        of its columns hold the gene and the measurement, which is the thing a laboratory
+        exporting the same layout every time has to say again for every file. The columns are
+        read out of the file, so a recipe naming a column the new file does not have reports
+        that by name instead of leaving a blank drop-down.
+        """
+        return [
+            widget_setting("gene_column", self.gene_column, "gene identifier column"),
+            widget_setting("value_column", self.value_column, "measured value column"),
+        ]
 
     # ----------------------------------------------------------------- the right column
     def _build_runtime(self) -> None:

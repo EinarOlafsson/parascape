@@ -55,6 +55,7 @@ from PySide6 import QtCore, QtWidgets
 from . import gene_reading as GR
 from . import ports as PORTS
 from . import theme as TH
+from .recipes_panel import widget_setting
 from .shell import ModuleShell, solid_dropdown
 from . import organisms
 
@@ -81,9 +82,7 @@ class GeneModule(QtCore.QObject):
         self.gene = ""
         self.genes: list = []                          # a list being stepped through
         self.reading = None
-        self.shell = shell = ModuleShell(
-            "gene", "Gene card", "everything recorded about one gene, with its sources",
-            instruction="Type a gene, or choose a list and step through it.")
+        self.shell = shell = ModuleShell.for_module("gene")
         shell.module = self
         shell.setAcceptDrops(True)
         shell.installEventFilter(self)
@@ -131,7 +130,7 @@ class GeneModule(QtCore.QObject):
         v.addWidget(self.matches)
         self.match_note = _muted("")
         v.addWidget(self.match_note)
-        shell.add_setting("Your gene", mine)
+        shell.add_setting("Your gene", mine, subject=PORTS.GENE)
 
         lens = QtWidgets.QWidget(shell)
         ll = QtWidgets.QVBoxLayout(lens)
@@ -196,6 +195,29 @@ class GeneModule(QtCore.QObject):
         kp.addWidget(save)
         kp.addWidget(reopen)
         shell.add_setting("Save", keep, expanded=False)
+        shell.add_recipes(self.recipe_settings(), after_apply=self.render)
+
+    def recipe_settings(self) -> list:
+        """The settings of the Gene card that a recipe keeps (instruction 98, WP11).
+
+        THE GENE ITSELF IS NOT ONE. Einar settled that a gene is the SUBJECT of this module
+        and not a setting of it, so the field, the list and the matches are left out: a recipe
+        says how the card READS a gene, and is then applied to whichever gene is in it. What is
+        left is a genuine set of choices -- which measurement is read as "where it is", which
+        kinds of knowledge are summarised, and whether predictions are shown beside the facts --
+        and before this there was no way to keep a working set of them under a name while
+        every other module had one.
+
+        Each kind of knowledge is its own setting, named by its category, so a category a data
+        release drops is reported by name when an old recipe is applied rather than silently
+        ignored.
+        """
+        out = [widget_setting("placement_column", self.place_box, "where it is, read by"),
+               widget_setting("show_predicted", self.show_predicted,
+                              "show predicted values")]
+        for category, box in self.include.items():
+            out.append(widget_setting(f"read_{category}", box, f"what to read: {category}"))
+        return out
 
     # ------------------------------------------------------------------ right
     def _build_runtime(self) -> None:

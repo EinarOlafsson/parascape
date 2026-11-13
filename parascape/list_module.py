@@ -56,6 +56,7 @@ from . import list_reading as LR
 from . import ports as PORTS
 from . import theme as TH
 from . import organisms
+from .recipes_panel import widget_setting
 from .shell import ModuleShell, solid_dropdown
 
 
@@ -94,11 +95,7 @@ class ListModule(QtCore.QObject):
         self.coverage: tuple = ()
         self.source = ""
         self._label_columns = None                     # computed once; see `label_columns`
-        self.shell = shell = ModuleShell(
-            "list", "Gene list card",
-            "what a list of genes shares that other genes do not",
-            instruction="Paste a list of genes, or choose a file, and read what they have "
-                        "in common.")
+        self.shell = shell = ModuleShell.for_module("list")
         shell.module = self
         shell.setAcceptDrops(True)
         shell.installEventFilter(self)
@@ -179,7 +176,7 @@ class ListModule(QtCore.QObject):
             "How many genes the list reached, how many identifiers reached none, and how many "
             "were repeated. What reached nothing is listed, never silently dropped."))
         v.addWidget(self.list_note)
-        shell.add_setting("Your genes", mine)
+        shell.add_setting("Your genes", mine, subject=PORTS.GENE_LIST)
 
         lens = QtWidgets.QWidget(shell)
         ll = QtWidgets.QVBoxLayout(lens)
@@ -261,6 +258,24 @@ class ListModule(QtCore.QObject):
         kp.addWidget(save)
         kp.addWidget(reopen)
         shell.add_setting("Save", keep, expanded=False)
+        shell.add_recipes(self.recipe_settings(), after_apply=self.render)
+
+    def recipe_settings(self) -> list:
+        """The settings of the Gene list card that a recipe keeps (instruction 98, WP11).
+
+        THE LIST ITSELF IS NOT ONE: a list of genes is the subject of this module, so a recipe
+        is how the card READS a list and is then applied to whichever list is in it. The two
+        bars that decide what counts as something the list shares are the settings worth
+        keeping under a name, because they are the choice somebody argues about and will want
+        to use again on the next list.
+        """
+        out = [widget_setting("placement_column", self.place_box, "where they are, read by"),
+               widget_setting("min_in_list", self.min_in_list,
+                              "how many of the list must carry it"),
+               widget_setting("how_many", self.how_many, "how many shared labels to show")]
+        for category, box in self.include.items():
+            out.append(widget_setting(f"read_{category}", box, f"what to read: {category}"))
+        return out
 
     # ------------------------------------------------------------------ right
     def _build_runtime(self) -> None:

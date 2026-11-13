@@ -431,6 +431,12 @@ class DropView(QtWidgets.QWidget):
         self.report = QtWidgets.QTableWidget(0, 4)
         self.report.setObjectName("DropReport")
         self.report.setHorizontalHeaderLabels(["identifier in the file", "gene", "state", "why"])
+        # The columns are given their headings' room BEFORE any list is loaded (instruction 98,
+        # WP11, found by rendering the Drop module). Until now they were only sized once a file
+        # had been read, so the empty table a person meets first said "NTIFIER IN THE F" --
+        # cut at both ends, and so saying neither which column it was nor that it had been cut.
+        from .panes.tables import show_headings
+        show_headings(self.report)
         self.report.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.report.setToolTip(TH.tip(TIPS["report"]))
         layout.addWidget(self.report, 1)

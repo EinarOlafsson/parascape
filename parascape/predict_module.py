@@ -37,6 +37,7 @@ from PySide6 import QtCore, QtWidgets
 
 from . import ports as PORTS
 from . import theme as TH
+from .recipes_panel import widget_setting
 from .shell import ModuleShell, solid_dropdown
 
 #: Metrics named in the trust sentence, in the order they are read out.
@@ -113,10 +114,7 @@ class PredictModule(QtCore.QObject):
         self.result = None
         self.job = None
         self.mine: list = []
-        self.shell = shell = ModuleShell(
-            "predict", "Predict",
-            "predict any measured column, and measure how often that is right",
-            instruction="Choose a column to predict, a method, and what to hold out.")
+        self.shell = shell = ModuleShell.for_module("predict")
         shell.module = self
         if self.runner is not None:
             self.runner.finished.connect(self._finished)
@@ -150,7 +148,7 @@ class PredictModule(QtCore.QObject):
         wl.addWidget(self.kind)
         wl.addWidget(_muted("Genes with no measurement for this column are the ones a call "
                             "is made about."))
-        shell.add_setting("What to predict", what)
+        shell.add_setting("What to predict", what, subject=PORTS.TRAIT)
 
         mine = QtWidgets.QWidget(shell)
         ml = QtWidgets.QVBoxLayout(mine)
@@ -177,7 +175,7 @@ class PredictModule(QtCore.QObject):
         ml.addLayout(row)
         self.mine_note = _muted("No genes of your own. The whole table is predicted either way.")
         ml.addWidget(self.mine_note)
-        shell.add_setting("Your genes", mine)
+        shell.add_setting("Your genes", mine, subject=PORTS.GENE_LIST)
 
         how = QtWidgets.QWidget(shell)
         hl = QtWidgets.QVBoxLayout(how)
@@ -260,6 +258,31 @@ class PredictModule(QtCore.QObject):
         self.export_button.clicked.connect(self._export)
         sl.addWidget(self.export_button)
         shell.add_setting("Save", save, expanded=False)
+        shell.add_recipes(self.recipe_settings())
+
+    def recipe_settings(self) -> list:
+        """The settings of the Predict module that a recipe keeps (instruction 98, WP11).
+
+        This is the module a recipe was always most obviously for: how to predict, what is
+        kept together in the holdout, how many times to split, the abstention threshold and
+        whether the frozen sequence features are used. A run is only comparable with another
+        run made the same way, and before this the only record of how one was made was the
+        export of the run itself -- which is no help when setting up the next one.
+
+        The column being predicted IS kept, although it is a trait and therefore a subject,
+        because what to predict and how to predict it are not separable here: "the boosted
+        trees, by orthogroup, three ways" means something different for a category than for a
+        number. A column the data no longer has is reported by name when the recipe is applied.
+        """
+        return [
+            widget_setting("target", self.target, "what to predict"),
+            widget_setting("kind", self.kind, "a category or a number"),
+            widget_setting("method", self.method, "how to predict"),
+            widget_setting("group", self.group, "what is kept together"),
+            widget_setting("folds", self.folds, "times to split"),
+            widget_setting("threshold", self.threshold, "say nothing below"),
+            widget_setting("sequence", self.sequence, "use the frozen sequence features"),
+        ]
 
     # ----------------------------------------------------------------- the right column
     def _build_runtime(self) -> None:

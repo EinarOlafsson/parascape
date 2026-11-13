@@ -32,6 +32,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import information_map as IM
 from . import theme as TH
+from .panes.tables import show_headings
 
 #: Every control's explanation. A release once failed its checks for a missing tooltip, and the costly
 #: misreading here is not a mis-set option but an empty cell read as a negative result, so the tips say so.
@@ -185,6 +186,9 @@ class InformationMapPanel(QtWidgets.QWidget):
         self.facts.verticalHeader().setVisible(False)
         self.facts.horizontalHeader().setStretchLastSection(True)
         self.facts.setToolTip(TH.tip(TIPS['facts']))
+        # instruction 98, WP11: the columns said their names before anything was in them only
+        # for as wide as the default section, so "evidence (reference . dataset)" was cut.
+        show_headings(self.facts)
         lay.addWidget(self.facts, 2)
         self.partner_note = QtWidgets.QLabel('')
         self.partner_note.setWordWrap(True)
@@ -196,6 +200,7 @@ class InformationMapPanel(QtWidgets.QWidget):
         self.partners.verticalHeader().setVisible(False)
         self.partners.horizontalHeader().setStretchLastSection(True)
         self.partners.setToolTip(TH.tip(TIPS['partners']))
+        show_headings(self.partners)
         lay.addWidget(self.partners, 1)
         self.search.returnPressed.connect(self.find_genes)
         self.find.clicked.connect(self.find_genes)

@@ -1,6 +1,18 @@
 # 98 · Restructure the ParaScape interface on the spaCR pattern
 
-**Status: OPEN. Requested by Einar 2026-11-12, after installing 0.0.11.0.**
+**Status: built 2026-11-12, waiting on Einar.** All eleven work packages are built: typed subjects
+(`ports.py`), one catalogue (`modules.py`), the navigator search, the spaCR symbols with no small cross
+anywhere, recipes, the tree down the left, the gene card and the gene list card with the modules downstream
+of each, the pre-navigator window retired with every panel behind it named and routed, and the whole of that
+held as a contract over every module (`tests/test_module_contract.py`), so a module added without a part of
+it fails the suite by name rather than being noticed later by Einar.
+
+**Two things are left and neither is work this instruction can finish.** (1) The star map: delete it once the
+Network module draws the inferred and your-run links, or keep it -- a decision for Einar, with the code
+untouched either way. (2) `docs/deck/` slide 4 still shows the retired workflows window; the slide images are
+rendered from a running application, so bringing them up to date is a pass of its own.
+
+*Requested by Einar 2026-11-12, after installing 0.0.11.0.*
 
 > "The new interface is really close to what I wanted in terms of the navigator screen. But everything behind
 > it seems to be unchanged. So please take stock of each component and part of ParaScape then rearrange
@@ -299,7 +311,7 @@ exactly what they read before.
 | WP10 retire the old windows, route every orphan | **done 2026-11-12** — see "WP10 as built" |
 | WP7 the tree | **done 2026-11-12** — see "WP7 and WP4 as built" |
 | WP4 navigator search | **done 2026-11-12** — see "WP7 and WP4 as built" |
-| WP11 | not started |
+| WP11 consistency as tests | **done 2026-11-12** — see "WP11 as built" |
 
 **Two tables that can now disagree, which is the exact failure spaCR documents as bug #16i.** Both must be
 closed before WP7, because the tree is computed from them:
@@ -870,3 +882,146 @@ that matches nothing.
    shows a picture of that window. The slide images are rendered from a running application, so bringing them
    up to date is a pass of its own rather than an edit. `docs/workflows.md`, `docs/index.md`, `docs/guide.md`
    and `docs/API.md` are correct as of this change.
+
+## WP11 as built, 2026-11-12
+
+The words of Einar, which are the acceptance criteria: *"every module should be thematically consistent. every
+analasys should be thematically consistent and intuitive to use and get to."*
+
+Ten work packages built that consistency. WP11 makes it enforceable, because a contract nobody checks lasts
+until the next module is added.
+
+### What was already held, and where
+
+Most of the contract was already asserted somewhere, and **nothing of it is asserted a second time**. Two
+tests of one rule are two things to keep in step; they drift, and the one that drifts is the one nobody reads.
+
+| clause | already held by |
+|---|---|
+| declares its ports | `test_module_catalogue::test_every_module_in_the_catalogue_has_ports_declared`, `::test_the_two_tables_are_keyed_the_same` |
+| has an icon that exists and renders | `test_module_catalogue::test_every_module_has_an_icon_name`, `::test_the_symbol_of_a_module_is_declared_once`, `test_symbols_and_no_cross::test_every_module_has_a_shipped_spacr_symbol`, `::test_every_symbol_renders_visible_pixels_in_the_ink_of_the_theme` |
+| appears in exactly one section | `test_module_catalogue::test_no_section_is_empty`, `::test_no_module_is_in_two_sections`, `::test_the_grouping_covers_every_module_exactly_once` |
+| is reachable in the interface | `test_module_catalogue::test_every_catalogue_module_is_reachable_in_the_interface` and its converse, `test_modules_in_window::test_every_destination_exists_in_the_window` |
+| is reachable from the tree | `test_tree::test_every_module_is_filed_exactly_once`, `::test_the_rail_lists_home_and_every_module_once` |
+| its views exist and open | `test_views` (four tests, both directions) and `test_tree::test_every_declared_view_is_in_the_tree` |
+| carries a docstring | `test_docstrings` (three tests over every file of the package) |
+| says what to do first | `test_module_catalogue::test_every_module_says_what_to_do_first`, `test_home::test_every_module_says_what_you_get_not_what_it_is` |
+| a tooltip on every control | `test_app_menus::test_no_control_anywhere_is_left_without_an_explanation` — it walks the real window, and every module shell is built with the window, so it reaches them all |
+| shows no "×" | `test_symbols_and_no_cross::test_the_real_window_has_no_small_cross_anywhere`, `::test_no_cross_survives_opening_every_module` |
+
+**Six clauses had no test anywhere**, and each of the six is a failure that has actually happened here rather
+than one imagined for a test:
+
+1. **Reachable by typing its own name.** `test_navigator` checked one module. It is a property of every row.
+2. **A recipe surface wherever there are settings.** Map and Network had one; the other six shells did not.
+3. **A control only for a subject the module reads.** Every tool module was given a "Your gene" field.
+4. **Somewhere to put what it requires**, so an offer carrying a gene does not open the module empty.
+5. **The same words on the tile and on the masthead.** Five of the seven shells had already drifted.
+6. **Greyed only for a reason its own row declares.** This is the Network-and-the-star-map failure.
+
+### The one place the contract lives: `tests/test_module_contract.py`
+
+`CONTRACT` is a table with one line per clause. Each line either carries a `check` that runs against every
+catalogue row, or names the tests that already hold it. The table-driven test is parametrised by module AND by
+clause, so a failure reads
+
+```
+test_the_contract[jobs-offers a control only for a subject it reads]
+```
+
+which names the module and the missing part without anybody reading the assertion. Three tests keep the table
+itself honest: a clause with neither a check nor a holder fails; a clause with BOTH fails, because that is the
+duplication this file exists to avoid; and every test a clause leans on is looked up by name in the file it
+names, so a rename over there is a failure here rather than a clause that quietly stops being checked.
+
+**The guard against a fourth #16i.** `test_nothing_keeps_a_second_table_about_the_modules` walks the package
+for any module-level dict, tuple, list or set whose keys are four or more module keys, outside `modules.py`
+and `ports.py`. `iconset.MODULE_ICON` and `modules.DOWNSTREAM` were each exactly that, and each drifted; both
+are closed by name elsewhere. This finds the next one by SHAPE, because the next one will have a different
+name. Four keys is the bar: two or three is a list of special cases with a comment beside it.
+
+### What the contract found, and what was changed to keep it
+
+* **A third pair of tables, found by WP11.** Each of the seven modules built on a shell of its own wrote its
+  own name, note and first instruction beside the same three facts on its catalogue row, and five of the seven
+  had drifted: the tile said "Gene" and the masthead "Gene card"; the tile said Network was "a gene and its
+  neighbourhood, edges you define" and the masthead "every gene and the links between them, yours in focus".
+  `ModuleShell.for_module(key)` now builds the masthead from the row, as `dock_module` has since WP3. Nothing
+  was lost: where the masthead had the plainer words they were moved INTO the catalogue, so the tiles, the
+  tree and the search read better too. **The `gene` row is now called "Gene card"** -- the phrase of Einar himself, and
+  it pairs with "Gene list".
+* **Six modules asked for a gene they do not read.** `dock_module` gave every tool module a "Your gene" field
+  and a "Read it in Gene" action, so Jobs asked for "a gene id or a word of its product" above the list of
+  what is running, and Console, Gallery, Drop, Strategies and Scorecard did the same. The field is built from
+  `Module.consumes` now, so Expression, Cell and Information keep it and the other six do not.
+* **Five modules had settings and no way to save them.** Gene card, Gene list, Infer, Predict and Screen each
+  gained a Recipes group, the same one spaCR gives every screen. **The rule of Einar is encoded rather than
+  guessed at**: `ModuleShell.add_setting(..., subject=...)` records which groups of the Settings column hold
+  THE SUBJECT -- the gene field, the question chooser, the file opener -- declared where the group is built
+  and by the only person who knows. A module whose Settings column holds nothing but subjects needs no recipe,
+  which is why the nine tool modules have none and fail nothing.
+* **The word "recipe" now appears in the Infer module**, once, meaning the settled thing. This instruction
+  recorded the risk by name; the rename to "question template" is what makes it safe, and
+  `test_the_infer_module_offers_question_templates_and_never_calls_one_a_recipe` was narrowed to say exactly
+  that -- nothing about a QUESTION is called a recipe.
+* **Infer offers what follows an answer.** Predict had the row and Infer did not, although the two are the two
+  halves of one thing and both hand on a claim. Both now read `next_steps.offers`, so the two cannot come to
+  differ about what follows a claim.
+
+### Four more things found by LOOKING that no test caught
+
+The real `app.Window` was rendered offscreen at 1920x1080 with `XDG_CONFIG_HOME` in a scratch directory, and
+every module and every declared view walked and looked at, four times over as the fixes landed.
+
+1. **An action row cut its buttons at both ends.** Eight actions in the Network module left "Open a saved
+   bundle…" drawn as "pen a saved bundle" and "Save everything as a bundle…" as "everything as a bur" -- so
+   neither end said which button it was and both read as a different, wrong action. A `QPushButton` clips;
+   `shell.ActionButton` shortens with an ellipsis, which SAYS it has been shortened, and the whole label comes
+   first in the tooltip. `text()` is unchanged, because that is what the module keyed the button by.
+2. **An empty Settings column took a third of the screen.** Once the six tool modules stopped offering a gene
+   field, their Settings column was an empty bordered box with the panel squeezed into what was left. A shell
+   with no settings hides the pane and gives the room to what it shows -- which is how Jobs and Strategies came
+   to be readable across the full width.
+3. **A table cut the names of its own columns.** The Drop module said "NTIFIER IN THE F" for "identifier in
+   the file", the Scorecard said "NFERRED CLAIMS", and the Information module cut "evidence (reference ·
+   dataset)" in half, because the columns were sized only once something had been loaded.
+   `parascape/panes/tables.show_headings` is the one fix for the one mistake.
+4. **The Gallery pointed at a tab that no longer exists.** "Run *walk hyperparameters* on the Map tab" -- the
+   Map tab became the Map module in instruction 86, and "walk hyperparameters" is the name of a button rather
+   than of anything a person wants. It says "Open the **Map** module and use **Find the best map for a
+   label**" now.
+
+Each of the four is now a test: `test_a_squeezed_action_is_shortened_with_an_ellipsis_rather_than_cut`,
+`test_a_module_with_nothing_to_set_gives_the_room_to_what_it_shows`,
+`test_every_table_says_what_its_columns_are_before_anything_is_loaded`, and the Gallery wording is held by the
+clause that every module says one thing in one place.
+
+### What the contract is, and what it does not cover
+
+**What it is.** Every row of `modules.MODULES` declares its ports, has an icon that exists and renders, sits in
+exactly one section, is reachable from the dock, from the tree and by typing its own name, has views that exist
+and open, has a recipe surface wherever it has settings of its own, carries a docstring, says what to do first,
+has a tooltip on every control, shows no "×", offers a control only for a subject its ports declare, has
+somewhere to put what it requires, says the same thing on its tile as on its masthead, and is greyed only for
+what its own row declares -- the `needs` written on it, or the destination it names failing to build. Adding a
+module and forgetting any of that fails the suite, by name.
+
+**What it does not cover, said plainly so that nobody reads more into it than is there.**
+
+1. **Whether a module is any good.** The contract is about shape. That the Map module reads the right columns
+   is held by `test_module_shell`, `test_map_reading` and the rest; nothing here replaces them.
+2. **Whether the words are the right words.** A tooltip that exists and says nothing passes, and so does a note
+   that is accurate and dull. Plain wording is a standing rule and a human reading, not a test.
+3. **What a module DOES with a subject it is handed.** The contract holds that a module declaring it reads a
+   gene has somewhere to put one. That the Expression module then actually profiles that gene is a test of its
+   own, per module.
+4. **Anything outside a module.** The preferences, the download dialogs and the menu bar are not catalogue rows
+   and are held by `test_app_controls` and `test_app_menus`.
+5. **The layout at other sizes.** Everything here is judged at 1920x1080. `test_module_shell` reads the gene
+   card at several widths; no other module is checked at more than one.
+6. **Map and Network offer no next step.** Gene card, Gene list, Screen, Predict and now Infer do. The two that
+   do not hand on a SPACE and a GENE PAIR, which nothing can pre-fill, so the row would be a row of offers all
+   saying "none chosen". Left as it is rather than half-built; the rail under each module already lists what
+   follows it.
+7. **Tables outside a module shell.** `test_every_table_says_what_its_columns_are_before_anything_is_loaded`
+   walks the tables inside the module shells. A table in a dialog or a further window is not reached by it.

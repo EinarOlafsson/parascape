@@ -11,6 +11,8 @@ second file costs one more window and keeps a long file from growing by a third.
 import pytest
 from PySide6 import QtWidgets
 
+from parascape import modules as MOD
+
 
 @pytest.fixture(scope="module")
 def qapp():
@@ -64,7 +66,11 @@ def test_the_gene_list_card_is_laid_out_in_the_order_the_mould_asks_for(window):
     assert not shell.sections["Save"].is_expanded()
     assert shell.sections["The genes of the list"].shut, "the identifiers are not the card"
     assert shell.sections["Console and AI chat"].shut, "the console must start folded"
-    assert shell.title_label.text() == "Gene list card"
+    # The masthead is the catalogue row since instruction 98, WP11: it said "Gene list card"
+    # while the tile said "Gene list", which is one fact in two tables and the bug this whole
+    # instruction exists to remove.
+    assert shell.title_label.text() == "Gene list"
+    assert shell.title_label.text() == MOD.get("list").name
 
 
 def test_a_list_card_is_not_a_table_of_identifiers(window):

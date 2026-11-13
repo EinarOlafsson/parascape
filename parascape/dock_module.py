@@ -3,11 +3,18 @@
 Einar: "all modules need to be thematically the same." The gene-reading modules (Map, Gene,
 Network, Infer) are built one by one with the parascape-module mould. The rest are TOOLS --
 the strategy table, the scorecard, the comparisons, the jobs list -- whose panels already exist
-as docks. Each is shown here inside the same shell: the masthead and Home, "Your gene" (which
-selects the gene for the panel, as clicking it on the map would), the panel itself as the main
-section, then actions and the folded console and AI chat. The panel is LENT to the module while
-it is on screen and handed back to its dock after (`shell._Borrowed`), so nothing is copied and
-the dock works as before.
+as docks. Each is shown here inside the same shell: the masthead and Home, "Your gene" for a
+module that reads one (which selects the gene for the panel, as clicking it on the map would),
+the panel itself as the main section, then actions and the folded console and AI chat. The panel
+is LENT to the module while it is on screen and handed back to its dock after
+(`shell._Borrowed`), so nothing is copied and the dock works as before.
+
+THE SUBJECT FIELD IS NOT GIVEN TO EVERY MODULE (instruction 98, WP11)
+=====================================================================
+It was, which meant Jobs asked for "a gene id or a word of its product" above the list of what
+is running, and Console, Gallery, Drop, Strategies and Scorecard did the same. None of the six
+declares that it reads a gene. The field is now built from `Module.consumes`, so a tool module
+offers a control for exactly the subject its ports say it takes.
 
 `SPECS` is the one list of which tile is which panel; a module rebuilt with the mould later
 simply leaves it.
@@ -28,6 +35,7 @@ from dataclasses import dataclass
 from PySide6 import QtCore, QtWidgets
 
 from . import modules as MOD
+from . import ports as PORTS
 from . import theme as TH
 from .shell import ModuleShell, _Borrowed
 
@@ -107,25 +115,38 @@ class ToolModule(QtCore.QObject):
                                          instruction=spec.instruction)
         shell.module = self
 
-        gene = QtWidgets.QWidget(shell)
-        gl = QtWidgets.QVBoxLayout(gene)
-        gl.setContentsMargins(6, 2, 6, 6)
-        self.field = QtWidgets.QLineEdit()
-        self.field.setPlaceholderText("A gene id or a word of its product, then Return")
-        self.field.setToolTip(TH.tip("Select a gene for this panel, as clicking it on the map "
-                                     "would."))
-        self.field.returnPressed.connect(self._select)
-        gl.addWidget(self.field)
-        gl.addWidget(_muted(f"{spec.title}: {spec.description}."))
-        shell.add_setting("Your gene", gene)
+        # The gene field only where the module SAYS IT READS A GENE (instruction 98, WP11).
+        # Every tool module used to get one, so Jobs offered "Your gene: a gene id or a word
+        # of its product" above a list of running jobs, and Console, Gallery, Drop, Strategies
+        # and Scorecard did the same -- six modules with a control for a subject their ports do
+        # not declare, which is the "tile that says one thing and does another" this
+        # instruction exists to remove. The answer comes from the declared ports rather than
+        # from a list of which six, so a module that starts reading a gene gets the field by
+        # declaring it. `tests/test_module_contract.py` holds both directions.
+        self.field = None
+        if PORTS.GENE in MOD.get(spec.key).consumes:
+            gene = QtWidgets.QWidget(shell)
+            gl = QtWidgets.QVBoxLayout(gene)
+            gl.setContentsMargins(6, 2, 6, 6)
+            self.field = QtWidgets.QLineEdit()
+            self.field.setPlaceholderText("A gene id or a word of its product, then Return")
+            self.field.setToolTip(TH.tip("Select a gene for this panel, as clicking it on the "
+                                         "map would."))
+            self.field.returnPressed.connect(self._select)
+            gl.addWidget(self.field)
+            gl.addWidget(_muted(f"{spec.title}: {spec.description}."))
+            shell.add_setting("Your gene", gene, subject=PORTS.GENE)
 
         self.main = _MainSection(dock, f"the {spec.title} module", spec.tab, shell)
         shell.add_section(spec.title, self.main, extent=620, stretch=4)
         shell._borrowed.append(self.main)
 
-        shell.add_action("Read it in Gene", self._to_gene, primary=True,
-                         tip="Open the selected gene in the Gene module: what is known, with sources.")
+        if self.field is not None:
+            shell.add_action("Read it in Gene", self._to_gene, primary=True,
+                             tip="Open the selected gene in the Gene module: what is known, "
+                                 "with sources.")
         shell.add_action("Open as a panel", self._as_panel,
+                         primary=self.field is None,
                          tip=f"Leave the module and use {spec.title} as a panel beside the map.")
         if spec.console:
             shell.borrow("Console and AI chat", [("Console", getattr(window, "console_dock", None)),
@@ -136,7 +157,7 @@ class ToolModule(QtCore.QObject):
         shell.home_requested.connect(lambda: _go_home(window))
 
     def _select(self) -> None:
-        text = self.field.text().strip()
+        text = self.field.text().strip() if self.field is not None else ""
         if text and hasattr(self.window, "_workflow_gene"):
             try:
                 self.window._workflow_gene(text)
@@ -145,7 +166,7 @@ class ToolModule(QtCore.QObject):
                 self.shell.say(f"could not select {text}: {error}")
 
     def _to_gene(self) -> None:
-        text = self.field.text().strip()
+        text = self.field.text().strip() if self.field is not None else ""
         if not text:
             sel = getattr(self.window, "sel", None)
             if sel is not None:

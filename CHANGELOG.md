@@ -18,8 +18,33 @@
   "pulldown", "LOPIT", "rhoptry", "CRISPR", "UMAP", "AlphaFold", "RNA-seq", "gene set" -- none of which
   matched anything before. The eight bands of the ranking are declared in `parascape.modules`. A search with
   matches shows cards, as before; only a search with no match asks the assistant.
+- **Five more modules can save their settings under a name.** The Gene card, the Gene list card, Infer,
+  Predict and Screen each have a Recipes group, as Map and Network already did and as every spaCR screen does.
+  A recipe keeps the settings of a module and never the subject it is acting on, so a Gene card recipe says
+  how a gene is read and applies to whichever gene is in the card. The Predict recipe is the one that was
+  most obviously missing: a run is only comparable with another run made the same way.
+- **Infer offers what to do next with an answer**, as Predict already did. Both hand on a claim, and both
+  read the same list of what follows one.
 
 ### Fixed
+
+- **Six modules asked for a gene they do not read.** Jobs offered "a gene id or a word of its product, then
+  Return" above the list of what is running, and Console, Gallery, Drop, Strategies and Scorecard did the
+  same. A module now offers a control for a subject only where it declares that it reads one, and the six
+  give the room to what they actually show instead.
+- **The name on a tile and the name on the module behind it are the same name.** Five modules disagreed with
+  themselves: the tile said "Gene" and the module said "Gene card", the tile said Network was "a gene and its
+  neighbourhood, edges you define" and the module said "every gene and the links between them, yours in
+  focus". The masthead is read from the one catalogue, and where the module had the plainer words those are
+  now what the tile, the tree and the search say too. The Gene module is called **Gene card** throughout.
+- **A crowded row of buttons cut its labels at both ends.** "Open a saved bundle…" was drawn as "pen a saved
+  bundle" and "Save everything as a bundle…" as "everything as a bur", so neither said which button it was. A
+  label too wide for its button is shortened with an ellipsis and given in full in the tooltip.
+- **Tables said what their columns were before anything was loaded into them.** The Drop module said
+  "NTIFIER IN THE F" for "identifier in the file", the Scorecard said "NFERRED CLAIMS", and the Information
+  module cut "evidence (reference · dataset)" in half.
+- The Gallery told you to "run walk hyperparameters on the Map tab". There has been no Map tab since the Map
+  module was built; it says to open the Map module and use "Find the best map for a label".
 
 - The landing could vanish the moment the main window appeared, depending on whether a 400 ms timer fired
   before the window manager reported its panels visible. The guard is a deadline read when the signal arrives

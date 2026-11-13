@@ -220,9 +220,13 @@ class GalleryPanel(QtWidgets.QWidget):
         lay = QtWidgets.QVBoxLayout(self)
         lay.setContentsMargins(6, 6, 6, 6)
         lay.addLayout(bar)
+        # Where the maps come from, said in the names the application now uses (instruction 98,
+        # WP11, found by rendering the Gallery module). It said "run walk hyperparameters on
+        # the Map tab": the Map tab became the Map module in instruction 86, and "walk
+        # hyperparameters" is the name of a button rather than of anything a person wants.
         self.hint = QtWidgets.QLabel(
-            "<i>Run <b>walk hyperparameters</b> on the Map tab. Maps appear here one at a time, as "
-            "each is computed.</i>")
+            "<i>Open the <b>Map</b> module and use <b>Find the best map for a label</b>. Maps "
+            "appear here one at a time, as each is built.</i>")
         self.hint.setWordWrap(True)
         lay.addWidget(self.hint)
         lay.addWidget(self.stack, 1)

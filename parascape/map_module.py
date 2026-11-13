@@ -33,6 +33,7 @@ import pandas as pd
 from PySide6 import QtCore, QtGui, QtWidgets
 
 from . import map_reading as MR
+from . import ports as PORTS
 from . import theme as TH
 from .recipes_panel import Setting, widget_setting
 from .shell import ModuleShell, solid_dropdown
@@ -288,9 +289,7 @@ class MapModule(QtCore.QObject):
         self._agreement_key = None
         self._agreement = None
 
-        self.shell = shell = ModuleShell(
-            "map", "Map", "every gene, placed by how alike its measurements are",
-            instruction="Put your genes on the map and read what surrounds them.")
+        self.shell = shell = ModuleShell.for_module("map")
         shell.module = self
         # A list dropped on the module is read here, onto the map, rather than going to the
         # gene-list panel behind the module as a drop anywhere else on the window does.
@@ -352,7 +351,7 @@ class MapModule(QtCore.QObject):
         v.addLayout(row)
         self.selection_label = _muted("Nothing selected. Click a point on the map, too.")
         v.addWidget(self.selection_label)
-        shell.add_setting("Your genes", mine)
+        shell.add_setting("Your genes", mine, subject=PORTS.GENE_LIST)
 
         colour = QtWidgets.QWidget(shell)
         cl = QtWidgets.QVBoxLayout(colour)

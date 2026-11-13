@@ -181,6 +181,43 @@ class _Borrowed(QtWidgets.QWidget):
         self.dock.setWidget(panel)
 
 
+#: Room a button keeps for its frame and padding when its label is shortened.
+ACTION_PADDING = 22
+
+
+class ActionButton(QtWidgets.QPushButton):
+    """A button in the Actions row that shortens its label rather than cutting it.
+
+    WHY (instruction 98, WP11, found by rendering the Network module). Eight actions in one
+    row leave each button narrower than its words, and a `QPushButton` draws its label
+    centred and CLIPS what will not fit -- at both ends. "Open a saved bundle…" was drawn as
+    "pen a saved bundle" and "Save everything as a bundle…" as "everything as a bur", so
+    neither end said which button it was and both read as a different, wrong action. It is
+    the same failure WP9 found on the cards of the navigator, where a column of eight offers
+    drew "Expression" as "xpression".
+
+    Only the DRAWING is shortened: `text()` still returns the whole label, because that is
+    what the module keyed the button by and what the tests look it up with, and the whole
+    label opens the tooltip so it can always be read.
+    """
+
+    def paintEvent(self, event):                       # noqa: N802 - Qt's name
+        painter = QtWidgets.QStylePainter(self)
+        option = QtWidgets.QStyleOptionButton()
+        self.initStyleOption(option)
+        room = max(0, self.width() - ACTION_PADDING)
+        option.text = self.fontMetrics().elidedText(
+            self.text(), QtCore.Qt.TextElideMode.ElideRight, room)
+        painter.drawControl(QtWidgets.QStyle.ControlElement.CE_PushButton, option)
+
+    def minimumSizeHint(self) -> QtCore.QSize:         # noqa: N802 - Qt's name
+        """Never narrower than a few letters and the ellipsis: a button shrunk to the
+        ellipsis alone is a button nobody can tell from the one beside it."""
+        size = super().minimumSizeHint()
+        letters = self.fontMetrics().horizontalAdvance("mmmm…") + ACTION_PADDING
+        return QtCore.QSize(min(size.width(), letters), size.height())
+
+
 class ModuleShell(QtWidgets.QWidget):
     """One module in spaCR's shell. Modules fill it through `add_setting`, `add_section`
     and `add_action`; nothing is drawn for a part a module does not use."""
@@ -200,6 +237,17 @@ class ModuleShell(QtWidgets.QWidget):
         self.sections: dict[str, QtWidgets.QWidget] = {}
         self.actions: dict[str, QtWidgets.QPushButton] = {}
         self.recipes = None                      # the recipe panel, once `add_recipes` is called
+        #: ``{group heading: subject kind}`` for the groups of the Settings column that hold
+        #: THE SUBJECT rather than settings -- the gene field, the question chooser, the file
+        #: opener. Instruction 98, WP11: the contract asks every module with settings for a
+        #: Recipes group, and the rule of Einar is that a gene or a question is a SUBJECT and not a
+        #: setting, so the two have to be told apart. They are told apart here, where the group
+        #: is built and the only person who knows the answer is writing, rather than in a table
+        #: of group names kept somewhere else -- which would be a second table of one fact.
+        #: `tests/test_module_contract.py` checks every tag against the declared ports, so a
+        #: module cannot offer a field for a subject it does not read.
+        self.subject_groups: dict[str, str] = {}
+        self._settings_groups: dict[str, CollapsibleSection] = {}
 
         outer = QtWidgets.QVBoxLayout(self)
         outer.setContentsMargins(24, 20, 24, 16)
@@ -278,6 +326,31 @@ class ModuleShell(QtWidgets.QWidget):
         self._palette = TH.palette_for("dark")
         self.set_palette(self._palette)
 
+    @classmethod
+    def for_module(cls, key: str, parent=None) -> "ModuleShell":
+        """The shell of one module, with its masthead read from the catalogue.
+
+        WHY THIS EXISTS (instruction 98, WP11). The seven modules built on a shell of their
+        own each wrote their own name, their own one-line note and their own first
+        instruction into the call below, beside the same three facts on their catalogue row.
+        Five of the seven had drifted: the tile said "Gene" and the masthead said "Gene card",
+        the tile said Network was "a gene and its neighbourhood, edges you define" and the
+        masthead said "every gene and the links between them, yours in focus", and Infer and
+        Map disagreed with themselves the same way. That is the failure spaCR records as bug
+        #16i -- two tables of one fact -- and this instruction exists to remove it, so a
+        module gets its masthead by having a catalogue row and in no other way.
+
+        `dock_module` has read the catalogue since WP3; this is the same route for the rest.
+
+        :param key: the module key, which must be a row of :data:`parascape.modules.MODULES`.
+        :param parent: the parent widget.
+        :raises KeyError: for a key that is not a module.
+        """
+        from . import modules as MOD
+        module = MOD.get(key)
+        return cls(key, module.name, module.note, instruction=module.instruction,
+                   parent=parent)
+
     # ------------------------------------------------------------------ filling it
     def set_palette(self, palette: dict) -> None:
         """Restyle the shell for a theme's palette (and the current container opacity)."""
@@ -302,9 +375,22 @@ class ModuleShell(QtWidgets.QWidget):
             f"a {{ color: {self._palette['accent']}; text-decoration: none; }}")
 
     def add_setting(self, name: str, widget: QtWidgets.QWidget,
-                    expanded: bool = True) -> CollapsibleSection:
-        """A foldable group in the Settings column."""
+                    expanded: bool = True, subject: str = "") -> CollapsibleSection:
+        """A foldable group in the Settings column.
+
+        :param name: the heading of the group.
+        :param widget: what goes in it.
+        :param expanded: whether it starts open.
+        :param subject: the kind of subject this group is FOR, from
+            :mod:`parascape.ports`, when the group holds the thing the module acts on
+            rather than settings of the module -- the gene field, the question chooser,
+            the opener for your own table. Recorded in :attr:`subject_groups`; see the
+            note there for why it is declared here. Empty means settings, which is what
+            a recipe keeps.
+        """
         section = CollapsibleSection(name, widget, expanded=expanded)
+        if subject:
+            self.subject_groups[name] = subject
         # The column keeps room for its widest group: with the dock beside it the splitter
         # squeezed it until buttons were cut off.
         self.settings_scroll.setMinimumWidth(
@@ -315,7 +401,18 @@ class ModuleShell(QtWidgets.QWidget):
         header.setStyleSheet(header.styleSheet().replace("palette(text)", self._palette["fg"]))
         self._settings_layout.insertWidget(self._settings_layout.count() - 1, section)
         self.sections[name] = section
+        self._settings_groups[name] = section
         return section
+
+    @property
+    def settings_groups(self) -> dict:
+        """The groups of the Settings column, in the order they were added.
+
+        :attr:`sections` holds the runtime sections as well, so a reader asking "what can
+        this module be set to" cannot use it. Instruction 98, WP11 asks that question of
+        every module, so the answer is kept rather than guessed from the widget tree.
+        """
+        return dict(self._settings_groups)
 
     def add_recipes(self, settings, after_apply=None, name: str = "Recipes"):
         """The Recipes group of the Settings column: save the settings of this module under a
@@ -355,12 +452,18 @@ class ModuleShell(QtWidgets.QWidget):
 
     def add_action(self, label: str, slot, tip: str = "",
                    primary: bool = False) -> QtWidgets.QPushButton:
-        """A button in the Actions section, which appears with the first one."""
-        button = QtWidgets.QPushButton(label)
+        """A button in the Actions section, which appears with the first one.
+
+        The label is shortened with an ellipsis when the row cannot give it the room
+        (:class:`ActionButton`), and the whole label opens the tooltip so that a shortened
+        one can still be read.
+        """
+        button = ActionButton(label)
         if primary:
             button.setProperty("primary", True)
-        if tip:
-            button.setToolTip(TH.tip(tip))
+        # The label first, then what it does: a shortened label is unreadable on the button
+        # and the tooltip is then the only place the action is named in full.
+        button.setToolTip(TH.tip(f"{label}\n\n{tip}" if tip else label))
         button.clicked.connect(slot)
         self._action_row.insertWidget(self._action_row.count() - 1, button)
         self.actions[label] = button
@@ -399,6 +502,15 @@ class ModuleShell(QtWidgets.QWidget):
     def showEvent(self, event):
         for holder in self._borrowed:
             holder.take()
+        # A module with NOTHING to set gives the room to what it shows (instruction 98,
+        # WP11). Six tool modules stopped offering a gene field they had no business
+        # offering, and their Settings column was then a third of the screen holding an
+        # empty bordered box, with the panel squeezed into what was left. The pane is
+        # hidden rather than collapsed, because a collapsed EDGE pane keeps a strip whose
+        # arrow promises something behind it.
+        if not self._settings_groups:
+            self.settings_scroll.hide()
+            self.body.rebalance()
         super().showEvent(event)
 
     def hideEvent(self, event):

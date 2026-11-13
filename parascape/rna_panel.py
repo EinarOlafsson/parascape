@@ -8,6 +8,7 @@ from PySide6 import QtCore, QtWidgets
 
 from . import expression_contrast as X
 from . import rna_profiles as R
+from .panes.tables import show_headings
 
 
 class RNAProfilesPanel(QtWidgets.QWidget):
@@ -73,6 +74,7 @@ class RNAProfilesPanel(QtWidgets.QWidget):
         self.table.setHorizontalHeaderLabels(['gene', 'study', 'run', 'sample', 'parasite TPM', 'estimated count'])
         self.table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table.verticalHeader().setVisible(False)
+        show_headings(self.table)            # instruction 98, WP11
         self.table.cellDoubleClicked.connect(self._gene)
         layout.addWidget(self.table, 1)
 

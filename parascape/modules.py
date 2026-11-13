@@ -208,9 +208,9 @@ BANDS = (
 #: Every module. Order within a band is the order drawn.
 MODULES = (
     # ---------------------------------------------------------------- Look up
-    Module("gene", "Gene", "everything recorded about one gene, with its sources",
+    Module("gene", "Gene card", "everything recorded about one gene, with its sources",
            "Look up", opens="evidence", icon="profiler",
-           instruction="Name a gene, or step through a list one gene at a time.",
+           instruction="Type a gene, or choose a list and step through it.",
            builder="shell:gene_module",
            words=("accession", "locus", "annotation", "product", "protein", "ToxoDB",
                   "orthologue", "gene card", "what is known"),
@@ -281,7 +281,7 @@ MODULES = (
     # associated with (`maps`, `star map`), which was never where either opened and which
     # greyed Network out whenever the star map dock failed to build. Both of those docks
     # are declared views now -- of Gallery and of Network -- so each has exactly one name.
-    Module("map", "Map", "the genome as a space you choose the axes of",
+    Module("map", "Map", "every gene, placed by how alike its measurements are",
            "Explore", icon="umap",
            instruction="Put your genes on the map and read what surrounds them.",
            builder="shell:map_module",
@@ -297,7 +297,7 @@ MODULES = (
                     "never saw comes back",
                     "analysis:5 · Search"),
            )),
-    Module("network", "Network", "a gene and its neighbourhood, edges you define",
+    Module("network", "Network", "every gene and the links between them, yours in focus",
            "Explore", icon="graph_builder",
            instruction="Name a gene to bring its region into focus; tick the links that count.",
            builder="shell:network_module",
@@ -343,9 +343,10 @@ MODULES = (
                     "against chance, and whether it may write into the map",
                     "action:open_question_scoreboard"),
            )),
-    Module("infer", "Infer", "answer a question, choosing the evidence it may use",
+    Module("infer", "Infer",
+           "ask the data a question; get genes named, with how far to trust them",
            "Ask", opens="analysis", icon="ml_analyze",
-           instruction="Choose a question, then choose what evidence it may use.",
+           instruction="Choose a question, check what it may use, then answer it.",
            builder="shell:infer_module",
            words=("inference", "prediction", "annotate", "impute", "fill the gaps",
                   "machine learning", "held out", "guess what is missing"),

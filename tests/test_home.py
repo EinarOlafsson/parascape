@@ -46,7 +46,10 @@ def test_get_raises_rather_than_returning_none():
     """A missing module must fail where it is asked for, not later where it is used."""
     with pytest.raises(KeyError):
         MOD.get("not_a_module")
-    assert MOD.get("gene").name == "Gene"
+    # "Gene card" since instruction 98, WP11: the masthead of the module already said so,
+    # in the words of Einar himself, while the tile said "Gene". One of the two had to go, and
+    # one somebody types is kept as a declared word of the row.
+    assert MOD.get("gene").name == "Gene card"
 
 
 # ------------------------------------------------------------------ availability

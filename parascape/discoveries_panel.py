@@ -28,6 +28,7 @@ from .scorecard_browser import ScorecardBrowser
 from . import strategies as S
 from . import theme as TH
 from . import track_record as T
+from .panes.tables import show_headings
 
 TIPS = {
     "label": "Browse functional domains, enzyme classes, phenotypes, stages, localization and other "
@@ -162,6 +163,7 @@ class DiscoveriesPanel(QtWidgets.QWidget):
         self.label_table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.label_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.label_table.verticalHeader().setVisible(False)
+        show_headings(self.label_table)      # instruction 98, WP11: 'NFERRED CLAIMS'
         annotations_lay.addWidget(self.label_table,1)
         self.annotation_note = QtWidgets.QLabel('')
         self.annotation_note.setWordWrap(True)
@@ -186,6 +188,7 @@ class DiscoveriesPanel(QtWidgets.QWidget):
         self.member_table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.member_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.member_table.verticalHeader().setVisible(False)
+        show_headings(self.member_table)
         annotations_lay.addWidget(self.member_table,1)
         self.tabs.addTab(self.annotations_page,'Labels and functions')
         self.claims_page = QtWidgets.QWidget()
