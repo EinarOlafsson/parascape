@@ -724,3 +724,92 @@ what this item pointed at -- but they **cannot be served as the Hs or Mm space**
 that the work was gated on machine time. The layout takes two minutes and is now built; the actual
 gap is that the host spaces point at tables nobody has shipped, and choosing which of the three
 routes above to take is Einar's call rather than a detail to settle while building a window.
+
+## 2026-11-13: Einar decided "both" -- host protein spaces now, host gene spaces after
+
+Einar answered the question above on 2026-11-13: **both**. Route 2 now (declare the host protein tables as
+spaces of their own), route 1 afterwards (the Ensembl gene tables, so `HUMAN_SPACE` and `MOUSE_SPACE` work as
+declared). The two stay separate spaces: a protein is not a gene, and mapping one onto the other inherits every
+ambiguity between them (one gene with several reviewed proteins, one protein with several genes).
+
+### Route 2, built: the human and mouse host protein spaces
+
+`parascape/spaces/host_proteins.py` declares `HUMAN_PROTEIN_SPACE` (code `HsP`, 21,020 proteins) and
+`MOUSE_PROTEIN_SPACE` (`MmP`, 16,473), keyed on UniProt accessions (the documented UniProtKB pattern; every row
+of both tables matches it). Each opens in a map window through its lenses, the WP9 layouts:
+
+| space | lens | menu wording | state |
+|---|---|---|---|
+| HsP | tissue | Laid out by tissue | opens |
+| HsP | parasite_facing | Laid out by what the parasite does to them | opens |
+| MmP | tissue | Laid out by tissue | opens |
+| MmP | parasite_facing | -- | **refused**, shown disabled with its reason (147 of 16,473 proteins, 0.9 per cent) |
+
+* **File ▸ Species** gains one submenu per protein space, one entry per lens. A refused lens is listed and
+  disabled with its reason rather than hidden. The window title names the lens.
+* **A layout is served only beside the exact table it was built from**: `host_proteins.load` checks the SHA-256
+  the layout records against the table on disk, the protein order, and that every coordinate is finite. A
+  layout built from a different table is refused (tested with a changed table).
+* **The layouts ship with the next data release.** The three files were copied from
+  `results/host_layouts_2026_11_13/` into `parascape/data/` (the release builder takes every `.npz` there).
+  Until that release exists the downloaded data directory has the tables and not the layouts, so
+  `layout_path` looks in the data directory first and then in the source tree. That fallback is safe only
+  because of the SHA-256 check above. `data_manifest.json` is regenerated at release time, not here.
+* **Picking a protein shows a protein panel**: its name, its UniProt link and every column, with "unknown" for
+  a missing value and the columns that placed this map marked. Before this, the parasite panel called every
+  host protein "effectively uncharacterised", because it reads literature columns a host table does not have.
+* **Declared, not registered in `organisms.SPACES`**, for two reasons: registering changes what every slot,
+  strategy and calibration caller sees (the WP2 lesson), and a UniProt accession does not say which species
+  it belongs to, so `organisms.detect` could not tell human from mouse. `organisms.by_species` finds them, so
+  record links work. A protein window is never reopened at start-up.
+* No edge layers: none has been built for a host table, and drawing the parasite ones would be meaningless.
+
+### Route 1: further along than this file said
+
+**Correction to the note above.** It said the gene tables `hs_gene_nodes.parquet` and `mm_gene_nodes.parquet`
+"do not exist". They exist, in the host gene packs built on 2026-11-07 and tracked in git:
+`results/human_pack_2026_11_07/parascape_Hs_2026.11.07.zip` (58,988 Ensembl genes, with
+`hs_gene_graph.npz` holding coordinates for every gene) and
+`results/mouse_gene_space_2026_11_07/parascape_Mm_2026.11.07.zip` (18,428 genes, `mm_gene_graph.npz`). They are
+not in the data directory because these spaces are distributed as packs: `paths.space_file` resolves them from
+the installed pack, never from the data directory. So "neither file exists in the data directory" was true and
+was the wrong place to look.
+
+What was built today: an installed host gene pack now **opens as a map window** ("Mus musculus genes",
+"Homo sapiens genes"), from the same Species menu entry that installs it. The node table is checked with
+`validate_nodes` and the layout with `validate_graph` before anything is drawn, and picking a gene shows its
+Ensembl record and every value. Rat and cat have no layout, so they stay install-only.
+
+What route 1 still needs, none of it a large download:
+
+1. **A published download for the packs.** They are installable only from a checkout (`results/`), so a user
+   of the released program sees them as unavailable. Attaching the two zips (6.3 MB and 2.3 MB) to a release,
+   with their SHA256 files, and pointing `space_catalogue` at that URL is the step. Einar to choose where they
+   are published.
+2. **What the gene layouts claim.** The 2026-11-07 gene coordinates predate the lens decision and their recipe
+   is not recorded beside them. Rebuilding them as the same two lenses (tissue; parasite-facing) needs
+   measurements the gene tables do not yet carry. The raw files are already here, under
+   `STARPLAST_DATA/spaces/Hs` and `spaces/Mm`: GTEx v10, HPA v25.1 tissue and single-cell, Bgee 15.2,
+   PaxDb, OpenCell, and the infection series (human GSE145836, GSE241570/1 and others; mouse GSE103113,
+   GSE119855 and others), plus BioGRID, IntAct, ORCS and NCBI orthologs in `spaces/shared`. Nothing more
+   needs downloading for a first version. Each column must keep its licence code: the GEO-derived ones stay
+   out of a distributed pack until Einar confirms GEO deposits may be redistributed (open since 2026-11-09).
+3. **The link between the two kinds of space.** `hs_protein_gene_links.parquet` and
+   `mm_protein_gene_links.parquet` are already inside the packs; carrying a selection from a protein window
+   to its genes (and back) is the Phase 2 "linked spaces" work, and every link is many-to-many.
+
+### Still open in the window, for both kinds of host space
+
+* The Map module "What makes genes similar" box is empty for a host map, because it lists parasite
+  measurement blocks. It should show the lens features. "Build this map" would rebuild from parasite blocks;
+  until that is fixed the shipped layout is the map to read.
+* The default colour is the first category column (`rbc_surface_found_senegal` for human proteins), which is
+  an odd first view. A host table has few categories; binned expression would be a better default.
+* The layouts are not bit-reproducible (noted above); the shipped files are the artefact.
+
+Tests: `tests/test_host_protein_spaces.py` (13): both tables validate as UniProt spaces with every value kept;
+gene ids and protein ids never pass for each other; every built lens loads beside its own table; a layout from
+a changed table is refused; the refused mouse lens stays refused; protein spaces stay out of the registry and
+`detect`; a protein window opens through each lens and shows the protein panel; an installed mouse gene pack
+opens as its own map. Rendered offscreen in the real Window (Map module) for human proteins by both lenses and
+for mouse genes, and looked at.

@@ -29,6 +29,10 @@ STEPHENSI = "As"
 #: Protein reference tables precede the full host gene spaces. UniProt identifiers do not encode
 #: their organism, so callers must select a species explicitly instead of guessing from a prefix.
 HOST_TABLES = {HUMAN: "hs_host_proteins.parquet", MOUSE: "mm_host_proteins.parquet"}
+#: The host PROTEIN spaces (instruction 53, WP9, decided 2026-11-13): the two tables above served as spaces of
+#: their own, keyed on UniProt accessions, separate from the Ensembl host GENE spaces Hs and Mm. Declared in
+#: `spaces.host_proteins`, not registered here (see that module for why).
+HUMAN_PROTEINS, MOUSE_PROTEINS = "HsP", "MmP"
 
 
 @dataclass(frozen=True)
@@ -124,6 +128,12 @@ def codes(kind: str | None = None, available: bool = False) -> list:
 def by_species(name: str) -> Space:
     """The space whose species is `name` (as the menus show it)."""
     for s in SPACES.values():
+        if s.species == name:
+            return s
+    # The host protein spaces are declared beside the registry, not in it; a window showing one still
+    # needs its space (record links, database name) by the name in its title.
+    from .spaces import host_proteins
+    for s in host_proteins.SPACES.values():
         if s.species == name:
             return s
     raise KeyError(f"no space for species {name!r}")

@@ -325,6 +325,58 @@ SPECIES = {space.species: {"nodes": space.nodes, "graph": space.graph, "code": s
            for space in organisms.SPACES.values() if space.graph}
 DEFAULT_SPECIES = organisms.get(_ORGANISMS.TOXOPLASMA).species
 
+#: The host PROTEIN spaces (instruction 53, WP9; Einar, 2026-11-13): the human and mouse host protein tables,
+#: keyed on UniProt accessions, each opened through one of its lenses (a layout that is a claim about what
+#: makes two host proteins similar). Kept out of `SPECIES` because they are not parasite arms: no edge layers,
+#: no calibration, no slots, and a window showing one never reopens by itself at start-up.
+from .spaces import host_proteins as _HOST_PROTEINS
+HOST_PROTEIN_SPECIES = {space.species: {"nodes": space.nodes, "code": space.code}
+                        for space in _HOST_PROTEINS.SPACES.values()}
+
+
+
+
+def _host_gene_spaces() -> dict:
+    """code -> space for the host GENE spaces that carry a layout (human and mouse; rat and cat have none)."""
+    from .spaces.human import HUMAN_SPACE
+    from .spaces.mouse import MOUSE_SPACE
+    return {s.code: s for s in (HUMAN_SPACE, MOUSE_SPACE) if s.graph}
+
+
+#: The host GENE spaces (Ensembl gene ids), opened from their installed pack. Named "<species> genes" so the
+#: menu never confuses them with the protein spaces of the same species.
+HOST_GENE_SPECIES = {f"{space.species} genes": {"nodes": space.nodes, "graph": space.graph, "code": space.code}
+                     for space in _host_gene_spaces().values()}
+
+
+def species_code(name: str):
+    """The space code of a window species (parasite arm, host protein or host gene space); None for none."""
+    where = SPECIES.get(name) or HOST_PROTEIN_SPECIES.get(name) or HOST_GENE_SPECIES.get(name)
+    return where["code"] if where else None
+
+
+def host_space(name: str):
+    """The declared space behind a host window species, or None for a parasite arm."""
+    if name in HOST_PROTEIN_SPECIES:
+        return _HOST_PROTEINS.get(HOST_PROTEIN_SPECIES[name]["code"])
+    if name in HOST_GENE_SPECIES:
+        return _host_gene_spaces()[HOST_GENE_SPECIES[name]["code"]]
+    return None
+
+
+def _load_host_genes(code: str):
+    """Node table and layout of an installed host gene pack, refusing a layout in another gene order."""
+    from . import paths as _paths
+    space = _host_gene_spaces()[code]
+    nodes = pd.read_parquet(_paths.space_file(space, space.nodes))
+    from .spaces import validate_graph, validate_nodes
+    validate_nodes(space, nodes)
+    graph = _paths.space_file(space, space.graph)
+    validate_graph(nodes, graph)
+    with np.load(graph, allow_pickle=False) as z:
+        xyz = z["xyz"].astype(np.float32)
+    return nodes, xyz
+
 
 def available_species() -> list:
     """The species whose cache is actually present, in menu order.
@@ -337,12 +389,20 @@ def available_species() -> list:
             and os.path.exists(os.path.join(DATA, where["graph"]))]
 
 
-def load(species: str = DEFAULT_SPECIES):
+def load(species: str = DEFAULT_SPECIES, lens: str = ""):
     """Load one species' built cache: node table, coordinates, edge layers and stored models.
 
     Raises with the command that builds the cache if it is absent, rather than letting pandas raise
     a file-not-found from inside a constructor, which tells the user nothing about what to do.
+    A host protein space is loaded through `lens` (its default lens when empty), with no edge layers:
+    none has been built for it, and drawing the parasite ones over host proteins would be meaningless.
     """
+    if species in HOST_PROTEIN_SPECIES:
+        nodes, xyz, _meta = _HOST_PROTEINS.load(HOST_PROTEIN_SPECIES[species]["code"], lens)
+        return nodes, xyz, {}, pd.DataFrame()
+    if species in HOST_GENE_SPECIES:
+        nodes, xyz = _load_host_genes(HOST_GENE_SPECIES[species]["code"])
+        return nodes, xyz, {}, pd.DataFrame()
     where = SPECIES.get(species) or SPECIES[DEFAULT_SPECIES]
     npz, pq = os.path.join(DATA, where["graph"]), os.path.join(DATA, where["nodes"])
     if not (os.path.exists(npz) and os.path.exists(pq)):
@@ -829,8 +889,11 @@ class Window(QtWidgets.QMainWindow):
     attributes rather than being read back out of widgets, so a headless caller can drive the whole
     interface without a window manager, which is how the tests exercise it.
     """
-    def __init__(self, species: str = None):
-        """Load one organism and construct its map, evidence docks, menus, and analysis panel."""
+    def __init__(self, species: str = None, lens: str = ""):
+        """Load one organism and construct its map, evidence docks, menus, and analysis panel.
+
+        `lens` matters only for a host protein space: which of its layouts to show.
+        """
         super().__init__()
         # Before any menu, tooltip or drop-down list is polished: the style gives each one its
         # alpha channel at that moment, and a popup polished before it exists stays square and grey.
@@ -848,10 +911,17 @@ class Window(QtWidgets.QMainWindow):
         stored = str(self.settings().value("data/species", DEFAULT_SPECIES) or DEFAULT_SPECIES)
         offered = available_species() or [DEFAULT_SPECIES]
         self.species = species or (stored if stored in offered else offered[0])
-        self.nodes, self.xyz, self.edges, self.models = load(self.species)
+        if self.species in HOST_PROTEIN_SPECIES:
+            code = HOST_PROTEIN_SPECIES[self.species]["code"]
+            self.lens = lens or next(iter(_HOST_PROTEINS.LENSES[code]))
+        else:
+            self.lens = ""
+        self.nodes, self.xyz, self.edges, self.models = load(self.species, self.lens)
         self.n = len(self.nodes)
         self.sel = None
-        self.setWindowTitle(f"parascape — {self.species} knowledge map")
+        self.setWindowTitle(f"parascape — {self.species} knowledge map"
+                            + (f", laid out {_HOST_PROTEINS.LENS_NAMES.get(self.lens, self.lens)}"
+                               if self.lens else ""))
         self.setWindowIcon(QtGui.QIcon(os.path.join(os.path.dirname(__file__), "data", "icons", "parascape.svg")))
         # Was a flat resize(1580, 950), which is not the reason the window used to open too large --
         # that was a 2,897 px minimum height, fixed in `analysis_panel._scrolled` -- but it did mean
@@ -1261,7 +1331,7 @@ class Window(QtWidgets.QMainWindow):
             record["source_sha256"] = hashlib.sha256(open(dialog.path, "rb").read()).hexdigest()
         except (OSError, AttributeError, TypeError):
             record["source_sha256"] = None
-        record["organism"] = SPECIES[self.species]["code"] if getattr(self, "species", None) in SPECIES else None
+        record["organism"] = species_code(getattr(self, "species", None))
         record["validation"] = ("unresolved: imported columns have no registered dataset or leakage family; "
                                 "closure guards them by measured association only")
         self.nodes = merge_into(self.nodes, imported)
@@ -1283,7 +1353,7 @@ class Window(QtWidgets.QMainWindow):
                 self.guided.set_context(ctx)
         catalog = getattr(self, '_slot_tree', None)
         if catalog is not None:
-            code = SPECIES[self.species]['code']
+            code = species_code(self.species)
             sources = dict(catalog.view._sources)
             source = dict(sources.get(code) or {})
             source['nodes'] = self.nodes
@@ -1603,7 +1673,7 @@ class Window(QtWidgets.QMainWindow):
         except Exception as e:                        # the browser must open without it
             self.statusBar().showMessage(f"strategies unavailable: {e}")
             return
-        code = SPECIES.get(self.species, {}).get("code")
+        code = species_code(self.species)
         panel = StrategyPanel(
             self.nodes, runner=self.jobs, analysis=self.panel, organism=code,
             gated=lambda: ([] if self.gated is None
@@ -1815,9 +1885,53 @@ class Window(QtWidgets.QMainWindow):
             act.setToolTip("Host gene space. " + space_catalogue.describe(entry)
                            + (". Click to install it, checked against its published SHA256."
                               if entry.state == "installable" else ""))
-            act.setEnabled(entry.state == "installable")
-            act.triggered.connect(lambda _c=False, code=entry.code: self.install_host_space(code))
+            opens = next((n for n, w in HOST_GENE_SPECIES.items() if w["code"] == entry.code), None)
+            if entry.state == "installed" and opens:
+                act.setToolTip("Host gene space. " + space_catalogue.describe(entry)
+                               + ". Click to open its map in a window of its own.")
+                act.triggered.connect(lambda _c=False, n=opens: self.open_species(n))
+            else:
+                act.setEnabled(entry.state == "installable")
+                act.triggered.connect(lambda _c=False, code=entry.code: self.install_host_space(code))
             self.host_space_actions[entry.code] = act
+        # Host PROTEIN spaces (instruction 53, WP9): the human and mouse host protein tables, keyed on
+        # UniProt accessions, each opened through a lens -- a layout that claims what makes two host
+        # proteins similar. A lens the builder refused is shown disabled with its reason, not hidden.
+        species.addSeparator()
+        self.host_protein_actions = {}
+        for code, space in _HOST_PROTEINS.SPACES.items():
+            built = _HOST_PROTEINS.lenses(code)
+            sub = species.addMenu(space.species)
+            sub.setToolTipsVisible(True)
+            sub.menuAction().setToolTip(
+                "Host proteins, keyed on UniProt accessions: the table behind the host links, opened as "
+                "a map of its own. Separate from the host gene space above, because a protein is not a "
+                "gene and mapping one onto the other inherits every ambiguity between them.")
+            for lens in list(_HOST_PROTEINS.LENSES.get(code, {})) + [
+                    l for (c, l) in _HOST_PROTEINS.REFUSED if c == code]:
+                act = sub.addAction(f"Laid out {_HOST_PROTEINS.LENS_NAMES.get(lens, lens)}")
+                refused = _HOST_PROTEINS.REFUSED.get((code, lens))
+                if refused:
+                    act.setEnabled(False)
+                    act.setToolTip("Not built: " + refused + ".")
+                elif lens not in built:
+                    act.setEnabled(False)
+                    act.setToolTip("Its table or layout is not in this data directory.")
+                else:
+                    act.setCheckable(True)
+                    act.setChecked(self.species == space.species and self.lens == lens)
+                    act.setToolTip(
+                        "Places host proteins near each other when they are "
+                        + ("expressed in the same tissues and cell types."
+                           if lens == "tissue" else
+                           "alike in how they respond to infection and in what the parasite does to "
+                           "them (vacuole enrichment, response to infection, rhoptry discharge, "
+                           "the red cell surface).")
+                        + " Proteins with no value in this lens keep a place, so the map is not only "
+                          "of what has been studied.")
+                    act.triggered.connect(lambda _c=False, n=space.species, l=lens:
+                                          self.open_species(n, lens=l))
+                self.host_protein_actions[(code, lens)] = act
         f.addSeparator()
         a = f.addAction("Preferences…")
         a.setShortcut("Ctrl+,")
@@ -3151,7 +3265,7 @@ class Window(QtWidgets.QMainWindow):
             # Opens on the arm this window is showing. Defaulting to whichever organism code sorts
             # first meant the tree opened on Plasmodium while the map showed Toxoplasma, and a filter
             # typed against what was on screen returned nothing.
-            code = SPECIES[self.species]['code']
+            code = species_code(self.species)
             sources = shipped_sources()
             source = dict(sources.get(code) or {})
             original = source.get('nodes')
@@ -3302,17 +3416,38 @@ class Window(QtWidgets.QMainWindow):
         act = getattr(self, "host_space_actions", {}).get(code)
         if act is not None:
             act.setText(space_catalogue.describe(entry).split(". ")[0])
-            act.setEnabled(False)
+            opens = next((n for n, w in HOST_GENE_SPECIES.items() if w["code"] == code), None)
+            act.setEnabled(bool(opens))
+            if opens:
+                # Installed now, so the same entry opens its map rather than installing again.
+                act.triggered.disconnect()
+                act.triggered.connect(lambda _c=False, n=opens: self.open_species(n))
+                act.setToolTip("Host gene space. " + space_catalogue.describe(entry)
+                               + ". Click to open its map in a window of its own.")
         self.statusBar().showMessage(space_catalogue.describe(entry), 8000)
         return where
 
-    def open_species(self, name: str):
+    def open_species(self, name: str, lens: str = ""):
         """Open another species' map in a window of its own, and remember the choice.
 
         Returns the new window. The old one is closed only once the new one exists: building it reads
         a cache and lays out several thousand genes, and closing first would leave nothing on screen
-        if that failed.
+        if that failed. A host protein space opens through `lens`; switching lens opens a new window
+        too, and the choice is not remembered, so the program still starts on a parasite map.
         """
+        if name in HOST_GENE_SPECIES or name in HOST_PROTEIN_SPECIES:
+            if name in HOST_PROTEIN_SPECIES:
+                code = HOST_PROTEIN_SPECIES[name]["code"]
+                lens = lens or next(iter(_HOST_PROTEINS.LENSES[code]))
+            else:
+                lens = ""
+            if name == self.species and lens == self.lens:
+                return self
+            other = Window(species=name, lens=lens)
+            other.show()
+            other._opened_from = self
+            self.close()
+            return other
         if name == self.species or name not in SPECIES:
             return self
         # Written HERE, not in the constructor. Persisting on every construction meant that merely
@@ -4954,6 +5089,52 @@ class Window(QtWidgets.QMainWindow):
             self.detail.setHtml(back + (body or "<p style='color:#888'>Nothing recorded for "
                                                  "this category.</p>"))
 
+    def _host_protein_html(self, r) -> str:
+        """The evidence panel for one host protein or host gene: its name, its record and every value.
+
+        The parasite panel would be wrong here, not merely empty: it reads literature, orthogroup and
+        structure columns a host table does not carry, and would call every host protein
+        "effectively uncharacterised". A missing value reads "unknown", never zero.
+        """
+        from html import escape
+        space = host_space(self.species)
+        gene = self.species in HOST_GENE_SPECIES
+        pid = str(r.gene_id)
+        name = r.get("gene_name" if gene else "host_name")
+        name = "unknown" if name is None or pd.isna(name) or not str(name).strip() else str(name)
+        meta = {}
+        try:
+            if not gene:
+                meta = _HOST_PROTEINS.layout_metadata(_HOST_PROTEINS.layout_path(space.code, self.lens))
+        except (FileNotFoundError, KeyError, ValueError):
+            pass
+        lens_features = set(meta.get("features", ()))
+
+        def show(v):
+            """One value as text: "unknown" for missing, yes/no for flags, three figures for numbers."""
+            if v is None or pd.isna(v):
+                return "<span style='color:#888'>unknown</span>"
+            if isinstance(v, (bool, np.bool_)):
+                return "yes" if v else "no"
+            return f"{float(v):.3g}" if isinstance(v, (int, float, np.number)) else escape(str(v))
+
+        rows = "".join(
+            f"<tr><td style='color:#888;padding-right:10px'>{escape(c)}"
+            + (" <b>*</b>" if c in lens_features else "") + f"</td><td>{show(r.get(c))}</td></tr>"
+            for c in self.nodes.columns if c not in ("gene_id", "host_name", "gene_name"))
+        lens = _HOST_PROTEINS.LENS_NAMES.get(self.lens, self.lens)
+        if gene:
+            note = ("A host gene, not a host protein: the proteins it encodes are in the host protein "
+                    "space of the same species.")
+        else:
+            note = (f"<b>*</b> placed this map (laid out {escape(lens)}). A host protein, not a host "
+                    "gene: no parasite literature, structure or orthogroup columns apply to it.")
+        return (f"<h2 style='margin-bottom:2px'>{escape(pid)}</h2>"
+                f"<p style='color:#bbb;margin-top:0'>{escape(name)} · {escape(self.species)}</p>"
+                f"<p><a href='{escape(space.record(pid))}'>{escape(space.database)} record</a></p>"
+                f"<table>{rows}</table>"
+                f"<p style='color:#888'>{note}</p>")
+
     def show_detail(self, i):
         """Fill the evidence panel for one gene, distinguishing absence from zero throughout."""
         self._detail_row = int(i)
@@ -4964,6 +5145,9 @@ class Window(QtWidgets.QMainWindow):
             """Format a measured value, or show a dash for missing and non-finite values."""
             return "—" if v is None or pd.isna(v) or not np.isfinite(v) else f.format(v)
 
+        if host_space(self.species) is not None:
+            self.detail.setHtml(self._host_protein_html(r))
+            return
         compartment = r.get("compartment", "unassigned")
         if pd.isna(compartment):
             compartment = "unassigned"

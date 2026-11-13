@@ -1241,14 +1241,22 @@ def test_the_species_menu_marks_the_one_that_is_open(qapp):
         # Rat and cat joined on 2026-11-09 with gene builds only: they are listed so a reader knows the
         # space exists, and DISABLED because no pack can be installed, which is their honest state.
         from parascape import space_catalogue
-        hosts = [a for a in menu.actions() if not a.isCheckable() and not a.isSeparator()]
+        hosts = [a for a in menu.actions() if not a.isCheckable() and not a.isSeparator() and a.menu() is None]
         named = {a.text().split(" -- ")[0] for a in hosts}
+        # The host PROTEIN spaces (instruction 53, 2026-11-13) are submenus of lenses, after the gene packs.
+        from parascape.spaces import host_proteins
+        submenus = {a.text() for a in menu.actions() if a.menu() is not None}
+        assert submenus == {s.species for s in host_proteins.SPACES.values()}
         assert named == {space_catalogue._host_space(c).species for c in space_catalogue.HOST_PACK_SPACES}
         assert {"Homo sapiens", "Mus musculus"} <= named
         assert all("not calibrated" in a.statusTip() for a in hosts)
         states = {e.code: e.state for e in space_catalogue.catalogue()}
         for code, act in w.host_space_actions.items():
-            assert act.isEnabled() == (states[code] == "installable"), code
+            # Installable packs install; an installed pack with a layout opens its map (human, mouse).
+            from parascape.app import HOST_GENE_SPECIES
+            opens = any(v["code"] == code for v in HOST_GENE_SPECIES.values())
+            assert act.isEnabled() == (states[code] == "installable"
+                                       or (states[code] == "installed" and opens)), code
     finally:
         w.close()
 
