@@ -1,5 +1,5 @@
 {
-  "asset": "parascape-data-0.0.11.0.tar.gz",
+  "asset": "parascape-data-0.0.12.0.tar.gz",
   "files": {
     "af3_features.json": {
       "sha256": "f07484a81d3fd720b7ccd984b817f4cdac68ecaf87d5ec46020145a317ad39a7",
@@ -7178,8 +7178,8 @@
       "size": 27058447
     },
     "graph.npz": {
-      "sha256": "e3419907541ef9640d123c7276f93edc129bd8145296a31e5b9796ad773f99ca",
-      "size": 1538197
+      "sha256": "c2943d355779e54baa7a5b7f5d6babd57248b940a59f3e2070bf93c0e868fd28",
+      "size": 1538260
     },
     "hf_release/README.md": {
       "sha256": "4b0ffa590b6f6ac715e48a22505e21c23ee121a5411cf3244243128610052e74",
@@ -39250,12 +39250,12 @@
       "size": 144600
     },
     "slot_hierarchy.json": {
-      "sha256": "c6cf8f09b4b4f064e082204dded0ddcf6934f39e66a23e41033f464fd3b2615a",
-      "size": 74803
+      "sha256": "3638c4066ea3f4f1cc3440c5c816ed4b7c59a69ccc02932f65a7a8ee50153a44",
+      "size": 75413
     },
     "slots.json": {
-      "sha256": "16cae5d78e36c04fba033dc6e130b626c57a8ed38ca43aac3ea73cc2b8600002",
-      "size": 346048
+      "sha256": "a4e775ba1d870e51e68478c20408109dc344bd04a3c46051b98234c849909bf2",
+      "size": 347980
     },
     "source_matrices/GSE102500-0ef54df34d18872d/manifest.json": {
       "sha256": "9cee515be629c3950042057b50bd4dc258e55ea5b877f8e69e9ab61f5c0cc289",
@@ -43719,8 +43719,8 @@
     }
   },
   "schema_version": 1,
-  "sha256": "a019d93862e703c4239a2b7bb340de0195eb8dd77a435df63217886012122c3e",
-  "size": 944322110,
-  "url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.11.0/parascape-data-0.0.11.0.tar.gz",
-  "version": "0.0.11.0"
+  "sha256": "6e676191021fec9a5afd8e7762ae7f5ba042de6791b4c4eb238bcd25be958fdb",
+  "size": 944323064,
+  "url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.12.0/parascape-data-0.0.12.0.tar.gz",
+  "version": "0.0.12.0"
 }

@@ -1,9 +1,14 @@
 # Changelog
 
-## Unreleased
+## 0.0.12.0 — 2026-11-13
 
 ### Added
 
+- **Cryptosporidium has its first measured transcription slot.** `Cp_transcription · oocyst` is filled from
+  GSE271211 (PMID 39354600): the three time-zero inoculum samples, undigested oocysts in triplicate, and not
+  the twelve digestion arms. It grades B with 2,566 of 3,923 genes (65.4 %). Genes the identifier map does
+  not reach stay missing rather than zero. The slot definition ships in this release; the Cryptosporidium
+  gene table is still built locally and is not part of the data download.
 - **The rail down the left is a tree of what ParaScape can do.** It was a flat list of six headings with the
   modules of each under them. It now opens on a progression: under **Start**, the subject you have -- one
   gene, a list of genes, a trait, a screen of your own, a question, a job -- and under each of those, the
@@ -51,6 +56,22 @@
   rather than a timer that arms, so there is nothing left to race.
 - A result card drew a long name over its own edge: a strategy named by a whole sentence ran to four lines in
   a square with room for three.
+
+- **The Toxoplasma bradyzoite slot was two thirds cat gut.** `transcription · bradyzoite / tissue cyst` read
+  14 samples of `rna108740_Day` that the submitter declares enteroepithelial stages from *Felis catus*. They
+  now belong to `transcription · in vivo enteric`, as an alternative under policy `one`, so a log2 ratio is
+  never averaged with FPKM.
+- **The Toxoplasma tachyzoite protein slot was mostly not tachyzoites.** `protein abundance · tachyzoite`
+  read nine AP2XII-1-depleted abundance columns and three fold changes beside the untreated ones. It now
+  reads the untreated columns only, and the twelve have two slots of their own, `protein abundance ·
+  pre-sexual reprogramming` and `protein change · pre-sexual reprogramming`, kept apart.
+- The Toxoplasma map is rebuilt on the corrected slots: 8,140 genes, 331 features (was 319).
+
+### Data
+
+- Data release 0.0.12.0: 10,929 files, 944.3 MB, the same files as 0.0.11.0 with three replaced --
+  `slots.json`, `slot_hierarchy.json` and `graph.npz`. An installed copy gets the slot corrections above
+  only from this download.
 
 ### Changed
 
