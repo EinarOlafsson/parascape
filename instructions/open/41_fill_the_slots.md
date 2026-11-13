@@ -3109,3 +3109,48 @@ answer an oocyst question.
 than it stated: a GEO index search on slot words lists studies that share vocabulary, and the
 judging is not merely the value -- without it the hit rate here would have been zero per cent while
 reading as two per cent. A conditional accept with nobody assigned to the condition is an accept.
+
+## 2026-11-13: a genuine candidate for the oocyst slot, and why no Cp slot can be filled yet
+
+Having refused both earlier accepts, I searched for real candidates rather than leaving the slots
+empty. Query recorded, run against NCBI E-utilities (GEO is not the blocked service):
+
+    ("Cryptosporidium parvum"[Organism] OR "Cryptosporidium"[All Fields])
+    AND oocyst[All Fields] AND gse[Filter]          -> 14 series
+
+**`Cp_transcription · oocyst` <- GSE271211 (PMID 39354600): a genuine candidate, admission checks
+done against the deposit.**
+
+| check | answer |
+|---|---|
+| organism | 15 of 15 samples *Cryptosporidium parvum* |
+| stage | **3 `Inoculum` samples at time 0** are undigested oocysts in triplicate; the other 12 are oocysts through simulated gastric and ileal digestion, child and adult |
+| assay | RNA-Seq, transcriptomic, NextSeq 500 |
+| per-gene quantities downloadable | yes -- `GSE271211_ReadCounts.txt.gz`, 4,035 genes |
+| identifier | **`CPATCC_0000010` style, the ATCC annotation -- NOT `cgd`** |
+
+Unlike GSE232438, the oocyst here is the thing MEASURED rather than the inoculum written into a
+growth protocol. The three time-zero samples are the clean unperturbed oocyst transcriptome the slot
+asks for, and the digestion arms are a perturbation series beside it.
+
+**It cannot be promoted yet, and the reason is bigger than this slot.** There is no Cryptosporidium
+gene table shipped at all: `data_dir()` holds no Cp node file, which is why the eligibility read of
+instruction 65 found **63 Cp slots and zero Cp sources**. A source cannot be admitted to a space
+that has no reference gene list to resolve against.
+
+**The route out does not need the VEuPathDB login.** CryptoDB is behind it, but **Ensembl Protists
+carries *Cryptosporidium parvum* Iowa II** (`GCA_000165345.1`, ASM16534v1) as a public REST service,
+and it uses the standard **`cgd` identifiers** -- confirmed by querying a 200 kb window and getting
+`cgd1_720`, `cgd1_390`, `cgd1_530` and 77 more. That is the same workaround already recorded for the
+Toxoplasma and Plasmodium gene builds.
+
+So the Cp arm needs two things, both public and neither blocked:
+
+1. **A Cp gene build from Ensembl Protists**, giving `cgd` identifiers (this belongs to instruction
+   53, WP6).
+2. **A `CPATCC_` to `cgd` mapping**, because this deposit is keyed on the ATCC annotation. The ATCC
+   locus tags come from the NCBI assembly, so the mapping is obtainable by locus tag or by
+   coordinate overlap rather than by guessing.
+
+Recorded as a lead with its evidence rather than started: a gene build is real machine time and the
+box is saturated with the instruction 69 queue.
