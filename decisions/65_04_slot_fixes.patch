@@ -1,0 +1,24 @@
+--- a/parascape/data/slots.json
++++ b/parascape/data/slots.json
+@@ -49,7 +49,6 @@
+   "patterns": [
+    "expr_cyst",
+    "rna108740_Tissue_cysts",
+-   "rna108740_Day",
+    "rna22258_bradyzoite"
+   ],
+   "policy": "average",
+@@ -1275,7 +1274,7 @@
+   "context": "tachyzoite",
+   "unit": "gene",
+   "patterns": [
+-   "proteome_",
++   "proteome_log2_normalized_and_imputated_abundances_UT_",
+    "protein_ibaq_log2"
+   ],
+   "policy": "fill",
+@@ -15009,4 +15008,4 @@
+   "target_columns": [],
+   "role": "feature"
+  }
+-]+]

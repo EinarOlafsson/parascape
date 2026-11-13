@@ -204,3 +204,35 @@ drift in `assay_spelling_drift.json`; a test fails if a third assay starts to dr
   table. That is a gap in coverage, not a judgement about eligibility.
 * It says nothing about which of several eligible sources is best. That is the ranking step, and it
   only runs on what passes here.
+
+---
+
+## Both fixes, tried rather than described (2026-11-13)
+
+`decisions/apply_65_04_slot_fixes.py` applies either or both, idempotently, and refuses rather than
+guesses if a slot has moved on. I applied them to a scratch copy, ran the suite, measured, and
+reverted. Two things came out that neither the report nor I had noticed, and both change the
+decision:
+
+**1. Fix A is not finished by itself.** Dropping `rna108740_Day` leaves its eight columns claimed by
+no slot at all, and `test_the_column_partition_holds_for_every_species` fails: instruction 41
+requires that no column is claimed twice **and none by nobody**. So the cat enteroepithelial columns
+need a home in the same change -- either a slot of their own, which is what they deserve since no
+slot currently asks about the enteroepithelial stages, or an explicit exclusion. The suite is
+enforcing the thing I recommended in prose.
+
+**2. The downloaded data release must not be patched in place.** `slots.CATALOG` is
+`data_dir()/slots.json`, not the repository copy, so editing only the repo changes what ships at the
+next release and nothing that runs now -- including the tests, which read the downloaded copy. My
+first attempt edited the repo file, re-ran 141 tests, watched them pass and had proved nothing: the
+slots under test were the unmodified ones. The obvious correction, writing both, is also wrong:
+hand-editing the downloaded copy fails
+`test_packaged_layout_matches_the_shared_matrix_and_gene_order`, because the release pins the
+checksum of what it packaged. The release is meant to be rebuilt, not patched.
+
+So the route is: change the repository source, give the orphaned columns a home, rebuild the data
+release, then regenerate the atlas because the counts this slot feeds will move.
+
+**With both fixes applied and nothing else, the suite is 148 passed and 2 failed**, and those two
+failures are the two facts above rather than anything subtle. That is the honest cost of the
+decision, measured instead of estimated.
