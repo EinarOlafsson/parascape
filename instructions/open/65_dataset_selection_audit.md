@@ -676,3 +676,40 @@ read the stages a slot asks about from its three facet paths but not from `conte
 exactly what that slot is for, came out as disagreeing with its own slot. And rows where there was
 no deposit to ask were being listed as disagreements, which buried the one real finding under 23
 rows that say nothing.
+
+## 65.04, 2026-11-13: patterns that over-match, and a tachyzoite slot that is mostly not tachyzoites
+
+A slot pattern is a prefix. It is written with particular columns in mind and keeps matching
+whatever the deposit gains afterwards, so a slot quietly acquires columns nobody chose for it.
+`scripts/audit_pattern_overmatch.py` reads what each pattern ACTUALLY selects and asks whether
+those columns describe one condition. Five cases.
+
+**`Tg_protein_abundance_tachyzoite`, pattern `proteome_`, selects 15 columns**, while its facets say
+`tachyzoite` and `unperturbed`. Three are untreated. Nine are AP2XII-1-depleted parasites, which
+PRIDE titles "In vitro production of cat-restricted Toxoplasma pre-sexual stages by epigenetic
+reprogramming". Three are log2 FOLD CHANGES averaged in with log2 abundances -- and the registry
+note for that source already says the abundance and fold-change columns "are distinct quantification
+types". Each pattern is collapsed by row mean before the policy runs, so all 15 become one number.
+
+**The measured cost is small, and that is part of the finding.** Against the same pattern restricted
+to untreated columns, over 3,005 genes: Spearman 0.987, 126 genes (4 per cent) moving more than 10
+percentile points. The columns are normalized and centred near zero, so mixing them does not move
+the scale. A real defect in what the slot claims to be, a minor one in what it returns. I expected
+a unit error worth shouting about and measured one worth a sentence; both halves are reported.
+
+Separately, **102 genes take their tachyzoite protein abundance from `protein_ibaq_log2`**, the Pru
+immunoprecipitation column, whose own note says "Enrichment, NOT a deep proteome; do not report as
+proteome-wide". The `fill` policy reaches for it wherever the total proteome is absent.
+
+Three more, in the eIF1.2 depletion slots: `rpf245775_eif12ko_`, `te245775_eif12ko_` and
+`rna245775_eif12ko_` each select three tachyzoite and three pre-bradyzoite columns, so those slots
+average across two stages. Listed for reading rather than called a defect.
+
+**What the tool cannot do, stated so it is not mistaken for coverage.** It catches only the half the
+column names give away. The cat-stage defect of the previous section is invisible to it: those
+columns are named `rna108740_Day3_CS4_FPKM`, and "Day" is a timepoint, not a stage. Nothing in the
+name says cat, or enteroepithelial, or anything a word list could match -- only the submitter knew,
+and only asking the deposit found it. `audit_pattern_overmatch.py` and `resolve_stage_from_deposit.py`
+are complementary, and neither replaces the other.
+
+No slot was changed. All five are reported for decision alongside the `rna108740_Day` recommendation.

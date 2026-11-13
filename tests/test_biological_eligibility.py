@@ -188,3 +188,39 @@ def test_being_inferred_rather_than_measured_does_not_by_itself_block_a_source()
     verdicts, _ = E.check(slot, curated, tuple(curated.columns or ()))
     assert verdicts["evidence_grade"] == "inferred"
     assert E.admission(verdicts) != "INELIGIBLE"
+
+
+# ------------------------------------------------------------------ patterns that over-match
+
+import audit_pattern_overmatch as O  # noqa: E402
+
+
+@pytest.mark.parametrize("column,axis,side", [
+    ("proteome_log2_normalized_and_imputated_abundances_UT_R1", "treatment", "a"),
+    ("proteome_log2_normalized_and_imputated_abundances_T_24h_R1", "treatment", "b"),
+    ("proteome_lfc_UT_Vs_T_24h_log2_fold_change", "quantification", "b"),
+    ("rna108740_Tachyzoites_T2_FPKM", "quantification", "a"),
+    ("rpf245775_eif12ko_tachy_r1", "life stage", "a"),
+    ("rpf245775_eif12ko_prebrady_r1", "life stage", "b"),
+])
+def test_a_column_is_placed_on_the_right_side_of_a_contrast(column, axis, side):
+    assert O.which(column, axis) == side
+
+
+def test_a_column_that_names_both_sides_is_claimed_by_neither():
+    """`proteome_lfc_UT_Vs_T_24h...` names UT and T both, because it is the contrast between them.
+    Counting it as untreated would make a fold-change look like a baseline measurement."""
+    assert O.which("proteome_lfc_UT_Vs_T_24h_log2_fold_change", "treatment") == ""
+
+
+def test_the_tachyzoite_protein_slot_still_selects_across_a_contrast():
+    """A live reading. If this slot is corrected, this test says so rather than passing silently --
+    the record in results/ and instructions/ has to be updated with it."""
+    import pandas as pd
+    from parascape import paths
+    columns = list(pd.read_parquet(paths.cache_file("nodes.parquet")).columns)
+    hit = [c for c in columns if c.startswith("proteome_")]
+    sides = {O.which(c, "treatment") for c in hit}
+    assert {"a", "b"} <= sides, (
+        "proteome_ no longer selects both untreated and treated columns -- if that was "
+        "deliberate, update README_biological_eligibility.md and instruction 65")
