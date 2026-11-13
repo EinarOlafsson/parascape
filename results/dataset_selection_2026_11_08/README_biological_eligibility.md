@@ -94,11 +94,28 @@ confirmed to fail when the guard is removed.
 A declaration check cannot resolve a stage the column does not name, so `resolve_stage_from_deposit.py`
 asks the authority that knows: the submitter, through the per-sample characteristics in GEO. Same
 principle the origin-paper check settled on — ask the deposit before the paper — applied to biology
-instead of provenance. Of the 34 stage readings, 6 sources carry a GEO series and could be asked;
-the other 23 rows have no deposit to ask, and 6 belong to series where no sample names a stage at
-all, so for those the paper is the only authority left.
+instead of provenance.
 
-**It found one disagreement, and it is a real one.**
+It asks about **both** kinds of row: the ones with no stage, and the 12 that claim a stage from
+their column name. Checking only the unknowns would have left 12 claims believed on the strength of
+a column name, and a column named `tachy` whose samples say otherwise is worse than a column that
+says nothing — the first is trusted, the second is queued.
+
+| what the deposit said | rows |
+|---|---:|
+| confirmed the stage, from the samples the column selects | 10 |
+| **declared a different stage than the slot asks for** | **1** |
+| declares no stage in any sample, so the paper is the only authority left | 9 |
+| several stages and the column cannot be mapped to samples | 4 |
+| no deposit to ask — a paper supplementary table, or nothing recorded | 26 |
+
+Ten stage claims are now backed by the submitter rather than by a column name, among them the two
+`gse206344` columns, which the deposit settles as oocyst. Nine are unverifiable this way: GSE22258
+names its columns `tachyzoite` and `bradyzoite`, but no sample characteristic in that series
+declares a stage at all, so those two remain column-name claims.
+
+**And it found one disagreement, which is a real defect.**
+
 
 > `Tg_transcription_bradyzoite_tissue_cyst` includes the column pattern `rna108740_Day`. That
 > pattern selects 14 samples of GSE108740, and the submitter declares every one of them

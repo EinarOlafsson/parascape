@@ -112,7 +112,11 @@ def main() -> int:
     by_key = {e.key: e for e in datasets.REGISTRY}
     by_slot = {s.key: s for s in S.all_slots()}
     elig = pd.read_csv(os.path.join(OUT, "biological_eligibility.tsv"), sep="\t")
-    need = elig[elig.stage_verdict == "unknown"]
+    # Both the rows with no stage AND the rows that claim one from the column name. A column named
+    # `tachy` whose samples the submitter calls something else is worse than a column that says
+    # nothing: the first is believed, the second is queued. Checking only the unknowns would have
+    # trusted 12 claims that nobody had verified against the deposit.
+    need = elig[elig.stage_verdict.isin(["unknown", "fits"])]
 
     wanted = sorted({r.source_id for r in need.itertuples()
                      if str(getattr(by_key.get(r.source_id), "accession", "") or "").startswith("GSE")})

@@ -713,3 +713,25 @@ and only asking the deposit found it. `audit_pattern_overmatch.py` and `resolve_
 are complementary, and neither replaces the other.
 
 No slot was changed. All five are reported for decision alongside the `rna108740_Day` recommendation.
+
+## 65.04, 2026-11-13 (later): the deposit check was only asking half the rows
+
+The first run of `resolve_stage_from_deposit.py` asked the deposit only where the stage was unknown.
+That left 12 candidates whose stage was believed on the strength of a column name, and **a column
+named `tachy` whose samples the submitter calls something else is worse than a column that says
+nothing** -- the first is trusted, the second is queued. The check now asks about both.
+
+| what the deposit said | rows |
+|---|---:|
+| confirmed the stage, from the samples the column selects | 10 |
+| declared a different stage than the slot asks for | 1 |
+| declares no stage in any sample, so the paper is the only authority left | 9 |
+| several stages and the column cannot be mapped to samples | 4 |
+| no deposit to ask -- a paper supplementary table, or nothing recorded | 26 |
+
+Verifying the 12 column-name claims found **no further disagreement**, so the cat-stage finding
+remains the only one. Ten stage claims are now backed by the submitter rather than by a column name,
+and `mrna_decay_gse329845` moved from unknown to tachyzoite on the same evidence. Nine cannot be
+settled this way: GSE22258 names its columns `tachyzoite` and `bradyzoite` while no sample
+characteristic in that series declares a stage at all, so those remain column-name claims and are
+recorded as such rather than counted as verified.
