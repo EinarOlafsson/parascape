@@ -84,6 +84,71 @@ DROP_PATTERN = "rna108740_Day"
 WIDE = "proteome_"
 NARROW = "proteome_log2_normalized_and_imputated_abundances_UT_"
 
+# Fix A orphans eight columns, and instruction 41 forbids a column claimed by nobody as firmly as
+# one claimed twice. They are not waste: they are the only transcriptome of the cat enteroepithelial
+# stages in the map, and no slot asks about that stage at all. So fix A gives them a slot rather
+# than dropping them on the floor. The facets follow the bradyzoite slot they are leaving, with the
+# stage changed -- `in a host` and `gut` because these were taken from the intestine of a cat.
+ENTERO_SLOT = {
+    "organism": "Tg",
+    "name": "transcription \u00b7 enteroepithelial stages",
+    "axis": "transcription",
+    "context": "enteroepithelial, cat intestine",
+    "unit": "gene",
+    "patterns": ["rna108740_Day"],
+    "policy": "average",
+    "evidence_path": ["molecular measurements", "RNA", "transcript abundance",
+                      "enteroepithelial"],
+    "biology_path": ["gene expression", "RNA abundance", "enteroepithelial", "unperturbed"],
+    "context_path": ["in a host", "cat", "gut", "enteroepithelial", "transcription"],
+    "target_family": "transcription_enteroepithelial",
+    "target_columns": [],
+    "role": "feature",
+}
+
+# Fix B orphans twelve columns for the same reason, so it carries the same obligation. They go to
+# TWO slots rather than one, because putting an abundance and a log2 fold change in one slot is the
+# defect fix B exists to remove: each pattern is collapsed by row mean, and a mean over two
+# quantification types is not a quantity.
+DEPLETION_SLOTS = [
+    {
+        "organism": "Tg",
+        "name": "protein abundance \u00b7 under AP2XII-1 depletion",
+        "axis": "protein abundance",
+        "context": "AP2XII-1/AP2XI-2 depleted, 24-48 h, pre-sexual reprogramming",
+        "unit": "gene",
+        "patterns": ["proteome_log2_normalized_and_imputated_abundances_T_"],
+        "policy": "separate",
+        "evidence_path": ["molecular measurements", "protein", "protein abundance",
+                          "merozoite"],
+        "biology_path": ["gene expression", "protein abundance", "merozoite",
+                         "genetic background"],
+        "context_path": ["in vitro or assay-defined", "no host", "tissue-unspecified",
+                         "merozoite", "protein abundance"],
+        "target_family": "protein_abundance_under_ap2xii1_depletion",
+        "target_columns": [],
+        "role": "feature",
+    },
+    {
+        "organism": "Tg",
+        "name": "protein abundance \u00b7 AP2XII-1 depletion, fold change",
+        "axis": "protein abundance",
+        "context": "untreated against AP2XII-1 depleted, log2 fold change",
+        "unit": "gene",
+        "patterns": ["proteome_lfc_"],
+        "policy": "separate",
+        "evidence_path": ["molecular measurements", "protein", "protein abundance",
+                          "merozoite"],
+        "biology_path": ["gene expression", "protein abundance", "merozoite",
+                         "genetic background"],
+        "context_path": ["in vitro or assay-defined", "no host", "tissue-unspecified",
+                         "merozoite", "protein abundance"],
+        "target_family": "protein_abundance_ap2xii1_depletion_fold_change",
+        "target_columns": [],
+        "role": "feature",
+    },
+]
+
 
 def load():
     with open(SLOTS) as fh:
@@ -132,6 +197,18 @@ def main() -> int:
 
     for _label, slot, after in todo:
         slot["patterns"] = after
+    if any(label == "A" for label, _s, _a in todo):
+        existing = {r.get("target_family") for r in rows(doc) if isinstance(r, dict)}
+        if ENTERO_SLOT["target_family"] not in existing:
+            rows(doc).append(dict(ENTERO_SLOT))
+            print(f"[A] added slot: Tg_{ENTERO_SLOT['name']} "
+                  f"<- {ENTERO_SLOT['patterns']}, so no column is left claimed by nobody")
+    if any(label == "B" for label, _s, _a in todo):
+        existing = {r.get("target_family") for r in rows(doc) if isinstance(r, dict)}
+        for extra in DEPLETION_SLOTS:
+            if extra["target_family"] not in existing:
+                rows(doc).append(dict(extra))
+                print(f"[B] added slot: Tg_{extra['name']} <- {extra['patterns']}")
     written = targets()
     for path in written:
         with open(path, "w") as fh:
@@ -145,11 +222,10 @@ def main() -> int:
     print("release is rebuilt and reinstalled -- the downloaded copy must not be patched in place.")
     if any(label == "A" for label, _s, _a in todo):
         print()
-        print("FIX A IS NOT FINISHED BY ITSELF. Dropping rna108740_Day leaves its eight columns")
-        print("claimed by no slot, and test_the_column_partition_holds_for_every_species fails:")
-        print("instruction 41 requires that no column is claimed twice AND none by nobody. Give the")
-        print("cat enteroepithelial columns a slot of their own, or declare them excluded, in the")
-        print("same change. Verified by applying it.")
+        print("Fix A moved rna108740_Day into a slot of its own rather than dropping it, because")
+        print("leaving those eight columns claimed by nobody fails the column partition -- found")
+        print("by applying it, not by reading. The cat enteroepithelial stages now have the only")
+        print("slot in the map that asks about them.")
     return 0
 
 

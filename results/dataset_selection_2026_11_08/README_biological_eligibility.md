@@ -233,6 +233,17 @@ checksum of what it packaged. The release is meant to be rebuilt, not patched.
 So the route is: change the repository source, give the orphaned columns a home, rebuild the data
 release, then regenerate the atlas because the counts this slot feeds will move.
 
-**With both fixes applied and nothing else, the suite is 148 passed and 2 failed**, and those two
-failures are the two facts above rather than anything subtle. That is the honest cost of the
-decision, measured instead of estimated.
+**Both fixes now carry their companion slots, and the prepared change passes.** Fix B orphaned
+twelve columns for the same reason fix A orphaned eight, so it has the same obligation: the nine
+AP2XII-1-depleted abundance columns and the three fold-changes go to TWO new slots rather than one,
+because putting an abundance and a log2 fold change in a single slot is precisely the defect fix B
+removes -- each pattern is collapsed by row mean, and a mean over two quantification types is not a
+quantity.
+
+With fix A, fix B and all three companion slots applied: **196 passed, 1 failed**, and the single
+failure is `test_packaged_layout_matches_the_shared_matrix_and_gene_order` -- which fails because I
+patched the downloaded copy in place to test it, not because of the change. The proper route
+rebuilds the data release, which recomputes that checksum.
+
+So the decision in front of you is a complete, tested change rather than a one-line edit with two
+hidden consequences. That is what it took to find out.
