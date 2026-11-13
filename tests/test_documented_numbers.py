@@ -81,10 +81,17 @@ def test_the_cache_column_count_is_quoted_correctly(facts):
 
 
 def test_the_cache_size_is_quoted_correctly(facts):
-    """Rounded to the megabyte in prose, so exactness is not required -- but 11 against 17 is drift."""
+    """Rounded to the megabyte in prose, so exactness is not required -- but 11 against 17 is drift.
+
+    The digit count is not capped. It was `\\d{1,3}`, which could not match the size the cache had
+    actually grown to: both documents said 278 MB, a figure from the 0.0.3.0 era, while the installed
+    release was 1,214 MB. Four digits did not match the pattern, so the test could only have reported
+    "no longer states the cache size" -- and a reader was told the download was a quarter of its size.
+    Thousands separators are accepted because that is how a four-digit number is written in prose.
+    """
     for doc in ("HANDOFF.md", "MATERIALS_AND_METHODS.md"):
         text = _doc(doc)
-        quoted = {int(m) for m in re.findall(r"cache (?:is|\()\s*(\d{1,3})\s*MB", text)}
+        quoted = {int(m.replace(",", "")) for m in re.findall(r"cache (?:is|\()\s*([\d,]+)\s*MB", text)}
         assert quoted, f"{doc} no longer states the cache size"
         for q in quoted:
             assert abs(q - facts["mb"]) < facts["mb"] / 3, (
