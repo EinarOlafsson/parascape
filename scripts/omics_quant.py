@@ -339,6 +339,56 @@ RESOURCE_STATUS = os.environ.get("PARASCAPE_RESOURCE_STATUS",
 EXTRA_RANK = 0          # set in an extra worker: 1 for the first extra, 2 for the second, ...
 
 
+#: Salmon against these references runs in a later pass (Einar 2026-11-13, "Host salmon later"). Salmon
+#: against the combined ME49_host index (1.14 M references) maps some projects at about 8,300 fragments a
+#: second (GSE210671, GSE223819, GSE223621), so one deep run held a worker for more than 7 hours while the
+#: cheap stages of hundreds of other runs waited. Now every run first gets its cheap stages -- archive check,
+#: reads, fastp, salmon on the parasite-only indexes, kallisto on every index -- and the host salmon follows
+#: once no run is left without them. Settings and outputs are unchanged; only the order is. The reads are not
+#: kept between the passes (all queued runs together hold ~3.5 TB of reads); the later pass re-derives them
+#: from the archive and checks that fastp keeps the same number of reads. Empty: one pass, as before.
+HOST_SALMON_LATER = {ref.strip() for ref in os.environ.get("PARASCAPE_HOST_SALMON_LATER", "ME49_host").split(",")
+                     if ref.strip()}
+#: Studies whose host salmon goes to the later pass (comma-separated); empty means every study (the decision of
+#: Einar). Re-deriving the reads costs more than host salmon itself for most projects (216 against 347 M
+#: reads an hour per worker, 2026-11-06 to 11-13), so this can narrow the change to the slow projects.
+HOST_SALMON_LATER_STUDIES = {s.strip() for s in os.environ.get("PARASCAPE_HOST_SALMON_LATER_STUDIES", "").split(",")
+                             if s.strip()}
+#: Written when a run's cheap stages are done and its host salmon is still to run. done.json is written only
+#: when every stage is done, so everything that counts or reads done.json (queue verification, processing
+#: ledger, app snapshots, re-quantification) still sees an unfinished run as unfinished.
+STAGES_FILE = "stages.json"
+CHEAP, HOST, ALL = "cheap stages", "host salmon", "all stages"
+#: Finish the current run, then stop taking new ones while this file exists -- so a code change can reach the
+#: workers between runs instead of killing work in flight. `quantify` removes it when it starts again.
+DRAIN_FILE = os.environ.get("PARASCAPE_DRAIN_FILE", os.path.join(SCRATCH, "DRAIN"))
+
+
+def _draining() -> bool:
+    return bool(DRAIN_FILE) and os.path.exists(DRAIN_FILE)
+
+
+def _active_elsewhere(run_acc: str) -> bool:
+    """True when another live quantifier process (another service, or a bridge started during a code change)
+    names this run in its active file; claims only coordinate the workers of one process."""
+    if not DOWNLOAD_CACHE:
+        return False
+    for path in glob.glob(os.path.join(DOWNLOAD_CACHE, "active*.json")):
+        if os.path.basename(path) == ACTIVE_NAME:
+            continue
+        try:
+            with open(path) as fh:
+                active = json.load(fh)
+            if active.get("run") != run_acc or int(active.get("pid", 0)) == os.getpid():
+                continue
+            with open(f"/proc/{int(active['pid'])}/cmdline", "rb") as fh:
+                if b"omics_quant.py" in fh.read():
+                    return True
+        except (OSError, ValueError, KeyError, TypeError):
+            continue
+    return False
+
+
 _PLANNED = {"epoch": 0.0, "runs": None, "mtime": None}
 
 
@@ -365,7 +415,7 @@ def _spare_workers() -> int:
             return int(json.load(fh).get("extra_workers", 0))
     except (OSError, ValueError):
         return 0
-ACTIVE_NAME = "active.json"
+ACTIVE_NAME = os.environ.get("PARASCAPE_ACTIVE_NAME", "active.json")
 CLAIMS = ""                                  # claims folder, set in multi-worker mode only
 
 
@@ -537,16 +587,35 @@ def quantify(limit: int | None = None) -> None:
     os.makedirs(SCRATCH, exist_ok=True)
     if DOWNLOAD_CACHE:
         os.makedirs(DOWNLOAD_CACHE, exist_ok=True)
+    if _draining():
+        os.remove(DRAIN_FILE)                       # a new start is the deployment the drain waited for
+        log(f"drain marker {DRAIN_FILE} removed at start")
     if WORKERS > 1:
         return _quantify_workers(todo, limit)
-    count = 0
+    _run_phases(todo, limit)
+
+
+def _run_phases(todo: list, limit: int | None) -> None:
+    """Cheap stages of every queued run first, then the host salmon (Einar 2026-11-13); one pass when
+    HOST_SALMON_LATER is empty. Runs deferred for scratch space are retried every 10 minutes; while only
+    such runs are left in the cheap pass, one host-salmon run is done between retries."""
+    phase, queue = (CHEAP if HOST_SALMON_LATER else ALL), todo
     while True:
-        deferred = _quantify_pass(todo, limit, count)
-        if deferred is None or not deferred:
+        deferred = _quantify_pass(queue, limit, 0, phase)
+        if deferred is None or _draining():
             return
-        log(f"{len(deferred)} runs deferred for scratch space; retrying in 10 minutes")
+        if not deferred:
+            if phase != CHEAP:
+                return
+            phase, queue = HOST, todo               # every run has its cheap stages: the later pass
+            log("cheap stages done for every run this worker can take; starting the host salmon pass")
+            continue
+        log(f"{len(deferred)} runs deferred for scratch space ({phase}); retrying in 10 minutes")
+        if phase == CHEAP and _quantify_pass(todo, 1, 0, HOST) is None:
+            queue = deferred                         # one host run done meanwhile; retry at once
+            continue
         time.sleep(600)
-        todo = deferred
+        queue = deferred
 
 
 def _quantify_workers(todo: list, limit: int | None) -> None:
@@ -573,13 +642,9 @@ def _worker(k: int, todo: list, limit: int | None, base: str, claims: str) -> No
     THREADS = max(1, THREADS // WORKERS)
     EXTRA_RANK = max(0, k - WORKERS + 1)
     os.makedirs(SCRATCH, exist_ok=True)
-    log(f"worker {k}: scratch {SCRATCH}, {THREADS} threads" + (" (only while CPUs are spare)" if EXTRA_RANK else ""))
-    while True:
-        deferred = _quantify_pass(todo, limit, 0)
-        if deferred is None or not deferred:
-            return
-        time.sleep(600)
-        todo = deferred
+    log(f"worker {k}: scratch {SCRATCH}, {THREADS} threads" + (" (only while CPUs are spare)" if EXTRA_RANK else "")
+        + (f"; salmon against {', '.join(sorted(HOST_SALMON_LATER))} in a later pass" if HOST_SALMON_LATER else ""))
+    _run_phases(todo, limit)
 
 
 def _trim(run_acc: str, local: list) -> tuple:
@@ -642,17 +707,61 @@ class NothingMapped(RuntimeError):
     """A quantifier finished but mapped no read: a failure, whatever its exit status says."""
 
 
-def _quantify_pass(todo: list, limit: int | None, count: int):
-    """One pass over the queue; returns runs deferred for scratch space, or None when the limit is hit."""
+def _salmon(ref: str, local: list, s_out: str) -> int | None:
+    """Salmon against one reference; returns the reads it mapped (a run that maps none has failed)."""
+    reads = (["-1", local[0], "-2", local[1]] if len(local) == 2 else ["-r", local[0]])
+    # An interrupted salmon leaves its mapping file (GBs); this worker holds the run's claim.
+    for stale in glob.glob(os.path.join(s_out, "intermediate_mappings.rad.partial-*")):
+        os.remove(stale)
+    run([os.path.join(BIN, "salmon"), "quant", "-i", os.path.join(NAS, "references", ref, "salmon_index"),
+         "-l", "A", *reads, "-p", str(THREADS), "--validateMappings", "--gcBias",
+         "--seqBias", *SALMON_EXTRA, "-o", s_out])
+    _gzip(os.path.join(s_out, "quant.sf"))
+    mapped = salmon_mapped(s_out)
+    if mapped == 0:
+        raise NothingMapped(f"salmon mapped 0 reads against {ref}: the reads are not "
+                            f"this organism, or not in base space")
+    return mapped
+
+
+def _kallisto(ref: str, local: list, k_out: str) -> str | None:
+    """Kallisto against one reference; returns the failure to record, or None."""
+    k_reads = local if len(local) == 2 else ["--single", "-l", "200", "-s", "30", local[0]]
+    try:
+        run([os.path.join(BIN, "kallisto"), "quant", "-i", os.path.join(NAS, "references", ref, "kallisto.idx"),
+             "-o", k_out, "-t", str(THREADS), *k_reads])
+    except subprocess.CalledProcessError as error:
+        return f"exit {error.returncode}"
+    _gzip(os.path.join(k_out, "abundance.tsv"))
+    h5 = os.path.join(k_out, "abundance.h5")
+    if os.path.exists(h5):
+        os.remove(h5)                      # the TSV holds the same numbers
+    return None
+
+
+def _skip(phase: str, run_dir: str, out_dir: str) -> bool:
+    """Whether this pass leaves a run alone: finished, colour space, or not at this pass's stage."""
+    if os.path.exists(os.path.join(out_dir, "done.json")) or os.path.exists(os.path.join(run_dir, COLOUR_SPACE_FILE)):
+        return True
+    staged = os.path.exists(os.path.join(out_dir, STAGES_FILE))
+    return staged if phase == CHEAP else (not staged) if phase == HOST else False
+
+
+def _quantify_pass(todo: list, limit: int | None, count: int, phase: str = ALL):
+    """One pass over the queue; returns runs deferred for scratch space, or None when the limit is hit
+    or a drain was asked for. `phase`: CHEAP (everything but the salmon in HOST_SALMON_LATER), HOST (that
+    salmon, for runs whose cheap stages are done) or ALL (every stage, as before)."""
     global SCRATCH
     local_scratch = SCRATCH
     deferred = []
     for r in todo:
         run_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
         out_dir = os.path.join(run_dir, REQUANT["subdir"]) if REQUANT["subdir"] else run_dir
-        if os.path.exists(os.path.join(out_dir, "done.json")) or \
-                os.path.exists(os.path.join(run_dir, COLOUR_SPACE_FILE)):
+        if _skip(phase, run_dir, out_dir):
             continue
+        if _draining():
+            log(f"drain marker {DRAIN_FILE} present: no new run taken")
+            return None
         if colour_space(r):
             os.makedirs(out_dir, exist_ok=True)
             _cache_module().save(Path(out_dir) / COLOUR_SPACE_FILE, {
@@ -672,10 +781,12 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
             if os.path.exists(os.path.join(out_dir, "done.json")) or (
                     CLAIMS and os.path.exists(os.path.join(CLAIMS, f"{r['run_accession']}.claim"))):
                 break
+        if _active_elsewhere(r["run_accession"]):
+            continue                                 # another quantifier process has this run
         if not _claim(r["run_accession"]):
             continue                                 # another worker has this run
-        if os.path.exists(os.path.join(out_dir, "done.json")):
-            _release(r["run_accession"])             # finished by another worker after the check above
+        if _skip(phase, run_dir, out_dir):
+            _release(r["run_accession"])             # moved on by another worker after the check above
             continue
         local = []
         if DOWNLOAD_CACHE:
@@ -697,46 +808,11 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
                 continue
             os.makedirs(out_dir, exist_ok=True)
             local, trim = _trim(r["run_accession"], local)
-            paired = len(local) == 2
-            kallisto_failed = {}
-            for ref in r["references"]:
-                idx = os.path.join(NAS, "references", ref)
-                s_out = os.path.join(out_dir, f"salmon_{ref}")
-                reads = (["-1", local[0], "-2", local[1]] if paired else ["-r", local[0]])
-                # An interrupted salmon leaves its mapping file (GBs); this worker holds the run's claim.
-                for stale in glob.glob(os.path.join(s_out, "intermediate_mappings.rad.partial-*")):
-                    os.remove(stale)
-                run([os.path.join(BIN, "salmon"), "quant", "-i", os.path.join(idx, "salmon_index"),
-                     "-l", "A", *reads, "-p", str(THREADS), "--validateMappings", "--gcBias",
-                     "--seqBias", *SALMON_EXTRA, "-o", s_out])
-                _gzip(os.path.join(s_out, "quant.sf"))
-                mapped = salmon_mapped(s_out)
-                if mapped == 0:
-                    raise NothingMapped(f"salmon mapped 0 reads against {ref}: the reads are not "
-                                        f"this organism, or not in base space")
-                k_out = os.path.join(out_dir, f"kallisto_{ref}")
-                k_reads = local if paired else ["--single", "-l", "200", "-s", "30", local[0]]
-                try:
-                    run([os.path.join(BIN, "kallisto"), "quant", "-i", os.path.join(idx, "kallisto.idx"),
-                         "-o", k_out, "-t", str(THREADS), *k_reads])
-                except subprocess.CalledProcessError as error:
-                    # Salmon mapped reads, so the run is kept on its numbers and kallisto's failure
-                    # recorded: one tool must not lose a whole study again (instruction 89).
-                    kallisto_failed[ref] = f"exit {error.returncode}"
-                    log(f"{r['run_accession']}: kallisto failed against {ref} ({error.returncode}); "
-                        f"kept on salmon ({mapped:,} reads mapped)")
-                    continue
-                _gzip(os.path.join(k_out, "abundance.tsv"))
-                h5 = os.path.join(k_out, "abundance.h5")
-                if os.path.exists(h5):
-                    os.remove(h5)                      # the TSV holds the same numbers
-            _cache_module().save(Path(out_dir) / "done.json",
-                                 {**r, "trimming": trim, "salmon": version("salmon"), "kallisto": version("kallisto"),
-                                  "salmon_extra": SALMON_EXTRA, "kallisto_failed": kallisto_failed,
-                                  "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256,
-                                  "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
-            log(f"{r['run_accession']} ({r['study']}): quantified against {', '.join(r['references'])}")
-            if REQUANT["subdir"]:
+            if phase == HOST:
+                _host_salmon(r, out_dir, local, trim)
+            else:
+                _cheap_or_all(r, out_dir, local, trim, phase)
+            if REQUANT["subdir"] and os.path.exists(os.path.join(out_dir, "done.json")):
                 verdict = compare_requant(run_dir, out_dir, r["references"])
                 log(f"{r['run_accession']}: re-quantified -- {verdict['verdict']} "
                     f"(Spearman {verdict.get('spearman')})")
@@ -762,6 +838,66 @@ def _quantify_pass(todo: list, limit: int | None, count: int):
     return deferred
 
 
+def _cheap_or_all(r: dict, out_dir: str, local: list, trim: dict, phase: str) -> None:
+    """Every stage (ALL), or every stage but the later-pass salmon (CHEAP; then stages.json, not done.json)."""
+    deferred_study = not HOST_SALMON_LATER_STUDIES or r["study"] in HOST_SALMON_LATER_STUDIES
+    later = [ref for ref in r["references"] if ref in HOST_SALMON_LATER] if phase == CHEAP and deferred_study else []
+    kallisto_failed, stages = {}, ["archive", "reads", "fastp"]
+    for ref in r["references"]:
+        mapped = None
+        if ref not in later:
+            mapped = _salmon(ref, local, os.path.join(out_dir, f"salmon_{ref}"))
+            stages.append(f"salmon_{ref}")
+        failed = _kallisto(ref, local, os.path.join(out_dir, f"kallisto_{ref}"))
+        if failed:
+            # Salmon mapped reads, so the run is kept on its numbers and kallisto's failure
+            # recorded: one tool must not lose a whole study again (instruction 89).
+            kallisto_failed[ref] = failed
+            log(f"{r['run_accession']}: kallisto failed against {ref} ({failed}); kept on salmon"
+                + (f" ({mapped:,} reads mapped)" if mapped is not None else ""))
+        else:
+            stages.append(f"kallisto_{ref}")
+    record = {**r, "trimming": trim, "salmon": version("salmon"), "kallisto": version("kallisto"),
+              "salmon_extra": SALMON_EXTRA, "kallisto_failed": kallisto_failed,
+              "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256}
+    now = time.strftime("%Y-%m-%dT%H:%M:%S")
+    if later:
+        _cache_module().save(Path(out_dir) / STAGES_FILE, {
+            **record, "stages_done": stages, "stages_pending": [f"salmon_{ref}" for ref in later],
+            "status": "cheap stages done; host salmon pending (Einar 2026-11-13: host salmon later)",
+            "cheap_stages_finished": now})
+        log(f"{r['run_accession']} ({r['study']}): cheap stages done; salmon against {', '.join(later)} "
+            f"waits for the later pass")
+        return
+    _cache_module().save(Path(out_dir) / "done.json",
+                         {**record, "stages_done": stages, "stages_pending": [], "finished": now})
+    log(f"{r['run_accession']} ({r['study']}): quantified against {', '.join(r['references'])}")
+
+
+def _host_salmon(r: dict, out_dir: str, local: list, trim: dict) -> None:
+    """The later pass: salmon against the deferred references, on reads re-derived from the archive."""
+    with open(os.path.join(out_dir, STAGES_FILE)) as fh:
+        staged = json.load(fh)
+    before = staged["trimming"]
+    if (trim.get("reads_before"), trim.get("reads_after")) != (before.get("reads_before"), before.get("reads_after")):
+        raise RuntimeError(f"re-derived reads differ from the first pass (fastp kept {trim.get('reads_after')} "
+                           f"of {trim.get('reads_before')}, before {before.get('reads_after')} of "
+                           f"{before.get('reads_before')}); host salmon not run")
+    stages = list(staged["stages_done"])
+    for stage in staged["stages_pending"]:
+        ref = stage[len("salmon_"):]
+        _salmon(ref, local, os.path.join(out_dir, stage))
+        stages.append(stage)
+    now = time.strftime("%Y-%m-%dT%H:%M:%S")
+    done = {key: value for key, value in staged.items() if key not in ("status", "stages_pending")}
+    done.update({"stages_done": stages, "stages_pending": [], "host_salmon_later": True,
+                 "host_salmon_finished": now, "host_salmon_threads": THREADS,
+                 "host_salmon_runtime_source_sha256": RUNTIME_SOURCE_SHA256, "finished": now})
+    _cache_module().save(Path(out_dir) / "done.json", done)
+    Path(out_dir, STAGES_FILE).unlink(missing_ok=True)
+    log(f"{r['run_accession']} ({r['study']}): host salmon done; quantified against {', '.join(r['references'])}")
+
+
 #: NCBI's copy of SRA on AWS (Open Data Program): measured 43 MB/s from here on 2026-10-17, against
 #: 1.3 MB/s from ENA over HTTPS -- the difference between days and a month for the full set.
 SRA_ODP = "https://sra-pub-run-odp.s3.amazonaws.com/sra/{run}/{run}"
@@ -780,13 +916,15 @@ def _reads(r: dict) -> list:
     """Local FASTQ files for one run: from AWS SRA (validated, then fasterq-dump), else ENA FASTQ."""
     run_acc = r["run_accession"]
     marker = Path(PRECONVERTED) / run_acc / "done.json"
-    if PRECONVERTED and marker.exists():
-        record = json.loads(marker.read_text())
-        files = [marker.parent / name for name in sorted(record["files"])]
+    record = json.loads(marker.read_text()) if PRECONVERTED and marker.exists() else None
+    files = [marker.parent / name for name in sorted(record["files"])] if record else []
+    if record and all(f.exists() for f in files):
         if record.get("run") != run_acc or any(f.stat().st_size != record["files"][f.name]["bytes"] for f in files):
             raise RuntimeError(f"{run_acc}: preconverted FASTQ differs from its done.json")
         log(f"{run_acc}: using preconverted gzipped FASTQ ({record['tool']})")
         return [str(f) for f in files]
+    if record:                      # used (and removed) by the first pass; the archive serves the later pass
+        log(f"{run_acc}: preconverted FASTQ already used; reading the archive again")
     url = SRA_ODP.format(run=run_acc)
     size = _head_size(url)
     ena_bytes = sum(int(b) for b in r.get("fastq_bytes", "").split(";") if b.isdigit())

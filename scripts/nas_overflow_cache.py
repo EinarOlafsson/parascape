@@ -43,6 +43,11 @@ def nas_cap_blocks(stored, incoming, cap):
     return cap is not None and stored + incoming > cap
 
 
+def host_salmon_pending(row):
+    """True when a run has its cheap stages and waits only for the later host-salmon pass."""
+    return (Path(Q.NAS)/'rnaseq'/row['study']/row['run_accession']/getattr(Q,'STAGES_FILE','stages.json')).exists()
+
+
 def owned_pointer(path, target):
     return path.is_symlink() and os.path.abspath(os.readlink(path))==str(target.absolute())
 
@@ -193,6 +198,9 @@ def main():
             verified=json.loads((local/'automation/verified.json').read_bytes())
             cache.cleanup(plan,verified,active)
             pending=[r for r in plan if r['study']+'/'+r['run_accession'] not in verified]
+            # Runs waiting only for the later host-salmon pass (stages.json) are fetched after every run
+            # still without its cheap stages (Einar 2026-11-13: host salmon later).
+            pending.sort(key=lambda r:host_salmon_pending(r))
             if not pending:
                 report(phase='complete',reason='Every selected planned use independently verified');return
             # Leave enough local scratch room for the next cached run's existing

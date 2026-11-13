@@ -583,3 +583,55 @@ workers at 6 threads already fill the 16 CPU share, and the cost is per read ins
 3. Move the host salmon to a separate later pass (as instruction 81 does for re-quantification) so the cheap
    stages of all queued runs finish first.
 4. Minor: swap is full (2.0 GB used) while 70 GB is cache; not the cause, but worth a look.
+
+## 2026-11-13: host salmon later (Einar decision)
+
+**Einar (2026-11-13): "Host salmon later."** Salmon against the combined `ME49_host` index is the slow stage for
+GSE210671, GSE223819 and GSE223621 (about 8,300 fragments a second, against about 38,000 for other projects; one
+run held a worker for more than 7 hours). Every queued run now first gets its cheap stages, and salmon against
+`ME49_host` follows in a later pass, in the same service. Settings and outputs are unchanged; only the order is.
+
+**What changed** (`scripts/omics_quant.py`, deployed to `~/.local/share/parascape-download-worker/`, backups
+`*.bak-before-host-salmon-later-20261113-130150` beside each file):
+- First pass, every run: archive check, reads, fastp, salmon against `ME49` (and `GT1`/`VEG` where planned),
+  kallisto against every index including `ME49_host`. The run then gets `stages.json` (stages done, stages
+  pending, the fastp summary), **not** `done.json`.
+- Later pass, once no run is left without its cheap stages: the reads are derived again from the archive, fastp
+  must keep exactly the same number of reads as the first time (otherwise the run fails and stays pending),
+  salmon runs against `ME49_host`, then `done.json` is written with `stages_done` and `stages_pending: []`, and
+  `stages.json` is removed. Runs without `ME49_host` (pig, cow, hamster hosts) finish in the first pass.
+- The reads are not kept between the passes: the queued runs hold about 3.5 TB of reads, mnt1 has 433 GB free
+  with its 125 GB margin, and the NAS raw cache is already at its 1,863 GiB cap. The raw archives of unfinished
+  runs stay in that cache until verified, as before, so many later-pass runs need no new download.
+- `done.json` still means "every stage done". Queue verification, the processing ledger, app snapshots and
+  re-quantification (instruction 81) all read only `done.json`, so none of them treats a half-finished run as
+  finished. The app gains no new runs until their host salmon is done.
+- The raw cache (`scripts/nas_overflow_cache.py`) fetches runs waiting only for host salmon after all others.
+- New switches: `PARASCAPE_HOST_SALMON_LATER` (default `ME49_host`; empty restores one pass),
+  `PARASCAPE_HOST_SALMON_LATER_STUDIES` (default empty = every study), and a drain marker
+  (`<PARASCAPE_SCRATCH>/DRAIN`): workers finish their current run and take no new one, so the next code change
+  can be deployed between runs. `quantify` removes the marker when it starts.
+
+**How it was switched over without stopping work.** The old workers had no drain, so every pending run was
+claimed in `claims/` (empty claim files): the three workers finish their current runs (including SRR20946779,
+left running on host salmon) and then exit, and the queue supervisor restarts the service on the new code. Until
+then, the transient unit `parascape-quant-bridge` (one worker, 6 threads, inside the 16-CPU share, 14G) runs
+the new code; it drains itself when the old main process exits.
+
+**Cost, measured from the log of 2026-11-06 to 11-13, per worker (6 threads), reads counted per mate:**
+
+| | cheap stages | deriving reads alone | host salmon |
+|---|---:|---:|---:|
+| GSE210671 and the other slow projects (12 runs) | 64.8 M reads/h | 77.7 M reads/h | 69.9 M reads/h |
+| every other project (398 runs) | 137.2 M reads/h | 216.2 M reads/h | 347.3 M reads/h |
+
+Queued: 1,160 runs, 68.7 G reads (4.6 G from the slow projects). With 3 workers: cheap stages for every run in
+about 7.5 days, then the host salmon pass in about 8.0 days. In the old order the whole queue needed about 10.8
+days; the new order needs about 15.5 days (43.4 per cent more), because for most projects deriving the reads again
+costs more than host salmon itself. Narrowing the later pass to the slow projects
+(`PARASCAPE_HOST_SALMON_LATER_STUDIES=GSE210671,GSE223819,GSE223621`) would keep most of the gain at little cost.
+
+**How to verify.** New `stages.json` files appear and contain `"stages_pending": ["salmon_ME49_host"]`; the log
+shows "cheap stages done; salmon against ME49_host waits for the later pass"; no `salmon quant` against
+`ME49_host/salmon_index` starts until the log says "starting the host salmon pass". Progress: runs finished =
+`done.json`; runs with cheap stages = `done.json` plus `stages.json`. Tests: `tests/test_omics_host_salmon_later.py`.
