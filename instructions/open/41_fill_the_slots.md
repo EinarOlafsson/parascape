@@ -3192,3 +3192,37 @@ with the heads removed. That is the third time in two days a title has promised 
 deposit does not contain, after GSE284425 (salivary glands sold as midgut) and GSE232438 (oocysts
 that were the inoculum). The rule this file already states -- judge from the samples, not the title
 -- keeps earning its place.
+
+## 2026-11-13: correcting myself -- the Cryptosporidium gene table does exist
+
+Earlier today I wrote, in the GSE271211 section above, that "there is no Cryptosporidium gene table
+shipped at all". **That is wrong, and the mistake was in where I looked.** I checked
+`paths.data_dir()`, found nothing, and concluded the table did not exist.
+
+It does. WP6 of instruction 53 built it on 2026-11-08:
+
+* `parascape/spaces/crypto.py` -- `CRYPTO_SPACE`, code `Cp`, CryptoDB `cgd` identifiers;
+* `results/cryptosporidium_space_2026_11_08/cp_gene_nodes.parquet` -- **3,923 genes**, 16 columns,
+  keyed `cgd1_10`, `cgd1_100`, ..., carrying `product`, `orthogroup`, `lopit_location`,
+  `measured_stage`, `stage_sporozoite_specific` and more.
+
+So the Ensembl Protists route I recorded as the way in is **not needed for the identifiers**: the
+`cgd` gene list already exists and was built without the VEuPathDB login. That part of the earlier
+entry stands as a confirmation rather than a discovery.
+
+**The real gap is narrower than I said, and it is a wiring gap rather than a data gap.** The table
+sits in `results/`, not in the shipped data directory, and no `datasets.REGISTRY` entry points at
+it -- which is exactly why the eligibility read of instruction 65 reports **63 Cp slots and zero Cp
+sources**. Nothing is missing except the registration.
+
+So for GSE271211 the remaining work is:
+
+1. **Register the existing Cp gene table as the Cp reference** so Cp slots have something to resolve
+   against (this is instruction 53 WP6 finishing, not a new build).
+2. **Map `CPATCC_` to `cgd`** -- still required, because this deposit is keyed on the ATCC
+   annotation while the table is keyed on CryptoDB. 3,923 genes on one side and 4,035 rows on the
+   other, so the mapping is a locus-tag or coordinate join rather than a build.
+
+I am recording the correction rather than quietly editing the earlier entry, because the earlier
+entry is what a reader would have acted on, and "no gene table exists" would have sent them to build
+one that is already there.
