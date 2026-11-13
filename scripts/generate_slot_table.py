@@ -710,6 +710,15 @@ SPACE_PATTERNS = {
         "conservation breadth": ("orthogroup",),
         "gene identity and annotation": ("gene_id", "product"),
         "life-cycle stage label (derived)": ("measured_stage",),
+        # GSE271211 (PMID 39354600): the undigested oocyst inoculum, three replicates, mean log2 CPM.
+        # The first MEASURED transcription in the Cryptosporidium space -- until now all nine graded
+        # Cp slots came from the gene table itself, which is why the eligibility read of instruction
+        # 65 reported 63 Cp slots and zero Cp sources. `oocyst_detected` is deliberately NOT here: it
+        # is a flag that exists wherever the measurement does, so including it would read the same
+        # coverage twice. Only 2,566 of 3,923 genes carry a value, because the deposit is keyed on a
+        # different assembly and the CPATCC-to-cgd map reaches two thirds of it; the rest stay
+        # missing rather than being filled with a zero.
+        "transcription \u00b7 oocyst": ("expr_oocyst",),
     },
 }
 

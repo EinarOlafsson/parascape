@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**362 slots: 122 covered well, 54 partly, 56 thinly, 130 empty.**
+**362 slots: 122 covered well, 55 partly, 56 thinly, 129 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -120,7 +120,7 @@ quantity were approximating on 2026-08-13.
 | Cp_transcription · microgamont | microgamont | **-** |  |  |  | `` | average | — |
 | Cp_transcription · macrogamont | macrogamont | **-** |  |  |  | `` | average | — |
 | Cp_transcription · zygote | zygote | **-** |  |  |  | `` | average | — |
-| Cp_transcription · oocyst | oocyst | **-** |  |  |  | `` | average | — |
+| Cp_transcription · oocyst | oocyst | **B** | 2566 |  | 65.4% | `expr_oocyst` | average | — |
 | Cp_transcription · per cell-cycle phase | cell cycle | **-** |  |  |  | `` | separate | — |
 | Cp_transcription · under stress / conversion | alkaline, stress | **-** |  |  |  | `` | separate | — |
 | Cp_transcription · under TF or chromatin perturbation | perturbation | **-** |  |  |  | `` | separate | — |
@@ -612,6 +612,7 @@ Read off the table above: this is the many-to-many the mechanism has to carry, n
 | `codon_gc3` | Pf_codon usage / translation efficiency; Tg_codon usage / translation efficiency |
 | `codon_cai_ribosomal` | Pf_codon usage / translation efficiency; Tg_codon usage / translation efficiency |
 | `n_bcell_epitopes` | Pf_seroreactivity / antigenicity; Tg_seroreactivity / antigenicity |
+| `expr_oocyst` | Cp_transcription · oocyst; Pf_transcription · oocyst |
 | `interpro_ids` | Cp_domain content; Pf_domain content |
 
 ### Candidates opened and refused

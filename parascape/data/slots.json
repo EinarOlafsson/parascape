@@ -13312,7 +13312,9 @@
     "axis": "transcription",
     "context": "oocyst",
     "unit": "gene",
-    "patterns": [],
+    "patterns": [
+      "expr_oocyst"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [

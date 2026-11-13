@@ -110,5 +110,19 @@
   "kind": "structure (predicted)",
   "source_sha256": "76013ad2f0717ecaf77570d59a21979b3fb07a6a03f79b0134154b1122ceca35",
   "licence": "O (computed here)"
+ },
+ "expr_oocyst": {
+  "organism": "Cp",
+  "source": "GSE271211 (PMID 39354600), undigested oocyst inoculum, mapped CPATCC to cgd by exact protein identity",
+  "kind": "transcript (measured)",
+  "source_sha256": "7edb645d005eff7806f4fff8918abf0703bad22f9c983b4d134f6c26a34f74d6",
+  "licence": "P (public GEO deposit)"
+ },
+ "oocyst_detected": {
+  "organism": "Cp",
+  "source": "GSE271211 (PMID 39354600), undigested oocyst inoculum, mapped CPATCC to cgd by exact protein identity",
+  "kind": "transcript (measured)",
+  "source_sha256": "7edb645d005eff7806f4fff8918abf0703bad22f9c983b4d134f6c26a34f74d6",
+  "licence": "P (public GEO deposit)"
  }
 }
