@@ -3322,3 +3322,11 @@ this work fills the slot and gives it provenance, but it does not change the num
 prints. Making Cp visible to that audit is a separate piece of work about where the audit looks.
 
 Tests as CI runs them, without the cache pin: 338 passed.
+
+## 2026-11-13: the oocyst slot shipped in 0.0.12.0, the Cp gene table did not
+
+ParaScape 0.0.12.0 carries the regenerated `slots.json`, so the `Cp_transcription · oocyst` slot definition
+reaches installed copies. The Cryptosporidium gene table (`cp_gene_nodes.parquet`, with `expr_oocyst`) is
+still a locally built space (`distribution='pack'`) and is not in the core data download, so an installed
+copy names the slot but holds no Cp values until that pack is published. Publishing it waits on the
+redistribution terms of its sources, as `parascape/spaces/crypto.py` records.

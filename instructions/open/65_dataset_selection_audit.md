@@ -787,3 +787,18 @@ removed.
 
 Tests run as CI runs them (no cache pin): 179 passed including the packaged-layout check.
 **Still to do: the data release rebuild and publish**, so installed copies get the new slots.
+
+## 65.04, 2026-11-13: released as ParaScape 0.0.12.0 -- installed copies now get both fixes
+
+Einar approved "Rebuild + publish". The data release is built by overlaying the published 0.0.11.0 asset,
+because the checkout alone lacks six published-only directories. Before building, every tracked data file
+was compared with the published checksums: three changed since v0.0.11.0 (`slots.json`,
+`slot_hierarchy.json`, `graph.npz`; the repository wins) and 55 are the stale RNA-seq mirror (the published
+asset wins). Nothing else differs.
+
+The 0.0.12.0 asset has 10,929 files and 944.3 MB, the same count as 0.0.11.0, and exactly those three files
+differ from it. `pf_nodes.parquet` and the whole `rnaseq/` tree are byte-identical, so no study is lost.
+Installed from the archive in a clean wheel environment: 8,140 genes load, the bradyzoite slot no longer
+reads `rna108740_Day`, the tachyzoite protein slot reads the untreated columns only, both pre-sexual
+reprogramming slots are present, and the map metadata says 331 features. The offline installed-data smoke
+test passed (574 optional packs verified, network and NAS reads disabled).
