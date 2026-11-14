@@ -75,8 +75,19 @@ def _host_space(code: str):
     return MOUSE_SPACE
 
 
+def _version_key(path: str) -> tuple:
+    """The pack version in a file name, as numbers, so 2026.11.13 sorts after 2026.11.07."""
+    match = re.search(r"parascape_[A-Za-z]+_([0-9.]+)\.zip$", os.path.basename(path))
+    return tuple(int(p) for p in match.group(1).split(".")) if match else ()
+
+
 def local_archives(code: str, roots=None) -> list:
-    """(archive, sha256) for every pack of `code` with a published SHA256 file beside it, newest first."""
+    """(archive, sha256) for every pack of `code` with a published SHA256 file beside it, newest first.
+
+    Newest by the VERSION in the file name, not by the path. Sorting on the path put the
+    `mouse_gene_space_2026_11_07` pack ahead of `host_gene_packs_2026_11_13` because an `m` sorts
+    after an `h`, so a newly built pack would have been installed only by accident of its folder name.
+    """
     roots = roots or [os.path.join(_REPO, "results")]
     found = []
     for root in roots:
@@ -88,7 +99,8 @@ def local_archives(code: str, roots=None) -> list:
                 parts = line.split()
                 if len(parts) == 2 and parts[1] == os.path.basename(path) and re.fullmatch(r"[0-9a-f]{64}", parts[0]):
                     found.append((path, parts[0]))
-    return sorted(found, reverse=True)
+    return [p for _k, p in sorted(((_version_key(path), (path, sha)) for path, sha in found),
+                                  key=lambda row: row[0], reverse=True)]
 
 
 def _calibrated(code: str) -> bool:

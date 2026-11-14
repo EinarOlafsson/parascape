@@ -24,6 +24,25 @@ MAX_ARCHIVE_BYTES = 512 * 1024 * 1024
 MAX_UNPACKED_BYTES = 1024 * 1024 * 1024
 MANIFEST = "manifest.json"
 
+#: Licence codes a distributed pack may carry for a column.
+#:
+#: ``O``  an open licence, verified.
+#: ``SA`` share-alike: redistribution is allowed and the licence travels with it.
+#: ``G``  a public deposit, redistributed with its accession and the paper named. Einar decided this
+#:        on 2026-11-13 ("yes, with citation"), which closed a question open since 2026-11-09: a GEO
+#:        submission states no licence of its own, and ``O`` would have been a claim nobody made.
+#:
+#: ``V`` (verify the terms first) and ``X`` (local build only) are not distributable and are refused.
+PACK_LICENSES = ("O", "SA", "G")
+
+#: The code whose columns must each name where they came from. It is accepted ONLY with both an
+#: accession and a citation recorded, because the permission Einar gave is to redistribute a deposit
+#: WITH its attribution: a G column with no accession is an unlicensed column with a nicer letter.
+CITED_DEPOSIT = "G"
+
+#: An accession as the public archives write them: GSE119855, PXD001647, E-MTAB-3579, phs000424.
+ACCESSION = re.compile(r"[A-Za-z][A-Za-z0-9-]{1,19}[0-9]{3,}")
+
 
 def _component(value):
     if not isinstance(value, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,99}", value):
@@ -75,16 +94,45 @@ def _manifest(raw):
     if not m.get("nodes"):
         raise ValueError("pack needs a node table")
     licences = m.get("column_licenses")
-    if not isinstance(licences, dict) or not licences or any(v not in ("O", "SA") for v in licences.values()):
-        raise ValueError("distributable columns need verified O or SA licenses")
+    if (not isinstance(licences, dict) or not licences
+            or any(v not in PACK_LICENSES for v in licences.values())):
+        raise ValueError("distributable columns need verified O, SA or G licenses")
+    _check_citations(licences, m.get("column_sources") or {})
     return m
 
 
-def build(space, version: str, files: dict, column_licenses: dict, destination) -> str:
-    """Create a data archive and return its SHA256; validate tables before calling this function."""
+def _check_citations(licences: dict, sources) -> None:
+    """A cited-deposit column is accepted only when both its accession and its paper are recorded.
+
+    Checked in the manifest rather than only in the builder, because the manifest is what an
+    installed pack is read back from: a column that lost its attribution between building and
+    installing would otherwise be redistributed with nothing saying whose data it is.
+    """
+    if not isinstance(sources, dict):
+        raise ValueError("column_sources must map a column to its accession and citation")
+    for column in sorted(c for c, code in licences.items() if code == CITED_DEPOSIT):
+        record = sources.get(column)
+        if not isinstance(record, dict):
+            raise ValueError(f"cited public deposit column has no recorded source: {column}")
+        accession = str(record.get("accession") or "").strip()
+        citation = str(record.get("citation") or "").strip()
+        if not ACCESSION.fullmatch(accession):
+            raise ValueError(f"cited public deposit column needs an accession: {column}")
+        if len(citation) < 10:
+            raise ValueError(f"cited public deposit column needs a citation: {column}")
+
+
+def build(space, version: str, files: dict, column_licenses: dict, destination,
+          column_sources: dict | None = None) -> str:
+    """Create a data archive and return its SHA256; validate tables before calling this function.
+
+    `column_sources` maps a column to `{"accession": ..., "citation": ...}`. Every column licensed
+    `G` (a public deposit) needs one, or the build is refused.
+    """
     destination = Path(destination)
     manifest = {"format": 1, "organism": space.code, "version": version,
                 "nodes": space.nodes, "graph": space.graph, "column_licenses": column_licenses,
+                "column_sources": dict(column_sources or {}),
                 "files": {name: {"size": Path(p).stat().st_size, "sha256": digest(p)}
                           for name, p in files.items()}}
     raw = json.dumps(manifest, sort_keys=True, indent=2)

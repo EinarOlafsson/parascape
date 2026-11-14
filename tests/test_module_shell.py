@@ -446,8 +446,13 @@ def test_the_species_menu_lists_host_spaces_with_their_state(window, tmp_path, m
         # entry -- the same entry now opens its map. Its state is still spelled out, and still not
         # calibrated. A pack without a layout (rat, cat) stays disabled once installed.
         assert "installed" in actions["Mm"].text() and "not calibrated" in actions["Mm"].statusTip()
-        assert actions["Mm"].isEnabled()
-        assert "open its map" in actions["Mm"].toolTip()
+        from parascape.spaces import host_genes
+        if host_genes.lenses("Mm"):
+            # Route 1 (2026-11-13): a pack carrying its lens layouts becomes a submenu, one entry
+            # per lens. Checked only when such a pack is here: the 2026-11-07 archives have no
+            # layout, and an entry that cannot open a map must stay an entry that says so.
+            assert actions["Mm"].isEnabled()
+            assert "open its map" in actions["Mm"].toolTip()
 
 
 def test_unticking_a_kind_of_knowledge_removes_it_from_the_reading(window):

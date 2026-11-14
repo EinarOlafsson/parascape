@@ -1,0 +1,422 @@
+{
+ "bgee_adrenal_gland_score": {
+  "accession": "",
+  "context": "adrenal gland",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_animal_zygote_score": {
+  "accession": "",
+  "context": "animal zygote",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_cerebellar_cortex_score": {
+  "accession": "",
+  "context": "cerebellar cortex",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_colon_score": {
+  "accession": "",
+  "context": "colon",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_cortex_of_kidney_score": {
+  "accession": "",
+  "context": "cortex of kidney",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_cortical_plate_score": {
+  "accession": "",
+  "context": "cortical plate",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_dentate_gyrus_of_hippocampal_formation_granule_cell_score": {
+  "accession": "",
+  "context": "dentate gyrus of hippocampal formation granule cell",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_duodenum_score": {
+  "accession": "",
+  "context": "duodenum",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_ectoplacental_cone_score": {
+  "accession": "",
+  "context": "ectoplacental cone",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_embryonic_brain_score": {
+  "accession": "",
+  "context": "embryonic brain",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_embryonic_post_anal_tail_score": {
+  "accession": "",
+  "context": "embryonic post-anal tail",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_epiblast_generic_score": {
+  "accession": "",
+  "context": "epiblast (generic)",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_esophagus_score": {
+  "accession": "",
+  "context": "esophagus",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_forelimb_bud_score": {
+  "accession": "",
+  "context": "forelimb bud",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_ganglionic_eminence_score": {
+  "accession": "",
+  "context": "ganglionic eminence",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_granulocyte_score": {
+  "accession": "",
+  "context": "granulocyte",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_hindlimb_bud_score": {
+  "accession": "",
+  "context": "hindlimb bud",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_hindlimb_stylopod_muscle_score": {
+  "accession": "",
+  "context": "hindlimb stylopod muscle",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_ileum_score": {
+  "accession": "",
+  "context": "ileum",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_islet_of_langerhans_score": {
+  "accession": "",
+  "context": "islet of Langerhans",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_jejunum_score": {
+  "accession": "",
+  "context": "jejunum",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_lens_of_camera_type_eye_score": {
+  "accession": "",
+  "context": "lens of camera-type eye",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_lip_score": {
+  "accession": "",
+  "context": "lip",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_multicellular_organism_score": {
+  "accession": "",
+  "context": "multicellular organism",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_neural_tube_score": {
+  "accession": "",
+  "context": "neural tube",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_olfactory_bulb_score": {
+  "accession": "",
+  "context": "olfactory bulb",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_primary_oocyte_score": {
+  "accession": "",
+  "context": "primary oocyte",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_primary_visual_cortex_score": {
+  "accession": "",
+  "context": "primary visual cortex",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_proximal_tubule_score": {
+  "accession": "",
+  "context": "proximal tubule",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_retinal_neural_layer_score": {
+  "accession": "",
+  "context": "retinal neural layer",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_right_kidney_score": {
+  "accession": "",
+  "context": "right kidney",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_secondary_oocyte_score": {
+  "accession": "",
+  "context": "secondary oocyte",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_spermatid_score": {
+  "accession": "",
+  "context": "spermatid",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_spermatocyte_score": {
+  "accession": "",
+  "context": "spermatocyte",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_stomach_score": {
+  "accession": "",
+  "context": "stomach",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_superior_frontal_gyrus_score": {
+  "accession": "",
+  "context": "superior frontal gyrus",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_tissues_present": {
+  "evidence_grade": "measured (summarised)",
+  "license": "CC0",
+  "organism": "Mm",
+  "quantity_unit": "count of tissues",
+  "source": "Bgee",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776",
+  "storage_unit": "gene",
+  "targets": "input or numeric label"
+ },
+ "bgee_top_score": {
+  "evidence_grade": "measured (summarised)",
+  "license": "CC0",
+  "organism": "Mm",
+  "quantity_unit": "Bgee expression score 0-100 (best tissue)",
+  "source": "Bgee",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776",
+  "storage_unit": "gene",
+  "targets": "input or numeric label"
+ },
+ "bgee_top_tissue": {
+  "evidence_grade": "measured (summarised)",
+  "license": "CC0",
+  "organism": "Mm",
+  "quantity_unit": "Uberon tissue name",
+  "source": "Bgee",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776",
+  "storage_unit": "gene",
+  "targets": "input or label"
+ },
+ "bgee_undifferentiated_genital_tubercle_score": {
+  "accession": "",
+  "context": "undifferentiated genital tubercle",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_uterus_score": {
+  "accession": "",
+  "context": "uterus",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_ventricular_zone_score": {
+  "accession": "",
+  "context": "ventricular zone",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "bgee_yolk_sac_score": {
+  "accession": "",
+  "context": "yolk sac",
+  "license": "O",
+  "source": "Bgee 15.2 expression score"
+ },
+ "cp_ileum_a_log2fc": {
+  "accession": "GSE168680",
+  "citation": "Gullicksrud JA et al. Mucosal Immunology 2022 (GEO GSE168680): enterocyte-ILC1 crosstalk drives innate interferon-gamma-mediated control of Cryptosporidium",
+  "context": "intestinal epithelium, experiment A, infected over uninfected",
+  "license": "G",
+  "source": "GSE168680 (Cryptosporidium parvum)"
+ },
+ "cp_ileum_b_log2fc": {
+  "accession": "GSE168680",
+  "citation": "Gullicksrud JA et al. Mucosal Immunology 2022 (GEO GSE168680): enterocyte-ILC1 crosstalk drives innate interferon-gamma-mediated control of Cryptosporidium",
+  "context": "intestinal epithelium, experiment B, infected over uninfected",
+  "license": "G",
+  "source": "GSE168680 (Cryptosporidium parvum)"
+ },
+ "gene_id": {
+  "evidence_grade": "curation",
+  "license": "Ensembl, no restrictions",
+  "organism": "Mm",
+  "quantity_unit": "identifier",
+  "source": "Ensembl (via source file)",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776",
+  "storage_unit": "gene",
+  "targets": "identity only"
+ },
+ "gene_name": {
+  "evidence_grade": "curation",
+  "license": "Ensembl, no restrictions",
+  "organism": "Mm",
+  "quantity_unit": "symbol",
+  "source": "Ensembl (via source file)",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776",
+  "storage_unit": "gene",
+  "targets": "identity only"
+ },
+ "human_ortholog": {
+  "evidence_grade": "computed",
+  "license": "Ensembl, no restrictions",
+  "organism": "Mm",
+  "quantity_unit": "human gene symbol",
+  "source": "Ensembl Compara",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc",
+  "storage_unit": "gene",
+  "targets": "bridge to the human space"
+ },
+ "human_ortholog_confidence": {
+  "evidence_grade": "computed",
+  "license": "Ensembl, no restrictions",
+  "organism": "Mm",
+  "quantity_unit": "0/1",
+  "source": "Ensembl Compara",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc",
+  "storage_unit": "gene",
+  "targets": "bridge"
+ },
+ "human_ortholog_type": {
+  "evidence_grade": "computed",
+  "license": "Ensembl, no restrictions",
+  "organism": "Mm",
+  "quantity_unit": "Compara homology type",
+  "source": "Ensembl Compara",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc",
+  "storage_unit": "gene",
+  "targets": "bridge"
+ },
+ "location_from_human_ortholog": {
+  "evidence_grade": "inferred (orthology transfer)",
+  "license": "CC BY-SA 4.0",
+  "organism": "Mm",
+  "quantity_unit": "HPA location terms",
+  "source": "Human Protein Atlas via Ensembl Compara",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc",
+  "storage_unit": "gene",
+  "targets": "input only; never an observed label"
+ },
+ "location_from_human_ortholog_probability": {
+  "evidence_grade": "inferred (orthology transfer)",
+  "license": "CC BY-SA 4.0",
+  "organism": "Mm",
+  "quantity_unit": "probability 0-1",
+  "source": "Human Protein Atlas via Ensembl Compara",
+  "source_sha256": "348729a379e6157d272c70b7efc2fbead39a76cc0c498655628324af685a7efc",
+  "storage_unit": "gene",
+  "targets": "input only"
+ },
+ "pb_brain_cerebral_malaria_log2fc": {
+  "accession": "GSE162535",
+  "citation": "GEO GSE162535: RNA-seq of the mouse brain reveals inflammatory genes associated with early artesunate treatment of experimental cerebral malaria",
+  "context": "brain, experimental cerebral malaria over control",
+  "license": "G",
+  "source": "GSE162535 (Plasmodium berghei)"
+ },
+ "py_liver_log2fc": {
+  "accession": "GSE44831",
+  "citation": "Liehl P et al. Nature Medicine 2014 (GEO GSE44831): interferon-mediated innate immune responses against malaria parasite liver stages",
+  "context": "liver, infected over mock, BALB/c",
+  "license": "G",
+  "source": "GSE44831 (Plasmodium yoelii)"
+ },
+ "shipped_protein_count": {
+  "evidence_grade": "derived",
+  "license": "derived",
+  "organism": "Mm",
+  "quantity_unit": "count",
+  "source": "parascape mm_host_proteins + source UniProt column",
+  "source_sha256": "cd63e75525b25375c911bf3a155c770645f681f0212676bec2345054f9fc6776",
+  "storage_unit": "gene",
+  "targets": "identity only"
+ },
+ "tg_blood_log2fc": {
+  "accession": "GSE119855",
+  "citation": "Singhania A et al. Nature Communications 2019 (GEO GSE119855): global transcriptional profiling of the interferon network, T. gondii ME49, four tissues",
+  "context": "whole blood, wild-type infected over uninfected",
+  "license": "G",
+  "source": "GSE119855 (Toxoplasma gondii)"
+ },
+ "tg_bmdm_log2fc": {
+  "accession": "GSE103113",
+  "citation": "Nyonda MA et al. 2018 (GEO GSE103113): bone-marrow-derived macrophage transcriptomes under T. gondii Pru infection and the GRA18 mutants",
+  "context": "bone-marrow-derived macrophage, T. gondii Pru over uninfected",
+  "license": "G",
+  "source": "GSE103113 (Toxoplasma gondii)"
+ },
+ "tg_chronic_28d_log2fc": {
+  "accession": "GSE117504",
+  "citation": "GEO GSE117504: host transcriptional responses during chronic T. gondii infection reveal sex-specific differences",
+  "context": "chronic infection, day 28, infected over uninfected",
+  "license": "G",
+  "source": "GSE117504 (Toxoplasma gondii)"
+ },
+ "tg_liver_log2fc": {
+  "accession": "GSE119855",
+  "citation": "Singhania A et al. Nature Communications 2019 (GEO GSE119855): global transcriptional profiling of the interferon network, T. gondii ME49, four tissues",
+  "context": "liver, wild-type infected over uninfected",
+  "license": "G",
+  "source": "GSE119855 (Toxoplasma gondii)"
+ },
+ "tg_lung_log2fc": {
+  "accession": "GSE119855",
+  "citation": "Singhania A et al. Nature Communications 2019 (GEO GSE119855): global transcriptional profiling of the interferon network, T. gondii ME49, four tissues",
+  "context": "whole lung, wild-type infected over uninfected",
+  "license": "G",
+  "source": "GSE119855 (Toxoplasma gondii)"
+ },
+ "tg_spleen_log2fc": {
+  "accession": "GSE119855",
+  "citation": "Singhania A et al. Nature Communications 2019 (GEO GSE119855): global transcriptional profiling of the interferon network, T. gondii ME49, four tissues",
+  "context": "spleen, wild-type infected over uninfected",
+  "license": "G",
+  "source": "GSE119855 (Toxoplasma gondii)"
+ }
+}

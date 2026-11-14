@@ -147,6 +147,10 @@ def test_an_installed_host_gene_pack_opens_as_its_own_map(qapp, tmp_path, monkey
     if not SC.local_archives("Mm"):
         pytest.skip("no mouse gene pack in this checkout")
     SC.install("Mm")
+    from parascape.spaces import host_genes
+    if not host_genes.lenses("Mm"):
+        pytest.skip("the installed mouse gene pack carries no lens layout; build it with "
+                    "scripts/build_host_gene_lenses.py and scripts/build_host_gene_packs.py")
     name = "Mus musculus genes"
     assert name in HOST_GENE_SPECIES and species_code(name) == O.MOUSE
     w = Window(species=name)

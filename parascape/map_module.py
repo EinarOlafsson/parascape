@@ -288,6 +288,11 @@ class MapModule(QtCore.QObject):
         self._pending = False
         self._agreement_key = None
         self._agreement = None
+        #: The lens that placed a HOST map, or "" for a parasite arm. A host map is a shipped layout
+        #: whose features are recorded in it; a parasite map is built here from measurement blocks.
+        #: Three controls read differently in the two cases (instruction 53, route 1).
+        self.host_lens = str(getattr(window, "lens", "") or "")
+        self.lens_features = list(getattr(window, "lens_features", ()) or ())
 
         self.shell = shell = ModuleShell.for_module("map")
         shell.module = self
@@ -370,24 +375,31 @@ class MapModule(QtCore.QObject):
         similar = QtWidgets.QWidget(shell)
         sl = QtWidgets.QVBoxLayout(similar)
         sl.setContentsMargins(6, 2, 6, 6)
-        sl.addWidget(_muted("Genes are placed near each other when these are alike:"))
         self.similarity: dict = {}
-        tree = panel.blocks
-        for i in range(tree.topLevelItemCount()):
-            item = tree.topLevelItem(i)
-            usable = [leaf for leaf in tree.leaves(item)
-                      if leaf.flags() & QtCore.Qt.ItemFlag.ItemIsEnabled]
-            if not usable:
-                continue
-            box = QtWidgets.QCheckBox(item.text(0).split("  (")[0])
-            box.setTristate(False)
-            box.setToolTip(TH.tip(
-                f"{len(usable)} kinds of measurement about {item.text(0).split('  (')[0]}. "
-                "Ticked, they count towards which genes are placed together. The exact "
-                "measurements are in Advanced ▸ Choose individual measurements."))
-            box.clicked.connect(lambda on, it=item: self._similarity_clicked(it, on))
-            sl.addWidget(box)
-            self.similarity[box] = item
+        if self.host_lens:
+            # A HOST map is a shipped lens layout, not a map built from the measurement blocks the
+            # harness knows (instruction 53, the first of the three host gaps). Listing those blocks
+            # here was worse than listing none: the box named Toxoplasma measurement families for a
+            # map of human genes, and not one of them placed a single point. The lens did.
+            self._list_lens_features(sl)
+        else:
+            sl.addWidget(_muted("Genes are placed near each other when these are alike:"))
+            tree = panel.blocks
+            for i in range(tree.topLevelItemCount()):
+                item = tree.topLevelItem(i)
+                usable = [leaf for leaf in tree.leaves(item)
+                          if leaf.flags() & QtCore.Qt.ItemFlag.ItemIsEnabled]
+                if not usable:
+                    continue
+                box = QtWidgets.QCheckBox(item.text(0).split("  (")[0])
+                box.setTristate(False)
+                box.setToolTip(TH.tip(
+                    f"{len(usable)} kinds of measurement about {item.text(0).split('  (')[0]}. "
+                    "Ticked, they count towards which genes are placed together. The exact "
+                    "measurements are in Advanced ▸ Choose individual measurements."))
+                box.clicked.connect(lambda on, it=item: self._similarity_clicked(it, on))
+                sl.addWidget(box)
+                self.similarity[box] = item
         self.circular_note = _muted("")
         self.circular_note.hide()
         sl.addWidget(self.circular_note)
@@ -401,7 +413,11 @@ class MapModule(QtCore.QObject):
         al.addWidget(_moved(advanced, [("neighbours considered (n_neighbors)", panel.nn),
                                        ("spacing (min_dist)", panel.md), ("seed", panel.seed)]))
         self.live = QtWidgets.QCheckBox("Preview a change before building it")
-        self.live.setChecked(True)
+        self.live.setChecked(not self.host_lens)
+        if self.host_lens:
+            # Nothing on the left changes a shipped layout, so a preview of a change would show a
+            # map built another way beside the one being read -- the confusion this item is closing.
+            self.live.setEnabled(False)
         self.live.setToolTip(TH.tip("When a setting changes, project a sample of genes with "
                                     "it and show that, so you see the effect before building."))
         al.addWidget(self.live)
@@ -545,14 +561,35 @@ class MapModule(QtCore.QObject):
         shell.add_section("Find the best map for a label", best, extent=200, stretch=1,
                           folded=True)
 
-        shell.add_action("Build this map", panel.run_embed, primary=True,
-                         tip="Place every gene with the settings on the left. Takes a minute.")
+        build = shell.add_action("Build this map", panel.run_embed, primary=not self.host_lens,
+                                 tip="Place every gene with the settings on the left. Takes a minute.")
+        if self.host_lens:
+            # The second of the three host gaps (instruction 53). This button would have rebuilt a
+            # HOST map from the parasite measurement blocks -- which a host table does not carry --
+            # so it would either fail or produce a map of whichever few columns happened to match.
+            # The shipped lens is the map to read, and another lens is a menu entry, not a rebuild.
+            build.setEnabled(False)
+            build.setToolTip(TH.tip(
+                "Build this map\n\nNot here: this map is a shipped lens layout, tied to the exact "
+                "table it was built from by its SHA-256. Rebuilding would use the parasite "
+                "measurement blocks, which this table does not have. To change what places it, "
+                "choose another lens in File ▸ Species; to rebuild a lens from its sources, run "
+                "scripts/build_host_gene_lenses.py."))
         shell.add_action("Predict from neighbours", lambda: _open_inference(window),
                          tip="Call labels for unlabelled genes from their neighbours, with how "
                              "often such calls are right (Infer).")
-        shell.add_action("Find the best map", self._find_best,
-                         tip="Try the Advanced settings in turn and score each by how well "
-                             "neighbours agree on the label you are colouring by.")
+        best_action = shell.add_action("Find the best map", self._find_best,
+                                       tip="Try the Advanced settings in turn and score each by how "
+                                           "well neighbours agree on the label you are colouring by.")
+        if self.host_lens:
+            # Same reason as Build this map: a sweep builds maps, and a host table has nothing for
+            # the harness to build them from. Disabled with the reason rather than removed, so the
+            # module reads the same in both kinds of window.
+            best_action.setEnabled(False)
+            best_action.setToolTip(TH.tip(
+                "Find the best map\n\nNot here: it would build maps from the parasite measurement "
+                "blocks, which this host table does not carry. The lenses are the layouts on offer, "
+                "in File \u25b8 Species."))
         shell.add_action_widget(panel.stop_button())
         shell.add_action("Full 3D view", lambda: _show_map(window),
                          tip="Leave the module for the map in the main window, with every tool "
@@ -1041,6 +1078,53 @@ class MapModule(QtCore.QObject):
         text = url.toString()
         if text.startswith("gene:"):
             self.select([int(text.split(":", 1)[1])], "")
+
+    # ------------------------------------------------------------------ what makes a host map similar
+    def _lens_wording(self) -> str:
+        """What the lens of this host map claims, in words rather than in its key."""
+        if self.host_lens == "tissue":
+            return "expressed in the same tissues and cell types"
+        if self.host_lens == "parasite_facing":
+            return ("alike in how they respond to infection, and in what the parasite does to them")
+        return f"alike under the {self.host_lens} lens"
+
+    def _list_lens_features(self, layout) -> None:
+        """Name the measurements the shipped lens used, instead of the parasite blocks.
+
+        Read from the layout file itself, which records its own features, so the list cannot drift
+        from the arrangement on screen the way a list written beside it would. A layout that records
+        none says so rather than showing an empty box, which is what a host map did before.
+        """
+        meta = dict(getattr(self.window, "lens_metadata", {}) or {})
+        features = list(self.lens_features)
+        layout.addWidget(_muted(
+            f"This map is a shipped layout, not one built here. Genes are placed near each other "
+            f"when they are {self._lens_wording()}."))
+        if not features:
+            layout.addWidget(_muted("The layout records no list of measurements, so what placed it "
+                                    "is unknown. Rebuild it with scripts/build_host_gene_lenses.py."))
+        else:
+            measured = meta.get("genes_with_any_value")
+            genes = meta.get("genes")
+            counted = (f" {measured:,} of {genes:,} genes carry at least one of them "
+                       f"({100 * measured / genes:.1f} per cent); the rest keep a place, so the map "
+                       f"is not only of what has been studied."
+                       if isinstance(measured, int) and isinstance(genes, int) and genes else "")
+            head = QtWidgets.QLabel(f"{len(features)} measurements placed it.{counted}")
+            head.setObjectName("ShellMuted")
+            head.setWordWrap(True)
+            layout.addWidget(head)
+            listing = QtWidgets.QListWidget()
+            listing.addItems(features)
+            listing.setToolTip(TH.tip(
+                "Every measurement the lens read, as the layout records them. They are shown and "
+                "not offered as choices because this map was not built here: choosing another set "
+                "would describe a map nobody is looking at."))
+            listing.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.NoSelection)
+            listing.setMaximumHeight(140)
+            layout.addWidget(listing)
+            self.lens_list = listing
+        layout.addWidget(_muted("Another lens is in File ▸ Species, one entry per layout."))
 
     # ------------------------------------------------------------------ what makes genes similar
     def _similarity_clicked(self, item, on: bool) -> None:

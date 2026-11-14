@@ -57,13 +57,15 @@ def validate_graph(nodes: pd.DataFrame, graph_path) -> None:
 
 
 def build_pack(space, directory, version: str, column_licenses: dict, destination,
-               previous=None, extra: dict | None = None) -> str:
+               previous=None, extra: dict | None = None, column_sources: dict | None = None) -> str:
     """Validate a prepared space and create its distributable pack; return the archive SHA256.
 
     Callers supply the per-column license decisions. Unreviewed (V) and local-only (X) sources
     cannot enter a distributed pack. Raw-source acquisition remains the organism builder's job.
     `extra` maps further pack member names (attribution notices, column descriptions, link tables)
     to files; they are hash-checked like the tables but never replace the node table or graph.
+    `column_sources` carries the accession and the paper behind each column licensed `G`
+    (a public deposit, redistributable with citation); the pack refuses a `G` column without both.
     """
     from .. import packs
     directory = Path(directory)
@@ -80,4 +82,4 @@ def build_pack(space, directory, version: str, column_licenses: dict, destinatio
         if name in files:
             raise ValueError(f"extra pack member would replace {name}")
         files[name] = Path(path)
-    return packs.build(space, version, files, column_licenses, destination)
+    return packs.build(space, version, files, column_licenses, destination, column_sources)

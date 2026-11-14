@@ -1,13 +1,29 @@
 # Space packs
 
-Large organism spaces can live outside the application wheel. The pack framework is implemented;
-human/mouse gene-space builders, published pack URLs and the download menu remain pending. The
-human/mouse protein reference tables already shipped with ParaScape are separate from these future
-gene spaces.
+Large organism spaces can live outside the application wheel. The pack framework is implemented, and
+so are the human and mouse gene packs: each carries its gene table, its protein-gene link table and
+two lens layouts (`tissue`, `parasite_facing`), and opens as a map window. Published pack URLs are
+pending: all ParaScape data hosting is moving to Hugging Face (Einar, 2026-11-13). The human/mouse
+protein reference tables shipped in the wheel are separate spaces from these gene packs -- a protein
+is not a gene -- and `parascape.host_links` carries a selection between the two.
 
 A pack is a ZIP containing flat data files and `manifest.json`. The manifest records the organism,
 version, node/graph filenames, each file's SHA256 and byte size, and a license code for every node
-column. Only reviewed open (`O`) or share-alike (`SA`) columns can be packaged for distribution.
+column. Three codes may be distributed:
+
+| code | what it means |
+|---|---|
+| `O` | a verified open licence |
+| `SA` | share-alike: it may travel, and the licence travels with it |
+| `G` | a public deposit, redistributed with its accession and the paper behind it named |
+
+`V` (verify the terms first) and `X` (local build only) are refused. A `G` column is accepted **only
+when both an accession and a citation are recorded for it** (`column_sources` in the manifest, and
+`column_sources=` on `packs.build` / `spaces.build_pack`): a deposit states no licence of its own,
+so the permission to redistribute it is a permission to redistribute it WITH its attribution. The
+check is in the manifest reader, not only in the builder, because the manifest is what an installed
+pack is read back from. Einar gave that permission on 2026-11-13.
+
 The builder's license declarations must come from the source records; hashes do not establish
 redistribution rights or publisher identity.
 

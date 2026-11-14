@@ -1,0 +1,889 @@
+{
+ "HPA_RNA_singlecell_specificity": {
+  "context": "Human Protein Atlas consensus",
+  "evidence_grade": "curation",
+  "license": "Human Protein Atlas, CC BY-SA 4.0 (attribution; share-alike on redistribution)",
+  "missingness": "gene not in HPA, or no value",
+  "organism": "Hs",
+  "quantity_unit": "category (HPA vocabulary)",
+  "redistribution": "allowed with attribution and share-alike",
+  "source_id": "hpa_transcriptome",
+  "source_sha256": "a463c531cc643bfc1b14034688f23dfa781ab3a3a2356b324ac61ad248c4ad90",
+  "storage_unit": "gene",
+  "targets": "label or input; location columns are labels for host localisation questions"
+ },
+ "HPA_RNA_tissue_distribution": {
+  "context": "Human Protein Atlas consensus",
+  "evidence_grade": "curation",
+  "license": "Human Protein Atlas, CC BY-SA 4.0 (attribution; share-alike on redistribution)",
+  "missingness": "gene not in HPA, or no value",
+  "organism": "Hs",
+  "quantity_unit": "category (HPA vocabulary)",
+  "redistribution": "allowed with attribution and share-alike",
+  "source_id": "hpa_transcriptome",
+  "source_sha256": "a463c531cc643bfc1b14034688f23dfa781ab3a3a2356b324ac61ad248c4ad90",
+  "storage_unit": "gene",
+  "targets": "label or input; location columns are labels for host localisation questions"
+ },
+ "HPA_RNA_tissue_specificity": {
+  "context": "Human Protein Atlas consensus",
+  "evidence_grade": "curation",
+  "license": "Human Protein Atlas, CC BY-SA 4.0 (attribution; share-alike on redistribution)",
+  "missingness": "gene not in HPA, or no value",
+  "organism": "Hs",
+  "quantity_unit": "category (HPA vocabulary)",
+  "redistribution": "allowed with attribution and share-alike",
+  "source_id": "hpa_transcriptome",
+  "source_sha256": "a463c531cc643bfc1b14034688f23dfa781ab3a3a2356b324ac61ad248c4ad90",
+  "storage_unit": "gene",
+  "targets": "label or input; location columns are labels for host localisation questions"
+ },
+ "HPA_protein_class": {
+  "context": "Human Protein Atlas consensus",
+  "evidence_grade": "curation",
+  "license": "Human Protein Atlas, CC BY-SA 4.0 (attribution; share-alike on redistribution)",
+  "missingness": "gene not in HPA, or no value",
+  "organism": "Hs",
+  "quantity_unit": "category (HPA vocabulary)",
+  "redistribution": "allowed with attribution and share-alike",
+  "source_id": "hpa_proteome",
+  "source_sha256": "855ada1e6e1dc12c6ecf2030c6e9699afcb907cee2f80d8564558ce85049d893",
+  "storage_unit": "gene",
+  "targets": "label or input; location columns are labels for host localisation questions"
+ },
+ "HPA_secretome_location": {
+  "context": "Human Protein Atlas consensus",
+  "evidence_grade": "curation",
+  "license": "Human Protein Atlas, CC BY-SA 4.0 (attribution; share-alike on redistribution)",
+  "missingness": "gene not in HPA, or no value",
+  "organism": "Hs",
+  "quantity_unit": "category (HPA vocabulary)",
+  "redistribution": "allowed with attribution and share-alike",
+  "source_id": "hpa_proteome",
+  "source_sha256": "855ada1e6e1dc12c6ecf2030c6e9699afcb907cee2f80d8564558ce85049d893",
+  "storage_unit": "gene",
+  "targets": "label or input; location columns are labels for host localisation questions"
+ },
+ "HPA_subcellular_location": {
+  "context": "Human Protein Atlas consensus",
+  "evidence_grade": "curation",
+  "license": "Human Protein Atlas, CC BY-SA 4.0 (attribution; share-alike on redistribution)",
+  "missingness": "gene not in HPA, or no value",
+  "organism": "Hs",
+  "quantity_unit": "category (HPA vocabulary)",
+  "redistribution": "allowed with attribution and share-alike",
+  "source_id": "hpa_proteome",
+  "source_sha256": "855ada1e6e1dc12c6ecf2030c6e9699afcb907cee2f80d8564558ce85049d893",
+  "storage_unit": "gene",
+  "targets": "label or input; location columns are labels for host localisation questions"
+ },
+ "HPA_subcellular_reliability": {
+  "context": "Human Protein Atlas consensus",
+  "evidence_grade": "curation",
+  "license": "Human Protein Atlas, CC BY-SA 4.0 (attribution; share-alike on redistribution)",
+  "missingness": "gene not in HPA, or no value",
+  "organism": "Hs",
+  "quantity_unit": "category (HPA vocabulary)",
+  "redistribution": "allowed with attribution and share-alike",
+  "source_id": "hpa_proteome",
+  "source_sha256": "855ada1e6e1dc12c6ecf2030c6e9699afcb907cee2f80d8564558ce85049d893",
+  "storage_unit": "gene",
+  "targets": "label or input; location columns are labels for host localisation questions"
+ },
+ "ch_enterocyte_log2fc": {
+  "accession": "GSE241570",
+  "citation": "GEO GSE241570 (BioProject of the human air-liquid-interface enterocyte series): C. hominis infection of human small intestinal epithelial cells",
+  "context": "air-liquid-interface enterocyte, C. hominis over non-infected",
+  "license": "G",
+  "source": "GSE241570 (Cryptosporidium hominis)"
+ },
+ "ch_enterocyte_second_log2fc": {
+  "accession": "GSE241571",
+  "citation": "GEO GSE241571 (companion series to GSE241570): C. hominis infection of human small intestinal epithelial cells",
+  "context": "air-liquid-interface enterocyte, second series, C. hominis over non-infected",
+  "license": "G",
+  "source": "GSE241571 (Cryptosporidium hominis)"
+ },
+ "cp_enterocyte_10h_log2fc": {
+  "accession": "GSE185247",
+  "citation": "Deng S et al. 2022 (GEO GSE185247): a genetic screen identifies a protective type III interferon response to Cryptosporidium requiring TLR3",
+  "context": "human enterocyte 10 h, infected over bystander",
+  "license": "G",
+  "source": "GSE185247 (Cryptosporidium parvum)"
+ },
+ "cp_enterocyte_48h_log2fc": {
+  "accession": "GSE185247",
+  "citation": "Deng S et al. 2022 (GEO GSE185247): a genetic screen identifies a protective type III interferon response to Cryptosporidium requiring TLR3",
+  "context": "human enterocyte 48 h, wild-type-infected over uninfected control",
+  "license": "G",
+  "source": "GSE185247 (Cryptosporidium parvum)"
+ },
+ "gene_id": {
+  "context": "GENCODE39 source-gene annotation",
+  "evidence_grade": "curation",
+  "license": "GTEx public terms; pack redistribution review pending",
+  "missingness": "source missing retained; unmapped protein does not remove gene",
+  "name_status": "not applicable",
+  "organism": "Hs",
+  "quantity_unit": "identifier or source-provided name",
+  "redistribution": "unresolved",
+  "source_field": "Name",
+  "source_id": "host_gtex_transcriptome",
+  "source_sha256": "b951fd32aae5cad48435026e07225860596a411a75efd0519e00f330b7a98294",
+  "storage_unit": "gene",
+  "targets": "identity only",
+  "zero_semantics": "not a measurement"
+ },
+ "gene_name": {
+  "context": "GENCODE39 source-gene annotation",
+  "evidence_grade": "curation",
+  "license": "GTEx public terms; pack redistribution review pending",
+  "missingness": "source missing retained; unmapped protein does not remove gene",
+  "name_status": "source-provided; not asserted HGNC validation",
+  "organism": "Hs",
+  "quantity_unit": "identifier or source-provided name",
+  "redistribution": "unresolved",
+  "source_field": "Description",
+  "source_id": "host_gtex_transcriptome",
+  "source_sha256": "b951fd32aae5cad48435026e07225860596a411a75efd0519e00f330b7a98294",
+  "storage_unit": "gene",
+  "targets": "identity only",
+  "zero_semantics": "not a measurement"
+ },
+ "gtex_adipose_subcutaneous_median_tpm": {
+  "accession": "phs000424",
+  "context": "Adipose_Subcutaneous",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_adipose_visceral_omentum_median_tpm": {
+  "accession": "phs000424",
+  "context": "Adipose_Visceral_Omentum",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_adrenal_gland_median_tpm": {
+  "accession": "phs000424",
+  "context": "Adrenal_Gland",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_artery_aorta_median_tpm": {
+  "accession": "phs000424",
+  "context": "Artery_Aorta",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_artery_coronary_median_tpm": {
+  "accession": "phs000424",
+  "context": "Artery_Coronary",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_artery_tibial_median_tpm": {
+  "accession": "phs000424",
+  "context": "Artery_Tibial",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_bladder_median_tpm": {
+  "accession": "phs000424",
+  "context": "Bladder",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_amygdala_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Amygdala",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_anterior_cingulate_cortex_ba24_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Anterior_cingulate_cortex_BA24",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_caudate_basal_ganglia_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Caudate_basal_ganglia",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_cerebellar_hemisphere_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Cerebellar_Hemisphere",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_cerebellum_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Cerebellum",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_cortex_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Cortex",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_frontal_cortex_ba9_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Frontal_Cortex_BA9",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_hippocampus_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Hippocampus",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_hypothalamus_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Hypothalamus",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_nucleus_accumbens_basal_ganglia_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Nucleus_accumbens_basal_ganglia",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_putamen_basal_ganglia_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Putamen_basal_ganglia",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_spinal_cord_cervical_c_1_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Spinal_cord_cervical_c-1",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_brain_substantia_nigra_median_tpm": {
+  "accession": "phs000424",
+  "context": "Brain_Substantia_nigra",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_breast_mammary_tissue_median_tpm": {
+  "accession": "phs000424",
+  "context": "Breast_Mammary_Tissue",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_cells_ebv_transformed_lymphocytes_median_tpm": {
+  "accession": "phs000424",
+  "context": "Cells_EBV-transformed_lymphocytes",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_cervix_ectocervix_median_tpm": {
+  "accession": "phs000424",
+  "context": "Cervix_Ectocervix",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_cervix_endocervix_median_tpm": {
+  "accession": "phs000424",
+  "context": "Cervix_Endocervix",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_colon_sigmoid_median_tpm": {
+  "accession": "phs000424",
+  "context": "Colon_Sigmoid",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_colon_transverse_median_tpm": {
+  "accession": "phs000424",
+  "context": "Colon_Transverse",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_colon_transverse_mixed_cell_median_tpm": {
+  "accession": "phs000424",
+  "context": "Colon_Transverse_Mixed_Cell",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_colon_transverse_mucosa_median_tpm": {
+  "accession": "phs000424",
+  "context": "Colon_Transverse_Mucosa",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_colon_transverse_muscularis_median_tpm": {
+  "accession": "phs000424",
+  "context": "Colon_Transverse_Muscularis",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_esophagus_gastroesophageal_junction_median_tpm": {
+  "accession": "phs000424",
+  "context": "Esophagus_Gastroesophageal_Junction",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_esophagus_mucosa_median_tpm": {
+  "accession": "phs000424",
+  "context": "Esophagus_Mucosa",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_esophagus_muscularis_median_tpm": {
+  "accession": "phs000424",
+  "context": "Esophagus_Muscularis",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_fallopian_tube_median_tpm": {
+  "accession": "phs000424",
+  "context": "Fallopian_Tube",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_fibroblast_median_tpm": {
+  "context": "Cells_Cultured_fibroblasts",
+  "evidence_grade": "direct_experiment",
+  "license": "GTEx public terms; pack redistribution review pending",
+  "missingness": "source missing retained; unmapped protein does not remove gene",
+  "name_status": "not applicable",
+  "organism": "Hs",
+  "quantity_unit": "median TPM",
+  "redistribution": "unresolved",
+  "source_field": "Cells_Cultured_fibroblasts",
+  "source_id": "host_gtex_transcriptome",
+  "source_sha256": "b951fd32aae5cad48435026e07225860596a411a75efd0519e00f330b7a98294",
+  "storage_unit": "gene",
+  "targets": "candidate numeric benchmark only, no independent accuracy admission",
+  "zero_semantics": "observed zero median; not missing"
+ },
+ "gtex_heart_atrial_appendage_median_tpm": {
+  "accession": "phs000424",
+  "context": "Heart_Atrial_Appendage",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_heart_left_ventricle_median_tpm": {
+  "accession": "phs000424",
+  "context": "Heart_Left_Ventricle",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_kidney_cortex_median_tpm": {
+  "accession": "phs000424",
+  "context": "Kidney_Cortex",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_kidney_medulla_median_tpm": {
+  "accession": "phs000424",
+  "context": "Kidney_Medulla",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_lcm_hepatocyte_median_tpm": {
+  "context": "Liver_Hepatocyte",
+  "evidence_grade": "direct_experiment",
+  "license": "GTEx public terms; pack redistribution review pending",
+  "missingness": "source missing retained; unmapped protein does not remove gene",
+  "name_status": "not applicable",
+  "organism": "Hs",
+  "quantity_unit": "median TPM",
+  "redistribution": "unresolved",
+  "source_field": "Liver_Hepatocyte",
+  "source_id": "host_gtex_transcriptome",
+  "source_sha256": "b951fd32aae5cad48435026e07225860596a411a75efd0519e00f330b7a98294",
+  "storage_unit": "gene",
+  "targets": "candidate numeric benchmark only, no independent accuracy admission",
+  "zero_semantics": "observed zero median; not missing"
+ },
+ "gtex_liver_median_tpm": {
+  "accession": "phs000424",
+  "context": "Liver",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_liver_mixed_cell_median_tpm": {
+  "accession": "phs000424",
+  "context": "Liver_Mixed_Cell",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_liver_portal_tract_median_tpm": {
+  "accession": "phs000424",
+  "context": "Liver_Portal_Tract",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_lung_median_tpm": {
+  "accession": "phs000424",
+  "context": "Lung",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_minor_salivary_gland_median_tpm": {
+  "accession": "phs000424",
+  "context": "Minor_Salivary_Gland",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_muscle_skeletal_median_tpm": {
+  "accession": "phs000424",
+  "context": "Muscle_Skeletal",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_nerve_tibial_median_tpm": {
+  "accession": "phs000424",
+  "context": "Nerve_Tibial",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_ovary_median_tpm": {
+  "accession": "phs000424",
+  "context": "Ovary",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_pancreas_acini_median_tpm": {
+  "accession": "phs000424",
+  "context": "Pancreas_Acini",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_pancreas_islets_median_tpm": {
+  "accession": "phs000424",
+  "context": "Pancreas_Islets",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_pancreas_median_tpm": {
+  "accession": "phs000424",
+  "context": "Pancreas",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_pancreas_mixed_cell_median_tpm": {
+  "accession": "phs000424",
+  "context": "Pancreas_Mixed_Cell",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_pituitary_median_tpm": {
+  "accession": "phs000424",
+  "context": "Pituitary",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_prostate_median_tpm": {
+  "accession": "phs000424",
+  "context": "Prostate",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_skin_not_sun_exposed_suprapubic_median_tpm": {
+  "accession": "phs000424",
+  "context": "Skin_Not_Sun_Exposed_Suprapubic",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_skin_sun_exposed_lower_leg_median_tpm": {
+  "accession": "phs000424",
+  "context": "Skin_Sun_Exposed_Lower_leg",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_small_intestine_terminal_ileum_lymphode_aggregate_median_tpm": {
+  "accession": "phs000424",
+  "context": "Small_Intestine_Terminal_Ileum_Lymphode_Aggregate",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_small_intestine_terminal_ileum_median_tpm": {
+  "accession": "phs000424",
+  "context": "Small_Intestine_Terminal_Ileum",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_small_intestine_terminal_ileum_mixed_cell_median_tpm": {
+  "accession": "phs000424",
+  "context": "Small_Intestine_Terminal_Ileum_Mixed_Cell",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_spleen_median_tpm": {
+  "accession": "phs000424",
+  "context": "Spleen",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_stomach_median_tpm": {
+  "accession": "phs000424",
+  "context": "Stomach",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_stomach_mixed_cell_median_tpm": {
+  "accession": "phs000424",
+  "context": "Stomach_Mixed_Cell",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_stomach_mucosa_median_tpm": {
+  "accession": "phs000424",
+  "context": "Stomach_Mucosa",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_stomach_muscularis_median_tpm": {
+  "accession": "phs000424",
+  "context": "Stomach_Muscularis",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_testis_median_tpm": {
+  "accession": "phs000424",
+  "context": "Testis",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_thyroid_median_tpm": {
+  "accession": "phs000424",
+  "context": "Thyroid",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_uterus_median_tpm": {
+  "accession": "phs000424",
+  "context": "Uterus",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_vagina_median_tpm": {
+  "accession": "phs000424",
+  "context": "Vagina",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "gtex_whole_blood_median_tpm": {
+  "accession": "phs000424",
+  "context": "Whole_Blood",
+  "license": "O",
+  "source": "GTEx v10 median TPM (log1p)"
+ },
+ "hpa_sc_adipocytes_ncpm": {
+  "accession": "",
+  "context": "adipocytes",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_adrenal_cortex_cells_ncpm": {
+  "accession": "",
+  "context": "adrenal cortex cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_adrenal_medulla_cells_ncpm": {
+  "accession": "",
+  "context": "adrenal medulla cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_alveolar_cells_type_1_ncpm": {
+  "accession": "",
+  "context": "alveolar cells type 1",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_alveolar_cells_type_2_ncpm": {
+  "accession": "",
+  "context": "alveolar cells type 2",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_b_cells_ncpm": {
+  "accession": "",
+  "context": "b-cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_basal_keratinocytes_ncpm": {
+  "accession": "",
+  "context": "basal keratinocytes",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_basal_prostatic_cells_ncpm": {
+  "accession": "",
+  "context": "basal prostatic cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_breast_hormone_responsive_cells_ncpm": {
+  "accession": "",
+  "context": "breast hormone-responsive cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_breast_lactating_cells_ncpm": {
+  "accession": "",
+  "context": "breast lactating cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_breast_myoepithelial_cells_ncpm": {
+  "accession": "",
+  "context": "breast myoepithelial cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_breast_secretory_cells_ncpm": {
+  "accession": "",
+  "context": "breast secretory cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_cardiomyocytes_ncpm": {
+  "accession": "",
+  "context": "cardiomyocytes",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_cdc_ncpm": {
+  "accession": "",
+  "context": "cdc",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_cholangiocytes_ncpm": {
+  "accession": "",
+  "context": "cholangiocytes",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_colonocytes_ncpm": {
+  "accession": "",
+  "context": "colonocytes",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_cone_photoreceptor_cells_ncpm": {
+  "accession": "",
+  "context": "cone photoreceptor cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_conjunctival_goblet_cells_ncpm": {
+  "accession": "",
+  "context": "conjunctival goblet cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_corticotrophs_ncpm": {
+  "accession": "",
+  "context": "corticotrophs",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_cytotrophoblasts_ncpm": {
+  "accession": "",
+  "context": "cytotrophoblasts",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_decidual_stromal_cells_ncpm": {
+  "accession": "",
+  "context": "decidual stromal cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_differentiating_spermatogonia_ncpm": {
+  "accession": "",
+  "context": "differentiating spermatogonia",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_early_primary_spermatocytes_ncpm": {
+  "accession": "",
+  "context": "early primary spermatocytes",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_early_spermatids_ncpm": {
+  "accession": "",
+  "context": "early spermatids",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_endometrial_ciliated_cells_ncpm": {
+  "accession": "",
+  "context": "endometrial ciliated cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_endometrial_glandular_cells_ncpm": {
+  "accession": "",
+  "context": "endometrial glandular cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_endometrial_luminal_cells_ncpm": {
+  "accession": "",
+  "context": "endometrial luminal cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_endometrial_secretory_cells_ncpm": {
+  "accession": "",
+  "context": "endometrial secretory cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_endometrial_stromal_cells_ncpm": {
+  "accession": "",
+  "context": "endometrial stromal cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_enteric_stem_cells_ncpm": {
+  "accession": "",
+  "context": "enteric stem cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_enteric_transient_amplifying_cells_ncpm": {
+  "accession": "",
+  "context": "enteric transient amplifying cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_enterocytes_ncpm": {
+  "accession": "",
+  "context": "enterocytes",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_epicardial_cells_ncpm": {
+  "accession": "",
+  "context": "epicardial cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_epididymal_basal_cells_ncpm": {
+  "accession": "",
+  "context": "epididymal basal cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_epididymal_clear_cells_ncpm": {
+  "accession": "",
+  "context": "epididymal clear cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_ocular_epithelial_cells_ncpm": {
+  "accession": "",
+  "context": "ocular epithelial cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_sertoli_cells_ncpm": {
+  "accession": "",
+  "context": "sertoli cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_smooth_muscle_cells_ncpm": {
+  "accession": "",
+  "context": "smooth muscle cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_somatotrophs_ncpm": {
+  "accession": "",
+  "context": "somatotrophs",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "hpa_sc_submucosal_glandular_cells_ncpm": {
+  "accession": "",
+  "context": "submucosal glandular cells",
+  "license": "SA",
+  "source": "Human Protein Atlas v25.1 single cell type nCPM (log1p)"
+ },
+ "pf_erythroblast_basophilic_log2fc": {
+  "accession": "GSE233739",
+  "citation": "Neveu G et al. 2023 (PMID 37493969), GEO GSE233739: transcriptional profiling of primary human erythroblasts infected with P. falciparum",
+  "context": "basophilic erythroblast, infected over uninfected",
+  "license": "G",
+  "source": "GSE233739 (Plasmodium falciparum)"
+ },
+ "pf_erythroblast_orthochromatic_log2fc": {
+  "accession": "GSE233739",
+  "citation": "Neveu G et al. 2023 (PMID 37493969), GEO GSE233739: transcriptional profiling of primary human erythroblasts infected with P. falciparum",
+  "context": "orthochromatic erythroblast, infected over uninfected",
+  "license": "G",
+  "source": "GSE233739 (Plasmodium falciparum)"
+ },
+ "pv_blood_asymptomatic_log2fc": {
+  "accession": "GSE273483",
+  "citation": "GEO GSE273483: systems approach identifies monocyte imbalance in symptomatic and asymptomatic P. vivax malaria",
+  "context": "whole blood, asymptomatic malaria over healthy control",
+  "license": "G",
+  "source": "GSE273483 (Plasmodium vivax)"
+ },
+ "pv_blood_symptomatic_log2fc": {
+  "accession": "GSE273483",
+  "citation": "GEO GSE273483: systems approach identifies monocyte imbalance in symptomatic and asymptomatic P. vivax malaria",
+  "context": "whole blood, symptomatic malaria over healthy control",
+  "license": "G",
+  "source": "GSE273483 (Plasmodium vivax)"
+ },
+ "shipped_protein_count": {
+  "evidence_grade": "derived",
+  "license": "derived",
+  "missingness": "0 = no reviewed shipped protein",
+  "organism": "Hs",
+  "quantity_unit": "count",
+  "redistribution": "as its sources",
+  "source_id": "parascape hs_host_proteins + reviewed UniProt crossrefs",
+  "source_sha256": "1b5af9142db5d67a4d0d3e072c541078281e750fe3c0ba8e22330a619623cfa0",
+  "storage_unit": "gene",
+  "targets": "identity only"
+ },
+ "tg_cytotrophoblast_log2fc": {
+  "accession": "GSE263615",
+  "citation": "Ander SE et al. mSphere 2024 (PMID 38771057), GEO GSE263615: cytotrophoblasts from trophoblast stem cells, mock-infected or infected with T. gondii",
+  "context": "cytotrophoblast, infected over mock",
+  "license": "G",
+  "source": "GSE263615 (Toxoplasma gondii)"
+ },
+ "tg_mueller_glia_ghpt_log2fc": {
+  "accession": "GSE145836",
+  "citation": "Smith JR et al. Ophthalmology Science 2025;5:100971 (PMID 41693810), GEO GSE145836: human retinal Mueller glial cells infected with T. gondii GHPT",
+  "context": "retinal Mueller glia, T. gondii GHPT over non-infected",
+  "license": "G",
+  "source": "GSE145836 (Toxoplasma gondii)"
+ },
+ "tg_mueller_glia_gt1_log2fc": {
+  "accession": "GSE145836",
+  "citation": "Smith JR et al. Ophthalmology Science 2025;5:100971 (PMID 41693810), GEO GSE145836: human retinal Mueller glial cells infected with T. gondii GT1",
+  "context": "retinal Mueller glia, T. gondii GT1 over non-infected",
+  "license": "G",
+  "source": "GSE145836 (Toxoplasma gondii)"
+ },
+ "tg_syncytiotrophoblast_log2fc": {
+  "accession": "GSE263615",
+  "citation": "Ander SE et al. mSphere 2024 (PMID 38771057), GEO GSE263615: syncytiotrophoblasts, mock-infected or infected with T. gondii",
+  "context": "syncytiotrophoblast, infected over mock",
+  "license": "G",
+  "source": "GSE263615 (Toxoplasma gondii)"
+ }
+}

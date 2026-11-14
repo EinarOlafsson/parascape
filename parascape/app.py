@@ -330,6 +330,7 @@ DEFAULT_SPECIES = organisms.get(_ORGANISMS.TOXOPLASMA).species
 #: makes two host proteins similar). Kept out of `SPECIES` because they are not parasite arms: no edge layers,
 #: no calibration, no slots, and a window showing one never reopens by itself at start-up.
 from .spaces import host_proteins as _HOST_PROTEINS
+from .spaces import host_genes as _HOST_GENES
 HOST_PROTEIN_SPECIES = {space.species: {"nodes": space.nodes, "code": space.code}
                         for space in _HOST_PROTEINS.SPACES.values()}
 
@@ -364,18 +365,38 @@ def host_space(name: str):
     return None
 
 
-def _load_host_genes(code: str):
-    """Node table and layout of an installed host gene pack, refusing a layout in another gene order."""
-    from . import paths as _paths
-    space = _host_gene_spaces()[code]
-    nodes = pd.read_parquet(_paths.space_file(space, space.nodes))
-    from .spaces import validate_graph, validate_nodes
-    validate_nodes(space, nodes)
-    graph = _paths.space_file(space, space.graph)
-    validate_graph(nodes, graph)
-    with np.load(graph, allow_pickle=False) as z:
-        xyz = z["xyz"].astype(np.float32)
-    return nodes, xyz
+def host_links_codes() -> tuple:
+    """(protein space codes, gene space codes) that have a link table to carry a selection along."""
+    from . import host_links
+    return tuple(host_links.GENE_OF_PROTEIN), tuple(host_links.PROTEIN_OF_GENE)
+
+
+def host_lens_module(name: str):
+    """(module, space code) for the lens module behind a host window species, else (None, "").
+
+    Both kinds of host space answer the same four questions -- which lenses exist, which were
+    refused, what a lens is called, and what a layout records about itself -- so every caller that
+    needs one of them asks here instead of testing which kind of space it has. The two modules keep
+    the same names on purpose.
+    """
+    from .spaces import host_genes as _HOST_GENES
+    if name in HOST_PROTEIN_SPECIES:
+        return _HOST_PROTEINS, HOST_PROTEIN_SPECIES[name]["code"]
+    if name in HOST_GENE_SPECIES:
+        return _HOST_GENES, HOST_GENE_SPECIES[name]["code"]
+    return None, ""
+
+
+def _load_host_genes(code: str, lens: str = ""):
+    """Node table and one lens layout of an installed host gene pack (instruction 53, route 1).
+
+    The lens is the layout, and the layout is the claim the map makes, so it is chosen here rather
+    than inherited: `tissue` or `parasite_facing`, the same two the host protein spaces offer.
+    `host_genes.load` refuses a layout whose recorded table is not the table on disk.
+    """
+    from .spaces import host_genes as _HOST_GENES
+    nodes, xyz, meta = _HOST_GENES.load(code, lens)
+    return nodes, xyz, meta
 
 
 def available_species() -> list:
@@ -401,7 +422,7 @@ def load(species: str = DEFAULT_SPECIES, lens: str = ""):
         nodes, xyz, _meta = _HOST_PROTEINS.load(HOST_PROTEIN_SPECIES[species]["code"], lens)
         return nodes, xyz, {}, pd.DataFrame()
     if species in HOST_GENE_SPECIES:
-        nodes, xyz = _load_host_genes(HOST_GENE_SPECIES[species]["code"])
+        nodes, xyz, _meta = _load_host_genes(HOST_GENE_SPECIES[species]["code"], lens)
         return nodes, xyz, {}, pd.DataFrame()
     where = SPECIES.get(species) or SPECIES[DEFAULT_SPECIES]
     npz, pq = os.path.join(DATA, where["graph"]), os.path.join(DATA, where["nodes"])
@@ -911,17 +932,26 @@ class Window(QtWidgets.QMainWindow):
         stored = str(self.settings().value("data/species", DEFAULT_SPECIES) or DEFAULT_SPECIES)
         offered = available_species() or [DEFAULT_SPECIES]
         self.species = species or (stored if stored in offered else offered[0])
-        if self.species in HOST_PROTEIN_SPECIES:
-            code = HOST_PROTEIN_SPECIES[self.species]["code"]
-            self.lens = lens or next(iter(_HOST_PROTEINS.LENSES[code]))
-        else:
-            self.lens = ""
+        module, code = host_lens_module(self.species)
+        self.lens = (lens or next(iter(module.LENSES[code]))) if module is not None else ""
+        #: What the lens that placed this map was built from, and what it recorded about itself.
+        #: Read by the Map module, which must list the lens features for a host map rather than the
+        #: parasite measurement blocks, and by the colour default below.
+        self.lens_features: list = []
+        self.lens_metadata: dict = {}
+        if module is not None:
+            try:
+                meta = module.layout_metadata(module.layout_path(code, self.lens))
+                self.lens_metadata = meta
+                self.lens_features = [str(f) for f in meta.get("features", ())]
+            except (FileNotFoundError, KeyError, ValueError):
+                pass
         self.nodes, self.xyz, self.edges, self.models = load(self.species, self.lens)
         self.n = len(self.nodes)
         self.sel = None
         self.setWindowTitle(f"parascape — {self.species} knowledge map"
-                            + (f", laid out {_HOST_PROTEINS.LENS_NAMES.get(self.lens, self.lens)}"
-                               if self.lens else ""))
+                            + (f", laid out {module.LENS_NAMES.get(self.lens, self.lens)}"
+                               if self.lens and module is not None else ""))
         self.setWindowIcon(QtGui.QIcon(os.path.join(os.path.dirname(__file__), "data", "icons", "parascape.svg")))
         # Was a flat resize(1580, 950), which is not the reason the window used to open too large --
         # that was a 2,897 px minimum height, fixed in `analysis_panel._scrolled` -- but it did mean
@@ -997,8 +1027,11 @@ class Window(QtWidgets.QMainWindow):
         self._light_timer.timeout.connect(self._light_tick)
         self.runs = RunStore(os.path.join(paths.user_cache_dir(), "runs"))
         self.runs.load_all()
-        self.category = "compartment" if "compartment" in self.categories else self.categories[0]
-        comps = sorted(as_text(self.nodes[self.category]).unique())
+        self.category = self._default_category()
+        # Through `category_values`, not `nodes[self.category]`: the default colour of a host map is
+        # a BINNED quantity, which is a colour source and not a column. Reading it as a column name
+        # raised a KeyError the moment the host default stopped being a plain category.
+        comps = sorted(self.category_values().unique())
         absent = {str(x).lower() for x in ABSENCE}
         self.comps = ([c for c in comps if c.lower() not in absent]
                       + [c for c in comps if c.lower() in absent])
@@ -1880,17 +1913,29 @@ class Window(QtWidgets.QMainWindow):
             hosts = [e for e in space_catalogue.catalogue() if e.code in space_catalogue.HOST_PACK_SPACES]
         except Exception:
             hosts = []
+        self._species_menu = species
+        self._host_entry_notes = {}
+        #: (space code, lens) -> the menu entry that opens it. One dictionary for both kinds of host
+        #: space; `host_protein_actions` stays as the protein half of it.
+        self.host_lens_actions = {}
+        self.host_protein_actions = {}
         for entry in hosts:
-            act = species.addAction(space_catalogue.describe(entry).split(". ")[0])
-            act.setToolTip("Host gene space. " + space_catalogue.describe(entry)
-                           + (". Click to install it, checked against its published SHA256."
-                              if entry.state == "installable" else ""))
             opens = next((n for n, w in HOST_GENE_SPECIES.items() if w["code"] == entry.code), None)
-            if entry.state == "installed" and opens:
+            self._host_entry_notes[entry.code] = space_catalogue.describe(entry)
+            if entry.state == "installed" and opens and _HOST_GENES.lenses(entry.code):
+                # Installed and carrying its lens layouts, so it opens as a map through one of them,
+                # exactly as a host protein space does. Before route 1 this was a single entry with
+                # no choice of layout, and the layout it opened had no recorded recipe.
+                sub = self._host_lens_menu(species, _HOST_GENES, entry.code, opens, "host genes")
+                sub.setTitle(space_catalogue.describe(entry).split(". ")[0])
+                act = sub.menuAction()
                 act.setToolTip("Host gene space. " + space_catalogue.describe(entry)
-                               + ". Click to open its map in a window of its own.")
-                act.triggered.connect(lambda _c=False, n=opens: self.open_species(n))
+                               + ". Choose a lens to open its map in a window of its own.")
             else:
+                act = species.addAction(space_catalogue.describe(entry).split(". ")[0])
+                act.setToolTip("Host gene space. " + space_catalogue.describe(entry)
+                               + (". Click to install it, checked against its published SHA256."
+                                  if entry.state == "installable" else ""))
                 act.setEnabled(entry.state == "installable")
                 act.triggered.connect(lambda _c=False, code=entry.code: self.install_host_space(code))
             self.host_space_actions[entry.code] = act
@@ -1898,40 +1943,27 @@ class Window(QtWidgets.QMainWindow):
         # UniProt accessions, each opened through a lens -- a layout that claims what makes two host
         # proteins similar. A lens the builder refused is shown disabled with its reason, not hidden.
         species.addSeparator()
-        self.host_protein_actions = {}
         for code, space in _HOST_PROTEINS.SPACES.items():
-            built = _HOST_PROTEINS.lenses(code)
-            sub = species.addMenu(space.species)
-            sub.setToolTipsVisible(True)
+            sub = self._host_lens_menu(species, _HOST_PROTEINS, code, space.species,
+                                       "host proteins")
             sub.menuAction().setToolTip(
                 "Host proteins, keyed on UniProt accessions: the table behind the host links, opened as "
                 "a map of its own. Separate from the host gene space above, because a protein is not a "
                 "gene and mapping one onto the other inherits every ambiguity between them.")
-            for lens in list(_HOST_PROTEINS.LENSES.get(code, {})) + [
-                    l for (c, l) in _HOST_PROTEINS.REFUSED if c == code]:
-                act = sub.addAction(f"Laid out {_HOST_PROTEINS.LENS_NAMES.get(lens, lens)}")
-                refused = _HOST_PROTEINS.REFUSED.get((code, lens))
-                if refused:
-                    act.setEnabled(False)
-                    act.setToolTip("Not built: " + refused + ".")
-                elif lens not in built:
-                    act.setEnabled(False)
-                    act.setToolTip("Its table or layout is not in this data directory.")
-                else:
-                    act.setCheckable(True)
-                    act.setChecked(self.species == space.species and self.lens == lens)
-                    act.setToolTip(
-                        "Places host proteins near each other when they are "
-                        + ("expressed in the same tissues and cell types."
-                           if lens == "tissue" else
-                           "alike in how they respond to infection and in what the parasite does to "
-                           "them (vacuole enrichment, response to infection, rhoptry discharge, "
-                           "the red cell surface).")
-                        + " Proteins with no value in this lens keep a place, so the map is not only "
-                          "of what has been studied.")
-                    act.triggered.connect(lambda _c=False, n=space.species, l=lens:
-                                          self.open_species(n, lens=l))
-                self.host_protein_actions[(code, lens)] = act
+        # Carrying a selection between the two kinds of host space (instruction 53, route 1).
+        # Offered only in a host window, because only there is there another space to carry to.
+        if species_code(self.species) in (set(host_links_codes()[0]) | set(host_links_codes()[1])):
+            species.addSeparator()
+            to_genes = species_code(self.species) in host_links_codes()[0]
+            act = species.addAction("Carry the selection to its "
+                                    + ("genes" if to_genes else "host proteins") + "…")
+            act.setToolTip(
+                "Open the other kind of host space with everything this selection names: every "
+                + ("gene any selected protein names" if to_genes
+                   else "protein any selected gene names")
+                + ". A union, never one chosen partner -- the link is many-to-many, so choosing "
+                  "one would be an invented fact. What named nothing is counted and reported.")
+            act.triggered.connect(lambda _c=False: self.carry_selection())
         f.addSeparator()
         a = f.addAction("Preferences…")
         a.setShortcut("Ctrl+,")
@@ -3404,6 +3436,101 @@ class Window(QtWidgets.QMainWindow):
         self._question_scoreboard.show()
         return self._question_scoreboard
 
+    def host_selection(self) -> list:
+        """The host ids this window has selected: the gated set if there is one, else the picked row."""
+        if self.gated is not None and len(self.gated):
+            rows = np.asarray(self.gated, dtype=int)
+        elif self.sel is not None:
+            rows = np.asarray([int(self.sel)], dtype=int)
+        else:
+            return []
+        return [str(v) for v in self.nodes["gene_id"].iloc[rows].tolist()]
+
+    def carry_selection(self):
+        """Carry this host window's selection to the other kind of host space (instruction 53).
+
+        Every gene any selected protein names is carried, and every protein any selected gene names:
+        a union, never one chosen partner, because the link is many-to-many in human (one protein
+        reaches up to 24 genes, one gene up to 5 proteins) and picking one would put an invented
+        fact on screen. An endpoint that names nothing carries nothing and is counted. The rule and
+        the measured fan-out are in `host_links`.
+
+        Returns the window the carried selection landed in, or this window when nothing carried.
+        """
+        from . import host_links
+        selected = self.host_selection()
+        if not selected:
+            self.statusBar().showMessage(
+                "Nothing selected: pick a row or gate a set first, then carry it across.", 8000)
+            return self
+        code = species_code(self.species)
+        try:
+            if code in host_links.GENE_OF_PROTEIN:
+                gene_code = host_links.GENE_OF_PROTEIN[code]
+                carried = host_links.genes_of(gene_code, selected)
+                target = next(n for n, w in HOST_GENE_SPECIES.items() if w["code"] == gene_code)
+            elif code in host_links.PROTEIN_OF_GENE:
+                carried = host_links.proteins_of(code, selected)
+                protein_code = host_links.PROTEIN_OF_GENE[code]
+                target = next(n for n, w in HOST_PROTEIN_SPECIES.items()
+                              if w["code"] == protein_code)
+            else:
+                self.statusBar().showMessage(
+                    "Only a host protein or host gene window has a space to carry a selection to.",
+                    8000)
+                return self
+        except (FileNotFoundError, KeyError, ValueError) as error:
+            self.statusBar().showMessage(f"The selection did not carry: {error}", 10000)
+            return self
+        if not carried.ids:
+            self.statusBar().showMessage(carried.summary(), 10000)
+            return self
+        other = self.open_species(target)
+        rows = other.nodes.index[other.nodes["gene_id"].astype(str).isin(set(carried.ids))]
+        other.on_gated(np.asarray(rows, dtype=int))
+        other.statusBar().showMessage(carried.summary(), 15000)
+        return other
+
+    def _host_lens_menu(self, menu, module, code: str, species_name: str, noun: str):
+        """One submenu for a host space, with an entry per lens; a refused lens is listed, disabled.
+
+        Written once for both kinds of host space (instruction 53, route 1). The protein spaces had
+        this menu and the gene spaces had a single entry with no choice of layout, so the same two
+        claims were offered in two different shapes. A lens the builder refused stays visible with
+        its reason: a menu that is simply shorter does not tell anybody a map was not built.
+        """
+        sub = menu.addMenu(species_name)
+        sub.setToolTipsVisible(True)
+        built = module.lenses(code)
+        refused_here = [lens for (c, lens) in module.REFUSED if c == code]
+        for lens in list(module.LENSES.get(code, {})) + refused_here:
+            act = sub.addAction(f"Laid out {module.LENS_NAMES.get(lens, lens)}")
+            refused = module.REFUSED.get((code, lens))
+            if refused:
+                act.setEnabled(False)
+                act.setToolTip("Not built: " + refused + ".")
+            elif lens not in built:
+                act.setEnabled(False)
+                act.setToolTip("Its table or layout is not installed here.")
+            else:
+                act.setCheckable(True)
+                act.setChecked(self.species == species_name and self.lens == lens)
+                act.setToolTip(
+                    f"Places {noun} near each other when they are "
+                    + ("expressed in the same tissues and cell types."
+                       if lens == "tissue" else
+                       "alike in how they respond to infection and in what the parasite does to "
+                       "them (the response of a tissue or a cell to infection, vacuole enrichment, "
+                       "rhoptry discharge, the red cell surface).")
+                    + f" {noun.capitalize()} with no value in this lens keep a place, so the map is "
+                      "not only of what has been studied.")
+                act.triggered.connect(lambda _c=False, n=species_name, l=lens:
+                                      self.open_species(n, lens=l))
+            self.host_lens_actions[(code, lens)] = act
+            if code in _HOST_PROTEINS.SPACES:
+                self.host_protein_actions[(code, lens)] = act
+        return sub
+
     def install_host_space(self, code: str) -> str:
         """Install a host gene pack from this checkout (checked against its SHA256); returns its folder."""
         from . import space_catalogue
@@ -3414,12 +3541,30 @@ class Window(QtWidgets.QMainWindow):
             return ""
         entry = next(e for e in space_catalogue.catalogue() if e.code == code)
         act = getattr(self, "host_space_actions", {}).get(code)
-        if act is not None:
+        opens = next((n for n, w in HOST_GENE_SPECIES.items() if w["code"] == code), None)
+        if act is not None and opens and _HOST_GENES.lenses(code):
+            # Installed now and carrying its lens layouts, so the install entry becomes a submenu
+            # with one entry per lens -- the same shape as a space that was already installed when
+            # the menu was built. Replaced rather than reconnected: one entry cannot offer two
+            # layouts, and quietly opening whichever lens came first is the choice this item removed.
+            menu = getattr(self, "_species_menu", None)
+            if menu is not None:
+                sub = self._host_lens_menu(menu, _HOST_GENES, code, opens, "host genes")
+                sub.setTitle(space_catalogue.describe(entry).split(". ")[0])
+                tip = ("Host gene space. " + space_catalogue.describe(entry)
+                       + ". Choose a lens to open its map in a window of its own.")
+                sub.menuAction().setToolTip(tip)
+                # Set here as well as in the menu-wide pass, which ran before this entry existed.
+                # The status line is where the state is spelled out, and an installed pack that
+                # stopped saying "not calibrated" would read as one that had been calibrated.
+                sub.menuAction().setStatusTip(" ".join(tip.split()))
+                menu.insertMenu(act, sub)
+                menu.removeAction(act)
+                self.host_space_actions[code] = sub.menuAction()
+        elif act is not None:
             act.setText(space_catalogue.describe(entry).split(". ")[0])
-            opens = next((n for n, w in HOST_GENE_SPECIES.items() if w["code"] == code), None)
             act.setEnabled(bool(opens))
             if opens:
-                # Installed now, so the same entry opens its map rather than installing again.
                 act.triggered.disconnect()
                 act.triggered.connect(lambda _c=False, n=opens: self.open_species(n))
                 act.setToolTip("Host gene space. " + space_catalogue.describe(entry)
@@ -3436,11 +3581,8 @@ class Window(QtWidgets.QMainWindow):
         too, and the choice is not remembered, so the program still starts on a parasite map.
         """
         if name in HOST_GENE_SPECIES or name in HOST_PROTEIN_SPECIES:
-            if name in HOST_PROTEIN_SPECIES:
-                code = HOST_PROTEIN_SPECIES[name]["code"]
-                lens = lens or next(iter(_HOST_PROTEINS.LENSES[code]))
-            else:
-                lens = ""
+            module, code = host_lens_module(name)
+            lens = lens or next(iter(module.LENSES[code]))
             if name == self.species and lens == self.lens:
                 return self
             other = Window(species=name, lens=lens)
@@ -4042,8 +4184,11 @@ class Window(QtWidgets.QMainWindow):
             "bins, which is what makes a measurement comparable with a clustering. Localization is "
             "the worst-recovered property in this map, so it is a poor thing to be the only way in.")
         self.category_box.addItems(self.color_sources())
-        if "compartment" in self.categories:
-            self.category_box.setCurrentText("compartment")
+        # Whatever the constructor chose, not "compartment or whatever is first in the list". The
+        # two disagreed on a host map: the window coloured by the binned lens measurement and this
+        # control said `human_ortholog_type`, so the panel named a colour the map was not using.
+        if self.category_box.findText(self.category) >= 0:
+            self.category_box.setCurrentText(self.category)
         self.category_box.currentTextChanged.connect(self.on_category_changed)
         L.addWidget(self.category_box)
 
@@ -4259,6 +4404,32 @@ class Window(QtWidgets.QMainWindow):
         return d
 
     # ------------------------------------------------------------------ drawing
+    def _default_category(self) -> str:
+        """What the map is coloured by before anybody chooses (instruction 53, the third host gap).
+
+        For a parasite arm this is `compartment`, the historical default and what most people arrive
+        looking for.
+
+        For a HOST map it used to be `self.categories[0]`, which on the human protein table is
+        `rbc_surface_found_senegal` -- a flag from one field study of the red cell surface, true for
+        a few hundred rows out of 21,020. A first view where almost everything is one colour says
+        nothing about the map, and reads as though that column were the point of it. A host table
+        has few categories and many quantities, so the default is instead the first MEASUREMENT THE
+        LENS USED, binned: it colours the map by something the arrangement is actually made of, and
+        the reader can see at once which way the gradient runs.
+        """
+        if "compartment" in self.categories:
+            return "compartment"
+        usable = [f for f in self.lens_features if f in self.numerics]
+        if usable:
+            # Of the measurements the lens used, the one that distinguishes the most genes. Taking
+            # the first instead gave the human tissue map `gtex_adipose_subcutaneous_median_tpm`,
+            # where 35,393 of 58,988 genes share the value zero and the first view is three bins,
+            # most of them one colour. "Most distinct values" is a stated rule, not a taste, and it
+            # lands on a column with a gradient to read.
+            return BIN_PREFIX + max(usable, key=lambda c: self.nodes[c].nunique(dropna=True))
+        return self.categories[0] if self.categories else BIN_PREFIX + self.numerics[0]
+
     def color_sources(self) -> list:
         """Everything the map can be colored by, in one list: columns, runs, binned quantities.
 
@@ -4286,8 +4457,12 @@ class Window(QtWidgets.QMainWindow):
             col = src[len(BIN_PREFIX):]
             if col not in self.nodes.columns:
                 return pd.Series([""] * self.n, dtype=object)
+            # `self.status` does not exist yet while the constructor is choosing the first colour,
+            # and binning a tied column has something to say right then ("fewer bins than asked").
+            # Reported where there is a status bar, dropped where there is not, never raised.
+            bar = getattr(self, "status", None)
             return bin_column(self.nodes[col], self.bins,
-                              log=lambda m: self.status.showMessage(f"{col}: {m}"))
+                              log=lambda m: bar.showMessage(f"{col}: {m}") if bar else None)
         if src not in self.nodes.columns:
             return pd.Series([""] * self.n, dtype=object)
         return as_text(self.nodes[src])

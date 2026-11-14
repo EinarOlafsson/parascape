@@ -1,0 +1,58 @@
+{
+ "Hs": {
+  "version": "2026.11.13",
+  "sha256": "217dd8f4695850ddf118b88fec374f5b49922607343f88244635e90483f4ad22",
+  "bytes": 18943521,
+  "genes": 58988,
+  "columns": 130,
+  "cited_columns": [
+   "ch_enterocyte_log2fc",
+   "ch_enterocyte_second_log2fc",
+   "cp_enterocyte_10h_log2fc",
+   "cp_enterocyte_48h_log2fc",
+   "pf_erythroblast_basophilic_log2fc",
+   "pf_erythroblast_orthochromatic_log2fc",
+   "pv_blood_asymptomatic_log2fc",
+   "pv_blood_symptomatic_log2fc",
+   "tg_cytotrophoblast_log2fc",
+   "tg_mueller_glia_ghpt_log2fc",
+   "tg_mueller_glia_gt1_log2fc",
+   "tg_syncytiotrophoblast_log2fc"
+  ],
+  "files": [
+   "NOTICE.txt",
+   "column_metadata.json",
+   "hs_gene_graph_parasite_facing.npz",
+   "hs_gene_graph_tissue.npz",
+   "hs_gene_nodes.parquet",
+   "hs_protein_gene_links.parquet"
+  ]
+ },
+ "Mm": {
+  "version": "2026.11.13",
+  "sha256": "067c58143e887982688b8b077c7054a2d303239903676c0daf1393daff8a9055",
+  "bytes": 3762471,
+  "genes": 18428,
+  "columns": 61,
+  "cited_columns": [
+   "cp_ileum_a_log2fc",
+   "cp_ileum_b_log2fc",
+   "pb_brain_cerebral_malaria_log2fc",
+   "py_liver_log2fc",
+   "tg_blood_log2fc",
+   "tg_bmdm_log2fc",
+   "tg_chronic_28d_log2fc",
+   "tg_liver_log2fc",
+   "tg_lung_log2fc",
+   "tg_spleen_log2fc"
+  ],
+  "files": [
+   "NOTICE.txt",
+   "column_metadata.json",
+   "mm_gene_graph_parasite_facing.npz",
+   "mm_gene_graph_tissue.npz",
+   "mm_gene_nodes.parquet",
+   "mm_protein_gene_links.parquet"
+  ]
+ }
+}

@@ -1,6 +1,6 @@
 # 53 · One space per organism, then links between pathogen, vector and host
 
-**Status: open (designed 2026-09-26). 2026-11-08: WP0, WP1, WP2 and WP8 done, WP3 (Hs, Mm) done to its acceptance, WP6 has Cp and Pb, WP7/WP9 partly; rat, cat and vectors (WP4-5) not started -- they need data acquisition, much of it behind the VEuPathDB login (item 38).**
+**Status: open (designed 2026-09-26). 2026-11-13: WP0-WP8 done; WP9 done for both kinds of host space -- the host protein spaces (route 2) and the host gene spaces with their two lenses, the protein-gene link rule and the Map module fixes (route 1). What is left is publishing the packs, which is the Hugging Face hosting move on branch `data-on-huggingface`, and the open items at the end of this file.**
 
 Crash recovery: all implementation commits through `05650fd` survived and were pushed. The 45
 focused recovery checks passed. Documentation CI passed; test CI had 4,138 passes and one stale
@@ -833,3 +833,171 @@ cat) is still disabled once installed. Full suite on the rebased branch: 7,569 p
   The gene and protein packs therefore go to a Hugging Face dataset, not to GitHub release assets, and the
   downloader reads from there. The 0.0.11.x data release already being published to GitHub on this date
   finishes as planned; the move follows it.
+
+## 2026-11-13: route 1 built -- the host gene spaces get two lenses, a link rule and their own Map
+
+Einar answered "both", and route 2 shipped earlier the same day. This is route 1. `HUMAN_SPACE`
+(58,988 ENSG) and `MOUSE_SPACE` (18,428 ENSMUSG) now open as maps through the same two lenses the
+protein spaces offer, a selection carries between the two kinds of host space, and the three gaps
+this file listed at the end of the route 2 section are closed.
+
+### 1. The gene layouts, built the same two ways as the protein lenses
+
+`scripts/build_host_gene_lenses.py` -> `results/host_gene_lenses_2026_11_13/`. Everything comes
+from the raw deposits already under `STARPLAST_DATA/spaces`. **Nothing was downloaded.**
+
+| space | lens | features | genes with at least one value |
+|---|---|---:|---|
+| Hs | tissue | 108 | 58,988 of 58,988 (100.0 per cent) |
+| Hs | parasite_facing | 12 | 58,988 of 58,988 (100.0 per cent) |
+| Mm | tissue | 41 | 18,228 of 18,428 (98.9 per cent) |
+| **Mm** | **parasite_facing** | **10** | **18,378 of 18,428 (99.7 per cent)** |
+
+* **tissue** is GTEx v10 tissue medians plus Human Protein Atlas v25.1 single-cell types for human,
+  and Bgee 15.2 expression scores per anatomical entity for mouse. Both are capped by the same
+  rule -- the entities or cell types measured in the most genes, forty of them -- rather than by a
+  curated list, because a curated list would be a second claim sitting on top of the lens and
+  nothing in the files says which forty a reader would have picked. Every GTEx tissue is kept.
+* **parasite_facing** is one log2 contrast per arm of twelve human and ten mouse infection series:
+  Toxoplasma (retinal Mueller glia GSE145836, trophoblasts GSE263615, four mouse tissues GSE119855,
+  macrophages GSE103113, chronic infection GSE117504), Plasmodium (erythroblasts GSE233739, vivax
+  blood GSE273483, cerebral malaria brain GSE162535, liver stage GSE44831) and Cryptosporidium
+  (enterocytes GSE241570, GSE241571, GSE185247, mouse intestine GSE168680).
+* **The mouse parasite-facing lens is built here although it was REFUSED for the protein table.**
+  The protein table carries one such measurement and 147 of 16,473 proteins have a value; the gene
+  table carries ten and 18,378 of 18,428 genes do. `MINIMUM_MEASURED` is unchanged at a tenth. The
+  earlier refusal was right about that table and is not a fact about the mouse.
+* **Every gene keeps a position in both lenses**, as on the protein side.
+
+**A symbol that names several genes is dropped, not resolved.** 93,529 human symbols and 55,508
+mouse symbols name exactly one gene in the universe; 2,160 and 1,011 name several and are left out
+rather than attached to whichever gene came first.
+
+### 2. The protein-to-gene link, and the rule for carrying a selection
+
+`parascape/host_links.py`. Measured on the link tables in the packs:
+
+| | human | mouse |
+|---|---:|---:|
+| proteins | 20,989 | 15,590 |
+| proteins reaching several genes (most) | 1,572 (24) | 0 |
+| genes reached by several proteins (most) | 145 (5) | 0 |
+| proteins reaching no reviewed gene | 1,703 | 1,151 |
+
+So the link is many-to-many both ways in human and one-to-one where it exists in mouse. **A rule
+written against the mouse table would look correct and be wrong in human**, which is why it is
+written once and both directions are tested. The rule:
+
+1. A selection carries as the **union** of everything it names. Nothing is resolved to a single
+   best partner: choosing one of 24 genes for a protein would put an invented fact on screen and
+   nothing would say it had happened.
+2. An endpoint that names nothing **carries nothing and is counted**, never dropped in silence.
+3. **Nothing numeric travels.** Carrying moves which rows are selected and no values at all. A
+   measurement spread over a one-to-many link would be a measurement of the link.
+4. **Carrying is not invertible, and the result says so.** One protein out and back returns five,
+   because the gene in the middle is named by five.
+5. The two spaces stay separate windows; the tables are never merged.
+
+File ▸ Species gains one entry per direction, and `Window.carry_selection` opens the other space
+with the carried rows gated and the count line on its status bar.
+
+### 3. The three Map gaps, closed for BOTH kinds of host space
+
+* **"What makes genes similar"** lists the measurements the shipped layout records, read out of the
+  layout file so the list cannot drift from the arrangement on screen. It used to list parasite
+  measurement blocks, not one of which had placed a point on a human map.
+* **"Build this map"** and **"Find the best map"** are disabled with the reason, and the preview
+  checkbox with them: both would have rebuilt a host map from measurement blocks a host table does
+  not carry. Another lens is a menu entry, not a rebuild.
+* **The default colour** is the lens measurement that distinguishes the most genes, binned. It was
+  the first category column -- `rbc_surface_found_senegal` for human proteins, a field-study flag
+  true for a few hundred rows out of 21,020. Taking merely the FIRST lens feature was not enough
+  either: on the human tissue map that is adipose tissue, where 35,393 of 58,988 genes share the
+  value zero and the first view is three bins of nearly one colour.
+
+Rendered in the REAL Window (Map module, offscreen) and looked at, for mouse genes by both lenses,
+human genes by both, and human proteins by tissue. The screenshots show the lens features listed,
+both build actions greyed out, and the colour control naming the binned lens measurement the map is
+actually drawn by: `gtex_testis_median_tpm` for human genes (testis-specific genes sit apart),
+`tg_chronic_28d_log2fc` for mouse genes, `hepatocyte_tpm` for human proteins.
+
+### 4. GEO columns ship, with citation (Einar, 2026-11-13)
+
+`packs.build` accepted only `O` and `SA`. It now takes a third code, **`G` -- a public deposit,
+redistributed with its accession and the paper named** -- and accepts it ONLY when both are
+recorded (`column_sources`). The check is in the manifest reader, not only in the builder, because
+the manifest is what an installed pack is read back from. `V` and `X` stay refused.
+
+`scripts/build_host_gene_packs.py` -> `results/host_gene_packs_2026_11_13/`, version 2026.11.13:
+
+| pack | genes | columns | cited deposit columns | size |
+|---|---:|---:|---:|---:|
+| Hs | 58,988 | 130 | 12 | 19.5 MB |
+| Mm | 18,428 | 61 | 10 | 3.9 MB |
+
+Each `NOTICE.txt` names every `G` column with its accession and its paper. The 2026-11-07 tables are
+the baseline, so `validate_nodes` refused the build if any gene, column or measured value of them
+were missing: the columns are added, never swapped. Both packs install from their archive and both
+lenses load from the installed copy.
+
+**Publishing them is NOT part of this.** All ParaScape data hosting is moving to Hugging Face on
+branch `data-on-huggingface` (Einar, same day). These archives sit in `results/` with their SHA256,
+where `space_catalogue` finds them for a local install; pointing the downloader at a published URL
+is left to that work, deliberately, so the two do not collide.
+
+**The two archives are deliberately NOT in git**, only their SHA256 and `packs.json`. The Hugging
+Face move (instruction 99) shipped on the same day and deleted 1,205 component assets from GitHub
+for exactly this reason; adding 23 MB of new ones beside it would undo what it was for.
+`results/host_gene_packs_2026_11_13/README.md` says how to rebuild them -- about an hour for the
+lenses, seconds for the packs -- and what the hosting work has to do: upload both to the
+`parascape-data` dataset and point `space_catalogue` at that URL with the recorded SHA256.
+
+**So both gene spaces are installable only in a checkout that has built them**, and every test that
+needs one skips with that reason rather than failing. That includes the route 2 test written
+yesterday, which installed whatever archive was newest: the 2026-11-07 archives have no lens
+layout, and an entry that cannot open a map must stay an entry that says so.
+
+### Four faults this found, three of them in code that was already shipped
+
+* **`space_catalogue.local_archives` sorted packs by PATH.** `mouse_gene_space_2026_11_07` beat
+  `host_gene_packs_2026_11_13` because an `m` sorts after an `h`, so the newest pack would have been
+  installed only by accident of its folder name. It sorts by the version in the file name now.
+* **`Window.__init__` read its colour source as `nodes[self.category]`.** That worked only while
+  every default was a plain column; the moment one was a binned quantity it raised a KeyError. And
+  the colour-by control set itself to "compartment or whatever is first", so on a host map the
+  panel named a colour the map was not using. Both go through the colour source now.
+* **`bin_column` logs through `self.status`, which does not exist while the constructor runs.**
+  Binning a tied column has something to say exactly then. Reported where there is a status bar,
+  dropped where there is not, never raised.
+* **GSE44831 is cuffdiff output and writes `inf` for a fold change whose other arm was zero.** Left
+  in, it reached the layout as a float32 infinity, UMAP refused the matrix, the harness fell back to
+  PCA, and PCA failed on the same values -- three steps from the one column that caused it. An
+  infinite ratio is now **missing**: the direction is known and the size is not.
+
+### The seed is gone from the host gene layouts, and that is a correction
+
+umap-learn overrides `n_jobs` to 1 whenever a seed is set, so a seeded run optimises the layout on
+ONE core. The human tissue lens was still in that phase after **two and a half hours** on this
+machine; without the seed it finished in about 17 minutes. And the seed was never buying the thing
+it costs: this file already records that two rebuilds of the SAME lens from the SAME table differ by
+up to 97 units even inside one process. Paying hours for a promise the library does not keep is the
+worse trade. What ties a layout to its data is the SHA-256 pair recorded in the file, and the
+shipped file is the artefact.
+
+### What route 1 still needs
+
+1. **A published download**, which is the Hugging Face move on `data-on-huggingface`. Until it
+   lands, a user of the released program still sees both packs as unavailable.
+2. **The Cryptosporidium human columns are thin**: 22 per cent of human genes carry them, because
+   those series report gene symbols and an enterocyte series quantifies about 13,000 genes. They are
+   kept rather than dropped, and the share is recorded here.
+3. **No edge layers for any host space.** None has been built, and drawing the parasite ones over
+   host genes would be meaningless, so a host map has points and no edges.
+4. **Rat and cat have no lens**, so they stay install-only. They carry Bgee expression already, so
+   a tissue lens is the same builder with two more entries in `LENSES`; neither has a
+   parasite-facing measurement on disk.
+5. **The link rule is not yet a dock.** It is a menu entry and a window method; the Phase 2 "linked
+   spaces" dock that keeps both windows in step is still unbuilt.
+
+Tests: `tests/test_host_gene_spaces.py` (29) over the licence class, the link rule in both
+directions, both lenses of both spaces, the SHA-256 tie, and the three Map fixes in the real Window.

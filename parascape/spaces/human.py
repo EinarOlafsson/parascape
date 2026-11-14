@@ -22,9 +22,12 @@ SOURCE_GENE = re.compile(r'(ENSG\d{11})\.(\d+)(_PAR_Y)?')
 PROTEIN = re.compile(r'(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})')
 FIELDS = {'Cells_Cultured_fibroblasts':'gtex_fibroblast_median_tpm',
           'Liver_Hepatocyte':'gtex_lcm_hepatocyte_median_tpm'}
+# The DEFAULT layout is the tissue lens (instruction 53, route 1). The 2026.11.07 pack
+# shipped `hs_gene_graph.npz`, whose recipe was not recorded beside it; each lens layout
+# records its features, its recipe and the SHA-256 of the table it was built from.
 HUMAN_SPACE = O.Space(O.HUMAN,'Homo sapiens','GTEx v10 / GENCODE 39 / GRCh38',O.HOST,
     r'ENSG\d{11}',('ENSG',),'Ensembl','https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={id}',
-    'hs_gene_nodes.parquet',graph='hs_gene_graph.npz',contexts=frozenset(FIELDS),
+    'hs_gene_nodes.parquet',graph='hs_gene_graph_tissue.npz',contexts=frozenset(FIELDS),
     numbers=tuple(FIELDS.values()),distribution='pack')
 
 
