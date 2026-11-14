@@ -24,8 +24,16 @@ GENES = {"Hs": 58_988, "Mm": 18_428}
 
 @pytest.fixture(scope="module")
 def installed(tmp_path_factory):
-    """Install whichever host gene packs this checkout holds, into a state directory of their own."""
+    """Install whichever host gene packs this checkout holds, into a state directory of their own.
+
+    The suite's own `PARASCAPE_STATE` is PUT BACK afterwards, not deleted. `conftest` points it at a
+    temporary directory so that no test writes into the saved runs of whoever is running them, and
+    removing it here left every later test writing into `~/.cache/parascape` instead -- which is
+    exactly what `test_the_user_s_saved_runs_are_isolated_from_the_suite` exists to catch, and it
+    did.
+    """
     from parascape import space_catalogue as SC
+    before = os.environ.get("PARASCAPE_STATE")
     state = tmp_path_factory.mktemp("packs")
     os.environ["PARASCAPE_STATE"] = str(state)
     have = []
@@ -34,7 +42,10 @@ def installed(tmp_path_factory):
             SC.install(code)
             have.append(code)
     yield have
-    os.environ.pop("PARASCAPE_STATE", None)
+    if before is None:
+        os.environ.pop("PARASCAPE_STATE", None)
+    else:
+        os.environ["PARASCAPE_STATE"] = before
 
 
 def _need(code, installed):

@@ -293,6 +293,10 @@ class MapModule(QtCore.QObject):
         #: Three controls read differently in the two cases (instruction 53, route 1).
         self.host_lens = str(getattr(window, "lens", "") or "")
         self.lens_features = list(getattr(window, "lens_features", ()) or ())
+        #: The widget listing those features, or None where there is none to list: a parasite map,
+        #: and a host layout that records no features. Set here so a caller reading it never meets
+        #: an attribute that exists in one kind of window and not in the other.
+        self.lens_list = None
 
         self.shell = shell = ModuleShell.for_module("map")
         shell.module = self
