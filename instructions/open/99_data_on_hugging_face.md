@@ -21,7 +21,7 @@ STATE
     | artefact | host | size | checksum | code path |
     |---|---|---|---|---|
     | core data archive `parascape-data-0.0.12.0.tar.gz` | **Hugging Face** `einarolafsson/parascape-data` since today; GitHub release `v0.0.12.0` kept | 944.3 MB, 10,929 files | archive SHA-256 plus a SHA-256 and size for every file, in `parascape/data_manifest.json` in the wheel | `parascape/data_manager.py` -- `download()`, `install_archive()`; `parascape-data --download`; the first-launch dialog `parascape/data_download_dialog.py` |
-    | optional component packs, 1,195 of them in four kinds: `deposited_values` 574 (8.0 GB), `sparse_axes` 358 (876.6 MB), `sparse_coordinates` 180 (33.3 GB), `workbook_cells` 83 (1.1 GB) | **Hugging Face** `einarolafsson/parascape-data`, under `components/`, since today; the GitHub release assets on tags v0.0.8.0, v0.0.9.0 and v0.0.9.0-quantities-data are kept | 43.2 GB in 1,205 parts, each at most 1 GiB | per-part SHA-256 and size, whole-archive SHA-256, and a SHA-256 for every extracted file, all in the `data_components.json` that ships inside the verified core archive | `parascape/data_components.py` -- `read_index()`, `validate()`, `download()`; chosen through `parascape/component_download_dialog.py` and the resolvers `optional_sparse_data.py`, `optional_workbook_data.py`, `optional_deposited_data.py` |
+    | optional component packs, 1,195 of them in four kinds: `deposited_values` 574 (8.0 GB), `sparse_axes` 358 (876.6 MB), `sparse_coordinates` 180 (33.3 GB), `workbook_cells` 83 (1.1 GB) | **Hugging Face** `einarolafsson/parascape-data`, under `components/`, since today, and since later the same day the only host: the GitHub release assets on tags v0.0.8.0, v0.0.9.0 and v0.0.9.0-quantities-data were deleted on 2026-11-13 after every part was verified on Hugging Face | 43.2 GB in 1,205 parts, each at most 1 GiB | per-part SHA-256 and size, whole-archive SHA-256, and a SHA-256 for every extracted file, all in the `data_components.json` that ships inside the verified core archive | `parascape/data_components.py` -- `read_index()`, `validate()`, `download()`; chosen through `parascape/component_download_dialog.py` and the resolvers `optional_sparse_data.py`, `optional_workbook_data.py`, `optional_deposited_data.py` |
     | organism and host gene/protein packs (instruction 53) | nothing published yet | a pack is at most 512 MB packed, 1 GB unpacked | manifest inside the zip, with a SHA-256 for every member; the publisher's SHA-256 has to be supplied separately to `download()` | `parascape/packs.py` -- `build()`, `verify()`, `download()`, `install()`; resolved by `paths.space_file()` |
     | raw source datasets (GEO, PRIDE, ToxoDB and the rest) | their own archives | tens of GB | per-source, in the dataset registry | `scripts/download_apicomplexan_archive.py`, `parascape/datasets.py`; only `build_graph.py` needs them, and they are never fetched at run time |
     | protein structures | AlphaFold DB and the PDB | on request | none; cached by identifier | fetched when a structure is opened, cached in the user cache |
@@ -210,21 +210,86 @@ WHAT CHANGED IN THE CLIENT, SECOND PASS
     `PARASCAPE_CACHE` on the `starplast` environment now points at
     `/media/carruthers/mnt1/parascape_data/data-0.0.13.0`.
 
-    NOTHING WAS DELETED FROM GITHUB. Every core archive and every component part
-    stays published there, deliberately. Deleting them is the step that frees the
-    quota and it is a separate decision Einar has not taken.
+    At the time 0.0.13.0 shipped, NOTHING HAD BEEN DELETED FROM GITHUB. That
+    changed later the same day, below, and only for the component parts.
+
+THE COMPONENT ASSETS WERE DELETED FROM GITHUB, 2026-11-13
+
+    Einar took the decision once 0.0.13.0 had shipped and the move was measured:
+    delete the 43.2 GB of optional component pack assets from the three old
+    releases, and nothing else. Done on 2026-11-13, verify first, then delete.
+
+    What was checked before a single asset was deleted:
+
+    - The authoritative list came from `data_components.json` inside the
+      installed core data, which is byte-identical across 0.0.11.0, 0.0.12.0 and
+      0.0.13.0 (SHA-256 starts `26500763fe98`). 1,195 components, 1,205 parts,
+      1,205 distinct part names, 43.2 GB: `deposited_values` 574,
+      `sparse_axes` 358, `sparse_coordinates` 190, `workbook_cells` 83.
+    - Every one of the 1,205 parts is published on Hugging Face at
+      `components/<kind>/<part name>`, and the per-kind `SHA256SUMS` there agrees
+      with the index on all 1,205 checksums. Zero missing, zero mismatched.
+    - The size Hugging Face itself records for each of the 1,205 parts equals the
+      size the index pins. Zero mismatched.
+    - 24 parts, 6 of each kind, drawn at random and re-downloaded from Hugging
+      Face and hashed, from 0.1 MB up to the 1,073.7 MB maximum part. All 24
+      matched both the SHA-256 and the size in the index, so the stored sums are
+      true and not merely self-consistent.
+
+    What was deleted, one release at a time, smallest first, each re-counted
+    afterwards:
+
+        | tag | assets before | component parts deleted | assets left |
+        |---|---|---|---|
+        | v0.0.8.0 | 208 | 203 | 5 |
+        | v0.0.9.0 | 450 | 428 | 22 |
+        | v0.0.9.0-quantities-data | 592 | 574 | 18 |
+        | total | 1,250 | 1,205 | 45 |
+
+    No deletion failed. Release asset storage on the three tags went from
+    46.84 GB to 3.60 GB, a drop of 43.24 GB, which is the 43.2 GB the parts
+    took. The `size` GitHub reports for the repository is unchanged at
+    704,270 KB, because that number counts the git repository and never counted
+    release assets; the quota the parts filled is the release asset storage.
+
+    The 45 assets left alone are everything the index does not name, and they
+    were identified by name against the index rather than by a pattern:
+
+    - the wheel, the sdist and the core data archive on v0.0.8.0 and v0.0.9.0,
+    - two processing audit JSON files on v0.0.8.0,
+    - 40 part assets that `data_components.json` does not name: 9
+      `workbook-evidence` parts and 10 superseded `workbook_cells` parts on
+      v0.0.9.0, and 18 superseded `deposited_values` parts on
+      v0.0.9.0-quantities-data. They belong to no published component, so they
+      were never moved to Hugging Face and deleting them was not authorised.
+
+    Untouched by design: v0.0.12.0 and v0.0.13.0 and their three assets each,
+    because the release workflow reads the core data archive from the GitHub
+    release and it is the documented fallback; every release and every tag,
+    since only assets were deleted; and everything on Hugging Face.
+
+    Checked afterwards: all five releases still exist, none is a draft, all 15
+    tags including the three old ones are still there, and the assets remaining
+    on each old release are exactly the 45 named above and nothing else.
+
+    And measured, not assumed, after the deletion, in a throwaway virtual
+    environment outside any checkout with `urllib.request.urlopen` recording
+    every address requested: `parascape==0.0.13.0` installed from PyPI, the core
+    data downloaded and installed in one request to `huggingface.co`, status
+    ready with 945,869,850 bytes and `host_name()` reporting "Hugging Face", and
+    then one optional component of each of the four kinds downloaded, extracted
+    and verified ready, each from `huggingface.co` alone. GitHub was never
+    contacted. So nothing that the deletion could have broken is broken.
 
 STILL ON GITHUB
 
-    - Nothing is only on GitHub any more. The identical copy of every component
-      part stays published on tags v0.0.8.0, v0.0.9.0 and
-      v0.0.9.0-quantities-data, deliberately, because an installation of an
-      earlier ParaScape reads the address recorded in its own index. Deleting
-      those assets is what actually frees the GitHub quota, and it is safe only
-      once every installation in use builds the Hugging Face address first.
-      0.0.13.0 has now shipped, so that condition is met for anyone who
-      upgrades -- but nothing has been deleted and nothing is to be deleted
-      quietly. It is Einar's decision and he has not taken it.
+    - The component parts are GONE from GitHub as of 2026-11-13, by Einar's
+      decision, and Hugging Face is now the only host for them. An installation
+      of 0.0.12.0 or later builds the Hugging Face address first and never needs
+      the recorded one, which is why this was safe. An installation older than
+      0.0.12.0 has no Hugging Face address at all and can no longer fetch an
+      optional component; it has to upgrade. Nothing was lost: every part is
+      published, checksummed and verified at `einarolafsson/parascape-data`.
     - The identical core archive for every version, deliberately: an
       installation of 0.0.11.0 or earlier reads only its own descriptor, which
       names GitHub, and must keep working.
@@ -240,11 +305,14 @@ WHAT TO DO NEXT
        repository, with the pack SHA-256 in the application rather than supplied
        by hand. `packs.download()` already takes any https address, so it needs
        a default host and the same two settings.
-    2. Decide whether to delete the component assets from the GitHub releases.
-       0.0.13.0 shipped on 2026-11-14, so the ask is now live: it is the step
-       that frees the quota, and until Einar takes it both copies exist and the
-       fallback is what keeps an older installation working. Not to be done
-       without him.
+    2. DONE 2026-11-13. The 1,205 component assets were deleted from v0.0.8.0,
+       v0.0.9.0 and v0.0.9.0-quantities-data after every part was confirmed on
+       Hugging Face with a matching checksum; 43.24 GB of release storage freed.
+       What follows from it: `scripts/build_data_components.py` should record
+       the Hugging Face address as the primary one for a newly built part, since
+       the GitHub fallback it records now answers 404 for every published part;
+       and the first line of the component downloader error should say to
+       upgrade, for anyone running older than 0.0.12.0.
     3. Add the Hugging Face upload to the release process so a release cannot
        ship a descriptor whose primary address is empty. Until then the manual
        step is in `docs/releases.md`.
