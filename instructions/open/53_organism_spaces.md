@@ -1001,3 +1001,55 @@ shipped file is the artefact.
 
 Tests: `tests/test_host_gene_spaces.py` (29) over the licence class, the link rule in both
 directions, both lenses of both spaces, the SHA-256 tie, and the three Map fixes in the real Window.
+
+## 2026-11-14: route 1 landed on nightly, and the full suite found one fault in it
+
+The route 1 change was committed and rebased on 2026-11-13 but never got its full verification run.
+That run has now happened, on the rebased branch, with the 0.0.13.0 data release as the cache.
+
+**Full suite: 7,641 passed, 1 failed, 42 skipped, 1 hour 50 minutes.** The focused run first --
+host gene spaces, host protein spaces, organisms, packs, module contract, app menus, module shell
+and map reading -- was 371 passed and 1 skipped, all green.
+
+**The one failure was a real fault of this change, not an assertion of superseded behaviour.**
+`tests/test_host_gene_spaces.py` installs the host gene packs into a state directory of its own, and
+at teardown it REMOVED `PARASCAPE_STATE` instead of putting back the value `conftest` sets. Every
+test after it therefore wrote into `~/.cache/parascape` -- the saved runs of whoever ran the suite.
+`test_the_user_s_saved_runs_are_isolated_from_the_suite` exists for exactly that and caught it, far
+down a full run where no focused run could have. The fixture now restores the previous value. Three
+run files leaked into the user store during these runs were removed. A second, smaller fault of the
+same change: `MapModule.lens_list` was set only where the lens features are listed, so a parasite
+map and a host layout recording no features had no such attribute at all; it is set to None in the
+constructor now. After both fixes, `test_host_gene_spaces.py` and `test_logging.py` in that order:
+58 passed, and the user store took nothing.
+
+**The three Map gaps were checked by looking, not only by asserting.** The REAL Window was rendered
+offscreen for mouse genes and human genes, each by both lenses, and the screenshots read:
+
+| map | what makes genes similar | build actions | colour by |
+|---|---|---|---|
+| Mm tissue | 41 measurements, 18,228 of 18,428 genes (98.9 per cent) | both greyed out | binned: `bgee_spermatid_score` |
+| Mm parasite-facing | 10 measurements, 18,378 of 18,428 (99.7 per cent) | both greyed out | binned: `tg_chronic_28d_log2fc` |
+| Hs tissue | 108 measurements, 58,988 of 58,988 (100.0 per cent) | both greyed out | binned: `gtex_testis_median_tpm` |
+| Hs parasite-facing | 12 measurements, 58,988 of 58,988 (100.0 per cent) | both greyed out | binned: `tg_mueller_glia_gt1_log2fc` |
+
+Each box opens with "This map is a shipped layout, not one built here", names the claim of its lens
+in words, lists the measurements, and ends with "Another lens is in File ▸ Species, one entry per
+layout". The map header names the same binned measurement the colour control does.
+
+**A correction to the commit message of `44cfa514`.** Its last paragraph says the two pack archives
+are committed, 23 MB. They are not, and should not be: `results/host_gene_packs_2026_11_13/README.md`
+and the section above both say so, and the Hugging Face move exists to keep archives out of git. Only
+their SHA256 and `packs.json` are tracked. The commit message is wrong on that one point; everything
+it describes about the code is what was built.
+
+**One cosmetic thing the binned default made visible**, and it is older than this change: a bin label
+comes out of `runs.bin_column` as pandas writes it, so the mouse parasite-facing legend reads
+`(-2.2199999999999998, -0.24]`. `qcut` is asked for two decimals and raises its own precision when
+rounding would collide two edges. Nothing here is wrong, but it is the first time a host map opens on
+a binned quantity by default, so it is now the first thing a reader sees.
+
+Landed on `nightly` as `6a5603ec` (route 1 itself is `44cfa514`, its parent). What route 1 still
+needs is the list in the section above, unchanged: a published pack download, which is the Hugging
+Face work; the thin Cryptosporidium human columns, recorded; no edge layers for any host space; rat
+and cat with no lens; and the link rule still a menu entry rather than the Phase 2 linked-spaces dock.
