@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.0.13.0 — 2026-11-14
+
+### Changed
+
+- **The data is fetched from Hugging Face, with the GitHub release behind it.** Every ParaScape
+  artefact now lives in the dataset repository
+  [einarolafsson/parascape-data](https://huggingface.co/datasets/einarolafsson/parascape-data): the
+  core archive under `releases/<version>/` and all 1,205 optional component parts, 43.2 GB of them,
+  under `components/<kind>/<part>`. The client asks Hugging Face first and the GitHub release asset
+  second, so an installation keeps working while the move settles and an older installation, which
+  reads only the address inside its own descriptor, is untouched. The identical copies stay
+  published on the GitHub releases deliberately; removing them is a separate decision. This matters
+  because the optional parts alone would fill the GitHub quota, and with it the ability to publish
+  anything at all.
+- **The host is a setting, not something written into the code.** `$PARASCAPE_DATA_HOST` moves the
+  core archive, `$PARASCAPE_DATA_URL` names one exact archive, and `$PARASCAPE_COMPONENT_HOST` moves
+  every optional part at once. A download reports which host it came from, and a failure names every
+  address it tried rather than only the last. The pinned checksums are unchanged and are still
+  checked after the download and again for every extracted file, so trying a second host can never
+  widen what gets installed. An address outside the two known hosts is refused before any request is
+  made.
+- An optional component part moved to another host without a new core release: the address is built
+  from the configured host, the kind and the part name, and the address recorded inside the already
+  published index is the fallback.
+
+### Added
+
+- **The Anopheles midgut has values instead of a name.** `Pf_host transcriptome · Anopheles midgut`
+  is filled from GSE284537 as a per-sample pseudobulk of the dsGFP control arm, four replicates per
+  timepoint, counts per million within a sample and then the mean of the replicates. Host slots go
+  from 19 to 20 of 50. A pseudobulk of single-cell data is not a bulk library: a value is the average
+  of a cell mixture whose composition changes between 36 hours and 7 days, and the registry note says
+  so.
+- **Anopheles has its own gene table**, `ag_host_genes.parquet`, keyed on VectorBase AGAP gene
+  identifiers. A host table keys on the canonical identifier of its own organism and says which; the
+  human and mouse tables are untouched. 12,574 of 12,614 genes of the space carry a value (99.7 %);
+  the rest stay missing rather than zero.
+- **Host protein spaces open through their own lenses**, tissue and parasite-facing, and an installed
+  host gene pack is a live entry in the menu rather than something only the file system knows about.
+- The quantifier runs host salmon in a later pass for the three slow projects only, so a deep run is
+  not held behind a host index it does not need yet.
+
+### Data
+
+- Data release 0.0.13.0: 10,934 files, 945.9 MB. The same files as 0.0.12.0 with `slots.json`
+  replaced and five added -- the Anopheles gene table, the Anopheles midgut deposit and the three
+  host graphs the protein lenses read. An installed copy gets the Anopheles slot only from this
+  download.
+
 ## 0.0.12.0 — 2026-11-13
 
 ### Added

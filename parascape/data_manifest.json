@@ -1,6 +1,6 @@
 {
-  "asset": "parascape-data-0.0.12.0.tar.gz",
-  "fallback_url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.12.0/parascape-data-0.0.12.0.tar.gz",
+  "asset": "parascape-data-0.0.13.0.tar.gz",
+  "fallback_url": "https://github.com/EinarOlafsson/parascape/releases/download/v0.0.13.0/parascape-data-0.0.13.0.tar.gz",
   "files": {
     "af3_features.json": {
       "sha256": "f07484a81d3fd720b7ccd984b817f4cdac68ecaf87d5ec46020145a317ad39a7",
@@ -13,6 +13,10 @@
     "af3_manifest.parquet": {
       "sha256": "0d8b71808a8ab1eefc10e5ac27a09f8a1bfaf3d453caa56ffd208a391204eefa",
       "size": 375540
+    },
+    "ag_host_genes.parquet": {
+      "sha256": "b0f9264ca93e6f3aba6374fb0156dbac4d6c4328551c16aac7315c3f72b41a59",
+      "size": 410720
     },
     "antisense_level.tsv": {
       "sha256": "5546da8f13ad6760087019ddf313b933073397a7a5d0cb23cb2b00187b3d5dec",
@@ -73,6 +77,10 @@
     "deposit_gse302108_utr5.tsv": {
       "sha256": "62bd1310e2be71c612bdf01218f03721dee40a33b5a2a5db5d7e0ee88ad5f92c",
       "size": 232300
+    },
+    "deposit_host_anopheles_midgut_transcriptome.tsv": {
+      "sha256": "76df80a9a64906f81be5e79e9d4324a78970fea080cf1a38a2bff138d2669c54",
+      "size": 505289
     },
     "deposit_host_bmdm_baseline.tsv": {
       "sha256": "0a639d93beb8baab0760fabf39459bfe0585937c2f1c596b827c24a8a2798bcc",
@@ -7214,6 +7222,14 @@
       "sha256": "f379a23ab9c2dec2d4c95acf69072bdb3a3790c3e4c820743e8ea82fec7190f3",
       "size": 3801
     },
+    "hs_host_graph_parasite_facing.npz": {
+      "sha256": "33ce59d2df8ec4fec90f4a6ca168d6a7df31b5c7b43a93bb3fcc375d5ad5753b",
+      "size": 384006
+    },
+    "hs_host_graph_tissue.npz": {
+      "sha256": "3f549a48ddbb7898893a3d8b3eed7c008c523e6ecbca50ecd715cc8e43db20ad",
+      "size": 383976
+    },
     "hs_host_proteins.parquet": {
       "sha256": "0940ed9c2a0f17d42b8a70644010f387878a3adef8ea408b67bdd3dd28d5af29",
       "size": 1816867
@@ -7501,6 +7517,10 @@
     "metabolites.parquet": {
       "sha256": "5a7dbc2af492aad62a45a0e2c7090c40401a4b483db4fe4d9a45a79dadc3a9e3",
       "size": 46486
+    },
+    "mm_host_graph_tissue.npz": {
+      "sha256": "61b14f549fb0ed592b047071b7e6d54e2c8304b248e352865ccae619f5429b6b",
+      "size": 300104
     },
     "mm_host_proteins.parquet": {
       "sha256": "55710c3ba1ba33cabe393a4651004c1154373e53aed0bdb3a48f6c1ce1ecaf68",
@@ -39255,8 +39275,8 @@
       "size": 75413
     },
     "slots.json": {
-      "sha256": "a4e775ba1d870e51e68478c20408109dc344bd04a3c46051b98234c849909bf2",
-      "size": 347980
+      "sha256": "2a6aaabf4b4bc8ec21f4221e67af0652516efce7300628438107042e38756b57",
+      "size": 348118
     },
     "source_matrices/GSE102500-0ef54df34d18872d/manifest.json": {
       "sha256": "9cee515be629c3950042057b50bd4dc258e55ea5b877f8e69e9ab61f5c0cc289",
@@ -43720,8 +43740,8 @@
     }
   },
   "schema_version": 1,
-  "sha256": "6e676191021fec9a5afd8e7762ae7f5ba042de6791b4c4eb238bcd25be958fdb",
-  "size": 944323064,
-  "url": "https://huggingface.co/datasets/einarolafsson/parascape-data/resolve/main/releases/0.0.12.0/parascape-data-0.0.12.0.tar.gz",
-  "version": "0.0.12.0"
+  "sha256": "ce9a76c5ac4860a57ba908c73b968da1c76872d5af9914b58eab749bcbd7fb06",
+  "size": 945869850,
+  "url": "https://huggingface.co/datasets/einarolafsson/parascape-data/resolve/main/releases/0.0.13.0/parascape-data-0.0.13.0.tar.gz",
+  "version": "0.0.13.0"
 }
