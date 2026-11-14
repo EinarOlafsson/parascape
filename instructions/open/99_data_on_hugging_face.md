@@ -164,6 +164,56 @@ WHAT CHANGED IN THE CLIENT, SECOND PASS
     the builder the host explicitly is tidier and is left for the pass that next
     publishes a component.
 
+0.0.13.0 SHIPPED IT, 2026-11-14
+
+    The move only reaches a person through a release, so 0.0.13.0 is what makes
+    it real. Published from nightly commit `787beda5`, on PyPI as `parascape`
+    0.0.13.0 and on the GitHub release `v0.0.13.0`. CI green on the nightly head
+    it was cut from (`cd53e94e`, Tests and Documentation), and the publish
+    workflow ran its build, publish and attach jobs rather than skipping them.
+
+    The data asset WAS rebuilt, because the data had changed since 0.0.12.0:
+    `cd53e94e` filled the Anopheles midgut slot and added `ag_host_genes.parquet`
+    and the deposit behind it, and `aa526b49` added the three host graphs the
+    protein lenses read. Built by overlaying the published 0.0.12.0 asset -- the
+    repository wins the tables it is the source of, the published asset wins
+    `rnaseq/`. The audit before building found 56 tracked files differing from the
+    published asset: 53 stale `rnaseq/` mirrors (published wins) and 3 the release.
+    The result is 10,934 files and 945.9 MB against 10,929 and 944.3 MB, with five
+    files added, `slots.json` changed, none removed, and `pf_nodes.parquet` and
+    `rnaseq/snapshot.json` byte-identical to the published 0.0.12.0 entries.
+
+    Where it lives: `releases/0.0.13.0/` in the dataset repository, with the
+    archive, the descriptor and the 10,934 per-file checksums, and the line added
+    to the top-level `SHA256SUMS`. Hugging Face records the size and SHA-256 the
+    descriptor pins, 945,869,850 bytes and
+    `ce9a76c5ac4860a57ba908c73b968da1c76872d5af9914b58eab749bcbd7fb06`. The
+    identical archive is also on the GitHub release `v0.0.13.0`, as the fallback
+    and because the release workflow reads it from there.
+
+    Measured, not assumed, in a throwaway virtual environment outside any
+    checkout, with `urllib.request.urlopen` recording every address requested:
+    installing `parascape==0.0.13.0` from PyPI and running the data download made
+    exactly ONE request, to
+    `huggingface.co/.../releases/0.0.13.0/parascape-data-0.0.13.0.tar.gz`, which
+    answered 200. GitHub was never contacted. `host_name()` reported
+    "Hugging Face". One optional component of each of the four kinds installed and
+    verified the same way: four requests, all to `huggingface.co`, all 200, GitHub
+    never contacted.
+
+    Opened headless from that installed copy: 8,140 genes, the map metadata says
+    331 features over 8,140 genes, `paths.check()` passes, `ag_host_genes.parquet`
+    is present with 12,574 rows, and the Anopheles midgut slot carries its four
+    patterns with 12,574 values each (medians 1.238, 2.055, 2.266 and 2.243 CPM) --
+    values, not just a name.
+
+    `PARASCAPE_CACHE` on the `starplast` environment now points at
+    `/media/carruthers/mnt1/parascape_data/data-0.0.13.0`.
+
+    NOTHING WAS DELETED FROM GITHUB. Every core archive and every component part
+    stays published there, deliberately. Deleting them is the step that frees the
+    quota and it is a separate decision Einar has not taken.
+
 STILL ON GITHUB
 
     - Nothing is only on GitHub any more. The identical copy of every component
@@ -171,8 +221,10 @@ STILL ON GITHUB
       v0.0.9.0-quantities-data, deliberately, because an installation of an
       earlier ParaScape reads the address recorded in its own index. Deleting
       those assets is what actually frees the GitHub quota, and it is safe only
-      once every installation in use builds the Hugging Face address first,
-      which means after 0.0.13.0 ships. Not done, and not to be done quietly.
+      once every installation in use builds the Hugging Face address first.
+      0.0.13.0 has now shipped, so that condition is met for anyone who
+      upgrades -- but nothing has been deleted and nothing is to be deleted
+      quietly. It is Einar's decision and he has not taken it.
     - The identical core archive for every version, deliberately: an
       installation of 0.0.11.0 or earlier reads only its own descriptor, which
       names GitHub, and must keep working.
@@ -188,10 +240,11 @@ WHAT TO DO NEXT
        repository, with the pack SHA-256 in the application rather than supplied
        by hand. `packs.download()` already takes any https address, so it needs
        a default host and the same two settings.
-    2. Decide, after 0.0.13.0 has shipped and is in use, whether to delete the
-       component assets from the GitHub releases. That is the step that frees
-       the quota; until then both copies exist and the fallback is what keeps an
-       older installation working.
+    2. Decide whether to delete the component assets from the GitHub releases.
+       0.0.13.0 shipped on 2026-11-14, so the ask is now live: it is the step
+       that frees the quota, and until Einar takes it both copies exist and the
+       fallback is what keeps an older installation working. Not to be done
+       without him.
     3. Add the Hugging Face upload to the release process so a release cannot
        ship a descriptor whose primary address is empty. Until then the manual
        step is in `docs/releases.md`.
