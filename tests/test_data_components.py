@@ -34,9 +34,18 @@ class Response(io.BytesIO):
         self.status, self.headers = status, headers or {}
 
 
-def transport(monkeypatch, payloads, *, calls=None):
+def transport(monkeypatch, payloads, *, calls=None, attempts=None):
+    """Serve the addresses in `payloads`; answer 404 to any other, as the host that has not got it would.
+
+    `calls` records the addresses that answered, `attempts` every address asked, including the ones
+    that answered 404 -- which is what a part still only on GitHub looks like on Hugging Face.
+    """
     calls = [] if calls is None else calls
     def open_request(request, timeout):
+        if attempts is not None:
+            attempts.append(request.full_url)
+        if request.full_url not in payloads:
+            raise urllib.error.HTTPError(request.full_url, 404, 'Not Found', {}, None)
         data = payloads[request.full_url]
         offset = int(request.headers.get('Range', 'bytes=0-')[6:-1])
         calls.append((request.full_url, offset))
@@ -166,22 +175,24 @@ def test_a_stalled_part_is_retried_and_a_missing_one_is_not(monkeypatch, tmp_pat
     monkeypatch.setattr(DC.time if hasattr(DC, "time") else __import__("time"), "sleep", lambda s: None)
     calls = []
 
-    def flaky(part, cache, progress, cancelled):
+    address = 'https://github.com/EinarOlafsson/parascape/releases/download/v1/part-0'
+
+    def flaky(part, cache, progress, cancelled, addresses):
         calls.append(1)
         if len(calls) < 3:
             raise TimeoutError("The read operation timed out")
         return "done"
     monkeypatch.setattr(DC, "_download_part_once", flaky)
-    assert DC._download_part({}, tmp_path, None, None) == "done" and len(calls) == 3
+    assert DC._download_part({'url': address}, tmp_path, None, None) == "done" and len(calls) == 3
 
-    def missing(part, cache, progress, cancelled):
+    def missing(part, cache, progress, cancelled, addresses):
         calls.append(1)
         raise urllib.error.HTTPError("u", 404, "Not Found", {}, None)
     calls.clear()
     monkeypatch.setattr(DC, "_download_part_once", missing)
     import pytest
     with pytest.raises(urllib.error.HTTPError):
-        DC._download_part({}, tmp_path, None, None)
+        DC._download_part({'url': address}, tmp_path, None, None)
     assert len(calls) == 1
 
 
@@ -218,3 +229,86 @@ def test_an_address_off_the_accepted_bases_is_still_refused(monkeypatch, bad):
     component['parts'][0] = dict(component['parts'][0], url=bad)
     with pytest.raises(ValueError, match='Unexpected optional-data download host'):
         C.validate(component)
+
+
+# ------------------------------------- the parts themselves move to Hugging Face (2026-11-13)
+"""The index inside an already-published core archive names a GitHub address for every part, and
+that archive cannot be rewritten. So the first address is built from the configured host, the kind
+and the part name, and the recorded address is the fallback. No new core release is needed, and a
+part that has not moved yet is still served."""
+
+
+def moved(component):
+    """Where each part of this component is addressed on the configured host."""
+    kind = component['directory'].split('/')[0]
+    return [f"{C.COMPONENT_HOST}/{kind}/{part['url'].rsplit('/', 1)[1]}" for part in component['parts']]
+
+
+def test_the_configured_host_is_tried_first_and_the_recorded_address_second(monkeypatch):
+    monkeypatch.delenv(C.ENV_HOST, raising=False)
+    component, _, _ = fixture_component()
+    first, second = C.part_sources(component, component['parts'][0])
+    assert first == (C.COMPONENT_HOST + '/sparse_axes/'
+                     + component['parts'][0]['url'].rsplit('/', 1)[1])
+    assert second == component['parts'][0]['url']
+
+
+def test_a_part_on_hugging_face_is_taken_from_there(tmp_path, monkeypatch):
+    monkeypatch.delenv(C.ENV_HOST, raising=False)
+    component, payloads, files = fixture_component()
+    on_hugging_face = dict(zip(moved(component), payloads.values()))
+    attempts = []
+    transport(monkeypatch, on_hugging_face, attempts=attempts)
+    installed = C.download(component, tmp_path / 'components')
+    assert C.status(component, tmp_path / 'components', verify=True)['ready']
+    assert {name: (installed / name).read_bytes() for name in files} == files
+    assert attempts and all('huggingface.co' in url for url in attempts), 'GitHub was never asked'
+
+
+def test_a_part_still_only_on_github_is_taken_from_there(tmp_path, monkeypatch):
+    monkeypatch.delenv(C.ENV_HOST, raising=False)
+    component, payloads, files = fixture_component()
+    attempts = []
+    transport(monkeypatch, payloads, attempts=attempts)
+    installed = C.download(component, tmp_path / 'components')
+    assert C.status(component, tmp_path / 'components', verify=True)['ready']
+    assert {name: (installed / name).read_bytes() for name in files} == files
+    assert [url for url in attempts if 'huggingface.co' in url], 'the new host was tried first'
+    assert [url for url in attempts if 'github.com' in url], 'and the published asset served it'
+
+
+def test_a_failure_on_every_host_names_every_host(tmp_path, monkeypatch):
+    monkeypatch.delenv(C.ENV_HOST, raising=False)
+    monkeypatch.setattr(C, 'RETRY_PAUSE_SECONDS', (0, 0, 0))
+    component, _, _ = fixture_component()
+    attempts = []
+    transport(monkeypatch, {}, attempts=attempts)
+    with pytest.raises(C.PartDownloadError) as failure:
+        C.download(component, tmp_path / 'components')
+    assert 'huggingface.co' in str(failure.value) and 'github.com' in str(failure.value)
+    assert not (tmp_path / 'components' / component['directory']).exists()
+
+
+def test_the_wrong_bytes_from_the_new_host_are_refused_not_replaced(tmp_path, monkeypatch):
+    """A checksum is checked once, after the hosts have been tried, so wrong bytes end the install."""
+    monkeypatch.delenv(C.ENV_HOST, raising=False)
+    component, payloads, _ = fixture_component()
+    wrong = dict(zip(moved(component), (b'x' * len(block) for block in payloads.values())))
+    attempts = []
+    transport(monkeypatch, dict(payloads, **wrong), attempts=attempts)
+    with pytest.raises(ValueError, match='checksum or size mismatch'):
+        C.download(component, tmp_path / 'components')
+    assert not (tmp_path / 'components' / component['directory']).exists()
+    assert not [url for url in attempts if 'github.com' in url], 'wrong bytes are not retried elsewhere'
+
+
+def test_a_component_host_setting_moves_where_the_parts_are_fetched_from(tmp_path, monkeypatch):
+    monkeypatch.setenv(C.ENV_HOST, 'https://data.example.org/components')
+    component, payloads, files = fixture_component()
+    elsewhere = {f"https://data.example.org/components/sparse_axes/{url.rsplit('/', 1)[1]}": block
+                 for url, block in payloads.items()}
+    attempts = []
+    transport(monkeypatch, elsewhere, attempts=attempts)
+    installed = C.download(component, tmp_path / 'components')
+    assert {name: (installed / name).read_bytes() for name in files} == files
+    assert all('data.example.org' in url for url in attempts)

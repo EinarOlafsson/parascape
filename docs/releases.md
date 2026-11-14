@@ -197,11 +197,31 @@ A core-data `data_components.json` index has `schema_version: 1`, a version,
 `components`, and a dataset-to-component dependency map. Component keys are
 `sparse_coordinates/<pack-sha>` or `sparse_axes/<pack-sha>`. Each component declares
 its original files with exact sizes and SHA-256 checksums, one complete archive
-checksum/size, and an ordered list of part URLs with individual part sizes/checksums. A part
-address is accepted under the GitHub release base, where every published component still is, or
-under `$PARASCAPE_COMPONENT_HOST`, which is how they reach Hugging Face when their index is
-rebuilt. Every part is at most 1 GiB. Shared axes use the same component
-identity across datasets.
+checksum/size, and an ordered list of part URLs with individual part sizes/checksums. Every part is
+at most 1 GiB. Shared axes use the same component identity across datasets.
+
+The parts are published in the same Hugging Face dataset repository as the core archive, as
+`components/<kind>/<part name>`, with a `SHA256SUMS` beside them for each kind. An index that was
+published inside an earlier core archive records a GitHub release address for each part, and that
+archive cannot be rewritten, so the client does not read the address from the index alone:
+`data_components.part_sources()` builds the first address from the configured host
+(`$PARASCAPE_COMPONENT_HOST`, Hugging Face by default), the kind and the part name, and uses the
+recorded address as the fallback. Moving parts to another host is therefore a setting rather than a
+new core release, and a part still only on its GitHub release is still served. Both bases are
+accepted by `validate()`, and the part checksum is checked once, after the hosts have been tried,
+so a second host cannot widen what gets installed.
+
+Publish the parts of one kind, or continue a run that stopped:
+
+```bash
+python scripts/publish_components.py sparse_axes \
+  --index "$PARASCAPE_CACHE"/data-0.0.12.0/data_components.json --staging /path/with/room
+```
+
+It needs an environment with `huggingface_hub` and a write token; the application itself must keep
+no dependency on that library. Each part is fetched from its published GitHub asset, checked
+against the index, uploaded, checked again from what the repository stored, and only then deleted
+from staging.
 
 Prepare an existing independently validated pack without changing its contents:
 

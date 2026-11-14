@@ -26,10 +26,11 @@ from . import paths
 PREFIX = '/EinarOlafsson/parascape/releases/download/'
 KINDS = {'sparse_coordinates', 'sparse_axes', 'workbook_cells', 'deposited_values'}
 
-#: Where optional-data parts may be published. The parts of every component released so far are
-#: GitHub release assets and stay there; the data move to Hugging Face (2026-11-13) reaches them when
-#: their index is rebuilt, and this setting is what a rebuilt index is then checked against, so the
-#: move is a configuration change rather than another edit here.
+#: Where optional-data parts may be published. Every index published so far records a GitHub release
+#: address for each part, and those indexes live inside already-released core archives, which cannot
+#: be rewritten. So the address is not read from the index alone: the configured host plus the kind
+#: plus the part name gives the first address to try, and the recorded one is the fallback. Moving
+#: the parts to another host is then a setting, not a new core release.
 ENV_HOST = 'PARASCAPE_COMPONENT_HOST'
 COMPONENT_HOST = 'https://huggingface.co/datasets/einarolafsson/parascape-data/resolve/main/components'
 GITHUB_RELEASES = 'https://github.com/EinarOlafsson/parascape/releases/download'
@@ -53,6 +54,27 @@ def _part_url(value):
                    for token in tail.split('/'))):
         raise ValueError('Unexpected optional-data download host or release path')
     return value
+
+
+def part_sources(component, part) -> tuple:
+    """Every address for one part, in the order they are tried.
+
+    The configured host first, built from the kind and the part name rather than read from the
+    index, so parts that have moved are fetched from where they are now without republishing the
+    index that names their old home. The address the index records follows, which is what keeps the
+    published GitHub asset working for a part that has not moved and for an older installation.
+    Whatever arrives still has to match the part checksum, so a second address cannot widen what is
+    installed.
+    """
+    kind = component['directory'].split('/')[0]
+    recorded = _part_url(part['url'])
+    name = recorded.rsplit('/', 1)[1]
+    derived = (os.environ.get(ENV_HOST) or COMPONENT_HOST).rstrip('/') + f'/{kind}/{name}'
+    out = []
+    for url in (derived, recorded):
+        if url not in out:
+            out.append(_part_url(url))
+    return tuple(out)
 
 
 def storage_root() -> Path:
@@ -184,21 +206,36 @@ ATTEMPTS = 4
 RETRY_PAUSE_SECONDS = (5, 15, 45)
 
 
-def _download_part(part, cache, progress, cancelled):
+class PartDownloadError(OSError, ValueError):
+    """Every address for a part failed. `retryable` is false when all of them refused the request.
+
+    Both an `OSError` and a `ValueError` so that every caller which already caught either one from
+    a single-address download keeps working now that several addresses are tried.
+    """
+
+    def __init__(self, message, retryable=True):
+        super().__init__(message)
+        self.retryable = retryable
+
+
+def _download_part(part, cache, progress, cancelled, addresses=None):
     """Fetch one verified part, retrying a stalled or dropped connection and resuming the partial file."""
     import time
+    addresses = tuple(addresses) if addresses else (_part_url(part['url']),)
     for attempt in range(ATTEMPTS):
         try:
-            return _download_part_once(part, cache, progress, cancelled)
-        except (TimeoutError, ConnectionError, urllib.error.URLError) as error:
+            return _download_part_once(part, cache, progress, cancelled, addresses)
+        except (TimeoutError, ConnectionError, urllib.error.URLError, PartDownloadError) as error:
             client_error = isinstance(error, urllib.error.HTTPError) and error.code < 500
+            if isinstance(error, PartDownloadError):
+                client_error = not error.retryable
             if client_error or attempt == ATTEMPTS - 1:
                 raise
             _checkpoint(cancelled)
             time.sleep(RETRY_PAUSE_SECONDS[min(attempt, len(RETRY_PAUSE_SECONDS) - 1)])
 
 
-def _download_part_once(part, cache, progress, cancelled):
+def _download_part_once(part, cache, progress, cancelled, addresses):
     target = cache / part['sha256']
     if target.is_symlink():
         raise ValueError('Unsafe cached optional-data file')
@@ -208,18 +245,46 @@ def _download_part_once(part, cache, progress, cancelled):
     partial = target.with_suffix('.part')
     if partial.is_symlink():
         raise ValueError('Unsafe partial optional-data file')
-    offset = partial.stat().st_size if partial.exists() else 0
-    if offset >= part['size']:
-        if offset == part['size'] and _hash(partial) == part['sha256']:
+    if partial.exists() and partial.stat().st_size >= part['size']:
+        if partial.stat().st_size == part['size'] and _hash(partial) == part['sha256']:
             partial.replace(target)
             return target
         partial.unlink()
-        offset = 0
+    # Each address in turn, so a part that has not moved yet, or a host that is down, is not a dead
+    # end. The checksum below is checked once, after the loop, so bytes that do not match are
+    # refused rather than retried on another host.
+    failures, retryable = [], False
+    for index, url in enumerate(addresses):
+        try:
+            _fetch_part(url, partial, part, progress, cancelled)
+            break
+        except (OSError, ValueError) as error:
+            if isinstance(error, InterruptedError):
+                raise
+            refused = isinstance(error, urllib.error.HTTPError) and error.code < 500
+            retryable = retryable or not refused
+            failures.append(f'{urlsplit(url).netloc}: {error}')
+            if index == len(addresses) - 1:
+                raise PartDownloadError(
+                    'The optional-data part failed on every host -- ' + '; '.join(failures),
+                    retryable) from error
+    if partial.stat().st_size != part['size'] or _hash(partial) != part['sha256']:
+        partial.unlink(missing_ok=True)
+        raise ValueError('Optional-data part checksum or size mismatch')
+    partial.replace(target)
+    return target
+
+
+def _fetch_part(url, partial, part, progress, cancelled):
+    """Fetch one part from one address into `partial`, resuming whatever is already there."""
+    offset = partial.stat().st_size if partial.exists() else 0
+    if offset >= part['size']:
+        return
     headers = {'User-Agent': 'ParaScape optional data installer'}
     if offset:
         headers['Range'] = f'bytes={offset}-'
     _checkpoint(cancelled)
-    with urllib.request.urlopen(urllib.request.Request(part['url'], headers=headers), timeout=60) as response:
+    with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=60) as response:
         if response.status == 206:
             if response.headers.get('Content-Range') != f'bytes {offset}-{part["size"] - 1}/{part["size"]}':
                 raise ValueError('Unexpected optional-data range response')
@@ -239,11 +304,8 @@ def _download_part_once(part, cache, progress, cancelled):
                 stream.write(block)
                 if progress:
                     progress('Downloading optional data', offset, part['size'])
-    if partial.stat().st_size != part['size'] or _hash(partial) != part['sha256']:
-        partial.unlink(missing_ok=True)
-        raise ValueError('Optional-data part checksum or size mismatch')
-    partial.replace(target)
-    return target
+    if offset != part['size']:
+        raise OSError(f'The optional-data part ended early at {offset} of {part["size"]} bytes')
 
 
 def _install(component, root, progress, cancelled):
@@ -267,7 +329,8 @@ def _install(component, root, progress, cancelled):
     required = 2 * component['archive_size'] + metadata['extracted_bytes']
     if shutil.disk_usage(root).free < required + 64 * 1024**2:
         raise OSError('Not enough free space for optional data and verified staging')
-    parts = [_download_part(part, cache, progress, cancelled) for part in component['parts']]
+    parts = [_download_part(part, cache, progress, cancelled, part_sources(component, part))
+             for part in component['parts']]
     with tempfile.TemporaryDirectory(prefix='.component-stage-', dir=root) as temporary:
         staging = Path(temporary)
         archive = staging / 'archive'
