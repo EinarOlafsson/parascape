@@ -287,7 +287,10 @@ def test_every_unit_with_a_table_names_it():
     # `host_gene` joined when the host table gained columns of its own rather than only keys.
     # `pair` stays out: edges and bridges are not rows.
     assert set(slots.UNIT_TABLES) == {"gene", "metabolite"}
-    assert set(slots.HOST_TABLES) == {"Hs", "Mm"}
+    # `Ag` joined on 2026-11-13 with the Anopheles midgut transcriptome (instruction 41). It is the
+    # one host table keyed on gene identifiers rather than on UniProt accessions, because A. gambiae
+    # has about 300 reviewed entries and a Swiss-Prot key cannot reach the organism at all.
+    assert set(slots.HOST_TABLES) == {"Hs", "Mm", "Ag"}
     assert "pair" not in slots.UNIT_TABLES
 
 

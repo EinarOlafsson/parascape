@@ -96,7 +96,11 @@ def test_shipped_hosts_preserve_the_migration_totals_and_are_disjoint():
     assert not set(tables["Hs"].host_id) & set(tables["Mm"].host_id)
     for code, table in tables.items():
         assert table.host_id.is_unique
-        for column, count in report["tables"][code]["coverage"].items():
+        # The migration report describes the split of ONE legacy table into human and mouse. A host
+        # table that was never in that table -- Anopheles, built from its own deposit on 2026-11-13
+        # -- has no migration totals to preserve, so it is checked for uniqueness and provenance and
+        # not against a record it was never part of.
+        for column, count in report["tables"].get(code, {"coverage": {}})["coverage"].items():
             recorded = withdrawals[(withdrawals.organism == code) & (withdrawals.field == column)]
             # Entity-assignment corrections reconcile through exact retained gene scores.
             assert int(table[column].notna().sum()) + len(recorded) >= count

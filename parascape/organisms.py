@@ -28,7 +28,17 @@ STEPHENSI = "As"
 
 #: Protein reference tables precede the full host gene spaces. UniProt identifiers do not encode
 #: their organism, so callers must select a species explicitly instead of guessing from a prefix.
-HOST_TABLES = {HUMAN: "hs_host_proteins.parquet", MOUSE: "mm_host_proteins.parquet"}
+#:
+#: Anopheles is the third, and it is keyed differently on purpose. The two tables above key on
+#: reviewed UniProt accessions, and that is exactly why the Anopheles host slots sat unreachable from
+#: 2026-08-22 to 2026-11-13: *A. gambiae* has about 300 reviewed entries against 14,559, so a
+#: Swiss-Prot key does not reach this organism. `ag_host_genes.parquet` keys on VectorBase AGAP GENE
+#: identifiers instead, which is what every Anopheles resource and the Ag gene space already use.
+#: The contract this changes is "a host table keys on UniProt"; it becomes "a host table keys on the
+#: canonical identifier of its own organism, and says which". Nothing about the human or mouse
+#: tables changes, which is why a third table was added rather than `host.uniprot_index` widened.
+HOST_TABLES = {HUMAN: "hs_host_proteins.parquet", MOUSE: "mm_host_proteins.parquet",
+               ANOPHELES: "ag_host_genes.parquet"}
 #: The host PROTEIN spaces (instruction 53, WP9, decided 2026-11-13): the two tables above served as spaces of
 #: their own, keyed on UniProt accessions, separate from the Ensembl host GENE spaces Hs and Mm. Declared in
 #: `spaces.host_proteins`, not registered here (see that module for why).

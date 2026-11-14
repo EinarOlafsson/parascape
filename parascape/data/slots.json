@@ -12832,7 +12832,12 @@
     "axis": "host effect",
     "context": "Anopheles midgut; ookinete and oocyst",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "anopheles_midgut_36h_cpm",
+      "anopheles_midgut_48h_cpm",
+      "anopheles_midgut_4d_cpm",
+      "anopheles_midgut_7d_cpm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [

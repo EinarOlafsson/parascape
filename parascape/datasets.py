@@ -2989,6 +2989,39 @@ REGISTRY = [
                  "from the human set on purpose: a host slot resolves to ONE organism, and the generator "
                  "refuses a column name two species claim.",
             organism=organisms.MOUSE),
+    Dataset("host_anopheles_midgut_transcriptome",
+            "Anopheles midgut transcription through a Plasmodium infection", "transcription",
+            "scRNAseq",
+            "How much each mosquito gene is transcribed in the midgut at four points after an "
+            "infectious blood meal",
+            ("anopheles_midgut_36h_cpm", "anopheles_midgut_48h_cpm", "anopheles_midgut_4d_cpm",
+             "anopheles_midgut_7d_cpm"),
+            "12,574 of 12,614 AGAP genes", pmid="41125888", accession="GSE284537",
+            citation="GSE284537 (PMID 41125888), single-cell RNA of infected Anopheles gambiae "
+                     "midguts, dual-organism with Plasmodium falciparum",
+            url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE284537",
+            path="datasets/transcription/scRNAseq/GSE284537/",
+            note="A PSEUDOBULK OF SINGLE-CELL DATA, which is not the same thing as a bulk library: a "
+                 "value is the average of a cell mixture whose composition changes between "
+                 "timepoints, so a rise can be a gene transcribed harder or a cell type becoming "
+                 "commoner, and the two cannot be told apart here. The only genuinely midgut series "
+                 "in the archive -- 32 of 32 samples record tissue and source name as midgut, where "
+                 "every bulk candidate whose title named the midgut held whole bodies or salivary "
+                 "glands. Einar admitted it on 2026-11-13: the single-cell exclusion is about "
+                 "pipeline fit, not about the evidence. The deposit ships RAW unfiltered Cell Ranger "
+                 "matrices, so counts are summed over barcodes carrying at least 500 molecules "
+                 "rather than over every droplet; cells per sample run 355 to 71,918 and the share "
+                 "of molecules inside called barcodes runs 2.1 to 97.3 per cent, so the threshold "
+                 "changes the answer rather than rounding it. The dsGFP CONTROL arm only, four "
+                 "replicates per timepoint, counts per million within a sample then the mean of the "
+                 "replicates; the dsEcR arm is an ecdysone-receptor knockdown and answers a "
+                 "different question. The 4 d control arm is the weak one: three of its four "
+                 "replicates call 1,153, 1,243 and 1,592 cells and hold under a fifth of their "
+                 "molecules in them. Keyed on VectorBase AGAP gene ids, joined on the identifier "
+                 "itself, and 40 space genes plus 1,271 deposit features do not meet -- those stay "
+                 "missing rather than zero. Redistributed with its accession and paper cited, per "
+                 "Einar on 2026-11-13.",
+            organism=organisms.ANOPHELES),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

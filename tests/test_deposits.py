@@ -307,8 +307,16 @@ def test_the_host_screen_recovers_the_pathway_its_paper_is_about(hosts):
 
 def test_the_host_table_kept_every_protein_it_had_and_its_names(hosts):
     assert len(hosts) > 36000
-    assert hosts["host_name"].notna().mean() > 0.9
     assert hosts["host_id"].is_unique
+    # Per table, not over the concatenation. The human and mouse tables key on reviewed UniProt
+    # accessions and nearly every one carries a symbol; the Anopheles table added on 2026-11-13 keys
+    # on AGAP gene ids, and the Ensembl AgamP4 build names 1,838 of its 12,574 genes. Averaging the
+    # three would report 78 per cent and describe none of them -- and would let a real loss of human
+    # symbols hide behind the mosquito's.
+    from parascape import host
+    named = {code: table["host_name"].notna().mean() for code, table in host.shipped_tables().items()}
+    assert named["Hs"] > 0.9 and named["Mm"] > 0.9
+    assert 0.1 < named["Ag"] < 0.2
 
 
 # --------------------------------------------------------------------------- leakage

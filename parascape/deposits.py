@@ -1767,6 +1767,47 @@ def human_immune_cell_rna(root: str) -> pd.DataFrame:
     return joined.drop_duplicates("host_id").reset_index(drop=True)
 
 
+# --------------------------------------------------------------------------- Anopheles midgut
+#: The keyed table `scripts/build_anopheles_midgut_host_deposit.py` writes beside the raw matrices.
+#: The pseudobulk itself is NOT redone here: it reads 32 raw Cell Ranger matrices of two to three
+#: million barcodes each, and a derive function that takes twenty minutes would be run by nobody.
+AG_MIDGUT = ("host_transcriptome_anopheles_midgut_GSE284537.csv",)
+AG_MIDGUT_COLUMNS = ("anopheles_midgut_36h_cpm", "anopheles_midgut_48h_cpm",
+                     "anopheles_midgut_4d_cpm", "anopheles_midgut_7d_cpm")
+
+
+def anopheles_midgut_transcriptome(root: str) -> pd.DataFrame:
+    """Anopheles gambiae midgut transcription through a Plasmodium infection (GSE284537).
+
+    A **pseudobulk of single-cell data**, and the distinction is not pedantry: counts are summed over
+    the called barcodes of each sample, so a value is the average of a cell mixture whose composition
+    changes between timepoints. A bulk library has the same property, but a bulk library is not also
+    carrying the ambient RNA of two million empty droplets, which is why the build script calls cells
+    at 500 molecules rather than summing every barcode.
+
+    The **dsGFP control** arm only, four biological replicates per timepoint, counts per million
+    inside each sample and then the mean of the replicates -- the policy `bmdm_baseline` uses. The
+    dsEcR arm is an ecdysone-receptor knockdown and stays in the deposit as its own columns.
+
+    Keyed on VectorBase AGAP gene ids, not on UniProt: see `organisms.HOST_TABLES` for why this host
+    table is the one that keys differently.
+    """
+    path = _file(root, *AG_MIDGUT)
+    if path is None:
+        return pd.DataFrame()
+    d = pd.read_csv(path)
+    if not set(AG_MIDGUT_COLUMNS) <= set(d.columns):
+        return pd.DataFrame()
+    frame = d[list(AG_MIDGUT_COLUMNS)].copy()
+    frame.insert(0, "host_id", d["gene_id"].astype(str).to_numpy())
+    # The Ensembl AgamP4 build gives a symbol to 1,838 of these genes and leaves the rest blank, so
+    # most host names here are MISSING rather than empty -- unknown, not "no name". That is why the
+    # per-table name threshold in `tests/test_deposits.py` is stated per organism: averaging it with
+    # the human and mouse tables, where nearly every protein has a symbol, would hide both facts.
+    frame.insert(1, "host_name", d["gene_name"].to_numpy())
+    return frame[frame[list(AG_MIDGUT_COLUMNS)].notna().any(axis=1)].reset_index(drop=True)
+
+
 # --------------------------------------------------------------------------- the list
 @dataclass(frozen=True)
 class Deposit:
@@ -1820,6 +1861,8 @@ DEPOSITS = (
     Deposit("host_brain_cell_rna", organisms.HUMAN, human_brain_cell_rna),
     Deposit("host_tissue_proteome", organisms.HUMAN, human_tissue_proteome),
     Deposit("host_mouse_tissue_proteome", organisms.MOUSE, mouse_tissue_proteome),
+    Deposit("host_anopheles_midgut_transcriptome", organisms.ANOPHELES,
+            anopheles_midgut_transcriptome),
 )
 
 #: Deposits that are derived and shipped, but deliberately NOT merged into the node table.

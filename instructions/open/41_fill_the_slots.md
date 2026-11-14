@@ -3330,3 +3330,106 @@ reaches installed copies. The Cryptosporidium gene table (`cp_gene_nodes.parquet
 still a locally built space (`distribution='pack'`) and is not in the core data download, so an installed
 copy names the slot but holds no Cp values until that pack is published. Publishing it waits on the
 redistribution terms of its sources, as `parascape/spaces/crypto.py` records.
+
+## 2026-11-13: the Anopheles midgut slot is filled -- Einar admitted GSE284537 as a pseudobulk
+
+`Pf_host transcriptome · Anopheles midgut` grades, and it is the first measurement in this map that
+is not human, mouse or parasite. Einar ruled that the `rnaseq_excluded_single_cell` exclusion is
+about pipeline fit rather than about the evidence, which is right: that directory belongs to the
+instruction-69 salmon queue, where single-cell runs quantify badly, and nothing about it says a
+pseudobulk is inadmissible as a host transcriptome.
+
+**What the archive actually held.** `GSE284537_RAW.tar`, 2,800,435,200 bytes, sha256
+`6462460350d77cfc…`. Not a matrix and not a gene table: **192 files, a Cell Ranger 4 triplet per
+sample per organism** -- `barcodes.tsv.gz`, `features.tsv.gz`, `matrix.mtx.gz` -- for 32 samples,
+GSM8686106 to GSM8686137. The matrices are the RAW, unfiltered barcode matrices: 930,429 to
+3,786,536 barcodes each, so a column of one of these is a droplet, not a cell.
+
+**How host and parasite were separated.** By the reference the submitters quantified against, read
+off the features file and not off the file name. Every `_AnG_` features file is the same 13,845 AGAP
+genes -- one checksum across all 32 -- and every `_Pf_` features file is the falciparum build. Only
+the `_AnG_` matrices were read.
+
+**Two things wrong with the deposit, found by checksum rather than by reading the titles.**
+
+* `GSM8686119` (r2, 4 d, dsEcR) and `GSM8686127` (r3, 4 d, dsEcR) carry **byte-identical** Anopheles
+  matrices and barcodes. Two accessions, one file. Both are knockdown samples, so neither reaches
+  the slot, but anyone computing a knockdown contrast would be giving one library two votes.
+* The `_Pf_` triplet of `GSM8686107` is a copy of its `_AnG_` triplet -- 13,845 Anopheles features
+  filed as a falciparum sample. The Plasmodium arm already shipped from this series does not read
+  that sample, so nothing downstream is affected, but it is on the record now.
+
+**Cells, and the samples that fail.** Counts are summed over barcodes carrying at least 500
+molecules; summing every barcode would sum the ambient RNA of two to three million empty droplets
+with the cells. 1,078,667 called barcodes over the 32 samples, 517,877 of them in the control arm:
+
+| timepoint | cells, four control replicates | molecules inside called barcodes |
+|---|---|---|
+| 36 h | 71,918 / 67,072 / 65,511 / 66,327 | 93.9 to 95.7 per cent |
+| 48 h (the series' 2 d) | 55,792 / 65,757 / 22,601 / 23,347 | 53.0 to 93.2 per cent |
+| 4 d | 1,153 / 1,243 / 1,592 / 10,868 | 6.7 to 30.9 per cent |
+| 7 d | 11,457 / 17,107 / 29,005 / 7,127 | 30.8 to 57.7 per cent |
+
+**The 4 d control arm is the one to distrust.** Three of its four replicates call under 1,600 cells
+and hold under a fifth of their molecules inside them, which means that column is mostly a
+measurement of ambient RNA with a thin cellular signal on top. It is shipped rather than dropped,
+because the timepoint is one the slot asks about and the quality is recorded here and in the
+registry note, but a 4 d value is not the same kind of number as a 36 h one. The knockdown arm is
+worse still at one extreme -- 355 cells, 2.1 per cent -- and does not enter the slot at all.
+
+**What was admitted, and what was not.** The **dsGFP control** arm only, four replicates per
+timepoint, counts per million inside each sample and then the mean of the replicates -- the policy
+`host_bmdm_baseline` already uses, so two host transcriptomes in this map are the same quantity. The
+dsEcR arm is an ecdysone-receptor knockdown: a perturbation, a different question, and kept in the
+deposit as its own 16 columns for a perturbation slot to claim.
+
+**The identifiers, and the contract that changed.** The 2026-11-10 note said this slot needed an
+identifier-contract change made deliberately rather than discovered mid-load, and that is what
+happened. **Anopheles got its own host table, `ag_host_genes.parquet`, keyed on VectorBase AGAP gene
+ids.** The human and mouse tables are untouched and still key on reviewed UniProt accessions;
+`host.uniprot_index` was not widened. The contract is now "a host table keys on the canonical
+identifier of its own organism, and says which", which is the honest version of what was already
+true. A Swiss-Prot key would have reached about 300 of 14,559 entries, or two per cent of the
+organism.
+
+**The mapping, and what it loses.** The join is on the identifier itself -- no mapping table, no
+sequence work, unlike the Cryptosporidium case earlier the same day. The deposit carries 13,845 AGAP
+features from the Cell Ranger reference; the gene space is the Ensembl Metazoa AgamP4
+protein-coding build of 12,614. **12,574 of 12,614 space genes carry a value: 99.7 per cent.** The
+40 that do not, and the 1,271 deposit features that are not protein-coding genes of this build, stay
+missing rather than zero. The four columns sum to 572,054 to 745,639 per million rather than to a
+million, and that gap is deliberate: the values are a share of the WHOLE library, so the non-coding
+quarter of it stays visible instead of being renormalised away.
+
+**What a reader should distrust, said plainly.** **A pseudobulk of single-cell data is not a bulk
+library.** A bulk library measures RNA from a tissue; this measures the average of a cell mixture,
+and the mixture itself changes between 36 h and 7 d as the blood meal is digested and the midgut
+epithelium turns over. So a gene that rises between two timepoints may be transcribed harder, or may
+belong to a cell type that has become commoner, and **nothing in this column can tell those apart**.
+Three further things it is not: it is not depth-matched (libraries run from 11 million molecules to
+324 million); it is not free of ambient RNA (the 500-molecule floor removes empty droplets, not the
+soup inside full ones); and it is not a cell-type-resolved measurement, which is the one thing a
+single-cell deposit could have given and a pseudobulk throws away. Doing that properly means
+clustering and annotating midgut cell types, which is a piece of work with its own acceptance.
+
+**What landed.** Deposit directory with `URLS.txt` and `SHA256SUMS.txt` (88 files now checksummed);
+`scripts/build_anopheles_midgut_host_deposit.py` for the pseudobulk; a derive function and a
+`DEPOSITS` entry; a `datasets.REGISTRY` entry carrying accession `GSE284537` and PMID `41125888`,
+redistributed with citation per Einar on 2026-11-13; `HOST_COLUMNS` and the regenerated `slots.json`,
+dataset scripts and `docs/datasets.md`. Exactly one slot changed. Host slots go **19 of 50 to 20 of
+50**, empty slots 129 to 128.
+
+**Three things this does NOT do**, so nobody reads more into it:
+
+1. The three other Anopheles midgut slots -- proteome, surface repertoire, response to infection --
+   are still empty. The response slot in particular cannot be filled from this series: its
+   comparison arm is a receptor knockdown, not an uninfected mosquito.
+2. The salivary gland is still empty, and its verdict was split out from the midgut one so that it
+   no longer claims an identifier blocker that is gone. What it lacks now is a measurement.
+3. `ag_host_genes.parquet` is in the repository, not in the pinned 0.0.12.0 data release, so an
+   installed copy names the slot and holds no Anopheles values until the next data release. The same
+   gap the Cryptosporidium gene table has, for the same reason.
+
+There is also no Anopheles layout: `scripts/build_host_layouts.py` knows Hs and Mm, and a lens built
+on four timepoints of one tissue would be a timecourse wearing the name of a tissue lens. That is an
+instruction-53 WP9 decision, not a leftover.

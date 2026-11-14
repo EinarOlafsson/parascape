@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**141 slots: 42 covered well, 22 partly, 16 thinly, 61 empty.**
+**141 slots: 43 covered well, 22 partly, 16 thinly, 60 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -231,7 +231,7 @@ quantity were approximating on 2026-08-13.
 | Pf_host surface / receptor repertoire · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | fill | — |
 | Pf_host response to infection · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | separate | — |
 | Pf_host proteome · Anopheles midgut | Anopheles midgut; ookinete and oocyst | **-** |  |  |  | `` | average | — |
-| Pf_host transcriptome · Anopheles midgut | Anopheles midgut; ookinete and oocyst | **-** |  |  |  | `` | average | — |
+| Pf_host transcriptome · Anopheles midgut | Anopheles midgut; ookinete and oocyst | **A** | 12574 |  | 100.0% | `anopheles_midgut_36h_cpm, anopheles_midgut_48h_cpm, anopheles_midgut_4d_cpm, anopheles_midgut_7d_cpm` | average | — |
 | Pf_host surface / receptor repertoire · Anopheles midgut | Anopheles midgut; ookinete and oocyst | **-** |  |  |  | `` | fill | — |
 | Pf_host response to infection · Anopheles midgut | Anopheles midgut; ookinete and oocyst | **-** |  |  |  | `` | separate | — |
 | Pf_host proteome · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **-** |  |  |  | `` | average | — |

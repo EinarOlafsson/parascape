@@ -964,6 +964,15 @@ HOST_COLUMNS = {
     # Unstimulated macrophages only (GSE267544): the stimulated arms are LPS + IFN-gamma, not
     # infection, and answer none of these slots.
     "host transcriptome · mouse bone-marrow macrophage": ["bmdm_tpm"],
+    # GSE284537 (PMID 41125888), pseudo-bulked per sample over called barcodes: the dsGFP control
+    # arm at four points after an infectious blood meal, four replicates each (instruction 41,
+    # 2026-11-13). A pseudobulk of single-cell data rather than a bulk library, which the registry
+    # note says in full. Graded against the Anopheles host table, which keys on AGAP gene ids
+    # because Swiss-Prot does not reach this organism -- see `organisms.HOST_TABLES`.
+    "host transcriptome · Anopheles midgut": ["anopheles_midgut_36h_cpm",
+                                              "anopheles_midgut_48h_cpm",
+                                              "anopheles_midgut_4d_cpm",
+                                              "anopheles_midgut_7d_cpm"],
     # Contrasts, computed from deposited expression (parascape/deposits.py): infected against
     # uninfected, as the family's policy says -- the disagreement is the signal.
     "host response to infection · human fibroblast": ["hff_tg_infection_log2fc",
@@ -2437,7 +2446,26 @@ BLOCKED = {
 #: generator writes for the rest. A generic verdict and a specific one are opposite states: the
 #: first says nobody has looked, the second says what was looked at and why it did not answer.
 HOST_VERDICTS = {
-    ("Anopheles midgut", "Anopheles salivary gland"): (
+    # The midgut and the salivary gland were ONE verdict until 2026-11-13, when the midgut stopped
+    # being blocked and the salivary gland did not. Splitting them is the point: a shared verdict
+    # would now say "unreachable" about a tissue whose transcriptome is on disk.
+    # The verdict word is still `missing`, because the slots this verdict reaches are the midgut
+    # PROTEOME, surface repertoire and infection response -- the transcriptome is filled and takes no
+    # verdict at all. What changed is that none of them is blocked by identifiers any more.
+    ("Anopheles midgut",): (
+        "missing",
+        "Swept 2026-08-22 and found unreachable twice: VectorBase needs a VEuPathDB key, and the "
+        "host table keyed on reviewed UniProt accessions, of which A. gambiae has about 300 against "
+        "14,559 entries. Resolved 2026-11-13 from the other end. GSE284537 (PMID 41125888) is the "
+        "only genuinely midgut series in GEO -- 32 of 32 samples record midgut as both tissue and "
+        "source name -- and it is single-cell, which Einar admitted as a per-sample pseudobulk "
+        "because the single-cell exclusion is about pipeline fit and not about the evidence. The "
+        "identifier blocker went with it: Anopheles got its own host table keyed on AGAP gene ids "
+        "rather than Swiss-Prot, which changes nothing about the human or mouse tables.",
+        "Nothing for the transcriptome. A midgut PROTEOME and a surface repertoire are still "
+        "missing, and the response-to-infection slot wants an uninfected control this series does "
+        "not carry -- its comparison arm is a receptor knockdown, not an uninfected mosquito."),
+    ("Anopheles salivary gland",): (
         "unreachable",
         "Swept 2026-08-22. VectorBase holds the tissue expression and its gene reports stopped "
         "answering anonymous callers, so it needs a VEuPathDB API key that is not set here. The "
@@ -2445,18 +2473,12 @@ HOST_VERDICTS = {
         "infection contrast, not a baseline tissue. Salivary-gland and midgut proteomes exist in "
         "the literature for A. stephensi, A. albimanus and A. campestris; the gambiae ones are "
         "older and keyed to identifiers that predate AGAP.",
-        "Either a VEuPathDB API key, or a published gambiae midgut / salivary-gland table keyed to "
-        "AGAP accessions. Note the SECOND blocker before starting: the host table keys on REVIEWED "
-        "UniProt accessions and Anopheles has 301 reviewed entries against 14,559 total, so the "
-        "identifier contract does not reach this organism. It needs the reference proteome as the "
-        "canonical-accession source rather than Swiss-Prot, which is a change to "
-        "`host.uniprot_index` and should be made deliberately rather than discovered mid-load. "
-        "UPDATE 2026-11-10: the first blocker is half gone -- midgut expression at four timepoints "
-        "now exists for 12,614 AGAP genes, from the Anopheles arm of GSE284537, and lives in the Ag "
-        "SPACE (`anopheles_midgut_*`). It cannot reach this HOST slot because the second blocker "
-        "stands: the host table keys on reviewed UniProt accessions and Anopheles still has about "
-        "300 of them, while the space keys on AGAP gene ids. So this is an identifier-contract "
-        "change, not wiring. The salivary gland has no data either way."),
+        "A published gambiae salivary-gland table keyed to AGAP accessions, or a VEuPathDB API key. "
+        "UPDATE 2026-11-13: the identifier blocker recorded here is GONE -- the Anopheles host "
+        "table now keys on AGAP gene ids rather than on reviewed UniProt accessions, so a "
+        "salivary-gland table would have somewhere to land. What is missing is the measurement. "
+        "GSE284537 covers the midgut only, and the sporozoite stage the salivary gland carries is "
+        "not sampled anywhere on disk."),
     ("human dermis",): (
         "missing",
         "Swept 2026-08-22. GTEx v10 carries `Skin_Sun_Exposed_Lower_leg` and "
