@@ -1,0 +1,25 @@
+{
+  "datasets": 177,
+  "by_level": {
+    "reference": 44,
+    "post_translation": 46,
+    "transcription": 38,
+    "translation": 23,
+    "DNA": 26
+  },
+  "by_organism": {
+    "Tg": 101,
+    "Hs": 15,
+    "Pf": 55,
+    "Mm": 4,
+    "Ag": 2
+  },
+  "modules": 24,
+  "bands": {
+    "Look up": 4,
+    "Explore": 4,
+    "Ask": 8,
+    "Bring your own": 4,
+    "Data": 4
+  }
+}
