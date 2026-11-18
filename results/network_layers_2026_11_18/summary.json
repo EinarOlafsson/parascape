@@ -1,0 +1,173 @@
+{
+  "target": "compartment_best",
+  "excluded_layer": "compartment",
+  "genes": 8140,
+  "genes_with_label": 3855,
+  "baseline": 0.32736705577172504,
+  "layers": [
+    {
+      "layer": "comention",
+      "edges": 435,
+      "reached": 164,
+      "answered": 157,
+      "right": 112,
+      "accuracy": 0.7133757961783439,
+      "lift": 0.38600874040661887,
+      "enough": true
+    },
+    {
+      "layer": "ip_ms",
+      "edges": 64,
+      "reached": 44,
+      "answered": 44,
+      "right": 30,
+      "accuracy": 0.6818181818181818,
+      "lift": 0.35445112604645673,
+      "enough": false
+    },
+    {
+      "layer": "xlms",
+      "edges": 2842,
+      "reached": 1346,
+      "answered": 1291,
+      "right": 869,
+      "accuracy": 0.673121611154144,
+      "lift": 0.345754555382419,
+      "enough": true
+    },
+    {
+      "layer": "unwritten_interaction",
+      "edges": 2673,
+      "reached": 1321,
+      "answered": 1266,
+      "right": 820,
+      "accuracy": 0.6477093206951027,
+      "lift": 0.32034226492337764,
+      "enough": true
+    },
+    {
+      "layer": "comention_ft",
+      "edges": 7733,
+      "reached": 1002,
+      "answered": 969,
+      "right": 620,
+      "accuracy": 0.6398348813209495,
+      "lift": 0.3124678255492244,
+      "enough": true
+    },
+    {
+      "layer": "orthogroup",
+      "edges": 3452,
+      "reached": 528,
+      "answered": 367,
+      "right": 210,
+      "accuracy": 0.5722070844686649,
+      "lift": 0.24484002869693983,
+      "enough": true
+    },
+    {
+      "layer": "ALL LAYERS, WEIGHTED",
+      "edges": 184044,
+      "reached": 1773,
+      "answered": 1773,
+      "right": 971,
+      "accuracy": 0.5476593344613649,
+      "lift": 0.2202922786896399,
+      "enough": true
+    },
+    {
+      "layer": "struct",
+      "edges": 11684,
+      "reached": 1417,
+      "answered": 1246,
+      "right": 662,
+      "accuracy": 0.5313001605136437,
+      "lift": 0.20393310474191867,
+      "enough": true
+    },
+    {
+      "layer": "domain",
+      "edges": 10272,
+      "reached": 1166,
+      "answered": 990,
+      "right": 518,
+      "accuracy": 0.5232323232323233,
+      "lift": 0.19586526746059824,
+      "enough": true
+    },
+    {
+      "layer": "ALL LAYERS AT ONCE",
+      "edges": 184044,
+      "reached": 3848,
+      "answered": 3837,
+      "right": 1887,
+      "accuracy": 0.491790461297889,
+      "lift": 0.16442340552616397,
+      "enough": true
+    },
+    {
+      "layer": "structural_hole",
+      "edges": 255,
+      "reached": 204,
+      "answered": 134,
+      "right": 56,
+      "accuracy": 0.417910447761194,
+      "lift": 0.09054339198946898,
+      "enough": true
+    },
+    {
+      "layer": "coexpression",
+      "edges": 49293,
+      "reached": 3199,
+      "answered": 3009,
+      "right": 1227,
+      "accuracy": 0.4077766699900299,
+      "lift": 0.08040961421830489,
+      "enough": true
+    },
+    {
+      "layer": "cotranslation",
+      "edges": 6344,
+      "reached": 467,
+      "answered": 444,
+      "right": 163,
+      "accuracy": 0.36711711711711714,
+      "lift": 0.03975006134539211,
+      "enough": true
+    },
+    {
+      "layer": "cofitness",
+      "edges": 88997,
+      "reached": 3732,
+      "answered": 3720,
+      "right": 1125,
+      "accuracy": 0.3024193548387097,
+      "lift": -0.02494770093301535,
+      "enough": true
+    }
+  ],
+  "layer_weights": {
+    "coexpression": 0.0962717224487265,
+    "cofitness": 0.0,
+    "comention": 0.41946838726624963,
+    "comention_ft": 0.30637780019535316,
+    "cotranslation": 0.03942831102364175,
+    "domain": 0.20907019119183773,
+    "ip_ms": 0.35445112604645673,
+    "orthogroup": 0.3001839646364382,
+    "struct": 0.2102504990872091,
+    "structural_hole": 0.06325794422827496,
+    "unwritten_interaction": 0.3200493576021351,
+    "xlms": 0.34818849978383054
+  },
+  "weighted_on_held_out": {
+    "answered": 1773,
+    "right": 971,
+    "accuracy": 0.5476593344613649
+  },
+  "unweighted_same_genes": {
+    "answered": 1916,
+    "right": 940,
+    "accuracy": 0.4906054279749478
+  }
+}
