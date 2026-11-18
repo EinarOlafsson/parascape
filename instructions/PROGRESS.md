@@ -18,18 +18,18 @@ reaches rather than the data it uses. Figure 2 gates the rest.
 | # | Figure — the claim it ends on | State | % |
 |---|---|---|---|
 | 1 | What ParaScape is → **the corpus, assembled** | **both panels drawn** (schematic + coverage) | 85 |
-| 2 | **Which studies can be compared at all** → **cell cycle raises agreement 0.832 to 0.887, three times a random axis, p = 0.005** | **measured** on 12 studies | 75 |
-| 3 | Co-expression modules → **14 of 23 are compartments; the secretory machinery splits in two** | **measured** | 70 |
-| 4 | What structures the corpus → **same-study pairs agree 3.3x better than cross-study; only 1 perturbation is repeated across labs** | **measured** over 20,100 pairs | 75 |
+| 2 | **Which studies can be compared at all** → **cell cycle raises agreement 0.832 to 0.887, three times a random axis, p = 0.005** | **measured and drawn** on 12 studies | 100 |
+| 3 | Co-expression modules → **14 of 23 are compartments; the secretory machinery splits in two** | **measured and drawn** | 100 |
+| 4 | What structures the corpus → **same-study pairs agree 3.3x better than cross-study; only 1 perturbation is repeated across labs** | **measured and drawn** over 20,100 pairs | 100 |
 | 5 | Protein response; bradyzoite reach → **subtype C is reached by 4 of 201 contrasts** | **panel drawn**, sweep saved, module built | 85 |
 | 6 | Which measurement explains which other → **transcription is 96 % of what is explainable about protein abundance** | 2 of 5 panels built (localisation, protein abundance) | 50 |
-| 7 | The network → **24x the reach at two thirds the accuracy; weighting recovers 5.7 points** | **measured** over 13 edge layers | 65 |
-| 8 | Strains → **dense granules 2.06 and apical secretory 1.73 against 1.36; everything internal below** | **measured** | 70 |
-| 9 | Species transfer → **localisation transfers at +0.256, fitness at 0.314, codon usage not at all** | **measured**, length is the control at 0.907 | 70 |
+| 7 | The network → **24x the reach at two thirds the accuracy; weighting recovers 5.7 points** | **measured and drawn** over 13 edge layers | 100 |
+| 8 | Strains → **dense granules 2.06 and apical secretory 1.73 against 1.36; everything internal below** | **measured and drawn** | 100 |
+| 9 | Species transfer → **localisation transfers at +0.256, fitness at 0.314, codon usage not at all** | **measured and drawn**, length is the control at 0.907 | 100 |
 | 10 | The host → **mostly private**, and the single-cell check says the parasite is unchanged (1 of 85 targets) | **measured on pseudobulk AND on the 126,495 cells**; co-folding remains | 75 |
-| 11 | Filling the map → **5 of 12 targets beat guessing; localisation 76.5 % against 33.1 %** | **measured** from 1,047,574 held-out calls | 70 |
-| 12 | Measured absence → **host response 94.7 % unmeasured, transcript 0.1 %** | **measured**; prescriptive line stands | 70 |
-| — | **The manuscript**, each figure in a two-cell table with the legend below | **built**; legends assembled from the results; 4 of 12 panels drawn | 55 |
+| 11 | Filling the map → **5 of 12 targets beat guessing; localisation 76.5 % against 33.1 %** | **measured and drawn** from 1,047,574 held-out calls | 100 |
+| 12 | Measured absence → **host response 94.7 % unmeasured, transcript 0.1 %** | **measured and drawn**; prescriptive line stands | 100 |
+| — | **The manuscript**, each figure in a two-cell table with the legend below | **done** — 12 tables, 12 images embedded, no placeholders | 100 |
 
 ### Data
 105 study matrices built (0 failed), taking the omics store to 128 studies with gene-level
@@ -56,9 +56,8 @@ or a stub and the skill records that their style was NOT copied.
 * **The whole network trades accuracy for reach**: 24 times the genes at two thirds the accuracy, and the naive union is dragged down by its biggest and worst layer. Weighting layers by what each is worth recovers 5.7 points.
 * **Co-expression modules are compartments** — 14 of 23, one of them 78.6 % ribosome against 3.8 % matched — and the apical secretory machinery splits into two modules, not one.
 
-**Named next jobs:** draw the eight panels that are measured but undrawn (figures 2, 3, 4, 7, 8,
-9, 10, 11); then a runnable route through ParaScape per figure (B2, B3); then the module
-reshaping (C1-C3), which stays gated on the figures.
+**Named next jobs:** the module reshaping (C1-C3) is the only paper-driven work left, and it is
+no longer gated: the figures exist.
 
 **Decisions taken (Einar, 2026-11-18):** twelve figures, no merging · the network is not
 co-expression drawn as a graph, so the edge layer becomes an object rather than a view · the
@@ -74,8 +73,8 @@ localisation panel, because colour cannot separate 0.94 from 0.93.
 
 | Item | State | % |
 |---|---|---|
-| Every analysis in the paper runnable inside ParaScape | 1 of 12 figures has a module (Reach) | 8 |
-| Each module saves its result with what it was made from | Reach does; nothing else | 10 |
+| Every analysis in the paper runnable inside ParaScape | **done** — the Findings module runs all 14 analyses across the 12 figures | 100 |
+| Each analysis saves its result with what it was made from | **done** — every finding carries its result directory and summary | 100 |
 | Reach: the cluster-against-treatment module | **done** — `300cac69`, 12 tests in a real window | 100 |
 | Interface on the spaCR pattern (instruction 98) | done | 100 |
 | Organism spaces (instruction [53](open/53_organism_spaces.md)) | Hs, Mm, Cp built; packs, cross-space bridges, per-space calibration open | 60 |
