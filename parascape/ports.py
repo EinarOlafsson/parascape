@@ -727,6 +727,18 @@ _DECLARATIONS = (
         produces=(Port(SCORECARD, "record",
                        description="how often that kind of call is right, against chance"),)),
     ModulePorts(
+        key="findings",
+        # The subject is a QUESTION: each finding is one the paper asks and answers. It produces a
+        # RUN, because what it leaves behind is a result beside the record of what made it.
+        summary="every analysis behind the paper, with the record of what it was made from",
+        consumes=(Port(QUESTION, "finding",
+                       description="which analysis of the paper to run"),),
+        # It produces no JOB on purpose. The analysis runs in a process of its own and its output
+        # is shown in the module, never registered with the Jobs panel, and declaring a job it
+        # does not hand to the runner would be a promise the module cannot keep.
+        produces=(Port(RUN, "result",
+                       description="the result directory, with the summary of what made it"),)),
+    ModulePorts(
         key="runs",
         summary="every inference saved, with the data and settings it used",
         consumes=(Port(RUN, "runs", description="the saved inferences to look through"),),

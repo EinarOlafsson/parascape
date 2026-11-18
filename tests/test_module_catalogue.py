@@ -219,9 +219,10 @@ def test_the_shell_builders_are_read_from_the_catalogue():
     assert MOD.shell_module("list") == "list_module", "the gene list card (98, WP9)"
     assert MOD.shell_module("drop") == "", "a tool is not built by a shell module"
     assert MOD.shell_module("reach") == "reach_module", "the cluster-against-treatment module"
+    assert MOD.shell_module("findings") == "findings_module", "the paper analyses (101, B2)"
     assert set(MOD.shell_modules()) == {"map_module", "gene_module", "network_module",
                                         "infer_module", "predict_module", "screen_module",
-                                        "list_module", "reach_module"}
+                                        "list_module", "reach_module", "findings_module"}
     assert len(MOD.shell_modules()) == len(set(MOD.shell_modules()))
 
 
