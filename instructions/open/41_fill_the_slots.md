@@ -3598,6 +3598,32 @@ A release was therefore built rather than leaving the documented test command re
 the suite against this commit. It is a LOCAL build only: nothing was published and no version was cut,
 because publishing needs a Hugging Face token with write access to the dataset.
 
+**Four Plasmodium slots are empty for want of a BUILD, not for want of data (measured
+2026-11-18).** `deposit_pf_liver_transcriptome.tsv`, `deposit_pf_midgut_transcriptome.tsv`,
+`deposit_pf_translation_efficiency.tsv` and one more each sit on disk with 5,720 rows and carry
+exactly the columns their slots name (`expr_pf_liver_day6`, `expr_midgut_*`,
+`pf_ribosome_footprint_cpm`). None of those columns is in the shipped `pf_nodes.parquet`, so the
+slots read empty. Merging the deposits into the node table in memory and recounting takes
+Plasmodium from **71/110 to 75/110** feature slots filled, closing:
+
+* TF binding · per factor
+* transcription · liver stage
+* transcription · mosquito stages
+* translation efficiency · asexual blood stage
+
+Nothing needs downloading or curating for these four. They need a data release built from the
+current checkout, with the manifest trap above respected. **Not done here**, because building a
+release is a heavy job and rewrites `parascape/data_manifest.json`, and the box was carrying other
+people's work when this was found.
+
+**And the arm-by-arm picture is much better than the headline.** With the bridge and metabolite
+tables supplied, Toxoplasma is **122/125 feature slots filled (97.6 %)** and only three are empty
+(transcription in an IFN-gamma macrophage, translation per cell-cycle phase, protein turnover).
+The gap is Plasmodium at 71/110. A first attempt at this count said seven Tg slots were empty: it
+omitted the `tables` argument, which is the exact failure `is_filled` documents, where eight
+Toxoplasma slots were once counted unfilled and chased with downloads while their data was already
+in the graph. Pass the tables.
+
 **The v4 candidate list cannot be used as it stands, and the number is 11.1 per cent (measured
 2026-11-18).** Of its 81 candidates over 14 slots, 37 (45.7 per cent) name the ORGANISM of the slot
 they are offered for and 21 (25.9 per cent) name the ASSAY; only **9 name both**. The failures are
