@@ -1,0 +1,13 @@
+{
+  "parsed_contrasts": 178,
+  "studies": 19,
+  "perturbations_repeated_across_studies": {
+    "genotype|deltabfd1": 2
+  },
+  "pairs": 20100,
+  "median_abs_rho_same_study": 0.2843640939255108,
+  "median_abs_rho_different_study": 0.08546523420193505,
+  "ratio": 3.3272487530265544,
+  "p_same_study_more_alike": 0.0,
+  "axis_note": "same axis across studies 0.090 against 0.085"
+}
