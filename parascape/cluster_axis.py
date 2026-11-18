@@ -212,3 +212,102 @@ def _benjamini_hochberg(p: pd.Series) -> pd.Series:
     adjusted = np.minimum.accumulate(adjusted[::-1])[::-1].clip(0, 1)
     out.loc[have.index] = adjusted
     return out
+
+
+#: A cluster keeps at most this many markers when they are derived from an expression block.
+TOP_MARKERS = 150
+
+#: A gene is a marker of its best cluster only if it is this many times higher there than in the
+#: runner-up. 1.0 would make every gene a marker of whichever cluster happens to be highest.
+MIN_MARGIN = 1.25
+
+
+def markers_from_blocks(frame: pd.DataFrame, columns: dict, *, top: int = TOP_MARKERS,
+                        min_margin: float = MIN_MARGIN, gene_column: str = "gene_id") -> dict:
+    """Marker sets for each cluster, from a block of one average-expression column per cluster.
+
+    This is how the bradyzoite clusters were turned into gene sets, and it is here rather than in a
+    script because the alternative is every user inventing their own rule and none of them saying
+    which. A published single-cell paper usually ships exactly this: one average expression per
+    gene per cluster, five or ten columns side by side.
+
+    A gene marks the cluster where it is highest, and only when it is at least `min_margin` times
+    the runner-up, so a gene expressed evenly everywhere marks nothing. The `top` kept are the ones
+    with the largest margin, because a long list of weak markers is dominated by genes that are
+    merely slightly higher.
+
+    :param frame: one row per gene, with `gene_column` and the cluster columns.
+    :param columns: cluster name -> the column holding its average expression.
+    :param min_margin: the ratio over the runner-up a marker must reach.
+    :returns: cluster name -> its marker genes, longest margin first. A cluster with no gene of its
+        own is present with an empty list rather than absent, because "nothing marks it" is a result.
+    :raises ValueError: when a named column is not in the frame, or fewer than two clusters are
+        given -- a single column has no runner-up to be higher than.
+    """
+    if len(columns) < 2:
+        raise ValueError("two or more cluster columns are needed; a margin needs a runner-up")
+    missing = [c for c in columns.values() if c not in frame.columns]
+    if missing:
+        raise ValueError("not in the table: " + ", ".join(map(str, missing)))
+    if gene_column not in frame.columns:
+        raise ValueError(f"no {gene_column!r} column to name the genes by")
+
+    names = list(columns)
+    block = frame[[columns[n] for n in names]].apply(pd.to_numeric, errors="coerce")
+    block.index = frame[gene_column].astype(str).to_numpy()
+    block = block.dropna(how="any")
+    values = block.to_numpy(dtype=float)
+    out = {n: [] for n in names}
+    if len(block) == 0:
+        return out
+
+    order = np.argsort(-values, axis=1)
+    best, second = order[:, 0], order[:, 1]
+    rows = np.arange(len(values))
+    top_value = values[rows, best]
+    runner_up = values[rows, second]
+    # A margin over a runner-up of zero is unbounded, and a gene measured in one cluster only is
+    # not evidence of specificity; both are held to the same ratio by a small floor.
+    margin = top_value / np.maximum(runner_up, 1e-9)
+    keep = (margin >= min_margin) & (top_value > 0)
+    for i, name in enumerate(names):
+        mine = rows[keep & (best == i)]
+        mine = mine[np.argsort(-margin[mine])][:top]
+        out[name] = [str(block.index[j]) for j in mine]
+    return out
+
+
+def axis_catalogue(release: str | None = None) -> pd.DataFrame:
+    """Every within-study contrast ParaScape has stored, as candidate axes.
+
+    The supply is the expression traits release: one shrunken log2 fold change per gene per
+    contrast, each computed inside one study against that study's own control. A drug treatment, a
+    knockout, a pH switch and a time point are all the same shape of thing here, which is the point
+    -- the engine does not care which, and the person choosing does.
+
+    :returns: one row per contrast with its study, its label and how many genes it measures,
+        indexed by the column name. Empty when no release is present.
+    """
+    from . import perturbation_atlas as PA
+    try:
+        store = PA.load(release)
+    except (FileNotFoundError, IndexError, OSError, KeyError):
+        return pd.DataFrame()
+    registry, lfc = store["registry"].copy(), store["lfc"]
+    registry["n_genes"] = [int(lfc[c].notna().sum()) for c in registry.index]
+    registry["release"] = store["release"]
+    keep = [c for c in ("study", "contrast_label", "contrast", "n_treatment", "n_control",
+                        "n_genes", "release") if c in registry.columns]
+    return registry[keep]
+
+
+def axis_values(column: str, release: str | None = None) -> pd.Series:
+    """The per-gene fold changes of one stored contrast, by gene identifier.
+
+    :raises KeyError: when no stored contrast is named `column`.
+    """
+    from . import perturbation_atlas as PA
+    store = PA.load(release)
+    if column not in store["lfc"].columns:
+        raise KeyError(f"no stored contrast named {column!r}")
+    return store["lfc"][column].dropna()

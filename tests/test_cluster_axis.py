@@ -122,3 +122,67 @@ def test_a_set_in_the_middle_of_the_range_is_matched_fine():
     axis = pd.Series(rng.normal(size=500), index=genes)
     res = CA.test_clusters_against_axis({"middle": genes[240:280]}, axis, expression, n_null=300)
     assert bool(res.table.loc["middle", "expression_matched"]) is True
+
+
+# ----------------------------------------------- markers out of a block of cluster averages
+
+@pytest.fixture
+def block():
+    """Four genes: one specific to each of two clusters, one flat, one measured in neither."""
+    return pd.DataFrame({
+        "gene_id": ["SPEC_A", "SPEC_B", "FLAT", "ABSENT"],
+        "c_A": [10.0, 1.0, 4.0, np.nan],
+        "c_B": [1.0, 12.0, 4.1, 3.0],
+    })
+
+
+def test_a_gene_marks_the_cluster_it_is_highest_in(block):
+    out = CA.markers_from_blocks(block, {"A": "c_A", "B": "c_B"})
+    assert out["A"] == ["SPEC_A"]
+    assert out["B"] == ["SPEC_B"]
+
+
+def test_a_gene_expressed_evenly_marks_nothing(block):
+    """The rule that stops every gene becoming a marker of whichever cluster is highest."""
+    out = CA.markers_from_blocks(block, {"A": "c_A", "B": "c_B"})
+    assert "FLAT" not in out["A"] + out["B"]
+
+
+def test_a_cluster_with_no_gene_of_its_own_is_present_and_empty():
+    frame = pd.DataFrame({"gene_id": ["x", "y"], "c_A": [1.0, 1.0], "c_B": [5.0, 6.0]})
+    out = CA.markers_from_blocks(frame, {"A": "c_A", "B": "c_B"})
+    assert out["A"] == [], "nothing marks it is a result, not a missing key"
+    assert set(out["B"]) == {"x", "y"}
+
+
+def test_markers_are_ordered_by_how_specific_they_are():
+    frame = pd.DataFrame({"gene_id": ["weak", "strong"], "c_A": [2.0, 50.0], "c_B": [1.0, 1.0]})
+    out = CA.markers_from_blocks(frame, {"A": "c_A", "B": "c_B"}, top=2)
+    assert out["A"] == ["strong", "weak"]
+
+
+def test_one_cluster_column_is_refused_because_there_is_no_runner_up(block):
+    with pytest.raises(ValueError, match="runner-up"):
+        CA.markers_from_blocks(block, {"A": "c_A"})
+
+
+def test_a_column_that_is_not_there_is_named(block):
+    with pytest.raises(ValueError, match="c_Z"):
+        CA.markers_from_blocks(block, {"A": "c_A", "Z": "c_Z"})
+
+
+def test_the_block_and_the_axis_meet_end_to_end(block):
+    """The whole mechanism in five lines: a published cluster block, a contrast, an answer."""
+    rng = np.random.default_rng(4)
+    genes = [f"G{i:04d}" for i in range(400)]
+    frame = pd.DataFrame({"gene_id": genes,
+                          "c_A": rng.lognormal(size=400) + 1.0,
+                          "c_B": rng.lognormal(size=400) + 1.0})
+    frame.loc[:59, "c_A"] = frame.loc[:59, "c_A"] + 30.0        # 60 genes mark cluster A
+    markers = CA.markers_from_blocks(frame, {"A": "c_A", "B": "c_B"})
+    assert len(markers["A"]) >= 30
+    expression = pd.Series(frame[["c_A", "c_B"]].mean(axis=1).to_numpy(), index=genes)
+    axis = pd.Series(rng.normal(size=400), index=genes)
+    axis.loc[markers["A"]] = axis.loc[markers["A"]] + 5.0       # the treatment hits cluster A
+    res = CA.test_clusters_against_axis(markers, axis, expression, n_null=300, axis_name="a drug")
+    assert "A" in res.reached
