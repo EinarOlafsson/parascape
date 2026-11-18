@@ -3598,6 +3598,13 @@ A release was therefore built rather than leaving the documented test command re
 the suite against this commit. It is a LOCAL build only: nothing was published and no version was cut,
 because publishing needs a Hugging Face token with write access to the dataset.
 
+**The cache and the checkout must match in BOTH directions.** A release built from a NEWER checkout
+breaks an OLDER one: on 2026-11-18 a worktree branched from 0.0.13.0 was pointed at the release built
+after the seven host columns landed, and `test_host_species.py` died with an `AttributeError` on a
+missing organism, because the code met columns it had never heard of. Nightly passed the same test,
+and the same worktree passed it against the release it was built for. So a failure of this shape is a
+mismatch, not a defect: check what the worktree is branched from before blaming the code.
+
 **A trap to know about before anyone repeats this.** `scripts/build_data_release.py` REWRITES
 `parascape/data_manifest.json` in the checkout as a side effect. The rewrite dropped
 `data_components.json` from the manifest and cut it from 43,089 lines to 1,069. Committing that would
