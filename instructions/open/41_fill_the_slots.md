@@ -3598,23 +3598,28 @@ A release was therefore built rather than leaving the documented test command re
 the suite against this commit. It is a LOCAL build only: nothing was published and no version was cut,
 because publishing needs a Hugging Face token with write access to the dataset.
 
-**Four Plasmodium slots are empty for want of a BUILD, not for want of data (measured
-2026-11-18).** `deposit_pf_liver_transcriptome.tsv`, `deposit_pf_midgut_transcriptome.tsv`,
-`deposit_pf_translation_efficiency.tsv` and one more each sit on disk with 5,720 rows and carry
-exactly the columns their slots name (`expr_pf_liver_day6`, `expr_midgut_*`,
-`pf_ribosome_footprint_cpm`). None of those columns is in the shipped `pf_nodes.parquet`, so the
-slots read empty. Merging the deposits into the node table in memory and recounting takes
-Plasmodium from **71/110 to 75/110** feature slots filled, closing:
+**Four Plasmodium slots are empty BY DECISION, not by oversight. CORRECTED 2026-11-18, having
+first got this wrong.** `deposit_pf_liver_transcriptome.tsv`, `deposit_pf_midgut_transcriptome.tsv`,
+`deposit_pf_translation_efficiency.tsv` and `deposit_pf_dbsp_occupancy.tsv` all sit on disk with
+5,720 rows carrying exactly the columns their slots name, and merging them in memory takes
+Plasmodium from 71/110 feature slots to 75/110 — closing TF binding per factor, transcription in
+the liver stage, transcription in the mosquito stages, and translation efficiency in the asexual
+blood stage.
 
-* TF binding · per factor
-* transcription · liver stage
-* transcription · mosquito stages
-* translation efficiency · asexual blood stage
+**They are held out on purpose.** `deposits.HELD_OUT_OF_NODES` names all four, and the comment
+above it records why: Einar chose on 2026-11-10 to keep the shipped table as the benchmarks were
+frozen against, rather than spend the one-shot held-out budget again. Nothing is lost — each
+deposit is still derived and still ships as `parascape/data/deposit_<key>.tsv` — and the hold is
+undone by deleting a key there and re-running `scripts/add_deposits.py` once the benchmark is
+re-prepared. **That is Einar's call and the hold stays until he makes it.**
 
-Nothing needs downloading or curating for these four. They need a data release built from the
-current checkout, with the manifest trap above respected. **Not done here**, because building a
-release is a heavy job and rewrites `parascape/data_manifest.json`, and the box was carrying other
-people's work when this was found.
+So these four are NOT work waiting to be done. Anyone counting empty slots should count them as
+held, not as missing. What was actually tried on 2026-11-18, and what it showed:
+
+* a data release built from the current checkout adds nothing — `build_data_release.py` packages
+  the node tables that exist, it does not rebuild them from deposits (pf_nodes: 168 columns before
+  and after). The manifest trap above fired exactly as documented and was reverted;
+* `scripts/add_deposits.py --dry-run` reports `Pf: 168 columns -> 168`, which is the hold working.
 
 **And the arm-by-arm picture is much better than the headline.** With the bridge and metabolite
 tables supplied, Toxoplasma is **122/125 feature slots filled (97.6 %)** and only three are empty
