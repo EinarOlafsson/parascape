@@ -1,0 +1,129 @@
+{
+  "genes": 8140,
+  "categories": 13,
+  "columns": 434,
+  "genes_with_nothing": 0,
+  "genes_with_two_or_fewer": 106,
+  "distribution": {
+    "1": 7,
+    "2": 99,
+    "3": 108,
+    "4": 206,
+    "5": 903,
+    "6": 1155,
+    "7": 860,
+    "8": 850,
+    "9": 1069,
+    "10": 1862,
+    "11": 904,
+    "12": 116,
+    "13": 1
+  },
+  "by_category": [
+    {
+      "category": "host_response",
+      "description": "How the host cell or host immune system responds to the parasite or protein.",
+      "columns": 28,
+      "genes_measured": 433,
+      "genes_never_measured": 7707,
+      "share_measured": 0.05319410319410319
+    },
+    {
+      "category": "phenotype",
+      "description": "What is observed when the gene is perturbed -- imaging, drug sensitivity, differentiation.",
+      "columns": 16,
+      "genes_measured": 558,
+      "genes_never_measured": 7582,
+      "share_measured": 0.06855036855036856
+    },
+    {
+      "category": "function",
+      "description": "What the protein is held to DO: GO terms, EC numbers, coarse functional class.",
+      "columns": 1,
+      "genes_measured": 1313,
+      "genes_never_measured": 6827,
+      "share_measured": 0.1613022113022113
+    },
+    {
+      "category": "interaction",
+      "description": "Which other molecules it is physically with.",
+      "columns": 12,
+      "genes_measured": 3131,
+      "genes_never_measured": 5009,
+      "share_measured": 0.38464373464373464
+    },
+    {
+      "category": "place",
+      "description": "Where in the cell, or at which interface, the protein is -- localisation knowledge.",
+      "columns": 41,
+      "genes_measured": 4018,
+      "genes_never_measured": 4122,
+      "share_measured": 0.49361179361179364
+    },
+    {
+      "category": "modification",
+      "description": "Which covalent modifications the molecule carries (PTM sites, m6A).",
+      "columns": 17,
+      "genes_measured": 4814,
+      "genes_never_measured": 3326,
+      "share_measured": 0.5914004914004914
+    },
+    {
+      "category": "protein_abundance",
+      "description": "How much of the protein there is.",
+      "columns": 26,
+      "genes_measured": 5262,
+      "genes_never_measured": 2878,
+      "share_measured": 0.6464373464373464
+    },
+    {
+      "category": "sequence",
+      "description": "What the primary sequence is and what can be read directly off it.",
+      "columns": 13,
+      "genes_measured": 6167,
+      "genes_never_measured": 1973,
+      "share_measured": 0.7576167076167076
+    },
+    {
+      "category": "fitness",
+      "description": "How much the parasite needs the gene to survive or grow in some condition.",
+      "columns": 46,
+      "genes_measured": 7631,
+      "genes_never_measured": 509,
+      "share_measured": 0.9374692874692875
+    },
+    {
+      "category": "structure",
+      "description": "What the folded shape is, and how confidently it is known.",
+      "columns": 13,
+      "genes_measured": 7741,
+      "genes_never_measured": 399,
+      "share_measured": 0.950982800982801
+    },
+    {
+      "category": "translation",
+      "description": "How much of that RNA is being translated -- ribosome occupancy and efficiency.",
+      "columns": 46,
+      "genes_measured": 7989,
+      "genes_never_measured": 151,
+      "share_measured": 0.9814496314496315
+    },
+    {
+      "category": "chromatin",
+      "description": "The state of the locus itself: accessibility, histone marks, factor occupancy.",
+      "columns": 2,
+      "genes_measured": 8020,
+      "genes_never_measured": 120,
+      "share_measured": 0.9852579852579852
+    },
+    {
+      "category": "transcript",
+      "description": "How much RNA of the gene there is, in some state or contrast.",
+      "columns": 173,
+      "genes_measured": 8131,
+      "genes_never_measured": 9,
+      "share_measured": 0.9988943488943489
+    }
+  ],
+  "largest_gap": "host_response"
+}
