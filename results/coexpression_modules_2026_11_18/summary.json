@@ -1,0 +1,262 @@
+{
+  "genes": 8018,
+  "modules": 24,
+  "named": 14,
+  "n_null": 1000,
+  "matched_on": "how many categories of knowledge the gene carries",
+  "table": [
+    {
+      "module": 11,
+      "genes": 84,
+      "compartment": "ribosome_RNP",
+      "share": 0.7857142857142857,
+      "matched_baseline": 0.037726190476190476,
+      "over_detection_limit": 18.472685637886237,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 10,
+      "genes": 412,
+      "compartment": "apical_secretory",
+      "share": 0.27184466019417475,
+      "matched_baseline": 0.07584951456310678,
+      "over_detection_limit": 8.119661849575753,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 21,
+      "genes": 466,
+      "compartment": "apical_secretory",
+      "share": 0.26609442060085836,
+      "matched_baseline": 0.08027682403433477,
+      "over_detection_limit": 7.430875721741884,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 9,
+      "genes": 343,
+      "compartment": "pellicle_PM_IMC",
+      "share": 0.21282798833819241,
+      "matched_baseline": 0.05784548104956268,
+      "over_detection_limit": 6.622499606243578,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 19,
+      "genes": 261,
+      "compartment": "mitochondrion",
+      "share": 0.2720306513409962,
+      "matched_baseline": 0.07764750957854406,
+      "over_detection_limit": 5.922116123720443,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 23,
+      "genes": 484,
+      "compartment": "nucleus",
+      "share": 0.3884297520661157,
+      "matched_baseline": 0.207349173553719,
+      "over_detection_limit": 5.208703408018145,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 18,
+      "genes": 277,
+      "compartment": "proteasome",
+      "share": 0.07220216606498195,
+      "matched_baseline": 0.010353790613718413,
+      "over_detection_limit": 5.205638447289654,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 12,
+      "genes": 297,
+      "compartment": "ER",
+      "share": 0.13468013468013468,
+      "matched_baseline": 0.039572390572390564,
+      "over_detection_limit": 4.2495129635958815,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 24,
+      "genes": 425,
+      "compartment": "nucleus",
+      "share": 0.35294117647058826,
+      "matched_baseline": 0.2055835294117647,
+      "over_detection_limit": 4.1272650425688555,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 22,
+      "genes": 712,
+      "compartment": "mitochondrion",
+      "share": 0.14747191011235955,
+      "matched_baseline": 0.0715182584269663,
+      "over_detection_limit": 3.958239274140927,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 20,
+      "genes": 367,
+      "compartment": "nucleus",
+      "share": 0.38419618528610355,
+      "matched_baseline": 0.2413051771117166,
+      "over_detection_limit": 3.46204163706135,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 14,
+      "genes": 352,
+      "compartment": "cytosol",
+      "share": 0.15056818181818182,
+      "matched_baseline": 0.0787443181818182,
+      "over_detection_limit": 2.71506044477243,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 13,
+      "genes": 404,
+      "compartment": "apicoplast",
+      "share": 0.06435643564356436,
+      "matched_baseline": 0.025066831683168325,
+      "over_detection_limit": 2.6343875015818563,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 6,
+      "genes": 51,
+      "compartment": "apicoplast",
+      "share": 0.058823529411764705,
+      "matched_baseline": 0.006470588235294118,
+      "over_detection_limit": 2.3953526207680826,
+      "p": 0.003996003996003996,
+      "q": 0.0919080919080919,
+      "named": false
+    },
+    {
+      "module": 17,
+      "genes": 270,
+      "compartment": "ER",
+      "share": 0.08148148148148149,
+      "matched_baseline": 0.033855555555555555,
+      "over_detection_limit": 2.295122155080712,
+      "p": 0.000999000999000999,
+      "q": 0.022977022977022976,
+      "named": true
+    },
+    {
+      "module": 2,
+      "genes": 384,
+      "compartment": "apical_secretory",
+      "share": 0.052083333333333336,
+      "matched_baseline": 0.028481770833333333,
+      "over_detection_limit": 1.4789784281604832,
+      "p": 0.002997002997002997,
+      "q": 0.06893106893106893,
+      "named": false
+    },
+    {
+      "module": 16,
+      "genes": 540,
+      "compartment": "cytosol",
+      "share": 0.1,
+      "matched_baseline": 0.07118703703703705,
+      "over_detection_limit": 1.3824299522092904,
+      "p": 0.006993006993006993,
+      "q": 0.16083916083916083,
+      "named": false
+    },
+    {
+      "module": 5,
+      "genes": 219,
+      "compartment": "pellicle_PM_IMC",
+      "share": 0.0228310502283105,
+      "matched_baseline": 0.007835616438356164,
+      "over_detection_limit": 1.2749465328801939,
+      "p": 0.03296703296703297,
+      "q": 0.7582417582417582,
+      "named": false
+    },
+    {
+      "module": 15,
+      "genes": 354,
+      "compartment": "apical_secretory",
+      "share": 0.062146892655367235,
+      "matched_baseline": 0.04576836158192091,
+      "over_detection_limit": 0.7792845975353193,
+      "p": 0.08191808191808192,
+      "q": 1.0,
+      "named": false
+    },
+    {
+      "module": 1,
+      "genes": 393,
+      "compartment": "pellicle_PM_IMC",
+      "share": 0.015267175572519083,
+      "matched_baseline": 0.010900763358778626,
+      "over_detection_limit": 0.4394439823865106,
+      "p": 0.25374625374625376,
+      "q": 1.0,
+      "named": false
+    },
+    {
+      "module": 8,
+      "genes": 336,
+      "compartment": "ER",
+      "share": 0.005952380952380952,
+      "matched_baseline": 0.008610119047619047,
+      "over_detection_limit": -0.27383395295343566,
+      "p": 0.7952047952047953,
+      "q": 1.0,
+      "named": false
+    },
+    {
+      "module": 3,
+      "genes": 532,
+      "compartment": "pellicle_PM_IMC",
+      "share": 0.005639097744360902,
+      "matched_baseline": 0.009687969924812028,
+      "over_detection_limit": -0.47311481527336247,
+      "p": 0.8701298701298701,
+      "q": 1.0,
+      "named": false
+    },
+    {
+      "module": 4,
+      "genes": 36,
+      "compartment": "",
+      "share": NaN,
+      "matched_baseline": NaN,
+      "over_detection_limit": NaN,
+      "p": NaN,
+      "q": NaN,
+      "named": false
+    }
+  ]
+}
