@@ -102,6 +102,13 @@ def control_profile(study: str, controls: set, root: str, quantifier: str = "sal
     if len(runs) < MIN_CONTROL_RUNS:
         return None, len(runs)
     mean = tpm[runs].mean(axis=1)
+    if mean.nunique(dropna=True) <= 1:
+        # A profile with one value is not a profile. GSE245775 quantified to zero across all 24
+        # runs against both references, so its "control profile" was 8,157 identical zeros: every
+        # correlation against it came back undefined, and the clustering then put it in a cluster
+        # of its own BECAUSE it was unscorable. That read as two clusters merging into one after
+        # the correction, which would have been a finding made entirely of a missing number.
+        return None, -len(runs)
     return np.log2(mean + 1.0), len(runs)
 
 
@@ -117,8 +124,10 @@ def build_profiles(root: str) -> tuple:
             continue
         profile, n = control_profile(study, controls[study], root)
         if profile is None:
-            record.append({"study": study, "used": False, "n_control_runs": n,
-                           "reason": f"{n} control runs, fewer than {MIN_CONTROL_RUNS}"})
+            reason = (f"quantified to zero: {-n} control runs, no signal in any gene" if n < 0
+                      else f"{n} control runs, fewer than {MIN_CONTROL_RUNS}")
+            record.append({"study": study, "used": False, "n_control_runs": abs(n),
+                           "reason": reason})
             continue
         profiles[study] = profile
         record.append({"study": study, "used": True, "n_control_runs": n,
@@ -230,8 +239,12 @@ def median_offdiagonal(scores: pd.DataFrame) -> float:
 def main() -> None:
     cache = os.environ.get("PARASCAPE_CACHE", "")
     if not cache:
-        raise SystemExit("set PARASCAPE_CACHE to the release whose rnaseq matrices are to be read")
-    root = os.path.join(cache, "rnaseq")
+        raise SystemExit("set PARASCAPE_CACHE to the release whose node table is to be read")
+    # The matrices and the node table do NOT live together. A release keeps matrices under
+    # `rnaseq/matrices`; the omics store keeps them at `matrices`, and it holds far more of them
+    # because every newly quantified study is built there first. $PARASCAPE_OMICS picks the store.
+    omics = os.environ.get("PARASCAPE_OMICS", "")
+    root = omics if omics else os.path.join(cache, "rnaseq")
 
     print("reading control runs...")
     raw, record = build_profiles(root)
