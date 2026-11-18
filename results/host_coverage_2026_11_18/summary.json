@@ -1,0 +1,221 @@
+{
+  "spaces": {
+    "Hs": "human proteins",
+    "Mm": "mouse proteins",
+    "Ag": "Anopheles genes"
+  },
+  "datasets_measured": 21,
+  "under_a_quarter": 8,
+  "rows": [
+    {
+      "dataset": "pv_host_uptake",
+      "organism": "Hs",
+      "columns": 1,
+      "covered": 12,
+      "space": 21020,
+      "share": 0.000570884871550904,
+      "catalogue_says": "12 host proteins",
+      "note": ""
+    },
+    {
+      "dataset": "host_erythrocyte_proteome",
+      "organism": "Hs",
+      "columns": 2,
+      "covered": 5264,
+      "space": 21020,
+      "share": 0.25042816365366316,
+      "catalogue_says": "5,264 human proteins: 4,777 membrane, 2,350 cytoplasmic",
+      "note": ""
+    },
+    {
+      "dataset": "host_erythrocyte_surface",
+      "organism": "Hs",
+      "columns": 4,
+      "covered": 267,
+      "space": 21020,
+      "share": 0.012702188392007612,
+      "catalogue_says": "267 plasma-membrane proteins, 230 in both populations",
+      "note": ""
+    },
+    {
+      "dataset": "host_gtex_transcriptome",
+      "organism": "Hs",
+      "columns": 2,
+      "covered": 19087,
+      "space": 21020,
+      "share": 0.9080399619410086,
+      "catalogue_says": "19,087 human genes over 2 tissues",
+      "note": ""
+    },
+    {
+      "dataset": "host_k562_rhoptry_screen",
+      "organism": "Hs",
+      "columns": 3,
+      "covered": 18700,
+      "space": 21020,
+      "share": 0.8896289248334919,
+      "catalogue_says": "18,700 unambiguous protein projections; all 20,010 gene scores retained; 39 ambiguous symbols withheld",
+      "note": ""
+    },
+    {
+      "dataset": "host_hff_tg_infection",
+      "organism": "Hs",
+      "columns": 2,
+      "covered": 10631,
+      "space": 21020,
+      "share": 0.5057564224548049,
+      "catalogue_says": "10,631 human genes",
+      "note": ""
+    },
+    {
+      "dataset": "host_hepatocyte_pf_infection",
+      "organism": "Hs",
+      "columns": 2,
+      "covered": 12550,
+      "space": 21020,
+      "share": 0.5970504281636536,
+      "catalogue_says": "12,550 human genes",
+      "note": ""
+    },
+    {
+      "dataset": "host_immune_cell_rna",
+      "organism": "Hs",
+      "columns": 2,
+      "covered": 19135,
+      "space": 21020,
+      "share": 0.9103235014272122,
+      "catalogue_says": "19,135 reviewed proteins",
+      "note": ""
+    },
+    {
+      "dataset": "host_brain_cell_rna",
+      "organism": "Hs",
+      "columns": 4,
+      "covered": 18939,
+      "space": 21020,
+      "share": 0.9009990485252141,
+      "catalogue_says": "18,939 reviewed proteins",
+      "note": ""
+    },
+    {
+      "dataset": "host_tissue_proteome",
+      "organism": "Hs",
+      "columns": 3,
+      "covered": 16108,
+      "space": 21020,
+      "share": 0.7663177925784966,
+      "catalogue_says": "9,930 to 15,108 proteins per tissue",
+      "note": ""
+    },
+    {
+      "dataset": "host_fibroblast_proteome",
+      "organism": "Hs",
+      "columns": 1,
+      "covered": 6390,
+      "space": 21020,
+      "share": 0.3039961941008563,
+      "catalogue_says": "6,390 proteins (95.3% of the 6,703 in the source file)",
+      "note": ""
+    },
+    {
+      "dataset": "host_monocyte_proteome",
+      "organism": "Hs",
+      "columns": 1,
+      "covered": 4989,
+      "space": 21020,
+      "share": 0.2373453853472883,
+      "catalogue_says": "4,989 proteins (94.8% of the 5,265 in the source file)",
+      "note": ""
+    },
+    {
+      "dataset": "host_bone_marrow_proteome",
+      "organism": "Hs",
+      "columns": 1,
+      "covered": 2059,
+      "space": 21020,
+      "share": 0.09795432921027593,
+      "catalogue_says": "2,059 proteins (93.8% of the 2,195 in the source file)",
+      "note": ""
+    },
+    {
+      "dataset": "host_dermis_proteome",
+      "organism": "Hs",
+      "columns": 2,
+      "covered": 4723,
+      "space": 21020,
+      "share": 0.2246907706945766,
+      "catalogue_says": "4,437 superficial and 4,090 deep proteins (4,723 in all)",
+      "note": ""
+    },
+    {
+      "dataset": "host_monocyte_surface",
+      "organism": "Hs",
+      "columns": 1,
+      "covered": 432,
+      "space": 21020,
+      "share": 0.02055185537583254,
+      "catalogue_says": "432 proteins (436 of 437 quantified rows joined, one more outside the shipped host table)",
+      "note": ""
+    },
+    {
+      "dataset": "host_mouse_tissue_transcriptome",
+      "organism": "Mm",
+      "columns": 2,
+      "covered": 10617,
+      "space": 16473,
+      "share": 0.6445091968676016,
+      "catalogue_says": "13,739 mouse genes; brain 9,763, skeletal muscle 8,635",
+      "note": ""
+    },
+    {
+      "dataset": "host_bmdm_baseline",
+      "organism": "Mm",
+      "columns": 1,
+      "covered": 15437,
+      "space": 16473,
+      "share": 0.9371092090086809,
+      "catalogue_says": "15,437 mouse genes",
+      "note": ""
+    },
+    {
+      "dataset": "host_macrophage_surfaceome",
+      "organism": "Mm",
+      "columns": 2,
+      "covered": 1296,
+      "space": 16473,
+      "share": 0.07867419413585867,
+      "catalogue_says": "1,296 mouse surface proteins, 150 of them on primary BMDM",
+      "note": ""
+    },
+    {
+      "dataset": "host_mouse_tissue_proteome",
+      "organism": "Mm",
+      "columns": 3,
+      "covered": 11276,
+      "space": 16473,
+      "share": 0.6845140532993383,
+      "catalogue_says": "4,603 to 10,347 proteins per tissue",
+      "note": ""
+    },
+    {
+      "dataset": "host_anopheles_midgut_transcriptome",
+      "organism": "Ag",
+      "columns": 4,
+      "covered": 12574,
+      "space": 12574,
+      "share": 1.0,
+      "catalogue_says": "12,574 of 12,614 AGAP genes",
+      "note": ""
+    },
+    {
+      "dataset": "host_anopheles_salivary_gland_proteome",
+      "organism": "Ag",
+      "columns": 3,
+      "covered": 2458,
+      "space": 12574,
+      "share": 0.19548274216637507,
+      "catalogue_says": "2,936 mosquito genes; 2,458 with an abundance, 2,366 with a contrast",
+      "note": ""
+    }
+  ]
+}

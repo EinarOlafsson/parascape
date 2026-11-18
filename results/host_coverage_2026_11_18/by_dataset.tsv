@@ -1,0 +1,22 @@
+dataset	organism	columns	covered	space	share	catalogue_says	note
+pv_host_uptake	Hs	1	12	21020	0.000570884871550904	12 host proteins	
+host_erythrocyte_proteome	Hs	2	5264	21020	0.25042816365366316	5,264 human proteins: 4,777 membrane, 2,350 cytoplasmic	
+host_erythrocyte_surface	Hs	4	267	21020	0.012702188392007612	267 plasma-membrane proteins, 230 in both populations	
+host_gtex_transcriptome	Hs	2	19087	21020	0.9080399619410086	19,087 human genes over 2 tissues	
+host_k562_rhoptry_screen	Hs	3	18700	21020	0.8896289248334919	18,700 unambiguous protein projections; all 20,010 gene scores retained; 39 ambiguous symbols withheld	
+host_hff_tg_infection	Hs	2	10631	21020	0.5057564224548049	10,631 human genes	
+host_hepatocyte_pf_infection	Hs	2	12550	21020	0.5970504281636536	12,550 human genes	
+host_immune_cell_rna	Hs	2	19135	21020	0.9103235014272122	19,135 reviewed proteins	
+host_brain_cell_rna	Hs	4	18939	21020	0.9009990485252141	18,939 reviewed proteins	
+host_tissue_proteome	Hs	3	16108	21020	0.7663177925784966	9,930 to 15,108 proteins per tissue	
+host_fibroblast_proteome	Hs	1	6390	21020	0.3039961941008563	6,390 proteins (95.3% of the 6,703 in the source file)	
+host_monocyte_proteome	Hs	1	4989	21020	0.2373453853472883	4,989 proteins (94.8% of the 5,265 in the source file)	
+host_bone_marrow_proteome	Hs	1	2059	21020	0.09795432921027593	2,059 proteins (93.8% of the 2,195 in the source file)	
+host_dermis_proteome	Hs	2	4723	21020	0.2246907706945766	4,437 superficial and 4,090 deep proteins (4,723 in all)	
+host_monocyte_surface	Hs	1	432	21020	0.02055185537583254	432 proteins (436 of 437 quantified rows joined, one more outside the shipped host table)	
+host_mouse_tissue_transcriptome	Mm	2	10617	16473	0.6445091968676016	13,739 mouse genes; brain 9,763, skeletal muscle 8,635	
+host_bmdm_baseline	Mm	1	15437	16473	0.9371092090086809	15,437 mouse genes	
+host_macrophage_surfaceome	Mm	2	1296	16473	0.07867419413585867	1,296 mouse surface proteins, 150 of them on primary BMDM	
+host_mouse_tissue_proteome	Mm	3	11276	16473	0.6845140532993383	4,603 to 10,347 proteins per tissue	
+host_anopheles_midgut_transcriptome	Ag	4	12574	12574	1.0	12,574 of 12,614 AGAP genes	
+host_anopheles_salivary_gland_proteome	Ag	3	2458	12574	0.19548274216637507	2,936 mosquito genes; 2,458 with an abundance, 2,366 with a contrast	

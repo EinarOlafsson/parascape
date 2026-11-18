@@ -12,6 +12,34 @@ data access must fit the question. A highly cited review is not a dataset.
 Incompatible cohorts remain separate. Popularity cannot establish ground-truth
 accuracy. Unknown dates/counts/coverage remain unknown, not zero or guessed.
 
+
+## The A grades overstating coverage: measured and fixed, 2026-11-18
+
+The complaint was right and the cause is the DENOMINATOR. Every `coverage` string in the dataset
+catalogue reported the share of the SOURCE FILE that resolved, so `host_bone_marrow_proteome` read
+"2,059 proteins (93.8 % of the 2,195 in the source file)". True, and not the number a reader wants:
+as a share of the 21,020-row human host space it is 9.8 %.
+
+Measured for all 21 host datasets by `scripts/measure_host_coverage.py`
+(`results/host_coverage_2026_11_18/`). Eight cover under a quarter of their space:
+
+| dataset | share of its host space |
+|---|---:|
+| pv_host_uptake | 0.1 % |
+| host_erythrocyte_surface | 1.3 % |
+| host_monocyte_surface | 2.1 % |
+| host_macrophage_surfaceome | 7.9 % |
+| host_bone_marrow_proteome | 9.8 % |
+| host_anopheles_salivary_gland_proteome | 19.5 % |
+| host_dermis_proteome | 22.5 % |
+| host_monocyte_proteome | 23.7 % |
+
+Both numbers are legitimate: the share of the source says the import worked, the share of the space
+says how much of the host the dataset can speak about. A grade assigned on the first and READ as
+the second is the overstatement. Every host coverage string now carries both, so the catalogue can
+no longer be read the wrong way round. The grades themselves are untouched: what a grade should
+mean is Einar's call, and it is the remaining part of this.
+
 ## Controlled action items
 
 | Item | Percent done | Time left | Description |

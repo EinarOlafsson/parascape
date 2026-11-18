@@ -1281,7 +1281,7 @@ REGISTRY = [
                  "required in BOTH bait replicates, which takes 674 host groups to 219.", organism=organisms.TOXOPLASMA),
     Dataset("pv_host_uptake", "Host proteins at the vacuole", "post_translation", "proteomics",
             "How enriched a host protein is at the parasitophorous vacuole",
-            ("pv_enrichment_log2",), "12 host proteins", pmid="34898650",
+            ("pv_enrichment_log2",), "12 host proteins — 0.1% of the 21,020-row host space", pmid="34898650",
             accession="PLoS Pathogens 1010138 supplementary table",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8700025/supplementaryFiles",
             path="parascape/data/hs_host_proteins.parquet",
@@ -1911,7 +1911,7 @@ REGISTRY = [
             "reference", "proteomics",
             "Which human proteins are present in the cell the blood stage lives in",
             ("rbc_membrane_psms", "rbc_cytoplasm_psms"),
-            "5,264 human proteins: 4,777 membrane, 2,350 cytoplasmic", pmid="41654503",
+            "5,264 human proteins: 4,777 membrane, 2,350 cytoplasmic — 25.0% of the 21,020-row host space", pmid="41654503",
             accession="Sci Data 06792 Supplementary Table S1",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12992542/supplementaryFiles",
             path="datasets/host/erythrocyte/41654503/41597_2026_6792_MOESM2_ESM.xlsx",
@@ -1964,7 +1964,7 @@ REGISTRY = [
             "Which host proteins are reachable from outside the cell the merozoite invades",
             ("rbc_surface_copies_uk", "rbc_surface_copies_senegal",
              "rbc_surface_found_uk", "rbc_surface_found_senegal"),
-            "267 plasma-membrane proteins, 230 in both populations", pmid="31552303",
+            "267 plasma-membrane proteins, 230 in both populations — 1.3% of the 21,020-row host space", pmid="31552303",
             accession="Commun Biol 0596 Supplementary Data 2A",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6754445/supplementaryFiles",
             path="datasets/host/erythrocyte/31552303/42003_2019_596_MOESM6_ESM.xlsx",
@@ -1986,7 +1986,7 @@ REGISTRY = [
             "reference", "transcription",
             "How much of each gene the mouse tissues a bradyzoite persists in transcribe",
             ("brain_tpm", "skeletal_muscle_tpm"),
-            "13,739 mouse genes; brain 9,763, skeletal muscle 8,635", pmid="24670764",
+            "13,739 mouse genes; brain 9,763, skeletal muscle 8,635 — 64.5% of the 16,473-row host space", pmid="24670764",
             accession="E-MTAB-3579",
             url="https://www.ebi.ac.uk/gxa/experiments-content/E-MTAB-3579/download/"
                 "zip?fileType=rnaseq-baseline-rpkms&accessKey=",
@@ -2014,7 +2014,7 @@ REGISTRY = [
             "reference", "transcription",
             "How much of each gene the host cell transcribes, in the cell each parasite lives in",
             ("fibroblast_tpm", "hepatocyte_tpm"),
-            "19,087 human genes over 2 tissues", pmid="32913098", accession="GTEx v10",
+            "19,087 human genes over 2 tissues — 90.8% of the 21,020-row host space", pmid="32913098", accession="GTEx v10",
             url="https://storage.googleapis.com/adult-gtex/bulk-gex/v10/rna-seq/"
                 "GTEx_Analysis_v10_RNASeQCv2.4.2_gene_median_tpm.gct.gz",
             path="datasets/host/gtex/32913098/"
@@ -2042,7 +2042,7 @@ REGISTRY = [
             "CRISPR_screen",
             "Whether knocking out a human gene stops Toxoplasma discharging its rhoptries",
             ("rhoptry_discharge_score", "rhoptry_discharge_beta", "rhoptry_discharge_fdr"),
-            "18,700 unambiguous protein projections; all 20,010 gene scores retained; 39 ambiguous symbols withheld",
+            "18,700 unambiguous protein projections; all 20,010 gene scores retained; 39 ambiguous symbols withheld — 89.0% of the 21,020-row host space",
             pmid="42791346",
             accession="bioRxiv 10.1101/2025.10.16.682961 v2 Table S1",
             citation="Valleau D et al., Clustering of host N-glycans by the microneme MIC1/4/6 "
@@ -2072,7 +2072,7 @@ REGISTRY = [
     Dataset("host_hff_tg_infection", "Human fibroblast response to Toxoplasma infection",
             "reference", "transcription",
             "Infected against uninfected HFF, per host gene: moderated log2 change and FDR",
-            ("hff_tg_infection_log2fc", "hff_tg_infection_padj"), "10,631 human genes",
+            ("hff_tg_infection_log2fc", "hff_tg_infection_padj"), "10,631 human genes — 50.6% of the 21,020-row host space",
             accession="GSE335016",
             url="https://ftp.ncbi.nlm.nih.gov/geo/series/GSE335nnn/GSE335016/suppl/"
                 "GSE335016_245740-HOMO-gene_fpkm.txt.gz",
@@ -2088,7 +2088,7 @@ REGISTRY = [
     Dataset("host_bmdm_baseline", "Baseline mouse bone-marrow macrophage transcriptome",
             "reference", "transcription",
             "How much of each gene an unstimulated macrophage transcribes (TPM)",
-            ("bmdm_tpm",), "15,437 mouse genes", pmid="40759751", accession="GSE267544",
+            ("bmdm_tpm",), "15,437 mouse genes — 93.7% of the 16,473-row host space", pmid="40759751", accession="GSE267544",
             citation="John SV et al., Classically activated macrophages undergo functionally "
                      "significant nucleotide metabolism remodelling driven by nitric oxide. "
                      "Nat Metab 2025;7:1681-1702",
@@ -2103,7 +2103,7 @@ REGISTRY = [
             "reference", "transcription",
             "Infected against uninfected primary hepatocytes, per host gene: log2 change and FDR",
             ("hepatocyte_pf_infection_log2fc", "hepatocyte_pf_infection_padj"),
-            "12,550 human genes", pmid="41428747", accession="GSE263643",
+            "12,550 human genes — 59.7% of the 21,020-row host space", pmid="41428747", accession="GSE263643",
             citation="Kanyal A et al., Inhibition of Wnt signaling in primary human hepatocytes "
                      "promotes Plasmodium falciparum liver stage development. PLoS Pathog "
                      "2025;21:e1013800",
@@ -2122,7 +2122,7 @@ REGISTRY = [
             "reference", "proteomics",
             "Which host proteins are EXPOSED on the surface of the macrophage a tachyzoite invades",
             ("bmdm_surface_detected", "bmdm_surface_intensity"),
-            "1,296 mouse surface proteins, 150 of them on primary BMDM", pmid="25894527",
+            "1,296 mouse surface proteins, 150 of them on primary BMDM — 7.9% of the 16,473-row host space", pmid="25894527",
             accession="PLoS ONE 0121314 S1 File",
             url="https://journals.plos.org/plosone/article/file?id=10.1371/"
                 "journal.pone.0121314.s002&type=supplementary",
@@ -2939,7 +2939,7 @@ REGISTRY = [
             "RNAseq",
             "How much each gene is transcribed in a human monocyte and in a myeloid dendritic cell",
             ("monocyte_tpm", "myeloid_dc_tpm"),
-            "19,135 reviewed proteins",
+            "19,135 reviewed proteins — 91.0% of the 21,020-row host space",
             citation="Human Protein Atlas blood atlas, consensus immune-cell RNA (rna_immune_cell.tsv)",
             url="https://www.proteinatlas.org/download/tsv/rna_immune_cell.tsv.zip",
             path="datasets/host/immune_cell_rna/rna_immune_cell.tsv.zip",
@@ -2955,7 +2955,7 @@ REGISTRY = [
             "scRNAseq",
             "How much each gene is transcribed in a neuron, an astrocyte or a microglial cell",
             ("neuron_excitatory_ncpm", "neuron_inhibitory_ncpm", "astrocyte_ncpm", "microglia_ncpm"),
-            "18,939 reviewed proteins",
+            "18,939 reviewed proteins — 90.1% of the 21,020-row host space",
             citation="Human Protein Atlas single-cell RNA (rna_single_cell_type.tsv)",
             url="https://www.proteinatlas.org/download/tsv/rna_single_cell_type.tsv.zip",
             path="datasets/host/single_cell_rna/rna_single_cell_type.tsv.zip",
@@ -2969,7 +2969,7 @@ REGISTRY = [
     Dataset("host_tissue_proteome", "Human tissue protein abundance (PaxDb)", "translation", "proteomics",
             "How abundant each protein is in a human tissue, in parts per million of the proteome",
             ("astrocyte_protein_ppm", "brain_protein_ppm", "liver_protein_ppm"),
-            "9,930 to 15,108 proteins per tissue",
+            "9,930 to 15,108 proteins per tissue — 76.6% of the 21,020-row host space",
             citation="PaxDb v6.1 integrated datasets (https://pax-db.org)",
             url="https://pax-db.org/downloads/latest/datasets/9606/",
             path="datasets/host/paxdb/",
@@ -2984,7 +2984,7 @@ REGISTRY = [
             "proteomics",
             "How abundant each protein is in mouse brain, macrophage or muscle, in parts per million",
             ("mouse_brain_protein_ppm", "bmdm_protein_ppm", "skeletal_muscle_protein_ppm"),
-            "4,603 to 10,347 proteins per tissue",
+            "4,603 to 10,347 proteins per tissue — 68.5% of the 16,473-row host space",
             citation="PaxDb v6.1 integrated datasets (https://pax-db.org)",
             url="https://pax-db.org/downloads/latest/datasets/10090/",
             path="datasets/host/paxdb/",
@@ -3003,7 +3003,7 @@ REGISTRY = [
             "infectious blood meal",
             ("anopheles_midgut_36h_cpm", "anopheles_midgut_48h_cpm", "anopheles_midgut_4d_cpm",
              "anopheles_midgut_7d_cpm"),
-            "12,574 of 12,614 AGAP genes", pmid="41125888", accession="GSE284537",
+            "12,574 of 12,614 AGAP genes — 100.0% of the 12,574-row host space", pmid="41125888", accession="GSE284537",
             citation="GSE284537 (PMID 41125888), single-cell RNA of infected Anopheles gambiae "
                      "midguts, dual-organism with Plasmodium falciparum",
             url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE284537",
@@ -3032,7 +3032,7 @@ REGISTRY = [
     Dataset("host_fibroblast_proteome", "Human skin fibroblast protein abundance (PaxDb, PXD032893)",
             "translation", "proteomics",
             "How abundant each protein is in untreated human skin fibroblasts, in parts per million",
-            ("fibroblast_protein_ppm",), "6,390 proteins (95.3% of the 6,703 in the source file)",
+            ("fibroblast_protein_ppm",), "6,390 proteins (95.3% of the 6,703 in the source file) — 30.4% of the 21,020-row host space",
             pmid="35743299", accession="PXD032893",
             citation="Martinez-Martinez E et al., Int J Mol Sci 2022 (PMID 35743299), PRIDE PXD032893, via "
                      "PaxDb v6.1 (https://pax-db.org)",
@@ -3050,7 +3050,7 @@ REGISTRY = [
     Dataset("host_monocyte_proteome", "Human monocyte protein abundance (PaxDb, Kim 2014 draft map)",
             "translation", "proteomics",
             "How abundant each protein is in adult human monocytes, in parts per million",
-            ("monocyte_protein_ppm",), "4,989 proteins (94.8% of the 5,265 in the source file)",
+            ("monocyte_protein_ppm",), "4,989 proteins (94.8% of the 5,265 in the source file) — 23.7% of the 21,020-row host space",
             pmid="24870542", accession="PXD000561",
             citation="Kim MS et al., A draft map of the human proteome, Nature 2014 (PMID 24870542, "
                      "doi 10.1038/nature13302), PRIDE PXD000561, via PaxDb v6.1 (https://pax-db.org)",
@@ -3065,7 +3065,7 @@ REGISTRY = [
     Dataset("host_bone_marrow_proteome", "Human bone marrow protein abundance (PaxDb, PXD020192)",
             "translation", "proteomics",
             "How abundant each protein is in human bone marrow, in parts per million",
-            ("bone_marrow_protein_ppm",), "2,059 proteins (93.8% of the 2,195 in the source file)",
+            ("bone_marrow_protein_ppm",), "2,059 proteins (93.8% of the 2,195 in the source file) — 9.8% of the 21,020-row host space",
             pmid="33107741", accession="PXD020192",
             citation="Di Meo A et al., Proteomic Profiling of the Human Tissue and Biological Fluid "
                      "Proteome, J Proteome Res 2021 (PMID 33107741), PRIDE PXD020192, via PaxDb v6.1 "
@@ -3084,7 +3084,7 @@ REGISTRY = [
             "translation", "proteomics",
             "How abundant each protein is in the superficial and the deep dermis, in parts per million",
             ("dermis_superficial_protein_ppm", "dermis_deep_protein_ppm"),
-            "4,437 superficial and 4,090 deep proteins (4,723 in all)",
+            "4,437 superficial and 4,090 deep proteins (4,723 in all) — 22.5% of the 21,020-row host space",
             pmid="35817779", accession="PXD027093",
             citation="Li J et al., Spatially resolved proteomic map shows that extracellular matrix "
                      "regulates epidermal growth, Nat Commun 2022 (PMID 35817779), PXD027093, via PaxDb "
@@ -3104,7 +3104,7 @@ REGISTRY = [
             "Which proteins a primary human monocyte carries at the surface, and how strongly "
             "(TMT reporter intensity)",
             ("monocyte_surface_classical_intensity",),
-            "432 proteins (436 of 437 quantified rows joined, one more outside the shipped host table)",
+            "432 proteins (436 of 437 quantified rows joined, one more outside the shipped host table) — 2.1% of the 21,020-row host space",
             pmid="32165698", accession="PXD013832",
             citation="Ravenhill BJ et al., Comprehensive cell surface proteomics defines markers of "
                      "classical, intermediate and non-classical monocytes, Sci Rep 2020 (PMID 32165698), "
@@ -3129,7 +3129,7 @@ REGISTRY = [
             "and how it changes 21 days after a Plasmodium berghei infection",
             ("anopheles_salivary_gland_protein_ppm", "anopheles_salivary_gland_infection_log2fc",
              "anopheles_salivary_gland_infection_padj"),
-            "2,936 mosquito genes; 2,458 with an abundance, 2,366 with a contrast",
+            "2,936 mosquito genes; 2,458 with an abundance, 2,366 with a contrast — 19.5% of the 12,574-row host space",
             pmid="41266344", accession="PXD057628",
             citation="Alves e Silva TL et al., High-resolution proteomics unveils salivary gland "
                      "disruption and saliva-hemolymph protein exchange in Plasmodium-infected mosquitoes, "
