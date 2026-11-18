@@ -1,0 +1,142 @@
+{
+  "held_out_predictions": 1047574,
+  "targets": 12,
+  "strategies": 15,
+  "targets_summarised": 12,
+  "targets_beating_baseline": 5,
+  "min_calls": 50,
+  "best": [
+    {
+      "organism": "Tg",
+      "target": "cellcycle_phase",
+      "strategy": "physical_partners",
+      "held_out_calls": 4250,
+      "answered": 133,
+      "answer_rate": 0.031294117647058826,
+      "right_when_answered": 0.7293233082706767,
+      "commonest_answer_baseline": 0.30470588235294116,
+      "lift_over_baseline": 0.42461742591773555
+    },
+    {
+      "organism": "Tg",
+      "target": "compartment",
+      "strategy": "ortholog_transfer",
+      "held_out_calls": 3804,
+      "answered": 950,
+      "answer_rate": 0.24973711882229233,
+      "right_when_answered": 0.5747368421052632,
+      "commonest_answer_baseline": 0.20215562565720294,
+      "lift_over_baseline": 0.3725812164480603
+    },
+    {
+      "organism": "Tg",
+      "target": "dtm_class",
+      "strategy": "structural_homology",
+      "held_out_calls": 18778,
+      "answered": 3474,
+      "answer_rate": 0.18500372776653531,
+      "right_when_answered": 0.7112838226827864,
+      "commonest_answer_baseline": 0.7431036319096815,
+      "lift_over_baseline": -0.03181980922689509
+    },
+    {
+      "organism": "Pf",
+      "target": "is_exported",
+      "strategy": "random_forest",
+      "held_out_calls": 13944,
+      "answered": 8224,
+      "answer_rate": 0.5897877223178428,
+      "right_when_answered": 0.9589007782101168,
+      "commonest_answer_baseline": 0.9663654618473896,
+      "lift_over_baseline": -0.007464683637272818
+    },
+    {
+      "organism": "Pf",
+      "target": "lopit_pf_location",
+      "strategy": "physical_partners",
+      "held_out_calls": 5664,
+      "answered": 168,
+      "answer_rate": 0.029661016949152543,
+      "right_when_answered": 0.7678571428571429,
+      "commonest_answer_baseline": 0.2387005649717514,
+      "lift_over_baseline": 0.5291565778853915
+    },
+    {
+      "organism": "Tg",
+      "target": "lopit_unified",
+      "strategy": "ortholog_transfer",
+      "held_out_calls": 3818,
+      "answered": 964,
+      "answer_rate": 0.25248821372446306,
+      "right_when_answered": 0.7645228215767634,
+      "commonest_answer_baseline": 0.33053954950235725,
+      "lift_over_baseline": 0.4339832720744062
+    },
+    {
+      "organism": "Pf",
+      "target": "pb_transferred_phenotype",
+      "strategy": "random_forest",
+      "held_out_calls": 7370,
+      "answered": 7370,
+      "answer_rate": 1.0,
+      "right_when_answered": 0.4478968792401628,
+      "commonest_answer_baseline": 0.47869742198100407,
+      "lift_over_baseline": -0.030800542740841264
+    },
+    {
+      "organism": "Tg",
+      "target": "screen_actin_phenotype",
+      "strategy": "random_forest",
+      "held_out_calls": 1140,
+      "answered": 822,
+      "answer_rate": 0.7210526315789474,
+      "right_when_answered": 0.8600973236009732,
+      "commonest_answer_baseline": 0.862280701754386,
+      "lift_over_baseline": -0.0021833781534127406
+    },
+    {
+      "organism": "Tg",
+      "target": "screen_any_phenotype",
+      "strategy": "random_forest",
+      "held_out_calls": 1140,
+      "answered": 822,
+      "answer_rate": 0.7210526315789474,
+      "right_when_answered": 0.6654501216545012,
+      "commonest_answer_baseline": 0.6780701754385965,
+      "lift_over_baseline": -0.012620053784095253
+    },
+    {
+      "organism": "Tg",
+      "target": "screen_apicoplast_phenotype",
+      "strategy": "random_forest",
+      "held_out_calls": 1140,
+      "answered": 822,
+      "answer_rate": 0.7210526315789474,
+      "right_when_answered": 0.7980535279805353,
+      "commonest_answer_baseline": 0.8043859649122806,
+      "lift_over_baseline": -0.006332436931745344
+    },
+    {
+      "organism": "Tg",
+      "target": "screen_egress_phenotype",
+      "strategy": "structural_homology",
+      "held_out_calls": 1140,
+      "answered": 82,
+      "answer_rate": 0.07192982456140351,
+      "right_when_answered": 0.926829268292683,
+      "commonest_answer_baseline": 0.8850877192982456,
+      "lift_over_baseline": 0.04174154899443738
+    },
+    {
+      "organism": "Tg",
+      "target": "screen_replication_phenotype",
+      "strategy": "random_forest",
+      "held_out_calls": 1140,
+      "answered": 822,
+      "answer_rate": 0.7210526315789474,
+      "right_when_answered": 0.8467153284671532,
+      "commonest_answer_baseline": 0.8508771929824561,
+      "lift_over_baseline": -0.004161864515302871
+    }
+  ]
+}
