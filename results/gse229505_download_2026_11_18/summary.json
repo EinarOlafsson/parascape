@@ -1,0 +1,139 @@
+{
+  "accession": "GSE229505",
+  "pmid": "37827122",
+  "what": "dual perturb-seq: host and parasite transcriptome plus the CRISPR guide, per cell",
+  "location": "/media/carruthers/mnt1/parascape_downloads/GSE229505",
+  "files": 54,
+  "matrices": 18,
+  "bytes": 2340821403,
+  "total_cells": 126495,
+  "per_sample": [
+    {
+      "sample": "BUT290A19_BUT290A20",
+      "cells": 2258,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 24
+    },
+    {
+      "sample": "BUT290A1_BUT290A2",
+      "cells": 3275,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 2
+    },
+    {
+      "sample": "BUT290A21_BUT290A22",
+      "cells": 6362,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A23_BUT290A24",
+      "cells": 6789,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A25_BUT290A26",
+      "cells": 6893,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A27_BUT290A28",
+      "cells": 22553,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A29_BUT290A30",
+      "cells": 5942,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A31_BUT290A32",
+      "cells": 5562,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A33_BUT290A34",
+      "cells": 4330,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A35_BUT290A36",
+      "cells": 3018,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A37_BUT290A38",
+      "cells": 10708,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A39_BUT290A40",
+      "cells": 4285,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A41_BUT290A42",
+      "cells": 5480,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A43_BUT290A44",
+      "cells": 3170,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A45_BUT290A46",
+      "cells": 10131,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A47_BUT290A48",
+      "cells": 7322,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A49_BUT290A50",
+      "cells": 8516,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    },
+    {
+      "sample": "BUT290A51_BUT290A52",
+      "cells": 9901,
+      "human_genes": 58735,
+      "parasite_genes": 8920,
+      "guides": 1312
+    }
+  ],
+  "note": "Processed 10x matrices from the GEO series supplement, not raw FASTQ. Every file decompresses; checksums in checksums.sha256. The feature space is combined: GRCh38_ human genes, TGA4___TGME49_ parasite genes, and CRISPR Guide Capture features naming the TGME49 accession each guide targets."
+}
