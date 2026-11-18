@@ -79,12 +79,14 @@ localisation panel, because colour cannot separate 0.94 from 0.93.
 | Interface on the spaCR pattern (instruction 98) | done | 100 |
 | Organism spaces (instruction [53](open/53_organism_spaces.md)) | Hs, Mm, Cp built; packs, cross-space bridges, per-space calibration open | 60 |
 | Hugging Face hosting (instruction [99](open/99_data_on_hugging_face.md)) | core data and 1,205 components published; the instruction-53 packs and the release-process upload step remain | 75 |
-| Edge layer as a first-class object (figure 7) | **blocked on figure 7** | 0 |
-| Modules reorganised to match the figure structure | **blocked on the figures** | 0 |
-| Modules no figure needs retired or merged | **blocked on the figures** | 0 |
+| Edge layer as a first-class object (figure 7) | **done** — `edge_layers.py`, 13 layers with measured worth, 6 tests | 100 |
+| Modules reorganised to match the figure structure | **measured, recommended against** — the bands are user intent, not the order of an argument; Einar's call | — |
+| Modules no figure needs retired or merged | **measured, recommended against** — 9 of 25 unexercised, and none is dead; nothing retired | — |
 
-The last three are deliberately not started. A module built for a figure nobody has drawn is a
-module built for a guess.
+C1 is done. C2 and C3 are measured and argued against in instruction 101 rather than executed:
+reorganising the bands would rebuild a navigation system around the shape of a document, and
+retiring a module removes something a user can open today. Both are Einar's call, and nothing has
+been moved or removed.
 
 ---
 
