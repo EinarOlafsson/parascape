@@ -13,6 +13,26 @@ the gate needs baits from more compartments, which come with the PRIDE projects 
 
 Requested 2026-11-05. The blocker found by the first pass of the background table.
 
+## A compartment-matched background would NOT open the gate either (tested 2026-11-18)
+
+The obvious next idea, and the one this project reaches for everywhere else: the baits are
+compartment-biased -- of the 25 pulldowns whose bait has an assigned compartment, 12 are nuclear
+and 8 apical secretory -- so compare a protein against pulldowns of baits from a DIFFERENT
+compartment rather than against all of them.
+
+It does not work, and the reason is that the premise is wrong. If complex members looked frequent
+because the baits over-represent their compartment, the 13 known complex members sitting in
+nucleus or apical secretory would be more frequent than the ones elsewhere. They are not: median
+frequency 0.676 inside against 0.704 outside, p = 0.53. And the 82 expected frequent flyers are
+almost all somewhere else entirely (81 of 82), at a median frequency of 0.817 -- they are abundant
+housekeeping proteins such as GAPDH and HSP70/90, which a whole-lysate pulldown recovers whatever
+the bait is and wherever it sits.
+
+So frequency cannot be rescued by matching on compartment, because complex members and true
+background are BOTH frequent for the same reason: whole lysate. That leaves the specificity score
+-- abundance relative to the background rather than presence in it -- as the usable product, which
+is what step 5 already concluded. Recorded here so the matched-background route is not built.
+
 ## Why
 The background frequency column is **not usable as a filter**: the known complexes sit inside the frequent-flyer
 range (MyoA glideosome 0.38-0.88, AMA1-RON 0.76-0.85 against actin 0.97, HSP70/90 0.76-0.94), separation AUC is
