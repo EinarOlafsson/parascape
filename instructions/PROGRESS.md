@@ -18,21 +18,29 @@ reaches rather than the data it uses. Figure 2 gates the rest.
 | # | Figure — the claim it ends on | State | % |
 |---|---|---|---|
 | 1 | What ParaScape is: imports, modules, one gene space | parts exist, never assembled | 20 |
-| 2 | **Which studies can be compared at all** — control clustering, cell-cycle normalisation, the ladder | ladder built and validated; the clustering is not written | 25 |
+| 2 | **Which studies can be compared at all** | analysis built and correct; only 8 studies qualify, so blocked on matrices (103 building) | 55 |
 | 3 | RNA and protein co-expression, clustered → what the modules are | components built | 40 |
-| 4 | RNA response to treatment → which conditions group, and why | 201 contrasts on one scale | 35 |
-| 5 | Protein response to treatment; bradyzoite drug reach → subtype C is reached by 4 of 201 contrasts | Reach module built, swept, verified | 60 |
-| 6 | Which measurement explains which other → wave-built organelles are placeable from transcription alone | localisation panel built; 4 panels to go | 25 |
+| 4 | RNA response to treatment → which conditions group | 201 contrasts on one scale; blocked on the same matrices | 35 |
+| 5 | Protein response; bradyzoite reach → **subtype C is reached by 4 of 201 contrasts** | **panel drawn**, sweep saved, module built | 85 |
+| 6 | Which measurement explains which other → **transcription is 96 % of what is explainable about protein abundance** | 2 of 5 panels built (localisation, protein abundance) | 50 |
 | 7 | The network: traits on nodes, derived relationships on edges | edge layers exist, the graph does not | 10 |
-| 8 | Strains → what differs, and whether it is the effectors | data loaded, nothing drawn | 5 |
-| 9 | Species, with measured transfer per layer → when one species licenses a claim about another | one layer measured (Cp 56.7 % against 21.9 %) | 15 |
-| 10 | The host: response, vacuole, co-folding, dual perturb-seq | atlas built; the per-host-gene import is missing | 20 |
-| 11 | Filling the map, scored on held-out facts | scoreboard exists, the figure does not | 15 |
-| 12 | Measured absence → which datasets the field most needs | limits machinery exists, never assembled | 5 |
+| 8 | Strains → what differs, and whether it is the effectors | not started | 5 |
+| 9 | Species transfer → **localisation transfers at +0.256, fitness at 0.314, codon usage not at all** | **measured**, length is the control at 0.907 | 70 |
+| 10 | The host → shared response and the tissue-specific part | **per-host-gene import done** (18,007 effects, 21 effectors); co-folding and the panel remain | 45 |
+| 11 | Filling the map → **5 of 12 targets beat guessing; localisation 76.5 % against 33.1 %** | **measured** from 1,047,574 held-out calls | 70 |
+| 12 | Measured absence → **host response 94.7 % unmeasured, transcript 0.1 %** | **measured**; prescriptive line stands | 70 |
 | — | **The manuscript**, each figure in a two-cell table with the legend below | not started | 0 |
 
-**Named next jobs:** the figure 2 control-comparability analysis; importing the GSE229505 host
-differential-expression table per host gene.
+### Findings this session (2026-11-18)
+* **Subtype C** of a brain cyst is reached by 4 of 201 published contrasts, against 86 for E. Not the matching giving up: C is testable and centred in every contrast checked.
+* **Transcription explains 96 % of what is explainable** about protein abundance in Plasmodium — but on the complete-case genes. On the wider set it explains 24.3 % rather than 48.6, and that factor of two is the measurement bias.
+* **Transcription alone places the organelles built in waves** during division (5 of 13 compartments) and not the ones built continuously.
+* **Localisation transfers between species, codon usage does not.** Protein length at 0.907 is the control proving the orthologue pairing is sound.
+* **Cell cycle is not demonstrably the dominant confounder** — the correction gains +0.031 but a random axis of the same shape gains +0.020, p = 0.0896 on 8 studies. Reported because the null was run.
+* **ParaScape cannot yet fill phenotype or export.** is_exported is 95.9 % right against a 96.6 % baseline, which is worse than guessing.
+
+**Named next jobs:** finish the 103 study matrices (running) and re-run figure 2 with the power
+they give; figure 7 (the network); figures 1, 3, 4, 8 and 10; the manuscript.
 
 **Decisions taken (Einar, 2026-11-18):** twelve figures, no merging · the network is not
 co-expression drawn as a graph, so the edge layer becomes an object rather than a view · the
