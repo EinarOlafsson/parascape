@@ -1,0 +1,172 @@
+{
+  "targets": {
+    "transcript": "expr_tachy",
+    "protein_abundance": "protein_ibaq_log2",
+    "fitness": "fit_invitro_hff",
+    "translation": "te302107_tachy_r1",
+    "modification": "n_phosphosites",
+    "conservation": "snp_nonsynonymous"
+  },
+  "pairs": 14,
+  "pairs_above_5_points": 11,
+  "structural_pairs_excluded": [
+    "translation->transcript"
+  ],
+  "max_columns_per_category": 40,
+  "table": [
+    {
+      "target": "expr_tachy",
+      "target_category": "transcript",
+      "predictor_category": "translation",
+      "columns": 40,
+      "genes": 7506,
+      "r2": 0.8077219086949611,
+      "shuffled_r2": -0.0007301459240067309,
+      "lift": 0.8084520546189679,
+      "structural": true
+    },
+    {
+      "target": "expr_tachy",
+      "target_category": "transcript",
+      "predictor_category": "protein_abundance",
+      "columns": 26,
+      "genes": 534,
+      "r2": 0.5035747866837127,
+      "shuffled_r2": -0.00927541635068523,
+      "lift": 0.5128502030343979,
+      "structural": false
+    },
+    {
+      "target": "protein_ibaq_log2",
+      "target_category": "protein_abundance",
+      "predictor_category": "translation",
+      "columns": 40,
+      "genes": 735,
+      "r2": 0.3973071059094755,
+      "shuffled_r2": -0.00691288045412129,
+      "lift": 0.4042199863635968,
+      "structural": false
+    },
+    {
+      "target": "fit_invitro_hff",
+      "target_category": "fitness",
+      "predictor_category": "protein_abundance",
+      "columns": 26,
+      "genes": 523,
+      "r2": 0.3725436438254389,
+      "shuffled_r2": -0.006785676407729637,
+      "lift": 0.37932932023316857,
+      "structural": false
+    },
+    {
+      "target": "protein_ibaq_log2",
+      "target_category": "protein_abundance",
+      "predictor_category": "transcript",
+      "columns": 40,
+      "genes": 744,
+      "r2": 0.34945482384956805,
+      "shuffled_r2": -0.00459622214336595,
+      "lift": 0.354051045992934,
+      "structural": false
+    },
+    {
+      "target": "te302107_tachy_r1",
+      "target_category": "translation",
+      "predictor_category": "transcript",
+      "columns": 40,
+      "genes": 5794,
+      "r2": 0.31940892329589554,
+      "shuffled_r2": -0.0010800487120136205,
+      "lift": 0.32048897200790916,
+      "structural": false
+    },
+    {
+      "target": "fit_invitro_hff",
+      "target_category": "fitness",
+      "predictor_category": "translation",
+      "columns": 40,
+      "genes": 7325,
+      "r2": 0.2692659204703267,
+      "shuffled_r2": -0.0007712617212989464,
+      "lift": 0.27003718219162565,
+      "structural": false
+    },
+    {
+      "target": "snp_nonsynonymous",
+      "target_category": "conservation",
+      "predictor_category": "translation",
+      "columns": 40,
+      "genes": 7506,
+      "r2": 0.2630145513342864,
+      "shuffled_r2": -0.000776635000388845,
+      "lift": 0.26379118633467524,
+      "structural": false
+    },
+    {
+      "target": "te302107_tachy_r1",
+      "target_category": "translation",
+      "predictor_category": "protein_abundance",
+      "columns": 26,
+      "genes": 531,
+      "r2": 0.250573585881824,
+      "shuffled_r2": -0.005747250655542146,
+      "lift": 0.25632083653736615,
+      "structural": false
+    },
+    {
+      "target": "fit_invitro_hff",
+      "target_category": "fitness",
+      "predictor_category": "transcript",
+      "columns": 40,
+      "genes": 7243,
+      "r2": 0.24262928777268702,
+      "shuffled_r2": -0.0007350127070751278,
+      "lift": 0.24336430047976215,
+      "structural": false
+    },
+    {
+      "target": "snp_nonsynonymous",
+      "target_category": "conservation",
+      "predictor_category": "transcript",
+      "columns": 40,
+      "genes": 7723,
+      "r2": 0.15151693220453835,
+      "shuffled_r2": -0.0006109425117421907,
+      "lift": 0.15212787471628053,
+      "structural": false
+    },
+    {
+      "target": "snp_nonsynonymous",
+      "target_category": "conservation",
+      "predictor_category": "protein_abundance",
+      "columns": 26,
+      "genes": 534,
+      "r2": 0.1419494844587172,
+      "shuffled_r2": -0.007516345150301196,
+      "lift": 0.14946582960901839,
+      "structural": false
+    },
+    {
+      "target": "n_phosphosites",
+      "target_category": "modification",
+      "predictor_category": "translation",
+      "columns": 40,
+      "genes": 1172,
+      "r2": 0.038924251719629266,
+      "shuffled_r2": -0.0029923347998394856,
+      "lift": 0.04191658651946875,
+      "structural": false
+    },
+    {
+      "target": "n_phosphosites",
+      "target_category": "modification",
+      "predictor_category": "transcript",
+      "columns": 40,
+      "genes": 1174,
+      "r2": 0.031561545679053254,
+      "shuffled_r2": -0.0029024835378945344,
+      "lift": 0.034464029216947786,
+      "structural": false
+    }
+  ]
+}
