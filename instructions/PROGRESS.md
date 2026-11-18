@@ -20,7 +20,7 @@ reaches rather than the data it uses. Figure 2 gates the rest.
 | 1 | What ParaScape is: imports, modules, one gene space | parts exist, never assembled | 20 |
 | 2 | **Which studies can be compared at all** → **cell cycle raises agreement 0.832 to 0.887, three times a random axis, p = 0.005** | **measured** on 12 studies | 75 |
 | 3 | Co-expression modules → **14 of 23 are compartments; the secretory machinery splits in two** | **measured** | 70 |
-| 4 | RNA response to treatment → which conditions group | 201 contrasts on one scale; blocked on the same matrices | 35 |
+| 4 | What structures the corpus → **same-study pairs agree 3.3x better than cross-study; only 1 perturbation is repeated across labs** | **measured** over 20,100 pairs | 75 |
 | 5 | Protein response; bradyzoite reach → **subtype C is reached by 4 of 201 contrasts** | **panel drawn**, sweep saved, module built | 85 |
 | 6 | Which measurement explains which other → **transcription is 96 % of what is explainable about protein abundance** | 2 of 5 panels built (localisation, protein abundance) | 50 |
 | 7 | The network → **24x the reach at two thirds the accuracy; weighting recovers 5.7 points** | **measured** over 13 edge layers | 65 |
@@ -30,6 +30,11 @@ reaches rather than the data it uses. Figure 2 gates the rest.
 | 11 | Filling the map → **5 of 12 targets beat guessing; localisation 76.5 % against 33.1 %** | **measured** from 1,047,574 held-out calls | 70 |
 | 12 | Measured absence → **host response 94.7 % unmeasured, transcript 0.1 %** | **measured**; prescriptive line stands | 70 |
 | — | **The manuscript**, each figure in a two-cell table with the legend below | not started | 0 |
+
+### Data
+105 study matrices built (0 failed), taking the omics store to 128 studies with gene-level
+matrices. GSE229505 downloaded: 2.2 GB, 18 matrices, 126,495 cells, host and parasite genes plus
+the CRISPR guide per cell.
 
 ### Figure style
 The house style is now code (`parascape/figstyle.py`) and a skill
@@ -43,6 +48,7 @@ or a stub and the skill records that their style was NOT copied.
 * **Transcription explains 96 % of what is explainable** about protein abundance in Plasmodium — but on the complete-case genes. On the wider set it explains 24.3 % rather than 48.6, and that factor of two is the measurement bias.
 * **Transcription alone places the organelles built in waves** during division (5 of 13 compartments) and not the ones built continuously.
 * **Localisation transfers between species, codon usage does not.** Protein length at 0.907 is the control proving the orthologue pairing is sound.
+* **The laboratory structures the perturbation corpus, not the perturbation.** Two contrasts from one study agree at median |rho| 0.284 against 0.085 for two from different studies; sharing the KIND of perturbation across studies buys 0.090 against 0.085, which is nothing. And only ONE perturbation (deltaBFD1) is stated by two independent labs, so cross-lab replication is not askable here at all. This is the argument for figure 2.
 * **Cell cycle IS a substantial confounder** — removing it raises agreement between the untreated arms of independent studies from 0.832 to 0.887, against +0.018 for a random axis of the same shape, p = 0.0050 on 12 studies. This REVERSES the eight-study result reported earlier the same day: that run was short four studies the matrices build has since added, and it included GSE245775, which quantifies to zero and whose 8,157 identical zeros made every correlation undefined.
 * **ParaScape cannot yet fill phenotype or export.** is_exported is 95.9 % right against a 96.6 % baseline, which is worse than guessing.
 * **What differs between strains is what goes into the host.** Dense granules 2.06 and apical secretory 1.73 against a length-matched 1.36; nucleus 0.89, cytosol 0.72, the most required genes 0.89.
@@ -50,7 +56,7 @@ or a stub and the skill records that their style was NOT copied.
 * **The whole network trades accuracy for reach**: 24 times the genes at two thirds the accuracy, and the naive union is dragged down by its biggest and worst layer. Weighting layers by what each is worth recovers 5.7 points.
 * **Co-expression modules are compartments** — 14 of 23, one of them 78.6 % ribosome against 3.8 % matched — and the apical secretory machinery splits into two modules, not one.
 
-**Named next jobs:** figure 4 on the new matrices; figure 1 schematic; figure 6 remaining panels;
+**Named next jobs:** figure 1 schematic; figure 6 remaining panels;
 figure 10 re-done on the single-cell data (GSE229505 downloaded, 126,495 cells); the manuscript;
 then a runnable route through ParaScape per figure.
 
