@@ -357,7 +357,9 @@ REGISTRY = [
     Dataset("gse108740", "Stage transcriptome", "transcription", "RNAseq",
             "Tachyzoite, day 3/5/7, in vivo tissue cyst (12 columns)",
             GSE108740_COLUMNS, "7,739 (95.1%)", accession="GSE108740",
-            url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE108740", organism=organisms.TOXOPLASMA),
+            url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE108740", pmid="30728393",
+            citation="Ramakrishnan C et al., An experimental genetically attenuated live vaccine to prevent transmission of Toxoplasma gondii by cats. Sci Rep 2019",
+            organism=organisms.TOXOPLASMA),
     Dataset("gse206344", "Oocyst sporulation series", "transcription", "RNAseq",
             "Unsporulated / sporulating / sporulated, 2 replicates (6 columns)",
             GSE206344_COLUMNS, "7,974 (98.0%)", accession="GSE206344",
@@ -799,10 +801,12 @@ REGISTRY = [
                  "own transcript is unremarkable at +0.31, which is what says the enrichment is not "
                  "an artefact of the tagged locus. One column and not a set: the slot holds one "
                  "protein's targets, and a second RIP would sit beside this rather than be averaged "
-                 "into it.", organism=organisms.TOXOPLASMA),
+                 "into it.", pmid="37081202",
+            citation="Licon MH et al., A positive feedback loop controls Toxoplasma chronic differentiation. Nat Microbiol 2023",
+            organism=organisms.TOXOPLASMA),
     Dataset("gse245775", "Differentiation ribosome profiling (eIF1.2)", "translation", "RiboSeq",
             "RPF and RNA counts, and their ratio, in tachyzoites and pre-bradyzoites",
-            GSE245775_COLUMNS, "7,880 genes (97%)", pmid="38782906", accession="GSE245775",
+            GSE245775_COLUMNS, "7,880 genes (97%)", accession="GSE245775",
             url="https://ftp.ncbi.nlm.nih.gov/geo/series/GSE245nnn/GSE245775/suppl/"
                 "GSE245775_RAW.tar",
             path="datasets/quarantine/2026_08_16_unverified/Tg/stage_conversion_phenotype/",
@@ -813,7 +817,9 @@ REGISTRY = [
                  "and 2.6 in the knockout, and BFD2 rises 1.4 and 0.1, so the knockout's failure to "
                  "induce BFD2 is visible in the column itself. LDH2, BAG1 and SRS also rise on "
                  "conversion, which is what confirms the arms are not swapped. Reached the map "
-                 "proposed for `stage-conversion phenotype`, which it is not.", organism=organisms.TOXOPLASMA),
+                 "proposed for `stage-conversion phenotype`, which it is not.", pmid="38782906",
+            citation="Wang F et al., Translation initiation factor eIF1.2 promotes Toxoplasma stage conversion by regulating levels of key differentiation factors. Nat Commun 2024",
+            organism=organisms.TOXOPLASMA),
 
     Dataset("gse313048_atac", "Promoter accessibility (ATAC-seq, COMPUTED)", "DNA", "ATACseq",
             "Mean ATAC coverage over the promoter, relative to the genome mean",
@@ -829,7 +835,9 @@ REGISTRY = [
                  "answers a different question. Verified against expression: rho +0.50, and the top "
                  "decile of expressed genes carries 2.0 log2 more promoter signal than the bottom "
                  "decile. Correlates with fitness at rho +0.02, so it is not merely tracking "
-                 "essentiality.", organism=organisms.TOXOPLASMA),
+                 "essentiality.", pmid="42778561",
+            citation="Cannella D et al., Divergent SAGA complexes shape the Toxoplasma transcriptome for lytic cycle progression and host interaction. Nat Commun 2026",
+            organism=organisms.TOXOPLASMA),
     Dataset("gse277553_cuttag", "HDAC3 occupancy (CUT&TAG, COMPUTED)", "DNA", "CUTandTAG",
             "Mean HDAC3 CUT&TAG coverage over the promoter, relative to the genome mean",
             ("cuttag_hdac3_promoter_ut",), "8,140 genes (100%)", accession="GSE277553",
@@ -1855,8 +1863,7 @@ REGISTRY = [
              "riboseq_rpf_schizont", "riboseq_rpf_merozoite",
              "riboseq_mrna_ring", "riboseq_mrna_early_trophozoite",
              "riboseq_mrna_late_trophozoite", "riboseq_mrna_schizont", "riboseq_mrna_merozoite"),
-            "3,501 genes (61%), 2,182 at the ring and 1,174 at the merozoite", pmid="25493618",
-            accession="GSE58402", geo_file_suffix="_rpkm.txt.gz",
+            "3,501 genes (61%), 2,182 at the ring and 1,174 at the merozoite", accession="GSE58402", geo_file_suffix="_rpkm.txt.gz",
             url="https://ftp.ncbi.nlm.nih.gov/geo/series/GSE58nnn/GSE58402/suppl/",
             path="datasets/translation/riboseq/25493618/",
             note="The first MEASURED translation on this arm: the slot was previously answerable "
@@ -1882,7 +1889,9 @@ REGISTRY = [
                  "the cycle rather than a contradiction. Strain W2, not 3D7, so the surface-antigen "
                  "families are the place to distrust it. Keyed on pre-2012 accessions and resolved "
                  "through `plasmodb_identity`; the deposit's `-a`/`-b` split entries are dropped "
-                 "rather than summed, since RPKM is already length-normalised.", organism=organisms.FALCIPARUM),
+                 "rather than summed, since RPKM is already length-normalised.", pmid="25493618",
+            citation="Caro F et al., Genome-wide regulatory dynamics of translation in the Plasmodium falciparum asexual blood stages. Elife 2014",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_berghei_liver_transfer", "P. berghei liver-stage fitness, transferred to falciparum",
             "DNA", "CRISPR_screen",
             "How a berghei knockout fares through the liver, carried onto its falciparum ortholog",
@@ -2196,7 +2205,7 @@ REGISTRY = [
             "When in the 48-hour cycle each transcript peaks, and how strongly it cycles",
             ("idc_peak_hour", "idc_cycling_amplitude"),
             "5,038 genes timed of 5,499; 461 do not cycle strongly enough to place",
-            pmid="34668757", accession="GSE163144", geo_file_suffix=".csv.gz",
+            accession="GSE163144", geo_file_suffix=".csv.gz",
             url="https://ftp.ncbi.nlm.nih.gov/geo/series/GSE163nnn/GSE163144/suppl/",
             # NOT a `derived_from`, though a computation sits inside the loader. That field names
             # shipped COLUMNS this was computed from, so the leakage closure can exclude an input
@@ -2220,7 +2229,9 @@ REGISTRY = [
                  "36.2 h, KAHRP 25.1 h, SBP1 15.1 h -- and AMA1 at 2.5 h, which is five hours from "
                  "MSP1 across the wrap and not the other way round. READ IT AS A CIRCLE. Genes "
                  "whose first harmonic explains less than 40% of their variation are left missing, "
-                 "because a flat profile still has an angle.", organism=organisms.FALCIPARUM),
+                 "because a flat profile still has an angle.", pmid="34668757",
+            citation="Saelens JW et al., Impact of Sickle Cell Trait Hemoglobin on the Intraerythrocytic Transcriptional Program of Plasmodium falciparum. mSphere 2021",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_ip_ms", "Plasmodium co-immunoprecipitation interactome (EPIC)",
             "post_translation", "IP-MS",
             "Which parasite proteins came down with each tagged bait, against its own control",
@@ -2692,7 +2703,9 @@ REGISTRY = [
                  "with the RH screen where it should: rho = +0.62 against fit_invitro_hff over 130 "
                  "shared genes, close enough that the direction and the join are right and far "
                  "enough that it is not a copy. The deposit sat in a folder named for this slot all "
-                 "day while only its differentiation arms were read.", organism=organisms.TOXOPLASMA),
+                 "day while only its differentiation arms were read.", pmid="31955846",
+            citation="Waldman BS et al., Identification of a Master Regulator of Differentiation in Toxoplasma. Cell 2020",
+            organism=organisms.TOXOPLASMA),
     Dataset("differentiation_screen", "Differentiation reporter CRISPR screen (COMPUTED)",
             "DNA", "CRISPR_screen",
             "Guide enrichment in reporter-positive parasites against the bulk population",
@@ -2708,7 +2721,9 @@ REGISTRY = [
                  "design names, and the column says ratio rather than phenotype so nobody mistakes "
                  "it for a number they reported. A targeted screen against nucleic-acid binding "
                  "proteins, so 240 genes is its full extent and not a coverage failure. Which member "
-                 "is which sample comes from the series matrix, never from the file name.", organism=organisms.TOXOPLASMA),
+                 "is which sample comes from the series matrix, never from the file name.", pmid="31955846",
+            citation="Waldman BS et al., Identification of a Master Regulator of Differentiation in Toxoplasma. Cell 2020",
+            organism=organisms.TOXOPLASMA),
     Dataset("pf_spatial_proteome", "Spatial proteome of the schizont (hyperLOPIT)",
             "post_translation", "LOPIT",
             "Which of 24 cellular niches each protein sits in, and the classifier's confidence",

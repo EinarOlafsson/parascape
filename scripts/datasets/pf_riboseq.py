@@ -6,6 +6,7 @@ Ribosome-footprint and mRNA density per gene at five points of the blood-stage c
     level / kind : translation / riboseq
     provides     : riboseq_rpf_ring, riboseq_rpf_early_trophozoite, riboseq_rpf_late_trophozoite, riboseq_rpf_schizont, riboseq_rpf_merozoite, riboseq_mrna_ring, riboseq_mrna_early_trophozoite, riboseq_mrna_late_trophozoite, riboseq_mrna_schizont, riboseq_mrna_merozoite
     coverage     : 3,501 genes (61%), 2,182 at the ring and 1,174 at the merozoite
+    citation     : Caro F et al., Genome-wide regulatory dynamics of translation in the Plasmodium falciparum asexual blood stages. Elife 2014
     PMID         : 25493618
     accession    : GSE58402
     url          : https://ftp.ncbi.nlm.nih.gov/geo/series/GSE58nnn/GSE58402/suppl/

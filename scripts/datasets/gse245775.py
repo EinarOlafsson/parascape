@@ -6,6 +6,7 @@ RPF and RNA counts, and their ratio, in tachyzoites and pre-bradyzoites
     level / kind : translation / RiboSeq
     provides     : rpf245775_parent_tachy_r1, rpf245775_parent_tachy_r2, rpf245775_parent_tachy_r3, rpf245775_parent_prebrady_r1, rpf245775_parent_prebrady_r2, rpf245775_parent_prebrady_r3, rpf245775_eif12ko_tachy_r1, rpf245775_eif12ko_tachy_r2, rpf245775_eif12ko_tachy_r3, rpf245775_eif12ko_prebrady_r1, rpf245775_eif12ko_prebrady_r2, rpf245775_eif12ko_prebrady_r3, rna245775_parent_tachy_r1, rna245775_parent_tachy_r2, rna245775_parent_tachy_r3, rna245775_parent_prebrady_r1, rna245775_parent_prebrady_r2, rna245775_parent_prebrady_r3, rna245775_eif12ko_tachy_r1, rna245775_eif12ko_tachy_r2, rna245775_eif12ko_tachy_r3, rna245775_eif12ko_prebrady_r1, rna245775_eif12ko_prebrady_r2, rna245775_eif12ko_prebrady_r3, te245775_parent_tachy_r1, te245775_parent_tachy_r2, te245775_parent_tachy_r3, te245775_parent_prebrady_r1, te245775_parent_prebrady_r2, te245775_parent_prebrady_r3, te245775_eif12ko_tachy_r1, te245775_eif12ko_tachy_r2, te245775_eif12ko_tachy_r3, te245775_eif12ko_prebrady_r1, te245775_eif12ko_prebrady_r2, te245775_eif12ko_prebrady_r3
     coverage     : 7,880 genes (97%)
+    citation     : Wang F et al., Translation initiation factor eIF1.2 promotes Toxoplasma stage conversion by regulating levels of key differentiation factors. Nat Commun 2024
     PMID         : 38782906
     accession    : GSE245775
     url          : https://ftp.ncbi.nlm.nih.gov/geo/series/GSE245nnn/GSE245775/suppl/GSE245775_RAW.tar

@@ -6,6 +6,8 @@ Enrichment of each transcript in the BFD2 immunoprecipitation
     level / kind : transcription / RIPseq
     provides     : bfd2_rip_log2_ip_over_input
     coverage     : 7,463 genes (92%)
+    citation     : Licon MH et al., A positive feedback loop controls Toxoplasma chronic differentiation. Nat Microbiol 2023
+    PMID         : 37081202
     accession    : GSE223620
     url          : https://ftp.ncbi.nlm.nih.gov/geo/series/GSE223nnn/GSE223620/suppl/GSE223620_ProcessedDataFile_BFD2.RIPseq.xls.gz
     local path   : datasets/quarantine/2026_08_16_unverified/Tg/rna_binding_protein_targets/

@@ -6,6 +6,7 @@ When in the 48-hour cycle each transcript peaks, and how strongly it cycles
     level / kind : transcription / RNAseq
     provides     : idc_peak_hour, idc_cycling_amplitude
     coverage     : 5,038 genes timed of 5,499; 461 do not cycle strongly enough to place
+    citation     : Saelens JW et al., Impact of Sickle Cell Trait Hemoglobin on the Intraerythrocytic Transcriptional Program of Plasmodium falciparum. mSphere 2021
     PMID         : 34668757
     accession    : GSE163144
     url          : https://ftp.ncbi.nlm.nih.gov/geo/series/GSE163nnn/GSE163144/suppl/

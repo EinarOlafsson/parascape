@@ -6,6 +6,8 @@ Mean ATAC coverage over the promoter, relative to the genome mean
     level / kind : DNA / ATACseq
     provides     : atac_promoter_ut
     coverage     : 7,988 genes (98%)
+    citation     : Cannella D et al., Divergent SAGA complexes shape the Toxoplasma transcriptome for lytic cycle progression and host interaction. Nat Commun 2026
+    PMID         : 42778561
     accession    : GSE313048
     url          : https://ftp.ncbi.nlm.nih.gov/geo/series/GSE313nnn/GSE313048/suppl/GSE313048_ATACseq_GCN5b-KD_UT.bw
     local path   : datasets/quarantine/2026_08_16_unverified/Tg/acetylation/

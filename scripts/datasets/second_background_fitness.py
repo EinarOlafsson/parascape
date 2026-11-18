@@ -6,6 +6,8 @@ Guide depletion over eight passages of ordinary growth
     level / kind : DNA / CRISPR_screen
     provides     : crispr_reporter_strain_p8_log2
     coverage     : 262 genes
+    citation     : Waldman BS et al., Identification of a Master Regulator of Differentiation in Toxoplasma. Cell 2020
+    PMID         : 31955846
     accession    : GSE132237
     url          : https://ftp.ncbi.nlm.nih.gov/geo/series/GSE132nnn/GSE132237/suppl/GSE132237_RAW.tar
     local path   : datasets/quarantine/2026_08_16_pride/Tg/essentiality_in_a_second_background/

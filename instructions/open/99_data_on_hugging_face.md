@@ -12,6 +12,40 @@ THE DECISION
     publishing pass: a column derived from a GEO series ships with that accession
     and the paper it came from, so a reader of a value can reach its source.
 
+GEO ACCESSIONS AND PAPERS TRAVELLING WITH THEIR COLUMNS (2026-11-18)
+
+    Einar's second decision of 2026-11-13 -- a column derived from a GEO series
+    ships with that accession AND the paper -- had 24 datasets failing it: they
+    carried a repository accession and no citation, which is 124 columns whose
+    reader cannot reach the source.
+
+    Eight are now fixed, and every one takes its PMID from GEO's OWN link
+    (`esummary db=gds`, the `pubmedids` field the submitter recorded), never from
+    a title match:
+
+      gse108740                 30728393  Ramakrishnan, attenuated live vaccine
+      gse223620_bfd2_rip        37081202  Licon, feedback loop in chronic differentiation
+      pf_riboseq                25493618  Caro, translation across the asexual cycle
+      gse245775                 38782906  Wang, eIF1.2 in stage conversion
+      gse313048_atac            42778561  Cannella, divergent SAGA complexes
+      pf_idc_timing             34668757  Saelens, sickle trait and the IDC
+      second_background_fitness 31955846  Waldman, master regulator of differentiation
+      differentiation_screen    31955846  the same study
+
+    Seven of the eight name the dataset almost word for word -- eIF1.2 for the
+    eIF1.2 ribosome profiling, BFD2 for the BFD2 RIP-seq, SAGA for the ATAC. The
+    exception is **gse108740**, where the series is a stage transcriptome and the
+    linked paper is about an attenuated vaccine. GEO's link is authoritative so it
+    is recorded, but it is the one a person should look at.
+
+    Five GSE accessions have NO paper linked by GEO at all -- gse206344, gse22258,
+    gse200962, gse277553_cuttag, host_hff_tg_infection -- so they stay uncited
+    rather than guessed. The rest of the 24 are PRIDE and other repositories,
+    which this pass did not cover.
+
+    This part of the decision needs no Hugging Face token. The UPLOAD half still
+    does, and `huggingface_hub` is not installed in the `starplast` env.
+
 STATE
 
     Every artefact the application or its tooling fetches, measured on
