@@ -124,5 +124,25 @@
   "kind": "transcript (measured)",
   "source_sha256": "7edb645d005eff7806f4fff8918abf0703bad22f9c983b4d134f6c26a34f74d6",
   "licence": "P (public GEO deposit)"
+ },
+ "protein_oocyst_ppm": {
+  "organism": "Cp",
+  "source": "PXD023935 (PMID 36775128), C. parvum Iowa II oocysts, MaxQuant iBAQ over eight FAIMS fractions",
+  "kind": "protein (measured)",
+  "source_sha256": "e8dd8c54f2e41cbfdf3aed0407de2ce7c340f02e8f36e5d7a780ffbeb17f3c0e",
+  "licence": "G (public PRIDE deposit, accession and paper cited)",
+  "accession": "PXD023935",
+  "pmid": "36775128",
+  "citation": "John A et al., Conservation, abundance, glycosylation profile, and localization of the TSP protein family in Cryptosporidium parvum. J Biol Chem 2023 (PMID 36775128), PRIDE PXD023935 (CC0)"
+ },
+ "secreted_sporozoite_detected": {
+  "organism": "Cp",
+  "source": "PXD028969 (PMID 41137792), C. parvum sporozoites on HCT-8 cells, medium at 3 and 6 h, TMT",
+  "kind": "protein (measured)",
+  "source_sha256": "a8a34cad038cea0b9b861e7a3404f56e78af9c68cf7572048bda25dea78fac67",
+  "licence": "G (public PRIDE deposit, accession and paper cited)",
+  "accession": "PXD028969",
+  "pmid": "41137792",
+  "citation": "Li N et al., Secretome and Transcriptome Analyses Reveal New Potential Virulence Factors during Cryptosporidium parvum Invasion. J Proteome Res 2025 (PMID 41137792), PRIDE PXD028969 (CC0)"
  }
 }

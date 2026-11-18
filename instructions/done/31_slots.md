@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**362 slots: 127 covered well, 57 partly, 57 thinly, 121 empty.**
+**362 slots: 127 covered well, 58 partly, 58 thinly, 119 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -176,7 +176,7 @@ quantity were approximating on 2026-08-13.
 | Pf_thermal stability (melting temperature) · asexual blood stage | asexual blood stage, intact-cell CETSA | **B** | 2040 |  | 35.7% | `melting_temperature_tm, melting_temperature_sd` | one | **MAP-X reveals distinct protein complex dynamics across Plasmodium falciparum blood stages.** (Nat Microbiol 2025) [41315737](https://pubmed.ncbi.nlm.nih.gov/41315737/) [PXD056075](https://www.ebi.ac.uk/pride/archive/projects/PXD056075) |
 | Pf_chaperone dependence | Hsp90 inhibition, two scaffolds | **B** | 3049 | 124 | 53.3% | `hsp90_dependent` | one | [PXD079493](https://www.ebi.ac.uk/pride/archive/projects/PXD079493) — geldanamycin and XL888 chemoproteomics, 131 dependent proteins |
 | Pf_protein abundance · sexually committed | MSRP1-sorted committed parasites | **B** | 1950 |  | 34.1% | `committed_vs_asexual_log2fc, committed_vs_asexual_fdr` | one | **Defining the Proteome of Sexually Committed Parasites in Plasmodium falciparum.** (Mol Cell Proteomics 2026) [41482054](https://pubmed.ncbi.nlm.nih.gov/41482054/) [PXD059080](https://www.ebi.ac.uk/pride/archive/projects/PXD059080) |
-| Cp_protein abundance · other life stages | stages | **-** |  |  |  | `` | separate | — |
+| Cp_protein abundance · other life stages | stages | **B** | 2041 |  | 52.0% | `protein_oocyst_ppm` | separate | — |
 | Cp_protein abundance · under stress | iron depletion, 24 h | **-** |  |  |  | `` | separate | — |
 
 ### PTM
@@ -228,7 +228,7 @@ quantity were approximating on 2026-08-13.
 | Cp_organelle surface / membrane contact site | TurboID on outer membranes | **-** |  |  |  | `` | separate | — |
 | Cp_membrane topology | sequence | **A** | 3923 |  | 100.0% | `dtm_type, tm_n_tm, tm_n_signal` | one | — |
 | Cp_exposure to host cytosol | PVM, export | **-** |  |  |  | `` | fill | — |
-| Cp_secretome / excreted | ESA | **-** |  |  |  | `` | one | — |
+| Cp_secretome / excreted | ESA | **C** | 536 |  | 13.7% | `secreted_sporozoite_detected` | one | — |
 | Cp_localization · measured | hyperLOPIT, Iowa II | **B** | 1103 |  | 28.1% | `lopit_location` | one | — |
 
 ### fitness

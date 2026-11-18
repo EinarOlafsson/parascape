@@ -719,6 +719,15 @@ SPACE_PATTERNS = {
         # different assembly and the CPATCC-to-cgd map reaches two thirds of it; the rest stay
         # missing rather than being filled with a zero.
         "transcription \u00b7 oocyst": ("expr_oocyst",),
+        # PXD023935 (PMID 36775128), instruction 41, 2026-11-18: the oocyst total proteome, iBAQ as parts
+        # per million of the identified mass. One stage, so the slot "other life stages" holds a single
+        # column for now: the sporozoite proteome of PXD079660 was NOT added, because its only file on PRIDE
+        # is a headerless precursor report from one injection. Reached through UniProt Iowa II accessions
+        # (exact) and the CPATCC map where a group carries only a CPATCC tag.
+        "protein abundance \u00b7 other life stages": ("protein_oocyst_ppm",),
+        # PXD028969 (PMID 41137792): proteins quantified in the medium of sporozoites on HCT-8 cells at 3 and
+        # 6 h. A detection flag only, because the TMT channel layout is not in the record; absence is unknown.
+        "secretome / excreted": ("secreted_sporozoite_detected",),
     },
 }
 

@@ -13726,7 +13726,9 @@
     "axis": "protein abundance",
     "context": "stages",
     "unit": "gene",
-    "patterns": [],
+    "patterns": [
+      "protein_oocyst_ppm"
+    ],
     "policy": "separate",
     "candidates": [],
     "evidence_path": [
@@ -14174,7 +14176,9 @@
     "axis": "localization",
     "context": "ESA",
     "unit": "gene",
-    "patterns": [],
+    "patterns": [
+      "secreted_sporozoite_detected"
+    ],
     "policy": "one",
     "candidates": [],
     "evidence_path": [

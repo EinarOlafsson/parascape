@@ -7,14 +7,15 @@
 Measured by running `scripts/generate_slot_table.py` against the package data on nightly (10b68042),
 not read from an older note. **362 slots: A 123, B 55, C 56, empty 128** at the start of 2026-11-18.
 Seven host slots were filled the same day (section at the end of this file), which moved the count to
-**A 127, B 57, C 57, empty 121**. By unit now: gene 192 of 278 filled, host_gene 27 of 50, metabolite 3 of
+**A 127, B 57, C 57, empty 121**, and two Cryptosporidium slots later the same day (last section) to
+**A 127, B 58, C 58, empty 119**. By unit now: gene 194 of 278 filled, host_gene 27 of 50, metabolite 3 of
 6, pair 19 of 28.
 
 | arm | slots | filled now (A, B, C) | empty now |
 |---|---|---|---|
 | *T. gondii* | 158 | 146 (75, 30, 41) | 12 (3 gene, 9 host) |
 | *Plasmodium* | 141 | 85 (47, 22, 16) | 56 (38 gene, 14 host, 3 metabolite, 1 pair) |
-| *Cryptosporidium* | 63 | 10 (5, 5, 0) | 53 (45 gene, 8 pair) |
+| *Cryptosporidium* | 63 | 12 (5, 6, 1) | 51 (43 gene, 8 pair) |
 | host slots, both arms | 50 | 27 | 23 (included in the Tg and Pf rows) |
 
 **What changed since the August queue, so nobody plans from it again:**
@@ -3688,3 +3689,65 @@ rule is not changed here.
 **Still empty after this pass, from the same discovery table:** human fibroblast surface (PXD000589 would need
 its 30 search files re-filtered), human hepatocyte surface (PXD001988 is liver tissue plus cell lines), the
 Anopheles midgut proteome (no processed table), and every slot listed as nothing suitable.
+
+
+## 2026-11-18, later still: two Cryptosporidium slots filled from deposits already on disk
+
+The Cryptosporidium arm is not under the Plasmodium node-table hold (`HELD_OUT_OF_NODES` holds no Cp key, and
+nothing in it was touched). Both sources were already in the acquisition store as MaxQuant `proteinGroups.txt`
+files extracted from the depositors' own archives, with `URLS.txt` and `SHA256SUMS.txt`, so nothing was
+downloaded. `scripts/build_cryptosporidium_proteome_deposits.py` reads them and writes two keyed tables to the
+dataset root; `scripts/build_cryptosporidium_space_notebook.py` merges them into `cp_gene_nodes.parquet`
+(20 columns now, 18 before, every earlier column byte-identical in value); the slot patterns are in
+`generate_slot_table.py`. No data release is needed: the Cp table lives in `results/`, not in the data release.
+
+| slot | column | source | stage, strain | identifier family and how it reaches `cgd` | join | grade |
+|---|---|---|---|---|---|---|
+| `Cp_protein abundance · other life stages` | `protein_oocyst_ppm` | PXD023935, John et al. 2023, PMID 36775128, CC0 | *C. parvum* **oocysts**, annotated Iowa II in PRIDE (where the oocysts came from is not in the record); eight FAIMS fractions, MaxQuant iBAQ | MIXED: each group lists a `CPATCC_` tag (Iowa-ATCC annotation) and an Iowa II UniProt accession, because the search used both proteomes. UniProt accession reaches `cgd` exactly through the UP000006726 field "Gene Names (ORF)" (3,805 entries); a CPATCC tag only through the 2,571-gene exact-protein map. A group is assigned only when every mappable token names one `cgd` | 2,174 clean groups; 1,408 map by both families to the SAME gene, 662 by UniProt alone, none by the CPATCC map alone, 93 unmapped, 11 ambiguous and dropped: **95.2 per cent of groups, 93.9 per cent of the iBAQ mass**. 2,063 genes written, **2,041 of the 3,923 in the gene table (52.0 per cent)**, 22 outside it | B |
+| `Cp_secretome / excreted` | `secreted_sporozoite_detected` | PXD028969, Li et al. 2025, PMID 41137792, CC0 | *C. parvum* **sporozoites** on **HCT-8** cells, proteins quantified in the medium at 3 h (gliding) and 6 h (adhesion and invasion), TMT. Isolate not in the record; PRIDE labels the organism "Limnobaculum parvum", which is a bacterium and an error | UniProt only (the search database held every *Cryptosporidium* entry, taxon 5807); a group maps only through an Iowa II accession, so a protein with no Iowa II accession is lost | 647 clean groups; 620 map to one gene, 18 unmapped, 9 ambiguous: **95.8 per cent of groups**. 559 groups quantified in at least one of six TMT channels, 539 genes written, **536 in the gene table (13.7 per cent)** | C |
+
+**Exactly two slots changed:** `Cp_protein abundance · other life stages` (empty to B, 2,041 genes, 52.0 per
+cent) and `Cp_secretome / excreted` (empty to C, 536 genes, 13.7 per cent). Counts before and after: empty
+121 to 119, B 57 to 58, C 57 to 58, A unchanged at 127; *Cryptosporidium* empty 53 to 51, filled 10 to 12. No
+other slot moved.
+
+**What they are not:**
+
+* **The oocyst proteome is one stage and one study.** The slot is named "other life stages" and holds a single
+  stage for now. The values are parts per million of the identified iBAQ mass, and the groups that do not map
+  keep their share of the denominator, so the shipped values sum to less than a million (about 929,000) rather
+  than being renormalised. A gene with no value is unknown, never zero: 1,882 genes carry none.
+* **The secretome is a detection flag.** The six TMT channels are 3 h and 6 h in some order and the layout is
+  not in the record, so no ratio is shipped; a protein quantified in no channel gets nothing, and "not found"
+  is not "not secreted". The sporozoites sat on host cells, so a parasite protein in the medium may have been
+  released by lysis and not secreted, and nothing in the record tests that. The flag does not say which of the
+  two timepoints.
+* **Mapping by UniProt covers the Iowa II proteome only.** A strain-specific protein of the isolate used has no
+  Iowa II accession and never reaches `cgd`; that is part of why the secretome covers 13.7 per cent of genes.
+* **Licence G, with accession and paper recorded** in `column_metadata.json` (`accession`, `pmid`, `citation`),
+  and the builder asserts that every G column carries both. No pack was built, so nothing is distributed yet.
+
+**Left empty, with what would settle it:**
+
+* **PXD079660 (sporozoite proteome, DIA, 2,272 proteins), not rolled up.** The only protein-bearing file on
+  PRIDE is `proteomic.xlsx`, and rolling it up honestly is not possible: it has NO header row (the first data
+  row had been read as the header); it is one injection (a single raw file name, one group label `T45`);
+  its columns can only be inferred (protein group, peptide, charge, one intensity), not read; and what the
+  authors report is the DIA workflow's protein-level quantity, which this sheet does not contain. Its 2,227 groups
+  are RefSeq proteins `XP_001388044` and so on, and they DO map: all 2,227 are in the Iowa II RefSeq feature
+  table (GCF_000165345.1) and so reach `cgd` by locus tag, with 100 per cent of groups mapped; the identifier is
+  not the obstacle. The isolate is JLU01, a Chinese isolate, not Iowa II. **What would settle it:** the protein
+  table in the paper's supplement (Parasit Vectors 2026, PMID 42393791), or the column definitions from the
+  authors. A sum of precursor intensities from one run would be an invented protein value and was not shipped.
+* **PXD029431 (oocyst-wall-enriched fraction)** was on disk and was NOT shipped as an abundance: it is a
+  fraction, not the oocyst, and the strain is a field IId subtype (A19G1), not Iowa.
+* **Kinase-substrate phosphorylation:** the PXD079660 phospho results are total phosphorylation with no
+  kinase perturbation, as recorded earlier; unchanged.
+* **Acetylation, proximity labelling, crosslink MS and IP-MS** stay as recorded in the discovery pass. Nothing
+  new was searched, as asked.
+
+**Tests:** `tests/test_cryptosporidium_proteomes.py` (6 tests: licence G columns carry accession and paper,
+the table is still one row per `cgd` gene, the oocyst values are a share and not onto, the secretome holds no
+invented negatives, the slot patterns, and the group-to-gene assignment rule on toy tables). With
+`PARASCAPE_CACHE=/media/carruthers/mnt1/parascape_data/data-0.0.13.1-hostslots`, 469 tests pass across the slot,
+dataset, space, pack, deposit, provenance, leakage and readme files.
