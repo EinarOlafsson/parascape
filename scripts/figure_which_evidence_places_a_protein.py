@@ -4,10 +4,9 @@ For the ParaScape paper, figure 5 -- which measurement explains which other meas
 is the localisation instance of it: the 13 coarse hyperLOPIT niches recovered from RNA co-expression
 alone, against the same recovery from all allowed evidence together.
 
-WHY A SLOPE GRAPH. The quantity is a PAIRED difference -- the same niche scored two ways -- and the
-thing worth seeing is which niches cross over, where RNA alone matches or beats everything else. A
-bar chart of two series hides the pairing, and a heatmap hides it twice over. Two columns of points
-joined per niche shows the crossing directly, and the four that cross are the claim.
+WHY A PARITY SCATTER. The quantity is a PAIRED comparison and the claim is which compartments do as
+well on transcription alone, so a diagonal of parity reads the answer directly. Three forms were
+drawn before this one was chosen; `draw` records why the other two lose.
 
 Reads `results/coexpression_components_localization_2026_11_06/scores.tsv`, written by the notebook
 of instruction 71 product 1. Nothing is recomputed here: a figure script that re-derives its numbers
@@ -22,12 +21,13 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib import font_manager
+from matplotlib import text as mtext
 
 #: Where the scored table is, relative to the repository root.
 SOURCE = ("results/coexpression_components_localization_2026_11_06/scores.tsv")
 
 #: Millimetres, because a paper panel is specified in the units the page is in.
-WIDTH_MM, HEIGHT_MM = 105.0, 58.0
+WIDTH_MM, HEIGHT_MM = 88.0, 62.0
 
 #: The two columns compared, in the order they are drawn.
 LEFT, RIGHT = "coexp_cv_auc", "all_evidence_cv_auc"
@@ -61,66 +61,97 @@ def load(root: str) -> pd.DataFrame:
     return frame.sort_values(LEFT, ascending=False).reset_index(drop=True)
 
 
-def _spread(values, low: float, high: float):
-    """Label positions in value order, evenly over the whole height.
+#: Where a label may sit relative to its point, in points, tried in this order.
+CANDIDATES = ((4.5, 0.0, "left", "center"), (-4.5, 0.0, "right", "center"),
+              (4.5, 5.0, "left", "bottom"), (-4.5, 5.0, "right", "bottom"),
+              (4.5, -5.5, "left", "top"), (-4.5, -5.5, "right", "top"),
+              (0.0, 6.5, "center", "bottom"), (0.0, -7.0, "center", "top"))
 
-    Repelling labels locally left them bunched at the top -- most compartments score above 0.9 --
-    with the leader lines crossing each other and the lower half of the panel empty. Spreading them
-    evenly in VALUE ORDER cannot cross: if label i is above label j exactly when point i is above
-    point j, no two leaders can intersect. The same argument as the cluster labels of figure 1.
+
+def _box(text, renderer):
+    """The bounding box of a label, measured on the TEXT and nothing else.
+
+    `Annotation.get_window_extent` includes the leader line, which measures a box several times
+    too large and makes every candidate position look occupied. This is the trap recorded against
+    figure 1 of the bradyzoite paper, and it is why this goes through `matplotlib.text.Text`.
     """
-    order = sorted(range(len(values)), key=lambda i: values[i])
-    step = (high - low) / max(1, len(values) - 1)
-    out = [0.0] * len(values)
-    for rank, i in enumerate(order):
-        out[i] = low + rank * step
-    return out
+    return mtext.Text.get_window_extent(text, renderer=renderer)
+
+
+def _place(ax, fig, points, labels, colours):
+    """Label every point, each in the first candidate position that hits nothing already placed.
+
+    Guessed offsets collided -- apicoplast over cytosol, micronemes over apical -- because an
+    offset that works for one arrangement of points works for no other. Measuring is cheap at
+    thirteen labels and is the only version that stays correct when the numbers change.
+    """
+    renderer = fig.canvas.get_renderer()
+    taken = []
+    for (x, y) in points:
+        taken.append(ax.transData.transform((x, y)))
+    placed_boxes = []
+    for (x, y), name, colour in zip(points, labels, colours):
+        chosen = None
+        for dx, dy, ha, va in CANDIDATES:
+            text = ax.annotate(name, (x, y), xytext=(dx, dy), textcoords="offset points",
+                               fontsize=5.3, color=colour, ha=ha, va=va, annotation_clip=False)
+            fig.canvas.draw()
+            box = _box(text, renderer).expanded(1.06, 1.16)
+            # Inside the page first: the left-hand candidate put "plasma membrane" half off the
+            # figure, which no overlap test would ever have caught.
+            width, height = fig.get_size_inches() * fig.dpi
+            clash = box.x0 < 2 or box.y0 < 2 or box.x1 > width - 2 or box.y1 > height - 2
+            clash = clash or any(box.overlaps(other) for other in placed_boxes)
+            if not clash:
+                clash = any(box.x0 - 1 <= px <= box.x1 + 1 and box.y0 - 1 <= py <= box.y1 + 1
+                            for px, py in taken)
+            if not clash:
+                chosen, placed_boxes = text, placed_boxes + [box]
+                break
+            text.remove()
+        if chosen is None:                       # nowhere clear: put it right and accept it
+            placed_boxes.append(_box(
+                ax.annotate(name, (x, y), xytext=(4.5, 0.0), textcoords="offset points",
+                            fontsize=5.3, color=colour, ha="left", va="center"), renderer))
 
 
 def draw(frame: pd.DataFrame, letter: str = "a"):
-    """The slope graph. Returns the figure.
+    """A parity scatter: each compartment placed from RNA alone against from all evidence.
 
-    One line per niche from RNA-alone to all-evidence. A line that falls is a niche where RNA alone
-    does better, and those are drawn in ink while the rest recede, so the eye lands on the crossing
-    without a legend saying which to look at.
-
-    Names sit at the RIGHT end only. Labelling both ends put the niche names where the y-axis label
-    already was and the two ran through each other; one end also halves the number of collisions to
-    repel. The claim belongs in the legend, not printed under the panel, which is what made the
-    first version taller than it was wide with the text wider than the figure.
+    WHY THIS FORM, after three others were drawn. The quantity is a PAIRED comparison and the claim
+    is which compartments do as well on transcription alone, so a diagonal of parity reads the
+    answer directly -- on or below the line means RNA alone is enough, and the distance from the
+    line is the gain from everything else. A heatmap of the same numbers has to print the values
+    into the cells, because colour cannot separate 0.94 from 0.93, and once they are printed the
+    colour is decoration on a table in which the crossings are invisible. A slope graph keeps the
+    pairing but is a form the reader has to be taught. A ranked difference states the claim most
+    directly and throws away the absolute performance, so it cannot distinguish a compartment that
+    gains nothing because transcription is enough from one that gains nothing because both fail.
     """
     fig = plt.figure(figsize=(WIDTH_MM / 25.4, HEIGHT_MM / 25.4))
-    ax = fig.add_axes([0.155, 0.13, 0.40, 0.84])
-    x = (0.0, 1.0)
-    rights = _spread(list(frame[RIGHT]), 0.655, 1.005)
-    for row, right_y in zip(frame.itertuples(), rights):
-        rna, allev = getattr(row, LEFT), getattr(row, RIGHT)
-        rna_wins = rna >= allev
-        colour = WINS if rna_wins else MUTED
-        ax.plot(x, (rna, allev), "-", color=colour, linewidth=1.1 if rna_wins else 0.7,
-                solid_capstyle="round", zorder=3 if rna_wins else 2)
-        ax.plot(x[0], rna, "o", color=colour, markersize=2.8, markeredgewidth=0, zorder=4)
-        ax.plot(x[1], allev, "o", color=colour, markersize=2.8, markeredgewidth=0, zorder=4)
-        # a hairline from the point to its label where the repeller had to move it
-        ax.plot([1.0, 1.085], [allev, right_y], "-", color=colour, linewidth=0.35,
-                zorder=1, clip_on=False, alpha=0.75)
-        ax.annotate(f"{rna:.2f}  {row.niche}  {allev:.2f}", (1.10, right_y),
-                    xycoords=("axes fraction", "data"), ha="left", va="center",
-                    fontsize=5.5, color=INK if rna_wins else MUTED,
-                    annotation_clip=False)
-
-    ax.set_xlim(-0.03, 1.03)
-    ax.set_xticks(x)
-    ax.set_xticklabels(["RNA\nco-expression", "all evidence\ntogether"], fontsize=5.8)
-    ax.tick_params(axis="x", length=0, pad=2)
-    ax.set_ylabel("compartment recovered (cross-validated AUC)", fontsize=5.8, labelpad=2)
-    ax.set_ylim(0.645, 1.015)
-    ax.set_yticks([0.7, 0.8, 0.9, 1.0])
-    ax.tick_params(axis="y", labelsize=5.5, pad=1.5)
-    for side in ("top", "right", "bottom"):
+    ax = fig.add_axes([0.145, 0.165, 0.825, 0.80])
+    lo, hi = 0.645, 1.03
+    ax.plot([lo, hi], [lo, hi], "-", color="#c9c9c9", linewidth=0.7, zorder=1)
+    wins = (frame[LEFT] >= frame[RIGHT]).to_numpy()
+    for (x, y), won in zip(zip(frame[LEFT], frame[RIGHT]), wins):
+        ax.plot(x, y, "o", color=WINS if won else MUTED, markersize=3.6,
+                markeredgewidth=0, zorder=3)
+    ax.set_xlim(lo, hi)
+    ax.set_ylim(0.775, 1.025)
+    ax.set_xlabel("placed from RNA co-expression alone (AUC)", fontsize=6.0, labelpad=2)
+    ax.set_ylabel("placed from all evidence (AUC)", fontsize=6.0, labelpad=2)
+    ax.tick_params(labelsize=5.5, pad=1.5)
+    ax.set_xticks([0.7, 0.8, 0.9, 1.0])
+    ax.set_yticks([0.8, 0.9, 1.0])
+    for side in ("top", "right"):
         ax.spines[side].set_visible(False)
-    ax.spines["left"].set_color(INK)
-    fig.text(0.012, 0.98, letter, fontsize=7.5, fontweight="bold", color=INK,
+    # Horizontal, in the empty corner. Rotated along the diagonal it ran through the data, which
+    # is the one place on this panel a note must never be.
+    ax.annotate("on or below the line:\ntranscription alone is enough", (0.995, 0.787),
+                fontsize=5.1, color="#7d7d7d", ha="right", va="bottom", linespacing=1.35)
+    _place(ax, fig, list(zip(frame[LEFT], frame[RIGHT])), list(frame.niche),
+           [INK if w else MUTED for w in wins])
+    fig.text(0.013, 0.985, letter, fontsize=7.5, fontweight="bold", color=INK,
              ha="left", va="top")
     return fig
 

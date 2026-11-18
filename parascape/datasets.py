@@ -629,14 +629,21 @@ REGISTRY = [
     Dataset("hosttx_effectors", "Host-transcription effector screen", "DNA", "CRISPR_screen",
             "Hotelling T2 plus full per-effector host-response signature",
             ("hosttx_T2", "hosttx_padj") + HOST_SIGNATURE_COLUMNS, "252 screened / 22 full signatures",
-            pmid="37827122",
-            citation="High-throughput identification of Toxoplasma gondii effector proteins that "
-                     "target host cell transcription",
+            pmid="37827122", accession="GSE229505",
+            citation="Butterworth S, Sanchez L et al., High-throughput identification of "
+                     "Toxoplasma gondii effector proteins that target host cell transcription. "
+                     "Cell Host Microbe 2023;31:1748-1762.e8",
             url=EPMC.format(pmcid="PMC12033024"),
             path="datasets/DNA/CRISPR_screen/37827122/",
-            note="The 737,726-row host differential-expression table is represented by 20 PCA "
+            note="THIS IS THE DUAL PERTURB-SEQ STUDY: pooled CRISPR knockout of parasite effectors "
+                 "read out by single-cell RNA-seq of BOTH the parasite and the infected host cell. "
+                 "What is loaded is the per-effector SUMMARY, not the single-cell matrix: the "
+                 "737,726-row host differential-expression table is represented by 20 PCA "
                  "coordinates, its L2 norm and substantial-DE count; PCA is a dimensional summary, "
-                 "not a host-gene measurement.", organism=organisms.TOXOPLASMA),
+                 "not a host-gene measurement. So this answers which effectors change the host and "
+                 "how much, and cannot answer WHICH host gene any effector moves -- that needs the "
+                 "differential-expression table imported per host gene, from GSE229505.",
+            organism=organisms.TOXOPLASMA),
 
     Dataset("bioid_corpus_membership", "BioID/TurboID supplement membership corpus",
             "post_translation", "proximity_labelling",
