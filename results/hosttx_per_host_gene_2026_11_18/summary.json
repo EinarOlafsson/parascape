@@ -1,0 +1,47 @@
+{
+  "source": "/media/carruthers/mnt3/claude/toxoplasma_projects/datasets/DNA/CRISPR_screen/37827122/hosttx_effectors_DE_host_genes.csv",
+  "pmid": "37827122",
+  "accession": "GSE229505",
+  "rows_in": 737726,
+  "effectors_in": 22,
+  "host_symbols_in": 33531,
+  "effectors_resolved": 21,
+  "unresolved_effectors": [
+    "MAF1B"
+  ],
+  "ambiguous_effectors": {},
+  "resolved_effectors": {
+    "ROP17": "TGME49_258580",
+    "HCE1": "TGME49_239010",
+    "MYR2": "TGME49_270700",
+    "GRA25": "TGME49_290700",
+    "ROP16": "TGME49_262730",
+    "GRA70": "TGME49_249990",
+    "GRA57": "TGME49_217680",
+    "IST": "TGME49_240060",
+    "PPM3C": "TGME49_270320",
+    "GRA59": "TGME49_313440",
+    "MYR3": "TGME49_237230",
+    "GRA24": "TGME49_230180",
+    "GRA28": "TGME49_231960",
+    "MYR4": "TGME49_211460",
+    "ROP9": "TGME49_243730",
+    "222100": "TGME49_222100",
+    "GRA45": "TGME49_316250",
+    "GRA7": "TGME49_203310",
+    "GRA16": "TGME49_208830",
+    "GRA3": "TGME49_227280",
+    "MYR1": "TGME49_254470"
+  },
+  "host_symbols_resolved": 22579,
+  "rows_both_ends_resolved": 474159,
+  "max_q": 0.05,
+  "rows_kept": 18007,
+  "effectors_kept": 21,
+  "host_genes_kept": 7625,
+  "median_host_genes_per_effector": 385,
+  "sos1_stat_targets": {
+    "CISH": -0.351621114,
+    "SOCS1": -0.441305323
+  }
+}
