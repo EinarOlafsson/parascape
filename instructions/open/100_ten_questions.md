@@ -3,6 +3,11 @@ TEN QUESTIONS THE DATA ALREADY IN PARASCAPE CAN ANSWER
 ================================================================================
 
 STATE
+    **SUPERSEDED on 2026-11-18 by instruction 101 (the ParaScape paper).** Einar challenged these
+    one at a time and four were withdrawn outright, two downgraded to plumbing and one gated. The
+    triage, and the failure mode that produced the list, are recorded in 101. This file is kept
+    because the reasons each question failed are reusable; do not work from the list itself.
+
     The bradyzoite analysis is the worked example and it is now a module: five
     single-cell subtypes of a mouse brain cyst (`brady_subtypes`) met with the
     201 stored within-study contrasts, asking which subtype a treatment reaches.
