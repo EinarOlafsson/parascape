@@ -100,18 +100,25 @@ def _rank_window(expression: pd.Series, width: float) -> tuple:
     return order, half
 
 
-def _matched_draw(rng, members, order, position, half, taken):
-    """A random gene set matched gene by gene on where each member sits in the expression ordering."""
-    n = len(order)
-    out = []
-    for gene in members.index:
-        centre = position[gene]
+def _matched_draw(rng, centres, n, half, taken):
+    """A random gene set matched gene by gene on where each member sits in the expression ordering.
+
+    Positions, not names: a draw of two thousand sets against five clusters is ten thousand of
+    these, and looking each gene up by label made a run of the whole contrast catalogue take
+    minutes. The rng is called in the same order as before, so the sets drawn are the same ones.
+
+    :param centres: the position in the expression ordering of each member of the real set.
+    :param taken: the positions of the real set, which a matched set avoids where it can.
+    :returns: one position per member.
+    """
+    out = np.empty(len(centres), dtype=int)
+    for i, centre in enumerate(centres):
         lo, hi = max(0, centre - half), min(n, centre + half + 1)
         for _ in range(8):                      # a few tries to avoid the set drawing itself
-            pick = order[rng.integers(lo, hi)]
+            pick = int(rng.integers(lo, hi))
             if pick not in taken:
                 break
-        out.append(pick)
+        out[i] = pick
     return out
 
 
@@ -161,15 +168,21 @@ def test_clusters_against_axis(markers: dict, axis: pd.Series, expression: pd.Se
             continue
         members = values.loc[measured]
         observed = float(members.mean())
-        taken = set(measured)
-        sets = [_matched_draw(rng, members, order, position, half, taken) for _ in range(n_null)]
-        draws = np.array([float(values.loc[g].mean()) for g in sets])
+        # Everything below works on positions in the expression ordering, so a draw is an array
+        # index rather than a label lookup.
+        by_value = values.reindex(order).to_numpy(dtype=float)
+        by_expression = expression.reindex(order).to_numpy(dtype=float)
+        centres = np.array([position[g] for g in measured], dtype=int)
+        taken = set(centres.tolist())
+        sets = [_matched_draw(rng, centres, len(order), half, taken) for _ in range(n_null)]
+        picks = np.vstack(sets)
+        draws = np.nanmean(by_value[picks], axis=1)
         # How well the matching actually worked. A set at the EDGE of the expression range cannot be
         # matched, because there are no brighter genes to draw: the null is then systematically
         # dimmer and a monotone axis reads as an effect that is really expression. Measure it rather
         # than assume it (2026-11-18).
         member_expr = float(expression.loc[measured].mean())
-        null_expr = float(np.mean([float(expression.loc[g].mean()) for g in sets]))
+        null_expr = float(np.nanmean(by_expression[picks]))
         spread = float(expression.loc[measured].std(ddof=1)) or 1.0
         expression_gap = abs(member_expr - null_expr) / spread
         null_mean, null_sd = float(draws.mean()), float(draws.std(ddof=1))
