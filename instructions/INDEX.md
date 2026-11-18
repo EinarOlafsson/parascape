@@ -2,6 +2,8 @@
 
 **New here? Read [START_HERE.md](START_HERE.md) first.**
 
+**The progress list is [PROGRESS.md](PROGRESS.md)** — the paper, the program and the data, with every number measured on the date given by the command named beside it.
+
 One file per task. This index is the status table; the files carry the reasoning and the
 "done when" condition.
 
