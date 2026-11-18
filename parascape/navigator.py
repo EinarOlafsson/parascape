@@ -134,6 +134,12 @@ MAX_MODULES = 4
 #: Below this many results in all, they are shown one card each rather than grouped.
 GROUP_WHEN_MORE_THAN = 6
 
+#: The most cards the field ever shows. Einar: "there are way too many options when I type map".
+#: Before this the count grew with the data -- every KIND that matched added a card, so adding seven
+#: host proteome columns on 2026-11-18 pushed "map" from 8 cards to 9, because one of them is named
+#: after the Kim 2014 "draft map of the human proteome". A rule the data can break is not a rule.
+MAX_CARDS_SHOWN = 8
+
 
 #: How many modules and views one query may offer before the grouping gets to them.
 #: Six was the number for modules alone; the views behind them are the same handful of
@@ -460,7 +466,7 @@ def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS,
     rest = [s for s in found if s.kind != "module" and (s.kind, s.key) not in shown
             and not (s.kind == "panel" and s.title.lower() in taken)]
     if len(modules) + len(rest) <= GROUP_WHEN_MORE_THAN:
-        return modules + rest
+        return _capped(modules + rest)
     out = list(modules)
     by_kind: dict = {}
     for s in rest:
@@ -478,7 +484,34 @@ def suggestions(text: str, genes=None, index=None, limit: int = MAX_CARDS,
         out.append(Suggestion("group", kind, f"{len(members)} {many}",
                               ", ".join(card_name(m) for m in members[:3]), detail,
                               items=tuple(members)))
-    return out
+    return _capped(out)
+
+
+def _capped(cards: list) -> list:
+    """At most :data:`MAX_CARDS_SHOWN` cards, with the overflow folded into one group.
+
+    Truncating would make the tail unreachable, which is worse than a long list: somebody who typed
+    the word and can see the card they want should be able to open it. So the cards that do not fit
+    are gathered into a final group instead of being dropped."""
+    if len(cards) <= MAX_CARDS_SHOWN:
+        return cards
+    kept, overflow = cards[:MAX_CARDS_SHOWN - 1], cards[MAX_CARDS_SHOWN - 1:]
+    # a group already holds its members, so flatten one rather than nesting groups
+    members: list = []
+    for card in overflow:
+        members.extend(card.items if card.kind == "group" and card.items else [card])
+    names = "".join(f"<li>{escape(card_name(m))}</li>" for m in members[:12])
+    more = f"<p>…and {len(members) - 12} more.</p>" if len(members) > 12 else ""
+    # the group is keyed to a kind the icon set already knows: a new key here had no icon and broke
+    # every navigator test that renders a row (2026-11-18)
+    key = next((c.kind for c in overflow if c.kind != "group"),
+               next((c.key for c in overflow if c.kind == "group"), "guide"))
+    kept.append(Suggestion(
+        "group", key, f"{len(members)} more",
+        ", ".join(card_name(m) for m in members[:3]),
+        f"<h3>{len(members)} more</h3><ul>{names}</ul>{more}"
+        "<p><i>Click to see them one card each.</i></p>", items=tuple(members)))
+    return kept
 
 
 def _subtitle(text: str) -> str:
