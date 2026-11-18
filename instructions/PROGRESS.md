@@ -17,7 +17,7 @@ reaches rather than the data it uses. Figure 2 gates the rest.
 
 | # | Figure — the claim it ends on | State | % |
 |---|---|---|---|
-| 1 | What ParaScape is: imports, modules, one gene space | parts exist, never assembled | 20 |
+| 1 | What ParaScape is → **the corpus, assembled** | **both panels drawn** (schematic + coverage) | 85 |
 | 2 | **Which studies can be compared at all** → **cell cycle raises agreement 0.832 to 0.887, three times a random axis, p = 0.005** | **measured** on 12 studies | 75 |
 | 3 | Co-expression modules → **14 of 23 are compartments; the secretory machinery splits in two** | **measured** | 70 |
 | 4 | What structures the corpus → **same-study pairs agree 3.3x better than cross-study; only 1 perturbation is repeated across labs** | **measured** over 20,100 pairs | 75 |
@@ -26,10 +26,10 @@ reaches rather than the data it uses. Figure 2 gates the rest.
 | 7 | The network → **24x the reach at two thirds the accuracy; weighting recovers 5.7 points** | **measured** over 13 edge layers | 65 |
 | 8 | Strains → **dense granules 2.06 and apical secretory 1.73 against 1.36; everything internal below** | **measured** | 70 |
 | 9 | Species transfer → **localisation transfers at +0.256, fitness at 0.314, codon usage not at all** | **measured**, length is the control at 0.907 | 70 |
-| 10 | The host → **mostly private: 3,435 host genes moved by one effector, 68 by half or more** | **measured**; translocon control passes; co-folding remains | 65 |
+| 10 | The host → **mostly private**, and the single-cell check says the parasite is unchanged (1 of 85 targets) | **measured on pseudobulk AND on the 126,495 cells**; co-folding remains | 75 |
 | 11 | Filling the map → **5 of 12 targets beat guessing; localisation 76.5 % against 33.1 %** | **measured** from 1,047,574 held-out calls | 70 |
 | 12 | Measured absence → **host response 94.7 % unmeasured, transcript 0.1 %** | **measured**; prescriptive line stands | 70 |
-| — | **The manuscript**, each figure in a two-cell table with the legend below | not started | 0 |
+| — | **The manuscript**, each figure in a two-cell table with the legend below | **built**; legends assembled from the results; 4 of 12 panels drawn | 55 |
 
 ### Data
 105 study matrices built (0 failed), taking the omics store to 128 studies with gene-level
@@ -56,9 +56,9 @@ or a stub and the skill records that their style was NOT copied.
 * **The whole network trades accuracy for reach**: 24 times the genes at two thirds the accuracy, and the naive union is dragged down by its biggest and worst layer. Weighting layers by what each is worth recovers 5.7 points.
 * **Co-expression modules are compartments** — 14 of 23, one of them 78.6 % ribosome against 3.8 % matched — and the apical secretory machinery splits into two modules, not one.
 
-**Named next jobs:** figure 1 schematic; figure 6 remaining panels;
-figure 10 re-done on the single-cell data (GSE229505 downloaded, 126,495 cells); the manuscript;
-then a runnable route through ParaScape per figure.
+**Named next jobs:** draw the eight panels that are measured but undrawn (figures 2, 3, 4, 7, 8,
+9, 10, 11); then a runnable route through ParaScape per figure (B2, B3); then the module
+reshaping (C1-C3), which stays gated on the figures.
 
 **Decisions taken (Einar, 2026-11-18):** twelve figures, no merging · the network is not
 co-expression drawn as a graph, so the edge layer becomes an object rather than a view · the
