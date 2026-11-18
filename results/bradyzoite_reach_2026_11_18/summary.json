@@ -1,0 +1,28 @@
+{
+  "contrasts": 201,
+  "reaching_any": 135,
+  "by_subtype": {
+    "A": 29,
+    "B": 83,
+    "C": 4,
+    "D": 38,
+    "E": 86
+  },
+  "markers_per_subtype": {
+    "A": 150,
+    "B": 150,
+    "C": 150,
+    "D": 150,
+    "E": 150
+  },
+  "least_reached": "C",
+  "n_null": 1000,
+  "top_studies": {
+    "GSE200962": 56,
+    "GSE132238": 17,
+    "GSE223819": 14,
+    "GSE139537": 4,
+    "GSE140197": 4,
+    "GSE158231": 4
+  }
+}
