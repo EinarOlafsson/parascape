@@ -13,6 +13,28 @@ the gate needs baits from more compartments, which come with the PRIDE projects 
 
 Requested 2026-11-05. The blocker found by the first pass of the background table.
 
+## The deliverable is met by specificity, and here is the number (2026-11-18)
+
+This instruction asks for the background to become usable. It is — not as a frequency filter, which
+two separate attempts have now shown cannot work, but as the specificity score, and that claim is
+worth a measurement rather than an assertion.
+
+**All 13 known complex members are recovered**, each in an experiment that pulled on its own
+complex, at a median **88.5th percentile** (range 63.3 to 98.5) and a median specificity of 4.79.
+Eleven of the 13 clear the 80th percentile and all 13 clear chance, across 10 distinct experiments.
+By complex: MORC/HDAC3 98.0, MyoA glideosome 89.9, MIC2-M2AP 85.1, AMA1-RON 80.9.
+
+Set that against frequency, which at a 50 per cent cutoff deletes **12 of those same 13** as
+background. The specificity score does the job the frequency column cannot, and the gate as
+written — a usable frequency FILTER — is the wrong gate rather than an unreached one.
+
+**A trap found while measuring this.** `specificity_example.tsv` is the MYR1 pulldown (PXD016383),
+and scoring the 13 complex members inside it gives AUC 0.332, worse than chance. That number means
+nothing: MYR1 is a translocon component and has no relationship to AMA1-RON, MIC2-M2AP, MORC/HDAC3
+or the glideosome, so those proteins are background in that experiment and there is no expectation
+for a score to get right. A specificity score is only testable in an experiment that pulled on the
+complex. Anyone re-checking this should use `complex_best_specificity.tsv`, which is built that way.
+
 ## A compartment-matched background would NOT open the gate either (tested 2026-11-18)
 
 The obvious next idea, and the one this project reaches for everywhere else: the baits are
