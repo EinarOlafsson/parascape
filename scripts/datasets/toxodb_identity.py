@@ -6,6 +6,8 @@ Symbols, previous IDs, product descriptions
     level / kind : reference / identity
     provides     : gene_id, product
     coverage     : 8,843 ME49 genes
+    citation     : Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024
+    PMID         : 37953350
     accession    : ToxoDB ME49
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
     local path   : parascape/data/toxodb_identity.tsv

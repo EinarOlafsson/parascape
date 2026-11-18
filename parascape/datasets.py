@@ -252,7 +252,9 @@ REGISTRY = [
             "Symbols, previous IDs, product descriptions", ("gene_id", "product"),
             "8,843 ME49 genes", accession="ToxoDB ME49", url=TOXODB,
             path="parascape/data/toxodb_identity.tsv",
-            note="Retrieved 2026-08-11 via the REST API; strain tables for GT1 and VEG alongside.", organism=organisms.TOXOPLASMA),
+            note="Retrieved 2026-08-11 via the REST API; strain tables for GT1 and VEG alongside.", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.TOXOPLASMA),
     Dataset("toxodb_strain_snps", "Strain variation (ToxoDB HTS SNPs)", "reference", "variation",
             "SNPs per gene across every sequenced strain, split by effect",
             ("snp_total_all_strains", "snp_nonsynonymous", "snp_synonymous", "snp_noncoding",
@@ -266,7 +268,9 @@ REGISTRY = [
                  "SRS surface antigens, 55 for the ROP5/ROP18/GRA15 virulence loci, 30 across all "
                  "genes and 2.9 for ribosomal proteins. That ordering -- what immunity sees, then "
                  "the strain-typing markers, then the conserved core -- is the check. Zero is a "
-                 "measurement here, not a gap: 690 genes carry no SNP in any sequenced strain.", organism=organisms.TOXOPLASMA),
+                 "measurement here, not a gap: 690 genes carry no SNP in any sequenced strain.", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.TOXOPLASMA),
     Dataset("toxodb_codon_usage", "Codon usage bias (COMPUTED)", "reference", "sequence",
             "Effective number of codons, GC3, and codon adaptation index",
             ("codon_enc", "codon_gc3", "codon_cai_ribosomal"), "8,140 genes (100%)",
@@ -293,7 +297,9 @@ REGISTRY = [
                  "from 6.21, while 6.20 differs in 180 cells and Current_Release (v7) renumbers "
                  "every group into an OG7_ namespace that matches nothing here. The shipped CSV is "
                  "derived from this file -- filter to tgon/pfal/cpar/tbrt, then pivot wide. Note the "
-                 "T. brucei taxon code is tbrt, though the CSV column is tbru.", organism=organisms.TOXOPLASMA),
+                 "T. brucei taxon code is tbrt, though the CSV column is tbru.", pmid="12952885",
+            citation="Li L et al., OrthoMCL: identification of ortholog groups for eukaryotic genomes. Genome Res 2003",
+            organism=organisms.TOXOPLASMA),
     Dataset("interpro", "InterPro domains", "reference", "domains",
             "Domain identity and count", ("n_interpro", "interpro_id", "interpro_desc", "pfam_id"),
             "8,140",
@@ -302,7 +308,9 @@ REGISTRY = [
                           "interpro_description%22%2C%22pfam_id%22%2C%22pfam_description%22%5D%2C%22"
                           "includeHeader%22%3Atrue%2C%22attachmentType%22%3A%22plain%22%7D"),
             path="datasets/interpro_tgon.csv",
-            note="Domain annotation partly records study effort, not conserved architecture.", organism=organisms.TOXOPLASMA),
+            note="Domain annotation partly records study effort, not conserved architecture.", pmid="33156333",
+            citation="Blum M et al., The InterPro protein families and domains database: 20 years on. Nucleic Acids Res 2021",
+            organism=organisms.TOXOPLASMA),
     Dataset("alphafold", "AlphaFold DB", "reference", "structure",
             "Per-gene mean pLDDT; coordinates fetched on demand", ("mean_plddt",),
             "6,480 (79.6%)", accession="UP000001529 (taxid 508771), AlphaFold DB",
@@ -888,7 +896,9 @@ REGISTRY = [
                  "GRA7 16, MIC3 11, which is the panel commercial Toxoplasma serodiagnostic kits "
                  "are built from. Antigens are mapped by their product description, because IEDB "
                  "names them verbatim from ToxoDB; the trailing-symbol route resolves ten fewer and "
-                 "loses SRS29B, the most studied antigen in the organism.", organism=organisms.TOXOPLASMA),
+                 "loses SRS29B, the most studied antigen in the organism.", pmid="39558162",
+            citation="Vita R et al., The Immune Epitope Database (IEDB): 2024 update. Nucleic Acids Res 2025",
+            organism=organisms.TOXOPLASMA),
     Dataset("toxodb_epitopes", "IEDB epitopes mapped to genes (via ToxoDB)", "reference",
             "immunity", "How many IEDB epitopes ToxoDB maps to this gene",
             ("iedb_epitope_count",), "221 genes", accession="ToxoDB / IEDB",
@@ -900,7 +910,9 @@ REGISTRY = [
                  "the count is T-cell and B-cell epitopes alike, which is why the column is named "
                  "iedb_ and not t_cell_. Verified by what comes out on top: SRS29B (SAG1) with 45, "
                  "then GRA6, GRA7, GRA2 and ROP18. Those are the canonical Toxoplasma serology "
-                 "antigens, in the order a serologist would put them.", organism=organisms.TOXOPLASMA),
+                 "antigens, in the order a serologist would put them.", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.TOXOPLASMA),
     Dataset("toxodb_h4_acetylation", "Histone H4 acetylation (ChIP-chip, via ToxoDB)", "DNA",
             "ChIPchip", "Genome-wide H4 K5/K8/K12/K16 acetylation score within 1 kb of the gene",
             ("h4_acetylation_chip_score",), "7,515 genes (92%)",
@@ -943,7 +955,9 @@ REGISTRY = [
                  "enzymes have a Plasmodium ortholog 59.6% of the time against 30.4% for other "
                  "genes (odds 3.39, p = 8e-88), are lineage-specific a third as often, and are more "
                  "costly to lose in vitro. `has_ec` is 0 and not missing where ToxoDB reports no EC: "
-                 "the whole proteome was asked, so no assignment is an answer about the gene.", organism=organisms.TOXOPLASMA),
+                 "the whole proteome was asked, so no assignment is an answer about the gene.", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.TOXOPLASMA),
     Dataset("crosslink_interactome", "Crosslinking MS interactome", "post_translation", "XLMS",
             "How many proteins this one crosslinks to", ("n_crosslink_partners",),
             "494 proteins", pmid="40874616", accession="mBio 02159-25 supplementary file s0004",
@@ -1455,7 +1469,9 @@ REGISTRY = [
                  "2026-09-25: its columns' median association with each other was 0.13, with 70% "
                  "of pairs under 0.2 -- the loosest 'experiment' in either table -- so holding out "
                  "the piggyBac screen also removed codon usage, orthology and SNPs. They are five "
-                 "entries now, and the closure's 'shared experiment' rule means what it says.", organism=organisms.FALCIPARUM),
+                 "entries now, and the closure's 'shared experiment' rule means what it says.", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.FALCIPARUM),
     Dataset("plasmodb_pf3d7_orthology", "Plasmodium falciparum 3D7 orthology and paralogy",
             "reference", "orthology",
             "OrthoMCL group, ortholog and paralog counts from the same PlasmoDB report",
@@ -1467,7 +1483,9 @@ REGISTRY = [
             path="parascape/data/pf_nodes.parquet",
             note="Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes): "
                  "orthology is computed from sequence across species, not measured on this gene, "
-                 "and grouping it with the piggyBac screen closed one over the other for nothing.", organism=organisms.FALCIPARUM),
+                 "and grouping it with the piggyBac screen closed one over the other for nothing.", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.FALCIPARUM),
     Dataset("plasmodb_pf3d7_domains", "Plasmodium falciparum 3D7 InterPro domains",
             "reference", "domains",
             "InterPro and Pfam domain content from the same PlasmoDB report",
@@ -1477,7 +1495,9 @@ REGISTRY = [
             url="https://plasmodb.org/plasmo/service/record-types/transcript/searches/"
                 "GenesByTaxon/reports/attributesTabular",
             path="parascape/data/pf_nodes.parquet",
-            note="Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes).", organism=organisms.FALCIPARUM),
+            note="Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes).", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.FALCIPARUM),
     Dataset("plasmodb_pf3d7_snps", "Plasmodium falciparum strain variation",
             "reference", "variation",
             "SNP counts across sequenced strains, from the same PlasmoDB report",
@@ -1490,7 +1510,9 @@ REGISTRY = [
             path="parascape/data/pf_nodes.parquet",
             note="Split from the attribute report on 2026-09-25 (see plasmodb_pf3d7_attributes): "
                  "population sequencing is its own experiment, and its columns are the only ones "
-                 "of the report that are associated with each other.", organism=organisms.FALCIPARUM),
+                 "of the report that are associated with each other.", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_latency_transcriptome", "Transcription in a drug-tolerant latent state",
             "transcription", "scRNAseq",
             "Change in each gene in latent parasites, and the paper's 200-gene latency classifier",
@@ -1808,7 +1830,9 @@ REGISTRY = [
                  "to a protein, and attaching it to whichever paralogue sorted first would be "
                  "inventing the answer. 434 of 444 antigens resolve. Absent is absent and not zero, "
                  "because IEDB records what somebody tested. Validated on the history of the field: "
-                 "MSP1 is the top antigen and CSP, the RTS,S vaccine antigen, is present.", organism=organisms.FALCIPARUM),
+                 "MSP1 is the top antigen and CSP, the RTS,S vaccine antigen, is present.", pmid="39558162",
+            citation="Vita R et al., The Immune Epitope Database (IEDB): 2024 update. Nucleic Acids Res 2025",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_iedb_tcell", "Plasmodium T-cell epitopes (IEDB)", "reference", "immunity",
             "Distinct T-cell epitope sequences per gene", ("n_tcell_epitopes",),
             "44 antigens, 1,542 distinct epitopes", accession="IEDB tcell_search",
@@ -1820,7 +1844,9 @@ REGISTRY = [
                  "T-cell one. Pooling them, or filling either slot with the other, would answer one "
                  "question with the other's number. Same UniProt keying and same distinct-sequence "
                  "counting as the antibody table, and the loader reads whichever halves are present "
-                 "so one fetch failing does not cost the other column.", organism=organisms.FALCIPARUM),
+                 "so one fetch failing does not cost the other column.", pmid="39558162",
+            citation="Vita R et al., The Immune Epitope Database (IEDB): 2024 update. Nucleic Acids Res 2025",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_derived_stage_labels", "Plasmodium peak expression and stage label (DERIVED)",
             "transcription", "RNAseq",
             "Maximum expression across stages, and which stage a gene belongs to",
@@ -1855,7 +1881,9 @@ REGISTRY = [
                  "previous ids resolve; 66 are claimed by two current genes each -- a gene model "
                  "SPLIT, seen from the other side -- and those are withdrawn rather than assigned "
                  "to whichever came first, the same rule the Toxoplasma layer applies to 153 "
-                 "strings.", organism=organisms.FALCIPARUM),
+                 "strings.", pmid="37953350",
+            citation="Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_riboseq", "Plasmodium ribosome profiling across the asexual cycle",
             "translation", "riboseq",
             "Ribosome-footprint and mRNA density per gene at five points of the blood-stage cycle",
@@ -2442,7 +2470,9 @@ REGISTRY = [
                  "biology: MESA and PfEMP3 are exported by any textbook and both fall below 10, "
                  "while KAHRP and the FIKK kinases sit above it. Absence is a real negative here "
                  "and not a gap -- a sequence model was evaluated on every protein, so its silence "
-                 "is a prediction of not-exported, which is the opposite of the screen columns.", organism=organisms.FALCIPARUM),
+                 "is a prediction of not-exported, which is the opposite of the screen columns.", pmid="16507167",
+            citation="Sargeant TJ et al., Lineage-specific expansion of proteins exported to erythrocytes in malaria parasites. Genome Biol 2006",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_host_degree", "Plasmodium host interaction degree (COMPUTED)", "reference",
             "crosslink_MS",
             "How many host proteins a gene was crosslinked to, where it was looked at",

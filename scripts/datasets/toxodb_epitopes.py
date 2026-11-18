@@ -6,6 +6,8 @@ How many IEDB epitopes ToxoDB maps to this gene
     level / kind : reference / immunity
     provides     : iedb_epitope_count
     coverage     : 221 genes
+    citation     : Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024
+    PMID         : 37953350
     accession    : ToxoDB / IEDB
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesWithEpitopes/reports/attributesTabular
     local path   : parascape/data/toxodb_epitopes.tsv

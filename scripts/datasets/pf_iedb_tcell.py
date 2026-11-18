@@ -6,6 +6,8 @@ Distinct T-cell epitope sequences per gene
     level / kind : reference / immunity
     provides     : n_tcell_epitopes
     coverage     : 44 antigens, 1,542 distinct epitopes
+    citation     : Vita R et al., The Immune Epitope Database (IEDB): 2024 update. Nucleic Acids Res 2025
+    PMID         : 39558162
     accession    : IEDB tcell_search
     url          : https://query-api.iedb.org/tcell_search?parent_source_antigen_source_org_name=ilike.*Plasmodium%20falciparum*
     local path   : datasets/reference/plasmodb/iedb_pf_tcell_epitopes.tsv

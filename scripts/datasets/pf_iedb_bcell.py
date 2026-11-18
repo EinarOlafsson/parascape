@@ -6,6 +6,8 @@ Distinct antibody epitope sequences per gene
     level / kind : reference / immunity
     provides     : n_bcell_epitopes
     coverage     : 434 antigens, 7,366 distinct epitopes
+    citation     : Vita R et al., The Immune Epitope Database (IEDB): 2024 update. Nucleic Acids Res 2025
+    PMID         : 39558162
     accession    : IEDB bcell_search
     url          : https://query-api.iedb.org/bcell_search?parent_source_antigen_source_org_name=ilike.*Plasmodium%20falciparum*
     local path   : datasets/reference/plasmodb/iedb_pf_bcell_epitopes.tsv

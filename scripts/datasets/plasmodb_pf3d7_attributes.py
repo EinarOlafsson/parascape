@@ -6,6 +6,8 @@ The second species: gene structure and the protein's sequence properties
     level / kind : reference / annotation
     provides     : length, molecular_weight, isoelectric_point, transcript_length, exon_count, n_tm, is_tm, has_signal_peptide
     coverage     : 5,720 P. falciparum genes
+    citation     : Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024
+    PMID         : 37953350
     accession    : PlasmoDB GenesByTaxon attributesTabular
     url          : https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
     local path   : parascape/data/pf_nodes.parquet

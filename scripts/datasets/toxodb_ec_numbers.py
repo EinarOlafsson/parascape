@@ -6,6 +6,8 @@ EC number per gene, and whether it has one
     level / kind : reference / annotation
     provides     : ec_number, has_ec
     coverage     : 1,313 enzymes of 8,140 genes
+    citation     : Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024
+    PMID         : 37953350
     accession    : ToxoDB ME49
     url          : https://toxodb.org/toxo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
     local path   : parascape/data/toxodb_ec_numbers.tsv

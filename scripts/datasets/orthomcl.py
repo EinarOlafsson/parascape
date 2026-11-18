@@ -6,6 +6,8 @@ Orthogroup assignment and cross-species bridge
     level / kind : reference / orthology
     provides     : orthogroup
     coverage     : 16,793 groups
+    citation     : Li L et al., OrthoMCL: identification of ortholog groups for eukaryotic genomes. Genome Res 2003
+    PMID         : 12952885
     accession    : OrthoMCL release 6.21
     url          : https://orthomcl.org/common/downloads/release-6.21/groups_OrthoMCL-6.21.txt.gz
     local path   : datasets/MASTER_parasite_wide_by_orthogroup.csv

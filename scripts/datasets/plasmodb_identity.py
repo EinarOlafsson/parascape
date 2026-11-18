@@ -6,6 +6,8 @@ Symbols, previous IDs, product descriptions for the Plasmodium arm
     level / kind : reference / identity
     provides     : gene_id, product
     coverage     : 5,791 P. falciparum 3D7 transcripts
+    citation     : Alvarez-Jarreta J et al., VEuPathDB: the eukaryotic pathogen, vector and host bioinformatics resource center in 2023. Nucleic Acids Res 2024
+    PMID         : 37953350
     accession    : PlasmoDB 3D7
     url          : https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByTaxon/reports/attributesTabular
     local path   : parascape/data/plasmodb_identity.tsv

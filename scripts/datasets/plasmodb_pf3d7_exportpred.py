@@ -6,6 +6,8 @@ Predicted export to the erythrocyte, as an ordinal confidence tier
     level / kind : reference / annotation
     provides     : export_pred_tier, is_exported
     coverage     : 440 genes called at some threshold, 191 at the default
+    citation     : Sargeant TJ et al., Lineage-specific expansion of proteins exported to erythrocytes in malaria parasites. Genome Biol 2006
+    PMID         : 16507167
     accession    : PlasmoDB GenesByExportPrediction
     url          : https://plasmodb.org/plasmo/service/record-types/transcript/searches/GenesByExportPrediction/reports/attributesTabular
     local path   : datasets/reference/plasmodb/exportpred/

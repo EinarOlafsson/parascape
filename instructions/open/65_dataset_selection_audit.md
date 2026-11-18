@@ -13,6 +13,31 @@ Incompatible cohorts remain separate. Popularity cannot establish ground-truth
 accuracy. Unknown dates/counts/coverage remain unknown, not zero or guessed.
 
 
+## Reference-resource citations: 15 resolved, and a warning about how (2026-11-18)
+
+Of the 30 rows left unresolved in `source_review_queue.csv`, 19 are reference resources whose
+"publication" is the resource's own paper. Fifteen now carry one, each verified against PubMed by
+requiring the RETURNED TITLE to contain the resource name rather than by trusting the top hit:
+
+  VEuPathDB 37953350 (Alvarez-Jarreta 2024) -> the nine ToxoDB and PlasmoDB entries
+  OrthoMCL  12952885 (Li 2003)
+  InterPro  33156333 (Blum 2021)
+  IEDB      39558162 (Vita 2025)       -> iedb_bcell, pf_iedb_bcell, pf_iedb_tcell
+  ExportPred 16507167 (Sargeant 2006)  -> plasmodb_pf3d7_exportpred
+
+**`alphafold`, `pf_alphafold_confidence` and the EC-number source are deliberately left
+unresolved**, and the reason is a warning worth more than the citations. Three separate automated
+attempts returned confident, wrong papers: a title search for the AlphaFold paper returned a 2026
+GPCR structure-prediction paper; an author-plus-title search returned the AlphaFold 3 ADDENDUM;
+and "ENZYME nomenclature" returned PharmVar, then a paper about APIP. A containment check on the
+title caught the first and the third and NOT the second, because "AlphaFold" really is in the
+addendum's title.
+
+Picking the canonical paper for a resource is a judgement about which of several the data came
+from, not a lookup. It should be done by a person, and the three above are left for one. This is
+the same failure the v4 candidate list has at 11.1 per cent (instruction 41): a search recovers the
+keyword, not the thing.
+
 ## The A grades overstating coverage: measured and fixed, 2026-11-18
 
 The complaint was right and the cause is the DENOMINATOR. Every `coverage` string in the dataset
