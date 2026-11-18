@@ -1,0 +1,19 @@
+study	used	n_control_runs	reason	controls
+GSE103113	False	1.0	1 control runs, fewer than 2	
+GSE125120	True	3.0		bystander bradyzoite (wt) foreskin fibroblast
+GSE132238	False	1.0	1 control runs, fewer than 2	
+GSE139537	True	3.0		wt_etoh
+GSE140197	False	1.0	1 control runs, fewer than 2	
+GSE156685	False	1.0	1 control runs, fewer than 2	
+GSE158231	True	3.0		t. gondii- wt untreated
+GSE159515	True	2.0		me49.tz.a; me49.tz.b
+GSE175919	True	3.0		dmso
+GSE193614	False	1.0	1 control runs, fewer than 2	
+GSE193779	True	3.0		wt me49
+GSE218921	True	6.0		t. gondii in vitro control conditions; t. gondii veg wt, control conditions,
+GSE223621	True	3.0		parental
+GSE223819	False	0.0	0 control runs, fewer than 2	
+GSE223869	False		no built matrix	
+GSE223877	False		no built matrix	
+GSE245775	False		no built matrix	
+PRJNA1008424	False		no built matrix	
