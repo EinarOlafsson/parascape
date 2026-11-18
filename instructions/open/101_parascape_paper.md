@@ -223,10 +223,41 @@ WHAT TO DO
        B3. [ ] Each saves its result WITH what it was made from, as Reach does.
 
     C. RESHAPING THE PROGRAM (after the figures exist, not before)
-       C1. [ ] Make the edge layer first-class, per figure 7. Today edges are a
-               view of the map; the paper needs them as the object.
-       C2. [ ] Reorganise the modules so the bands match the figure structure.
-       C3. [ ] Retire or merge modules no figure needs.
+       C1. [x] The edge layer is an object: `parascape/edge_layers.py`, thirteen
+               kinds of relationship each carrying the worth figure 7 measured,
+               and the layer built from the compartment labels refused by name
+               for recovering a compartment. Six tests.
+
+       C2. [!] REORGANISE THE BANDS TO MATCH THE FIGURE STRUCTURE -- recommended
+               AGAINST, with the reason, rather than done.
+               The bands are Look up, Explore, Ask, Bring your own and Data, and
+               instruction 98 chose them deliberately: they are what the person
+               came to DO. The figure structure is a different axis entirely --
+               it is the order of an argument about the corpus. Rebuilding a
+               navigation system around the shape of a document would make the
+               program harder to use for everyone who is not reading the paper,
+               which is everyone. The one place the paper DID change the
+               catalogue is where it found something missing: the Findings
+               module, in Data, because the analyses are corpus-level.
+               Einar's call. Nothing has been moved.
+
+       C3. [!] RETIRE OR MERGE MODULES NO FIGURE NEEDS -- measured, not done,
+               because retiring a module removes something a user can open today
+               and that is not a change to make unasked.
+               Nine of 25 modules are not exercised by any figure: structure,
+               cell, gallery, runs, fill, drop, screen, jobs, console.
+               But look at WHAT they are. `drop` and `screen` are how a user
+               brings their own data, which no figure does because the paper
+               uses published data only. `jobs` and `console` are how anything
+               long-running is watched. `runs` and `fill` are how an inference is
+               kept. `gallery` and `cell` are how a map is compared and drawn.
+               Not one of them is dead; they are the parts of the program the
+               PAPER does not need, which is a different thing. The honest
+               conclusion is that "no figure needs it" is the wrong test for
+               whether a module should exist, and C3 as written should be
+               dropped. The right test is whether a module is reachable, honest
+               about what it cannot do, and used -- which is instruction 98 and
+               is already held by the module contract.
 
 HOW TO KNOW IT WORKED
     A figure is done when (a) it ends in a sentence about the parasite, (b) the
