@@ -112,6 +112,7 @@ def get(key: str) -> Finding:
 
 
 def script_path(finding: Finding) -> str:
+    """Where the script that produces this finding lives."""
     return os.path.join(ROOT, "scripts", finding.script)
 
 

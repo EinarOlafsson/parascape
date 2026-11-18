@@ -5,7 +5,7 @@ How much of each gene the host cell transcribes, in the cell each parasite lives
 
     level / kind : reference / transcription
     provides     : fibroblast_tpm, hepatocyte_tpm
-    coverage     : 19,087 human genes over 2 tissues
+    coverage     : 19,087 human genes over 2 tissues — 90.8% of the 21,020-row host space
     PMID         : 32913098
     accession    : GTEx v10
     url          : https://storage.googleapis.com/adult-gtex/bulk-gex/v10/rna-seq/GTEx_Analysis_v10_RNASeQCv2.4.2_gene_median_tpm.gct.gz

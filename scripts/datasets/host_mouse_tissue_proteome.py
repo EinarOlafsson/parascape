@@ -5,7 +5,7 @@ How abundant each protein is in mouse brain, macrophage or muscle, in parts per 
 
     level / kind : translation / proteomics
     provides     : mouse_brain_protein_ppm, bmdm_protein_ppm, skeletal_muscle_protein_ppm
-    coverage     : 4,603 to 10,347 proteins per tissue
+    coverage     : 4,603 to 10,347 proteins per tissue — 68.5% of the 16,473-row host space
     citation     : PaxDb v6.1 integrated datasets (https://pax-db.org)
     url          : https://pax-db.org/downloads/latest/datasets/10090/
     local path   : datasets/host/paxdb/

@@ -5,7 +5,7 @@ How much each gene is transcribed in a neuron, an astrocyte or a microglial cell
 
     level / kind : transcription / scRNAseq
     provides     : neuron_excitatory_ncpm, neuron_inhibitory_ncpm, astrocyte_ncpm, microglia_ncpm
-    coverage     : 18,939 reviewed proteins
+    coverage     : 18,939 reviewed proteins — 90.1% of the 21,020-row host space
     citation     : Human Protein Atlas single-cell RNA (rna_single_cell_type.tsv)
     url          : https://www.proteinatlas.org/download/tsv/rna_single_cell_type.tsv.zip
     local path   : datasets/host/single_cell_rna/rna_single_cell_type.tsv.zip

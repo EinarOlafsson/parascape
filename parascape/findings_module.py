@@ -121,6 +121,7 @@ class FindingsModule(QtCore.QObject):
 
     # ------------------------------------------------------------------------ what it says
     def chosen(self) -> PF.Finding:
+        """The finding selected in the chooser."""
         return PF.get(self.finding.currentData())
 
     def _describe(self) -> None:
@@ -185,6 +186,7 @@ class FindingsModule(QtCore.QObject):
             self.shell.say(f"the analysis stopped with code {code}; see what it printed")
 
     def stop(self) -> None:
+        """Stop a running analysis. Anything it had already written stays on disk."""
         if self.process is None:
             self.shell.say("nothing is running")
             return

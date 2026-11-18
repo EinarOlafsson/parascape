@@ -5,7 +5,7 @@ Which proteins a primary human monocyte carries at the surface, and how strongly
 
     level / kind : translation / proteomics
     provides     : monocyte_surface_classical_intensity
-    coverage     : 432 proteins (436 of 437 quantified rows joined, one more outside the shipped host table)
+    coverage     : 432 proteins (436 of 437 quantified rows joined, one more outside the shipped host table) — 2.1% of the 21,020-row host space
     citation     : Ravenhill BJ et al., Comprehensive cell surface proteomics defines markers of classical, intermediate and non-classical monocytes, Sci Rep 2020 (PMID 32165698), PRIDE PXD013832
     PMID         : 32165698
     accession    : PXD013832

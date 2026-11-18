@@ -5,7 +5,7 @@ Which host proteins are EXPOSED on the surface of the macrophage a tachyzoite in
 
     level / kind : reference / proteomics
     provides     : bmdm_surface_detected, bmdm_surface_intensity
-    coverage     : 1,296 mouse surface proteins, 150 of them on primary BMDM
+    coverage     : 1,296 mouse surface proteins, 150 of them on primary BMDM — 7.9% of the 16,473-row host space
     PMID         : 25894527
     accession    : PLoS ONE 0121314 S1 File
     url          : https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0121314.s002&type=supplementary

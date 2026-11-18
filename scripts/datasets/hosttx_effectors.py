@@ -6,14 +6,20 @@ Hotelling T2 plus full per-effector host-response signature
     level / kind : DNA / CRISPR_screen
     provides     : hosttx_T2, hosttx_padj, hosttx_signature_pc01, hosttx_signature_pc02, hosttx_signature_pc03, hosttx_signature_pc04, hosttx_signature_pc05, hosttx_signature_pc06, hosttx_signature_pc07, hosttx_signature_pc08, hosttx_signature_pc09, hosttx_signature_pc10, hosttx_signature_pc11, hosttx_signature_pc12, hosttx_signature_pc13, hosttx_signature_pc14, hosttx_signature_pc15, hosttx_signature_pc16, hosttx_signature_pc17, hosttx_signature_pc18, hosttx_signature_pc19, hosttx_signature_pc20, hosttx_signature_norm, hosttx_signature_n_de
     coverage     : 252 screened / 22 full signatures
-    citation     : High-throughput identification of Toxoplasma gondii effector proteins that target host cell transcription
+    citation     : Butterworth S, Sanchez L et al., High-throughput identification of Toxoplasma gondii effector proteins that target host cell transcription. Cell Host Microbe 2023;31:1748-1762.e8
     PMID         : 37827122
+    accession    : GSE229505
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12033024/supplementaryFiles
     local path   : datasets/DNA/CRISPR_screen/37827122/
 
 Quirks that cost time once:
-    The 737,726-row host differential-expression table is represented by 20 PCA coordinates, its
-    L2 norm and substantial-DE count; PCA is a dimensional summary, not a host-gene measurement.
+    THIS IS THE DUAL PERTURB-SEQ STUDY: pooled CRISPR knockout of parasite effectors read out by
+    single-cell RNA-seq of BOTH the parasite and the infected host cell. What is loaded is the
+    per-effector SUMMARY, not the single-cell matrix: the 737,726-row host differential-
+    expression table is represented by 20 PCA coordinates, its L2 norm and substantial-DE count;
+    PCA is a dimensional summary, not a host-gene measurement. So this answers which effectors
+    change the host and how much, and cannot answer WHICH host gene any effector moves -- that
+    needs the differential-expression table imported per host gene, from GSE229505.
 
 Fetches the source, reads it, resolves its accessions to current ToxoDB ME49, and reports the
 coverage that resolution achieves. The shipped columns are assembled by

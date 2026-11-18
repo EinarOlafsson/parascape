@@ -5,7 +5,7 @@ How abundant each protein is in adult human monocytes, in parts per million
 
     level / kind : translation / proteomics
     provides     : monocyte_protein_ppm
-    coverage     : 4,989 proteins (94.8% of the 5,265 in the source file)
+    coverage     : 4,989 proteins (94.8% of the 5,265 in the source file) — 23.7% of the 21,020-row host space
     citation     : Kim MS et al., A draft map of the human proteome, Nature 2014 (PMID 24870542, doi 10.1038/nature13302), PRIDE PXD000561, via PaxDb v6.1 (https://pax-db.org)
     PMID         : 24870542
     accession    : PXD000561

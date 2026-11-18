@@ -5,7 +5,7 @@ How much each mosquito gene is transcribed in the midgut at four points after an
 
     level / kind : transcription / scRNAseq
     provides     : anopheles_midgut_36h_cpm, anopheles_midgut_48h_cpm, anopheles_midgut_4d_cpm, anopheles_midgut_7d_cpm
-    coverage     : 12,574 of 12,614 AGAP genes
+    coverage     : 12,574 of 12,614 AGAP genes — 100.0% of the 12,574-row host space
     citation     : GSE284537 (PMID 41125888), single-cell RNA of infected Anopheles gambiae midguts, dual-organism with Plasmodium falciparum
     PMID         : 41125888
     accession    : GSE284537

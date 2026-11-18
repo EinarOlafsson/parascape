@@ -5,7 +5,7 @@ How much of each gene the mouse tissues a bradyzoite persists in transcribe
 
     level / kind : reference / transcription
     provides     : brain_tpm, skeletal_muscle_tpm
-    coverage     : 13,739 mouse genes; brain 9,763, skeletal muscle 8,635
+    coverage     : 13,739 mouse genes; brain 9,763, skeletal muscle 8,635 — 64.5% of the 16,473-row host space
     PMID         : 24670764
     accession    : E-MTAB-3579
     url          : https://www.ebi.ac.uk/gxa/experiments-content/E-MTAB-3579/download/zip?fileType=rnaseq-baseline-rpkms&accessKey=

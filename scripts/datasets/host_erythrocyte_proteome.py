@@ -5,7 +5,7 @@ Which human proteins are present in the cell the blood stage lives in
 
     level / kind : reference / proteomics
     provides     : rbc_membrane_psms, rbc_cytoplasm_psms
-    coverage     : 5,264 human proteins: 4,777 membrane, 2,350 cytoplasmic
+    coverage     : 5,264 human proteins: 4,777 membrane, 2,350 cytoplasmic — 25.0% of the 21,020-row host space
     PMID         : 41654503
     accession    : Sci Data 06792 Supplementary Table S1
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12992542/supplementaryFiles

@@ -5,7 +5,7 @@ How abundant each protein is in the superficial and the deep dermis, in parts pe
 
     level / kind : translation / proteomics
     provides     : dermis_superficial_protein_ppm, dermis_deep_protein_ppm
-    coverage     : 4,437 superficial and 4,090 deep proteins (4,723 in all)
+    coverage     : 4,437 superficial and 4,090 deep proteins (4,723 in all) — 22.5% of the 21,020-row host space
     citation     : Li J et al., Spatially resolved proteomic map shows that extracellular matrix regulates epidermal growth, Nat Commun 2022 (PMID 35817779), PXD027093, via PaxDb v6.1 (https://pax-db.org)
     PMID         : 35817779
     accession    : PXD027093

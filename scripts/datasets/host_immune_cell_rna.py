@@ -5,7 +5,7 @@ How much each gene is transcribed in a human monocyte and in a myeloid dendritic
 
     level / kind : transcription / RNAseq
     provides     : monocyte_tpm, myeloid_dc_tpm
-    coverage     : 19,135 reviewed proteins
+    coverage     : 19,135 reviewed proteins — 91.0% of the 21,020-row host space
     citation     : Human Protein Atlas blood atlas, consensus immune-cell RNA (rna_immune_cell.tsv)
     url          : https://www.proteinatlas.org/download/tsv/rna_immune_cell.tsv.zip
     local path   : datasets/host/immune_cell_rna/rna_immune_cell.tsv.zip

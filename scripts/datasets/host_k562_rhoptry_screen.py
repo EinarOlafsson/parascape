@@ -5,7 +5,7 @@ Whether knocking out a human gene stops Toxoplasma discharging its rhoptries
 
     level / kind : reference / CRISPR_screen
     provides     : rhoptry_discharge_score, rhoptry_discharge_beta, rhoptry_discharge_fdr
-    coverage     : 18,700 unambiguous protein projections; all 20,010 gene scores retained; 39 ambiguous symbols withheld
+    coverage     : 18,700 unambiguous protein projections; all 20,010 gene scores retained; 39 ambiguous symbols withheld — 89.0% of the 21,020-row host space
     citation     : Valleau D et al., Clustering of host N-glycans by the microneme MIC1/4/6 complex licenses Toxoplasma rhoptry discharge. EMBO J 2026, doi:10.1038/s44318-026-00911-z
     PMID         : 42791346
     accession    : bioRxiv 10.1101/2025.10.16.682961 v2 Table S1

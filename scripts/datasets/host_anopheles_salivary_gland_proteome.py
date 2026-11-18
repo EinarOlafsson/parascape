@@ -5,7 +5,7 @@ How abundant each mosquito protein is in the salivary gland (parts per million, 
 
     level / kind : translation / proteomics
     provides     : anopheles_salivary_gland_protein_ppm, anopheles_salivary_gland_infection_log2fc, anopheles_salivary_gland_infection_padj
-    coverage     : 2,936 mosquito genes; 2,458 with an abundance, 2,366 with a contrast
+    coverage     : 2,936 mosquito genes; 2,458 with an abundance, 2,366 with a contrast — 19.5% of the 12,574-row host space
     citation     : Alves e Silva TL et al., High-resolution proteomics unveils salivary gland disruption and saliva-hemolymph protein exchange in Plasmodium-infected mosquitoes, Nat Commun 2025 (PMID 41266344, doi 10.1038/s41467-025-64837-6), PRIDE PXD057628 (CC0)
     PMID         : 41266344
     accession    : PXD057628

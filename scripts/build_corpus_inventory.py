@@ -30,18 +30,30 @@ sys.path.insert(0, ROOT)
 from parascape import datasets as DS                   # noqa: E402
 from parascape import figstyle as FS                   # noqa: E402
 from parascape import information_categories as IC     # noqa: E402
+from parascape import organisms as ORGANISMS           # noqa: E402
 
 #: Categories that are not knowledge about a gene.
 NOT_KNOWLEDGE = ("identity", "attention")
 
-#: How the organism codes read on a figure.
-ORGANISM = {"Tg": "Toxoplasma", "Pf": "Plasmodium", "Hs": "human",
-            "Mm": "mouse", "Ag": "Anopheles"}
+def organism_name(code: str) -> str:
+    """How an organism code reads on a figure, from `parascape.organisms`.
+
+    Read from the organism table rather than written out here. A second copy of the codes in a
+    figure script is the bug the project calls #16i, and `test_organisms` refuses new literals.
+    """
+    space = ORGANISMS.SPACES.get(code)
+    if space is not None:
+        return space.species.split()[0]
+    # The host entries are table filenames, not species, so the reading word is supplied here --
+    # keyed on the constants `organisms` already exports, so no organism code is written out.
+    hosts = {ORGANISMS.HUMAN: "human", ORGANISMS.MOUSE: "mouse",
+             ORGANISMS.ANOPHELES: "Anopheles"}
+    return hosts.get(code, code)
 
 
 def by_organism_and_level() -> pd.DataFrame:
     """Datasets counted by organism and by level of biology."""
-    rows = Counter((ORGANISM.get(d.organism, d.organism), d.level) for d in DS.REGISTRY)
+    rows = Counter((organism_name(d.organism), d.level) for d in DS.REGISTRY)
     frame = pd.DataFrame([{"organism": o, "level": lv, "datasets": n}
                           for (o, lv), n in rows.items()])
     return frame.sort_values("datasets", ascending=False)

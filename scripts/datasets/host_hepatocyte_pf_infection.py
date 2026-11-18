@@ -5,7 +5,7 @@ Infected against uninfected primary hepatocytes, per host gene: log2 change and 
 
     level / kind : reference / transcription
     provides     : hepatocyte_pf_infection_log2fc, hepatocyte_pf_infection_padj
-    coverage     : 12,550 human genes
+    coverage     : 12,550 human genes — 59.7% of the 21,020-row host space
     citation     : Kanyal A et al., Inhibition of Wnt signaling in primary human hepatocytes promotes Plasmodium falciparum liver stage development. PLoS Pathog 2025;21:e1013800
     PMID         : 41428747
     accession    : GSE263643

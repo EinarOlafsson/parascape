@@ -5,7 +5,7 @@ How abundant each protein is in untreated human skin fibroblasts, in parts per m
 
     level / kind : translation / proteomics
     provides     : fibroblast_protein_ppm
-    coverage     : 6,390 proteins (95.3% of the 6,703 in the source file)
+    coverage     : 6,390 proteins (95.3% of the 6,703 in the source file) — 30.4% of the 21,020-row host space
     citation     : Martinez-Martinez E et al., Int J Mol Sci 2022 (PMID 35743299), PRIDE PXD032893, via PaxDb v6.1 (https://pax-db.org)
     PMID         : 35743299
     accession    : PXD032893

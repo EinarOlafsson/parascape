@@ -5,7 +5,7 @@ How abundant each protein is in a human tissue, in parts per million of the prot
 
     level / kind : translation / proteomics
     provides     : astrocyte_protein_ppm, brain_protein_ppm, liver_protein_ppm
-    coverage     : 9,930 to 15,108 proteins per tissue
+    coverage     : 9,930 to 15,108 proteins per tissue — 76.6% of the 21,020-row host space
     citation     : PaxDb v6.1 integrated datasets (https://pax-db.org)
     url          : https://pax-db.org/downloads/latest/datasets/9606/
     local path   : datasets/host/paxdb/

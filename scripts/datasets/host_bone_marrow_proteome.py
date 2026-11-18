@@ -5,7 +5,7 @@ How abundant each protein is in human bone marrow, in parts per million
 
     level / kind : translation / proteomics
     provides     : bone_marrow_protein_ppm
-    coverage     : 2,059 proteins (93.8% of the 2,195 in the source file)
+    coverage     : 2,059 proteins (93.8% of the 2,195 in the source file) — 9.8% of the 21,020-row host space
     citation     : Di Meo A et al., Proteomic Profiling of the Human Tissue and Biological Fluid Proteome, J Proteome Res 2021 (PMID 33107741), PRIDE PXD020192, via PaxDb v6.1 (https://pax-db.org)
     PMID         : 33107741
     accession    : PXD020192

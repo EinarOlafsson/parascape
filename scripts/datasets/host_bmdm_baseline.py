@@ -5,7 +5,7 @@ How much of each gene an unstimulated macrophage transcribes (TPM)
 
     level / kind : reference / transcription
     provides     : bmdm_tpm
-    coverage     : 15,437 mouse genes
+    coverage     : 15,437 mouse genes — 93.7% of the 16,473-row host space
     citation     : John SV et al., Classically activated macrophages undergo functionally significant nucleotide metabolism remodelling driven by nitric oxide. Nat Metab 2025;7:1681-1702
     PMID         : 40759751
     accession    : GSE267544

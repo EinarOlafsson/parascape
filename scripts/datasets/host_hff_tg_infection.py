@@ -5,7 +5,7 @@ Infected against uninfected HFF, per host gene: moderated log2 change and FDR
 
     level / kind : reference / transcription
     provides     : hff_tg_infection_log2fc, hff_tg_infection_padj
-    coverage     : 10,631 human genes
+    coverage     : 10,631 human genes — 50.6% of the 21,020-row host space
     accession    : GSE335016
     url          : https://ftp.ncbi.nlm.nih.gov/geo/series/GSE335nnn/GSE335016/suppl/GSE335016_245740-HOMO-gene_fpkm.txt.gz
     local path   : datasets/host/fibroblast_infection/GSE335016/GSE335016_245740-HOMO-gene_fpkm.txt.gz

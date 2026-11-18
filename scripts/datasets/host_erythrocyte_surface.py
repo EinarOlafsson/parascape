@@ -5,7 +5,7 @@ Which host proteins are reachable from outside the cell the merozoite invades
 
     level / kind : reference / proteomics
     provides     : rbc_surface_copies_uk, rbc_surface_copies_senegal, rbc_surface_found_uk, rbc_surface_found_senegal
-    coverage     : 267 plasma-membrane proteins, 230 in both populations
+    coverage     : 267 plasma-membrane proteins, 230 in both populations — 1.3% of the 21,020-row host space
     PMID         : 31552303
     accession    : Commun Biol 0596 Supplementary Data 2A
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6754445/supplementaryFiles
