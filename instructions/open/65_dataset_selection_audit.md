@@ -19,7 +19,7 @@ accuracy. Unknown dates/counts/coverage remain unknown, not zero or guessed.
 | [65.01](../done/65_01_dataset_selection_policy.md) | ✅ | 0 h | Implement and test a versioned selection policy |
 | [65.02](../done/65_02_publication_identity_audit.md) | ✅ | 0 h | Audit publication identity and citation rates for all 162 registered sources |
 | [65.03](../done/65_03_slot_literature_discovery.md) | ✅ | 0 h | Search every current slot for literature challengers and expose comparison gaps |
-| 65.04 | 85% | waits on Einar and on 4 unfetchable files | Review biological eligibility and deeper literature; validate/promote replacements and rerun affected checks. **Done:** origin-paper verification for all 162; supplementary-table verification for all 63 (42 read, 21 each accounted for); the **biological eligibility read** for all 156 candidates filling a slot — 115 admitted, 41 queued, **0 biologically ineligible**, 31 inferred not measured; **deposit-backed stage verification** for every candidate with a GEO series, which confirmed 10 stage claims and found **1 real defect** (`rna108740_Day` is cat enteroepithelial in a bradyzoite slot); and the **pattern over-match audit**, which found 5 more, including a tachyzoite slot holding 9 perturbed columns and 3 fold-changes. Reports in `results/dataset_selection_2026_11_08/`, 29 regression tests. **Remaining, all blocked:** 2 slot decisions for Einar, the batch-5 replacement he chose to look at himself, 9 rows needing full text or the authors, and 4 files this machine cannot fetch |
+| 65.04 | 90% | waits on Einar only (2 slot decisions, batch-5 replacement) | Review biological eligibility and deeper literature; validate/promote replacements and rerun affected checks. **Done:** origin-paper verification for all 162; supplementary-table verification for all 63 (42 read, 21 each accounted for); the **biological eligibility read** for all 156 candidates filling a slot — 115 admitted, 41 queued, **0 biologically ineligible**, 31 inferred not measured; **deposit-backed stage verification** for every candidate with a GEO series, which confirmed 10 stage claims and found **1 real defect** (`rna108740_Day` is cat enteroepithelial in a bradyzoite slot); and the **pattern over-match audit**, which found 5 more, including a tachyzoite slot holding 9 perturbed columns and 3 fold-changes. Reports in `results/dataset_selection_2026_11_08/`, 29 regression tests. **Remaining, all blocked:** 2 slot decisions for Einar and the batch-5 replacement he chose to look at himself. The 9 full-text rows and the 4 unfetchable files were closed on 2026-11-17 (last section) |
 
 65.02 depends on 65.01; 65.03 depends on 65.01/65.02; 65.04 depends on all three.
 Each completion requires recorded evidence, relevant checks, a commit and nightly
@@ -802,3 +802,50 @@ Installed from the archive in a clean wheel environment: 8,140 genes load, the b
 reads `rna108740_Day`, the tachyzoite protein slot reads the untreated columns only, both pre-sexual
 reprogramming slots are present, and the map metadata says 331 features. The offline installed-data smoke
 test passed (574 optional packs verified, network and NAS reads disabled).
+
+## 65.04, 2026-11-17: the 9 full-text rows are settled, and the 4 unfetchable files are fetched
+
+**The nine rows (four series).** Full text found and read for all four; every row is settled for stage.
+Row by row, with the sentence, in `results/dataset_selection_2026_11_08/stage_from_full_text.tsv`.
+
+| series | rows | stage | evidence |
+|---|---:|---|---|
+| GSE22258 | 2 | 0 h = tachyzoite; 72 h = bradyzoite **induced in culture** | The GEO series summary itself says "0hr and 72hr, were used to generate tachyzoite and bradyzoite transcriptional data ... Prugniaud". The earlier check read only sample characteristics and missed the summary. Paper found: PMID 20709297 (Peixoto 2010, PMC2963626), methods "deposited with GEO (GSE22315, GSE22258)", Fig 5D "72 hr post-induction at pH 8.2". |
+| GSE99395 | 3 | tachyzoite, by culture conditions | PMID 29228904 (PMC5725899): RH type I in HFF, about 18 h, intracellular parasites scraped from the monolayer. The authors never write "tachyzoite" for their own samples; they say "two parasite stages" of the "lytic cycle". The stage follows from the conditions, not from a label. |
+| GSE129869 | 3 | tachyzoite | PMID 31167946 (PMC6553554): "24 h after infection with RH strain tachyzoites"; Fig 3 "The Toxoplasma tachyzoite translatome". |
+| GSE302107 | 1 | tachyzoite | bioRxiv 10.1101/2025.07.14.664749: "we profiled acute-stage tachyzoites from the ME49 reference strain ... Two days post infection". This also closes the missing paper link, but it is a preprint, so recheck when published. |
+
+Two qualifiers kept, because they change how the row may be used and not what stage it is:
+
+* `rna22258_bradyzoite` is **alkaline-induced differentiation in cell culture for 72 h**, not tissue cysts. The slot is
+  named "bradyzoite / tissue cyst", so the row stays admitted only with that qualifier recorded. The 0 h sample is 4 h
+  after infection, a type II strain, on a microarray.
+* GSE129869 columns come from infected cells only (the loader drops the mock-infected host libraries) and split by host
+  growth state, confluent or subconfluent. That is a context difference, not a stage difference.
+
+Nothing was guessed. The one place where the text does not state the stage in words (GSE99395) is marked as such.
+
+**The four files.** All four came down from Europe PMC in 4 to 25 seconds this time; the earlier stalls were the
+endpoint, not the files. Staged on mnt1 (`/media/carruthers/mnt1/parascape_supp_fetch/`), recorded in
+`supplementary_fetched_paths.json`, and the verification rerun:
+
+| source | file | result |
+|---|---|---|
+| `oxidative_stress_screen` | `Data_Sheet_1.xlsx` (PMC8216390, PMID 34163449) | 7,318 of 7,384 installed genes in the table, 99.1% |
+| `pf_berghei_transfer` | `mmc1.xlsx` (PMC5509546, PMID 28708996) | 2,447 of 2,447, 100.0% |
+| `pf_palmitome` | `Table_3.xlsx` (PMC9556994, PMID 36250062) | all 503 genes marked palmitoylated are in the table, 100.0% |
+| `pf_acetylome` | `srep19722-s2.xls` (PMC4728587, PMID 26813983) | all 1,127 genes marked acetylated are in the table, 100.0% |
+
+The acetylome file was **already on this machine** (`mnt3/claude/parascape_supp_fetch/pf_acetylome/`, byte-identical to
+the new download); the map simply never listed it, so it read as absent. The Springer 403 noted earlier does not apply
+to the Europe PMC bundle. The two files carry an `.xls` name but hold Excel 2007 content, and read fine.
+
+The rerun prints "LOOK" for `pf_acetylome` (1,144 of 5,720, 20%). That is the check, not the data: `has_acetyl` is 0 or 1
+for every gene, so "genes with a value" is all 5,720 while the table lists only the 1,145 acetylated ones. Counted
+over the 1,127 genes marked acetylated it is 100.0%. For `pf_palmitome` the 54% has the same cause. The script was not
+changed; this paragraph is the record. The verifier tally is now 45 verified, 8 keyed differently, 3 not gene-keyed,
+3 with no file recorded, 2 unreadable (`pf_ip_ms` is a PDF, `spacr_escrt_screen` names a directory), 1 with no installed
+column, and 1 "LOOK" explained above. Not touched: `VEuPathDB` paths, which were not needed.
+
+**Still open, all Einar:** the 2 slot decisions and the batch-5 replacement. 65.04 moves 85% to 90%: of the four
+blocked groups, two are closed with evidence and the two left are decisions rather than work.

@@ -24,10 +24,10 @@ metabolome_iron	not keyed on genes, so this check does not apply	the rows are me
 mrna_stability	the table names the genes we ship	404 of 412 installed genes appear in the table (98%); the table names 426 identifiers [text table, column read from nodes.parquet]
 myristoylome	the table names the genes we ship	65 of 65 installed genes appear in the table (100%); the table names 65 identifiers [text table, column read from nodes.parquet]
 organelle_surface_turboid	the table names the genes we ship	742 of 742 installed genes appear in the table (100%); the table names 742 identifiers [6 sheet(s), column read from nodes.parquet]
-oxidative_stress_screen	file not on this machine	datasets/quarantine/2026_08_16_unverified/Tg/fitness_oxidative_stress/ is recorded but absent here
-pf_acetylome	file not on this machine	datasets/post_translation/acetylome/26813983/srep19722-s2.xls is recorded but absent here
+oxidative_stress_screen	the table names the genes we ship	7,318 of 7,384 installed genes appear in the table (99%); the table names 8,141 identifiers [4 sheet(s), column read from nodes.parquet]
+pf_acetylome	LOOK: the table and the column barely overlap	1,144 of 5,720 installed genes appear in the table (20%); the table names 1,232 identifiers [5 sheet(s), column read from pf_nodes.parquet]
 pf_berghei_liver_transfer	read: keyed on something other than gene accessions	the table is keyed on PBANKA_ accessions and the installed column on P. falciparum genes, which is the point rather than a mismatch -- `pb_transferred_liver_log2fc` is a TRANSFERRED phenotype, P. berghei measurements carried across by orthology, so an accession overlap of zero is expected
-pf_berghei_transfer	file not on this machine	datasets/reference/plasmodb/pb_transfer/28708996/mmc1.xlsx is recorded but absent here
+pf_berghei_transfer	the table names the genes we ship	2,447 of 2,447 installed genes appear in the table (100%); the table names 7,610 identifiers [1 sheet(s), column read from pf_nodes.parquet]
 pf_cdpk1_dependent_sites	read: keyed on something other than gene accessions	the phosphosite sheets are keyed on bare NUMERIC protein ids -- '3885720(S422)' in a Phosphosite column, with a real header three rows down under a title row -- and carry no gene accession of any kind, so the link to a gene-keyed column is the identity layer
 pf_chromatin_proxiome	the table names the genes we ship	1,897 of 2,019 installed genes appear in the table (94%); the table names 2,060 identifiers [4 sheet(s), column read from pf_nodes.parquet]
 pf_committed_proteome	the table names the genes we ship	1,950 of 1,950 installed genes appear in the table (100%); the table names 1,985 identifiers [5 sheet(s), column read from pf_nodes.parquet]
@@ -46,7 +46,7 @@ pf_m6a_nanopore	the table names the genes we ship	5,285 of 5,285 installed genes
 pf_meltome	the table names the genes we ship	2,039 of 2,040 installed genes appear in the table (100%); the table names 8,518 identifiers [6 sheet(s), column read from pf_nodes.parquet]
 pf_mrna_dynamics	the table names the genes we ship	4,572 of 4,572 installed genes appear in the table (100%); the table names 4,581 identifiers [3 sheet(s), column read from pf_nodes.parquet]
 pf_myristoylome	the table names the genes we ship	608 of 609 installed genes appear in the table (100%); the table names 831 identifiers [1 sheet(s), column read from pf_nodes.parquet]
-pf_palmitome	file not on this machine	datasets/post_translation/palmitome/36250062/Table_3.xlsx is recorded but absent here
+pf_palmitome	the table names the genes we ship	3,096 of 5,720 installed genes appear in the table (54%); the table names 3,096 identifiers [3 sheet(s), column read from pf_nodes.parquet]
 pf_pb_fertility_transfer	the table names the genes we ship	1,121 of 1,121 installed genes appear in the table (100%); the table names 2,703 identifiers [3 sheet(s), column read from pf_nodes.parquet]
 pf_resistome	read: keyed on something other than gene accessions	the table is one row per SNV in compound-selected clones, and two of the six installed columns (pf6_field_dnds, pf6_field_nonsyn_snvs) come from the Pf6 field data instead, so this table is expected to cover only part of the column set
 pf_rna_dependence	the table names the genes we ship	3,666 of 3,671 installed genes appear in the table (100%); the table names 4,668 identifiers [4 sheet(s), column read from pf_nodes.parquet]
