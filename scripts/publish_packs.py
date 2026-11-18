@@ -21,7 +21,11 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "parascape" / "pack_index.json"
-NAME = re.compile(r"^(?P<organism>[A-Za-z0-9_]+)-(?P<version>[0-9][0-9.]*)\.zip$")
+#: Both spellings a pack has ever had. `build_space_packs.py` writes
+#: `parascape_<organism>_<version>.zip`; an earlier hand-made pack was
+#: `<organism>-<version>.zip`. The two scripts had never been run against each other, so
+#: publishing a freshly built pack failed on its own name (found 2026-11-18).
+NAME = re.compile(r"^(?:parascape[_-])?(?P<organism>[A-Za-z]{2})[-_](?P<version>[0-9][0-9.]*)\.zip$")
 
 
 def digest(path: Path) -> str:

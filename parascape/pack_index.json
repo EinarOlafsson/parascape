@@ -1,4 +1,40 @@
 {
   "format": 1,
-  "packs": {}
+  "packs": {
+    "Ag": {
+      "2026.11.18": {
+        "path": "Ag/2026.11.18/parascape_Ag_2026.11.18.zip",
+        "sha256": "9831c651e0398f2617f907a901c0c3e0d68e0b8b464fa2a4c47991b1b679b679",
+        "size": 203373
+      }
+    },
+    "As": {
+      "2026.11.18": {
+        "path": "As/2026.11.18/parascape_As_2026.11.18.zip",
+        "sha256": "bc1629c3219454c22e429ce7411c7ac6bc3aa181dedd7bba985be155e2479897",
+        "size": 216421
+      }
+    },
+    "Fc": {
+      "2026.11.18": {
+        "path": "Fc/2026.11.18/parascape_Fc_2026.11.18.zip",
+        "sha256": "88397e8d29e84f30aa059ddb6fe39901151b5eafec75c76b8e2b855e23b972ca",
+        "size": 640542
+      }
+    },
+    "Pv": {
+      "2026.11.18": {
+        "path": "Pv/2026.11.18/parascape_Pv_2026.11.18.zip",
+        "sha256": "6ae7cfb3254a264e77d54b8b328fa14645414d410abf143a38d5fe97518629e5",
+        "size": 107296
+      }
+    },
+    "Rn": {
+      "2026.11.18": {
+        "path": "Rn/2026.11.18/parascape_Rn_2026.11.18.zip",
+        "sha256": "eced932b36f707f458650b80a12e0b2b2ca3b1c6e37d7b5dc091d555469dfa2b",
+        "size": 750646
+      }
+    }
+  }
 }
