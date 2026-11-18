@@ -1,0 +1,182 @@
+{
+  "source": "/media/carruthers/mnt3/claude/repo/starplast/results/hosttx_per_host_gene_2026_11_18/hosttx_host_gene_effects.parquet",
+  "effectors": 21,
+  "host_genes": 7625,
+  "shared_cut": 10,
+  "shared_host_genes": 68,
+  "private_host_genes": 3435,
+  "median_effectors_per_gene": 2,
+  "overlap_translocon_within": 0.11812536650749769,
+  "overlap_translocon_to_cargo": 0.041611816692932846,
+  "overlap_cargo_within": 0.018179369041466446,
+  "per_effector": [
+    {
+      "effector": "MYR3",
+      "host_genes_moved": 4248,
+      "shared_with_half_or_more": 68,
+      "its_own_only": 848,
+      "translocon": true,
+      "share_that_is_its_own": 0.19962335216572505
+    },
+    {
+      "effector": "MYR1",
+      "host_genes_moved": 3668,
+      "shared_with_half_or_more": 68,
+      "its_own_only": 520,
+      "translocon": true,
+      "share_that_is_its_own": 0.14176663031624864
+    },
+    {
+      "effector": "GRA24",
+      "host_genes_moved": 1746,
+      "shared_with_half_or_more": 37,
+      "its_own_only": 485,
+      "translocon": false,
+      "share_that_is_its_own": 0.2777777777777778
+    },
+    {
+      "effector": "GRA45",
+      "host_genes_moved": 1736,
+      "shared_with_half_or_more": 68,
+      "its_own_only": 115,
+      "translocon": false,
+      "share_that_is_its_own": 0.06624423963133641
+    },
+    {
+      "effector": "GRA3",
+      "host_genes_moved": 1204,
+      "shared_with_half_or_more": 23,
+      "its_own_only": 414,
+      "translocon": false,
+      "share_that_is_its_own": 0.3438538205980066
+    },
+    {
+      "effector": "222100",
+      "host_genes_moved": 1146,
+      "shared_with_half_or_more": 40,
+      "its_own_only": 349,
+      "translocon": false,
+      "share_that_is_its_own": 0.3045375218150087
+    },
+    {
+      "effector": "MYR2",
+      "host_genes_moved": 929,
+      "shared_with_half_or_more": 68,
+      "its_own_only": 58,
+      "translocon": true,
+      "share_that_is_its_own": 0.062432723358449946
+    },
+    {
+      "effector": "HCE1",
+      "host_genes_moved": 617,
+      "shared_with_half_or_more": 52,
+      "its_own_only": 93,
+      "translocon": false,
+      "share_that_is_its_own": 0.1507293354943274
+    },
+    {
+      "effector": "ROP17",
+      "host_genes_moved": 581,
+      "shared_with_half_or_more": 62,
+      "its_own_only": 41,
+      "translocon": false,
+      "share_that_is_its_own": 0.07056798623063683
+    },
+    {
+      "effector": "GRA57",
+      "host_genes_moved": 457,
+      "shared_with_half_or_more": 58,
+      "its_own_only": 66,
+      "translocon": false,
+      "share_that_is_its_own": 0.14442013129102846
+    },
+    {
+      "effector": "MYR4",
+      "host_genes_moved": 385,
+      "shared_with_half_or_more": 54,
+      "its_own_only": 45,
+      "translocon": true,
+      "share_that_is_its_own": 0.11688311688311688
+    },
+    {
+      "effector": "GRA28",
+      "host_genes_moved": 260,
+      "shared_with_half_or_more": 11,
+      "its_own_only": 62,
+      "translocon": false,
+      "share_that_is_its_own": 0.23846153846153847
+    },
+    {
+      "effector": "GRA59",
+      "host_genes_moved": 232,
+      "shared_with_half_or_more": 42,
+      "its_own_only": 28,
+      "translocon": true,
+      "share_that_is_its_own": 0.1206896551724138
+    },
+    {
+      "effector": "IST",
+      "host_genes_moved": 114,
+      "shared_with_half_or_more": 2,
+      "its_own_only": 42,
+      "translocon": false,
+      "share_that_is_its_own": 0.3684210526315789
+    },
+    {
+      "effector": "GRA25",
+      "host_genes_moved": 110,
+      "shared_with_half_or_more": 16,
+      "its_own_only": 42,
+      "translocon": false,
+      "share_that_is_its_own": 0.38181818181818183
+    },
+    {
+      "effector": "PPM3C",
+      "host_genes_moved": 106,
+      "shared_with_half_or_more": 14,
+      "its_own_only": 54,
+      "translocon": false,
+      "share_that_is_its_own": 0.5094339622641509
+    },
+    {
+      "effector": "GRA7",
+      "host_genes_moved": 104,
+      "shared_with_half_or_more": 24,
+      "its_own_only": 29,
+      "translocon": false,
+      "share_that_is_its_own": 0.27884615384615385
+    },
+    {
+      "effector": "ROP9",
+      "host_genes_moved": 102,
+      "shared_with_half_or_more": 15,
+      "its_own_only": 36,
+      "translocon": false,
+      "share_that_is_its_own": 0.35294117647058826
+    },
+    {
+      "effector": "GRA16",
+      "host_genes_moved": 101,
+      "shared_with_half_or_more": 11,
+      "its_own_only": 34,
+      "translocon": false,
+      "share_that_is_its_own": 0.33663366336633666
+    },
+    {
+      "effector": "ROP16",
+      "host_genes_moved": 101,
+      "shared_with_half_or_more": 1,
+      "its_own_only": 41,
+      "translocon": false,
+      "share_that_is_its_own": 0.40594059405940597
+    },
+    {
+      "effector": "GRA70",
+      "host_genes_moved": 60,
+      "shared_with_half_or_more": 6,
+      "its_own_only": 33,
+      "translocon": false,
+      "share_that_is_its_own": 0.55
+    }
+  ]
+}
