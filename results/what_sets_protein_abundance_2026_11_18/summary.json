@@ -1,0 +1,25 @@
+{
+  "organism": "Plasmodium falciparum",
+  "target": "proteome_blood_log2",
+  "genes_with_protein": 3049,
+  "genes_used": 439,
+  "folds": 5,
+  "repeats": 10,
+  "r2_by_layer": {
+    "transcript abundance": 0.4863356688614154,
+    "+ how fast it is made and destroyed": 0.49305382994928637,
+    "+ how much is on ribosomes": 0.44141610540953263,
+    "+ how the message is written": 0.504639556732635
+  },
+  "shuffled_r2_mean": -0.013559392845018147,
+  "shuffled_r2_sd": 0.01634995558649376,
+  "transcription_share_of_explainable": 0.9637287889405045,
+  "r2_alone_by_layer": {
+    "transcript abundance": 0.4863356688614154,
+    "+ how fast it is made and destroyed": 0.21051875107720583,
+    "+ how much is on ribosomes": 0.33435661628465,
+    "+ how the message is written": 0.2855410764203641
+  },
+  "wide_genes": 695,
+  "wide_transcript_only_r2": 0.24295385759228677
+}
