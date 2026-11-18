@@ -1,0 +1,106 @@
+{
+  "genes_with_a_ratio": 7939,
+  "n_null": 2000,
+  "match": "coding length",
+  "classes": [
+    {
+      "class": "dense granules (hyperLOPIT)",
+      "genes": 190,
+      "ratio": 2.056034516667151,
+      "length_matched_baseline": 1.3619881795768711,
+      "detection_limit": 0.1727944035082364,
+      "over_detection_limit": 4.016601944270711,
+      "p": 0.0004997501249375312,
+      "median_length": 546.5,
+      "q": 0.004497751124437781
+    },
+    {
+      "class": "carries a signal peptide",
+      "genes": 925,
+      "ratio": 1.9505836858179502,
+      "length_matched_baseline": 1.405284558242009,
+      "detection_limit": 0.08712152159290844,
+      "over_detection_limit": 6.25906340483759,
+      "p": 0.0004997501249375312,
+      "median_length": 396.0,
+      "q": 0.004497751124437781
+    },
+    {
+      "class": "apical secretory (rhoptries, micronemes)",
+      "genes": 445,
+      "ratio": 1.7309075403319722,
+      "length_matched_baseline": 1.356419627131071,
+      "detection_limit": 0.11130742787798503,
+      "over_detection_limit": 3.364446743045884,
+      "p": 0.0004997501249375312,
+      "median_length": 565.0,
+      "q": 0.004497751124437781
+    },
+    {
+      "class": "apicoplast",
+      "genes": 171,
+      "ratio": 1.4439284519434337,
+      "length_matched_baseline": 1.3260482831586122,
+      "detection_limit": 0.15008630803880682,
+      "over_detection_limit": 0.7854158738739975,
+      "p": 0.12193903048475763,
+      "median_length": 786.0,
+      "q": 1.0
+    },
+    {
+      "class": "surface and pellicle",
+      "genes": 321,
+      "ratio": 1.1333248062645167,
+      "length_matched_baseline": 1.3837244496457692,
+      "detection_limit": 0.14351281821396247,
+      "over_detection_limit": 1.744789395801099,
+      "p": 0.0014992503748125937,
+      "median_length": 428.0,
+      "q": 0.013493253373313342
+    },
+    {
+      "class": "mitochondrion",
+      "genes": 466,
+      "ratio": 1.0659082231837826,
+      "length_matched_baseline": 1.3888486574197,
+      "detection_limit": 0.12429524545672935,
+      "over_detection_limit": 2.5981720624087914,
+      "p": 0.0004997501249375312,
+      "median_length": 490.5,
+      "q": 0.004497751124437781
+    },
+    {
+      "class": "nucleus",
+      "genes": 1253,
+      "ratio": 0.8917436411629664,
+      "length_matched_baseline": 1.3672943717632264,
+      "detection_limit": 0.05745975105162552,
+      "over_detection_limit": 8.276240705828933,
+      "p": 0.0004997501249375312,
+      "median_length": 834.0,
+      "q": 0.004497751124437781
+    },
+    {
+      "class": "required in vitro (lowest fitness tenth)",
+      "genes": 725,
+      "ratio": 0.8902684050021912,
+      "length_matched_baseline": 1.379780133654955,
+      "detection_limit": 0.08282100388788949,
+      "over_detection_limit": 5.910478087362846,
+      "p": 0.0004997501249375312,
+      "median_length": 756.0,
+      "q": 0.004497751124437781
+    },
+    {
+      "class": "cytosol",
+      "genes": 607,
+      "ratio": 0.7210581879504652,
+      "length_matched_baseline": 1.370793593031046,
+      "detection_limit": 0.10382106223933348,
+      "over_detection_limit": 6.2582234381572635,
+      "p": 0.0004997501249375312,
+      "median_length": 482.0,
+      "q": 0.004497751124437781
+    }
+  ]
+}
