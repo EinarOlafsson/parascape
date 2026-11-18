@@ -24,6 +24,41 @@ altering a verified result**: a new quantification is written beside the old one
 the new ones are checked against them. Einar's instruction stands: do this only after the new data is
 downloaded. The 40 zero-parasite runs come first, because they currently contribute nothing at all.
 
+## Gate check, measured 2026-11-17 23:30
+
+**The gate is NOT open, and the reason is scheduling rather than anything wrong with the method.**
+
+`parascape-requant.service` has been up for six days and has re-quantified **none** of the three
+short-insert series. By design it waits for the new-run queue first, and that queue is draining
+slowly: the unit logged 773 runs still to quantify at 17:50 and 748 at 22:51, about five an hour.
+At that rate the re-quantification does not begin for roughly six days, so the 40 zero-parasite runs
+that this plan says "come first" are in fact behind 748 others. Nothing is broken; the priority in
+the plan is simply not expressed in the queue.
+
+**The premise of the plan is confirmed.** Measured over all 48 runs of GSE243206, GSE243207 and
+GSE245775, against ME49:
+
+| | these 48 runs | a random 120 runs elsewhere |
+|---|---|---|
+| salmon mapping | 0.00 per cent in 48 of 48 | zero in 3 of 120, median 58.0 per cent |
+| kallisto pseudoalignment | median 6.95 per cent, range 0.2 to 49.2 | median 66.9 per cent |
+
+Salmon is not broken: it maps normally everywhere else, including on untrimmed runs (median 57.0 per
+cent over 37 untrimmed runs sampled). What is specific to these three series is heavily adapter-laden
+reads, which this file already records as adapter in 99.5 per cent of reads. Kallisto still maps a
+little because pseudoalignment is permissive; the stricter selective alignment of salmon rejects them
+outright, which is why the rate is exactly zero rather than merely low. Trimming is the right fix.
+
+**Ready for when the queue reaches them:**
+- `results/requant_gate_baseline_2026_11_17.csv` - every rate for all 48 runs across all four
+  references, recorded BEFORE re-quantification, which is the only time a baseline can be taken.
+- `scripts/check_requant_gate.py` - reads only, never writes into a run directory. It reports a run
+  whose rate FALLS by more than the tolerance rather than overwriting it, as the gate requires.
+  It currently prints `GATE: NOT OPEN, 48 of 48 runs have not been re-quantified`.
+
+**A decision for Einar:** leave the queue to reach these runs in about six days, or let the
+re-quantification take the 48 first as the plan says. Nothing was changed in the running service.
+
 ## Gate
 The 40 runs produce non-zero parasite mapping; every re-quantified run agrees with its previous values within
 the expected tolerance, and any that does not is reported rather than overwritten.
