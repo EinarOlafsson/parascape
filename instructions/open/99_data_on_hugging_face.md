@@ -300,11 +300,27 @@ STILL ON GITHUB
 
 WHAT TO DO NEXT
 
-    1. Publish the instruction-53 organism and host gene and protein packs the
-       same way, under `packs/<organism>/<version>/` in the same dataset
-       repository, with the pack SHA-256 in the application rather than supplied
-       by hand. `packs.download()` already takes any https address, so it needs
-       a default host and the same two settings.
+    1. IMPLEMENTED 2026-11-17, waiting only on packs being built to publish.
+       `parascape/packs.py` now carries a default host,
+       `https://huggingface.co/datasets/einarolafsson/parascape-data/resolve/main/packs`,
+       with the two settings the release archives already have
+       (`$PARASCAPE_PACKS_HOST`, `$PARASCAPE_PACKS_URL`) and a host allowlist.
+       `pack_index()` reads `parascape/pack_index.json`, which SHIPS INSIDE THE
+       WHEEL (added to `package-data` and `MANIFEST.in`; a test holds it there),
+       so `download_pack(organism, version=None)` takes its checksum from the
+       application and never from something a user was told to paste. Without a
+       version it installs the newest published one. `scripts/publish_packs.py`
+       uploads a pack to `packs/<organism>/<version>/` and writes the index from
+       the file itself, never from a value passed in.
+
+       The generic `download(url, sha256)` is deliberately NOT restricted to the
+       allowlist: it takes an address and a checksum the caller supplies, which
+       is the mirror case, and the checksum is what guards it. The allowlist
+       applies where ParaScape builds the address.
+
+       The index is empty in this checkout because no pack has been published
+       yet. Publishing one is `python scripts/publish_packs.py <pack>.zip`,
+       which needs a Hugging Face token with write access to the dataset.
     2. DONE 2026-11-13. The 1,205 component assets were deleted from v0.0.8.0,
        v0.0.9.0 and v0.0.9.0-quantities-data after every part was confirmed on
        Hugging Face with a matching checksum; 43.24 GB of release storage freed.

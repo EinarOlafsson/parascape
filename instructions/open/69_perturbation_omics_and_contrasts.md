@@ -62,7 +62,7 @@
 ## Progress (2026-10-18)
 * Quantification restarted LOW PROFILE at Einar's request (user unit `parascape-quant`: one run at a time,
   3 threads, nice 19, idle IO, 12 GB cap -- a 67M-pair run against ME49_host was OOM-killed at 10 GB on
-  2026-10-17). 17 of 1,011 runs done. The shared scratch disk (mnt3) filled to 0 GB overnight; the job
+  2026-10-17). 17 of 1,011 runs done AT THAT DATE; on 2026-11-17 the done.json markers say 1,446 of 1,470 runs are finished (98.4 per cent), so this entry was a month out of date and the queue is nearly complete. Count from the markers, never from this file. The shared scratch disk (mnt3) filled to 0 GB overnight; the job
   waits for space rather than competing. At this pace the plan takes weeks.
 * First studies built into matrices: GSE103113 (GRA18, one sample per condition: profiles only, no test;
   also mis-flagged as a strain study), GSE116539 (TgCRT knockout, 2 vs 2, purified parasites, host share

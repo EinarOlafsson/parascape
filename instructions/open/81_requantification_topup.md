@@ -5,7 +5,7 @@ trimming -- the zero-mapped ones (GSE243206, GSE243207, GSE245775) first -- into
 verified result, and writes `requant/compare.json` (Spearman of TPM per reference; "agrees" at >= 0.9,
 "recovered" for a run that mapped nothing before, "DIFFERS -- review" otherwise; nothing is overwritten).
 The service file is `scripts/systemd/parascape-requant.service`; **installing it is Einar's step** (a new
-persistent service was not installed without his say-so). On 2026-11-06: 723 of 999 runs done, 1,474
+persistent service was not installed without his say-so). On 2026-11-17 the markers say 1,446 of 1,470 runs are done (98.4 per cent); the figure below is the one recorded on 2026-11-06, kept for the record: 723 of 999 runs done, 1,474
 priority-plan runs pending. Tests: `tests/test_omics_requant.py`.
 
 ## Why three things accumulated

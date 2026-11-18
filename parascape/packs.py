@@ -20,6 +20,25 @@ import zipfile
 
 from . import paths
 
+#: Where published packs live, in the same Hugging Face dataset repository as the release archives,
+#: under ``packs/<organism>/<version>/<organism>-<version>.zip``. Instruction 99 step 1, 2026-11-17:
+#: a pack had to be fetched by typing its address and its checksum by hand, which meant the checksum
+#: a user pasted was the only thing standing between them and someone else's file.
+PACKS_HOST = ('https://huggingface.co/datasets/einarolafsson/parascape-data/resolve/main/packs')
+
+#: The two settings the release archives already have, for packs: an alternative base address, and a
+#: single complete address that overrides it.
+ENV_PACKS_HOST = 'PARASCAPE_PACKS_HOST'
+ENV_PACKS_URL = 'PARASCAPE_PACKS_URL'
+
+#: Hosts a pack may be fetched from. The configured host is added to this set, so setting
+#: ``$PARASCAPE_PACKS_HOST`` is enough; an address on any other host is refused before any request.
+PACK_HOSTS = ('huggingface.co', 'github.com')
+
+#: The checksums of the published packs, shipped inside the wheel so that `download_pack` never has
+#: to be told one. Written by ``scripts/publish_packs.py`` when a pack is published.
+PACK_INDEX = "pack_index.json"
+
 MAX_ARCHIVE_BYTES = 512 * 1024 * 1024
 MAX_UNPACKED_BYTES = 1024 * 1024 * 1024
 MANIFEST = "manifest.json"
@@ -244,10 +263,74 @@ def install(archive_path, expected_sha256: str | None = None, organism: str | No
     return destination
 
 
+def packs_host() -> str:
+    """The configured base address for packs, without its trailing slash."""
+    return (os.environ.get(ENV_PACKS_HOST) or PACKS_HOST).rstrip('/')
+
+
+def _checked_pack_url(url: str) -> str:
+    """Refuse an address that is not https on a known host before anything is requested."""
+    parsed = urlparse(url)
+    allowed = set(PACK_HOSTS) | {urlparse(packs_host()).hostname or ''}
+    if parsed.scheme != 'https' or (parsed.hostname or '') not in allowed:
+        raise ValueError(f"refusing to fetch a pack from {url!r}: https on a known host only")
+    return url
+
+
+def pack_index() -> dict:
+    """The published packs this build knows about: organism -> version -> {sha256, size, path}.
+
+    Shipped with the application. An empty index is normal in a source checkout that has published
+    nothing yet, and makes `download_pack` refuse rather than guess."""
+    here = Path(__file__).resolve().parent / PACK_INDEX
+    if not here.exists():
+        return {}
+    try:
+        raw = json.loads(here.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"the pack index shipped with this build is unreadable: {exc}") from exc
+    if not isinstance(raw, dict) or raw.get("format") != 1:
+        raise ValueError("unsupported pack index format")
+    return raw.get("packs", {})
+
+
+def pack_release(organism: str, version: str | None = None) -> tuple[str, str, str]:
+    """The address, checksum and version of a published pack, from the index in this build."""
+    packs = pack_index()
+    have = packs.get(organism)
+    if not have:
+        known = ", ".join(sorted(packs)) or "none"
+        raise LookupError(f"no published pack for {organism!r} in this build; published: {known}")
+    if version is None:
+        version = max(have)      # versions are zero-padded dotted numbers, so this is the newest
+    record = have.get(version)
+    if not record:
+        raise LookupError(f"no published pack {organism!r} {version!r}; have: {', '.join(sorted(have))}")
+    path = record.get("path") or f"{organism}/{version}/{organism}-{version}.zip"
+    return _checked_pack_url(f"{packs_host()}/{path}"), record["sha256"], version
+
+
+def download_pack(organism: str, version: str | None = None) -> Path:
+    """Download and install a published pack, with the checksum taken from this build.
+
+    This is the route a user should take: the checksum comes from the application rather than from
+    something they were told to paste, so a substituted file fails the check instead of installing.
+    `$PARASCAPE_PACKS_URL` overrides the address for a mirror or a local test, and the checksum from
+    the index still has to match."""
+    url, sha, _version = pack_release(organism, version)
+    override = os.environ.get(ENV_PACKS_URL)
+    if override:
+        url = _checked_pack_url(override)
+    return download(url, sha, organism)
+
+
 def download(url: str, expected_sha256: str, organism: str | None = None) -> Path:
     """Download an HTTPS pack with a trusted checksum and a bounded size, then install it."""
     if urlparse(url).scheme != "https" or not re.fullmatch(r"[0-9a-fA-F]{64}", expected_sha256):
         raise ValueError("downloads require HTTPS and an independently supplied SHA256")
+    # no host allowlist here on purpose: this entry point takes an address AND a checksum the caller
+    # supplies, which is the mirror case, and the checksum is what guards it. The allowlist applies
+    # where ParaScape builds the address itself -- `pack_release` and the override in `download_pack`.
     with tempfile.TemporaryDirectory(prefix="parascape-download-") as work:
         archive = Path(work) / "pack.zip"
         with urlopen(url, timeout=30) as response, archive.open("wb") as fh:
@@ -274,9 +357,14 @@ def main(argv=None):
         if name == "install":
             command.add_argument("--organism")
     command = commands.add_parser("download")
-    command.add_argument("url")
-    command.add_argument("--sha256", required=True)
+    command.add_argument("url", nargs="?",
+                         help="a full https address; omit it and give --organism instead")
+    command.add_argument("--sha256",
+                         help="required with a URL; never needed with --organism, where the checksum "
+                              "comes from the index shipped with this build")
     command.add_argument("--organism")
+    command.add_argument("--version")
+    commands.add_parser("published")
     command = commands.add_parser("installed")
     command.add_argument("organism")
     command.add_argument("--version")
@@ -286,7 +374,16 @@ def main(argv=None):
     elif args.command == "install":
         print(install(args.archive, args.sha256, args.organism))
     elif args.command == "download":
-        print(download(args.url, args.sha256, args.organism))
+        if args.url:
+            if not args.sha256:
+                parser.error("--sha256 is required when a URL is given")
+            print(download(args.url, args.sha256, args.organism))
+        elif args.organism:
+            print(download_pack(args.organism, args.version))
+        else:
+            parser.error("give a URL with --sha256, or --organism to use the published index")
+    elif args.command == "published":
+        print(json.dumps(pack_index(), indent=2, sort_keys=True))
     else:
         directory = installed(args.organism, args.version)
         print(directory or "Not installed")
