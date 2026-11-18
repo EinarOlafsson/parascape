@@ -15,13 +15,16 @@ is a second copy of the analysis.
 from __future__ import annotations
 
 import os
+import sys
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib import font_manager
 from matplotlib import text as mtext
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from parascape import figstyle as FS   # noqa: E402
 
 #: Where the scored table is, relative to the repository root.
 SOURCE = ("results/coexpression_components_localization_2026_11_06/scores.tsv")
@@ -32,23 +35,15 @@ WIDTH_MM, HEIGHT_MM = 88.0, 62.0
 #: The two columns compared, in the order they are drawn.
 LEFT, RIGHT = "coexp_cv_auc", "all_evidence_cv_auc"
 
-#: Ink. The crossing niches are the claim, so they are the only ones that carry colour.
-INK = "#1a1a1a"
-MUTED = "#9a9a9a"
-WINS = "#1f6f8b"
+#: Ink and series come from the house style (`parascape.figstyle`), so this panel matches every
+#: other panel of the paper. The compartments all-evidence wins are the REFERENCE here and are
+#: therefore grey; the crossings carry the first series colour.
+INK, MUTED, WINS = FS.INK, FS.CONTROL, FS.SERIES[0]
 
 
 def _font() -> None:
-    """Open Sans everywhere, which is the typeface of the rest of the figures."""
-    # Only Regular, Italic and Bold of Open Sans are installed on this machine, so asking for
-    # Light or SemiBold silently falls back and prints a warning for every text object. Regular
-    # for the body and Bold for the panel letter is the nearest honest pair.
-    if "Open Sans" in {f.name for f in font_manager.fontManager.ttflist}:
-        plt.rcParams["font.family"] = "Open Sans"
-        plt.rcParams["font.weight"] = "normal"
-    plt.rcParams.update({"pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none",
-                         "axes.linewidth": 0.5, "xtick.major.width": 0.5,
-                         "ytick.major.width": 0.5, "font.size": 6.2})
+    """The house style: palette, thin axes, no gridlines, Open Sans where it is installed."""
+    FS.use()
 
 
 def load(root: str) -> pd.DataFrame:

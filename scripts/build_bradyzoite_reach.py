@@ -25,14 +25,13 @@ from datetime import date
 
 import matplotlib
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib import font_manager
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from parascape import cluster_axis as CA        # noqa: E402
+from parascape import figstyle as FS           # noqa: E402
 
 #: The published block: one average expression per gene per subtype.
 BLOCK = "deposit_brady_subtypes.tsv"
@@ -41,8 +40,6 @@ SUBTYPES = tuple("ABCDE")
 #: Matched random sets behind each subtype, per contrast.
 N_NULL = 1000
 
-WIDTH_MM, HEIGHT_MM = 88.0, 52.0
-INK, MUTED, MARK = "#1a1a1a", "#b4b4b4", "#b3452c"
 
 
 def sweep(cache: str, n_null: int = N_NULL) -> tuple:
@@ -84,41 +81,39 @@ def counts(table: pd.DataFrame) -> pd.Series:
 
 
 def draw(reached: pd.Series, total: int, markers: dict, letter: str = "a"):
-    """How many of the stored contrasts reach each subtype.
+    """How many of the stored contrasts reach each subtype, in the house style.
 
-    A bar per subtype, because the claim is a comparison of five counts and nothing else: the
-    quantity has a meaningful zero, the categories are few and unordered, and a reader needs to
-    see that one bar is a twentieth of another. The subtype nothing reaches carries the only
-    colour, so the figure says what it is about without a legend.
+    A bar per subtype, because the claim is a comparison of five counts with a meaningful zero and
+    a reader has to see that one bar is a twentieth of another. Five counts is five points, which
+    is well under the twenty above which a bar is refused in favour of a violin.
+
+    Geometry, palette and opacity come from :mod:`parascape.figstyle`, so this panel is the same
+    width per category as every other panel of the paper and its bars are the same width and
+    spacing. The subtype nothing reaches carries the first series colour; the rest are grey,
+    because they are the reference against which it is remarkable.
     """
-    if "Open Sans" in {f.name for f in font_manager.fontManager.ttflist}:
-        plt.rcParams["font.family"] = "Open Sans"
-    plt.rcParams.update({"pdf.fonttype": 42, "svg.fonttype": "none", "font.size": 6.2,
-                         "axes.linewidth": 0.5, "xtick.major.width": 0.5})
+    FS.use()
     order = reached.sort_values(ascending=True)
     lowest = order.index[0]
-    fig = plt.figure(figsize=(WIDTH_MM / 25.4, HEIGHT_MM / 25.4))
-    ax = fig.add_axes([0.125, 0.21, 0.825, 0.70])
-    y = range(len(order))
-    ax.barh(list(y), order.to_numpy(),
-            color=[MARK if s == lowest else MUTED for s in order.index],
-            height=0.62, linewidth=0)
+    fig, ax = FS.figure(len(order), height_mm=50.0)
+    y = list(range(len(order)))
+    ax.barh(y, order.to_numpy(), height=FS.bar_width(), linewidth=0,
+            color=[FS.SERIES[0] if s == lowest else FS.CONTROL for s in order.index],
+            alpha=FS.ALPHA)
     for i, (name, value) in enumerate(order.items()):
         ax.annotate(f"{value}", (value, i), xytext=(3, 0), textcoords="offset points",
                     va="center", ha="left", fontsize=5.8,
-                    color=MARK if name == lowest else INK)
-    ax.set_yticks(list(y))
-    # Just the name. Every subtype keeps the same number of markers, so printing it five times
-    # says nothing and costs width; it goes in the legend instead.
+                    color=FS.SERIES[0] if name == lowest else FS.INK)
+    ax.set_yticks(y)
     ax.set_yticklabels([f"subtype {s}" for s in order.index], fontsize=6.0)
     ax.set_xlabel(f"published contrasts that reach the subtype (of {total})", fontsize=6.0,
                   labelpad=2)
     ax.set_xlim(0, float(order.max()) * 1.14)
+    ax.set_ylim(-0.6, len(order) - 0.4)
     ax.tick_params(axis="y", length=0, pad=2)
     ax.tick_params(axis="x", labelsize=5.5, pad=1.5)
-    for side in ("top", "right", "left"):
-        ax.spines[side].set_visible(False)
-    fig.text(0.013, 0.98, letter, fontsize=7.5, fontweight="bold", color=INK, ha="left", va="top")
+    ax.spines["left"].set_visible(False)
+    FS.letter(fig, letter)
     return fig, lowest
 
 
