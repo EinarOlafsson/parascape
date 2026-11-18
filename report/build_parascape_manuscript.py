@@ -108,7 +108,7 @@ def build() -> str:
 
     out.append(figure(
         "2", "Which studies can be compared at all",
-        panel("control_comparability_*/panel_*.pdf"),
+        panel("paper_panels_*/figure02_comparability.pdf"),
         f"Agreement between the untreated arms of {f2['studies']} independent studies, over "
         f"{f2['genes']:,} genes. Removing the cell-cycle axis raises the median agreement from "
         f"{f2['median_agreement_before']:.3f} to {f2['median_agreement_after']:.3f}. A random axis "
@@ -119,7 +119,7 @@ def build() -> str:
 
     out.append(figure(
         "3", "The co-expression modules, and what each one is",
-        "",
+        panel("paper_panels_*/figure03_modules.pdf"),
         f"{f3['genes']:,} genes cut into {f3['modules']} modules on co-expression components from "
         f"57 independent studies. {f3['named']} modules hold a compartment above their own matched "
         f"baseline; the rest hold none, which is reported rather than forced. The baseline is a "
@@ -128,7 +128,7 @@ def build() -> str:
 
     out.append(figure(
         "4", "The laboratory structures the corpus, not the perturbation",
-        "",
+        panel("paper_panels_*/figure04_what_structures.pdf"),
         f"{f4['pairs']:,} pairs of stored contrasts. Two from the same study agree at a median "
         f"absolute Spearman of {f4['median_abs_rho_same_study']:.3f}, two from different studies at "
         f"{f4['median_abs_rho_different_study']:.3f} -- {f4['ratio']:.1f} times. Of "
@@ -167,7 +167,7 @@ def build() -> str:
 
     out.append(figure(
         "7", "The whole network against its best single layer",
-        "",
+        panel("paper_panels_*/figure07_network_layers.pdf"),
         f"Compartment recovered from a gene's neighbours, layer by layer, over "
         f"{f7['genes_with_label']:,} labelled genes against a commonest-answer baseline of "
         f"{f7['baseline']:.1%}. The best single layer is {single['layer']} at "
@@ -180,7 +180,7 @@ def build() -> str:
 
     out.append(figure(
         "8", "What differs between strains is what goes into the host",
-        "",
+        panel("paper_panels_*/figure08_strain_variation.pdf"),
         f"Nonsynonymous over synonymous SNPs across the sequenced strains, by class of gene, over "
         f"{f8['genes_with_a_ratio']:,} genes carrying a ratio. Dense granules reach "
         f"{classes['dense granules (hyperLOPIT)']['ratio']:.2f} and apical secretory "
@@ -195,7 +195,7 @@ def build() -> str:
 
     out.append(figure(
         "9", "Which layers transfer between Toxoplasma and Plasmodium",
-        "",
+        panel("paper_panels_*/figure09_species_transfer.pdf"),
         f"{f9['pairs']['one_to_one']:,} one-to-one orthologue pairs; "
         f"{f9['pairs']['many_to_many_set_aside']} orthogroups are set aside as many-to-many rather "
         f"than averaged. Where the protein is transfers at {place['transfer']:.3f} against a "
@@ -206,7 +206,7 @@ def build() -> str:
 
     out.append(figure(
         "10", "The host response is mostly private to one effector",
-        "",
+        panel("paper_panels_*/figure10_host_shared.pdf"),
         f"**(a)** {f10['host_genes']:,} host genes moved by at least one of {f10['effectors']} "
         f"effectors: {f10['private_host_genes']:,} are moved by exactly one and "
         f"{f10['shared_host_genes']} by {f10['shared_cut']} or more. The translocon is the shared "
@@ -220,7 +220,7 @@ def build() -> str:
 
     out.append(figure(
         "11", "What the map can fill, and what it cannot",
-        "",
+        panel("paper_panels_*/figure11_filling_the_map.pdf"),
         f"{f11['held_out_predictions']:,} held-out predictions over {f11['targets']} targets and "
         f"{f11['strategies']} strategies, under frozen partitions. "
         f"{f11['targets_beating_baseline']} of {f11['targets_summarised']} targets are called "
