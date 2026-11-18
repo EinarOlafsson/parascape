@@ -72,3 +72,20 @@ Results:
   which proteins appear in every experiment. Gate unmet.
 
 Still open: PXD011692 (paper not open access). Next step: the queue (106 projects).
+
+## 2026-11-17: rerun on 152 finished projects (was 97); gate verdict: NOT open
+
+`results/pulldown_background_2026_11_17/` (builder rerun unchanged apart from the date; 149 classified). Counted from
+`done.json` receipts on the NAS: 152 of 203 selected projects finished (was 97 on 8 Nov, 73 at the first gate
+check), 51 still in the queue, 12 unsupported, 2 HDX-MS excluded.
+- Pull-down experiments in the background: **71** (affinity 58 + proximity 13; was 50). **38** have a confident
+  bait, **32 distinct baits** (was 36 and 30). 22 projects are still class `other`.
+- Frequency filter: separation AUC **0.684** (was 0.689, p 0.017). At a 50 % cutoff 12 of 13 complex members are
+  still lost. The best cutoff that keeps at least 85 % of complex members (0.85) removes only 27 % of the frequent
+  flyers (22 of 82); the cutoff that removes 62 % of flyers (0.80) loses 31 % of complex members (4 of 13). The
+  gate (half the flyers removed, at most 15 % of complex members lost) is **not met, and the filter is not usable**.
+- Specificity score still holds: bait in its own top 5 % in 27 of 34 affinity purifications, median rank 11 of a
+  median 825 proteins (24 by abundance alone).
+- Why more projects do not help: 55 more finished projects moved the AUC from 0.710 to 0.684, i.e. not at all.
+  The gate needs baits from other compartments, not more whole-lysate projects; the remaining 51 queued projects
+  are unlikely to change that. The recorded conclusion stands: use the specificity score, not the frequency filter.

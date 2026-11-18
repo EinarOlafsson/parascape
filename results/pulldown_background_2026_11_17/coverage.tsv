@@ -1,0 +1,22 @@
+item	n
+projects selected for the uniform re-search	203
+project directories on disk	173
+finished (done.json receipt)	152
+excluded: unsupported.json	12
+excluded: NOT_COMPARABLE.json (HDX-MS)	2
+finished and classified	149
+still waiting in the queue	51
+experiments in the background (affinity + proximity)	71
+of those with a confident bait gene	38
+distinct confident bait genes	32
+runs behind those experiments	982
+PSM rows read	43603416
+PSMs at 1% FDR, target	9063032
+parasite proteins in the background table	5575
+class: affinity_purification	58
+class: crosslinking	1
+class: fractionation	2
+class: other	22
+class: proximity_labelling	13
+class: ptm_enrichment	25
+class: whole_proteome	28
