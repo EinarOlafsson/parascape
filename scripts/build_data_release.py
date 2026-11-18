@@ -19,6 +19,31 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from parascape import __version__, data_manager
 
 
+def _refuse_an_empty_primary_address(info: dict) -> None:
+    """A release may not ship a descriptor whose primary address is empty or not a host we publish to.
+
+    Instruction 99 step 3. The descriptor is what `data_manager` reads to find the archive, and an
+    empty or malformed primary address is not noticed until somebody installs the release and the
+    download fails. It is cheap to refuse here and expensive to discover there.
+    """
+    from urllib.parse import urlparse
+    for field, required in (('url', True), ('fallback_url', False)):
+        value = str(info.get(field) or '').strip()
+        if not value:
+            if required:
+                raise ValueError(f'the release descriptor has no {field}; it cannot be published')
+            continue
+        parsed = urlparse(value)
+        if parsed.scheme != 'https' or not parsed.netloc:
+            raise ValueError(f'the release descriptor {field} is not an https address: {value!r}')
+        if not parsed.path.rstrip('/').endswith(info['asset']):
+            raise ValueError(f'the release descriptor {field} does not end in the asset name '
+                             f'{info["asset"]!r}: {value!r}')
+        if (parsed.hostname or '') not in data_manager.HOSTS:
+            raise ValueError(f'the release descriptor {field} is on {parsed.hostname!r}, which is '
+                             f'not one of the hosts ParaScape downloads from: {data_manager.HOSTS}')
+
+
 def build(source: Path, output: Path, descriptor: Path):
     """Archive only application data; retain icons in the application wheel."""
     files = []
@@ -62,6 +87,7 @@ def build(source: Path, output: Path, descriptor: Path):
             'url': f'{data_manager.HOST}/{__version__}/{name}',
             'fallback_url': f'{data_manager.GITHUB_RELEASES}/v{__version__}/{name}',
             'size': asset.stat().st_size, 'sha256': digest, 'files': entries}
+    _refuse_an_empty_primary_address(info)
     descriptor.write_text(json.dumps(info, indent=2, sort_keys=True) + '\n')
     print(f'{asset}: {asset.stat().st_size / 1e6:.1f} MB, {len(entries)} verified files')
     return info

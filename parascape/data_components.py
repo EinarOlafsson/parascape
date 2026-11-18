@@ -265,9 +265,14 @@ def _download_part_once(part, cache, progress, cancelled, addresses):
             retryable = retryable or not refused
             failures.append(f'{urlsplit(url).netloc}: {error}')
             if index == len(addresses) - 1:
+                # Instruction 99 step 2: the parts were deleted from the GitHub releases on
+                # 2026-11-13, so a build older than 0.0.12.0 asks GitHub for a part that is no
+                # longer there and gets a 404 it cannot explain. Say what to do on the FIRST line,
+                # because that is the line a user reads.
                 raise PartDownloadError(
-                    'The optional-data part failed on every host -- ' + '; '.join(failures),
-                    retryable) from error
+                    'Update ParaScape: releases before 0.0.12.0 look for optional data where it is '
+                    'no longer published. The optional-data part failed on every host -- '
+                    + '; '.join(failures), retryable) from error
     if partial.stat().st_size != part['size'] or _hash(partial) != part['sha256']:
         partial.unlink(missing_ok=True)
         raise ValueError('Optional-data part checksum or size mismatch')
