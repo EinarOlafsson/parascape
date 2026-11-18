@@ -36,6 +36,14 @@ ALPHA = 0.6
 SLOT_MM = 7.0
 BAR_FRACTION = 0.62
 
+#: A category laid out ALONG THE X AXIS needs more room than one laid out down the y axis,
+#: because its name is written horizontally under it rather than beside it. Seven millimetres is
+#: ample for a horizontal bar and far too narrow for a box with a two-word label under it, which
+#: is how the first draft of figure 4 came out with its three labels written through each other.
+#: The symmetry rule still holds, within an orientation: every vertical panel uses this width per
+#: category and every horizontal one uses SLOT_MM.
+SLOT_MM_VERTICAL = 17.0
+
 #: Above this many points per group, a bar with whiskers is refused.
 MAX_POINTS_FOR_A_BAR = 20
 
@@ -58,21 +66,21 @@ def use() -> None:
     })
 
 
-def panel_width_mm(n_categories: int) -> float:
+def panel_width_mm(n_categories: int, vertical: bool = False) -> float:
     """How wide a panel showing `n_categories` must be, so two such panels match exactly."""
     left, _bottom, right, _top = MARGIN_MM
-    return left + right + SLOT_MM * n_categories
+    return left + right + (SLOT_MM_VERTICAL if vertical else SLOT_MM) * n_categories
 
 
-def figure(n_categories: int, height_mm: float = 52.0):
+def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False):
     """A figure and axes sized by the number of categories, with the house margins.
 
-    The plotting area is exactly `SLOT_MM` per category, so a three-condition panel drawn here is
+    The plotting area is exactly one slot per category, so a three-condition panel drawn here is
     the same width as any other three-condition panel drawn here, which is the symmetry Einar
     asked for and the thing eyeballed margins never deliver.
     """
     left, bottom, right, top = MARGIN_MM
-    width_mm = panel_width_mm(n_categories)
+    width_mm = panel_width_mm(n_categories, vertical=vertical)
     fig = plt.figure(figsize=(width_mm / 25.4, height_mm / 25.4))
     ax = fig.add_axes([left / width_mm, bottom / height_mm,
                        (width_mm - left - right) / width_mm,
@@ -109,3 +117,48 @@ def letter(fig, text: str) -> None:
     """The panel letter: bold, top-left, outside the plotting area."""
     fig.text(0.012, 0.985, text, fontsize=7.5, fontweight="bold", color=INK,
              ha="left", va="top")
+
+
+#: Where a label may sit relative to its point, in points, tried in this order.
+LABEL_CANDIDATES = ((4.5, 0.0, "left", "center"), (-4.5, 0.0, "right", "center"),
+                    (4.5, 5.0, "left", "bottom"), (-4.5, 5.0, "right", "bottom"),
+                    (4.5, -5.5, "left", "top"), (-4.5, -5.5, "right", "top"),
+                    (0.0, 6.5, "center", "bottom"), (0.0, -7.0, "center", "top"))
+
+
+def _text_box(text, renderer):
+    """The bounding box of a label, measured on the TEXT and nothing else.
+
+    `Annotation.get_window_extent` includes the leader line, which measures a box several times
+    too large and makes every candidate position look occupied.
+    """
+    from matplotlib import text as mtext
+    return mtext.Text.get_window_extent(text, renderer=renderer)
+
+
+def place_labels(ax, fig, points, labels, colours, fontsize=4.9):
+    """Label every point in the first candidate position that hits nothing already placed.
+
+    Guessed offsets collide as soon as the data moves: figure 7 put `struct` under
+    `all layers, weighted` and ran three interaction layers through each other. Measuring is cheap
+    at a few dozen labels and stays correct when the numbers change.
+    """
+    renderer = fig.canvas.get_renderer()
+    taken = [ax.transData.transform((x, y)) for x, y in points]
+    placed = []
+    width, height = fig.get_size_inches() * fig.dpi
+    for (x, y), name, colour in zip(points, labels, colours):
+        for dx, dy, ha, va in LABEL_CANDIDATES:
+            text = ax.annotate(name, (x, y), xytext=(dx, dy), textcoords="offset points",
+                               fontsize=fontsize, color=colour, ha=ha, va=va,
+                               annotation_clip=False)
+            fig.canvas.draw()
+            box = _text_box(text, renderer).expanded(1.06, 1.16)
+            clash = (box.x0 < 2 or box.y0 < 2 or box.x1 > width - 2 or box.y1 > height - 2
+                     or any(box.overlaps(other) for other in placed)
+                     or any(box.x0 - 1 <= px <= box.x1 + 1 and box.y0 - 1 <= py <= box.y1 + 1
+                            for px, py in taken))
+            if not clash:
+                placed.append(box)
+                break
+            text.remove()
