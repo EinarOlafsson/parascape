@@ -157,12 +157,17 @@ WHAT CHANGED IN THE CLIENT, SECOND PASS
       The fetch is still `urllib` with a `Range` header and a resumed part file.
       `huggingface_hub` is not a dependency and must not become one.
 
-    `scripts/build_data_components.py` still records a GitHub release address
-    for a newly built part, which is now the fallback rather than the only
-    address. A component published only on Hugging Face would carry a recorded
-    address that answers 404 and still install from the first address; giving
-    the builder the host explicitly is tidier and is left for the pass that next
-    publishes a component.
+    `scripts/build_data_components.py` now records the Hugging Face address
+    for a newly built part, built from `data_components.COMPONENT_HOST`, the
+    kind and the part name, instead of a GitHub release address that answers
+    404 for every published part. The GitHub address stays second, for an
+    older tag that still has the asset, and both pass `validate()`. The
+    function `part_addresses()` gives the pair in the order they are tried.
+    `tests/test_component_addresses.py` holds it: Hugging Face first and
+    GitHub second, a plain http or unknown host refused, and the recorded
+    address is the one `part_sources()` tries first. Parts already recorded in
+    an earlier index are untouched; the client still builds the Hugging Face
+    address itself for those.
 
 0.0.13.0 SHIPPED IT, 2026-11-14
 

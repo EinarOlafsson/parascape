@@ -148,6 +148,16 @@ def write_deposited_metadata(source, component, core, relative_directory):
                 validation_sha256=marker['validation_sha256'], metadata_directory=relative_directory)
 
 
+def part_addresses(kind, file, tag):
+    """Addresses of one new part, in the order they are tried: Hugging Face first, then GitHub.
+
+    Every published part now lives on Hugging Face and was deleted from GitHub, so the recorded
+    address is the Hugging Face one. The GitHub address stays second, for an older tag that still
+    has the asset; it is the same base `data_components` accepts, so `validate` takes both.
+    """
+    return (f'{C.COMPONENT_HOST}/{kind}/{file}', f'{C.GITHUB_RELEASES}/{tag}/{file}')
+
+
 def build_component(source, directory, destination, *, tag='v0.0.8.0', part_limit=1024**3):
     """Copy one checked pack into deterministic archive parts, retaining all bytes."""
     if type(part_limit) is not int or not 0 < part_limit <= 1024**3:
@@ -234,7 +244,7 @@ def build_component(source, directory, destination, *, tag='v0.0.8.0', part_limi
             raise ValueError('Source component or builder code changed during preparation')
         component = dict(directory=directory, files=files, archive_size=writer.archive_size,
                          archive_sha256=writer.archive_hash.hexdigest(),
-                         parts=[dict(url=f'https://github.com/EinarOlafsson/parascape/releases/download/{tag}/{part["file"]}',
+                         parts=[dict(url=part_addresses(kind, part['file'], tag)[0],
                                      size=part['size'], sha256=part['sha256']) for part in writer.parts])
         C.validate(component)
         save(staging/'component.json', component)
