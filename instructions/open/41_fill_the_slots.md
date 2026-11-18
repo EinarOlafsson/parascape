@@ -2,35 +2,35 @@
 
 **Status: open. Requested 2026-08-15.**
 
-## The work queue, as it stands 2026-08-18: seventeen slots are past discovery
+## The work queue, as it stands 2026-11-18 (measured; replaces the August queue)
 
-Checked rather than assumed, and it changes what the next session should do first. Of the 54 empty
-Plasmodium gene slots, **seventeen already carry resolved candidate studies** from the earlier
-candidate passes -- accession, title, year and journal, merged onto the slot by
-`_merge_candidate_references`. For these the remaining work is fetch, verify, key to Pf accessions
-and load; discovery is done.
+Measured by running `scripts/generate_slot_table.py` against the package data on nightly (10b68042),
+not read from an older note. **362 slots: A 123, B 55, C 56, empty 128.** By unit: gene 192 of 278
+filled, host_gene 20 of 50, metabolite 3 of 6, pair 19 of 28.
 
-| slot | candidates | first candidate |
-|---|---|---|
-| `Pf_resistance-conferring mutation` | 8 | 24533298: Identification of mutations in TgMAPK1 of Toxoplasma gondii conferring resista |
-| `Pf_invasion and egress phenotype` | 7 | 35538310: A splitCas9 phenotypic screen in Toxoplasma gondii identifies proteins involve |
-| `Pf_essentiality in a second background` | 7 | eight passages in the differentiation reporter strain | 41686849: LAMP-coupled CRISPR-Ca |
-| `Pf_metabolite levels` | 6 | 38928131: Mechanisms Underlying the Effects of Chloroquine on Red Blood Cells Metabolism |
-| `Pf_metabolic flux` | 6 | 35064153: Metabolic adjustments of blood-stage Plasmodium falciparum in response to subl |
-| `Pf_lipid composition` | 6 | 41964222: Deoxy-Piezo1 hyperactivity elevates pump-leak fluxes and lactate production in |
-| `Pf_target engagement / thermal shift` | 6 | 42451739: Essential Oil of Symplocos chinensis (Lour.) Druce: Chemical Composition, Anti |
-| `Pf_RNA-binding protein targets` | 6 | 33207342: The Route of Infection Influences the Contribution of Key Immunity Genes to An |
-| `Pf_transcription · liver stage` | 6 | 38657074: Autonomous circadian rhythms in the human hepatocyte regulate hepatic drug met |
-| `Pf_transcription · mosquito stages` | 6 | 41510253: A divergent Plasmodium NEK4 acts as a key regulator driving the early events o |
-| `Pf_transcription · dormancy / recrudescence` | 6 | 42374402: Mapping the intellectual landscape of malaria drug repurposing: a systematic a |
-| `Pf_fitness · liver stage` | 6 | 39714137: Autophagy protein Atg7 is essential for maintaining malaria parasite cellular  |
-| `Pf_fitness · transmission` | 6 | 42457405: Engineered promoter system enables high-efficiency transgenic CRISPR editing i |
-| `Pf_antigenic variation family expression` | 6 | 34389510: Plasmodium falciparum SET2 domain is allosterically regulated by its PHD-like  |
-| `Pf_host receptor binding` | 6 | 42291314: MAHRP2 is required for tether formation and cytoadherence in Plasmodium falcip |
-| `Pf_field variation and resistance markers` | 6 | 42557356: Genomic surveillance reveals co-occurrence of Plasmodium falciparum drug resis |
-| `Pf_host ESCRT recruitment` | 1 | pooled image-based CRISPR screen of secretory proteins |
+| arm | slots | filled (A, B, C) | empty |
+|---|---|---|---|
+| *T. gondii* | 158 | 143 (75, 28, 40) | 15 (3 gene, 12 host) |
+| *Plasmodium* | 141 | 81 (43, 22, 16) | 60 (38 gene, 18 host, 3 metabolite, 1 pair) |
+| *Cryptosporidium* | 63 | 10 (5, 5, 0) | 53 (45 gene, 8 pair) |
+| host slots, both arms | 50 | 20 | 30 (included in the Tg and Pf rows) |
 
-The other 37 empty Pf slots have no resolved candidate and still need the search.
+**What changed since the August queue, so nobody plans from it again:**
+
+* The August "seventeen slots past discovery" are gone. Those candidates were the off-target PubMed
+  hits that the section "Fix the candidate search first" below said to discard. Of the seventeen,
+  four are now filled by other work (resistance-conferring mutation, target engagement, dormancy
+  transcription, field variation), ten lost their candidates, and **three still carry one**:
+  RNA-binding targets (GSE267362), liver-stage transcription and mosquito-stage transcription.
+* Today only **7 empty Plasmodium slots carry any candidate** and none can be filled by fetching:
+  four are derived deposits held out of `pf_nodes.parquet` by `deposits.HELD_OUT_OF_NODES` (Einar
+  kept that hold on 2026-11-17, and `pyBigWig` is not to be added to any env, so GSE267362 stays
+  un-derived), one is refused (GSE246116), one is already shipped (PXD075878), and one is GSE267362.
+* The Cryptosporidium arm did not exist in August. It has 53 empty slots and no candidate in the
+  slot table, but a 2026-09-26 acquisition store already holds parts for it (see the discovery
+  record at the end of this file).
+* Discovery for the other empty slots is recorded in the last section of this file, dated
+  2026-11-18, one row per slot with what was searched, what came back and a verdict.
 
 **The dangerous step is the load, not the download.** `build_graph` exits 0 while losing data, so
 every fill must diff the rebuilt cache against the previous one on columns gained, columns LOST, and
@@ -42,18 +42,9 @@ surfaced.
 
 ## Where it stands
 
-239 slots. Measured from the shipped node table and `slots.declared_columns`, not from the CSV:
-
-| arm | filled | candidate only | empty |
-|---|---|---|---|
-| *T. gondii* | 59 | 42 | 11 |
-| *Plasmodium* | 0 | 25 | 102 |
-| host | — | — | not yet defined (see 39) |
-
-**25 of the 25 Plasmodium candidates carry no data accession.** All 193 citations across both tables
-resolve and every claimed title matches the real one, so nothing is fabricated — but a citation
-nobody can download is not a filled slot, and the atlas deliberately refuses to let that read as
-progress.
+Superseded by the measured figures at the top of this file (2026-11-18). The 239-slot table that stood
+here in August (Toxoplasma 59 / 42 / 11, Plasmodium 0 / 25 / 102) no longer describes anything: the
+catalogue is 362 slots and the Plasmodium arm is 81 filled.
 
 ## The rules, before any of the work
 
@@ -3433,3 +3424,154 @@ dataset scripts and `docs/datasets.md`. Exactly one slot changed. Host slots go 
 There is also no Anopheles layout: `scripts/build_host_layouts.py` knows Hs and Mm, and a lens built
 on four timepoints of one tissue would be a timecourse wearing the name of a tissue lens. That is an
 instruction-53 WP9 decision, not a leftover.
+
+## 2026-11-18: discovery for the empty slots with no candidate, searched by biology and not by slot words
+
+**Scope and rules of this pass.** Candidates only: no slot was marked filled and no repository file other
+than this one changed. Einar kept the Plasmodium node-table hold (`deposits.HELD_OUT_OF_NODES`) and did not
+allow `pyBigWig` in any env, so GSE267362 and the four held deposits were left alone. Small processed files
+were staged on mnt1 under `/media/carruthers/mnt1/parascape_omics_scratch_claude/item41_discovery/`
+(15 MB in all, with `SHA256SUMS.txt`); nothing above a few megabytes was downloaded. Anything bigger is
+named as "needs".
+
+**What was searched, so it is not run again:**
+
+* **PRIDE** (`ebi.ac.uk/pride/ws/archive/v2/search/projects`). Every project returned for the keywords
+  Plasmodium, falciparum, berghei, vivax, knowlesi, yoelii, gametocyte, sporozoite, merozoite, schizont,
+  ookinete, oocyst, Toxoplasma, gondii, tachyzoite, bradyzoite, Cryptosporidium, parvum, excystation,
+  apicomplexan, malaria and Anopheles: **635 parasite projects**. A second pool of 11,656 host records was
+  built from host keywords (fibroblast, monocyte, dermis, skin, bone marrow, neuron, surfaceome, cell surface,
+  plasma membrane, skeletal muscle, brain, macrophage, hepatocyte, midgut, salivary gland and others). Accessions
+  already mentioned anywhere in the repository (264) were subtracted, then the titles, descriptions and
+  protocols were read against the biology of each slot (what the assay is, not the slot name). **Trap, recorded:**
+  the PRIDE keyword search returns zero results for a multi-word phrase such as "Plasmodium SUMO"; use one word
+  per query and filter locally.
+* **MetaboLights** through the EBI Search index (`ebisearch/ws/rest/metabolights`): 55 entries for Plasmodium,
+  Toxoplasma, Cryptosporidium, Anopheles, malaria, falciparum, berghei, gondii; study files read from
+  `ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/`.
+* **Metabolomics Workbench** REST by study title (Plasmodium, falciparum, malaria, Toxoplasma,
+  Cryptosporidium). It holds Plasmodium studies that MetaboLights does not, including the only labelled-precursor
+  ones. Not searched before this pass.
+* **PaxDb v6.1** file index for human (9606), mouse (10090), *A. gambiae* (7165), the same source the shipped
+  `host_tissue_proteome` and `host_mouse_tissue_proteome` already come from.
+* The existing Cryptosporidium acquisition store (`toxoplasma_projects/datasets/spaces/_acquisition/parts/Cp`,
+  35 parts dated 2026-09-26), whose statuses were read rather than assumed.
+
+**Not covered:** the other ProteomeXchange partners (MassIVE, jPOST, iProX), supplementary tables inside papers
+(several verdicts below say "the site table is in the paper, not on PRIDE"), and every slot whose assay is
+sequencing (listed at the end as not searched). "Nothing suitable" below means nothing in the sources above on
+2026-11-18, which is a statement about those sources.
+
+Depth is stated per row: **read** means the project record and its file list were opened; **title** means only
+the title or description line was read and the row is a lead, not a candidate.
+
+### Plasmodium, proteomics and PTM kinds
+
+| slot | searched | result | verdict |
+|---|---|---|---|
+| `Pf_arginine methylation · asexual blood stage` | all 635 projects for methylat*, arginine, PRMT | **PXD003104** *P. falciparum*, ring, trophozoite and schizont, anti-monomethyl and anti-dimethyl arginine immunoprecipitation plus HILIC (read). PRIDE holds 91 raw files (30.6 GB) and 9 `.msf` search containers (14 MB), no site or protein table. Strain not stated in the record. Others are not this assay: PXD032834 PRMT5 interactors, PXD010644 histone pull-down | **CANDIDATE.** Needs the site list from the paper supplement, or reading the `.msf` files; not both done |
+| `Pf_ubiquitination / SUMOylation · asexual blood stage` | ubiquitin, SUMO, diGly, K-GG, NEDD8 | **PXD014998** *P. falciparum*, 1,464 ubiquitylation sites in 546 proteins across three intracellular stages and merozoites (read; 62 search-output files 2.3 GB, no site table on PRIDE). **PXD017503** *P. falciparum* plus red-cell PTMome, includes ubiquitin and acetyl (read; 84 raw files 38.9 GB, 6 `.rar` search archives 0.7 GB). PXD047782 is a *P. yoelii* ubiquitinome of artemisinin lines (title). PXD042503 is already refused for this slot | **CANDIDATE** (PXD014998 first). Needs the site table from the paper supplement; stage resolution (ring vs schizont vs merozoite) is the point of that study |
+| `Pf_S-nitrosylation · asexual blood stage` | nitrosyl*, biotin-switch, redox proteom*, cysteine oxidation, thiol | no *Plasmodium* S-nitrosylation project. Near-miss only: PXD027334 peroxide drugs and redox homeostasis (title). The *Toxoplasma* analogue PXD046083 is already in the repository | **NOTHING SUITABLE** |
+| `Pf_glycosylation · asexual blood stage` | glycosyl*, glycopeptide, N-glycan, O-GlcNAc, lectin, GPI | only PXD033470 (already refused for this slot: C-mannosylation on recombinant proteins). PXD059094 (prenol-kinase knockout proteome) and the human red-cell glycan projects are not a parasite glycoproteome | **NOTHING SUITABLE** beyond the standing refusal |
+| `Pf_protein turnover · asexual blood stage` | turnover, half-life, pulse-SILAC, heavy water, BONCAT, synthesis rate | no pulse-labelling or chase project; the hits (NIF4, antimalarial mode of action) name degradation in prose only | **NOTHING SUITABLE** |
+| `Pf_protein abundance · other life stages` | sporozoite, oocyst, ookinete, hypnozoite projects | **PXD009726** NF54 salivary-gland sporozoites and **PXD009728** NF54 oocyst sporozoites (read; `.pep.xml` search results 5.6 GB and 2.9 GB, no protein table). **PXD060734** *P. falciparum* ookinetes from in vitro culture, DDA (read; 2 mzIdentML result files 1.7 GB, a 49 MB `Peptides.xlsx`; strain not stated). Already refused for this slot: PXD046874, PXD048354, PXD060218. PXD075878 is the shipped gametocyte proteome | **CANDIDATE x3** (stage per project, none on the blood stage). Needs a protein-level table built from the search files; each stage is a separate column |
+| `Pf_organelle surface / membrane contact site` | TurboID/BioID on outer membranes, contact sites | **PXD066159** 3D7 blood stages, TurboID on the ER adaptor VAP and on VPS13L1 (read). A processed protein table is on PRIDE (`P3872_exp1_fractionated_protein.tsv`, 0.8 MB, staged; 12 search files 116 MB). Related: PXD062862 post-Golgi AP-1, AP-3, AP-4 (`proteinGroups_AP*.txt`, 11 MB), PXD007857 *P. berghei* PVM BioID (raw and pep.xml only) | **CANDIDATE**, but two baits at one contact site: it answers "near the ER contact machinery", not the whole organelle-surface question. Slot context says outer membranes of several organelles |
+| `Pf_interaction · proximity labelling` | BioID, TurboID, DiQ-BioID | ten *P. falciparum* single-bait projects with processed tables or search output on PRIDE (all read): PXD062862, PXD060994 (SPM3, gametocytes), PXD035553 (Md1, sex determination), PXD035332 (Chr3C7 and Chr3C16, `mzTab`), PXD073890 (FIKK10.2, febrile heat), PXD039125 (FIKK4.1 and cytoadhesion), PXD052297 (PfEMP1), PXD024237 (PhiL1), PXD016687 (AIP), PXD066159 (VAP). *P. berghei*: PXD007857 (PVM), PXD034491 (nuclear pore) | **CANDIDATE SET.** One column ("found near any bait", plus the bait count) would be built from all of them together; each bait alone covers a few hundred proteins. The same corpus defines `Pf_downloaded-study membership`. Needs a decision on the column meaning (see below) |
+| `Pf_exposure to host cytosol` | PVM, export, proximity | PXD007857 *P. berghei* ANKA PVM BioID (read; raw mzXML 21 GB, pep.xml), PXD039125, PXD048966 (FIKK4.1 environment) and PXD073890 | **CANDIDATE, weak.** These are proximity sets for single proteins, not a genome-wide measure of host-cytosol exposure, which is what the slot refuses to let a prediction answer for |
+| `Pf_interaction degree · crosslink MS` | crosslink, XL-MS | **PXD067699** *P. falciparum* 58.1 gametocyte membrane complexes with human red-cell proteins (read). `SupplementaryTable_All_Crosslink_Identifications.xlsx` is staged: 2,391 crosslinks, 2,312 unique, with residue pairs and positions. PXD068680 is the matching co-fractionation set, not crosslinks. PXD024749 is one protein | **CANDIDATE.** Gametocyte membranes only, so the degree would be "measured where looked at". The pair slot `interaction · crosslink MS` is already filled (C); check this table against the existing `xlms` edges before building the degree |
+| `Pf_metabolite levels` | MetaboLights, Metabolomics Workbench | **MTBLS6580** *P. falciparum*, magnetically purified trophozoites, DMSO control arm at 30, 60 and 120 min beside drug arms (read; four processed `maf` tables with 41 to 147 named metabolites each and ChEBI identifiers; staged). **MTBLS4137** 3D7, saponin-freed asexual parasites (ring, trophozoite, schizont) and FACS-sorted male and female gametocytes, 78 lipid species (staged). Workbench **ST001188** infected erythrocytes, control against indolmycin, 30 to 88 h, 158 metabolites (title) | **CANDIDATE** (MTBLS6580 first: parasite-purified, untreated arm). Needs a *Plasmodium* metabolite table; the three Pf metabolite slots have none, and the Tg slots read from `metabolites.parquet`. Gametocyte samples are inside red cells, so they carry the host-dominated caveat that the Tg lipid slot was refused over |
+| `Pf_metabolic flux` | labelled precursor, 13C | MetaboLights holds no *Plasmodium* labelling study. Workbench **ST002024** (13C glucose, glutamine and acetate; wild type against a LipL2 knockout; 363 features including +1, +2 and +3 isotopologues) and **ST003562** (13C glucose and glutamine; parental against 2KO, 3KO and 4KO carboxylic-acid-transporter lines; 44 labelled features) (both factor tables and metabolite lists read) | **CANDIDATE x2**, wild-type or parental arms only. Strain not verified from the study record. Same Tg construction as `labelled_fraction_glucose`; needs the data tables fetched (not done) |
+| `Pf_lipid composition` | membrane lipids, vesicle lipids | **MTBLS4137** (above), **Workbench ST005216** *P. falciparum* extracellular vesicles from asexual, immature gametocyte and mature gametocyte cultures with uninfected red-cell and serum controls, 1,425 lipid entries (factors read). MTBLS98 gives ten lipid classes only (wild type against gABCG2 knockout) | **CANDIDATE.** ST005216 is the construction that filled the Tg slot (released vesicles, not a mixed culture) and is the better fit; MTBLS4137 asexual parasites are parasite-purified |
+
+### Plasmodium, host slots
+
+| slot | searched | result | verdict |
+|---|---|---|---|
+| `Pf_host proteome · human bone marrow` | PaxDb, PRIDE | PaxDb v6.1 `9606-PXD020192_bone_marrow.txt`: 2,209 proteins, one study (Di Meo 2021), NSAF, consistency score 8.4; staged | **CANDIDATE**, low coverage. Same source and join as the filled `host_tissue_proteome`; the join is by gene symbol, so coverage must be reported per column |
+| `Pf_host proteome · human dermis` | PaxDb, PRIDE | `9606-PXD027093_deep_dermis.txt` (4,326 proteins) and `..._superficial_dermis.txt` (4,685), Li 2022, DIA; staged. Whole-skin sets (`SKIN-integrated`, 13,080) are not dermis | **CANDIDATE** (dermis-specific files, not the whole-skin integrated set) |
+| `Pf_host proteome · Anopheles midgut` | PaxDb 7165, PRIDE | PaxDb holds only a brain set for *A. gambiae*. PRIDE: PXD008251 (tBHP) and PXD008231 (paraquat) are ex vivo midgut proteomes with an untreated arm (read), but only Scaffold `.sf3` and `.omx` search files, no table | **LEAD only.** Perturbation experiments; no processed table |
+| `Pf_host proteome · Anopheles salivary gland` | PaxDb, PRIDE | **PXD057628** *A. gambiae* PEST salivary glands, blood-fed control against *P. berghei* ANKA-infected, 3 replicates each (read). `proteinGroups.txt` (9.8 MB, staged): 3,572 protein groups, **3,136 keyed by AGAP ids**, 2,587 to 2,988 groups with an LFQ value per sample. Day after infection is not in the files read. The earlier verdict "unreachable" is superseded | **CANDIDATE.** Keyed on the same identifier as `ag_host_genes.parquet`. The control arm is the proteome; the contrast is the response row below |
+| `Pf_host response to infection · Anopheles salivary gland` | same | PXD057628, infected against blood-fed. PXD057587 is saliva (mixed *P. berghei* and *P. falciparum* NF54) | **CANDIDATE.** The parasite is *P. berghei*, which the Pf arm accepts by design; say so in the column note |
+| `Pf_host surface / receptor repertoire · Anopheles midgut`, `· salivary gland` | surface, membrane, capture, glycoprotein in all *Anopheles* projects | none | **NOTHING SUITABLE** |
+| `Pf_host response to infection · Anopheles midgut` | midgut projects | none infected against uninfected; GSE284537 comparison arm is a receptor knockdown (earlier note) | **NOTHING SUITABLE** |
+| `Pf_host surface / receptor repertoire · human hepatocyte` | cell-surface capture, liver | **PXD001988** cell-surface capture of human liver tissue and lung, with HepG2, A549 and SAEC (read; 64 `.xls` search results 84 MB, 36 raw files 9.5 GB) | **LEAD.** Tissue plus cell lines; hepatocyte versus whole liver not separated in what was read |
+| `Pf_host surface / receptor repertoire · human bone marrow`, `· human dermis` | surface or membrane with bone marrow, skin, dermis | no title or description matches | **NOTHING SUITABLE** |
+| `Pf_host response to infection · human erythrocyte` | infected against uninfected red cells | PXD023280 (sickle trait, infected-cell proteome and phosphoproteome), PXD061301 (G6PD deficiency), PXD061411 (cerebral malaria), PXD043033 (severe malaria) are all genotype or patient contrasts (titles only) | **LEAD, not read.** None is shown to be a plain infected-against-uninfected contrast |
+| `Pf_host response to infection · human bone marrow`, `· human dermis`; `Pf_host transcriptome · human erythrocyte`, `· bone marrow`, `· dermis` | not proteomic | not searched here; transcriptomes are a GEO question and the earlier sweep refused its hits | **NOT SEARCHED** |
+
+### Toxoplasma
+
+| slot | searched | result | verdict |
+|---|---|---|---|
+| `Tg_protein turnover` | every *Toxoplasma* project for turnover, half-life, pulse-SILAC, heavy water, BONCAT | only PXD054994 (pyrimethamine adaptive response), which is not turnover; PXD033642 is already refused | **NOTHING SUITABLE** (confirms the 233-deposit result of the earlier pass) |
+| `Tg_host proteome · human fibroblast` | PaxDb, PRIDE | `9606-SKIN_FIBROBLAST-integrated.txt`: 6,715 proteins, **integrated from one deposit** (PXD032893, high- and low-glucose control arms), skin fibroblast and not named foreskin (read, staged). PXD021736 is a TMT proteome of HFF during *Toxoplasma* infection, 3,477 host proteins (read; 191 MB MaxQuant search) | **CANDIDATE** (PaxDb file). The "integrated" label hides that it is a single study; say so in the note. PXD021736 is the exact cell line but is an infection time course |
+| `Tg_host proteome · human monocyte` | PaxDb, PRIDE | `9606-Adult_Monocytes_Kim_2014_SEQUEST.txt`: 5,277 proteins, spectral counting, one study (staged) | **CANDIDATE**, single study, spectral counts |
+| `Tg_host surface / receptor repertoire · human monocyte` | cell-surface capture | **PXD013832** primary human classical, intermediate and non-classical monocytes, cell-surface proteomics, TMT (read). `Monocytecellsurfaceproteins_FINAL.xlsx` (0.4 MB, staged): sheet `Proteins` with 9,999 rows and annotation columns (`Uniprot-l`, `M`, `PM`, `IPM`, `CS`, ...) whose meaning was not decoded | **CANDIDATE.** Needs the column meaning read from the paper before any surface call is made |
+| `Tg_host surface / receptor repertoire · human fibroblast` | cell-surface capture | PXD000589 Cell Surface Protein Atlas lists fibroblast among its cell types (read; 30 `.pep.xml` files 317 MB, not fetched). The workbook route at `wlab.ethz.ch` returned HTML on 2026-11-10 | **LEAD.** Needs the per-cell-type search files re-filtered to a false-discovery rate; the cell types in that atlas include cancer lines |
+| `Tg_host surface / receptor repertoire · human neuron` | cell-surface capture, neurons | PXD000589 neurons are mouse embryonic-stem-cell derived (file names `J1_neurons`, `primNSC`), not human | **NOTHING SUITABLE** |
+| `Tg_host surface / receptor repertoire · mouse brain` | cell-surface capture, brain | PXD008619 click-sugar surface glycoproteome of **cultured primary cortical neurons** (read; 48 GB raw, 1.9 GB search); PRD000009 is a 2004 brain plasma-membrane map (title) | **NOTHING SUITABLE as brain tissue.** Neuron culture only, so a near miss and not a fill |
+| `Tg_host surface / receptor repertoire · mouse skeletal muscle` | surface or membrane with muscle, myotube, myofibre | none | **NOTHING SUITABLE** |
+| `Tg_host response to infection · human monocyte` | *Toxoplasma* host proteomes | PXD008448 is human decidual immune cells, not monocytes (read) | **NOTHING SUITABLE** |
+| `Tg_host response to infection · mouse bone-marrow macrophage` | same | PXD027716 is *Toxoplasma*-infected bone-marrow-derived dendritic cells, PVM proximity labelling, which is a different question (read) | **NOTHING SUITABLE** |
+| `Tg_host response to infection · mouse brain` | same | PXD038919 mouse **astrocyte culture** infected at different parasite stages, label-free (read; 20 GB raw); PXD000261 is **human** frontal cortex from toxoplasma encephalitis, iTRAQ (read; `.msf` results) | **NOTHING SUITABLE** (both are near misses on cell type or species) |
+| `Tg_host response to infection · mouse skeletal muscle`, `· human neuron` | same | none; PXD000261 is human brain tissue and not neurons | **NOTHING SUITABLE** |
+
+### Cryptosporidium
+
+Every *Cryptosporidium* project PRIDE returned (about twenty) was listed and the acquisition store was read. None
+of the 53 empty slots was in the slot table with a candidate before this pass.
+
+| slot | result | verdict |
+|---|---|---|
+| `Cp_protein abundance · other life stages` | **PXD023935** *C. parvum* oocyst total proteome, 8 FAIMS fractions, MaxQuant iBAQ; already on disk (`proteinGroups.txt.gz`, 0.98 MB), searched against Iowa-ATCC and Iowa II together, so it also gives an empirical CPATCC to UniProt bridge for about 2,050 proteins. **PXD029431** oocyst-wall-enriched fraction, field strain IId (A19G1), not Iowa; on disk. **PXD079660** sporozoite proteome, 2,272 proteins by DIA (read; PRIDE holds only a peptide-level sheet of 23,430 rows and 5.6 GB raw, the protein table is in the paper) | **CANDIDATE x3.** Oocyst (PXD023935) is the cleanest; the wall-enriched fraction is not a whole-oocyst abundance |
+| `Cp_secretome / excreted` | **PXD028969** sporozoite secretome during gliding (3 h) against adhesion and invasion (6 h), TMT; on disk (`proteinGroups.txt.gz`, only the *Cryptosporidium* search was taken). PXD074689 is a secreted-protein pull-down at the host interface (RAW and mzIdentML only) | **CANDIDATE** (PXD028969). Needs the UniProt to `cgd` map; PXD074689 is a lead for `interaction · with host proteins` |
+| `Cp_phosphorylation · kinase-substrate` | PXD079660 holds 8,994 phosphosites on 833 phosphoproteins, but with no kinase perturbation, so it is total phosphorylation and not kinase to substrate | **NOT A MATCH.** Catalogue gap: Cp has no plain phosphorylation slot, only the kinase-substrate one; a decision on adding it belongs to Einar |
+| `Cp_protein abundance · under stress` | PXD071094 calcium-ionophore (A23187) stimulation of *C. parvum* (read; 136 MB search, 1.4 GB raw); PXD050089 is a genetic over-expression strain, not a stress | **LEAD.** Needs the search output read to see whether a control arm and per-protein table exist |
+| `Cp_acetylation` | all projects searched for acetyl* | none (PXD050089 lists acetylation as a search modification only) | **NOTHING SUITABLE** |
+| `Cp_interaction · proximity labelling`, `Cp_organelle surface / membrane contact site` | none | **NOTHING SUITABLE** |
+| `Cp_interaction · crosslink MS`, `· IP-MS, parasite-parasite`, `Cp_interaction degree · crosslink MS`, `· IP-MS` | none; BioGRID has no *C. parvum* file and IntAct holds only the shared record | **NOTHING SUITABLE** |
+| `Cp_interaction · with host proteins`, `Cp_host interaction degree` | PXD074689 only (above) | **LEAD**, raw and mzIdentML, no protein table |
+| `Cp_fitness · oxidative stress` | the on-disk Watson 2025 CRISPR set covers about 20 genes in vivo, no oxidant | **NOTHING SUITABLE** |
+
+### Slots not searched in this pass, because the assay is sequencing or a computation
+
+* Sequencing assays, already swept through GEO and refused one by one: Tg `transcription · in IFN-gamma
+  macrophage`, Tg `translation · per cell-cycle phase`, Pf `translation · under stress`, `translation
+  efficiency · asexual blood stage` and `· extracellular stress`, `transcription · under iron depletion`,
+  `TF binding · per factor`, `chromatin accessibility`, `5' UTR architecture`, the three
+  `stage-conversion phenotype` slots, `RNA-binding protein targets`, `transcription · liver stage`,
+  `· mosquito stages`; and the Cp transcription (12), translation (5), TF binding, chromatin accessibility,
+  5' UTR, splicing, co-transcription and co-translation slots.
+* Screens and phenotypes with no PRIDE or MetaboLights form: Pf `fitness · gametocyte`, `· oxidative
+  stress`, `· liver stage`, `· transmission`, `· in vivo`, `co-fitness`, `invasion and egress phenotype`,
+  `essentiality in a second background`, `host ESCRT recruitment`, `host receptor binding`, `drug sensitivity`,
+  `host transcriptional effect per effector`, `antigenic variation family expression` (proteomic leads for
+  the last one, by title only: PXD061411, PXD012958, PXD043033).
+* Constructions, not acquisitions: Pf `downloaded-study membership`, `analysis-derived structural holes`,
+  `assay confidence and significance`; Cp `interaction · structural similarity` and its degree,
+  `shared domain`, `downloaded-study membership`, `analysis-derived structural holes`, `assay confidence`,
+  `fold confidence / disorder`, `paralogy`, `strain variation`, `literature attention`, `cell-cycle timing label`.
+
+### Where this leaves the queue
+
+* **Candidates found: 19 slots carry at least one named candidate**: Plasmodium gene and metabolite slots 10
+  (arginine methylation, ubiquitination, protein abundance of other stages, organelle surface, proximity
+  labelling, exposure to host cytosol, crosslink degree, metabolite levels, flux, lipid composition), Plasmodium
+  host slots 4 (human bone-marrow and dermis proteome, *Anopheles* salivary-gland proteome and response),
+  Toxoplasma host slots 3 (human fibroblast and monocyte proteome, monocyte surface), Cryptosporidium 2
+  (other-stage abundance, secretome). **Six of them already have a processed table staged on mnt1** (the four
+  PaxDb files and the *Anopheles* salivary-gland protein groups) and, being host slots, **are not subject to
+  the Plasmodium node-table hold**: they fill `host_gene` slots through the host files, as
+  `Pf_host proteome · human hepatocyte` already does. Those six are the cheapest fills available and need
+  only the per-column join check.
+* **Proved empty in the sources searched:** Pf S-nitrosylation, glycosylation, protein turnover; Tg protein
+  turnover; Cp acetylation, proximity labelling, crosslink MS, IP-MS; Anopheles surface repertoire and midgut
+  response; human bone marrow and dermis surface; mouse skeletal muscle surface and response; Tg human
+  neuron surface, mouse brain surface (neuron culture only) and monocyte response.
+* **Decisions this leaves for Einar:** (1) whether a Plasmodium metabolite table should exist, since three
+  slots wait on it and the Tg table is the template; (2) what the proximity-labelling column means when it
+  comes from ten single-bait experiments; (3) whether Cp gets a plain phosphorylation slot; (4) the Pf
+  node-table hold, which still gates every Plasmodium gene-column candidate above.
+* **Not done and said plainly:** no fill was attempted; the monocyte surface workbook columns were not
+  decoded; the three flux and lipid Workbench tables were identified but not downloaded; strain was not
+  verified for ST002024, ST003562 and ST005216; no supplementary table of any paper was fetched.
