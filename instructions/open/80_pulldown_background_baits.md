@@ -1,5 +1,5 @@
 # 80 · Identify the pull-down baits so the background becomes usable
-**Status: steps 1-5 done 2026-11-06; the gate waits on more projects.** Baits resolved from the depositing
+**Status: steps 1-5 done 2026-11-06. 2026-11-17: waiting for more projects will NOT open the gate, so the gate as written cannot be reached that way.** Finished projects went from about 73 to 152 and the separation AUC went DOWN, 0.710 to 0.689 to 0.684. More whole-lysate projects do not help. What is missing is baits from OTHER COMPARTMENTS, so no number of queued projects is the answer and the 51 still in the queue are unlikely to change it. The specificity score remains the usable product: the bait is in its own top 5 per cent in 27 of 34 affinity purifications, median rank 11 of a median 825 proteins against 24 by abundance alone.** Baits resolved from the depositing
 papers (Europe PMC full text) or ToxoDB gene names into `parascape/data/pulldown_baits_curated.tsv`, each row
 with its source and the identifying sentence: SPARKEL TGME49_291010, Cdt1/TgiRD1 TGME49_247040, Cyc4
 TGME49_249880, GSK3 TGME49_265330, CoqFMO TGME49_232540, MyoL TGME49_291020, PCNA1, PDIA3, PP2A-A2/C2,
