@@ -1,0 +1,14 @@
+{
+  "sample": "BUT290A27_BUT290A28",
+  "cells": 22553,
+  "cells_assigned": 5617,
+  "cells_unassigned": 16936,
+  "min_guide_umi": 3,
+  "guide_purity": 0.75,
+  "targets": 255,
+  "targets_tested": 85,
+  "targets_moving_the_parasite": 1,
+  "neutral_control": null,
+  "median_host_reads": 10281.0,
+  "median_parasite_reads": 2955.0
+}

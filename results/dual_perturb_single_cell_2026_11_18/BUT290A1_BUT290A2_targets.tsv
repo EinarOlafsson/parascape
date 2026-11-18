@@ -1,0 +1,2 @@
+target	cells	parasite_reads_median	parasite_reads_median_others	parasite_p	host_reads_median	host_reads_median_others	host_p	compared_with	parasite_q	host_q
+MYR1	201	10850.0	11972.0	0.0025378271247516442	24846.0	34389.0	4.316388059437666e-10	UPRT	0.0025378271247516442	4.316388059437666e-10
