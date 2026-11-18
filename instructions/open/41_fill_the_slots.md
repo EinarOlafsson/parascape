@@ -3597,6 +3597,14 @@ A release was therefore built rather than leaving the documented test command re
 the suite against this commit. It is a LOCAL build only: nothing was published and no version was cut,
 because publishing needs a Hugging Face token with write access to the dataset.
 
+**A trap to know about before anyone repeats this.** `scripts/build_data_release.py` REWRITES
+`parascape/data_manifest.json` in the checkout as a side effect. The rewrite dropped
+`data_components.json` from the manifest and cut it from 43,089 lines to 1,069. Committing that would
+have pointed the application at an archive that exists only on this machine and broken the optional
+component downloads, which are the subject of instruction 99. The file was reverted and the local
+build kept. If you build a release to run the tests against, check `git status` afterwards and revert
+the manifest unless you are actually cutting a version.
+
 ## 2026-11-18, later: seven host slots filled from the candidates the discovery pass staged
 
 Host tables are not under the Plasmodium node-table hold (`deposits.HELD_OUT_OF_NODES` was not touched and
