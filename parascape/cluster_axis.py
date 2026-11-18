@@ -70,6 +70,11 @@ class AxisResult:
         return list(t.index[~t["testable"].to_numpy(dtype=bool)])
 
     def summary(self) -> str:
+        """One sentence naming all three outcomes: reached, not moved, not measured.
+
+        All three are named even when a group is empty of them, because a summary that lists
+        only what was found reads as though nothing else was looked at.
+        """
         reached, unknown = self.reached, self.unknown
         untouched = [c for c in self.table.index if c not in reached and c not in unknown]
         parts = [f"{self.axis_name}: reaches {', '.join(reached) if reached else 'no cluster'}"]
@@ -311,3 +316,68 @@ def axis_values(column: str, release: str | None = None) -> pd.Series:
     if column not in store["lfc"].columns:
         raise KeyError(f"no stored contrast named {column!r}")
     return store["lfc"][column].dropna()
+
+
+#: Tags that name a QUANTITY rather than a group, so a set of columns carrying one is not a
+#: block of clusters. Each of these was a false positive in the chooser before it was listed.
+QUANTITY_WORDS = frozenset({"margin", "enriched", "padj", "pvalue", "qvalue", "se", "score",
+                            "rank", "sd", "mean", "n", "count", "fdr", "p"})
+
+
+def _block_tags(columns) -> list:
+    """The group tags of a block of columns, or [] when the columns are not one block.
+
+    A block is a set of columns that differ only in the middle: ``bzsub_A_expr`` to
+    ``bzsub_E_expr`` is one average expression per subtype, while
+    ``iron_depletion_protein_log2fc`` beside ``iron_depletion_protein_padj`` is two different
+    quantities of one contrast and is NOT a block. The difference is whether a common quantity
+    word is left at the end once the differing part is removed, and it is tested here rather
+    than guessed by name, so a dataset added later is classified by the same rule.
+    """
+    parts = [str(c).split("_") for c in columns]
+    if len(parts) < 2:
+        return []
+    pre = 0
+    while all(len(p) > pre + 1 for p in parts) and len({p[pre] for p in parts}) == 1:
+        pre += 1
+    suf = 0
+    while all(len(p) > pre + suf + 1 for p in parts) and len({p[-1 - suf] for p in parts}) == 1:
+        suf += 1
+    if pre == 0 or suf == 0:
+        return []
+    tags = ["_".join(p[pre:len(p) - suf]) for p in parts]
+    if any(t == "" for t in tags) or len(set(tags)) != len(tags):
+        return []
+    # Two rules that each removed a real false positive from the chooser. A tag that NAMES a
+    # quantity means the columns are two quantities of one measurement, not one measurement of
+    # two groups: `stage_enriched_derived` beside `stage_margin_derived` is which stage and how
+    # far ahead, not two stages. A tag holding `vs` is already a contrast, which belongs on the
+    # axis side of this module and never on the cluster side.
+    prefix = {p[i] for p in parts[:1] for i in range(pre)}
+    if any(t in QUANTITY_WORDS or "vs" in t.split("_") for t in tags) or "vs" in prefix:
+        return []
+    return tags
+
+
+def cluster_blocks(frame: pd.DataFrame) -> dict:
+    """The groups-of-one-value-per-cluster already in the gene table, ready to mark.
+
+    Found from the declared datasets rather than from a list kept here, so a dataset added to
+    the catalogue appears in the chooser without anyone remembering to add it twice.
+
+    :param frame: the gene table, used to check every column of a block is present and numeric.
+    :returns: dataset key -> ``{"name", "provides", "columns": {cluster tag: column}}``.
+    """
+    from . import datasets as DS
+    out = {}
+    for dataset in DS.REGISTRY:
+        tags = _block_tags(dataset.columns)
+        if not tags:
+            continue
+        if any(c not in frame.columns for c in dataset.columns):
+            continue
+        if not all(pd.api.types.is_numeric_dtype(frame[c]) for c in dataset.columns):
+            continue
+        out[dataset.key] = {"name": dataset.name, "provides": dataset.provides,
+                            "columns": dict(zip(tags, dataset.columns))}
+    return out

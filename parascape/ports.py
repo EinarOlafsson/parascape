@@ -697,6 +697,25 @@ _DECLARATIONS = (
                  description="the test, while it is running"),
         )),
     ModulePorts(
+        key="reach",
+        # The clusters are not a subject carried in: they are a BLOCK of columns, chosen in the
+        # module or read from a table of the user's own. The treatment is the subject, because it
+        # is the thing the question is about and the thing another module can hand over.
+        summary="which cluster a treatment reaches, and which it could not have been seen in",
+        consumes=(
+            Port(TRAIT, "treatment",
+                 description="one value per gene from a bulk experiment, as a log2 fold change"),
+            Port(GENE_LIST, "cluster", required=False,
+                 description="the markers of one cluster, where you have them already"),
+        ),
+        produces=(
+            Port(GENE_LIST, "markers",
+                 description="the markers of the cluster chosen, to carry on"),
+            Port(CLAIM, "reach", required=False,
+                 description="that a treatment reaches a cluster, with its corrected probability "
+                             "and the smallest effect the comparison could have seen"),
+        )),
+    ModulePorts(
         key="scorecard",
         summary="how well each answer did on genes it was not shown",
         consumes=(
