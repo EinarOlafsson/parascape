@@ -1,4 +1,14 @@
 # 81 · Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples
+
+**2026-11-18, found while building figure 2 of the paper: GSE245775 quantifies to ZERO.**
+"Differentiation ribosome profiling (eIF1.2)", 24 runs, and every run sums to zero parasite TPM
+against BOTH `ME49` and `ME49_host`. A ribosome-profiling study of Toxoplasma with no parasite
+reads is a pipeline result, not a study property, and the shape matches the adapter problem this
+instruction is about: ribosome-footprint reads are ~28-30 nt and still carry adapter, so an
+untrimmed read maps nowhere. It is the same failure mode as GSE60305 (instruction 89), different
+cause. It should go in the re-quantification queue, and until it does, anything reading its
+matrices gets 8,157 zeros rather than an error.
+
 **Status: ready, waiting on the downloads (2026-11-06).** `scripts/omics_quant.py requantify` (deployed):
 waits hourly until every planned run is quantified, then re-quantifies the 456 runs verified before
 trimming -- the zero-mapped ones (GSE243206, GSE243207, GSE245775) first -- into `requant/` beside each
