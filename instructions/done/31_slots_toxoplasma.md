@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**158 slots: 75 covered well, 28 partly, 40 thinly, 15 empty.**
+**158 slots: 75 covered well, 30 partly, 41 thinly, 12 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -229,13 +229,13 @@ quantity were approximating on 2026-08-13.
 |---|---|---|---|---|---|---|---|---|
 | Tg_host interaction degree | curated parasite-host interactions | **A** | 8140 |  | 100.0% | `n_host_targets` | one | — |
 | Tg_host transcriptional effect per effector | dual perturb-seq | **C** | 252 |  | 3.1% | `hosttx_T2, hosttx_signature_pc01, hosttx_signature_pc02, hosttx_signature_pc03, hosttx_signature_pc04, hosttx_signature_pc05, hosttx_signature_pc06, hosttx_signature_pc07, hosttx_signature_pc08, hosttx_signature_pc09, hosttx_signature_pc10, hosttx_signature_pc11, hosttx_signature_pc12, hosttx_signature_pc13, hosttx_signature_pc14, hosttx_signature_pc15, hosttx_signature_pc16, hosttx_signature_pc17, hosttx_signature_pc18, hosttx_signature_pc19, hosttx_signature_pc20, hosttx_signature_norm, hosttx_signature_n_de` | separate | **High-throughput identification of Toxoplasma gondii effector proteins that target host cell transcription.** (Cell host & microbe 2023) [37827122](https://pubmed.ncbi.nlm.nih.gov/37827122/) [GSE229505](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE229505) |
-| Tg_host proteome · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **-** |  |  |  | `` | average | — |
-| Tg_host transcriptome · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **A** | 19087 |  | 100.0% | `fibroblast_tpm` | average | — |
+| Tg_host proteome · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **B** | 6390 |  | 33.4% | `fibroblast_protein_ppm` | average | — |
+| Tg_host transcriptome · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **A** | 19087 |  | 99.7% | `fibroblast_tpm` | average | — |
 | Tg_host surface / receptor repertoire · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **-** |  |  |  | `` | fill | — |
-| Tg_host response to infection · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **B** | 10631 |  | 55.7% | `hff_tg_infection_log2fc, hff_tg_infection_padj` | separate | — |
-| Tg_host proteome · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | average | — |
-| Tg_host transcriptome · human monocyte | human monocyte; tachyzoite, infected monocyte | **A** | 19135 |  | 100.0% | `monocyte_tpm` | average | — |
-| Tg_host surface / receptor repertoire · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | fill | — |
+| Tg_host response to infection · human fibroblast | human fibroblast; tachyzoite, in vitro HFF | **B** | 10631 |  | 55.5% | `hff_tg_infection_log2fc, hff_tg_infection_padj` | separate | — |
+| Tg_host proteome · human monocyte | human monocyte; tachyzoite, infected monocyte | **B** | 4989 |  | 26.0% | `monocyte_protein_ppm` | average | — |
+| Tg_host transcriptome · human monocyte | human monocyte; tachyzoite, infected monocyte | **A** | 19135 |  | 99.8% | `monocyte_tpm` | average | — |
+| Tg_host surface / receptor repertoire · human monocyte | human monocyte; tachyzoite, infected monocyte | **C** | 432 |  | 2.3% | `monocyte_surface_classical_intensity` | fill | — |
 | Tg_host response to infection · human monocyte | human monocyte; tachyzoite, infected monocyte | **-** |  |  |  | `` | separate | — |
 | Tg_host proteome · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **B** | 4603 |  | 28.9% | `bmdm_protein_ppm` | average | — |
 | Tg_host transcriptome · mouse bone-marrow macrophage | mouse bone-marrow macrophage; tachyzoite, BMDM | **A** | 15437 |  | 97.1% | `bmdm_tpm` | average | — |

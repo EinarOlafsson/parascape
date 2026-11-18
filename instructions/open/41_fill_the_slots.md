@@ -5,15 +5,17 @@
 ## The work queue, as it stands 2026-11-18 (measured; replaces the August queue)
 
 Measured by running `scripts/generate_slot_table.py` against the package data on nightly (10b68042),
-not read from an older note. **362 slots: A 123, B 55, C 56, empty 128.** By unit: gene 192 of 278
-filled, host_gene 20 of 50, metabolite 3 of 6, pair 19 of 28.
+not read from an older note. **362 slots: A 123, B 55, C 56, empty 128** at the start of 2026-11-18.
+Seven host slots were filled the same day (section at the end of this file), which moved the count to
+**A 127, B 57, C 57, empty 121**. By unit now: gene 192 of 278 filled, host_gene 27 of 50, metabolite 3 of
+6, pair 19 of 28.
 
-| arm | slots | filled (A, B, C) | empty |
+| arm | slots | filled now (A, B, C) | empty now |
 |---|---|---|---|
-| *T. gondii* | 158 | 143 (75, 28, 40) | 15 (3 gene, 12 host) |
-| *Plasmodium* | 141 | 81 (43, 22, 16) | 60 (38 gene, 18 host, 3 metabolite, 1 pair) |
+| *T. gondii* | 158 | 146 (75, 30, 41) | 12 (3 gene, 9 host) |
+| *Plasmodium* | 141 | 85 (47, 22, 16) | 56 (38 gene, 14 host, 3 metabolite, 1 pair) |
 | *Cryptosporidium* | 63 | 10 (5, 5, 0) | 53 (45 gene, 8 pair) |
-| host slots, both arms | 50 | 20 | 30 (included in the Tg and Pf rows) |
+| host slots, both arms | 50 | 27 | 23 (included in the Tg and Pf rows) |
 
 **What changed since the August queue, so nobody plans from it again:**
 
@@ -3575,3 +3577,87 @@ of the 53 empty slots was in the slot table with a candidate before this pass.
 * **Not done and said plainly:** no fill was attempted; the monocyte surface workbook columns were not
   decoded; the three flux and lipid Workbench tables were identified but not downloaded; strain was not
   verified for ST002024, ST003562 and ST005216; no supplementary table of any paper was fetched.
+
+## 2026-11-18, later: seven host slots filled from the candidates the discovery pass staged
+
+Host tables are not under the Plasmodium node-table hold (`deposits.HELD_OUT_OF_NODES` was not touched and
+no Plasmodium gene column was added); these fill `host_gene` slots through `hs_host_proteins.parquet` and
+`ag_host_genes.parquet`, as `Pf_host proteome · human hepatocyte` already did. Per-slot procedure followed:
+**resolve** (every accession and PMID below was read from a repository or PubMed record, none typed),
+**fetch** (raw files into the dataset archive with `URLS.txt` and `SHA256SUMS.txt`: `host/paxdb/` gained
+five PaxDb v6.1 files, `translation/proteomics/PXD057628/` and `PXD013832/` are new), **map**, **register**
+(six `datasets.REGISTRY` entries, one per STUDY so that each column carries its own accession and paper),
+**verify** (coverage recomputed from the host tables) and **regenerate** (`generate_slot_table.py`,
+`generate_dataset_scripts.py`, `update_datasets.py`).
+
+| slot | columns | source | cell or tissue, stage, strain | join to the shipped host table | grade the generator gave |
+|---|---|---|---|---|---|
+| `Tg_host proteome · human fibroblast` | `fibroblast_protein_ppm` | PXD032893, PMID 35743299, via PaxDb | normal human **primary skin** fibroblasts, serum-starved 24 h, **vehicle (DMSO) arms only**, high and low glucose; NOT the foreskin line (HFF) | 6,390 of 6,703 symbols (95.3 per cent); keeps 91.3 per cent of the abundance mass | B, 33.4 per cent of its row space |
+| `Tg_host proteome · human monocyte` | `monocyte_protein_ppm` | PXD000561 (Kim et al. 2014, PMID 24870542), via PaxDb | adult human monocytes, spectral counting, one study | 4,989 of 5,265 (94.8 per cent); keeps 95.2 per cent of the mass | B, 26.0 per cent |
+| `Tg_host surface / receptor repertoire · human monocyte` | `monocyte_surface_classical_intensity` | PXD013832 (Ravenhill et al., PMID 32165698) | FACS-sorted **classical** monocytes, plasma membrane profiling, TMT, three blood donors, mean of donors | 436 of 437 quantified rows joined (429 by accession with the isoform suffix removed, 7 by symbol, 1 not in the table), 432 unique proteins | C, 432 proteins |
+| `Pf_host proteome · human bone marrow` | `bone_marrow_protein_ppm` | PXD020192 (Di Meo et al. 2021, PMID 33107741), via PaxDb | human bone marrow at autopsy, label-free NSAF, one study | 2,059 of 2,195 (93.8 per cent); **keeps only 76.7 per cent of the mass** | A, but see below |
+| `Pf_host proteome · human dermis` | `dermis_superficial_protein_ppm`, `dermis_deep_protein_ppm` | PXD027093 (Li et al. 2022, PMID 35817779), via PaxDb | laser-microdissected **superficial and deep dermis**, DIA, NSAF | 4,437 and 4,090 (95.0 and 94.9 per cent); keeps 82.3 and 83.8 per cent of the mass | A, but see below |
+| `Pf_host proteome · Anopheles salivary gland` | `anopheles_salivary_gland_protein_ppm` | PXD057628 (Alves e Silva et al. 2025, PMID 41266344, CC0) | *A. gambiae* glands **21 days after a blood meal**, uninfected arm, three pools of 25 gland pairs, LFQ share in ppm | 2,936 of 2,951 AGAP genes are in the shipped Ag table (the 15 outside the Ensembl AgamP4 build are dropped and counted); 2,458 carry an abundance | A, but see below |
+| `Pf_host response to infection · Anopheles salivary gland` | `anopheles_salivary_gland_infection_log2fc`, `..._padj` | PXD057628 | same glands infected with ***P. berghei* ANKA** against uninfected, three pools a side | 2,366 genes carry a contrast | A (96.3 per cent), but see below |
+
+**The slot count:** empty 128 to 121, host slots 20 to 27 of 50, A 123 to 127, B 55 to 57, C 56 to 57. By arm,
+*Toxoplasma* empty 15 to 12, *Plasmodium* empty 60 to 56, *Cryptosporidium* unchanged at 53. Exactly these
+seven slots changed state. Three FILLED slots changed their reported coverage and nothing else, because a host
+slot is graded against the rows its tissue's columns cover and the new columns widened the tissue's rows:
+`Tg_host transcriptome · human fibroblast` 100.0 to 99.7 per cent, `Tg_host response to infection · human
+fibroblast` 55.7 to 55.5, `Tg_host transcriptome · human monocyte` 100.0 to 99.8. No grade moved.
+
+**Read the grades with care.** An **A** for bone marrow, dermis and the two salivary-gland slots is an artefact
+of the denominator, not a measure of coverage: a host slot's row space is the rows its own columns cover, so a
+tissue with no other column grades itself 100 per cent. Against the whole host table the real shares are:
+bone marrow 2,059 of 21,020 (9.8 per cent), dermis 4,723 (22.5 per cent), salivary gland 2,458 of 12,574
+(19.5 per cent). The same effect is why the earlier mouse macrophage proteome reads 28.9 per cent. The grading
+rule is not changed here.
+
+**What each of these is not, so nobody reads more into it:**
+
+* **Fibroblast** is a skin fibroblast under serum starvation, vehicle-treated. It is the closest unperturbed
+  human fibroblast proteome that exists in PaxDb, and PaxDb's own label "integrated" hides that it is one
+  study. Whether it answers a question about HFF is a judgement, written into the registry note.
+* **Monocyte proteome** is a spectral-count draft map; the deep tail rests on few spectra.
+* **Monocyte surface** is a list of 437 proteins recovered by surface capture. The study reports no negatives, so
+  absence is unknown and not "not on the surface", the list includes proteins the authors flag as nuclear or
+  intracellular carry-over, and the sheet's annotation columns (`M`, `PM`, `CS` and others) were NOT decoded
+  and are not shipped. What would settle it: the legend of the paper's supplementary table.
+* **Bone marrow** is one autopsy study of a mixed tissue, the shallowest proteome here. The symbol join drops
+  23.3 per cent of its abundance mass, so the values do not sum to a million and the dropped symbols include
+  abundant proteins.
+* **Dermis** keeps the two layers apart and does not use PaxDb's whole-skin set. The accession PXD027093 is not
+  served by PRIDE (404); it was confirmed from the paper's own text through Europe PMC full-text search.
+* **Salivary gland** abundance is the uninfected arm only, as a share of the summed LFQ of the kept host groups.
+  The contrast is weak by construction, three pools a side with Welch's t and Benjamini-Hochberg, and **no protein
+  passes an adjusted p of 0.05** (the smallest is 0.093; one is under 0.1). The authors' own test imputed missing
+  values and found differences this one does not. Groups that also hold a *P. berghei* protein (22) or span
+  several genes (135) were dropped rather than assigned. The infecting parasite is *P. berghei*, which the
+  Plasmodium arm accepts by design, not *P. falciparum*.
+
+**Procedure notes worth keeping:**
+
+* `derive_all` now drops host rows whose identifier is not in the shipped host table and says how many
+  (1 of 433 for the monocyte surface, 15 of 2,951 for the salivary gland). The host tables are the gene space,
+  and a study must not grow it by what it happened to detect.
+* `_paxdb` now reads three columns explicitly; the single-study PaxDb files carry a fourth and pandas would have
+  taken the first column as the index.
+* **The Hs host layouts were rebuilt.** `hs_host_graph_tissue.npz` and `hs_host_graph_parasite_facing.npz` record
+  the SHA-256 of the table they were built from, so any new column in `hs_host_proteins.parquet` makes the
+  window refuse them. `scripts/build_host_layouts.py --space Hs` was re-run with the lens columns unchanged;
+  UMAP is not bit-reproducible, so the coordinates moved even though the inputs did not. It ran 5 minutes and,
+  although niced and capped at 14 GB, used about 67 CPU-minutes across the cores: UMAP ignores `nice` for its
+  thread count, which a shared box should know.
+* The checked-in slot tables and the four tests that read them (`test_the_slot_table_regenerates_identically`,
+  `test_every_empty_toxoplasma_slot_says_why_it_is_empty`, `test_every_host_column_named_by_the_catalog_is_in_the_host_table`,
+  `test_the_empty_count_matches_the_generated_table`) pass against the checkout's data and FAIL when
+  `PARASCAPE_CACHE` is pinned to the published 0.0.13.0 release, because that release does not contain these
+  columns. That is expected, and it means the next data release must be built from this commit;
+  `parascape/data_manifest.json` was not touched, since it is written at release.
+* New tests: `tests/test_host_proteomes_2026_11_18.py` (21 tests; it reads the checkout's data directly so it
+  also runs under the release pin).
+
+**Still empty after this pass, from the same discovery table:** human fibroblast surface (PXD000589 would need
+its 30 search files re-filtered), human hepatocyte surface (PXD001988 is liver tissue plus cell lines), the
+Anopheles midgut proteome (no processed table), and every slot listed as nothing suitable.

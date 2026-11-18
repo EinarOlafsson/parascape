@@ -956,6 +956,21 @@ HOST_COLUMNS = {
     "host proteome · mouse brain": ["mouse_brain_protein_ppm"],
     "host proteome · mouse bone-marrow macrophage": ["bmdm_protein_ppm"],
     "host proteome · mouse skeletal muscle": ["skeletal_muscle_protein_ppm"],
+    # Single-study human proteomes from PaxDb, each with its own accession in the registry (instruction 41,
+    # 2026-11-18). Fibroblast is primary SKIN fibroblast, vehicle arms of one study, and not the foreskin
+    # line; bone marrow is one autopsy study; dermis keeps its two layers apart.
+    "host proteome · human fibroblast": ["fibroblast_protein_ppm"],
+    "host proteome · human monocyte": ["monocyte_protein_ppm"],
+    "host proteome · human bone marrow": ["bone_marrow_protein_ppm"],
+    "host proteome · human dermis": ["dermis_superficial_protein_ppm", "dermis_deep_protein_ppm"],
+    # Plasma membrane profiling of sorted classical monocytes, three donors: recovered by the surface
+    # capture, with no negatives reported (PXD013832).
+    "host surface / receptor repertoire · human monocyte": ["monocyte_surface_classical_intensity"],
+    # PXD057628: salivary glands 21 days after a P. berghei blood meal, against uninfected, three pools a
+    # side. Graded against the Anopheles host table, which keys on AGAP gene ids.
+    "host proteome · Anopheles salivary gland": ["anopheles_salivary_gland_protein_ppm"],
+    "host response to infection · Anopheles salivary gland": ["anopheles_salivary_gland_infection_log2fc",
+                                                              "anopheles_salivary_gland_infection_padj"],
     "host transcriptome · human myeloid dendritic cell": ["myeloid_dc_tpm"],
     # FANTOM5 mouse CAGE. Brain is the mean of four adult regions, because a bradyzoite cyst is not
     # confined to one; muscle is the atlas's only skeletal-muscle sample and it is juvenile.
@@ -2466,28 +2481,31 @@ HOST_VERDICTS = {
         "missing, and the response-to-infection slot wants an uninfected control this series does "
         "not carry -- its comparison arm is a receptor knockdown, not an uninfected mosquito."),
     ("Anopheles salivary gland",): (
-        "unreachable",
-        "Swept 2026-08-22. VectorBase holds the tissue expression and its gene reports stopped "
-        "answering anonymous callers, so it needs a VEuPathDB API key that is not set here. The "
-        "EBI Expression Atlas has exactly one Anopheles experiment and it is a Trypanosoma "
-        "infection contrast, not a baseline tissue. Salivary-gland and midgut proteomes exist in "
-        "the literature for A. stephensi, A. albimanus and A. campestris; the gambiae ones are "
-        "older and keyed to identifiers that predate AGAP.",
-        "A published gambiae salivary-gland table keyed to AGAP accessions, or a VEuPathDB API key. "
-        "UPDATE 2026-11-13: the identifier blocker recorded here is GONE -- the Anopheles host "
-        "table now keys on AGAP gene ids rather than on reviewed UniProt accessions, so a "
-        "salivary-gland table would have somewhere to land. What is missing is the measurement. "
-        "GSE284537 covers the midgut only, and the sporozoite stage the salivary gland carries is "
-        "not sampled anywhere on disk."),
+        "missing",
+        "Swept 2026-08-22: VectorBase holds the tissue expression and its gene reports stopped "
+        "answering anonymous callers, so it needs a VEuPathDB API key that is not set here, and the "
+        "EBI Expression Atlas has one Anopheles experiment, a Trypanosoma infection contrast. "
+        "Resolved in part 2026-11-18: the salivary gland PROTEOME and its response to infection are "
+        "PXD057628 (PMID 41266344), gambiae glands 21 days after a P. berghei blood meal against "
+        "uninfected, keyed to AGAP gene ids -- found by searching PRIDE by the biology of the slot, "
+        "which the August sweep did not do. The Anopheles host table has keyed on AGAP gene ids since "
+        "2026-11-13, so the identifier blocker is gone too.",
+        "Still missing for the salivary gland: a TRANSCRIPTOME (no gambiae gland transcriptome was found; "
+        "GSE284425 is 62 salivary-gland samples but of A. stephensi, which the AGAP-keyed table does "
+        "not cover) and a cell-SURFACE repertoire (no surface-capture proteomics of any "
+        "Anopheles tissue exists in PRIDE)."),
     ("human dermis",): (
         "missing",
         "Swept 2026-08-22. GTEx v10 carries `Skin_Sun_Exposed_Lower_leg` and "
         "`Skin_Not_Sun_Exposed_Suprapubic`, and both are SKIN -- epidermis and dermis together -- "
         "rather than the dermis the sporozoite is injected into. Shipping skin under a dermis "
-        "label is the same substitution this campaign measured and refused for cell types.",
-        "A dermis-specific proteome or transcriptome, separated from epidermis; or a decision to "
-        "widen the slot to `human skin`, which is a change to the QUESTION and so belongs to "
-        "instruction 39 rather than to whoever is loading data."),
+        "label is the same substitution this campaign measured and refused for cell types. "
+        "Resolved in part 2026-11-18 for the PROTEOME only: PaxDb carries the laser-microdissected "
+        "superficial and deep dermis of PXD027093 (PMID 35817779) as separate files, which is dermis "
+        "and not skin.",
+        "A dermis-specific TRANSCRIPTOME or cell-surface repertoire, separated from epidermis; or a "
+        "decision to widen the slot to `human skin`, which is a change to the QUESTION and so "
+        "belongs to instruction 39 rather than to whoever is loading data."),
     ("human neuron",): (
         "missing",
         "Swept 2026-08-22. The reachable neuron baselines are iPSC-derived SENSORY neurons "

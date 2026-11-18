@@ -3022,6 +3022,128 @@ REGISTRY = [
                  "missing rather than zero. Redistributed with its accession and paper cited, per "
                  "Einar on 2026-11-13.",
             organism=organisms.ANOPHELES),
+    Dataset("host_fibroblast_proteome", "Human skin fibroblast protein abundance (PaxDb, PXD032893)",
+            "translation", "proteomics",
+            "How abundant each protein is in untreated human skin fibroblasts, in parts per million",
+            ("fibroblast_protein_ppm",), "6,390 proteins (95.3% of the 6,703 in the source file)",
+            pmid="35743299", accession="PXD032893",
+            citation="Martinez-Martinez E et al., Int J Mol Sci 2022 (PMID 35743299), PRIDE PXD032893, via "
+                     "PaxDb v6.1 (https://pax-db.org)",
+            url="https://pax-db.org/downloads/latest/datasets/9606/9606-SKIN_FIBROBLAST-integrated.txt",
+            path="datasets/host/paxdb/",
+            note="PaxDb calls this set integrated, but it integrates the two VEHICLE arms (DMSO, high and low "
+                 "glucose) of ONE study, so it is one deposit and not a consensus. The cells are normal human "
+                 "PRIMARY SKIN fibroblasts, serum-starved (0.25% FBS) for 24 h with vehicle, not the "
+                 "foreskin line (HFF) Toxoplasma is grown in: the slot asks about a human fibroblast and this "
+                 "is the closest unperturbed proteome that exists, which is a judgement and not an identity. "
+                 "NSAF-based, in parts per million; joined by gene symbol, so a symbol no reviewed protein "
+                 "claims is dropped (the join keeps 91.3% of the abundance mass). Redistributed with its "
+                 "accession and paper cited.",
+            organism=organisms.HUMAN),
+    Dataset("host_monocyte_proteome", "Human monocyte protein abundance (PaxDb, Kim 2014 draft map)",
+            "translation", "proteomics",
+            "How abundant each protein is in adult human monocytes, in parts per million",
+            ("monocyte_protein_ppm",), "4,989 proteins (94.8% of the 5,265 in the source file)",
+            pmid="24870542", accession="PXD000561",
+            citation="Kim MS et al., A draft map of the human proteome, Nature 2014 (PMID 24870542, "
+                     "doi 10.1038/nature13302), PRIDE PXD000561, via PaxDb v6.1 (https://pax-db.org)",
+            url="https://pax-db.org/downloads/latest/datasets/9606/9606-Adult_Monocytes_Kim_2014_SEQUEST.txt",
+            path="datasets/host/paxdb/",
+            note="ONE study, spectral counting, not an integrated set: a value is a count-based estimate and "
+                 "the deep tail rests on few spectra. Monocytes from healthy adult donors, not infected and "
+                 "not sorted into subsets. Parts per million; joined by gene symbol, so a symbol no reviewed "
+                 "protein claims is dropped (the join keeps 95.2% of the abundance mass). Redistributed with "
+                 "its accession and paper cited.",
+            organism=organisms.HUMAN),
+    Dataset("host_bone_marrow_proteome", "Human bone marrow protein abundance (PaxDb, PXD020192)",
+            "translation", "proteomics",
+            "How abundant each protein is in human bone marrow, in parts per million",
+            ("bone_marrow_protein_ppm",), "2,059 proteins (93.8% of the 2,195 in the source file)",
+            pmid="33107741", accession="PXD020192",
+            citation="Di Meo A et al., Proteomic Profiling of the Human Tissue and Biological Fluid "
+                     "Proteome, J Proteome Res 2021 (PMID 33107741), PRIDE PXD020192, via PaxDb v6.1 "
+                     "(https://pax-db.org)",
+            url="https://pax-db.org/downloads/latest/datasets/9606/9606-PXD020192_bone_marrow.txt",
+            path="datasets/host/paxdb/",
+            note="ONE autopsy study, label-free, NSAF: the shallowest of the host proteomes (2,059 proteins "
+                 "against 15,108 for liver) because the sample is a marrow aspirate dominated by a few "
+                 "abundant proteins, one of which holds 16.7% of the whole. Whole marrow is a mixture of "
+                 "erythroid, myeloid and stromal cells, so a value is not a cell type. Parts per million; "
+                 "joined by gene symbol, and this join keeps only 76.7% of the abundance mass, so the "
+                 "dropped symbols include abundant proteins and the shipped values do not sum to a "
+                 "million. Redistributed with its accession and paper cited.",
+            organism=organisms.HUMAN),
+    Dataset("host_dermis_proteome", "Human dermis protein abundance (PaxDb, PXD027093)",
+            "translation", "proteomics",
+            "How abundant each protein is in the superficial and the deep dermis, in parts per million",
+            ("dermis_superficial_protein_ppm", "dermis_deep_protein_ppm"),
+            "4,437 superficial and 4,090 deep proteins (4,723 in all)",
+            pmid="35817779", accession="PXD027093",
+            citation="Li J et al., Spatially resolved proteomic map shows that extracellular matrix "
+                     "regulates epidermal growth, Nat Commun 2022 (PMID 35817779), PXD027093, via PaxDb "
+                     "v6.1 (https://pax-db.org)",
+            url="https://pax-db.org/downloads/latest/datasets/9606/9606-PXD027093_deep_dermis.txt",
+            path="datasets/host/paxdb/",
+            note="Two layers kept apart, because the sporozoite is deposited in the dermis and the layers "
+                 "differ: laser-microdissected human skin, data-independent acquisition, NSAF. The "
+                 "accession is not served by PRIDE (the PRIDE API returns 404) and was confirmed from the "
+                 "paper's own text through Europe PMC full-text search, where PXD027093 occurs once. The "
+                 "whole-skin integrated set is NOT used: it is skin, not dermis. Parts per million; joined "
+                 "by gene symbol, so a symbol no reviewed protein claims is dropped (the join keeps 82.3% "
+                 "and 83.8% of the abundance mass). Redistributed with its accession and paper cited.",
+            organism=organisms.HUMAN),
+    Dataset("host_monocyte_surface", "Human monocyte cell-surface proteome (PXD013832)",
+            "translation", "proteomics",
+            "Which proteins a primary human monocyte carries at the surface, and how strongly "
+            "(TMT reporter intensity)",
+            ("monocyte_surface_classical_intensity",),
+            "432 proteins (436 of 437 quantified rows joined, one more outside the shipped host table)",
+            pmid="32165698", accession="PXD013832",
+            citation="Ravenhill BJ et al., Comprehensive cell surface proteomics defines markers of "
+                     "classical, intermediate and non-classical monocytes, Sci Rep 2020 (PMID 32165698), "
+                     "PRIDE PXD013832",
+            url="https://www.ebi.ac.uk/pride/archive/projects/PXD013832",
+            path="datasets/translation/proteomics/PXD013832/",
+            note="Plasma membrane profiling (surface sialic acid oxidised and biotinylated, then "
+                 "streptavidin capture), TMT, FACS-sorted CLASSICAL monocytes from three blood donors; "
+                 "the value is the mean reporter intensity over the three donors. The spreadsheet is "
+                 "padded to 9,999 rows and 437 of them carry a classical measurement. A protein not "
+                 "quantified is missing, which is UNKNOWN and not absent: the study reports no negatives. "
+                 "The list includes proteins the authors flag as nuclear or intracellular carry-over, so a "
+                 "value means recovered by the surface capture, not proven exposed. The intermediate and "
+                 "non-classical subsets belong to a second experiment and are not shipped. Keyed by "
+                 "reviewed UniProt accession with the isoform suffix removed (429 of 437), and by symbol "
+                 "for 7 more. Redistributed with its accession and paper cited.",
+            organism=organisms.HUMAN),
+    Dataset("host_anopheles_salivary_gland_proteome",
+            "Anopheles salivary gland proteome, with and without a Plasmodium berghei infection",
+            "translation", "proteomics",
+            "How abundant each mosquito protein is in the salivary gland (parts per million, uninfected), "
+            "and how it changes 21 days after a Plasmodium berghei infection",
+            ("anopheles_salivary_gland_protein_ppm", "anopheles_salivary_gland_infection_log2fc",
+             "anopheles_salivary_gland_infection_padj"),
+            "2,936 mosquito genes; 2,458 with an abundance, 2,366 with a contrast",
+            pmid="41266344", accession="PXD057628",
+            citation="Alves e Silva TL et al., High-resolution proteomics unveils salivary gland "
+                     "disruption and saliva-hemolymph protein exchange in Plasmodium-infected mosquitoes, "
+                     "Nat Commun 2025 (PMID 41266344, doi 10.1038/s41467-025-64837-6), PRIDE PXD057628 "
+                     "(CC0)",
+            url="https://www.ebi.ac.uk/pride/archive/projects/PXD057628",
+            path="datasets/translation/proteomics/PXD057628/",
+            note="Glands dissected 21 days after the blood meal, when sporozoites sit in them: the stage "
+                 "the slot names. Mosquito: Anopheles gambiae, searched against the PEST gene set. The "
+                 "parasite is Plasmodium BERGHEI ANKA (GFPcon 259cl2), not falciparum, which the "
+                 "Plasmodium arm accepts by design; the same paper's saliva proteome also covers "
+                 "falciparum but saliva is not the gland. Three independent infections, each a pool of 25 "
+                 "gland pairs, uninfected (fed on uninfected blood) against infected; three replicates a "
+                 "side, so the test is weak: the smallest adjusted p is 0.093 and NO protein passes 0.05. "
+                 "Abundance is the uninfected arm only: each replicate's LFQ share of the summed LFQ of "
+                 "the kept host groups, in parts per million, then the mean. The contrast is Welch's t on log2 LFQ with "
+                 "Benjamini-Hochberg, needing two quantified values a side; the authors imputed missing "
+                 "values and this does not, so a protein seen in one arm only has no fold change. Groups "
+                 "that also hold a P. berghei protein (22) or span several genes (135) are dropped, and 15 AGAP "
+                 "ids the shipped gene build does not hold. Keyed on VectorBase AGAP gene ids. Redistributed with its accession and paper cited.",
+            organism=organisms.ANOPHELES),
 ]
 
 _BY_KEY = {d.key: d for d in REGISTRY}

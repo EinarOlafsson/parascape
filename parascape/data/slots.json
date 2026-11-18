@@ -5441,7 +5441,9 @@
     "axis": "host effect",
     "context": "human fibroblast; tachyzoite, in vitro HFF",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "fibroblast_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
@@ -5574,7 +5576,9 @@
     "axis": "host effect",
     "context": "human monocyte; tachyzoite, infected monocyte",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "monocyte_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
@@ -5640,7 +5644,9 @@
     "axis": "host effect",
     "context": "human monocyte; tachyzoite, infected monocyte",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "monocyte_surface_classical_intensity"
+    ],
     "policy": "fill",
     "candidates": [],
     "evidence_path": [
@@ -12409,7 +12415,9 @@
     "axis": "host effect",
     "context": "human bone marrow; gametocyte, sequestered",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "bone_marrow_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
@@ -12672,7 +12680,10 @@
     "axis": "host effect",
     "context": "human dermis; sporozoite, after the bite",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "dermis_superficial_protein_ppm",
+      "dermis_deep_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
@@ -12933,7 +12944,9 @@
     "axis": "host effect",
     "context": "Anopheles salivary gland; sporozoite, before the bite",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "anopheles_salivary_gland_protein_ppm"
+    ],
     "policy": "average",
     "candidates": [],
     "evidence_path": [
@@ -13029,7 +13042,10 @@
     "axis": "host effect",
     "context": "Anopheles salivary gland; sporozoite, before the bite",
     "unit": "host_gene",
-    "patterns": [],
+    "patterns": [
+      "anopheles_salivary_gland_infection_log2fc",
+      "anopheles_salivary_gland_infection_padj"
+    ],
     "policy": "separate",
     "candidates": [],
     "evidence_path": [

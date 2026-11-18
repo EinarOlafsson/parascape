@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**141 slots: 43 covered well, 22 partly, 16 thinly, 60 empty.**
+**141 slots: 47 covered well, 22 partly, 16 thinly, 56 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -218,7 +218,7 @@ quantity were approximating on 2026-08-13.
 | Pf_host transcriptome · human erythrocyte | human erythrocyte; asexual blood stage and merozoite | **-** |  |  |  | `` | average | — |
 | Pf_host surface / receptor repertoire · human erythrocyte | human erythrocyte; asexual blood stage and merozoite | **C** | 267 |  | 5.0% | `rbc_surface_copies_uk, rbc_surface_copies_senegal, rbc_surface_found_uk, rbc_surface_found_senegal` | fill | — |
 | Pf_host response to infection · human erythrocyte | human erythrocyte; asexual blood stage and merozoite | **-** |  |  |  | `` | separate | — |
-| Pf_host proteome · human bone marrow | human bone marrow; gametocyte, sequestered | **-** |  |  |  | `` | average | — |
+| Pf_host proteome · human bone marrow | human bone marrow; gametocyte, sequestered | **A** | 2059 |  | 100.0% | `bone_marrow_protein_ppm` | average | — |
 | Pf_host transcriptome · human bone marrow | human bone marrow; gametocyte, sequestered | **-** |  |  |  | `` | average | — |
 | Pf_host surface / receptor repertoire · human bone marrow | human bone marrow; gametocyte, sequestered | **-** |  |  |  | `` | fill | — |
 | Pf_host response to infection · human bone marrow | human bone marrow; gametocyte, sequestered | **-** |  |  |  | `` | separate | — |
@@ -226,7 +226,7 @@ quantity were approximating on 2026-08-13.
 | Pf_host transcriptome · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **A** | 19087 |  | 99.1% | `hepatocyte_tpm` | average | — |
 | Pf_host surface / receptor repertoire · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **-** |  |  |  | `` | fill | — |
 | Pf_host response to infection · human hepatocyte | human hepatocyte; liver stage and hypnozoite | **B** | 12550 |  | 65.1% | `hepatocyte_pf_infection_log2fc, hepatocyte_pf_infection_padj` | separate | — |
-| Pf_host proteome · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | average | — |
+| Pf_host proteome · human dermis | human dermis; sporozoite, after the bite | **A** | 4723 |  | 100.0% | `dermis_superficial_protein_ppm, dermis_deep_protein_ppm` | average | — |
 | Pf_host transcriptome · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | average | — |
 | Pf_host surface / receptor repertoire · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | fill | — |
 | Pf_host response to infection · human dermis | human dermis; sporozoite, after the bite | **-** |  |  |  | `` | separate | — |
@@ -234,10 +234,10 @@ quantity were approximating on 2026-08-13.
 | Pf_host transcriptome · Anopheles midgut | Anopheles midgut; ookinete and oocyst | **A** | 12574 |  | 100.0% | `anopheles_midgut_36h_cpm, anopheles_midgut_48h_cpm, anopheles_midgut_4d_cpm, anopheles_midgut_7d_cpm` | average | — |
 | Pf_host surface / receptor repertoire · Anopheles midgut | Anopheles midgut; ookinete and oocyst | **-** |  |  |  | `` | fill | — |
 | Pf_host response to infection · Anopheles midgut | Anopheles midgut; ookinete and oocyst | **-** |  |  |  | `` | separate | — |
-| Pf_host proteome · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **-** |  |  |  | `` | average | — |
+| Pf_host proteome · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **A** | 2458 |  | 100.0% | `anopheles_salivary_gland_protein_ppm` | average | — |
 | Pf_host transcriptome · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **-** |  |  |  | `` | average | — |
 | Pf_host surface / receptor repertoire · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **-** |  |  |  | `` | fill | — |
-| Pf_host response to infection · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **-** |  |  |  | `` | separate | — |
+| Pf_host response to infection · Anopheles salivary gland | Anopheles salivary gland; sporozoite, before the bite | **A** | 2366 |  | 96.3% | `anopheles_salivary_gland_infection_log2fc, anopheles_salivary_gland_infection_padj` | separate | — |
 
 ### NEVER a feature
 

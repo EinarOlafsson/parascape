@@ -1639,7 +1639,9 @@ def _paxdb(root: str, sets: dict, species: str) -> pd.DataFrame:
         path = _os.path.join(folder, name)
         if not _os.path.exists(path):
             continue
-        table = pd.read_csv(path, sep="\t", comment="#",
+        # Single-study files carry a fourth column (peptide intensity or raw spectral count); with
+        # `names` shorter than the row pandas would take the first column as the index, so say which three.
+        table = pd.read_csv(path, sep="\t", comment="#", usecols=[0, 1, 2],
                             names=["gene_name", "string_external_id", "abundance"])
         table = table.dropna(subset=["gene_name", "abundance"])
         table["host_id"] = table.gene_name.astype(str).str.strip().map(by_symbol)
@@ -1677,6 +1679,157 @@ def mouse_tissue_proteome(root: str) -> pd.DataFrame:
     macrophage for the cell that carries the parasite, muscle for the other tissue cysts are found in.
     """
     return _paxdb(root, PAXDB_MOUSE_SETS, "mouse")
+
+
+#: Single-study human proteomes from PaxDb, one registry entry per STUDY so that each column carries the
+#: accession and the paper of the deposit it came from (a column may ship only with both). The integrated
+#: sets above average many studies; these four tissues have one, and the file says so.
+PAXDB_FIBROBLAST = {"9606-SKIN_FIBROBLAST-integrated.txt": "fibroblast_protein_ppm"}
+PAXDB_MONOCYTE = {"9606-Adult_Monocytes_Kim_2014_SEQUEST.txt": "monocyte_protein_ppm"}
+PAXDB_BONE_MARROW = {"9606-PXD020192_bone_marrow.txt": "bone_marrow_protein_ppm"}
+PAXDB_DERMIS = {"9606-PXD027093_superficial_dermis.txt": "dermis_superficial_protein_ppm",
+                "9606-PXD027093_deep_dermis.txt": "dermis_deep_protein_ppm"}
+
+
+def human_fibroblast_proteome(root: str) -> pd.DataFrame:
+    """Normal human skin fibroblasts, vehicle arms only (PXD032893, PMID 35743299), parts per million.
+
+    PaxDb labels this set "integrated", but it integrates the two vehicle (DMSO) arms of ONE study, high and
+    low glucose, in serum-starved primary skin fibroblasts. It is one deposit, not a consensus.
+    """
+    return _paxdb(root, PAXDB_FIBROBLAST, "human")
+
+
+def human_monocyte_proteome(root: str) -> pd.DataFrame:
+    """Adult human monocytes, spectral counting (Kim et al. 2014 draft map, PXD000561), parts per million."""
+    return _paxdb(root, PAXDB_MONOCYTE, "human")
+
+
+def human_bone_marrow_proteome(root: str) -> pd.DataFrame:
+    """Human bone marrow at autopsy, NSAF (Di Meo et al. 2021, PXD020192, PMID 33107741), parts per million."""
+    return _paxdb(root, PAXDB_BONE_MARROW, "human")
+
+
+def human_dermis_proteome(root: str) -> pd.DataFrame:
+    """Human superficial and deep dermis, DIA, NSAF (Li et al. 2022, PXD027093, PMID 35817779), parts per million."""
+    return _paxdb(root, PAXDB_DERMIS, "human")
+
+
+MONOCYTE_SURFACE = ("translation", "proteomics", "PXD013832", "Monocytecellsurfaceproteins_FINAL.xlsx")
+MONOCYTE_SURFACE_COLUMNS = ("Classical Only Sample 1", "Classical Only Sample 2", "Classical Only Sample 3")
+
+
+def human_monocyte_surface(root: str) -> pd.DataFrame:
+    """Plasma membrane profiling of primary classical monocytes, TMT, three donors (PXD013832, Ravenhill 2019).
+
+    The classical-only experiment: TMT reporter intensity of each protein recovered by cell-surface labelling,
+    one channel per donor, averaged over the three donors. A protein the experiment did not quantify (no
+    classical peptide, or a zero reporter in every donor) is missing, which is unknown and not zero. The table
+    also holds proteins the authors flag as nuclear or intracellular carry-over, so a value means "recovered by
+    the surface capture", not "proven exposed". The three-subset experiment (classical, intermediate,
+    non-classical) is a different question and is not shipped.
+
+    Keyed by reviewed UniProt accession (isoform suffix removed) where the accession is one, by gene symbol
+    where it is not.
+    """
+    import numpy as _np
+    path = _file(root, *MONOCYTE_SURFACE)
+    if path is None:
+        return pd.DataFrame()
+    index = _index(root, "human", symbols=True)
+    by_symbol = (index or {}).get("by_symbol") or {}
+    reviewed = set(by_symbol.values()) | set(((index or {}).get("by_ensembl") or {}).values())
+    if not reviewed:
+        return pd.DataFrame()
+    d = pd.read_excel(path, sheet_name="Proteins")
+    intensity = d[list(MONOCYTE_SURFACE_COLUMNS)].apply(pd.to_numeric, errors="coerce")
+    seen = (d["Classical peptides"].fillna(0) > 0).to_numpy()
+    intensity = intensity.where(intensity > 0)
+    value = intensity.mean(axis=1, skipna=False).where(seen)
+    # An isoform accession ("O43852-4") is the same protein as its canonical one, so the suffix goes first.
+    acc = d["Uniprot-l"].astype(str).str.strip().str.replace(r"-\d+$", "", regex=True)
+    host_id = acc.where(acc.isin(reviewed), d["Gene Symbol"].astype(str).str.strip().map(by_symbol))
+    out = pd.DataFrame({"host_id": host_id, "host_name": d["Gene Symbol"].astype(str).str.strip(),
+                        "monocyte_surface_classical_intensity": value.round(4)})
+    out = out[out.host_id.notna() & out.monocyte_surface_classical_intensity.notna()]
+    out = out.sort_values("monocyte_surface_classical_intensity", ascending=False)
+    return out.drop_duplicates("host_id").reset_index(drop=True)
+
+
+AG_SALIVARY = ("translation", "proteomics", "PXD057628", "proteinGroups.txt")
+AG_SALIVARY_UNINFECTED = ("LFQ intensity Blood 1", "LFQ intensity Blood 2", "LFQ intensity Blood 3")
+AG_SALIVARY_INFECTED = ("LFQ intensity PbGFP 1", "LFQ intensity PbGFP 2", "LFQ intensity PbGFP 3")
+
+
+def anopheles_salivary_gland_proteome(root: str) -> pd.DataFrame:
+    """Anopheles gambiae salivary glands 21 days after a Plasmodium berghei blood meal (PXD057628).
+
+    Alves e Silva et al. 2025 (PMID 41266344): three independent infections, each a pool of 25 pairs of
+    dissected glands, uninfected (fed on uninfected blood) against infected with P. berghei ANKA. MaxQuant LFQ
+    intensities, searched against the PEST (VectorBase) and P. berghei databases together.
+
+    Two quantities, both host-only. `anopheles_salivary_gland_protein_ppm` is the uninfected arm: each
+    replicate's LFQ share of the summed host LFQ, in parts per million, then the mean of the three. The
+    infection contrast is Welch's t on log2 LFQ (at least two quantified values in each arm; a protein seen in
+    one arm only gets no fold change, which is unknown rather than zero) with Benjamini-Hochberg over the
+    tested proteins. The authors' own test imputed missing values; this one does not.
+
+    Reverse hits, contaminants, site-only hits and any group that also contains a P. berghei protein are
+    dropped (a group sharing peptides with the parasite cannot be assigned to the host), as are groups spanning
+    more than one gene. Keyed on VectorBase AGAP gene ids; see `organisms.HOST_TABLES`.
+    """
+    import re
+
+    import numpy as _np
+    from scipy import stats
+    path = _file(root, *AG_SALIVARY)
+    if path is None:
+        return pd.DataFrame()
+    g = pd.read_csv(path, sep="\t", low_memory=False)
+    need = ["Protein IDs", "Reverse", "Potential contaminant", "Only identified by site",
+            *AG_SALIVARY_UNINFECTED, *AG_SALIVARY_INFECTED]
+    if not set(need) <= set(g.columns):
+        return pd.DataFrame()
+    g = g[g["Reverse"].isna() & g["Potential contaminant"].isna() & g["Only identified by site"].isna()]
+    ids = g["Protein IDs"].astype(str).str.split(";")
+    pure = ids.map(lambda parts: all(p.startswith("AGAP") for p in parts))
+    genes = ids.map(lambda parts: sorted({re.match(r"(AGAP\d+)", p).group(1) for p in parts})
+                    if all(p.startswith("AGAP") for p in parts) else [])
+    g = g[pure & (genes.str.len() == 1)].copy()
+    g["host_id"] = genes[g.index].str[0]
+    lfq = {c: pd.to_numeric(g[c], errors="coerce").where(lambda s: s > 0) for c in
+           (*AG_SALIVARY_UNINFECTED, *AG_SALIVARY_INFECTED)}
+    # two protein groups on one gene (split isoform groups): keep the better quantified one
+    g["_n"] = sum(v.notna().astype(int) for v in lfq.values())
+    g["_s"] = sum(v.fillna(0) for v in lfq.values())
+    g = g.sort_values(["_n", "_s"], ascending=False).drop_duplicates("host_id")
+    lfq = {c: v.loc[g.index] for c, v in lfq.items()}
+    ppm = pd.concat([v / v.sum() * 1e6 for c, v in lfq.items() if c in AG_SALIVARY_UNINFECTED], axis=1)
+    out = pd.DataFrame({"host_id": g["host_id"].to_numpy(), "host_name": None})
+    out["anopheles_salivary_gland_protein_ppm"] = ppm.mean(axis=1, skipna=True).where(
+        ppm.notna().sum(axis=1) >= 2).to_numpy()
+    a = _np.log2(pd.concat([lfq[c] for c in AG_SALIVARY_INFECTED], axis=1)).to_numpy()
+    b = _np.log2(pd.concat([lfq[c] for c in AG_SALIVARY_UNINFECTED], axis=1)).to_numpy()
+    ok = (_np.isfinite(a).sum(axis=1) >= 2) & (_np.isfinite(b).sum(axis=1) >= 2)
+    fold = _np.full(len(g), _np.nan)
+    p = _np.full(len(g), _np.nan)
+    for i in _np.flatnonzero(ok):
+        x, y = a[i][_np.isfinite(a[i])], b[i][_np.isfinite(b[i])]
+        fold[i] = x.mean() - y.mean()
+        p[i] = stats.ttest_ind(x, y, equal_var=False).pvalue
+    tested = _np.isfinite(p)
+    padj = _np.full(len(g), _np.nan)
+    if tested.any():
+        pv = p[tested]
+        order = _np.argsort(pv)
+        ranked = pv[order] * len(pv) / (_np.arange(len(pv)) + 1)
+        ranked = _np.minimum.accumulate(ranked[::-1])[::-1].clip(max=1.0)
+        back = _np.empty_like(ranked)
+        back[order] = ranked
+        padj[tested] = back
+    out["anopheles_salivary_gland_infection_log2fc"] = _np.round(fold, 4)
+    out["anopheles_salivary_gland_infection_padj"] = padj
+    return out.reset_index(drop=True)
 
 
 def human_brain_cell_rna(root: str) -> pd.DataFrame:
@@ -1861,8 +2014,15 @@ DEPOSITS = (
     Deposit("host_brain_cell_rna", organisms.HUMAN, human_brain_cell_rna),
     Deposit("host_tissue_proteome", organisms.HUMAN, human_tissue_proteome),
     Deposit("host_mouse_tissue_proteome", organisms.MOUSE, mouse_tissue_proteome),
+    Deposit("host_fibroblast_proteome", organisms.HUMAN, human_fibroblast_proteome),
+    Deposit("host_monocyte_proteome", organisms.HUMAN, human_monocyte_proteome),
+    Deposit("host_bone_marrow_proteome", organisms.HUMAN, human_bone_marrow_proteome),
+    Deposit("host_dermis_proteome", organisms.HUMAN, human_dermis_proteome),
+    Deposit("host_monocyte_surface", organisms.HUMAN, human_monocyte_surface),
     Deposit("host_anopheles_midgut_transcriptome", organisms.ANOPHELES,
             anopheles_midgut_transcriptome),
+    Deposit("host_anopheles_salivary_gland_proteome", organisms.ANOPHELES,
+            anopheles_salivary_gland_proteome),
 )
 
 #: Deposits that are derived and shipped, but deliberately NOT merged into the node table.
@@ -1891,6 +2051,26 @@ def table_path(base: str, key: str) -> str:
     return os.path.join(base, "parascape", "data", f"deposit_{key}.tsv")
 
 
+def _on_shipped_host_rows(frame: pd.DataFrame, dep: "Deposit", base: str, log=print) -> pd.DataFrame:
+    """A host deposit keeps only the proteins or genes its host table already has.
+
+    The host tables ARE the gene space of each host species (reviewed UniProt entries; the Ensembl AgamP4
+    protein-coding build). A measurement of an identifier outside that space has nowhere to land, and
+    letting it in would grow the space by whatever a study happened to detect. The rows dropped are counted
+    in the log, because "dropped" has to be a number somebody can read.
+    """
+    from . import host
+    name = host.HOST_TABLES.get(dep.organism)
+    path = os.path.join(base, "parascape", "data", name) if name else None
+    if not path or not os.path.exists(path) or "host_id" not in frame.columns:
+        return frame
+    shipped = set(pd.read_parquet(path, columns=["host_id"])["host_id"].astype(str))
+    keep = frame["host_id"].astype(str).isin(shipped)
+    if not keep.all():
+        log(f"deposit {dep.key}: {int((~keep).sum())} of {len(frame)} rows are not in {name} and are dropped")
+    return frame[keep].reset_index(drop=True)
+
+
 def derive_all(dataset_root: str, base: str, keys=None, log=print) -> dict:
     """Derive every deposit present under `dataset_root` and write its keyed table into the cache.
 
@@ -1905,6 +2085,7 @@ def derive_all(dataset_root: str, base: str, keys=None, log=print) -> dict:
         if frame is None or frame.empty:
             log(f"deposit {dep.key}: raw files not under {dataset_root}; kept what is shipped")
             continue
+        frame = _on_shipped_host_rows(frame, dep, base, log)
         frame.to_csv(table_path(base, dep.key), sep="\t", index=False, float_format="%.10g")
         out[dep.key] = frame
         log(f"deposit {dep.key}: {len(frame):,} rows x {frame.shape[1] - 1} columns")
