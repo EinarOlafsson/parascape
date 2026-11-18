@@ -3598,6 +3598,20 @@ A release was therefore built rather than leaving the documented test command re
 the suite against this commit. It is a LOCAL build only: nothing was published and no version was cut,
 because publishing needs a Hugging Face token with write access to the dataset.
 
+**The v4 candidate list cannot be used as it stands, and the number is 11.1 per cent (measured
+2026-11-18).** Of its 81 candidates over 14 slots, 37 (45.7 per cent) name the ORGANISM of the slot
+they are offered for and 21 (25.9 per cent) name the ASSAY; only **9 name both**. The failures are
+not near misses: Cryptosporidium slots are offered nematode embryo RNA-seq, a gut-microbiome study
+and a Trypanosoma eIF4F paper, and the `fold confidence / disorder` and `interaction degree · IP-MS`
+slots are both offered the same transcriptomics series. A keyword search over GEO titles is
+recovering the keyword and not the slot.
+
+So filling from this file means curating candidate by candidate, not working down the list. The nine
+that name both organism and assay are the place to start, and one of them is a genuine match worth
+pursuing on its own: **GSE232438, "Transcriptional control of the Cryptosporidium lifecycle"**,
+against `Cp::transcription · oocyst`. (It names the organism but was not counted in the nine, because
+its title says "transcriptional" where the assay pattern looks for "transcriptome".)
+
 **The cache and the checkout must match in BOTH directions.** A release built from a NEWER checkout
 breaks an OLDER one: on 2026-11-18 a worktree branched from 0.0.13.0 was pointed at the release built
 after the seven host columns landed, and `test_host_species.py` died with an `AttributeError` on a
