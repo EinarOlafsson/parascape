@@ -123,10 +123,10 @@ plate directories), then S-BIAD877.
 ### Open data instructions
 | # | What is left |
 |---|---|
-| [41](open/41_fill_the_slots.md) | 119 empty slots; two Cryptosporidium slots filled 2026-11-18 (`2834be6c`) |
-| [65](open/65_dataset_selection_audit.md) | A grades overstate coverage — bone marrow 9.8 %, dermis 22.5 %, salivary gland 19.5 % |
+| [41](open/41_fill_the_slots.md) | 119 empty slots. **The v4 candidate list is 11.1 % on target** (9 of 81 name both the organism and the assay of their slot), so filling means curating candidate by candidate, not working down a queue |
+| [65](open/65_dataset_selection_audit.md) | **Cause found and fixed**: every coverage string reported the share of the SOURCE FILE, not of the host space. All 21 host datasets now carry both; 8 cover under a quarter of their space. What a GRADE should mean is still Einar's call |
 | [69](open/69_perturbation_omics_and_contrasts.md) | proteomics, metabolomics, cross-study profiles, the expression pack |
-| [80](open/80_pulldown_background_baits.md) | 22 baits; the gate AUC fell 0.710 → 0.684 as projects doubled, so waiting does not reach it |
+| [80](open/80_pulldown_background_baits.md) | 22 baits; waiting does not reach the gate, and **a compartment-matched background does not either** — complex members are as frequent inside the over-represented compartments as outside (p = 0.53). The specificity score stays the product |
 | [81](open/81_requantification_topup.md) | queued behind the new downloads; 40 zero-parasite runs first |
 | [99](open/99_data_on_hugging_face.md) | the instruction-53 packs, and a token to publish them |
 
