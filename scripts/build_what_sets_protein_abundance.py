@@ -27,6 +27,7 @@ from datetime import date
 
 import numpy as np
 import pandas as pd
+from scipy.stats import pearsonr, spearmanr
 from sklearn.linear_model import RidgeCV
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
@@ -135,11 +136,28 @@ def main() -> None:
 
     table = pd.DataFrame(rows)
     table["gain"] = table["r2"].diff().fillna(table["r2"])
+    # THE NUMBER THE LITERATURE QUOTES, in the currency it quotes it in: the squared correlation
+    # between one mRNA measure and protein, uncorrected. Human estimates run from about 40 per
+    # cent (Schwanhaeusser 2011) through 56 to 81 per cent once measurement error is corrected
+    # for (Li and Biggin), and ~60 per cent is the figure usually carried. Reported here so the
+    # result can be compared with that at all; the model numbers below are NOT in that currency.
+    single = frame[[TARGET] + list(LAYERS[0][1])].dropna(subset=[TARGET]).copy()
+    single["mrna"] = np.log2(single[list(LAYERS[0][1])].mean(axis=1) + 1)
+    pair = single[[TARGET, "mrna"]].dropna()
+    rho = spearmanr(pair["mrna"], pair[TARGET]).statistic
+    r = pearsonr(pair["mrna"], pair[TARGET])[0]
+    print(f"\nComparable with the human literature, uncorrected for measurement error: over "
+          f"{len(pair):,} genes,\none averaged mRNA measure against protein gives r2 = {r ** 2:.3f} "
+          f"(Pearson) and {rho ** 2:.3f} (Spearman).\nHuman estimates run 0.40 to 0.81 depending "
+          f"on whether measurement error is corrected for.")
+
     first, last = table.iloc[0], table.iloc[-1]
     share = first["r2"] / last["r2"] if last["r2"] else float("nan")
-    print(f"\ntranscript abundance alone explains {first['r2']:.1%} of the variance in protein "
-          f"abundance;\nevery layer together explains {last['r2']:.1%}, so transcription is "
-          f"{share:.0%} of what is explainable here.")
+    print(f"\nAnd what the layers add. Transcript abundance explains {first['r2']:.1%} of the "
+          f"variance;\nadding turnover, ribosome occupancy and codon usage takes it only to "
+          f"{last['r2']:.1%}.\nSo the other layers add {last['r2'] - first['r2']:.1%} -- "
+          f"transcript is {share:.0%} of what THIS MODEL explains, which is a ratio of one R2 to "
+          f"another\nand NOT a share of protein variance.")
     # The qualification belongs beside the claim, not in a footnote. The genes that carry every
     # layer are the genes everybody could measure, and transcript predicts protein far better in
     # them than in the wider set, so the headline number describes the easy half of the proteome.
@@ -157,7 +175,10 @@ def main() -> None:
                "folds": N_FOLDS, "repeats": N_REPEATS,
                "r2_by_layer": {r["layer"]: r["r2"] for r in rows},
                "shuffled_r2_mean": float(null.mean()), "shuffled_r2_sd": float(null.std(ddof=1)),
-               "transcription_share_of_explainable": float(share),
+               "transcription_share_of_what_this_model_explains": float(share),
+               "single_mrna_vs_protein_pearson_r2": float(r ** 2),
+               "single_mrna_vs_protein_spearman_r2": float(rho ** 2),
+               "single_mrna_vs_protein_n": int(len(pair)),
                "r2_alone_by_layer": {r["layer"]: r["r2_alone"] for r in rows},
                "wide_genes": int(len(wide)), "wide_transcript_only_r2": float(wide_r2)},
               open(os.path.join(out, "summary.json"), "w"), indent=2)
