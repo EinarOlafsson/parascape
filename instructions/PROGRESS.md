@@ -19,17 +19,24 @@ reaches rather than the data it uses. Figure 2 gates the rest.
 |---|---|---|---|
 | 1 | What ParaScape is: imports, modules, one gene space | parts exist, never assembled | 20 |
 | 2 | **Which studies can be compared at all** | analysis built and correct; only 8 studies qualify, so blocked on matrices (103 building) | 55 |
-| 3 | RNA and protein co-expression, clustered → what the modules are | components built | 40 |
+| 3 | Co-expression modules → **14 of 23 are compartments; the secretory machinery splits in two** | **measured** | 70 |
 | 4 | RNA response to treatment → which conditions group | 201 contrasts on one scale; blocked on the same matrices | 35 |
 | 5 | Protein response; bradyzoite reach → **subtype C is reached by 4 of 201 contrasts** | **panel drawn**, sweep saved, module built | 85 |
 | 6 | Which measurement explains which other → **transcription is 96 % of what is explainable about protein abundance** | 2 of 5 panels built (localisation, protein abundance) | 50 |
-| 7 | The network: traits on nodes, derived relationships on edges | edge layers exist, the graph does not | 10 |
-| 8 | Strains → what differs, and whether it is the effectors | not started | 5 |
+| 7 | The network → **24x the reach at two thirds the accuracy; weighting recovers 5.7 points** | **measured** over 13 edge layers | 65 |
+| 8 | Strains → **dense granules 2.06 and apical secretory 1.73 against 1.36; everything internal below** | **measured** | 70 |
 | 9 | Species transfer → **localisation transfers at +0.256, fitness at 0.314, codon usage not at all** | **measured**, length is the control at 0.907 | 70 |
-| 10 | The host → shared response and the tissue-specific part | **per-host-gene import done** (18,007 effects, 21 effectors); co-folding and the panel remain | 45 |
+| 10 | The host → **mostly private: 3,435 host genes moved by one effector, 68 by half or more** | **measured**; translocon control passes; co-folding remains | 65 |
 | 11 | Filling the map → **5 of 12 targets beat guessing; localisation 76.5 % against 33.1 %** | **measured** from 1,047,574 held-out calls | 70 |
 | 12 | Measured absence → **host response 94.7 % unmeasured, transcript 0.1 %** | **measured**; prescriptive line stands | 70 |
 | — | **The manuscript**, each figure in a two-cell table with the legend below | not started | 0 |
+
+### Figure style
+The house style is now code (`parascape/figstyle.py`) and a skill
+(`~/.claude/skills/publication-figures`): fixed width per category so panels match, uniform bar
+and violin geometry, control grey, 60 per cent opacity, no bar with whiskers above 20 points.
+Palette read off the two reference papers that were reachable; four of the six answered 403, 406
+or a stub and the skill records that their style was NOT copied.
 
 ### Findings this session (2026-11-18)
 * **Subtype C** of a brain cyst is reached by 4 of 201 published contrasts, against 86 for E. Not the matching giving up: C is testable and centred in every contrast checked.
@@ -38,6 +45,10 @@ reaches rather than the data it uses. Figure 2 gates the rest.
 * **Localisation transfers between species, codon usage does not.** Protein length at 0.907 is the control proving the orthologue pairing is sound.
 * **Cell cycle is not demonstrably the dominant confounder** — the correction gains +0.031 but a random axis of the same shape gains +0.020, p = 0.0896 on 8 studies. Reported because the null was run.
 * **ParaScape cannot yet fill phenotype or export.** is_exported is 95.9 % right against a 96.6 % baseline, which is worse than guessing.
+* **What differs between strains is what goes into the host.** Dense granules 2.06 and apical secretory 1.73 against a length-matched 1.36; nucleus 0.89, cytosol 0.72, the most required genes 0.89.
+* **The host response is mostly private to one effector** — 3,435 host genes moved by exactly one of 21, only 68 by half or more. The translocon is the shared part.
+* **The whole network trades accuracy for reach**: 24 times the genes at two thirds the accuracy, and the naive union is dragged down by its biggest and worst layer. Weighting layers by what each is worth recovers 5.7 points.
+* **Co-expression modules are compartments** — 14 of 23, one of them 78.6 % ribosome against 3.8 % matched — and the apical secretory machinery splits into two modules, not one.
 
 **Named next jobs:** finish the 103 study matrices (running) and re-run figure 2 with the power
 they give; figure 7 (the network); figures 1, 3, 4, 8 and 10; the manuscript.
