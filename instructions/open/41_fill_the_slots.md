@@ -3578,6 +3578,25 @@ of the 53 empty slots was in the slot table with a candidate before this pass.
   decoded; the three flux and lipid Workbench tables were identified but not downloaded; strain was not
   verified for ST002024, ST003562 and ST005216; no supplementary table of any paper was fetched.
 
+## 2026-11-18: the pinned test suite needs a new data release, and one was built
+
+Adding seven host columns makes four tests fail when `PARASCAPE_CACHE` points at the 0.0.13.0
+release, because that release does not contain them: `test_the_slot_table_regenerates_identically`,
+`test_the_empty_count_matches_the_generated_table`,
+`test_every_empty_toxoplasma_slot_says_why_it_is_empty` and
+`test_every_host_column_named_by_the_catalog_is_in_the_host_table`. This is the ordinary consequence
+of adding data, not a defect: nightly without the commit passes all four under that pin, the same
+four pass against the checkout data, and they pass again against a release built from the commit.
+
+A release was therefore built rather than leaving the documented test command red:
+
+    python scripts/build_data_release.py --output /media/carruthers/mnt1/parascape_data/build-0.0.13.1-hostslots
+
+269.4 MB, 429 verified files, extracted to
+`/media/carruthers/mnt1/parascape_data/data-0.0.13.1-hostslots`. Point `PARASCAPE_CACHE` there to run
+the suite against this commit. It is a LOCAL build only: nothing was published and no version was cut,
+because publishing needs a Hugging Face token with write access to the dataset.
+
 ## 2026-11-18, later: seven host slots filled from the candidates the discovery pass staged
 
 Host tables are not under the Plasmodium node-table hold (`deposits.HELD_OUT_OF_NODES` was not touched and
