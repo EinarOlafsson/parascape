@@ -68,8 +68,7 @@ localisation panel, because colour cannot separate 0.94 from 0.93.
 
 ## 2. The program
 
-24 modules, 8 built on their own shell, 32 named views, **7,709 tests passing** (`pytest tests/ -q
--m "not slow"`, 2026-11-18, 61 minutes, 0 failed, 60 skipped).
+24 modules, 8 built on their own shell, 32 named views, **7,754 tests passing**.
 
 | Item | State | % |
 |---|---|---|
@@ -131,6 +130,12 @@ plate directories), then S-BIAD877.
 | [99](open/99_data_on_hugging_face.md) | the instruction-53 packs, and a token to publish them |
 
 ---
+
+## Verification
+Full suite green at 2026-11-18 19:05: **7,754 passed, 0 failed, 60 skipped**, 56 minutes. The run
+before it found 6 failures and every one was mine — four missing docstrings, one organism literal
+in a figure script, and two generated artefacts (`docs/datasets.md` and the 177 per-dataset
+scripts) that went stale when the host coverage strings gained their second denominator.
 
 ## Waiting on Einar
 * Which figure to build first — figure 2 (control comparability) is the recommendation.
