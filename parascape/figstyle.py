@@ -398,7 +398,9 @@ def letter(fig, text: str) -> None:
 LABEL_CANDIDATES = ((4.5, 0.0, "left", "center"), (-4.5, 0.0, "right", "center"),
                     (4.5, 5.0, "left", "bottom"), (-4.5, 5.0, "right", "bottom"),
                     (4.5, -5.5, "left", "top"), (-4.5, -5.5, "right", "top"),
-                    (0.0, 6.5, "center", "bottom"), (0.0, -7.0, "center", "top"))
+                    (0.0, 6.5, "center", "bottom"), (0.0, -7.0, "center", "top"),
+                    (9.0, 11.0, "left", "bottom"), (-9.0, 11.0, "right", "bottom"),
+                    (9.0, -11.0, "left", "top"), (-9.0, -11.0, "right", "top"))
 
 
 def _text_box(text, renderer):
@@ -411,6 +413,15 @@ def _text_box(text, renderer):
     return mtext.Text.get_window_extent(text, renderer=renderer)
 
 
+def _leader(dy, colour):
+    """A thin line from a point to a label set above or below it. Beside the point (dy == 0) a
+    label is unambiguous; above or below, with neighbours close, it read as naming the wrong
+    point (figure 6D: 'rhoptries' looked like the micronemes point)."""
+    if dy == 0:
+        return None
+    return dict(arrowstyle="-", lw=0.4, color=colour, shrinkA=0, shrinkB=2.5)
+
+
 def place_labels(ax, fig, points, labels, colours, fontsize=None):
     """Label every point in the first candidate position that hits nothing already placed.
 
@@ -421,19 +432,34 @@ def place_labels(ax, fig, points, labels, colours, fontsize=None):
     renderer = fig.canvas.get_renderer()
     taken = [ax.transData.transform((x, y)) for x, y in points]
     placed = []
-    width, height = fig.get_size_inches() * fig.dpi
+    # Labels stay INSIDE the axes: bounding them by the figure let 'dense granules' run across the
+    # left spine (figure 6D). A label that fits nowhere goes in its least-crowded candidate rather
+    # than being dropped -- 'rhoptries' silently vanished from the same panel.
+    frame = ax.get_window_extent(renderer)
     for (x, y), name, colour in zip(points, labels, colours):
+        fallback = None
         for dx, dy, ha, va in LABEL_CANDIDATES:
             text = ax.annotate(name, (x, y), xytext=(dx, dy), textcoords="offset points",
                                fontsize=fontsize or NOTE_PT, color=colour, ha=ha, va=va,
-                               annotation_clip=False)
+                               annotation_clip=False, arrowprops=_leader(dy, colour))
             fig.canvas.draw()
             box = _text_box(text, renderer).expanded(1.06, 1.16)
-            clash = (box.x0 < 2 or box.y0 < 2 or box.x1 > width - 2 or box.y1 > height - 2
-                     or any(box.overlaps(other) for other in placed)
-                     or any(box.x0 - 1 <= px <= box.x1 + 1 and box.y0 - 1 <= py <= box.y1 + 1
-                            for px, py in taken))
-            if not clash:
+            outside = (box.x0 < frame.x0 + 2 or box.y0 < frame.y0 + 2
+                       or box.x1 > frame.x1 - 2 or box.y1 > frame.y1 - 2)
+            hits = (sum(box.overlaps(other) for other in placed)
+                    + sum(box.x0 - 1 <= px <= box.x1 + 1 and box.y0 - 1 <= py <= box.y1 + 1
+                          for px, py in taken))
+            if not outside and not hits:
                 placed.append(box)
                 break
+            if not outside and (fallback is None or hits < fallback[0]):
+                fallback = (hits, dx, dy, ha, va)
             text.remove()
+        else:
+            if fallback is not None:
+                _, dx, dy, ha, va = fallback
+                text = ax.annotate(name, (x, y), xytext=(dx, dy), textcoords="offset points",
+                                   fontsize=fontsize or NOTE_PT, color=colour, ha=ha, va=va,
+                                   annotation_clip=False, arrowprops=_leader(dy, colour))
+                fig.canvas.draw()
+                placed.append(_text_box(text, renderer).expanded(1.06, 1.16))
