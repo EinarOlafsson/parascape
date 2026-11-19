@@ -189,7 +189,27 @@ def main():
         PF.annotated_map(fig, g[0], g[1], g[2], d, labels, fontsize=FS.FONT_PT)
         return fig
 
+    def old_map():
+        """The published subtypes A-E on the UMAP, house style, no cell counts on the map."""
+        FS.use()
+        fig, ax = FS.square_figure(side_mm=58.0)
+        o = obs.iloc[np.random.default_rng(0).permutation(len(obs))]
+        sub = o["published_subtype"].astype(str)
+        for i, k in enumerate(SUBTYPES):
+            m = sub == k
+            ax.scatter(o.loc[m, "ux"], o.loc[m, "uy"], s=0.5, lw=0, rasterized=True,
+                       color=FS.SERIES[i], alpha=0.5, label=f"subtype {k}")
+        m = ~sub.isin(SUBTYPES)
+        ax.scatter(o.loc[m, "ux"], o.loc[m, "uy"], s=0.5, lw=0, rasterized=True,
+                   color=FS.BACKGROUND, alpha=0.5, label="unassigned")
+        ax.set_xticks([]); ax.set_yticks([])
+        ax.set_xlabel("UMAP 1"); ax.set_ylabel("UMAP 2")
+        FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0), markerscale=8)
+        return fig
+
     built = {
+        "1_old_map": save(old_map(), "1_old_map"),
+        "2_new_map": save(leader_map(lambda r: PF.with_group(r)), "2_new_map"),
         "2b_new_to_old": save(new_to_old(obs), "2b_new_to_old"),
         "8a_drug_reached": save(leader_map(text_reached), "8a_drug_reached"),
         "8b_drug_candidates": save(leader_map(text_candidate), "8b_drug_candidates"),
@@ -199,8 +219,8 @@ def main():
 
     # the figure, in Einar's order
     seq = [
-        ("old clustering", brady("Figure1_regions/panels/c_published_group_map/c_published_group_map.png")),
-        ("new clustering", brady("Figure1_regions/panels/a_region_map/a_region_map.png")),
+        ("old clustering", built["1_old_map"]),
+        ("new clustering", built["2_new_map"]),
         ("new to old", built["2b_new_to_old"]),
         ("cell cycle G1a", brady("Figure1_regions/panels/f_cc_G1a_map/f_cc_G1a_map.png")),
         ("cell cycle S/M", brady("Figure1_regions/panels/g_cc_SM_map/g_cc_SM_map.png")),
@@ -221,8 +241,11 @@ def main():
     if missing:
         print("  MISSING:", missing)
     letters = "abcdefghijklmnopqrstuvwxyz"
-    panels = [{"png": p, "letter": letters[i]} for i, (n, p) in enumerate(seq)
-              if os.path.exists(p)]
+    # Panels reused from the bradyzoite paper are drawn at its 6 pt; enlarged to this paper's 8.
+    present = [(n, p) for n, p in seq if os.path.exists(p)]
+    panels = [{"png": p, "letter": letters[i],
+               "scale": FS.FONT_PT / 6.0 if p.startswith(V2) else 1.0}
+              for i, (n, p) in enumerate(present)]
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
     import assemble_paper_figures as A
     A.PER_ROW = 4

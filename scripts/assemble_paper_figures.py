@@ -63,8 +63,12 @@ def compose(figure_id: str, panels: list, out: str, rows: list | None = None) ->
     centred in it. Rows are as wide as the widest row, and a short row is centred.
     """
     images = [mpimg.imread(p["png"]) for p in panels]
-    widths = [img.shape[1] / DPMM for img in images]
-    heights = [img.shape[0] / DPMM for img in images]
+    # `scale` is for a panel drawn to ANOTHER paper's type size: the bradyzoite paper sets 6 pt,
+    # so its panels are enlarged by 8/6 to bring their text to this paper's size. Scaling a panel
+    # drawn here would change its font, which is what the rule against rescaling exists to stop.
+    scales = [float(p.get("scale", 1.0)) for p in panels]
+    widths = [img.shape[1] / DPMM * k for img, k in zip(images, scales)]
+    heights = [img.shape[0] / DPMM * k for img, k in zip(images, scales)]
 
     if rows:
         # Explicit row sizes, e.g. [1, 2, 3]: a full-width schematic on a row of its own.
