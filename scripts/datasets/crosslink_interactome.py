@@ -6,6 +6,7 @@ How many proteins this one crosslinks to
     level / kind : post_translation / XLMS
     provides     : n_crosslink_partners
     coverage     : 494 proteins
+    citation     : Tomita T et al., Mapping a Toxoplasma gondii interactome by crosslinking mass spectrometry and machine learning. mBio 2025
     PMID         : 40874616
     accession    : mBio 02159-25 supplementary file s0004
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12505969/supplementaryFiles

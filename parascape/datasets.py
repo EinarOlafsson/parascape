@@ -963,7 +963,7 @@ REGISTRY = [
             organism=organisms.TOXOPLASMA),
     Dataset("crosslink_interactome", "Crosslinking MS interactome", "post_translation", "XLMS",
             "How many proteins this one crosslinks to", ("n_crosslink_partners",),
-            "494 proteins", pmid="40874616", accession="mBio 02159-25 supplementary file s0004",
+            "494 proteins", accession="mBio 02159-25 supplementary file s0004",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12505969/supplementaryFiles",
             path="parascape/data/crosslink_partners.tsv",
             note="395 high-confidence protein pairs, counted per protein. Verified against the two "
@@ -971,11 +971,12 @@ REGISTRY = [
                  "interactome (odds 30.8, p = 1e-18) and 57 of 158 ribosomal proteins (odds 9.7, "
                  "p = 4e-30). Crosslinking finds stable abundant complexes, and if it did not find "
                  "those two it would not be finding complexes. Absent is absent: a protein with no "
-                 "partner here may be in no complex or may simply not have crosslinked.", organism=organisms.TOXOPLASMA),
+                 "partner here may be in no complex or may simply not have crosslinked.", pmid="40874616",
+            citation="Tomita T et al., Mapping a Toxoplasma gondii interactome by crosslinking mass spectrometry and machine learning. mBio 2025",
+            organism=organisms.TOXOPLASMA),
     Dataset("pvm_proximity", "PVM proximity labelling", "post_translation", "proteomics",
             "Whether the study placed this protein at the parasitophorous vacuole membrane",
-            ("pvm_proximity_positive",), "1,274 genes (73 positive)", pmid="34749525",
-            accession="mBio 00260-21 Data Set S1",
+            ("pvm_proximity_positive",), "1,274 genes (73 positive)", accession="mBio 00260-21 Data Set S1",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8576527/supplementaryFiles",
             path="parascape/data/pvm_proximity.tsv",
             note="One of the few binaries in the map with REAL zeros: the study publishes a "
@@ -984,11 +985,12 @@ REGISTRY = [
                  "is NaN. Verified by what the positives are: 53 of 73 are dense granule proteins "
                  "against 0 of 1,201 negatives (Fisher p = 2e-77), and dense granule proteins are "
                  "exactly what Toxoplasma secretes into the vacuole and inserts into the membrane "
-                 "it shares with the host cytosol.", organism=organisms.TOXOPLASMA),
+                 "it shares with the host cytosol.", pmid="34749525",
+            citation="Cygan AM et al., Proximity-Labeling Reveals Novel Host and Parasite Proteins at the Toxoplasma Parasitophorous Vacuole Membrane. mBio 2021",
+            organism=organisms.TOXOPLASMA),
     Dataset("cdpk1_substrates", "CDPK1 substrates (thiophosphate labelling)", "post_translation",
             "proteomics", "Thiophosphorylated peptides per gene from analog-sensitive CDPK1",
-            ("cdpk1_thiophospho_peptides",), "361 genes", pmid="37933960",
-            accession="eLife 85654 supplementary file 6",
+            ("cdpk1_thiophospho_peptides",), "361 genes", accession="eLife 85654 supplementary file 6",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10629828/supplementaryFiles",
             path="parascape/data/cdpk1_substrates.tsv",
             note="The enriched fraction only, one gene per peptide from the master accession the "
@@ -998,11 +1000,12 @@ REGISTRY = [
                  "it is nonetheless CDPK1's substrate set is the enrichment: microneme proteins are "
                  "11-fold over-represented (Fisher p = 2e-05) and CDPK1 is the kinase that governs "
                  "microneme secretion, myosin A is in it, and so is the HOOK protein that the paper "
-                 "exists to report.", organism=organisms.TOXOPLASMA),
+                 "exists to report.", pmid="37933960",
+            citation="Chan AW et al., Analysis of CDPK1 targets identifies a trafficking adaptor complex that regulates microneme exocytosis in Toxoplasma. Elife 2023",
+            organism=organisms.TOXOPLASMA),
     Dataset("mrna_stability", "mRNA stability after actinomycin D", "transcription", "RNAseq",
             "Proportion of transcript remaining after five hours of transcription block",
-            ("mrna_remaining_5h_actinomycin",), "412 genes", pmid="39899594",
-            accession="PLoS Pathogens 1012857 Table S12",
+            ("mrna_remaining_5h_actinomycin",), "412 genes", accession="PLoS Pathogens 1012857 Table S12",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11801735/supplementaryFiles",
             path="parascape/data/mrna_stability.tsv",
             note="A direct measurement: block transcription, wait, see what is left. Untreated "
@@ -1011,7 +1014,9 @@ REGISTRY = [
                  "is the 426 transcripts that fell below 75% remaining, so it describes the unstable "
                  "tail and a gene absent from it is stable OR was not measured, which the column "
                  "cannot distinguish. Consistent with that: ribosomal-protein transcripts, which are "
-                 "classically stable, are under-represented among the responders at odds 0.37.", organism=organisms.TOXOPLASMA),
+                 "classically stable, are under-represented among the responders at odds 0.37.", pmid="39899594",
+            citation="Sloan MA et al., Iron-mediated post-transcriptional regulation in Toxoplasma gondii. PLoS Pathog 2025",
+            organism=organisms.TOXOPLASMA),
     Dataset("mrna_decay_gse329845", "Genome-wide mRNA decay after actinomycin D",
             "transcription", "RNAseq",
             "Wild-type mRNA remaining after 4 h of transcription block, relative to the median",
@@ -1126,8 +1131,7 @@ REGISTRY = [
                  "because that text names exactly one gene. A preprint.", organism=organisms.TOXOPLASMA),
     Dataset("myristoylome", "N-myristoylated proteome", "post_translation", "proteomics",
             "The authors' confidence that this protein is myristoylated, 3 high to 1 low",
-            ("myristoylation_confidence",), "65 substrates", pmid="32618271",
-            accession="eLife 57861 supplementary file 4",
+            ("myristoylation_confidence",), "65 substrates", accession="eLife 57861 supplementary file 4",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7373427/supplementaryFiles",
             path="parascape/data/myristoylome.tsv",
             note="A category the catalog did not have. N-myristoylation is co-translational and "
@@ -1138,7 +1142,9 @@ REGISTRY = [
                  "(Fisher p = 4e-79). No other column in the map can be checked that cleanly. "
                  "Taken from the paper rather than from PXD019677, its PRIDE deposit, which ships "
                  "MaxQuant archives of 250-340 MB apiece; the answer is a 65-row table in "
-                 "supplementary file 4.", organism=organisms.TOXOPLASMA),
+                 "supplementary file 4.", pmid="32618271",
+            citation="Broncel M et al., Profiling of myristoylation in Toxoplasma gondii reveals an N-myristoylated protein important for host cell penetration. Elife 2020",
+            organism=organisms.TOXOPLASMA),
     Dataset("toxodb_arginine_methylation", "Monomethylarginine proteome (via ToxoDB)",
             "post_translation", "proteomics",
             "Monomethylarginine sites reported per gene", ("n_arginine_methylation_sites",),
@@ -1313,8 +1319,7 @@ REGISTRY = [
             organism=organisms.TOXOPLASMA),
     Dataset("pv_host_uptake", "Host proteins at the vacuole", "post_translation", "proteomics",
             "How enriched a host protein is at the parasitophorous vacuole",
-            ("pv_enrichment_log2",), "12 host proteins — 0.1% of the 21,020-row host space", pmid="34898650",
-            accession="PLoS Pathogens 1010138 supplementary table",
+            ("pv_enrichment_log2",), "12 host proteins — 0.1% of the 21,020-row host space", accession="PLoS Pathogens 1010138 supplementary table",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8700025/supplementaryFiles",
             path="parascape/data/hs_host_proteins.parquet",
             note="A property OF a host protein rather than a bridge, because the bait is the "
@@ -1325,14 +1330,15 @@ REGISTRY = [
                  "dense granule proteins top it -- and only the host rows are kept. Top of those: "
                  "PDCD6/ALG-2 at +5.90, VPS37C at +4.47, then CHMP4B, PEF1 and VPS28. That is the "
                  "FOURTH independent dataset in this map to put ALG-2 at the host-parasite "
-                 "interface, after the MYR1, EAF1 and GRA35 pulldowns.", organism=organisms.HUMAN),
+                 "interface, after the MYR1, EAF1 and GRA35 pulldowns.", pmid="34898650",
+            citation="Rivera-Cuevas Y et al., Toxoplasma gondii exploits the host ESCRT machinery for parasite uptake of host cytosolic proteins. PLoS Pathog 2021",
+            organism=organisms.HUMAN),
     Dataset("metabolome_iron", "Metabolome and isotope labelling under iron deprivation",
             "reference", "metabolomics",
             "Steady-state metabolite levels and the fraction labelled from glucose or glutamine",
             ("metabolite_level_log2fc_iron_depleted", "metabolite_level_padj",
              "labelled_fraction_glucose", "labelled_fraction_glutamine"),
-            "1,102 metabolites", pmid="41925342",
-            accession="mBio 03788-25 Tables S3 and S5",
+            "1,102 metabolites", accession="mBio 03788-25 Tables S3 and S5",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13170339/supplementaryFiles",
             path="parascape/data/metabolites.parquet",
             note="Rows are COMPOUNDS, not genes -- the first table in the project that is not the "
@@ -1343,7 +1349,9 @@ REGISTRY = [
                  "did not silently dropped the glucose arm: the sheet read fine and had no column "
                  "called `Metabolite`. Joining a second study means matching compound NAMES, which "
                  "is lossy; that cost is unpaid with one study and is the first thing to fix when a "
-                 "second arrives.", organism=organisms.TOXOPLASMA),
+                 "second arrives.", pmid="41925342",
+            citation="Hanna JC et al., Global translational and metabolic remodeling during iron deprivation in Toxoplasma gondii. mBio 2026",
+            organism=organisms.TOXOPLASMA),
     Dataset("lipidome_vesicles", "Membrane lipid composition of parasite vesicles",
             "reference", "lipidomics",
             "Lipid species abundance, and its proportion against the host cell",
@@ -2173,8 +2181,7 @@ REGISTRY = [
             "reference", "proteomics",
             "Which host proteins are EXPOSED on the surface of the macrophage a tachyzoite invades",
             ("bmdm_surface_detected", "bmdm_surface_intensity"),
-            "1,296 mouse surface proteins, 150 of them on primary BMDM — 7.9% of the 16,473-row host space", pmid="25894527",
-            accession="PLoS ONE 0121314 S1 File",
+            "1,296 mouse surface proteins, 150 of them on primary BMDM — 7.9% of the 16,473-row host space", accession="PLoS ONE 0121314 S1 File",
             url="https://journals.plos.org/plosone/article/file?id=10.1371/"
                 "journal.pone.0121314.s002&type=supplementary",
             path="datasets/host/cspa/25894527/S1_File.xlsx",
@@ -2195,7 +2202,9 @@ REGISTRY = [
                  "nine with a macrophage intensity and no detection mark and three the other way; "
                  "either sheet counts as the authors having measured it there, and the count of "
                  "disagreements is logged rather than smoothed. Self-validating: the strongest "
-                 "signals are Emr1 (F4/80), Siglec1 (CD169), Itgb2, Cd47 and H2-K1.", organism=organisms.MOUSE),
+                 "signals are Emr1 (F4/80), Siglec1 (CD169), Itgb2, Cd47 and H2-K1.", pmid="25894527",
+            citation="Bausch-Fluck D et al., A mass spectrometric-derived cell surface protein atlas. PLoS One 2015",
+            organism=organisms.MOUSE),
     Dataset("pf_literature", "Plasmodium falciparum abstract corpus (COMPUTED layer)",
             "reference", "literature",
             "Who is named in the malaria literature, how deeply, and which genes appear together",
@@ -2376,8 +2385,7 @@ REGISTRY = [
     Dataset("pf_lactylome", "Plasmodium lysine lactylome (resolved from NF54)",
             "post_translation", "lactylation",
             "Lactylated lysines per gene, reported against NF54 and resolved to 3D7",
-            ("n_lactylsites", "has_lactyl"), "144 genes", pmid="41417877",
-            accession="PLoS Genet 1011991 S1",
+            ("n_lactylsites", "has_lactyl"), "144 genes", accession="PLoS Genet 1011991 S1",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12742760/supplementaryFiles",
             path="datasets/post_translation/lactylome/41417877/pgen.1011991.s014.xlsx",
             note="Reported against the NF54 annotation, not 3D7, so joining on the accession string "
@@ -2391,7 +2399,9 @@ REGISTRY = [
                  "should look like when one line was cloned from the other, and a test fails if a "
                  "future release breaks it. 144 of 186 genes resolve; the rest are in multi-gene "
                  "groups. Site counts use a 0.75 localisation cut and the flag does not, the same "
-                 "split as acetylation.", organism=organisms.FALCIPARUM),
+                 "split as acetylation.", pmid="41417877",
+            citation="Jabre I et al., Histone lactylation: A new epigenetic mark in the malaria parasite Plasmodium. PLoS Genet 2025",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_acetylome", "Plasmodium lysine acetylome", "post_translation", "acetylation",
             "Acetylated lysines per gene, and whether the gene was seen acetylated at all",
             ("n_acetylsites", "has_acetyl"), "1,145 genes, 2,163 localised sites", pmid="26813983",
@@ -2410,8 +2420,7 @@ REGISTRY = [
     Dataset("pf_myristoylome", "Plasmodium N-myristoylome (NMT-inhibitor sensitive)",
             "post_translation", "myristoylation",
             "Proteins whose click-chemistry capture drops when N-myristoyltransferase is blocked",
-            ("is_myristoylated",), "16 substrates of 609 assayed", pmid="34695132",
-            accession="PLoS Biol 3001408 S11",
+            ("is_myristoylated",), "16 substrates of 609 assayed", accession="PLoS Biol 3001408 S11",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8544853/supplementaryFiles",
             path="datasets/post_translation/myristoylome/34695132/pbio.3001408.s011.xlsx",
             note="The evidence for a substrate is not being pulled down -- background comes down "
@@ -2424,7 +2433,9 @@ REGISTRY = [
                  "myristoylation by one experiment that saw 609 proteins. Sparse because the "
                  "biology is: Plasmodium has roughly thirty predicted NMT substrates. The list "
                  "validates itself -- GAP45, ARO, CDPK1, Rab-5B, ARF1 and ISP3 are the canonical "
-                 "N-myristoylated families in apicomplexans and all are present.", organism=organisms.FALCIPARUM),
+                 "N-myristoylated families in apicomplexans and all are present.", pmid="34695132",
+            citation="Schlott AC et al., Inhibition of protein N-myristoylation blocks Plasmodium falciparum intraerythrocytic development, egress and invasion. PLoS Biol 2021",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_palmitome", "Plasmodium palmitome (observed only)", "post_translation",
             "palmitoylation",
             "Proteins observed S-palmitoylated, with the motif prediction deliberately excluded",
@@ -2630,8 +2641,7 @@ REGISTRY = [
                  "contacts.", organism=organisms.TOXOPLASMA),
     Dataset("m6a_peaks", "m6A methylome (MeRIP peaks)", "transcription", "MeRIP",
             "How many m6A peaks the authors called on this gene in tachyzoites",
-            ("n_m6a_peaks",), "837 genes (10%)", pmid="34324585",
-            accession="PLoS Pathogens 1009335 Table S3A",
+            ("n_m6a_peaks",), "837 genes (10%)", accession="PLoS Pathogens 1009335 Table S3A",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8354455/supplementaryFiles",
             path="parascape/data/m6a_peaks.tsv",
             note="GEO carries no MeRIP for Toxoplasma -- its deposit for this study is depletion "
@@ -2642,7 +2652,9 @@ REGISTRY = [
                  "order for m6A. Verified against the paper's own second dataset: marked genes are "
                  "enriched among those responding to METTL3 depletion, odds 1.35, p = 2e-03 -- "
                  "modest because removing a writer has broad indirect effects, but the direction a "
-                 "writer's own substrates have to take.", organism=organisms.TOXOPLASMA),
+                 "writer's own substrates have to take.", pmid="34324585",
+            citation="Holmes MJ et al., m6A RNA methylation facilitates pre-mRNA 3'-end formation and is essential for viability of Toxoplasma gondii. PLoS Pathog 2021",
+            organism=organisms.TOXOPLASMA),
     Dataset("sexual_stages", "Sexual development in the cat (single-cell atlas)", "transcription",
             "scRNAseq", "Enrichment at 8 days post-infection, when gametogony happens",
             ("sexual_stage_8dpi_log2fc",), "4,463 genes (55%)", pmid="42020723",
@@ -2694,8 +2706,7 @@ REGISTRY = [
                  "it is not a restatement of expression.", organism=organisms.TOXOPLASMA),
     Dataset("melting_temperature", "Protein melting temperature (mineCETSA)", "post_translation",
             "proteomics", "Where this protein's melting curve sits, in degrees",
-            ("melting_temperature_tm",), "3,120 proteins (38%)", pmid="35976251",
-            accession="eLife 80336 supplementary file 3",
+            ("melting_temperature_tm",), "3,120 proteins (38%)", accession="eLife 80336 supplementary file 3",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9436416/supplementaryFiles",
             path="parascape/data/melting_temperature.tsv",
             note="The same file as the thermal-shift column and a different question: that one asks "
@@ -2704,7 +2715,9 @@ REGISTRY = [
                  "0.8 or a Tm outside 30-80 C are dropped -- the fit reports values up to 8,563, "
                  "which is a failed fit and not a thermophile. Verified by reproducing across "
                  "independent replicates at rho = +0.78 over 1,623 proteins; a Tm that did not "
-                 "reproduce would be describing the run.", organism=organisms.TOXOPLASMA),
+                 "reproduce would be describing the run.", pmid="35976251",
+            citation="Herneisen AL et al., Temporal and thermal profiling of the Toxoplasma proteome implicates parasite Protein Phosphatase 1 in the regulation of Ca(2+)-responsive pathways. Elife 2022",
+            organism=organisms.TOXOPLASMA),
     Dataset("thermal_shift_cetsa", "Calcium thermal-shift proteome (mineCETSA)", "post_translation",
             "proteomics", "How far a protein's melting curve moves when calcium is added",
             ("cetsa_calcium_ed_score",), "2,348 proteins", accession="PMC9436416 Supplementary file 3",

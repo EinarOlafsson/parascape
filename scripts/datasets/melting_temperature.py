@@ -6,6 +6,7 @@ Where this protein's melting curve sits, in degrees
     level / kind : post_translation / proteomics
     provides     : melting_temperature_tm
     coverage     : 3,120 proteins (38%)
+    citation     : Herneisen AL et al., Temporal and thermal profiling of the Toxoplasma proteome implicates parasite Protein Phosphatase 1 in the regulation of Ca(2+)-responsive pathways. Elife 2022
     PMID         : 35976251
     accession    : eLife 80336 supplementary file 3
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9436416/supplementaryFiles

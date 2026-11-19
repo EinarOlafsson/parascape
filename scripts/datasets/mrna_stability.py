@@ -6,6 +6,7 @@ Proportion of transcript remaining after five hours of transcription block
     level / kind : transcription / RNAseq
     provides     : mrna_remaining_5h_actinomycin
     coverage     : 412 genes
+    citation     : Sloan MA et al., Iron-mediated post-transcriptional regulation in Toxoplasma gondii. PLoS Pathog 2025
     PMID         : 39899594
     accession    : PLoS Pathogens 1012857 Table S12
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11801735/supplementaryFiles

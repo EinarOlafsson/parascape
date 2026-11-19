@@ -6,6 +6,7 @@ How many m6A peaks the authors called on this gene in tachyzoites
     level / kind : transcription / MeRIP
     provides     : n_m6a_peaks
     coverage     : 837 genes (10%)
+    citation     : Holmes MJ et al., m6A RNA methylation facilitates pre-mRNA 3'-end formation and is essential for viability of Toxoplasma gondii. PLoS Pathog 2021
     PMID         : 34324585
     accession    : PLoS Pathogens 1009335 Table S3A
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8354455/supplementaryFiles

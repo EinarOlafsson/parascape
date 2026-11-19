@@ -6,6 +6,7 @@ Steady-state metabolite levels and the fraction labelled from glucose or glutami
     level / kind : reference / metabolomics
     provides     : metabolite_level_log2fc_iron_depleted, metabolite_level_padj, labelled_fraction_glucose, labelled_fraction_glutamine
     coverage     : 1,102 metabolites
+    citation     : Hanna JC et al., Global translational and metabolic remodeling during iron deprivation in Toxoplasma gondii. mBio 2026
     PMID         : 41925342
     accession    : mBio 03788-25 Tables S3 and S5
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13170339/supplementaryFiles

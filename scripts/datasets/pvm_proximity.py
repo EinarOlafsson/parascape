@@ -6,6 +6,7 @@ Whether the study placed this protein at the parasitophorous vacuole membrane
     level / kind : post_translation / proteomics
     provides     : pvm_proximity_positive
     coverage     : 1,274 genes (73 positive)
+    citation     : Cygan AM et al., Proximity-Labeling Reveals Novel Host and Parasite Proteins at the Toxoplasma Parasitophorous Vacuole Membrane. mBio 2021
     PMID         : 34749525
     accession    : mBio 00260-21 Data Set S1
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8576527/supplementaryFiles

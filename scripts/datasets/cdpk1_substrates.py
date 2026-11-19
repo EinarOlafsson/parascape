@@ -6,6 +6,7 @@ Thiophosphorylated peptides per gene from analog-sensitive CDPK1
     level / kind : post_translation / proteomics
     provides     : cdpk1_thiophospho_peptides
     coverage     : 361 genes
+    citation     : Chan AW et al., Analysis of CDPK1 targets identifies a trafficking adaptor complex that regulates microneme exocytosis in Toxoplasma. Elife 2023
     PMID         : 37933960
     accession    : eLife 85654 supplementary file 6
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10629828/supplementaryFiles

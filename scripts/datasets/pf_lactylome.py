@@ -6,6 +6,7 @@ Lactylated lysines per gene, reported against NF54 and resolved to 3D7
     level / kind : post_translation / lactylation
     provides     : n_lactylsites, has_lactyl
     coverage     : 144 genes
+    citation     : Jabre I et al., Histone lactylation: A new epigenetic mark in the malaria parasite Plasmodium. PLoS Genet 2025
     PMID         : 41417877
     accession    : PLoS Genet 1011991 S1
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12742760/supplementaryFiles

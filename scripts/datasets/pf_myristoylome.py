@@ -6,6 +6,7 @@ Proteins whose click-chemistry capture drops when N-myristoyltransferase is bloc
     level / kind : post_translation / myristoylation
     provides     : is_myristoylated
     coverage     : 16 substrates of 609 assayed
+    citation     : Schlott AC et al., Inhibition of protein N-myristoylation blocks Plasmodium falciparum intraerythrocytic development, egress and invasion. PLoS Biol 2021
     PMID         : 34695132
     accession    : PLoS Biol 3001408 S11
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8544853/supplementaryFiles

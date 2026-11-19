@@ -6,6 +6,7 @@ How enriched a host protein is at the parasitophorous vacuole
     level / kind : post_translation / proteomics
     provides     : pv_enrichment_log2
     coverage     : 12 host proteins — 0.1% of the 21,020-row host space
+    citation     : Rivera-Cuevas Y et al., Toxoplasma gondii exploits the host ESCRT machinery for parasite uptake of host cytosolic proteins. PLoS Pathog 2021
     PMID         : 34898650
     accession    : PLoS Pathogens 1010138 supplementary table
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8700025/supplementaryFiles

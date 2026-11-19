@@ -6,6 +6,7 @@ The authors' confidence that this protein is myristoylated, 3 high to 1 low
     level / kind : post_translation / proteomics
     provides     : myristoylation_confidence
     coverage     : 65 substrates
+    citation     : Broncel M et al., Profiling of myristoylation in Toxoplasma gondii reveals an N-myristoylated protein important for host cell penetration. Elife 2020
     PMID         : 32618271
     accession    : eLife 57861 supplementary file 4
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7373427/supplementaryFiles
