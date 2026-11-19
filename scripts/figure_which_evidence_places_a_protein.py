@@ -95,8 +95,8 @@ def draw(frame: pd.DataFrame, letter: str = "a"):
                 markeredgewidth=0, alpha=FS.ALPHA, zorder=3)
     ax.set_xlim(lo, hi)
     ax.set_ylim(0.775, 1.025)
-    ax.set_xlabel("placed from RNA co-expression alone (AUC)", fontsize=6.0, labelpad=2)
-    ax.set_ylabel("placed from all evidence (AUC)", fontsize=6.0, labelpad=2)
+    ax.set_xlabel("placed from RNA co-expression alone (AUC)", fontsize=FS.FONT_PT, labelpad=2)
+    ax.set_ylabel("placed from all evidence (AUC)", fontsize=FS.FONT_PT, labelpad=2)
     ax.tick_params(labelsize=5.5, pad=1.5)
     ax.set_xticks([0.7, 0.8, 0.9, 1.0])
     ax.set_yticks([0.8, 0.9, 1.0])
@@ -105,7 +105,7 @@ def draw(frame: pd.DataFrame, letter: str = "a"):
     # Horizontal, in the empty corner. Rotated along the diagonal it ran through the data, which
     # is the one place on this panel a note must never be.
     ax.annotate("on or below the line:\ntranscription alone is enough", (0.995, 0.787),
-                fontsize=5.1, color="#7d7d7d", ha="right", va="bottom", linespacing=1.35)
+                fontsize=FS.NOTE_PT, color="#7d7d7d", ha="right", va="bottom", linespacing=1.35)
     # The house label placer and the house panel letter, so a label here is measured and rejected
     # the same way as on every other panel. The two local helpers this panel carried were a
     # second copy of `figstyle.place_labels`, and a second copy is a second set of bugs.

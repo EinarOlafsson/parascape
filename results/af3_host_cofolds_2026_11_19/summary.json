@@ -1,0 +1,11 @@
+{
+  "bait": "MYR1 (translocon component -- see the caveat in the module docstring)",
+  "partners_recorded": 733,
+  "pairs_written": 24,
+  "n_each_arm": 12,
+  "only_in_bait_above": 20.0,
+  "control_within": 0.5,
+  "af3_inputs": "/media/carruthers/mnt1/af3/af_input/host_cofolds_2026_11_19",
+  "not_prepared": [],
+  "gpu": "NOT started: the documented GPU queue is committed elsewhere"
+}

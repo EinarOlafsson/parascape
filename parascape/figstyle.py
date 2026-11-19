@@ -31,33 +31,68 @@ INK = "#1A1A1A"
 #: Opacity of every drawn element.
 ALPHA = 0.6
 
-#: One category occupies this much width, of which the bar takes BAR_FRACTION.
+#: THE BASE FONT, and the unit every other size is derived from. Einar, 2026-11-19: "always use
+#: open sans, and in the figure graphs should be sized relative to the font size of 8". So nothing
+#: below is a millimetre chosen by eye -- every length is a multiple of the em, and changing
+#: FONT_PT rescales the whole figure without changing a single proportion.
+FONT_PT = 8.0
+EM_MM = FONT_PT * 25.4 / 72.0            # one em, in millimetres
+
+#: Text sizes, all relative to the base. Minimising the text on a graph is a house rule, so there
+#: are only three: the base for axis labels and category names, a smaller one for tick numbers and
+#: in-plot notes, and the panel letter.
+TICK_PT = FONT_PT * 0.80
+NOTE_PT = FONT_PT * 0.80
+LETTER_PT = FONT_PT * 1.15
+
+#: One category occupies this much of the CATEGORY axis, of which the bar takes BAR_FRACTION.
 #: Fixing the SLOT rather than the bar is what makes two panels with three conditions identical.
-SLOT_MM = 7.0
+SLOT_EM = 3.6
+SLOT_MM = SLOT_EM * EM_MM
 BAR_FRACTION = 0.62
 
-#: A category laid out ALONG THE X AXIS needs more room than one laid out down the y axis,
-#: because its name is written horizontally under it rather than beside it. Seven millimetres is
-#: ample for a horizontal bar and far too narrow for a box with a two-word label under it, which
-#: is how the first draft of figure 4 came out with its three labels written through each other.
-#: The symmetry rule still holds, within an orientation: every vertical panel uses this width per
-#: category and every horizontal one uses SLOT_MM.
-SLOT_MM_VERTICAL = 17.0
+#: A category laid out ALONG THE X AXIS carries its name written underneath, so it needs more room
+#: than one laid out down the y axis. Names longer than this wrap or tilt rather than widen the
+#: slot, because widening it would break the rule that two panels of the same category count are
+#: the same size.
+# 3.2 em, not 5.4: the names are TILTED under a vertical bar, so they no longer need a slot wide
+# enough to hold them flat. At 5.4 a fourteen-category panel came out 213 mm wide beside a
+# one-category panel of 40 mm, which is the opposite of "white space should be minimized".
+SLOT_EM_VERTICAL = 3.2
+SLOT_MM_VERTICAL = SLOT_EM_VERTICAL * EM_MM
+
+#: Length of the VALUE axis, in ems. The same in every panel, so two panels differ only in how
+#: many categories they have.
+VALUE_EM = 20.0
 
 #: Above this many points per group, a bar with whiskers is refused.
 MAX_POINTS_FOR_A_BAR = 20
 
-#: Millimetres of panel outside the plotting area, left and bottom, for labels.
-MARGIN_MM = (19.0, 13.0, 3.0, 4.0)      # left, bottom, right, top
+#: Panel outside the plotting area, in ems: left, bottom, right, top. Whitespace is minimised, so
+#: these are the room the tick numbers and the axis title actually need and nothing more. The left
+#: margin is the one that has to hold a rotated axis title plus a number.
+MARGIN_EM = (4.2, 3.0, 0.4, 0.8)
+MARGIN_MM = tuple(e * EM_MM for e in MARGIN_EM)
 
 
 def use() -> None:
-    """Set the rcParams of the house style. Call once before drawing."""
+    """Set the rcParams of the house style. Call once before drawing.
+
+    Open Sans is required, not preferred: a figure that silently falls back to DejaVu is a figure
+    that does not match the others. If it is missing this says so rather than drawing it wrong.
+    """
     if "Open Sans" in {f.name for f in font_manager.fontManager.ttflist}:
         plt.rcParams["font.family"] = "Open Sans"
+    else:
+        raise RuntimeError("Open Sans is not installed: the house style requires it")
     plt.rcParams.update({
         "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none",
-        "font.size": 6.2, "axes.linewidth": 0.5,
+        "font.size": FONT_PT, "axes.linewidth": 0.5,
+        "xtick.labelsize": TICK_PT, "ytick.labelsize": TICK_PT,
+        "axes.labelsize": FONT_PT, "legend.fontsize": NOTE_PT,
+        "xtick.major.size": 2.0, "ytick.major.size": 2.0,
+        "xtick.major.pad": 1.5, "ytick.major.pad": 1.5,
+        "axes.labelpad": 1.5,
         "xtick.major.width": 0.5, "ytick.major.width": 0.5,
         "xtick.direction": "out", "ytick.direction": "out",
         "axes.grid": False, "axes.edgecolor": INK,
@@ -83,10 +118,8 @@ def panel_height_mm(n_categories: int) -> float:
     return bottom + top + SLOT_MM * n_categories
 
 
-#: Length of the VALUE axis of a horizontal panel, in millimetres of plotting area. The category
-#: axis is slots; the value axis is this, the same in every horizontal panel, so two panels differ
-#: only in how many categories they have.
-VALUE_MM = 62.0
+#: Length of the value axis, in millimetres, derived from the em like everything else.
+VALUE_MM = VALUE_EM * EM_MM
 
 
 def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False,
@@ -147,6 +180,42 @@ def refuse_a_bar(n_points: int) -> bool:
 #: the reference figures draw replicates over their bars. Above it, a violin IS the points and
 #: overplotting 1,200 markers only hides the shape it exists to show.
 MAX_POINTS_DRAWN_OVER = 60
+
+
+def bars(ax, values, names, control=(), highlight=(), vertical=True, rotate=None):
+    """Bars in the house geometry, VERTICAL by default.
+
+    Einar, 2026-11-19: "horizontal bar graphs are ok to use in rare occasion when they are the best
+    way to show the data. but you use them way to much ... exchange them." Nine panels of the paper
+    were horizontal because a long category name fits beside a bar without thought; that is a
+    reason to shorten the name, not to turn the graph on its side. A horizontal bar is for when the
+    category axis genuinely cannot be read any other way.
+
+    `control` names the bars drawn grey, `highlight` the ones drawn in the first series colour; a
+    name in neither is grey too, since grey is the house reference. `rotate` tilts the category
+    names, and defaults to tilting only when the names are too long to sit flat.
+    """
+    positions = list(range(len(values)))
+    if highlight:
+        fills = [SERIES[0] if n in set(highlight) else CONTROL for n in names]
+    else:
+        fills = colours(names, control=control)
+    if vertical:
+        ax.bar(positions, values, width=bar_width(), linewidth=0, color=fills, alpha=ALPHA)
+        ax.set_xticks(positions)
+        longest = max((len(str(n)) for n in names), default=0)
+        tilt = (30 if longest > 10 else 0) if rotate is None else rotate
+        ax.set_xticklabels(names, rotation=tilt,
+                           ha="right" if tilt else "center",
+                           rotation_mode="anchor" if tilt else None)
+        ax.tick_params(axis="x", length=0)
+    else:
+        ax.barh(positions, values, height=bar_width(), linewidth=0, color=fills, alpha=ALPHA)
+        ax.set_yticks(positions)
+        ax.set_yticklabels(names)
+        ax.tick_params(axis="y", length=0)
+        ax.spines["left"].set_visible(False)
+    return fills
 
 
 def violin(ax, groups, names, control=(), vertical=True, draw_points=None):
@@ -225,12 +294,12 @@ def placeholder(what: str, why: str = "", letter_text: str = "a", n_categories: 
     ax.add_patch(plt.Rectangle((0.02, 0.02), 0.96, 0.96, transform=ax.transAxes,
                                facecolor=SECOND_GREY, edgecolor=CONTROL, linewidth=0.6,
                                hatch="////", alpha=ALPHA, zorder=0))
-    ax.text(0.5, 0.60, "PLACEHOLDER", transform=ax.transAxes, fontsize=7.0, fontweight="bold",
+    ax.text(0.5, 0.60, "PLACEHOLDER", transform=ax.transAxes, fontsize=FONT_PT, fontweight="bold",
             color=DARK_GREY, ha="center", va="center")
-    ax.text(0.5, 0.44, what, transform=ax.transAxes, fontsize=5.8, color=INK,
+    ax.text(0.5, 0.44, what, transform=ax.transAxes, fontsize=NOTE_PT, color=INK,
             ha="center", va="center", wrap=True)
     if why:
-        ax.text(0.5, 0.26, why, transform=ax.transAxes, fontsize=5.0, color=DARK_GREY,
+        ax.text(0.5, 0.26, why, transform=ax.transAxes, fontsize=NOTE_PT, color=DARK_GREY,
                 ha="center", va="center", style="italic")
     ax.set_xticks([])
     ax.set_yticks([])
@@ -242,8 +311,16 @@ def placeholder(what: str, why: str = "", letter_text: str = "a", n_categories: 
 
 def letter(fig, text: str) -> None:
     """The panel letter: bold, top-left, outside the plotting area."""
-    fig.text(0.012, 0.985, text, fontsize=7.5, fontweight="bold", color=INK,
-             ha="left", va="top")
+    # ABOVE the axes, not at the figure corner: a long rotated y-axis label reaches the top of the
+    # figure, and the letter landed on the word "way".
+    ax = fig.axes[0] if fig.axes else None
+    if ax is not None:
+        box = ax.get_position()
+        fig.text(max(box.x0 - 0.10, 0.002), min(box.y1 + 0.085, 0.995), text,
+                 fontsize=LETTER_PT, fontweight="bold", color=INK, ha="left", va="top")
+    else:
+        fig.text(0.002, 0.995, text, fontsize=LETTER_PT, fontweight="bold", color=INK,
+                 ha="left", va="top")
 
 
 #: Where a label may sit relative to its point, in points, tried in this order.
@@ -263,7 +340,7 @@ def _text_box(text, renderer):
     return mtext.Text.get_window_extent(text, renderer=renderer)
 
 
-def place_labels(ax, fig, points, labels, colours, fontsize=4.9):
+def place_labels(ax, fig, points, labels, colours, fontsize=None):
     """Label every point in the first candidate position that hits nothing already placed.
 
     Guessed offsets collide as soon as the data moves: figure 7 put `struct` under
@@ -277,7 +354,7 @@ def place_labels(ax, fig, points, labels, colours, fontsize=4.9):
     for (x, y), name, colour in zip(points, labels, colours):
         for dx, dy, ha, va in LABEL_CANDIDATES:
             text = ax.annotate(name, (x, y), xytext=(dx, dy), textcoords="offset points",
-                               fontsize=fontsize, color=colour, ha=ha, va=va,
+                               fontsize=fontsize or NOTE_PT, color=colour, ha=ha, va=va,
                                annotation_clip=False)
             fig.canvas.draw()
             box = _text_box(text, renderer).expanded(1.06, 1.16)

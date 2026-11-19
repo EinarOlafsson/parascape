@@ -37,8 +37,10 @@ def _close_figures():
 
 def size_mm(fig) -> tuple:
     """A figure's size in millimetres, the unit every house rule is written in."""
+    # Six decimals, not three: every length is now a multiple of the em (FONT_PT * 25.4 / 72),
+    # which is not a round number of millimetres, and rounding to 3 made an exact match look wrong.
     width, height = fig.get_size_inches()
-    return round(width * MM, 3), round(height * MM, 3)
+    return round(width * MM, 6), round(height * MM, 6)
 
 
 # ----------------------------------------------------------------- rule 4: equal counts, equal size
@@ -72,8 +74,9 @@ def test_a_horizontal_panel_grows_by_exactly_one_slot_per_category():
     counts would have bars of different thickness, which is what the paper had.
     """
     heights = [size_mm(FS.figure(n)[0])[1] for n in (3, 4, 5, 6)]
-    steps = {round(b - a, 6) for a, b in zip(heights, heights[1:])}
-    assert steps == {FS.SLOT_MM}
+    steps = [b - a for a, b in zip(heights, heights[1:])]
+    for step in steps:
+        assert step == pytest.approx(FS.SLOT_MM)
 
 
 def test_the_value_axis_of_a_horizontal_panel_does_not_depend_on_the_category_count():

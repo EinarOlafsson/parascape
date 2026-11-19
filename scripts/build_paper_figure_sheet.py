@@ -72,8 +72,9 @@ PANELS = (
           "paper_panels_*/figure07_network_layers.png"),
     Panel("08", "a", "What differs between strains",
           "paper_panels_*/figure08_strain_variation.png"),
-    Panel("08", "b", "Host and parasite proteins co-folded", None,
-          "AF3 co-folding: Einar asked for it in this figure; not run"),
+    Panel("08", "b", "Host and parasite proteins co-folded",
+          "paper_panels_*/figure08b_cofold.png",
+          "drawn on SIMULATED values: the 24 co-folds are prepared, the GPU step is not run"),
     Panel("09", "a", "What transfers between species",
           "paper_panels_*/figure09_species_transfer.png"),
     Panel("10", "a", "The host response per effector", "paper_panels_*/figure10_host_shared.png"),
@@ -107,8 +108,12 @@ def main() -> None:
             pdf = found[:-4] + ".pdf"
             if os.path.exists(pdf):
                 shutil.copyfile(pdf, os.path.join(out, f"{name}.pdf"))
-            real += 1
-            print(f"  {name}  {panel.title[:44]:44s} <- {source}")
+            if panel.why:
+                placed += 1
+                print(f"  {name}  {panel.title[:44]:44s} ~~ SIMULATED ({panel.why})")
+            else:
+                real += 1
+                print(f"  {name}  {panel.title[:44]:44s} <- {source}")
         else:
             why = panel.why or "not measured"
             figure = FS.placeholder(panel.title, why, letter_text=panel.letter)
@@ -120,9 +125,12 @@ def main() -> None:
             source = None
             placed += 1
             print(f"  {name}  {panel.title[:44]:44s} .. PLACEHOLDER ({why})")
+        simulated = bool(found) and bool(panel.why)
         rows.append({"figure": panel.figure, "letter": panel.letter, "title": panel.title,
-                     "real": bool(found), "source": source,
-                     "why_missing": None if found else (panel.why or "not measured")})
+                     "real": bool(found) and not simulated, "drawn": bool(found),
+                     "simulated": simulated, "source": source,
+                     "why_missing": None if (found and not simulated)
+                     else (panel.why or "not measured")})
 
     figures = sorted({p.figure for p in PANELS})
     whole = [f for f in figures

@@ -93,26 +93,18 @@ def draw(reached: pd.Series, total: int, markers: dict, letter: str = "a"):
     because they are the reference against which it is remarkable.
     """
     FS.use()
-    order = reached.sort_values(ascending=True)
-    lowest = order.index[0]
-    fig, ax = FS.figure(len(order), height_mm=50.0)
-    y = list(range(len(order)))
-    ax.barh(y, order.to_numpy(), height=FS.bar_width(), linewidth=0,
-            color=[FS.SERIES[0] if s == lowest else FS.CONTROL for s in order.index],
-            alpha=FS.ALPHA)
-    for i, (name, value) in enumerate(order.items()):
-        ax.annotate(f"{value}", (value, i), xytext=(3, 0), textcoords="offset points",
-                    va="center", ha="left", fontsize=5.8,
-                    color=FS.SERIES[0] if name == lowest else FS.INK)
-    ax.set_yticks(y)
-    ax.set_yticklabels([f"subtype {s}" for s in order.index], fontsize=6.0)
-    ax.set_xlabel(f"published contrasts that reach the subtype (of {total})", fontsize=6.0,
-                  labelpad=2)
-    ax.set_xlim(0, float(order.max()) * 1.14)
-    ax.set_ylim(-0.6, len(order) - 0.4)
-    ax.tick_params(axis="y", length=0, pad=2)
-    ax.tick_params(axis="x", labelsize=5.5, pad=1.5)
-    ax.spines["left"].set_visible(False)
+    order = reached.sort_values(ascending=False)
+    lowest = order.index[-1]
+    fig, ax = FS.figure(len(order), vertical=True)
+    names = [f"subtype {s}" for s in order.index]
+    FS.bars(ax, order.to_numpy(), names, highlight={f"subtype {lowest}"}, rotate=0)
+    for i, value in enumerate(order.to_numpy()):
+        ax.annotate(f"{value}", (i, value), xytext=(0, 2), textcoords="offset points",
+                    ha="center", va="bottom", fontsize=FS.NOTE_PT,
+                    color=FS.SERIES[0] if order.index[i] == lowest else FS.INK)
+    ax.set_ylabel(f"contrasts reaching it (of {total})")
+    ax.set_ylim(0, float(order.max()) * 1.16)
+    ax.set_xlim(-0.6, len(order) - 0.4)
     FS.letter(fig, letter)
     return fig, lowest
 

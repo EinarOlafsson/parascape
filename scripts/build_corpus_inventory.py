@@ -88,27 +88,17 @@ def draw(table: pd.DataFrame, letter: str = "b"):
     are grey and the three least covered carry the first series colour.
     """
     FS.use()
-    order = table.sort_values("share_measured")
-    worst = set(order["category"].head(3))
-    fig, ax = FS.figure(len(order), height_mm=56.0)
-    y = list(range(len(order)))
-    ax.barh(y, order["share_measured"].to_numpy(), height=FS.bar_width(), linewidth=0,
-            color=[FS.SERIES[0] if c in worst else FS.CONTROL for c in order["category"]],
-            alpha=FS.ALPHA)
-    for i, row in enumerate(order.itertuples()):
-        ax.annotate(f"{row.share_measured:.1%}", (row.share_measured, i), xytext=(3, 0),
-                    textcoords="offset points", va="center", ha="left", fontsize=5.6,
-                    color=FS.SERIES[0] if row.category in worst else FS.INK)
-    ax.set_yticks(y)
-    ax.set_yticklabels([c.replace("_", " ") for c in order["category"]], fontsize=6.0)
-    ax.set_xlabel(f"share of {table.attrs['genes']:,} genes anything has measured", fontsize=6.0,
-                  labelpad=2)
-    ax.set_xlim(0, 1.16)
-    ax.set_xticks([0, 0.5, 1.0])
-    ax.set_xticklabels(["0", "50%", "100%"], fontsize=5.5)
-    ax.set_ylim(-0.6, len(order) - 0.4)
-    ax.tick_params(axis="y", length=0, pad=2)
-    ax.spines["left"].set_visible(False)
+    order = table.sort_values("share_measured", ascending=False)
+    worst = set(order["category"].tail(3))
+    fig, ax = FS.figure(len(order), vertical=True)
+    names = [c.replace("_", " ") for c in order["category"]]
+    FS.bars(ax, order["share_measured"].to_numpy(), names, highlight=worst and
+            {n for n, c in zip(names, order["category"]) if c in worst})
+    ax.set_ylabel("share measured")
+    ax.set_ylim(0, 1.06)
+    ax.set_yticks([0, 0.5, 1.0])
+    ax.set_yticklabels(["0", "50%", "100%"])
+    ax.set_xlim(-0.6, len(order) - 0.4)
     FS.letter(fig, letter)
     return fig
 
