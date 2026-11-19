@@ -19,6 +19,22 @@ GEO ACCESSIONS AND PAPERS TRAVELLING WITH THEIR COLUMNS (2026-11-18)
     carried a repository accession and no citation, which is 124 columns whose
     reader cannot reach the source.
 
+    **Progress on 2026-11-18: 67 uncited at the start of the evening, 38 now.**
+    Four routes, each authoritative, and one deliberately not taken:
+
+      8  from GEO's own pubmedids field
+      15 reference resources (VEuPathDB, OrthoMCL, InterPro, IEDB, ExportPred)
+      11 from PRIDE's referenceLine
+      6  from a PMID or PMC id already written in the accession field
+      12 by constructing the DOI for eLife, PLoS, mBio and checking it returns
+         exactly ONE PubMed record
+
+    The 38 that remain record a journal and an article number -- Nat Commun 16044,
+    Sci Rep 19722, Malar J 05376 -- which do not map deterministically to a DOI.
+    Guessing them is how this session produced three WRONG citations earlier in
+    the day (a 2026 GPCR paper for AlphaFold, then the AlphaFold 3 addendum, then
+    PharmVar for ENZYME nomenclature). They are left for a person.
+
     Eight are now fixed, and every one takes its PMID from GEO's OWN link
     (`esummary db=gds`, the `pubmedids` field the submitter recorded), never from
     a title match:
