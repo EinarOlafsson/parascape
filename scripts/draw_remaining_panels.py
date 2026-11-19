@@ -81,7 +81,7 @@ def figure2():
     c = pd.read_csv(newest("control_comparability_*/clusters.tsv"), sep="\t", index_col=0)
     c = c.dropna(subset=["median_agreement_before", "median_agreement_after"])
     FS.use()
-    fig, ax = FS.figure(6, height_mm=54.0)
+    fig, ax = FS.square_figure()
     lo, hi = 0.72, 0.95
     ax.plot([lo, hi], [lo, hi], "-", color="#c9c9c9", linewidth=0.7, zorder=1)
     better = c["median_agreement_after"] > c["median_agreement_before"]
@@ -171,19 +171,26 @@ def figure7():
     # Wider than the house default: the layer names in words are long, and at the default width
     # the label placer ran out of non-overlapping candidates and put "shares a domain" through
     # "all layers". The VALUE axis may grow; the category slot may not, and this panel has none.
-    fig, ax = FS.figure(6, height_mm=58.0, value_mm=92.0)
+    fig, ax = FS.square_figure()
     union = L[L["layer"].str.contains("ALL LAYERS")]
     single = L[~L["layer"].str.contains("ALL LAYERS")]
     ax.plot(single["answered"], single["accuracy"], "o", color=FS.CONTROL, markersize=3.6,
             markeredgewidth=0, alpha=FS.ALPHA, zorder=3)
     ax.plot(union["answered"], union["accuracy"], "o", color=FS.SERIES[0], markersize=4.6,
             markeredgewidth=0, alpha=FS.ALPHA, zorder=4)
+    # Label ONLY what the reader should look at: the two union points, the most accurate layer
+    # and the broadest one. Thirteen labels at 8 pt in a 46 mm square ran through each other, and
+    # the skill is explicit that everything else is the grey cloud and belongs in the legend.
+    show = set(L.loc[L["layer"].str.contains("ALL LAYERS"), "layer"])
+    show.add(L.loc[L["accuracy"].idxmax(), "layer"])
+    show.add(L.loc[L["answered"].idxmax(), "layer"])
+    marked = L[L["layer"].isin(show)]
     FS.place_labels(ax, fig,
-                    [(r.answered, r.accuracy) for r in L.itertuples()],
+                    [(r.answered, r.accuracy) for r in marked.itertuples()],
                     [LAYER_NAMES.get(r.layer.replace(" AT ONCE", "").lower(),
                                      r.layer.replace(" AT ONCE", "").lower().replace("_", " "))
-                     for r in L.itertuples()],
-                    [FS.INK if "ALL" in r.layer else FS.CONTROL for r in L.itertuples()])
+                     for r in marked.itertuples()],
+                    [FS.INK if "ALL" in r.layer else FS.CONTROL for r in marked.itertuples()])
     base = float(L["accuracy"].iloc[0] - L["lift"].iloc[0])
     ax.axhline(base, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=2)
     ax.set_xscale("log")
@@ -198,6 +205,8 @@ def figure7():
     ax.set_xlim(90, 13000)
     ax.set_xlabel("Genes answered")
     ax.set_ylabel("Accuracy (%)")
+    # The title says per cent, so the ticks must read per cent and not 0.3-0.8.
+    ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _p: f"{v * 100:.0f}"))
     ax.set_ylim(0.25, 0.80)
     ax.tick_params(pad=1.5)
     FS.letter(fig, "a")
@@ -354,6 +363,7 @@ def figure11():
     ax.set_xticklabels(labels, rotation=30, ha="right", rotation_mode="anchor")
     ax.tick_params(axis="x", length=0)
     ax.set_ylabel("Accuracy above baseline (%)")
+    ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _p: f"{v * 100:.0f}"))
     ax.set_xlim(-0.6, len(b) - 0.4)
     low = float(allv["lift_over_baseline"].min())
     ax.set_ylim(min(low, 0.0) * 1.1, float(b["lift_over_baseline"].max()) * 1.2)
@@ -533,7 +543,7 @@ def figure10b():
     y = -np.log10(t["host_p"].clip(lower=smallest))
     hit = (t["parasite_q"] < 0.05) | (t["host_q"] < 0.05)
     FS.use()
-    fig, ax = FS.figure(6, height_mm=58.0, value_mm=86.0)
+    fig, ax = FS.square_figure()
     ax.plot(x[~hit], y[~hit], "o", color=FS.CONTROL, markersize=3.2, markeredgewidth=0,
             alpha=FS.ALPHA, zorder=3)
     ax.plot(x[hit], y[hit], "o", color=FS.SERIES[0], markersize=4.2, markeredgewidth=0,

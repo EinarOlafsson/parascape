@@ -81,7 +81,7 @@ def draw(frame: pd.DataFrame, letter: str = "a"):
     # Wider than the default, for the same reason figure 7 is: the compartment names are long and
     # "plasma membrane" sits at the far left of the data, so at the default width the placer had
     # nowhere to put it but off the page. A value axis may grow; a category slot may not.
-    fig, ax = FS.figure(6, height_mm=58.0, value_mm=92.0)
+    fig, ax = FS.square_figure()
     # `lo` is the LEFT LIMIT and `hi` the right; the parity line is drawn across the same span.
     # The limit was 0.645 with a point at 0.67, so "plasma membrane" had nowhere to go but off the
     # page and through its own marker.

@@ -172,6 +172,22 @@ def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False,
     return fig, ax
 
 
+def square_figure(side_mm: float = 46.0):
+    """A figure whose PLOTTING AREA is square, for every continuous-axis plot.
+
+    The skill: "Continuous-axis plots (histograms, density plots, scatter plots, line graphs,
+    sweeps, curves) are SQUARE by default: plot area width = height." A scatter drawn in a
+    categorical panel's shape is wide for no reason and wastes the page.
+    """
+    left, bottom, right, top = MARGIN_MM
+    width_mm = left + right + side_mm
+    height_mm = bottom + top + side_mm
+    fig = plt.figure(figsize=(width_mm / 25.4, height_mm / 25.4))
+    ax = fig.add_axes([left / width_mm, bottom / height_mm,
+                       side_mm / width_mm, side_mm / height_mm])
+    return fig, ax
+
+
 def bar_width() -> float:
     """The width of one bar, in category units, so bars and violins match."""
     return BAR_FRACTION
