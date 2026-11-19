@@ -206,6 +206,40 @@ def _spread(n: int, half_width: float) -> list:
     return [-half_width + i * step for i in range(n)]
 
 
+def placeholder(what: str, why: str = "", letter_text: str = "a", n_categories: int = 6,
+                height_mm: float = 54.0):
+    """A panel that is NOT a result: a marked, hatched box standing in for one not yet measured.
+
+    Einar, 2026-11-19: "we will make the paper figure with real data and with placeholders. then we
+    will fill in the data for the paper." So a placeholder has to be assemblable into the page at
+    the right size, and it has to be impossible to mistake for a finding -- a blank panel in a
+    draft becomes a figure nobody remembers is empty.
+
+    It takes the same geometry as the panel that will replace it, so the page does not reflow when
+    the real one arrives, and it carries hatching plus the word PLACEHOLDER because the reference
+    figures mark an absent cell with hatching rather than leaving it blank, which is the same rule
+    as reporting `n.m.` instead of nothing.
+    """
+    use()
+    fig, ax = figure(n_categories, height_mm=height_mm)
+    ax.add_patch(plt.Rectangle((0.02, 0.02), 0.96, 0.96, transform=ax.transAxes,
+                               facecolor=SECOND_GREY, edgecolor=CONTROL, linewidth=0.6,
+                               hatch="////", alpha=ALPHA, zorder=0))
+    ax.text(0.5, 0.60, "PLACEHOLDER", transform=ax.transAxes, fontsize=7.0, fontweight="bold",
+            color=DARK_GREY, ha="center", va="center")
+    ax.text(0.5, 0.44, what, transform=ax.transAxes, fontsize=5.8, color=INK,
+            ha="center", va="center", wrap=True)
+    if why:
+        ax.text(0.5, 0.26, why, transform=ax.transAxes, fontsize=5.0, color=DARK_GREY,
+                ha="center", va="center", style="italic")
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for side in ("left", "bottom"):
+        ax.spines[side].set_visible(False)
+    letter(fig, letter_text)
+    return fig
+
+
 def letter(fig, text: str) -> None:
     """The panel letter: bold, top-left, outside the plotting area."""
     fig.text(0.012, 0.985, text, fontsize=7.5, fontweight="bold", color=INK,

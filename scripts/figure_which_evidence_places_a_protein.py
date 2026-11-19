@@ -19,9 +19,7 @@ import sys
 
 import matplotlib
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib import text as mtext
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from parascape import figstyle as FS   # noqa: E402
@@ -29,8 +27,8 @@ from parascape import figstyle as FS   # noqa: E402
 #: Where the scored table is, relative to the repository root.
 SOURCE = ("results/coexpression_components_localization_2026_11_06/scores.tsv")
 
-#: Millimetres, because a paper panel is specified in the units the page is in.
-WIDTH_MM, HEIGHT_MM = 88.0, 62.0
+#: Size comes from `figstyle.figure` now, so this panel and figure 2 -- the other parity scatter --
+#: are the same size by construction rather than by two numbers that happened to agree.
 
 #: The two columns compared, in the order they are drawn.
 LEFT, RIGHT = "coexp_cv_auc", "all_evidence_cv_auc"
@@ -63,53 +61,6 @@ CANDIDATES = ((4.5, 0.0, "left", "center"), (-4.5, 0.0, "right", "center"),
               (0.0, 6.5, "center", "bottom"), (0.0, -7.0, "center", "top"))
 
 
-def _box(text, renderer):
-    """The bounding box of a label, measured on the TEXT and nothing else.
-
-    `Annotation.get_window_extent` includes the leader line, which measures a box several times
-    too large and makes every candidate position look occupied. This is the trap recorded against
-    figure 1 of the bradyzoite paper, and it is why this goes through `matplotlib.text.Text`.
-    """
-    return mtext.Text.get_window_extent(text, renderer=renderer)
-
-
-def _place(ax, fig, points, labels, colours):
-    """Label every point, each in the first candidate position that hits nothing already placed.
-
-    Guessed offsets collided -- apicoplast over cytosol, micronemes over apical -- because an
-    offset that works for one arrangement of points works for no other. Measuring is cheap at
-    thirteen labels and is the only version that stays correct when the numbers change.
-    """
-    renderer = fig.canvas.get_renderer()
-    taken = []
-    for (x, y) in points:
-        taken.append(ax.transData.transform((x, y)))
-    placed_boxes = []
-    for (x, y), name, colour in zip(points, labels, colours):
-        chosen = None
-        for dx, dy, ha, va in CANDIDATES:
-            text = ax.annotate(name, (x, y), xytext=(dx, dy), textcoords="offset points",
-                               fontsize=5.3, color=colour, ha=ha, va=va, annotation_clip=False)
-            fig.canvas.draw()
-            box = _box(text, renderer).expanded(1.06, 1.16)
-            # Inside the page first: the left-hand candidate put "plasma membrane" half off the
-            # figure, which no overlap test would ever have caught.
-            width, height = fig.get_size_inches() * fig.dpi
-            clash = box.x0 < 2 or box.y0 < 2 or box.x1 > width - 2 or box.y1 > height - 2
-            clash = clash or any(box.overlaps(other) for other in placed_boxes)
-            if not clash:
-                clash = any(box.x0 - 1 <= px <= box.x1 + 1 and box.y0 - 1 <= py <= box.y1 + 1
-                            for px, py in taken)
-            if not clash:
-                chosen, placed_boxes = text, placed_boxes + [box]
-                break
-            text.remove()
-        if chosen is None:                       # nowhere clear: put it right and accept it
-            placed_boxes.append(_box(
-                ax.annotate(name, (x, y), xytext=(4.5, 0.0), textcoords="offset points",
-                            fontsize=5.3, color=colour, ha="left", va="center"), renderer))
-
-
 def draw(frame: pd.DataFrame, letter: str = "a"):
     """A parity scatter: each compartment placed from RNA alone against from all evidence.
 
@@ -123,14 +74,25 @@ def draw(frame: pd.DataFrame, letter: str = "a"):
     directly and throws away the absolute performance, so it cannot distinguish a compartment that
     gains nothing because transcription is enough from one that gains nothing because both fail.
     """
-    fig = plt.figure(figsize=(WIDTH_MM / 25.4, HEIGHT_MM / 25.4))
-    ax = fig.add_axes([0.145, 0.165, 0.825, 0.80])
-    lo, hi = 0.645, 1.03
+    # The house figure, not a hand-rolled one. This panel had its own figsize and its own axes
+    # fractions, so it did not match figure 2 -- the OTHER parity scatter of the same paper -- and
+    # rule 4 says two panels of the same shape are the same size. `figure()` with the same
+    # arguments figure 2 uses makes them identical.
+    # Wider than the default, for the same reason figure 7 is: the compartment names are long and
+    # "plasma membrane" sits at the far left of the data, so at the default width the placer had
+    # nowhere to put it but off the page. A value axis may grow; a category slot may not.
+    fig, ax = FS.figure(6, height_mm=58.0, value_mm=92.0)
+    # `lo` is the LEFT LIMIT and `hi` the right; the parity line is drawn across the same span.
+    # The limit was 0.645 with a point at 0.67, so "plasma membrane" had nowhere to go but off the
+    # page and through its own marker.
+    lo, hi = 0.62, 1.03
     ax.plot([lo, hi], [lo, hi], "-", color="#c9c9c9", linewidth=0.7, zorder=1)
     wins = (frame[LEFT] >= frame[RIGHT]).to_numpy()
     for (x, y), won in zip(zip(frame[LEFT], frame[RIGHT]), wins):
+        # 60 per cent, like every other drawn element in the paper. These markers were opaque,
+        # which is why this panel read brighter than figure 2 beside it.
         ax.plot(x, y, "o", color=WINS if won else MUTED, markersize=3.6,
-                markeredgewidth=0, zorder=3)
+                markeredgewidth=0, alpha=FS.ALPHA, zorder=3)
     ax.set_xlim(lo, hi)
     ax.set_ylim(0.775, 1.025)
     ax.set_xlabel("placed from RNA co-expression alone (AUC)", fontsize=6.0, labelpad=2)
@@ -144,10 +106,12 @@ def draw(frame: pd.DataFrame, letter: str = "a"):
     # is the one place on this panel a note must never be.
     ax.annotate("on or below the line:\ntranscription alone is enough", (0.995, 0.787),
                 fontsize=5.1, color="#7d7d7d", ha="right", va="bottom", linespacing=1.35)
-    _place(ax, fig, list(zip(frame[LEFT], frame[RIGHT])), list(frame.niche),
-           [INK if w else MUTED for w in wins])
-    fig.text(0.013, 0.985, letter, fontsize=7.5, fontweight="bold", color=INK,
-             ha="left", va="top")
+    # The house label placer and the house panel letter, so a label here is measured and rejected
+    # the same way as on every other panel. The two local helpers this panel carried were a
+    # second copy of `figstyle.place_labels`, and a second copy is a second set of bugs.
+    FS.place_labels(ax, fig, list(zip(frame[LEFT], frame[RIGHT])), list(frame.niche),
+                    [INK if w else MUTED for w in wins])
+    FS.letter(fig, letter)
     return fig
 
 

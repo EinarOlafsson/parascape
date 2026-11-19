@@ -1,0 +1,172 @@
+{
+  "panels": 19,
+  "real": 17,
+  "placeholders": 2,
+  "figures": 12,
+  "complete_figures": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "09",
+    "11",
+    "12"
+  ],
+  "rows": [
+    {
+      "figure": "01",
+      "letter": "a",
+      "title": "What ParaScape holds",
+      "real": true,
+      "source": "results/figure1_schematic_2026_11_18/panel_schematic.png",
+      "why_missing": null
+    },
+    {
+      "figure": "01",
+      "letter": "b",
+      "title": "What the corpus reaches",
+      "real": true,
+      "source": "results/corpus_inventory_2026_11_19/panel_coverage.png",
+      "why_missing": null
+    },
+    {
+      "figure": "02",
+      "letter": "a",
+      "title": "Which studies can be compared",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure02_comparability.png",
+      "why_missing": null
+    },
+    {
+      "figure": "03",
+      "letter": "a",
+      "title": "The co-expression modules",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure03_modules.png",
+      "why_missing": null
+    },
+    {
+      "figure": "04",
+      "letter": "a",
+      "title": "What structures a contrast",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure04_what_structures.png",
+      "why_missing": null
+    },
+    {
+      "figure": "05",
+      "letter": "a",
+      "title": "Which subtype a treatment reaches",
+      "real": true,
+      "source": "results/bradyzoite_reach_2026_11_19/panel_reach_by_subtype.png",
+      "why_missing": null
+    },
+    {
+      "figure": "05",
+      "letter": "b",
+      "title": "The evidence behind those counts",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure05b_reach_violin.png",
+      "why_missing": null
+    },
+    {
+      "figure": "06",
+      "letter": "a",
+      "title": "Which evidence places a protein",
+      "real": true,
+      "source": "results/coexpression_components_localization_2026_11_06/panel_which_evidence_places_a_protein.png",
+      "why_missing": null
+    },
+    {
+      "figure": "06",
+      "letter": "b",
+      "title": "What sets protein abundance",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure06b_protein_abundance.png",
+      "why_missing": null
+    },
+    {
+      "figure": "06",
+      "letter": "c",
+      "title": "Which data explains which",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure06c_explains_which.png",
+      "why_missing": null
+    },
+    {
+      "figure": "07",
+      "letter": "a",
+      "title": "The whole network against one layer",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure07_network_layers.png",
+      "why_missing": null
+    },
+    {
+      "figure": "08",
+      "letter": "a",
+      "title": "What differs between strains",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure08_strain_variation.png",
+      "why_missing": null
+    },
+    {
+      "figure": "08",
+      "letter": "b",
+      "title": "Host and parasite proteins co-folded",
+      "real": false,
+      "source": null,
+      "why_missing": "AF3 co-folding: Einar asked for it in this figure; not run"
+    },
+    {
+      "figure": "09",
+      "letter": "a",
+      "title": "What transfers between species",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure09_species_transfer.png",
+      "why_missing": null
+    },
+    {
+      "figure": "10",
+      "letter": "a",
+      "title": "The host response per effector",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure10_host_shared.png",
+      "why_missing": null
+    },
+    {
+      "figure": "10",
+      "letter": "b",
+      "title": "The parasite in the same cells",
+      "real": false,
+      "source": null,
+      "why_missing": "dual perturb-seq: targets counted, single-cell matrices not quantified"
+    },
+    {
+      "figure": "11",
+      "letter": "a",
+      "title": "What the map can fill",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure11_filling_the_map.png",
+      "why_missing": null
+    },
+    {
+      "figure": "12",
+      "letter": "a",
+      "title": "What nothing measures",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure12a_measured_absence.png",
+      "why_missing": null
+    },
+    {
+      "figure": "12",
+      "letter": "b",
+      "title": "How much is known per gene",
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure12b_categories_per_gene.png",
+      "why_missing": null
+    }
+  ]
+}

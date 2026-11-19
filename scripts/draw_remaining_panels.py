@@ -469,6 +469,89 @@ def figure12b():
     return fig
 
 
+def figure06b():
+    """Figure 6b: what sets protein abundance, layer by layer.
+
+    Four layers, one value each, so bars. TWO quantities matter and both are drawn: what a layer
+    explains ON ITS OWN, and what it ADDS to the layers before it. The second is the claim --
+    transcript abundance alone reaches r2 = 0.49 and everything after it adds almost nothing, and
+    one layer (how much is on ribosomes) has a NEGATIVE gain, which a cumulative-only panel would
+    have hidden as a flat line.
+
+    Printed beside it, because a number like this is meaningless without a scale a reader knows:
+    in human cells transcript abundance explains about 0.40 of protein abundance.
+    """
+    L = pd.read_csv(newest("what_sets_protein_abundance_*/layers.tsv"), sep="\t")
+    labels = [l.replace("+ ", "") for l in L["layer"]]
+    FS.use()
+    fig, ax = FS.figure(len(L), height_mm=54.0)
+    y = list(range(len(L)))
+    ax.barh(y, L["r2_alone"], height=FS.bar_width(), linewidth=0, color=FS.CONTROL,
+            alpha=FS.ALPHA, label="the layer on its own")
+    # The gain is drawn as a rule rather than a second bar: it is a DIFFERENCE, and a bar of a
+    # difference beside a bar of a level invites the two to be read on the same footing.
+    for i, row in enumerate(L.itertuples()):
+        colour = FS.SERIES[0] if row.gain > 0 else FS.DARK_GREY
+        ax.plot([row.gain, row.gain], [i - FS.bar_width() / 2, i + FS.bar_width() / 2],
+                color=colour, linewidth=1.3, zorder=5, solid_capstyle="butt")
+        ax.annotate(f"alone {row.r2_alone:.2f}   adds {row.gain:+.2f}",
+                    (max(row.r2_alone, row.gain), i), xytext=(4, 0),
+                    textcoords="offset points", va="center", ha="left", fontsize=5.0,
+                    color=FS.INK)
+    ax.axvline(0, color=FS.INK, linewidth=0.6)
+    ax.set_yticks(y)
+    ax.set_yticklabels(labels, fontsize=5.6)
+    ax.set_xlabel("variance of protein abundance explained (r$^2$)", fontsize=6.0, labelpad=2)
+    ax.set_xlim(-0.12, 0.86)
+    ax.set_ylim(-0.6, len(L) - 0.4)
+    ax.tick_params(axis="y", length=0, pad=2)
+    ax.tick_params(axis="x", labelsize=5.5, pad=1.5)
+    ax.spines["left"].set_visible(False)
+    # Top right, where the shortest bar leaves room: at the bottom it ran through the annotation
+    # of the transcript-abundance row, which is the one row a reader must be able to read.
+    ax.annotate("| what the layer adds to the ones above it", (0.99, 0.985),
+                xycoords="axes fraction", fontsize=4.9, color=FS.INK, ha="right", va="top")
+    FS.letter(fig, "b")
+    return fig
+
+
+#: What each predicted column IS. `te302107_tachy_r1` and `fit_invitro_hff` are record keys.
+MEASUREMENT_NAMES = {
+    "expr_tachy": "tachyzoite RNA",
+    "protein_ibaq_log2": "protein abundance",
+    "fit_invitro_hff": "fitness in culture",
+    "te302107_tachy_r1": "translation efficiency",
+    "snp_nonsynonymous": "nonsynonymous SNPs",
+    "n_phosphosites": "phosphorylation sites",
+}
+
+
+def figure06c():
+    """Figure 6c: which kind of measurement explains which other kind.
+
+    One value per target-and-predictor pair, so bars, ordered by how much better than a shuffled
+    control the pair does. The shuffled control is the baseline and not the prior size of
+    anything: a pair is only interesting to the extent it beats its own measurement procedure run
+    on shuffled input.
+    """
+    p = pd.read_csv(newest("which_data_explains_which_*/pairs.tsv"), sep="\t")
+    p = p.sort_values("lift")
+    labels = [f"{MEASUREMENT_NAMES.get(t, t.replace('_', ' '))} from {c.replace('_', ' ')}"
+              for t, c in zip(p["target"], p["predictor_category"])]
+    top = set(labels[-2:])
+    fig = bars(list(p["lift"]), labels,
+               "variance explained above the same model on shuffled input",
+               highlight=top, letter="c", height=58.0, fmt="{:.2f}")
+    ax = fig.axes[0]
+    for i, row in enumerate(p.itertuples()):
+        ax.annotate(f"{int(row.genes):,} genes", (row.lift, i), xytext=(30, 0),
+                    textcoords="offset points", va="center", ha="left", fontsize=4.8,
+                    color=FS.CONTROL)
+    # Room for BOTH annotations on the longest bar: the gene count on the top row was cut off.
+    ax.set_xlim(0, float(p["lift"].max()) * 1.75)
+    return fig
+
+
 def main() -> None:
     for name, fn in (("figure02_comparability", figure2), ("figure03_modules", figure3),
                      ("figure04_what_structures", figure4), ("figure07_network_layers", figure7),
@@ -476,7 +559,9 @@ def main() -> None:
                      ("figure10_host_shared", figure10), ("figure11_filling_the_map", figure11),
                      ("figure05b_reach_violin", figure05_violin),
                      ("figure12a_measured_absence", figure12a),
-                     ("figure12b_categories_per_gene", figure12b)):
+                     ("figure12b_categories_per_gene", figure12b),
+                     ("figure06b_protein_abundance", figure06b),
+                     ("figure06c_explains_which", figure06c)):
         save(fn(), name)
     print("wrote", OUT)
 
