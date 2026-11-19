@@ -1,6 +1,6 @@
 {
-  "panels": 19,
-  "real": 19,
+  "panels": 22,
+  "real": 22,
   "placeholders": 0,
   "figures": 12,
   "complete_figures": [
@@ -56,6 +56,36 @@
       "drawn": true,
       "simulated": false,
       "source": "results/paper_panels_2026_11_19/figure03_modules.png",
+      "why_missing": null
+    },
+    {
+      "figure": "03",
+      "letter": "b",
+      "title": "Every module against its own baseline",
+      "real": true,
+      "drawn": true,
+      "simulated": false,
+      "source": "results/paper_panels_2026_11_19/figure03b_vs_baseline.png",
+      "why_missing": null
+    },
+    {
+      "figure": "03",
+      "letter": "c",
+      "title": "How big the modules are",
+      "real": true,
+      "drawn": true,
+      "simulated": false,
+      "source": "results/paper_panels_2026_11_19/figure03c_sizes.png",
+      "why_missing": null
+    },
+    {
+      "figure": "03",
+      "letter": "d",
+      "title": "Above the detection limit",
+      "real": true,
+      "drawn": true,
+      "simulated": false,
+      "source": "results/paper_panels_2026_11_19/figure03d_detection.png",
       "why_missing": null
     },
     {

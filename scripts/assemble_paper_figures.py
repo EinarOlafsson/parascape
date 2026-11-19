@@ -47,26 +47,41 @@ def newest_sheet() -> str:
     return found[-1]
 
 
+#: Panels per row before wrapping. A single row of twelve is 8,000 px wide and unusable; a
+#: journal column takes three or four across.
+PER_ROW = 4
+
+
 def compose(figure_id: str, panels: list, out: str) -> str:
-    """One figure from its panels, laid out in a row at their true millimetre size."""
+    """One figure from its panels, wrapped into a GRID at their true millimetre size.
+
+    Panels are never rescaled -- scaling changes the font size, which is the one thing sizing in
+    ems exists to prevent -- so a row is as tall as its tallest panel and shorter panels are
+    centred in it. Rows are as wide as the widest row, and a short row is centred.
+    """
     images = [mpimg.imread(p["png"]) for p in panels]
-    # True size in millimetres: the panel PNGs are written at 600 dpi.
     widths = [img.shape[1] / DPMM for img in images]
     heights = [img.shape[0] / DPMM for img in images]
-    total_w = sum(widths) + GUTTER_MM * (len(images) - 1)
-    total_h = max(heights)
+
+    rows = [list(range(i, min(i + PER_ROW, len(images))))
+            for i in range(0, len(images), PER_ROW)]
+    row_w = [sum(widths[i] for i in r) + GUTTER_MM * (len(r) - 1) for r in rows]
+    row_h = [max(heights[i] for i in r) for r in rows]
+    total_w = max(row_w)
+    total_h = sum(row_h) + GUTTER_MM * (len(rows) - 1)
 
     fig = plt.figure(figsize=(total_w / 25.4, total_h / 25.4))
-    x = 0.0
-    for img, w, h in zip(images, widths, heights):
-        # Panels in a row share their TOP and BOTTOM edges (skill checklist, item 3). A panel is
-        # never rescaled -- scaling changes its font size -- so a shorter panel is centred in the
-        # row height and the difference is white space, not a different type size.
-        y = (total_h - h) / 2.0
-        ax = fig.add_axes([x / total_w, y / total_h, w / total_w, h / total_h])
-        ax.imshow(img)
-        ax.set_axis_off()
-        x += w + GUTTER_MM
+    y_top = total_h
+    for r, rw, rh in zip(rows, row_w, row_h):
+        x = (total_w - rw) / 2.0            # a short row is centred, not left-ragged
+        for i in r:
+            w, h = widths[i], heights[i]
+            y = y_top - rh + (rh - h) / 2.0
+            ax = fig.add_axes([x / total_w, y / total_h, w / total_w, h / total_h])
+            ax.imshow(images[i])
+            ax.set_axis_off()
+            x += w + GUTTER_MM
+        y_top -= rh + GUTTER_MM
     path = os.path.join(out, f"figure{figure_id}")
     for extension in ("png", "pdf"):
         fig.savefig(f"{path}.{extension}", dpi=600 if extension == "png" else None,

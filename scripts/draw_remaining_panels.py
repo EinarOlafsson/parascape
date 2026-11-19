@@ -680,8 +680,65 @@ def figure08b_foldability():
     return fig
 
 
+def figure3b():
+    """3b: every module against its own size-matched baseline, not just the named ten.
+
+    3a shows ten named modules. This shows ALL 24 against the chance share for a set of that
+    size, so a reader can see how many clear it and how many do not -- which 3a cannot say
+    because it only draws the winners. A paired comparison, so a parity diagonal.
+    """
+    m = pd.read_csv(newest("coexpression_modules_*/modules.tsv"), sep="\t")
+    FS.use()
+    fig, ax = FS.square_figure()
+    hi = float(max(m["share"].max(), m["matched_baseline"].max())) * 1.1
+    ax.plot([0, hi], [0, hi], "-", color=FS.BACKGROUND, linewidth=0.7, zorder=1)
+    beats = m["share"] > m["matched_baseline"]
+    ax.plot(m.loc[~beats, "matched_baseline"], m.loc[~beats, "share"], "o", color=FS.CONTROL,
+            markersize=3.4, markeredgewidth=0, alpha=FS.ALPHA, zorder=3)
+    ax.plot(m.loc[beats, "matched_baseline"], m.loc[beats, "share"], "o", color=FS.ACCENT,
+            markersize=3.4, markeredgewidth=0, alpha=FS.ALPHA, zorder=4)
+    ax.set_xlabel("Size-matched baseline (fraction)")
+    ax.set_ylabel("Module in one compartment (fraction)")
+    ax.set_xlim(0, hi); ax.set_ylim(0, hi)
+    FS.letter(fig, "b")
+    return fig
+
+
+def figure3c():
+    """3c: how big the modules are. 24 values, so a violin, with the genes they hold."""
+    m = pd.read_csv(newest("coexpression_modules_*/modules.tsv"), sep="\t")
+    FS.use()
+    fig, ax = FS.figure(2, vertical=True)
+    FS.violin(ax, [m["genes"].to_numpy()], ["Modules"], control=["Modules"], vertical=True)
+    ax.set_xticks([0]); ax.set_xticklabels(["Modules"])
+    ax.set_ylabel("Genes per module")
+    ax.set_xlim(-0.75, 1.25)
+    ax.tick_params(axis="x", length=0)
+    FS.letter(fig, "c")
+    return fig
+
+
+def figure3d():
+    """3d: how far each module sits above the DETECTION LIMIT of the matched null.
+
+    A share above baseline is not yet a finding: the question is whether the gap exceeds what the
+    null's own spread admits. This is that gap per module, which 3a and 3b both leave implicit.
+    """
+    m = pd.read_csv(newest("coexpression_modules_*/modules.tsv"), sep="\t")
+    m = m.sort_values("over_detection_limit", ascending=False)
+    # An UNNAMED module has no compartment (NaN), and it still belongs on this panel: whether a
+    # module clears the detection limit is a fact about the module, not about whether we named it.
+    labels = [f"{str(c).replace('_', ' ')} {int(n)}" if isinstance(c, str) else f"module {int(n)}"
+              for c, n in zip(m["compartment"], m["module"])]
+    fig = bars(list(m["over_detection_limit"]), labels,
+               "Share above the detection limit", highlight=set(labels[:2]), letter="d",
+               reference=1.0, ref_label="Detection limit")
+    return fig
+
+
 def main() -> None:
-    for name, fn in (("figure02_comparability", figure2), ("figure03_modules", figure3),
+    for name, fn in (("figure02_comparability", figure2), ("figure03_modules", figure3), ("figure03b_vs_baseline", figure3b),
+                     ("figure03c_sizes", figure3c), ("figure03d_detection", figure3d),
                      ("figure04_what_structures", figure4), ("figure07_network_layers", figure7),
                      ("figure08_strain_variation", figure8), ("figure09_species_transfer", figure9),
                      ("figure10_host_shared", figure10), ("figure11_filling_the_map", figure11),
