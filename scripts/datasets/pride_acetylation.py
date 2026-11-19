@@ -6,6 +6,7 @@ Acetylation sites reported per gene
     level / kind : post_translation / proteomics
     provides     : n_acetylation_sites
     coverage     : 3,921 genes measured
+    citation     : Cannella D, Pachano B, Shahinas M, Belmudes L, deVries J, Corrao C, Pounot L, Hesse AM, Couté Y, Bougdour A, Swale C, Hakimi MA. Divergent SAGA complexes shape the Toxoplasma transcriptome for lytic cycle progression and host interaction. Nat Commun. 2026 17(1):10158
     accession    : PXD079431
     url          : https://www.ebi.ac.uk/pride/archive/projects/PXD079431
     local path   : datasets/quarantine/2026_08_16_pride/Tg/acetylation/

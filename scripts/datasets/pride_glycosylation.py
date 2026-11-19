@@ -6,6 +6,7 @@ Peptide identifications in the AAL lectin pulldown, per gene
     level / kind : post_translation / proteomics
     provides     : n_o_fucosyl_peptides
     coverage     : 394 genes
+    citation     : Bandini G, Haserick JR, Motari E, Ouologuem DT, Lourido S, Roos DS, Costello CE, Robbins PW, Samuelson J. O-fucosylated glycoproteins form assemblies in close proximity to the nuclear pore complexes of Toxoplasma gondii. Proc Natl Acad Sci U S A. 2016 Oct 11;113(41):11567-11572
     accession    : PXD004426
     url          : https://www.ebi.ac.uk/pride/archive/projects/PXD004426
     local path   : datasets/quarantine/2026_08_16_pride/Tg/glycosylation/

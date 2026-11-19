@@ -6,6 +6,7 @@ Lactylation sites reported per gene
     level / kind : post_translation / proteomics
     provides     : n_lactylation_sites
     coverage     : 515 genes measured
+    citation     : Zhao W, Yu H, Liu X, Wang T, Yao Y, Zhou Q, Zheng X, Tan F. Systematic identification of the lysine lactylation in the protozoan parasite Toxoplasma gondii. Parasit Vectors. 2022 15(1):180
     accession    : PXD031526
     url          : https://www.ebi.ac.uk/pride/archive/projects/PXD031526
     local path   : datasets/quarantine/2026_08_16_pride/Tg/lactylation/

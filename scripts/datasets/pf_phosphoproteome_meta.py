@@ -6,6 +6,7 @@ Distinct phosphorylated residues per gene, pooled across every public study
     level / kind : post_translation / phosphoproteomics
     provides     : n_phosphosites, has_phospho
     coverage     : 16,318 sites over 2,503 genes
+    citation     : Camacho OJM, Ramsbottom KA, Prakash A, Sun Z, Perez Riverol Y, Bowler-Barnett E, Martin M, Fan J, Deutsch EW, Vizcaíno JA, Jones AR. Phosphorylation in the &lt;i&gt;Plasmodium falciparum&lt;/i&gt; Proteome: A Meta-Analysis of Publicly Available Data Sets. J Proteome Res. 2024 23(12):5326-5341
     accession    : PXD046874
     url          : https://ftp.pride.ebi.ac.uk/pride/data/archive/2023/11/PXD046874/
     local path   : datasets/reference/plasmodb/phosphosites/

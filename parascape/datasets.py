@@ -479,7 +479,8 @@ REGISTRY = [
                  "PXD058095_supp_DatasetEV1_MORC_RNAseq_counts_TPM.xlsx",
             note="The accession and file location sit in a proteomics collection, but the shipped "
                  "workbook is explicitly RNA-seq counts/TPM and is normalized as transcription. "
-                 "The originating publication still needs confirmation before citation.", organism=organisms.TOXOPLASMA),
+                 "The originating publication still needs confirmation before citation.", citation="Robert MG, Swale C, Pachano B, Dépéry L, Bellini V, Dard C, Cannella D, Corrao C, Belmudes L, Couté Y, Bougdour A, Pelloux H, Chapey E, Wallon M, Brenier-Pinchart MP, Hakimi MA. Uncovering biomarkers for chronic toxoplasmosis detection highlights alternative pathways shaping parasite dormancy. EM...",
+            organism=organisms.TOXOPLASMA),
 
     # ------------------------------------------------------------------ genetic screens
     Dataset("crispr_invitro", "In vitro CRISPR fitness (HFF)", "DNA", "CRISPR_screen",
@@ -677,7 +678,8 @@ REGISTRY = [
             url="https://proteomecentral.proteomexchange.org/cgi/GetDataset?ID=PXD065585",
             path="toxo_stage_atlas/data/proteomics/",
             note="Immunoprecipitation experiments of 424 and 594 proteins. Enrichment, NOT a deep "
-                 "proteome; do not report as proteome-wide.", organism=organisms.TOXOPLASMA),
+                 "proteome; do not report as proteome-wide.", citation="Wang JL, Li TT, Zhang NZ, Wang M, Sun LX, Zhang ZW, Fu BQ, Elsheikha HM, Zhu XQ. The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma gondii merogony. Nat Commun. 2024 15(1):793",
+            organism=organisms.TOXOPLASMA),
     Dataset("proteome_total", "AP2XII-1/AP2XI-2 perturbation total proteome", "translation",
             "proteomics", "Replicate abundance and log2 fold-change during pre-sexual conversion",
             TOTAL_PROTEOME_COLUMNS, "3,005 (36.9%)", pmid="38093015",
@@ -742,7 +744,8 @@ REGISTRY = [
             url="https://www.ebi.ac.uk/pride/ws/archive/v3/projects/PXD043808/files",
             note="The PRIDE API lists the files for one accession; swap the accession in the path "
                  "for PXD065585. It returns JSON metadata, not the data -- follow the download "
-                 "links it gives.", organism=organisms.TOXOPLASMA),
+                 "links it gives.", citation="Wang JL, Li TT, Zhang NZ, Wang M, Sun LX, Zhang ZW, Fu BQ, Elsheikha HM, Zhu XQ. The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma gondii merogony. Nat Commun. 2024 15(1):793",
+            organism=organisms.TOXOPLASMA),
     Dataset("foldseek_struct", "Foldseek structural similarity", "post_translation", "structure",
             "TM-align over Toxoplasma AlphaFold models, TM >= 0.7", ("n_struct_similar",),
             "11,684 pairs / 2,338 genes",
@@ -1197,7 +1200,8 @@ REGISTRY = [
             note="Read from the deposit's own MaxQuant Sites tables. Held in quarantine rather than "
                  "the dataset archive: a deposit is promoted by being checked, not by being "
                  "downloaded, and the check here was reading the files and finding both Toxoplasma "
-                 "genes and the modification named.", organism=organisms.TOXOPLASMA),
+                 "genes and the modification named.", citation="Cannella D, Pachano B, Shahinas M, Belmudes L, deVries J, Corrao C, Pounot L, Hesse AM, Couté Y, Bougdour A, Swale C, Hakimi MA. Divergent SAGA complexes shape the Toxoplasma transcriptome for lytic cycle progression and host interaction. Nat Commun. 2026 17(1):10158",
+            organism=organisms.TOXOPLASMA),
     Dataset("pride_proximity", "Proximity labelling", "post_translation", "proteomics",
             "Proximity partners reported per gene", ("n_proximity_partners",),
             "1,734 genes measured", accession="PXD059579",
@@ -1205,7 +1209,8 @@ REGISTRY = [
             path="datasets/quarantine/2026_08_16_pride/Tg/interaction_proximity_labelling/",
             note="mzIdentML rather than MaxQuant, and shipped as a lone .gz -- which is one "
                  "compressed file and not an archive, a distinction that read as an empty deposit "
-                 "until it was handled.", organism=organisms.TOXOPLASMA),
+                 "until it was handled.", citation="Diaz-Martin S, Swale C, Bellini V, Dobrescu I, Wenker J, Brenier-Pinchart MP, Braun L, Tollec A, Corrao C, Couté Y, Mas C, Laurent F, Bowler M, Hakimi MA, Bougdour A. Structural and functional characterization of TgGSK3, a druggable kinase in Toxoplasma gondii. Nat Commun. 2025 16(1):9765",
+            organism=organisms.TOXOPLASMA),
     Dataset("pride_glycosylation", "O-fucosylated glycoproteins (AAL pulldown)",
             "post_translation", "proteomics",
             "Peptide identifications in the AAL lectin pulldown, per gene",
@@ -1219,7 +1224,8 @@ REGISTRY = [
                  "odds 3.71 (p = 1.5e-22) and cytosol at 2.61, and not enriched for mitochondrion. "
                  "O-fucosylation through SPY is a nucleocytoplasmic modification and the paper "
                  "describes punctiform signal beside the nuclei, so that is the right answer. Keyed "
-                 "on TGGT1_ accessions throughout.", organism=organisms.TOXOPLASMA),
+                 "on TGGT1_ accessions throughout.", citation="Bandini G, Haserick JR, Motari E, Ouologuem DT, Lourido S, Roos DS, Costello CE, Robbins PW, Samuelson J. O-fucosylated glycoproteins form assemblies in close proximity to the nuclear pore complexes of Toxoplasma gondii. Proc Natl Acad Sci U S A. 2016 Oct 11;113(41):11567-11572",
+            organism=organisms.TOXOPLASMA),
     Dataset("pride_nitrosylation", "S-nitrosylation (iodoTMT)", "post_translation", "proteomics",
             "S-nitrosylation sites reported per gene", ("n_nitrosylation_sites",),
             "660 genes measured", accession="PXD046083",
@@ -1227,7 +1233,8 @@ REGISTRY = [
             path="datasets/quarantine/2026_08_16_pride/Tg/S_nitrosylation/",
             note="Counted only from the iodoTMT tables. Counting the whole txt folder put 90% of the "
                  "proteome in this slot, which is what a modification measured on nearly every gene "
-                 "should always look like: a bug.", organism=organisms.TOXOPLASMA),
+                 "should always look like: a bug.", citation="Wang Z, Li J, Yang Q, Sun X. Global Proteome-Wide Analysis of Cysteine S-Nitrosylation in <i>Toxoplasma gondii</i>. Molecules. 2023 28(21):7329",
+            organism=organisms.TOXOPLASMA),
     Dataset("pride_lactylation", "Lysine lactylome", "post_translation", "proteomics",
             "Lactylation sites reported per gene", ("n_lactylation_sites",),
             "515 genes measured", accession="PXD031526",
@@ -1237,7 +1244,8 @@ REGISTRY = [
                  "open, and the 0 genes that produced was a fact about the reader, not about a study "
                  "that names 537 proteins. This one reads, and its `La (K)Sites` table is MaxQuant's "
                  "lactylation search. Keyed entirely on TGGT1_ accessions -- 515 of its 524 genes "
-                 "reach the map through the identity layer and would reach none without it.", organism=organisms.TOXOPLASMA),
+                 "reach the map through the identity layer and would reach none without it.", citation="Zhao W, Yu H, Liu X, Wang T, Yao Y, Zhou Q, Zheng X, Tan F. Systematic identification of the lysine lactylation in the protozoan parasite Toxoplasma gondii. Parasit Vectors. 2022 15(1):180",
+            organism=organisms.TOXOPLASMA),
     Dataset("pride_ubiquitination", "Ubiquitination / SUMOylation (GlyGly)", "post_translation", "proteomics",
             "GlyGly sites reported per gene", ("n_ubiquitination_sites",),
             "128 genes measured", accession="PXD042937",
@@ -1300,7 +1308,8 @@ REGISTRY = [
                  "were got wrong first: a group is a contaminant group if ANY entry in it is one -- "
                  "MaxQuant prefixes only on the leading entry, so keratin hides mid-group and is "
                  "otherwise the four most enriched host proteins -- and two unique peptides are "
-                 "required in BOTH bait replicates, which takes 674 host groups to 219.", organism=organisms.TOXOPLASMA),
+                 "required in BOTH bait replicates, which takes 674 host groups to 219.", citation="Cygan AM, Theisen TC, Mendoza AG, Marino ND, Panas MW, Boothroyd JC. Coimmunoprecipitation with MYR1 Identifies Three Additional Proteins within the Toxoplasma gondii Parasitophorous Vacuole Required for Translocation of Dense Granule Effectors into Host Cells. mSphere. 2020 5(1)",
+            organism=organisms.TOXOPLASMA),
     Dataset("pv_host_uptake", "Host proteins at the vacuole", "post_translation", "proteomics",
             "How enriched a host protein is at the parasitophorous vacuole",
             ("pv_enrichment_log2",), "12 host proteins — 0.1% of the 21,020-row host space", pmid="34898650",
@@ -2339,7 +2348,8 @@ REGISTRY = [
                  "Absence is unknown and stays missing. A companion boolean completed with "
                  "False would have read as 5,720 genes tested and 5,536 negative, and graded the "
                  "slot A at 100% for an experiment that identified 184 proteins -- so this one "
-                 "ships a single column whose presence is the evidence.", organism=organisms.FALCIPARUM),
+                 "ships a single column whose presence is the evidence.", citation="Abdi A, Yu L, Goulding D, Rono MK, Bejon P, Choudhary J, Rayner J. Proteomic analysis of extracellular vesicles from a <i>Plasmodium falciparum</i> Kenyan clinical isolate defines a core parasite secretome. Wellcome Open Res. 2017 2:50",
+            organism=organisms.FALCIPARUM),
     Dataset("pf_isoforms", "Plasmodium long-read transcript models", "transcription", "nanopore",
             "Transcript models per gene, and how many the annotation does not contain",
             ("n_transcript_models", "novel_transcript_models"),
@@ -2450,7 +2460,8 @@ REGISTRY = [
                  "because whether it was ever observed phosphorylated is a question about the "
                  "evidence and the answer is no. Validated on orderings rather than totals: 67% of "
                  "kinases carry a site against 44% of genes at large, and site count rises with "
-                 "protein length at rho +0.46.", organism=organisms.FALCIPARUM),
+                 "protein length at rho +0.46.", citation="Camacho OJM, Ramsbottom KA, Prakash A, Sun Z, Perez Riverol Y, Bowler-Barnett E, Martin M, Fan J, Deutsch EW, Vizcaíno JA, Jones AR. Phosphorylation in the &lt;i&gt;Plasmodium falciparum&lt;/i&gt; Proteome: A Meta-Analysis of Publicly Available Data Sets. J Proteome Res. 2024 23(12):5326-5341",
+            organism=organisms.FALCIPARUM),
     Dataset("plasmodb_pf3d7_exportpred", "Plasmodium export prediction (ExportPred)",
             "reference", "annotation",
             "Predicted export to the erythrocyte, as an ordinal confidence tier",

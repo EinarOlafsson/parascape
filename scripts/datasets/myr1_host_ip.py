@@ -6,6 +6,7 @@ Host proteins co-immunoprecipitating with the parasite protein MYR1
     level / kind : post_translation / IPMS
     provides     : bridge:host
     coverage     : 219 host proteins, 1 parasite gene
+    citation     : Cygan AM, Theisen TC, Mendoza AG, Marino ND, Panas MW, Boothroyd JC. Coimmunoprecipitation with MYR1 Identifies Three Additional Proteins within the Toxoplasma gondii Parasitophorous Vacuole Required for Translocation of Dense Granule Effectors into Host Cells. mSphere. 2020 5(1)
     PMID         : 32075880
     accession    : PXD016383
     url          : https://www.ebi.ac.uk/pride/archive/projects/PXD016383

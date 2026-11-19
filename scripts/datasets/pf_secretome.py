@@ -6,6 +6,7 @@ Parasite proteins found in extracellular vesicles, and how many preparations fou
     level / kind : post_translation / proteomics
     provides     : ev_studies
     coverage     : 184 proteins, 53 of them in both preparations
+    citation     : Abdi A, Yu L, Goulding D, Rono MK, Bejon P, Choudhary J, Rayner J. Proteomic analysis of extracellular vesicles from a <i>Plasmodium falciparum</i> Kenyan clinical isolate defines a core parasite secretome. Wellcome Open Res. 2017 2:50
     PMID         : 28944300
     accession    : Wellcome Open Res 11910 S2 (PRIDE PXD006925)
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5583745/supplementaryFiles

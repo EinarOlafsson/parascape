@@ -6,6 +6,7 @@ S-nitrosylation sites reported per gene
     level / kind : post_translation / proteomics
     provides     : n_nitrosylation_sites
     coverage     : 660 genes measured
+    citation     : Wang Z, Li J, Yang Q, Sun X. Global Proteome-Wide Analysis of Cysteine S-Nitrosylation in <i>Toxoplasma gondii</i>. Molecules. 2023 28(21):7329
     accession    : PXD046083
     url          : https://www.ebi.ac.uk/pride/archive/projects/PXD046083
     local path   : datasets/quarantine/2026_08_16_pride/Tg/S_nitrosylation/

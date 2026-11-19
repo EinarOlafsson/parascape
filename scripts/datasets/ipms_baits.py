@@ -6,6 +6,7 @@ Replicated pulldown vs untagged control
     level / kind : post_translation / IPMS
     provides     : n_ipms_partners
     coverage     : 64 pairs / 48 genes
+    citation     : Wang JL, Li TT, Zhang NZ, Wang M, Sun LX, Zhang ZW, Fu BQ, Elsheikha HM, Zhu XQ. The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma gondii merogony. Nat Commun. 2024 15(1):793
     accession    : PXD043808, PXD065585
     url          : https://www.ebi.ac.uk/pride/ws/archive/v3/projects/PXD043808/files
 

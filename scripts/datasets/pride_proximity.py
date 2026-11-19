@@ -6,6 +6,7 @@ Proximity partners reported per gene
     level / kind : post_translation / proteomics
     provides     : n_proximity_partners
     coverage     : 1,734 genes measured
+    citation     : Diaz-Martin S, Swale C, Bellini V, Dobrescu I, Wenker J, Brenier-Pinchart MP, Braun L, Tollec A, Corrao C, Couté Y, Mas C, Laurent F, Bowler M, Hakimi MA, Bougdour A. Structural and functional characterization of TgGSK3, a druggable kinase in Toxoplasma gondii. Nat Commun. 2025 16(1):9765
     accession    : PXD059579
     url          : https://www.ebi.ac.uk/pride/archive/projects/PXD059579
     local path   : datasets/quarantine/2026_08_16_pride/Tg/interaction_proximity_labelling/

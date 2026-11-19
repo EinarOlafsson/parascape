@@ -6,6 +6,7 @@ Median log2 iBAQ across replicates
     level / kind : translation / proteomics
     provides     : protein_ibaq_log2
     coverage     : 748 (9.2%)
+    citation     : Wang JL, Li TT, Zhang NZ, Wang M, Sun LX, Zhang ZW, Fu BQ, Elsheikha HM, Zhu XQ. The transcription factor AP2XI-2 is a key negative regulator of Toxoplasma gondii merogony. Nat Commun. 2024 15(1):793
     accession    : PXD043808, PXD065585
     url          : https://proteomecentral.proteomexchange.org/cgi/GetDataset?ID=PXD065585
     local path   : toxo_stage_atlas/data/proteomics/

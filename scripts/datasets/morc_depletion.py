@@ -6,6 +6,7 @@ MORC knockdown, BFD1 knockout and BFD1 stabilization series
     level / kind : transcription / RNAseq
     provides     : morc_MORC_UT1, morc_MORC_UT2, morc_MORC_UT3, morc_MORC_IAA1, morc_MORC_IAA2, morc_MORC_IAA3, morc_MORC-KD-BFD1-KO_UT1, morc_MORC-KD-BFD1-KO_UT2, morc_MORC-KD-BFD1-KO_UT3, morc_MORC-KD-BFD1-KO_IAA1, morc_MORC-KD-BFD1-KO_IAA2, morc_MORC-KD-BFD1-KO_IAA3, morc_DD-BFD1-Ty_UT1, morc_DD-BFD1-Ty_UT2, morc_DD-BFD1-Ty_UT3, morc_DD-BFD1-Ty_Shield1, morc_DD-BFD1-Ty_Shield2, morc_DD-BFD1-Ty_Shield3
     coverage     : 7,841 (96.3%)
+    citation     : Robert MG, Swale C, Pachano B, Dépéry L, Bellini V, Dard C, Cannella D, Corrao C, Belmudes L, Couté Y, Bougdour A, Pelloux H, Chapey E, Wallon M, Brenier-Pinchart MP, Hakimi MA. Uncovering biomarkers for chronic toxoplasmosis detection highlights alternative pathways shaping parasite dormancy. EM...
     accession    : PXD058095
     url          : https://www.ebi.ac.uk/pride/archive/projects/PXD058095
     local path   : toxo_stage_atlas/data/proteomics/PXD058095_supp_DatasetEV1_MORC_RNAseq_counts_TPM.xlsx
