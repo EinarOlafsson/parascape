@@ -13,6 +13,33 @@ Incompatible cohorts remain separate. Popularity cannot establish ground-truth
 accuracy. Unknown dates/counts/coverage remain unknown, not zero or guessed.
 
 
+## The batch-5 replacement, answered 2026-11-18: REJECT it, and both are already kept
+
+Einar asked whether both candidates could be kept as options for the same slot. They already are:
+the slot `lactylation · asexual blood stage` declares BOTH patterns, `n_lactylsites` and
+`has_lactyl`, so both columns live in it. The decision was only ever about which is the DEFAULT
+under policy `one`.
+
+**And the proposal to switch the default should be rejected, because the score that favours it is
+the unknown-as-zero error.** Both candidates are the same dataset -- `pf_lactylome`, publication
+MED:41417877 -- and the 6.5 against 5.0 comes entirely from comprehensiveness:
+
+  n_lactylsites   113 of 5,720 genes carry a value   comprehensiveness 0.0198   a MEASUREMENT
+  has_lactyl    5,720 of 5,720 genes carry a value   comprehensiveness 1.0000   a BOOLEAN
+
+`has_lactyl` is non-null for every gene because it is a boolean: False where nobody looked. 144 are
+True; the other 5,576 Falses are unknowns written as zero. Its comprehensiveness of 1.0 is an
+artefact of the type, not a property of the assay, and the scorer cannot tell the difference.
+
+This is the same defect found in figure 12 of the paper on the same day, where flag and count
+columns made `place`, `fitness`, `interaction` and `modification` read as measured for all 8,140
+Toxoplasma genes. **The scorer should not credit comprehensiveness to a column with no missing
+value**, and until it does not, any slot whose candidates differ in TYPE rather than in coverage
+will be decided the wrong way round by it.
+
+So: keep `n_lactylsites` as the default, keep `has_lactyl` in the slot beside it, and treat the
+0.0198 as the honest number it is.
+
 ## Reference-resource citations: 15 resolved, and a warning about how (2026-11-18)
 
 Of the 30 rows left unresolved in `source_review_queue.csv`, 19 are reference resources whose
