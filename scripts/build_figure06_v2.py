@@ -9,10 +9,10 @@ cell-cycle time course (cellcycle19092, 1-12 h, 6,504 genes) and hyperLOPIT (lop
 
   A  placed from RNA alone vs from all evidence, per compartment        (the result)
   B  mean expression across the cell cycle, wave-built vs continuous    (the wave)
-  C  hour of peak expression of each gene, per compartment              (how tight the wave is)
+  C  share of genes peaking at each hour, per compartment (map)        (how tight the wave is)
   D  timing coherence against placeability from RNA                     (mechanism -> result)
   E  single genes: a wave-built and a continuous compartment            (what a reader sees)
-  F  agreement of the two replicate time courses, per compartment     (the wave is signal)
+  F  replicate agreement, median and IQR per compartment (named rows) (the wave is signal)
 All six from data; no placeholders.
 """
 from __future__ import annotations
@@ -118,16 +118,26 @@ def peak_hours(z, key):
 
 
 def panel_c(z):
+    """Share of each compartment's genes peaking at each hour: a map, compartments as rows.
+
+    Ten violins in a row came out wide with tilted names (Einar, 2026-11-19: wide graphs need
+    another form). The map reads names flat and shows the wave as a bright column.
+    """
     keys = [k for k in WAVE + CONTINUOUS if len(group(z, k)) >= 5]
-    groups = [peak_hours(z, k) for k in keys]
+    m = np.array([np.bincount(peak_hours(z, k), minlength=13)[1:13] / len(group(z, k)) * 100
+                  for k in keys])
     FS.use()
-    fig, ax = FS.figure(len(keys), vertical=True)
-    FS.violin(ax, groups, keys, control=[k for k in keys if k in CONTINUOUS], vertical=True,
-              draw_points=False)
-    ax.set_xticks(range(len(keys)))
-    ax.set_xticklabels(keys, rotation=45, ha="right", rotation_mode="anchor")
-    ax.set_ylabel("Hour of peak expression"); ax.set_ylim(0, 13)
-    ax.set_xlim(-0.6, len(keys) - 0.4); ax.tick_params(axis="x", length=0)
+    fig, ax = FS.square_figure()
+    im = ax.imshow(m, cmap="Blues", vmin=0, aspect="auto", interpolation="nearest",
+                   extent=(0.5, 12.5, len(keys) - 0.5, -0.5))
+    ax.set_yticks(range(len(keys))); ax.set_yticklabels(keys)
+    for t, k in zip(ax.get_yticklabels(), keys):
+        t.set_color(FS.ACCENT if k in WAVE else FS.INK)
+    ax.axhline(len([k for k in keys if k in WAVE]) - 0.5, color=FS.INK, lw=0.6)
+    ax.set_xticks([2, 4, 6, 8, 10, 12]); ax.set_xlabel("Hour of peak expression")
+    ax.tick_params(axis="y", length=0)
+    cb = fig.colorbar(im, ax=ax, fraction=0.05, pad=0.04)
+    cb.set_label("Genes peaking (%)"); cb.outline.set_linewidth(0.6)
     return fig
 
 
@@ -183,16 +193,23 @@ def panel_e(z):
 
 
 def panel_f(z):
+    """Replicate agreement per compartment: median and interquartile range, as named rows."""
     keys = [k for k in WAVE + CONTINUOUS if len(group(z, k)) >= 5]
-    groups = [z.loc[group(z, k).index, "rep_r"].dropna().to_numpy() for k in keys]
     FS.use()
-    fig, ax = FS.figure(len(keys), vertical=True)
-    FS.violin(ax, groups, keys, control=[k for k in keys if k in CONTINUOUS], vertical=True,
-              draw_points=False)
-    ax.set_xticks(range(len(keys)))
-    ax.set_xticklabels(keys, rotation=45, ha="right", rotation_mode="anchor")
-    ax.set_ylabel("Replicate agreement (Pearson r)"); ax.axhline(0, color=FS.INK, lw=0.6)
-    ax.set_xlim(-0.6, len(keys) - 0.4); ax.tick_params(axis="x", length=0)
+    fig, ax = FS.figure(len(keys), vertical=False, value_mm=40.0)
+    for y, k in enumerate(keys):
+        v = z.loc[group(z, k).index, "rep_r"].dropna().to_numpy()
+        q1, med, q3 = np.percentile(v, [25, 50, 75])
+        col = FS.ACCENT if k in WAVE else FS.CONTROL
+        ax.hlines(y, q1, q3, color=col, lw=1.2, alpha=FS.ALPHA)
+        ax.plot(med, y, "o", color=col, ms=4, alpha=1.0)
+    ax.set_yticks(range(len(keys))); ax.set_yticklabels(keys)
+    ax.set_ylim(len(keys) - 0.5, -0.5); ax.tick_params(axis="y", length=0)
+    ax.set_xlim(0, 1); ax.set_xticks([0, 0.5, 1.0])
+    ax.set_xlabel("Replicate agreement (Pearson r)")
+    ax.plot([], [], "o-", color=FS.ACCENT, ms=4, label="wave-built")
+    ax.plot([], [], "o-", color=FS.CONTROL, ms=4, label="continuous (ref.)")
+    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     return fig
 
 
