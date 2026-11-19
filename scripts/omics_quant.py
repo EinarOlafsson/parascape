@@ -559,6 +559,34 @@ def requant_todo() -> list:
     return first + rest
 
 
+def single_overhang_todo() -> list:
+    """Single-end runs quantified BEFORE `--single-overhang`, whose kallisto is not comparable.
+
+    A run qualifies when it is finished, its library is single-end, and its done.json either says
+    `kallisto_single_overhang` is false or does not carry the field at all -- the second case being
+    every run finished before the field existed. Re-quantifying these needs their reads downloaded
+    again, so this LISTS them and nothing more; starting the campaign is a separate decision with a
+    real bandwidth and disk cost.
+    """
+    with open(PLAN) as fh:
+        plan_rows = [json.loads(ln) for ln in fh if ln.strip()]
+    todo = []
+    for r in plan_rows:
+        done = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"], "done.json")
+        if not os.path.exists(done):
+            continue
+        try:
+            with open(done) as fh:
+                record = json.load(fh)
+        except (OSError, ValueError):
+            continue
+        if record.get("library_layout") != "SINGLE":
+            continue
+        if not record.get("kallisto_single_overhang", False):
+            todo.append(r)
+    return todo
+
+
 def pending_new_runs() -> int:
     """Planned runs not yet quantified (nor recorded as colour space): the new downloads."""
     with open(PLAN) as fh:
@@ -920,6 +948,11 @@ def _cheap_or_all(r: dict, out_dir: str, local: list, trim: dict, phase: str) ->
             stages.append(f"kallisto_{ref}")
     record = {**r, "trimming": trim, "salmon": version("salmon"), "kallisto": version("kallisto"),
               "salmon_extra": SALMON_EXTRA, "kallisto_failed": kallisto_failed,
+              # Recorded so a run quantified before --single-overhang can be told from one after.
+              # 148 single-end runs across 18 studies were quantified without it and their kallisto
+              # columns are not comparable to later ones; without this field the only way to tell
+              # was the date, which is not evidence.
+              "kallisto_single_overhang": bool(KALLISTO_SINGLE_OVERHANG),
               "configured_threads": THREADS, "runtime_source_sha256": RUNTIME_SOURCE_SHA256}
     now = time.strftime("%Y-%m-%dT%H:%M:%S")
     if later:

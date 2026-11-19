@@ -145,9 +145,13 @@ def main() -> None:
             missing.append((pair.host_id, "UniProt did not serve a sequence"))
             continue
         name = f"{parasite}__{pair.host_id}"
+        # `dialect` and `version` are REQUIRED. The example input this was first copied from is an
+        # older format without them, and AF3 refuses the file outright -- caught by running one
+        # co-fold rather than by reading, which is why the smoke test came before the other 23.
         job = {"name": name, "modelSeeds": [1],
                "sequences": [{"protein": {"id": "A", "sequence": parasite_seq}},
-                             {"protein": {"id": "B", "sequence": host_seq}}]}
+                             {"protein": {"id": "B", "sequence": host_seq}}],
+               "dialect": "alphafold3", "version": 2}
         with open(os.path.join(inputs, f"{name}.json"), "w") as handle:
             json.dump(job, handle)
         written += 1
