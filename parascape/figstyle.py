@@ -113,6 +113,68 @@ def refuse_a_bar(n_points: int) -> bool:
     return n_points > MAX_POINTS_FOR_A_BAR
 
 
+#: At or below this many points in a group, the individual points are drawn over the summary, as
+#: the reference figures draw replicates over their bars. Above it, a violin IS the points and
+#: overplotting 1,200 markers only hides the shape it exists to show.
+MAX_POINTS_DRAWN_OVER = 60
+
+
+def violin(ax, groups, names, control=(), vertical=True, draw_points=None):
+    """A violin per group, at exactly the width and spacing a bar would have had.
+
+    This exists because the rule "more than twenty points is never a bar" was written down and then
+    not followed: three panels of the paper summarised distributions of hundreds of genes as one
+    bar each. A violin here is not a different style of bar -- it occupies the same slot, takes
+    `bar_width()` like everything else, and carries the same opacity, so a violin panel and a bar
+    panel of the same category count are still dimensionally identical.
+
+    `groups` is one array of values per group; `names` labels them; `control` names the groups
+    drawn grey. Individual points are drawn over a group with at most `MAX_POINTS_DRAWN_OVER`
+    values unless `draw_points` says otherwise.
+    """
+    fills = colours(names, control=control)
+    positions = list(range(len(groups)))
+    parts = ax.violinplot([list(g) for g in groups], positions=positions,
+                          widths=bar_width(), showextrema=False, showmedians=False,
+                          vert=vertical)
+    for body, fill in zip(parts["bodies"], fills):
+        body.set_facecolor(fill)
+        body.set_alpha(ALPHA)
+        body.set_linewidth(0)
+    # The median as a short rule, in ink: a violin with no median cannot be read against another.
+    for position, values, in zip(positions, groups):
+        values = [v for v in values if v == v]
+        if not values:
+            continue
+        median = sorted(values)[len(values) // 2]
+        span = bar_width() * 0.42
+        if vertical:
+            ax.plot([position - span, position + span], [median, median],
+                    color=INK, linewidth=0.9, zorder=4, solid_capstyle="butt")
+        else:
+            ax.plot([median, median], [position - span, position + span],
+                    color=INK, linewidth=0.9, zorder=4, solid_capstyle="butt")
+    for position, values, fill in zip(positions, groups, fills):
+        values = [v for v in values if v == v]
+        show = (len(values) <= MAX_POINTS_DRAWN_OVER) if draw_points is None else draw_points
+        if not show or not values:
+            continue
+        jitter = _spread(len(values), bar_width() * 0.30)
+        at = [position + j for j in jitter]
+        xs, ys = (at, values) if vertical else (values, at)
+        ax.plot(xs, ys, "o", markersize=1.9, markerfacecolor=fill, markeredgecolor=INK,
+                markeredgewidth=0.25, alpha=ALPHA, linestyle="none", zorder=5)
+    return parts
+
+
+def _spread(n: int, half_width: float) -> list:
+    """Deterministic offsets across a slot, so a redraw puts the points back where they were."""
+    if n == 1:
+        return [0.0]
+    step = (2.0 * half_width) / (n - 1)
+    return [-half_width + i * step for i in range(n)]
+
+
 def letter(fig, text: str) -> None:
     """The panel letter: bold, top-left, outside the plotting area."""
     fig.text(0.012, 0.985, text, fontsize=7.5, fontweight="bold", color=INK,

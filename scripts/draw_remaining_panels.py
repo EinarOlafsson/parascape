@@ -25,7 +25,7 @@ sys.path.insert(0, ROOT)
 
 from parascape import figstyle as FS      # noqa: E402
 
-OUT = os.path.join(ROOT, "results", "paper_panels_2026_11_18")
+OUT = os.path.join(ROOT, "results", "paper_panels_2026_11_19")
 
 
 def newest(pattern: str) -> str:
@@ -183,14 +183,45 @@ def figure7():
 
 
 def figure8():
+    """Figure 8: how variable each class of gene is between strains, as a violin per class.
+
+    This was a bar per class, and it should never have been: the smallest class holds 171 genes
+    and the largest 1,253, so every bar was the mean of a distribution the reader could not see.
+    More than twenty values per group is a violin by the house rules.
+
+    The length-matched baseline stays as a dashed reference, because a class mean above it is the
+    whole claim and a violin alone would not say what "high" means. The two classes furthest above
+    the baseline carry the series colour; the rest are the grey reference.
+
+    The y axis is clipped at the 99th percentile: a handful of genes with one synonymous SNP and
+    several nonsynonymous ones carry ratios in the tens, and letting them set the scale squashed
+    every violin into the bottom twentieth of the panel.
+    """
+    g = pd.read_csv(newest("strain_variation_by_class_*/per_gene.tsv"), sep="\t")
     c = pd.read_csv(newest("strain_variation_by_class_*/by_class.tsv"), sep="\t")
     c = c.sort_values("ratio")
-    labels = [s.split(" (")[0] for s in c["class"]]
-    top = labels[-2:]
-    fig = bars(list(c["ratio"]), labels,
-               "nonsynonymous over synonymous SNPs between strains",
-               highlight=set(top), reference=float(c["length_matched_baseline"].median()),
-               letter="a", height=54.0, ref_label="length-matched baseline")
+    names = [s.split(" (")[0] for s in c["class"]]
+    groups = [g.loc[g["class"] == full, "ratio"].dropna().to_numpy() for full in c["class"]]
+    top = set(names[-2:])
+    baseline = float(c["length_matched_baseline"].median())
+    ceiling = float(np.percentile(np.concatenate(groups), 99))
+    FS.use()
+    fig, ax = FS.figure(len(groups), height_mm=56.0, vertical=True)
+    FS.violin(ax, [np.clip(v, 0, ceiling) for v in groups], names,
+              control=[n for n in names if n not in top], vertical=True, draw_points=False)
+    ax.axhline(baseline, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=4)
+    ax.annotate("length-matched baseline", (-0.46, baseline), xytext=(0, 3),
+                textcoords="offset points", fontsize=5.0, color=FS.INK, ha="left", va="bottom")
+    for i, row in enumerate(c.itertuples()):
+        ax.annotate(f"{row.ratio:.2f}", (i, ceiling * 1.02), fontsize=5.4, ha="center",
+                    va="bottom", color=FS.SERIES[0] if names[i] in top else FS.INK)
+    ax.set_xticks(range(len(names)))
+    ax.set_xticklabels([n.replace(" ", "\n", 1) for n in names], fontsize=5.2)
+    ax.set_ylabel("nonsynonymous over synonymous SNPs,\nper gene", fontsize=6.0, labelpad=2)
+    ax.set_ylim(0, ceiling * 1.14)
+    ax.tick_params(axis="both", labelsize=5.5, pad=1.5)
+    ax.tick_params(axis="x", length=0)
+    FS.letter(fig, "a")
     return fig
 
 
@@ -228,8 +259,10 @@ def figure10():
     ax.set_yticks(y)
     # 222100 is the accession fragment the source uses for the effector the paper discovered.
     names = {"222100": "SOS1"}
-    ax.set_yticklabels([f"{names.get(r.effector, r.effector)}{' *' if r.translocon else ''}"
-                        for r in e.itertuples()], fontsize=5.8)
+    # Gene names in italic, as the house rules require. The translocon asterisk stays upright,
+    # because it is a footnote mark and not part of the name.
+    ax.set_yticklabels([f"$\\it{{{names.get(r.effector, r.effector)}}}$"
+                        f"{' *' if r.translocon else ''}" for r in e.itertuples()], fontsize=5.8)
     ax.set_xlabel("host genes moved", fontsize=6.0, labelpad=2)
     ax.set_ylim(-0.6, len(e) - 0.4)
     ax.tick_params(axis="y", length=0, pad=2)
@@ -245,33 +278,163 @@ def figure10():
     return fig
 
 
+#: What each prediction target IS, in words. The identifier stays the record; this is the display
+#: layer the house rules ask for, because a figure that says `pb_transferred_phenotype` makes the
+#: reader look it up, and three of these were truncated mid-word by the old 26-character cut.
+TARGET_NAMES = {
+    "lopit_pf_location": "where it is (Plasmodium hyperLOPIT)",
+    "lopit_unified": "where it is (unified hyperLOPIT)",
+    "compartment": "which compartment it is in",
+    "cellcycle_phase": "which cell cycle phase it peaks in",
+    "is_exported": "whether it is exported",
+    "dtm_class": "its coarse functional class",
+    "pb_transferred_phenotype": "phenotype carried over from P. berghei",
+    "screen_any_phenotype": "any phenotype in a screen",
+    "screen_actin_phenotype": "an actin phenotype in a screen",
+    "screen_egress_phenotype": "an egress phenotype in a screen",
+    "screen_apicoplast_phenotype": "an apicoplast phenotype in a screen",
+    "screen_replication_phenotype": "a replication phenotype in a screen",
+}
+
+
 def figure11():
+    """Figure 11: how much better than guessing each missing fact can be filled in.
+
+    Bars of the BEST strategy per target, with every strategy tried drawn over them as points --
+    fourteen or fifteen per target, which is under the twenty above which a bar is refused, so the
+    house rules call for the individual values on top rather than a summary alone. The points are
+    what stops a bar being read as "this target is predictable": where they scatter across zero,
+    the best strategy is the best of a bad set.
+    """
     b = pd.read_csv(newest("filling_the_map_*/best_per_target.tsv"), sep="\t")
+    allv = pd.read_csv(newest("filling_the_map_*/by_target_and_strategy.tsv"), sep="\t")
     b = b.sort_values("lift_over_baseline")
     FS.use()
-    fig, ax = FS.figure(len(b), height_mm=56.0)
+    fig, ax = FS.figure(len(b), height_mm=60.0)
     y = list(range(len(b)))
     wins = b["lift_over_baseline"] > 0
     ax.barh(y, b["lift_over_baseline"], height=FS.bar_width(), linewidth=0,
             color=[FS.SERIES[0] if w else FS.CONTROL for w in wins], alpha=FS.ALPHA)
+    for i, target in enumerate(b["target"]):
+        values = allv.loc[allv["target"] == target, "lift_over_baseline"].dropna().to_numpy()
+        if not len(values):
+            continue
+        offsets = FS._spread(len(values), FS.bar_width() * 0.30)
+        ax.plot(values, [i + o for o in offsets], "o", markersize=1.7,
+                markerfacecolor="none", markeredgecolor=FS.INK, markeredgewidth=0.3,
+                alpha=FS.ALPHA, linestyle="none", zorder=5)
     ax.axvline(0, color=FS.INK, linewidth=0.6)
     for i, row in enumerate(b.itertuples()):
-        # ALWAYS to the right of zero. Writing the negative ones leftwards put them straight
-        # through the target names on the y axis.
         ax.annotate(f"{row.right_when_answered:.0%} vs {row.commonest_answer_baseline:.0%}, "
                     f"answers {row.answer_rate:.0%}",
-                    (max(row.lift_over_baseline, 0.0), i), xytext=(4, 0),
+                    (max(row.lift_over_baseline, 0.0), i), xytext=(5, 0),
                     textcoords="offset points", va="center", ha="left",
                     fontsize=4.9, color=FS.INK if row.lift_over_baseline > 0 else FS.CONTROL)
     ax.set_yticks(y)
-    ax.set_yticklabels([t[:26] for t in b["target"]], fontsize=5.6)
+    ax.set_yticklabels([TARGET_NAMES.get(t, t) for t in b["target"]], fontsize=5.4)
     ax.set_xlabel("accuracy above guessing the commonest answer", fontsize=6.0, labelpad=2)
-    ax.set_xlim(-0.12, 0.80)
+    # The limit has to fit the POINTS, not just the bars: hard-coding -0.18 pushed the worst
+    # strategies out under the target names.
+    left = float(allv["lift_over_baseline"].min())
+    ax.set_xlim(min(left, 0.0) - 0.04, 0.86)
+    ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8])
+    ax.set_xticklabels(["0", "20%", "40%", "60%", "80%"], fontsize=5.5)
     ax.set_ylim(-0.6, len(b) - 0.4)
     ax.tick_params(axis="y", length=0, pad=2)
-    ax.tick_params(axis="x", labelsize=5.5, pad=1.5)
+    ax.tick_params(axis="x", pad=1.5)
     ax.spines["left"].set_visible(False)
     FS.letter(fig, "a")
+    return fig
+
+
+def figure05_violin():
+    """Figure 5b: the EVIDENCE behind the counts of 5a, as a violin per subtype.
+
+    5a is five counts, and five points is a bar by the house rule. But the counts are a threshold
+    applied to 201 per-contrast q values per subtype, and 201 values is a distribution: the rule
+    says it may not be a bar, and the distribution says more than the count does. A subtype nothing
+    reaches has its whole violin pushed against 1.0, not merely a short bar.
+    """
+    c = pd.read_csv(newest("bradyzoite_reach_*/contrasts.tsv"), sep="\t")
+    subtypes = [s for s in "ABCDE" if f"q_{s}" in c.columns]
+    groups = [c[f"q_{s}"].dropna().to_numpy() for s in subtypes]
+    reached = [int((c[f"q_{s}"] < 0.05).sum()) for s in subtypes]
+    weakest = subtypes[int(np.argmin(reached))]
+    FS.use()
+    fig, ax = FS.figure(len(subtypes), height_mm=52.0, vertical=True)
+    FS.violin(ax, groups, [f"subtype {s}" for s in subtypes],
+              control=[f"subtype {s}" for s in subtypes if s != weakest], vertical=True)
+    ax.axhline(0.05, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=3)
+    # On the LEFT, above the line: at the right it landed on the subtype E violin and its median.
+    ax.annotate("q = 0.05", (-0.48, 0.05), xytext=(0, 3), textcoords="offset points",
+                fontsize=5.0, color=FS.INK, ha="left", va="bottom")
+    for i, (s, n) in enumerate(zip(subtypes, reached)):
+        ax.annotate(f"{n}", (i, 1.03), fontsize=5.6, ha="center", va="bottom",
+                    color=FS.SERIES[0] if s == weakest else FS.INK)
+    ax.set_xticks(range(len(subtypes)))
+    ax.set_xticklabels([f"subtype {s}" for s in subtypes], fontsize=6.0)
+    ax.set_ylabel(f"q per contrast, all {len(c):,} contrasts", fontsize=6.0, labelpad=2)
+    ax.set_ylim(-0.03, 1.12)
+    ax.set_yticks([0, 0.5, 1.0])
+    ax.tick_params(axis="both", labelsize=5.5, pad=1.5)
+    ax.tick_params(axis="x", length=0)
+    FS.letter(fig, "b")
+    return fig
+
+
+def figure12a():
+    """Figure 12a: per category of knowledge, the share of genes nothing has ever measured.
+
+    One value per category, so bars -- and the categories are the point, so the two worst carry the
+    series colour and the rest are the grey reference. Drawn from the run that splits predicted
+    structure from measured structure, which is the pair this panel exists to separate.
+    """
+    t = pd.read_csv(newest("measured_absence_*/by_category.tsv"), sep="\t")
+    t = t.sort_values("share_measured")
+    share_absent = (1.0 - t["share_measured"]).tolist()
+    labels = [c.replace("_", " ") for c in t["category"]]
+    # labels[0] is the LOWEST share measured, which is the HIGHEST share absent -- and barh puts
+    # index 0 at the bottom. The first draft highlighted labels[-2:], which coloured transcript and
+    # chromatin: the two categories that reach almost every gene, the opposite of the point.
+    fig = bars(share_absent, labels, "share of 8,140 genes nothing has ever measured that way",
+               highlight=set(labels[:2]), letter="a", height=58.0, fmt="{:.1%}")
+    ax = fig.axes[0]
+    ax.set_xlim(0, 1.16)
+    ax.set_xticks([0, 0.5, 1.0])
+    ax.set_xticklabels(["0", "50%", "100%"], fontsize=5.5)
+    return fig
+
+
+def figure12b():
+    """Figure 12b: how many of the categories measure a given gene, over all 8,140 genes.
+
+    ONE violin, not two. The first draft split the genes at the median of the very quantity it
+    plots, which guarantees the difference it appears to show: a group defined as "above the
+    median" is above the median by construction and the panel proves nothing. A single
+    distribution with the sparse tail marked is the honest form, and a count per gene over 8,140
+    genes is a distribution, which the house rules forbid drawing as a bar chart.
+    """
+    g = pd.read_csv(newest("measured_absence_*/categories_per_gene.tsv"), sep="\t")
+    counts = g["categories_with_a_value"].dropna()
+    sparse = int((counts <= 2).sum())
+    FS.use()
+    fig, ax = FS.figure(2, height_mm=52.0, vertical=True)
+    FS.violin(ax, [counts.to_numpy()], ["all genes"], control=["all genes"], vertical=True,
+              draw_points=False)
+    ax.axhline(2.5, color=FS.SERIES[0], linewidth=0.7, linestyle=(0, (3, 2)), zorder=4)
+    ax.annotate(f"{sparse} genes carry anything in two\ncategories or fewer, of {int(counts.max())}",
+                (0.42, 2.5), xytext=(0, 4), textcoords="offset points", fontsize=5.4,
+                color=FS.SERIES[0], ha="left", va="bottom")
+    ax.annotate(f"median {int(counts.median())}", (0.0, float(counts.median())), xytext=(14, 0),
+                textcoords="offset points", fontsize=5.4, color=FS.INK, ha="left", va="center")
+    ax.set_xticks([0])
+    ax.set_xticklabels([f"all {len(counts):,} genes"], fontsize=6.0)
+    ax.set_xlim(-0.75, 1.25)
+    ax.set_ylabel("categories of knowledge\nwith any value, per gene", fontsize=6.0, labelpad=2)
+    ax.set_ylim(0, float(counts.max()) + 1.2)
+    ax.tick_params(axis="both", labelsize=5.5, pad=1.5)
+    ax.tick_params(axis="x", length=0)
+    FS.letter(fig, "b")
     return fig
 
 
@@ -279,7 +442,10 @@ def main() -> None:
     for name, fn in (("figure02_comparability", figure2), ("figure03_modules", figure3),
                      ("figure04_what_structures", figure4), ("figure07_network_layers", figure7),
                      ("figure08_strain_variation", figure8), ("figure09_species_transfer", figure9),
-                     ("figure10_host_shared", figure10), ("figure11_filling_the_map", figure11)):
+                     ("figure10_host_shared", figure10), ("figure11_filling_the_map", figure11),
+                     ("figure05b_reach_violin", figure05_violin),
+                     ("figure12a_measured_absence", figure12a),
+                     ("figure12b_categories_per_gene", figure12b)):
         save(fn(), name)
     print("wrote", OUT)
 

@@ -33,7 +33,10 @@ ORDER = (
     ("translation", "How it is translated"),
     ("protein_abundance", "How much protein there is"),
     ("modification", "How it is modified"),
-    ("structure", "Its shape"),
+    # Split 2026-11-19: a predicted shape and a measured one are different evidence and read
+    # as different lines, so a reader is never told the fold is known when only a model is.
+    ("structure_computed", "Its predicted shape"),
+    ("structure_measured", "Measured evidence about its shape"),
     ("domain", "Its domains"),
     ("conservation", "Across species and strains"),
     ("host_response", "What it does to the host"),
@@ -576,7 +579,8 @@ def synthesis(reading: GeneReading) -> list:
                                    f"in {escape(name)}"
                                    f"{' (' + source_links(_text(head.get('reference', ''))) + ')' if _text(head.get('reference', '')) else ''}; "
                                    f"{len(rows)} fitness measurements in all, from {_datasets(rows)}."))
-    for category in ("phenotype", "structure", "domain", "function_extra"):
+    for category in ("phenotype", "structure_computed", "structure_measured", "domain",
+                     "function_extra"):
         if category not in facts:
             continue
         rows = informative(facts[category])

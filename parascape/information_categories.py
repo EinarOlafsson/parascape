@@ -64,7 +64,16 @@ CATEGORIES = {
     "modification": "Which covalent modifications the molecule carries (PTM sites, m6A).",
     "interaction": "Which other molecules it is physically with.",
     "sequence": "What the primary sequence is and what can be read directly off it.",
-    "structure": "What the folded shape is, and how confidently it is known.",
+    # Split on 2026-11-19 at Einar's instruction: "for B structure is via alpha fold there should
+    # be a computational structure and a experiential evidence structure category". One category
+    # read as though the fold were known for almost every protein, which is true only of MODELS.
+    # A predicted fold and a measured one are different evidence and must not share a bar.
+    "structure_computed": "What the folded shape is PREDICTED to be, and how confident the "
+                          "prediction is -- AlphaFold, AF3, and anything computed over those "
+                          "models (Foldseek neighbours, 3Di strings). A model, not an observation.",
+    "structure_measured": "Experimental evidence about the real folded molecule -- thermal "
+                          "stability of the fold (meltome, CETSA) and crosslink restraints that "
+                          "agree or disagree with a model. Measured on protein that existed.",
     "domain": "Which known families and domains the protein contains.",
     "conservation": "How the gene is distributed and constrained across species and strains.",
     "chromatin": "The state of the locus itself: accessibility, histone marks, factor occupancy.",
@@ -131,13 +140,13 @@ LEVEL_KIND_CATEGORIES = {
     ("post_translation", "IP-MS"): ("interaction",),
     ("post_translation", "XLMS"): ("interaction",),
     ("post_translation", "phosphoproteomics"): ("modification",),
-    ("post_translation", "structure"): ("structure",),
-    ("post_translation", "computed structure"): ("structure",),
+    ("post_translation", "structure"): ("structure_computed",),   # Foldseek, over AlphaFold models
+    ("post_translation", "computed structure"): ("structure_computed",),
     ("reference", "domains"): ("domain",),
     ("reference", "identity"): ("identity",),
     ("reference", "orthology"): ("conservation",),
     ("reference", "sequence"): ("sequence",),
-    ("reference", "structure"): ("structure",),
+    ("reference", "structure"): ("structure_computed",),          # AlphaFold DB confidence
     ("reference", "variation"): ("conservation",),
     ("reference", "crosslink_MS"): ("interaction",),
     ("reference", "annotation"): ("sequence",),
@@ -214,8 +223,10 @@ DATASET_CATEGORIES = {
     "myristoylome": (("modification",), "N-myristoylation confidence"),
     "cdpk1_substrates": (("modification",), "thiophosphorylated peptides: a phosphorylation readout"),
     "pride_proximity": (("interaction",), "proximity partners per gene"),
-    "melting_temperature": (("structure",), "a protein's melting temperature: a property of the fold"),
-    "thermal_shift_cetsa": (("structure",),
+    "melting_temperature": (("structure_measured",),
+                        "a melting temperature measured on real protein: evidence about the fold "
+                        "itself, not a prediction of it"),
+    "thermal_shift_cetsa": (("structure_measured",),
                             "how far the melting curve moves with calcium: fold stability and "
                             "ligand engagement, not abundance"),
     # Levels that are true but too coarse.
@@ -240,7 +251,9 @@ DATASET_CATEGORIES = {
     "orthomcl": (("identity", "conservation"),
                  "the orthogroup accession. It is the protected GROUP key of every split, so it is "
                  "never a feature (`identity`), and it is also homology knowledge (`conservation`)"),
-    "foldseek_struct": (("structure",), "structural neighbours at TM >= 0.7 over AlphaFold models"),
+    "foldseek_struct": (("structure_computed",),
+                    "structural neighbours at TM >= 0.7 over AlphaFold MODELS, so the neighbour "
+                    "is only as real as the model it was found over"),
 }
 
 # --------------------------------------------------------------------------- rule 1: single columns
@@ -249,7 +262,7 @@ DATASET_CATEGORIES = {
 COLUMN_CATEGORIES = {
     "iron_depletion_rna_log2fc": (("transcript",),
                                   "the RNA arm of a proteomics deposit: transcript, not abundance"),
-    "best_model_agreement": (("interaction", "structure"),
+    "best_model_agreement": (("interaction", "structure_measured"),
                              "how well the measured crosslinks agree with the predicted complex: "
                              "an interaction measurement used as a structural check"),
     "n_holes": (("interaction", "attention", "transcript", "fitness"),
@@ -268,7 +281,7 @@ COLUMN_CATEGORIES = {
     "has_pf_ortholog": (("conservation",), "whether a Plasmodium falciparum ortholog exists"),
     "has_cp_ortholog": (("conservation",), "whether a Cryptosporidium ortholog exists"),
     "lineage_specific": (("conservation",), "no ortholog outside the lineage"),
-    "has_structure": (("structure",), "whether a model of the fold exists at all"),
+    "has_structure": (("structure_computed",), "whether a MODEL of the fold exists at all"),
     "ortholopit_label": (("place",),
                          "hyperLOPIT niche transferred from an ortholog. TAGM-derived, so `place`: "
                          "the trap the trait name hides, since no dataset entry claims it"),
@@ -304,11 +317,11 @@ COLUMN_CATEGORIES = {
                                      "rhoptry|ROP\\d+. The second arm reads a localisation word out "
                                      "of the annotation, so this column carries `place`"),
     # Sequence-trait columns that are structural rather than sequence.
-    "tdi_source": (("structure",), "which structure the 3Di string came from"),
-    "tdi_coverage": (("structure",), "fraction of residues with a real 3Di letter"),
-    "tdi_n_fragments": (("structure",), "how many models were merged into the 3Di string"),
-    "tdi_align_identity": (("structure",), "identity of the alignment that transferred the 3Di string"),
-    "tdi_align_coverage": (("structure",), "coverage of the alignment that transferred the 3Di string"),
+    "tdi_source": (("structure_computed",), "which structure the 3Di string came from"),
+    "tdi_coverage": (("structure_computed",), "fraction of residues with a real 3Di letter"),
+    "tdi_n_fragments": (("structure_computed",), "how many models were merged into the 3Di string"),
+    "tdi_align_identity": (("structure_computed",), "identity of the alignment that transferred the 3Di string"),
+    "tdi_align_coverage": (("structure_computed",), "coverage of the alignment that transferred the 3Di string"),
 }
 
 # --------------------------------------------------------------------------- rule 2: name overrides
@@ -370,7 +383,7 @@ PATTERNS = (
      "a named domain class built from the InterPro and Pfam lists quoted in the release README"),
     (re.compile(r"^(n_interpro_domains|n_pfam_domains|has_any_domain|domain_novel)$"),
      ("domain",), "release_registry", "counts and flags over the same domain table"),
-    (re.compile(r"^tdi_"), ("structure",), "release_registry",
+    (re.compile(r"^tdi_"), ("structure_computed",), "release_registry",
      "sequence_traits README: a Foldseek 3Di string, the structural alphabet and not the sequence"),
     (re.compile(r"^seq_|_len$|^n_tm$|^has_signal_peptide$|^flanks_identical$|_side$"),
      ("sequence",), "release_registry",

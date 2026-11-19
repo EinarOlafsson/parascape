@@ -1,0 +1,15 @@
+category	description	columns	genes_measured	genes_never_measured	share_measured
+host_response	How the host cell or host immune system responds to the parasite or protein.	28	433	7707	0.05319410319410319
+phenotype	What is observed when the gene is perturbed -- imaging, drug sensitivity, differentiation.	16	558	7582	0.06855036855036856
+function	What the protein is held to DO: GO terms, EC numbers, coarse functional class.	1	1313	6827	0.1613022113022113
+interaction	Which other molecules it is physically with.	12	3131	5009	0.38464373464373464
+structure_measured	Experimental evidence about the real folded molecule -- thermal stability of the fold (meltome, CETSA) and crosslink restraints that agree or disagree with a model. Measured on protein that existed.	3	3649	4491	0.4482800982800983
+place	Where in the cell, or at which interface, the protein is -- localisation knowledge.	41	4018	4122	0.49361179361179364
+modification	Which covalent modifications the molecule carries (PTM sites, m6A).	17	4814	3326	0.5914004914004914
+protein_abundance	How much of the protein there is.	26	5262	2878	0.6464373464373464
+sequence	What the primary sequence is and what can be read directly off it.	13	6167	1973	0.7576167076167076
+fitness	How much the parasite needs the gene to survive or grow in some condition.	46	7631	509	0.9374692874692875
+structure_computed	What the folded shape is PREDICTED to be, and how confident the prediction is -- AlphaFold, AF3, and anything computed over those models (Foldseek neighbours, 3Di strings). A model, not an observation.	10	7683	457	0.9438574938574938
+translation	How much of that RNA is being translated -- ribosome occupancy and efficiency.	46	7989	151	0.9814496314496315
+chromatin	The state of the locus itself: accessibility, histone marks, factor occupancy.	2	8020	120	0.9852579852579852
+transcript	How much RNA of the gene there is, in some state or contrast.	173	8131	9	0.9988943488943489

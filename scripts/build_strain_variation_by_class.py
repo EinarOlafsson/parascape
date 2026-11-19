@@ -104,10 +104,16 @@ def main() -> None:
     ratio_by_position = usable["ratio"].reindex(order).to_numpy(dtype=float)
     rng = np.random.default_rng(0)
 
-    rows = []
+    rows, per_gene = [], []
     for name, mask in classes(usable).items():
         members = list(usable.index[mask])
         observed = float(usable.loc[members, "ratio"].mean())
+        # The PER-GENE ratios, kept so the figure can show the distribution the class mean hides.
+        # A class of 1,253 genes summarised as one bar is the thing the house rules refuse: more
+        # than twenty values per group is a violin. A gene in two classes appears in both.
+        per_gene.extend({"class": name, "gene_id": g, "ratio": float(v),
+                         "length": float(usable.at[g, "length"])}
+                        for g, v in usable.loc[members, "ratio"].items())
         picks = matched_null(rng, members, order, position, N_NULL)
         draws = np.nanmean(ratio_by_position[picks], axis=1)
         null_mean, null_sd = float(draws.mean()), float(draws.std(ddof=1))
@@ -135,6 +141,7 @@ def main() -> None:
     out = os.path.join(ROOT, "results", f"strain_variation_by_class_{date.today():%Y_%m_%d}")
     os.makedirs(out, exist_ok=True)
     table.to_csv(os.path.join(out, "by_class.tsv"), sep="\t", index=False)
+    pd.DataFrame(per_gene).to_csv(os.path.join(out, "per_gene.tsv"), sep="\t", index=False)
     json.dump({"genes_with_a_ratio": int(len(usable)), "n_null": N_NULL,
                "match": "coding length", "classes": table.to_dict("records")},
               open(os.path.join(out, "summary.json"), "w"), indent=2, default=float)

@@ -75,8 +75,19 @@ HOST_TRANSCRIPTS = (
 #: Further single-host competitive references (resolved from the same Ensembl release-116 FTP listing on
 #: 2026-11-01). ME49_host stays human + mouse so existing results keep their meaning; dual RNA-seq from
 #: another host needs that host's transcripts present, or its conserved genes can be counted as parasite.
+#: ME49_host carries BOTH human and mouse, which is why it is 2.03 GB where every single-host
+#: reference is about 0.2 GB -- human and mouse are densely annotated and each contributes a full
+#: cDNA and ncRNA set. That size is what kallisto 0.52.0 deadlocks on in single-end mode (measured
+#: 2026-11-19: the 0.22 GB ME49_cat index pseudoaligns the same 36 nt single-end reads in seconds,
+#: the 2.03 GB one hangs after loading the index and never processes a read). So each host also
+#: gets its OWN combined reference. A dual RNA-seq sample has one host, so a single-host index is
+#: the better reference anyway: the other host's transcripts only compete spuriously.
 HOST_REFERENCES = {
     "ME49_host": HOST_TRANSCRIPTS,
+    "ME49_human": (f"{ENSEMBL_MAIN}/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz",
+                   f"{ENSEMBL_MAIN}/homo_sapiens/ncrna/Homo_sapiens.GRCh38.ncrna.fa.gz"),
+    "ME49_mouse": (f"{ENSEMBL_MAIN}/mus_musculus/cdna/Mus_musculus.GRCm39.cdna.all.fa.gz",
+                   f"{ENSEMBL_MAIN}/mus_musculus/ncrna/Mus_musculus.GRCm39.ncrna.fa.gz"),
     "ME49_pig": (f"{ENSEMBL_MAIN}/sus_scrofa/cdna/Sus_scrofa.Sscrofa11.1.cdna.all.fa.gz",
                  f"{ENSEMBL_MAIN}/sus_scrofa/ncrna/Sus_scrofa.Sscrofa11.1.ncrna.fa.gz"),
     "ME49_cow": (f"{ENSEMBL_MAIN}/bos_taurus/cdna/Bos_taurus.ARS-UCD2.0.cdna.all.fa.gz",
@@ -724,12 +735,40 @@ def _salmon(ref: str, local: list, s_out: str) -> int | None:
     return mapped
 
 
+#: Kallisto against these references is not attempted for a SINGLE-END library, because it
+#: deadlocks (Einar 2026-11-19, "skip it, but still fix it and still analyse those samples").
+#: kallisto 0.52.0 against the 2.04 GB `ME49_host` index in `--single` mode burned a core for nine
+#: hours having read 1,439 MB of the 2,190 MB index and written nothing, in `futex_wait_queue`.
+#: The same reads, the same flags and `-t 1` against the 0.02 GB ME49 index finish in under a
+#: minute, and PAIRED-END libraries against this same index have run normally throughout -- so it
+#: is single-end plus a large index, and the stall is in loading the index rather than in
+#: pseudoalignment. Six runs of PRJDB16831 held 624 before this was skipped. Salmon against the
+#: same reference is unaffected and still runs, so these runs keep host numbers; what they lack is
+#: the kallisto column, and `KALLISTO_SKIPPED_FILE` records which and why rather than leaving a
+#: gap that reads as "not measured" -- the reason lands in `kallisto_failed` of done.json, which is
+#: where instruction 89 already put a tool that failed where the other succeeded.
+#: Reversible: set PARASCAPE_KALLISTO_SKIP_SINGLE_END empty.
+KALLISTO_SKIP_SINGLE_END = {ref.strip() for ref in
+                            os.environ.get("PARASCAPE_KALLISTO_SKIP_SINGLE_END", "ME49_host").split(",")
+                            if ref.strip()}
+#: No kallisto call may hold a worker forever. A deadlock that records itself after some hours
+#: costs one run; a deadlock that waits costs the queue, which is what happened. Generous rather
+#: than tight: the slowest legitimate kallisto run measured against the host index was 41 minutes.
+KALLISTO_TIMEOUT_S = float(os.environ.get("PARASCAPE_KALLISTO_TIMEOUT_S", "10800"))
+
+
 def _kallisto(ref: str, local: list, k_out: str) -> str | None:
     """Kallisto against one reference; returns the failure to record, or None."""
+    single = len(local) != 2
+    if single and ref in KALLISTO_SKIP_SINGLE_END:
+        return (f"not attempted: kallisto deadlocks on the large {ref} index for single-end reads "
+                f"(see KALLISTO_SKIP_SINGLE_END); salmon against {ref} is unaffected")
     k_reads = local if len(local) == 2 else ["--single", "-l", "200", "-s", "30", local[0]]
     try:
         run([os.path.join(BIN, "kallisto"), "quant", "-i", os.path.join(NAS, "references", ref, "kallisto.idx"),
-             "-o", k_out, "-t", str(THREADS), *k_reads])
+             "-o", k_out, "-t", str(THREADS), *k_reads], timeout=KALLISTO_TIMEOUT_S)
+    except subprocess.TimeoutExpired:
+        return f"timed out after {KALLISTO_TIMEOUT_S / 3600:.1f} h ({'single' if single else 'paired'}-end)"
     except subprocess.CalledProcessError as error:
         return f"exit {error.returncode}"
     _gzip(os.path.join(k_out, "abundance.tsv"))

@@ -1,0 +1,91 @@
+{
+  "datasets": 177,
+  "genes": 8140,
+  "columns_set_aside": 51,
+  "by_organism": {
+    "Anopheles": 2,
+    "Plasmodium": 55,
+    "Toxoplasma": 101,
+    "human": 15,
+    "mouse": 4
+  },
+  "by_level": {
+    "DNA": 26,
+    "post_translation": 46,
+    "reference": 44,
+    "transcription": 38,
+    "translation": 23
+  },
+  "coverage": [
+    {
+      "category": "transcript",
+      "columns": 173,
+      "share_measured": 0.9988943488943489
+    },
+    {
+      "category": "chromatin",
+      "columns": 2,
+      "share_measured": 0.9852579852579852
+    },
+    {
+      "category": "translation",
+      "columns": 46,
+      "share_measured": 0.9814496314496315
+    },
+    {
+      "category": "structure_computed",
+      "columns": 10,
+      "share_measured": 0.9438574938574938
+    },
+    {
+      "category": "fitness",
+      "columns": 46,
+      "share_measured": 0.9374692874692875
+    },
+    {
+      "category": "sequence",
+      "columns": 13,
+      "share_measured": 0.7576167076167076
+    },
+    {
+      "category": "protein_abundance",
+      "columns": 26,
+      "share_measured": 0.6464373464373464
+    },
+    {
+      "category": "modification",
+      "columns": 17,
+      "share_measured": 0.5914004914004914
+    },
+    {
+      "category": "place",
+      "columns": 41,
+      "share_measured": 0.49361179361179364
+    },
+    {
+      "category": "structure_measured",
+      "columns": 3,
+      "share_measured": 0.4482800982800983
+    },
+    {
+      "category": "interaction",
+      "columns": 12,
+      "share_measured": 0.38464373464373464
+    },
+    {
+      "category": "function",
+      "columns": 1,
+      "share_measured": 0.1613022113022113
+    },
+    {
+      "category": "phenotype",
+      "columns": 16,
+      "share_measured": 0.06855036855036856
+    },
+    {
+      "category": "host_response",
+      "columns": 28,
+      "share_measured": 0.05319410319410319
+    }
+  ]
+}
