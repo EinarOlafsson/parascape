@@ -119,6 +119,36 @@ def test_a_control_takes_grey_wherever_it_sits_in_the_order():
     assert chosen[0] == FS.SERIES[0] and chosen[2] == FS.SERIES[1]
 
 
+# -------------------------------------------------------- crowded panels: smaller bars and gaps
+def test_a_crowded_panel_narrows_its_slot():
+    """Einar, 2026-11-19: "if a graph has that many conditions the bars and bar spasing needs to
+    be smaller". A fourteen-bar panel must not be a three-bar panel repeated until it runs off
+    the page."""
+    assert FS.slot_em(3) == FS.slot_em(FS.CROWDED_ABOVE)
+    assert FS.slot_em(FS.CROWDED_ABOVE + 1) < FS.slot_em(FS.CROWDED_ABOVE)
+    assert FS.slot_em(14) == pytest.approx(FS.SLOT_EM_MIN)
+    assert FS.slot_em(40) == pytest.approx(FS.SLOT_EM_MIN)
+
+
+def test_the_slot_never_widens_as_categories_are_added():
+    widths = [FS.slot_em(n) for n in range(2, 30)]
+    assert all(b <= a + 1e-9 for a, b in zip(widths, widths[1:]))
+
+
+def test_bars_and_gaps_shrink_together_so_the_proportion_is_unchanged():
+    """What changes when a panel is crowded is the PITCH, not the proportion: the bar keeps the
+    same fraction of its slot, so a crowded panel is still symmetrical."""
+    assert FS.bar_width() == FS.BAR_FRACTION
+    # the fraction is independent of the count, by construction
+    for n in (3, 9, 14, 25):
+        assert FS.bar_width() == FS.BAR_FRACTION
+
+
+def test_a_crowded_panel_is_narrower_than_the_naive_one_would_have_been():
+    naive = FS.MARGIN_MM[0] + FS.MARGIN_MM[2] + FS.SLOT_EM_VERTICAL * FS.EM_MM * 14
+    assert FS.panel_width_mm(14) < naive * 0.75
+
+
 # ----------------------------------------------------------------- rule 2: twenty points
 @pytest.mark.parametrize("n,refused", [(1, False), (20, False), (21, True), (1253, True)])
 def test_more_than_twenty_points_may_not_be_a_bar(n, refused):

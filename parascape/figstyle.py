@@ -61,6 +61,27 @@ BAR_FRACTION = 0.62
 SLOT_EM_VERTICAL = 3.2
 SLOT_MM_VERTICAL = SLOT_EM_VERTICAL * EM_MM
 
+#: A panel with many conditions narrows its slot AND its bars (Einar, 2026-11-19: "if a graph has
+#: that many conditions the bars and bar spasing needs to be smaller"). Above CROWDED_ABOVE
+#: categories the slot shrinks towards SLOT_EM_MIN, so a fourteen-bar panel is not simply a
+#: three-bar panel repeated until it runs off the page. The bar keeps the same FRACTION of its
+#: slot, so bars and gaps shrink together and the panel stays symmetrical -- what changes is the
+#: pitch, not the proportion.
+CROWDED_ABOVE = 6
+SLOT_EM_MIN = 1.9
+
+
+def slot_em(n_categories: int, vertical: bool = True) -> float:
+    """The slot one category gets, in ems, narrowing once a panel is crowded."""
+    base = SLOT_EM_VERTICAL if vertical else SLOT_EM
+    if n_categories <= CROWDED_ABOVE:
+        return base
+    # Linear from the base at CROWDED_ABOVE down to the minimum at twice that, then flat: a panel
+    # with 30 categories is already as tight as it can be read at 8 pt.
+    span = max(CROWDED_ABOVE, 1)
+    t = min(1.0, (n_categories - CROWDED_ABOVE) / span)
+    return base + (SLOT_EM_MIN - base) * t
+
 #: Length of the VALUE axis, in ems. The same in every panel, so two panels differ only in how
 #: many categories they have.
 VALUE_EM = 20.0
@@ -109,13 +130,13 @@ def panel_width_mm(n_categories: int, vertical: bool = True) -> float:
     answers that one.
     """
     left, _bottom, right, _top = MARGIN_MM
-    return left + right + (SLOT_MM_VERTICAL if vertical else SLOT_MM) * n_categories
+    return left + right + slot_em(n_categories, vertical) * EM_MM * n_categories
 
 
 def panel_height_mm(n_categories: int) -> float:
     """How tall a HORIZONTAL (`barh`) panel showing `n_categories` must be."""
     _left, bottom, _right, top = MARGIN_MM
-    return bottom + top + SLOT_MM * n_categories
+    return bottom + top + slot_em(n_categories, False) * EM_MM * n_categories
 
 
 #: Length of the value axis, in millimetres, derived from the em like everything else.
@@ -140,10 +161,10 @@ def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False,
     """
     left, bottom, right, top = MARGIN_MM
     if vertical:
-        width_mm = left + right + SLOT_MM_VERTICAL * n_categories
+        width_mm = left + right + slot_em(n_categories, True) * EM_MM * n_categories
     else:
         width_mm = left + right + value_mm
-        height_mm = bottom + top + SLOT_MM * n_categories
+        height_mm = bottom + top + slot_em(n_categories, False) * EM_MM * n_categories
     fig = plt.figure(figsize=(width_mm / 25.4, height_mm / 25.4))
     ax = fig.add_axes([left / width_mm, bottom / height_mm,
                        (width_mm - left - right) / width_mm,
