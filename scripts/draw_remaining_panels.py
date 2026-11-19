@@ -17,6 +17,7 @@ import sys
 
 import matplotlib
 matplotlib.use("Agg")
+import matplotlib.ticker
 import numpy as np
 import pandas as pd
 
@@ -50,32 +51,27 @@ def save(fig, name: str) -> None:
 
 
 def bars(values, labels, ylabel, highlight=(), reference=None, letter="a", height=None,
-         fmt="{:.2f}", ref_label="", show_values=True):
-    """VERTICAL bars in the house geometry, with the value written above each one.
+         ref_label="", percent=False):
+    """Vertical bars in the house geometry. NOTHING is written on the plotting area.
 
-    Vertical by default now. Nine panels of this paper were horizontal, which is many more than
-    "rare occasion": a long category name fits beside a horizontal bar without any thought, and
-    that is a reason to shorten the name rather than to turn the graph on its side.
-
-    `height` is the length of the value axis in millimetres; left alone it is the house default,
-    so two panels of the same category count match exactly.
+    Einar, 2026-11-19: "there should only be text on x and y axes or in legends". So there is no
+    value above a bar, no baseline label beside its line, no n and no note in a corner. A
+    reference line is identified by a LEGEND ENTRY; every count belongs in the figure legend.
     """
     FS.use()
     fig, ax = FS.figure(len(values), height_mm=height or FS.VALUE_MM, vertical=True)
     FS.bars(ax, list(values), list(labels), highlight=set(highlight))
     if reference is not None:
-        ax.axhline(reference, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=4)
-        ax.annotate(ref_label or "baseline", (len(values) - 0.5, reference), xytext=(0, 2),
-                    textcoords="offset points", fontsize=FS.NOTE_PT, color=FS.INK,
-                    ha="right", va="bottom")
-    if show_values:
-        for i, (v, l) in enumerate(zip(values, labels)):
-            ax.annotate(fmt.format(v), (i, v), xytext=(0, 2), textcoords="offset points",
-                        ha="center", va="bottom", fontsize=FS.NOTE_PT,
-                        color=FS.SERIES[0] if l in highlight else FS.INK)
+        ax.axhline(reference, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=4,
+                   label=ref_label or "baseline")
+        FS.legend(ax, loc="upper right")
     ax.set_ylabel(ylabel)
-    ax.set_ylim(min(0.0, float(min(values)) * 1.25), float(max(values)) * 1.18)
+    span = list(values) + ([reference] if reference is not None else []) + [0.0]
+    FS.pad_limits(ax, span)
     ax.set_xlim(-0.6, len(values) - 0.4)
+    if percent:
+        ax.yaxis.set_major_formatter(
+            matplotlib.ticker.FuncFormatter(lambda v, _p: f"{v * 100:.0f}"))
     FS.letter(fig, letter)
     return fig
 
@@ -94,13 +90,10 @@ def figure2():
     ax.plot(c.loc[better, "median_agreement_before"], c.loc[better, "median_agreement_after"],
             "o", color=FS.SERIES[0], markersize=3.6, markeredgewidth=0, alpha=FS.ALPHA, zorder=3)
     ax.set_xlim(lo, hi); ax.set_ylim(lo, hi)
-    ax.set_xlabel("agreement with the other studies, before")
-    ax.set_ylabel("after removing the cell-cycle axis")
-    ax.tick_params(labelsize=5.5, pad=1.5)
-    ax.annotate(f"{int(better.sum())} of {len(c)} studies agree better\nwith the rest once cell "
-                f"cycle is removed", (hi - 0.005, lo + 0.008), fontsize=FS.NOTE_PT, color="#7d7d7d",
-                ha="right", va="bottom", linespacing=1.4)
-    FS.letter(fig, "a")
+    ax.set_xlabel("Spearman $\\rho$, all axes")
+    ax.set_ylabel("Spearman $\\rho$, cell cycle removed")
+    FS.letter(fig, "")          # figure 2 is a single panel, so it carries no letter
+
     return fig
 
 
@@ -110,15 +103,12 @@ def figure3():
     # Short labels, because they are now written under a vertical bar. The module number is the
     # identifier and stays; the compartment name loses its underscores.
     labels = [f"{r.compartment.replace('_', ' ')} {int(r.module)}" for r in named.itertuples()]
-    fig = bars(list(named["share"]), labels, "share of the module",
-               highlight={labels[-1]}, letter="a", fmt="{:.0%}", show_values=False)
+    fig = bars(list(named["share"]), labels, "Genes in compartment (%)",
+               highlight={labels[-1]}, letter="", percent=True)
     ax = fig.axes[0]
-    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8])
-    ax.set_yticklabels(["0", "20%", "40%", "60%", "80%"])
     ax.plot(range(len(named)), named["matched_baseline"], "_", color=FS.INK, markersize=5,
-            markeredgewidth=0.9, zorder=5)
-    ax.annotate("_ matched baseline", (0.99, 0.98), xycoords="axes fraction",
-                fontsize=FS.NOTE_PT, color=FS.INK, ha="right", va="top")
+            markeredgewidth=0.9, zorder=5, linestyle="none", label="Size-matched random set")
+    FS.legend(ax, loc="upper left")
     return fig
 
 
@@ -126,10 +116,11 @@ def figure4():
     """Distributions of pair similarity: more than twenty values, so a box and never a bar."""
     p = pd.read_csv(newest("what_structures_contrasts_*/pairs.tsv"), sep="\t")
     p["abs_rho"] = p["rho"].abs()
-    groups = [("same\nstudy", p[p["same_study"]]["abs_rho"]),
-              ("across studies,\nsame kind", p[(~p["same_study"]) & p["same_axis"]]["abs_rho"]),
-              ("across studies,\nother kind",
-               p[(~p["same_study"]) & (~p["same_axis"])]["abs_rho"])]
+    # SHORT labels, tilted. Spelled out in the figure legend, per the skill: a 3-condition panel
+    # is 38 mm wide and three two-line phrases written flat ran straight through each other.
+    groups = [("Same study", p[p["same_study"]]["abs_rho"]),
+              ("Same kind", p[(~p["same_study"]) & p["same_axis"]]["abs_rho"]),
+              ("Other kind", p[(~p["same_study"]) & (~p["same_axis"])]["abs_rho"])]
     FS.use()
     fig, ax = FS.figure(len(groups), height_mm=52.0, vertical=True)
     box = ax.boxplot([g.to_numpy() for _n, g in groups], widths=FS.bar_width(),
@@ -138,18 +129,16 @@ def figure4():
                      whiskerprops=dict(color=FS.INK, linewidth=0.5),
                      capprops=dict(color=FS.INK, linewidth=0.5),
                      boxprops=dict(linewidth=0))
-    for patch, name in zip(box["boxes"], [n for n, _g in groups]):
-        # match on the first word, not the whole label: renaming "same study" to
-        # "same\nstudy" for the axis silently turned the highlighted box grey.
-        patch.set_facecolor(FS.SERIES[0] if name.split()[0] == "same" else FS.CONTROL)
+    # The accent is on the FIRST group by position, not by matching its label text. Matching on
+    # the label has now silently turned this box grey TWICE, once for a line break and once for a
+    # capital letter; position cannot drift when a label is reworded.
+    for i, patch in enumerate(box["boxes"]):
+        patch.set_facecolor(FS.ACCENT if i == 0 else FS.CONTROL)
         patch.set_alpha(FS.ALPHA)
-    for i, (_n, g) in enumerate(groups, start=1):
-        ax.annotate(f"n = {len(g):,}\n{g.median():.3f}", (i, 0.97),
-                    xycoords=("data", "axes fraction"), fontsize=FS.NOTE_PT, ha="center", va="top",
-                    color=FS.INK, linespacing=1.35)
     ax.set_xticks(range(1, len(groups) + 1))
-    ax.set_xticklabels([n for n, _g in groups], fontsize=FS.NOTE_PT)
-    ax.set_ylabel("pair similarity (|Spearman|)")
+    ax.set_xticklabels([n for n, _g in groups], rotation=30, ha="right",
+                       rotation_mode="anchor")
+    ax.set_ylabel("|Spearman $\\rho$|")
     ax.set_ylim(0, 0.72)
     ax.tick_params(axis="x", length=0, pad=2)
     ax.tick_params(axis="y", pad=1.5)
@@ -197,8 +186,6 @@ def figure7():
                     [FS.INK if "ALL" in r.layer else FS.CONTROL for r in L.itertuples()])
     base = float(L["accuracy"].iloc[0] - L["lift"].iloc[0])
     ax.axhline(base, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=2)
-    ax.annotate("guessing the commonest compartment", (0.98, base), xycoords=("axes fraction", "data"),
-                xytext=(0, 3), textcoords="offset points", fontsize=FS.NOTE_PT, color=FS.INK, ha="right")
     ax.set_xscale("log")
     # Explicit ticks: the automatic minor labels on a log axis wrote 2x10^2, 3x10^2 and 4x10^2
     # through each other along the bottom.
@@ -209,10 +196,10 @@ def figure7():
     # Headroom at the right so a label beside the rightmost point is not cut off: "coexpression"
     # sat at 3,500 genes and ran off the page.
     ax.set_xlim(90, 13000)
-    ax.set_xlabel("genes the layer can answer for")
-    ax.set_ylabel("right when it answers")
+    ax.set_xlabel("Genes answered")
+    ax.set_ylabel("Accuracy (%)")
     ax.set_ylim(0.25, 0.80)
-    ax.tick_params(labelsize=5.5, pad=1.5)
+    ax.tick_params(pad=1.5)
     FS.letter(fig, "a")
     return fig
 
@@ -245,14 +232,7 @@ def figure8():
     FS.violin(ax, [np.clip(v, 0, ceiling) for v in groups], names,
               control=[n for n in names if n not in top], vertical=True, draw_points=False)
     ax.axhline(baseline, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=4)
-    ax.annotate("length-matched baseline", (-0.46, baseline), xytext=(0, 3),
-                textcoords="offset points", fontsize=FS.NOTE_PT, color=FS.INK, ha="left", va="bottom")
-    for i, row in enumerate(c.itertuples()):
-        ax.annotate(f"{row.ratio:.2f}", (i, ceiling * 1.02), fontsize=FS.NOTE_PT, ha="center",
-                    va="bottom", color=FS.SERIES[0] if names[i] in top else FS.INK)
-    ax.set_xticks(range(len(names)))
-    ax.set_xticklabels(names, rotation=30, ha="right", rotation_mode="anchor")
-    ax.set_ylabel("nonsynonymous / synonymous")
+    ax.set_ylabel("Nonsynonymous / synonymous SNPs")
     ax.set_ylim(0, ceiling * 1.14)
     ax.tick_params(axis="both", pad=1.5)
     ax.tick_params(axis="x", length=0)
@@ -270,12 +250,10 @@ def figure9():
     labels = [short.get(s, s) for s in L["layer"]]
     # Protein length is the CONTROL and therefore grey: it must transfer between true orthologues.
     fig = bars(list(L["transfer"]), labels, "share that transfers",
-               highlight={"where it is"}, letter="a", fmt="{:.2f}")
+               highlight={"where it is"}, letter="")
     ax = fig.axes[0]
     ax.plot(range(len(L)), L["baseline"], "_", color=FS.INK, markersize=5, markeredgewidth=0.9,
             zorder=5)
-    ax.annotate("_ chance", (0.99, 0.98), xycoords="axes fraction", fontsize=FS.NOTE_PT,
-                color=FS.INK, ha="right", va="top")
     return fig
 
 
@@ -300,14 +278,12 @@ def figure10():
     ax.set_xticklabels([f"$\\it{{{l.rstrip('*')}}}$" + ("*" if l.endswith("*") else "")
                         for l in labels], rotation=30, ha="right", rotation_mode="anchor")
     ax.tick_params(axis="x", length=0)
-    ax.set_ylabel("host genes moved")
+    ax.set_ylabel("Host genes")
     ax.set_xlim(-0.6, len(e) - 0.4)
     leg = ax.legend(frameon=False, loc="upper left", handlelength=0.9, borderaxespad=0.2,
                     labelspacing=0.3)
     for text in leg.get_texts():
         text.set_color(FS.INK)
-    ax.annotate("* translocon", (0.99, 0.98), xycoords="axes fraction", fontsize=FS.NOTE_PT,
-                color=FS.INK, ha="right", va="top")
     FS.letter(fig, "a")
     return fig
 
@@ -377,7 +353,7 @@ def figure11():
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=30, ha="right", rotation_mode="anchor")
     ax.tick_params(axis="x", length=0)
-    ax.set_ylabel("above guessing")
+    ax.set_ylabel("Accuracy above baseline (%)")
     ax.set_xlim(-0.6, len(b) - 0.4)
     low = float(allv["lift_over_baseline"].min())
     ax.set_ylim(min(low, 0.0) * 1.1, float(b["lift_over_baseline"].max()) * 1.2)
@@ -406,14 +382,8 @@ def figure05_violin():
               control=[f"subtype {s}" for s in subtypes if s != weakest], vertical=True)
     ax.axhline(0.05, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=3)
     # On the LEFT, above the line: at the right it landed on the subtype E violin and its median.
-    ax.annotate("q = 0.05", (-0.48, 0.05), xytext=(0, 3), textcoords="offset points",
-                fontsize=FS.NOTE_PT, color=FS.INK, ha="left", va="bottom")
-    for i, (s, n) in enumerate(zip(subtypes, reached)):
-        ax.annotate(f"{n}", (i, 1.03), fontsize=FS.NOTE_PT, ha="center", va="bottom",
-                    color=FS.SERIES[0] if s == weakest else FS.INK)
-    ax.set_xticks(range(len(subtypes)))
-    ax.set_xticklabels([f"subtype {s}" for s in subtypes])
-    ax.set_ylabel("q per contrast")
+    ax.set_xticklabels([s for s in subtypes])
+    ax.set_ylabel("$q$")
     ax.set_ylim(-0.03, 1.12)
     ax.set_yticks([0, 0.5, 1.0])
     ax.tick_params(axis="both", pad=1.5)
@@ -436,12 +406,11 @@ def figure12a():
     # labels[0] is the LOWEST share measured, which is the HIGHEST share absent -- and barh puts
     # index 0 at the bottom. The first draft highlighted labels[-2:], which coloured transcript and
     # chromatin: the two categories that reach almost every gene, the opposite of the point.
-    fig = bars(share_absent, labels, "never measured",
-               highlight=set(labels[:2]), letter="a", fmt="{:.0%}", show_values=False)
+    fig = bars(share_absent, labels, "Genes never measured (%)",
+               highlight=set(labels[:2]), letter="a", percent=True)
     ax = fig.axes[0]
-    ax.set_ylim(0, 1.08)
-    ax.set_yticks([0, 0.5, 1.0])
-    ax.set_yticklabels(["0", "50%", "100%"])
+    ax.set_ylim(0, 1.04)
+    ax.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
     return fig
 
 
@@ -462,15 +431,11 @@ def figure12b():
     FS.violin(ax, [counts.to_numpy()], ["all genes"], control=["all genes"], vertical=True,
               draw_points=False)
     ax.axhline(2.5, color=FS.SERIES[0], linewidth=0.7, linestyle=(0, (3, 2)), zorder=4)
-    ax.annotate(f"{sparse} genes carry anything in two\ncategories or fewer, of {int(counts.max())}",
-                (0.42, 2.5), xytext=(0, 4), textcoords="offset points", fontsize=FS.NOTE_PT,
-                color=FS.SERIES[0], ha="left", va="bottom")
-    ax.annotate(f"median {int(counts.median())}", (0.0, float(counts.median())), xytext=(14, 0),
-                textcoords="offset points", fontsize=FS.NOTE_PT, color=FS.INK, ha="left", va="center")
     ax.set_xticks([0])
-    ax.set_xticklabels([f"all {len(counts):,} genes"])
+    ax.set_xticklabels(["All genes"])
     ax.set_xlim(-0.75, 1.25)
-    ax.set_ylabel("categories per gene")
+    ax.set_ylabel("Categories per gene")
+    ax.yaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
     ax.set_ylim(0, float(counts.max()) + 1.2)
     ax.tick_params(axis="both", pad=1.5)
     ax.tick_params(axis="x", length=0)
@@ -504,7 +469,7 @@ def figure06b():
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=30, ha="right", rotation_mode="anchor")
     ax.tick_params(axis="x", length=0)
-    ax.set_ylabel("protein r$^2$")
+    ax.set_ylabel("Protein abundance explained ($r^2$)")
     ax.set_xlim(-0.6, len(L) - 0.4)
     leg = ax.legend(frameon=False, loc="upper right", handlelength=0.9, borderaxespad=0.2,
                     labelspacing=0.3)
@@ -532,7 +497,7 @@ def figure06c():
     labels = [f"{MEASUREMENT_NAMES.get(t, t.replace('_', ' '))}\nfrom {c.replace('_', ' ')}"
               for t, c in zip(p["target"], p["predictor_category"])]
     fig = bars(list(p["lift"]), labels, "above shuffled",
-               highlight=set(labels[:2]), letter="c", fmt="{:.2f}", show_values=False)
+               highlight=set(labels[:2]), letter="c")
     return fig
 
 
@@ -581,17 +546,9 @@ def figure10b():
                         [f"{g} ({int(c)} cells)" for g, c in
                          zip(t.loc[hit, "target"], t.loc[hit, "cells"])],
                         [FS.INK] * int(hit.sum()))
-    ax.set_xlabel("parasite changed (-log$_{10}$ p)")
-    ax.set_ylabel("host changed (-log$_{10}$ p)")
-    # TOP right. Top left ran through the host hit's label and bottom right through the parasite
-    # hit's: the label placer measures the points, not an annotation added afterwards, so a note
-    # has to go where neither hit is -- and both hits are at the left and the bottom right.
-    ax.annotate(f"{len(t)} knockouts tested in one 10x run\n"
-                f"coloured: q < 0.05 after correction across all {len(t)}\n"
-                f"dashed: uncorrected p = 0.05",
-                (0.99, 0.97), xycoords="axes fraction", fontsize=FS.NOTE_PT, color=FS.INK,
-                ha="right", va="top", linespacing=1.5)
-    ax.tick_params(labelsize=5.5, pad=1.5)
+    ax.set_xlabel("$-$log$_{10}$ $p$, parasite")
+    ax.set_ylabel("$-$log$_{10}$ $p$, host")
+    ax.tick_params(pad=1.5)
     FS.letter(fig, "b")
     return fig
 
@@ -638,15 +595,16 @@ def figure08b():
     ax.set_xticklabels(["only in bait", "in both, level"], rotation=30, ha="right",
                        rotation_mode="anchor")
     ax.tick_params(axis="x", length=0)
-    ax.set_ylabel("interface confidence (ipTM)")
+    ax.set_ylabel("ipTM")
     # Top tick at 0.8, not 1.0: a tick label in the top-left corner sits under the panel letter.
     ax.set_ylim(0, 0.95)
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8])
     ax.set_xlim(-0.6, len(arms) - 0.4)
     if simulated:
-        ax.annotate("SIMULATED", (0.5, 0.99), xycoords="axes fraction",
-                    fontsize=FS.NOTE_PT, color=FS.SERIES[0], ha="center", va="top",
-                    fontweight="bold")
+        # In the LEGEND, not on the plotting area -- but it must appear somewhere on the figure,
+        # because a panel of invented numbers that looks like a result is the worst thing here.
+        ax.plot([], [], " ", label="Simulated: co-folds prepared, not run")
+        FS.legend(ax, loc="upper center")
     FS.letter(fig, "b")
     return fig
 

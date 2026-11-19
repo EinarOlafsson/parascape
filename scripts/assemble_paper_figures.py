@@ -59,8 +59,11 @@ def compose(figure_id: str, panels: list, out: str) -> str:
     fig = plt.figure(figsize=(total_w / 25.4, total_h / 25.4))
     x = 0.0
     for img, w, h in zip(images, widths, heights):
-        # Top-aligned, because a row of panels reads along its top edge.
-        ax = fig.add_axes([x / total_w, (total_h - h) / total_h, w / total_w, h / total_h])
+        # Panels in a row share their TOP and BOTTOM edges (skill checklist, item 3). A panel is
+        # never rescaled -- scaling changes its font size -- so a shorter panel is centred in the
+        # row height and the difference is white space, not a different type size.
+        y = (total_h - h) / 2.0
+        ax = fig.add_axes([x / total_w, y / total_h, w / total_w, h / total_h])
         ax.imshow(img)
         ax.set_axis_off()
         x += w + GUTTER_MM

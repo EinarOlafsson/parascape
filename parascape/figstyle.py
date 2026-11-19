@@ -18,15 +18,23 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
-#: Categorical series, assigned in this order and never cycled.
-SERIES = ("#B02418", "#E8912A", "#35A7DE", "#2B4E9B",
-          "#1E7D3C", "#6B3F9E", "#C2185B", "#7B2D26")
+#: The reference-paper palette, measured from the figure pixels by the maintainer and recorded in
+#: the `spacr-graphs` skill. These REPLACE the set this module used to carry, which was a different
+#: palette I had assembled from two of the papers.
+ACCENT = "#0A77B8"          # primary accent: the thing the reader should look at
+TEAL = "#0A9878"            # second series
+NAVY = "#283868"            # third series
+ACCENT_LIGHT = "#78AED2"    # paired lighter tint of the accent
+MAGENTA = "#C878A8"         # fourth series
+AMBER = "#F0A830"           # fifth series only; never darkened towards brown
+SERIES = (ACCENT, TEAL, NAVY, ACCENT_LIGHT, MAGENTA, AMBER)
 
-#: Structural greys. The control is CONTROL and nothing else.
-CONTROL = "#9E9E9E"
-SECOND_GREY = "#CFCFCF"
+#: Structural greys. The control is CONTROL and nothing else; background points are lighter.
+CONTROL = "#8C8C8C"
+BACKGROUND = "#C8C8C8"
+SECOND_GREY = "#C8C8C8"
 DARK_GREY = "#4D4D4D"
-INK = "#1A1A1A"
+INK = "#000000"
 
 #: Opacity of every drawn element.
 ALPHA = 0.6
@@ -41,49 +49,36 @@ EM_MM = FONT_PT * 25.4 / 72.0            # one em, in millimetres
 #: Text sizes, all relative to the base. Minimising the text on a graph is a house rule, so there
 #: are only three: the base for axis labels and category names, a smaller one for tick numbers and
 #: in-plot notes, and the panel letter.
-TICK_PT = FONT_PT * 0.80
-NOTE_PT = FONT_PT * 0.80
-LETTER_PT = FONT_PT * 1.15
+TICK_PT = FONT_PT          # 8 pt minimum for EVERY text element
+NOTE_PT = FONT_PT          # 8 pt minimum for EVERY text element
+LETTER_PT = 10.0           # bold CAPITAL, 10 pt, top left, outside the axes
 
-#: One category occupies this much of the CATEGORY axis, of which the bar takes BAR_FRACTION.
-#: Fixing the SLOT rather than the bar is what makes two panels with three conditions identical.
-SLOT_EM = 3.6
-SLOT_MM = SLOT_EM * EM_MM
-BAR_FRACTION = 0.62
+#: One condition = one slot of SLOT_IN = 0.25 in; the bar takes 0.6 of a slot and the gap 0.4.
+#: These are the maintainer's numbers, not a proportion chosen here.
+SLOT_IN = 0.25
 
-#: A category laid out ALONG THE X AXIS carries its name written underneath, so it needs more room
-#: than one laid out down the y axis. Names longer than this wrap or tilt rather than widen the
-#: slot, because widening it would break the rule that two panels of the same category count are
-#: the same size.
-# 3.2 em, not 5.4: the names are TILTED under a vertical bar, so they no longer need a slot wide
-# enough to hold them flat. At 5.4 a fourteen-category panel came out 213 mm wide beside a
-# one-category panel of 40 mm, which is the opposite of "white space should be minimized".
-SLOT_EM_VERTICAL = 3.2
-SLOT_MM_VERTICAL = SLOT_EM_VERTICAL * EM_MM
+#: No categorical panel is narrower than this many slots: at 0.25 in a one-condition violin came
+#: out 6 mm wide, which is a sliver and not a graph.
+MIN_SLOTS = 4
+SLOT_MM = SLOT_IN * 25.4
+SLOT_EM_VERTICAL = SLOT_MM / EM_MM
+SLOT_MM_VERTICAL = SLOT_MM
+BAR_FRACTION = 0.6
 
-#: A panel with many conditions narrows its slot AND its bars (Einar, 2026-11-19: "if a graph has
-#: that many conditions the bars and bar spasing needs to be smaller"). Above CROWDED_ABOVE
-#: categories the slot shrinks towards SLOT_EM_MIN, so a fourteen-bar panel is not simply a
-#: three-bar panel repeated until it runs off the page. The bar keeps the same FRACTION of its
-#: slot, so bars and gaps shrink together and the panel stays symmetrical -- what changes is the
-#: pitch, not the proportion.
-CROWDED_ABOVE = 6
-SLOT_EM_MIN = 1.9
+#: A crowded panel still uses the fixed slot: the slot IS the rule, so a 14-condition panel is
+#: 14 x 0.25 in wide and nothing narrows. (2026-11-19: my earlier shrinking rule is withdrawn --
+#: the maintainer's spec fixes the slot, and "smaller bars when crowded" is satisfied by the slot
+#: being 0.25 in rather than the 5.4 em I had invented.)
+CROWDED_ABOVE = 10 ** 9
+SLOT_EM_MIN = SLOT_EM_VERTICAL
 
 
 def slot_em(n_categories: int, vertical: bool = True) -> float:
-    """The slot one category gets, in ems, narrowing once a panel is crowded."""
-    base = SLOT_EM_VERTICAL if vertical else SLOT_EM
-    if n_categories <= CROWDED_ABOVE:
-        return base
-    # Linear from the base at CROWDED_ABOVE down to the minimum at twice that, then flat: a panel
-    # with 30 categories is already as tight as it can be read at 8 pt.
-    span = max(CROWDED_ABOVE, 1)
-    t = min(1.0, (n_categories - CROWDED_ABOVE) / span)
-    return base + (SLOT_EM_MIN - base) * t
+    """The slot one condition gets, in ems. Fixed, by the maintainer's spec."""
+    return SLOT_MM / EM_MM
 
-#: Length of the VALUE axis, in ems. The same in every panel, so two panels differ only in how
-#: many categories they have.
+
+#: Length of the value axis. A categorical panel is as small as 8 pt text allows.
 VALUE_EM = 20.0
 
 #: Above this many points per group, a bar with whiskers is refused.
@@ -108,15 +103,17 @@ def use() -> None:
         raise RuntimeError("Open Sans is not installed: the house style requires it")
     plt.rcParams.update({
         "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none",
-        "font.size": FONT_PT, "axes.linewidth": 0.5,
+        "font.size": FONT_PT,
         "xtick.labelsize": TICK_PT, "ytick.labelsize": TICK_PT,
         "axes.labelsize": FONT_PT, "legend.fontsize": NOTE_PT,
-        "xtick.major.size": 2.0, "ytick.major.size": 2.0,
         "xtick.major.pad": 1.5, "ytick.major.pad": 1.5,
-        "axes.labelpad": 1.5,
+        "axes.labelpad": 2.0,
         "xtick.major.width": 0.5, "ytick.major.width": 0.5,
         "xtick.direction": "out", "ytick.direction": "out",
         "axes.grid": False, "axes.edgecolor": INK,
+        "axes.spines.top": True, "axes.spines.right": True,    # FULL BOX FRAME (4/5 papers)
+        "axes.linewidth": 0.6, "xtick.major.width": 0.6, "ytick.major.width": 0.6,
+        "xtick.major.size": 2.5, "ytick.major.size": 2.5,
         "text.color": INK, "axes.labelcolor": INK,
         "xtick.color": INK, "ytick.color": INK,
     })
@@ -161,7 +158,10 @@ def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False,
     """
     left, bottom, right, top = MARGIN_MM
     if vertical:
-        width_mm = left + right + slot_em(n_categories, True) * EM_MM * n_categories
+        # A panel never narrower than MIN_SLOTS slots: at 0.25 in per condition a one-condition
+        # violin came out 6 mm wide, which is a sliver and not a graph.
+        slots = max(n_categories, MIN_SLOTS)
+        width_mm = left + right + slot_em(n_categories, True) * EM_MM * slots
     else:
         width_mm = left + right + value_mm
         height_mm = bottom + top + slot_em(n_categories, False) * EM_MM * n_categories
@@ -169,8 +169,6 @@ def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False,
     ax = fig.add_axes([left / width_mm, bottom / height_mm,
                        (width_mm - left - right) / width_mm,
                        (height_mm - bottom - top) / height_mm])
-    for side in ("top", "right"):
-        ax.spines[side].set_visible(False)
     return fig, ax
 
 
@@ -330,18 +328,42 @@ def placeholder(what: str, why: str = "", letter_text: str = "a", n_categories: 
     return fig
 
 
+def legend(ax, loc: str = "best", **kw):
+    """The house legend: no frame, ink text, tight. The ONLY place text other than an axis title
+    is allowed to sit, per Einar 2026-11-19 ("there should only be text on x and y axes or in
+    legends"). A reference line is identified here, never by a label floating beside it.
+    """
+    leg = ax.legend(frameon=False, loc=loc, handlelength=1.0, borderaxespad=0.2,
+                    labelspacing=0.25, fontsize=NOTE_PT, **kw)
+    for text in leg.get_texts():
+        text.set_color(INK)
+    return leg
+
+
+def pad_limits(ax, values, axis: str = "y", frac: float = 0.08) -> None:
+    """Give the data room so nothing touches the frame.
+
+    Violins drawn to the exact data range sat on the top and bottom spines, which reads as data
+    running off the panel. The pad is a fraction of the span, so it scales with the quantity.
+    """
+    lo, hi = float(min(values)), float(max(values))
+    span = (hi - lo) or abs(hi) or 1.0
+    if axis == "y":
+        ax.set_ylim(lo - span * frac, hi + span * frac)
+    else:
+        ax.set_xlim(lo - span * frac, hi + span * frac)
+
+
 def letter(fig, text: str) -> None:
     """The panel letter: bold, top-left, outside the plotting area."""
     # ABOVE the axes, not at the figure corner: a long rotated y-axis label reaches the top of the
     # figure, and the letter landed on the word "way".
-    ax = fig.axes[0] if fig.axes else None
-    if ax is not None:
-        box = ax.get_position()
-        fig.text(max(box.x0 - 0.10, 0.002), min(box.y1 + 0.085, 0.995), text,
-                 fontsize=LETTER_PT, fontweight="bold", color=INK, ha="left", va="top")
-    else:
-        fig.text(0.002, 0.995, text, fontsize=LETTER_PT, fontweight="bold", color=INK,
-                 ha="left", va="top")
+    if not text:
+        return                       # a figure with ONE panel has no panel letter
+    # Top left of the FIGURE, outside the axes: placing it relative to the axes box put it on the
+    # top tick label of a narrow panel.
+    fig.text(0.0, 1.0, text.upper(), fontsize=LETTER_PT, fontweight="bold", color=INK,
+             ha="left", va="top")
 
 
 #: Where a label may sit relative to its point, in points, tried in this order.

@@ -102,10 +102,7 @@ def draw(frame: pd.DataFrame, letter: str = "a"):
     ax.set_yticks([0.8, 0.9, 1.0])
     for side in ("top", "right"):
         ax.spines[side].set_visible(False)
-    # Horizontal, in the empty corner. Rotated along the diagonal it ran through the data, which
-    # is the one place on this panel a note must never be.
-    ax.annotate("on or below the line:\ntranscription alone is enough", (0.995, 0.787),
-                fontsize=FS.NOTE_PT, color="#7d7d7d", ha="right", va="bottom", linespacing=1.35)
+    # What the diagonal MEANS belongs in the figure legend, not on the plotting area.
     # The house label placer and the house panel letter, so a label here is measured and rejected
     # the same way as on every other panel. The two local helpers this panel carried were a
     # second copy of `figstyle.place_labels`, and a second copy is a second set of bugs.

@@ -94,10 +94,10 @@ def draw(table: pd.DataFrame, letter: str = "b"):
     names = [c.replace("_", " ") for c in order["category"]]
     FS.bars(ax, order["share_measured"].to_numpy(), names, highlight=worst and
             {n for n, c in zip(names, order["category"]) if c in worst})
-    ax.set_ylabel("share measured")
+    ax.set_ylabel("Genes measured (%)")
     ax.set_ylim(0, 1.06)
     ax.set_yticks([0, 0.5, 1.0])
-    ax.set_yticklabels(["0", "50%", "100%"])
+    ax.set_yticklabels(["0", "50", "100"])
     ax.set_xlim(-0.6, len(order) - 0.4)
     FS.letter(fig, letter)
     return fig

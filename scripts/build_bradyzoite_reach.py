@@ -98,11 +98,7 @@ def draw(reached: pd.Series, total: int, markers: dict, letter: str = "a"):
     fig, ax = FS.figure(len(order), vertical=True)
     names = [f"subtype {s}" for s in order.index]
     FS.bars(ax, order.to_numpy(), names, highlight={f"subtype {lowest}"}, rotate=0)
-    for i, value in enumerate(order.to_numpy()):
-        ax.annotate(f"{value}", (i, value), xytext=(0, 2), textcoords="offset points",
-                    ha="center", va="bottom", fontsize=FS.NOTE_PT,
-                    color=FS.SERIES[0] if order.index[i] == lowest else FS.INK)
-    ax.set_ylabel(f"contrasts reaching it (of {total})")
+    ax.set_ylabel("Contrasts")
     ax.set_ylim(0, float(order.max()) * 1.16)
     ax.set_xlim(-0.6, len(order) - 0.4)
     FS.letter(fig, letter)
