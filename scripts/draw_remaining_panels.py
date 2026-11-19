@@ -365,10 +365,14 @@ def figure11():
     ax.set_ylabel("Accuracy above baseline (%)")
     ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _p: f"{v * 100:.0f}"))
     ax.set_xlim(-0.6, len(b) - 0.4)
-    low = float(allv["lift_over_baseline"].min())
-    ax.set_ylim(min(low, 0.0) * 1.1, float(b["lift_over_baseline"].max()) * 1.2)
-    ax.set_yticks([0, 0.2, 0.4, 0.6])
-    ax.set_yticklabels(["0", "20%", "40%", "60%"])
+    # Cut at the 5th percentile of the strategy points, and SAY SO in the figure legend. A single
+    # strategy at -0.9 was setting the bottom of the axis, so two thirds of the panel was empty
+    # white space below the data -- which the house rules forbid.
+    low = float(np.percentile(allv["lift_over_baseline"].dropna(), 5))
+    ax.set_ylim(min(low, -0.05) * 1.15, float(b["lift_over_baseline"].max()) * 1.18)
+    ax.set_yticks([-0.2, 0, 0.2, 0.4, 0.6])
+    # The unit is in the axis title, so the ticks are plain numbers.
+    ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _p: f"{v * 100:.0f}"))
     FS.letter(fig, "a")
     return fig
 
