@@ -1,5 +1,22 @@
 # 81 · Re-quantify the earlier runs: trimming, equivalence classes and Gibbs samples
 
+**2026-11-19: the queue was stalled for nine hours by three DEADLOCKED kallisto processes.**
+The hourly log read `624 new runs still to quantify` from 21:52 to 06:52 without moving. The cause
+was not slowness: three `kallisto quant` processes against the `ME49_host` index, on
+PRJDB16831/DRR512193, DRR512199 and DRR512194, had each been running 9.5 hours at ~595 per cent CPU
+having **read 2.11 GB (the 2.04 GB index) and written zero bytes**, with their output directories
+empty and their kernel state `futex_wait_queue` -- threads spinning on a lock. Eighteen cores were
+busy producing nothing and the worker was waiting on them.
+
+Einar authorised clearing them. A plain SIGTERM was enough for all three; the worker picked up new
+runs within a minute. Nothing was lost, because nothing had been written.
+
+**What to watch for.** The symptom is a flat queue count with high CPU, which looks like a slow run
+and is not. The check that distinguishes them is `write_bytes` in `/proc/<pid>/io`: a working quant
+writes steadily, a deadlocked one has read its index and written nothing. If those three runs hang
+again on retry, they should be quarantined rather than retried indefinitely -- the queue cannot
+make progress while they hold the worker.
+
 **2026-11-18, found while building figure 2 of the paper: GSE245775 quantifies to ZERO.**
 "Differentiation ribosome profiling (eIF1.2)", 24 runs, and every run sums to zero parasite TPM
 against BOTH `ME49` and `ME49_host`. A ribosome-profiling study of Toxoplasma with no parasite
