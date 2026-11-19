@@ -18,6 +18,7 @@ import sys
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.ticker
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -514,17 +515,39 @@ MEASUREMENT_NAMES = {
 
 
 def figure06c():
-    """Which kind of measurement explains which other kind, ordered by lift over a shuffled run."""
-    p = pd.read_csv(newest("which_data_explains_which_*/pairs.tsv"), sep="\t")
-    p = p.sort_values("lift", ascending=False)
-    # ONE line, tilted. Fourteen two-line labels in a 14-condition panel overlapped each other
-    # 64 times by the checker and were unreadable; the pairing is spelled out in the legend.
-    labels = [f"{MEASUREMENT_NAMES.get(t, t.replace('_', ' '))} / {c.replace('_', ' ')}"
-              for t, c in zip(p["target"], p["predictor_category"])]
-    fig = bars(list(p["lift"]), labels, "above shuffled",
-               highlight=set(labels[:2]), letter="c")
-    return fig
+    """Which measurement explains which, as the MATRIX it is: target rows, predictor columns.
 
+    Drawn first as fourteen bars of 'target / predictor' pairs, which is a matrix flattened into a
+    list -- the tilted pair names took half the figure. The skill puts a matrix in a heatmap.
+    A cell nobody tested is marked x, never left white, because white reads as a value.
+    """
+    p = pd.read_csv(newest("which_data_explains_which_*/pairs.tsv"), sep="\t")
+    p["t"] = [MEASUREMENT_NAMES.get(t, t.replace("_", " ")) for t in p["target"]]
+    p["c"] = [c.replace("_", " ") for c in p["predictor_category"]]
+    m = p.pivot_table(index="t", columns="c", values="lift")
+    m = m.loc[m.max(axis=1).sort_values(ascending=False).index]
+    FS.use()
+    nr, nc = m.shape
+    cell = FS.SLOT_IN
+    w_in, h_in = 1.7 + nc * cell + 0.75, 0.55 + nr * cell + 1.0
+    fig = plt.figure(figsize=(w_in, h_in))
+    ax = fig.add_axes([1.7 / w_in, 1.0 / h_in, nc * cell / w_in, nr * cell / h_in])
+    im = ax.imshow(m.to_numpy(), cmap="Blues", vmin=0, vmax=float(np.nanmax(m.to_numpy())),
+                   aspect="equal")
+    for (i, j), v in np.ndenumerate(m.to_numpy()):
+        if np.isnan(v):
+            ax.text(j, i, "\u00d7", ha="center", va="center", color=FS.INK)
+    ax.set_xticks(range(nc)); ax.set_xticklabels(m.columns, rotation=30, ha="right",
+                                                 rotation_mode="anchor")
+    ax.set_yticks(range(nr)); ax.set_yticklabels(m.index)
+    ax.set_xlabel("Predictor"); ax.set_ylabel("Target")
+    for sp in ax.spines.values():
+        sp.set_visible(False)
+    ax.tick_params(length=0)
+    cb = fig.colorbar(im, ax=ax, fraction=0.06, pad=0.04)
+    cb.set_label("$r^2$ above shuffled"); cb.outline.set_linewidth(0.6)
+    FS.letter(fig, "c")
+    return fig
 
 def figure10b():
     """Figure 10b: when an effector goes, does the PARASITE change in the same cell?

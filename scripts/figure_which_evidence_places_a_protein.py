@@ -95,9 +95,8 @@ def draw(frame: pd.DataFrame, letter: str = "a"):
                 markeredgewidth=0, alpha=FS.ALPHA, zorder=3)
     ax.set_xlim(lo, hi)
     ax.set_ylim(0.775, 1.025)
-    ax.set_xlabel("placed from RNA co-expression alone (AUC)", fontsize=FS.FONT_PT, labelpad=2)
-    ax.set_ylabel("placed from all evidence (AUC)", fontsize=FS.FONT_PT, labelpad=2)
-    ax.tick_params(labelsize=5.5, pad=1.5)
+    ax.set_xlabel("AUC, RNA only")
+    ax.set_ylabel("AUC, all evidence")
     ax.set_xticks([0.7, 0.8, 0.9, 1.0])
     ax.set_yticks([0.8, 0.9, 1.0])
     for side in ("top", "right"):

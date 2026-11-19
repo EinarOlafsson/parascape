@@ -36,6 +36,9 @@ from parascape import figstyle as FS      # noqa: E402
 GUTTER_EM = 1.2
 GUTTER_MM = GUTTER_EM * FS.EM_MM
 
+#: A strip above each panel holds its letter, so the letter never sits on an axis title.
+LETTER_STRIP_MM = 4.5
+
 #: Panels are rendered at this many dots per millimetre when composed.
 DPMM = 600 / 25.4
 
@@ -66,7 +69,7 @@ def compose(figure_id: str, panels: list, out: str) -> str:
     rows = [list(range(i, min(i + PER_ROW, len(images))))
             for i in range(0, len(images), PER_ROW)]
     row_w = [sum(widths[i] for i in r) + GUTTER_MM * (len(r) - 1) for r in rows]
-    row_h = [max(heights[i] for i in r) for r in rows]
+    row_h = [max(heights[i] for i in r) + LETTER_STRIP_MM for r in rows]
     total_w = max(row_w)
     total_h = sum(row_h) + GUTTER_MM * (len(rows) - 1)
 
@@ -76,7 +79,7 @@ def compose(figure_id: str, panels: list, out: str) -> str:
         x = (total_w - rw) / 2.0            # a short row is centred, not left-ragged
         for i in r:
             w, h = widths[i], heights[i]
-            y = y_top - rh + (rh - h) / 2.0
+            y = y_top - LETTER_STRIP_MM - h
             ax = fig.add_axes([x / total_w, y / total_h, w / total_w, h / total_h])
             ax.imshow(images[i])
             ax.set_axis_off()

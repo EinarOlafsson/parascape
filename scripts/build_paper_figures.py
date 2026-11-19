@@ -229,9 +229,8 @@ def placeholder(panel, figno: int):
         ax.axis("off")
     ax.plot([], [], " ", **mark)
     FS.legend(ax, loc="upper left")
-    words = panel.what[0].upper() + panel.what[1:]
     if form not in ("heatmap", "schematic"):
-        ax.set_ylabel(words[:34])
+        ax.set_ylabel("Value")
     FS.letter(fig, panel.letter)
     return fig
 
