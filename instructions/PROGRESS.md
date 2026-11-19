@@ -137,6 +137,21 @@ before it found 6 failures and every one was mine — four missing docstrings, o
 in a figure script, and two generated artefacts (`docs/datasets.md` and the 177 per-dataset
 scripts) that went stale when the host coverage strings gained their second denominator.
 
+## Overnight, 2026-11-18
+
+* **The manuscript has its text.** Results, one passage per figure, and Methods stating the three
+  rules every claim is held to. 2,614 words, every number read from the summary of the analysis it
+  describes. Twelve figures, twelve legends, twelve two-cell tables.
+* **Citations: 67 uncited at 19:00, 38 now.** Eight from GEO's own link, 15 reference resources,
+  11 from PRIDE's referenceLine, 6 from PMIDs already written in the accession field, 12 by
+  constructed DOI checked for a unique PubMed match. The 38 left name a journal and an article
+  number that does not map deterministically to a DOI; guessing those produced three wrong
+  citations earlier in the day, so they are left for a person.
+* **The one genuine instruction-41 candidate assessed.** GSE232438 downloaded (39 MB, 10,319 cells)
+  and derived to a per-timepoint table covering 100.0 % of the Cryptosporidium space. It does NOT
+  fill the oocyst slot it was offered for: the supplement carries no stage annotation, so no cell
+  can be called an oocyst without redoing the paper's clustering.
+
 ## The four that are not work
 
 Measured 2026-11-18 19:30. Each was pushed on repeatedly and has no hidden task left in it.
