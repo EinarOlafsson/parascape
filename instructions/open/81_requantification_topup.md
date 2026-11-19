@@ -11,6 +11,29 @@ busy producing nothing and the worker was waiting on them.
 Einar authorised clearing them. A plain SIGTERM was enough for all three; the worker picked up new
 runs within a minute. Nothing was lost, because nothing had been written.
 
+**2026-11-19, the cause found: kallisto deadlocks on the COMBINED index in `--single` mode.**
+Clearing the first three did not help -- the worker took the next three runs of the same study
+(PRJDB16831 DRR512206, DRR512209, DRR512212) and they hung identically within minutes. The study
+has six runs, none with a `done.json`, so the queue could never get past it.
+
+What distinguishes it, measured:
+
+* every study that has completed is **PAIRED**; PRJDB16831 is **single-end, 36 bp**;
+* the same 100,000 reads, the same `--single -l 200 -s 30`, the same single thread:
+  against `references/ME49/kallisto.idx` (0.02 GB) kallisto finishes in under a minute --
+  100,000 reads processed, 6,518 pseudoaligned, EM in 289 rounds, all three outputs written;
+  against `references/ME49_host/kallisto.idx` (2.04 GB) it hangs with zero bytes written;
+* it is NOT a threading bug: `-t 1` hangs exactly as `-t 6` does.
+
+So the trigger is the combined ME49_host index in single-end mode, not the data, the parameters or
+the thread count. Note that only 6.5 per cent of these reads are parasite, which is why these
+samples need the combined index at all -- the ME49-only result is not a substitute, it is the
+control that isolates the fault.
+
+**What this needs.** Either the worker skips kallisto against ME49_host for single-end libraries
+and keeps salmon, which was running normally throughout, or PRJDB16831 is quarantined so six runs
+cannot hold 624. Einar's call; nothing has been changed in the worker.
+
 **What to watch for.** The symptom is a flat queue count with high CPU, which looks like a slow run
 and is not. The check that distinguishes them is `write_bytes` in `/proc/<pid>/io`: a working quant
 writes steadily, a deadlocked one has read its index and written nothing. If those three runs hang
