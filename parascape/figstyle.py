@@ -242,7 +242,9 @@ def bars(ax, values, names, control=(), highlight=(), vertical=True, rotate=None
         longest = max((len(str(n)) for n in names), default=0)
         # Tilt whenever a name is wider than its slot. A 0.25 in slot holds about 4 characters at
         # 8 pt, so "Toxoplasma" written flat ran into "Plasmodium" beside it.
-        tilt = (30 if longest > 4 else 0) if rotate is None else rotate
+        # 45, not 30: at 30 degrees long names overlapped their neighbours (figure 1E,
+        # "structure computed" over "fitness"); 45 halves each name's horizontal run.
+        tilt = (45 if longest > 4 else 0) if rotate is None else rotate
         ax.set_xticklabels(names, rotation=tilt,
                            ha="right" if tilt else "center",
                            rotation_mode="anchor" if tilt else None)

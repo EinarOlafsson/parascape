@@ -55,7 +55,7 @@ def newest_sheet() -> str:
 PER_ROW = 4
 
 
-def compose(figure_id: str, panels: list, out: str) -> str:
+def compose(figure_id: str, panels: list, out: str, rows: list | None = None) -> str:
     """One figure from its panels, wrapped into a GRID at their true millimetre size.
 
     Panels are never rescaled -- scaling changes the font size, which is the one thing sizing in
@@ -66,8 +66,15 @@ def compose(figure_id: str, panels: list, out: str) -> str:
     widths = [img.shape[1] / DPMM for img in images]
     heights = [img.shape[0] / DPMM for img in images]
 
-    rows = [list(range(i, min(i + PER_ROW, len(images))))
-            for i in range(0, len(images), PER_ROW)]
+    if rows:
+        # Explicit row sizes, e.g. [1, 2, 3]: a full-width schematic on a row of its own.
+        sizes, rows, i = rows, [], 0
+        for n in sizes:
+            rows.append(list(range(i, min(i + n, len(images)))))
+            i += n
+    else:
+        rows = [list(range(i, min(i + PER_ROW, len(images))))
+                for i in range(0, len(images), PER_ROW)]
     row_w = [sum(widths[i] for i in r) + GUTTER_MM * (len(r) - 1) for r in rows]
     row_h = [max(heights[i] for i in r) + LETTER_STRIP_MM for r in rows]
     total_w = max(row_w)
