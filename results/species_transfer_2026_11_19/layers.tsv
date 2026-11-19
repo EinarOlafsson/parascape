@@ -1,0 +1,5 @@
+layer	kind	n	measurable	transfer	baseline	shuffled_mean	lift	p	shared_labels
+where the protein is	categorical	757	True	0.6988110964332893	0.37384412153236457	0.1870554821664465	0.32496697490092474	0.0004997501249375312	12.0
+whether losing it costs fitness	continuous	2148	True	0.3137622151346725	0.0		0.3137622151346725	2.7759238359610705e-50	
+how the message is written (codon bias)	continuous	2221	True	0.027295495408601173	0.0		0.027295495408601173	0.19848372321141236	
+how long the protein is	continuous	2221	True	0.907107657036731	0.0		0.907107657036731	0.0	

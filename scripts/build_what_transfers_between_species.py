@@ -61,6 +61,10 @@ COARSE = {
     "mitochondrion": "mitochondrion", "apicoplast": "apicoplast", "imc": "imc",
     "rhoptries": "rhoptries", "micronemes": "micronemes", "apical": "apical",
     "dense granules": "dense granules", "ribosomes": "ribosome", "ribosome": "ribosome",
+    # Toxoplasma names the subunits. Unmapped, they kept their own names and every ribosomal
+    # orthologue scored as a disagreement (found drawing figure 9F, 2026-11-19: 51 pairs at 0 %).
+    "60s ribosome": "ribosome", "40s ribosome": "ribosome",
+    "inner membrane complex": "imc",     # Plasmodium spells out what Toxoplasma calls IMC
     "19s proteasome": "proteasome", "20s proteasome": "proteasome", "proteasome": "proteasome",
 }
 

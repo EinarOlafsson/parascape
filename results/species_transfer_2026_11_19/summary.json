@@ -1,0 +1,53 @@
+{
+  "pairs": {
+    "shared_orthogroups": 2526,
+    "one_to_one": 2221,
+    "many_to_many_set_aside": 305
+  },
+  "layers": [
+    {
+      "layer": "where the protein is",
+      "kind": "categorical",
+      "n": 757,
+      "measurable": true,
+      "transfer": 0.6988110964332893,
+      "baseline": 0.37384412153236457,
+      "shuffled_mean": 0.1870554821664465,
+      "lift": 0.32496697490092474,
+      "p": 0.0004997501249375312,
+      "shared_labels": 12
+    },
+    {
+      "layer": "whether losing it costs fitness",
+      "kind": "continuous",
+      "n": 2148,
+      "measurable": true,
+      "transfer": 0.3137622151346725,
+      "baseline": 0.0,
+      "lift": 0.3137622151346725,
+      "p": 2.7759238359610705e-50
+    },
+    {
+      "layer": "how the message is written (codon bias)",
+      "kind": "continuous",
+      "n": 2221,
+      "measurable": true,
+      "transfer": 0.027295495408601173,
+      "baseline": 0.0,
+      "lift": 0.027295495408601173,
+      "p": 0.19848372321141236
+    },
+    {
+      "layer": "how long the protein is",
+      "kind": "continuous",
+      "n": 2221,
+      "measurable": true,
+      "transfer": 0.907107657036731,
+      "baseline": 0.0,
+      "lift": 0.907107657036731,
+      "p": 0.0
+    }
+  ],
+  "min_pairs": 40,
+  "n_null": 2000
+}
