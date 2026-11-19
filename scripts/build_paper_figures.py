@@ -168,7 +168,45 @@ def real_11c():
     return fig
 
 
-REAL = {(1, "b"): real_1b, (1, "c"): real_1c,
+def real_2a():
+    """Control-to-control agreement between studies, the matrix figure 2 clusters."""
+    m = pd.read_csv(newest("control_comparability_*/agreement_before.tsv"), sep="\t",
+                    index_col=0)
+    cl = pd.read_csv(newest("control_comparability_*/clusters.tsv"), sep="\t", index_col=0)
+    order = cl.sort_values(["cluster_before", "median_agreement_before"]).index
+    order = [o for o in order if o in m.index]
+    m = m.loc[order, order]
+    FS.use()
+    n = len(m)
+    cell = FS.SLOT_IN * 0.9
+    w_in, h_in = 1.25 + n * cell + 0.8, 0.4 + n * cell + 1.2
+    fig = plt.figure(figsize=(w_in, h_in))
+    ax = fig.add_axes([1.25 / w_in, 1.2 / h_in, n * cell / w_in, n * cell / h_in])
+    vals = m.to_numpy(dtype=float)
+    off = vals[~np.eye(n, dtype=bool)]
+    im = ax.imshow(vals, cmap="Blues", vmin=float(np.nanmin(off)), vmax=1.0, aspect="equal")
+    ax.set_xticks(range(n)); ax.set_xticklabels(m.columns, rotation=90)
+    ax.set_yticks(range(n)); ax.set_yticklabels(m.index)
+    for sp in ax.spines.values():
+        sp.set_visible(False)
+    ax.tick_params(length=0)
+    cb = fig.colorbar(im, ax=ax, fraction=0.05, pad=0.03)
+    cb.set_label("Spearman ($\\rho$)"); cb.outline.set_linewidth(0.6)
+    FS.letter(fig, "a")
+    return fig
+
+
+def real_2d():
+    """How much each study's agreement with the rest rises once cell cycle is removed."""
+    cl = pd.read_csv(newest("control_comparability_*/clusters.tsv"), sep="\t", index_col=0)
+    gain = (cl["median_agreement_after"] - cl["median_agreement_before"]).sort_values(
+        ascending=False)
+    top = set(gain.index[gain > 0])
+    return bars_from(gain.to_dict(), "Study", "Agreement gain (Spearman $\\rho$)", "d",
+                     accent=top)
+
+
+REAL = {(2, "a"): real_2a, (2, "d"): real_2d, (1, "b"): real_1b, (1, "c"): real_1c,
         (7, "c"): lambda: real_7("accuracy", "Accuracy (%)", "c"),
         (7, "d"): lambda: real_7("answered", "Genes answered", "d"),
         (10, "c"): real_10c, (10, "f"): real_10f,
