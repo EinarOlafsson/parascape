@@ -288,10 +288,12 @@ def figure10():
            label="this effector only")
     ax.bar(x, shared, bottom=own, width=FS.bar_width(), linewidth=0, color=FS.CONTROL,
            alpha=FS.ALPHA, label="also moved by others")
+    ax.plot([], [], " ", label="* translocon component")
     ax.set_xticks(x)
     # Gene names italic, the translocon mark upright.
-    ax.set_xticklabels([f"$\\it{{{l.rstrip('*')}}}$" + ("*" if l.endswith("*") else "")
-                        for l in labels], rotation=30, ha="right", rotation_mode="anchor")
+    # Gene names in ITALIC, set as a text style: mathtext \\it rendered them upright here.
+    ax.set_xticklabels(labels, rotation=30, ha="right", rotation_mode="anchor",
+                       fontstyle="italic")
     ax.tick_params(axis="x", length=0)
     ax.set_ylabel("Host genes")
     ax.set_xlim(-0.6, len(e) - 0.4)
@@ -587,13 +589,16 @@ def figure10b():
     ax.plot(x[hit], y[hit], "o", color=FS.SERIES[0], markersize=4.2, markeredgewidth=0,
             alpha=FS.ALPHA, zorder=4)
     cut = -np.log10(0.05)
-    for value, axis in ((cut, ax.axvline), (cut, ax.axhline)):
-        axis(value, color=FS.INK, linewidth=0.5, linestyle=(0, (3, 2)), zorder=2)
+    for k, (value, axis) in enumerate(((cut, ax.axvline), (cut, ax.axhline))):
+        axis(value, color=FS.INK, linewidth=0.5, linestyle=(0, (3, 2)), zorder=2,
+             label="p = 0.05, uncorrected" if k == 0 else None)
+    ax.plot([], [], "o", color=FS.ACCENT, ms=4, alpha=FS.ALPHA, label="q < 0.05",
+            linestyle="none")
+    FS.legend(ax, loc="center right")
     if hit.any():
+        # The gene only. The cell count is n, and n goes in the figure legend, never on a graph.
         FS.place_labels(ax, fig, list(zip(x[hit], y[hit])),
-                        [f"{g} ({int(c)} cells)" for g, c in
-                         zip(t.loc[hit, "target"], t.loc[hit, "cells"])],
-                        [FS.INK] * int(hit.sum()))
+                        list(t.loc[hit, "target"]), [FS.INK] * int(hit.sum()))
     ax.set_xlabel("$-$log$_{10}$ $p$, parasite")
     ax.set_ylabel("$-$log$_{10}$ $p$, host")
     ax.tick_params(pad=1.5)
@@ -757,7 +762,7 @@ def figure3d():
     labels = [f"{str(c).replace('_', ' ')} {int(n)}" if isinstance(c, str) else f"module {int(n)}"
               for c, n in zip(m["compartment"], m["module"])]
     fig = bars(list(m["over_detection_limit"]), labels,
-               "Share above the detection limit", highlight=set(labels[:2]), letter="d",
+               "Effect (× detection limit)", highlight=set(labels[:2]), letter="d",
                reference=1.0, ref_label="Detection limit")
     return fig
 
