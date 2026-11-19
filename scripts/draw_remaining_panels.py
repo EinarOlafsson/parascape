@@ -139,8 +139,12 @@ def figure4():
     ax.set_xticks(range(1, len(groups) + 1))
     ax.set_xticklabels([n for n, _g in groups], rotation=30, ha="right",
                        rotation_mode="anchor")
-    ax.set_ylabel("|Spearman $\\rho$|")
-    ax.set_ylim(0, 0.72)
+    # Einar: "dont write |Spearman| remove the |". The values are absolute correlations; that is
+    # stated in the figure legend, not with bars on the axis title.
+    ax.set_ylabel("Spearman ($\\rho$)")
+    # Headroom above the top whisker: at 0.72 it ran into the frame, which reads as data cut off.
+    tops = [float(w.get_ydata().max()) for w in box["whiskers"]]
+    ax.set_ylim(0, max(tops) * 1.08)
     ax.tick_params(axis="x", length=0, pad=2)
     ax.tick_params(axis="y", pad=1.5)
     FS.letter(fig, "a")
