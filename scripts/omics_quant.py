@@ -735,22 +735,33 @@ def _salmon(ref: str, local: list, s_out: str) -> int | None:
     return mapped
 
 
-#: Kallisto against these references is not attempted for a SINGLE-END library, because it
-#: deadlocks (Einar 2026-11-19, "skip it, but still fix it and still analyse those samples").
-#: kallisto 0.52.0 against the 2.04 GB `ME49_host` index in `--single` mode burned a core for nine
-#: hours having read 1,439 MB of the 2,190 MB index and written nothing, in `futex_wait_queue`.
-#: The same reads, the same flags and `-t 1` against the 0.02 GB ME49 index finish in under a
-#: minute, and PAIRED-END libraries against this same index have run normally throughout -- so it
-#: is single-end plus a large index, and the stall is in loading the index rather than in
-#: pseudoalignment. Six runs of PRJDB16831 held 624 before this was skipped. Salmon against the
-#: same reference is unaffected and still runs, so these runs keep host numbers; what they lack is
-#: the kallisto column, and `KALLISTO_SKIPPED_FILE` records which and why rather than leaving a
-#: gap that reads as "not measured" -- the reason lands in `kallisto_failed` of done.json, which is
-#: where instruction 89 already put a tool that failed where the other succeeded.
-#: Reversible: set PARASCAPE_KALLISTO_SKIP_SINGLE_END empty.
-KALLISTO_SKIP_SINGLE_END = {ref.strip() for ref in
-                            os.environ.get("PARASCAPE_KALLISTO_SKIP_SINGLE_END", "ME49_host").split(",")
-                            if ref.strip()}
+#: Single-end kallisto runs carry `--single-overhang`, and this is the FIX for the deadlock that
+#: held 624 runs (Einar 2026-11-19: "figure out what is wrong with the kallisto processing ...
+#: the cheapest option is to fix it now").
+#:
+#: What was measured, 2026-11-19, on DRR512193 (PRJDB16831, Mus musculus, SINGLE, 36 nt reads):
+#:   * kallisto 0.52.0 against ME49_host (2.03 GB) prints its k-mer count -- so the index LOADS --
+#:     and then hangs entering pseudoalignment having processed no read. Nine hours in production,
+#:     300 s in every controlled repeat. Not memory (86 GB free), not the NAS (a local copy hangs
+#:     identically, and the NAS serves the whole index in 9 s), not threads (-t 1 and -t 8 both),
+#:     not gzip (plain hangs too), and not the index build (same kallisto version built it).
+#:   * the SAME reads and the SAME `-l 200 -s 30` finish in seconds against ME49 (0.01 GB) and
+#:     against ME49_cat (0.22 GB), which is also a combined host+parasite index. ME49_host is the
+#:     outlier only because it alone carries TWO hosts, human and mouse.
+#:   * adding `--single-overhang`: 75 seconds, 80.1 per cent of reads pseudoaligned, 924 EM
+#:     rounds. 80 per cent host is what a dual RNA-seq sample should give, against 8.4 per cent
+#:     on the parasite-only index.
+#:
+#: By default kallisto discards a pseudoalignment whose inferred fragment would run off the end of
+#: the transcript. With a 200 nt assumed fragment and a 36 nt read that is most of them, and on a
+#: large index the discard path is where it hangs. `--single-overhang` keeps those reads.
+#:
+#: IT IS APPLIED TO EVERY SINGLE-END RUN AND EVERY REFERENCE, not only where it deadlocks: a flag
+#: that changes which reads are counted must not vary between the references of one run, or the
+#: kallisto column would mean one thing for ME49 and another for ME49_host. Single-end runs
+#: quantified BEFORE this change were quantified without it and are not comparable to ones after;
+#: they need re-quantification, which is counted separately and is not done silently here.
+KALLISTO_SINGLE_OVERHANG = os.environ.get("PARASCAPE_KALLISTO_SINGLE_OVERHANG", "1") != "0"
 #: No kallisto call may hold a worker forever. A deadlock that records itself after some hours
 #: costs one run; a deadlock that waits costs the queue, which is what happened. Generous rather
 #: than tight: the slowest legitimate kallisto run measured against the host index was 41 minutes.
@@ -760,10 +771,13 @@ KALLISTO_TIMEOUT_S = float(os.environ.get("PARASCAPE_KALLISTO_TIMEOUT_S", "10800
 def _kallisto(ref: str, local: list, k_out: str) -> str | None:
     """Kallisto against one reference; returns the failure to record, or None."""
     single = len(local) != 2
-    if single and ref in KALLISTO_SKIP_SINGLE_END:
-        return (f"not attempted: kallisto deadlocks on the large {ref} index for single-end reads "
-                f"(see KALLISTO_SKIP_SINGLE_END); salmon against {ref} is unaffected")
-    k_reads = local if len(local) == 2 else ["--single", "-l", "200", "-s", "30", local[0]]
+    if single:
+        k_reads = ["--single", "-l", "200", "-s", "30"]
+        if KALLISTO_SINGLE_OVERHANG:
+            k_reads.append("--single-overhang")   # see KALLISTO_SINGLE_OVERHANG: this is the fix
+        k_reads.append(local[0])
+    else:
+        k_reads = list(local)
     try:
         run([os.path.join(BIN, "kallisto"), "quant", "-i", os.path.join(NAS, "references", ref, "kallisto.idx"),
              "-o", k_out, "-t", str(THREADS), *k_reads], timeout=KALLISTO_TIMEOUT_S)
