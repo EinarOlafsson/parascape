@@ -450,7 +450,10 @@ def figure12b():
     fig, ax = FS.figure(2, height_mm=52.0, vertical=True)
     FS.violin(ax, [counts.to_numpy()], ["all genes"], control=["all genes"], vertical=True,
               draw_points=False)
-    ax.axhline(2.5, color=FS.SERIES[0], linewidth=0.7, linestyle=(0, (3, 2)), zorder=4)
+    # Identified by a LEGEND entry: on its own the dashed line was an unexplained element.
+    ax.axhline(2.5, color=FS.ACCENT, linewidth=0.7, linestyle=(0, (3, 2)), zorder=4,
+               label="Two categories or fewer")
+    FS.legend(ax, loc="lower right")
     ax.set_xticks([0])
     ax.set_xticklabels(["All genes"])
     ax.set_xlim(-0.75, 1.25)

@@ -80,6 +80,12 @@ def compose(figure_id: str, panels: list, out: str) -> str:
             ax = fig.add_axes([x / total_w, y / total_h, w / total_w, h / total_h])
             ax.imshow(images[i])
             ax.set_axis_off()
+            # The letter comes from the FIGURE spec, stamped here, top left of the panel cell.
+            letter = panels[i].get("letter")
+            if letter:
+                fig.text(x / total_w, (y_top) / total_h, letter.upper(),
+                         fontsize=FS.LETTER_PT, fontweight="bold", color=FS.INK,
+                         ha="left", va="top")
             x += w + GUTTER_MM
         y_top -= rh + GUTTER_MM
     path = os.path.join(out, f"figure{figure_id}")

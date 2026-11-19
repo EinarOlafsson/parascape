@@ -15,6 +15,8 @@ The rules this exists to enforce, because every one of them has been got wrong b
 """
 from __future__ import annotations
 
+import os
+
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
@@ -231,15 +233,16 @@ def bars(ax, values, names, control=(), highlight=(), vertical=True, rotate=None
     names, and defaults to tilting only when the names are too long to sit flat.
     """
     positions = list(range(len(values)))
-    if highlight:
-        fills = [SERIES[0] if n in set(highlight) else CONTROL for n in names]
-    else:
-        fills = colours(names, control=control)
+    # One accent per comparison, everything else grey (skill, 5/5 reference papers). With no
+    # highlight named, every bar is grey: the palette in order made five colours mean nothing.
+    fills = [ACCENT if n in set(highlight) else CONTROL for n in names]
     if vertical:
         ax.bar(positions, values, width=bar_width(), linewidth=0, color=fills, alpha=ALPHA)
         ax.set_xticks(positions)
         longest = max((len(str(n)) for n in names), default=0)
-        tilt = (30 if longest > 10 else 0) if rotate is None else rotate
+        # Tilt whenever a name is wider than its slot. A 0.25 in slot holds about 4 characters at
+        # 8 pt, so "Toxoplasma" written flat ran into "Plasmodium" beside it.
+        tilt = (30 if longest > 4 else 0) if rotate is None else rotate
         ax.set_xticklabels(names, rotation=tilt,
                            ha="right" if tilt else "center",
                            rotation_mode="anchor" if tilt else None)
@@ -376,6 +379,11 @@ def letter(fig, text: str) -> None:
     # figure, and the letter landed on the word "way".
     if not text:
         return                       # a figure with ONE panel has no panel letter
+    # Panels drawn for a multi-panel FIGURE carry no letter of their own: the assembler stamps
+    # the letter the figure spec assigns. A letter baked into a reused panel is the letter it had
+    # in some earlier figure, which is how one figure came out lettered A B C D B B.
+    if os.environ.get("PARASCAPE_NO_PANEL_LETTERS"):
+        return
     # Top left of the FIGURE, outside the axes: placing it relative to the axes box put it on the
     # top tick label of a narrow panel.
     fig.text(0.0, 1.0, text.upper(), fontsize=LETTER_PT, fontweight="bold", color=INK,
