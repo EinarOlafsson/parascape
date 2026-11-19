@@ -42,8 +42,24 @@ def main() -> int:
         if not cols:
             genes.append(None); share.append(None); note.append("unknown: no registered column in the shipped table")
             continue
-        n = int(table[cols].notna().any(axis=1).sum())
-        genes.append(n); share.append(round(n / len(table), 4)); note.append(f"measured: {len(cols)} column(s)")
+        # A COLUMN WITH NO MISSING VALUE IS NOT A MEASUREMENT OF EVERY GENE. It is a flag or a
+        # count in which absence was written as zero or False, and crediting it full
+        # comprehensiveness decides a slot by the TYPE of its columns rather than by the reach of
+        # its assay. Found on 2026-11-18 on the Plasmodium lactylation slot, where `has_lactyl`
+        # (boolean, 5,720 of 5,720 non-null, 144 of them True) scored 1.0 against 0.0198 for
+        # `n_lactylsites` (113 genes actually measured) and was proposed as its replacement --
+        # the same defect figure 12 of the paper hit on the same day.
+        measured = [c for c in cols if table[c].isna().any()]
+        flags = [c for c in cols if c not in measured]
+        if not measured:
+            genes.append(None); share.append(None)
+            note.append(f"unknown: all {len(cols)} column(s) carry no missing value, so they are "
+                        f"flags or counts rather than measurements")
+            continue
+        n = int(table[measured].notna().any(axis=1).sum())
+        extra = f", {len(flags)} flag column(s) set aside" if flags else ""
+        genes.append(n); share.append(round(n / len(table), 4))
+        note.append(f"measured: {len(measured)} column(s){extra}")
     q["measured_genes"] = genes
     q["measured_share"] = share
     q["measured_comprehensiveness"] = note

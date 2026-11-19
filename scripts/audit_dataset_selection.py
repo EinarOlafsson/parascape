@@ -287,7 +287,15 @@ def audit(output: Path, as_of: str, discover=True) -> dict:
                     source_columns.setdefault(source.key, []).append(column)
             for key, declared in source_columns.items():
                 metadata = by_source[key]
-                coverage = int(table[declared].notna().any(axis=1).sum()) / len(table) if len(table) else None
+                # A column with NO missing value is a flag or a count in which absence was
+                # written as zero, not a measurement of every gene, and crediting it full
+                # coverage decides a slot by the TYPE of its columns. The Plasmodium lactylation
+                # slot was proposed for replacement on exactly that: `has_lactyl` is a boolean,
+                # 5,720 of 5,720 non-null and 144 of them True, so it scored coverage 1.0 against
+                # 0.0198 for `n_lactylsites`, which measures 113 genes (2026-11-18).
+                measured = [c for c in declared if table[c].isna().any()]
+                coverage = (int(table[measured].notna().any(axis=1).sum()) / len(table)
+                            if len(table) and measured else None)
                 candidate = DatasetCandidate(key + ":" + pattern, slot.key, metadata["publication_id"],
                                              metadata["first_publication_date"], metadata["citations"], coverage,
                                              "Europe PMC", as_of, "accepted",
