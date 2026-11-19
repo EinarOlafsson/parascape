@@ -297,6 +297,10 @@ def main() -> None:
     before.to_csv(os.path.join(out, "agreement_before.tsv"), sep="\t")
     after.to_csv(os.path.join(out, "agreement_after_cellcycle.tsv"), sep="\t")
     record.to_csv(os.path.join(out, "studies.tsv"), sep="\t", index=False)
+    # The null DRAWS, not just their mean and sd: figure 2C draws the distribution the observed
+    # gain is compared against, and a summary cannot be drawn as a distribution.
+    pd.DataFrame({"null_gain": null_gain}).to_csv(os.path.join(out, "null_gains.tsv"),
+                                                  sep="\t", index=False)
     pd.DataFrame({"cluster_before": groups_before,
                   "cluster_after": groups_after,
                   "median_agreement_before": before.apply(lambda c: c.drop(c.name).median()),

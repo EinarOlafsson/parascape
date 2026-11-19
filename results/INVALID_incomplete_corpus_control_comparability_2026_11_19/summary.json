@@ -1,0 +1,14 @@
+{
+  "studies": 8,
+  "genes": 8157,
+  "median_agreement_before": 0.8130286234112147,
+  "median_agreement_after": 0.8443479309912604,
+  "gain": 0.03131930758004564,
+  "null_gain_mean": 0.01965232108402812,
+  "null_gain_sd": 0.007717825350859465,
+  "p": 0.08955223880597014,
+  "n_null": 200,
+  "clusters_before": 1,
+  "clusters_after": 1,
+  "studies_crossing_0_7": []
+}
