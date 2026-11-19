@@ -1,0 +1,18 @@
+{
+  "accession": "GSE232438",
+  "samples": [
+    "24hrs",
+    "36hrs",
+    "42hrs",
+    "46hrs",
+    "54hrs",
+    "in_vivo"
+  ],
+  "features_in_series": 4020,
+  "genes_in_space": 3923,
+  "rows_kept": 3923,
+  "adjacent_agreement": 0.8848226052728647,
+  "earliest_against_in_vivo": 0.7262781845927486,
+  "fills": "transcription at a point in culture",
+  "does_not_fill": "Cp::transcription \u00b7 oocyst -- the GEO supplement carries no stage or cluster annotation, so no cell here can be called an oocyst without redoing the clustering and stage assignment of the paper"
+}

@@ -3598,6 +3598,22 @@ A release was therefore built rather than leaving the documented test command re
 the suite against this commit. It is a LOCAL build only: nothing was published and no version was cut,
 because publishing needs a Hugging Face token with write access to the dataset.
 
+**The one genuine candidate in the v4 list, derived and assessed (2026-11-18).** GSE232438,
+"Transcriptional control of the Cryptosporidium lifecycle", offered against
+`Cp::transcription · oocyst`. Downloaded (26 files, 39 MB), and it is a real match on identifiers:
+single-cell matrices at 24, 36, 42, 46 and 54 hours of culture plus one in vivo sample, 10,319
+cells over 4,020 CryptoDB features, covering **100.0 per cent of the 3,923 genes of the
+Cryptosporidium space**. A pseudobulk per sample is derived in
+`results/cryptosporidium_lifecycle_2026_11_18/deposit_cp_lifecycle.tsv`, and it behaves like a time
+course: adjacent in vitro points agree at 0.885 while the earliest point against in vivo is 0.726.
+
+**It does not fill the slot it was offered for, and that is recorded rather than fudged.** The GEO
+supplement ships barcodes and matrices with no stage or cluster annotation, so no cell in it can be
+called an oocyst without redoing the clustering and stage assignment of the paper. Treating the
+latest timepoint as if it were a stage would put a culture timepoint in a stage slot, which is the
+same class of error as `rna108740_Day` sitting in a bradyzoite slot while being cat
+enteroepithelial. What the derivation DOES fill is transcription at a point in culture.
+
 **Four Plasmodium slots are empty BY DECISION, not by oversight. CORRECTED 2026-11-18, having
 first got this wrong.** `deposit_pf_liver_transcriptome.tsv`, `deposit_pf_midgut_transcriptome.tsv`,
 `deposit_pf_translation_efficiency.tsv` and `deposit_pf_dbsp_occupancy.tsv` all sit on disk with
