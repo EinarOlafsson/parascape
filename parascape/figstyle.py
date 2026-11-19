@@ -66,21 +66,51 @@ def use() -> None:
     })
 
 
-def panel_width_mm(n_categories: int, vertical: bool = False) -> float:
-    """How wide a panel showing `n_categories` must be, so two such panels match exactly."""
+def panel_width_mm(n_categories: int, vertical: bool = True) -> float:
+    """How wide a VERTICAL panel showing `n_categories` must be, so two such panels match.
+
+    Only meaningful for a vertical panel, where the categories run along x. A horizontal panel
+    takes its width from the value axis and its HEIGHT from the categories; `panel_height_mm`
+    answers that one.
+    """
     left, _bottom, right, _top = MARGIN_MM
     return left + right + (SLOT_MM_VERTICAL if vertical else SLOT_MM) * n_categories
 
 
-def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False):
+def panel_height_mm(n_categories: int) -> float:
+    """How tall a HORIZONTAL (`barh`) panel showing `n_categories` must be."""
+    _left, bottom, _right, top = MARGIN_MM
+    return bottom + top + SLOT_MM * n_categories
+
+
+#: Length of the VALUE axis of a horizontal panel, in millimetres of plotting area. The category
+#: axis is slots; the value axis is this, the same in every horizontal panel, so two panels differ
+#: only in how many categories they have.
+VALUE_MM = 62.0
+
+
+def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False,
+           value_mm: float = VALUE_MM):
     """A figure and axes sized by the number of categories, with the house margins.
 
-    The plotting area is exactly one slot per category, so a three-condition panel drawn here is
-    the same width as any other three-condition panel drawn here, which is the symmetry Einar
-    asked for and the thing eyeballed margins never deliver.
+    The plotting area is exactly one slot per category ALONG THE CATEGORY AXIS, so a
+    three-condition panel drawn here is the same size as any other three-condition panel drawn
+    here, which is the symmetry Einar asked for and the thing eyeballed margins never deliver.
+
+    Which axis that is depends on the orientation, and getting this wrong is what made the first
+    set of panels inconsistent. `vertical=True` lays the categories along x (violins, boxes,
+    vertical bars), so the slots set the WIDTH and `height_mm` sets the value axis.
+    `vertical=False` lays them down y (`barh`), so the slots set the HEIGHT and `value_mm` sets
+    the value axis. The old code put the slots on the width in BOTH cases, so every horizontal
+    panel took its bar thickness from a hand-picked height -- 48 mm here, 60 mm there -- and no
+    two of them had bars of the same thickness, which is rule 1.
     """
     left, bottom, right, top = MARGIN_MM
-    width_mm = panel_width_mm(n_categories, vertical=vertical)
+    if vertical:
+        width_mm = left + right + SLOT_MM_VERTICAL * n_categories
+    else:
+        width_mm = left + right + value_mm
+        height_mm = bottom + top + SLOT_MM * n_categories
     fig = plt.figure(figsize=(width_mm / 25.4, height_mm / 25.4))
     ax = fig.add_axes([left / width_mm, bottom / height_mm,
                        (width_mm - left - right) / width_mm,
@@ -134,9 +164,10 @@ def violin(ax, groups, names, control=(), vertical=True, draw_points=None):
     """
     fills = colours(names, control=control)
     positions = list(range(len(groups)))
+    # `orientation=` since matplotlib 3.11; `vert=` is deprecated and goes in 3.13.
     parts = ax.violinplot([list(g) for g in groups], positions=positions,
                           widths=bar_width(), showextrema=False, showmedians=False,
-                          vert=vertical)
+                          orientation="vertical" if vertical else "horizontal")
     for body, fill in zip(parts["bodies"], fills):
         body.set_facecolor(fill)
         body.set_alpha(ALPHA)

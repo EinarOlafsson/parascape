@@ -99,11 +99,18 @@ def figure2():
 def figure3():
     m = pd.read_csv(newest("coexpression_modules_*/modules.tsv"), sep="\t")
     named = m[m["named"]].sort_values("share").tail(10)
-    labels = [f"{r.compartment} (module {int(r.module)})" for r in named.itertuples()]
+    # Compartment names carry underscores in the record and must not carry them on a figure --
+    # `pellicle_PM_IMC` is a key, not a phrase. The module number stays: it IS the identifier.
+    labels = [f"{r.compartment.replace('_', ' ')} (module {int(r.module)})"
+              for r in named.itertuples()]
     fig = bars(list(named["share"]), labels,
                "share of the module assigned to that compartment",
                highlight={labels[-1]}, letter="a", height=56.0, fmt="{:.0%}")
     ax = fig.axes[0]
+    # Percentage ticks under percentage labels: the axis read 0.0-0.8 while every bar was
+    # annotated "39%", which asks the reader to convert.
+    ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8])
+    ax.set_xticklabels(["0", "20%", "40%", "60%", "80%"], fontsize=5.5)
     ax.plot(named["matched_baseline"], range(len(named)), "|", color=FS.INK, markersize=4,
             markeredgewidth=0.8, zorder=5)
     ax.annotate("| matched baseline", (0.98, 0.04), xycoords="axes fraction", fontsize=5.0,
@@ -146,12 +153,32 @@ def figure4():
     return fig
 
 
+#: Edge-layer keys in words. `unwritten_interaction` and `structural_hole` are record keys, and a
+#: figure that prints them makes the reader decode an underscore.
+LAYER_NAMES = {
+    "comention": "named together in a paper",
+    "comention_ft": "named together in a full text",
+    "coexpression": "co-expressed",
+    "cofitness": "co-fitness",
+    "cotranslation": "co-translated",
+    "orthogroup": "same orthogroup",
+    "domain": "shares a domain",
+    "struct": "structural neighbour",
+    "xlms": "crosslinked",
+    "structural_hole": "structural hole",
+    "unwritten_interaction": "interaction nobody wrote down",
+}
+
+
 def figure7():
     """Reach against accuracy per edge layer: both matter, so both are axes."""
     L = pd.read_csv(newest("network_layers_*/layers.tsv"), sep="\t")
     L = L[L["enough"].astype(bool)].copy()
     FS.use()
-    fig, ax = FS.figure(6, height_mm=54.0)
+    # Wider than the house default: the layer names in words are long, and at the default width
+    # the label placer ran out of non-overlapping candidates and put "shares a domain" through
+    # "all layers". The VALUE axis may grow; the category slot may not, and this panel has none.
+    fig, ax = FS.figure(6, height_mm=58.0, value_mm=92.0)
     union = L[L["layer"].str.contains("ALL LAYERS")]
     single = L[~L["layer"].str.contains("ALL LAYERS")]
     ax.plot(single["answered"], single["accuracy"], "o", color=FS.CONTROL, markersize=3.6,
@@ -160,7 +187,9 @@ def figure7():
             markeredgewidth=0, alpha=FS.ALPHA, zorder=4)
     FS.place_labels(ax, fig,
                     [(r.answered, r.accuracy) for r in L.itertuples()],
-                    [r.layer.replace(" AT ONCE", "").lower() for r in L.itertuples()],
+                    [LAYER_NAMES.get(r.layer.replace(" AT ONCE", "").lower(),
+                                     r.layer.replace(" AT ONCE", "").lower().replace("_", " "))
+                     for r in L.itertuples()],
                     [FS.INK if "ALL" in r.layer else FS.CONTROL for r in L.itertuples()])
     base = float(L["accuracy"].iloc[0] - L["lift"].iloc[0])
     ax.axhline(base, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=2)
@@ -173,7 +202,9 @@ def figure7():
     ax.xaxis.set_major_locator(FixedLocator([100, 300, 1000, 3000]))
     ax.set_xticklabels(["100", "300", "1,000", "3,000"], fontsize=5.5)
     ax.xaxis.set_minor_formatter(NullFormatter())
-    ax.set_xlim(90, 7000)
+    # Headroom at the right so a label beside the rightmost point is not cut off: "coexpression"
+    # sat at 3,500 genes and ran off the page.
+    ax.set_xlim(90, 13000)
     ax.set_xlabel("genes the layer can answer for", fontsize=6.0, labelpad=2)
     ax.set_ylabel("right when it answers", fontsize=6.0, labelpad=2)
     ax.set_ylim(0.25, 0.80)
