@@ -193,7 +193,9 @@ def figure7():
                      for r in marked.itertuples()],
                     [FS.INK if "ALL" in r.layer else FS.CONTROL for r in marked.itertuples()])
     base = float(L["accuracy"].iloc[0] - L["lift"].iloc[0])
-    ax.axhline(base, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=2)
+    ax.axhline(base, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=2,
+               label="Commonest compartment")
+    FS.legend(ax, loc="lower left")
     ax.set_xscale("log")
     # Explicit ticks: the automatic minor labels on a log axis wrote 2x10^2, 3x10^2 and 4x10^2
     # through each other along the bottom.

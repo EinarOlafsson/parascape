@@ -99,10 +99,16 @@ def real_1c():
 
 
 def real_7(col, ylabel, letter):
+    import draw_remaining_panels as D
     L = pd.read_csv(newest("network_layers_*/layers.tsv"), sep="\t")
     L = L[L["enough"].astype(bool)].sort_values(col, ascending=False)
-    names = [s.replace(" AT ONCE", "").lower().replace("_", " ")[:18] for s in L["layer"]]
-    v = dict(zip(names, L[col]))
+    keys = [s.replace(" AT ONCE", "").lower() for s in L["layer"]]
+    # Display names, not record keys: 'xlms' and 'struct' are keys.
+    names = [D.LAYER_NAMES.get(k, k.replace("_", " ")) for k in keys]
+    vals = L[col].to_numpy()
+    if col == "accuracy":
+        vals = vals * 100          # per cent, to share an axis unit with panel B
+    v = dict(zip(names, vals))
     return bars_from(v, "Edge layer", ylabel, letter,
                      accent={n for n in names if n.startswith("all layers")})
 
@@ -163,7 +169,7 @@ def real_11c():
 
 
 REAL = {(1, "b"): real_1b, (1, "c"): real_1c,
-        (7, "c"): lambda: real_7("accuracy", "Accuracy", "c"),
+        (7, "c"): lambda: real_7("accuracy", "Accuracy (%)", "c"),
         (7, "d"): lambda: real_7("answered", "Genes answered", "d"),
         (10, "c"): real_10c, (10, "f"): real_10f,
         (11, "b"): real_11b, (11, "c"): real_11c}
@@ -225,11 +231,23 @@ def placeholder(panel, figno: int):
         ax.scatter(xs.ravel(), ys.ravel(), s=rng.uniform(5, 60, 25), color=FS.ACCENT,
                    alpha=FS.ALPHA, lw=0)
         ax.set_xlim(-0.6, 4.6); ax.set_ylim(-0.6, 4.6)
-    else:   # schematic
+    else:   # schematic: a node-link sketch, so the slot reads as a schematic and not as nothing
         fig, ax = FS.square_figure()
         ax.axis("off")
+        pts = rng.uniform(0.1, 0.9, (8, 2))
+        for i in range(8):
+            for j in range(i + 1, 8):
+                if rng.random() < 0.3:
+                    ax.plot(*zip(pts[i], pts[j]), color=FS.BACKGROUND, lw=0.8, zorder=1)
+        ax.scatter(pts[:, 0], pts[:, 1], s=120, color="#E4E4E4", edgecolor="#9A9A9A",
+                   lw=0.6, zorder=2)
+        ax.set_xlim(0, 1); ax.set_ylim(0, 1)
     ax.plot([], [], " ", **mark)
-    FS.legend(ax, loc="upper left")
+    # A heatmap has no empty corner, so its key goes outside; elsewhere it stays with the panel.
+    if form == "heatmap":
+        FS.legend(ax, loc="upper left", bbox_to_anchor=(0.0, 1.18))
+    else:
+        FS.legend(ax, loc="upper left")
     if form not in ("heatmap", "schematic"):
         ax.set_ylabel("Value")
     FS.letter(fig, panel.letter)
