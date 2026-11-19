@@ -42,12 +42,57 @@ at 442, and length alone separated the arms at AUC 0.976. Checked here: host-len
 **AUC 0.583, Mann-Whitney p = 0.51**. Not that confound -- but with 12 per arm that is
 underpowered agreement, not the matched 0.500 their method requires.
 
+## Both folds scored, and they are below the WRONG-POSE distribution
+
+The AF3 session ran its 44-feature scorer over the two finished folds
+(`af3_session_scored_2folds.csv` in the output directory):
+
+| | Q99584 | Q06210 | high-accuracy poses | wrong poses |
+|---|---:|---:|---:|---:|
+| interface pLDDT | 53.8 | 57.2 | median 98.1 | median 69.7 |
+| interface PAE (A) | 20.8 | 12.0 | median 1.0 | median 15.8 |
+| iLIS / cLIS | 0.000 | 0.000 | | |
+| pDockQ2 | 0.009 | 0.009 | | |
+
+Both sit BELOW the median of wrong poses. iLIS and cLIS at exactly 0.000 mean essentially no
+interface residue pairs fall under the 12 A PAE cutoff: not a weak interface, an absent one.
+
+## The length confound is visible INSIDE my own two folds
+
+This matters more than the scores. Q06210 looks better than Q99584 on ipTM (0.33 vs 0.19),
+contacts (219 vs 60) and BSA (7718 vs 2599) -- and its partner is 699 aa against 98, seven times
+longer. The length-INSENSITIVE measures barely move: interface pLDDT 53.8 to 57.2, iLIS 0.000 to
+0.000, pDockQ2 identical. Every metric that appeared to separate the two pairs was tracking
+partner length. That is the 0.583 host-length AUC showing its teeth at n = 2, and it confirms the
+reading that 0.583 at n = 12 is underpowered agreement, not demonstrated balance -- detecting an
+imbalance of the kind that bit them (0.976) would need roughly 25-30 per arm.
+
 ## Where this should land
 
 The defensible statement is not a weak ipTM comparison. It is that **MYR1 lies in the fraction
 AF3 cannot see** -- no ordered residues, below the foldability cut, peptide tiling already
 failed. That is a result about the limits of the method, and a better sentence than the panel
-I set out to draw. Awaiting Einar.
+I set out to draw.
+
+**KEEP THE CLAIM ABOUT THE METHOD, NOT THE PROTEIN** (their caution, and they are right). These
+data say AF3 cannot model MYR1 interfaces and that MYR1 has no confidently ordered domain in
+AFDB. They do NOT say MYR1 lacks structure in vivo or lacks partners: MYR1 is a translocon
+component, and its IP-MS partners may be real but mediated by regions or conditions AF3 cannot
+represent, or indirect through the translocon. Nor does ipTM 0.19 make Q99584 a non-binder -- the
+honest statement is that the prediction is uninformative, which is a different thing.
+
+Five independent lines converge on the method limit: folded fraction 0.0 against a median of
+0.59; below the 30 per cent cut, so excluded from a 40,675-pair screen by rule; peptide tiling
+with shuffled decoys already failed (real motif won 27 per cent, decoys made MORE contacts);
+phosphorylating empirical ToxoDB sites did not raise local pLDDT (+1.76, p = 0.42); and now two
+co-folds below the wrong-pose distribution.
+
+Still open, both suggested by the AF3 session: whether any of the 733 partners pairs with a MYR1
+region that IS ordered (none is above the cut, so probably not, but the 638-810 fragment they
+hold makes it a one-line check); and whether the IP-MS enrichment is simply the better panel,
+since 733 partners with an imputation-aware class split stand on their own with no structure
+prediction at all. MSA reuse is marginal here: 19 of my 651 partner accessions are in their
+cache of 72, and their entries are FRAGMENTS keyed to exact residue ranges.
 
 The two completed folds are kept: `TGME49_254470__Q99584` (ipTM 0.19) and
 `TGME49_254470__Q06210`. The other 22 inputs remain in
