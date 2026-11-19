@@ -552,6 +552,66 @@ def figure06c():
     return fig
 
 
+def figure10b():
+    """Figure 10b: when an effector goes, does the PARASITE change in the same cell?
+
+    This matters because every host effect attributed to an effector assumes the parasite is
+    otherwise unchanged. If knocking out an effector also moves the parasite, part of the host
+    response is downstream of a sick parasite rather than of the missing effector.
+
+    One point per knockout, 85 of them, so a scatter: the parasite evidence against the host
+    evidence, each as -log10 of the corrected q. Grey for everything and colour for what passes,
+    which is the house form for one value per gene against another. The axes are evidence, not
+    effect size, and the panel says so -- a target can reach q here on a few hundred cells.
+
+    ONLY ONE SAMPLE IS DRAWN. The other 10x run in this deposit compares against a named neutral
+    control (UPRT) and this one against every other assigned cell, so their q values do not mean
+    the same thing and pooling them would be the mistake figure 4 is about. The other run is
+    reported in the legend instead.
+    """
+    import glob as _glob
+    directory = sorted(_glob.glob(os.path.join(ROOT, "results", "dual_perturb_single_cell_*")))[-1]
+    wide = sorted(_glob.glob(os.path.join(directory, "*_targets.tsv")),
+                  key=lambda f: -len(open(f).readlines()))[0]
+    t = pd.read_csv(wide, sep="\t")
+    t = t.dropna(subset=["parasite_q", "host_q"])
+    # The AXES ARE THE UNCORRECTED p, and the CORRECTION decides the colour. Drawn on q, 83 of the
+    # 85 points sat at exactly q = 1 and the panel was a pile at the origin with two outliers --
+    # true, and showing nothing about the other 83. On p the 85 spread out, and a reader can see
+    # that they lie where chance would put them, which is the actual finding.
+    smallest = 1e-8     # so a p of exactly 0 is still drawable
+    x = -np.log10(t["parasite_p"].clip(lower=smallest))
+    y = -np.log10(t["host_p"].clip(lower=smallest))
+    hit = (t["parasite_q"] < 0.05) | (t["host_q"] < 0.05)
+    FS.use()
+    fig, ax = FS.figure(6, height_mm=58.0, value_mm=86.0)
+    ax.plot(x[~hit], y[~hit], "o", color=FS.CONTROL, markersize=3.2, markeredgewidth=0,
+            alpha=FS.ALPHA, zorder=3)
+    ax.plot(x[hit], y[hit], "o", color=FS.SERIES[0], markersize=4.2, markeredgewidth=0,
+            alpha=FS.ALPHA, zorder=4)
+    cut = -np.log10(0.05)
+    for value, axis in ((cut, ax.axvline), (cut, ax.axhline)):
+        axis(value, color=FS.INK, linewidth=0.5, linestyle=(0, (3, 2)), zorder=2)
+    if hit.any():
+        FS.place_labels(ax, fig, list(zip(x[hit], y[hit])),
+                        [f"{g} ({int(c)} cells)" for g, c in
+                         zip(t.loc[hit, "target"], t.loc[hit, "cells"])],
+                        [FS.INK] * int(hit.sum()))
+    ax.set_xlabel("the parasite changed  (-log$_{10}$ p, uncorrected)", fontsize=6.0, labelpad=2)
+    ax.set_ylabel("the host changed\n(-log$_{10}$ p, uncorrected)", fontsize=6.0, labelpad=2)
+    # TOP right. Top left ran through the host hit's label and bottom right through the parasite
+    # hit's: the label placer measures the points, not an annotation added afterwards, so a note
+    # has to go where neither hit is -- and both hits are at the left and the bottom right.
+    ax.annotate(f"{len(t)} knockouts tested in one 10x run\n"
+                f"coloured: q < 0.05 after correction across all {len(t)}\n"
+                f"dashed: uncorrected p = 0.05",
+                (0.99, 0.97), xycoords="axes fraction", fontsize=4.9, color=FS.INK,
+                ha="right", va="top", linespacing=1.5)
+    ax.tick_params(labelsize=5.5, pad=1.5)
+    FS.letter(fig, "b")
+    return fig
+
+
 def main() -> None:
     for name, fn in (("figure02_comparability", figure2), ("figure03_modules", figure3),
                      ("figure04_what_structures", figure4), ("figure07_network_layers", figure7),
@@ -561,7 +621,8 @@ def main() -> None:
                      ("figure12a_measured_absence", figure12a),
                      ("figure12b_categories_per_gene", figure12b),
                      ("figure06b_protein_abundance", figure06b),
-                     ("figure06c_explains_which", figure06c)):
+                     ("figure06c_explains_which", figure06c),
+                     ("figure10b_single_cell", figure10b)):
         save(fn(), name)
     print("wrote", OUT)
 

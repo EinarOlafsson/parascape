@@ -1,7 +1,7 @@
 {
   "panels": 19,
-  "real": 17,
-  "placeholders": 2,
+  "real": 18,
+  "placeholders": 1,
   "figures": 12,
   "complete_figures": [
     "01",
@@ -12,6 +12,7 @@
     "06",
     "07",
     "09",
+    "10",
     "11",
     "12"
   ],
@@ -140,9 +141,9 @@
       "figure": "10",
       "letter": "b",
       "title": "The parasite in the same cells",
-      "real": false,
-      "source": null,
-      "why_missing": "dual perturb-seq: targets counted, single-cell matrices not quantified"
+      "real": true,
+      "source": "results/paper_panels_2026_11_19/figure10b_single_cell.png",
+      "why_missing": null
     },
     {
       "figure": "11",
