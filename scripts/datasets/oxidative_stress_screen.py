@@ -6,6 +6,7 @@ Screening score per gene under oxidative challenge
     level / kind : DNA / CRISPR_screen
     provides     : oxidative_stress_screen_score
     coverage     : 7,384 genes (91%)
+    citation     : Chen Y et al., Genome-Wide CRISPR/Cas9 Screen Identifies New Genes Critical for Defense Against Oxidant Stress in Toxoplasma gondii. Front Microbiol 2021
     PMID         : 34163449
     accession    : PMC8216390 Data Sheet 1
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8216390/supplementaryFiles

@@ -6,6 +6,7 @@ Strongest bait signal and how many baits saw the protein
     level / kind : post_translation / IPMS
     provides     : cyst_wall_max_spectral, cyst_wall_n_baits
     coverage     : 56 proteins
+    citation     : Tu V et al., The Toxoplasma gondii Cyst Wall Interactome. mBio 2020
     PMID         : 32019789
     accession    : PMC7002340 Data Set S1
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7002340/supplementaryFiles

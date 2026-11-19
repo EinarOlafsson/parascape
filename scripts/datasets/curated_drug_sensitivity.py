@@ -6,6 +6,7 @@ Knockouts with a measured shift in sensitivity to a named compound
     level / kind : reference / literature
     provides     : drug_compounds_tested, drug_sensitivity_shifts, drug_sensitivity_directions
     coverage     : 3 genes, 2 compounds
+    citation     : Messina G et al., Impact of equilibrative nucleoside transporters on Toxoplasma gondii infection and differentiation. mBio 2025
     PMID         : 41025776
     accession    : mBio, PMID 41025776
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12607627/fullTextXML

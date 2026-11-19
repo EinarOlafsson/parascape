@@ -6,6 +6,7 @@ Gene disruptions carried through the feline stage with oocyst output measured
     level / kind : reference / literature
     provides     : enteric_oocyst_yield, enteric_sporulation, enteric_measurements
     coverage     : 8 genes, 4 studies
+    citation     : Wang ZT et al., The aromatic amino acid hydroxylase genes AAH1 and AAH2 in Toxoplasma gondii contribute to transmission in the cat. PLoS Pathog 2017
     PMID         : 28288194
     accession    : PMIDs 28288194, 30728393, 36809045 and PMC12942651
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5363998/fullTextXML

@@ -6,6 +6,7 @@ How far a protein's melting curve moves when calcium is added
     level / kind : post_translation / proteomics
     provides     : cetsa_calcium_ed_score
     coverage     : 2,348 proteins
+    citation     : Herneisen AL et al., Temporal and thermal profiling of the Toxoplasma proteome implicates parasite Protein Phosphatase 1 in the regulation of Ca(2+)-responsive pathways. Elife 2022
     PMID         : 35976251
     accession    : PMC9436416 Supplementary file 3
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9436416/supplementaryFiles

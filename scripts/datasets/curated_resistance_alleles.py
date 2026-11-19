@@ -6,6 +6,7 @@ Mutations shown to CAUSE drug resistance by putting them back into a clean backg
     level / kind : reference / literature
     provides     : resistance_allele_count, resistance_compound_count, resistance_substitutions, resistance_compounds
     coverage     : 1 gene, 3 substitutions, 3 compounds
+    citation     : Sugi T et al., Identification of mutations in TgMAPK1 of Toxoplasma gondii conferring resistance to 1NM-PP1. Int J Parasitol Drugs Drug Resist 2013
     PMID         : 24533298
     accession    : Int J Parasitol Drugs Drug Resist, PMIDs 24533298 and 25941623
     url          : https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3862444/fullTextXML

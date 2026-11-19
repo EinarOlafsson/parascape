@@ -1254,8 +1254,7 @@ REGISTRY = [
 
     Dataset("oxidative_stress_screen", "Oxidative-stress CRISPR screen", "DNA", "CRISPR_screen",
             "Screening score per gene under oxidative challenge",
-            ("oxidative_stress_screen_score",), "7,384 genes (91%)", pmid="34163449",
-            accession="PMC8216390 Data Sheet 1",
+            ("oxidative_stress_screen_score",), "7,384 genes (91%)", accession="PMC8216390 Data Sheet 1",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8216390/supplementaryFiles",
             path="datasets/quarantine/2026_08_16_unverified/Tg/fitness_oxidative_stress/",
             note="The authors' own `Screening score` sheet, not a recomputation from the guide "
@@ -1264,7 +1263,9 @@ REGISTRY = [
                  "catalase comes out at -6.15, essentially the bottom of the whole screen, and it "
                  "is the enzyme that disposes of hydrogen peroxide. Peroxiredoxin (-1.57), "
                  "superoxide dismutase (-1.01), glutaredoxin (-0.71) and thioredoxin (-0.63) all "
-                 "sit below the genome median of -0.38.", organism=organisms.TOXOPLASMA),
+                 "sit below the genome median of -0.38.", pmid="34163449",
+            citation="Chen Y et al., Genome-Wide CRISPR/Cas9 Screen Identifies New Genes Critical for Defense Against Oxidant Stress in Toxoplasma gondii. Front Microbiol 2021",
+            organism=organisms.TOXOPLASMA),
     # UNPUBLISHED. Manuscript under submission; this ships inside the data cache, so it is the first
     # thing to remove before any package release. Flagged here rather than only in a note because
     # `datasets.registry()` is what a release check would read.
@@ -1367,8 +1368,7 @@ REGISTRY = [
             "reference", "literature",
             "Gene disruptions carried through the feline stage with oocyst output measured",
             ("enteric_oocyst_yield", "enteric_sporulation", "enteric_measurements"),
-            "8 genes, 4 studies", pmid="28288194",
-            accession="PMIDs 28288194, 30728393, 36809045 and PMC12942651",
+            "8 genes, 4 studies", accession="PMIDs 28288194, 30728393, 36809045 and PMC12942651",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5363998/fullTextXML",
             note="THIRD curated source, and it exists because the sweeps that closed this slot "
                  "looked for a POOLED SCREEN through the enteroepithelial stages and correctly "
@@ -1384,12 +1384,14 @@ REGISTRY = [
                  "that never sporulate while Grx5 sheds fewer that sporulate poorly, and those are "
                  "different events. Magnitudes stay in the evidence text: they are not comparable "
                  "across cats, strains and inocula, and one numeric column would invent a precision "
-                 "the experiments do not have.", organism=organisms.TOXOPLASMA),
+                 "the experiments do not have.", pmid="28288194",
+            citation="Wang ZT et al., The aromatic amino acid hydroxylase genes AAH1 and AAH2 in Toxoplasma gondii contribute to transmission in the cat. PLoS Pathog 2017",
+            organism=organisms.TOXOPLASMA),
     Dataset("curated_drug_sensitivity", "Drug sensitivity per gene (CURATED)", "reference",
             "literature",
             "Knockouts with a measured shift in sensitivity to a named compound",
             ("drug_compounds_tested", "drug_sensitivity_shifts", "drug_sensitivity_directions"),
-            "3 genes, 2 compounds", pmid="41025776", accession="mBio, PMID 41025776",
+            "3 genes, 2 compounds", accession="mBio, PMID 41025776",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12607627/fullTextXML",
             note="SECOND curated source, and it exists because six catalogue sweeps looked for a "
                  "genome-wide chemogenomic screen and correctly found none -- while the sentence they "
@@ -1403,14 +1405,15 @@ REGISTRY = [
                  "measured in a ΔTgAT1 background and say so, because reading a double mutant's "
                  "phenotype off one of its genes is its own error. The per-row product check earned "
                  "its keep immediately: the annotation calls TGME49_244440 'adenosine transporter "
-                 "AT1', which is independent confirmation the accession is TgAT1.", organism=organisms.TOXOPLASMA),
+                 "AT1', which is independent confirmation the accession is TgAT1.", pmid="41025776",
+            citation="Messina G et al., Impact of equilibrative nucleoside transporters on Toxoplasma gondii infection and differentiation. mBio 2025",
+            organism=organisms.TOXOPLASMA),
     Dataset("curated_resistance_alleles", "Validated resistance-conferring mutations (CURATED)",
             "reference", "literature",
             "Mutations shown to CAUSE drug resistance by putting them back into a clean background",
             ("resistance_allele_count", "resistance_compound_count", "resistance_substitutions",
              "resistance_compounds"),
-            "1 gene, 3 substitutions, 3 compounds", pmid="24533298",
-            accession="Int J Parasitol Drugs Drug Resist, PMIDs 24533298 and 25941623",
+            "1 gene, 3 substitutions, 3 compounds", accession="Int J Parasitol Drugs Drug Resist, PMIDs 24533298 and 25941623",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3862444/fullTextXML",
             note="The ONLY curated source in the map: Toxoplasma has no resistome to parse, so this "
                  "is read out of papers one allele at a time and every row carries its paper, "
@@ -1427,7 +1430,9 @@ REGISTRY = [
                  "alleles (mitochondrially encoded, so no row exists in a table of nuclear genes -- "
                  "the eighteen nuclear cytochrome b hits are b-c1 subunits and would be the wrong "
                  "gene). Absence here is ignorance rather than a negative result: nobody selected "
-                 "resistance in most genes, so only curated genes carry a value.", organism=organisms.TOXOPLASMA),
+                 "resistance in most genes, so only curated genes carry a value.", pmid="24533298",
+            citation="Sugi T et al., Identification of mutations in TgMAPK1 of Toxoplasma gondii conferring resistance to 1NM-PP1. Int J Parasitol Drugs Drug Resist 2013",
+            organism=organisms.TOXOPLASMA),
     Dataset("splitcas9_imaging_screen", "Arrayed splitCas9 imaging screen", "DNA",
             "imaging_screen",
             "What a parasite looks like when a gene is off: egress, actin, apicoplast, replication",
@@ -2702,8 +2707,7 @@ REGISTRY = [
                  "reproduce would be describing the run.", organism=organisms.TOXOPLASMA),
     Dataset("thermal_shift_cetsa", "Calcium thermal-shift proteome (mineCETSA)", "post_translation",
             "proteomics", "How far a protein's melting curve moves when calcium is added",
-            ("cetsa_calcium_ed_score",), "2,348 proteins", pmid="35976251",
-            accession="PMC9436416 Supplementary file 3",
+            ("cetsa_calcium_ed_score",), "2,348 proteins", accession="PMC9436416 Supplementary file 3",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9436416/supplementaryFiles",
             path="datasets/quarantine/2026_08_16_unverified/Tg/thermal_shift/",
             note="The authors' own Euclidean-distance score, not recomputed from the ten "
@@ -2714,11 +2718,12 @@ REGISTRY = [
                  "about PP1, and PP1 is unremarkable in THIS column. That claim comes from the "
                  "zaprinast time course in the same paper, a different experiment; this is the "
                  "calcium mineCETSA sheet. PXD033642, the deposit for the same study, publishes "
-                 "only identifications and could not have filled this slot.", organism=organisms.TOXOPLASMA),
+                 "only identifications and could not have filled this slot.", pmid="35976251",
+            citation="Herneisen AL et al., Temporal and thermal profiling of the Toxoplasma proteome implicates parasite Protein Phosphatase 1 in the regulation of Ca(2+)-responsive pathways. Elife 2022",
+            organism=organisms.TOXOPLASMA),
     Dataset("cyst_wall_interactome", "Cyst wall interactome", "post_translation", "IPMS",
             "Strongest bait signal and how many baits saw the protein",
-            ("cyst_wall_max_spectral", "cyst_wall_n_baits"), "56 proteins", pmid="32019789",
-            accession="PMC7002340 Data Set S1",
+            ("cyst_wall_max_spectral", "cyst_wall_n_baits"), "56 proteins", accession="PMC7002340 Data Set S1",
             url="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7002340/supplementaryFiles",
             path="datasets/quarantine/2026_08_16_unverified/Tg/cyst_wall/",
             note="Two numbers because the bait count is the more honest one: a protein found by "
@@ -2726,7 +2731,9 @@ REGISTRY = [
                  "is not. Verified by what comes out on top -- MAG1 and MAG2, the canonical cyst "
                  "matrix proteins, with MCP3, MCP4 and SRS44 beside them. 57 of the table's 265 "
                  "rows name a Toxoplasma accession; the rest are human, because the pulldowns were "
-                 "done on infected cultures and the table lists everything identified.", organism=organisms.TOXOPLASMA),
+                 "done on infected cultures and the table lists everything identified.", pmid="32019789",
+            citation="Tu V et al., The Toxoplasma gondii Cyst Wall Interactome. mBio 2020",
+            organism=organisms.TOXOPLASMA),
 
     # ------------------------------------------------------------------ differentiation
     Dataset("second_background_fitness", "Fitness in the reporter strain (COMPUTED)", "DNA",
