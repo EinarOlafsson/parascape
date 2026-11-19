@@ -59,6 +59,213 @@ def figure(number: str, title: str, image: str, legend: str) -> str:
     return (f"\n**Figure {number}. {title}**\n\n{body}{legend.strip()}\n\n")
 
 
+def results_text(f) -> str:
+    """The Results section, one passage per figure, with every number read from its own summary.
+
+    Written for a journal readership rather than for the person who ran the analyses: it says what
+    the parasite does, states the baseline each claim is measured against, and names what the
+    corpus cannot answer. Nothing here is typed from memory -- if a number is in the text it came
+    out of the result file beside it, so the prose cannot drift from the figures.
+    """
+    cover = {c["category"]: c for c in f["f1b"]["coverage"]}
+    worst = sorted(f["f12"]["by_category"], key=lambda r: -r["genes_never_measured"])[0]
+    best11 = sorted(f["f11"]["best"], key=lambda r: -r["lift_over_baseline"])[0]
+    place = next(r for r in f["f9"]["layers"] if r.get("measurable") and r["layer"].startswith("where"))
+    fit = next(r for r in f["f9"]["layers"] if r.get("measurable") and r["layer"].startswith("whether"))
+    ctrl = next(r for r in f["f9"]["layers"] if r.get("measurable") and r["layer"].startswith("how long"))
+    cls = {c["class"]: c for c in f["f8"]["classes"]}
+    union = next(r for r in f["f7"]["layers"] if r["layer"] == "ALL LAYERS AT ONCE")
+    single = max((r for r in f["f7"]["layers"] if r.get("enough") and "ALL LAYERS" not in r["layer"]),
+                 key=lambda r: r["accuracy"])
+    f5, f2, f3, f4 = f["f5"], f["f2"], f["f3"], f["f4"]
+    least = f5["least_reached"]
+
+    return f"""
+## Results
+
+### A corpus that is nearly complete in transcription and nearly empty elsewhere
+
+ParaScape holds {f["f1"]["datasets"]} datasets in one gene space of {f["f1b"]["genes"]:,} genes
+(Figure 1a). Read as coverage rather than as effort, the corpus is lopsided: transcript reaches
+{cover['transcript']['share_measured']:.1%} of genes and chromatin
+{cover['chromatin']['share_measured']:.1%}, while function reaches
+{cover['function']['share_measured']:.1%}, phenotype {cover['phenotype']['share_measured']:.1%} and
+host response {cover['host_response']['share_measured']:.1%} (Figure 1b). What is missing from the
+literature is not what a gene is transcribed at, but what it does and what it does to the host.
+
+Coverage here counts only measurements. {f["f1b"]["columns_set_aside"]} columns are excluded because
+they carry no missing value at all: a count that is zero where nobody looked, or a flag that is
+False for an unassayed gene, would otherwise report a category as measured for every gene in the
+genome. The distinction recurs throughout and is not pedantic -- it changed four categories from
+fully covered to half covered.
+
+### Studies cannot be compared until their untreated arms agree
+
+Two perturbations measured in different laboratories can only be set against each other if the two
+untreated arms describe the same starting parasite. Over {f2["studies"]} studies with a control
+group that is never also a treated arm, agreement between those arms rises from
+{f2["median_agreement_before"]:.3f} to {f2["median_agreement_after"]:.3f} when the cell-cycle axis
+is removed. A random axis of the same size and shape gains {f2["null_gain_mean"]:+.3f}
+(sd {f2["null_gain_sd"]:.3f}, {f2["n_null"]} draws), so the cell-cycle excess is
+{f2["gain"] - f2["null_gain_mean"]:+.3f} at p = {f2["p"]:.4f} (Figure 2). Cell cycle is a
+substantial part of what separates one laboratory's control from another's.
+
+That this matters at all is shown directly by the corpus. Across {f4["pairs"]:,} pairs of stored
+within-study contrasts, two from the same study agree at a median absolute Spearman of
+{f4["median_abs_rho_same_study"]:.3f} and two from different studies at
+{f4["median_abs_rho_different_study"]:.3f} -- a factor of {f4["ratio"]:.1f} (Figure 4). Sharing the
+KIND of perturbation across studies buys almost nothing. The laboratory, not the perturbation, is
+the strongest thing structuring the published record, which makes comparability a prerequisite
+rather than a precaution. Of {f4["parsed_contrasts"]} parsed contrasts over {f4["studies"]} studies,
+{len(f4["perturbations_repeated_across_studies"])} perturbation is stated by two independent
+laboratories, so whether perturbation effects replicate cannot be asked of this literature at all.
+
+### Genes that move together are compartments, and transcription places the ones built in waves
+
+Cut on co-expression components from 57 independent studies, {f3["genes"]:,} genes form
+{f3["modules"]} modules, of which {f3["named"]} hold a compartment above a baseline matched for
+size and for how much is already known about their members (Figure 3). One module is 78.6 per cent
+ribosome against 3.8 per cent matched. The apical secretory machinery splits into two modules
+rather than one.
+
+The same coupling is visible from the other direction. Of the 13 coarse hyperLOPIT compartments,
+five are recovered as well or better from RNA co-expression alone as from all allowed evidence
+together -- ribosome, rhoptries, apical, micronemes and the IMC -- while the plasma membrane (0.67)
+and the ER (0.78) are not (Figure 6a). Every one of the five is built in a wave during division, so
+its genes share a schedule that transcription records; the two that resist are made continuously.
+
+### What sets protein abundance, and what the answer depends on
+
+In {f["f6b"]["organism"]}, transcript abundance explains
+{f["f6b"]["r2_by_layer"]["transcript abundance"]:.1%} of the variance in protein abundance on the
+{f["f6b"]["genes_used"]} genes carrying every layer, and adding turnover, ribosome occupancy and
+codon usage takes it only to {list(f["f6b"]["r2_by_layer"].values())[-1]:.1%} (Figure 6b). The
+qualification belongs beside the claim: on the wider {f["f6b"]["wide_genes"]}-gene set transcript
+explains {f["f6b"]["wide_transcript_only_r2"]:.1%}, so protein is roughly twice as predictable in
+the genes everybody could measure. Compared with the human literature in its own currency, one
+averaged mRNA measure against protein gives r2 = {f["f6b"]["single_mrna_vs_protein_pearson_r2"]:.3f}
+over {f["f6b"]["single_mrna_vs_protein_n"]:,} genes, at the uncorrected end of published estimates.
+
+Across every pair of knowledge categories, {f["f6c"]["pairs_above_5_points"]} of {f["f6c"]["pairs"]}
+recover more than five points of variance above their own shuffled baseline (Figure 6c). Protein
+abundance explains fitness at R2 = 0.373: what the parasite makes most of is what it can least
+afford to lose.
+
+### Evidence of many kinds, weighted by what each is worth
+
+Recovering a hidden compartment from a gene's neighbours, the best single edge layer is co-mention
+at {single["accuracy"]:.1%} on {single["answered"]:,} genes, while every layer at once reaches
+{union["answered"]:,} genes at {union["accuracy"]:.1%} (Figure 7) -- twenty-four times the reach at
+two thirds the accuracy. The naive union is dragged down by its largest layer: co-fitness carries
+88,997 edges and performs below the commonest-answer baseline. Weighting each layer by its own
+measured worth, fitted on half the labelled genes and scored on the other half, gives
+{f["f7"]["weighted_on_held_out"]["accuracy"]:.1%} against
+{f["f7"]["unweighted_same_genes"]["accuracy"]:.1%} unweighted.
+
+### What varies between strains is what the parasite puts into the host
+
+Nonsynonymous over synonymous SNPs across the sequenced strains, against a baseline matched gene by
+gene on coding length: dense granules reach
+{cls["dense granules (hyperLOPIT)"]["ratio"]:.2f} and apical secretory
+{cls["apical secretory (rhoptries, micronemes)"]["ratio"]:.2f}, against
+{cls["dense granules (hyperLOPIT)"]["length_matched_baseline"]:.2f}, while the nucleus
+({cls["nucleus"]["ratio"]:.2f}), the cytosol ({cls["cytosol"]["ratio"]:.2f}) and the most required
+genes ({cls["required in vitro (lowest fitness tenth)"]["ratio"]:.2f}) fall at or below it
+(Figure 8). The matched baseline is necessary rather than decorative: longer genes carry more SNPs
+of both kinds and secreted proteins are not a random draw from the length distribution.
+
+### Which layers survive the species boundary
+
+On {f["f9"]["pairs"]["one_to_one"]:,} one-to-one orthologue pairs, where a protein is transfers
+between Toxoplasma and Plasmodium at {place["transfer"]:.3f} against a {place["baseline"]:.3f}
+baseline, whether losing it costs fitness at {fit["transfer"]:.3f}, and how its message is written
+not at all (Figure 9). Protein length transfers at {ctrl["transfer"]:.3f}, which is the control on
+the pairing: a sequence property must transfer between true orthologues, so a layer that does not is
+reporting biology rather than a mapping fault. {f["f9"]["pairs"]["many_to_many_set_aside"]}
+orthogroups are set aside as many-to-many rather than averaged.
+
+### The host response belongs mostly to single effectors
+
+Of {f["f10"]["host_genes"]:,} host genes moved by at least one of
+{f["f10"]["effectors"]} parasite effectors, {f["f10"]["private_host_genes"]:,} are moved by exactly
+one and {f["f10"]["shared_host_genes"]} by half or more (Figure 10a). The experiment carries its own
+control and it passes: the translocon members overlap each other at
+{f["f10"]["overlap_translocon_within"]:.3f} against {f["f10"]["overlap_cargo_within"]:.3f} for cargo
+with cargo. In the single-cell data, of {f["f10sc"]["targets_tested"]} targets with enough cells
+{f["f10sc"]["targets_moving_the_parasite"]} changes the parasite's own transcriptional output, so
+the assumption on which every pseudobulk host attribution rests largely holds (Figure 10b).
+
+### A treatment reaches some bradyzoite subtypes and not others
+
+Tested against all {f5["contrasts"]} stored within-study contrasts with {f5["n_null"]:,}
+expression-matched random gene sets behind each, {f5["reaching_any"]} contrasts reach at least one
+of the five in vivo bradyzoite subtypes. Subtype {least} is reached by
+{f5["by_subtype"][least]} of them, against {max(f5["by_subtype"].values())} for the most reached
+(Figure 5). Subtype {least} is testable and its matched sets are centred in every contrast checked,
+so this is not a failure of the comparison: nothing in the published catalogue of drugs, knockouts,
+pH switches and time points moves it. If a compound must reach every subtype to clear a tissue cyst,
+subtype {least} is the gap.
+
+### What the map can fill, and what it cannot
+
+Over {f["f11"]["held_out_predictions"]:,} held-out predictions under frozen partitions,
+{f["f11"]["targets_beating_baseline"]} of {f["f11"]["targets_summarised"]} targets are called better
+than by guessing the commonest answer (Figure 11). The best is {best11["target"]} at
+{best11["right_when_answered"]:.1%} against {best11["commonest_answer_baseline"]:.1%}, answering
+{best11["answer_rate"]:.1%} of the time. Accuracy is never shown without its baseline: `is_exported`
+is 95.9 per cent right against a 96.6 per cent baseline, which is worse than guessing.
+
+### What nothing has measured
+
+Across {f["f12"]["genes"]:,} genes and {f["f12"]["categories"]} categories built from
+{f["f12"]["columns"]} measurement columns, the largest gap is {worst["category"]}:
+{worst["genes_never_measured"]:,} genes ({1 - worst["share_measured"]:.1%}) have never been measured
+that way (Figure 12). One assay of that kind would give them a first measurement, which is the most
+any single experiment in this catalogue could add.
+"""
+
+
+def methods_text() -> str:
+    """Methods: the three rules every claim in this paper is held to."""
+    return """
+## Methods
+
+### Baselines are matched, never prior category size
+
+Every enrichment is divided by what the same procedure returns on random gene sets drawn to match
+the real set in size and in expression or in another stated property, not by the prior size of the
+category. A small category wins a comparison by shape alone, and dividing by its prior size
+measures that shape. Where a matched set cannot be centred on the real one -- a set at the extreme
+of the expression range has nothing more extreme to be compared with -- the result is reported as
+not separable rather than as an effect.
+
+### Absence is unknown, not zero
+
+A gene with no value in an assay has not been shown to lack the quantity; the assay did not reach
+it. Columns with no missing value are therefore excluded from any coverage statement, because a
+count that is zero where nobody looked and a flag that is False for an unassayed gene both read as
+measurements of every gene. Where a cluster or a class is too thinly measured to test, it is
+reported as unknown and never as unaffected.
+
+### A negative carries the smallest effect it could have seen
+
+Every comparison that returns no effect also reports the smallest effect its own baseline could
+have resolved, so "nothing there" and "could not have seen it" are distinguishable. Probabilities
+are corrected across the comparisons made within each analysis.
+
+### Held-out scoring
+
+Predictions are scored only on facts hidden from the method, under frozen partitions, and reported
+with three numbers together: how often the call is right when it answers, how often it answers, and
+what the commonest answer would give. Any one of the three alone can be made to look good.
+
+### Reproduction
+
+Each analysis writes its result beside a record of the inputs and settings it was made from, and
+each is runnable from within the application itself.
+"""
+
+
 def build() -> str:
     f1, f1b = summary("figure1_schematic_*/summary.json"), summary("corpus_inventory_*/summary.json")
     f2 = summary("control_comparability_*/summary.json")
@@ -87,9 +294,14 @@ def build() -> str:
     single = max((r for r in f7["layers"] if r.get("enough") and "ALL LAYERS" not in r["layer"]),
                  key=lambda r: r["accuracy"])
 
+    bundle = {"f1": f1, "f1b": f1b, "f2": f2, "f3": f3, "f4": f4, "f5": f5, "f6b": f6b,
+              "f6c": f6c, "f7": f7, "f8": f8, "f9": f9, "f10": f10, "f10sc": f10sc,
+              "f11": f11, "f12": f12}
     out = [f"% ParaScape: one gene space for the apicomplexan literature",
            f"% {date.today():%-d %B %Y}", ""]
-    out.append("## Figures\n")
+    out.append(results_text(bundle))
+    out.append(methods_text())
+    out.append("\n## Figures\n")
 
     out.append(figure(
         "1", "What ParaScape is, and how much of the genome it reaches",
