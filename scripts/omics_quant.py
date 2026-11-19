@@ -537,28 +537,6 @@ def compare_requant(run_dir: str, new_dir: str, references: list) -> dict:
     return out
 
 
-def requant_todo() -> list:
-    """Runs verified before trimming (no `trimming` in done.json) and not yet re-quantified, the runs
-    that mapped nothing first -- they contribute nothing until this runs."""
-    with open(PLAN) as fh:
-        plan_rows = [json.loads(ln) for ln in fh if ln.strip()]
-    first, rest = [], []
-    for r in plan_rows:
-        run_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
-        done = os.path.join(run_dir, "done.json")
-        if not os.path.exists(done) or os.path.exists(os.path.join(run_dir, REQUANT_DIR, "done.json")):
-            continue
-        try:
-            with open(done) as fh:
-                if "trimming" in json.load(fh):
-                    continue
-        except (OSError, ValueError):
-            continue
-        mapped = salmon_mapped(os.path.join(run_dir, f"salmon_{r['references'][0]}"))
-        (first if mapped == 0 else rest).append(r)
-    return first + rest
-
-
 def single_overhang_todo() -> list:
     """Single-end runs quantified BEFORE `--single-overhang`, whose kallisto is not comparable.
 
@@ -585,6 +563,38 @@ def single_overhang_todo() -> list:
         if not record.get("kallisto_single_overhang", False):
             todo.append(r)
     return todo
+
+
+def requant_todo() -> list:
+    """Runs verified before trimming (no `trimming` in done.json) and not yet re-quantified, the runs
+    that mapped nothing first -- they contribute nothing until this runs."""
+    with open(PLAN) as fh:
+        plan_rows = [json.loads(ln) for ln in fh if ln.strip()]
+    first, rest = [], []
+    for r in plan_rows:
+        run_dir = os.path.join(NAS, "rnaseq", r["study"], r["run_accession"])
+        done = os.path.join(run_dir, "done.json")
+        if not os.path.exists(done) or os.path.exists(os.path.join(run_dir, REQUANT_DIR, "done.json")):
+            continue
+        try:
+            with open(done) as fh:
+                if "trimming" in json.load(fh):
+                    continue
+        except (OSError, ValueError):
+            continue
+        mapped = salmon_mapped(os.path.join(run_dir, f"salmon_{r['references'][0]}"))
+        (first if mapped == 0 else rest).append(r)
+    # Single-end runs quantified before `--single-overhang` join the SAME pass, rather than
+    # becoming a second campaign someone has to remember to start. They go last: a run that
+    # mapped nothing contributes nothing until it is redone, while these have salmon numbers
+    # already and are missing only a comparable kallisto column. `requantify` waits for the new
+    # downloads before any of this runs, which is the order Einar asked for.
+    seen = {r["run_accession"] for r in first + rest}
+    overhang = [r for r in single_overhang_todo() if r["run_accession"] not in seen]
+    if overhang:
+        log(f"re-quantification also covers {len(overhang)} single-end runs quantified before "
+            f"--single-overhang")
+    return first + rest + overhang
 
 
 def pending_new_runs() -> int:
