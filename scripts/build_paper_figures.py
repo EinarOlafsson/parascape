@@ -136,22 +136,30 @@ def real_10f():
 
 
 def real_11b():
-    a = pd.read_csv(newest("filling_the_map_*/by_target_and_strategy.tsv"), sep="\t")
-    order = a.groupby("target")["lift_over_baseline"].max().sort_values(ascending=False).index
-    groups = [a.loc[a["target"] == t, "lift_over_baseline"].to_numpy() for t in order]
+    """Accuracy when answered against guessing the commonest answer, per target.
+
+    This replaces a box plot of every strategy per target, which drew the same values as 11A a
+    second time. A parity plot says something A and C do not: how far above the commonest-answer
+    baseline each target's best strategy sits. Above the diagonal is better than guessing.
+    """
+    import draw_remaining_panels as D
+    b = pd.read_csv(newest("filling_the_map_*/best_per_target.tsv"), sep="\t")
     FS.use()
-    fig, ax = FS.figure(len(groups), vertical=True)
-    bp = ax.boxplot(groups, positions=range(len(groups)), widths=FS.bar_width(),
-                    patch_artist=True, showfliers=False,
-                    medianprops=dict(color=FS.INK, lw=0.9),
-                    whiskerprops=dict(color=FS.INK, lw=0.6), capprops=dict(color=FS.INK, lw=0.6))
-    for b in bp["boxes"]:
-        b.set_facecolor(FS.CONTROL); b.set_alpha(FS.ALPHA); b.set_linewidth(0)
-    ax.axhline(0, color=FS.INK, lw=0.6)
-    ax.set_xticks(range(len(order)))
-    ax.set_xticklabels([t.replace("_", " ")[:16] for t in order], rotation=30, ha="right",
-                       rotation_mode="anchor")
-    ax.set_ylabel("Accuracy above baseline"); ax.tick_params(axis="x", length=0)
+    fig, ax = FS.square_figure()
+    ax.plot([0, 1], [0, 1], "-", color=FS.BACKGROUND, lw=0.7, zorder=1,
+            label="Accuracy = baseline")
+    above = b["right_when_answered"] > b["commonest_answer_baseline"]
+    ax.plot(b.loc[~above, "commonest_answer_baseline"] * 100,
+            b.loc[~above, "right_when_answered"] * 100, "o", color=FS.CONTROL, ms=4,
+            alpha=FS.ALPHA, lw=0)
+    ax.plot(b.loc[above, "commonest_answer_baseline"] * 100,
+            b.loc[above, "right_when_answered"] * 100, "o", color=FS.ACCENT, ms=4,
+            alpha=FS.ALPHA, lw=0, label="Above baseline")
+    ax.plot([0, 100], [0, 100], "-", color=FS.BACKGROUND, lw=0.7, zorder=1)
+    ax.set_xlim(0, 100); ax.set_ylim(0, 100)
+    ax.set_xlabel("Commonest-answer baseline (%)")
+    ax.set_ylabel("Accuracy when answered (%)")
+    FS.legend(ax, loc="lower right")
     FS.letter(fig, "b")
     return fig
 
@@ -160,10 +168,10 @@ def real_11c():
     b = pd.read_csv(newest("filling_the_map_*/best_per_target.tsv"), sep="\t")
     FS.use()
     fig, ax = FS.square_figure()
-    ax.plot(b["answer_rate"], b["right_when_answered"], "o", color=FS.ACCENT, ms=4,
-            alpha=FS.ALPHA, lw=0)
-    ax.set_xlabel("Answer rate"); ax.set_ylabel("Accuracy when answered")
-    ax.set_xlim(-0.05, 1.05); ax.set_ylim(-0.05, 1.05)
+    ax.plot(b["answer_rate"] * 100, b["right_when_answered"] * 100, "o", color=FS.ACCENT,
+            ms=4, alpha=FS.ALPHA, lw=0)
+    ax.set_xlabel("Answer rate (%)"); ax.set_ylabel("Accuracy when answered (%)")
+    ax.set_xlim(-4, 104); ax.set_ylim(-4, 104)
     FS.letter(fig, "c")
     return fig
 

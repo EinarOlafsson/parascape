@@ -165,8 +165,8 @@ FIGURES = (
                "phenotype barely above guessing.", (
         Panel("a", "accuracy above baseline, best strategy per target", "bar",
               "filling_the_map_*/best_per_target.tsv"),
-        Panel("b", "every strategy per target", "box",
-              "filling_the_map_*/by_target_and_strategy.tsv"),
+        Panel("b", "accuracy when answered vs the commonest-answer baseline", "scatter",
+              "filling_the_map_*/best_per_target.tsv"),
         Panel("c", "accuracy vs answer rate", "scatter", "filling_the_map_*/best_per_target.tsv"),
         Panel("d", "calibration of predicted probabilities", "line", None),
         Panel("e", "new assignments per target at the validated rate", "bar", None),
