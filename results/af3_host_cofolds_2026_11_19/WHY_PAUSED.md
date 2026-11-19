@@ -97,3 +97,23 @@ cache of 72, and their entries are FRAGMENTS keyed to exact residue ranges.
 The two completed folds are kept: `TGME49_254470__Q99584` (ipTM 0.19) and
 `TGME49_254470__Q06210`. The other 22 inputs remain in
 `/media/carruthers/mnt1/af3/af_input/host_cofolds_2026_11_19/` and run again whenever wanted.
+
+## Legend wording, checked against the source by the AF3 session (2026-11-19)
+
+It re-derived every number in the 8b legend from `bait_folded_fraction.json` and all of them
+hold: 208 baits scored, median **0.593**, **44** below the 0.30 cut (21.2 %), **13** at exactly
+0.0 (6.2 %), 164 foldable, MYR1 **0.0**. Two corrections to the WORDING, both of which would
+have let a reader take the panel for something it is not:
+
+1. **Say what folded fraction is, and what the denominator is.** It is not an AF3 output. It is
+   the fraction of residues whose **AlphaFold DB pLDDT is at or above 70**, computed by
+   `fetch_afdb_plddt.py` over **208 of 216 host-facing genes**; the other 8 have no AFDB entry
+   and are absent from the file rather than scored as zero. So the denominator is 208 host-facing
+   genes with AFDB coverage -- not 216, and not the proteome. Without that, "21 per cent below
+   the cut" reads as a proteome-wide disorder rate, which it is not.
+2. **0.30 is an operational threshold, not a definition.** It is the cut used to admit a bait to
+   the co-folding screen. Calling it a disorder threshold would be overclaiming.
+
+Both are now in the panel: the y axis names the quantity (residues with pLDDT >= 70), the
+category is "Host-facing" rather than "All baits", and the legend entry reads "Screen admission
+cut".

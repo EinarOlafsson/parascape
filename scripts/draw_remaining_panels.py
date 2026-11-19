@@ -653,9 +653,15 @@ def figure08b_foldability():
     cut = 0.30
     FS.use()
     fig, ax = FS.figure(2, vertical=True)
-    FS.violin(ax, [values], ["All baits"], control=["All baits"], vertical=True, draw_points=False)
+    # 208 host-facing genes WITH an AFDB entry. Eight of the 216 have none and are absent from
+    # the file rather than scored as zero, so the denominator is 208 -- not 216, and not the
+    # proteome. Without that, 21 per cent below the cut reads as a proteome-wide disorder rate.
+    FS.violin(ax, [values], ["Host-facing"], control=["Host-facing"], vertical=True,
+              draw_points=False)
+    # "Screen admission cut", NOT "disorder threshold": 0.30 is the AF3 screen's operational
+    # threshold for admitting a bait to co-folding, not an established definition of disorder.
     ax.axhline(cut, color=FS.INK, linewidth=0.6, linestyle=(0, (2, 2)), zorder=4,
-               label="Foldability cut")
+               label="Screen admission cut")
     ax.plot([0], [myr1], "o", markersize=4.5, markerfacecolor=FS.ACCENT,
             markeredgecolor=FS.ACCENT, alpha=FS.ALPHA, zorder=6, linestyle="none",
             label="MYR1")
@@ -663,8 +669,10 @@ def figure08b_foldability():
     # over data.
     FS.legend(ax, loc="center right")
     ax.set_xticks([0])
-    ax.set_xticklabels(["All baits"])
-    ax.set_ylabel("Ordered residues (fraction)")
+    ax.set_xticklabels(["Host-facing"])
+    # Name the QUANTITY: this is not an AF3 output, it is the fraction of residues whose
+    # AlphaFold DB pLDDT is at or above 70.
+    ax.set_ylabel("Residues with pLDDT $\\geq$ 70 (fraction)")
     ax.set_ylim(-0.06, 1.06)
     ax.set_xlim(-0.75, 1.25)
     ax.tick_params(axis="x", length=0)
