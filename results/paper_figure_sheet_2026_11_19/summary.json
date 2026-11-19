@@ -1,7 +1,7 @@
 {
   "panels": 19,
-  "real": 18,
-  "placeholders": 1,
+  "real": 19,
+  "placeholders": 0,
   "figures": 12,
   "complete_figures": [
     "01",
@@ -11,6 +11,7 @@
     "05",
     "06",
     "07",
+    "08",
     "09",
     "10",
     "11",
@@ -140,12 +141,12 @@
     {
       "figure": "08",
       "letter": "b",
-      "title": "Host and parasite proteins co-folded",
-      "real": false,
+      "title": "Which effectors AlphaFold can see",
+      "real": true,
       "drawn": true,
-      "simulated": true,
-      "source": "results/paper_panels_2026_11_19/figure08b_cofold.png",
-      "why_missing": "drawn on SIMULATED values: the 24 co-folds are prepared, the GPU step is not run"
+      "simulated": false,
+      "source": "results/paper_panels_2026_11_19/figure08b_foldability.png",
+      "why_missing": null
     },
     {
       "figure": "09",

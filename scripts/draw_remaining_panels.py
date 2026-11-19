@@ -258,11 +258,16 @@ def figure9():
              "where the protein is": "where it is"}
     labels = [short.get(s, s) for s in L["layer"]]
     # Protein length is the CONTROL and therefore grey: it must transfer between true orthologues.
-    fig = bars(list(L["transfer"]), labels, "share that transfers",
+    # CHANCE-CORRECTED, so the axis is ONE quantity. `transfer` is Spearman for the three
+    # continuous layers and categorical agreement for "where it is", whose chance baseline is
+    # 0.374 rather than 0 -- so the raw values are not the same measurement and no objective axis
+    # title was possible. (observed - chance) / (1 - chance) is Cohen's kappa: 0 is chance for
+    # every layer, 1 is perfect, and the four bars become comparable.
+    kappa = (L["transfer"] - L["baseline"]) / (1.0 - L["baseline"])
+    fig = bars(list(kappa), labels, "Chance-corrected agreement ($\\kappa$)",
                highlight={"where it is"}, letter="")
     ax = fig.axes[0]
-    ax.plot(range(len(L)), L["baseline"], "_", color=FS.INK, markersize=5, markeredgewidth=0.9,
-            zorder=5)
+    ax.axhline(0, color=FS.INK, linewidth=0.6)      # chance, which kappa puts at zero
     return fig
 
 
@@ -626,6 +631,47 @@ def figure08b():
     return fig
 
 
+def figure08b_foldability():
+    """Figure 8b, redesigned: which effectors AlphaFold can see at all.
+
+    The co-folding panel this replaces could not work. MYR1 has a folded fraction of 0.0 -- zero
+    of 810 residues above AFDB pLDDT 70 -- and the AF3 screen (session repo-1f) established over
+    ~400 PDB complexes that AF3 maps the folded, domain-mediated fraction (median DockQ 0.92) and
+    is AT CHANCE for disordered, motif-mediated binding (iLIS AUC 0.515). Co-folding a bait with
+    no ordered residues returns noise, which is what ipTM 0.19 was.
+
+    So the honest panel is the limit itself: the distribution of foldability across the 208 baits,
+    the cut below which co-folding is not attempted, and where MYR1 falls. 208 values is far more
+    than twenty, so a violin; the cut and the bait are legend entries, not text on the plot.
+    """
+    import json as _json
+    path = ("/media/carruthers/mnt3/claude/toxoplasma_projects/af3_folding/reports/"
+            "bait_folded_fraction.json")
+    raw = _json.load(open(path))
+    values = np.array([v for v in raw.values() if isinstance(v, (int, float))], dtype=float)
+    myr1 = float(raw["TGME49_254470"])
+    cut = 0.30
+    FS.use()
+    fig, ax = FS.figure(2, vertical=True)
+    FS.violin(ax, [values], ["All baits"], control=["All baits"], vertical=True, draw_points=False)
+    ax.axhline(cut, color=FS.INK, linewidth=0.6, linestyle=(0, (2, 2)), zorder=4,
+               label="Foldability cut")
+    ax.plot([0], [myr1], "o", markersize=4.5, markerfacecolor=FS.ACCENT,
+            markeredgecolor=FS.ACCENT, alpha=FS.ALPHA, zorder=6, linestyle="none",
+            label="MYR1")
+    # Centre right: the upper right sat over the top of the violin, and a legend never goes
+    # over data.
+    FS.legend(ax, loc="center right")
+    ax.set_xticks([0])
+    ax.set_xticklabels(["All baits"])
+    ax.set_ylabel("Ordered residues (fraction)")
+    ax.set_ylim(-0.06, 1.06)
+    ax.set_xlim(-0.75, 1.25)
+    ax.tick_params(axis="x", length=0)
+    FS.letter(fig, "b")
+    return fig
+
+
 def main() -> None:
     for name, fn in (("figure02_comparability", figure2), ("figure03_modules", figure3),
                      ("figure04_what_structures", figure4), ("figure07_network_layers", figure7),
@@ -637,7 +683,8 @@ def main() -> None:
                      ("figure06b_protein_abundance", figure06b),
                      ("figure06c_explains_which", figure06c),
                      ("figure10b_single_cell", figure10b),
-                     ("figure08b_cofold", figure08b)):
+                     ("figure08b_cofold", figure08b),
+                     ("figure08b_foldability", figure08b_foldability)):
         save(fn(), name)
     print("wrote", OUT)
 
