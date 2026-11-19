@@ -137,6 +137,15 @@ before it found 6 failures and every one was mine — four missing docstrings, o
 in a figure script, and two generated artefacts (`docs/datasets.md` and the 177 per-dataset
 scripts) that went stale when the host coverage strings gained their second denominator.
 
+## How progress is now checked
+
+`scripts/watch_progress.py`, run every 30 minutes by `parascape-progress-watch.timer`. It compares
+every tracked counter with the previous snapshot and reports MOVING, QUIET, SLOW or STALLED. A
+STALLED verdict requires two consecutive unchanged snapshots AND a worker that has written nothing,
+and it prints the evidence. The measurement is `write_bytes`, never CPU: a futex spin burns a core
+exactly as hard as real work. Added after the queue sat at 624 for nine hours while three kallisto
+processes read their index and wrote nothing, and I twice reported it as "running".
+
 ## Overnight, 2026-11-18
 
 * **The manuscript has its text.** Results, one passage per figure, and Methods stating the three
