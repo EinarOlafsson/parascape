@@ -1,0 +1,13 @@
+{
+  "datasets": 177,
+  "modules": 25,
+  "bands": {
+    "Look up": 4,
+    "Explore": 4,
+    "Ask": 8,
+    "Bring your own": 4,
+    "Data": 5
+  },
+  "words_in_schematic": 10,
+  "shows": "what can be brought in, the map they join, and what can be done with it"
+}
