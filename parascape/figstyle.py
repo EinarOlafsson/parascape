@@ -269,7 +269,11 @@ def violin(ax, groups, names, control=(), vertical=True, draw_points=None):
     drawn grey. Individual points are drawn over a group with at most `MAX_POINTS_DRAWN_OVER`
     values unless `draw_points` says otherwise.
     """
-    fills = colours(names, control=control)
+    # ONE accent colour, everything else grey -- the same rule as `bars`. Cycling the palette made
+    # four placeholder violins four colours meaning nothing. Every name NOT listed as a control
+    # takes the single accent; with no control named, all are grey.
+    control = {str(c) for c in control}
+    fills = [ACCENT if (control and str(n) not in control) else CONTROL for n in names]
     positions = list(range(len(groups)))
     # `orientation=` since matplotlib 3.11; `vert=` is deprecated and goes in 3.13.
     parts = ax.violinplot([list(g) for g in groups], positions=positions,

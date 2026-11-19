@@ -195,9 +195,10 @@ def placeholder(panel, figno: int):
         n = 4
         fig, ax = FS.figure(n, vertical=True)
         groups = [rng.normal(0.5 + 0.1 * i, 0.15, 60) for i in range(n)]
-        FS.violin(ax, groups, [f"group {i + 1}" for i in range(n)], control=["group 1"],
-                  vertical=True, draw_points=False)
-        ax.set_xticks(range(n)); ax.set_xticklabels([f"group {i + 1}" for i in range(n)])
+        names = [f"group {i + 1}" for i in range(n)]
+        FS.violin(ax, groups, names, control=names[1:], vertical=True, draw_points=False)
+        ax.set_xticks(range(n)); ax.set_xticklabels(names, rotation=30, ha="right",
+                                                    rotation_mode="anchor")
         ax.set_xlim(-0.6, n - 0.4); ax.tick_params(axis="x", length=0)
     elif form == "scatter":
         fig, ax = FS.square_figure()

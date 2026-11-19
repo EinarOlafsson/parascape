@@ -241,7 +241,13 @@ def figure8():
     fig, ax = FS.figure(len(groups), height_mm=56.0, vertical=True)
     FS.violin(ax, [np.clip(v, 0, ceiling) for v in groups], names,
               control=[n for n in names if n not in top], vertical=True, draw_points=False)
-    ax.axhline(baseline, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=4)
+    ax.axhline(baseline, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=4,
+               label="Length-matched baseline")
+    FS.legend(ax, loc="upper left")
+    # The class names: an earlier bulk edit deleted these and the axis fell back to 0-8.
+    ax.set_xticks(range(len(names)))
+    ax.set_xticklabels(names, rotation=30, ha="right", rotation_mode="anchor")
+    ax.set_xlim(-0.6, len(names) - 0.4)
     ax.set_ylabel("Nonsynonymous / synonymous SNPs")
     ax.set_ylim(0, ceiling * 1.14)
     ax.tick_params(axis="both", pad=1.5)
@@ -696,9 +702,8 @@ def figure08b_foldability():
     ax.plot([0], [myr1], "o", markersize=4.5, markerfacecolor=FS.ACCENT,
             markeredgecolor=FS.ACCENT, alpha=FS.ALPHA, zorder=6, linestyle="none",
             label="MYR1")
-    # Centre right: the upper right sat over the top of the violin, and a legend never goes
-    # over data.
-    FS.legend(ax, loc="center right")
+    # OUTSIDE the axes: inside, at every position tried, it sat on the violin.
+    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     ax.set_xticks([0])
     ax.set_xticklabels(["Host-facing"])
     # Name the QUANTITY: this is not an AF3 output, it is the fraction of residues whose
