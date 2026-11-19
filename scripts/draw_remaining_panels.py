@@ -396,7 +396,8 @@ def figure05_violin():
               control=[f"subtype {s}" for s in subtypes if s != weakest], vertical=True)
     ax.axhline(0.05, color=FS.INK, linewidth=0.6, linestyle=(0, (3, 2)), zorder=3)
     # On the LEFT, above the line: at the right it landed on the subtype E violin and its median.
-    ax.set_xticklabels([s for s in subtypes])
+    ax.set_xticks(range(len(subtypes)))
+    ax.set_xticklabels(list(subtypes))
     ax.set_ylabel("$q$")
     ax.set_ylim(-0.03, 1.12)
     ax.set_yticks([0, 0.5, 1.0])
@@ -508,7 +509,9 @@ def figure06c():
     """Which kind of measurement explains which other kind, ordered by lift over a shuffled run."""
     p = pd.read_csv(newest("which_data_explains_which_*/pairs.tsv"), sep="\t")
     p = p.sort_values("lift", ascending=False)
-    labels = [f"{MEASUREMENT_NAMES.get(t, t.replace('_', ' '))}\nfrom {c.replace('_', ' ')}"
+    # ONE line, tilted. Fourteen two-line labels in a 14-condition panel overlapped each other
+    # 64 times by the checker and were unreadable; the pairing is spelled out in the legend.
+    labels = [f"{MEASUREMENT_NAMES.get(t, t.replace('_', ' '))} / {c.replace('_', ' ')}"
               for t, c in zip(p["target"], p["predictor_category"])]
     fig = bars(list(p["lift"]), labels, "above shuffled",
                highlight=set(labels[:2]), letter="c")
