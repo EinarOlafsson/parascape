@@ -193,41 +193,108 @@ def main():
     ax.set_yticklabels(["1", "10", "100", "1,000", "10,000"]); ax.set_ylim(0.7, 2e4)
     print(f.round(0).to_string(index=False))
 
+    # ---- Figure 8 (storyboard 2026-11-20): what is missing ----
     import paper_panels as PP
-    F = "figure_12"
+    F = "figure_8__final"
     NODES = os.path.join(CACHE, "nodes.parquet")
     REG = os.path.join(ROOT, "parascape", "datasets.py")
-    cum = []
-    for c in styles:
+    kinds = ["fitness", "place", "phenotype", "host_response"]
+    kcol = {"fitness": FS.DARK_GREY, "place": FS.TEAL, "phenotype": FS.CONTROL,
+            "host_response": FS.ACCENT}
+
+    # A: saturation, genes covered as datasets are added largest first
+    FS.use()
+    figA, ax = FS.square_figure()
+    sat = []
+    for c in kinds:
+        mine = sorted([d_ for d_ in ds if c in d_["cats"]], key=lambda d_: -d_["n"])
+        got = np.zeros(G, bool); ys = [0.0]
+        for d_ in mine:
+            got |= d_["genes"]; ys.append(got.mean() * 100)
+        ax.plot(range(len(ys)), ys, "-o", ms=2.5, lw=1.2, color=kcol[c], label=F1.kind_name(c))
+        sat += [{"data_type": F1.kind_name(c), "datasets": k, "genes_pct": v}
+                for k, v in enumerate(ys)]
+    ax.set_xlabel("Datasets, largest first"); ax.set_ylabel("Genes measured (%)")
+    ax.set_ylim(0, 100)
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
+    PP.panel(F, "a", fig=figA, data=pd.DataFrame(sat), stats={"genes": G}, sources=[REG, NODES],
+             what="genes covered as datasets are added, largest first")
+
+    # B: coverage by year, lines
+    FS.use()
+    figB, ax = FS.square_figure()
+    cy = []
+    for c in kinds:
         mine = [d_ for d_ in ds if c in d_["cats"] and not np.isnan(d_["year"])]
+        ys = []
         for yr in years:
             got = np.zeros(G, bool)
             for d_ in mine:
                 if d_["year"] <= yr:
                     got |= d_["genes"]
-            cum.append({"kind": NAMES[c], "year": int(yr), "genes_measured_pct": got.mean() * 100})
-    PP.panel(F, "a", fig=figa, data=a.rename(columns={"largest": "largest_single_pct",
-             "all": "all_combined_pct", "n": "datasets"}), stats={"genes": G},
-             sources=[REG, NODES], what="largest single dataset vs all combined")
-    PP.panel(F, "b", fig=figb, data=pd.DataFrame(cum), stats={"datasets with a citation year":
+            ys.append(got.mean() * 100)
+        ax.plot(years, ys, lw=1.2, color=kcol[c], label=F1.kind_name(c))
+        cy += [{"data_type": F1.kind_name(c), "year": int(y_), "genes_pct": v}
+               for y_, v in zip(years, ys)]
+    ax.set_xlabel("Year of publication"); ax.set_ylabel("Genes measured (%)"); ax.set_ylim(0, 100)
+    ax.set_xticks([2005, 2015, 2025])
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
+    PP.panel(F, "b", fig=figB, data=pd.DataFrame(cy), stats={"datasets with a year":
              int(sum(not np.isnan(d_["year"]) for d_ in ds))}, sources=[REG, NODES],
-             what="genes measured over time")
-    PP.panel(F, "c", fig=figc, data=pd.DataFrame([{"dataset": d_["key"], "genes": d_["n"],
-             "kinds": ";".join(sorted(d_["cats"]))} for d_ in ds]), stats={"datasets": len(ds)},
-             sources=[REG, NODES], what="genes per dataset by kind")
-    PP.panel(F, "d", fig=figd, data=pd.Series(dvals, name="host_response_measured_pct")
-             .rename_axis("group").reset_index(), stats={k: int(m_.sum()) for k, m_ in
-             groups.items()}, sources=[(NODES, ["lopit_map", "fit_invitro_hff", "product"])],
-             what="host-response coverage by gene group")
-    PP.panel(F, "e", fig=fige, data=pd.DataFrame({"group": list(props), "all_genes_pct": allv,
-             "least_measured_tenth_pct": darkv}), stats={"least-measured tenth, genes":
-             int(dark.sum()), "kinds of knowledge at most": int(np.quantile(n_cat, .1))},
-             sources=[NODES], what="the least-measured tenth of genes")
-    PP.panel(F, "f", fig=figf, data=f, stats={"prediction": "best strategy from figure 11, "
-             "only where it beats guessing by > 5 points"}, sources=[FM, NODES],
-             what="unmeasured genes vs what prediction fills")
-    out = PP.compose(F, "main", "The most valuable new dataset for the field is a genome-wide host-response screen.", rows=[3, 3])
-    print("figure 12 ->", out)
+             what="genes measured over time, per data type")
+
+    # C: what the least-measured tenth is, 100% stacked against all genes
+    prodl = nodes["product"].astype(str).str.lower()
+    ann = np.where(prodl.str.contains("hypothetical"), "hypothetical protein",
+                   np.where(nodes["lopit_map"].astype(str).isin(F1.SECRETED), "secreted",
+                            "annotated"))
+    comp_ = pd.DataFrame({"group": np.where(dark, "least-measured tenth", "all genes"),
+                          "annotation": ann})
+    tabs = {"all genes": pd.Series(ann).value_counts(normalize=True) * 100,
+            "least-measured tenth": pd.Series(ann[dark]).value_counts(normalize=True) * 100}
+    cats_ = ["hypothetical protein", "annotated", "secreted"]
+    FS.use()
+    figC, ax = FS.plot_figure(2 * FS.SLOT_IN * 25.4 * 1.6, FS.PLOT_H_MM)
+    bot = np.zeros(2)
+    for cc, colr in zip(cats_, (FS.ACCENT, FS.CONTROL, FS.TEAL)):
+        v = np.array([tabs[g].get(cc, 0.0) for g in tabs])
+        ax.bar([0, 1], v, bottom=bot, width=0.6, color=colr, alpha=0.85, lw=0, label=cc)
+        bot += v
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["all genes", "least known"], rotation=45,
+                                              ha="right", rotation_mode="anchor")
+    ax.tick_params(axis="x", length=0); ax.set_ylim(0, 100); ax.set_ylabel("Genes (%)")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    PP.panel(F, "c", fig=figC, data=pd.DataFrame(tabs).fillna(0).rename_axis("annotation"),
+             stats={"least-measured tenth, genes": int(dark.sum()),
+                    "data types at most": int(np.quantile(n_cat, .1))},
+             sources=[(NODES, ["product", "lopit_map"])],
+             what="annotation of all genes and of the least-measured tenth")
+
+    # D: per data type, measured / filled by prediction / unknown
+    fill = dict(zip(f["cat"], f["filled"]))
+    rows_d = []
+    for c in ["place", "function", "phenotype", "host_response"]:
+        meas = cover[c].mean() * 100
+        pr = fill.get(c, 0.0) / G * 100
+        rows_d.append({"data_type": F1.kind_name(c), "measured": meas, "predicted": pr,
+                       "unknown": 100 - meas - pr})
+    dd_ = pd.DataFrame(rows_d)
+    FS.use()
+    figD, ax = FS.plot_figure(len(dd_) * FS.SLOT_IN * 25.4 * 1.2, FS.PLOT_H_MM)
+    bot = np.zeros(len(dd_)); x_ = np.arange(len(dd_))
+    for col_, c_ in (("measured", FS.DARK_GREY), ("predicted", FS.ACCENT),
+                     ("unknown", "#E6E6E6")):
+        ax.bar(x_, dd_[col_], bottom=bot, width=0.6, color=c_, lw=0, label=col_)
+        bot += dd_[col_].to_numpy()
+    ax.set_xticks(x_); ax.set_xticklabels(dd_.data_type, rotation=45, ha="right",
+                                          rotation_mode="anchor")
+    ax.tick_params(axis="x", length=0); ax.set_ylim(0, 100); ax.set_ylabel("Genes (%)")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=3)
+    PP.panel(F, "d", fig=figD, data=dd_, stats={"prediction": "best strategy where it beats "
+             "the majority-class baseline by > 5 points (Fig. 4)"}, sources=[FM, NODES],
+             what="measured, predicted and unknown per data type")
+    PP.compose(F, "main", "Function, mutant phenotype and host response are missing for most "
+               "Toxoplasma genes, and prediction does not fill them.")
 
 
 if __name__ == "__main__":
