@@ -129,12 +129,12 @@ def main():
                "orthogroup": "orthogroup", "struct": "structure", "domain": "domain",
                "structural_hole": "struct. hole", "coexpression": "co-expression",
                "cotranslation": "co-translation", "cofitness": "co-fitness",
-               "weighted vote": "weighted vote"}
+               "weighted vote": "all combined"}
     FS.use()
     figa, ax = FS.ref_bars(pl["acc"].to_numpy() * 100, [SHORT_L.get(k, k) for k in pl.index],
-                           highlight=["weighted vote"], ylabel="Compartment correct (%)")
+                           highlight=["all combined"], ylabel="Correctly localised (%)")
     ax.axhline(baseline * 100, color=FS.INK, lw=0.6, ls=(0, (1.5, 1.5)),
-               label="commonest compartment")
+               label="majority-class baseline")
     FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
     ax.set_ylim(0, 100)
 
@@ -167,8 +167,8 @@ def main():
     FS.use()
     names_c = [CN.get(c, c) for c in comp.index]
     figc, ax = FS.ref_bars(comp["right"].to_numpy(), names_c, refs=comp["best_right"].to_numpy(),
-                           highlight=names_c, ref_label="best single layer",
-                           ylabel="Compartment correct (%)")
+                           highlight=names_c, ref_label="best single evidence type",
+                           ylabel="Correctly localised (%)")
     ax.set_ylim(0, 100)
 
     # D: accuracy by number of layers reaching the gene
@@ -176,12 +176,12 @@ def main():
     byk = d.groupby("k")["right"].agg(["mean", "size"])
     FS.use()
     figd, ax = FS.square_figure()
-    ax.axhline(baseline * 100, color=FS.INK, lw=0.6, ls="--", label="commonest compartment")
+    ax.axhline(baseline * 100, color=FS.INK, lw=0.6, ls="--", label="majority-class baseline")
     ax.plot(byk.index, byk["mean"] * 100, "o-", color=FS.ACCENT, ms=4, lw=1.2,
-            label="weighted vote")
+            label="all evidence combined")
     ax.set_xticks(list(byk.index))
     ax.set_xticklabels([str(k) if k < 6 else "6+" for k in byk.index])
-    ax.set_xlabel("Layers reaching the gene"); ax.set_ylabel("Compartment correct (%)")
+    ax.set_xlabel("Evidence types reaching the gene"); ax.set_ylabel("Correctly localised (%)")
     ax.set_ylim(0, 100)
     FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
 
@@ -192,11 +192,11 @@ def main():
     mids = [b.mid for b in bys.index]
     FS.use()
     fige, ax = FS.square_figure()
-    ax.plot([0, 100], [0, 100], color=FS.BACKGROUND, lw=0.6, label="share = accuracy")
+    ax.plot([0, 100], [0, 100], color=FS.BACKGROUND, lw=0.6, label="perfect calibration")
     ax.plot(np.array(mids) * 100, bys["mean"] * 100, "o-", color=FS.ACCENT, ms=4, lw=1.2,
-            label="weighted vote")
+            label="all evidence combined")
     ax.set_xlim(0, 100); ax.set_ylim(0, 100)
-    ax.set_xlabel("Winning share of the vote (%)"); ax.set_ylabel("Compartment correct (%)")
+    ax.set_xlabel("Vote share of the predicted niche (%)"); ax.set_ylabel("Correctly localised (%)")
     FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
 
     # F: genes placed vs accuracy, most confident first, union vs best single layer
@@ -210,10 +210,10 @@ def main():
     FS.use()
     figf, ax = FS.square_figure()
     ax.plot(np.arange(1, len(t) + 1), cum_t, color=FS.CONTROL, lw=1.2,
-            label="best single layer (ref.)")
-    ax.plot(np.arange(1, len(s) + 1), cum, color=FS.ACCENT, lw=1.2, label="weighted vote")
-    ax.axhline(baseline * 100, color=FS.INK, lw=0.6, ls="--", label="commonest compartment")
-    ax.set_xlabel("Held-out genes placed"); ax.set_ylabel("Compartment correct (%)")
+            label="best single evidence type")
+    ax.plot(np.arange(1, len(s) + 1), cum, color=FS.ACCENT, lw=1.2, label="all evidence combined")
+    ax.axhline(baseline * 100, color=FS.INK, lw=0.6, ls="--", label="majority-class baseline")
+    ax.set_xlabel("Predictions, most confident first"); ax.set_ylabel("Correctly localised (%)")
     ax.set_ylim(0, 100)
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     at80 = int((cum >= 80).sum()); at80_t = int((cum_t >= 80).sum())
@@ -223,7 +223,6 @@ def main():
 
     import paper_panels as PP
     from scipy.stats import spearmanr as _sp, binomtest
-    F = "figure_7"
     GRAPH = os.path.join(CACHE, "graph.npz")
     NODES = (os.path.join(CACHE, "nodes.parquet"), [NL.TARGET])
     NLR = [os.path.join(ROOT, "results", "network_layers_2026_11_18", f)
@@ -232,33 +231,124 @@ def main():
     common = {"held-out genes answered": len(d), "baseline (commonest compartment)": baseline,
               "weights fitted on": "one half of labelled genes (seed 0)",
               "scored on": "the other half"}
-    PP.panel(F, "a", fig=figa, data=pl.rename_axis("layer").reset_index(),
+    # ---- Figure 6: each evidence type, tested on held-out genes (storyboard 2026-11-20) ----
+    F = "figure_6__final"
+    # A: one gene and its neighbours, the picture of guilt by association
+    gid_index = {g: k for k, g in enumerate(nodes["gene_id"].astype(str))}
+    cand = d[(d.n_layers >= 4) & d.right].copy()
+    tot = {i_: sum(len(adj[k][i_]) for k in live) for i_ in cand.gene}
+    cand["deg"] = cand.gene.map(tot)
+    cand = cand[(cand.deg >= 8) & (cand.deg <= 22)].sort_values("n_layers", ascending=False)
+    ego = int(cand.gene.iloc[0])
+    lay_cols = {}
+    pal = [FS.ACCENT, FS.TEAL, FS.NAVY, FS.MAGENTA, FS.AMBER, FS.ACCENT_LIGHT]
+    nb = []
+    for k in live:
+        for j_ in adj[k][ego]:
+            if j_ != ego:
+                nb.append((k, int(j_)))
+    layers_here = sorted({k for k, _ in nb}, key=lambda k: -weights[k])
+    for q, k in enumerate(layers_here):
+        lay_cols[k] = pal[q % len(pal)]
+    uniq = sorted({j_ for _, j_ in nb})
+    ang = {j_: 2 * np.pi * q / len(uniq) for q, j_ in enumerate(uniq)}
+    comp_names = sorted({labels[j_] for j_ in uniq if known[j_]} | {labels[ego]})
+    house = [FS.ACCENT, FS.TEAL, FS.MAGENTA, FS.AMBER, FS.NAVY, FS.ACCENT_LIGHT, FS.DARK_GREY]
+    ccol = {c: house[q % len(house)] for q, c in enumerate(comp_names)}
+    FS.use()
+    fig0, ax = FS.square_figure()
+    for k, j_ in nb:
+        off = (layers_here.index(k) - len(layers_here) / 2) * 0.02
+        ax.plot([0, np.cos(ang[j_]) + off], [0, np.sin(ang[j_]) + off], color=lay_cols[k],
+                lw=0.9, alpha=0.8, zorder=1)
+    for j_ in uniq:
+        ax.scatter(np.cos(ang[j_]), np.sin(ang[j_]), s=40, zorder=3, lw=0.4, edgecolor=FS.INK,
+                   color=ccol[labels[j_]] if known[j_] else "white")
+    ax.scatter(0, 0, s=130, zorder=4, lw=1.0, edgecolor=FS.INK, color=ccol[labels[ego]],
+               linestyle=(0, (1.5, 1.0)))
+    ax.set_xlim(-1.3, 1.3); ax.set_ylim(-1.3, 1.3); ax.set_aspect("equal")
+    ax.set_xticks([]); ax.set_yticks([])
+    for sp in ax.spines.values():
+        sp.set_visible(False)
+    for k in layers_here:
+        ax.plot([], [], color=lay_cols[k], lw=1.2, label=SHORT_L.get(k, k))
+    for c in comp_names:
+        ax.scatter([], [], s=25, color=ccol[c], lw=0.4, edgecolor=FS.INK,
+                   label=COMP_NAMES.get(c, c))
+    ax.scatter([], [], s=25, color="white", lw=0.4, edgecolor=FS.INK, label="unlabelled")
+    ax.scatter([], [], s=40, color="white", lw=1.0, edgecolor=FS.INK, linestyle=(0, (1.5, 1.0)),
+               label="held-out gene (true niche)")
+    ax.legend(frameon=False, loc="upper left", bbox_to_anchor=(1.0, 1.0), fontsize=FS.NOTE_PT,
+              handlelength=1.0, labelspacing=0.2)
+    egoname = str(nodes["gene_id"].iloc[ego])
+    PP.panel(F, "a", fig=fig0, data=pd.DataFrame(
+        [{"gene": egoname, "neighbour": str(nodes["gene_id"].iloc[j_]), "evidence_type": k,
+          "neighbour_niche": labels[j_] if known[j_] else ""} for k, j_ in nb]),
+             stats={"gene": egoname, "true niche": labels[ego], "evidence types": len(layers_here),
+                    "neighbours": len(uniq)}, sources=[GRAPH, NODES],
+             what="one held-out gene, its neighbours and the evidence linking them")
+    PP.panel(F, "b", fig=figa, data=pl.rename_axis("layer").reset_index(),
              stats={**common, **{f"weight, {k}": v for k, v in weights.items()}},
-             sources=NLR + [GRAPH, NODES], what="per layer: accuracy and genes answered")
-    PP.panel(F, "b", fig=figb, data=pd.DataFrame(J, index=order, columns=order)
+             sources=NLR + [GRAPH, NODES], what="held-out accuracy per evidence type")
+    PP.panel(F, "c", fig=figb, data=pd.DataFrame(J, index=order, columns=order)
              .rename_axis("layer"), stats={"layers": len(order)}, sources=[GRAPH],
-             what="overlap of genes reached between layers")
+             what="genes reached by two evidence types")
     b = binomtest(int(d.right.sum()), len(d), d.best_right.mean())
-    PP.panel(F, "c", fig=figc, data=comp.rename_axis("compartment"),
+    PP.panel(F, "d", fig=figc, data=comp.rename_axis("compartment"),
              stats={**common, "weighted vote correct": d.right.mean(),
                     "best single layer correct": d.best_right.mean(),
                     "binomial test, vote vs best-layer rate, p": b.pvalue},
-             sources=[GRAPH, NODES], what="per compartment: best single layer vs weighted vote")
+             sources=[GRAPH, NODES], what="per niche: combined vote vs best single evidence type")
+    out = PP.compose(F, "main", "Each evidence type in the gene graph, tested on held-out genes.")
+
+    # ---- Figure 9: inference with an uncertainty estimate ----
+    F = "figure_9__final"
     rk = _sp(d["n_layers"], d["right"])
-    PP.panel(F, "d", fig=figd, data=byk.rename(columns={"mean": "correct", "size": "genes"})
+    PP.panel(F, "a", fig=figd, data=byk.rename(columns={"mean": "correct", "size": "genes"})
              .rename_axis("layers_reaching_gene"),
              stats={**common, "Spearman rho, layers vs correct": rk.statistic, "p": rk.pvalue},
-             sources=[GRAPH, NODES], what="accuracy by layers reaching the gene")
-    PP.panel(F, "e", fig=fige, data=bys.rename(columns={"mean": "correct", "size": "genes"})
+             sources=[GRAPH, NODES], what="accuracy by the number of agreeing evidence types")
+    PP.panel(F, "b", fig=fige, data=bys.rename(columns={"mean": "correct", "size": "genes"})
              .assign(bin=[str(b_) for b_ in bys.index]).reset_index(drop=True),
-             stats=common, sources=[GRAPH, NODES], what="accuracy by winning vote share")
-    PP.panel(F, "f", fig=figf, data=pred, stats={**common,
+             stats=common, sources=[GRAPH, NODES], what="calibration: vote share vs accuracy")
+    PP.panel(F, "c", fig=figf, data=pred, stats={**common,
              "genes placed at >= 80 % accuracy, vote (most layers first)": at80,
              "genes placed at >= 80 % accuracy, best single layer": at80_t},
-             sources=[GRAPH, NODES], what="genes placed against accuracy")
-    out = PP.compose(F, "main", "In a graph of many kinds of derived relationship, a placement "
-                     "is as trustworthy as the number of independent kinds of evidence behind "
-                     "it.", rows=[3, 3])
+             sources=[GRAPH, NODES], what="accuracy against the number of predictions made")
+    # D: what inference adds, per target that beats the baseline: measured / predicted / unknown
+    FMb = os.path.join(ROOT, "results", "filling_the_map_2026_11_18", "best_per_target.tsv")
+    fmb = pd.read_csv(FMb, sep="\t")
+    pf_ = pd.read_parquet(os.path.join(CACHE, "pf_nodes.parquet"))
+    tgt = {("Tg", "lopit_unified"): "Tg localisation",
+           ("Pf", "lopit_pf_location"): "Pf localisation", ("Tg", "cellcycle_phase"): "Tg phase"}
+    rows = []
+    for (org, t_), nm in tgt.items():
+        r_ = fmb[(fmb.organism == org) & (fmb.target == t_)].iloc[0]
+        tab = nodes if org == "Tg" else pf_
+        col = tab[t_].astype(str).str.lower()
+        miss = tab[t_].isna() | col.isin(["nan", "none", "", "unassigned", "unknown", "<na>"])
+        n_all = len(tab); n_known = int((~miss).sum()); n_miss = int(miss.sum())
+        n_pred = n_miss * r_.answer_rate
+        rows.append({"target": nm, "measured": n_known / n_all * 100,
+                     "predicted": n_pred / n_all * 100,
+                     "unknown": (n_miss - n_pred) / n_all * 100,
+                     "accuracy_when_predicted": r_.right_when_answered})
+    st_ = pd.DataFrame(rows)
+    FS.use()
+    figg, ax = FS.plot_figure(len(st_) * FS.SLOT_IN * 25.4 * 1.2, FS.PLOT_H_MM)
+    x_ = np.arange(len(st_)); bot = np.zeros(len(st_))
+    for col_, c_ in (("measured", FS.DARK_GREY), ("predicted", FS.ACCENT),
+                     ("unknown", "#E6E6E6")):
+        ax.bar(x_, st_[col_], bottom=bot, width=0.6, color=c_, lw=0, label=col_)
+        bot += st_[col_].to_numpy()
+    ax.set_xticks(x_); ax.set_xticklabels(st_.target, rotation=45, ha="right",
+                                          rotation_mode="anchor")
+    ax.tick_params(axis="x", length=0); ax.set_ylim(0, 100); ax.set_ylabel("Genes (%)")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=3)
+    PP.panel(F, "d", fig=figg, data=st_, stats=st_, sources=[FMb], what="measured, predicted and "
+             "still unknown, per target")
+    out = PP.compose(F, "main", "ParaScape infers missing labels with an uncertainty estimate: "
+                     "confidence grows with agreeing evidence and is calibrated.")
     print("figure 7 ->", out)
 
 
