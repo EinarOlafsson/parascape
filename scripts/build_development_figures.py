@@ -132,7 +132,7 @@ def dev6():
 
 
 def dev8():
-    F = "development_figure_8"
+    F = "development_figure_11a__final"
     SV = os.path.join(ROOT, "results", "strain_variation_by_class_2026_11_19")
     pg = pd.read_csv(os.path.join(SV, "per_gene.tsv"), sep="\t")
     n = pd.read_parquet(os.path.join(CACHE, "nodes.parquet")); n = n.set_index(n.gene_id.astype(str))
@@ -156,7 +156,7 @@ def dev8():
 
 
 def dev10():
-    F = "development_figure_10"
+    F = "development_figure_11b__final"
     ht = pd.read_parquet(os.path.join(ROOT, "results", "hosttx_per_host_gene_2026_11_18",
                                       "hosttx_host_gene_effects.parquet"))
     order = ht.groupby("effector").size().sort_values(ascending=False).index

@@ -57,22 +57,22 @@ def new_to_old(obs):
     t = pd.crosstab(obs["cluster"].astype(str), obs["published_subtype"].astype(str))
     t = t.reindex([r for r in ORDER if r in t.index])
     t = t[[s for s in SUBTYPES if s in t.columns]]
-    share = t.div(t.sum(axis=1), axis=0)
+    share = t.div(t.sum(axis=1), axis=0) * 100
     FS.use()
     nr, nc = share.shape
     cell = FS.SLOT_IN
     w, h = 0.8 + nc * cell + 0.9, 0.5 + nr * cell + 0.7
     fig = plt.figure(figsize=(w, h))
     ax = fig.add_axes([0.8 / w, 0.7 / h, nc * cell / w, nr * cell / h])
-    im = ax.imshow(share.to_numpy(), cmap="Blues", vmin=0, vmax=1, aspect="equal")
+    im = ax.imshow(share.to_numpy(), cmap="Blues", vmin=0, vmax=100, aspect="equal")
     ax.set_xticks(range(nc)); ax.set_xticklabels(share.columns)
     ax.set_yticks(range(nr)); ax.set_yticklabels(share.index)
-    ax.set_xlabel("Published subtype"); ax.set_ylabel("Region")
+    ax.set_xlabel("Published subtype"); ax.set_ylabel("Cluster")
     for sp in ax.spines.values():
         sp.set_visible(False)
     ax.tick_params(length=0)
     cb = fig.colorbar(im, ax=ax, fraction=0.06, pad=0.04)
-    cb.set_label("Share of the region's cells"); cb.outline.set_linewidth(0.6)
+    cb.set_label("Cells (%)"); cb.outline.set_linewidth(0.6)
     return fig
 
 
@@ -291,7 +291,46 @@ def main():
         m.rename_axis("enrichment").to_csv(os.path.join(PNL, "7_enrichment_data.csv"))
         return fig
 
+    def treatment_dots():
+        """Treatment x cluster: colour = signed marker shift (z), size = -log10 q; x where the
+        treatment measured too few marker genes. House style (was the bradyzoite-paper panel)."""
+        t = pd.read_csv(f"{RES}/drug_by_cluster.tsv", sep="\t")
+        t = t[t["cluster_kind"] == "our region"]
+        trt = list(dict.fromkeys(t["treatment_label"]))
+        FS.use()
+        fig, ax = FS.plot_figure(len(ORDER) * 4.6, len(trt) * 4.6, extra_bottom_mm=2)
+        for yi, tr in enumerate(trt):
+            for xi, reg in enumerate(ORDER):
+                r = t[(t["treatment_label"] == tr) & (t["cluster"] == reg)]
+                if r.empty or str(r["testable"].iloc[0]) != "True" or pd.isna(r["signed_z"].iloc[0]):
+                    ax.scatter(xi, yi, marker="x", s=10, color=FS.CONTROL, lw=0.6)
+                    continue
+                zv = float(r["signed_z"].iloc[0]); qv = float(r["signed_q"].iloc[0])
+                size = 6 + 22 * min(4.0, -np.log10(max(qv, 1e-4)))
+                ax.scatter(xi, yi, s=size, c=[zv], cmap="RdBu_r", vmin=-3, vmax=3, lw=0.3,
+                           edgecolor=FS.INK)
+        ax.set_xticks(range(len(ORDER))); ax.set_xticklabels(ORDER, rotation=90)
+        for tl, reg in zip(ax.get_xticklabels(), ORDER):
+            tl.set_color(RC.get(reg, FS.INK))
+        short_t = {"transcriptome": "RNA", "proteome": "protein"}
+        def tname(x):
+            parts = [q.strip() for q in x.split(",")]
+            return parts[0] if len(parts) == 1 else f"{parts[0]}, {short_t.get(parts[1], parts[1])}"
+        ax.set_yticks(range(len(trt))); ax.set_yticklabels([tname(x) for x in trt])
+        ax.set_xlim(-0.6, len(ORDER) - 0.4); ax.set_ylim(len(trt) - 0.5, -0.5)
+        ax.tick_params(length=0)
+        sm = plt.cm.ScalarMappable(cmap="RdBu_r", norm=plt.Normalize(-3, 3))
+        cb = fig.colorbar(sm, ax=ax, fraction=0.05, pad=0.03)
+        cb.set_label("Marker shift (z-score)"); cb.outline.set_linewidth(0.6)
+        for qv, lab in ((0.05, "q = 0.05"), (0.001, "q = 0.001")):
+            ax.scatter([], [], s=6 + 22 * -np.log10(qv), color="white", edgecolor=FS.INK, lw=0.3,
+                       label=lab)
+        ax.scatter([], [], marker="x", s=10, color=FS.CONTROL, label="not measured")
+        FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=3)
+        return fig
+
     built = {
+        "6_treatments": save(treatment_dots(), "6_treatments"),
         "1_old_map": save(leader_map(lambda r: f"{r}: subtype {PF.PUBLISHED_GROUP.get(r) or '-'}",
                                      paint=paint_subtype,
                                      recolour={f"subtype {k}": c for k, c in zip(
@@ -320,7 +359,7 @@ def main():
         ("old clustering", built["1_old_map"]),
         ("new clustering", built["2_new_map"]),
         ("new to old", built["2b_new_to_old"]),
-        ("drugs to clusters", brady("Figure8_drug_by_cluster/panels/c_treatment_by_our_region_signed/c_treatment_by_our_region_signed.png")),
+        ("drugs to clusters", built["6_treatments"]),
         ("drug candidates", built["8b_drug_candidates"]),
         ("autophagy PLVAC", built["q_autophagy"]),
     ]
@@ -408,11 +447,11 @@ def main():
                            what="four enrichments by region, each row scaled to its maximum"),
     }
     for fid, kind, title, seq in (
-            ("figure_5", "main", "A tissue cyst holds several bradyzoite states, and published "
+            ("figure_12__final", "main", "A tissue cyst holds several bradyzoite states, and published "
              "treatments reach them unequally.", main_seq),
-            ("supplementary_figure_5a", "supplementary", "The cyst map is not cell cycle, "
+            ("supplementary_figure_12a__final", "supplementary", "The cyst map is not cell cycle, "
              "recrudescence or the tachyzoite-bradyzoite axis alone.", s5_seq),
-            ("supplementary_figure_5b", "supplementary", "What defines each region of the cyst: "
+            ("supplementary_figure_12b__final", "supplementary", "What defines each region of the cyst: "
              "markers, metabolism and four enrichments.", s6_seq)):
         present = [(n, p) for n, p in seq if os.path.exists(p)]
         for i, (n, p) in enumerate(present):

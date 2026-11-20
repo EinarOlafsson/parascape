@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 from parascape import figstyle as FS                    # noqa: E402
 import paper_panels as PP                               # noqa: E402
 
-F = "supplementary_figure_8a"
+F = "supplementary_figure_11a__final"
 CACHE = os.environ.get("PARASCAPE_CACHE",
                        "/media/carruthers/mnt1/parascape_data/data-0.0.13.1-hostslots")
 SV = os.path.join(ROOT, "results", "strain_variation_by_class_2026_11_19")

@@ -83,7 +83,7 @@ def supp4():
 
 
 def supp10():
-    F = "supplementary_figure_10a"
+    F = "supplementary_figure_11b__final"
     HR = os.path.join(ROOT, "results", "host_response_shared_2026_11_18")
     epg = pd.read_csv(os.path.join(HR, "effectors_per_host_gene.tsv"), sep="\t")
     summ = json.load(open(os.path.join(HR, "summary.json")))
