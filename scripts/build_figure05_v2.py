@@ -139,6 +139,7 @@ def main():
     def save(fig, name):
         p = os.path.join(PNL, f"{name}.png")
         fig.savefig(p, dpi=600, bbox_inches="tight", pad_inches=0.02)
+        fig.savefig(p[:-4] + ".pdf", bbox_inches="tight", pad_inches=0.02)   # vector copy
         plt.close(fig)
         return p
 
@@ -261,6 +262,7 @@ def main():
         cb = fig.colorbar(im, ax=ax, fraction=0.06, pad=0.04)
         cb.set_label("Value / row maximum"); cb.outline.set_linewidth(0.6)
         print(m.round(2).to_string())
+        m.rename_axis("enrichment").to_csv(os.path.join(PNL, "7_enrichment_data.csv"))
         return fig
 
     built = {
@@ -307,18 +309,89 @@ def main():
     import assemble_paper_figures as A
     A.PER_ROW = 4                  # compose() then splits any row wider than A4
     letters = "abcdefghijklmnopqrstuvwxyz"
-    for fid, seq, rows in (("05", main_seq, None), ("S5", s5_seq, None), ("S6", s6_seq, None)):
-        missing = [n for n, p in seq if not os.path.exists(p)]
-        if missing:
-            print("  MISSING:", missing)
+    import paper_panels as PP
+    from scipy.stats import chi2_contingency, kruskal
+    H5 = H5AD
+    tsv = lambda f: os.path.join(RES, f)
+    xt = pd.crosstab(obs["cluster"].astype(str), obs["published_subtype"].astype(str))
+    chi = chi2_contingency(xt)
+    umap_cols = obs[["ux", "uy", "cluster", "published_subtype"]].rename_axis("cell")
+    dbc = pd.read_csv(tsv("drug_by_cluster.tsv"), sep="\t")
+    drg = pd.read_csv(tsv("druggability.tsv"), sep="\t")
+    plv = pd.read_csv(tsv("plvac_per_gene.tsv"), sep="\t")
+    rec = pd.read_csv(tsv("recrudescence_region_mapping.tsv"), sep="\t")
+    ax_ = pd.read_csv(tsv("bulk_stage_axes_by_region.tsv"), sep="\t")
+    spec = {
+        "old clustering": dict(data=umap_cols, stats=obs["published_subtype"].astype(str)
+                               .value_counts().rename("cells").rename_axis("subtype").reset_index(),
+                               src=[H5], what="published subtypes A-E on the UMAP"),
+        "new clustering": dict(data=umap_cols, stats=obs["cluster"].astype(str).value_counts()
+                               .rename("cells").rename_axis("region").reset_index(),
+                               src=[H5], what="the new regions on the UMAP"),
+        "new to old": dict(data=xt, stats={"chi-square": chi.statistic, "dof": chi.dof,
+                                           "p": chi.pvalue, "cells": int(xt.values.sum())},
+                           src=[H5], what="how the new regions map onto the published subtypes"),
+        "drugs to clusters": dict(data=dbc, stats=dbc, src=[tsv("drug_by_cluster.tsv"),
+                                  tsv("README_drug_by_cluster.md")],
+                                  what="published treatments mapped onto the regions"),
+        "drug reached": dict(data=pd.DataFrame([{"region": r, "treatment": d_, "signed_effect": e_}
+                                                for r, (d_, e_) in R.items()]),
+                             stats=dbc[dbc["cluster_kind"] == "our region"],
+                             src=[tsv("drug_by_cluster.tsv")],
+                             what="the treatment reaching each region, n.d. where none does"),
+        "drug candidates": dict(data=drg, stats=drg[drg["q_bh"] < 0.05], src=[tsv(
+            "druggability.tsv"), tsv("drug_by_cluster.tsv")],
+                                what="a candidate for each region no treatment reaches"),
+        "autophagy PLVAC": dict(data=plv, stats=plv[plv["q"] < 0.05], src=[tsv("plvac_per_gene.tsv")],
+                                what="region-specific autophagy and PLVAC genes"),
+        "cell cycle G1a": dict(data=obs[["ux", "uy", "cluster", "cc_G1a"]].rename_axis("cell"),
+                               stats=obs.groupby("cluster")["cc_G1a"].median().rename(
+                                   "median_G1a").reset_index(), src=[H5],
+                               what="G1a score across the cyst"),
+        "cell cycle S/M": dict(data=obs[["ux", "uy", "cluster", "cc_SM"]].rename_axis("cell"),
+                               stats=obs.groupby("cluster")["cc_SM"].median().rename(
+                                   "median_SM").reset_index(), src=[H5],
+                               what="S/M score across the cyst"),
+        "recrudescence": dict(data=rec, stats=pd.read_csv(tsv("recrudescence_replicate_tests.tsv"),
+                                                          sep="\t"),
+                              src=[tsv("recrudescence_region_mapping.tsv"),
+                                   tsv("recrudescence_replicate_tests.tsv"),
+                                   tsv("recrudescence_summary.tsv")],
+                              what="where recrudescing parasites map in the cyst"),
+        "tachy vs brady": dict(data=ax_, stats=ax_, src=[tsv("bulk_stage_axes_by_region.tsv"),
+                                                         tsv("external_axis_index.tsv")],
+                               what="tachyzoite to bradyzoite bulk axis on the cyst"),
+        "defining traits": dict(data=pd.read_csv(tsv("region_marker_enrichment.tsv"), sep="\t"),
+                                stats=pd.read_csv(tsv("region_marker_enrichment.tsv"), sep="\t"),
+                                src=[tsv("region_marker_enrichment.tsv")],
+                                what="what defines each region"),
+        "metabolic traits": dict(data=pd.read_csv(tsv("programme_one_vs_rest.tsv"), sep="\t"),
+                                 stats=pd.read_csv(tsv("programme_one_vs_rest.tsv"), sep="\t"),
+                                 src=[tsv("programme_one_vs_rest.tsv"),
+                                      tsv("programme_tests_summary.txt")],
+                                 what="metabolic programmes by region"),
+        "enrichment": dict(data=pd.read_csv(os.path.join(PNL, "7_enrichment_data.csv")),
+                           stats={"scaling": "each row divided by its largest absolute value"},
+                           src=[tsv(f) for f in (
+            "differentiation_timecourse_mapping.tsv", "cyst_wall_and_bradyzoite_sources.tsv",
+            "druggability.tsv", "gse229548_invivo_screen_by_region.tsv")],
+                           what="four enrichments by region, each row scaled to its maximum"),
+    }
+    for fid, kind, title, seq in (
+            ("figure_5", "main", "A tissue cyst holds several bradyzoite states, and published "
+             "treatments reach them unequally.", main_seq),
+            ("supplementary_figure_5a", "supplementary", "The cyst map is not cell cycle, "
+             "recrudescence or the tachyzoite-bradyzoite axis alone.", s5_seq),
+            ("supplementary_figure_5b", "supplementary", "What defines each region of the cyst: "
+             "markers, metabolism and four enrichments.", s6_seq)):
         present = [(n, p) for n, p in seq if os.path.exists(p)]
-        # Panels reused from the bradyzoite paper are drawn at its 6 pt; enlarged to this
-        # paper's 8.
-        panels = [{"png": p, "letter": letters[i],
-                   "scale": FS.FONT_PT / 6.0 if p.startswith(V2) else 1.0}
-                  for i, (n, p) in enumerate(present)]
-        out = A.compose(fid, panels, OUT, rows=rows)
-        print(f"  figure {fid}: {len(panels)} panels -> {out}")
+        for i, (n, p) in enumerate(present):
+            sp_ = spec[n]
+            PP.panel(fid, letters[i], png=p, data=sp_["data"], stats=sp_["stats"],
+                     sources=sp_["src"], what=sp_["what"],
+                     scale=FS.FONT_PT / 6.0 if p.startswith(V2) else 1.0)
+        out = PP.compose(fid, kind, title)
+        print(f"  {fid}: {len(present)} panels -> {out}")
 
 
 if __name__ == "__main__":

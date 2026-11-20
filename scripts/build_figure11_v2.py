@@ -209,11 +209,34 @@ def main():
     ax.set_yticks(y); ax.set_yticklabels([k.replace("_", " ") for k in s.index])
     ax.set_xlabel("Accuracy over guessing (points)")
 
-    panels = [("a", save(figa, "a_map")), ("b", save(figb, "b_best")),
-              ("c", save(figc, "c_tradeoff")), ("d", save(figd, "d_by_kind")),
-              ("e", save(fige, "e_fill")), ("f", save(figf, "f_strategies"))]
-    import assemble_paper_figures as A_
-    out = A_.compose("11", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    F = "figure_11"
+    from scipy.stats import kruskal
+    FMF = [os.path.join(FM, f) for f in ("best_per_target.tsv", "by_target_and_strategy.tsv",
+                                         "summary.json")]
+    PP.panel(F, "a", fig=figa, data=m.rename_axis("target"), stats={
+             "targets": m.shape[0], "strategies": m.shape[1]}, sources=FMF,
+             what="lift over guessing, every target x strategy")
+    PP.panel(F, "b", fig=figb, data=b, stats=b[["strategy", "answer_rate",
+             "right_when_answered", "commonest_answer_baseline", "lift_over_baseline"]]
+             .reset_index(), sources=FMF, what="best strategy per target vs commonest answer")
+    PP.panel(F, "c", fig=figc, data=t.drop(columns=["key"]), stats={"target x strategy": len(t)},
+             sources=FMF, what="accuracy over guessing vs answer rate")
+    kw = kruskal(*[g_ for g_ in groups if len(g_)])
+    PP.panel(F, "d", fig=figd, data=pd.concat([pd.DataFrame({"kind": n_, "lift_points": g_})
+             for n_, g_ in zip(names, groups)]), stats=pd.DataFrame(
+             [{"kind": n_, "strategies": len(g_), "median_lift_points": float(np.median(g_))}
+              for n_, g_ in zip(names, groups)] + [{"kind": "Kruskal-Wallis", "H": kw.statistic,
+                                                     "p": kw.pvalue}]),
+             sources=FMF, what="lift by kind of target")
+    PP.panel(F, "e", fig=fige, data=e, stats={"expected correct = unlabelled x answer rate x "
+             "accuracy when answered": "shown only where lift > 5 points"},
+             sources=FMF + [os.path.join(CACHE, "nodes.parquet"),
+                            os.path.join(CACHE, "pf_nodes.parquet")],
+             what="unlabelled genes vs expected correct new calls")
+    PP.panel(F, "f", fig=figf, data=s.rename_axis("strategy"), stats={"targets": t.name.nunique()},
+             sources=FMF, what="median lift per strategy")
+    out = PP.compose(F, "main", "The map fills in where a protein is and when it is made at a validated rate; mutant phenotypes it predicts no better than the commonest answer.", rows=[3, 3])
     print("figure 11 ->", out)
 
 

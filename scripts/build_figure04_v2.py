@@ -208,11 +208,48 @@ def main():
                         [("as published (ref.)", FS.CONTROL),
                          ("study mean removed", FS.ACCENT)])
 
-    panels = [("a", save(figa, "a_pairs")), ("b", save(figb, "b_blocks")),
-              ("c", save(figc, "c_recovery")), ("d", save(figd, "d_per_study")),
-              ("e", save(fige, "e_bfd1")), ("f", save(figf, "f_study_mean_removed"))]
-    import assemble_paper_figures as A_
-    out = A_.compose("04", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    from scipy.stats import mannwhitneyu
+    F = "figure_4"
+    ATLAS = [os.path.join(ROOT, "results", "what_structures_contrasts_2026_11_18", f)
+             for f in ("pairs.tsv", "summary.json")]
+    atlas_dir = f"perturbation atlas release {store.get('release', '')}".strip()
+    def long(groups):
+        return pd.concat([pd.DataFrame({"group": k.replace(chr(10), " "), "abs_rho": v})
+                          for k, v in groups.items()], ignore_index=True)
+    ga = long(g)
+    u1 = mannwhitneyu(g["same study\nsame kind"], g["other study\nsame kind"], alternative="greater")
+    u2 = mannwhitneyu(g["other study\nsame kind"], g["other study\nother kind"], alternative="greater")
+    PP.panel(F, "a", fig=figa, data=ga, stats=pd.DataFrame(
+        [{"group": k.replace(chr(10), " "), "pairs": len(v), "median_abs_rho": float(np.median(v))}
+         for k, v in g.items()] +
+        [{"group": "Mann-Whitney same study/same kind > other study/same kind",
+          "pairs": None, "median_abs_rho": None, "U": u1.statistic, "p": u1.pvalue},
+         {"group": "Mann-Whitney other study: same kind > other kind",
+          "pairs": None, "median_abs_rho": None, "U": u2.statistic, "p": u2.pvalue}]),
+             sources=ATLAS, what="similarity of every pair of contrasts by study and kind")
+    PP.panel(F, "b", fig=figb, data=rho, stats={"contrasts": len(cols),
+             "studies": len(set(s_lab))}, sources=ATLAS,
+             what="all contrast similarities, grouped by study")
+    PP.panel(F, "c", fig=figc, data=pd.DataFrame({"clusters": ks, "ARI_study": ari_s,
+             "ARI_kind": ari_a}), stats={"ARI study at 19 clusters": ari_s[17],
+             "ARI kind at 19 clusters": ari_a[17], "linkage": "average, 1 - |rho|"},
+             sources=ATLAS, what="cluster recovery of study vs kind of perturbation")
+    PP.panel(F, "d", fig=figd, data=dd, stats={"studies with within > across": int(
+        (dd.within > dd.across).sum()), "studies": len(dd)}, sources=ATLAS,
+             what="per study: similarity within vs to other studies")
+    PP.panel(F, "e", fig=fige, data=both.rename(columns={BFD1_A: "laboratory_1_log2fc",
+             BFD1_B: "laboratory_2_log2fc"}).rename_axis("gene_id"),
+             stats={"Spearman rho": r_e, "genes": len(both), "laboratory 1": BFD1_A,
+                    "laboratory 2": BFD1_B,
+                    "median |rho| of lab-1 contrast to its own study": float(within_a.median())},
+             sources=ATLAS, what="BFD1 loss in two laboratories")
+    PP.panel(F, "f", fig=figf, data=long(gf), stats=pd.DataFrame(
+        [{"group": k.replace(chr(10), " "), "pairs": len(v), "median_abs_rho": float(np.median(v))}
+         for k, v in gf.items()]), sources=ATLAS,
+             what="cross-study similarity after removing each study's mean response")
+    out = PP.compose(F, "main", "Published treatment responses group by laboratory before "
+                     "biology.", rows=[3, 3])
     print("figure 4 ->", out)
 
 

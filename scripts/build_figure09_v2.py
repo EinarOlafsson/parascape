@@ -182,11 +182,44 @@ def main():
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     print(f.round(1).to_string(index=False))
 
-    panels = [("a", save(figa, "a_layers")), ("b", save(figb, "b_location_map")),
-              ("c", save(figc, "c_fitness")), ("d", save(figd, "d_codon")),
-              ("e", save(fige, "e_length")), ("f", save(figf, "f_per_compartment"))]
-    import assemble_paper_figures as A_
-    out = A_.compose("09", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    F = "figure_9"
+    from scipy.stats import spearmanr as _sp
+    NOD = (os.path.join(CACHE, "nodes.parquet"), keep_tg)
+    PFN = os.path.join(CACHE, "pf_nodes.parquet")
+    def sp(a, b):
+        x = pd.DataFrame({"a": pd.to_numeric(a, errors="coerce"),
+                          "b": pd.to_numeric(b, errors="coerce")}).dropna()
+        r = _sp(x.a, x.b); return r.statistic, r.pvalue, len(x)
+    rf, pf_, nf = sp(pairs["fit_invitro_hff"], pairs["piggybac_mis"])
+    rc, pc, nc_ = sp(pairs["codon_cai_ribosomal_tg"], pairs["codon_cai_ribosomal_pf"])
+    rl, pl_, nl_ = sp(pairs["length_tg"], pairs["length_pf"])
+    agree = float((loc.tg == loc.pf).mean())
+    PP.panel(F, "a", fig=figa, data=pd.DataFrame(layers, columns=["layer", "agreement", "pairs"]),
+             stats=pd.DataFrame([{"layer": "location", "measure": "Cohen kappa", "value": k,
+                                  "pairs": len(loc), "raw agreement": agree},
+                                 {"layer": "fitness", "measure": "Spearman", "value": rf,
+                                  "p": pf_, "pairs": nf},
+                                 {"layer": "codon bias", "measure": "Spearman", "value": rc,
+                                  "p": pc, "pairs": nc_},
+                                 {"layer": "length (control)", "measure": "Spearman",
+                                  "value": rl, "p": pl_, "pairs": nl_}]),
+             sources=[NOD, PFN], what="agreement beyond chance per layer")
+    PP.panel(F, "b", fig=figb, data=m.rename_axis("toxoplasma"), stats={
+             "Cohen kappa": k, "raw agreement": agree, "pairs": len(loc),
+             "one-to-one orthologue pairs": counted["one_to_one"]}, sources=[NOD, PFN],
+             what="location in Toxoplasma vs Plasmodium")
+    PP.panel(F, "c", fig=figc, data=fb, stats={"Spearman rho": rf, "p": pf_, "pairs": nf},
+             sources=[NOD, PFN], what="fitness across the two species")
+    PP.panel(F, "d", fig=figd, data=pairs[["codon_cai_ribosomal_tg", "codon_cai_ribosomal_pf"]],
+             stats={"Spearman rho": rc, "p": pc, "pairs": nc_}, sources=[NOD, PFN],
+             what="codon adaptation in the two species")
+    PP.panel(F, "e", fig=fige, data=pairs[["length_tg", "length_pf"]],
+             stats={"Spearman rho": rl, "p": pl_, "pairs": nl_}, sources=[NOD, PFN],
+             what="protein length in the two species (pairing control)")
+    PP.panel(F, "f", fig=figf, data=f, stats={"pairs": len(loc)}, sources=[NOD, PFN],
+             what="location agreement per compartment")
+    out = PP.compose(F, "main", "Where a protein is transfers between apicomplexan species; how its message is written does not.", rows=[3, 3])
     print("figure 9 ->", out)
 
 

@@ -183,11 +183,41 @@ def main():
     ax.set_xscale("log"); ax.set_xlabel("Nonsynonymous / synonymous")
     ax.set_xticks([1, 3, 10]); ax.set_xticklabels(["1", "3", "10"]); ax.minorticks_off()
 
-    panels = [("a", save(figa, "a_classes")), ("b", save(figb, "b_per_gene")),
-              ("c", save(figc, "c_plddt")), ("d", save(figd, "d_variation_vs_order")),
-              ("e", save(fige, "e_baits")), ("f", save(figf, "f_top_dense_granules"))]
-    import assemble_paper_figures as A_
-    out = A_.compose("08", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    F = "figure_8"
+    from scipy.stats import kruskal, mannwhitneyu
+    SVF = [os.path.join(SV, f) for f in ("by_class.tsv", "per_gene.tsv", "summary.json")]
+    NOD = (os.path.join(CACHE, "nodes.parquet"), ["mean_plddt", "product", "snp_nonsynonymous",
+                                                    "snp_synonymous"])
+    PP.panel(F, "a", fig=figa, data=bc, stats=bc[["class", "genes", "ratio",
+             "length_matched_baseline", "over_detection_limit", "p", "q"]], sources=SVF,
+             what="N/S ratio per class vs length-matched random genes")
+    kw = kruskal(*[v[~np.isnan(v)] for v in groups.values()])
+    PP.panel(F, "b", fig=figb, data=pg, stats=pd.DataFrame(
+        [{"class": c, "genes": int(np.sum(~np.isnan(v))), "median": float(np.nanmedian(v))}
+         for c, v in groups.items()] + [{"class": "Kruskal-Wallis across classes",
+                                         "H": kw.statistic, "p": kw.pvalue}]),
+             sources=SVF, what="per-gene N/S ratios per class")
+    sec_v = np.concatenate([v[~np.isnan(v)] for c, v in groups_c.items() if c in SECRETED])
+    oth_v = np.concatenate([v[~np.isnan(v)] for c, v in groups_c.items() if c not in SECRETED])
+    u = mannwhitneyu(sec_v, oth_v, alternative="less")
+    PP.panel(F, "c", fig=figc, data=pd.concat([pd.DataFrame({"class": c, "mean_plddt": v})
+             for c, v in groups_c.items()]), stats={"median pLDDT, secreted classes":
+             float(np.median(sec_v)), "median pLDDT, other classes": float(np.median(oth_v)),
+             "Mann-Whitney U (secreted < other)": u.statistic, "p": u.pvalue},
+             sources=SVF + [NOD], what="AlphaFold DB pLDDT per class")
+    r_ = spearmanr(dd["ratio"], dd["plddt"])
+    PP.panel(F, "d", fig=figd, data=dd.assign(dense_granule=isdg).rename_axis("gene_id"),
+             stats={"Spearman rho": r_.statistic, "p": r_.pvalue, "genes": len(dd)},
+             sources=SVF + [NOD], what="per gene: strain variation vs pLDDT")
+    PP.panel(F, "e", fig=fige, data=pd.Series(raw, name="folded_fraction").rename_axis(
+             "gene_id").reset_index(), stats={"proteins": len(vals), "admission cut": CUT,
+             "below cut (%)": float((vals < CUT).mean() * 100), "MYR1": float(raw[MYR1])},
+             sources=[BAITS], what="host-facing baits: residues with pLDDT >= 70")
+    PP.panel(F, "f", fig=figf, data=top.rename_axis("gene_id"), stats={
+             "genome median N/S": allmed}, sources=SVF + [NOD],
+             what="the most variable dense-granule proteins")
+    out = PP.compose(F, "main", "Secreted effectors vary between strains far more than housekeeping genes, and the most variable are the most disordered.", rows=[3, 3])
     print("figure 8 ->", out)
 
 

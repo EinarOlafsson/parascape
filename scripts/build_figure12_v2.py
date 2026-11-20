@@ -216,11 +216,40 @@ def main():
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     print(f.round(0).to_string(index=False))
 
-    panels = [("a", save(figa, "a_largest_dataset")), ("b", save(figb, "b_over_time")),
-              ("c", save(figc, "c_genes_per_dataset")), ("d", save(figd, "d_host_by_group")),
-              ("e", save(fige, "e_least_measured")), ("f", save(figf, "f_prediction_gap"))]
-    import assemble_paper_figures as A_
-    out = A_.compose("12", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    F = "figure_12"
+    NODES = os.path.join(CACHE, "nodes.parquet")
+    REG = os.path.join(ROOT, "parascape", "datasets.py")
+    cum = []
+    for c in styles:
+        mine = [d_ for d_ in ds if c in d_["cats"] and not np.isnan(d_["year"])]
+        for yr in years:
+            got = np.zeros(G, bool)
+            for d_ in mine:
+                if d_["year"] <= yr:
+                    got |= d_["genes"]
+            cum.append({"kind": NAMES[c], "year": int(yr), "genes_measured_pct": got.mean() * 100})
+    PP.panel(F, "a", fig=figa, data=a.rename(columns={"largest": "largest_single_pct",
+             "all": "all_combined_pct", "n": "datasets"}), stats={"genes": G},
+             sources=[REG, NODES], what="largest single dataset vs all combined")
+    PP.panel(F, "b", fig=figb, data=pd.DataFrame(cum), stats={"datasets with a citation year":
+             int(sum(not np.isnan(d_["year"]) for d_ in ds))}, sources=[REG, NODES],
+             what="genes measured over time")
+    PP.panel(F, "c", fig=figc, data=pd.DataFrame([{"dataset": d_["key"], "genes": d_["n"],
+             "kinds": ";".join(sorted(d_["cats"]))} for d_ in ds]), stats={"datasets": len(ds)},
+             sources=[REG, NODES], what="genes per dataset by kind")
+    PP.panel(F, "d", fig=figd, data=pd.Series(dvals, name="host_response_measured_pct")
+             .rename_axis("group").reset_index(), stats={k: int(m_.sum()) for k, m_ in
+             groups.items()}, sources=[(NODES, ["lopit_map", "fit_invitro_hff", "product"])],
+             what="host-response coverage by gene group")
+    PP.panel(F, "e", fig=fige, data=pd.DataFrame({"group": list(props), "all_genes_pct": allv,
+             "least_measured_tenth_pct": darkv}), stats={"least-measured tenth, genes":
+             int(dark.sum()), "kinds of knowledge at most": int(np.quantile(n_cat, .1))},
+             sources=[NODES], what="the least-measured tenth of genes")
+    PP.panel(F, "f", fig=figf, data=f, stats={"prediction": "best strategy from figure 11, "
+             "only where it beats guessing by > 5 points"}, sources=[FM, NODES],
+             what="unmeasured genes vs what prediction fills")
+    out = PP.compose(F, "main", "The most valuable new dataset for the field is a genome-wide host-response screen.", rows=[3, 3])
     print("figure 12 ->", out)
 
 

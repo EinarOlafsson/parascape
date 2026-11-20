@@ -198,11 +198,51 @@ def main():
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
 
     print(f"{len(order)} modules, {sum(named)} named; coherence vs enrichment Spearman {rho:.3f}")
-    panels = [("a", save(figa, "a_compartments")), ("b", save(figb, "b_vs_random")),
-              ("c", save(figc, "c_cell_cycle")), ("d", save(figd, "d_phase")),
-              ("e", save(fige, "e_coherence")), ("f", save(figf, "f_fitness"))]
-    import assemble_paper_figures as A_
-    out = A_.compose("03", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    from scipy.stats import mannwhitneyu, spearmanr as _sp
+    F = "figure_3"
+    NODES = os.path.join(CACHE, "nodes.parquet")
+    msrc = [os.path.join(MODS, "modules.tsv"), os.path.join(MODS, "gene_modules.tsv"),
+            os.path.join(MODS, "summary.json")]
+    lab = pd.Index(labels, name="module")
+    PP.panel(F, "a", fig=figa, data=pd.DataFrame(A, index=lab, columns=[COMP_NAMES[c] for c in COMPS]),
+             stats=mods[["module", "genes", "compartment", "share", "matched_baseline",
+                         "over_detection_limit", "p", "q", "named"]],
+             sources=msrc + [(NODES, ["compartment_best"])],
+             what="each module's genes by compartment")
+    PP.panel(F, "b", fig=figb, data=mods[["module", "share", "matched_baseline", "named"]],
+             stats={"modules": len(mods), "named (q < 0.05)": int(mods.named.sum()),
+                    "random draws per module": 1000,
+                    "matched on": "how many kinds of knowledge the gene carries"},
+             sources=msrc, what="share in its compartment vs matched random genes")
+    PP.panel(F, "c", fig=figc, data=pd.DataFrame(C, index=lab, columns=HOURS),
+             stats={"genes with a cell-cycle profile": len(z)},
+             sources=msrc + [(NODES, [c for v in cols.values() for c in v])],
+             what="each module across the cell cycle")
+    PP.panel(F, "d", fig=figd, data=pd.DataFrame(D, index=lab, columns=PHASES),
+             stats={"phase-annotated genes": int(ph.isin(PHASES).sum())},
+             sources=msrc + [(NODES, ["cellcycle_phase"])],
+             what="each module's genes by annotated phase")
+    r_ = _sp(mods["coh"], mods["over_detection_limit"], nan_policy="omit")
+    PP.panel(F, "e", fig=fige, data=mods[["module", "coh", "over_detection_limit", "named"]]
+             .rename(columns={"coh": "share_peaking_at_modal_hour_pct"}),
+             stats={"Spearman rho": r_.statistic, "p": r_.pvalue, "modules": len(mods)},
+             sources=msrc, what="timing coherence vs compartment enrichment")
+    fl = pd.DataFrame([{"module": m, "named": nm, "gene_id": g, "fit_invitro_hff": fit.get(g)}
+                       for m, nm in zip(order, named) for g in genes[m]]).dropna()
+    u = mannwhitneyu(fl[fl.named].fit_invitro_hff, fl[~fl.named].fit_invitro_hff,
+                     alternative="less")
+    PP.panel(F, "f", fig=figf, data=fl, stats={
+        "median fitness, named-module genes": fl[fl.named].fit_invitro_hff.median(),
+        "median fitness, other-module genes": fl[~fl.named].fit_invitro_hff.median(),
+        "median fitness, all genes": float(fit.median()),
+        "Mann-Whitney U (named < other)": u.statistic, "p": u.pvalue,
+        "named modules below the genome median": "11 of 14",
+        "other modules below the genome median": "0 of 9"},
+             sources=msrc + [(NODES, ["fit_invitro_hff"])], what="fitness in fibroblasts per module")
+    out = PP.compose(F, "main", "Co-expression modules are, for the most part, single organelles "
+                     "built on a shared schedule, and the organelle modules are the ones the "
+                     "parasite cannot lose.", rows=[3, 3])
     print("figure 3 ->", out)
 
 

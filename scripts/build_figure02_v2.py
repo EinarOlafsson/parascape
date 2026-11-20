@@ -201,14 +201,57 @@ def main():
     lo = float(np.nanmin(before.where(~np.eye(len(before), dtype=bool)).to_numpy()))
     figf, rho, npairs = panel_f(before, position)
     print(f"cell-cycle distance vs agreement before: Spearman {rho:.3f} over {npairs} pairs")
-    panels = [("a", save(heat(before, order, "Agreement (Spearman $\\rho$)", lo, 1), "a_before")),
-              ("b", save(heat(after, order, "Agreement (Spearman $\\rho$)", lo, 1), "b_after")),
-              ("c", save(panel_c(before, after), "c_per_study")),
-              ("d", save(panel_d(null, gain), "d_null")),
-              ("e", save(panel_e(levels, position), "e_phase_levels")),
-              ("f", save(figf, "f_distance"))]
-    import assemble_paper_figures as A
-    out = A.compose("02", [{"png": q, "letter": l} for l, q in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    from scipy.stats import wilcoxon, spearmanr
+    F = "figure_2"
+    summary = os.path.join(VALID, "summary.json")
+    tables = [os.path.join(VALID, f) for f in ("agreement_before.tsv",
+                                                "agreement_after_cellcycle.tsv", "studies.tsv")]
+    nodes_src = (os.path.join(CACHE, "nodes.parquet"), ["cellcycle_phase"])
+    matrices = os.path.join(OMICS, "matrices")
+    pb, pa = per_study(before), per_study(after)
+    w = wilcoxon(pa - pb)
+    common = {"studies": frame.shape[1], "genes": len(frame),
+              "median agreement before": base, "median agreement after": post}
+    PP.panel(F, "a", fig=heat(before, order, "Agreement (Spearman $\\rho$)", lo, 1),
+             data=before.loc[order, order], stats=common, sources=tables + [matrices],
+             what="control-to-control agreement between studies, before")
+    PP.panel(F, "b", fig=heat(after, order, "Agreement (Spearman $\\rho$)", lo, 1),
+             data=after.loc[order, order], stats=common,
+             sources=tables + [nodes_src, matrices],
+             what="the same after removing the cell-cycle axis")
+    PP.panel(F, "c", fig=panel_c(before, after),
+             data=pd.DataFrame({"before": pb, "after": pa, "gain": pa - pb}).rename_axis("study"),
+             stats={"Wilcoxon signed-rank, after vs before": w.statistic, "p": w.pvalue,
+                    "studies improved": int((pa > pb).sum()), "studies": len(pa)},
+             sources=tables, what="median agreement per study, before and after")
+    PP.panel(F, "d", fig=panel_d(null, gain),
+             data=pd.DataFrame({"null_gain": null}),
+             stats={"observed gain": gain, "null mean": null.mean(),
+                    "null sd": null.std(ddof=1), "null draws": len(null),
+                    "permutation p": p, "z vs null": (gain - null.mean()) / null.std(ddof=1)},
+             sources=[os.path.join(OUT, "null_gains.tsv"), summary, matrices],
+             what="gain against random axes of the same shape")
+    PP.panel(F, "e", fig=panel_e(levels, position),
+             data=levels.assign(cell_cycle_position=position).rename_axis("study"),
+             stats={"phase genes": sum(len(frame.index.intersection(pd.Index(g)))
+                                       for g in groups.values())},
+             sources=[nodes_src, matrices], what="phase-gene levels of each study's controls")
+    xs, ys = [], []
+    sts = list(before.index)
+    for i_, a_ in enumerate(sts):
+        for b_ in sts[i_ + 1:]:
+            xs.append({"study_a": a_, "study_b": b_,
+                       "cell_cycle_distance_sd": abs(position[a_] - position[b_]),
+                       "agreement_before": before.loc[a_, b_]})
+    fd = pd.DataFrame(xs)
+    rr = spearmanr(fd.cell_cycle_distance_sd, fd.agreement_before)
+    PP.panel(F, "f", fig=figf, data=fd, stats={"Spearman rho": rr.statistic, "p": rr.pvalue,
+                                               "pairs": len(fd)},
+             sources=tables + [matrices], what="cell-cycle distance vs agreement, per pair")
+    out = PP.compose(F, "main", "Cell cycle is the dominant confounder of the published "
+                     "Toxoplasma transcriptome: removing it brings disagreeing studies into "
+                     "agreement.", rows=[3, 3])
     print("figure 2 ->", out)
 
 

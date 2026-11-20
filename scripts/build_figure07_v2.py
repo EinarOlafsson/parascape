@@ -233,11 +233,44 @@ def main():
     print(byk.to_string()); print(bys.to_string())
     print(comp.round(1).to_string())
 
-    panels = [("a", save(figa, "a_tradeoff")), ("b", save(figb, "b_overlap")),
-              ("c", save(figc, "c_compartments")), ("d", save(figd, "d_layers")),
-              ("e", save(fige, "e_share")), ("f", save(figf, "f_placed"))]
-    import assemble_paper_figures as A_
-    out = A_.compose("07", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    from scipy.stats import spearmanr as _sp, binomtest
+    F = "figure_7"
+    GRAPH = os.path.join(CACHE, "graph.npz")
+    NODES = (os.path.join(CACHE, "nodes.parquet"), [NL.TARGET])
+    NLR = [os.path.join(ROOT, "results", "network_layers_2026_11_18", f)
+           for f in ("layers.tsv", "summary.json")]
+    pred = d.drop(columns=["layers"]).assign(layers=d["layers"].map(";".join))
+    common = {"held-out genes answered": len(d), "baseline (commonest compartment)": baseline,
+              "weights fitted on": "one half of labelled genes (seed 0)",
+              "scored on": "the other half"}
+    PP.panel(F, "a", fig=figa, data=pl.rename_axis("layer").reset_index(),
+             stats={**common, **{f"weight, {k}": v for k, v in weights.items()}},
+             sources=NLR + [GRAPH, NODES], what="per layer: accuracy and genes answered")
+    PP.panel(F, "b", fig=figb, data=pd.DataFrame(J, index=order, columns=order)
+             .rename_axis("layer"), stats={"layers": len(order)}, sources=[GRAPH],
+             what="overlap of genes reached between layers")
+    b = binomtest(int(d.right.sum()), len(d), d.best_right.mean())
+    PP.panel(F, "c", fig=figc, data=comp.rename_axis("compartment"),
+             stats={**common, "weighted vote correct": d.right.mean(),
+                    "best single layer correct": d.best_right.mean(),
+                    "binomial test, vote vs best-layer rate, p": b.pvalue},
+             sources=[GRAPH, NODES], what="per compartment: best single layer vs weighted vote")
+    rk = _sp(d["n_layers"], d["right"])
+    PP.panel(F, "d", fig=figd, data=byk.rename(columns={"mean": "correct", "size": "genes"})
+             .rename_axis("layers_reaching_gene"),
+             stats={**common, "Spearman rho, layers vs correct": rk.statistic, "p": rk.pvalue},
+             sources=[GRAPH, NODES], what="accuracy by layers reaching the gene")
+    PP.panel(F, "e", fig=fige, data=bys.rename(columns={"mean": "correct", "size": "genes"})
+             .assign(bin=[str(b_) for b_ in bys.index]).reset_index(drop=True),
+             stats=common, sources=[GRAPH, NODES], what="accuracy by winning vote share")
+    PP.panel(F, "f", fig=figf, data=pred, stats={**common,
+             "genes placed at >= 80 % accuracy, vote (most layers first)": at80,
+             "genes placed at >= 80 % accuracy, best single layer": at80_t},
+             sources=[GRAPH, NODES], what="genes placed against accuracy")
+    out = PP.compose(F, "main", "In a graph of many kinds of derived relationship, a placement "
+                     "is as trustworthy as the number of independent kinds of evidence behind "
+                     "it.", rows=[3, 3])
     print("figure 7 ->", out)
 
 

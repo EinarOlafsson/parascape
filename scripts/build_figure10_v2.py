@@ -178,11 +178,32 @@ def main():
                                           fontstyle="italic")
     ax.set_xlim(0, len(eff_order) + 0.5); ax.set_xlabel("Effectors moving it")
 
-    panels = [("a", save(figa, "a_per_effector")), ("b", save(figb, "b_effectors_per_gene")),
-              ("c", save(figc, "c_overlap")), ("d", save(figd, "d_shared_genes")),
-              ("e", save(fige, "e_dual_perturb")), ("f", save(figf, "f_top_host_genes"))]
-    import assemble_paper_figures as A_
-    out = A_.compose("10", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[3, 3])
+    import paper_panels as PP
+    F = "figure_10"
+    HRF = [os.path.join(HR, f) for f in ("per_effector.tsv", "effectors_per_host_gene.tsv",
+                                         "summary.json")]
+    DPF = sorted(glob.glob(os.path.join(DP, "*")))
+    PP.panel(F, "a", fig=figa, data=a.rename_axis("effector"), stats={
+             "host genes moved by one effector alone (% of effector-gene pairs)": own,
+             "effectors": len(a)}, sources=HRF + [HT], what="host genes moved per effector")
+    PP.panel(F, "b", fig=figb, data=counts.rename("host_genes").rename_axis(
+             "effectors_moving_it").reset_index(), stats={
+             "host genes moved by >= 2 effectors (%)": float((epg.effectors_moving_it >= 2)
+                                                             .mean() * 100),
+             "host genes": len(epg)}, sources=HRF, what="effectors moving each host gene")
+    PP.panel(F, "c", fig=figc, data=pd.DataFrame(J, index=eff_order, columns=eff_order),
+             stats={"overlap measure": "Jaccard of host genes moved (%)"}, sources=HRF + [HT],
+             what="overlap of host genes moved, effector x effector")
+    PP.panel(F, "d", fig=figd, data=m, stats={"shared host genes (>= 10 effectors)": len(m),
+             "entries up (%)": up}, sources=HRF + [HT], what="shared host genes per effector")
+    PP.panel(F, "e", fig=fige, data=dp.assign(parasite_log2_ratio=lp, host_log2_ratio=lh),
+             stats={"knockouts": len(dp), "host q < 0.05": int((dp.host_q < .05).sum()),
+                    "parasite q < 0.05": int((dp.parasite_q < .05).sum())}, sources=DPF,
+             what="single cells: parasite vs host read change per knockout")
+    PP.panel(F, "f", fig=figf, data=top.assign(symbol=[sym.get(h, h) for h in top.host_id]),
+             stats={"effectors": len(eff_order)}, sources=HRF + [HT],
+             what="host genes moved by the most effectors")
+    out = PP.compose(F, "main", "Most of the host response is shared across effectors, and the parasite itself changes in the same cell for almost none of them.", rows=[3, 3])
     print("figure 10 ->", out)
 
 

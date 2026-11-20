@@ -111,6 +111,9 @@ def compose(figure_id: str, panels: list, out: str, rows: list | None = None) ->
 
     fig = plt.figure(figsize=(total_w / 25.4, total_h / 25.4))
     y_top = total_h
+    # Where every panel and its letter sit, in mm from the TOP LEFT, so the vector PDF of the
+    # figure can be built from the panel PDFs at exactly the same places (build_repo.py).
+    layout = {"width_mm": total_w, "height_mm": total_h, "panels": []}
     for r, rw, rh in zip(rows, row_w, row_h):
         x = (total_w - rw) / 2.0            # a short row is centred, not left-ragged
         for i in r:
@@ -119,6 +122,9 @@ def compose(figure_id: str, panels: list, out: str, rows: list | None = None) ->
             ax = fig.add_axes([x / total_w, y / total_h, w / total_w, h / total_h])
             ax.imshow(images[i])
             ax.set_axis_off()
+            layout["panels"].append({"letter": panels[i].get("letter"), "x_mm": x,
+                                     "top_mm": total_h - (y + h), "w_mm": w, "h_mm": h,
+                                     "letter_top_mm": total_h - y_top})
             # The letter comes from the FIGURE spec, stamped here, top left of the panel cell.
             letter = panels[i].get("letter")
             if letter:
@@ -128,6 +134,9 @@ def compose(figure_id: str, panels: list, out: str, rows: list | None = None) ->
             x += w + GUTTER_MM
         y_top -= rh + GUTTER_MM
     path = os.path.join(out, f"figure{figure_id}")
+    import json as _json
+    with open(f"{path}_layout.json", "w") as fh:
+        _json.dump(layout, fh, indent=1)
     for extension in ("png", "pdf"):
         fig.savefig(f"{path}.{extension}", dpi=600 if extension == "png" else None,
                     bbox_inches="tight", pad_inches=0.01)

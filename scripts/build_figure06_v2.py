@@ -109,6 +109,15 @@ def panel_b(z):
     ax.set_xlabel("Time after release (h)"); ax.set_ylabel("Mean expression (z)")
     ax.set_xticks([2, 4, 6, 8, 10, 12])
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    rows = []
+    for key in WAVE + CONTINUOUS:
+        g = group(z, key)
+        if len(g) >= 5:
+            for h, v in g.mean().items():
+                rows.append({"compartment": key, "group": "wave-built" if key in WAVE
+                             else "continuous", "hour": h, "mean_z": v, "genes": len(g)})
+    fig._data = pd.DataFrame(rows)
+    fig._stats = {f"genes, {k}": len(group(z, k)) for k in WAVE + CONTINUOUS}
     return fig
 
 
@@ -138,6 +147,11 @@ def panel_c(z):
     ax.tick_params(axis="y", length=0)
     cb = fig.colorbar(im, ax=ax, fraction=0.05, pad=0.04)
     cb.set_label("Genes peaking (%)"); cb.outline.set_linewidth(0.6)
+    fig._data = pd.DataFrame(m, index=keys, columns=HOURS).rename_axis("compartment")
+    fig._stats = pd.DataFrame([{"compartment": k, "genes": len(group(z, k)),
+                                "modal_hour": int(np.argmax(r)) + 1,
+                                "share_at_modal_hour_pct": float(r.max())}
+                               for k, r in zip(keys, m)])
     return fig
 
 
@@ -174,6 +188,11 @@ def panel_d(z):
     ax.set_xlabel("Genes peaking at the modal hour (%)")
     ax.set_ylabel("AUC, RNA only")
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    from scipy.stats import spearmanr
+    r = spearmanr(d["coh"], d["auc"])
+    fig._data = d.rename(columns={"coh": "share_peaking_at_modal_hour", "auc": "auc_rna_only"})
+    fig._stats = {"Spearman rho, coherence vs AUC": r.statistic, "p": r.pvalue,
+                  "compartments": len(d)}
     return fig
 
 
@@ -189,6 +208,16 @@ def panel_e(z):
     ax.set_xlabel("Time after release (h)"); ax.set_ylabel("Expression (z)")
     ax.set_xticks([2, 4, 6, 8, 10, 12])
     FS.legend(ax, loc="upper left")
+    rows = []
+    for key in ("plasma membrane", "rhoptries"):
+        g = group(z, key)
+        for gid, row in g.head(60).iterrows():
+            rows += [{"compartment": key, "gene_id": gid, "hour": h, "z": v}
+                     for h, v in row.items()]
+    fig._data = pd.DataFrame(rows)
+    fig._stats = {"genes drawn per compartment": 60,
+                  "genes, rhoptries": len(group(z, "rhoptries")),
+                  "genes, plasma membrane": len(group(z, "plasma membrane"))}
     return fig
 
 
@@ -210,6 +239,17 @@ def panel_f(z):
     ax.plot([], [], "o-", color=FS.ACCENT, ms=4, label="wave-built")
     ax.plot([], [], "o-", color=FS.CONTROL, ms=4, label="continuous (ref.)")
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    from scipy.stats import mannwhitneyu
+    rows = [{"compartment": k, "group": "wave-built" if k in WAVE else "continuous",
+             "gene_id": gid, "replicate_r": v}
+            for k in keys for gid, v in z.loc[group(z, k).index, "rep_r"].dropna().items()]
+    fig._data = pd.DataFrame(rows)
+    w = fig._data[fig._data.group == "wave-built"]["replicate_r"]
+    c = fig._data[fig._data.group == "continuous"]["replicate_r"]
+    u = mannwhitneyu(w, c, alternative="greater")
+    fig._stats = {"median r, wave-built": w.median(), "median r, continuous": c.median(),
+                  "Mann-Whitney U (wave > continuous)": u.statistic, "p": u.pvalue,
+                  "genes, wave-built": len(w), "genes, continuous": len(c)}
     return fig
 
 
@@ -217,13 +257,33 @@ def main():
     os.environ.setdefault("PARASCAPE_NO_PANEL_LETTERS", "1")
     z = profiles()
     print(f"{len(z):,} genes with a cell-cycle profile and a compartment")
+    import paper_panels as PP
+    F = "figure_6"
     a = newest("coexpression_components_localization_*/panel_which_evidence_places_a_protein.png")
-    panels = [("a", a), ("b", save(panel_b(z), "b_wave")), ("c", save(panel_c(z), "c_peak")),
-              ("d", save(panel_d(z), "d_coherence")), ("e", save(panel_e(z), "e_genes")),
-              ("f", save(panel_f(z), "f_amplitude"))]
-    import assemble_paper_figures as A
-    A.PER_ROW = 3
-    out = A.compose("06", [{"png": p, "letter": l} for l, p in panels], OUT)
+    sc = newest("coexpression_components_localization_*/scores.tsv")
+    sd = pd.read_csv(sc, sep="\t")
+    from scipy.stats import wilcoxon
+    pair = sd[["coexp_cv_auc"] + [c for c in sd.columns if c != "coexp_cv_auc"
+                                   and "auc" in c][:1]].dropna()
+    st = {"compartments": len(sd)}
+    if pair.shape[1] == 2:
+        w = wilcoxon(pair.iloc[:, 0], pair.iloc[:, 1])
+        st.update({f"Wilcoxon, {pair.columns[0]} vs {pair.columns[1]}": w.statistic,
+                   "p": w.pvalue})
+    nodes = os.path.join(CACHE, "nodes.parquet")
+    cc_cols = [f"cellcycle19092_{h}h_r{r}" for h in HOURS for r in (1, 2)] + ["lopit_map"]
+    PP.panel(F, "a", png=a, data=sd, stats=st, sources=[sc],
+             what="placed from RNA alone vs all evidence, per compartment")
+    for letter, fn, what in (("b", panel_b, "mean expression across the cell cycle"),
+                             ("c", panel_c, "hour of peak expression per compartment"),
+                             ("d", panel_d, "timing coherence vs placeability from RNA"),
+                             ("e", panel_e, "single-gene trajectories"),
+                             ("f", panel_f, "replicate agreement per compartment")):
+        f = fn(z)
+        srcs = [(nodes, cc_cols)] + ([sc] if letter == "d" else [])
+        PP.panel(F, letter, fig=f, data=f._data, stats=f._stats, sources=srcs, what=what)
+    out = PP.compose(F, "main", "Organelles built in waves during division can be placed from "
+                     "transcription alone; those made continuously cannot.", rows=[3, 3])
     print("figure 6 ->", out)
 
 

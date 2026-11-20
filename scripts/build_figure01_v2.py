@@ -349,18 +349,62 @@ def main():
     figd, share = panel_d(nodes, cols)
     fige, assay = panel_e(nodes, cols)
     figf, sec, n_sec = panel_f(nodes, cols)
-    panels = [("a", save(panel_a(nodes, cols), "a_schematic")), ("b", save(panel_b(), "b_datasets")),
-              ("c", save(panel_c(years), "c_years")), ("d", save(figd, "d_coverage")),
-              ("e", save(fige, "e_assays")), ("f", save(figf, "f_secreted"))]
+    import paper_panels as PP
+    from scipy.stats import fisher_exact
+    F = "figure_1"
+    NODES = os.path.join(CACHE, "nodes.parquet")
+    REG = os.path.join(ROOT, "parascape", "datasets.py")
+    inv = CI.by_organism_and_level()
+    lev = inv.groupby("level")["datasets"].sum(); org = inv.groupby("organism")["datasets"].sum()
+    PP.panel(F, "a", fig=panel_a(nodes, cols),
+             data=pd.concat([lev.rename("datasets").rename_axis("group").reset_index().assign(by="level"),
+                             org.rename("datasets").rename_axis("group").reset_index().assign(by="organism")]),
+             stats={"datasets": int(lev.sum()), "genes": len(nodes),
+                    "kinds of knowledge": len(cols)}, sources=[REG],
+             what="what ParaScape gathers, the gene space, and the questions it answers")
+    PP.panel(F, "b", fig=panel_b(), data=inv, stats={"datasets": int(inv.datasets.sum()),
+             "organisms": inv.organism.nunique(), "levels": inv.level.nunique()},
+             sources=[REG], what="datasets by organism and level of biology")
+    PP.panel(F, "c", fig=panel_c(years), data=years, stats={
+        "datasets with a citation year": int(years.year.notna().sum()),
+        "datasets without": int(years.year.isna().sum()),
+        "dated datasets measuring host response or mutant phenotype": int(
+            (years.thin & years.year.notna()).sum())}, sources=[REG],
+             what="datasets by year of publication")
+    presence = pd.DataFrame({CATEGORY_NAMES.get(c, c): nodes[v].notna().any(axis=1)
+                             for c, v in cols.items()})
+    presence.insert(0, "gene_id", nodes["gene_id"].astype(str).to_numpy())
+    PP.panel(F, "d", fig=figd, data=presence, stats=pd.DataFrame(
+        [{"kind": CATEGORY_NAMES.get(c, c), "columns": len(v), "genes_measured_pct": share[c]}
+         for c, v in cols.items()]), sources=[NODES],
+             what="coverage map: kinds of knowledge x genes")
+    PP.panel(F, "e", fig=fige, data=pd.Series(assay, name="genes_measured_pct")
+             .rename_axis("assay").reset_index(),
+             stats={"genes": len(nodes)}, sources=[NODES],
+             what="the thin kinds opened up: genes measured per assay")
+    secm = nodes["lopit_map"].astype(str).isin(SECRETED).to_numpy()
+    rows = []
+    for c, v in cols.items():
+        if c == "place":
+            continue
+        m = nodes[v].notna().any(axis=1).to_numpy()
+        t = [[int((m & secm).sum()), int((~m & secm).sum())],
+             [int((m & ~secm).sum()), int((~m & ~secm).sum())]]
+        odds, pv = fisher_exact(t)
+        rows.append({"kind": CATEGORY_NAMES.get(c, c), "secreted_measured": t[0][0],
+                     "secreted_not": t[0][1], "other_measured": t[1][0], "other_not": t[1][1],
+                     "fisher_odds_ratio": odds, "fisher_p": pv})
+    PP.panel(F, "f", fig=figf, data=sec, stats=pd.DataFrame(rows), sources=[NODES],
+             what="coverage among secreted proteins vs all genes")
     print(f"{len(nodes):,} genes; {len(DS.REGISTRY)} datasets, "
           f"{years['year'].notna().sum()} with a year in the citation")
     print("coverage %:", {k: round(v, 1) for k, v in share.items()})
     print("assays %:", {k: round(v, 1) for k, v in assay.items()})
     print(f"secreted proteins: {n_sec}")
     print(sec.round(1).to_string(index=False))
-    import assemble_paper_figures as A
-    A.PER_ROW = 3
-    out = A.compose("01", [{"png": p, "letter": l} for l, p in panels], OUT, rows=[1, 3, 2])
+    out = PP.compose(F, "main", "ParaScape gathers the published Toxoplasma data into one gene "
+                     "space; what a gene does to the host, and what happens when it is lost, are "
+                     "measured for a few percent of genes.", rows=[1, 3, 2])
     print("figure 1 ->", out)
 
 
