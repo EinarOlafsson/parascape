@@ -232,7 +232,7 @@ def main():
               "weights fitted on": "one half of labelled genes (seed 0)",
               "scored on": "the other half"}
     # ---- Figure 6: each evidence type, tested on held-out genes (storyboard 2026-11-20) ----
-    F = "figure_6__final"
+    F = "supplementary_figure_6b__final"     # the new Fig. 6 is the predictive matrix
     # A: one gene and its neighbours, the picture of guilt by association
     gid_index = {g: k for k, g in enumerate(nodes["gene_id"].astype(str))}
     cand = d[(d.n_layers >= 4) & d.right].copy()
@@ -299,7 +299,7 @@ def main():
                     "best single layer correct": d.best_right.mean(),
                     "binomial test, vote vs best-layer rate, p": b.pvalue},
              sources=[GRAPH, NODES], what="per niche: combined vote vs best single evidence type")
-    out = PP.compose(F, "main", "Each evidence type in the gene graph, tested on held-out genes.")
+    out = PP.compose(F, "supplementary", "Each evidence type in the gene graph, tested on held-out genes.")
 
     # ---- Figure 9: inference with an uncertainty estimate ----
     F = "figure_9__final"
