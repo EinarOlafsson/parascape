@@ -20,13 +20,13 @@ from parascape import figstyle as FS                    # noqa: E402
 
 INPUTS = ["RNA-seq", "Proteomics,\nhyperLOPIT", "CRISPR\nscreens", "Interactions\nXL-MS, IP-MS",
           "Structures\nAlphaFold", "Single-cell\nRNA-seq", "Plasmodium\n& host data"]
-STEPS = [("Re-quantify\nraw reads", "salmon, kallisto"),
-         ("One gene\nidentity", "VEuPathDB IDs,\northology"),
-         ("Gene table\n+ gene graph", "traits, 12 kinds\nof link"),
-         ("Remove\nconfounders", "cell cycle,\nlaboratory"),
+STEPS = [("Re-quantify raw reads", "salmon, kallisto"),
+         ("Map to one gene ID", "VEuPathDB, orthology"),
+         ("Remove confounders", "cell cycle, laboratory"),
+         ("Gene table and graph", "traits, 12 evidence types"),
          ("Predict,\nheld-out test", "localisation,\nphase, function")]
-USES = ["Look up a gene\nor a gene list", "Find modules\nand organelles", "Place proteins",
-        "Transfer to\nPlasmodium", "Rank host-facing\nproteins, drug targets",
+USES = ["Look up a gene\nor gene list", "Find co-expression\nmodules", "Localise proteins",
+        "Transfer to\nPlasmodium", "Rank host-facing\nproteins and targets",
         "Choose the next\nexperiment"]
 
 
@@ -49,59 +49,81 @@ def arrow(ax, p, q, color=FS.INK):
 
 
 def draw():
+    """Three stages, each under a coloured header bar; equal boxes; grey connectors."""
     FS.use()
-    W, H = 180.0, 78.0
+    W, H = 180.0, 70.0
     fig = plt.figure(figsize=(W / 25.4, H / 25.4))
     ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis("off")
-    light = "#EEF4FA"; grey = "#F2F2F2"
+    pale, grey, line = "#E6F0F8", "#F0F0F0", "#7A7A7A"
+    cols = {"in": (2, 36), "mid": (46, 134), "out": (144, 178)}
 
-    # column headers
-    for x, t in ((17, "Input: published data"), (90, "ParaScape"), (163, "Used to")):
-        ax.text(x, H - 2, t, ha="center", va="top", fontsize=FS.FONT_PT, fontweight="bold")
+    def header(key, text):
+        x0, x1 = cols[key]
+        ax.add_patch(FancyBboxPatch((x0, H - 7), x1 - x0, 5.2,
+                                    boxstyle="round,pad=0,rounding_size=1.0", lw=0,
+                                    fc=FS.ACCENT if key == "mid" else FS.DARK_GREY))
+        ax.text((x0 + x1) / 2, H - 4.4, text, ha="center", va="center", color="white",
+                fontsize=FS.FONT_PT, fontweight="bold")
+    header("in", "Published data"); header("mid", "ParaScape"); header("out", "Uses")
 
-    # inputs
-    n = len(INPUTS); top, bot = H - 9, 4
-    step = (top - bot) / n
-    ys = [top - step * (i + 0.5) for i in range(n)]
-    for y, t in zip(ys, INPUTS):
-        box(ax, 17, y, 30, step - 1.6, t, grey, FS.DARK_GREY)
-    # bracket of inputs into the pipeline
-    xm = 36
-    ax.plot([xm, xm], [ys[-1], ys[0]], color=FS.INK, lw=0.7)
-    for y in ys:
-        ax.plot([32, xm], [y, y], color=FS.INK, lw=0.7)
+    def column(key, items, fc, ec):
+        x0, x1 = cols[key]
+        n = len(items); top, bot = H - 9.5, 2
+        hh = (top - bot) / n
+        ys = []
+        for k, t in enumerate(items):
+            y = top - hh * (k + 0.5)
+            ax.add_patch(FancyBboxPatch((x0, y - hh / 2 + 0.6), x1 - x0, hh - 1.2,
+                                        boxstyle="round,pad=0,rounding_size=1.0", lw=0.5,
+                                        ec=ec, fc=fc))
+            ax.text((x0 + x1) / 2, y, t, ha="center", va="center", fontsize=FS.FONT_PT,
+                    linespacing=1.0)
+            ys.append(y)
+        return ys
+    yin = column("in", INPUTS, grey, line)
+    yout = column("out", USES, "white", line)
 
-    # pipeline: two rows, left to right then down, as a flow
-    px = [52, 76, 100, 124]
-    box_w, box_h = 21, 21
-    y1 = H / 2 + 11
-    arrow(ax, (xm, H / 2), (px[0] - box_w / 2, y1))
-    pos = [(px[0], y1), (px[1], y1), (px[2], y1), (px[3], y1)]
-    for (x, y), (t, sub) in zip(pos, STEPS[:4]):
-        box(ax, x, y, box_w, box_h, t, light, FS.ACCENT, bold=True, sub=sub)
-    for (a, _), (b, _) in zip(pos[:-1], pos[1:]):
-        arrow(ax, (a + box_w / 2, y1), (b - box_w / 2, y1))
-    # prediction under the table, fed by table and corrected data
-    y2 = H / 2 - 14
-    x5 = (px[1] + px[2]) / 2
-    box(ax, x5 + 12, y2, 30, box_h, STEPS[4][0], light, FS.ACCENT, bold=True, sub=STEPS[4][1])
-    arrow(ax, (px[3], y1 - box_h / 2), (x5 + 22, y2 + box_h / 2))
-    # user's own data enters too
-    box(ax, px[0], y2, 21, box_h, "Your gene\nlist or data", "white", FS.ACCENT)
-    arrow(ax, (px[0] + 10.5, y2), (x5 - 3, y2))
-    # frame around ParaScape
-    ax.add_patch(FancyBboxPatch((40, 5), 96, H - 13, boxstyle="round,pad=0,rounding_size=2",
-                                lw=0.6, ec=FS.ACCENT, fc="none", ls=(0, (3, 2))))
+    # pipeline: 2 x 2 grid of steps plus prediction, read left-to-right, top-to-bottom
+    bw, bh = 38, 15
+    grid = [(65, H - 20), (115, H - 20), (65, H - 41), (115, H - 41)]
+    for (x, y), (t, sub) in zip(grid, STEPS[:4]):
+        ax.add_patch(FancyBboxPatch((x - bw / 2, y - bh / 2), bw, bh,
+                                    boxstyle="round,pad=0,rounding_size=1.2", lw=0.6,
+                                    ec=FS.ACCENT, fc=pale))
+        ax.text(x, y + 2.6, t.replace("\n", " "), ha="center", va="center",
+                fontsize=FS.FONT_PT, fontweight="bold")
+        ax.text(x, y - 3.0, sub.replace("\n", " "), ha="center", va="center",
+                fontsize=FS.FONT_PT, color=FS.DARK_GREY)
+    px, py = 90, H - 61
+    ax.add_patch(FancyBboxPatch((px - 44, py - bh / 2), 88, bh,
+                                boxstyle="round,pad=0,rounding_size=1.2", lw=0.6, ec=FS.ACCENT,
+                                fc=FS.ACCENT_LIGHT))
+    ax.text(px, py + 2.6, "Predict and test on held-out genes", ha="center", va="center",
+            fontsize=FS.FONT_PT, fontweight="bold")
+    ax.text(px, py - 3.0, "localisation, cell-cycle phase, function; your gene list",
+            ha="center", va="center", fontsize=FS.FONT_PT, color=FS.INK)
 
-    # uses
-    m = len(USES); step2 = (top - bot) / m
-    ys2 = [top - step2 * (i + 0.5) for i in range(m)]
-    xo = 144
-    ax.plot([xo, xo], [ys2[-1], ys2[0]], color=FS.INK, lw=0.7)
-    arrow(ax, (136, H / 2), (xo, H / 2))
-    for y, t in zip(ys2, USES):
-        arrow(ax, (xo, y), (148, y))
-        box(ax, 163, y, 30, step2 - 1.6, t, "white", FS.DARK_GREY)
+    def arr(p, q):
+        ax.add_patch(FancyArrowPatch(p, q, arrowstyle="-|>", mutation_scale=6, lw=0.7,
+                                     color=line, shrinkA=0, shrinkB=0,
+                                     connectionstyle="arc3,rad=0"))
+    # inputs converge into step 1
+    xj = 40.5
+    ax.plot([xj, xj], [yin[-1], yin[0]], color=line, lw=0.7)
+    for y in yin:
+        ax.plot([cols["in"][1], xj], [y, y], color=line, lw=0.7)
+    arr((xj, grid[0][1]), (grid[0][0] - bw / 2, grid[0][1]))
+    arr((grid[0][0] + bw / 2, grid[0][1]), (grid[1][0] - bw / 2, grid[1][1]))
+    arr((grid[1][0], grid[1][1] - bh / 2), (grid[3][0], grid[3][1] + bh / 2))
+    arr((grid[3][0] - bw / 2, grid[3][1]), (grid[2][0] + bw / 2, grid[2][1]))
+    arr((grid[2][0], grid[2][1] - bh / 2), (grid[2][0], py + bh / 2))
+    # outputs fan out from the pipeline
+    xo = 139.5
+    ax.plot([xo, xo], [yout[-1], yout[0]], color=line, lw=0.7)
+    arr((px + 44, py), (xo, py)) if False else ax.plot([px + 44, xo], [py, py], color=line, lw=0.7)
+    ax.plot([grid[1][0] + bw / 2, xo], [grid[1][1], grid[1][1]], color=line, lw=0.7)
+    for y in yout:
+        arr((xo, y), (cols["out"][0], y))
     return fig
 
 
