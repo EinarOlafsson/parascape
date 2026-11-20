@@ -101,7 +101,7 @@ def main():
     J = np.array([[len(moved[x] & moved[z]) / max(1, len(moved[x] | moved[z])) * 100
                    for z in eff_order] for x in eff_order])
     FS.use()
-    nl = len(eff_order); cell = 0.14
+    nl = len(eff_order); cell = 0.1      # 0.14 in made C too wide to share a row on A4
     w, h = 0.75 + nl * cell + 0.9, 0.15 + nl * cell + 0.65
     figc = plt.figure(figsize=(w, h))
     ax = figc.add_axes([0.75 / w, 0.65 / h, nl * cell / w, nl * cell / h])
@@ -138,7 +138,7 @@ def main():
     cb = figd.colorbar(im, ax=ax, fraction=0.06, pad=0.04)
     cb.set_label("Host change (log$_2$ FC)"); cb.outline.set_linewidth(0.6)
     ax.fill_between([], [], color=FS.BACKGROUND, label="not moved")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.55, 1.0))
+    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     up = (m > 0).sum().sum() / m.notna().sum().sum() * 100
     print(f"shared host genes: {nr}; entries up {up:.1f} %")
 
@@ -170,7 +170,7 @@ def main():
     top = epg.sort_values("effectors_moving_it", ascending=False).head(15)
     sym = ht.drop_duplicates("host_id").set_index("host_id")["host_symbol"]
     FS.use()
-    figf, ax = rows_fig(len(top), left=0.8, right=0.3, rh=0.2)
+    figf, ax = rows_fig(len(top), left=0.8, right=0.3, rh=0.14)
     yy = np.arange(len(top))
     ax.hlines(yy, 0, top["effectors_moving_it"], color=FS.ACCENT, lw=0.6, alpha=FS.ALPHA)
     ax.plot(top["effectors_moving_it"], yy, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA)

@@ -55,6 +55,10 @@ def newest_sheet() -> str:
 PER_ROW = 4
 
 
+#: The page every figure must fit at true size (A4), in millimetres.
+A4_WIDTH_MM, A4_HEIGHT_MM = 210.0, 297.0
+
+
 def compose(figure_id: str, panels: list, out: str, rows: list | None = None) -> str:
     """One figure from its panels, wrapped into a GRID at their true millimetre size.
 
@@ -79,10 +83,31 @@ def compose(figure_id: str, panels: list, out: str, rows: list | None = None) ->
     else:
         rows = [list(range(i, min(i + PER_ROW, len(images))))
                 for i in range(0, len(images), PER_ROW)]
+    # Einar, 2026-11-19: "The figures should be in a4 size." A row wider than the page is
+    # split, greedily, so the figure fits A4 at true size instead of being scaled down.
+    fitted = []
+    for r in rows:
+        cur, w = [], 0.0
+        for i in r:
+            add = widths[i] + (GUTTER_MM if cur else 0.0)
+            if cur and w + add > A4_WIDTH_MM:
+                fitted.append(cur); cur, w = [], 0.0
+                add = widths[i]
+            cur.append(i); w += add
+        if cur:
+            fitted.append(cur)
+    rows = fitted
     row_w = [sum(widths[i] for i in r) + GUTTER_MM * (len(r) - 1) for r in rows]
     row_h = [max(heights[i] for i in r) + LETTER_STRIP_MM for r in rows]
     total_w = max(row_w)
     total_h = sum(row_h) + GUTTER_MM * (len(rows) - 1)
+    for i, w in enumerate(widths):
+        if w > A4_WIDTH_MM:
+            print(f"  WARNING figure {figure_id}: panel {i + 1} alone is {w:.0f} mm wide, "
+                  f"wider than A4 ({A4_WIDTH_MM:.0f} mm)")
+    if total_h > A4_HEIGHT_MM:
+        print(f"  WARNING figure {figure_id}: {total_h:.0f} mm tall, taller than A4 "
+              f"({A4_HEIGHT_MM:.0f} mm)")
 
     fig = plt.figure(figsize=(total_w / 25.4, total_h / 25.4))
     y_top = total_h

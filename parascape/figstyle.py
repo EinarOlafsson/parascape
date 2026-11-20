@@ -358,7 +358,16 @@ def legend(ax, loc: str = "best", **kw):
     is allowed to sit, per Einar 2026-11-19 ("there should only be text on x and y axes or in
     legends"). A reference line is identified here, never by a label floating beside it.
     """
-    leg = ax.legend(frameon=False, loc=loc, handlelength=1.0, borderaxespad=0.2,
+    # A legend asked for BESIDE the axes goes ABOVE them instead. Einar, 2026-11-19: figures fit
+    # A4 at true size; a legend at the right made every panel ~40 mm wider, so rows held one or
+    # two panels and figures came out 300-600 mm tall.
+    bbox = kw.get("bbox_to_anchor")
+    if loc == "upper left" and bbox is not None and tuple(bbox)[:2] == (1.02, 1.0):
+        kw["bbox_to_anchor"] = (0.0, 1.02)
+        loc = "lower left"
+        kw.setdefault("borderaxespad", 0.0)
+    kw.setdefault("borderaxespad", 0.2)
+    leg = ax.legend(frameon=False, loc=loc, handlelength=1.0,
                     labelspacing=0.25, fontsize=NOTE_PT, **kw)
     for text in leg.get_texts():
         text.set_color(INK)

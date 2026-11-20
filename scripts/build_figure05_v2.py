@@ -181,9 +181,9 @@ def main():
         return f"{PF.with_group(reg)}: target {genes[0]}" if genes else \
             f"{PF.with_group(reg)}: n.d."
 
-    def leader_map(label_fn):
+    def leader_map(label_fn, w_mm=180.0, h_mm=50.0):
+        """The paper leader-line map. 180 x 50 mm (was 200 x 62) so three fit an A4 page."""
         labels = {r: label_fn(r) for r in PF.REGIONS}
-        w_mm, h_mm = 200.0, 62.0
         fig = plt.figure(figsize=(w_mm / 25.4, h_mm / 25.4))
         g = fig.add_gridspec(1, 3, width_ratios=[1.35, 0.62, 1.35], wspace=0.03)
         PF.annotated_map(fig, g[0], g[1], g[2], d, labels, fontsize=FS.FONT_PT)
@@ -192,7 +192,7 @@ def main():
     def old_map():
         """The published subtypes A-E on the UMAP, house style, no cell counts on the map."""
         FS.use()
-        fig, ax = FS.square_figure(side_mm=58.0)
+        fig, ax = FS.square_figure(side_mm=40.0)
         o = obs.iloc[np.random.default_rng(0).permutation(len(obs))]
         sub = o["published_subtype"].astype(str)
         for i, k in enumerate(SUBTYPES):
@@ -207,9 +207,70 @@ def main():
         FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0), markerscale=8)
         return fig
 
+    def score_map(col, label):
+        """A per-cell score on the UMAP, house style, square."""
+        FS.use()
+        fig, ax = FS.square_figure(side_mm=40.0)
+        o = obs.iloc[np.argsort(obs[col].to_numpy())]
+        sc = ax.scatter(o["ux"], o["uy"], c=o[col], s=0.4, lw=0, rasterized=True, cmap="magma_r")
+        ax.set_xticks([]); ax.set_yticks([]); ax.set_xlabel("UMAP 1"); ax.set_ylabel("UMAP 2")
+        cb = fig.colorbar(sc, ax=ax, fraction=0.06, pad=0.04)
+        cb.set_label(label); cb.outline.set_linewidth(0.6)
+        return fig
+
+    def enrichment_map():
+        """The four enrichments in one region x enrichment map, regions in the paper order.
+
+        Einar: the enrichment plots in a fixed order. Four bar panels in four units became one map;
+        each row is divided by its own largest absolute value, so colour compares regions within a
+        row, never rows with each other. Grey = not measured.
+        """
+        dz = pd.read_csv(f"{RES}/differentiation_timecourse_mapping.tsv", sep="\t")
+        cw = pd.read_csv(f"{RES}/cyst_wall_and_bradyzoite_sources.tsv", sep="\t")
+        dr = pd.read_csv(f"{RES}/druggability.tsv", sep="\t")
+        iv = pd.read_csv(f"{RES}/gse229548_invivo_screen_by_region.tsv", sep="\t")
+        iv = iv[iv["gene_set"].astype(str).str.startswith("candidates highest in ")]
+        iv = iv.assign(region=iv["gene_set"].str.replace("candidates highest in ", "", regex=False))
+        rows = {
+            "trend with differentiation (r)": dz.groupby("region")["trend_r"].mean(),
+            "cyst-wall genes (z)": cw[cw["z"].notna()].groupby("region")["z"].mean(),
+            "druggable candidates (n)": dr[dr["q_bh"] < 0.05]["region_highest"].astype(str)
+                                        .value_counts(),
+            "in vivo fitness cost (z)": iv.groupby("region")["z_vs_null"].mean(),
+        }
+        m = pd.DataFrame({k: v.reindex(ORDER) for k, v in rows.items()}).T
+        if "druggable candidates (n)" in m.index:
+            m.loc["druggable candidates (n)"] = m.loc["druggable candidates (n)"].fillna(0)
+        scaled = m.div(m.abs().max(axis=1), axis=0)
+        FS.use()
+        nr, nc = scaled.shape; cell = 0.27   # 0.2 in let "G10" run into "M9"
+        w, h = 1.75 + nc * cell + 0.9, 0.15 + nr * cell + 0.6
+        fig = plt.figure(figsize=(w, h))
+        ax = fig.add_axes([1.75 / w, 0.6 / h, nc * cell / w, nr * cell / h])
+        cmap = matplotlib.colormaps["RdBu_r"].copy(); cmap.set_bad(FS.BACKGROUND)
+        im = ax.imshow(np.ma.masked_invalid(scaled.to_numpy(float)), cmap=cmap, vmin=-1, vmax=1,
+                       interpolation="nearest")
+        ax.set_xticks(range(nc)); ax.set_xticklabels(ORDER)
+        ax.set_yticks(range(nr)); ax.set_yticklabels(list(scaled.index))
+        for t, r in zip(ax.get_xticklabels(), ORDER):
+            t.set_color(RC.get(r, FS.INK))
+        ax.set_xlabel("Region")
+        for sp in ax.spines.values():
+            sp.set_visible(False)
+        ax.tick_params(length=0)
+        cb = fig.colorbar(im, ax=ax, fraction=0.06, pad=0.04)
+        cb.set_label("Value / row maximum"); cb.outline.set_linewidth(0.6)
+        print(m.round(2).to_string())
+        return fig
+
     built = {
         "1_old_map": save(old_map(), "1_old_map"),
-        "2_new_map": save(leader_map(lambda r: PF.with_group(r)), "2_new_map"),
+        "2_new_map": save(leader_map(lambda r: PF.with_group(r), w_mm=110.0, h_mm=50.0),
+                          "2_new_map"),
+        "3_g1a": save(score_map("cc_G1a", "G1a score"), "3_g1a"),
+        "3_sm": save(score_map("cc_SM", "S/M score"), "3_sm"),
+        "7_enrichment": save(enrichment_map(), "7_enrichment"),
+        "q_autophagy": save(leader_map(lambda r: PF.autophagy_map_labels(d)[r]), "q_autophagy"),
         "2b_new_to_old": save(new_to_old(obs), "2b_new_to_old"),
         "8a_drug_reached": save(leader_map(text_reached), "8a_drug_reached"),
         "8b_drug_candidates": save(leader_map(text_candidate), "8b_drug_candidates"),
@@ -217,40 +278,47 @@ def main():
     for k, v in built.items():
         print("  built", k)
 
-    # the figure, in Einar's order
-    seq = [
+    # Einar, 2026-11-19: split into figure 5 (the map, its confounders, what reaches each region)
+    # and supplementary figure S5 (what defines each region and its enrichments), each in his
+    # order, three panels to a row.
+    # A4 at true size (Einar, 2026-11-19) does not hold 17 panels: three pages, in his order.
+    # 5: the map and what reaches each region; S5: the confounders; S6: what defines regions.
+    main_seq = [
         ("old clustering", built["1_old_map"]),
         ("new clustering", built["2_new_map"]),
         ("new to old", built["2b_new_to_old"]),
-        ("cell cycle G1a", brady("Figure1_regions/panels/f_cc_G1a_map/f_cc_G1a_map.png")),
-        ("cell cycle S/M", brady("Figure1_regions/panels/g_cc_SM_map/g_cc_SM_map.png")),
-        ("recrudescence", brady("Figure4_reactivation/panels/a_reactivation_bar_jitter/a_reactivation_bar_jitter.png")),
-        ("tachy vs brady", brady("Figure6_drugs_and_perturbations/panels/sa_perturbation_map_waldman_wt_alkaline/sa_perturbation_map_waldman_wt_alkaline.png")),
-        ("defining traits", brady("Figure5_what_distinguishes_regions/panels/b_region_property_enrichment/b_region_property_enrichment.png")),
-        ("metabolic traits", brady("Figure2_metabolism/panels/b_programme_by_region/b_programme_by_region.png")),
         ("drugs to clusters", brady("Figure8_drug_by_cluster/panels/c_treatment_by_our_region_signed/c_treatment_by_our_region_signed.png")),
-        ("differentiation", os.path.join(ROOT, "results/figure05_bradyzoite/l_differentiation.png")),
-        ("cyst wall", os.path.join(ROOT, "results/figure05_bradyzoite/k_cyst_wall.png")),
-        ("druggable", os.path.join(ROOT, "results/figure05_bradyzoite/i_druggability.png")),
-        ("in vivo", os.path.join(ROOT, "results/figure05_bradyzoite/j_in_vivo_cost.png")),
         ("drug reached", built["8a_drug_reached"]),
         ("drug candidates", built["8b_drug_candidates"]),
-        ("autophagy PLVAC", brady("Figure10_what_each_cluster_says/panels/b_autophagy_genes/b_autophagy_genes.png")),
+        ("autophagy PLVAC", built["q_autophagy"]),
     ]
-    missing = [n for n, p in seq if not os.path.exists(p)]
-    if missing:
-        print("  MISSING:", missing)
-    letters = "abcdefghijklmnopqrstuvwxyz"
-    # Panels reused from the bradyzoite paper are drawn at its 6 pt; enlarged to this paper's 8.
-    present = [(n, p) for n, p in seq if os.path.exists(p)]
-    panels = [{"png": p, "letter": letters[i],
-               "scale": FS.FONT_PT / 6.0 if p.startswith(V2) else 1.0}
-              for i, (n, p) in enumerate(present)]
+    s5_seq = [
+        ("cell cycle G1a", built["3_g1a"]),
+        ("cell cycle S/M", built["3_sm"]),
+        ("recrudescence", brady("Figure4_reactivation/panels/a_reactivation_bar_jitter/a_reactivation_bar_jitter.png")),
+        ("tachy vs brady", brady("Figure6_drugs_and_perturbations/panels/sa_perturbation_map_waldman_wt_alkaline/sa_perturbation_map_waldman_wt_alkaline.png")),
+    ]
+    s6_seq = [
+        ("defining traits", brady("Figure5_what_distinguishes_regions/panels/b_region_property_enrichment/b_region_property_enrichment.png")),
+        ("metabolic traits", brady("Figure2_metabolism/panels/b_programme_by_region/b_programme_by_region.png")),
+        ("enrichment", built["7_enrichment"]),
+    ]
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
     import assemble_paper_figures as A
-    A.PER_ROW = 4
-    out = A.compose("05", panels, OUT)
-    print(f"  figure 5: {len(panels)} panels -> {out}")
+    A.PER_ROW = 4                  # compose() then splits any row wider than A4
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    for fid, seq, rows in (("05", main_seq, None), ("S5", s5_seq, None), ("S6", s6_seq, None)):
+        missing = [n for n, p in seq if not os.path.exists(p)]
+        if missing:
+            print("  MISSING:", missing)
+        present = [(n, p) for n, p in seq if os.path.exists(p)]
+        # Panels reused from the bradyzoite paper are drawn at its 6 pt; enlarged to this
+        # paper's 8.
+        panels = [{"png": p, "letter": letters[i],
+                   "scale": FS.FONT_PT / 6.0 if p.startswith(V2) else 1.0}
+                  for i, (n, p) in enumerate(present)]
+        out = A.compose(fid, panels, OUT, rows=rows)
+        print(f"  figure {fid}: {len(panels)} panels -> {out}")
 
 
 if __name__ == "__main__":
