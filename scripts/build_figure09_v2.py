@@ -107,12 +107,12 @@ def main():
     ax.set_xticks(range(5)); ax.set_xticklabels(edges, rotation=45, ha="right",
                                                  rotation_mode="anchor")
     ax.set_xlim(-0.6, 4.4); ax.tick_params(axis="x", length=0)
-    ax.set_xlabel("Plasmodium mutagenesis index (fifths)")
-    ax.set_ylabel("Toxoplasma fitness score")
+    ax.set_xlabel("P. falciparum MIS (quintile)")
+    ax.set_ylabel("T. gondii phenotype score")
     FS.pad_limits(ax, fb["tg"])
     figd, r_cai, n_cai = scatter(pairs["codon_cai_ribosomal_tg"], pairs["codon_cai_ribosomal_pf"],
-                                 "Toxoplasma codon adaptation index",
-                                 "Plasmodium codon adaptation index")
+                                 "CAI, T. gondii",
+                                 "CAI, P. falciparum")
     fige, r_len, n_len = scatter(pairs["length_tg"], pairs["length_pf"],
                                  "Toxoplasma protein length (aa)",
                                  "Plasmodium protein length (aa)", log=True)
@@ -124,7 +124,7 @@ def main():
     FS.use()
     figa, ax = FS.ref_bars([l[1] for l in layers], [l[0].replace(" (control)", "") for l in layers],
                            highlight=["location", "fitness", "codon bias"],
-                           ylabel="Agreement beyond chance ($\\kappa$ or $\\rho$)")
+                           ylabel="Agreement ($\\kappa$ or $\\rho$)")
     ax.set_ylim(0, 1); ax.axhline(0, color=FS.INK, lw=0.6)
 
     # B
@@ -134,16 +134,17 @@ def main():
     cols_ = rows_ + [c for c in cols_ if c not in rows_]
     m = pd.crosstab(loc.tg, loc.pf).reindex(index=rows_, columns=cols_, fill_value=0)
     m = m.div(m.sum(axis=1), axis=0) * 100
+    m = m.loc[:, m.max(axis=0) >= 2]      # Plasmodium niches no Toxoplasma orthologue reaches
     FS.use()
     nr, nc = m.shape; cell = 0.16
     w, h = 1.3 + nc * cell + 0.9, 0.15 + nr * cell + 1.25
     figb = plt.figure(figsize=(w, h))
     ax = figb.add_axes([1.3 / w, 1.25 / h, nc * cell / w, nr * cell / h])
     im = ax.imshow(m.to_numpy(), cmap="Blues", vmin=0, vmax=100, interpolation="nearest")
-    ax.set_xticks(range(nc)); ax.set_xticklabels([COMP_SHORT.get(c, c) for c in cols_],
+    ax.set_xticks(range(nc)); ax.set_xticklabels([COMP_SHORT.get(c, c) for c in m.columns],
                                                  rotation=90)
     ax.set_yticks(range(nr)); ax.set_yticklabels([COMP_SHORT.get(c, c) for c in rows_])
-    ax.set_xlabel("Plasmodium"); ax.set_ylabel("Toxoplasma")
+    ax.set_xlabel("P. falciparum niche"); ax.set_ylabel("T. gondii niche")
     for sp in ax.spines.values():
         sp.set_visible(False)
     ax.tick_params(length=0)
@@ -168,7 +169,7 @@ def main():
     print(f.round(1).to_string(index=False))
 
     import paper_panels as PP
-    F = "figure_9"
+    F = "figure_7__final"
     from scipy.stats import spearmanr as _sp
     NOD = (os.path.join(CACHE, "nodes.parquet"), keep_tg)
     PFN = os.path.join(CACHE, "pf_nodes.parquet")
@@ -180,7 +181,11 @@ def main():
     rc, pc, nc_ = sp(pairs["codon_cai_ribosomal_tg"], pairs["codon_cai_ribosomal_pf"])
     rl, pl_, nl_ = sp(pairs["length_tg"], pairs["length_pf"])
     agree = float((loc.tg == loc.pf).mean())
-    PP.panel(F, "a", fig=figa, data=pd.DataFrame(layers, columns=["layer", "agreement", "pairs"]),
+    PP.panel(F, "a", fig=figb, data=m.rename_axis("toxoplasma"), stats={
+             "Cohen kappa": k, "raw agreement": agree, "pairs": len(loc),
+             "one-to-one orthologue pairs": counted["one_to_one"]}, sources=[NOD, PFN],
+             what="location in Toxoplasma vs Plasmodium")
+    PP.panel(F, "b", fig=figa, data=pd.DataFrame(layers, columns=["layer", "agreement", "pairs"]),
              stats=pd.DataFrame([{"layer": "location", "measure": "Cohen kappa", "value": k,
                                   "pairs": len(loc), "raw agreement": agree},
                                  {"layer": "fitness", "measure": "Spearman", "value": rf,
@@ -190,21 +195,13 @@ def main():
                                  {"layer": "length (control)", "measure": "Spearman",
                                   "value": rl, "p": pl_, "pairs": nl_}]),
              sources=[NOD, PFN], what="agreement beyond chance per layer")
-    PP.panel(F, "b", fig=figb, data=m.rename_axis("toxoplasma"), stats={
-             "Cohen kappa": k, "raw agreement": agree, "pairs": len(loc),
-             "one-to-one orthologue pairs": counted["one_to_one"]}, sources=[NOD, PFN],
-             what="location in Toxoplasma vs Plasmodium")
     PP.panel(F, "c", fig=figc, data=fb, stats={"Spearman rho": rf, "p": pf_, "pairs": nf},
              sources=[NOD, PFN], what="fitness across the two species")
     PP.panel(F, "d", fig=figd, data=pairs[["codon_cai_ribosomal_tg", "codon_cai_ribosomal_pf"]],
              stats={"Spearman rho": rc, "p": pc, "pairs": nc_}, sources=[NOD, PFN],
              what="codon adaptation in the two species")
-    PP.panel(F, "e", fig=fige, data=pairs[["length_tg", "length_pf"]],
-             stats={"Spearman rho": rl, "p": pl_, "pairs": nl_}, sources=[NOD, PFN],
-             what="protein length in the two species (pairing control)")
-    PP.panel(F, "f", fig=figf, data=f, stats={"pairs": len(loc)}, sources=[NOD, PFN],
-             what="location agreement per compartment")
-    out = PP.compose(F, "main", "Where a protein is transfers between apicomplexan species; how its message is written does not.", rows=[3, 3])
+    out = PP.compose(F, "main", "Localisation and essentiality transfer between Toxoplasma and "
+                     "Plasmodium orthologues; codon usage does not.")
     print("figure 9 ->", out)
 
 
