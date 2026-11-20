@@ -29,7 +29,7 @@ import draw_figure01a_flowchart as FC                   # noqa: E402
 import paper_panels as PP                               # noqa: E402
 
 CACHE = V2.CACHE
-F = "figure_1"
+F = "figure_1__final"
 LEVEL = {"post_translation": "protein", "transcription": "RNA", "translation": "translation",
          "DNA": "DNA", "reference": "reference"}
 

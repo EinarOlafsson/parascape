@@ -196,7 +196,7 @@ def main():
     print(f"cell-cycle distance vs agreement before: Spearman {rho:.3f} over {npairs} pairs")
     import paper_panels as PP
     from scipy.stats import wilcoxon, spearmanr
-    F = "figure_2"
+    F = "figure_2__final"
     summary = os.path.join(VALID, "summary.json")
     tables = [os.path.join(VALID, f) for f in ("agreement_before.tsv",
                                                 "agreement_after_cellcycle.tsv", "studies.tsv")]

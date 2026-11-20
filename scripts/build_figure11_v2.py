@@ -100,7 +100,7 @@ def main():
     m = t.pivot_table(index="name", columns="strategy", values="lift_over_baseline").reindex(
         index=order, columns=strat) * 100
     FS.use()
-    nr, nc = m.shape; cell = 0.16
+    nr, nc = m.shape; cell = 0.13
     w, h = 1.0 + nc * cell + 0.9, 0.15 + nr * cell + 1.25
     figa = plt.figure(figsize=(w, h))
     ax = figa.add_axes([1.0 / w, 1.25 / h, nc * cell / w, nr * cell / h])
@@ -114,7 +114,7 @@ def main():
         sp.set_visible(False)
     ax.tick_params(length=0)
     cb = figa.colorbar(im, ax=ax, fraction=0.05, pad=0.04)
-    cb.set_label("Accuracy over guessing (points)"); cb.outline.set_linewidth(0.6)
+    cb.set_label("Gain over baseline (points)"); cb.outline.set_linewidth(0.6)
 
     # B: best strategy per target (bars), commonest answer (tick)
     b = best.set_index("name").loc[order]
@@ -133,11 +133,11 @@ def main():
     ax.axhline(0, color=FS.INK, lw=0.6)
     sel = t["kind"].isin(["where", "when"])
     ax.plot(t.loc[~sel, "answer_rate"] * 100, t.loc[~sel, "lift_over_baseline"] * 100, "o",
-            color=FS.CONTROL, ms=3, alpha=FS.ALPHA, lw=0, label="phenotype or sequence (ref.)")
+            color=FS.CONTROL, ms=3, alpha=FS.ALPHA, lw=0, label="phenotype or sequence")
     ax.plot(t.loc[sel, "answer_rate"] * 100, t.loc[sel, "lift_over_baseline"] * 100, "o",
             color=FS.ACCENT, ms=3, alpha=FS.ALPHA, lw=0, label="location or phase")
-    ax.set_xlabel("Held-out genes answered (%)")
-    ax.set_ylabel("Accuracy over guessing (points)")
+    ax.set_xlabel("Held-out genes predicted (%)")
+    ax.set_ylabel("Gain over baseline (points)")
     ax.set_xlim(0, 103)
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
 
@@ -153,7 +153,7 @@ def main():
     ax.set_xticks(range(4)); ax.set_xticklabels(names, rotation=45, ha="right",
                                                 rotation_mode="anchor")
     ax.set_xlim(-0.6, 3.4); ax.tick_params(axis="x", length=0)
-    ax.set_ylabel("Accuracy over guessing (points)")
+    ax.set_ylabel("Gain over baseline (points)")
     FS.pad_limits(ax, np.concatenate(groups))
     for k, g in zip(kinds, groups):
         print(f"  {k:10s} median lift {np.nanmedian(g):+.1f} points over {len(g)} strategies")
@@ -195,20 +195,34 @@ def main():
     figf, ax = FS.dist_bars([t.loc[t.strategy == k, "lift_over_baseline"].dropna().to_numpy() * 100
                              for k in s.index], [k.replace("_", " ") for k in s.index],
                             highlight=[k.replace("_", " ") for k in s.index if s.loc[k, "median"] > 0],
-                            ylabel="Accuracy over guessing (points)")
+                            ylabel="Gain over baseline (points)")
     ax.axhline(0, color=FS.INK, lw=0.6)
 
     import paper_panels as PP
-    F = "figure_11"
+    F = "figure_4__final"
     from scipy.stats import kruskal
     FMF = [os.path.join(FM, f) for f in ("best_per_target.tsv", "by_target_and_strategy.tsv",
                                          "summary.json")]
     PP.panel(F, "a", fig=figa, data=m.rename_axis("target"), stats={
              "targets": m.shape[0], "strategies": m.shape[1]}, sources=FMF,
              what="lift over guessing, every target x strategy")
+    # B (storyboard): per target, majority-class baseline (x) vs best held-out accuracy (y);
+    # above the diagonal = better than guessing. Coloured by target type, no point labels.
+    FS.use()
+    figb, ax = FS.square_figure()
+    ax.plot([0, 100], [0, 100], color=FS.BACKGROUND, lw=0.6, label="accuracy = baseline")
+    for kind, col in (("where", FS.ACCENT), ("when", FS.TEAL), ("sequence", FS.CONTROL),
+                      ("phenotype", FS.DARK_GREY)):
+        sel = b[b["kind"] == kind]
+        ax.scatter(sel["commonest_answer_baseline"] * 100, sel["right_when_answered"] * 100,
+                   s=22, color=col, alpha=0.8, lw=0, label=KIND_NAMES[kind])
+    ax.set_xlim(0, 100); ax.set_ylim(0, 100)
+    ax.set_xlabel("Majority-class baseline (%)"); ax.set_ylabel("Held-out accuracy (%)")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
     PP.panel(F, "b", fig=figb, data=b, stats=b[["strategy", "answer_rate",
              "right_when_answered", "commonest_answer_baseline", "lift_over_baseline"]]
-             .reset_index(), sources=FMF, what="best strategy per target vs commonest answer")
+             .reset_index(), sources=FMF,
+             what="best strategy per target against the majority-class baseline")
     PP.panel(F, "c", fig=figc, data=t.drop(columns=["key"]), stats={"target x strategy": len(t)},
              sources=FMF, what="accuracy over guessing vs answer rate")
     kw = kruskal(*[g_ for g_ in groups if len(g_)])
@@ -218,14 +232,8 @@ def main():
               for n_, g_ in zip(names, groups)] + [{"kind": "Kruskal-Wallis", "H": kw.statistic,
                                                      "p": kw.pvalue}]),
              sources=FMF, what="lift by kind of target")
-    PP.panel(F, "e", fig=fige, data=e, stats={"expected correct = unlabelled x answer rate x "
-             "accuracy when answered": "shown only where lift > 5 points"},
-             sources=FMF + [os.path.join(CACHE, "nodes.parquet"),
-                            os.path.join(CACHE, "pf_nodes.parquet")],
-             what="unlabelled genes vs expected correct new calls")
-    PP.panel(F, "f", fig=figf, data=s.rename_axis("strategy"), stats={"targets": t.name.nunique()},
-             sources=FMF, what="median lift per strategy")
-    out = PP.compose(F, "main", "The map fills in where a protein is and when it is made at a validated rate; mutant phenotypes it predicts no better than the commonest answer.", rows=[3, 3])
+    out = PP.compose(F, "main", "Hiding known labels and predicting them from the rest: "
+                     "localisation and cell-cycle phase are recovered, mutant phenotype is not.")
     print("figure 11 ->", out)
 
 

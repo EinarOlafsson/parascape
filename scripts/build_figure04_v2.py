@@ -209,7 +209,7 @@ def main():
 
     import paper_panels as PP
     from scipy.stats import mannwhitneyu
-    F = "figure_4"
+    F = "figure_3__final"
     ATLAS = [os.path.join(ROOT, "results", "what_structures_contrasts_2026_11_18", f)
              for f in ("pairs.tsv", "summary.json")]
     atlas_dir = f"perturbation atlas release {store.get('release', '')}".strip()

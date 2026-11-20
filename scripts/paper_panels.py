@@ -29,11 +29,16 @@ _REGISTRY: dict = {}
 #: Figure numbers in the order the Results discuss them (Einar 2026-11-20: write the Results
 #: first; figures and panels are referenced in order). Builders keep their historical numbers;
 #: every export is renamed here, supplementary and development figures following their main one.
-RESULTS_ORDER = {1: 1, 2: 2, 4: 3, 3: 4, 6: 5, 7: 6, 9: 7, 11: 8, 8: 9, 10: 10, 5: 11, 12: 12}
+RESULTS_ORDER = {1: 1, 2: 2, 4: 3, 11: 4, 6: 5, 7: 6, 9: 7, 12: 8, 3: 10, 8: 11, 10: 11, 5: 12}
+# Einar's five-step flow (2026-11-20): 1-3 what we put together and how; 4-7 data predict held-out
+# data; 8 what is missing; 9 inference with uncertainty; 10-12 new knowledge. A builder written
+# for the final numbering names its figure "figure_N__final" and is not remapped.
 
 
 def canonical(figure: str) -> str:
     import re
+    if figure.endswith("__final"):
+        return figure[: -len("__final")]
     m = re.match(r"^((?:supplementary_|development_)?figure_)(\d+)(.*)$", figure)
     if not m:
         return figure
