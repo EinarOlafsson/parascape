@@ -147,7 +147,7 @@ def panel_f(before, position):
     gx = np.linspace(xs.min(), xs.max(), 50)
     ax.plot(gx, np.polyval(k, gx), color=FS.INK, lw=0.8, label="least-squares line")
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
-    ax.set_xlabel("Cell-cycle distance (SD)"); ax.set_ylabel("Agreement before (Spearman $\\rho$)")
+    ax.set_xlabel("Cell-cycle distance (SD)"); ax.set_ylabel("Spearman $\\rho$, before correction")
     FS.pad_limits(ax, ys, frac=0.08)
     return fig, rho, len(xs)
 
@@ -206,31 +206,50 @@ def main():
     w = wilcoxon(pa - pb)
     common = {"studies": frame.shape[1], "genes": len(frame),
               "median agreement before": base, "median agreement after": post}
-    PP.panel(F, "a", fig=heat(before, order, "Agreement (Spearman $\\rho$)", lo, 1),
-             data=before.loc[order, order], stats=common, sources=tables + [matrices],
-             what="control-to-control agreement between studies, before")
-    PP.panel(F, "b", fig=heat(after, order, "Agreement (Spearman $\\rho$)", lo, 1),
-             data=after.loc[order, order], stats=common,
-             sources=tables + [nodes_src, matrices],
-             what="the same after removing the cell-cycle axis")
-    PP.panel(F, "c", fig=panel_c(before, after),
-             data=pd.DataFrame({"before": pb, "after": pa, "gain": pa - pb}).rename_axis("study"),
-             stats={"Wilcoxon signed-rank, after vs before": w.statistic, "p": w.pvalue,
-                    "studies improved": int((pa > pb).sum()), "studies": len(pa)},
-             sources=tables, what="median agreement per study, before and after")
-    PP.panel(F, "d", fig=panel_d(null, gain),
-             data=pd.DataFrame({"null_gain": null}),
-             stats={"observed gain": gain, "null mean": null.mean(),
-                    "null sd": null.std(ddof=1), "null draws": len(null),
-                    "permutation p": p, "z vs null": (gain - null.mean()) / null.std(ddof=1)},
-             sources=[os.path.join(OUT, "null_gains.tsv"), summary, matrices],
-             what="gain against random axes of the same shape")
-    PP.panel(F, "e", fig=panel_e(levels, position),
-             data=levels.assign(cell_cycle_position=position).rename_axis("study"),
-             stats={"phase genes": sum(len(frame.index.intersection(pd.Index(g)))
-                                       for g in groups.values())},
-             sources=[nodes_src, matrices], what="phase-gene levels of each study's controls")
-    xs, ys = [], []
+    # Storyboard 2026-11-20: A agreement before (lower) and after (upper) in one matrix;
+    # B what differs: each study by its G1 and S/M subtranscriptome (Behnke et al. 2010);
+    # C that difference explains disagreement; D each study improves (slope graph);
+    # E it is the cell cycle, not any axis (strip of random axes).
+    n_ = len(order)
+    split = np.full((n_, n_), np.nan)
+    B_, A_ = before.loc[order, order].to_numpy(), after.loc[order, order].to_numpy()
+    for r_ in range(n_):
+        for c_ in range(n_):
+            split[r_, c_] = B_[r_, c_] if r_ > c_ else (A_[r_, c_] if r_ < c_ else np.nan)
+    FS.use()
+    figa, ax = FS.plot_figure(n_ * 3.4, n_ * 3.4, extra_bottom_mm=12)
+    cmap = matplotlib.colormaps["Blues"].copy(); cmap.set_bad("white")
+    im = ax.imshow(np.ma.masked_invalid(split), cmap=cmap, vmin=lo, vmax=1,
+                   interpolation="nearest")
+    ax.plot([-0.5, n_ - 0.5], [-0.5, n_ - 0.5], color=FS.INK, lw=0.6)
+    ax.set_xticks(range(n_)); ax.set_xticklabels(order, rotation=90)
+    ax.set_yticks(range(n_)); ax.set_yticklabels(order); ax.tick_params(length=0)
+    cb = figa.colorbar(im, ax=ax, fraction=0.045, pad=0.03)
+    cb.set_label("Spearman $\\rho$"); cb.outline.set_linewidth(0.6)
+    ax.plot([], [], " ", label="below diagonal: before correction")
+    ax.plot([], [], " ", label="above diagonal: after correction")
+    ax.legend(frameon=False, loc="lower left", bbox_to_anchor=(0.0, 1.0), fontsize=FS.NOTE_PT,
+              handlelength=0, borderaxespad=0.1)
+    PP.panel(F, "a", fig=figa, data=pd.DataFrame(split, index=order, columns=order),
+             stats=common, sources=tables + [nodes_src, matrices],
+             what="agreement of control profiles: before correction (below the diagonal), after (above)")
+
+    g1 = levels[[c for c in ("G1a", "G1b") if c in levels]].mean(axis=1)
+    sm = levels[[c for c in ("S", "M", "C") if c in levels]].mean(axis=1)
+    FS.use()
+    figb, ax = FS.square_figure()
+    ax.scatter(g1, sm, s=18, color=FS.ACCENT, alpha=FS.ALPHA, lw=0, zorder=3, label="study")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    ax.axhline(0, color=FS.BACKGROUND, lw=0.6); ax.axvline(0, color=FS.BACKGROUND, lw=0.6)
+    ax.set_xlabel("G1 subtranscriptome (log$_2$, centred)")
+    ax.set_ylabel("S/M subtranscriptome (log$_2$, centred)")
+    rg = spearmanr(g1, sm)
+    PP.panel(F, "b", fig=figb, data=pd.DataFrame({"G1": g1, "S_M": sm, "axis_position": position}),
+             stats={"Spearman rho, G1 vs S/M": rg.statistic, "p": rg.pvalue,
+                    "subtranscriptomes": "Behnke et al. 2010: G1 (G1a, G1b), S/M (S, M, C)"},
+             sources=[nodes_src, matrices], what="cell-cycle state of each study's controls")
+
+    xs = []
     sts = list(before.index)
     for i_, a_ in enumerate(sts):
         for b_ in sts[i_ + 1:]:
@@ -239,12 +258,41 @@ def main():
                        "agreement_before": before.loc[a_, b_]})
     fd = pd.DataFrame(xs)
     rr = spearmanr(fd.cell_cycle_distance_sd, fd.agreement_before)
-    PP.panel(F, "f", fig=figf, data=fd, stats={"Spearman rho": rr.statistic, "p": rr.pvalue,
+    PP.panel(F, "c", fig=figf, data=fd, stats={"Spearman rho": rr.statistic, "p": rr.pvalue,
                                                "pairs": len(fd)},
              sources=tables + [matrices], what="cell-cycle distance vs agreement, per pair")
-    out = PP.compose(F, "main", "Cell cycle is the dominant confounder of the published "
-                     "Toxoplasma transcriptome: removing it brings disagreeing studies into "
-                     "agreement.", rows=[3, 3])
+
+    FS.use()
+    figd, ax = FS.plot_figure(26, FS.PLOT_H_MM)
+    for st in pb.index:
+        up = pa[st] > pb[st]
+        ax.plot([0, 1], [pb[st], pa[st]], "-o", ms=3, lw=0.8,
+                color=FS.ACCENT if up else FS.CONTROL, alpha=0.8)
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["before", "after"]); ax.set_xlim(-0.3, 1.3)
+    ax.set_ylabel("Median Spearman $\\rho$"); ax.tick_params(axis="x", length=0)
+    PP.panel(F, "d", fig=figd,
+             data=pd.DataFrame({"before": pb, "after": pa, "gain": pa - pb}).rename_axis("study"),
+             stats={"Wilcoxon signed-rank, after vs before": w.statistic, "p": w.pvalue,
+                    "studies improved": int((pa > pb).sum()), "studies": len(pa)},
+             sources=tables, what="each study, agreement before and after correction")
+
+    FS.use()
+    fige, ax = FS.plot_figure(22, FS.PLOT_H_MM)
+    rng_ = np.random.default_rng(0)
+    ax.scatter(rng_.uniform(-0.18, 0.18, len(null)), null, s=4, color=FS.CONTROL,
+               alpha=FS.ALPHA, lw=0, label="random gene sets")
+    ax.scatter([0], [gain], s=30, color=FS.ACCENT, zorder=3, label="cell-cycle genes")
+    ax.set_xlim(-0.5, 0.5); ax.set_xticks([])
+    ax.set_ylabel("Gain in median Spearman $\\rho$"); ax.set_ylim(0, gain * 1.15)
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    PP.panel(F, "e", fig=fige, data=pd.DataFrame({"null_gain": null}),
+             stats={"observed gain": gain, "null mean": null.mean(),
+                    "null sd": null.std(ddof=1), "null draws": len(null),
+                    "permutation p": p, "z vs null": (gain - null.mean()) / null.std(ddof=1)},
+             sources=[os.path.join(OUT, "null_gains.tsv"), summary, matrices],
+             what="the cell-cycle axis against random axes of the same shape")
+    out = PP.compose(F, "main", "Control samples of published RNA-seq studies differ in "
+                     "cell-cycle state, and correcting for it brings them into agreement.")
     print("figure 2 ->", out)
 
 
