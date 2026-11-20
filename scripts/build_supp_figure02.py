@@ -83,22 +83,14 @@ def gain_and_null(frame, groups, k=1, method="spearman", seed=0):
 
 
 def dots(rows, xlabel, labels, chosen):
+    """Gain over random axes (z) per variant: bars, the figure-2 choice in the accent, z = 1.96
+    dotted (Einar 2026-11-20: bars, not dot rows)."""
     FS.use()
-    nr = len(rows); rh = 0.2
-    w, h = 1.25 + 1.6 + 1.6, 0.15 + nr * rh + 0.6
-    fig = plt.figure(figsize=(w, h))
-    ax = fig.add_axes([1.25 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    for yy, r, lab in zip(y, rows, labels):
-        col = FS.ACCENT if lab == chosen else FS.CONTROL
-        ax.hlines(yy, 0, r["z"], color=col, lw=0.6, alpha=FS.ALPHA)
-        ax.plot(r["z"], yy, "o", color=col, ms=4, alpha=FS.ALPHA)
-    ax.axvline(0, color=FS.INK, lw=0.6)
-    ax.axvline(1.96, color=FS.INK, lw=0.6, ls="--", label="z = 1.96")
-    ax.set_yticks(y); ax.set_yticklabels(labels); ax.set_ylim(nr - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0); ax.set_xlabel(xlabel)
-    ax.plot([], [], "o", color=FS.ACCENT, label="choice in figure 2")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fig, ax = FS.ref_bars([r["z"] for r in rows], labels, highlight=[chosen] if chosen else labels,
+                          ylabel=xlabel)
+    ax.axhline(1.96, color=FS.INK, lw=0.6, ls=(0, (1.5, 1.5)), label="z = 1.96")
+    ax.axhline(0, color=FS.INK, lw=0.6)
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
     return fig
 
 

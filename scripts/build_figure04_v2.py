@@ -110,7 +110,7 @@ def main():
 
     # B: heatmap grouped by study, block outlines
     FS.use()
-    figb, ax = FS.square_figure(side_mm=58.0)
+    figb, ax = FS.square_figure()
     im = ax.imshow(rho.to_numpy(), cmap="RdBu_r", vmin=-1, vmax=1, interpolation="nearest")
     edges = np.flatnonzero(np.array([study[c] for c in cols][1:]) !=
                            np.array([study[c] for c in cols][:-1])) + 0.5
@@ -153,19 +153,11 @@ def main():
     dd = pd.DataFrame(rows, columns=["study", "within", "across", "n"]).sort_values("within",
                                                                                    ascending=False)
     FS.use()
-    rh, nr = 0.14, len(dd)
-    w_, h_ = 1.05 + 1.6 + 1.5, 0.15 + nr * rh + 0.6
-    figd = plt.figure(figsize=(w_, h_))
-    ax = figd.add_axes([1.05 / w_, 0.6 / h_, 1.6 / w_, nr * rh / h_])
-    y = np.arange(nr)
-    ax.hlines(y, dd["across"], dd["within"], color=FS.CONTROL, lw=0.6)
-    ax.plot(dd["across"], y, "o", color=FS.CONTROL, ms=3, alpha=FS.ALPHA,
-            label="to other studies (ref.)")
-    ax.plot(dd["within"], y, "o", color=FS.ACCENT, ms=3, alpha=FS.ALPHA, label="within study")
-    ax.set_yticks(y); ax.set_yticklabels(dd["study"]); ax.set_ylim(nr - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0); ax.set_xlim(0, 1)
-    ax.set_xlabel("Median similarity (|$\\rho$|)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    figd, ax = FS.ref_bars(dd["within"].to_numpy(), list(dd["study"]),
+                           refs=dd["across"].to_numpy(), highlight=list(dd["study"]),
+                           ref_label="to other studies",
+                           ylabel="Median similarity within study (|$\\rho$|)")
+    ax.set_ylim(0, 1)
     print(f"  studies with within > across: {(dd.within > dd.across).sum()} of {len(dd)}")
 
     # E: BFD1 loss in two labs

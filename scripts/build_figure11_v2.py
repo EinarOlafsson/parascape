@@ -52,6 +52,14 @@ TARGETS = {  # (organism, target) -> (display name, kind)
 KIND_NAMES = {"where": "location", "when": "cell-cycle phase", "sequence": "sequence class",
               "phenotype": "mutant phenotype"}
 
+TSHORT = {"Tg compartment": "Tg compartment", "Tg hyperLOPIT": "Tg LOPIT",
+          "Pf hyperLOPIT": "Pf LOPIT", "Tg cell-cycle phase": "Tg phase",
+          "Tg membrane topology": "Tg topology", "Pf exported": "Pf exported",
+          "Tg any screen phenotype": "Tg any pheno.", "Tg actin phenotype": "Tg actin",
+          "Tg apicoplast phenotype": "Tg apicoplast", "Tg egress phenotype": "Tg egress",
+          "Tg replication phenotype": "Tg replication",
+          "Pf essentiality (from Pb)": "Pf essential"}
+
 
 def save(fig, name):
     os.makedirs(PNL, exist_ok=True)
@@ -93,38 +101,31 @@ def main():
         index=order, columns=strat) * 100
     FS.use()
     nr, nc = m.shape; cell = 0.16
-    w, h = 1.5 + nc * cell + 0.9, 0.15 + nr * cell + 1.25
+    w, h = 1.0 + nc * cell + 0.9, 0.15 + nr * cell + 1.25
     figa = plt.figure(figsize=(w, h))
-    ax = figa.add_axes([1.5 / w, 1.25 / h, nc * cell / w, nr * cell / h])
+    ax = figa.add_axes([1.0 / w, 1.25 / h, nc * cell / w, nr * cell / h])
     cmap = matplotlib.colormaps["RdBu_r"].copy(); cmap.set_bad(FS.BACKGROUND)
     im = ax.imshow(np.ma.masked_invalid(m.to_numpy()), cmap=cmap, vmin=-50, vmax=50,
                    interpolation="nearest")
     ax.set_xticks(range(nc)); ax.set_xticklabels([s.replace("_", " ") for s in strat],
                                                  rotation=90)
-    ax.set_yticks(range(nr)); ax.set_yticklabels(order)
+    ax.set_yticks(range(nr)); ax.set_yticklabels([TSHORT.get(o, o) for o in order])
     for sp in ax.spines.values():
         sp.set_visible(False)
     ax.tick_params(length=0)
     cb = figa.colorbar(im, ax=ax, fraction=0.05, pad=0.04)
     cb.set_label("Accuracy over guessing (points)"); cb.outline.set_linewidth(0.6)
 
-    # B: best strategy accuracy vs baseline
+    # B: best strategy per target (bars), commonest answer (tick)
     b = best.set_index("name").loc[order]
     FS.use()
-    figb, ax = rows_fig(len(b))
-    y = np.arange(len(b))
-    ax.hlines(y, b["commonest_answer_baseline"] * 100, b["right_when_answered"] * 100,
-              color=FS.CONTROL, lw=0.6)
-    ax.plot(b["commonest_answer_baseline"] * 100, y, "o", color=FS.CONTROL, ms=3.5,
-            alpha=FS.ALPHA, label="commonest answer (ref.)")
-    cols = [FS.ACCENT if k in ("where", "when") else FS.DARK_GREY for k in b["kind"]]
-    ax.scatter(b["right_when_answered"] * 100, y, s=14, c=cols, alpha=FS.ALPHA, lw=0, zorder=3)
-    ax.scatter([], [], s=14, c=FS.ACCENT, alpha=FS.ALPHA, lw=0,
-               label="best strategy, location or phase")
-    ax.scatter([], [], s=14, c=FS.DARK_GREY, alpha=FS.ALPHA, lw=0, label="best strategy, other")
-    ax.set_yticks(y); ax.set_yticklabels(order)
-    ax.set_xlim(0, 100); ax.set_xlabel("Held-out calls correct (%)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    nb = [TSHORT.get(o, o) for o in order]
+    figb, ax = FS.ref_bars(b["right_when_answered"].to_numpy() * 100, nb,
+                           refs=b["commonest_answer_baseline"].to_numpy() * 100,
+                           highlight=[TSHORT.get(o, o) for o, k in zip(order, b["kind"])
+                                      if k in ("where", "when")],
+                           ref_label="commonest answer", ylabel="Held-out calls correct (%)")
+    ax.set_ylim(0, 105)
 
     # C: lift vs answer rate
     FS.use()
@@ -177,37 +178,25 @@ def main():
     e = e[(e.missing > 0)].set_index("name")
     e = e.reindex([o for o in order if o in e.index])   # fully labelled targets drop out
     FS.use()
-    fige, ax = rows_fig(len(e))
-    y = np.arange(len(e))
-    ax.hlines(y, 1, e["missing"], color=FS.BACKGROUND, lw=0.6)
-    ax.plot(e["missing"], y, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA,
-            label="genes unlabelled (ref.)")
-    good = e["lift"] > 0.05
-    ax.plot(e.loc[good, "right"], y[good.to_numpy()], "o", color=FS.ACCENT, ms=3.5,
-            alpha=FS.ALPHA, label="expected correct new calls")
-    ax.set_yticks(y); ax.set_yticklabels(e.index)
-    ax.set_xscale("log"); ax.set_xticks([10, 100, 1000, 10000]); ax.minorticks_off()
-    ax.set_xticklabels(["10", "100", "1,000", "10,000"])
-    ax.set_xlabel("Genes")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    ne = [TSHORT.get(o, o) for o in e.index]
+    good = (e["lift"] > 0.05).to_numpy()
+    fige, ax = FS.grouped_bars([e["missing"].to_numpy(), np.where(good, e["right"], np.nan)],
+                               ["genes unlabelled", "expected correct new calls"], ne,
+                               ylabel="Genes", log=True)
+    ax.set_yticks([10, 100, 1000, 10000]); ax.set_yticklabels(["10", "100", "1,000", "10,000"])
+    ax.minorticks_off()
     print(e.round(0).to_string())
 
-    # F: per strategy median lift
+    # F: per strategy, accuracy over guessing across targets (median bar, one point per target)
     s = t.groupby("strategy")["lift_over_baseline"].agg(["median", lambda v: (v > 0).mean()])
     s.columns = ["median", "share_pos"]
     s = s.sort_values("median", ascending=False)
     FS.use()
-    figf, ax = rows_fig(len(s), left=1.4, right=0.3)
-    y = np.arange(len(s))
-    for yy, (k, r) in zip(y, s.iterrows()):
-        q = t.loc[t.strategy == k, "lift_over_baseline"].dropna().to_numpy() * 100
-        q1, q3 = np.percentile(q, [25, 75])
-        col = FS.ACCENT if r["median"] > 0 else FS.CONTROL
-        ax.hlines(yy, q1, q3, color=col, lw=1.2, alpha=FS.ALPHA)
-        ax.plot(r["median"] * 100, yy, "o", color=col, ms=3.5)
-    ax.axvline(0, color=FS.INK, lw=0.6)
-    ax.set_yticks(y); ax.set_yticklabels([k.replace("_", " ") for k in s.index])
-    ax.set_xlabel("Accuracy over guessing (points)")
+    figf, ax = FS.dist_bars([t.loc[t.strategy == k, "lift_over_baseline"].dropna().to_numpy() * 100
+                             for k in s.index], [k.replace("_", " ") for k in s.index],
+                            highlight=[k.replace("_", " ") for k in s.index if s.loc[k, "median"] > 0],
+                            ylabel="Accuracy over guessing (points)")
+    ax.axhline(0, color=FS.INK, lw=0.6)
 
     import paper_panels as PP
     F = "figure_11"

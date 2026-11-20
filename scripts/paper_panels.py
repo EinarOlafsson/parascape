@@ -26,6 +26,19 @@ MAX_SOURCE_MB = 10.0
 
 _REGISTRY: dict = {}
 
+#: Figure numbers in the order the Results discuss them (Einar 2026-11-20: write the Results
+#: first; figures and panels are referenced in order). Builders keep their historical numbers;
+#: every export is renamed here, supplementary and development figures following their main one.
+RESULTS_ORDER = {1: 1, 2: 2, 4: 3, 3: 4, 6: 5, 7: 6, 9: 7, 11: 8, 8: 9, 10: 10, 5: 11, 12: 12}
+
+
+def canonical(figure: str) -> str:
+    import re
+    m = re.match(r"^((?:supplementary_|development_)?figure_)(\d+)(.*)$", figure)
+    if not m:
+        return figure
+    return f"{m.group(1)}{RESULTS_ORDER.get(int(m.group(2)), int(m.group(2)))}{m.group(3)}"
+
 
 def _stats_frame(stats) -> pd.DataFrame:
     if stats is None:
@@ -50,11 +63,23 @@ def panel(figure: str, letter: str, fig=None, png: str | None = None, data=None,
     elsewhere (the bradyzoite paper), whose sibling PDF is copied when it exists. `scale` carries
     the enlargement compose() applies to a panel drawn at another paper type size.
     """
+    figure = canonical(figure)
     out = os.path.join(EXPORT, figure, f"panel_{letter}")
     os.makedirs(out, exist_ok=True)
     stem = os.path.join(out, f"panel_{letter}")
+    axes_top_mm = 0.0
     if fig is not None:
         import matplotlib.pyplot as plt
+        # Where the top of the main plot sits below the top of the saved image, so compose can
+        # line up the plots of a row (Einar 2026-11-20: panels aligned, no dead space).
+        fig.canvas.draw()
+        r = fig.canvas.get_renderer()
+        tight = fig.get_tightbbox(r)                     # inches
+        axs = [a for a in fig.axes if a.get_visible() and a.get_label() != "<colorbar>"]
+        if axs:
+            big = max(axs, key=lambda a: a.get_position().width * a.get_position().height)
+            top_in = big.get_window_extent(r).y1 / fig.dpi
+            axes_top_mm = max(0.0, (tight.y1 + 0.02 - top_in) * 25.4)
         fig.savefig(stem + ".png", dpi=600, bbox_inches="tight", pad_inches=0.02)
         fig.savefig(stem + ".pdf", bbox_inches="tight", pad_inches=0.02)
         plt.close(fig)
@@ -109,6 +134,7 @@ def panel(figure: str, letter: str, fig=None, png: str | None = None, data=None,
                 fh.write(f"{s}\n  on disk at the path above (workstation 'carruthers');\n"
                          f"  not included: {why}.\n\n")
     _REGISTRY.setdefault(figure, []).append({"letter": letter, "png": stem + ".png",
+                                             "axes_top_mm": axes_top_mm * scale,
                                              "pdf": stem + ".pdf" if os.path.exists(stem + ".pdf")
                                              else None, "scale": scale, "what": what})
     return stem + ".png"
@@ -117,6 +143,8 @@ def panel(figure: str, letter: str, fig=None, png: str | None = None, data=None,
 def manifest(figure: str, kind: str, title: str, composed_png: str, layout: str | None = None):
     """Record a finished figure: its kind (main / supplementary / development), its one-line
     claim, its panels, and the composed figure with its panel positions."""
+    # NOT canonical() here: compose() passes an already-renumbered name, and the mapping is a
+    # permutation, so applying it twice moved figure 5 to 11 and then to 8 (found 2026-11-20).
     out = os.path.join(EXPORT, figure)
     os.makedirs(out, exist_ok=True)
     m = {"figure": figure, "kind": kind, "title": title, "panels": _REGISTRY.get(figure, []),
@@ -126,14 +154,18 @@ def manifest(figure: str, kind: str, title: str, composed_png: str, layout: str 
     return m
 
 
-def compose(figure: str, kind: str, title: str, rows=None, per_row: int = 4) -> str:
+def compose(figure: str, kind: str, title: str, rows=None, per_row: int = 6) -> str:
     """Compose the exported panels of `figure` (A4, true size) and write its manifest."""
+    figure = canonical(figure)
     import assemble_paper_figures as A
     A.PER_ROW = per_row
-    panels = [{"png": p["png"], "letter": p["letter"], "scale": p["scale"]}
+    panels = [{"png": p["png"], "letter": p["letter"], "scale": p["scale"],
+               "axes_top_mm": p.get("axes_top_mm", 0.0)}
               for p in _REGISTRY.get(figure, [])]
     out = os.path.join(EXPORT, figure)
-    made = A.compose(figure, panels, out, rows=rows)          # writes figure<figure>.*
+    # Rows are packed by width (as many panels as fit A4), not fixed counts: fixed rows of
+    # three left wide gaps beside narrow panels (Einar 2026-11-20: remove the whitespace).
+    made = A.compose(figure, panels, out, rows=None)          # writes figure<figure>.*
     stem = os.path.splitext(made)[0]
     final = os.path.join(out, figure)
     for ext in (".png", ".pdf", "_layout.json"):

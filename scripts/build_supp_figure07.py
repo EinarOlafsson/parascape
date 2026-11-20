@@ -98,17 +98,13 @@ def main():
                        for s, (d, _) in runs.items()])
 
     def seed_rows(cols, labels_, xlabel, legend):
+        """Per split: the second measure as bars, the first as a tick."""
         FS.use()
-        nr = len(rb); rh = 0.2
-        w, h = 0.9 + 1.6 + 1.7, 0.15 + nr * rh + 0.6
-        fig = plt.figure(figsize=(w, h)); ax = fig.add_axes([0.9 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-        y = np.arange(nr)
-        ax.hlines(y, rb[cols[0]], rb[cols[1]], color=FS.CONTROL, lw=0.6)
-        ax.plot(rb[cols[0]], y, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA, label=legend[0])
-        ax.plot(rb[cols[1]], y, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA, label=legend[1])
-        ax.set_yticks(y); ax.set_yticklabels([f"split {s}" for s in rb.seed])
-        ax.set_ylim(nr - 0.5, -0.5); ax.tick_params(axis="y", length=0); ax.set_xlabel(xlabel)
-        FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+        names = [f"split {k}" for k in rb.seed]
+        fig, ax = FS.ref_bars(rb[cols[1]].to_numpy(), names, refs=rb[cols[0]].to_numpy(),
+                              highlight=names, ref_label=legend[0].replace(" (ref.)", ""),
+                              ylabel=xlabel)
+        FS.pad_limits(ax, list(rb[cols[0]]) + list(rb[cols[1]]), frac=0.6)
         return fig
 
     PP.panel(F, "b", fig=seed_rows(["best_layer", "vote"], None, "Compartment correct (%)",
@@ -117,16 +113,12 @@ def main():
                              rb.best_layer).mean()), "splits": len(rb)}, sources=srcs,
              what="five half-splits: vote vs best single layer")
     W = pd.DataFrame({s: w for s, (_, w) in runs.items()})
-    FS.use()
-    nr = len(W); rh = 0.2
-    w_, h_ = 1.45 + 1.6 + 0.3, 0.15 + nr * rh + 0.6
-    fc = plt.figure(figsize=(w_, h_)); ax = fc.add_axes([1.45 / w_, 0.6 / h_, 1.6 / w_, nr * rh / h_])
     order = list(W.mean(axis=1).sort_values(ascending=False).index)
-    for yy, k in enumerate(order):
-        ax.plot(W.loc[k] * 100, [yy] * len(W.columns), "o", color=FS.ACCENT, ms=3, alpha=FS.ALPHA)
-    ax.set_yticks(range(nr)); ax.set_yticklabels([F7.LAYER_NAMES.get(k, k) for k in order])
-    ax.set_ylim(nr - 0.5, -0.5); ax.tick_params(axis="y", length=0)
-    ax.set_xlabel("Layer weight (points over guessing)")
+    FS.use()
+    fc, ax = FS.dist_bars([W.loc[k].to_numpy() * 100 for k in order],
+                          [F7.LAYER_NAMES.get(k, k).split(" (")[0] for k in order],
+                          highlight=[F7.LAYER_NAMES.get(k, k).split(" (")[0] for k in order],
+                          ylabel="Layer weight (points)")
     PP.panel(F, "c", fig=fc, data=(W * 100).rename_axis("layer"),
              stats={"weight sd across splits, max (points)": float((W * 100).std(axis=1).max())},
              sources=srcs, what="layer weights across five splits")

@@ -40,11 +40,12 @@ BAITS = ("/media/carruthers/mnt3/claude/toxoplasma_projects/af3_folding/reports/
          "bait_folded_fraction.json")
 SECRETED = ("dense granules (hyperLOPIT)", "carries a signal peptide",
             "apical secretory (rhoptries, micronemes)")
-SHORT = {"dense granules (hyperLOPIT)": "dense granules",
-         "carries a signal peptide": "signal peptide",
-         "apical secretory (rhoptries, micronemes)": "rhoptries, micronemes",
-         "surface and pellicle": "surface, pellicle",
-         "required in vitro (lowest fitness tenth)": "essential (lowest tenth)"}
+SHORT = {"dense granules (hyperLOPIT)": "dense gran.",
+         "carries a signal peptide": "sig. peptide",
+         "apical secretory (rhoptries, micronemes)": "rhop./mic.",
+         "surface and pellicle": "pellicle", "mitochondrion": "mito.",
+         "apicoplast": "apicoplast", "nucleus": "nucleus", "cytosol": "cytosol",
+         "required in vitro (lowest fitness tenth)": "essential"}
 MYR1 = "TGME49_254470"
 CUT = 0.30
 
@@ -84,43 +85,33 @@ def main():
     n = n.set_index(n["gene_id"].astype(str))
     order = list(bc["class"])
 
-    # A
+    # A: bars, a tick for the length-matched random genes of each class
     FS.use()
-    figa, ax = rows_fig(len(order))
-    y = np.arange(len(order))
-    ax.hlines(y, bc["length_matched_baseline"], bc["ratio"], color=FS.CONTROL, lw=0.6)
-    ax.plot(bc["length_matched_baseline"], y, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA,
-            label="length-matched random (ref.)")
-    cols = [FS.ACCENT if c in SECRETED else FS.DARK_GREY for c in order]
-    ax.scatter(bc["ratio"], y, s=14, c=cols, alpha=FS.ALPHA, lw=0, zorder=3)
-    ax.scatter([], [], s=14, c=FS.ACCENT, alpha=FS.ALPHA, lw=0, label="secreted class")
-    ax.scatter([], [], s=14, c=FS.DARK_GREY, alpha=FS.ALPHA, lw=0, label="other class")
-    ax.set_yticks(y); ax.set_yticklabels([SHORT.get(k, k) for k in order])
-    ax.set_xlabel("Nonsynonymous / synonymous SNPs")
-    FS.pad_limits(ax, list(bc["ratio"]) + list(bc["length_matched_baseline"]), axis="x")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    sn = [SHORT.get(k, k) for k in order]
+    figa, ax = FS.ref_bars(bc["ratio"].to_numpy(), sn, refs=bc["length_matched_baseline"].to_numpy(),
+                           highlight=[SHORT.get(c, c) for c in SECRETED],
+                           ref_label="length-matched random genes",
+                           ylabel="Nonsynonymous / synonymous")
 
-    # B
+    # B: per-gene distribution per class
     groups = {c: pg.loc[pg["class"] == c, "ratio"].to_numpy() for c in order}
-    FS.use()
-    figb, ax = rows_fig(len(order), right=0.3)
-    iqr_rows(ax, groups, order, SECRETED)
     allmed = float(np.nanmedian(pg.drop_duplicates("gene_id")["ratio"]))
-    ax.axvline(allmed, color=FS.INK, lw=0.6, ls="--")
-    ax.set_xlabel("Nonsynonymous / synonymous, per gene")
+    FS.use()
+    figb, ax = FS.dist_bars([np.clip(groups[c], None, 8) for c in order], sn,
+                            highlight=[SHORT.get(c, c) for c in SECRETED],
+                            ylabel="Nonsynonymous / synonymous", ref_line=allmed,
+                            ref_label="genome median")
 
-    # C
+    # C: per-gene pLDDT per class
     pl = n["mean_plddt"]
     groups_c = {c: pl.reindex(pg.loc[pg["class"] == c, "gene_id"].astype(str)).to_numpy()
                 for c in order}
     FS.use()
-    figc, ax = rows_fig(len(order), right=0.3)
-    iqr_rows(ax, groups_c, order, SECRETED)
-    ax.axvline(70, color=FS.INK, lw=0.6, ls="--")
-    ax.set_xlabel("AlphaFold DB mean pLDDT")
-    for k in order:
-        v = groups_c[k]; v = v[~np.isnan(v)]
-        print(f"  pLDDT {SHORT.get(k, k):28s} median {np.median(v):.1f}  n={len(v)}")
+    figc, ax = FS.dist_bars([groups_c[c] for c in order], sn,
+                            highlight=[SHORT.get(c, c) for c in SECRETED],
+                            ylabel="AlphaFold DB mean pLDDT", ref_line=70,
+                            ref_label="pLDDT 70")
+    ax.set_ylim(20, 100)
 
     # D
     g = pg.drop_duplicates("gene_id").set_index("gene_id")
@@ -169,19 +160,19 @@ def main():
         import re
         short = gid.replace("TGME49_", "")
         if gid in KNOWN:
-            return f"{KNOWN[gid]} ({short})"
+            return KNOWN[gid]
         tok = re.findall(r"\b([A-Z]{2,}[0-9]*[A-Z0-9]*)\b", prod)
         if tok:
-            return f"{tok[-1]} ({short})"
-        return f"hypothetical ({short})" if "hypothetical" in prod.lower() else f"{short}"
+            return tok[-1]
+        return short          # gene number for unnamed proteins; full ids in data.csv
     FS.use()
-    figf, ax = rows_fig(len(top), left=2.0, right=0.3)
-    yy = np.arange(len(top))
-    ax.plot(top["ratio"], yy, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA)
-    ax.axvline(allmed, color=FS.INK, lw=0.6, ls="--")
-    ax.set_yticks(yy); ax.set_yticklabels([name(a, b) for a, b in zip(top.index, top["product"])])
-    ax.set_xscale("log"); ax.set_xlabel("Nonsynonymous / synonymous")
-    ax.set_xticks([1, 3, 10]); ax.set_xticklabels(["1", "3", "10"]); ax.minorticks_off()
+    figf, ax = FS.ref_bars(top["ratio"].to_numpy(), [name(a, b) for a, b in
+                                                     zip(top.index, top["product"])],
+                           highlight=[name(a, b) for a, b in zip(top.index, top["product"])],
+                           ylabel="Nonsynonymous / synonymous", log=True)
+    ax.axhline(allmed, color=FS.INK, lw=0.6, ls=(0, (1.5, 1.5)), label="genome median")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    ax.set_yticks([1, 3, 10]); ax.set_yticklabels(["1", "3", "10"]); ax.minorticks_off()
 
     import paper_panels as PP
     F = "figure_8"

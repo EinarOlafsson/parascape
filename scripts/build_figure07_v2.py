@@ -119,29 +119,24 @@ def main():
         if r["answered"] >= 25:
             per_layer.append((k, r["answered"], r["accuracy"]))
     pl = pd.DataFrame(per_layer, columns=["layer", "answered", "acc"])
-    # Named rows, not a labelled scatter: twelve labels piled up where the accurate sparse
-    # layers sit. Accuracy along x; how many genes the layer answers is the dot area.
+    # A: per layer, held-out accuracy (bars); the weighted vote last, in the accent; guessing
+    # the commonest compartment as a dotted line. Genes answered are in data.csv and the legend.
     order_a = sorted(adj, key=lambda k: -weights[k])
     pl = pl.set_index("layer").reindex([k for k in order_a if k in set(pl["layer"])])
     pl.loc["weighted vote"] = [len(d), d.right.mean()]
+    SHORT_L = {"comention": "co-mention", "comention_ft": "co-mention FT", "ip_ms": "IP-MS",
+               "xlms": "XL-MS", "unwritten_interaction": "pred. interact.",
+               "orthogroup": "orthogroup", "struct": "structure", "domain": "domain",
+               "structural_hole": "struct. hole", "coexpression": "co-expression",
+               "cotranslation": "co-translation", "cofitness": "co-fitness",
+               "weighted vote": "weighted vote"}
     FS.use()
-    rh, nr = 0.2, len(pl)
-    w, h = 1.55 + 1.6 + 1.7, 0.15 + nr * rh + 0.6
-    figa = plt.figure(figsize=(w, h))
-    ax = figa.add_axes([1.55 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    size = lambda a: 4 + 60 * np.sqrt(np.asarray(a, float) / len(d))
-    cols = [FS.ACCENT if k == "weighted vote" else FS.CONTROL for k in pl.index]
-    ax.scatter(pl["acc"] * 100, y, s=size(pl["answered"]), c=cols, alpha=FS.ALPHA, lw=0)
-    ax.axvline(baseline * 100, color=FS.INK, lw=0.6, ls="--")
-    ax.set_yticks(y); ax.set_yticklabels([LAYER_NAMES.get(k, k) for k in pl.index])
-    ax.set_ylim(nr - 0.5, -0.5); ax.tick_params(axis="y", length=0)
-    ax.set_xlim(20, 85); ax.set_xlabel("Compartment correct (%)")
-    for a_ in (100, 1000):
-        ax.scatter([], [], s=size(a_), c=FS.CONTROL, alpha=FS.ALPHA, lw=0,
-                   label=f"{a_:,} genes answered")
-    ax.plot([], [], color=FS.INK, lw=0.6, ls="--", label="commonest compartment")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    figa, ax = FS.ref_bars(pl["acc"].to_numpy() * 100, [SHORT_L.get(k, k) for k in pl.index],
+                           highlight=["weighted vote"], ylabel="Compartment correct (%)")
+    ax.axhline(baseline * 100, color=FS.INK, lw=0.6, ls=(0, (1.5, 1.5)),
+               label="commonest compartment")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    ax.set_ylim(0, 100)
 
     # B: overlap of genes reached (Jaccard), layers ordered by weight
     order = sorted(adj, key=lambda k: -weights[k])
@@ -149,39 +144,32 @@ def main():
     J = np.array([[len(reached[a] & reached[b]) / max(1, len(reached[a] | reached[b]))
                    for b in order] for a in order]) * 100
     FS.use()
-    nl = len(order); cell = 0.16
-    w, h = 1.6 + nl * cell + 0.9, 0.15 + nl * cell + 1.6
+    nl = len(order); cell = 0.13
+    w, h = 1.0 + nl * cell + 0.9, 0.15 + nl * cell + 1.0
     figb = plt.figure(figsize=(w, h))
-    ax = figb.add_axes([1.6 / w, 1.6 / h, nl * cell / w, nl * cell / h])
+    ax = figb.add_axes([1.0 / w, 1.0 / h, nl * cell / w, nl * cell / h])
     im = ax.imshow(J, cmap="Blues", vmin=0, vmax=100, interpolation="nearest")
-    names = [LAYER_NAMES.get(k, k) for k in order]
+    names = [SHORT_L.get(k, k) for k in order]
     ax.set_xticks(range(nl)); ax.set_xticklabels(names, rotation=90)
     ax.set_yticks(range(nl)); ax.set_yticklabels(names)
     for sp in ax.spines.values():
         sp.set_visible(False)
     ax.tick_params(length=0)
     cb = figb.colorbar(im, ax=ax, fraction=0.06, pad=0.04)
-    cb.set_label("Genes reached by both (% of either)"); cb.outline.set_linewidth(0.6)
+    cb.set_label("Genes in common (%)"); cb.outline.set_linewidth(0.6)
 
-    # C: per compartment, best single layer vs weighted vote
+    # C: per compartment, weighted vote (bars) against the best single layer (tick)
     comp = (d.groupby("truth")[["best_right", "right"]].mean() * 100)
     comp["n"] = d.groupby("truth").size()
     comp = comp[comp["n"] >= 20].sort_values("right", ascending=False)
+    CN = {"ribosome_rnp": "ribosome", "apical_secretory": "apical", "pellicle_pm_imc": "pellicle",
+          "golgi_secretory_vesicular": "Golgi", "er": "ER", "mitochondrion": "mito."}
     FS.use()
-    rh, nr = 0.2, len(comp)
-    w, h = 1.25 + 1.6 + 1.6, 0.15 + nr * rh + 0.6
-    figc = plt.figure(figsize=(w, h))
-    ax = figc.add_axes([1.25 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    ax.hlines(y, comp["best_right"], comp["right"], color=FS.CONTROL, lw=0.6)
-    ax.plot(comp["best_right"], y, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA,
-            label="best single layer (ref.)")
-    ax.plot(comp["right"], y, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA,
-            label="weighted vote")
-    ax.set_yticks(y); ax.set_yticklabels([COMP_NAMES.get(c, c) for c in comp.index])
-    ax.set_ylim(nr - 0.5, -0.5); ax.tick_params(axis="y", length=0)
-    ax.set_xlim(0, 100); ax.set_xlabel("Compartment correct (%)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    names_c = [CN.get(c, c) for c in comp.index]
+    figc, ax = FS.ref_bars(comp["right"].to_numpy(), names_c, refs=comp["best_right"].to_numpy(),
+                           highlight=names_c, ref_label="best single layer",
+                           ylabel="Compartment correct (%)")
+    ax.set_ylim(0, 100)
 
     # D: accuracy by number of layers reaching the gene
     d["k"] = d["n_layers"].clip(upper=6)
@@ -195,7 +183,7 @@ def main():
     ax.set_xticklabels([str(k) if k < 6 else "6+" for k in byk.index])
     ax.set_xlabel("Layers reaching the gene"); ax.set_ylabel("Compartment correct (%)")
     ax.set_ylim(0, 100)
-    FS.legend(ax, loc="lower right")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
 
     # E: accuracy by winning share
     bins = np.linspace(0, 1, 11)
@@ -209,7 +197,7 @@ def main():
             label="weighted vote")
     ax.set_xlim(0, 100); ax.set_ylim(0, 100)
     ax.set_xlabel("Winning share of the vote (%)"); ax.set_ylabel("Compartment correct (%)")
-    FS.legend(ax, loc="upper left")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
 
     # F: genes placed vs accuracy, most confident first, union vs best single layer
     # Ranked by how many kinds of evidence reach the gene, then by vote share. Ranking by share

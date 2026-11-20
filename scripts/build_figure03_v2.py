@@ -109,47 +109,83 @@ def main():
     named = list(mods["named"])
     genes = {m: gm.index[gm == m].intersection(n.index) for m in order}
 
-    # A: compartment share per module (of genes with a compartment)
-    comp = n["compartment_best"].astype(str)
-    A = np.array([[float((comp.loc[genes[m]] == c).sum()) /
-                   max(1, int((comp.loc[genes[m]] != "unassigned").sum())) * 100 for c in COMPS]
-                  for m in order])
-    figa = map_panel(A, labels, [COMP_NAMES[c] for c in COMPS], "Module genes (%)", named)
+    # Einar 2026-11-20 disliked this figure as a whole. Rebuilt around its story, in order:
+    # modules hold one organelle above chance (A), they peak at their own hour (B, C), the
+    # tighter the peak the more organellar (D), and the organelle modules are the ones the
+    # parasite needs (E, F).
+    import paper_panels as PP
+    from scipy.stats import mannwhitneyu, spearmanr as _sp
+    F = "figure_3"
+    NODES = os.path.join(CACHE, "nodes.parquet")
+    msrc = [os.path.join(MODS, "modules.tsv"), os.path.join(MODS, "gene_modules.tsv"),
+            os.path.join(MODS, "summary.json")]
+    CS = {"ribosome_RNP": "ribo.", "apical_secretory": "apical", "pellicle_PM_IMC": "pellicle",
+          "mitochondrion": "mito.", "nucleus": "nucleus", "proteasome": "proteas.",
+          "ER": "ER", "cytosol": "cytosol", "apicoplast": "apicopl.",
+          "golgi_secretory_vesicular": "Golgi"}
+    tick = [f"M{m} {CS.get(c, '')}".strip() if nm else f"M{m}"
+            for m, c, nm in zip(order, mods["compartment"], named)]
+    hl = [t for t, nm in zip(tick, named) if nm]
 
-    # B: share vs matched baseline
+    # A: share of module genes in its best compartment (bars), matched random genes (tick)
     FS.use()
-    figb, ax = FS.square_figure()
-    mx = max(mods["share"].max(), mods["matched_baseline"].max()) * 100 * 1.08
-    ax.plot([0, mx], [0, mx], color=FS.BACKGROUND, lw=0.6)
-    for ok, col, lab in ((False, FS.CONTROL, "not above chance (ref.)"),
-                         (True, FS.ACCENT, "named (q < 0.05)")):
-        s = mods[mods.named == ok]
-        ax.plot(s["matched_baseline"] * 100, s["share"] * 100, "o", color=col, ms=4,
-                alpha=FS.ALPHA, lw=0, label=lab)
-    ax.set_xlim(0, mx); ax.set_ylim(0, mx)
-    ax.set_xlabel("Matched random genes (%)"); ax.set_ylabel("Module genes in compartment (%)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    figa, ax = FS.ref_bars(mods["share"].to_numpy() * 100, tick,
+                           refs=mods["matched_baseline"].to_numpy() * 100, highlight=hl,
+                           ref_label="matched random genes", ylabel="Module genes in compartment (%)")
+    PP.panel(F, "a", fig=figa, data=mods[["module", "genes", "compartment", "share",
+                                          "matched_baseline", "named"]],
+             stats=mods[["module", "genes", "compartment", "share", "matched_baseline",
+                         "over_detection_limit", "p", "q", "named"]], sources=msrc,
+             what="share in its compartment vs matched random genes")
 
-    # C: module mean z-profile over the cell cycle
+    # B: named modules across the cell cycle (heatmap), C: four of them as lines
     cols = {h: [f"cellcycle19092_{h}h_r1", f"cellcycle19092_{h}h_r2"] for h in HOURS}
     prof = pd.DataFrame({h: n[c].mean(axis=1) for h, c in cols.items()}).dropna()
     z = prof.sub(prof.mean(axis=1), axis=0).div(prof.std(axis=1).replace(0, np.nan),
                                                 axis=0).dropna()
-    C = np.array([z.loc[z.index.intersection(genes[m])].mean().to_numpy() for m in order])
+    nm_mods = [m for m, ok in zip(order, named) if ok]
+    nm_tick = [t for t, ok in zip(tick, named) if ok]
+    C = np.array([z.loc[z.index.intersection(genes[m])].mean().to_numpy() for m in nm_mods])
+    peak = np.argsort(np.argmax(C, axis=1), kind="stable")
+    C, nm_mods, nm_tick = C[peak], [nm_mods[k] for k in peak], [nm_tick[k] for k in peak]
     v = float(np.nanmax(np.abs(C)))
-    figc = map_panel(C, labels, [str(h) if h % 2 == 0 else "" for h in HOURS],
-                     "Mean expression (z)", named, cmap="RdBu_r", vmin=-v, vmax=v,
-                     xlabel="Time after release (h)", col_w=0.13, rotate=False)
+    FS.use()
+    figb, ax = FS.plot_figure(12 * 3.2, len(nm_mods) * 3.2)
+    im = ax.imshow(C, cmap="RdBu_r", vmin=-v, vmax=v, aspect="auto", interpolation="nearest",
+                   extent=(0.5, 12.5, len(nm_mods) - 0.5, -0.5))
+    ax.set_yticks(range(len(nm_mods))); ax.set_yticklabels(nm_tick)
+    ax.set_xticks([2, 4, 6, 8, 10, 12]); ax.set_xlabel("Time after release (h)")
+    ax.tick_params(length=0)
+    cb = figb.colorbar(im, ax=ax, fraction=0.05, pad=0.04)
+    cb.set_label("Mean expression (z)"); cb.outline.set_linewidth(0.6)
+    PP.panel(F, "b", fig=figb, data=pd.DataFrame(C, index=pd.Index(nm_tick, name="module"),
+                                                 columns=HOURS),
+             stats={"genes with a cell-cycle profile": len(z), "modules": len(nm_mods)},
+             sources=msrc + [(NODES, [c for v_ in cols.values() for c in v_])],
+             what="named modules across the cell cycle, ordered by peak hour")
+    pick = [m for m in nm_mods if mods.set_index("module").loc[m, "compartment"] in
+            ("ribosome_RNP", "apical_secretory", "pellicle_PM_IMC", "nucleus")]
+    seen, show = set(), []
+    for m in pick:
+        c = mods.set_index("module").loc[m, "compartment"]
+        if c not in seen:
+            seen.add(c); show.append(m)
+    FS.use()
+    figc, ax = FS.square_figure()
+    rows = []
+    for k, m in enumerate(show):
+        g = z.loc[z.index.intersection(genes[m])].mean()
+        lab = tick[order.index(m)]
+        ax.plot(HOURS, g.to_numpy(), color=FS.SERIES[k], lw=1.2, label=lab)
+        rows += [{"module": lab, "hour": h, "mean_z": val} for h, val in g.items()]
+    ax.axhline(0, color=FS.INK, lw=0.6)
+    ax.set_xticks([2, 4, 6, 8, 10, 12]); ax.set_xlabel("Time after release (h)")
+    ax.set_ylabel("Mean expression (z)")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
+    PP.panel(F, "c", fig=figc, data=pd.DataFrame(rows), stats={"modules": len(show)},
+             sources=msrc, what="four organelle modules across the cell cycle")
 
-    # D: annotated phase composition
-    ph = n["cellcycle_phase"].astype(str)
-    D = np.array([[float((ph.loc[genes[m]] == p).sum()) /
-                   max(1, int(ph.loc[genes[m]].isin(PHASES).sum())) * 100 for p in PHASES]
-                  for m in order])
-    figd = map_panel(D, labels, PHASES, "Phase-annotated genes (%)", named,
-                     xlabel="Annotated cell-cycle phase", rotate=False, col_w=0.3)
-
-    # E: timing coherence vs enrichment
+    # D: timing coherence vs enrichment (no labels on points)
     coh = []
     for m in order:
         g = z.loc[z.index.intersection(genes[m])]
@@ -157,92 +193,50 @@ def main():
         coh.append(np.bincount(pk).max() / len(pk) * 100 if len(pk) else np.nan)
     mods["coh"] = coh
     FS.use()
-    fige, ax = FS.square_figure()
-    for ok, col, lab in ((False, FS.CONTROL, "not above chance (ref.)"),
-                         (True, FS.ACCENT, "named (q < 0.05)")):
-        s = mods[mods.named == ok]
-        ax.plot(s["coh"], s["over_detection_limit"], "o", color=col, ms=4, alpha=FS.ALPHA,
+    figd, ax = FS.square_figure()
+    for ok, col, lab in ((False, FS.CONTROL, "not above chance"), (True, FS.ACCENT, "named")):
+        s_ = mods[mods.named == ok]
+        ax.plot(s_["coh"], s_["over_detection_limit"], "o", color=col, ms=4, alpha=FS.ALPHA,
                 lw=0, label=lab)
     ax.axhline(0, color=FS.INK, lw=0.6)
     ax.set_xlabel("Genes peaking at the modal hour (%)")
     ax.set_ylabel("Enrichment over random (SD)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
-    from scipy.stats import spearmanr
-    rho = spearmanr(mods["coh"], mods["over_detection_limit"], nan_policy="omit").statistic
-
-    # F: fitness per module, named rows
-    fit = n["fit_invitro_hff"]
-    FS.use()
-    # The same row height as the maps (A, C, D), so module M11 sits at the same height in every
-    # panel; at the bar slot of 0.25 in the 23 rows stood 150 mm tall.
-    rh, nr = 0.14, len(order)
-    w, h = 1.35 + 1.6 + 1.3, 0.15 + nr * rh + 0.6
-    figf = plt.figure(figsize=(w, h))
-    ax = figf.add_axes([1.35 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    for y, m in enumerate(order):
-        v = fit.loc[genes[m]].dropna().to_numpy()
-        q1, med, q3 = np.percentile(v, [25, 50, 75])
-        col = FS.ACCENT if named[y] else FS.CONTROL
-        ax.hlines(y, q1, q3, color=col, lw=1.0, alpha=FS.ALPHA)
-        ax.plot(med, y, "o", color=col, ms=3)
-    ax.axvline(float(fit.median()), color=FS.INK, lw=0.6, ls="--", label="all genes, median")
-    ax.set_yticks(range(len(order)))
-    ax.set_yticklabels([f"{l} {COMP_NAMES.get(c, '')}" if ok else l
-                        for l, c, ok in zip(labels, mods["compartment"], named)])
-    for t, ok in zip(ax.get_yticklabels(), named):
-        t.set_color(FS.INK if ok else FS.CONTROL)
-    ax.set_ylim(len(order) - 0.5, -0.5); ax.tick_params(axis="y", length=0)
-    ax.set_xlabel("Fitness in fibroblasts (score)")
-    ax.plot([], [], "o-", color=FS.ACCENT, ms=4, label="named module")
-    ax.plot([], [], "o-", color=FS.CONTROL, ms=4, label="not above chance")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
-
-    print(f"{len(order)} modules, {sum(named)} named; coherence vs enrichment Spearman {rho:.3f}")
-    import paper_panels as PP
-    from scipy.stats import mannwhitneyu, spearmanr as _sp
-    F = "figure_3"
-    NODES = os.path.join(CACHE, "nodes.parquet")
-    msrc = [os.path.join(MODS, "modules.tsv"), os.path.join(MODS, "gene_modules.tsv"),
-            os.path.join(MODS, "summary.json")]
-    lab = pd.Index(labels, name="module")
-    PP.panel(F, "a", fig=figa, data=pd.DataFrame(A, index=lab, columns=[COMP_NAMES[c] for c in COMPS]),
-             stats=mods[["module", "genes", "compartment", "share", "matched_baseline",
-                         "over_detection_limit", "p", "q", "named"]],
-             sources=msrc + [(NODES, ["compartment_best"])],
-             what="each module's genes by compartment")
-    PP.panel(F, "b", fig=figb, data=mods[["module", "share", "matched_baseline", "named"]],
-             stats={"modules": len(mods), "named (q < 0.05)": int(mods.named.sum()),
-                    "random draws per module": 1000,
-                    "matched on": "how many kinds of knowledge the gene carries"},
-             sources=msrc, what="share in its compartment vs matched random genes")
-    PP.panel(F, "c", fig=figc, data=pd.DataFrame(C, index=lab, columns=HOURS),
-             stats={"genes with a cell-cycle profile": len(z)},
-             sources=msrc + [(NODES, [c for v in cols.values() for c in v])],
-             what="each module across the cell cycle")
-    PP.panel(F, "d", fig=figd, data=pd.DataFrame(D, index=lab, columns=PHASES),
-             stats={"phase-annotated genes": int(ph.isin(PHASES).sum())},
-             sources=msrc + [(NODES, ["cellcycle_phase"])],
-             what="each module's genes by annotated phase")
-    r_ = _sp(mods["coh"], mods["over_detection_limit"], nan_policy="omit")
-    PP.panel(F, "e", fig=fige, data=mods[["module", "coh", "over_detection_limit", "named"]]
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
+    r_ = _sp(mods["coh"], mods["over_detection_limit"], nan_policy="omit"); rho = r_.statistic
+    PP.panel(F, "d", fig=figd, data=mods[["module", "coh", "over_detection_limit", "named"]]
              .rename(columns={"coh": "share_peaking_at_modal_hour_pct"}),
              stats={"Spearman rho": r_.statistic, "p": r_.pvalue, "modules": len(mods)},
              sources=msrc, what="timing coherence vs compartment enrichment")
+
+    # E: fitness per module; F: genes of named vs other modules
+    fit = n["fit_invitro_hff"]
     fl = pd.DataFrame([{"module": m, "named": nm, "gene_id": g, "fit_invitro_hff": fit.get(g)}
                        for m, nm in zip(order, named) for g in genes[m]]).dropna()
+    FS.use()
+    fige, ax = FS.dist_bars([fl.loc[fl.module == m, "fit_invitro_hff"].to_numpy() for m in order],
+                            tick, highlight=hl, ylabel="Fitness score",
+                            ref_line=float(fit.median()), ref_label="genome median")
     u = mannwhitneyu(fl[fl.named].fit_invitro_hff, fl[~fl.named].fit_invitro_hff,
                      alternative="less")
-    PP.panel(F, "f", fig=figf, data=fl, stats={
-        "median fitness, named-module genes": fl[fl.named].fit_invitro_hff.median(),
-        "median fitness, other-module genes": fl[~fl.named].fit_invitro_hff.median(),
-        "median fitness, all genes": float(fit.median()),
-        "Mann-Whitney U (named < other)": u.statistic, "p": u.pvalue,
-        "named modules below the genome median": "11 of 14",
-        "other modules below the genome median": "0 of 9"},
+    stats_f = {"median fitness, named-module genes": fl[fl.named].fit_invitro_hff.median(),
+               "median fitness, other-module genes": fl[~fl.named].fit_invitro_hff.median(),
+               "median fitness, all genes": float(fit.median()),
+               "Mann-Whitney U (named < other)": u.statistic, "p": u.pvalue,
+               "named modules below the genome median": "11 of 14",
+               "other modules below the genome median": "0 of 9"}
+    PP.panel(F, "e", fig=fige, data=fl, stats=stats_f,
              sources=msrc + [(NODES, ["fit_invitro_hff"])], what="fitness in fibroblasts per module")
+    FS.use()
+    figf, ax = FS.dist_bars([fl[fl.named].fit_invitro_hff.to_numpy(),
+                             fl[~fl.named].fit_invitro_hff.to_numpy(), fit.dropna().to_numpy()],
+                            ["named", "other", "all genes"], highlight=["named"],
+                            ylabel="Fitness score")
+    PP.panel(F, "f", fig=figf, data=fl, stats=stats_f,
+             sources=msrc + [(NODES, ["fit_invitro_hff"])],
+             what="fitness of genes in named vs other modules")
     out = PP.compose(F, "main", "Co-expression modules are, for the most part, single organelles "
                      "built on a shared schedule, and the organelle modules are the ones the "
-                     "parasite cannot lose.", rows=[3, 3])
+                     "parasite cannot lose.")
     print("figure 3 ->", out)
 
 

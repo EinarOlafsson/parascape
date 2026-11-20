@@ -96,13 +96,14 @@ def knowledge_columns(nodes):
 
 #: What ParaScape answers, each tied to the figure of this paper that shows it answered.
 QUESTIONS = [
-    ("Can these studies be compared?", "removes cell cycle and laboratory first", "Figs 2, 4"),
-    ("Which genes work together?", "co-expression modules", "Fig. 3"),
-    ("Which cyst state does a drug reach?", "single-cell bradyzoite map", "Fig. 5"),
-    ("Where is this protein?", "placed from RNA and from the graph", "Figs 6, 7"),
-    ("What does it do to the host?", "host response, strain variation, co-folds", "Figs 8, 10"),
-    ("Does it hold in Plasmodium?", "transfer between species", "Fig. 9"),
-    ("What is unknown, and what next?", "filled-in map, missing measurements", "Figs 11, 12"),
+    ("Can these studies be compared?", "removes cell cycle and laboratory first", "Figs 2, 3"),
+    ("Which genes work together?", "co-expression modules", "Fig. 4"),
+    ("Where is this protein?", "placed from RNA and from the graph", "Figs 5, 6"),
+    ("Does it hold in Plasmodium?", "transfer between species", "Fig. 7"),
+    ("What can be filled in?", "validated prediction", "Fig. 8"),
+    ("What does it do to the host?", "strain variation, host response", "Figs 9, 10"),
+    ("Which cyst state does a drug reach?", "single-cell bradyzoite map", "Fig. 11"),
+    ("What should be measured next?", "missing measurements", "Fig. 12"),
 ]
 
 
@@ -116,7 +117,7 @@ def panel_a(nodes, cols):
     """
     from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
     FS.use()
-    W, H = 180.0, 62.0
+    W, H = 180.0, 66.0
     fig = plt.figure(figsize=(W / 25.4, H / 25.4))
     ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis("off")
     bold = dict(fontsize=FS.FONT_PT, fontweight="bold", color=FS.INK)
@@ -127,14 +128,15 @@ def panel_a(nodes, cols):
     lev = t.groupby("level")["datasets"].sum().sort_values(ascending=False)
     org = t.groupby("organism")["datasets"].sum().sort_values(ascending=False)
     ax.text(2, H - 3, f"{int(lev.sum())} published datasets", va="top", **bold)
+    # Levels as labelled tiles, not a miniature bar chart (Einar 2026-11-20: no graphs inside
+    # the schematic).
     y = H - 10
-    top = float(lev.max())
     for level, n in lev.items():
-        ax.add_patch(FancyBboxPatch((2, y - 3.2), 30 * n / top, 3.6,
-                                    boxstyle="round,pad=0,rounding_size=0.8", lw=0,
-                                    fc=FS.CONTROL, alpha=FS.ALPHA))
-        ax.text(2 + 30 * n / top + 1.2, y - 1.4, f"{LEVEL_NAMES.get(level, level)}  {int(n)}",
-                va="center", **body)
+        ax.add_patch(FancyBboxPatch((2, y - 3.4), 36, 3.8,
+                                    boxstyle="round,pad=0,rounding_size=0.8", lw=0.5,
+                                    ec=FS.DARK_GREY, fc=FS.BACKGROUND, alpha=0.5))
+        ax.text(3.2, y - 1.5, LEVEL_NAMES.get(level, level), va="center", **body)
+        ax.text(37, y - 1.5, f"{int(n)}", va="center", ha="right", **body)
         y -= 5.2
     y -= 1.5
     ax.text(2, y, "from", va="top", color=FS.DARK_GREY, fontsize=FS.FONT_PT)
@@ -148,25 +150,31 @@ def panel_a(nodes, cols):
     x0, x1 = 58.0, 104.0
     ax.add_patch(FancyArrowPatch((47, H / 2), (x0 - 2, H / 2), arrowstyle="-|>",
                                  mutation_scale=7, lw=0.8, color=FS.INK))
+    # The gene space as an icon: genes as rows, each with a slot per kind of knowledge, filled
+    # where measured. Illustrative, not data (the real coverage is panel D).
     share = {c: nodes[v].notna().any(axis=1).mean() for c, v in cols.items()}
     order = sorted(share, key=share.get, reverse=True)
-    m = np.column_stack([nodes[cols[c]].notna().any(axis=1).to_numpy() for c in order]).T
-    m = m[:, np.argsort(-m.sum(axis=0), kind="stable")]
-    rgb = np.ones(m.shape + (3,))
-    thin = np.array([c in THIN for c in order])
-    for k, colour in ((True, FS.ACCENT), (False, FS.DARK_GREY)):
-        rgb[m & (thin[:, None] == k)] = matplotlib.colors.to_rgb(colour)
     ax.text(x0, H - 3, "One gene space", va="top", **bold)
-    ax.text(x0, H - 7.2, f"{len(nodes):,} genes \u00d7 {len(order)} kinds of knowledge", va="top",
-            **body)
-    ax.imshow(rgb, extent=(x0, x1, 14, H - 13), aspect="auto", interpolation="nearest")
-    ax.add_patch(plt.Rectangle((x0, 14), x1 - x0, H - 27, fill=False, lw=0.6, ec=FS.INK))
-    ax.text(x0, 11.5, "white: never measured", va="top", color=FS.DARK_GREY,
-            fontsize=FS.FONT_PT)
-    ax.text(x0, 7.5, "blue: host, mutant phenotype, EC", va="top",
-            color=FS.ACCENT, fontsize=FS.FONT_PT)
-    ax.text(x0, 3.6, "bring a gene, a list or your own data", va="top",
-            color=FS.INK, fontsize=FS.FONT_PT)
+    ax.text(x0, H - 7.2, f"{len(nodes):,} genes \u00d7 {len(order)} kinds of knowledge",
+            va="top", **body)
+    rng = np.random.default_rng(3)
+    nk, ng = len(order), 7
+    cw, ch = (x1 - x0) / nk, 3.4
+    for gi in range(ng):
+        yy = H - 14 - gi * (ch + 0.9)
+        for ki, c in enumerate(order):
+            # thin kinds drawn as measured in two of the seven icon genes so the key reads
+            filled = (gi in (1, 4)) if c in THIN else rng.random() < share[c]
+            fc = (FS.ACCENT if c in THIN else FS.DARK_GREY) if filled else "white"
+            ax.add_patch(plt.Rectangle((x0 + ki * cw + 0.25, yy - ch), cw - 0.5, ch, lw=0.4,
+                                       ec=FS.DARK_GREY, fc=fc, alpha=0.8 if filled else 1))
+    yb = H - 14 - ng * (ch + 0.9) - 1.5
+    for k, (fc, lab) in enumerate(((FS.DARK_GREY, "measured"), (FS.ACCENT, "host, phenotype"),
+                                  ("white", "never"))):
+        yy = yb - k * 3.6
+        ax.add_patch(plt.Rectangle((x0, yy - 2.6), 2.4, 2.4, lw=0.4, ec=FS.DARK_GREY, fc=fc))
+        ax.text(x0 + 3.4, yy - 1.4, lab, va="center", color=FS.DARK_GREY, fontsize=FS.FONT_PT)
+    ax.text(x1, yb - 1.4, "bring a gene,\na list or\nyour own data", va="top", ha="right", **body)
 
     # 3. the questions it answers
     q0 = 116.0
@@ -179,7 +187,7 @@ def panel_a(nodes, cols):
         ax.text(q0 + 2.6, y, q, va="top", **body)
         ax.text(q0 + 2.6, y - 3.4, f"{how}  ({figs})", va="top", color=FS.DARK_GREY,
                 fontsize=FS.FONT_PT)
-        y -= 7.4
+        y -= 7.0
     return fig
 
 
@@ -239,59 +247,39 @@ def panel_c(years):
     return fig
 
 
-def panel_d(nodes, cols):
-    """Coverage map: one row per kind of knowledge, one column per gene, filled where measured.
+SHORT_KIND = {"mRNA level": "mRNA", "chromatin state": "chromatin", "translation": "translation",
+              "predicted structure": "pred. struct.", "fitness (CRISPR)": "fitness",
+              "sequence variation": "variation", "protein level": "protein",
+              "protein modification": "PTM", "localisation": "location",
+              "measured structure": "meas. struct.", "interaction partners": "interaction",
+              "enzyme activity (EC)": "enzyme (EC)", "mutant phenotype": "phenotype",
+              "host response": "host response"}
 
-    Einar, 2026-11-19: wide graphs need another form. Fourteen bars in a row made a strip twice
-    as wide as tall; the map is square, reads its row names flat, and shows per GENE what the
-    old violin of categories-per-gene tried to (and what was pointless as a lone violin).
-    """
+
+def kind_name(c):
+    return SHORT_KIND.get(CATEGORY_NAMES.get(c, c), CATEGORY_NAMES.get(c, c))
+
+
+def panel_d(nodes, cols):
+    """Genes measured per kind of knowledge: bars, the thin kinds in the accent."""
     share = {c: float(nodes[v].notna().any(axis=1).mean()) * 100 for c, v in cols.items()}
     order = sorted(share, key=share.get, reverse=True)
-    m = np.column_stack([nodes[cols[c]].notna().any(axis=1).to_numpy() for c in order]).T
-    m = m[:, np.lexsort(m[::-1])[::-1]]                 # genes ordered by what is known
-    m = m[:, np.argsort(-m.sum(axis=0), kind="stable")]
     FS.use()
-    fig, ax = FS.square_figure()
-    from matplotlib.colors import ListedColormap
-    rgb = np.ones(m.shape + (3,))
-    thin = np.array([c in THIN for c in order])
-    for k, colour in ((True, FS.ACCENT), (False, FS.DARK_GREY)):
-        rows = m & (thin[:, None] == k)
-        rgb[rows] = matplotlib.colors.to_rgb(colour)
-    ax.imshow(rgb, aspect="auto", interpolation="nearest")
-    ax.set_yticks(range(len(order)))
-    ax.set_yticklabels([CATEGORY_NAMES.get(c, c) for c in order])
-    ax.set_xticks([0, m.shape[1] - 1]); ax.set_xticklabels(["1", f"{m.shape[1]:,}"])
-    ax.set_xlabel("Genes, most to least measured")
-    ax.tick_params(axis="y", length=0)
-    ax.plot([], [], "s", color=FS.DARK_GREY, ms=5, label="measured")
-    ax.plot([], [], "s", color=FS.ACCENT, ms=5, label="measured, thin kind")
-    ax.plot([], [], "s", color="white", mec=FS.INK, mew=0.4, ms=5, label="never measured")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fig, ax = FS.ref_bars([share[c] for c in order], [kind_name(c) for c in order],
+                          highlight=[kind_name(c) for c in THIN], ylabel="Genes measured (%)")
+    ax.set_ylim(0, 100)
     return fig, share
 
 
-def dot_rows(n, value_mm=46.0):
-    """Rows of named dots: names read flat down the left axis, values along x.
-
-    Einar, 2026-11-19: wide graphs need another form. A row of 8-14 bars with tilted 30-character
-    names was twice as wide as tall and put the names at an angle; named rows are compact and
-    keep every word on the axis.
-    """
-    fig, ax = FS.figure(n, vertical=False, value_mm=value_mm)
-    ax.set_ylim(n - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0)
-    ax.grid(axis="y", color=FS.BACKGROUND, lw=0.4)
-    ax.set_axisbelow(True)
-    return fig, ax
-
-
 HOST_ASSAYS = {"host mRNA after effector loss", "host ESCRT recruitment", "immune epitopes"}
+ASSAY_SHORT = {"host mRNA after effector loss": "host mRNA", "host ESCRT recruitment":
+               "host ESCRT", "immune epitopes": "epitopes", "imaging screen": "imaging",
+               "drug sensitivity of mutants": "drug sens.", "drug-resistance alleles":
+               "resistance", "differentiation reporter": "diff. reporter", "EC number": "EC number"}
 
 
 def panel_e(nodes, cols):
-    """The thin kinds opened up: how many genes each specific assay has measured."""
+    """The thin kinds opened up: genes measured by each assay."""
     thin_cols = sorted({c for cat in THIN for c in cols.get(cat, [])})
     groups = {}
     for c in thin_cols:
@@ -300,26 +288,22 @@ def panel_e(nodes, cols):
     count = {k: int(nodes[v].notna().any(axis=1).sum()) for k, v in groups.items()}
     order = sorted(count, key=count.get, reverse=True)
     FS.use()
-    fig, ax = dot_rows(len(order))
-    y = np.arange(len(order))
-    host = np.array([k in HOST_ASSAYS for k in order])
-    vals = np.array([count[k] for k in order])
-    ax.plot(vals[~host], y[~host], "o", color=FS.CONTROL, ms=4, alpha=FS.ALPHA,
-            label="mutant phenotype or EC")
-    ax.plot(vals[host], y[host], "o", color=FS.ACCENT, ms=4, alpha=FS.ALPHA,
-            label="host response")
-    ax.set_yticks(y); ax.set_yticklabels(order)
-    ax.set_xscale("log"); ax.set_xlim(0.7, len(nodes) * 1.3)
-    ax.set_xticks([1, 10, 100, 1000]); ax.set_xticklabels(["1", "10", "100", "1,000"])
-    ax.minorticks_off()
-    ax.axvline(len(nodes), color=FS.INK, lw=0.6, ls="--", label="all genes")
-    ax.set_xlabel("Genes measured")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fig, ax = FS.ref_bars([max(count[k], 0.8) for k in order],
+                          [ASSAY_SHORT.get(k, k) for k in order],
+                          highlight=[ASSAY_SHORT[k] for k in HOST_ASSAYS],
+                          ylabel="Genes measured", log=True)
+    ax.set_yticks([1, 10, 100, 1000]); ax.set_yticklabels(["1", "10", "100", "1,000"])
+    ax.minorticks_off(); ax.set_ylim(0.7, len(nodes))
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(color=FS.ACCENT, alpha=FS.ALPHA, label="host response"),
+                       Patch(color=FS.CONTROL, alpha=FS.ALPHA, label="phenotype or enzyme")],
+              frameon=False, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2,
+              fontsize=FS.NOTE_PT, handlelength=1.0, borderaxespad=0.0)
     return fig, {k: 100 * v / len(nodes) for k, v in count.items()}
 
 
 def panel_f(nodes, cols):
-    """Per kind of knowledge, genes measured among all genes vs among secreted proteins."""
+    """Per kind, genes measured among secreted proteins (bars) and among all genes (tick)."""
     sec = nodes["lopit_map"].astype(str).isin(SECRETED).to_numpy()
     rows = []
     for c, v in cols.items():
@@ -329,15 +313,11 @@ def panel_f(nodes, cols):
         rows.append((c, m.mean() * 100, m[sec].mean() * 100))
     d = pd.DataFrame(rows, columns=["cat", "all", "sec"]).sort_values("all", ascending=False)
     FS.use()
-    fig, ax = dot_rows(len(d))
-    y = np.arange(len(d))
-    ax.hlines(y, d["all"], d["sec"], color=FS.CONTROL, lw=0.6)
-    ax.plot(d["all"], y, "o", color=FS.CONTROL, ms=4, alpha=FS.ALPHA, label="all genes (ref.)")
-    ax.plot(d["sec"], y, "o", color=FS.ACCENT, ms=4, alpha=FS.ALPHA, label="secreted proteins")
-    ax.set_yticks(y); ax.set_yticklabels([CATEGORY_NAMES.get(c, c) for c in d["cat"]])
-    ax.set_xlim(-4, 104); ax.set_xticks([0, 50, 100])
-    ax.set_xlabel("Genes measured (%)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    names = [kind_name(c) for c in d["cat"]]
+    fig, ax = FS.ref_bars(d["sec"].to_numpy(), names, refs=d["all"].to_numpy(),
+                          highlight=names, ref_label="all genes",
+                          ylabel="Secreted proteins measured (%)")
+    ax.set_ylim(0, 105)
     return fig, d, int(sec.sum())
 
 

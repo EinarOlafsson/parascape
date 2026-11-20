@@ -76,33 +76,26 @@ def per_study(scores):
 
 
 def panel_c(before, after):
+    """Median agreement of each study after removing the axis (bars), before it (tick)."""
     b, a = per_study(before), per_study(after)
     order = list((a - b).sort_values(ascending=False).index)
     FS.use()
-    fig, ax = FS.figure(len(order), vertical=False, value_mm=40.0)
-    y = np.arange(len(order))
-    ax.hlines(y, b[order], a[order], color=FS.CONTROL, lw=0.6)
-    ax.plot(b[order], y, "o", color=FS.CONTROL, ms=4, alpha=FS.ALPHA, label="before (ref.)")
-    ax.plot(a[order], y, "o", color=FS.ACCENT, ms=4, alpha=FS.ALPHA,
-            label="cell cycle removed")
-    ax.set_yticks(y); ax.set_yticklabels(order); ax.set_ylim(len(order) - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0)
-    ax.set_xlabel("Median agreement (Spearman $\\rho$)")
-    FS.pad_limits(ax, list(b) + list(a), axis="x", frac=0.12)
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fig, ax = FS.ref_bars(a[order].to_numpy(), order, refs=b[order].to_numpy(),
+                          highlight=order, ref_label="before removing the cell-cycle axis",
+                          ylabel="Median agreement (Spearman $\\rho$)")
+    FS.pad_limits(ax, list(b) + list(a), frac=0.3)
     return fig
 
 
 def panel_d(null_gain, gain):
+    """The gain from the cell-cycle axis against random axes of the same shape (mean, 95 %)."""
     FS.use()
-    fig, ax = FS.square_figure()
-    ax.hist(null_gain, bins=25, color=FS.CONTROL, alpha=FS.ALPHA, lw=0,
-            label="random axes (ref.)")
-    ax.axvline(gain, color=FS.ACCENT, lw=1.4, label="cell-cycle axis")
-    ax.set_xlabel("Gain in median agreement ($\\Delta\\rho$)"); ax.set_ylabel("Random axes")
-    lo = min(null_gain.min(), 0)
-    ax.set_xlim(lo - 0.005, max(gain, null_gain.max()) * 1.15)
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    lo, hi = np.percentile(null_gain, [2.5, 97.5])
+    m = float(null_gain.mean())
+    fig, ax = FS.ref_bars([m, gain], ["random axes", "cell cycle"], highlight=["cell cycle"],
+                          ylabel="Gain in median agreement ($\\Delta\\rho$)")
+    ax.errorbar([0], [m], yerr=[[m - lo], [hi - m]], fmt="none", ecolor=FS.INK, lw=0.6)
+    ax.set_ylim(0, gain * 1.15)
     return fig
 
 
@@ -121,7 +114,7 @@ def panel_e(levels, position):
     m = levels.loc[order]
     FS.use()
     nr, nc = m.shape
-    cell, cw = 0.16, FS.SLOT_IN          # phase names need a full slot each, or "G1a" runs into "G1b"
+    cell, cw = 0.16, 0.32                # phase names need a full slot each, or "G1a" runs into "G1b"
     w, h = 1.15 + nc * cw + 0.95, 0.2 + nr * cell + 0.55
     fig = plt.figure(figsize=(w, h))
     ax = fig.add_axes([1.15 / w, 0.55 / h, nc * cw / w, nr * cell / h])

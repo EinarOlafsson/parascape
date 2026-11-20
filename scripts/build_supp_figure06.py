@@ -47,17 +47,11 @@ def main():
                                                                                 regex=False).sum())})
     a = pd.DataFrame(rows)
     FS.use()
-    nr = len(a); rh = 0.2
-    w, h = 1.35 + 1.6 + 1.7, 0.15 + nr * rh + 0.6
-    fa = plt.figure(figsize=(w, h)); ax = fa.add_axes([1.35 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    ax.plot(a.substring_on_coarse, y, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA,
-            label="substring, coarse labels")
-    ax.plot(a.exact_fine_names, y, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA,
-            label="exact, fine labels (chosen)")
-    ax.set_yticks(y); ax.set_yticklabels(a.niche); ax.set_ylim(nr - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0); ax.set_xlabel("Genes assigned")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fa, ax = FS.grouped_bars([a.substring_on_coarse.to_numpy(), a.exact_fine_names.to_numpy()],
+                             ["substring, coarse labels", "exact, fine labels (used)"],
+                             [k.replace("plasma membrane", "plasma memb.").replace(
+                                 "mitochondrion", "mito.") for k in a.niche],
+                             ylabel="Genes assigned")
     PP.panel(F, "a", fig=fa, data=a, stats={"niches with no genes under substring matching":
              int((a.substring_on_coarse == 0).sum())}, sources=srcs,
              what="exact fine labels vs substring matching")
@@ -77,17 +71,14 @@ def main():
                        float(pk.within1[m].mean() * 100)})
     b = pd.DataFrame(bb)
     FS.use()
-    nr = len(b)
-    w, h = 1.35 + 1.6 + 1.7, 0.15 + nr * rh + 0.6
-    fb = plt.figure(figsize=(w, h)); ax = fb.add_axes([1.35 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    cols_ = [FS.ACCENT if k in F6.WAVE else FS.CONTROL for k in b.niche]
-    ax.scatter(b.agree_within_1h_pct, y, c=cols_, s=14, alpha=FS.ALPHA, lw=0)
-    ax.axvline(3 / 12 * 100, color=FS.INK, lw=0.6, ls="--", label="chance (3 of 12 hours)")
-    ax.set_yticks(y); ax.set_yticklabels(b.niche); ax.set_ylim(nr - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0); ax.set_xlabel("Replicates agree on peak, within 1 h (%)")
-    ax.set_xlim(0, 100)
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fb, ax = FS.ref_bars(b.agree_within_1h_pct.to_numpy(),
+                         [k.replace("plasma membrane", "plasma memb.").replace("mitochondrion",
+                                                                               "mito.")
+                          for k in b.niche], highlight=[k for k in b.niche if k in F6.WAVE],
+                         ylabel="Replicates agree on peak (%)")
+    ax.axhline(3 / 12 * 100, color=FS.INK, lw=0.6, ls=(0, (1.5, 1.5)),
+               label="chance (within 1 h)")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02)); ax.set_ylim(0, 100)
     PP.panel(F, "b", fig=fb, data=b, stats={"genes": int(ok.sum())}, sources=srcs,
              what="replicate agreement on the peak hour")
 

@@ -35,21 +35,12 @@ F = "supplementary_figure_11a"
 
 
 def rows_fig(names, series, xlabel, legend, ref=None, ref_label=None, log=False):
+    """Grouped bars, one bar per series per target."""
     FS.use()
-    nr = len(names); rh = 0.2
-    w, h = 1.6 + 1.6 + 1.8, 0.15 + nr * rh + 0.6
-    fig = plt.figure(figsize=(w, h)); ax = fig.add_axes([1.6 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    cols = [FS.CONTROL, FS.DARK_GREY, FS.ACCENT]
-    for i, (vals, lab) in enumerate(zip(series, legend)):
-        ax.plot(vals, y, "o", color=cols[-len(series):][i], ms=3.5, alpha=FS.ALPHA, label=lab)
-    if ref is not None:
-        ax.axvline(ref, color=FS.INK, lw=0.6, ls="--", label=ref_label)
-    if log:
-        ax.set_xscale("log")
-    ax.set_yticks(y); ax.set_yticklabels(names); ax.set_ylim(nr - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0); ax.set_xlabel(xlabel)
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fig, ax = FS.grouped_bars([list(v) for v in series], [l.replace(" (ref.)", "") for l in legend],
+                              [F11.TSHORT.get(n, n) for n in names], ylabel=xlabel, log=log,
+                              colors=[FS.BACKGROUND, FS.CONTROL, FS.ACCENT][-len(series):],
+                              ref_line=ref, ref_label=ref_label, height_mm=32.0)
     return fig
 
 
@@ -105,13 +96,9 @@ def main():
              stats={"targets where best strategy beats always-commonest per gene":
                     int((d.correct_per_gene > d.commonest).sum())}, sources=srcs,
              what="answering only some genes, abstentions counted wrong")
-    PP.panel(F, "d", fig=rows_fig(order, [d.commonest * 100], "Commonest class (%)",
-                                  ["share of labelled genes"]),
-             data=d[["classes", "commonest"]], stats={"median commonest share, phenotype":
-                                                      float(d[d.kind == "phenotype"].commonest
-                                                            .median())}, sources=srcs,
-             what="share of the commonest class per target")
-    PP.panel(F, "e", fig=rows_fig(order, [d.held_out_calls], "Held-out calls",
+    # (The share of the commonest class per target was panel D; it repeats the third series of
+    # panel A and was dropped, Einar 2026-11-20: no redundant panels, fit A4.)
+    PP.panel(F, "d", fig=rows_fig(order, [d.held_out_calls], "Held-out calls",
                                   ["per target"], log=True),
              data=d[["held_out_calls"]], stats={"min": int(d.held_out_calls.min()),
                                                 "max": int(d.held_out_calls.max())}, sources=srcs,
@@ -127,7 +114,7 @@ def main():
     ax.axhline(0, color=FS.INK, lw=0.6); ax.set_xscale("log")
     ax.set_xlabel("Held-out calls"); ax.set_ylabel("Best accuracy over guessing (points)")
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
-    PP.panel(F, "f", fig=ff, data=d[["held_out_calls", "best_lift", "kind"]],
+    PP.panel(F, "e", fig=ff, data=d[["held_out_calls", "best_lift", "kind"]],
              stats={"Spearman rho": r.statistic, "p": r.pvalue}, sources=srcs,
              what="best lift against held-out calls")
     print(d.round(3).to_string())

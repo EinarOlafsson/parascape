@@ -18,6 +18,7 @@ from __future__ import annotations
 import os
 
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib import font_manager
 
 #: The reference-paper palette, measured from the figure pixels by the maintainer and recorded in
@@ -174,7 +175,7 @@ def figure(n_categories: int, height_mm: float = 52.0, vertical: bool = False,
     return fig, ax
 
 
-def square_figure(side_mm: float = 46.0):
+def square_figure(side_mm: float = 40.0):
     """A figure whose PLOTTING AREA is square, for every continuous-axis plot.
 
     The skill: "Continuous-axis plots (histograms, density plots, scatter plots, line graphs,
@@ -366,6 +367,12 @@ def legend(ax, loc: str = "best", **kw):
         kw["bbox_to_anchor"] = (0.0, 1.02)
         loc = "lower left"
         kw.setdefault("borderaxespad", 0.0)
+        # Above the plot a tall single column pushes every panel of the row down (Einar
+        # 2026-11-20: whitespace); spread it into columns.
+        n_items = len(ax.get_legend_handles_labels()[0])
+        if n_items > 2 and "ncol" not in kw:
+            kw["ncol"] = 3 if n_items > 6 else 2
+            kw.setdefault("columnspacing", 0.8)
     kw.setdefault("borderaxespad", 0.2)
     leg = ax.legend(frameon=False, loc=loc, handlelength=1.0,
                     labelspacing=0.25, fontsize=NOTE_PT, **kw)
@@ -474,3 +481,123 @@ def place_labels(ax, fig, points, labels, colours, fontsize=None):
                                    annotation_clip=False, arrowprops=_leader(dy, colour))
                 fig.canvas.draw()
                 placed.append(_text_box(text, renderer).expanded(1.06, 1.16))
+
+
+#: The plot-area height every paper panel shares (Einar 2026-11-20: panels in a row must line up;
+#: compose aligns the axes tops, so equal plot heights make the bottoms line up too).
+PLOT_H_MM = 40.0
+
+
+def plot_figure(width_mm: float, height_mm: float = PLOT_H_MM, extra_bottom_mm: float = 0.0):
+    """A figure whose PLOT AREA is exactly width x height mm, house margins around it."""
+    left, bottom, right, top = MARGIN_MM
+    bottom += extra_bottom_mm
+    W, H = left + right + width_mm, bottom + top + height_mm
+    fig = plt.figure(figsize=(W / 25.4, H / 25.4))
+    ax = fig.add_axes([left / W, bottom / H, width_mm / W, height_mm / H])
+    return fig, ax
+
+
+def ref_bars(values, names, refs=None, highlight=(), ref_label="reference", err=None,
+             ylabel="", height_mm: float = PLOT_H_MM, zero_line=False, log=False):
+    """Bars with a black tick for each category's reference (the form Einar chose 2026-11-20).
+
+    One slot per category; accent for `highlight`, grey otherwise; the tick is the category's own
+    reference (matched baseline, genome median, chance). Replaces dot rows and dumbbells.
+    """
+    n = len(values)
+    slot = SLOT_IN * 25.4
+    fig, ax = plot_figure(max(n, MIN_SLOTS) * slot, height_mm)
+    x = np.arange(n)
+    hl = set(highlight)
+    cols = [ACCENT if nm in hl else CONTROL for nm in names]
+    ax.bar(x, values, width=BAR_FRACTION, color=cols, alpha=ALPHA, lw=0,
+           yerr=err, error_kw=dict(lw=0.6, ecolor=INK, capsize=0))
+    if refs is not None:
+        ax.scatter(x, refs, marker="_", s=(BAR_FRACTION * slot * 72 / 25.4) ** 2 * 0.9,
+                   color=INK, lw=1.2, zorder=4, label=ref_label)
+        legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    if zero_line:
+        ax.axhline(0, color=INK, lw=0.6)
+    if log:
+        ax.set_yscale("log")
+    ax.set_xticks(x)
+    longest = max((len(str(s)) for s in names), default=0)
+    ax.set_xticklabels(names, rotation=45 if longest > 4 else 0,
+                       ha="right" if longest > 4 else "center", rotation_mode="anchor")
+    ax.tick_params(axis="x", length=0)
+    ax.set_xlim(-0.6, max(n, MIN_SLOTS) - 0.4)
+    ax.set_ylabel(ylabel)
+    return fig, ax
+
+
+def grouped_bars(series, series_labels, names, colors=None, ylabel="", log=False,
+                 height_mm: float = PLOT_H_MM, ref_line=None, ref_label=None):
+    """k bars side by side per category (spaCR software paper style), legend above the plot."""
+    k, n = len(series), len(names)
+    slot = SLOT_IN * 25.4 * max(1.0, 0.6 * k)
+    fig, ax = plot_figure(max(n, MIN_SLOTS) * slot, height_mm)
+    colors = colors or ([CONTROL, ACCENT] if k == 2 else list(SERIES[:k]))
+    w = BAR_FRACTION / k
+    x = np.arange(n)
+    for j, (vals, lab) in enumerate(zip(series, series_labels)):
+        ax.bar(x - BAR_FRACTION / 2 + w * (j + 0.5), vals, width=w * 0.92, color=colors[j],
+               alpha=ALPHA, lw=0, label=lab)
+    if ref_line is not None:
+        ax.axhline(ref_line, color=INK, lw=0.6, ls=(0, (1.5, 1.5)), label=ref_label)
+    if log:
+        ax.set_yscale("log")
+    ax.set_xticks(x)
+    longest = max((len(str(s)) for s in names), default=0)
+    ax.set_xticklabels(names, rotation=45 if longest > 4 else 0,
+                       ha="right" if longest > 4 else "center", rotation_mode="anchor")
+    ax.tick_params(axis="x", length=0); ax.set_xlim(-0.6, max(n, MIN_SLOTS) - 0.4)
+    ax.set_ylabel(ylabel)
+    legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=min(k, 3) if k > 2 else 1)
+    # A missing or zero value is written in grey inside its slot (spaCR software paper):
+    # an empty slot reads as a drawing error, a sliver of bar as a small value.
+    for j, vals in enumerate(series):
+        for i, v in enumerate(vals):
+            # zero cannot be drawn on a log axis; on a linear axis a negative value is a value
+            if v is None or not np.isfinite(v) or (log and v <= 0):
+                ax.text(i - BAR_FRACTION / 2 + w * (j + 0.5), 0.02, "none", rotation=90,
+                        ha="center", va="bottom", color=CONTROL, fontsize=NOTE_PT,
+                        transform=ax.get_xaxis_transform())
+    return fig, ax
+
+
+def dist_bars(groups, names, highlight=(), ylabel="", log=False, height_mm: float = PLOT_H_MM,
+              ref_line=None, ref_label=None, seed=0):
+    """One distribution per category: a violin above 20 values, else a median bar with points."""
+    n = len(groups)
+    slot = SLOT_IN * 25.4
+    fig, ax = plot_figure(max(n, MIN_SLOTS) * slot, height_mm)
+    rng = np.random.default_rng(seed)
+    hl = set(highlight)
+    for i, (g, nm) in enumerate(zip(groups, names)):
+        g = np.asarray(g, float); g = g[~np.isnan(g)]
+        if not len(g):
+            continue
+        col = ACCENT if nm in hl else CONTROL
+        if len(g) > MAX_POINTS_FOR_A_BAR:
+            vp = ax.violinplot([g], positions=[i], widths=BAR_FRACTION, showextrema=False)
+            for b in vp["bodies"]:
+                b.set_facecolor(col); b.set_alpha(ALPHA); b.set_edgecolor("none")
+            ax.plot([i - BAR_FRACTION / 3, i + BAR_FRACTION / 3], [np.median(g)] * 2,
+                    color=INK, lw=0.9)
+        else:
+            ax.bar(i, np.median(g), width=BAR_FRACTION, color=col, alpha=ALPHA, lw=0)
+            ax.scatter(i + rng.uniform(-0.18, 0.18, len(g)), g, s=4, color=INK, lw=0,
+                       alpha=0.7, zorder=3)
+    if ref_line is not None:
+        ax.axhline(ref_line, color=INK, lw=0.6, ls=(0, (1.5, 1.5)), label=ref_label)
+        legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    if log:
+        ax.set_yscale("log")
+    ax.set_xticks(range(n))
+    longest = max((len(str(s)) for s in names), default=0)
+    ax.set_xticklabels(names, rotation=45 if longest > 4 else 0,
+                       ha="right" if longest > 4 else "center", rotation_mode="anchor")
+    ax.tick_params(axis="x", length=0); ax.set_xlim(-0.6, max(n, MIN_SLOTS) - 0.4)
+    ax.set_ylabel(ylabel)
+    return fig, ax

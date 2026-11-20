@@ -95,53 +95,42 @@ def main():
     a = pd.DataFrame(rows, columns=["cat", "largest", "all", "n"]).sort_values("all",
                                                                              ascending=False)
     FS.use()
-    figa, ax = rows_fig(len(a))
-    y = np.arange(len(a))
-    ax.hlines(y, a["largest"], a["all"], color=FS.CONTROL, lw=0.6)
-    ax.plot(a["all"], y, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA,
-            label="all datasets combined (ref.)")
-    ax.plot(a["largest"], y, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA,
-            label="largest single dataset")
-    ax.set_yticks(y); ax.set_yticklabels([NAMES[c] for c in a["cat"]])
-    ax.set_xlim(-3, 103); ax.set_xlabel("Genes measured (%)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    na = [F1.kind_name(c) for c in a["cat"]]
+    figa, ax = FS.ref_bars(a["largest"].to_numpy(), na, refs=a["all"].to_numpy(),
+                           highlight=[F1.kind_name(c) for c in ("host_response", "phenotype")],
+                           ref_label="all datasets combined",
+                           ylabel="Genes in largest dataset (%)")
+    ax.set_ylim(0, 105)
     print(a.round(1).to_string(index=False))
 
-    # B: cumulative coverage by year
+    # B: genes measured by the datasets published up to 2015, 2020 and now, per kind
+    styles = {"fitness": None, "place": None, "phenotype": None, "host_response": None}
     years = np.arange(2005, 2027)
-    FS.use()
-    figb, ax = FS.square_figure()
-    styles = {"fitness": ("-", FS.DARK_GREY), "place": ("--", FS.DARK_GREY),
-              "phenotype": (":", FS.DARK_GREY), "host_response": ("-", FS.ACCENT)}
-    for c, (ls, col) in styles.items():
-        mine = [d for d in ds if c in d["cats"] and not np.isnan(d["year"])]
-        cum = []
-        for yr in years:
+    cuts = [2015, 2020, 2026]
+    series = []
+    for yr in cuts:
+        vals = []
+        for c in styles:
             got = np.zeros(G, bool)
-            for d in mine:
-                if d["year"] <= yr:
+            for d in ds:
+                if c in d["cats"] and not np.isnan(d["year"]) and d["year"] <= yr:
                     got |= d["genes"]
-            cum.append(got.mean() * 100)
-        ax.plot(years, cum, ls=ls, color=col, lw=1.2, label=NAMES[c])
-    ax.set_xlabel("Year of publication"); ax.set_ylabel("Genes measured (%)")
-    ax.set_ylim(0, 100)
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
-
-    # C: genes per dataset by kind
+            vals.append(got.mean() * 100)
+        series.append(vals)
     FS.use()
-    figc, ax = rows_fig(len(a), right=0.3)
-    for yy, c in zip(y, a["cat"]):
-        v = np.array([d["n"] for d in ds if c in d["cats"]], float)
-        if not len(v):
-            continue
-        q1, med, q3 = np.percentile(v, [25, 50, 75])
-        col = FS.ACCENT if c == "host_response" else FS.CONTROL
-        ax.hlines(yy, max(q1, 1), q3, color=col, lw=1.2, alpha=FS.ALPHA)
-        ax.plot(max(med, 1), yy, "o", color=col, ms=3.5)
-    ax.set_yticks(y); ax.set_yticklabels([NAMES[c] for c in a["cat"]])
-    ax.set_xscale("log"); ax.set_xticks([10, 100, 1000, 10000]); ax.minorticks_off()
-    ax.set_xticklabels(["10", "100", "1,000", "10,000"])
-    ax.set_xlabel("Genes per dataset")
+    figb, ax = FS.grouped_bars(series, [f"by {y}" for y in cuts],
+                               [F1.kind_name(c) for c in styles],
+                               colors=[FS.BACKGROUND, FS.CONTROL, FS.ACCENT],
+                               ylabel="Genes measured (%)")
+    ax.set_ylim(0, 100)
+
+    # C: genes per dataset by kind (median bar, one point per dataset)
+    FS.use()
+    figc, ax = FS.dist_bars([[d_["n"] for d_ in ds if c in d_["cats"]] for c in a["cat"]], na,
+                            highlight=[F1.kind_name(c) for c in ("host_response", "phenotype")],
+                            ylabel="Genes per dataset", log=True)
+    ax.set_yticks([10, 100, 1000, 10000]); ax.set_yticklabels(["10", "100", "1,000", "10,000"])
+    ax.minorticks_off()
 
     # D: host-response coverage by gene group
     hr = cover["host_response"]
@@ -153,13 +142,13 @@ def main():
               "hypothetical": prod.str.contains("hypothetical").to_numpy(),
               "no localisation": nodes["lopit_map"].isna().to_numpy()}
     dvals = {k: hr[m].mean() * 100 for k, m in groups.items()}
+    GS = {"all genes": "all genes", "secreted (hyperLOPIT)": "secreted",
+          "essential (lowest tenth)": "essential", "hypothetical": "hypothetical",
+          "no localisation": "no location"}
     FS.use()
-    figd, ax = rows_fig(len(groups), right=0.3)
-    yd = np.arange(len(groups))
-    ax.hlines(yd, 0, list(dvals.values()), color=FS.ACCENT, lw=0.6, alpha=FS.ALPHA)
-    ax.plot(list(dvals.values()), yd, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA)
-    ax.set_yticks(yd); ax.set_yticklabels(list(dvals))
-    ax.set_xlim(0, 100); ax.set_xlabel("Host response measured (%)")
+    figd, ax = FS.ref_bars(list(dvals.values()), [GS[k] for k in dvals],
+                           highlight=["secreted"], ylabel="Host response measured (%)")
+    ax.set_ylim(0, 100)
     print({k: round(v, 1) for k, v in dvals.items()})
 
     # E: least-measured tenth vs all genes
@@ -170,18 +159,12 @@ def main():
              groups["essential (lowest tenth)"]}
     # "no localisation" is left out here: lacking a localisation is one of the counts that
     # DEFINES the least-measured tenth, so its 99.5 % would be circular.
-    FS.use()
-    fige, ax = rows_fig(len(props))
-    ye = np.arange(len(props))
     allv = [m.mean() * 100 for m in props.values()]
     darkv = [m[dark].mean() * 100 for m in props.values()]
-    ax.hlines(ye, allv, darkv, color=FS.CONTROL, lw=0.6)
-    ax.plot(allv, ye, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA, label="all genes (ref.)")
-    ax.plot(darkv, ye, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA,
-            label="least-measured tenth")
-    ax.set_yticks(ye); ax.set_yticklabels(list(props))
-    ax.set_xlim(0, 100); ax.set_xlabel("Genes (%)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    FS.use()
+    fige, ax = FS.grouped_bars([allv, darkv], ["all genes", "least-measured tenth"],
+                               [GS[k] for k in props], ylabel="Genes (%)")
+    ax.set_ylim(0, 100)
     print(f"least-measured tenth: {int(dark.sum())} genes, <= {int(np.quantile(n_cat, .1))} "
           f"kinds; {dict(zip(props, np.round(darkv, 1)))}")
 
@@ -202,18 +185,12 @@ def main():
         rows.append((c, missing, filled))
     f = pd.DataFrame(rows, columns=["cat", "missing", "filled"])
     FS.use()
-    figf, ax = rows_fig(len(f))
-    yf = np.arange(len(f))
-    ax.hlines(yf, f["filled"].clip(lower=1), f["missing"], color=FS.CONTROL, lw=0.6)
-    ax.plot(f["missing"], yf, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA,
-            label="genes never measured (ref.)")
-    ax.plot(f["filled"].clip(lower=1), yf, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA,
-            label="filled correctly by prediction")
-    ax.set_yticks(yf); ax.set_yticklabels([NAMES[c] for c in f["cat"]])
-    ax.set_xscale("log"); ax.set_xticks([1, 10, 100, 1000, 10000]); ax.minorticks_off()
-    ax.set_xticklabels(["0", "10", "100", "1,000", "10,000"])
-    ax.set_xlabel("Genes")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    figf, ax = FS.grouped_bars([f["missing"].to_numpy(), f["filled"].where(f["filled"] > 0)
+                                .to_numpy()],
+                               ["never measured", "filled correctly by prediction"],
+                               [F1.kind_name(c) for c in f["cat"]], ylabel="Genes", log=True)
+    ax.set_yticks([1, 10, 100, 1000, 10000]); ax.minorticks_off()
+    ax.set_yticklabels(["1", "10", "100", "1,000", "10,000"]); ax.set_ylim(0.7, 2e4)
     print(f.round(0).to_string(index=False))
 
     import paper_panels as PP

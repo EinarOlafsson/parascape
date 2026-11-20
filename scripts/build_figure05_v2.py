@@ -172,23 +172,49 @@ def main():
             return f"{PF.with_group(reg)}: {drug} {eff:+.2f}"
         return f"{PF.with_group(reg)}: n.d."
 
+    SHORT_TARGET = {"nucleoside diphosphate kinase": "NDK"}
+
     def text_candidate(reg):
+        """Measured: the treatment reaching the region and its effect. Predicted (dagger,
+        italics): for a region nothing reaches, a candidate from its own druggable genes."""
         if reg in R:
-            return text_reached(reg)
+            drug, eff = R[reg]
+            return f"{reg}: {drug} {eff:+.2f}"
         genes = C.get(reg, [])
         for g in genes:
             if g in KNOWN_INHIBITOR:
-                return f"{PF.with_group(reg)}: {KNOWN_INHIBITOR[g]} (targets {g})"
-        return f"{PF.with_group(reg)}: target {genes[0]}" if genes else \
-            f"{PF.with_group(reg)}: n.d."
+                return f"{reg}: {KNOWN_INHIBITOR[g]} \u2020"
+        if genes:
+            return f"{reg}: {SHORT_TARGET.get(genes[0], genes[0])} \u2020"
+        return f"{reg}: n.d."
 
-    def leader_map(label_fn, w_mm=180.0, h_mm=50.0):
-        """The paper leader-line map. 180 x 50 mm (was 200 x 62) so three fit an A4 page."""
+    def leader_map(label_fn, w_mm=100.0, h_mm=58.0, paint=None, recolour=None):
+        """Every map of the figure through this, at one size (Einar 2026-11-20: all UMAPs the same
+        size, large enough to read). Labels marked with a dagger are predictions and are set in
+        italics."""
         labels = {r: label_fn(r) for r in PF.REGIONS}
         fig = plt.figure(figsize=(w_mm / 25.4, h_mm / 25.4))
-        g = fig.add_gridspec(1, 3, width_ratios=[1.35, 0.62, 1.35], wspace=0.03)
-        PF.annotated_map(fig, g[0], g[1], g[2], d, labels, fontsize=FS.FONT_PT)
+        g = fig.add_gridspec(1, 3, width_ratios=[0.95, 1.1, 0.95], wspace=0.03)
+        PF.annotated_map(fig, g[0], g[1], g[2], d, labels, fontsize=FS.FONT_PT, paint=paint)
+        for t in fig.findobj(matplotlib.text.Text):
+            if "\u2020" in t.get_text():
+                t.set_fontstyle("italic")
+            for key, col in (recolour or {}).items():
+                if t.get_text().endswith(key):
+                    t.set_color(col)
         return fig
+
+    def paint_subtype(ax):
+        """Published subtypes in strong, distinct colours (the pastel set read as one colour)."""
+        u = d["umap"]
+        sub = obs["published_subtype"].astype(str).reindex(u.index) if hasattr(u, "index") \
+            else obs["published_subtype"].astype(str)
+        o = np.random.default_rng(0).permutation(len(u))
+        cols = {k: c for k, c in zip(SUBTYPES, (FS.ACCENT, FS.TEAL, FS.NAVY, FS.MAGENTA,
+                                                 FS.AMBER))}
+        c = [cols.get(x, FS.BACKGROUND) for x in obs["published_subtype"].astype(str).to_numpy()]
+        ax.scatter(u.x.values[o], u.y.values[o], s=PF.point_size(len(u), ax),
+                   c=np.asarray(c, dtype=object)[o], lw=0, rasterized=True, alpha=0.6)
 
     def old_map():
         """The published subtypes A-E on the UMAP, house style, no cell counts on the map."""
@@ -266,13 +292,18 @@ def main():
         return fig
 
     built = {
-        "1_old_map": save(old_map(), "1_old_map"),
-        "2_new_map": save(leader_map(lambda r: PF.with_group(r), w_mm=110.0, h_mm=50.0),
-                          "2_new_map"),
+        "1_old_map": save(leader_map(lambda r: f"{r}: subtype {PF.PUBLISHED_GROUP.get(r) or '-'}",
+                                     paint=paint_subtype,
+                                     recolour={f"subtype {k}": c for k, c in zip(
+                                         SUBTYPES, (FS.ACCENT, FS.TEAL, FS.NAVY, FS.MAGENTA,
+                                                    FS.AMBER))} | {"subtype -": FS.CONTROL}),
+                              "1_old_map"),
+        "2_new_map": save(leader_map(lambda r: PF.with_group(r)), "2_new_map"),
         "3_g1a": save(score_map("cc_G1a", "G1a score"), "3_g1a"),
         "3_sm": save(score_map("cc_SM", "S/M score"), "3_sm"),
         "7_enrichment": save(enrichment_map(), "7_enrichment"),
-        "q_autophagy": save(leader_map(lambda r: PF.autophagy_map_labels(d)[r]), "q_autophagy"),
+        "q_autophagy": save(leader_map(lambda r: PF.autophagy_map_labels(d)[r]
+                                       .replace(PF.with_group(r), r)), "q_autophagy"),
         "2b_new_to_old": save(new_to_old(obs), "2b_new_to_old"),
         "8a_drug_reached": save(leader_map(text_reached), "8a_drug_reached"),
         "8b_drug_candidates": save(leader_map(text_candidate), "8b_drug_candidates"),
@@ -290,7 +321,6 @@ def main():
         ("new clustering", built["2_new_map"]),
         ("new to old", built["2b_new_to_old"]),
         ("drugs to clusters", brady("Figure8_drug_by_cluster/panels/c_treatment_by_our_region_signed/c_treatment_by_our_region_signed.png")),
-        ("drug reached", built["8a_drug_reached"]),
         ("drug candidates", built["8b_drug_candidates"]),
         ("autophagy PLVAC", built["q_autophagy"]),
     ]

@@ -175,7 +175,7 @@ def panel_d(z):
     FS.use()
     # Twelve labelled compartments do not fit a 46 mm square without labels landing between two
     # points; larger, so every label sits beside its own point.
-    fig, ax = FS.square_figure(side_mm=66.0)
+    fig, ax = FS.square_figure(side_mm=56.0)
     wave = d["comp"].isin(WAVE)
     ax.plot(d.loc[~wave, "coh"] * 100, d.loc[~wave, "auc"], "o", color=FS.CONTROL, ms=4,
             alpha=FS.ALPHA, lw=0, label="continuous (ref.)")
@@ -222,23 +222,14 @@ def panel_e(z):
 
 
 def panel_f(z):
-    """Replicate agreement per compartment: median and interquartile range, as named rows."""
+    """Replicate agreement per gene, per compartment: violins, wave-built in the accent."""
     keys = [k for k in WAVE + CONTINUOUS if len(group(z, k)) >= 5]
     FS.use()
-    fig, ax = FS.figure(len(keys), vertical=False, value_mm=40.0)
-    for y, k in enumerate(keys):
-        v = z.loc[group(z, k).index, "rep_r"].dropna().to_numpy()
-        q1, med, q3 = np.percentile(v, [25, 50, 75])
-        col = FS.ACCENT if k in WAVE else FS.CONTROL
-        ax.hlines(y, q1, q3, color=col, lw=1.2, alpha=FS.ALPHA)
-        ax.plot(med, y, "o", color=col, ms=4, alpha=1.0)
-    ax.set_yticks(range(len(keys))); ax.set_yticklabels(keys)
-    ax.set_ylim(len(keys) - 0.5, -0.5); ax.tick_params(axis="y", length=0)
-    ax.set_xlim(0, 1); ax.set_xticks([0, 0.5, 1.0])
-    ax.set_xlabel("Replicate agreement (Pearson r)")
-    ax.plot([], [], "o-", color=FS.ACCENT, ms=4, label="wave-built")
-    ax.plot([], [], "o-", color=FS.CONTROL, ms=4, label="continuous (ref.)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    short = {"plasma membrane": "plasma memb.", "mitochondrion": "mito."}
+    fig, ax = FS.dist_bars([z.loc[group(z, k).index, "rep_r"].dropna().to_numpy() for k in keys],
+                           [short.get(k, k) for k in keys], highlight=WAVE,
+                           ylabel="Replicate agreement (Pearson r)")
+    ax.set_ylim(-1.05, 1.05)
     from scipy.stats import mannwhitneyu
     rows = [{"compartment": k, "group": "wave-built" if k in WAVE else "continuous",
              "gene_id": gid, "replicate_r": v}

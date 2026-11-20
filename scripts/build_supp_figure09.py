@@ -89,11 +89,10 @@ def main():
     null = np.array([float((rng.permutation(loc.tg.to_numpy()) == loc.pf.to_numpy()).mean() * 100)
                      for _ in range(2000)])
     FS.use()
-    fc, ax = FS.square_figure()
-    ax.hist(null, bins=30, color=FS.CONTROL, alpha=FS.ALPHA, lw=0, label="shuffled pairing")
-    ax.axvline(mapped, color=FS.ACCENT, lw=1.4, label="orthologues")
-    ax.set_xlabel("Same compartment (%)"); ax.set_ylabel("Shuffles")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    lo_, hi_ = np.percentile(null, [2.5, 97.5]); m_ = float(np.mean(null))
+    fc, ax = FS.ref_bars([m_, mapped], ["shuffled", "orthologues"], highlight=["orthologues"],
+                          ylabel="Same compartment (%)")
+    ax.errorbar([0], [m_], yerr=[[m_ - lo_], [hi_ - m_]], fmt="none", ecolor=FS.INK, lw=0.6)
     PP.panel(F, "c", fig=fc, data=pd.DataFrame({"shuffled_same_pct": null}),
              stats={"observed": mapped, "null mean": null.mean(), "null sd": null.std(ddof=1),
                     "permutation p": (1 + int((null >= mapped).sum())) / 2001}, sources=srcs,
@@ -135,11 +134,11 @@ def main():
     nc = np.array([spearmanr(rng.permutation(cc.iloc[:, 0].to_numpy()), cc.iloc[:, 1]).statistic
                    for _ in range(2000)])
     FS.use()
-    ff, ax = FS.square_figure()
-    ax.hist(nc, bins=30, color=FS.CONTROL, alpha=FS.ALPHA, lw=0, label="shuffled pairing")
-    ax.axvline(obs, color=FS.ACCENT, lw=1.4, label="orthologues")
-    ax.set_xlabel("Spearman $\\rho$, codon adaptation"); ax.set_ylabel("Shuffles")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    lo_, hi_ = np.percentile(nc, [2.5, 97.5]); m_ = float(np.mean(nc))
+    ff, ax = FS.ref_bars([m_, obs], ["shuffled", "orthologues"], highlight=["orthologues"],
+                          ylabel="Codon adaptation (Spearman $\\rho$)")
+    ax.errorbar([0], [m_], yerr=[[m_ - lo_], [hi_ - m_]], fmt="none", ecolor=FS.INK, lw=0.6)
+    ax.axhline(0, color=FS.INK, lw=0.6)
     PP.panel(F, "f", fig=ff, data=pd.DataFrame({"shuffled_rho": nc}),
              stats={"observed rho": obs, "null sd": nc.std(ddof=1),
                     "permutation p": (1 + int((nc >= obs).sum())) / 2001, "pairs": len(cc)},

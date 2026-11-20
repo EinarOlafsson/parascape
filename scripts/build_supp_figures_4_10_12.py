@@ -33,20 +33,11 @@ CACHE = os.environ.get("PARASCAPE_CACHE",
 
 
 def pair_rows(labels, ref, val, xlabel, legend, log=False):
+    """Bars (the value), with the reference as a tick when there is one."""
     FS.use()
-    nr = len(labels); rh = 0.2
-    w, h = 1.6 + 1.6 + 1.8, 0.15 + nr * rh + 0.6
-    fig = plt.figure(figsize=(w, h)); ax = fig.add_axes([1.6 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    if ref is not None:
-        ax.hlines(y, ref, val, color=FS.CONTROL, lw=0.6)
-        ax.plot(ref, y, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA, label=legend[0])
-    ax.plot(val, y, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA, label=legend[-1])
-    if log:
-        ax.set_xscale("log")
-    ax.set_yticks(y); ax.set_yticklabels(labels); ax.set_ylim(nr - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0); ax.set_xlabel(xlabel)
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fig, ax = FS.ref_bars(list(val), list(labels), refs=None if ref is None else list(ref),
+                          highlight=list(labels), ref_label=legend[0].replace(" (ref.)", ""),
+                          ylabel=xlabel, log=log)
     return fig
 
 
@@ -69,7 +60,7 @@ def supp4():
     rows = []
     for mn in (500, 1000, 2000, 4000):
         r = lfc.corr(method="spearman", min_periods=mn)
-        a, b = medians(r); rows.append({"variant": f"{mn:,} shared genes", "same": a, "other": b})
+        a, b = medians(r); rows.append({"variant": f">= {mn:,} genes", "same": a, "other": b})
         if mn == 1000:
             base = r
     a, b = medians(base, absval=False); rows.append({"variant": "signed rho", "same": a, "other": b})
@@ -80,7 +71,7 @@ def supp4():
     s2 = np.array([study[c] for c in keep])
     same2 = (s2[:, None] == s2[None, :])[np.triu_indices(len(keep), 1)]
     v = np.abs(base.loc[keep, keep].to_numpy()[np.triu_indices(len(keep), 1)]); ok = ~np.isnan(v)
-    rows.append({"variant": "without the 2 largest studies", "same": float(np.median(v[ok & same2])),
+    rows.append({"variant": "no 2 largest", "same": float(np.median(v[ok & same2])),
                  "other": float(np.median(v[ok & ~same2]))})
     d = pd.DataFrame(rows); d["ratio"] = d.same / d.other
     PP.panel(F, "a", fig=pair_rows(list(d.variant), d.other, d.same, "Median similarity",
@@ -164,11 +155,12 @@ def supp12():
     d = pd.DataFrame(rows).sort_values("coverage_with_rule_pct", ascending=False)
     srcs = [os.path.join(CACHE, "nodes.parquet"), os.path.join(ROOT, "parascape",
                                                                 "information_categories.py")]
-    PP.panel(F, "a", fig=pair_rows(list(d.kind), None, d.set_aside, "Columns set aside",
+    d["short"] = [F1.SHORT_KIND.get(k, k) for k in d.kind]
+    PP.panel(F, "a", fig=pair_rows(list(d.short), None, d.set_aside, "Columns set aside",
                                    ["value for every gene"]),
              data=d, stats={"columns set aside": int(d.set_aside.sum())}, sources=srcs,
              what="columns set aside because they hold a value for every gene")
-    PP.panel(F, "b", fig=pair_rows(list(d.kind), d.coverage_without_rule_pct,
+    PP.panel(F, "b", fig=pair_rows(list(d.short), d.coverage_without_rule_pct,
                                    d.coverage_with_rule_pct, "Genes measured (%)",
                                    ["without the rule (ref.)", "with the rule (figure 1)"]),
              data=d, stats=d, sources=srcs, what="coverage with and without the rule")

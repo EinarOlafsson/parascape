@@ -105,11 +105,10 @@ def main():
         null.append(float(np.nanmedian(ratios[pick])))
     null = np.array(null)
     FS.use()
-    fc, ax = FS.square_figure()
-    ax.hist(null, bins=40, color=FS.CONTROL, alpha=FS.ALPHA, lw=0, label="length-matched sets")
-    ax.axvline(obs, color=FS.ACCENT, lw=1.4, label="dense granules")
-    ax.set_xlabel("Median nonsynonymous / synonymous"); ax.set_ylabel("Random sets")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    lo_, hi_ = np.percentile(null, [2.5, 97.5]); m_ = float(np.mean(null))
+    fc, ax = FS.ref_bars([m_, obs], ["length-matched", "dense gran."], highlight=["dense gran."],
+                          ylabel="Median N/S")
+    ax.errorbar([0], [m_], yerr=[[m_ - lo_], [hi_ - m_]], fmt="none", ecolor=FS.INK, lw=0.6)
     PP.panel(F, "c", fig=fc, data=pd.DataFrame({"null_median_ratio": null}),
              stats={"observed median": obs, "null mean": null.mean(), "null sd": null.std(ddof=1),
                     "permutation p": (1 + int((null >= obs).sum())) / (len(null) + 1),

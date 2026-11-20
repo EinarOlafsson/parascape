@@ -33,7 +33,8 @@ OUT = os.path.join(ROOT, "results", "figure09_v2")
 PNL = os.path.join(OUT, "panels")
 CACHE = os.environ.get("PARASCAPE_CACHE",
                        "/media/carruthers/mnt1/parascape_data/data-0.0.13.1-hostslots")
-COMP_SHORT = {"endoplasmic reticulum": "ER", "plasma membrane": "plasma membrane",
+COMP_SHORT = {"endoplasmic reticulum": "ER", "plasma membrane": "plasma memb.",
+              "mitochondrion": "mito.",
               "golgi": "Golgi", "imc": "IMC", "eif3": "eIF3", "maurer's cleft": "Maurer's cleft",
               "pvm": "PVM"}
 
@@ -121,18 +122,10 @@ def main():
               ("codon bias", r_cai, n_cai), ("length (control)", r_len, n_len)]
     print({a: round(b, 3) for a, b, _ in layers})
     FS.use()
-    nr, rh = len(layers), 0.2
-    w, h = 1.3 + 1.6 + 0.3, 0.15 + nr * rh + 0.6
-    figa = plt.figure(figsize=(w, h))
-    ax = figa.add_axes([1.3 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    for y, (name, v, _n) in enumerate(layers):
-        col = FS.CONTROL if "control" in name else FS.ACCENT
-        ax.hlines(y, 0, v, color=col, lw=0.6)
-        ax.plot(v, y, "o", color=col, ms=4, alpha=FS.ALPHA)
-    ax.axvline(0, color=FS.INK, lw=0.6)
-    ax.set_yticks(range(nr)); ax.set_yticklabels([l[0] for l in layers])
-    ax.set_ylim(nr - 0.5, -0.5); ax.tick_params(axis="y", length=0)
-    ax.set_xlim(-0.1, 1); ax.set_xlabel("Agreement beyond chance ($\\kappa$ or $\\rho$)")
+    figa, ax = FS.ref_bars([l[1] for l in layers], [l[0].replace(" (control)", "") for l in layers],
+                           highlight=["location", "fitness", "codon bias"],
+                           ylabel="Agreement beyond chance ($\\kappa$ or $\\rho$)")
+    ax.set_ylim(0, 1); ax.axhline(0, color=FS.INK, lw=0.6)
 
     # B
     rows_ = loc.tg.value_counts()
@@ -166,20 +159,12 @@ def main():
     f = pd.DataFrame(f, columns=["comp", "agree", "chance", "n"]).sort_values("agree",
                                                                            ascending=False)
     FS.use()
-    nr, rh = len(f), 0.2
-    w, h = 1.3 + 1.6 + 1.6, 0.15 + nr * rh + 0.6
-    figf = plt.figure(figsize=(w, h))
-    ax = figf.add_axes([1.3 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    ax.hlines(y, f["chance"], f["agree"], color=FS.CONTROL, lw=0.6)
-    ax.plot(f["chance"], y, "o", color=FS.CONTROL, ms=3.5, alpha=FS.ALPHA,
-            label="share in Plasmodium (ref.)")
-    ax.plot(f["agree"], y, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA,
-            label="same compartment")
-    ax.set_yticks(y); ax.set_yticklabels([COMP_SHORT.get(c, c) for c in f["comp"]])
-    ax.set_ylim(nr - 0.5, -0.5); ax.tick_params(axis="y", length=0)
-    ax.set_xlim(0, 100); ax.set_xlabel("Orthologues (%)")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    figf, ax = FS.ref_bars(f["agree"].to_numpy(), [COMP_SHORT.get(c, c) for c in f["comp"]],
+                           refs=f["chance"].to_numpy(),
+                           highlight=[COMP_SHORT.get(c, c) for c in f["comp"]],
+                           ref_label="share of the compartment in Plasmodium",
+                           ylabel="Orthologues in the same compartment (%)")
+    ax.set_ylim(0, 105)
     print(f.round(1).to_string(index=False))
 
     import paper_panels as PP

@@ -65,37 +65,29 @@ def main():
                                     ascending=[False, False])["effector"])
     eff_order = [e for e in eff_order if e in moved]
 
-    # A
+    # A: per effector, host genes moved (grey) and those it alone moves (accent)
     a = pe.set_index("effector").loc[eff_order]
+    tl = set(pe[pe.translocon].effector)
     FS.use()
-    figa, ax = rows_fig(len(a))
-    y = np.arange(len(a))
-    ax.hlines(y, a["its_own_only"].clip(lower=1), a["host_genes_moved"], color=FS.CONTROL, lw=0.6)
-    ax.plot(a["host_genes_moved"], y, "o", color=FS.CONTROL, ms=3, alpha=FS.ALPHA,
-            label="all moved (ref.)")
-    ax.plot(a["its_own_only"].clip(lower=1), y, "o", color=FS.ACCENT, ms=3, alpha=FS.ALPHA,
-            label="moved by it alone")
-    ax.set_yticks(y)
-    ax.set_yticklabels([f"{e}*" if t else e for e, t in zip(a.index, a["translocon"])])
-    ax.set_xscale("log"); ax.set_xticks([10, 100, 1000]); ax.minorticks_off()
-    ax.set_xticklabels(["10", "100", "1,000"])
-    ax.set_xlabel("Host genes moved")
-    ax.plot([], [], " ", label="* translocon component")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    figa, ax = FS.grouped_bars([a["host_genes_moved"].to_numpy(), a["its_own_only"].clip(lower=1)
+                                .to_numpy()], ["all moved", "moved by it alone"],
+                               [f"{e}*" if e in tl else e for e in a.index],
+                               ylabel="Host genes moved", log=True)
+    ax.set_yticks([1, 10, 100, 1000]); ax.set_yticklabels(["1", "10", "100", "1,000"])
+    ax.minorticks_off()
     own = a["its_own_only"].sum() / a["host_genes_moved"].sum() * 100
     print(f"host genes moved by one effector alone: {own:.1f} % of effector-gene pairs")
 
-    # B
+    # B: share of host genes moved by at least k effectors
     epg = pd.read_csv(os.path.join(HR, "effectors_per_host_gene.tsv"), sep="\t")
     counts = epg["effectors_moving_it"].value_counts().sort_index()
+    ks = [1, 2, 5, 10]
+    atleast = [float((epg.effectors_moving_it >= k).mean() * 100) for k in ks]
     FS.use()
-    figb, ax = FS.square_figure()
-    ax.bar(counts.index, counts.values, width=0.8, color=FS.CONTROL, alpha=FS.ALPHA, lw=0)
-    ax.set_yscale("log"); ax.set_yticks([1, 10, 100, 1000]); ax.minorticks_off()
-    ax.set_yticklabels(["1", "10", "100", "1,000"])
-    ax.set_xlabel("Effectors moving the host gene"); ax.set_ylabel("Host genes")
-    print(f"host genes moved by >= 2 effectors: "
-          f"{(epg.effectors_moving_it >= 2).mean() * 100:.1f} % of {len(epg)}")
+    figb, ax = FS.ref_bars(atleast, [f">= {k}" for k in ks], highlight=[f">= {k}" for k in ks[1:]],
+                           ylabel="Host genes moved (%)")
+    ax.set_xlabel("Effectors moving the gene"); ax.set_ylim(0, 105)
+    print(f"host genes moved by >= 2 effectors: {atleast[1]:.1f} % of {len(epg)}")
 
     # C
     J = np.array([[len(moved[x] & moved[z]) / max(1, len(moved[x] | moved[z])) * 100
@@ -122,7 +114,7 @@ def main():
                         aggfunc="mean").reindex(columns=eff_order)
     m = m.loc[m.mean(axis=1).sort_values().index]
     FS.use()
-    nr, nc = m.shape; rw, cw = 0.045, 0.14
+    nr, nc = m.shape; rw, cw = 0.024, 0.1
     w, h = 0.75 + nc * cw + 0.9, 0.15 + nr * rw + 0.65
     figd = plt.figure(figsize=(w, h))
     ax = figd.add_axes([0.75 / w, 0.65 / h, nc * cw / w, nr * rw / h])
@@ -167,16 +159,15 @@ def main():
           f"{(dp.parasite_q < .05).sum()}")
 
     # F: host genes moved by the most effectors
-    top = epg.sort_values("effectors_moving_it", ascending=False).head(15)
+    top = epg.sort_values("effectors_moving_it", ascending=False).head(10)
     sym = ht.drop_duplicates("host_id").set_index("host_id")["host_symbol"]
     FS.use()
-    figf, ax = rows_fig(len(top), left=0.8, right=0.3, rh=0.14)
-    yy = np.arange(len(top))
-    ax.hlines(yy, 0, top["effectors_moving_it"], color=FS.ACCENT, lw=0.6, alpha=FS.ALPHA)
-    ax.plot(top["effectors_moving_it"], yy, "o", color=FS.ACCENT, ms=3.5, alpha=FS.ALPHA)
-    ax.set_yticks(yy); ax.set_yticklabels([sym.get(h, h) for h in top["host_id"]],
-                                          fontstyle="italic")
-    ax.set_xlim(0, len(eff_order) + 0.5); ax.set_xlabel("Effectors moving it")
+    names_f = [sym.get(h, h) for h in top["host_id"]]
+    figf, ax = FS.ref_bars(top["effectors_moving_it"].to_numpy(), names_f, highlight=names_f,
+                           ylabel="Effectors moving the gene")
+    for t in ax.get_xticklabels():
+        t.set_fontstyle("italic")
+    ax.set_ylim(0, len(eff_order))
 
     import paper_panels as PP
     F = "figure_10"
@@ -188,8 +179,8 @@ def main():
              "effectors": len(a)}, sources=HRF + [HT], what="host genes moved per effector")
     PP.panel(F, "b", fig=figb, data=counts.rename("host_genes").rename_axis(
              "effectors_moving_it").reset_index(), stats={
-             "host genes moved by >= 2 effectors (%)": float((epg.effectors_moving_it >= 2)
-                                                             .mean() * 100),
+             "host genes moved by >= 2 effectors (%)": atleast[1],
+             **{f"host genes moved by >= {k} effectors (%)": v for k, v in zip(ks, atleast)},
              "host genes": len(epg)}, sources=HRF, what="effectors moving each host gene")
     PP.panel(F, "c", fig=figc, data=pd.DataFrame(J, index=eff_order, columns=eff_order),
              stats={"overlap measure": "Jaccard of host genes moved (%)"}, sources=HRF + [HT],

@@ -97,8 +97,16 @@ def compose(figure_id: str, panels: list, out: str, rows: list | None = None) ->
         if cur:
             fitted.append(cur)
     rows = fitted
+    # Line up the plot tops of a row: a panel whose plot starts lower in its image (a legend
+    # above it) sets the line, the others move down to it.
+    tops = [float(p.get("axes_top_mm", 0.0)) for p in panels]
+    shift = [0.0] * len(images)
+    for r in rows:
+        line = max(tops[i] for i in r)
+        for i in r:
+            shift[i] = line - tops[i]
     row_w = [sum(widths[i] for i in r) + GUTTER_MM * (len(r) - 1) for r in rows]
-    row_h = [max(heights[i] for i in r) + LETTER_STRIP_MM for r in rows]
+    row_h = [max(heights[i] + shift[i] for i in r) + LETTER_STRIP_MM for r in rows]
     total_w = max(row_w)
     total_h = sum(row_h) + GUTTER_MM * (len(rows) - 1)
     for i, w in enumerate(widths):
@@ -118,7 +126,7 @@ def compose(figure_id: str, panels: list, out: str, rows: list | None = None) ->
         x = (total_w - rw) / 2.0            # a short row is centred, not left-ragged
         for i in r:
             w, h = widths[i], heights[i]
-            y = y_top - LETTER_STRIP_MM - h
+            y = y_top - LETTER_STRIP_MM - shift[i] - h
             ax = fig.add_axes([x / total_w, y / total_h, w / total_w, h / total_h])
             ax.imshow(images[i])
             ax.set_axis_off()

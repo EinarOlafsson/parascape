@@ -48,24 +48,10 @@ def summary(table, assignment):
 
 
 def rows_fig(labels, values, chosen, xlabel, ref=None, ref_label=None):
+    """Bars per variant, the figure-3 choice in the accent; an optional second measure as a tick."""
     FS.use()
-    nr = len(labels); rh = 0.2
-    w, h = 1.3 + 1.6 + 1.6, 0.15 + nr * rh + 0.6
-    fig = plt.figure(figsize=(w, h))
-    ax = fig.add_axes([1.3 / w, 0.6 / h, 1.6 / w, nr * rh / h])
-    y = np.arange(nr)
-    for yy, lab, v in zip(y, labels, values):
-        col = FS.ACCENT if lab == chosen else FS.CONTROL
-        ax.hlines(yy, 0, v, color=col, lw=0.6, alpha=FS.ALPHA)
-        ax.plot(v, yy, "o", color=col, ms=4, alpha=FS.ALPHA)
-    if ref is not None:
-        for yy, r in zip(y, ref):
-            ax.plot(r, yy, "o", color=FS.DARK_GREY, ms=3, mfc="white")
-        ax.plot([], [], "o", color=FS.DARK_GREY, mfc="white", label=ref_label)
-    ax.set_yticks(y); ax.set_yticklabels(labels); ax.set_ylim(nr - 0.5, -0.5)
-    ax.tick_params(axis="y", length=0); ax.set_xlabel(xlabel)
-    ax.plot([], [], "o", color=FS.ACCENT, label="choice in figure 3")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fig, ax = FS.ref_bars(list(values), list(labels), refs=None if ref is None else list(ref),
+                          highlight=[chosen], ref_label=ref_label or "", ylabel=xlabel)
     return fig
 
 
@@ -133,11 +119,12 @@ def main():
     # D: module sizes
     sizes = asg.value_counts().sort_values(ascending=False)
     FS.use()
-    figd, ax = FS.square_figure()
-    ax.hist(sizes.values, bins=20, color=FS.CONTROL, alpha=FS.ALPHA, lw=0, label="modules")
-    ax.axvline(CM.MIN_MODULE, color=FS.ACCENT, lw=1.2, label=f"minimum ({CM.MIN_MODULE} genes)")
-    ax.set_xlabel("Genes per module"); ax.set_ylabel("Modules")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    figd, ax = FS.ref_bars(sizes.values, [f"M{m}" for m in sizes.index],
+                           highlight=[f"M{m}" for m, v in sizes.items() if v >= CM.MIN_MODULE],
+                           ylabel="Genes per module", log=True)
+    ax.axhline(CM.MIN_MODULE, color=FS.INK, lw=0.6, ls=(0, (1.5, 1.5)),
+               label=f"minimum ({CM.MIN_MODULE} genes)")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
     PP.panel(F, "d", fig=figd, data=sizes.rename("genes").rename_axis("module").reset_index(),
              stats={"modules": len(sizes), f"below {CM.MIN_MODULE} genes":
                     int((sizes < CM.MIN_MODULE).sum()), "median size": float(sizes.median())},
