@@ -104,9 +104,16 @@ def main():
     g = pair_groups(rho, study, axis)
     for k, v in g.items():
         print(f"  {k.replace(chr(10), ' '):24s} n={len(v):6d} median |rho| {np.median(v):.3f}")
-    figa = violin_panel(list(g.values()), ["same kind", "other kind"] * 2, [2, 3],
-                        "Similarity (|Spearman $\\rho$|)",
-                        [("same study", FS.ACCENT), ("other study (ref.)", FS.CONTROL)])
+    # Three groups, in the order the question asks (Einar storyboard 2026-11-20): same study;
+    # another study, same perturbation type; another study, another type.
+    g3 = {"same study": np.concatenate([g["same study\nsame kind"], g["same study\nother kind"]]),
+          "other study,\nsame type": g["other study\nsame kind"],
+          "other study,\nother type": g["other study\nother kind"]}
+    FS.use()
+    figa, ax = FS.dist_bars(list(g3.values()), ["same study", "other, same type",
+                                                "other, other type"],
+                            highlight=["same study"], ylabel="Spearman $\\rho$ (absolute)")
+    ax.set_ylim(0, 1)
 
     # B: heatmap grouped by study, block outlines
     FS.use()
@@ -115,7 +122,7 @@ def main():
     edges = np.flatnonzero(np.array([study[c] for c in cols][1:]) !=
                            np.array([study[c] for c in cols][:-1])) + 0.5
     ax.set_xticks([]); ax.set_yticks([])
-    ax.set_xlabel("Contrasts, grouped by study"); ax.set_ylabel("Contrasts, grouped by study")
+    ax.set_xlabel("Contrasts (by study)"); ax.set_ylabel("Contrasts (by study)")
     cb = figb.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
     cb.set_label("Spearman $\\rho$"); cb.outline.set_linewidth(0.6)
 
@@ -131,10 +138,10 @@ def main():
         ari_s.append(adjusted_rand_score(s_lab, lab)); ari_a.append(adjusted_rand_score(a_lab, lab))
     FS.use()
     figc, ax = FS.square_figure()
-    ax.plot(ks, ari_a, color=FS.CONTROL, lw=1.2, label="kind of perturbation (ref.)")
+    ax.plot(ks, ari_a, color=FS.CONTROL, lw=1.2, label="perturbation type")
     ax.plot(ks, ari_s, color=FS.ACCENT, lw=1.2, label="study")
     ax.axhline(0, color=FS.INK, lw=0.6)
-    ax.set_xlabel("Clusters of contrasts"); ax.set_ylabel("Adjusted Rand index")
+    ax.set_xlabel("Clusters"); ax.set_ylabel("Adjusted Rand index")
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     print(f"  ARI at 19 clusters: study {ari_s[17]:.3f}, kind {ari_a[17]:.3f}")
 
@@ -174,8 +181,8 @@ def main():
     ax.set_xlim(-lx, lx); ax.set_ylim(-ly, ly)
     ax.axhline(0, color=FS.INK, lw=0.4); ax.axvline(0, color=FS.INK, lw=0.4)
     ax.plot([], [], " ", label=f"Spearman $\\rho$ = {r_e:.2f}")
-    ax.set_xlabel("BFD1 loss, laboratory 1 (log$_2$ FC)")
-    ax.set_ylabel("BFD1 loss, laboratory 2 (log$_2$ FC)")
+    ax.set_xlabel("$\\Delta$bfd1, lab 1 (log$_2$ FC)")
+    ax.set_ylabel("$\\Delta$bfd1, lab 2 (log$_2$ FC)")
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     within_a = R.loc[BFD1_A, [c for c in cols if study[c] == study[BFD1_A] and c != BFD1_A]]
     print(f"  BFD1 across labs rho {r_e:.3f} over {len(both)} genes; median |rho| of lab-1 "
@@ -195,10 +202,10 @@ def main():
           "study mean\nremoved,\nother kind": g2["other study\nother kind"]}
     for k, v in gf.items():
         print(f"  F {k.replace(chr(10), ' '):34s} median {np.median(v):.3f}")
-    figf = violin_panel(list(gf.values()), ["same kind", "other kind"] * 2, [0, 1],
-                        "Similarity across studies (|$\\rho$|)",
-                        [("as published (ref.)", FS.CONTROL),
-                         ("study mean removed", FS.ACCENT)])
+    figf = violin_panel(list(gf.values()), ["same type", "other type"] * 2, [0, 1],
+                        "Spearman $\\rho$ (absolute)",
+                        [("as published", FS.CONTROL),
+                         ("lab mean subtracted", FS.ACCENT)])
 
     import paper_panels as PP
     from scipy.stats import mannwhitneyu
@@ -212,7 +219,10 @@ def main():
     ga = long(g)
     u1 = mannwhitneyu(g["same study\nsame kind"], g["other study\nsame kind"], alternative="greater")
     u2 = mannwhitneyu(g["other study\nsame kind"], g["other study\nother kind"], alternative="greater")
-    PP.panel(F, "a", fig=figa, data=ga, stats=pd.DataFrame(
+    PP.panel(F, "a", fig=figb, data=rho, stats={"contrasts": len(cols),
+             "studies": len(set(s_lab))}, sources=ATLAS,
+             what="all contrast similarities, grouped by study")
+    PP.panel(F, "b", fig=figa, data=ga, stats=pd.DataFrame(
         [{"group": k.replace(chr(10), " "), "pairs": len(v), "median_abs_rho": float(np.median(v))}
          for k, v in g.items()] +
         [{"group": "Mann-Whitney same study/same kind > other study/same kind",
@@ -220,23 +230,17 @@ def main():
          {"group": "Mann-Whitney other study: same kind > other kind",
           "pairs": None, "median_abs_rho": None, "U": u2.statistic, "p": u2.pvalue}]),
              sources=ATLAS, what="similarity of every pair of contrasts by study and kind")
-    PP.panel(F, "b", fig=figb, data=rho, stats={"contrasts": len(cols),
-             "studies": len(set(s_lab))}, sources=ATLAS,
-             what="all contrast similarities, grouped by study")
     PP.panel(F, "c", fig=figc, data=pd.DataFrame({"clusters": ks, "ARI_study": ari_s,
              "ARI_kind": ari_a}), stats={"ARI study at 19 clusters": ari_s[17],
              "ARI kind at 19 clusters": ari_a[17], "linkage": "average, 1 - |rho|"},
              sources=ATLAS, what="cluster recovery of study vs kind of perturbation")
-    PP.panel(F, "d", fig=figd, data=dd, stats={"studies with within > across": int(
-        (dd.within > dd.across).sum()), "studies": len(dd)}, sources=ATLAS,
-             what="per study: similarity within vs to other studies")
-    PP.panel(F, "e", fig=fige, data=both.rename(columns={BFD1_A: "laboratory_1_log2fc",
+    PP.panel(F, "d", fig=fige, data=both.rename(columns={BFD1_A: "laboratory_1_log2fc",
              BFD1_B: "laboratory_2_log2fc"}).rename_axis("gene_id"),
              stats={"Spearman rho": r_e, "genes": len(both), "laboratory 1": BFD1_A,
                     "laboratory 2": BFD1_B,
                     "median |rho| of lab-1 contrast to its own study": float(within_a.median())},
              sources=ATLAS, what="BFD1 loss in two laboratories")
-    PP.panel(F, "f", fig=figf, data=long(gf), stats=pd.DataFrame(
+    PP.panel(F, "e", fig=figf, data=long(gf), stats=pd.DataFrame(
         [{"group": k.replace(chr(10), " "), "pairs": len(v), "median_abs_rho": float(np.median(v))}
          for k, v in gf.items()]), sources=ATLAS,
              what="cross-study similarity after removing each study's mean response")
