@@ -91,7 +91,7 @@ def main():
     figa, ax = FS.ref_bars(bc["ratio"].to_numpy(), sn, refs=bc["length_matched_baseline"].to_numpy(),
                            highlight=[SHORT.get(c, c) for c in SECRETED],
                            ref_label="length-matched random genes",
-                           ylabel="Nonsynonymous / synonymous")
+                           ylabel="pN/pS")
 
     # B: per-gene distribution per class
     groups = {c: pg.loc[pg["class"] == c, "ratio"].to_numpy() for c in order}
@@ -99,7 +99,7 @@ def main():
     FS.use()
     figb, ax = FS.dist_bars([np.clip(groups[c], None, 8) for c in order], sn,
                             highlight=[SHORT.get(c, c) for c in SECRETED],
-                            ylabel="Nonsynonymous / synonymous", ref_line=allmed,
+                            ylabel="pN/pS", ref_line=allmed,
                             ref_label="genome median")
 
     # C: per-gene pLDDT per class
@@ -130,7 +130,7 @@ def main():
     ax.set_yscale("log")
     ax.set_yticks([0.1, 1, 10]); ax.set_yticklabels(["0.1", "1", "10"]); ax.minorticks_off()
     ax.set_xlabel("AlphaFold DB mean pLDDT")
-    ax.set_ylabel("Nonsynonymous / synonymous")
+    ax.set_ylabel("pN/pS")
     FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     print(f"  ratio vs pLDDT: Spearman {rho:.3f} over {len(dd)} genes")
 
@@ -139,12 +139,15 @@ def main():
     vals = np.array([v for v in raw.values() if isinstance(v, (int, float))], float)
     FS.use()
     fige, ax = FS.square_figure()
-    ax.hist(vals, bins=np.linspace(0, 1, 21), color=FS.CONTROL, alpha=FS.ALPHA, lw=0,
-            label="host-facing proteins")
+    xs_ = np.sort(vals)
+    ax.step(xs_, np.arange(1, len(xs_) + 1) / len(xs_) * 100, where="post", color=FS.ACCENT,
+            lw=1.2, label="host-facing proteins")
     ax.axvline(CUT, color=FS.INK, lw=0.6, ls="--", label="co-folding admission cut")
-    ax.axvline(float(raw[MYR1]), color=FS.ACCENT, lw=1.4, label="MYR1")
-    ax.set_xlabel("Residues with pLDDT $\\geq$ 70 (fraction)"); ax.set_ylabel("Proteins")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    ax.scatter([float(raw[MYR1])], [float((vals <= raw[MYR1]).mean() * 100)], s=24,
+               color=FS.MAGENTA, zorder=4, label="MYR1")
+    ax.set_xlabel("Residues with pLDDT > 70 (fraction)"); ax.set_ylabel("Proteins (cumulative %)")
+    ax.set_ylim(0, 100)
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
     print(f"  baits {len(vals)}, below cut {(vals < CUT).mean() * 100:.1f} %")
 
     # F
@@ -169,45 +172,34 @@ def main():
     figf, ax = FS.ref_bars(top["ratio"].to_numpy(), [name(a, b) for a, b in
                                                      zip(top.index, top["product"])],
                            highlight=[name(a, b) for a, b in zip(top.index, top["product"])],
-                           ylabel="Nonsynonymous / synonymous", log=True)
+                           ylabel="pN/pS", log=True)
     ax.axhline(allmed, color=FS.INK, lw=0.6, ls=(0, (1.5, 1.5)), label="genome median")
     FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
     ax.set_yticks([1, 3, 10]); ax.set_yticklabels(["1", "3", "10"]); ax.minorticks_off()
 
     import paper_panels as PP
-    F = "figure_8"
+    F = "figure_11__final"
     from scipy.stats import kruskal, mannwhitneyu
     SVF = [os.path.join(SV, f) for f in ("by_class.tsv", "per_gene.tsv", "summary.json")]
     NOD = (os.path.join(CACHE, "nodes.parquet"), ["mean_plddt", "product", "snp_nonsynonymous",
                                                     "snp_synonymous"])
-    PP.panel(F, "a", fig=figa, data=bc, stats=bc[["class", "genes", "ratio",
-             "length_matched_baseline", "over_detection_limit", "p", "q"]], sources=SVF,
-             what="N/S ratio per class vs length-matched random genes")
     kw = kruskal(*[v[~np.isnan(v)] for v in groups.values()])
-    PP.panel(F, "b", fig=figb, data=pg, stats=pd.DataFrame(
+    r_ = spearmanr(dd["ratio"], dd["plddt"])
+    PP.panel(F, "a", fig=figb, data=pg, stats=pd.DataFrame(
         [{"class": c, "genes": int(np.sum(~np.isnan(v))), "median": float(np.nanmedian(v))}
          for c, v in groups.items()] + [{"class": "Kruskal-Wallis across classes",
                                          "H": kw.statistic, "p": kw.pvalue}]),
-             sources=SVF, what="per-gene N/S ratios per class")
+             sources=SVF, what="pN/pS per gene, per protein class")
     sec_v = np.concatenate([v[~np.isnan(v)] for c, v in groups_c.items() if c in SECRETED])
     oth_v = np.concatenate([v[~np.isnan(v)] for c, v in groups_c.items() if c not in SECRETED])
     u = mannwhitneyu(sec_v, oth_v, alternative="less")
-    PP.panel(F, "c", fig=figc, data=pd.concat([pd.DataFrame({"class": c, "mean_plddt": v})
-             for c, v in groups_c.items()]), stats={"median pLDDT, secreted classes":
-             float(np.median(sec_v)), "median pLDDT, other classes": float(np.median(oth_v)),
-             "Mann-Whitney U (secreted < other)": u.statistic, "p": u.pvalue},
-             sources=SVF + [NOD], what="AlphaFold DB pLDDT per class")
-    r_ = spearmanr(dd["ratio"], dd["plddt"])
-    PP.panel(F, "d", fig=figd, data=dd.assign(dense_granule=isdg).rename_axis("gene_id"),
+    PP.panel(F, "b", fig=figd, data=dd.assign(dense_granule=isdg).rename_axis("gene_id"),
              stats={"Spearman rho": r_.statistic, "p": r_.pvalue, "genes": len(dd)},
              sources=SVF + [NOD], what="per gene: strain variation vs pLDDT")
-    PP.panel(F, "e", fig=fige, data=pd.Series(raw, name="folded_fraction").rename_axis(
+    PP.panel(F, "c", fig=fige, data=pd.Series(raw, name="folded_fraction").rename_axis(
              "gene_id").reset_index(), stats={"proteins": len(vals), "admission cut": CUT,
              "below cut (%)": float((vals < CUT).mean() * 100), "MYR1": float(raw[MYR1])},
              sources=[BAITS], what="host-facing baits: residues with pLDDT >= 70")
-    PP.panel(F, "f", fig=figf, data=top.rename_axis("gene_id"), stats={
-             "genome median N/S": allmed}, sources=SVF + [NOD],
-             what="the most variable dense-granule proteins")
     out = PP.compose(F, "main", "Secreted effectors vary between strains far more than housekeeping genes, and the most variable are the most disordered.", rows=[3, 3])
     print("figure 8 ->", out)
 

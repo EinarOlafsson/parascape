@@ -33,7 +33,7 @@ sys.path.insert(0, ROOT)
 from parascape import figstyle as FS      # noqa: E402
 
 #: The gutter between panels, in ems, so it scales with the font like everything else.
-GUTTER_EM = 0.5          # Einar 2026-11-20: far less whitespace between panels (was 1.2)
+GUTTER_EM = 0.8          # Einar 2026-11-20: far less whitespace between panels (was 1.2)
 GUTTER_MM = GUTTER_EM * FS.EM_MM
 
 #: A strip above each panel holds its letter, so the letter never sits on an axis title.

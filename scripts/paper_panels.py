@@ -160,8 +160,13 @@ def manifest(figure: str, kind: str, title: str, composed_png: str, layout: str 
 
 
 def compose(figure: str, kind: str, title: str, rows=None, per_row: int = 6) -> str:
-    """Compose the exported panels of `figure` (A4, true size) and write its manifest."""
+    """Compose the exported panels of `figure` (A4, true size) and write its manifest.
+
+    With PP_NO_COMPOSE set, nothing is composed: a wrapper running several builders into one
+    figure composes once at the end (figure 11 = effectors + host response)."""
     figure = canonical(figure)
+    if os.environ.get("PP_NO_COMPOSE"):
+        return ""
     import assemble_paper_figures as A
     A.PER_ROW = per_row
     panels = [{"png": p["png"], "letter": p["letter"], "scale": p["scale"],
