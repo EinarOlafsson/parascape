@@ -80,8 +80,8 @@ def panel(figure: str, letter: str, fig=None, png: str | None = None, data=None,
             big = max(axs, key=lambda a: a.get_position().width * a.get_position().height)
             top_in = big.get_window_extent(r).y1 / fig.dpi
             axes_top_mm = max(0.0, (tight.y1 + 0.02 - top_in) * 25.4)
-        fig.savefig(stem + ".png", dpi=600, bbox_inches="tight", pad_inches=0.02)
-        fig.savefig(stem + ".pdf", bbox_inches="tight", pad_inches=0.02)
+        fig.savefig(stem + ".png", dpi=600, bbox_inches="tight", pad_inches=0.005)
+        fig.savefig(stem + ".pdf", bbox_inches="tight", pad_inches=0.005)
         plt.close(fig)
     elif png is not None:
         shutil.copyfile(png, stem + ".png")
