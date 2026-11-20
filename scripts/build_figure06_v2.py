@@ -104,7 +104,7 @@ def panel_b(z):
         if len(g) >= 5:
             ax.plot(HOURS, g.mean(), color=FS.SERIES[i % len(FS.SERIES)], lw=1.0,
                     alpha=FS.ALPHA, label=key)
-    ax.plot([], [], color=FS.CONTROL, lw=1.0, label="continuous (ref.)")
+    ax.plot([], [], color=FS.CONTROL, lw=1.0, label="other niches")
     ax.axhline(0, color=FS.INK, lw=0.6)
     ax.set_xlabel("Time after release (h)"); ax.set_ylabel("Mean expression (z)")
     ax.set_xticks([2, 4, 6, 8, 10, 12])
@@ -114,7 +114,7 @@ def panel_b(z):
         g = group(z, key)
         if len(g) >= 5:
             for h, v in g.mean().items():
-                rows.append({"compartment": key, "group": "wave-built" if key in WAVE
+                rows.append({"compartment": key, "group": "S/M subtranscriptome" if key in WAVE
                              else "continuous", "hour": h, "mean_z": v, "genes": len(g)})
     fig._data = pd.DataFrame(rows)
     fig._stats = {f"genes, {k}": len(group(z, k)) for k in WAVE + CONTINUOUS}
@@ -143,7 +143,7 @@ def panel_c(z):
     for t, k in zip(ax.get_yticklabels(), keys):
         t.set_color(FS.ACCENT if k in WAVE else FS.INK)
     ax.axhline(len([k for k in keys if k in WAVE]) - 0.5, color=FS.INK, lw=0.6)
-    ax.set_xticks([2, 4, 6, 8, 10, 12]); ax.set_xlabel("Hour of peak expression")
+    ax.set_xticks([2, 4, 6, 8, 10, 12]); ax.set_xlabel("Time of peak expression (h)")
     ax.tick_params(axis="y", length=0)
     cb = fig.colorbar(im, ax=ax, fraction=0.05, pad=0.04)
     cb.set_label("Genes peaking (%)"); cb.outline.set_linewidth(0.6)
@@ -175,19 +175,17 @@ def panel_d(z):
     FS.use()
     # Twelve labelled compartments do not fit a 46 mm square without labels landing between two
     # points; larger, so every label sits beside its own point.
-    fig, ax = FS.square_figure(side_mm=56.0)
+    fig, ax = FS.square_figure()
     wave = d["comp"].isin(WAVE)
     ax.plot(d.loc[~wave, "coh"] * 100, d.loc[~wave, "auc"], "o", color=FS.CONTROL, ms=4,
-            alpha=FS.ALPHA, lw=0, label="continuous (ref.)")
+            alpha=FS.ALPHA, lw=0, label="other niches")
     ax.plot(d.loc[wave, "coh"] * 100, d.loc[wave, "auc"], "o", color=FS.ACCENT, ms=4,
-            alpha=FS.ALPHA, lw=0, label="wave-built")
+            alpha=FS.ALPHA, lw=0, label="S/M subtranscriptome")
     FS.pad_limits(ax, d["coh"] * 100, axis="x", frac=0.3)
     FS.pad_limits(ax, d["auc"], axis="y", frac=0.12)
-    FS.place_labels(ax, fig, list(zip(d["coh"] * 100, d["auc"])), list(d["comp"]),
-                    [FS.ACCENT if w else FS.CONTROL for w in wave])
     ax.set_xlabel("Genes peaking at the modal hour (%)")
     ax.set_ylabel("AUC, RNA only")
-    FS.legend(ax, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
     from scipy.stats import spearmanr
     r = spearmanr(d["coh"], d["auc"])
     fig._data = d.rename(columns={"coh": "share_peaking_at_modal_hour", "auc": "auc_rna_only"})
@@ -204,10 +202,10 @@ def panel_e(z):
         for _, row in g.head(60).iterrows():
             ax.plot(HOURS, row.to_numpy(), color=col, lw=0.4, alpha=0.25)
         ax.plot(HOURS, g.mean(), color=col, lw=1.4, alpha=1.0,
-                label=f"{key}{' (ref.)' if col == FS.CONTROL else ''}")
-    ax.set_xlabel("Time after release (h)"); ax.set_ylabel("Expression (z)")
+                label=key)
+    ax.set_xlabel("Time (h)"); ax.set_ylabel("mRNA level (z-score)")
     ax.set_xticks([2, 4, 6, 8, 10, 12])
-    FS.legend(ax, loc="upper left")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
     rows = []
     for key in ("plasma membrane", "rhoptries"):
         g = group(z, key)
@@ -231,11 +229,11 @@ def panel_f(z):
                            ylabel="Replicate agreement (Pearson r)")
     ax.set_ylim(-1.05, 1.05)
     from scipy.stats import mannwhitneyu
-    rows = [{"compartment": k, "group": "wave-built" if k in WAVE else "continuous",
+    rows = [{"compartment": k, "group": "S/M subtranscriptome" if k in WAVE else "continuous",
              "gene_id": gid, "replicate_r": v}
             for k in keys for gid, v in z.loc[group(z, k).index, "rep_r"].dropna().items()]
     fig._data = pd.DataFrame(rows)
-    w = fig._data[fig._data.group == "wave-built"]["replicate_r"]
+    w = fig._data[fig._data.group == "S/M subtranscriptome"]["replicate_r"]
     c = fig._data[fig._data.group == "continuous"]["replicate_r"]
     u = mannwhitneyu(w, c, alternative="greater")
     fig._stats = {"median r, wave-built": w.median(), "median r, continuous": c.median(),
@@ -249,7 +247,7 @@ def main():
     z = profiles()
     print(f"{len(z):,} genes with a cell-cycle profile and a compartment")
     import paper_panels as PP
-    F = "figure_6"
+    F = "figure_5__final"
     a = newest("coexpression_components_localization_*/panel_which_evidence_places_a_protein.png")
     sc = newest("coexpression_components_localization_*/scores.tsv")
     sd = pd.read_csv(sc, sep="\t")
@@ -263,18 +261,32 @@ def main():
                    "p": w.pvalue})
     nodes = os.path.join(CACHE, "nodes.parquet")
     cc_cols = [f"cellcycle19092_{h}h_r{r}" for h in HOURS for r in (1, 2)] + ["lopit_map"]
-    PP.panel(F, "a", png=a, data=sd, stats=st, sources=[sc],
-             what="placed from RNA alone vs all evidence, per compartment")
-    for letter, fn, what in (("b", panel_b, "mean expression across the cell cycle"),
-                             ("c", panel_c, "hour of peak expression per compartment"),
-                             ("d", panel_d, "timing coherence vs placeability from RNA"),
-                             ("e", panel_e, "single-gene trajectories"),
-                             ("f", panel_f, "replicate agreement per compartment")):
+    # Storyboard 2026-11-20: A when each niche is transcribed (heatmap, grouped by
+    # subtranscriptome); B what that looks like gene by gene; C RNA alone places the S/M niches as
+    # well as all data; D why: the tighter the timing, the better RNA places the niche.
+    for letter, fn, what in (("a", panel_c, "hour of peak expression per hyperLOPIT niche"),
+                             ("b", panel_e, "single-gene profiles, rhoptries vs plasma membrane")):
         f = fn(z)
-        srcs = [(nodes, cc_cols)] + ([sc] if letter == "d" else [])
-        PP.panel(F, letter, fig=f, data=f._data, stats=f._stats, sources=srcs, what=what)
-    out = PP.compose(F, "main", "Organelles built in waves during division can be placed from "
-                     "transcription alone; those made continuously cannot.", rows=[3, 3])
+        PP.panel(F, letter, fig=f, data=f._data, stats=f._stats, sources=[(nodes, cc_cols)],
+                 what=what)
+    FS.use()
+    figc, ax = FS.square_figure()
+    sm = sd["niche"].isin(WAVE)
+    ax.plot([0.5, 1], [0.5, 1], color=FS.BACKGROUND, lw=0.6, label="RNA = all data")
+    ax.scatter(sd.loc[~sm, "coexp_cv_auc"], sd.loc[~sm, "all_evidence_cv_auc"], s=20,
+               color=FS.CONTROL, alpha=0.8, lw=0, label="other niches")
+    ax.scatter(sd.loc[sm, "coexp_cv_auc"], sd.loc[sm, "all_evidence_cv_auc"], s=20,
+               color=FS.ACCENT, alpha=0.8, lw=0, label="S/M subtranscriptome")
+    ax.set_xlim(0.6, 1.02); ax.set_ylim(0.6, 1.02)
+    ax.set_xlabel("AUC, RNA only"); ax.set_ylabel("AUC, all data")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    PP.panel(F, "c", fig=figc, data=sd, stats=st, sources=[sc],
+             what="placement from RNA alone vs all data, per niche")
+    f = panel_d(z)
+    PP.panel(F, "d", fig=f, data=f._data, stats=f._stats, sources=[(nodes, cc_cols), sc],
+             what="timing coherence vs placement from RNA alone")
+    out = PP.compose(F, "main", "Proteins of organelles transcribed in the S/M subtranscriptome "
+                     "are placed from RNA alone.")
     print("figure 6 ->", out)
 
 
