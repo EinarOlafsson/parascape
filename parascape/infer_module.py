@@ -638,8 +638,15 @@ def build(window) -> ModuleShell | None:
     return InferModule(window).shell
 
 
-def open_in(window) -> str:
-    """Show the Infer module over the window."""
+def open_in(window, genes: str = "") -> str:
+    """Show the Infer module over the window, with `genes` filled in as your genes.
+
+    :param window: the main window.
+    :param genes: one gene or several separated by commas -- the genes selected where the
+        module was opened from (Einar 2026-11-24: "if I have a gene selected then press
+        predict from links, the selected gene should auto be filled in"). Empty keeps
+        whatever the module already held.
+    """
     from .landing_install import enter_landing
     landing = getattr(window, "landing", None)
     shell = getattr(window, "infer_module", None)
@@ -647,6 +654,10 @@ def open_in(window) -> str:
         return "the Infer module is not available in this window"
     landing.show_module(shell)
     enter_landing(window)
+    if genes:
+        module = shell.module
+        module.field.setText(", ".join(g.strip() for g in str(genes).split(",") if g.strip()))
+        module._typed()
     return "Infer"
 
 

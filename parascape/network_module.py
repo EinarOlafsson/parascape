@@ -50,9 +50,26 @@ MAX_BACKGROUND_LINKS = 30000
 
 class NetworkView(QtWidgets.QWidget):
     """Every gene and the chosen links, in software, with a camera: wheel zooms about the
-    pointer, drag pans, a click picks the nearest gene."""
+    pointer, drag pans, a click picks the nearest gene or, between genes, the nearest bright
+    link; shift+drag draws a box and selects every gene inside it.
+
+    Speed (Einar 2026-11-24: "takes a while to load"): the faint links and the faint genes
+    are built ONCE per choice of links / focus as shapes in data coordinates (`QPainterPath`
+    per layer, `QPolygonF` per colour), and drawing them is one transformed call each with
+    a cosmetic pen. Building 30,000 `QLineF` and 8,000 ellipses in Python on every redraw
+    took 0.6-0.7 s. The genes are drawn live on every paint and never from the cached
+    image, so they stay round and sharp while the image of the links is stretched during
+    a zoom ("the nodes look pixelated").
+    """
 
     picked = QtCore.Signal(int)
+    #: Genes inside a shift+drag box, as positions in the gene table.
+    selected = QtCore.Signal(list)
+    #: A bright link clicked: the two genes it joins.
+    link_picked = QtCore.Signal(int, int)
+
+    #: Radius in pixels of a faint (far) gene.
+    FAR_RADIUS = 1.7
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -66,29 +83,77 @@ class NetworkView(QtWidgets.QWidget):
         self.sharp = NR.SHARP_HOPS
         self.center = np.zeros(2)
         self.zoom = 1.0                                 # pixels per data unit / base
+        self.chosen_link = None                         # (a, b) of a clicked link, drawn marked
         self._drag = None
         self._moved = False
+        self._band = None                               # (origin, QRubberBand) while shift-dragging
         self._cache = None                              # (image, center, zoom, size)
+        self._line_paths: dict = {}                     # layer -> QPainterPath in data coordinates
+        self._line_key = None
+        self._far_dots: list = []                       # [(QColor, QPolygonF)] in data coordinates
         self._animation = None
         self.redraw_timer = QtCore.QTimer(self)
         self.redraw_timer.setSingleShot(True)
-        self.redraw_timer.setInterval(140)
+        self.redraw_timer.setInterval(90)
         self.redraw_timer.timeout.connect(self._render_background)
         self.setMinimumHeight(260)
         self.setCursor(QtCore.Qt.CursorShape.OpenHandCursor)
         self.setMouseTracking(False)
 
     # ------------------------------------------------------------------ data
-    def set_data(self, xy, colours, links, dist, focus, names=None) -> None:
-        """Positions, gene colours, chosen links, link steps from the focus, and the focus."""
+    def set_data(self, xy, colours, links, dist, focus, names=None, links_key=None) -> None:
+        """Positions, gene colours, chosen links, link steps from the focus, and the focus.
+
+        `links_key` names the choice the links came from (kinds, strength, arrangement); while
+        it is unchanged the faint link shapes are reused, so moving the focus is quick.
+        """
+        self._links_key = links_key
         self.xy = np.asarray(xy, dtype=float)
         self.colours = [QtGui.QColor(*c) for c in colours]
         self.links = links
         self.dist = np.asarray(dist, dtype=float)
         self.focus = list(focus)
         self.names = names or {}
+        self.chosen_link = None
+        self._build_shapes()
         self._cache = None
         self._render_background()
+
+    def _build_shapes(self) -> None:
+        """The faint links (per layer) and the faint genes (per colour) as shapes in data
+        coordinates. The links are rebuilt only when the links or the positions change."""
+        links = self.links
+        key = ((getattr(self, "_links_key", None),) if getattr(self, "_links_key", None) is not None
+               else (id(links),)) + (len(links) if links is not None else 0, len(self.xy),
+                                     float(self.xy[:, 0].sum()) if len(self.xy) else 0.0)
+        if key != self._line_key:
+            self._line_paths = {}
+            if links is not None and len(links) and len(self.xy):
+                if len(links) > MAX_BACKGROUND_LINKS:
+                    links = links.nlargest(MAX_BACKGROUND_LINKS, "strength")
+                a, b = links["a"].to_numpy(int), links["b"].to_numpy(int)
+                sources = links["source"].astype(str).to_numpy()
+                for layer in pd.unique(sources):
+                    sel = sources == layer
+                    path = QtGui.QPainterPath()
+                    for (x1, y1), (x2, y2) in zip(self.xy[a[sel]].tolist(), self.xy[b[sel]].tolist()):
+                        path.moveTo(x1, y1)
+                        path.lineTo(x2, y2)
+                    self._line_paths[layer] = path
+            self._line_key = key
+        far = (~(self.dist <= self.sharp) if len(self.dist) == len(self.xy)
+               else np.ones(len(self.xy), bool))
+        groups: dict = {}
+        for i in np.flatnonzero(far).tolist():
+            colour = self.colours[i] if i < len(self.colours) else QtGui.QColor("grey")
+            groups.setdefault(colour.rgb(), (colour, []))[1].append(i)
+        self._far_dots = []
+        for colour, members in groups.values():
+            faint = QtGui.QColor(colour)
+            faint.setAlphaF(0.4)
+            points = self.xy[members]
+            self._far_dots.append((faint, QtGui.QPolygonF(
+                [QtCore.QPointF(x, y) for x, y in points.tolist()])))
 
     # ------------------------------------------------------------------ camera
     def _base(self) -> float:
@@ -100,6 +165,13 @@ class NetworkView(QtWidgets.QWidget):
         xy = np.asarray(xy, dtype=float)
         return np.column_stack([self.width() / 2 + (xy[:, 0] - self.center[0]) * s,
                                 self.height() / 2 - (xy[:, 1] - self.center[1]) * s])
+
+    def transform(self) -> QtGui.QTransform:
+        """The camera as a painter transform from data coordinates to widget pixels (the same
+        mapping as `to_screen`)."""
+        s = self._base() * self.zoom
+        return QtGui.QTransform(s, 0.0, 0.0, -s, self.width() / 2 - self.center[0] * s,
+                                self.height() / 2 + self.center[1] * s)
 
     def fit(self) -> None:
         """Show the whole network."""
@@ -148,11 +220,23 @@ class NetworkView(QtWidgets.QWidget):
         event.accept()
 
     def mousePressEvent(self, event):                     # noqa: N802
+        if event.modifiers() & QtCore.Qt.KeyboardModifier.ShiftModifier:
+            origin = event.position().toPoint()
+            band = QtWidgets.QRubberBand(QtWidgets.QRubberBand.Shape.Rectangle, self)
+            band.setGeometry(QtCore.QRect(origin, QtCore.QSize()))
+            band.show()
+            self._band = (origin, band)
+            self.setCursor(QtCore.Qt.CursorShape.CrossCursor)
+            return
         self._drag = event.position()
         self._moved = False
         self.setCursor(QtCore.Qt.CursorShape.ClosedHandCursor)
 
     def mouseMoveEvent(self, event):                      # noqa: N802
+        if self._band is not None:
+            origin, band = self._band
+            band.setGeometry(QtCore.QRect(origin, event.position().toPoint()).normalized())
+            return
         if self._drag is None:
             return
         delta = event.position() - self._drag
@@ -164,14 +248,66 @@ class NetworkView(QtWidgets.QWidget):
         self.update()
 
     def mouseReleaseEvent(self, event):                   # noqa: N802
+        if self._band is not None:
+            origin, band = self._band
+            rect = QtCore.QRect(origin, event.position().toPoint()).normalized()
+            band.hide()
+            band.deleteLater()
+            self._band = None
+            self.setCursor(QtCore.Qt.CursorShape.OpenHandCursor)
+            genes = self.genes_in(rect)
+            if genes:
+                self.selected.emit(genes)
+            return
         if self._moved:
             self.redraw_timer.start()
         else:
             hit = self.gene_at(event.position())
             if hit is not None:
                 self.picked.emit(hit)
+            else:
+                link = self.link_at(event.position())
+                if link is not None:
+                    self.chosen_link = link
+                    self.update()
+                    self.link_picked.emit(*link)
         self._drag = None
         self.setCursor(QtCore.Qt.CursorShape.OpenHandCursor)
+
+    def genes_in(self, rect) -> list:
+        """The genes drawn inside a rectangle of the widget, as positions in the gene table."""
+        if not len(self.xy) or rect.width() < 2 or rect.height() < 2:
+            return []
+        p = self.to_screen(self.xy)
+        inside = ((p[:, 0] >= rect.left()) & (p[:, 0] <= rect.right())
+                  & (p[:, 1] >= rect.top()) & (p[:, 1] <= rect.bottom()))
+        return np.flatnonzero(inside).astype(int).tolist()
+
+    def drawn_links(self) -> pd.DataFrame:
+        """The links drawn brightly: those of the genes in focus, and those among their direct
+        partners -- the ones a click can pick."""
+        links = self.links
+        if links is None or not len(links) or not len(self.dist) or not self.focus:
+            return pd.DataFrame(columns=["a", "b", "source", "strength"])
+        a, b = links["a"].to_numpy(int), links["b"].to_numpy(int)
+        da, db = self.dist[a], self.dist[b]
+        return links[((da == 0) | (db == 0)) | ((da == 1) & (db == 1))]
+
+    def link_at(self, pos, radius: float = 5.0):
+        """The bright link nearest a point on screen, within `radius` pixels, as (a, b)."""
+        links = self.drawn_links()
+        if not len(links):
+            return None
+        p = self.to_screen(self.xy)
+        a, b = links["a"].to_numpy(int), links["b"].to_numpy(int)
+        pa, pb = p[a], p[b]
+        q = np.array([pos.x(), pos.y()])
+        seg = pb - pa
+        length2 = np.maximum((seg ** 2).sum(axis=1), 1e-9)
+        t = np.clip(((q - pa) * seg).sum(axis=1) / length2, 0.0, 1.0)
+        d2 = ((pa + seg * t[:, None] - q) ** 2).sum(axis=1)
+        i = int(np.argmin(d2))
+        return (int(a[i]), int(b[i])) if d2[i] <= radius ** 2 else None
 
     def resizeEvent(self, event):                         # noqa: N802
         super().resizeEvent(event)
@@ -188,8 +324,8 @@ class NetworkView(QtWidgets.QWidget):
 
     # ------------------------------------------------------------------ drawing
     def _render_background(self) -> None:
-        """The faint whole network -- every gene and the strongest chosen links -- into an
-        image at the current camera; painting scales it until the next render."""
+        """The faint links of the whole network into an image at the current camera; painting
+        moves and scales it until the next render. Genes are not in it: they are drawn live."""
         if self.width() < 10 or self.height() < 10 or not len(self.xy):
             return
         ratio = self.devicePixelRatioF() or 1.0
@@ -198,39 +334,48 @@ class NetworkView(QtWidgets.QWidget):
         image.setDevicePixelRatio(ratio)
         image.fill(QtCore.Qt.GlobalColor.transparent)
         painter = QtGui.QPainter(image)
-        self._draw_background(painter)
+        painter.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing, True)
+        self._draw_links(painter)
         painter.end()
         self._cache = (image, self.center.copy(), self.zoom, (self.width(), self.height()))
         self.update()
 
+    def _draw_links(self, painter) -> None:
+        """The strongest chosen links, faint, one transformed path per layer."""
+        if not self._line_paths:
+            return
+        painter.save()
+        painter.setTransform(self.transform(), True)
+        for layer, path in self._line_paths.items():
+            colour = QtGui.QColor(LAYER_COLOURS.get(str(layer), "#888888"))
+            colour.setAlphaF(0.045)
+            pen = QtGui.QPen(colour, 0.6)
+            pen.setCosmetic(True)
+            painter.setPen(pen)
+            painter.setBrush(QtCore.Qt.BrushStyle.NoBrush)
+            painter.drawPath(path)
+        painter.restore()
+
+    def _draw_far_genes(self, painter) -> None:
+        """Every gene off the focus, faint: round points of a fixed size in pixels, one
+        transformed call per colour."""
+        if not self._far_dots:
+            return
+        # The points are mapped through the camera in C++ and drawn untransformed: a wide
+        # round point drawn UNDER a painter transform comes out as a short horizontal dash.
+        camera = self.transform()
+        painter.save()
+        for colour, points in self._far_dots:
+            pen = QtGui.QPen(colour, 2 * self.FAR_RADIUS)
+            pen.setCapStyle(QtCore.Qt.PenCapStyle.RoundCap)
+            painter.setPen(pen)
+            painter.drawPoints(camera.map(points))
+        painter.restore()
+
     def _draw_background(self, painter) -> None:
         """The whole network, faint: the strongest chosen links and every gene off the focus."""
-        p = self.to_screen(self.xy)
-        links = self.links
-        if links is not None and len(links):
-            if len(links) > MAX_BACKGROUND_LINKS:
-                links = links.nlargest(MAX_BACKGROUND_LINKS, "strength")
-            a, b = links["a"].to_numpy(int), links["b"].to_numpy(int)
-            inside = ((p[a, 0] > -50) & (p[a, 0] < self.width() + 50) & (p[a, 1] > -50)
-                      & (p[a, 1] < self.height() + 50)) | \
-                     ((p[b, 0] > -50) & (p[b, 0] < self.width() + 50) & (p[b, 1] > -50)
-                      & (p[b, 1] < self.height() + 50))
-            sources = links["source"].to_numpy()
-            for layer in pd.unique(sources[inside]):
-                sel = inside & (sources == layer)
-                colour = QtGui.QColor(LAYER_COLOURS.get(str(layer), "#888888"))
-                colour.setAlphaF(0.045)
-                painter.setPen(QtGui.QPen(colour, 0.6))
-                pa, pb = p[a[sel]], p[b[sel]]
-                painter.drawLines([QtCore.QLineF(x1, y1, x2, y2)
-                                   for (x1, y1), (x2, y2) in zip(pa, pb)])
-        painter.setPen(QtCore.Qt.PenStyle.NoPen)
-        far = ~(self.dist <= self.sharp) if len(self.dist) == len(self.xy) else np.ones(len(self.xy), bool)
-        for i in np.flatnonzero(far):
-            colour = QtGui.QColor(self.colours[i] if i < len(self.colours) else QtGui.QColor("grey"))
-            colour.setAlphaF(0.35)
-            painter.setBrush(colour)
-            painter.drawEllipse(QtCore.QPointF(float(p[i, 0]), float(p[i, 1])), 1.6, 1.6)
+        self._draw_links(painter)
+        self._draw_far_genes(painter)
 
     def paint_figure(self, painter) -> None:
         """The view as a figure: background and focus drawn as vectors, never the cached image."""
@@ -247,16 +392,18 @@ class NetworkView(QtWidgets.QWidget):
         painter.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing, True)
         if self._cache is not None:
             image, c0, z0, size0 = self._cache
-            # The cached layer, moved and scaled to the current camera until it is redrawn.
+            # The cached links, moved and scaled to the current camera until redrawn.
             k = self.zoom / z0
             s = self._base() * self.zoom
             dx = (c0[0] - self.center[0]) * s + self.width() / 2 * (1 - k)
             dy = -(c0[1] - self.center[1]) * s + self.height() / 2 * (1 - k)
             painter.save()
+            painter.setRenderHint(QtGui.QPainter.RenderHint.SmoothPixmapTransform, True)
             painter.translate(dx, dy)
             painter.scale(k, k)
             painter.drawImage(QtCore.QPointF(0, 0), image)
             painter.restore()
+        self._draw_far_genes(painter)
         self._paint_focus(painter)
         painter.end()
 
@@ -290,6 +437,11 @@ class NetworkView(QtWidgets.QWidget):
                     pb = p[part["b"].to_numpy(int)]
                     painter.drawLines([QtCore.QLineF(x1, y1, x2, y2)
                                        for (x1, y1), (x2, y2) in zip(pa, pb)])
+        if self.chosen_link is not None:
+            a0, b0 = self.chosen_link
+            if 0 <= a0 < len(p) and 0 <= b0 < len(p):
+                painter.setPen(QtGui.QPen(QtGui.QColor(255, 255, 255, 240), 3.2))
+                painter.drawLine(QtCore.QPointF(*p[a0]), QtCore.QPointF(*p[b0]))
         near = np.flatnonzero(self.dist <= self.sharp)
         for i in sorted(near.tolist(), key=lambda j: -self.dist[j]):
             d = self.dist[i]
@@ -491,8 +643,12 @@ class NetworkModule(QtCore.QObject):
         v.addWidget(self.note)
         self.view = NetworkView(box)
         self.view.setToolTip(TH.tip("Wheel to zoom, drag to move, click a gene to travel to it "
-                                    "and read its links."))
+                                    "and read its links. Click a bright link to read how its two "
+                                    "genes are linked. Hold Shift and drag a box to select "
+                                    "every gene inside it."))
         self.view.picked.connect(lambda i: self.set_focus([i], travel=True))
+        self.view.selected.connect(self._boxed)
+        self.view.link_picked.connect(self.read_link)
         v.addWidget(self.view, 1)
         self.legend = QtWidgets.QLabel("")
         self.legend.setObjectName("ShellMuted")
@@ -511,9 +667,9 @@ class NetworkModule(QtCore.QObject):
                          tip="Open the gene in focus in the Gene module: what is known, with sources.")
         shell.add_action("Put it on the map", self._to_map,
                          tip="Open the Map module with the gene in focus marked.")
-        shell.add_action("Predict from links", lambda: _open(window, "infer"),
+        shell.add_action("Predict from links", self._to_infer,
                          tip="Call labels for unlabelled genes from their links, with how often such "
-                             "calls are right (Infer).")
+                             "calls are right (Infer). The genes in focus are filled in.")
         shell.add_action("Whole network", lambda: self.view.fit(),
                          tip="Zoom out to the whole network.")
         shell.add_action("Open a saved bundle…", lambda: self.open_bundle(),
@@ -603,7 +759,9 @@ class NetworkModule(QtCore.QObject):
             for partner in NR.links_of(self._links, int(g))["partner"].head(12):
                 names[int(partner)] = ids[int(partner)]
         self.view.sharp = self.sharp.value()
-        self.view.set_data(xy, colours, self._links, dist, self.focus, names)
+        self.view.set_data(xy, colours, self._links, dist, self.focus, names,
+                           links_key=(tuple(sorted(self.layers())), self.strength.value(),
+                                      self.layout_kind))
         self.note.setText(f"{n:,} genes · {len(self._links):,} links of "
                           f"{len(self.layers())} kinds · coloured by "
                           f"{self.colour_box.currentText()}")
@@ -622,6 +780,74 @@ class NetworkModule(QtCore.QObject):
         self.refresh()
         if travel and self.focus:
             self.view.travel_to(self.focus[0], zoom=5.0)
+
+    def focus_ids(self) -> list:
+        """The gene identifiers in focus, in the order they were chosen."""
+        ids = self.window.nodes["gene_id"].astype(str).to_numpy()
+        return [str(ids[g]) for g in self.focus]
+
+    def _boxed(self, genes: list) -> None:
+        """Genes selected with a shift+drag box: all in focus, and named in the field so the
+        selection can be read, edited and carried on."""
+        self.set_focus(genes, travel=False)
+        self.field.setText(", ".join(self.focus_ids()))
+        self.shell.say(f"{len(genes):,} genes selected with the box.")
+
+    def _to_infer(self) -> None:
+        """Open Infer (predict from links) with the genes in focus already filled in."""
+        from . import ports as PORTS
+        from .landing_install import open_module
+        genes = self.focus_ids()
+        if not genes:
+            open_module(self.window, "infer")
+            return
+        subject = PORTS.GENE if len(genes) == 1 else PORTS.GENE_LIST
+        open_module(self.window, "infer", subject, ",".join(genes))
+
+    def read_link(self, a: int, b: int) -> None:
+        """How two genes are linked: every kind of link between them in the whole network --
+        chosen or not -- with its strength within its kind, and what each gene is."""
+        from . import star_edges as SE
+        w = self.window
+        ids = w.nodes["gene_id"].astype(str).to_numpy()
+        products = w.nodes["product"].astype(str).to_numpy() if "product" in w.nodes else ids
+        labels = self.labels()
+        name = self.colour_box.currentText()
+        edges = self.edges
+        if len(edges):
+            ea, eb = edges["a"].to_numpy(int), edges["b"].to_numpy(int)
+            pair = edges[((ea == a) & (eb == b)) | ((ea == b) & (eb == a))]
+        else:
+            pair = edges
+        chosen = set(self.layers())
+        html = [f"<h3><a href='gene:{a}'>{escape(ids[a])}</a> — "
+                f"<a href='gene:{b}'>{escape(ids[b])}</a></h3>",
+                f"<p style='color:#999'>{escape(products[a])}<br>{escape(products[b])}</p>"]
+        if not len(pair):
+            html.append("<p>No recorded link joins these two genes.</p>")
+        else:
+            rows = []
+            for r in pair.sort_values("strength", ascending=False).itertuples(index=False):
+                layer = str(r.source)
+                shown = "" if layer in chosen else " <i>(not ticked)</i>"
+                rows.append(
+                    f"<tr><td style='color:{LAYER_COLOURS.get(layer, '#ddd')}'>"
+                    f"{escape(SE.layer_text(layer))}{shown}</td>"
+                    f"<td>stronger than {float(r.strength):.0%} of links of this kind</td>"
+                    f"<td style='color:#999'>score {float(r.score):.3g}</td></tr>")
+            html.append(f"<p>Linked by <b>{len(pair)}</b> kind{'s' if len(pair) != 1 else ''} "
+                        f"of evidence:</p><table cellspacing='4'>{''.join(rows)}</table>")
+        la, lb = labels[a], labels[b]
+        known_a = la.strip().lower() not in MR.UNLABELLED
+        known_b = lb.strip().lower() not in MR.UNLABELLED
+        if known_a and known_b:
+            same = "the same" if la == lb else "different"
+            html.append(f"<p>By {escape(name)} they are {same}: {escape(la)} and {escape(lb)}.</p>")
+        else:
+            html.append(f"<p>By {escape(name)}: {escape(la) if known_a else '<i>unknown</i>'} and "
+                        f"{escape(lb) if known_b else '<i>unknown</i>'}.</p>")
+        html.append("<p style='color:#888'>Click either gene to put it in focus.</p>")
+        self.reading.setHtml("".join(html))
 
     #: The kinds of link that are evidence of binding, which the Partners tile reads.
     BINDING_LAYERS = ("xlms", "ip_ms", "unwritten_interaction")

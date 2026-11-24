@@ -1,9 +1,11 @@
-"""Symbols are spaCR's, from one provider; and no small cross exists anywhere.
+"""Symbols are spaCR's, from one provider; a small cross closes things; no search field has one.
 
 Einar, 2026-11-12: "I don't like the little x cross (I don't want to see that anywhere)" and "the
 symbols should be exactly the same as spaCR and the ai symbol should work in the same way".
-Both are defended here because both will otherwise creep back: a new module with no symbol, a new
-search field with a clear button, a new dock left closable.
+Revised by Einar, 2026-11-24: "the evidence tab can have a cross to the top right not a close
+button, use the x throughout and always opt for more discreet GUI elements". So a closable dock
+or tab is now right, and what is defended is: a module with a symbol, no clear-button cross in a
+search field (Escape empties it), and no worded "Close" button where a cross would do.
 """
 import os
 import re
@@ -109,25 +111,26 @@ def test_the_ai_symbol_is_the_spacr_ring_and_dot(qapp):
 # ------------------------------------------------------------- no small cross
 
 
-def test_the_cross_finder_sees_every_kind_of_cross(qapp):
-    """A finder that cannot see a cross would pass the whole window by being blind."""
+def test_the_cross_finder_sees_a_clear_button_and_allows_closing_crosses(qapp):
+    """A finder that cannot see a clear button would pass the whole window by being blind; a
+    closable dock or tab is allowed since 2026-11-24."""
     host = QtWidgets.QMainWindow()
     tabs = QtWidgets.QTabWidget()
     tabs.addTab(QtWidgets.QLabel("a"), "a")
     tabs.setTabsClosable(True)
     edit = QtWidgets.QLineEdit()
     edit.setClearButtonEnabled(True)
-    cross = QtWidgets.QPushButton("✕")
     box = QtWidgets.QWidget()
     lay = QtWidgets.QVBoxLayout(box)
-    for w in (tabs, edit, cross):
+    for w in (tabs, edit):
         lay.addWidget(w)
     host.setCentralWidget(box)
     dock = QtWidgets.QDockWidget("closable", host)
     host.addDockWidget(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea, dock)
     found = " | ".join(no_cross.find_crosses(host))
-    for expected in ("closable tabs", "clear button", "is a cross", "can be closed with a cross"):
-        assert expected in found, f"not seen: {expected}"
+    assert "clear button" in found
+    assert "closable" not in found
+    assert no_cross.closable_docks(host) == ["closable"]
 
 
 def test_clear_on_escape_replaces_the_clear_button(qapp):
@@ -144,7 +147,7 @@ def test_clear_on_escape_replaces_the_clear_button(qapp):
     assert len(edit.findChildren(no_cross._EscapeClears)) == 1
 
 
-def test_no_source_file_switches_a_cross_on():
+def test_no_source_file_switches_a_clear_button_on_or_adds_a_worded_close():
     """Cheap guard at the source, beside the walk of the real window below."""
     bad = []
     for path in ROOT.glob("*.py"):
@@ -152,10 +155,13 @@ def test_no_source_file_switches_a_cross_on():
             continue
         for number, line in enumerate(path.read_text(encoding="utf8").splitlines(), 1):
             code = line.split("#")[0]
-            if re.search(r"setTabsClosable\(\s*True|setClearButtonEnabled\(\s*True|setDocumentMode"
-                         r"\(\s*True\)\s*#?.*close|DockWidgetClosable", code):
+            if re.search(r"setClearButtonEnabled\(\s*True|QPushButton\(\s*[\"']Close[\"']\s*\)", code):
                 bad.append(f"{path.name}:{number}")
     assert bad == []
+
+
+def test_the_evidence_panel_closes_with_the_small_cross(window):
+    assert "evidence" in no_cross.closable_docks(window)
 
 
 @pytest.fixture(scope="module")
@@ -173,14 +179,14 @@ def window():
     qapp.processEvents()
 
 
-def test_the_real_window_has_no_small_cross_anywhere(window):
+def test_the_real_window_has_no_clear_button_cross(window):
     """Walk every widget of the real window, including every dock and the Navigator."""
     window.show()
     QtWidgets.QApplication.processEvents()
     assert no_cross.find_crosses(window) == []
 
 
-def test_no_cross_survives_opening_every_module(window):
+def test_no_clear_button_cross_after_opening_every_module(window):
     """Opening a module builds panels lazily; each one is walked too."""
     from parascape.landing_install import open_module
     for module in MOD.MODULES:
@@ -194,7 +200,7 @@ def test_no_cross_survives_opening_every_module(window):
         assert no_cross.find_crosses(window) == [], module.key
 
 
-def test_every_dressed_dialog_has_no_cross(window):
+def test_every_dressed_dialog_has_no_clear_button_cross(window):
     """The windows ParaScape builds itself: preferences, the slot tree, the help viewer."""
     from parascape import glass
     d = QtWidgets.QDialog()

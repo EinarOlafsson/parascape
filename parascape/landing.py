@@ -42,6 +42,10 @@ class Landing(QtWidgets.QWidget):
     #: is addressed by two names rather than one.
     view_chosen = QtCore.Signal(str, str)
 
+    #: Fires whenever the landing shows another page or module, so the window history
+    #: (`parascape.navigation`) can record the place.
+    moved = QtCore.Signal()
+
     PAGES = ("Navigator", "Modules")
 
     def __init__(self, counts=None, reasons=None, genes=None, index=None,
@@ -64,8 +68,20 @@ class Landing(QtWidgets.QWidget):
         row.setContentsMargins(0, 0, 0, 0)
         row.setSpacing(0)
         self.dock, self.dock_edge = self._build_dock()
+        # The tree sits in a RAIL: a column that can also carry Back and Forward above it,
+        # and that `landing_install` lends to the main window while the landing is away, so
+        # the tree is always there to navigate by (Einar, 2026-11-24).
+        self.rail = None
+        self._row = row
         if self.dock is not None:
-            row.addWidget(self.dock)
+            self.rail = QtWidgets.QWidget()
+            self.rail.setObjectName("LandingRail")
+            self.rail.setStyleSheet("QWidget#LandingRail { background: transparent; }")
+            rail_column = QtWidgets.QVBoxLayout(self.rail)
+            rail_column.setContentsMargins(0, 0, 0, 0)
+            rail_column.setSpacing(0)
+            rail_column.addWidget(self.dock, 1)
+            row.addWidget(self.rail)
             row.addWidget(self.dock_edge)
         body = QtWidgets.QWidget()
         body.setObjectName("LandingBody")
@@ -205,6 +221,14 @@ class Landing(QtWidgets.QWidget):
         if self.stack.currentWidget() is self.navigator:
             self.navigator.reset()
             self.navigator.field.setFocus()
+        self.moved.emit()
+
+    def take_back_rail(self) -> None:
+        """Put the rail back at the left of the landing after the main window borrowed it."""
+        if self.rail is None or self.rail.parent() is self:
+            return
+        self._row.insertWidget(0, self.rail)
+        self.rail.show()
 
     def show_module(self, shell: QtWidgets.QWidget) -> None:
         """Open a module in spaCR's module shell, over the same backdrop (instruction 86).
@@ -218,6 +242,7 @@ class Landing(QtWidgets.QWidget):
         self.stack.setCurrentWidget(shell)
         for button in self._switch.buttons():
             button.hide()
+        self.moved.emit()
 
     @property
     def page(self) -> str:

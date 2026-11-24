@@ -4387,7 +4387,11 @@ class Window(QtWidgets.QMainWindow):
     def _right(self):
         """Create the dock containing gene evidence and links to source records."""
         d = QtWidgets.QDockWidget("evidence")
-        d.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
+        # A small cross at the top right closes it (Einar, 2026-11-24: "the evidence tab can
+        # have a cross to the top right ... use the x throughout and always opt for more
+        # discreet GUI elements"). Without it the panel opened by "Full evidence panel" could
+        # not be closed at all.
+        d.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.DockWidgetClosable)
         self.detail = QtWidgets.QTextBrowser()
         # Links are routed by hand: web links open in the browser as before, and `parascape:` links
         # drill down inside this panel -- from a gene to its class, and back -- which a browser that

@@ -1,17 +1,20 @@
-"""No small cross, anywhere. Einar: "I don't want to see that anywhere."
+"""Crosses: a small x CLOSES things; a search field never gets a clear-button cross.
 
-Qt draws a small cross for you in four places that are easy to switch on without meaning to: a
-closable tab, a closable dock, a clear button inside a line edit, and the close mark of a window
-without a title bar. This module holds the two things that keep them out:
+Einar, 2026-11-12: "I don't like the little x cross (I don't want to see that anywhere)".
+REVISED by Einar, 2026-11-24: "the evidence tab can have a cross to the top right not a close
+button, use the x throughout and always opt for more discreet GUI elements for things like
+this." So a panel, tab or window that can be closed is closed with the small cross Qt draws (a
+closable dock or tab, a title-bar cross), never with a worded "Close" button.
 
-* :func:`clear_on_escape`, what a search field does instead of a clear button, which is also what
-  spaCR does: Escape empties the field.
-* :func:`find_crosses`, which walks a window and reports every widget that would draw one. The
-  test of the whole application calls it on the real window, so a cross that creeps back fails the
-  suite instead of being found by a person.
+What stays from the first rule is the clear button inside a search field: that cross empties a
+field rather than closing anything, and Escape does it instead, as in spaCR. This module holds:
 
-It deliberately looks at what Qt would draw, not at what the code says. A grep for
-``setClearButtonEnabled`` misses a line edit that got its button from somewhere else.
+* :func:`clear_on_escape`, what a search field does instead of a clear button: Escape empties it.
+* :func:`find_crosses`, which walks a window and reports every search field that would draw a
+  clear-button cross. The test of the whole application calls it on the real window.
+
+It looks at what Qt would draw, not at what the code says. A grep for ``setClearButtonEnabled``
+misses a line edit that got its button from somewhere else.
 """
 from __future__ import annotations
 
@@ -54,11 +57,9 @@ def clear_on_escape(edit: QtWidgets.QLineEdit) -> None:
 
 
 def find_crosses(root: QtWidgets.QWidget) -> list:
-    """Every widget under ``root`` that would draw a small cross, as plain sentences.
+    """Every search field under ``root`` that would draw a clear-button cross, as sentences.
 
-    Looks for closable tabs, closable docks, line edits with a clear button (the cross inside a
-    search field), the close buttons Qt creates inside tab bars and dock titles, and any button or
-    label whose whole text is a cross glyph.
+    Closing crosses (closable docks and tabs) are allowed since 2026-11-24 and are not reported.
 
     :param root: usually the main window.
     :returns: one sentence per offender, naming the widget; empty when there are none.
@@ -69,27 +70,13 @@ def find_crosses(root: QtWidgets.QWidget) -> list:
         """The class and object name of a widget, so the failure says which one it is."""
         return f"{type(widget).__name__}#{widget.objectName() or '?'}"
 
-    for bar in root.findChildren(QtWidgets.QTabBar):
-        if bar.tabsClosable():
-            found.append(f"{name(bar)} has closable tabs")
-    for tabs in root.findChildren(QtWidgets.QTabWidget):
-        if tabs.tabsClosable():
-            found.append(f"{name(tabs)} has closable tabs")
-    for dock in root.findChildren(QtWidgets.QDockWidget):
-        if dock.features() & _CLOSABLE:
-            found.append(f"dock {dock.windowTitle()!r} can be closed with a cross")
     for edit in root.findChildren(QtWidgets.QLineEdit):
         if edit.isClearButtonEnabled():
             found.append(f"{name(edit)} has a clear button")
-    for button in root.findChildren(QtWidgets.QAbstractButton):
-        if button.text().strip() in CROSS_TEXT:
-            found.append(f"{name(button)} is a cross ({button.text()!r})")
-        # Qt keeps a hidden close button inside every dock title even when the dock is not
-        # closable, so only one that is not hidden counts.
-        if ("close" in button.objectName().lower() and not button.text().strip()
-                and not button.isHidden()):
-            found.append(f"{name(button)} looks like an icon-only close button")
-    for label in root.findChildren(QtWidgets.QLabel):
-        if label.text().strip() in CROSS_TEXT:
-            found.append(f"{name(label)} is a cross ({label.text()!r})")
     return found
+
+
+def closable_docks(root: QtWidgets.QWidget) -> list:
+    """The titles of the docks under ``root`` that close with the small cross."""
+    return [dock.windowTitle() for dock in root.findChildren(QtWidgets.QDockWidget)
+            if dock.features() & _CLOSABLE]

@@ -496,15 +496,54 @@ def landing_up(window) -> bool:
 
 
 def enter_landing(window) -> None:
-    """Cover the window with the landing. Nothing underneath changes."""
+    """Cover the window with the landing. Nothing underneath changes, except that the rail
+    lent to the main window comes back, and an evidence window left open is closed: it is
+    a separate window the landing cannot cover (Einar, 2026-11-24: "when I go back to
+    navigator it is still there")."""
+    from . import navigation as NAV
     landing = window.landing
     fit_landing(window)
     # Einar: "navigator should be reset every time I go back to it".
     landing.navigator.reset()
+    _take_rail_back(window)
     landing.show()
     landing.raise_()
     if landing.page == "Navigator":
         landing.navigator.field.setFocus()
+    _close_evidence_windows(window)
+    NAV.record(window, NAV.landing_place(landing))
+
+
+def _close_evidence_windows(window) -> None:
+    """Close the per-gene evidence window, if one is open."""
+    dialog = getattr(window, "_gene_evidence_dialog", None)
+    if dialog is not None:
+        try:
+            dialog.close()
+        except RuntimeError:                # already deleted with its parent
+            pass
+
+
+def _lend_rail(window) -> None:
+    """Lend the tree (with Back and Forward) to the main window while the landing is away,
+    so it is always there to navigate by."""
+    landing, dock = getattr(window, "landing", None), getattr(window, "rail_dock", None)
+    if landing is None or dock is None or landing.rail is None:
+        return
+    if dock.widget() is not landing.rail:
+        dock.setWidget(landing.rail)
+    landing.rail.show()
+    dock.show()
+
+
+def _take_rail_back(window) -> None:
+    """Return the tree to the landing."""
+    landing, dock = getattr(window, "landing", None), getattr(window, "rail_dock", None)
+    if landing is None or dock is None or landing.rail is None:
+        return
+    if dock.widget() is landing.rail:
+        landing.take_back_rail()
+    dock.hide()
 
 
 def leave_landing(window, show=None, keep=None) -> None:
@@ -514,12 +553,15 @@ def leave_landing(window, show=None, keep=None) -> None:
     goes, so it is the tab on top. `show` is accepted for callers that name a view; the
     map is the central widget and is already there underneath.
     """
+    from . import navigation as NAV
     landing = getattr(window, "landing", None)
     if landing is None or landing.isHidden():
         return
     landing.hide()
+    _lend_rail(window)
     if keep is not None:
         keep.raise_()
+    NAV.record(window, ("window", ""))
 
 
 def _watch(window) -> None:
@@ -582,10 +624,32 @@ def install(window):
         from . import list_reading as LR
         return LR.resolve(getattr(window, "nodes", None), ids).genes
 
+    from . import navigation as NAV
+    NAV.install(window)
     landing = Landing(counts=_counts(window), reasons=_reasons(window),
                       genes=gene_lookup(window), index=lambda: _index(window),
                       resolve_list=resolve_list, parent=window)
     window.landing = landing
+    # Back and Forward at the top of the tree, and the tree lent to the main window while
+    # the landing is away (Einar, 2026-11-24): a dock with no title bar and no cross.
+    if landing.rail is not None:
+        landing.rail.layout().insertWidget(0, NAV.nav_bar(window))
+    rail_dock = QtWidgets.QDockWidget("Navigate", window)
+    rail_dock.setObjectName("RailDock")
+    rail_dock.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
+    rail_dock.setTitleBarWidget(QtWidgets.QWidget())
+    window.addDockWidget(QtCore.Qt.DockWidgetArea.LeftDockWidgetArea, rail_dock)
+    # Its own column at the far left, beside the panels already docked there rather than
+    # squeezed under them.
+    for other in _docks(window):
+        if other is not rail_dock and not other.isFloating() and \
+                window.dockWidgetArea(other) == QtCore.Qt.DockWidgetArea.LeftDockWidgetArea:
+            window.splitDockWidget(rail_dock, other, QtCore.Qt.Orientation.Horizontal)
+            break
+    rail_dock.hide()
+    window.rail_dock = rail_dock
+    landing.moved.connect(lambda: NAV.record(window, NAV.landing_place(landing))
+                          if landing_up(window) else None)
     window.landing_stack = None                 # the stack design is gone; see the docstring
 
     # The subject the Navigator is holding travels with the module it opens, so a module
