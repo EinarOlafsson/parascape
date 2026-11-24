@@ -691,3 +691,28 @@ Metabolomics Workbench	ST002053	Resistance to NaFAc of in vitro maturated Toxopl
 Metabolomics Workbench	ST002051	The apicomplexan parasite Toxoplasma gondii forms bradyzoite-containing tissue cysts that cause chronic and drug-tolerant infections.	metabolome	108.0	Toxoplasma gondii		2022-02-28	True	False	True	False	True	False
 Metabolomics Workbench	ST001304	Multi-omics analysis delineates the distinct functions of sub-cellular acetyl-CoA pools in Toxoplasma gondii	metabolome	18.0	Toxoplasma gondii		2020-03-03	True	False	False	False	False	False
 Metabolomics Workbench	ST000817	Dynamics of metabolism, proliferation and differentiation in Toxoplasma gondii mutants deficient in glycolysis and gluconeogenesis	metabolome	54.0	Toxoplasma gondii		2017-10-11	True	False	False	False	True	False
+SRA	PRJNA1457781	Toxoplasma gondii Raw sequence reads	RNA-seq / sequencing		Toxoplasma gondii		2026/05/07 00:00	True	False	False	False	False	False
+SRA	PRJEB95133	RNA-Seq sequencing of drug-treated P. falciparum, T. gondii, and P. marinus culture samples	RNA-seq / sequencing		Toxoplasma gondii ME49		2026/04/30 00:00	True	False	True	False	False	False
+SRA	PRJNA1132582	Toxoplasma gondii GR1 RAN-Seq Raw sequence reads	RNA-seq / sequencing		Toxoplasma gondii		2026/01/01 00:00	True	False	False	False	False	False
+SRA	PRJNA1247533	TgENT1 Knockdown	RNA-seq / sequencing		Toxoplasma gondii		2025/09/30 00:00	True	True	False	False	False	False
+SRA	PRJNA1126029	Differential splicing analysis of wild-type and mutant parasites	RNA-seq / sequencing		Toxoplasma gondii		2025/04/27 00:00	True	True	False	False	False	False
+SRA	PRJEB83013	Transcriptome analysis of Toxoplasma gondii BFD1 deletion mutants in low iron conditions	RNA-seq / sequencing		Toxoplasma gondii RH		2025/01/06 00:00	True	True	False	False	True	False
+SRA	PRJNA1002988	Transcriptomic analysis of PP1 conditional mutant in T. gondii	RNA-seq / sequencing		Toxoplasma gondii		2024/08/09 00:00	True	True	False	False	False	False
+SRA	PRJNA1111515	The Toxoplasma F-Box Protein L2 Mediates Parasite Growth by Regulating Apicoplast Function	RNA-seq / sequencing		Toxoplasma gondii		2024/05/15 00:00	True	True	False	False	False	False
+SRA	PRJNA1070975	Transcriptomics analysis of Toxoplasma gondii after AP2XII-9 depletion	RNA-seq / sequencing		Toxoplasma gondii		2024/01/31 00:00	True	True	False	False	False	False
+SRA	PRJNA1030355	Transcriptomic analysis of T. gondii treated with MC1742	RNA-seq / sequencing		Toxoplasma gondii		2023/10/21 00:00	True	False	True	False	False	False
+SRA	PRJNA951490	Anti-Toxoplasma gondii effect of tylosin in vitro and in vivo	RNA-seq / sequencing		Toxoplasma gondii RH		2023/06/22 00:00	True	False	True	False	False	False
+SRA	PRJNA922691	Toxoplasma gondii Infection Induces Ferroptosis in vivo and in vitro	RNA-seq / sequencing		Toxoplasma gondii		2023/02/02 00:00	True	False	False	False	False	True
+SRA	GSE222578	Toxoplasma gondii Raw sequence reads (GSE222578)	RNA-seq / sequencing		Toxoplasma gondii		2023/01/03 00:00	True	False	False	False	False	False
+SRA	PRJNA774463	Altiratinib blocks Toxoplasma gondii and Plasmodium falciparum development by selectively targeting a spliceosome kinase	RNA-seq / sequencing		Toxoplasma gondii		2022/08/11 00:00	True	False	True	False	False	False
+SRA	PRJNA866912	In vitro anti-Toxoplasma gondii effects of a coccidiostat dinitolmide	RNA-seq / sequencing		Toxoplasma gondii		2022/08/11 00:00	True	False	True	False	False	False
+SRA	PRJNA782309	Regulation of Toxoplasma growth and development by AMPK	RNA-seq / sequencing		Toxoplasma gondii		2022/07/06 00:00	True	True	False	False	False	False
+SRA	PRJEB43225	Pantothenate biosynthesis is critical for the establishment of chronic infection by the neurotropic parasite Toxoplasma gondii	RNA-seq / sequencing		Toxoplasma gondii GT1		2021/03/01 00:00	True	True	False	False	True	False
+SRA	PRJEB36162	Toxoplasma gondii ACL and ACS - contribution to subcellular acetyl-CoA pools	RNA-seq / sequencing		Toxoplasma gondii GT1		2020/01/13 00:00	True	True	False	False	False	False
+SRA	PRJNA433960	Transcriptional profiling of T. gondii and H. hammondi during in vitro development	RNA-seq / sequencing		Toxoplasma gondii		2018/02/23 00:00	True	False	False	True	True	False
+SRA	PRJNA433890	Comparative transcriptomics of Toxoplasma gondii and Hammondia hammondi	RNA-seq / sequencing		Toxoplasma gondii		2018/02/23 00:00	True	False	False	True	False	False
+SRA	PRJEB7935	Asexual expansion of Toxoplasma gondii merozoites is distinct from tachyzoites and entails expression of non-overlapping gene families to attach, invade, and replicate within feline enterocytes	RNA-seq / sequencing		Toxoplasma gondii		2017/11/13 00:00	True	False	False	False	True	False
+PRIDE	PXD087158	An asymmetrically distributed conoid protein directs polarized microneme secretion in Toxoplasma gondii	proteome		Toxoplasma gondii me49		2026-11-11	True	False	False	False	False	False
+PRIDE	PXD085790	CoIP MS interactome of Toxoplasma gondii CDC50.1-guanylate cyclase assembly factor 1 (CGAF1)	proteome		Toxoplasma gondii rh		2026-11-10	True	False	False	False	False	False
+PRIDE	PXD085695	BioID of Toxoplasma gondii guanylate cyclase (GC) protein interactors	proteome		Toxoplasma gondii rh		2026-11-10	True	False	False	False	False	False
+PRIDE	PXD072895	Toxoplasma gondii Proteomic analysis in Paediatric Anterior Uveitis Granulomas in rural areas of Egypt	proteome		Toxoplasma gondii me49		2026-11-12	True	False	False	False	False	True
