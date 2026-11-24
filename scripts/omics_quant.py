@@ -1103,8 +1103,15 @@ def _stream_gzip(run_acc: str, sra: str):
     subprocess.run(["bash", "-c", pipeline], check=True)
     one, two = (int(x) for x in open(counts).read().split())
     os.remove(counts)
-    if one == 0:
+    if one == 0 and two == 0:
         raise RuntimeError(f"{run_acc}: no reads written")
+    if one == 0:
+        # Some submitters mark read 1 as technical (a barcode or empty read) and keep the cDNA as read 2, so
+        # --skip-technical leaves only read 2 (PRJNA754376, 2026-11-23): quantify it as single-end.
+        Path(r1).unlink(missing_ok=True)
+        os.replace(r2, r1)
+        log(f"{run_acc}: only read 2 is biological ({two} reads); quantifying it as single-end")
+        return [r1]
     if two == 0:
         Path(r2).unlink(missing_ok=True)
         return [r1]
