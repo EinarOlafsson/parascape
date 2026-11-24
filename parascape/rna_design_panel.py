@@ -40,9 +40,22 @@ class StudyDesignPanel(QtWidgets.QWidget):
         self.export.setToolTip('Export all planned samples, processing status, source control and replicate labels, and linked run relationships to CSV.')
         self.export.clicked.connect(lambda: self.save())
         layout.addWidget(self.export)
-        self._populate()
+        # Filled when first shown: the tree holds every run of every study (thousands of rows),
+        # and building it for a tab nobody opens cost about 5 s at every start (2026-11-24).
+        self._filled = False
         self.tree.currentItemChanged.connect(self._selected)
         self.search.textChanged.connect(self._filter)
+
+    def ensure_filled(self):
+        """Fill the study tree if it has not been filled yet."""
+        if not self._filled:
+            self._filled = True
+            self._populate()
+
+    def showEvent(self, event):                                   # noqa: N802
+        """Fill the tree the first time the tab is shown."""
+        self.ensure_filled()
+        super().showEvent(event)
 
     def _populate(self):
         if self.design.empty:
@@ -88,6 +101,7 @@ class StudyDesignPanel(QtWidgets.QWidget):
         self.details.setHtml(body)
 
     def _filter(self, text):
+        self.ensure_filled()
         query = text.lower().strip()
 
         def visit(item, inherited=False):

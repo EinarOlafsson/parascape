@@ -95,6 +95,8 @@ class _MainSection(_Borrowed):
 
     def take(self) -> None:
         super().take()
+        if self.panel is not None and hasattr(self.panel, "ensure_built"):
+            self.panel.ensure_built()          # a dock that builds its panel on first use
         if self.tab and self.panel is not None:
             for tabs in [self.panel] + self.panel.findChildren(QtWidgets.QTabWidget):
                 if isinstance(tabs, QtWidgets.QTabWidget):

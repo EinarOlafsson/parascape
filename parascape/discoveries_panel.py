@@ -844,48 +844,91 @@ def _strip(lay: QtWidgets.QVBoxLayout, row: QtWidgets.QHBoxLayout) -> None:
     strip.setFixedHeight(holder.sizeHint().height() + 2)
     lay.addWidget(strip)
 
-def install(window) -> DiscoveriesPanel | None:
-    """Add the Discoveries tab beside Strategies and wire it to the evidence panel and the map."""
-    from . import organisms
-    code = organisms.by_species(window.species).code
-    products = dict(zip(window.nodes["gene_id"].astype(str),
-                        window.nodes["product"].astype(str) if "product" in window.nodes
-                        else [""] * len(window.nodes)))
-    panel = DiscoveriesPanel(code,products,context=S.Context(window.nodes,graph={},organism=code))
+class _LazyHolder(QtWidgets.QWidget):
+    """The Discoveries dock content until the panel is first needed: shown in the dock or in
+    its module, or asked for by `ensure_built` before a tab is chosen."""
 
-    def show_gene(gene_id):
-        """Open the selected annotation member in the existing organism gene view."""
-        hits = window.nodes.index[window.nodes.gene_id.astype(str).eq(gene_id)]
-        if len(hits):window.show_detail(int(hits[0]))
-        window.right_dock.raise_()
+    def __init__(self, window):
+        super().__init__()
+        self._window = window
+        QtWidgets.QVBoxLayout(self).setContentsMargins(0, 0, 0, 0)
 
-    def show_claim(gene_id: str, target: str):
-        ids = window.nodes["gene_id"].astype(str)
-        hit = ids[ids == gene_id]
-        if len(hit):
-            window.show_detail(int(hit.index[0]))
-        window._detail_link(QtCore.QUrl(f"parascape://claim/{gene_id}/{target}"))
-        window.right_dock.raise_()
+    def ensure_built(self):
+        """Build the panel now if it has not been built."""
+        return self._window.discoveries
 
-    panel.claim_chosen.connect(show_claim)
-    panel.gene_chosen.connect(show_gene)
-    def show_record(target,label):
-        """Open the existing scorecard without reinterpreting its truth source or test scope."""
-        from urllib.parse import quote
-        address = (f"parascape://class/{quote(target,safe='')}/{quote(label,safe='')}" if label
-            else f"parascape://target/{quote(target,safe='')}")
-        window._detail_link(QtCore.QUrl(address))
-        window.right_dock.raise_()
-    panel.record_chosen.connect(show_record)
-    panel.colour_by.connect(window.colour_by_claims)
+    def showEvent(self, event):                                   # noqa: N802
+        """Build the panel the first time it is shown where it can be seen: not while the
+        landing covers the window (leaving the landing builds it then)."""
+        super().showEvent(event)
+        # Checked once the event loop turns: when the window first appears its docks are shown
+        # before the landing that covers them.
+        QtCore.QTimer.singleShot(0, self._build_if_seen)
+
+    def _build_if_seen(self):
+        """Build the panel if it is shown and the landing does not cover it."""
+        landing = getattr(self._window, "landing", None)
+        covered = landing is not None and landing.isVisible() and self.window() is self._window \
+            and isinstance(self.parentWidget(), QtWidgets.QDockWidget)
+        if self.isVisible() and not covered:
+            self.ensure_built()
+
+
+def install(window) -> QtWidgets.QDockWidget:
+    """Add the Discoveries tab beside Strategies and wire it to the evidence panel and the map.
+
+    The panel is built the first time its tab is shown or `window.discoveries` is asked for:
+    its label catalogue reads every annotation of every gene, and building it for a tab
+    nobody opened cost about 2.5 s at every start (2026-11-24).
+    """
+    def build() -> DiscoveriesPanel:
+        """Build the panel and connect it to the window."""
+        from . import organisms
+        code = organisms.by_species(window.species).code
+        products = dict(zip(window.nodes["gene_id"].astype(str),
+                            window.nodes["product"].astype(str) if "product" in window.nodes
+                            else [""] * len(window.nodes)))
+        panel = DiscoveriesPanel(code,products,context=S.Context(window.nodes,graph={},organism=code))
+
+        def show_gene(gene_id):
+            """Open the selected annotation member in the existing organism gene view."""
+            hits = window.nodes.index[window.nodes.gene_id.astype(str).eq(gene_id)]
+            if len(hits):window.show_detail(int(hits[0]))
+            window.right_dock.raise_()
+
+        def show_claim(gene_id: str, target: str):
+            ids = window.nodes["gene_id"].astype(str)
+            hit = ids[ids == gene_id]
+            if len(hit):
+                window.show_detail(int(hit.index[0]))
+            window._detail_link(QtCore.QUrl(f"parascape://claim/{gene_id}/{target}"))
+            window.right_dock.raise_()
+
+        panel.claim_chosen.connect(show_claim)
+        panel.gene_chosen.connect(show_gene)
+        def show_record(target,label):
+            """Open the existing scorecard without reinterpreting its truth source or test scope."""
+            from urllib.parse import quote
+            address = (f"parascape://class/{quote(target,safe='')}/{quote(label,safe='')}" if label
+                else f"parascape://target/{quote(target,safe='')}")
+            window._detail_link(QtCore.QUrl(address))
+            window.right_dock.raise_()
+        panel.record_chosen.connect(show_record)
+        panel.colour_by.connect(window.colour_by_claims)
+        holder.layout().addWidget(panel)
+        return panel
+
     dock = QtWidgets.QDockWidget("discoveries", window)
     dock.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
-    dock.setWidget(panel)
+    holder = _LazyHolder(window)
+    dock.setWidget(holder)
     window.addDockWidget(QtCore.Qt.DockWidgetArea.RightDockWidgetArea, dock)
     anchor = getattr(window, "guided_dock", None) or getattr(window, "strategies_dock", None)
     if anchor is not None:
         window.tabifyDockWidget(anchor, dock)
     if getattr(window, "right_dock", None) is not None:
         window.right_dock.raise_()
-    window.discoveries, window.discoveries_dock = panel, dock
-    return panel
+    window._discoveries_build = build
+    window.discoveries_dock = dock
+    dock.visibilityChanged.connect(lambda shown: shown and window.discoveries)
+    return dock

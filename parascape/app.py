@@ -910,6 +910,26 @@ class Window(QtWidgets.QMainWindow):
     attributes rather than being read back out of widgets, so a headless caller can drive the whole
     interface without a window manager, which is how the tests exercise it.
     """
+    @property
+    def discoveries(self):
+        """The Discoveries panel, built the first time it is asked for (or its tab is shown)."""
+        panel = self.__dict__.get("_discoveries_panel")
+        build = self.__dict__.get("_discoveries_build")
+        if panel is None and build is not None:
+            self._discoveries_build = None          # one attempt; a failure leaves it None
+            try:
+                panel = build()
+            except Exception as e:                  # the browser must open without it
+                panel = None
+                self.statusBar().showMessage(f"discoveries unavailable: {e}")
+            self._discoveries_panel = panel
+        return panel
+
+    @discoveries.setter
+    def discoveries(self, panel):
+        """Set the Discoveries panel (None when it could not be built)."""
+        self._discoveries_panel = panel
+
     def __init__(self, species: str = None, lens: str = ""):
         """Load one organism and construct its map, evidence docks, menus, and analysis panel.
 

@@ -330,6 +330,8 @@ def _turn_to_tab(window, key: str, dock: str, tab: str) -> bool:
     # The Strategies tabs sit BEHIND the card of the chosen strategy, in a stack. Asking the
     # panel to show its details first is what the search field has always done; without it
     # the tab is selected under a card nobody has moved out of the way.
+    if hasattr(panel, "ensure_built"):            # a dock that builds its panel on first use
+        panel.ensure_built()
     if hasattr(panel, "show_details"):
         panel.show_details()
     for tabs in [panel] + panel.findChildren(QtWidgets.QTabWidget):
@@ -353,6 +355,8 @@ def raise_dock(window, title: str, tab: str = "") -> str:
     dock.raise_()
     if not tab:
         return title
+    if hasattr(dock.widget(), "ensure_built"):    # a dock that builds its panel on first use
+        dock.widget().ensure_built()
     tabs = dock.findChild(QtWidgets.QTabWidget)
     if tabs is not None:
         for i in range(tabs.count()):
@@ -561,6 +565,11 @@ def leave_landing(window, show=None, keep=None) -> None:
     _lend_rail(window)
     if keep is not None:
         keep.raise_()
+    # A dock that builds its panel on first use waited while the landing covered it.
+    for dock in window.findChildren(QtWidgets.QDockWidget):
+        content = dock.widget()
+        if dock.isVisible() and hasattr(content, "ensure_built"):
+            content.ensure_built()
     NAV.record(window, ("window", ""))
 
 

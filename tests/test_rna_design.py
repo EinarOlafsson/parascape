@@ -34,6 +34,8 @@ def test_study_browser_exposes_sample_relationships_and_exports(qtbot, tmp_path)
     d.to_csv(tmp_path / 'sample_design.tsv', sep='\t', index=False)
     panel = StudyDesignPanel(str(tmp_path))
     qtbot.addWidget(panel)
+    assert panel.tree.topLevelItemCount() == 0, 'the tree is filled when first shown, not at start'
+    panel.show()
     assert panel.tree.topLevelItemCount() == 1
     top = panel.tree.topLevelItem(0)
     assert top.text(1) == '0/1 runs verified'
