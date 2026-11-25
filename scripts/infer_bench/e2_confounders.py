@@ -152,7 +152,7 @@ def main(argv=None) -> int:
     if args.max_pairs:
         pairs = pairs.head(args.max_pairs)
     nodes, views, extra, L = H.load()
-    L.update(E1.literature_labels(nodes))
+    L.update(E1.added_labels(nodes))
     fam = H.families(nodes)
     C = confounders(nodes)
     dep = {(lab, c): dependence(conf, L[lab][0], L[lab][1], fam)

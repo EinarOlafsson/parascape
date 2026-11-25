@@ -83,7 +83,7 @@ def main(argv=None) -> int:
     t0 = time.time()
     log = lambda s: print(f"[{time.time() - t0:7.0f}s] {s}", flush=True)
     nodes, views, extra, L = H.load()
-    L.update(E1.literature_labels(nodes))
+    L.update(E1.added_labels(nodes))
     L = {k: v for k, v in L.items() if v[1] != "continuous"}
     wanted = [x for x in args.labels.split(";") if x]
     if wanted:

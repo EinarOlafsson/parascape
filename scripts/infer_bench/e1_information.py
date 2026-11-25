@@ -63,6 +63,27 @@ def literature_labels(nodes: pd.DataFrame) -> dict:
             "host-facing (papers)": (hf, "binary", [])}
 
 
+# STRING and CORUM labels (scripts/labels/build_interaction_labels.py). They reach the node table
+# only at the next data release; until then the benchmark reads the build output named here.
+INTERACTION_LABELS = os.environ.get(
+    "PARASCAPE_INTERACTION_LABELS",
+    "/media/carruthers/mnt2/parascape/labels/interaction_2026_11_25/labels.parquet")
+
+
+def interaction_labels(nodes: pd.DataFrame) -> dict:
+    """The STRING and CORUM labels (names say measured or copied), aligned to the node table."""
+    if not os.path.exists(INTERACTION_LABELS):
+        return {}
+    t = pd.read_parquet(INTERACTION_LABELS).set_index("gene_id").reindex(nodes["gene_id"].astype(str))
+    return {c: (t[c].astype(object).where(t[c].notna()).to_numpy(object), "categorical", [])
+            for c in t.columns}
+
+
+def added_labels(nodes: pd.DataFrame) -> dict:
+    """Every label outside figure 6: the literature labels and the STRING / CORUM labels."""
+    return {**literature_labels(nodes), **interaction_labels(nodes)}
+
+
 def bh(p: np.ndarray) -> np.ndarray:
     """Benjamini-Hochberg q-values."""
     p = np.asarray(p, float)
@@ -117,7 +138,7 @@ def main(argv=None) -> int:
     t0 = time.time()
     log = lambda s: print(f"[{time.time() - t0:7.0f}s] {s}", flush=True)
     nodes, views, extra, L = H.load()
-    L.update(literature_labels(nodes))
+    L.update(added_labels(nodes))
     wanted = [x for x in args.labels.split(";") if x]
     if wanted:
         missing = set(wanted) - set(L)
@@ -156,6 +177,8 @@ def main(argv=None) -> int:
     t["release"], t["correction"], t["method_version"] = release, "raw", METHOD_VERSION
     t["seeds"], t["folds"] = args.seeds, f"family {H.N_FOLDS}-fold"
     t.to_parquet(os.path.join(args.out, "information.parquet"), index=False)
+    from parascape import label_catalogue
+    label_catalogue.write(L, args.out, {k: IM.exclusions(v[2], views) for k, v in L.items()})
     f = t[(t["level"] == "feature") & (t["excluded"] == "")]
     v = t[t["level"] == "view"]
     summary = {"release": release, "method_version": METHOD_VERSION, "labels": list(L),
