@@ -31,22 +31,33 @@ def main(argv=None) -> int:
     c = pd.read_csv(os.path.join(src, "clusters.csv"))
     nodes, views, extra, L = H.load()
     L.update(E1.added_labels(nodes))
-    rate = {}
+    rate, total = {}, {}
     for lab in c["label"].unique():
         y = pd.Series(np.asarray(L[lab][0], dtype=object)).dropna()
         rate.update({(lab, k): v for k, v in y.value_counts(normalize=True).items()})
+        total.update({(lab, k): v for k, v in y.value_counts().items()})
     c["class_rate"] = [rate.get((a, b), np.nan) for a, b in zip(c["label"], c["top_class"].astype(str))]
     c["fold_enrichment"] = c["top_share"] / c["class_rate"]
     c["enriched"] = c["q"] < 0.05
+    # how well the cluster recapitulates its class: precision (purity), recall (share of the class captured), F1;
+    # the biology score weights F1 by stability so that a cluster that dissolves on redraw cannot rank high
+    c["class_genes"] = [total.get((a, b), np.nan) for a, b in zip(c["label"], c["top_class"].astype(str))]
+    c["recall"] = c["top_count"] / c["class_genes"]
+    c["f1"] = 2 * c["top_share"] * c["recall"] / (c["top_share"] + c["recall"])
+    c["biology_score"] = np.where(c["enriched"], c["f1"] * c["stability"], 0.0)
+    c["rank_in_label"] = (c.groupby(["label", "embedding", "resolution"])["biology_score"]
+                          .rank(ascending=False, method="min").astype(int))
+    c["rank_overall"] = c["biology_score"].rank(ascending=False, method="min").astype(int)
     c["stability_rating"] = c["stability"].map(rating)
     out = c.rename(columns={"embedding": "feature_set", "rank": "cluster_rank", "cluster": "cluster_id",
                             "genes": "cluster_genes", "labelled": "labelled_genes",
                             "top_count": "top_class_genes", "top_share": "top_class_share",
                             "p": "enrichment_p", "q": "enrichment_q", "silhouette": "silhouette_mean"})
     cols = ["label", "feature_set", "resolution", "cluster_rank", "cluster_id", "cluster_genes", "labelled_genes",
-            "top_class", "top_class_genes", "top_class_share", "class_rate", "fold_enrichment", "enrichment_p",
-            "enrichment_q", "enriched", "stability", "stability_rating", "silhouette_mean", "mean_gene_confidence"]
-    out = out[cols].sort_values(["label", "feature_set", "resolution", "cluster_rank"])
+            "top_class", "top_class_genes", "class_genes", "top_class_share", "recall", "f1", "class_rate",
+            "fold_enrichment", "enrichment_p", "enrichment_q", "enriched", "stability", "stability_rating",
+            "silhouette_mean", "mean_gene_confidence", "biology_score", "rank_in_label", "rank_overall"]
+    out = out[cols].sort_values("rank_overall")
     out.to_csv(stem + ".csv", index=False, float_format="%.4g")
     out.to_parquet(stem + ".parquet", index=False)
     print(len(out), "clusters;", int(out["enriched"].sum()), "enriched;",
