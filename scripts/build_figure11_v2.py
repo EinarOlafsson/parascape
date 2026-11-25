@@ -27,6 +27,8 @@ import pandas as pd
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+from parascape import organisms as _ORG              # noqa: E402
+TG, PF = _ORG.TOXOPLASMA, _ORG.FALCIPARUM
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 from parascape import figstyle as FS                    # noqa: E402
 
@@ -36,18 +38,18 @@ CACHE = os.environ.get("PARASCAPE_CACHE",
                        "/media/carruthers/mnt1/parascape_data/data-0.0.13.1-hostslots")
 FM = os.path.join(ROOT, "results", "filling_the_map_2026_11_18")
 TARGETS = {  # (organism, target) -> (display name, kind)
-    ("Tg", "compartment"): ("Tg compartment", "where"),
-    ("Tg", "lopit_unified"): ("Tg hyperLOPIT", "where"),
-    ("Pf", "lopit_pf_location"): ("Pf hyperLOPIT", "where"),
-    ("Tg", "cellcycle_phase"): ("Tg cell-cycle phase", "when"),
-    ("Tg", "dtm_class"): ("Tg membrane topology", "sequence"),
-    ("Pf", "is_exported"): ("Pf exported", "sequence"),
-    ("Tg", "screen_any_phenotype"): ("Tg any screen phenotype", "phenotype"),
-    ("Tg", "screen_actin_phenotype"): ("Tg actin phenotype", "phenotype"),
-    ("Tg", "screen_apicoplast_phenotype"): ("Tg apicoplast phenotype", "phenotype"),
-    ("Tg", "screen_egress_phenotype"): ("Tg egress phenotype", "phenotype"),
-    ("Tg", "screen_replication_phenotype"): ("Tg replication phenotype", "phenotype"),
-    ("Pf", "pb_transferred_phenotype"): ("Pf essentiality (from Pb)", "phenotype"),
+    (TG, "compartment"): ("Tg compartment", "where"),
+    (TG, "lopit_unified"): ("Tg hyperLOPIT", "where"),
+    (PF, "lopit_pf_location"): ("Pf hyperLOPIT", "where"),
+    (TG, "cellcycle_phase"): ("Tg cell-cycle phase", "when"),
+    (TG, "dtm_class"): ("Tg membrane topology", "sequence"),
+    (PF, "is_exported"): ("Pf exported", "sequence"),
+    (TG, "screen_any_phenotype"): ("Tg any screen phenotype", "phenotype"),
+    (TG, "screen_actin_phenotype"): ("Tg actin phenotype", "phenotype"),
+    (TG, "screen_apicoplast_phenotype"): ("Tg apicoplast phenotype", "phenotype"),
+    (TG, "screen_egress_phenotype"): ("Tg egress phenotype", "phenotype"),
+    (TG, "screen_replication_phenotype"): ("Tg replication phenotype", "phenotype"),
+    (PF, "pb_transferred_phenotype"): ("Pf essentiality (from Pb)", "phenotype"),
 }
 KIND_NAMES = {"where": "location", "when": "cell-cycle phase", "sequence": "sequence class",
               "phenotype": "mutant phenotype"}
@@ -163,7 +165,7 @@ def main():
     pf = pd.read_parquet(os.path.join(CACHE, "pf_nodes.parquet"))
     rows = []
     for _, r in best.iterrows():
-        nodes = tg if r.organism == "Tg" else pf
+        nodes = tg if r.organism == TG else pf
         if r.target not in nodes.columns:
             continue
         # isna() first: a pandas NA prints as "<NA>", so a text test alone counted none missing.

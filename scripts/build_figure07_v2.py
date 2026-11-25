@@ -33,6 +33,8 @@ import pandas as pd
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+from parascape import organisms as _ORG              # noqa: E402
+TG, PF = _ORG.TOXOPLASMA, _ORG.FALCIPARUM
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 from parascape import figstyle as FS                    # noqa: E402
 import build_network_layers as NL                       # noqa: E402
@@ -319,12 +321,12 @@ def main():
     FMb = os.path.join(ROOT, "results", "filling_the_map_2026_11_18", "best_per_target.tsv")
     fmb = pd.read_csv(FMb, sep="\t")
     pf_ = pd.read_parquet(os.path.join(CACHE, "pf_nodes.parquet"))
-    tgt = {("Tg", "lopit_unified"): "Tg localisation",
-           ("Pf", "lopit_pf_location"): "Pf localisation", ("Tg", "cellcycle_phase"): "Tg phase"}
+    tgt = {(TG, "lopit_unified"): "Tg localisation",
+           (PF, "lopit_pf_location"): "Pf localisation", (TG, "cellcycle_phase"): "Tg phase"}
     rows = []
     for (org, t_), nm in tgt.items():
         r_ = fmb[(fmb.organism == org) & (fmb.target == t_)].iloc[0]
-        tab = nodes if org == "Tg" else pf_
+        tab = nodes if org == TG else pf_
         col = tab[t_].astype(str).str.lower()
         miss = tab[t_].isna() | col.isin(["nan", "none", "", "unassigned", "unknown", "<na>"])
         n_all = len(tab); n_known = int((~miss).sum()); n_miss = int(miss.sum())

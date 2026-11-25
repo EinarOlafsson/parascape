@@ -26,6 +26,8 @@ import pandas as pd
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+from parascape import organisms as _ORG              # noqa: E402
+TG, PF = _ORG.TOXOPLASMA, _ORG.FALCIPARUM
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 from parascape import datasets as DS                    # noqa: E402
 from parascape import figstyle as FS                    # noqa: E402
@@ -170,7 +172,7 @@ def main():
 
     # F: unmeasured vs filled by prediction at a validated rate
     fm = pd.read_csv(FM, sep="\t")
-    fm = fm[fm.organism == "Tg"]
+    fm = fm[fm.organism == TG]
     pick = {"place": "lopit_unified", "phenotype": "screen_any_phenotype"}
     rows = []
     for c in ["place", "phenotype", "host_response", "function"]:
@@ -293,6 +295,56 @@ def main():
     PP.panel(F, "d", fig=figD, data=dd_, stats={"prediction": "best strategy where it beats "
              "the majority-class baseline by > 5 points (Fig. 4)"}, sources=[FM, NODES],
              what="measured, predicted and unknown per data type")
+    # E and F: what papers show by experiment (the literature reading, instruction 102 / Affinage;
+    # forms chosen by Einar 2026-11-25 from the candidate sheet: 3 stacked counts, 5 stacked area).
+    sys.path.insert(0, os.path.join(ROOT, "scripts", "infer_bench"))
+    import affinage_panel_data as AP
+    from parascape import literature_findings as LF
+    ev = AP.evidence(nodes, LF.labels(log=lambda *a: None).reset_index())
+    rows_e = []
+    for named, label in ((True, "named"), (False, "hypothetical protein")):
+        g_ = ev[ev["named"] == named]
+        rows_e.append({"product": label, "genes": len(g_),
+                       "function observed": int(g_["observed_function"].sum()),
+                       "none, needed in fibroblasts": int((~g_["observed_function"] & g_["needed_in_fibroblasts"]).sum()),
+                       "none, not needed": int((~g_["observed_function"] & ~g_["needed_in_fibroblasts"]).sum())})
+    de_ = pd.DataFrame(rows_e)
+    FS.use()
+    figE, ax = FS.plot_figure(2 * FS.SLOT_IN * 25.4 * 1.6, FS.PLOT_H_MM)
+    bot = np.zeros(2)
+    for col_, c_ in (("function observed", FS.ACCENT), ("none, needed in fibroblasts", FS.AMBER),
+                     ("none, not needed", FS.CONTROL)):
+        ax.bar([0, 1], de_[col_], bottom=bot, width=0.6, color=c_, alpha=FS.ALPHA, lw=0, label=col_)
+        bot += de_[col_].to_numpy()
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["named", "hypoth."], rotation=45, ha="right",
+                                              rotation_mode="anchor")
+    ax.tick_params(axis="x", length=0); ax.set_ylabel("Genes")
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02))
+    PP.panel(F, "e", fig=figE, data=de_,
+             stats={"needed in fibroblasts": f"fibroblast phenotype score < {AP.FITNESS_CUT}",
+                    "observed function": "a paper finding (activity, phenotype, host effect, complex), "
+                                         "an EC number or an imaging phenotype"},
+             sources=[(NODES, ["product", "ec_number", "fit_invitro_hff", "screen_any_phenotype"]),
+                      os.path.join(ROOT, "parascape", "data", "literature_affinage",
+                                   "literature_gene_labels.parquet")],
+             what="genes with an observed function, named against hypothetical protein")
+
+    yr = AP.by_year(LF.findings())
+    kinds_f = ["localisation", "phenotype", "activity", "host_facing", "partner", "complex", "structure"]
+    names_f = {"host_facing": "host effect"}
+    FS.use()
+    figF, ax = FS.square_figure()
+    ax.stackplot(yr["year"], [yr.get(k, 0) for k in kinds_f],
+                 colors=[FS.ACCENT, FS.TEAL, FS.NAVY, FS.MAGENTA, FS.ACCENT_LIGHT, FS.AMBER, FS.CONTROL],
+                 alpha=FS.ALPHA, labels=[names_f.get(k, k) for k in kinds_f], lw=0)
+    ax.set_xlabel("Year of publication"); ax.set_ylabel("Findings"); ax.set_ylim(0, None)
+    ax.set_xticks([2000, 2010, 2020])
+    FS.legend(ax, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=2)
+    PP.panel(F, "f", fig=figF, data=yr,
+             stats={"findings": int(yr["all"].sum()), "last year": "partial (to 2026-11-24)"},
+             sources=[os.path.join(ROOT, "parascape", "data", "literature_affinage",
+                                   "literature_findings.parquet")],
+             what="findings shown by experiment, per year of publication and kind")
     PP.compose(F, "main", "Function, mutant phenotype and host response are missing for most "
                "Toxoplasma genes, and prediction does not fill them.")
 

@@ -309,11 +309,12 @@ CONTRACT = (
            "85 controls had none when that audit was first run, almost all of them where "
            "choosing wrongly costs the most",
            held_by=("test_app_menus::test_no_control_anywhere_is_left_without_an_explanation",)),
-    Clause("shows no small cross",
+    Clause("shows no clear-button cross",
            "Einar asked for this one by name -- 'I don't want to see that anywhere' -- and it "
-           "creeps back with every new search field and every new dock",
-           held_by=("test_symbols_and_no_cross::test_the_real_window_has_no_small_cross_anywhere",
-                    "test_symbols_and_no_cross::test_no_cross_survives_opening_every_module")),
+           "creeps back with every new search field. Since 2026-11-24 closing is the small "
+           "cross at the top right, so only the clear-button cross of a field is banned",
+           held_by=("test_symbols_and_no_cross::test_the_real_window_has_no_clear_button_cross",
+                    "test_symbols_and_no_cross::test_no_clear_button_cross_after_opening_every_module")),
 )
 
 BY_NAME = {clause.name: clause for clause in CONTRACT}

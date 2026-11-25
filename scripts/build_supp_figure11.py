@@ -26,6 +26,8 @@ from scipy.stats import spearmanr
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+from parascape import organisms as _ORG              # noqa: E402
+TG, PF = _ORG.TOXOPLASMA, _ORG.FALCIPARUM
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 from parascape import figstyle as FS                    # noqa: E402
 import build_figure11_v2 as F11                         # noqa: E402
@@ -53,7 +55,7 @@ def main():
     srcs = [os.path.join(F11.FM, f) for f in ("best_per_target.tsv", "by_target_and_strategy.tsv")]
     rows = []
     for (org, tgt), (name, kind) in F11.TARGETS.items():
-        nodes = tg if org == "Tg" else pf
+        nodes = tg if org == TG else pf
         if tgt not in nodes.columns:
             continue
         v = nodes[tgt].dropna().astype(str)

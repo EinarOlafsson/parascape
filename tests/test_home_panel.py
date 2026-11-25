@@ -96,6 +96,9 @@ def test_every_node_resolves_to_a_destination_this_window_has(window):
             if action.target not in docks:
                 unresolved.append(f"{node.id}: no {action.target} dock")
             elif action.tab:
+                holder = docks[action.target].widget()
+                if hasattr(holder, "ensure_built"):     # built on first use, as opening it does
+                    holder.ensure_built()
                 tabs = docks[action.target].findChild(QtWidgets.QTabWidget)
                 labels = [tabs.tabText(i) for i in range(tabs.count())] if tabs else []
                 if action.tab not in labels:

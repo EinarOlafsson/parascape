@@ -100,6 +100,16 @@ def use() -> None:
     Open Sans is required, not preferred: a figure that silently falls back to DejaVu is a figure
     that does not match the others. If it is missing this says so rather than drawing it wrong.
     """
+    if "Open Sans" not in {f.name for f in font_manager.fontManager.ttflist}:
+        # The repository ships the font (docs/deck/fonts), so a checkout without it installed --
+        # CI, a new machine -- still draws in the house font instead of failing or falling back.
+        import os
+        bundled = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                               "docs", "deck", "fonts")
+        if os.path.isdir(bundled):
+            for name in sorted(os.listdir(bundled)):
+                if name.lower().endswith(".ttf"):
+                    font_manager.fontManager.addfont(os.path.join(bundled, name))
     if "Open Sans" in {f.name for f in font_manager.fontManager.ttflist}:
         plt.rcParams["font.family"] = "Open Sans"
     else:
@@ -130,7 +140,9 @@ def panel_width_mm(n_categories: int, vertical: bool = True) -> float:
     answers that one.
     """
     left, _bottom, right, _top = MARGIN_MM
-    return left + right + slot_em(n_categories, vertical) * EM_MM * n_categories
+    # The same floor `figure` applies: a 2-category panel is MIN_SLOTS slots wide, and this must
+    # say so or two panels sized from it and from `figure` disagree.
+    return left + right + slot_em(n_categories, vertical) * EM_MM * max(n_categories, MIN_SLOTS)
 
 
 def panel_height_mm(n_categories: int) -> float:

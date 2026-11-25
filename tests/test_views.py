@@ -120,7 +120,12 @@ def _panel_of(win, dock_title: str):
         borrowed = getattr(getattr(shell, "module", None), "main", None)
         if getattr(borrowed, "dock", None) is dock and getattr(borrowed, "panel", None):
             return borrowed.panel
-    return dock.widget()
+    panel = dock.widget()
+    # A dock may build its panel on first use (7a9b1bcd); opening a view builds it, so asking
+    # about its tabs does too, exactly as `landing_install` does.
+    if hasattr(panel, "ensure_built"):
+        panel.ensure_built()
+    return panel
 
 
 def _tabs_widget(panel):
@@ -183,6 +188,9 @@ def test_every_dock_is_a_module_or_holds_a_declared_view(window):
     named = {m.opens.partition(":")[0] for m in MOD.MODULES}
     named |= {v.opens.partition(":")[0] for _m, v in MOD.views()}
     named |= {"assistant"}          # folded into every module, and in the Tools menu
+    # The Navigator tree itself, lent to the window while the landing is away (2026-11-24): it
+    # is how every module and view is reached, not a panel that one of them holds.
+    named |= {"Navigate"}
     missing = [t for t in _docks(window) if t not in named]
     assert not missing, f"docks nobody can name: {missing}"
 

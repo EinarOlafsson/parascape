@@ -120,14 +120,11 @@ def test_a_control_takes_grey_wherever_it_sits_in_the_order():
 
 
 # -------------------------------------------------------- crowded panels: smaller bars and gaps
-def test_a_crowded_panel_narrows_its_slot():
-    """Einar, 2026-11-19: "if a graph has that many conditions the bars and bar spasing needs to
-    be smaller". A fourteen-bar panel must not be a three-bar panel repeated until it runs off
-    the page."""
-    assert FS.slot_em(3) == FS.slot_em(FS.CROWDED_ABOVE)
-    assert FS.slot_em(FS.CROWDED_ABOVE + 1) < FS.slot_em(FS.CROWDED_ABOVE)
-    assert FS.slot_em(14) == pytest.approx(FS.SLOT_EM_MIN)
-    assert FS.slot_em(40) == pytest.approx(FS.SLOT_EM_MIN)
+def test_a_crowded_panel_keeps_the_fixed_slot():
+    """REVISED 2026-11-19: the maintainer's spec fixes the slot (0.25 in per condition), so a
+    fourteen-bar panel is fourteen slots wide; the earlier shrinking rule was withdrawn
+    (figstyle.CROWDED_ABOVE). "Smaller bars when crowded" is met by the slot itself."""
+    assert FS.slot_em(3) == FS.slot_em(14) == FS.slot_em(40) == pytest.approx(FS.SLOT_EM_VERTICAL)
 
 
 def test_the_slot_never_widens_as_categories_are_added():
@@ -144,9 +141,11 @@ def test_bars_and_gaps_shrink_together_so_the_proportion_is_unchanged():
         assert FS.bar_width() == FS.BAR_FRACTION
 
 
-def test_a_crowded_panel_is_narrower_than_the_naive_one_would_have_been():
-    naive = FS.MARGIN_MM[0] + FS.MARGIN_MM[2] + FS.SLOT_EM_VERTICAL * FS.EM_MM * 14
-    assert FS.panel_width_mm(14) < naive * 0.75
+def test_a_vertical_panel_grows_by_exactly_one_slot_per_category_above_the_floor():
+    widths = [FS.panel_width_mm(n) for n in (FS.MIN_SLOTS, FS.MIN_SLOTS + 1, 14)]
+    assert widths[1] - widths[0] == pytest.approx(FS.SLOT_MM)
+    assert widths[2] - widths[0] == pytest.approx(FS.SLOT_MM * (14 - FS.MIN_SLOTS))
+    assert FS.panel_width_mm(1) == FS.panel_width_mm(FS.MIN_SLOTS), "no sliver panels"
 
 
 # ----------------------------------------------------------------- rule 2: twenty points
@@ -165,13 +164,13 @@ def test_the_points_drawn_over_a_group_are_placed_deterministically():
 
 
 # ----------------------------------------------------------------- the rest of the house
-def test_no_panel_carries_gridlines_and_the_top_and_right_spines_are_off():
-    """"no gridlines" is in the list of what the reference figures do NOT do."""
+def test_no_panel_carries_gridlines_and_every_panel_has_a_full_box_frame():
+    """"no gridlines" is in the list of what the reference figures do NOT do; the frame is the
+    full box of four of the five reference papers (REVISED 2026-11-18, spacr-graphs skill)."""
     FS.use()
     _fig, ax = FS.figure(4)
     assert matplotlib.rcParams["axes.grid"] is False
-    assert not ax.spines["top"].get_visible()
-    assert not ax.spines["right"].get_visible()
+    assert all(ax.spines[side].get_visible() for side in ("top", "right", "bottom", "left"))
 
 
 def test_text_stays_text_in_the_pdf():
@@ -184,7 +183,7 @@ def test_text_stays_text_in_the_pdf():
 def test_the_opacity_and_the_control_are_the_values_einar_set():
     """Pinned so a later edit to the module cannot quietly move them."""
     assert FS.ALPHA == 0.6
-    assert FS.CONTROL == "#9E9E9E"
+    assert FS.CONTROL == "#8C8C8C"     # measured from the reference papers (2026-11-18)
     assert FS.MAX_POINTS_FOR_A_BAR == 20
 
 
