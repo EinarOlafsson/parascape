@@ -18,7 +18,7 @@ from pathlib import Path
 
 from PySide6 import QtWidgets
 
-from . import paths
+from . import paths, store
 
 
 def audit_root() -> Path:
@@ -43,11 +43,11 @@ def source_samples(root: Path, accession: str) -> dict:
     if not accession.startswith('GSE') or not accession[3:].isdigit():
         raise ValueError('No primary GEO sample metadata for this catalogue source')
     folder = root / 'all_geo_samples'
-    entries = json.loads((folder / 'coverage.json').read_text())
+    entries = json.loads(store.read_text(folder / 'coverage.json'))
     matches = [r for r in entries if r['accession'] == accession]
     if len(matches) != 1 or matches[0]['status'] != 'validated_sample_metadata':
         raise ValueError('Primary sample metadata has not been validated for this source')
-    data = (folder / accession / 'geo-samples.json').read_bytes()
+    data = store.read_bytes(folder / accession / 'geo-samples.json')
     if hashlib.sha256(data).hexdigest() != matches[0]['sample_metadata_sha256']:
         raise ValueError('Primary sample metadata checksum differs')
     report = json.loads(data)
@@ -59,8 +59,8 @@ def source_samples(root: Path, accession: str) -> dict:
 def shared_samples(root: Path) -> dict:
     """Read audited cross-study links for identical submitted GEO sample identifiers."""
     folder = root / 'all_geo_samples'
-    info = json.loads((folder / 'sample_identity_manifest.json').read_text())
-    data = (folder / 'sample_identity_links.tsv').read_bytes()
+    info = json.loads(store.read_text(folder / 'sample_identity_manifest.json'))
+    data = store.read_bytes(folder / 'sample_identity_links.tsv')
     if hashlib.sha256(data).hexdigest() != info['outputs']['sample_identity_links.tsv']:
         raise ValueError('Shared-sample identity index checksum differs')
     rows = csv.DictReader(io.StringIO(data.decode()), delimiter='\t')
@@ -107,13 +107,13 @@ def pride_samples(root: Path, accession: str) -> dict:
     if not re.fullmatch(r'PXD\d+', accession):
         raise ValueError('Invalid PRIDE project identity')
     projects = root / 'pride_projects'
-    coverage_bytes = (projects / 'coverage.json').read_bytes()
+    coverage_bytes = store.read_bytes(projects / 'coverage.json')
     records = json.loads(coverage_bytes)
     matches = [row for row in records if row['accession'] == accession]
     if len(matches) != 1 or matches[0]['status'] != 'validated_primary_metadata':
         raise ValueError('Primary PRIDE project metadata has not been reconciled')
     record = matches[0]
-    summary_bytes = (projects / accession / 'project_summary.json').read_bytes()
+    summary_bytes = store.read_bytes(projects / accession / 'project_summary.json')
     if hashlib.sha256(summary_bytes).hexdigest() != record['summary_sha256']:
         raise ValueError('Primary PRIDE project summary checksum differs')
     summary = json.loads(summary_bytes)

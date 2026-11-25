@@ -33,15 +33,25 @@ def test_portable_expression_and_audit_data_are_checksum_pinned(tmp_path):
         path=source/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('must not enter the release')
     descriptor = tmp_path / 'descriptor.json'
     info = build(source,tmp_path/'output',descriptor)
-    assert set(info['files'])==set(files)
+    # rna_technical_qc is read by no module, and all_geo_samples only through the store, so each
+    # ships as one pack with its exact bytes (instruction 102).
+    packed = {'processing_audit/rna_technical_qc/report.csv', 'processing_audit/all_geo_samples/GSE1/geo-samples.json'}
+    loose = {k: v for k, v in files.items() if k not in packed}
+    pack_name = 'processing_audit/rna_technical_qc.pack.parquet'
+    packs = {pack_name, 'processing_audit/all_geo_samples.pack.parquet'}
+    assert set(info['files'])==set(loose)|packs
     asset=tmp_path/'output'/info['asset']
     assert hashlib.sha256(asset.read_bytes()).hexdigest()==info['sha256']
     assert json.loads(descriptor.read_text())==info
     with tarfile.open(asset) as archive:
-        assert set(archive.getnames())==set(files)
-        for name,body in files.items():
+        assert set(archive.getnames())==set(loose)|packs
+        for name,body in loose.items():
             assert archive.extractfile(name).read()==body
             assert info['files'][name]['sha256']==hashlib.sha256(body).hexdigest()
+        pack = tmp_path / 'rna.pack.parquet'
+        pack.write_bytes(archive.extractfile(pack_name).read())
+    from parascape import store
+    assert store.file_bytes(pack, 'report.csv') == files['processing_audit/rna_technical_qc/report.csv']
 
 
 def test_release_builder_rejects_a_linked_runtime_data_directory(tmp_path):

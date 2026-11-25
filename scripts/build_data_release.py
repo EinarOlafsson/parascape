@@ -16,7 +16,7 @@ import sys
 import tarfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from parascape import __version__, data_manager
+from parascape import __version__, data_manager, store
 
 
 def _refuse_an_empty_primary_address(info: dict) -> None:
@@ -55,11 +55,27 @@ def build(source: Path, output: Path, descriptor: Path):
     files.extend(p for p in (source / 'rnaseq').rglob('*') if p.is_file() and p.suffix in ('.parquet', '.tsv', '.json'))
     # The information map release: the three aligned tables, their evidence and pairs, and the tier-2
     # measurement tables the panel reads beside them. Without these the map panel ships with nothing to show.
+    # Audit folders that no module of the application reads ship as ONE packed Parquet each, with
+    # every file's exact bytes and digest (instruction 102, Einar 2026-11-25: "Parquet first"). The
+    # set is worked out here, from the code, so a folder that gains a reader ships loose again.
+    shipped = ('.parquet', '.tsv', '.csv', '.json', '.jsonl', '.py', '.md')
+    audit = source / 'processing_audit'
+    packed = {}
+    if audit.is_dir():
+        chosen = store.unread_folders(audit, Path(__file__).resolve().parents[1] / 'parascape')
+        chosen += [audit / name for name in store.READ_THROUGH_STORE if (audit / name).is_dir()]
+        packed = {f.resolve(): f for f in chosen}
+    in_memory = {}
+    for folder in packed.values():
+        keep = lambda p, f=folder: (p.suffix in shipped
+                                    and not any(part.startswith('.') for part in p.relative_to(f).parts))
+        in_memory[f'processing_audit/{folder.name}{store.SUFFIX}'] = store.pack_bytes(folder, keep)
     for folder in ('published_expression', 'processing_audit', 'source_matrices', 'platform_identifiers',
                    'deposited_values', 'sparse_datasets', 'information_map'):
         files.extend(p for p in (source / folder).rglob('*') if p.is_file()
                      and not any(part.startswith('.') for part in p.relative_to(source / folder).parts)
-                      and p.suffix in ('.parquet', '.tsv', '.csv', '.json', '.jsonl', '.py', '.md'))
+                     and not any(parent.resolve() in packed for parent in p.parents)
+                     and p.suffix in shipped)
     # Workbook payloads are independent optional components. Only their discovery
     # and verification metadata belongs in the core download.
     files.extend(p for p in (source / 'workbook_cells').rglob('*.json') if p.is_file()
@@ -72,12 +88,16 @@ def build(source: Path, output: Path, descriptor: Path):
     entries = {}
     with asset.open('wb') as raw, gzip.GzipFile(fileobj=raw, filename='', mode='wb', mtime=0) as compressed:
         with tarfile.open(fileobj=compressed, mode='w', format=tarfile.PAX_FORMAT) as archive:
-            for path in sorted(files):
-                if path.is_symlink() or any(parent.is_symlink() for parent in path.parents
-                                            if parent == source or source in parent.parents):
-                    raise ValueError(f'Data release cannot contain symlinks: {path}')
-                data = path.read_bytes()
-                relative = path.relative_to(source).as_posix()
+            members = [(path.relative_to(source).as_posix(), path) for path in files]
+            members += [(relative, None) for relative in in_memory]
+            for relative, path in sorted(members):
+                if path is None:
+                    data = in_memory[relative]
+                else:
+                    if path.is_symlink() or any(parent.is_symlink() for parent in path.parents
+                                                if parent == source or source in parent.parents):
+                        raise ValueError(f'Data release cannot contain symlinks: {path}')
+                    data = path.read_bytes()
                 entries[relative] = {'size': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
                 info = tarfile.TarInfo(relative)
                 info.size, info.mode, info.mtime = len(data), 0o644, 0

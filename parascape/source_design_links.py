@@ -17,7 +17,7 @@ import os
 from pathlib import Path
 import re
 
-from . import paths
+from . import paths, store
 
 
 def column_links(pack: str | Path, *, audit_root: str | Path | None = None) -> tuple[dict, str]:
@@ -26,16 +26,16 @@ def column_links(pack: str | Path, *, audit_root: str | Path | None = None) -> t
         'PARASCAPE_AUDIT', str(Path(paths.data_dir()) / 'processing_audit')))
     collection = root / 'protein_column_design_links'
     pointer_path = collection / 'collection.json'
-    if not pointer_path.exists():
+    if not store.exists(pointer_path):
         return {}, 'Source-column association collection is not installed.'
-    pointer = json.loads(pointer_path.read_text())
+    pointer = json.loads(store.read_text(pointer_path))
     directory = pointer['directory']
     if pointer.get('schema_version') != 1 or not re.fullmatch(r'[0-9a-f]{64}', directory):
         raise ValueError('Unsupported source-column association collection identity')
     folder = collection / directory
     if folder.resolve().parent != collection.resolve():
         raise ValueError('Source-column association collection lies outside its installed root')
-    receipt_bytes = (folder / 'validation.json').read_bytes()
+    receipt_bytes = store.read_bytes(folder / 'validation.json')
     if hashlib.sha256(receipt_bytes).hexdigest() != pointer['validation_sha256']:
         raise ValueError('Source-column reconciliation receipt checksum differs')
     receipt = json.loads(receipt_bytes)
@@ -48,7 +48,7 @@ def column_links(pack: str | Path, *, audit_root: str | Path | None = None) -> t
         path = folder / name
         if path.resolve().parent != folder.resolve():
             raise ValueError('Source-column association output lies outside its collection')
-        data = path.read_bytes()
+        data = store.read_bytes(path)
         if hashlib.sha256(data).hexdigest() != receipt['outputs'][name]:
             raise ValueError('Source-column association output checksum differs')
         return json.loads(data)
