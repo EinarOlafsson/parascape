@@ -34,6 +34,7 @@ SHORT = {"baseline": "baseline", "robust z": "robust z", "rank-normal": "rank-no
          "measured views only": "measured only", "fused graph (SNF-like)": "fused graph", "k-means": "k-means",
          "Ward": "Ward", "average linkage, cosine": "average link", "spectral, cosine kNN 15": "spectral",
          "consensus, seeds": "cons. seeds", "consensus, feature bootstrap": "cons. features",
+         "whitened + consensus, seeds": "white.+cons.", "no per-view PCA + whitened + consensus, seeds": "noPCA+wh.+cons.",
          "shuffled genes (negative control)": "shuffled"}
 MM = 1 / 25.4
 

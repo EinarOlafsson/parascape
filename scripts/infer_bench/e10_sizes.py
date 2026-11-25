@@ -24,10 +24,13 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("out")
     ap.add_argument("--k", default="100,300")
+    ap.add_argument("--arms", default="", help="semicolon-separated arm names (default: all)")
     args = ap.parse_args(argv)
     nodes, views, extra, _ = H.load()
     rows = []
     for arm, _d in E.ARMS:
+        if args.arms and arm not in args.arms.split(";"):
+            continue
         for k in (int(x) for x in args.k.split(",")):
             if arm.startswith("shuffled"):
                 sn, sx = E.shuffled_nodes(nodes, views, extra, 700)
