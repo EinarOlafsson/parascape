@@ -374,7 +374,7 @@ def paired_bootstrap(hits: dict, ref: dict) -> pd.DataFrame:
             m = (half == 1) & np.isfinite(ac) & np.isfinite(bc)
             diff_c = ac[m] - bc[m]
             mp = ref["pair_half"] == 1
-            diff_p = (ap[mp] - bp[mp]).astype(float)
+            diff_p = ap[mp].astype(float) - bp[mp].astype(float)
             bc_ = [diff_c[rng.integers(0, len(diff_c), len(diff_c))].mean() for _ in range(N_BOOT)] if len(diff_c) else [np.nan]
             bp_ = [diff_p[rng.integers(0, len(diff_p), len(diff_p))].mean() for _ in range(N_BOOT)]
             rows.append({"arm": arm, "k": k, "seed": seed,
@@ -392,6 +392,8 @@ def main(argv=None) -> int:
     ap.add_argument("--seeds", type=int, default=SEEDS)
     ap.add_argument("--k", default=",".join(map(str, TARGET_K)))
     ap.add_argument("--arms", default="", help="';'-separated arm names (default: all)")
+    ap.add_argument("--plant-strength", type=float, default=PLANT_STRENGTH)
+    ap.add_argument("--calibrate", default="", help="comma-separated planted strengths: baseline only, k 100, then exit")
     ap.add_argument("--quick", action="store_true", help="1 seed, k 100, 5 nulls, 3 consensus draws: a code check")
     args = ap.parse_args(argv)
     global N_NULL, CONSENSUS_B
@@ -409,8 +411,19 @@ def main(argv=None) -> int:
     seeds = 1 if args.quick else args.seeds
     nodes, views, extra, _L = H.load()
     ref = reference(nodes, log)
-    pn, py, pcols = E9.planted(nodes, views, PLANT_STRENGTH)
-    log(f"planted control: {len(pd.unique(py[pd.notna(py)]))} modules in {len(pcols)} columns at {PLANT_STRENGTH} SD")
+    if args.calibrate:
+        cal = []
+        for st in [float(x) for x in args.calibrate.split(",")]:
+            pn, py, _ = E9.planted(nodes, views, st)
+            for k in ks:
+                cp = cluster_arm(pn, views, extra, "baseline", k, 0)[0]
+                obs, ex = planted_share(cp, py)
+                cal.append({"strength": st, "k": k, "planted": obs, "planted_excess": ex})
+                log(f"calibration: strength {st} k {k}: planted modules recovered {obs:.2f} (excess {ex:+.2f})")
+        pd.DataFrame(cal).to_csv(os.path.join(args.out, "calibration.csv"), index=False)
+        return 0
+    pn, py, pcols = E9.planted(nodes, views, args.plant_strength)
+    log(f"planted control: {len(pd.unique(py[pd.notna(py)]))} modules in {len(pcols)} columns at {args.plant_strength} SD")
     part = os.path.join(args.out, "ledger.partial.parquet")
     rows = pd.read_parquet(part).to_dict("records") if os.path.exists(part) else []
     done = {(r["arm"], r["k"], r["seed"]) for r in rows}
@@ -454,7 +467,7 @@ def main(argv=None) -> int:
            .mean().round(4).reset_index())
     agg.to_csv(os.path.join(args.out, "ledger_mean.csv"), index=False)
     json.dump({"arms": dict(ARMS), "k": ks, "seeds": seeds, "n_null": N_NULL, "consensus_b": CONSENSUS_B,
-               "string_min": STRING_MIN, "plant_strength": PLANT_STRENGTH, "pair_split": ref["pair_split"],
+               "string_min": STRING_MIN, "plant_strength": args.plant_strength, "pair_split": ref["pair_split"],
                "complexes": len(ref["complexes"]), "pairs": int(len(ref["pairs"])),
                "source_protocol": "spaCR a1_clustering_20261123 ledger + cluster_bench (spaCR paper, spaCR master)",
                "table": agg.to_dict("records")},
