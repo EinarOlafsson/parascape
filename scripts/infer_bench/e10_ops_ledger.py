@@ -81,6 +81,8 @@ ARMS = [
     ("spectral, cosine kNN 15", "clustering: spectral on the cosine kNN graph at k (spaCR dev winner)"),
     ("consensus, seeds", f"{CONSENSUS_B} Louvain seeds, co-association, average-linkage cut at k"),
     ("consensus, feature bootstrap", f"{CONSENSUS_B} column redraws within views, Louvain each, co-association cut"),
+    ("whitened + consensus, seeds", "combination: whitening, then 10-seed Louvain consensus"),
+    ("no per-view PCA + whitened + consensus, seeds", "combination: z-scored columns, whitening, 10-seed consensus"),
     ("shuffled genes (negative control)", "every column permuted over genes independently, then the baseline"),
 ]
 
@@ -204,7 +206,7 @@ def prep_view(X, cover, arm):
         return E3.prepare(X, cover, scaling="rank")
     if arm == "KNN impute":
         return E3.prepare(X, cover, missing="knn")
-    if arm == "no per-view PCA":
+    if "no per-view PCA" in arm:
         Xc = X[cover].copy()
         fill = np.nanmedian(Xc, axis=0)
         fill = np.where(np.isfinite(fill), fill, 0.0)
@@ -242,7 +244,7 @@ def join(blocks: list, arm: str):
     E = np.hstack(bl)
     covered = (~np.isnan(E)).mean(axis=1) >= 0.5
     E = np.nan_to_num(E[covered])
-    if arm == "whitened (TVN analogue)":
+    if "whitened" in arm:
         E = PCA(n_components=0.99, whiten=True, random_state=0).fit_transform(E)
     return E, np.flatnonzero(covered)
 
@@ -337,7 +339,7 @@ def cluster_arm(nodes, views, extra, arm, k, seed):
         elif arm == "spectral, cosine kNN 15":
             c = SpectralClustering(n_clusters=k, affinity="precomputed", random_state=seed,
                                    assign_labels="cluster_qr").fit_predict(knn_graph(E)); nk, res = k, np.nan
-        elif arm == "consensus, seeds":
+        elif "consensus, seeds" in arm:
             A = knn_graph(E)
             labs = [louvain_at_k(A, k, seed * 100 + b)[0] for b in range(CONSENSUS_B)]
             c = coassoc_cut(labs, k); nk, res = len(np.unique(c)), np.nan
