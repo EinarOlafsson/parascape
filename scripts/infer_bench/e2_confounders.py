@@ -157,8 +157,14 @@ def main(argv=None) -> int:
     C = confounders(nodes)
     dep = {(lab, c): dependence(conf, L[lab][0], L[lab][1], fam)
            for lab in pairs["label"].unique() for c, conf in C.items()}
-    rows = []
+    part = os.path.join(args.out, "confounders.partial.parquet")
+    rows = pd.read_parquet(part).to_dict("records") if os.path.exists(part) else []
+    done = {(d["label"], d["feature"]) for d in rows}
+    if done:
+        log(f"resuming: {len(done)} pairs already scored in {part}")
     for n_, r in enumerate(pairs.itertuples(index=False)):
+        if (r.label, r.feature) in done:
+            continue
         y, kind = L[r.label][0], L[r.label][1]
         x = nodes[r.feature].to_numpy(float)
         for cname, conf in C.items():
@@ -170,7 +176,8 @@ def main(argv=None) -> int:
                              "method": method, "score": np.nanmean(s), "score_sd": np.nanstd(s, ddof=1),
                              "label_depends": dep[(r.label, cname)]})
         if n_ % 25 == 0:
-            log(f"{n_ + 1} of {len(pairs)} pairs")
+            pd.DataFrame(rows).to_parquet(part, index=False)
+            log(f"{n_ + 1} of {len(pairs)} pairs (checkpoint saved)")
     t = pd.DataFrame(rows)
     raw = t[t["method"] == "raw"].set_index(["label", "feature", "confounder"])["score"]
     t["change_from_raw"] = t["score"] - t.set_index(["label", "feature", "confounder"]).index.map(raw)
@@ -183,6 +190,8 @@ def main(argv=None) -> int:
                "labels_depending_on_a_confounder": sorted({f"{a} ~ {b}" for (a, b), v in dep.items()
                                                           if np.isfinite(v) and v > DEPENDS})}
     json.dump(summary, open(os.path.join(args.out, "summary.json"), "w"), indent=1, default=str)
+    if os.path.exists(part):
+        os.remove(part)
     log(f"wrote {args.out}")
     return 0
 
