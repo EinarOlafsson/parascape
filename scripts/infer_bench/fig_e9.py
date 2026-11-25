@@ -30,6 +30,10 @@ sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from parascape import figstyle as F  # noqa: E402
 import e9_strategies as E9  # noqa: E402
+FE8_SHORT = {"interaction module (STRING, measured in Toxoplasma)": "STRING module, measured",
+             "interaction module (STRING, copied by orthology)": "STRING module, orthology",
+             "complex (CORUM human, copied by orthology)": "CORUM complex, orthology",
+             "enzymatic function (EC class)": "enzyme class (EC)"}
 
 METHODS = ("knn", "mutual information", "kruskal", "forest")
 METHOD_NAME = {"knn": "neighbour score", "mutual information": "mutual information",
@@ -112,10 +116,17 @@ def main(argv=None) -> int:
                         b["method"] + " " + b["setting"].map(lambda s: f"{float(s):g}"))
     Bpiv = b.pivot_table(index="label", columns=["features", "col"], values="recovery_gain")
     Bpiv = Bpiv.reindex(index=[x for x in real + planted if x in Bpiv.index])
+    short = {**FE8_SHORT}
+    A.index = [short.get(i, i) for i in A.index]
+    real = [short.get(i, i) for i in real]
+    pc = pc.assign(label=pc["label"].map(lambda x: short.get(x, x)))
+    Bpiv.index = [short.get(i, i) for i in Bpiv.index]
     Dm = Bpiv.copy()
     Dm.columns = [f"{'winner' if f == 'stage A winner' else f}: {c}" for f, c in Dm.columns]
     # ---------------------------------------------------------------- layout (mm), three rows
-    W, labw, sq, gap = 180.0, 62.0, 34.0, 6.0
+    W, labw, sq, gap = 180.0, 50.0, 34.0, 6.0
+    n_e = 3 if len(pc) else 0
+    W = max(W, labw + CELL_MM * Dm.shape[1] + 62 + CELL_MM * n_e + 6)
     tick_mm = lambda names: 1.3 * max(len(str(n)) for n in names) + 3     # rotated 8 pt tick labels
     aw, ah = CELL_MM * A.shape[1], CELL_MM * A.shape[0]
     a_ticks = tick_mm([column_label(c) for c in A.columns])
@@ -143,7 +154,7 @@ def main(argv=None) -> int:
     cb.set_label("Recovery gain")
     if planted:
         strengths = [float(s.rsplit(" ", 1)[1]) for s in planted]
-        axB = axes(labw - 40, y2, sq, sq)
+        axB = axes(labw - 30, y2, sq, sq)
         for m in METHODS:
             v = [A.loc[p, f"{m} top 30"] if f"{m} top 30" in A else np.nan for p in planted]
             axB.plot(strengths, v, "-o", color=METHOD_COLOUR[m], alpha=F.ALPHA, lw=1.0, ms=3, label=METHOD_NAME[m])
@@ -159,7 +170,7 @@ def main(argv=None) -> int:
         axB.set_ylabel("Recovery gain")
         axB.set_ylim(0, 1)
         letter(2, y2 - 3, "B")
-        xC = labw - 40 + sq + 22
+        xC = labw - 30 + sq + 22
         axC = axes(xC, y2, sq, sq)
         for m in METHODS:
             v = [ps.loc[(ps.label == p) & (ps.strategy == f"{m} top 30"), "recall"].mean() for p in planted]
@@ -190,10 +201,10 @@ def main(argv=None) -> int:
         keep = ["all views"] + sorted({win[l] for l in ctrl["label"].unique() if l in win})
         Em = ctrl.groupby(["class", "strategy"])["recovery"].mean().unstack().reindex(columns=keep)
         Em = Em.loc[:, Em.notna().any()]
-        xE = W - 4 - CELL_MM * Em.shape[1]
+        xE = labw + dw + 60
         axE = axes(xE, y3, CELL_MM * Em.shape[1], CELL_MM * Em.shape[0])
         heat(axE, Em, plt.Normalize(0, 1), plt.cm.Blues)
-        letter(labw + dw + 4, y3 - 3, "E")
+        letter(labw + dw + 6, y3 - 3, "E")
     fig.text(0.5, 1.5 / H_, "DEVELOPMENT FIGURE - made by a script (fig_e9.py)", ha="center", color=F.DARK_GREY)
     for ext in ("png", "svg"):
         fig.savefig(os.path.join(out, f"fig_e9.{ext}"), dpi=300)
