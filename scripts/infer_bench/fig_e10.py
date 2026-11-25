@@ -61,26 +61,40 @@ def main(argv=None) -> int:
     F.use()
     L, B = load(src)
     order = [a for a, _ in E10.ARMS if a in set(L["arm"])]
-    T = L[L["split"] == "test"]
+    T = L[L["split"] == "test"].copy()
     ks = sorted(T["k"].unique())
     verdict = {}
     if len(B):
         m = B.groupby(["arm", "k"])[["complexes_diff", "complexes_lo", "complexes_hi", "string_recall_diff",
                                      "string_lo", "string_hi"]].mean()
         for (a, k), r in m.iterrows():
-            for met, lo, hi in (("complexes", "complexes_lo", "complexes_hi"), ("string", "string_lo", "string_hi")):
-                verdict[(a, k, met)] = "better" if r[lo] > 0 else ("worse" if r[hi] < 0 else "same")
+            verdict[(a, k, "complexes")] = ("better" if r["complexes_lo"] > 0 else
+                                            ("worse" if r["complexes_hi"] < 0 else "same"))
+    for met, colname in (("string", "string_f1_excess"), ("planted", "planted")):
+        base_ = T[T["arm"] == "baseline"].set_index(["k", "seed"])[colname]
+        for (a, k), g in T.groupby(["arm", "k"]):
+            d = np.array([v - base_.get((k, sd), np.nan) for sd, v in zip(g["seed"], g[colname])])
+            d = d[np.isfinite(d)]
+            if len(d):
+                verdict[(a, k, met)] = "better" if (d > 0).all() else ("worse" if (d < 0).all() else "same")
+    sizes = pd.read_csv(os.path.join(src, "sizes.csv")) if os.path.exists(os.path.join(src, "sizes.csv")) else None
+    if sizes is not None:
+        for r in sizes.itertuples():
+            T.loc[(T["arm"] == r.arm) & (T["k"] == r.k), "largest_share"] = r.largest_share
     rows = (("complexes_excess", "Complexes kept (excess)", "complexes"),
-            ("string_recall_excess", "STRING recall (excess)", "string"),
-            ("planted", "Planted modules (%)", None))
+            ("string_f1_excess", "STRING F1 (excess)", "string"),
+            ("planted", "Planted modules (%)", "planted"),
+            ("largest_share", "Largest cluster (%)", None))
+    rows = tuple(r for r in rows if r[0] in T)
     cell = F.SLOT_IN * 25.4
-    pw, ph, labw, gapx, gapy = cell * len(order), 30.0, 22.0, 14.0, 26.0
+    pw, ph, labw, gapx, gapy = cell * len(order), 30.0, 22.0, 14.0, 6.0
     W = labw + len(ks) * (pw + gapx) + 2
-    Hh = 8 + len(rows) * (ph + gapy) + 10
+    Hh = 8 + len(rows) * (ph + gapy) + 44
     fig = plt.figure(figsize=(W * MM, Hh * MM))
     colour = {"better": F.ACCENT, "worse": F.MAGENTA, "same": F.ACCENT_LIGHT}
     for ri, (col, ylab, met) in enumerate(rows):
-        vals_all = 100 * T[col] if col == "planted" else T[col]
+        pct = col in ("planted", "largest_share")
+        vals_all = 100 * T[col] if pct else T[col]
         lo, hi = float(np.nanmin(vals_all)), float(np.nanmax(vals_all))
         pad = 0.08 * (hi - lo if hi > lo else 1)
         for ci, k in enumerate(ks):
@@ -88,20 +102,20 @@ def main(argv=None) -> int:
             ax = fig.add_axes([x0 / W, 1 - (yt + ph) / Hh, pw / W, ph / Hh])
             for i, a in enumerate(order):
                 v = T[(T["arm"] == a) & (T["k"] == k)][col].to_numpy(float)
-                v = 100 * v if col == "planted" else v
+                v = 100 * v if pct else v
                 if not np.isfinite(v).any():
                     ax.text(i, lo + pad, "n/a", ha="center", va="bottom", color=F.CONTROL, fontsize=F.FONT_PT,
                             rotation=90)
                     continue
                 ctrl = a == "baseline" or a.startswith("shuffled")
-                c = F.CONTROL if ctrl else (colour[verdict.get((a, k, met), "same")] if met else F.ACCENT)
+                c = F.CONTROL if ctrl else (colour[verdict.get((a, k, met), "same")] if met else F.NAVY)
                 ax.bar(i, np.nanmean(v), width=F.BAR_FRACTION, color=c, alpha=F.ALPHA,
                        hatch="////" if a.startswith("shuffled") else None, edgecolor=F.INK if a.startswith("shuffled") else None,
                        lw=0)
                 ax.scatter(np.full(len(v), i) + np.linspace(-0.12, 0.12, len(v)), v, s=4, c=F.INK, alpha=F.ALPHA,
                            lw=0, zorder=3)
             b = T[(T["arm"] == "baseline") & (T["k"] == k)][col].mean()
-            ax.axhline(100 * b if col == "planted" else b, color=F.INK, lw=0.6, ls=":", alpha=0.6)
+            ax.axhline(100 * b if pct else b, color=F.INK, lw=0.6, ls=":", alpha=0.6)
             ax.axhline(0, color=F.INK, lw=0.6)
             ax.set_ylim(min(0, lo) - pad, hi + pad)
             ax.set_xlim(-0.6, len(order) - 0.4)
@@ -112,7 +126,7 @@ def main(argv=None) -> int:
             if ri == 0:
                 ax.set_title(f"k = {k} clusters", fontsize=F.FONT_PT, pad=3)
             if ci == 0:
-                fig.text((x0 - 20) / W, 1 - (yt - 3) / Hh, "ABC"[ri], fontsize=F.LETTER_PT, weight="bold", va="top")
+                fig.text((x0 - 20) / W, 1 - (yt - 3) / Hh, "ABCD"[ri], fontsize=F.LETTER_PT, weight="bold", va="top")
     from matplotlib.lines import Line2D
     from matplotlib.patches import Patch
     hs = [Patch(color=F.ACCENT, alpha=F.ALPHA, label="better than baseline"),
@@ -120,6 +134,7 @@ def main(argv=None) -> int:
           Patch(color=F.ACCENT_LIGHT, alpha=F.ALPHA, label="no detectable difference"),
           Patch(color=F.CONTROL, alpha=F.ALPHA, label="baseline (ref.)"),
           Patch(facecolor=F.CONTROL, alpha=F.ALPHA, hatch="////", edgecolor=F.INK, lw=0, label="shuffled genes"),
+          Patch(color=F.NAVY, alpha=F.ALPHA, label="cluster size (D)"),
           Line2D([], [], color=F.INK, lw=0.6, ls=":", label="baseline mean")]
     fig.legend(handles=hs, loc="lower center", ncol=3, frameon=False, fontsize=F.FONT_PT)
     fig.text(0.995, 0.998, "DEVELOPMENT FIGURE - made by a script (fig_e10.py)", ha="right", va="top",
