@@ -97,7 +97,7 @@ def main(argv=None) -> int:
         weighting = {lab: ("per_view" if r["per_view"] > r["per_column"] else "per_column")
                      for lab, r in w.iterrows()}
     ids = nodes["gene_id"].astype(str).to_numpy()
-    checks, bands, cands = [], [], []
+    checks, bands, cands, not_called, external = [], [], [], [], []
     for lname, (y, kind, tcols) in L.items():
         raw = E3.views_raw(nodes, views, extra, IM.exclusions(tcols, views))
         prepped = {v: E3.prepare(X, c) for v, (X, c) in raw.items()}
@@ -147,8 +147,16 @@ def main(argv=None) -> int:
             if m.any():
                 bands.append({"label": lname, "band": f"{a:.1f}-{min(b, 1):.1f}", "genes": int(m.sum()),
                               "stated": float(conf[m].mean()), "right": float(hit[m].mean()), "chance": chance})
-        # 4. candidates: unlabelled genes, called from every labelled gene
-        unl = ~pd.notna(y) & usable
+        # 4. candidates: unlabelled genes, called from every labelled gene, and only genes that have
+        # every view at least 90% of the labelled genes have. A missing view is filled with zeros
+        # when views are combined, so genes missing the SAME view look alike: the first run called
+        # 304 genes without proteomics "PM - peripheral 1" at 90% or more (2026-11-25).
+        has = {v: ~np.isnan(X).all(axis=1) & c for v, (X, c) in raw.items()}
+        needed = [v for v, m in has.items() if m[lab].mean() >= 0.90]
+        complete = np.all([has[v] for v in needed], axis=0) if needed else np.ones(len(y), bool)
+        not_called.append({"label": lname, "views_needed": ", ".join(needed),
+                           "unlabelled_lacking_them": int((~pd.notna(y) & usable & ~complete).sum())})
+        unl = ~pd.notna(y) & usable & complete
         if unl.any():
             top_u, s_u = votes(E, y, lab, unl, args.metric)
             c_u = iso.predict(s_u)
@@ -157,9 +165,23 @@ def main(argv=None) -> int:
                 keep &= top_u != counts.index[0]
             cands.append(pd.DataFrame({"label": lname, "gene_id": ids[unl][keep], "call": top_u[keep],
                                        "how_often_right": c_u[keep], "chance": chance}))
+            # An outside check for the niche: hyperLOPIT's own classifier assigns many genes that
+            # are not markers. Calibrated on markers, the stated rate overstated agreement with it
+            # on the others (0.98 stated, 0.71 agreeing, first run).
+            if lname == "hyperLOPIT niche" and "lopit_map" in nodes:
+                assigned = nodes["lopit_map"].astype(str).to_numpy()[unl]
+                ok_ = ~pd.Series(assigned).isin(["unassigned", "nan", "None"]).to_numpy()
+                for a, b in zip(BANDS[:-1], BANDS[1:]):
+                    m = ok_ & (c_u >= a) & (c_u < b)
+                    if m.any():
+                        external.append({"label": lname, "band": f"{a:.1f}-{min(b, 1):.1f}", "genes": int(m.sum()),
+                                         "stated": float(c_u[m].mean()),
+                                         "agrees_with_hyperlopit_classifier": float((top_u[m] == assigned[m]).mean())})
         log(f"{lname}: accuracy {hit.mean():.3f} vs chance {chance:.3f}, ECE {checks[-1]['ece']:.3f}")
     pd.DataFrame(checks).to_csv(os.path.join(args.out, "final_check.tsv"), sep="\t", index=False)
     pd.DataFrame(bands).to_csv(os.path.join(args.out, "calibration.tsv"), sep="\t", index=False)
+    pd.DataFrame(not_called).to_csv(os.path.join(args.out, "not_called.tsv"), sep="\t", index=False)
+    pd.DataFrame(external).to_csv(os.path.join(args.out, "external_check.tsv"), sep="\t", index=False)
     C = pd.concat(cands, ignore_index=True) if cands else pd.DataFrame()
     C.to_parquet(os.path.join(args.out, "candidates.parquet"), index=False)
     json.dump({"metric": args.metric, "final_share": FINAL_SHARE, "final_seed": FINAL_SEED,
