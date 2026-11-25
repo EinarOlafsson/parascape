@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 
 from . import (cellcycle, chromatin, codons, corpus, expression, identity, interaction_studies,
-               phenotype_screen, resistance, drug_sensitivity, enteric,
+               phenotype_screen, resistance, drug_sensitivity, enteric, literature_findings,
                deposits, iedb, interactions, palmitome, small_tables,
                literature,
                proteomics,
@@ -152,6 +152,7 @@ def load_nodes() -> pd.DataFrame:
                   resistance.resistance(BASE, resolve=resolve, log=log),
                   drug_sensitivity.sensitivity(BASE, resolve=resolve, log=log),
                   enteric.fitness(BASE, resolve=resolve, log=log),
+                  literature_findings.labels(BASE, resolve=resolve, log=log),
                   deposits.parasite_columns(BASE, "Tg", n.gene_id.astype(str),
                                             resolve=resolve, log=log)):
         if table.empty:

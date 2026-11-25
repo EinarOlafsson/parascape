@@ -183,6 +183,9 @@ DATASET_CATEGORIES = {
                     "A name-based rule gets this one exactly wrong."),
     "second_background_fitness": (("fitness",), "guide depletion over eight passages in a second strain"),
     "oxidative_stress_screen": (("fitness",), "pooled CRISPR screening score under oxidative challenge"),
+    "literature_affinage": (("place", "host_response", "phenotype", "interaction"),
+                            "experimental findings read from single-gene papers: location, acting on "
+                            "the host, phenotypes and partners. Same papers as literature co-mention"),
     "curated_enteric_fitness": (("fitness",),
                                 "literature-curated oocyst yield of gene disruptions through the "
                                 "feline stage: fitness, though its level is reference/literature"),

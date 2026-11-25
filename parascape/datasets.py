@@ -1372,6 +1372,28 @@ REGISTRY = [
                  "`vs_host` column is COMPUTED here, sample-centred so it compares proportion "
                  "rather than amount; the archive's own EV-minus-cell column is not used because "
                  "its transform could not be reproduced to better than 3 log units.", organism=organisms.TOXOPLASMA),
+    Dataset("literature_affinage", "Experimental findings read from single-gene papers",
+            "reference", "literature",
+            "Per gene: the compartment shown by experiment, whether it is shown to act on the host, "
+            "and how many papers report location, phenotype, activity, partners, complexes and structure",
+            ("lit_compartment", "lit_host_facing", "lit_n_papers", "lit_n_localisation", "lit_n_phenotype",
+             "lit_n_activity", "lit_n_partner", "lit_n_complex", "lit_n_host_facing", "lit_n_structure"),
+            "747 genes, 977 papers", accession="PubMed abstracts via NCBI E-utilities",
+            url="https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi",
+            path="parascape/data/literature_affinage/literature_gene_labels.parquet",
+            note="READ, not deposited: 2,963 abstracts linked to genes by the release literature scan "
+                 "(catalogue papers naming more than 50 genes dropped, at most 20 per gene) were each "
+                 "read once by Claude Code subagents under fixed rules (scripts/literature_affinage/"
+                 "READING_RULES.md): a finding is kept only when THIS paper shows it by a direct "
+                 "experiment for a protein the abstract itself names. Fixed checks A1-A7 with no model "
+                 "screened the output; seven ATP synthase subunits credited from their product names "
+                 "were excluded by hand, and 46 findings whose protein the abstract names only as a "
+                 "family are kept in the findings table but not used here. Where hyperLOPIT also "
+                 "places the gene, 67.5% of 514 agree (a secreted destination counts as its organelle "
+                 "of origin). These labels come from the same papers as literature co-mention and "
+                 "attention depth, so those must never be used to score them. Method after Di Bernardo "
+                 "and Cheeseman, arXiv 2607.02217 (2026).",
+            organism=organisms.TOXOPLASMA),
     Dataset("curated_enteric_fitness", "Enteric / sexual-cycle fitness per gene (CURATED)",
             "reference", "literature",
             "Gene disruptions carried through the feline stage with oocyst output measured",
